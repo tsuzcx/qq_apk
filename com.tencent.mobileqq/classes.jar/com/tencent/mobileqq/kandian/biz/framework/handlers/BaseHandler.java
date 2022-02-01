@@ -26,79 +26,23 @@ import org.jetbrains.annotations.Nullable;
 public abstract class BaseHandler
   implements IBaseHandler
 {
-  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListViewGroup = null;
-  private ReadInJoyBaseAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = null;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
-  }
-  
-  public final Activity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
-  }
+  private ReadInJoyBaseListViewGroup a = null;
+  private ReadInJoyBaseAdapter b = null;
   
   public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     return null;
   }
   
-  public AnimationSet a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
-  }
-  
-  public final IFaceDecoder a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
-  }
-  
   public RIJDataFetchManager a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListViewGroup.a();
-  }
-  
-  public RIJDataManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
-  }
-  
-  public ReadInJoyBaseListViewGroup a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListViewGroup;
-  }
-  
-  public final ReadInJoyBaseAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-  }
-  
-  public AbsListView a()
-  {
-    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter;
-    if (localReadInJoyBaseAdapter != null) {
-      return localReadInJoyBaseAdapter.a();
-    }
-    return null;
-  }
-  
-  public Boolean a()
-  {
-    return null;
+    return this.a.getDataFetchManager();
   }
   
   public Integer a(int paramInt)
   {
-    return Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getItemViewType(paramInt));
+    return Integer.valueOf(this.b.getItemViewType(paramInt));
   }
-  
-  public final Object a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getItem(paramInt);
-  }
-  
-  public void a(int paramInt) {}
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -112,12 +56,12 @@ public abstract class BaseHandler
   
   public final void a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListViewGroup = ((ReadInJoyBaseListViewGroup)paramViewGroup);
+    this.a = ((ReadInJoyBaseListViewGroup)paramViewGroup);
   }
   
   public final void a(IReadInJoyBaseAdapter paramIReadInJoyBaseAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = ((ReadInJoyBaseAdapter)paramIReadInJoyBaseAdapter);
+    this.b = ((ReadInJoyBaseAdapter)paramIReadInJoyBaseAdapter);
   }
   
   public void a(@Nullable AbsListView paramAbsListView) {}
@@ -138,7 +82,7 @@ public abstract class BaseHandler
   
   public void a(boolean paramBoolean)
   {
-    ReadInJoyBaseListViewGroup localReadInJoyBaseListViewGroup = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyBaseListViewGroup;
+    ReadInJoyBaseListViewGroup localReadInJoyBaseListViewGroup = this.a;
     if (localReadInJoyBaseListViewGroup != null) {
       localReadInJoyBaseListViewGroup.a(paramBoolean);
     }
@@ -148,39 +92,103 @@ public abstract class BaseHandler
   
   public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
   
-  public final boolean a()
+  public final Object b(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.b();
+    return this.b.getItem(paramInt);
   }
   
   public void b(int paramInt, List<ChannelBannerInfo> paramList) {}
   
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
-  
-  public final int c()
+  public void b(boolean paramBoolean, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.getCount();
+    ReadInJoyBaseListViewGroup localReadInJoyBaseListViewGroup = this.a;
+    if (localReadInJoyBaseListViewGroup != null) {
+      localReadInJoyBaseListViewGroup.a(paramBoolean, paramInt);
+    }
   }
   
-  public void f() {}
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
   
-  public void g() {}
+  public int c()
+  {
+    return this.b.c();
+  }
   
-  public void h() {}
+  public void c(int paramInt) {}
+  
+  public ReadInJoyBaseListViewGroup d()
+  {
+    return this.a;
+  }
+  
+  public boolean d(int paramInt)
+  {
+    return false;
+  }
+  
+  public AbsListView e()
+  {
+    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = this.b;
+    if (localReadInJoyBaseAdapter != null) {
+      return localReadInJoyBaseAdapter.d();
+    }
+    return null;
+  }
+  
+  public int f()
+  {
+    return this.b.i();
+  }
+  
+  public final ReadInJoyBaseAdapter g()
+  {
+    return this.b;
+  }
+  
+  public RIJDataManager h()
+  {
+    return this.b.E();
+  }
+  
+  public final Activity i()
+  {
+    return this.b.a();
+  }
+  
+  public void o() {}
+  
+  public Boolean p()
+  {
+    return null;
+  }
+  
+  public void q() {}
+  
+  public void r() {}
+  
+  public final int t()
+  {
+    return this.b.getCount();
+  }
+  
+  public final boolean u()
+  {
+    return this.b.j();
+  }
+  
+  public final IFaceDecoder v()
+  {
+    return this.b.l();
+  }
+  
+  public AnimationSet w()
+  {
+    return this.b.k();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.BaseHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -61,12 +61,12 @@ public final class RIJCommentReportModule
           if (paramCommentReportInfo == null) {
             break label271;
           }
-          i = paramCommentReportInfo.a();
+          i = paramCommentReportInfo.d();
           ((PBUInt32Field)localObject1).set(i);
           localPBStringField = localReqBody.report_reason;
           localObject1 = localObject2;
           if (paramCommentReportInfo != null) {
-            localObject1 = paramCommentReportInfo.d();
+            localObject1 = paramCommentReportInfo.e();
           }
           localPBStringField.set((String)localObject1);
           localObject1 = localReqBody.toByteArray();
@@ -172,7 +172,7 @@ public final class RIJCommentReportModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.RIJCommentReportModule
  * JD-Core Version:    0.7.0.1
  */

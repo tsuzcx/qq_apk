@@ -14,12 +14,12 @@ class ArkAppContainerMRUUpdater$2
   public void a(long paramLong)
   {
     ArkAppContainerMRUUpdater.a("onLowMemory");
-    ArkAppContainerMRUUpdater.a().sendMessage(ArkAppContainerMRUUpdater.a().obtainMessage(5));
+    ArkAppContainerMRUUpdater.c().sendMessage(ArkAppContainerMRUUpdater.c().obtainMessage(5));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainerMRUUpdater.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,31 +15,31 @@ final class ApolloScreenshotController$onRecordFrame$1
   {
     try
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       int j = this.b;
       byte[] arrayOfByte;
       Object localObject;
       if (i == j)
       {
-        arrayOfByte = ApolloRecordUtil.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a();
+        arrayOfByte = ApolloRecordUtil.a(this.c, this.a, this.b);
+        localObject = this.d.d();
         Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "framePixels");
-        ((IApolloScreenshotEncoder)localObject).a(arrayOfByte, this.jdField_a_of_type_Int, this.b);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
+        ((IApolloScreenshotEncoder)localObject).a(arrayOfByte, this.a, this.b);
+        localObject = this.e;
         if (localObject != null) {
-          ((IApolloActionRecordListener)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a().a() - 1, arrayOfByte, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.d());
+          ((IApolloActionRecordListener)localObject).a(this.d.d().c() - 1, arrayOfByte, this.a, this.b, this.d.j());
         }
       }
       else
       {
-        arrayOfByte = ApolloRecordUtil.a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, this.b);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a();
+        arrayOfByte = ApolloRecordUtil.a(this.c, this.a, this.b, this.b);
+        localObject = this.d.d();
         Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "framePixels");
         ((IApolloScreenshotEncoder)localObject).a(arrayOfByte, this.b, this.b);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener;
+        localObject = this.e;
         if (localObject != null)
         {
-          ((IApolloActionRecordListener)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.a().a() - 1, arrayOfByte, this.b, this.b, this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloCoderResource.d());
+          ((IApolloActionRecordListener)localObject).a(this.d.d().c() - 1, arrayOfByte, this.b, this.b, this.d.j());
           return;
         }
       }
@@ -52,7 +52,7 @@ final class ApolloScreenshotController$onRecordFrame$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController.onRecordFrame.1
  * JD-Core Version:    0.7.0.1
  */

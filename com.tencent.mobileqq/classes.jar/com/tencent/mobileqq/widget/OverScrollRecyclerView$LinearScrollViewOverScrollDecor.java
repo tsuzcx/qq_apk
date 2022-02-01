@@ -39,14 +39,14 @@ public class OverScrollRecyclerView$LinearScrollViewOverScrollDecor
   {
     if (this.a == 1)
     {
-      paramAnimationAttributes.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_Y;
-      paramAnimationAttributes.jdField_a_of_type_Float = paramView.getTranslationY();
-      paramAnimationAttributes.b = paramView.getHeight();
+      paramAnimationAttributes.a = View.TRANSLATION_Y;
+      paramAnimationAttributes.b = paramView.getTranslationY();
+      paramAnimationAttributes.c = paramView.getHeight();
       return;
     }
-    paramAnimationAttributes.jdField_a_of_type_AndroidUtilProperty = View.TRANSLATION_X;
-    paramAnimationAttributes.jdField_a_of_type_Float = paramView.getTranslationX();
-    paramAnimationAttributes.b = paramView.getWidth();
+    paramAnimationAttributes.a = View.TRANSLATION_X;
+    paramAnimationAttributes.b = paramView.getTranslationX();
+    paramAnimationAttributes.c = paramView.getWidth();
   }
   
   public boolean a(View paramView)
@@ -72,24 +72,24 @@ public class OverScrollRecyclerView$LinearScrollViewOverScrollDecor
       if (Math.abs(f1) < Math.abs(f2)) {
         return false;
       }
-      paramMotionAttributes.jdField_a_of_type_Float = paramView.getTranslationY();
+      paramMotionAttributes.a = paramView.getTranslationY();
       paramMotionAttributes.b = f1;
       if (paramMotionAttributes.b > 0.0F) {
         bool1 = true;
       }
-      paramMotionAttributes.jdField_a_of_type_Boolean = bool1;
+      paramMotionAttributes.c = bool1;
       return true;
     }
     if (Math.abs(f2) < Math.abs(f1)) {
       return false;
     }
-    paramMotionAttributes.jdField_a_of_type_Float = paramView.getTranslationX();
+    paramMotionAttributes.a = paramView.getTranslationX();
     paramMotionAttributes.b = f2;
     bool1 = bool2;
     if (paramMotionAttributes.b > 0.0F) {
       bool1 = true;
     }
-    paramMotionAttributes.jdField_a_of_type_Boolean = bool1;
+    paramMotionAttributes.c = bool1;
     return true;
   }
   
@@ -103,7 +103,7 @@ public class OverScrollRecyclerView$LinearScrollViewOverScrollDecor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollRecyclerView.LinearScrollViewOverScrollDecor
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,14 @@ import java.util.List;
 public class NumberWheelView$NumberAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 36;
-  private Context jdField_a_of_type_AndroidContentContext;
   public List<Integer> a;
+  private Context c;
+  private int d = 36;
   
   public NumberWheelView$NumberAdapter(NumberWheelView paramNumberWheelView, Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt1, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
+    this.c = paramContext;
+    this.d = ((int)TypedValue.applyDimension(1, paramInt1, this.c.getResources().getDisplayMetrics()));
     a(paramInt2, paramInt3);
   }
   
@@ -33,10 +33,10 @@ public class NumberWheelView$NumberAdapter
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = new ArrayList();
     while (paramInt1 <= paramInt2)
     {
-      this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramInt1));
+      this.a.add(Integer.valueOf(paramInt1));
       paramInt1 += 1;
     }
     notifyDataSetChanged();
@@ -44,7 +44,7 @@ public class NumberWheelView$NumberAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public long getItemId(int paramInt)
@@ -57,8 +57,8 @@ public class NumberWheelView$NumberAdapter
     Object localObject1;
     if (paramView == null)
     {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localObject1 = new WheelTextView(this.c);
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.d));
       paramView = (WheelTextView)localObject1;
     }
     else
@@ -71,7 +71,7 @@ public class NumberWheelView$NumberAdapter
     if (paramView == null) {
       localObject2 = (WheelTextView)localObject1;
     }
-    paramView = String.format("%d", new Object[] { this.jdField_a_of_type_JavaUtilList.get(paramInt) });
+    paramView = String.format("%d", new Object[] { this.a.get(paramInt) });
     ((WheelTextView)localObject2).setTextSize(18.0F);
     ((WheelTextView)localObject2).setTextColor(-7829368);
     ((WheelTextView)localObject2).setGravity(5);
@@ -83,7 +83,7 @@ public class NumberWheelView$NumberAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.NumberWheelView.NumberAdapter
  * JD-Core Version:    0.7.0.1
  */

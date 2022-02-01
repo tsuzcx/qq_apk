@@ -12,12 +12,12 @@ public class PicSelectAdapter$HintTxtViewholder
   PicSelectAdapter$HintTxtViewholder(View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131380025));
+    this.a = ((TextView)paramView.findViewById(2131448930));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.HintTxtViewholder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="@dimen/j2"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="@dimen/j2"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:layout_gravity="center_vertical" android:id="@id/dvo" android:layout_width="@dimen/j6" android:layout_height="@dimen/j6" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/dif" />
     <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/tv_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/um1" android:singleLine="true" android:layout_weight="1.0" />

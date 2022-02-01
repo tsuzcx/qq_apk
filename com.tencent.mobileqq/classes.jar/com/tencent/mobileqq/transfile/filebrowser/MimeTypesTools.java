@@ -58,7 +58,7 @@ public class MimeTypesTools
     if ((paramString != null) && (paramString.size() > 0)) {
       return ((ResolveInfo)paramString.get(0)).loadIcon(localPackageManager);
     }
-    return paramContext.getResources().getDrawable(2130851158);
+    return paramContext.getResources().getDrawable(2130853403);
   }
   
   public static String getMimeType(Context paramContext, String paramString)
@@ -95,7 +95,7 @@ public class MimeTypesTools
     if (!hasLoadMimeType)
     {
       localMimeTypeParser = new MimeTypeParser();
-      paramContext = paramContext.getResources().getXml(2131886086);
+      paramContext = paramContext.getResources().getXml(2132082695);
     }
     try
     {
@@ -119,7 +119,7 @@ public class MimeTypesTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.filebrowser.MimeTypesTools
  * JD-Core Version:    0.7.0.1
  */

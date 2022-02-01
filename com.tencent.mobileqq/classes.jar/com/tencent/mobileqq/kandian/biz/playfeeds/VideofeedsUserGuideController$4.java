@@ -14,16 +14,16 @@ class VideofeedsUserGuideController$4
   
   public void run()
   {
-    TranslateAnimation localTranslateAnimation = VideofeedsUserGuideController.b(this.this$0);
+    TranslateAnimation localTranslateAnimation = VideofeedsUserGuideController.d(this.this$0);
     if (localTranslateAnimation != null)
     {
       VideofeedsUserGuideController.a(this.this$0).setVisibility(0);
-      VideofeedsUserGuideController.a(this.this$0).findViewById(2131380316).setVisibility(0);
-      VideofeedsUserGuideController.a(this.this$0).findViewById(2131380312).setVisibility(0);
-      VideofeedsUserGuideController.a(this.this$0).findViewById(2131380313).setVisibility(0);
+      VideofeedsUserGuideController.a(this.this$0).findViewById(2131449246).setVisibility(0);
+      VideofeedsUserGuideController.a(this.this$0).findViewById(2131449242).setVisibility(0);
+      VideofeedsUserGuideController.a(this.this$0).findViewById(2131449243).setVisibility(0);
       VideofeedsUserGuideController.a(this.this$0).bringToFront();
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)VideofeedsUserGuideController.a(this.this$0).getLayoutParams();
-      localMarginLayoutParams.setMargins(0, 0, 0, AIOUtils.b(187.0F, VideofeedsUserGuideController.a(this.this$0).getResources()));
+      localMarginLayoutParams.setMargins(0, 0, 0, AIOUtils.b(187.0F, VideofeedsUserGuideController.e(this.this$0).getResources()));
       VideofeedsUserGuideController.a(this.this$0).setLayoutParams(localMarginLayoutParams);
       VideofeedsUserGuideController.a(this.this$0).startAnimation(localTranslateAnimation);
     }
@@ -31,7 +31,7 @@ class VideofeedsUserGuideController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideofeedsUserGuideController.4
  * JD-Core Version:    0.7.0.1
  */

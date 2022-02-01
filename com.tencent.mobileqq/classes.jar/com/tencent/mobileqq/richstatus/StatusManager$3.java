@@ -37,16 +37,16 @@ class StatusManager$3
     if (paramBoolean1)
     {
       StatusManager.c(this.a, 0L);
-      StatusManager.a(this.a, paramBoolean2);
+      StatusManager.b(this.a, paramBoolean2);
     }
     else
     {
       StatusManager.c(this.a, System.currentTimeMillis() - 180000L + 60000L);
-      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
+      paramBoolean2 = StatusManager.h(this.a).getBoolean("k_sync_ss", false);
     }
-    if (StatusManager.b(this.a) != null)
+    if (StatusManager.i(this.a) != null)
     {
-      localObject = StatusManager.b(this.a).iterator();
+      localObject = StatusManager.i(this.a).iterator();
       while (((Iterator)localObject).hasNext())
       {
         IStatusListener localIStatusListener = (IStatusListener)((Iterator)localObject).next();
@@ -56,7 +56,7 @@ class StatusManager$3
         } else {
           i = -1;
         }
-        localIStatusListener.a(i, paramBoolean2);
+        localIStatusListener.b(i, paramBoolean2);
       }
     }
   }
@@ -88,31 +88,31 @@ class StatusManager$3
     if (paramBoolean1) {
       if (paramBoolean2)
       {
-        if (StatusManager.a(this.a) != null)
+        if (StatusManager.j(this.a) != null)
         {
           StatusManager.a(this.a, paramArrayList);
           return;
         }
-        if (StatusManager.b(this.a) == null) {
+        if (StatusManager.k(this.a) == null) {
           StatusManager.b(this.a, new ArrayList());
         }
         paramArrayOfByte = this.a;
-        paramArrayOfByte = paramArrayOfByte.a(StatusManager.b(paramArrayOfByte), paramArrayList, paramInt);
+        paramArrayOfByte = paramArrayOfByte.a(StatusManager.k(paramArrayOfByte), paramArrayList, paramInt);
       }
       else
       {
-        paramArrayOfByte = this.a.a(paramArrayList);
+        paramArrayOfByte = this.a.b(paramArrayList);
       }
     }
     boolean bool;
-    if ((StatusManager.a(this.a) != null) && (StatusManager.a(this.a).length > 0)) {
+    if ((StatusManager.l(this.a) != null) && (StatusManager.l(this.a).length > 0)) {
       bool = true;
     } else {
       bool = false;
     }
-    if (StatusManager.c(this.a) != null)
+    if (StatusManager.m(this.a) != null)
     {
-      paramArrayList = StatusManager.c(this.a).iterator();
+      paramArrayList = StatusManager.m(this.a).iterator();
       while (paramArrayList.hasNext()) {
         ((ISameStatusListener)paramArrayList.next()).a(paramBoolean1, paramBoolean2, paramInt, paramArrayOfByte, bool);
       }
@@ -137,13 +137,13 @@ class StatusManager$3
       QLog.d("Q.richstatus.shuo", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean1) {
-      StatusManager.a(this.a, paramBoolean2);
+      StatusManager.b(this.a, paramBoolean2);
     } else {
-      paramBoolean2 = StatusManager.b(this.a).getBoolean("k_sync_ss", false);
+      paramBoolean2 = StatusManager.h(this.a).getBoolean("k_sync_ss", false);
     }
-    if (StatusManager.b(this.a) != null)
+    if (StatusManager.i(this.a) != null)
     {
-      localObject = StatusManager.b(this.a).iterator();
+      localObject = StatusManager.i(this.a).iterator();
       while (((Iterator)localObject).hasNext())
       {
         IStatusListener localIStatusListener = (IStatusListener)((Iterator)localObject).next();
@@ -153,14 +153,14 @@ class StatusManager$3
         } else {
           i = -1;
         }
-        localIStatusListener.b(i, paramBoolean2);
+        localIStatusListener.a(i, paramBoolean2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3
  * JD-Core Version:    0.7.0.1
  */

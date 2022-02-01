@@ -33,7 +33,7 @@ public class ProtoUtils
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramArrayOfByte = new NewIntent(paramAppRuntime.getApplicationContext(), ProtoServlet.class);
     if (paramBundle != null) {
       paramArrayOfByte.putExtras(paramBundle);
@@ -66,7 +66,7 @@ public class ProtoUtils
     if (paramBundle != null) {
       localNewIntent.putExtras(paramBundle);
     }
-    paramStoryProtocolObserver.a = new WeakReference(paramAppRuntime);
+    paramStoryProtocolObserver.c = new WeakReference(paramAppRuntime);
     localNewIntent.putExtra("cmd", paramString);
     localNewIntent.putExtra("data", paramArrayOfByte);
     localNewIntent.putExtra("isResend", false);
@@ -98,7 +98,7 @@ public class ProtoUtils
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramArrayOfByte = new NewIntent(BaseApplication.getContext(), ProtoServlet.class);
     if (paramBundle != null) {
       paramArrayOfByte.putExtras(paramBundle);
@@ -179,7 +179,7 @@ public class ProtoUtils
     localOIDBSSOPkg.uint32_command.set(paramInt1);
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    localOIDBSSOPkg.str_client_version.set(AppSetting.f());
+    localOIDBSSOPkg.str_client_version.set(AppSetting.h());
     paramArrayOfByte = new NewIntent(paramAppRuntime.getApplicationContext(), ProtoServlet.class);
     if (paramBundle != null) {
       paramArrayOfByte.putExtras(paramBundle);

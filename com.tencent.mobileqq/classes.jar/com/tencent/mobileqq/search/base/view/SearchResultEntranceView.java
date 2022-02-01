@@ -25,9 +25,9 @@ public class SearchResultEntranceView
   extends SearchResultView
 {
   public View a;
-  public TextView a;
   public TextView b;
   public TextView c;
+  public TextView d;
   
   public SearchResultEntranceView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -50,127 +50,148 @@ public class SearchResultEntranceView
     return j;
   }
   
+  private void a(SearchResultModelForEntrance paramSearchResultModelForEntrance, SearchResultEntranceView paramSearchResultEntranceView)
+  {
+    if (paramSearchResultModelForEntrance.z() != 8) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    TextView localTextView1 = paramSearchResultEntranceView.b();
+    TextView localTextView2 = paramSearchResultEntranceView.b;
+    if (localTextView2 != null) {
+      localStringBuilder.append(localTextView2.getText());
+    }
+    if (localTextView1 != null) {
+      localStringBuilder.append(localTextView1.getText());
+    }
+    paramSearchResultEntranceView = paramSearchResultEntranceView.c;
+    if (paramSearchResultEntranceView != null) {
+      localStringBuilder.append(paramSearchResultEntranceView.getText());
+    }
+    paramSearchResultModelForEntrance.b(localStringBuilder.toString());
+  }
+  
   private void b(SearchResultModelForEntrance paramSearchResultModelForEntrance)
   {
-    if (a() != null) {
-      a().setText(paramSearchResultModelForEntrance.b());
-    }
     if (b() != null) {
-      b().setText(paramSearchResultModelForEntrance.c());
+      b().setText(paramSearchResultModelForEntrance.d());
     }
-    if ((this.c != null) && (!TextUtils.isEmpty(paramSearchResultModelForEntrance.f)))
+    if (c() != null) {
+      c().setText(paramSearchResultModelForEntrance.e());
+    }
+    if ((this.d != null) && (!TextUtils.isEmpty(paramSearchResultModelForEntrance.h)))
     {
-      this.c.setText(paramSearchResultModelForEntrance.f);
-      b().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { a(), this.c, this.jdField_b_of_type_AndroidWidgetImageView }) - SearchUtils.a(75.0F, b().getResources()));
+      this.d.setText(paramSearchResultModelForEntrance.h);
+      c().setMaxWidth(a(this.e.getContext(), new View[] { b(), this.d, this.k }) - SearchUtils.a(75.0F, c().getResources()));
     }
     ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
     int i;
     Object localObject;
-    if (b() != null) {
-      if (paramSearchResultModelForEntrance.b != 0)
+    if (g() != null) {
+      if (paramSearchResultModelForEntrance.d != 0)
       {
-        b().setImageResource(paramSearchResultModelForEntrance.b);
-        b().setVisibility(0);
+        g().setImageResource(paramSearchResultModelForEntrance.d);
+        g().setVisibility(0);
       }
-      else if (!TextUtils.isEmpty(paramSearchResultModelForEntrance.c))
+      else if (!TextUtils.isEmpty(paramSearchResultModelForEntrance.e))
       {
-        i = a().getResources().getDimensionPixelSize(2131297515);
+        i = h().getResources().getDimensionPixelSize(2131298168);
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
         ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "isAvatar";
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-        localObject = URLDrawable.getDrawable(paramSearchResultModelForEntrance.c, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(paramSearchResultModelForEntrance.e, (URLDrawable.URLDrawableOptions)localObject);
         ((URLDrawable)localObject).setDecodeHandler(((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).getDecodeHandler());
         if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
           ((URLDrawable)localObject).restartDownload();
         }
-        b().setImageDrawable((Drawable)localObject);
-        b().setVisibility(0);
+        g().setImageDrawable((Drawable)localObject);
+        g().setVisibility(0);
       }
       else
       {
-        b().setVisibility(8);
+        g().setVisibility(8);
       }
     }
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.a != null)
     {
       i = -1;
-      localObject = a().getTag(2131380885);
+      localObject = h().getTag(2131449868);
       if ((localObject instanceof Integer)) {
         i = ((Integer)localObject).intValue();
       }
       if (i > 0) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.a.setVisibility(0);
       } else if (i == 0) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.a.setVisibility(8);
       }
     }
-    if ((c() != null) && (!TextUtils.isEmpty(paramSearchResultModelForEntrance.a())))
+    if ((d() != null) && (!TextUtils.isEmpty(paramSearchResultModelForEntrance.a())))
     {
-      c().setText(paramSearchResultModelForEntrance.a());
-      c().setVisibility(0);
+      d().setText(paramSearchResultModelForEntrance.a());
+      d().setVisibility(0);
     }
-    if (a() != null)
+    if (f() != null)
     {
-      if (paramSearchResultModelForEntrance.a()) {
-        a().setVisibility(0);
+      if (paramSearchResultModelForEntrance.h()) {
+        f().setVisibility(0);
       } else {
-        a().setVisibility(8);
+        f().setVisibility(8);
       }
-      if (!TextUtils.isEmpty(paramSearchResultModelForEntrance.h))
+      if (!TextUtils.isEmpty(paramSearchResultModelForEntrance.j))
       {
-        i = a().getResources().getDimensionPixelSize(2131298391);
+        i = h().getResources().getDimensionPixelSize(2131299105);
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
         ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
         ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "rightIcon";
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-        paramSearchResultModelForEntrance = URLDrawable.getDrawable(paramSearchResultModelForEntrance.h, (URLDrawable.URLDrawableOptions)localObject);
+        paramSearchResultModelForEntrance = URLDrawable.getDrawable(paramSearchResultModelForEntrance.j, (URLDrawable.URLDrawableOptions)localObject);
         if ((paramSearchResultModelForEntrance.getStatus() != 1) && (paramSearchResultModelForEntrance.getStatus() != 0)) {
           paramSearchResultModelForEntrance.restartDownload();
         }
-        a().setImageDrawable(paramSearchResultModelForEntrance);
-        a().setVisibility(0);
+        f().setImageDrawable(paramSearchResultModelForEntrance);
+        f().setVisibility(0);
         return;
       }
-      a().setVisibility(8);
+      f().setVisibility(8);
     }
   }
   
   protected void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131365776);
-    if (this.jdField_a_of_type_Int == 2131559800)
+    this.a = this.e.findViewById(2131432033);
+    if (this.m == 2131625843)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378461));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131378463));
-      a().setMaxWidth(a(this.jdField_b_of_type_AndroidViewView.getContext(), new View[] { this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetImageView }));
-      a().setTextColor(SearchUtils.a());
+      this.b = ((TextView)this.e.findViewById(2131447063));
+      this.c = ((TextView)this.e.findViewById(2131447065));
+      b().setMaxWidth(a(this.e.getContext(), new View[] { this.b, this.c, this.k }));
+      b().setTextColor(SearchUtils.a());
       ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.peekAppRuntime(), false, null);
       return;
     }
-    if (this.jdField_a_of_type_Int == 2131559793) {
-      this.c = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371514));
+    if (this.m == 2131625836) {
+      this.d = ((TextView)this.e.findViewById(2131438891));
     }
   }
   
   public void a(SearchResultModelForEntrance paramSearchResultModelForEntrance)
   {
-    b();
-    int i = paramSearchResultModelForEntrance.jdField_a_of_type_Int;
-    if ((i != -4) && (i != -3) && (i != -1)) {
-      return;
+    i();
+    int i = paramSearchResultModelForEntrance.c;
+    if ((i == -4) || (i == -3) || (i == -1)) {
+      b(paramSearchResultModelForEntrance);
     }
-    b(paramSearchResultModelForEntrance);
+    a(paramSearchResultModelForEntrance, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.view.SearchResultEntranceView
  * JD-Core Version:    0.7.0.1
  */

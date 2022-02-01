@@ -10,12 +10,12 @@ class ChatHistoryBaseTenDocFragment$3
   
   public boolean a(TencentDocItem paramTencentDocItem)
   {
-    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
+    return (this.a.j != null) && (this.a.j.a(paramTencentDocItem));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.3
  * JD-Core Version:    0.7.0.1
  */

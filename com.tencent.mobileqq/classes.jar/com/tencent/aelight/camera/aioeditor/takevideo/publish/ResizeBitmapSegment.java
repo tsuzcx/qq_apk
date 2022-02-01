@@ -17,19 +17,19 @@ public class ResizeBitmapSegment
   protected void a(JobContext paramJobContext, GenerateContext paramGenerateContext)
   {
     System.currentTimeMillis();
-    int i = UIUtils.a(BaseApplication.getContext());
-    int j = UIUtils.d(BaseApplication.getContext()) * 720 / i;
+    int i = UIUtils.b(BaseApplication.getContext());
+    int j = UIUtils.e(BaseApplication.getContext()) * 720 / i;
     i = j;
     if (j % 2 != 0) {
       i = j + 1;
     }
-    Object localObject = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_JavaLangString;
+    Object localObject = paramGenerateContext.l.a;
     paramJobContext = (JobContext)localObject;
-    if (!paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c)
+    if (!paramGenerateContext.l.h)
     {
       paramJobContext = (JobContext)localObject;
-      if (paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean) {
-        paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString;
+      if (paramGenerateContext.l.g) {
+        paramJobContext = paramGenerateContext.l.b;
       }
     }
     localObject = new BitmapFactory.Options();
@@ -37,13 +37,13 @@ public class ResizeBitmapSegment
     try
     {
       ImageUtil.a(paramJobContext, (BitmapFactory.Options)localObject);
-      if ((!(paramGenerateContext.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditLocalPhotoSource)) && (((BitmapFactory.Options)localObject).outWidth <= 720) && (((BitmapFactory.Options)localObject).outHeight <= i) && (((BitmapFactory.Options)localObject).outWidth % 2 == 0) && (((BitmapFactory.Options)localObject).outHeight % 2 == 0))
+      if ((!(paramGenerateContext.c instanceof EditLocalPhotoSource)) && (((BitmapFactory.Options)localObject).outWidth <= 720) && (((BitmapFactory.Options)localObject).outHeight <= i) && (((BitmapFactory.Options)localObject).outWidth % 2 == 0) && (((BitmapFactory.Options)localObject).outHeight % 2 == 0))
       {
         SLog.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "no need resize. srcWidth=%s, srcHeight=%s, destWidth=%s, destHeight=%s", Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(720), Integer.valueOf(i));
         super.notifyResult(paramGenerateContext);
         return;
       }
-      paramJobContext = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramJobContext = paramGenerateContext.l.c;
       if (paramJobContext == null)
       {
         SLog.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap is null please check!");
@@ -57,9 +57,9 @@ public class ResizeBitmapSegment
         super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 5));
         return;
       }
-      paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.c = false;
-      paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_Boolean = true;
-      String str = PublishFileManager.a(paramGenerateContext.jdField_a_of_type_Int, paramGenerateContext.jdField_b_of_type_JavaLangString, ".jpg");
+      paramGenerateContext.l.h = false;
+      paramGenerateContext.l.g = true;
+      String str = PublishFileManager.a(paramGenerateContext.b, paramGenerateContext.p, ".jpg");
       BitmapUtils.a((Bitmap)localObject, str);
       if (paramJobContext != localObject)
       {
@@ -70,7 +70,7 @@ public class ResizeBitmapSegment
       {
         SLog.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge do not recycle bitmap");
       }
-      paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoPublishGeneratePicArgs.jdField_b_of_type_JavaLangString = str;
+      paramGenerateContext.l.b = str;
       super.notifyResult(paramGenerateContext);
       return;
     }
@@ -83,7 +83,7 @@ public class ResizeBitmapSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.ResizeBitmapSegment
  * JD-Core Version:    0.7.0.1
  */

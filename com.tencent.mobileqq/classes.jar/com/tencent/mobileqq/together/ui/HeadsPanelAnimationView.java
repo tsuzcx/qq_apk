@@ -31,84 +31,84 @@ import java.util.List;
 
 public class HeadsPanelAnimationView
 {
-  private int jdField_a_of_type_Int;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new HeadsPanelAnimationView.3(this);
-  Handler jdField_a_of_type_AndroidOsHandler;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  List<ImageView> jdField_a_of_type_JavaUtilList;
-  volatile boolean jdField_a_of_type_Boolean;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  List<String> jdField_c_of_type_JavaUtilList = new ArrayList();
+  RelativeLayout a;
+  List<ImageView> b;
+  ImageView c;
   ImageView d;
+  ImageView e;
+  Handler f;
+  List<String> g = new ArrayList();
+  List<String> h = new ArrayList();
+  ImageView i;
+  volatile boolean j;
+  Handler.Callback k = new HeadsPanelAnimationView.3(this);
+  private int l;
   
   public HeadsPanelAnimationView()
   {
     Object localObject = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_Int = AIOUtils.b(4.0F, ((Context)localObject).getResources());
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)View.inflate((Context)localObject, 2131561519, null));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368034));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368035));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131368036));
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildCount())
+    this.f = new Handler(Looper.getMainLooper(), this.k);
+    this.l = AIOUtils.b(4.0F, ((Context)localObject).getResources());
+    this.b = new ArrayList();
+    this.a = ((RelativeLayout)View.inflate((Context)localObject, 2131627880, null));
+    this.c = ((ImageView)this.a.findViewById(2131434879));
+    this.d = ((ImageView)this.a.findViewById(2131434880));
+    this.e = ((ImageView)this.a.findViewById(2131434881));
+    int m = 0;
+    while (m < this.a.getChildCount())
     {
-      localObject = (ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(i);
+      localObject = (ImageView)this.a.getChildAt(m);
       ((ImageView)localObject).setVisibility(8);
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      i += 1;
+      this.b.add(localObject);
+      m += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    this.a.setVisibility(8);
   }
   
   private void b(ArrayList<String> paramArrayList)
   {
     if ((paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      if (a(this.jdField_c_of_type_JavaUtilList, paramArrayList))
+      if (a(this.h, paramArrayList))
       {
         if (QLog.isColorLevel()) {
           QLog.d("MatchViewHolder", 0, "updateData return for same data");
         }
         return;
       }
-      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      if (this.f.hasMessages(1)) {
+        this.f.removeMessages(1);
       }
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.addAll(paramArrayList);
-      this.jdField_c_of_type_JavaUtilList.clear();
-      this.jdField_c_of_type_JavaUtilList.addAll(paramArrayList);
-      int j = this.jdField_b_of_type_JavaUtilList.size();
+      this.g.clear();
+      this.g.addAll(paramArrayList);
+      this.h.clear();
+      this.h.addAll(paramArrayList);
+      int n = this.g.size();
       Object localObject;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("updateData _ infoListSize = ");
-        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(n);
         QLog.d("MatchViewHolder", 0, ((StringBuilder)localObject).toString());
       }
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      int i;
-      if (j > 0) {
-        i = 1;
+      int m;
+      if (n > 0) {
+        m = 1;
       } else {
-        i = 0;
+        m = 0;
       }
-      if (i != 0)
+      if (m != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        int k = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        while (i < k)
+        this.a.setVisibility(0);
+        int i1 = this.b.size();
+        m = 0;
+        while (m < i1)
         {
-          ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (i < j) {
-            localObject = (String)paramArrayList.get(i);
+          ImageView localImageView = (ImageView)this.b.get(m);
+          if (m < n) {
+            localObject = (String)paramArrayList.get(m);
           } else {
             localObject = null;
           }
@@ -134,22 +134,22 @@ public class HeadsPanelAnimationView
           else {
             localImageView.setVisibility(8);
           }
-          i += 1;
+          m += 1;
         }
-        if (j > 3)
+        if (n > 3)
         {
-          paramArrayList = (String)this.jdField_b_of_type_JavaUtilList.get(3);
+          paramArrayList = (String)this.g.get(3);
           if (localQQAppInterface != null)
           {
             localObject = ImageUtil.a(true);
             FaceDrawable.getFaceDrawable(localQQAppInterface, 1, paramArrayList, 4, (Drawable)localObject, (Drawable)localObject);
           }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+          this.f.sendEmptyMessageDelayed(1, 5000L);
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        this.a.setVisibility(8);
       }
       return;
     }
@@ -158,12 +158,7 @@ public class HeadsPanelAnimationView
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    return this.a;
   }
   
   public void a(ArrayList<String> paramArrayList)
@@ -177,11 +172,11 @@ public class HeadsPanelAnimationView
         localStringBuilder.append(paramArrayList);
         QLog.d("MatchViewHolder", 0, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(2)) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      if (this.f.hasMessages(2)) {
+        this.f.removeMessages(2);
       }
-      paramArrayList = Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramArrayList);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramArrayList);
+      paramArrayList = Message.obtain(this.f, 2, paramArrayList);
+      this.f.sendMessage(paramArrayList);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -191,23 +186,23 @@ public class HeadsPanelAnimationView
   
   boolean a(List<String> paramList1, List<String> paramList2)
   {
-    int j = paramList1.size();
-    int i = paramList2.size();
+    int n = paramList1.size();
+    int m = paramList2.size();
     boolean bool2 = true;
     boolean bool1 = true;
-    if (j == i)
+    if (n == m)
     {
-      if (j > 0)
+      if (n > 0)
       {
-        i = 0;
+        m = 0;
         for (;;)
         {
           bool2 = bool1;
-          if (i >= j) {
+          if (m >= n) {
             break;
           }
-          String str1 = (String)paramList1.get(i);
-          String str2 = (String)paramList2.get(i);
+          String str1 = (String)paramList1.get(m);
+          String str2 = (String)paramList2.get(m);
           bool2 = bool1;
           if (!TextUtils.isEmpty(str1))
           {
@@ -216,7 +211,7 @@ public class HeadsPanelAnimationView
               bool2 = false;
             }
           }
-          i += 1;
+          m += 1;
           bool1 = bool2;
         }
       }
@@ -234,31 +229,36 @@ public class HeadsPanelAnimationView
     return bool2;
   }
   
-  void b()
+  public void b()
+  {
+    this.f.removeCallbacksAndMessages(null);
+  }
+  
+  void c()
   {
     Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     if (localObject1 == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject2 = this.d;
+    this.j = true;
+    Object localObject2 = this.i;
     if (localObject2 != null)
     {
       ((ImageView)localObject2).clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.d);
+      this.a.removeView(this.i);
     }
     localObject2 = BaseApplicationImpl.getContext();
-    this.d = new ImageView((Context)localObject2);
-    int i = AIOUtils.b(1.0F, ((Context)localObject2).getResources());
-    this.d.setPadding(i, i, i, i);
-    this.d.setBackgroundResource(2130845156);
-    localObject2 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_AndroidWidgetImageView.getWidth(), this.jdField_a_of_type_AndroidWidgetImageView.getHeight());
-    ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131368034);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131368034);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.d, (ViewGroup.LayoutParams)localObject2);
+    this.i = new ImageView((Context)localObject2);
+    int m = AIOUtils.b(1.0F, ((Context)localObject2).getResources());
+    this.i.setPadding(m, m, m, m);
+    this.i.setBackgroundResource(2130846596);
+    localObject2 = new RelativeLayout.LayoutParams(this.c.getWidth(), this.c.getHeight());
+    ((RelativeLayout.LayoutParams)localObject2).addRule(7, 2131434879);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131434879);
+    this.a.addView(this.i, (ViewGroup.LayoutParams)localObject2);
     try
     {
-      localObject2 = (String)this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_JavaUtilList.size() - 1);
+      localObject2 = (String)this.g.remove(this.g.size() - 1);
       if (QLog.isColorLevel())
       {
         localObject3 = new StringBuilder();
@@ -266,15 +266,15 @@ public class HeadsPanelAnimationView
         ((StringBuilder)localObject3).append((String)localObject2);
         QLog.d("MatchViewHolder", 0, ((StringBuilder)localObject3).toString());
       }
-      this.jdField_b_of_type_JavaUtilList.add(0, localObject2);
+      this.g.add(0, localObject2);
       Object localObject3 = ImageUtil.a(true);
       localObject1 = FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, (String)localObject2, 4, (Drawable)localObject3, (Drawable)localObject3);
-      this.d.setImageDrawable((Drawable)localObject1);
+      this.i.setImageDrawable((Drawable)localObject1);
       localObject1 = new ScaleAnimation(1.0F, 1.2F, 1.0F, 1.2F, 1, 0.5F, 1, 0.5F);
       ((ScaleAnimation)localObject1).setDuration(500);
       ((ScaleAnimation)localObject1).setFillAfter(true);
       ((ScaleAnimation)localObject1).setAnimationListener(new HeadsPanelAnimationView.1(this));
-      this.d.startAnimation((Animation)localObject1);
+      this.i.startAnimation((Animation)localObject1);
       return;
     }
     catch (Exception localException)
@@ -283,69 +283,69 @@ public class HeadsPanelAnimationView
     }
   }
   
-  public void c()
-  {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if ((localHandler != null) && (localHandler.hasMessages(1))) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-  }
-  
   public void d()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if ((localHandler != null) && (!localHandler.hasMessages(1))) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 5000L);
+    Handler localHandler = this.f;
+    if ((localHandler != null) && (localHandler.hasMessages(1))) {
+      this.f.removeMessages(1);
     }
   }
   
-  void e()
+  public void e()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-    int k = AIOUtils.b(5.0F, BaseApplicationImpl.getContext().getResources());
-    Object localObject1 = this.jdField_c_of_type_AndroidWidgetImageView;
-    int j = 0;
-    float f = i - k;
-    Object localObject2 = ObjectAnimator.ofFloat(localObject1, "translationX", new float[] { 0.0F, f });
-    Object localObject3 = ObjectAnimator.ofFloat(this.jdField_c_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.0F });
-    long l = 300;
-    ((ObjectAnimator)localObject2).setDuration(l);
-    ((ObjectAnimator)localObject3).setDuration(l);
+    Handler localHandler = this.f;
+    if ((localHandler != null) && (!localHandler.hasMessages(1))) {
+      this.f.sendEmptyMessageDelayed(1, 5000L);
+    }
+  }
+  
+  void f()
+  {
+    int m = this.c.getWidth();
+    int i1 = AIOUtils.b(5.0F, BaseApplicationImpl.getContext().getResources());
+    Object localObject1 = this.e;
+    int n = 0;
+    float f1 = m - i1;
+    Object localObject2 = ObjectAnimator.ofFloat(localObject1, "translationX", new float[] { 0.0F, f1 });
+    Object localObject3 = ObjectAnimator.ofFloat(this.e, "alpha", new float[] { 1.0F, 0.0F });
+    long l1 = 300;
+    ((ObjectAnimator)localObject2).setDuration(l1);
+    ((ObjectAnimator)localObject3).setDuration(l1);
     localObject1 = new AnimatorSet();
     ((AnimatorSet)localObject1).playTogether(new Animator[] { localObject2, localObject3 });
     localObject3 = new HeadsPanelAnimationView.2(this, (AnimatorSet)localObject1);
     localObject2 = new ArrayList();
-    i = 0;
-    while (i < 2)
+    m = 0;
+    while (m < 2)
     {
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, f, 0.0F, 0.0F);
-      localTranslateAnimation.setDuration(l);
+      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, f1, 0.0F, 0.0F);
+      localTranslateAnimation.setDuration(l1);
       localTranslateAnimation.setFillAfter(true);
       ((List)localObject2).add(localTranslateAnimation);
-      i += 1;
+      m += 1;
     }
     ((TranslateAnimation)((List)localObject2).get(0)).setAnimationListener((Animation.AnimationListener)localObject3);
-    i = j;
-    while (i < 2)
+    m = n;
+    while (m < 2)
     {
-      localObject3 = (ImageView)this.jdField_a_of_type_JavaUtilList.get(i);
+      localObject3 = (ImageView)this.b.get(m);
       ((ImageView)localObject3).clearAnimation();
-      ((ImageView)localObject3).startAnimation((Animation)((List)localObject2).get(i));
-      i += 1;
+      ((ImageView)localObject3).startAnimation((Animation)((List)localObject2).get(m));
+      m += 1;
     }
     ((AnimatorSet)localObject1).start();
   }
   
-  public void f()
+  public void g()
   {
-    a();
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_AndroidOsHandler$Callback = null;
+    b();
+    this.f = null;
+    this.k = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView
  * JD-Core Version:    0.7.0.1
  */

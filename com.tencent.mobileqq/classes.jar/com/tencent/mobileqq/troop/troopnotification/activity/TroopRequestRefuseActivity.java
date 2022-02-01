@@ -41,25 +41,18 @@ public class TroopRequestRefuseActivity
   extends QIphoneTitleBarActivity
   implements TextWatcher, View.OnClickListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected CheckBox a;
-  protected EditText a;
-  protected TextView a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = null;
-  
-  public TroopRequestRefuseActivity()
-  {
-    this.jdField_a_of_type_AndroidWidgetCheckBox = null;
-    this.jdField_a_of_type_AndroidWidgetEditText = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-  }
+  protected CheckBox a = null;
+  protected EditText b = null;
+  protected TextView c = null;
+  Handler d = new Handler(Looper.getMainLooper());
+  private structmsg.StructMsg e = null;
+  private String f = "";
   
   protected String a()
   {
     SharedPreferences localSharedPreferences = getSharedPreferences("share_troop_request_refuse", 0);
     if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(MD5.a(this.mRuntime.getCurrentAccountUin()), "");
+      return localSharedPreferences.getString(MD5.b(this.mRuntime.getCurrentAccountUin()), "");
     }
     return "";
   }
@@ -72,7 +65,7 @@ public class TroopRequestRefuseActivity
       localObject = ((SharedPreferences)localObject).edit();
       if (localObject != null)
       {
-        ((SharedPreferences.Editor)localObject).putString(MD5.a(this.mRuntime.getCurrentAccountUin()), paramString);
+        ((SharedPreferences.Editor)localObject).putString(MD5.b(this.mRuntime.getCurrentAccountUin()), paramString);
         ((SharedPreferences.Editor)localObject).commit();
       }
     }
@@ -80,19 +73,19 @@ public class TroopRequestRefuseActivity
   
   protected boolean a(String paramString, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
+    Object localObject = this.e;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
     {
       int i = ((structmsg.StructMsg)localObject).msg_type.get();
-      long l1 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_seq.get();
-      long l2 = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get();
-      int j = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get();
-      int k = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.src_id.get();
-      int m = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_src_id.get();
-      int n = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
-      localObject = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.actions.get();
+      long l1 = this.e.msg_seq.get();
+      long l2 = this.e.req_uin.get();
+      int j = this.e.msg.sub_type.get();
+      int k = this.e.msg.src_id.get();
+      int m = this.e.msg.sub_src_id.get();
+      int n = this.e.msg.group_msg_type.get();
+      localObject = this.e.msg.actions.get();
       bool1 = bool2;
       if (localObject != null)
       {
@@ -119,11 +112,11 @@ public class TroopRequestRefuseActivity
   {
     if ((paramEditable != null) && (paramEditable.length() != 0))
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new TroopRequestRefuseActivity.1(this, paramEditable));
+      this.d.post(new TroopRequestRefuseActivity.1(this, paramEditable));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(25));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.rgb(119, 119, 119));
+    this.c.setText(String.valueOf(25));
+    this.c.setTextColor(Color.rgb(119, 119, 119));
     enableRightHighlight(true);
   }
   
@@ -141,37 +134,37 @@ public class TroopRequestRefuseActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131562998);
-    setTitle(2131697790);
-    setLeftButton(2131690728, this);
-    setRightHighlightButton(2131718755, this);
+    super.setContentView(2131629606);
+    setTitle(2131895563);
+    setLeftButton(2131887648, this);
+    setRightHighlightButton(2131916261, this);
     enableRightHighlight(true);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366328));
-    this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(-1);
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379980));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(25));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364596));
+    this.b = ((EditText)findViewById(2131432630));
+    this.b.setBackgroundColor(-1);
+    this.b.addTextChangedListener(this);
+    this.c = ((TextView)findViewById(2131448880));
+    this.c.setText(String.valueOf(25));
+    this.a = ((CheckBox)findViewById(2131430665));
     paramBundle = a();
     if (!TextUtils.isEmpty(paramBundle))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramBundle);
-      paramBundle = this.jdField_a_of_type_AndroidWidgetEditText;
+      this.b.setText(paramBundle);
+      paramBundle = this.b;
       paramBundle.setSelection(paramBundle.length());
     }
-    paramBundle = GroupSystemMsgController.a().b();
-    this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = GroupSystemMsgController.a().a(paramBundle);
-    paramBundle = this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg;
+    paramBundle = GroupSystemMsgController.a().f();
+    this.e = GroupSystemMsgController.a().b(paramBundle);
+    paramBundle = this.e;
     if (paramBundle != null) {
-      this.jdField_a_of_type_JavaLangString = String.valueOf(paramBundle.msg.group_code.get());
+      this.f = String.valueOf(paramBundle.msg.group_code.get());
     }
-    ReportController.b(this.mRuntime, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+    ReportController.b(this.mRuntime, "P_CliOper", "Grp_sysmsg", "", "Grp_ask", "exp_reject", 0, 0, this.f, "", "", "");
     return true;
   }
   
   protected void doOnDestroy()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((EditText)localObject).getText().toString();
@@ -188,17 +181,17 @@ public class TroopRequestRefuseActivity
     {
       if (!NetworkUtil.isNetSupport(this))
       {
-        QQToast.a(this, getString(2131719980), 0).b(getTitleBarHeight());
+        QQToast.makeText(this, getString(2131917585), 0).show(getTitleBarHeight());
       }
       else
       {
-        String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-        boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+        String str1 = this.b.getText().toString();
+        boolean bool = this.a.isChecked();
         a(str1, bool);
         setResult(-1);
         finish();
         AppRuntime localAppRuntime = this.mRuntime;
-        String str3 = this.jdField_a_of_type_JavaLangString;
+        String str3 = this.f;
         if (TextUtils.isEmpty(str1)) {
           str1 = "0";
         } else {
@@ -230,7 +223,7 @@ public class TroopRequestRefuseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestRefuseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,10 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 public class ImageData
   extends BaseData
 {
-  public int a;
   public String a;
-  public boolean a = true;
   public int b;
+  public int c;
+  public boolean d = true;
   
   public ImageData()
   {
@@ -17,7 +17,7 @@ public class ImageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.data.ImageData
  * JD-Core Version:    0.7.0.1
  */

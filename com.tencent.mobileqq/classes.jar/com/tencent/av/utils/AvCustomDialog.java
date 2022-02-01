@@ -19,7 +19,7 @@ public class AvCustomDialog
   void a()
   {
     super.getWindow().setGravity(17);
-    super.setContentView(2131559774);
+    super.setContentView(2131625816);
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -27,7 +27,7 @@ public class AvCustomDialog
     if (paramBoolean) {
       b();
     }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131373650);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131441322);
     localFrameLayout.setOnClickListener(new AvCustomDialog.1(this));
     if (paramView != null) {
       localFrameLayout.addView(paramView);
@@ -36,7 +36,7 @@ public class AvCustomDialog
   
   void b()
   {
-    findViewById(2131373649).setOnClickListener(new AvCustomDialog.2(this));
+    findViewById(2131441321).setOnClickListener(new AvCustomDialog.2(this));
   }
 }
 

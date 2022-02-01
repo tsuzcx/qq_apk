@@ -14,11 +14,11 @@ class DataReportViewer$10
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.setVisibility(0);
+    this.a.g.setVisibility(0);
     paramAnimator = new AlphaAnimation(0.0F, 1.0F);
     paramAnimator.setFillAfter(true);
     paramAnimator.setDuration(200L);
-    this.a.a.startAnimation(paramAnimator);
+    this.a.g.startAnimation(paramAnimator);
     paramAnimator.setAnimationListener(new DataReportViewer.10.1(this));
   }
   
@@ -28,7 +28,7 @@ class DataReportViewer$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.10
  * JD-Core Version:    0.7.0.1
  */

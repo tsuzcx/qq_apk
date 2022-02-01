@@ -29,46 +29,46 @@ import org.json.JSONObject;
 public class TriangleLocationStickerDrawble
   extends InfoStickerDrawable
 {
-  private static int l = 30;
-  private static int m = 30;
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, 0, 0);
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface = null;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private int jdField_b_of_type_Int = 0;
-  private Typeface jdField_b_of_type_AndroidGraphicsTypeface = null;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int = 0;
-  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  private String jdField_c_of_type_JavaLangString = "";
-  private int jdField_d_of_type_Int = 0;
-  private Bitmap jdField_d_of_type_AndroidGraphicsBitmap = null;
-  private String jdField_d_of_type_JavaLangString = HardCodeUtil.a(2064515407);
-  private int jdField_e_of_type_Int;
-  private String jdField_e_of_type_JavaLangString = "SHENZHEN";
-  private int h;
-  private int i;
-  private int j;
-  private int k;
+  private static int C = 30;
+  private static int D = 30;
+  private String A = HardCodeUtil.a(2064187694);
+  private String B = "SHENZHEN";
+  private int E = 0;
+  private int F = 0;
+  private Rect G = new Rect(0, 0, 0, 0);
+  private int H = 0;
+  private int I = 8;
+  private int J = 4;
+  private int K = 0;
+  private int L = 0;
+  private int M = 0;
+  private Bitmap N = null;
+  private int O = 0;
+  private Paint a = new Paint();
+  private TextPaint b = new TextPaint();
+  private TextPaint c = new TextPaint();
+  private Bitmap d;
+  private Bitmap e;
   private int n = 0;
   private int o = 0;
   private int p = 0;
-  private int q = 8;
-  private int r = 4;
-  private int s = 0;
-  private int t = 0;
-  private int u = 0;
-  private int v = 0;
+  private int q = 0;
+  private Typeface r = null;
+  private Typeface s = null;
+  private int t;
+  private int u;
+  private int v;
+  private int w;
+  private int x;
+  private String y = "";
+  private String z = "";
   
   public TriangleLocationStickerDrawble(Context paramContext, String paramString)
   {
     super(paramContext, paramString);
-    a(this.jdField_a_of_type_JavaLangString);
+    a(this.i);
     b();
-    c();
+    e();
   }
   
   public static String a(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -97,51 +97,51 @@ public class TriangleLocationStickerDrawble
   
   public String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.y;
   }
   
   protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
   {
-    int i1 = ((Integer)paramArrayList.get(this.jdField_e_of_type_Int)).intValue();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(i1);
-    int i2 = ((Integer)paramArrayList.get(this.j)).intValue();
-    i1 = 0;
-    if (i2 != 0)
+    int i = ((Integer)paramArrayList.get(this.t)).intValue();
+    this.a.setAlpha(i);
+    int j = ((Integer)paramArrayList.get(this.w)).intValue();
+    i = 0;
+    if (j != 0)
     {
-      i3 = this.jdField_d_of_type_Int;
-      double d1 = i2 * i3;
+      k = this.q;
+      double d1 = j * k;
       Double.isNaN(d1);
-      i1 = (int)(d1 / 100.0D);
-      localObject1 = new Rect((i3 - i1) / 2, 0, (i3 + i1) / 2, this.v);
-      i2 = this.jdField_a_of_type_Int;
-      i3 = (i2 - i1) / 2;
-      i4 = l;
-      localObject2 = new Rect(i3, i4, (i2 + i1) / 2, this.v + i4);
-      paramCanvas.drawBitmap(this.jdField_d_of_type_AndroidGraphicsBitmap, (Rect)localObject1, (Rect)localObject2, this.jdField_a_of_type_AndroidGraphicsPaint);
-      i1 = ((Integer)paramArrayList.get(this.k)).intValue() + i1 / 2;
+      i = (int)(d1 / 100.0D);
+      localObject1 = new Rect((k - i) / 2, 0, (k + i) / 2, this.O);
+      j = this.n;
+      k = (j - i) / 2;
+      m = C;
+      localObject2 = new Rect(k, m, (j + i) / 2, this.O + m);
+      paramCanvas.drawBitmap(this.N, (Rect)localObject1, (Rect)localObject2, this.a);
+      i = ((Integer)paramArrayList.get(this.x)).intValue() + i / 2;
     }
-    int i3 = ((Integer)paramArrayList.get(this.h)).intValue();
-    i2 = i3;
-    if (i3 == this.t) {
-      i2 = ((Integer)paramArrayList.get(this.i)).intValue();
+    int k = ((Integer)paramArrayList.get(this.u)).intValue();
+    j = k;
+    if (k == this.L) {
+      j = ((Integer)paramArrayList.get(this.v)).intValue();
     }
-    i2 = this.jdField_c_of_type_Int - i2 - this.n - a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i5 = this.jdField_a_of_type_Int;
-    int i4 = i5 / 2;
-    i3 = this.o;
-    i4 = i4 - i3 - i1;
-    i1 = i5 / 2 + i1;
-    i5 = l;
-    Object localObject1 = new Rect(i4, i2 + i5, i3 + i4, this.n + i2 + i5);
-    i3 = l;
-    paramArrayList = new Rect(i1, i2 + i3, this.o + i1, i2 + this.n + i3);
-    Object localObject2 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    j = this.p - j - this.E - a(1.0F, this.h.getResources());
+    int i1 = this.n;
+    int m = i1 / 2;
+    k = this.F;
+    m = m - k - i;
+    i = i1 / 2 + i;
+    i1 = C;
+    Object localObject1 = new Rect(m, j + i1, k + m, this.E + j + i1);
+    k = C;
+    paramArrayList = new Rect(i, j + k, this.F + i, j + this.E + k);
+    Object localObject2 = this.d;
     if (localObject2 != null) {
-      paramCanvas.drawBitmap((Bitmap)localObject2, this.jdField_a_of_type_AndroidGraphicsRect, (Rect)localObject1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap((Bitmap)localObject2, this.G, (Rect)localObject1, this.a);
     }
-    localObject1 = this.jdField_c_of_type_AndroidGraphicsBitmap;
+    localObject1 = this.e;
     if (localObject1 != null) {
-      paramCanvas.drawBitmap((Bitmap)localObject1, this.jdField_a_of_type_AndroidGraphicsRect, paramArrayList, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap((Bitmap)localObject1, this.G, paramArrayList, this.a);
     }
   }
   
@@ -158,177 +158,177 @@ public class TriangleLocationStickerDrawble
     }
     if (paramString != null)
     {
-      this.f = paramString.optInt("type", 0);
-      this.jdField_b_of_type_JavaLangString = paramString.optString("iconpath", "");
-      this.jdField_c_of_type_JavaLangString = paramString.optString("ttfpath", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("locationString", "");
+      this.j = paramString.optInt("type", 0);
+      this.y = paramString.optString("iconpath", "");
+      this.z = paramString.optString("ttfpath", "");
+      this.A = paramString.optString("locationString", "");
     }
-    return new String[] { this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString };
-  }
-  
-  public String b()
-  {
-    return this.jdField_c_of_type_JavaLangString;
+    return new String[] { this.y, this.z, this.A };
   }
   
   protected void b()
   {
-    this.jdField_d_of_type_JavaLangString = InfoStickerUtils.a(this.jdField_d_of_type_JavaLangString);
-    Object localObject1 = this.jdField_d_of_type_JavaLangString;
+    this.A = InfoStickerUtils.a(this.A);
+    Object localObject1 = this.A;
     if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      this.jdField_e_of_type_JavaLangString = ChnToSpell.a(this.jdField_d_of_type_JavaLangString, 1);
-      this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.toUpperCase();
-      localObject1 = this.jdField_d_of_type_JavaLangString;
-      if ((localObject1 != null) && (!((String)localObject1).contains(HardCodeUtil.a(2064515409))) && (!this.jdField_d_of_type_JavaLangString.contains(HardCodeUtil.a(2064515408))) && (!this.jdField_d_of_type_JavaLangString.endsWith(HardCodeUtil.a(2064515403))) && (!this.jdField_d_of_type_JavaLangString.endsWith(HardCodeUtil.a(2064515404))))
+      this.B = ChnToSpell.b(this.A, 1);
+      this.B = this.B.toUpperCase();
+      localObject1 = this.A;
+      if ((localObject1 != null) && (!((String)localObject1).contains(HardCodeUtil.a(2064187696))) && (!this.A.contains(HardCodeUtil.a(2064187695))) && (!this.A.endsWith(HardCodeUtil.a(2064187690))) && (!this.A.endsWith(HardCodeUtil.a(2064187691))))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.jdField_d_of_type_JavaLangString);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2064515406));
-        this.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+        ((StringBuilder)localObject1).append(this.A);
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2064187693));
+        this.A = ((StringBuilder)localObject1).toString();
       }
     }
     else
     {
-      this.jdField_d_of_type_JavaLangString = HardCodeUtil.a(2064515405);
-      this.jdField_e_of_type_JavaLangString = "YOUR CITY";
+      this.A = HardCodeUtil.a(2064187692);
+      this.B = "YOUR CITY";
     }
-    localObject1 = this.jdField_e_of_type_JavaLangString;
+    localObject1 = this.B;
     if ((localObject1 == null) || (TextUtils.isEmpty((CharSequence)localObject1))) {
-      this.jdField_e_of_type_JavaLangString = "YOUR CITY";
+      this.B = "YOUR CITY";
     }
-    l = a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    m = l;
-    this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
-    if (FileUtils.fileExists(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_b_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(this.jdField_c_of_type_JavaLangString);
+    C = a(15.0F, this.h.getResources());
+    D = C;
+    this.r = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
+    if (FileUtils.fileExists(this.z)) {
+      this.s = Typeface.createFromFile(this.z);
     } else {
-      this.jdField_b_of_type_AndroidGraphicsTypeface = Typeface.DEFAULT_BOLD;
+      this.s = Typeface.DEFAULT_BOLD;
     }
-    if (this.jdField_b_of_type_AndroidGraphicsTypeface == null) {
-      this.jdField_b_of_type_AndroidGraphicsTypeface = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
+    if (this.s == null) {
+      this.s = Typeface.createFromAsset(this.h.getResources().getAssets(), "info_sticker_typeface/roboto-regular.ttf");
     }
-    this.p = a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.r = a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.q = a(4.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_b_of_type_AndroidGraphicsTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(a(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setDither(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setFakeBoldText(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.H = a(24.0F, this.h.getResources());
+    this.J = a(3.0F, this.h.getResources());
+    this.I = a(4.5F, this.h.getResources());
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
+    this.a.setDither(true);
+    this.b.setAntiAlias(true);
+    this.b.setDither(true);
+    this.b.setColor(-1);
+    this.b.setTypeface(this.s);
+    this.b.setTextSize(a(28.0F, this.h.getResources()));
+    this.c.setAntiAlias(true);
+    this.c.setDither(true);
+    this.c.setColor(-1);
+    this.c.setTypeface(this.r);
+    this.c.setFakeBoldText(true);
+    this.c.setTextSize(a(9.0F, this.h.getResources()));
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(InfoStickerDrawable.g, 0.0F, 0.0F, 1711276032);
-      this.jdField_b_of_type_AndroidTextTextPaint.setShadowLayer(InfoStickerDrawable.g, 0.0F, 0.0F, 1711276032);
+      this.b.setShadowLayer(InfoStickerDrawable.m, 0.0F, 0.0F, 1711276032);
+      this.c.setShadowLayer(InfoStickerDrawable.m, 0.0F, 0.0F, 1711276032);
     }
     else
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
-      this.jdField_b_of_type_AndroidTextTextPaint.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+      this.b.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
+      this.c.setShadowLayer(0.0F, 0.0F, 0.0F, -1);
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setLetterSpacing(0.0F);
-      this.jdField_b_of_type_AndroidTextTextPaint.setLetterSpacing(0.0F);
+      this.b.setLetterSpacing(0.0F);
+      this.c.setLetterSpacing(0.0F);
     }
-    if (FileUtils.fileExists(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
+    if (FileUtils.fileExists(this.y)) {
+      this.e = BitmapFactory.decodeFile(this.y);
     } else {
       QLog.e("TriangleLocationStickerDrawble", 2, "mIconPath not exist");
     }
-    localObject1 = this.jdField_c_of_type_AndroidGraphicsBitmap;
-    int i3 = 0;
+    localObject1 = this.e;
+    int k = 0;
     if (localObject1 != null)
     {
-      i1 = ((Bitmap)localObject1).getWidth();
-      i2 = this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight();
+      i = ((Bitmap)localObject1).getWidth();
+      j = this.e.getHeight();
       localObject1 = new Matrix();
-      ((Matrix)localObject1).setRotate(180.0F, i1 / 2.0F, i2 / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, 0, 0, i1, i2, (Matrix)localObject1, true);
+      ((Matrix)localObject1).setRotate(180.0F, i / 2.0F, j / 2.0F);
+      this.d = Bitmap.createBitmap(this.e, 0, 0, i, j, (Matrix)localObject1, true);
     }
     else
     {
-      i1 = 0;
-      i2 = 0;
+      i = 0;
+      j = 0;
     }
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, i1, i2);
-    this.n = a(20.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    this.o = a(10.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    localObject1 = this.jdField_a_of_type_AndroidGraphicsRect;
+    this.G = new Rect(0, 0, i, j);
+    this.E = a(20.5F, this.h.getResources());
+    this.F = a(10.5F, this.h.getResources());
+    localObject1 = this.G;
     ((Rect)localObject1).left = 0;
     ((Rect)localObject1).top = 0;
-    ((Rect)localObject1).right = i1;
-    ((Rect)localObject1).bottom = i2;
-    int i1 = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_d_of_type_JavaLangString) + this.r * (this.jdField_d_of_type_JavaLangString.length() - 1);
-    int i5 = (int)this.jdField_b_of_type_AndroidTextTextPaint.measureText(this.jdField_e_of_type_JavaLangString) + this.q * (this.jdField_e_of_type_JavaLangString.length() - 1);
-    if (i1 > i5) {
-      this.jdField_d_of_type_Int = i1;
+    ((Rect)localObject1).right = i;
+    ((Rect)localObject1).bottom = j;
+    int i = (int)this.b.measureText(this.A) + this.J * (this.A.length() - 1);
+    int i1 = (int)this.c.measureText(this.B) + this.I * (this.B.length() - 1);
+    if (i > i1) {
+      this.q = i;
     } else {
-      this.jdField_d_of_type_Int = i5;
+      this.q = i1;
     }
-    this.jdField_a_of_type_Int = (this.jdField_d_of_type_Int + (this.o + this.p) * 2 + m * 2);
-    localObject1 = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
-    Object localObject2 = this.jdField_b_of_type_AndroidTextTextPaint.getFontMetrics();
-    this.s = (-(int)((Paint.FontMetrics)localObject1).top);
-    int i2 = -(int)((Paint.FontMetrics)localObject2).top;
-    this.t = (a(33.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.u = (this.t - a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.v = (this.s + i2 + a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_b_of_type_Int = (this.s + i2 + a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + l * 2);
-    this.jdField_c_of_type_Int = (this.s + this.u + a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    this.jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("T", 0L, 165L, 0, 255, new LinearInterpolator());
-    this.h = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 0L, 330L, 0, this.t, new DecelerateInterpolator());
-    this.i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 330L, 340L, this.t, this.u, new AccelerateInterpolator());
-    this.j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 825L, 200L, 0, 100, new DecelerateInterpolator());
-    this.k = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetAnimStateTypeEvaluator.a("X", 825L, 355L, a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), new DecelerateInterpolator());
-    if (this.jdField_d_of_type_AndroidGraphicsBitmap == null)
+    this.n = (this.q + (this.F + this.H) * 2 + D * 2);
+    localObject1 = this.b.getFontMetrics();
+    Object localObject2 = this.c.getFontMetrics();
+    this.K = (-(int)((Paint.FontMetrics)localObject1).top);
+    int j = -(int)((Paint.FontMetrics)localObject2).top;
+    this.L = (a(33.0F, this.h.getResources()) + a(5.0F, this.h.getResources()));
+    this.M = (this.L - a(5.0F, this.h.getResources()));
+    this.O = (this.K + j + a(4.0F, this.h.getResources()));
+    this.o = (this.K + j + a(3.0F, this.h.getResources()) + C * 2);
+    this.p = (this.K + this.M + a(5.0F, this.h.getResources()));
+    this.t = this.f.a("T", 0L, 165L, 0, 255, new LinearInterpolator());
+    this.u = this.f.a("X", 0L, 330L, 0, this.L, new DecelerateInterpolator());
+    this.v = this.f.a("X", 330L, 340L, this.L, this.M, new AccelerateInterpolator());
+    this.w = this.f.a("X", 825L, 200L, 0, 100, new DecelerateInterpolator());
+    this.x = this.f.a("X", 825L, 355L, a(10.0F, this.h.getResources()), a(20.0F, this.h.getResources()), new DecelerateInterpolator());
+    if (this.N == null)
     {
-      this.jdField_d_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_d_of_type_Int, this.v, Bitmap.Config.ARGB_8888);
-      localObject1 = new Canvas(this.jdField_d_of_type_AndroidGraphicsBitmap);
-      i2 = (this.jdField_d_of_type_Int - i1) / 2;
-      int i4;
-      for (i1 = 0; i1 < this.jdField_d_of_type_JavaLangString.length(); i1 = i4)
+      this.N = Bitmap.createBitmap(this.q, this.O, Bitmap.Config.ARGB_8888);
+      localObject1 = new Canvas(this.N);
+      j = (this.q - i) / 2;
+      int m;
+      for (i = 0; i < this.A.length(); i = m)
       {
-        localObject2 = this.jdField_d_of_type_JavaLangString;
-        i4 = i1 + 1;
-        localObject2 = ((String)localObject2).substring(i1, i4);
-        ((Canvas)localObject1).drawText((String)localObject2, i2, this.s, this.jdField_a_of_type_AndroidTextTextPaint);
-        i2 = i2 + (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject2) + this.r;
+        localObject2 = this.A;
+        m = i + 1;
+        localObject2 = ((String)localObject2).substring(i, m);
+        ((Canvas)localObject1).drawText((String)localObject2, j, this.K, this.b);
+        j = j + (int)this.b.measureText((String)localObject2) + this.J;
       }
-      i1 = (this.jdField_d_of_type_Int - i5) / 2;
-      for (i2 = i3; i2 < this.jdField_e_of_type_JavaLangString.length(); i2 = i3)
+      i = (this.q - i1) / 2;
+      for (j = k; j < this.B.length(); j = k)
       {
-        localObject2 = this.jdField_e_of_type_JavaLangString;
-        i3 = i2 + 1;
-        localObject2 = ((String)localObject2).substring(i2, i3);
-        ((Canvas)localObject1).drawText((String)localObject2, i1, this.v, this.jdField_b_of_type_AndroidTextTextPaint);
-        i1 = i1 + (int)this.jdField_b_of_type_AndroidTextTextPaint.measureText((String)localObject2) + this.q;
+        localObject2 = this.B;
+        k = j + 1;
+        localObject2 = ((String)localObject2).substring(j, k);
+        ((Canvas)localObject1).drawText((String)localObject2, i, this.O, this.c);
+        i = i + (int)this.c.measureText((String)localObject2) + this.I;
       }
     }
+  }
+  
+  public String c()
+  {
+    return this.z;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_b_of_type_Int;
+    return this.o;
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.widget.TriangleLocationStickerDrawble
  * JD-Core Version:    0.7.0.1
  */

@@ -53,12 +53,12 @@ public class TroopMemberListActivityApiImpl
   
   public SpannableString createColorNickText(CharSequence paramCharSequence, int paramInt)
   {
-    return new ColorNickText(paramCharSequence, paramInt).a();
+    return new ColorNickText(paramCharSequence, paramInt).b();
   }
   
   public String getAccountNickName(AppInterface paramAppInterface, String paramString)
   {
-    return ContactUtils.e((QQAppInterface)paramAppInterface, paramString);
+    return ContactUtils.f((QQAppInterface)paramAppInterface, paramString);
   }
   
   public IAddFrdStateMngProxy getAddFrdStateMngProxy(AppInterface paramAppInterface)
@@ -68,7 +68,7 @@ public class TroopMemberListActivityApiImpl
   
   public int getBigClubFlag(int paramInt)
   {
-    return VipUtils.b(paramInt);
+    return VipUtils.c(paramInt);
   }
   
   public String getConfigContentForTag(String paramString1, String paramString2)
@@ -78,12 +78,12 @@ public class TroopMemberListActivityApiImpl
   
   public int getCurrentUserVipType(AppInterface paramAppInterface)
   {
-    return ((ISVIPHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+    return ((ISVIPHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
   }
   
   public Drawable getDefaultTroopFaceDrawableNew()
   {
-    return ImageUtil.a();
+    return ImageUtil.b();
   }
   
   public IFacePreloadBaseAdapterProxy getFacePreloadBaseAdapterProxy(IFacePreloadBaseAdapter paramIFacePreloadBaseAdapter, Context paramContext, AppInterface paramAppInterface, Object paramObject, int paramInt, boolean paramBoolean)
@@ -98,7 +98,7 @@ public class TroopMemberListActivityApiImpl
   
   public int getVipTypeByFlag(int paramInt)
   {
-    return VipUtils.a(paramInt);
+    return VipUtils.b(paramInt);
   }
   
   public void handleRichLevel(int paramInt, byte paramByte, Object paramObject)
@@ -108,7 +108,7 @@ public class TroopMemberListActivityApiImpl
   
   public int hrExtra(long paramLong)
   {
-    return QAVHrMeeting.a(paramLong);
+    return QAVHrMeeting.c(paramLong);
   }
   
   public boolean isHRConf(long paramLong)
@@ -129,7 +129,7 @@ public class TroopMemberListActivityApiImpl
   public void openTroopFileBrowserActivity(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra(TroopFileProxyActivity.a, paramString1);
+    localIntent.putExtra(TroopFileProxyActivity.b, paramString1);
     localIntent.putExtra("filter_member_name", paramString2);
     localIntent.putExtra("filter_uin", Long.valueOf(paramString3));
     localIntent.putExtra("folderPath", "/");
@@ -207,7 +207,7 @@ public class TroopMemberListActivityApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.troopmemberlist.impl.TroopMemberListActivityApiImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -4,28 +4,28 @@ import android.graphics.RectF;
 
 public class HoleBean
 {
-  private int jdField_a_of_type_Int;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private RectF a;
+  private int b;
   
   public HoleBean(RectF paramRectF, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramRectF);
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new RectF(paramRectF);
+    this.b = paramInt;
   }
   
   public int a()
   {
-    return (int)Math.min(this.jdField_a_of_type_AndroidGraphicsRectF.width(), this.jdField_a_of_type_AndroidGraphicsRectF.height()) / 2;
+    return (int)Math.min(this.a.width(), this.a.height()) / 2;
   }
   
-  public RectF a()
+  public RectF b()
   {
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
+    return this.a;
   }
   
-  public int b()
+  public int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
 }
 

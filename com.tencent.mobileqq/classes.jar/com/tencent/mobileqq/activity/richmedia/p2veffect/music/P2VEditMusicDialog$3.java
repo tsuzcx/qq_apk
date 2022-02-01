@@ -11,14 +11,14 @@ class P2VEditMusicDialog$3
   public void run()
   {
     String str = QQStoryBGMusicUtils.a(this.a);
-    this.this$0.a = new DownloaderImp();
-    this.this$0.a.a(this.this$0);
-    this.this$0.a.a(this.a, str, 0L);
+    this.this$0.n = new DownloaderImp();
+    this.this$0.n.a(this.this$0);
+    this.this$0.n.a(this.a, str, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,21 @@ class b
   
   public void run()
   {
-    Intent localIntent = new Intent(this.a, TMAssistantDownloadService.class);
-    this.a.stopService(localIntent);
+    try
+    {
+      Intent localIntent = new Intent(this.a, TMAssistantDownloadService.class);
+      this.a.stopService(localIntent);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.b
  * JD-Core Version:    0.7.0.1
  */

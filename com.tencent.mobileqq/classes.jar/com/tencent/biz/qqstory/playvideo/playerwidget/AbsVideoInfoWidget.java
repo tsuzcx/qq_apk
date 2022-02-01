@@ -40,96 +40,126 @@ public abstract class AbsVideoInfoWidget
   extends GroupHolderBase
   implements IEventReceiver
 {
-  protected Dialog a;
-  public Handler a;
+  protected final String i;
+  protected Dialog j;
+  protected AbsVideoInfoWidget.ProgressView k;
+  protected Map<Subscriber, String> l = new HashMap();
+  protected boolean m = false;
+  protected boolean n = false;
+  protected boolean o = false;
   @Nullable
-  public StoryPlayerVideoData a;
-  public AbsVideoInfoWidget.MyActivityLifeCycle a;
-  protected AbsVideoInfoWidget.ProgressView a;
-  protected Map<Subscriber, String> a;
-  protected final String b;
-  protected boolean c = false;
-  protected boolean d = false;
-  protected boolean e = false;
+  public StoryPlayerVideoData p;
+  public Handler q = new Handler(Looper.getMainLooper());
+  public AbsVideoInfoWidget.MyActivityLifeCycle r;
   
   public AbsVideoInfoWidget(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     paramView = new StringBuilder();
     paramView.append("Q.qqstory.player.videoinfowidget.");
-    paramView.append(a());
-    this.jdField_b_of_type_JavaLangString = paramView.toString();
+    paramView.append(t());
+    this.i = paramView.toString();
   }
   
   public AbsVideoInfoWidget(ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     paramViewGroup = new StringBuilder();
     paramViewGroup.append("Q.qqstory.player.videoinfowidget.");
-    paramViewGroup.append(a());
-    this.jdField_b_of_type_JavaLangString = paramViewGroup.toString();
+    paramViewGroup.append(t());
+    this.i = paramViewGroup.toString();
   }
   
   private final void a(StoryPlayerVideoData paramStoryPlayerVideoData)
   {
-    if ((paramStoryPlayerVideoData != null) && (paramStoryPlayerVideoData.c()))
+    if ((paramStoryPlayerVideoData != null) && (paramStoryPlayerVideoData.d()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
-      StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).b(paramStoryPlayerVideoData.a);
+      this.p = paramStoryPlayerVideoData;
+      StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).b(paramStoryPlayerVideoData.b);
       if ((localStoryVideoItem != null) && (localStoryVideoItem.mErrorCode == 0))
       {
         if (a(paramStoryPlayerVideoData, localStoryVideoItem))
         {
-          h();
-          j();
-          a(paramStoryPlayerVideoData, localStoryVideoItem);
+          w();
+          z();
+          b(paramStoryPlayerVideoData, localStoryVideoItem);
           return;
         }
-        k();
+        A();
         return;
       }
-      k();
+      A();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = null;
-    k();
+    this.p = null;
+    A();
   }
   
-  private final void d()
+  private final void h()
   {
-    this.c = true;
+    this.m = true;
     AbsVideoInfoWidget.GetVideoBasicListReceiver localGetVideoBasicListReceiver = new AbsVideoInfoWidget.GetVideoBasicListReceiver(this);
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_JavaUtilMap.put(localGetVideoBasicListReceiver, "");
+    this.l.clear();
+    this.l.put(localGetVideoBasicListReceiver, "");
     StoryDispatcher.a().registerSubscriber("", localGetVideoBasicListReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$MyActivityLifeCycle = new AbsVideoInfoWidget.MyActivityLifeCycle(this);
-    a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$MyActivityLifeCycle);
-    SLog.b(this.jdField_b_of_type_JavaLangString, "onWidgetCreate!");
+    this.r = new AbsVideoInfoWidget.MyActivityLifeCycle(this);
+    a(this.r);
+    SLog.b(this.i, "onWidgetCreate!");
   }
   
-  private final void e()
+  private final void p()
   {
-    if (this.d) {
-      g();
+    if (this.n) {
+      r();
     }
-    this.c = false;
-    this.d = false;
-    Object localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    this.m = false;
+    this.n = false;
+    Object localObject = this.l.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Subscriber localSubscriber = (Subscriber)((Map.Entry)((Iterator)localObject).next()).getKey();
       StoryDispatcher.a().unRegisterSubscriber(localSubscriber);
     }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$MyActivityLifeCycle;
+    this.l.clear();
+    localObject = this.r;
     if (localObject != null) {
       b((ActivityLifeCycle)localObject);
     }
-    SLog.b(this.jdField_b_of_type_JavaLangString, "onWidgetDestroy!");
+    SLog.b(this.i, "onWidgetDestroy!");
+  }
+  
+  public final void A()
+  {
+    a(8);
+  }
+  
+  public final boolean B()
+  {
+    return g() == 0;
+  }
+  
+  public final int C()
+  {
+    return i().mReportData.from;
+  }
+  
+  final String D()
+  {
+    Object localObject = this.p;
+    if (localObject != null)
+    {
+      localObject = ((StoryPlayerVideoData)localObject).f();
+      if ((localObject != null) && ((localObject instanceof ShareGroupFeedItem))) {
+        return ((ShareGroupFeedItem)localObject).getOwner().getUnionId();
+      }
+    }
+    return "";
+  }
+  
+  public final void E()
+  {
+    this.q.removeCallbacksAndMessages(null);
+    this.q.post(new AbsVideoInfoWidget.3(this));
   }
   
   protected final View a(ViewGroup paramViewGroup)
@@ -137,28 +167,24 @@ public abstract class AbsVideoInfoWidget
     return paramViewGroup;
   }
   
-  public abstract String a();
-  
   public final void a(int paramInt, IDataProvider.GroupInfo paramGroupInfo, @NonNull ArrayList<StoryPlayerVideoData> paramArrayList)
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
+    boolean bool = this.h;
     super.a(paramInt, paramGroupInfo, paramArrayList);
     if (!bool) {
-      d();
+      h();
     }
-    paramInt = ((StoryPlayerGroupHolder)a()).b;
-    if ((paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0))
+    paramInt = ((StoryPlayerGroupHolder)d()).l;
+    if ((paramInt < this.f.size()) && (paramInt >= 0))
     {
-      a((StoryPlayerVideoData)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      a((StoryPlayerVideoData)this.f.get(paramInt));
       return;
     }
-    SLog.d(this.jdField_b_of_type_JavaLangString, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()) });
-    i();
+    SLog.d(this.i, "Position error , bind data error, current position = %d , size = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.f.size()) });
+    x();
   }
   
   protected abstract void a(View paramView);
-  
-  protected abstract void a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem);
   
   public final void a(CharSequence paramCharSequence)
   {
@@ -172,68 +198,49 @@ public abstract class AbsVideoInfoWidget
   
   public final void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong)
   {
-    Activity localActivity = b();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new AbsVideoInfoWidget.2(this, localActivity, paramBoolean, paramCharSequence), paramLong);
+    Activity localActivity = y();
+    this.q.removeCallbacksAndMessages(null);
+    this.q.postDelayed(new AbsVideoInfoWidget.2(this, localActivity, paramBoolean, paramCharSequence), paramLong);
   }
   
   protected abstract void a(@NonNull Map<Subscriber, String> paramMap);
   
   protected abstract boolean a(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem);
   
-  protected abstract int b();
+  protected abstract void b(@NonNull StoryPlayerVideoData paramStoryPlayerVideoData, @NonNull StoryVideoItem paramStoryVideoItem);
   
-  public final Activity b()
+  protected final void e()
   {
-    return a();
+    super.e();
+    StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)d();
+    localStoryPlayerGroupHolder.j.a(new AbsVideoInfoWidget.1(this, localStoryPlayerGroupHolder));
   }
   
-  final String b()
+  public final void f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData;
-    if (localObject != null)
+    super.f();
+    p();
+  }
+  
+  public final boolean isValidate()
+  {
+    return this.m;
+  }
+  
+  protected abstract void q();
+  
+  protected abstract void r();
+  
+  protected abstract int s();
+  
+  public abstract String t();
+  
+  protected void w()
+  {
+    if (!this.n)
     {
-      localObject = ((StoryPlayerVideoData)localObject).a();
-      if ((localObject != null) && ((localObject instanceof ShareGroupFeedItem))) {
-        return ((ShareGroupFeedItem)localObject).getOwner().getUnionId();
-      }
-    }
-    return "";
-  }
-  
-  protected final void b()
-  {
-    super.b();
-    StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)a();
-    localStoryPlayerGroupHolder.a.a(new AbsVideoInfoWidget.1(this, localStoryPlayerGroupHolder));
-  }
-  
-  public final int c()
-  {
-    return a().mReportData.from;
-  }
-  
-  public final void c()
-  {
-    super.c();
-    e();
-  }
-  
-  public final boolean c()
-  {
-    return a() == 0;
-  }
-  
-  protected abstract void f();
-  
-  protected abstract void g();
-  
-  protected void h()
-  {
-    if (!this.d)
-    {
-      this.d = true;
-      f();
+      this.n = true;
+      q();
       HashMap localHashMap = new HashMap();
       a(localHashMap);
       Iterator localIterator = localHashMap.entrySet().iterator();
@@ -244,44 +251,33 @@ public abstract class AbsVideoInfoWidget
         localObject = (String)((Map.Entry)localObject).getValue();
         StoryDispatcher.a().registerSubscriber((String)localObject, localSubscriber);
       }
-      this.jdField_a_of_type_JavaUtilMap.putAll(localHashMap);
-      if (!this.e)
+      this.l.putAll(localHashMap);
+      if (!this.o)
       {
-        this.e = true;
-        if (b() != -1)
+        this.o = true;
+        if (s() != -1)
         {
-          AssertUtils.assertTrue(this.jdField_a_of_type_AndroidViewView instanceof ViewGroup);
-          LayoutInflater.from(this.jdField_a_of_type_AndroidViewView.getContext()).inflate(b(), (ViewGroup)this.jdField_a_of_type_AndroidViewView, true);
+          AssertUtils.assertTrue(this.b instanceof ViewGroup);
+          LayoutInflater.from(this.b.getContext()).inflate(s(), (ViewGroup)this.b, true);
         }
-        a(this.jdField_a_of_type_AndroidViewView);
+        a(this.b);
       }
     }
   }
   
-  protected final void i()
+  protected final void x()
   {
-    a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData);
+    a(this.p);
   }
   
-  public final boolean isValidate()
+  public final Activity y()
   {
-    return this.c;
+    return a();
   }
   
-  public final void j()
+  public final void z()
   {
     a(0);
-  }
-  
-  public final void k()
-  {
-    a(8);
-  }
-  
-  public final void l()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandler.post(new AbsVideoInfoWidget.3(this));
   }
 }
 

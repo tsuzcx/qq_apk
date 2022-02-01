@@ -13,13 +13,13 @@ final class RIJConfigVideoItem$6
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    VideoHandler.b(this.jdField_a_of_type_AndroidViewView);
+    RIJJumpUtils.c(this.a, this.b);
+    VideoHandler.c(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.RIJConfigVideoItem.6
  * JD-Core Version:    0.7.0.1
  */

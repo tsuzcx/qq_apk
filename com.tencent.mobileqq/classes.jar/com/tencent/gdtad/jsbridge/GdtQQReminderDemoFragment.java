@@ -24,9 +24,9 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCol
 public final class GdtQQReminderDemoFragment
   extends PublicBaseFragment
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static QQReminderSwitchObserver.QQReminderSwitchListener jdField_a_of_type_ComTencentMobileqqActivityActivateFriendBizQQReminderSwitchObserver$QQReminderSwitchListener = new GdtQQReminderDemoFragment.7();
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private static int a = -1;
+  private static QQReminderSwitchObserver.QQReminderSwitchListener c = new GdtQQReminderDemoFragment.7();
+  private EditText b;
   
   public static void a(Activity paramActivity)
   {
@@ -104,10 +104,10 @@ public final class GdtQQReminderDemoFragment
     Button localButton2 = new Button(getActivity());
     localButton2.setText("收到 push 消息");
     localButton2.setOnClickListener(new GdtQQReminderDemoFragment.5(this));
-    this.jdField_a_of_type_AndroidWidgetEditText = new EditText(getActivity());
-    this.jdField_a_of_type_AndroidWidgetEditText.setLines(1);
-    this.jdField_a_of_type_AndroidWidgetEditText.setInputType(2);
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint("addQQReminderMsg 延迟几秒(默认0秒)");
+    this.b = new EditText(getActivity());
+    this.b.setLines(1);
+    this.b.setInputType(2);
+    this.b.setHint("addQQReminderMsg 延迟几秒(默认0秒)");
     Button localButton3 = new Button(getActivity());
     localButton3.setText("addQQReminderMsg");
     localButton3.setOnClickListener(new GdtQQReminderDemoFragment.6(this));
@@ -120,14 +120,14 @@ public final class GdtQQReminderDemoFragment
     localLinearLayout.addView(paramBundle);
     localLinearLayout.addView(localButton1);
     localLinearLayout.addView(localButton2);
-    localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetEditText);
+    localLinearLayout.addView(this.b);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, localLinearLayout);
     return localLinearLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQReminderDemoFragment
  * JD-Core Version:    0.7.0.1
  */

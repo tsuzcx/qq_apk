@@ -10,15 +10,15 @@ class ARScanEntryView$37$1
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.e();
-    if ((ARScanEntryView.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
+    this.a.a.e();
+    if ((ARScanEntryView.p(this.a.c)) && (this.a.b != null)) {
+      this.a.b.c(this.a.c.C);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.37.1
  * JD-Core Version:    0.7.0.1
  */

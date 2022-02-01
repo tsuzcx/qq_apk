@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.ugc.selectvideo;
 
-import com.tencent.mobileqq.kandian.biz.ugc.AlbumUtils.LocalMediaInfo;
+import com.tencent.mobileqq.kandian.base.utils.AlbumUtils.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -14,7 +14,7 @@ class SelectVideoPresenter$3
     boolean bool2 = false;
     try
     {
-      paramLocalMediaInfo = new File(paramLocalMediaInfo.b);
+      paramLocalMediaInfo = new File(paramLocalMediaInfo.e);
       boolean bool1 = bool2;
       if (paramLocalMediaInfo.isFile())
       {
@@ -35,7 +35,7 @@ class SelectVideoPresenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectvideo.SelectVideoPresenter.3
  * JD-Core Version:    0.7.0.1
  */

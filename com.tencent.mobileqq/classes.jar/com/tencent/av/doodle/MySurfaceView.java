@@ -14,27 +14,24 @@ public abstract class MySurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  public long a;
   private MySurfaceView.MySurfaceViewThread a;
+  public long b = 0L;
   
   public MySurfaceView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Long = 0L;
     a(paramContext);
   }
   
   public MySurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Long = 0L;
     a(paramContext);
   }
   
   public MySurfaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Long = 0L;
     a(paramContext);
   }
   
@@ -52,18 +49,45 @@ public abstract class MySurfaceView
   
   protected abstract void a(boolean paramBoolean);
   
-  public boolean a()
+  protected void finalize()
   {
-    MySurfaceView.MySurfaceViewThread localMySurfaceViewThread = this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread;
+    try
+    {
+      setRunning(false);
+      return;
+    }
+    finally
+    {
+      super.finalize();
+    }
+  }
+  
+  public boolean getRunning()
+  {
+    MySurfaceView.MySurfaceViewThread localMySurfaceViewThread = this.a;
     if (localMySurfaceViewThread != null) {
       return MySurfaceView.MySurfaceViewThread.a(localMySurfaceViewThread);
     }
     return false;
   }
   
-  protected void b(boolean paramBoolean)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("WL_DEBUG onWindowFocusChanged hasWindowFocus = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("MySurfaceView", 2, localStringBuilder.toString());
+    }
+    if (!paramBoolean) {
+      setRunning(false);
+    }
+  }
+  
+  protected void setRunning(boolean paramBoolean)
+  {
+    Object localObject = this.a;
     int i = 1;
     boolean bool;
     if ((localObject != null) && (MySurfaceView.MySurfaceViewThread.a((MySurfaceView.MySurfaceViewThread)localObject))) {
@@ -78,14 +102,14 @@ public abstract class MySurfaceView
       localStringBuilder.append("setRunning, running[");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("], mThread[");
-      if (this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread != null) {
+      if (this.a != null) {
         bool = true;
       } else {
         bool = false;
       }
       localStringBuilder.append(bool);
       localStringBuilder.append("], mThread.mRunning[");
-      MySurfaceView.MySurfaceViewThread localMySurfaceViewThread = this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread;
+      MySurfaceView.MySurfaceViewThread localMySurfaceViewThread = this.a;
       if ((localMySurfaceViewThread != null) && (MySurfaceView.MySurfaceViewThread.a(localMySurfaceViewThread))) {
         bool = true;
       } else {
@@ -97,25 +121,25 @@ public abstract class MySurfaceView
     }
     if (paramBoolean)
     {
-      localObject = this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread;
+      localObject = this.a;
       if ((localObject == null) || (!MySurfaceView.MySurfaceViewThread.a((MySurfaceView.MySurfaceViewThread)localObject)))
       {
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread = new MySurfaceView.MySurfaceViewThread(this);
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.a(true);
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.start();
+        this.a = new MySurfaceView.MySurfaceViewThread(this);
+        this.a.a(true);
+        this.a.start();
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread;
+      localObject = this.a;
       if ((localObject != null) && (MySurfaceView.MySurfaceViewThread.a((MySurfaceView.MySurfaceViewThread)localObject)))
       {
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.a(false);
-        if (this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread != Thread.currentThread()) {
+        this.a.a(false);
+        if (this.a != Thread.currentThread()) {
           while (i != 0) {
             try
             {
-              this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread.join();
+              this.a.join();
               i = 0;
             }
             catch (InterruptedException localInterruptedException)
@@ -125,41 +149,14 @@ public abstract class MySurfaceView
             }
           }
         }
-        this.jdField_a_of_type_ComTencentAvDoodleMySurfaceView$MySurfaceViewThread = null;
+        this.a = null;
       }
-    }
-  }
-  
-  protected void finalize()
-  {
-    try
-    {
-      b(false);
-      return;
-    }
-    finally
-    {
-      super.finalize();
-    }
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("WL_DEBUG onWindowFocusChanged hasWindowFocus = ");
-      localStringBuilder.append(paramBoolean);
-      QLog.d("MySurfaceView", 2, localStringBuilder.toString());
-    }
-    if (!paramBoolean) {
-      b(false);
     }
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.b = SystemClock.elapsedRealtime();
     paramSurfaceHolder = getContext();
     boolean bool = hasWindowFocus();
     if (QLog.isColorLevel())
@@ -184,7 +181,7 @@ public abstract class MySurfaceView
       QLog.d("MySurfaceView", 2, localStringBuilder.toString());
     }
     if (!(paramSurfaceHolder instanceof Activity)) {
-      b(false);
+      setRunning(false);
     }
   }
 }

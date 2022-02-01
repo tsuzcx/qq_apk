@@ -7,11 +7,11 @@ import java.util.List;
 
 public class ReadInJoyCommentPBModule$ResponseCommentInfo
 {
-  public CommentData a;
-  public String a;
   public List<CommentData> a = new ArrayList();
-  public boolean a;
   public List<SubCommentData> b = new ArrayList();
+  public CommentData c;
+  public boolean d;
+  public String e;
   
   public boolean a()
   {
@@ -21,7 +21,7 @@ public class ReadInJoyCommentPBModule$ResponseCommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentPBModule.ResponseCommentInfo
  * JD-Core Version:    0.7.0.1
  */

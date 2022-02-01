@@ -15,7 +15,7 @@ public final class FramesProcessor$mGestureListener$1
   public boolean onDown(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "e");
-    FramesProcessor.a(this.a).forceFinished(true);
+    FramesProcessor.k(this.a).forceFinished(true);
     return true;
   }
   
@@ -25,9 +25,9 @@ public final class FramesProcessor$mGestureListener$1
     Intrinsics.checkParameterIsNotNull(paramMotionEvent2, "e2");
     synchronized (this.a)
     {
-      FramesProcessor.a(this.a).fling((int)FramesProcessor.a(this.a), 0, (int)-paramFloat1, 0, (int)FramesProcessor.b(this.a), (int)FramesProcessor.c(this.a), 0, 0);
+      FramesProcessor.k(this.a).fling((int)FramesProcessor.a(this.a), 0, (int)-paramFloat1, 0, (int)FramesProcessor.b(this.a), (int)FramesProcessor.c(this.a), 0, 0);
       paramMotionEvent2 = Unit.INSTANCE;
-      FramesProcessor.b(this.a);
+      FramesProcessor.l(this.a);
       return true;
     }
   }
@@ -60,18 +60,18 @@ public final class FramesProcessor$mGestureListener$1
       paramFloat2 = FramesProcessor.d(this.a);
       ??? = this.a;
       FramesProcessor.b(???, FramesProcessor.a(???));
-      if (FramesProcessor.a(this.a, paramFloat1 - paramFloat2)) {
+      if (FramesProcessor.c(this.a, paramFloat1 - paramFloat2)) {
         return true;
       }
-      FramesProcessor.a(this.a);
-      ??? = FramesProcessor.a(this.a);
+      FramesProcessor.e(this.a);
+      ??? = FramesProcessor.f(this.a);
       if (??? != null) {
-        ???.a(FramesProcessor.a(this.a), FramesProcessor.b(this.a));
+        ???.a(FramesProcessor.g(this.a), FramesProcessor.h(this.a));
       }
-      this.a.a().invalidate();
-      ??? = FramesProcessor.a(this.a);
+      this.a.d().invalidate();
+      ??? = FramesProcessor.i(this.a);
       if (??? != null) {
-        ???.a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.e(this.a) - FramesProcessor.a(this.a));
+        ???.a(FramesProcessor.a(this.a), -FramesProcessor.a(this.a), FramesProcessor.j(this.a) - FramesProcessor.a(this.a));
       }
       return true;
     }
@@ -90,7 +90,7 @@ public final class FramesProcessor$mGestureListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.FramesProcessor.mGestureListener.1
  * JD-Core Version:    0.7.0.1
  */

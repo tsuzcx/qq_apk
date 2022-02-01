@@ -16,24 +16,24 @@ public final class ViolaAccessHelperImpl
   @NotNull
   public String getviolaurlfromweb(@Nullable String paramString)
   {
-    paramString = ViolaAccessHelper.c(paramString);
+    paramString = ViolaAccessHelper.f(paramString);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "ViolaAccessHelper.getViolaUrlFromWeb(webUrl)");
     return paramString;
   }
   
   public boolean isKanDianWebHost(@Nullable String paramString)
   {
-    return ViolaAccessHelper.b(paramString);
+    return ViolaAccessHelper.d(paramString);
   }
   
   public boolean isViolaUrlFromWeb(@Nullable String paramString)
   {
-    return ViolaAccessHelper.c(paramString);
+    return ViolaAccessHelper.e(paramString);
   }
   
   public void saveViolaFollowChannel(@Nullable String paramString)
   {
-    ViolaAccessHelper.a(paramString);
+    ViolaAccessHelper.i(paramString);
   }
   
   public void startViolaPage(@Nullable Context paramContext, @Nullable String paramString1, @Nullable String paramString2, @Nullable Bundle paramBundle)
@@ -48,7 +48,7 @@ public final class ViolaAccessHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.api.impl.ViolaAccessHelperImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -21,28 +21,28 @@ class EditActivity$4
   public void onClick(View paramView)
   {
     this.a.b();
-    if (this.a.jdField_a_of_type_Int == 105)
+    if (this.a.d == 105)
     {
-      Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+      Object localObject1 = this.a.a.getText();
       if (localObject1 != null)
       {
         localObject1 = localObject1.toString().trim();
         if (((String)localObject1).length() == 0)
         {
           localObject1 = this.a;
-          QQToast.a((Context)localObject1, ((EditActivity)localObject1).getString(2131691932), 0).a();
+          QQToast.makeText((Context)localObject1, ((EditActivity)localObject1).getString(2131888899), 0).show();
         }
         else if (EditActivity.a(this.a, (String)localObject1))
         {
           localObject1 = this.a;
-          QQToast.a((Context)localObject1, ((EditActivity)localObject1).getString(2131691933), 0).a();
+          QQToast.makeText((Context)localObject1, ((EditActivity)localObject1).getString(2131888900), 0).show();
         }
         else
         {
           Object localObject2 = (IFavroamingDBManagerService)this.a.app.getRuntimeService(IFavroamingDBManagerService.class);
           IFavroamingManagerService localIFavroamingManagerService = (IFavroamingManagerService)this.a.app.getRuntimeService(IFavroamingManagerService.class);
           localObject2 = ((IFavroamingDBManagerService)localObject2).getEmoticonDataList();
-          if ((EditActivity.a(this.a) != -1) && (localObject2 != null))
+          if ((EditActivity.f(this.a) != -1) && (localObject2 != null))
           {
             localObject2 = ((List)localObject2).iterator();
             CustomEmotionData localCustomEmotionData;
@@ -52,8 +52,8 @@ class EditActivity$4
                 break;
               }
               localCustomEmotionData = (CustomEmotionData)((Iterator)localObject2).next();
-            } while (EditActivity.a(this.a) != localCustomEmotionData.emoId);
-            EditActivity.c(this.a);
+            } while (EditActivity.f(this.a) != localCustomEmotionData.emoId);
+            EditActivity.g(this.a);
             localIFavroamingManagerService.updateCustomEmotionDataOCRReq(localCustomEmotionData, (String)localObject1);
           }
         }
@@ -68,7 +68,7 @@ class EditActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditActivity.4
  * JD-Core Version:    0.7.0.1
  */

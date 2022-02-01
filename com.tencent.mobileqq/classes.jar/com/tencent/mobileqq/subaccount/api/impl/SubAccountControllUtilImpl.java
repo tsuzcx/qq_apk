@@ -29,7 +29,7 @@ public class SubAccountControllUtilImpl
   
   public Pair<Boolean, Boolean> checkSubAccountLoginStatus(AppInterface paramAppInterface, String paramString)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramString);
+    return SubAccountControllUtil.d(paramAppInterface, paramString);
   }
   
   public void cleanAllSubAccountMessageUnread(AppInterface paramAppInterface, boolean paramBoolean, String paramString)
@@ -39,7 +39,7 @@ public class SubAccountControllUtilImpl
   
   public boolean cleanAllThirdQQUnreadMsgNum(AppInterface paramAppInterface)
   {
-    return SubAccountControllUtil.c(paramAppInterface);
+    return SubAccountControllUtil.e(paramAppInterface);
   }
   
   public void cleanOneSubAccountMessageUnread(AppInterface paramAppInterface, boolean paramBoolean, String paramString1, String paramString2)
@@ -49,7 +49,7 @@ public class SubAccountControllUtilImpl
   
   public void cleanReqSubAccountSpecialCareListSysTime(AppInterface paramAppInterface)
   {
-    SubAccountControllUtil.b(paramAppInterface);
+    SubAccountControllUtil.f(paramAppInterface);
   }
   
   public boolean cleanThirdQQUnreadMsgNum(AppInterface paramAppInterface, SimpleAccount paramSimpleAccount)
@@ -74,17 +74,17 @@ public class SubAccountControllUtilImpl
   
   public int getAllThirdQQMsgUnreadLastTime(AppInterface paramAppInterface)
   {
-    return SubAccountControllUtil.a(paramAppInterface);
+    return SubAccountControllUtil.d(paramAppInterface);
   }
   
   public int getLocalThirdUnreadMsgNum(AppInterface paramAppInterface, String paramString)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramString);
+    return SubAccountControllUtil.g(paramAppInterface, paramString);
   }
   
   public String getShowName(AppInterface paramAppInterface, SimpleAccount paramSimpleAccount)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramSimpleAccount);
+    return SubAccountControllUtil.b(paramAppInterface, paramSimpleAccount);
   }
   
   public void getSubAccountSpecialCareListFromService(AppInterface paramAppInterface, boolean paramBoolean, String paramString)
@@ -94,12 +94,12 @@ public class SubAccountControllUtilImpl
   
   public ISubAccountControlService.SubAccountUnReadItem getUnreadCount(AppInterface paramAppInterface, String paramString)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramString);
+    return SubAccountControllUtil.k(paramAppInterface, paramString);
   }
   
   public void initAllData(AppInterface paramAppInterface)
   {
-    SubAccountControllUtil.a(paramAppInterface);
+    SubAccountControllUtil.c(paramAppInterface);
   }
   
   public boolean isAnyAccountBind(AppInterface paramAppInterface)
@@ -119,17 +119,22 @@ public class SubAccountControllUtilImpl
   
   public boolean loadServerMessage(AppInterface paramAppInterface, String paramString, boolean paramBoolean)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramString, paramBoolean);
+    return SubAccountControllUtil.b(paramAppInterface, paramString, paramBoolean);
   }
   
   public boolean needShowHintDialog(AppInterface paramAppInterface, String paramString)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramString);
+    return SubAccountControllUtil.e(paramAppInterface, paramString);
   }
   
   public void onTimeFormatChange(AppInterface paramAppInterface, String paramString)
   {
     SubAccountControllUtil.b(paramAppInterface, paramString);
+  }
+  
+  public void reportSubAccountBoxExposure(AppInterface paramAppInterface)
+  {
+    SubAccountControllUtil.h(paramAppInterface);
   }
   
   public void setBindUinStatus(AppInterface paramAppInterface, byte paramByte, String paramString)
@@ -144,7 +149,7 @@ public class SubAccountControllUtilImpl
   
   public void setDisplayThirdQQChecked(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    SubAccountControllUtil.a(paramAppInterface, paramBoolean);
+    SubAccountControllUtil.d(paramAppInterface, paramBoolean);
   }
   
   public void setRecentItemSubAccountContentAndUnread(AppInterface paramAppInterface, Context paramContext, RecentItemSubAccount paramRecentItemSubAccount, MsgSummary paramMsgSummary)
@@ -179,12 +184,12 @@ public class SubAccountControllUtilImpl
   
   public boolean updateAllThirdQQMsgUnreadLastTime(AppInterface paramAppInterface, int paramInt)
   {
-    return SubAccountControllUtil.a(paramAppInterface, paramInt);
+    return SubAccountControllUtil.b(paramAppInterface, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountControllUtilImpl
  * JD-Core Version:    0.7.0.1
  */

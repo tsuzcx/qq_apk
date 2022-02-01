@@ -20,17 +20,17 @@ class HealthBusinessPlugin$14$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.a.a.e.keySet().iterator();
+    paramView = this.a.d.m.keySet().iterator();
     while (paramView.hasNext())
     {
       paramMotionEvent = (String)paramView.next();
-      SeekBar localSeekBar = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetSeekBar;
-      TextView localTextView1 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetTextView;
-      TextView localTextView2 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetTextView;
-      ImageView localImageView1 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetImageView;
-      ImageView localImageView2 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetImageView;
-      TextView localTextView3 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetTextView;
-      ImageView localImageView3 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.a.f.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetImageView;
+      SeekBar localSeekBar = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).e;
+      TextView localTextView1 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).f;
+      TextView localTextView2 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).d;
+      ImageView localImageView1 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).a;
+      ImageView localImageView2 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).b;
+      TextView localTextView3 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).c;
+      ImageView localImageView3 = ((HealthBusinessPlugin.SportVideoLayoutHolder)this.a.d.n.get(paramMotionEvent)).g;
       if (QLog.isColorLevel()) {
         QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
       }
@@ -41,19 +41,19 @@ class HealthBusinessPlugin$14$1
         localTextView2.setVisibility(0);
         localImageView3.setVisibility(0);
         int i;
-        if (((ISuperPlayer)this.a.a.jdField_d_of_type_JavaUtilHashMap.get(paramMotionEvent)).isPlaying()) {
-          i = 2130848894;
+        if (((ISuperPlayer)this.a.d.l.get(paramMotionEvent)).isPlaying()) {
+          i = 2130850561;
         } else {
-          i = 2130849461;
+          i = 2130851145;
         }
         localImageView1.setImageResource(i);
         localImageView1.setVisibility(0);
-        this.a.a.jdField_d_of_type_Boolean = true;
+        this.a.d.J = true;
         localImageView2.setVisibility(4);
         localTextView3.setVisibility(4);
-        this.a.a.b.removeCallbacksAndMessages(null);
+        this.a.d.K.removeCallbacksAndMessages(null);
         paramMotionEvent = new HealthBusinessPlugin.14.1.1(this, localSeekBar, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-        this.a.a.b.postDelayed(paramMotionEvent, 3000L);
+        this.a.d.K.postDelayed(paramMotionEvent, 3000L);
       }
       else
       {
@@ -62,7 +62,7 @@ class HealthBusinessPlugin$14$1
         localTextView2.setVisibility(4);
         localImageView3.setVisibility(4);
         localImageView1.setVisibility(4);
-        this.a.a.jdField_d_of_type_Boolean = false;
+        this.a.d.J = false;
         localImageView2.setVisibility(0);
         localTextView3.setVisibility(0);
       }
@@ -72,7 +72,7 @@ class HealthBusinessPlugin$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.14.1
  * JD-Core Version:    0.7.0.1
  */

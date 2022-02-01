@@ -12,17 +12,13 @@ public abstract interface IAccountPanel
   
   public abstract void a(IAccountPanel.OnlineStatusChangedListener paramOnlineStatusChangedListener);
   
-  public abstract void a(OnlineStatusItem paramOnlineStatusItem);
-  
   public abstract void a(boolean paramBoolean);
-  
-  public abstract void aK_();
   
   public abstract void c();
   
-  public abstract void d();
+  public abstract void df_();
   
-  public abstract void g();
+  public abstract void f();
   
   public abstract void h();
   
@@ -32,11 +28,13 @@ public abstract interface IAccountPanel
   
   public abstract void j();
   
+  public abstract void l();
+  
   public abstract void show();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.IAccountPanel
  * JD-Core Version:    0.7.0.1
  */

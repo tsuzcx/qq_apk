@@ -19,11 +19,11 @@ class ViolaBizUtils$3$1
       Object localObject;
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("uploadVideoList", this.jdField_a_of_type_OrgJsonJSONArray);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errCode", this.this$0.jdField_a_of_type_Int);
-        this.jdField_a_of_type_OrgJsonJSONObject.put("errMsg", this.this$0.jdField_a_of_type_JavaLangString);
-        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (!this.this$0.jdField_a_of_type_Boolean) {
+        this.a.put("uploadVideoList", this.b);
+        this.a.put("errCode", this.this$0.b);
+        this.a.put("errMsg", this.this$0.c);
+        JSONObject localJSONObject = this.a;
+        if (!this.this$0.d) {
           break label300;
         }
         i = 1;
@@ -32,7 +32,7 @@ class ViolaBizUtils$3$1
       }
       catch (JSONException localJSONException)
       {
-        localObject = ViolaBizUtils.jdField_a_of_type_JavaLangString;
+        localObject = ViolaBizUtils.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("getUploadingVideoInfo onResult, put uploadVideoList error =");
         localStringBuilder.append(QLog.getStackTraceString(localJSONException));
@@ -41,27 +41,27 @@ class ViolaBizUtils$3$1
       String str;
       if (QLog.isColorLevel())
       {
-        str = ViolaBizUtils.jdField_a_of_type_JavaLangString;
+        str = ViolaBizUtils.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("getUploadingVideoInfo, onResult=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+        ((StringBuilder)localObject).append(this.a.toString());
         ((StringBuilder)localObject).append("errCode=");
-        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.this$0.b);
         ((StringBuilder)localObject).append("errMsg=");
-        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.this$0.c);
         QLog.i(str, 2, ((StringBuilder)localObject).toString());
       }
-      if (this.this$0.jdField_a_of_type_Int != 0)
+      if (this.this$0.b != 0)
       {
-        str = ViolaBizUtils.jdField_a_of_type_JavaLangString;
+        str = ViolaBizUtils.a;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("responseUploadingVideoListerrCode=");
-        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.this$0.b);
         ((StringBuilder)localObject).append("errMsg=");
-        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(this.this$0.c);
         QLog.i(str, 1, ((StringBuilder)localObject).toString());
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.invokeJS(this.this$0.b, this.jdField_a_of_type_OrgJsonJSONObject);
+      this.this$0.e.invokeJS(this.this$0.f, this.a);
       return;
       label300:
       int i = 0;
@@ -70,7 +70,7 @@ class ViolaBizUtils$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.utils.ViolaBizUtils.3.1
  * JD-Core Version:    0.7.0.1
  */

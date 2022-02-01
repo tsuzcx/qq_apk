@@ -56,10 +56,8 @@ class PagerSnapHelper$1
   
   public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= PagerSnapHelper.access$1200(this.this$0))
-    {
-      PagerSnapHelper localPagerSnapHelper = this.this$0;
-      PagerSnapHelper.access$1202(localPagerSnapHelper, PagerSnapHelper.access$1200(localPagerSnapHelper) + paramInt2);
+    if (paramInt1 <= PagerSnapHelper.access$1200(this.this$0)) {
+      PagerSnapHelper.access$1212(this.this$0, paramInt2);
     }
     onPagerDataChanged(paramInt1, paramInt2);
   }
@@ -74,17 +72,15 @@ class PagerSnapHelper$1
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= PagerSnapHelper.access$1200(this.this$0))
-    {
-      PagerSnapHelper localPagerSnapHelper = this.this$0;
-      PagerSnapHelper.access$1202(localPagerSnapHelper, PagerSnapHelper.access$1200(localPagerSnapHelper) - paramInt2);
+    if (paramInt1 <= PagerSnapHelper.access$1200(this.this$0)) {
+      PagerSnapHelper.access$1220(this.this$0, paramInt2);
     }
     onPagerDataChanged(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.PagerSnapHelper.1
  * JD-Core Version:    0.7.0.1
  */

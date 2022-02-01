@@ -28,19 +28,19 @@ class JefsClass$5
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.a.get();
     if (QLog.isColorLevel()) {
       QLog.d("TeleScreen|JefsClass", 2, String.format(Locale.CHINA, "onReceive: success: %b, jump: %d, err_code: %d, err_msg: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }));
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable;
+    paramString = this.b;
     if (paramString == null) {
       return;
     }
     if (localObject == null)
     {
-      TeleScreen.a().a(this.jdField_a_of_type_Int, -3);
+      TeleScreen.a().a(this.c, -3);
       QLog.i("TeleScreen|JefsClass", 1, "context is null");
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.d;
       paramString = (String)localObject;
       if (localObject == null) {
         paramString = "";
@@ -50,12 +50,12 @@ class JefsClass$5
     }
     if ((paramBoolean) && (paramInt1 == 1))
     {
-      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, paramString);
+      JefsClass.a(this.e, paramString);
       return;
     }
     if ((paramBoolean) && (paramInt1 != 0))
     {
-      TeleScreen.a().a(this.jdField_a_of_type_Int, -2);
+      TeleScreen.a().a(this.c, -2);
       return;
     }
     for (;;)
@@ -68,7 +68,7 @@ class JefsClass$5
           if ((paramString != null) && (!paramString.isFinishing()))
           {
             QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act.isFinishing() == false");
-            localObject = DialogUtil.a(paramString, 0, null, "即将离开QQ\n打开其他应用", paramString.getString(2131690728), paramString.getString(2131720390), new JefsClass.5.1(this), new JefsClass.5.2(this));
+            localObject = DialogUtil.a(paramString, 0, null, "即将离开QQ\n打开其他应用", paramString.getString(2131887648), paramString.getString(2131918066), new JefsClass.5.1(this), new JefsClass.5.2(this));
             if ((paramString instanceof QBaseActivity)) {
               ((QBaseActivity)paramString).setJumpDialog((Dialog)localObject);
             } else if ((paramString instanceof BasePluginActivity)) {
@@ -79,18 +79,18 @@ class JefsClass$5
           }
           if (MobileQQ.sProcessId != 1)
           {
-            if (JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass) == null) {
-              JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, new JefsClass.TeleScreenReceiver(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, null));
+            if (JefsClass.a(this.e) == null) {
+              JefsClass.a(this.e, new JefsClass.TeleScreenReceiver(this.e, null));
             }
             paramString = new IntentFilter("com.tencent.mobileqq.telescreen.action_run");
             paramString.addAction("com.tencent.mobileqq.telescreen.action_remove");
-            MobileQQ.context.registerReceiver(JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass), paramString);
+            MobileQQ.context.registerReceiver(JefsClass.a(this.e), paramString);
           }
           paramString = new Intent();
-          paramString.putExtra("big_brother_source_key", this.jdField_a_of_type_JavaLangString);
-          paramString.putExtra("key_id", JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable));
+          paramString.putExtra("big_brother_source_key", this.d);
+          paramString.putExtra("key_id", JefsClass.b(this.e, this.b));
           paramString.putExtra("key_process_id", MobileQQ.processName);
-          paramString.putExtra("key_callback_id", this.jdField_a_of_type_Int);
+          paramString.putExtra("key_callback_id", this.c);
           paramString.putExtra("public_fragment_window_feature", 1);
           QPublicFragmentActivity.Launcher.a(paramString, QPublicTransFragmentActivity.class, JumpConfirmFragment.class);
           QLog.i("TeleScreen|JefsClass", 1, "leave QQ jump other app , act == null && act.isFinishing() == true");
@@ -100,7 +100,7 @@ class JefsClass$5
       catch (Throwable paramString)
       {
         QLog.e("TeleScreen|JefsClass", 1, paramString, new Object[0]);
-        JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+        JefsClass.a(this.e, this.b);
         return;
       }
       paramString = null;
@@ -109,7 +109,7 @@ class JefsClass$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.5
  * JD-Core Version:    0.7.0.1
  */

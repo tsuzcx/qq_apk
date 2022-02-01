@@ -12,24 +12,22 @@ import java.net.URLEncoder;
 public class TroopTagViewActivity
   extends QQBrowserActivity
 {
-  protected int a;
-  protected String a;
-  protected boolean a;
-  public int b;
+  protected boolean a = false;
   protected String b;
   protected String c;
-  public String d;
+  protected String d;
+  protected int e;
+  public int f = 1;
+  public String g;
   
   public TroopTagViewActivity()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 1;
     this.mFragmentClass = TroopTagViewActivity.TroopTagViewFragment.class;
   }
   
   public void a(String paramString)
   {
-    this.d = paramString;
+    this.g = paramString;
   }
   
   @Override
@@ -55,32 +53,32 @@ public class TroopTagViewActivity
       super.finish();
       return true;
     }
-    this.jdField_a_of_type_Int = localBundle.getInt("act_type", 3);
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("tags");
+    this.e = localBundle.getInt("act_type", 3);
+    this.c = localBundle.getString("tags");
     boolean bool = localBundle.containsKey("subclass");
     String str = "";
     if (bool) {
-      this.c = localBundle.getString("subclass");
+      this.d = localBundle.getString("subclass");
     } else {
-      this.c = "";
+      this.d = "";
     }
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("troopuin");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.b = localBundle.getString("troopuin");
+    if (TextUtils.isEmpty(this.b))
     {
       super.finish();
       return true;
     }
-    this.jdField_a_of_type_Boolean = localBundle.getBoolean("isAdmin");
+    this.a = localBundle.getBoolean("isAdmin");
     localIntent.putExtra("hide_operation_bar", true);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      str = URLEncoder.encode(this.jdField_b_of_type_JavaLangString).replace("+", "%20");
+    if (!TextUtils.isEmpty(this.c)) {
+      str = URLEncoder.encode(this.c).replace("+", "%20");
     }
-    this.jdField_b_of_type_Int = localBundle.getInt("modifyToSrv", 1);
-    int i = this.jdField_a_of_type_Int;
+    this.f = localBundle.getInt("modifyToSrv", 1);
+    int i = this.e;
     if (i == 1) {
-      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
+      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.b, this.d, Integer.valueOf(this.f) }));
     } else if (i == 2) {
-      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_b_of_type_Int) }));
+      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.b, this.d, Integer.valueOf(this.f) }));
     } else {
       localIntent.putExtra("url", localBundle.getString("url"));
     }
@@ -92,10 +90,10 @@ public class TroopTagViewActivity
   
   public void finish()
   {
-    if (!TextUtils.isEmpty(this.d))
+    if (!TextUtils.isEmpty(this.g))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("tags", this.d);
+      localIntent.putExtra("tags", this.g);
       setResult(-1, localIntent);
     }
     super.finish();
@@ -110,7 +108,7 @@ public class TroopTagViewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity
  * JD-Core Version:    0.7.0.1
  */

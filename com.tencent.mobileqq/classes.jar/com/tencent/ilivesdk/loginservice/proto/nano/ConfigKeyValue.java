@@ -9,7 +9,7 @@ public final class ConfigKeyValue
   extends MessageNano
 {
   public String a;
-  public KeyValueItem[] a;
+  public KeyValueItem[] b;
   
   public ConfigKeyValue()
   {
@@ -18,8 +18,8 @@ public final class ConfigKeyValue
   
   public ConfigKeyValue a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem = KeyValueItem.a();
+    this.a = "";
+    this.b = KeyValueItem.a();
     this.cachedSize = -1;
     return this;
   }
@@ -43,7 +43,7 @@ public final class ConfigKeyValue
         else
         {
           int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-          KeyValueItem[] arrayOfKeyValueItem = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+          KeyValueItem[] arrayOfKeyValueItem = this.b;
           if (arrayOfKeyValueItem == null) {
             i = 0;
           } else {
@@ -53,7 +53,7 @@ public final class ConfigKeyValue
           j = i;
           if (i != 0)
           {
-            System.arraycopy(this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem, 0, arrayOfKeyValueItem, 0, i);
+            System.arraycopy(this.b, 0, arrayOfKeyValueItem, 0, i);
             j = i;
           }
           while (j < arrayOfKeyValueItem.length - 1)
@@ -65,11 +65,11 @@ public final class ConfigKeyValue
           }
           arrayOfKeyValueItem[j] = new KeyValueItem();
           paramCodedInputByteBufferNano.readMessage(arrayOfKeyValueItem[j]);
-          this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem = arrayOfKeyValueItem;
+          this.b = arrayOfKeyValueItem;
         }
       }
       else {
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.a = paramCodedInputByteBufferNano.readString();
       }
     }
     return this;
@@ -79,10 +79,10 @@ public final class ConfigKeyValue
   {
     int j = super.computeSerializedSize();
     int i = j;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.a);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+    Object localObject = this.b;
     int k = i;
     if (localObject != null)
     {
@@ -92,7 +92,7 @@ public final class ConfigKeyValue
         j = 0;
         for (;;)
         {
-          localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+          localObject = this.b;
           k = i;
           if (j >= localObject.length) {
             break;
@@ -112,16 +112,16 @@ public final class ConfigKeyValue
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(1, this.a);
     }
-    Object localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+    Object localObject = this.b;
     if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
       for (;;)
       {
-        localObject = this.jdField_a_of_type_ArrayOfComTencentIlivesdkLoginserviceProtoNanoKeyValueItem;
+        localObject = this.b;
         if (i >= localObject.length) {
           break;
         }
@@ -137,7 +137,7 @@ public final class ConfigKeyValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.ConfigKeyValue
  * JD-Core Version:    0.7.0.1
  */

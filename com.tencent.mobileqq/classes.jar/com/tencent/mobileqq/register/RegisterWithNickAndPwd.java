@@ -17,40 +17,34 @@ import mqq.observer.AccountObserver;
 public class RegisterWithNickAndPwd
   extends RegisterStepBase
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  public AutoLoginHelper a;
-  public String a;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new RegisterWithNickAndPwd.1(this);
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private String jdField_b_of_type_JavaLangString = null;
-  public boolean b;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String c;
+  public boolean a = false;
+  public String b = "";
   public boolean c;
-  private String d;
-  public boolean d;
-  private String e;
-  public boolean e;
-  private String f = null;
+  public boolean d = false;
+  public boolean e = false;
+  public boolean f = false;
+  public AutoLoginHelper i;
+  protected AccountObserver j = new RegisterWithNickAndPwd.1(this);
+  private String k = null;
+  private String l = null;
+  private byte[] m = null;
+  private String n = null;
+  private String o = null;
+  private String p = null;
+  private byte[] q;
+  private Intent r;
   
   public RegisterWithNickAndPwd(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
     super(paramRegisterNewBaseActivity);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getBooleanExtra("key_register_from_quick_register", false);
-    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getBooleanExtra("key_register_from_send_sms", false);
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getStringExtra("key_register_smscode");
-    this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getIntent().getBooleanExtra("key_register_is_lh", false);
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
+    paramRegisterNewBaseActivity = this.h.getIntent();
+    this.a = paramRegisterNewBaseActivity.getBooleanExtra("key_register_from_quick_register", false);
+    this.c = paramRegisterNewBaseActivity.getBooleanExtra("key_register_from_send_sms", false);
+    this.b = paramRegisterNewBaseActivity.getStringExtra("key_register_smscode");
+    this.p = paramRegisterNewBaseActivity.getStringExtra("key_register_fail_paid_lh");
+    this.e = paramRegisterNewBaseActivity.getBooleanExtra("key_register_is_lh", false);
+    if (this.b == null) {
+      this.b = "";
     }
   }
   
@@ -63,22 +57,22 @@ public class RegisterWithNickAndPwd
       localStringBuilder.append(paramBoolean);
       QLog.d("RegisterWithNickAndPwd", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity != null) && (paramIntent != null))
+    if ((this.g != null) && (this.h != null) && (paramIntent != null))
     {
-      if (this.jdField_a_of_type_AndroidContentIntent == null) {
-        this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      if (this.r == null) {
+        this.r = paramIntent;
       }
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper;
+      paramIntent = this.i;
       if (paramIntent != null)
       {
-        paramIntent.e();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper = null;
+        paramIntent.f();
+        this.i = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper = new AutoLoginHelper(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, this.jdField_a_of_type_AndroidContentIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper.f();
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterByNicknameAndPwdActivity)) {
-        ((RegisterByNicknameAndPwdActivity)this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity).changeViewToLogin();
+      this.i = new AutoLoginHelper(this.g, this.h, this.r);
+      this.i.b();
+      this.i.g();
+      if ((this.h instanceof RegisterByNicknameAndPwdActivity)) {
+        ((RegisterByNicknameAndPwdActivity)this.h).changeViewToLogin();
       }
       return;
     }
@@ -89,11 +83,11 @@ public class RegisterWithNickAndPwd
   
   public void a()
   {
-    AutoLoginHelper localAutoLoginHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper;
+    AutoLoginHelper localAutoLoginHelper = this.i;
     if (localAutoLoginHelper != null)
     {
-      localAutoLoginHelper.e();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper = null;
+      localAutoLoginHelper.f();
+      this.i = null;
     }
   }
   
@@ -101,36 +95,36 @@ public class RegisterWithNickAndPwd
   {
     String str1 = paramIntent.getStringExtra("key_register_nick");
     String str2 = paramIntent.getStringExtra("key_register_password");
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_register_smscode");
-    this.jdField_c_of_type_Boolean = paramIntent.getBooleanExtra("key_register_autologin", false);
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
+    this.b = paramIntent.getStringExtra("key_register_smscode");
+    this.d = paramIntent.getBooleanExtra("key_register_autologin", false);
+    if (this.b == null) {
+      this.b = "";
     }
-    this.f = paramIntent.getStringExtra("key_register_fail_paid_lh");
-    this.jdField_e_of_type_Boolean = paramIntent.getBooleanExtra("key_register_phonenum_bindnewqq", true);
+    this.p = paramIntent.getStringExtra("key_register_fail_paid_lh");
+    this.f = paramIntent.getBooleanExtra("key_register_phonenum_bindnewqq", true);
     a(str1, str2);
   }
   
   public void a(String paramString1, String paramString2)
   {
     if (QLog.isDevelopLevel()) {
-      QLog.i("RegisterWithNickAndPwd", 4, String.format(Locale.getDefault(), "doAction smsCode: %s, unBindLH:%s, nick: %s, pas: %s, isLH:%b, autoLogin: %b, isPhoneNumBindNewQQ:%b", new Object[] { this.jdField_a_of_type_JavaLangString, this.f, paramString1, MD5.a(paramString2), Boolean.valueOf(this.jdField_d_of_type_Boolean), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.jdField_e_of_type_Boolean) }));
+      QLog.i("RegisterWithNickAndPwd", 4, String.format(Locale.getDefault(), "doAction smsCode: %s, unBindLH:%s, nick: %s, pas: %s, isLH:%b, autoLogin: %b, isPhoneNumBindNewQQ:%b", new Object[] { this.b, this.p, paramString1, MD5.b(paramString2), Boolean.valueOf(this.e), Boolean.valueOf(this.d), Boolean.valueOf(this.f) }));
     }
-    this.jdField_d_of_type_JavaLangString = paramString1;
-    this.jdField_e_of_type_JavaLangString = paramString2;
-    AccountManager localAccountManager = (AccountManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(0);
+    this.n = paramString1;
+    this.o = paramString2;
+    AccountManager localAccountManager = (AccountManager)this.g.getManager(0);
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        localAccountManager.getQuickRegisterAccount(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, AppSetting.a(), "8.7.0", this.jdField_a_of_type_MqqObserverAccountObserver);
+        localAccountManager.getQuickRegisterAccount(this.g.getCurrentAccountUin(), this.n, this.o, AppSetting.d(), "8.8.17", this.j);
       }
       else
       {
-        PhoneNumLoginImpl.a().a(this.jdField_a_of_type_MqqAppAppRuntime, true);
-        RegisterManager.a().a(this.jdField_a_of_type_MqqAppAppRuntime, paramString2, paramString1, this.jdField_a_of_type_JavaLangString, this.f, this.jdField_e_of_type_Boolean, null, this.jdField_a_of_type_MqqObserverAccountObserver);
+        PhoneNumLoginImpl.a().a(this.g, true);
+        RegisterManager.b().a(this.g, paramString2, paramString1, this.b, this.p, this.f, null, this.j);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.createWaitingDialog(2131716558);
+      this.h.createWaitingDialog(2131914021);
       return;
     }
     catch (Exception paramString1)
@@ -144,32 +138,32 @@ public class RegisterWithNickAndPwd
     if (QLog.isDevelopLevel()) {
       QLog.i("RegisterWithNickAndPwd", 4, String.format(Locale.getDefault(), "doAction autoLogin: %b, isPhoneNumBindNewQQ:%b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
     }
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.jdField_e_of_type_Boolean = paramBoolean2;
+    this.d = paramBoolean1;
+    this.f = paramBoolean2;
     a(paramString1, paramString2);
   }
   
   public void b()
   {
-    AutoLoginHelper localAutoLoginHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper;
+    AutoLoginHelper localAutoLoginHelper = this.i;
     if (localAutoLoginHelper != null) {
-      localAutoLoginHelper.i();
+      localAutoLoginHelper.k();
     }
   }
   
   public void c()
   {
-    AutoLoginHelper localAutoLoginHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper;
+    AutoLoginHelper localAutoLoginHelper = this.i;
     if (localAutoLoginHelper != null) {
-      localAutoLoginHelper.j();
+      localAutoLoginHelper.l();
     }
   }
   
   public void d()
   {
-    AutoLoginHelper localAutoLoginHelper = this.jdField_a_of_type_ComTencentMobileqqActivityAutoLoginHelper;
+    AutoLoginHelper localAutoLoginHelper = this.i;
     if (localAutoLoginHelper != null) {
-      localAutoLoginHelper.d();
+      localAutoLoginHelper.e();
     }
   }
   
@@ -179,31 +173,32 @@ public class RegisterWithNickAndPwd
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("go2next, onRegisterCommitPassResp, mAutoLogin = ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(", mIsfromLH=");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("RegisterWithNickAndPwd", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterQQNumberActivity.class);
-    ((Intent)localObject).putExtra("phonenum", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.phoneNum);
-    ((Intent)localObject).putExtra("invite_code", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.inviteCode);
-    ((Intent)localObject).putExtra("key", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.countryCode);
-    ((Intent)localObject).putExtra("uin", this.jdField_b_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("key_register_sign", this.jdField_a_of_type_ArrayOfByte);
-    ((Intent)localObject).putExtra("key_register_password", this.jdField_e_of_type_JavaLangString);
-    ((Intent)localObject).putExtra("resp_register_supersig", this.jdField_b_of_type_ArrayOfByte);
+    Object localObject = new Intent(this.h, RegisterQQNumberActivity.class);
+    ((Intent)localObject).putExtra("phonenum", this.h.phoneNum);
+    ((Intent)localObject).putExtra("from_type", this.h.mFrom);
+    ((Intent)localObject).putExtra("invite_code", this.h.inviteCode);
+    ((Intent)localObject).putExtra("key", this.h.countryCode);
+    ((Intent)localObject).putExtra("uin", this.k);
+    ((Intent)localObject).putExtra("key_register_sign", this.m);
+    ((Intent)localObject).putExtra("key_register_password", this.o);
+    ((Intent)localObject).putExtra("resp_register_supersig", this.q);
     ((Intent)localObject).putExtra("key_register_unbind", true);
-    ((Intent)localObject).putExtra("key_register_is_phone_num_registered", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered);
-    ((Intent)localObject).putExtra("key_register_has_pwd", this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd);
-    ((Intent)localObject).putExtra("key_register_from_send_sms", this.jdField_b_of_type_Boolean);
+    ((Intent)localObject).putExtra("key_register_is_phone_num_registered", this.h.mIsPhoneNumRegistered);
+    ((Intent)localObject).putExtra("key_register_has_pwd", this.h.mHasPwd);
+    ((Intent)localObject).putExtra("key_register_from_send_sms", this.c);
     ((Intent)localObject).putExtra("key_register_chose_bind_phone", false);
-    if ((this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+    if ((this.d) && (!this.e))
     {
       a((Intent)localObject, false);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity((Intent)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+    this.h.startActivity((Intent)localObject);
+    this.h.finish();
   }
   
   public void f()
@@ -211,12 +206,12 @@ public class RegisterWithNickAndPwd
     if (QLog.isColorLevel()) {
       QLog.d("RegisterWithNickAndPwd", 2, "reAutoLogin");
     }
-    a(this.jdField_a_of_type_AndroidContentIntent, true);
+    a(this.r, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.RegisterWithNickAndPwd
  * JD-Core Version:    0.7.0.1
  */

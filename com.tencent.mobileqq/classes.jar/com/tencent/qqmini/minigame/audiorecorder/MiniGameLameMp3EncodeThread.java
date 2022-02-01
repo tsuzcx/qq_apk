@@ -57,6 +57,75 @@ public class MiniGameLameMp3EncodeThread
     return null;
   }
   
+  private boolean recording(FileOutputStream paramFileOutputStream, int paramInt)
+  {
+    short[] arrayOfShort = new short[this.mSampleRate * 2 * this.mBufferTime];
+    double d = arrayOfShort.length;
+    Double.isNaN(d);
+    byte[] arrayOfByte1 = new byte[(int)(d * 1.25D + 7200.0D)];
+    byte[] arrayOfByte2 = new byte[this.mCallbackFrameSize * 3];
+    try
+    {
+      this.isRecording = true;
+      this.isPause = false;
+      this.recorderHandler.sendEmptyMessage(1);
+      AudioRecord localAudioRecord = new AudioRecord(this.mAudioSource, this.mSampleRate, this.mChannelConfig, this.mEncodingPcmFormat, paramInt * 2);
+      localAudioRecord.startRecording();
+      int i = 0;
+      while (this.isRecording) {
+        if (!this.isPause)
+        {
+          int j = localAudioRecord.read(arrayOfShort, 0, paramInt);
+          if (j < 0)
+          {
+            QMLog.e(TAG, "recording readSize < 0");
+            this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_error));
+            return false;
+          }
+          j = MiniGameLameMp3Native.jniEncode(arrayOfShort, arrayOfShort, j, arrayOfByte1);
+          if (j < 0)
+          {
+            QMLog.e(TAG, "recording encodeOutputLength < 0");
+            this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_encode_error));
+            return false;
+          }
+          if (j != 0)
+          {
+            paramFileOutputStream.write(arrayOfByte1, 0, j);
+            i = sendWhenRecording(arrayOfByte1, j, arrayOfByte2, i);
+          }
+        }
+      }
+      sendAfterRecording(arrayOfByte2, i);
+      paramInt = MiniGameLameMp3Native.jniFlush(arrayOfByte1);
+      if (paramInt < 0)
+      {
+        QMLog.e(TAG, "recording flushOutputLength < 0");
+        this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_encode_error));
+        return false;
+      }
+      paramFileOutputStream.write(arrayOfByte1, 0, paramInt);
+      paramFileOutputStream.close();
+      localAudioRecord.stop();
+      localAudioRecord.release();
+      this.isRecording = false;
+      this.isPause = false;
+      return true;
+    }
+    catch (IllegalStateException paramFileOutputStream)
+    {
+      QMLog.e(TAG, "recording IllegalStateException", paramFileOutputStream);
+      this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_init_error));
+      return false;
+    }
+    catch (IOException paramFileOutputStream)
+    {
+      QMLog.e(TAG, "recording IOException", paramFileOutputStream);
+      this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_write_file_error));
+    }
+    return false;
+  }
+  
   private void sendAfterRecording(byte[] paramArrayOfByte, int paramInt)
   {
     int i = this.mCallbackFrameSize;
@@ -227,75 +296,6 @@ public class MiniGameLameMp3EncodeThread
     this.recorderHandler.sendEmptyMessage(3);
   }
   
-  public boolean recording(FileOutputStream paramFileOutputStream, int paramInt)
-  {
-    short[] arrayOfShort = new short[this.mSampleRate * 2 * this.mBufferTime];
-    double d = arrayOfShort.length;
-    Double.isNaN(d);
-    byte[] arrayOfByte1 = new byte[(int)(d * 1.25D + 7200.0D)];
-    byte[] arrayOfByte2 = new byte[this.mCallbackFrameSize * 3];
-    try
-    {
-      this.isRecording = true;
-      this.isPause = false;
-      this.recorderHandler.sendEmptyMessage(1);
-      AudioRecord localAudioRecord = new AudioRecord(this.mAudioSource, this.mSampleRate, this.mChannelConfig, this.mEncodingPcmFormat, paramInt * 2);
-      localAudioRecord.startRecording();
-      int i = 0;
-      while (this.isRecording) {
-        if (!this.isPause)
-        {
-          int j = localAudioRecord.read(arrayOfShort, 0, paramInt);
-          if (j < 0)
-          {
-            QMLog.e(TAG, "recording readSize < 0");
-            this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_error));
-            return false;
-          }
-          j = MiniGameLameMp3Native.jniEncode(arrayOfShort, arrayOfShort, j, arrayOfByte1);
-          if (j < 0)
-          {
-            QMLog.e(TAG, "recording encodeOutputLength < 0");
-            this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_encode_error));
-            return false;
-          }
-          if (j != 0)
-          {
-            paramFileOutputStream.write(arrayOfByte1, 0, j);
-            i = sendWhenRecording(arrayOfByte1, j, arrayOfByte2, i);
-          }
-        }
-      }
-      sendAfterRecording(arrayOfByte2, i);
-      paramInt = MiniGameLameMp3Native.jniFlush(arrayOfByte1);
-      if (paramInt < 0)
-      {
-        QMLog.e(TAG, "recording flushOutputLength < 0");
-        this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_encode_error));
-        return false;
-      }
-      paramFileOutputStream.write(arrayOfByte1, 0, paramInt);
-      paramFileOutputStream.close();
-      localAudioRecord.stop();
-      localAudioRecord.release();
-      this.isRecording = false;
-      this.isPause = false;
-      return true;
-    }
-    catch (IllegalStateException paramFileOutputStream)
-    {
-      QMLog.e(TAG, "recording IllegalStateException", paramFileOutputStream);
-      this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_init_error));
-      return false;
-    }
-    catch (IOException paramFileOutputStream)
-    {
-      QMLog.e(TAG, "recording IOException", paramFileOutputStream);
-      this.recorderHandler.sendErrorMessage(this.mResources.getString(R.string.mini_game_record_write_file_error));
-    }
-    return false;
-  }
-  
   public void resumeRecord()
   {
     this.isPause = false;
@@ -427,7 +427,7 @@ public class MiniGameLameMp3EncodeThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.audiorecorder.MiniGameLameMp3EncodeThread
  * JD-Core Version:    0.7.0.1
  */

@@ -8,37 +8,37 @@ import java.util.List;
 public class DetailLikeListLoader$GetLikeListEvent
   extends BaseEvent
 {
-  public int a;
   public String a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
   public boolean b;
   public int c;
-  public boolean c;
+  public int d;
+  public int e;
+  public List<LikeEntry> f;
+  public boolean h;
+  public boolean i;
   
   public DetailLikeListLoader$GetLikeListEvent(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramErrorMessage;
+    this.a = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetLikeListEvent{feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isForDetail=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", mType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mLikeCount=");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(", mHasLike=");
+    localStringBuilder.append(", mType=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", mLikeCount=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mHasLike=");
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", mLikeEntryList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

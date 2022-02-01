@@ -28,12 +28,12 @@ public class VasADBannerConfigInfo$ResourceInfo
     if (TextUtils.isEmpty(this.c)) {
       return false;
     }
-    return FileUtil.b(this.c);
+    return FileUtil.d(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.info.VasADBannerConfigInfo.ResourceInfo
  * JD-Core Version:    0.7.0.1
  */

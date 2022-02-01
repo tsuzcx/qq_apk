@@ -41,7 +41,7 @@ public class EmotionKeywordHorizonListView
     while (i < j)
     {
       View localView = getChildAt(i);
-      if (((localView instanceof EmotionKeywordLayout)) && (((EmotionKeywordLayout)localView).a)) {
+      if (((localView instanceof EmotionKeywordLayout)) && (((EmotionKeywordLayout)localView).c)) {
         return localView.onTouchEvent(paramMotionEvent);
       }
       i += 1;
@@ -67,7 +67,7 @@ public class EmotionKeywordHorizonListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.hardware.SensorEventListener;
 class SensorShower$LightSensorListener
   implements SensorEventListener
 {
-  private float jdField_a_of_type_Float;
+  private float b;
   
   private SensorShower$LightSensorListener(SensorShower paramSensorShower) {}
   
@@ -17,16 +17,16 @@ class SensorShower$LightSensorListener
   {
     if (paramSensorEvent.sensor.getType() == 5)
     {
-      this.jdField_a_of_type_Float = paramSensorEvent.values[0];
-      if (SensorShower.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilSensorShower) != null) {
-        SensorShower.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureUtilSensorShower).a(this.jdField_a_of_type_Float);
+      this.b = paramSensorEvent.values[0];
+      if (SensorShower.a(this.a) != null) {
+        SensorShower.a(this.a).a(this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.SensorShower.LightSensorListener
  * JD-Core Version:    0.7.0.1
  */

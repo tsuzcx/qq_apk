@@ -11,15 +11,15 @@ class ForwardBaseOption$13$1
   
   public void a()
   {
-    DirectForwarder.b(this.a.a.a, 0);
-    this.a.a.a.finish();
+    DirectForwarder.b(this.a.b.s, 0);
+    this.a.b.s.finish();
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.13.1
  * JD-Core Version:    0.7.0.1
  */

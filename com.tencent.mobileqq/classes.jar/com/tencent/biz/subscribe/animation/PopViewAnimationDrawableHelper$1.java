@@ -12,14 +12,14 @@ class PopViewAnimationDrawableHelper$1
     if (PopViewAnimationDrawableHelper.a(this.a) != null) {
       PopViewAnimationDrawableHelper.a(this.a).b();
     }
-    if ((PopViewAnimationDrawableHelper.a(this.a) != null) && (PopViewAnimationDrawableHelper.a(this.a) != null)) {
-      PopViewAnimationDrawableHelper.a(this.a).removeCallbacks(PopViewAnimationDrawableHelper.a(this.a));
+    if ((PopViewAnimationDrawableHelper.b(this.a) != null) && (PopViewAnimationDrawableHelper.c(this.a) != null)) {
+      PopViewAnimationDrawableHelper.b(this.a).removeCallbacks(PopViewAnimationDrawableHelper.c(this.a));
     }
   }
   
   public void b()
   {
-    PopViewAnimationDrawableHelper.a(this.a);
+    PopViewAnimationDrawableHelper.d(this.a);
   }
 }
 

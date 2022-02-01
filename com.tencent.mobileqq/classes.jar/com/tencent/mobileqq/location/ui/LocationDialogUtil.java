@@ -28,7 +28,7 @@ public class LocationDialogUtil
     Object localObject = QBaseActivity.sTopActivity;
     if (localObject != null)
     {
-      paramString = DialogUtil.a((Context)localObject, 230, null, BaseApplication.getContext().getString(2131719122), 2131690874, 2131691248, new LocationDialogUtil.10(), new LocationDialogUtil.11(paramInt, paramString));
+      paramString = DialogUtil.a((Context)localObject, 230, null, BaseApplication.getContext().getString(2131916658), 2131887812, 2131888194, new LocationDialogUtil.10(), new LocationDialogUtil.11(paramInt, paramString));
       localObject = new LocationDialogUtil.12((QBaseActivity)localObject, paramString);
       ThreadManager.getUIHandlerV2().postDelayed((Runnable)localObject, 500L);
       return paramString;
@@ -98,34 +98,7 @@ public class LocationDialogUtil
   
   static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    a(paramActivity, DialogUtil.a(paramActivity, 230, null, paramActivity.getResources().getString(2131693807), 2131690728, 2131694583, new LocationDialogUtil.1(paramActivity, paramString1, paramString2, paramString3, paramLatLng1, paramLatLng2), new LocationDialogUtil.2()));
-  }
-  
-  public static boolean a(Activity paramActivity)
-  {
-    if ((paramActivity instanceof QPublicFragmentActivity))
-    {
-      paramActivity = paramActivity.getIntent().getStringExtra("FRAGMENT_KEY");
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationDialogUtil", 2, new Object[] { "activityIsShareOrPickFragment: invoked. ", " key: ", paramActivity });
-      }
-      if (("LocationShareFragment".equals(paramActivity)) || ("LocationPickFragment".equals(paramActivity))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static void b(int paramInt, String paramString)
-  {
-    if (paramInt == 3) {
-      paramInt = 1;
-    } else if (paramInt == 2) {
-      paramInt = 2;
-    } else {
-      paramInt = 0;
-    }
-    ReportController.b(null, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "0", "0", "");
+    a(paramActivity, DialogUtil.a(paramActivity, 230, null, paramActivity.getResources().getString(2131891383), 2131887648, 2131892267, new LocationDialogUtil.1(paramActivity, paramString1, paramString2, paramString3, paramLatLng1, paramLatLng2), new LocationDialogUtil.2()));
   }
   
   public static void b(Activity paramActivity)
@@ -155,17 +128,44 @@ public class LocationDialogUtil
       QLog.d("LocationDialogUtil", 2, new Object[] { "showEnterOtherRoomExitDialog: invoked. ", ((StringBuilder)localObject).toString() });
     }
     if (paramInt2 == 1) {
-      localObject = paramActivity.getResources().getString(2131719120);
+      localObject = paramActivity.getResources().getString(2131916656);
     } else {
-      localObject = paramActivity.getResources().getString(2131719119);
+      localObject = paramActivity.getResources().getString(2131916655);
     }
     paramActivity = new LocationDialogUtil.9(paramActivity, (String)localObject, paramInt1, paramString, paramInt2);
     ThreadManager.getUIHandlerV2().postDelayed(paramActivity, 500L);
   }
+  
+  private static void c(int paramInt, String paramString)
+  {
+    if (paramInt == 3) {
+      paramInt = 1;
+    } else if (paramInt == 2) {
+      paramInt = 2;
+    } else {
+      paramInt = 0;
+    }
+    ReportController.b(null, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "0", "0", "");
+  }
+  
+  public static boolean c(Activity paramActivity)
+  {
+    if ((paramActivity instanceof QPublicFragmentActivity))
+    {
+      paramActivity = paramActivity.getIntent().getStringExtra("FRAGMENT_KEY");
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationDialogUtil", 2, new Object[] { "activityIsShareOrPickFragment: invoked. ", " key: ", paramActivity });
+      }
+      if (("LocationShareFragment".equals(paramActivity)) || ("LocationPickFragment".equals(paramActivity))) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil
  * JD-Core Version:    0.7.0.1
  */

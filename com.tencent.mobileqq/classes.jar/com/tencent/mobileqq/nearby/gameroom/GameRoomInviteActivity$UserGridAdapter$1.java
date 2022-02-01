@@ -14,9 +14,9 @@ class GameRoomInviteActivity$UserGridAdapter$1
   {
     try
     {
-      long l = Long.parseLong(((GameRoomInviteActivity.GameRoomUser)this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$UserGridAdapter.a.mUsers.get(this.jdField_a_of_type_Int)).a);
-      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$UserGridAdapter.a.mInviteId, l, null);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity$UserGridAdapter.a.report("invite_page", "kick_out");
+      long l = Long.parseLong(((GameRoomInviteActivity.GameRoomUser)this.c.a.mUsers.get(this.a)).a);
+      this.b.a(this.c.a.mInviteId, l, null);
+      this.c.a.report("invite_page", "kick_out");
       return;
     }
     catch (Exception paramView) {}
@@ -24,7 +24,7 @@ class GameRoomInviteActivity$UserGridAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.UserGridAdapter.1
  * JD-Core Version:    0.7.0.1
  */

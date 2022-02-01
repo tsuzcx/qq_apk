@@ -12,12 +12,12 @@ class MyVideoVisiblePersonPageView$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.a.a.onTouchEvent(paramMotionEvent);
+    return this.a.q.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView.2
  * JD-Core Version:    0.7.0.1
  */

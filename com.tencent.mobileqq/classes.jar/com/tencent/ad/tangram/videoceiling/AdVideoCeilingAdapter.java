@@ -6,7 +6,7 @@ import com.tencent.ad.tangram.AdError;
 @Keep
 public abstract interface AdVideoCeilingAdapter
 {
-  public abstract AdError show(AdVideoCeilingAdapter.Params paramParams);
+  public abstract AdError show(AdVideoCeiling.Params paramParams);
 }
 
 

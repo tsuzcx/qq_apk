@@ -2,8 +2,7 @@ package com.tencent.av.config;
 
 class ConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
   int b = 0;
   int c = 0;
   int d = 0;
@@ -18,6 +17,7 @@ class ConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo
   int m = 0;
   int n = 0;
   int o = 0;
+  int p = 0;
   
   ConfigPBProtocol$ConfigSysInfoNew$MobileQQPttInfo(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew) {}
 }

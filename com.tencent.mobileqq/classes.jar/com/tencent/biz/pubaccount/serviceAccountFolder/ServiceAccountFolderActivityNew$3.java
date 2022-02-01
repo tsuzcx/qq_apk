@@ -23,9 +23,9 @@ class ServiceAccountFolderActivityNew$3
     localObject = ((CertifiedAccountMeta.StUser)localObject).icon.get();
     if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl((String)localObject)))
     {
-      ServiceAccountFolderActivityNew.a(this.a).setContentDescription(this.a.getResources().getString(2131719361));
-      ServiceAccountFolderActivityNew.a(this.a).setImageResource(2130840613);
-      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ServiceAccountFolderActivityNew.3.1(this, paramStGetMainPageRsp));
+      ServiceAccountFolderActivityNew.e(this.a).setContentDescription(this.a.getResources().getString(2131916913));
+      ServiceAccountFolderActivityNew.e(this.a).setImageResource(2130841386);
+      ServiceAccountFolderActivityNew.e(this.a).setOnClickListener(new ServiceAccountFolderActivityNew.3.1(this, paramStGetMainPageRsp));
     }
   }
   
@@ -38,8 +38,8 @@ class ServiceAccountFolderActivityNew$3
         ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
         SLog.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
         a(paramStGetMainPageRsp);
-        ServiceAccountFolderActivityNew.a(this.a);
-        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        ServiceAccountFolderActivityNew.d(this.a);
+        ServiceAccountFolderActivityNew.b(this.a, paramStGetMainPageRsp);
       }
     }
     else
@@ -55,7 +55,7 @@ class ServiceAccountFolderActivityNew$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.3
  * JD-Core Version:    0.7.0.1
  */

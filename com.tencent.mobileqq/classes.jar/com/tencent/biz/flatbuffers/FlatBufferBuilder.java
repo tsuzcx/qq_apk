@@ -7,19 +7,19 @@ import java.nio.charset.CharsetEncoder;
 
 public class FlatBufferBuilder
 {
-  static final Charset jdField_a_of_type_JavaNioCharsetCharset = Charset.forName("UTF-8");
-  int jdField_a_of_type_Int;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  CharsetEncoder jdField_a_of_type_JavaNioCharsetCharsetEncoder = jdField_a_of_type_JavaNioCharsetCharset.newEncoder();
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = null;
-  int jdField_b_of_type_Int = 1;
-  boolean jdField_b_of_type_Boolean = false;
-  int[] jdField_b_of_type_ArrayOfInt = new int[16];
-  int jdField_c_of_type_Int = 0;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int = 0;
-  int e = 0;
+  static final Charset c = Charset.forName("UTF-8");
+  ByteBuffer a;
+  int b;
+  int d = 1;
+  int[] e = null;
+  int f = 0;
+  boolean g = false;
+  boolean h = false;
+  int[] i = new int[16];
+  int j = 0;
+  int k = 0;
+  boolean l = false;
+  CharsetEncoder m = c.newEncoder();
   
   public FlatBufferBuilder()
   {
@@ -28,12 +28,12 @@ public class FlatBufferBuilder
   
   public FlatBufferBuilder(int paramInt)
   {
-    int i = paramInt;
+    int i1 = paramInt;
     if (paramInt <= 0) {
-      i = 1;
+      i1 = 1;
     }
-    this.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_JavaNioByteBuffer = a(i);
+    this.b = i1;
+    this.a = a(i1);
   }
   
   static ByteBuffer a(int paramInt)
@@ -45,7 +45,7 @@ public class FlatBufferBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.FlatBufferBuilder
  * JD-Core Version:    0.7.0.1
  */

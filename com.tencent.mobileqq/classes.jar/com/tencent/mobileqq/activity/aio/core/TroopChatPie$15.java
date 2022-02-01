@@ -21,26 +21,26 @@ class TroopChatPie$15
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = (ITroopMngHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
-    if ((NetworkUtil.isNetSupport(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null))
+    paramDialogInterface = (ITroopMngHandler)this.a.d.getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
+    if ((NetworkUtil.isNetSupport(this.a.d.getApp().getApplicationContext())) && (paramDialogInterface != null))
     {
-      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-        paramDialogInterface.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if (((TroopManager)this.a.d.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.a.ah.b).isTroopOwner(this.a.d.getCurrentAccountUin())) {
+        paramDialogInterface.b(this.a.ah.b);
       } else {
-        paramDialogInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        paramDialogInterface.a(this.a.ah.b);
       }
     }
     else if (paramDialogInterface != null) {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131694475, 0).a();
+      QQToast.makeText(this.a.f, 1, 2131892157, 0).show();
     } else {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131692085, 0).a();
+      QQToast.makeText(this.a.f, 1, 2131889057, 0).show();
     }
-    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+    new ReportTask(this.a.d).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.ah.b }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.15
  * JD-Core Version:    0.7.0.1
  */

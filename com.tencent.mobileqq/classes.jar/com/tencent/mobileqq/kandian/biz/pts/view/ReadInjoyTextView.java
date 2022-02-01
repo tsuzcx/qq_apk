@@ -21,7 +21,7 @@ public class ReadInjoyTextView
   public ReadInjoyTextView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131167333));
+    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131168376));
   }
   
   private String a(String paramString1, String paramString2)
@@ -88,7 +88,7 @@ public class ReadInjoyTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.ReadInjoyTextView
  * JD-Core Version:    0.7.0.1
  */

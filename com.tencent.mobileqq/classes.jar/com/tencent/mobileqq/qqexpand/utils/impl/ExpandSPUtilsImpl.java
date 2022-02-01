@@ -13,26 +13,26 @@ public final class ExpandSPUtilsImpl
 {
   public boolean canPopDialog(@Nullable String paramString)
   {
-    return ExpandSharePreUtils.a(paramString);
+    return ExpandSharePreUtils.d(paramString);
   }
   
   public int getGreetLimitCode(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    return ExpandSharePreUtils.b(paramString);
+    return ExpandSharePreUtils.g(paramString);
   }
   
   @Nullable
   public String getGreetLimitString(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    return ExpandSharePreUtils.c(paramString);
+    return ExpandSharePreUtils.h(paramString);
   }
   
   public long getGreetLimitTime(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
-    return ExpandSharePreUtils.a(paramString);
+    return ExpandSharePreUtils.i(paramString);
   }
   
   public void setExtendFriendsConfigTaskId(@Nullable String paramString1, @Nullable String paramString2)
@@ -53,7 +53,7 @@ public final class ExpandSPUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.impl.ExpandSPUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,14 @@ public class VoiceTextPanel$VoiceTextScrollerListenerImp
 {
   public VoiceTextPanel$VoiceTextScrollerListenerImp(VoiceTextPanel paramVoiceTextPanel) {}
   
-  public int a()
-  {
-    return XPanelContainer.a;
-  }
-  
   public void a()
   {
-    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).hideSoftInput(VoiceTextPanel.a(this.a));
+    ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).hideSoftInput(VoiceTextPanel.b(this.a));
   }
   
   public void a(int paramInt)
   {
-    if (VoiceTextPanel.a(this.a).b() != 0)
+    if (VoiceTextPanel.a(this.a).g() != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceTextPanel", 2, "onActionDown but mHeader cannot see");
@@ -49,22 +44,22 @@ public class VoiceTextPanel$VoiceTextScrollerListenerImp
     if (QLog.isColorLevel()) {
       QLog.d("VoiceTextPanel", 2, "enterEditState");
     }
-    VoiceTextPanel.a(this.a).a();
+    VoiceTextPanel.c(this.a).a();
     VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, this.a.getHeight(), this.a.getTop());
-    VoiceTextPanel.a(this.a).a().a(1, true);
+    VoiceTextPanel.b(this.a).q().a(1, true);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     VoiceTextPanel.a(this.a).a(paramInt1, paramInt2, paramInt3);
-    VoiceTextPanel.a(this.a).b();
+    VoiceTextPanel.c(this.a).b();
   }
   
   public void b()
   {
     VoiceTextPanel.a(this.a).a(true);
     VoiceTextPanel.a(this.a, false);
-    VoiceTextPanel.a(this.a).b();
+    VoiceTextPanel.d(this.a).b();
   }
   
   public void c()
@@ -72,10 +67,15 @@ public class VoiceTextPanel$VoiceTextScrollerListenerImp
     VoiceTextPanel.a(this.a).a(false);
     VoiceTextPanel.a(this.a, false);
   }
+  
+  public int d()
+  {
+    return XPanelContainer.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel.VoiceTextScrollerListenerImp
  * JD-Core Version:    0.7.0.1
  */

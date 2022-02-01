@@ -21,8 +21,8 @@ class VidToGroupInfoPuller$2
     localStringBuilder.append((String)localObject);
     SLog.d("Q.qqstory.net:VidToGroupInfoPuller", localStringBuilder.toString());
     Object localObject = this.a;
-    ((VidToGroupInfoPuller)localObject).a(((VidToGroupInfoPuller)localObject).jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
-    this.a.jdField_a_of_type_Int = 2;
+    ((VidToGroupInfoPuller)localObject).a(((VidToGroupInfoPuller)localObject).f, new ErrorMessage(), true, paramBoolean);
+    this.a.a = 2;
   }
 }
 

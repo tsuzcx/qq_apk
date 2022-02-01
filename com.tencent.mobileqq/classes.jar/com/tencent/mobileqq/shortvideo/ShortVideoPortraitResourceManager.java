@@ -33,16 +33,9 @@ public class ShortVideoPortraitResourceManager
     return "Portrait000_0";
   }
   
-  public static void a() {}
-  
-  static boolean a()
-  {
-    return FeatureManager.isBasicFeaturesFunctionReady();
-  }
-  
   static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)
   {
-    return PtvFilterSoLoad.e();
+    return PtvFilterSoLoad.h();
   }
   
   static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
@@ -115,7 +108,7 @@ public class ShortVideoPortraitResourceManager
               bool1 = true;
             }
           }
-          a();
+          d();
         }
       }
       catch (Exception paramQQAppInterface)
@@ -182,7 +175,7 @@ public class ShortVideoPortraitResourceManager
   
   public static String b()
   {
-    String str = PtvFilterSoLoad.a();
+    String str = PtvFilterSoLoad.b();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("portrait_res_cache");
@@ -190,7 +183,14 @@ public class ShortVideoPortraitResourceManager
     return localStringBuilder.toString();
   }
   
-  public static boolean b()
+  static boolean c()
+  {
+    return FeatureManager.isBasicFeaturesFunctionReady();
+  }
+  
+  public static void d() {}
+  
+  public static boolean e()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Build.MANUFACTURER);
@@ -203,7 +203,7 @@ public class ShortVideoPortraitResourceManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPortraitResourceManager
  * JD-Core Version:    0.7.0.1
  */

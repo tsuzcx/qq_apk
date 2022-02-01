@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/oj7" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/nnp" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="16.0dip" />
+    <include android:id="@id/oiu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" app:layout_constraintBottom_toTopOf="@id/oiz" app:layout_constraintLeft_toLeftOf="fic" app:layout_constraintTop_toTopOf="@id/nnp" app:layout_constraintVertical_chainStyle="ox2" layout="@layout/cln" />
+    <include android:id="@id/oiz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" app:layout_constraintBottom_toBottomOf="fic" app:layout_constraintLeft_toLeftOf="@id/oiu" app:layout_constraintRight_toRightOf="@id/oiu" app:layout_constraintTop_toBottomOf="@id/oiu" app:layout_constraintVertical_chainStyle="ox2" layout="@layout/dj_" />
+    <com.google.android.material.timepicker.ClockFaceView android:id="@id/oiv" android:layout_width="@dimen/bf8" android:layout_height="@dimen/bf8" app:layout_constraintStart_toEndOf="@id/oiu" app:layout_constraintTop_toTopOf="fic" />
+</merge>

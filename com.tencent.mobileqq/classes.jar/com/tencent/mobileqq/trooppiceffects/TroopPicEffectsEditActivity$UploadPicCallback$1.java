@@ -22,15 +22,15 @@ class TroopPicEffectsEditActivity$UploadPicCallback$1
     }
     if (paramInt == 0)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 2, HardCodeUtil.a(2131715480), 0).a();
+      QQToast.makeText(this.a, 2, HardCodeUtil.a(2131912955), 0).show();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity, 1, HardCodeUtil.a(2131715487), 0).a();
+    QQToast.makeText(this.a, 1, HardCodeUtil.a(2131912962), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity.UploadPicCallback.1
  * JD-Core Version:    0.7.0.1
  */

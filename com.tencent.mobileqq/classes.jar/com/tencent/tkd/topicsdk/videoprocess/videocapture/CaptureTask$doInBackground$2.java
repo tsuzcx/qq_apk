@@ -16,29 +16,29 @@ public final class CaptureTask$doInBackground$2
   
   public void a()
   {
-    CaptureTask.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask);
-    if (CaptureTask.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask) <= 3)
+    CaptureTask.a(this.a);
+    if (CaptureTask.b(this.a) <= 3)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCaptureFailed try angin tryCount: ");
-      localStringBuilder.append(CaptureTask.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask));
+      localStringBuilder.append(CaptureTask.b(this.a));
       localStringBuilder.append(" CaptureTask: ");
       localStringBuilder.append(this);
       TLog.b("CaptureTask", localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask.a(new Unit[] { null });
+      this.a.a(new Unit[] { null });
     }
   }
   
   public void a(@Nullable Bitmap paramBitmap, @NotNull CaptureTask paramCaptureTask)
   {
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "captureTask");
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[0] = paramBitmap;
-    CaptureTask.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureCaptureTask);
+    this.b[0] = paramBitmap;
+    CaptureTask.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.CaptureTask.doInBackground.2
  * JD-Core Version:    0.7.0.1
  */

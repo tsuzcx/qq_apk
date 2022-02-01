@@ -14,20 +14,20 @@ class ViolaReportDelegate$1
   {
     try
     {
-      Object localObject1 = ReadInJoyHelper.b();
+      Object localObject1 = ReadInJoyHelper.N();
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject1 = new JSONObject((String)localObject1);
       } else {
         localObject1 = new JSONObject();
       }
-      localObject2 = ViolaReportDelegate.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      localObject2 = ViolaReportDelegate.a(this.this$0, this.a);
       if (localObject2 != null)
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         ((JSONObject)localObject1).put(localStringBuilder.toString(), localObject2);
-        ReadInJoyHelper.e(((JSONObject)localObject1).toString());
+        ReadInJoyHelper.i(((JSONObject)localObject1).toString());
         ReadInJoyHelper.e(true);
         return;
       }
@@ -38,7 +38,7 @@ class ViolaReportDelegate$1
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
-        localObject2 = ViolaReportDelegate.jdField_a_of_type_JavaLangString;
+        localObject2 = ViolaReportDelegate.a;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("cachePageOpenData Exception:");
         localStringBuilder.append(localException.getMessage());
@@ -49,7 +49,7 @@ class ViolaReportDelegate$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.ViolaReportDelegate.1
  * JD-Core Version:    0.7.0.1
  */

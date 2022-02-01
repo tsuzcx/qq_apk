@@ -4,10 +4,10 @@ import android.os.Looper;
 
 public class ThreadPriorityUtil
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaLangThread.getPriority();
-  private Thread jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
-  private int jdField_b_of_type_Int;
-  private Thread jdField_b_of_type_JavaLangThread;
+  private Thread a = Looper.getMainLooper().getThread();
+  private Thread b;
+  private int c = this.a.getPriority();
+  private int d;
   
   public ThreadPriorityUtil()
   {
@@ -19,8 +19,8 @@ public class ThreadPriorityUtil
     {
       if ((arrayOfThread[i] != null) && (arrayOfThread[i].isAlive()) && (arrayOfThread[i].getName().equalsIgnoreCase("RenderThread")))
       {
-        this.jdField_b_of_type_JavaLangThread = arrayOfThread[i];
-        this.jdField_b_of_type_Int = this.jdField_b_of_type_JavaLangThread.getPriority();
+        this.b = arrayOfThread[i];
+        this.d = this.b.getPriority();
         return;
       }
       i += 1;
@@ -29,8 +29,8 @@ public class ThreadPriorityUtil
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangThread.setPriority(10);
-    Thread localThread = this.jdField_b_of_type_JavaLangThread;
+    this.a.setPriority(10);
+    Thread localThread = this.b;
     if (localThread != null) {
       localThread.setPriority(10);
     }
@@ -38,10 +38,10 @@ public class ThreadPriorityUtil
   
   public void b()
   {
-    this.jdField_a_of_type_JavaLangThread.setPriority(this.jdField_a_of_type_Int);
-    Thread localThread = this.jdField_b_of_type_JavaLangThread;
+    this.a.setPriority(this.c);
+    Thread localThread = this.b;
     if (localThread != null) {
-      localThread.setPriority(this.jdField_b_of_type_Int);
+      localThread.setPriority(this.d);
     }
   }
   
@@ -50,13 +50,13 @@ public class ThreadPriorityUtil
     StringBuilder localStringBuilder1 = new StringBuilder();
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("main:");
-    localStringBuilder2.append(this.jdField_a_of_type_JavaLangThread.getPriority());
+    localStringBuilder2.append(this.a.getPriority());
     localStringBuilder1.append(localStringBuilder2.toString());
-    if (this.jdField_b_of_type_JavaLangThread != null)
+    if (this.b != null)
     {
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append(" render:");
-      localStringBuilder2.append(this.jdField_b_of_type_JavaLangThread.getPriority());
+      localStringBuilder2.append(this.b.getPriority());
       localStringBuilder1.append(localStringBuilder2.toString());
     }
     return localStringBuilder1.toString();
@@ -64,7 +64,7 @@ public class ThreadPriorityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.ThreadPriorityUtil
  * JD-Core Version:    0.7.0.1
  */

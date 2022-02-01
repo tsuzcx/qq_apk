@@ -6,8 +6,8 @@ class OnlineFileSessionWorker$StateEnd
   OnlineFileSessionWorker$StateEnd(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
     super(paramOnlineFileSessionWorker);
-    this.a = true;
-    this.b = true;
+    this.c = true;
+    this.d = true;
   }
   
   protected String a()
@@ -17,7 +17,7 @@ class OnlineFileSessionWorker$StateEnd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker.StateEnd
  * JD-Core Version:    0.7.0.1
  */

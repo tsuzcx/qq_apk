@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.tencent.tkd.topicsdk.TopicSDK;
 import com.tencent.tkd.topicsdk.TopicSDK.Companion;
 import com.tencent.tkd.topicsdk.TopicSDKConfig;
-import com.tencent.tkd.topicsdk.interfaces.IAccount;
 import com.tencent.tkd.topicsdk.interfaces.IBizConfig;
 import com.tencent.tkd.topicsdk.interfaces.IPageOpener;
 import com.tencent.tkd.topicsdk.interfaces.IStorageConfig;
@@ -18,26 +17,9 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"account", "Lcom/tencent/tkd/topicsdk/interfaces/IAccount;", "getAccount", "()Lcom/tencent/tkd/topicsdk/interfaces/IAccount;", "baseFileDir", "", "kotlin.jvm.PlatformType", "getBaseFileDir", "()Ljava/lang/String;", "baseSDCardDir", "getBaseSDCardDir", "fileProviderAuthority", "getFileProviderAuthority", "isDebugVersion", "", "()Z", "isKingCard", "isNightMode", "publishTempDir", "getPublishTempDir", "userActionHandler", "Lcom/tencent/tkd/topicsdk/interfaces/IUserActionHandler;", "getUserActionHandler", "()Lcom/tencent/tkd/topicsdk/interfaces/IUserActionHandler;", "getAppDrawable", "Landroid/graphics/drawable/Drawable;", "resId", "", "openPage", "", "FRAGMENT", "Lcom/tencent/tkd/topicsdk/framework/BasePage;", "context", "Landroid/content/Context;", "clazz", "Ljava/lang/Class;", "innerBundle", "Landroid/os/Bundle;", "outerBundle", "pageOpener", "Lcom/tencent/tkd/topicsdk/interfaces/IPageOpener;", "openPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openUrl", "url", "bundle", "openUserProtocolPage", "title", "report", "action", "Lcom/tencent/tkd/topicsdk/interfaces/IDataReporter$ACTION;", "values", "", "reporter", "Lcom/tencent/tkd/topicsdk/interfaces/IDataReporter;", "showDebugToast", "msg", "showRichToast", "linkMsg", "link", "isLong", "toast", "Lcom/tencent/tkd/topicsdk/interfaces/IToast;", "showToast", "topicsdk_release"}, k=2, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"account", "Lcom/tencent/tkd/topicsdk/interfaces/IAccount;", "getAccount", "()Lcom/tencent/tkd/topicsdk/interfaces/IAccount;", "baseFileDir", "", "getBaseFileDir", "()Ljava/lang/String;", "baseSDCardDir", "getBaseSDCardDir", "fileProviderAuthority", "getFileProviderAuthority", "isDebugVersion", "", "()Z", "isKingCard", "isNightMode", "publishTempDir", "getPublishTempDir", "userActionHandler", "Lcom/tencent/tkd/topicsdk/interfaces/IUserActionHandler;", "getUserActionHandler", "()Lcom/tencent/tkd/topicsdk/interfaces/IUserActionHandler;", "getAppDrawable", "Landroid/graphics/drawable/Drawable;", "resId", "", "openPage", "", "FRAGMENT", "Lcom/tencent/tkd/topicsdk/framework/BasePage;", "context", "Landroid/content/Context;", "clazz", "Ljava/lang/Class;", "innerBundle", "Landroid/os/Bundle;", "outerBundle", "pageOpener", "Lcom/tencent/tkd/topicsdk/interfaces/IPageOpener;", "openPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openUrl", "url", "bundle", "openUserProtocolPage", "title", "report", "action", "Lcom/tencent/tkd/topicsdk/interfaces/IDataReporter$ACTION;", "values", "", "reporter", "Lcom/tencent/tkd/topicsdk/interfaces/IDataReporter;", "showDebugToast", "msg", "showRichToast", "linkMsg", "link", "isLong", "toast", "Lcom/tencent/tkd/topicsdk/interfaces/IToast;", "showToast", "topicsdk_release"}, k=2, mv={1, 1, 16})
 public final class TopicSDKHelperKt
 {
-  @NotNull
-  public static final IAccount a()
-  {
-    return TopicSDK.a.a().a().a();
-  }
-  
-  @NotNull
-  public static final IUserActionHandler a()
-  {
-    return TopicSDK.a.a().a().a();
-  }
-  
-  public static final String a()
-  {
-    return TopicSDK.a.a().a().a().b();
-  }
-  
   public static final <FRAGMENT extends BasePage> void a(@NotNull Activity paramActivity, @NotNull Class<FRAGMENT> paramClass, int paramInt, @Nullable Bundle paramBundle1, @Nullable Bundle paramBundle2, @NotNull IPageOpener paramIPageOpener)
   {
     Intrinsics.checkParameterIsNotNull(paramActivity, "activity");
@@ -75,7 +57,7 @@ public final class TopicSDKHelperKt
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramString1, "title");
     Intrinsics.checkParameterIsNotNull(paramString2, "url");
-    IWebViewOpener localIWebViewOpener = TopicSDK.a.a().a().a();
+    IWebViewOpener localIWebViewOpener = TopicSDK.a.a().b().m();
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("showLeftBtn", true);
     localBundle.putString("title", paramString1);
@@ -85,8 +67,12 @@ public final class TopicSDKHelperKt
   public static final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "msg");
-    if (a()) {
-      a(paramString, false, null, 4, null);
+    if (a())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[D]");
+      localStringBuilder.append(paramString);
+      a(localStringBuilder.toString(), false, null, 4, null);
     }
   }
   
@@ -97,35 +83,39 @@ public final class TopicSDKHelperKt
   
   public static final boolean a()
   {
-    return TopicSDK.a.a().a().a();
-  }
-  
-  public static final String b()
-  {
-    return TopicSDK.a.a().a().a().d();
+    return TopicSDK.a.a().b().s();
   }
   
   public static final boolean b()
   {
-    return TopicSDK.a.a().a().a().a();
+    return TopicSDK.a.a().b().c().a();
   }
   
   @NotNull
-  public static final String c()
+  public static final IUserActionHandler c()
   {
-    String str = TopicSDK.a.a().a().a().c();
-    Intrinsics.checkExpressionValueIsNotNull(str, "TopicSDK.instance().topi…rageConfig.publishTempDir");
+    return TopicSDK.a.a().b().h();
+  }
+  
+  @NotNull
+  public static final String d()
+  {
+    String str = TopicSDK.a.a().b().q().a();
+    Intrinsics.checkExpressionValueIsNotNull(str, "TopicSDK.instance().topi…fig.storageConfig.baseDir");
     return str;
   }
   
-  public static final String d()
+  @NotNull
+  public static final String e()
   {
-    return TopicSDK.a.a().a().a().a();
+    String str = TopicSDK.a.a().b().q().b();
+    Intrinsics.checkExpressionValueIsNotNull(str, "TopicSDK.instance().topi…rageConfig.publishTempDir");
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt
  * JD-Core Version:    0.7.0.1
  */

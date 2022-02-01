@@ -13,17 +13,17 @@ class MultiVideoEnterPageActivity$TimeoutRunnable
   {
     if (QLog.isColorLevel())
     {
-      String str = this.this$0.jdField_a_of_type_JavaLangString;
+      String str = this.this$0.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("TimeoutRunnable, mHaveMoreRoom[");
-      localStringBuilder.append(this.this$0.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.this$0.z);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    QQToast.a(this.this$0, 2131695680, 1).b(MultiVideoEnterPageActivity.d(this.this$0).getDimensionPixelSize(2131299168));
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    QQToast.makeText(this.this$0, 2131893439, 1).show(MultiVideoEnterPageActivity.e(this.this$0).getDimensionPixelSize(2131299920));
+    if (!this.this$0.z)
     {
-      this.this$0.b();
+      this.this$0.c();
       this.this$0.finish();
     }
   }

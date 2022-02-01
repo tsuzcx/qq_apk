@@ -11,20 +11,44 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class QQGameTimingLogger
 {
-  private String jdField_a_of_type_JavaLangString;
-  private CopyOnWriteArrayList<Pair<String, Long>> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private String a;
   private String b;
+  private CopyOnWriteArrayList<Pair<String, Long>> c;
   
   public QQGameTimingLogger(String paramString1, String paramString2)
   {
     a(paramString1, paramString2);
   }
   
-  public long a(String paramString)
+  public void a()
+  {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.c;
+    if (localCopyOnWriteArrayList == null) {
+      this.c = new CopyOnWriteArrayList();
+    } else {
+      localCopyOnWriteArrayList.clear();
+    }
+    a("begin");
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = new Pair(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
+    this.c.add(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a = paramString1;
+    this.b = paramString2;
+    a();
+  }
+  
+  public long b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();
@@ -36,77 +60,24 @@ public class QQGameTimingLogger
     return 0L;
   }
   
-  public String a()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Pair)localIterator.next();
-      String str = (String)((Pair)localObject).first;
-      localObject = (Long)((Pair)localObject).second;
-      localStringBuffer.append(str);
-      localStringBuffer.append("=");
-      localStringBuffer.append(localObject);
-      localStringBuffer.append("| ");
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public List<Long> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 1;
-    while (i < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
-    {
-      localArrayList.add(Long.valueOf(((Long)((Pair)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i)).second).longValue() - ((Long)((Pair)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i - 1)).second).longValue()));
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if (localCopyOnWriteArrayList == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    } else {
-      localCopyOnWriteArrayList.clear();
-    }
-    a("begin");
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = new Pair(paramString, Long.valueOf(SystemClock.elapsedRealtime()));
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    a();
-  }
-  
   public void b()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(this.b);
     ((StringBuilder)localObject).append(": begin");
     QLog.d(str, 1, ((StringBuilder)localObject).toString());
     try
     {
-      long l2 = ((Long)((Pair)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0)).second).longValue();
+      long l2 = ((Long)((Pair)this.c.get(0)).second).longValue();
       long l1 = l2;
       int i = 1;
-      while (i < this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size())
+      while (i < this.c.size())
       {
-        l1 = ((Long)((Pair)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i)).second).longValue();
-        str = (String)((Pair)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i)).first;
-        long l3 = ((Long)((Pair)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i - 1)).second).longValue();
-        localObject = this.jdField_a_of_type_JavaLangString;
+        l1 = ((Long)((Pair)this.c.get(i)).second).longValue();
+        str = (String)((Pair)this.c.get(i)).first;
+        long l3 = ((Long)((Pair)this.c.get(i - 1)).second).longValue();
+        localObject = this.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(this.b);
         localStringBuilder.append(":      ");
@@ -116,7 +87,7 @@ public class QQGameTimingLogger
         QLog.d((String)localObject, 1, localStringBuilder.toString());
         i += 1;
       }
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(this.b);
       ((StringBuilder)localObject).append(": end, ");
@@ -130,10 +101,39 @@ public class QQGameTimingLogger
       localThrowable.printStackTrace();
     }
   }
+  
+  public String c()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Pair)localIterator.next();
+      String str = (String)((Pair)localObject).first;
+      localObject = (Long)((Pair)localObject).second;
+      localStringBuffer.append(str);
+      localStringBuffer.append("=");
+      localStringBuffer.append(localObject);
+      localStringBuffer.append("| ");
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public List<Long> d()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 1;
+    while (i < this.c.size())
+    {
+      localArrayList.add(Long.valueOf(((Long)((Pair)this.c.get(i)).second).longValue() - ((Long)((Pair)this.c.get(i - 1)).second).longValue()));
+      i += 1;
+    }
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.utils.QQGameTimingLogger
  * JD-Core Version:    0.7.0.1
  */

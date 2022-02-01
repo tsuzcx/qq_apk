@@ -71,10 +71,10 @@ public class Face2FaceTroopFriendListAdapter
     Face2FaceTroopFriendListAdapter.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559115, null);
+      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131624776, null);
       localViewHolder = new Face2FaceTroopFriendListAdapter.ViewHolder();
-      localViewHolder.c = ((ImageView)localView.findViewById(2131367322));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367348));
+      localViewHolder.A = ((ImageView)localView.findViewById(2131433779));
+      localViewHolder.a = ((TextView)localView.findViewById(2131433805));
       localView.setTag(localViewHolder);
     }
     else
@@ -87,22 +87,22 @@ public class Face2FaceTroopFriendListAdapter
     long l1 = l2;
     if (localFace2FaceUserProfile != null)
     {
-      localViewHolder.jdField_a_of_type_JavaLangString = localFace2FaceUserProfile.e;
-      localViewHolder.c.setImageBitmap(a(1, localFace2FaceUserProfile.e));
+      localViewHolder.y = localFace2FaceUserProfile.f;
+      localViewHolder.A.setImageBitmap(a(1, localFace2FaceUserProfile.f));
       l1 = System.currentTimeMillis() - l2;
-      String str = localFace2FaceUserProfile.jdField_a_of_type_JavaLangString;
+      String str = localFace2FaceUserProfile.a;
       if (str == null)
       {
-        paramView = localFace2FaceUserProfile.e;
+        paramView = localFace2FaceUserProfile.f;
       }
       else
       {
         paramView = str;
         if (TextUtils.isEmpty(str.trim())) {
-          paramView = localFace2FaceUserProfile.e;
+          paramView = localFace2FaceUserProfile.f;
         }
       }
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      localViewHolder.a.setText(paramView);
     }
     if (QLog.isColorLevel())
     {
@@ -120,7 +120,7 @@ public class Face2FaceTroopFriendListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceTroopFriendListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class RedTouch$1
   
   public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    RedTouch.a(this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch, this.jdField_a_of_type_JavaLangString);
+    this.b.O.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    RedTouch.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.ui.RedTouch.1
  * JD-Core Version:    0.7.0.1
  */

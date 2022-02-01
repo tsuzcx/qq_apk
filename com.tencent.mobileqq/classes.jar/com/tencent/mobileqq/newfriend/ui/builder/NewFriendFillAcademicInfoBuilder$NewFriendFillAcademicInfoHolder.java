@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 public class NewFriendFillAcademicInfoBuilder$NewFriendFillAcademicInfoHolder
 {
-  public Button a;
-  public ImageView a;
   public TextView a;
   public TextView b;
+  public ImageView c;
+  public Button d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.NewFriendFillAcademicInfoBuilder.NewFriendFillAcademicInfoHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -2,26 +2,20 @@ package com.tencent.mobileqq.ptt.preop;
 
 public class PreDownloadParams$Params
 {
-  public int a;
-  public final int[] a;
-  
-  public PreDownloadParams$Params()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ArrayOfInt = new int[6];
-  }
+  public int a = -1;
+  public final int[] b = new int[6];
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    while (i < this.b.length)
     {
       localStringBuilder.append('#');
       localStringBuilder.append(i);
       localStringBuilder.append('_');
-      localStringBuilder.append(this.jdField_a_of_type_ArrayOfInt[i]);
+      localStringBuilder.append(this.b[i]);
       i += 1;
     }
     return localStringBuilder.toString();
@@ -29,7 +23,7 @@ public class PreDownloadParams$Params
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PreDownloadParams.Params
  * JD-Core Version:    0.7.0.1
  */

@@ -74,6 +74,7 @@ public class GamePage
 {
   private static final String TAG = "GamePage";
   private Activity mActivity;
+  private GamePackage.Orientation mCurOrientation;
   private CustomButtonManager mCustomButtonManager;
   private TextView mDebuggerEndBtn;
   private View mDebuggerLayer;
@@ -85,13 +86,13 @@ public class GamePage
   private MiniGamePackage mGameInfo;
   private SurfaceView mGameSurfaceView;
   private int mGameWidth = 0;
-  private boolean mIsOrientationLandscape;
   private IMiniAppContext mMiniAppContext;
   private MiniAppMonitorInfoView mMiniAppMonitorInfoView;
   private GameNavigationBar mNavigationBar;
   private View mPayForFriendView;
   private PendantManager mPendantManager;
   private ViewGroup mRootView;
+  private GamePackage.Orientation mTargetOrientation;
   private Handler mUIHandler = new Handler(Looper.getMainLooper());
   private VConsoleLogManager mVConsoleManager;
   private VConsoleDragView vConsoleBtn;
@@ -105,7 +106,6 @@ public class GamePage
       return;
     }
     AppStateEvent.obtain(2031).notifyRuntime(this.mMiniAppContext);
-    checkGameLandscape();
     this.mGameContainerView = ((ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(R.layout.mini_sdk_game_layout, paramViewGroup, false));
     this.mGameSurfaceView = ((SurfaceView)this.mGameContainerView.findViewById(R.id.mini_sdk_game_layout_surface_view));
     paramViewGroup.addView(this.mGameContainerView, 0);
@@ -148,10 +148,86 @@ public class GamePage
       paramViewGroup.addView(this.vConsoleBtn);
       this.vConsoleBtn.bringToFront();
       this.vConsoleBtn.setVisibility(0);
-      if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE) {
-        this.vConsoleBtn.requestLandscapeLayout();
+    }
+  }
+  
+  private void calcTargetWidthAndHeight()
+  {
+    QMLog.i("GamePage", "initGameUI start create game SurfaceView & inject preload js");
+    int k;
+    if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    int i = this.mActivity.getResources().getDisplayMetrics().widthPixels;
+    int j = this.mActivity.getResources().getDisplayMetrics().heightPixels;
+    int m;
+    int n;
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      ((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      m = localDisplayMetrics.heightPixels;
+      n = localDisplayMetrics.widthPixels;
+      if (Build.MANUFACTURER.equalsIgnoreCase("huawei"))
+      {
+        i = n;
+        j = m;
+        if (Settings.Secure.getInt(this.mActivity.getContentResolver(), "display_notch_status", 0) != 1) {
+          break label254;
+        }
+        i = n;
+        j = m;
+        if (k == 0) {
+          break label254;
+        }
+        i = DisplayUtil.getStatusBarHeight(this.mActivity);
+      }
+      else
+      {
+        i = n;
+        j = m;
+        if (!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
+          break label254;
+        }
+        i = n;
+        j = m;
+        if (Settings.Global.getInt(this.mActivity.getContentResolver(), "force_black", 0) != 1) {
+          break label254;
+        }
+        QMLog.i("GamePage", "xiaomi has notch");
+        if (k == 0) {
+          break label240;
+        }
+        i = DisplayUtil.getStatusBarHeight(this.mActivity);
+      }
+      i = n - i;
+      j = m;
+      break label254;
+      label240:
+      j = m - DisplayUtil.getStatusBarHeight(this.mActivity);
+      i = n;
+    }
+    label254:
+    if ((k == 0) || (i > j))
+    {
+      n = i;
+      m = j;
+      if (k == 0)
+      {
+        n = i;
+        m = j;
+        if (j > i) {}
       }
     }
+    else
+    {
+      m = i;
+      n = j;
+    }
+    this.mGameWidth = n;
+    this.mGameHeight = m;
   }
   
   private void changeWindowInfo(MiniAppInfo paramMiniAppInfo)
@@ -173,120 +249,7 @@ public class GamePage
       QMLog.i("GamePage", "skip changeWindowInfo for InternalApp.");
       return;
     }
-    ThreadManager.executeOnComputationThreadPool(new GamePage.1(this, paramMiniAppInfo, this.mActivity));
-  }
-  
-  private void checkGameLandscape()
-  {
-    Object localObject;
-    if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE)
-    {
-      this.mIsOrientationLandscape = true;
-      this.mActivity.setRequestedOrientation(0);
-      localObject = this.mNavigationBar;
-      if (localObject != null) {
-        ((GameNavigationBar)localObject).requestLandscapeLayout();
-      }
-    }
-    else
-    {
-      this.mIsOrientationLandscape = false;
-      this.mActivity.setRequestedOrientation(1);
-    }
-    try
-    {
-      boolean bool = new JSONObject(this.mGameInfo.getGameConfig()).optBoolean("showStatusBar", false);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("initGameUI game config showStatusBar=");
-      ((StringBuilder)localObject).append(bool);
-      QMLog.i("GamePage", ((StringBuilder)localObject).toString());
-      if (!bool) {
-        this.mActivity.getWindow().setFlags(1024, 1024);
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      label138:
-      int k;
-      int i;
-      int j;
-      int m;
-      int n;
-      break label138;
-    }
-    QMLog.i("GamePage", "initGameUI start create game SurfaceView & inject preload js");
-    System.currentTimeMillis();
-    if (this.mGameInfo.getOrientation() == GamePackage.Orientation.LANDSCAPE) {
-      k = 1;
-    } else {
-      k = 0;
-    }
-    i = this.mActivity.getResources().getDisplayMetrics().widthPixels;
-    j = this.mActivity.getResources().getDisplayMetrics().heightPixels;
-    if (Build.VERSION.SDK_INT >= 17)
-    {
-      localObject = new DisplayMetrics();
-      ((WindowManager)this.mActivity.getSystemService("window")).getDefaultDisplay().getRealMetrics((DisplayMetrics)localObject);
-      m = ((DisplayMetrics)localObject).heightPixels;
-      n = ((DisplayMetrics)localObject).widthPixels;
-      if (Build.MANUFACTURER.equalsIgnoreCase("huawei"))
-      {
-        i = n;
-        j = m;
-        if (Settings.Secure.getInt(this.mActivity.getContentResolver(), "display_notch_status", 0) != 1) {
-          break label396;
-        }
-        i = n;
-        j = m;
-        if (k == 0) {
-          break label396;
-        }
-        i = DisplayUtil.getStatusBarHeight(this.mActivity);
-      }
-      else
-      {
-        i = n;
-        j = m;
-        if (!Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
-          break label396;
-        }
-        i = n;
-        j = m;
-        if (Settings.Global.getInt(this.mActivity.getContentResolver(), "force_black", 0) != 1) {
-          break label396;
-        }
-        QMLog.i("GamePage", "xiaomi has notch");
-        if (k == 0) {
-          break label382;
-        }
-        i = DisplayUtil.getStatusBarHeight(this.mActivity);
-      }
-      i = n - i;
-      j = m;
-      break label396;
-      label382:
-      j = m - DisplayUtil.getStatusBarHeight(this.mActivity);
-      i = n;
-    }
-    label396:
-    if ((k == 0) || (i > j))
-    {
-      n = i;
-      m = j;
-      if (k == 0)
-      {
-        n = i;
-        m = j;
-        if (j > i) {}
-      }
-    }
-    else
-    {
-      m = i;
-      n = j;
-    }
-    this.mGameWidth = n;
-    this.mGameHeight = m;
+    ThreadManager.executeOnComputationThreadPool(new GamePage.2(this, paramMiniAppInfo, this.mActivity));
   }
   
   private VConsoleDragView createVConsoleBtn()
@@ -298,7 +261,7 @@ public class GamePage
     localLayoutParams.setMargins(0, 0, DisplayUtil.dip2px(this.mActivity, 12.0F), DisplayUtil.dip2px(this.mActivity, 12.0F));
     localVConsoleDragView.setLayoutParams(localLayoutParams);
     localVConsoleDragView.setListener(this);
-    this.mUIHandler.postDelayed(new GamePage.2(this, localVConsoleDragView), 1500L);
+    this.mUIHandler.postDelayed(new GamePage.3(this, localVConsoleDragView), 1500L);
     return localVConsoleDragView;
   }
   
@@ -429,12 +392,18 @@ public class GamePage
       this.mRootView.addView(this.mDebuggerView, localLayoutParams);
       this.mDebuggerStatusTv = ((TextView)this.mDebuggerView.findViewById(R.id.debugger_status_tv));
       this.mDebuggerEndBtn = ((TextView)this.mDebuggerView.findViewById(R.id.debugger_end_btn));
-      this.mDebuggerEndBtn.setOnClickListener(new GamePage.4(this));
+      this.mDebuggerEndBtn.setOnClickListener(new GamePage.5(this));
       this.mDebuggerLayer = new View(this.mActivity);
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
       this.mDebuggerLayer.setBackgroundColor(this.mActivity.getResources().getColor(R.color.mini_sdk_color_hei_trans_8));
       this.mRootView.addView(this.mDebuggerLayer, localLayoutParams);
     }
+  }
+  
+  private void initOrientation()
+  {
+    this.mCurOrientation = GamePackage.Orientation.PORTRAIT;
+    this.mTargetOrientation = this.mGameInfo.getOrientation();
   }
   
   private void initVConsolePanel()
@@ -464,6 +433,36 @@ public class GamePage
     return (localVConsoleView != null) && (localVConsoleView.getVisibility() == 0);
   }
   
+  private void setStatusBar()
+  {
+    try
+    {
+      boolean bool = new JSONObject(this.mGameInfo.getGameConfig()).optBoolean("showStatusBar", false);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initGameUI game config showStatusBar=");
+      localStringBuilder.append(bool);
+      QMLog.i("GamePage", localStringBuilder.toString());
+      if (!bool)
+      {
+        this.mActivity.getWindow().setFlags(1024, 1024);
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      QMLog.e("GamePage", "getStatusBar config error -->", localJSONException);
+    }
+  }
+  
+  public void adjustViewForOrientation()
+  {
+    Activity localActivity = this.mActivity;
+    if (localActivity == null) {
+      return;
+    }
+    localActivity.runOnUiThread(new GamePage.1(this));
+  }
+  
   public void checkPayForFriendLogic(MiniAppInfo paramMiniAppInfo)
   {
     if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)) && (!TextUtils.isEmpty(paramMiniAppInfo.prepayId)))
@@ -482,7 +481,7 @@ public class GamePage
         this.mPayForFriendView.setVisibility(0);
         this.mPayForFriendView.bringToFront();
         QMLog.d("PayForFriendView", "checkPayForFriendLogic show webview success");
-        ActivityResultManager.g().addActivityResultListener(new GamePage.5(this, (PayProxy)localObject));
+        ActivityResultManager.g().addActivityResultListener(new GamePage.6(this, (PayProxy)localObject));
       }
       return;
     }
@@ -540,7 +539,25 @@ public class GamePage
   
   public AppPageInfo getPageInfo(int paramInt)
   {
-    return new AppPageInfo.Builder().setSurfaceViewHeight(getGameViewHeight()).setSurfaceViewWidth(getGameViewWidth()).setWindowWidth(this.mGameWidth).setWindowHeight(this.mGameHeight).build();
+    if (this.mCurOrientation == this.mTargetOrientation) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    AppPageInfo.Builder localBuilder = new AppPageInfo.Builder();
+    int i;
+    if (paramInt != 0) {
+      i = getGameViewHeight();
+    } else {
+      i = getGameViewWidth();
+    }
+    localBuilder = localBuilder.setSurfaceViewHeight(i);
+    if (paramInt != 0) {
+      paramInt = getGameViewWidth();
+    } else {
+      paramInt = getGameViewHeight();
+    }
+    return localBuilder.setSurfaceViewWidth(paramInt).setWindowWidth(this.mGameWidth).setWindowHeight(this.mGameHeight).build();
   }
   
   public String getPageOrientation()
@@ -583,16 +600,19 @@ public class GamePage
   
   boolean isOrientationLandscape()
   {
-    return this.mIsOrientationLandscape;
+    return this.mTargetOrientation == GamePackage.Orientation.LANDSCAPE;
   }
   
   public void onAttachWindow(Activity paramActivity, ViewGroup paramViewGroup)
   {
     this.mActivity = paramActivity;
     this.mRootView = paramViewGroup;
+    initOrientation();
+    setStatusBar();
     attachNavigationBar(paramViewGroup);
     attachGameSurfaceView(paramViewGroup);
     attachVConsoleView(paramViewGroup);
+    calcTargetWidthAndHeight();
   }
   
   public void onCreate(MiniAppInfo paramMiniAppInfo)
@@ -782,7 +802,7 @@ public class GamePage
   
   void updateDebuggerStatus(String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.mActivity.runOnUiThread(new GamePage.3(this, paramString1, paramString2, paramBoolean));
+    this.mActivity.runOnUiThread(new GamePage.4(this, paramString1, paramString2, paramBoolean));
   }
   
   void updateMonitorFPSText(double paramDouble)
@@ -794,7 +814,7 @@ public class GamePage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GamePage
  * JD-Core Version:    0.7.0.1
  */

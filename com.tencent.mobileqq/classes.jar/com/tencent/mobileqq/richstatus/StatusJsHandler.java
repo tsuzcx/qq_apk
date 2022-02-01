@@ -32,23 +32,23 @@ import mqq.observer.BusinessObserver;
 public class StatusJsHandler
   extends JsBridge.JsHandler
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  IPublicAccountDetail jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail = null;
-  public String a;
-  WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new StatusJsHandler.3(this);
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new StatusJsHandler.4(this);
-  boolean jdField_b_of_type_Boolean = false;
-  String c;
+  WeakReference<BaseActivity> a;
+  WeakReference<WebView> b;
+  public String c;
+  IPublicAccountDetail d = null;
+  boolean e = false;
+  boolean f = false;
+  String g;
+  String h;
+  private Handler i;
+  private BusinessObserver j = new StatusJsHandler.3(this);
+  private BusinessObserver k = new StatusJsHandler.4(this);
   
   public StatusJsHandler(BaseActivity paramBaseActivity, WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramBaseActivity);
+    this.b = new WeakReference(paramWebView);
+    this.c = paramString;
   }
   
   private void a(BaseActivity paramBaseActivity, String paramString)
@@ -60,13 +60,13 @@ public class StatusJsHandler
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.7.0,3,5295");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.8.17,3,5770");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
       localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(paramString));
       localNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-      localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+      localNewIntent.setObserver(this.j);
       paramBaseActivity.app.startServlet(localNewIntent);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest exit");
@@ -78,7 +78,7 @@ public class StatusJsHandler
       label138:
       break label138;
     }
-    a(this.c, "false");
+    a(this.h, "false");
   }
   
   private void b(BaseActivity paramBaseActivity, String paramString)
@@ -94,7 +94,7 @@ public class StatusJsHandler
       localFollowRequest.uin.set((int)Long.parseLong(paramString));
       localFollowRequest.ext.set("0");
       localNewIntent.putExtra("data", localFollowRequest.toByteArray());
-      localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
+      localNewIntent.setObserver(this.k);
       paramBaseActivity.app.startServlet(localNewIntent);
       ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportFollowEvent(paramBaseActivity.app, paramString, 0);
       if (QLog.isColorLevel()) {
@@ -107,38 +107,38 @@ public class StatusJsHandler
       label139:
       break label139;
     }
-    a(this.c, "false");
+    a(this.h, "false");
   }
   
   void a(int paramInt)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
     if (localBaseActivity != null)
     {
       if (localBaseActivity.isFinishing()) {
         return;
       }
-      QQToast.a(localBaseActivity, paramInt, 0).b(localBaseActivity.getTitleBarHeight());
+      QQToast.makeText(localBaseActivity, paramInt, 0).show(localBaseActivity.getTitleBarHeight());
     }
   }
   
   void a(BaseActivity paramBaseActivity, IPublicAccountDetail paramIPublicAccountDetail)
   {
     EntityManager localEntityManager = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
-    IPublicAccountDetail localIPublicAccountDetail = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail;
+    IPublicAccountDetail localIPublicAccountDetail = this.d;
     if ((localIPublicAccountDetail != null) && (localIPublicAccountDetail.getId() != -1L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, paramIPublicAccountDetail.getName());
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.clone(paramIPublicAccountDetail);
-      if (!localEntityManager.update(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail.getEntity())) {
+      this.d.clone(paramIPublicAccountDetail);
+      if (!localEntityManager.update(this.d.getEntity())) {
         localEntityManager.drop(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class));
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiIPublicAccountDetail = paramIPublicAccountDetail;
+      this.d = paramIPublicAccountDetail;
       localEntityManager.persist(paramIPublicAccountDetail.getEntity());
     }
     localEntityManager.close();
@@ -150,31 +150,31 @@ public class StatusJsHandler
   
   void a(String paramString1, String paramString2)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
+    WebView localWebView = (WebView)this.b.get();
     if ((paramString1 != null) && (localBaseActivity != null) && (!localBaseActivity.isFinishing()))
     {
       if (localWebView == null) {
         return;
       }
-      if (this.jdField_a_of_type_AndroidOsHandler == null) {
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      if (this.i == null) {
+        this.i = new Handler(Looper.getMainLooper());
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new StatusJsHandler.2(this, paramString1, paramString2, localWebView));
+      this.i.post(new StatusJsHandler.2(this, paramString1, paramString2, localWebView));
     }
   }
   
   public void followAccount(String paramString1, String paramString2)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
     if (localBaseActivity == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.c = paramString2;
+    this.e = true;
+    this.h = paramString2;
     paramString2 = localBaseActivity.app.getEntityManagerFactory().createEntityManager();
     IPublicAccountDetail localIPublicAccountDetail = (IPublicAccountDetail)paramString2.find(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class), paramString1);
     paramString2.close();
@@ -188,15 +188,15 @@ public class StatusJsHandler
   
   public void getLocation(String paramString)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
     if (localBaseActivity == null) {
       return;
     }
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.f) {
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = true;
+    this.g = paramString;
     paramString = (LocationManager)localBaseActivity.getSystemService("location");
     if (paramString == null) {
       return;
@@ -206,7 +206,7 @@ public class StatusJsHandler
   
   public boolean hasFollowAccount(String paramString)
   {
-    Object localObject = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (BaseActivity)this.a.get();
     if (localObject == null) {
       return false;
     }
@@ -216,7 +216,7 @@ public class StatusJsHandler
   
   public void setData(String paramString1, String paramString2)
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BaseActivity localBaseActivity = (BaseActivity)this.a.get();
     if (localBaseActivity == null) {
       return;
     }
@@ -231,7 +231,7 @@ public class StatusJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler
  * JD-Core Version:    0.7.0.1
  */

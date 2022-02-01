@@ -55,12 +55,12 @@ public class c
   public boolean b()
   {
     super.b();
-    this.y = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
-    this.z = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
-    this.A = GLES20.glGetUniformLocation(p(), "blurStrength");
-    this.B = GLES20.glGetUniformLocation(p(), "sharpenStrength");
-    this.C = GLES20.glGetUniformLocation(p(), "ruddyStrength");
-    this.D = GLES20.glGetUniformLocation(p(), "whitenStrength");
+    this.y = GLES20.glGetUniformLocation(q(), "texelWidthOffset");
+    this.z = GLES20.glGetUniformLocation(q(), "texelHeightOffset");
+    this.A = GLES20.glGetUniformLocation(q(), "blurStrength");
+    this.B = GLES20.glGetUniformLocation(q(), "sharpenStrength");
+    this.C = GLES20.glGetUniformLocation(q(), "ruddyStrength");
+    this.D = GLES20.glGetUniformLocation(q(), "whitenStrength");
     return this.a != 0;
   }
   
@@ -76,7 +76,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.c.c
  * JD-Core Version:    0.7.0.1
  */

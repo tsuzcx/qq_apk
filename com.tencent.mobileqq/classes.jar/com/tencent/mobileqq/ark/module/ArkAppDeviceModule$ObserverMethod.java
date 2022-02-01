@@ -26,14 +26,14 @@ class ArkAppDeviceModule$ObserverMethod
         paramString = null;
         if ("Motion".equals(paramVariantWrapper))
         {
-          if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
+          if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.SENSORS")) {
             return false;
           }
           paramString = new ArkAppDeviceModule.ObserverMethod.1(this, l);
         }
         else if ("Orientation".equals(paramVariantWrapper))
         {
-          if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
+          if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.SENSORS")) {
             return false;
           }
           paramString = new ArkAppDeviceModule.ObserverMethod.2(this, l);
@@ -42,18 +42,18 @@ class ArkAppDeviceModule$ObserverMethod
         {
           if ("Position".equals(paramVariantWrapper))
           {
-            if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
+            if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.POSITION")) {
               return false;
             }
             if (QLog.isColorLevel()) {
-              QLog.i("ArkAppDeviceModule", 2, String.format("Position.app.%s", new Object[] { this.a.b }));
+              QLog.i("ArkAppDeviceModule", 2, String.format("Position.app.%s", new Object[] { this.a.f }));
             }
-            ArkModuleAPIAuthority.a(ArkAppDeviceModule.a(), this.a.b, "ark_authority_api_location", BaseApplication.getContext().getString(2131690126), new ArkAppDeviceModule.ObserverMethod.3(this, l));
+            ArkModuleAPIAuthority.a(ArkAppDeviceModule.d(), this.a.f, "ark_authority_api_location", BaseApplication.getContext().getString(2131887025), new ArkAppDeviceModule.ObserverMethod.3(this, l));
             return true;
           }
           if ("ConnectionTypeChange".equals(paramVariantWrapper))
           {
-            if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
+            if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.CONNECTION_TYPE")) {
               return false;
             }
             paramString = new ArkAppDeviceModule.ObserverMethod.4(this, l);
@@ -61,7 +61,7 @@ class ArkAppDeviceModule$ObserverMethod
         }
         if ((paramString != null) && (!"Position".equals(paramVariantWrapper)))
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager.a(paramString, l);
+          this.a.a.a(paramString, l);
           return true;
         }
       }
@@ -74,14 +74,14 @@ class ArkAppDeviceModule$ObserverMethod
         if (TextUtils.isEmpty(paramArrayOfVariantWrapper[0].GetString())) {
           return false;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager.a(paramArrayOfVariantWrapper[0].GetString());
+        this.a.a.a(paramArrayOfVariantWrapper[0].GetString());
         return true;
       }
       return false;
     }
     if ("GetCurrentPosition".equals(paramString))
     {
-      if (!ArkAPIPermission.a(this.a.b, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
+      if (!ArkAPIPermission.a(this.a.f, this.a.e, this.a.i, "permission.POSITION")) {
         return false;
       }
       if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1))
@@ -90,10 +90,10 @@ class ArkAppDeviceModule$ObserverMethod
           return false;
         }
         if (QLog.isColorLevel()) {
-          QLog.i("ArkAppDeviceModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.a.b }));
+          QLog.i("ArkAppDeviceModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.a.f }));
         }
         l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-        ArkModuleAPIAuthority.a(ArkAppDeviceModule.a(), this.a.b, "ark_authority_api_location", BaseApplication.getContext().getString(2131690126), new ArkAppDeviceModule.ObserverMethod.5(this, l));
+        ArkModuleAPIAuthority.a(ArkAppDeviceModule.d(), this.a.f, "ark_authority_api_location", BaseApplication.getContext().getString(2131887025), new ArkAppDeviceModule.ObserverMethod.5(this, l));
         return true;
       }
     }
@@ -102,7 +102,7 @@ class ArkAppDeviceModule$ObserverMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.ObserverMethod
  * JD-Core Version:    0.7.0.1
  */

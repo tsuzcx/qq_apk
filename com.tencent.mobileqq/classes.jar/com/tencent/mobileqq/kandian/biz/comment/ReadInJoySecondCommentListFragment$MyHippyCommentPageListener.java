@@ -23,23 +23,6 @@ class ReadInJoySecondCommentListFragment$MyHippyCommentPageListener
     this.a = new WeakReference(paramReadInJoySecondCommentListFragment);
   }
   
-  private static void a(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment)
-  {
-    if (ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment) != null)
-    {
-      paramReadInJoySecondCommentListFragment = ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment).getPerformanceData();
-      if (paramReadInJoySecondCommentListFragment != null)
-      {
-        long l1 = ((Long)paramReadInJoySecondCommentListFragment.get("openPageStart")).longValue();
-        long l2 = ((Long)paramReadInJoySecondCommentListFragment.get("loadModuleEnd")).longValue();
-        paramReadInJoySecondCommentListFragment = new StringBuilder();
-        paramReadInJoySecondCommentListFragment.append("hippy cost: ");
-        paramReadInJoySecondCommentListFragment.append(l2 - l1);
-        QLog.d("ReadInJoySecondCommentListFragment", 1, paramReadInJoySecondCommentListFragment.toString());
-      }
-    }
-  }
-  
   private static boolean a(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment)
   {
     if (paramReadInJoySecondCommentListFragment == null)
@@ -55,42 +38,59 @@ class ReadInJoySecondCommentListFragment$MyHippyCommentPageListener
     return true;
   }
   
-  private void b(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment)
+  private static void b(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment)
   {
-    if (ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment) != null)
+    if (ReadInJoySecondCommentListFragment.d(paramReadInJoySecondCommentListFragment) != null)
     {
-      ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment, true);
-      ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment);
-      if (ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment) != null) {
-        paramReadInJoySecondCommentListFragment.a(ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment), ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment), ReadInJoySecondCommentListFragment.b(paramReadInJoySecondCommentListFragment), ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment));
+      paramReadInJoySecondCommentListFragment = ReadInJoySecondCommentListFragment.d(paramReadInJoySecondCommentListFragment).getPerformanceData();
+      if (paramReadInJoySecondCommentListFragment != null)
+      {
+        long l1 = ((Long)paramReadInJoySecondCommentListFragment.get("openPageStart")).longValue();
+        long l2 = ((Long)paramReadInJoySecondCommentListFragment.get("loadModuleEnd")).longValue();
+        paramReadInJoySecondCommentListFragment = new StringBuilder();
+        paramReadInJoySecondCommentListFragment.append("hippy cost: ");
+        paramReadInJoySecondCommentListFragment.append(l2 - l1);
+        QLog.d("ReadInJoySecondCommentListFragment", 1, paramReadInJoySecondCommentListFragment.toString());
       }
     }
   }
   
   private void c(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment)
   {
-    if (ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment) != null)
+    if (ReadInJoySecondCommentListFragment.d(paramReadInJoySecondCommentListFragment) != null)
     {
-      if (ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment) != null)
+      ReadInJoySecondCommentListFragment.b(paramReadInJoySecondCommentListFragment, true);
+      ReadInJoySecondCommentListFragment.e(paramReadInJoySecondCommentListFragment);
+      if (ReadInJoySecondCommentListFragment.f(paramReadInJoySecondCommentListFragment) != null) {
+        paramReadInJoySecondCommentListFragment.a(ReadInJoySecondCommentListFragment.f(paramReadInJoySecondCommentListFragment), ReadInJoySecondCommentListFragment.g(paramReadInJoySecondCommentListFragment), ReadInJoySecondCommentListFragment.h(paramReadInJoySecondCommentListFragment), ReadInJoySecondCommentListFragment.i(paramReadInJoySecondCommentListFragment));
+      }
+    }
+  }
+  
+  private void d(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment)
+  {
+    if (ReadInJoySecondCommentListFragment.d(paramReadInJoySecondCommentListFragment) != null)
+    {
+      if (ReadInJoySecondCommentListFragment.j(paramReadInJoySecondCommentListFragment) != null)
       {
         try
         {
           FragmentTransaction localFragmentTransaction = paramReadInJoySecondCommentListFragment.getChildFragmentManager().beginTransaction();
-          localFragmentTransaction.remove(ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment));
+          localFragmentTransaction.remove(ReadInJoySecondCommentListFragment.d(paramReadInJoySecondCommentListFragment));
           localFragmentTransaction.commitAllowingStateLoss();
         }
         catch (Throwable localThrowable)
         {
           ReadInJoyHelper.a("ReadInJoySecondCommentListFragment", localThrowable);
         }
-        ((FrameLayout)ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment).findViewById(2131368189)).setVisibility(8);
-        ReadInJoySecondCommentListFragment.b(paramReadInJoySecondCommentListFragment);
+        ((FrameLayout)ReadInJoySecondCommentListFragment.j(paramReadInJoySecondCommentListFragment).findViewById(2131435054)).setVisibility(8);
+        ReadInJoySecondCommentListFragment.k(paramReadInJoySecondCommentListFragment);
       }
-      ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment).getTKDHippyEventDispatcher().clear();
+      ReadInJoySecondCommentListFragment.d(paramReadInJoySecondCommentListFragment).getTKDHippyEventDispatcher().clear();
       ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment, null);
     }
-    if (!ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment)) {
-      ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment, ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment));
+    if (!ReadInJoySecondCommentListFragment.l(paramReadInJoySecondCommentListFragment)) {
+      ReadInJoySecondCommentListFragment.a(paramReadInJoySecondCommentListFragment, ReadInJoySecondCommentListFragment.j(paramReadInJoySecondCommentListFragment));
     }
   }
   
@@ -105,16 +105,16 @@ class ReadInJoySecondCommentListFragment$MyHippyCommentPageListener
       return;
     }
     if (paramBoolean) {
-      b((ReadInJoySecondCommentListFragment)localObject);
-    } else {
       c((ReadInJoySecondCommentListFragment)localObject);
+    } else {
+      d((ReadInJoySecondCommentListFragment)localObject);
     }
-    a((ReadInJoySecondCommentListFragment)localObject);
+    b((ReadInJoySecondCommentListFragment)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoySecondCommentListFragment.MyHippyCommentPageListener
  * JD-Core Version:    0.7.0.1
  */

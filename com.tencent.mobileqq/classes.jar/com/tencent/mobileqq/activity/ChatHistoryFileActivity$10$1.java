@@ -10,14 +10,14 @@ class ChatHistoryFileActivity$10$1
   
   public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
-    this.a.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    this.a.b.a(this.a.c, 2, 5);
+    this.a.b.a();
+    this.a.d.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

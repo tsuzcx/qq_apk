@@ -31,15 +31,15 @@ public class QzoneResLoaderImpl
             if (paramInt != 5) {
               return -1;
             }
-            return 2131711697;
+            return 2131909335;
           }
-          return 2131711700;
+          return 2131909338;
         }
-        return 2131706449;
+        return 2131904308;
       }
-      return 2131706448;
+      return 2131904307;
     }
-    return 2131689923;
+    return 2131886564;
   }
   
   public int getStringId(String paramString)
@@ -53,7 +53,7 @@ public class QzoneResLoaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneResLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

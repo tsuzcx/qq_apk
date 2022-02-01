@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.tab;
 
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 
 final class RIJInjectImpl$2
   implements Runnable
@@ -10,7 +9,7 @@ final class RIJInjectImpl$2
   {
     try
     {
-      ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).reportKandianTabExposureFor81C3();
+      ReadInJoyUtils.f();
       return;
     }
     catch (Exception localException)
@@ -21,7 +20,7 @@ final class RIJInjectImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.RIJInjectImpl.2
  * JD-Core Version:    0.7.0.1
  */

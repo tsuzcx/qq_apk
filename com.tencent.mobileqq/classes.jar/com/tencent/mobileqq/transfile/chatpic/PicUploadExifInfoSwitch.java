@@ -15,7 +15,7 @@ public class PicUploadExifInfoSwitch
   
   public static boolean getSwitch()
   {
-    if (ZhuoXusManager.a().g()) {
+    if (ZhuoXusManager.a().j()) {
       return true;
     }
     if (EXIF_Info_Switch < 0) {
@@ -41,7 +41,7 @@ public class PicUploadExifInfoSwitch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.chatpic.PicUploadExifInfoSwitch
  * JD-Core Version:    0.7.0.1
  */

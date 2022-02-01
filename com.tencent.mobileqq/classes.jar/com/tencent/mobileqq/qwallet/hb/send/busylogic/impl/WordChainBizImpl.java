@@ -53,8 +53,6 @@ public class WordChainBizImpl
     return "";
   }
   
-  public void a(String paramString) {}
-  
   public boolean a(String paramString)
   {
     return !TextUtils.isEmpty(paramString);
@@ -63,7 +61,7 @@ public class WordChainBizImpl
   public InputFilter[] a(int paramInt)
   {
     int i;
-    if ((!SystemUtil.d()) && (!SystemUtil.e())) {
+    if ((!SystemUtil.g()) && (!SystemUtil.h())) {
       i = 0;
     } else {
       i = 1;
@@ -73,10 +71,12 @@ public class WordChainBizImpl
     }
     return new InputFilter[0];
   }
+  
+  public void b(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.WordChainBizImpl
  * JD-Core Version:    0.7.0.1
  */

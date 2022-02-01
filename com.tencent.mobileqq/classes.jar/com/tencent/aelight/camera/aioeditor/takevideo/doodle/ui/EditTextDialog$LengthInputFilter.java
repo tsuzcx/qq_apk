@@ -10,12 +10,12 @@ import com.tencent.mobileqq.widget.QQToast;
 public class EditTextDialog$LengthInputFilter
   implements InputFilter
 {
-  protected int a;
   private QQToast a;
+  protected int b;
   
   public EditTextDialog$LengthInputFilter(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public int a(CharSequence paramCharSequence)
@@ -42,17 +42,17 @@ public class EditTextDialog$LengthInputFilter
   
   protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131703858), 0);
+    if (this.a == null) {
+      this.a = QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131901804), 0);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.d()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
+    if (!this.a.isShowing()) {
+      this.a.show();
     }
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramInt3 = this.jdField_a_of_type_Int - (paramSpanned.length() - (paramInt4 - paramInt3));
+    paramInt3 = this.b - (paramSpanned.length() - (paramInt4 - paramInt3));
     paramInt4 = paramInt2 - paramInt1 - a(paramCharSequence.subSequence(paramInt1, paramInt2));
     if (paramInt3 > 0)
     {
@@ -87,7 +87,7 @@ public class EditTextDialog$LengthInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.LengthInputFilter
  * JD-Core Version:    0.7.0.1
  */

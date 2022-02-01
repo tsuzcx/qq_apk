@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.troopcreate.api.impl;
 
-import com.tencent.mobileqq.troop.troopcreate.NewTroopSearchResultDialog;
 import com.tencent.mobileqq.troop.troopcreate.TroopCreateUtils;
+import com.tencent.mobileqq.troop.troopcreate.ui.NewTroopSearchResultDialog;
 import java.util.ArrayList;
 
 class TroopCreateServiceImpl$1$1
@@ -12,14 +12,14 @@ class TroopCreateServiceImpl$1$1
   public void run()
   {
     TroopCreateUtils.a();
-    NewTroopSearchResultDialog localNewTroopSearchResultDialog = new NewTroopSearchResultDialog(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$1.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateApiImplTroopCreateServiceImpl$1.jdField_a_of_type_ComTencentMobileqqTroopApiITroopCreateInfoService$TroopCreateCallback);
-    localNewTroopSearchResultDialog.a(this.jdField_a_of_type_JavaUtilArrayList);
+    NewTroopSearchResultDialog localNewTroopSearchResultDialog = new NewTroopSearchResultDialog(this.b.b, this.b.c);
+    localNewTroopSearchResultDialog.a(this.a);
     localNewTroopSearchResultDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.api.impl.TroopCreateServiceImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

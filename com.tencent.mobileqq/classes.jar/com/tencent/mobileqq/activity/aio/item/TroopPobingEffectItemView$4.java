@@ -7,12 +7,12 @@ class TroopPobingEffectItemView$4
   
   public void run()
   {
-    TroopPobingEffectItemView.b(this.this$0);
+    TroopPobingEffectItemView.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingEffectItemView.4
  * JD-Core Version:    0.7.0.1
  */

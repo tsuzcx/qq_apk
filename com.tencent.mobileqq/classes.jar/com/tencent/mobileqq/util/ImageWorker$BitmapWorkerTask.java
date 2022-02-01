@@ -10,17 +10,17 @@ import java.util.Map;
 class ImageWorker$BitmapWorkerTask
   extends AsyncTask<Object, Void, Drawable>
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  private Object b;
+  private boolean c;
+  private final WeakReference<View> d;
   
   private View a()
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (!this.jdField_a_of_type_Boolean) {
+    View localView = (View)this.d.get();
+    if (!this.c) {
       return localView;
     }
-    if (this == ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker, localView)) {
+    if (this == ImageWorker.a(this.a, localView)) {
       return localView;
     }
     return null;
@@ -28,14 +28,14 @@ class ImageWorker$BitmapWorkerTask
   
   protected Drawable a(Object... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs[0];
-    String str = String.valueOf(this.jdField_a_of_type_JavaLangObject);
+    this.b = paramVarArgs[0];
+    String str = String.valueOf(this.b);
     ImageCreator localImageCreator = (ImageCreator)paramVarArgs[1];
-    this.jdField_a_of_type_Boolean = ((Boolean)paramVarArgs[2]).booleanValue();
-    if ((ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) && (!isCancelled()) && (a() != null)) {
-      ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker);
+    this.c = ((Boolean)paramVarArgs[2]).booleanValue();
+    if ((ImageWorker.b(this.a) != null) && (!isCancelled()) && (a() != null)) {
+      ImageWorker.c(this.a);
     }
-    if ((!isCancelled()) && (a() != null) && (!ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker))) {}
+    if ((!isCancelled()) && (a() != null) && (!ImageWorker.c(this.a))) {}
     try
     {
       paramVarArgs = localImageCreator.a();
@@ -45,8 +45,8 @@ class ImageWorker$BitmapWorkerTask
       label101:
       break label101;
     }
-    if (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) {
-      ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).a();
+    if (ImageWorker.b(this.a) != null) {
+      ImageWorker.b(this.a).a();
     }
     System.gc();
     Thread.yield();
@@ -61,8 +61,8 @@ class ImageWorker$BitmapWorkerTask
     }
     QLog.w("ImageWorker", 2, "OutOfMemoryError!!!!!");
     paramVarArgs = null;
-    if ((ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker) != null) && (paramVarArgs != null)) {
-      ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).a(str, paramVarArgs);
+    if ((ImageWorker.b(this.a) != null) && (paramVarArgs != null)) {
+      ImageWorker.b(this.a).a(str, paramVarArgs);
     }
     return paramVarArgs;
   }
@@ -70,8 +70,8 @@ class ImageWorker$BitmapWorkerTask
   protected void a(Drawable paramDrawable)
   {
     View localView = a();
-    ImageWorker.Tag localTag = (ImageWorker.Tag)ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker).remove(localView);
-    if ((isCancelled()) || (ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker))) {
+    ImageWorker.Tag localTag = (ImageWorker.Tag)ImageWorker.d(this.a).remove(localView);
+    if ((isCancelled()) || (ImageWorker.c(this.a))) {
       paramDrawable = null;
     }
     if (localView != null) {
@@ -82,14 +82,14 @@ class ImageWorker$BitmapWorkerTask
         }
       }
       else {
-        ImageWorker.a(this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker, this.jdField_a_of_type_Boolean, localView, paramDrawable, localTag);
+        ImageWorker.a(this.a, this.c, localView, paramDrawable, localTag);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageWorker.BitmapWorkerTask
  * JD-Core Version:    0.7.0.1
  */

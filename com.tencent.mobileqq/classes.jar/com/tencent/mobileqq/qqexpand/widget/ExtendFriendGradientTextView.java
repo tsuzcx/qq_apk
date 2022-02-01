@@ -8,77 +8,66 @@ import android.util.AttributeSet;
 import com.etrump.mixlayout.ETLayout;
 import com.etrump.mixlayout.ETTextView;
 import com.tencent.mobileqq.qqexpand.profilecard.ProfileCardExtendFriendView;
-import com.tencent.mobileqq.text.QQText;
-import cooperation.qzone.widget.QzoneEmotionUtils;
 
 public class ExtendFriendGradientTextView
   extends ETTextView
 {
-  int jdField_a_of_type_Int = 10;
-  ProfileCardExtendFriendView jdField_a_of_type_ComTencentMobileqqQqexpandProfilecardProfileCardExtendFriendView;
-  public String a;
-  public boolean a;
-  int jdField_b_of_type_Int = 0;
-  public String b;
-  boolean jdField_b_of_type_Boolean = true;
+  public String a = null;
+  public String b = null;
+  public boolean c = false;
+  int d = 10;
+  ProfileCardExtendFriendView e;
+  int f = 0;
+  boolean g = true;
   
   public ExtendFriendGradientTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public ExtendFriendGradientTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public ExtendFriendGradientTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((getETLayout() != null) && (getETLayout().a() > this.jdField_a_of_type_Int) && (getETLayout().a(0) != null))
+    if ((getETLayout() != null) && (getETLayout().a() > this.d) && (getETLayout().d(0) != null))
     {
-      this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * getETLayout().a(0).length);
+      this.f = (this.d * getETLayout().d(0).length);
       setShowMoreButton(true);
       return;
     }
-    if ((getLayout() != null) && (getLayout().getLineCount() > this.jdField_a_of_type_Int))
+    if ((getLayout() != null) && (getLayout().getLineCount() > this.d))
     {
-      this.jdField_b_of_type_Int = getLayout().getLineStart(this.jdField_a_of_type_Int);
+      this.f = getLayout().getLineStart(this.d);
       setShowMoreButton(true);
     }
   }
   
   public void setCardView(ProfileCardExtendFriendView paramProfileCardExtendFriendView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandProfilecardProfileCardExtendFriendView = paramProfileCardExtendFriendView;
+    this.e = paramProfileCardExtendFriendView;
   }
   
   public void setContent(String paramString)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str == null) {
       str = "";
     }
-    this.jdField_a_of_type_JavaLangString = str;
-    if ((paramString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    this.a = str;
+    if ((paramString != null) && (!this.a.equals(paramString)))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      str = this.jdField_b_of_type_JavaLangString;
-      if ((str != null) && (this.jdField_b_of_type_Boolean))
+      this.a = paramString;
+      str = this.b;
+      if ((str != null) && (this.g))
       {
         setETContent(str);
         return;
@@ -89,39 +78,40 @@ public class ExtendFriendGradientTextView
   
   public void setETContent(String paramString)
   {
-    super.setTextMsg(new QQText(QzoneEmotionUtils.emCodesToQQcodes(paramString), 3, 24));
+    super.setTextMsg(paramString);
+    setTextSize(1, 16.0F);
   }
   
   public void setFold(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     if (paramBoolean)
     {
-      String str2 = this.jdField_b_of_type_JavaLangString;
+      String str2 = this.b;
       String str1 = str2;
       if (str2 == null) {
-        str1 = this.jdField_a_of_type_JavaLangString;
+        str1 = this.a;
       }
       setETContent(str1);
       return;
     }
-    setETContent(this.jdField_a_of_type_JavaLangString);
+    setETContent(this.a);
   }
   
   public void setShowMoreButton(boolean paramBoolean)
   {
-    if (paramBoolean != this.jdField_a_of_type_Boolean)
+    if (paramBoolean != this.c)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandProfilecardProfileCardExtendFriendView.a(paramBoolean);
-      setETContent(this.jdField_b_of_type_JavaLangString);
+      this.c = paramBoolean;
+      this.b = this.a.substring(0, this.f);
+      this.e.a(paramBoolean);
+      setETContent(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendGradientTextView
  * JD-Core Version:    0.7.0.1
  */

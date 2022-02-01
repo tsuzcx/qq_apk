@@ -12,12 +12,12 @@ class NativeAdDislikeHelper$4
   
   public void onShow(DialogInterface paramDialogInterface)
   {
-    NativeAdDislikeHelper.a(this.a).getWindow().clearFlags(8);
+    NativeAdDislikeHelper.c(this.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdDislikeHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ class ViolaCommentManager$7
   
   public void a()
   {
-    if (ViolaCommentManager.a(this.a) != null) {
-      ViolaCommentManager.a(this.a).a();
+    if (ViolaCommentManager.h(this.a) != null) {
+      ViolaCommentManager.h(this.a).a();
     }
   }
   
@@ -32,21 +32,21 @@ class ViolaCommentManager$7
       return;
     }
     ViolaCommentManager.a(this.a, true);
-    ViolaCommentManager.a(this.a).d();
+    ViolaCommentManager.g(this.a).l();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131364710) {
+    if (paramView.getId() != 2131430816) {
       return;
     }
     this.a.c(0);
-    ViolaCommentManager.a(this.a);
+    ViolaCommentManager.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.topicvideo.ViolaCommentManager.7
  * JD-Core Version:    0.7.0.1
  */

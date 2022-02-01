@@ -12,33 +12,33 @@ class ProgressPieDrawable$AnimationHandler
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.isVisible())
+    if (!this.b.isVisible())
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b = this.jdField_a_of_type_Int;
+      this.b.e = this.a;
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b > this.jdField_a_of_type_Int)
+    if (this.b.e > this.a)
     {
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable;
-      paramMessage.c(paramMessage.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
+      paramMessage = this.b;
+      paramMessage.d(paramMessage.e - 1);
+      sendEmptyMessageDelayed(0, this.b.z);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b < this.jdField_a_of_type_Int)
+    if (this.b.e < this.a)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.f;
-      int j = this.jdField_a_of_type_Int;
+      int i = this.b.e + this.b.A;
+      int j = this.a;
       if (i <= j) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(i);
+        this.b.d(i);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(j);
+        this.b.d(j);
       }
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
+      sendEmptyMessageDelayed(0, this.b.z);
       return;
     }
     removeMessages(0);
@@ -46,7 +46,7 @@ class ProgressPieDrawable$AnimationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressPieDrawable.AnimationHandler
  * JD-Core Version:    0.7.0.1
  */

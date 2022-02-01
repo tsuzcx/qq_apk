@@ -86,7 +86,7 @@ class UFTTroopPbProtoRequestor$2
     paramArrayOfByte.append(" ");
     paramArrayOfByte.append(paramBundle.toString());
     UFTLog.b("[UFTTransfer] UFTTrpPbProtoRequestor", 1, paramArrayOfByte.toString());
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqUftransferProtoUFTProtoRequestor$TroopReqUploadResponseCallback;
+    paramArrayOfByte = this.a;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(bool, paramBundle);
     }
@@ -94,7 +94,7 @@ class UFTTroopPbProtoRequestor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTTroopPbProtoRequestor.2
  * JD-Core Version:    0.7.0.1
  */

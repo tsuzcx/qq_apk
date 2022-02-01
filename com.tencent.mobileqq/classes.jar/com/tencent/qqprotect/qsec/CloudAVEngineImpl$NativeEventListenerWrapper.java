@@ -19,14 +19,14 @@ final class CloudAVEngineImpl$NativeEventListenerWrapper
       {
         if (paramInt == 3)
         {
-          int i = paramResultBundle.jdField_a_of_type_Int;
+          int i = paramResultBundle.a;
           int j = paramResultBundle.b;
           int k = paramResultBundle.c;
-          int m = paramResultBundle.d;
-          paramDetectBundle = paramResultBundle.jdField_a_of_type_ArrayOfByte;
+          int m = paramResultBundle.e;
+          paramDetectBundle = paramResultBundle.g;
           l2 = this.a;
           long l3 = paramInt;
-          if (paramResultBundle.jdField_a_of_type_Boolean) {
+          if (paramResultBundle.f) {
             l1 = 1L;
           }
           QSecFramework.a(5L, l2, l3, l1, null, null, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), paramDetectBundle }, null);
@@ -40,7 +40,7 @@ final class CloudAVEngineImpl$NativeEventListenerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.NativeEventListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

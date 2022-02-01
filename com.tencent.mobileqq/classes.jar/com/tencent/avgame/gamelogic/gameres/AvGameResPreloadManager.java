@@ -9,7 +9,7 @@ public class AvGameResPreloadManager
 {
   public static IAvGameResPreloadManager.ConfInfo a()
   {
-    CJPreloadConfBean localCJPreloadConfBean = AvGameConfigUtil.a();
+    CJPreloadConfBean localCJPreloadConfBean = AvGameConfigUtil.c();
     if (localCJPreloadConfBean == null)
     {
       if (QLog.isColorLevel()) {

@@ -13,24 +13,24 @@ import java.util.WeakHashMap;
 public final class AnimatorProxy
   extends Animation
 {
-  static final WeakHashMap<View, AnimatorProxy> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   public static final boolean a;
-  float jdField_a_of_type_Float = 1.0F;
-  final Camera jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-  final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  float jdField_b_of_type_Float;
-  final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_b_of_type_Boolean;
-  float c;
-  float d;
-  float e;
-  float f;
-  float g = 1.0F;
-  float h = 1.0F;
+  static final WeakHashMap<View, AnimatorProxy> b = new WeakHashMap();
+  final WeakReference<View> c;
+  final Camera d = new Camera();
+  boolean e;
+  float f = 1.0F;
+  float g;
+  float h;
   float i;
   float j;
+  float k;
+  float l = 1.0F;
+  float m = 1.0F;
+  float n;
+  float o;
+  final RectF p = new RectF();
+  final RectF q = new RectF();
+  final Matrix r = new Matrix();
   
   static
   {
@@ -40,7 +40,7 @@ public final class AnimatorProxy
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
+    a = bool;
   }
   
   private AnimatorProxy(View paramView)
@@ -48,12 +48,12 @@ public final class AnimatorProxy
     setDuration(0L);
     setFillAfter(true);
     paramView.setAnimation(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.c = new WeakReference(paramView);
   }
   
   public static AnimatorProxy a(View paramView)
   {
-    AnimatorProxy localAnimatorProxy2 = (AnimatorProxy)jdField_a_of_type_JavaUtilWeakHashMap.get(paramView);
+    AnimatorProxy localAnimatorProxy2 = (AnimatorProxy)b.get(paramView);
     AnimatorProxy localAnimatorProxy1;
     if (localAnimatorProxy2 != null)
     {
@@ -63,16 +63,16 @@ public final class AnimatorProxy
     else
     {
       localAnimatorProxy1 = new AnimatorProxy(paramView);
-      jdField_a_of_type_JavaUtilWeakHashMap.put(paramView, localAnimatorProxy1);
+      b.put(paramView, localAnimatorProxy1);
     }
     return localAnimatorProxy1;
   }
   
   private void a()
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    View localView = (View)this.c.get();
     if (localView != null) {
-      a(this.jdField_a_of_type_AndroidGraphicsRectF, localView);
+      a(this.p, localView);
     }
   }
   
@@ -80,25 +80,25 @@ public final class AnimatorProxy
   {
     float f3 = paramView.getWidth();
     float f4 = paramView.getHeight();
-    boolean bool = this.jdField_b_of_type_Boolean;
+    boolean bool = this.e;
     float f1;
     if (bool) {
-      f1 = this.jdField_b_of_type_Float;
+      f1 = this.g;
     } else {
       f1 = f3 / 2.0F;
     }
     float f2;
     if (bool) {
-      f2 = this.c;
+      f2 = this.h;
     } else {
       f2 = f4 / 2.0F;
     }
-    float f5 = this.d;
-    float f6 = this.e;
-    float f7 = this.f;
+    float f5 = this.i;
+    float f6 = this.j;
+    float f7 = this.k;
     if ((f5 != 0.0F) || (f6 != 0.0F) || (f7 != 0.0F))
     {
-      paramView = this.jdField_a_of_type_AndroidGraphicsCamera;
+      paramView = this.d;
       paramView.save();
       paramView.rotateX(f5);
       paramView.rotateY(f6);
@@ -108,37 +108,37 @@ public final class AnimatorProxy
       paramMatrix.preTranslate(-f1, -f2);
       paramMatrix.postTranslate(f1, f2);
     }
-    f5 = this.g;
-    f6 = this.h;
+    f5 = this.l;
+    f6 = this.m;
     if ((f5 != 1.0F) || (f6 != 1.0F))
     {
       paramMatrix.postScale(f5, f6);
       paramMatrix.postTranslate(-(f1 / f3) * (f5 * f3 - f3), -(f2 / f4) * (f6 * f4 - f4));
     }
-    paramMatrix.postTranslate(this.i, this.j);
+    paramMatrix.postTranslate(this.n, this.o);
   }
   
   private void b()
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    View localView = (View)this.c.get();
     if (localView != null)
     {
       if (localView.getParent() == null) {
         return;
       }
-      RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      RectF localRectF = this.q;
       a(localRectF, localView);
-      localRectF.union(this.jdField_a_of_type_AndroidGraphicsRectF);
+      localRectF.union(this.p);
       ((View)localView.getParent()).invalidate((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
     }
   }
   
   public void a(float paramFloat)
   {
-    if (this.jdField_a_of_type_Float != paramFloat)
+    if (this.f != paramFloat)
     {
-      this.jdField_a_of_type_Float = paramFloat;
-      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      this.f = paramFloat;
+      View localView = (View)this.c.get();
       if (localView != null) {
         localView.invalidate();
       }
@@ -148,10 +148,10 @@ public final class AnimatorProxy
   public void a(RectF paramRectF, View paramView)
   {
     paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Matrix localMatrix = this.r;
     localMatrix.reset();
     a(localMatrix, paramView);
-    this.jdField_a_of_type_AndroidGraphicsMatrix.mapRect(paramRectF);
+    this.r.mapRect(paramRectF);
     paramRectF.offset(paramView.getLeft(), paramView.getTop());
     float f1;
     if (paramRectF.right < paramRectF.left)
@@ -170,79 +170,79 @@ public final class AnimatorProxy
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    View localView = (View)this.c.get();
     if (localView != null)
     {
-      paramTransformation.setAlpha(this.jdField_a_of_type_Float);
+      paramTransformation.setAlpha(this.f);
       a(paramTransformation.getMatrix(), localView);
     }
   }
   
   public void b(float paramFloat)
   {
-    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Float != paramFloat))
+    if ((!this.e) || (this.g != paramFloat))
     {
       a();
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_b_of_type_Float = paramFloat;
+      this.e = true;
+      this.g = paramFloat;
       b();
     }
   }
   
   public void c(float paramFloat)
   {
-    if ((!this.jdField_b_of_type_Boolean) || (this.c != paramFloat))
+    if ((!this.e) || (this.h != paramFloat))
     {
       a();
-      this.jdField_b_of_type_Boolean = true;
-      this.c = paramFloat;
+      this.e = true;
+      this.h = paramFloat;
       b();
     }
   }
   
   public void d(float paramFloat)
   {
-    if (this.g != paramFloat)
+    if (this.l != paramFloat)
     {
       a();
-      this.g = paramFloat;
+      this.l = paramFloat;
       b();
     }
   }
   
   public void e(float paramFloat)
   {
-    if (this.h != paramFloat)
+    if (this.m != paramFloat)
     {
       a();
-      this.h = paramFloat;
+      this.m = paramFloat;
       b();
     }
   }
   
   public void f(float paramFloat)
   {
-    if (this.i != paramFloat)
+    if (this.n != paramFloat)
     {
       a();
-      this.i = paramFloat;
+      this.n = paramFloat;
       b();
     }
   }
   
   public void g(float paramFloat)
   {
-    if (this.j != paramFloat)
+    if (this.o != paramFloat)
     {
       a();
-      this.j = paramFloat;
+      this.o = paramFloat;
       b();
     }
   }
   
   public void h(float paramFloat)
   {
-    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    View localView = (View)this.c.get();
     if (localView != null) {
       f(paramFloat - localView.getLeft());
     }
@@ -250,7 +250,7 @@ public final class AnimatorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.helpers.AnimatorProxy
  * JD-Core Version:    0.7.0.1
  */

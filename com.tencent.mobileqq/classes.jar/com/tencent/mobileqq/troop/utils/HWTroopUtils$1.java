@@ -22,7 +22,7 @@ final class HWTroopUtils$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("checkHomeworkTroopIdentity. troopUin=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", memberUin=");
       localStringBuilder.append(this.b);
       localStringBuilder.append(", level=");
@@ -35,7 +35,7 @@ final class HWTroopUtils$1
       }
       localStringBuilder.append(localObject);
       localStringBuilder.append(", reqMemberInfo=");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(", hwIdentity=");
       if (paramTroopMemberInfo == null) {
         localObject = str;
@@ -45,12 +45,12 @@ final class HWTroopUtils$1
       localStringBuilder.append(localObject);
       QLog.i("hw_troop", 2, localStringBuilder.toString());
     }
-    if ((paramTroopMemberInfo != null) || (this.jdField_a_of_type_Boolean)) {}
+    if ((paramTroopMemberInfo != null) || (this.c)) {}
     try
     {
-      long l1 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+      long l1 = Long.parseLong(this.a);
       long l2 = Long.parseLong(this.b);
-      ((ITroopMemberCardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER)).a(l1, l2, true);
+      ((ITroopMemberCardHandler)this.d.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER)).a(l1, l2, true);
       return;
     }
     catch (NumberFormatException paramTroopMemberInfo)
@@ -59,20 +59,20 @@ final class HWTroopUtils$1
       break label207;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("hw_troop", 2, new Object[] { "checkIdentity NumberFormatException,info.troopuin=", this.jdField_a_of_type_JavaLangString, ", memberuin=", this.b });
+      QLog.d("hw_troop", 2, new Object[] { "checkIdentity NumberFormatException,info.troopuin=", this.a, ", memberuin=", this.b });
     }
     return;
     if (!((IHWTroopUtilsApi)QRoute.api(IHWTroopUtilsApi.class)).hasHomeworkTroopIdentity(paramTroopMemberInfo.hwIdentity))
     {
-      ((IHomeworkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopHomeworkHandlerName())).a(this.jdField_a_of_type_JavaLangString, this.b);
+      ((IHomeworkHandler)this.d.getBusinessHandler(((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopHomeworkHandlerName())).a(this.a, this.b);
       return;
     }
-    HWTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener, paramTroopMemberInfo.level);
+    HWTroopUtils.a(this.e, paramTroopMemberInfo.level);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HWTroopUtils.1
  * JD-Core Version:    0.7.0.1
  */

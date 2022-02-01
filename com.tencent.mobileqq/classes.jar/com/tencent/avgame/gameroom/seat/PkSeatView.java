@@ -55,65 +55,50 @@ public class PkSeatView
   extends RoundEmptyRectRelativeLayout
   implements View.OnClickListener, ISeatView, ActionSheet.OnButtonClickListener, ActionSheet.OnDismissListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new PkSeatView.4(this));
-  private Vibrator jdField_a_of_type_AndroidOsVibrator;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new PkSeatView.1(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  protected UserInfoHandler a;
-  protected Player a;
-  private IGameRoomPresenter jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter;
+  private Handler A = new Handler(new PkSeatView.4(this));
   protected ISeatPresenter a;
-  private PkMemberItemView jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
-  private SeatMemberInfo jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo;
-  private ISurvivalSeatBgPresenter jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
-  private SurvivalSeatBgView jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView;
-  private RoundEmptyRectRelativeLayout.ClipRoundRect jdField_a_of_type_ComTencentAvgameUiRoundEmptyRectRelativeLayout$ClipRoundRect;
-  protected ActionSheet a;
-  protected boolean a;
-  private View jdField_b_of_type_AndroidViewView;
-  private ViewTreeObserver.OnGlobalLayoutListener jdField_b_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new PkSeatView.2(this);
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private PkMemberItemView jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
-  private SeatMemberInfo jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo;
-  private RoundEmptyRectRelativeLayout.ClipRoundRect jdField_b_of_type_ComTencentAvgameUiRoundEmptyRectRelativeLayout$ClipRoundRect;
-  protected boolean b;
-  private ImageView c;
-  private ImageView d;
-  private ImageView e;
+  protected UserInfoHandler b;
+  protected ActionSheet c;
+  protected Player d;
+  protected boolean e = false;
+  protected boolean f = false;
+  private PkMemberItemView g;
+  private PkMemberItemView h;
+  private ImageView i;
+  private SurvivalSeatBgView j;
+  private ISurvivalSeatBgPresenter k;
+  private SeatMemberInfo l;
+  private SeatMemberInfo m;
+  private ImageView n;
+  private ImageView o;
+  private ImageView p;
+  private ImageView q;
+  private Vibrator r;
+  private int s = -1;
+  private IGameRoomPresenter t;
+  private ViewTreeObserver.OnGlobalLayoutListener u = new PkSeatView.1(this);
+  private ViewTreeObserver.OnGlobalLayoutListener v = new PkSeatView.2(this);
+  private RoundEmptyRectRelativeLayout.ClipRoundRect w;
+  private RoundEmptyRectRelativeLayout.ClipRoundRect x;
+  private View y;
+  private View z;
   
   public PkSeatView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   public PkSeatView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
     a();
   }
   
   public PkSeatView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
     a();
-  }
-  
-  private SeatMemberInfo a()
-  {
-    SeatMemberInfo localSeatMemberInfo = new SeatMemberInfo();
-    localSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = new Player();
-    localSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin = "0";
-    localSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.nick = "loser";
-    return localSeatMemberInfo;
   }
   
   private String a(String paramString)
@@ -127,35 +112,35 @@ public class PkSeatView
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)GameEngine.a().a().getBusinessHandler(HandlerFactory.b));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter = new SeatPresenterImp(this);
-    Object localObject = View.inflate(getContext(), 2131558703, null);
-    this.jdField_b_of_type_AndroidViewView = View.inflate(getContext(), 2131558702, null);
+    this.b = ((UserInfoHandler)GameEngine.a().f().getBusinessHandler(HandlerFactory.b));
+    this.a = new SeatPresenterImp(this);
+    Object localObject = View.inflate(getContext(), 2131624320, null);
+    this.z = View.inflate(getContext(), 2131624319, null);
     addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131558705, null);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView = ((PkMemberItemView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370749));
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView = ((PkMemberItemView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370753));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a();
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a();
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.setOnClickListener(this);
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_b_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    ((ImageView)((View)localObject).findViewById(2131363301)).setImageBitmap(AVGameUtil.a("avgame_pk_member_blue@2x.png"));
-    ((ImageView)((View)localObject).findViewById(2131363302)).setImageBitmap(AVGameUtil.a("avgame_pk_member_red@2x.png"));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131363300));
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(AVGameUtil.a("avgame_pk_logo_static@2x.png"));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131363293));
-    this.c = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131363303));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.c.setVisibility(8);
-    this.d = ((ImageView)((View)localObject).findViewById(2131363312));
-    this.e = ((ImageView)((View)localObject).findViewById(2131363315));
-    this.d.setImageBitmap(AVGameUtil.a("avgame_pk_member_bg_blue@2x.png"));
-    this.e.setImageBitmap(AVGameUtil.a("avgame_pk_member_bg_red@2x.png"));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView = ((SurvivalSeatBgView)((View)localObject).findViewById(2131363313));
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView.setHorizontalSpacing(GameRoomViewLayoutParamsDef.M);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView.setVerticalSpacing(GameRoomViewLayoutParamsDef.M);
+    this.y = View.inflate(getContext(), 2131624322, null);
+    this.g = ((PkMemberItemView)this.y.findViewById(2131438050));
+    this.h = ((PkMemberItemView)this.y.findViewById(2131438058));
+    this.g.a();
+    this.h.a();
+    this.g.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    this.g.getViewTreeObserver().addOnGlobalLayoutListener(this.u);
+    this.h.getViewTreeObserver().addOnGlobalLayoutListener(this.v);
+    ((ImageView)((View)localObject).findViewById(2131429175)).setImageBitmap(AVGameUtil.c("avgame_pk_member_blue@2x.png"));
+    ((ImageView)((View)localObject).findViewById(2131429176)).setImageBitmap(AVGameUtil.c("avgame_pk_member_red@2x.png"));
+    this.i = ((ImageView)((View)localObject).findViewById(2131429174));
+    this.i.setImageBitmap(AVGameUtil.c("avgame_pk_logo_static@2x.png"));
+    this.n = ((ImageView)this.z.findViewById(2131429167));
+    this.o = ((ImageView)this.z.findViewById(2131429177));
+    this.n.setVisibility(8);
+    this.o.setVisibility(8);
+    this.p = ((ImageView)((View)localObject).findViewById(2131429186));
+    this.q = ((ImageView)((View)localObject).findViewById(2131429189));
+    this.p.setImageBitmap(AVGameUtil.c("avgame_pk_member_bg_blue@2x.png"));
+    this.q.setImageBitmap(AVGameUtil.c("avgame_pk_member_bg_red@2x.png"));
+    this.j = ((SurvivalSeatBgView)((View)localObject).findViewById(2131429187));
+    this.j.setHorizontalSpacing(GameRoomViewLayoutParamsDef.M);
+    this.j.setVerticalSpacing(GameRoomViewLayoutParamsDef.M);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -171,26 +156,26 @@ public class PkSeatView
       ((StringBuilder)localObject).append(GameRoomViewLayoutParamsDef.P);
       QLog.d("PkSeatView", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView.a();
+    this.k = this.j.getPresenter();
     post(new PkSeatView.3(this));
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsVibrator == null) {
-      this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)getContext().getSystemService("vibrator"));
+    if (this.r == null) {
+      this.r = ((Vibrator)getContext().getSystemService("vibrator"));
     }
-    if (!this.jdField_a_of_type_AndroidOsVibrator.hasVibrator()) {
+    if (!this.r.hasVibrator()) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsVibrator.cancel();
+    this.r.cancel();
     if (Build.VERSION.SDK_INT > 25)
     {
       VibrationEffect localVibrationEffect = VibrationEffect.createOneShot(paramInt, -1);
-      this.jdField_a_of_type_AndroidOsVibrator.vibrate(localVibrationEffect);
+      this.r.vibrate(localVibrationEffect);
       return;
     }
-    this.jdField_a_of_type_AndroidOsVibrator.vibrate(paramInt);
+    this.r.vibrate(paramInt);
   }
   
   private void a(ImageView paramImageView, String paramString)
@@ -209,111 +194,111 @@ public class PkSeatView
   
   private void b()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.a();
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = null;
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = null;
+    Object localObject2 = this.a.a();
+    this.l = null;
+    this.m = null;
     if (localObject2 != null)
     {
       Object localObject1;
       if (((List)localObject2).isEmpty())
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = new SeatMemberInfo();
+        this.l = new SeatMemberInfo();
         localObject1 = new Player();
-        ((Player)localObject1).uin = GameEngine.a().a().getCurrentAccountUin();
+        ((Player)localObject1).uin = GameEngine.a().f().getCurrentAccountUin();
         if ((((Player)localObject1).uin.equals(((Player)localObject1).nick)) || (TextUtils.isEmpty(((Player)localObject1).nick)))
         {
           localObject2 = new ArrayList(1);
           ((ArrayList)localObject2).add(((Player)localObject1).uin);
-          localObject2 = (String)this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.a((List)localObject2).get(((Player)localObject1).uin);
+          localObject2 = (String)this.b.a((List)localObject2).get(((Player)localObject1).uin);
           if (localObject2 != null) {
             ((Player)localObject1).nick = ((String)localObject2);
           }
         }
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject1);
+        this.l.a = ((Player)localObject1);
         return;
       }
       if (((List)localObject2).size() == 1)
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = ((SeatMemberInfo)((List)localObject2).get(0));
+        this.l = ((SeatMemberInfo)((List)localObject2).get(0));
         return;
       }
       if (((List)localObject2).size() > 1)
       {
         localObject1 = (SeatMemberInfo)((List)localObject2).get(0);
         localObject2 = (SeatMemberInfo)((List)localObject2).get(1);
-        if (GameEngine.a().a().getCurrentAccountUin().equals(((SeatMemberInfo)localObject1).jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin))
+        if (GameEngine.a().f().getCurrentAccountUin().equals(((SeatMemberInfo)localObject1).a.uin))
         {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = ((SeatMemberInfo)localObject1);
-          this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = ((SeatMemberInfo)localObject2);
+          this.l = ((SeatMemberInfo)localObject1);
+          this.m = ((SeatMemberInfo)localObject2);
           return;
         }
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = ((SeatMemberInfo)localObject2);
-        this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo = ((SeatMemberInfo)localObject1);
+        this.l = ((SeatMemberInfo)localObject2);
+        this.m = ((SeatMemberInfo)localObject1);
       }
     }
   }
   
   private void c()
   {
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b();
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(getResources().getString(2131690483), this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(), 60);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+    this.h.c();
+    this.t.e().a(getResources().getString(2131887394), this.h.getPlayerHeadViewRect(), 60);
+    this.A.sendEmptyMessageDelayed(1, 3000L);
   }
   
   private void c(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b();
+      this.h.c();
     } else {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b();
+      this.g.c();
     }
     d(paramBoolean);
     e(paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Integer.valueOf(1));
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+    this.A.removeCallbacksAndMessages(Integer.valueOf(1));
+    this.A.sendEmptyMessageDelayed(1, 3000L);
   }
   
   private void d()
   {
     a(100);
-    a(this.jdField_a_of_type_AndroidWidgetImageView, "avgame_pk_logo_apng@2x.png");
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Integer.valueOf(0));
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1000L);
+    a(this.i, "avgame_pk_logo_apng@2x.png");
+    this.A.removeCallbacksAndMessages(Integer.valueOf(0));
+    this.A.sendEmptyMessageDelayed(0, 1000L);
   }
   
   private void d(boolean paramBoolean)
   {
     ImageView localImageView;
     if (paramBoolean) {
-      localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+      localImageView = this.n;
     } else {
-      localImageView = this.c;
+      localImageView = this.o;
     }
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.b(150.0F), ViewUtils.b(150.0F));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(ViewUtils.dpToPx(150.0F), ViewUtils.dpToPx(150.0F));
     PkMemberItemView localPkMemberItemView;
     if (paramBoolean) {
-      localPkMemberItemView = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
+      localPkMemberItemView = this.g;
     } else {
-      localPkMemberItemView = this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
+      localPkMemberItemView = this.h;
     }
     if (GameRoomViewLayoutParamsDef.H < localPkMemberItemView.getWidth())
     {
       GameRoomViewLayoutParamsDef.H = localPkMemberItemView.getWidth();
       GameRoomViewLayoutParamsDef.I = localPkMemberItemView.getHeight();
     }
-    int i = GameRoomViewLayoutParamsDef.H / 2 + ViewUtils.a(58.0F) - ViewUtils.b(75.0F);
+    int i1 = GameRoomViewLayoutParamsDef.H / 2 + ViewUtils.dip2px(58.0F) - ViewUtils.dpToPx(75.0F);
     if (paramBoolean) {
-      localLayoutParams.leftMargin = i;
+      localLayoutParams.leftMargin = i1;
     } else {
-      localLayoutParams.rightMargin = i;
+      localLayoutParams.rightMargin = i1;
     }
     if (paramBoolean) {
-      i = 3;
+      i1 = 3;
     } else {
-      i = 5;
+      i1 = 5;
     }
-    localLayoutParams.gravity = (i | 0x10);
-    if (GameEngine.a().i()) {
+    localLayoutParams.gravity = (i1 | 0x10);
+    if (GameEngine.a().D()) {
       localLayoutParams.bottomMargin = (GameRoomViewLayoutParamsDef.I / 2 - GameRoomViewLayoutParamsDef.H / 2);
     } else {
       localLayoutParams.bottomMargin = ((GameRoomViewLayoutParamsDef.I / 2 - GameRoomViewLayoutParamsDef.H / 2) / 3 * 2);
@@ -326,112 +311,52 @@ public class PkSeatView
   {
     ImageView localImageView;
     if (paramBoolean) {
-      localImageView = this.c;
+      localImageView = this.o;
     } else {
-      localImageView = this.jdField_b_of_type_AndroidWidgetImageView;
+      localImageView = this.n;
     }
     PkMemberItemView localPkMemberItemView;
     if (paramBoolean) {
-      localPkMemberItemView = this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
+      localPkMemberItemView = this.h;
     } else {
-      localPkMemberItemView = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
+      localPkMemberItemView = this.g;
     }
-    int i = localPkMemberItemView.jdField_b_of_type_AndroidWidgetImageView.getWidth() + ViewUtils.b(3.0F);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, localPkMemberItemView.jdField_b_of_type_AndroidWidgetImageView.getHeight() + ViewUtils.b(3.0F));
+    int i1 = localPkMemberItemView.e.getWidth() + ViewUtils.dpToPx(3.0F);
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i1, localPkMemberItemView.e.getHeight() + ViewUtils.dpToPx(3.0F));
     if (paramBoolean) {
-      localLayoutParams.rightMargin = (localPkMemberItemView.getWidth() / 2 + ViewUtils.a(58.0F) - ViewUtils.b((int)(i * 1.0F / ViewUtils.b(74.0F) * 29.0F)));
+      localLayoutParams.rightMargin = (localPkMemberItemView.getWidth() / 2 + ViewUtils.dip2px(58.0F) - ViewUtils.dpToPx((int)(i1 * 1.0F / ViewUtils.dpToPx(74.0F) * 29.0F)));
     } else {
-      localLayoutParams.leftMargin = (localPkMemberItemView.getWidth() / 2 + ViewUtils.a(58.0F) - ViewUtils.b((int)(i * 1.0F / ViewUtils.b(74.0F) * 45.0F)));
+      localLayoutParams.leftMargin = (localPkMemberItemView.getWidth() / 2 + ViewUtils.dip2px(58.0F) - ViewUtils.dpToPx((int)(i1 * 1.0F / ViewUtils.dpToPx(74.0F) * 45.0F)));
     }
     if (paramBoolean) {
-      i = 5;
+      i1 = 5;
     } else {
-      i = 3;
+      i1 = 3;
     }
-    localLayoutParams.gravity = (i | 0x10);
+    localLayoutParams.gravity = (i1 | 0x10);
     localLayoutParams.bottomMargin = (localPkMemberItemView.getHeight() / 2 - localPkMemberItemView.getWidth() / 2);
     localImageView.setLayoutParams(localLayoutParams);
     a(localImageView, "avgame_pk_member_fail@2x.png");
   }
   
-  public void OnClick(View paramView, int paramInt)
+  private SeatMemberInfo getEmptyMemberInfo()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-      if (paramView == null) {
-        return;
-      }
-      if (paramInt != 0)
-      {
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.c(paramView);
-        }
-      }
-      else {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.b(paramView);
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(null);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    }
-  }
-  
-  public RectF a()
-  {
-    return null;
+    SeatMemberInfo localSeatMemberInfo = new SeatMemberInfo();
+    localSeatMemberInfo.a = new Player();
+    localSeatMemberInfo.a.uin = "0";
+    localSeatMemberInfo.a.nick = "loser";
+    return localSeatMemberInfo;
   }
   
   public RectF a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(String.valueOf(paramLong))) {
-      return this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a();
+    if (this.g.b(String.valueOf(paramLong))) {
+      return this.g.getPlayerHeadViewRect();
     }
-    if (this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(String.valueOf(paramLong))) {
-      return this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a();
+    if (this.h.b(String.valueOf(paramLong))) {
+      return this.h.getPlayerHeadViewRect();
     }
     return null;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ISeatPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter;
-  }
-  
-  public List<MemberVideoDisplayInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = GameEngine.a().a().a();
-    MemberVideoDisplayInfo localMemberVideoDisplayInfo = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
-    if ((localMemberVideoDisplayInfo != null) && (((RoomInfo)localObject).getPlayer(String.valueOf(localMemberVideoDisplayInfo.a)) != null)) {
-      localArrayList.add(localMemberVideoDisplayInfo);
-    }
-    localMemberVideoDisplayInfo = this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter);
-    if ((localMemberVideoDisplayInfo != null) && (((RoomInfo)localObject).getPlayer(String.valueOf(localMemberVideoDisplayInfo.a)) != null)) {
-      localArrayList.add(localMemberVideoDisplayInfo);
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getMemberHeadViewDisplayInfoList infoList:");
-      ((StringBuilder)localObject).append(localArrayList);
-      QLog.i("PkSeatView", 2, ((StringBuilder)localObject).toString());
-    }
-    return localArrayList;
   }
   
   public void a(long paramLong, boolean paramBoolean)
@@ -446,166 +371,166 @@ public class PkSeatView
       QLog.i("PkSeatView", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = String.valueOf(paramLong);
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a((String)localObject))
+    if (this.g.b((String)localObject))
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(paramBoolean);
+      this.g.a(paramBoolean);
       return;
     }
-    if (this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a((String)localObject)) {
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(paramBoolean);
+    if (this.h.b((String)localObject)) {
+      this.h.a(paramBoolean);
     }
   }
   
   public void a(EngineData paramEngineData)
   {
-    int i = paramEngineData.o();
-    if (4 > i) {
+    int i1 = paramEngineData.X();
+    if (4 > i1) {
       b();
     }
     Object localObject2;
-    switch (i)
+    switch (i1)
     {
     case 6: 
     case 7: 
     default: 
       break;
     case 9: 
-      if (this.jdField_a_of_type_Int != i)
+      if (this.s != i1)
       {
         QLog.d("PkSeatView", 1, "aUser leave to show.");
         c();
       }
       break;
     case 8: 
-      PkMemberItemView localPkMemberItemView = this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
-      UserInfoHandler localUserInfoHandler = this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler;
-      localObject2 = this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo;
+      PkMemberItemView localPkMemberItemView = this.h;
+      UserInfoHandler localUserInfoHandler = this.b;
+      localObject2 = this.m;
       localObject1 = localObject2;
       if (localObject2 == null) {
-        localObject1 = a();
+        localObject1 = getEmptyMemberInfo();
       }
-      localPkMemberItemView.a(localUserInfoHandler, (SeatMemberInfo)localObject1, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
-      if (this.jdField_a_of_type_Int != i) {
+      localPkMemberItemView.a(localUserInfoHandler, (SeatMemberInfo)localObject1, this.a, false);
+      if (this.s != i1) {
         c();
       }
       break;
     case 5: 
-      if ((this.jdField_a_of_type_Int == 3) && (!paramEngineData.a().isBothClose))
+      if ((this.s == 3) && (!paramEngineData.Z().isBothClose))
       {
-        if ((paramEngineData.f()) && (!paramEngineData.h())) {
+        if ((paramEngineData.M()) && (!paramEngineData.O())) {
           a(false);
         }
         c(false);
-        localObject1 = paramEngineData.a().pkDrawRes;
+        localObject1 = paramEngineData.Z().pkDrawRes;
         if ((localObject1 != null) && (((SurvivalPkResultInfo.PKDrawRes)localObject1).isDraw))
         {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).selfCost, false);
-          this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).peerCost, true);
+          this.g.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).selfCost, false);
+          this.h.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).peerCost, true);
         }
       }
       break;
     case 4: 
     case 10: 
-      if (this.jdField_a_of_type_Int == 3)
+      if (this.s == 3)
       {
-        if ((paramEngineData.f()) && (!paramEngineData.h())) {
+        if ((paramEngineData.M()) && (!paramEngineData.O())) {
           a(false);
         }
         c(true);
-        localObject1 = paramEngineData.a().pkDrawRes;
+        localObject1 = paramEngineData.Z().pkDrawRes;
         if ((localObject1 != null) && (((SurvivalPkResultInfo.PKDrawRes)localObject1).isDraw))
         {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).selfCost, true);
-          this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).peerCost, false);
+          this.g.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).selfCost, true);
+          this.h.b(((SurvivalPkResultInfo.PKDrawRes)localObject1).peerCost, false);
         }
       }
       break;
     case 3: 
-      localObject1 = this.jdField_a_of_type_AndroidWidgetImageView;
+      localObject1 = this.i;
       if ((localObject1 != null) && (((ImageView)localObject1).getVisibility() == 8))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(AVGameUtil.a("avgame_pk_logo_static@2x.png"));
+        this.i.setVisibility(0);
+        this.i.setImageBitmap(AVGameUtil.c("avgame_pk_logo_static@2x.png"));
       }
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a()) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, true);
+      if (this.g.b()) {
+        this.g.a(this.b, this.l, this.a, true);
       }
-      if (this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a()) {
-        this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
+      if (this.h.b()) {
+        this.h.a(this.b, this.m, this.a, false);
       }
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo);
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo);
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, true);
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
+      this.g.a(this.l);
+      this.h.a(this.m);
+      this.g.b(this.b, this.l, this.a, true);
+      this.h.b(this.b, this.m, this.a, false);
       break;
     case 2: 
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
-      int j = this.jdField_a_of_type_Int;
-      if ((j == 1) || (j == 0))
+      this.h.a(this.b, this.m, this.a, false);
+      int i2 = this.s;
+      if ((i2 == 1) || (i2 == 0))
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.a();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView);
-        this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView);
+        this.k.a();
+        this.k.a(this.j);
+        this.h.a(this.g);
         d();
       }
       break;
     case 1: 
-      if (i != this.jdField_a_of_type_Int)
+      if (i1 != this.s)
       {
-        if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a()) {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, true);
+        if (this.g.b()) {
+          this.g.a(this.b, this.l, this.a, true);
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.c();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.c();
-        if (this.jdField_a_of_type_Int >= 4)
+        this.i.setVisibility(8);
+        this.h.d();
+        this.g.d();
+        if (this.s >= 4)
         {
-          this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.e();
-          this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.e();
+          this.g.f();
+          this.h.f();
           b(false);
-          if (this.jdField_a_of_type_Int == 8) {
-            this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
+          if (this.s == 8) {
+            this.h.a(this.a, false);
           }
         }
         else
         {
-          this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
+          this.h.a(this.a, false);
         }
       }
       break;
     case 0: 
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, true);
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler, this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter, false);
-      if (this.jdField_a_of_type_Int >= 4)
+      this.g.a(this.b, this.l, this.a, true);
+      this.h.a(this.b, this.a, false);
+      if (this.s >= 4)
       {
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgView.setAlpha(1.0F);
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter.b();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.e();
-        this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.e();
+        this.j.setAlpha(1.0F);
+        this.k.b();
+        this.g.f();
+        this.h.f();
         b(false);
       }
-      if (this.jdField_a_of_type_Int != i)
+      if (this.s != i1)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.i.setVisibility(8);
         ReportController.b(null, "dc00898", "", "", "0X800B8C1", "0X800B8C1", 0, 0, "", "", "", "");
       }
       break;
     }
-    this.jdField_a_of_type_Int = i;
-    Object localObject1 = paramEngineData.c();
+    this.s = i1;
+    Object localObject1 = paramEngineData.U();
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      localObject2 = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
+      localObject2 = this.k;
       if (localObject2 != null)
       {
         ((ISurvivalSeatBgPresenter)localObject2).a((List)localObject1);
         ((List)localObject1).clear();
       }
     }
-    paramEngineData = paramEngineData.d();
+    paramEngineData = paramEngineData.V();
     if ((paramEngineData != null) && (paramEngineData.size() > 0))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
+      localObject1 = this.k;
       if (localObject1 != null)
       {
         ((ISurvivalSeatBgPresenter)localObject1).b(paramEngineData);
@@ -616,15 +541,15 @@ public class PkSeatView
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = paramIGameRoomPresenter;
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.a(paramIGameRoomPresenter);
+    this.t = paramIGameRoomPresenter;
+    this.a.a(paramIGameRoomPresenter);
     paramIGameRoomPresenter = new ArrayList(1);
-    paramIGameRoomPresenter.add(GameEngine.a().a().getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler.a(paramIGameRoomPresenter);
-    if (GameEngine.a().i())
+    paramIGameRoomPresenter.add(GameEngine.a().f().getCurrentAccountUin());
+    this.b.a(paramIGameRoomPresenter);
+    if (GameEngine.a().D())
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a("avgame_pk_head_left@2x.png");
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a("avgame_pk_head_right@2x.png");
+      this.g.a("avgame_pk_head_left@2x.png");
+      this.h.a("avgame_pk_head_right@2x.png");
     }
   }
   
@@ -632,30 +557,30 @@ public class PkSeatView
   {
     if (paramSeatMemberInfo != null)
     {
-      if (paramSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null) {
+      if (paramSeatMemberInfo.a == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramSeatMemberInfo.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-      this.jdField_a_of_type_Boolean = GameEngine.a().a();
-      this.jdField_b_of_type_Boolean = false;
-      if (GameEngine.a().a() != null)
+      this.d = paramSeatMemberInfo.a;
+      this.e = GameEngine.a().d();
+      this.f = false;
+      if (GameEngine.a().f() != null)
       {
-        paramSeatMemberInfo = GameEngine.a().a().getAccount();
-        if (TextUtils.equals(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin, paramSeatMemberInfo)) {
-          this.jdField_b_of_type_Boolean = true;
+        paramSeatMemberInfo = GameEngine.a().f().getAccount();
+        if (TextUtils.equals(this.d.uin, paramSeatMemberInfo)) {
+          this.f = true;
         }
       }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)ActionSheetHelper.a(getContext(), null));
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690290);
-      if (!this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131690286);
+      this.c = ((ActionSheet)ActionSheetHelper.b(getContext(), null));
+      this.c.addButton(2131887201);
+      if (!this.f) {
+        this.c.addButton(2131887197);
       }
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(this);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(this);
+      this.c.addCancelButton(2131887648);
+      this.c.setOnButtonClickListener(this);
+      this.c.setOnDismissListener(this);
       try
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+        this.c.show();
       }
       catch (Exception paramSeatMemberInfo)
       {
@@ -663,7 +588,7 @@ public class PkSeatView
       }
       paramSeatMemberInfo = new StringBuilder();
       paramSeatMemberInfo.append("");
-      paramSeatMemberInfo.append(GameEngine.a().a().a());
+      paramSeatMemberInfo.append(GameEngine.a().s().i());
       ReportController.b(null, "dc00898", "", "", "0X800B02A", "0X800B02A", 0, 0, "", paramSeatMemberInfo.toString(), "", "");
     }
   }
@@ -686,9 +611,9 @@ public class PkSeatView
       QLog.i("PkSeatView", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean2) {
-      localObject = this.jdField_a_of_type_ComTencentAvgameUiRoundEmptyRectRelativeLayout$ClipRoundRect;
+      localObject = this.w;
     } else {
-      localObject = this.jdField_b_of_type_ComTencentAvgameUiRoundEmptyRectRelativeLayout$ClipRoundRect;
+      localObject = this.x;
     }
     if (paramBoolean1) {
       paramBoolean1 = a((RoundEmptyRectRelativeLayout.ClipRoundRect)localObject);
@@ -700,15 +625,10 @@ public class PkSeatView
     }
   }
   
-  public View b()
-  {
-    return this.jdField_b_of_type_AndroidViewView;
-  }
-  
   public void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.c.setVisibility(8);
+    this.n.setVisibility(8);
+    this.o.setVisibility(8);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -718,12 +638,12 @@ public class PkSeatView
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(1, true);
-      this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(1, false);
+      this.g.a(1, true);
+      this.h.a(1, false);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(4, true);
-    this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView.a(4, false);
+    this.g.a(4, true);
+    this.h.a(4, false);
   }
   
   public void b(boolean paramBoolean1, boolean paramBoolean2)
@@ -735,9 +655,9 @@ public class PkSeatView
   {
     PkMemberItemView localPkMemberItemView;
     if (paramBoolean1) {
-      localPkMemberItemView = this.jdField_a_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
+      localPkMemberItemView = this.g;
     } else {
-      localPkMemberItemView = this.jdField_b_of_type_ComTencentAvgameGameroomSeatPkMemberItemView;
+      localPkMemberItemView = this.h;
     }
     if (QLog.isColorLevel())
     {
@@ -757,30 +677,109 @@ public class PkSeatView
     localPkMemberItemView.a(3, paramBoolean1);
   }
   
+  public RectF getAddMemberViewRect()
+  {
+    return null;
+  }
+  
+  public RectF getAddMemberViewRectInRootView()
+  {
+    return null;
+  }
+  
+  public View getCheerRootTop()
+  {
+    return this.z;
+  }
+  
+  public List<MemberVideoDisplayInfo> getMemberHeadViewDisplayInfoList()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = GameEngine.a().s().e();
+    MemberVideoDisplayInfo localMemberVideoDisplayInfo = this.g.a(this.a);
+    if ((localMemberVideoDisplayInfo != null) && (((RoomInfo)localObject).getPlayer(String.valueOf(localMemberVideoDisplayInfo.a)) != null)) {
+      localArrayList.add(localMemberVideoDisplayInfo);
+    }
+    localMemberVideoDisplayInfo = this.h.a(this.a);
+    if ((localMemberVideoDisplayInfo != null) && (((RoomInfo)localObject).getPlayer(String.valueOf(localMemberVideoDisplayInfo.a)) != null)) {
+      localArrayList.add(localMemberVideoDisplayInfo);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getMemberHeadViewDisplayInfoList infoList:");
+      ((StringBuilder)localObject).append(localArrayList);
+      QLog.i("PkSeatView", 2, ((StringBuilder)localObject).toString());
+    }
+    return localArrayList;
+  }
+  
+  public View getMemberItemRootTop()
+  {
+    return this.y;
+  }
+  
+  public ISeatPresenter getPresenter()
+  {
+    return this.a;
+  }
+  
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131370749)
+    int i1 = paramView.getId();
+    if (i1 != 2131438050)
     {
-      if (i == 2131370753) {
-        a(this.jdField_b_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo);
+      if (i1 == 2131438058) {
+        a(this.m);
       }
     }
     else {
-      a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatMemberInfo);
+      a(this.l);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
+  public void onClick(View paramView, int paramInt)
+  {
+    if (this.c != null)
+    {
+      paramView = this.d;
+      if (paramView == null) {
+        return;
+      }
+      if (paramInt != 0)
+      {
+        if (paramInt == 1) {
+          this.a.c(paramView);
+        }
+      }
+      else {
+        this.a.b(paramView);
+      }
+      try
+      {
+        this.c.setOnButtonClickListener(null);
+        this.c.dismiss();
+        this.c = null;
+        this.d = null;
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+    }
+  }
+  
   public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    this.d = null;
+    ActionSheet localActionSheet = this.c;
     if (localActionSheet == null) {
       return;
     }
     localActionSheet.setOnButtonClickListener(null);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = null;
+    this.c = null;
   }
 }
 

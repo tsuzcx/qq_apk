@@ -9,18 +9,18 @@ import com.tencent.mobileqq.widget.QQBlur.BackgroundViewDirtyListener;
 class BaseChatPie$4
   implements QQBlur.BackgroundViewDirtyListener
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131373031);
+  private View b = this.a.aZ.findViewById(2131440610);
   
   BaseChatPie$4(BaseChatPie paramBaseChatPie) {}
   
   public boolean isDirty()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.isDirty()) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
+    return (this.a.U.isDirty()) || (this.a.aU.isDirty()) || (this.b.isDirty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.4
  * JD-Core Version:    0.7.0.1
  */

@@ -46,92 +46,92 @@ import mqq.app.MobileQQ;
 public class ChangesetClient
   implements UserChangeCallback, IWriteTogetherObserver, ISchedulerCallback
 {
-  int jdField_a_of_type_Int;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private IChangesetTracker jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker;
-  INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
-  private WriteTogetherOidbObserver jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver;
-  private IQQWriteTogetherService jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService;
-  private IOnChangesetCommit jdField_a_of_type_ComTencentMobileqqWritetogetherClientIOnChangesetCommit;
-  IScheduler jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler;
-  private LocalATextGetter jdField_a_of_type_ComTencentMobileqqWritetogetherDataLocalATextGetter;
-  UserChangesReqMsg jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg;
-  private String jdField_a_of_type_JavaLangString;
-  TreeSet<NewChangesMsg.Data> jdField_a_of_type_JavaUtilTreeSet = new TreeSet();
-  int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  IScheduler a;
+  int b;
+  UserChangesReqMsg c;
+  TreeSet<NewChangesMsg.Data> d = new TreeSet();
+  int e;
+  int f;
+  INetInfoHandler g;
+  private AppInterface h;
+  private IQQWriteTogetherService i;
+  private String j;
+  private String k;
+  private String l;
+  private String m;
+  private IChangesetTracker n;
+  private IOnChangesetCommit o;
+  private WriteTogetherOidbObserver p;
+  private LocalATextGetter q;
   
   public ChangesetClient(AppRuntime paramAppRuntime, @NonNull IChangesetTracker paramIChangesetTracker, @NonNull String paramString1, int paramInt, String paramString2)
   {
     if ((paramAppRuntime instanceof AppInterface)) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)paramAppRuntime);
+      this.h = ((AppInterface)paramAppRuntime);
     } else {
       QLog.e("ChangesetClient", 1, "appRuntime is not AppInterface");
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService = ((IQQWriteTogetherService)paramAppRuntime.getRuntimeService(IQQWriteTogetherService.class, ""));
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker = paramIChangesetTracker;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramAppRuntime.getAccount();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = paramInt;
-    this.d = paramString2;
-    e();
-  }
-  
-  private UserChangeData a(boolean paramBoolean)
-  {
-    if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker.b())) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker.a(this.jdField_b_of_type_JavaLangString);
+    this.i = ((IQQWriteTogetherService)paramAppRuntime.getRuntimeService(IQQWriteTogetherService.class, ""));
+    this.n = paramIChangesetTracker;
+    this.j = paramString1;
+    this.k = paramAppRuntime.getAccount();
+    this.b = paramInt;
+    this.e = paramInt;
+    this.m = paramString2;
+    f();
   }
   
   private void a(NewChangesMsg.Data paramData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker.a(paramData.changeset, paramData.author, paramData.apool);
-    a(this.jdField_a_of_type_Int + 1);
+    this.n.a(paramData.changeset, paramData.author, paramData.apool);
+    a(this.b + 1);
   }
   
-  private void d()
+  private UserChangeData b(boolean paramBoolean)
   {
-    a(this.jdField_a_of_type_Int + 1);
-    this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker.a()) {
-      a(false);
+    if ((!paramBoolean) && (this.n.c())) {
+      return null;
     }
-    IOnChangesetCommit localIOnChangesetCommit = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIOnChangesetCommit;
-    if (localIOnChangesetCommit != null) {
-      localIOnChangesetCommit.a(this.jdField_a_of_type_Int);
-    }
+    return this.n.b(this.k);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ChangesetClient.MyNetInfoHandler(this, null);
-    a(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.addObservers(this);
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver = new ChangesetClient.1(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver);
+    a(this.b + 1);
+    this.n.a();
+    if (this.n.b()) {
+      a(false);
+    }
+    IOnChangesetCommit localIOnChangesetCommit = this.o;
+    if (localIOnChangesetCommit != null) {
+      localIOnChangesetCommit.a(this.b);
+    }
+  }
+  
+  private void f()
+  {
+    this.g = new ChangesetClient.MyNetInfoHandler(this, null);
+    a(this.g);
+    this.i.addObservers(this);
+    this.p = new ChangesetClient.1(this);
+    this.h.addObserver(this.p);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler != null)
+    if (this.a != null)
     {
-      LocalATextGetter localLocalATextGetter = this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataLocalATextGetter;
-      if ((localLocalATextGetter == null) || (!WriteTogetherUtils.a(localLocalATextGetter.a()))) {
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler.a(1, 500);
+      LocalATextGetter localLocalATextGetter = this.q;
+      if ((localLocalATextGetter == null) || (!WriteTogetherUtils.a(localLocalATextGetter.c()))) {
+        this.a.a(1, 500);
       }
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.updateRev(paramInt);
+    this.b = paramInt;
+    this.i.updateRev(paramInt);
   }
   
   void a(INetInfoHandler paramINetInfoHandler)
@@ -141,46 +141,46 @@ public class ChangesetClient
   
   public void a(IOnChangesetCommit paramIOnChangesetCommit)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIOnChangesetCommit = paramIOnChangesetCommit;
+    this.o = paramIOnChangesetCommit;
   }
   
   public void a(IScheduler paramIScheduler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler = paramIScheduler;
+    this.a = paramIScheduler;
     paramIScheduler.a(this);
   }
   
   void a(CommitErrorMsg paramCommitErrorMsg)
   {
-    if ((((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.reason == 40401) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg != null) && (((CommitErrorMsg.Header)paramCommitErrorMsg.header).taskId == ((UserChangesHeader)this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg.header).taskId))
+    if ((((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.reason == 40401) && (this.c != null) && (((CommitErrorMsg.Header)paramCommitErrorMsg.header).taskId == ((UserChangesHeader)this.c.header).taskId))
     {
       QLog.w("ChangesetClient", 1, "characters reach the limit");
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg = null;
+      this.c = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIOnChangesetCommit.a(((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.reason, ((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.msg);
+    this.o.a(((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.reason, ((CommitErrorMsg.Body)paramCommitErrorMsg.body).data.msg);
   }
   
   void a(LastReversionMsg paramLastReversionMsg)
   {
-    if (((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev > this.jdField_a_of_type_Int)
+    if (((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev > this.b)
     {
       b(((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev);
-      this.jdField_b_of_type_Int = ((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev;
+      this.e = ((LastReversionMsg.Body)paramLastReversionMsg.body).notice.lastRev;
     }
   }
   
   public void a(Type paramType, boolean paramBoolean, Object paramObject)
   {
-    int i = ChangesetClient.2.a[paramType.ordinal()];
-    if (i != 1)
+    int i1 = ChangesetClient.2.a[paramType.ordinal()];
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3)
+        if (i1 != 3)
         {
-          if (i != 4)
+          if (i1 != 4)
           {
-            if (i != 5) {
+            if (i1 != 5) {
               return;
             }
             a((CommitErrorMsg)paramObject);
@@ -200,7 +200,7 @@ public class ChangesetClient
   
   public void a(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.l = paramString;
   }
   
   void a(boolean paramBoolean)
@@ -208,30 +208,30 @@ public class ChangesetClient
     if (QLog.isColorLevel()) {
       QLog.d("ChangesetClient", 2, "handleUserChange");
     }
-    Object localObject = this.jdField_c_of_type_JavaLangString;
-    if ((!this.jdField_a_of_type_ComTencentMobileqqEasysync2IChangesetTracker.a()) && (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg == null)) {
+    Object localObject = this.l;
+    if ((!this.n.b()) && (this.c == null)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg != null)
+    if (this.c != null)
     {
       QLog.d("ChangesetClient", 1, "handleUserChange: waiting commit to be accepted");
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.sendData(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg);
+      this.i.sendData(this.c);
       return;
     }
-    if (!a())
+    if (!b())
     {
       QLog.d("ChangesetClient", 1, "handleUserChange: no network");
       return;
     }
-    localObject = a(true);
-    if ((localObject != null) && (((UserChangeData)localObject).jdField_a_of_type_JavaLangString != null))
+    localObject = b(true);
+    if ((localObject != null) && (((UserChangeData)localObject).a != null))
     {
-      localObject = new UserChangesReqMsg(new UserChangesHeader(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int), new UserChangesReqMsg.UserChangesReqBody(this.jdField_a_of_type_Int, ((UserChangeData)localObject).jdField_a_of_type_JavaLangString, ((UserChangeData)localObject).jdField_a_of_type_ComTencentMobileqqEasysync2AttribPool, this.jdField_c_of_type_JavaLangString));
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg = ((UserChangesReqMsg)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.sendData((IWriteTogetherMsg)localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIOnChangesetCommit;
+      localObject = new UserChangesReqMsg(new UserChangesHeader(this.j, this.k, this.b), new UserChangesReqMsg.UserChangesReqBody(this.b, ((UserChangeData)localObject).a, ((UserChangeData)localObject).b, this.l));
+      this.c = ((UserChangesReqMsg)localObject);
+      this.i.sendData((IWriteTogetherMsg)localObject);
+      localObject = this.o;
       if (localObject != null) {
-        ((IOnChangesetCommit)localObject).a();
+        ((IOnChangesetCommit)localObject).b();
       }
       return;
     }
@@ -244,15 +244,15 @@ public class ChangesetClient
       return;
     }
     AcceptCommitAndNewChangesHeader localAcceptCommitAndNewChangesHeader = (AcceptCommitAndNewChangesHeader)paramAcceptCommitMsg.header;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg != null) && (localAcceptCommitAndNewChangesHeader.taskId == ((UserChangesHeader)this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg.header).taskId))
+    if ((this.c != null) && (localAcceptCommitAndNewChangesHeader.taskId == ((UserChangesHeader)this.c.header).taskId))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg = null;
+      this.c = null;
     }
     else
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("accept commit with mismatch task id: ");
-      if (this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg == null)
+      if (this.c == null)
       {
         paramAcceptCommitMsg = "null";
       }
@@ -261,19 +261,19 @@ public class ChangesetClient
         paramAcceptCommitMsg = new StringBuilder();
         paramAcceptCommitMsg.append(localAcceptCommitAndNewChangesHeader.taskId);
         paramAcceptCommitMsg.append(" <-> ");
-        paramAcceptCommitMsg.append(((UserChangesHeader)this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgUserChangesReqMsg.header).taskId);
+        paramAcceptCommitMsg.append(((UserChangesHeader)this.c.header).taskId);
         paramAcceptCommitMsg = paramAcceptCommitMsg.toString();
       }
       localStringBuilder.append(paramAcceptCommitMsg);
       QLog.e("ChangesetClient", 1, localStringBuilder.toString());
     }
-    if (localAcceptCommitAndNewChangesHeader.newRev != this.jdField_a_of_type_Int + 1)
+    if (localAcceptCommitAndNewChangesHeader.newRev != this.b + 1)
     {
-      this.jdField_c_of_type_Int = localAcceptCommitAndNewChangesHeader.baseRev;
+      this.f = localAcceptCommitAndNewChangesHeader.baseRev;
       b(localAcceptCommitAndNewChangesHeader.newRev - 1);
       return;
     }
-    d();
+    e();
   }
   
   void a(boolean paramBoolean, NewChangesMsg paramNewChangesMsg)
@@ -286,32 +286,32 @@ public class ChangesetClient
     }
     AcceptCommitAndNewChangesHeader localAcceptCommitAndNewChangesHeader = (AcceptCommitAndNewChangesHeader)paramNewChangesMsg.header;
     paramNewChangesMsg = ((NewChangesMsg.Body)paramNewChangesMsg.body).data;
-    if (localAcceptCommitAndNewChangesHeader.newRev > this.jdField_a_of_type_Int + 1)
+    if (localAcceptCommitAndNewChangesHeader.newRev > this.b + 1)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("get broken cs, cur rev: ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(", new rev: ");
       localStringBuilder.append(localAcceptCommitAndNewChangesHeader.newRev);
       localStringBuilder.append(", newest pending merge rev: ");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.e);
       QLog.w("ChangesetClient", 1, localStringBuilder.toString());
-      if (localAcceptCommitAndNewChangesHeader.newRev > this.jdField_b_of_type_Int)
+      if (localAcceptCommitAndNewChangesHeader.newRev > this.e)
       {
         paramNewChangesMsg.newRev = localAcceptCommitAndNewChangesHeader.newRev;
-        this.jdField_a_of_type_JavaUtilTreeSet.add(paramNewChangesMsg);
+        this.d.add(paramNewChangesMsg);
         b(localAcceptCommitAndNewChangesHeader.newRev - 1);
-        this.jdField_b_of_type_Int = localAcceptCommitAndNewChangesHeader.newRev;
+        this.e = localAcceptCommitAndNewChangesHeader.newRev;
       }
       return;
     }
-    if (localAcceptCommitAndNewChangesHeader.newRev <= this.jdField_a_of_type_Int)
+    if (localAcceptCommitAndNewChangesHeader.newRev <= this.b)
     {
       QLog.w("ChangesetClient", 1, "get duplicate cs");
       return;
     }
     a(paramNewChangesMsg);
-    b();
+    c();
   }
   
   void a(boolean paramBoolean, UserChangesRespMsg paramUserChangesRespMsg)
@@ -326,16 +326,75 @@ public class ChangesetClient
       QLog.d("ChangesetClient", 2, localStringBuilder.toString());
     }
     if (((OnPostWrapper)paramUserChangesRespMsg.body).onpost.result != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIOnChangesetCommit.a(((OnPostWrapper)paramUserChangesRespMsg.body).onpost.result, ((OnPostWrapper)paramUserChangesRespMsg.body).onpost.errMsg);
+      this.o.a(((OnPostWrapper)paramUserChangesRespMsg.body).onpost.result, ((OnPostWrapper)paramUserChangesRespMsg.body).onpost.errMsg);
     }
   }
   
-  boolean a()
+  void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ChangesetClient", 2, "pullDoc");
+    }
+    IWriteTogetherOidbHandler localIWriteTogetherOidbHandler = (IWriteTogetherOidbHandler)this.h.getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME);
+    int i1 = Math.max(this.e, this.b) + 1;
+    for (;;)
+    {
+      int i2 = paramInt - i1;
+      if (i2 < 0) {
+        break;
+      }
+      i2 = Math.min(i2 + 1, 50);
+      localIWriteTogetherOidbHandler.pullDoc(this.m, this.j, i1, i2 + i1 - 1);
+      i1 += 50;
+    }
+  }
+  
+  boolean b()
   {
     return NetworkUtil.isNetworkAvailable();
   }
   
-  public boolean a(int paramInt)
+  void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ChangesetClient", 2, "handlePendingMerges");
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      NewChangesMsg.Data localData = (NewChangesMsg.Data)localIterator.next();
+      if (localData.newRev == this.b + 1)
+      {
+        a(localData);
+        localArrayList.add(localData);
+      }
+      else
+      {
+        int i1 = localData.newRev;
+        int i2 = this.b;
+        if (i1 <= i2)
+        {
+          QLog.w("ChangesetClient", 1, "get duplicate pending merge cs");
+          localArrayList.add(localData);
+        }
+        else
+        {
+          if (this.f == i2 + 1) {
+            e();
+          }
+          if (localData.newRev != this.b + 1) {
+            break;
+          }
+          a(localData);
+          localArrayList.add(localData);
+        }
+      }
+    }
+    this.d.removeAll(localArrayList);
+  }
+  
+  public boolean c(int paramInt)
   {
     if (paramInt == 1)
     {
@@ -345,75 +404,16 @@ public class ChangesetClient
     return false;
   }
   
-  void b()
+  public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChangesetClient", 2, "handlePendingMerges");
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeSet.iterator();
-    while (localIterator.hasNext())
-    {
-      NewChangesMsg.Data localData = (NewChangesMsg.Data)localIterator.next();
-      if (localData.newRev == this.jdField_a_of_type_Int + 1)
-      {
-        a(localData);
-        localArrayList.add(localData);
-      }
-      else
-      {
-        int i = localData.newRev;
-        int j = this.jdField_a_of_type_Int;
-        if (i <= j)
-        {
-          QLog.w("ChangesetClient", 1, "get duplicate pending merge cs");
-          localArrayList.add(localData);
-        }
-        else
-        {
-          if (this.jdField_c_of_type_Int == j + 1) {
-            d();
-          }
-          if (localData.newRev != this.jdField_a_of_type_Int + 1) {
-            break;
-          }
-          a(localData);
-          localArrayList.add(localData);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilTreeSet.removeAll(localArrayList);
-  }
-  
-  void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChangesetClient", 2, "pullDoc");
-    }
-    IWriteTogetherOidbHandler localIWriteTogetherOidbHandler = (IWriteTogetherOidbHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(WriteTogetherOidbHandlerImpl.CLASS_NAME);
-    int i = Math.max(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int) + 1;
-    for (;;)
-    {
-      int j = paramInt - i;
-      if (j < 0) {
-        break;
-      }
-      j = Math.min(j + 1, 50);
-      localIWriteTogetherOidbHandler.pullDoc(this.d, this.jdField_a_of_type_JavaLangString, i, j + i - 1);
-      i += 50;
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherApiIQQWriteTogetherService.removeObserver(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherOidbObserver);
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    this.i.removeObserver(this);
+    this.h.removeObserver(this.p);
+    AppNetConnInfo.unregisterNetInfoHandler(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.ChangesetClient
  * JD-Core Version:    0.7.0.1
  */

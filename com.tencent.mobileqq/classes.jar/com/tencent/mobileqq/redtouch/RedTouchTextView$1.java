@@ -20,14 +20,14 @@ class RedTouchTextView$1
     {
       Object localObject1 = this.this$0.getContext().getFilesDir();
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString.hashCode());
+      ((StringBuilder)localObject2).append(this.a.hashCode());
       ((StringBuilder)localObject2).append("");
       localObject1 = new File((File)localObject1, ((StringBuilder)localObject2).toString());
       if (((File)localObject1).exists())
       {
         localObject2 = this.this$0.a((File)localObject1);
         localObject1 = localObject2;
-        if (this.jdField_a_of_type_Int == 1) {
+        if (this.b == 1) {
           localObject1 = ((IRedTouchTextViewApi)QRoute.api(IRedTouchTextViewApi.class)).getRoundedCornerBitmap((Bitmap)localObject2, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
         }
         this.this$0.b = new BitmapDrawable((Bitmap)localObject1);
@@ -37,11 +37,11 @@ class RedTouchTextView$1
       if (!RedTouchTextView.a(this.this$0))
       {
         RedTouchTextView.a(this.this$0, true);
-        if (HttpDownloadUtil.download(null, this.jdField_a_of_type_JavaLangString, (File)localObject1))
+        if (HttpDownloadUtil.download(null, this.a, (File)localObject1))
         {
           localObject2 = this.this$0.a((File)localObject1);
           localObject1 = localObject2;
-          if (this.jdField_a_of_type_Int == 1) {
+          if (this.b == 1) {
             localObject1 = ((IRedTouchTextViewApi)QRoute.api(IRedTouchTextViewApi.class)).getRoundedCornerBitmap((Bitmap)localObject2, ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight());
           }
           this.this$0.b = new BitmapDrawable((Bitmap)localObject1);
@@ -63,7 +63,7 @@ class RedTouchTextView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTextView.1
  * JD-Core Version:    0.7.0.1
  */

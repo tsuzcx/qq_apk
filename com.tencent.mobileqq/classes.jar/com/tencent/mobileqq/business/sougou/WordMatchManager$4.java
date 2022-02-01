@@ -87,7 +87,7 @@ class WordMatchManager$4
     //   143: aload_1
     //   144: ldc 89
     //   146: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   149: putfield 97	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:c	Ljava/lang/String;
+    //   149: putfield 97	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:f	Ljava/lang/String;
     //   152: aload_1
     //   153: ldc 99
     //   155: invokevirtual 83	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -96,7 +96,7 @@ class WordMatchManager$4
     //   162: aload_1
     //   163: ldc 99
     //   165: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   168: putfield 101	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   168: putfield 101	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:d	Ljava/lang/String;
     //   171: aload_1
     //   172: ldc 103
     //   174: invokevirtual 83	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -105,7 +105,7 @@ class WordMatchManager$4
     //   181: aload_1
     //   182: ldc 103
     //   184: invokevirtual 27	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   187: putfield 106	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:jdField_a_of_type_Int	I
+    //   187: putfield 106	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:a	I
     //   190: aload_1
     //   191: ldc 108
     //   193: invokevirtual 83	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -114,7 +114,7 @@ class WordMatchManager$4
     //   200: aload_1
     //   201: ldc 108
     //   203: invokevirtual 27	org/json/JSONObject:getInt	(Ljava/lang/String;)I
-    //   206: putfield 111	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:jdField_b_of_type_Int	I
+    //   206: putfield 111	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:b	I
     //   209: aload_1
     //   210: ldc 113
     //   212: invokevirtual 83	org/json/JSONObject:has	(Ljava/lang/String;)Z
@@ -123,16 +123,16 @@ class WordMatchManager$4
     //   219: aload_1
     //   220: ldc 113
     //   222: invokevirtual 117	org/json/JSONObject:getLong	(Ljava/lang/String;)J
-    //   225: putfield 120	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:jdField_a_of_type_Long	J
+    //   225: putfield 121	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:c	J
     //   228: aload_1
-    //   229: ldc 122
+    //   229: ldc 123
     //   231: invokevirtual 83	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   234: ifeq +68 -> 302
     //   237: aload_3
     //   238: aload_1
-    //   239: ldc 122
+    //   239: ldc 123
     //   241: invokevirtual 93	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   244: putfield 124	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   244: putfield 126	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:e	Ljava/lang/String;
     //   247: goto +55 -> 302
     //   250: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   253: ifeq +49 -> 302
@@ -141,7 +141,7 @@ class WordMatchManager$4
     //   260: invokespecial 39	java/lang/StringBuilder:<init>	()V
     //   263: astore_1
     //   264: aload_1
-    //   265: ldc 126
+    //   265: ldc 128
     //   267: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   270: pop
     //   271: aload_1
@@ -168,7 +168,7 @@ class WordMatchManager$4
     //   312: invokespecial 39	java/lang/StringBuilder:<init>	()V
     //   315: astore_1
     //   316: aload_1
-    //   317: ldc 128
+    //   317: ldc 130
     //   319: invokevirtual 45	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   322: pop
     //   323: aload_1
@@ -189,7 +189,7 @@ class WordMatchManager$4
     //   348: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   351: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   354: aload_3
-    //   355: getfield 106	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:jdField_a_of_type_Int	I
+    //   355: getfield 106	com/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo:a	I
     //   358: iload_2
     //   359: if_icmpeq +12 -> 371
     //   362: aload_0
@@ -200,7 +200,7 @@ class WordMatchManager$4
     //   371: aload_0
     //   372: getfield 12	com/tencent/mobileqq/business/sougou/WordMatchManager$4:a	Lcom/tencent/mobileqq/business/sougou/WordMatchManager;
     //   375: aload_3
-    //   376: invokevirtual 131	com/tencent/mobileqq/business/sougou/WordMatchManager:a	(Lcom/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo;)V
+    //   376: invokevirtual 133	com/tencent/mobileqq/business/sougou/WordMatchManager:a	(Lcom/tencent/mobileqq/business/sougou/WordMatchManager$DictLocalMetaInfo;)V
     //   379: return
     //   380: astore_1
     //   381: goto -131 -> 250
@@ -226,7 +226,7 @@ class WordMatchManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.business.sougou.WordMatchManager.4
  * JD-Core Version:    0.7.0.1
  */

@@ -22,9 +22,9 @@ public class QWRedConfig
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  private transient String jdField_a_of_type_JavaLangString;
-  private transient byte[] jdField_a_of_type_ArrayOfByte;
+  private transient String a;
   private transient String b;
+  private transient byte[] c;
   public List<QWRedConfig.PathInfo> pathInfos = new LinkedList();
   public long version;
   
@@ -55,9 +55,9 @@ public class QWRedConfig
   
   private void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     this.b = paramBaseQQAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ArrayOfByte = new byte[0];
+    this.c = new byte[0];
   }
   
   public static List<QWRedConfig.PathInfo> parseConfigToPathInfos(String paramString)
@@ -92,7 +92,7 @@ public class QWRedConfig
     Object localObject1;
     try
     {
-      QWRedConfig localQWRedConfig = (QWRedConfig)QWalletTools.a(str);
+      QWRedConfig localQWRedConfig = (QWRedConfig)QWalletTools.e(str);
     }
     catch (Exception localException)
     {
@@ -155,23 +155,23 @@ public class QWRedConfig
     if (paramConfigInfo != null) {
       try
       {
-        if ("redPoint".equals(paramConfigInfo.jdField_a_of_type_JavaLangString))
+        if ("redPoint".equals(paramConfigInfo.a))
         {
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("parseConfig:");
-            localStringBuilder.append(paramConfigInfo.jdField_a_of_type_Long);
+            localStringBuilder.append(paramConfigInfo.c);
             localStringBuilder.append("|");
             localStringBuilder.append(this.version);
             localStringBuilder.append("|");
             localStringBuilder.append(paramConfigInfo.b);
             QLog.d("RedConfig", 2, localStringBuilder.toString());
           }
-          if (paramConfigInfo.jdField_a_of_type_Long > this.version)
+          if (paramConfigInfo.c > this.version)
           {
             this.pathInfos = parseConfigToPathInfos(paramConfigInfo.b);
-            this.version = paramConfigInfo.jdField_a_of_type_Long;
+            this.version = paramConfigInfo.c;
             saveConfig();
           }
           return;
@@ -199,7 +199,7 @@ public class QWRedConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.red.impl.QWRedConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,8 @@ package com.tencent.biz.qcircleshadow.lib.variation;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.share.api.IShareActionSheetApi;
 import com.tencent.mobileqq.share.api.QCircleActionSheetClickListener;
@@ -11,6 +13,7 @@ import com.tencent.mobileqq.share.api.ShareConfig;
 
 public class HostShareUtils
 {
+  private static final String IS_FORCE_NIGHT_THEME_KEY = "is_force_night_theme";
   private IShareActionSheetApi mInstance = (IShareActionSheetApi)QRoute.api(IShareActionSheetApi.class);
   
   public HostShareUtils(Context paramContext)
@@ -59,6 +62,14 @@ public class HostShareUtils
     }
   }
   
+  public void setIntentForStartForwardRecentActivity(Intent paramIntent)
+  {
+    IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
+    if (localIShareActionSheetApi != null) {
+      localIShareActionSheetApi.setIntentForStartForwardRecentActivity(paramIntent);
+    }
+  }
+  
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
     IShareActionSheetApi localIShareActionSheetApi = this.mInstance;
@@ -90,10 +101,21 @@ public class HostShareUtils
       localIShareActionSheetApi.show();
     }
   }
+  
+  public void show(boolean paramBoolean)
+  {
+    if (this.mInstance != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putBoolean("is_force_night_theme", paramBoolean);
+      this.mInstance.setExtras(localBundle);
+      this.mInstance.show();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostShareUtils
  * JD-Core Version:    0.7.0.1
  */

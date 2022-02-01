@@ -7,27 +7,22 @@ import com.tencent.qphone.base.util.QLog;
 
 public class GameImageData
 {
-  public int a;
   public Bitmap a;
-  public String a;
-  public boolean a;
   public int b;
-  public String b = "";
   public int c;
   public int d;
   public int e;
-  
-  public GameImageData()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public int f;
+  public String g = "";
+  public String h = "";
+  public boolean i;
   
   public static GameImageData a(View paramView)
   {
-    int i = paramView.getVisibility();
+    int j = paramView.getVisibility();
     Object localObject1 = null;
     Object localObject2 = null;
-    if (i == 0)
+    if (j == 0)
     {
       paramView.setDrawingCacheEnabled(true);
       Bitmap localBitmap = paramView.getDrawingCache();
@@ -39,9 +34,9 @@ public class GameImageData
       else
       {
         localObject1 = new GameImageData();
-        ((GameImageData)localObject1).jdField_a_of_type_AndroidGraphicsBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
-        ((GameImageData)localObject1).c = paramView.getLeft();
-        ((GameImageData)localObject1).d = paramView.getTop();
+        ((GameImageData)localObject1).a = localBitmap.copy(Bitmap.Config.ARGB_8888, false);
+        ((GameImageData)localObject1).d = paramView.getLeft();
+        ((GameImageData)localObject1).e = paramView.getTop();
       }
       paramView.setDrawingCacheEnabled(false);
     }

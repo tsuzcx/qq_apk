@@ -14,28 +14,28 @@ class ReminderListFragment$5$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 2001)
+    if (this.a == 2001)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        AcsDelMsgRsp localAcsDelMsgRsp = (AcsDelMsgRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
+        AcsDelMsgRsp localAcsDelMsgRsp = (AcsDelMsgRsp)this.c.getSerializable("rsp");
         if ((localAcsDelMsgRsp != null) && (localAcsDelMsgRsp.ret_code == 0))
         {
-          ReportController.b(ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment), "P_CliOper", "QQnotice", "", "", "QQnotice.set.delete", 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_WalletAcsMsg.busi_id, this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_WalletAcsMsg.msg_id);
-          ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_JavaLangString);
-          ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment).deleteReminderByMsgId(QQNotifyHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_WalletAcsMsg), new ReminderListFragment.5.1.1(this));
+          ReportController.b(ReminderListFragment.f(this.d.c), "P_CliOper", "QQnotice", "", "", "QQnotice.set.delete", 0, 0, "", "", this.d.a.busi_id, this.d.a.msg_id);
+          ReminderListFragment.g(this.d.c).a(this.d.b);
+          ReminderListFragment.h(this.d.c).deleteReminderByMsgId(QQNotifyHelper.a(this.d.a), new ReminderListFragment.5.1.1(this));
           return;
         }
-        ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, HardCodeUtil.a(2131713301));
+        ReminderListFragment.a(this.d.c, HardCodeUtil.a(2131910854));
         return;
       }
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment$5.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, HardCodeUtil.a(2131713298));
+      ReminderListFragment.a(this.d.c, HardCodeUtil.a(2131910851));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -34,44 +34,44 @@ class MarketFaceItemBuilder$2
       str = "0";
       i = -1;
     }
-    int j = this.jdField_a_of_type_Int;
-    if (j == 2131365480)
+    int j = this.a;
+    if (j == 2131431695)
     {
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "4", "", "", "");
+      ChatActivityFacade.b(this.c.A, this.c.d, this.b);
+      ReportController.b(this.c.d, "CliOper", "", "", "0X8006447", "0X8006447", 0, 0, "4", "", "", "");
       return;
     }
-    if (j == 2131362241)
+    if (j == 2131427822)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a(paramEmoticonPackage, str, i);
+      this.c.a(paramEmoticonPackage, str, i);
       return;
     }
-    if ((j != 2131367197) && (j != 2131366973))
+    if ((j != 2131433653) && (j != 2131433419))
     {
-      if (j == 2131371561)
+      if (j == 2131438942)
       {
         if (QLog.isColorLevel()) {
           QLog.d("MarketFaceItemBuilder", 4, "marketface related click");
         }
-        if ((MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo != null) && (MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null))
+        if ((MarketFaceItemBuilder.w != null) && (MarketFaceItemBuilder.x != null))
         {
-          if (MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon() == null) {
+          if (MarketFaceItemBuilder.w.getEmoticon() == null) {
             return;
           }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "0X800B115", "0X800B115", EmoticonPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, "1", "", MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId, MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().eId);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.b(MarketFaceItemBuilder.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+          ReportController.b(this.c.d, "dc00898", "", this.c.f.b, "0X800B115", "0X800B115", EmoticonPanelUtils.e(this.c.f.a), 0, "1", "", MarketFaceItemBuilder.w.getEmoticon().epId, MarketFaceItemBuilder.w.getEmoticon().eId);
+          this.c.f(MarketFaceItemBuilder.x);
           return;
         }
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder.a(paramEmoticonPackage, str, i, this.jdField_a_of_type_Int);
+      this.c.a(paramEmoticonPackage, str, i, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

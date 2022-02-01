@@ -17,22 +17,22 @@ class AtUtil$AlphabetComparator
   
   public int a(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember1, ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember2)
   {
-    boolean bool = AtUtil.b(paramATroopMember1.jdField_a_of_type_JavaLangString, this.a);
+    boolean bool = AtUtil.b(paramATroopMember1.a, this.a);
     int j = 3;
     int i;
     if (bool) {
       i = 5;
-    } else if (AtUtil.a(paramATroopMember1.jdField_a_of_type_JavaLangString, this.a)) {
+    } else if (AtUtil.a(paramATroopMember1.a, this.a)) {
       i = 3;
-    } else if (paramATroopMember1.jdField_a_of_type_Boolean) {
+    } else if (paramATroopMember1.A) {
       i = 1;
     } else {
       i = 0;
     }
-    if (AtUtil.b(paramATroopMember2.jdField_a_of_type_JavaLangString, this.a)) {
+    if (AtUtil.b(paramATroopMember2.a, this.a)) {
       j = 5;
-    } else if (!AtUtil.a(paramATroopMember2.jdField_a_of_type_JavaLangString, this.a)) {
-      if (paramATroopMember2.jdField_a_of_type_Boolean) {
+    } else if (!AtUtil.a(paramATroopMember2.a, this.a)) {
+      if (paramATroopMember2.A) {
         j = 1;
       } else {
         j = 0;
@@ -41,12 +41,12 @@ class AtUtil$AlphabetComparator
     if (i != j) {
       return j - i;
     }
-    return ChnToSpell.a(AtUtil.c(paramATroopMember1), 1).compareToIgnoreCase(ChnToSpell.a(AtUtil.c(paramATroopMember2), 1));
+    return ChnToSpell.b(AtUtil.c(paramATroopMember1), 1).compareToIgnoreCase(ChnToSpell.b(AtUtil.c(paramATroopMember2), 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtUtil.AlphabetComparator
  * JD-Core Version:    0.7.0.1
  */

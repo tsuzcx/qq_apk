@@ -15,7 +15,7 @@ class DownloadUrlManager$5
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager$PullNewVideoInfoCallBack);
+    DownloadUrlManager.a(this.c, this.a, this.b);
     return null;
   }
   
@@ -26,7 +26,7 @@ class DownloadUrlManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager.5
  * JD-Core Version:    0.7.0.1
  */

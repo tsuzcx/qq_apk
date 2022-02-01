@@ -61,10 +61,10 @@ class NearbyAddFriendHelper$5
       {
         if (!TextUtils.isEmpty(paramArrayOfByte))
         {
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramArrayOfByte, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.b());
+          QQToast.makeText(this.a.d, 1, paramArrayOfByte, 0).show(this.a.a.v());
           paramBundle = new StringBuilder();
           paramBundle.append("sendOperateFollowUser,targetUin:");
-          paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          paramBundle.append(this.a.e.b);
           paramBundle.append(", op:");
           paramBundle.append("1");
           paramBundle.append(", errMsg:");
@@ -72,11 +72,11 @@ class NearbyAddFriendHelper$5
           QLog.d("NearbyAddFriendHelperQ.nearby.follow", 2, paramBundle.toString());
           return;
         }
-        QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 1, HardCodeUtil.a(2131707292), 1).a();
+        QQToast.makeText(this.a.c, 1, HardCodeUtil.a(2131905117), 1).show();
       }
       else
       {
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, this.a.jdField_a_of_type_AndroidContentContext.getString(2131694391), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.b());
+        QQToast.makeText(this.a.d, 2, this.a.d.getString(2131892070), 0).show(this.a.a.v());
         bool = true;
         break label365;
       }
@@ -84,18 +84,18 @@ class NearbyAddFriendHelper$5
     boolean bool = false;
     label365:
     if (!bool) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, this.a.jdField_a_of_type_AndroidContentContext.getString(2131694390), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.b());
+      QQToast.makeText(this.a.d, 1, this.a.d.getString(2131892069), 0).show(this.a.a.v());
     }
-    if (((NearbyContext)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).l() != bool)
+    if (((NearbyContext)this.a.a).R() != bool)
     {
-      ((NearbyContext)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).d(bool);
-      this.a.e();
+      ((NearbyContext)this.a.a).d(bool);
+      this.a.g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearbyAddFriendHelper.5
  * JD-Core Version:    0.7.0.1
  */

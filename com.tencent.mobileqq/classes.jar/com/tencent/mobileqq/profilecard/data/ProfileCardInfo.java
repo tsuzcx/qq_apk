@@ -2,6 +2,7 @@ package com.tencent.mobileqq.profilecard.data;
 
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.data.troop.QQGuildMemberCard;
 import com.tencent.mobileqq.data.troop.TroopMemberCard;
 import com.tencent.mobileqq.profilecard.entity.IProfileBusinessInfo;
 import com.tencent.mobileqq.profilecard.template.ProfileCardTemplate;
@@ -19,7 +20,9 @@ public class ProfileCardInfo
   public long curUseStyleId;
   public long curUseTemplateVersion;
   public ProfileCardTemplate currentTemplate;
+  public QQGuildMemberCard guildMemberCard;
   public boolean isNetRet;
+  public boolean isQQGuildCard;
   public boolean isTimeOut;
   public boolean isTroopMemberCard;
   public String[] nameArray;
@@ -70,7 +73,7 @@ public class ProfileCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.data.ProfileCardInfo
  * JD-Core Version:    0.7.0.1
  */

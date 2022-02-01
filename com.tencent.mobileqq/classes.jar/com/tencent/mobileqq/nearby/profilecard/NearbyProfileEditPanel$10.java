@@ -1,29 +1,22 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class NearbyProfileEditPanel$10
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  NearbyProfileEditPanel$10(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  NearbyProfileEditPanel$10(NearbyProfileEditPanel paramNearbyProfileEditPanel, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() >= NearbyProfileCardConstants.a)
-    {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694404), 0).a();
-      return;
-    }
-    NearbyProfileEditPanel.c(this.a);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.10
  * JD-Core Version:    0.7.0.1
  */

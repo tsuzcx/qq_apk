@@ -15,8 +15,8 @@ class VideoHeaderBlock$6
     if (paramMotionEvent.getAction() == 0) {
       VideoHeaderBlock.a(this.a, 0);
     }
-    if (VideoHeaderBlock.a(this.a) != null) {
-      VideoHeaderBlock.a(this.a).onTouchEvent(paramMotionEvent);
+    if (VideoHeaderBlock.d(this.a) != null) {
+      VideoHeaderBlock.d(this.a).onTouchEvent(paramMotionEvent);
     }
     return true;
   }

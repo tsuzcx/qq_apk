@@ -22,15 +22,15 @@ class AVGameShareUtil$1
     QLog.d("AVGameShareUtil", 1, localStringBuilder.toString());
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      new AVGameShareEntry(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.b, this.jdField_a_of_type_JavaLangString, 0).b();
+      new AVGameShareEntry(this.a, String.valueOf(this.b), paramString, this.c, this.d, 0).p();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, 2131690527, 0).a();
+    QQToast.makeText(this.a, 1, 2131887438, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareUtil.1
  * JD-Core Version:    0.7.0.1
  */

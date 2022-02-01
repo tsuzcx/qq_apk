@@ -6,28 +6,28 @@ import android.content.SharedPreferences.Editor;
 
 class NowWebBizModule$SharePreferenceUtil
 {
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  private SharedPreferences a;
+  private SharedPreferences.Editor b;
   
   public NowWebBizModule$SharePreferenceUtil(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences(paramString, 0);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-  }
-  
-  public SharedPreferences.Editor a()
-  {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+    this.a = paramContext.getSharedPreferences(paramString, 0);
+    this.b = this.a.edit();
   }
   
   public SharedPreferences a()
   {
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+    return this.a;
+  }
+  
+  public SharedPreferences.Editor b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.NowWebBizModule.SharePreferenceUtil
  * JD-Core Version:    0.7.0.1
  */

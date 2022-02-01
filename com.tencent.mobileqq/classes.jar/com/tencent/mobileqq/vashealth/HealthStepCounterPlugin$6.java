@@ -249,22 +249,22 @@ class HealthStepCounterPlugin$6
     //   495: ifne +57 -> 552
     //   498: aload_0
     //   499: getfield 12	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin$6:a	Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;
-    //   502: getfield 159	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   502: getfield 159	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:i	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   505: invokevirtual 163	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   508: ifeq +12 -> 520
     //   511: aload_0
     //   512: getfield 12	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin$6:a	Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;
     //   515: aload 8
-    //   517: putfield 167	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:f	Ljava/lang/String;
+    //   517: putfield 167	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:m	Ljava/lang/String;
     //   520: invokestatic 172	java/lang/System:currentTimeMillis	()J
-    //   523: getstatic 175	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:jdField_a_of_type_Long	J
+    //   523: getstatic 175	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:d	J
     //   526: lsub
     //   527: ldc2_w 176
     //   530: lcmp
     //   531: ifge +4 -> 535
     //   534: return
     //   535: invokestatic 172	java/lang/System:currentTimeMillis	()J
-    //   538: putstatic 175	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:jdField_a_of_type_Long	J
+    //   538: putstatic 175	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:d	J
     //   541: aload_0
     //   542: getfield 12	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin$6:a	Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;
     //   545: aload 7
@@ -301,7 +301,7 @@ class HealthStepCounterPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthStepCounterPlugin.6
  * JD-Core Version:    0.7.0.1
  */

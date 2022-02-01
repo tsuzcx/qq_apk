@@ -5,12 +5,12 @@ import com.tencent.biz.qqstory.utils.AssertUtils;
 
 public class IDataProvider$GroupId
 {
-  public String a;
   public String b;
+  public String c;
   
   public IDataProvider$GroupId(@NonNull String paramString)
   {
-    this.a = paramString;
+    this.b = paramString;
     AssertUtils.checkNotEmpty(paramString);
   }
   
@@ -25,18 +25,18 @@ public class IDataProvider$GroupId
         return false;
       }
       paramObject = (GroupId)paramObject;
-      String str = this.a;
+      String str = this.b;
       if (str != null) {
-        return str.equals(paramObject.a);
+        return str.equals(paramObject.b);
       }
-      return paramObject.a == null;
+      return paramObject.b == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    String str = this.a;
+    String str = this.b;
     if (str != null) {
       return str.hashCode();
     }
@@ -46,19 +46,19 @@ public class IDataProvider$GroupId
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    String str2 = this.b;
+    String str2 = this.c;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     localStringBuilder.append(str1);
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.GroupId
  * JD-Core Version:    0.7.0.1
  */

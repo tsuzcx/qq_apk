@@ -26,7 +26,7 @@ public class StructMsgHelper
     localStructMsgForGeneralShare.setFlag(1);
     localStructMsgForGeneralShare.mMsgTemplateID = 1;
     localStructMsgForGeneralShare.mMsgServiceID = 19;
-    localStructMsgForGeneralShare.mMsgBrief = HardCodeUtil.a(2131714416);
+    localStructMsgForGeneralShare.mMsgBrief = HardCodeUtil.a(2131911927);
     localStructMsgForGeneralShare.mMsgAction = "plugin";
     localStructMsgForGeneralShare.mMsgActionData = "mqqapi://qzone/to_publish_queue";
     localStructMsgForGeneralShare.mMsg_A_ActionData = "";
@@ -37,7 +37,7 @@ public class StructMsgHelper
       localAbsStructMsgItem1 = StructMsgElementFactory.a(2);
       localAbsStructMsgItem1.a(new StructMsgItemCover((String)paramArrayList.get(0)));
       localAbsStructMsgItem1.a(new StructMsgItemTitle(""));
-      localAbsStructMsgItem1.a(new StructMsgItemSummary(HardCodeUtil.a(2131714406)));
+      localAbsStructMsgItem1.a(new StructMsgItemSummary(HardCodeUtil.a(2131911917)));
       paramArrayList = StructMsgElementFactory.a(0);
       paramArrayList.a(new StructMsgItemProgress(0));
       localStructMsgForGeneralShare.addItem(localAbsStructMsgItem1);
@@ -59,7 +59,7 @@ public class StructMsgHelper
     paramArrayList = StructMsgElementFactory.a(0);
     paramArrayList.a(new StructMsgItemProgress(0));
     AbsStructMsgItem localAbsStructMsgItem2 = StructMsgElementFactory.a(0);
-    localAbsStructMsgItem2.a(new StructMsgItemSummary(HardCodeUtil.a(2131714397)));
+    localAbsStructMsgItem2.a(new StructMsgItemSummary(HardCodeUtil.a(2131911909)));
     localStructMsgForGeneralShare.addItem(localAbsStructMsgItem1);
     localStructMsgForGeneralShare.addItem(paramArrayList);
     localStructMsgForGeneralShare.addItem(localAbsStructMsgItem2);
@@ -90,7 +90,7 @@ public class StructMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgHelper
  * JD-Core Version:    0.7.0.1
  */

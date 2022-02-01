@@ -16,15 +16,15 @@ import java.util.List;
 public class GetFeedFeatureRequest
   extends NetworkRequest<GetFeedFeatureResponse>
 {
-  public static final String a;
-  public List<String> a;
+  public static final String e = StoryApi.a("StorySvc.feed_feature_775");
+  public List<String> f;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.feed_feature_775");
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
     try
@@ -38,15 +38,10 @@ public class GetFeedFeatureRequest
     return new GetFeedFeatureResponse(localRspGetBatchFeedFeature);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -59,7 +54,7 @@ public class GetFeedFeatureRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest
  * JD-Core Version:    0.7.0.1
  */

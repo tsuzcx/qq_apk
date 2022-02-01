@@ -12,22 +12,22 @@ import com.tencent.superplayer.api.SuperPlayerFactory;
 public class QQVoiceRtmpPlayer
   implements IQQVoiceRtmpPlayer, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnVideoPreparedListener
 {
-  private IQQVoiceAudioListener jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
-  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-  private String jdField_a_of_type_JavaLangString;
+  private ISuperPlayer a;
+  private IQQVoiceAudioListener b;
+  private String c;
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 118, null);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
+    this.a = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 118, null);
+    this.a.setOnCompletionListener(this);
+    this.a.setOnInfoListener(this);
+    this.a.setOnErrorListener(this);
+    this.a.setOnVideoPreparedListener(this);
   }
   
   private void b()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.c;
     if (str != null) {
       play(str);
     }
@@ -40,28 +40,28 @@ public class QQVoiceRtmpPlayer
       a();
       return;
     }
-    QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), new QQVoiceRtmpPlayer.1(this));
+    QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), new QQVoiceRtmpPlayer.1(this));
   }
   
   public boolean isDestroy()
   {
-    return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null;
+    return this.a == null;
   }
   
   public boolean isPlayerReady()
   {
-    return (QQVideoPlaySDKManager.b()) && (QQVideoPlaySDKManager.a());
+    return (QQVideoPlaySDKManager.isSoLoadSucess()) && (QQVideoPlaySDKManager.isSDKReady());
   }
   
   public boolean isPlaying()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     return (localISuperPlayer != null) && (localISuperPlayer.isPlaying());
   }
   
   public void onCompletion(ISuperPlayer paramISuperPlayer)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.onCompletion();
     }
@@ -69,7 +69,7 @@ public class QQVoiceRtmpPlayer
   
   public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       return paramISuperPlayer.onError(paramInt1, paramInt2, paramInt3, paramString);
     }
@@ -78,7 +78,7 @@ public class QQVoiceRtmpPlayer
   
   public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       return paramISuperPlayer.onInfo(paramInt, paramLong1, paramLong2, paramObject);
     }
@@ -87,11 +87,11 @@ public class QQVoiceRtmpPlayer
   
   public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    paramISuperPlayer = this.a;
     if (paramISuperPlayer != null)
     {
       paramISuperPlayer.start();
-      paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener;
+      paramISuperPlayer = this.b;
       if (paramISuperPlayer != null) {
         paramISuperPlayer.onAudioFirstFrame();
       }
@@ -100,36 +100,36 @@ public class QQVoiceRtmpPlayer
   
   public void play(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.c = paramString;
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
     paramString = SuperPlayerFactory.createVideoInfoForUrl(paramString, 103, null);
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(BaseApplicationImpl.getContext(), paramString, 0L);
+    this.a.openMediaPlayer(BaseApplicationImpl.getContext(), paramString, 0L);
   }
   
   public void release()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.a;
     if (localISuperPlayer == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.c = null;
     localISuperPlayer.stop();
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.release();
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = null;
+    this.a.release();
+    this.a = null;
   }
   
   public void setPlayAudioListener(IQQVoiceAudioListener paramIQQVoiceAudioListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoAudioroomPlayerIQQVoiceAudioListener = paramIQQVoiceAudioListener;
+    this.b = paramIQQVoiceAudioListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.player.QQVoiceRtmpPlayer
  * JD-Core Version:    0.7.0.1
  */

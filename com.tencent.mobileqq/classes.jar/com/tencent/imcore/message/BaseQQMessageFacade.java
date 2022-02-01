@@ -31,6 +31,7 @@ import com.tencent.mobileqq.app.msgnotify.MsgNotifyManager;
 import com.tencent.mobileqq.data.ChatHistorySearchData;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.IDraftTextManagerApi;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.entitymanager.Provider;
@@ -72,49 +73,43 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class BaseQQMessageFacade
   extends Observable
-  implements Manager
+  implements IDraftTextManagerApi, Manager
 {
-  public Handler a;
-  private final SparseArray<BaseMessageManager> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private final BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  protected Registry a;
-  public MsgNotifyManager a;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
   public final Map<String, Message> a;
-  private final Vector<BaseQQMessageFacade.ObserverWrapper> jdField_a_of_type_JavaUtilVector = new Vector();
-  public final ConcurrentHashMap<Integer, List<MessageRecord>> a;
-  public final AtomicInteger a;
   public Map<String, Boolean> b;
-  public final ConcurrentHashMap<String, Boolean> b;
-  private Map<String, Map<String, Object>> c = new HashMap();
+  public Handler c;
+  public MsgNotifyManager d;
+  protected Registry e;
+  public final AtomicInteger f = new AtomicInteger(0);
+  public final ConcurrentHashMap<Integer, List<MessageRecord>> g = new ConcurrentHashMap();
+  public final ConcurrentHashMap<String, Boolean> h = new ConcurrentHashMap();
+  private final BaseQQAppInterface i;
+  private final SparseArray<BaseMessageManager> j = new SparseArray();
+  private final Object k = new Object();
+  private Map<String, Map<String, Object>> l = new HashMap();
+  private final Vector<BaseQQMessageFacade.ObserverWrapper> m = new Vector();
   
   public BaseQQMessageFacade(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilMap = new QQConcurrentHashMap(1017, 0, 1200);
-    this.jdField_b_of_type_JavaUtilMap = new QQConcurrentHashMap(1018, 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyManager = new MsgNotifyManager(paramBaseQQAppInterface);
-    this.jdField_a_of_type_ComTencentImcoreMessageRegistry = new Registry();
+    this.i = paramBaseQQAppInterface;
+    this.c = new Handler(Looper.getMainLooper());
+    this.a = new QQConcurrentHashMap(1017, 0, 1200);
+    this.b = new QQConcurrentHashMap(1018, 0);
+    this.d = new MsgNotifyManager(paramBaseQQAppInterface);
+    this.e = new Registry();
   }
   
   BaseQQMessageFacade(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilMap = new QQConcurrentHashMap(1017, 0, 1200);
-    this.jdField_a_of_type_ComTencentImcoreMessageRegistry = new Registry();
+    this.i = paramBaseQQAppInterface;
+    this.c = new Handler(Looper.getMainLooper());
+    this.a = new QQConcurrentHashMap(1017, 0, 1200);
+    this.e = new Registry();
   }
   
   private BaseQQMessageFacade.ObserverWrapper a(Observer paramObserver)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       BaseQQMessageFacade.ObserverWrapper localObserverWrapper = (BaseQQMessageFacade.ObserverWrapper)localIterator.next();
@@ -125,23 +120,13 @@ public abstract class BaseQQMessageFacade
     return null;
   }
   
-  private IMessageFacadeService a()
-  {
-    return (IMessageFacadeService)QRoute.api(IMessageFacadeService.class);
-  }
-  
   private String a(Context paramContext, MessageRecord paramMessageRecord, int paramInt, boolean paramBoolean)
   {
-    IMsgSummaryCreator localIMsgSummaryCreator = (IMsgSummaryCreator)((Map)a().getMsgSummaryProvider().get()).get(Integer.valueOf(paramInt));
+    IMsgSummaryCreator localIMsgSummaryCreator = (IMsgSummaryCreator)((Map)h().getMsgSummaryProvider().get()).get(Integer.valueOf(paramInt));
     if (localIMsgSummaryCreator != null) {
-      return localIMsgSummaryCreator.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this, paramContext, paramMessageRecord, paramBoolean);
+      return localIMsgSummaryCreator.a(this.i, this, paramContext, paramMessageRecord, paramBoolean);
     }
     return "";
-  }
-  
-  private String a(String paramString, int paramInt)
-  {
-    return UinTypeUtil.a(paramString, paramInt);
   }
   
   @NotNull
@@ -150,7 +135,7 @@ public abstract class BaseQQMessageFacade
     msg_svc.PbC2CReadedReportReq.UinPairReadInfo localUinPairReadInfo = new msg_svc.PbC2CReadedReportReq.UinPairReadInfo();
     String str = paramConversationInfo.uin;
     if (1006 == paramConversationInfo.type) {
-      str = a().getUinByPhoneNum(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramConversationInfo.uin);
+      str = h().getUinByPhoneNum(this.i, paramConversationInfo.uin);
     }
     if (TextUtils.isEmpty(str)) {
       return paramPbC2CReadedReportReq;
@@ -174,18 +159,18 @@ public abstract class BaseQQMessageFacade
     if (1044 == paramConversationInfo.type) {
       return paramPbC2CReadedReportReq;
     }
-    paramConversationInfo = a(paramConversationInfo.uin, paramConversationInfo.type);
+    paramConversationInfo = h(paramConversationInfo.uin, paramConversationInfo.type);
     if (paramConversationInfo == null) {
       return paramPbC2CReadedReportReq;
     }
-    int i = paramConversationInfo.size() - 1;
-    while (i >= 0)
+    int n = paramConversationInfo.size() - 1;
+    while (n >= 0)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramConversationInfo.get(i);
+      MessageRecord localMessageRecord = (MessageRecord)paramConversationInfo.get(n);
       if (localMessageRecord != null) {
         paramPbC2CReadedReportReq = a(paramBoolean, paramStringBuilder, paramPbC2CReadedReportReq, localMessageRecord);
       }
-      i -= 1;
+      n -= 1;
     }
     return paramPbC2CReadedReportReq;
   }
@@ -195,7 +180,7 @@ public abstract class BaseQQMessageFacade
     Object localObject;
     if (UinTypeUtil.c(paramMessageRecord.senderuin))
     {
-      paramStringBuilder = a(paramMessageRecord.senderuin, paramMessageRecord.istroop);
+      paramStringBuilder = h(paramMessageRecord.senderuin, paramMessageRecord.istroop);
       localObject = paramPbC2CReadedReportReq;
       if (paramStringBuilder != null)
       {
@@ -244,7 +229,7 @@ public abstract class BaseQQMessageFacade
   
   private void a(int paramInt, List<MessageRecord> paramList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    IOnMessageAddCompleteObserver localIOnMessageAddCompleteObserver = (IOnMessageAddCompleteObserver)((Map)a().getMsgAddCompleteObserverProvider().get()).get(Integer.valueOf(paramInt));
+    IOnMessageAddCompleteObserver localIOnMessageAddCompleteObserver = (IOnMessageAddCompleteObserver)((Map)h().getMsgAddCompleteObserverProvider().get()).get(Integer.valueOf(paramInt));
     if (localIOnMessageAddCompleteObserver != null) {
       localIOnMessageAddCompleteObserver.a(this, paramList, paramBoolean1, paramBoolean2, paramBoolean3);
     }
@@ -252,14 +237,14 @@ public abstract class BaseQQMessageFacade
   
   private void a(StringBuilder paramStringBuilder, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq, ConversationInfo paramConversationInfo)
   {
-    a().setSubaccountAssistantReaded(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramStringBuilder, paramPbMsgReadedReportReq, paramConversationInfo);
+    h().setSubaccountAssistantReaded(this.i, paramStringBuilder, paramPbMsgReadedReportReq, paramConversationInfo);
   }
   
   private void a(List<MessageRecord> paramList, BaseMessageManager.AddMessageContext paramAddMessageContext, boolean paramBoolean)
   {
-    Iterator localIterator = ((List)a().getMsgAddEndProcessorProvider().get()).iterator();
+    Iterator localIterator = ((List)h().getMsgAddEndProcessorProvider().get()).iterator();
     while (localIterator.hasNext()) {
-      ((IAddMultiMessagesInnerEndProcessor)localIterator.next()).a(this, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramList, paramAddMessageContext, paramBoolean);
+      ((IAddMultiMessagesInnerEndProcessor)localIterator.next()).a(this, this.i, paramList, paramAddMessageContext, paramBoolean);
     }
   }
   
@@ -267,7 +252,7 @@ public abstract class BaseQQMessageFacade
   {
     if (paramPbC2CReadedReportReq != null)
     {
-      byte[] arrayOfByte = a().getMsgHandlerMsgCache(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).a();
+      byte[] arrayOfByte = h().getMsgHandlerMsgCache(this.i).e();
       if (arrayOfByte != null) {
         paramPbC2CReadedReportReq.sync_cookie.set(ByteStringMicro.copyFrom(arrayOfByte));
       }
@@ -286,20 +271,9 @@ public abstract class BaseQQMessageFacade
     paramPbMsgReadedReportReq.grp_read_report.add(localPbGroupReadedReportReq);
   }
   
-  private BaseMessageManager b(int paramInt)
-  {
-    MsgPool localMsgPool = a(paramInt).a();
-    BaseMessageManager localBaseMessageManager = (BaseMessageManager)((Map)a().getMsgManagerProvider(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMsgPool).get()).get(Integer.valueOf(paramInt));
-    Object localObject = localBaseMessageManager;
-    if (localBaseMessageManager == null) {
-      localObject = new C2CMessageManager(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localMsgPool);
-    }
-    return localObject;
-  }
-  
   private boolean b(ConversationInfo paramConversationInfo)
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentImcoreMessageRegistry.d().iterator();
+    Iterator localIterator = this.e.j().iterator();
     while (localIterator.hasNext()) {
       if (((GetUnreadMsgNumCallback)localIterator.next()).a(paramConversationInfo)) {
         return true;
@@ -308,109 +282,70 @@ public abstract class BaseQQMessageFacade
     return false;
   }
   
-  private void c(MessageRecord paramMessageRecord)
+  private BaseMessageManager d(int paramInt)
   {
-    Iterator localIterator = ((List)a().getAddMultiMsgInnerProcessorProvider().get()).iterator();
+    MsgPool localMsgPool = b(paramInt).a();
+    BaseMessageManager localBaseMessageManager = (BaseMessageManager)((Map)h().getMsgManagerProvider(this.i, localMsgPool).get()).get(Integer.valueOf(paramInt));
+    Object localObject = localBaseMessageManager;
+    if (localBaseMessageManager == null) {
+      localObject = new C2CMessageManager(this.i, localMsgPool);
+    }
+    return localObject;
+  }
+  
+  private void e(MessageRecord paramMessageRecord)
+  {
+    Iterator localIterator = ((List)h().getAddMultiMsgInnerProcessorProvider().get()).iterator();
     while (localIterator.hasNext()) {
-      ((IAddMultiMessagesInnerProcessor)localIterator.next()).a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord);
+      ((IAddMultiMessagesInnerProcessor)localIterator.next()).a(this.i, paramMessageRecord);
     }
   }
   
-  private void d(MessageRecord paramMessageRecord)
+  private void f(MessageRecord paramMessageRecord)
   {
-    Iterator localIterator = ((List)a().getRealSendProcessorProvider().get()).iterator();
+    Iterator localIterator = ((List)h().getRealSendProcessorProvider().get()).iterator();
     while (localIterator.hasNext()) {
-      ((IMessageSendProcessor)localIterator.next()).a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord);
+      ((IMessageSendProcessor)localIterator.next()).a(this.i, paramMessageRecord);
     }
   }
   
-  public int a(String paramString, int paramInt)
+  private IMessageFacadeService h()
   {
-    return a(paramString, paramInt, true, true);
+    return (IMessageFacadeService)QRoute.api(IMessageFacadeService.class);
   }
   
-  public int a(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  private String k(String paramString, int paramInt)
   {
-    return a(paramInt).a(paramString, paramInt, paramMessageRecord);
-  }
-  
-  public int a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return a(paramInt).a(paramString, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public long a(String paramString, int paramInt)
-  {
-    if ((paramInt != 1) && (paramInt != 3000) && (paramInt != 1026))
-    {
-      if (UinTypeUtil.b(paramInt))
-      {
-        paramString = a(paramInt).b(paramString, paramInt);
-        if ((paramString != null) && (!paramString.isEmpty()))
-        {
-          paramInt = paramString.size() - 1;
-          while (paramInt >= 0)
-          {
-            localObject = (MessageRecord)paramString.get(paramInt);
-            if (!MessageRecordInfo.b(((MessageRecord)localObject).issend)) {
-              return ((MessageRecord)localObject).time;
-            }
-            paramInt -= 1;
-          }
-        }
-      }
-      return -1L;
-    }
-    Object localObject = a();
-    Message localMessage = ((IMessageFacadeService)localObject).getMessageFacade(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).getLastMessage(paramString, paramInt);
-    long l = localMessage.shmsgseq;
-    if (localMessage.isLongMsg())
-    {
-      paramString = ((IMessageFacadeService)localObject).getMessageFacade(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).a(paramString, paramInt);
-      if ((paramString != null) && (paramString.size() > 0)) {
-        return Math.max(l, ((MessageRecord)paramString.get(paramString.size() - 1)).shmsgseq);
-      }
-    }
-    return l;
-  }
-  
-  public BaseQQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    return UinTypeUtil.a(paramString, paramInt);
   }
   
   public BaseMessageManager a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.k)
     {
-      BaseMessageManager localBaseMessageManager2 = (BaseMessageManager)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      BaseMessageManager localBaseMessageManager2 = (BaseMessageManager)this.j.get(paramInt);
       BaseMessageManager localBaseMessageManager1 = localBaseMessageManager2;
       if (localBaseMessageManager2 == null)
       {
-        localBaseMessageManager1 = b(paramInt);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localBaseMessageManager1);
+        localBaseMessageManager1 = d(paramInt);
+        this.j.put(paramInt, localBaseMessageManager1);
       }
       return localBaseMessageManager1;
     }
   }
   
-  protected BaseMsgProxy a(int paramInt)
-  {
-    return a().getMessageProxy(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramInt);
-  }
-  
   public ConversationFacade a()
   {
-    return a().getConversationFacade(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    return h().getConversationFacade(this.i);
   }
   
   @Nullable
   protected Message a(long paramLong, List<MessageRecord> paramList)
   {
-    int i = 0;
-    while ((paramList != null) && (i < paramList.size()))
+    int n = 0;
+    while ((paramList != null) && (n < paramList.size()))
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(n);
       if ((localMessageRecord != null) && (localMessageRecord.uniseq > paramLong))
       {
         paramList = new Message();
@@ -421,138 +356,39 @@ public abstract class BaseQQMessageFacade
         a(paramList);
         return paramList;
       }
-      i += 1;
+      n += 1;
     }
     return null;
-  }
-  
-  public Message a(String paramString, int paramInt)
-  {
-    ILastMsgGetter localILastMsgGetter = (ILastMsgGetter)((Map)a().getLastMsgGetterProvider().get()).get(Integer.valueOf(2));
-    if (localILastMsgGetter != null) {
-      return localILastMsgGetter.a(this, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramString, paramInt, 0);
-    }
-    return null;
-  }
-  
-  public Message a(String paramString, int paramInt1, int paramInt2)
-  {
-    int i;
-    if ((paramInt1 != 1033) && (paramInt1 != 1034)) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    ILastMsgGetter localILastMsgGetter = (ILastMsgGetter)((Map)a().getLastMsgGetterProvider().get()).get(Integer.valueOf(i));
-    if (localILastMsgGetter != null) {
-      return localILastMsgGetter.a(this, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramString, paramInt1, paramInt2);
-    }
-    return new Message();
-  }
-  
-  public Registry a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageRegistry;
   }
   
   public MsgSummary a(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    return a().getMsgSummaryForTroop(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this, paramContext, paramMessageRecord, paramBoolean);
-  }
-  
-  public ChatHistorySearchData a(String paramString, int paramInt, List<Integer> paramList)
-  {
-    if ((paramList != null) && (paramList.size() != 0) && (!TextUtils.isEmpty(paramString)))
-    {
-      ChatHistorySearchData localChatHistorySearchData = new ChatHistorySearchData();
-      localChatHistorySearchData.mSearchData1 = a(paramInt).b(paramString, paramInt, paramList);
-      return localChatHistorySearchData;
-    }
-    return null;
+    return h().getMsgSummaryForTroop(this.i, this, paramContext, paramMessageRecord, paramBoolean);
   }
   
   public ChatHistorySearchData a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return a(paramInt).a(paramString1, paramString2, paramInt, paramString3);
-  }
-  
-  public MessageRecord a(Message paramMessage)
-  {
-    MessageRecord localMessageRecord = ((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).createMsgRecordFromDB(paramMessage.msgtype, paramMessage.msgData, paramMessage.extLong, paramMessage.extStr, paramMessage.istroop);
-    MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessage);
-    if ((localMessageRecord instanceof ChatMessage)) {
-      ((ChatMessage)localMessageRecord).parse();
-    }
-    return localMessageRecord;
-  }
-  
-  public MessageRecord a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord.longMsgIndex == 0) {
-      return paramMessageRecord;
-    }
-    List localList = a(paramMessageRecord.istroop).b(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    Object localObject = paramMessageRecord;
-    if (localList != null)
-    {
-      localObject = paramMessageRecord;
-      if (!localList.isEmpty())
-      {
-        int i = localList.size() - 1;
-        for (;;)
-        {
-          localObject = paramMessageRecord;
-          if (i < 0) {
-            break;
-          }
-          MessageRecord localMessageRecord = (MessageRecord)localList.get(i);
-          localObject = paramMessageRecord;
-          if (UinTypeUtil.a(localMessageRecord, paramMessageRecord))
-          {
-            if (localMessageRecord.longMsgIndex == 0) {
-              return localMessageRecord;
-            }
-            localObject = paramMessageRecord;
-            if (localMessageRecord.longMsgIndex < paramMessageRecord.longMsgIndex) {
-              localObject = localMessageRecord;
-            }
-          }
-          i -= 1;
-          paramMessageRecord = (MessageRecord)localObject;
-        }
-      }
-    }
-    return localObject;
+    return b(paramInt).a(paramString1, paramString2, paramInt, paramString3);
   }
   
   public MessageRecord a(String paramString, int paramInt, long paramLong)
   {
-    return a(paramInt).a(paramString, paramInt, paramLong);
-  }
-  
-  public MessageRecord a(String paramString, int paramInt1, long paramLong, int paramInt2)
-  {
-    return a(paramInt1).a(paramString, paramInt1, paramLong, paramInt2);
+    return b(paramInt).b(paramString, paramInt, paramLong);
   }
   
   public MessageRecord a(String paramString, int paramInt, MessageRecord paramMessageRecord)
   {
-    return a(paramInt).a(paramString, paramInt, paramMessageRecord);
+    return b(paramInt).d(paramString, paramInt, paramMessageRecord);
   }
   
   public MessageRecord a(String paramString, int paramInt, MessageRecord paramMessageRecord, List<MessageRecord> paramList)
   {
-    return a(paramInt).a(paramString, paramInt, paramMessageRecord, paramList);
+    return b(paramInt).a(paramString, paramInt, paramMessageRecord, paramList);
   }
   
   public MessageRecord a(String paramString1, int paramInt, String paramString2)
   {
-    return a(paramInt).a(paramString1, paramInt, paramString2);
-  }
-  
-  public String a(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    return a(paramContext, paramMessageRecord, 2, paramBoolean);
+    return b(paramInt).a(paramString1, paramInt, paramString2);
   }
   
   public String a(String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
@@ -561,7 +397,7 @@ public abstract class BaseQQMessageFacade
     ((StringBuilder)localObject1).append("select * from ");
     ((StringBuilder)localObject1).append(paramString);
     String str2 = ((StringBuilder)localObject1).toString();
-    int i = 0;
+    int n = 0;
     localObject1 = null;
     if (paramLong1 >= 0L) {
       paramString = String.format(" time >= %d and time <= %d ", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
@@ -575,14 +411,14 @@ public abstract class BaseQQMessageFacade
       str1 = null;
     }
     if (paramBoolean) {
-      i = -1000;
+      n = -1000;
     }
     Object localObject2;
-    if (i == -1000)
+    if (n == -1000)
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(" msgtype = ");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(n);
       localObject2 = ((StringBuilder)localObject2).toString();
     }
     else
@@ -655,63 +491,53 @@ public abstract class BaseQQMessageFacade
     return localObject1;
   }
   
-  public List<MessageRecord> a(String paramString, int paramInt)
-  {
-    return a(paramInt).b(paramString, paramInt);
-  }
-  
   public List<MessageRecord> a(String paramString, int paramInt1, int paramInt2)
   {
-    return a(paramInt1).a(paramString, paramInt1, paramInt2, null);
+    return b(paramInt1).a(paramString, paramInt1, paramInt2, null);
   }
   
   public List<MessageRecord> a(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    return a(paramInt1).c(paramString, paramInt1, paramLong, paramInt2);
+    return b(paramInt1).d(paramString, paramInt1, paramLong, paramInt2);
   }
   
   public List<MessageRecord> a(String paramString, int paramInt1, long paramLong1, int paramInt2, long paramLong2, int[] paramArrayOfInt, int paramInt3)
   {
-    return a(paramInt1).a(paramString, paramInt1, paramLong1, paramInt2, paramLong2, paramInt3, paramArrayOfInt);
+    return b(paramInt1).a(paramString, paramInt1, paramLong1, paramInt2, paramLong2, paramInt3, paramArrayOfInt);
   }
   
   public List<MessageRecord> a(String paramString1, int paramInt1, long paramLong, int paramInt2, String paramString2)
   {
-    return a(paramInt1).a(paramString1, paramInt1, paramLong, paramInt2, paramString2);
-  }
-  
-  public List<MessageRecord> a(String paramString, int paramInt, long paramLong1, long paramLong2)
-  {
-    return a(paramInt).a(paramString, paramInt, paramLong1, paramLong2);
+    return b(paramInt1).a(paramString1, paramInt1, paramLong, paramInt2, paramString2);
   }
   
   public List<MessageRecord> a(String paramString, int paramInt, List<Long> paramList)
   {
-    return a(paramInt).a(paramString, paramInt, paramList);
+    return b(paramInt).a(paramString, paramInt, paramList);
   }
   
   public List<MessageRecord> a(String paramString, int paramInt, int[] paramArrayOfInt)
   {
-    return a(paramInt).a(paramString, paramInt, 5000, paramArrayOfInt);
+    return b(paramInt).a(paramString, paramInt, 5000, paramArrayOfInt);
   }
   
   public List<MessageRecord> a(String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    return a(paramInt1).a(paramString, paramInt1, paramInt2, paramArrayOfInt);
+    return b(paramInt1).a(paramString, paramInt1, paramInt2, paramArrayOfInt);
   }
   
   protected msg_svc.PbC2CReadedReportReq a(boolean paramBoolean, msg_svc.PbC2CReadedReportReq paramPbC2CReadedReportReq, ConversationInfo paramConversationInfo)
   {
-    return a().setTempGameMsgReaded(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, this, paramBoolean, paramPbC2CReadedReportReq, paramConversationInfo);
+    return h().setTempGameMsgReaded(this.i, this, paramBoolean, paramPbC2CReadedReportReq, paramConversationInfo);
   }
   
   public msg_svc.PbMsgReadedReportReq a(String paramString, int paramInt, boolean paramBoolean)
   {
     long l1 = System.currentTimeMillis();
-    if (c(paramString, paramInt))
+    if (j(paramString, paramInt))
     {
       b(paramString, paramInt);
-      List localList = a(paramString, paramInt);
+      List localList = h(paramString, paramInt);
       if (localList == null) {
         return null;
       }
@@ -731,7 +557,7 @@ public abstract class BaseQQMessageFacade
           msg_svc.PbC2CReadedReportReq.UinPairReadInfo localUinPairReadInfo;
           if (UinTypeUtil.c(((MessageRecord)localObject2).senderuin))
           {
-            localObject2 = a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
+            localObject2 = h(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
             localObject1 = paramString;
             if (localObject2 != null)
             {
@@ -772,9 +598,9 @@ public abstract class BaseQQMessageFacade
             if (a().a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop) > 0) {
               a(((MessageRecord)localObject2).senderuin, ((MessageRecord)localObject2).istroop);
             }
-            localObject1 = a();
-            ((IMessageFacadeService)localObject1).reportMsgBoxRead(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, 1, null);
-            ((IMessageFacadeService)localObject1).reportMsgBoxRead(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, 2, null);
+            localObject1 = h();
+            ((IMessageFacadeService)localObject1).reportMsgBoxRead(this.i, 1, null);
+            ((IMessageFacadeService)localObject1).reportMsgBoxRead(this.i, 2, null);
             localObject1 = paramString;
           }
           else
@@ -801,7 +627,7 @@ public abstract class BaseQQMessageFacade
       }
       if (paramString != null)
       {
-        localObject1 = a().getMsgHandlerMsgCache(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).a();
+        localObject1 = h().getMsgHandlerMsgCache(this.i).e();
         if (localObject1 != null) {
           paramString.sync_cookie.set(ByteStringMicro.copyFrom((byte[])localObject1));
         }
@@ -828,7 +654,7 @@ public abstract class BaseQQMessageFacade
   
   public msg_svc.PbMsgReadedReportReq a(boolean paramBoolean)
   {
-    Object localObject2 = a().getConversationProxy(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface).a();
+    Object localObject2 = h().getConversationProxy(this.i).b();
     Object localObject1 = null;
     if (localObject2 != null)
     {
@@ -841,8 +667,8 @@ public abstract class BaseQQMessageFacade
       while (((Iterator)localObject2).hasNext())
       {
         ConversationInfo localConversationInfo = (ConversationInfo)((Iterator)localObject2).next();
-        if ((ConversationFacade.a(localConversationInfo) > 0) && (a().b(localConversationInfo.uin, localConversationInfo.type)) && (!b(localConversationInfo))) {
-          if (c(localConversationInfo.uin, localConversationInfo.type))
+        if ((ConversationFacade.a(localConversationInfo) > 0) && (a().o(localConversationInfo.uin, localConversationInfo.type)) && (!b(localConversationInfo))) {
+          if (j(localConversationInfo.uin, localConversationInfo.type))
           {
             localObject1 = a(paramBoolean, localStringBuilder, (msg_svc.PbC2CReadedReportReq)localObject1, localConversationInfo);
           }
@@ -852,30 +678,30 @@ public abstract class BaseQQMessageFacade
           }
           else if ((paramBoolean) || (localConversationInfo.type != 1008) || (!a(localConversationInfo)))
           {
-            long l;
+            long l1;
             if ((1006 != localConversationInfo.type) && ((!UinTypeUtil.b(localConversationInfo.type)) || (Long.valueOf(localConversationInfo.uin).longValue() <= 10000L)))
             {
               if (3000 == localConversationInfo.type)
               {
                 a(localConversationInfo.uin, localConversationInfo.type, true, paramBoolean);
-                l = a(localConversationInfo.uin, localConversationInfo.type);
-                if (l == -1L) {
+                l1 = i(localConversationInfo.uin, localConversationInfo.type);
+                if (l1 == -1L) {
                   break;
                 }
                 msg_svc.PbDiscussReadedReportReq localPbDiscussReadedReportReq = new msg_svc.PbDiscussReadedReportReq();
                 localPbDiscussReadedReportReq.conf_uin.set(Long.valueOf(localConversationInfo.uin).longValue());
-                localPbDiscussReadedReportReq.last_read_seq.set(l);
+                localPbDiscussReadedReportReq.last_read_seq.set(l1);
                 localPbMsgReadedReportReq.dis_read_report.add(localPbDiscussReadedReportReq);
               }
-              else if ((1 == localConversationInfo.type) && (!a().isTroopMark(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localConversationInfo.uin, localConversationInfo.type)))
+              else if ((1 == localConversationInfo.type) && (!h().isTroopMark(this.i, localConversationInfo.uin, localConversationInfo.type)))
               {
                 a(localConversationInfo.uin, localConversationInfo.type, true, paramBoolean);
-                a().setReadedForHCTopic(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, localConversationInfo.uin);
-                l = a(localConversationInfo.uin, localConversationInfo.type);
-                if (l == -1L) {
+                h().setReadedForHCTopic(this.i, localConversationInfo.uin);
+                l1 = i(localConversationInfo.uin, localConversationInfo.type);
+                if (l1 == -1L) {
                   break;
                 }
-                a(localPbMsgReadedReportReq, localConversationInfo, l);
+                a(localPbMsgReadedReportReq, localConversationInfo, l1);
               }
             }
             else if (10007 == localConversationInfo.type)
@@ -885,11 +711,11 @@ public abstract class BaseQQMessageFacade
             else if (localConversationInfo.type != 1036)
             {
               a(localConversationInfo.uin, localConversationInfo.type, true, paramBoolean);
-              l = a(localConversationInfo.uin, localConversationInfo.type);
-              if (l == -1L) {
+              l1 = i(localConversationInfo.uin, localConversationInfo.type);
+              if (l1 == -1L) {
                 break;
               }
-              localObject1 = a(localStringBuilder, (msg_svc.PbC2CReadedReportReq)localObject1, localConversationInfo, (int)l);
+              localObject1 = a(localStringBuilder, (msg_svc.PbC2CReadedReportReq)localObject1, localConversationInfo, (int)l1);
             }
           }
         }
@@ -905,60 +731,6 @@ public abstract class BaseQQMessageFacade
       return localPbMsgReadedReportReq;
     }
     return null;
-  }
-  
-  public void a()
-  {
-    Object localObject1 = new RecentUser().getTableName();
-    SQLiteDatabase localSQLiteDatabase = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getWritableDatabase();
-    if (localSQLiteDatabase == null) {
-      return;
-    }
-    localObject1 = localSQLiteDatabase.query((String)localObject1, new String[] { "uin", "type" }, null, null, null, null);
-    if (localObject1 != null) {
-      try
-      {
-        ((Cursor)localObject1).moveToFirst();
-        int i = 0;
-        while (i < ((Cursor)localObject1).getCount())
-        {
-          a(((Cursor)localObject1).getString(0), ((Cursor)localObject1).getInt(1), false, true);
-          ((Cursor)localObject1).moveToNext();
-          i += 1;
-        }
-        if (localObject1 == null) {
-          return;
-        }
-      }
-      finally
-      {
-        if (localObject1 != null) {
-          ((Cursor)localObject1).close();
-        }
-      }
-    } else {
-      ((Cursor)localObject1).close();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    String str = String.valueOf(AppConstants.RECOMMEND_TROOP_UIN);
-    if (a().a(str, 4001) <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.QQMessageFacade", 2, "setRecommendMsgReaded return : unread=0");
-      }
-      return;
-    }
-    Message localMessage = getLastMessage(str, 4001);
-    paramInt = a(4001).a(paramInt, localMessage);
-    a().d(str, 4001, -paramInt);
-    if (paramInt != 0)
-    {
-      setChanged();
-      notifyObservers(getLastMessage(str, 4001));
-    }
   }
   
   public void a(Message paramMessage)
@@ -983,7 +755,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(MessageRecord paramMessageRecord, int paramInt)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.i.getEntityManagerFactory().createEntityManager();
     try
     {
       ArrayList localArrayList = new ArrayList();
@@ -992,7 +764,7 @@ public abstract class BaseQQMessageFacade
       if (QLog.isColorLevel()) {
         QLog.d("sendmsg", 2, String.format("addSendMessage key = %d %s %d", new Object[] { Long.valueOf(paramMessageRecord.uniseq), paramMessageRecord.frienduin, Integer.valueOf(paramMessageRecord.istroop) }));
       }
-      ((MessageCache)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getMsgCache()).a(paramMessageRecord, paramInt);
+      ((MessageCache)this.i.getMsgCache()).a(paramMessageRecord, paramInt);
       setChanged();
       notifyObservers(paramMessageRecord);
       return;
@@ -1050,7 +822,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(MessageRecord paramMessageRecord, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory(paramString).createEntityManager();
+    paramString = this.i.getEntityManagerFactory(paramString).createEntityManager();
     try
     {
       ArrayList localArrayList = new ArrayList();
@@ -1089,11 +861,6 @@ public abstract class BaseQQMessageFacade
     a(paramInt1).a(paramString, paramInt1, paramBoolean1, paramBoolean2, paramInt2);
   }
   
-  public void a(String paramString, int paramInt, long paramLong)
-  {
-    a(paramInt).a(paramString, paramInt, paramLong, false);
-  }
-  
   public void a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     Object localObject = new StringBuilder();
@@ -1104,7 +871,7 @@ public abstract class BaseQQMessageFacade
     ((StringBuilder)localObject).append(" uniseq = ");
     ((StringBuilder)localObject).append(paramLong);
     QLog.i("Q.msg.QQMessageFacade", 1, ((StringBuilder)localObject).toString());
-    localObject = a(paramInt1).a(paramString, paramInt1, paramLong, paramInt2, paramInt3);
+    localObject = b(paramInt1).a(paramString, paramInt1, paramLong, paramInt2, paramInt3);
     a(paramInt1).a(paramString, paramInt1, (MessageRecord)localObject, 3);
   }
   
@@ -1128,7 +895,7 @@ public abstract class BaseQQMessageFacade
       localStringBuilder.append(paramLong2);
       QLog.d("Q.msg.QQMessageFacade", 2, localStringBuilder.toString());
     }
-    paramString2 = a(paramInt).a(paramString1, paramInt, paramLong1, paramLong2, paramString2);
+    paramString2 = b(paramInt).a(paramString1, paramInt, paramLong1, paramLong2, paramString2);
     a(paramInt).a(paramString1, paramInt, paramString2, 3);
   }
   
@@ -1145,7 +912,7 @@ public abstract class BaseQQMessageFacade
       localStringBuilder.append(paramLong);
       QLog.d("Q.msg.QQMessageFacade", 2, localStringBuilder.toString());
     }
-    paramString2 = a(paramInt).a(paramString1, paramInt, paramLong, paramString2);
+    paramString2 = b(paramInt).a(paramString1, paramInt, paramLong, paramString2);
     a(paramInt).a(paramString1, paramInt, paramString2, 2);
   }
   
@@ -1166,13 +933,13 @@ public abstract class BaseQQMessageFacade
       localStringBuilder.append(paramObject);
       QLog.d("Q.msg.QQMessageFacade", 2, localStringBuilder.toString());
     }
-    paramString2 = a(paramInt).a(paramString1, paramInt, paramLong, paramString2, paramObject);
+    paramString2 = b(paramInt).a(paramString1, paramInt, paramLong, paramString2, paramObject);
     a(paramInt).a(paramString1, paramInt, paramString2, 3);
   }
   
   public void a(String paramString, int paramInt, long paramLong, boolean paramBoolean)
   {
-    a(paramInt).a(paramString, paramInt, paramLong, paramBoolean);
+    a(paramInt).b(paramString, paramInt, paramLong, paramBoolean);
   }
   
   public void a(String paramString, int paramInt, long paramLong, byte[] paramArrayOfByte)
@@ -1188,13 +955,8 @@ public abstract class BaseQQMessageFacade
       localStringBuilder.append(paramLong);
       QLog.d("Q.msg.QQMessageFacade", 2, localStringBuilder.toString());
     }
-    paramArrayOfByte = a(paramInt).a(paramString, paramInt, paramLong, paramArrayOfByte);
+    paramArrayOfByte = b(paramInt).a(paramString, paramInt, paramLong, paramArrayOfByte);
     a(paramInt).a(paramString, paramInt, paramArrayOfByte, 2);
-  }
-  
-  public void a(String paramString, int paramInt, MessageRecord paramMessageRecord)
-  {
-    a(paramInt).a(paramString, paramInt, paramMessageRecord);
   }
   
   public void a(String paramString, int paramInt, MessageRecord paramMessageRecord, ContentValues paramContentValues, int[] paramArrayOfInt)
@@ -1206,7 +968,7 @@ public abstract class BaseQQMessageFacade
       localStringBuilder.append(paramMessageRecord);
       QLog.d("Q.msg.QQMessageFacade", 2, localStringBuilder.toString());
     }
-    a(paramInt).a(paramString, paramInt, paramMessageRecord.uniseq, paramContentValues);
+    b(paramInt).a(paramString, paramInt, paramMessageRecord.uniseq, paramContentValues);
     if (paramArrayOfInt == null)
     {
       if (QLog.isColorLevel()) {
@@ -1214,20 +976,20 @@ public abstract class BaseQQMessageFacade
       }
       return;
     }
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    int i1 = paramArrayOfInt.length;
+    int n = 0;
+    while (n < i1)
     {
-      int k = paramArrayOfInt[i];
+      int i2 = paramArrayOfInt[n];
       if (QLog.isColorLevel())
       {
         paramContentValues = new StringBuilder();
         paramContentValues.append("updateMsgFieldsByUniseq reason=");
-        paramContentValues.append(k);
+        paramContentValues.append(i2);
         QLog.d("Q.msg.QQMessageFacade", 2, paramContentValues.toString());
       }
-      a(paramInt).a(paramString, paramInt, paramMessageRecord, k);
-      i += 1;
+      a(paramInt).a(paramString, paramInt, paramMessageRecord, i2);
+      n += 1;
     }
   }
   
@@ -1238,7 +1000,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    a(paramInt).a(paramString, paramInt, paramBoolean1, paramBoolean2);
+    a(paramInt).b(paramString, paramInt, paramBoolean1, paramBoolean2);
   }
   
   public void a(String paramString1, String paramString2)
@@ -1269,7 +1031,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(ArrayList<MessageRecord> paramArrayList, String paramString, boolean paramBoolean)
   {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory(paramString).createEntityManager();
+    paramString = this.i.getEntityManagerFactory(paramString).createEntityManager();
     boolean bool;
     if (!paramBoolean) {
       bool = true;
@@ -1281,7 +1043,7 @@ public abstract class BaseQQMessageFacade
       a(paramArrayList, paramString, paramBoolean, bool, true, true);
       paramString.close();
       if ((paramBoolean) && (paramArrayList != null) && (!paramArrayList.isEmpty())) {
-        a(((MessageRecord)paramArrayList.get(0)).istroop).a(paramArrayList, null);
+        b(((MessageRecord)paramArrayList.get(0)).istroop).a(paramArrayList, null);
       }
       a(2, paramArrayList, false, false, false);
       return;
@@ -1294,7 +1056,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(ArrayList<MessageRecord> paramArrayList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory(paramString).createEntityManager();
+    paramString = this.i.getEntityManagerFactory(paramString).createEntityManager();
     boolean bool;
     if (!paramBoolean1) {
       bool = true;
@@ -1306,7 +1068,7 @@ public abstract class BaseQQMessageFacade
       a(paramArrayList, paramString, paramBoolean1, bool, paramBoolean2, true);
       paramString.close();
       if ((paramBoolean1) && (paramArrayList != null) && (!paramArrayList.isEmpty())) {
-        a(((MessageRecord)paramArrayList.get(0)).istroop).a(paramArrayList, null);
+        b(((MessageRecord)paramArrayList.get(0)).istroop).a(paramArrayList, null);
       }
       a(3, paramArrayList, false, paramBoolean2, false);
       return;
@@ -1319,7 +1081,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(ArrayList<MessageRecord> paramArrayList, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory(paramString).createEntityManager();
+    paramString = this.i.getEntityManagerFactory(paramString).createEntityManager();
     boolean bool;
     if (!paramBoolean1) {
       bool = true;
@@ -1331,7 +1093,7 @@ public abstract class BaseQQMessageFacade
       a(paramArrayList, paramString, paramBoolean1, bool, paramBoolean2, true);
       paramString.close();
       if ((paramBoolean1) && (paramArrayList != null) && (!paramArrayList.isEmpty())) {
-        a(((MessageRecord)paramArrayList.get(0)).istroop).a(paramArrayList, null);
+        b(((MessageRecord)paramArrayList.get(0)).istroop).a(paramArrayList, null);
       }
       a(3, paramArrayList, false, paramBoolean2, paramBoolean3);
       return;
@@ -1350,7 +1112,7 @@ public abstract class BaseQQMessageFacade
       while (localIterator.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-        a(localMessageRecord.istroop).a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord, null, false, true, true);
+        b(localMessageRecord.istroop).a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord, null, false, true, true);
       }
     }
     b(paramList);
@@ -1362,13 +1124,13 @@ public abstract class BaseQQMessageFacade
     if (QLog.isColorLevel()) {
       a(String.format("addMultiMessagesInner size = %s, sync = %s, saveToDB = %s, needUpdateUnread = %s, needAddAIO = %s ", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean4) }), null);
     }
-    BaseMessageManager.AddMessageContext localAddMessageContext = new BaseMessageManager.AddMessageContext(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    BaseMessageManager.AddMessageContext localAddMessageContext = new BaseMessageManager.AddMessageContext(this.i);
     long l1 = paramList.size();
     Iterator localIterator = paramList.iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      c(localMessageRecord);
+      e(localMessageRecord);
       if (localMessageRecord.msgtype == -2029) {
         QLog.d("VideoRedBag", 1, new Object[] { "onReceiveGrapTips, uniseq:", Long.valueOf(localMessageRecord.uniseq), " uin:", localMessageRecord.frienduin, " type:", Integer.valueOf(localMessageRecord.istroop) });
       }
@@ -1385,7 +1147,7 @@ public abstract class BaseQQMessageFacade
   
   public void a(List<MessageRecord> paramList, String paramString, boolean paramBoolean)
   {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramString = this.i.getEntityManagerFactory().createEntityManager();
     try
     {
       a(paramList, paramString, false, true, true, paramBoolean);
@@ -1408,47 +1170,7 @@ public abstract class BaseQQMessageFacade
   
   protected boolean a(ConversationInfo paramConversationInfo)
   {
-    return a().isBelongServiceAccountFolder(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramConversationInfo.uin);
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    Message localMessage = getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-    if (UinTypeUtil.b(paramMessageRecord.istroop))
-    {
-      if ((paramMessageRecord.msgUid == localMessage.msgUid) && (paramMessageRecord.shmsgseq == localMessage.shmsgseq)) {
-        return true;
-      }
-    }
-    else if (paramMessageRecord.shmsgseq == localMessage.shmsgseq) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    paramString = MessageRecord.getTableName(paramString, paramInt);
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("select count() as counter, 'x' as msgData from ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" where issend=0 and isValid=1 and msgtype ");
-    localStringBuilder.append(UinTypeUtil.b());
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory().createEntityManager().rawQuery(Message.class, localStringBuilder.toString(), null);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramString != null)
-    {
-      bool1 = bool2;
-      if (paramString.size() > 0)
-      {
-        bool1 = bool2;
-        if (((Message)paramString.get(0)).counter > 0) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    return h().isBelongServiceAccountFolder(this.i, paramConversationInfo.uin);
   }
   
   public boolean a(String paramString, int paramInt1, int paramInt2, long paramLong)
@@ -1462,7 +1184,7 @@ public abstract class BaseQQMessageFacade
       if (MsgProxyUtils.b(paramInt2))
       {
         bool1 = bool2;
-        if (a(paramInt1).e(paramString, paramInt1, paramLong) != null) {
+        if (b(paramInt1).g(paramString, paramInt1, paramLong) != null) {
           bool1 = true;
         }
       }
@@ -1483,12 +1205,12 @@ public abstract class BaseQQMessageFacade
       }
       return false;
     }
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(paramString, paramInt), Boolean.valueOf(true));
-    paramString = a(paramInt).d(paramString, paramInt);
+    this.h.put(k(paramString, paramInt), Boolean.valueOf(true));
+    paramString = b(paramInt).g(paramString, paramInt);
     if ((paramString != null) && (!paramString.isEmpty()))
     {
       if (!paramBoolean) {
-        a(paramInt).a();
+        b(paramInt).e();
       }
       paramList = new StringBuilder();
       paramList.append("refresh C2C autopull, size = ");
@@ -1521,38 +1243,249 @@ public abstract class BaseQQMessageFacade
       }
       paramObserver = new BaseQQMessageFacade.ObserverWrapper(paramObserver);
       super.addObserver(paramObserver);
-      this.jdField_a_of_type_JavaUtilVector.addElement(paramObserver);
+      this.m.addElement(paramObserver);
       return;
     }
     finally {}
   }
   
+  public int b(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return a(paramInt).a(paramString, paramInt, paramBoolean1, paramBoolean2);
+  }
+  
+  protected BaseMsgProxy b(int paramInt)
+  {
+    return h().getMessageProxy(this.i, paramInt);
+  }
+  
+  public Message b(String paramString, int paramInt1, int paramInt2)
+  {
+    int n;
+    if ((paramInt1 != 1033) && (paramInt1 != 1034)) {
+      n = 0;
+    } else {
+      n = 1;
+    }
+    ILastMsgGetter localILastMsgGetter = (ILastMsgGetter)((Map)h().getLastMsgGetterProvider().get()).get(Integer.valueOf(n));
+    if (localILastMsgGetter != null) {
+      return localILastMsgGetter.a(this, this.i, paramString, paramInt1, paramInt2);
+    }
+    return new Message();
+  }
+  
+  public ChatHistorySearchData b(String paramString, int paramInt, List<Integer> paramList)
+  {
+    if ((paramList != null) && (paramList.size() != 0) && (!TextUtils.isEmpty(paramString)))
+    {
+      ChatHistorySearchData localChatHistorySearchData = new ChatHistorySearchData();
+      localChatHistorySearchData.mSearchData1 = b(paramInt).d(paramString, paramInt, paramList);
+      return localChatHistorySearchData;
+    }
+    return null;
+  }
+  
+  public MessageRecord b(Message paramMessage)
+  {
+    MessageRecord localMessageRecord = ((IMessageRecordFactory)QRoute.api(IMessageRecordFactory.class)).createMsgRecordFromDB(paramMessage.msgtype, paramMessage.msgData, paramMessage.extLong, paramMessage.extStr, paramMessage.istroop);
+    MessageRecord.copyMessageRecordBaseField(localMessageRecord, paramMessage);
+    if ((localMessageRecord instanceof ChatMessage)) {
+      ((ChatMessage)localMessageRecord).parse();
+    }
+    return localMessageRecord;
+  }
+  
   public MessageRecord b(String paramString, int paramInt, long paramLong)
   {
-    return a(paramInt).b(paramString, paramInt, paramLong);
+    return b(paramInt).c(paramString, paramInt, paramLong);
   }
   
   public String b(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    return a(paramContext, paramMessageRecord, 0, paramBoolean);
+    return a(paramContext, paramMessageRecord, 2, paramBoolean);
   }
   
   public List<MessageRecord> b(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    return a(paramInt1).d(paramString, paramInt1, paramLong, paramInt2);
+    return b(paramInt1).e(paramString, paramInt1, paramLong, paramInt2);
   }
   
   public List<MessageRecord> b(String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    return a(paramInt).b(paramString, paramInt, paramLong1, paramLong2);
+    return b(paramInt).a(paramString, paramInt, paramLong1, paramLong2);
   }
   
   public void b()
   {
-    a().a(false, true);
+    Object localObject1 = new RecentUser().getTableName();
+    SQLiteDatabase localSQLiteDatabase = this.i.getWritableDatabase();
+    if (localSQLiteDatabase == null) {
+      return;
+    }
+    localObject1 = localSQLiteDatabase.query((String)localObject1, new String[] { "uin", "type" }, null, null, null, null);
+    if (localObject1 != null) {
+      try
+      {
+        ((Cursor)localObject1).moveToFirst();
+        int n = 0;
+        while (n < ((Cursor)localObject1).getCount())
+        {
+          b(((Cursor)localObject1).getString(0), ((Cursor)localObject1).getInt(1), false, true);
+          ((Cursor)localObject1).moveToNext();
+          n += 1;
+        }
+        if (localObject1 == null) {
+          return;
+        }
+      }
+      finally
+      {
+        if (localObject1 != null) {
+          ((Cursor)localObject1).close();
+        }
+      }
+    } else {
+      ((Cursor)localObject1).close();
+    }
   }
   
-  public void b(MessageRecord paramMessageRecord)
+  public void b(MessageRecord paramMessageRecord, BusinessObserver paramBusinessObserver)
+  {
+    b(paramMessageRecord, paramBusinessObserver, false);
+  }
+  
+  public void b(MessageRecord paramMessageRecord, BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  {
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread())
+    {
+      ThreadManager.post(new BaseQQMessageFacade.1(this, paramMessageRecord, paramBusinessObserver, paramBoolean), 10, null, false);
+      return;
+    }
+    c(paramMessageRecord, paramBusinessObserver, paramBoolean);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    a(paramInt).c(paramString, paramInt, false, false);
+  }
+  
+  public void b(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  {
+    b(paramInt).a(paramString, paramInt, paramMessageRecord);
+  }
+  
+  public void b(List<MessageRecord> paramList)
+  {
+    Iterator localIterator = ((List)h().getMsgNotifyProcessProvider().get()).iterator();
+    while (localIterator.hasNext()) {
+      ((IMessageNotifyProcessor)localIterator.next()).a(this.i, paramList);
+    }
+  }
+  
+  public void b(List<MessageRecord> paramList, String paramString)
+  {
+    paramString = this.i.getEntityManagerFactory(paramString).createEntityManager();
+    try
+    {
+      a(paramList, paramString, true, false, true, true);
+      paramString.close();
+      a(1, paramList, false, false, false);
+      return;
+    }
+    finally
+    {
+      paramString.close();
+    }
+  }
+  
+  public void b(List<MessageRecord> paramList, String paramString, boolean paramBoolean)
+  {
+    paramString = this.i.getEntityManagerFactory(paramString).createEntityManager();
+    try
+    {
+      a(paramList, paramString, false, false, true, false);
+      paramString.close();
+      a(0, paramList, paramBoolean, false, false);
+      return;
+    }
+    finally
+    {
+      paramString.close();
+    }
+  }
+  
+  public boolean b(MessageRecord paramMessageRecord)
+  {
+    Message localMessage = getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    if (UinTypeUtil.b(paramMessageRecord.istroop))
+    {
+      if ((paramMessageRecord.msgUid == localMessage.msgUid) && (paramMessageRecord.shmsgseq == localMessage.shmsgseq)) {
+        return true;
+      }
+    }
+    else if (paramMessageRecord.shmsgseq == localMessage.shmsgseq) {
+      return true;
+    }
+    return false;
+  }
+  
+  public int c(String paramString, int paramInt)
+  {
+    return b(paramString, paramInt, true, true);
+  }
+  
+  public int c(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  {
+    return b(paramInt).c(paramString, paramInt, paramMessageRecord);
+  }
+  
+  public Registry c()
+  {
+    return this.e;
+  }
+  
+  public MessageRecord c(String paramString, int paramInt, long paramLong)
+  {
+    return b(paramInt).d(paramString, paramInt, paramLong);
+  }
+  
+  public MessageRecord c(String paramString, int paramInt1, long paramLong, int paramInt2)
+  {
+    return b(paramInt1).b(paramString, paramInt1, paramLong, paramInt2);
+  }
+  
+  public String c(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    return a(paramContext, paramMessageRecord, 0, paramBoolean);
+  }
+  
+  public List<MessageRecord> c(String paramString, int paramInt, long paramLong1, long paramLong2)
+  {
+    return b(paramInt).b(paramString, paramInt, paramLong1, paramLong2);
+  }
+  
+  public void c(int paramInt)
+  {
+    String str = String.valueOf(AppConstants.RECOMMEND_TROOP_UIN);
+    if (a().a(str, 4001) <= 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.QQMessageFacade", 2, "setRecommendMsgReaded return : unread=0");
+      }
+      return;
+    }
+    Message localMessage = getLastMessage(str, 4001);
+    paramInt = b(4001).a(paramInt, localMessage);
+    a().e(str, 4001, -paramInt);
+    if (paramInt != 0)
+    {
+      setChanged();
+      notifyObservers(getLastMessage(str, 4001));
+    }
+  }
+  
+  public void c(MessageRecord paramMessageRecord)
   {
     if ((paramMessageRecord != null) && (paramMessageRecord.frienduin != null))
     {
@@ -1578,108 +1511,9 @@ public abstract class BaseQQMessageFacade
     }
   }
   
-  public void b(MessageRecord paramMessageRecord, BusinessObserver paramBusinessObserver)
-  {
-    b(paramMessageRecord, paramBusinessObserver, false);
-  }
-  
-  public void b(MessageRecord paramMessageRecord, BusinessObserver paramBusinessObserver, boolean paramBoolean)
-  {
-    Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() == localLooper.getThread())
-    {
-      ThreadManager.post(new BaseQQMessageFacade.1(this, paramMessageRecord, paramBusinessObserver, paramBoolean), 10, null, false);
-      return;
-    }
-    c(paramMessageRecord, paramBusinessObserver, paramBoolean);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    a(paramInt).b(paramString, paramInt, false, false);
-  }
-  
-  public void b(String paramString, int paramInt, MessageRecord paramMessageRecord)
-  {
-    a(paramInt).b(paramString, paramInt, paramMessageRecord);
-  }
-  
-  public void b(List<MessageRecord> paramList)
-  {
-    Iterator localIterator = ((List)a().getMsgNotifyProcessProvider().get()).iterator();
-    while (localIterator.hasNext()) {
-      ((IMessageNotifyProcessor)localIterator.next()).a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramList);
-    }
-  }
-  
-  public void b(List<MessageRecord> paramList, String paramString)
-  {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory(paramString).createEntityManager();
-    try
-    {
-      a(paramList, paramString, true, false, true, true);
-      paramString.close();
-      a(1, paramList, false, false, false);
-      return;
-    }
-    finally
-    {
-      paramString.close();
-    }
-  }
-  
-  public void b(List<MessageRecord> paramList, String paramString, boolean paramBoolean)
-  {
-    paramString = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getEntityManagerFactory(paramString).createEntityManager();
-    try
-    {
-      a(paramList, paramString, false, false, true, false);
-      paramString.close();
-      a(0, paramList, paramBoolean, false, false);
-      return;
-    }
-    finally
-    {
-      paramString.close();
-    }
-  }
-  
-  public boolean b(String paramString, int paramInt)
-  {
-    paramString = a(paramString, paramInt);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
-    {
-      paramString = (Message)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if ((paramString.time > 0L) && (paramString.senderuin != null)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public MessageRecord c(String paramString, int paramInt, long paramLong)
-  {
-    return a(paramInt).c(paramString, paramInt, paramLong);
-  }
-  
-  public String c(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    return a(paramContext, paramMessageRecord, 1, paramBoolean);
-  }
-  
-  public List<MessageRecord> c(String paramString, int paramInt1, long paramLong, int paramInt2)
-  {
-    return a(paramInt1).b(paramString, paramInt1, paramLong, paramInt2);
-  }
-  
-  public void c()
-  {
-    a().a(true, true);
-  }
-  
   public void c(MessageRecord paramMessageRecord, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    d(paramMessageRecord);
+    f(paramMessageRecord);
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -1695,13 +1529,13 @@ public abstract class BaseQQMessageFacade
       if (paramMessageRecord.msgUid == 0L) {
         paramMessageRecord.msgUid = MessageUtils.a(MessageUtils.a());
       }
-      localObject = ((List)a().getMsgSenderProvider().get()).iterator();
+      localObject = ((List)h().getMsgSenderProvider().get()).iterator();
       while (((Iterator)localObject).hasNext())
       {
         IMessageSender localIMessageSender = (IMessageSender)((Iterator)localObject).next();
         if (localIMessageSender.a(paramMessageRecord))
         {
-          localIMessageSender.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramMessageRecord, paramBusinessObserver, paramBoolean);
+          localIMessageSender.a(this.i, paramMessageRecord, paramBusinessObserver, paramBoolean);
           return;
         }
       }
@@ -1718,45 +1552,93 @@ public abstract class BaseQQMessageFacade
     }
   }
   
-  public void c(String paramString, int paramInt)
+  public MessageRecord d(MessageRecord paramMessageRecord)
   {
-    paramString = new BaseQQMessageFacade.MessageNotifyParam(paramString, paramInt, 0, null);
-    setChanged();
-    notifyObservers(paramString);
-  }
-  
-  boolean c(String paramString, int paramInt)
-  {
-    return UinTypeUtil.a(paramString, paramInt);
+    if (paramMessageRecord.longMsgIndex == 0) {
+      return paramMessageRecord;
+    }
+    List localList = b(paramMessageRecord.istroop).c(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    Object localObject = paramMessageRecord;
+    if (localList != null)
+    {
+      localObject = paramMessageRecord;
+      if (!localList.isEmpty())
+      {
+        int n = localList.size() - 1;
+        for (;;)
+        {
+          localObject = paramMessageRecord;
+          if (n < 0) {
+            break;
+          }
+          MessageRecord localMessageRecord = (MessageRecord)localList.get(n);
+          localObject = paramMessageRecord;
+          if (UinTypeUtil.a(localMessageRecord, paramMessageRecord))
+          {
+            if (localMessageRecord.longMsgIndex == 0) {
+              return localMessageRecord;
+            }
+            localObject = paramMessageRecord;
+            if (localMessageRecord.longMsgIndex < paramMessageRecord.longMsgIndex) {
+              localObject = localMessageRecord;
+            }
+          }
+          n -= 1;
+          paramMessageRecord = (MessageRecord)localObject;
+        }
+      }
+    }
+    return localObject;
   }
   
   public MessageRecord d(String paramString, int paramInt, long paramLong)
   {
-    return a(paramInt).d(paramString, paramInt, paramLong);
+    return b(paramInt).e(paramString, paramInt, paramLong);
   }
   
   public String d(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    paramContext = new Message();
-    MessageRecord.copyMessageRecordBaseField(paramContext, paramMessageRecord);
-    paramContext.emoRecentMsg = null;
-    paramContext.fileType = -1;
-    a(paramContext);
-    return a().trimName(paramContext.nickName, 0.4F);
+    return a(paramContext, paramMessageRecord, 1, paramBoolean);
+  }
+  
+  public List<MessageRecord> d(String paramString, int paramInt1, long paramLong, int paramInt2)
+  {
+    return b(paramInt1).c(paramString, paramInt1, paramLong, paramInt2);
   }
   
   public void d()
   {
-    try
+    a().a(false, true);
+  }
+  
+  public void d(String paramString, int paramInt, MessageRecord paramMessageRecord)
+  {
+    b(paramInt).b(paramString, paramInt, paramMessageRecord);
+  }
+  
+  public boolean d(String paramString, int paramInt)
+  {
+    paramString = MessageRecord.getTableName(paramString, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("select count() as counter, 'x' as msgData from ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" where issend=0 and isValid=1 and msgtype ");
+    localStringBuilder.append(UinTypeUtil.b());
+    paramString = this.i.getEntityManagerFactory().createEntityManager().rawQuery(Message.class, localStringBuilder.toString(), null);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramString != null)
     {
-      super.setChanged();
-      return;
+      bool1 = bool2;
+      if (paramString.size() > 0)
+      {
+        bool1 = bool2;
+        if (((Message)paramString.get(0)).counter > 0) {
+          bool1 = true;
+        }
+      }
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return bool1;
   }
   
   public void deleteObserver(Observer paramObserver)
@@ -1767,7 +1649,7 @@ public abstract class BaseQQMessageFacade
       if (localObject != null)
       {
         super.deleteObserver((Observer)localObject);
-        this.jdField_a_of_type_JavaUtilVector.removeElement(localObject);
+        this.m.removeElement(localObject);
       }
       else
       {
@@ -1787,7 +1669,7 @@ public abstract class BaseQQMessageFacade
     try
     {
       super.deleteObservers();
-      this.jdField_a_of_type_JavaUtilVector.removeAllElements();
+      this.m.removeAllElements();
       return;
     }
     finally
@@ -1797,65 +1679,178 @@ public abstract class BaseQQMessageFacade
     }
   }
   
-  public MessageRecord e(String paramString, int paramInt, long paramLong)
+  public Message e(String paramString, int paramInt)
   {
-    return a(paramInt).g(paramString, paramInt, paramLong);
+    ILastMsgGetter localILastMsgGetter = (ILastMsgGetter)((Map)h().getLastMsgGetterProvider().get()).get(Integer.valueOf(2));
+    if (localILastMsgGetter != null) {
+      return localILastMsgGetter.a(this, this.i, paramString, paramInt, 0);
+    }
+    return null;
   }
   
-  public MessageRecord f(String paramString, int paramInt, long paramLong)
+  public MessageRecord e(String paramString, int paramInt, long paramLong)
   {
-    return a(paramInt).f(paramString, paramInt, paramLong);
+    return b(paramInt).k(paramString, paramInt, paramLong);
+  }
+  
+  public String e(Context paramContext, MessageRecord paramMessageRecord, boolean paramBoolean)
+  {
+    paramContext = new Message();
+    MessageRecord.copyMessageRecordBaseField(paramContext, paramMessageRecord);
+    paramContext.emoRecentMsg = null;
+    paramContext.fileType = -1;
+    a(paramContext);
+    return h().trimName(paramContext.nickName, 0.4F);
+  }
+  
+  public void e()
+  {
+    a().a(true, true);
+  }
+  
+  public void f()
+  {
+    try
+    {
+      super.setChanged();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void f(String paramString, int paramInt, long paramLong)
+  {
+    a(paramInt).b(paramString, paramInt, paramLong, false);
+  }
+  
+  public boolean f(String paramString, int paramInt)
+  {
+    paramString = k(paramString, paramInt);
+    if (this.a.containsKey(paramString))
+    {
+      paramString = (Message)this.a.get(paramString);
+      if ((paramString.time > 0L) && (paramString.senderuin != null)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public BaseQQAppInterface g()
+  {
+    return this.i;
+  }
+  
+  public MessageRecord g(String paramString, int paramInt, long paramLong)
+  {
+    return b(paramInt).h(paramString, paramInt, paramLong);
+  }
+  
+  public void g(String paramString, int paramInt)
+  {
+    paramString = new BaseQQMessageFacade.MessageNotifyParam(paramString, paramInt, 0, null);
+    setChanged();
+    notifyObservers(paramString);
   }
   
   public Message getLastMessage(String paramString, int paramInt)
   {
-    ILastMsgGetter localILastMsgGetter = (ILastMsgGetter)((Map)a().getLastMsgGetterProvider().get()).get(Integer.valueOf(0));
+    ILastMsgGetter localILastMsgGetter = (ILastMsgGetter)((Map)h().getLastMsgGetterProvider().get()).get(Integer.valueOf(0));
     if (localILastMsgGetter != null) {
-      return localILastMsgGetter.a(this, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramString, paramInt, 0);
+      return localILastMsgGetter.a(this, this.i, paramString, paramInt, 0);
     }
     return new Message();
   }
   
+  public List<MessageRecord> h(String paramString, int paramInt)
+  {
+    return b(paramInt).c(paramString, paramInt);
+  }
+  
+  public long i(String paramString, int paramInt)
+  {
+    if ((paramInt != 1) && (paramInt != 3000) && (paramInt != 1026))
+    {
+      if (UinTypeUtil.b(paramInt))
+      {
+        paramString = b(paramInt).c(paramString, paramInt);
+        if ((paramString != null) && (!paramString.isEmpty()))
+        {
+          paramInt = paramString.size() - 1;
+          while (paramInt >= 0)
+          {
+            localObject = (MessageRecord)paramString.get(paramInt);
+            if (!MessageRecordInfo.c(((MessageRecord)localObject).issend)) {
+              return ((MessageRecord)localObject).time;
+            }
+            paramInt -= 1;
+          }
+        }
+      }
+      return -1L;
+    }
+    Object localObject = h();
+    Message localMessage = ((IMessageFacadeService)localObject).getMessageFacade(this.i).getLastMessage(paramString, paramInt);
+    long l1 = localMessage.shmsgseq;
+    if (localMessage.isLongMsg())
+    {
+      paramString = ((IMessageFacadeService)localObject).getMessageFacade(this.i).h(paramString, paramInt);
+      if ((paramString != null) && (paramString.size() > 0)) {
+        return Math.max(l1, ((MessageRecord)paramString.get(paramString.size() - 1)).shmsgseq);
+      }
+    }
+    return l1;
+  }
+  
+  boolean j(String paramString, int paramInt)
+  {
+    return UinTypeUtil.c(paramString, paramInt);
+  }
+  
   public void notifyObservers(Object paramObject)
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     super.notifyObservers(paramObject);
-    l = System.currentTimeMillis() - l;
+    l1 = System.currentTimeMillis() - l1;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("notifyObservers() called with: data = [");
       localStringBuilder.append(paramObject);
       localStringBuilder.append("], costTime = [");
-      localStringBuilder.append(l);
+      localStringBuilder.append(l1);
       localStringBuilder.append("]");
       QLog.d("Q.msg.QQMessageFacade", 2, localStringBuilder.toString());
     }
     paramObject = MsgAutoMonitorUtil.getInstance();
     if (paramObject != null)
     {
-      paramObject.addMsgObserverTime(l);
+      paramObject.addMsgObserverTime(l1);
       paramObject.addMsgObserverNotifyNum();
     }
   }
   
   public void onDestroy()
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.a;
     if (localMap != null) {
       localMap.clear();
     }
-    localMap = this.jdField_b_of_type_JavaUtilMap;
+    localMap = this.b;
     if (localMap != null) {
       localMap.clear();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyManager.a();
+    this.d.a();
     deleteObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseQQMessageFacade
  * JD-Core Version:    0.7.0.1
  */

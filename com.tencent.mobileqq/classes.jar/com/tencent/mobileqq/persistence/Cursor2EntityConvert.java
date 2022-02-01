@@ -10,8 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Cursor2EntityConvert
 {
-  private ConcurrentHashMap<String, Integer> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private volatile boolean a = false;
+  private ConcurrentHashMap<String, Integer> b;
   
   /* Error */
   public static MessageRecord a(Entity paramEntity)
@@ -20,47 +20,47 @@ public class Cursor2EntityConvert
     //   0: aload_0
     //   1: ifnull +89 -> 90
     //   4: aload_0
-    //   5: invokevirtual 27	com/tencent/mobileqq/persistence/Entity:postRead	()V
+    //   5: invokevirtual 28	com/tencent/mobileqq/persistence/Entity:postRead	()V
     //   8: aload_0
-    //   9: checkcast 29	com/tencent/mobileqq/data/MessageRecord
+    //   9: checkcast 30	com/tencent/mobileqq/data/MessageRecord
     //   12: astore_0
     //   13: aload_0
     //   14: areturn
-    //   15: invokestatic 35	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   15: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   18: ifeq +72 -> 90
-    //   21: ldc 37
+    //   21: ldc 38
     //   23: iconst_2
-    //   24: ldc 39
-    //   26: invokestatic 43	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: ldc 40
+    //   26: invokestatic 44	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   29: goto +61 -> 90
-    //   32: invokestatic 35	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   32: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   35: ifeq +55 -> 90
-    //   38: ldc 37
+    //   38: ldc 38
     //   40: iconst_2
-    //   41: ldc 45
-    //   43: invokestatic 43	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: ldc 46
+    //   43: invokestatic 44	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   46: goto +44 -> 90
     //   49: astore_0
-    //   50: invokestatic 35	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   50: invokestatic 36	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   53: ifeq +37 -> 90
-    //   56: new 47	java/lang/StringBuilder
+    //   56: new 48	java/lang/StringBuilder
     //   59: dup
-    //   60: invokespecial 48	java/lang/StringBuilder:<init>	()V
+    //   60: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   63: astore_1
     //   64: aload_1
-    //   65: ldc 50
-    //   67: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: ldc 51
+    //   67: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   70: pop
     //   71: aload_1
     //   72: aload_0
-    //   73: invokevirtual 58	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   76: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 59	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   76: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
-    //   80: ldc 37
+    //   80: ldc 38
     //   82: iconst_2
     //   83: aload_1
-    //   84: invokevirtual 61	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 43	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   84: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokestatic 44	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   90: aconst_null
     //   91: areturn
     //   92: astore_0
@@ -85,15 +85,15 @@ public class Cursor2EntityConvert
       if (paramCursor == null) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+      if (this.b == null) {
+        this.b = new ConcurrentHashMap();
       }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         String str = ((Field)paramList.next()).getName();
         int i = paramCursor.getColumnIndex(str);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Integer.valueOf(i));
+        this.b.put(str, Integer.valueOf(i));
       }
     }
   }
@@ -132,25 +132,25 @@ public class Cursor2EntityConvert
       localMessageRecord.extLong = j;
       localMessageRecord.extStr = str;
       localMessageRecord.istroop = k;
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.a = true;
         a(TableBuilder.getAllField(localMessageRecord), paramCursor);
       }
-      localMessageRecord.selfuin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("selfuin")).intValue());
-      localMessageRecord.frienduin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("frienduin")).intValue());
-      localMessageRecord.senderuin = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("senderuin")).intValue());
-      localMessageRecord.time = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("time")).intValue());
-      localMessageRecord.msgtype = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgtype")).intValue());
-      localMessageRecord.issend = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("issend")).intValue());
-      localMessageRecord.msgseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgseq")).intValue());
-      localMessageRecord.shmsgseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("shmsgseq")).intValue());
-      localMessageRecord.msgId = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgId")).intValue());
-      localMessageRecord.msgUid = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msgUid")).intValue());
-      localMessageRecord.uniseq = paramCursor.getLong(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("uniseq")).intValue());
-      localMessageRecord.versionCode = paramCursor.getInt(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("versionCode")).intValue());
+      localMessageRecord.selfuin = paramCursor.getString(((Integer)this.b.get("selfuin")).intValue());
+      localMessageRecord.frienduin = paramCursor.getString(((Integer)this.b.get("frienduin")).intValue());
+      localMessageRecord.senderuin = paramCursor.getString(((Integer)this.b.get("senderuin")).intValue());
+      localMessageRecord.time = paramCursor.getLong(((Integer)this.b.get("time")).intValue());
+      localMessageRecord.msgtype = paramCursor.getInt(((Integer)this.b.get("msgtype")).intValue());
+      localMessageRecord.issend = paramCursor.getInt(((Integer)this.b.get("issend")).intValue());
+      localMessageRecord.msgseq = paramCursor.getLong(((Integer)this.b.get("msgseq")).intValue());
+      localMessageRecord.shmsgseq = paramCursor.getLong(((Integer)this.b.get("shmsgseq")).intValue());
+      localMessageRecord.msgId = paramCursor.getLong(((Integer)this.b.get("msgId")).intValue());
+      localMessageRecord.msgUid = paramCursor.getLong(((Integer)this.b.get("msgUid")).intValue());
+      localMessageRecord.uniseq = paramCursor.getLong(((Integer)this.b.get("uniseq")).intValue());
+      localMessageRecord.versionCode = paramCursor.getInt(((Integer)this.b.get("versionCode")).intValue());
       if (localMessageRecord.versionCode <= 0) {
-        localMessageRecord.msg = paramCursor.getString(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("msg")).intValue());
+        localMessageRecord.msg = paramCursor.getString(((Integer)this.b.get("msg")).intValue());
       }
       if ((l != -1L) && (paramString != null)) {
         localMessageRecord._status = 1001;
@@ -182,18 +182,18 @@ public class Cursor2EntityConvert
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    this.a = false;
+    ConcurrentHashMap localConcurrentHashMap = this.b;
     if (localConcurrentHashMap != null)
     {
       localConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
+      this.b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.Cursor2EntityConvert
  * JD-Core Version:    0.7.0.1
  */

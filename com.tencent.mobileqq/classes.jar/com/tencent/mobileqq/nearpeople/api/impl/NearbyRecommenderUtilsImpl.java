@@ -23,12 +23,12 @@ public class NearbyRecommenderUtilsImpl
   
   public void checkExpireTime(Object paramObject)
   {
-    NearbyRecommenderUtils.a((QQAppInterface)paramObject);
+    NearbyRecommenderUtils.b((QQAppInterface)paramObject);
   }
   
   public boolean checkShowNearbyRecommender(Object paramObject)
   {
-    return NearbyRecommenderUtils.b((QQAppInterface)paramObject);
+    return NearbyRecommenderUtils.c((QQAppInterface)paramObject);
   }
   
   public boolean checkUnreadMsgForNearbyRecommender(Object paramObject)
@@ -38,7 +38,7 @@ public class NearbyRecommenderUtilsImpl
   
   public String[] getReasonTypeAndUins(Object paramObject)
   {
-    return NearbyRecommenderUtils.a((QQAppInterface)paramObject);
+    return NearbyRecommenderUtils.e((QQAppInterface)paramObject);
   }
   
   public boolean isNeedPullNearbyRecommenderData(Object paramObject, int paramInt)
@@ -48,7 +48,7 @@ public class NearbyRecommenderUtilsImpl
   
   public void setNearbyRecommenderMsgRead(Object paramObject)
   {
-    NearbyRecommenderUtils.b((QQAppInterface)paramObject);
+    NearbyRecommenderUtils.d((QQAppInterface)paramObject);
   }
   
   public void storeNearbyRecommenderList(Context paramContext, String paramString, List<Object> paramList)
@@ -63,7 +63,7 @@ public class NearbyRecommenderUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.api.impl.NearbyRecommenderUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

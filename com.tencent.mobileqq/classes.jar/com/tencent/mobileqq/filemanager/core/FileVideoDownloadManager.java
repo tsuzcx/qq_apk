@@ -15,56 +15,8 @@ public class FileVideoDownloadManager
   static
   {
     
-    if (!QQVideoPlaySDKManager.a()) {
-      QQVideoPlaySDKManager.a(BaseApplicationImpl.getApplication(), new FileVideoDownloadManager.1());
-    }
-  }
-  
-  public static IFileVideoDownloader a(BaseVideoBiz arg0)
-  {
-    String str1 = ???.a();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("try create downloader:");
-    ((StringBuilder)localObject2).append(str1);
-    QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, ((StringBuilder)localObject2).toString());
-    localObject2 = a(str1);
-    if (localObject2 != null)
-    {
-      a(???);
-      synchronized (a)
-      {
-        a.add(0, localObject2);
-        QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("find downloader %s and set to head", new Object[] { str1 }));
-        return localObject2;
-      }
-    }
-    localObject2 = new FileVideoDownloaderImpl(???);
-    synchronized (a)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("new downloader:");
-      localStringBuilder.append(str2);
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, localStringBuilder.toString());
-      a.add(0, localObject2);
-      return localObject2;
-    }
-  }
-  
-  private static IFileVideoDownloader a(String paramString)
-  {
-    synchronized (a)
-    {
-      Iterator localIterator = a.iterator();
-      IFileVideoDownloader localIFileVideoDownloader;
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localIFileVideoDownloader = (IFileVideoDownloader)localIterator.next();
-      } while (!localIFileVideoDownloader.a().equalsIgnoreCase(paramString));
-      paramString = localIFileVideoDownloader;
-      return paramString;
+    if (!QQVideoPlaySDKManager.isSDKReady()) {
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getApplication(), new FileVideoDownloadManager.1());
     }
   }
   
@@ -72,7 +24,7 @@ public class FileVideoDownloadManager
   {
     ??? = a.iterator();
     while (((Iterator)???).hasNext()) {
-      ((IFileVideoDownloader)((Iterator)???).next()).b();
+      ((IFileVideoDownloader)((Iterator)???).next()).d();
     }
     synchronized (a)
     {
@@ -98,11 +50,41 @@ public class FileVideoDownloadManager
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    paramString = a(paramString);
+    paramString = f(paramString);
     if (paramString == null) {
       return;
     }
     paramString.a(paramBoolean ^ true);
+  }
+  
+  public static IFileVideoDownloader b(BaseVideoBiz arg0)
+  {
+    String str1 = ???.a();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("try create downloader:");
+    ((StringBuilder)localObject2).append(str1);
+    QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, ((StringBuilder)localObject2).toString());
+    localObject2 = f(str1);
+    if (localObject2 != null)
+    {
+      a(???);
+      synchronized (a)
+      {
+        a.add(0, localObject2);
+        QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("find downloader %s and set to head", new Object[] { str1 }));
+        return localObject2;
+      }
+    }
+    localObject2 = new FileVideoDownloaderImpl(???);
+    synchronized (a)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new downloader:");
+      localStringBuilder.append(str2);
+      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, localStringBuilder.toString());
+      a.add(0, localObject2);
+      return localObject2;
+    }
   }
   
   public static void b()
@@ -117,9 +99,9 @@ public class FileVideoDownloadManager
     while (((Iterator)???).hasNext())
     {
       localIFileVideoDownloader = (IFileVideoDownloader)((Iterator)???).next();
-      if (localIFileVideoDownloader.b())
+      if (localIFileVideoDownloader.e())
       {
-        QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s downloading", new Object[] { localIFileVideoDownloader.a() }));
+        QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s downloading", new Object[] { localIFileVideoDownloader.b() }));
         return;
       }
     }
@@ -131,8 +113,8 @@ public class FileVideoDownloadManager
         QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, "next queue has elment, why get head is null?");
         return;
       }
-      localIFileVideoDownloader.a();
-      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("start %s to download", new Object[] { localIFileVideoDownloader.a() }));
+      localIFileVideoDownloader.c();
+      QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("start %s to download", new Object[] { localIFileVideoDownloader.b() }));
       return;
     }
     for (;;)
@@ -143,7 +125,7 @@ public class FileVideoDownloadManager
   
   public static void b(String paramString)
   {
-    IFileVideoDownloader localIFileVideoDownloader1 = a(paramString);
+    IFileVideoDownloader localIFileVideoDownloader1 = f(paramString);
     if (localIFileVideoDownloader1 == null)
     {
       QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s not in downloadList", new Object[] { paramString }));
@@ -156,13 +138,13 @@ public class FileVideoDownloadManager
       {
         IFileVideoDownloader localIFileVideoDownloader2 = (IFileVideoDownloader)localIterator.next();
         if (localIFileVideoDownloader2 != localIFileVideoDownloader1) {
-          localIFileVideoDownloader2.b();
+          localIFileVideoDownloader2.d();
         }
       }
       a.remove(localIFileVideoDownloader1);
       a.add(0, localIFileVideoDownloader1);
       QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("downloa %s set to head and stop other succ!", new Object[] { paramString }));
-      localIFileVideoDownloader1.a();
+      localIFileVideoDownloader1.c();
       return;
     }
     for (;;)
@@ -173,18 +155,18 @@ public class FileVideoDownloadManager
   
   public static void c(String paramString)
   {
-    IFileVideoDownloader localIFileVideoDownloader = a(paramString);
+    IFileVideoDownloader localIFileVideoDownloader = f(paramString);
     if (localIFileVideoDownloader == null)
     {
       QLog.w("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("%s not in downloadList", new Object[] { paramString }));
       return;
     }
-    localIFileVideoDownloader.c();
+    localIFileVideoDownloader.f();
   }
   
   public static void d(String paramString)
   {
-    IFileVideoDownloader localIFileVideoDownloader = a(paramString);
+    IFileVideoDownloader localIFileVideoDownloader = f(paramString);
     if (localIFileVideoDownloader == null)
     {
       ??? = new StringBuilder();
@@ -193,7 +175,7 @@ public class FileVideoDownloadManager
       QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, ((StringBuilder)???).toString());
       return;
     }
-    localIFileVideoDownloader.b();
+    localIFileVideoDownloader.d();
     synchronized (a)
     {
       a.remove(localIFileVideoDownloader);
@@ -204,11 +186,11 @@ public class FileVideoDownloadManager
   
   private static void e(String paramString)
   {
-    IFileVideoDownloader localIFileVideoDownloader = a(paramString);
+    IFileVideoDownloader localIFileVideoDownloader = f(paramString);
     if (localIFileVideoDownloader != null)
     {
       QLog.i("FileVideoDownloadManager<FileAssistant>XOXO", 1, String.format("####   %s pause!", new Object[] { paramString }));
-      localIFileVideoDownloader.b();
+      localIFileVideoDownloader.d();
     }
     else
     {
@@ -216,10 +198,28 @@ public class FileVideoDownloadManager
     }
     d(paramString);
   }
+  
+  private static IFileVideoDownloader f(String paramString)
+  {
+    synchronized (a)
+    {
+      Iterator localIterator = a.iterator();
+      IFileVideoDownloader localIFileVideoDownloader;
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localIFileVideoDownloader = (IFileVideoDownloader)localIterator.next();
+      } while (!localIFileVideoDownloader.b().equalsIgnoreCase(paramString));
+      paramString = localIFileVideoDownloader;
+      return paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileVideoDownloadManager
  * JD-Core Version:    0.7.0.1
  */

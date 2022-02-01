@@ -24,34 +24,34 @@ class TroopAllMessageSearchDialog$7
       paramAdapterView.append(paramInt);
       QLog.i("LinkMessageSearchDialog", 2, paramAdapterView.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getCount() > 0)
+    if (this.a.o.getCount() > 0)
     {
       if (paramInt <= 0) {
         return;
       }
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkSearchTroopAllMessageResultAdapter.getItem(paramInt - 1);
+      paramAdapterView = (MessageItem)this.a.o.getItem(paramInt - 1);
       if (paramAdapterView == null) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      this.a.l = paramAdapterView.b;
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("onItemClick, mRecordCount = ");
-        paramView.append(this.a.jdField_a_of_type_Int);
+        paramView.append(this.a.k);
         paramView.append(",needSearchInCloud:");
-        paramView.append(this.a.b);
+        paramView.append(this.a.m);
         QLog.i("LinkMessageSearchDialog", 2, paramView.toString());
       }
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, -1, 2);
+      paramView = this.a.g.b;
+      ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.c, paramView, paramAdapterView.b.shmsgseq, -1, 2);
       this.a.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TroopAllMessageSearchDialog.7
  * JD-Core Version:    0.7.0.1
  */

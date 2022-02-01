@@ -10,46 +10,32 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.UUID;
 
 public class DeviceUtils
 {
-  static int jdField_a_of_type_Int;
-  static String jdField_a_of_type_JavaLangString;
-  public static String b;
-  private static String c;
-  
-  public static int a()
-  {
-    if (jdField_a_of_type_Int == 0) {}
-    try
-    {
-      jdField_a_of_type_Int = BaseApplicationImpl.getContext().getPackageManager().getPackageInfo(BaseApplicationImpl.getContext().getPackageName(), 0).versionCode;
-      label28:
-      return jdField_a_of_type_Int;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      break label28;
-    }
-  }
+  static String a;
+  static int b;
+  public static String c;
+  private static String d;
   
   public static String a()
   {
-    if (jdField_a_of_type_JavaLangString == null) {}
+    if (a == null) {}
     try
     {
-      jdField_a_of_type_JavaLangString = BaseApplicationImpl.getContext().getPackageManager().getPackageInfo(BaseApplicationImpl.getContext().getPackageName(), 0).versionName;
+      a = BaseApplicationImpl.getContext().getPackageManager().getPackageInfo(BaseApplicationImpl.getContext().getPackageName(), 0).versionName;
     }
     catch (Exception localException)
     {
       label31:
       break label31;
     }
-    jdField_a_of_type_JavaLangString = "unknown";
-    return jdField_a_of_type_JavaLangString;
+    a = "unknown";
+    return a;
   }
   
   public static String a(Context paramContext)
@@ -58,13 +44,13 @@ public class DeviceUtils
     Object localObject1;
     StringBuilder localStringBuilder;
     String str;
-    if (c == null)
+    if (d == null)
     {
       localSharePreferenceUtil = new SharePreferenceUtil(paramContext, "saveUser");
       localObject1 = localSharePreferenceUtil.a().getString("device_id", "");
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        c = (String)localObject1;
+        d = (String)localObject1;
         return localObject1;
       }
       Object localObject2 = (TelephonyManager)paramContext.getSystemService("phone");
@@ -72,13 +58,13 @@ public class DeviceUtils
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
-        ((StringBuilder)localObject1).append(DeviceInfoUtil.a());
+        ((StringBuilder)localObject1).append(DeviceInfoUtil.b());
         localObject1 = ((StringBuilder)localObject1).toString();
         try
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(((TelephonyManager)localObject2).getSimSerialNumber());
+          localStringBuilder.append(PhoneInfoMonitor.getSimSerialNumber((TelephonyManager)localObject2));
           localObject2 = localStringBuilder.toString();
         }
         catch (Exception localException1) {}
@@ -106,13 +92,28 @@ public class DeviceUtils
     paramContext = new UUID(paramContext.hashCode(), ((String)localObject1).hashCode() << 32 | str.hashCode()).toString().replaceAll("-", "");
     localSharePreferenceUtil.a().edit().putString("device_id", paramContext);
     localSharePreferenceUtil.a().edit().commit();
-    c = paramContext;
-    return c;
+    d = paramContext;
+    return d;
+  }
+  
+  public static int b()
+  {
+    if (b == 0) {}
+    try
+    {
+      b = BaseApplicationImpl.getContext().getPackageManager().getPackageInfo(BaseApplicationImpl.getContext().getPackageName(), 0).versionCode;
+      label28:
+      return b;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      break label28;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.DeviceUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -60,46 +60,46 @@ public class MultiCardPageIndicator
   extends HorizontalScrollView
   implements DecodeTaskCompletionListener, PageIndicator
 {
-  private static float jdField_b_of_type_Float = 1.0F;
-  private static float jdField_c_of_type_Float = 1.333F;
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = 99;
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private IcsLinearLayout jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout;
-  private MultiAIOBaseViewPager.OnPageChangeListener jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager$OnPageChangeListener;
-  private MultiAIOBaseViewPager jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager;
-  private MultiAioOverScroller jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller;
-  private TabPageIndicator.OnActionUpNotFling jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnActionUpNotFling;
-  private TabPageIndicator.OnTabClickListener jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnTabClickListener;
-  private TabPageIndicator.OnTabReselectedListener jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnTabReselectedListener;
-  private TouchEventConsumer jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer;
-  private MultiCardContext jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContext;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private List<TabPageIndicator.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new MultiCardPageIndicator.1(this);
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = -1;
-  private boolean jdField_c_of_type_Boolean;
-  private int d;
-  private int e;
-  private int f;
+  private static float M = 1.0F;
+  private static float N = 1.333F;
+  private boolean A;
+  private boolean B;
+  private View.OnClickListener C;
+  private TouchEventConsumer D;
+  private int[] E = new int[2];
+  private MultiAioOverScroller F;
+  private int G;
+  private TabPageIndicator.OnActionUpNotFling H;
+  private float I;
+  private int J = 2147483647;
+  private long K;
+  private final View.OnClickListener L = new MultiCardPageIndicator.1(this);
+  private GestureDetector a;
+  private IFaceDecoder b;
+  private Hashtable<String, Bitmap> c = new Hashtable();
+  private final int d = 99;
+  private Runnable e;
+  private LayoutInflater f;
   private int g;
-  private int h = 0;
-  private int i = 0;
-  private int j;
-  private int k = 2147483647;
+  private MultiCardContext h;
+  private QQAppInterface i;
+  private BaseActivity j;
+  private int k = -1;
+  private long l = 0L;
+  private IcsLinearLayout m;
+  private MultiAIOBaseViewPager n;
+  private MultiAIOBaseViewPager.OnPageChangeListener o;
+  private int p;
+  private TabPageIndicator.OnTabReselectedListener q;
+  private Handler r = new Handler(Looper.getMainLooper());
+  private TabPageIndicator.OnTabClickListener s;
+  private int t;
+  private int u;
+  private int v;
+  private List<TabPageIndicator.OnPageChangeListener> w;
+  private int x = 0;
+  private int y = 0;
+  private boolean z;
   
   public MultiCardPageIndicator(Context paramContext)
   {
@@ -119,39 +119,39 @@ public class MultiCardPageIndicator
   
   private Drawable a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
+      this.b = ((IQQAvatarService)this.i.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.i);
+      this.b.setDecodeTaskCompletionListener(this);
     }
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, paramString, 0, (byte)4);
+    Bitmap localBitmap = this.b.getBitmapFromCache(1, paramString, 0, (byte)4);
     if (localBitmap != null) {
       return new BitmapDrawable(localBitmap);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.b.isPausing()) {
+      this.b.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
   
   private void a(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.f = LayoutInflater.from(paramContext);
     setHorizontalScrollBarEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout = new IcsLinearLayout(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new MultiCardPageIndicator.2(this), new Handler(Looper.getMainLooper()));
-    addView(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout, new ViewGroup.LayoutParams(-2, -1));
-    g();
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.a(new MultiCardPageIndicator.3(this));
-    h();
+    this.m = new IcsLinearLayout(paramContext, paramInt);
+    this.a = new GestureDetector(getContext(), new MultiCardPageIndicator.2(this), new Handler(Looper.getMainLooper()));
+    addView(this.m, new ViewGroup.LayoutParams(-2, -1));
+    i();
+    this.F.a(new MultiCardPageIndicator.3(this));
+    j();
   }
   
   private void a(View paramView)
   {
     paramView.setFocusable(true);
-    paramView.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.removeView(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.addView(paramView, new LinearLayout.LayoutParams(-2, -1));
+    paramView.setOnClickListener(this.L);
+    this.m.removeView(paramView);
+    this.m.addView(paramView, new LinearLayout.LayoutParams(-2, -1));
   }
   
   private void a(View paramView, boolean paramBoolean)
@@ -164,14 +164,14 @@ public class MultiCardPageIndicator
     }
     if (paramView != null)
     {
-      paramView = paramView.jdField_a_of_type_AndroidWidgetImageView;
-      int m;
+      paramView = paramView.a;
+      int i1;
       if (paramBoolean) {
-        m = 0;
+        i1 = 0;
       } else {
-        m = 4;
+        i1 = 4;
       }
-      paramView.setVisibility(m);
+      paramView.setVisibility(i1);
     }
   }
   
@@ -185,12 +185,12 @@ public class MultiCardPageIndicator
       Drawable localDrawable = paramDrawable;
       if (paramDrawable == null)
       {
-        paramCardIndicator.a();
+        paramCardIndicator.c();
         localDrawable = a(paramCardIndicator.a());
       }
       paramDrawable = localDrawable;
       if (localDrawable == null) {
-        paramDrawable = ImageUtil.e();
+        paramDrawable = ImageUtil.j();
       }
       b(paramMultiAIOHolder, paramCardIndicator, paramDrawable);
     }
@@ -203,7 +203,7 @@ public class MultiCardPageIndicator
       if (QLog.isColorLevel()) {
         QLog.d("MultiCardFragment", 2, "getView position: ");
       }
-      if (a(paramCardIndicator.a()))
+      if (d(paramCardIndicator.c()))
       {
         if (QLog.isColorLevel())
         {
@@ -212,30 +212,30 @@ public class MultiCardPageIndicator
           ((StringBuilder)localObject).append(paramCardIndicator.a());
           QLog.i("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
         }
-        int m = ((Integer)RecentFaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramCardIndicator.a(), paramCardIndicator.a()).first).intValue();
-        if (m == 103) {
-          m = 1;
+        int i1 = ((Integer)RecentFaceDecoder.a(this.i, paramCardIndicator.c(), paramCardIndicator.a()).first).intValue();
+        if (i1 == 103) {
+          i1 = 1;
         }
-        Object localObject = paramMultiAIOHolder.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView;
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        Object localObject = paramMultiAIOHolder.d;
+        QQAppInterface localQQAppInterface = this.i;
         paramCardIndicator = paramCardIndicator.a();
         boolean bool;
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mAutomator.a() == 1) {
+        if (this.i.mAutomator.f() == 1) {
           bool = true;
         } else {
           bool = false;
         }
-        ((ThemeRecentDynamicAvatarView)localObject).setFaceDrawable(localQQAppInterface, paramDrawable, m, paramCardIndicator, 100, false, bool, 0);
+        ((ThemeRecentDynamicAvatarView)localObject).setFaceDrawable(localQQAppInterface, paramDrawable, i1, paramCardIndicator, 100, false, bool, 0);
       }
       else
       {
-        paramMultiAIOHolder.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+        paramMultiAIOHolder.d.setImageDrawable(paramDrawable);
       }
-      paramMultiAIOHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramMultiAIOHolder.jdField_a_of_type_JavaLangString = String.valueOf(0);
-      paramMultiAIOHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
+      paramMultiAIOHolder.a.setVisibility(4);
+      paramMultiAIOHolder.c = String.valueOf(0);
+      paramMultiAIOHolder.e.setVisibility(4);
       if (("1103".equals(ThemeUtil.curThemeId)) || ("2920".equals(ThemeUtil.curThemeId))) {
-        paramMultiAIOHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838047);
+        paramMultiAIOHolder.a.setImageResource(2130838089);
       }
       return;
     }
@@ -244,9 +244,9 @@ public class MultiCardPageIndicator
     }
   }
   
-  private void c(int paramInt)
+  private void e(int paramInt)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(paramInt);
+    View localView = this.m.getChildAt(paramInt);
     if (localView == null)
     {
       if (QLog.isColorLevel()) {
@@ -254,30 +254,149 @@ public class MultiCardPageIndicator
       }
       return;
     }
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.e;
     if (localRunnable != null) {
       removeCallbacks(localRunnable);
     }
-    this.jdField_a_of_type_JavaLangRunnable = new MultiCardPageIndicator.4(this, localView);
-    post(this.jdField_a_of_type_JavaLangRunnable);
+    this.e = new MultiCardPageIndicator.4(this, localView);
+    post(this.e);
   }
   
-  private boolean c()
+  private void f(int paramInt)
   {
-    int m = this.h;
-    return ((m == 1) || (m == 2)) && (this.i == 0);
+    a(this.m.getChildAt(paramInt), false);
   }
   
-  private void d(int paramInt)
+  private void g(int paramInt)
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(paramInt), false);
+    Object localObject = this.w;
+    if (localObject != null)
+    {
+      int i1 = 0;
+      int i2 = ((List)localObject).size();
+      while (i1 < i2)
+      {
+        localObject = (TabPageIndicator.OnPageChangeListener)this.w.get(i1);
+        if (localObject != null) {
+          ((TabPageIndicator.OnPageChangeListener)localObject).a(paramInt);
+        }
+        i1 += 1;
+      }
+    }
+    h(paramInt);
   }
   
-  private boolean d()
+  private void h()
   {
     try
     {
-      if (this.jdField_c_of_type_Boolean)
+      Object localObject = HorizontalScrollView.class.getDeclaredField("mVelocityTracker");
+      ((Field)localObject).setAccessible(true);
+      localObject = (VelocityTracker)((Field)localObject).get(this);
+      if (localObject != null)
+      {
+        this.I = ((VelocityTracker)localObject).getXVelocity();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TabPageIndicator", 1, "readLastInitVelocity: ", localException);
+    }
+  }
+  
+  private void h(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageScrollStateChangedInternal() called with: state = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
+    }
+    if (paramInt != 0) {}
+  }
+  
+  private void i()
+  {
+    try
+    {
+      Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      MultiAioOverScroller localMultiAioOverScroller = new MultiAioOverScroller(getContext());
+      localField.set(this, localMultiAioOverScroller);
+      this.F = ((MultiAioOverScroller)localMultiAioOverScroller);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TabPageIndicator", 1, "replaceOverScroller: ", localException);
+    }
+  }
+  
+  private void j()
+  {
+    try
+    {
+      Field localField = HorizontalScrollView.class.getDeclaredField("mMaximumVelocity");
+      localField.setAccessible(true);
+      int i1 = localField.getInt(this);
+      this.G = VelocityUtil.a(getContext(), i1);
+      localField.set(this, Integer.valueOf(this.G));
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TabPageIndicator", 1, "setMaxVelocity: ", localException);
+    }
+  }
+  
+  private boolean k()
+  {
+    int i1 = this.x;
+    return ((i1 == 1) || (i1 == 2)) && (this.y == 0);
+  }
+  
+  private void l()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onFinishScroll() called");
+    }
+    this.J = 2147483647;
+    this.B = false;
+    setScrollState(0);
+    if (this.n.g())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TabPageIndicator", 2, "computeScroll() isFakeDragging");
+      }
+      this.n.f();
+    }
+    int i2 = this.n.getCurrentItem();
+    this.p = i2;
+    int i3 = this.m.getChildCount();
+    int i1 = 0;
+    while (i1 < i3)
+    {
+      View localView = this.m.getChildAt(i1);
+      boolean bool;
+      if (i1 == i2) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localView.setSelected(bool);
+      i1 += 1;
+    }
+    this.k = i2;
+  }
+  
+  private boolean m()
+  {
+    try
+    {
+      if (this.B)
       {
         Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
         localField.setAccessible(true);
@@ -292,195 +411,13 @@ public class MultiCardPageIndicator
     return true;
   }
   
-  private void e(int paramInt)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if (localObject != null)
-    {
-      int m = 0;
-      int n = ((List)localObject).size();
-      while (m < n)
-      {
-        localObject = (TabPageIndicator.OnPageChangeListener)this.jdField_a_of_type_JavaUtilList.get(m);
-        if (localObject != null) {
-          ((TabPageIndicator.OnPageChangeListener)localObject).a(paramInt);
-        }
-        m += 1;
-      }
-    }
-    f(paramInt);
-  }
-  
-  private void f()
-  {
-    try
-    {
-      Object localObject = HorizontalScrollView.class.getDeclaredField("mVelocityTracker");
-      ((Field)localObject).setAccessible(true);
-      localObject = (VelocityTracker)((Field)localObject).get(this);
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_Float = ((VelocityTracker)localObject).getXVelocity();
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TabPageIndicator", 1, "readLastInitVelocity: ", localException);
-    }
-  }
-  
-  private void f(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onPageScrollStateChangedInternal() called with: state = [");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append("]");
-      QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
-    }
-    if (paramInt != 0) {}
-  }
-  
-  private void g()
-  {
-    try
-    {
-      Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      MultiAioOverScroller localMultiAioOverScroller = new MultiAioOverScroller(getContext());
-      localField.set(this, localMultiAioOverScroller);
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller = ((MultiAioOverScroller)localMultiAioOverScroller);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TabPageIndicator", 1, "replaceOverScroller: ", localException);
-    }
-  }
-  
-  private void h()
-  {
-    try
-    {
-      Field localField = HorizontalScrollView.class.getDeclaredField("mMaximumVelocity");
-      localField.setAccessible(true);
-      int m = localField.getInt(this);
-      this.j = VelocityUtil.a(getContext(), m);
-      localField.set(this, Integer.valueOf(this.j));
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TabPageIndicator", 1, "setMaxVelocity: ", localException);
-    }
-  }
-  
-  private void i()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onFinishScroll() called");
-    }
-    this.k = 2147483647;
-    this.jdField_c_of_type_Boolean = false;
-    setScrollState(0);
-    if (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.b())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TabPageIndicator", 2, "computeScroll() isFakeDragging");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.e();
-    }
-    int n = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a();
-    this.d = n;
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount();
-    int m = 0;
-    while (m < i1)
-    {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(m);
-      boolean bool;
-      if (m == n) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      localView.setSelected(bool);
-      m += 1;
-    }
-    this.jdField_c_of_type_Int = n;
-  }
-  
-  public View a(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("getView position: ");
-      ((StringBuilder)localObject1).append(paramInt);
-      QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject1).toString());
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContext;
-    Object localObject1 = null;
-    if (localObject2 == null)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("getView position: ");
-        ((StringBuilder)localObject1).append(paramInt);
-        QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject1).toString());
-      }
-      return null;
-    }
-    CardIndicator localCardIndicator = ((MultiCardContext)localObject2).a(paramInt);
-    MultiCardPageIndicator.MultiAIOHolder localMultiAIOHolder = new MultiCardPageIndicator.MultiAIOHolder();
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558559, null);
-    localMultiAIOHolder.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView = ((ThemeRecentDynamicAvatarView)localView.findViewById(2131378232));
-    localMultiAIOHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131380161));
-    localMultiAIOHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362975));
-    localMultiAIOHolder.jdField_a_of_type_Int = paramInt;
-    localView.setTag(localMultiAIOHolder);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (localCardIndicator != null) {
-      localObject1 = a(localCardIndicator.a());
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = ImageUtil.e();
-    }
-    b(localMultiAIOHolder, localCardIndicator, (Drawable)localObject2);
-    if (localCardIndicator != null) {
-      localStringBuilder.append(localCardIndicator.b());
-    }
-    if (AppSetting.d) {
-      localView.setContentDescription(localStringBuilder.toString());
-    }
-    return localView;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      ((OverScroller)localField.get(this)).abortAnimation();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("TabPageIndicator", 1, "abortAnimation: ", localException);
-    }
-  }
-  
   public void a(float paramFloat)
   {
     try
     {
       Field localField = HorizontalScrollView.class.getDeclaredField("mMaximumVelocity");
       localField.setAccessible(true);
-      localField.set(this, Integer.valueOf((int)(this.j * paramFloat)));
+      localField.set(this, Integer.valueOf((int)(this.G * paramFloat)));
       return;
     }
     catch (Exception localException)
@@ -500,7 +437,7 @@ public class MultiCardPageIndicator
       QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
     }
     setCurrentItem(paramInt);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager$OnPageChangeListener;
+    Object localObject = this.o;
     if (localObject != null) {
       ((MultiAIOBaseViewPager.OnPageChangeListener)localObject).a(paramInt);
     }
@@ -508,12 +445,12 @@ public class MultiCardPageIndicator
   
   public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    MultiAIOBaseViewPager.OnPageChangeListener localOnPageChangeListener = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager$OnPageChangeListener;
+    MultiAIOBaseViewPager.OnPageChangeListener localOnPageChangeListener = this.o;
     if (localOnPageChangeListener != null) {
       localOnPageChangeListener.a(paramInt1, paramFloat, paramInt2);
     }
-    paramInt1 = (int)((paramInt1 + paramFloat) * this.g);
-    if (b())
+    paramInt1 = (int)((paramInt1 + paramFloat) * this.v);
+    if (f())
     {
       if (QLog.isColorLevel()) {
         QLog.d("TabPageIndicator", 2, "onPageScrolled() scrollFromViewPager ");
@@ -524,21 +461,21 @@ public class MultiCardPageIndicator
   
   public void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131298362);
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout;
-    int m = this.f;
-    paramQQAppInterface.setPadding(m, 0, m, 0);
-    this.e = getResources().getDisplayMetrics().widthPixels;
+    this.i = paramQQAppInterface;
+    this.j = paramBaseActivity;
+    this.u = this.j.getResources().getDimensionPixelSize(2131299076);
+    paramQQAppInterface = this.m;
+    int i1 = this.u;
+    paramQQAppInterface.setPadding(i1, 0, i1, 0);
+    this.t = getResources().getDisplayMetrics().widthPixels;
   }
   
   public void a(TabPageIndicator.OnPageChangeListener paramOnPageChangeListener)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.w == null) {
+      this.w = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramOnPageChangeListener);
+    this.w.add(paramOnPageChangeListener);
   }
   
   public boolean a()
@@ -557,29 +494,18 @@ public class MultiCardPageIndicator
     return false;
   }
   
-  protected boolean a(int paramInt)
-  {
-    return (paramInt == 0) || (paramInt == 1000) || (paramInt == 1004) || (paramInt == 1003) || (paramInt == 10004) || (paramInt == 1021) || (paramInt == 1022) || (paramInt == 1023) || (paramInt == 10008);
-  }
-  
   public void b()
   {
-    int n = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a();
-    int m = 0;
-    while (m < this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount())
+    try
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(m);
-      if (localView != null)
-      {
-        boolean bool;
-        if (n == m) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-        a(localView, bool);
-      }
-      m += 1;
+      Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      ((OverScroller)localField.get(this)).abortAnimation();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TabPageIndicator", 1, "abortAnimation: ", localException);
     }
   }
   
@@ -592,11 +518,11 @@ public class MultiCardPageIndicator
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager$OnPageChangeListener;
+    Object localObject = this.o;
     if (localObject != null) {
       ((MultiAIOBaseViewPager.OnPageChangeListener)localObject).b(paramInt);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(this.d);
+    localObject = this.m.getChildAt(this.p);
     if (localObject == null) {
       return;
     }
@@ -606,35 +532,86 @@ public class MultiCardPageIndicator
     }
   }
   
-  public boolean b()
+  public View c(int paramInt)
   {
-    return (this.i == 1) && (this.h == 0);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getView position: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = this.h;
+    Object localObject1 = null;
+    if (localObject2 == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getView position: ");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.d("MultiCardFragment", 2, ((StringBuilder)localObject1).toString());
+      }
+      return null;
+    }
+    CardIndicator localCardIndicator = ((MultiCardContext)localObject2).a(paramInt);
+    MultiCardPageIndicator.MultiAIOHolder localMultiAIOHolder = new MultiCardPageIndicator.MultiAIOHolder();
+    View localView = this.f.inflate(2131624116, null);
+    localMultiAIOHolder.d = ((ThemeRecentDynamicAvatarView)localView.findViewById(2131446751));
+    localMultiAIOHolder.e = ((DragTextView)localView.findViewById(2131449076));
+    localMultiAIOHolder.a = ((ImageView)localView.findViewById(2131428774));
+    localMultiAIOHolder.b = paramInt;
+    localView.setTag(localMultiAIOHolder);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (localCardIndicator != null) {
+      localObject1 = a(localCardIndicator.a());
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = ImageUtil.j();
+    }
+    b(localMultiAIOHolder, localCardIndicator, (Drawable)localObject2);
+    if (localCardIndicator != null) {
+      localStringBuilder.append(localCardIndicator.b());
+    }
+    if (AppSetting.e) {
+      localView.setContentDescription(localStringBuilder.toString());
+    }
+    return localView;
   }
   
   public void c()
   {
-    int m = 0;
-    while (m < this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount())
+    int i2 = this.n.getCurrentItem();
+    int i1 = 0;
+    while (i1 < this.m.getChildCount())
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(m);
-      if (localView != null) {
-        a(localView, false);
+      View localView = this.m.getChildAt(i1);
+      if (localView != null)
+      {
+        boolean bool;
+        if (i2 == i1) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        a(localView, bool);
       }
-      m += 1;
+      i1 += 1;
     }
   }
   
   public void computeScroll()
   {
-    int n = 0;
-    this.jdField_a_of_type_Boolean = false;
-    int m = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX();
+    int i2 = 0;
+    this.z = false;
+    int i1 = this.F.getFinalX();
     super.computeScroll();
-    if ((this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX() < m) && (QLog.isColorLevel())) {
+    if ((this.F.getFinalX() < i1) && (QLog.isColorLevel())) {
       QLog.d("TabPageIndicator", 2, "computeScroll() called afterComputeFinalX < beforeComputeFinalX");
     }
     requestLayout();
-    if (this.h == 2)
+    if (this.x == 2)
     {
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
@@ -643,12 +620,12 @@ public class MultiCardPageIndicator
         localStringBuilder.append("computeScroll() ScrollX = ");
         localStringBuilder.append(getScrollX());
         localStringBuilder.append(", Scroller.FinialX = ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX());
+        localStringBuilder.append(this.F.getFinalX());
         QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.z)
       {
-        if (d())
+        if (m())
         {
           if (QLog.isColorLevel())
           {
@@ -659,33 +636,33 @@ public class MultiCardPageIndicator
             localStringBuilder.append(Build.MODEL);
             QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
           }
-          if (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && ("LYA-AL00".equalsIgnoreCase(Build.MODEL)) && (this.jdField_c_of_type_Boolean)) {
-            m = 1;
+          if (("HUAWEI".equalsIgnoreCase(Build.MANUFACTURER)) && ("LYA-AL00".equalsIgnoreCase(Build.MODEL)) && (this.B)) {
+            i1 = 1;
           } else {
-            m = 0;
+            i1 = 0;
           }
-          if (m != 0)
+          if (i1 != 0)
           {
-            m = n;
-            if (this.k == getScrollX()) {
-              m = 1;
+            i1 = i2;
+            if (this.J == getScrollX()) {
+              i1 = 1;
             }
-            if (m != 0)
+            if (i1 != 0)
             {
-              i();
+              l();
               return;
             }
             if (QLog.isColorLevel())
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("scrollTo() mPendingFinalX = ");
-              localStringBuilder.append(this.k);
+              localStringBuilder.append(this.J);
               QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
             }
-            scrollTo(this.k, getScrollY());
+            scrollTo(this.J, getScrollY());
             return;
           }
-          i();
+          l();
           return;
         }
         if (QLog.isColorLevel()) {
@@ -701,12 +678,20 @@ public class MultiCardPageIndicator
   
   public void d()
   {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-    if (localIFaceDecoder != null)
+    int i1 = 0;
+    while (i1 < this.m.getChildCount())
     {
-      localIFaceDecoder.destory();
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
+      View localView = this.m.getChildAt(i1);
+      if (localView != null) {
+        a(localView, false);
+      }
+      i1 += 1;
     }
+  }
+  
+  protected boolean d(int paramInt)
+  {
+    return (paramInt == 0) || (paramInt == 1000) || (paramInt == 1004) || (paramInt == 1003) || (paramInt == 10004) || (paramInt == 1021) || (paramInt == 1022) || (paramInt == 1023) || (paramInt == 10008);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -732,39 +717,39 @@ public class MultiCardPageIndicator
     }
     if (bool)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer;
+      localObject = this.D;
       if (localObject != null) {
         ((TouchEventConsumer)localObject).b(this, paramMotionEvent);
       }
-      int m = paramMotionEvent.getActionMasked();
-      if (m != 0)
+      int i1 = paramMotionEvent.getActionMasked();
+      if (i1 != 0)
       {
-        if ((m != 1) && (m != 3)) {
+        if ((i1 != 1) && (i1 != 3)) {
           return bool;
         }
         getParent().requestDisallowInterceptTouchEvent(false);
-        if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
+        if ((this.A) && (!this.B))
         {
-          this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.forceFinished(true);
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnActionUpNotFling;
+          this.F.forceFinished(true);
+          paramMotionEvent = this.H;
           if (paramMotionEvent != null) {
-            paramMotionEvent.a((int)this.jdField_a_of_type_Float);
+            paramMotionEvent.a((int)this.I);
           }
         }
-        this.jdField_b_of_type_Boolean = false;
+        this.A = false;
         setScrollState(2);
         invalidate();
         return bool;
       }
       getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = false;
+      this.A = true;
+      this.B = false;
       setScrollState(1);
       if (QLog.isColorLevel())
       {
         paramMotionEvent = new StringBuilder();
         paramMotionEvent.append("dispatchTouchEvent()  ACTION_DOWN called with: mScrollState = ");
-        paramMotionEvent.append(this.h);
+        paramMotionEvent.append(this.x);
         QLog.d("TabPageIndicator", 2, paramMotionEvent.toString());
       }
     }
@@ -773,79 +758,61 @@ public class MultiCardPageIndicator
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.removeAllViews();
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContext.a();
-    int m = 0;
-    int n;
-    for (;;)
+    IFaceDecoder localIFaceDecoder = this.b;
+    if (localIFaceDecoder != null)
     {
-      n = this.jdField_b_of_type_Int;
-      if (m >= n) {
-        break;
-      }
-      new LinearLayout.LayoutParams(-2, -2).gravity = 17;
-      long l = SystemClock.elapsedRealtime();
-      View localView = a(m);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("createView() cost ");
-        localStringBuilder.append(SystemClock.elapsedRealtime() - l);
-        localStringBuilder.append(" ms");
-        QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
-      }
-      a(localView);
-      m += 1;
+      localIFaceDecoder.destory();
+      this.b = null;
     }
-    if (this.d > n) {
-      this.d = (n - 1);
-    }
-    setCurrentItem(this.d);
-    requestLayout();
+  }
+  
+  public boolean f()
+  {
+    return (this.y == 1) && (this.x == 0);
   }
   
   public void fling(int paramInt)
   {
-    int m = paramInt;
-    long l = SystemClock.uptimeMillis();
-    this.jdField_c_of_type_Boolean = true;
+    int i1 = paramInt;
+    long l1 = SystemClock.uptimeMillis();
+    this.B = true;
     boolean bool;
-    if (m > 0) {
+    if (i1 > 0) {
       bool = true;
     } else {
       bool = false;
     }
-    int i2 = getWidth() - getPaddingRight() - getPaddingLeft();
-    int i3 = getChildAt(0).getWidth();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller;
-    int n = getScrollX();
-    int i1 = getScrollY();
-    i3 -= i2;
-    int i5 = Math.max(0, i3);
-    int i4 = i2 / 2;
-    ((MultiAioOverScroller)localObject).fling(n, i1, paramInt, 0, 0, i5, 0, 0, i4, 0);
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX();
-    i1 = this.g;
-    if (i1 == 0)
+    int i4 = getWidth() - getPaddingRight() - getPaddingLeft();
+    int i5 = getChildAt(0).getWidth();
+    Object localObject = this.F;
+    int i2 = getScrollX();
+    int i3 = getScrollY();
+    i5 -= i4;
+    int i7 = Math.max(0, i5);
+    int i6 = i4 / 2;
+    ((MultiAioOverScroller)localObject).fling(i2, i3, paramInt, 0, 0, i7, 0, 0, i6, 0);
+    paramInt = this.F.getFinalX();
+    i3 = this.v;
+    if (i3 == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TabPageIndicator", 2, "fling() itemwidth = 0");
       }
       return;
     }
-    n = paramInt / i1;
-    float f1 = paramInt * 1.0F / i1;
+    i2 = paramInt / i3;
+    float f1 = paramInt * 1.0F / i3;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("fling() called with: getScrollX() = ");
       ((StringBuilder)localObject).append(getScrollX());
       ((StringBuilder)localObject).append(", velocityX = [");
-      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append("], pageFloat = ");
       ((StringBuilder)localObject).append(f1);
       ((StringBuilder)localObject).append(", pageInt = ");
-      ((StringBuilder)localObject).append(n);
+      ((StringBuilder)localObject).append(i2);
       ((StringBuilder)localObject).append(", flingFromRight2Left = ");
       ((StringBuilder)localObject).append(bool);
       ((StringBuilder)localObject).append(", flingDistance = ");
@@ -854,70 +821,70 @@ public class MultiCardPageIndicator
     }
     if (bool)
     {
-      paramInt = n;
-      if (f1 - n >= 0.5F)
+      paramInt = i2;
+      if (f1 - i2 >= 0.5F)
       {
         if (QLog.isColorLevel()) {
           QLog.d("TabPageIndicator", 2, "fling() 手向左滑 增加滑动一点到下一页");
         }
-        paramInt = n + 1;
+        paramInt = i2 + 1;
         break label385;
       }
     }
     for (;;)
     {
-      n = 0;
+      i2 = 0;
       break label388;
-      paramInt = n;
-      if (f1 - n < 0.5F) {
+      paramInt = i2;
+      if (f1 - i2 < 0.5F) {
         break;
       }
       if (QLog.isColorLevel()) {
         QLog.d("TabPageIndicator", 2, "fling() 手向右滑 增加滑动一点到下一页");
       }
-      paramInt = n + 1;
+      paramInt = i2 + 1;
     }
     label385:
-    n = 1;
+    i2 = 1;
     label388:
-    i1 = paramInt;
+    i3 = paramInt;
     if (paramInt < 0) {
-      i1 = 0;
+      i3 = 0;
     }
-    this.k = (this.g * i1);
-    i1 = 2147483647;
-    i2 = 0;
-    paramInt = m;
-    m = i2;
+    this.J = (this.v * i3);
+    i3 = 2147483647;
+    i4 = 0;
+    paramInt = i1;
+    i1 = i4;
     for (;;)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("fling() called mPendingFinalX = [");
-        ((StringBuilder)localObject).append(this.k);
+        ((StringBuilder)localObject).append(this.J);
         ((StringBuilder)localObject).append("], currentFinalX = [");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX());
+        ((StringBuilder)localObject).append(this.F.getFinalX());
         ((StringBuilder)localObject).append("]");
         QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
       }
-      i2 = Math.abs(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX() - this.k);
-      if ((i1 != 2147483647) && (i2 > i1 + 1))
+      i4 = Math.abs(this.F.getFinalX() - this.J);
+      if ((i3 != 2147483647) && (i4 > i3 + 1))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("fling: error state deltaDistance ");
-        ((StringBuilder)localObject).append(i2);
+        ((StringBuilder)localObject).append(i4);
         ((StringBuilder)localObject).append(", lastDeltaDistance = ");
-        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append(i3);
         QLog.e("TabPageIndicator", 1, ((StringBuilder)localObject).toString());
       }
       else
       {
-        if (i2 != 0) {
+        if (i4 != 0) {
           break label708;
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.forceFinished(true);
+      this.F.forceFinished(true);
       setScrollState(2);
       super.fling(paramInt);
       if (QLog.isColorLevel())
@@ -926,45 +893,78 @@ public class MultiCardPageIndicator
         ((StringBuilder)localObject).append("fling() called with: velocityX = [");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append("], final ScrollX = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.getFinalX());
+        ((StringBuilder)localObject).append(this.F.getFinalX());
         ((StringBuilder)localObject).append(", exec time = ");
-        ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l);
+        ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l1);
         ((StringBuilder)localObject).append(" ms");
         QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
       }
       return;
       label708:
-      while (!this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.isFinished()) {
-        this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.forceFinished(true);
+      while (!this.F.isFinished()) {
+        this.F.forceFinished(true);
       }
-      if (bool ? n == 0 : n != 0) {
-        paramInt -= i2;
+      if (bool ? i2 == 0 : i2 != 0) {
+        paramInt -= i4;
       } else {
-        paramInt += i2;
+        paramInt += i4;
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("fling() called with: try ");
-        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(i1);
         ((StringBuilder)localObject).append(", velocityX = [");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append("], deltaVelocity = ");
-        ((StringBuilder)localObject).append(i2);
+        ((StringBuilder)localObject).append(i4);
         ((StringBuilder)localObject).append(", deltaDistance = ");
-        ((StringBuilder)localObject).append(i2);
+        ((StringBuilder)localObject).append(i4);
         QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
       }
-      m += 1;
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAioOverScroller.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i3), 0, 0, i4, 0);
-      i1 = i2;
+      i1 += 1;
+      this.F.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i5), 0, 0, i6, 0);
+      i3 = i4;
     }
+  }
+  
+  public void g()
+  {
+    this.m.removeAllViews();
+    this.g = this.h.b();
+    int i1 = 0;
+    int i2;
+    for (;;)
+    {
+      i2 = this.g;
+      if (i1 >= i2) {
+        break;
+      }
+      new LinearLayout.LayoutParams(-2, -2).gravity = 17;
+      long l1 = SystemClock.elapsedRealtime();
+      View localView = c(i1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createView() cost ");
+        localStringBuilder.append(SystemClock.elapsedRealtime() - l1);
+        localStringBuilder.append(" ms");
+        QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
+      }
+      a(localView);
+      i1 += 1;
+    }
+    if (this.p > i2) {
+      this.p = (i2 - 1);
+    }
+    setCurrentItem(this.p);
+    requestLayout();
   }
   
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.e;
     if (localRunnable != null) {
       post(localRunnable);
     }
@@ -983,7 +983,7 @@ public class MultiCardPageIndicator
     if (paramBitmap != null) {
       try
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilHashtable;
+        localObject1 = this.c;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(paramInt2);
         ((StringBuilder)localObject2).append(":");
@@ -1001,8 +1001,8 @@ public class MultiCardPageIndicator
       }
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    int m = 0;
+    long l2 = this.l;
+    int i1 = 0;
     if ((l2 > 0L) && (l1 - l2 > 300L)) {
       paramInt2 = 1;
     } else {
@@ -1013,48 +1013,48 @@ public class MultiCardPageIndicator
     }
     boolean bool1;
     boolean bool2;
-    synchronized (this.jdField_a_of_type_JavaUtilHashtable)
+    synchronized (this.c)
     {
-      if (this.jdField_a_of_type_JavaUtilHashtable.size() == 0) {
+      if (this.c.size() == 0) {
         return;
       }
       if (paramInt1 == 0) {
-        this.jdField_a_of_type_Long = 0L;
+        this.l = 0L;
       } else {
-        this.jdField_a_of_type_Long = l1;
+        this.l = l1;
       }
-      paramInt2 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount();
+      paramInt2 = this.m.getChildCount();
       bool1 = false;
-      paramInt1 = m;
+      paramInt1 = i1;
       if (paramInt1 < paramInt2)
       {
-        paramBitmap = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContext.a(paramInt1);
+        paramBitmap = this.h.a(paramInt1);
         if (paramBitmap == null)
         {
           bool2 = bool1;
         }
         else
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(paramInt1).getTag();
+          localObject1 = this.m.getChildAt(paramInt1).getTag();
           bool2 = bool1;
           if ((localObject1 instanceof MultiCardPageIndicator.MultiAIOHolder))
           {
             localObject1 = (MultiCardPageIndicator.MultiAIOHolder)localObject1;
-            m = paramBitmap.a();
-            m = ((Integer)RecentFaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, m, paramBitmap.a()).first).intValue();
+            i1 = paramBitmap.c();
+            i1 = ((Integer)RecentFaceDecoder.a(this.i, i1, paramBitmap.a()).first).intValue();
             bool2 = bool1;
-            if (m != -2147483648)
+            if (i1 != -2147483648)
             {
               localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(m);
+              ((StringBuilder)localObject2).append(i1);
               ((StringBuilder)localObject2).append(":");
               ((StringBuilder)localObject2).append(paramBitmap.a());
               localObject2 = ((StringBuilder)localObject2).toString();
-              localObject2 = (Bitmap)this.jdField_a_of_type_JavaUtilHashtable.get(localObject2);
+              localObject2 = (Bitmap)this.c.get(localObject2);
               bool2 = bool1;
               if (localObject2 != null)
               {
-                a((MultiCardPageIndicator.MultiAIOHolder)localObject1, paramBitmap, new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), (Bitmap)localObject2));
+                a((MultiCardPageIndicator.MultiAIOHolder)localObject1, paramBitmap, new BitmapDrawable(this.j.getResources(), (Bitmap)localObject2));
                 bool2 = true;
               }
             }
@@ -1067,12 +1067,12 @@ public class MultiCardPageIndicator
         {
           paramBitmap = new StringBuilder();
           paramBitmap.append("decodecomplete|faceCache size = ");
-          paramBitmap.append(this.jdField_a_of_type_JavaUtilHashtable.size());
+          paramBitmap.append(this.c.size());
           paramBitmap.append(", isNeedUpdateAvatar=");
           paramBitmap.append(bool1);
           QLog.i("TabPageIndicator", 4, paramBitmap.toString());
         }
-        this.jdField_a_of_type_JavaUtilHashtable.clear();
+        this.c.clear();
         return;
       }
     }
@@ -1081,7 +1081,7 @@ public class MultiCardPageIndicator
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.e;
     if (localRunnable != null) {
       removeCallbacks(localRunnable);
     }
@@ -1090,38 +1090,38 @@ public class MultiCardPageIndicator
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount();
+    paramInt2 = this.m.getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(paramInt1);
-      ((View)localObject).getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
-      paramInt3 = Math.abs(this.jdField_a_of_type_ArrayOfInt[0] - this.f);
+      Object localObject = this.m.getChildAt(paramInt1);
+      ((View)localObject).getLocationOnScreen(this.E);
+      paramInt3 = Math.abs(this.E[0] - this.u);
       float f1 = paramInt3;
-      paramInt4 = this.g;
+      paramInt4 = this.v;
       f1 /= paramInt4;
       if (paramInt3 <= paramInt4)
       {
-        double d1 = jdField_b_of_type_Float;
+        double d1 = M;
         double d2 = f1;
         Double.isNaN(d2);
         d2 = Math.cos(d2 * 1.570796326794897D);
-        f1 = jdField_c_of_type_Float;
-        double d3 = f1 - jdField_b_of_type_Float;
+        f1 = N;
+        double d3 = f1 - M;
         Double.isNaN(d3);
         Double.isNaN(d1);
         f1 = Math.min((float)(d1 + d2 * d3), f1);
       }
       else
       {
-        f1 = jdField_b_of_type_Float;
+        f1 = M;
       }
       localObject = ((View)localObject).getTag();
       if ((localObject instanceof MultiCardPageIndicator.MultiAIOHolder))
       {
         localObject = (MultiCardPageIndicator.MultiAIOHolder)localObject;
-        ((MultiCardPageIndicator.MultiAIOHolder)localObject).jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setScaleX(f1);
-        ((MultiCardPageIndicator.MultiAIOHolder)localObject).jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setScaleY(f1);
+        ((MultiCardPageIndicator.MultiAIOHolder)localObject).d.setScaleX(f1);
+        ((MultiCardPageIndicator.MultiAIOHolder)localObject).d.setScaleY(f1);
       }
       paramInt1 += 1;
     }
@@ -1136,47 +1136,47 @@ public class MultiCardPageIndicator
       bool = false;
     }
     setFillViewport(bool);
-    int m = getMeasuredWidth();
+    int i1 = getMeasuredWidth();
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
-    if (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount() > 0)
+    if (this.m.getChildCount() > 0)
     {
-      this.g = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(0).getMeasuredWidth();
-      paramInt2 = this.e;
-      int n = this.g;
-      int i1 = this.f;
-      IcsLinearLayout localIcsLinearLayout = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout;
-      localIcsLinearLayout.setPadding(localIcsLinearLayout.getPaddingLeft(), this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getPaddingTop(), paramInt2 - n - i1, this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getPaddingBottom());
+      this.v = this.m.getChildAt(0).getMeasuredWidth();
+      paramInt2 = this.t;
+      int i2 = this.v;
+      int i3 = this.u;
+      IcsLinearLayout localIcsLinearLayout = this.m;
+      localIcsLinearLayout.setPadding(localIcsLinearLayout.getPaddingLeft(), this.m.getPaddingTop(), paramInt2 - i2 - i3, this.m.getPaddingBottom());
     }
     else
     {
-      this.g = AIOUtils.b(56.0F, getResources());
+      this.v = AIOUtils.b(56.0F, getResources());
     }
-    if ((bool) && (m != paramInt1)) {
-      setCurrentItem(this.d);
+    if ((bool) && (i1 != paramInt1)) {
+      setCurrentItem(this.p);
     }
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.z = true;
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (c())
+    if (k())
     {
-      paramInt3 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getWidth() - this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getPaddingLeft() - this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getPaddingRight() + this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.b();
-      paramInt4 = this.g;
+      paramInt3 = this.n.getWidth() - this.n.getPaddingLeft() - this.n.getPaddingRight() + this.n.getPageMargin();
+      paramInt4 = this.v;
       paramInt2 = paramInt1 / paramInt4;
       float f1 = paramInt1 % paramInt4 * 1.0F / paramInt4;
       paramInt1 = (int)(paramInt2 * paramInt3 + f1 * paramInt3);
-      if ((this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.b()) || (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a()))
+      if ((this.n.g()) || (this.n.e()))
       {
-        f1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getScrollX() - paramInt1;
-        paramInt1 = Math.abs(paramInt2 - this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a());
+        f1 = this.n.getScrollX() - paramInt1;
+        paramInt1 = Math.abs(paramInt2 - this.n.getCurrentItem());
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("onScrollChanged() CurrentItem = [");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a());
+          localStringBuilder.append(this.n.getCurrentItem());
           localStringBuilder.append("], position = [");
           localStringBuilder.append(paramInt2);
           localStringBuilder.append("], deltaPosition = ");
@@ -1184,26 +1184,26 @@ public class MultiCardPageIndicator
           QLog.d("TabPageIndicator", 2, localStringBuilder.toString());
         }
         if (paramInt1 != 0) {
-          this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.b(paramInt2);
+          this.n.a(paramInt2);
         }
-        this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.a(f1);
+        this.n.b(f1);
       }
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int m;
-    if ((this.jdField_b_of_type_Long > 0L) && (SystemClock.uptimeMillis() - this.jdField_b_of_type_Long < 250L)) {
-      m = 0;
+    int i1;
+    if ((this.K > 0L) && (SystemClock.uptimeMillis() - this.K < 250L)) {
+      i1 = 0;
     } else {
-      m = 1;
+      i1 = 1;
     }
     if (!a()) {
-      m = 0;
+      i1 = 0;
     }
-    if (m != 0) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (i1 != 0) {
+      this.a.onTouchEvent(paramMotionEvent);
     }
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
@@ -1235,40 +1235,40 @@ public class MultiCardPageIndicator
       ((StringBuilder)localObject).append("setCurrentItem() called with: item = [");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append("], mSelectedTabIndex = [");
-      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(this.p);
       ((StringBuilder)localObject).append("]");
       QLog.d("TabPageIndicator", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager != null)
+    if (this.n != null)
     {
-      if (this.jdField_c_of_type_Int == paramInt)
+      if (this.k == paramInt)
       {
-        c(paramInt);
+        e(paramInt);
         return;
       }
-      this.d = paramInt;
-      int n = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildCount();
-      int m = 0;
-      while (m < n)
+      this.p = paramInt;
+      int i2 = this.m.getChildCount();
+      int i1 = 0;
+      while (i1 < i2)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(m);
+        localObject = this.m.getChildAt(i1);
         boolean bool;
-        if (m == paramInt) {
+        if (i1 == paramInt) {
           bool = true;
         } else {
           bool = false;
         }
         ((View)localObject).setSelected(bool);
         if (bool) {
-          c(paramInt);
+          e(paramInt);
         }
-        int i1 = this.jdField_c_of_type_Int;
-        if (i1 == m) {
-          d(i1);
+        int i3 = this.k;
+        if (i3 == i1) {
+          f(i3);
         }
-        m += 1;
+        i1 += 1;
       }
-      this.jdField_c_of_type_Int = paramInt;
+      this.k = paramInt;
       return;
     }
     Object localObject = new IllegalStateException("ViewPager has not been bound.");
@@ -1280,63 +1280,63 @@ public class MultiCardPageIndicator
   
   public void setMultiCardContext(MultiCardContext paramMultiCardContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardContext = paramMultiCardContext;
+    this.h = paramMultiCardContext;
   }
   
   public void setOnActionUpNotFling(TabPageIndicator.OnActionUpNotFling paramOnActionUpNotFling)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnActionUpNotFling = paramOnActionUpNotFling;
+    this.H = paramOnActionUpNotFling;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     super.setOnClickListener(paramOnClickListener);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.C = paramOnClickListener;
   }
   
   public void setOnPageChangeListener(MultiAIOBaseViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager$OnPageChangeListener = paramOnPageChangeListener;
+    this.o = paramOnPageChangeListener;
   }
   
   public void setOnTabClickListener(TabPageIndicator.OnTabClickListener paramOnTabClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnTabClickListener = paramOnTabClickListener;
+    this.s = paramOnTabClickListener;
   }
   
   public void setOnTabReselectedListener(TabPageIndicator.OnTabReselectedListener paramOnTabReselectedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTabPageIndicator$OnTabReselectedListener = paramOnTabReselectedListener;
+    this.q = paramOnTabReselectedListener;
   }
   
   public void setScrollState(int paramInt)
   {
-    if (this.h == paramInt) {
+    if (this.x == paramInt) {
       return;
     }
-    this.h = paramInt;
-    e(paramInt);
+    this.x = paramInt;
+    g(paramInt);
   }
   
   public void setTouchEventConsumer(TouchEventConsumer paramTouchEventConsumer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer = paramTouchEventConsumer;
+    this.D = paramTouchEventConsumer;
   }
   
   public void setViewPager(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
   {
-    MultiAIOBaseViewPager localMultiAIOBaseViewPager = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager;
+    MultiAIOBaseViewPager localMultiAIOBaseViewPager = this.n;
     if (localMultiAIOBaseViewPager == paramMultiAIOBaseViewPager) {
       return;
     }
     if (localMultiAIOBaseViewPager != null) {
       localMultiAIOBaseViewPager.setOnPageChangeListener(null);
     }
-    if (paramMultiAIOBaseViewPager.a() != null)
+    if (paramMultiAIOBaseViewPager.getAdapter() != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager = paramMultiAIOBaseViewPager;
+      this.n = paramMultiAIOBaseViewPager;
       paramMultiAIOBaseViewPager.setOnPageChangeListener(this);
-      e();
+      g();
       return;
     }
     throw new IllegalStateException("ViewPager does not have adapter instance.");
@@ -1355,7 +1355,7 @@ public class MultiCardPageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPageIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -48,14 +48,14 @@ public class VasCommonIPCModule
       boolean bool;
       if (i == 490)
       {
-        bool = RelationVipHelper.a().a();
+        bool = RelationVipHelper.a().b();
         paramString = new Bundle();
         paramString.putBoolean("isWhiteName", bool);
         paramString = EIPCResult.createSuccessResult(paramString);
       }
       else if (i == 491)
       {
-        bool = QQFriendRelation2Processor.c().mIsEnable;
+        bool = QQFriendRelation2Processor.e().mIsEnable;
         paramString = new Bundle();
         paramString.putBoolean("isWhiteName", bool);
         paramString = EIPCResult.createSuccessResult(paramString);
@@ -80,7 +80,7 @@ public class VasCommonIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasCommonIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class ChatFragment$1
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(CacheConstants.a, 0);
+    Object localObject = this.this$0.d.getApplication().getSharedPreferences(CacheConstants.a, 0);
     long l = ((SharedPreferences)localObject).getLong(CacheConstants.d, 0L);
     int i;
     if ((l != 0L) && (l <= System.currentTimeMillis()) && (System.currentTimeMillis() - l <= 14400000L)) {
@@ -31,16 +31,16 @@ class ChatFragment$1
     }
     if (i != 0)
     {
-      i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getIntExtra("entrance", 0);
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("uin");
-      MsgCacheStrategyReport.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache(), (String)localObject, this.a, i, this.b);
+      i = this.this$0.f.getIntent().getIntExtra("entrance", 0);
+      localObject = this.this$0.f.getIntent().getStringExtra("uin");
+      MsgCacheStrategyReport.a(this.this$0.d.getMsgCache(), (String)localObject, this.a, i, this.b);
     }
-    MessageCache.b.clear();
+    MessageCache.p.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatFragment.1
  * JD-Core Version:    0.7.0.1
  */

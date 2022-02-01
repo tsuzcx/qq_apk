@@ -7,14 +7,14 @@ import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
 public class TroopCreateMapViewSupportActivity$TroopCreateMapViewAnimation
   extends Animation
 {
-  private final int jdField_a_of_type_Int;
   private final int b;
+  private final int c;
   
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    paramTransformation = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateMapViewSupportActivity.a.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int + this.b * paramFloat));
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateMapViewSupportActivity.a.setLayoutParams(paramTransformation);
+    paramTransformation = this.a.d.getLayoutParams();
+    paramTransformation.height = ((int)(this.b + this.c * paramFloat));
+    this.a.d.setLayoutParams(paramTransformation);
   }
   
   public boolean willChangeBounds()
@@ -24,7 +24,7 @@ public class TroopCreateMapViewSupportActivity$TroopCreateMapViewAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateMapViewSupportActivity.TroopCreateMapViewAnimation
  * JD-Core Version:    0.7.0.1
  */

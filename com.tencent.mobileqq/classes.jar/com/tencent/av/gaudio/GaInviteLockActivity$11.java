@@ -14,30 +14,33 @@ class GaInviteLockActivity$11
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_Int;
-    long l = this.this$0.jdField_a_of_type_Long;
-    int j = AVUtil.c(this.this$0.jdField_b_of_type_Int);
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i, String.valueOf(l), null);
-    String str1 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(j, String.valueOf(this.this$0.jdField_b_of_type_Long), String.valueOf(this.this$0.jdField_a_of_type_Long));
-    String str2 = this.this$0.jdField_b_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mAsyncSubThreadRunnable[groupName,");
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append("],[peerName,");
-    localStringBuilder.append(str1);
-    localStringBuilder.append("]");
-    QLog.w(str2, 1, localStringBuilder.toString());
-    if ((!this.this$0.isFinishing()) && (GaInviteLockActivity.a(this.this$0) != null))
+    int i = this.this$0.a;
+    long l = this.this$0.b;
+    int j = AVUtil.d(this.this$0.d);
+    Object localObject = this.this$0.e.a(i, String.valueOf(l), null);
+    String str1 = this.this$0.e.a(j, String.valueOf(this.this$0.c), String.valueOf(this.this$0.b));
+    if (QLog.isDebugVersion())
     {
-      GaInviteLockActivity.a(this.this$0).removeCallbacks(GaInviteLockActivity.a(this.this$0));
-      GaInviteLockActivity.a(this.this$0).a((String)localObject, str1);
-      GaInviteLockActivity.a(this.this$0).post(GaInviteLockActivity.a(this.this$0));
+      String str2 = this.this$0.l;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mAsyncSubThreadRunnable[groupName,");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("],[peerName,");
+      localStringBuilder.append(str1);
+      localStringBuilder.append("]");
+      QLog.w(str2, 1, localStringBuilder.toString());
     }
-    if (GaInviteLockActivity.a(this.this$0) == null) {
+    if ((!this.this$0.isFinishing()) && (GaInviteLockActivity.b(this.this$0) != null))
+    {
+      GaInviteLockActivity.b(this.this$0).removeCallbacks(GaInviteLockActivity.g(this.this$0));
+      GaInviteLockActivity.g(this.this$0).a((String)localObject, str1);
+      GaInviteLockActivity.b(this.this$0).post(GaInviteLockActivity.g(this.this$0));
+    }
+    if (GaInviteLockActivity.h(this.this$0) == null) {
       GaInviteLockActivity.a(this.this$0, new QavUpdateAvatarViewHelper());
     }
-    localObject = new AvatarParam(j, String.valueOf(this.this$0.jdField_b_of_type_Long), null, true);
-    GaInviteLockActivity.a(this.this$0).a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.this$0.jdField_a_of_type_AndroidWidgetImageView, (AvatarParam)localObject, null);
+    localObject = new AvatarParam(j, String.valueOf(this.this$0.c), null, true);
+    GaInviteLockActivity.h(this.this$0).a(this.this$0.e, this.this$0.j, (AvatarParam)localObject, null);
   }
 }
 

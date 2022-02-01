@@ -41,20 +41,15 @@ import mqq.app.MobileQQ;
 
 public class MapUtils
 {
-  private static long jdField_a_of_type_Long;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
-  
-  private static double a(double paramDouble)
-  {
-    return paramDouble * 3.141592653589793D / 180.0D;
-  }
+  private static Boolean a;
+  private static long b;
   
   private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    paramDouble1 = a(paramDouble1);
-    paramDouble3 = a(paramDouble3);
-    paramDouble2 = a(paramDouble2);
-    paramDouble4 = a(paramDouble4);
+    paramDouble1 = b(paramDouble1);
+    paramDouble3 = b(paramDouble3);
+    paramDouble2 = b(paramDouble2);
+    paramDouble4 = b(paramDouble4);
     return Math.asin(Math.sqrt(Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D) + Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D))) * 2.0D * 6378137.0D;
   }
   
@@ -232,7 +227,7 @@ public class MapUtils
   
   static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    if (a())
+    if (b())
     {
       String str = String.format("qqmap://map/routeplan?type=%s&from=%s&fromcoord=%f,%f&to=%s&tocoord=%f,%f&policy=1&referer=qq", new Object[] { paramString1, paramString2, Double.valueOf(paramLatLng1.latitude), Double.valueOf(paramLatLng1.longitude), paramString3, Double.valueOf(paramLatLng2.latitude), Double.valueOf(paramLatLng2.longitude) });
       try
@@ -313,7 +308,7 @@ public class MapUtils
   
   public static void a(View paramView, String paramString)
   {
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       paramView.setContentDescription(paramString);
     }
   }
@@ -407,14 +402,6 @@ public class MapUtils
     paramTextView.setText(((StringBuilder)localObject).toString());
   }
   
-  static boolean a()
-  {
-    if (a == null) {
-      a = Boolean.valueOf(PackageUtil.a(MobileQQ.sMobileQQ, "com.tencent.map"));
-    }
-    return a.booleanValue();
-  }
-  
   static boolean a(Context paramContext, TencentMap paramTencentMap, LatLng paramLatLng)
   {
     int i = paramContext.getResources().getDisplayMetrics().heightPixels;
@@ -438,10 +425,23 @@ public class MapUtils
     }
     return bool;
   }
+  
+  private static double b(double paramDouble)
+  {
+    return paramDouble * 3.141592653589793D / 180.0D;
+  }
+  
+  static boolean b()
+  {
+    if (a == null) {
+      a = Boolean.valueOf(PackageUtil.a(MobileQQ.sMobileQQ, "com.tencent.map"));
+    }
+    return a.booleanValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.MapUtils
  * JD-Core Version:    0.7.0.1
  */

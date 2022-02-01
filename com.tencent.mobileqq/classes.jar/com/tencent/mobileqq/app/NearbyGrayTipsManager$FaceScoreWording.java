@@ -37,7 +37,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
   public static String getPath(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NearbyGrayTipsManager.a());
+    localStringBuilder.append(NearbyGrayTipsManager.d());
     localStringBuilder.append(FaceScoreWording.class.getSimpleName());
     localStringBuilder.append("_");
     localStringBuilder.append(paramInt);
@@ -128,7 +128,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.FaceScoreWording
  * JD-Core Version:    0.7.0.1
  */

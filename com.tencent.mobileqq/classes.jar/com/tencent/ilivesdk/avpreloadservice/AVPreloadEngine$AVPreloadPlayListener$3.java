@@ -16,14 +16,14 @@ class AVPreloadEngine$AVPreloadPlayListener$3
     {
       AVPreloadEngine.PreloadResultListener localPreloadResultListener = (AVPreloadEngine.PreloadResultListener)localIterator.next();
       if (localPreloadResultListener != null) {
-        localPreloadResultListener.a(AVPreloadEngine.AVPreloadPlayListener.a(this.a), AVPreloadEngine.AVPreloadPlayListener.a(this.a).b(), AVPreloadEngine.AVPreloadPlayListener.a(this.a).a());
+        localPreloadResultListener.a(AVPreloadEngine.AVPreloadPlayListener.a(this.a), AVPreloadEngine.AVPreloadPlayListener.a(this.a).s(), AVPreloadEngine.AVPreloadPlayListener.a(this.a).a());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadEngine.AVPreloadPlayListener.3
  * JD-Core Version:    0.7.0.1
  */

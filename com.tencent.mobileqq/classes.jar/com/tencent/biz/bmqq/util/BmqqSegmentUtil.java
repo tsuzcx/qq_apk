@@ -23,44 +23,29 @@ import org.xml.sax.SAXException;
 
 public class BmqqSegmentUtil
 {
-  public static final AtomicBoolean a;
-  private static long[] a;
-  private static long[] b;
-  private static volatile long[] c;
-  private static volatile long[] d;
-  private static volatile long[] e;
-  private static volatile long[] f;
-  private static volatile long[] g;
-  private static volatile long[] h;
-  private static volatile long[] i;
-  private static volatile long[] j;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfLong = new long[] { 2355000000L, 2880000000L, 2885000000L, 2850121000L, 2852200000L, 3001000000L, 3003000000L, 3003400000L, 3006000000L };
-    b = new long[] { 2355999999L, 2881999999L, 2885999999L, 2851999999L, 2854120999L, 3002999999L, 3003399999L, 3005999999L, 3008999999L };
-    c = null;
-    d = null;
-    e = new long[] { 2852200000L };
-    f = new long[] { 2852999999L };
-    g = new long[] { 1496000000L };
-    h = new long[] { 1497000000L };
-    i = new long[] { 2852000000L, 3003000000L };
-    j = new long[] { 2852199999L, 3003000000L };
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public static final AtomicBoolean a = new AtomicBoolean(false);
+  private static long[] b = { 2355000000L, 2880000000L, 2885000000L, 2850121000L, 2852200000L, 3001000000L, 3003000000L, 3003400000L, 3006000000L };
+  private static long[] c = { 2355999999L, 2881999999L, 2885999999L, 2851999999L, 2854120999L, 3002999999L, 3003399999L, 3005999999L, 3008999999L };
+  private static volatile long[] d = null;
+  private static volatile long[] e = null;
+  private static volatile long[] f = { 2852200000L };
+  private static volatile long[] g = { 2852999999L };
+  private static volatile long[] h = { 1496000000L };
+  private static volatile long[] i = { 1497000000L };
+  private static volatile long[] j = { 2852000000L, 3003000000L };
+  private static volatile long[] k = { 2852199999L, 3003000000L };
   
   private static void a()
   {
-    if ((c == null) || (d == null))
+    if ((d == null) || (e == null))
     {
-      c = jdField_a_of_type_ArrayOfLong;
       d = b;
+      e = c;
     }
-    if ((e == null) || (f == null))
+    if ((f == null) || (g == null))
     {
-      e = new long[] { 2852200000L };
-      f = new long[] { 2852999999L };
+      f = new long[] { 2852200000L };
+      g = new long[] { 2852999999L };
     }
   }
   
@@ -74,8 +59,8 @@ public class BmqqSegmentUtil
       if (1 == paramInt) {
         try
         {
-          c = paramArrayOfLong1;
-          d = paramArrayOfLong2;
+          d = paramArrayOfLong1;
+          e = paramArrayOfLong2;
           return;
         }
         finally {}
@@ -83,8 +68,8 @@ public class BmqqSegmentUtil
       if (2 == paramInt) {
         try
         {
-          e = paramArrayOfLong1;
-          f = paramArrayOfLong2;
+          f = paramArrayOfLong1;
+          g = paramArrayOfLong2;
           return;
         }
         finally {}
@@ -92,8 +77,8 @@ public class BmqqSegmentUtil
       if (3 == paramInt) {
         try
         {
-          g = paramArrayOfLong1;
-          h = paramArrayOfLong2;
+          h = paramArrayOfLong1;
+          i = paramArrayOfLong2;
           return;
         }
         finally {}
@@ -105,7 +90,7 @@ public class BmqqSegmentUtil
   {
     try
     {
-      str = SharedPreUtils.c(paramContext);
+      str = SharedPreUtils.e(paramContext);
     }
     catch (Exception localException)
     {
@@ -115,45 +100,24 @@ public class BmqqSegmentUtil
       break label8;
     }
     str = null;
-    SharedPreUtils.c(paramContext, "");
+    SharedPreUtils.f(paramContext, "");
     if (!TextUtils.isEmpty(str))
     {
-      a(SecurityUtile.decode(str));
+      d(SecurityUtile.decode(str));
       a(str, true);
     }
     try
     {
       paramContext = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
       if (paramContext != null) {
-        a(paramContext.a(), false);
+        a(paramContext.b(), false);
       }
     }
     catch (Exception paramContext)
     {
       break label68;
     }
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-  }
-  
-  public static void a(String paramString)
-  {
-    if (a(paramString, false))
-    {
-      EqqDetailDataManager localEqqDetailDataManager = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
-      if (localEqqDetailDataManager != null)
-      {
-        if (TextUtils.isEmpty(paramString))
-        {
-          localEqqDetailDataManager.a("");
-          return;
-        }
-        localEqqDetailDataManager.a(paramString);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BmqqSegmentUtil", 2, "EqqDetailDataManager is null");
-      }
-    }
+    a.set(true);
   }
   
   private static void a(Element paramElement, int paramInt)
@@ -162,20 +126,20 @@ public class BmqqSegmentUtil
     if (paramElement != null)
     {
       NodeList localNodeList = paramElement.getElementsByTagName("segment");
-      int m = localNodeList.getLength();
-      if (m > 0)
+      int n = localNodeList.getLength();
+      if (n > 0)
       {
-        long[] arrayOfLong1 = new long[m];
-        long[] arrayOfLong2 = new long[m];
-        int k = 0;
+        long[] arrayOfLong1 = new long[n];
+        long[] arrayOfLong2 = new long[n];
+        int m = 0;
         for (;;)
         {
           localObject = arrayOfLong1;
           paramElement = arrayOfLong2;
-          if (k >= m) {
+          if (m >= n) {
             break;
           }
-          localObject = (Element)localNodeList.item(k);
+          localObject = (Element)localNodeList.item(m);
           if (localObject != null)
           {
             paramElement = ((Element)localObject).getAttribute("start");
@@ -185,15 +149,15 @@ public class BmqqSegmentUtil
           {
             long l1 = Long.valueOf(paramElement.trim()).longValue();
             long l2 = Long.valueOf(((String)localObject).trim()).longValue();
-            arrayOfLong1[k] = l1;
-            arrayOfLong2[k] = l2;
+            arrayOfLong1[m] = l1;
+            arrayOfLong2[m] = l2;
           }
           catch (NumberFormatException|Exception paramElement)
           {
             label129:
             break label129;
           }
-          k += 1;
+          m += 1;
         }
       }
     }
@@ -206,41 +170,41 @@ public class BmqqSegmentUtil
     if (!a(paramString)) {
       return false;
     }
-    if ((!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramContext != null)) {
+    if ((!a.get()) && (paramContext != null)) {
       a(paramContext);
     }
     long l = Long.valueOf(paramString).longValue();
-    if ((c == null) || (d == null)) {
+    if ((d == null) || (e == null)) {
       a();
     }
+    int n;
     int m;
-    int k;
-    if ((c != null) && (d != null) && (c.length == d.length))
+    if ((d != null) && (e != null) && (d.length == e.length))
     {
-      m = c.length;
-      k = 0;
-      while (k < m)
+      n = d.length;
+      m = 0;
+      while (m < n)
       {
-        if ((c[k] <= l) && (l <= d[k])) {
+        if ((d[m] <= l) && (l <= e[m])) {
           return true;
         }
-        k += 1;
+        m += 1;
       }
     }
-    if (c != null)
+    if (d != null)
     {
-      k = c.length;
-      paramContext = jdField_a_of_type_ArrayOfLong;
-      if (k != paramContext.length)
+      m = d.length;
+      paramContext = b;
+      if (m != paramContext.length)
       {
-        m = paramContext.length;
-        k = 0;
-        while (k < m)
+        n = paramContext.length;
+        m = 0;
+        while (m < n)
         {
-          if ((jdField_a_of_type_ArrayOfLong[k] <= l) && (l <= b[k])) {
+          if ((b[m] <= l) && (l <= c[m])) {
             return true;
           }
-          k += 1;
+          m += 1;
         }
       }
     }
@@ -325,23 +289,23 @@ public class BmqqSegmentUtil
     if (!a(paramString)) {
       return false;
     }
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (!a.get()) {
       a(paramContext);
     }
     long l = Long.valueOf(paramString).longValue();
-    if ((e == null) || (f == null)) {
+    if ((f == null) || (g == null)) {
       a();
     }
-    if ((e != null) && (f != null) && (e.length == f.length))
+    if ((f != null) && (g != null) && (f.length == g.length))
     {
-      int m = e.length;
-      int k = 0;
-      while (k < m)
+      int n = f.length;
+      int m = 0;
+      while (m < n)
       {
-        if ((e[k] <= l) && (l <= f[k])) {
+        if ((f[m] <= l) && (l <= g[m])) {
           return true;
         }
-        k += 1;
+        m += 1;
       }
     }
     return false;
@@ -370,19 +334,19 @@ public class BmqqSegmentUtil
     if (!a(paramString)) {
       return false;
     }
-    if ((!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (paramContext != null)) {
+    if ((!a.get()) && (paramContext != null)) {
       a(paramContext);
     }
-    if ((g != null) && (h != null) && (g.length == h.length))
+    if ((h != null) && (i != null) && (h.length == i.length))
     {
-      int k = 0;
-      while (k < g.length)
+      int m = 0;
+      while (m < h.length)
       {
         long l = Long.valueOf(paramString).longValue();
-        if ((l >= g[k]) && (l <= h[k])) {
+        if ((l >= h[m]) && (l <= i[m])) {
           return true;
         }
-        k += 1;
+        m += 1;
       }
     }
     return false;
@@ -393,10 +357,31 @@ public class BmqqSegmentUtil
     if (!a(paramString)) {
       return false;
     }
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (!a.get()) {
       return false;
     }
     return a(null, paramString);
+  }
+  
+  public static void d(String paramString)
+  {
+    if (a(paramString, false))
+    {
+      EqqDetailDataManager localEqqDetailDataManager = (EqqDetailDataManager)BaseApplicationImpl.sApplication.getRuntime().getManager(QQManagerFactory.EQQ_DETAIL_DATA_MANAGER);
+      if (localEqqDetailDataManager != null)
+      {
+        if (TextUtils.isEmpty(paramString))
+        {
+          localEqqDetailDataManager.b("");
+          return;
+        }
+        localEqqDetailDataManager.b(paramString);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("BmqqSegmentUtil", 2, "EqqDetailDataManager is null");
+      }
+    }
   }
 }
 

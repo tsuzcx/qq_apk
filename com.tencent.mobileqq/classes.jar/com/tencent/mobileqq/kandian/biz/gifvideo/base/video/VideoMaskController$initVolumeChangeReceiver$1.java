@@ -31,21 +31,21 @@ public final class VideoMaskController$initVolumeChangeReceiver$1
       }
       localStringBuilder.append(paramIntent);
       QLog.i(str, 1, localStringBuilder.toString());
-      paramIntent = ReadInJoyUtils.a();
+      paramIntent = ReadInJoyUtils.b();
       if (paramIntent != null)
       {
-        if (RIJAppSetting.a((QQAppInterface)paramIntent))
+        if (RIJAppSetting.f((QQAppInterface)paramIntent))
         {
           QLog.i(this.a.a(), 1, "[onReceive] app is in background, do not change volume.");
           return;
         }
         boolean bool = VideoAudioControlUtil.a.a(paramContext);
         if (bool) {
-          this.a.a().setImageResource(2130843126);
+          this.a.c().setImageResource(2130844081);
         } else {
-          this.a.a().setImageResource(2130843125);
+          this.a.c().setImageResource(2130844080);
         }
-        VideoMaskController.a(this.a).setMute(bool ^ true);
+        VideoMaskController.b(this.a).setMute(bool ^ true);
         VideoAudioControlUtil.a.a(bool ^ true, "ADJUST_VOLUME");
         return;
       }
@@ -55,7 +55,7 @@ public final class VideoMaskController$initVolumeChangeReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoMaskController.initVolumeChangeReceiver.1
  * JD-Core Version:    0.7.0.1
  */

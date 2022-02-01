@@ -45,14 +45,14 @@ public class BaseBubbleBuilderMenuSelectMoreProcessor
     int i = 1;
     if ((localBaseActivity != null) && (localBaseActivity.getChatFragment() != null))
     {
-      paramContext = AIOLongShotHelper.a();
+      paramContext = AIOLongShotHelper.f();
       if (paramContext != null) {
-        paramContext.c();
+        paramContext.e();
       }
-      paramContext = localBaseActivity.getChatFragment().a();
+      paramContext = localBaseActivity.getChatFragment().k();
       paramContext.c(paramChatMessage);
-      paramContext.f(true);
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(paramContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "select_more_msg", true);
+      paramContext.i(true);
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(paramContext.d, "select_more_msg", true);
       if (paramChatMessage == null) {
         return;
       }
@@ -77,12 +77,12 @@ public class BaseBubbleBuilderMenuSelectMoreProcessor
           i = 0;
         }
       }
-      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramChatMessage = this.a;
       paramContext = new StringBuilder();
       paramContext.append("");
       paramContext.append(i);
       ReportController.b(paramChatMessage, "CliOper", "", "", "0X80059B5", "0X80059B5", 0, 0, paramContext.toString(), "", "", "");
-      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramChatMessage = this.a;
       paramContext = new StringBuilder();
       paramContext.append("");
       paramContext.append(j);
@@ -102,8 +102,8 @@ public class BaseBubbleBuilderMenuSelectMoreProcessor
   
   protected void a(QQCustomMenu paramQQCustomMenu, Context paramContext)
   {
-    if ((a()) && (MultiMsgManager.a().a())) {
-      paramQQCustomMenu.a(2131371603, paramContext.getString(2131694356), 2130838922);
+    if ((a()) && (MultiMsgManager.a().b())) {
+      paramQQCustomMenu.a(2131439015, paramContext.getString(2131892030), 2130839076);
     }
   }
   
@@ -114,13 +114,13 @@ public class BaseBubbleBuilderMenuSelectMoreProcessor
   
   protected boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008)) {
+    if ((this.b.a != 0) && (this.b.a != 1) && (this.b.a != 3000) && (this.b.a != 1008)) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    if (this.b.a == 1)
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      if ((localHotChatManager != null) && (localHotChatManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
+      HotChatManager localHotChatManager = (HotChatManager)this.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      if ((localHotChatManager != null) && (localHotChatManager.b(this.b.b))) {
         return false;
       }
     }
@@ -129,12 +129,12 @@ public class BaseBubbleBuilderMenuSelectMoreProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131371603;
+    return paramInt == 2131439015;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuSelectMoreProcessor
  * JD-Core Version:    0.7.0.1
  */

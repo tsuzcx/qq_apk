@@ -8,9 +8,9 @@ import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
 import com.tencent.mobileqq.apollo.ipc.business.ICmShowAvatar;
+import com.tencent.mobileqq.apollo.utils.RequestRoute;
 import com.tencent.mobileqq.apollo.web.CmshowWebReqParam;
 import com.tencent.mobileqq.apollo.web.api.impl.ApolloJsPluginImpl.AvatarInfo;
-import com.tencent.mobileqq.emosm.web.RequestRoute;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -24,19 +24,39 @@ import org.json.JSONObject;
 public class PendantAvatarJsModule
   extends BaseJsModule
 {
-  private int a;
-  public Map<String, ApolloJsPluginImpl.AvatarInfo> a;
+  public Map<String, ApolloJsPluginImpl.AvatarInfo> b = new HashMap();
+  private int c = (int)CmShowWnsUtils.d();
   
   public PendantAvatarJsModule(VasWebviewJsPlugin paramVasWebviewJsPlugin)
   {
     super(paramVasWebviewJsPlugin);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_Int = ((int)CmShowWnsUtils.a());
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    ((ICmShowAvatar)ApolloIPCModule.a(ICmShowAvatar.class)).a(a().a().getCurrentUin(), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, new PendantAvatarJsModule.2(this, paramInt3, paramInt4));
+    ((ICmShowAvatar)ApolloIPCModule.a(ICmShowAvatar.class)).a(a().c().getCurrentUin(), paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, new PendantAvatarJsModule.2(this, paramInt3, paramInt4));
+  }
+  
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject1 = new Intent("ACTION_NEWER_GUIDE_CMSHOW_AVATAR_RESULT");
+    ((Intent)localObject1).putExtra("path", paramString);
+    Object localObject2 = a();
+    if (localObject2 != null)
+    {
+      localObject2 = ((WebViewPlugin.PluginRuntime)localObject2).d();
+      if (localObject2 != null)
+      {
+        ((Activity)localObject2).sendBroadcast((Intent)localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("broadcastToSetAvatar ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.i("[cmshow]AvatarJsModule", 1, ((StringBuilder)localObject1).toString());
+      }
+    }
   }
   
   private void a(JSONObject paramJSONObject)
@@ -63,33 +83,11 @@ public class PendantAvatarJsModule
     }
   }
   
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    Object localObject1 = new Intent("ACTION_NEWER_GUIDE_CMSHOW_AVATAR_RESULT");
-    ((Intent)localObject1).putExtra("path", paramString);
-    Object localObject2 = a();
-    if (localObject2 != null)
-    {
-      localObject2 = ((WebViewPlugin.PluginRuntime)localObject2).a();
-      if (localObject2 != null)
-      {
-        ((Activity)localObject2).sendBroadcast((Intent)localObject1);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("broadcastToSetAvatar ");
-        ((StringBuilder)localObject1).append(paramString);
-        QLog.i("[cmshow]AvatarJsModule", 1, ((StringBuilder)localObject1).toString());
-      }
-    }
-  }
-  
   @RequestRoute(a="getAvatarImages")
   private void handleGetAvatarImages(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    JSONObject localJSONObject1 = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    paramCmshowWebReqParam = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
+    JSONObject localJSONObject1 = paramCmshowWebReqParam.a;
+    paramCmshowWebReqParam = paramCmshowWebReqParam.b;
     if (localJSONObject1 == null)
     {
       QLog.e("[cmshow]AvatarJsModule", 1, "handleGetAvatarImages with json null");
@@ -109,7 +107,7 @@ public class PendantAvatarJsModule
           if (!TextUtils.isEmpty(str))
           {
             j = Integer.parseInt(str);
-            a(k, j, localJSONObject2.getInt("isDynamic"), localJSONObject2.getInt("type"), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+            a(k, j, localJSONObject2.getInt("isDynamic"), localJSONObject2.getInt("type"), this.c, this.c);
             i += 1;
           }
         }
@@ -132,8 +130,8 @@ public class PendantAvatarJsModule
   @RequestRoute(a="setSpriteAvatar")
   private void handleSetAvatar(@NonNull CmshowWebReqParam paramCmshowWebReqParam)
   {
-    JSONObject localJSONObject = paramCmshowWebReqParam.jdField_a_of_type_OrgJsonJSONObject;
-    paramCmshowWebReqParam = paramCmshowWebReqParam.jdField_a_of_type_JavaLangString;
+    JSONObject localJSONObject = paramCmshowWebReqParam.a;
+    paramCmshowWebReqParam = paramCmshowWebReqParam.b;
     if (localJSONObject == null)
     {
       QLog.e("[cmshow]AvatarJsModule", 1, "handleSetSpriteAvatar with json null");
@@ -151,7 +149,7 @@ public class PendantAvatarJsModule
         if (!TextUtils.isEmpty(str))
         {
           i = Integer.parseInt(str);
-          ((ICmShowAvatar)ApolloIPCModule.a(ICmShowAvatar.class)).a(a().a().getCurrentUin(), j, i, k, new PendantAvatarJsModule.1(this, paramCmshowWebReqParam));
+          ((ICmShowAvatar)ApolloIPCModule.a(ICmShowAvatar.class)).a(a().c().getCurrentUin(), j, i, k, new PendantAvatarJsModule.1(this, paramCmshowWebReqParam));
           return;
         }
       }
@@ -188,7 +186,7 @@ public class PendantAvatarJsModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.PendantAvatarJsModule
  * JD-Core Version:    0.7.0.1
  */

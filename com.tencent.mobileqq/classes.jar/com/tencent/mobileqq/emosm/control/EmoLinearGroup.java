@@ -3,11 +3,11 @@ package com.tencent.mobileqq.emosm.control;
 public class EmoLinearGroup
   extends EmoStepGroup
 {
-  protected int a()
+  protected int b()
   {
-    while (this.a != 8)
+    while (this.d != 8)
     {
-      EmoAsyncStep localEmoAsyncStep = a();
+      EmoAsyncStep localEmoAsyncStep = c();
       if (localEmoAsyncStep == null) {
         break;
       }
@@ -18,7 +18,7 @@ public class EmoLinearGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoLinearGroup
  * JD-Core Version:    0.7.0.1
  */

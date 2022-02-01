@@ -30,8 +30,8 @@ import java.util.List;
 class ResourceGrabViewModel
   extends BaseViewModel<ResourceGrabRepository>
 {
-  static ViewModelProvider.Factory jdField_a_of_type_AndroidxLifecycleViewModelProvider$Factory = new ResourceGrabViewModel.2();
-  private final ResourceNameGrabStrategy[] jdField_a_of_type_ArrayOfComTencentMobileqqResourcesgrabStrategyResourceNameGrabStrategy = { new CommonResourceNameGrabStrategy(), new GrabMainTabResourceNameGrabStrategy(), new SingleLineTextViewResourceNameGrabStrategy() };
+  static ViewModelProvider.Factory a = new ResourceGrabViewModel.2();
+  private final ResourceNameGrabStrategy[] b = { new CommonResourceNameGrabStrategy(), new GrabMainTabResourceNameGrabStrategy(), new SingleLineTextViewResourceNameGrabStrategy() };
   
   ResourceGrabViewModel(ResourceGrabRepository paramResourceGrabRepository)
   {
@@ -58,25 +58,6 @@ class ResourceGrabViewModel
       QLog.d("ResourceGrabViewModel", 1, paramView, new Object[0]);
     }
     return null;
-  }
-  
-  private List<ResourceGrabSkinData> a(List<ResourceGrabSkinData> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      HashSet localHashSet = new HashSet();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ResourceGrabSkinData localResourceGrabSkinData = (ResourceGrabSkinData)paramList.next();
-        if (!localHashSet.contains(localResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName)) {
-          localArrayList.add(localResourceGrabSkinData);
-        }
-        localHashSet.add(localResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
-      }
-    }
-    return localArrayList;
   }
   
   private void a(Drawable paramDrawable, List<ResourceGrabSkinData> paramList, int paramInt)
@@ -123,8 +104,8 @@ class ResourceGrabViewModel
         QLog.d("ResourceGrabViewModel", 2, "recovery onClick listener");
       }
       paramOnClickListener = (ResourceNameOnClickListener)paramOnClickListener;
-      paramView.setOnClickListener(paramOnClickListener.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setClickable(paramOnClickListener.jdField_a_of_type_Boolean);
+      paramView.setOnClickListener(paramOnClickListener.a);
+      paramView.setClickable(paramOnClickListener.b);
     }
   }
   
@@ -133,7 +114,7 @@ class ResourceGrabViewModel
     Object localObject = paramView.getBackground();
     int i = 0;
     a((Drawable)localObject, paramList, 0);
-    localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqResourcesgrabStrategyResourceNameGrabStrategy;
+    localObject = this.b;
     int j = localObject.length;
     while (i < j)
     {
@@ -179,33 +160,23 @@ class ResourceGrabViewModel
     }
   }
   
-  String a(List<ResourceGrabSkinData> paramList)
+  private List<ResourceGrabSkinData> c(List<ResourceGrabSkinData> paramList)
   {
-    paramList = a(paramList);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("rootPath: ");
-    localStringBuilder.append(SkinEngine.getInstances().getSkinRootPath());
-    localStringBuilder.append("\n");
-    int j = paramList.size();
-    int i = 0;
-    while (i < j)
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
     {
-      ResourceGrabSkinData localResourceGrabSkinData = (ResourceGrabSkinData)paramList.get(i);
-      if (localResourceGrabSkinData != null)
+      HashSet localHashSet = new HashSet();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        localStringBuilder.append(((ResourceGrabRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(localResourceGrabSkinData.jdField_a_of_type_Int));
-        localStringBuilder.append(":");
-        localStringBuilder.append(localResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
-        if (i != j - 1) {
-          localStringBuilder.append("\n");
+        ResourceGrabSkinData localResourceGrabSkinData = (ResourceGrabSkinData)paramList.next();
+        if (!localHashSet.contains(localResourceGrabSkinData.b.mFileName)) {
+          localArrayList.add(localResourceGrabSkinData);
         }
+        localHashSet.add(localResourceGrabSkinData.b.mFileName);
       }
-      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabViewModel", 2, localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
+    return localArrayList;
   }
   
   void a(View paramView, boolean paramBoolean)
@@ -255,12 +226,41 @@ class ResourceGrabViewModel
   
   void a(List<ResourceGrabSkinData> paramList)
   {
-    ((ResourceGrabRepository)this.jdField_a_of_type_ComTencentMobileqqMvvmBaseRepository).a(paramList, new ResourceGrabViewModel.1(this));
+    ((ResourceGrabRepository)this.z).a(paramList, new ResourceGrabViewModel.1(this));
+  }
+  
+  String b(List<ResourceGrabSkinData> paramList)
+  {
+    paramList = c(paramList);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rootPath: ");
+    localStringBuilder.append(SkinEngine.getInstances().getSkinRootPath());
+    localStringBuilder.append("\n");
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
+    {
+      ResourceGrabSkinData localResourceGrabSkinData = (ResourceGrabSkinData)paramList.get(i);
+      if (localResourceGrabSkinData != null)
+      {
+        localStringBuilder.append(((ResourceGrabRepository)this.z).a(localResourceGrabSkinData.a));
+        localStringBuilder.append(":");
+        localStringBuilder.append(localResourceGrabSkinData.b.mFileName);
+        if (i != j - 1) {
+          localStringBuilder.append("\n");
+        }
+      }
+      i += 1;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ResourceGrabViewModel", 2, localStringBuilder.toString());
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabViewModel
  * JD-Core Version:    0.7.0.1
  */

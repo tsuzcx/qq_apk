@@ -38,7 +38,7 @@ class RegisterVerifyCodeActivity$3
       paramArrayOfByte.printStackTrace();
       paramArrayOfByte = null;
     }
-    AppRuntime localAppRuntime = RegisterVerifyCodeActivity.a(this.a);
+    AppRuntime localAppRuntime = RegisterVerifyCodeActivity.f(this.a);
     String str = Integer.toString(paramInt);
     if (TextUtils.isEmpty(this.a.inviteCode)) {
       localObject1 = "2";
@@ -57,8 +57,8 @@ class RegisterVerifyCodeActivity$3
       if (!TextUtils.isEmpty(paramString4)) {
         RegisterVerifyCodeActivity.a(this.a, paramString4);
       }
-      this.a.a();
-      ReportController.a(RegisterVerifyCodeActivity.b(this.a), "dc00898", "", "", "0X800B609", "0X800B609", 0, 0, "", "", this.a.phoneNum, "");
+      this.a.b();
+      ReportController.a(RegisterVerifyCodeActivity.g(this.a), "dc00898", "", "", "0X800B609", "0X800B609", 0, 0, "", "", this.a.phoneNum, "");
       if (QLog.isColorLevel())
       {
         paramArrayOfByte = new StringBuilder();
@@ -72,12 +72,12 @@ class RegisterVerifyCodeActivity$3
         paramArrayOfByte.append(paramString3);
         QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, paramArrayOfByte.toString());
       }
-      RegisterVerifyCodeActivity.a(this.a);
+      RegisterVerifyCodeActivity.h(this.a);
       return;
     }
     paramString1 = paramArrayOfByte;
     if (TextUtils.isEmpty(paramArrayOfByte)) {
-      paramString1 = this.a.getString(2131716609);
+      paramString1 = this.a.getString(2131914072);
     }
     if (QLog.isColorLevel())
     {
@@ -86,7 +86,7 @@ class RegisterVerifyCodeActivity$3
       paramString2.append(paramString1);
       QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, paramString2.toString());
     }
-    RegisterVerifyCodeActivity.a(this.a).a();
+    RegisterVerifyCodeActivity.d(this.a).a();
     this.a.notifyToast(paramString1, 1);
   }
   
@@ -113,7 +113,7 @@ class RegisterVerifyCodeActivity$3
       }
       localObject = paramArrayOfByte;
       if (TextUtils.isEmpty(paramArrayOfByte)) {
-        localObject = this.a.getString(2131716609);
+        localObject = this.a.getString(2131914072);
       }
       this.a.notifyToast((String)localObject, 1);
       return;
@@ -153,12 +153,12 @@ class RegisterVerifyCodeActivity$3
       RegisterVerifyCodeActivity.a(this.a, paramInt2);
     }
     paramArrayOfByte = this.a;
-    RegisterVerifyCodeActivity.a(paramArrayOfByte, RegisterVerifyCodeActivity.c(paramArrayOfByte));
+    RegisterVerifyCodeActivity.b(paramArrayOfByte, RegisterVerifyCodeActivity.e(paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.3
  * JD-Core Version:    0.7.0.1
  */

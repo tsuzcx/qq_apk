@@ -20,22 +20,23 @@ import java.util.List;
 public class PanelAdapter
   extends PagerAdapter
 {
-  private int jdField_a_of_type_Int = 4;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PanelRecycleBin jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin = new PanelRecycleBin();
-  private ArrayList<PluginData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  private int b = 2;
+  public boolean a = false;
+  private ArrayList<PluginData> b = new ArrayList();
+  private ViewGroup c;
+  private View.OnLongClickListener d;
+  private View.OnClickListener e;
+  private int f = 4;
+  private int g = 2;
+  private PanelRecycleBin h = new PanelRecycleBin();
+  private Context i;
+  private QQAppInterface j;
+  private boolean k;
+  private boolean l;
   
   PanelAdapter(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.i = paramContext;
+    this.j = paramQQAppInterface;
   }
   
   private int a(RecyclerView paramRecyclerView)
@@ -48,8 +49,8 @@ public class PanelAdapter
   
   private void a(int paramInt, RecyclerView paramRecyclerView)
   {
-    int i = ViewUtils.b(20.0F);
-    paramRecyclerView.setPadding(i, 0, i, 0);
+    int m = ViewUtils.dpToPx(20.0F);
+    paramRecyclerView.setPadding(m, 0, m, 0);
     a(paramRecyclerView, paramInt);
     List localList = a(paramInt);
     Object localObject = paramRecyclerView.getAdapter();
@@ -68,19 +69,11 @@ public class PanelAdapter
         return;
       }
     }
-    localObject = new PlusPanelAppListAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
+    localObject = new PlusPanelAppListAdapter(this.j, this.e, this.d);
+    ((PlusPanelAppListAdapter)localObject).a(this.k);
+    ((PlusPanelAppListAdapter)localObject).b(this.l);
     ((PlusPanelAppListAdapter)localObject).a(localList);
     paramRecyclerView.setAdapter((RecyclerView.Adapter)localObject);
-  }
-  
-  private void a(RecyclerView paramRecyclerView)
-  {
-    if ((paramRecyclerView.getTag() instanceof PanelAdapter.PageData)) {
-      paramRecyclerView.setTag(new PanelAdapter.PageData(PanelAdapter.PageData.b((PanelAdapter.PageData)paramRecyclerView.getTag()), XPanelContainer.d, null));
-    } else {
-      paramRecyclerView.setTag(new PanelAdapter.PageData(0, XPanelContainer.d, null));
-    }
-    QLog.d("PanelIconAdapter", 1, new Object[] { "updateRecyclerViewAddedHeight -> XPanelContainer.mExternalPanelheight : ", Integer.valueOf(XPanelContainer.jdField_a_of_type_Int), ", XPanelContainer.mDefaultExternalPanelheight : ", Integer.valueOf(XPanelContainer.b), ", XPanelContainer.mAddedHeight -> ", Integer.valueOf(XPanelContainer.d) });
   }
   
   private void a(RecyclerView paramRecyclerView, int paramInt)
@@ -93,7 +86,17 @@ public class PanelAdapter
     paramRecyclerView.setTag(new PanelAdapter.PageData(paramInt, 0, null));
   }
   
-  private int b(RecyclerView paramRecyclerView)
+  private void b(RecyclerView paramRecyclerView)
+  {
+    if ((paramRecyclerView.getTag() instanceof PanelAdapter.PageData)) {
+      paramRecyclerView.setTag(new PanelAdapter.PageData(PanelAdapter.PageData.b((PanelAdapter.PageData)paramRecyclerView.getTag()), XPanelContainer.d, null));
+    } else {
+      paramRecyclerView.setTag(new PanelAdapter.PageData(0, XPanelContainer.d, null));
+    }
+    QLog.d("PanelIconAdapter", 1, new Object[] { "updateRecyclerViewAddedHeight -> XPanelContainer.mExternalPanelheight : ", Integer.valueOf(XPanelContainer.a), ", XPanelContainer.mDefaultExternalPanelheight : ", Integer.valueOf(XPanelContainer.b), ", XPanelContainer.mAddedHeight -> ", Integer.valueOf(XPanelContainer.d) });
+  }
+  
+  private int c(RecyclerView paramRecyclerView)
   {
     if ((paramRecyclerView.getTag() instanceof PanelAdapter.PageData)) {
       return PanelAdapter.PageData.a((PanelAdapter.PageData)paramRecyclerView.getTag());
@@ -103,76 +106,86 @@ public class PanelAdapter
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.f;
   }
   
   List<PluginData> a(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int * this.b;
-    paramInt *= i;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if ((localArrayList != null) && (localArrayList.size() > 0) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    int m = this.f * this.g;
+    paramInt *= m;
+    ArrayList localArrayList = this.b;
+    if ((localArrayList != null) && (localArrayList.size() > 0) && (paramInt >= 0) && (paramInt < this.b.size()))
     {
-      i = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), i + paramInt);
-      return this.jdField_a_of_type_JavaUtilArrayList.subList(paramInt, i);
+      m = Math.min(this.b.size(), m + paramInt);
+      return this.b.subList(paramInt, m);
     }
     return new ArrayList(0);
   }
   
-  public void a(int paramInt)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+    this.e = paramOnClickListener;
+  }
+  
+  public void a(View.OnLongClickListener paramOnLongClickListener)
+  {
+    this.d = paramOnLongClickListener;
+  }
+  
+  public void a(ArrayList<PluginData> paramArrayList)
+  {
+    this.b = paramArrayList;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.k = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.c == null) {
       return;
     }
     if (paramInt >= 0)
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
+      int m = 0;
+      while (m < this.c.getChildCount())
       {
-        RecyclerView localRecyclerView = (RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+        RecyclerView localRecyclerView = (RecyclerView)this.c.getChildAt(m);
         if ((localRecyclerView != null) && (paramInt == a(localRecyclerView)))
         {
           a(paramInt, localRecyclerView);
           return;
         }
-        i += 1;
+        m += 1;
       }
     }
   }
   
-  public void a(View.OnClickListener paramOnClickListener)
+  public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void a(View.OnLongClickListener paramOnLongClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-  }
-  
-  public void a(ArrayList<PluginData> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.l = paramBoolean;
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
     RecyclerView localRecyclerView = (RecyclerView)paramObject;
     ((ViewGroup)paramView).removeView(localRecyclerView);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.addScrapView((View)paramObject);
+    this.h.addScrapView((View)paramObject);
   }
   
   public int getCount()
   {
-    if ((this.jdField_a_of_type_Int != 0) && (this.b != 0))
+    if ((this.f != 0) && (this.g != 0))
     {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.b;
       if (localArrayList != null)
       {
-        int i = localArrayList.size();
-        int j = this.jdField_a_of_type_Int;
-        int k = this.b;
-        return (i + j * k - 1) / (j * k);
+        int m = localArrayList.size();
+        int n = this.f;
+        int i1 = this.g;
+        return (m + n * i1 - 1) / (n * i1);
       }
     }
     return 0;
@@ -180,7 +193,7 @@ public class PanelAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return -2;
     }
     if (((paramObject instanceof RecyclerView)) && (a((RecyclerView)paramObject) >= getCount())) {
@@ -198,28 +211,28 @@ public class PanelAdapter
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("PanelIconAdapter", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = (RecyclerView)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.getScrapView();
+    Object localObject2 = (RecyclerView)this.h.getScrapView();
     Object localObject1 = localObject2;
     if (localObject2 != null)
     {
-      int i = b((RecyclerView)localObject2);
-      QLog.d("PanelIconAdapter", 1, new Object[] { "reuseViewAddedHeight -> ", Integer.valueOf(i), ", XPanelContainer.mAddedHeight -> ", Integer.valueOf(XPanelContainer.d), ", XPanelContainer.mDefaultExternalPanelheight: ", Integer.valueOf(XPanelContainer.b), ", XPanelContainer.mExternalPanelheight: ", Integer.valueOf(XPanelContainer.jdField_a_of_type_Int) });
+      int m = c((RecyclerView)localObject2);
+      QLog.d("PanelIconAdapter", 1, new Object[] { "reuseViewAddedHeight -> ", Integer.valueOf(m), ", XPanelContainer.mAddedHeight -> ", Integer.valueOf(XPanelContainer.d), ", XPanelContainer.mDefaultExternalPanelheight: ", Integer.valueOf(XPanelContainer.b), ", XPanelContainer.mExternalPanelheight: ", Integer.valueOf(XPanelContainer.a) });
       localObject1 = localObject2;
-      if (i != XPanelContainer.d)
+      if (m != XPanelContainer.d)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.clearScrapViews();
+        this.h.clearScrapViews();
         localObject1 = null;
       }
     }
     ViewGroup localViewGroup = (ViewGroup)paramView;
-    this.jdField_a_of_type_AndroidViewViewGroup = localViewGroup;
+    this.c = localViewGroup;
     localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject2 = new RecyclerView(this.jdField_a_of_type_AndroidContentContext, null);
-      a((RecyclerView)localObject2);
+      localObject2 = new RecyclerView(this.i, null);
+      b((RecyclerView)localObject2);
       ((RecyclerView)localObject2).setOverScrollMode(2);
-      ((RecyclerView)localObject2).setLayoutManager(new PanelAdapter.1(this, this.jdField_a_of_type_AndroidContentContext, a()));
+      ((RecyclerView)localObject2).setLayoutManager(new PanelAdapter.1(this, this.i, a()));
     }
     a(paramInt, (RecyclerView)localObject2);
     if ((((RecyclerView)localObject2).getParent() != paramView) && (paramInt < getCount())) {
@@ -235,7 +248,7 @@ public class PanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.pluspanel.PanelAdapter
  * JD-Core Version:    0.7.0.1
  */

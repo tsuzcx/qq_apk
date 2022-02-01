@@ -13,42 +13,24 @@ import mqq.observer.WtloginObserver;
 
 public class EquipLockWebImpl
 {
-  private static EquipLockWebImpl jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl = null;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private Messenger jdField_a_of_type_AndroidOsMessenger = null;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new EquipLockWebImpl.1(this);
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new EquipLockWebImpl.2(this);
+  private static byte[] b = new byte[0];
+  private static EquipLockWebImpl c = null;
+  WtloginObserver a = new EquipLockWebImpl.2(this);
+  private WeakReference<QQAppInterface> d = null;
+  private Messenger e = null;
+  private FriendListObserver f = new EquipLockWebImpl.1(this);
   
   public static EquipLockWebImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (c == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl == null) {
-          jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl = new EquipLockWebImpl();
+        if (c == null) {
+          c = new EquipLockWebImpl();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl != null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
-      {
-        if ((jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl != null) && (jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl.jdField_a_of_type_JavaLangRefWeakReference != null))
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localQQAppInterface != null) {
-            localQQAppInterface.removeObserver(jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-          }
-          jdField_a_of_type_ComTencentMobileqqEquipmentlockEquipLockWebImpl = null;
-        }
-        return;
-      }
-    }
+    return c;
   }
   
   private void a(int paramInt)
@@ -64,12 +46,12 @@ public class EquipLockWebImpl
   
   private void a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidOsMessenger != null) {
+    if (this.e != null) {
       try
       {
         Message localMessage = Message.obtain(null, 4);
         localMessage.setData(paramBundle);
-        this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+        this.e.send(localMessage);
         if (QLog.isColorLevel())
         {
           QLog.i("EquipLockWebImpl", 2, "resp to sever: ");
@@ -92,6 +74,24 @@ public class EquipLockWebImpl
     localBundle2.putInt("respkey", -1);
     localBundle2.putBundle("response", localBundle1);
     a(localBundle2);
+  }
+  
+  public static void b()
+  {
+    if (c != null) {
+      synchronized (b)
+      {
+        if ((c != null) && (c.d != null))
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)c.d.get();
+          if (localQQAppInterface != null) {
+            localQQAppInterface.removeObserver(c.f);
+          }
+          c = null;
+        }
+        return;
+      }
+    }
   }
   
   private void b(boolean paramBoolean)
@@ -118,20 +118,20 @@ public class EquipLockWebImpl
   
   public void a(QQAppInterface paramQQAppInterface, Messenger paramMessenger)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsMessenger = paramMessenger;
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.d = new WeakReference(paramQQAppInterface);
+    this.e = paramMessenger;
+    paramQQAppInterface.addObserver(this.f);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = (QQAppInterface)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        i = EquipmentLockImpl.a().a((AppRuntime)localObject, ((QQAppInterface)localObject).getCurrentAccountUin(), null, paramArrayOfByte, this.jdField_a_of_type_MqqObserverWtloginObserver);
+        i = EquipmentLockImpl.a().a((AppRuntime)localObject, ((QQAppInterface)localObject).getCurrentAccountUin(), null, paramArrayOfByte, this.a);
         break label47;
       }
     }
@@ -142,7 +142,7 @@ public class EquipLockWebImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipLockWebImpl
  * JD-Core Version:    0.7.0.1
  */

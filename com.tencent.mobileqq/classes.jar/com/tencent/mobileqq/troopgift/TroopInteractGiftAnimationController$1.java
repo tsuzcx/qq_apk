@@ -14,13 +14,13 @@ class TroopInteractGiftAnimationController$1
   
   public void run()
   {
-    JSONObject localJSONObject = TroopGiftUtil.a(this.jdField_a_of_type_JavaLangString);
-    this.this$0.a.post(new TroopInteractGiftAnimationController.1.1(this, localJSONObject));
+    JSONObject localJSONObject = TroopGiftUtil.b(this.a);
+    this.this$0.e.post(new TroopInteractGiftAnimationController.1.1(this, localJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1
  * JD-Core Version:    0.7.0.1
  */

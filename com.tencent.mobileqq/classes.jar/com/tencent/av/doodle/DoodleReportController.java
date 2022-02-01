@@ -8,32 +8,31 @@ import java.util.Map;
 
 public class DoodleReportController
 {
-  private long jdField_a_of_type_Long = 0L;
-  private DoodleLogic jdField_a_of_type_ComTencentAvDoodleDoodleLogic = null;
-  public boolean a;
-  private boolean b = false;
+  public boolean a = false;
+  private DoodleLogic b = null;
+  private long c = 0L;
+  private boolean d = false;
   
   public DoodleReportController(DoodleLogic paramDoodleLogic)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentAvDoodleDoodleLogic = paramDoodleLogic;
+    this.b = paramDoodleLogic;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.c = SystemClock.elapsedRealtime();
       return;
     }
-    b(this.jdField_a_of_type_ComTencentAvDoodleDoodleLogic.a);
+    b(this.b.d);
   }
   
   private void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    if (this.c != 0L)
     {
-      long l = SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long;
+      long l = SystemClock.elapsedRealtime() - this.c;
       if (l > 3000L)
       {
         Object localObject = new HashMap();
@@ -51,7 +50,7 @@ public class DoodleReportController
           ((StringBuilder)localObject).append(str2);
           QLog.d("DoodleReportController", 2, ((StringBuilder)localObject).toString());
         }
-        this.b = true;
+        this.d = true;
       }
     }
   }
@@ -59,7 +58,7 @@ public class DoodleReportController
   public void a()
   {
     a(false);
-    if (this.b)
+    if (this.d)
     {
       DoodleUtils.a("0X80077C2");
       return;
@@ -69,18 +68,18 @@ public class DoodleReportController
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramInt != this.jdField_a_of_type_ComTencentAvDoodleDoodleLogic.a))
+    if ((this.a) && (paramInt != this.b.d))
     {
       b(paramInt);
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.c = SystemClock.elapsedRealtime();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.a != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.a = paramBoolean;
       b();
     }
   }

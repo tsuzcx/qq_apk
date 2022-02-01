@@ -13,7 +13,7 @@ class QidianManager$7
   public void run()
   {
     QidianManager localQidianManager = this.this$0;
-    localQidianManager.b(localQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.a, 6));
+    localQidianManager.b(localQidianManager.i.getApp().getBaseContext(), new BmqqAccountType(this.a, 6));
     if (QLog.isColorLevel()) {
       QLog.d("QidianManager", 2, "isQidianMaster get user detail in main thread");
     }
@@ -21,7 +21,7 @@ class QidianManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.7
  * JD-Core Version:    0.7.0.1
  */

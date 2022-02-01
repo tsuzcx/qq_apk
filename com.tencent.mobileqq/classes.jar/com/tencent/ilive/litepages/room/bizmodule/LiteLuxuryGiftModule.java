@@ -298,8 +298,8 @@ public class LiteLuxuryGiftModule
   protected void onInflateComponent()
   {
     initServiceInterface();
-    ViewStub localViewStub = (ViewStub)getRootView().findViewById(2131370501);
-    localViewStub.setLayoutResource(2131559237);
+    ViewStub localViewStub = (ViewStub)getRootView().findViewById(2131437773);
+    localViewStub.setLayoutResource(2131625157);
     initLuxuryGiftComponent((FrameLayout)localViewStub.inflate());
   }
   
@@ -324,7 +324,7 @@ public class LiteLuxuryGiftModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule
  * JD-Core Version:    0.7.0.1
  */

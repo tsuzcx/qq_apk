@@ -8,14 +8,13 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.kandian.base.utils.RIJThreadHandler;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicManager;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ChannelCoverInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -29,33 +28,31 @@ public class ReadInJoyNaviController
   public static int b = 0;
   public static int c = 0;
   public static int d = 7;
-  public static final int e = ViewUtils.a(5.0F);
-  public int a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ReadInJoyNavigationGridview jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview;
-  protected ReadInJoyObserver a;
-  private boolean jdField_a_of_type_Boolean = true;
+  public static final int e = ViewUtils.dip2px(5.0F);
+  public int a = 0;
+  protected ReadInJoyObserver f = new ReadInJoyNaviController.3(this);
+  private ViewGroup g;
+  private ReadInJoyNavigationGridview h;
+  private ImageView i;
+  private boolean j = true;
   
   public ReadInJoyNaviController(ViewGroup paramViewGroup, ReadInJoyNavigationGridview paramReadInJoyNavigationGridview, ImageView paramImageView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoyNaviController.3(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview = paramReadInJoyNavigationGridview;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.setChannelButtonListener(new ReadInJoyNaviController.ChannelButtonListenerImpl(this));
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    this.g = paramViewGroup;
+    this.h = paramReadInJoyNavigationGridview;
+    this.i = paramImageView;
+    this.h.setChannelButtonListener(new ReadInJoyNaviController.ChannelButtonListenerImpl(this));
+    ReadInJoyLogicEngineEventDispatcher.a().a(this.f);
     a();
   }
   
   public static String a(int paramInt, ChannelCoverInfo paramChannelCoverInfo)
   {
-    JSONObject localJSONObject = RIJTransMergeKanDianReport.b();
-    int i;
+    JSONObject localJSONObject = RIJTransMergeKanDianReport.h();
+    int k;
     if (paramInt != 0)
     {
-      i = 1;
+      k = 1;
       if (paramInt == 1) {
         if (paramChannelCoverInfo == null) {}
       }
@@ -68,7 +65,7 @@ public class ReadInJoyNaviController
         if (!TextUtils.isEmpty(paramChannelCoverInfo.mChannelJumpUrl)) {
           break label106;
         }
-        paramInt = i;
+        paramInt = k;
         localJSONObject.put("content_type", paramInt);
         localJSONObject.put("channel_index", c);
       }
@@ -85,7 +82,30 @@ public class ReadInJoyNaviController
     }
   }
   
-  private List<ChannelCoverInfo> a(List<ChannelCoverInfo> paramList)
+  public static void a(int paramInt, String paramString)
+  {
+    String str;
+    if (paramInt != 0) {
+      if (paramInt != 1) {
+        str = "";
+      }
+    }
+    for (;;)
+    {
+      break;
+      str = "0X8008B83";
+      continue;
+      str = "0X8008B81";
+    }
+    PublicAccountReportUtils.a(null, "CliOper", "", "", str, str, 0, 0, "", "", "", paramString, false);
+  }
+  
+  private void a(long paramLong)
+  {
+    RIJThreadHandler.b().postDelayed(new ReadInJoyNaviController.4(this), paramLong);
+  }
+  
+  private List<ChannelCoverInfo> b(List<ChannelCoverInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList != null)
@@ -106,42 +126,19 @@ public class ReadInJoyNaviController
     return localArrayList;
   }
   
-  public static void a(int paramInt, String paramString)
-  {
-    String str;
-    if (paramInt != 0) {
-      if (paramInt != 1) {
-        str = "";
-      }
-    }
-    for (;;)
-    {
-      break;
-      str = "0X8008B83";
-      continue;
-      str = "0X8008B81";
-    }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", str, str, 0, 0, "", "", "", paramString, false);
-  }
-  
-  private void a(long paramLong)
-  {
-    RIJThreadHandler.b().postDelayed(new ReadInJoyNaviController.4(this), paramLong);
-  }
-  
   public void a()
   {
     try
     {
-      ReadInJoyLogicManager localReadInJoyLogicManager = (ReadInJoyLogicManager)ReadInJoyUtils.a().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
-      List localList = localReadInJoyLogicManager.getReadInJoyLogicEngine().a(0);
+      ReadInJoyLogicManager localReadInJoyLogicManager = (ReadInJoyLogicManager)ReadInJoyUtils.b().getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+      List localList = localReadInJoyLogicManager.getReadInJoyLogicEngine().c(0);
       if ((localList != null) && (localList.size() != 0))
       {
         a(localList);
       }
       else
       {
-        localReadInJoyLogicManager.getReadInJoyLogicEngine().c(0);
+        localReadInJoyLogicManager.getReadInJoyLogicEngine().e(0);
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyNaviController", 2, "No channel Cache info.");
         }
@@ -157,7 +154,7 @@ public class ReadInJoyNaviController
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.a() <= 0)
+    if (this.h.getAdapterCount() <= 0)
     {
       a();
       if (QLog.isColorLevel()) {
@@ -166,14 +163,14 @@ public class ReadInJoyNaviController
       return;
     }
     b = paramInt;
-    if (this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mReadInJoyNavigation") == null)
+    if (this.g.findViewWithTag("mReadInJoyNavigation") == null)
     {
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
       localLayoutParams.gravity = 48;
-      localLayoutParams.topMargin = this.jdField_a_of_type_Int;
+      localLayoutParams.topMargin = this.a;
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.a().iterator();
-      int i = 0;
+      Iterator localIterator = this.h.getChannels().iterator();
+      int k = 0;
       while (localIterator.hasNext())
       {
         ChannelCoverInfo localChannelCoverInfo = ((ChannelCoverInfo)localIterator.next()).clone();
@@ -187,37 +184,37 @@ public class ReadInJoyNaviController
           }
           localChannelCoverInfo.isSelected = bool;
           if (paramInt == localChannelCoverInfo.mChannelCoverId) {
-            c = i;
+            c = k;
           }
         }
         localArrayList.add(localChannelCoverInfo);
-        i += 1;
+        k += 1;
       }
       a(localArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview, localLayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.setTag("mReadInJoyNavigation");
+      this.h.setAlpha(0.0F);
+      this.g.addView(this.h, localLayoutParams);
+      this.h.setTag("mReadInJoyNavigation");
       RIJThreadHandler.b().postDelayed(new ReadInJoyNaviController.1(this), 0L);
     }
   }
   
   public void a(ChannelCoverInfo paramChannelCoverInfo)
   {
-    if (a())
+    if (c())
     {
       if (paramChannelCoverInfo != null)
       {
-        int i = 0;
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.a().iterator();
+        int k = 0;
+        Iterator localIterator = this.h.getChannels().iterator();
         while (localIterator.hasNext())
         {
           ChannelCoverInfo localChannelCoverInfo = (ChannelCoverInfo)localIterator.next();
           if ((localChannelCoverInfo != null) && (localChannelCoverInfo.mChannelCoverId == paramChannelCoverInfo.mChannelCoverId))
           {
-            c = i;
+            c = k;
             break;
           }
-          i += 1;
+          k += 1;
         }
       }
       RIJThreadHandler.b().postDelayed(new ReadInJoyNaviController.2(this, paramChannelCoverInfo), 0L);
@@ -229,26 +226,26 @@ public class ReadInJoyNaviController
     if (QLog.isColorLevel()) {
       QLog.d("ReadInJoyNaviController", 2, "setAdapterData.");
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview.setNaviBarAdapterDataSet(a(paramList));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup.findViewWithTag("mReadInJoyNavigation") != null;
+    this.h.setNaviBarAdapterDataSet(b(paramList));
   }
   
   public void b()
   {
-    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyNavigationGridview;
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = this.h;
     if (localReadInJoyNavigationGridview != null) {
-      localReadInJoyNavigationGridview.a();
+      localReadInJoyNavigationGridview.b();
     }
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.f);
+  }
+  
+  public boolean c()
+  {
+    return this.g.findViewWithTag("mReadInJoyNavigation") != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyNaviController
  * JD-Core Version:    0.7.0.1
  */

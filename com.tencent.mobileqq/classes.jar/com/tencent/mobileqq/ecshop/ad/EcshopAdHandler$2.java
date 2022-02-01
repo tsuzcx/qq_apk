@@ -19,7 +19,7 @@ final class EcshopAdHandler$2
     if (paramView == null) {
       return;
     }
-    paramView = paramView.getTag(2131364534);
+    paramView = paramView.getTag(2131430591);
     if (paramView != null) {
       ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.2.1(this, paramView));
     }
@@ -27,7 +27,7 @@ final class EcshopAdHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.ad.EcshopAdHandler.2
  * JD-Core Version:    0.7.0.1
  */

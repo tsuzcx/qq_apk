@@ -7,42 +7,42 @@ import mqq.app.MobileQQ;
 class GAccountMonitor
 {
   public static String a = "AccountReceiver";
-  GAccountMonitor.AccountReceiver jdField_a_of_type_ComTencentAvAppGAccountMonitor$AccountReceiver;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  boolean jdField_a_of_type_Boolean = false;
+  VideoAppInterface b;
+  boolean c = false;
+  GAccountMonitor.AccountReceiver d;
   
   public GAccountMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvAppGAccountMonitor$AccountReceiver = new GAccountMonitor.AccountReceiver(paramVideoAppInterface);
+    this.b = paramVideoAppInterface;
+    this.d = new GAccountMonitor.AccountReceiver(paramVideoAppInterface);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvAppGAccountMonitor$AccountReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.b.getApplication().unregisterReceiver(this.d);
+      this.c = false;
     }
   }
   
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQ Account Receiver, Declare permissions");
+      QLog.d(a, 2, "regist QQ Account Receiver, Declare permissions");
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mqq.intent.action.EXIT_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
+    localStringBuilder.append(this.b.getApplication().getPackageName());
     localIntentFilter.addAction(localStringBuilder.toString());
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
     localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
     localIntentFilter.addAction("tencent.video.q2v.membersChange");
     localIntentFilter.addAction("mqq.intent.action.LOGOUT");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentAvAppGAccountMonitor$AccountReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.b.getApplication().registerReceiver(this.d, localIntentFilter, "com.tencent.msg.permission.pushnotify", null) != null) {
+      this.c = true;
     }
   }
 }

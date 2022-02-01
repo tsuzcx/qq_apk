@@ -61,13 +61,13 @@ public class MessageForTroopFile
       this.yybApkName = localObject.yybApkName;
       this.yybApkIconUrl = localObject.yybApkIconUrl;
     }
-    this.msg = HardCodeUtil.a(2131706605);
+    this.msg = HardCodeUtil.a(2131904456);
   }
   
   public String getSummaryMsg()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131706654));
+    localStringBuilder.append(HardCodeUtil.a(2131904505));
     localStringBuilder.append(this.fileName);
     return localStringBuilder.toString();
   }
@@ -121,7 +121,7 @@ public class MessageForTroopFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopFile
  * JD-Core Version:    0.7.0.1
  */

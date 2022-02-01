@@ -21,7 +21,7 @@ class PreloadServiceProxyImpl$5
     {
       paramInt = paramBundle.getInt("result_code");
       paramBundle = (IPreloadService.PathResult)paramBundle.getSerializable("path_result");
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener;
+      Object localObject = this.a;
       if (localObject != null) {
         ((IPreloadService.OnGetPathListener)localObject).onResult(paramInt, paramBundle);
       }
@@ -38,7 +38,7 @@ class PreloadServiceProxyImpl$5
       if (QLog.isColorLevel()) {
         QLog.d("PreloadServiceProxy", 2, "downloadUrls IPC wrong");
       }
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathListener;
+      paramBundle = this.a;
       if (paramBundle != null) {
         paramBundle.onResult(1, IPreloadService.PathResult.getFailRes(null));
       }
@@ -47,7 +47,7 @@ class PreloadServiceProxyImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

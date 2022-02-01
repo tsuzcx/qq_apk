@@ -19,7 +19,7 @@ class ReminderListFragment$ReminderListItemDecoration
     paramRect.left = AIOUtils.b(16.0F, this.a.getResources());
     paramRect.right = AIOUtils.b(16.0F, this.a.getResources());
     int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    int j = ReminderListFragment.a(this.a).getItemCount();
+    int j = ReminderListFragment.g(this.a).getItemCount();
     if (QLog.isColorLevel())
     {
       paramView = ReminderListFragment.a();
@@ -38,7 +38,7 @@ class ReminderListFragment$ReminderListItemDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.ReminderListItemDecoration
  * JD-Core Version:    0.7.0.1
  */

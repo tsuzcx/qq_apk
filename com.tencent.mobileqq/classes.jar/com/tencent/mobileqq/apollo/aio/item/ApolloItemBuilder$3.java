@@ -3,8 +3,8 @@ package com.tencent.mobileqq.apollo.aio.item;
 import android.content.Context;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
+import com.tencent.mobileqq.apollo.meme.action.MemeAIOAction;
 import com.tencent.mobileqq.apollo.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.player.action.CMSAIOAction;
 import com.tencent.mobileqq.apollo.screenshot.ApolloApngEncoder;
 import com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController;
 import com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController.INSTANCE;
@@ -21,8 +21,8 @@ class ApolloItemBuilder$3
   {
     try
     {
-      Object localObject1 = new CMSAIOAction(this.a, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      File localFile = ApolloScreenshotController.a.a(((CMSAIOAction)localObject1).a(null, null));
+      Object localObject1 = new MemeAIOAction(this.a, this.this$0.f.a);
+      File localFile = ApolloScreenshotController.a.a(((MemeAIOAction)localObject1).a(null, null));
       if (localFile == null)
       {
         ApolloItemBuilder.a(this.this$0, 2);
@@ -39,11 +39,6 @@ class ApolloItemBuilder$3
       ((StringBuilder)localObject2).append(".gif");
       localObject1 = ((StringBuilder)localObject2).toString();
       localObject2 = new File((String)localObject1);
-      if ((((File)localObject2).exists()) && (((File)localObject2).length() > 0L))
-      {
-        ApolloItemBuilder.a(this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131689646), 1, this.this$0.jdField_a_of_type_AndroidContentContext);
-        return;
-      }
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(".temp");
@@ -58,12 +53,12 @@ class ApolloItemBuilder$3
       {
         ((File)localObject3).renameTo((File)localObject2);
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("addNewCmShowAnimToFav ");
+        ((StringBuilder)localObject2).append("addMemeToFav ");
         ((StringBuilder)localObject2).append(localFile.getAbsolutePath());
         ((StringBuilder)localObject2).append(" to ");
         ((StringBuilder)localObject2).append((String)localObject1);
         QLog.i("[cmshow]ApolloItemBuilder", 1, ((StringBuilder)localObject2).toString());
-        int i = AIOGalleryUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, (String)localObject1, null, null);
+        int i = AIOGalleryUtils.a(this.this$0.e, (String)localObject1, null, null);
         if (i != 0)
         {
           if (i != 1)
@@ -71,7 +66,7 @@ class ApolloItemBuilder$3
             if (i != 2) {
               return;
             }
-            ApolloItemBuilder.a(this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131689646), 1, this.this$0.jdField_a_of_type_AndroidContentContext);
+            ApolloItemBuilder.a(this.this$0.e.getString(2131886257), 1, this.this$0.e);
             return;
           }
           ApolloItemBuilder.a(this.this$0, 5);
@@ -85,13 +80,13 @@ class ApolloItemBuilder$3
     }
     catch (Exception localException)
     {
-      QLog.e("[cmshow]ApolloItemBuilder", 1, "addNewCmShowAnimToFav error", localException);
+      QLog.e("[cmshow]ApolloItemBuilder", 1, "addMemeToFav error", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

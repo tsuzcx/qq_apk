@@ -38,50 +38,50 @@ public class DoutuEmotionAdapter
   implements View.OnClickListener, IDoutuEmotionAdapter
 {
   public static int a = 4;
-  private float jdField_a_of_type_Float;
-  public long a;
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  public DoutuData a;
-  public DoutuItem a;
-  public IDoutuListener a;
-  public String a;
-  public HashMap<String, String> a;
-  public List<DoutuData> a;
-  public MqqHandler a;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private DoutuData jdField_b_of_type_ComTencentMobileqqDoutuDoutuData;
-  public String b;
   public List<DoutuData> b;
-  private int c;
-  public String c;
-  private int d;
-  private int e;
-  private int f;
+  public List<DoutuData> c;
+  public String d;
+  public String e;
+  public String f;
+  public MqqHandler g;
+  public DoutuItem h;
+  public long i;
+  public HashMap<String, String> j;
+  public DoutuData k;
+  public IDoutuListener l;
+  URLDrawableDownListener m;
+  private float n;
+  private int o;
+  private int p;
+  private int q;
+  private int r;
+  private BaseQQAppInterface s;
+  private QBaseActivity t;
+  private ColorDrawable u = new ColorDrawable();
+  private boolean v;
+  private int w;
+  private DoutuData x;
   
   public DoutuEmotionAdapter(BaseQQAppInterface paramBaseQQAppInterface, QBaseActivity paramQBaseActivity, IDoutuListener paramIDoutuListener, String paramString1, String paramString2, String paramString3, MqqHandler paramMqqHandler, boolean paramBoolean, DoutuItem paramDoutuItem, int paramInt)
   {
-    int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.f = -1;
-    this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData = new DoutuData("abababababababababababab", null);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new DoutuEmotionAdapter.1(this);
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_ComTencentMobileqqDoutuIDoutuListener = paramIDoutuListener;
-    this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuItem = paramDoutuItem;
+    int i1 = 0;
+    this.v = false;
+    this.w = -1;
+    this.x = new DoutuData("abababababababababababab", null);
+    this.i = 0L;
+    this.m = new DoutuEmotionAdapter.1(this);
+    this.s = paramBaseQQAppInterface;
+    this.t = paramQBaseActivity;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramString3;
+    this.g = paramMqqHandler;
+    this.l = paramIDoutuListener;
+    this.h = paramDoutuItem;
     if (paramBoolean)
     {
-      paramBaseQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuItem;
-      if ((paramBaseQQAppInterface != null) && (!TextUtils.isEmpty(paramBaseQQAppInterface.jdField_b_of_type_JavaLangString)))
+      paramBaseQQAppInterface = this.h;
+      if ((paramBaseQQAppInterface != null) && (!TextUtils.isEmpty(paramBaseQQAppInterface.b)))
       {
         paramBoolean = true;
         break label137;
@@ -89,27 +89,27 @@ public class DoutuEmotionAdapter
     }
     paramBoolean = false;
     label137:
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if ((paramInt > 0) && (this.jdField_a_of_type_Boolean)) {
-      jdField_a_of_type_Int = paramInt;
+    this.v = paramBoolean;
+    this.i = System.currentTimeMillis();
+    if ((paramInt > 0) && (this.v)) {
+      a = paramInt;
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Int = 9;
+    if (!this.v) {
+      a = 9;
     }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramInt = i;
-    while (paramInt < jdField_a_of_type_Int)
+    this.b = new ArrayList();
+    paramInt = i1;
+    while (paramInt < a)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new DoutuData());
+      this.b.add(new DoutuData());
       paramInt += 1;
     }
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = Utils.a(80.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-    this.jdField_c_of_type_Int = Utils.a(80.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-    this.d = Utils.a(70.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-    this.e = Utils.a(70.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.n = this.t.getResources().getDisplayMetrics().density;
+    this.o = Utils.a(80.0F, this.t.getResources());
+    this.p = Utils.a(80.0F, this.t.getResources());
+    this.q = Utils.a(70.0F, this.t.getResources());
+    this.r = Utils.a(70.0F, this.t.getResources());
+    this.j = new HashMap();
   }
   
   public void a()
@@ -117,54 +117,54 @@ public class DoutuEmotionAdapter
     if (QLog.isColorLevel()) {
       QLog.d("DoutuEmotionAdapter", 2, "[doutu]resetData");
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.b = new ArrayList();
     } else {
       localList.clear();
     }
-    localList = this.jdField_b_of_type_JavaUtilList;
-    int k = 0;
-    int j = 0;
-    int i = k;
+    localList = this.c;
+    int i3 = 0;
+    int i2 = 0;
+    int i1 = i3;
     if (localList != null)
     {
-      i = k;
+      i1 = i3;
       if (localList.size() > 0)
       {
-        i = j;
-        while ((i < jdField_a_of_type_Int) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+        i1 = i2;
+        while ((i1 < a) && (i1 < this.c.size()))
         {
-          this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-          i += 1;
+          this.b.add(this.c.get(i1));
+          i1 += 1;
         }
       }
     }
-    while (i < 9)
+    while (i1 < 9)
     {
-      this.jdField_a_of_type_JavaUtilList.add(new DoutuData());
-      i += 1;
+      this.b.add(new DoutuData());
+      i1 += 1;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.v)
     {
-      localList = this.jdField_b_of_type_JavaUtilList;
+      localList = this.c;
       if ((localList != null) && (localList.size() > 0))
       {
-        j = this.jdField_b_of_type_JavaUtilList.size();
-        i = jdField_a_of_type_Int;
-        if (j < i) {
-          i = this.jdField_b_of_type_JavaUtilList.size();
+        i2 = this.c.size();
+        i1 = a;
+        if (i2 < i1) {
+          i1 = this.c.size();
         }
-        this.f = i;
-        this.jdField_b_of_type_JavaUtilList.add(this.f, this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
-        this.jdField_a_of_type_JavaUtilList.add(this.f, this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+        this.w = i1;
+        this.c.add(this.w, this.x);
+        this.b.add(this.w, this.x);
       }
     }
   }
   
   public void a(long paramLong)
   {
-    if (paramLong != this.jdField_a_of_type_Long)
+    if (paramLong != this.i)
     {
       if (QLog.isColorLevel())
       {
@@ -172,37 +172,37 @@ public class DoutuEmotionAdapter
         ((StringBuilder)localObject).append("removeLoading key:");
         ((StringBuilder)localObject).append(paramLong);
         ((StringBuilder)localObject).append(", timeKey:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(this.i);
         QLog.e("DoutuEmotionAdapter", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (this.jdField_b_of_type_JavaUtilList != null))
+    Object localObject = this.b;
+    if ((localObject != null) && (this.c != null))
     {
-      int j = ((List)localObject).size();
-      this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
+      int i2 = ((List)localObject).size();
+      this.c.remove(this.x);
       localObject = new ArrayList();
-      int i = 0;
-      while ((i < j) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+      int i1 = 0;
+      while ((i1 < i2) && (i1 < this.c.size()))
       {
-        ((List)localObject).add(this.jdField_b_of_type_JavaUtilList.get(i));
-        i += 1;
+        ((List)localObject).add(this.c.get(i1));
+        i1 += 1;
       }
       a((List)localObject);
     }
-    this.f = -1;
+    this.w = -1;
   }
   
   public void a(List<DoutuData> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.clear();
+      this.b.addAll(paramList);
       notifyDataSetChanged();
     }
   }
@@ -216,7 +216,7 @@ public class DoutuEmotionAdapter
       localStringBuilder.append(paramBoolean);
       QLog.i("DoutuEmotionAdapter", 2, localStringBuilder.toString());
     }
-    if (paramLong != this.jdField_a_of_type_Long)
+    if (paramLong != this.i)
     {
       if (QLog.isColorLevel())
       {
@@ -224,34 +224,34 @@ public class DoutuEmotionAdapter
         paramList.append("addSmartPicList key:");
         paramList.append(paramLong);
         paramList.append(", timeKey:");
-        paramList.append(this.jdField_a_of_type_Long);
+        paramList.append(this.i);
         QLog.e("DoutuEmotionAdapter", 2, paramList.toString());
       }
       return;
     }
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList != null) && (paramList != null))
+    if ((this.b != null) && (this.c != null) && (paramList != null))
     {
-      int j = paramList.size();
-      int i = this.f;
-      if (i > 0)
+      int i2 = paramList.size();
+      int i1 = this.w;
+      if (i1 > 0)
       {
-        this.jdField_b_of_type_JavaUtilList.addAll(i, paramList);
-        this.f += paramList.size();
+        this.c.addAll(i1, paramList);
+        this.w += paramList.size();
       }
-      int k = this.jdField_a_of_type_JavaUtilList.size();
+      int i3 = this.b.size();
       paramList = new ArrayList();
-      i = 0;
-      while ((i < k + j) && (i < this.jdField_b_of_type_JavaUtilList.size()))
+      i1 = 0;
+      while ((i1 < i3 + i2) && (i1 < this.c.size()))
       {
-        if ((!paramBoolean) || (((DoutuData)this.jdField_b_of_type_JavaUtilList.get(i)).picMd5 == null) || (!((DoutuData)this.jdField_b_of_type_JavaUtilList.get(i)).picMd5.equalsIgnoreCase("abababababababababababab"))) {
-          paramList.add(this.jdField_b_of_type_JavaUtilList.get(i));
+        if ((!paramBoolean) || (((DoutuData)this.c.get(i1)).picMd5 == null) || (!((DoutuData)this.c.get(i1)).picMd5.equalsIgnoreCase("abababababababababababab"))) {
+          paramList.add(this.c.get(i1));
         }
-        i += 1;
+        i1 += 1;
       }
       if (paramBoolean)
       {
-        this.jdField_b_of_type_JavaUtilList.remove(this.jdField_b_of_type_ComTencentMobileqqDoutuDoutuData);
-        this.f = -1;
+        this.c.remove(this.x);
+        this.w = -1;
       }
       a(paramList);
       return;
@@ -260,29 +260,29 @@ public class DoutuEmotionAdapter
     {
       paramList = new StringBuilder();
       paramList.append("addSmartPicList list:");
-      paramList.append(this.jdField_a_of_type_JavaUtilList);
+      paramList.append(this.b);
       paramList.append(", listAll:");
-      paramList.append(this.jdField_b_of_type_JavaUtilList);
+      paramList.append(this.c);
       QLog.e("DoutuEmotionAdapter", 2, paramList.toString());
     }
   }
   
   public void b()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (this.jdField_b_of_type_JavaUtilList != null))
+    List localList = this.b;
+    if ((localList != null) && (this.c != null))
     {
-      int j = localList.size();
-      int k = this.jdField_b_of_type_JavaUtilList.size();
-      if (j >= k) {
+      int i2 = localList.size();
+      int i3 = this.c.size();
+      if (i2 >= i3) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      int i = 0;
-      while ((i < k) && (i < jdField_a_of_type_Int + j))
+      this.b.clear();
+      int i1 = 0;
+      while ((i1 < i3) && (i1 < a + i2))
       {
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.get(i));
-        i += 1;
+        this.b.add(this.c.get(i1));
+        i1 += 1;
       }
       notifyDataSetChanged();
     }
@@ -290,14 +290,14 @@ public class DoutuEmotionAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (paramInt < localList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.b.get(paramInt);
     }
     return null;
   }
@@ -309,15 +309,15 @@ public class DoutuEmotionAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
+    int i1 = this.b.size();
     URLDrawable.URLDrawableOptions localURLDrawableOptions = null;
-    if (paramInt >= i)
+    if (paramInt >= i1)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("get view position exception , position = ");
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append(",size = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+      ((StringBuilder)localObject1).append(this.b.size());
       QLog.e("DoutuEmotionAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     DoutuData localDoutuData;
@@ -326,7 +326,7 @@ public class DoutuEmotionAdapter
       localObject1 = localURLDrawableOptions;
       Object localObject2 = paramView;
       break label711;
-      localDoutuData = (DoutuData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      localDoutuData = (DoutuData)this.b.get(paramInt);
       if (localDoutuData == null)
       {
         localObject1 = new StringBuilder();
@@ -343,25 +343,25 @@ public class DoutuEmotionAdapter
         else
         {
           localObject1 = new DoutuEmotionAdapter.ViewHolder(null);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-          paramView = new ViewGroup.LayoutParams(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-          paramView = new RelativeLayout.LayoutParams(this.d, this.e);
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).a = new RelativeLayout(this.t);
+          paramView = new ViewGroup.LayoutParams(this.o, this.p);
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).a.setLayoutParams(paramView);
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).b = new URLImageView(this.t);
+          paramView = new RelativeLayout.LayoutParams(this.q, this.r);
           paramView.addRule(13, -1);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView(((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView, paramView);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839401));
-          float f1 = this.jdField_a_of_type_Float;
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).a.addView(((DoutuEmotionAdapter.ViewHolder)localObject1).b, paramView);
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).c = new ProgressBar(this.t);
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).c.setIndeterminateDrawable(this.t.getResources().getDrawable(2130839585));
+          float f1 = this.n;
           paramView = new RelativeLayout.LayoutParams((int)(f1 * 30.0F), (int)(f1 * 30.0F));
           paramView.addRule(13, -1);
-          ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView(((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar, paramView);
-          paramView = ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout;
+          ((DoutuEmotionAdapter.ViewHolder)localObject1).a.addView(((DoutuEmotionAdapter.ViewHolder)localObject1).c, paramView);
+          paramView = ((DoutuEmotionAdapter.ViewHolder)localObject1).a;
           paramView.setTag(localObject1);
         }
-        ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = localDoutuData;
-        ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_Int = paramInt;
-        ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        ((DoutuEmotionAdapter.ViewHolder)localObject1).d = localDoutuData;
+        ((DoutuEmotionAdapter.ViewHolder)localObject1).e = paramInt;
+        ((DoutuEmotionAdapter.ViewHolder)localObject1).c.setVisibility(0);
         if (localDoutuData.thumbDownUrl == null) {
           break label693;
         }
@@ -384,7 +384,7 @@ public class DoutuEmotionAdapter
       }
     }
     localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject4 = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    Object localObject4 = this.u;
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject4);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject4);
     localURLDrawableOptions.mPlayGifImage = true;
@@ -393,28 +393,28 @@ public class DoutuEmotionAdapter
     if (((URLDrawable)localObject3).getStatus() != 1)
     {
       ((URLDrawable)localObject3).setTag(localDoutuData);
-      ((URLDrawable)localObject3).addHeader("my_uin", this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getAccount());
+      ((URLDrawable)localObject3).addHeader("my_uin", this.s.getAccount());
       if ((((URLDrawable)localObject3).getStatus() == 2) || (((URLDrawable)localObject3).getStatus() == 3)) {
         ((URLDrawable)localObject3).restartDownload();
       }
     }
     else
     {
-      ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      ((DoutuEmotionAdapter.ViewHolder)localObject1).c.setVisibility(4);
+      if (this.j == null) {
+        this.j = new HashMap();
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(localDoutuData.picMd5, localDoutuData.picDownUrl);
+      this.j.put(localDoutuData.picMd5, localDoutuData.picDownUrl);
     }
-    ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject3);
-    ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setURLDrawableDownListener(this.jdField_a_of_type_ComTencentImageURLDrawableDownListener);
-    ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setTag(localObject1);
-    ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setFocusable(true);
-    ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setFocusableInTouchMode(true);
+    ((DoutuEmotionAdapter.ViewHolder)localObject1).b.setImageDrawable((Drawable)localObject3);
+    ((DoutuEmotionAdapter.ViewHolder)localObject1).b.setURLDrawableDownListener(this.m);
+    ((DoutuEmotionAdapter.ViewHolder)localObject1).b.setTag(localObject1);
+    ((DoutuEmotionAdapter.ViewHolder)localObject1).b.setFocusable(true);
+    ((DoutuEmotionAdapter.ViewHolder)localObject1).b.setFocusableInTouchMode(true);
     paramView.setOnClickListener(this);
     break label705;
     label693:
-    ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+    ((DoutuEmotionAdapter.ViewHolder)localObject1).b.setImageDrawable(this.u);
     label705:
     localObject3 = paramView;
     Object localObject1 = paramView;
@@ -433,23 +433,23 @@ public class DoutuEmotionAdapter
     }
     if (localObject1 != null)
     {
-      DoutuData localDoutuData = ((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
+      DoutuData localDoutuData = ((DoutuEmotionAdapter.ViewHolder)localObject1).d;
       if ((localDoutuData != null) && (localDoutuData.thumbDownUrl != null))
       {
-        Object localObject2 = (URLDrawable)((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_ComTencentImageURLImageView.getDrawable();
+        Object localObject2 = (URLDrawable)((DoutuEmotionAdapter.ViewHolder)localObject1).b.getDrawable();
         if (localObject2 != null)
         {
           localObject2 = ((URLDrawable)localObject2).getFileInLocal();
           if (localObject2 != null)
           {
             localObject2 = ((File)localObject2).getPath();
-            IDoutuListener localIDoutuListener = this.jdField_a_of_type_ComTencentMobileqqDoutuIDoutuListener;
+            IDoutuListener localIDoutuListener = this.l;
             if (localIDoutuListener != null) {
-              localIDoutuListener.a((String)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, localDoutuData, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+              localIDoutuListener.a((String)localObject2, this.d, this.e, this.f, localDoutuData, this.t);
             }
-            ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "0X8007FAB", "0X8007FAB", 0, 0, "", String.valueOf(((DoutuEmotionAdapter.ViewHolder)localObject1).jdField_a_of_type_Int + 1), localDoutuData.picMd5, localDoutuData.picDownUrl);
-            this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData = localDoutuData;
-            localObject1 = this.jdField_a_of_type_MqqOsMqqHandler;
+            ReportController.b(this.s, "dc00898", "", "", "0X8007FAB", "0X8007FAB", 0, 0, "", String.valueOf(((DoutuEmotionAdapter.ViewHolder)localObject1).e + 1), localDoutuData.picMd5, localDoutuData.picDownUrl);
+            this.k = localDoutuData;
+            localObject1 = this.g;
             if (localObject1 != null) {
               ((MqqHandler)localObject1).obtainMessage(80).sendToTarget();
             }
@@ -462,7 +462,7 @@ public class DoutuEmotionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

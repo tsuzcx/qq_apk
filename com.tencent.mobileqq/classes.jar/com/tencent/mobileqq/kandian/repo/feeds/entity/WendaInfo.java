@@ -12,37 +12,29 @@ import tencent.im.oidb.articlesummary.articlesummary.WendaInfo;
 
 public class WendaInfo
 {
-  public int a;
-  public AnswerDetailInfo a;
-  public String a;
-  public List<Integer> a;
   public boolean a;
-  public int b;
   public String b;
-  public List<String> b;
-  public int c;
   public String c;
-  public List<String> c;
-  public int d;
   public String d;
   public String e;
-  public String f;
-  public String g;
+  public int f;
+  public int g;
   public String h;
   public String i;
   public String j;
-  public String k;
+  public int k;
   public String l;
-  public String m;
+  public int m;
   public String n;
-  
-  public WendaInfo()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAnswerDetailInfo = new AnswerDetailInfo();
-  }
+  public List<Integer> o = new ArrayList();
+  public List<String> p = new ArrayList();
+  public String q;
+  public String r;
+  public List<String> s = new ArrayList();
+  public String t;
+  public String u;
+  public AnswerDetailInfo v = new AnswerDetailInfo();
+  public String w;
   
   public static WendaInfo a(articlesummary.WendaInfo paramWendaInfo)
   {
@@ -54,67 +46,67 @@ public class WendaInfo
       if (i1 != 1) {
         bool = false;
       }
-      localWendaInfo.jdField_a_of_type_Boolean = bool;
+      localWendaInfo.a = bool;
     }
     if (paramWendaInfo.bytes_question_rowkey.has()) {
-      localWendaInfo.jdField_a_of_type_JavaLangString = paramWendaInfo.bytes_question_rowkey.get().toStringUtf8();
+      localWendaInfo.b = paramWendaInfo.bytes_question_rowkey.get().toStringUtf8();
     }
     if (paramWendaInfo.bytes_question_desc.has()) {
-      localWendaInfo.jdField_b_of_type_JavaLangString = paramWendaInfo.bytes_question_desc.get().toStringUtf8();
+      localWendaInfo.c = paramWendaInfo.bytes_question_desc.get().toStringUtf8();
     }
     if (paramWendaInfo.bytes_question_pic_url.has()) {
-      localWendaInfo.jdField_c_of_type_JavaLangString = paramWendaInfo.bytes_question_pic_url.get().toStringUtf8();
+      localWendaInfo.d = paramWendaInfo.bytes_question_pic_url.get().toStringUtf8();
     }
     if (paramWendaInfo.bytes_wenda_url.has()) {
-      localWendaInfo.jdField_d_of_type_JavaLangString = paramWendaInfo.bytes_wenda_url.get().toStringUtf8();
+      localWendaInfo.e = paramWendaInfo.bytes_wenda_url.get().toStringUtf8();
     }
     if (paramWendaInfo.uint32_follow_count.has()) {
-      localWendaInfo.jdField_a_of_type_Int = paramWendaInfo.uint32_follow_count.get();
+      localWendaInfo.f = paramWendaInfo.uint32_follow_count.get();
     }
     if (paramWendaInfo.uint32_answer_count.has()) {
-      localWendaInfo.jdField_b_of_type_Int = paramWendaInfo.uint32_answer_count.get();
+      localWendaInfo.g = paramWendaInfo.uint32_answer_count.get();
     }
     if (paramWendaInfo.bytes_icon_url.has()) {
-      localWendaInfo.e = paramWendaInfo.bytes_icon_url.get().toStringUtf8();
+      localWendaInfo.h = paramWendaInfo.bytes_icon_url.get().toStringUtf8();
     }
     if (paramWendaInfo.bytes_answer_url.has()) {
-      localWendaInfo.f = paramWendaInfo.bytes_answer_url.get().toStringUtf8();
+      localWendaInfo.i = paramWendaInfo.bytes_answer_url.get().toStringUtf8();
     }
     if (paramWendaInfo.channel_id.has()) {
-      localWendaInfo.jdField_c_of_type_Int = paramWendaInfo.channel_id.get();
+      localWendaInfo.k = paramWendaInfo.channel_id.get();
     }
     if (paramWendaInfo.channel_id_name.has()) {
-      localWendaInfo.h = paramWendaInfo.channel_id_name.get();
+      localWendaInfo.l = paramWendaInfo.channel_id_name.get();
     }
     if (paramWendaInfo.channel_second_id.has()) {
-      localWendaInfo.jdField_d_of_type_Int = paramWendaInfo.channel_second_id.get();
+      localWendaInfo.m = paramWendaInfo.channel_second_id.get();
     }
     if (paramWendaInfo.channel_second_id_name.has()) {
-      localWendaInfo.i = paramWendaInfo.channel_second_id_name.get();
+      localWendaInfo.n = paramWendaInfo.channel_second_id_name.get();
     }
     if (paramWendaInfo.tag_id.has()) {
-      localWendaInfo.jdField_a_of_type_JavaUtilList = paramWendaInfo.tag_id.get();
+      localWendaInfo.o = paramWendaInfo.tag_id.get();
     }
     if (paramWendaInfo.tag_id_name.has()) {
-      localWendaInfo.jdField_b_of_type_JavaUtilList = paramWendaInfo.tag_id_name.get();
+      localWendaInfo.p = paramWendaInfo.tag_id_name.get();
     }
     if (paramWendaInfo.author_nick.has()) {
-      localWendaInfo.j = paramWendaInfo.author_nick.get();
+      localWendaInfo.q = paramWendaInfo.author_nick.get();
     }
     if (paramWendaInfo.jump_url.has()) {
-      localWendaInfo.k = paramWendaInfo.jump_url.get();
+      localWendaInfo.r = paramWendaInfo.jump_url.get();
     }
     if (paramWendaInfo.images_url.has()) {
-      localWendaInfo.jdField_c_of_type_JavaUtilList = paramWendaInfo.images_url.get();
+      localWendaInfo.s = paramWendaInfo.images_url.get();
     }
     if (paramWendaInfo.icon_name.has()) {
-      localWendaInfo.l = paramWendaInfo.icon_name.get();
+      localWendaInfo.t = paramWendaInfo.icon_name.get();
     }
     if (paramWendaInfo.icon_color.has()) {
-      localWendaInfo.m = paramWendaInfo.icon_color.get();
+      localWendaInfo.u = paramWendaInfo.icon_color.get();
     }
     if (paramWendaInfo.super_wenda_button_title.has()) {
-      localWendaInfo.n = paramWendaInfo.super_wenda_button_title.get();
+      localWendaInfo.w = paramWendaInfo.super_wenda_button_title.get();
     }
     if (paramWendaInfo.answer_detail.has()) {
       localWendaInfo.a((articlesummary.AnswerDetail)paramWendaInfo.answer_detail.get());
@@ -129,38 +121,38 @@ public class WendaInfo
   
   public void a(articlesummary.AnswerDetail paramAnswerDetail)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAnswerDetailInfo = AnswerDetailInfo.a(paramAnswerDetail);
+    this.v = AnswerDetailInfo.a(paramAnswerDetail);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isSuperWenda = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", questionRowkey = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", questionDes = ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", questionPicUrl = ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", wendaUrl = ");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(", followCount = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", answerCount = ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", questionIconUrl = ");
     localStringBuilder.append(this.e);
-    localStringBuilder.append(", answerUrl = ");
+    localStringBuilder.append(", followCount = ");
     localStringBuilder.append(this.f);
-    localStringBuilder.append(", questionPicUrlForSmartCrop = ");
+    localStringBuilder.append(", answerCount = ");
     localStringBuilder.append(this.g);
+    localStringBuilder.append(", questionIconUrl = ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", answerUrl = ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", questionPicUrlForSmartCrop = ");
+    localStringBuilder.append(this.j);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.WendaInfo
  * JD-Core Version:    0.7.0.1
  */

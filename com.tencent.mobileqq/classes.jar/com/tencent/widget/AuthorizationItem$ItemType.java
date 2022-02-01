@@ -2,15 +2,15 @@ package com.tencent.widget;
 
 public final class AuthorizationItem$ItemType
 {
-  public final int a;
   public final String a;
   public final String b;
+  public final int c;
   
   AuthorizationItem$ItemType(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public static ItemType a(int paramInt)
@@ -31,7 +31,7 @@ public final class AuthorizationItem$ItemType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.AuthorizationItem.ItemType
  * JD-Core Version:    0.7.0.1
  */

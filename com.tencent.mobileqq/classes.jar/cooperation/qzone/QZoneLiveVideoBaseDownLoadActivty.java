@@ -109,7 +109,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (localObject1 == null)
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "intent is null");
-      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131711895), 1).show();
+      Toast.makeText(getApplicationContext(), HardCodeUtil.a(2131909521), 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "6", null);
       LpReportInfo_dc01500.reportLaunch("qzone_live_video_plugin_hack.apk", "", 0.0D, 3, "0");
       finish();
@@ -127,7 +127,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, ((StringBuilder)localObject1).toString());
       localObject1 = getApplicationContext();
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131711897));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131909523));
       ((StringBuilder)localObject2).append(this.mMode);
       Toast.makeText((Context)localObject1, ((StringBuilder)localObject2).toString(), 1).show();
       QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "6", null);
@@ -144,7 +144,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (!NetworkUtil.isNetworkAvailable(getApplicationContext()))
     {
       QLog.w("QZoneLiveVideoBaseDownLoadActivty", 1, "onCreate, no network available");
-      QQToast.a(this, HardCodeUtil.a(2131711901), 0).a();
+      QQToast.makeText(this, HardCodeUtil.a(2131909527), 0).show();
       if (this.mMode == 1) {
         QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "2", null);
       }
@@ -161,7 +161,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     Object localObject2 = getAppRuntime();
     if ((localObject2 != null) && (((QQAppInterface)localObject2).isVideoChatting()))
     {
-      QQToast.a(this, HardCodeUtil.a(2131711905), 0).a();
+      QQToast.makeText(this, HardCodeUtil.a(2131909531), 0).show();
       if (this.mMode == 1) {
         QzoneVideoBeaconReport.reportVideoEvent(this.account, "live_video_entry", "7", null);
       }
@@ -300,11 +300,11 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
   {
     this.mWaitingView.setVisibility(8);
     this.mDownloadRoot.setVisibility(0);
-    this.mTxtPluginSize = ((TextView)findViewById(2131372876));
-    this.mDownloadingBar = ((ProgressBar)findViewById(2131365848));
-    this.mBtnAction = ((TextView)findViewById(2131363840));
-    this.mBtnClose = ((ImageView)findViewById(2131363890));
-    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375517));
+    this.mTxtPluginSize = ((TextView)findViewById(2131440439));
+    this.mDownloadingBar = ((ProgressBar)findViewById(2131432106));
+    this.mBtnAction = ((TextView)findViewById(2131429786));
+    this.mBtnClose = ((ImageView)findViewById(2131429840));
+    this.mLiveVideoImgIv = ((ImageView)findViewById(2131443708));
     Boolean localBoolean = Boolean.valueOf(false);
     if (getIntent() != null) {
       localBoolean = Boolean.valueOf(getIntent().getBooleanExtra("isEcLive", false));
@@ -332,9 +332,9 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     }
     this.mBtnClose.setOnClickListener(this.cancelInstallListener);
     if (paramInt == 0) {
-      this.mBtnAction.setText(HardCodeUtil.a(2131711892));
+      this.mBtnAction.setText(HardCodeUtil.a(2131909518));
     } else {
-      this.mBtnAction.setText(HardCodeUtil.a(2131711899));
+      this.mBtnAction.setText(HardCodeUtil.a(2131909525));
     }
     this.mBtnAction.setOnClickListener(this.installListener);
   }
@@ -393,7 +393,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     }
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      QQToast.a(this, HardCodeUtil.a(2131711885), 0).a();
+      QQToast.makeText(this, HardCodeUtil.a(2131909511), 0).show();
       double d = System.currentTimeMillis() - this.mLaunchTime;
       Double.isNaN(d);
       d /= 1000.0D;
@@ -443,7 +443,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
           localObject2 = "com.qzone.adapter.livevideo.ECLiveVideoActivity";
           break label732;
         }
-        QQToast.a(this, HardCodeUtil.a(2131711883), 0).a();
+        QQToast.makeText(this, HardCodeUtil.a(2131909509), 0).show();
         doFinish();
       }
     }
@@ -469,9 +469,9 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     if (this.mSystemBarComp != null) {
       this.mSystemBarComp.mDrawStatus = false;
     }
-    setContentView(2131562363);
-    this.mDownloadRoot = ((ViewGroup)findViewById(2131365857));
-    this.mWaitingView = findViewById(2131381014);
+    setContentView(2131628794);
+    this.mDownloadRoot = ((ViewGroup)findViewById(2131432116));
+    this.mWaitingView = findViewById(2131450023);
   }
   
   protected void onDestroy()
@@ -615,12 +615,12 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
     }
     if (paramBoolean1)
     {
-      localTextView.setText(HardCodeUtil.a(2131711891));
+      localTextView.setText(HardCodeUtil.a(2131909517));
       return;
     }
     if (paramBoolean2)
     {
-      localTextView.setText(HardCodeUtil.a(2131711902));
+      localTextView.setText(HardCodeUtil.a(2131909528));
       return;
     }
     this.progress %= 3;
@@ -630,15 +630,15 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
       if (i != 1)
       {
         if (i == 2) {
-          localTextView.setText(HardCodeUtil.a(2131711896));
+          localTextView.setText(HardCodeUtil.a(2131909522));
         }
       }
       else {
-        localTextView.setText(HardCodeUtil.a(2131711893));
+        localTextView.setText(HardCodeUtil.a(2131909519));
       }
     }
     else {
-      localTextView.setText(HardCodeUtil.a(2131711884));
+      localTextView.setText(HardCodeUtil.a(2131909510));
     }
     this.progress += 1;
   }
@@ -650,7 +650,7 @@ public abstract class QZoneLiveVideoBaseDownLoadActivty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty
  * JD-Core Version:    0.7.0.1
  */

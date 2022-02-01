@@ -19,11 +19,11 @@ class ReadInJoyLogicEngine$6
   
   public void run()
   {
-    Pair localPair = ReadInJoyHelper.a();
+    Pair localPair = ReadInJoyHelper.q();
     long l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
     long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L - ((Long)localPair.first).longValue();
-    long l3 = ReadInJoyLogicEngine.a() / 1000L;
-    Object localObject2 = (Long)ReadInJoyLogicEngine.b().get(Integer.valueOf(this.a));
+    long l3 = ReadInJoyLogicEngine.al() / 1000L;
+    Object localObject2 = (Long)ReadInJoyLogicEngine.am().get(Integer.valueOf(this.a));
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = Long.valueOf(0L);
@@ -36,10 +36,10 @@ class ReadInJoyLogicEngine$6
         if (l3 < ((Long)localPair.first).longValue()) {
           return;
         }
-        if (ReadInJoyLogicEngine.a(this.this$0) != null) {
-          ReadInJoyLogicEngine.a(this.this$0).a(this.a, l2, ((Integer)localPair.second).intValue());
+        if (ReadInJoyLogicEngine.c(this.this$0) != null) {
+          ReadInJoyLogicEngine.c(this.this$0).a(this.a, l2, ((Integer)localPair.second).intValue());
         }
-        localObject2 = this.this$0.a().createEntityManager();
+        localObject2 = this.this$0.b().createEntityManager();
         localObject1 = String.format(Locale.CHINA, "delete from %s where recommendSeq not in ( select recommendSeq from %s where channelID = %d order by recommendSeq desc limit %d ) and recommendTime < %d  and channelID = %d ", new Object[] { WeiShiVideoArticleInfo.TABLE_NAME, WeiShiVideoArticleInfo.TABLE_NAME, Integer.valueOf(this.a), localPair.second, Long.valueOf(l2), Integer.valueOf(this.a) });
         if (!((EntityManager)localObject2).execSQL((String)localObject1))
         {
@@ -58,14 +58,14 @@ class ReadInJoyLogicEngine$6
           ((StringBuilder)localObject2).append(localPair.second);
           QLog.d("VideoArticleInfo", 2, ((StringBuilder)localObject2).toString());
         }
-        ReadInJoyLogicEngine.b().put(Integer.valueOf(this.a), Long.valueOf(l1));
+        ReadInJoyLogicEngine.am().put(Integer.valueOf(this.a), Long.valueOf(l1));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine.6
  * JD-Core Version:    0.7.0.1
  */

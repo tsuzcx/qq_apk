@@ -13,10 +13,10 @@ final class NewFriendNotifyPokeMsgHelper$1
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null)) {
+    if ((this.a != 0L) && (this.b != null)) {
       try
       {
-        ((IMessageFacade)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.toByteArray());
+        ((IMessageFacade)this.c.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, this.a, this.b.toByteArray());
         return;
       }
       catch (Exception localException)
@@ -28,7 +28,7 @@ final class NewFriendNotifyPokeMsgHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.poke.NewFriendNotifyPokeMsgHelper.1
  * JD-Core Version:    0.7.0.1
  */

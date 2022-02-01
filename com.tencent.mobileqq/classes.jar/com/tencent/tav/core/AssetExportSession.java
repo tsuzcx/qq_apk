@@ -8,19 +8,21 @@ import com.tencent.tav.core.compositing.VideoCompositing;
 import com.tencent.tav.core.composition.VideoComposition;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.decoder.AssetWriterVideoEncoder;
 import com.tencent.tav.decoder.EncoderWriter.OutputConfig;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.decoder.logger.Logger;
+import com.tencent.tav.decoder.muxer.MediaMuxerFactory.MediaMuxerCreator;
 import java.util.List;
 
 public class AssetExportSession
 {
   public static final String TAG = "AssetExportSession";
-  boolean appliesPreferredTrackTransform = false;
   Asset asset;
   AssetExtension assetExtension;
   @Nullable
   private AudioMix audioMix;
+  private boolean audioRevertMode = false;
   @Nullable
   private AssetExportSession.ErrorInterceptor errorInterceptor;
   @NonNull
@@ -29,19 +31,21 @@ public class AssetExportSession
   ExportErrorStatus exportErrorStatus;
   private AssetExportThread exportThread;
   private List<MetadataItem> metadata;
+  MediaMuxerFactory.MediaMuxerCreator muxerCreator;
   String outputFilePath;
   String outputFileType = "mp4";
   private String presetName;
   float progress;
   private RenderContextParams renderContextParams;
   int retryIndex = 0;
-  private boolean revertMode = false;
   AssetExportSession.AssetExportSessionStatus status;
   private List<String> supportedFileTypes;
   CMTimeRange timeRange;
   VideoCompositing videoCompositing;
   @Nullable
   VideoComposition videoComposition;
+  AssetWriterVideoEncoder videoEncoder;
+  private boolean videoRevertMode = false;
   
   public AssetExportSession(@NonNull Asset paramAsset, ExportConfig paramExportConfig)
   {
@@ -76,7 +80,7 @@ public class AssetExportSession
     if (paramAssetExportSession.getStatus() == AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusFailed)
     {
       AssetExportSession.ErrorInterceptor localErrorInterceptor = this.errorInterceptor;
-      if ((localErrorInterceptor != null) && (localErrorInterceptor.a(paramAssetExportSession, this.retryIndex)))
+      if ((localErrorInterceptor != null) && (localErrorInterceptor.needRetry(paramAssetExportSession, this.retryIndex)))
       {
         this.retryIndex += 1;
         exportAsynchronouslyWithCompletionHandler(paramExportCallbackHandler);
@@ -206,9 +210,25 @@ public class AssetExportSession
     return this.videoComposition;
   }
   
+  public AssetWriterVideoEncoder getVideoEncoder()
+  {
+    return this.videoEncoder;
+  }
+  
+  public boolean isAudioRevertMode()
+  {
+    return this.audioRevertMode;
+  }
+  
+  @Deprecated
   public boolean isRevertMode()
   {
-    return this.revertMode;
+    return this.videoRevertMode;
+  }
+  
+  public boolean isVideoRevertMode()
+  {
+    return this.videoRevertMode;
   }
   
   void release()
@@ -221,14 +241,14 @@ public class AssetExportSession
     }
   }
   
-  public void setAppliesPreferredTrackTransform(boolean paramBoolean)
-  {
-    this.appliesPreferredTrackTransform = paramBoolean;
-  }
-  
   public void setAudioMix(AudioMix paramAudioMix)
   {
     this.audioMix = paramAudioMix;
+  }
+  
+  public void setAudioRevertModel(boolean paramBoolean)
+  {
+    this.audioRevertMode = paramBoolean;
   }
   
   public void setErrorInterceptor(@Nullable AssetExportSession.ErrorInterceptor paramErrorInterceptor)
@@ -244,6 +264,11 @@ public class AssetExportSession
   public void setMetadata(List<MetadataItem> paramList)
   {
     this.metadata = paramList;
+  }
+  
+  public void setMuxerCreator(MediaMuxerFactory.MediaMuxerCreator paramMediaMuxerCreator)
+  {
+    this.muxerCreator = paramMediaMuxerCreator;
   }
   
   public void setOutputFilePath(String paramString)
@@ -265,9 +290,10 @@ public class AssetExportSession
     }
   }
   
+  @Deprecated
   public void setRevertMode(boolean paramBoolean)
   {
-    this.revertMode = paramBoolean;
+    this.videoRevertMode = paramBoolean;
   }
   
   public void setTimeRange(CMTimeRange paramCMTimeRange)
@@ -279,10 +305,20 @@ public class AssetExportSession
   {
     this.videoComposition = paramVideoComposition;
   }
+  
+  public void setVideoEncoder(AssetWriterVideoEncoder paramAssetWriterVideoEncoder)
+  {
+    this.videoEncoder = paramAssetWriterVideoEncoder;
+  }
+  
+  public void setVideoRevertMode(boolean paramBoolean)
+  {
+    this.videoRevertMode = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportSession
  * JD-Core Version:    0.7.0.1
  */

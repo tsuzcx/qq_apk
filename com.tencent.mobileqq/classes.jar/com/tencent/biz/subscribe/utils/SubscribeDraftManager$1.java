@@ -11,7 +11,7 @@ class SubscribeDraftManager$1
   
   public void run()
   {
-    Object localObject = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = SubscribeDraftManager.a(this.this$0, this.a, this.b);
     if (localObject != null)
     {
       int i;
@@ -22,7 +22,7 @@ class SubscribeDraftManager$1
       }
       if (i != 0)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        localObject = this.e;
         if (localObject != null) {
           ((SubscribeDraftManager.SubDraftListener)localObject).a(3, true, this.b, new Object[0]);
         }
@@ -31,7 +31,7 @@ class SubscribeDraftManager$1
       {
         FileUtils.deleteFile((String)((Pair)localObject).first);
         FileUtils.deleteFile((String)((Pair)localObject).second);
-        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        localObject = this.e;
         if (localObject != null) {
           ((SubscribeDraftManager.SubDraftListener)localObject).a(3, false, this.b, new Object[0]);
         }
@@ -39,11 +39,11 @@ class SubscribeDraftManager$1
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+      localObject = this.e;
       if (localObject != null) {
         ((SubscribeDraftManager.SubDraftListener)localObject).a(3, false, this.b, new Object[0]);
       }
-      QLog.d(SubscribeDraftManager.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
+      QLog.d(SubscribeDraftManager.a, 4, "modify new draft failed because cat't new folder");
     }
   }
 }

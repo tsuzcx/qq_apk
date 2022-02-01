@@ -7,9 +7,10 @@ public final class gdt_settings$Settings
   public gdt_settings.Settings.SettingsForAppPreOrder settingsForAppPreOrder = new gdt_settings.Settings.SettingsForAppPreOrder();
   public gdt_settings.Settings.SettingsForDeviceInfo settingsForDeviceInfo = new gdt_settings.Settings.SettingsForDeviceInfo();
   public gdt_experiment_settings.SettingsForJointExperiment[] settingsForJointExperiment;
+  public gdt_settings.Settings.SettingsForLinkEventReporter settingsForLinkEventReporter = new gdt_settings.Settings.SettingsForLinkEventReporter();
+  public gdt_settings.Settings.SettingsForNewHost settingsForNewHost = new gdt_settings.Settings.SettingsForNewHost();
   public gdt_settings.Settings.SettingsForQzone settingsForQzone = new gdt_settings.Settings.SettingsForQzone();
   public gdt_settings.Settings.SettingsForSdkMsg settingsForSdkMsg = new gdt_settings.Settings.SettingsForSdkMsg();
-  public gdt_settings.Settings.SettingsForWebView settingsForWebView = new gdt_settings.Settings.SettingsForWebView();
   public String timeExpiredMillis;
   public String urlForSettings;
   public int version = 0;

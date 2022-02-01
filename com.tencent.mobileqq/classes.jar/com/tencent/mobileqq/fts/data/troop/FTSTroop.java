@@ -115,7 +115,7 @@ public class FTSTroop
     }
     else
     {
-      this.mExt3 = FTSV2FieldUtils.b(this.mExt2);
+      this.mExt3 = FTSV2FieldUtils.c(this.mExt2);
       this.mSegmentCount += FTSV2FieldUtils.a(this.mExt3);
     }
     this.mExt4 = this.mMemberCard;
@@ -125,7 +125,7 @@ public class FTSTroop
     }
     else
     {
-      this.mExt5 = FTSV2FieldUtils.b(this.mExt4);
+      this.mExt5 = FTSV2FieldUtils.c(this.mExt4);
       this.mSegmentCount += FTSV2FieldUtils.a(this.mExt5);
     }
     this.mExt6 = this.mMemberUin;
@@ -157,7 +157,7 @@ public class FTSTroop
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.data.troop.FTSTroop
  * JD-Core Version:    0.7.0.1
  */

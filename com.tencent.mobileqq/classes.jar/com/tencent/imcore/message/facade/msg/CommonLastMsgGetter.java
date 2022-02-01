@@ -23,22 +23,22 @@ public class CommonLastMsgGetter
     }
     StringBuilder localStringBuilder = new StringBuilder("Case:");
     String str1 = UinTypeUtil.a(paramString, paramInt1);
-    Message localMessage = (Message)paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.get(str1);
+    Message localMessage = (Message)paramQQMessageFacade.a.get(str1);
     Object localObject;
     if (localMessage != null)
     {
       localObject = localMessage;
       if (localMessage.isCacheValid) {}
     }
-    else if (paramQQMessageFacade.jdField_a_of_type_ComTencentImcoreMessageFacadeQQMessageFacadeRefresher.a() == 0)
+    else if (paramQQMessageFacade.m.b() == 0)
     {
       localObject = new Message();
       ((Message)localObject).frienduin = paramString;
       ((Message)localObject).istroop = paramInt1;
-      paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.put(str1, localObject);
+      paramQQMessageFacade.a.put(str1, localObject);
       localStringBuilder.append("All-In");
     }
-    else if (!paramQQMessageFacade.jdField_a_of_type_ComTencentImcoreMessageFacadeQQMessageFacadeRefresher.a())
+    else if (!paramQQMessageFacade.m.a())
     {
       localObject = localMessage;
       if (localMessage == null) {
@@ -48,7 +48,7 @@ public class CommonLastMsgGetter
           paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
           if (paramQQAppInterface.tabbleIsExist((String)localObject))
           {
-            localMessage = paramQQMessageFacade.jdField_a_of_type_ComTencentImcoreMessageFacadeQQMessageFacadeRefresher.a(paramString, paramInt1, paramQQAppInterface);
+            localMessage = paramQQMessageFacade.m.a(paramString, paramInt1, paramQQAppInterface);
             localStringBuilder.append("Not-Finish-Yet，force Check DB");
           }
           paramQQAppInterface.close();
@@ -59,7 +59,7 @@ public class CommonLastMsgGetter
             ((Message)localObject).frienduin = paramString;
             ((Message)localObject).istroop = paramInt1;
             ((Message)localObject).isCacheValid = false;
-            paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.put(str1, localObject);
+            paramQQMessageFacade.a.put(str1, localObject);
             localStringBuilder.append("Not-Finish-Yet，force Check DB But Null");
           }
         }
@@ -69,7 +69,7 @@ public class CommonLastMsgGetter
           ((Message)localObject).frienduin = paramString;
           ((Message)localObject).istroop = paramInt1;
           ((Message)localObject).isCacheValid = false;
-          paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.put(str1, localObject);
+          paramQQMessageFacade.a.put(str1, localObject);
         }
       }
       localStringBuilder.append("Not-Finish-Yet");
@@ -86,7 +86,7 @@ public class CommonLastMsgGetter
           localObject = new Message();
           ((Message)localObject).frienduin = paramString;
           ((Message)localObject).istroop = paramInt1;
-          paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.put(str1, localObject);
+          paramQQMessageFacade.a.put(str1, localObject);
         }
         else
         {
@@ -97,7 +97,7 @@ public class CommonLastMsgGetter
       }
       else
       {
-        paramQQAppInterface = paramQQMessageFacade.jdField_a_of_type_ComTencentImcoreMessageFacadeQQMessageFacadeRefresher.a(paramString, paramInt1, localEntityManager);
+        paramQQAppInterface = paramQQMessageFacade.m.a(paramString, paramInt1, localEntityManager);
         localStringBuilder.append("Check-DB");
         localObject = paramQQAppInterface;
         if (paramQQAppInterface == null)
@@ -105,20 +105,20 @@ public class CommonLastMsgGetter
           localObject = new Message();
           ((Message)localObject).frienduin = paramString;
           ((Message)localObject).istroop = paramInt1;
-          paramQQMessageFacade.jdField_a_of_type_JavaUtilMap.put(str1, localObject);
+          paramQQMessageFacade.a.put(str1, localObject);
         }
       }
       localEntityManager.close();
     }
-    if ((localObject != null) && (UinTypeUtil.a(((Message)localObject).frienduin, ((Message)localObject).istroop))) {
-      ((Message)localObject).istroop = UinTypeUtil.a(((Message)localObject).istroop);
+    if ((localObject != null) && (UinTypeUtil.c(((Message)localObject).frienduin, ((Message)localObject).istroop))) {
+      ((Message)localObject).istroop = UinTypeUtil.e(((Message)localObject).istroop);
     }
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.msg.CommonLastMsgGetter
  * JD-Core Version:    0.7.0.1
  */

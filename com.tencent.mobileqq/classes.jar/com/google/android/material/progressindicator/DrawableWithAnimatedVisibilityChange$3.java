@@ -12,7 +12,7 @@ final class DrawableWithAnimatedVisibilityChange$3
   
   public Float a(DrawableWithAnimatedVisibilityChange paramDrawableWithAnimatedVisibilityChange)
   {
-    return Float.valueOf(paramDrawableWithAnimatedVisibilityChange.a());
+    return Float.valueOf(paramDrawableWithAnimatedVisibilityChange.e());
   }
   
   public void a(DrawableWithAnimatedVisibilityChange paramDrawableWithAnimatedVisibilityChange, Float paramFloat)
@@ -22,7 +22,7 @@ final class DrawableWithAnimatedVisibilityChange$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.DrawableWithAnimatedVisibilityChange.3
  * JD-Core Version:    0.7.0.1
  */

@@ -17,10 +17,10 @@ class PublicAccountImageCollectionListView$2
   
   public void run()
   {
-    if (PublicAccountImageCollectionListView.a(this.this$0) != this.jdField_a_of_type_Long) {
+    if (PublicAccountImageCollectionListView.a(this.this$0) != this.a) {
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.b;
     int i;
     if (localObject1 == null) {
       i = 0;
@@ -28,21 +28,21 @@ class PublicAccountImageCollectionListView$2
       i = ((List)localObject1).size();
     }
     localObject1 = new LinkedList();
-    int j = this.jdField_a_of_type_Int;
+    int j = this.c;
     Object localObject4;
-    while (j < this.jdField_a_of_type_Int + this.jdField_b_of_type_Int)
+    while (j < this.c + this.d)
     {
       if ((j <= i) && (j >= 1))
       {
-        if (PublicAccountImageCollectionListView.a(this.this$0) != this.jdField_a_of_type_Long) {
+        if (PublicAccountImageCollectionListView.a(this.this$0) != this.a) {
           return;
         }
         try
         {
-          Object localObject2 = (IPublicAccountImageCollectionUtils.PhotoItemInfo)this.jdField_a_of_type_JavaUtilList.get(j - 1);
+          Object localObject2 = (IPublicAccountImageCollectionUtils.PhotoItemInfo)this.b.get(j - 1);
           if (localObject2 != null)
           {
-            localObject4 = ((PublicAccountImageCollectionAdapter)this.this$0.getAdapter()).a(((IPublicAccountImageCollectionUtils.PhotoItemInfo)localObject2).a);
+            localObject4 = ((PublicAccountImageCollectionAdapter)this.this$0.getAdapter()).b(((IPublicAccountImageCollectionUtils.PhotoItemInfo)localObject2).a);
             if (localObject4 == null) {
               return;
             }
@@ -65,26 +65,26 @@ class PublicAccountImageCollectionListView$2
         catch (Exception localException)
         {
           localException.printStackTrace();
-          if (PublicAccountImageCollectionListView.a(this.this$0) != this.jdField_a_of_type_Long) {
+          if (PublicAccountImageCollectionListView.a(this.this$0) != this.a) {
             return;
           }
         }
       }
       j += 1;
     }
-    if (PublicAccountImageCollectionListView.a(this.this$0) != this.jdField_a_of_type_Long) {
+    if (PublicAccountImageCollectionListView.a(this.this$0) != this.a) {
       return;
     }
     Object localObject3 = ((List)localObject1).iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (PublicAccountImageCollectionListView.PreloadImgInfo)((Iterator)localObject3).next();
-      if ((localObject4 != null) && (((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).jdField_a_of_type_JavaNetURL != null))
+      if ((localObject4 != null) && (((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).a != null))
       {
         ImageRequest localImageRequest = new ImageRequest();
-        localImageRequest.jdField_a_of_type_JavaNetURL = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).jdField_a_of_type_JavaNetURL;
-        localImageRequest.jdField_a_of_type_Int = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).jdField_a_of_type_Int;
-        localImageRequest.jdField_b_of_type_Int = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).jdField_b_of_type_Int;
+        localImageRequest.a = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).a;
+        localImageRequest.b = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).b;
+        localImageRequest.c = ((PublicAccountImageCollectionListView.PreloadImgInfo)localObject4).c;
         ((IImageManager)QRoute.api(IImageManager.class)).loadImage(localImageRequest, null);
       }
     }
@@ -94,14 +94,14 @@ class PublicAccountImageCollectionListView$2
       ((StringBuilder)localObject3).append("preloadImg size:");
       ((StringBuilder)localObject3).append(((List)localObject1).size());
       ((StringBuilder)localObject3).append(" cost:");
-      ((StringBuilder)localObject3).append(System.currentTimeMillis() - this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject3).append(System.currentTimeMillis() - this.e);
       QLog.d("PublicAccountImageCollectionListView", 2, ((StringBuilder)localObject3).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionListView.2
  * JD-Core Version:    0.7.0.1
  */

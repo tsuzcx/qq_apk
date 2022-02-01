@@ -15,8 +15,8 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class SubscribePersonalBottomBlock
   extends SingleViewBlock
 {
-  private BlockMerger.ShareData jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData;
-  private RelativePersonalBottomView jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+  private RelativePersonalBottomView a;
+  private BlockMerger.ShareData b;
   
   public SubscribePersonalBottomBlock(Bundle paramBundle)
   {
@@ -25,38 +25,38 @@ public class SubscribePersonalBottomBlock
   
   protected BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramMultiViewBlock);
-    return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+    this.a = new RelativePersonalBottomView(paramViewGroup.getContext(), paramMultiViewBlock);
+    return this.a;
   }
   
   public void a(Bundle paramBundle) {}
   
   public void a(LoadInfo paramLoadInfo) {}
   
-  public int b()
-  {
-    RelativePersonalBottomView localRelativePersonalBottomView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
-    if (localRelativePersonalBottomView != null) {
-      return localRelativePersonalBottomView.c();
-    }
-    return 0;
-  }
-  
   public void b(String paramString, BlockMerger.ShareData paramShareData)
   {
     super.b(paramString, paramShareData);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData = paramShareData;
-    paramString = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+    this.b = paramShareData;
+    paramString = this.a;
     if (paramString != null) {
       paramString.a(paramShareData);
     }
   }
   
+  public int d()
+  {
+    RelativePersonalBottomView localRelativePersonalBottomView = this.a;
+    if (localRelativePersonalBottomView != null) {
+      return localRelativePersonalBottomView.getCurrentIndex();
+    }
+    return 0;
+  }
+  
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    RelativePersonalBottomView localRelativePersonalBottomView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+    RelativePersonalBottomView localRelativePersonalBottomView = this.a;
     if (localRelativePersonalBottomView != null) {
-      localRelativePersonalBottomView.a(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData);
+      localRelativePersonalBottomView.a(this.b);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }

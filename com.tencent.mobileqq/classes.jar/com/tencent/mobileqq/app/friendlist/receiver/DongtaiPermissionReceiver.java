@@ -26,7 +26,7 @@ public class DongtaiPermissionReceiver
   {
     int i = paramToServiceMsg.extraData.getInt("key_permission_opcode");
     boolean bool3 = paramToServiceMsg.extraData.getBoolean("key_dongtai_permission", false);
-    FriendListHandler localFriendListHandler = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+    FriendListHandler localFriendListHandler = this.b;
     if (FriendListHandler.parseSSOPkg(paramToServiceMsg, paramFromServiceMsg, paramObject) == null) {
       if (QLog.isColorLevel()) {
         QLog.d("FriendListHandler.BaseHandlerReceiver", 2, "handleSetDongtaiPermission: ssoPkg parse failed");
@@ -39,7 +39,7 @@ public class DongtaiPermissionReceiver
       if (i == 1) {}
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setNotAllowedSeeMyDongtai(bool3, false);
+        this.a.setNotAllowedSeeMyDongtai(bool3, false);
       }
       catch (Exception paramFromServiceMsg)
       {
@@ -48,14 +48,14 @@ public class DongtaiPermissionReceiver
       }
       if (i == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setShieldHisDongtai(bool3, false);
+        this.a.setShieldHisDongtai(bool3, false);
         break;
       }
       if (i != 3) {
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setNotAllowedSeeMyDongtai(bool3, false);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setShieldHisDongtai(bool3, false);
+      this.a.setNotAllowedSeeMyDongtai(bool3, false);
+      this.a.setShieldHisDongtai(bool3, false);
       break;
       label125:
       if (QLog.isColorLevel())
@@ -72,13 +72,13 @@ public class DongtaiPermissionReceiver
     if (!bool2) {
       if (i == 1)
       {
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNotAllowedSeeMyDongtai(false);
+        bool1 = this.a.getNotAllowedSeeMyDongtai(false);
       }
       else
       {
         bool1 = bool3;
         if (i == 2) {
-          bool1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShieldHisDongtai(false);
+          bool1 = this.a.getShieldHisDongtai(false);
         }
       }
     }
@@ -138,7 +138,7 @@ public class DongtaiPermissionReceiver
             bool3 = bool1;
             try
             {
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setNotAllowedSeeMyDongtai(bool1, false);
+              this.a.setNotAllowedSeeMyDongtai(bool1, false);
               paramToServiceMsg = localObject2;
             }
             catch (Exception paramFromServiceMsg)
@@ -155,7 +155,7 @@ public class DongtaiPermissionReceiver
               bool1 = false;
             }
             bool3 = bool1;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.setShieldHisDongtai(bool1, false);
+            this.a.setShieldHisDongtai(bool1, false);
             paramToServiceMsg = localObject2;
             continue;
           }
@@ -175,13 +175,13 @@ public class DongtaiPermissionReceiver
               }
               bool1 = true;
               paramToServiceMsg.add(Boolean.valueOf(bool1));
-              paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+              paramFromServiceMsg = this.a;
               if (paramObject.uint32_not_see_qzone.get() != 1) {
                 break label668;
               }
               bool1 = true;
               paramFromServiceMsg.setNotAllowedSeeMyDongtai(bool1, false);
-              paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+              paramFromServiceMsg = this.a;
               if (paramObject.uint32_prevent_dynamic.get() != 1) {
                 break label674;
               }
@@ -230,12 +230,12 @@ public class DongtaiPermissionReceiver
       if (!bool2) {
         if (i == 1)
         {
-          bool3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNotAllowedSeeMyDongtai(false);
+          bool3 = this.a.getNotAllowedSeeMyDongtai(false);
           paramFromServiceMsg = paramToServiceMsg;
         }
         else if (i == 2)
         {
-          bool3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShieldHisDongtai(false);
+          bool3 = this.a.getShieldHisDongtai(false);
           paramFromServiceMsg = paramToServiceMsg;
         }
         else
@@ -245,8 +245,8 @@ public class DongtaiPermissionReceiver
           if (i == 3)
           {
             paramFromServiceMsg = new ArrayList();
-            paramFromServiceMsg.add(Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNotAllowedSeeMyDongtai(false)));
-            paramFromServiceMsg.add(Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getShieldHisDongtai(false)));
+            paramFromServiceMsg.add(Boolean.valueOf(this.a.getNotAllowedSeeMyDongtai(false)));
+            paramFromServiceMsg.add(Boolean.valueOf(this.a.getShieldHisDongtai(false)));
             bool3 = bool1;
           }
         }
@@ -302,7 +302,7 @@ public class DongtaiPermissionReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.receiver.DongtaiPermissionReceiver
  * JD-Core Version:    0.7.0.1
  */

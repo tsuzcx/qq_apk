@@ -19,20 +19,20 @@ class MsgTabStoryNodeConfigManager$1
   {
     if ((!paramErrorMessage.isFail()) && (paramMsgTabCheckActiveResponse != null))
     {
-      if (paramMsgTabCheckActiveResponse.b == 1)
+      if (paramMsgTabCheckActiveResponse.a == 1)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(true);
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.b(2);
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a = 2;
+        this.c.a(true);
+        this.a.b(2);
+        this.c.e = 2;
       }
       if (QLog.isColorLevel())
       {
         paramMsgTabCheckActiveRequest = new StringBuilder();
         paramMsgTabCheckActiveRequest.append("active value is ");
-        paramMsgTabCheckActiveRequest.append(paramMsgTabCheckActiveResponse.b);
+        paramMsgTabCheckActiveRequest.append(paramMsgTabCheckActiveResponse.a);
         QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, paramMsgTabCheckActiveRequest.toString());
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramMsgTabCheckActiveResponse.a);
+      this.b.a(paramMsgTabCheckActiveResponse.b);
       return;
     }
     paramMsgTabCheckActiveRequest = new StringBuilder();
@@ -43,7 +43,7 @@ class MsgTabStoryNodeConfigManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

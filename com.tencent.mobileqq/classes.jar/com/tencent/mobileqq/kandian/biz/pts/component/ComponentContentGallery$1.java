@@ -14,18 +14,18 @@ class ComponentContentGallery$1
   
   public void onClick(View paramView)
   {
-    if (ComponentContentGallery.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGallery) == null) {
+    if (ComponentContentGallery.a(this.e) == null) {
       return;
     }
-    paramView = ComponentContentGallery.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGallery).a().a();
+    paramView = ComponentContentGallery.a(this.e).y().d();
     if (paramView != null) {
-      paramView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGallery.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1, ComponentContentGallery.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGallery), this.b);
+      paramView.a(this.e.getContext(), this.a, this.b, this.c, 1, ComponentContentGallery.b(this.e), this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentGallery.1
  * JD-Core Version:    0.7.0.1
  */

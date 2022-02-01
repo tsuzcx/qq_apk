@@ -2,18 +2,18 @@ package com.google.zxing.qrcode.decoder;
 
 public final class Version
 {
-  private static final Version[] jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion = ;
-  private final int jdField_a_of_type_Int;
-  private final Version.ECBlocks[] jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion$ECBlocks;
+  private static final Version[] a = ;
   private final int b;
+  private final Version.ECBlocks[] c;
+  private final int d;
   
   private Version(int paramInt, int[] paramArrayOfInt, Version.ECBlocks... paramVarArgs)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion$ECBlocks = paramVarArgs;
+    this.b = paramInt;
+    this.c = paramVarArgs;
     paramInt = 0;
     int j = paramVarArgs[0].a();
-    paramArrayOfInt = paramVarArgs[0].a();
+    paramArrayOfInt = paramVarArgs[0].d();
     int k = paramArrayOfInt.length;
     int i = 0;
     while (paramInt < k)
@@ -22,18 +22,18 @@ public final class Version
       i += paramVarArgs.a() * (paramVarArgs.b() + j);
       paramInt += 1;
     }
-    this.b = i;
+    this.d = i;
   }
   
   public static Version a(int paramInt)
   {
     if ((paramInt >= 1) && (paramInt <= 40)) {
-      return jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion[(paramInt - 1)];
+      return a[(paramInt - 1)];
     }
     throw new IllegalArgumentException();
   }
   
-  private static Version[] a()
+  private static Version[] d()
   {
     Object localObject1 = new Version.ECBlocks(7, new Version.ECB[] { new Version.ECB(1, 19) });
     Object localObject2 = new Version.ECBlocks(10, new Version.ECB[] { new Version.ECB(1, 16) });
@@ -239,32 +239,32 @@ public final class Version
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public Version.ECBlocks a(ErrorCorrectionLevel paramErrorCorrectionLevel)
   {
-    return this.jdField_a_of_type_ArrayOfComGoogleZxingQrcodeDecoderVersion$ECBlocks[paramErrorCorrectionLevel.ordinal()];
+    return this.c[paramErrorCorrectionLevel.ordinal()];
   }
   
   public int b()
   {
-    return this.b;
+    return this.d;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_Int * 4 + 17;
+    return this.b * 4 + 17;
   }
   
   public String toString()
   {
-    return String.valueOf(this.jdField_a_of_type_Int);
+    return String.valueOf(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.qrcode.decoder.Version
  * JD-Core Version:    0.7.0.1
  */

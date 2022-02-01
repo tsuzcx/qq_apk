@@ -11,13 +11,17 @@ class AEEditorLoadingView$2
   
   public Unit a(PAGView paramPAGView)
   {
-    AEEditorLoadingView.a(this.a, paramPAGView, AEEditorLoadingView.a());
+    if (AEEditorLoadingView.b(this.a)) {
+      AEEditorLoadingView.a(this.a, paramPAGView, AEEditorLoadingView.b());
+    } else {
+      AEEditorLoadingView.a(this.a, paramPAGView, AEEditorLoadingView.c());
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorLoadingView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -60,11 +60,11 @@ public class TroopMemberLevelView
       }
       setText(paramString);
       paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append(HardCodeUtil.a(2131701182));
+      paramQQAppInterface.append(HardCodeUtil.a(2131899197));
       paramQQAppInterface.append(paramString);
       setContentDescription(paramQQAppInterface.toString());
-      paramQQAppInterface = AIOLongShotHelper.a();
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.a()) && (paramQQAppInterface.b()))
+      paramQQAppInterface = AIOLongShotHelper.f();
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.c()) && (paramQQAppInterface.d()))
       {
         setMosaicEffect(new MosaicEffect(10));
         return;
@@ -80,7 +80,7 @@ public class TroopMemberLevelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelView
  * JD-Core Version:    0.7.0.1
  */

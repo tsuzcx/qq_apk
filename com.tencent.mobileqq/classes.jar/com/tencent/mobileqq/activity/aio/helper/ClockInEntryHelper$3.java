@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.helper;
 class ClockInEntryHelper$3
   implements Runnable
 {
-  ClockInEntryHelper$3(ClockInEntryHelper paramClockInEntryHelper, int paramInt, boolean paramBoolean) {}
+  ClockInEntryHelper$3(ClockInEntryHelper paramClockInEntryHelper, boolean paramBoolean) {}
   
   public void run()
   {
@@ -12,7 +12,7 @@ class ClockInEntryHelper$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ClockInEntryHelper.3
  * JD-Core Version:    0.7.0.1
  */

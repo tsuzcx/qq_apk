@@ -81,7 +81,7 @@ public class TXLivePlayerJSAdapter
   public TXLivePlayerJSAdapter(Context paramContext)
   {
     this.mContext = paramContext;
-    this.trtc = ((IWXLivePlayerProxy)ProxyManager.get(IWXLivePlayerProxy.class));
+    this.trtc = ((IWXLivePlayerProxy)ProxyManager.getNew(IWXLivePlayerProxy.class));
     this.trtc.init(this.mContext, new TXLivePlayerJSAdapter.InnerTXLivePlayListenerImpl(this), new TXLivePlayerJSAdapter.InnerAudioVolumeEvaluationListenerImpl(this));
   }
   
@@ -758,7 +758,7 @@ public class TXLivePlayerJSAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.live.TXLivePlayerJSAdapter
  * JD-Core Version:    0.7.0.1
  */

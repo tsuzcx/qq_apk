@@ -11,7 +11,7 @@ public class MessageNavInfoCallback
 {
   public int a(AppRuntime paramAppRuntime, String paramString, int paramInt)
   {
-    paramAppRuntime = ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+    paramAppRuntime = ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
     int i = paramInt;
     if (paramAppRuntime != null)
     {
@@ -25,7 +25,7 @@ public class MessageNavInfoCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageNavInfoCallback
  * JD-Core Version:    0.7.0.1
  */

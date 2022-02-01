@@ -19,7 +19,7 @@ public class TroopHomeworkSpecialMsg
 {
   public TroopHomeworkSpecialMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697447);
+    this.c = HardCodeUtil.a(2131895220);
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -27,11 +27,11 @@ public class TroopHomeworkSpecialMsg
     if ((paramObject instanceof TroopHomeworkSpecialMsg))
     {
       paramObject = (TroopHomeworkSpecialMsg)paramObject;
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h.b(paramMessageInfo.c);
       return paramObject;
     }
     paramObject = new TroopHomeworkSpecialMsg(BaseApplication.getContext());
-    paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    paramObject.h = new MessageNavInfo(paramMessageInfo.c);
     return paramObject;
   }
   
@@ -42,14 +42,14 @@ public class TroopHomeworkSpecialMsg
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.b = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((!TextUtils.isEmpty(this.c)) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo == null))
+      this.c = paramArrayOfByte.getString("content");
+      this.e = paramArrayOfByte.getInt("time");
+      this.f = paramArrayOfByte.getInt("color");
+      this.g = paramArrayOfByte.getString("messageNavInfo");
+      if ((!TextUtils.isEmpty(this.g)) && (this.h == null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(this.c);
+        this.h = new MessageNavInfo();
+        this.h.a(this.g);
         return;
       }
     }
@@ -59,23 +59,23 @@ public class TroopHomeworkSpecialMsg
     }
   }
   
-  public byte[] a()
+  public byte[] b()
   {
-    return b();
+    return c();
   }
   
-  public byte[] b()
+  public byte[] c()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.b);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
-        this.c = this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a();
+      localJSONObject.put("content", this.c);
+      localJSONObject.put("time", this.e);
+      localJSONObject.put("color", this.f);
+      if (this.h != null) {
+        this.g = this.h.b();
       }
-      localJSONObject.put("messageNavInfo", this.c);
+      localJSONObject.put("messageNavInfo", this.g);
     }
     catch (JSONException localJSONException)
     {
@@ -86,7 +86,7 @@ public class TroopHomeworkSpecialMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.model.TroopHomeworkSpecialMsg
  * JD-Core Version:    0.7.0.1
  */

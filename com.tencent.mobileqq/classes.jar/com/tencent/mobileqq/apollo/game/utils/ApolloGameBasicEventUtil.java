@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
 import com.tencent.common.app.AppInterface;
@@ -16,14 +15,16 @@ import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
 import com.tencent.mobileqq.apollo.model.ApolloDress;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader;
+import com.tencent.mobileqq.apollo.res.api.IApolloResHelper;
 import com.tencent.mobileqq.apollo.store.ApolloFloatActivity;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -40,17 +41,6 @@ import org.json.JSONObject;
 public class ApolloGameBasicEventUtil
 {
   public static long a;
-  public static String[] a;
-  public static String[] b;
-  public static String[] c;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "117.144.242.75", "117.144.245.207" };
-    b = new String[] { "14.17.42.125", "59.37.96.212", "180.163.32.167", "101.226.90.166" };
-    c = new String[] { "58.250.137.13", "163.177.90.55", "140.206.160.112", "140.207.123.182" };
-    jdField_a_of_type_Long = 0L;
-  }
   
   public static int a()
   {
@@ -70,171 +60,6 @@ public class ApolloGameBasicEventUtil
       QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, localStringBuilder.toString());
     }
     return i;
-  }
-  
-  public static String a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, "[getRecommendIp]");
-    }
-    String str = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0).getString("game_rec_ip", "");
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("recom_ip:");
-      ((StringBuilder)localObject).append(str);
-      QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = str;
-    if (TextUtils.isEmpty(str))
-    {
-      str = b();
-      localObject = str;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("random_ip:");
-        ((StringBuilder)localObject).append(str);
-        QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, ((StringBuilder)localObject).toString());
-        localObject = str;
-      }
-    }
-    return localObject;
-  }
-  
-  /* Error */
-  public static String a(String[] paramArrayOfString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnull +178 -> 179
-    //   4: aload_0
-    //   5: arraylength
-    //   6: ifne +6 -> 12
-    //   9: goto +170 -> 179
-    //   12: aload_0
-    //   13: aload_0
-    //   14: arraylength
-    //   15: invokestatic 124	com/tencent/mobileqq/magicface/drawable/PngFrameUtil:a	(I)I
-    //   18: aaload
-    //   19: astore_0
-    //   20: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   23: ifeq +34 -> 57
-    //   26: new 82	java/lang/StringBuilder
-    //   29: dup
-    //   30: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   33: astore_1
-    //   34: aload_1
-    //   35: ldc 126
-    //   37: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: pop
-    //   41: aload_1
-    //   42: aload_0
-    //   43: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: pop
-    //   47: ldc 54
-    //   49: iconst_2
-    //   50: aload_1
-    //   51: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 60	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   57: aload_0
-    //   58: areturn
-    //   59: goto +79 -> 138
-    //   62: astore_0
-    //   63: new 82	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   70: astore_1
-    //   71: aload_1
-    //   72: ldc 128
-    //   74: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: pop
-    //   78: aload_1
-    //   79: aload_0
-    //   80: invokevirtual 131	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   83: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: pop
-    //   87: ldc 54
-    //   89: iconst_1
-    //   90: aload_1
-    //   91: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   94: invokestatic 134	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   97: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   100: ifeq +35 -> 135
-    //   103: new 82	java/lang/StringBuilder
-    //   106: dup
-    //   107: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   110: astore_0
-    //   111: aload_0
-    //   112: ldc 126
-    //   114: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: pop
-    //   118: aload_0
-    //   119: ldc 21
-    //   121: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: pop
-    //   125: ldc 54
-    //   127: iconst_2
-    //   128: aload_0
-    //   129: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 60	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   135: ldc 21
-    //   137: areturn
-    //   138: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   141: ifeq +35 -> 176
-    //   144: new 82	java/lang/StringBuilder
-    //   147: dup
-    //   148: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   151: astore_0
-    //   152: aload_0
-    //   153: ldc 126
-    //   155: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: pop
-    //   159: aload_0
-    //   160: ldc 21
-    //   162: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: pop
-    //   166: ldc 54
-    //   168: iconst_2
-    //   169: aload_0
-    //   170: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 60	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   176: ldc 21
-    //   178: areturn
-    //   179: invokestatic 52	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   182: ifeq +35 -> 217
-    //   185: new 82	java/lang/StringBuilder
-    //   188: dup
-    //   189: invokespecial 83	java/lang/StringBuilder:<init>	()V
-    //   192: astore_0
-    //   193: aload_0
-    //   194: ldc 126
-    //   196: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: pop
-    //   200: aload_0
-    //   201: ldc 21
-    //   203: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: pop
-    //   207: ldc 54
-    //   209: iconst_2
-    //   210: aload_0
-    //   211: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 60	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   217: ldc 21
-    //   219: areturn
-    //   220: astore_0
-    //   221: goto -162 -> 59
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	224	0	paramArrayOfString	String[]
-    //   33	58	1	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   4	9	62	java/lang/Exception
-    //   12	20	62	java/lang/Exception
-    //   4	9	220	finally
-    //   12	20	220	finally
-    //   63	97	220	finally
   }
   
   public static JSONObject a(int paramInt, int[] paramArrayOfInt)
@@ -328,9 +153,10 @@ public class ApolloGameBasicEventUtil
   
   public static void a(int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt2, String paramString3, ApolloGameBasicEventUtil.NotifyGameDressReady paramNotifyGameDressReady)
   {
-    ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-    Object localObject2 = (ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
-    Object localObject1 = ((ApolloDaoManagerServiceImpl)localObject2).getApolloBaseInfo(paramString1);
+    Object localObject2 = (ApolloManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+    IApolloResManager localIApolloResManager = ApolloResManagerFacade.a.a(Scene.WEB_STORE_OR_GAME);
+    ApolloDaoManagerServiceImpl localApolloDaoManagerServiceImpl = (ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
+    Object localObject1 = localApolloDaoManagerServiceImpl.getApolloBaseInfo(paramString1);
     if (localObject1 != null)
     {
       paramInt2 = ((ApolloBaseInfo)localObject1).apolloStatus;
@@ -355,7 +181,7 @@ public class ApolloGameBasicEventUtil
           localStringBuilder = localObject1[i];
           j = localStringBuilder.mRoleGender;
           int[] arrayOfInt = localStringBuilder.getDressIds();
-          if ((ApolloActionHelperImpl.isRscValid(paramString1, localStringBuilder.roleId, arrayOfInt, paramQQAppInterface, new ApolloGameBasicEventUtil.3(paramNotifyGameDressReady, paramInt1, paramQQAppInterface, paramString2, paramString3, localStringBuilder, arrayOfInt))) && (localStringBuilder.roleId != 0))
+          if ((localIApolloResManager.a(paramString1, localStringBuilder.roleId, arrayOfInt, paramQQAppInterface, new ApolloGameBasicEventUtil.2(paramNotifyGameDressReady, paramInt1, paramQQAppInterface, paramString2, paramString3, localStringBuilder, arrayOfInt))) && (localStringBuilder.roleId != 0))
           {
             if (QLog.isColorLevel()) {
               QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
@@ -377,9 +203,9 @@ public class ApolloGameBasicEventUtil
           } else {
             paramInt2 = 1;
           }
-          paramNotifyGameDressReady.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt2, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(paramInt2), 1);
+          paramNotifyGameDressReady.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt2, ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(paramInt2), 1);
         }
-        localApolloManagerServiceImpl.checkUserDress(paramQQAppInterface, paramString1, "apllo_game");
+        localIApolloResManager.a(paramQQAppInterface, paramString1, "apllo_game");
       }
       else
       {
@@ -391,15 +217,15 @@ public class ApolloGameBasicEventUtil
           ((StringBuilder)localObject1).append(" dress is null,try to pull player's dress info.");
           QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, ((StringBuilder)localObject1).toString());
         }
-        localApolloManagerServiceImpl.checkUserDress(paramQQAppInterface, paramString1, "apllo_game");
+        localIApolloResManager.a(paramQQAppInterface, paramString1, "apllo_game");
         if (paramNotifyGameDressReady != null) {
-          paramNotifyGameDressReady.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, 1, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(1), 1);
+          paramNotifyGameDressReady.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, 1, ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(1), 1);
         }
       }
       paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((paramQQAppInterface != null) && (!paramQQAppInterface.b(paramString1)))
+      if ((paramQQAppInterface != null) && (!paramQQAppInterface.n(paramString1)))
       {
-        paramQQAppInterface = ((ApolloDaoManagerServiceImpl)localObject2).getApolloBaseInfo(paramString1);
+        paramQQAppInterface = localApolloDaoManagerServiceImpl.getApolloBaseInfo(paramString1);
         long l;
         if (paramQQAppInterface != null) {
           l = paramQQAppInterface.apolloUpdateTime;
@@ -407,7 +233,7 @@ public class ApolloGameBasicEventUtil
           l = 0L;
         }
         if (NetConnInfoCenter.getServerTime() - l > 300L) {
-          localApolloManagerServiceImpl.addToBulkPullMap(paramString1, 2);
+          ((ApolloManagerServiceImpl)localObject2).addToBulkPullMap(paramString1, 2);
         }
       }
     }
@@ -421,9 +247,9 @@ public class ApolloGameBasicEventUtil
         QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, ((StringBuilder)localObject2).toString());
       }
       if (paramNotifyGameDressReady != null) {
-        paramNotifyGameDressReady.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt2, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(paramInt2), 1);
+        paramNotifyGameDressReady.a(paramInt1, paramQQAppInterface, paramString1, paramString2, paramString3, paramInt2, ((IApolloResHelper)QRoute.api(IApolloResHelper.class)).readRoleDefaultDressIds(paramInt2), 1);
       }
-      localApolloManagerServiceImpl.checkUserDress(paramQQAppInterface, paramString1, "apllo_game");
+      localIApolloResManager.a(paramQQAppInterface, paramString1, "apllo_game");
     }
   }
   
@@ -509,29 +335,29 @@ public class ApolloGameBasicEventUtil
       {
         Object localObject = new JSONObject(paramString);
         if (!((JSONObject)localObject).has("enter")) {
-          break label406;
+          break label407;
         }
         i = ((JSONObject)localObject).getInt("enter");
         if (!((JSONObject)localObject).has("result")) {
-          break label411;
+          break label412;
         }
         j = ((JSONObject)localObject).getInt("result");
         boolean bool = ((JSONObject)localObject).has("actionName");
         String str3 = "";
         if (!bool) {
-          break label416;
+          break label417;
         }
         paramAppInterface = ((JSONObject)localObject).getString("actionName");
         if (!((JSONObject)localObject).has("r2")) {
-          break label422;
+          break label424;
         }
         paramString = ((JSONObject)localObject).getString("r2");
         if (!((JSONObject)localObject).has("r3")) {
-          break label428;
+          break label431;
         }
         str1 = ((JSONObject)localObject).getString("r3");
         if (!((JSONObject)localObject).has("r4")) {
-          break label435;
+          break label439;
         }
         str2 = ((JSONObject)localObject).getString("r4");
         if (((JSONObject)localObject).has("r5")) {
@@ -567,22 +393,22 @@ public class ApolloGameBasicEventUtil
         QLog.e("[cmshow]ApolloGameBasicEventUtil", 1, paramString.toString());
       }
       return;
-      label406:
+      label407:
       int i = 0;
       continue;
-      label411:
+      label412:
       int j = 0;
       continue;
-      label416:
+      label417:
       paramAppInterface = "";
       continue;
-      label422:
+      label424:
       paramString = "";
       continue;
-      label428:
+      label431:
       String str1 = "";
       continue;
-      label435:
+      label439:
       String str2 = "";
     }
   }
@@ -656,107 +482,6 @@ public class ApolloGameBasicEventUtil
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, ApolloGameBasicEventUtil.NotifyDressReady paramNotifyDressReady)
-  {
-    ApolloManagerServiceImpl localApolloManagerServiceImpl = (ApolloManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-    Object localObject2 = (ApolloDaoManagerServiceImpl)paramQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all");
-    Object localObject1 = ((ApolloDaoManagerServiceImpl)localObject2).getApolloBaseInfo(paramString1);
-    if (localObject1 != null)
-    {
-      paramInt = ((ApolloBaseInfo)localObject1).apolloStatus;
-      StringBuilder localStringBuilder;
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("uin: ");
-        localStringBuilder.append(((ApolloBaseInfo)localObject1).uin);
-        localStringBuilder.append(", funcSwitch:");
-        localStringBuilder.append(paramInt);
-        QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, localStringBuilder.toString());
-      }
-      int i = 0;
-      localObject1 = ((ApolloBaseInfo)localObject1).getApolloDress(false);
-      if ((localObject1 != null) && (localObject1.length > 0))
-      {
-        int j = localObject1.length;
-        paramInt = 0;
-        while (paramInt < j)
-        {
-          localStringBuilder = localObject1[paramInt];
-          i = localStringBuilder.mRoleGender;
-          int[] arrayOfInt = localStringBuilder.getDressIds();
-          if ((ApolloActionHelperImpl.isRscValid(paramString1, localStringBuilder.roleId, arrayOfInt, paramQQAppInterface, new ApolloGameBasicEventUtil.2(paramNotifyDressReady, paramQQAppInterface, paramString2, paramString3, localStringBuilder, arrayOfInt))) && (localStringBuilder.roleId != 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, "valid role and dress RSC.");
-            }
-            if (paramNotifyDressReady != null) {
-              paramNotifyDressReady.a(paramQQAppInterface, paramString1, paramString2, paramString3, localStringBuilder.roleId, arrayOfInt, 3);
-            }
-            return;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, "try to get history dress ....");
-          }
-          paramInt += 1;
-        }
-        if (paramNotifyDressReady != null)
-        {
-          if (i == 2) {
-            paramInt = 2;
-          } else {
-            paramInt = 1;
-          }
-          paramNotifyDressReady.a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(paramInt), 1);
-        }
-        localApolloManagerServiceImpl.checkUserDress(paramQQAppInterface, paramString1, "apllo_game");
-      }
-      else
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("uin: ");
-          ((StringBuilder)localObject1).append(paramString1);
-          ((StringBuilder)localObject1).append(" dress is null,try to pull player's dress info.");
-          QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, ((StringBuilder)localObject1).toString());
-        }
-        localApolloManagerServiceImpl.checkUserDress(paramQQAppInterface, paramString1, "apllo_game");
-        if (paramNotifyDressReady != null) {
-          paramNotifyDressReady.a(paramQQAppInterface, paramString1, paramString2, paramString3, 1, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(1), 1);
-        }
-      }
-      paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      if ((paramQQAppInterface != null) && (!paramQQAppInterface.b(paramString1)))
-      {
-        paramQQAppInterface = ((ApolloDaoManagerServiceImpl)localObject2).getApolloBaseInfo(paramString1);
-        long l;
-        if (paramQQAppInterface != null) {
-          l = paramQQAppInterface.apolloUpdateTime;
-        } else {
-          l = 0L;
-        }
-        if (NetConnInfoCenter.getServerTime() - l > 300L) {
-          localApolloManagerServiceImpl.addToBulkPullMap(paramString1, 2);
-        }
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("warning: apolloBaseInfo or apolloBaseInfo.apolloDress is NULL, fail to get role info. apolloBaseInfo:");
-        ((StringBuilder)localObject2).append(localObject1);
-        QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, ((StringBuilder)localObject2).toString());
-      }
-      if (paramNotifyDressReady != null) {
-        paramNotifyDressReady.a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt, ((IApolloResDownloader)QRoute.api(IApolloResDownloader.class)).readRoleDefaultDressIds(paramInt), 1);
-      }
-      localApolloManagerServiceImpl.checkUserDress(paramQQAppInterface, paramString1, "apllo_game");
-    }
-  }
-  
   public static void a(String paramString)
   {
     if (QLog.isColorLevel()) {
@@ -781,34 +506,6 @@ public class ApolloGameBasicEventUtil
   public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     return new Cryptor().encrypt(paramArrayOfByte2, paramArrayOfByte1);
-  }
-  
-  public static String b()
-  {
-    String str = ((TelephonyManager)BaseApplicationImpl.getContext().getSystemService("phone")).getNetworkOperatorName();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[selectProperSvrAddr], opratorName:");
-      localStringBuilder.append(str);
-      QLog.d("[cmshow]ApolloGameBasicEventUtil", 2, localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty(str))
-    {
-      if ((!HardCodeUtil.a(2131700598).equals(str)) && (!str.contains(HardCodeUtil.a(2131700583))))
-      {
-        if ((!HardCodeUtil.a(2131700596).equals(str)) && (!str.contains(HardCodeUtil.a(2131700557))))
-        {
-          if ((!HardCodeUtil.a(2131700569).equals(str)) && (!str.contains(HardCodeUtil.a(2131700563)))) {
-            return a(b);
-          }
-          return a(jdField_a_of_type_ArrayOfJavaLangString);
-        }
-        return a(c);
-      }
-      return a(b);
-    }
-    return a(b);
   }
   
   public static void b(Context paramContext, String paramString)
@@ -875,10 +572,10 @@ public class ApolloGameBasicEventUtil
     label549:
     label555:
     label561:
-    label567:
-    label574:
-    label581:
-    label588:
+    label568:
+    label576:
+    label584:
+    label592:
     for (;;)
     {
       try
@@ -914,19 +611,19 @@ public class ApolloGameBasicEventUtil
         }
         paramString = ((JSONObject)localObject).getString("puin");
         if (!((JSONObject)localObject).has("strp1")) {
-          break label567;
+          break label568;
         }
         str1 = ((JSONObject)localObject).getString("strp1");
         if (!((JSONObject)localObject).has("strp2")) {
-          break label574;
+          break label576;
         }
         str2 = ((JSONObject)localObject).getString("strp2");
         if (!((JSONObject)localObject).has("strp3")) {
-          break label581;
+          break label584;
         }
         localObject = ((JSONObject)localObject).getString("strp3");
         if (!QLog.isColorLevel()) {
-          break label588;
+          break label592;
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[reportData2BackStage],tValue:");
@@ -990,7 +687,7 @@ public class ApolloGameBasicEventUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.utils.ApolloGameBasicEventUtil
  * JD-Core Version:    0.7.0.1
  */

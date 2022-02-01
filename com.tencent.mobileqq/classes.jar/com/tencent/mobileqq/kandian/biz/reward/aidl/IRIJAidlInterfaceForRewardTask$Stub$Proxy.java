@@ -15,25 +15,6 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     this.a = paramIBinder;
   }
   
-  public int a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
-      this.a.transact(8, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public RIJRewardTask a()
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -104,25 +85,6 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     }
   }
   
-  public void a(String paramString)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
-      localParcel1.writeString(paramString);
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public void a(String paramString, int paramInt, IReportTaskProgressCallback paramIReportTaskProgressCallback)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -149,30 +111,6 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
         localParcel1.recycle();
       }
       paramString = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
-      IBinder localIBinder = this.a;
-      boolean bool = false;
-      localIBinder.transact(11, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
     }
   }
   
@@ -204,25 +142,6 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
   public IBinder asBinder()
   {
     return this.a;
-  }
-  
-  public int b()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
-      this.a.transact(9, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
   }
   
   public RIJRewardTask b()
@@ -276,7 +195,88 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     }
   }
   
-  public boolean b()
+  public void b(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
+      localParcel1.writeString(paramString);
+      this.a.transact(6, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public int c()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
+      this.a.transact(8, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public int d()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
+      this.a.transact(9, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean e()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask");
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(11, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean f()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -300,7 +300,7 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     }
   }
   
-  public int c()
+  public int g()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -319,7 +319,7 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     }
   }
   
-  public int d()
+  public int h()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -338,7 +338,7 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     }
   }
   
-  public int e()
+  public int i()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -357,7 +357,7 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
     }
   }
   
-  public int f()
+  public int j()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -378,7 +378,7 @@ class IRIJAidlInterfaceForRewardTask$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.reward.aidl.IRIJAidlInterfaceForRewardTask.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

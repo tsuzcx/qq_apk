@@ -18,78 +18,78 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class TranslucentTitleBarHelper
 {
-  float jdField_a_of_type_Float = 1.0F;
-  int jdField_a_of_type_Int = 0;
-  ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  boolean jdField_a_of_type_Boolean = false;
-  TextView b;
+  RelativeLayout a;
+  ImmersiveTitleBar2 b;
   TextView c;
+  TextView d;
+  TextView e;
+  ImageView f;
+  int g = 0;
+  float h = 1.0F;
+  ColorStateList i;
+  boolean j = false;
   
   public TranslucentTitleBarHelper(BaseActivity paramBaseActivity, int paramInt)
   {
-    int i = ImmersiveUtils.isSupporImmersive();
+    int k = ImmersiveUtils.isSupporImmersive();
     boolean bool = true;
-    if (i != 1) {
+    if (k != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    if (this.jdField_a_of_type_Boolean)
+    this.j = bool;
+    if (this.j)
     {
       paramBaseActivity.mActNeedImmersive = false;
       paramBaseActivity.mNeedStatusTrans = false;
       paramBaseActivity.getWindow().addFlags(67108864);
     }
-    this.jdField_a_of_type_Int = DisplayUtil.a(paramBaseActivity, paramInt);
+    this.g = DisplayUtil.a(paramBaseActivity, paramInt);
   }
   
   private void a(float paramFloat)
   {
-    int i = (int)(255.0F * paramFloat);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getBackground();
+    int k = (int)(255.0F * paramFloat);
+    Object localObject = this.a.getBackground();
     if (localObject != null)
     {
-      ((Drawable)localObject).setAlpha(i);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.invalidateDrawable((Drawable)localObject);
+      ((Drawable)localObject).setAlpha(k);
+      this.a.invalidateDrawable((Drawable)localObject);
     }
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setAlpha(paramFloat);
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(paramFloat);
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null) {
-      this.jdField_a_of_type_AndroidContentResColorStateList = this.b.getTextColors();
+    this.b.setAlpha(paramFloat);
+    this.c.setAlpha(paramFloat);
+    if (this.i == null) {
+      this.i = this.d.getTextColors();
     }
     if (paramFloat > 0.5D)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840347);
-      this.b.setBackgroundResource(2130851066);
-      this.b.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-      this.c.setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
+      this.f.setImageResource(2130841087);
+      this.d.setBackgroundResource(2130853297);
+      this.d.setTextColor(this.i);
+      this.e.setTextColor(this.i);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840347);
-    this.b.setBackgroundResource(2130851066);
-    localObject = this.b;
-    ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColorStateList(2131167053));
-    localObject = this.c;
-    ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColorStateList(2131167053));
+    this.f.setImageResource(2130841087);
+    this.d.setBackgroundResource(2130853297);
+    localObject = this.d;
+    ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColorStateList(2131167990));
+    localObject = this.e;
+    ((TextView)localObject).setTextColor(((TextView)localObject).getContext().getResources().getColorStateList(2131167990));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131378837));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369249));
-    this.b = ((TextView)paramView.findViewById(2131369202));
-    this.c = ((TextView)paramView.findViewById(2131369233));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369216));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)paramView.findViewById(2131378881));
-    if (this.jdField_a_of_type_Boolean)
+    this.a = ((RelativeLayout)paramView.findViewById(2131447534));
+    this.c = ((TextView)paramView.findViewById(2131436227));
+    this.d = ((TextView)paramView.findViewById(2131436180));
+    this.e = ((TextView)paramView.findViewById(2131436211));
+    this.f = ((ImageView)paramView.findViewById(2131436194));
+    this.b = ((ImmersiveTitleBar2)paramView.findViewById(2131447582));
+    if (this.j)
     {
-      this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(8);
+    this.b.setVisibility(8);
   }
   
   public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
@@ -97,12 +97,12 @@ public class TranslucentTitleBarHelper
     if ((paramInt1 == 0) && (paramInt2 > 0))
     {
       paramInt1 = -paramAbsListView.getChildAt(0).getTop();
-      if ((paramInt1 > this.jdField_a_of_type_Int) && (!a()))
+      if ((paramInt1 > this.g) && (!a()))
       {
         a(true, true);
         return;
       }
-      if ((paramInt1 < this.jdField_a_of_type_Int) && (a())) {
+      if ((paramInt1 < this.g) && (a())) {
         a(false, true);
       }
     }
@@ -114,33 +114,33 @@ public class TranslucentTitleBarHelper
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    float f;
+    float f1;
     if (paramBoolean1) {
-      f = 1.0F;
+      f1 = 1.0F;
     } else {
-      f = 0.0F;
+      f1 = 0.0F;
     }
-    if (this.jdField_a_of_type_Float == f) {
+    if (this.h == f1) {
       return;
     }
     if (paramBoolean2)
     {
       ValueAnimator localValueAnimator = new ValueAnimator();
-      localValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, f });
+      localValueAnimator.setFloatValues(new float[] { this.h, f1 });
       localValueAnimator.addUpdateListener(new TranslucentTitleBarHelper.1(this));
       localValueAnimator.setDuration(500L);
       localValueAnimator.start();
     }
     else
     {
-      a(f);
+      a(f1);
     }
-    this.jdField_a_of_type_Float = f;
+    this.h = f1;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Float > 0.5D;
+    return this.h > 0.5D;
   }
 }
 

@@ -18,7 +18,7 @@ class ApolloGuestsStateActivity$3$1
   {
     if (this.a.a.mDialog != null)
     {
-      TextView localTextView = (TextView)this.a.a.mDialog.findViewById(2131362761);
+      TextView localTextView = (TextView)this.a.a.mDialog.findViewById(2131428447);
       localTextView.setVisibility(0);
       Object localObject1 = new AlphaAnimation(1.0F, 0.0F);
       Object localObject2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -50.0F);
@@ -39,7 +39,7 @@ class ApolloGuestsStateActivity$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

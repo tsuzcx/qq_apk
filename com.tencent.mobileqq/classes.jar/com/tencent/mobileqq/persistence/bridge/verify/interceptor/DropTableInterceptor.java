@@ -16,13 +16,13 @@ public class DropTableInterceptor
     if ((paramString.startsWith("RedPacketData_")) && (paramInt < 214)) {
       return true;
     }
-    return ArrayUtils.a(a, paramString);
+    return ArrayUtils.contains(a, paramString);
   }
   
   public Class a(Interceptor.Chain<Class> paramChain)
   {
     FindTableNameInterceptorChain localFindTableNameInterceptorChain = (FindTableNameInterceptorChain)paramChain;
-    String str = a(paramChain);
+    String str = b(paramChain);
     if (a(str, localFindTableNameInterceptorChain.oldVersion))
     {
       localFindTableNameInterceptorChain.db.execSQL(TableBuilder.dropSQLStatement(str));
@@ -33,7 +33,7 @@ public class DropTableInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.DropTableInterceptor
  * JD-Core Version:    0.7.0.1
  */

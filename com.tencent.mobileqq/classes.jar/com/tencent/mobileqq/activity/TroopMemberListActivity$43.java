@@ -39,7 +39,7 @@ class TroopMemberListActivity$43
       localStringBuilder.append(localGroupFeeMember.uint64_uin.get());
       localStringBuilder.append("");
       localATroopMember.a = localStringBuilder.toString();
-      localATroopMember.b = localGroupFeeMember.string_nick_name.get();
+      localATroopMember.c = localGroupFeeMember.string_nick_name.get();
       if (this.a.mAddFrdHelper != null) {
         this.a.mAddFrdHelper.a(localATroopMember);
       }
@@ -51,7 +51,7 @@ class TroopMemberListActivity$43
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.43
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class BigImageProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.isAccountShown)) {
       AccountShowUtils.a(paramContainer, paramIReadInJoyModel);
     }
@@ -38,7 +38,7 @@ public class BigImageProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BigImageProteusItem
  * JD-Core Version:    0.7.0.1
  */

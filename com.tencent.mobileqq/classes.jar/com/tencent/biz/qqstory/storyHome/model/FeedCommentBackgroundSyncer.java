@@ -13,7 +13,7 @@ public class FeedCommentBackgroundSyncer
     {
       if (this.a != null)
       {
-        this.a.a();
+        this.a.b();
         this.a = null;
       }
       return;

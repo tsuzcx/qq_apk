@@ -23,16 +23,16 @@ class FeedVideoPreloader$OnFileDownloadListener
   
   protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, DownloadTask paramDownloadTask)
   {
-    FeedVideoPreloader.CurrentVid localCurrentVid = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$CurrentVid;
+    FeedVideoPreloader.CurrentVid localCurrentVid = this.a.g;
     if (localCurrentVid == null) {
       return;
     }
-    if (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(paramString, localCurrentVid.b)) {
       return;
     }
     if (paramErrorMessage.isFail())
     {
-      if (TextUtils.isEmpty(localCurrentVid.b))
+      if (TextUtils.isEmpty(localCurrentVid.d))
       {
         paramErrorMessage = paramErrorMessage.errorMsg;
       }
@@ -44,23 +44,23 @@ class FeedVideoPreloader$OnFileDownloadListener
         localStringBuilder.append(paramErrorMessage.errorMsg);
         paramErrorMessage = localStringBuilder.toString();
       }
-      localCurrentVid.b = paramErrorMessage;
-      localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
+      localCurrentVid.d = paramErrorMessage;
+      localCurrentVid.e = (paramInt + 1000);
     }
-    if (paramDownloadTask.a.containsKey("handleCallback"))
+    if (paramDownloadTask.l.containsKey("handleCallback"))
     {
-      if (localCurrentVid.jdField_a_of_type_Boolean) {
+      if (localCurrentVid.c) {
         return;
       }
-      localCurrentVid.jdField_a_of_type_Boolean = true;
+      localCurrentVid.c = true;
       if (this.a.a(paramString))
       {
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener != null) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d);
+        if (this.a.c != null) {
+          this.a.c.a(paramString, paramDownloadTask.f);
         }
       }
-      else if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a());
+      else if (this.a.c != null) {
+        this.a.c.a(paramString, paramDownloadTask.f, localCurrentVid.a());
       }
     }
   }
@@ -68,8 +68,8 @@ class FeedVideoPreloader$OnFileDownloadListener
   public void b(String paramString, int paramInt, DownloadTask paramDownloadTask)
   {
     super.b(paramString, paramInt, paramDownloadTask);
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener.b(paramString, paramDownloadTask.d);
+    if ((this.a.c != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.c.b(paramString, paramDownloadTask.f);
     }
   }
   

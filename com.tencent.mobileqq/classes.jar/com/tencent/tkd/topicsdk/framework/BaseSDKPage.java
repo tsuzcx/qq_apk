@@ -20,7 +20,7 @@ public abstract class BaseSDKPage
   public void d()
   {
     super.d();
-    Object localObject = a();
+    Object localObject = b();
     if (localObject != null)
     {
       localObject = ((Activity)localObject).getWindow();
@@ -32,7 +32,7 @@ public abstract class BaseSDKPage
           localObject = ((View)localObject).getWindowToken();
           if (localObject != null)
           {
-            Activity localActivity = a();
+            Activity localActivity = b();
             if (localActivity != null)
             {
               InputMethodUtils localInputMethodUtils = InputMethodUtils.a;
@@ -45,14 +45,14 @@ public abstract class BaseSDKPage
     }
   }
   
-  public boolean g()
+  public boolean j()
   {
-    return TopicSDK.a.a().a().a().a();
+    return TopicSDK.a.a().b().j().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.BaseSDKPage
  * JD-Core Version:    0.7.0.1
  */

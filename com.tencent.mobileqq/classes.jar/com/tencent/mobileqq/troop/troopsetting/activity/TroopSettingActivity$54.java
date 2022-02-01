@@ -13,7 +13,7 @@ class TroopSettingActivity$54
   {
     if (paramBoolean)
     {
-      if (!TextUtils.equals(paramString1, this.a.a.troopUin)) {
+      if (!TextUtils.equals(paramString1, this.a.i.troopUin)) {
         return;
       }
       TroopSettingActivity.a(this.a, paramString2, paramLong.longValue());
@@ -22,7 +22,7 @@ class TroopSettingActivity$54
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.54
  * JD-Core Version:    0.7.0.1
  */

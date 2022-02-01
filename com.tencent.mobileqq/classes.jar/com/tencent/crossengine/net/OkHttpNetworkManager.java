@@ -95,17 +95,17 @@ class OkHttpNetworkManager
           if ((localObject3 instanceof NetworkManager.MultiPartString))
           {
             localObject3 = (NetworkManager.MultiPartString)localObject3;
-            ((MultipartBody.Builder)localObject1).addFormDataPart(((NetworkManager.MultiPartString)localObject3).jdField_a_of_type_JavaLangString, null, RequestBody.create(a(((NetworkManager.MultiPartString)localObject3).b), ((NetworkManager.MultiPartString)localObject3).c));
+            ((MultipartBody.Builder)localObject1).addFormDataPart(((NetworkManager.MultiPartString)localObject3).a, null, RequestBody.create(a(((NetworkManager.MultiPartString)localObject3).b), ((NetworkManager.MultiPartString)localObject3).c));
           }
           else if ((localObject3 instanceof NetworkManager.MultiPartData))
           {
             localObject3 = (NetworkManager.MultiPartData)localObject3;
-            ((MultipartBody.Builder)localObject1).addFormDataPart(((NetworkManager.MultiPartData)localObject3).jdField_a_of_type_JavaLangString, null, RequestBody.create(a(((NetworkManager.MultiPartData)localObject3).b), ((NetworkManager.MultiPartData)localObject3).jdField_a_of_type_ArrayOfByte));
+            ((MultipartBody.Builder)localObject1).addFormDataPart(((NetworkManager.MultiPartData)localObject3).a, null, RequestBody.create(a(((NetworkManager.MultiPartData)localObject3).b), ((NetworkManager.MultiPartData)localObject3).c));
           }
           else if ((localObject3 instanceof NetworkManager.MultiPartFile))
           {
             localObject3 = (NetworkManager.MultiPartFile)localObject3;
-            ((MultipartBody.Builder)localObject1).addFormDataPart(((NetworkManager.MultiPartFile)localObject3).jdField_a_of_type_JavaLangString, ((NetworkManager.MultiPartFile)localObject3).d, RequestBody.create(a(((NetworkManager.MultiPartFile)localObject3).b), new File(((NetworkManager.MultiPartFile)localObject3).c)));
+            ((MultipartBody.Builder)localObject1).addFormDataPart(((NetworkManager.MultiPartFile)localObject3).a, ((NetworkManager.MultiPartFile)localObject3).d, RequestBody.create(a(((NetworkManager.MultiPartFile)localObject3).b), new File(((NetworkManager.MultiPartFile)localObject3).c)));
           }
         }
         ((MultipartBody.Builder)localObject1).setType(MultipartBody.FORM);
@@ -147,7 +147,7 @@ class OkHttpNetworkManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager
  * JD-Core Version:    0.7.0.1
  */

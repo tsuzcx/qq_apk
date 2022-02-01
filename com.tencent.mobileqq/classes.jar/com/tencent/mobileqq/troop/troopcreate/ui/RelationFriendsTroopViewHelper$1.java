@@ -17,12 +17,12 @@ class RelationFriendsTroopViewHelper$1
     RelationFriendsTroopViewHelper.a(this.this$0, "");
     RelationFriendsTroopViewHelper.a(this.this$0).clear();
     RelationFriendsTroopViewHelper.b(this.this$0).clear();
-    RelationFriendsTroopViewHelper.a(this.this$0).a();
+    RelationFriendsTroopViewHelper.c(this.this$0).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.RelationFriendsTroopViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

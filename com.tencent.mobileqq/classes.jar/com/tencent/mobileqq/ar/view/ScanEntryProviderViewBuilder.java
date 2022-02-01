@@ -1,46 +1,31 @@
 package com.tencent.mobileqq.ar.view;
 
 import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.education.request.api.IStudyRuntimeService;
 import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
 public class ScanEntryProviderViewBuilder
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<ScanEntryProviderViewBuilder.ScanEntryProviderViewItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public boolean a;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131374641, 2131372051, 2131362887 };
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131713432), HardCodeUtil.a(2131718411), "AR" };
-  public boolean b;
-  private final int[] b;
-  public boolean c;
-  private final int[] c;
-  private final int[] d = { 2130844868, 2130844869, 2130844870, 2130844871, 2130844872, 2130844873, 2130844874, 2130844875 };
+  public boolean a = true;
+  public boolean b = true;
+  public boolean c = true;
+  public boolean d = true;
+  private int e;
+  private final int[] f = { 2131442818, 2131439514, 2131428685, 2131445410 };
+  private final String[] g = { HardCodeUtil.a(2131910983), HardCodeUtil.a(2131915909), "AR", HardCodeUtil.a(2131888846) };
+  private final int[] h = { 2130846310, 2130846311, 2130846312, 2130846313, 2130846314, 2130846315, 2130846316, 2130846317 };
+  private final int[] i = { 2130846285, 2130846286, 2130846287, 2130846288, 2130846289, 2130846290, 2130846291, 2130846292 };
+  private final int[] j = { 2130846302, 2130846303, 2130846304, 2130846305, 2130846306, 2130846307, 2130846308, 2130846309 };
+  private final int[] k = { 2130852686, 2130852687, 2130852688, 2130852689, 2130852690, 2130852691, 2130852692, 2130852693 };
+  private ArrayList<ScanEntryProviderViewBuilder.ScanEntryProviderViewItem> l = new ArrayList();
+  private int m = 0;
   
   public ScanEntryProviderViewBuilder(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130844876, 2130844877, 2130844878, 2130844879, 2130844880, 2130844881, 2130844882, 2130844883 };
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844851, 2130844852, 2130844853, 2130844854, 2130844855, 2130844856, 2130844857, 2130844858 };
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_ArrayOfInt.length;
-  }
-  
-  public int a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return 0;
-    }
-    if (paramInt == 2) {
-      return 1;
-    }
-    return 2;
+    this.e = paramInt;
   }
   
   public ScanEntryProviderView a(int paramInt, Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
@@ -49,8 +34,12 @@ public class ScanEntryProviderViewBuilder
     {
       if (paramInt != 2)
       {
-        if (paramInt != 3) {
-          return null;
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return null;
+          }
+          return new ProblemScanEntryView(paramContext, paramScanEntryContainerViewListener);
         }
         return new ARScanEntryView(paramContext, paramScanEntryContainerViewListener);
       }
@@ -59,62 +48,92 @@ public class ScanEntryProviderViewBuilder
     return new QRScanEntryView(paramContext, paramScanEntryContainerViewListener);
   }
   
-  public ScanEntryProviderViewBuilder.ScanEntryProviderViewItem a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < b())) {
-      return (ScanEntryProviderViewBuilder.ScanEntryProviderViewItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.e == 1)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(1, HardCodeUtil.a(2131713433)));
+      if (this.a) {
+        this.l.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(1, HardCodeUtil.a(2131910984)));
       }
-      if (this.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(2, "OCR"));
+      if (this.c) {
+        this.l.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(2, "OCR"));
       }
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(3, "AR"));
+      if (this.b) {
+        this.l.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(3, "AR"));
+      }
+      if ((this.d) && (this.m == 1) && (((IStudyRuntimeService)BaseApplicationImpl.sApplication.getRuntime().getRuntimeService(IStudyRuntimeService.class, "all")).getScanAnswerSearchSwitch())) {
+        this.l.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(4, HardCodeUtil.a(2131888846)));
       }
     }
   }
   
-  public int[] a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfInt;
+    this.m = paramInt;
   }
   
-  public int[] a(int paramInt)
+  public ScanEntryProviderViewBuilder.ScanEntryProviderViewItem b(int paramInt)
   {
-    if (paramInt == 0) {
-      return this.jdField_b_of_type_ArrayOfInt;
-    }
-    if (paramInt == 1) {
-      return this.d;
-    }
-    if (paramInt == 2) {
-      return this.jdField_c_of_type_ArrayOfInt;
+    if ((paramInt >= 0) && (paramInt < e())) {
+      return (ScanEntryProviderViewBuilder.ScanEntryProviderViewItem)this.l.get(paramInt);
     }
     return null;
   }
   
-  public String[] a()
+  public int[] b()
   {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return this.f;
   }
   
-  public int b()
+  public int[] c(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    if (paramInt == 0) {
+      return this.h;
+    }
+    if (paramInt == 1) {
+      return this.j;
+    }
+    if (paramInt == 2) {
+      return this.i;
+    }
+    if (paramInt == 3) {
+      return this.k;
+    }
+    return null;
+  }
+  
+  public String[] c()
+  {
+    return this.g;
+  }
+  
+  public int d()
+  {
+    return this.h.length;
+  }
+  
+  public int d(int paramInt)
+  {
+    if (paramInt == 1) {
+      return 0;
+    }
+    if (paramInt == 2) {
+      return 1;
+    }
+    if (paramInt == 3) {
+      return 2;
+    }
+    return 3;
+  }
+  
+  public int e()
+  {
+    return this.l.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderViewBuilder
  * JD-Core Version:    0.7.0.1
  */

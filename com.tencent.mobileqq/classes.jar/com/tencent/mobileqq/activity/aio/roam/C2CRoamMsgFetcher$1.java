@@ -10,12 +10,12 @@ class C2CRoamMsgFetcher$1
   public void onGetRoamType(String paramString, int paramInt)
   {
     super.onGetRoamType(paramString, paramInt);
-    C2CRoamMsgFetcher.a(this.a).b();
+    C2CRoamMsgFetcher.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.1
  * JD-Core Version:    0.7.0.1
  */

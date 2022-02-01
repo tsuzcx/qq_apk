@@ -138,7 +138,7 @@ public class TroopGiftBagInfo
   public boolean hasGrab()
   {
     TroopGiftBagPlayer localTroopGiftBagPlayer = this.myGrabResult;
-    return (localTroopGiftBagPlayer != null) && (localTroopGiftBagPlayer.a > 0);
+    return (localTroopGiftBagPlayer != null) && (localTroopGiftBagPlayer.c > 0);
   }
   
   protected void prewrite()
@@ -160,7 +160,7 @@ public class TroopGiftBagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopGiftBagInfo
  * JD-Core Version:    0.7.0.1
  */

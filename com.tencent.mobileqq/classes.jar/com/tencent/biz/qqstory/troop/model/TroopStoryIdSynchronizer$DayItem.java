@@ -2,9 +2,9 @@ package com.tencent.biz.qqstory.troop.model;
 
 public class TroopStoryIdSynchronizer$DayItem
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  int a;
   int b;
+  String c;
 }
 
 

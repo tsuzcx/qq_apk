@@ -111,6 +111,15 @@ public class TPPlayerMgr
     TPPlayerConfig.setDebugEnable(paramBoolean);
   }
   
+  public static void setGuid(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      TPPlayerConfig.setGuid(paramString);
+      TPGlobalEventNofication.postGlobalEvent(100004, 0, 0, paramString);
+    }
+  }
+  
   public static void setHost(String paramString)
   {
     TPPlayerConfig.parseHostConfig(paramString);
@@ -149,6 +158,11 @@ public class TPPlayerMgr
     TPPlayerConfig.setP2PEnable(paramBoolean);
   }
   
+  public static void setProxyMaxUseMemoryMB(int paramInt)
+  {
+    TPPlayerConfig.setProxyMaxUseMemoryMB(paramInt);
+  }
+  
   public static void setProxyServiceType(int paramInt)
   {
     TPPlayerConfig.setProxyServiceType(paramInt);
@@ -174,7 +188,7 @@ public class TPPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

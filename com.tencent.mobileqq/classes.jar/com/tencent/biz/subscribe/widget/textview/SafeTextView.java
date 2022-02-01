@@ -23,7 +23,26 @@ public class SafeTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static String a(String paramString)
+  private static boolean a(char paramChar)
+  {
+    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    int j = paramString.length();
+    int i = 0;
+    while (i < j)
+    {
+      if (!a(paramString.charAt(i))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  public static String b(String paramString)
   {
     Object localObject1 = paramString;
     if (paramString != null)
@@ -63,25 +82,6 @@ public class SafeTextView
     return localObject1;
   }
   
-  private static boolean a(char paramChar)
-  {
-    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    int j = paramString.length();
-    int i = 0;
-    while (i < j)
-    {
-      if (!a(paramString.charAt(i))) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     try
@@ -97,7 +97,7 @@ public class SafeTextView
     }
     try
     {
-      setText(a(getText().toString()));
+      setText(b(getText().toString()));
       super.onMeasure(paramInt1, paramInt2);
       return;
     }
@@ -124,7 +124,7 @@ public class SafeTextView
     }
     try
     {
-      super.setText(a(getText().toString()), paramBufferType);
+      super.setText(b(getText().toString()), paramBufferType);
       return;
     }
     catch (Throwable paramCharSequence)
@@ -136,7 +136,7 @@ public class SafeTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.SafeTextView
  * JD-Core Version:    0.7.0.1
  */

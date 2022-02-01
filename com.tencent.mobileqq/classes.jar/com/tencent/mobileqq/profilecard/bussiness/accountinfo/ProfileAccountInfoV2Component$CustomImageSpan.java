@@ -43,7 +43,7 @@ class ProfileAccountInfoV2Component$CustomImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoV2Component.CustomImageSpan
  * JD-Core Version:    0.7.0.1
  */

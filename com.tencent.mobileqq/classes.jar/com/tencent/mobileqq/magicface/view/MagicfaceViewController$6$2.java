@@ -9,16 +9,16 @@ class MagicfaceViewController$6$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.a.d.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController$6.a.d.setText(this.jdField_a_of_type_JavaLangString);
+      this.b.c.k.setVisibility(0);
+      this.b.c.k.setText(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.6.2
  * JD-Core Version:    0.7.0.1
  */

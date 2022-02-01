@@ -3,60 +3,60 @@ package com.tencent.qqprotect.singleupdate;
 class QPUpdateManager$UserData
 {
   public int a;
-  public long a;
-  public String a;
-  public boolean a;
   public int b;
-  public String b;
-  public int c;
   public String c;
-  public int d;
   public String d;
-  public int e;
+  public String e;
+  public String f;
+  public int g;
+  public boolean h;
+  public int i;
+  public long j;
+  public int k;
   
   public QPUpdateManager$UserData(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3, boolean paramBoolean, int paramInt4, long paramLong, int paramInt5)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.e = paramInt5;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.f = paramString4;
+    this.g = paramInt3;
+    this.h = paramBoolean;
+    this.i = paramInt4;
+    this.j = paramLong;
+    this.k = paramInt5;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("filePath=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",fileName=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",fileId=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(",fileUrl=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(",fileHash=");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(",fileVersion=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(",zipFlag=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(",startTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(",tryTimes=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
-    localStringBuilder.append(",downloadFlag=");
     localStringBuilder.append(this.e);
+    localStringBuilder.append(",fileHash=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",fileVersion=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",zipFlag=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",startTime=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",tryTimes=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",downloadFlag=");
+    localStringBuilder.append(this.k);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPUpdateManager.UserData
  * JD-Core Version:    0.7.0.1
  */

@@ -76,7 +76,7 @@ public final class AskAnonymouslyApiPlugin
             paramString3 = this.mRuntime;
             paramJsBridgeListener = paramString2;
             if (paramString3 != null) {
-              paramJsBridgeListener = paramString3.a();
+              paramJsBridgeListener = paramString3.d();
             }
             paramString1.inviteAskAnonymously(paramJsBridgeListener, false);
             return true;
@@ -87,7 +87,7 @@ public final class AskAnonymouslyApiPlugin
             paramString2 = this.mRuntime;
             paramJsBridgeListener = localPluginRuntime;
             if (paramString2 != null) {
-              paramJsBridgeListener = paramString2.a();
+              paramJsBridgeListener = paramString2.d();
             }
             paramString1.shareInviteToQZone(paramJsBridgeListener);
             return true;
@@ -120,7 +120,7 @@ public final class AskAnonymouslyApiPlugin
             paramString1 = AskAnonymouslyUtil.Companion;
             paramVarArgs = this.mRuntime;
             if (paramVarArgs != null) {
-              paramJsBridgeListener = paramVarArgs.a();
+              paramJsBridgeListener = paramVarArgs.d();
             }
             paramString1.shareDetailToQZone(paramJsBridgeListener, paramString3, paramString2);
           }
@@ -130,7 +130,7 @@ public final class AskAnonymouslyApiPlugin
             localPluginRuntime = this.mRuntime;
             paramJsBridgeListener = paramString1;
             if (localPluginRuntime != null) {
-              paramJsBridgeListener = localPluginRuntime.a();
+              paramJsBridgeListener = localPluginRuntime.d();
             }
             paramVarArgs.syncDetailToQZone(paramJsBridgeListener, paramString3, paramString2);
           }
@@ -156,7 +156,7 @@ public final class AskAnonymouslyApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.jsp.AskAnonymouslyApiPlugin
  * JD-Core Version:    0.7.0.1
  */

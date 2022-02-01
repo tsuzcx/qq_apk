@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.weishi_new.combo.WSComboExpHelper;
 import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSView;
 import com.tencent.widget.pull2refresh.BaseAdapter;
 import com.tencent.widget.pull2refresh.LoadingMoreHelper;
@@ -18,45 +19,36 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   extends WSBaseFragment<V, P>
   implements IWSView<M>
 {
-  protected Context a;
-  protected View a;
-  protected XRecyclerView a;
-  private View b;
-  protected boolean c = false;
+  protected Context f;
+  protected View g;
+  protected XRecyclerView h;
+  protected boolean i = false;
+  private View j;
   
   private void b(View paramView)
   {
-    if (this.jdField_b_of_type_Boolean) {
-      paramView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165327));
+    if (this.e) {
+      paramView.setBackgroundColor(this.f.getResources().getColor(2131165564));
     }
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368216);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView = ((XRecyclerView)paramView.findViewById(2131381258));
-    paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView;
+    this.j = paramView.findViewById(2131435084);
+    this.h = ((XRecyclerView)paramView.findViewById(2131450306));
+    paramView = this.h;
     if (paramView != null)
     {
       paramView = paramView.getLoadMoreLayoutHelper();
       if (paramView != null) {
         paramView.setPreLoaderCount(12);
       }
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(new WSBaseHomeFragment.1(this));
-      paramView = this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.getRecyclerView();
-      if (a() != null) {
-        paramView.setAdapter(a());
+      this.h.setRefreshCallback(new WSBaseHomeFragment.1(this));
+      paramView = this.h.getRecyclerView();
+      if (p() != null) {
+        paramView.setAdapter(p());
       }
-      if (a() != null) {
-        paramView.setLayoutManager(a());
+      if (q() != null) {
+        paramView.setLayoutManager(q());
       }
     }
   }
-  
-  protected int a()
-  {
-    return -1;
-  }
-  
-  protected abstract RecyclerView.LayoutManager a();
-  
-  protected abstract BaseAdapter a();
   
   public void a(int paramInt, String paramString) {}
   
@@ -68,54 +60,71 @@ public abstract class WSBaseHomeFragment<V extends IWSBaseView, P extends IWSPre
   
   protected abstract void a(XRecyclerView paramXRecyclerView, boolean paramBoolean);
   
-  protected abstract void b();
-  
-  public void c()
+  protected boolean aN_()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    if ((localView != null) && (!localView.isShown())) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    if (WSComboExpHelper.a.a()) {
+      return false;
     }
+    return super.aN_();
   }
   
-  public void d() {}
-  
-  public abstract void e();
-  
-  public void f()
+  protected int n()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    if ((localView != null) && (localView.isShown())) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
+    return -1;
   }
+  
+  protected abstract void o();
   
   @Nullable
   public View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = getBaseActivity();
+    this.f = getBaseActivity();
     if (getArguments() != null) {
       a(getArguments());
     }
-    if (a() != -1) {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(a(), paramViewGroup, false);
+    if (n() != -1) {
+      this.g = paramLayoutInflater.inflate(n(), paramViewGroup, false);
     } else {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560015, paramViewGroup, false);
+      this.g = paramLayoutInflater.inflate(2131626058, paramViewGroup, false);
     }
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.g;
   }
   
   public void onViewCreated(View paramView, @Nullable Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    b(this.jdField_a_of_type_AndroidViewView);
-    a(this.jdField_a_of_type_AndroidViewView);
-    e();
+    b(this.g);
+    a(this.g);
+    t();
+  }
+  
+  protected abstract BaseAdapter p();
+  
+  protected abstract RecyclerView.LayoutManager q();
+  
+  public void r()
+  {
+    View localView = this.j;
+    if ((localView != null) && (!localView.isShown())) {
+      this.j.setVisibility(0);
+    }
+  }
+  
+  public void s() {}
+  
+  public abstract void t();
+  
+  public void u()
+  {
+    View localView = this.j;
+    if ((localView != null) && (localView.isShown())) {
+      this.j.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment
  * JD-Core Version:    0.7.0.1
  */

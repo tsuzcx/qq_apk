@@ -23,13 +23,13 @@ class Login$3
       paramContext.putExtra("param_is_qr_code_login", true);
       this.a.setResult(-1, paramContext);
       this.a.finish();
-      Login.access$100(this.a, 2, "0X800BA19");
+      Login.access$200(this.a, 2, "0X800BA19");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.3
  * JD-Core Version:    0.7.0.1
  */

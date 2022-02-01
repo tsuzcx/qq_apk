@@ -35,55 +35,60 @@ import tencent.gdt.qq_ad_get.QQAdGet.UserInfo;
 public abstract class VasGdtService
 {
   @Nullable
-  private VasGdtService.GdtCallback jdField_a_of_type_ComTencentMobileqqVasAdvBaseServiceVasGdtService$GdtCallback;
-  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new VasGdtService.listener.2(this));
+  private VasGdtService.GdtCallback a;
+  private final Lazy b = LazyKt.lazy((Function0)new VasGdtService.listener.2(this));
   
-  private final GdtAdLoader.Listener a()
+  private final void a(GdtAdLoader.Session paramSession, WeakReference<GdtAdLoader.Listener> paramWeakReference, WeakReference<Context> paramWeakReference1)
   {
-    return (GdtAdLoader.Listener)this.jdField_a_of_type_KotlinLazy.getValue();
+    new GdtAdLoader(paramSession, paramWeakReference).a(paramWeakReference1);
   }
   
-  private final GdtAdLoader.Session a()
+  private final GdtAdLoader.Listener d()
+  {
+    return (GdtAdLoader.Listener)this.b.getValue();
+  }
+  
+  private final GdtAdLoader.Session e()
   {
     GdtAdLoader.Session localSession = new GdtAdLoader.Session();
-    localSession.a = a();
+    localSession.a = f();
     return localSession;
   }
   
-  private final qq_ad_get.QQAdGet a()
+  private final qq_ad_get.QQAdGet f()
   {
-    Object localObject1 = a();
+    Object localObject1 = c();
     qq_ad_get.QQAdGet localQQAdGet = new qq_ad_get.QQAdGet();
     Object localObject2 = (qq_ad_get.QQAdGet.ContextInfo)localQQAdGet.context_info.get();
     int i;
     if (localObject2 != null)
     {
-      localObject3 = ((VasGdtService.GdtParams)localObject1).a();
+      localObject3 = ((VasGdtService.GdtParams)localObject1).e();
       long l;
       if (localObject3 != null)
       {
         l = ((Number)localObject3).longValue();
         ((qq_ad_get.QQAdGet.ContextInfo)localObject2).public_id.set(l);
       }
-      localObject3 = ((VasGdtService.GdtParams)localObject1).b();
+      localObject3 = ((VasGdtService.GdtParams)localObject1).f();
       if (localObject3 != null)
       {
         l = ((Number)localObject3).longValue();
         ((qq_ad_get.QQAdGet.ContextInfo)localObject2).article_id.set(l);
       }
-      localObject3 = ((VasGdtService.GdtParams)localObject1).a();
+      localObject3 = ((VasGdtService.GdtParams)localObject1).g();
       if (localObject3 != null)
       {
         i = ((Number)localObject3).intValue();
         ((qq_ad_get.QQAdGet.ContextInfo)localObject2).tribe_tag.set(i);
       }
-      localObject3 = ((VasGdtService.GdtParams)localObject1).a();
+      localObject3 = ((VasGdtService.GdtParams)localObject1).g();
       if (localObject3 != null)
       {
         i = ((Number)localObject3).intValue();
         ((qq_ad_get.QQAdGet.ContextInfo)localObject2).tribe_id_tag.set(i);
       }
-      localObject3 = ((VasGdtService.GdtParams)localObject1).b();
+      localObject3 = ((VasGdtService.GdtParams)localObject1).h();
       if (localObject3 != null)
       {
         i = ((Number)localObject3).intValue();
@@ -94,25 +99,25 @@ public abstract class VasGdtService
     if (localObject2 != null) {
       ((qq_ad_get.QQAdGet.UserInfo)localObject2).qq.set(((VasGdtService.GdtParams)localObject1).a());
     }
-    localObject2 = ((VasGdtService.GdtParams)localObject1).a();
+    localObject2 = ((VasGdtService.GdtParams)localObject1).j();
     if (localObject2 != null) {
       localQQAdGet.gdt_cookie.set((String)localObject2);
     }
     localObject2 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt();
     Object localObject3 = ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).share_info;
     Object localObject4 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo();
-    Object localObject5 = ((VasGdtService.GdtParams)localObject1).c();
+    Object localObject5 = ((VasGdtService.GdtParams)localObject1).i();
     if (localObject5 != null)
     {
       i = ((Number)localObject5).intValue();
       ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject4).share_rate.set(i);
     }
-    if ((((VasGdtService.GdtParams)localObject1).a() != null) && (((VasGdtService.GdtParams)localObject1).b() != null) && (((VasGdtService.GdtParams)localObject1).c() != null)) {
-      ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject4).share_check.set(GdtAdUtil.a(((VasGdtService.GdtParams)localObject1).a().longValue(), ((VasGdtService.GdtParams)localObject1).b().longValue(), ((VasGdtService.GdtParams)localObject1).c().intValue()));
+    if ((((VasGdtService.GdtParams)localObject1).e() != null) && (((VasGdtService.GdtParams)localObject1).f() != null) && (((VasGdtService.GdtParams)localObject1).i() != null)) {
+      ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject4).share_check.set(GdtAdUtil.a(((VasGdtService.GdtParams)localObject1).e().longValue(), ((VasGdtService.GdtParams)localObject1).f().longValue(), ((VasGdtService.GdtParams)localObject1).i().intValue()));
     }
     ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject3).set((MessageMicro)localObject4);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).deep_link_version.set(((VasGdtService.GdtParams)localObject1).b());
-    localObject4 = (Iterable)((VasGdtService.GdtParams)localObject1).a();
+    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).deep_link_version.set(((VasGdtService.GdtParams)localObject1).d());
+    localObject4 = (Iterable)((VasGdtService.GdtParams)localObject1).b();
     localObject3 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject4, 10));
     localObject4 = ((Iterable)localObject4).iterator();
     while (((Iterator)localObject4).hasNext())
@@ -120,7 +125,7 @@ public abstract class VasGdtService
       localObject5 = (String)((Iterator)localObject4).next();
       qq_ad_get.QQAdGet.PositionInfo localPositionInfo = new qq_ad_get.QQAdGet.PositionInfo();
       localPositionInfo.pos_id.set((String)localObject5);
-      localPositionInfo.ad_count.set(((VasGdtService.GdtParams)localObject1).a());
+      localPositionInfo.ad_count.set(((VasGdtService.GdtParams)localObject1).c());
       localPositionInfo.pos_ext.set((MessageMicro)localObject2);
       ((Collection)localObject3).add(localPositionInfo);
     }
@@ -129,33 +134,28 @@ public abstract class VasGdtService
     return localQQAdGet;
   }
   
-  private final void a(GdtAdLoader.Session paramSession, WeakReference<GdtAdLoader.Listener> paramWeakReference, WeakReference<Context> paramWeakReference1)
-  {
-    new GdtAdLoader(paramSession, paramWeakReference).a(paramWeakReference1);
-  }
-  
   @Nullable
   protected final VasGdtService.GdtCallback a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseServiceVasGdtService$GdtCallback;
-  }
-  
-  @NotNull
-  protected abstract VasGdtService.GdtParams a();
-  
-  public final void a()
-  {
-    a(a(), new WeakReference(a()), new WeakReference(VasAdvSupport.a.a().a()));
+    return this.a;
   }
   
   protected final void a(@Nullable VasGdtService.GdtCallback paramGdtCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvBaseServiceVasGdtService$GdtCallback = paramGdtCallback;
+    this.a = paramGdtCallback;
   }
+  
+  public final void b()
+  {
+    a(e(), new WeakReference(d()), new WeakReference(VasAdvSupport.a.a().b()));
+  }
+  
+  @NotNull
+  protected abstract VasGdtService.GdtParams c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.base.service.VasGdtService
  * JD-Core Version:    0.7.0.1
  */

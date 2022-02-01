@@ -6,6 +6,10 @@ import android.media.AudioManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.telephony.TelephonyManager;
+import android.view.View;
+import com.tencent.avbiz.AVBizModuleFactory;
+import com.tencent.avbiz.IModule;
+import com.tencent.avbiz.IModule.FocusChangeListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoVolumeController;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoVolumeController.EventListener;
@@ -17,12 +21,14 @@ import java.util.Set;
 import java.util.Timer;
 
 public class VideoVolumeController
-  implements IVideoVolumeController
+  implements IModule.FocusChangeListener, IVideoVolumeController
 {
   private static final String TAG = "VideoVolumeController";
   private AudioManager audioManager;
   private boolean dynamicPauseReceive = false;
+  private boolean hadChangeVolumeAfterLossFocus = false;
   private Handler handler = new Handler(Looper.getMainLooper());
+  private boolean isBizFocusing = true;
   private boolean isFocusAudio = false;
   private ArrayList<IVideoVolumeController.EventListener> mEventListeners = new ArrayList();
   private boolean mInKandianResume = true;
@@ -85,6 +91,9 @@ public class VideoVolumeController
       paramString = (TelephonyManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("phone");
       this.phoneStateListener = new VideoVolumeController.MyPhoneStateListener(this);
       paramString.listen(this.phoneStateListener, 32);
+      paramString = AVBizModuleFactory.getModuleByName("看点");
+      paramString.setListener(this);
+      paramString.requestAVFocus();
     }
   }
   
@@ -145,8 +154,11 @@ public class VideoVolumeController
       localStringBuilder.append(paramString);
       QLog.d("VideoVolumeController", 2, localStringBuilder.toString());
     }
-    if (this.referenceCount == 0) {
+    if (this.referenceCount == 0)
+    {
       releaseAudioManager(paramString);
+      AVBizModuleFactory.getModuleByName("看点").abandonAVFocus();
+      Thread.dumpStack();
     }
   }
   
@@ -251,10 +263,68 @@ public class VideoVolumeController
     }
   }
   
+  public void inKandianModule(View paramView)
+  {
+    if (paramView != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("inKandianModule: view=");
+        localStringBuilder.append(paramView);
+        QLog.d("VideoVolumeController", 2, localStringBuilder.toString());
+      }
+      inKandianModule(Integer.toHexString(System.identityHashCode(paramView)));
+    }
+  }
+  
+  public boolean isBizFocusing()
+  {
+    return this.isBizFocusing;
+  }
+  
+  public boolean isHadChangeVolumeAfterLossFocus()
+  {
+    return this.hadChangeVolumeAfterLossFocus;
+  }
+  
+  public void onFocusGain()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoVolumeController", 2, "onFocusGain: ");
+    }
+    this.isBizFocusing = true;
+    this.hadChangeVolumeAfterLossFocus = false;
+    Iterator localIterator = this.mEventListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((IVideoVolumeController.EventListener)localIterator.next()).onFocusGain();
+    }
+  }
+  
+  public void onFocusLoss()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoVolumeController", 2, "onFocusLoss: ");
+    }
+    this.isBizFocusing = false;
+    this.hadChangeVolumeAfterLossFocus = false;
+    Iterator localIterator = this.mEventListeners.iterator();
+    while (localIterator.hasNext()) {
+      ((IVideoVolumeController.EventListener)localIterator.next()).onFocusLoss();
+    }
+  }
+  
   public void outKandianModule(Context paramContext)
   {
     if (paramContext != null) {
       outKandianModule(Integer.toHexString(System.identityHashCode(paramContext)));
+    }
+  }
+  
+  public void outKandianModule(View paramView)
+  {
+    if (paramView != null) {
+      outKandianModule(Integer.toHexString(System.identityHashCode(paramView)));
     }
   }
   
@@ -301,7 +371,7 @@ public class VideoVolumeController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoVolumeController
  * JD-Core Version:    0.7.0.1
  */

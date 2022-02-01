@@ -14,13 +14,13 @@ class PublicAccountFragment$ListAdapter$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364234)
+    if (paramView.getId() == 2131430246)
     {
       String str1 = (String)paramView.getTag(-1);
       String str2 = (String)paramView.getTag(-2);
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
       {
-        CrmUtils.a(PublicAccountFragment.a(this.a.a), PublicAccountFragment.b(this.a.a), str2, str1, "IvrEnterpriseDetailEngineFalse");
+        CrmUtils.a(PublicAccountFragment.e(this.a.g), PublicAccountFragment.f(this.a.g), str2, str1, "IvrEnterpriseDetailEngineFalse");
       }
       else if (QLog.isColorLevel())
       {
@@ -37,7 +37,7 @@ class PublicAccountFragment$ListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.ListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,135 +13,123 @@ import android.widget.HorizontalScrollView;
 public class ElasticHorScrView
   extends HorizontalScrollView
 {
-  protected final double a;
-  protected float a;
-  protected final int a;
-  protected Rect a;
   protected View a;
-  protected ViewGroup a;
-  protected boolean a;
-  protected int b;
-  protected boolean b;
+  protected ViewGroup b;
+  protected Rect c = new Rect();
+  protected float d;
+  protected boolean e = false;
+  protected final int f = 300;
+  protected final double g = 2.5D;
+  protected int h = 0;
+  protected boolean i = true;
   
   public ElasticHorScrView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 300;
-    this.jdField_a_of_type_Double = 2.5D;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
   }
   
   public ElasticHorScrView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 300;
-    this.jdField_a_of_type_Double = 2.5D;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
   }
   
   private void a()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidGraphicsRect.left, 0.0F, 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(this.a.getLeft(), this.c.left, 0.0F, 0.0F);
     localTranslateAnimation.setDuration(300L);
-    this.jdField_a_of_type_AndroidViewView.setAnimation(localTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    this.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    this.a.setAnimation(localTranslateAnimation);
+    this.a.layout(this.c.left, this.c.top, this.c.right, this.c.bottom);
+    this.c.setEmpty();
   }
   
   private void a(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    int j = paramMotionEvent.getAction();
+    if (j != 0)
     {
-      if (i != 1)
+      if (j != 1)
       {
-        if (i != 2) {
+        if (j != 2) {
           return;
         }
-        if (this.jdField_b_of_type_Boolean)
+        if (this.i)
         {
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
-          this.jdField_b_of_type_Boolean = false;
+          this.d = paramMotionEvent.getX();
+          this.i = false;
         }
-        float f1 = this.jdField_a_of_type_Float;
+        float f1 = this.d;
         float f2 = paramMotionEvent.getX();
-        double d = f1 - f2;
-        Double.isNaN(d);
-        i = (int)(d / 2.5D);
-        this.jdField_a_of_type_Float = f2;
-        if (b())
+        double d1 = f1 - f2;
+        Double.isNaN(d1);
+        j = (int)(d1 / 2.5D);
+        this.d = f2;
+        if (c())
         {
-          if (this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) {
-            this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidViewView.getLeft(), this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight(), this.jdField_a_of_type_AndroidViewView.getBottom());
+          if (this.c.isEmpty()) {
+            this.c.set(this.a.getLeft(), this.a.getTop(), this.a.getRight(), this.a.getBottom());
           }
-          int j = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-          int k = getWidth();
-          int m = getScrollX();
+          int k = this.a.getMeasuredWidth();
+          int m = getWidth();
+          int n = getScrollX();
           paramMotionEvent = new StringBuilder();
           paramMotionEvent.append("inner.getLeft()");
-          paramMotionEvent.append(this.jdField_a_of_type_AndroidViewView.getLeft());
+          paramMotionEvent.append(this.a.getLeft());
           paramMotionEvent.append("distanceX");
-          paramMotionEvent.append(i);
+          paramMotionEvent.append(j);
           paramMotionEvent.append("inner.getRight()");
-          paramMotionEvent.append(this.jdField_a_of_type_AndroidViewView.getRight());
+          paramMotionEvent.append(this.a.getRight());
           Log.v("test", paramMotionEvent.toString());
-          if (((m == 0) && (i < 0)) || ((j - k == m) && (i > 0)))
+          if (((n == 0) && (j < 0)) || ((k - m == n) && (j > 0)))
           {
-            paramMotionEvent = this.jdField_a_of_type_AndroidViewView;
-            paramMotionEvent.layout(paramMotionEvent.getLeft() - i, this.jdField_a_of_type_AndroidViewView.getTop(), this.jdField_a_of_type_AndroidViewView.getRight() - i, this.jdField_a_of_type_AndroidViewView.getBottom());
+            paramMotionEvent = this.a;
+            paramMotionEvent.layout(paramMotionEvent.getLeft() - j, this.a.getTop(), this.a.getRight() - j, this.a.getBottom());
           }
         }
         else
         {
-          scrollBy(i, 0);
+          scrollBy(j, 0);
         }
       }
       else
       {
-        if (a()) {
+        if (b()) {
           a();
         }
-        this.jdField_b_of_type_Boolean = true;
+        this.i = true;
       }
     }
     else {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.d = paramMotionEvent.getX();
     }
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect.isEmpty() ^ true;
   }
   
   private boolean b()
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
-    int j = getWidth();
-    int k = getScrollX();
-    return (k == 0) || (i - j == k);
+    return this.c.isEmpty() ^ true;
+  }
+  
+  private boolean c()
+  {
+    int j = this.a.getMeasuredWidth();
+    int k = getWidth();
+    int m = getScrollX();
+    return (m == 0) || (j - k == m);
   }
   
   protected void onFinishInflate()
   {
     if ((getChildCount() > 0) && ((getChildAt(0) instanceof ViewGroup))) {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)getChildAt(0));
+      this.b = ((ViewGroup)getChildAt(0));
     }
-    if (this.jdField_a_of_type_AndroidViewViewGroup.getChildCount() > 0) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(0);
+    if (this.b.getChildCount() > 0) {
+      this.a = this.b.getChildAt(0);
     }
     super.onFinishInflate();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return false;
     }
     a(paramMotionEvent);
@@ -150,12 +138,12 @@ public class ElasticHorScrView
   
   public void setMove(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.ElasticHorScrView
  * JD-Core Version:    0.7.0.1
  */

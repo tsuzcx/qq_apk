@@ -9,55 +9,55 @@ import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 
 class OnLinePushMessageProcessor$HandleShMsgTypeTroopSytemMessage
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  private MsgInfo b;
   private int c;
+  private int d;
+  private int e;
+  private long f;
+  private long g;
   
   public OnLinePushMessageProcessor$HandleShMsgTypeTroopSytemMessage(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgInfo paramMsgInfo, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.b = paramMsgInfo;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramLong1;
+    this.g = paramLong2;
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public HandleShMsgTypeTroopSytemMessage a()
-  {
-    ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(3);
-    if (this.jdField_a_of_type_Int != 45)
-    {
-      ((QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a).getMsgHandler().a().a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, null);
-      this.jdField_b_of_type_Long = 9998L;
-      this.c = 32769;
-      this.jdField_b_of_type_Int = SystemMsg.getTroopSystemMsgType(this.jdField_a_of_type_Int);
-    }
-    GroupSystemMsgController.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, (QQAppInterface)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a);
-    return this;
+    return this.d;
   }
   
   public int b()
   {
-    return this.c;
+    return this.e;
+  }
+  
+  public long c()
+  {
+    return this.g;
+  }
+  
+  public HandleShMsgTypeTroopSytemMessage d()
+  {
+    ((QQAppInterface)this.a.q).getMsgHandler().B().a(3);
+    if (this.c != 45)
+    {
+      ((QQAppInterface)this.a.q).getMsgHandler().B().a(this.c, this.b.vMsg, this.b.lFromUin, this.b.uMsgTime, null);
+      this.g = 9998L;
+      this.e = 32769;
+      this.d = SystemMsg.getTroopSystemMsgType(this.c);
+    }
+    GroupSystemMsgController.a().a(this.f, this.b.uMsgTime, (QQAppInterface)this.a.q);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.OnLinePushMessageProcessor.HandleShMsgTypeTroopSytemMessage
  * JD-Core Version:    0.7.0.1
  */

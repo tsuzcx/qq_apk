@@ -18,18 +18,18 @@ import mqq.os.MqqHandler;
 public class PLUploadManager
   implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  PLUploadManager.UploadListener jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadListener;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new PLTransProcessorHandler(this, Looper.getMainLooper());
-  Vector<PLUploadManager.UploadItem> jdField_a_of_type_JavaUtilVector = new Vector();
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  QQAppInterface a;
+  PLUploadManager.UploadListener b;
+  MqqHandler c;
+  Vector<PLUploadManager.UploadItem> d = new Vector();
+  private TransProcessorHandler e = new PLTransProcessorHandler(this, Looper.getMainLooper());
   
   public PLUploadManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.addFilter(new Class[] { NearbyPeoplePhotoUploadProcessor.class });
-    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).addHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(Looper.getMainLooper());
+    this.a = paramQQAppInterface;
+    this.e.addFilter(new Class[] { NearbyPeoplePhotoUploadProcessor.class });
+    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).addHandle(this.e);
+    this.c = new MqqHandler(Looper.getMainLooper());
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -38,7 +38,7 @@ public class PLUploadManager
       localStringBuilder.append(" app:");
       localStringBuilder.append(paramQQAppInterface);
       localStringBuilder.append(" handler:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+      localStringBuilder.append(this.e);
       QLog.i("PLUploadManager", 2, localStringBuilder.toString());
     }
   }
@@ -48,7 +48,7 @@ public class PLUploadManager
     long l = System.currentTimeMillis() / 1000L << 4 | paramInt3;
     Object localObject1 = new TransferRequest();
     ((TransferRequest)localObject1).mIsUp = true;
-    ((TransferRequest)localObject1).mLocalPath = paramCompressInfo.c;
+    ((TransferRequest)localObject1).mLocalPath = paramCompressInfo.h;
     ((TransferRequest)localObject1).mUniseq = l;
     int i = 56;
     ((TransferRequest)localObject1).mFileType = 56;
@@ -64,20 +64,20 @@ public class PLUploadManager
     ((ByteBuffer)localObject2).a(0);
     ((ByteBuffer)localObject2).a(paramInt1);
     ((TransferRequest)localObject1).mExtentionInfo = ((ByteBuffer)localObject2).a();
-    ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject1);
+    ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject1);
     PersonalityLabelPhoto localPersonalityLabelPhoto = new PersonalityLabelPhoto();
-    localPersonalityLabelPhoto.localThumbPath = paramCompressInfo.e;
+    localPersonalityLabelPhoto.localThumbPath = paramCompressInfo.l;
     localPersonalityLabelPhoto.uniseq = l;
     localPersonalityLabelPhoto.local = true;
     localObject2 = new PLUploadManager.UploadItem(this);
-    ((PLUploadManager.UploadItem)localObject2).jdField_a_of_type_Long = paramLong;
-    ((PLUploadManager.UploadItem)localObject2).jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest = ((TransferRequest)localObject1);
-    ((PLUploadManager.UploadItem)localObject2).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto = localPersonalityLabelPhoto;
+    ((PLUploadManager.UploadItem)localObject2).b = paramLong;
+    ((PLUploadManager.UploadItem)localObject2).d = ((TransferRequest)localObject1);
+    ((PLUploadManager.UploadItem)localObject2).c = localPersonalityLabelPhoto;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("personality_label uploadPhoto() makeRequst, img_path = ");
-      ((StringBuilder)localObject1).append(paramCompressInfo.c);
+      ((StringBuilder)localObject1).append(paramCompressInfo.h);
       ((StringBuilder)localObject1).append(" uniseq:");
       ((StringBuilder)localObject1).append(l);
       QLog.i("PLUploadManager", 2, ((StringBuilder)localObject1).toString());
@@ -103,16 +103,16 @@ public class PLUploadManager
     }
     int i = 0;
     int j = 0;
-    while (i < this.jdField_a_of_type_JavaUtilVector.size())
+    while (i < this.d.size())
     {
-      PLUploadManager.UploadItem localUploadItem = (PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i);
-      if (localUploadItem.jdField_a_of_type_Long == paramLong)
+      PLUploadManager.UploadItem localUploadItem = (PLUploadManager.UploadItem)this.d.get(i);
+      if (localUploadItem.b == paramLong)
       {
-        int k = localUploadItem.jdField_a_of_type_Int;
+        int k = localUploadItem.a;
         if (k < localList.size()) {
-          localList.add(k, localUploadItem.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
+          localList.add(k, localUploadItem.c);
         } else {
-          localList.add(localUploadItem.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
+          localList.add(localUploadItem.c);
         }
         paramPersonalityLabelInfo.photoCount += 1;
         j += 1;
@@ -122,27 +122,14 @@ public class PLUploadManager
     return j;
   }
   
-  public PLUploadManager.UploadItem a(long paramLong, PersonalityLabelPhoto paramPersonalityLabelPhoto)
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilVector.size())
-    {
-      if ((((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong) && (((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq == paramPersonalityLabelPhoto.uniseq)) {
-        return (PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i);
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
   public void a(long paramLong, PersonalityLabelPhoto paramPersonalityLabelPhoto)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilVector.size())
+    while (i < this.d.size())
     {
-      if ((((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong) && (((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq == paramPersonalityLabelPhoto.uniseq))
+      if ((((PLUploadManager.UploadItem)this.d.get(i)).b == paramLong) && (((PLUploadManager.UploadItem)this.d.get(i)).c.uniseq == paramPersonalityLabelPhoto.uniseq))
       {
-        paramPersonalityLabelPhoto = (PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i);
+        paramPersonalityLabelPhoto = (PLUploadManager.UploadItem)this.d.get(i);
         break label88;
       }
       i += 1;
@@ -151,12 +138,12 @@ public class PLUploadManager
     label88:
     if (paramPersonalityLabelPhoto != null)
     {
-      ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(paramPersonalityLabelPhoto.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
+      ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).transferAsync(paramPersonalityLabelPhoto.d);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("retry ");
-        localStringBuilder.append(paramPersonalityLabelPhoto.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mLocalPath);
+        localStringBuilder.append(paramPersonalityLabelPhoto.d.mLocalPath);
         QLog.i("PLUploadManager", 2, localStringBuilder.toString());
       }
     }
@@ -164,7 +151,7 @@ public class PLUploadManager
   
   public void a(PLUploadManager.UploadListener paramUploadListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPLUploadManager$UploadListener = paramUploadListener;
+    this.b = paramUploadListener;
   }
   
   public boolean a(List<CompressInfo> paramList, long paramLong)
@@ -181,28 +168,28 @@ public class PLUploadManager
       if (localUploadItem != null)
       {
         k = i + 1;
-        this.jdField_a_of_type_JavaUtilVector.add(0, localUploadItem);
-        localArrayList.add(0, localUploadItem.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto);
+        this.d.add(0, localUploadItem);
+        localArrayList.add(0, localUploadItem.c);
       }
       j += 1;
     }
     if (i > 0)
     {
       j = 0;
-      while (j < this.jdField_a_of_type_JavaUtilVector.size())
+      while (j < this.d.size())
       {
         if (j < i)
         {
-          ((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(j)).jdField_a_of_type_Int = j;
+          ((PLUploadManager.UploadItem)this.d.get(j)).a = j;
         }
-        else if (((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(j)).jdField_a_of_type_Long == paramLong)
+        else if (((PLUploadManager.UploadItem)this.d.get(j)).b == paramLong)
         {
-          paramList = (PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(j);
-          paramList.jdField_a_of_type_Int += i;
+          paramList = (PLUploadManager.UploadItem)this.d.get(j);
+          paramList.a += i;
         }
         j += 1;
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new PLUploadManager.1(this, localArrayList, paramLong));
+      this.c.post(new PLUploadManager.1(this, localArrayList, paramLong));
     }
     if (localArrayList.size() > 0) {
       bool = true;
@@ -213,11 +200,11 @@ public class PLUploadManager
   public void b(long paramLong, PersonalityLabelPhoto paramPersonalityLabelPhoto)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilVector.size())
+    while (i < this.d.size())
     {
-      if ((((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong) && (((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelPhoto.uniseq == paramPersonalityLabelPhoto.uniseq))
+      if ((((PLUploadManager.UploadItem)this.d.get(i)).b == paramLong) && (((PLUploadManager.UploadItem)this.d.get(i)).c.uniseq == paramPersonalityLabelPhoto.uniseq))
       {
-        paramPersonalityLabelPhoto = (PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.remove(i);
+        paramPersonalityLabelPhoto = (PLUploadManager.UploadItem)this.d.remove(i);
         break label91;
       }
       i += 1;
@@ -227,49 +214,62 @@ public class PLUploadManager
     label91:
     Object localObject;
     if (i >= 0) {
-      while (i < this.jdField_a_of_type_JavaUtilVector.size())
+      while (i < this.d.size())
       {
-        if (((PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i)).jdField_a_of_type_Long == paramLong)
+        if (((PLUploadManager.UploadItem)this.d.get(i)).b == paramLong)
         {
-          localObject = (PLUploadManager.UploadItem)this.jdField_a_of_type_JavaUtilVector.get(i);
-          ((PLUploadManager.UploadItem)localObject).jdField_a_of_type_Int -= 1;
+          localObject = (PLUploadManager.UploadItem)this.d.get(i);
+          ((PLUploadManager.UploadItem)localObject).a -= 1;
         }
         i += 1;
       }
     }
     if (paramPersonalityLabelPhoto != null)
     {
-      ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).stop(paramPersonalityLabelPhoto.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest);
+      ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).stop(paramPersonalityLabelPhoto.d);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("delete ");
-        ((StringBuilder)localObject).append(paramPersonalityLabelPhoto.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.mLocalPath);
+        ((StringBuilder)localObject).append(paramPersonalityLabelPhoto.d.mLocalPath);
         QLog.i("PLUploadManager", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
   
+  public PLUploadManager.UploadItem c(long paramLong, PersonalityLabelPhoto paramPersonalityLabelPhoto)
+  {
+    int i = 0;
+    while (i < this.d.size())
+    {
+      if ((((PLUploadManager.UploadItem)this.d.get(i)).b == paramLong) && (((PLUploadManager.UploadItem)this.d.get(i)).c.uniseq == paramPersonalityLabelPhoto.uniseq)) {
+        return (PLUploadManager.UploadItem)this.d.get(i);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
   public void onDestroy()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-    ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITransFileController.class)).removeHandle(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    this.c.removeCallbacksAndMessages(null);
+    ((ITransFileController)this.a.getRuntimeService(ITransFileController.class)).removeHandle(this.e);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onDestroy this:");
       localStringBuilder.append(this);
       localStringBuilder.append(" app:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" handler:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+      localStringBuilder.append(this.e);
       QLog.i("PLUploadManager", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager
  * JD-Core Version:    0.7.0.1
  */

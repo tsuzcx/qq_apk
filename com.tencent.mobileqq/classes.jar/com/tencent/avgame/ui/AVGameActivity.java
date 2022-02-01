@@ -102,7 +102,7 @@ public class AVGameActivity
     AVGamePerfReporter.a().a("param_StepGameReady");
     GameEngine.a().a(Long.valueOf(this.mRoomId).longValue());
     GameEngine.a().a(Long.valueOf(this.mRoomId).longValue(), this.mApp.getCurrentAccountUin());
-    AVGameHandler.a().a().post(this.mEnterAvRoomRunnable);
+    AVGameHandler.a().b().post(this.mEnterAvRoomRunnable);
   }
   
   private void beginSurvivalRoomProcess()
@@ -116,8 +116,8 @@ public class AVGameActivity
     AVGamePerfReporter.a().a("param_StepGameReady");
     GameEngine.a().a(Long.valueOf(this.mRoomId).longValue());
     GameEngine.a().a(Long.valueOf(this.mRoomId).longValue(), this.mApp.getCurrentAccountUin());
-    if (GameEngine.a().g()) {
-      AVGameHandler.a().a().post(this.mEnterAvRoomRunnable);
+    if (GameEngine.a().B()) {
+      AVGameHandler.a().b().post(this.mEnterAvRoomRunnable);
     }
   }
   
@@ -144,7 +144,7 @@ public class AVGameActivity
         GameEngine.a().c(i);
       }
       if (AVGameUtil.b() == 2) {
-        GameEngine.a().a().e(true);
+        GameEngine.a().s().f(true);
       }
     }
   }
@@ -212,12 +212,12 @@ public class AVGameActivity
     if (paramInt1 == 4)
     {
       AVGameNodeReportUtil.b(-102);
-      showDialogTip(getString(2131690457));
+      showDialogTip(getString(2131887368));
       AVGameNodeReportUtil.b(-202);
     }
     else
     {
-      showDialogTip(getString(2131690328));
+      showDialogTip(getString(2131887239));
       AVGameNodeReportUtil.b(-201);
     }
     this.mGameExited = true;
@@ -279,8 +279,8 @@ public class AVGameActivity
       }
     }
     long l = Long.valueOf(str).longValue();
-    localObject2 = GameEngine.a().a();
-    if ((localObject2 == null) || (l != ((EngineData)localObject2).a()))
+    localObject2 = GameEngine.a().s();
+    if ((localObject2 == null) || (l != ((EngineData)localObject2).i()))
     {
       if (localObject1 != null)
       {
@@ -298,7 +298,7 @@ public class AVGameActivity
     if ((paramIntent instanceof GameRecordInfo))
     {
       localObject1 = (GameRecordInfo)paramIntent;
-      localObject2 = GameEngine.a().a();
+      localObject2 = GameEngine.a().s();
       ((EngineData)localObject2).a(((GameRecordInfo)localObject1).videoFilePath, ((GameRecordInfo)localObject1).photoFilePath, ((GameRecordInfo)localObject1).startGameTimeMills);
       ((EngineData)localObject2).a(((GameRecordInfo)localObject1).extraJsonData);
     }
@@ -330,7 +330,7 @@ public class AVGameActivity
   private void loadDataAndUI(Intent paramIntent)
   {
     int i;
-    if ((!GameEngine.a().f()) && (!paramIntent.getBooleanExtra("key_from_survival", false))) {
+    if ((!GameEngine.a().A()) && (!paramIntent.getBooleanExtra("key_from_survival", false))) {
       i = 0;
     } else {
       i = 1;
@@ -348,7 +348,7 @@ public class AVGameActivity
   {
     initData(paramIntent);
     beginRoomProcess();
-    int i = GameEngine.a().a().a();
+    int i = GameEngine.a().s().j();
     if ((i == 10) && (!this.mIsNewEnter))
     {
       showResult();
@@ -356,7 +356,7 @@ public class AVGameActivity
     }
     if (i == 10)
     {
-      GameEngine.a().a().a().a();
+      GameEngine.a().s().h().b();
       showRoom();
       return;
     }
@@ -368,9 +368,9 @@ public class AVGameActivity
     this.mIsNewEnter = paramIntent.getBooleanExtra("key_room_be_new_enter", false);
     if (this.mIsNewEnter)
     {
-      this.mApp.a().a(3, "");
+      this.mApp.a().b(3, "");
       boolean bool = paramIntent.getBooleanExtra("key_pk_qqcj", false);
-      GameEngine.a().a().a(paramIntent.getIntExtra("key_pk_type", 0), bool);
+      GameEngine.a().s().a(paramIntent.getIntExtra("key_pk_type", 0), bool);
       if (bool)
       {
         i = paramIntent.getIntExtra("key_pk_qqcj_source_type", 0);
@@ -379,18 +379,18 @@ public class AVGameActivity
           CJSurvivalReporterUtil.a().a(paramIntent.getStringExtra("key_pk_qqcj_qr_to_uin"));
         }
       }
-      GameEngine.a().l();
+      GameEngine.a().x();
       if (bool) {
-        GameEngine.a().o();
+        GameEngine.a().F();
       }
     }
     dealPkFromRestartProcess(paramIntent);
-    int i = GameEngine.a().a().o();
+    int i = GameEngine.a().s().X();
     if ((i == 6) || (i == 7)) {
-      GameEngine.a().a().f(0);
+      GameEngine.a().s().g(0);
     }
     showRoom();
-    int j = GameEngine.a().a().a();
+    int j = GameEngine.a().s().j();
     if ((j != 0) && (j != 10) && (i == 3))
     {
       initData(paramIntent);
@@ -414,14 +414,14 @@ public class AVGameActivity
   
   private void setFromTypeAndIsCreate(Intent paramIntent)
   {
-    EngineData localEngineData = GameEngine.a().a();
+    EngineData localEngineData = GameEngine.a().s();
     boolean bool1 = paramIntent.getBooleanExtra("key_room_be_new_enter", false);
     int i = paramIntent.getIntExtra("key_room_from_type", 0);
     boolean bool2 = paramIntent.getBooleanExtra("key_room_is_create", true);
     if (bool1)
     {
-      localEngineData.j = i;
-      localEngineData.e = bool2;
+      localEngineData.A = i;
+      localEngineData.B = bool2;
     }
     if (QLog.isColorLevel())
     {
@@ -438,10 +438,10 @@ public class AVGameActivity
   
   private void showFragment(int paramInt)
   {
-    boolean bool = GameEngine.a().f();
+    boolean bool = GameEngine.a().A();
     int k = 0;
     int i;
-    if ((bool) && (GameEngine.a().i()) && (paramInt == 3) && (!TextUtils.isEmpty(GameEngine.a().a().a().awardUrl))) {
+    if ((bool) && (GameEngine.a().D()) && (paramInt == 3) && (!TextUtils.isEmpty(GameEngine.a().s().Z().awardUrl))) {
       i = 1;
     } else {
       i = 0;
@@ -454,7 +454,7 @@ public class AVGameActivity
         j = 1;
       }
     }
-    if (((QAVConfigUtils.m()) && (j != 0)) || (i != 0))
+    if (((QAVConfigUtils.u()) && (j != 0)) || (i != 0))
     {
       if (paramInt == 2)
       {
@@ -511,7 +511,7 @@ public class AVGameActivity
       if (localObject2 != null)
       {
         ((GameBaseFragment)localObject2).a(this.mIsStartMatchWhenEnterRoom);
-        localFragmentTransaction.add(2131367213, (Fragment)localObject2, str);
+        localFragmentTransaction.add(2131433669, (Fragment)localObject2, str);
         localObject1 = localObject2;
       }
     }
@@ -536,7 +536,7 @@ public class AVGameActivity
   
   private void showToastTip(int paramInt, String paramString)
   {
-    AVGameHandler.a().b().post(new AVGameActivity.4(this, paramInt, paramString));
+    AVGameHandler.a().c().post(new AVGameActivity.4(this, paramInt, paramString));
   }
   
   public boolean checkDestroyed()
@@ -576,7 +576,7 @@ public class AVGameActivity
     }
     if (paramInt1 == 291)
     {
-      if (GameEngine.a().f()) {
+      if (GameEngine.a().A()) {
         paramIntent = (GameResultBaseHelper)this.mHelperMap.get(GamePKResultHelper.class.getSimpleName());
       } else {
         paramIntent = (GameResultBaseHelper)this.mHelperMap.get(GameResultHelper.class.getSimpleName());
@@ -600,7 +600,7 @@ public class AVGameActivity
   public void doOnBackPressed()
   {
     GameBaseFragment localGameBaseFragment = this.mCurFragment;
-    if ((localGameBaseFragment != null) && (localGameBaseFragment.a())) {
+    if ((localGameBaseFragment != null) && (localGameBaseFragment.e())) {
       return;
     }
     super.doOnBackPressed();
@@ -620,7 +620,7 @@ public class AVGameActivity
       ImmersiveUtils.setStatusTextColor(false, getWindow());
     }
     this.mApp = ((AVGameAppInterface)getAppRuntime());
-    setContentView(2131558653);
+    setContentView(2131624270);
     paramBundle = getIntent();
     if (paramBundle == null)
     {
@@ -629,7 +629,7 @@ public class AVGameActivity
       return false;
     }
     this.mBackAction = AVGameBackAction.a(paramBundle);
-    this.mFragmentContainer = findViewById(2131367213);
+    this.mFragmentContainer = findViewById(2131433669);
     AVGamePerfReporter.a().a(paramBundle);
     AVGameNodeReportUtil.b(paramBundle);
     CostTraceUtil.a().a("AvGameOpenInit", paramBundle);
@@ -647,15 +647,15 @@ public class AVGameActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    AVGameHandler.a().b().removeCallbacks(this.mNotifyMainProcessLoadingFinishRunnable);
+    AVGameHandler.a().c().removeCallbacks(this.mNotifyMainProcessLoadingFinishRunnable);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("doOnDestroy mExitByFinished：");
     ((StringBuilder)localObject).append(this.mExitByFinished);
     QLog.i("AVGameActivity", 1, ((StringBuilder)localObject).toString());
     notifyMainProcessLoadingFinish();
-    AVGameHandler.a().a().removeCallbacks(this.mEnterAvRoomRunnable);
-    AVGameHandler.a().b().removeCallbacks(this.mUpdateRootMarginTopOfScreenRunnable);
-    AVGameShareUtil.a().a();
+    AVGameHandler.a().b().removeCallbacks(this.mEnterAvRoomRunnable);
+    AVGameHandler.a().c().removeCallbacks(this.mUpdateRootMarginTopOfScreenRunnable);
+    AVGameShareUtil.a().b();
     cancelRemainScreenOn();
     this.mCurFragment = null;
     this.mCurFragmentType = 0;
@@ -693,11 +693,11 @@ public class AVGameActivity
   {
     super.doOnResume();
     if (Build.VERSION.SDK_INT >= 30) {
-      AVGameHandler.a().b().postDelayed(this.mNotifyMainProcessLoadingFinishRunnable, 0L);
+      AVGameHandler.a().c().postDelayed(this.mNotifyMainProcessLoadingFinishRunnable, 0L);
     } else {
-      AVGameHandler.a().b().postDelayed(this.mNotifyMainProcessLoadingFinishRunnable, 600L);
+      AVGameHandler.a().c().postDelayed(this.mNotifyMainProcessLoadingFinishRunnable, 600L);
     }
-    AVGameHandler.a().b().postDelayed(this.mUpdateRootMarginTopOfScreenRunnable, 32L);
+    AVGameHandler.a().c().postDelayed(this.mUpdateRootMarginTopOfScreenRunnable, 32L);
     if (this.mCurFragmentType == 1) {
       GameActivityCenterCtrl.a().a(this);
     }
@@ -776,7 +776,7 @@ public class AVGameActivity
   {
     GameBaseFragment localGameBaseFragment = this.mCurFragment;
     if (localGameBaseFragment != null) {
-      return localGameBaseFragment.b();
+      return localGameBaseFragment.c();
     }
     return super.isWrapContent();
   }
@@ -835,7 +835,7 @@ public class AVGameActivity
     ThreadManager.c(new AVGameActivity.6(this, paramInt));
     if (paramInt == 0)
     {
-      localObject = GameEngine.a().a();
+      localObject = GameEngine.a().s();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -843,10 +843,10 @@ public class AVGameActivity
         localStringBuilder.append(localObject);
         QLog.i("AVGameActivity", 2, localStringBuilder.toString());
       }
-      if (GameEngine.a().f()) {
+      if (GameEngine.a().A()) {
         return;
       }
-      GameEngine.a().a(((EngineData)localObject).a(), GameEngine.a().a().getAccount(), 1, 1);
+      GameEngine.a().a(((EngineData)localObject).i(), GameEngine.a().f().getAccount(), 1, 1);
     }
   }
   
@@ -903,7 +903,7 @@ public class AVGameActivity
   
   public void showDialogTip(String paramString)
   {
-    AVGameHandler.a().b().post(new AVGameActivity.5(this, paramString));
+    AVGameHandler.a().c().post(new AVGameActivity.5(this, paramString));
   }
   
   public void showResult()
@@ -912,10 +912,10 @@ public class AVGameActivity
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showResult data: ");
-      localStringBuilder.append(GameEngine.a().a());
+      localStringBuilder.append(GameEngine.a().s());
       QLog.i("AVGameActivity", 2, localStringBuilder.toString());
     }
-    if (GameEngine.a().f())
+    if (GameEngine.a().A())
     {
       showFragment(3);
       return;
@@ -929,7 +929,7 @@ public class AVGameActivity
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showRoom data: ");
-      localStringBuilder.append(GameEngine.a().a());
+      localStringBuilder.append(GameEngine.a().s());
       QLog.i("AVGameActivity", 2, localStringBuilder.toString());
     }
     showFragment(1);
@@ -937,8 +937,8 @@ public class AVGameActivity
   
   public void showTransientTip()
   {
-    if (((this.mCurFragment instanceof GameRoomFragment)) && (GameEngine.a().a()) && (GameEngine.a().a().h() <= 1)) {
-      ((GameRoomFragment)this.mCurFragment).a(getString(2131690353));
+    if (((this.mCurFragment instanceof GameRoomFragment)) && (GameEngine.a().d()) && (GameEngine.a().s().I() <= 1)) {
+      ((GameRoomFragment)this.mCurFragment).a(getString(2131887264));
     }
   }
   

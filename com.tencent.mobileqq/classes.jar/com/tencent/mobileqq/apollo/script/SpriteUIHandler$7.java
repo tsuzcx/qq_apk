@@ -12,13 +12,13 @@ class SpriteUIHandler$7
   public void run()
   {
     if (!TextUtils.isEmpty(this.a)) {
-      QQToast.a(BaseApplicationImpl.getContext(), this.a, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), this.a, 1).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.7
  * JD-Core Version:    0.7.0.1
  */

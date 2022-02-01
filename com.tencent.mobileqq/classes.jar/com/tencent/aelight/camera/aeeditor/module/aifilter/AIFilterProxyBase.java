@@ -13,8 +13,8 @@ import com.tencent.aelight.camera.ae.play.FaceChangeUtils;
 import com.tencent.aelight.camera.aeeditor.data.AEEditorImageInfo;
 import com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager;
 import com.tencent.aelight.camera.log.AEQLog;
-import com.tencent.tavcut.bean.CropConfig;
-import com.tencent.tavcut.util.BitmapUtil;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.util.BitmapUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.filter.aifilter.AIImageFilterResult;
 import com.tencent.ttpic.filter.aifilter.NewEnhanceCategories;
@@ -37,25 +37,19 @@ import mqq.util.WeakReference;
 
 abstract class AIFilterProxyBase
 {
-  private static final String jdField_a_of_type_JavaLangString = "AIFilterProxyBase";
-  protected int a;
-  private PhotoAIFilter jdField_a_of_type_ComTencentTtpicFilterAifilterPhotoAIFilter = new PhotoAIFilter();
-  protected List<Bitmap> a;
-  private WeakReference<AEEditorAIFilterManager.AIFilterObserver> jdField_a_of_type_MqqUtilWeakReference;
+  private static final String d = "AIFilterProxyBase";
+  protected int a = 1;
   protected List<Bitmap> b = new ArrayList();
-  
-  public AIFilterProxyBase()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  protected List<Bitmap> c = new ArrayList();
+  private WeakReference<AEEditorAIFilterManager.AIFilterObserver> e;
+  private PhotoAIFilter f = new PhotoAIFilter();
   
   private SmartFilterReqItem a(Context paramContext, Bitmap paramBitmap, ArrayList<FaceRects> paramArrayList)
   {
     if (paramBitmap == null) {
       return null;
     }
-    double d1 = Math.sqrt(25600.0F / this.jdField_a_of_type_Int);
+    double d1 = Math.sqrt(25600.0F / this.a);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     int i = 0;
     if ((paramBitmap.getWidth() <= d1) && (paramBitmap.getHeight() <= d1))
@@ -70,8 +64,8 @@ abstract class AIFilterProxyBase
       d2 = d1 / d2;
       double d3 = paramBitmap.getHeight();
       Double.isNaN(d3);
-      float f = (float)Math.max(d2, d1 / d3);
-      paramContext.postScale(f, f);
+      float f1 = (float)Math.max(d2, d1 / d3);
+      paramContext.postScale(f1, f1);
       paramContext = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramContext, true);
       i = 1;
     }
@@ -98,7 +92,7 @@ abstract class AIFilterProxyBase
     }
     String str = paramString.split("\\.")[0];
     paramString = AEEditorResourceManager.a().c(str);
-    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject1 = d;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("parseLutBySceneLabel--select lut=");
     ((StringBuilder)localObject2).append(str);
@@ -107,7 +101,7 @@ abstract class AIFilterProxyBase
     AEQLog.b((String)localObject1, ((StringBuilder)localObject2).toString());
     if ((paramString == null) || (!new File(paramString).exists()))
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = d;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("parseLutBySceneLabel--used lut not exists, id=");
       ((StringBuilder)localObject2).append(str);
@@ -124,47 +118,15 @@ abstract class AIFilterProxyBase
         localInterruptedException.printStackTrace();
       }
       if (localObject1[0] != 0) {
-        AEQLog.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download SUCCESS");
+        AEQLog.b(d, "parseLutBySceneLabel--download SUCCESS");
       }
     }
     else
     {
       return paramString;
     }
-    AEQLog.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download FAIL");
+    AEQLog.b(d, "parseLutBySceneLabel--download FAIL");
     return null;
-  }
-  
-  protected static String a(List<AIFilterResponse> paramList)
-  {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "voteLable");
-    Object localObject1 = new HashMap();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      if (((Map)localObject1).containsKey(paramList.get(i))) {
-        ((Map)localObject1).put(((AIFilterResponse)paramList.get(i)).jdField_a_of_type_JavaLangString, Integer.valueOf(((Integer)((Map)localObject1).get(paramList.get(i))).intValue() + 1));
-      } else {
-        ((Map)localObject1).put(((AIFilterResponse)paramList.get(i)).jdField_a_of_type_JavaLangString, Integer.valueOf(0));
-      }
-      i += 1;
-    }
-    Iterator localIterator = ((Map)localObject1).entrySet().iterator();
-    paramList = (Map.Entry)localIterator.next();
-    localObject1 = (String)paramList.getKey();
-    paramList = (Integer)paramList.getValue();
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (Map.Entry)localIterator.next();
-      String str = (String)((Map.Entry)localObject2).getKey();
-      localObject2 = (Integer)((Map.Entry)localObject2).getValue();
-      if (paramList.intValue() < ((Integer)localObject2).intValue())
-      {
-        paramList = (List<AIFilterResponse>)localObject2;
-        localObject1 = str;
-      }
-    }
-    return localObject1;
   }
   
   private ArrayList<SmartFilterReqItem> a(Context paramContext, List<Bitmap> paramList, List<PTFaceAttr> paramList1)
@@ -240,8 +202,8 @@ abstract class AIFilterProxyBase
       while ((j < paramList.size()) && (j < paramList1.size()))
       {
         Object localObject = (String)paramList.get(j);
-        CropConfig localCropConfig = ((AEEditorImageInfo)paramList1.get(j)).jdField_a_of_type_ComTencentTavcutBeanCropConfig;
-        int m = Math.max(((AEEditorImageInfo)paramList1.get(j)).jdField_a_of_type_Int, ((AEEditorImageInfo)paramList1.get(j)).b);
+        CropConfig localCropConfig = ((AEEditorImageInfo)paramList1.get(j)).d;
+        int m = Math.max(((AEEditorImageInfo)paramList1.get(j)).b, ((AEEditorImageInfo)paramList1.get(j)).c);
         int k = 1;
         int i = 1;
         if (m > 400) {
@@ -254,9 +216,9 @@ abstract class AIFilterProxyBase
             i *= 2;
           }
         }
-        AEQLog.a(jdField_a_of_type_JavaLangString, "decodeBitmap: start ");
+        AEQLog.a(d, "decodeBitmap: start ");
         localObject = BitmapUtil.cropBitmap((String)localObject, localCropConfig, k);
-        AEQLog.a(jdField_a_of_type_JavaLangString, "decodeBitmap: end ");
+        AEQLog.a(d, "decodeBitmap: end ");
         localArrayList.add(localObject);
         j += 1;
       }
@@ -277,7 +239,7 @@ abstract class AIFilterProxyBase
     }
     localObject1 = localObject1.fileName.split("\\.")[0];
     paramString = AEEditorResourceManager.a().c((String)localObject1);
-    Object localObject2 = jdField_a_of_type_JavaLangString;
+    Object localObject2 = d;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("parseLutBySceneLabel--select lut=");
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -287,7 +249,7 @@ abstract class AIFilterProxyBase
     if ((paramString != null) && (new File(paramString).exists())) {
       return paramString;
     }
-    localObject2 = jdField_a_of_type_JavaLangString;
+    localObject2 = d;
     localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("parseLutBySceneLabel--used lut not exists, id=");
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -305,16 +267,54 @@ abstract class AIFilterProxyBase
     }
     if (localObject2[0] != 0)
     {
-      AEQLog.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download SUCCESS");
+      AEQLog.b(d, "parseLutBySceneLabel--download SUCCESS");
       return paramString;
     }
-    AEQLog.b(jdField_a_of_type_JavaLangString, "parseLutBySceneLabel--download FAIL");
+    AEQLog.b(d, "parseLutBySceneLabel--download FAIL");
+    return null;
+  }
+  
+  protected static String b(List<AIFilterResponse> paramList)
+  {
+    AEQLog.b(d, "voteLable");
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      Object localObject1 = new HashMap();
+      int i = 0;
+      String str;
+      while (i < paramList.size())
+      {
+        str = ((AIFilterResponse)paramList.get(i)).a;
+        if (((Map)localObject1).containsKey(str)) {
+          ((Map)localObject1).put(str, Integer.valueOf(((Integer)((Map)localObject1).get(str)).intValue() + 1));
+        } else {
+          ((Map)localObject1).put(str, Integer.valueOf(0));
+        }
+        i += 1;
+      }
+      Iterator localIterator = ((Map)localObject1).entrySet().iterator();
+      paramList = (Map.Entry)localIterator.next();
+      localObject1 = (String)paramList.getKey();
+      paramList = (Integer)paramList.getValue();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (Map.Entry)localIterator.next();
+        str = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (Integer)((Map.Entry)localObject2).getValue();
+        if (paramList.intValue() < ((Integer)localObject2).intValue())
+        {
+          paramList = (List<AIFilterResponse>)localObject2;
+          localObject1 = str;
+        }
+      }
+      return localObject1;
+    }
     return null;
   }
   
   private void b(Context paramContext, List<Bitmap> paramList, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
   {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "doFaceDetect");
+    AEQLog.b(d, "doFaceDetect");
     if (paramList == null) {
       paramList = null;
     } else {
@@ -332,10 +332,10 @@ abstract class AIFilterProxyBase
     while (localIterator.hasNext())
     {
       Bitmap localBitmap = (Bitmap)localIterator.next();
-      AEQLog.a(jdField_a_of_type_JavaLangString, "doFaceDetect start");
-      float f = Math.max(localBitmap.getHeight(), localBitmap.getWidth());
-      localArrayList.add(this.jdField_a_of_type_ComTencentTtpicFilterAifilterPhotoAIFilter.doFaceDetect(localBitmap));
-      AEQLog.a(jdField_a_of_type_JavaLangString, "doFaceDetect end");
+      AEQLog.a(d, "doFaceDetect start");
+      float f1 = Math.max(localBitmap.getHeight(), localBitmap.getWidth());
+      localArrayList.add(this.f.doFaceDetect(localBitmap));
+      AEQLog.a(d, "doFaceDetect end");
     }
     paramContext = a(paramContext, paramList, localArrayList);
     if ((paramContext != null) && (paramContext.size() != 0))
@@ -350,51 +350,37 @@ abstract class AIFilterProxyBase
     }
   }
   
-  public AEEditorAIFilterManager.AIFilterObserver a()
-  {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
-    if (localWeakReference == null) {
-      return null;
-    }
-    return (AEEditorAIFilterManager.AIFilterObserver)localWeakReference.get();
-  }
-  
-  protected AIFilterResult a()
-  {
-    return a(null);
-  }
-  
   protected abstract AIFilterResult a(List<AIFilterResponse> paramList);
   
   protected SingleImageAIFilterResult a(AIFilterResponse paramAIFilterResponse)
   {
     SingleImageAIFilterResult localSingleImageAIFilterResult = new SingleImageAIFilterResult();
-    if (a(this.jdField_a_of_type_JavaUtilList)) {
+    if (c(this.b)) {
       try
       {
-        localSingleImageAIFilterResult.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData = PhotoAIFilter.preprocessImages(this.jdField_a_of_type_JavaUtilList);
+        localSingleImageAIFilterResult.b = PhotoAIFilter.preprocessImages(this.b);
       }
       catch (Exception localException)
       {
-        AEQLog.d(jdField_a_of_type_JavaLangString, Log.getStackTraceString(localException));
+        AEQLog.d(d, Log.getStackTraceString(localException));
       }
     }
-    localSingleImageAIFilterResult.jdField_a_of_type_ArrayOfFloat = AEEditorAIFilterManager.a(localSingleImageAIFilterResult.jdField_a_of_type_ComMicrorapidOpencvImageStatisticsData);
+    localSingleImageAIFilterResult.f = AEEditorAIFilterManager.a(localSingleImageAIFilterResult.b);
     Object localObject1 = new ArrayList();
     if (paramAIFilterResponse == null)
     {
       localObject2 = NewEnhanceCategories.COMMON.serverLabel;
-      localSingleImageAIFilterResult.jdField_a_of_type_Boolean = true;
-      AEQLog.b(jdField_a_of_type_JavaLangString, "result is exception");
+      localSingleImageAIFilterResult.a = true;
+      AEQLog.b(d, "result is exception");
       paramAIFilterResponse = (AIFilterResponse)localObject1;
       localObject1 = localObject2;
     }
     else
     {
-      localObject1 = paramAIFilterResponse.jdField_a_of_type_JavaLangString;
-      paramAIFilterResponse = paramAIFilterResponse.jdField_a_of_type_JavaUtilList;
+      localObject1 = paramAIFilterResponse.a;
+      paramAIFilterResponse = paramAIFilterResponse.b;
     }
-    Object localObject2 = jdField_a_of_type_JavaLangString;
+    Object localObject2 = d;
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("sceneLabel: ");
     ((StringBuilder)localObject3).append((String)localObject1);
@@ -403,7 +389,7 @@ abstract class AIFilterProxyBase
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (YoutuResultItem)((Iterator)localObject2).next();
-      String str = jdField_a_of_type_JavaLangString;
+      String str = d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("label: ");
       localStringBuilder.append(((YoutuResultItem)localObject3).Label);
@@ -411,31 +397,25 @@ abstract class AIFilterProxyBase
       localStringBuilder.append(((YoutuResultItem)localObject3).Confidence);
       AEQLog.b(str, localStringBuilder.toString());
     }
-    localSingleImageAIFilterResult.jdField_a_of_type_JavaLangString = ((String)localObject1);
-    localSingleImageAIFilterResult.jdField_a_of_type_JavaUtilList = paramAIFilterResponse;
-    PhotoAIFilter.setAIImageJsonPath(AEEditorResourceManager.a().a());
+    localSingleImageAIFilterResult.d = ((String)localObject1);
+    localSingleImageAIFilterResult.c = paramAIFilterResponse;
+    PhotoAIFilter.setAIImageJsonPath(AEEditorResourceManager.a().l());
     PhotoAIFilter.setLutImagePath("");
-    paramAIFilterResponse = PhotoAIFilter.parseAIImageParamsBySceneLabel(localSingleImageAIFilterResult.jdField_a_of_type_JavaLangString);
-    localSingleImageAIFilterResult.jdField_b_of_type_JavaLangString = a(paramAIFilterResponse.lutPath);
-    localSingleImageAIFilterResult.jdField_a_of_type_Float = paramAIFilterResponse.lutStrengt;
-    localSingleImageAIFilterResult.jdField_a_of_type_JavaUtilHashMap = paramAIFilterResponse.adjustParam;
-    localSingleImageAIFilterResult.c = paramAIFilterResponse.smoothLevel;
-    localSingleImageAIFilterResult.jdField_b_of_type_Float = paramAIFilterResponse.glowStrength;
+    paramAIFilterResponse = PhotoAIFilter.parseAIImageParamsBySceneLabel(localSingleImageAIFilterResult.d);
+    localSingleImageAIFilterResult.e = a(paramAIFilterResponse.lutPath);
+    localSingleImageAIFilterResult.g = paramAIFilterResponse.lutStrengt;
+    localSingleImageAIFilterResult.i = paramAIFilterResponse.adjustParam;
+    localSingleImageAIFilterResult.j = paramAIFilterResponse.smoothLevel;
+    localSingleImageAIFilterResult.h = paramAIFilterResponse.glowStrength;
     return localSingleImageAIFilterResult;
-  }
-  
-  public void a()
-  {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "removeObserver");
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
   }
   
   protected abstract void a(Context paramContext, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback);
   
   protected void a(Context paramContext, List<Bitmap> paramList, AIFilterProxyBase.AIFilterProxyCallback paramAIFilterProxyCallback)
   {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "faceDetect");
-    if ((paramList != null) && (a(paramList)))
+    AEQLog.b(d, "faceDetect");
+    if ((paramList != null) && (c(paramList)))
     {
       FaceChangeUtils.runInGLThread(new AIFilterProxyBase.3(this, paramContext, paramList, paramAIFilterProxyCallback), false, "");
       return;
@@ -447,12 +427,27 @@ abstract class AIFilterProxyBase
   
   public void a(AEEditorAIFilterManager.AIFilterObserver paramAIFilterObserver)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAIFilterObserver);
+    this.e = new WeakReference(paramAIFilterObserver);
   }
   
   public abstract boolean a();
   
-  protected boolean a(List<Bitmap> paramList)
+  public void b()
+  {
+    AEQLog.b(d, "removeObserver");
+    this.e = null;
+  }
+  
+  public AEEditorAIFilterManager.AIFilterObserver c()
+  {
+    WeakReference localWeakReference = this.e;
+    if (localWeakReference == null) {
+      return null;
+    }
+    return (AEEditorAIFilterManager.AIFilterObserver)localWeakReference.get();
+  }
+  
+  protected boolean c(List<Bitmap> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
@@ -463,19 +458,15 @@ abstract class AIFilterProxyBase
     return true;
   }
   
-  public void b()
+  protected AIFilterResult d()
   {
-    AEQLog.b(jdField_a_of_type_JavaLangString, "clear");
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        BitmapUtils.recycle((Bitmap)((Iterator)localObject).next());
-      }
-      this.jdField_a_of_type_JavaUtilList.clear();
-    }
-    localObject = this.b;
+    return a(null);
+  }
+  
+  public void e()
+  {
+    AEQLog.b(d, "clear");
+    Object localObject = this.b;
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = this.b.iterator();
@@ -484,11 +475,20 @@ abstract class AIFilterProxyBase
       }
       this.b.clear();
     }
+    localObject = this.c;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = this.c.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        BitmapUtils.recycle((Bitmap)((Iterator)localObject).next());
+      }
+      this.c.clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.aifilter.AIFilterProxyBase
  * JD-Core Version:    0.7.0.1
  */

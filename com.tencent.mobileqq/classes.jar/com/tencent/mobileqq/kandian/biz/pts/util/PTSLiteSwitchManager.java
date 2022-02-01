@@ -6,62 +6,62 @@ import mqq.os.MqqHandler;
 
 public class PTSLiteSwitchManager
 {
-  private static volatile PTSLiteSwitchManager jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilPTSLiteSwitchManager;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = true;
+  private static volatile PTSLiteSwitchManager a;
+  private boolean b = false;
+  private boolean c = true;
   
   public static PTSLiteSwitchManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilPTSLiteSwitchManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilPTSLiteSwitchManager == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilPTSLiteSwitchManager = new PTSLiteSwitchManager();
+        if (a == null) {
+          a = new PTSLiteSwitchManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilPTSLiteSwitchManager;
+    return a;
   }
   
-  private void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.b = true;
-    PTSHelper.c();
-  }
-  
-  private boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  private boolean d()
+  private boolean e()
   {
     return this.b;
   }
   
-  void a()
+  private boolean f()
   {
-    b();
-    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
-    ThreadManager.getFileThreadHandler().post(local1);
+    return this.c;
   }
   
-  public boolean a()
+  private void g()
   {
-    return (d()) && (PTSSoLoader.a().a());
+    this.b = false;
+    this.c = true;
+    PTSHelper.c();
+  }
+  
+  public boolean b()
+  {
+    return (f()) && (PTSSoLoader.a().b());
   }
   
   @Deprecated
-  public boolean b()
+  public boolean c()
   {
-    return (c()) && (PTSSoLoader.a().a());
+    return (e()) && (PTSSoLoader.a().b());
+  }
+  
+  void d()
+  {
+    g();
+    PTSLiteSwitchManager.1 local1 = new PTSLiteSwitchManager.1(this);
+    ThreadManager.getFileThreadHandler().post(local1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSLiteSwitchManager
  * JD-Core Version:    0.7.0.1
  */

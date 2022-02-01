@@ -23,13 +23,13 @@ class ExpandCampusNewFragment$5
     paramView.putExtra("qzone_plugin_activity_name", "com.qzone.publish.ui.activity.QZonePublishMoodRealActivity");
     paramView.putExtra("uin", localUserInfo.qzone_uin);
     paramView.putExtra("key_from_kuolie", true);
-    QZoneHelper.forwardToPublishMood(ExpandCampusNewFragment.a(this.a), localUserInfo, paramView, 0);
+    QZoneHelper.forwardToPublishMood(ExpandCampusNewFragment.c(this.a), localUserInfo, paramView, 0);
     ((IExpandReportUtils)QRoute.api(IExpandReportUtils.class)).onUserActionToTunnel("click#feeds_page#publish_entrance", true, -1L, -1L, null, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandCampusNewFragment.5
  * JD-Core Version:    0.7.0.1
  */

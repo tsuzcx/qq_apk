@@ -78,71 +78,7 @@ import org.json.JSONObject;
 public class NativeAdUtils
 {
   public static int a;
-  static volatile String a;
-  
-  public static double a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext, String paramString1, String paramString2)
-  {
-    SosoLbsInfo localSosoLbsInfo;
-    if (paramContext != null)
-    {
-      if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
-        return 0.0D;
-      }
-      localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("readinjoy_feed_ad_distance");
-      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null))
-      {
-        paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-        if (TextUtils.isEmpty(paramAbsBaseArticleInfo.mAdExtInfo)) {
-          return 0.0D;
-        }
-      }
-    }
-    try
-    {
-      paramAbsBaseArticleInfo = new JSONObject(paramAbsBaseArticleInfo.mAdExtInfo);
-      double d1 = paramAbsBaseArticleInfo.getDouble(paramString1);
-      double d2 = paramAbsBaseArticleInfo.getDouble(paramString2);
-      double d3 = localSosoLbsInfo.mLocation.mLat02;
-      double d4 = localSosoLbsInfo.mLocation.mLon02;
-      if (QLog.isColorLevel())
-      {
-        paramAbsBaseArticleInfo = new StringBuilder();
-        paramAbsBaseArticleInfo.append("getADPosition cached latitude =  ");
-        paramAbsBaseArticleInfo.append(d3);
-        paramAbsBaseArticleInfo.append(" longitude = ");
-        paramAbsBaseArticleInfo.append(d4);
-        paramAbsBaseArticleInfo.append(" adLatitude = ");
-        paramAbsBaseArticleInfo.append(d1);
-        paramAbsBaseArticleInfo.append(" adLongitude = ");
-        paramAbsBaseArticleInfo.append(d2);
-        QLog.d("NativeAdUtils", 2, paramAbsBaseArticleInfo.toString());
-      }
-      if ((d3 > 0.0D) && (d3 < 90.0D) && (d4 > 0.0D) && (d4 < 180.0D) && (d1 > 0.0D) && (d1 < 90.0D) && (d2 > 0.0D))
-      {
-        if (d2 >= 180.0D) {
-          return 0.0D;
-        }
-        return TencentLocationUtils.distanceBetween(d3, d4, d1, d2);
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdUtils", 2, "getADPosition not  cached ......");
-        }
-        if (a())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("NativeAdUtils", 2, "getADPosition Permission PERMISSION_GRANTED");
-          }
-          a(paramContext);
-          return 0.0D;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("NativeAdUtils", 2, "getADPosition Permission DENY,need to permission ...");
-        }
-      }
-      return 0.0D;
-    }
-    catch (Exception paramAbsBaseArticleInfo) {}
-    return 0.0D;
-  }
+  static volatile String b;
   
   public static double a(double[] paramArrayOfDouble, Context paramContext)
   {
@@ -179,12 +115,12 @@ public class NativeAdUtils
       if (QLog.isColorLevel()) {
         QLog.d("NativeAdUtils", 2, "getADPosition not  cached ......");
       }
-      if (a())
+      if (c())
       {
         if (QLog.isColorLevel()) {
           QLog.d("NativeAdUtils", 2, "getADPosition Permission PERMISSION_GRANTED");
         }
-        a(paramContext);
+        b(paramContext);
         return 0.0D;
       }
       if (QLog.isColorLevel()) {
@@ -218,12 +154,12 @@ public class NativeAdUtils
       if (paramBannerInfo == null) {
         return -1;
       }
-      paramContext = paramBannerInfo.jdField_f_of_type_JavaLangString;
-      paramBannerInfo = paramBannerInfo.jdField_d_of_type_JavaLangString;
+      paramContext = paramBannerInfo.h;
+      paramBannerInfo = paramBannerInfo.f;
       Object localObject;
       if ((!TextUtils.isEmpty(paramContext)) && (!TextUtils.isEmpty(paramBannerInfo)))
       {
-        localObject = DownloadManager.a().a(paramBannerInfo);
+        localObject = DownloadManager.b().d(paramBannerInfo);
         if (localObject == null)
         {
           if (QLog.isColorLevel())
@@ -250,7 +186,7 @@ public class NativeAdUtils
             localStringBuilder.append(" true");
             QLog.d("NativeAdUtils", 2, localStringBuilder.toString());
           }
-          return ((DownloadInfo)localObject).jdField_f_of_type_Int;
+          return ((DownloadInfo)localObject).t;
         }
         if (QLog.isColorLevel())
         {
@@ -283,7 +219,7 @@ public class NativeAdUtils
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramAdData)) {
       return 25;
     }
-    if (paramAdData.h()) {
+    if (paramAdData.j()) {
       return 35;
     }
     return 1;
@@ -291,9 +227,9 @@ public class NativeAdUtils
   
   public static Dialog a(Context paramContext, String paramString1, String paramString2, View.OnClickListener paramOnClickListener1, String paramString3, View.OnClickListener paramOnClickListener2, String paramString4)
   {
-    paramContext = new Dialog(paramContext, 2131756189);
-    paramContext.setContentView(2131558954);
-    TextView localTextView = (TextView)paramContext.findViewById(2131365648);
+    paramContext = new Dialog(paramContext, 2131953338);
+    paramContext.setContentView(2131624587);
+    TextView localTextView = (TextView)paramContext.findViewById(2131431880);
     if (localTextView != null) {
       if (paramString1 != null) {
         localTextView.setText(paramString1);
@@ -301,7 +237,7 @@ public class NativeAdUtils
         localTextView.setVisibility(8);
       }
     }
-    paramString1 = (TextView)paramContext.findViewById(2131365644);
+    paramString1 = (TextView)paramContext.findViewById(2131431876);
     if (paramString1 != null) {
       if (paramString4 != null) {
         paramString1.setText(paramString4);
@@ -309,7 +245,7 @@ public class NativeAdUtils
         paramString1.setVisibility(8);
       }
     }
-    paramString1 = (TextView)paramContext.findViewById(2131365633);
+    paramString1 = (TextView)paramContext.findViewById(2131431864);
     if (paramString1 != null) {
       if (paramString2 != null)
       {
@@ -323,7 +259,7 @@ public class NativeAdUtils
         paramString1.setVisibility(8);
       }
     }
-    paramString1 = (TextView)paramContext.findViewById(2131365639);
+    paramString1 = (TextView)paramContext.findViewById(2131431870);
     if (paramString1 != null) {
       if (paramString3 != null)
       {
@@ -347,99 +283,73 @@ public class NativeAdUtils
     VideoAdInfo localVideoAdInfo = new VideoAdInfo();
     if (paramAdvertisementInfo != null)
     {
-      localVideoAdInfo.jdField_a_of_type_Long = paramAdvertisementInfo.mAdFetchTime;
-      localVideoAdInfo.jdField_a_of_type_Int = paramAdvertisementInfo.mAdPosLayout;
-      localVideoAdInfo.jdField_b_of_type_Long = paramAdvertisementInfo.mAdPosID;
-      localVideoAdInfo.jdField_c_of_type_Long = paramAdvertisementInfo.mChannelID;
-      localVideoAdInfo.jdField_b_of_type_Int = paramAdvertisementInfo.mAdKdPos;
-      localVideoAdInfo.jdField_a_of_type_JavaLangString = paramAdvertisementInfo.mAdCl;
-      localVideoAdInfo.jdField_b_of_type_JavaLangString = paramAdvertisementInfo.mAdImg;
-      localVideoAdInfo.jdField_c_of_type_JavaLangString = paramAdvertisementInfo.mAdImgs;
-      localVideoAdInfo.jdField_d_of_type_JavaLangString = paramAdvertisementInfo.mAdTxt;
-      localVideoAdInfo.jdField_e_of_type_JavaLangString = paramAdvertisementInfo.mAdDesc;
-      localVideoAdInfo.jdField_f_of_type_JavaLangString = paramAdvertisementInfo.mAdRl;
-      localVideoAdInfo.jdField_g_of_type_JavaLangString = paramAdvertisementInfo.mAdApurl;
-      localVideoAdInfo.jdField_h_of_type_JavaLangString = paramAdvertisementInfo.mAdTraceId;
-      localVideoAdInfo.i = paramAdvertisementInfo.mAdProductId;
-      localVideoAdInfo.jdField_c_of_type_Int = paramAdvertisementInfo.mAdProductType;
-      localVideoAdInfo.jdField_d_of_type_Int = paramAdvertisementInfo.mAdType;
-      localVideoAdInfo.j = paramAdvertisementInfo.mAdLandingPage;
-      localVideoAdInfo.k = paramAdvertisementInfo.mAdPrice;
-      localVideoAdInfo.jdField_l_of_type_JavaLangString = paramAdvertisementInfo.mAdBtnTxt;
-      localVideoAdInfo.m = paramAdvertisementInfo.mAdViewId;
-      localVideoAdInfo.jdField_n_of_type_JavaLangString = paramAdvertisementInfo.mAdCustomizedInvokeUrl;
-      localVideoAdInfo.o = paramAdvertisementInfo.mAdCorporationName;
-      localVideoAdInfo.jdField_p_of_type_JavaLangString = paramAdvertisementInfo.mAdCorporateImageName;
-      localVideoAdInfo.jdField_q_of_type_JavaLangString = paramAdvertisementInfo.mAdCorporateLogo;
-      localVideoAdInfo.jdField_d_of_type_Long = paramAdvertisementInfo.mAdUin;
-      localVideoAdInfo.r = paramAdvertisementInfo.mAdExt;
-      localVideoAdInfo.s = paramAdvertisementInfo.mAdVideoUrl;
-      localVideoAdInfo.jdField_e_of_type_Int = paramAdvertisementInfo.mAdCostType;
-      localVideoAdInfo.jdField_e_of_type_Long = paramAdvertisementInfo.mAdAid;
-      localVideoAdInfo.jdField_f_of_type_Int = paramAdvertisementInfo.mAdLayout;
-      localVideoAdInfo.jdField_g_of_type_Int = paramAdvertisementInfo.mAdMaterialId;
-      localVideoAdInfo.t = paramAdvertisementInfo.mAdVia;
-      localVideoAdInfo.v = paramAdvertisementInfo.mAdExtInfo;
-      localVideoAdInfo.jdField_l_of_type_Int = paramAdvertisementInfo.mAdJumpMode;
-      localVideoAdInfo.w = paramAdvertisementInfo.mAdAppJson;
-      localVideoAdInfo.x = paramAdvertisementInfo.mAdAppDownLoadSchema;
-      localVideoAdInfo.y = paramAdvertisementInfo.mAdCanvasJson;
-      localVideoAdInfo.z = paramAdvertisementInfo.mAdLandingPageReportUrl;
-      localVideoAdInfo.jdField_g_of_type_Long = paramAdvertisementInfo.mAdAdvertiseId;
-      localVideoAdInfo.jdField_n_of_type_Int = paramAdvertisementInfo.mAdDestType;
-      localVideoAdInfo.A = paramAdvertisementInfo.mAdEffectUrl;
-      localVideoAdInfo.jdField_h_of_type_Long = paramAdvertisementInfo.mAdNocoId;
-      localVideoAdInfo.B = paramAdvertisementInfo.mAdDownloadApiUrl;
-      localVideoAdInfo.jdField_p_of_type_Int = paramAdvertisementInfo.mC2SSwitch;
-      localVideoAdInfo.jdField_f_of_type_JavaUtilArrayList = paramAdvertisementInfo.mC2SClickUrl;
-      localVideoAdInfo.jdField_g_of_type_JavaUtilArrayList = paramAdvertisementInfo.mC2SExposureUrl;
-      localVideoAdInfo.jdField_q_of_type_Int = paramAdvertisementInfo.replay;
+      localVideoAdInfo.a = paramAdvertisementInfo.mAdFetchTime;
+      localVideoAdInfo.b = paramAdvertisementInfo.mAdPosLayout;
+      localVideoAdInfo.c = paramAdvertisementInfo.mAdPosID;
+      localVideoAdInfo.d = paramAdvertisementInfo.mChannelID;
+      localVideoAdInfo.e = paramAdvertisementInfo.mAdKdPos;
+      localVideoAdInfo.f = paramAdvertisementInfo.mAdCl;
+      localVideoAdInfo.g = paramAdvertisementInfo.mAdImg;
+      localVideoAdInfo.h = paramAdvertisementInfo.mAdImgs;
+      localVideoAdInfo.i = paramAdvertisementInfo.mAdTxt;
+      localVideoAdInfo.j = paramAdvertisementInfo.mAdDesc;
+      localVideoAdInfo.k = paramAdvertisementInfo.mAdRl;
+      localVideoAdInfo.l = paramAdvertisementInfo.mAdApurl;
+      localVideoAdInfo.m = paramAdvertisementInfo.mAdTraceId;
+      localVideoAdInfo.n = paramAdvertisementInfo.mAdProductId;
+      localVideoAdInfo.o = paramAdvertisementInfo.mAdProductType;
+      localVideoAdInfo.p = paramAdvertisementInfo.mAdType;
+      localVideoAdInfo.r = paramAdvertisementInfo.mAdLandingPage;
+      localVideoAdInfo.s = paramAdvertisementInfo.mAdPrice;
+      localVideoAdInfo.t = paramAdvertisementInfo.mAdBtnTxt;
+      localVideoAdInfo.u = paramAdvertisementInfo.mAdViewId;
+      localVideoAdInfo.v = paramAdvertisementInfo.mAdCustomizedInvokeUrl;
+      localVideoAdInfo.w = paramAdvertisementInfo.mAdCorporationName;
+      localVideoAdInfo.x = paramAdvertisementInfo.mAdCorporateImageName;
+      localVideoAdInfo.y = paramAdvertisementInfo.mAdCorporateLogo;
+      localVideoAdInfo.z = paramAdvertisementInfo.mAdUin;
+      localVideoAdInfo.A = paramAdvertisementInfo.mAdExt;
+      localVideoAdInfo.B = paramAdvertisementInfo.mAdVideoUrl;
+      localVideoAdInfo.C = paramAdvertisementInfo.mAdCostType;
+      localVideoAdInfo.G = paramAdvertisementInfo.mAdAid;
+      localVideoAdInfo.H = paramAdvertisementInfo.mAdLayout;
+      localVideoAdInfo.I = paramAdvertisementInfo.mAdMaterialId;
+      localVideoAdInfo.L = paramAdvertisementInfo.mAdVia;
+      localVideoAdInfo.R = paramAdvertisementInfo.mAdExtInfo;
+      localVideoAdInfo.S = paramAdvertisementInfo.mAdJumpMode;
+      localVideoAdInfo.T = paramAdvertisementInfo.mAdAppJson;
+      localVideoAdInfo.W = paramAdvertisementInfo.mAdAppDownLoadSchema;
+      localVideoAdInfo.X = paramAdvertisementInfo.mAdCanvasJson;
+      localVideoAdInfo.Y = paramAdvertisementInfo.mAdLandingPageReportUrl;
+      localVideoAdInfo.Z = paramAdvertisementInfo.mAdAdvertiseId;
+      localVideoAdInfo.aa = paramAdvertisementInfo.mAdDestType;
+      localVideoAdInfo.ab = paramAdvertisementInfo.mAdEffectUrl;
+      localVideoAdInfo.ac = paramAdvertisementInfo.mAdNocoId;
+      localVideoAdInfo.ad = paramAdvertisementInfo.mAdDownloadApiUrl;
+      localVideoAdInfo.af = paramAdvertisementInfo.mCToSSwitch;
+      localVideoAdInfo.ag = paramAdvertisementInfo.mCToSClickUrl;
+      localVideoAdInfo.ah = paramAdvertisementInfo.mCToSExposureUrl;
+      localVideoAdInfo.ak = paramAdvertisementInfo.replay;
       paramAdvertisementInfo = paramAdvertisementInfo.mAdDislikeInfos;
       if ((paramAdvertisementInfo != null) && (!paramAdvertisementInfo.isEmpty()))
       {
-        localVideoAdInfo.jdField_e_of_type_JavaUtilArrayList = new ArrayList(paramAdvertisementInfo.size());
+        localVideoAdInfo.P = new ArrayList(paramAdvertisementInfo.size());
         int i = 0;
         while (i < paramAdvertisementInfo.size())
         {
           AdDislikeInfo localAdDislikeInfo = (AdDislikeInfo)paramAdvertisementInfo.get(i);
           VideoAdInfo.NegFeedback localNegFeedback = new VideoAdInfo.NegFeedback();
-          localNegFeedback.jdField_a_of_type_JavaLangString = localAdDislikeInfo.jdField_a_of_type_JavaLangString;
-          localNegFeedback.jdField_a_of_type_Long = localAdDislikeInfo.jdField_a_of_type_Long;
-          localVideoAdInfo.jdField_e_of_type_JavaUtilArrayList.add(localNegFeedback);
+          localNegFeedback.b = localAdDislikeInfo.c;
+          localNegFeedback.a = localAdDislikeInfo.e;
+          localVideoAdInfo.P.add(localNegFeedback);
           i += 1;
         }
       }
-      localVideoAdInfo.a(localVideoAdInfo.v);
-      localVideoAdInfo.c(localVideoAdInfo.v);
-      localVideoAdInfo.b(localVideoAdInfo.v);
+      localVideoAdInfo.a(localVideoAdInfo.R);
+      localVideoAdInfo.c(localVideoAdInfo.R);
+      localVideoAdInfo.b(localVideoAdInfo.R);
     }
     return localVideoAdInfo;
-  }
-  
-  public static String a()
-  {
-    try
-    {
-      if (jdField_a_of_type_JavaLangString == null) {
-        if (BaseApplicationImpl.getApplication().peekAppRuntime() == null)
-        {
-          jdField_a_of_type_JavaLangString = "";
-        }
-        else
-        {
-          localObject1 = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySP(true, false);
-          if (localObject1 != null) {
-            jdField_a_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("sp_key_ad_cookie", "");
-          } else {
-            jdField_a_of_type_JavaLangString = "";
-          }
-        }
-      }
-      b("getAdCookie cookie=", jdField_a_of_type_JavaLangString);
-      Object localObject1 = jdField_a_of_type_JavaLangString;
-      return localObject1;
-    }
-    finally {}
   }
   
   public static String a(double paramDouble)
@@ -472,16 +382,11 @@ public class NativeAdUtils
   
   public static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext, String paramString1, String paramString2)
   {
-    double d = a(paramAbsBaseArticleInfo, paramContext, paramString1, paramString2);
+    double d = b(paramAbsBaseArticleInfo, paramContext, paramString1, paramString2);
     if (d > 0.0D) {
       return a(d);
     }
     return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    return MD5.a(paramString);
   }
   
   public static JSONObject a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, ReportConstants.VideoEndType paramVideoEndType)
@@ -534,17 +439,17 @@ public class NativeAdUtils
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("dma", AdDeviceInfoUtil.c());
-      localJSONObject.put("hwm", DeviceInfoUtil.i());
-      localJSONObject.put("hwma", DeviceInfoUtil.h());
-      localJSONObject.put("osver", DeviceInfoUtil.e());
+      localJSONObject.put("dma", AdDeviceInfoUtil.d());
+      localJSONObject.put("hwm", DeviceInfoUtil.u());
+      localJSONObject.put("hwma", DeviceInfoUtil.t());
+      localJSONObject.put("osver", DeviceInfoUtil.g());
       localJSONObject.put("imei", AdDeviceInfoUtil.a());
-      localJSONObject.put("brd", DeviceInfoUtil.k());
+      localJSONObject.put("brd", DeviceInfoUtil.w());
       localJSONObject.put("ns", HttpUtil.getNetWorkTypeByStr());
       localJSONObject.put("andid", Settings.Secure.getString(paramContext.getContentResolver(), "android_id"));
       localJSONObject.put("mid", "mid");
       localJSONObject.put("pf", "android");
-      localJSONObject.put("wn", NetworkUtils.c(paramContext));
+      localJSONObject.put("wn", NetworkUtils.e(paramContext));
       String str = "";
       int i = a();
       if (i != 1)
@@ -552,15 +457,15 @@ public class NativeAdUtils
         if (i != 2)
         {
           if (i == 3) {
-            str = HardCodeUtil.a(2131707100);
+            str = HardCodeUtil.a(2131904938);
           }
         }
         else {
-          str = HardCodeUtil.a(2131707102);
+          str = HardCodeUtil.a(2131904940);
         }
       }
       else {
-        str = HardCodeUtil.a(2131707104);
+        str = HardCodeUtil.a(2131904942);
       }
       localJSONObject.put("mnc", str);
       localJSONObject.put("rma", ((IRIJNetworkUtils)QRoute.api(IRIJNetworkUtils.class)).getWifiMacAddress(paramContext));
@@ -573,19 +478,11 @@ public class NativeAdUtils
     return localJSONObject;
   }
   
-  public static JSONObject a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mBusiJson != null)) {
-      return paramAdvertisementInfo.mBusiJson;
-    }
-    return new JSONObject();
-  }
-  
   public static JSONObject a(AdvertisementInfo paramAdvertisementInfo, HashMap<String, Object> paramHashMap)
   {
     JSONObject localJSONObject = new JSONObject();
     if (paramAdvertisementInfo != null) {
-      localJSONObject = a(paramAdvertisementInfo);
+      localJSONObject = b(paramAdvertisementInfo);
     }
     return ReadInJoyJsonUtil.a(new JSONObject[] { localJSONObject, a(paramHashMap) });
   }
@@ -598,29 +495,29 @@ public class NativeAdUtils
       localJSONObject.put("uin", paramQQAppInterface.getAccount());
       localJSONObject.put("ts", NetConnInfoCenter.getServerTimeMillis());
       localJSONObject.put("dinfo", a(paramQQAppInterface.getApplication().getApplicationContext()));
-      localJSONObject.put("ver", "8.7.0");
+      localJSONObject.put("ver", "8.8.17");
       localJSONObject.put("type", paramInt1);
       localJSONObject.put("stype", paramInt2);
       localJSONObject.put("isdpg", 1);
       if (paramAdData != null)
       {
         if (paramInt1 == 1) {
-          paramQQAppInterface = paramAdData.m;
+          paramQQAppInterface = paramAdData.p;
         } else {
-          paramQQAppInterface = paramAdData.o;
+          paramQQAppInterface = paramAdData.r;
         }
         localJSONObject.put("ext", paramQQAppInterface);
-        localJSONObject.put("oudid", paramAdData.s);
+        localJSONObject.put("oudid", paramAdData.x);
         boolean bool = paramAdData instanceof AttachedAdData;
         if (bool)
         {
-          localJSONObject.put("aname", paramAdData.j);
-          localJSONObject.put("posid", paramAdData.jdField_e_of_type_Int);
+          localJSONObject.put("aname", paramAdData.l);
+          localJSONObject.put("posid", paramAdData.y);
         }
         else
         {
-          localJSONObject.put("aname", paramAdData.jdField_q_of_type_JavaLangString);
-          localJSONObject.put("posid", paramAdData.i);
+          localJSONObject.put("aname", paramAdData.u);
+          localJSONObject.put("posid", paramAdData.k);
         }
       }
       if (paramJSONObject != null)
@@ -636,20 +533,9 @@ public class NativeAdUtils
     return localJSONObject;
   }
   
-  public static JSONObject a(AdData paramAdData)
-  {
-    if (paramAdData == null) {
-      return new JSONObject();
-    }
-    if (paramAdData.a != null) {
-      return a(paramAdData.a);
-    }
-    return a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData));
-  }
-  
   public static JSONObject a(AdData paramAdData, HashMap<String, Object> paramHashMap)
   {
-    return ReadInJoyJsonUtil.a(new JSONObject[] { a(paramAdData), a(paramHashMap) });
+    return ReadInJoyJsonUtil.a(new JSONObject[] { b(paramAdData), a(paramHashMap) });
   }
   
   public static JSONObject a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, HashMap<String, Object> paramHashMap)
@@ -723,20 +609,20 @@ public class NativeAdUtils
       if (paramBannerInfo == null) {
         return;
       }
-      String str1 = paramBannerInfo.jdField_f_of_type_JavaLangString;
-      String str2 = paramBannerInfo.jdField_d_of_type_JavaLangString;
-      String str3 = paramBannerInfo.j;
-      paramBannerInfo = paramBannerInfo.i;
+      String str1 = paramBannerInfo.h;
+      String str2 = paramBannerInfo.f;
+      String str3 = paramBannerInfo.l;
+      paramBannerInfo = paramBannerInfo.k;
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)))
       {
         if (TextUtils.isEmpty(paramBannerInfo)) {
           return;
         }
         Bundle localBundle = new Bundle();
-        localBundle.putString(DownloadConstants.jdField_f_of_type_JavaLangString, str1);
-        localBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, str2);
+        localBundle.putString(DownloadConstants.f, str1);
+        localBundle.putString(DownloadConstants.b, str2);
         localBundle.putString(DownloadConstants.j, str3);
-        localBundle.putString(DownloadConstants.jdField_l_of_type_JavaLangString, paramBannerInfo);
+        localBundle.putString(DownloadConstants.l, paramBannerInfo);
         localBundle.putInt(DownloadConstants.k, 2);
         localBundle.putInt(DownloadConstants.G, 0);
         localBundle.putBoolean(DownloadConstants.y, false);
@@ -756,29 +642,10 @@ public class NativeAdUtils
           QLog.d("NativeAdUtils", 2, localStringBuilder.toString());
         }
         if (paramDownloadListener != null) {
-          DownloadManager.a().a(paramDownloadListener);
+          DownloadManager.b().a(paramDownloadListener);
         }
         DownloadApi.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
       }
-    }
-  }
-  
-  private static void a(Context paramContext)
-  {
-    if (jdField_a_of_type_Int >= 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation retryLocationCount >= 3");
-      }
-      return;
-    }
-    if ((paramContext != null) && (NetworkUtil.isNetworkAvailable(paramContext)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation network is Available...");
-      }
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new NativeAdUtils.4("readinjoy_feed_ad_distance"));
-      jdField_a_of_type_Int += 1;
     }
   }
   
@@ -787,19 +654,19 @@ public class NativeAdUtils
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("page_id", paramAdReportExtData.jdField_a_of_type_Long);
-      localJSONObject.put("oper_module", paramAdReportExtData.jdField_b_of_type_Long);
-      localJSONObject.put("oper_id", paramAdReportExtData.jdField_c_of_type_Long);
-      localJSONObject.put("oper_type", paramAdReportExtData.jdField_d_of_type_Long);
-      localJSONObject.put("obj_id", paramAdReportExtData.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("obj_type", paramAdReportExtData.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("game_pkg", paramAdReportExtData.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("app_id", paramAdReportExtData.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("ex1", paramAdReportExtData.jdField_e_of_type_JavaLangString);
-      localJSONObject.put("ex2", paramAdReportExtData.jdField_f_of_type_JavaLangString);
-      localJSONObject.put("ex3", paramAdReportExtData.jdField_g_of_type_JavaLangString);
-      localJSONObject.put("ex4", paramAdReportExtData.jdField_h_of_type_JavaLangString);
-      localJSONObject.put("loc_id", paramAdReportExtData.i);
+      localJSONObject.put("page_id", paramAdReportExtData.a);
+      localJSONObject.put("oper_module", paramAdReportExtData.b);
+      localJSONObject.put("oper_id", paramAdReportExtData.c);
+      localJSONObject.put("oper_type", paramAdReportExtData.d);
+      localJSONObject.put("obj_id", paramAdReportExtData.e);
+      localJSONObject.put("obj_type", paramAdReportExtData.f);
+      localJSONObject.put("game_pkg", paramAdReportExtData.g);
+      localJSONObject.put("app_id", paramAdReportExtData.h);
+      localJSONObject.put("ex1", paramAdReportExtData.i);
+      localJSONObject.put("ex2", paramAdReportExtData.j);
+      localJSONObject.put("ex3", paramAdReportExtData.k);
+      localJSONObject.put("ex4", paramAdReportExtData.l);
+      localJSONObject.put("loc_id", paramAdReportExtData.m);
       paramAdReportExtData = new JSONObject();
       paramAdReportExtData.put("game_gift_report", String.valueOf(localJSONObject));
       ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(119).b(39).b(Integer.valueOf(6)).e(paramAdReportExtData));
@@ -820,8 +687,8 @@ public class NativeAdUtils
       {
         if (paramAbsBaseArticleInfo.mSmallMiniGameInfo != null)
         {
-          Object localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.j;
-          boolean bool = ReadInJoyAdUtils.i(paramAbsBaseArticleInfo);
+          Object localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.m;
+          boolean bool = ReadInJoyAdUtils.j(paramAbsBaseArticleInfo);
           long l2 = 0L;
           if (bool)
           {
@@ -831,7 +698,7 @@ public class NativeAdUtils
             }
             l1 = 5040402L;
           }
-          else if (ReadInJoyAdUtils.g(paramAbsBaseArticleInfo))
+          else if (ReadInJoyAdUtils.h(paramAbsBaseArticleInfo))
           {
             l2 = 50403L;
             if (paramInt2 != 1) {
@@ -839,7 +706,7 @@ public class NativeAdUtils
             }
             l1 = 5040302L;
           }
-          else if (ReadInJoyAdUtils.j(paramAbsBaseArticleInfo))
+          else if (ReadInJoyAdUtils.k(paramAbsBaseArticleInfo))
           {
             l2 = 50402L;
             if (paramInt2 != 1) {
@@ -857,7 +724,7 @@ public class NativeAdUtils
           }
           else
           {
-            if (!ReadInJoyAdUtils.h(paramAbsBaseArticleInfo)) {
+            if (!ReadInJoyAdUtils.i(paramAbsBaseArticleInfo)) {
               break label386;
             }
             l2 = 50401L;
@@ -873,7 +740,7 @@ public class NativeAdUtils
           l1 = 3L;
           AdReportExtData.Builder localBuilder = ((AdReportExtData.Builder)localObject).d(l1).a(paramAbsBaseArticleInfo.innerUniqueID).b(paramAbsBaseArticleInfo.mTitle).i(String.valueOf(paramInt1));
           if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideo(paramAbsBaseArticleInfo)) {
-            localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.o;
+            localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.r;
           } else {
             localObject = paramAbsBaseArticleInfo.mSubscribeName;
           }
@@ -881,7 +748,7 @@ public class NativeAdUtils
           if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramAbsBaseArticleInfo.mArticleContentUrl)) {
             paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mArticleContentUrl;
           } else {
-            paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSmallMiniGameInfo.k;
+            paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSmallMiniGameInfo.n;
           }
           a(paramContext, ((AdReportExtData.Builder)localObject).g(paramAbsBaseArticleInfo).a());
           return;
@@ -922,7 +789,7 @@ public class NativeAdUtils
     {
       try
       {
-        if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.a != null))
+        if ((paramAbsBaseArticleInfo.mSmallMiniGameInfo != null) && (paramAbsBaseArticleInfo.mSmallMiniGameInfo.y != null))
         {
           if (paramInt3 != 2) {
             break label208;
@@ -933,7 +800,7 @@ public class NativeAdUtils
           }
           str = "3";
           Object localObject = null;
-          SmallMiniGameInfo.SmallMiniGameData localSmallMiniGameData = (SmallMiniGameInfo.SmallMiniGameData)paramAbsBaseArticleInfo.mSmallMiniGameInfo.a.get(paramInt2);
+          SmallMiniGameInfo.SmallMiniGameData localSmallMiniGameData = (SmallMiniGameInfo.SmallMiniGameData)paramAbsBaseArticleInfo.mSmallMiniGameInfo.y.get(paramInt2);
           paramAbsBaseArticleInfo = localObject;
           if (localSmallMiniGameData != null)
           {
@@ -942,7 +809,7 @@ public class NativeAdUtils
               break label224;
             }
             l = 3L;
-            paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.d(l).d(localSmallMiniGameData.jdField_a_of_type_JavaLangString).i(String.valueOf(paramInt1)).c(localSmallMiniGameData.jdField_d_of_type_JavaLangString).e(localSmallMiniGameData.jdField_c_of_type_JavaLangString).f(String.valueOf(paramInt2 + 1)).g(localSmallMiniGameData.jdField_b_of_type_JavaLangString).h(str).a();
+            paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.d(l).d(localSmallMiniGameData.a).i(String.valueOf(paramInt1)).c(localSmallMiniGameData.d).e(localSmallMiniGameData.c).f(String.valueOf(paramInt2 + 1)).g(localSmallMiniGameData.b).h(str).a();
           }
           if (paramAbsBaseArticleInfo != null)
           {
@@ -972,7 +839,7 @@ public class NativeAdUtils
     if (paramAbsBaseArticleInfo.mSmallMiniGameInfo == null) {
       return;
     }
-    Object localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.j;
+    Object localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.m;
     localObject = new AdReportExtData.Builder().a(504L).b(50407L).c(paramInt2).d((String)localObject);
     long l;
     if (paramBoolean) {
@@ -982,7 +849,7 @@ public class NativeAdUtils
     }
     AdReportExtData.Builder localBuilder = ((AdReportExtData.Builder)localObject).d(l).a(paramAbsBaseArticleInfo.innerUniqueID).b(paramAbsBaseArticleInfo.mTitle).i(String.valueOf(paramInt1));
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideo(paramAbsBaseArticleInfo)) {
-      localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.o;
+      localObject = paramAbsBaseArticleInfo.mSmallMiniGameInfo.r;
     } else {
       localObject = paramAbsBaseArticleInfo.mSubscribeName;
     }
@@ -990,19 +857,9 @@ public class NativeAdUtils
     if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramAbsBaseArticleInfo.mArticleContentUrl)) {
       paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mArticleContentUrl;
     } else {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSmallMiniGameInfo.k;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSmallMiniGameInfo.n;
     }
     a(paramContext, ((AdReportExtData.Builder)localObject).g(paramAbsBaseArticleInfo).a());
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).launch(paramContext, paramString);
-    paramContext = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
-    paramString = new StringBuilder();
-    paramString.append("launchResult = ");
-    paramString.append(bool);
-    paramContext.d("NativeAdUtils", paramString.toString());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, AdvertisementInfo paramAdvertisementInfo, float paramFloat, long paramLong)
@@ -1029,7 +886,7 @@ public class NativeAdUtils
   {
     if (ReadInJoyAdSwitchUtil.a(paramAdData))
     {
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(81).b(a(paramAdData)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).d(a(paramAdData)));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(81).b(a(paramAdData)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).d(b(paramAdData)));
       return;
     }
     a(paramQQAppInterface, a(paramQQAppInterface, paramAdData, 81, 1, null).toString());
@@ -1061,7 +918,7 @@ public class NativeAdUtils
         return;
       }
       IRIJAdService localIRIJAdService = (IRIJAdService)QRoute.api(IRIJAdService.class);
-      paramQQAppInterface = new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(2).b(a(paramAdData)).a(localAdvertisementInfo).c(localJSONObject).d(a(paramAdData));
+      paramQQAppInterface = new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(2).b(a(paramAdData)).a(localAdvertisementInfo).c(localJSONObject).d(b(paramAdData));
       if (paramBoolean) {
         i = 2;
       }
@@ -1078,7 +935,7 @@ public class NativeAdUtils
   {
     if (ReadInJoyAdSwitchUtil.a(paramAdData, false))
     {
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(1).b(paramInteger).b(1).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).d(a(paramAdData)).c(paramInt));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(1).b(paramInteger).b(1).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).d(b(paramAdData)).c(paramInt));
       return;
     }
     a(paramQQAppInterface, a(paramQQAppInterface, paramAdData, 1, 3, null).toString());
@@ -1111,7 +968,7 @@ public class NativeAdUtils
         else
         {
           IRIJAdService localIRIJAdService = (IRIJAdService)QRoute.api(IRIJAdService.class);
-          paramQQAppInterface = new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(2).b(a(paramAdData)).a(localAdvertisementInfo).d(a(paramAdData));
+          paramQQAppInterface = new AdReportData().a(paramQQAppInterface).a(BaseApplication.getContext()).a(2).b(a(paramAdData)).a(localAdvertisementInfo).d(b(paramAdData));
           if (paramBoolean) {
             i = 2;
           }
@@ -1127,9 +984,9 @@ public class NativeAdUtils
       }
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(" reportNativeEngineAdExposure ");
-      paramQQAppInterface.append(paramAdData.j);
+      paramQQAppInterface.append(paramAdData.l);
       paramQQAppInterface.append("  : ");
-      paramQQAppInterface.append(paramAdData.k);
+      paramQQAppInterface.append(paramAdData.m);
       QLog.d("Q.readinjoy.fast_web", 2, paramQQAppInterface.toString());
     }
   }
@@ -1166,7 +1023,7 @@ public class NativeAdUtils
       localJSONObject.put("adId", paramString1);
       localJSONObject.put("channelId", paramString2);
       localJSONObject.put("info", paramString3);
-      localJSONObject.put("version", "8.7.0");
+      localJSONObject.put("version", "8.8.17");
       localJSONObject.put("actionCode", paramInt1);
       localJSONObject.put("subType", paramInt2);
       if (paramInt1 == 4) {
@@ -1197,7 +1054,7 @@ public class NativeAdUtils
     }
     try
     {
-      jdField_a_of_type_JavaLangString = str;
+      b = str;
       ThreadManager.executeOnFileThread(new NativeAdUtils.3(str));
       return;
     }
@@ -1206,27 +1063,6 @@ public class NativeAdUtils
       paramString = finally;
       throw paramString;
     }
-  }
-  
-  private static boolean a()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    boolean bool = false;
-    if (localBaseActivity == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("NativeAdUtils", 2, "getADPosition activity null");
-      }
-      return false;
-    }
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      if (localBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    return true;
   }
   
   public static boolean a(int paramInt)
@@ -1255,16 +1091,16 @@ public class NativeAdUtils
   
   public static boolean a(BannerInfo paramBannerInfo)
   {
-    String str1 = paramBannerInfo.jdField_f_of_type_JavaLangString;
-    String str2 = paramBannerInfo.jdField_d_of_type_JavaLangString;
-    String str3 = paramBannerInfo.j;
-    paramBannerInfo = paramBannerInfo.i;
+    String str1 = paramBannerInfo.h;
+    String str2 = paramBannerInfo.f;
+    String str3 = paramBannerInfo.l;
+    paramBannerInfo = paramBannerInfo.k;
     Bundle localBundle = new Bundle();
     localBundle.putInt(DownloadConstants.k, 5);
-    localBundle.putString(DownloadConstants.jdField_f_of_type_JavaLangString, str1);
-    localBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, str2);
+    localBundle.putString(DownloadConstants.f, str1);
+    localBundle.putString(DownloadConstants.b, str2);
     localBundle.putString(DownloadConstants.j, str3);
-    localBundle.putString(DownloadConstants.jdField_l_of_type_JavaLangString, paramBannerInfo);
+    localBundle.putString(DownloadConstants.l, paramBannerInfo);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1278,7 +1114,7 @@ public class NativeAdUtils
       localStringBuilder.append(str3);
       QLog.d("NativeAdUtils", 2, localStringBuilder.toString());
     }
-    return DownloadApi.a(localBundle);
+    return DownloadApi.c(localBundle);
   }
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -1292,14 +1128,14 @@ public class NativeAdUtils
     }
     try
     {
-      String str1 = paramAbsBaseArticleInfo.mLocalInfo.jdField_d_of_type_JavaLangString;
-      double d = Double.parseDouble(paramAbsBaseArticleInfo.mLocalInfo.jdField_e_of_type_JavaLangString);
+      String str1 = paramAbsBaseArticleInfo.mLocalInfo.d;
+      double d = Double.parseDouble(paramAbsBaseArticleInfo.mLocalInfo.e);
       if ((Double.parseDouble(str1) == 0.0D) && (d == 0.0D)) {
         return false;
       }
-      str1 = paramAbsBaseArticleInfo.mLocalInfo.jdField_c_of_type_JavaLangString;
-      String str2 = paramAbsBaseArticleInfo.mLocalInfo.jdField_f_of_type_JavaLangString;
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mLocalInfo.jdField_b_of_type_JavaLangString;
+      str1 = paramAbsBaseArticleInfo.mLocalInfo.c;
+      String str2 = paramAbsBaseArticleInfo.mLocalInfo.f;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mLocalInfo.b;
       if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
       {
         boolean bool = TextUtils.isEmpty(paramAbsBaseArticleInfo);
@@ -1317,35 +1153,147 @@ public class NativeAdUtils
     return false;
   }
   
-  public static double[] a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static double b(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext, String paramString1, String paramString2)
   {
-    if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
-      return null;
-    }
-    paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
-    if (paramAbsBaseArticleInfo.mLocalInfo == null) {
-      return null;
+    SosoLbsInfo localSosoLbsInfo;
+    if (paramContext != null)
+    {
+      if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
+        return 0.0D;
+      }
+      localSosoLbsInfo = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("readinjoy_feed_ad_distance");
+      if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null))
+      {
+        paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+        if (TextUtils.isEmpty(paramAbsBaseArticleInfo.mAdExtInfo)) {
+          return 0.0D;
+        }
+      }
     }
     try
     {
-      String str = paramAbsBaseArticleInfo.mLocalInfo.jdField_d_of_type_JavaLangString;
-      double d1 = ParseUtil.a(paramAbsBaseArticleInfo.mLocalInfo.jdField_e_of_type_JavaLangString, 0.0D);
-      double d2 = ParseUtil.a(str, 0.0D);
-      if ((d2 == 0.0D) && (d1 == 0.0D)) {
-        return null;
+      paramAbsBaseArticleInfo = new JSONObject(paramAbsBaseArticleInfo.mAdExtInfo);
+      double d1 = paramAbsBaseArticleInfo.getDouble(paramString1);
+      double d2 = paramAbsBaseArticleInfo.getDouble(paramString2);
+      double d3 = localSosoLbsInfo.mLocation.mLat02;
+      double d4 = localSosoLbsInfo.mLocation.mLon02;
+      if (QLog.isColorLevel())
+      {
+        paramAbsBaseArticleInfo = new StringBuilder();
+        paramAbsBaseArticleInfo.append("getADPosition cached latitude =  ");
+        paramAbsBaseArticleInfo.append(d3);
+        paramAbsBaseArticleInfo.append(" longitude = ");
+        paramAbsBaseArticleInfo.append(d4);
+        paramAbsBaseArticleInfo.append(" adLatitude = ");
+        paramAbsBaseArticleInfo.append(d1);
+        paramAbsBaseArticleInfo.append(" adLongitude = ");
+        paramAbsBaseArticleInfo.append(d2);
+        QLog.d("NativeAdUtils", 2, paramAbsBaseArticleInfo.toString());
       }
-      return new double[] { d1, d2 };
+      if ((d3 > 0.0D) && (d3 < 90.0D) && (d4 > 0.0D) && (d4 < 180.0D) && (d1 > 0.0D) && (d1 < 90.0D) && (d2 > 0.0D))
+      {
+        if (d2 >= 180.0D) {
+          return 0.0D;
+        }
+        return TencentLocationUtils.distanceBetween(d3, d4, d1, d2);
+        if (QLog.isColorLevel()) {
+          QLog.d("NativeAdUtils", 2, "getADPosition not  cached ......");
+        }
+        if (c())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NativeAdUtils", 2, "getADPosition Permission PERMISSION_GRANTED");
+          }
+          b(paramContext);
+          return 0.0D;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("NativeAdUtils", 2, "getADPosition Permission DENY,need to permission ...");
+        }
+      }
+      return 0.0D;
     }
     catch (Exception paramAbsBaseArticleInfo) {}
-    return null;
+    return 0.0D;
   }
   
-  public static void b(String paramString)
+  public static String b()
   {
-    if (TextUtils.isEmpty(paramString)) {
+    try
+    {
+      if (b == null) {
+        if (BaseApplicationImpl.getApplication().peekAppRuntime() == null)
+        {
+          b = "";
+        }
+        else
+        {
+          localObject1 = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySP(true, false);
+          if (localObject1 != null) {
+            b = ((SharedPreferences)localObject1).getString("sp_key_ad_cookie", "");
+          } else {
+            b = "";
+          }
+        }
+      }
+      b("getAdCookie cookie=", b);
+      Object localObject1 = b;
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  public static String b(String paramString)
+  {
+    return MD5.b(paramString);
+  }
+  
+  public static JSONObject b(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mBusiJson != null)) {
+      return paramAdvertisementInfo.mBusiJson;
+    }
+    return new JSONObject();
+  }
+  
+  public static JSONObject b(AdData paramAdData)
+  {
+    if (paramAdData == null) {
+      return new JSONObject();
+    }
+    if (paramAdData.j != null) {
+      return b(paramAdData.j);
+    }
+    return b(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData));
+  }
+  
+  private static void b(Context paramContext)
+  {
+    if (a >= 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation retryLocationCount >= 3");
+      }
       return;
     }
-    ThreadManager.excute(new NativeAdUtils.5(paramString), 128, null, false);
+    if ((paramContext != null) && (NetworkUtil.isNetworkAvailable(paramContext)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation network is Available...");
+      }
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new NativeAdUtils.4("readinjoy_feed_ad_distance"));
+      a += 1;
+    }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).launch(paramContext, paramString);
+    paramContext = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+    paramString = new StringBuilder();
+    paramString.append("launchResult = ");
+    paramString.append(bool);
+    paramContext.d("NativeAdUtils", paramString.toString());
   }
   
   private static void b(String paramString1, String paramString2)
@@ -1359,10 +1307,62 @@ public class NativeAdUtils
       QLog.d("NativeAdUtils", 2, localStringBuilder.toString());
     }
   }
+  
+  public static double[] b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (!(paramAbsBaseArticleInfo instanceof AdvertisementInfo)) {
+      return null;
+    }
+    paramAbsBaseArticleInfo = (AdvertisementInfo)paramAbsBaseArticleInfo;
+    if (paramAbsBaseArticleInfo.mLocalInfo == null) {
+      return null;
+    }
+    try
+    {
+      String str = paramAbsBaseArticleInfo.mLocalInfo.d;
+      double d1 = ParseUtil.a(paramAbsBaseArticleInfo.mLocalInfo.e, 0.0D);
+      double d2 = ParseUtil.a(str, 0.0D);
+      if ((d2 == 0.0D) && (d1 == 0.0D)) {
+        return null;
+      }
+      return new double[] { d1, d2 };
+    }
+    catch (Exception paramAbsBaseArticleInfo) {}
+    return null;
+  }
+  
+  public static void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ThreadManager.excute(new NativeAdUtils.5(paramString), 128, null, false);
+  }
+  
+  private static boolean c()
+  {
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    boolean bool = false;
+    if (localBaseActivity == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NativeAdUtils", 2, "getADPosition activity null");
+      }
+      return false;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (localBaseActivity.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") == 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import com.tencent.qphone.base.util.QLog;
 public class AudioPanelViewPager
   extends ViewPager
 {
-  private AudioPanel a;
   public boolean a;
+  private AudioPanel b;
   
   public AudioPanelViewPager(Context paramContext)
   {
@@ -25,18 +25,18 @@ public class AudioPanelViewPager
   
   public void a(AudioPanel paramAudioPanel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel = paramAudioPanel;
+    this.b = paramAudioPanel;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel.b() == 1) {
+    if (this.b.getStatus() == 1) {
       try
       {
         boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
@@ -71,7 +71,7 @@ public class AudioPanelViewPager
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -91,12 +91,12 @@ public class AudioPanelViewPager
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
     super.setAdapter(paramPagerAdapter);
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelViewPager
  * JD-Core Version:    0.7.0.1
  */

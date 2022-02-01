@@ -12,7 +12,7 @@ class PoiMapActivity$5
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    this.a.z.setText("");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

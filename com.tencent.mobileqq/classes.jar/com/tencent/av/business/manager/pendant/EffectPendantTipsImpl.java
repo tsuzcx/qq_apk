@@ -14,22 +14,22 @@ import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 public class EffectPendantTipsImpl
   implements EffectPendantTips
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private VideoAppInterface a;
+  private final Context b;
+  private final Handler c;
+  private final SparseIntArray d;
   
   public EffectPendantTipsImpl(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131695468);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131695466);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131695465);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131695469);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131695467);
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(100, 2131695455);
+    this.b = paramContext;
+    this.c = new Handler(Looper.getMainLooper());
+    this.d = new SparseIntArray();
+    this.d.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131893225);
+    this.d.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131893223);
+    this.d.put(PTFaceAttr.PTExpression.BLINK.value, 2131893222);
+    this.d.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131893226);
+    this.d.put(PTFaceAttr.PTExpression.KISS.value, 2131893224);
+    this.d.put(100, 2131893205);
   }
   
   private void c(String paramString)
@@ -37,12 +37,12 @@ public class EffectPendantTipsImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.5(this, paramString));
+    this.c.post(new EffectPendantTipsImpl.5(this, paramString));
   }
   
   public String a(Context paramContext, int paramInt)
   {
-    paramInt = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt);
+    paramInt = this.d.get(paramInt);
     if (paramInt > 0) {
       return paramContext.getResources().getString(paramInt);
     }
@@ -54,12 +54,12 @@ public class EffectPendantTipsImpl
     if (paramInt == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.2(this, paramInt));
+    this.c.post(new EffectPendantTipsImpl.2(this, paramInt));
   }
   
   public void a(int paramInt, EffectPendantTips.ClearErrorTipsCallback paramClearErrorTipsCallback)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.3(this, paramClearErrorTipsCallback), paramInt);
+    this.c.postDelayed(new EffectPendantTipsImpl.3(this, paramClearErrorTipsCallback), paramInt);
   }
   
   public void a(Drawable paramDrawable, String paramString)
@@ -67,12 +67,12 @@ public class EffectPendantTipsImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.1(this, paramString, paramDrawable));
+    this.c.post(new EffectPendantTipsImpl.1(this, paramString, paramDrawable));
   }
   
   public void a(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -90,7 +90,7 @@ public class EffectPendantTipsImpl
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.4(this), paramInt);
+    this.c.postDelayed(new EffectPendantTipsImpl.4(this), paramInt);
   }
   
   public void b(String paramString)

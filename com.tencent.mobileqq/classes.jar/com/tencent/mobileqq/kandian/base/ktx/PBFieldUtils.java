@@ -127,7 +127,7 @@ public final class PBFieldUtils
   }
   
   @Nullable
-  public static final byte[] a(@NotNull PBBytesField paramPBBytesField)
+  public static final byte[] b(@NotNull PBBytesField paramPBBytesField)
   {
     Intrinsics.checkParameterIsNotNull(paramPBBytesField, "$this$toByteArrayOrNull");
     if (paramPBBytesField.has()) {
@@ -138,7 +138,7 @@ public final class PBFieldUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.ktx.PBFieldUtils
  * JD-Core Version:    0.7.0.1
  */

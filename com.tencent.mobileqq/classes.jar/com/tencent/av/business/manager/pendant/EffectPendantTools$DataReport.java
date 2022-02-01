@@ -10,15 +10,15 @@ import java.util.Map;
 
 public class EffectPendantTools$DataReport
 {
-  static long jdField_a_of_type_Long = 0L;
-  static String jdField_a_of_type_JavaLangString;
-  private static String b = "actAVFunChatDecorate";
+  static long a = 0L;
+  static String b;
+  private static String c = "actAVFunChatDecorate";
   
   public static void a(String paramString, VideoAppInterface paramVideoAppInterface)
   {
-    if (paramVideoAppInterface.a(2))
+    if (paramVideoAppInterface.d(2))
     {
-      paramVideoAppInterface = (PendantItem)((EffectPendantTools)paramVideoAppInterface.a(2)).a();
+      paramVideoAppInterface = (PendantItem)((EffectPendantTools)paramVideoAppInterface.c(2)).c();
       if ((paramVideoAppInterface != null) && (!TextUtils.isEmpty(paramVideoAppInterface.getId()))) {
         a(paramString, null);
       }
@@ -28,17 +28,17 @@ public class EffectPendantTools$DataReport
   static void a(String paramString1, String paramString2)
   {
     long l1 = System.currentTimeMillis();
-    if (!Utils.a(paramString2, jdField_a_of_type_JavaLangString))
+    if (!Utils.a(paramString2, b))
     {
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(b))
       {
-        long l2 = jdField_a_of_type_Long;
+        long l2 = a;
         if (l2 != 0L) {
-          a(paramString1, jdField_a_of_type_JavaLangString, (l1 - l2) / 1000L);
+          a(paramString1, b, (l1 - l2) / 1000L);
         }
       }
-      jdField_a_of_type_JavaLangString = paramString2;
-      jdField_a_of_type_Long = l1;
+      b = paramString2;
+      a = l1;
     }
   }
   
@@ -53,7 +53,7 @@ public class EffectPendantTools$DataReport
       localStringBuilder.append(l);
       localStringBuilder.append("");
       ((Map)localObject).put("duration", localStringBuilder.toString());
-      UserAction.onUserAction(b, true, -1L, -1L, (Map)localObject, true);
+      UserAction.onUserAction(c, true, -1L, -1L, (Map)localObject, true);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onStateReport, ID: ");
       ((StringBuilder)localObject).append(paramString2);

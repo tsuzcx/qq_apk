@@ -5,8 +5,6 @@ import android.view.ViewGroup;
 public abstract interface IVideoView
   extends VideoPlayManager.VideoStatusListener
 {
-  public abstract ViewGroup a();
-  
   public abstract void a();
   
   public abstract void a(int paramInt);
@@ -17,11 +15,13 @@ public abstract interface IVideoView
   
   public abstract void a(VideoPlayManager paramVideoPlayManager);
   
-  public abstract boolean a();
-  
   public abstract void b();
   
   public abstract void c();
+  
+  public abstract boolean d();
+  
+  public abstract ViewGroup getVideoContainer();
   
   public abstract void setControlType(int paramInt);
   
@@ -33,7 +33,7 @@ public abstract interface IVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.IVideoView
  * JD-Core Version:    0.7.0.1
  */

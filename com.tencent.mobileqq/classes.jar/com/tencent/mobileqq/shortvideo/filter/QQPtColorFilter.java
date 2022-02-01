@@ -268,36 +268,32 @@ public class QQPtColorFilter
       this.bwork = false;
       return;
     }
-    Object localObject = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+    String str = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
     if (paramFilterDesc != null)
     {
       if (!TextUtils.isEmpty(paramFilterDesc.resRootPath)) {
-        paramFilterDesc = paramFilterDesc.getResFold(paramFilterDesc.resRootPath);
+        str = paramFilterDesc.getResFold(paramFilterDesc.resRootPath);
       } else {
-        paramFilterDesc = paramFilterDesc.getResFold((String)localObject);
+        str = paramFilterDesc.getResFold(str);
       }
     }
     else {
-      paramFilterDesc = "";
+      str = "";
     }
-    localObject = getColorFilterInfo(paramFilterDesc);
-    if (localObject != null)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramFilterDesc.respicname);
+    paramFilterDesc = localStringBuilder.toString();
+    if (new File(paramFilterDesc).exists())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramFilterDesc);
-      localStringBuilder.append(((QQPtColorFilterInfo)localObject).getColorPng());
-      paramFilterDesc = localStringBuilder.toString();
-      if (new File(paramFilterDesc).exists())
-      {
-        setNeedChangeFilter(paramFilterDesc, true);
-        this.bwork = true;
-      }
+      setNeedChangeFilter(paramFilterDesc, true);
+      this.bwork = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter
  * JD-Core Version:    0.7.0.1
  */

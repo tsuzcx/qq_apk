@@ -7,15 +7,15 @@ class MMApkFileSafeChecker$CheckTask$1$1
   
   public void run()
   {
-    if (this.a.a.a) {
+    if (this.a.b.j) {
       return;
     }
-    this.a.a.b();
+    this.a.b.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.MMApkFileSafeChecker.CheckTask.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.view.View;
 
 public abstract class ChatHistoryViewBase
 {
-  public ChatHistoryFileActivity a;
-  boolean i = true;
+  boolean C = true;
+  public ChatHistoryFileActivity D;
   
   public abstract View a();
   
@@ -14,32 +14,32 @@ public abstract class ChatHistoryViewBase
   
   public void a(long paramLong) {}
   
-  public void b() {}
-  
-  public abstract boolean b();
-  
-  public void c() {}
-  
-  protected boolean c()
-  {
-    return this.i;
-  }
-  
   public void d() {}
   
-  public abstract void e();
+  public void e() {}
   
-  public abstract void f();
+  public void f() {}
   
-  protected void k()
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract boolean i();
+  
+  protected boolean p()
   {
-    this.i = false;
+    return this.C;
+  }
+  
+  protected void q()
+  {
+    this.C = false;
     new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryViewBase
  * JD-Core Version:    0.7.0.1
  */

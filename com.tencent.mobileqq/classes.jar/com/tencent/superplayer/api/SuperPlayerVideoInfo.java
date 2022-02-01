@@ -1,6 +1,7 @@
 package com.tencent.superplayer.api;
 
 import com.tencent.qqlive.tvkplayer.vinfo.TVKVideoInfo.Section;
+import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +30,7 @@ public class SuperPlayerVideoInfo
   private String[] mPlayUrls;
   private String mRequestDefinition;
   private TPDownloadParamData mTPDownloadParamData = null;
+  private ITPMediaAsset mTPMediaAssert;
   private String mTVideoLoginCookie;
   private TVideoNetInfo mTVideoNetInfo;
   private ArrayList<TVKVideoInfo.Section> mTVideoSectionList;
@@ -191,6 +193,11 @@ public class SuperPlayerVideoInfo
     return this.mLocalSavePath;
   }
   
+  public ITPMediaAsset getMediaAssert()
+  {
+    return this.mTPMediaAssert;
+  }
+  
   public String getPid()
   {
     return this.mPid;
@@ -323,7 +330,7 @@ public class SuperPlayerVideoInfo
     this.mCookies = paramArrayList;
   }
   
-  void setFileId(String paramString)
+  public void setFileId(String paramString)
   {
     this.mFileId = paramString;
   }
@@ -341,6 +348,11 @@ public class SuperPlayerVideoInfo
   public void setLocalSavePath(String paramString)
   {
     this.mLocalSavePath = paramString;
+  }
+  
+  public void setMediaAssert(ITPMediaAsset paramITPMediaAsset)
+  {
+    this.mTPMediaAssert = paramITPMediaAsset;
   }
   
   public void setPlayUrl(String paramString)
@@ -427,7 +439,7 @@ public class SuperPlayerVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

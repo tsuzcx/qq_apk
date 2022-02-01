@@ -21,18 +21,18 @@ public class LoginImpWns
   public void doLogin(LoginCallback paramLoginCallback)
   {
     LoginRequest localLoginRequest = new LoginRequest();
-    localLoginRequest.jdField_b_of_type_JavaLangString = this.accountId;
-    localLoginRequest.jdField_a_of_type_Int = Integer.parseInt(this.clientType);
+    localLoginRequest.d = this.accountId;
+    localLoginRequest.a = Integer.parseInt(this.clientType);
     if (this.authAppId == null) {
       localObject = "";
     } else {
       localObject = this.authAppId;
     }
-    localLoginRequest.d = ((String)localObject);
-    localLoginRequest.c = this.authKey;
-    localLoginRequest.jdField_a_of_type_JavaLangString = this.deviceId;
-    localLoginRequest.jdField_b_of_type_Int = Integer.parseInt(this.versionCode);
-    localLoginRequest.e = getExtData();
+    localLoginRequest.f = ((String)localObject);
+    localLoginRequest.e = this.authKey;
+    localLoginRequest.c = this.deviceId;
+    localLoginRequest.b = Integer.parseInt(this.versionCode);
+    localLoginRequest.g = getExtData();
     Object localObject = MessageNano.toByteArray(localLoginRequest);
     this.loginServiceAdapter.getChannel().sendWithTRpc("ilive-login_svr-login_svr", "Login", (byte[])localObject, new LoginImpWns.1(this, paramLoginCallback));
   }
@@ -45,12 +45,12 @@ public class LoginImpWns
     {
       localJSONObject1.put("items", localJSONArray);
       int i = 0;
-      while (i < paramConfigKeyValue.a.length)
+      while (i < paramConfigKeyValue.b.length)
       {
-        KeyValueItem localKeyValueItem = paramConfigKeyValue.a[i];
+        KeyValueItem localKeyValueItem = paramConfigKeyValue.b[i];
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("key", localKeyValueItem.jdField_a_of_type_JavaLangString);
-        localJSONObject2.put("value", localKeyValueItem.jdField_b_of_type_JavaLangString);
+        localJSONObject2.put("key", localKeyValueItem.a);
+        localJSONObject2.put("value", localKeyValueItem.b);
         localJSONArray.put(localJSONObject2);
         i += 1;
       }
@@ -64,7 +64,7 @@ public class LoginImpWns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.LoginImpWns
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,16 @@ import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 public class SignatureLoadingDialog
   extends ReportDialog
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
-  TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  SlideDetectListView jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = null;
+  Animatable b = null;
+  SlideDetectListView c = null;
+  TextView d = null;
+  Context e = null;
   
   public SignatureLoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131756192);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560767, null);
+    super(paramContext, 2131953341);
+    this.e = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131627025, null);
     setContentView(paramContext);
     Object localObject = getWindow();
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
@@ -35,19 +35,19 @@ public class SignatureLoadingDialog
     localLayoutParams.height = -1;
     ((Window)localObject).setAttributes(localLayoutParams);
     setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131369202);
+    localObject = (TextView)paramContext.findViewById(2131436180);
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131690706);
+      ((TextView)localObject).setText(2131887625);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369249));
+    this.d = ((TextView)paramContext.findViewById(2131436227));
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+      if (this.d != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131714009));
+        this.d.setVisibility(0);
+        this.d.setText(HardCodeUtil.a(2131911540));
       }
       label143:
       if (QLog.isColorLevel()) {
@@ -64,7 +64,7 @@ public class SignatureLoadingDialog
   public void dismiss()
   {
     super.dismiss();
-    Animatable localAnimatable = this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable;
+    Animatable localAnimatable = this.b;
     if (localAnimatable != null) {
       localAnimatable.stop();
     }
@@ -73,22 +73,22 @@ public class SignatureLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839406));
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null)
+    this.b = ((Animatable)this.e.getResources().getDrawable(2130839590));
+    if (this.b != null)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.d;
       if (localTextView != null)
       {
         localTextView.setCompoundDrawablePadding(10);
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
+        this.d.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.b, null, null, null);
+        this.b.start();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.widget.SignatureLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

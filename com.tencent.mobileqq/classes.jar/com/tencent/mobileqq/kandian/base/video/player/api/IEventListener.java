@@ -5,10 +5,10 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/api/IEventListener;", "", "onCaptureImageFailed", "", "player", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IPlayer;", "id", "", "errCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onDownloadCallback", "downloadedSizeBytes", "", "totalSizeBytes", "info", "", "onError", "", "module", "errorType", "errorCode", "extraInfo", "onInfo", "what", "extra", "onSeekComplete", "onVideoPrepared", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/api/IEventListener;", "", "onCaptureImageFailed", "", "player", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IPlayer;", "id", "", "errCode", "onCaptureImageSucceed", "width", "height", "bitmap", "Landroid/graphics/Bitmap;", "onCompletion", "onDownloadCallback", "downloadedSizeBytes", "", "totalSizeBytes", "extraInfo", "", "info", "onError", "", "module", "errorType", "errorCode", "onInfo", "what", "extra", "onSeekComplete", "onVideoPrepared", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IEventListener
 {
-  public abstract void a(long paramLong1, long paramLong2);
+  public abstract void a(long paramLong1, long paramLong2, @Nullable String paramString);
   
   public abstract void a(@NotNull IPlayer paramIPlayer);
   
@@ -26,7 +26,7 @@ public abstract interface IEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.api.IEventListener
  * JD-Core Version:    0.7.0.1
  */

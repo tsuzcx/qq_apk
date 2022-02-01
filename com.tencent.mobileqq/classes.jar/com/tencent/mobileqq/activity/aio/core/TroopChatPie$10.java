@@ -33,10 +33,10 @@ class TroopChatPie$10
             }
             String str = (String)paramMessage.obj;
             i = paramMessage.arg1;
-            QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, str, i).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+            QQToast.makeText(this.a.f, str, i).show(this.a.f.getTitleBarHeight());
             return;
           }
-          paramMessage = (PlusPanel)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(8);
+          paramMessage = (PlusPanel)this.a.ae.d(8);
           if (paramMessage != null) {
             paramMessage.a();
           }
@@ -57,7 +57,7 @@ class TroopChatPie$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.10
  * JD-Core Version:    0.7.0.1
  */

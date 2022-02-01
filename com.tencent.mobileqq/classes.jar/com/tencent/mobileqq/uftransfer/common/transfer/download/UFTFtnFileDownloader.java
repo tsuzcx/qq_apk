@@ -19,89 +19,79 @@ public class UFTFtnFileDownloader
   extends UFTFileDownloaderCbWrapper
   implements IUFTFileDownloader, IUFTFtnDownloaderCallback, IUFTRetryCallback
 {
-  protected int a;
   protected final long a;
-  protected UFTFtnDownloader a;
-  private final UFTUrlProvider a;
-  protected FileOutputStream a;
-  protected String a;
-  protected boolean a;
-  protected int b;
-  protected long b;
   protected String b;
-  protected long c;
   protected String c;
-  private boolean d;
-  protected long e;
+  protected int d;
+  protected int e;
+  protected boolean f;
+  protected String g;
+  protected long h;
+  protected long m;
+  protected UFTFtnDownloader n;
+  protected FileOutputStream o;
+  protected long p;
+  private final UFTUrlProvider q;
+  private boolean r;
   
-  private boolean a(String paramString)
+  private boolean d(String paramString)
   {
     return (!TextUtils.isEmpty(paramString)) && ((paramString.equals("-441")) || (paramString.equals("-443")) || (paramString.equals("-447")) || (paramString.equals("-29224")) || (paramString.equals("-31717")));
   }
   
-  private long b()
-  {
-    long l;
-    if (SystemUtil.a()) {
-      l = SystemUtil.a();
-    } else {
-      l = SystemUtil.b();
-    }
-    return l * 1024L;
-  }
-  
-  private boolean b(String paramString)
+  private boolean e(String paramString)
   {
     return (paramString.indexOf("-29120") > 0) || (paramString.indexOf("-502") > 0) || (paramString.indexOf("HTTP_PROXY_AUTH") > 0) || (paramString.indexOf("-21122") > 0) || (paramString.indexOf("-28123") > 0) || (paramString.indexOf("-25081") > 0) || (paramString.indexOf("-28126") > 0);
   }
   
-  private boolean c(String paramString)
+  private boolean f(String paramString)
   {
     return (paramString.indexOf("-6101") > 0) || (paramString.indexOf("-7003") > 0) || (paramString.indexOf("-403") > 0) || (paramString.indexOf("-9006") > 0) || (paramString.indexOf("-9004") > 0) || (paramString.indexOf("-9017") > 0) || (paramString.indexOf("-29150") > 0) || (paramString.indexOf("-28137") > 0);
   }
   
-  private void d()
+  private long i()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    long l;
+    if (SystemUtil.a()) {
+      l = SystemUtil.b();
+    } else {
+      l = SystemUtil.c();
+    }
+    return l * 1024L;
+  }
+  
+  private void j()
+  {
+    if (this.f) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("] reDownload mstrUrl:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
-    c();
-    b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_c_of_type_Long = new File(this.jdField_c_of_type_JavaLangString).length();
-    if (!UFTDependFeatureApi.a())
+    g();
+    b(this.b);
+    this.m = new File(this.g).length();
+    if (!UFTDependFeatureApi.c())
     {
-      a(true, 9004, this.jdField_c_of_type_Long, "no net work", "", null);
+      a(true, 9004, this.m, "no net work", "", null);
       return;
     }
     if (!c()) {
-      a(true, 9049, this.jdField_c_of_type_Long, "download filedata fail", "", null);
+      a(true, 9049, this.m, "download filedata fail", "", null);
     }
-  }
-  
-  public long a()
-  {
-    return 6000L;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader.a();
   }
   
   public void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Id[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("] onDownloadErr.errcode:");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append(" errMsg:");
@@ -111,19 +101,19 @@ public class UFTFtnFileDownloader
     localObject = ((StringBuilder)localObject).toString();
     boolean bool = true;
     UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, (String)localObject);
-    if (!UFTDependFeatureApi.a())
+    if (!UFTDependFeatureApi.c())
     {
       paramBundle = new StringBuilder();
       paramBundle.append("Id[");
-      paramBundle.append(this.jdField_a_of_type_Long);
+      paramBundle.append(this.a);
       paramBundle.append("] onDownloadErr. no network");
       UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, paramBundle.toString());
-      a(true, 9004, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(true, 9004, this.m, paramString1, paramString2, null);
       return;
     }
     if (paramString1.indexOf("-29602") > 0)
     {
-      a(true, -29602, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(true, -29602, this.m, paramString1, paramString2, null);
       return;
     }
     if (paramBundle != null) {
@@ -131,54 +121,54 @@ public class UFTFtnFileDownloader
     } else {
       paramBundle = "";
     }
-    if (a(paramBundle))
+    if (d(paramBundle))
     {
-      a(true, -5003, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(true, -5003, this.m, paramString1, paramString2, null);
       return;
     }
-    if (c(paramString1))
+    if (f(paramString1))
     {
-      a(true, 9042, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(true, 9042, this.m, paramString1, paramString2, null);
       return;
     }
     if (("content zero".equalsIgnoreCase(paramString1)) && (paramString2 != null) && (paramString2.indexOf("-31713") > 0))
     {
-      a(true, 9042, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(true, 9042, this.m, paramString1, paramString2, null);
       return;
     }
     if (paramString1.contains("SSLPeerUnverifiedException"))
     {
-      a(true, paramInt, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(true, paramInt, this.m, paramString1, paramString2, null);
       return;
     }
-    if (b(paramString1)) {
+    if (e(paramString1)) {
       paramInt = 9042;
     } else {
       bool = false;
     }
-    this.d = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferUrlproviderUFTUrlProvider.a(this.jdField_a_of_type_JavaLangString, paramInt, bool))
+    this.r = false;
+    if (this.q.b(this.b, paramInt, bool))
     {
-      a(false, paramInt, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+      a(false, paramInt, this.m, paramString1, paramString2, null);
       return;
     }
-    a(true, paramInt, this.jdField_c_of_type_Long, paramString1, paramString2, null);
+    a(true, paramInt, this.m, paramString1, paramString2, null);
   }
   
   public void a(byte[] paramArrayOfByte, long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.f) {
       return;
     }
-    if ((this.jdField_b_of_type_Long == 0L) && (paramLong != 0L))
+    if ((this.h == 0L) && (paramLong != 0L))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("] onData getted filesize=");
       localStringBuilder.append(paramLong);
       UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
-      this.jdField_b_of_type_Long = paramLong;
+      this.h = paramLong;
     }
     if (paramArrayOfByte != null)
     {
@@ -187,20 +177,20 @@ public class UFTFtnFileDownloader
       }
       try
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte);
+        this.o.write(paramArrayOfByte);
         paramLong = paramArrayOfByte.length;
-        this.jdField_c_of_type_Long += paramLong;
-        this.e += paramLong;
-        if (!this.d)
+        this.m += paramLong;
+        this.p += paramLong;
+        if (!this.r)
         {
-          this.d = true;
-          this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferUrlproviderUFTUrlProvider.a(this.jdField_a_of_type_JavaLangString);
+          this.r = true;
+          this.q.a(this.b);
         }
-        paramLong = this.jdField_c_of_type_Long;
-        long l = this.jdField_b_of_type_Long;
+        paramLong = this.m;
+        long l = this.h;
         if (paramLong == l)
         {
-          a(this.jdField_c_of_type_JavaLangString, null);
+          a(this.g, null);
           return;
         }
         if (paramLong > l)
@@ -214,41 +204,19 @@ public class UFTFtnFileDownloader
       catch (Exception paramArrayOfByte)
       {
         paramArrayOfByte.getMessage().contains("ENOSPC");
-        a(true, 9301, this.jdField_c_of_type_Long, "write exception", paramString, null);
+        a(true, 9301, this.m, "write exception", paramString, null);
       }
     }
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void b()
-  {
-    FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
-    if (localFileOutputStream != null)
-    {
-      try
-      {
-        localFileOutputStream.close();
-      }
-      catch (IOException localIOException)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
-        localStringBuilder.append("] closeOutputStream excp");
-        UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
-        localIOException.printStackTrace();
-      }
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
-    }
+    return this.f;
   }
   
   protected boolean b()
   {
-    Object localObject = new File(this.jdField_c_of_type_JavaLangString);
+    Object localObject = new File(this.g);
     if (!((File)localObject).exists()) {}
     try
     {
@@ -261,27 +229,27 @@ public class UFTFtnFileDownloader
       long l2;
       break label30;
     }
-    a(true, -5000, this.jdField_c_of_type_Long, "create new file excption", null, null);
+    a(true, -5000, this.m, "create new file excption", null, null);
     return true;
-    this.jdField_c_of_type_Long = ((File)localObject).length();
-    l1 = this.jdField_b_of_type_Long;
+    this.m = ((File)localObject).length();
+    l1 = this.h;
     if (l1 == 0L)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append("] checkexcpover fileSize=0");
       UFTLog.c("[UFTTransfer] UFTFtnFileDownloader", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    l2 = this.jdField_c_of_type_Long;
+    l2 = this.m;
     if (l2 > l1) {
       ((File)localObject).delete();
     }
     try
     {
       ((File)localObject).createNewFile();
-      this.jdField_c_of_type_Long = 0L;
+      this.m = 0L;
       return false;
     }
     catch (IOException localIOException2)
@@ -289,29 +257,119 @@ public class UFTFtnFileDownloader
       label148:
       break label148;
     }
-    a(true, -5000, this.jdField_c_of_type_Long, "create new file excption", null, null);
+    a(true, -5000, this.m, "create new file excption", null, null);
     return true;
     if (l2 == l1)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append("] checkexcpover tmpfilesize=filesize");
       UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, ((StringBuilder)localObject).toString());
-      a(this.jdField_c_of_type_JavaLangString, null);
+      a(this.g, null);
       return true;
     }
-    if (b() < l1 - l2)
+    if (i() < l1 - l2)
     {
-      a(true, 9040, this.jdField_c_of_type_Long, "no enugh space", null, null);
+      a(true, 9040, this.m, "no enugh space", null, null);
       return true;
     }
     return false;
   }
   
-  protected void c()
+  public void c(String paramString)
   {
-    FileOutputStream localFileOutputStream = this.jdField_a_of_type_JavaIoFileOutputStream;
+    if (this.f)
+    {
+      paramString = new StringBuilder();
+      paramString.append("[");
+      paramString.append(this.a);
+      paramString.append("] onRetry but stoped");
+      UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, paramString.toString());
+      return;
+    }
+    int i = 0;
+    if (!this.b.equalsIgnoreCase(paramString))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("] onRetry urlChanged");
+      UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
+      i = 1;
+    }
+    this.b = paramString;
+    if (i != 0)
+    {
+      paramString = UFTTransferUtil.a(this.b);
+      if (paramString != null)
+      {
+        this.c = paramString.a;
+        this.d = paramString.b;
+        this.e = paramString.c;
+      }
+      a(this.b);
+    }
+    j();
+  }
+  
+  protected boolean c()
+  {
+    d();
+    return this.n.a(this.b, this.m);
+  }
+  
+  protected void d()
+  {
+    this.n.a();
+  }
+  
+  protected boolean e()
+  {
+    f();
+    try
+    {
+      this.o = new FileOutputStream(this.g, true);
+      return true;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("] openOutputStream excp");
+      UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
+      this.o = null;
+      localFileNotFoundException.printStackTrace();
+    }
+    return false;
+  }
+  
+  protected void f()
+  {
+    FileOutputStream localFileOutputStream = this.o;
+    if (localFileOutputStream != null)
+    {
+      try
+      {
+        localFileOutputStream.close();
+      }
+      catch (IOException localIOException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.a);
+        localStringBuilder.append("] closeOutputStream excp");
+        UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
+        localIOException.printStackTrace();
+      }
+      this.o = null;
+    }
+  }
+  
+  protected void g()
+  {
+    FileOutputStream localFileOutputStream = this.o;
     if (localFileOutputStream != null) {
       try
       {
@@ -321,89 +379,31 @@ public class UFTFtnFileDownloader
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.a);
         localStringBuilder.append("] flushOutputStream excp");
         UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
         localIOException.printStackTrace();
       }
     }
-    this.e = 0L;
+    this.p = 0L;
   }
   
-  public void c(String paramString)
+  public long h()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramString = new StringBuilder();
-      paramString.append("[");
-      paramString.append(this.jdField_a_of_type_Long);
-      paramString.append("] onRetry but stoped");
-      UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, paramString.toString());
+    return 6000L;
+  }
+  
+  public void q_(String paramString)
+  {
+    if (this.f) {
       return;
     }
-    int i = 0;
-    if (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("] onRetry urlChanged");
-      UFTLog.b("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
-      i = 1;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (i != 0)
-    {
-      paramString = UFTTransferUtil.a(this.jdField_a_of_type_JavaLangString);
-      if (paramString != null)
-      {
-        this.jdField_b_of_type_JavaLangString = paramString.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_Int = paramString.jdField_a_of_type_Int;
-        this.jdField_b_of_type_Int = paramString.jdField_b_of_type_Int;
-      }
-      a(this.jdField_a_of_type_JavaLangString);
-    }
-    d();
-  }
-  
-  protected boolean c()
-  {
-    a();
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferCommonTransferDownloadUFTFtnDownloader.a(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_Long);
-  }
-  
-  protected boolean d()
-  {
-    b();
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_c_of_type_JavaLangString, true);
-      return true;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      localStringBuilder.append("] openOutputStream excp");
-      UFTLog.d("[UFTTransfer] UFTFtnFileDownloader", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      localFileNotFoundException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public void f_(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    a(true, 9062, this.jdField_c_of_type_Long, "net redirect", "", null);
+    a(true, 9062, this.m, "net redirect", "", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.common.transfer.download.UFTFtnFileDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ class ChatHistoryTroopMemberFragment$3
   
   public void run()
   {
-    Object localObject1 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.getBaseActivity().app, this.this$0.c, this.this$0.w);
-    ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.this$0.getBaseActivity().app, this.this$0.c, this.this$0.w);
+    Object localObject1 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.getBaseActivity().app, this.this$0.w, this.this$0.bB);
+    ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.this$0.getBaseActivity().app, this.this$0.w, this.this$0.bB);
     if ((localObject1 != null) && (this.a != null))
     {
       ??? = this.this$0;
-      ???.a(???.w);
+      ???.d(???.bB);
       synchronized (this.this$0)
       {
         localObject1 = this.this$0.a((TroopMemberInfo)localObject1, this.a);
-        this.this$0.a.add(localObject1);
-        this.this$0.b.sendEmptyMessage(9);
+        this.this$0.J.add(localObject1);
+        this.this$0.bn.sendEmptyMessage(9);
         return;
       }
     }
@@ -33,7 +33,7 @@ class ChatHistoryTroopMemberFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.3
  * JD-Core Version:    0.7.0.1
  */

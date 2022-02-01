@@ -12,39 +12,39 @@ public class SyncDownloadRunnable
   implements Runnable
 {
   public int a;
-  private DownloadTask jdField_a_of_type_ComTencentMobileqqVipDownloadTask;
-  private File jdField_a_of_type_JavaIoFile;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<IQvipSpecialSoundManager> jdField_a_of_type_MqqUtilWeakReference;
+  private DownloadTask b;
+  private File c;
+  private String d;
+  private WeakReference<IQvipSpecialSoundManager> e;
   
   public SyncDownloadRunnable(DownloadTask paramDownloadTask, File paramFile, String paramString, IQvipSpecialSoundManager paramIQvipSpecialSoundManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = paramDownloadTask;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramIQvipSpecialSoundManager);
+    this.b = paramDownloadTask;
+    this.c = paramFile;
+    this.d = paramString;
+    this.a = -1;
+    this.e = new WeakReference(paramIQvipSpecialSoundManager);
   }
   
   public void run()
   {
-    this.jdField_a_of_type_Int = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).specialSoundDownload(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask);
+    this.a = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).specialSoundDownload(this.b);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[SyncDownloadRunnable]:resultCode=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("SyncDownloadRunnable", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.e;
     if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-      ((IQvipSpecialSoundManager)this.jdField_a_of_type_MqqUtilWeakReference.get()).onSpecialSoundConfigDownloaded(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+      ((IQvipSpecialSoundManager)this.e.get()).onSpecialSoundConfigDownloaded(this.a, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SyncDownloadRunnable
  * JD-Core Version:    0.7.0.1
  */

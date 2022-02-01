@@ -1,15 +1,15 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.c.h;
-import com.tencent.liteav.basic.c.k;
-import com.tencent.liteav.basic.c.l;
+import com.tencent.liteav.basic.opengl.j;
+import com.tencent.liteav.basic.opengl.l;
+import com.tencent.liteav.basic.opengl.m;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 public class s
-  extends h
+  extends j
 {
   public int r;
   public int s;
@@ -23,13 +23,13 @@ public class s
   public s(String paramString)
   {
     this("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\nattribute vec4 inputTextureCoordinate2;\nattribute vec4 inputTextureCoordinate3;\n \nvarying vec2 textureCoordinate;\nvarying vec2 textureCoordinate2;\nvarying vec2 textureCoordinate3;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n    textureCoordinate2 = inputTextureCoordinate2.xy;\n    textureCoordinate3 = inputTextureCoordinate3.xy;\n}", paramString);
-    a(k.a, false, true);
+    a(l.a, false, true);
   }
   
   public s(String paramString1, String paramString2)
   {
     super(paramString1, paramString2);
-    a(k.a, false, true);
+    a(l.a, false, true);
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
@@ -49,17 +49,17 @@ public class s
     super.a(paramInt1, paramInt2);
   }
   
-  public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(l paraml, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramk = l.a(paramk, paramBoolean1, paramBoolean2);
+    paraml = m.a(paraml, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramk);
+    localFloatBuffer.put(paraml);
     localFloatBuffer.flip();
     this.x = localByteBuffer;
     localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     localFloatBuffer = localByteBuffer.asFloatBuffer();
-    localFloatBuffer.put(paramk);
+    localFloatBuffer.put(paraml);
     localFloatBuffer.flip();
     this.y = localByteBuffer;
   }
@@ -67,11 +67,11 @@ public class s
   public boolean b()
   {
     boolean bool = super.b();
-    GLES20.glUseProgram(p());
-    this.r = GLES20.glGetAttribLocation(p(), "inputTextureCoordinate2");
-    this.u = GLES20.glGetAttribLocation(p(), "inputTextureCoordinate3");
-    this.s = GLES20.glGetUniformLocation(p(), "inputImageTexture2");
-    this.v = GLES20.glGetUniformLocation(p(), "inputImageTexture3");
+    GLES20.glUseProgram(q());
+    this.r = GLES20.glGetAttribLocation(q(), "inputTextureCoordinate2");
+    this.u = GLES20.glGetAttribLocation(q(), "inputTextureCoordinate3");
+    this.s = GLES20.glGetUniformLocation(q(), "inputImageTexture2");
+    this.v = GLES20.glGetUniformLocation(q(), "inputImageTexture3");
     GLES20.glEnableVertexAttribArray(this.r);
     GLES20.glEnableVertexAttribArray(this.u);
     return bool;
@@ -95,7 +95,7 @@ public class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.s
  * JD-Core Version:    0.7.0.1
  */

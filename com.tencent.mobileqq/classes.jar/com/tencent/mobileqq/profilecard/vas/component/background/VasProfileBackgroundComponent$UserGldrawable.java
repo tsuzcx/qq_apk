@@ -32,7 +32,7 @@ class VasProfileBackgroundComponent$UserGldrawable
   
   public UserGldrawable invoke()
   {
-    if (QVipSDKProcessor.c().a())
+    if (QVipSDKProcessor.e().a())
     {
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(ProfileCardManager.a(VasProfileBackgroundComponent.access$000(this.this$0), this.bgId));
@@ -81,7 +81,7 @@ class VasProfileBackgroundComponent$UserGldrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.background.VasProfileBackgroundComponent.UserGldrawable
  * JD-Core Version:    0.7.0.1
  */

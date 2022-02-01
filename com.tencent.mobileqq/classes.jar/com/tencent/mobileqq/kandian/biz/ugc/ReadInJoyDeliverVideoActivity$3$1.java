@@ -11,14 +11,14 @@ class ReadInJoyDeliverVideoActivity$3$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ForwardSdkShareOption.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.this$0));
+    ForwardSdkShareOption.a(this.a.this$0, true, "shareToQQ", ReadInJoyDeliverVideoActivity.h(this.a.this$0));
     this.a.this$0.moveTaskToBack(true);
     this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverVideoActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ class NewAuthorityPresenter$3
   
   public void a()
   {
-    GetVirtualListResult localGetVirtualListResult = AuthMemoryCache.a().a(this.a.a());
-    Message.obtain(NewAuthorityPresenter.a(this.a), 3, localGetVirtualListResult).sendToTarget();
+    GetVirtualListResult localGetVirtualListResult = AuthMemoryCache.a().c(this.a.l());
+    Message.obtain(NewAuthorityPresenter.d(this.a), 3, localGetVirtualListResult).sendToTarget();
   }
   
   public void a(int paramInt, String paramString)
@@ -29,12 +29,12 @@ class NewAuthorityPresenter$3
       SSOLog.b("NewAuthorityPresenter", new Object[] { "getVirtualList handle110509" });
       return;
     }
-    Message.obtain(NewAuthorityPresenter.a(this.a), 3, null).sendToTarget();
+    Message.obtain(NewAuthorityPresenter.d(this.a), 3, null).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.NewAuthorityPresenter.3
  * JD-Core Version:    0.7.0.1
  */

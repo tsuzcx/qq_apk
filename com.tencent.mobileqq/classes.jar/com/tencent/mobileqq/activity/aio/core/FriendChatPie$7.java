@@ -11,14 +11,14 @@ class FriendChatPie$7
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a();
+    if ((paramBoolean) && (this.a.bi != null)) {
+      this.a.bi.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.7
  * JD-Core Version:    0.7.0.1
  */

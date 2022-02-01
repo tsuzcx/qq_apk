@@ -20,41 +20,41 @@ class SelectMemberBuddyListAdapter$1
   {
     QLog.d("FriendTeamListInnerFrameBuddyListAdapter", 2, "----->onBuddyListClick");
     SelectMemberBuddyListAdapter.SelectBuddyChildTag localSelectBuddyChildTag = (SelectMemberBuddyListAdapter.SelectBuddyChildTag)paramView.getTag();
-    if ((localSelectBuddyChildTag != null) && (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject != null))
+    if ((localSelectBuddyChildTag != null) && (localSelectBuddyChildTag.g != null) && (localSelectBuddyChildTag.h != null))
     {
-      if (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      if (localSelectBuddyChildTag.g.isEnabled())
       {
-        boolean bool = localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isChecked() ^ true;
-        localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+        boolean bool = localSelectBuddyChildTag.g.isChecked() ^ true;
+        localSelectBuddyChildTag.g.setChecked(bool);
         Object localObject;
-        if ((localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject instanceof Friends))
+        if ((localSelectBuddyChildTag.h instanceof Friends))
         {
-          localObject = (Friends)localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject;
+          localObject = (Friends)localSelectBuddyChildTag.h;
           localObject = ResultRecord.a(((Friends)localObject).uin, ((Friends)localObject).name, 1);
           if (bool) {
-            this.a.a.add(localObject);
+            this.a.b.add(localObject);
           } else {
-            this.a.a.remove(localObject);
+            this.a.b.remove(localObject);
           }
         }
-        if (AppSetting.d) {
-          if (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())
+        if (AppSetting.e) {
+          if (localSelectBuddyChildTag.g.isChecked())
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(localSelectBuddyChildTag.d.getText().toString());
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131713648));
+            ((StringBuilder)localObject).append(localSelectBuddyChildTag.e.getText().toString());
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131911193));
             paramView.setContentDescription(((StringBuilder)localObject).toString());
           }
           else
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(localSelectBuddyChildTag.d.getText().toString());
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131713658));
+            ((StringBuilder)localObject).append(localSelectBuddyChildTag.e.getText().toString());
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131911203));
             paramView.setContentDescription(((StringBuilder)localObject).toString());
           }
         }
         this.a.notifyDataSetChanged();
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           paramView.postDelayed(new SelectMemberBuddyListAdapter.1.1(this, paramView), 2000L);
         }
       }
@@ -70,7 +70,7 @@ class SelectMemberBuddyListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.SelectMemberBuddyListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

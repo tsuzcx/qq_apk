@@ -9,11 +9,11 @@ import com.tencent.mobileqq.utils.AudioUtil;
 public class CountDownView
   extends ImageView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838752, 2130838751, 2130838750 };
-  private int jdField_a_of_type_Int = 0;
-  private CountDownView.CountDownFinishedListener jdField_a_of_type_ComTencentMobileqqActivityBlessCountDownView$CountDownFinishedListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CountDownView.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final int[] a = { 2130838974, 2130838973, 2130838972 };
+  private int b = 0;
+  private boolean c = false;
+  private CountDownView.CountDownFinishedListener d;
+  private Runnable e = new CountDownView.1(this);
   
   public CountDownView(Context paramContext)
   {
@@ -30,32 +30,32 @@ public class CountDownView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void b()
+  private void c()
   {
-    AudioUtil.a();
-    AudioUtil.a(2131230750, 1, null, null);
+    AudioUtil.b();
+    AudioUtil.a(2131230818, 1, null, null);
   }
   
   public void a()
   {
-    setImageResource(jdField_a_of_type_ArrayOfInt[0]);
-    this.jdField_a_of_type_Boolean = false;
+    setImageResource(a[0]);
+    this.c = false;
     Handler localHandler = getHandler();
     if (localHandler != null) {
-      localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      localHandler.removeCallbacks(this.e);
     }
-    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
     setVisibility(4);
   }
   
   public void setListener(CountDownView.CountDownFinishedListener paramCountDownFinishedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBlessCountDownView$CountDownFinishedListener = paramCountDownFinishedListener;
+    this.d = paramCountDownFinishedListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.CountDownView
  * JD-Core Version:    0.7.0.1
  */

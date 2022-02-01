@@ -24,7 +24,7 @@ public final class ColdPalaceUtilsImpl
     paramAppInterface = paramAppInterface.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
     if (paramAppInterface != null)
     {
-      paramAppInterface = ((ExpandManager)paramAppInterface).a();
+      paramAppInterface = ((ExpandManager)paramAppInterface).d();
       Intrinsics.checkExpressionValueIsNotNull(paramAppInterface, "extendFriendManager.coldPalaceHelper");
       return paramAppInterface;
     }
@@ -46,14 +46,14 @@ public final class ColdPalaceUtilsImpl
     Intrinsics.checkParameterIsNotNull(paramAppInterface, "app");
     paramAppInterface = getColdPalaceHelper(paramAppInterface);
     if (paramAppInterface != null) {
-      return ((ColdPalaceHelper)paramAppInterface).a();
+      return ((ColdPalaceHelper)paramAppInterface).f();
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.qqexpand.utils.ColdPalaceHelper");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.impl.ColdPalaceUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

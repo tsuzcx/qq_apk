@@ -11,10 +11,10 @@ class RecentLoginDevActivity$6
   {
     try
     {
-      if ((RecentLoginDevActivity.a(this.this$0) != null) && (RecentLoginDevActivity.a(this.this$0).isShowing()))
+      if ((RecentLoginDevActivity.f(this.this$0) != null) && (RecentLoginDevActivity.f(this.this$0).isShowing()))
       {
-        RecentLoginDevActivity.a(this.this$0).dismiss();
-        RecentLoginDevActivity.a(this.this$0).cancel();
+        RecentLoginDevActivity.f(this.this$0).dismiss();
+        RecentLoginDevActivity.f(this.this$0).cancel();
       }
     }
     catch (Throwable localThrowable)
@@ -26,7 +26,7 @@ class RecentLoginDevActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity.6
  * JD-Core Version:    0.7.0.1
  */

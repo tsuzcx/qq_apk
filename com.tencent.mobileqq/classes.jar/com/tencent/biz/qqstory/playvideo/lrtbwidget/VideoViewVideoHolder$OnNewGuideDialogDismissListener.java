@@ -9,26 +9,26 @@ import java.lang.ref.WeakReference;
 class VideoViewVideoHolder$OnNewGuideDialogDismissListener
   implements DialogInterface.OnDismissListener
 {
-  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  private final WeakReference<VideoViewVideoHolder> a;
+  private final boolean b;
   
   public VideoViewVideoHolder$OnNewGuideDialogDismissListener(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramVideoViewVideoHolder);
+    this.b = paramBoolean;
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramDialogInterface = (VideoViewVideoHolder)this.a.get();
     if (paramDialogInterface != null) {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing()))
+      if ((paramDialogInterface.b()) && (!paramDialogInterface.a().isFinishing()))
       {
-        if (!paramDialogInterface.e())
+        if (!paramDialogInterface.t())
         {
-          paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-          paramDialogInterface.d();
-          paramDialogInterface.a = null;
+          paramDialogInterface.c(this.b);
+          paramDialogInterface.h();
+          paramDialogInterface.w = null;
         }
       }
       else {
@@ -39,7 +39,7 @@ class VideoViewVideoHolder$OnNewGuideDialogDismissListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.OnNewGuideDialogDismissListener
  * JD-Core Version:    0.7.0.1
  */

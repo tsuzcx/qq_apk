@@ -26,17 +26,17 @@ class AECircleVideoPreviewItemView$1
   
   public void onPlayProgress(long paramLong1, long paramLong2)
   {
-    if (AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView) != null)
+    if (AECircleVideoPreviewItemView.c(this.b) != null)
     {
-      int i = (int)(AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView).getMax() * ((float)paramLong2 / (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mDuration));
-      if (i >= AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView))
+      int i = (int)(AECircleVideoPreviewItemView.c(this.b).getMax() * ((float)paramLong2 / (float)this.a.mDuration));
+      if (i >= AECircleVideoPreviewItemView.d(this.b))
       {
-        AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView).setProgress(i);
-        AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView, -1);
+        AECircleVideoPreviewItemView.c(this.b).setProgress(i);
+        AECircleVideoPreviewItemView.a(this.b, -1);
       }
     }
-    if (AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView) != null) {
-      AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView).setText(AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView, paramLong2));
+    if (AECircleVideoPreviewItemView.e(this.b) != null) {
+      AECircleVideoPreviewItemView.e(this.b).setText(AECircleVideoPreviewItemView.a(this.b, paramLong2));
     }
   }
   
@@ -44,14 +44,14 @@ class AECircleVideoPreviewItemView$1
   {
     if (paramInt == 4)
     {
-      AECircleVideoPreviewItemView.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView).setVisibility(8);
-      AECircleVideoPreviewItemView.b(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView).setVisibility(8);
+      AECircleVideoPreviewItemView.a(this.b).setVisibility(8);
+      AECircleVideoPreviewItemView.b(this.b).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.AECircleVideoPreviewItemView.1
  * JD-Core Version:    0.7.0.1
  */

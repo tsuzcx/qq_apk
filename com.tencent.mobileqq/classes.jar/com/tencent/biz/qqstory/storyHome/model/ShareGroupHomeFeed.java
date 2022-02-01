@@ -24,27 +24,27 @@ public class ShareGroupHomeFeed
   public void a(StoryVideoItem paramStoryVideoItem)
   {
     super.a(paramStoryVideoItem);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
+    paramStoryVideoItem = (ShareGroupFeedItem)i();
     paramStoryVideoItem.videoCount -= 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
+    if (((ShareGroupFeedItem)i()).videoCount < 0) {
+      ((ShareGroupFeedItem)i()).videoCount = 0;
     }
   }
   
   public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
   {
     super.a(paramStoryVideoItem, paramBoolean);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
+    paramStoryVideoItem = (ShareGroupFeedItem)i();
     paramStoryVideoItem.videoCount += 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
+    if (((ShareGroupFeedItem)i()).videoCount < 0) {
+      ((ShareGroupFeedItem)i()).videoCount = 0;
     }
   }
   
   public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
   {
-    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
-    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    ((ShareGroupFeedItem)this.f).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
+    ((ShareGroupFeedItem)this.f).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
     Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
     paramStoryFeed = new ArrayList();
     localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();

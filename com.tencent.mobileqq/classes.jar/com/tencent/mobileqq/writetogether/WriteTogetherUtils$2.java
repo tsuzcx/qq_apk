@@ -11,10 +11,10 @@ final class WriteTogetherUtils$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqWritetogetherWriteTogetherUtils$OnDialogConfirmButtonClickListener;
+    paramDialogInterface = this.b;
     if (paramDialogInterface != null) {
       paramDialogInterface.a(paramInt);
     }
@@ -22,7 +22,7 @@ final class WriteTogetherUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.WriteTogetherUtils.2
  * JD-Core Version:    0.7.0.1
  */

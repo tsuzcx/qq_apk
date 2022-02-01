@@ -7,20 +7,20 @@ public class PictureFilterConfig
   @JsonORM.Column(a="id")
   public int a;
   @JsonORM.Column(a="name")
-  public String a;
+  public String b;
   @JsonORM.Column(a="items")
-  public PictureFilterConfig.PictureElement[] a;
+  public PictureFilterConfig.PictureElement[] c;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FilterConfig{id=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", items-size=");
-    PictureFilterConfig.PictureElement[] arrayOfPictureElement = this.jdField_a_of_type_ArrayOfComTencentBizQqstoryModelFilterPictureFilterConfig$PictureElement;
+    PictureFilterConfig.PictureElement[] arrayOfPictureElement = this.c;
     int i;
     if (arrayOfPictureElement != null) {
       i = arrayOfPictureElement.length;
@@ -34,7 +34,7 @@ public class PictureFilterConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.filter.PictureFilterConfig
  * JD-Core Version:    0.7.0.1
  */

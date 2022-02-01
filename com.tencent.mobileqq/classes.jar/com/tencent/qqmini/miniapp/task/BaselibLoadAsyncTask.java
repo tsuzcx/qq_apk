@@ -79,7 +79,7 @@ public class BaselibLoadAsyncTask
     {
       BaselibLoader.BaselibContent localBaselibContent = new BaselibLoader.BaselibContent();
       String str2 = StorageUtil.getPreference().getString("downloadUrl", "");
-      String str1 = StorageUtil.getPreference().getString("version", "1.22.0.00008");
+      String str1 = StorageUtil.getPreference().getString("version", "1.29.0.00002");
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("execute baseLibLoad task. url=");
       ((StringBuilder)localObject2).append(str2);
@@ -126,11 +126,11 @@ public class BaselibLoadAsyncTask
           ((StringBuilder)localObject2).append(Environment.getExternalStorageDirectory().getAbsolutePath());
           ((StringBuilder)localObject2).append(File.separator);
           localBaselibContent.pageFrameStr = FileUtils.readFileToStr(new File(((StringBuilder)localObject2).toString(), "QPageFrame.html"));
-          localBaselibContent.version = "1.22.0.00008";
+          localBaselibContent.version = "1.29.0.00002";
         }
         int j = 1;
         int i;
-        if (!BaseLibInfo.needUpdateVersion("1.22.0.00008", str1))
+        if (!BaseLibInfo.needUpdateVersion("1.29.0.00002", str1))
         {
           i = j;
           if (!TextUtils.isEmpty(str2))
@@ -146,7 +146,7 @@ public class BaselibLoadAsyncTask
           ((StringBuilder)localObject2).append("download baselib invalid! use assert baselib. download_version=");
           ((StringBuilder)localObject2).append(str1);
           ((StringBuilder)localObject2).append(" assert_version=");
-          ((StringBuilder)localObject2).append("1.22.0.00008");
+          ((StringBuilder)localObject2).append("1.29.0.00002");
           QMLog.e("BaselibLoadAsyncTask", ((StringBuilder)localObject2).toString());
         }
         if ((!localBaselibContent.isBaseLibInited()) && (i != 0))
@@ -177,7 +177,7 @@ public class BaselibLoadAsyncTask
           localBaselibContent.miniappWebviewStr = FileUtils.readFileFromAssets(getContext(), "mini/QWebview.js");
           localBaselibContent.waWorkerStr = FileUtils.readFileFromAssets(getContext(), "mini/QWorker.js");
           localBaselibContent.pageFrameStr = FileUtils.readFileFromAssets(getContext(), "mini/QPageFrame.html");
-          localBaselibContent.version = "1.22.0.00008";
+          localBaselibContent.version = "1.29.0.00002";
         }
       }
       catch (Throwable localThrowable)
@@ -206,7 +206,7 @@ public class BaselibLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.BaselibLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

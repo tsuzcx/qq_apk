@@ -19,20 +19,15 @@ public class PATipsFilter
     return null;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    return null;
-  }
-  
   public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
     if (paramMessage == null) {
       return true;
     }
-    paramAIOContext = ((PAContext)paramAIOContext).a();
+    paramAIOContext = ((PAContext)paramAIOContext).R();
     if (paramAIOContext != null)
     {
-      paramAIOContext = paramAIOContext.a.iterator();
+      paramAIOContext = paramAIOContext.q.iterator();
       while (paramAIOContext.hasNext()) {
         if (((TroopInfo)paramAIOContext.next()).troopuin.equals(paramMessage.frienduin))
         {
@@ -45,10 +40,15 @@ public class PATipsFilter
     label68:
     return (paramMessage.istroop == 1) && (i != 0);
   }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.PATipsFilter
  * JD-Core Version:    0.7.0.1
  */

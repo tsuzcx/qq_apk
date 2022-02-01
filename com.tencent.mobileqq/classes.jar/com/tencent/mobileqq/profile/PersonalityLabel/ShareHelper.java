@@ -18,19 +18,19 @@ import java.util.List;
 public class ShareHelper
 {
   public static String a = "https://ti.qq.com/specialtag/share.html?id=%s";
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Context jdField_a_of_type_AndroidContentContext;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ShareHelper.OnUseResListener jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener;
-  ShareActionSheetBuilder jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = null;
+  ShareActionSheetBuilder b = null;
+  Context c;
+  QQAppInterface d;
+  Activity e;
+  Bitmap f;
+  ShareHelper.OnUseResListener g;
   
   public ShareHelper(Context paramContext, QQAppInterface paramQQAppInterface, Activity paramActivity, ShareHelper.OnUseResListener paramOnUseResListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener = paramOnUseResListener;
+    this.c = paramContext;
+    this.d = paramQQAppInterface;
+    this.e = paramActivity;
+    this.g = paramOnUseResListener;
   }
   
   @Nullable
@@ -41,10 +41,10 @@ public class ShareHelper
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("temp_qrcode_share_");
       ((StringBuilder)localObject).append(System.currentTimeMillis());
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(this.d.getCurrentAccountUin());
       ((StringBuilder)localObject).append(".png");
       localObject = ((StringBuilder)localObject).toString();
-      localObject = QRUtils.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localObject = QRUtils.a(this.e, (String)localObject, this.f);
       return localObject;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -60,28 +60,28 @@ public class ShareHelper
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696399);
-    localActionSheetItem.icon = 2130839067;
+    localActionSheetItem.label = paramContext.getString(2131894171);
+    localActionSheetItem.icon = 2130839221;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 2;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696413);
-    localActionSheetItem.icon = 2130839068;
+    localActionSheetItem.label = paramContext.getString(2131894185);
+    localActionSheetItem.icon = 2130839222;
     localActionSheetItem.iconNeedBg = true;
     localActionSheetItem.action = 3;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696420);
-    localActionSheetItem.icon = 2130839071;
+    localActionSheetItem.label = paramContext.getString(2131894192);
+    localActionSheetItem.icon = 2130839225;
     localActionSheetItem.action = 9;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.label = paramContext.getString(2131696402);
-    localActionSheetItem.icon = 2130839065;
+    localActionSheetItem.label = paramContext.getString(2131894174);
+    localActionSheetItem.icon = 2130839219;
     localActionSheetItem.action = 10;
     localActionSheetItem.argus = "";
     localArrayList.add(localActionSheetItem);
@@ -91,21 +91,21 @@ public class ShareHelper
   public void a(DialogInterface.OnDismissListener paramOnDismissListener)
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
+    if (this.b == null)
     {
       localObject = new ShareHelper.1(this);
       paramOnDismissListener = new ShareHelper.2(this, paramOnDismissListener);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719029));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setActionSheetItems(a(this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setItemClickListener((AdapterView.OnItemClickListener)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.setOnDismissListener(paramOnDismissListener);
+      this.b = new ShareActionSheetBuilder((Activity)this.c);
+      this.b.setActionSheetTitle(this.c.getString(2131916565));
+      this.b.setActionSheetItems(a(this.c));
+      this.b.setItemClickListener((AdapterView.OnItemClickListener)localObject);
+      this.b.setOnDismissListener(paramOnDismissListener);
     }
     try
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.getActionSheet().isShowing())
+      if (!this.b.getActionSheet().isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.show();
+        this.b.show();
         return;
       }
     }
@@ -123,12 +123,12 @@ public class ShareHelper
   
   public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.f = paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,15 @@ class LebaQzoneAndPluginPart$12
     {
       long l = localIWebProcessPreload.getBusinessClickTimeMills((String)localObject, "health");
       if (System.currentTimeMillis() - l < 604800000L) {
-        localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.a, "key_health_dns_parse");
+        localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.k, "key_health_dns_parse");
       }
       l = localIWebProcessPreload.getBusinessClickTimeMills((String)localObject, "game_center");
       if (System.currentTimeMillis() - l < 259200000L) {
-        localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.b, "key_gamecenter_dns_parse");
+        localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.l, "key_gamecenter_dns_parse");
       }
       l = localIWebProcessPreload.getBusinessClickTimeMills((String)localObject, "reader");
       if (System.currentTimeMillis() - l < 259200000L) {
-        localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.c, "key_reader_dns_parse");
+        localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.m, "key_reader_dns_parse");
       }
     }
     localObject = (IQQPluginPreloadService)this.a.getRuntimeService(IQQPluginPreloadService.class);
@@ -42,7 +42,7 @@ class LebaQzoneAndPluginPart$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.12
  * JD-Core Version:    0.7.0.1
  */

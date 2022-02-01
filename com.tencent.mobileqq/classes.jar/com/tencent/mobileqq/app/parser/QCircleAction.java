@@ -19,7 +19,7 @@ public class QCircleAction
   {
     try
     {
-      QCircleUtils.a().enterBySchemeAction(this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaUtilHashMap);
+      QCircleUtils.a().enterBySchemeAction(this.b, this.e, this.f);
       return true;
     }
     catch (Exception localException)
@@ -28,14 +28,14 @@ public class QCircleAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QCircleAction", 1, localStringBuilder.toString());
-      b_("QCircleAction");
+      h_("QCircleAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QCircleAction
  * JD-Core Version:    0.7.0.1
  */

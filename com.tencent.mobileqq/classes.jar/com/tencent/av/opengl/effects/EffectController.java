@@ -11,7 +11,7 @@ public abstract interface EffectController
   
   public abstract void a(CameraFrame paramCameraFrame);
   
-  public abstract boolean a();
+  public abstract boolean b();
 }
 
 

@@ -32,7 +32,7 @@ public final class HorizontalListView$mOnGesture$1
   
   public boolean onDown(@Nullable MotionEvent paramMotionEvent)
   {
-    return HorizontalListView.a(this.a);
+    return HorizontalListView.e(this.a);
   }
   
   public boolean onFling(@Nullable MotionEvent paramMotionEvent1, @Nullable MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -55,15 +55,15 @@ public final class HorizontalListView$mOnGesture$1
           Intrinsics.checkExpressionValueIsNotNull(localView, "child");
           if (a(paramMotionEvent, localView))
           {
-            if (HorizontalListView.a(this.a) == null) {
+            if (HorizontalListView.b(this.a) == null) {
               break;
             }
-            paramMotionEvent = HorizontalListView.a(this.a);
+            paramMotionEvent = HorizontalListView.b(this.a);
             if (paramMotionEvent == null) {
               break;
             }
             HorizontalListView localHorizontalListView = this.a;
-            paramMotionEvent.onItemLongClick((AdapterView)localHorizontalListView, localView, HorizontalListView.a(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+            paramMotionEvent.onItemLongClick((AdapterView)localHorizontalListView, localView, HorizontalListView.c(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.c(this.a) + 1 + i));
             return;
           }
           i += 1;
@@ -79,7 +79,7 @@ public final class HorizontalListView$mOnGesture$1
     synchronized (this.a)
     {
       paramMotionEvent2 = this.a;
-      HorizontalListView.a(paramMotionEvent2, HorizontalListView.b(paramMotionEvent2) + (int)paramFloat1);
+      HorizontalListView.a(paramMotionEvent2, HorizontalListView.d(paramMotionEvent2) + (int)paramFloat1);
       paramMotionEvent2 = Unit.INSTANCE;
       this.a.requestLayout();
       return true;
@@ -101,24 +101,24 @@ public final class HorizontalListView$mOnGesture$1
           Intrinsics.checkExpressionValueIsNotNull(localView, "child");
           if (a(paramMotionEvent, localView))
           {
-            if (HorizontalListView.a(this.a) != null)
+            if (HorizontalListView.f(this.a) != null)
             {
-              paramMotionEvent = HorizontalListView.a(this.a);
+              paramMotionEvent = HorizontalListView.f(this.a);
               if (paramMotionEvent != null)
               {
                 localHorizontalListView = this.a;
-                paramMotionEvent.onItemClick((AdapterView)localHorizontalListView, localView, HorizontalListView.a(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+                paramMotionEvent.onItemClick((AdapterView)localHorizontalListView, localView, HorizontalListView.c(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.c(this.a) + 1 + i));
               }
             }
-            if (HorizontalListView.a(this.a) == null) {
+            if (HorizontalListView.g(this.a) == null) {
               break;
             }
-            paramMotionEvent = HorizontalListView.a(this.a);
+            paramMotionEvent = HorizontalListView.g(this.a);
             if (paramMotionEvent == null) {
               break;
             }
             HorizontalListView localHorizontalListView = this.a;
-            paramMotionEvent.onItemSelected((AdapterView)localHorizontalListView, localView, HorizontalListView.a(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.a(this.a) + 1 + i));
+            paramMotionEvent.onItemSelected((AdapterView)localHorizontalListView, localView, HorizontalListView.c(localHorizontalListView) + 1 + i, localListAdapter.getItemId(HorizontalListView.c(this.a) + 1 + i));
             return true;
           }
           i += 1;
@@ -132,7 +132,7 @@ public final class HorizontalListView$mOnGesture$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.HorizontalListView.mOnGesture.1
  * JD-Core Version:    0.7.0.1
  */

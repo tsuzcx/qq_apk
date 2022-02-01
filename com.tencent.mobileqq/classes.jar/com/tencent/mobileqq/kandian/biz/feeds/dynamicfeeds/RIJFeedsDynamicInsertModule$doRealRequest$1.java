@@ -16,22 +16,22 @@ final class RIJFeedsDynamicInsertModule$doRealRequest$1
   
   public final void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null)
     {
-      ToServiceMsg localToServiceMsg = this.this$0.a(this.jdField_a_of_type_JavaLangInteger, str, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType, this.jdField_a_of_type_Boolean);
+      ToServiceMsg localToServiceMsg = this.this$0.a(this.b, str, this.c, this.d);
       int i = RIJFeedsDynamicInsertModule.a(this.this$0).incrementAndGet();
       HashMap localHashMap = localToServiceMsg.getAttributes();
       Intrinsics.checkExpressionValueIsNotNull(localHashMap, "request.attributes");
       ((Map)localHashMap).put("insert_callback", Integer.valueOf(i));
       localHashMap = localToServiceMsg.getAttributes();
       Intrinsics.checkExpressionValueIsNotNull(localHashMap, "request.attributes");
-      ((Map)localHashMap).put("insert_reqsource", this.jdField_a_of_type_JavaLangInteger);
+      ((Map)localHashMap).put("insert_reqsource", this.b);
       localHashMap = localToServiceMsg.getAttributes();
       Intrinsics.checkExpressionValueIsNotNull(localHashMap, "request.attributes");
       ((Map)localHashMap).put("insert_rowkey", str);
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsDynamicInsertModule$Companion$IFeedsDynamicInsertCallback != null) {
-        ((Map)RIJFeedsDynamicInsertModule.a(this.this$0)).put(Integer.valueOf(i), this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsRIJFeedsDynamicInsertModule$Companion$IFeedsDynamicInsertCallback);
+      if (this.e != null) {
+        ((Map)RIJFeedsDynamicInsertModule.b(this.this$0)).put(Integer.valueOf(i), this.e);
       }
       this.this$0.sendPbReq(localToServiceMsg);
     }
@@ -39,7 +39,7 @@ final class RIJFeedsDynamicInsertModule$doRealRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertModule.doRealRequest.1
  * JD-Core Version:    0.7.0.1
  */

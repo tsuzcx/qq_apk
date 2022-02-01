@@ -35,8 +35,8 @@ class TavImageGenerator$ImageGeneratorThread
   extends HandlerThread
   implements Handler.Callback
 {
-  private VideoCompositionDecoderTrack jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack;
-  private VideoCompositing jdField_a_of_type_ComTencentTavCoreCompositingVideoCompositing;
+  private VideoCompositionDecoderTrack a;
+  private VideoCompositing b;
   
   TavImageGenerator$ImageGeneratorThread(TavImageGenerator paramTavImageGenerator, String paramString)
   {
@@ -59,7 +59,7 @@ class TavImageGenerator$ImageGeneratorThread
       return null;
     }
     Bitmap localBitmap = a(paramRenderContext, localTextureInfo);
-    paramRenderContext = a(TavImageGenerator.a(this.this$0), new CGSize(localTextureInfo.width, localTextureInfo.height));
+    paramRenderContext = a(TavImageGenerator.d(this.this$0), new CGSize(localTextureInfo.width, localTextureInfo.height));
     paramCMSampleBuffer = new Matrix();
     paramCMSampleBuffer.postScale(1.0F, -1.0F);
     paramCMSampleBuffer.postTranslate(0.0F, localBitmap.getHeight());
@@ -68,8 +68,8 @@ class TavImageGenerator$ImageGeneratorThread
     } else {
       paramRenderContext = paramCMSampleBuffer;
     }
-    if (TavImageGenerator.a(this.this$0) != null) {
-      paramCMSampleBuffer = TavImageGenerator.a(this.this$0);
+    if (TavImageGenerator.d(this.this$0) != null) {
+      paramCMSampleBuffer = TavImageGenerator.d(this.this$0);
     } else {
       paramCMSampleBuffer = new CGSize(localTextureInfo.width, localTextureInfo.height);
     }
@@ -101,12 +101,12 @@ class TavImageGenerator$ImageGeneratorThread
   {
     if ((paramCGSize1 != null) && (paramCGSize2 != null))
     {
-      if (TavImageGenerator.a(this.this$0) == -1) {
+      if (TavImageGenerator.g(this.this$0) == -1) {
         return null;
       }
       paramCGSize2 = new CGRect(new PointF(), paramCGSize2);
       paramCGSize1 = new CGRect(new PointF(), paramCGSize1);
-      switch (TavImageGenerator.a(this.this$0))
+      switch (TavImageGenerator.g(this.this$0))
       {
       default: 
         return null;
@@ -127,79 +127,29 @@ class TavImageGenerator$ImageGeneratorThread
   
   private CMSampleBuffer a(CMTime paramCMTime, RenderContext paramRenderContext)
   {
-    if (this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack == null)
+    if (this.a == null)
     {
       Object localObject = this.this$0.a;
       VideoCompositing localVideoCompositing = null;
-      this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack = new VideoCompositionDecoderTrack((Asset)localObject, null, 1);
+      this.a = new VideoCompositionDecoderTrack((Asset)localObject, null, 1);
       localObject = this.this$0.a.getTracks().iterator();
       while (((Iterator)localObject).hasNext())
       {
         AssetTrack localAssetTrack = (AssetTrack)((Iterator)localObject).next();
         if (localAssetTrack.getMediaType() == 1) {
-          this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack.addTrack(localAssetTrack);
+          this.a.addTrack(localAssetTrack);
         }
       }
-      this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack.setVideoComposition(TavImageGenerator.a(this.this$0));
-      if (TavImageGenerator.a(this.this$0) != null) {
-        localVideoCompositing = TavImageGenerator.a(this.this$0).getCustomVideoCompositor();
+      this.a.setVideoComposition(TavImageGenerator.f(this.this$0));
+      if (TavImageGenerator.f(this.this$0) != null) {
+        localVideoCompositing = TavImageGenerator.f(this.this$0).getCustomVideoCompositor();
       }
-      this.jdField_a_of_type_ComTencentTavCoreCompositingVideoCompositing = localVideoCompositing;
-      this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack.setVideoCompositing(this.jdField_a_of_type_ComTencentTavCoreCompositingVideoCompositing);
-      this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack.start(paramRenderContext);
+      this.b = localVideoCompositing;
+      this.a.setVideoCompositing(this.b);
+      this.a.start(paramRenderContext);
     }
-    this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack.seekTo(paramCMTime, false, true);
-    return this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack.readSample(paramCMTime);
-  }
-  
-  @NonNull
-  private RenderContext a()
-  {
-    if (TavImageGenerator.a(this.this$0) == null)
-    {
-      CGSize localCGSize;
-      if (TavImageGenerator.a(this.this$0) != null) {
-        localCGSize = TavImageGenerator.a(this.this$0);
-      } else {
-        localCGSize = this.this$0.a.getNaturalSize();
-      }
-      TavImageGenerator.a(this.this$0, new RenderContext((int)localCGSize.width, (int)localCGSize.height));
-      TavImageGenerator.a(this.this$0).setParams(TavImageGenerator.a(this.this$0));
-    }
-    TavImageGenerator.a(this.this$0).makeCurrent();
-    return TavImageGenerator.a(this.this$0);
-  }
-  
-  private void a()
-  {
-    Object localObject = TavImageGenerator.a(this.this$0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("doRelease: start, thread = ");
-    localStringBuilder.append(Thread.currentThread().getName());
-    Logger.d((String)localObject, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack;
-    if (localObject != null)
-    {
-      ((VideoCompositionDecoderTrack)localObject).release();
-      this.jdField_a_of_type_ComTencentTavCoreVideoCompositionDecoderTrack = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentTavCoreCompositingVideoCompositing;
-    if (localObject != null)
-    {
-      ((VideoCompositing)localObject).release();
-      this.jdField_a_of_type_ComTencentTavCoreCompositingVideoCompositing = null;
-    }
-    if (TavImageGenerator.a(this.this$0) != null)
-    {
-      TavImageGenerator.a(this.this$0).release();
-      TavImageGenerator.a(this.this$0, null);
-    }
-    TavImageGenerator.a(this.this$0, null);
-    localObject = TavImageGenerator.a(this.this$0);
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("doRelease: end, thread = ");
-    localStringBuilder.append(Thread.currentThread().getName());
-    Logger.d((String)localObject, localStringBuilder.toString());
+    this.a.seekTo(paramCMTime, false, true);
+    return this.a.readSample(paramCMTime);
   }
   
   private void a(Message paramMessage)
@@ -216,18 +166,78 @@ class TavImageGenerator$ImageGeneratorThread
     }
     catch (Exception localException)
     {
-      Logger.e(TavImageGenerator.a(this.this$0), "doGeneratorCover: ", localException);
+      Logger.e(TavImageGenerator.b(this.this$0), "doGeneratorCover: ", localException);
     }
-    if (TavImageGenerator.CoverMsg.a(localCoverMsg) != null) {
-      TavImageGenerator.CoverMsg.a(localCoverMsg).a(TavImageGenerator.CoverMsg.a(localCoverMsg), paramMessage);
+    if (TavImageGenerator.CoverMsg.b(localCoverMsg) != null) {
+      TavImageGenerator.CoverMsg.b(localCoverMsg).a(TavImageGenerator.CoverMsg.a(localCoverMsg), paramMessage);
     }
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      TavImageGenerator.a(this.this$0).removeCallbacksAndMessages(null);
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    TavImageGenerator.a(this.this$0).sendMessage(localMessage);
   }
   
   @Nullable
   private Bitmap b(CMTime paramCMTime)
   {
-    RenderContext localRenderContext = a();
+    RenderContext localRenderContext = b();
     return a(localRenderContext, a(paramCMTime, localRenderContext));
+  }
+  
+  @NonNull
+  private RenderContext b()
+  {
+    if (TavImageGenerator.c(this.this$0) == null)
+    {
+      CGSize localCGSize;
+      if (TavImageGenerator.d(this.this$0) != null) {
+        localCGSize = TavImageGenerator.d(this.this$0);
+      } else {
+        localCGSize = this.this$0.a.getNaturalSize();
+      }
+      TavImageGenerator.a(this.this$0, new RenderContext((int)localCGSize.width, (int)localCGSize.height));
+      TavImageGenerator.c(this.this$0).setParams(TavImageGenerator.e(this.this$0));
+    }
+    TavImageGenerator.c(this.this$0).makeCurrent();
+    return TavImageGenerator.c(this.this$0);
+  }
+  
+  private void c()
+  {
+    Object localObject = TavImageGenerator.b(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doRelease: start, thread = ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.d((String)localObject, localStringBuilder.toString());
+    localObject = this.a;
+    if (localObject != null)
+    {
+      ((VideoCompositionDecoderTrack)localObject).release();
+      this.a = null;
+    }
+    localObject = this.b;
+    if (localObject != null)
+    {
+      ((VideoCompositing)localObject).release();
+      this.b = null;
+    }
+    if (TavImageGenerator.c(this.this$0) != null)
+    {
+      TavImageGenerator.c(this.this$0).release();
+      TavImageGenerator.a(this.this$0, null);
+    }
+    TavImageGenerator.a(this.this$0, null);
+    localObject = TavImageGenerator.b(this.this$0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doRelease: end, thread = ");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.d((String)localObject, localStringBuilder.toString());
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -238,7 +248,7 @@ class TavImageGenerator$ImageGeneratorThread
       if (i == 2)
       {
         TavImageGenerator.a(this.this$0).removeCallbacksAndMessages(null);
-        a();
+        c();
         quit();
       }
     }
@@ -250,7 +260,7 @@ class TavImageGenerator$ImageGeneratorThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavImageGenerator.ImageGeneratorThread
  * JD-Core Version:    0.7.0.1
  */

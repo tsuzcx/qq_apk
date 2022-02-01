@@ -13,9 +13,9 @@ class Face2FaceDetailBaseView$2
   public void onAnimationEnd(Animation paramAnimation)
   {
     this.a.setVisibility(4);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
+    this.a.e.b();
     this.a.c.setBackgroundDrawable(null);
-    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.d();
+    this.a.n.e();
     if (QLog.isColorLevel())
     {
       paramAnimation = new StringBuilder();
@@ -41,7 +41,7 @@ class Face2FaceDetailBaseView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.2
  * JD-Core Version:    0.7.0.1
  */

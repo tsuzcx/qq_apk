@@ -10,12 +10,12 @@ class RecentAdapter$2
   
   public void a()
   {
-    this.a.a.invalidateViews();
+    this.a.f.invalidateViews();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.2
  * JD-Core Version:    0.7.0.1
  */

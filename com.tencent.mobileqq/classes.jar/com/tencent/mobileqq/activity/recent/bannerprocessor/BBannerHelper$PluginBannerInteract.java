@@ -14,39 +14,39 @@ import java.lang.ref.WeakReference;
 class BBannerHelper$PluginBannerInteract
   implements BBannerHelper.IBannerInteract
 {
-  private final int jdField_a_of_type_Int;
   @NonNull
-  private final Intent jdField_a_of_type_AndroidContentIntent;
-  @Nullable
-  private BBannerHelper.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner;
-  @NonNull
-  private final String jdField_a_of_type_JavaLangString;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<QQAppInterface> a;
   @NonNull
   private final String b;
   @NonNull
   private final String c;
-  @Nullable
-  private final String d;
   @NonNull
+  private final String d;
+  @Nullable
   private final String e;
+  @Nullable
+  private BBannerHelper.MessageToShowBanner f;
+  @NonNull
+  private final Intent g;
+  @NonNull
+  private final String h;
+  private final int i;
   
   public BBannerHelper$PluginBannerInteract(@NonNull QQAppInterface paramQQAppInterface, @NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull String paramString4, @NonNull Intent paramIntent, @NonNull String paramString5, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.e = paramString5;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.e = paramString4;
+    this.g = paramIntent;
+    this.h = paramString5;
+    this.i = paramInt;
   }
   
   public void a(@Nullable BBannerHelper.MessageToShowBanner paramMessageToShowBanner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner = paramMessageToShowBanner;
+    this.f = paramMessageToShowBanner;
   }
   
   public boolean isNeedAutoCloseWhenAccountChange()
@@ -56,22 +56,22 @@ class BBannerHelper$PluginBannerInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.f == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface == null) {
       return;
     }
-    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+    BBannerHelper.a(localQQAppInterface, this.f);
   }
   
   public void onEnter()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.f == null) {
       return;
     }
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (QQAppInterface)this.a.get();
     if (localObject == null) {
       return;
     }
@@ -83,18 +83,18 @@ class BBannerHelper$PluginBannerInteract
     }
     try
     {
-      Class localClass = Class.forName(this.b).asSubclass(Activity.class);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("banner_fromBanner", true);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(this.jdField_a_of_type_Int);
-      localPluginParams.e = this.d;
-      localPluginParams.f = this.jdField_a_of_type_JavaLangString;
-      localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
-      localPluginParams.b = this.c;
-      localPluginParams.jdField_a_of_type_JavaLangString = this.e;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-      localPluginParams.c = -1;
+      Class localClass = Class.forName(this.c).asSubclass(Activity.class);
+      this.g.putExtra("banner_fromBanner", true);
+      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(this.i);
+      localPluginParams.g = this.e;
+      localPluginParams.h = this.b;
+      localPluginParams.i = localClass;
+      localPluginParams.d = this.d;
+      localPluginParams.c = this.h;
+      localPluginParams.j = this.g;
+      localPluginParams.k = -1;
       IPluginManager.a(localBaseActivity, localPluginParams);
-      BBannerHelper.a((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      BBannerHelper.a((QQAppInterface)localObject, this.f);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -104,7 +104,7 @@ class BBannerHelper$PluginBannerInteract
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("return to plugin error, can not find the ckass ");
-    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(this.c);
     QLog.e("Q.recent.banner", 1, ((StringBuilder)localObject).toString());
   }
   
@@ -112,7 +112,7 @@ class BBannerHelper$PluginBannerInteract
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.PluginBannerInteract
  * JD-Core Version:    0.7.0.1
  */

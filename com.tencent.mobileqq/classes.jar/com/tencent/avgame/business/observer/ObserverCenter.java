@@ -10,24 +10,24 @@ import java.util.List;
 
 public class ObserverCenter
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static ObserverCenter jdField_a_of_type_ComTencentAvgameBusinessObserverObserverCenter;
-  private static int jdField_b_of_type_Int = -1;
-  private final WrapperHandler jdField_a_of_type_ComTencentAvgameBusinessObserverWrapperHandler = new WrapperHandler(Looper.getMainLooper());
-  private final List<BusinessObserver> jdField_a_of_type_JavaUtilList = new ArrayList(4);
-  private final WrapperHandler jdField_b_of_type_ComTencentAvgameBusinessObserverWrapperHandler = new WrapperHandler(ThreadManager.getSubThreadHandler());
-  private final List<BusinessObserver> jdField_b_of_type_JavaUtilList = new ArrayList(4);
+  private static ObserverCenter a;
+  private static int f = 0;
+  private static int g = -1;
+  private final List<BusinessObserver> b = new ArrayList(4);
+  private final List<BusinessObserver> c = new ArrayList(4);
+  private final WrapperHandler d = new WrapperHandler(Looper.getMainLooper());
+  private final WrapperHandler e = new WrapperHandler(ThreadManager.getSubThreadHandler());
   
   public static ObserverCenter a()
   {
-    if (jdField_a_of_type_ComTencentAvgameBusinessObserverObserverCenter == null) {
+    if (a == null) {
       try
       {
-        jdField_a_of_type_ComTencentAvgameBusinessObserverObserverCenter = new ObserverCenter();
+        a = new ObserverCenter();
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvgameBusinessObserverObserverCenter;
+    return a;
   }
   
   private void a(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, boolean paramBoolean3, BusinessObserver paramBusinessObserver, WrapperHandler paramWrapperHandler)
@@ -67,10 +67,10 @@ public class ObserverCenter
   public List<BusinessObserver> a(int paramInt)
   {
     if (paramInt == 1) {
-      return this.jdField_a_of_type_JavaUtilList;
+      return this.b;
     }
     if (paramInt == 2) {
-      return this.jdField_b_of_type_JavaUtilList;
+      return this.c;
     }
     return null;
   }
@@ -94,7 +94,7 @@ public class ObserverCenter
     if (paramInt == 1)
     {
       localObject = new ArrayList();
-      a(paramClass, this.jdField_a_of_type_JavaUtilList, (List)localObject);
+      a(paramClass, this.b, (List)localObject);
       return localObject;
     }
     if (paramInt == 0) {
@@ -103,18 +103,9 @@ public class ObserverCenter
     if (paramInt == 2)
     {
       localObject = new ArrayList();
-      a(paramClass, this.jdField_b_of_type_JavaUtilList, (List)localObject);
+      a(paramClass, this.c, (List)localObject);
     }
     return localObject;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    if (QLog.isColorLevel()) {
-      QLog.i("ObserverCenter", 2, "clear");
-    }
   }
   
   public void a(BusinessObserver paramBusinessObserver)
@@ -128,11 +119,11 @@ public class ObserverCenter
       return;
     }
     if (paramBoolean) {
-      ??? = this.jdField_b_of_type_JavaUtilList;
+      ??? = this.c;
     }
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.b)
       {
         if (!???.contains(paramBusinessObserver)) {
           ???.add(paramBusinessObserver);
@@ -167,7 +158,7 @@ public class ObserverCenter
         {
           localBusinessObserver = (BusinessObserver)localIterator.next();
           if ((paramClass != null) && (paramClass.isAssignableFrom(localBusinessObserver.getClass()))) {
-            a(paramInt, paramBoolean1, paramObject, paramBoolean2, paramBoolean3, localBusinessObserver, this.jdField_a_of_type_ComTencentAvgameBusinessObserverWrapperHandler);
+            a(paramInt, paramBoolean1, paramObject, paramBoolean2, paramBoolean3, localBusinessObserver, this.d);
           }
         }
       }
@@ -182,12 +173,21 @@ public class ObserverCenter
         {
           localBusinessObserver = (BusinessObserver)localIterator.next();
           if ((paramClass != null) && (paramClass.isAssignableFrom(localBusinessObserver.getClass()))) {
-            a(paramInt, paramBoolean1, paramObject, paramBoolean2, paramBoolean3, localBusinessObserver, this.jdField_b_of_type_ComTencentAvgameBusinessObserverWrapperHandler);
+            a(paramInt, paramBoolean1, paramObject, paramBoolean2, paramBoolean3, localBusinessObserver, this.e);
           }
         }
         return;
       }
       finally {}
+    }
+  }
+  
+  public void b()
+  {
+    this.b.clear();
+    this.c.clear();
+    if (QLog.isColorLevel()) {
+      QLog.i("ObserverCenter", 2, "clear");
     }
   }
   
@@ -198,12 +198,12 @@ public class ObserverCenter
     }
     try
     {
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      synchronized (this.c)
       {
-        this.jdField_b_of_type_JavaUtilList.remove(paramBusinessObserver);
-        synchronized (this.jdField_a_of_type_JavaUtilList)
+        this.c.remove(paramBusinessObserver);
+        synchronized (this.b)
         {
-          this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
+          this.b.remove(paramBusinessObserver);
           return;
         }
       }

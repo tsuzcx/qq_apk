@@ -17,16 +17,16 @@ import com.tencent.qphone.base.util.QLog;
 
 public class LottieAnimController
 {
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private Context a;
+  private Bitmap b;
+  private View c;
+  private ImageView d;
+  private ValueAnimator e;
+  private View.OnClickListener f;
   
   public LottieAnimController(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void a()
@@ -34,13 +34,13 @@ public class LottieAnimController
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "playAnimation");
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    if (this.e != null)
     {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.d;
       if (localImageView != null) {
-        localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        localImageView.setImageBitmap(this.b);
       }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.e.start();
     }
   }
   
@@ -49,11 +49,11 @@ public class LottieAnimController
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "setOnCloseClickListener");
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    paramOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    this.f = paramOnClickListener;
+    paramOnClickListener = this.f;
     if (paramOnClickListener != null)
     {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.d;
       if (localImageView != null) {
         localImageView.setOnClickListener(paramOnClickListener);
       }
@@ -65,10 +65,10 @@ public class LottieAnimController
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "setBackgroundView");
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofObject(new LottieAnimController.AlphaEvaluator(null), new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(3350L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new LottieAnimController.1(this));
+    this.c = paramView;
+    this.e = ValueAnimator.ofObject(new LottieAnimController.AlphaEvaluator(null), new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
+    this.e.setDuration(3350L);
+    this.e.addUpdateListener(new LottieAnimController.1(this));
   }
   
   public void a(FriendShipLayout paramFriendShipLayout)
@@ -78,16 +78,16 @@ public class LottieAnimController
     }
     if (paramFriendShipLayout != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      this.d = new ImageView(this.a);
+      this.d.setScaleType(ImageView.ScaleType.FIT_CENTER);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 53;
       localLayoutParams.topMargin = ScreenUtil.dip2px(30.0F);
       localLayoutParams.rightMargin = ScreenUtil.dip2px(30.0F);
-      paramFriendShipLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-      paramFriendShipLayout = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+      paramFriendShipLayout.addView(this.d, localLayoutParams);
+      paramFriendShipLayout = this.f;
       if (paramFriendShipLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramFriendShipLayout);
+        this.d.setOnClickListener(paramFriendShipLayout);
       }
     }
   }
@@ -106,14 +106,14 @@ public class LottieAnimController
     ((BitmapFactory.Options)localObject).inDensity = 320;
     try
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+      if ((this.b != null) && (!this.b.isRecycled()))
       {
-        if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+        if (this.d != null) {
+          this.d.setImageDrawable(null);
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+        this.b.recycle();
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(paramString, (BitmapFactory.Options)localObject);
+      this.b = ImageUtil.a(paramString, (BitmapFactory.Options)localObject);
       return;
     }
     catch (Exception paramString)
@@ -126,79 +126,79 @@ public class LottieAnimController
       break label106;
     }
     QLog.e("LottieAnimController", 1, "Decode bitmap OOM");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.b = null;
     return;
     label120:
     QLog.e("LottieAnimController", 1, "Decode bitmap error");
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.b = null;
   }
   
-  public boolean a()
+  public boolean b()
   {
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "isAnimating");
     }
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.e;
     if (localValueAnimator != null) {
       localValueAnimator.isRunning();
     }
     return false;
   }
   
-  public void b()
+  public void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "cancelAnimation");
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    if (this.e != null)
     {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.d;
       if (localImageView != null) {
         localImageView.setImageDrawable(null);
       }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "recycleBitmaps");
-    }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-    {
-      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (localObject != null) {
-        ((ImageView)localObject).setImageDrawable(null);
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.e.cancel();
     }
   }
   
   public void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimController", 2, "pauseAnimation");
+      QLog.d("LottieAnimController", 2, "recycleBitmaps");
     }
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.pause();
+    Object localObject = this.b;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+    {
+      localObject = this.d;
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable(null);
+      }
+      this.b.recycle();
     }
   }
   
   public void e()
   {
     if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "pauseAnimation");
+    }
+    if ((this.e != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.e.pause();
+    }
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
       QLog.d("LottieAnimController", 2, "resumeAnimation");
     }
-    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (Build.VERSION.SDK_INT >= 19)) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.resume();
+    if ((this.e != null) && (Build.VERSION.SDK_INT >= 19)) {
+      this.e.resume();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.friendship.impl.lottie.LottieAnimController
  * JD-Core Version:    0.7.0.1
  */

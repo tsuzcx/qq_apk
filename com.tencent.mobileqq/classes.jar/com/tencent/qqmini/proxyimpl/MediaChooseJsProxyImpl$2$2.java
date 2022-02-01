@@ -10,8 +10,8 @@ class MediaChooseJsProxyImpl$2$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MediaChooseJsProxyImpl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity);
-    MediaChooseJsProxyImpl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Long, this.a.b, this.a.jdField_a_of_type_Int, this.a.c);
+    MediaChooseJsProxyImpl.a(this.a.this$0, this.a.a);
+    MediaChooseJsProxyImpl.a(this.a.this$0, this.a.a, this.a.b, this.a.e, this.a.d, this.a.f);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -19,7 +19,7 @@ class MediaChooseJsProxyImpl$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MediaChooseJsProxyImpl.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,26 +6,26 @@ import org.json.JSONObject;
 
 public final class UserInfoModule$LoginInfo
 {
-  public long a;
   public String a;
-  public long b;
   public String b;
+  public long c;
+  public long d;
   
   public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("openid", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("access_token", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("expire_in", this.jdField_a_of_type_Long);
-      localJSONObject.put("expire_time", this.jdField_b_of_type_Long);
+      localJSONObject.put("openid", this.a);
+      localJSONObject.put("access_token", this.b);
+      localJSONObject.put("expire_in", this.c);
+      localJSONObject.put("expire_time", this.d);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+        QLog.e(UserInfoModule.b, 2, localJSONException.getMessage(), localJSONException);
       }
     }
     return localJSONObject;
@@ -35,16 +35,16 @@ public final class UserInfoModule$LoginInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LoginInfo{, openid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", access_token='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", expireIn='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", expireTime='");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -52,7 +52,7 @@ public final class UserInfoModule$LoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

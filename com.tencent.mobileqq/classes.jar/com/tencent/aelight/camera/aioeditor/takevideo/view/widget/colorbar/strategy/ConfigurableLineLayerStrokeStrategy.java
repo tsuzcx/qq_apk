@@ -17,40 +17,34 @@ import java.util.Iterator;
 public class ConfigurableLineLayerStrokeStrategy
   implements StrokeStrategy
 {
-  public static final int[] a;
-  public static final int[] b;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private final boolean jdField_a_of_type_Boolean;
-  private final boolean b;
-  private final boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130847005, 2130847008, 2130847006, 2130847011, 2130847010 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130847007, 2130847005, 2130847008, 2130847006, 2130847011, 2130847010 };
-  }
+  public static final int[] a = { 2130848557, 2130848560, 2130848558, 2130848563, 2130848562 };
+  public static final int[] b = { 2130848559, 2130848557, 2130848560, 2130848558, 2130848563, 2130848562 };
+  private AppInterface c;
+  private final boolean d;
+  private final boolean e;
+  private final boolean f;
   
   public ConfigurableLineLayerStrokeStrategy(AppInterface paramAppInterface, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.c = paramBoolean3;
+    this.c = paramAppInterface;
+    this.d = paramBoolean1;
+    this.e = paramBoolean2;
+    this.f = paramBoolean3;
   }
   
   public void a(Context paramContext, ArrayList<HorizontalStroke> paramArrayList)
   {
     int[] arrayOfInt1;
-    if (this.c) {
-      arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
+    if (this.f) {
+      arrayOfInt1 = b;
     } else {
-      arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+      arrayOfInt1 = a;
     }
     int[] arrayOfInt2;
-    if (this.c) {
-      arrayOfInt2 = HorizontalStroke.jdField_b_of_type_ArrayOfInt;
+    if (this.f) {
+      arrayOfInt2 = HorizontalStroke.b;
     } else {
-      arrayOfInt2 = HorizontalStroke.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt2 = HorizontalStroke.a;
     }
     int i = 0;
     while (i < arrayOfInt1.length)
@@ -63,24 +57,24 @@ public class ConfigurableLineLayerStrokeStrategy
   public void a(@NonNull ArrayList<HorizontalStroke> paramArrayList, @NonNull Context paramContext)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("CfgLineLayerStrokeStrategy", 2, new Object[] { "createHorizontalStroke, mNeedMosaic:", Boolean.valueOf(this.jdField_a_of_type_Boolean), " mNeedPersonality:", Boolean.valueOf(this.jdField_b_of_type_Boolean), " mIsEditPic:", Boolean.valueOf(this.c) });
+      QLog.e("CfgLineLayerStrokeStrategy", 2, new Object[] { "createHorizontalStroke, mNeedMosaic:", Boolean.valueOf(this.d), " mNeedPersonality:", Boolean.valueOf(this.e), " mIsEditPic:", Boolean.valueOf(this.f) });
     }
     Object localObject1;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      localObject1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130847013), 1, 0);
-      ((HorizontalStroke)localObject1).jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702621);
+      localObject1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130848565), 1, 0);
+      ((HorizontalStroke)localObject1).g = HardCodeUtil.a(2131900614);
       paramArrayList.add(localObject1);
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.e)
     {
-      boolean bool = PtvFilterSoLoad.b();
-      localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      boolean bool = PtvFilterSoLoad.d();
+      localObject1 = this.c;
       Object localObject6 = null;
       HorizontalStroke localHorizontalStroke2 = null;
       if ((localObject1 != null) && (bool))
       {
-        localObject1 = PtvTemplateManager.a().a();
+        localObject1 = PtvTemplateManager.a().d();
         if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
         {
           Iterator localIterator = ((ArrayList)localObject1).iterator();
@@ -99,33 +93,33 @@ public class ConfigurableLineLayerStrokeStrategy
               break;
             }
             localObject3 = (DoodleInfo)localIterator.next();
-            if ((!"doodle_highlighter".equals(((DoodleInfo)localObject3).jdField_b_of_type_JavaLangString)) || (Build.VERSION.SDK_INT >= 18))
+            if ((!"doodle_highlighter".equals(((DoodleInfo)localObject3).b)) || (Build.VERSION.SDK_INT >= 18))
             {
               int i = Integer.valueOf(((DoodleInfo)localObject3).a).intValue();
-              if ("doodle_image_family".equals(((DoodleInfo)localObject3).jdField_b_of_type_JavaLangString))
+              if ("doodle_image_family".equals(((DoodleInfo)localObject3).b))
               {
-                localObject2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130845063), 2, i);
-                ((HorizontalStroke)localObject2).jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702620);
+                localObject2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130846500), 2, i);
+                ((HorizontalStroke)localObject2).g = HardCodeUtil.a(2131900613);
               }
-              else if ("doodle_image_mouth".equals(((DoodleInfo)localObject3).jdField_b_of_type_JavaLangString))
+              else if ("doodle_image_mouth".equals(((DoodleInfo)localObject3).b))
               {
-                localObject1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130845064), 2, i);
-                ((HorizontalStroke)localObject1).jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702619);
+                localObject1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130846501), 2, i);
+                ((HorizontalStroke)localObject1).g = HardCodeUtil.a(2131900612);
               }
-              else if ("doodle_image_xin".equals(((DoodleInfo)localObject3).jdField_b_of_type_JavaLangString))
+              else if ("doodle_image_xin".equals(((DoodleInfo)localObject3).b))
               {
-                localHorizontalStroke1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130845065), 2, i);
-                localHorizontalStroke1.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702622);
+                localHorizontalStroke1 = new HorizontalStroke(paramContext.getResources().getDrawable(2130846502), 2, i);
+                localHorizontalStroke1.g = HardCodeUtil.a(2131900615);
               }
-              else if ("doodle_highlighter".equals(((DoodleInfo)localObject3).jdField_b_of_type_JavaLangString))
+              else if ("doodle_highlighter".equals(((DoodleInfo)localObject3).b))
               {
-                localHorizontalStroke2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130845062), 2, i);
-                localHorizontalStroke2.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702617);
+                localHorizontalStroke2 = new HorizontalStroke(paramContext.getResources().getDrawable(2130846499), 2, i);
+                localHorizontalStroke2.g = HardCodeUtil.a(2131900610);
               }
-              else if ("doodle_fireworks".equals(((DoodleInfo)localObject3).jdField_b_of_type_JavaLangString))
+              else if ("doodle_fireworks".equals(((DoodleInfo)localObject3).b))
               {
-                localHorizontalStroke3 = new HorizontalStroke(paramContext.getResources().getDrawable(2130845061), 2, i);
-                localHorizontalStroke3.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702618);
+                localHorizontalStroke3 = new HorizontalStroke(paramContext.getResources().getDrawable(2130846498), 2, i);
+                localHorizontalStroke3.g = HardCodeUtil.a(2131900611);
               }
             }
           }
@@ -165,7 +159,7 @@ public class ConfigurableLineLayerStrokeStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.view.widget.colorbar.strategy.ConfigurableLineLayerStrokeStrategy
  * JD-Core Version:    0.7.0.1
  */

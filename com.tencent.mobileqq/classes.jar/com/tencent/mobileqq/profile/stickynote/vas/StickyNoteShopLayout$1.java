@@ -22,13 +22,13 @@ class StickyNoteShopLayout$1
       if ((paramObject.isEnd == 1) && (paramObject.vItems.size() == 1)) {
         return;
       }
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
         localObject = paramObject.toByteArray();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(StickyNoteShopLayout.a);
         localStringBuilder.append('_');
-        localStringBuilder.append(StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout));
+        localStringBuilder.append(StickyNoteShopLayout.a(this.b));
         FileUtils.writeFile((byte[])localObject, localStringBuilder.toString());
       }
       Object localObject = new StringBuilder();
@@ -37,27 +37,27 @@ class StickyNoteShopLayout$1
       ((StringBuilder)localObject).append(" isSuccess:");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append(" isLoadMore:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" size:");
       ((StringBuilder)localObject).append(paramObject.stRet.ret);
       QLog.d("StickyNoteShopLayout", 2, ((StringBuilder)localObject).toString());
-      StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout, paramObject.strAttachInfo);
+      StickyNoteShopLayout.a(this.b, paramObject.strAttachInfo);
       if ((paramObject.stRet.ret == 0) && (paramObject.vItems != null) && (paramObject.vItems.size() > 0))
       {
         ThreadManagerV2.getUIHandlerV2().post(new StickyNoteShopLayout.1.1(this, paramObject));
         return;
       }
-      StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout, true);
+      StickyNoteShopLayout.a(this.b, true);
       return;
     }
-    if ((!this.jdField_a_of_type_Boolean) && (StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).getItemCount() == 0)) {
+    if ((!this.a) && (StickyNoteShopLayout.b(this.b).getItemCount() == 0)) {
       ThreadManagerV2.getUIHandlerV2().post(new StickyNoteShopLayout.1.2(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.1
  * JD-Core Version:    0.7.0.1
  */

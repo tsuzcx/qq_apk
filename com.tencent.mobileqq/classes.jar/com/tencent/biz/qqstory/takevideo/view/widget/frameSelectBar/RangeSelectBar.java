@@ -22,16 +22,7 @@ public class RangeSelectBar
   extends View
 {
   public static int a = 4;
-  private float jdField_a_of_type_Float;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RangeSelectBar.RangeChangeListener jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int b;
   private int c;
   private int d;
   private int e;
@@ -39,10 +30,19 @@ public class RangeSelectBar
   private int g;
   private int h;
   private int i;
-  private int j;
+  private float j;
   private int k;
   private int l;
-  private int m = Color.rgb(32, 170, 239);
+  private Paint m;
+  private Paint n;
+  private boolean o = false;
+  private boolean p = false;
+  private int q;
+  private Bitmap r;
+  private Bitmap s;
+  private RangeSelectBar.RangeChangeListener t;
+  private int u = Color.rgb(32, 170, 239);
+  private float v;
   
   public RangeSelectBar(Context paramContext)
   {
@@ -64,85 +64,90 @@ public class RangeSelectBar
   
   private void a()
   {
-    this.l = DisplayUtil.a(getContext(), ScrollFrameSelectBar.jdField_a_of_type_Int);
-    this.g = UIUtils.a(getContext());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.m);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAlpha(80);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.q = DisplayUtil.a(getContext(), ScrollFrameSelectBar.a);
+    this.g = UIUtils.b(getContext());
+    this.m = new Paint(1);
+    this.m.setColor(this.u);
+    this.m.setStyle(Paint.Style.FILL);
+    this.n = new Paint();
+    this.n.setColor(-16777216);
+    this.n.setAlpha(80);
+    this.n.setStyle(Paint.Style.FILL);
   }
   
-  public int a()
+  public float getEndFloat()
   {
-    return this.h;
+    return this.j;
   }
   
-  public int b()
+  public int getEndIndex()
   {
     return this.i;
   }
   
-  public int c()
+  public int getPadding()
   {
-    return this.l;
+    return this.q;
+  }
+  
+  public int getStartIndex()
+  {
+    return this.h;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    int n = this.h;
-    int i1 = this.l;
-    if (n > i1 * 2) {
-      paramCanvas.drawRect(i1, 0.0F, n, this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+    int i1 = this.h;
+    int i2 = this.q;
+    if (i1 > i2 * 2) {
+      paramCanvas.drawRect(i2, 0.0F, i1, this.d, this.n);
     }
-    n = this.i;
-    i1 = this.k;
-    if (n < i1 - this.l) {
-      paramCanvas.drawRect(n, 0.0F, i1, this.d, this.jdField_b_of_type_AndroidGraphicsPaint);
+    i1 = this.i;
+    i2 = this.l;
+    if (i1 < i2 - this.q) {
+      paramCanvas.drawRect(i1, 0.0F, i2, this.d, this.n);
     }
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.h - this.l, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, this.i, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawRect(this.h, 0.0F, this.i, jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.r, this.h - this.q, 0.0F, this.m);
+    paramCanvas.drawBitmap(this.s, this.i, 0.0F, this.m);
+    paramCanvas.drawRect(this.h, 0.0F, this.i, a, this.m);
     float f1 = this.h;
-    n = this.d;
-    paramCanvas.drawRect(f1, n - jdField_a_of_type_Int, this.i, n, this.jdField_a_of_type_AndroidGraphicsPaint);
+    i1 = this.d;
+    paramCanvas.drawRect(f1, i1 - a, this.i, i1, this.m);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int = View.MeasureSpec.getSize(paramInt1);
+    this.b = View.MeasureSpec.getSize(paramInt1);
     this.c = View.MeasureSpec.getSize(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int n = paramMotionEvent.getAction();
-    if (n != 0)
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (n != 1)
+      if (i1 != 1)
       {
-        if (n != 2)
+        if (i1 != 2)
         {
-          if (n != 3) {
+          if (i1 != 3) {
             return false;
           }
           SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_CANCEL");
-          if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+          if ((!this.o) && (!this.p))
           {
-            this.jdField_a_of_type_Boolean = false;
-            this.jdField_b_of_type_Boolean = false;
+            this.o = false;
+            this.p = false;
             return false;
           }
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_b_of_type_Boolean = false;
+          this.o = false;
+          this.p = false;
           return true;
         }
         paramMotionEvent.getX();
-        f1 = this.jdField_b_of_type_Float;
-        if (this.jdField_a_of_type_Boolean)
+        f1 = this.v;
+        if (this.o)
         {
           if (this.i - (int)paramMotionEvent.getX() < this.f)
           {
@@ -150,10 +155,10 @@ public class RangeSelectBar
             this.h = (this.i - this.f);
             invalidate();
           }
-          else if (paramMotionEvent.getX() <= this.j)
+          else if (paramMotionEvent.getX() <= this.k)
           {
             SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向左边边滑动");
-            this.h = this.j;
+            this.h = this.k;
             invalidate();
           }
           else
@@ -162,7 +167,7 @@ public class RangeSelectBar
             invalidate();
           }
         }
-        else if (this.jdField_b_of_type_Boolean) {
+        else if (this.p) {
           if ((int)paramMotionEvent.getX() - this.h < this.f)
           {
             SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "mEndIndex不能再截取小于1s的视频");
@@ -172,10 +177,10 @@ public class RangeSelectBar
           else
           {
             f1 = paramMotionEvent.getX();
-            n = this.k;
-            if (f1 >= n)
+            i1 = this.l;
+            if (f1 >= i1)
             {
-              this.i = n;
+              this.i = i1;
               SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向右边边滑动");
               invalidate();
             }
@@ -186,22 +191,22 @@ public class RangeSelectBar
             }
           }
         }
-        paramMotionEvent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener;
+        paramMotionEvent = this.t;
         if (paramMotionEvent != null) {
           paramMotionEvent.b();
         }
         return true;
       }
       SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_UP");
-      if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      if ((!this.o) && (!this.p))
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = false;
+        this.o = false;
+        this.p = false;
         return false;
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      paramMotionEvent = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener;
+      this.o = false;
+      this.p = false;
+      paramMotionEvent = this.t;
       if (paramMotionEvent != null) {
         paramMotionEvent.a(this.h - 20, this.i - 20);
       }
@@ -209,20 +214,20 @@ public class RangeSelectBar
     }
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    this.jdField_b_of_type_Float = f1;
+    this.v = f1;
     SLog.a("Q.qqstory.frameWidget.RangeSelectBar", "ACTION_DOWN x=%s,y=%s,mstart=%s,end=%s", Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(this.h), Integer.valueOf(this.i));
-    n = this.h;
-    int i1 = this.l;
-    if ((f1 > n - i1 / 2 - 40) && (f1 < n - i1 / 2 + 40))
+    i1 = this.h;
+    int i2 = this.q;
+    if ((f1 > i1 - i2 / 2 - 40) && (f1 < i1 - i2 / 2 + 40))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.o = true;
       return true;
     }
-    n = this.i;
-    i1 = this.l;
-    if ((f1 > i1 / 2 + n - 40) && (f1 < n + i1 / 2 + 40))
+    i1 = this.i;
+    i2 = this.q;
+    if ((f1 > i2 / 2 + i1 - 40) && (f1 < i1 + i2 / 2 + 40))
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.p = true;
       return true;
     }
     SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "没有触摸到");
@@ -237,10 +242,10 @@ public class RangeSelectBar
       this.i = (this.h + this.f);
       return;
     }
-    int n = this.k;
-    if (paramInt >= n)
+    int i1 = this.l;
+    if (paramInt >= i1)
     {
-      this.i = n;
+      this.i = i1;
       SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向右边边滑动");
       return;
     }
@@ -249,42 +254,42 @@ public class RangeSelectBar
   
   public void setFrameSize(int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2)
   {
-    int i1 = this.l;
-    int n = i1;
-    if (i1 <= 0) {
-      n = 100;
+    int i2 = this.q;
+    int i1 = i2;
+    if (i2 <= 0) {
+      i1 = 100;
     }
-    this.l = n;
+    this.q = i1;
     this.d = paramInt1;
     this.e = paramInt2;
     float f1 = paramInt2;
     this.f = ((int)(f1 / (paramInt3 / paramFloat2)));
     Object localObject = getContext().getResources();
-    paramInt3 = this.l / 2;
-    n = paramInt1 / 2;
-    localObject = UIUtils.a((Resources)localObject, 2130849428, paramInt3, n);
-    Bitmap localBitmap = UIUtils.a(getContext().getResources(), 2130849430, this.l / 2, n);
+    paramInt3 = this.q / 2;
+    i1 = paramInt1 / 2;
+    localObject = UIUtils.a((Resources)localObject, 2130851112, paramInt3, i1);
+    Bitmap localBitmap = UIUtils.a(getContext().getResources(), 2130851114, this.q / 2, i1);
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setColor(this.m);
+    localGradientDrawable.setColor(this.u);
     localGradientDrawable.setCornerRadii(new float[] { 5.0F, 5.0F, 0.0F, 0.0F, 0.0F, 0.0F, 5.0F, 5.0F });
-    localGradientDrawable.setStroke(DisplayUtil.a(getContext(), 3.0F), this.m);
-    localGradientDrawable.setBounds(0, 0, this.l, paramInt1);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.l, paramInt1, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    localGradientDrawable.setStroke(DisplayUtil.a(getContext(), 3.0F), this.u);
+    localGradientDrawable.setBounds(0, 0, this.q, paramInt1);
+    this.r = Bitmap.createBitmap(this.q, paramInt1, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(this.r);
     localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     localGradientDrawable.draw(localCanvas);
     if (localObject != null) {
-      localCanvas.drawBitmap((Bitmap)localObject, (this.l - ((Bitmap)localObject).getWidth()) / 2, (paramInt1 - ((Bitmap)localObject).getHeight()) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localCanvas.drawBitmap((Bitmap)localObject, (this.q - ((Bitmap)localObject).getWidth()) / 2, (paramInt1 - ((Bitmap)localObject).getHeight()) / 2, this.m);
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.l, paramInt1, Bitmap.Config.ARGB_8888);
-    localCanvas.setBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
+    this.s = Bitmap.createBitmap(this.q, paramInt1, Bitmap.Config.ARGB_8888);
+    localCanvas.setBitmap(this.s);
     localGradientDrawable.setCornerRadii(new float[] { 0.0F, 0.0F, 5.0F, 5.0F, 5.0F, 5.0F, 0.0F, 0.0F });
     localCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     localGradientDrawable.draw(localCanvas);
     if (localBitmap != null) {
-      localCanvas.drawBitmap(localBitmap, (this.l - localBitmap.getWidth()) / 2, (paramInt1 - localBitmap.getHeight()) / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localCanvas.drawBitmap(localBitmap, (this.q - localBitmap.getWidth()) / 2, (paramInt1 - localBitmap.getHeight()) / 2, this.m);
     }
-    paramInt1 = this.l;
+    paramInt1 = this.q;
     this.h = paramInt1;
     double d1 = paramInt1;
     double d2 = Math.ceil(paramFloat1);
@@ -292,14 +297,14 @@ public class RangeSelectBar
     Double.isNaN(d3);
     Double.isNaN(d1);
     this.i = ((int)(d1 + d2 * d3));
-    this.jdField_a_of_type_Float = (this.l + paramFloat1 * f1);
-    this.j = this.h;
-    this.k = this.i;
+    this.j = (this.q + paramFloat1 * f1);
+    this.k = this.h;
+    this.l = this.i;
   }
   
   public void setRangeChangeListener(RangeSelectBar.RangeChangeListener paramRangeChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarRangeSelectBar$RangeChangeListener = paramRangeChangeListener;
+    this.t = paramRangeChangeListener;
   }
   
   public void setStartIndex(int paramInt)
@@ -310,10 +315,10 @@ public class RangeSelectBar
       this.h = (this.i - this.f);
       return;
     }
-    if (paramInt <= this.j)
+    if (paramInt <= this.k)
     {
       SLog.b("Q.qqstory.frameWidget.RangeSelectBar", "向左边边滑动");
-      this.h = this.j;
+      this.h = this.k;
       return;
     }
     this.h = paramInt;

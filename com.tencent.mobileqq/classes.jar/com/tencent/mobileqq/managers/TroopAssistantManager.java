@@ -56,51 +56,28 @@ import mqq.os.MqqHandler;
 public class TroopAssistantManager
 {
   public static TroopAssistantManager a;
-  protected int a;
-  protected long a;
-  protected Object a;
-  protected String a;
-  HashSet<String> a;
-  protected List<TroopAssistantData> a;
-  protected final Map<String, TroopAssistantData> a;
-  protected Set<String> a;
-  protected boolean a;
-  protected int b;
-  protected Object b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d = false;
-  protected boolean e = false;
-  
-  private TroopAssistantManager()
-  {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_b_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  private TroopAssistantData a(QQAppInterface arg1, String paramString)
-  {
-    a(???);
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (TroopAssistantData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      return paramString;
-    }
-  }
+  protected Object b = new Object();
+  protected boolean c = true;
+  protected boolean d;
+  protected boolean e;
+  protected String f;
+  protected long g = 0L;
+  protected boolean h = false;
+  protected int i = 0;
+  protected Set<String> j = new HashSet();
+  protected List<TroopAssistantData> k;
+  protected final Map<String, TroopAssistantData> l = new HashMap();
+  protected Object m = new Object();
+  protected boolean n = false;
+  HashSet<String> o = new HashSet();
+  protected int p = -1;
   
   private TroopAssistantData a(EntityManager paramEntityManager, QQAppInterface paramQQAppInterface, String paramString)
   {
     a(paramQQAppInterface);
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.l)
     {
-      TroopAssistantData localTroopAssistantData = (TroopAssistantData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      TroopAssistantData localTroopAssistantData = (TroopAssistantData)this.l.get(paramString);
       paramEntityManager = localTroopAssistantData;
       if (localTroopAssistantData == null)
       {
@@ -127,30 +104,25 @@ public class TroopAssistantManager
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager == null) {
-        jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager = new TroopAssistantManager();
+      if (a == null) {
+        a = new TroopAssistantManager();
       }
-      TroopAssistantManager localTroopAssistantManager = jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager;
+      TroopAssistantManager localTroopAssistantManager = a;
       return localTroopAssistantManager;
     }
     finally {}
   }
   
-  public static void a()
-  {
-    jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager = null;
-  }
-  
   private void a(MessageRecord paramMessageRecord, String paramString, QQAppInterface paramQQAppInterface)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.b;
     if (paramMessageRecord != null) {}
     try
     {
-      if ((!paramMessageRecord.isread) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
+      if ((!paramMessageRecord.isread) && (!this.j.contains(paramString))) {
+        this.j.add(paramString);
       }
-      l(paramQQAppInterface);
+      t(paramQQAppInterface);
       return;
     }
     finally {}
@@ -161,98 +133,98 @@ public class TroopAssistantManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: ldc 68
+    //   1: ldc 79
     //   3: iconst_0
     //   4: aconst_null
     //   5: aconst_null
     //   6: aconst_null
     //   7: aconst_null
-    //   8: ldc 121
+    //   8: ldc 131
     //   10: aconst_null
-    //   11: invokevirtual 127	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   11: invokevirtual 137	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
     //   14: astore_1
     //   15: aload_1
     //   16: ifnull +69 -> 85
     //   19: aload_1
-    //   20: invokeinterface 133 1 0
+    //   20: invokeinterface 143 1 0
     //   25: ifle +60 -> 85
     //   28: aload_1
-    //   29: new 135	com/tencent/mobileqq/managers/TroopAssistantManager$5
+    //   29: new 145	com/tencent/mobileqq/managers/TroopAssistantManager$5
     //   32: dup
     //   33: aload_0
-    //   34: invokespecial 138	com/tencent/mobileqq/managers/TroopAssistantManager$5:<init>	(Lcom/tencent/mobileqq/managers/TroopAssistantManager;)V
-    //   37: invokestatic 144	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
-    //   40: invokestatic 150	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   34: invokespecial 148	com/tencent/mobileqq/managers/TroopAssistantManager$5:<init>	(Lcom/tencent/mobileqq/managers/TroopAssistantManager;)V
+    //   37: invokestatic 154	java/util/Collections:sort	(Ljava/util/List;Ljava/util/Comparator;)V
+    //   40: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   43: ifeq +56 -> 99
-    //   46: new 152	java/lang/StringBuilder
+    //   46: new 162	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 153	java/lang/StringBuilder:<init>	()V
+    //   50: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   53: astore_2
     //   54: aload_2
-    //   55: ldc 155
-    //   57: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: ldc 165
+    //   57: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   60: pop
     //   61: aload_2
     //   62: aload_1
-    //   63: invokeinterface 133 1 0
-    //   68: invokevirtual 162	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   63: invokeinterface 143 1 0
+    //   68: invokevirtual 172	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   71: pop
-    //   72: ldc 164
+    //   72: ldc 174
     //   74: iconst_2
     //   75: aload_2
-    //   76: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   76: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokestatic 181	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   82: goto +17 -> 99
-    //   85: invokestatic 150	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   85: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   88: ifeq +11 -> 99
-    //   91: ldc 164
+    //   91: ldc 174
     //   93: iconst_2
-    //   94: ldc 174
-    //   96: invokestatic 172	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   94: ldc 183
+    //   96: invokestatic 181	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   99: aload_0
-    //   100: getfield 44	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_b_of_type_JavaLangObject	Ljava/lang/Object;
+    //   100: getfield 55	com/tencent/mobileqq/managers/TroopAssistantManager:m	Ljava/lang/Object;
     //   103: astore_2
     //   104: aload_2
     //   105: monitorenter
     //   106: aload_0
     //   107: aload_1
-    //   108: putfield 176	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   108: putfield 185	com/tencent/mobileqq/managers/TroopAssistantManager:k	Ljava/util/List;
     //   111: aload_0
-    //   112: getfield 176	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   112: getfield 185	com/tencent/mobileqq/managers/TroopAssistantManager:k	Ljava/util/List;
     //   115: ifnonnull +16 -> 131
     //   118: aload_0
-    //   119: new 178	java/util/ArrayList
+    //   119: new 187	java/util/ArrayList
     //   122: dup
     //   123: bipush 15
-    //   125: invokespecial 181	java/util/ArrayList:<init>	(I)V
-    //   128: putfield 176	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   125: invokespecial 190	java/util/ArrayList:<init>	(I)V
+    //   128: putfield 185	com/tencent/mobileqq/managers/TroopAssistantManager:k	Ljava/util/List;
     //   131: aload_2
     //   132: monitorexit
     //   133: aload_0
-    //   134: getfield 55	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   134: getfield 66	com/tencent/mobileqq/managers/TroopAssistantManager:l	Ljava/util/Map;
     //   137: astore_1
     //   138: aload_1
     //   139: monitorenter
     //   140: aload_0
-    //   141: getfield 55	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   144: invokeinterface 184 1 0
+    //   141: getfield 66	com/tencent/mobileqq/managers/TroopAssistantManager:l	Ljava/util/Map;
+    //   144: invokeinterface 193 1 0
     //   149: aload_0
-    //   150: getfield 176	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   153: invokeinterface 188 1 0
+    //   150: getfield 185	com/tencent/mobileqq/managers/TroopAssistantManager:k	Ljava/util/List;
+    //   153: invokeinterface 197 1 0
     //   158: astore_2
     //   159: aload_2
-    //   160: invokeinterface 193 1 0
+    //   160: invokeinterface 202 1 0
     //   165: ifeq +31 -> 196
     //   168: aload_2
-    //   169: invokeinterface 197 1 0
-    //   174: checkcast 68	com/tencent/mobileqq/data/TroopAssistantData
+    //   169: invokeinterface 206 1 0
+    //   174: checkcast 79	com/tencent/mobileqq/data/TroopAssistantData
     //   177: astore_3
     //   178: aload_0
-    //   179: getfield 55	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   179: getfield 66	com/tencent/mobileqq/managers/TroopAssistantManager:l	Ljava/util/Map;
     //   182: aload_3
-    //   183: getfield 73	com/tencent/mobileqq/data/TroopAssistantData:troopUin	Ljava/lang/String;
+    //   183: getfield 83	com/tencent/mobileqq/data/TroopAssistantData:troopUin	Ljava/lang/String;
     //   186: aload_3
-    //   187: invokeinterface 201 3 0
+    //   187: invokeinterface 210 3 0
     //   192: pop
     //   193: goto -34 -> 159
     //   196: aload_1
@@ -271,26 +243,26 @@ public class TroopAssistantManager
     //   209: astore_1
     //   210: goto +45 -> 255
     //   213: astore_1
-    //   214: invokestatic 150	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   214: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   217: ifeq +37 -> 254
-    //   220: new 152	java/lang/StringBuilder
+    //   220: new 162	java/lang/StringBuilder
     //   223: dup
-    //   224: invokespecial 153	java/lang/StringBuilder:<init>	()V
+    //   224: invokespecial 163	java/lang/StringBuilder:<init>	()V
     //   227: astore_2
     //   228: aload_2
-    //   229: ldc 203
-    //   231: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: ldc 212
+    //   231: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: pop
     //   235: aload_2
     //   236: aload_1
-    //   237: invokevirtual 206	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   240: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 215	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   240: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   243: pop
-    //   244: ldc 164
+    //   244: ldc 174
     //   246: iconst_2
     //   247: aload_2
-    //   248: invokevirtual 168	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokestatic 208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   248: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   251: invokestatic 217	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   254: return
     //   255: goto +5 -> 260
     //   258: aload_1
@@ -337,27 +309,27 @@ public class TroopAssistantManager
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.l)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(paramTroopAssistantData.troopUin, paramTroopAssistantData);
-        synchronized (this.jdField_b_of_type_JavaLangObject)
+        this.l.put(paramTroopAssistantData.troopUin, paramTroopAssistantData);
+        synchronized (this.m)
         {
-          if (this.jdField_a_of_type_JavaUtilList != null)
+          if (this.k != null)
           {
-            this.jdField_a_of_type_JavaUtilList.remove(paramTroopAssistantData);
-            int j = this.jdField_a_of_type_JavaUtilList.size();
-            i = 0;
-            if (i >= j) {
+            this.k.remove(paramTroopAssistantData);
+            int i2 = this.k.size();
+            i1 = 0;
+            if (i1 >= i2) {
               break label211;
             }
-            TroopAssistantData localTroopAssistantData = (TroopAssistantData)this.jdField_a_of_type_JavaUtilList.get(i);
+            TroopAssistantData localTroopAssistantData = (TroopAssistantData)this.k.get(i1);
             if (Math.max(paramTroopAssistantData.lastmsgtime, paramTroopAssistantData.lastdrafttime) <= Math.max(localTroopAssistantData.lastmsgtime, localTroopAssistantData.lastdrafttime)) {
               break label204;
             }
-            this.jdField_a_of_type_JavaUtilList.add(i, paramTroopAssistantData);
-            i = 1;
-            if (i == 0) {
-              this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.size(), paramTroopAssistantData);
+            this.k.add(i1, paramTroopAssistantData);
+            i1 = 1;
+            if (i1 == 0) {
+              this.k.add(this.k.size(), paramTroopAssistantData);
             }
           }
           ThreadManager.post(new TroopAssistantManager.4(this, paramTroopAssistantData, paramEntityManager), 8, null, false);
@@ -366,17 +338,17 @@ public class TroopAssistantManager
       }
       return;
       label204:
-      i += 1;
+      i1 += 1;
       continue;
       label211:
-      int i = 0;
+      int i1 = 0;
     }
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
   {
     Object localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
+    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
     boolean bool2 = false;
     if (localObject == null) {
       return false;
@@ -390,21 +362,21 @@ public class TroopAssistantManager
       if (paramInt != 3)
       {
         bool1 = bool2;
-        if (!this.jdField_b_of_type_Boolean) {
+        if (!this.d) {
           break label99;
         }
         bool1 = bool2;
-        if (this.e) {
+        if (this.n) {
           break label99;
         }
         bool1 = bool2;
-        if (((TroopManager)localObject).a()) {
+        if (((TroopManager)localObject).c()) {
           break label99;
         }
       }
       else
       {
-        bool1 = this.jdField_b_of_type_Boolean;
+        bool1 = this.d;
         break label99;
       }
     }
@@ -412,19 +384,19 @@ public class TroopAssistantManager
     label99:
     if (bool1)
     {
-      localObject = localRecentUserProxy.a(AppConstants.TROOP_ASSISTANT_UIN, 5000);
+      localObject = localRecentUserProxy.b(AppConstants.TROOP_ASSISTANT_UIN, 5000);
       ((RecentUser)localObject).uin = AppConstants.TROOP_ASSISTANT_UIN;
       ((RecentUser)localObject).setType(5000);
       if (((RecentUser)localObject).lastmsgtime < paramLong) {
         ((RecentUser)localObject).lastmsgtime = paramLong;
       }
-      if (b())
+      if (c())
       {
         ((RecentUser)localObject).showUpTime = (System.currentTimeMillis() / 1000L);
       }
       else
       {
-        paramQQAppInterface = a(paramQQAppInterface);
+        paramQQAppInterface = d(paramQQAppInterface);
         if (paramQQAppInterface != null)
         {
           ((RecentUser)localObject).lastmsgtime = paramQQAppInterface.lastmsgtime;
@@ -437,7 +409,7 @@ public class TroopAssistantManager
     }
     if (paramInt != 3)
     {
-      paramQQAppInterface = localRecentUserProxy.b(AppConstants.TROOP_ASSISTANT_UIN, 5000);
+      paramQQAppInterface = localRecentUserProxy.c(AppConstants.TROOP_ASSISTANT_UIN, 5000);
       if (paramQQAppInterface != null) {
         localRecentUserProxy.a(paramQQAppInterface);
       }
@@ -447,13 +419,13 @@ public class TroopAssistantManager
   
   private boolean a(EntityManager paramEntityManager, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.l)
     {
-      paramString = (TroopAssistantData)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      paramString = (TroopAssistantData)this.l.remove(paramString);
+      synchronized (this.m)
       {
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          this.jdField_a_of_type_JavaUtilList.remove(paramString);
+        if (this.k != null) {
+          this.k.remove(paramString);
         }
         boolean bool = false;
         if (paramString != null)
@@ -466,45 +438,55 @@ public class TroopAssistantManager
     }
   }
   
-  private void d(QQAppInterface paramQQAppInterface, String paramString)
+  private void d(String paramString, QQAppInterface paramQQAppInterface)
   {
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-    paramString = localRecentUserProxy.b(paramString, 1);
+    synchronized (this.b)
+    {
+      if ((paramQQAppInterface.getConversationFacade().a(paramString, 1) > 0) && (this.j.contains(paramString))) {
+        this.j.remove(paramString);
+      }
+      t(paramQQAppInterface);
+      return;
+    }
+  }
+  
+  public static void e()
+  {
+    a = null;
+  }
+  
+  private void e(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    synchronized (this.b)
+    {
+      if ((paramQQAppInterface.getConversationFacade().a(paramString, 1) > 0) && (!this.j.contains(paramString))) {
+        this.j.add(paramString);
+      }
+      t(paramQQAppInterface);
+      return;
+    }
+  }
+  
+  private TroopAssistantData h(QQAppInterface arg1, String paramString)
+  {
+    a(???);
+    synchronized (this.l)
+    {
+      paramString = (TroopAssistantData)this.l.get(paramString);
+      return paramString;
+    }
+  }
+  
+  private void i(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+    paramString = localRecentUserProxy.c(paramString, 1);
     if ((paramString != null) && (!RecentUserAppearLogic.a(paramQQAppInterface, paramString.msgType))) {
       localRecentUserProxy.a(paramString);
     }
   }
   
-  private void d(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((paramQQAppInterface.getConversationFacade().a(paramString, 1) > 0) && (this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-      }
-      l(paramQQAppInterface);
-      return;
-    }
-  }
-  
-  private void e(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((paramQQAppInterface.getConversationFacade().a(paramString, 1) > 0) && (!this.jdField_a_of_type_JavaUtilSet.contains(paramString))) {
-        this.jdField_a_of_type_JavaUtilSet.add(paramString);
-      }
-      l(paramQQAppInterface);
-      return;
-    }
-  }
-  
-  private boolean e(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("should_update_troop_assistant", true);
-  }
-  
-  private void l(QQAppInterface paramQQAppInterface)
+  private void t(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return;
@@ -512,7 +494,12 @@ public class TroopAssistantManager
     ThreadManager.post(new TroopAssistantManager.1(this, paramQQAppInterface), 5, null, false);
   }
   
-  private void m(QQAppInterface paramQQAppInterface)
+  private boolean u(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("should_update_troop_assistant", true);
+  }
+  
+  private void v(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null)
     {
@@ -525,84 +512,30 @@ public class TroopAssistantManager
   
   public int a(QQMessageFacade arg1, QQAppInterface paramQQAppInterface)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilSet;
-      int i = 0;
+      Object localObject = this.j;
+      int i1 = 0;
       if (localObject != null)
       {
-        localObject = this.jdField_a_of_type_JavaUtilSet.iterator();
+        localObject = this.j.iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
           if ((!TextUtils.isEmpty(str)) && (!HiddenChatHelper.a(str, 1, paramQQAppInterface))) {
-            i += 1;
+            i1 += 1;
           }
         }
-        this.jdField_a_of_type_Int = i;
-        return i;
+        this.i = i1;
+        return i1;
       }
-      this.jdField_a_of_type_Int = 0;
+      this.i = 0;
       return 0;
     }
     for (;;)
     {
       throw paramQQAppInterface;
     }
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    return paramQQAppInterface.getTroopMask(paramString);
-  }
-  
-  public TroopAssistantData a(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface);
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        TroopAssistantData localTroopAssistantData;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localTroopAssistantData = (TroopAssistantData)localIterator.next();
-        } while (HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface));
-        paramQQAppInterface = localTroopAssistantData;
-        return paramQQAppInterface;
-      }
-    }
-  }
-  
-  public List<Long> a(QQAppInterface paramQQAppInterface)
-  {
-    ArrayList localArrayList1 = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b();
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < localArrayList1.size())
-    {
-      if (localArrayList1.get(i) != null)
-      {
-        TroopInfo localTroopInfo = (TroopInfo)localArrayList1.get(i);
-        if (localTroopInfo == null) {
-          return localArrayList2;
-        }
-        Map localMap = a(paramQQAppInterface, new String[] { localTroopInfo.troopuin });
-        Integer localInteger = null;
-        if (localMap != null) {
-          localInteger = (Integer)localMap.get(localTroopInfo.troopuin);
-        }
-        if ((localInteger != null) && (localInteger.intValue() == 2)) {
-          localArrayList2.add(Long.valueOf(localTroopInfo.troopuin));
-        }
-      }
-      i += 1;
-    }
-    return localArrayList2;
   }
   
   public Map<String, Integer> a(QQAppInterface paramQQAppInterface, List<String> paramList)
@@ -619,12 +552,12 @@ public class TroopAssistantManager
   {
     for (;;)
     {
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      synchronized (this.m)
       {
-        if (this.jdField_a_of_type_JavaUtilList == null)
+        if (this.k == null)
         {
-          i = 1;
-          if (i != 0)
+          i1 = 1;
+          if (i1 != 0)
           {
             paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
             a(paramQQAppInterface);
@@ -633,23 +566,23 @@ public class TroopAssistantManager
           return;
         }
       }
-      int i = 0;
+      int i1 = 0;
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
+    if (!paramQQAppInterface.getAccount().equals(this.f)) {
       b(paramQQAppInterface);
     }
     paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putLong("troop_assis_last_read_time", paramLong).commit();
-    this.jdField_a_of_type_Long = paramLong;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    this.g = paramLong;
+    synchronized (this.b)
     {
-      if (this.jdField_a_of_type_JavaUtilSet != null) {
-        this.jdField_a_of_type_JavaUtilSet.clear();
+      if (this.j != null) {
+        this.j.clear();
       }
-      l(paramQQAppInterface);
+      t(paramQQAppInterface);
       return;
     }
   }
@@ -659,38 +592,9 @@ public class TroopAssistantManager
     ThreadManager.post(new TroopAssistantManager.2(this, paramQQAppInterface, paramTroopProtocolObserver), 8, null, true);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface = paramQQAppInterface.edit();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("tag_troop_ignore_tip_v2_");
-        localStringBuilder.append(paramString);
-        paramQQAppInterface.putBoolean(localStringBuilder.toString(), true).commit();
-        if (QLog.isColorLevel())
-        {
-          paramQQAppInterface = new StringBuilder();
-          paramQQAppInterface.append("setTroopIgnoreTip key=tag_troop_ignore_tip_v2_");
-          paramQQAppInterface.append(paramString);
-          QLog.d("troopassist_guide", 2, paramQQAppInterface.toString());
-        }
-      }
-    }
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     paramQQAppInterface.setTroopMsgFilterToServer(paramString, Integer.valueOf(paramInt));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troop_assistant_be_del", paramBoolean).commit();
-    this.e = paramBoolean;
   }
   
   public void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -711,17 +615,17 @@ public class TroopAssistantManager
     Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(localTroopAssistantData.troopUin, 1);
     if (localMessage != null)
     {
-      long l = localMessage.time;
-      if (l > localTroopAssistantData.lastmsgtime) {
-        localTroopAssistantData.lastmsgtime = l;
+      long l1 = localMessage.time;
+      if (l1 > localTroopAssistantData.lastmsgtime) {
+        localTroopAssistantData.lastmsgtime = l1;
       }
     }
     a(paramEntityManager, localTroopAssistantData);
     a(paramMessageRecord, paramString, paramQQAppInterface);
-    if (this.e) {
-      a(paramQQAppInterface, false);
+    if (this.n) {
+      c(paramQQAppInterface, false);
     }
-    d(paramQQAppInterface, paramString);
+    i(paramQQAppInterface, paramString);
     a(paramQQAppInterface, 0, paramLong);
   }
   
@@ -730,10 +634,10 @@ public class TroopAssistantManager
     try
     {
       a(paramQQAppInterface);
-      RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
+      RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
       Object localObject2 = localRecentUserProxy.a(false);
       long l1 = System.currentTimeMillis() / 1000L;
-      this.jdField_a_of_type_Boolean = b(paramQQAppInterface);
+      this.c = h(paramQQAppInterface);
       Object localObject1 = new ArrayList();
       Object localObject3;
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
@@ -787,7 +691,7 @@ public class TroopAssistantManager
   {
     TroopAssistantData localTroopAssistantData;
     if (paramLong == 0L) {
-      localTroopAssistantData = a(paramQQAppInterface, paramString);
+      localTroopAssistantData = h(paramQQAppInterface, paramString);
     } else {
       localTroopAssistantData = a(paramEntityManager, paramQQAppInterface, paramString);
     }
@@ -795,23 +699,23 @@ public class TroopAssistantManager
     {
       localTroopAssistantData.lastdrafttime = paramLong;
       if ((paramLong == 0L) && (localTroopAssistantData.lastmsgtime == 0L)) {
-        d(paramQQAppInterface, paramString);
+        i(paramQQAppInterface, paramString);
       } else {
         a(paramEntityManager, localTroopAssistantData);
       }
     }
-    if (this.e) {
-      a(paramQQAppInterface, false);
+    if (this.n) {
+      c(paramQQAppInterface, false);
     }
-    d(paramQQAppInterface, paramString);
+    i(paramQQAppInterface, paramString);
     a(paramQQAppInterface, 0, paramLong);
   }
   
   public void a(String paramString, QQAppInterface paramQQAppInterface)
   {
     EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-    RecentUser localRecentUser = localRecentUserProxy.b(paramString, 1);
+    RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+    RecentUser localRecentUser = localRecentUserProxy.c(paramString, 1);
     if (localRecentUser != null)
     {
       paramString = a(localEntityManager, paramQQAppInterface, paramString);
@@ -834,12 +738,12 @@ public class TroopAssistantManager
       ((StringBuilder)localObject).append(localRecentUser.uin);
       ((StringBuilder)localObject).append("-");
       ((StringBuilder)localObject).append(localRecentUser.getType());
-      paramString.a(((StringBuilder)localObject).toString());
+      paramString.b(((StringBuilder)localObject).toString());
       if ((!(localRecentUser.msg instanceof TroopAtMeMsg)) && (!(localRecentUser.msg instanceof TroopSpecialAttentionMsg)) && (!(localRecentUser.msg instanceof TroopConfessToMeMsg)) && (!(localRecentUser.msg instanceof TroopKeyWordMsg)) && (!(localRecentUser.msg instanceof TroopAtAllMsg)) && (!(localRecentUser.msg instanceof TroopHomeworkSpecialMsg)) && (!(localRecentUser.msg instanceof TroopReceivedFlowsersMsg)) && (!(localRecentUser.msg instanceof TroopHomeworkPraiseMsg)) && (!(localRecentUser.msg instanceof TroopNotificationMsg))) {
         localRecentUserProxy.a(localRecentUser);
       }
     }
-    paramString = a(paramQQAppInterface);
+    paramString = d(paramQQAppInterface);
     if (paramString != null) {
       a(paramQQAppInterface, 0, paramString.lastmsgtime);
     }
@@ -848,17 +752,7 @@ public class TroopAssistantManager
   
   public void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_assistant", true);
+    this.h = paramBoolean;
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, String paramString)
@@ -872,20 +766,20 @@ public class TroopAssistantManager
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
+    if (!paramQQAppInterface.getAccount().equals(this.f)) {
       b(paramQQAppInterface);
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troop_assis_show_in_msg", paramBoolean).commit();
-    int i;
+    int i1;
     if (paramBoolean) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 2;
+      i1 = 2;
     }
-    boolean bool2 = a(paramQQAppInterface, i, 0L);
+    boolean bool2 = a(paramQQAppInterface, i1, 0L);
     paramBoolean = bool1;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.d)
     {
       paramBoolean = bool1;
       if (bool2) {
@@ -897,59 +791,38 @@ public class TroopAssistantManager
   
   public boolean a(String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilHashSet.contains(paramString);
+    return this.o.contains(paramString);
   }
   
-  public List<TroopAssistantData> b(QQAppInterface paramQQAppInterface)
+  public int b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    a(paramQQAppInterface);
-    int i;
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null)
-      {
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        ArrayList localArrayList = new ArrayList(i);
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (localIterator.hasNext())
-          {
-            TroopAssistantData localTroopAssistantData = (TroopAssistantData)localIterator.next();
-            if ((!HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface)) && (!TroopBlockUtils.b(paramQQAppInterface, localTroopAssistantData.troopUin))) {
-              localArrayList.add(localTroopAssistantData);
-            }
-          }
-        }
-        return localArrayList;
-      }
-    }
+    return paramQQAppInterface.getTroopMask(paramString);
   }
   
   public void b(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getAccount();
+      this.f = paramQQAppInterface.getAccount();
       Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-      this.jdField_b_of_type_Boolean = ((SharedPreferences)localObject2).getBoolean("troop_assis_show_in_msg", true);
-      this.c = ((SharedPreferences)localObject2).getBoolean("troop_assis_show_on_top", false);
-      this.jdField_a_of_type_Long = ((SharedPreferences)localObject2).getLong("troop_assis_last_read_time", 0L);
-      this.jdField_a_of_type_Boolean = b(paramQQAppInterface);
-      this.e = ((SharedPreferences)localObject2).getBoolean("troop_assistant_be_del", false);
-      synchronized (this.jdField_b_of_type_JavaLangObject)
+      this.d = ((SharedPreferences)localObject2).getBoolean("troop_assis_show_in_msg", true);
+      this.e = ((SharedPreferences)localObject2).getBoolean("troop_assis_show_on_top", false);
+      this.g = ((SharedPreferences)localObject2).getLong("troop_assis_last_read_time", 0L);
+      this.c = h(paramQQAppInterface);
+      this.n = ((SharedPreferences)localObject2).getBoolean("troop_assistant_be_del", false);
+      synchronized (this.m)
       {
-        this.jdField_a_of_type_JavaUtilList = null;
-        Object localObject3 = b(paramQQAppInterface);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        this.k = null;
+        Object localObject3 = n(paramQQAppInterface);
+        synchronized (this.b)
         {
-          this.jdField_a_of_type_JavaUtilSet = SharedPreferencesHandler.a((SharedPreferences)localObject2, "troop_assis_new_unread_list", null);
-          if (this.jdField_a_of_type_JavaUtilSet == null)
+          this.j = SharedPreferencesHandler.a((SharedPreferences)localObject2, "troop_assis_new_unread_list", null);
+          if (this.j == null)
           {
-            this.jdField_a_of_type_JavaUtilSet = new HashSet();
-            if (e(paramQQAppInterface))
+            this.j = new HashSet();
+            if (u(paramQQAppInterface))
             {
-              m(paramQQAppInterface);
+              v(paramQQAppInterface);
               localObject2 = paramQQAppInterface.getMessageFacade();
               if (localObject2 == null) {
                 return;
@@ -959,7 +832,7 @@ public class TroopAssistantManager
               {
                 TroopAssistantData localTroopAssistantData = (TroopAssistantData)((Iterator)localObject3).next();
                 Message localMessage = ((QQMessageFacade)localObject2).getLastMessage(localTroopAssistantData.troopUin, 1);
-                if ((paramQQAppInterface.getConversationFacade().a(localTroopAssistantData.troopUin, 1) > 0) && (localMessage.time > this.jdField_a_of_type_Long)) {
+                if ((paramQQAppInterface.getConversationFacade().a(localTroopAssistantData.troopUin, 1) > 0) && (localMessage.time > this.g)) {
                   e(localMessage.frienduin, paramQQAppInterface);
                 }
               }
@@ -978,15 +851,203 @@ public class TroopAssistantManager
       if (paramQQAppInterface.getApp() == null) {
         return;
       }
-      long l = paramLong;
+      long l1 = paramLong;
       if (paramLong == 0L) {
-        l = new Date().getTime() + 86400L;
+        l1 = new Date().getTime() + 86400L;
       }
-      paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putLong("troop_batch_setting_time", l).commit();
+      paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putLong("troop_batch_setting_time", l1).commit();
     }
   }
   
-  public void b(QQAppInterface paramQQAppInterface, String paramString)
+  public void b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (a(localEntityManager, paramString)) {
+      d(paramString, paramQQAppInterface);
+    }
+    localEntityManager.close();
+  }
+  
+  public boolean b()
+  {
+    return this.d;
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    if (!paramQQAppInterface.getAccount().equals(this.f)) {
+      b(paramQQAppInterface);
+    }
+    this.e = paramBoolean;
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troop_assis_show_on_top", paramBoolean).commit();
+    a(paramQQAppInterface, 3, 0L);
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendEmptyMessage(1009);
+    }
+    return this.e;
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssistantManager", 2, "app == null; what happen.");
+      }
+      return;
+    }
+    if (!paramQQAppInterface.getAccount().equals(this.f)) {
+      b(paramQQAppInterface);
+    }
+    a(paramQQAppInterface, 0, 0L);
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troop_assistant_be_del", paramBoolean).commit();
+    this.n = paramBoolean;
+  }
+  
+  public void c(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = null;
+    try
+    {
+      EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject = localEntityManager;
+      TroopAssistantData localTroopAssistantData = h(paramQQAppInterface, paramString);
+      localObject = localEntityManager;
+      RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+      if (localTroopAssistantData != null)
+      {
+        localObject = localEntityManager;
+        RecentUser localRecentUser = localRecentUserProxy.b(String.valueOf(localTroopAssistantData.troopUin), 1);
+        localObject = localEntityManager;
+        localRecentUser.uin = localTroopAssistantData.troopUin;
+        localObject = localEntityManager;
+        localRecentUser.setType(1);
+        localObject = localEntityManager;
+        localRecentUser.lastmsgtime = localTroopAssistantData.lastmsgtime;
+        localObject = localEntityManager;
+        localRecentUser.lastmsgdrafttime = localTroopAssistantData.lastdrafttime;
+        localObject = localEntityManager;
+        if (a(localEntityManager, paramString))
+        {
+          localObject = localEntityManager;
+          localRecentUserProxy.b(localRecentUser);
+          localObject = localEntityManager;
+          d(paramString, paramQQAppInterface);
+        }
+      }
+      localObject = localEntityManager;
+      paramString = d(paramQQAppInterface);
+      if (paramString != null)
+      {
+        localObject = localEntityManager;
+        a(paramQQAppInterface, 0, paramString.lastmsgtime);
+      }
+      return;
+    }
+    finally
+    {
+      if (localObject != null) {
+        localObject.close();
+      }
+    }
+  }
+  
+  public boolean c()
+  {
+    return this.e;
+  }
+  
+  public boolean c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+        bool1 = bool2;
+        if (paramQQAppInterface != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("tag_troop_ignore_tip_v2_");
+          localStringBuilder.append(paramString);
+          bool1 = paramQQAppInterface.getBoolean(localStringBuilder.toString(), false);
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("checkTroopIgnoreTip ignore=");
+      paramQQAppInterface.append(bool1);
+      QLog.d("troopassist_guide", 2, paramQQAppInterface.toString());
+    }
+    return bool1;
+  }
+  
+  public TroopAssistantData d(QQAppInterface paramQQAppInterface)
+  {
+    a(paramQQAppInterface);
+    synchronized (this.m)
+    {
+      if ((this.k != null) && (this.k.size() > 0))
+      {
+        Iterator localIterator = this.k.iterator();
+        TroopAssistantData localTroopAssistantData;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localTroopAssistantData = (TroopAssistantData)localIterator.next();
+        } while (HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface));
+        paramQQAppInterface = localTroopAssistantData;
+        return paramQQAppInterface;
+      }
+    }
+  }
+  
+  public void d(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = paramQQAppInterface.edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tag_troop_ignore_tip_v2_");
+        localStringBuilder.append(paramString);
+        paramQQAppInterface.putBoolean(localStringBuilder.toString(), true).commit();
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("setTroopIgnoreTip key=tag_troop_ignore_tip_v2_");
+          paramQQAppInterface.append(paramString);
+          QLog.d("troopassist_guide", 2, paramQQAppInterface.toString());
+        }
+      }
+    }
+  }
+  
+  public boolean d()
+  {
+    return this.c;
+  }
+  
+  public void e(QQAppInterface paramQQAppInterface)
+  {
+    t(paramQQAppInterface);
+  }
+  
+  public void e(QQAppInterface paramQQAppInterface, String paramString)
   {
     if (paramQQAppInterface != null)
     {
@@ -1036,272 +1097,12 @@ public class TroopAssistantManager
     }
   }
   
-  public void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (a(localEntityManager, paramString)) {
-      d(paramString, paramQQAppInterface);
-    }
-    localEntityManager.close();
-  }
-  
-  public boolean b()
-  {
-    return this.c;
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("show_troop_assistant_list_notity", true);
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-        bool1 = bool2;
-        if (paramQQAppInterface != null)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("tag_troop_ignore_tip_v2_");
-          localStringBuilder.append(paramString);
-          bool1 = paramQQAppInterface.getBoolean(localStringBuilder.toString(), false);
-        }
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("checkTroopIgnoreTip ignore=");
-      paramQQAppInterface.append(bool1);
-      QLog.d("troopassist_guide", 2, paramQQAppInterface.toString());
-    }
-    return bool1;
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
-      b(paramQQAppInterface);
-    }
-    this.c = paramBoolean;
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troop_assis_show_on_top", paramBoolean).commit();
-    a(paramQQAppInterface, 3, 0L);
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.sendEmptyMessage(1009);
-    }
-    return this.c;
-  }
-  
-  public List<RecentUser> c(QQAppInterface paramQQAppInterface)
-  {
-    synchronized (this.jdField_b_of_type_JavaLangObject)
-    {
-      ArrayList localArrayList = new ArrayList(0);
-      a(paramQQAppInterface);
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          TroopAssistantData localTroopAssistantData = (TroopAssistantData)localIterator.next();
-          if (HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface))
-          {
-            RecentUser localRecentUser = new RecentUser(localTroopAssistantData.troopUin, 1);
-            localRecentUser.isHiddenChat = 1;
-            localRecentUser.lastmsgtime = localTroopAssistantData.lastmsgtime;
-            localRecentUser.lastmsgdrafttime = localTroopAssistantData.lastdrafttime;
-            localArrayList.add(localRecentUser);
-          }
-        }
-      }
-      return localArrayList;
-    }
-    for (;;)
-    {
-      throw paramQQAppInterface;
-    }
-  }
-  
-  public void c(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAssistantManager", 2, "app == null; what happen.");
-      }
-      return;
-    }
-    if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
-      b(paramQQAppInterface);
-    }
-    a(paramQQAppInterface, 0, 0L);
-  }
-  
-  public void c(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface = paramQQAppInterface.edit();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("tag_troop_aio_enter_times_");
-        localStringBuilder.append(paramString);
-        paramQQAppInterface.remove(localStringBuilder.toString()).commit();
-      }
-    }
-  }
-  
-  public void c(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = null;
-    try
-    {
-      EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      localObject = localEntityManager;
-      TroopAssistantData localTroopAssistantData = a(paramQQAppInterface, paramString);
-      localObject = localEntityManager;
-      RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-      if (localTroopAssistantData != null)
-      {
-        localObject = localEntityManager;
-        RecentUser localRecentUser = localRecentUserProxy.a(String.valueOf(localTroopAssistantData.troopUin), 1);
-        localObject = localEntityManager;
-        localRecentUser.uin = localTroopAssistantData.troopUin;
-        localObject = localEntityManager;
-        localRecentUser.setType(1);
-        localObject = localEntityManager;
-        localRecentUser.lastmsgtime = localTroopAssistantData.lastmsgtime;
-        localObject = localEntityManager;
-        localRecentUser.lastmsgdrafttime = localTroopAssistantData.lastdrafttime;
-        localObject = localEntityManager;
-        if (a(localEntityManager, paramString))
-        {
-          localObject = localEntityManager;
-          localRecentUserProxy.b(localRecentUser);
-          localObject = localEntityManager;
-          d(paramString, paramQQAppInterface);
-        }
-      }
-      localObject = localEntityManager;
-      paramString = a(paramQQAppInterface);
-      if (paramString != null)
-      {
-        localObject = localEntityManager;
-        a(paramQQAppInterface, 0, paramString.lastmsgtime);
-      }
-      return;
-    }
-    finally
-    {
-      if (localObject != null) {
-        localObject.close();
-      }
-    }
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean c(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      if (paramQQAppInterface.getApp() == null) {
-        return true;
-      }
-      long l = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getLong("troop_batch_setting_time", 0L);
-      if (new Date().getTime() / 1000L < l) {
-        return l == 0L;
-      }
-    }
-    return true;
-  }
-  
-  public boolean c(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("tag_troop_ignore_tip_v2_");
-    localStringBuilder.append(paramString);
-    if (paramQQAppInterface.getBoolean(localStringBuilder.toString(), false)) {
-      return false;
-    }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("tag_troop_aio_enter_times_");
-    localStringBuilder.append(paramString);
-    paramQQAppInterface = paramQQAppInterface.getString(localStringBuilder.toString(), "");
-    if (!TextUtils.isEmpty(paramQQAppInterface))
-    {
-      paramQQAppInterface = paramQQAppInterface.split(";");
-      int i = paramQQAppInterface.length;
-      if (i >= 2)
-      {
-        paramQQAppInterface = paramQQAppInterface[(i - 2)];
-        try
-        {
-          long l1 = Long.parseLong(paramQQAppInterface);
-          long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          if (l2 - l1 < 7200L) {
-            return true;
-          }
-        }
-        catch (NumberFormatException paramQQAppInterface)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAssistantManager", 2, QLog.getStackTraceString(paramQQAppInterface));
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public void d(QQAppInterface paramQQAppInterface)
-  {
-    l(paramQQAppInterface);
-  }
-  
-  public boolean d()
-  {
-    return this.d;
-  }
-  
-  public boolean d(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return true;
-    }
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    if (localBaseApplication == null) {
-      return true;
-    }
-    return localBaseApplication.getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("troop_message_setting_first", true);
-  }
-  
   /* Error */
-  public void e(QQAppInterface paramQQAppInterface)
+  public void f(QQAppInterface paramQQAppInterface)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 29	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
+    //   1: getfield 40	com/tencent/mobileqq/managers/TroopAssistantManager:b	Ljava/lang/Object;
     //   4: astore 6
     //   6: aload 6
     //   8: monitorenter
@@ -1314,39 +1115,39 @@ public class TroopAssistantManager
     //   17: iload 5
     //   19: istore_3
     //   20: aload_0
-    //   21: getfield 42	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
+    //   21: getfield 53	com/tencent/mobileqq/managers/TroopAssistantManager:j	Ljava/util/Set;
     //   24: ifnull +89 -> 113
     //   27: iload 5
     //   29: istore_3
     //   30: aload_0
-    //   31: getfield 42	com/tencent/mobileqq/managers/TroopAssistantManager:jdField_a_of_type_JavaUtilSet	Ljava/util/Set;
-    //   34: invokeinterface 384 1 0
+    //   31: getfield 53	com/tencent/mobileqq/managers/TroopAssistantManager:j	Ljava/util/Set;
+    //   34: invokeinterface 394 1 0
     //   39: astore 7
     //   41: iload_2
     //   42: istore_3
     //   43: iload_2
     //   44: istore 4
     //   46: aload 7
-    //   48: invokeinterface 193 1 0
+    //   48: invokeinterface 202 1 0
     //   53: ifeq +60 -> 113
     //   56: iload_2
     //   57: istore_3
     //   58: aload 7
-    //   60: invokeinterface 197 1 0
-    //   65: checkcast 386	java/lang/String
+    //   60: invokeinterface 206 1 0
+    //   65: checkcast 396	java/lang/String
     //   68: astore 8
     //   70: iload_2
     //   71: istore_3
     //   72: aload_1
-    //   73: invokevirtual 335	com/tencent/mobileqq/app/QQAppInterface:getConversationFacade	()Lcom/tencent/imcore/message/ConversationFacade;
+    //   73: invokevirtual 334	com/tencent/mobileqq/app/QQAppInterface:getConversationFacade	()Lcom/tencent/imcore/message/ConversationFacade;
     //   76: aload 8
     //   78: iconst_1
-    //   79: invokevirtual 340	com/tencent/imcore/message/ConversationFacade:a	(Ljava/lang/String;I)I
+    //   79: invokevirtual 339	com/tencent/imcore/message/ConversationFacade:a	(Ljava/lang/String;I)I
     //   82: ifgt -41 -> 41
     //   85: iload_2
     //   86: istore_3
     //   87: aload 7
-    //   89: invokeinterface 712 1 0
+    //   89: invokeinterface 668 1 0
     //   94: iconst_1
     //   95: istore_2
     //   96: goto -55 -> 41
@@ -1354,7 +1155,7 @@ public class TroopAssistantManager
     //   100: goto +27 -> 127
     //   103: astore 7
     //   105: aload 7
-    //   107: invokevirtual 715	java/lang/Exception:printStackTrace	()V
+    //   107: invokevirtual 671	java/lang/Exception:printStackTrace	()V
     //   110: iload_3
     //   111: istore 4
     //   113: aload 6
@@ -1363,7 +1164,7 @@ public class TroopAssistantManager
     //   118: ifeq +8 -> 126
     //   121: aload_0
     //   122: aload_1
-    //   123: invokespecial 116	com/tencent/mobileqq/managers/TroopAssistantManager:l	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   123: invokespecial 126	com/tencent/mobileqq/managers/TroopAssistantManager:t	(Lcom/tencent/mobileqq/app/QQAppInterface;)V
     //   126: return
     //   127: aload 6
     //   129: monitorexit
@@ -1375,10 +1176,10 @@ public class TroopAssistantManager
     //   start	length	slot	name	signature
     //   0	138	0	this	TroopAssistantManager
     //   0	138	1	paramQQAppInterface	QQAppInterface
-    //   16	80	2	i	int
-    //   19	92	3	j	int
-    //   13	104	4	k	int
-    //   10	18	5	m	int
+    //   16	80	2	i1	int
+    //   19	92	3	i2	int
+    //   13	104	4	i3	int
+    //   10	18	5	i4	int
     //   4	124	6	localObject	Object
     //   39	49	7	localIterator	Iterator
     //   103	3	7	localException	Exception
@@ -1402,7 +1203,83 @@ public class TroopAssistantManager
     //   87	94	103	java/lang/Exception
   }
   
-  public void f(QQAppInterface paramQQAppInterface)
+  public void f(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = paramQQAppInterface.edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tag_troop_aio_enter_times_");
+        localStringBuilder.append(paramString);
+        paramQQAppInterface.remove(localStringBuilder.toString()).commit();
+      }
+    }
+  }
+  
+  public boolean f()
+  {
+    return this.h;
+  }
+  
+  public boolean g(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_assistant", true);
+  }
+  
+  public boolean g(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tag_troop_ignore_tip_v2_");
+    localStringBuilder.append(paramString);
+    if (paramQQAppInterface.getBoolean(localStringBuilder.toString(), false)) {
+      return false;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tag_troop_aio_enter_times_");
+    localStringBuilder.append(paramString);
+    paramQQAppInterface = paramQQAppInterface.getString(localStringBuilder.toString(), "");
+    if (!TextUtils.isEmpty(paramQQAppInterface))
+    {
+      paramQQAppInterface = paramQQAppInterface.split(";");
+      int i1 = paramQQAppInterface.length;
+      if (i1 >= 2)
+      {
+        paramQQAppInterface = paramQQAppInterface[(i1 - 2)];
+        try
+        {
+          long l1 = Long.parseLong(paramQQAppInterface);
+          long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+          if (l2 - l1 < 7200L) {
+            return true;
+          }
+        }
+        catch (NumberFormatException paramQQAppInterface)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAssistantManager", 2, QLog.getStackTraceString(paramQQAppInterface));
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean h(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("show_troop_assistant_list_notity", true);
+  }
+  
+  public void i(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null)
     {
@@ -1410,11 +1287,65 @@ public class TroopAssistantManager
         return;
       }
       paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("show_troop_assistant_list_notity", false).commit();
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
     }
   }
   
-  public void g(QQAppInterface paramQQAppInterface)
+  public boolean j(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
+    {
+      if (paramQQAppInterface.getApp() == null) {
+        return true;
+      }
+      long l1 = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getLong("troop_batch_setting_time", 0L);
+      if (new Date().getTime() / 1000L < l1) {
+        return l1 == 0L;
+      }
+    }
+    return true;
+  }
+  
+  public List<Long> k(QQAppInterface paramQQAppInterface)
+  {
+    ArrayList localArrayList1 = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).h();
+    ArrayList localArrayList2 = new ArrayList();
+    int i1 = 0;
+    while (i1 < localArrayList1.size())
+    {
+      if (localArrayList1.get(i1) != null)
+      {
+        TroopInfo localTroopInfo = (TroopInfo)localArrayList1.get(i1);
+        if (localTroopInfo == null) {
+          return localArrayList2;
+        }
+        Map localMap = a(paramQQAppInterface, new String[] { localTroopInfo.troopuin });
+        Integer localInteger = null;
+        if (localMap != null) {
+          localInteger = (Integer)localMap.get(localTroopInfo.troopuin);
+        }
+        if ((localInteger != null) && (localInteger.intValue() == 2)) {
+          localArrayList2.add(Long.valueOf(localTroopInfo.troopuin));
+        }
+      }
+      i1 += 1;
+    }
+    return localArrayList2;
+  }
+  
+  public boolean l(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return true;
+    }
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    if (localBaseApplication == null) {
+      return true;
+    }
+    return localBaseApplication.getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("troop_message_setting_first", true);
+  }
+  
+  public void m(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return;
@@ -1425,38 +1356,94 @@ public class TroopAssistantManager
     paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troop_message_setting_first", false).commit();
   }
   
-  public void h(QQAppInterface arg1)
+  public List<TroopAssistantData> n(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    a(???);
-    int i;
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    a(paramQQAppInterface);
+    int i1;
+    synchronized (this.m)
     {
-      Object localObject1 = this.jdField_a_of_type_JavaUtilList;
-      int j = 0;
+      if (this.k != null)
+      {
+        i1 = this.k.size();
+        ArrayList localArrayList = new ArrayList(i1);
+        if (this.k != null)
+        {
+          Iterator localIterator = this.k.iterator();
+          while (localIterator.hasNext())
+          {
+            TroopAssistantData localTroopAssistantData = (TroopAssistantData)localIterator.next();
+            if ((!HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface)) && (!TroopBlockUtils.b(paramQQAppInterface, localTroopAssistantData.troopUin))) {
+              localArrayList.add(localTroopAssistantData);
+            }
+          }
+        }
+        return localArrayList;
+      }
+    }
+  }
+  
+  public List<RecentUser> o(QQAppInterface paramQQAppInterface)
+  {
+    synchronized (this.m)
+    {
+      ArrayList localArrayList = new ArrayList(0);
+      a(paramQQAppInterface);
+      if ((this.k != null) && (this.k.size() > 0))
+      {
+        Iterator localIterator = this.k.iterator();
+        while (localIterator.hasNext())
+        {
+          TroopAssistantData localTroopAssistantData = (TroopAssistantData)localIterator.next();
+          if (HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface))
+          {
+            RecentUser localRecentUser = new RecentUser(localTroopAssistantData.troopUin, 1);
+            localRecentUser.isHiddenChat = 1;
+            localRecentUser.lastmsgtime = localTroopAssistantData.lastmsgtime;
+            localRecentUser.lastmsgdrafttime = localTroopAssistantData.lastdrafttime;
+            localArrayList.add(localRecentUser);
+          }
+        }
+      }
+      return localArrayList;
+    }
+    for (;;)
+    {
+      throw paramQQAppInterface;
+    }
+  }
+  
+  public void p(QQAppInterface arg1)
+  {
+    this.o.clear();
+    a(???);
+    int i1;
+    synchronized (this.m)
+    {
+      Object localObject1 = this.k;
+      int i2 = 0;
       if (localObject1 != null)
       {
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        localObject1 = new ArrayList(i);
-        i = j;
-        if (this.jdField_a_of_type_JavaUtilList != null)
+        i1 = this.k.size();
+        localObject1 = new ArrayList(i1);
+        i1 = i2;
+        if (this.k != null)
         {
-          ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
-          i = j;
+          ((List)localObject1).addAll(this.k);
+          i1 = i2;
         }
-        while (i < ((List)localObject1).size())
+        while (i1 < ((List)localObject1).size())
         {
-          this.jdField_a_of_type_JavaUtilHashSet.add(((TroopAssistantData)((List)localObject1).get(i)).troopUin);
-          i += 1;
+          this.o.add(((TroopAssistantData)((List)localObject1).get(i1)).troopUin);
+          i1 += 1;
         }
         return;
       }
     }
   }
   
-  public void i(QQAppInterface paramQQAppInterface)
+  public void q(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = paramQQAppInterface.getProxyManager().a();
+    Object localObject1 = paramQQAppInterface.getProxyManager().g();
     EntityManager localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     Object localObject3 = new ArrayList();
     Object localObject2 = new ArrayList();
@@ -1474,12 +1461,12 @@ public class TroopAssistantManager
       }
     }
     a(paramQQAppInterface);
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.m)
     {
       Object localObject6;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+      if ((this.k != null) && (this.k.size() > 0))
       {
-        localObject5 = this.jdField_a_of_type_JavaUtilList.iterator();
+        localObject5 = this.k.iterator();
         while (((Iterator)localObject5).hasNext())
         {
           localObject6 = (TroopAssistantData)((Iterator)localObject5).next();
@@ -1517,7 +1504,7 @@ public class TroopAssistantManager
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (TroopAssistantData)((Iterator)localObject2).next();
-          ??? = ((RecentUserProxy)localObject1).a(((TroopAssistantData)localObject3).troopUin, 1);
+          ??? = ((RecentUserProxy)localObject1).b(((TroopAssistantData)localObject3).troopUin, 1);
           ((RecentUser)???).uin = ((TroopAssistantData)localObject3).troopUin;
           ((RecentUser)???).setType(1);
           ((RecentUser)???).lastmsgtime = ((TroopAssistantData)localObject3).lastmsgtime;
@@ -1529,7 +1516,7 @@ public class TroopAssistantManager
           }
         }
       }
-      localObject1 = a(paramQQAppInterface);
+      localObject1 = d(paramQQAppInterface);
       if (localObject1 != null) {
         a(paramQQAppInterface, 0, ((TroopAssistantData)localObject1).lastmsgtime);
       }
@@ -1544,19 +1531,19 @@ public class TroopAssistantManager
     }
   }
   
-  public void j(QQAppInterface paramQQAppInterface)
+  public void r(QQAppInterface paramQQAppInterface)
   {
     a(paramQQAppInterface);
-    int i;
+    int i1;
     label108:
-    synchronized (this.jdField_b_of_type_JavaLangObject)
+    synchronized (this.m)
     {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+      if ((this.k != null) && (this.k.size() > 0))
       {
-        i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-        if (i >= 0)
+        i1 = this.k.size() - 1;
+        if (i1 >= 0)
         {
-          TroopAssistantData localTroopAssistantData = (TroopAssistantData)this.jdField_a_of_type_JavaUtilList.get(i);
+          TroopAssistantData localTroopAssistantData = (TroopAssistantData)this.k.get(i1);
           if (!HiddenChatHelper.a(localTroopAssistantData.troopUin, 1, paramQQAppInterface)) {
             break label108;
           }
@@ -1570,12 +1557,12 @@ public class TroopAssistantManager
     }
   }
   
-  public void k(QQAppInterface paramQQAppInterface)
+  public void s(QQAppInterface paramQQAppInterface)
   {
     try
     {
       b(paramQQAppInterface);
-      if (a(paramQQAppInterface) == true)
+      if (g(paramQQAppInterface) == true)
       {
         localEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
         a().a(localEntityManager, paramQQAppInterface);

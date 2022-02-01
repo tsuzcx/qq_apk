@@ -12,6 +12,23 @@ public abstract class QIMAsyncManager
   
   public void a()
   {
+    try
+    {
+      boolean bool = this.a;
+      if (bool) {
+        return;
+      }
+      b();
+      this.a = true;
+      return;
+    }
+    finally {}
+  }
+  
+  protected abstract void b();
+  
+  public void c()
+  {
     for (;;)
     {
       try
@@ -44,28 +61,11 @@ public abstract class QIMAsyncManager
     }
   }
   
-  public void b() {}
-  
-  public void c()
-  {
-    try
-    {
-      boolean bool = this.a;
-      if (bool) {
-        return;
-      }
-      d();
-      this.a = true;
-      return;
-    }
-    finally {}
-  }
-  
-  protected abstract void d();
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.QIMAsyncManager
  * JD-Core Version:    0.7.0.1
  */

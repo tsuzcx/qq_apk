@@ -12,12 +12,12 @@ class BaseCardContainer$3
   public void run()
   {
     SSOLog.a("BaseCardContainer", new Object[] { "-->genGameUrlImg: set error img" });
-    this.this$0.a.setImageDrawable(this.a);
+    this.this$0.h.setImageDrawable(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseCardContainer.3
  * JD-Core Version:    0.7.0.1
  */

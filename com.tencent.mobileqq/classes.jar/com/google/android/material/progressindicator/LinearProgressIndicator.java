@@ -13,7 +13,7 @@ import com.google.android.material.R.style;
 public final class LinearProgressIndicator
   extends BaseProgressIndicator<LinearProgressIndicatorSpec>
 {
-  public static final int b = R.style.C;
+  public static final int d = R.style.E;
   
   public LinearProgressIndicator(@NonNull Context paramContext)
   {
@@ -22,40 +22,50 @@ public final class LinearProgressIndicator
   
   public LinearProgressIndicator(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.t);
+    this(paramContext, paramAttributeSet, R.attr.A);
   }
   
   public LinearProgressIndicator(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @AttrRes int paramInt)
   {
-    super(paramContext, paramAttributeSet, paramInt, b);
-    a();
+    super(paramContext, paramAttributeSet, paramInt, d);
+    c();
   }
   
-  private void a()
+  private void c()
   {
-    setIndeterminateDrawable(IndeterminateDrawable.a(getContext(), (LinearProgressIndicatorSpec)this.a));
-    setProgressDrawable(DeterminateDrawable.a(getContext(), (LinearProgressIndicatorSpec)this.a));
+    setIndeterminateDrawable(IndeterminateDrawable.a(getContext(), (LinearProgressIndicatorSpec)this.b));
+    setProgressDrawable(DeterminateDrawable.a(getContext(), (LinearProgressIndicatorSpec)this.b));
   }
   
-  LinearProgressIndicatorSpec a(@NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet)
+  LinearProgressIndicatorSpec b(@NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet)
   {
     return new LinearProgressIndicatorSpec(paramContext, paramAttributeSet);
+  }
+  
+  public int getIndeterminateAnimationType()
+  {
+    return ((LinearProgressIndicatorSpec)this.b).g;
+  }
+  
+  public int getIndicatorDirection()
+  {
+    return ((LinearProgressIndicatorSpec)this.b).h;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    LinearProgressIndicatorSpec localLinearProgressIndicatorSpec = (LinearProgressIndicatorSpec)this.a;
-    paramInt1 = ((LinearProgressIndicatorSpec)this.a).g;
+    LinearProgressIndicatorSpec localLinearProgressIndicatorSpec = (LinearProgressIndicatorSpec)this.b;
+    paramInt1 = ((LinearProgressIndicatorSpec)this.b).h;
     boolean bool = true;
     paramBoolean = bool;
     if (paramInt1 != 1) {
       if (ViewCompat.getLayoutDirection(this) == 1)
       {
         paramBoolean = bool;
-        if (((LinearProgressIndicatorSpec)this.a).g == 2) {}
+        if (((LinearProgressIndicatorSpec)this.b).h == 2) {}
       }
-      else if ((ViewCompat.getLayoutDirection(this) == 0) && (((LinearProgressIndicatorSpec)this.a).g == 3))
+      else if ((ViewCompat.getLayoutDirection(this) == 0) && (((LinearProgressIndicatorSpec)this.b).h == 3))
       {
         paramBoolean = bool;
       }
@@ -64,18 +74,18 @@ public final class LinearProgressIndicator
         paramBoolean = false;
       }
     }
-    localLinearProgressIndicatorSpec.a = paramBoolean;
+    localLinearProgressIndicatorSpec.i = paramBoolean;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 -= getPaddingLeft() + getPaddingRight();
     paramInt2 -= getPaddingTop() + getPaddingBottom();
-    Object localObject = a();
+    Object localObject = getIndeterminateDrawable();
     if (localObject != null) {
       ((Drawable)localObject).setBounds(0, 0, paramInt1, paramInt2);
     }
-    localObject = a();
+    localObject = getProgressDrawable();
     if (localObject != null) {
       ((Drawable)localObject).setBounds(0, 0, paramInt1, paramInt2);
     }
@@ -83,18 +93,18 @@ public final class LinearProgressIndicator
   
   public void setIndeterminateAnimationType(int paramInt)
   {
-    if (((LinearProgressIndicatorSpec)this.a).f == paramInt) {
+    if (((LinearProgressIndicatorSpec)this.b).g == paramInt) {
       return;
     }
     if ((a()) && (isIndeterminate())) {
       throw new IllegalStateException("Cannot change indeterminate animation type while the progress indicator is show in indeterminate mode.");
     }
-    ((LinearProgressIndicatorSpec)this.a).f = paramInt;
-    ((LinearProgressIndicatorSpec)this.a).a();
+    ((LinearProgressIndicatorSpec)this.b).g = paramInt;
+    ((LinearProgressIndicatorSpec)this.b).c();
     if (paramInt == 0) {
-      a().a(new LinearIndeterminateContiguousAnimatorDelegate((LinearProgressIndicatorSpec)this.a));
+      getIndeterminateDrawable().a(new LinearIndeterminateContiguousAnimatorDelegate((LinearProgressIndicatorSpec)this.b));
     } else {
-      a().a(new LinearIndeterminateDisjointAnimatorDelegate(getContext(), (LinearProgressIndicatorSpec)this.a));
+      getIndeterminateDrawable().a(new LinearIndeterminateDisjointAnimatorDelegate(getContext(), (LinearProgressIndicatorSpec)this.b));
     }
     invalidate();
   }
@@ -102,20 +112,20 @@ public final class LinearProgressIndicator
   public void setIndicatorColor(@NonNull int... paramVarArgs)
   {
     super.setIndicatorColor(paramVarArgs);
-    ((LinearProgressIndicatorSpec)this.a).a();
+    ((LinearProgressIndicatorSpec)this.b).c();
   }
   
   public void setIndicatorDirection(int paramInt)
   {
-    ((LinearProgressIndicatorSpec)this.a).g = paramInt;
-    LinearProgressIndicatorSpec localLinearProgressIndicatorSpec = (LinearProgressIndicatorSpec)this.a;
+    ((LinearProgressIndicatorSpec)this.b).h = paramInt;
+    LinearProgressIndicatorSpec localLinearProgressIndicatorSpec = (LinearProgressIndicatorSpec)this.b;
     boolean bool2 = true;
     boolean bool1 = bool2;
     if (paramInt != 1) {
       if (ViewCompat.getLayoutDirection(this) == 1)
       {
         bool1 = bool2;
-        if (((LinearProgressIndicatorSpec)this.a).g == 2) {}
+        if (((LinearProgressIndicatorSpec)this.b).h == 2) {}
       }
       else if ((ViewCompat.getLayoutDirection(this) == 0) && (paramInt == 3))
       {
@@ -126,13 +136,13 @@ public final class LinearProgressIndicator
         bool1 = false;
       }
     }
-    localLinearProgressIndicatorSpec.a = bool1;
+    localLinearProgressIndicatorSpec.i = bool1;
     invalidate();
   }
   
   public void setProgressCompat(int paramInt, boolean paramBoolean)
   {
-    if ((this.a != null) && (((LinearProgressIndicatorSpec)this.a).f == 0) && (isIndeterminate())) {
+    if ((this.b != null) && (((LinearProgressIndicatorSpec)this.b).g == 0) && (isIndeterminate())) {
       return;
     }
     super.setProgressCompat(paramInt, paramBoolean);
@@ -141,13 +151,13 @@ public final class LinearProgressIndicator
   public void setTrackCornerRadius(int paramInt)
   {
     super.setTrackCornerRadius(paramInt);
-    ((LinearProgressIndicatorSpec)this.a).a();
+    ((LinearProgressIndicatorSpec)this.b).c();
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.LinearProgressIndicator
  * JD-Core Version:    0.7.0.1
  */

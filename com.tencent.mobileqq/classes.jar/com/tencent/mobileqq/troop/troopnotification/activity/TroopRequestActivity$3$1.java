@@ -11,27 +11,27 @@ class TroopRequestActivity$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0.isFinishing()) {
+    if (this.b.this$0.isFinishing()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
-      TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    if (this.a != null) {
+      TroopRequestActivity.a(this.b.this$0, this.a);
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataCard;
+    Object localObject = this.a;
     if ((localObject == null) || (((Card)localObject).iQQLevel <= 0))
     {
-      localObject = (IProfileProtocolService)TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0).getRuntimeService(IProfileProtocolService.class, "");
+      localObject = (IProfileProtocolService)TroopRequestActivity.a(this.b.this$0).getRuntimeService(IProfileProtocolService.class, "");
       if (localObject != null)
       {
-        byte b = (byte)TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0.getApplication(), TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0).getCurrentAccountUin());
-        ((IProfileProtocolService)localObject).requestProfileCard(TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$3.this$0.b, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", 1L, 10004, new byte[] { 0 }, b);
+        byte b1 = (byte)TroopRequestActivity.a(this.b.this$0.getApplication(), TroopRequestActivity.a(this.b.this$0).getCurrentAccountUin());
+        ((IProfileProtocolService)localObject).requestProfileCard(TroopRequestActivity.a(this.b.this$0).getCurrentAccountUin(), this.b.this$0.e, 1, 0L, (byte)1, 0L, 0L, new byte[] { 0 }, "", 1L, 10004, new byte[] { 0 }, b1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

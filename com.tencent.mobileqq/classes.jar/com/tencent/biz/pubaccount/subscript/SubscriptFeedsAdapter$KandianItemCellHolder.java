@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 class SubscriptFeedsAdapter$KandianItemCellHolder
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ArrayList<ViewGroup> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ViewGroup a;
+  ArrayList<ViewGroup> b = new ArrayList();
   
   private SubscriptFeedsAdapter$KandianItemCellHolder(SubscriptFeedsAdapter paramSubscriptFeedsAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter.KandianItemCellHolder
  * JD-Core Version:    0.7.0.1
  */

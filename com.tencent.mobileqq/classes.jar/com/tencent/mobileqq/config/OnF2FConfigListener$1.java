@@ -16,12 +16,12 @@ class OnF2FConfigListener$1
   {
     try
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqConfigCfgProcess$CfgParseResult.a);
+      Object localObject = new JSONObject(this.a.d);
       int i = ((JSONObject)localObject).optInt("face2faceSwitchOn");
       localObject = ((JSONObject)localObject).optString("face2faceTip");
       BaseApplication localBaseApplication = BaseApplication.getContext();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.b.getCurrentAccountUin());
       localStringBuilder.append("qqsettingme_f2f_guide");
       localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("qqsettingme_f2f_guide_switch", i).putString("qqsettingme_f2f_guide_tip", (String)localObject).apply();
       return;
@@ -36,7 +36,7 @@ class OnF2FConfigListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.OnF2FConfigListener.1
  * JD-Core Version:    0.7.0.1
  */

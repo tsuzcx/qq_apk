@@ -14,15 +14,15 @@ class MoreVideoInfoWidget$6
   {
     if (QLog.isDevelopLevel())
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetMoreVideoInfoWidget.b;
+      paramDialogInterface = this.c.i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[az]isResumeVideoPlaySelf === >");
-      localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangBoolean);
+      localStringBuilder.append(this.a);
       QLog.i(paramDialogInterface, 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_ArrayOfJavaLangBoolean[0].booleanValue())
+    if (!this.a[0].booleanValue())
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+      paramDialogInterface = this.b;
       if (paramDialogInterface != null) {
         paramDialogInterface.c(false);
       }

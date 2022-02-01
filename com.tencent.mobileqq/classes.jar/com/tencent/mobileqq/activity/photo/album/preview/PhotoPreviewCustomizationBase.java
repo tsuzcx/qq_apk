@@ -19,98 +19,63 @@ public class PhotoPreviewCustomizationBase<O extends OtherCommonData>
     super(paramPeakFragmentActivity);
   }
   
-  public View a()
-  {
-    return a().b();
-  }
-  
-  public RelativeLayout.LayoutParams a()
-  {
-    return a().a();
-  }
-  
-  public Class<? extends AbstractPhotoListActivity> a()
-  {
-    return AbstractPhotoListActivity.class;
-  }
-  
   public void a()
   {
-    a().a();
+    s().f();
   }
   
   public void a(int paramInt)
   {
-    a().a(paramInt);
+    s().a(paramInt);
   }
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a(paramIntent);
+    this.i.a(paramIntent);
   }
   
   public void a(View paramView)
   {
-    a().a(paramView);
+    s().a(paramView);
   }
   
   public void a(CompoundButton paramCompoundButton, boolean paramBoolean) {}
   
   public void a(boolean paramBoolean) {}
   
-  public View b()
-  {
-    return a().c();
-  }
-  
-  public RelativeLayout.LayoutParams b()
-  {
-    return a().b();
-  }
-  
   public void b()
   {
-    a().c();
+    s().h();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.c();
+    this.i.c();
   }
   
   public void e(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.e(paramInt);
-  }
-  
-  public void g()
-  {
-    a().b();
+    this.i.e(paramInt);
   }
   
   public void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.i();
+    s().g();
   }
   
-  public void j()
+  public void n()
   {
-    a().d();
+    this.i.n();
   }
   
-  public void k()
+  public void o()
   {
-    a().e();
-  }
-  
-  public void l()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.l();
+    s().j();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.i.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public void onClickDragView() {}
@@ -118,24 +83,59 @@ public class PhotoPreviewCustomizationBase<O extends OtherCommonData>
   public void onContentMove(float paramFloat)
   {
     if (paramFloat < 0.8F) {
-      a().getContentView().setVisibility(4);
+      s().getContentView().setVisibility(4);
     }
   }
   
   public void onGestureFinish()
   {
-    g();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakFragmentActivity.overridePendingTransition(2130772065, 2130772067);
+    i();
+    this.e.overridePendingTransition(2130772090, 2130772092);
   }
   
   public void onResetPosition()
   {
-    a().getContentView().setVisibility(0);
+    s().getContentView().setVisibility(0);
+  }
+  
+  public void p()
+  {
+    s().k();
+  }
+  
+  public Class<? extends AbstractPhotoListActivity> q()
+  {
+    return AbstractPhotoListActivity.class;
+  }
+  
+  public void u()
+  {
+    this.i.u();
+  }
+  
+  public View v()
+  {
+    return s().b();
+  }
+  
+  public RelativeLayout.LayoutParams w()
+  {
+    return s().c();
+  }
+  
+  public View x()
+  {
+    return s().d();
+  }
+  
+  public RelativeLayout.LayoutParams y()
+  {
+    return s().e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.preview.PhotoPreviewCustomizationBase
  * JD-Core Version:    0.7.0.1
  */

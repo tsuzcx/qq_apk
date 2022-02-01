@@ -36,13 +36,13 @@ import java.util.Iterator;
 public abstract class ForwardFileBaseOption
   extends ForwardBaseOption
 {
-  protected static String h;
-  ForwardFileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo;
-  UriParserPathHelper jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper;
-  protected long b = 0L;
-  ArrayList<ForwardFileInfo> c = new ArrayList();
-  protected String i = "";
-  protected String j = "";
+  protected static String af;
+  ForwardFileInfo ad;
+  ArrayList<ForwardFileInfo> ae = new ArrayList();
+  UriParserPathHelper ag;
+  protected String ah = "";
+  protected long ai = 0L;
+  protected String aj = "";
   
   public ForwardFileBaseOption(Intent paramIntent)
   {
@@ -82,17 +82,31 @@ public abstract class ForwardFileBaseOption
       localObject = localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692433));
+    localStringBuilder.append(this.I.getString(2131889421));
     localStringBuilder.append(paramString);
     localStringBuilder.append("\n");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692452));
+    localStringBuilder.append(this.I.getString(2131889440));
     localStringBuilder.append((String)localObject);
     return localStringBuilder.toString();
   }
   
-  private boolean a(Uri paramUri)
+  private void a(String paramString)
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("path_for_file_scheme");
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.s, 2131953338);
+    localQQCustomDialog.setContentView(2131624611);
+    localQQCustomDialog.setTitle(this.I.getString(2131917233));
+    localQQCustomDialog.setMessage(paramString);
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.setNegativeButton(this.I.getString(2131887625), new ForwardFileBaseOption.1(this));
+    if (!this.s.isFinishing()) {
+      localQQCustomDialog.show();
+    }
+  }
+  
+  private boolean b(Uri paramUri)
+  {
+    Object localObject2 = this.r.getStringExtra("path_for_file_scheme");
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("getFileInfo fileScheme = ");
     ((StringBuilder)localObject1).append((String)localObject2);
@@ -112,92 +126,73 @@ public abstract class ForwardFileBaseOption
     paramUri = a((Uri)localObject1);
     if (TextUtils.isEmpty(paramUri))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper != null) {
-        h = UriParserPathHelper.jdField_a_of_type_JavaLangString;
+      if (this.ag != null) {
+        af = UriParserPathHelper.b;
       }
-      e(e());
+      a(o());
       return false;
     }
     localObject2 = new File(paramUri);
     long l = ((File)localObject2).length();
-    UriParserPathHelper localUriParserPathHelper = this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper;
-    int k;
+    UriParserPathHelper localUriParserPathHelper = this.ag;
+    int i;
     if ((localUriParserPathHelper != null) && (localUriParserPathHelper.a())) {
-      k = 1;
+      i = 1;
     } else {
-      k = 0;
+      i = 0;
     }
-    localUriParserPathHelper = this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper;
+    localUriParserPathHelper = this.ag;
     boolean bool1;
     if (localUriParserPathHelper != null) {
-      bool1 = localUriParserPathHelper.jdField_a_of_type_Boolean;
+      bool1 = localUriParserPathHelper.c;
     } else {
       bool1 = false;
     }
-    if ((k == 0) && (!bool1) && (l == 0L))
+    if ((i == 0) && (!bool1) && (l == 0L))
     {
       if (((Uri)localObject1).toString().contains("mms/part"))
       {
-        e(this.jdField_a_of_type_AndroidContentContext.getString(2131692437));
+        a(this.I.getString(2131889425));
         return false;
       }
-      e(this.jdField_a_of_type_AndroidContentContext.getString(2131692412));
+      a(this.I.getString(2131889400));
       return false;
     }
-    if ((true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_from_jump")) && (true == this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromShare")) && (b(paramUri)))
+    if ((true == this.t.getBoolean("forward_from_jump")) && (true == this.t.getBoolean("isFromShare")) && (g(paramUri)))
     {
-      paramUri = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131756189);
-      paramUri.setContentView(2131558978);
-      paramUri.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719632));
-      paramUri.setMessage(this.jdField_a_of_type_AndroidContentContext.getString(2131692414));
+      paramUri = new QQCustomDialog(this.s, 2131953338);
+      paramUri.setContentView(2131624611);
+      paramUri.setTitle(this.I.getString(2131917233));
+      paramUri.setMessage(this.I.getString(2131889402));
       paramUri.setCanceledOnTouchOutside(false);
       paramUri.setCancelable(false);
-      paramUri.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690706), new ForwardFileBaseOption.2(this));
+      paramUri.setNegativeButton(this.I.getString(2131887625), new ForwardFileBaseOption.2(this));
       paramUri.show();
       return false;
     }
     localObject1 = ((File)localObject2).getName();
     boolean bool2 = ((File)localObject2).canRead();
-    if ((k == 0) && (!bool1) && (!bool2))
+    if ((i == 0) && (!bool1) && (!bool2))
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("android.intent.extra.TEXT");
-      this.jdField_a_of_type_AndroidOsBundle.putInt("forward_type", -1);
+      this.u = this.t.getString("android.intent.extra.TEXT");
+      this.t.putInt("forward_type", -1);
       return false;
     }
-    this.jdField_a_of_type_AndroidOsBundle.putString("forward_filepath", paramUri);
-    d(paramUri);
-    this.jdField_a_of_type_JavaLangString = a((String)localObject1, l);
-    this.j = ((String)localObject1);
-    this.i = paramUri;
-    this.b = l;
+    this.t.putString("forward_filepath", paramUri);
+    f(paramUri);
+    this.u = a((String)localObject1, l);
+    this.aj = ((String)localObject1);
+    this.ah = paramUri;
+    this.ai = l;
     return true;
   }
   
-  public static boolean b(String paramString)
+  public static boolean g(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
     return paramString.startsWith("/data/data/com.tencent.mobileqq/");
-  }
-  
-  private void e(String paramString)
-  {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidAppActivity, 2131756189);
-    localQQCustomDialog.setContentView(2131558978);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_AndroidContentContext.getString(2131719632));
-    localQQCustomDialog.setMessage(paramString);
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(this.jdField_a_of_type_AndroidContentContext.getString(2131690706), new ForwardFileBaseOption.1(this));
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      localQQCustomDialog.show();
-    }
-  }
-  
-  public long a()
-  {
-    return this.b;
   }
   
   protected String a(Uri paramUri)
@@ -209,21 +204,21 @@ public abstract class ForwardFileBaseOption
       localStringBuilder.append(paramUri);
       QLog.d("ForwardOption.ForwardFileBaseOption", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper == null) {
-      this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper = new UriParserPathHelper(this.jdField_a_of_type_AndroidAppActivity, true, new ForwardFileBaseOption.3(this));
+    if (this.ag == null) {
+      this.ag = new UriParserPathHelper(this.s, true, new ForwardFileBaseOption.3(this));
     }
-    return this.jdField_a_of_type_ComTencentMobileqqHaoliyouUriParserPathHelper.a(paramUri);
+    return this.ag.a(paramUri);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (paramInt1 == 102)
     {
-      String str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      if (!((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(Long.parseLong(str)))
+      String str = this.t.getString("uin");
+      if (!((DeviceFileHandler)this.q.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).b(Long.parseLong(str)))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131704849), 2000).a();
-        this.jdField_a_of_type_AndroidAppActivity.finish();
+        QQToast.makeText(this.s, HardCodeUtil.a(2131902747), 2000).show();
+        this.s.finish();
         return;
       }
       Object localObject = paramIntent.getParcelableArrayListExtra("sFilesSelected");
@@ -232,12 +227,12 @@ public abstract class ForwardFileBaseOption
         ArrayList localArrayList = new ArrayList();
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          localArrayList.add(((FileInfo)((Iterator)localObject).next()).c());
+          localArrayList.add(((FileInfo)((Iterator)localObject).next()).d());
         }
         paramIntent = paramIntent.getStringExtra("sPrintParam");
-        DeviceMsgChatPie.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, localArrayList, paramIntent);
+        DeviceMsgChatPie.a(this.q, str, localArrayList, paramIntent);
       }
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+      this.s.finish();
     }
   }
   
@@ -245,7 +240,7 @@ public abstract class ForwardFileBaseOption
   {
     try
     {
-      paramString2 = ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(paramString2));
+      paramString2 = ((SmartDeviceProxyMgr)this.q.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong(paramString2));
       Object localObject = new FileInfo(paramString1);
       paramString1 = new ArrayList();
       paramString1.add(localObject);
@@ -255,79 +250,84 @@ public abstract class ForwardFileBaseOption
       ((Intent)localObject).putExtra("device_info", paramString2);
       ((Intent)localObject).putExtra("url", "https://qzs.qq.com/open/mobile/iot_print/html/printOpt.html");
       ((Intent)localObject).putExtra("filetype", paramString3);
-      SmartDevicePluginLoader.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
+      SmartDevicePluginLoader.a().a(this.s, this.q, this.q.getAccount(), (Intent)localObject, "com.tencent.device.activities.LightPinterOptionActivity", 102, null, SmartDevicePluginProxyActivity.class);
       return;
     }
     catch (FileNotFoundException paramString1) {}
   }
   
-  public boolean a()
+  protected void d()
   {
-    super.a();
-    h = null;
-    Uri localUri = this.jdField_a_of_type_AndroidContentIntent.getData();
-    if ((localUri != null) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath")))) {
-      a(localUri);
+    super.d();
+    this.A.adjustMessageBottomMargin(17.0F);
+    this.A.setMessageTextColor(2131166157);
+    this.A.setMessageTextSize(14.0F);
+  }
+  
+  public boolean e()
+  {
+    super.e();
+    af = null;
+    Uri localUri = this.r.getData();
+    if ((localUri != null) && (TextUtils.isEmpty(this.t.getString("forward_filepath")))) {
+      b(localUri);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataForwardFileInfo = ((ForwardFileInfo)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("fileinfo"));
-    this.c = this.jdField_a_of_type_AndroidContentIntent.getParcelableArrayListExtra("fileinfo_array");
+    this.ad = ((ForwardFileInfo)this.r.getParcelableExtra("fileinfo"));
+    this.ae = this.r.getParcelableArrayListExtra("fileinfo_array");
     return true;
   }
   
-  protected void c()
-  {
-    super.c();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.adjustMessageBottomMargin(17.0F);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextColor(2131165694);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextSize(14.0F);
-  }
+  protected void f(String paramString) {}
   
-  protected boolean c()
+  protected boolean f()
   {
     Intent localIntent;
-    if (this.jdField_a_of_type_AndroidOsBundle.getInt("uintype") == 1008)
+    if (this.t.getInt("uintype") == 1008)
     {
-      localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-      localIntent.putExtra("chat_subType", ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getPublicAccountAioClass(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      localIntent = new Intent(this.s, ChatActivity.class);
+      localIntent.putExtra("chat_subType", ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getPublicAccountAioClass(this.t.getString("uin"), this.q));
     }
     else
     {
-      localIntent = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      localIntent = AIOUtils.a(new Intent(this.s, SplashActivity.class), null);
     }
-    if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendMultiple", false))
+    if (this.r.getBooleanExtra("sendMultiple", false))
     {
-      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", HardCodeUtil.a(2131704855));
+      this.t.putString("leftBackText", HardCodeUtil.a(2131902752));
       localIntent.addFlags(268435456);
       localIntent.addFlags(67108864);
-      localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      boolean bool = a(localIntent);
-      if (this.f) {
-        this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      localIntent.putExtras(this.t);
+      boolean bool = c(localIntent);
+      if (this.K) {
+        this.s.startActivity(localIntent);
       } else if (!bool) {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
+        ForwardUtils.a(this.q, this.s, this.I, localIntent, null);
       }
     }
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    localIntent.putExtras(this.t);
+    this.s.setResult(-1, localIntent);
+    this.s.finish();
     return false;
   }
   
-  protected void d(String paramString) {}
-  
-  protected String e()
+  protected String o()
   {
-    String str2 = h;
+    String str2 = af;
     String str1 = str2;
     if (str2 == null) {
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131719013);
+      str1 = this.I.getString(2131916548);
     }
     return str1;
+  }
+  
+  public long p()
+  {
+    return this.ai;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileBaseOption
  * JD-Core Version:    0.7.0.1
  */

@@ -17,15 +17,15 @@ class SSOPreAuthPresenter$1
   
   private void a(int paramInt, String paramString)
   {
-    SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuth onFail mPreAuthRetryCount=", Integer.valueOf(SSOPreAuthPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter)), ", errorCode=", Integer.valueOf(paramInt) });
-    if ((SSOPreAuthPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter) < this.jdField_a_of_type_Int) && (paramInt != 110537) && (paramInt != 110509))
+    SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuth onFail mPreAuthRetryCount=", Integer.valueOf(SSOPreAuthPresenter.a(this.j)), ", errorCode=", Integer.valueOf(paramInt) });
+    if ((SSOPreAuthPresenter.a(this.j) < this.e) && (paramInt != 110537) && (paramInt != 110509))
     {
-      SSOPreAuthPresenter.b(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter);
-      this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter.a(this.b, this.c, this.d, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenModelAccountInfo, this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter$PreAuthCallback, this.jdField_a_of_type_Int);
+      SSOPreAuthPresenter.b(this.j);
+      this.j.a(this.f, this.g, this.h, this.i, this.b, this.d, this.e);
       return;
     }
-    SSOPreAuthPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter, 0);
-    this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter$PreAuthCallback.a(paramInt, paramString);
+    SSOPreAuthPresenter.a(this.j, 0);
+    this.d.a(paramInt, paramString);
   }
   
   private void a(Bundle paramBundle, byte[] paramArrayOfByte)
@@ -37,38 +37,38 @@ class SSOPreAuthPresenter$1
       if ((paramArrayOfByte.ret.has()) && (paramArrayOfByte.ret.get() == 0))
       {
         SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuth mergeFrom success" });
-        AuthReporter.a("KEY_PRE_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, true);
-        SSOPreAuthPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter, paramArrayOfByte);
-        SSOPreAuthPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter, 0);
-        this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter$PreAuthCallback.a();
+        AuthReporter.a("KEY_PRE_AUTH", this.b, true);
+        SSOPreAuthPresenter.a(this.j, paramArrayOfByte);
+        SSOPreAuthPresenter.a(this.j, 0);
+        this.d.a();
         return;
       }
       SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuth mergeFrom fail ret=", Integer.valueOf(paramArrayOfByte.ret.get()), ", msg=", paramArrayOfByte.msg.get() });
-      AuthReporter.a("KEY_PRE_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, false);
+      AuthReporter.a("KEY_PRE_AUTH", this.b, false);
       a(paramArrayOfByte.ret.get(), paramArrayOfByte.msg.get());
       return;
     }
     catch (Exception paramArrayOfByte)
     {
       SSOLog.c("SSOPreAuthPresenter", "Exception", paramArrayOfByte);
-      AuthReporter.a("KEY_PRE_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, false);
+      AuthReporter.a("KEY_PRE_AUTH", this.b, false);
       a(paramBundle.getInt("code", -1), "");
     }
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(SSOPreAuthPresenter.a(this.jdField_a_of_type_ComTencentOpenAgentAuthPresenterSSOPreAuthPresenter)), ", cmd=", this.jdField_a_of_type_JavaLangString });
+    SSOLog.a("SSOPreAuthPresenter", new Object[] { "preAuthWithRetry isSuccess=", Boolean.valueOf(paramBoolean), ", type=", Integer.valueOf(paramInt), ", mPreAuthRetryCount=", Integer.valueOf(SSOPreAuthPresenter.a(this.j)), ", cmd=", this.a });
     if (!paramBoolean)
     {
-      AuthReporter.a("KEY_PRE_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, false);
+      AuthReporter.a("KEY_PRE_AUTH", this.b, false);
       a(paramBundle.getInt("code", -1), "");
       return;
     }
-    byte[] arrayOfByte = AuthorityUtil.a(paramBundle, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
+    byte[] arrayOfByte = AuthorityUtil.a(paramBundle, this.c, this.b);
     if (arrayOfByte == null)
     {
-      AuthReporter.a("KEY_PRE_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, false);
+      AuthReporter.a("KEY_PRE_AUTH", this.b, false);
       a(paramBundle.getInt("code", -1), "");
       return;
     }
@@ -77,7 +77,7 @@ class SSOPreAuthPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.presenter.SSOPreAuthPresenter.1
  * JD-Core Version:    0.7.0.1
  */

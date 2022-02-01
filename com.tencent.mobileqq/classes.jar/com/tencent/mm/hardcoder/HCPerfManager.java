@@ -22,46 +22,65 @@ import mqq.app.MobileQQ;
 
 public class HCPerfManager
 {
-  static RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool;
-  private static HCPerfManager jdField_a_of_type_ComTencentMmHardcoderHCPerfManager;
-  static final String jdField_a_of_type_JavaLangString;
-  public static boolean a = false;
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 0, 1, 2, 3 };
-  static RecyclablePool jdField_b_of_type_ComTencentCommonsdkPoolRecyclablePool;
-  static final String jdField_b_of_type_JavaLangString;
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 0, 1, 2, 3 };
-  private LinkedBlockingQueue<Object> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue();
-  private boolean jdField_b_of_type_Boolean = false;
+  private static final int[] CPU_LEVEL = { 0, 1, 2, 3 };
+  private static final long DEFAULT_WAKE_INTERVAL = 30000L;
+  private static final int[] IO_LEVEL = { 0, 1, 2, 3 };
+  public static boolean IS_TEST = false;
+  static final String SO_MD5_FOR_32 = "5c08438266c3084212bb9307aa7c2aaa";
+  static final String SO_MD5_FOR_64 = "3841cfb9a73d7c1520e854b30ed6e753";
+  static final String SO_PATH_FOR_32;
+  static final String SO_PATH_FOR_64;
+  static final String SO_PATH_OLD;
+  private static final String TAG = "HardCoder.HCPerfManager";
+  private static final String sClientsock = "testapp.hardcoder.client.sock";
+  private static HCPerfManager sInstance;
+  private static final String sServerPropKey = "persist.sys.hardcoder.name";
+  static RecyclablePool sStartTaskPool = new RecyclablePool(HCPerfManager.PerformanceTask.class, 4);
+  static RecyclablePool sStopTaskPool = new RecyclablePool(HCPerfManager.PerformanceTaskStop.class, 4);
+  private LinkedBlockingQueue<Object> queueTask = new LinkedBlockingQueue();
+  private boolean running = false;
   
   static
   {
-    jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(HCPerfManager.PerformanceTask.class, 4);
-    jdField_b_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(HCPerfManager.PerformanceTaskStop.class, 4);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(MobileQQ.getContext().getFilesDir());
     localStringBuilder.append("/pddata/prd/hc/hardcoder.so");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    SO_PATH_OLD = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(MobileQQ.getContext().getFilesDir());
-    localStringBuilder.append("/pddata/prd/hc/hardcoder_new.so");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append("/pddata/prd/hc/arm64/hardcoder_new.so");
+    SO_PATH_FOR_64 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MobileQQ.getContext().getFilesDir());
+    localStringBuilder.append("/pddata/prd/hc/arm/hardcoder_new.so");
+    SO_PATH_FOR_32 = localStringBuilder.toString();
   }
   
-  public static HCPerfManager a()
+  public static HCPerfManager getInstance()
   {
-    if (jdField_a_of_type_ComTencentMmHardcoderHCPerfManager == null) {
+    if (sInstance == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMmHardcoderHCPerfManager == null) {
-          jdField_a_of_type_ComTencentMmHardcoderHCPerfManager = new HCPerfManager();
+        if (sInstance == null) {
+          sInstance = new HCPerfManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMmHardcoderHCPerfManager;
+    return sInstance;
   }
   
-  private void b()
+  public static String getSoMd5()
+  {
+    return "5c08438266c3084212bb9307aa7c2aaa";
+  }
+  
+  public static String getSoPath()
+  {
+    return SO_PATH_FOR_32;
+  }
+  
+  private void run()
   {
     Object localObject1 = String.format("HCPerfManager thread[%d] running", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
     Object localObject3 = "HardCoder.HCPerfManager";
@@ -76,11 +95,11 @@ public class HCPerfManager
     for (;;)
     {
       Object localObject9 = this;
-      if (!((HCPerfManager)localObject9).jdField_b_of_type_Boolean) {
+      if (!((HCPerfManager)localObject9).running) {
         break;
       }
       long l2 = System.currentTimeMillis();
-      int k = ((HCPerfManager)localObject9).jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.size();
+      int k = ((HCPerfManager)localObject9).queueTask.size();
       Object localObject7;
       if (HardCoderJNI.hcDebug)
       {
@@ -106,7 +125,7 @@ public class HCPerfManager
         }
         try
         {
-          localObject7 = ((HCPerfManager)localObject9).jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.poll(l1, TimeUnit.MILLISECONDS);
+          localObject7 = ((HCPerfManager)localObject9).queueTask.poll(l1, TimeUnit.MILLISECONDS);
         }
         catch (Exception localException)
         {
@@ -128,7 +147,7 @@ public class HCPerfManager
         else if ((localObject8 instanceof HCPerfManager.PerformanceTaskStop))
         {
           localObject8 = (HCPerfManager.PerformanceTaskStop)localObject8;
-          j = ((HCPerfManager.PerformanceTaskStop)localObject8).jdField_a_of_type_Int;
+          j = ((HCPerfManager.PerformanceTaskStop)localObject8).hashCode;
           if (localHashSet.contains(Integer.valueOf(j))) {
             ((HashMap)localObject1).put(Integer.valueOf(j), localObject8);
           } else {
@@ -144,7 +163,7 @@ public class HCPerfManager
         }
         i += 1;
       }
-      a();
+      uninit();
       label389:
       Object localObject13 = new HashSet();
       long l3 = System.currentTimeMillis();
@@ -177,11 +196,11 @@ public class HCPerfManager
           {
             if (localObject4.containsKey(Integer.valueOf(localObject11.hashCode())))
             {
-              ((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Long = l3;
-              ((HCPerfManager.PerformanceTask)localObject11).i = ((HCPerfManager.PerformanceTaskStop)localObject4.get(Integer.valueOf(localObject11.hashCode()))).jdField_a_of_type_Long;
+              ((HCPerfManager.PerformanceTask)localObject11).stopTime = l3;
+              ((HCPerfManager.PerformanceTask)localObject11).sceneStopTime = ((HCPerfManager.PerformanceTaskStop)localObject4.get(Integer.valueOf(localObject11.hashCode()))).sceneStopTime;
               localObject4.remove(Integer.valueOf(localObject11.hashCode()));
             }
-            l4 = ((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Long - l3;
+            l4 = ((HCPerfManager.PerformanceTask)localObject11).stopTime - l3;
             if (l4 <= 0L)
             {
               if (HardCoderJNI.hcDebug)
@@ -192,7 +211,7 @@ public class HCPerfManager
                 ((StringBuilder)localObject10).append("/");
                 ((StringBuilder)localObject10).append(((ArrayList)localObject6).size());
                 ((StringBuilder)localObject10).append(" task:");
-                ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject11).a(l3));
+                ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject11).toString(l3));
                 Log.d((String)localObject3, ((StringBuilder)localObject10).toString());
               }
               ((ArrayList)localObject6).remove(localObject11);
@@ -203,7 +222,7 @@ public class HCPerfManager
             else
             {
               l1 = Math.min(l1, l4);
-              l4 = ((HCPerfManager.PerformanceTask)localObject11).jdField_b_of_type_Long - l3;
+              l4 = ((HCPerfManager.PerformanceTask)localObject11).startTime - l3;
               if (l4 > 0L)
               {
                 if (HardCoderJNI.hcDebug)
@@ -214,7 +233,7 @@ public class HCPerfManager
                   ((StringBuilder)localObject10).append("/");
                   ((StringBuilder)localObject10).append(((ArrayList)localObject6).size());
                   ((StringBuilder)localObject10).append(" task:");
-                  ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject11).a(l3));
+                  ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject11).toString(l3));
                   Log.d((String)localObject3, ((StringBuilder)localObject10).toString());
                 }
                 l1 = Math.min(l1, l4);
@@ -228,38 +247,38 @@ public class HCPerfManager
                 ((StringBuilder)localObject10).append("/");
                 ((StringBuilder)localObject10).append(((ArrayList)localObject6).size());
                 ((StringBuilder)localObject10).append(" task:");
-                ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject11).a(l3));
+                ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject11).toString(l3));
                 Log.d((String)localObject3, ((StringBuilder)localObject10).toString());
               }
-              if (((HCPerfManager.PerformanceTask)localObject11).jdField_c_of_type_Int > 0)
+              if (((HCPerfManager.PerformanceTask)localObject11).cpuLevel > 0)
               {
                 if (localObject2 != null)
                 {
                   localObject10 = localObject2;
-                  if (((HCPerfManager.PerformanceTask)localObject10).jdField_c_of_type_Int <= ((HCPerfManager.PerformanceTask)localObject11).jdField_c_of_type_Int)
+                  if (((HCPerfManager.PerformanceTask)localObject10).cpuLevel <= ((HCPerfManager.PerformanceTask)localObject11).cpuLevel)
                   {
                     localObject2 = localObject10;
-                    if (((HCPerfManager.PerformanceTask)localObject10).jdField_c_of_type_Int != ((HCPerfManager.PerformanceTask)localObject11).jdField_c_of_type_Int) {
-                      break label988;
+                    if (((HCPerfManager.PerformanceTask)localObject10).cpuLevel != ((HCPerfManager.PerformanceTask)localObject11).cpuLevel) {
+                      break label997;
                     }
                     localObject2 = localObject10;
-                    if (((HCPerfManager.PerformanceTask)localObject10).jdField_d_of_type_Long >= ((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Long) {
-                      break label988;
+                    if (((HCPerfManager.PerformanceTask)localObject10).stopTime >= ((HCPerfManager.PerformanceTask)localObject11).stopTime) {
+                      break label997;
                     }
                   }
                 }
                 localObject2 = localObject11;
               }
-              label988:
+              label997:
               localObject10 = localObject1;
-              if (((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Int > 0) {
-                if ((localObject1 != null) && (((HCPerfManager.PerformanceTask)localObject1).jdField_d_of_type_Int <= ((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Int))
+              if (((HCPerfManager.PerformanceTask)localObject11).ioLevel > 0) {
+                if ((localObject1 != null) && (((HCPerfManager.PerformanceTask)localObject1).ioLevel <= ((HCPerfManager.PerformanceTask)localObject11).ioLevel))
                 {
                   localObject10 = localObject1;
-                  if (((HCPerfManager.PerformanceTask)localObject1).jdField_d_of_type_Int == ((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Int)
+                  if (((HCPerfManager.PerformanceTask)localObject1).ioLevel == ((HCPerfManager.PerformanceTask)localObject11).ioLevel)
                   {
                     localObject10 = localObject1;
-                    if (((HCPerfManager.PerformanceTask)localObject1).jdField_d_of_type_Long >= ((HCPerfManager.PerformanceTask)localObject11).jdField_d_of_type_Long) {}
+                    if (((HCPerfManager.PerformanceTask)localObject1).stopTime >= ((HCPerfManager.PerformanceTask)localObject11).stopTime) {}
                   }
                 }
                 else
@@ -267,7 +286,7 @@ public class HCPerfManager
                   localObject10 = localObject11;
                 }
               }
-              if (((HCPerfManager.PerformanceTask)localObject11).jdField_e_of_type_Int > 0) {
+              if (((HCPerfManager.PerformanceTask)localObject11).bindTid > 0) {
                 ((HashSet)localObject13).add(localObject11);
               }
               localObject1 = localObject10;
@@ -287,14 +306,14 @@ public class HCPerfManager
         if (localObject8 == null) {
           localObject10 = "null";
         } else {
-          localObject10 = ((HCPerfManager.PerformanceTask)localObject8).a(l3);
+          localObject10 = ((HCPerfManager.PerformanceTask)localObject8).toString(l3);
         }
         ((StringBuilder)localObject11).append((String)localObject10);
         ((StringBuilder)localObject11).append(" -> MaxCpu:");
         if (localObject2 == null) {
           localObject10 = "null";
         } else {
-          localObject10 = localObject2.a(l3);
+          localObject10 = localObject2.toString(l3);
         }
         ((StringBuilder)localObject11).append((String)localObject10);
         Log.d((String)localObject3, ((StringBuilder)localObject11).toString());
@@ -303,14 +322,14 @@ public class HCPerfManager
         if (localObject9 == null) {
           localObject10 = "null";
         } else {
-          localObject10 = ((HCPerfManager.PerformanceTask)localObject9).a(l3);
+          localObject10 = ((HCPerfManager.PerformanceTask)localObject9).toString(l3);
         }
         ((StringBuilder)localObject11).append((String)localObject10);
         ((StringBuilder)localObject11).append(" -> MaxIO:");
         if (localObject1 == null) {
           localObject10 = "null";
         } else {
-          localObject10 = ((HCPerfManager.PerformanceTask)localObject1).a(l3);
+          localObject10 = ((HCPerfManager.PerformanceTask)localObject1).toString(l3);
         }
         ((StringBuilder)localObject11).append((String)localObject10);
         Log.d((String)localObject3, ((StringBuilder)localObject11).toString());
@@ -353,28 +372,28 @@ public class HCPerfManager
           localObject12 = (HCPerfManager.PerformanceTask)((Iterator)localObject9).next();
           localObject16 = new StringBuilder();
           ((StringBuilder)localObject16).append("!cancelBindCore task:");
-          ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject12).a(l3));
+          ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject12).toString(l3));
           Log.i((String)localObject3, ((StringBuilder)localObject16).toString());
-          if ((((HCPerfManager.PerformanceTask)localObject12).jdField_d_of_type_Long > l3) && (!HardCoderJNI.checkEnv))
+          if ((((HCPerfManager.PerformanceTask)localObject12).stopTime > l3) && (!HardCoderJNI.checkEnv))
           {
-            a();
+            uninit();
             break;
           }
-          if (((HCPerfManager.PerformanceTask)localObject12).jdField_e_of_type_Int == 0) {
+          if (((HCPerfManager.PerformanceTask)localObject12).bindTid == 0) {
             if (HardCoderJNI.checkEnv)
             {
               localObject16 = new StringBuilder();
               ((StringBuilder)localObject16).append("bindTid:");
-              ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject12).jdField_e_of_type_Int);
+              ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject12).bindTid);
               Assert.a(((StringBuilder)localObject16).toString());
             }
             else
             {
-              a();
+              uninit();
               break;
             }
           }
-          localObject15[i] = ((HCPerfManager.PerformanceTask)localObject12).jdField_e_of_type_Int;
+          localObject15[i] = ((HCPerfManager.PerformanceTask)localObject12).bindTid;
           i += 1;
         }
         l2 = l1;
@@ -383,7 +402,7 @@ public class HCPerfManager
         localObject5 = localObject12;
         localObject8 = localObject9;
         l1 = l2;
-        if (!jdField_a_of_type_Boolean)
+        if (!IS_TEST)
         {
           localObject5 = localObject12;
           localObject8 = localObject9;
@@ -415,42 +434,42 @@ public class HCPerfManager
         localObject13 = (HCPerfManager.PerformanceTask)((Iterator)localObject12).next();
         localObject16 = new StringBuilder();
         ((StringBuilder)localObject16).append("requestBindCore task:");
-        ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject13).a(l3));
+        ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject13).toString(l3));
         Log.i((String)localObject3, ((StringBuilder)localObject16).toString());
-        if (((HCPerfManager.PerformanceTask)localObject13).jdField_d_of_type_Long <= l3) {
+        if (((HCPerfManager.PerformanceTask)localObject13).stopTime <= l3) {
           if (HardCoderJNI.checkEnv)
           {
             localObject16 = new StringBuilder();
             ((StringBuilder)localObject16).append("stopTime:");
-            ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject13).jdField_d_of_type_Long - l3);
+            ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject13).stopTime - l3);
             Assert.a(((StringBuilder)localObject16).toString());
           }
           else
           {
-            a();
+            uninit();
             break;
           }
         }
-        if (((HCPerfManager.PerformanceTask)localObject13).jdField_e_of_type_Int == 0) {
+        if (((HCPerfManager.PerformanceTask)localObject13).bindTid == 0) {
           if (HardCoderJNI.checkEnv)
           {
             localObject16 = new StringBuilder();
             ((StringBuilder)localObject16).append("bindTid:");
-            ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject13).jdField_e_of_type_Int);
+            ((StringBuilder)localObject16).append(((HCPerfManager.PerformanceTask)localObject13).bindTid);
             Assert.a(((StringBuilder)localObject16).toString());
           }
           else
           {
-            a();
+            uninit();
             break;
           }
         }
-        localObject15[m] = ((HCPerfManager.PerformanceTask)localObject13).jdField_e_of_type_Int;
+        localObject15[m] = ((HCPerfManager.PerformanceTask)localObject13).bindTid;
         m += 1;
-        k = ((HCPerfManager.PerformanceTask)localObject13).f;
-        l2 = ((HCPerfManager.PerformanceTask)localObject13).jdField_a_of_type_Long;
-        j = ((HCPerfManager.PerformanceTask)localObject13).g;
-        i = Math.min((int)(((HCPerfManager.PerformanceTask)localObject13).jdField_d_of_type_Long - l3), i);
+        k = ((HCPerfManager.PerformanceTask)localObject13).scene;
+        l2 = ((HCPerfManager.PerformanceTask)localObject13).action;
+        j = ((HCPerfManager.PerformanceTask)localObject13).callerTid;
+        i = Math.min((int)(((HCPerfManager.PerformanceTask)localObject13).stopTime - l3), i);
       }
       if (localObject1 == null)
       {
@@ -458,10 +477,10 @@ public class HCPerfManager
         {
           localObject12 = new StringBuilder();
           ((StringBuilder)localObject12).append("!cancelHighIOFreq task:");
-          ((StringBuilder)localObject12).append(((HCPerfManager.PerformanceTask)localObject11).a(l3));
+          ((StringBuilder)localObject12).append(((HCPerfManager.PerformanceTask)localObject11).toString(l3));
           Log.i((String)localObject3, ((StringBuilder)localObject12).toString());
-          if ((!jdField_a_of_type_Boolean) && (HardCoderJNI.checkEnv)) {
-            HardCoderJNI.cancelHighIOFreq(((HCPerfManager.PerformanceTask)localObject11).g, SystemClock.elapsedRealtimeNanos());
+          if ((!IS_TEST) && (HardCoderJNI.checkEnv)) {
+            HardCoderJNI.cancelHighIOFreq(((HCPerfManager.PerformanceTask)localObject11).callerTid, SystemClock.elapsedRealtimeNanos());
           }
         }
       }
@@ -472,23 +491,23 @@ public class HCPerfManager
         if (localObject11 == null) {
           localObject11 = "null";
         } else {
-          localObject11 = ((HCPerfManager.PerformanceTask)localObject11).a(l3);
+          localObject11 = ((HCPerfManager.PerformanceTask)localObject11).toString(l3);
         }
         ((StringBuilder)localObject12).append((String)localObject11);
         ((StringBuilder)localObject12).append(" -> ");
-        ((StringBuilder)localObject12).append(((HCPerfManager.PerformanceTask)localObject1).a(l3));
+        ((StringBuilder)localObject12).append(((HCPerfManager.PerformanceTask)localObject1).toString(l3));
         ((StringBuilder)localObject12).append(" delay:");
-        ((StringBuilder)localObject12).append(l4 - ((HCPerfManager.PerformanceTask)localObject1).jdField_b_of_type_Long);
+        ((StringBuilder)localObject12).append(l4 - ((HCPerfManager.PerformanceTask)localObject1).startTime);
         Log.d((String)localObject3, ((StringBuilder)localObject12).toString());
       }
       int n;
       if (localObject1 != null)
       {
-        m = ((HCPerfManager.PerformanceTask)localObject1).jdField_d_of_type_Int;
-        j = ((HCPerfManager.PerformanceTask)localObject1).f;
-        l2 = ((HCPerfManager.PerformanceTask)localObject1).jdField_a_of_type_Long;
-        k = ((HCPerfManager.PerformanceTask)localObject1).g;
-        i = Math.min((int)(((HCPerfManager.PerformanceTask)localObject1).jdField_d_of_type_Long - l3), i);
+        m = ((HCPerfManager.PerformanceTask)localObject1).ioLevel;
+        j = ((HCPerfManager.PerformanceTask)localObject1).scene;
+        l2 = ((HCPerfManager.PerformanceTask)localObject1).action;
+        k = ((HCPerfManager.PerformanceTask)localObject1).callerTid;
+        i = Math.min((int)(((HCPerfManager.PerformanceTask)localObject1).stopTime - l3), i);
       }
       else
       {
@@ -504,10 +523,10 @@ public class HCPerfManager
         {
           localObject11 = new StringBuilder();
           ((StringBuilder)localObject11).append("!cancelCpuHighFreq task:");
-          ((StringBuilder)localObject11).append(((HCPerfManager.PerformanceTask)localObject10).a(l3));
+          ((StringBuilder)localObject11).append(((HCPerfManager.PerformanceTask)localObject10).toString(l3));
           Log.i((String)localObject3, ((StringBuilder)localObject11).toString());
-          if ((!jdField_a_of_type_Boolean) && (HardCoderJNI.checkEnv)) {
-            HardCoderJNI.cancelCpuHighFreq(((HCPerfManager.PerformanceTask)localObject10).g, SystemClock.elapsedRealtimeNanos());
+          if ((!IS_TEST) && (HardCoderJNI.checkEnv)) {
+            HardCoderJNI.cancelCpuHighFreq(((HCPerfManager.PerformanceTask)localObject10).callerTid, SystemClock.elapsedRealtimeNanos());
           }
         }
       }
@@ -518,23 +537,23 @@ public class HCPerfManager
         if (localObject10 == null) {
           localObject10 = "null";
         } else {
-          localObject10 = ((HCPerfManager.PerformanceTask)localObject10).a(l3);
+          localObject10 = ((HCPerfManager.PerformanceTask)localObject10).toString(l3);
         }
         ((StringBuilder)localObject11).append((String)localObject10);
         ((StringBuilder)localObject11).append(" -> ");
-        ((StringBuilder)localObject11).append(localObject2.a(l3));
+        ((StringBuilder)localObject11).append(localObject2.toString(l3));
         ((StringBuilder)localObject11).append(" delay:");
-        ((StringBuilder)localObject11).append(l4 - localObject2.jdField_b_of_type_Long);
+        ((StringBuilder)localObject11).append(l4 - localObject2.startTime);
         Log.d((String)localObject3, ((StringBuilder)localObject11).toString());
       }
       int i1;
       if (localObject2 != null)
       {
-        j = localObject2.jdField_c_of_type_Int;
-        k = localObject2.f;
-        l2 = localObject2.jdField_a_of_type_Long;
-        n = localObject2.g;
-        i1 = Math.min((int)(localObject2.jdField_d_of_type_Long - l3), i);
+        j = localObject2.cpuLevel;
+        k = localObject2.scene;
+        l2 = localObject2.action;
+        n = localObject2.callerTid;
+        i1 = Math.min((int)(localObject2.stopTime - l3), i);
         i = j;
         j = i1;
       }
@@ -552,22 +571,22 @@ public class HCPerfManager
         if (localObject2 == null) {
           localObject10 = "null";
         } else {
-          localObject10 = localObject2.a(l3);
+          localObject10 = localObject2.toString(l3);
         }
         if (localObject1 == null) {
           localObject11 = "null";
         } else {
-          localObject11 = ((HCPerfManager.PerformanceTask)localObject1).a(l3);
+          localObject11 = ((HCPerfManager.PerformanceTask)localObject1).toString(l3);
         }
         if (localObject2 == null) {
           localObject12 = "null";
         } else {
-          localObject12 = localObject2.a(l3);
+          localObject12 = localObject2.toString(l3);
         }
         if (localObject1 == null) {
           localObject13 = localObject14;
         } else {
-          localObject13 = ((HCPerfManager.PerformanceTask)localObject1).a(l3);
+          localObject13 = ((HCPerfManager.PerformanceTask)localObject1).toString(l3);
         }
         Log.i((String)localObject3, String.format("!UnifyRequest [%d,%d,%d] [%d,%d,%d] TO:%d max CPU:%s IO:%s cur CPU:%s IO:%s", new Object[] { Integer.valueOf(k), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(i1), Integer.valueOf(j), localObject10, localObject11, localObject12, localObject13 }));
         if (j > 0) {
@@ -594,7 +613,7 @@ public class HCPerfManager
           bool = true;
         }
         Assert.a(bool);
-        if (!jdField_a_of_type_Boolean)
+        if (!IS_TEST)
         {
           HardCoderJNI.requestUnifyCpuIOThreadCore(k, l2, i, m, (int[])localObject15, j, n, SystemClock.elapsedRealtimeNanos());
           Log.i((String)localObject3, String.format("hardcoder requestUnifyCpuIOThreadCore reqScene[%d, %d, %d, %d, %d]", new Object[] { Integer.valueOf(k), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(j) }));
@@ -603,7 +622,7 @@ public class HCPerfManager
           }
         }
       }
-      if (!jdField_a_of_type_Boolean)
+      if (!IS_TEST)
       {
         localObject11 = localObject9;
         localObject10 = localObject6;
@@ -670,16 +689,16 @@ public class HCPerfManager
             ((StringBuilder)localObject10).append((String)localObject16);
             ((StringBuilder)localObject10).append(((ArrayList)localObject9).size());
             ((StringBuilder)localObject10).append((String)localObject5);
-            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).a(l3));
+            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).toString(l3));
             Log.d((String)localObject3, ((StringBuilder)localObject10).toString());
           }
-          if ((((HCPerfManager.PerformanceTask)localObject8).jdField_c_of_type_Int <= 0) && (((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Int <= 0) && (((HCPerfManager.PerformanceTask)localObject8).jdField_e_of_type_Int <= 0)) {
+          if ((((HCPerfManager.PerformanceTask)localObject8).cpuLevel <= 0) && (((HCPerfManager.PerformanceTask)localObject8).ioLevel <= 0) && (((HCPerfManager.PerformanceTask)localObject8).bindTid <= 0)) {
             bool = false;
           } else {
             bool = true;
           }
           Assert.a(bool);
-          if ((((HCPerfManager.PerformanceTask)localObject8).jdField_a_of_type_Long <= 0L) && (((HCPerfManager.PerformanceTask)localObject8).f <= 0)) {
+          if ((((HCPerfManager.PerformanceTask)localObject8).action <= 0L) && (((HCPerfManager.PerformanceTask)localObject8).scene <= 0)) {
             bool = false;
           } else {
             bool = true;
@@ -687,9 +706,9 @@ public class HCPerfManager
           Assert.a(bool);
           localObject10 = new StringBuilder();
           ((StringBuilder)localObject10).append("taskInintTime:");
-          ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_c_of_type_Long - l3);
+          ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).initTime - l3);
           localObject10 = ((StringBuilder)localObject10).toString();
-          if (((HCPerfManager.PerformanceTask)localObject8).jdField_c_of_type_Long <= l3) {
+          if (((HCPerfManager.PerformanceTask)localObject8).initTime <= l3) {
             bool = true;
           } else {
             bool = false;
@@ -697,9 +716,9 @@ public class HCPerfManager
           Assert.a((String)localObject10, bool);
           localObject10 = new StringBuilder();
           ((StringBuilder)localObject10).append("taskStopTime:");
-          ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Long - l3);
+          ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).stopTime - l3);
           localObject10 = ((StringBuilder)localObject10).toString();
-          if (((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Long >= l3) {
+          if (((HCPerfManager.PerformanceTask)localObject8).stopTime >= l3) {
             bool = true;
           } else {
             bool = false;
@@ -709,7 +728,7 @@ public class HCPerfManager
           ((StringBuilder)localObject10).append("taskHash:");
           ((StringBuilder)localObject10).append(localObject8.hashCode());
           Assert.a(((StringBuilder)localObject10).toString(), localObject4.containsKey(Integer.valueOf(localObject8.hashCode())) ^ true);
-          if (((HCPerfManager.PerformanceTask)localObject8).jdField_b_of_type_Long > l3)
+          if (((HCPerfManager.PerformanceTask)localObject8).startTime > l3)
           {
             if (localObject8 != localObject2) {
               bool = true;
@@ -728,9 +747,9 @@ public class HCPerfManager
             ((StringBuilder)localObject10).append("next:");
             ((StringBuilder)localObject10).append(l2);
             ((StringBuilder)localObject10).append(" start:");
-            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_b_of_type_Long - l3);
+            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).startTime - l3);
             localObject10 = ((StringBuilder)localObject10).toString();
-            if (l2 <= ((HCPerfManager.PerformanceTask)localObject8).jdField_b_of_type_Long - l3) {
+            if (l2 <= ((HCPerfManager.PerformanceTask)localObject8).startTime - l3) {
               bool = true;
             } else {
               bool = false;
@@ -744,9 +763,9 @@ public class HCPerfManager
             ((StringBuilder)localObject10).append("nextWake:");
             ((StringBuilder)localObject10).append(l2);
             ((StringBuilder)localObject10).append(" stop:");
-            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Long - l3);
+            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).stopTime - l3);
             localObject10 = ((StringBuilder)localObject10).toString();
-            if (l2 <= ((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Long - l3) {
+            if (l2 <= ((HCPerfManager.PerformanceTask)localObject8).stopTime - l3) {
               bool = true;
             } else {
               bool = false;
@@ -766,9 +785,9 @@ public class HCPerfManager
             ((StringBuilder)localObject10).append("reqTimeStamp:");
             ((StringBuilder)localObject10).append(j);
             ((StringBuilder)localObject10).append(" stop:");
-            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Long - l3);
+            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).stopTime - l3);
             localObject10 = ((StringBuilder)localObject10).toString();
-            if (j <= ((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Long - l3) {
+            if (j <= ((HCPerfManager.PerformanceTask)localObject8).stopTime - l3) {
               bool = true;
             } else {
               bool = false;
@@ -778,9 +797,9 @@ public class HCPerfManager
             ((StringBuilder)localObject10).append("reqCpu:");
             ((StringBuilder)localObject10).append(i);
             ((StringBuilder)localObject10).append((String)localObject5);
-            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_c_of_type_Int);
+            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).cpuLevel);
             localObject10 = ((StringBuilder)localObject10).toString();
-            if (i <= ((HCPerfManager.PerformanceTask)localObject8).jdField_c_of_type_Int) {
+            if (i <= ((HCPerfManager.PerformanceTask)localObject8).cpuLevel) {
               bool = true;
             } else {
               bool = false;
@@ -790,15 +809,15 @@ public class HCPerfManager
             ((StringBuilder)localObject10).append("reqIO:");
             ((StringBuilder)localObject10).append(m);
             ((StringBuilder)localObject10).append((String)localObject5);
-            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Int);
+            ((StringBuilder)localObject10).append(((HCPerfManager.PerformanceTask)localObject8).ioLevel);
             localObject10 = ((StringBuilder)localObject10).toString();
-            if (m <= ((HCPerfManager.PerformanceTask)localObject8).jdField_d_of_type_Int) {
+            if (m <= ((HCPerfManager.PerformanceTask)localObject8).ioLevel) {
               bool = true;
             } else {
               bool = false;
             }
             Assert.a((String)localObject10, bool);
-            if (((HCPerfManager.PerformanceTask)localObject8).jdField_e_of_type_Int > 0)
+            if (((HCPerfManager.PerformanceTask)localObject8).bindTid > 0)
             {
               Assert.a(((HashSet)localObject6).contains(localObject8));
               Assert.a(((HashSet)localObject15).contains(localObject8) ^ true);
@@ -816,7 +835,7 @@ public class HCPerfManager
     }
   }
   
-  int a()
+  int init()
   {
     int k = 1;
     Object localObject;
@@ -842,12 +861,12 @@ public class HCPerfManager
       j = k;
       if (i != 0)
       {
-        if (new File(jdField_b_of_type_JavaLangString).exists()) {
+        if (new File(getSoPath()).exists()) {
           try
           {
-            System.load(jdField_b_of_type_JavaLangString);
+            System.load(getSoPath());
             HardCoderJNI.initHardCoder((String)localObject, 0, "testapp.hardcoder.client.sock", false);
-            this.jdField_b_of_type_Boolean = true;
+            this.running = true;
             localObject = new Thread(new HCPerfManager.1(this), "hardcoder-0");
             ((Thread)localObject).setPriority(1);
             ((Thread)localObject).start();
@@ -865,36 +884,36 @@ public class HCPerfManager
     return j;
   }
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString)
+  public int start(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong, int paramInt7, String paramString)
   {
-    HCPerfManager.PerformanceTask localPerformanceTask = (HCPerfManager.PerformanceTask)jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(HCPerfManager.PerformanceTask.class);
-    localPerformanceTask.jdField_a_of_type_Int = paramInt1;
-    localPerformanceTask.jdField_c_of_type_Int = paramInt2;
-    localPerformanceTask.jdField_d_of_type_Int = paramInt3;
-    localPerformanceTask.jdField_e_of_type_Int = paramInt4;
-    localPerformanceTask.jdField_b_of_type_Int = paramInt5;
-    localPerformanceTask.f = paramInt6;
-    localPerformanceTask.jdField_a_of_type_Long = paramLong;
-    localPerformanceTask.g = paramInt7;
-    localPerformanceTask.jdField_c_of_type_Long = System.currentTimeMillis();
-    paramLong = localPerformanceTask.jdField_c_of_type_Long;
+    HCPerfManager.PerformanceTask localPerformanceTask = (HCPerfManager.PerformanceTask)sStartTaskPool.obtain(HCPerfManager.PerformanceTask.class);
+    localPerformanceTask.delay = paramInt1;
+    localPerformanceTask.cpuLevel = paramInt2;
+    localPerformanceTask.ioLevel = paramInt3;
+    localPerformanceTask.bindTid = paramInt4;
+    localPerformanceTask.timeout = paramInt5;
+    localPerformanceTask.scene = paramInt6;
+    localPerformanceTask.action = paramLong;
+    localPerformanceTask.callerTid = paramInt7;
+    localPerformanceTask.initTime = System.currentTimeMillis();
+    paramLong = localPerformanceTask.initTime;
     long l = paramInt1;
-    localPerformanceTask.jdField_b_of_type_Long = (paramLong + l);
-    localPerformanceTask.jdField_d_of_type_Long = (localPerformanceTask.jdField_c_of_type_Long + l + paramInt5);
-    localPerformanceTask.jdField_a_of_type_JavaLangString = paramString;
-    localPerformanceTask.jdField_e_of_type_Long = localPerformanceTask.jdField_b_of_type_Long;
-    localPerformanceTask.h = localPerformanceTask.jdField_c_of_type_Long;
+    localPerformanceTask.startTime = (paramLong + l);
+    localPerformanceTask.stopTime = (localPerformanceTask.initTime + l + paramInt5);
+    localPerformanceTask.tag = paramString;
+    localPerformanceTask.lastUpdateTime = localPerformanceTask.startTime;
+    localPerformanceTask.sceneStartTime = localPerformanceTask.initTime;
     paramInt6 = 0;
     if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt3 >= 0) && (paramInt4 >= 0) && (paramInt5 > 0) && ((paramInt2 != 0) || (paramInt3 != 0) || (paramInt4 != 0)))
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.offer(localPerformanceTask);
+      boolean bool = this.queueTask.offer(localPerformanceTask);
       if (HardCoderJNI.hcDebug)
       {
         paramString = new StringBuilder();
         paramString.append("OutCallAddTask ret:");
         paramString.append(bool);
         paramString.append(" task:");
-        paramString.append(localPerformanceTask.a(localPerformanceTask.jdField_c_of_type_Long));
+        paramString.append(localPerformanceTask.toString(localPerformanceTask.initTime));
         Log.d("HardCoder.HCPerfManager", paramString.toString());
       }
       paramInt1 = paramInt6;
@@ -905,24 +924,19 @@ public class HCPerfManager
     }
     paramString = new StringBuilder();
     paramString.append("ErrorParam task:");
-    paramString.append(localPerformanceTask.a(localPerformanceTask.jdField_c_of_type_Long));
+    paramString.append(localPerformanceTask.toString(localPerformanceTask.initTime));
     Log.e("HardCoder.HCPerfManager", paramString.toString());
     return 0;
   }
   
-  public void a()
+  public boolean stop(int paramInt)
   {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    HCPerfManager.PerformanceTaskStop localPerformanceTaskStop = (HCPerfManager.PerformanceTaskStop)jdField_b_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(HCPerfManager.PerformanceTaskStop.class);
-    localPerformanceTaskStop.jdField_a_of_type_Long = System.currentTimeMillis();
-    localPerformanceTaskStop.jdField_a_of_type_Int = paramInt;
+    HCPerfManager.PerformanceTaskStop localPerformanceTaskStop = (HCPerfManager.PerformanceTaskStop)sStopTaskPool.obtain(HCPerfManager.PerformanceTaskStop.class);
+    localPerformanceTaskStop.sceneStopTime = System.currentTimeMillis();
+    localPerformanceTaskStop.hashCode = paramInt;
     boolean bool;
     if (paramInt != 0) {
-      bool = this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.offer(localPerformanceTaskStop);
+      bool = this.queueTask.offer(localPerformanceTaskStop);
     } else {
       bool = false;
     }
@@ -931,10 +945,15 @@ public class HCPerfManager
     }
     return bool;
   }
+  
+  public void uninit()
+  {
+    this.running = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HCPerfManager
  * JD-Core Version:    0.7.0.1
  */

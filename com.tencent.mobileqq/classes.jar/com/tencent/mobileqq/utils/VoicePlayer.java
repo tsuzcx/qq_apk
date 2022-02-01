@@ -15,22 +15,22 @@ import java.util.Iterator;
 public class VoicePlayer
   implements IAudioFilePlayerListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IAudioFilePlayer jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new VoicePlayer.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<VoicePlayer.VoicePlayerListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
+  private String a;
+  private Handler b;
+  private IAudioFilePlayer c;
+  private int d;
+  private int e;
+  private ArrayList<VoicePlayer.VoicePlayerListener> f = new ArrayList();
+  private boolean g = false;
+  private boolean h = false;
+  private Context i;
+  private Runnable j = new VoicePlayer.1(this);
   
   public VoicePlayer(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer = new AmrPlayer(paramContext, paramInt);
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_Int = 1;
+    this.c = new AmrPlayer(paramContext, paramInt);
+    this.d = 1;
+    this.e = 1;
   }
   
   public VoicePlayer(String paramString, Handler paramHandler)
@@ -40,90 +40,90 @@ public class VoicePlayer
   
   public VoicePlayer(String paramString, Handler paramHandler, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.a = paramString;
+    this.b = paramHandler;
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer = new AmrPlayer();
-      this.jdField_b_of_type_Int = 2;
+      this.c = new AmrPlayer();
+      this.e = 2;
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer = new SilkPlayer();
-      this.jdField_b_of_type_Int = 3;
+      this.c = new SilkPlayer();
+      this.e = 3;
     }
-    this.jdField_a_of_type_Int = 1;
+    this.d = 1;
   }
   
   private void a(boolean paramBoolean)
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
-    int i = 0;
-    int j = 0;
+    boolean bool = this.h;
+    int k = 0;
+    int m = 0;
     if (bool) {
-      QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, false);
+      QQAudioUtils.a(this.i, false);
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_Int = 8;
+      this.d = 8;
     } else {
-      this.jdField_a_of_type_Int = 4;
+      this.d = 4;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    Object localObject = this.c;
     if (localObject != null)
     {
-      i = j;
-      if (this.jdField_a_of_type_Int == 4) {
-        i = ((IAudioFilePlayer)localObject).b();
+      k = m;
+      if (this.d == 4) {
+        k = ((IAudioFilePlayer)localObject).i();
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.e();
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer = null;
+      this.c.e();
+      this.c = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localObject = this.f.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((VoicePlayer.VoicePlayerListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, i);
+      ((VoicePlayer.VoicePlayerListener)((Iterator)localObject).next()).a(this.d, this.a, k);
     }
   }
   
-  private int b()
+  private int i()
   {
-    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    IAudioFilePlayer localIAudioFilePlayer = this.c;
     if (localIAudioFilePlayer != null) {
-      return localIAudioFilePlayer.a();
+      return localIAudioFilePlayer.h();
     }
     return 0;
   }
   
-  private int c()
+  private int k()
   {
-    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
+    IAudioFilePlayer localIAudioFilePlayer = this.c;
     if (localIAudioFilePlayer != null) {
-      return localIAudioFilePlayer.b();
+      return localIAudioFilePlayer.i();
     }
     return 0;
   }
   
-  private void g()
+  private void l()
   {
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onCompletion duration=");
-      ((StringBuilder)localObject).append(c());
+      ((StringBuilder)localObject).append(k());
       ((StringBuilder)localObject).append(" current=");
-      ((StringBuilder)localObject).append(b());
+      ((StringBuilder)localObject).append(i());
       ((StringBuilder)localObject).append(" enableEndBuffer=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append(" thread=");
       ((StringBuilder)localObject).append(Thread.currentThread().getName());
       QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      localObject = this.b;
       if (localObject != null)
       {
-        this.jdField_a_of_type_Int = 7;
+        this.d = 7;
         ((Handler)localObject).postDelayed(new VoicePlayer.2(this), 500L);
         return;
       }
@@ -133,25 +133,20 @@ public class VoicePlayer
     a(false);
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public void a()
   {
-    g();
+    l();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.b(paramInt);
+    this.c.b(paramInt);
   }
   
   public void a(IAudioFileDataListener paramIAudioFileDataListener)
   {
-    if (a()) {
-      ((SilkPlayer)this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer).a(paramIAudioFileDataListener);
+    if (b()) {
+      ((SilkPlayer)this.c).a(paramIAudioFileDataListener);
     }
   }
   
@@ -171,143 +166,148 @@ public class VoicePlayer
   
   public void a(VoicePlayer.VoicePlayerListener paramVoicePlayerListener)
   {
-    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramVoicePlayerListener)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramVoicePlayerListener);
+    if (!this.f.contains(paramVoicePlayerListener)) {
+      this.f.add(paramVoicePlayerListener);
     }
-  }
-  
-  public boolean a()
-  {
-    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
-    return (localIAudioFilePlayer != null) && ((localIAudioFilePlayer instanceof SilkPlayer));
   }
   
   public boolean a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if (this.jdField_a_of_type_AndroidContentContext != null) {
-      this.jdField_b_of_type_Boolean = true;
+    this.i = paramContext;
+    if (this.i != null) {
+      this.h = true;
     }
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1)
-    {
-      try
-      {
-        this.jdField_a_of_type_Int = 2;
-        if (this.jdField_b_of_type_Int != 1)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.g();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        a(true);
-      }
-      if (this.jdField_b_of_type_Boolean) {
-        QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, true);
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("start to play...  for test time=");
-      ((StringBuilder)localObject).append(System.currentTimeMillis());
-      QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
-    }
-    else if (i == 3)
-    {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a();
-      if (this.jdField_b_of_type_Boolean) {
-        QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, true);
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("continue to play... for test time=");
-      ((StringBuilder)localObject).append(System.currentTimeMillis());
-      QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
-    if (localObject != null) {
-      ((Handler)localObject).post(this.jdField_a_of_type_JavaLangRunnable);
-    }
+    return this.h;
   }
   
   public void b(int paramInt) {}
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    return true;
+    IAudioFilePlayer localIAudioFilePlayer = this.c;
+    return (localIAudioFilePlayer != null) && ((localIAudioFilePlayer instanceof SilkPlayer));
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
-    if ((localObject instanceof AmrPlayer))
+    int k = this.d;
+    if (k == 1)
     {
-      this.jdField_a_of_type_Int = 2;
-      ((AmrPlayer)localObject).b();
-      if (this.jdField_b_of_type_Boolean) {
-        QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, true);
+      try
+      {
+        this.d = 2;
+        if (this.e != 1)
+        {
+          this.c.a(this.a);
+          this.c.j();
+        }
+        this.c.a(this);
+        this.c.a();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        a(true);
+      }
+      if (this.h) {
+        QQAudioUtils.a(this.i, true);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start to play...  for test time=");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
+    }
+    else if (k == 3)
+    {
+      this.d = 2;
+      this.c.a();
+      if (this.h) {
+        QQAudioUtils.a(this.i, true);
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("continue to play... for test time=");
       ((StringBuilder)localObject).append(System.currentTimeMillis());
       QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
-      if (localObject != null) {
-        ((Handler)localObject).post(this.jdField_a_of_type_JavaLangRunnable);
-      }
+    }
+    Object localObject = this.b;
+    if (localObject != null) {
+      ((Handler)localObject).post(this.j);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Int == 7) {
-      return;
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, false);
-    }
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.f();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((VoicePlayer.VoicePlayerListener)localIterator.next()).b(this.jdField_a_of_type_JavaLangString, c(), b());
+    Object localObject = this.c;
+    if ((localObject instanceof AmrPlayer))
+    {
+      this.d = 2;
+      ((AmrPlayer)localObject).b();
+      if (this.h) {
+        QQAudioUtils.a(this.i, true);
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("continue to play... for test time=");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.d("Q.profilecard.VoicePlayer", 2, ((StringBuilder)localObject).toString());
+      localObject = this.b;
+      if (localObject != null) {
+        ((Handler)localObject).post(this.j);
+      }
     }
   }
   
   public void e()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, false);
+    if (this.d == 7) {
+      return;
     }
-    this.jdField_a_of_type_Int = 6;
-    IAudioFilePlayer localIAudioFilePlayer = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer;
-    if (localIAudioFilePlayer != null)
-    {
-      localIAudioFilePlayer.c();
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.e();
-      this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer = null;
+    if (this.h) {
+      QQAudioUtils.a(this.i, false);
+    }
+    this.d = 3;
+    this.c.g();
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      ((VoicePlayer.VoicePlayerListener)localIterator.next()).b(this.a, k(), i());
     }
   }
   
-  public void f() {}
+  public void f()
+  {
+    if (this.h) {
+      QQAudioUtils.a(this.i, false);
+    }
+    this.d = 6;
+    IAudioFilePlayer localIAudioFilePlayer = this.c;
+    if (localIAudioFilePlayer != null)
+    {
+      localIAudioFilePlayer.c();
+      this.c.e();
+      this.c = null;
+    }
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public boolean h()
+  {
+    if (this.b == null)
+    {
+      this.g = false;
+      return false;
+    }
+    this.g = true;
+    return true;
+  }
+  
+  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VoicePlayer
  * JD-Core Version:    0.7.0.1
  */

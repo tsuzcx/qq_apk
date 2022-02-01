@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.share;
 
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import com.tencent.mobileqq.kandian.base.view.api.IFontSizePanel;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.widget.RangeButtonView.OnChangeListener;
 import kotlin.Metadata;
 
@@ -16,27 +15,26 @@ final class ReadInJoyShareHelperV2$rangeBtnListener$1
   public final void onChange(int paramInt1, int paramInt2)
   {
     ReadInJoyShareHelperV2.a(this.a, paramInt2);
-    Object localObject = ReadInJoyShareHelperV2.a(this.a);
+    Object localObject = ReadInJoyShareHelperV2.c(this.a);
     float f;
     if (localObject != null) {
-      f = ((IFontSizePanel)localObject).a(ReadInJoyShareHelperV2.a(this.a));
+      f = ((IFontSizePanel)localObject).a(ReadInJoyShareHelperV2.b(this.a));
     } else {
       f = 1.0F;
     }
-    localObject = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("readinjoy_font_size_index_sp");
-    localStringBuilder.append(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount());
-    ((IReadInJoyHelper)localObject).updateReadInJoySpValue(localStringBuilder.toString(), Integer.valueOf(ReadInJoyShareHelperV2.a(this.a)));
-    localObject = ReadInJoyShareHelperV2.a(this.a);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("readinjoy_font_size_index_sp");
+    ((StringBuilder)localObject).append(RIJQQAppInterfaceUtil.d());
+    RIJSPUtils.a(((StringBuilder)localObject).toString(), Integer.valueOf(ReadInJoyShareHelperV2.b(this.a)));
+    localObject = ReadInJoyShareHelperV2.d(this.a);
     if (localObject != null) {
-      ((ReadInJoyShareHelperV2.OnFontSizeChangeListener)localObject).a(ReadInJoyShareHelperV2.a(this.a), f);
+      ((ReadInJoyShareHelperV2.OnFontSizeChangeListener)localObject).a(ReadInJoyShareHelperV2.b(this.a), f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ReadInJoyShareHelperV2.rangeBtnListener.1
  * JD-Core Version:    0.7.0.1
  */

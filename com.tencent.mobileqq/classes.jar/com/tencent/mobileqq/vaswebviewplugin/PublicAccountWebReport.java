@@ -98,7 +98,7 @@ public class PublicAccountWebReport
       ((StringBuilder)localObject).append(",website_address:");
       ((StringBuilder)localObject).append(paramString2);
       ((StringBuilder)localObject).append(",AppSetting.subVersion:");
-      ((StringBuilder)localObject).append("8.7.0,3,5295");
+      ((StringBuilder)localObject).append("8.8.17,3,5770");
       QLog.i("PublicAccountWebReport", 2, ((StringBuilder)localObject).toString());
     }
     if (paramAppRuntime == null) {
@@ -111,7 +111,7 @@ public class PublicAccountWebReport
     ((NewIntent)localObject).putExtra("cmd", "PubAccountSvc.net_connect_info");
     ArticleComment.ReportNetConnectInfoRequest localReportNetConnectInfoRequest = new ArticleComment.ReportNetConnectInfoRequest();
     localReportNetConnectInfoRequest.netType.set(i);
-    localReportNetConnectInfoRequest.versionInfo.set("8.7.0,3,5295");
+    localReportNetConnectInfoRequest.versionInfo.set("8.8.17,3,5770");
     localReportNetConnectInfoRequest.connectCost.set(paramInt1);
     localReportNetConnectInfoRequest.DNSCost.set(paramInt2);
     localReportNetConnectInfoRequest.errorcode.set(paramInt3);
@@ -125,7 +125,7 @@ public class PublicAccountWebReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.PublicAccountWebReport
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.aelight.camera.ae.biz.circle;
 import com.tencent.aelight.camera.ae.album.data.AEAlbumVideoModel;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qcircle.tavcut.exporter.MovieExporter.VideoCompressListener;
 import com.tencent.tav.core.AssetExportSession;
-import com.tencent.tavcut.exporter.MovieExporter.VideoCompressListener;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import mqq.os.MqqHandler;
@@ -18,10 +18,10 @@ class AECirclePhotoListLogic$15
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("batchCompress---cancel, index=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     AEQLog.b("AECirclePhotoListLogic", localStringBuilder.toString());
-    if (AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic) != null) {
-      AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).countDown();
+    if (AECirclePhotoListLogic.b(this.c) != null) {
+      AECirclePhotoListLogic.b(this.c).countDown();
     }
   }
   
@@ -29,14 +29,14 @@ class AECirclePhotoListLogic$15
   {
     paramAssetExportSession = new StringBuilder();
     paramAssetExportSession.append("batchCompress---error, index=");
-    paramAssetExportSession.append(this.jdField_a_of_type_Int);
+    paramAssetExportSession.append(this.a);
     paramAssetExportSession.append(", path=");
-    paramAssetExportSession.append(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumDataAEAlbumVideoModel.getPath());
+    paramAssetExportSession.append(this.b.getPath());
     AEQLog.b("AECirclePhotoListLogic", paramAssetExportSession.toString());
-    AECirclePhotoListLogic.b(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic, true);
+    AECirclePhotoListLogic.b(this.c, true);
     ThreadManager.getUIHandler().post(new AECirclePhotoListLogic.15.2(this));
-    if (AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic) != null) {
-      AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).countDown();
+    if (AECirclePhotoListLogic.b(this.c) != null) {
+      AECirclePhotoListLogic.b(this.c).countDown();
     }
   }
   
@@ -44,14 +44,14 @@ class AECirclePhotoListLogic$15
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("batchCompress---finish, index=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", compressed path=");
     localStringBuilder.append(paramString);
     AEQLog.b("AECirclePhotoListLogic", localStringBuilder.toString());
-    AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).put(this.jdField_a_of_type_ComTencentAelightCameraAeAlbumDataAEAlbumVideoModel.getPath(), paramString);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAlbumDataAEAlbumVideoModel.setPath(paramString);
-    if (AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic) != null) {
-      AECirclePhotoListLogic.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic).countDown();
+    AECirclePhotoListLogic.f(this.c).put(this.b.getPath(), paramString);
+    this.b.setPath(paramString);
+    if (AECirclePhotoListLogic.b(this.c) != null) {
+      AECirclePhotoListLogic.b(this.c).countDown();
     }
   }
   
@@ -64,7 +64,7 @@ class AECirclePhotoListLogic$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.15
  * JD-Core Version:    0.7.0.1
  */

@@ -7,13 +7,13 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class SixCombolEffectView$BezierEvaluator
   implements TypeEvaluator<PointF>
 {
-  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+  private PointF[] b;
   
   public SixCombolEffectView$BezierEvaluator(SixCombolEffectView paramSixCombolEffectView) {}
   
   public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+    paramPointF1 = this.b;
     paramPointF2 = paramPointF1[0];
     Object localObject1 = paramPointF1[1];
     Object localObject2 = paramPointF1[2];
@@ -48,15 +48,15 @@ public class SixCombolEffectView$BezierEvaluator
   {
     if (paramVarArgs.length == 3)
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
+      this.b = paramVarArgs;
       return;
     }
-    throw new IllegalArgumentException(HardCodeUtil.a(2131714061));
+    throw new IllegalArgumentException(HardCodeUtil.a(2131911592));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.BezierEvaluator
  * JD-Core Version:    0.7.0.1
  */

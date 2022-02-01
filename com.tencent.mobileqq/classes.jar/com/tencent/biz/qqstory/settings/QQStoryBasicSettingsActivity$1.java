@@ -25,52 +25,52 @@ class QQStoryBasicSettingsActivity$1
           if (paramInt != 3) {
             return;
           }
-          this.a.a(2);
+          this.a.c(2);
           return;
         }
-        this.a.a(1);
+        this.a.c(1);
         return;
       }
-      this.a.a(0);
+      this.a.c(0);
       return;
     }
-    QQToast.a(this.a, HardCodeUtil.a(2131710758), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, HardCodeUtil.a(2131908438), 0).show(this.a.getTitleBarHeight());
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.b();
+    if (this.a.h != null) {
+      this.a.h.b();
     }
     Object localObject;
     if (paramBoolean)
     {
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+      localObject = this.a.c;
       QQStoryBasicSettingsActivity localQQStoryBasicSettingsActivity = this.a;
-      ((QQStoryManager)localObject).a(localQQStoryBasicSettingsActivity.b(localQQStoryBasicSettingsActivity.jdField_a_of_type_Int));
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+      ((QQStoryManager)localObject).a(localQQStoryBasicSettingsActivity.b(localQQStoryBasicSettingsActivity.a));
+      localObject = this.a.c;
       localQQStoryBasicSettingsActivity = this.a;
-      ((QQStoryManager)localObject).b(localQQStoryBasicSettingsActivity.b(localQQStoryBasicSettingsActivity.jdField_a_of_type_Int));
-      if (this.a.jdField_a_of_type_Int == 2)
+      ((QQStoryManager)localObject).b(localQQStoryBasicSettingsActivity.b(localQQStoryBasicSettingsActivity.a));
+      if (this.a.a == 2)
       {
         StoryReportor.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
         return;
       }
-      if (this.a.jdField_a_of_type_Int == 0)
+      if (this.a.a == 0)
       {
         StoryReportor.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
         return;
       }
-      if (this.a.jdField_a_of_type_Int == 1) {
+      if (this.a.a == 1) {
         StoryReportor.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
       }
     }
     else
     {
-      QQToast.a(this.a, 2131694712, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2131892409, 0).show(this.a.getTitleBarHeight());
       localObject = this.a;
-      ((QQStoryBasicSettingsActivity)localObject).a(((QQStoryBasicSettingsActivity)localObject).b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.a();
+      ((QQStoryBasicSettingsActivity)localObject).c(((QQStoryBasicSettingsActivity)localObject).b);
+      this.a.d.a();
     }
   }
 }

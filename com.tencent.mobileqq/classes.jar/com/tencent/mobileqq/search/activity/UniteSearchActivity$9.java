@@ -13,7 +13,7 @@ class UniteSearchActivity$9
   public void onClick(View paramView)
   {
     Intent localIntent = this.a.getIntent();
-    localIntent.putExtra("keyword", this.a.f);
+    localIntent.putExtra("keyword", this.a.p);
     this.a.setResult(2, localIntent);
     this.a.finish();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +21,7 @@ class UniteSearchActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.UniteSearchActivity.9
  * JD-Core Version:    0.7.0.1
  */

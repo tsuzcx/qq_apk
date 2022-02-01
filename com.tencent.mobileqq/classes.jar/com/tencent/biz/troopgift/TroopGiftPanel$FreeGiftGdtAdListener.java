@@ -20,7 +20,7 @@ class TroopGiftPanel$FreeGiftGdtAdListener
   {
     paramGdtAd = new StringBuilder();
     paramGdtAd.append("onAdFailedToLoad: ");
-    paramGdtAd.append(paramGdtAdError.a());
+    paramGdtAd.append(paramGdtAdError.b());
     QLog.e("TroopGiftPanel", 1, paramGdtAd.toString());
   }
   
@@ -41,7 +41,7 @@ class TroopGiftPanel$FreeGiftGdtAdListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.FreeGiftGdtAdListener
  * JD-Core Version:    0.7.0.1
  */

@@ -67,10 +67,10 @@ final class PublishVideoHelper$1
     }
     ThreadManager.getUIHandler().post(new PublishVideoHelper.1.1(this, paramInt));
     paramArrayOfByte = RIJQQAppInterfaceUtil.a();
-    if ((paramArrayOfByte != null) && (ReadInJoyHelper.o(paramArrayOfByte))) {
+    if ((paramArrayOfByte != null) && (ReadInJoyHelper.t(paramArrayOfByte))) {
       if ((paramInt == 0) && (paramBundle.size() > 0))
       {
-        QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表成功", 0).a();
+        QQToast.makeText(BaseApplicationImpl.getContext(), 0, "视频发表成功", 0).show();
       }
       else
       {
@@ -78,10 +78,10 @@ final class PublishVideoHelper$1
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("视频发表失败，errorCode=");
         ((StringBuilder)localObject).append(paramInt);
-        QQToast.a(paramArrayOfByte, 0, ((StringBuilder)localObject).toString(), 0).a();
+        QQToast.makeText(paramArrayOfByte, 0, ((StringBuilder)localObject).toString(), 0).show();
       }
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEditvideoPublishVideoHelper$IPublishVideoCallback;
+    paramArrayOfByte = this.b;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramBundle);
     }
@@ -89,7 +89,7 @@ final class PublishVideoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.editvideo.PublishVideoHelper.1
  * JD-Core Version:    0.7.0.1
  */

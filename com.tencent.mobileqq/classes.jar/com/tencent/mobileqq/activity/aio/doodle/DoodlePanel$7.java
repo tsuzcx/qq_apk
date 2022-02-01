@@ -17,16 +17,16 @@ class DoodlePanel$7
       if (paramInt != 1) {
         return;
       }
-      ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
-      DoodlePanel.a(this.a).a(1);
+      ReportController.b(this.a.b, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+      DoodlePanel.c(this.a).b(1);
       return;
     }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+    ReportController.b(this.a.b, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodlePanel.7
  * JD-Core Version:    0.7.0.1
  */

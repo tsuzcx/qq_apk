@@ -14,13 +14,13 @@ class ARScanEntryView$36
   
   public void run()
   {
-    boolean bool2 = ARDeviceController.a().a();
-    boolean bool3 = ARDeviceController.a().b();
-    boolean bool4 = this.this$0.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener.a().a();
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener.a();
+    boolean bool2 = ARDeviceController.a().b();
+    boolean bool3 = ARDeviceController.a().c();
+    boolean bool4 = this.this$0.H.getUniformResManger().j();
+    Object localObject = this.this$0.H.getPromotionManager();
     boolean bool1;
-    if ((ARScanEntryView.c(this.this$0)) && (localObject != null)) {
-      bool1 = ((PromotionRes)localObject).a(this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if ((ARScanEntryView.p(this.this$0)) && (localObject != null)) {
+      bool1 = ((PromotionRes)localObject).e(this.this$0.C);
     } else {
       bool1 = true;
     }
@@ -37,28 +37,28 @@ class ARScanEntryView$36
     if ((bool2) && (bool3)) {
       if ((bool4) && (bool1))
       {
-        if (ARScanEntryView.f(this.this$0))
+        if (ARScanEntryView.z(this.this$0))
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("ARLoadFailed. mIsArSoReady = ");
           ((StringBuilder)localObject).append(bool4);
           ((StringBuilder)localObject).append("mARStartFail = ");
-          ((StringBuilder)localObject).append(ARScanEntryView.f(this.this$0));
+          ((StringBuilder)localObject).append(ARScanEntryView.z(this.this$0));
           ((StringBuilder)localObject).append(",isPromotionResReady =");
           ((StringBuilder)localObject).append(bool1);
           QLog.d("AREngine_ARScanEntryView", 1, ((StringBuilder)localObject).toString());
-          this.this$0.c_(HardCodeUtil.a(2131700972));
+          this.this$0.c(HardCodeUtil.a(2131898994));
         }
-        else if (!ARScanEntryView.c(this.this$0))
+        else if (!ARScanEntryView.p(this.this$0))
         {
-          this.this$0.c_(HardCodeUtil.a(2131700967));
+          this.this$0.c(HardCodeUtil.a(2131898990));
           ReportController.b(null, "dc00898", "", "", "0X80085B3", "0X80085B3", 0, 0, "", "", "", "");
         }
       }
       else
       {
-        ARScanEntryView.e(this.this$0, true);
-        this.this$0.k();
+        ARScanEntryView.g(this.this$0, true);
+        this.this$0.m();
       }
     }
     ARScanEntryView.a(this.this$0, null);
@@ -66,7 +66,7 @@ class ARScanEntryView$36
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.36
  * JD-Core Version:    0.7.0.1
  */

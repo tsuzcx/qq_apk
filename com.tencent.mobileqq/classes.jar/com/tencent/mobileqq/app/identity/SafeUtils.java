@@ -19,8 +19,8 @@ public class SafeUtils
     String str = (String)BaseSharedPreUtil.a(paramContext, paramAppRuntime.getAccount(), "phone_unity_banner_tips", "");
     TipsBar localTipsBar = new TipsBar(paramContext);
     localTipsBar.setVisibility(8);
-    localTipsBar.a().setText(str);
-    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839273));
+    localTipsBar.getTextView().setText(str);
+    localTipsBar.setTipsIcon(paramContext.getResources().getDrawable(2130839453));
     localTipsBar.setOriginalOnClickListener(new SafeUtils.1(paramContext, paramAppRuntime));
     ReportController.b(paramAppRuntime, "dc00898", "", "", "0X800B3E9", "0X800B3E9", 0, 0, "", "", "", "");
     return localTipsBar;
@@ -28,7 +28,7 @@ public class SafeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.SafeUtils
  * JD-Core Version:    0.7.0.1
  */

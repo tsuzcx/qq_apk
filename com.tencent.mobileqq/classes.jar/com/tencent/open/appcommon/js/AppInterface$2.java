@@ -14,10 +14,10 @@ class AppInterface$2
   {
     Resources localResources = this.this$0.activity.getResources();
     MyAppDialog localMyAppDialog = new MyAppDialog(this.this$0.activity);
-    localMyAppDialog.a(2131691630, this.a, true);
-    localMyAppDialog.b(2131691631, this.a, true);
-    localMyAppDialog.a(localResources.getString(2131691634));
-    localMyAppDialog.b(localResources.getString(2131691619));
+    localMyAppDialog.a(2131888592, this.a, true);
+    localMyAppDialog.b(2131888593, this.a, true);
+    localMyAppDialog.a(localResources.getString(2131888596));
+    localMyAppDialog.b(localResources.getString(2131888581));
     localMyAppDialog.setCancelable(false);
     localMyAppDialog.setOnDismissListener(new AppInterface.2.1(this));
     if ((this.this$0.activity != null) && (!this.this$0.activity.isFinishing())) {
@@ -28,7 +28,7 @@ class AppInterface$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AppInterface.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.mobileqq.ark.config.config.ArkMsgAIDisableConfig;
 public class ArkMsgAIDisableConfBean
   extends ArkConfBean
 {
-  private final ArkMsgAIDisableConfig a;
+  private final ArkMsgAIDisableConfig b;
   
   public ArkMsgAIDisableConfBean()
   {
@@ -15,7 +15,7 @@ public class ArkMsgAIDisableConfBean
   public ArkMsgAIDisableConfBean(String paramString, ArkMsgAIDisableConfig paramArkMsgAIDisableConfig)
   {
     super(paramString);
-    this.a = paramArkMsgAIDisableConfig;
+    this.b = paramArkMsgAIDisableConfig;
   }
   
   public int a()
@@ -23,14 +23,14 @@ public class ArkMsgAIDisableConfBean
     return 159;
   }
   
-  public ArkMsgAIDisableConfig a()
+  public ArkMsgAIDisableConfig b()
   {
-    return this.a;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.bean.ArkMsgAIDisableConfBean
  * JD-Core Version:    0.7.0.1
  */

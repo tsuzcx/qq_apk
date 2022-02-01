@@ -21,10 +21,10 @@ public class YellowTipsLayout
   extends FrameLayout
   implements View.OnClickListener
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private ImageView b;
+  private ImageView a;
+  private TextView b;
+  private ImageView c;
+  private String d;
   
   public YellowTipsLayout(Context paramContext)
   {
@@ -42,42 +42,42 @@ public class YellowTipsLayout
   public static JSONObject a(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: new 28	org/json/JSONObject
+    //   0: new 30	org/json/JSONObject
     //   3: dup
-    //   4: invokespecial 31	org/json/JSONObject:<init>	()V
+    //   4: invokespecial 33	org/json/JSONObject:<init>	()V
     //   7: astore 4
-    //   9: new 33	java/lang/StringBuilder
+    //   9: new 35	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   13: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   16: astore_0
     //   17: aload_0
-    //   18: ldc 36
-    //   20: invokestatic 42	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   23: checkcast 36	cooperation/qwallet/plugin/IQWalletHelper
-    //   26: invokeinterface 46 1 0
-    //   31: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: ldc 38
+    //   20: invokestatic 44	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   23: checkcast 38	cooperation/qwallet/plugin/IQWalletHelper
+    //   26: invokeinterface 48 1 0
+    //   31: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload_0
     //   36: aload_1
-    //   37: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: pop
     //   41: aload_0
-    //   42: ldc 52
-    //   44: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: ldc 54
+    //   44: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: pop
-    //   48: new 54	java/io/File
+    //   48: new 56	java/io/File
     //   51: dup
     //   52: aload_0
-    //   53: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
+    //   53: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokespecial 62	java/io/File:<init>	(Ljava/lang/String;)V
     //   59: astore_0
     //   60: aload_0
-    //   61: invokevirtual 64	java/io/File:exists	()Z
+    //   61: invokevirtual 66	java/io/File:exists	()Z
     //   64: ifeq +161 -> 225
-    //   67: new 66	java/io/FileInputStream
+    //   67: new 68	java/io/FileInputStream
     //   70: dup
     //   71: aload_0
-    //   72: invokespecial 69	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   72: invokespecial 71	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   75: astore_1
     //   76: aload_1
     //   77: astore_0
@@ -86,49 +86,49 @@ public class YellowTipsLayout
     //   83: astore_3
     //   84: aload_1
     //   85: astore_0
-    //   86: new 33	java/lang/StringBuilder
+    //   86: new 35	java/lang/StringBuilder
     //   89: dup
-    //   90: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   90: invokespecial 36	java/lang/StringBuilder:<init>	()V
     //   93: astore 5
     //   95: aload_1
     //   96: astore_0
     //   97: aload_1
     //   98: aload_3
-    //   99: invokevirtual 73	java/io/FileInputStream:read	([B)I
+    //   99: invokevirtual 75	java/io/FileInputStream:read	([B)I
     //   102: istore_2
     //   103: iload_2
     //   104: ifle +24 -> 128
     //   107: aload_1
     //   108: astore_0
     //   109: aload 5
-    //   111: new 75	java/lang/String
+    //   111: new 77	java/lang/String
     //   114: dup
     //   115: aload_3
     //   116: iconst_0
     //   117: iload_2
-    //   118: invokespecial 78	java/lang/String:<init>	([BII)V
-    //   121: invokevirtual 50	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokespecial 80	java/lang/String:<init>	([BII)V
+    //   121: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: pop
     //   125: goto -30 -> 95
     //   128: aload_1
     //   129: astore_0
-    //   130: new 28	org/json/JSONObject
+    //   130: new 30	org/json/JSONObject
     //   133: dup
-    //   134: new 75	java/lang/String
+    //   134: new 77	java/lang/String
     //   137: dup
     //   138: aload 5
-    //   140: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   143: iconst_0
-    //   144: invokestatic 84	android/util/Base64:decode	(Ljava/lang/String;I)[B
-    //   147: invokespecial 87	java/lang/String:<init>	([B)V
-    //   150: invokespecial 88	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   144: invokestatic 86	android/util/Base64:decode	(Ljava/lang/String;I)[B
+    //   147: invokespecial 89	java/lang/String:<init>	([B)V
+    //   150: invokespecial 90	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   153: astore_3
     //   154: aload_1
-    //   155: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   155: invokevirtual 93	java/io/FileInputStream:close	()V
     //   158: goto +8 -> 166
     //   161: astore_0
     //   162: aload_0
-    //   163: invokevirtual 94	java/io/IOException:printStackTrace	()V
+    //   163: invokevirtual 96	java/io/IOException:printStackTrace	()V
     //   166: aload_3
     //   167: areturn
     //   168: astore_3
@@ -143,27 +143,27 @@ public class YellowTipsLayout
     //   181: aload_1
     //   182: astore_0
     //   183: aload_3
-    //   184: invokevirtual 95	java/lang/Exception:printStackTrace	()V
+    //   184: invokevirtual 97	java/lang/Exception:printStackTrace	()V
     //   187: aload_1
     //   188: ifnull +37 -> 225
     //   191: aload_1
-    //   192: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   192: invokevirtual 93	java/io/FileInputStream:close	()V
     //   195: aload 4
     //   197: areturn
     //   198: astore_0
     //   199: aload_0
-    //   200: invokevirtual 94	java/io/IOException:printStackTrace	()V
+    //   200: invokevirtual 96	java/io/IOException:printStackTrace	()V
     //   203: aload 4
     //   205: areturn
     //   206: astore_1
     //   207: aload_0
     //   208: ifnull +15 -> 223
     //   211: aload_0
-    //   212: invokevirtual 91	java/io/FileInputStream:close	()V
+    //   212: invokevirtual 93	java/io/FileInputStream:close	()V
     //   215: goto +8 -> 223
     //   218: astore_0
     //   219: aload_0
-    //   220: invokevirtual 94	java/io/IOException:printStackTrace	()V
+    //   220: invokevirtual 96	java/io/IOException:printStackTrace	()V
     //   223: aload_1
     //   224: athrow
     //   225: aload 4
@@ -203,9 +203,9 @@ public class YellowTipsLayout
     paramContext = LayoutInflater.from(paramContext).inflate(R.layout.a, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(R.id.c));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.b));
-    this.b = ((ImageView)findViewById(R.id.a));
+    this.a = ((ImageView)findViewById(R.id.c));
+    this.b = ((TextView)findViewById(R.id.b));
+    this.c = ((ImageView)findViewById(R.id.a));
   }
   
   public boolean a(JSONObject paramJSONObject, String paramString)
@@ -241,7 +241,7 @@ public class YellowTipsLayout
             return false;
           }
           setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramJSONObject);
+          this.b.setText(paramJSONObject);
           setUrl(paramString);
           set_ad_level(str1);
           break label188;
@@ -262,11 +262,11 @@ public class YellowTipsLayout
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.d != null)
     {
       Intent localIntent = new Intent();
       paramView = paramView.getContext();
-      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("url", this.d);
       localIntent.putExtra("hide_operation_bar", true);
       localIntent.putExtra("hide_more_button", true);
       localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
@@ -278,18 +278,18 @@ public class YellowTipsLayout
   {
     if (paramBoolean)
     {
-      if (this.b.getVisibility() != 0) {
-        this.b.setVisibility(0);
+      if (this.c.getVisibility() != 0) {
+        this.c.setVisibility(0);
       }
     }
-    else if (this.b.getVisibility() == 0) {
-      this.b.setVisibility(4);
+    else if (this.c.getVisibility() == 0) {
+      this.c.setVisibility(4);
     }
   }
   
   public void setMessage(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.b.setText(paramString);
   }
   
   public void setUrl(String paramString)
@@ -297,23 +297,23 @@ public class YellowTipsLayout
     if (TextUtils.isEmpty(paramString))
     {
       setArrowVisible(false);
-      this.jdField_a_of_type_JavaLangString = null;
+      this.d = null;
       return;
     }
     setArrowVisible(true);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void setWarningVisible(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (this.a.getVisibility() != 0) {
+        this.a.setVisibility(0);
       }
     }
-    else if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    else if (this.a.getVisibility() == 0) {
+      this.a.setVisibility(4);
     }
   }
   
@@ -329,7 +329,7 @@ public class YellowTipsLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.widget.impl.YellowTipsLayout
  * JD-Core Version:    0.7.0.1
  */

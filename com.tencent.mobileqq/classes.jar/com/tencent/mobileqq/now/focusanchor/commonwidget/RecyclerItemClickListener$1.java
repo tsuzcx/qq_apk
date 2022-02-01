@@ -11,22 +11,22 @@ class RecyclerItemClickListener$1
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener) != null)
+    if (RecyclerItemClickListener.a(this.b) != null)
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener;
+      paramMotionEvent = this.a;
       if (paramMotionEvent != null) {
-        paramMotionEvent.b(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener), RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener).getChildPosition(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener)));
+        paramMotionEvent.b(RecyclerItemClickListener.a(this.b), RecyclerItemClickListener.b(this.b).getChildPosition(RecyclerItemClickListener.a(this.b)));
       }
     }
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener) != null)
+    if (RecyclerItemClickListener.a(this.b) != null)
     {
-      paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener$OnItemClickListener;
+      paramMotionEvent = this.a;
       if (paramMotionEvent != null) {
-        paramMotionEvent.a(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener), RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener).getChildPosition(RecyclerItemClickListener.a(this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetRecyclerItemClickListener)));
+        paramMotionEvent.a(RecyclerItemClickListener.a(this.b), RecyclerItemClickListener.b(this.b).getChildPosition(RecyclerItemClickListener.a(this.b)));
       }
     }
     return true;
@@ -34,7 +34,7 @@ class RecyclerItemClickListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.focusanchor.commonwidget.RecyclerItemClickListener.1
  * JD-Core Version:    0.7.0.1
  */

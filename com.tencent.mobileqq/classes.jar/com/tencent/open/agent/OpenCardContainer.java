@@ -30,25 +30,25 @@ import java.util.List;
 public class OpenCardContainer
   extends BaseCardContainer
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131691479 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130839507 };
-  private static final int[] c = { 2131370801 };
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected OpenAuthorityAccountView a;
-  private OpenCardContainer.UpdateStatusBarListener jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$UpdateStatusBarListener;
-  public OpenCardContainer.VirtualAccountAdapter a;
-  private INewAuthorityContract.Presenter jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter;
-  private String jdField_a_of_type_JavaLangString = "";
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private static final int[] m = { 2131888438 };
+  private static final int[] n = { 2130839698 };
+  private static final int[] o = { 2131438111 };
+  protected OpenAuthorityAccountView k;
+  public OpenCardContainer.VirtualAccountAdapter l;
+  private LayoutInflater p;
+  private ImageView q;
+  private TextView r;
+  private TextView s;
+  private View t;
+  private View u;
+  private String v = "";
+  private OpenCardContainer.UpdateStatusBarListener w;
+  private INewAuthorityContract.Presenter x;
   
   public OpenCardContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    this.p = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
   }
   
   private void a(ImageView paramImageView, String paramString)
@@ -60,7 +60,7 @@ public class OpenCardContainer
     URLDrawable localURLDrawable;
     try
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840321);
+      Drawable localDrawable = this.a.getResources().getDrawable(2130841060);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -82,7 +82,7 @@ public class OpenCardContainer
     }
     if (paramString != null)
     {
-      paramString.setDecodeHandler(QQLiteStatusUtil.a());
+      paramString.setDecodeHandler(QQLiteStatusUtil.c());
       if (paramString.getStatus() == 2) {
         paramString.restartDownload();
       }
@@ -99,63 +99,47 @@ public class OpenCardContainer
   {
     if (paramInt >= 3)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.t.setVisibility(8);
+      this.u.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.t.setVisibility(0);
+    this.u.setVisibility(8);
   }
   
-  private void d()
+  private void g()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof QBaseActivity)) {
-      ImmersiveUtils.setStatusTextColor(false, ((QBaseActivity)this.jdField_a_of_type_AndroidContentContext).getWindow());
+    this.g.setVisibility(0);
+    if ((this.a instanceof QBaseActivity)) {
+      ImmersiveUtils.setStatusTextColor(false, ((QBaseActivity)this.a).getWindow());
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof PublicFragmentActivityForOpenSDK))
+    if ((this.a instanceof PublicFragmentActivityForOpenSDK))
     {
-      OpenCardContainer.UpdateStatusBarListener localUpdateStatusBarListener = this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$UpdateStatusBarListener;
+      OpenCardContainer.UpdateStatusBarListener localUpdateStatusBarListener = this.w;
       if (localUpdateStatusBarListener != null)
       {
         localUpdateStatusBarListener.a();
         break label104;
       }
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof AuthorityActivity)) {
-      ((AuthorityActivity)this.jdField_a_of_type_AndroidContentContext).a();
-    } else if ((this.jdField_a_of_type_AndroidContentContext instanceof QuickLoginAuthorityActivity)) {
-      ((QuickLoginAuthorityActivity)this.jdField_a_of_type_AndroidContentContext).h();
+    if ((this.a instanceof AuthorityActivity)) {
+      ((AuthorityActivity)this.a).a();
+    } else if ((this.a instanceof QuickLoginAuthorityActivity)) {
+      ((QuickLoginAuthorityActivity)this.a).i();
     }
     label104:
-    int i = (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels * 0.6426666F);
-    int j = this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
-    a(this.jdField_a_of_type_ComTencentImageURLImageView, i, i - j, null);
-  }
-  
-  public long a()
-  {
-    if ((OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter) != null) && (OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).size() > 0))
-    {
-      Iterator localIterator = OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).iterator();
-      while (localIterator.hasNext())
-      {
-        VirtualAccountInfo localVirtualAccountInfo = (VirtualAccountInfo)localIterator.next();
-        if (localVirtualAccountInfo.jdField_a_of_type_Boolean) {
-          return localVirtualAccountInfo.jdField_a_of_type_Long;
-        }
-      }
-    }
-    return 0L;
+    int i = (int)(this.a.getResources().getDisplayMetrics().widthPixels * 0.6426666F);
+    int j = this.f.getHeight();
+    a(this.h, i, i - j, null);
   }
   
   protected void a()
   {
     SSOLog.b("OpenCardContainer", new Object[] { "displayCoverContainer " });
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
-      this.jdField_a_of_type_Boolean = true;
-      d();
+      this.d = true;
+      g();
     }
   }
   
@@ -165,20 +149,20 @@ public class OpenCardContainer
     localStringBuilder.append("switchToMode -->mode: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(", mMode=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     SSOLog.a("OpenCardContainer", new Object[] { localStringBuilder.toString() });
-    a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_b_of_type_Int = paramInt;
+    b(this.v);
+    this.e = paramInt;
   }
   
   public void a(String paramString, Bitmap paramBitmap)
   {
     setVisibility(0);
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.r.setText(paramString);
     }
     if (paramBitmap != null) {
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      this.q.setImageBitmap(paramBitmap);
     }
   }
   
@@ -188,9 +172,9 @@ public class OpenCardContainer
     if (paramList == null) {
       localObject = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+      this.s.setText(paramString);
     }
     if (((List)localObject).isEmpty())
     {
@@ -204,29 +188,29 @@ public class OpenCardContainer
       {
         localObject = (Permission)paramString.next();
         Permission localPermission = new Permission();
-        localPermission.jdField_b_of_type_JavaLangString = ((Permission)localObject).jdField_b_of_type_JavaLangString;
-        localPermission.jdField_a_of_type_Int = ((Permission)localObject).jdField_a_of_type_Int;
-        localPermission.jdField_b_of_type_Int = ((Permission)localObject).jdField_b_of_type_Int;
-        localPermission.jdField_a_of_type_Boolean = ((Permission)localObject).jdField_a_of_type_Boolean;
-        localPermission.jdField_a_of_type_JavaLangString = ((Permission)localObject).jdField_a_of_type_JavaLangString;
+        localPermission.d = ((Permission)localObject).d;
+        localPermission.a = ((Permission)localObject).a;
+        localPermission.e = ((Permission)localObject).e;
+        localPermission.c = ((Permission)localObject).c;
+        localPermission.b = ((Permission)localObject).b;
         paramList.append(localPermission.toString());
         paramList.append("\n");
-        this.jdField_a_of_type_JavaUtilList.add(localPermission);
+        this.c.add(localPermission);
       }
       SSOLog.a("OpenCardContainer", new Object[] { paramList.toString() });
     }
     boolean bool;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+    if (this.c.size() == 0) {
       bool = true;
     } else {
       bool = false;
     }
     if (bool)
     {
-      paramList = this.jdField_a_of_type_ComTencentImageURLImageView;
+      paramList = this.h;
       a(1);
       SSOLog.a("OpenCardContainer", new Object[] { "--> has been authority." });
-      a(paramList, a(this.jdField_a_of_type_JavaLangString));
+      a(paramList, a(this.v));
       return bool;
     }
     a(0);
@@ -236,37 +220,53 @@ public class OpenCardContainer
   
   public void b()
   {
-    OpenAuthorityAccountView localOpenAuthorityAccountView = this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView;
+    OpenAuthorityAccountView localOpenAuthorityAccountView = this.k;
     if (localOpenAuthorityAccountView != null) {
-      localOpenAuthorityAccountView.c();
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      OpenAuthorityAccountView localOpenAuthorityAccountView = this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView;
-      if (localOpenAuthorityAccountView != null) {
-        localOpenAuthorityAccountView.a(paramString);
-      }
+      localOpenAuthorityAccountView.f();
     }
   }
   
   public void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
     try
     {
-      d();
+      g();
       return;
     }
     catch (Exception localException)
     {
       SSOLog.c("OpenCardContainer", "Exception", localException);
     }
+  }
+  
+  public void c(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      OpenAuthorityAccountView localOpenAuthorityAccountView = this.k;
+      if (localOpenAuthorityAccountView != null) {
+        localOpenAuthorityAccountView.a(paramString);
+      }
+    }
+  }
+  
+  public long getSelectVid()
+  {
+    if ((OpenCardContainer.VirtualAccountAdapter.a(this.l) != null) && (OpenCardContainer.VirtualAccountAdapter.a(this.l).size() > 0))
+    {
+      Iterator localIterator = OpenCardContainer.VirtualAccountAdapter.a(this.l).iterator();
+      while (localIterator.hasNext())
+      {
+        VirtualAccountInfo localVirtualAccountInfo = (VirtualAccountInfo)localIterator.next();
+        if (localVirtualAccountInfo.d) {
+          return localVirtualAccountInfo.c;
+        }
+      }
+    }
+    return 0L;
   }
   
   protected void onFinishInflate()
@@ -276,20 +276,20 @@ public class OpenCardContainer
     ((StringBuilder)localObject).append("onFinishInflate ");
     ((StringBuilder)localObject).append(Log.getStackTraceString(new Throwable()));
     SSOLog.a("OpenCardContainer", new Object[] { ((StringBuilder)localObject).toString() });
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView = ((OpenAuthorityAccountView)super.findViewById(2131361935));
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setOnClickListener(new OpenCardContainer.1(this));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131362847));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362849));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131362853));
-    localObject = super.findViewById(2131362846);
+    this.k = ((OpenAuthorityAccountView)super.findViewById(2131427489));
+    this.k.setOnClickListener(new OpenCardContainer.1(this));
+    this.q = ((ImageView)super.findViewById(2131428628));
+    this.r = ((TextView)super.findViewById(2131428630));
+    this.s = ((TextView)super.findViewById(2131428635));
+    localObject = super.findViewById(2131428627);
     ((View)localObject).setFocusable(true);
     ((View)localObject).setFocusableInTouchMode(true);
     ((View)localObject).requestFocus();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131365326);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131380956);
-    localObject = (SwipListView)super.findViewById(2131380957);
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter = new OpenCardContainer.VirtualAccountAdapter(this, this.jdField_a_of_type_AndroidContentContext);
-    ((SwipListView)localObject).setAdapter(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter);
+    this.t = super.findViewById(2131431510);
+    this.u = super.findViewById(2131449946);
+    localObject = (SwipListView)super.findViewById(2131449947);
+    this.l = new OpenCardContainer.VirtualAccountAdapter(this, this.a);
+    ((SwipListView)localObject).setAdapter(this.l);
     ((SwipListView)localObject).setDragEnable(true);
     ((SwipListView)localObject).setOverScrollFlingMode(2);
     ((SwipListView)localObject).setOnItemClickListener(new OpenCardContainer.2(this));
@@ -297,12 +297,12 @@ public class OpenCardContainer
   
   public void setCurrentAppId(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.v = paramString;
   }
   
   public void setOnUpdateStatusBarListener(OpenCardContainer.UpdateStatusBarListener paramUpdateStatusBarListener)
   {
-    this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$UpdateStatusBarListener = paramUpdateStatusBarListener;
+    this.w = paramUpdateStatusBarListener;
   }
   
   public void setPresenter(INewAuthorityContract.Presenter paramPresenter)
@@ -311,14 +311,14 @@ public class OpenCardContainer
     localStringBuilder.append("setPresenter ");
     localStringBuilder.append(Log.getStackTraceString(new Throwable()));
     SSOLog.a("OpenCardContainer", new Object[] { localStringBuilder.toString() });
-    this.jdField_a_of_type_ComTencentOpenAgentAuthINewAuthorityContract$Presenter = paramPresenter;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new OpenCardContainer.3(this));
-    this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setAccountEventListener(new OpenCardContainer.4(this));
+    this.x = paramPresenter;
+    this.t.setOnClickListener(new OpenCardContainer.3(this));
+    this.k.setAccountEventListener(new OpenCardContainer.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenCardContainer
  * JD-Core Version:    0.7.0.1
  */

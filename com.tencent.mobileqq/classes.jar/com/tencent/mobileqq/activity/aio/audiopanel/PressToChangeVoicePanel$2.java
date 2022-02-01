@@ -19,25 +19,25 @@ final class PressToChangeVoicePanel$2
   public void run()
   {
     Object localObject1;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null) {
-        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = TraeHelper.a(BaseApplicationImpl.sApplication);
+      if (PressToChangeVoicePanel.p == null) {
+        PressToChangeVoicePanel.p = TraeHelper.b(BaseApplicationImpl.sApplication);
       }
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("checkVcSo async:");
-        ((StringBuilder)localObject1).append(PressToChangeVoicePanel.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(PressToChangeVoicePanel.p);
         QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject1).toString());
       }
     }
-    if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null)
+    if (PressToChangeVoicePanel.p == null)
     {
       if (VcSystemInfo.getCpuArchitecture() <= 2) {
         try
         {
-          localObject1 = ((IEarlyDownloadService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(QavSoDownloadHandler.e());
+          localObject1 = ((IEarlyDownloadService)this.b.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(QavSoDownloadHandler.w());
           if (localObject1 != null) {
             ((EarlyHandler)localObject1).a(false);
           } else {
@@ -54,15 +54,15 @@ final class PressToChangeVoicePanel$2
       } else {
         AVSoUtils.b(BaseApplicationImpl.sApplication, "traeimp-armeabi-v7a", true);
       }
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      Object localObject2 = this.jdField_a_of_type_JavaLangString;
+      QQAppInterface localQQAppInterface = this.b;
+      Object localObject2 = this.c;
       ReportController.b(localQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel.2
  * JD-Core Version:    0.7.0.1
  */

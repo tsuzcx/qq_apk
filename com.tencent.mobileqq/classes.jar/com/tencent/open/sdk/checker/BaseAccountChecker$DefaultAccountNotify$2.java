@@ -10,12 +10,12 @@ class BaseAccountChecker$DefaultAccountNotify$2
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentOpenSdkCheckerBaseAccountChecker$DefaultAccountNotify$DialogBtnClickListener.b();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.sdk.checker.BaseAccountChecker.DefaultAccountNotify.2
  * JD-Core Version:    0.7.0.1
  */

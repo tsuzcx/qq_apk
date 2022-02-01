@@ -150,7 +150,7 @@ public class EmosmServiceImpl
   
   public EmoticonFromGroupEntity addBaseInfoToEmoticonFromGroupEntity(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord)
   {
-    return ((VasExtensionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager.a(paramMessageRecord);
+    return ((VasExtensionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d.a(paramMessageRecord);
   }
   
   public int addEmotionToFavorite(Context paramContext, BaseQQAppInterface paramBaseQQAppInterface, Emoticon paramEmoticon, Handler paramHandler)
@@ -198,7 +198,7 @@ public class EmosmServiceImpl
       QLog.e("EmosmServiceImpl", 2, "addToCustomEmotionForPic cannot get QQAppInterface");
       return;
     }
-    AIOGalleryUtils.a(paramContext, (QQAppInterface)localObject1, paramString, "", paramContext.getResources().getDimensionPixelSize(2131299168), null, ((MessageForPic)localObject2).picExtraData);
+    AIOGalleryUtils.a(paramContext, (QQAppInterface)localObject1, paramString, "", paramContext.getResources().getDimensionPixelSize(2131299920), null, ((MessageForPic)localObject2).picExtraData);
     return;
     label183:
     QLog.e("EmosmServiceImpl", 4, " add custom fail file no exist");
@@ -359,8 +359,8 @@ public class EmosmServiceImpl
   {
     Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
     localIntent.putExtra("enter_from", 2);
-    localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationEmotion.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationEmotion.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationEmotion.a);
+    localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationEmotion.a);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
     localIntent.putExtra("filter_photolist_troopalbum_toolbar", false);
     localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 20);
@@ -374,7 +374,7 @@ public class EmosmServiceImpl
   {
     paramBaseQQAppInterface = (FriendsManager)paramBaseQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramBaseQQAppInterface != null) {
-      return paramBaseQQAppInterface.a(paramString);
+      return paramBaseQQAppInterface.f(paramString);
     }
     return null;
   }
@@ -419,12 +419,12 @@ public class EmosmServiceImpl
   
   public int getCurrChatType(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((QQMessageFacade)paramBaseQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE)).a();
+    return ((QQMessageFacade)paramBaseQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE)).m();
   }
   
   public String getCurrChatUin(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((QQMessageFacade)paramBaseQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE)).a();
+    return ((QQMessageFacade)paramBaseQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE)).l();
   }
   
   public URLDrawable getDrawable(URL paramURL, ColorDrawable paramColorDrawable, Drawable paramDrawable)
@@ -434,12 +434,12 @@ public class EmosmServiceImpl
   
   public boolean getEmojiStickerSwitch()
   {
-    return EmojiStickerManager.f;
+    return EmojiStickerManager.n;
   }
   
   public IEmoticonFromGroupManager getEmoticonFromGroupManager(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((VasExtensionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIEmoticonFromGroupManager;
+    return ((VasExtensionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).d;
   }
   
   public String getErrorMsg(int paramInt)
@@ -449,7 +449,7 @@ public class EmosmServiceImpl
   
   public int getExternalPanelheight()
   {
-    return XPanelContainer.jdField_a_of_type_Int;
+    return XPanelContainer.a;
   }
   
   public Object getGIFCreator(String paramString)
@@ -485,7 +485,7 @@ public class EmosmServiceImpl
   
   public <T> ImageView getMarketFaceItemBuilderHolderImage(T paramT)
   {
-    return ((MarketFaceItemBuilder.Holder)paramT).e;
+    return ((MarketFaceItemBuilder.Holder)paramT).s;
   }
   
   public Class<?> getMessengerServiceClass()
@@ -500,7 +500,7 @@ public class EmosmServiceImpl
   
   public int getRandomMaxValue(Emoticon paramEmoticon, int paramInt)
   {
-    return MagicfaceActionManager.a(paramEmoticon, paramInt);
+    return MagicfaceActionManager.b(paramEmoticon, paramInt);
   }
   
   public int getRichTextChatManagerEmoSearchConfig()
@@ -510,7 +510,7 @@ public class EmosmServiceImpl
   
   public String getSendCombineImg(Manager paramManager)
   {
-    return ((IndividualRedPacketManager)paramManager).a();
+    return ((IndividualRedPacketManager)paramManager).d();
   }
   
   public String getTimeoutReason(FromServiceMsg paramFromServiceMsg)
@@ -520,7 +520,7 @@ public class EmosmServiceImpl
   
   public Object getVasEmojiManager(AppInterface paramAppInterface)
   {
-    return ((VasExtensionManager)paramAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).jdField_a_of_type_ComTencentMobileqqEmoticonIVasEmojiManager;
+    return ((VasExtensionManager)paramAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).b;
   }
   
   public Rect getViewRect(URLImageView paramURLImageView)
@@ -557,7 +557,7 @@ public class EmosmServiceImpl
   {
     if (!AIOSingleReporter.a().a(paramMessageRecord, paramString))
     {
-      AIOSingleReporter.a().a(paramMessageRecord, paramString);
+      AIOSingleReporter.a().b(paramMessageRecord, paramString);
       return false;
     }
     return true;
@@ -628,7 +628,7 @@ public class EmosmServiceImpl
   
   public boolean isSupportMagicface()
   {
-    return MagicfaceViewController.a();
+    return MagicfaceViewController.b();
   }
   
   public void launchAECameraUnit(Context paramContext, Object paramObject)
@@ -642,7 +642,7 @@ public class EmosmServiceImpl
       Bundle localBundle = new Bundle();
       localBundle.putInt("AECAMERA_MODE", 202);
       localBundle.putInt("VIDEO_STORY_FROM_TYPE", AECameraEntry.i.a());
-      localBundle.putParcelable("ARG_SESSION_INFO", new SessionWrap(paramObject.a.jdField_a_of_type_JavaLangString, paramObject.a.d, paramObject.a.jdField_a_of_type_Int, paramObject.a.b));
+      localBundle.putParcelable("ARG_SESSION_INFO", new SessionWrap(paramObject.ah.b, paramObject.ah.e, paramObject.ah.a, paramObject.ah.c));
       ((IAECameraLauncher)QRoute.api(IAECameraLauncher.class)).launchAECameraUnit((Activity)paramContext, 120, localBundle);
     }
   }
@@ -655,9 +655,9 @@ public class EmosmServiceImpl
   public boolean magicfaceAutoPlay(Context paramContext, Emoticon paramEmoticon, OnMagicPlayEnd paramOnMagicPlayEnd)
   {
     paramContext = ((BaseActivity)paramContext).getChatFragment();
-    if ((paramContext != null) && (paramContext.a() != null))
+    if ((paramContext != null) && (paramContext.k() != null))
     {
-      ((AIOEmoticonUIHelper)paramContext.a().a(105)).a().a(paramEmoticon, paramOnMagicPlayEnd);
+      ((AIOEmoticonUIHelper)paramContext.k().q(105)).a().a(paramEmoticon, paramOnMagicPlayEnd);
       return true;
     }
     return false;
@@ -723,7 +723,7 @@ public class EmosmServiceImpl
   
   public void saveAioMedia2Weiyun(BaseQQAppInterface paramBaseQQAppInterface, MessageRecord paramMessageRecord, Object paramObject)
   {
-    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().a().a((ChatMessage)paramMessageRecord, (WeiyunCallback)paramObject);
+    ((QQAppInterface)paramBaseQQAppInterface).getFileManagerEngine().d().a((ChatMessage)paramMessageRecord, (WeiyunCallback)paramObject);
   }
   
   public void sendEmoPic(Context paramContext, Intent paramIntent)
@@ -751,7 +751,7 @@ public class EmosmServiceImpl
     paramAppInterface = (QQAppInterface)paramAppInterface;
     ChatActivityFacade.a(paramAppInterface, paramContext, paramBaseSessionInfo, paramEmoticon);
     if ((paramEmoticon != null) && (paramEmoticon.isNewSoundEmoticon())) {
-      EmoticonOperateReport.reportNewSoundEvent(paramAppInterface, "0X800A932", ((SessionInfo)paramBaseSessionInfo).jdField_a_of_type_Int, paramEmoticon.epId);
+      EmoticonOperateReport.reportNewSoundEvent(paramAppInterface, "0X800A932", ((SessionInfo)paramBaseSessionInfo).a, paramEmoticon.epId);
     }
     if (paramBoolean) {
       ((IEmoticonManagerService)paramAppInterface.getRuntimeService(IEmoticonManagerService.class)).asyncIncreaseEmotionClickNum(paramEmoticon);
@@ -770,13 +770,13 @@ public class EmosmServiceImpl
   {
     SpecWordEmotionThinkHelper localSpecWordEmotionThinkHelper = (SpecWordEmotionThinkHelper)paramBaseAIOContext.a(41);
     MessageForReplyText.SourceMsgInfo localSourceMsgInfo = ((ReplyHelper)paramBaseAIOContext.a(119)).a();
-    if (localSpecWordEmotionThinkHelper.a())
+    if (localSpecWordEmotionThinkHelper.e())
     {
       paramQBaseActivity = TroopUtils.a(paramEditable);
       paramIntent = (MixedMsgManager)paramAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER);
       paramAppInterface = (QQAppInterface)paramAppInterface;
-      paramIntent.a(paramAppInterface, paramBaseAIOContext.a().jdField_a_of_type_JavaLangString, paramBaseAIOContext.a().jdField_a_of_type_Int, paramArrayList, false, (String)paramQBaseActivity.first, (ArrayList)paramQBaseActivity.second, localSourceMsgInfo);
-      TroopPobingItemBuilder.b(paramAppInterface, paramEditable.toString(), (ArrayList)paramQBaseActivity.second, paramBaseAIOContext.a().jdField_a_of_type_JavaLangString);
+      paramIntent.a(paramAppInterface, paramBaseAIOContext.O().b, paramBaseAIOContext.O().a, paramArrayList, false, (String)paramQBaseActivity.first, (ArrayList)paramQBaseActivity.second, localSourceMsgInfo);
+      TroopPobingItemBuilder.b(paramAppInterface, paramEditable.toString(), (ArrayList)paramQBaseActivity.second, paramBaseAIOContext.O().b);
       return;
     }
     sendEmoPic(paramQBaseActivity, paramIntent);
@@ -788,8 +788,8 @@ public class EmosmServiceImpl
     paramContext = ((BaseActivity)paramContext).getChatFragment();
     if (paramContext != null)
     {
-      if (paramContext.a() != null) {
-        paramContext = paramContext.a().b();
+      if (paramContext.k() != null) {
+        paramContext = paramContext.k().bv();
       } else {
         paramContext = null;
       }
@@ -813,10 +813,10 @@ public class EmosmServiceImpl
   public void sendStructMsgForImage(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, BaseSessionInfo paramBaseSessionInfo)
   {
     paramBundle = (StructMsgForImageShare)StructMsgFactory.a(paramBundle);
-    StructMsgForImageShare.sendAndUploadImageShare((QQAppInterface)paramBaseQQAppInterface, paramBundle, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.b, 0);
-    paramBundle = AIOGallerySceneWithBusiness.a(paramString);
+    StructMsgForImageShare.sendAndUploadImageShare((QQAppInterface)paramBaseQQAppInterface, paramBundle, paramBaseSessionInfo.b, paramBaseSessionInfo.a, paramBaseSessionInfo.c, 0);
+    paramBundle = AIOGallerySceneWithBusiness.e(paramString);
     if ((paramBundle != null) && (paramBundle.length >= 8)) {
-      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramBaseQQAppInterface, "100007", "2", "40051", paramBundle[0], new String[] { paramBundle[2], paramBundle[4], AIOGallerySceneWithBusiness.a(paramString) });
+      ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(paramBaseQQAppInterface, "100007", "2", "40051", paramBundle[0], new String[] { paramBundle[2], paramBundle[4], AIOGallerySceneWithBusiness.c(paramString) });
     }
   }
   
@@ -838,10 +838,10 @@ public class EmosmServiceImpl
     paramContext = ((BaseActivity)paramContext).getChatFragment();
     if (paramContext != null)
     {
-      paramContext = paramContext.a();
+      paramContext = paramContext.k();
       if (paramContext != null)
       {
-        paramContext = (AIOEmoticonUIHelper)paramContext.a(105);
+        paramContext = (AIOEmoticonUIHelper)paramContext.q(105);
         if (paramContext != null)
         {
           paramContext.a(paramEmoticon, 0, null, false);
@@ -884,12 +884,12 @@ public class EmosmServiceImpl
   
   public void updateMarketFaceItemBuilderEmoticonInfo(EmoticonInfo paramEmoticonInfo)
   {
-    MarketFaceItemBuilder.a = (IPicEmoticonInfo)paramEmoticonInfo;
+    MarketFaceItemBuilder.w = (IPicEmoticonInfo)paramEmoticonInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.impl.EmosmServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class ExternalDirOperationConfigProcessor
   @NonNull
   public static ExternalDirOperationConfig a()
   {
-    ExternalDirOperationConfig localExternalDirOperationConfig2 = (ExternalDirOperationConfig)QConfigManager.a().a(736);
+    ExternalDirOperationConfig localExternalDirOperationConfig2 = (ExternalDirOperationConfig)QConfigManager.b().b(736);
     ExternalDirOperationConfig localExternalDirOperationConfig1 = localExternalDirOperationConfig2;
     if (localExternalDirOperationConfig2 == null) {
       localExternalDirOperationConfig1 = ExternalDirOperationConfig.a();
@@ -35,10 +35,10 @@ public class ExternalDirOperationConfigProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed:");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       QLog.d("ExternalDirOperationConfigProcessor", 1, localStringBuilder.toString());
     }
-    return ExternalDirOperationConfig.a(paramArrayOfQConfItem[0].a);
+    return ExternalDirOperationConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   public void a(ExternalDirOperationConfig paramExternalDirOperationConfig)
@@ -47,7 +47,7 @@ public class ExternalDirOperationConfigProcessor
     localStringBuilder.append("onUpdate:");
     localStringBuilder.append(paramExternalDirOperationConfig);
     QLog.d("ExternalDirOperationConfigProcessor", 1, localStringBuilder.toString());
-    ExternalDirOperationConfig.a(MobileQQ.getContext(), paramExternalDirOperationConfig.a);
+    ExternalDirOperationConfig.a(MobileQQ.getContext(), paramExternalDirOperationConfig.d);
   }
   
   public Class<ExternalDirOperationConfig> clazz()
@@ -90,7 +90,7 @@ public class ExternalDirOperationConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.file.ExternalDirOperationConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

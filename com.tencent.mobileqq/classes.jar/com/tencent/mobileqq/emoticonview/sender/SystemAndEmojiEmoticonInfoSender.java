@@ -39,8 +39,8 @@ public class SystemAndEmojiEmoticonInfoSender
     localSmallYellowItem.type.set(paramInt2);
     long l = System.currentTimeMillis();
     localSmallYellowItem.ts.set(l);
-    if ((paramBaseSessionInfo != null) && (!android.text.TextUtils.isEmpty(paramBaseSessionInfo.b))) {
-      paramBaseSessionInfo = paramBaseSessionInfo.b;
+    if ((paramBaseSessionInfo != null) && (!android.text.TextUtils.isEmpty(paramBaseSessionInfo.c))) {
+      paramBaseSessionInfo = paramBaseSessionInfo.c;
     } else {
       paramBaseSessionInfo = "";
     }
@@ -103,17 +103,17 @@ public class SystemAndEmojiEmoticonInfoSender
     if ((bool2) && (com.tencent.mobileqq.text.TextUtils.isApolloEmoticon(j)) && (paramContext != null))
     {
       paramSystemAndEmojiEmoticonInfo = (BaseQQAppInterface)paramAppRuntime;
-      VasVipUtils.a(paramSystemAndEmojiEmoticonInfo, "cmshow", "Apollo", "0X800812C", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramContext.jdField_a_of_type_Int), 0, new String[] { String.valueOf(j), String.valueOf(((IApolloManagerService)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all")).getApolloUserStatus()) });
+      VasVipUtils.a(paramSystemAndEmojiEmoticonInfo, "cmshow", "Apollo", "0X800812C", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramContext.a), 0, new String[] { String.valueOf(j), String.valueOf(((IApolloManagerService)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all")).getApolloUserStatus()) });
       k = QQSysAndEmojiResMgr.getInstance().getResImpl(i).getServerId(j);
       paramAppRuntime = (IApolloDtReportHelper)QRoute.api(IApolloDtReportHelper.class);
-      paramAppRuntime.report("aio", "cm_emoji", "click", new DtReportParamsBuilder().a(paramAppRuntime.getApolloMode(paramSystemAndEmojiEmoticonInfo)).b(paramAppRuntime.getReportSessionType(paramContext.jdField_a_of_type_Int)).c(String.valueOf(k)).f(paramAppRuntime.getUserStatus(paramSystemAndEmojiEmoticonInfo)).b(paramContext.jdField_a_of_type_JavaLangString).a());
+      paramAppRuntime.report("aio", "cm_emoji", "click", new DtReportParamsBuilder().a(paramAppRuntime.getApolloMode(paramSystemAndEmojiEmoticonInfo)).b(paramAppRuntime.getReportSessionType(paramContext.a)).f(String.valueOf(k)).f(paramAppRuntime.getUserStatus(paramSystemAndEmojiEmoticonInfo)).c(paramContext.b).a());
     }
     QQSysAndEmojiResMgr.getInstance().getResImpl(i).reportEmoClick(j, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.SystemAndEmojiEmoticonInfoSender
  * JD-Core Version:    0.7.0.1
  */

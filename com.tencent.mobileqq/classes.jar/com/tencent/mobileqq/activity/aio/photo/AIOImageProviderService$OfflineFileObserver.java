@@ -16,28 +16,28 @@ import org.json.JSONObject;
 class AIOImageProviderService$OfflineFileObserver
   extends FMObserver
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface b;
   
   public AIOImageProviderService$OfflineFileObserver(AIOImageProviderService paramAIOImageProviderService, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    long l = paramThumbnailInfo.a;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    long l = paramThumbnailInfo.e;
+    FileManagerEntity localFileManagerEntity = this.b.getFileManagerDataCenter().a(l);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((localFileManagerEntity != null) && (localIAIOImageProviderCallBack != null))
     {
       int i = 18;
-      if (paramThumbnailInfo.jdField_b_of_type_Int == 5) {
+      if (paramThumbnailInfo.f == 5) {
         i = 16;
       }
-      if (FileUtil.b(paramThumbnailInfo.jdField_b_of_type_JavaLangString))
+      if (FileUtil.d(paramThumbnailInfo.d))
       {
-        localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramThumbnailInfo.jdField_b_of_type_JavaLangString, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramThumbnailInfo.jdField_b_of_type_JavaLangString);
+        localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramThumbnailInfo.d, false);
+        this.a.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramThumbnailInfo.d);
         return;
       }
       try
@@ -53,7 +53,7 @@ class AIOImageProviderService$OfflineFileObserver
         paramThumbnailInfo = "";
       }
       localIAIOImageProviderCallBack.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 2, paramThumbnailInfo, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
+      this.a.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
       return;
     }
     paramThumbnailInfo = new StringBuilder();
@@ -67,9 +67,9 @@ class AIOImageProviderService$OfflineFileObserver
   
   protected void a(ThumbnailInfo paramThumbnailInfo, int paramInt)
   {
-    long l = paramThumbnailInfo.a;
-    paramThumbnailInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    long l = paramThumbnailInfo.e;
+    paramThumbnailInfo = this.b.getFileManagerDataCenter().a(l);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((paramThumbnailInfo != null) && (localIAIOImageProviderCallBack != null))
     {
       localIAIOImageProviderCallBack.a(paramThumbnailInfo.uniseq, paramThumbnailInfo.status, 18, paramInt, paramThumbnailInfo.fileSize, false);
@@ -86,8 +86,8 @@ class AIOImageProviderService$OfflineFileObserver
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    paramString = this.b.getFileManagerDataCenter().a(paramLong2);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((paramString != null) && (localIAIOImageProviderCallBack != null))
     {
       if (paramString.nFileType == 0) {
@@ -106,8 +106,8 @@ class AIOImageProviderService$OfflineFileObserver
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    paramString1 = this.b.getFileManagerDataCenter().a(paramLong2);
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.a.y;
     if ((paramString1 != null) && (localIAIOImageProviderCallBack != null))
     {
       if (paramBoolean)
@@ -115,12 +115,12 @@ class AIOImageProviderService$OfflineFileObserver
         if (paramString1.nFileType == 0)
         {
           localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 20, 1, paramString1.getFilePath(), false);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, paramString1.getFilePath());
+          this.a.a(paramLong1, paramString1.status, 20, paramString1.getFilePath());
           return;
         }
         if (paramString1.nFileType == 2)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong1)))
+          if (this.a.x.contains(Long.valueOf(paramLong1)))
           {
             paramString2 = BaseApplicationImpl.sApplication.getBaseContext();
             if (paramString2 != null) {
@@ -128,7 +128,7 @@ class AIOImageProviderService$OfflineFileObserver
             } else {
               QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file save album].");
             }
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilArrayList.remove(Long.valueOf(paramLong1));
+            this.a.x.remove(Long.valueOf(paramLong1));
           }
           localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 269484034, 1, paramString1.getFilePath(), false);
         }
@@ -141,7 +141,7 @@ class AIOImageProviderService$OfflineFileObserver
         if (paramString1.nFileType == 0)
         {
           localIAIOImageProviderCallBack.a(paramLong1, paramString1.status, 20, 2, paramString2, false);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(paramLong1, paramString1.status, 20, "I:E");
+          this.a.a(paramLong1, paramString1.status, 20, "I:E");
           return;
         }
         if (paramString1.nFileType == 2) {
@@ -161,7 +161,7 @@ class AIOImageProviderService$OfflineFileObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.OfflineFileObserver
  * JD-Core Version:    0.7.0.1
  */

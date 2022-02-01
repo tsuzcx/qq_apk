@@ -20,118 +20,118 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InputUIContainer
 {
-  private AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private final AIOInputState jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputAIOInputState;
-  private final EditTextUI jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI;
-  private final FakeInputUI jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFakeInputUI;
-  private final FunBtnUI jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI;
-  private final InputBarUI jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputBarUI;
-  private final InputRightIconUI jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputRightIconUI;
+  private AIOContext a;
+  private final InputBarUI b;
+  private final EditTextUI c;
+  private final FunBtnUI d;
+  private final InputRightIconUI e;
+  private final FakeInputUI f;
+  private final AIOInputState g;
   
   public InputUIContainer(AIOContext paramAIOContext, InputBarUI paramInputBarUI, EditTextUI paramEditTextUI, FunBtnUI paramFunBtnUI, InputRightIconUI paramInputRightIconUI)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputBarUI = paramInputBarUI;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI = paramEditTextUI;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI = paramFunBtnUI;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputRightIconUI = paramInputRightIconUI;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFakeInputUI = new FakeInputUI(paramAIOContext);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputAIOInputState = new AIOInputState(paramAIOContext);
+    this.a = paramAIOContext;
+    this.b = paramInputBarUI;
+    this.c = paramEditTextUI;
+    this.d = paramFunBtnUI;
+    this.e = paramInputRightIconUI;
+    this.f = new FakeInputUI(paramAIOContext);
+    this.g = new AIOInputState(paramAIOContext);
   }
   
   public AIOInputState a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputAIOInputState;
-  }
-  
-  public EditTextUI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI;
-  }
-  
-  public FakeInputUI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFakeInputUI;
-  }
-  
-  public FunBtnUI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI;
-  }
-  
-  public InputBarUI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputBarUI;
-  }
-  
-  public InputRightIconUI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputRightIconUI;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI.a(HardCodeUtil.a(2131701189));
-    if (AppSetting.d) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI.b(HardCodeUtil.a(2131701180));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFunBtnUI.b();
+    return this.g;
   }
   
   public void a(boolean paramBoolean)
   {
-    ((FullScreenInputHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(24)).a(paramBoolean);
+    ((FullScreenInputHelper)this.a.a(24)).b(paramBoolean);
   }
   
-  public void b()
+  public FakeInputUI b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.f();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.a("");
+    return this.f;
+  }
+  
+  public InputRightIconUI c()
+  {
+    return this.e;
+  }
+  
+  public FunBtnUI d()
+  {
+    return this.d;
+  }
+  
+  public InputBarUI e()
+  {
+    return this.b;
+  }
+  
+  public EditTextUI f()
+  {
+    return this.c;
+  }
+  
+  public void g()
+  {
+    this.d.a(HardCodeUtil.a(2131899204));
+    if (AppSetting.e) {
+      this.d.b(HardCodeUtil.a(2131899195));
+    }
+    this.d.a();
+    this.d.b();
+  }
+  
+  public void h()
+  {
+    this.c.w();
+    this.c.a("");
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.a(QQTextBuilder.EMOTION_INPUT_FACTORY);
+      this.c.a(QQTextBuilder.EMOTION_INPUT_FACTORY);
     }
     catch (Exception localException)
     {
       QLog.e("InputContainer", 1, "input set error", localException);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.e();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.a(true).putInt("SOGOU_EXPRESSION", 1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputEditTextUI.c();
+    this.c.v();
+    this.c.r();
+    this.c.a(true).putInt("SOGOU_EXPRESSION", 1);
+    this.c.t();
   }
   
-  public void c()
+  public void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFakeInputUI.d();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputFakeInputUI.e();
+    this.f.d();
+    this.f.e();
   }
   
-  public void d()
+  public void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputRightIconUI.a();
+    this.e.c();
   }
   
-  public void e()
+  public void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiInputInputBarUI.a();
+    this.b.b();
   }
   
-  public void f()
+  public void l()
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() != null)
+    if (this.a.b() != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getCurrentFocus();
+      localObject = this.a.b().getCurrentFocus();
       if (localObject != null)
       {
         QLog.i("InputContainer", 1, localObject.toString());
         ((View)localObject).clearFocus();
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a() != null) {
-      localObject = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getSystemService("input_method");
+    if (this.a.b() != null) {
+      localObject = (InputMethodManager)this.a.b().getSystemService("input_method");
     } else {
       localObject = null;
     }
@@ -139,43 +139,43 @@ public class InputUIContainer
     if (localObject != null) {
       try
       {
-        ((InputMethodManager)localObject).hideSoftInputFromWindow(a().a().getWindowToken(), 0);
+        ((InputMethodManager)localObject).hideSoftInputFromWindow(f().b().getWindowToken(), 0);
       }
       catch (RuntimeException localRuntimeException)
       {
         QLog.e("InputContainer", 1, localRuntimeException, new Object[0]);
       }
     }
-    if (a() != null)
+    if (f() != null)
     {
-      a().f();
-      if (a().a(false) != null) {
-        a().a(false).clear();
+      f().w();
+      if (f().a(false) != null) {
+        f().a(false).clear();
       }
-      a().a(null, null, null, null);
-      a().a(2131373876, null);
+      f().a(null, null, null, null);
+      f().a(2131441550, null);
       try
       {
-        a().c(0);
+        f().d(0);
       }
       catch (Throwable localThrowable)
       {
         QLog.e("InputContainer", 1, "doOnDestroy: ", localThrowable);
       }
-      a().d();
-      a().a().setOnEditorActionListener(null);
-      a().a().setOnKeyListener(null);
-      a().a().setOnTouchListener(null);
-      a().a().setOnFocusChangeListener(null);
-      a().b();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().l) {
-        a().a("");
+      f().u();
+      f().b().setOnEditorActionListener(null);
+      f().b().setOnKeyListener(null);
+      f().b().setOnTouchListener(null);
+      f().b().setOnFocusChangeListener(null);
+      f().s();
+      if (this.a.O().z) {
+        f().a("");
       }
       try
       {
-        if (AIOUtils.a())
+        if (AIOUtils.c())
         {
-          ViewTreeObserver localViewTreeObserver = a().a().getViewTreeObserver();
+          ViewTreeObserver localViewTreeObserver = f().b().getViewTreeObserver();
           Field localField = ViewTreeObserver.class.getDeclaredField("mOnTouchModeChangeListeners");
           localField.setAccessible(true);
           localField.set(localViewTreeObserver, new CopyOnWriteArrayList());
@@ -186,19 +186,22 @@ public class InputUIContainer
       {
         QLog.d("InputContainer", 1, "force clear mOnTouchModeChangeListeners", localException);
       }
-      a().g();
+      f().x();
     }
-    if (a().a != null) {
-      a().a.a();
+    if (f().a != null) {
+      f().a.a();
     }
-    if (a() != null) {
-      a().b();
+    if (e() != null) {
+      e().g();
+    }
+    if (b() != null) {
+      b().f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.input.InputUIContainer
  * JD-Core Version:    0.7.0.1
  */

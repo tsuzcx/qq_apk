@@ -42,7 +42,7 @@ public class UserguideActivity
   
   public static boolean a(SplashActivity paramSplashActivity)
   {
-    if ((!AppSetting.d) && (Build.VERSION.SDK_INT >= 14) && (!d))
+    if ((!AppSetting.e) && (Build.VERSION.SDK_INT >= 14) && (!d))
     {
       d = true;
       boolean bool;
@@ -70,11 +70,11 @@ public class UserguideActivity
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("pkg build num is 5295, local build num is ");
+          ((StringBuilder)localObject2).append("pkg build num is 5770, local build num is ");
           ((StringBuilder)localObject2).append(str1);
           QLog.e("UserGuide", 2, ((StringBuilder)localObject2).toString());
         }
-        if (!"5295".equals(str1))
+        if (!"5770".equals(str1))
         {
           localObject2 = new HashMap();
           if (TextUtils.isEmpty(str1))
@@ -93,14 +93,14 @@ public class UserguideActivity
           }
           StatisticCollector.getInstance(paramSplashActivity).collectPerformance(null, "userguide_update2", true, 0L, 0L, (HashMap)localObject2, "", false);
           paramSplashActivity = ((SharedPreferences)localObject1).edit();
-          localObject1 = AppSetting.a();
+          localObject1 = AppSetting.b();
           paramSplashActivity.putString("qq_version_pre", str1);
           paramSplashActivity.putString("qq_version_full_pre", str2);
-          paramSplashActivity.putString("qq_version", "5295");
+          paramSplashActivity.putString("qq_version", "5770");
           paramSplashActivity.putString("qq_version_full", (String)localObject1);
           paramSplashActivity.commit();
           if (QLog.isColorLevel()) {
-            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "5295", localObject1 }));
+            QLog.i("UserGuide", 2, String.format("update version pre[%s, %s], cur[%s, %s]", new Object[] { str1, str2, "5770", localObject1 }));
           }
         }
         paramSplashActivity = new StringBuilder();
@@ -109,13 +109,13 @@ public class UserguideActivity
         paramSplashActivity.append(", ");
         paramSplashActivity.append(str1);
         paramSplashActivity.append(", ");
-        paramSplashActivity.append("5295");
+        paramSplashActivity.append("5770");
         QLog.e("UserGuide", 1, paramSplashActivity.toString());
       }
       return false;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("UserGuide", 2, String.format("showUserGuide [%s, %s, %s]", new Object[] { Boolean.valueOf(AppSetting.d), Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(d) }));
+      QLog.i("UserGuide", 2, String.format("showUserGuide [%s, %s, %s]", new Object[] { Boolean.valueOf(AppSetting.e), Integer.valueOf(Build.VERSION.SDK_INT), Boolean.valueOf(d) }));
     }
     return false;
   }
@@ -185,7 +185,7 @@ public class UserguideActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UserguideActivity
  * JD-Core Version:    0.7.0.1
  */

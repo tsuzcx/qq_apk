@@ -13,10 +13,10 @@ class ShortVideoPreviewActivity$21
   
   public void run()
   {
-    if ((this.this$0.mMediaPlayer.b()) && (this.this$0.mSurfaceView != null))
+    if ((this.this$0.mMediaPlayer.d()) && (this.this$0.mSurfaceView != null))
     {
       Message localMessage = Message.obtain();
-      localMessage.arg1 = this.this$0.mMediaPlayer.b();
+      localMessage.arg1 = this.this$0.mMediaPlayer.g();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -35,7 +35,7 @@ class ShortVideoPreviewActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.21
  * JD-Core Version:    0.7.0.1
  */

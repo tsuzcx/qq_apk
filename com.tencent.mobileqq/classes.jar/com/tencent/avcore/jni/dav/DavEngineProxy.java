@@ -40,6 +40,11 @@ public class DavEngineProxy
     return this.mJniImpl.doQuaReport(paramLong1, paramLong2, paramInt1, paramInt2);
   }
   
+  public boolean enableAIDenoise(boolean paramBoolean)
+  {
+    return this.mJniImpl.enableAIDenoise(paramBoolean);
+  }
+  
   public void enableDumpAudioData(boolean paramBoolean)
   {
     this.mJniImpl.enableDumpAudioData(paramBoolean);
@@ -107,9 +112,9 @@ public class DavEngineProxy
     return this.mJniImpl.ignore(paramLong);
   }
   
-  public int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16)
+  public int init(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, int paramInt, String paramString12, SDKConfigInfo paramSDKConfigInfo, boolean paramBoolean1, boolean paramBoolean2, String paramString13, String paramString14, String paramString15, String paramString16, boolean paramBoolean3)
   {
-    return this.mJniImpl.init(paramContext, paramLong, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramInt, paramString12, paramSDKConfigInfo, paramBoolean1, paramBoolean2, paramString13, paramString14, paramString15, paramString16);
+    return this.mJniImpl.init(paramContext, paramLong, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramInt, paramString12, paramSDKConfigInfo, paramBoolean1, paramBoolean2, paramString13, paramString14, paramString15, paramString16, paramBoolean3);
   }
   
   public void initContext()
@@ -235,6 +240,16 @@ public class DavEngineProxy
   public int requestVideoMode(long paramLong)
   {
     return this.mJniImpl.requestVideoMode(paramLong);
+  }
+  
+  public int sendAVAvatar2DMsg(long paramLong, byte[] paramArrayOfByte, boolean paramBoolean)
+  {
+    return this.mJniImpl.sendAVAvatar2DMsg(paramLong, paramArrayOfByte, paramBoolean);
+  }
+  
+  public int sendAVAvatar2DSwitchRequest(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
+  {
+    return this.mJniImpl.sendAVAvatar2DSwitchRequest(paramLong, paramBoolean, paramInt1, paramInt2, paramString);
   }
   
   public int sendAVFunChatMsg(long paramLong, int paramInt, byte[] paramArrayOfByte)

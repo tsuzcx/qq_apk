@@ -17,20 +17,20 @@ class DetailLikeListLoader$2
   
   public void a(@NonNull DetailLikeListLoader.GetLikeListRequest paramGetLikeListRequest, @Nullable DetailLikeListLoader.GetLikeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramGetLikeListRequest = new DetailLikeListLoader.GetLikeListEvent(paramErrorMessage, DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader));
-    paramGetLikeListRequest.jdField_b_of_type_Boolean = false;
-    paramGetLikeListRequest.jdField_a_of_type_Boolean = DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader);
-    paramGetLikeListRequest.jdField_a_of_type_Int = DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader);
+    paramGetLikeListRequest = new DetailLikeListLoader.GetLikeListEvent(paramErrorMessage, DetailLikeListLoader.a(this.b));
+    paramGetLikeListRequest.h = false;
+    paramGetLikeListRequest.b = DetailLikeListLoader.c(this.b);
+    paramGetLikeListRequest.c = DetailLikeListLoader.b(this.b);
     if ((??? != null) && (!paramErrorMessage.isFail()))
     {
-      paramGetLikeListRequest.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-      paramGetLikeListRequest.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-      paramGetLikeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-      paramGetLikeListRequest.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListRequest.jdField_a_of_type_JavaUtilList, DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), DetailLikeListLoader.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), true);
-      synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader)
+      paramGetLikeListRequest.e = ???.b;
+      paramGetLikeListRequest.d = ???.a;
+      paramGetLikeListRequest.f = ???.e;
+      paramGetLikeListRequest.i = this.a;
+      ((LikeManager)SuperManager.a(15)).a(paramGetLikeListRequest.f, DetailLikeListLoader.a(this.b), DetailLikeListLoader.e(this.b), true);
+      synchronized (this.b)
       {
-        DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader, true);
+        DetailLikeListLoader.a(this.b, true);
         StoryDispatcher.a().dispatch(paramGetLikeListRequest);
         SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramGetLikeListRequest);
         return;

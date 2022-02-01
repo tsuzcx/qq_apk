@@ -11,14 +11,14 @@ class ShowTagNamePopupWindow$1
   public void onClick(View paramView)
   {
     if (ShowTagNamePopupWindow.a(this.a) != null) {
-      ShowTagNamePopupWindow.a(this.a).a(ShowTagNamePopupWindow.a(this.a));
+      ShowTagNamePopupWindow.a(this.a).a(ShowTagNamePopupWindow.b(this.a));
     }
     this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

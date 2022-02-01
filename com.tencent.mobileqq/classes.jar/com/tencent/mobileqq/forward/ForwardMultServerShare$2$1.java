@@ -22,7 +22,7 @@ class ForwardMultServerShare$2$1
   {
     if (paramSendResult != null)
     {
-      String str = ForwardMultServerShare.a();
+      String str = ForwardMultServerShare.d();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("requestImageShare updateMsg info =");
       localStringBuilder.append(paramSendResult);
@@ -32,18 +32,18 @@ class ForwardMultServerShare$2$1
   
   public void b(UpCallBack.SendResult paramSendResult)
   {
-    this.a.jdField_a_of_type_JavaUtilMap.put(this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord, paramSendResult);
-    QLog.d(ForwardMultServerShare.a(), 1, new Object[] { "requestImageShare onSend result =", paramSendResult, ", isTimeOut=", Boolean.valueOf(ForwardMultServerShare.a(this.a.this$0)) });
-    if (this.a.jdField_a_of_type_JavaUtilMap.size() == ForwardMultServerShare.a(this.a.this$0).size())
+    this.a.b.put(this.a.a, paramSendResult);
+    QLog.d(ForwardMultServerShare.d(), 1, new Object[] { "requestImageShare onSend result =", paramSendResult, ", isTimeOut=", Boolean.valueOf(ForwardMultServerShare.a(this.a.this$0)) });
+    if (this.a.b.size() == this.a.this$0.b.size())
     {
       ForwardStatisticsReporter.b("KEY_STAGE_2_UPLOAD_IMAGE_MULT");
-      ForwardMultServerShare.a(this.a.this$0, this.a.jdField_a_of_type_JavaUtilMap);
+      ForwardMultServerShare.a(this.a.this$0, this.a.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardMultServerShare.2.1
  * JD-Core Version:    0.7.0.1
  */

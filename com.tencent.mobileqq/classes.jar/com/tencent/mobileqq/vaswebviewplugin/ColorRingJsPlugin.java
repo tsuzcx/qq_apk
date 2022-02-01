@@ -39,8 +39,8 @@ public class ColorRingJsPlugin
     {
       Bundle localBundle = new Bundle();
       localBundle.putString("callbackId", paramString);
-      paramString = localSwiftBrowserMiscHandler.a.obtainMessage(5, localBundle);
-      localSwiftBrowserMiscHandler.a.dispatchMessage(paramString);
+      paramString = localSwiftBrowserMiscHandler.c.obtainMessage(5, localBundle);
+      localSwiftBrowserMiscHandler.c.dispatchMessage(paramString);
     }
   }
   
@@ -121,8 +121,8 @@ public class ColorRingJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.mActivity = this.mRuntime.a();
-    this.mBrowserApp = ((BrowserAppInterface)this.mRuntime.a());
+    this.mActivity = this.mRuntime.d();
+    this.mBrowserApp = ((BrowserAppInterface)this.mRuntime.b());
   }
   
   void play(long paramLong, String paramString1, String paramString2)
@@ -141,8 +141,8 @@ public class ColorRingJsPlugin
       localBundle.putLong("id", paramLong);
       localBundle.putString("callbackId", paramString2);
       localBundle.putString("type", paramString1);
-      paramString1 = ((SwiftBrowserMiscHandler)localObject).a.obtainMessage(3, localBundle);
-      ((SwiftBrowserMiscHandler)localObject).a.dispatchMessage(paramString1);
+      paramString1 = ((SwiftBrowserMiscHandler)localObject).c.obtainMessage(3, localBundle);
+      ((SwiftBrowserMiscHandler)localObject).c.dispatchMessage(paramString1);
     }
   }
   
@@ -163,14 +163,14 @@ public class ColorRingJsPlugin
       localBundle.putInt("status", paramInt);
       localBundle.putString("type", paramString1);
       localBundle.putString("callbackId", paramString2);
-      paramString1 = ((SwiftBrowserMiscHandler)localObject).a.obtainMessage(4, localBundle);
-      ((SwiftBrowserMiscHandler)localObject).a.dispatchMessage(paramString1);
+      paramString1 = ((SwiftBrowserMiscHandler)localObject).c.obtainMessage(4, localBundle);
+      ((SwiftBrowserMiscHandler)localObject).c.dispatchMessage(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ColorRingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.qwallet.temp.impl;
 
 import com.qwallet.temp.IAnimationMessageProxy;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.IAnimationMessage;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.IAnimationMessage;
 
 class AIOAnimationControlManagerImpl$1
   implements AIOAnimationControlManager.IAnimationMessage
@@ -10,7 +10,7 @@ class AIOAnimationControlManagerImpl$1
   
   public String getFriendUin()
   {
-    return this.jdField_a_of_type_ComQwalletTempIAnimationMessageProxy.a();
+    return this.a.d();
   }
   
   public int getLimitType()
@@ -20,22 +20,22 @@ class AIOAnimationControlManagerImpl$1
   
   public long getSenderUin()
   {
-    return this.jdField_a_of_type_ComQwalletTempIAnimationMessageProxy.a();
+    return this.a.b();
   }
   
   public long getShmsgseq()
   {
-    return this.jdField_a_of_type_ComQwalletTempIAnimationMessageProxy.b();
+    return this.a.c();
   }
   
   public boolean isReaded()
   {
-    return this.jdField_a_of_type_ComQwalletTempIAnimationMessageProxy.a();
+    return this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.AIOAnimationControlManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

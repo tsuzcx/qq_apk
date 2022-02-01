@@ -16,33 +16,33 @@ class ScanOcrActivity$6$4
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (new File(this.jdField_a_of_type_JavaLangString).exists()))
+    if ((!TextUtils.isEmpty(this.a)) && (new File(this.a).exists()))
     {
-      long l = System.currentTimeMillis() - ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a);
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a.jdField_a_of_type_Int == 1)
+      long l = System.currentTimeMillis() - ScanOcrActivity.k(this.b.a);
+      if (this.b.a.k == 1)
       {
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(new File(this.a), (URLDrawable.URLDrawableOptions)localObject);
         ((URLDrawable)localObject).downloadImediatly();
-        this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setPreviewDrawable((Drawable)localObject);
-        ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a, this.jdField_a_of_type_JavaLangString, true);
+        this.b.a.j.setPreviewDrawable((Drawable)localObject);
+        ScanOcrActivity.a(this.b.a, this.a, true);
         return;
       }
       if (l > 900L)
       {
-        ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a, this.jdField_a_of_type_JavaLangString, false);
+        ScanOcrActivity.a(this.b.a, this.a, false);
         return;
       }
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).postDelayed(new ScanOcrActivity.6.4.1(this), 900L - l);
+      ScanOcrActivity.l(this.b.a).postDelayed(new ScanOcrActivity.6.4.1(this), 900L - l);
       return;
     }
-    ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a, false);
+    ScanOcrActivity.a(this.b.a, false);
     QLog.d("Q.ocr.ScanOcrActivity", 1, "onTakePicFinish failed!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.4
  * JD-Core Version:    0.7.0.1
  */

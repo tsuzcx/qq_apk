@@ -18,8 +18,8 @@ class Camera2Control$4
       paramImageReader = paramImageReader.acquireNextImage();
       if (paramImageReader != null)
       {
-        if (Camera2Control.a(this.a) != null) {
-          Camera2Control.a(this.a).onPreviewFrame(paramImageReader);
+        if (Camera2Control.g(this.a) != null) {
+          Camera2Control.g(this.a).onPreviewFrame(paramImageReader);
         }
         paramImageReader.close();
         return;
@@ -36,7 +36,7 @@ class Camera2Control$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camera2.Camera2Control.4
  * JD-Core Version:    0.7.0.1
  */

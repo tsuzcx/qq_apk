@@ -31,10 +31,12 @@ public abstract interface IEmoticonPanelLinearLayoutHelper
   public abstract void setInterceptListener(IEmoticonPanelLinearLayoutHelper.OnClickListener paramOnClickListener);
   
   public abstract void setPanelType(int paramInt);
+  
+  public abstract void setShowDescribeInPreview(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IEmoticonPanelLinearLayoutHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class DeviceMsgChatPie$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    FileUtils.deleteFile(this.a.d);
-    this.a.d = "";
+    FileUtils.deleteFile(this.a.bk);
+    this.a.bk = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie.3
  * JD-Core Version:    0.7.0.1
  */

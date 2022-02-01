@@ -13,42 +13,42 @@ public final class CaptureOperateTouchLayout$setup$1
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.Z);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView.setVisibility(4);
-    int i = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, this.jdField_a_of_type_AndroidWidgetImageView.getX() / CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout));
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout, i);
-    CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
+    this.b.setText(R.string.P);
+    this.c.setVisibility(4);
+    int i = this.a.getVideoSeekPosition();
+    CaptureOperateTouchLayout.a(this.a, this.d.getX() / CaptureOperateTouchLayout.e(this.a));
+    CaptureOperateTouchLayout.a(this.a, i);
+    CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.a.getOnCaptureOperateCallback();
     if (localOnCaptureOperateCallback != null)
     {
-      CaptureOperateTouchLayout localCaptureOperateTouchLayout = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout;
-      localOnCaptureOperateCallback.a(i, CaptureOperateTouchLayout.a(localCaptureOperateTouchLayout, CaptureOperateTouchLayout.b(localCaptureOperateTouchLayout)));
+      CaptureOperateTouchLayout localCaptureOperateTouchLayout = this.a;
+      localOnCaptureOperateCallback.a(i, CaptureOperateTouchLayout.b(localCaptureOperateTouchLayout, CaptureOperateTouchLayout.g(localCaptureOperateTouchLayout)));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout.a();
+    CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.a.getOnCaptureOperateCallback();
     if (localOnCaptureOperateCallback != null) {
       localOnCaptureOperateCallback.a();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.s);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView.setVisibility(4);
+    this.b.setText(R.string.o);
+    this.c.setVisibility(4);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(R.string.ac);
+    this.b.setText(R.string.Q);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView.setVisibility(4);
+    this.c.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.setup.1
  * JD-Core Version:    0.7.0.1
  */

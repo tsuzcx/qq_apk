@@ -14,11 +14,11 @@ import com.tencent.biz.qqstory.view.PressDarkImageView;
 public class RoundedCornerImageViewNoPadding
   extends PressDarkImageView
 {
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = Color.parseColor("#FFD5D5D5");
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c = 0;
+  private Path e = new Path();
+  private int f = Color.parseColor("#FFD5D5D5");
+  private boolean g = false;
+  private int h = 0;
+  private boolean i = false;
   
   public RoundedCornerImageViewNoPadding(Context paramContext)
   {
@@ -45,38 +45,38 @@ public class RoundedCornerImageViewNoPadding
   
   public void draw(Canvas paramCanvas)
   {
-    int j = getWidth();
-    int i = getHeight();
-    RectF localRectF = new RectF(0.0F, 0.0F, j, i);
-    i = this.c;
-    if (i <= 0) {
-      i = j / 30;
+    int k = getWidth();
+    int j = getHeight();
+    RectF localRectF = new RectF(0.0F, 0.0F, k, j);
+    j = this.h;
+    if (j <= 0) {
+      j = k / 30;
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.i)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      float f = i;
-      localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
-      this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-      this.jdField_b_of_type_Boolean = true;
+      this.e.reset();
+      Path localPath = this.e;
+      float f1 = j;
+      localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CCW);
+      this.e.setFillType(Path.FillType.EVEN_ODD);
+      this.i = true;
     }
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.clipPath(this.e);
     super.draw(paramCanvas);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_b_of_type_Boolean = false;
+    this.i = false;
   }
   
   public void setCorner(int paramInt)
   {
     if (paramInt > 0)
     {
-      this.c = paramInt;
-      this.jdField_b_of_type_Boolean = false;
+      this.h = paramInt;
+      this.i = false;
       invalidate();
       return;
     }
@@ -85,7 +85,7 @@ public class RoundedCornerImageViewNoPadding
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundedCornerImageViewNoPadding
  * JD-Core Version:    0.7.0.1
  */

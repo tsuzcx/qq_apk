@@ -16,11 +16,11 @@ public class TabLayout
   extends HorizontalScrollView
 {
   protected float a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TabLayout.TabAdapter jdField_a_of_type_ComTencentMobileqqQqexpandWidgetTabLayout$TabAdapter;
   protected float b;
   protected float c;
   protected float d;
+  private LinearLayout e;
+  private TabLayout.TabAdapter f;
   
   public TabLayout(Context paramContext)
   {
@@ -44,14 +44,9 @@ public class TabLayout
   {
     setOverScrollMode(2);
     setHorizontalScrollBarEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, new ViewGroup.LayoutParams(-1, -1));
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.e = new LinearLayout(getContext());
+    this.e.setOrientation(0);
+    addView(this.e, new ViewGroup.LayoutParams(-1, -1));
   }
   
   public void a(TabLayout.TabAdapter paramTabAdapter)
@@ -62,8 +57,8 @@ public class TabLayout
       if (m <= 0) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetTabLayout$TabAdapter = paramTabAdapter;
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      this.f = paramTabAdapter;
+      this.e.removeAllViews();
       int i = paramTabAdapter.b();
       int j = 1;
       int k = 0;
@@ -84,12 +79,12 @@ public class TabLayout
         if (localView != null)
         {
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, -1, j);
-          Rect localRect = paramTabAdapter.a(k);
+          Rect localRect = paramTabAdapter.b(k);
           localLayoutParams.leftMargin = localRect.left;
           localLayoutParams.topMargin = localRect.top;
           localLayoutParams.rightMargin = localRect.right;
           localLayoutParams.bottomMargin = localRect.bottom;
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView, localLayoutParams);
+          this.e.addView(localView, localLayoutParams);
         }
         k += 1;
       }
@@ -106,12 +101,12 @@ public class TabLayout
       {
         float f1 = paramMotionEvent.getX();
         float f2 = paramMotionEvent.getY();
-        this.jdField_a_of_type_Float += Math.abs(f1 - this.c);
+        this.a += Math.abs(f1 - this.c);
         this.b += Math.abs(f2 - this.d);
         this.c = f1;
         this.d = f2;
         ViewParent localViewParent = getParent();
-        if (this.jdField_a_of_type_Float <= this.b) {
+        if (this.a <= this.b) {
           bool = false;
         }
         localViewParent.requestDisallowInterceptTouchEvent(bool);
@@ -120,17 +115,22 @@ public class TabLayout
     else
     {
       this.b = 0.0F;
-      this.jdField_a_of_type_Float = 0.0F;
+      this.a = 0.0F;
       this.c = paramMotionEvent.getX();
       this.d = paramMotionEvent.getY();
       getParent().requestDisallowInterceptTouchEvent(true);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
+  
+  public ViewGroup getContentView()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.TabLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,12 @@ class MiniAppProxyImpl$6
       AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.6.1(this));
       return;
     }
-    MiniAppProxyImpl.b(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+    MiniAppProxyImpl.b(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

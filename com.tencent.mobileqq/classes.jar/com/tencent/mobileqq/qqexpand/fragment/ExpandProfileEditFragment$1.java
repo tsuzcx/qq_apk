@@ -8,67 +8,61 @@ import com.tencent.widget.XEditTextEx;
 class ExpandProfileEditFragment$1
   implements TextWatcher
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
+  int a = 0;
+  String b;
   
   ExpandProfileEditFragment$1(ExpandProfileEditFragment paramExpandProfileEditFragment) {}
   
   public void afterTextChanged(Editable paramEditable)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount();
+    int i = this.c.b.getLineCount();
     if (i > 30)
     {
-      if (this.jdField_a_of_type_JavaLangString != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(this.jdField_a_of_type_Int);
+        this.c.b.setText(this.b);
+        this.c.b.setSelection(this.a);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+        this.c.b.setText("");
+        this.c.b.setSelection(0);
       }
-      if (ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment) == null)
+      if (ExpandProfileEditFragment.a(this.c) == null)
       {
-        paramEditable = this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment;
-        ExpandProfileEditFragment.a(paramEditable, QQToast.a(paramEditable.getActivity(), "输入文字不要超过30行", 0));
+        paramEditable = this.c;
+        ExpandProfileEditFragment.a(paramEditable, QQToast.makeText(paramEditable.getActivity(), "输入文字不要超过30行", 0));
       }
-      if (!ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment).d()) {
-        ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment).a();
+      if (!ExpandProfileEditFragment.a(this.c).isShowing()) {
+        ExpandProfileEditFragment.a(this.c).show();
       }
     }
-    if (i != ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment))
+    if (i != ExpandProfileEditFragment.b(this.c))
     {
-      ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment, i);
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_Boolean = true;
+      ExpandProfileEditFragment.a(this.c, i);
+      this.c.f = true;
     }
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLineCount() <= 30)
+    if (this.c.b.getLineCount() <= 30)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
+      this.b = this.c.b.getText().toString();
+      this.a = this.c.b.getSelectionStart();
     }
   }
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_JavaLangString = "";
+    if (this.c.i == null) {
+      this.c.i = "";
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment.jdField_a_of_type_JavaLangString.equals(paramCharSequence.toString())) && (!ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment)))
-    {
-      ExpandProfileEditFragment.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment);
-      return;
-    }
-    ExpandProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqQqexpandFragmentExpandProfileEditFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExpandProfileEditFragment.1
  * JD-Core Version:    0.7.0.1
  */

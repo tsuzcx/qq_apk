@@ -11,9 +11,6 @@ public abstract interface IRenderService
   @NotNull
   public abstract ICMShowView a();
   
-  @Nullable
-  public abstract IRecordFrameListener a();
-  
   public abstract void a(@NotNull RenderConfig paramRenderConfig);
   
   public abstract void a(@Nullable IRecordFrameListener paramIRecordFrameListener);
@@ -23,10 +20,13 @@ public abstract interface IRenderService
   public abstract void a(@Nullable ITouchListener paramITouchListener);
   
   public abstract void a(boolean paramBoolean);
+  
+  @Nullable
+  public abstract IRecordFrameListener b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.render.IRenderService
  * JD-Core Version:    0.7.0.1
  */

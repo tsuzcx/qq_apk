@@ -164,7 +164,7 @@ public class CGILoader
     //   224: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   227: goto +3 -> 230
     //   230: aload_2
-    //   231: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   231: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:b	(Ljava/lang/String;)Ljava/lang/String;
     //   234: astore_2
     //   235: aload_0
     //   236: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -219,7 +219,7 @@ public class CGILoader
     //   319: aload_0
     //   320: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   323: aload_2
-    //   324: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   324: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:b	(Ljava/lang/String;)Ljava/lang/String;
     //   327: astore_1
     //   328: aload_3
     //   329: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -258,7 +258,7 @@ public class CGILoader
     //   387: aload_0
     //   388: invokestatic 123	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   391: aload_2
-    //   392: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   392: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:b	(Ljava/lang/String;)Ljava/lang/String;
     //   395: astore_1
     //   396: aload 4
     //   398: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -288,7 +288,7 @@ public class CGILoader
     //   442: areturn
     //   443: astore_0
     //   444: aload_2
-    //   445: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   445: invokestatic 106	com/tencent/mobileqq/structmsg/CGILoader:b	(Ljava/lang/String;)Ljava/lang/String;
     //   448: astore_2
     //   449: aload_1
     //   450: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -370,25 +370,6 @@ public class CGILoader
     //   382	391	443	finally
   }
   
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = new URL(paramString).getHost().split("\\.");
-      StringBuilder localStringBuilder = new StringBuilder(paramString[(paramString.length - 2)]);
-      localStringBuilder.append(".");
-      localStringBuilder.append(paramString[(paramString.length - 1)]);
-      paramString = localStringBuilder.toString();
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      label56:
-      break label56;
-    }
-    return "";
-  }
-  
   public static boolean a(AbsShareMsg paramAbsShareMsg)
   {
     if ((paramAbsShareMsg instanceof StructMsgForGeneralShare))
@@ -402,7 +383,7 @@ public class CGILoader
           Object localObject = (AbsStructMsgElement)paramAbsShareMsg.get(i);
           if ((localObject instanceof StructMsgItemLayout5))
           {
-            localObject = ((StructMsgItemLayout5)localObject).a;
+            localObject = ((StructMsgItemLayout5)localObject).ax;
             if (localObject != null)
             {
               int j = 0;
@@ -426,10 +407,29 @@ public class CGILoader
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
+  
+  public static String b(String paramString)
+  {
+    try
+    {
+      paramString = new URL(paramString).getHost().split("\\.");
+      StringBuilder localStringBuilder = new StringBuilder(paramString[(paramString.length - 2)]);
+      localStringBuilder.append(".");
+      localStringBuilder.append(paramString[(paramString.length - 1)]);
+      paramString = localStringBuilder.toString();
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      label56:
+      break label56;
+    }
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.CGILoader
  * JD-Core Version:    0.7.0.1
  */

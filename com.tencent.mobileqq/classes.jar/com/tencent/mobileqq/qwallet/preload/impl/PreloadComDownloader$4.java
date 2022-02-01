@@ -8,13 +8,13 @@ class PreloadComDownloader$4
   public void run()
   {
     if (PreloadComDownloader.a(this.this$0) != null) {
-      PreloadComDownloader.a(this.this$0).startDownload(this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
+      PreloadComDownloader.a(this.this$0).startDownload(this.a, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadComDownloader.4
  * JD-Core Version:    0.7.0.1
  */

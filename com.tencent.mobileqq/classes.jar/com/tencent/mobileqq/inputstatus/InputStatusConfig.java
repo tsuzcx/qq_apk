@@ -19,7 +19,7 @@ public class InputStatusConfig
   {
     InputStatusConfig.Config localConfig = new InputStatusConfig.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      InputStatusConfig.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      InputStatusConfig.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -62,7 +62,7 @@ public class InputStatusConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.inputstatus.InputStatusConfig
  * JD-Core Version:    0.7.0.1
  */

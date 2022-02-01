@@ -13,12 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 public class MxFlutterFfi
 {
-  private final boolean a = SafelyLibraryLoader.a(JsEngineLoader.a().a(), "mxflutter");
+  private final boolean a = SafelyLibraryLoader.a(JsEngineLoader.a().c(), "mxflutter");
   
   public MxFlutterFfi()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isSoLoadSuccess:");
+    localStringBuilder.append("#constructor: isSoLoadSuccess=");
     localStringBuilder.append(this.a);
     MxLog.a("MxFlutterFfi", localStringBuilder.toString());
     if (this.a) {
@@ -42,7 +42,7 @@ public class MxFlutterFfi
   @Keep
   public String syncPropsCallback(String paramString)
   {
-    if ((this.a) && (JsEngineLoader.a().a().b().a(JsObjectType.CURRENT_APP_OBJECT)))
+    if ((this.a) && (JsEngineLoader.a().d().b().a(JsObjectType.CURRENT_APP_OBJECT)))
     {
       Object[] arrayOfObject = new Object[1];
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
@@ -67,7 +67,7 @@ public class MxFlutterFfi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.ffi.MxFlutterFfi
  * JD-Core Version:    0.7.0.1
  */

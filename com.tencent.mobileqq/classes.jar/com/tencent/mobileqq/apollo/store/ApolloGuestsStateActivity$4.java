@@ -21,11 +21,11 @@ class ApolloGuestsStateActivity$4
     }
   }
   
-  public void a(int paramInt, String paramString) {}
+  public void b_(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.4
  * JD-Core Version:    0.7.0.1
  */

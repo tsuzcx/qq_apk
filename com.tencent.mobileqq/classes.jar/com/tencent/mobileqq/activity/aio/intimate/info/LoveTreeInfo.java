@@ -9,12 +9,12 @@ import tencent.im.oidb.oidb_0xcf4.oidb_0xcf4.LoveTreeInfo;
 
 public class LoveTreeInfo
 {
-  public int a;
   public String a;
-  public boolean a;
-  public String b;
+  public boolean b;
   public String c;
   public String d;
+  public String e;
+  public int f;
   
   public static LoveTreeInfo a(String paramString)
   {
@@ -25,12 +25,12 @@ public class LoveTreeInfo
     {
       paramString = new JSONObject(paramString);
       LoveTreeInfo localLoveTreeInfo = new LoveTreeInfo();
-      localLoveTreeInfo.jdField_a_of_type_JavaLangString = paramString.optString("treeIconUrl", "");
-      localLoveTreeInfo.jdField_a_of_type_Boolean = paramString.optBoolean("canWatering", false);
-      localLoveTreeInfo.b = paramString.optString("wateringAnimUrl", "");
-      localLoveTreeInfo.c = paramString.optString("miniAppUrl", "");
-      localLoveTreeInfo.d = paramString.optString("h5Url", "");
-      localLoveTreeInfo.jdField_a_of_type_Int = paramString.optInt("level", 0);
+      localLoveTreeInfo.a = paramString.optString("treeIconUrl", "");
+      localLoveTreeInfo.b = paramString.optBoolean("canWatering", false);
+      localLoveTreeInfo.c = paramString.optString("wateringAnimUrl", "");
+      localLoveTreeInfo.d = paramString.optString("miniAppUrl", "");
+      localLoveTreeInfo.e = paramString.optString("h5Url", "");
+      localLoveTreeInfo.f = paramString.optInt("level", 0);
       return localLoveTreeInfo;
     }
     catch (JSONException paramString)
@@ -47,7 +47,7 @@ public class LoveTreeInfo
     }
     LoveTreeInfo localLoveTreeInfo = new LoveTreeInfo();
     if (paramLoveTreeInfo.str_use_tree_icon.has()) {
-      localLoveTreeInfo.jdField_a_of_type_JavaLangString = paramLoveTreeInfo.str_use_tree_icon.get();
+      localLoveTreeInfo.a = paramLoveTreeInfo.str_use_tree_icon.get();
     }
     if (paramLoveTreeInfo.uint32_lack_water_flag.has())
     {
@@ -56,19 +56,19 @@ public class LoveTreeInfo
       if (i != 1) {
         bool = false;
       }
-      localLoveTreeInfo.jdField_a_of_type_Boolean = bool;
+      localLoveTreeInfo.b = bool;
     }
     if (paramLoveTreeInfo.str_drop_icon.has()) {
-      localLoveTreeInfo.b = paramLoveTreeInfo.str_drop_icon.get();
+      localLoveTreeInfo.c = paramLoveTreeInfo.str_drop_icon.get();
     }
     if (paramLoveTreeInfo.str_jump_url.has()) {
-      localLoveTreeInfo.c = paramLoveTreeInfo.str_jump_url.get();
+      localLoveTreeInfo.d = paramLoveTreeInfo.str_jump_url.get();
     }
     if (paramLoveTreeInfo.str_jump_h5_url.has()) {
-      localLoveTreeInfo.d = paramLoveTreeInfo.str_jump_h5_url.get();
+      localLoveTreeInfo.e = paramLoveTreeInfo.str_jump_h5_url.get();
     }
     if (paramLoveTreeInfo.uint32_level.has()) {
-      localLoveTreeInfo.jdField_a_of_type_Int = paramLoveTreeInfo.uint32_level.get();
+      localLoveTreeInfo.f = paramLoveTreeInfo.uint32_level.get();
     }
     return localLoveTreeInfo;
   }
@@ -78,20 +78,20 @@ public class LoveTreeInfo
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localJSONObject.put("treeIconUrl", this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(this.a)) {
+        localJSONObject.put("treeIconUrl", this.a);
       }
-      localJSONObject.put("canWatering", this.jdField_a_of_type_Boolean);
-      if (!TextUtils.isEmpty(this.b)) {
-        localJSONObject.put("wateringAnimUrl", this.b);
-      }
+      localJSONObject.put("canWatering", this.b);
       if (!TextUtils.isEmpty(this.c)) {
-        localJSONObject.put("miniAppUrl", this.c);
+        localJSONObject.put("wateringAnimUrl", this.c);
       }
       if (!TextUtils.isEmpty(this.d)) {
-        localJSONObject.put("h5Url", this.d);
+        localJSONObject.put("miniAppUrl", this.d);
       }
-      localJSONObject.put("level", this.jdField_a_of_type_Int);
+      if (!TextUtils.isEmpty(this.e)) {
+        localJSONObject.put("h5Url", this.e);
+      }
+      localJSONObject.put("level", this.f);
     }
     catch (JSONException localJSONException)
     {
@@ -104,28 +104,28 @@ public class LoveTreeInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LoveTreeInfo{treeIconUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", canWatering=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", wateringAnimUrl='");
     localStringBuilder.append(this.b);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", miniAppUrl='");
+    localStringBuilder.append(", wateringAnimUrl='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", h5Url='");
+    localStringBuilder.append(", miniAppUrl='");
     localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
+    localStringBuilder.append(", h5Url='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
     localStringBuilder.append(", level=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.info.LoveTreeInfo
  * JD-Core Version:    0.7.0.1
  */

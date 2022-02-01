@@ -10,16 +10,16 @@ import com.tencent.qphone.base.util.QLog;
 class AudioPlayer$MyScoReceiver
   extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  long b = 0L;
+  String a;
+  int b;
+  boolean c = false;
+  long d = 0L;
+  long e = 0L;
   
   AudioPlayer$MyScoReceiver(AudioPlayer paramAudioPlayer, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.b = paramInt;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -32,21 +32,21 @@ class AudioPlayer$MyScoReceiver
       paramContext.append("onReceive ACTION_SCO_AUDIO_STATE_UPDATED = ");
       paramContext.append(i);
       paramContext.append(" ");
-      paramContext.append(this.jdField_a_of_type_JavaLangString);
+      paramContext.append(this.a);
       paramContext.append(", time=");
       paramContext.append(l1);
       QLog.d("AudioPlayer_Old", 2, paramContext.toString());
     }
     if (1 == i)
     {
-      if (this.b == 0L)
+      if (this.e == 0L)
       {
-        this.b = l1;
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer;
-        AudioPlayer.a(paramContext, paramContext.jdField_a_of_type_AndroidMediaAudioManager);
-        AudioPlayerBase.jdField_a_of_type_Boolean = true;
-        if (!this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a()) {
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        this.e = l1;
+        paramContext = this.f;
+        AudioPlayer.a(paramContext, paramContext.h);
+        AudioPlayerBase.c = true;
+        if (!this.f.m()) {
+          this.f.a(this.a, this.b);
         }
       }
     }
@@ -54,41 +54,41 @@ class AudioPlayer$MyScoReceiver
     {
       if (2 == i)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.c = true;
         return;
       }
       if (i == 0)
       {
-        if (this.jdField_a_of_type_Long == 0L)
+        if (this.d == 0L)
         {
-          this.jdField_a_of_type_Long = l1;
+          this.d = l1;
           return;
         }
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.j();
+        if (this.c) {
+          this.f.p();
         }
-        long l2 = this.b;
-        if (((l2 != 0L) && (l1 - l2 <= 2000L)) || (l1 - this.jdField_a_of_type_Long <= 1000L))
+        long l2 = this.e;
+        if (((l2 != 0L) && (l1 - l2 <= 2000L)) || (l1 - this.d <= 1000L))
         {
           if (QLog.isColorLevel()) {
             QLog.d("AudioPlayer_Old", 2, "sco disconnected quickly.");
           }
-          AudioDeviceHelper.b = true;
-          if ((AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer)) && (!this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.jdField_a_of_type_AndroidMediaAudioManager.isBluetoothA2dpOn())) {
-            AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer, false);
+          AudioDeviceHelper.d = true;
+          if ((AudioPlayer.a(this.f)) && (!this.f.h.isBluetoothA2dpOn())) {
+            AudioPlayer.a(this.f, false);
           }
-          if (!this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a())
+          if (!this.f.m())
           {
-            this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+            this.f.a(this.a, this.b);
             return;
           }
-          this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.d(0);
+          this.f.d(0);
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer.a())
+        if (this.f.m())
         {
-          paramContext = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerAudioPlayer;
-          paramContext.d(paramContext.jdField_a_of_type_ComTencentMobileqqQqaudioAudioplayerIAudioFilePlayer.a());
+          paramContext = this.f;
+          paramContext.d(paramContext.g.h());
         }
       }
     }
@@ -96,7 +96,7 @@ class AudioPlayer$MyScoReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayer.MyScoReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -39,25 +39,25 @@ import java.util.TimerTask;
 public class VasADCountDownInmersionBannerManager
   extends VasADBannerManager
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private VasADBannerCountDownImmersionInfo jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerCountDownImmersionInfo;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private URLDrawable jdField_b_of_type_ComTencentImageURLDrawable;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private URLDrawable jdField_c_of_type_ComTencentImageURLDrawable;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView;
-  private URLDrawable jdField_d_of_type_ComTencentImageURLDrawable;
-  private URLDrawable e;
+  private int e;
+  private TextView f;
+  private ImageView g;
+  private ImageView h;
+  private ImageView i;
+  private ImageView j;
+  private RelativeLayout k;
+  private RelativeLayout l;
+  private TextView m;
+  private TextView n;
+  private URLDrawable o;
+  private URLDrawable p;
+  private URLDrawable q;
+  private URLDrawable r;
+  private URLDrawable s;
+  private VasADBannerCountDownImmersionInfo t;
+  private Timer u;
+  private TimerTask v;
+  private long w;
   
   private URLDrawable a(VasADBannerCountDownImmersionInfo paramVasADBannerCountDownImmersionInfo, int paramInt)
   {
@@ -154,39 +154,39 @@ public class VasADCountDownInmersionBannerManager
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+    if (this.g == null) {
       return;
     }
     URLDrawable localURLDrawable;
     if (paramBoolean)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      localURLDrawable = this.jdField_b_of_type_ComTencentImageURLDrawable;
+      this.h.setVisibility(0);
+      this.g.setVisibility(8);
+      this.f.setVisibility(8);
+      localURLDrawable = this.p;
       if (localURLDrawable != null) {
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        this.j.setImageDrawable(localURLDrawable);
       }
-      localURLDrawable = this.jdField_d_of_type_ComTencentImageURLDrawable;
+      localURLDrawable = this.r;
       if (localURLDrawable != null) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        this.h.setImageDrawable(localURLDrawable);
       }
-      if (this.e != null) {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.e);
+      if (this.s != null) {
+        this.d.setImageDrawable(this.s);
       }
     }
     else
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      this.h.setVisibility(8);
+      this.g.setVisibility(0);
+      this.f.setVisibility(0);
+      localURLDrawable = this.o;
       if (localURLDrawable != null) {
-        this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        this.j.setImageDrawable(localURLDrawable);
       }
-      localURLDrawable = this.jdField_c_of_type_ComTencentImageURLDrawable;
+      localURLDrawable = this.q;
       if (localURLDrawable != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+        this.g.setImageDrawable(localURLDrawable);
       }
     }
   }
@@ -199,128 +199,128 @@ public class VasADCountDownInmersionBannerManager
     if ((paramVasADBannerConfigInfo instanceof VasADBannerCountDownImmersionInfo))
     {
       paramVasADBannerConfigInfo = (VasADBannerCountDownImmersionInfo)paramVasADBannerConfigInfo;
-      this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerCountDownImmersionInfo = paramVasADBannerConfigInfo;
-      CountDownImmersionData localCountDownImmersionData = this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerCountDownImmersionInfo.a();
+      this.t = paramVasADBannerConfigInfo;
+      CountDownImmersionData localCountDownImmersionData = this.t.f();
       if (localCountDownImmersionData == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentImageURLDrawable = b(paramVasADBannerConfigInfo, 5);
-      this.jdField_b_of_type_ComTencentImageURLDrawable = b(paramVasADBannerConfigInfo, 6);
-      this.jdField_c_of_type_ComTencentImageURLDrawable = a(paramVasADBannerConfigInfo, 3);
-      this.jdField_d_of_type_ComTencentImageURLDrawable = a(paramVasADBannerConfigInfo, 4);
-      this.e = a(paramVasADBannerConfigInfo, 7);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(localCountDownImmersionData.e));
-      n();
-      this.jdField_a_of_type_Long = (localCountDownImmersionData.jdField_a_of_type_Long * 1000L);
-      long l = (this.jdField_a_of_type_Long - System.currentTimeMillis()) / 1000L;
+      this.o = b(paramVasADBannerConfigInfo, 5);
+      this.p = b(paramVasADBannerConfigInfo, 6);
+      this.q = a(paramVasADBannerConfigInfo, 3);
+      this.r = a(paramVasADBannerConfigInfo, 4);
+      this.s = a(paramVasADBannerConfigInfo, 7);
+      this.f.setTextColor(a(localCountDownImmersionData.f));
+      s();
+      this.w = (localCountDownImmersionData.e * 1000L);
+      long l1 = (this.w - System.currentTimeMillis()) / 1000L;
       paramVasADBannerConfigInfo = new StringBuilder();
       paramVasADBannerConfigInfo.append("handleBannerShow countDownTotalTime = ");
-      paramVasADBannerConfigInfo.append(l);
+      paramVasADBannerConfigInfo.append(l1);
       paramVasADBannerConfigInfo.append(" mCountDownTime = ");
-      paramVasADBannerConfigInfo.append(this.jdField_a_of_type_Long);
+      paramVasADBannerConfigInfo.append(this.w);
       paramVasADBannerConfigInfo.append(" countDownTotalTime = ");
-      paramVasADBannerConfigInfo.append(l);
+      paramVasADBannerConfigInfo.append(l1);
       QLog.e("QbossADCountDownInmersi", 1, paramVasADBannerConfigInfo.toString());
-      if (l > 0L)
+      if (l1 > 0L)
       {
-        k();
+        p();
         return;
       }
-      l();
+      q();
     }
   }
   
-  private void h()
+  private void m()
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    Object localObject2 = this.b.getLayoutParams();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ViewGroup.LayoutParams(-1, -2);
     }
-    ((ViewGroup.LayoutParams)localObject1).width = b();
-    ((ViewGroup.LayoutParams)localObject1).height = c();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject2 = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject1).width = k();
+    ((ViewGroup.LayoutParams)localObject1).height = l();
+    this.b.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject2 = (ViewGroup.MarginLayoutParams)this.k.getLayoutParams();
     ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject2).width = b();
-    ((ViewGroup.LayoutParams)localObject2).height = super.c();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = this.jdField_d_of_type_AndroidWidgetImageView.getLayoutParams();
+    this.k.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = this.l.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject2).width = k();
+    ((ViewGroup.LayoutParams)localObject2).height = super.l();
+    this.l.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = this.j.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject2).width = ((int)(((ViewGroup.LayoutParams)localObject1).height * 2.20339F));
     ((ViewGroup.LayoutParams)localObject2).height = ((ViewGroup.LayoutParams)localObject1).height;
-    this.jdField_d_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject1).width = ViewUtils.b(40.0F);
-    ((ViewGroup.LayoutParams)localObject1).height = ViewUtils.b(40.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject1).width = ViewUtils.b(244.0F);
-    ((ViewGroup.LayoutParams)localObject1).height = ViewUtils.b(38.0F);
-    this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    this.j.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject1 = this.g.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject1).width = ViewUtils.dpToPx(40.0F);
+    ((ViewGroup.LayoutParams)localObject1).height = ViewUtils.dpToPx(40.0F);
+    this.g.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = this.h.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject1).width = ViewUtils.dpToPx(244.0F);
+    ((ViewGroup.LayoutParams)localObject1).height = ViewUtils.dpToPx(38.0F);
+    this.h.setLayoutParams((ViewGroup.LayoutParams)localObject1);
   }
   
-  private void i()
+  private void n()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) {
+      if (this.a.app == null) {
         return;
       }
       QLog.i("QbossADCountDownInmersi", 1, "notifyBannerShow");
       Message localMessage = Message.obtain();
       localMessage.what = 3000;
-      localMessage.obj = new View[] { this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetTextView, this.jdField_c_of_type_AndroidWidgetImageView };
-      BannerManager.a().b(VasADBannerProcessor.jdField_a_of_type_Int, localMessage);
+      localMessage.obj = new View[] { this.b, this.m, this.n, this.i };
+      BannerManager.a().b(VasADBannerProcessor.a, localMessage);
     }
   }
   
-  private void j()
+  private void o()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) {
+      if (this.a.app == null) {
         return;
       }
       QLog.i("QbossADCountDownInmersi", 1, "notifyBannerHide");
-      BannerManager.a().b(VasADBannerProcessor.jdField_a_of_type_Int, 3001);
+      BannerManager.a().b(VasADBannerProcessor.a, 3001);
     }
   }
   
-  private void k()
+  private void p()
   {
     b(false);
     QLog.e("QbossADCountDownInmersi", 1, "startCountDown");
-    m();
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_JavaUtilTimerTask = new VasADCountDownInmersionBannerManager.4(this);
-    this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 1000L);
+    r();
+    this.u = new Timer();
+    this.v = new VasADCountDownInmersionBannerManager.4(this);
+    this.u.schedule(this.v, 0L, 1000L);
   }
   
-  private void l()
+  private void q()
   {
     QLog.e("QbossADCountDownInmersi", 1, "countDownComplete");
-    m();
+    r();
     b(true);
   }
   
-  private void m()
+  private void r()
   {
     QLog.e("QbossADCountDownInmersi", 1, "stopTimer");
-    Object localObject = this.jdField_a_of_type_JavaUtilTimerTask;
+    Object localObject = this.v;
     if (localObject != null) {
       ((TimerTask)localObject).cancel();
     }
-    localObject = this.jdField_a_of_type_JavaUtilTimer;
+    localObject = this.u;
     if (localObject != null) {
       ((Timer)localObject).cancel();
     }
-    this.jdField_a_of_type_JavaUtilTimer = null;
-    this.jdField_a_of_type_JavaUtilTimerTask = null;
+    this.u = null;
+    this.v = null;
   }
   
-  private void n()
+  private void s()
   {
     Object localObject = BaseApplicationImpl.getApplication().getAssets();
     if (localObject != null)
@@ -329,37 +329,25 @@ public class VasADCountDownInmersionBannerManager
       if (localObject != null)
       {
         QLog.e("QbossADCountDownInmersi", 1, "setTypeFace");
-        this.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+        this.f.setTypeface((Typeface)localObject);
       }
     }
-  }
-  
-  protected int a()
-  {
-    return 2131561932;
   }
   
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379599));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368549));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368550));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379486));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379492));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365235));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368535));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365226));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369870));
-    h();
-    return new View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    j();
+    this.f = ((TextView)localView.findViewById(2131448357));
+    this.g = ((ImageView)localView.findViewById(2131435454));
+    this.h = ((ImageView)localView.findViewById(2131435455));
+    this.m = ((TextView)localView.findViewById(2131448231));
+    this.n = ((TextView)localView.findViewById(2131448239));
+    this.i = ((ImageView)localView.findViewById(2131431401));
+    this.j = ((ImageView)localView.findViewById(2131435439));
+    this.k = ((RelativeLayout)localView.findViewById(2131431392));
+    this.l = ((RelativeLayout)localView.findViewById(2131437007));
     m();
+    return new View(this.a);
   }
   
   protected void a(VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -368,42 +356,54 @@ public class VasADCountDownInmersionBannerManager
     ThreadManagerV2.getUIHandlerV2().post(new VasADCountDownInmersionBannerManager.1(this, paramVasADBannerConfigInfo));
   }
   
-  public void b()
+  protected int b()
   {
-    super.b();
-    m();
-    this.jdField_b_of_type_ComTencentImageURLDrawable = null;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    return 2131628356;
   }
   
-  protected int c()
+  public void c()
   {
-    this.jdField_a_of_type_Int = super.c();
-    return this.jdField_a_of_type_Int + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + ViewUtils.b(50.0F);
+    super.c();
+    o();
+    r();
   }
   
   public void d()
   {
     super.d();
-    i();
+    r();
+    this.p = null;
+    this.o = null;
   }
   
-  public void e()
+  public void g()
   {
-    Object localObject = this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerCountDownImmersionInfo;
+    super.g();
+    n();
+  }
+  
+  public void h()
+  {
+    Object localObject = this.t;
     if (localObject != null)
     {
-      localObject = ((VasADBannerCountDownImmersionInfo)localObject).a();
-      if ((localObject != null) && (((CountDownImmersionData)localObject).jdField_a_of_type_Boolean)) {
+      localObject = ((VasADBannerCountDownImmersionInfo)localObject).f();
+      if ((localObject != null) && (((CountDownImmersionData)localObject).l)) {
         return;
       }
     }
-    super.e();
+    super.h();
+  }
+  
+  protected int l()
+  {
+    this.e = super.l();
+    return this.e + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + ViewUtils.dpToPx(50.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADCountDownInmersionBannerManager
  * JD-Core Version:    0.7.0.1
  */

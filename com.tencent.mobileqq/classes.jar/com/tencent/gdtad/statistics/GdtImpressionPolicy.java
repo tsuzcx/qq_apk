@@ -22,44 +22,22 @@ import mqq.app.MobileQQ;
 public class GdtImpressionPolicy
   implements Handler.Callback
 {
-  private static GdtImpressionPolicy jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionPolicy = new GdtImpressionPolicy();
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private ConcurrentHashMap<String, WeakReference<View>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static GdtImpressionPolicy c = new GdtImpressionPolicy();
+  private ConcurrentHashMap<String, WeakReference<View>> a = new ConcurrentHashMap();
+  private Handler b = null;
   
   private GdtImpressionPolicy()
   {
     HandlerThread localHandlerThread = new HandlerThread("GdtImpressionPolicy");
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
-  }
-  
-  private GdtAd a(View paramView)
-  {
-    if (paramView == null) {
-      return null;
-    }
-    paramView = paramView.getTag(2131380882);
-    if (paramView == null) {
-      return null;
-    }
-    if (!(paramView instanceof GdtAd)) {
-      return null;
-    }
-    paramView = (GdtAd)paramView;
-    if (TextUtils.isEmpty(paramView.getTraceId())) {
-      return null;
-    }
-    if (TextUtils.isEmpty(paramView.getUrlForImpression())) {
-      return null;
-    }
-    return paramView;
+    this.b = new Handler(localHandlerThread.getLooper(), this);
   }
   
   public static GdtImpressionPolicy a()
   {
     try
     {
-      GdtImpressionPolicy localGdtImpressionPolicy = jdField_a_of_type_ComTencentGdtadStatisticsGdtImpressionPolicy;
+      GdtImpressionPolicy localGdtImpressionPolicy = c;
       return localGdtImpressionPolicy;
     }
     finally
@@ -103,31 +81,26 @@ public class GdtImpressionPolicy
   
   private void a(View paramView, GdtAd paramGdtAd)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
+    Object localObject = this.a.keySet();
     if (localObject != null)
     {
       localObject = ((Set)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+        WeakReference localWeakReference = (WeakReference)this.a.get(str);
         if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
           if ((paramGdtAd.getTraceId() != null) && (!paramGdtAd.getTraceId().equals(str))) {
-            a(str);
+            b(str);
           }
         }
       }
     }
   }
   
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
   private void a(String paramString, WeakReference<View> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWeakReference);
+    this.a.put(paramString, paramWeakReference);
   }
   
   private void a(String paramString, boolean paramBoolean)
@@ -139,19 +112,46 @@ public class GdtImpressionPolicy
     localEditor.apply();
   }
   
-  public static boolean a(View paramView)
-  {
-    return GdtUIUtils.a(paramView) > 0.5D;
-  }
-  
   private boolean a(String paramString)
   {
     return MobileQQ.sMobileQQ.getSharedPreferences("GdtImpressionPolicyReported", 0).getBoolean(paramString, false);
   }
   
-  private boolean b(View paramView)
+  private void b(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    this.a.remove(paramString);
+  }
+  
+  public static boolean b(View paramView)
+  {
+    return GdtUIUtils.a(paramView) > 0.5D;
+  }
+  
+  private GdtAd c(View paramView)
+  {
+    if (paramView == null) {
+      return null;
+    }
+    paramView = paramView.getTag(2131449865);
+    if (paramView == null) {
+      return null;
+    }
+    if (!(paramView instanceof GdtAd)) {
+      return null;
+    }
+    paramView = (GdtAd)paramView;
+    if (TextUtils.isEmpty(paramView.getTraceId())) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramView.getUrlForImpression())) {
+      return null;
+    }
+    return paramView;
+  }
+  
+  private boolean d(View paramView)
+  {
+    Object localObject = this.a.values();
     if (localObject != null)
     {
       localObject = ((Collection)localObject).iterator();
@@ -166,18 +166,13 @@ public class GdtImpressionPolicy
     return false;
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
   public void a(View paramView)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("report view: ");
     ((StringBuilder)localObject).append(paramView.hashCode());
     GdtLog.a("GdtImpressionPolicy", ((StringBuilder)localObject).toString());
-    localObject = a(paramView);
+    localObject = c(paramView);
     if (localObject == null)
     {
       GdtLog.a("GdtImpressionPolicy", "break: statistics == null");
@@ -191,16 +186,16 @@ public class GdtImpressionPolicy
       GdtLog.a("GdtImpressionPolicy", paramView.toString());
       return;
     }
-    if (!a(paramView))
+    if (!b(paramView))
     {
       GdtLog.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not");
       return;
     }
     a(paramView, (GdtAd)localObject);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    Message localMessage = this.b.obtainMessage();
     WeakReference localWeakReference = new WeakReference(paramView);
     localMessage.obj = localWeakReference;
-    if (!b(paramView))
+    if (!d(paramView))
     {
       paramView = new StringBuilder();
       paramView.append("inCountingMap not ");
@@ -209,7 +204,12 @@ public class GdtImpressionPolicy
       a(((GdtAd)localObject).getTraceId(), localWeakReference);
     }
     ((GdtAd)localObject).reportState = 1;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
+    this.b.sendMessageDelayed(localMessage, 1000L);
+  }
+  
+  public void b()
+  {
+    this.a.clear();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -221,7 +221,7 @@ public class GdtImpressionPolicy
       if (paramMessage.get() != null)
       {
         Object localObject1 = (View)paramMessage.get();
-        paramMessage = a((View)localObject1);
+        paramMessage = c((View)localObject1);
         if (paramMessage == null)
         {
           GdtLog.a("GdtImpressionPolicy", "break: statistics == null");
@@ -233,7 +233,7 @@ public class GdtImpressionPolicy
           ((StringBuilder)localObject1).append(paramMessage.getTraceId());
           GdtLog.a("GdtImpressionPolicy", ((StringBuilder)localObject1).toString());
         }
-        else if (!a((View)localObject1))
+        else if (!b((View)localObject1))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("break: isVisibleAreaSatisfied not ");
@@ -241,7 +241,7 @@ public class GdtImpressionPolicy
           GdtLog.a("GdtImpressionPolicy", ((StringBuilder)localObject1).toString());
           paramMessage.reportState = -1;
         }
-        else if (!b((View)localObject1))
+        else if (!d((View)localObject1))
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("break: inCountingMap not ");
@@ -250,7 +250,7 @@ public class GdtImpressionPolicy
         }
         else
         {
-          Object localObject2 = ((View)localObject1).getTag(2131380881);
+          Object localObject2 = ((View)localObject1).getTag(2131449864);
           if (localObject2 == null)
           {
             localObject1 = new StringBuilder();
@@ -281,7 +281,7 @@ public class GdtImpressionPolicy
             ((StringBuilder)localObject1).append("report ");
             ((StringBuilder)localObject1).append(paramMessage.getTraceId());
             GdtLog.a("GdtImpressionPolicy", ((StringBuilder)localObject1).toString());
-            a(paramMessage.getTraceId());
+            b(paramMessage.getTraceId());
             return true;
           }
         }
@@ -292,7 +292,7 @@ public class GdtImpressionPolicy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtImpressionPolicy
  * JD-Core Version:    0.7.0.1
  */

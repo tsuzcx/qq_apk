@@ -6,78 +6,70 @@ import java.io.File;
 public abstract class PicBaseInfo
   extends PicInfoInterface
 {
-  public int a;
-  public long a;
-  public Object a;
   public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public int b = -1;
+  public int c = -1;
   public String d;
   public String e;
   public String f;
-  
-  public PicBaseInfo()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 5;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public File a()
-  {
-    return AbsDownloader.getFile(b());
-  }
+  public long g;
+  public int h;
+  public Object i;
+  public int j = 5;
+  public boolean k = false;
+  public String l;
+  public String m;
   
   public String a()
   {
     return null;
   }
   
-  public boolean a()
+  public boolean b()
   {
     StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_Int == -1)
+    if (this.b == -1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("busiType invalid,busiType:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
-    if (this.jdField_b_of_type_Int == -1)
+    if (this.c == -1)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("uinType invalid,uinType:");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.c);
       a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
-    if (this.c == null)
+    if (this.e == null)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("peerUin invalid,peerUin:");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.e);
       a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
     return true;
   }
   
-  abstract String b();
+  abstract String c();
   
-  public boolean b()
+  public boolean d()
   {
-    return a() != null;
+    return e() != null;
   }
   
-  public String c()
+  public File e()
   {
-    return AbsDownloader.getFilePath(b());
+    return AbsDownloader.getFile(c());
+  }
+  
+  public String f()
+  {
+    return AbsDownloader.getFilePath(c());
   }
   
   public String toString()
@@ -86,34 +78,34 @@ public abstract class PicBaseInfo
     localStringBuilder.append("\nPicBaseInfo");
     localStringBuilder.append("\n |-");
     localStringBuilder.append("localUUID:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("uniseq:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("busiType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("selfUin:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("peerUin:");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("\n |-");
     localStringBuilder.append("secondId:");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-");
-    localStringBuilder.append("md5:");
     localStringBuilder.append(this.f);
     localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("\n |-");
     localStringBuilder.append("errInfo:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo);
+    localStringBuilder.append(this.H);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicBaseInfo
  * JD-Core Version:    0.7.0.1
  */

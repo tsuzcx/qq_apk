@@ -29,15 +29,10 @@ import java.util.ArrayList;
 public class SendVidPollDataHandler
   implements CmdTaskManger.CommandCallback<CommonRequest<qqstory_service.ReqStorySubmitPollData>, CommonResponse>
 {
-  public static final String a;
-  public int a;
+  public static final String a = StoryApi.a("StorySvc.submit_poll_data");
   public String b;
   public String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.submit_poll_data");
-  }
+  public int d;
   
   public void a(@NonNull CommonRequest<qqstory_service.ReqStorySubmitPollData> paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
   {
@@ -46,19 +41,19 @@ public class SendVidPollDataHandler
       paramCommonRequest = new qqstory_service.RspStorySubmitPollData();
       try
       {
-        paramCommonRequest.mergeFrom(paramCommonResponse.a);
+        paramCommonRequest.mergeFrom(paramCommonResponse.b);
         paramCommonResponse = new SendVidPollDataHandler.SendVidPollDataResultEvent();
-        paramCommonResponse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramCommonRequest.result.error_code.get(), paramCommonRequest.result.error_desc.get().toStringUtf8());
-        paramCommonResponse.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-        paramCommonResponse.jdField_b_of_type_JavaLangString = this.c;
-        paramCommonResponse.jdField_a_of_type_Int = paramCommonRequest.comment_id.get();
-        paramCommonResponse.jdField_a_of_type_Long = paramCommonRequest.fake_id.get();
-        paramCommonResponse.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-        paramCommonResponse.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramCommonRequest.video_poll_result.get());
-        int j = paramCommonResponse.jdField_a_of_type_JavaUtilArrayList.size();
+        paramCommonResponse.g = new ErrorMessage(paramCommonRequest.result.error_code.get(), paramCommonRequest.result.error_desc.get().toStringUtf8());
+        paramCommonResponse.a = this.b;
+        paramCommonResponse.b = this.c;
+        paramCommonResponse.d = paramCommonRequest.comment_id.get();
+        paramCommonResponse.e = paramCommonRequest.fake_id.get();
+        paramCommonResponse.f = this.d;
+        paramCommonResponse.c = new ArrayList(paramCommonRequest.video_poll_result.get());
+        int j = paramCommonResponse.c.size();
         paramErrorMessage = (StoryManager)SuperManager.a(5);
         StoryVideoItem localStoryVideoItem = paramErrorMessage.a(this.c);
-        SLog.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(paramCommonResponse.jdField_b_of_type_Int));
+        SLog.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.b, this.c, Integer.valueOf(paramCommonResponse.f));
         if ((localStoryVideoItem != null) && (j > 0))
         {
           if ((localStoryVideoItem.mPollNumbers == null) || (localStoryVideoItem.mPollNumbers.length != j)) {
@@ -70,11 +65,11 @@ public class SendVidPollDataHandler
             localStoryVideoItem.mPollNumbers[i] = ((Integer)paramCommonRequest.video_poll_result.get(i)).intValue();
             i += 1;
           }
-          localStoryVideoItem.mPollResult = this.jdField_a_of_type_Int;
+          localStoryVideoItem.mPollResult = this.d;
           paramErrorMessage.a(localStoryVideoItem);
         }
         StoryDispatcher.a().dispatch(paramCommonResponse);
-        StoryAIOUtils.a(QQStoryContext.a());
+        StoryAIOUtils.a(QQStoryContext.j());
         return;
       }
       catch (InvalidProtocolBufferMicroException paramCommonRequest)
@@ -89,7 +84,7 @@ public class SendVidPollDataHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.SendVidPollDataHandler
  * JD-Core Version:    0.7.0.1
  */

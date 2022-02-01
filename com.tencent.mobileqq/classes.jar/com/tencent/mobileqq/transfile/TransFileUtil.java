@@ -428,8 +428,12 @@ public class TransFileUtil
     {
       if (paramInt != 1)
       {
-        if (paramInt != 3000) {
-          return localObject;
+        if (paramInt != 3000)
+        {
+          if (paramInt != 10014) {
+            return localObject;
+          }
+          return "<gld>";
         }
         return "dis";
       }
@@ -564,7 +568,7 @@ public class TransFileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TransFileUtil
  * JD-Core Version:    0.7.0.1
  */

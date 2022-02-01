@@ -40,18 +40,18 @@ import mqq.app.AppRuntime;
 public class TextPreviewMenu
   extends CommonSelectableMenu<TextPreviewActivity>
 {
-  private int jdField_a_of_type_Int = -1;
-  protected Dialog a;
-  protected TextPreviewMenu.ProgressView a;
-  private ParticipleObserver jdField_a_of_type_ComTencentMobileqqParticipleParticipleObserver = new TextPreviewMenu.2(this);
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = null;
+  protected Dialog f;
+  protected TextPreviewMenu.ProgressView g;
+  private int h = -1;
+  private String i = null;
+  private boolean j = false;
+  private int k;
+  private List<String> l;
+  private ParticipleObserver m = new TextPreviewMenu.2(this);
   
   private int a(int paramInt)
   {
-    int i = 1;
+    int n = 1;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -59,7 +59,7 @@ public class TextPreviewMenu
         if (paramInt != 1006) {
           if (paramInt != 3000)
           {
-            if ((paramInt == 1020) || (paramInt == 1021)) {}
+            if ((paramInt == 10008) || (paramInt == 10010) || (paramInt == 10013) || (paramInt == 1020) || (paramInt == 1021)) {}
           }
           else {
             switch (paramInt)
@@ -71,13 +71,8 @@ public class TextPreviewMenu
                 switch (paramInt)
                 {
                 default: 
-                  switch (paramInt)
-                  {
-                  default: 
-                    return -2;
-                    return 4;
-                  }
-                  break;
+                  return -2;
+                  return 4;
                 }
                 break;
               }
@@ -87,9 +82,9 @@ public class TextPreviewMenu
         }
         return 3;
       }
-      i = 2;
+      n = 2;
     }
-    return i;
+    return n;
   }
   
   private void a(Activity paramActivity, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -116,7 +111,7 @@ public class TextPreviewMenu
   
   private void a(Intent paramIntent)
   {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.d.get();
     if (localTextPreviewActivity != null) {
       localTextPreviewActivity.startActivityForResult(paramIntent, -1);
     }
@@ -124,117 +119,117 @@ public class TextPreviewMenu
   
   private void a(TextPreviewActivity paramTextPreviewActivity)
   {
-    paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView.a(paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView);
-    paramTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView.setOnMenuClickListener(new TextPreviewMenu.1(this, paramTextPreviewActivity));
-    paramTextPreviewActivity.j.setOnClickListener(this);
-    paramTextPreviewActivity.k.setOnClickListener(this);
-    paramTextPreviewActivity.l.setOnClickListener(this);
-    paramTextPreviewActivity.m.setOnClickListener(this);
+    paramTextPreviewActivity.U.a(paramTextPreviewActivity.T);
+    paramTextPreviewActivity.U.setOnMenuClickListener(new TextPreviewMenu.1(this, paramTextPreviewActivity));
+    paramTextPreviewActivity.W.setOnClickListener(this);
+    paramTextPreviewActivity.X.setOnClickListener(this);
+    paramTextPreviewActivity.Y.setOnClickListener(this);
+    paramTextPreviewActivity.Z.setOnClickListener(this);
   }
   
   private void a(TextPreviewActivity paramTextPreviewActivity, int paramInt1, int paramInt2)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramTextPreviewActivity.jdField_a_of_type_ComTencentWidgetScrollView.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramTextPreviewActivity.p.getLayoutParams();
     localLayoutParams.bottomMargin = AIOUtils.b(paramInt1, paramTextPreviewActivity.getResources());
-    float f = paramInt2;
-    localLayoutParams.leftMargin = AIOUtils.b(f, paramTextPreviewActivity.getResources());
-    localLayoutParams.rightMargin = AIOUtils.b(f, paramTextPreviewActivity.getResources());
-    paramTextPreviewActivity.jdField_a_of_type_ComTencentWidgetScrollView.setLayoutParams(localLayoutParams);
-    paramTextPreviewActivity.jdField_a_of_type_ComTencentWidgetScrollView.post(new TextPreviewMenu.3(this, paramTextPreviewActivity));
+    float f1 = paramInt2;
+    localLayoutParams.leftMargin = AIOUtils.b(f1, paramTextPreviewActivity.getResources());
+    localLayoutParams.rightMargin = AIOUtils.b(f1, paramTextPreviewActivity.getResources());
+    paramTextPreviewActivity.p.setLayoutParams(localLayoutParams);
+    paramTextPreviewActivity.p.post(new TextPreviewMenu.3(this, paramTextPreviewActivity));
   }
   
   private void a(List<String> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+      this.l = paramList;
+      TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.d.get();
       if (localTextPreviewActivity != null)
       {
-        localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setVisibility(8);
-        localTextPreviewActivity.i.setVisibility(8);
-        localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView.setParticipleItems(paramList);
-        localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView.a();
-        localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView.b();
+        localTextPreviewActivity.o.setVisibility(8);
+        localTextPreviewActivity.V.setVisibility(8);
+        localTextPreviewActivity.T.setParticipleItems(paramList);
+        localTextPreviewActivity.T.a();
+        localTextPreviewActivity.U.b();
         a(localTextPreviewActivity, 60, 10);
       }
     }
     else
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131714681), 0).a();
-    }
-  }
-  
-  private void c()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      a(this.jdField_a_of_type_JavaUtilList);
-      return;
-    }
-    localObject = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (localObject != null)
-    {
-      if (!NetworkUtil.isNetSupport((Context)localObject))
-      {
-        QQToast.a((Context)localObject, HardCodeUtil.a(2131714671), 0).b(((TextPreviewActivity)localObject).getResources().getDimensionPixelSize(2131299168));
-        return;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        ((IParticipleApi)QRoute.api(IParticipleApi.class)).participleTheContent(((TextPreviewActivity)localObject).app, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-        d();
-      }
-    }
-  }
-  
-  private void d()
-  {
-    Activity localActivity = (Activity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if (localActivity != null)
-    {
-      Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
-      if (localDialog == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView = new TextPreviewMenu.ProgressView(localActivity);
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(localActivity);
-        if (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null) {
-          this.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        }
-        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView);
-        this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new CancelDialogListener(localActivity));
-      }
-      else
-      {
-        localDialog.dismiss();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableTextPreviewMenu$ProgressView.setProgressText(HardCodeUtil.a(2131714682));
-      this.jdField_a_of_type_AndroidAppDialog.show();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131912190), 0).show();
     }
   }
   
   private void e()
   {
-    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
-    if (localDialog != null)
+    Object localObject = this.l;
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      localDialog.setOnCancelListener(null);
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      a(this.l);
+      return;
+    }
+    localObject = (TextPreviewActivity)this.d.get();
+    if (localObject != null)
+    {
+      if (!NetworkUtil.isNetSupport((Context)localObject))
+      {
+        QQToast.makeText((Context)localObject, HardCodeUtil.a(2131912180), 0).show(((TextPreviewActivity)localObject).getResources().getDimensionPixelSize(2131299920));
+        return;
+      }
+      if (!TextUtils.isEmpty(this.e))
+      {
+        ((IParticipleApi)QRoute.api(IParticipleApi.class)).participleTheContent(((TextPreviewActivity)localObject).app, this.e, this.i);
+        f();
+      }
     }
   }
   
   private void f()
   {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.d.get();
+    if (localActivity != null)
+    {
+      Dialog localDialog = this.f;
+      if (localDialog == null)
+      {
+        this.g = new TextPreviewMenu.ProgressView(localActivity);
+        this.f = new ReportDialog(localActivity);
+        if (this.f.getWindow() != null) {
+          this.f.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        }
+        this.f.setCanceledOnTouchOutside(false);
+        this.f.requestWindowFeature(1);
+        this.f.setContentView(this.g);
+        this.f.setOnCancelListener(new CancelDialogListener(localActivity));
+      }
+      else
+      {
+        localDialog.dismiss();
+      }
+      this.g.setProgressText(HardCodeUtil.a(2131912191));
+      this.f.show();
+    }
+  }
+  
+  private void g()
+  {
+    Dialog localDialog = this.f;
+    if (localDialog != null)
+    {
+      localDialog.setOnCancelListener(null);
+      this.f.dismiss();
+    }
+  }
+  
+  private void h()
+  {
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.d.get();
     if (localTextPreviewActivity != null)
     {
-      localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleBottomMenuView.setVisibility(8);
-      localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView.setVisibility(8);
-      localTextPreviewActivity.i.setVisibility(0);
-      localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setVisibility(0);
+      localTextPreviewActivity.U.setVisibility(8);
+      localTextPreviewActivity.T.setVisibility(8);
+      localTextPreviewActivity.V.setVisibility(0);
+      localTextPreviewActivity.o.setVisibility(0);
       a(localTextPreviewActivity, 135, 20);
     }
   }
@@ -242,99 +237,99 @@ public class TextPreviewMenu
   public void a(TextPreviewActivity paramTextPreviewActivity, ContainerView paramContainerView)
   {
     super.a(paramTextPreviewActivity, paramContainerView);
-    this.jdField_a_of_type_Int = paramTextPreviewActivity.jdField_a_of_type_Int;
-    this.jdField_b_of_type_JavaLangString = paramTextPreviewActivity.c;
-    this.jdField_a_of_type_Boolean = paramTextPreviewActivity.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_Int = paramTextPreviewActivity.jdField_b_of_type_Int;
+    this.h = paramTextPreviewActivity.b;
+    this.i = paramTextPreviewActivity.d;
+    this.j = paramTextPreviewActivity.f;
+    this.k = paramTextPreviewActivity.e;
     a(paramTextPreviewActivity);
-    paramTextPreviewActivity.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqParticipleParticipleObserver);
+    paramTextPreviewActivity.app.addObserver(this.m);
   }
   
   protected void a(QQCustomMenu paramQQCustomMenu)
   {
-    paramQQCustomMenu.a(2131365311, HardCodeUtil.a(2131714676), 2130838903);
-    paramQQCustomMenu.a(2131367180, HardCodeUtil.a(2131714674), 2130838912);
-    int i = this.jdField_a_of_type_Int;
-    if ((i != 0) && (i != 1))
+    paramQQCustomMenu.a(2131431492, HardCodeUtil.a(2131912185), 2130839057);
+    paramQQCustomMenu.a(2131433636, HardCodeUtil.a(2131912183), 2130839066);
+    int n = this.h;
+    if ((n != 0) && (n != 1))
     {
-      if (i == 3000)
+      if (n == 3000)
       {
-        TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-        if ((localTextPreviewActivity != null) && (localTextPreviewActivity.app != null) && (!this.jdField_b_of_type_JavaLangString.equals(localTextPreviewActivity.app.getCurrentAccountUin()))) {
-          paramQQCustomMenu.a(2131376417, HardCodeUtil.a(2131714675), 2130838918);
+        TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.d.get();
+        if ((localTextPreviewActivity != null) && (localTextPreviewActivity.app != null) && (!this.i.equals(localTextPreviewActivity.app.getCurrentAccountUin()))) {
+          paramQQCustomMenu.a(2131444634, HardCodeUtil.a(2131912184), 2130839072);
         }
       }
     }
-    else if ((!this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Int != -2)) {
-      paramQQCustomMenu.a(2131376417, HardCodeUtil.a(2131714683), 2130838918);
+    else if ((!this.j) && (this.k != -2)) {
+      paramQQCustomMenu.a(2131444634, HardCodeUtil.a(2131912192), 2130839072);
     }
-    paramQQCustomMenu.a(2131366494, HardCodeUtil.a(2131714677), 2130838911);
+    paramQQCustomMenu.a(2131432813, HardCodeUtil.a(2131912186), 2130839065);
   }
   
   protected void a(ContainerView paramContainerView, View paramView)
   {
     super.a(paramContainerView, paramView);
-    int i = a(this.jdField_b_of_type_Int);
-    ReportController.b((AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "dc00898", "", "", "0X8009EFF", "0X8009EFF", i, 0, "", "", "", "");
+    int n = a(this.k);
+    ReportController.b((AppRuntime)this.c.get(), "dc00898", "", "", "0X8009EFF", "0X8009EFF", n, 0, "", "", "", "");
   }
   
-  public boolean a()
+  public void b(ContainerView paramContainerView)
   {
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    super.b(paramContainerView);
+    paramContainerView = (TextPreviewActivity)this.d.get();
+    if ((paramContainerView != null) && (paramContainerView.app != null)) {
+      paramContainerView.app.removeObserver(this.m);
+    }
+    g();
+  }
+  
+  public boolean d()
+  {
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.d.get();
     boolean bool2 = false;
     boolean bool1 = false;
     if (localTextPreviewActivity != null)
     {
-      if (localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqWidgetParticipleParticipleView.getVisibility() == 0) {
+      if (localTextPreviewActivity.T.getVisibility() == 0) {
         bool1 = true;
       }
       bool2 = bool1;
       if (bool1)
       {
-        f();
+        h();
         bool2 = bool1;
       }
     }
     return bool2;
   }
   
-  public void b(ContainerView paramContainerView)
-  {
-    super.b(paramContainerView);
-    paramContainerView = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-    if ((paramContainerView != null) && (paramContainerView.app != null)) {
-      paramContainerView.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqParticipleParticipleObserver);
-    }
-    e();
-  }
-  
   public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.c.get();
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.d.get();
     MessageRecord localMessageRecord;
     if (localTextPreviewActivity == null) {
       localMessageRecord = null;
     } else {
-      localMessageRecord = localTextPreviewActivity.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageRecord = localTextPreviewActivity.aa;
     }
     boolean bool = false;
     switch (paramView.getId())
     {
     default: 
       break;
-    case 2131377768: 
-    case 2131377769: 
+    case 2131446228: 
+    case 2131446229: 
       if (localTextPreviewActivity != null)
       {
         localTextPreviewActivity.a(a());
         ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 5, 0, "", "", "", "");
       }
       break;
-    case 2131377136: 
+    case 2131445511: 
       AIOSelectableDelegateImpl.a().a(null);
       break;
-    case 2131376417: 
+    case 2131444634: 
       if (localTextPreviewActivity != null)
       {
         localTextPreviewActivity.setResult(14001, localTextPreviewActivity.getIntent());
@@ -342,47 +337,52 @@ public class TextPreviewMenu
         ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A1D1", "0X800A1D1", 4, 0, "", "", "", "");
       }
       break;
-    case 2131367180: 
+    case 2131433636: 
       ECommerceDataReportUtil.a(localQQAppInterface, localMessageRecord, 3);
-      MenuUtil.a((Activity)paramView.getContext(), a());
+      int n = localTextPreviewActivity.a();
+      if (n >= 0) {
+        MenuUtil.a((Activity)paramView.getContext(), a(), n);
+      } else {
+        MenuUtil.a((Activity)paramView.getContext(), a());
+      }
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009F01", "0X8009F01", 0, 0, "", "", "", "");
       break;
-    case 2131367101: 
+    case 2131433555: 
       if (localTextPreviewActivity != null) {
-        localTextPreviewActivity.b();
+        localTextPreviewActivity.c();
       } else {
         QLog.e("TextPreviewMenu", 1, "activity is null, so activity.onClickFontSettingBtn not invoke");
       }
       break;
-    case 2131367045: 
-      c();
+    case 2131433495: 
+      e();
       if (localTextPreviewActivity != null) {
         ReportController.b(localTextPreviewActivity.app, "dc00898", "", "", "0X800A357", "0X800A357", 1, 0, "", "", "", "");
       } else {
         QLog.e("TextPreviewMenu", 1, "activity is null, so ReportController.reportClickEvent not invoke");
       }
       break;
-    case 2131366494: 
+    case 2131432813: 
       ECommerceDataReportUtil.a(localQQAppInterface, localMessageRecord, 4);
       if (localQQAppInterface != null) {
         MenuUtil.a((Activity)paramView.getContext(), localQQAppInterface, a());
       }
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009F02", "0X8009F02", 0, 0, "", "", "", "");
       break;
-    case 2131365253: 
+    case 2131431422: 
       bool = true;
-    case 2131365311: 
+    case 2131431492: 
       a(localTextPreviewActivity, localQQAppInterface, localMessageRecord, bool);
     }
-    if ((paramView.getId() != 2131377136) && (AIOSelectableDelegateImpl.a().c())) {
-      AIOSelectableDelegateImpl.a().d();
+    if ((paramView.getId() != 2131445511) && (AIOSelectableDelegateImpl.a().l())) {
+      AIOSelectableDelegateImpl.a().n();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.TextPreviewMenu
  * JD-Core Version:    0.7.0.1
  */

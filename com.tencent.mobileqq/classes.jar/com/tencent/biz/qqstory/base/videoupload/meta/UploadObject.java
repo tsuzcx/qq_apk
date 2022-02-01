@@ -8,19 +8,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class UploadObject
   extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public UploadObject.UploadFinishListener a;
-  protected AtomicInteger a;
-  
-  public UploadObject()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  }
+  public UploadObject.UploadFinishListener f;
+  protected AtomicInteger g = new AtomicInteger(0);
   
   protected abstract void a();
   
   public void a(UploadObject.UploadFinishListener paramUploadFinishListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaUploadObject$UploadFinishListener = paramUploadFinishListener;
+    this.f = paramUploadFinishListener;
   }
   
   protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
@@ -30,7 +25,7 @@ public abstract class UploadObject
   
   protected void b()
   {
-    UploadObject.UploadFinishListener localUploadFinishListener = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadMetaUploadObject$UploadFinishListener;
+    UploadObject.UploadFinishListener localUploadFinishListener = this.f;
     if (localUploadFinishListener != null) {
       localUploadFinishListener.a(this);
     }
@@ -38,7 +33,7 @@ public abstract class UploadObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.UploadObject
  * JD-Core Version:    0.7.0.1
  */

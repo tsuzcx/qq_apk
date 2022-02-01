@@ -13,26 +13,26 @@ class QlinkStandardDialogActivity$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (this.b) {
-        FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
+        FileManagerUtil.a(this.c, null, 777, false, 0);
       } else {
-        FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
+        FileManagerUtil.a(this.c, null, 888, false, 0);
       }
     }
     else
     {
       paramDialogInterface = new Intent();
       paramDialogInterface.putExtra("from", "qlink");
-      RouteUtils.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, paramDialogInterface, "/qrscan/scanner");
+      RouteUtils.a(this.c, paramDialogInterface, "/qrscan/scanner");
     }
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+    this.c.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkStandardDialogActivity.5
  * JD-Core Version:    0.7.0.1
  */

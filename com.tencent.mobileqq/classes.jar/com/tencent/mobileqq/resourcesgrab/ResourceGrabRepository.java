@@ -79,14 +79,14 @@ class ResourceGrabRepository
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inScaled = false;
-      if ((!ThemeUtil.isDefaultTheme()) && (!TextUtils.isEmpty(paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFilePath)))
+      if ((!ThemeUtil.isDefaultTheme()) && (!TextUtils.isEmpty(paramResourceGrabSkinData.b.mFilePath)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ResourceGrabModel", 2, "get theme package resource");
         }
-        return BitmapFactory.decodeFile(paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFilePath, localOptions);
+        return BitmapFactory.decodeFile(paramResourceGrabSkinData.b.mFilePath, localOptions);
       }
-      paramResourceGrabSkinData = paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName.substring(0, paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName.indexOf("."));
+      paramResourceGrabSkinData = paramResourceGrabSkinData.b.mFileName.substring(0, paramResourceGrabSkinData.b.mFileName.indexOf("."));
       BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
       String str = localBaseApplication.getPackageName();
       int i = localBaseApplication.getResources().getIdentifier(paramResourceGrabSkinData, "drawable", str);
@@ -112,7 +112,7 @@ class ResourceGrabRepository
   
   private void a(ResourceGrabSkinData paramResourceGrabSkinData, HashSet<String> paramHashSet)
   {
-    if (paramResourceGrabSkinData.jdField_a_of_type_Int == 3)
+    if (paramResourceGrabSkinData.a == 3)
     {
       b(paramResourceGrabSkinData, paramHashSet);
       return;
@@ -322,18 +322,18 @@ class ResourceGrabRepository
   private void b(ResourceGrabSkinData paramResourceGrabSkinData, HashSet<String> paramHashSet)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((paramResourceGrabSkinData.jdField_a_of_type_Array2dOfInt != null) && (paramResourceGrabSkinData.jdField_a_of_type_ArrayOfInt != null) && (paramResourceGrabSkinData.jdField_a_of_type_Array2dOfInt.length == paramResourceGrabSkinData.jdField_a_of_type_ArrayOfInt.length))
+    if ((paramResourceGrabSkinData.c != null) && (paramResourceGrabSkinData.d != null) && (paramResourceGrabSkinData.c.length == paramResourceGrabSkinData.d.length))
     {
       localStringBuilder.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
       localStringBuilder.append("<selector xmlns:android=\"http://schemas.android.com/apk/res/android\">\n");
       int i = 0;
-      while (i < paramResourceGrabSkinData.jdField_a_of_type_ArrayOfInt.length)
+      while (i < paramResourceGrabSkinData.d.length)
       {
         localStringBuilder.append("    <item ");
         int j = 0;
-        while (j < paramResourceGrabSkinData.jdField_a_of_type_Array2dOfInt[i].length)
+        while (j < paramResourceGrabSkinData.c[i].length)
         {
-          int k = paramResourceGrabSkinData.jdField_a_of_type_Array2dOfInt[i][j];
+          int k = paramResourceGrabSkinData.c[i][j];
           String str = (String)this.a.get(k);
           if (!TextUtils.isEmpty(str))
           {
@@ -342,7 +342,7 @@ class ResourceGrabRepository
           }
           j += 1;
         }
-        j = paramResourceGrabSkinData.jdField_a_of_type_ArrayOfInt[i];
+        j = paramResourceGrabSkinData.d[i];
         localStringBuilder.append("android:color=\"");
         localStringBuilder.append("#");
         localStringBuilder.append(Integer.toHexString(j).toUpperCase());
@@ -352,7 +352,7 @@ class ResourceGrabRepository
       }
       localStringBuilder.append("</selector>");
     }
-    a(localStringBuilder.toString(), paramHashSet, paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
+    a(localStringBuilder.toString(), paramHashSet, paramResourceGrabSkinData.b.mFileName);
   }
   
   private void c(ResourceGrabSkinData paramResourceGrabSkinData, HashSet<String> paramHashSet)
@@ -360,8 +360,8 @@ class ResourceGrabRepository
     Bitmap localBitmap = a(paramResourceGrabSkinData);
     if (localBitmap != null)
     {
-      localBitmap = a(localBitmap, paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
-      paramResourceGrabSkinData = a(paramResourceGrabSkinData.jdField_a_of_type_ComTencentThemeSkinData.mFileName);
+      localBitmap = a(localBitmap, paramResourceGrabSkinData.b.mFileName);
+      paramResourceGrabSkinData = a(paramResourceGrabSkinData.b.mFileName);
       paramHashSet.add(paramResourceGrabSkinData.getAbsolutePath());
       try
       {
@@ -436,7 +436,7 @@ class ResourceGrabRepository
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabRepository
  * JD-Core Version:    0.7.0.1
  */

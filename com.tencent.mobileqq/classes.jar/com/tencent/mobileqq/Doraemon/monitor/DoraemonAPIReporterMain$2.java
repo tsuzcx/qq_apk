@@ -23,11 +23,11 @@ class DoraemonAPIReporterMain$2
     {
       paramBundle = new StringBuilder();
       paramBundle.append("onResult key=");
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.a);
       paramBundle.append(", api=");
       paramBundle.append(this.b);
       paramBundle.append(", count=");
-      paramBundle.append(this.jdField_a_of_type_Int);
+      paramBundle.append(this.c);
       paramBundle.append(", code=");
       paramBundle.append(paramInt);
       QLog.i("DoraemonOpenAPI.report", 2, paramBundle.toString());
@@ -46,7 +46,7 @@ class DoraemonAPIReporterMain$2
           QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
           return;
         }
-        DoraemonAPIReporterMain.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporterMain, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), 1000L * paramBundle.report_freq_rsp.expire_time.get());
+        DoraemonAPIReporterMain.a(this.d, this.a, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), 1000L * paramBundle.report_freq_rsp.expire_time.get());
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -68,7 +68,7 @@ class DoraemonAPIReporterMain$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ final class RIJCoinAnimationUtils$refreshCoinUI$1$1
   
   public final void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    paramReadInJoyObserver.e();
+    paramReadInJoyObserver.cD_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.RIJCoinAnimationUtils.refreshCoinUI.1.1
  * JD-Core Version:    0.7.0.1
  */

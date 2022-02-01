@@ -14,28 +14,28 @@ import java.util.ArrayList;
 class LocalFileBrowserActivity$2
   implements ActionSheet.OnButtonClickListener
 {
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1))
+    if ((paramInt == 0) && (this.b.P != -1))
     {
-      paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-      if ((FileUtils.fileExistsAndNotEmpty(paramView.c())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(paramView.c())))
+      paramView = (FileInfo)this.b.O.get(this.b.P);
+      if ((FileUtils.fileExistsAndNotEmpty(paramView.d())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(paramView.d())))
       {
-        FMToastUtil.a(2131692274);
+        FMToastUtil.a(2131889262);
       }
       else
       {
-        QQFileManagerUtil.e(paramView.c());
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
-        LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
+        QQFileManagerUtil.u(paramView.d());
+        this.b.O.remove(this.b.P);
+        LocalFileBrowserActivity.a(this.b);
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity.2
  * JD-Core Version:    0.7.0.1
  */

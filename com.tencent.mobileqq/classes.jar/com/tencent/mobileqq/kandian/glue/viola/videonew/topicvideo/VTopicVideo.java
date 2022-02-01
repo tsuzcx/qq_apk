@@ -44,8 +44,8 @@ public class VTopicVideo
   
   public VVideoView.OnVideoViewLifeCycleChangeListener getVideoLifeCycleChangeListener()
   {
-    if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
-      return ((VVideoView)getHostView()).a();
+    if ((getHostView() != null) && (((VVideoView)getHostView()).getVideoViewLifeCycleChangeListener() != null)) {
+      return ((VVideoView)getHostView()).getVideoViewLifeCycleChangeListener();
     }
     return null;
   }
@@ -76,7 +76,7 @@ public class VTopicVideo
             localJSONObject.put(str, localEntry.getValue());
           }
         }
-        paramContext.a().a(paramContext, localJSONObject);
+        paramContext.getVideoViewControlListener().a(paramContext, localJSONObject);
       }
     }
     catch (Exception localException)
@@ -128,7 +128,7 @@ public class VTopicVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.topicvideo.VTopicVideo
  * JD-Core Version:    0.7.0.1
  */

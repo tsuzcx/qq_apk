@@ -10,12 +10,12 @@ class OfflineFileBubbleModel$5
   
   public void a(int paramInt)
   {
-    FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, OfflineFileBubbleModel.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
+    FileManagerUtil.a(this.a.b, OfflineFileBubbleModel.a(this.a), this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.5
  * JD-Core Version:    0.7.0.1
  */

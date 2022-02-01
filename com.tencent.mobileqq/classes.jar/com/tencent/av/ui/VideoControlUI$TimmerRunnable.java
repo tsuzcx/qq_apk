@@ -12,14 +12,14 @@ class VideoControlUI$TimmerRunnable
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.g))
+    if ((this.this$0.am != null) && (this.this$0.ae))
     {
-      String str = UITools.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a());
+      String str = UITools.a(this.this$0.am.z());
       VideoControlUI localVideoControlUI = this.this$0;
-      localVideoControlUI.n += 1;
-      str = this.this$0.a(str);
-      this.this$0.h(str);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
+      localVideoControlUI.Z += 1;
+      str = this.this$0.g(str);
+      this.this$0.i(str);
+      this.this$0.al.a().postDelayed(this, 1000L);
     }
   }
 }

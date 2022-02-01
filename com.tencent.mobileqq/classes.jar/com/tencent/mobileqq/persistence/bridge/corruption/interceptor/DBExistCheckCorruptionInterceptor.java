@@ -27,11 +27,7 @@ public class DBExistCheckCorruptionInterceptor
     localObject1 = ((MobileQQ)localObject1).getDatabasePath(localStringBuilder.toString());
     if ((((File)localObject1).exists()) && (((File)localObject1).length() != 0L))
     {
-      localObject2 = ((AppRuntime)localObject2).getApplication().getDatabasePath("chat.trace");
-      if ((((File)localObject1).exists()) && ((!((File)localObject2).exists()) || (((File)localObject2).length() == 0L))) {
-        FileUtils.copyFile((File)localObject1, (File)localObject2);
-      }
-      QLog.d("DBExistCheckCorruptionInterceptor", 1, "copy temp db");
+      a((AppRuntime)localObject2, (File)localObject1);
       return (Void)paramChain.proceed();
     }
     localObject2 = new HashMap();
@@ -41,14 +37,46 @@ public class DBExistCheckCorruptionInterceptor
       paramChain = "lenZero";
     }
     ((HashMap)localObject2).put("reason", paramChain);
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.m, true, -1L, 0L, (HashMap)localObject2, null, false);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, DBFixManager.w, true, -1L, 0L, (HashMap)localObject2, null, false);
     FileUtils.deleteFile(((File)localObject1).getPath());
     return null;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, File paramFile)
+  {
+    Object localObject = paramAppRuntime.getApplication().getDatabasePath("chat.trace");
+    if ((paramFile.exists()) && ((!((File)localObject).exists()) || (((File)localObject).length() == 0L)))
+    {
+      QLog.d("DBExistCheckCorruptionInterceptor", 1, "copy temp db");
+      FileUtils.copyFile(paramFile, (File)localObject);
+    }
+    paramFile = paramAppRuntime.getApplication();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramAppRuntime.getAccount());
+    ((StringBuilder)localObject).append(".db-wal");
+    paramFile = paramFile.getDatabasePath(((StringBuilder)localObject).toString());
+    localObject = paramAppRuntime.getApplication().getDatabasePath("chat.trace-wal");
+    if ((!((File)localObject).exists()) && (paramFile.exists()) && (paramFile.length() > 0L))
+    {
+      QLog.d("DBExistCheckCorruptionInterceptor", 1, "copy temp db-wal");
+      FileUtils.copyFile(paramFile, (File)localObject);
+    }
+    paramFile = paramAppRuntime.getApplication();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramAppRuntime.getAccount());
+    ((StringBuilder)localObject).append(".db-shm");
+    paramFile = paramFile.getDatabasePath(((StringBuilder)localObject).toString());
+    paramAppRuntime = paramAppRuntime.getApplication().getDatabasePath("chat.trace-shm");
+    if ((!paramAppRuntime.exists()) && (paramFile.exists()) && (paramFile.length() > 0L))
+    {
+      QLog.d("DBExistCheckCorruptionInterceptor", 1, "copy temp db-shm");
+      FileUtils.copyFile(paramFile, paramAppRuntime);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.corruption.interceptor.DBExistCheckCorruptionInterceptor
  * JD-Core Version:    0.7.0.1
  */

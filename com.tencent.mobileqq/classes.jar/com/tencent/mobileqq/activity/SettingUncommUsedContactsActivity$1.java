@@ -13,9 +13,9 @@ class SettingUncommUsedContactsActivity$1
     if (paramBoolean1)
     {
       SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.a.getSwitch(), paramBoolean2);
       localSettingUncommUsedContactsActivity = this.a;
-      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.b.a(), paramBoolean3);
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.b.getSwitch(), paramBoolean3);
     }
   }
   
@@ -23,9 +23,9 @@ class SettingUncommUsedContactsActivity$1
   {
     if (!paramBoolean1)
     {
-      this.a.a(2131718834, 1);
+      this.a.a(2131916364, 1);
       SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.a.getSwitch(), paramBoolean2);
     }
   }
   
@@ -33,15 +33,15 @@ class SettingUncommUsedContactsActivity$1
   {
     if (!paramBoolean1)
     {
-      this.a.a(2131718834, 1);
+      this.a.a(2131916364, 1);
       SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
-      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.b.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, localSettingUncommUsedContactsActivity.b.getSwitch(), paramBoolean2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity.1
  * JD-Core Version:    0.7.0.1
  */

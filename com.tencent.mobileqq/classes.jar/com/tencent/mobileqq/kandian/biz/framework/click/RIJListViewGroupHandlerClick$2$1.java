@@ -16,15 +16,15 @@ class RIJListViewGroupHandlerClick$2$1
   
   public void run()
   {
-    RIJListViewGroupHandlerClick.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$Builder);
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$Builder.a().getCount();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.b < i)
+    RIJListViewGroupHandlerClick.a(this.c.f, this.c.d);
+    int i = this.c.d.d().getCount();
+    if (this.c.e < i)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$Builder.a().getItem(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.b);
+      Object localObject = this.c.d.d().getItem(this.c.e);
       if ((localObject instanceof BaseArticleInfo))
       {
         localObject = (AbsBaseArticleInfo)localObject;
-        BaseArticleInfoKt.a((AbsBaseArticleInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$2.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickRIJListViewGroupHandlerClick$Builder.a().getString(2131693523), this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField, this.jdField_a_of_type_ComTencentMobileqqPbPBStringField);
+        BaseArticleInfoKt.a((AbsBaseArticleInfo)localObject, this.c.d.e().getString(2131891079), this.a, this.b);
         ((AbsBaseArticleInfo)localObject).invalidateProteusTemplateBean();
       }
     }
@@ -33,7 +33,7 @@ class RIJListViewGroupHandlerClick$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.click.RIJListViewGroupHandlerClick.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,47 +32,42 @@ public class CaptureComboInformationPaster
   extends CaptureComboBase
   implements InformationFacePackage.InformationPasterChangeListener, IEventReceiver
 {
-  public static HashMap<String, Drawable> a;
-  private float jdField_a_of_type_Float;
-  private CaptureComboInformationPaster.DownloadProgressCallback jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboInformationPaster$DownloadProgressCallback;
-  private QIMInformationPasterManager jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager;
-  private InformationFacePackage.Item jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item;
-  InformationFacePackage jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage;
-  private final String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private String jdField_b_of_type_JavaLangString;
-  private float jdField_c_of_type_Float;
-  int jdField_c_of_type_Int = 2;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static HashMap<String, Drawable> h = new HashMap();
+  InformationFacePackage f;
+  int g = 2;
+  private final String i;
+  private float j;
+  private String k;
+  private QIMInformationPasterManager l;
+  private InformationFacePackage.Item m;
+  private CaptureComboInformationPaster.DownloadProgressCallback n;
+  private float o;
+  private float p;
+  private String q;
+  private String r;
   
   public CaptureComboInformationPaster(InformationFacePackage paramInformationFacePackage, String paramString1, String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     super(null);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage = paramInformationFacePackage;
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Float = paramFloat1;
-    this.jdField_c_of_type_Float = paramFloat2;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager = ((QIMInformationPasterManager)QIMManager.a().c(12));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.a(paramString3);
-    this.jdField_c_of_type_JavaLangString = paramString1;
-    paramInformationFacePackage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item;
+    this.i = paramString2;
+    this.f = paramInformationFacePackage;
+    this.j = paramFloat3;
+    this.k = paramString3;
+    this.o = paramFloat1;
+    this.p = paramFloat2;
+    this.l = ((QIMInformationPasterManager)QIMManager.a().d(12));
+    this.m = this.f.b(paramString3);
+    this.q = paramString1;
+    paramInformationFacePackage = this.m;
     if (paramInformationFacePackage != null)
     {
       paramInformationFacePackage.a(this);
       paramInformationFacePackage = new StringBuilder();
       paramInformationFacePackage.append("CaptureComboInformationPaster_");
-      paramInformationFacePackage.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item.jdField_b_of_type_JavaLangString);
+      paramInformationFacePackage.append(this.m.b);
       paramInformationFacePackage.append("_");
-      paramInformationFacePackage.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item.jdField_a_of_type_JavaLangString);
-      this.d = paramInformationFacePackage.toString();
+      paramInformationFacePackage.append(this.m.a);
+      this.r = paramInformationFacePackage.toString();
     }
     if (QLog.isColorLevel())
     {
@@ -93,34 +88,34 @@ public class CaptureComboInformationPaster
       localStringBuilder.append("applyApngInfoPaster w=");
       localStringBuilder.append(paramDrawable.getIntrinsicWidth());
       localStringBuilder.append(" px=");
-      localStringBuilder.append(this.jdField_b_of_type_Float);
+      localStringBuilder.append(this.o);
       localStringBuilder.append(" py=");
-      localStringBuilder.append(this.jdField_c_of_type_Float);
+      localStringBuilder.append(this.p);
       localStringBuilder.append(" scale=");
-      localStringBuilder.append(this.jdField_a_of_type_Float);
+      localStringBuilder.append(this.j);
       QLog.d("CaptureComboInformationPaster", 2, localStringBuilder.toString());
     }
-    paramDrawable = new SelectedItem(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_b_of_type_JavaLangString, this.d, paramDrawable, paramInt);
+    paramDrawable = new SelectedItem(this.f.b, this.r, paramDrawable, paramInt);
     paramInt = ScreenUtil.SCREEN_WIDTH;
-    int i = ScreenUtil.SCREEN_HIGHT;
-    paramIFaceSelectedListener.b(paramDrawable, paramInt * this.jdField_b_of_type_Float, i * this.jdField_c_of_type_Float, this.jdField_a_of_type_Float, paramString, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
+    int i1 = ScreenUtil.SCREEN_HIGHT;
+    paramIFaceSelectedListener.b(paramDrawable, paramInt * this.o, i1 * this.p, this.j, paramString, this.d);
   }
   
   private void a(InformationFacePackage.Item paramItem, IFaceSelectedListener paramIFaceSelectedListener)
   {
     Object localObject1 = InfoStickerSaveUtils.b(paramItem);
-    int i;
-    if (paramItem.jdField_a_of_type_Int == 8)
+    int i1;
+    if (paramItem.c == 8)
     {
-      int j = Calendar.getInstance().get(7) - 1;
-      i = j;
-      if (j == 0) {
-        i = 7;
+      int i2 = Calendar.getInstance().get(7) - 1;
+      i1 = i2;
+      if (i2 == 0) {
+        i1 = 7;
       }
       paramItem = new StringBuilder();
       paramItem.append((String)localObject1);
       paramItem.append(File.separator);
-      paramItem.append(i);
+      paramItem.append(i1);
       paramItem.append(".apng");
       paramItem = paramItem.toString();
     }
@@ -156,19 +151,19 @@ public class CaptureComboInformationPaster
       Object localObject2 = localObject3;
       if (localURLDrawable != null)
       {
-        i = localURLDrawable.getStatus();
-        if (i != 1)
+        i1 = localURLDrawable.getStatus();
+        if (i1 != 1)
         {
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("urlDrawable is not  SUCCESSED :");
-            ((StringBuilder)localObject2).append(i);
+            ((StringBuilder)localObject2).append(i1);
             QLog.e("CaptureComboInformationPaster", 2, ((StringBuilder)localObject2).toString());
           }
           localURLDrawable.setURLDrawableListener(new CaptureComboInformationPaster.2(this, paramItem, localURLDrawable, paramIFaceSelectedListener));
-          jdField_a_of_type_JavaUtilHashMap.put(paramItem, localURLDrawable);
-          if (i == 2)
+          h.put(paramItem, localURLDrawable);
+          if (i1 == 2)
           {
             localURLDrawable.restartDownload();
             localObject2 = localObject3;
@@ -192,14 +187,14 @@ public class CaptureComboInformationPaster
       }
       paramItem = new StringBuilder();
       paramItem.append("can not create drawable from name:");
-      paramItem.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_b_of_type_JavaLangString);
+      paramItem.append(this.f.b);
       SLog.e("CaptureComboInformationPaster", paramItem.toString());
     }
   }
   
   private void a(DoodleLayout paramDoodleLayout, IFaceSelectedListener paramIFaceSelectedListener)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item.jdField_a_of_type_Int == 8)
+    if (this.m.c == 8)
     {
       if (paramDoodleLayout != null) {
         ThreadManager.excute(new CaptureComboInformationPaster.1(this, paramIFaceSelectedListener), 16, null, true);
@@ -207,20 +202,138 @@ public class CaptureComboInformationPaster
     }
     else
     {
-      int i = ScreenUtil.SCREEN_WIDTH;
-      int j = ScreenUtil.SCREEN_HIGHT;
-      paramIFaceSelectedListener.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item, this.d, i * this.jdField_b_of_type_Float, j * this.jdField_c_of_type_Float, this.jdField_a_of_type_Float);
+      int i1 = ScreenUtil.SCREEN_WIDTH;
+      int i2 = ScreenUtil.SCREEN_HIGHT;
+      paramIFaceSelectedListener.a(this.m, this.r, i1 * this.o, i2 * this.p, this.j);
     }
   }
   
-  public float a()
+  public int a(Activity paramActivity, int paramInt)
+  {
+    paramActivity = DoodleLayoutConnector.a().b(paramInt);
+    if ((paramActivity != null) && (this.m != null))
+    {
+      IFaceSelectedListener localIFaceSelectedListener = paramActivity.getFaceSelectedListener();
+      if (localIFaceSelectedListener != null)
+      {
+        a(paramActivity, localIFaceSelectedListener);
+        if (QLog.isColorLevel())
+        {
+          paramActivity = new StringBuilder();
+          paramActivity.append("apply id=");
+          paramActivity.append(this.i);
+          paramActivity.append(" name=");
+          paramActivity.append(this.k);
+          paramActivity.append(" state=");
+          paramActivity.append(this.g);
+          QLog.d("CaptureComboInformationPaster", 2, paramActivity.toString());
+        }
+      }
+    }
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.g = 2;
+    super.a(paramInt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      a(0);
+    }
+  }
+  
+  public void b(Activity paramActivity, int paramInt)
+  {
+    if (this.m != null)
+    {
+      paramActivity = DoodleLayoutConnector.a().b(paramInt);
+      if (paramActivity != null) {
+        paramActivity.getFaceSelectedListener().a(this.f.b, this.r);
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("unApply no item =");
+      paramActivity.append(this.k);
+      QLog.d("CaptureComboInformationPaster", 2, paramActivity.toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("unApply id=");
+      paramActivity.append(this.i);
+      paramActivity.append(" name=");
+      paramActivity.append(this.k);
+      paramActivity.append(" state=");
+      paramActivity.append(this.g);
+      QLog.d("CaptureComboInformationPaster", 2, paramActivity.toString());
+    }
+  }
+  
+  public int c()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboInformationPaster$DownloadProgressCallback != null)
+      if (this.m != null) {
+        if (this.l.a(this.m)) {
+          this.g = 3;
+        } else if (this.l.b(this.m)) {
+          this.g = 1;
+        } else {
+          this.g = 2;
+        }
+      }
+      int i1 = this.g;
+      return i1;
+    }
+    finally {}
+  }
+  
+  public int d()
+  {
+    try
+    {
+      if (this.m != null)
       {
-        float f = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboInformationPaster$DownloadProgressCallback.a();
-        return f;
+        if (this.n == null) {
+          this.n = new CaptureComboInformationPaster.DownloadProgressCallback(this);
+        }
+        this.l.a(this.m, this.n);
+        a();
+        this.g = 1;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("create mState=");
+          localStringBuilder.append(this.g);
+          localStringBuilder.append(" id=");
+          localStringBuilder.append(this.i);
+          QLog.d("CaptureComboInformationPaster", 2, localStringBuilder.toString());
+        }
+      }
+      else
+      {
+        a(4);
+      }
+      int i1 = this.g;
+      return i1;
+    }
+    finally {}
+  }
+  
+  public float e()
+  {
+    try
+    {
+      if (this.n != null)
+      {
+        float f1 = this.n.a();
+        return f1;
       }
       return 1.0F;
     }
@@ -231,137 +344,19 @@ public class CaptureComboInformationPaster
     }
   }
   
-  public int a()
+  public void g()
   {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item != null) {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item)) {
-          this.jdField_c_of_type_Int = 3;
-        } else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item)) {
-          this.jdField_c_of_type_Int = 1;
-        } else {
-          this.jdField_c_of_type_Int = 2;
-        }
-      }
-      int i = this.jdField_c_of_type_Int;
-      return i;
-    }
-    finally {}
-  }
-  
-  public int a(Activity paramActivity, int paramInt)
-  {
-    paramActivity = DoodleLayoutConnector.a().a(paramInt);
-    if ((paramActivity != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item != null))
-    {
-      IFaceSelectedListener localIFaceSelectedListener = paramActivity.a();
-      if (localIFaceSelectedListener != null)
-      {
-        a(paramActivity, localIFaceSelectedListener);
-        if (QLog.isColorLevel())
-        {
-          paramActivity = new StringBuilder();
-          paramActivity.append("apply id=");
-          paramActivity.append(this.jdField_a_of_type_JavaLangString);
-          paramActivity.append(" name=");
-          paramActivity.append(this.jdField_b_of_type_JavaLangString);
-          paramActivity.append(" state=");
-          paramActivity.append(this.jdField_c_of_type_Int);
-          QLog.d("CaptureComboInformationPaster", 2, paramActivity.toString());
-        }
-      }
-    }
-    return 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_c_of_type_Int = 2;
-    super.a(paramInt);
-  }
-  
-  public void a(Activity paramActivity, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item != null)
-    {
-      paramActivity = DoodleLayoutConnector.a().a(paramInt);
-      if (paramActivity != null) {
-        paramActivity.a().a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage.jdField_b_of_type_JavaLangString, this.d);
-      }
-    }
-    else if (QLog.isColorLevel())
-    {
-      paramActivity = new StringBuilder();
-      paramActivity.append("unApply no item =");
-      paramActivity.append(this.jdField_b_of_type_JavaLangString);
-      QLog.d("CaptureComboInformationPaster", 2, paramActivity.toString());
-    }
-    if (QLog.isColorLevel())
-    {
-      paramActivity = new StringBuilder();
-      paramActivity.append("unApply id=");
-      paramActivity.append(this.jdField_a_of_type_JavaLangString);
-      paramActivity.append(" name=");
-      paramActivity.append(this.jdField_b_of_type_JavaLangString);
-      paramActivity.append(" state=");
-      paramActivity.append(this.jdField_c_of_type_Int);
-      QLog.d("CaptureComboInformationPaster", 2, paramActivity.toString());
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      a(0);
-    }
-  }
-  
-  public int b()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item != null)
-      {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboInformationPaster$DownloadProgressCallback == null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboInformationPaster$DownloadProgressCallback = new CaptureComboInformationPaster.DownloadProgressCallback(this);
-        }
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterCaptureComboInformationPaster$DownloadProgressCallback);
-        a();
-        this.jdField_c_of_type_Int = 1;
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("create mState=");
-          localStringBuilder.append(this.jdField_c_of_type_Int);
-          localStringBuilder.append(" id=");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-          QLog.d("CaptureComboInformationPaster", 2, localStringBuilder.toString());
-        }
-      }
-      else
-      {
-        a(4);
-      }
-      int i = this.jdField_c_of_type_Int;
-      return i;
-    }
-    finally {}
-  }
-  
-  public void c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceInformationFacePackage$Item;
+    Object localObject = this.m;
     if (localObject != null)
     {
-      if (((InformationFacePackage.Item)localObject).jdField_a_of_type_Int != 7) {
+      if (((InformationFacePackage.Item)localObject).c != 7) {
         return;
       }
       localObject = (CaptureComboManager)QIMManager.a(5);
-      ComboSet localComboSet = ((CaptureComboManager)localObject).a(this.jdField_c_of_type_JavaLangString);
+      ComboSet localComboSet = ((CaptureComboManager)localObject).a(this.q);
       if (localComboSet != null)
       {
-        localComboSet.a();
+        localComboSet.c();
         ((CaptureComboManager)localObject).a(localComboSet);
       }
     }
@@ -369,14 +364,14 @@ public class CaptureComboInformationPaster
   
   public boolean isValidate()
   {
-    return this.jdField_c_of_type_Int == 1;
+    return this.g == 1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("NP@");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("@");
     localStringBuilder.append(hashCode());
     return localStringBuilder.toString();
@@ -384,7 +379,7 @@ public class CaptureComboInformationPaster
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.CaptureComboInformationPaster
  * JD-Core Version:    0.7.0.1
  */

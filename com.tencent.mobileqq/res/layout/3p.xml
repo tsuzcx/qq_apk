@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/nmt" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/msi" android:layout_width="300.0dip" android:layout_height="300.0dip" android:layout_marginTop="3.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/abe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/axl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/a__" android:layout_centerHorizontal="true">
+            <TextView android:textSize="32.0dip" android:textColor="#ffffde2e" android:gravity="center" android:id="@id/n07" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="连续抢答" />
+            <com.tencent.avgame.ui.AVGameText android:id="@id/my0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/n07" />
+        </RelativeLayout>
+        <TextView android:textSize="32.0dip" android:gravity="center" android:id="@id/ay7" android:visibility="gone" android:layout_width="198.0dip" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_above="@id/a__" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:id="@id/a__" android:layout_width="198.0dip" android:layout_height="198.0dip" android:layout_centerInParent="true" android:layout_centerHorizontal="true">
+            <TextView android:textSize="28.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/b0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="124.0dip" android:maxLines="2" android:layout_centerHorizontal="true" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/oea" android:background="@drawable/38" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+                <com.tencent.avgame.widget.RoundCorneredRelativeLayout android:layout_gravity="center_vertical" android:id="@id/36" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.25dip">
+                    <ImageView android:id="@id/35" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+                </com.tencent.avgame.widget.RoundCorneredRelativeLayout>
+                <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/37" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:layout_marginRight="10.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/nv8" android:layout_width="275.0dip" android:layout_height="275.0dip" android:layout_marginTop="-23.0dip" android:layout_below="@id/msi" android:layout_centerHorizontal="true">
+        <RelativeLayout android:id="@id/ozx" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_centerInParent="true">
+            <com.tencent.avgame.widget.RoundCorneredRelativeLayout android:id="@id/ozy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:id="@id/ozv" android:layout_width="102.0dip" android:layout_height="102.0dip" android:src="@drawable/icy" android:layout_centerInParent="true" />
+                <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center|right" android:id="@id/pzd" android:background="@drawable/43" android:paddingRight="10.0dip" android:layout_width="81.0dip" android:layout_height="23.0dip" android:shadowDx="0.0" android:shadowDy="4.0" android:shadowRadius="8.0" android:layout_alignRight="@id/ozv" android:layout_alignBottom="@id/ozv" />
+            </com.tencent.avgame.widget.RoundCorneredRelativeLayout>
+            <ImageView android:id="@id/ozw" android:visibility="gone" android:layout_width="130.0dip" android:layout_height="130.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout android:id="@id/n3c" android:paddingBottom="4.0dip" android:layout_width="58.0dip" android:layout_height="31.0dip" android:layout_marginTop="-26.0dip" android:layout_alignTop="@id/ozx" android:layout_centerHorizontal="true" app:background_color="#ffffffff" app:corner_radius="12.0dip" app:direction="abp" app:triangle_round_radius="1.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="#ff8173ff" android:gravity="center" android:id="@id/n3b" android:layout_width="wrap_content" android:layout_height="27.0dip" android:minWidth="40.0dip" android:layout_centerHorizontal="true" />
+        </com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout>
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/ozz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="nickname" android:layout_below="@id/ozx" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/abf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout android:id="@id/p0_" android:paddingBottom="6.0dip" android:layout_width="76.0dip" android:layout_height="42.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" app:background_color="@color/al3" app:corner_radius="3.0dip" app:direction="abp" app:triangle_round_radius="1.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:gravity="center" android:id="@id/p09" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/wc_" />
+    </com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout>
+</merge>

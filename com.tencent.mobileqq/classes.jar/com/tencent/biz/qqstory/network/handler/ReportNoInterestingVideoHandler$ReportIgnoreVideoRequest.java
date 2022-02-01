@@ -10,13 +10,12 @@ import com.tencent.mobileqq.pb.PBStringField;
 public class ReportNoInterestingVideoHandler$ReportIgnoreVideoRequest
   extends NetworkRequest<ReportNoInterestingVideoHandler.ReportIgnoreVideoResponse>
 {
-  public final String a;
-  public String b = "";
+  public final String e = StoryApi.a("StorySvc.forbid_video");
+  public String f = "";
   
   public ReportNoInterestingVideoHandler$ReportIgnoreVideoRequest(ReportNoInterestingVideoHandler paramReportNoInterestingVideoHandler, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.forbid_video");
-    this.b = paramString;
+    this.f = paramString;
   }
   
   public ReportNoInterestingVideoHandler.ReportIgnoreVideoResponse a(byte[] paramArrayOfByte)
@@ -25,7 +24,7 @@ public class ReportNoInterestingVideoHandler$ReportIgnoreVideoRequest
     try
     {
       localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new ReportNoInterestingVideoHandler.ReportIgnoreVideoResponse(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerReportNoInterestingVideoHandler, localRspForbidVideo);
+      return new ReportNoInterestingVideoHandler.ReportIgnoreVideoResponse(this.g, localRspForbidVideo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
@@ -36,13 +35,13 @@ public class ReportNoInterestingVideoHandler$ReportIgnoreVideoRequest
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
+    localReqForbidVideo.vid.set(this.f);
     return localReqForbidVideo.toByteArray();
   }
   
@@ -50,7 +49,7 @@ public class ReportNoInterestingVideoHandler$ReportIgnoreVideoRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReportIgnoreVideoRequest{, vid='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -58,7 +57,7 @@ public class ReportNoInterestingVideoHandler$ReportIgnoreVideoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportNoInterestingVideoHandler.ReportIgnoreVideoRequest
  * JD-Core Version:    0.7.0.1
  */

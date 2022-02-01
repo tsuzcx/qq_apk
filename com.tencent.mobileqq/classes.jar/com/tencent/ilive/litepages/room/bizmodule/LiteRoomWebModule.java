@@ -49,8 +49,8 @@ public class LiteRoomWebModule
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    Object localObject = (ViewStub)getRootView().findViewById(2131363663);
-    ((ViewStub)localObject).setLayoutResource(2131559226);
+    Object localObject = (ViewStub)getRootView().findViewById(2131429576);
+    ((ViewStub)localObject).setLayoutResource(2131625146);
     this.viewGroup = ((ViewGroup)((ViewStub)localObject).inflate());
     this.viewGroup.setBackgroundColor(0);
     boolean bool = ((AppGeneralInfoService)getRoomEngine().getService(AppGeneralInfoService.class)).isSvrTestEnv();
@@ -113,7 +113,7 @@ public class LiteRoomWebModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteRoomWebModule
  * JD-Core Version:    0.7.0.1
  */

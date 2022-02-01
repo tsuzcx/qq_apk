@@ -39,21 +39,20 @@ public class TroopHWVoiceController
   public static String b = "record_url";
   public static String c = "record_local_path";
   public static String d = "shard_pref_name";
-  public int a;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler = new TroopHWVoiceController.2(this);
-  private IQQRecorder jdField_a_of_type_ComTencentMobileqqPttIQQRecorder;
-  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
-  private TroopHWVoiceController.RecordCallback jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback;
-  protected WeakReference<Context> a;
-  private int b = 0;
-  private String e;
+  public int e = 360000;
+  protected WeakReference<Context> f;
+  private SharedPreferences g;
+  private String h;
+  private int i = 0;
+  private TroopHWVoiceController.RecordCallback j;
+  private VoicePlayer k = null;
+  private IQQRecorder l;
+  private Handler m = new TroopHWVoiceController.2(this);
   
   public TroopHWVoiceController(Context paramContext, TroopHWVoiceController.RecordCallback paramRecordCallback)
   {
-    this.jdField_a_of_type_Int = 360000;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback = paramRecordCallback;
+    this.f = new WeakReference(paramContext);
+    this.j = paramRecordCallback;
   }
   
   public static SharedPreferences a(Context paramContext)
@@ -61,7 +60,7 @@ public class TroopHWVoiceController
     return paramContext.getSharedPreferences(d, 0);
   }
   
-  private boolean b()
+  private boolean c()
   {
     if (((IVideoProcessMonitor)QRoute.api(IVideoProcessMonitor.class)).isVideoProcessAlive())
     {
@@ -70,7 +69,7 @@ public class TroopHWVoiceController
       }
       return true;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.f;
     if (localObject == null) {
       return false;
     }
@@ -91,9 +90,9 @@ public class TroopHWVoiceController
     return false;
   }
   
-  private void e(String paramString)
+  private void f(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.f;
     if (localObject == null) {
       return;
     }
@@ -101,35 +100,10 @@ public class TroopHWVoiceController
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a((Context)localObject);
-    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    this.g = a((Context)localObject);
+    localObject = this.g.edit();
     ((SharedPreferences.Editor)localObject).remove(paramString);
     ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public String a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject == null) {
-      return null;
-    }
-    localObject = (Context)((WeakReference)localObject).get();
-    if (localObject == null) {
-      return null;
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a((Context)localObject);
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, null);
-  }
-  
-  public void a()
-  {
-    IQQRecorder localIQQRecorder = this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder;
-    if ((localIQQRecorder != null) && (!localIQQRecorder.b()))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 200L);
-    }
   }
   
   public void a(int paramInt, String paramString)
@@ -137,52 +111,52 @@ public class TroopHWVoiceController
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer == null)
+    if (this.k == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(paramString, new Handler(), paramString.endsWith("amr") ^ true);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(BaseApplication.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this);
-      this.b = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
+      this.k = new VoicePlayer(paramString, new Handler(), paramString.endsWith("amr") ^ true);
+      this.k.a(BaseApplication.getContext());
+      this.k.h();
+      this.k.a(this);
+      this.i = paramInt;
+      this.k.c();
     }
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
     a();
-    TroopHWVoiceController.RecordCallback localRecordCallback = this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback;
+    TroopHWVoiceController.RecordCallback localRecordCallback = this.j;
     if (localRecordCallback == null) {
       return;
     }
-    paramInt1 = this.b;
+    paramInt1 = this.i;
     if (paramInt1 > 0)
     {
       localRecordCallback.b(paramInt1, paramString);
-      this.b = 0;
+      this.i = 0;
       return;
     }
-    localRecordCallback.a(3, this.e);
+    localRecordCallback.a(3, this.h);
   }
   
   public void a(String paramString)
   {
-    this.e = paramString;
-    String str2 = a(paramString);
+    this.h = paramString;
+    String str2 = c(paramString);
     String str1 = str2;
     if (!TextUtils.isEmpty(str2))
     {
       str1 = str2;
       if (!new File(str2).exists())
       {
-        e(paramString);
+        f(paramString);
         str1 = null;
       }
     }
-    if ((this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback != null) && (!TextUtils.isEmpty(str1)))
+    if ((this.j != null) && (!TextUtils.isEmpty(str1)))
     {
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback.a(1, paramString);
-      c(str1);
+      this.j.a(1, paramString);
+      d(str1);
       return;
     }
     ThreadManager.postImmediately(new TroopHWVoiceController.1(this), null, false);
@@ -192,19 +166,30 @@ public class TroopHWVoiceController
   
   public boolean a()
   {
-    VoicePlayer localVoicePlayer = this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
+    VoicePlayer localVoicePlayer = this.k;
     if (localVoicePlayer != null)
     {
-      localVoicePlayer.e();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
+      localVoicePlayer.f();
+      this.k = null;
       return true;
     }
     return false;
   }
   
+  public void b()
+  {
+    IQQRecorder localIQQRecorder = this.l;
+    if ((localIQQRecorder != null) && (!localIQQRecorder.b()))
+    {
+      this.m.removeMessages(3);
+      this.m.removeMessages(2);
+      this.m.sendEmptyMessageDelayed(3, 200L);
+    }
+  }
+  
   public void b(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.f;
     if (localObject == null) {
       return;
     }
@@ -212,32 +197,46 @@ public class TroopHWVoiceController
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences = a((Context)localObject);
-    localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putString(this.e, paramString);
+    this.g = a((Context)localObject);
+    localObject = this.g.edit();
+    ((SharedPreferences.Editor)localObject).putString(this.h, paramString);
     ((SharedPreferences.Editor)localObject).commit();
   }
   
   public void b(String paramString, int paramInt1, int paramInt2) {}
   
-  public void c(String paramString)
+  public String c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    Object localObject = this.f;
+    if (localObject == null) {
+      return null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(paramString, new Handler(), paramString.endsWith("amr") ^ true);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(BaseApplication.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
+    localObject = (Context)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return null;
     }
+    this.g = a((Context)localObject);
+    return this.g.getString(paramString, null);
   }
   
   public void d(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    if (this.k == null)
+    {
+      this.k = new VoicePlayer(paramString, new Handler(), paramString.endsWith("amr") ^ true);
+      this.k.a(BaseApplication.getContext());
+      this.k.h();
+      this.k.a(this);
+      this.k.c();
+    }
+  }
+  
+  public void e(String paramString)
+  {
+    Object localObject1 = this.f;
     if (localObject1 == null) {
       return;
     }
@@ -246,27 +245,27 @@ public class TroopHWVoiceController
       return;
     }
     Object localObject2 = Environment.getExternalStorageDirectory();
-    int i;
+    int n;
     if ((((File)localObject2).exists()) && (((File)localObject2).canWrite())) {
-      i = 1;
+      n = 1;
     } else {
-      i = 0;
+      n = 0;
     }
-    if ((Environment.getExternalStorageState().equals("mounted")) && (i != 0)) {
-      i = 1;
+    if ((Environment.getExternalStorageState().equals("mounted")) && (n != 0)) {
+      n = 1;
     } else {
-      i = 0;
+      n = 0;
     }
-    if (i != 0)
+    if (n != 0)
     {
       if (new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1)
       {
-        if (b())
+        if (c())
         {
-          QQToast.a(BaseApplication.getContext(), 2131695163, 0).a();
+          QQToast.makeText(BaseApplication.getContext(), 2131892896, 0).show();
           return;
         }
-        if (AudioUtil.a(1))
+        if (AudioUtil.b(1))
         {
           ((IPttUtils)QRoute.api(IPttUtils.class)).showDialogAboutMeizuRecordPermission((Context)localObject1);
           return;
@@ -274,12 +273,12 @@ public class TroopHWVoiceController
         if (QLog.isColorLevel()) {
           QLog.d("TroopHWVoiceController", 2, "startRecord() is called");
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder == null) {
-          this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).createQQRecorder((Context)localObject1);
+        if (this.l == null) {
+          this.l = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).createQQRecorder((Context)localObject1);
         }
-        localObject2 = new RecordParams.RecorderParam(RecordParams.jdField_a_of_type_Int, 0, 0);
+        localObject2 = new RecordParams.RecorderParam(RecordParams.a, 0, 0);
         paramString = TransFileUtil.getTransferFilePath(paramString, null, 2, null);
-        this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder.a((RecordParams.RecorderParam)localObject2);
+        this.l.a((RecordParams.RecorderParam)localObject2);
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -287,7 +286,7 @@ public class TroopHWVoiceController
           ((StringBuilder)localObject2).append(paramString);
           QLog.i("QQRecorder", 2, ((StringBuilder)localObject2).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder.a(this);
+        this.l.a(this);
         QQAudioUtils.a((Context)localObject1, true);
         if (QLog.isColorLevel())
         {
@@ -296,20 +295,20 @@ public class TroopHWVoiceController
           ((StringBuilder)localObject1).append(System.currentTimeMillis());
           QLog.d("TroopHWVoiceController", 2, ((StringBuilder)localObject1).toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqPttIQQRecorder.b(paramString);
+        this.l.b(paramString);
         return;
       }
-      QQToast.a(BaseApplication.getContext(), 2131718577, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 2131916078, 0).show();
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 2131694487, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 2131892169, 0).show();
   }
   
   public int onBeginReceiveData(String paramString, RecordParams.RecorderParam paramRecorderParam)
   {
-    this.jdField_a_of_type_Int -= 200;
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, this.jdField_a_of_type_Int);
-    return this.jdField_a_of_type_Int + 200;
+    this.e -= 200;
+    this.m.sendEmptyMessageDelayed(2, this.e);
+    return this.e + 200;
   }
   
   public void onInitFailed(String paramString, RecordParams.RecorderParam paramRecorderParam) {}
@@ -321,23 +320,23 @@ public class TroopHWVoiceController
   public void onRecorderEnd(String paramString, RecordParams.RecorderParam paramRecorderParam, double paramDouble)
   {
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(paramString);
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback.a(paramString, paramDouble);
+    this.j.a(paramString, paramDouble);
   }
   
   public void onRecorderError(String paramString1, RecordParams.RecorderParam paramRecorderParam, String paramString2)
   {
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).cancelBufferTask(paramString1);
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback.b();
+    this.j.b();
   }
   
   public void onRecorderNotReady(String paramString) {}
   
   public void onRecorderPrepare(String paramString, RecordParams.RecorderParam paramRecorderParam)
   {
-    paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.jdField_a_of_type_Int);
+    paramRecorderParam = RecordParams.a(paramRecorderParam.c, paramRecorderParam.a);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).createBufferTask(paramString);
     ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(paramString, paramRecorderParam, paramRecorderParam.length);
-    AudioUtil.b(2131230749, false);
+    AudioUtil.b(2131230817, false);
   }
   
   public void onRecorderSilceEnd(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, RecordParams.RecorderParam paramRecorderParam)
@@ -347,7 +346,7 @@ public class TroopHWVoiceController
   
   public int onRecorderStart()
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWVoiceController$RecordCallback.a();
+    this.j.a();
     return 250;
   }
   
@@ -355,7 +354,7 @@ public class TroopHWVoiceController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWVoiceController
  * JD-Core Version:    0.7.0.1
  */

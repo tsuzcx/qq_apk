@@ -5,15 +5,15 @@ import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 public abstract interface WebUiUtils$WebShareReportInterface
   extends WebUiBaseInterface
 {
-  public abstract String a();
+  public abstract String d();
   
-  public abstract String b();
+  public abstract String e();
   
-  public abstract String c();
+  public abstract String f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareReportInterface
  * JD-Core Version:    0.7.0.1
  */

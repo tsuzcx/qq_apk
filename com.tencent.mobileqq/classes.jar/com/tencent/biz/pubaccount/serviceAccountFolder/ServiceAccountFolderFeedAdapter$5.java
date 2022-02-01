@@ -23,17 +23,17 @@ class ServiceAccountFolderFeedAdapter$5
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("do unfollow->uin:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append(", success:");
       ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
       QLog.d("ServiceAccountFolderFeedAdapter", 2, ((StringBuilder)localObject).toString());
     }
-    if ((ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter) != null) && (ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).isResume())) {
-      ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).b(false);
+    if ((ServiceAccountFolderFeedAdapter.b(this.b) != null) && (ServiceAccountFolderFeedAdapter.b(this.b).isResume())) {
+      ServiceAccountFolderFeedAdapter.b(this.b).b(false);
     }
     if (!paramBoolean)
     {
-      ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter);
+      ServiceAccountFolderFeedAdapter.c(this.b);
       return;
     }
     try
@@ -48,12 +48,12 @@ class ServiceAccountFolderFeedAdapter$5
           if (QLog.isColorLevel()) {
             QLog.d("ServiceAccountFolderFeedAdapter", 2, "unfollow success");
           }
-          ServiceAccountFolderFeedAdapter.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-          StructLongMessageDownloadProcessor.deleteTask(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a);
-          ((TroopBindPublicAccountMgr)ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.a);
+          ServiceAccountFolderFeedAdapter.b(this.b, this.a);
+          StructLongMessageDownloadProcessor.deleteTask(ServiceAccountFolderFeedAdapter.a(this.b), this.a.b);
+          ((TroopBindPublicAccountMgr)ServiceAccountFolderFeedAdapter.a(this.b).getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.a.b);
           return;
         }
-        ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter);
+        ServiceAccountFolderFeedAdapter.c(this.b);
       }
       return;
     }
@@ -62,7 +62,7 @@ class ServiceAccountFolderFeedAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter.5
  * JD-Core Version:    0.7.0.1
  */

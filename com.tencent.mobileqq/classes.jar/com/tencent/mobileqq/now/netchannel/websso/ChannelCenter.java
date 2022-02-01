@@ -12,20 +12,10 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class ChannelCenter
 {
-  private static ChannelCenter jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private WebServiceSSO jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  
-  public static ChannelCenter a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter == null)
-    {
-      jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter = new ChannelCenter();
-      jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter.a(false);
-    }
-    return jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter;
-  }
+  private static ChannelCenter a;
+  private WebServiceSSO b;
+  private volatile boolean c = false;
+  private Handler d = new Handler(Looper.getMainLooper());
   
   private WnsHeadProto.ForwardReq a(byte[] paramArrayOfByte)
   {
@@ -33,34 +23,44 @@ public class ChannelCenter
     localForwardReq.platform.set(16130);
     localForwardReq.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     localForwardReq.version.set(Config.a());
-    localForwardReq.version_code.set(Config.a());
-    localForwardReq.a2.set(UserInfoMgr.a().d());
-    localForwardReq.uid.set(UserInfoMgr.a().b());
-    localForwardReq.tinyid.set(UserInfoMgr.a().c());
+    localForwardReq.version_code.set(Config.b());
+    localForwardReq.a2.set(UserInfoMgr.a().k());
+    localForwardReq.uid.set(UserInfoMgr.a().i());
+    localForwardReq.tinyid.set(UserInfoMgr.a().j());
     localForwardReq.stream_type.set(1);
-    localForwardReq.original_id.set(String.valueOf(UserInfoMgr.a()));
+    localForwardReq.original_id.set(String.valueOf(UserInfoMgr.e()));
     localForwardReq.original_id_type.set(1);
-    localForwardReq.original_key.set(UserInfoMgr.b());
-    if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a()) {
+    localForwardReq.original_key.set(UserInfoMgr.g());
+    if (this.b.a()) {
       localForwardReq.target_env.set(1);
     }
     return localForwardReq;
   }
   
-  public static void b()
+  public static ChannelCenter b()
   {
-    ChannelCenter localChannelCenter = jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter;
+    if (a == null)
+    {
+      a = new ChannelCenter();
+      a.a(false);
+    }
+    return a;
+  }
+  
+  public static void c()
+  {
+    ChannelCenter localChannelCenter = a;
     if (localChannelCenter != null)
     {
       localChannelCenter.a();
-      jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter = null;
+      a = null;
     }
   }
   
   protected void a()
   {
-    c();
-    this.jdField_a_of_type_Boolean = true;
+    d();
+    this.c = true;
   }
   
   public void a(int paramInt1, int paramInt2, byte[] paramArrayOfByte, IChannelListener paramIChannelListener)
@@ -73,14 +73,14 @@ public class ChannelCenter
     Log.i("ChannelCenter", localStringBuilder.toString());
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a(str, paramArrayOfByte.toByteArray(), new ChannelCenter.1(this, paramInt1, paramIChannelListener));
+      this.b.a(str, paramArrayOfByte.toByteArray(), new ChannelCenter.1(this, paramInt1, paramIChannelListener));
       return;
     }
     catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte = paramArrayOfByte.getMessage();
       Log.i("ChannelCenter", paramArrayOfByte);
-      this.jdField_a_of_type_AndroidOsHandler.post(new ChannelCenter.2(this, paramInt1, paramIChannelListener, paramArrayOfByte));
+      this.d.post(new ChannelCenter.2(this, paramInt1, paramIChannelListener, paramArrayOfByte));
     }
   }
   
@@ -99,23 +99,23 @@ public class ChannelCenter
       j = 3256;
     }
     UserInfoMgr.a();
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO = new WebServiceSSO(i, j, String.valueOf(i), UserInfoMgr.a(), "", 0);
+    this.b = new WebServiceSSO(i, j, String.valueOf(i), UserInfoMgr.e(), "", 0);
     b(paramBoolean);
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a(paramBoolean);
+    this.b.a(paramBoolean);
   }
   
-  public void c()
+  public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoWebServiceSSO.a();
+    this.b.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.ChannelCenter
  * JD-Core Version:    0.7.0.1
  */

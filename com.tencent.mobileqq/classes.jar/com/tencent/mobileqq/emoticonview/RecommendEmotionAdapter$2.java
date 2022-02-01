@@ -125,7 +125,7 @@ class RecommendEmotionAdapter$2
         ((EmoticonHandlerProxy)this.this$0.app.getBusinessHandler(EmoticonHandler.a)).reportAddEmoticonPkg(((EmoticonPackage)localObject2).epId, this.val$businessType);
       }
       ((EmojiManagerServiceProxy)this.this$0.app.getRuntimeService(IEmojiManagerService.class)).pullEmoticonPackage((EmoticonPackage)localObject2, true, this.val$businessType);
-      this.val$clickBtn.setText(this.this$0.mContext.getString(2131699719));
+      this.val$clickBtn.setText(this.this$0.mContext.getString(2131897752));
       paramEmoticonPackage = this.val$clickBtn;
       paramEmoticonPackage.setProgressDrawable(paramEmoticonPackage.a(-16745986));
       if (!this.val$isPayBack) {
@@ -187,7 +187,7 @@ class RecommendEmotionAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter.2
  * JD-Core Version:    0.7.0.1
  */

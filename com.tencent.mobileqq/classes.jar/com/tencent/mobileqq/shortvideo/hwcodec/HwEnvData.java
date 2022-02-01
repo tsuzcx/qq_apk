@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 public class HwEnvData
 {
   public static int a = 1500;
-  public static boolean a = false;
   public static boolean b = false;
+  public static boolean c = false;
   
   public static boolean a()
   {
@@ -21,7 +21,7 @@ public class HwEnvData
       localStringBuilder.append("[@] supportHardWareCodec:SDK_INT=");
       localStringBuilder.append(Build.VERSION.SDK_INT);
       localStringBuilder.append("dpcSupportHwCodec=");
-      localStringBuilder.append(a);
+      localStringBuilder.append(b);
       QLog.d("HwEnvData", 2, localStringBuilder.toString());
     }
     boolean bool = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeature(CameraCompatibleConstants.r);
@@ -39,12 +39,12 @@ public class HwEnvData
     if (Build.VERSION.SDK_INT < 18) {
       return false;
     }
-    return a;
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.HwEnvData
  * JD-Core Version:    0.7.0.1
  */

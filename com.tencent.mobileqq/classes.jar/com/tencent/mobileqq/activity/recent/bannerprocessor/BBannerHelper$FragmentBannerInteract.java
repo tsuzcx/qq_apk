@@ -11,19 +11,19 @@ import java.lang.ref.WeakReference;
 class BBannerHelper$FragmentBannerInteract
   implements BBannerHelper.IBannerInteract
 {
-  private BBannerHelper.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private final WeakReference<QQAppInterface> a;
+  private String b;
+  private BBannerHelper.MessageToShowBanner c;
   
   public BBannerHelper$FragmentBannerInteract(String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = paramString;
+    this.a = new WeakReference(paramQQAppInterface);
   }
   
   public void a(@Nullable BBannerHelper.MessageToShowBanner paramMessageToShowBanner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner = paramMessageToShowBanner;
+    this.c = paramMessageToShowBanner;
   }
   
   public boolean isNeedAutoCloseWhenAccountChange()
@@ -33,19 +33,19 @@ class BBannerHelper$FragmentBannerInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.c == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface == null) {
       return;
     }
-    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+    BBannerHelper.a(localQQAppInterface, this.c);
   }
   
   public void onEnter()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     if (localQQAppInterface == null) {
       return;
     }
@@ -56,7 +56,7 @@ class BBannerHelper$FragmentBannerInteract
       localIntent.addFlags(268435456);
       try
       {
-        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.jdField_a_of_type_JavaLangString));
+        PublicTransFragmentActivity.b(localQQAppInterface.getApp(), localIntent, Class.forName(this.b));
       }
       catch (ClassNotFoundException localClassNotFoundException)
       {
@@ -67,14 +67,14 @@ class BBannerHelper$FragmentBannerInteract
     {
       QLog.d("Q.recent.banner", 2, "sTopActivity is null");
     }
-    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+    BBannerHelper.a(localQQAppInterface, this.c);
   }
   
   public void onOverride() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.FragmentBannerInteract
  * JD-Core Version:    0.7.0.1
  */

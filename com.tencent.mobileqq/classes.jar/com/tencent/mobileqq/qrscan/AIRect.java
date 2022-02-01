@@ -4,14 +4,9 @@ import android.graphics.Rect;
 
 public class AIRect
 {
-  public float a;
   public int a;
-  public Rect a;
-  
-  public AIRect()
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  }
+  public Rect b = new Rect();
+  public float c;
   
   public static String a(int paramInt)
   {
@@ -31,12 +26,12 @@ public class AIRect
   
   public String toString()
   {
-    return String.format("AIRect[%s,%.2f,%s]", new Object[] { a(this.jdField_a_of_type_Int), Float.valueOf(this.jdField_a_of_type_Float), this.jdField_a_of_type_AndroidGraphicsRect });
+    return String.format("AIRect[%s,%.2f,%s]", new Object[] { a(this.a), Float.valueOf(this.c), this.b });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.AIRect
  * JD-Core Version:    0.7.0.1
  */

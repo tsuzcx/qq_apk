@@ -33,7 +33,7 @@ class MultiVideoBannerProcessor$1
     else
     {
       localObject = (QQAppInterface)localObject;
-      int k = ((QQAppInterface)localObject).getAVNotifyCenter().e();
+      int k = ((QQAppInterface)localObject).getAVNotifyCenter().t();
       if (QLog.isColorLevel()) {
         QLog.d("Q.recent.banner", 2, "initMultiVideoBar-->SessionType");
       }
@@ -58,7 +58,7 @@ class MultiVideoBannerProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MultiVideoBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

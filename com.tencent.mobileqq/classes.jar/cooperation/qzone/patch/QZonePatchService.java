@@ -114,7 +114,7 @@ public class QZonePatchService
       try
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
-        localStringBuilder1.append(HardCodeUtil.a(2131712018));
+        localStringBuilder1.append(HardCodeUtil.a(2131909643));
         localStringBuilder1.append((String)localObject);
         log(localStringBuilder1.toString());
         localObject = BaseApplicationImpl.getContext();
@@ -456,7 +456,7 @@ public class QZonePatchService
   private static void resetPatchVersion(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppSetting.a());
+    localStringBuilder.append(AppSetting.b());
     localStringBuilder.append("p_ver");
     LocalMultiProcConfig.putInt(localStringBuilder.toString(), paramInt);
   }
@@ -487,10 +487,10 @@ public class QZonePatchService
   
   private static void updatePatchDex(String paramString1, String paramString2)
   {
-    log(HardCodeUtil.a(2131712019));
+    log(HardCodeUtil.a(2131909644));
     if (TextUtils.isEmpty(paramString1))
     {
-      log(HardCodeUtil.a(2131712024));
+      log(HardCodeUtil.a(2131909649));
       return;
     }
     if (bPatchUpdating) {
@@ -511,12 +511,12 @@ public class QZonePatchService
       QLog.d("qz_patch", 1, "本地有补丁包");
       if (curPatchMd5.equals(paramString1))
       {
-        log(HardCodeUtil.a(2131712020));
+        log(HardCodeUtil.a(2131909645));
         processPatchForAboveAndroidN(BaseApplicationImpl.getContext(), getPatchPath(paramString1), paramString1);
       }
       else if ((!paramString1.equals("del")) && (!paramString1.equals("delete")))
       {
-        log(HardCodeUtil.a(2131712017));
+        log(HardCodeUtil.a(2131909642));
         deleteMergeAndOdexFiles();
         if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2)))
         {
@@ -579,7 +579,7 @@ public class QZonePatchService
   
   private static void verifyPatchFile()
   {
-    log(HardCodeUtil.a(2131712021));
+    log(HardCodeUtil.a(2131909646));
     curPatchMd5 = null;
     Object localObject1 = BaseApplicationImpl.getContext().getDir("patchs", 0);
     if (((File)localObject1).exists())
@@ -595,7 +595,7 @@ public class QZonePatchService
       ((StringBuilder)localObject4).append(l);
       log(((StringBuilder)localObject4).toString());
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131712016));
+      ((StringBuilder)localObject3).append(HardCodeUtil.a(2131909641));
       ((StringBuilder)localObject3).append(l);
       log(((StringBuilder)localObject3).toString());
       localObject3 = ((File)localObject1).listFiles();
@@ -656,7 +656,7 @@ public class QZonePatchService
     }
     if (TextUtils.isEmpty(curPatchMd5))
     {
-      log(HardCodeUtil.a(2131712015));
+      log(HardCodeUtil.a(2131909640));
       return;
     }
     Object localObject2 = new StringBuilder();
@@ -675,7 +675,7 @@ public class QZonePatchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.patch.QZonePatchService
  * JD-Core Version:    0.7.0.1
  */

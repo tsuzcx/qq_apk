@@ -27,23 +27,23 @@ import cooperation.vip.qqbanner.info.VasADBannerImmersionInfo;
 public class VasADImmersionBannerManager
   extends VasADBannerManager
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VasADBannerImmersionInfo jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerImmersionInfo;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private ImageView i;
+  private ImageView j;
+  private RelativeLayout k;
+  private RelativeLayout l;
+  private Drawable m;
+  private VasADBannerImmersionInfo n;
   
   private int a(VasADBannerImmersionInfo paramVasADBannerImmersionInfo)
   {
     if (paramVasADBannerImmersionInfo == null) {
       return 24;
     }
-    paramVasADBannerImmersionInfo = this.jdField_a_of_type_CooperationVipQqbannerInfoVasADBannerImmersionInfo.a;
+    paramVasADBannerImmersionInfo = this.n.b;
     if (paramVasADBannerImmersionInfo != null)
     {
       if (TextUtils.isEmpty(paramVasADBannerImmersionInfo.f)) {
@@ -51,8 +51,8 @@ public class VasADImmersionBannerManager
       }
       try
       {
-        int i = Integer.parseInt(paramVasADBannerImmersionInfo.f);
-        return i;
+        int i1 = Integer.parseInt(paramVasADBannerImmersionInfo.f);
+        return i1;
       }
       catch (Exception paramVasADBannerImmersionInfo)
       {
@@ -63,50 +63,50 @@ public class VasADImmersionBannerManager
     return 24;
   }
   
-  private void h()
+  private void m()
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    Object localObject2 = this.b.getLayoutParams();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new ViewGroup.LayoutParams(-1, -2);
     }
-    ((ViewGroup.LayoutParams)localObject1).width = b();
-    ((ViewGroup.LayoutParams)localObject1).height = c();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject2 = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject1).width = k();
+    ((ViewGroup.LayoutParams)localObject1).height = l();
+    this.b.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject2 = (ViewGroup.MarginLayoutParams)this.k.getLayoutParams();
     ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject2).width = b();
-    ((ViewGroup.LayoutParams)localObject2).height = super.c();
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    localObject2 = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+    this.k.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = this.l.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject2).width = k();
+    ((ViewGroup.LayoutParams)localObject2).height = super.l();
+    this.l.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = this.j.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject2).width = ((int)(((ViewGroup.LayoutParams)localObject1).height * 2.050848F));
     ((ViewGroup.LayoutParams)localObject2).height = ((ViewGroup.LayoutParams)localObject1).height;
-    this.jdField_b_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-    this.jdField_a_of_type_AndroidViewView.addOnLayoutChangeListener(new VasADImmersionBannerManager.1(this));
+    this.j.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    this.b.addOnLayoutChangeListener(new VasADImmersionBannerManager.1(this));
   }
   
-  private void i()
+  private void n()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) {
+      if (this.a.app == null) {
         return;
       }
       QLog.i("VasADBannerManager", 1, "notifyBannerShow");
       Message localMessage = Message.obtain();
       localMessage.what = 3000;
-      localMessage.obj = new View[] { this.jdField_a_of_type_AndroidViewView, this.c, this.d, this.jdField_a_of_type_AndroidWidgetImageView };
+      localMessage.obj = new View[] { this.b, this.g, this.h, this.i };
       BannerManager.a().b(VasADBannerProcessor.a, localMessage);
     }
   }
   
-  private void j()
+  private void o()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) {
+      if (this.a.app == null) {
         return;
       }
       QLog.i("VasADBannerManager", 1, "notifyBannerHide");
@@ -114,35 +114,19 @@ public class VasADImmersionBannerManager
     }
   }
   
-  protected int a()
-  {
-    return 2131561933;
-  }
-  
   public View a()
   {
     View localView = super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379767));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379870));
-    this.c = ((TextView)localView.findViewById(2131379486));
-    this.d = ((TextView)localView.findViewById(2131379492));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365235));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368535));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131365226));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131369870));
-    h();
-    return new View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).release(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    j();
+    this.e = ((TextView)localView.findViewById(2131448576));
+    this.f = ((TextView)localView.findViewById(2131448728));
+    this.g = ((TextView)localView.findViewById(2131448231));
+    this.h = ((TextView)localView.findViewById(2131448239));
+    this.i = ((ImageView)localView.findViewById(2131431401));
+    this.j = ((ImageView)localView.findViewById(2131435439));
+    this.k = ((RelativeLayout)localView.findViewById(2131431392));
+    this.l = ((RelativeLayout)localView.findViewById(2131437007));
+    m();
+    return new View(this.a);
   }
   
   protected void a(VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -154,42 +138,58 @@ public class VasADImmersionBannerManager
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (this.m != null)
     {
       if (paramBoolean)
       {
-        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.m);
         return;
       }
-      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).start(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).start(this.m);
     }
   }
   
-  public void b()
+  protected int b()
   {
-    super.b();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    return 2131628357;
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.m != null)
     {
-      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).release(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.m);
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).release(this.m);
     }
-  }
-  
-  protected int c()
-  {
-    return super.c() + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + ViewUtils.b(50.0F);
+    o();
   }
   
   public void d()
   {
     super.d();
-    i();
+    if (this.m != null)
+    {
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.m);
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).release(this.m);
+      this.m = null;
+    }
+  }
+  
+  public void g()
+  {
+    super.g();
+    n();
+  }
+  
+  protected int l()
+  {
+    return super.l() + ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication()) + ViewUtils.dpToPx(50.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.manager.VasADImmersionBannerManager
  * JD-Core Version:    0.7.0.1
  */

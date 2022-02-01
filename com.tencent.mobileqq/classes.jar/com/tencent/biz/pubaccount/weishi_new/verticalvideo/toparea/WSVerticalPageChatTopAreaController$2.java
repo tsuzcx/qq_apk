@@ -21,13 +21,13 @@ class WSVerticalPageChatTopAreaController$2
       WSLog.a("AbsWsUIGroup", "fast click, ignored: vertical video top homepage");
       return;
     }
-    WSVerticalBeaconReport.b(WSVerticalPageChatTopAreaController.a(this.a).a(), WSVerticalPageChatTopAreaController.a(this.a).b(), WSVerticalPageChatTopAreaController.a(this.a).a());
+    WSVerticalBeaconReport.b(WSVerticalPageChatTopAreaController.a(this.a).k(), WSVerticalPageChatTopAreaController.a(this.a).l(), WSVerticalPageChatTopAreaController.a(this.a).F());
     WeishiActivityHelper.a(WSVerticalPageChatTopAreaController.a(this.a).getBaseActivity(), new WSPublicAccLaunchParams("from_qq_chat", 0, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageChatTopAreaController.2
  * JD-Core Version:    0.7.0.1
  */

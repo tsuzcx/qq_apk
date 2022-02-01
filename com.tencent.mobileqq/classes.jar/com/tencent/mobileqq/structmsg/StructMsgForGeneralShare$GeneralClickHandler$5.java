@@ -11,17 +11,17 @@ class StructMsgForGeneralShare$GeneralClickHandler$5
   
   public void run()
   {
-    String str2 = RobotUtils.b(this.jdField_a_of_type_JavaLangString, "robot_uin");
+    String str2 = RobotUtils.b(this.a, "robot_uin");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "0";
     }
-    RobotUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8009FA4", str1, "");
+    RobotUtils.a(this.b, "0X8009FA4", str1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler.5
  * JD-Core Version:    0.7.0.1
  */

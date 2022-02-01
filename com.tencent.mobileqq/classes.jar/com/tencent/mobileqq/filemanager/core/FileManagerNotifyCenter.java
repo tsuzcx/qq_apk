@@ -14,13 +14,13 @@ import mqq.os.MqqHandler;
 public class FileManagerNotifyCenter
   extends Observable
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new FileManagerNotifyCenter.1(this, Looper.getMainLooper());
+  QQAppInterface a;
+  MqqHandler b = new FileManagerNotifyCenter.1(this, Looper.getMainLooper());
   
   public FileManagerNotifyCenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
+    this.a = paramQQAppInterface;
+    paramQQAppInterface.setHandler(getClass(), this.b);
   }
   
   private void b(FileManagerEntity paramFileManagerEntity, int paramInt, String paramString)
@@ -75,7 +75,7 @@ public class FileManagerNotifyCenter
       else {
         localObject = "actFileOf2Of";
       }
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
+      FileManagerUtil.a(this.a, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
       return;
     }
   }
@@ -114,7 +114,7 @@ public class FileManagerNotifyCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter
  * JD-Core Version:    0.7.0.1
  */

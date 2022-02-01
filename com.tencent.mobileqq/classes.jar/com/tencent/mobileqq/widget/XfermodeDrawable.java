@@ -50,8 +50,8 @@ public class XfermodeDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    Paint localPaint = a(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    Xfermode localXfermode = this.a.jdField_a_of_type_AndroidGraphicsXfermode;
+    Paint localPaint = a(this.a.a);
+    Xfermode localXfermode = this.a.c;
     if ((localPaint != null) && (localPaint.getXfermode() != localXfermode)) {
       localPaint.setXfermode(localXfermode);
     }
@@ -60,7 +60,7 @@ public class XfermodeDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.XfermodeDrawable
  * JD-Core Version:    0.7.0.1
  */

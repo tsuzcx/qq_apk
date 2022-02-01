@@ -23,41 +23,13 @@ public class WTBusinessForWebPlugin
   implements IPreCreatePluginChecker
 {
   public static final String a = "WTBusinessForWebPlugin";
-  public static final Stack<Activity> a;
-  private static final Stack<Activity> b = new Stack();
-  private final BroadcastReceiver a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilStack = new Stack();
-  }
+  public static final Stack<Activity> b = new Stack();
+  private static final Stack<Activity> c = new Stack();
+  private final BroadcastReceiver d = new WTBusinessForWebPlugin.1(this);
   
   public WTBusinessForWebPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new WTBusinessForWebPlugin.1(this);
     this.mPluginNameSpace = "c2c_together_business";
-  }
-  
-  private void a()
-  {
-    Object localObject = this.mRuntime.a().getIntent();
-    int i = ((Intent)localObject).getIntExtra("key_from_type", 0);
-    int j = ((Intent)localObject).getIntExtra("watch_together_uinType", -1);
-    localObject = ((Intent)localObject).getStringExtra("watch_together_uin");
-    if (QLog.isColorLevel())
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("handleLaunchQFileChooser, fromType[");
-      localStringBuilder.append(i);
-      localStringBuilder.append("], uinType[");
-      localStringBuilder.append(j);
-      localStringBuilder.append("], uin[");
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append("]");
-      QLog.d(str, 2, localStringBuilder.toString());
-    }
-    ((IFileChooser)QRoute.api(IFileChooser.class)).startAVRecentFileSelectFragment(this.mRuntime.a(), i, j, (String)localObject, SwiftWebViewUtils.a(110, WebViewUtil.a(this)));
   }
   
   private void a(String paramString1, String paramString2)
@@ -70,19 +42,41 @@ public class WTBusinessForWebPlugin
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  private boolean a()
-  {
-    return CallStatusClient.a().a();
-  }
-  
   private boolean a(String paramString)
   {
     return (paramString != null) && (paramString.contains("https://ti.qq.com/sportslive/index?_wwv=128&_wv=2")) && (paramString.contains("fromid="));
   }
   
+  private void b()
+  {
+    Object localObject = this.mRuntime.d().getIntent();
+    int i = ((Intent)localObject).getIntExtra("key_from_type", 0);
+    int j = ((Intent)localObject).getIntExtra("watch_together_uinType", -1);
+    localObject = ((Intent)localObject).getStringExtra("watch_together_uin");
+    if (QLog.isColorLevel())
+    {
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleLaunchQFileChooser, fromType[");
+      localStringBuilder.append(i);
+      localStringBuilder.append("], uinType[");
+      localStringBuilder.append(j);
+      localStringBuilder.append("], uin[");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("]");
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    ((IFileChooser)QRoute.api(IFileChooser.class)).startAVRecentFileSelectFragment(this.mRuntime.d(), i, j, (String)localObject, SwiftWebViewUtils.a(110, WebViewUtil.a(this)));
+  }
+  
   private boolean b(String paramString)
   {
     return (paramString != null) && (paramString.contains("https://film.qq.com/h5/qq-together/detail.html")) && (paramString.contains("aioId"));
+  }
+  
+  private boolean c()
+  {
+    return CallStatusClient.a().c();
   }
   
   private boolean c(String paramString)
@@ -105,13 +99,13 @@ public class WTBusinessForWebPlugin
       paramJsBridgeListener.append(paramString2);
       paramJsBridgeListener.append(" method=");
       paramJsBridgeListener.append(paramString3);
-      QLog.d(jdField_a_of_type_JavaLangString, 2, paramJsBridgeListener.toString());
+      QLog.d(a, 2, paramJsBridgeListener.toString());
     }
     if (this.mPluginNameSpace.equalsIgnoreCase(paramString2))
     {
       if ("push_to_local_file_controller".equalsIgnoreCase(paramString3))
       {
-        a();
+        b();
         return true;
       }
       if ("select_file_info".equalsIgnoreCase(paramString3)) {
@@ -131,7 +125,7 @@ public class WTBusinessForWebPlugin
           if (!QLog.isColorLevel()) {
             break label516;
           }
-          paramString2 = jdField_a_of_type_JavaLangString;
+          paramString2 = a;
           paramVarArgs = new StringBuilder();
           paramVarArgs.append("handleJsRequest ");
           paramVarArgs.append(paramString3);
@@ -146,7 +140,7 @@ public class WTBusinessForWebPlugin
         catch (JSONException paramJsBridgeListener)
         {
           paramJsBridgeListener.printStackTrace();
-          paramString1 = jdField_a_of_type_JavaLangString;
+          paramString1 = a;
           paramString2 = new StringBuilder();
           paramString2.append("handleJsRequest ");
           paramString2.append(paramString3);
@@ -160,7 +154,7 @@ public class WTBusinessForWebPlugin
         try
         {
           paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          boolean bool = a();
+          boolean bool = c();
           paramString1 = new StringBuilder();
           paramString1.append("{\"isInCall\":");
           paramString1.append(bool);
@@ -168,7 +162,7 @@ public class WTBusinessForWebPlugin
           callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
           if (QLog.isColorLevel())
           {
-            paramJsBridgeListener = jdField_a_of_type_JavaLangString;
+            paramJsBridgeListener = a;
             paramString1 = new StringBuilder();
             paramString1.append("handleJsRequest ");
             paramString1.append(paramString3);
@@ -182,7 +176,7 @@ public class WTBusinessForWebPlugin
         catch (JSONException paramJsBridgeListener)
         {
           paramJsBridgeListener.printStackTrace();
-          paramString1 = jdField_a_of_type_JavaLangString;
+          paramString1 = a;
           paramString2 = new StringBuilder();
           paramString2.append("handleJsRequest ");
           paramString2.append(paramString3);
@@ -207,37 +201,37 @@ public class WTBusinessForWebPlugin
   {
     if ((paramInt == -1) && (paramByte == 110) && (paramIntent != null))
     {
-      this.mRuntime.a().setResult(4660, paramIntent);
-      this.mRuntime.a().finish();
+      this.mRuntime.d().setResult(4660, paramIntent);
+      this.mRuntime.d().finish();
     }
   }
   
   protected void onCreate()
   {
-    String str = this.mRuntime.a().getIntent().getStringExtra("url");
+    String str = this.mRuntime.d().getIntent().getStringExtra("url");
     if ((a(str)) || (b(str)))
     {
-      CallStatusClient.a().a(this.mRuntime.a());
-      CallStatusClient.a().b();
+      CallStatusClient.a().a(this.mRuntime.d());
+      CallStatusClient.a().d();
       if (a(str)) {
-        this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("tencent.av.v2q.StopVideoChat"));
+        this.mRuntime.d().registerReceiver(this.d, new IntentFilter("tencent.av.v2q.StopVideoChat"));
       }
     }
-    b.push(this.mRuntime.a());
+    c.push(this.mRuntime.d());
   }
   
   protected void onDestroy()
   {
-    String str = this.mRuntime.a().getIntent().getStringExtra("url");
+    String str = this.mRuntime.d().getIntent().getStringExtra("url");
     if ((a(str)) || (b(str)))
     {
-      CallStatusClient.a().c();
-      CallStatusClient.a().a();
+      CallStatusClient.a().e();
+      CallStatusClient.a().b();
       if (a(str)) {
-        this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+        this.mRuntime.d().unregisterReceiver(this.d);
       }
     }
-    b.pop();
+    c.pop();
   }
 }
 

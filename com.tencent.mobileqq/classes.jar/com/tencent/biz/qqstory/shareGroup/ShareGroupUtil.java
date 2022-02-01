@@ -29,8 +29,8 @@ public class ShareGroupUtil
     int i = UIUtils.a(paramContext, paramInt1);
     if ((paramInt2 == 1) && (paramBoolean))
     {
-      localObject2 = ((LayoutInflater)localObject1).inflate(2131561767, null);
-      localObject3 = (TextView)((View)localObject2).findViewById(2131379066);
+      localObject2 = ((LayoutInflater)localObject1).inflate(2131628146, null);
+      localObject3 = (TextView)((View)localObject2).findViewById(2131447790);
       if (paramInt3 > 99)
       {
         localObject1 = "99+";
@@ -44,7 +44,7 @@ public class ShareGroupUtil
       }
       ((TextView)localObject3).setText((CharSequence)localObject1);
       ((TextView)localObject3).setVisibility(0);
-      localObject1 = ((View)localObject2).findViewById(2131368503);
+      localObject1 = ((View)localObject2).findViewById(2131435405);
       localObject3 = ((View)localObject1).getLayoutParams();
       paramInt1 = UIUtils.a(paramContext, paramInt1 - 2);
       ((ViewGroup.LayoutParams)localObject3).height = paramInt1;
@@ -54,9 +54,9 @@ public class ShareGroupUtil
     }
     else
     {
-      localObject1 = ((LayoutInflater)localObject1).inflate(2131561766, null);
+      localObject1 = ((LayoutInflater)localObject1).inflate(2131628145, null);
     }
-    Object localObject2 = (CircleImageView)((View)localObject1).findViewById(2131368502);
+    Object localObject2 = (CircleImageView)((View)localObject1).findViewById(2131435404);
     Object localObject3 = ((CircleImageView)localObject2).getLayoutParams();
     ((ViewGroup.LayoutParams)localObject3).height = i;
     ((ViewGroup.LayoutParams)localObject3).width = i;
@@ -81,7 +81,7 @@ public class ShareGroupUtil
   
   public static boolean a(ShareGroupItem paramShareGroupItem)
   {
-    int i = ((StoryConfigManager)SuperManager.a(10)).a();
+    int i = ((StoryConfigManager)SuperManager.a(10)).d();
     boolean bool3 = paramShareGroupItem.isPublic();
     boolean bool2 = false;
     boolean bool1 = false;
@@ -115,7 +115,7 @@ public class ShareGroupUtil
   
   public static boolean b()
   {
-    return (((StoryConfigManager)SuperManager.a(10)).a() & 0x1) != 0;
+    return (((StoryConfigManager)SuperManager.a(10)).d() & 0x1) != 0;
   }
 }
 

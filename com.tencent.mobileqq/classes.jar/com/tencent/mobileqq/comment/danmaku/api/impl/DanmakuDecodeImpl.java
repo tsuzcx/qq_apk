@@ -105,88 +105,88 @@ public class DanmakuDecodeImpl
     //   214: aload 17
     //   216: lload_2
     //   217: invokestatic 140	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   220: putfield 143	com/tencent/mobileqq/troop/data/MessageInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   220: putfield 143	com/tencent/mobileqq/troop/data/MessageInfo:a	Ljava/lang/String;
     //   223: aload 17
     //   225: iconst_1
-    //   226: putfield 146	com/tencent/mobileqq/troop/data/MessageInfo:jdField_a_of_type_Int	I
+    //   226: putfield 147	com/tencent/mobileqq/troop/data/MessageInfo:b	I
     //   229: aload 19
     //   231: aload 21
-    //   233: new 148	java/lang/StringBuilder
+    //   233: new 149	java/lang/StringBuilder
     //   236: dup
-    //   237: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   237: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   240: lload 9
     //   242: aload 17
-    //   244: invokevirtual 152	com/tencent/mobileqq/service/message/MessagePBElemDecoder:a	(Ljava/util/List;Ljava/lang/StringBuilder;JLcom/tencent/mobileqq/troop/data/MessageInfo;)Lcom/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext;
+    //   244: invokevirtual 153	com/tencent/mobileqq/service/message/MessagePBElemDecoder:a	(Ljava/util/List;Ljava/lang/StringBuilder;JLcom/tencent/mobileqq/troop/data/MessageInfo;)Lcom/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext;
     //   247: astore 22
     //   249: aload 22
-    //   251: getfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   254: invokestatic 160	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   251: getfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
+    //   254: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   257: ifeq +6 -> 263
     //   260: goto -177 -> 83
     //   263: aload 22
-    //   265: getfield 163	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
-    //   268: getfield 168	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:mAnonymousNickName	Ljava/lang/String;
-    //   271: invokestatic 160	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   265: getfield 166	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:a	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
+    //   268: getfield 171	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:mAnonymousNickName	Ljava/lang/String;
+    //   271: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   274: ifeq +94 -> 368
     //   277: aload 22
-    //   279: getfield 171	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo	Lcom/tencent/mobileqq/data/AtTroopMemberInfo;
+    //   279: getfield 175	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:d	Lcom/tencent/mobileqq/data/AtTroopMemberInfo;
     //   282: ifnull +86 -> 368
     //   285: aload 22
-    //   287: getfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   290: invokestatic 160	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   287: getfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
+    //   290: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   293: ifne +75 -> 368
     //   296: aload 22
-    //   298: getfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   301: invokevirtual 174	java/lang/String:length	()I
+    //   298: getfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
+    //   301: invokevirtual 178	java/lang/String:length	()I
     //   304: aload 22
-    //   306: getfield 171	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo	Lcom/tencent/mobileqq/data/AtTroopMemberInfo;
-    //   309: getfield 180	com/tencent/mobileqq/data/AtTroopMemberInfo:textLen	S
+    //   306: getfield 175	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:d	Lcom/tencent/mobileqq/data/AtTroopMemberInfo;
+    //   309: getfield 184	com/tencent/mobileqq/data/AtTroopMemberInfo:textLen	S
     //   312: iconst_1
     //   313: iadd
     //   314: if_icmple +54 -> 368
     //   317: aload 22
-    //   319: getfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   319: getfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
     //   322: aload 22
-    //   324: getfield 183	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:b	Ljava/lang/String;
-    //   327: invokevirtual 187	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   324: getfield 187	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:e	Ljava/lang/String;
+    //   327: invokevirtual 191	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   330: ifeq +38 -> 368
     //   333: aload 22
-    //   335: getfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   335: getfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
     //   338: aload 22
-    //   340: getfield 171	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_ComTencentMobileqqDataAtTroopMemberInfo	Lcom/tencent/mobileqq/data/AtTroopMemberInfo;
-    //   343: getfield 180	com/tencent/mobileqq/data/AtTroopMemberInfo:textLen	S
+    //   340: getfield 175	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:d	Lcom/tencent/mobileqq/data/AtTroopMemberInfo;
+    //   343: getfield 184	com/tencent/mobileqq/data/AtTroopMemberInfo:textLen	S
     //   346: iconst_1
     //   347: iadd
-    //   348: invokevirtual 191	java/lang/String:substring	(I)Ljava/lang/String;
+    //   348: invokevirtual 195	java/lang/String:substring	(I)Ljava/lang/String;
     //   351: astore 17
     //   353: aload 17
-    //   355: invokestatic 160	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   355: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   358: ifne +10 -> 368
     //   361: aload 22
     //   363: aload 17
-    //   365: putfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   365: putfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
     //   368: aload_1
-    //   369: getfield 194	com/tencent/mobileqq/comment/oidb/oidb_0xdea$Comment:bytes_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   369: getfield 198	com/tencent/mobileqq/comment/oidb/oidb_0xdea$Comment:bytes_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   372: invokevirtual 77	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   375: invokevirtual 198	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   375: invokevirtual 202	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   378: astore 17
     //   380: aload_1
-    //   381: getfield 201	com/tencent/mobileqq/comment/oidb/oidb_0xdea$Comment:uint32_source	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   381: getfield 205	com/tencent/mobileqq/comment/oidb/oidb_0xdea$Comment:uint32_source	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   384: invokevirtual 128	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   387: istore 6
     //   389: aload 17
-    //   391: invokestatic 160	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   391: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   394: ifeq +57 -> 451
     //   397: aload 16
     //   399: lload_2
     //   400: invokestatic 140	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   403: lload 7
     //   405: invokestatic 140	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   408: invokestatic 206	com/tencent/mobileqq/utils/ContactUtils:b	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   408: invokestatic 210	com/tencent/mobileqq/utils/ContactUtils:b	(Lcom/tencent/common/app/AppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   411: astore 17
     //   413: aload 17
     //   415: astore_1
-    //   416: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   416: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   419: ifeq +137 -> 556
     //   422: ldc 10
     //   424: iconst_2
@@ -194,14 +194,14 @@ public class DanmakuDecodeImpl
     //   426: anewarray 4	java/lang/Object
     //   429: dup
     //   430: iconst_0
-    //   431: ldc 213
+    //   431: ldc 217
     //   433: aastore
     //   434: dup
     //   435: iconst_1
     //   436: lload 9
-    //   438: invokestatic 218	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   438: invokestatic 222	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   441: aastore
-    //   442: invokestatic 222	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   442: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   445: aload 17
     //   447: astore_1
     //   448: goto +108 -> 556
@@ -211,12 +211,12 @@ public class DanmakuDecodeImpl
     //   456: iconst_4
     //   457: if_icmpne +99 -> 556
     //   460: aload 16
-    //   462: getstatic 227	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
-    //   465: invokevirtual 231	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   468: checkcast 233	com/tencent/mobileqq/app/FriendsManager
+    //   462: getstatic 230	com/tencent/mobileqq/app/QQManagerFactory:FRIENDS_MANAGER	I
+    //   465: invokevirtual 234	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   468: checkcast 236	com/tencent/mobileqq/app/FriendsManager
     //   471: lload 7
     //   473: invokestatic 140	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   476: invokevirtual 236	com/tencent/mobileqq/app/FriendsManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
+    //   476: invokevirtual 239	com/tencent/mobileqq/app/FriendsManager:c	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/Friends;
     //   479: astore 23
     //   481: aload 17
     //   483: astore_1
@@ -225,20 +225,20 @@ public class DanmakuDecodeImpl
     //   489: aload 17
     //   491: astore_1
     //   492: aload 23
-    //   494: invokevirtual 241	com/tencent/mobileqq/data/Friends:isFriend	()Z
+    //   494: invokevirtual 244	com/tencent/mobileqq/data/Friends:isFriend	()Z
     //   497: ifeq +59 -> 556
     //   500: aload 17
     //   502: astore_1
     //   503: aload 23
-    //   505: getfield 244	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
-    //   508: invokestatic 160	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   505: getfield 247	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
+    //   508: invokestatic 163	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   511: ifne +45 -> 556
     //   514: aload 23
-    //   516: getfield 244	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
+    //   516: getfield 247	com/tencent/mobileqq/data/Friends:remark	Ljava/lang/String;
     //   519: astore 17
     //   521: aload 17
     //   523: astore_1
-    //   524: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   524: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   527: ifeq +29 -> 556
     //   530: ldc 10
     //   532: iconst_2
@@ -246,35 +246,35 @@ public class DanmakuDecodeImpl
     //   534: anewarray 4	java/lang/Object
     //   537: dup
     //   538: iconst_0
-    //   539: ldc 246
+    //   539: ldc 249
     //   541: aastore
     //   542: dup
     //   543: iconst_1
     //   544: lload 9
-    //   546: invokestatic 218	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   546: invokestatic 222	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   549: aastore
-    //   550: invokestatic 222	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   550: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   553: aload 17
     //   555: astore_1
     //   556: aload 4
     //   558: aload_1
     //   559: iload 5
-    //   561: invokestatic 251	com/tencent/mobileqq/comment/DanmuUtil:a	(Landroid/graphics/Paint;Ljava/lang/String;I)Ljava/lang/String;
+    //   561: invokestatic 254	com/tencent/mobileqq/comment/DanmuUtil:a	(Landroid/graphics/Paint;Ljava/lang/String;I)Ljava/lang/String;
     //   564: astore_1
-    //   565: new 253	com/tencent/mobileqq/comment/DanmuItemBean
+    //   565: new 256	com/tencent/mobileqq/comment/DanmuItemBean
     //   568: dup
     //   569: lload 7
     //   571: lload 9
     //   573: lload 11
     //   575: lload 13
     //   577: aload 22
-    //   579: getfield 155	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   579: getfield 158	com/tencent/mobileqq/service/message/MessagePBElemDecoder$DecodeSrcMsgContext:c	Ljava/lang/String;
     //   582: aload_1
-    //   583: invokespecial 256	com/tencent/mobileqq/comment/DanmuItemBean:<init>	(JJJJLjava/lang/String;Ljava/lang/String;)V
+    //   583: invokespecial 259	com/tencent/mobileqq/comment/DanmuItemBean:<init>	(JJJJLjava/lang/String;Ljava/lang/String;)V
     //   586: astore 17
     //   588: aload 18
     //   590: aload 17
-    //   592: invokeinterface 260 2 0
+    //   592: invokeinterface 263 2 0
     //   597: pop
     //   598: aload 21
     //   600: invokeinterface 53 1 0
@@ -284,24 +284,24 @@ public class DanmakuDecodeImpl
     //   614: ifeq -531 -> 83
     //   617: aload 21
     //   619: invokeinterface 62 1 0
-    //   624: checkcast 262	tencent/im/msg/im_msg_body$Elem
+    //   624: checkcast 265	tencent/im/msg/im_msg_body$Elem
     //   627: astore_1
     //   628: aload_1
-    //   629: getfield 266	tencent/im/msg/im_msg_body$Elem:anon_group_msg	Ltencent/im/msg/im_msg_body$AnonymousGroupMsg;
-    //   632: invokevirtual 271	tencent/im/msg/im_msg_body$AnonymousGroupMsg:has	()Z
+    //   629: getfield 269	tencent/im/msg/im_msg_body$Elem:anon_group_msg	Ltencent/im/msg/im_msg_body$AnonymousGroupMsg;
+    //   632: invokevirtual 274	tencent/im/msg/im_msg_body$AnonymousGroupMsg:has	()Z
     //   635: ifeq -28 -> 607
     //   638: aload_1
-    //   639: getfield 266	tencent/im/msg/im_msg_body$Elem:anon_group_msg	Ltencent/im/msg/im_msg_body$AnonymousGroupMsg;
-    //   642: invokevirtual 272	tencent/im/msg/im_msg_body$AnonymousGroupMsg:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   645: checkcast 268	tencent/im/msg/im_msg_body$AnonymousGroupMsg
+    //   639: getfield 269	tencent/im/msg/im_msg_body$Elem:anon_group_msg	Ltencent/im/msg/im_msg_body$AnonymousGroupMsg;
+    //   642: invokevirtual 275	tencent/im/msg/im_msg_body$AnonymousGroupMsg:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   645: checkcast 271	tencent/im/msg/im_msg_body$AnonymousGroupMsg
     //   648: astore 22
     //   650: aload 22
-    //   652: getfield 275	tencent/im/msg/im_msg_body$AnonymousGroupMsg:str_anon_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   652: getfield 278	tencent/im/msg/im_msg_body$AnonymousGroupMsg:str_anon_nick	Lcom/tencent/mobileqq/pb/PBBytesField;
     //   655: invokevirtual 77	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   658: invokevirtual 83	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   661: astore_1
     //   662: aload 22
-    //   664: getfield 278	tencent/im/msg/im_msg_body$AnonymousGroupMsg:uint32_flags	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   664: getfield 281	tencent/im/msg/im_msg_body$AnonymousGroupMsg:uint32_flags	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   667: invokevirtual 128	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   670: ifle +170 -> 840
     //   673: iconst_1
@@ -309,80 +309,80 @@ public class DanmakuDecodeImpl
     //   676: goto +3 -> 679
     //   679: aload 17
     //   681: iload 15
-    //   683: putfield 281	com/tencent/mobileqq/comment/DanmuItemBean:jdField_a_of_type_Boolean	Z
+    //   683: putfield 285	com/tencent/mobileqq/comment/DanmuItemBean:g	Z
     //   686: aload_1
     //   687: ifnonnull +10 -> 697
-    //   690: ldc_w 283
+    //   690: ldc_w 287
     //   693: astore_1
     //   694: goto +12 -> 706
     //   697: new 136	java/lang/String
     //   700: dup
     //   701: aload_1
-    //   702: invokespecial 286	java/lang/String:<init>	([B)V
+    //   702: invokespecial 290	java/lang/String:<init>	([B)V
     //   705: astore_1
     //   706: aload 17
     //   708: aload_1
-    //   709: putfield 289	com/tencent/mobileqq/comment/DanmuItemBean:c	Ljava/lang/String;
+    //   709: putfield 293	com/tencent/mobileqq/comment/DanmuItemBean:h	Ljava/lang/String;
     //   712: aload 17
     //   714: aload 22
-    //   716: getfield 292	tencent/im/msg/im_msg_body$AnonymousGroupMsg:uint32_head_portrait	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   716: getfield 296	tencent/im/msg/im_msg_body$AnonymousGroupMsg:uint32_head_portrait	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   719: invokevirtual 128	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   722: putfield 293	com/tencent/mobileqq/comment/DanmuItemBean:jdField_a_of_type_Int	I
+    //   722: putfield 299	com/tencent/mobileqq/comment/DanmuItemBean:i	I
     //   725: ldc 10
     //   727: iconst_1
     //   728: iconst_2
     //   729: anewarray 4	java/lang/Object
     //   732: dup
     //   733: iconst_0
-    //   734: ldc_w 295
+    //   734: ldc_w 301
     //   737: aastore
     //   738: dup
     //   739: iconst_1
     //   740: aload 17
     //   742: aastore
-    //   743: invokestatic 222	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   743: invokestatic 225	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   746: goto -139 -> 607
     //   749: astore_1
     //   750: goto +4 -> 754
     //   753: astore_1
-    //   754: new 148	java/lang/StringBuilder
+    //   754: new 149	java/lang/StringBuilder
     //   757: dup
-    //   758: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   758: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   761: astore 17
     //   763: aload 17
-    //   765: ldc_w 297
-    //   768: invokevirtual 301	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   765: ldc_w 303
+    //   768: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   771: pop
     //   772: aload 17
     //   774: aload_1
-    //   775: invokevirtual 304	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   775: invokevirtual 310	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   778: pop
     //   779: ldc 10
     //   781: iconst_1
     //   782: aload 17
-    //   784: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   787: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   784: invokevirtual 313	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   787: invokestatic 316	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   790: goto -707 -> 83
-    //   793: invokestatic 211	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   793: invokestatic 215	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   796: ifeq +39 -> 835
-    //   799: new 148	java/lang/StringBuilder
+    //   799: new 149	java/lang/StringBuilder
     //   802: dup
-    //   803: invokespecial 149	java/lang/StringBuilder:<init>	()V
+    //   803: invokespecial 150	java/lang/StringBuilder:<init>	()V
     //   806: astore_1
     //   807: aload_1
-    //   808: ldc_w 312
-    //   811: invokevirtual 301	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   808: ldc_w 318
+    //   811: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   814: pop
     //   815: aload_1
     //   816: aload 18
-    //   818: invokevirtual 313	java/lang/Object:toString	()Ljava/lang/String;
-    //   821: invokevirtual 301	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   818: invokevirtual 319	java/lang/Object:toString	()Ljava/lang/String;
+    //   821: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   824: pop
     //   825: ldc 10
     //   827: iconst_2
     //   828: aload_1
-    //   829: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   832: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   829: invokevirtual 313	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   832: invokestatic 316	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   835: aload 18
     //   837: areturn
     //   838: aconst_null
@@ -430,7 +430,7 @@ public class DanmakuDecodeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.api.impl.DanmakuDecodeImpl
  * JD-Core Version:    0.7.0.1
  */

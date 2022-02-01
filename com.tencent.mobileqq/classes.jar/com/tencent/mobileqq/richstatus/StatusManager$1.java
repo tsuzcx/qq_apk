@@ -44,7 +44,7 @@ class StatusManager$1
       if (paramLong > 104L) {
         try
         {
-          InputStream localInputStream = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
+          InputStream localInputStream = StatusManager.b(this.a).getApp().getAssets().open("rich_status.xml");
           localObject = localInputStream;
         }
         catch (Exception localException)
@@ -54,7 +54,7 @@ class StatusManager$1
       } else {
         try
         {
-          FileInputStream localFileInputStream = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+          FileInputStream localFileInputStream = new FileInputStream(new File(StatusManager.b(this.a).getApp().getFilesDir(), "rich_status.xml"));
           localObject = localFileInputStream;
         }
         catch (FileNotFoundException localFileNotFoundException)
@@ -64,7 +64,7 @@ class StatusManager$1
       }
       localObject = (SparseArray)StatusManager.a(this.a, localObject)[0];
       StatusManager localStatusManager = this.a;
-      if (StatusManager.a(localStatusManager, (SparseArray)localObject, StatusManager.a(localStatusManager))) {
+      if (StatusManager.a(localStatusManager, (SparseArray)localObject, StatusManager.c(localStatusManager))) {
         StatusManager.a(this.a).edit().putLong("k_icon", paramLong).commit();
       }
     }
@@ -85,7 +85,7 @@ class StatusManager$1
     if (l2 > 104L) {
       try
       {
-        paramVarArgs = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+        paramVarArgs = new FileInputStream(new File(StatusManager.b(this.a).getApp().getFilesDir(), "rich_status.xml"));
       }
       catch (FileNotFoundException paramVarArgs)
       {
@@ -99,7 +99,7 @@ class StatusManager$1
     if (paramVarArgs == null) {
       try
       {
-        localObject1 = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
+        localObject1 = StatusManager.b(this.a).getApp().getAssets().open("rich_status.xml");
         l1 = 104L;
       }
       catch (IOException localIOException)
@@ -113,13 +113,13 @@ class StatusManager$1
     paramVarArgs = (SparseArray)???[0];
     ArrayList localArrayList = (ArrayList)???[1];
     if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
-      synchronized (StatusManager.a(this.a))
+      synchronized (StatusManager.c(this.a))
       {
-        if ((!isCancelled()) && (StatusManager.a(this.a).size() == 0))
+        if ((!isCancelled()) && (StatusManager.c(this.a).size() == 0))
         {
           StatusManager.a(this.a, paramVarArgs);
-          StatusManager.a(this.a).clear();
-          StatusManager.a(this.a).addAll(localArrayList);
+          StatusManager.d(this.a).clear();
+          StatusManager.d(this.a).addAll(localArrayList);
           publishProgress(new Integer[] { Integer.valueOf(102) });
         }
         else
@@ -144,7 +144,7 @@ class StatusManager$1
     }
     StatusManager.a(this.a, null);
     if (101 == StatusManager.a(this.a, false)) {
-      StatusManager.a(this.a);
+      StatusManager.f(this.a);
     }
     this.a.a(false);
   }
@@ -159,9 +159,9 @@ class StatusManager$1
       paramVarArgs.append(i);
       QLog.d("Q.richstatus.xml", 2, paramVarArgs.toString());
     }
-    if (StatusManager.a(this.a) != null)
+    if (StatusManager.e(this.a) != null)
     {
-      paramVarArgs = StatusManager.a(this.a).iterator();
+      paramVarArgs = StatusManager.e(this.a).iterator();
       while (paramVarArgs.hasNext()) {
         ((IActionListener)paramVarArgs.next()).a(i, 300);
       }
@@ -179,7 +179,7 @@ class StatusManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.1
  * JD-Core Version:    0.7.0.1
  */

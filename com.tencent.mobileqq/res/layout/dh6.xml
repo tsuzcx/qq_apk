@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/q1s" android:background="@color/bx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+    <FrameLayout android:layout_gravity="end" android:orientation="vertical" android:id="@id/mzt" android:background="@color/al3" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+</merge>

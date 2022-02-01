@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <RelativeLayout android:background="@drawable/btx" android:layout_width="270.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true">
         <com.tencent.mobileqq.magicface.view.MagicFaceGLView android:id="@id/ekv" android:visibility="gone" android:layout_width="160.0dip" android:layout_height="213.0dip" android:layout_marginLeft="55.0dip" android:layout_marginTop="52.0dip" />
-        <TextView android:textColor="@color/bp" android:id="@id/el9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/black" android:id="@id/el9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
         <TextView android:textColor="@color/aik" android:id="@id/ekx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/el9" android:layout_centerHorizontal="true" />
         <Button android:id="@id/eku" android:background="@drawable/bty" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
         <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">

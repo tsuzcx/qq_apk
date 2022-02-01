@@ -30,21 +30,21 @@ import java.util.List;
 public class ChipGroup
   extends FlowLayout
 {
-  private static final int jdField_a_of_type_Int = R.style.v;
-  private final ChipGroup.CheckedStateTracker jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$CheckedStateTracker = new ChipGroup.CheckedStateTracker(this, null);
+  private static final int a = R.style.x;
+  @Dimension
+  private int b;
+  @Dimension
+  private int c;
+  private boolean d;
+  private boolean e;
   @Nullable
-  private ChipGroup.OnCheckedChangeListener jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$OnCheckedChangeListener;
+  private ChipGroup.OnCheckedChangeListener f;
+  private final ChipGroup.CheckedStateTracker g = new ChipGroup.CheckedStateTracker(this, null);
   @NonNull
-  private ChipGroup.PassThroughHierarchyChangeListener jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$PassThroughHierarchyChangeListener = new ChipGroup.PassThroughHierarchyChangeListener(this, null);
-  private boolean jdField_a_of_type_Boolean;
-  @Dimension
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  @Dimension
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
+  private ChipGroup.PassThroughHierarchyChangeListener h = new ChipGroup.PassThroughHierarchyChangeListener(this, null);
   @IdRes
-  private int d = -1;
+  private int i = -1;
+  private boolean j = false;
   
   public ChipGroup(Context paramContext)
   {
@@ -53,50 +53,35 @@ public class ChipGroup
   
   public ChipGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.g);
+    this(paramContext, paramAttributeSet, R.attr.j);
   }
   
   public ChipGroup(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
-    paramContext = ThemeEnforcement.a(getContext(), paramAttributeSet, R.styleable.k, paramInt, jdField_a_of_type_Int, new int[0]);
-    paramInt = paramContext.getDimensionPixelOffset(R.styleable.aS, 0);
-    setChipSpacingHorizontal(paramContext.getDimensionPixelOffset(R.styleable.aT, paramInt));
-    setChipSpacingVertical(paramContext.getDimensionPixelOffset(R.styleable.aU, paramInt));
-    setSingleLine(paramContext.getBoolean(R.styleable.aW, false));
-    setSingleSelection(paramContext.getBoolean(R.styleable.aX, false));
-    setSelectionRequired(paramContext.getBoolean(R.styleable.aV, false));
-    paramInt = paramContext.getResourceId(R.styleable.aR, -1);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
+    paramContext = ThemeEnforcement.a(getContext(), paramAttributeSet, R.styleable.by, paramInt, a, new int[0]);
+    paramInt = paramContext.getDimensionPixelOffset(R.styleable.bA, 0);
+    setChipSpacingHorizontal(paramContext.getDimensionPixelOffset(R.styleable.bB, paramInt));
+    setChipSpacingVertical(paramContext.getDimensionPixelOffset(R.styleable.bC, paramInt));
+    setSingleLine(paramContext.getBoolean(R.styleable.bE, false));
+    setSingleSelection(paramContext.getBoolean(R.styleable.bF, false));
+    setSelectionRequired(paramContext.getBoolean(R.styleable.bD, false));
+    paramInt = paramContext.getResourceId(R.styleable.bz, -1);
     if (paramInt != -1) {
-      this.d = paramInt;
+      this.i = paramInt;
     }
     paramContext.recycle();
-    super.setOnHierarchyChangeListener(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$PassThroughHierarchyChangeListener);
+    super.setOnHierarchyChangeListener(this.h);
     ViewCompat.setImportantForAccessibility(this, 1);
   }
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    this.d = paramInt;
-    ChipGroup.OnCheckedChangeListener localOnCheckedChangeListener = this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$OnCheckedChangeListener;
-    if ((localOnCheckedChangeListener != null) && (this.jdField_a_of_type_Boolean) && (paramBoolean)) {
+    this.i = paramInt;
+    ChipGroup.OnCheckedChangeListener localOnCheckedChangeListener = this.f;
+    if ((localOnCheckedChangeListener != null) && (this.d) && (paramBoolean)) {
       localOnCheckedChangeListener.a(this, paramInt);
     }
-  }
-  
-  private int b()
-  {
-    int i = 0;
-    int k;
-    for (int j = 0; i < getChildCount(); j = k)
-    {
-      k = j;
-      if ((getChildAt(i) instanceof Chip)) {
-        k = j + 1;
-      }
-      i += 1;
-    }
-    return j;
   }
   
   private void b(@IdRes int paramInt, boolean paramBoolean)
@@ -104,13 +89,28 @@ public class ChipGroup
     View localView = findViewById(paramInt);
     if ((localView instanceof Chip))
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.j = true;
       ((Chip)localView).setChecked(paramBoolean);
-      this.jdField_c_of_type_Boolean = false;
+      this.j = false;
     }
   }
   
-  private void d(int paramInt)
+  private int getChipCount()
+  {
+    int k = 0;
+    int n;
+    for (int m = 0; k < getChildCount(); m = n)
+    {
+      n = m;
+      if ((getChildAt(k) instanceof Chip)) {
+        n = m + 1;
+      }
+      k += 1;
+    }
+    return m;
+  }
+  
+  private void setCheckedId(int paramInt)
   {
     a(paramInt, true);
   }
@@ -120,77 +120,52 @@ public class ChipGroup
     if (!(paramView instanceof Chip)) {
       return -1;
     }
-    int i = 0;
-    int k;
-    for (int j = 0; i < getChildCount(); j = k)
+    int k = 0;
+    int n;
+    for (int m = 0; k < getChildCount(); m = n)
     {
-      k = j;
-      if ((getChildAt(i) instanceof Chip))
+      n = m;
+      if ((getChildAt(k) instanceof Chip))
       {
-        if ((Chip)getChildAt(i) == paramView) {
-          return j;
+        if ((Chip)getChildAt(k) == paramView) {
+          return m;
         }
-        k = j + 1;
+        n = m + 1;
       }
-      i += 1;
+      k += 1;
     }
     return -1;
   }
   
-  @NonNull
-  public List<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < getChildCount())
-    {
-      View localView = getChildAt(i);
-      if (((localView instanceof Chip)) && (((Chip)localView).isChecked()))
-      {
-        localArrayList.add(Integer.valueOf(localView.getId()));
-        if (this.jdField_a_of_type_Boolean) {
-          return localArrayList;
-        }
-      }
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
   public void a()
   {
-    this.jdField_c_of_type_Boolean = true;
-    int i = 0;
-    while (i < getChildCount())
+    this.j = true;
+    int k = 0;
+    while (k < getChildCount())
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(k);
       if ((localView instanceof Chip)) {
         ((Chip)localView).setChecked(false);
       }
-      i += 1;
+      k += 1;
     }
-    this.jdField_c_of_type_Boolean = false;
-    d(-1);
+    this.j = false;
+    setCheckedId(-1);
   }
   
   public void a(@IdRes int paramInt)
   {
-    int i = this.d;
-    if (paramInt == i) {
+    int k = this.i;
+    if (paramInt == k) {
       return;
     }
-    if ((i != -1) && (this.jdField_a_of_type_Boolean)) {
-      b(i, false);
+    if ((k != -1) && (this.d)) {
+      b(k, false);
     }
     if (paramInt != -1) {
       b(paramInt, true);
     }
-    d(paramInt);
-  }
-  
-  public boolean a()
-  {
-    return super.a();
+    setCheckedId(paramInt);
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
@@ -200,11 +175,11 @@ public class ChipGroup
       Chip localChip = (Chip)paramView;
       if (localChip.isChecked())
       {
-        int i = this.d;
-        if ((i != -1) && (this.jdField_a_of_type_Boolean)) {
-          b(i, false);
+        int k = this.i;
+        if ((k != -1) && (this.d)) {
+          b(k, false);
         }
-        d(localChip.getId());
+        setCheckedId(localChip.getId());
       }
     }
     super.addView(paramView, paramInt, paramLayoutParams);
@@ -212,7 +187,12 @@ public class ChipGroup
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return super.b();
+  }
+  
+  public boolean c()
+  {
+    return this.d;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -238,14 +218,55 @@ public class ChipGroup
     return new ChipGroup.LayoutParams(paramLayoutParams);
   }
   
+  @IdRes
+  public int getCheckedChipId()
+  {
+    if (this.d) {
+      return this.i;
+    }
+    return -1;
+  }
+  
+  @NonNull
+  public List<Integer> getCheckedChipIds()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int k = 0;
+    while (k < getChildCount())
+    {
+      View localView = getChildAt(k);
+      if (((localView instanceof Chip)) && (((Chip)localView).isChecked()))
+      {
+        localArrayList.add(Integer.valueOf(localView.getId()));
+        if (this.d) {
+          return localArrayList;
+        }
+      }
+      k += 1;
+    }
+    return localArrayList;
+  }
+  
+  @Dimension
+  public int getChipSpacingHorizontal()
+  {
+    return this.b;
+  }
+  
+  @Dimension
+  public int getChipSpacingVertical()
+  {
+    return this.c;
+  }
+  
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    int i = this.d;
-    if (i != -1)
+    int k = this.i;
+    if (k != -1)
     {
-      b(i, true);
-      d(this.d);
+      b(k, true);
+      setCheckedId(this.i);
     }
   }
   
@@ -253,20 +274,20 @@ public class ChipGroup
   {
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     paramAccessibilityNodeInfo = AccessibilityNodeInfoCompat.wrap(paramAccessibilityNodeInfo);
-    int i;
-    if (a()) {
-      i = b();
-    } else {
-      i = -1;
-    }
-    int k = a();
-    int j;
+    int k;
     if (b()) {
-      j = 1;
+      k = getChipCount();
     } else {
-      j = 2;
+      k = -1;
     }
-    paramAccessibilityNodeInfo.setCollectionInfo(AccessibilityNodeInfoCompat.CollectionInfoCompat.obtain(k, i, false, j));
+    int n = getRowCount();
+    int m;
+    if (c()) {
+      m = 1;
+    } else {
+      m = 2;
+    }
+    paramAccessibilityNodeInfo.setCollectionInfo(AccessibilityNodeInfoCompat.CollectionInfoCompat.obtain(n, k, false, m));
   }
   
   public void setChipSpacing(@Dimension int paramInt)
@@ -277,10 +298,10 @@ public class ChipGroup
   
   public void setChipSpacingHorizontal(@Dimension int paramInt)
   {
-    if (this.jdField_b_of_type_Int != paramInt)
+    if (this.b != paramInt)
     {
-      this.jdField_b_of_type_Int = paramInt;
-      c(paramInt);
+      this.b = paramInt;
+      setItemSpacing(paramInt);
       requestLayout();
     }
   }
@@ -297,10 +318,10 @@ public class ChipGroup
   
   public void setChipSpacingVertical(@Dimension int paramInt)
   {
-    if (this.jdField_c_of_type_Int != paramInt)
+    if (this.c != paramInt)
     {
-      this.jdField_c_of_type_Int = paramInt;
-      b(paramInt);
+      this.c = paramInt;
+      setLineSpacing(paramInt);
       requestLayout();
     }
   }
@@ -330,17 +351,17 @@ public class ChipGroup
   
   public void setOnCheckedChangeListener(ChipGroup.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$OnCheckedChangeListener = paramOnCheckedChangeListener;
+    this.f = paramOnCheckedChangeListener;
   }
   
   public void setOnHierarchyChangeListener(ViewGroup.OnHierarchyChangeListener paramOnHierarchyChangeListener)
   {
-    ChipGroup.PassThroughHierarchyChangeListener.a(this.jdField_a_of_type_ComGoogleAndroidMaterialChipChipGroup$PassThroughHierarchyChangeListener, paramOnHierarchyChangeListener);
+    ChipGroup.PassThroughHierarchyChangeListener.a(this.h, paramOnHierarchyChangeListener);
   }
   
   public void setSelectionRequired(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   @Deprecated
@@ -372,16 +393,16 @@ public class ChipGroup
   
   public void setSingleSelection(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.d != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.d = paramBoolean;
       a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.chip.ChipGroup
  * JD-Core Version:    0.7.0.1
  */

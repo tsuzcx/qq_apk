@@ -1,27 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class AccountManageActivity$23
-  extends AccountObserver
+  implements DialogInterface.OnClickListener
 {
   AccountManageActivity$23(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onDeleteAccount(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onDeleteAccount isSuccess ");
-      localStringBuilder.append(paramBoolean);
-      QLog.d("Switch_Account", 2, localStringBuilder.toString());
-    }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80040A7", "0X80040A7", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.23
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class StoryTransitionActivity$1
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    SLog.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.a()) });
+    SLog.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.c()) });
     return null;
   }
 }

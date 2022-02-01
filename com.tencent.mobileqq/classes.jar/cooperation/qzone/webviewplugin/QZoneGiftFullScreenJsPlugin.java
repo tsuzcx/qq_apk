@@ -89,7 +89,7 @@ public class QZoneGiftFullScreenJsPlugin
   
   private void downloadGift(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    paramPluginRuntime.a().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZoneGiftFullScreenJsPlugin.1(this, paramArrayOfString));
+    paramPluginRuntime.b().getHandler(QzoneDeviceTagJsPlugin.class).post(new QZoneGiftFullScreenJsPlugin.1(this, paramArrayOfString));
   }
   
   private void playGift(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
@@ -122,7 +122,7 @@ public class QZoneGiftFullScreenJsPlugin
         localObject = new File(paramArrayOfString);
         if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
         {
-          this.giftController = new QzoneGiftFullScreenViewController(this.parentPlugin.mRuntime.a());
+          this.giftController = new QzoneGiftFullScreenViewController(this.parentPlugin.mRuntime.d());
           if (QzoneGiftFullScreenViewController.isSupportMagicface()) {
             this.giftController.playMaigcface(paramWebViewPlugin, paramArrayOfString, new QZoneGiftFullScreenJsPlugin.2(this, paramPluginRuntime));
           }
@@ -243,7 +243,7 @@ public class QZoneGiftFullScreenJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneGiftFullScreenJsPlugin
  * JD-Core Version:    0.7.0.1
  */

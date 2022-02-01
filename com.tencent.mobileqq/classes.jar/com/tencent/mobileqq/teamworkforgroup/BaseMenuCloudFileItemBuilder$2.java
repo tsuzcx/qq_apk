@@ -26,14 +26,14 @@ class BaseMenuCloudFileItemBuilder$2
   
   public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupBaseMenuCloudFileItemBuilder.a((ICloudFile)paramObject);
+    Object localObject = this.l.a((ICloudFile)paramObject);
     int i = ((List)localObject).size();
     paramInt = 0;
     paramObject = localObject;
     if (i > 3)
     {
       paramObject = ((List)localObject).subList(i - 2, i);
-      paramObject.add(0, BaseMenuCloudFileItemBuilder.a);
+      paramObject.add(0, BaseMenuCloudFileItemBuilder.b);
     }
     i = Math.min(paramObject.size(), 3);
     while (paramInt < paramArrayOfSwipRightMenuItem.length)
@@ -41,12 +41,12 @@ class BaseMenuCloudFileItemBuilder$2
       if (paramInt < i)
       {
         localObject = (MenuItem)paramObject.get(paramInt);
-        int j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
-        if (j < 0)
+        int m = this.j.indexOf(localObject);
+        if (m < 0)
         {
           if (QLog.isColorLevel())
           {
-            String str = this.jdField_a_of_type_JavaLangString;
+            String str = this.a;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("getRightMenuItemInfo error, can not find the menu， menuId[");
             localStringBuilder.append(((MenuItem)localObject).b());
@@ -58,8 +58,8 @@ class BaseMenuCloudFileItemBuilder$2
         }
         else
         {
-          paramArrayOfSwipRightMenuItem[paramInt].b = j;
-          paramArrayOfSwipRightMenuItem[paramInt].a = this.e[j];
+          paramArrayOfSwipRightMenuItem[paramInt].b = m;
+          paramArrayOfSwipRightMenuItem[paramInt].a = this.k[m];
         }
       }
       else
@@ -73,7 +73,7 @@ class BaseMenuCloudFileItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.BaseMenuCloudFileItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

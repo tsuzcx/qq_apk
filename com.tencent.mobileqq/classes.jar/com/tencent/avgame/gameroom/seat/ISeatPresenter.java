@@ -10,15 +10,11 @@ import java.util.List;
 
 public abstract interface ISeatPresenter
 {
-  public abstract RectF a();
-  
   public abstract RectF a(long paramLong);
   
   public abstract AVGameUserInfo a(String paramString);
   
   public abstract List<SeatMemberInfo> a();
-  
-  public abstract void a();
   
   public abstract void a(long paramLong, boolean paramBoolean);
   
@@ -32,17 +28,21 @@ public abstract interface ISeatPresenter
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean a();
-  
-  public abstract List<MemberVideoDisplayInfo> b();
-  
-  public abstract void b();
-  
   public abstract void b(Player paramPlayer);
   
   public abstract void b(boolean paramBoolean1, boolean paramBoolean2);
   
+  public abstract boolean b();
+  
+  public abstract void c();
+  
   public abstract void c(Player paramPlayer);
+  
+  public abstract List<MemberVideoDisplayInfo> d();
+  
+  public abstract void e();
+  
+  public abstract RectF f();
 }
 
 

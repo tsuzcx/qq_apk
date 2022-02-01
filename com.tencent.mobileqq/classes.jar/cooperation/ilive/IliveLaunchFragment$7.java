@@ -29,23 +29,23 @@ final class IliveLaunchFragment$7
     }
     ElapseStat.b("IliveLaunch pluginParse");
     String str;
-    if (QQVideoPlaySDKManager.b()) {
+    if (QQVideoPlaySDKManager.isSoLoadSucess()) {
       str = "1";
     } else {
       str = "0";
     }
     VasStatisticCollector.b("live_player_ready", new Pair[] { new Pair("status_msg", str) });
-    if (TimeMonitorManager.a().b("ANCHOR_ENTER_ROOM"))
+    if (TimeMonitorManager.a().e("ANCHOR_ENTER_ROOM"))
     {
-      TimeMonitorManager.a().a("ANCHOR_ENTER_ROOM").b("auchor_enter");
+      TimeMonitorManager.a().d("ANCHOR_ENTER_ROOM").b("auchor_enter");
       TimeMonitorManager.a().a("ANCHOR_ENTER_ROOM");
     }
-    if (TimeMonitorManager.a().b("WATCH_ENTER_ROOM"))
+    if (TimeMonitorManager.a().e("WATCH_ENTER_ROOM"))
     {
-      TimeMonitorManager.a().a("WATCH_ENTER_ROOM").b("watch_enter");
+      TimeMonitorManager.a().d("WATCH_ENTER_ROOM").b("watch_enter");
       TimeMonitorManager.a().a("WATCH_ENTER_ROOM");
     }
-    TimeMonitorManager.a().a("PLUGIN_LOAD").b("enter_complete");
+    TimeMonitorManager.a().d("PLUGIN_LOAD").b("enter_complete");
   }
   
   public void onShowLoadingView(View paramView)
@@ -56,7 +56,7 @@ final class IliveLaunchFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.7
  * JD-Core Version:    0.7.0.1
  */

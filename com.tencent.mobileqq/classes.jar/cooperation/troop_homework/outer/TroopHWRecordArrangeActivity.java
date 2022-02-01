@@ -15,18 +15,18 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class TroopHWRecordArrangeActivity
   extends TroopHWRecordBaseActivity
 {
-  private int jdField_a_of_type_Int = 20;
-  private Handler jdField_a_of_type_AndroidOsHandler = new TroopHWRecordArrangeActivity.1(this);
-  private String jdField_a_of_type_JavaLangString = null;
+  private String f = null;
+  private int g = 20;
+  private Handler h = new TroopHWRecordArrangeActivity.1(this);
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel = ((CommonRecordSoundPanel)LayoutInflater.from(this).inflate(2131559849, null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setPresenter(((IAudioPanelPresenterCreater)QRoute.api(IAudioPanelPresenterCreater.class)).createCommonRecordSoundPanelPresenter(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(getAppRuntime(), this, this.jdField_a_of_type_AndroidOsHandler, 0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setTimeOutTime(360000);
+    this.a = ((CommonRecordSoundPanel)LayoutInflater.from(this).inflate(2131625892, null));
+    this.a.setPresenter(((IAudioPanelPresenterCreater)QRoute.api(IAudioPanelPresenterCreater.class)).createCommonRecordSoundPanelPresenter(this.a));
+    this.b.addView(this.a);
+    this.a.a(getAppRuntime(), this, this.h, 0);
+    this.a.e();
+    this.a.setTimeOutTime(360000);
   }
   
   @Override
@@ -42,7 +42,7 @@ public class TroopHWRecordArrangeActivity
   {
     boolean bool = super.doOnCreate(paramBundle);
     if (getIntent() != null) {
-      this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("webid");
+      this.f = getIntent().getStringExtra("webid");
     }
     return bool;
   }
@@ -56,7 +56,7 @@ public class TroopHWRecordArrangeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.outer.TroopHWRecordArrangeActivity
  * JD-Core Version:    0.7.0.1
  */

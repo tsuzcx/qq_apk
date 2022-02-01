@@ -20,6 +20,11 @@ public class DefaultMediaPlayer
   public static final String LOG_TAG = "DefaultMediaPlayer";
   MediaPlayer mMediaPlayer = new MediaPlayer();
   
+  public int getBufferPercent()
+  {
+    return 0;
+  }
+  
   public long getCurrentPosition()
   {
     return this.mMediaPlayer.getCurrentPosition();
@@ -48,6 +53,11 @@ public class DefaultMediaPlayer
   public boolean isPlaying()
   {
     return this.mMediaPlayer.isPlaying();
+  }
+  
+  public boolean isSuperPlayer()
+  {
+    return true;
   }
   
   public void pause()
@@ -83,6 +93,11 @@ public class DefaultMediaPlayer
   public void setDisplay(SurfaceHolder paramSurfaceHolder)
   {
     this.mMediaPlayer.setDisplay(paramSurfaceHolder);
+  }
+  
+  public void setDrmDataSource(String paramString1, String paramString2, String paramString3)
+  {
+    this.mMediaPlayer.setDataSource(paramString1);
   }
   
   public void setLooping(boolean paramBoolean)
@@ -166,7 +181,7 @@ public class DefaultMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DefaultMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

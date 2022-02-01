@@ -18,33 +18,33 @@ import java.util.HashMap;
 
 public class VideoFeedsResourceLoader
 {
-  private static int jdField_a_of_type_Int;
-  private static LayoutInflateProcessor jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor;
-  private static HashMap<Integer, Drawable> jdField_a_of_type_JavaUtilHashMap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
+  private static int a;
+  private static LayoutInflateProcessor b;
+  private static HashMap<Integer, Drawable> c;
+  private Handler d;
   
   public VideoFeedsResourceLoader(Context paramContext)
   {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor = new LayoutInflateProcessor(paramContext.getApplicationContext());
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    jdField_a_of_type_Int += 1;
+    b = new LayoutInflateProcessor(paramContext.getApplicationContext());
+    c = new HashMap();
+    this.d = new Handler();
+    a += 1;
     a(paramContext);
   }
   
   public static Drawable a(Context paramContext, int paramInt)
   {
-    Object localObject = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = c;
     if (localObject == null) {
       return null;
     }
     if (((HashMap)localObject).containsKey(Integer.valueOf(paramInt))) {
-      return (Drawable)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+      return (Drawable)c.get(Integer.valueOf(paramInt));
     }
     try
     {
       paramContext = paramContext.getResources().getDrawable(paramInt);
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramContext);
+      c.put(Integer.valueOf(paramInt), paramContext);
       return paramContext;
     }
     catch (OutOfMemoryError paramContext)
@@ -62,7 +62,7 @@ public class VideoFeedsResourceLoader
   
   public static View a(int paramInt, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
   {
-    Object localObject = jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor;
+    Object localObject = b;
     if (localObject != null) {
       return ((LayoutInflateProcessor)localObject).a(paramInt, paramBoolean, paramLayoutParams);
     }
@@ -75,22 +75,9 @@ public class VideoFeedsResourceLoader
     return null;
   }
   
-  private LayoutInflateProcessor.InflateParams a()
-  {
-    return new LayoutInflateProcessor.InflateParams(2131560337, null, new VideoFeedsResourceLoader.2(this));
-  }
-  
-  private LayoutInflateProcessor.InflateParams a(int paramInt)
-  {
-    if (ReadInJoyHelper.b()) {
-      return new LayoutInflateProcessor.InflateParams(2131560357, paramInt, null, new VideoFeedsResourceLoader.3(this));
-    }
-    return new LayoutInflateProcessor.InflateParams(2131560341, paramInt, null, new VideoFeedsResourceLoader.4(this));
-  }
-  
   public static LayoutInflateProcessor a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor;
+    return b;
   }
   
   private void a(Context paramContext)
@@ -98,44 +85,57 @@ public class VideoFeedsResourceLoader
     ThreadManager.excute(new VideoFeedsResourceLoader.1(this, new WeakReference(paramContext)), 16, null, true);
   }
   
-  public void a()
+  private LayoutInflateProcessor.InflateParams b(int paramInt)
   {
-    Object localObject = jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor;
-    if (localObject != null) {
-      ((LayoutInflateProcessor)localObject).a();
+    if (ReadInJoyHelper.b()) {
+      return new LayoutInflateProcessor.InflateParams(2131626403, paramInt, null, new VideoFeedsResourceLoader.3(this));
     }
-    localObject = jdField_a_of_type_JavaUtilHashMap;
-    if (localObject != null) {
-      ((HashMap)localObject).clear();
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    jdField_a_of_type_Int -= 1;
-    if (jdField_a_of_type_Int <= 0)
-    {
-      jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor = null;
-      jdField_a_of_type_JavaUtilHashMap = null;
-    }
+    return new LayoutInflateProcessor.InflateParams(2131626387, paramInt, null, new VideoFeedsResourceLoader.4(this));
+  }
+  
+  private LayoutInflateProcessor.InflateParams c()
+  {
+    return new LayoutInflateProcessor.InflateParams(2131626383, null, new VideoFeedsResourceLoader.2(this));
   }
   
   public void a(int paramInt)
   {
     LayoutInflateProcessor.InflateParams localInflateParams1;
     if (paramInt == 0) {
-      localInflateParams1 = new LayoutInflateProcessor.InflateParams(2131560373, null, null);
+      localInflateParams1 = new LayoutInflateProcessor.InflateParams(2131626419, null, null);
     } else {
       localInflateParams1 = null;
     }
-    LayoutInflateProcessor.InflateParams localInflateParams2 = new LayoutInflateProcessor.InflateParams(2131560115, null, null);
-    LayoutInflateProcessor.InflateParams localInflateParams3 = new LayoutInflateProcessor.InflateParams(2131560269, null, null);
-    LayoutInflateProcessor.InflateParams localInflateParams4 = a(1);
-    LayoutInflateProcessor.InflateParams localInflateParams5 = a();
-    LayoutInflateProcessor.InflateParams localInflateParams6 = a(2);
-    jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor.a(new LayoutInflateProcessor.InflateParams[] { localInflateParams1, localInflateParams2, localInflateParams3, localInflateParams4, localInflateParams5, localInflateParams6 });
+    LayoutInflateProcessor.InflateParams localInflateParams2 = new LayoutInflateProcessor.InflateParams(2131626162, null, null);
+    LayoutInflateProcessor.InflateParams localInflateParams3 = new LayoutInflateProcessor.InflateParams(2131626316, null, null);
+    LayoutInflateProcessor.InflateParams localInflateParams4 = b(1);
+    LayoutInflateProcessor.InflateParams localInflateParams5 = c();
+    LayoutInflateProcessor.InflateParams localInflateParams6 = b(2);
+    b.a(new LayoutInflateProcessor.InflateParams[] { localInflateParams1, localInflateParams2, localInflateParams3, localInflateParams4, localInflateParams5, localInflateParams6 });
+  }
+  
+  public void b()
+  {
+    Object localObject = b;
+    if (localObject != null) {
+      ((LayoutInflateProcessor)localObject).a();
+    }
+    localObject = c;
+    if (localObject != null) {
+      ((HashMap)localObject).clear();
+    }
+    this.d.removeCallbacksAndMessages(null);
+    a -= 1;
+    if (a <= 0)
+    {
+      b = null;
+      c = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsResourceLoader
  * JD-Core Version:    0.7.0.1
  */

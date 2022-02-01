@@ -2,6 +2,7 @@ package com.tencent.tkd.topicsdk.widget;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.tkd.topicsdk.common.DisplayUtils;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -16,121 +18,137 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$CommonDialog;", "Landroid/app/AlertDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSplitLine", "Landroid/view/View;", "customContentView", "getCustomContentView", "()Landroid/view/View;", "setCustomContentView", "(Landroid/view/View;)V", "isForbidBackPress", "", "()Z", "setForbidBackPress", "(Z)V", "mContentLayout", "Landroid/widget/RelativeLayout;", "mMessage", "", "mMessageView", "Landroid/widget/TextView;", "mNegativeButton", "mPositiveButton", "mTitleView", "messageTextClickAction", "Lkotlin/Function0;", "", "getMessageTextClickAction", "()Lkotlin/jvm/functions/Function0;", "setMessageTextClickAction", "(Lkotlin/jvm/functions/Function0;)V", "messageViewGravity", "", "getMessageViewGravity", "()Ljava/lang/Integer;", "setMessageViewGravity", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "negativeButtonCallback", "Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$ICommonDialogListener;", "getNegativeButtonCallback", "()Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$ICommonDialogListener;", "setNegativeButtonCallback", "(Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$ICommonDialogListener;)V", "negativeButtonMessage", "", "getNegativeButtonMessage", "()Ljava/lang/String;", "setNegativeButtonMessage", "(Ljava/lang/String;)V", "negativeButtonTextColor", "getNegativeButtonTextColor", "setNegativeButtonTextColor", "positiveButtonCallback", "getPositiveButtonCallback", "setPositiveButtonCallback", "positiveButtonMessage", "getPositiveButtonMessage", "setPositiveButtonMessage", "positiveButtonTextColor", "getPositiveButtonTextColor", "setPositiveButtonTextColor", "title", "getTitle", "setTitle", "titleTextColor", "getTitleTextColor", "setTitleTextColor", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setMessage", "message", "topicsdk-widget_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$CommonDialog;", "Landroid/app/AlertDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSplitLine", "Landroid/view/View;", "contentMarginBottom", "", "getContentMarginBottom", "()I", "setContentMarginBottom", "(I)V", "contentMarginBottomView", "customContentView", "getCustomContentView", "()Landroid/view/View;", "setCustomContentView", "(Landroid/view/View;)V", "isForbidBackPress", "", "()Z", "setForbidBackPress", "(Z)V", "mContentLayout", "Landroid/widget/RelativeLayout;", "mMessage", "", "mMessageView", "Landroid/widget/TextView;", "mNegativeButton", "mPositiveButton", "mTitleView", "messageTextClickAction", "Lkotlin/Function0;", "", "getMessageTextClickAction", "()Lkotlin/jvm/functions/Function0;", "setMessageTextClickAction", "(Lkotlin/jvm/functions/Function0;)V", "messageViewGravity", "getMessageViewGravity", "()Ljava/lang/Integer;", "setMessageViewGravity", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "negativeButtonCallback", "Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$ICommonDialogListener;", "getNegativeButtonCallback", "()Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$ICommonDialogListener;", "setNegativeButtonCallback", "(Lcom/tencent/tkd/topicsdk/widget/CommonDialogBuilder$ICommonDialogListener;)V", "negativeButtonMessage", "", "getNegativeButtonMessage", "()Ljava/lang/String;", "setNegativeButtonMessage", "(Ljava/lang/String;)V", "negativeButtonTextColor", "getNegativeButtonTextColor", "setNegativeButtonTextColor", "positiveButtonCallback", "getPositiveButtonCallback", "setPositiveButtonCallback", "positiveButtonMessage", "getPositiveButtonMessage", "setPositiveButtonMessage", "positiveButtonTextColor", "getPositiveButtonTextColor", "setPositiveButtonTextColor", "title", "getTitle", "setTitle", "titleMarginTop", "getTitleMarginTop", "setTitleMarginTop", "titleMarginTopView", "titleTextColor", "getTitleTextColor", "setTitleTextColor", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "setMessage", "message", "topicsdk-widget_release"}, k=1, mv={1, 1, 16})
 public final class CommonDialogBuilder$CommonDialog
   extends AlertDialog
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private CharSequence a;
+  private TextView b;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private RelativeLayout f;
+  private View g;
+  private View h;
+  private View i;
   @Nullable
-  private CommonDialogBuilder.ICommonDialogListener jdField_a_of_type_ComTencentTkdTopicsdkWidgetCommonDialogBuilder$ICommonDialogListener;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String j;
   @Nullable
-  private Integer jdField_a_of_type_JavaLangInteger;
+  private String k;
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
+  private String l;
   @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  private boolean jdField_a_of_type_Boolean;
+  private CommonDialogBuilder.ICommonDialogListener m;
   @Nullable
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private CommonDialogBuilder.ICommonDialogListener n;
   @Nullable
-  private CommonDialogBuilder.ICommonDialogListener jdField_b_of_type_ComTencentTkdTopicsdkWidgetCommonDialogBuilder$ICommonDialogListener;
+  private Function0<Unit> o;
   @Nullable
-  private Integer jdField_b_of_type_JavaLangInteger;
+  private Integer p;
   @Nullable
-  private String jdField_b_of_type_JavaLangString;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
+  private Integer q;
   @Nullable
-  private Integer jdField_c_of_type_JavaLangInteger;
+  private Integer r;
   @Nullable
-  private String jdField_c_of_type_JavaLangString;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
+  private Integer s;
   @Nullable
-  private Integer jdField_d_of_type_JavaLangInteger;
+  private View t;
+  private boolean u;
+  private int v;
+  private int w;
   
   public CommonDialogBuilder$CommonDialog(@NotNull Context paramContext)
   {
     super(paramContext, R.style.a);
+    this.v = DisplayUtils.a.a(35.0F, paramContext);
+    this.w = DisplayUtils.a.a(35.0F, paramContext);
   }
   
   @Nullable
   public final CommonDialogBuilder.ICommonDialogListener a()
   {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetCommonDialogBuilder$ICommonDialogListener;
+    return this.m;
+  }
+  
+  public final void a(int paramInt)
+  {
+    this.v = paramInt;
   }
   
   public final void a(@Nullable View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView;
+    this.t = paramView;
   }
   
   public final void a(@Nullable CommonDialogBuilder.ICommonDialogListener paramICommonDialogListener)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetCommonDialogBuilder$ICommonDialogListener = paramICommonDialogListener;
+    this.m = paramICommonDialogListener;
   }
   
   public final void a(@Nullable Integer paramInteger)
   {
-    this.jdField_a_of_type_JavaLangInteger = paramInteger;
+    this.p = paramInteger;
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.j = paramString;
   }
   
   public final void a(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
+    this.o = paramFunction0;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.u = paramBoolean;
   }
   
   @Nullable
   public final CommonDialogBuilder.ICommonDialogListener b()
   {
-    return this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetCommonDialogBuilder$ICommonDialogListener;
+    return this.n;
+  }
+  
+  public final void b(int paramInt)
+  {
+    this.w = paramInt;
   }
   
   public final void b(@Nullable CommonDialogBuilder.ICommonDialogListener paramICommonDialogListener)
   {
-    this.jdField_b_of_type_ComTencentTkdTopicsdkWidgetCommonDialogBuilder$ICommonDialogListener = paramICommonDialogListener;
+    this.n = paramICommonDialogListener;
   }
   
   public final void b(@Nullable Integer paramInteger)
   {
-    this.jdField_b_of_type_JavaLangInteger = paramInteger;
+    this.q = paramInteger;
   }
   
   public final void b(@Nullable String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public final void c(@Nullable Integer paramInteger)
   {
-    this.jdField_c_of_type_JavaLangInteger = paramInteger;
+    this.r = paramInteger;
   }
   
   public final void c(@Nullable String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.l = paramString;
   }
   
   public final void d(@Nullable Integer paramInteger)
   {
-    this.jdField_d_of_type_JavaLangInteger = paramInteger;
+    this.s = paramInteger;
   }
   
   public void onBackPressed()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.u) {
       super.onBackPressed();
     }
   }
@@ -141,178 +159,212 @@ public final class CommonDialogBuilder$CommonDialog
     setContentView(R.layout.a);
     paramBundle = findViewById(R.id.b);
     Intrinsics.checkExpressionValueIsNotNull(paramBundle, "findViewById(R.id.contentLayout)");
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.g));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.d));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.f));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(R.id.e));
+    this.f = ((RelativeLayout)paramBundle);
+    this.b = ((TextView)findViewById(R.id.h));
+    this.c = ((TextView)findViewById(R.id.e));
+    this.d = ((TextView)findViewById(R.id.g));
+    this.e = ((TextView)findViewById(R.id.f));
     paramBundle = findViewById(R.id.a);
     Intrinsics.checkExpressionValueIsNotNull(paramBundle, "findViewById(R.id.bottomSplitLine)");
-    this.jdField_a_of_type_AndroidViewView = paramBundle;
-    int i;
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString))
+    this.g = paramBundle;
+    paramBundle = findViewById(R.id.i);
+    Intrinsics.checkExpressionValueIsNotNull(paramBundle, "findViewById(R.id.title_margin_top)");
+    this.h = paramBundle;
+    paramBundle = findViewById(R.id.c);
+    Intrinsics.checkExpressionValueIsNotNull(paramBundle, "findViewById(R.id.content_margin_Bottom)");
+    this.i = paramBundle;
+    int i1;
+    if (!TextUtils.isEmpty((CharSequence)this.j))
     {
-      paramBundle = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramBundle = this.b;
       if (paramBundle != null) {
-        paramBundle.setText((CharSequence)this.jdField_a_of_type_JavaLangString);
+        paramBundle.setText((CharSequence)this.j);
       }
-      paramBundle = this.jdField_a_of_type_JavaLangInteger;
+      paramBundle = this.p;
       if (paramBundle != null)
       {
-        i = ((Number)paramBundle).intValue();
-        paramBundle = this.jdField_a_of_type_AndroidWidgetTextView;
+        i1 = ((Number)paramBundle).intValue();
+        paramBundle = this.b;
         if (paramBundle != null) {
-          paramBundle.setTextColor(i);
+          paramBundle.setTextColor(i1);
         }
       }
     }
     else
     {
-      paramBundle = this.jdField_a_of_type_AndroidWidgetTextView;
+      paramBundle = this.b;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
-    paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+    paramBundle = this.c;
     if (paramBundle != null) {
       paramBundle.setMovementMethod(LinkMovementMethod.getInstance());
     }
-    paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
-    int j = 0;
+    paramBundle = this.c;
+    int i2 = 0;
     if (paramBundle != null) {
       paramBundle.setHighlightColor(0);
     }
     Object localObject;
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    if (this.t != null)
     {
-      paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+      paramBundle = this.c;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      paramBundle = this.f;
       if (paramBundle == null) {
         Intrinsics.throwUninitializedPropertyAccessException("mContentLayout");
       }
-      paramBundle.addView(this.jdField_b_of_type_AndroidViewView);
+      paramBundle.addView(this.t);
     }
     else
     {
-      paramBundle = this.jdField_a_of_type_JavaLangCharSequence;
+      paramBundle = this.a;
       if ((paramBundle != null) && (paramBundle.length() != 0)) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 1;
+        i1 = 1;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        paramBundle = this.c;
         if (paramBundle != null) {
           paramBundle.setVisibility(8);
         }
       }
       else
       {
-        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        paramBundle = this.c;
         if (paramBundle != null) {
           paramBundle.setVisibility(0);
         }
-        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        paramBundle = this.c;
         if (paramBundle != null) {
-          paramBundle.setText(this.jdField_a_of_type_JavaLangCharSequence);
+          paramBundle.setText(this.a);
         }
-        paramBundle = this.jdField_b_of_type_AndroidWidgetTextView;
+        paramBundle = this.c;
         if (paramBundle != null)
         {
-          localObject = this.jdField_d_of_type_JavaLangInteger;
+          localObject = this.s;
           if (localObject != null) {
-            i = ((Integer)localObject).intValue();
+            i1 = ((Integer)localObject).intValue();
           } else {
-            i = 17;
+            i1 = 17;
           }
-          paramBundle.setGravity(i);
+          paramBundle.setGravity(i1);
         }
       }
     }
-    paramBundle = this.jdField_b_of_type_JavaLangString;
+    paramBundle = this.h;
+    if (paramBundle == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("titleMarginTopView");
+    }
+    paramBundle.getLayoutParams().height = this.v;
+    paramBundle = this.i;
+    if (paramBundle == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("contentMarginBottomView");
+    }
+    paramBundle.getLayoutParams().height = this.w;
+    paramBundle = this.k;
     if (paramBundle != null)
     {
       paramBundle = (CharSequence)paramBundle;
       if (paramBundle.length() > 0) {
-        i = 1;
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        localObject = this.jdField_d_of_type_AndroidWidgetTextView;
+        localObject = this.e;
         if (localObject != null) {
           ((TextView)localObject).setText(paramBundle);
         }
-        paramBundle = this.jdField_c_of_type_JavaLangInteger;
+        paramBundle = this.r;
         if (paramBundle == null) {
-          break label513;
+          break label656;
         }
-        i = ((Number)paramBundle).intValue();
-        paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
+        i1 = ((Number)paramBundle).intValue();
+        paramBundle = this.e;
         if (paramBundle == null) {
-          break label513;
+          break label656;
         }
-        paramBundle.setTextColor(i);
-        break label513;
+        paramBundle.setTextColor(i1);
+        break label656;
       }
     }
-    paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
+    paramBundle = this.e;
     if (paramBundle != null) {
       paramBundle.setText((CharSequence)"");
     }
-    paramBundle = this.jdField_a_of_type_AndroidViewView;
-    if (paramBundle == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
-    }
-    paramBundle.setVisibility(8);
-    label513:
-    paramBundle = this.jdField_d_of_type_AndroidWidgetTextView;
-    if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.3(this));
-    }
-    paramBundle = this.jdField_c_of_type_JavaLangString;
-    if (paramBundle != null)
-    {
-      paramBundle = (CharSequence)paramBundle;
-      i = j;
-      if (paramBundle.length() > 0) {
-        i = 1;
-      }
-      if (i != 0)
-      {
-        localObject = this.jdField_c_of_type_AndroidWidgetTextView;
-        if (localObject != null) {
-          ((TextView)localObject).setText(paramBundle);
-        }
-        paramBundle = this.jdField_b_of_type_JavaLangInteger;
-        if (paramBundle == null) {
-          break label655;
-        }
-        i = ((Number)paramBundle).intValue();
-        paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
-        if (paramBundle == null) {
-          break label655;
-        }
-        paramBundle.setTextColor(i);
-        break label655;
-      }
-    }
-    paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
+    paramBundle = this.e;
     if (paramBundle != null) {
       paramBundle.setVisibility(8);
     }
-    paramBundle = this.jdField_a_of_type_AndroidViewView;
+    paramBundle = this.g;
     if (paramBundle == null) {
       Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
     }
     paramBundle.setVisibility(8);
-    label655:
-    paramBundle = this.jdField_c_of_type_AndroidWidgetTextView;
+    paramBundle = this.d;
+    if (paramBundle != null)
+    {
+      localObject = getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
+      paramBundle.setBackground(((Context)localObject).getResources().getDrawable(R.drawable.e));
+    }
+    label656:
+    paramBundle = this.e;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.3(this));
+    }
+    paramBundle = this.l;
+    if (paramBundle != null)
+    {
+      paramBundle = (CharSequence)paramBundle;
+      i1 = i2;
+      if (paramBundle.length() > 0) {
+        i1 = 1;
+      }
+      if (i1 != 0)
+      {
+        localObject = this.d;
+        if (localObject != null) {
+          ((TextView)localObject).setText(paramBundle);
+        }
+        paramBundle = this.q;
+        if (paramBundle == null) {
+          break label835;
+        }
+        i1 = ((Number)paramBundle).intValue();
+        paramBundle = this.d;
+        if (paramBundle == null) {
+          break label835;
+        }
+        paramBundle.setTextColor(i1);
+        break label835;
+      }
+    }
+    paramBundle = this.d;
+    if (paramBundle != null) {
+      paramBundle.setVisibility(8);
+    }
+    paramBundle = this.g;
+    if (paramBundle == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("bottomSplitLine");
+    }
+    paramBundle.setVisibility(8);
+    paramBundle = this.e;
+    if (paramBundle != null)
+    {
+      localObject = getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
+      paramBundle.setBackground(((Context)localObject).getResources().getDrawable(R.drawable.e));
+    }
+    label835:
+    paramBundle = this.d;
     if (paramBundle != null) {
       paramBundle.setOnClickListener((View.OnClickListener)new CommonDialogBuilder.CommonDialog.onCreate.5(this));
     }
@@ -321,12 +373,12 @@ public final class CommonDialogBuilder$CommonDialog
   public void setMessage(@Nullable CharSequence paramCharSequence)
   {
     super.setMessage(paramCharSequence);
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.a = paramCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.CommonDialogBuilder.CommonDialog
  * JD-Core Version:    0.7.0.1
  */

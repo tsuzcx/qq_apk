@@ -18,35 +18,35 @@ class CustomTabView$2
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis());
       localStringBuilder.append("");
-      ReportUtil.a("gouwu.tab.click", (String)localObject, localStringBuilder.toString(), "", this.jdField_a_of_type_ComTencentMobileqqEcshopKeepCustomTabView.a);
+      ReportUtil.a("gouwu.tab.click", (String)localObject, localStringBuilder.toString(), "", this.e.a);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a);
+      ((StringBuilder)localObject).append(this.a.b);
       ((StringBuilder)localObject).append("");
       localObject = ((StringBuilder)localObject).toString();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis());
       localStringBuilder.append("");
-      ReportUtil.b("gouwu_tab_click", (String)localObject, localStringBuilder.toString(), "", this.jdField_a_of_type_ComTencentMobileqqEcshopKeepCustomTabView.a);
+      ReportUtil.b("gouwu_tab_click", (String)localObject, localStringBuilder.toString(), "", this.e.a);
       int i;
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getTag() == null) {
+      if (this.b.getTag() == null) {
         i = 0;
       } else {
-        i = ((Integer)this.jdField_a_of_type_AndroidWidgetImageView.getTag()).intValue();
+        i = ((Integer)this.b.getTag()).intValue();
       }
       localObject = Integer.valueOf(i);
       if (((Integer)localObject).intValue() != 0)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        QQShopRedPointUtil.a(this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a, ((Integer)localObject).intValue());
+        this.b.setVisibility(8);
+        QQShopRedPointUtil.b(this.a.b, ((Integer)localObject).intValue());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean.a != this.jdField_a_of_type_ComTencentMobileqqEcshopKeepCustomTabView.a) {
-        CustomTabView.a(this.jdField_a_of_type_ComTencentMobileqqEcshopKeepCustomTabView, this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$TabConfBean, this.jdField_a_of_type_AndroidWidgetTextView, this.b);
+      if (this.a.b != this.e.a) {
+        CustomTabView.a(this.e, this.a, this.c, this.d);
       }
     }
     catch (Throwable localThrowable)
@@ -58,7 +58,7 @@ class CustomTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.keep.CustomTabView.2
  * JD-Core Version:    0.7.0.1
  */

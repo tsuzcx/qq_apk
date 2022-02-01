@@ -11,13 +11,13 @@ class QQIdentiferActivity$2$2
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QQIdentiferActivity.access$000(this.a.a, 205, HardCodeUtil.a(2131710316));
+    QQIdentiferActivity.access$000(this.a.a, 205, HardCodeUtil.a(2131908010));
     this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.2.2
  * JD-Core Version:    0.7.0.1
  */

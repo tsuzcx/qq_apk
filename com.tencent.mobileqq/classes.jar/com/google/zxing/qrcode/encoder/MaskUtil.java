@@ -21,7 +21,7 @@ final class MaskUtil
     } else {
       n = paramByteMatrix.a();
     }
-    paramByteMatrix = paramByteMatrix.a();
+    paramByteMatrix = paramByteMatrix.c();
     int i1 = 0;
     int i = 0;
     while (i1 < m)
@@ -108,7 +108,7 @@ final class MaskUtil
   
   static int b(ByteMatrix paramByteMatrix)
   {
-    byte[][] arrayOfByte = paramByteMatrix.a();
+    byte[][] arrayOfByte = paramByteMatrix.c();
     int i1 = paramByteMatrix.b();
     int i2 = paramByteMatrix.a();
     int j = 0;
@@ -144,7 +144,7 @@ final class MaskUtil
   
   static int c(ByteMatrix paramByteMatrix)
   {
-    byte[][] arrayOfByte = paramByteMatrix.a();
+    byte[][] arrayOfByte = paramByteMatrix.c();
     int n = paramByteMatrix.b();
     int i1 = paramByteMatrix.a();
     int k = 0;
@@ -283,7 +283,7 @@ final class MaskUtil
   
   static int d(ByteMatrix paramByteMatrix)
   {
-    byte[][] arrayOfByte = paramByteMatrix.a();
+    byte[][] arrayOfByte = paramByteMatrix.c();
     int n = paramByteMatrix.b();
     int i1 = paramByteMatrix.a();
     int j = 0;
@@ -314,7 +314,7 @@ final class MaskUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.qrcode.encoder.MaskUtil
  * JD-Core Version:    0.7.0.1
  */

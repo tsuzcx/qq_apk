@@ -11,7 +11,7 @@ import com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager
 import com.tencent.aelight.camera.aeeditor.module.imagetemplate.ImageTemplateControlListener;
 import com.tencent.aelight.camera.aeeditor.view.classifier.ApplyMaterialLocalTask;
 import com.tencent.aelight.camera.aeeditor.view.classifier.ApplyMaterialTask.MaterialStatusCallback;
-import com.tencent.tavcut.session.TAVCutImageSession;
+import com.tencent.qcircle.tavcut.session.TAVCutImageSession;
 import java.io.File;
 
 class AEEditorFramePanel$4
@@ -23,31 +23,31 @@ class AEEditorFramePanel$4
   {
     super.a(paramInt, paramMetaMaterial, paramMaterialStatusCallback);
     if (!TextUtils.isEmpty(paramMetaMaterial.id)) {
-      AEReportUtils.k(paramMetaMaterial.id);
+      AEReportUtils.j(paramMetaMaterial.id);
     }
   }
   
-  public boolean b(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
+  public boolean c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
-    String str = AEEditorResourceManager.a().i(paramMetaMaterial);
-    return (super.b(paramInt, paramMetaMaterial)) && (!TextUtils.isEmpty(str)) && (new File(str).exists());
+    String str = AEEditorResourceManager.a().j(paramMetaMaterial);
+    return (super.c(paramInt, paramMetaMaterial)) && (!TextUtils.isEmpty(str)) && (new File(str).exists());
   }
   
-  public void c(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
+  public void e(int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
     String str = AEEditorResourceManager.a().a(paramMetaMaterial);
-    if (AEEditorFramePanel.a(this.a) != null) {
-      AEEditorFramePanel.a(this.a).F();
+    if (AEEditorFramePanel.c(this.a) != null) {
+      AEEditorFramePanel.c(this.a).W();
     }
     AEEditorFramePanel.a(this.a, str, paramInt, paramMetaMaterial);
     if (!TextUtils.isEmpty(paramMetaMaterial.id)) {
-      AEBaseReportParam.a().a().c.put(AEEditorFramePanel.a(this.a).getCurrentIndex(), paramMetaMaterial.id);
+      AEBaseReportParam.a().n().c.put(AEEditorFramePanel.a(this.a).getCurrentIndex(), paramMetaMaterial.id);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.frame.AEEditorFramePanel.4
  * JD-Core Version:    0.7.0.1
  */

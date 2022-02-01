@@ -4,72 +4,72 @@ import java.util.HashMap;
 
 class QlinkReliableReport$PerformanceReporting
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private String jdField_b_of_type_JavaLangString;
+  private String a;
+  private String b;
+  private boolean c;
+  private long d;
+  private long e;
+  private HashMap<String, String> f;
   
   public QlinkReliableReport$PerformanceReporting(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramBoolean;
+    this.d = paramLong1;
+    this.e = paramLong2;
+    this.f = paramHashMap;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_b_of_type_Long;
+    return this.a;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return this.c;
+  }
+  
+  public long d()
+  {
+    return this.d;
+  }
+  
+  public long e()
+  {
+    return this.e;
+  }
+  
+  public HashMap<String, String> f()
+  {
+    return this.f;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uin[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], tagName[");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], success[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("], size[");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("]");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkReliableReport.PerformanceReporting
  * JD-Core Version:    0.7.0.1
  */

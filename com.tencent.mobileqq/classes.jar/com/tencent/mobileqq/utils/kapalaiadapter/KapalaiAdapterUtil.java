@@ -21,24 +21,12 @@ import java.util.List;
 
 public class KapalaiAdapterUtil
 {
-  public int a;
-  private DualSimManager a;
-  
-  private KapalaiAdapterUtil()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager = DualSimManager.a();
-  }
+  public int a = 0;
+  private DualSimManager b = null;
   
   public static KapalaiAdapterUtil a()
   {
     return KapalaiAdapterUtil.KAUHolder.a;
-  }
-  
-  public int a()
-  {
-    return 1;
   }
   
   @TargetApi(16)
@@ -48,7 +36,7 @@ public class KapalaiAdapterUtil
     {
       if (!AppConstants.REMINDER_UIN.equals(paramIntent.getStringExtra("uin")))
       {
-        i = 2130841838;
+        i = 2130842755;
         break label131;
       }
     }
@@ -56,19 +44,19 @@ public class KapalaiAdapterUtil
     {
       if ((paramIntent.getIntExtra("uintype", -1) == 1010) && (String.valueOf(AppConstants.DATE_UIN).equals(paramIntent.getStringExtra("uin"))))
       {
-        i = 2130845602;
+        i = 2130847066;
         break label131;
       }
       if (((paramIntent.getIntExtra("uintype", -1) == 1001) || (paramIntent.getIntExtra("uintype", -1) == 10002)) && (String.valueOf(AppConstants.LBS_HELLO_UIN).equals(paramIntent.getStringExtra("uin"))))
       {
-        i = 2130840422;
+        i = 2130841178;
         break label131;
       }
     }
-    int i = 2130841471;
+    int i = 2130842313;
     label131:
     if (paramIntent.getBooleanExtra("qav_notify_flag", false)) {
-      i = 2130842201;
+      i = 2130843136;
     }
     paramIntent.putExtra("param_notifyid", i);
     paramIntent = PendingIntent.getActivity(BaseApplication.getContext(), 0, paramIntent, 134217728);
@@ -154,7 +142,7 @@ public class KapalaiAdapterUtil
   
   public Intent a(Intent paramIntent)
   {
-    paramIntent.putExtra(a(), Integer.parseInt(b()));
+    paramIntent.putExtra(c(), Integer.parseInt(d()));
     return null;
   }
   
@@ -164,11 +152,6 @@ public class KapalaiAdapterUtil
       return Bitmap.createScaledBitmap(paramBitmap, paramInt, paramInt, true);
     }
     return null;
-  }
-  
-  public String a()
-  {
-    return DualSimManager.a;
   }
   
   public String a(Camera.Parameters paramParameters)
@@ -186,11 +169,6 @@ public class KapalaiAdapterUtil
     return "off";
   }
   
-  public void a(Intent paramIntent)
-  {
-    paramIntent.setFlags(337641472);
-  }
-  
   public void a(Window paramWindow)
   {
     paramWindow.setType(2004);
@@ -201,24 +179,39 @@ public class KapalaiAdapterUtil
     paramLayoutParams.screenBrightness = 0.035F;
   }
   
-  public boolean a()
+  public void b(Intent paramIntent)
   {
-    return (!this.jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager.a(0)) && (this.jdField_a_of_type_ComTencentMobileqqUtilsKapalaiadapterDualSimManager.a(1));
-  }
-  
-  public String b()
-  {
-    return DualSimManager.c;
+    paramIntent.setFlags(337641472);
   }
   
   public void b(Window paramWindow)
   {
     paramWindow.setType(2);
   }
+  
+  public boolean b()
+  {
+    return (!this.b.a(0)) && (this.b.a(1));
+  }
+  
+  public String c()
+  {
+    return DualSimManager.b;
+  }
+  
+  public String d()
+  {
+    return DualSimManager.d;
+  }
+  
+  public int e()
+  {
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil
  * JD-Core Version:    0.7.0.1
  */

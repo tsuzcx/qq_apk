@@ -15,17 +15,17 @@ class DropdownMenuEndIconDelegate$7
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      if (DropdownMenuEndIconDelegate.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldDropdownMenuEndIconDelegate)) {
-        DropdownMenuEndIconDelegate.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldDropdownMenuEndIconDelegate, false);
+      if (DropdownMenuEndIconDelegate.e(this.b)) {
+        DropdownMenuEndIconDelegate.b(this.b, false);
       }
-      DropdownMenuEndIconDelegate.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldDropdownMenuEndIconDelegate, this.jdField_a_of_type_AndroidWidgetAutoCompleteTextView);
+      DropdownMenuEndIconDelegate.a(this.b, this.a);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.DropdownMenuEndIconDelegate.7
  * JD-Core Version:    0.7.0.1
  */

@@ -36,65 +36,65 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     //   7: astore 9
     //   9: aload 9
     //   11: aload_1
-    //   12: putfield 32	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailArgs	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs;
+    //   12: putfield 33	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:k	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs;
     //   15: aload 9
     //   17: aload_1
-    //   18: getfield 37	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   21: invokestatic 42	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	(Ljava/lang/String;)J
-    //   24: ldc2_w 43
+    //   18: getfield 38	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:a	Ljava/lang/String;
+    //   21: invokestatic 43	com/tencent/aelight/camera/aioeditor/richmedia/mediacodec/utils/MediaUtil:a	(Ljava/lang/String;)J
+    //   24: ldc2_w 44
     //   27: lmul
-    //   28: putfield 48	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Long	J
-    //   31: new 50	java/io/File
+    //   28: putfield 49	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:l	J
+    //   31: new 51	java/io/File
     //   34: dup
     //   35: aload_1
-    //   36: getfield 37	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   39: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
+    //   36: getfield 38	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:a	Ljava/lang/String;
+    //   39: invokespecial 54	java/io/File:<init>	(Ljava/lang/String;)V
     //   42: astore 11
     //   44: aload 11
-    //   46: invokevirtual 57	java/io/File:canRead	()Z
+    //   46: invokevirtual 58	java/io/File:canRead	()Z
     //   49: ifeq +446 -> 495
-    //   52: new 59	android/media/MediaExtractor
+    //   52: new 60	android/media/MediaExtractor
     //   55: dup
-    //   56: invokespecial 60	android/media/MediaExtractor:<init>	()V
+    //   56: invokespecial 61	android/media/MediaExtractor:<init>	()V
     //   59: astore 10
     //   61: aload 10
     //   63: aload 11
-    //   65: invokevirtual 64	java/io/File:toString	()Ljava/lang/String;
-    //   68: invokevirtual 67	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
+    //   65: invokevirtual 65	java/io/File:toString	()Ljava/lang/String;
+    //   68: invokevirtual 68	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;)V
     //   71: aload 10
-    //   73: invokestatic 72	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/baoutils/media/VideoUtils:a	(Landroid/media/MediaExtractor;)I
+    //   73: invokestatic 73	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/baoutils/media/VideoUtils:a	(Landroid/media/MediaExtractor;)I
     //   76: istore 5
     //   78: iload 5
     //   80: iflt +381 -> 461
     //   83: aload 10
     //   85: iload 5
-    //   87: invokevirtual 76	android/media/MediaExtractor:selectTrack	(I)V
+    //   87: invokevirtual 77	android/media/MediaExtractor:selectTrack	(I)V
     //   90: aload_1
-    //   91: getfield 79	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_b_of_type_Int	I
+    //   91: getfield 81	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:e	I
     //   94: istore 4
     //   96: aload_1
-    //   97: getfield 82	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:d	I
+    //   97: getfield 84	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:g	I
     //   100: newarray long
     //   102: astore 11
     //   104: aload_1
-    //   105: getfield 82	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:d	I
+    //   105: getfield 84	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:g	I
     //   108: newarray long
     //   110: astore 12
     //   112: iconst_0
     //   113: istore_3
     //   114: iload_3
     //   115: aload_1
-    //   116: getfield 82	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:d	I
+    //   116: getfield 84	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:g	I
     //   119: if_icmpge +51 -> 170
     //   122: iload 4
     //   124: i2l
-    //   125: ldc2_w 43
+    //   125: ldc2_w 44
     //   128: lmul
     //   129: lstore 6
     //   131: aload 10
     //   133: lload 6
     //   135: iconst_0
-    //   136: invokevirtual 86	android/media/MediaExtractor:seekTo	(JI)V
+    //   136: invokevirtual 88	android/media/MediaExtractor:seekTo	(JI)V
     //   139: aload 12
     //   141: iload_3
     //   142: lload 6
@@ -102,11 +102,11 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     //   145: aload 11
     //   147: iload_3
     //   148: aload 10
-    //   150: invokevirtual 90	android/media/MediaExtractor:getSampleTime	()J
+    //   150: invokevirtual 92	android/media/MediaExtractor:getSampleTime	()J
     //   153: lastore
     //   154: iload 4
     //   156: aload_1
-    //   157: getfield 93	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:c	I
+    //   157: getfield 95	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:f	I
     //   160: iadd
     //   161: istore 4
     //   163: iload_3
@@ -119,87 +119,87 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     //   174: iconst_0
     //   175: laload
     //   176: iconst_0
-    //   177: invokevirtual 86	android/media/MediaExtractor:seekTo	(JI)V
+    //   177: invokevirtual 88	android/media/MediaExtractor:seekTo	(JI)V
     //   180: aload 10
     //   182: iload 5
-    //   184: invokevirtual 97	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   184: invokevirtual 99	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   187: astore 13
     //   189: aload 13
-    //   191: ldc 99
-    //   193: invokevirtual 105	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   191: ldc 101
+    //   193: invokevirtual 107	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
     //   196: istore 8
     //   198: iload 8
     //   200: ifeq +18 -> 218
     //   203: aload 9
     //   205: aload 13
-    //   207: ldc 99
-    //   209: invokevirtual 109	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-    //   212: putfield 110	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Int	I
+    //   207: ldc 101
+    //   209: invokevirtual 111	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   212: putfield 112	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:e	I
     //   215: goto +49 -> 264
-    //   218: new 112	android/media/MediaMetadataRetriever
+    //   218: new 114	android/media/MediaMetadataRetriever
     //   221: dup
-    //   222: invokespecial 113	android/media/MediaMetadataRetriever:<init>	()V
+    //   222: invokespecial 115	android/media/MediaMetadataRetriever:<init>	()V
     //   225: astore 14
     //   227: aload 14
     //   229: aload 9
-    //   231: getfield 32	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailArgs	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs;
-    //   234: getfield 37	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   237: invokevirtual 114	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   231: getfield 33	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:k	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs;
+    //   234: getfield 38	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:a	Ljava/lang/String;
+    //   237: invokevirtual 116	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   240: aload 14
     //   242: bipush 24
-    //   244: invokevirtual 118	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   244: invokevirtual 120	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   247: astore 15
     //   249: aload 9
     //   251: aload 15
-    //   253: invokestatic 123	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   256: putfield 110	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Int	I
+    //   253: invokestatic 125	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   256: putfield 112	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:e	I
     //   259: aload 14
-    //   261: invokevirtual 126	android/media/MediaMetadataRetriever:release	()V
+    //   261: invokevirtual 128	android/media/MediaMetadataRetriever:release	()V
     //   264: aload 13
-    //   266: ldc 128
-    //   268: invokevirtual 109	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   266: ldc 130
+    //   268: invokevirtual 111	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   271: istore_3
     //   272: aload 13
-    //   274: ldc 130
-    //   276: invokevirtual 109	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   274: ldc 132
+    //   276: invokevirtual 111	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
     //   279: istore 4
-    //   281: new 132	java/lang/StringBuilder
+    //   281: new 134	java/lang/StringBuilder
     //   284: dup
-    //   285: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   285: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   288: astore 14
     //   290: aload 14
-    //   292: ldc 135
-    //   294: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: ldc 137
+    //   294: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: pop
     //   298: aload 14
     //   300: iload 4
-    //   302: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 144	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload 14
-    //   308: ldc 144
-    //   310: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: ldc 146
+    //   310: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   313: pop
     //   314: aload 14
     //   316: iload_3
-    //   317: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   317: invokevirtual 144	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   320: pop
-    //   321: ldc 146
+    //   321: ldc 148
     //   323: aload 14
-    //   325: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: invokestatic 152	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
+    //   325: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 155	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
     //   331: pop
     //   332: aload_1
-    //   333: getfield 154	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_a_of_type_Int	I
+    //   333: getfield 157	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:d	I
     //   336: i2f
     //   337: fconst_1
     //   338: fmul
     //   339: iload_3
     //   340: iload 4
-    //   342: invokestatic 160	java/lang/Math:max	(II)I
+    //   342: invokestatic 163	java/lang/Math:max	(II)I
     //   345: i2f
     //   346: fdiv
     //   347: fstore_2
-    //   348: new 162	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface
+    //   348: new 165	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface
     //   351: dup
     //   352: iload 4
     //   354: i2f
@@ -211,122 +211,122 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     //   360: fload_2
     //   361: fmul
     //   362: f2i
-    //   363: invokespecial 165	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:<init>	(II)V
+    //   363: invokespecial 168	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:<init>	(II)V
     //   366: astore_1
     //   367: aload 13
-    //   369: ldc 167
-    //   371: invokevirtual 171	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   374: invokestatic 177	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
+    //   369: ldc 170
+    //   371: invokevirtual 174	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   374: invokestatic 180	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
     //   377: astore 14
     //   379: aload 14
     //   381: aload 13
     //   383: aload_1
-    //   384: invokevirtual 180	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:a	()Landroid/view/Surface;
+    //   384: invokevirtual 184	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:c	()Landroid/view/Surface;
     //   387: aconst_null
     //   388: iconst_0
-    //   389: invokevirtual 184	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
+    //   389: invokevirtual 188	android/media/MediaCodec:configure	(Landroid/media/MediaFormat;Landroid/view/Surface;Landroid/media/MediaCrypto;I)V
     //   392: aload 14
-    //   394: invokevirtual 187	android/media/MediaCodec:start	()V
+    //   394: invokevirtual 191	android/media/MediaCodec:start	()V
     //   397: aload 9
     //   399: aload 10
-    //   401: putfield 190	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   401: putfield 194	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	Landroid/media/MediaExtractor;
     //   404: aload 9
     //   406: aload_1
-    //   407: putfield 193	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglCodecOutputSurface	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface;
+    //   407: putfield 197	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:c	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface;
     //   410: aload 9
     //   412: aload 14
-    //   414: putfield 196	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   414: putfield 201	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:b	Landroid/media/MediaCodec;
     //   417: aload 9
     //   419: iload 5
-    //   421: putfield 197	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:c	I
+    //   421: putfield 202	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:f	I
     //   424: aload 9
     //   426: iconst_0
-    //   427: putfield 198	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_Int	I
+    //   427: putfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:a	I
     //   430: aload 9
     //   432: iconst_0
-    //   433: putfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   433: putfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   436: aload 9
     //   438: aload 11
-    //   440: putfield 202	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_ArrayOfLong	[J
+    //   440: putfield 209	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:i	[J
     //   443: aload 9
     //   445: aload 12
-    //   447: putfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_ArrayOfLong	[J
+    //   447: putfield 212	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:j	[J
     //   450: aload_0
     //   451: iconst_2
     //   452: aload 9
-    //   454: invokevirtual 208	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   457: invokevirtual 213	android/os/Message:sendToTarget	()V
+    //   454: invokevirtual 216	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   457: invokevirtual 221	android/os/Message:sendToTarget	()V
     //   460: return
-    //   461: new 132	java/lang/StringBuilder
+    //   461: new 134	java/lang/StringBuilder
     //   464: dup
-    //   465: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   465: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   468: astore_1
     //   469: aload_1
-    //   470: ldc 215
-    //   472: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: ldc 223
+    //   472: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   475: pop
     //   476: aload_1
     //   477: aload 11
-    //   479: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   479: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   482: pop
-    //   483: new 220	java/lang/RuntimeException
+    //   483: new 228	java/lang/RuntimeException
     //   486: dup
     //   487: aload_1
-    //   488: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   491: invokespecial 221	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
+    //   488: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   491: invokespecial 229	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   494: athrow
-    //   495: new 132	java/lang/StringBuilder
+    //   495: new 134	java/lang/StringBuilder
     //   498: dup
-    //   499: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   499: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   502: astore_1
     //   503: aload_1
-    //   504: ldc 223
-    //   506: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   504: ldc 231
+    //   506: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   509: pop
     //   510: aload_1
     //   511: aload 11
-    //   513: invokevirtual 218	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   513: invokevirtual 226	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   516: pop
-    //   517: new 225	java/io/FileNotFoundException
+    //   517: new 233	java/io/FileNotFoundException
     //   520: dup
     //   521: aload_1
-    //   522: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   525: invokespecial 226	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
+    //   522: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   525: invokespecial 234	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
     //   528: athrow
     //   529: astore_1
     //   530: goto +72 -> 602
     //   533: astore_1
-    //   534: ldc 146
-    //   536: ldc 228
+    //   534: ldc 148
+    //   536: ldc 236
     //   538: aload_1
-    //   539: invokestatic 232	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   539: invokestatic 239	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   542: pop
     //   543: aload_1
-    //   544: instanceof 234
+    //   544: instanceof 241
     //   547: ifeq +13 -> 560
     //   550: aload 9
     //   552: bipush 100
-    //   554: putfield 198	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_Int	I
+    //   554: putfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:a	I
     //   557: goto +26 -> 583
     //   560: aload_1
-    //   561: instanceof 220
+    //   561: instanceof 228
     //   564: ifeq +13 -> 577
     //   567: aload 9
     //   569: bipush 101
-    //   571: putfield 198	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_Int	I
+    //   571: putfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:a	I
     //   574: goto +9 -> 583
     //   577: aload 9
     //   579: iconst_m1
-    //   580: putfield 198	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_Int	I
-    //   583: ldc 146
-    //   585: ldc 236
+    //   580: putfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:a	I
+    //   583: ldc 148
+    //   585: ldc 243
     //   587: aload_1
-    //   588: invokestatic 241	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   588: invokestatic 248	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   591: aload_0
     //   592: iconst_4
     //   593: aload 9
-    //   595: invokevirtual 208	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   598: invokevirtual 213	android/os/Message:sendToTarget	()V
+    //   595: invokevirtual 216	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   598: invokevirtual 221	android/os/Message:sendToTarget	()V
     //   601: return
     //   602: goto +5 -> 607
     //   605: aload_1
@@ -395,41 +395,41 @@ public class MediaCodecThumbnailGenerator$CodecHandler
   {
     Log.e("MediaCodecThumbnailGen", "finishCapture");
     boolean bool;
-    if (paramThumbnailTaskContext.jdField_a_of_type_Int != 0) {
+    if (paramThumbnailTaskContext.a != 0) {
       bool = false;
     } else {
       bool = true;
     }
-    if (paramThumbnailTaskContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglCodecOutputSurface != null)
+    if (paramThumbnailTaskContext.c != null)
     {
-      paramThumbnailTaskContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglCodecOutputSurface.a();
-      paramThumbnailTaskContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglCodecOutputSurface = null;
+      paramThumbnailTaskContext.c.a();
+      paramThumbnailTaskContext.c = null;
     }
-    if (paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaCodec != null)
+    if (paramThumbnailTaskContext.b != null)
     {
-      paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaCodec = null;
+      paramThumbnailTaskContext.b.stop();
+      paramThumbnailTaskContext.b.release();
+      paramThumbnailTaskContext.b = null;
     }
-    if (paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+    if (paramThumbnailTaskContext.d != null)
     {
-      paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaExtractor.release();
-      paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+      paramThumbnailTaskContext.d.release();
+      paramThumbnailTaskContext.d = null;
     }
     MediaCodecThumbnailGenerator.ThumbnailResult localThumbnailResult = new MediaCodecThumbnailGenerator.ThumbnailResult();
-    localThumbnailResult.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramThumbnailTaskContext.jdField_a_of_type_JavaUtilArrayList);
-    localThumbnailResult.b = Collections.unmodifiableList(paramThumbnailTaskContext.jdField_b_of_type_JavaUtilArrayList);
-    localThumbnailResult.jdField_a_of_type_Int = paramThumbnailTaskContext.jdField_a_of_type_Int;
+    localThumbnailResult.a = Collections.unmodifiableList(paramThumbnailTaskContext.n);
+    localThumbnailResult.b = Collections.unmodifiableList(paramThumbnailTaskContext.o);
+    localThumbnailResult.c = paramThumbnailTaskContext.a;
     if (bool)
     {
-      localThumbnailResult.jdField_a_of_type_Boolean = (true ^ paramThumbnailTaskContext.jdField_a_of_type_Boolean);
+      localThumbnailResult.d = (true ^ paramThumbnailTaskContext.m);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("hasBlackThumbnail = ");
-      localStringBuilder.append(localThumbnailResult.jdField_a_of_type_Boolean);
+      localStringBuilder.append(localThumbnailResult.d);
       SLog.c("MediaCodecThumbnailGen", localStringBuilder.toString());
-      StoryReportor.a("actBlackThumbnailVideo", localThumbnailResult.jdField_a_of_type_Boolean, System.currentTimeMillis() - MediaCodecThumbnailGenerator.a(this.a), new String[0]);
+      StoryReportor.a("actBlackThumbnailVideo", localThumbnailResult.d, System.currentTimeMillis() - MediaCodecThumbnailGenerator.a(this.a), new String[0]);
     }
-    this.a.a.post(new MediaCodecThumbnailGenerator.CodecHandler.1(this, paramThumbnailTaskContext, bool, localThumbnailResult));
+    this.a.b.post(new MediaCodecThumbnailGenerator.CodecHandler.1(this, paramThumbnailTaskContext, bool, localThumbnailResult));
   }
   
   /* Error */
@@ -437,66 +437,66 @@ public class MediaCodecThumbnailGenerator$CodecHandler
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 193	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaOpenglCodecOutputSurface	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface;
+    //   1: getfield 197	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:c	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface;
     //   4: astore 9
     //   6: aload_1
-    //   7: getfield 32	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailArgs	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs;
+    //   7: getfield 33	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:k	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs;
     //   10: astore 16
     //   12: aload_1
-    //   13: getfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   13: getfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   16: istore 7
     //   18: aload_1
-    //   19: getfield 259	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   19: getfield 267	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:n	Ljava/util/ArrayList;
     //   22: astore 13
     //   24: aload_1
-    //   25: getfield 270	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   25: getfield 279	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:o	Ljava/util/ArrayList;
     //   28: astore 14
     //   30: aload 9
-    //   32: invokevirtual 323	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:c	()V
+    //   32: invokevirtual 335	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:d	()V
     //   35: aload 9
-    //   37: invokevirtual 325	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:d	()V
+    //   37: invokevirtual 337	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:e	()V
     //   40: iconst_0
     //   41: istore 8
     //   43: aload 9
     //   45: iconst_0
-    //   46: invokevirtual 328	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:a	(Z)V
-    //   49: new 330	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress
+    //   46: invokevirtual 340	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:a	(Z)V
+    //   49: new 342	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress
     //   52: dup
-    //   53: invokespecial 331	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:<init>	()V
+    //   53: invokespecial 343	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:<init>	()V
     //   56: astore 15
     //   58: aload 9
-    //   60: invokevirtual 334	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:a	()Landroid/graphics/Bitmap;
+    //   60: invokevirtual 346	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/opengl/CodecOutputSurface:f	()Landroid/graphics/Bitmap;
     //   63: astore 10
     //   65: aload 10
     //   67: astore 11
     //   69: aload 10
     //   71: ifnull +273 -> 344
     //   74: aload_1
-    //   75: getfield 110	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Int	I
+    //   75: getfield 112	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:e	I
     //   78: istore 6
     //   80: aload_1
-    //   81: getfield 110	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Int	I
+    //   81: getfield 112	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:e	I
     //   84: sipush 180
     //   87: irem
     //   88: ifle +16 -> 104
     //   91: aload 10
-    //   93: invokevirtual 340	android/graphics/Bitmap:getWidth	()I
+    //   93: invokevirtual 352	android/graphics/Bitmap:getWidth	()I
     //   96: aload 10
-    //   98: invokevirtual 343	android/graphics/Bitmap:getHeight	()I
+    //   98: invokevirtual 355	android/graphics/Bitmap:getHeight	()I
     //   101: if_icmplt +522 -> 623
     //   104: iload 6
     //   106: istore 5
     //   108: aload_1
-    //   109: getfield 110	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Int	I
+    //   109: getfield 112	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:e	I
     //   112: sipush 180
     //   115: irem
     //   116: ifne +23 -> 139
     //   119: iload 6
     //   121: istore 5
     //   123: aload 10
-    //   125: invokevirtual 340	android/graphics/Bitmap:getWidth	()I
+    //   125: invokevirtual 352	android/graphics/Bitmap:getWidth	()I
     //   128: aload 10
-    //   130: invokevirtual 343	android/graphics/Bitmap:getHeight	()I
+    //   130: invokevirtual 355	android/graphics/Bitmap:getHeight	()I
     //   133: if_icmple +6 -> 139
     //   136: goto +487 -> 623
     //   139: aload 10
@@ -506,228 +506,228 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     //   148: aload 10
     //   150: iload 5
     //   152: i2f
-    //   153: invokestatic 348	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
+    //   153: invokestatic 360	com/tencent/biz/qqstory/utils/UIUtils:a	(Landroid/graphics/Bitmap;F)Landroid/graphics/Bitmap;
     //   156: astore 9
     //   158: aload 10
-    //   160: invokevirtual 351	android/graphics/Bitmap:recycle	()V
+    //   160: invokevirtual 363	android/graphics/Bitmap:recycle	()V
     //   163: aload 14
     //   165: aload 9
-    //   167: invokevirtual 357	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   167: invokevirtual 369	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   170: pop
     //   171: aload 9
     //   173: astore 11
     //   175: iload_2
     //   176: ifeq +168 -> 344
-    //   179: new 50	java/io/File
+    //   179: new 51	java/io/File
     //   182: dup
     //   183: aload 16
-    //   185: getfield 359	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   188: invokestatic 365	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   185: getfield 371	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:b	Ljava/lang/String;
+    //   188: invokestatic 377	java/util/Locale:getDefault	()Ljava/util/Locale;
     //   191: aload_0
     //   192: iload 7
-    //   194: invokevirtual 367	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:a	(I)Ljava/lang/String;
+    //   194: invokevirtual 379	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:a	(I)Ljava/lang/String;
     //   197: iconst_0
-    //   198: anewarray 369	java/lang/Object
-    //   201: invokestatic 373	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   204: invokespecial 375	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   198: anewarray 381	java/lang/Object
+    //   201: invokestatic 385	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   204: invokespecial 387	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   207: astore 12
     //   209: aconst_null
     //   210: astore 10
-    //   212: new 377	java/io/BufferedOutputStream
+    //   212: new 389	java/io/BufferedOutputStream
     //   215: dup
-    //   216: new 379	java/io/FileOutputStream
+    //   216: new 391	java/io/FileOutputStream
     //   219: dup
     //   220: aload 12
-    //   222: invokespecial 382	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   225: invokespecial 385	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   222: invokespecial 394	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   225: invokespecial 397	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   228: astore 11
     //   230: aload 9
-    //   232: getstatic 391	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   232: getstatic 403	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   235: bipush 80
     //   237: aload 11
-    //   239: invokevirtual 395	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   239: invokevirtual 407	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   242: pop
     //   243: aload 11
-    //   245: invokevirtual 398	java/io/BufferedOutputStream:close	()V
+    //   245: invokevirtual 410	java/io/BufferedOutputStream:close	()V
     //   248: aload 13
     //   250: aload 12
-    //   252: invokevirtual 401	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   255: invokevirtual 357	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   252: invokevirtual 413	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   255: invokevirtual 369	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   258: pop
     //   259: aload 15
     //   261: aload 12
-    //   263: invokevirtual 401	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   266: putfield 402	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   269: new 132	java/lang/StringBuilder
+    //   263: invokevirtual 413	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   266: putfield 415	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:c	Ljava/lang/String;
+    //   269: new 134	java/lang/StringBuilder
     //   272: dup
-    //   273: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   273: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   276: astore 10
     //   278: aload 10
-    //   280: ldc_w 404
-    //   283: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   280: ldc_w 417
+    //   283: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   286: pop
     //   287: aload 10
     //   289: aload 12
-    //   291: invokevirtual 407	java/io/File:getPath	()Ljava/lang/String;
-    //   294: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: invokevirtual 420	java/io/File:getPath	()Ljava/lang/String;
+    //   294: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: pop
-    //   298: ldc 146
+    //   298: ldc 148
     //   300: aload 10
-    //   302: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   305: invokestatic 285	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   302: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokestatic 297	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   308: aload 9
     //   310: astore 11
     //   312: goto +32 -> 344
     //   315: aload 10
     //   317: ifnull +8 -> 325
     //   320: aload 10
-    //   322: invokevirtual 398	java/io/BufferedOutputStream:close	()V
+    //   322: invokevirtual 410	java/io/BufferedOutputStream:close	()V
     //   325: aload 11
     //   327: athrow
     //   328: astore 10
-    //   330: ldc 146
-    //   332: ldc_w 409
+    //   330: ldc 148
+    //   332: ldc_w 422
     //   335: aload 10
-    //   337: invokestatic 241	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   337: invokestatic 248	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   340: aload 9
     //   342: astore 11
     //   344: aload 15
     //   346: aload_1
-    //   347: getfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
-    //   350: putfield 410	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_Int	I
+    //   347: getfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
+    //   350: putfield 423	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:a	I
     //   353: aload 15
     //   355: aload 11
-    //   357: putfield 413	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   357: putfield 426	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:b	Landroid/graphics/Bitmap;
     //   360: fconst_0
     //   361: fstore 4
     //   363: fload 4
     //   365: fstore_3
     //   366: aload 16
-    //   368: getfield 415	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:jdField_b_of_type_Boolean	Z
+    //   368: getfield 429	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailArgs:h	Z
     //   371: ifeq +68 -> 439
     //   374: fload 4
     //   376: fstore_3
     //   377: aload_1
-    //   378: getfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   378: getfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   381: ifne +58 -> 439
     //   384: aload 11
-    //   386: invokestatic 418	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	(Landroid/graphics/Bitmap;)F
+    //   386: invokestatic 432	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	(Landroid/graphics/Bitmap;)F
     //   389: fstore_3
-    //   390: new 132	java/lang/StringBuilder
+    //   390: new 134	java/lang/StringBuilder
     //   393: dup
-    //   394: invokespecial 133	java/lang/StringBuilder:<init>	()V
+    //   394: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   397: astore 9
     //   399: aload 9
-    //   401: ldc_w 420
-    //   404: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: ldc_w 434
+    //   404: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   407: pop
     //   408: aload 9
     //   410: fload_3
-    //   411: invokevirtual 423	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   411: invokevirtual 437	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   414: pop
-    //   415: ldc 146
+    //   415: ldc 148
     //   417: aload 9
-    //   419: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   422: invokestatic 285	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   419: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   422: invokestatic 297	com/tencent/biz/qqstory/support/logging/SLog:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   425: aload 15
     //   427: aload_1
-    //   428: getfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_ArrayOfLong	[J
+    //   428: getfield 212	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:j	[J
     //   431: aload_1
-    //   432: getfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   432: getfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   435: laload
-    //   436: putfield 425	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_Long	J
+    //   436: putfield 439	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:d	J
     //   439: fload_3
-    //   440: ldc_w 426
+    //   440: ldc_w 440
     //   443: fcmpg
     //   444: iflt +71 -> 515
     //   447: aload 15
-    //   449: getfield 425	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_Long	J
-    //   452: ldc2_w 427
+    //   449: getfield 439	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:d	J
+    //   452: ldc2_w 441
     //   455: lcmp
     //   456: ifgt +59 -> 515
     //   459: aload 15
-    //   461: getfield 425	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_Long	J
-    //   464: ldc2_w 429
+    //   461: getfield 439	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:d	J
+    //   464: ldc2_w 443
     //   467: ladd
     //   468: aload_1
-    //   469: getfield 48	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_Long	J
+    //   469: getfield 49	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:l	J
     //   472: lcmp
     //   473: ifle +6 -> 479
     //   476: goto +39 -> 515
     //   479: aload_1
-    //   480: getfield 204	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_b_of_type_ArrayOfLong	[J
+    //   480: getfield 212	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:j	[J
     //   483: astore 9
     //   485: aload_1
-    //   486: getfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   486: getfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   489: istore 5
     //   491: aload 9
     //   493: iload 5
     //   495: aload 9
     //   497: iload 5
     //   499: laload
-    //   500: ldc2_w 431
+    //   500: ldc2_w 445
     //   503: ladd
     //   504: lastore
     //   505: aload_0
     //   506: iconst_2
     //   507: aload_1
-    //   508: invokevirtual 208	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   511: invokevirtual 213	android/os/Message:sendToTarget	()V
+    //   508: invokevirtual 216	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   511: invokevirtual 221	android/os/Message:sendToTarget	()V
     //   514: return
     //   515: aload 13
     //   517: aload 15
-    //   519: getfield 402	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   522: invokevirtual 357	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   519: getfield 415	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress:c	Ljava/lang/String;
+    //   522: invokevirtual 369	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   525: pop
     //   526: aload 14
     //   528: aload 11
-    //   530: invokevirtual 357	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   530: invokevirtual 369	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   533: pop
     //   534: iload 8
     //   536: istore_2
     //   537: fload_3
-    //   538: ldc_w 426
+    //   538: ldc_w 440
     //   541: fcmpg
     //   542: ifge +5 -> 547
     //   545: iconst_1
     //   546: istore_2
     //   547: aload_1
     //   548: iload_2
-    //   549: putfield 276	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:jdField_a_of_type_Boolean	Z
+    //   549: putfield 287	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:m	Z
     //   552: aload_0
     //   553: getfield 13	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:a	Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator;
-    //   556: getfield 307	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:a	Landroid/os/Handler;
-    //   559: new 434	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler$2
+    //   556: getfield 319	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator:b	Landroid/os/Handler;
+    //   559: new 448	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler$2
     //   562: dup
     //   563: aload_0
     //   564: aload_1
     //   565: aload 15
-    //   567: invokespecial 437	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler$2:<init>	(Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler;Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext;Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress;)V
-    //   570: invokevirtual 316	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   567: invokespecial 451	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler$2:<init>	(Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler;Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext;Lcom/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailProgress;)V
+    //   570: invokevirtual 328	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   573: pop
     //   574: aload_1
     //   575: aload_1
-    //   576: getfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   576: getfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   579: iconst_1
     //   580: iadd
-    //   581: putfield 199	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:d	I
+    //   581: putfield 205	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$ThumbnailTaskContext:g	I
     //   584: aload_0
     //   585: iconst_2
     //   586: aload_1
-    //   587: invokevirtual 208	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   590: invokevirtual 213	android/os/Message:sendToTarget	()V
+    //   587: invokevirtual 216	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   590: invokevirtual 221	android/os/Message:sendToTarget	()V
     //   593: return
     //   594: aload_0
     //   595: aload_0
     //   596: iconst_3
     //   597: aload_1
-    //   598: invokevirtual 208	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
-    //   601: ldc2_w 438
-    //   604: invokevirtual 443	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:sendMessageDelayed	(Landroid/os/Message;J)Z
+    //   598: invokevirtual 216	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   601: ldc2_w 452
+    //   604: invokevirtual 457	com/tencent/aelight/camera/aioeditor/takevideo/localmedia/demos/MediaCodecThumbnailGenerator$CodecHandler:sendMessageDelayed	(Landroid/os/Message;J)Z
     //   607: pop
-    //   608: ldc 146
-    //   610: ldc_w 445
-    //   613: invokestatic 246	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   608: ldc 148
+    //   610: ldc_w 459
+    //   613: invokestatic 253	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
     //   616: pop
     //   617: return
     //   618: astore 9
@@ -809,23 +809,23 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     boolean bool;
     try
     {
-      MediaExtractor localMediaExtractor = paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaExtractor;
-      localMediaCodec = paramThumbnailTaskContext.jdField_a_of_type_AndroidMediaMediaCodec;
-      MediaCodecThumbnailGenerator.ThumbnailArgs localThumbnailArgs = paramThumbnailTaskContext.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoLocalmediaDemosMediaCodecThumbnailGenerator$ThumbnailArgs;
-      long[] arrayOfLong = paramThumbnailTaskContext.jdField_a_of_type_ArrayOfLong;
-      localObject1 = paramThumbnailTaskContext.jdField_b_of_type_ArrayOfLong;
-      int m = paramThumbnailTaskContext.c;
-      k = paramThumbnailTaskContext.d;
+      MediaExtractor localMediaExtractor = paramThumbnailTaskContext.d;
+      localMediaCodec = paramThumbnailTaskContext.b;
+      MediaCodecThumbnailGenerator.ThumbnailArgs localThumbnailArgs = paramThumbnailTaskContext.k;
+      long[] arrayOfLong = paramThumbnailTaskContext.i;
+      localObject1 = paramThumbnailTaskContext.j;
+      int m = paramThumbnailTaskContext.f;
+      k = paramThumbnailTaskContext.g;
       l = localMediaExtractor.getSampleTime();
       ByteBuffer[] arrayOfByteBuffer = localMediaCodec.getInputBuffers();
       MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
       i = 0;
       j = 0;
       int n = 0;
-      if ((j != 0) || (k >= localThumbnailArgs.d)) {
+      if ((j != 0) || (k >= localThumbnailArgs.g)) {
         break label842;
       }
-      if ((paramThumbnailTaskContext.jdField_a_of_type_Long == arrayOfLong[k]) || (l >= arrayOfLong[k])) {
+      if ((paramThumbnailTaskContext.h == arrayOfLong[k]) || (l >= arrayOfLong[k])) {
         break label807;
       }
       Object localObject2 = new StringBuilder();
@@ -833,7 +833,7 @@ public class MediaCodecThumbnailGenerator$CodecHandler
       ((StringBuilder)localObject2).append(arrayOfLong[k]);
       Log.e("MediaCodecThumbnailGen", ((StringBuilder)localObject2).toString());
       localMediaExtractor.seekTo(arrayOfLong[k], 0);
-      paramThumbnailTaskContext.jdField_a_of_type_Long = arrayOfLong[k];
+      paramThumbnailTaskContext.h = arrayOfLong[k];
       localMediaCodec.flush();
       if (n != 0) {
         break label810;
@@ -1023,7 +1023,7 @@ public class MediaCodecThumbnailGenerator$CodecHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.CodecHandler
  * JD-Core Version:    0.7.0.1
  */

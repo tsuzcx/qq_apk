@@ -12,65 +12,65 @@ class FavEmosmViewPage$3
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    FavEmosmViewPage.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqEmosmBaseEmosmStrategy.a().b();
+    FavEmosmViewPage.b(this.b);
+    this.b.t.b().b();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.a(paramInt);
+    this.a.a(paramInt);
   }
   
   public void a(EmotionSaveResult paramEmotionSaveResult)
   {
-    if ((paramEmotionSaveResult != null) && (!this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.isFinishing()))
+    if ((paramEmotionSaveResult != null) && (!this.b.s.isFinishing()))
     {
-      int i = paramEmotionSaveResult.a;
+      int i = paramEmotionSaveResult.d;
       if (i != -1)
       {
         if (i == 0) {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.getString(2131718379), 0).a();
+          QQToast.makeText(this.b.s.getApplicationContext(), this.b.s.getString(2131915871), 0).show();
         }
       }
-      else if (paramEmotionSaveResult.b == 10006) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.getString(2131718370), 0).a();
+      else if (paramEmotionSaveResult.e == 10006) {
+        QQToast.makeText(this.b.s.getApplicationContext(), this.b.s.getString(2131915862), 0).show();
       } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.getString(2131718374), 0).a();
+        QQToast.makeText(this.b.s.getApplicationContext(), this.b.s.getString(2131915866), 0).show();
       }
     }
     else if (QLog.isColorLevel())
     {
       paramEmotionSaveResult = new StringBuilder();
       paramEmotionSaveResult.append("onSaveComplete ");
-      paramEmotionSaveResult.append(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqAppQIphoneTitleBarActivity.isFinishing());
+      paramEmotionSaveResult.append(this.b.s.isFinishing());
       QLog.i("MultiEmotionSaveManager", 2, paramEmotionSaveResult.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.dismiss();
+    if (this.a.isShowing()) {
+      this.a.dismiss();
     }
-    FavEmosmViewPage.a(this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.jdField_a_of_type_ComTencentMobileqqEmosmBaseEmosmStrategy.a().b();
+    FavEmosmViewPage.b(this.b);
+    this.b.t.b().b();
   }
   
   public void b()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing())
+    if (!this.a.isShowing())
     {
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.a(0);
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.a(new FavEmosmViewPage.3.1(this));
+      this.a.a(0);
+      this.a.a(new FavEmosmViewPage.3.1(this));
       if (QLog.isColorLevel()) {
         QLog.i("MultiEmotionSaveManager", 2, "onSaveBegin");
       }
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.show();
+      this.a.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.FavEmosmViewPage.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,6 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder.Holder;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.game.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.model.ApolloMessage;
 import com.tencent.mobileqq.apollo.model.MessageForApollo;
 import com.tencent.mobileqq.apollo.utils.api.IApolloActionHelper;
@@ -39,7 +38,7 @@ public final class Apollo644ReportUtil
     if (paramGL10 == null) {
       return;
     }
-    int i = CmGameUtil.a(paramLong);
+    int i = CmGameUtil.c(paramLong);
     if (-1 == i) {
       return;
     }
@@ -64,9 +63,9 @@ public final class Apollo644ReportUtil
       Intrinsics.throwNpe();
     }
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "(context as BaseActivity).chatFragment!!");
-    paramContext = paramContext.a();
+    paramContext = paramContext.k();
     if (paramContext != null) {
-      VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", "new_clk_action", paramSessionInfo.a, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramContext.b()), ((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramQQAppInterface.getCurrentUin(), (AppRuntime)paramQQAppInterface), new String[] { String.valueOf(paramHolder.e), "", "", String.valueOf(System.currentTimeMillis() / 1000) });
+      VipUtils.a((AppInterface)paramQQAppInterface, "cmshow", "Apollo", "new_clk_action", paramSessionInfo.b, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramContext.F()), ((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramQQAppInterface.getCurrentUin(), (AppRuntime)paramQQAppInterface), new String[] { String.valueOf(paramHolder.a), "", "", String.valueOf(System.currentTimeMillis() / 1000) });
     }
   }
   
@@ -113,19 +112,13 @@ public final class Apollo644ReportUtil
       return;
     }
     int k = paramIApolloManagerService.getApolloStatus(paramAppRuntime.getCurrentUin());
-    int i = paramMessageForApollo.msgType;
-    Object localObject = "";
-    if (i == 0)
-    {
-      localObject = String.valueOf(paramMessageForApollo.mApolloMessage.id);
+    String str;
+    if (paramMessageForApollo.msgType == 0) {
+      str = String.valueOf(paramMessageForApollo.mApolloMessage.id);
+    } else {
+      str = "";
     }
-    else if (ApolloGameUtil.a(paramMessageForApollo.msgType))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(paramMessageForApollo.gameId);
-      localObject = ((StringBuilder)localObject).toString();
-    }
+    int i;
     if (paramMessageRecord.istroop == 1) {
       i = 1;
     } else {
@@ -142,17 +135,17 @@ public final class Apollo644ReportUtil
       }
     }
     paramAppRuntime = (AppInterface)paramAppRuntime;
-    VipUtils.a(paramAppRuntime, "cmshow", "Apollo", "rev_action", paramMessageRecord.senderuin.toString(), j, paramMessageForApollo.msgType, new String[] { localObject, Integer.toString(k), Integer.toString(paramIApolloManagerService.getWhiteListStatus()), String.valueOf(System.currentTimeMillis() / 1000) });
+    VipUtils.a(paramAppRuntime, "cmshow", "Apollo", "rev_action", paramMessageRecord.senderuin.toString(), j, paramMessageForApollo.msgType, new String[] { str, Integer.toString(k), Integer.toString(paramIApolloManagerService.getWhiteListStatus()), String.valueOf(System.currentTimeMillis() / 1000) });
     if (paramMessageForApollo.msgType == 10)
     {
       i = paramMessageForApollo.mApolloMessage.flag;
-      VipUtils.a(paramAppRuntime, "cmshow", "Apollo", "y_rev_bq", "", j, paramMessageForApollo.msgType, new String[] { String.valueOf(i >> 2 & 0x1), localObject, paramMessageRecord.senderuin.toString() });
+      VipUtils.a(paramAppRuntime, "cmshow", "Apollo", "y_rev_bq", "", j, paramMessageForApollo.msgType, new String[] { String.valueOf(i >> 2 & 0x1), str, paramMessageRecord.senderuin.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.Apollo644ReportUtil
  * JD-Core Version:    0.7.0.1
  */

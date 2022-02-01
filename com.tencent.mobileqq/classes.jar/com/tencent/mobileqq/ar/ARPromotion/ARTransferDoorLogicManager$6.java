@@ -9,17 +9,17 @@ class ARTransferDoorLogicManager$6
   
   public void run()
   {
-    if ((ARTransferDoorLogicManager.a(this.this$0) != null) && (ARTransferDoorLogicManager.a(this.this$0) != null))
+    if ((ARTransferDoorLogicManager.e(this.this$0) != null) && (ARTransferDoorLogicManager.f(this.this$0) != null))
     {
-      ARTransferDoorLogicManager.a(this.this$0).setVisibility(0);
-      ARTransferDoorLogicManager.a(this.this$0).a(ARTransferDoorLogicManager.a(this.this$0));
-      ARTransferDoorLogicManager.a(this.this$0).a(this.a);
+      ARTransferDoorLogicManager.e(this.this$0).setVisibility(0);
+      ARTransferDoorLogicManager.f(this.this$0).a(ARTransferDoorLogicManager.e(this.this$0));
+      ARTransferDoorLogicManager.f(this.this$0).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.6
  * JD-Core Version:    0.7.0.1
  */

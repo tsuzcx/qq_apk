@@ -212,9 +212,9 @@ public class ScribblePicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       localObject = new UpCallBack.SendResult();
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = -1;
+      ((UpCallBack.SendResult)localObject).a = -1;
       ((UpCallBack.SendResult)localObject).b = this.mProcessorReport.errCode;
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_JavaLangString = this.mProcessorReport.errDesc;
+      ((UpCallBack.SendResult)localObject).c = this.mProcessorReport.errDesc;
       this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
   }
@@ -234,7 +234,7 @@ public class ScribblePicUploadProcessor
     if (this.mUiRequest.mUpCallBack != null)
     {
       localObject = new UpCallBack.SendResult();
-      ((UpCallBack.SendResult)localObject).jdField_a_of_type_Int = 0;
+      ((UpCallBack.SendResult)localObject).a = 0;
       this.mUiRequest.mUpCallBack.b((UpCallBack.SendResult)localObject);
     }
   }
@@ -357,7 +357,7 @@ public class ScribblePicUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ScribblePicUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

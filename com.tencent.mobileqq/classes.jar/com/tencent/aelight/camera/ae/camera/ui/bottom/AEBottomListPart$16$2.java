@@ -20,13 +20,13 @@ class AEBottomListPart$16$2
     if (paramAEMaterialMetaData == null) {
       paramAEMaterialMetaData = "null";
     } else {
-      paramAEMaterialMetaData = paramAEMaterialMetaData.k;
+      paramAEMaterialMetaData = paramAEMaterialMetaData.m;
     }
     localStringBuilder.append(paramAEMaterialMetaData);
     AEQLog.b("AEBottomListPart", localStringBuilder.toString());
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.e = true;
+      this.a.A = true;
       ThreadManager.getUIHandler().post(new AEBottomListPart.16.2.1(this));
     }
   }
@@ -35,7 +35,7 @@ class AEBottomListPart$16$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListPart.16.2
  * JD-Core Version:    0.7.0.1
  */

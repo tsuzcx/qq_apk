@@ -14,7 +14,7 @@ class QQIndividualityBridgeActivity$SignatureLoadingDialogEx
   
   public void onBackPressed()
   {
-    if (this.a.a)
+    if (this.a.e)
     {
       super.onBackPressed();
       return;
@@ -26,7 +26,7 @@ class QQIndividualityBridgeActivity$SignatureLoadingDialogEx
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityBridgeActivity.SignatureLoadingDialogEx
  * JD-Core Version:    0.7.0.1
  */

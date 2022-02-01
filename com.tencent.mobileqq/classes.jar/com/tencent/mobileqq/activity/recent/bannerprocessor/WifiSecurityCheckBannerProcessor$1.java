@@ -21,16 +21,16 @@ class WifiSecurityCheckBannerProcessor$1
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "updateWiFiSecurityBanner, onClick");
     }
-    FreeWifiHelper.a(WifiSecurityCheckBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorWifiSecurityCheckBannerProcessor), this.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
-    WifiSecurityCheckBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorWifiSecurityCheckBannerProcessor).removeMessages(1000);
-    WifiSecurityCheckBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorWifiSecurityCheckBannerProcessor).obtainMessage(1000).sendToTarget();
-    ReportController.a(WifiSecurityCheckBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorWifiSecurityCheckBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
+    FreeWifiHelper.a(WifiSecurityCheckBannerProcessor.a(this.b), this.a);
+    WifiSecurityCheckBannerProcessor.b(this.b).removeMessages(1000);
+    WifiSecurityCheckBannerProcessor.c(this.b).obtainMessage(1000).sendToTarget();
+    ReportController.a(WifiSecurityCheckBannerProcessor.d(this.b).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 6, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.WifiSecurityCheckBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

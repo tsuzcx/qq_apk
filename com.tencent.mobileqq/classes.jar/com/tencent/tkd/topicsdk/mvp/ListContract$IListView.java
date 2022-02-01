@@ -5,9 +5,12 @@ import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;", "BEAN", "", "setCenterEmpty", "", "setCenterError", "errorCode", "", "errorMsg", "", "setCenterHide", "setCenterLoading", "setFooterError", "setFooterHasMore", "setFooterHide", "setFooterLoading", "setFooterNoMore", "setHeaderError", "setHeaderLoading", "setHeaderSuccess", "setListData", "allList", "", "isAppend", "", "setTotal", "total", "topicsdk-framework_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/mvp/ListContract$IListView;", "BEAN", "", "getDividerHeight", "", "getEmptyText", "", "setCenterEmpty", "", "setCenterError", "errorCode", "errorMsg", "setCenterHide", "setCenterLoading", "setFooterError", "setFooterHasMore", "setFooterHide", "setFooterLoading", "setFooterNoMore", "setHeaderError", "setHeaderLoading", "setHeaderSuccess", "setListData", "allList", "", "isAppend", "", "setTotal", "total", "topicsdk-common_release"}, k=1, mv={1, 1, 16})
 public abstract interface ListContract$IListView<BEAN>
 {
+  @NotNull
+  public abstract String getEmptyText();
+  
   public abstract void setCenterEmpty();
   
   public abstract void setCenterError(int paramInt, @Nullable String paramString);
@@ -38,7 +41,7 @@ public abstract interface ListContract$IListView<BEAN>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mvp.ListContract.IListView
  * JD-Core Version:    0.7.0.1
  */

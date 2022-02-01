@@ -46,8 +46,8 @@ public class TRTCRoomInfo
   private boolean micHasStartd = false;
   public boolean muteLocalAudio = false;
   public boolean muteLocalVideo = false;
-  public boolean muteRemoteAudio = false;
-  public boolean muteRemoteVideo = false;
+  public TRTCRoomInfo.TRTCRemoteMuteState muteRemoteAudio = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+  public TRTCRoomInfo.TRTCRemoteMuteState muteRemoteVideo = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
   public int networkStatus = 1;
   public String privateMapKey;
   private HashMap<Long, Integer> recvFirstIFrameCntList = new HashMap();
@@ -159,8 +159,8 @@ public class TRTCRoomInfo
       this.tinyId = "";
       this.muteLocalVideo = false;
       this.muteLocalAudio = false;
-      this.muteRemoteVideo = false;
-      this.muteRemoteAudio = false;
+      this.muteRemoteVideo = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+      this.muteRemoteAudio = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
       this.userList.clear();
       this.recvFirstIFrameCntList.clear();
       this.networkStatus = 1;
@@ -465,7 +465,7 @@ public class TRTCRoomInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCRoomInfo
  * JD-Core Version:    0.7.0.1
  */

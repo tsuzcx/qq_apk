@@ -11,26 +11,21 @@ import org.jetbrains.annotations.Nullable;
 public final class VideoReportController
   implements VideoPlayController.OnStateChangeListener
 {
-  public static final VideoReportController.Companion a;
+  public static final VideoReportController.Companion a = new VideoReportController.Companion(null);
   @NotNull
-  private static CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private long jdField_a_of_type_Long;
+  private static CopyOnWriteArrayList<String> f = new CopyOnWriteArrayList();
+  @NotNull
+  private String b;
+  private long c;
+  private long d;
   @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoReportController$Companion = new VideoReportController.Companion(null);
-  }
+  private VideoPlayController e;
   
   public VideoReportController(@Nullable VideoPlayController paramVideoPlayController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
-    this.jdField_a_of_type_JavaLangString = "VideoReportController";
-    paramVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    this.e = paramVideoPlayController;
+    this.b = "VideoReportController";
+    paramVideoPlayController = this.e;
     if (paramVideoPlayController != null) {
       paramVideoPlayController.a((VideoPlayController.OnStateChangeListener)this);
     }
@@ -38,57 +33,57 @@ public final class VideoReportController
   
   public final long a()
   {
-    return this.b;
-  }
-  
-  @Nullable
-  public final VideoPlayController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  }
-  
-  public final void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
+    return this.d;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public final void b()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = 0L;
+    this.d = 0L;
   }
   
   public final void c()
   {
-    this.b += System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    this.c = System.currentTimeMillis();
   }
   
   public final void d()
   {
-    VideoPlayController localVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    this.d += System.currentTimeMillis() - this.c;
+  }
+  
+  public final void e()
+  {
+    VideoPlayController localVideoPlayController = this.e;
     if (localVideoPlayController != null) {
       localVideoPlayController.g((Function0)new VideoReportController.reportPlayDuration.1(this));
     }
   }
   
-  public final void e()
+  public final void f()
   {
-    VideoPlayController localVideoPlayController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
+    VideoPlayController localVideoPlayController = this.e;
     if (localVideoPlayController != null) {
       localVideoPlayController.g((Function0)new VideoReportController.reportExposureVideo.1(this));
     }
   }
   
+  @Nullable
+  public final VideoPlayController g()
+  {
+    return this.e;
+  }
+  
   public void onStateChanged(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 7) {
-      c();
+      d();
     }
     if (paramInt2 != 0) {
       if (paramInt2 != 4)
@@ -98,21 +93,21 @@ public final class VideoReportController
           if ((paramInt2 == 9) || (paramInt2 == 11)) {}
         }
         else {
-          b();
+          c();
         }
       }
       else
       {
-        a();
+        b();
         return;
       }
     }
-    d();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoReportController
  * JD-Core Version:    0.7.0.1
  */

@@ -17,26 +17,26 @@ class JumpActionLegacy$5
     if ((paramQQProgressDialog != null) && (paramQQProgressDialog.isShowing())) {
       paramQQProgressDialog.dismiss();
     }
-    StoryShareEncryptHelper.a(this.a.a);
-    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.jdField_a_of_type_Int == 0))
+    StoryShareEncryptHelper.a(this.a.f);
+    if ((paramStoryShareTranslateTokenResponse != null) && (paramStoryShareTranslateTokenResponse.c == 0))
     {
-      StoryShareEncryptHelper.a(paramStoryShareTranslateTokenResponse.jdField_a_of_type_JavaLangString, this.a.a);
+      StoryShareEncryptHelper.a(paramStoryShareTranslateTokenResponse.a, this.a.f);
       JumpActionLegacy.d(this.a);
       return;
     }
     if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131892105, 1).show();
       return;
     }
     paramStoryShareTranslateTokenResponse = this.a;
-    paramStoryShareTranslateTokenResponse.c = "open";
+    paramStoryShareTranslateTokenResponse.e = "open";
     JumpActionLegacy.d(paramStoryShareTranslateTokenResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.5
  * JD-Core Version:    0.7.0.1
  */

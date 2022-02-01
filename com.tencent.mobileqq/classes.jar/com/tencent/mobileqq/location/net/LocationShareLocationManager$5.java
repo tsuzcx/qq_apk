@@ -12,15 +12,15 @@ class LocationShareLocationManager$5
   
   public LocationItem a()
   {
-    if (LocationShareLocationManager.a(this.a) == null) {
+    if (LocationShareLocationManager.b(this.a) == null) {
       QLog.d("Q.LocationShare", 1, "[LocationManager] getLocation: invoked. location null detected");
     }
-    return new LocationItem(((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getAccount(), LocationShareLocationManager.a(this.a), LocationShareLocationManager.a(this.a));
+    return new LocationItem(((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getAccount(), LocationShareLocationManager.b(this.a), LocationShareLocationManager.c(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareLocationManager.5
  * JD-Core Version:    0.7.0.1
  */

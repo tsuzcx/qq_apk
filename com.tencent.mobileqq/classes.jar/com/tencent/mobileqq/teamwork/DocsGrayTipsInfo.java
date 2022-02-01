@@ -68,7 +68,7 @@ public class DocsGrayTipsInfo
     }
     catch (Exception localException)
     {
-      String str = TeamWorkConstants.i;
+      String str = TeamWorkConstants.j;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("get height light area exception = ");
       localStringBuilder.append(localException.toString());
@@ -154,7 +154,7 @@ public class DocsGrayTipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.DocsGrayTipsInfo
  * JD-Core Version:    0.7.0.1
  */

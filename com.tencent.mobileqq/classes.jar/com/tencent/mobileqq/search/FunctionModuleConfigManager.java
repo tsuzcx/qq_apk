@@ -12,6 +12,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.base.util.SearchViewUtils;
@@ -38,50 +39,47 @@ import org.json.JSONObject;
 public class FunctionModuleConfigManager
   implements Manager
 {
-  private static ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
-  public static HashMap<String, List<BusinessGroupWord.HotWordItem>> a;
-  public static HashMap<String, String> b;
-  protected Handler a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public NetSearchTemplateBaseItem a;
-  public ISearchResultModel a;
+  public static HashMap<String, List<BusinessGroupWord.HotWordItem>> b = new HashMap();
+  public static HashMap<String, String> c = new HashMap();
+  private static ArrayList<Integer> g = new ArrayList();
+  QQAppInterface a;
+  public ISearchResultModel d;
+  public NetSearchTemplateBaseItem e;
+  protected Handler f;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(13));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(14));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(15));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(17));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(18));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(19));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(20));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(22));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(36));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(43));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(46));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(51));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(52));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(53));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(54));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(55));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(56));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(57));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(58));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(64));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(65));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(109));
-    jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(121));
+    g.add(Integer.valueOf(10));
+    g.add(Integer.valueOf(12));
+    g.add(Integer.valueOf(13));
+    g.add(Integer.valueOf(14));
+    g.add(Integer.valueOf(15));
+    g.add(Integer.valueOf(17));
+    g.add(Integer.valueOf(18));
+    g.add(Integer.valueOf(19));
+    g.add(Integer.valueOf(20));
+    g.add(Integer.valueOf(22));
+    g.add(Integer.valueOf(36));
+    g.add(Integer.valueOf(43));
+    g.add(Integer.valueOf(46));
+    g.add(Integer.valueOf(51));
+    g.add(Integer.valueOf(52));
+    g.add(Integer.valueOf(53));
+    g.add(Integer.valueOf(54));
+    g.add(Integer.valueOf(55));
+    g.add(Integer.valueOf(56));
+    g.add(Integer.valueOf(57));
+    g.add(Integer.valueOf(58));
+    g.add(Integer.valueOf(64));
+    g.add(Integer.valueOf(65));
+    g.add(Integer.valueOf(109));
+    g.add(Integer.valueOf(121));
   }
   
   public FunctionModuleConfigManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = paramQQAppInterface;
+    this.f = new Handler(Looper.getMainLooper());
   }
   
   public static String a(List<Long> paramList)
@@ -100,64 +98,64 @@ public class FunctionModuleConfigManager
   private String a(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc 110
+    //   0: ldc 115
     //   2: astore 4
     //   4: aload_1
     //   5: ifnonnull +6 -> 11
-    //   8: ldc 110
+    //   8: ldc 115
     //   10: areturn
     //   11: aconst_null
     //   12: astore 6
     //   14: aconst_null
     //   15: astore_2
-    //   16: new 112	java/io/BufferedReader
+    //   16: new 117	java/io/BufferedReader
     //   19: dup
-    //   20: new 114	java/io/InputStreamReader
+    //   20: new 119	java/io/InputStreamReader
     //   23: dup
-    //   24: new 116	java/io/ByteArrayInputStream
+    //   24: new 121	java/io/ByteArrayInputStream
     //   27: dup
     //   28: aload_1
-    //   29: invokespecial 119	java/io/ByteArrayInputStream:<init>	([B)V
-    //   32: ldc 121
-    //   34: invokespecial 124	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   37: invokespecial 127	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   29: invokespecial 124	java/io/ByteArrayInputStream:<init>	([B)V
+    //   32: ldc 126
+    //   34: invokespecial 129	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   37: invokespecial 132	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   40: astore_3
     //   41: aload 4
     //   43: astore_1
     //   44: aload_3
-    //   45: invokevirtual 130	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 135	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore_2
     //   49: aload_2
     //   50: ifnull +37 -> 87
-    //   53: new 68	java/lang/StringBuilder
+    //   53: new 73	java/lang/StringBuilder
     //   56: dup
-    //   57: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   57: invokespecial 74	java/lang/StringBuilder:<init>	()V
     //   60: astore 4
     //   62: aload 4
     //   64: aload_1
-    //   65: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload 4
     //   71: aload_2
-    //   72: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: pop
     //   76: aload 4
-    //   78: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   81: astore_2
     //   82: aload_2
     //   83: astore_1
     //   84: goto -40 -> 44
     //   87: aload_3
-    //   88: invokevirtual 133	java/io/BufferedReader:close	()V
+    //   88: invokevirtual 138	java/io/BufferedReader:close	()V
     //   91: aload_1
     //   92: astore_2
     //   93: aload_3
-    //   94: invokevirtual 133	java/io/BufferedReader:close	()V
+    //   94: invokevirtual 138	java/io/BufferedReader:close	()V
     //   97: aload_1
     //   98: areturn
     //   99: astore_1
     //   100: aload_1
-    //   101: invokevirtual 136	java/io/IOException:printStackTrace	()V
+    //   101: invokevirtual 141	java/io/IOException:printStackTrace	()V
     //   104: aload_2
     //   105: areturn
     //   106: astore_1
@@ -175,31 +173,31 @@ public class FunctionModuleConfigManager
     //   128: astore_1
     //   129: aload_3
     //   130: astore_2
-    //   131: invokestatic 141	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   131: invokestatic 146	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   134: ifeq +16 -> 150
     //   137: aload_3
     //   138: astore_2
-    //   139: ldc 143
+    //   139: ldc 148
     //   141: iconst_2
     //   142: aload 5
-    //   144: invokevirtual 144	java/io/IOException:toString	()Ljava/lang/String;
-    //   147: invokestatic 148	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   144: invokevirtual 149	java/io/IOException:toString	()Ljava/lang/String;
+    //   147: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   150: aload_3
     //   151: ifnull +9 -> 160
     //   154: aload_1
     //   155: astore_2
     //   156: aload_3
-    //   157: invokevirtual 133	java/io/BufferedReader:close	()V
+    //   157: invokevirtual 138	java/io/BufferedReader:close	()V
     //   160: aload_1
     //   161: areturn
     //   162: aload_2
     //   163: ifnull +15 -> 178
     //   166: aload_2
-    //   167: invokevirtual 133	java/io/BufferedReader:close	()V
+    //   167: invokevirtual 138	java/io/BufferedReader:close	()V
     //   170: goto +8 -> 178
     //   173: astore_2
     //   174: aload_2
-    //   175: invokevirtual 136	java/io/IOException:printStackTrace	()V
+    //   175: invokevirtual 141	java/io/IOException:printStackTrace	()V
     //   178: goto +5 -> 183
     //   181: aload_1
     //   182: athrow
@@ -251,7 +249,7 @@ public class FunctionModuleConfigManager
     paramQQAppInterface.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0);
   }
   
-  private List<FunctionModuleConfigManager.FunctionItem> b()
+  private List<FunctionModuleConfigManager.FunctionItem> c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("search_manager_configFunctionModuleConfigManager", 2, "getFunctionItemList !!! no data,just use local data");
@@ -259,56 +257,51 @@ public class FunctionModuleConfigManager
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(1, "QQ会员", "https://pub.idqqimg.com/pc/misc/files/20170321/a89cb3ba283040058367d36b0a1f5aad.png", "https://h5.vip.qq.com/p/sonic/mc/vipcenterv5?_bid=193&_wvSb=1&asyncMode=3&_wwv=64&_nav_alpha=true&_wwv=4&pay_src=10&platform=1&type=20001&networkInfo=1&status=-1&number=0&path=100400"));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(2, "QQ钱包", "https://pub.idqqimg.com/pc/misc/files/20170310/e3f2c05439d745c6b39505c757468bcc.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(3, HardCodeUtil.a(2131705081), "https://pub.idqqimg.com/pc/misc/files/20170321/f8b7922d137b4174a32408c2a874d439.png", "https://zb.vip.qq.com/sonic/index?_wv=16778243&asyncMode=3&_wwv=68&_nav_txtclr=ffffff&_nav_titleclr=ffffff&btest=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(4, HardCodeUtil.a(2131705066), "https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(5, HardCodeUtil.a(2131705065), "https://pub.idqqimg.com/pc/misc/files/20170310/a601d5f50db940ee9cf8d30e915671ce.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(6, HardCodeUtil.a(2131705083), "https://pub.idqqimg.com/pc/misc/files/20170310/2490d524bbf84417929137e35d93b0c2.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(3, HardCodeUtil.a(2131902971), "https://pub.idqqimg.com/pc/misc/files/20170321/f8b7922d137b4174a32408c2a874d439.png", "https://zb.vip.qq.com/sonic/index?_wv=16778243&asyncMode=3&_wwv=68&_nav_txtclr=ffffff&_nav_titleclr=ffffff&btest=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(4, HardCodeUtil.a(2131902956), "https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(5, HardCodeUtil.a(2131902955), "https://pub.idqqimg.com/pc/misc/files/20170310/a601d5f50db940ee9cf8d30e915671ce.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(6, HardCodeUtil.a(2131902973), "https://pub.idqqimg.com/pc/misc/files/20170310/2490d524bbf84417929137e35d93b0c2.png", ""));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(7, "QQ达人", "https://pub.idqqimg.com/pc/misc/files/20170321/b38bddc6e6a24a1eb5253f6505fb349e.png", "https://ti.qq.com/xman/self.html?_wv=1027&adtag=card&_bid=297"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(8, HardCodeUtil.a(2131705069), "https://pub.idqqimg.com/pc/misc/files/20170310/5765374679c8415894d31ff020f5558a.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(8, HardCodeUtil.a(2131902959), "https://pub.idqqimg.com/pc/misc/files/20170310/5765374679c8415894d31ff020f5558a.png", ""));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(9, "QQ空间", "https://pub.idqqimg.com/pc/misc/files/20170310/5aaef4e89ac540ff9d0e1a4c3f0aee65.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(10, HardCodeUtil.a(2131705068), "https://pub.idqqimg.com/pc/misc/files/20170310/c88ccef2e6d44e3f94357ac7cecd04b4.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(11, HardCodeUtil.a(2131705085), "https://pub.idqqimg.com/pc/misc/files/20170310/c83498c5dfd54489af3147b027c091b0.png", "https://cmshow.qq.com/apollo/html/intro.html?_wv=3&adtag=search"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(12, HardCodeUtil.a(2131705064), "https://pub.idqqimg.com/pc/misc/files/20170310/e8310f3460fa41b487b5922a0df671c5.png", "https://buluo.qq.com/mobile/buluoindex.html?_wv=16778243&_bid=128&from=dongtai&target=hot&_nav_txtclr=000000&_wwv=265&plg_auth=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(13, HardCodeUtil.a(2131705080), "https://pub.idqqimg.com/pc/misc/files/20170310/ee1b6352ec7340bba07949a15b9adc19.png", "https://m.gamecenter.qq.com/directout/index?st=1489458002385&uin=3043939851&status=-1&number=0&path=489&plat=qq&gamecenter=1&_wv=1031&gc_version=2&ADTAG=neisou&_nav_bgclr=18b4ed&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=255&asyncMode=3&_wwv=64"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(14, QQStoryConstant.jdField_a_of_type_JavaLangString, "https://pub.idqqimg.com/pc/misc/files/20170310/6a09f5f91fff46e0ada71ff7b2a667f4.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(10, HardCodeUtil.a(2131902958), "https://pub.idqqimg.com/pc/misc/files/20170310/c88ccef2e6d44e3f94357ac7cecd04b4.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(11, HardCodeUtil.a(2131902975), "https://pub.idqqimg.com/pc/misc/files/20170310/c83498c5dfd54489af3147b027c091b0.png", "https://cmshow.qq.com/apollo/html/intro.html?_wv=3&adtag=search"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(12, HardCodeUtil.a(2131902954), "https://pub.idqqimg.com/pc/misc/files/20170310/e8310f3460fa41b487b5922a0df671c5.png", "https://buluo.qq.com/mobile/buluoindex.html?_wv=16778243&_bid=128&from=dongtai&target=hot&_nav_txtclr=000000&_wwv=265&plg_auth=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(13, HardCodeUtil.a(2131902970), "https://pub.idqqimg.com/pc/misc/files/20170310/ee1b6352ec7340bba07949a15b9adc19.png", "https://m.gamecenter.qq.com/directout/index?st=1489458002385&uin=3043939851&status=-1&number=0&path=489&plat=qq&gamecenter=1&_wv=1031&gc_version=2&ADTAG=neisou&_nav_bgclr=18b4ed&_nav_titleclr=ffffff&_nav_txtclr=ffffff&_nav_anim=true&_nav_alpha=255&asyncMode=3&_wwv=64"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(14, QQStoryConstant.a, "https://pub.idqqimg.com/pc/misc/files/20170310/6a09f5f91fff46e0ada71ff7b2a667f4.png", ""));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(15, "QQ看点", "https://sqimg.qq.com/qq_product_operations/kan/images/QQkandian_symbol.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(16, HardCodeUtil.a(2131705092), "https://pub.idqqimg.com/pc/misc/files/20170310/43121a2425204707868e3e271a9969a7.png", "https://wq.jd.com/mcoss/wxmall/home?ptype=4&_wv=67113987&fetchCode=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(17, HardCodeUtil.a(2131705084), "https://pub.idqqimg.com/pc/misc/files/20170310/cd28b2e8ba7f4d9e98a2d244ced31789.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(18, HardCodeUtil.a(2131705079), "https://pub.idqqimg.com/pc/misc/files/20170310/6727610036b648c3bc3aaa4d0c047ec3.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(19, HardCodeUtil.a(2131705073), "https://pub.idqqimg.com/pc/misc/files/20170310/ee8e56925bb646f9b6ae831afcbb0aca.png", "https://y.qq.com/m/mqq/music/index.html?plg_auth=1&plg_dev=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(16, HardCodeUtil.a(2131902982), "https://pub.idqqimg.com/pc/misc/files/20170310/43121a2425204707868e3e271a9969a7.png", "https://wq.jd.com/mcoss/wxmall/home?ptype=4&_wv=67113987&fetchCode=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(17, HardCodeUtil.a(2131902974), "https://pub.idqqimg.com/pc/misc/files/20170310/cd28b2e8ba7f4d9e98a2d244ced31789.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(18, HardCodeUtil.a(2131902969), "https://pub.idqqimg.com/pc/misc/files/20170310/6727610036b648c3bc3aaa4d0c047ec3.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(19, HardCodeUtil.a(2131902963), "https://pub.idqqimg.com/pc/misc/files/20170310/ee8e56925bb646f9b6ae831afcbb0aca.png", "https://y.qq.com/m/mqq/music/index.html?plg_auth=1&plg_dev=1"));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(20, "NOW直播", "https://pub.idqqimg.com/pc/misc/files/20170321/fd790f79230e4776a33c608c9557ae0b.png", "https://now.qq.com/qq/hall.html?_bid=2374&_wv=16778245&from=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(21, HardCodeUtil.a(2131705086), "https://pub.idqqimg.com/pc/misc/files/20170321/5657f0d4fd6f49858d10bca7451d91a8.png", "https://imgcache.qq.com/zzapp/chwl/prev/html/shop.html?max_age=0&_wv=3"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(22, HardCodeUtil.a(2131705088), "https://pub.idqqimg.com/pc/misc/files/20170310/0291fa0854954779a9eeeb9d843f0157.png", "https://tcsh.qq.com/58/html/home.html?_wv=1027&plg_auth=1&plg_dev=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(23, HardCodeUtil.a(2131705070), "https://pub.idqqimg.com/pc/misc/files/20170310/3a4608e81a5e4158a07d92e4ae8a7b7a.png", "https://info.3g.qq.com/g/s?aid=index&g_ut=3&_wv=1&g_f=22580&plg_auth=1&plg_dev=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(24, HardCodeUtil.a(2131705091), "https://pub.idqqimg.com/pc/misc/files/20170310/35fa7f030fe44507a9732f6d034677e3.png", "https://yundong.qq.com/?_wv=2172899&asyncMode=1&crashFrom=40501"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(25, HardCodeUtil.a(2131705076), "https://pub.idqqimg.com/pc/misc/files/20170310/26cee3d3d78a4c7e8be121cce7ce1df5.png", "https://m.ke.qq.com/index.html?_bid=167&_wv=5121"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(26, HardCodeUtil.a(2131705078), "https://pub.idqqimg.com/pc/misc/files/20170321/30e65ca21a2a42529c90a83a46630ce1.png", "https://fudao.qq.com/rn2web/coursebreak.html?_wv=5123&_bid=2356&n_r=1&from=dongtai&plg_auth=1&plg_dev=1"));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(27, HardCodeUtil.a(2131705074), "https://pub.idqqimg.com/pc/misc/files/20170310/f668a11f690c49bc82210b5773e9f27b.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(28, HardCodeUtil.a(2131694380), "https://pub.idqqimg.com/pc/misc/files/20170310/25b9983be4dd4092bf03f6cac00e0095.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(30, HardCodeUtil.a(2131705077), "https://pub.idqqimg.com/pc/misc/files/20170321/831513c842904cdda53780b36110478e.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(31, HardCodeUtil.a(2131705071), "https://pub.idqqimg.com/pc/misc/files/20170310/9f15b7bd262c42b28a285e3e12a49808.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(32, HardCodeUtil.a(2131705075), "https://pub.idqqimg.com/pc/misc/files/20170310/4fedf2b96f4d4acda93fe619d9cb925e.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(33, HardCodeUtil.a(2131705087), "https://pub.idqqimg.com/pc/misc/files/20170321/9cd89480b0284a27a8938318dbc897df.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(35, HardCodeUtil.a(2131719782), "https://pub.idqqimg.com/pc/misc/files/20170310/6f2aad7545014d13a230cb237390b567.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(36, HardCodeUtil.a(2131705089), "https://pub.idqqimg.com/pc/misc/files/20170310/43121a2425204707868e3e271a9969a7.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(37, HardCodeUtil.a(2131691101), "https://pub.idqqimg.com/pc/misc/files/20170310/5cba92c8405749bbb66d13cd2f42c7b5.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(38, HardCodeUtil.a(2131705072), "https://pub.idqqimg.com/pc/misc/files/20170322/3152361128324bfd97776b10c803f73c.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(21, HardCodeUtil.a(2131902976), "https://pub.idqqimg.com/pc/misc/files/20170321/5657f0d4fd6f49858d10bca7451d91a8.png", "https://imgcache.qq.com/zzapp/chwl/prev/html/shop.html?max_age=0&_wv=3"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(22, HardCodeUtil.a(2131902978), "https://pub.idqqimg.com/pc/misc/files/20170310/0291fa0854954779a9eeeb9d843f0157.png", "https://tcsh.qq.com/58/html/home.html?_wv=1027&plg_auth=1&plg_dev=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(23, HardCodeUtil.a(2131902960), "https://pub.idqqimg.com/pc/misc/files/20170310/3a4608e81a5e4158a07d92e4ae8a7b7a.png", "https://info.3g.qq.com/g/s?aid=index&g_ut=3&_wv=1&g_f=22580&plg_auth=1&plg_dev=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(24, HardCodeUtil.a(2131902981), "https://pub.idqqimg.com/pc/misc/files/20170310/35fa7f030fe44507a9732f6d034677e3.png", "https://yundong.qq.com/?_wv=2172899&asyncMode=1&crashFrom=40501"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(25, HardCodeUtil.a(2131902966), "https://pub.idqqimg.com/pc/misc/files/20170310/26cee3d3d78a4c7e8be121cce7ce1df5.png", "https://m.ke.qq.com/index.html?_bid=167&_wv=5121"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(26, HardCodeUtil.a(2131902968), "https://pub.idqqimg.com/pc/misc/files/20170321/30e65ca21a2a42529c90a83a46630ce1.png", "https://fudao.qq.com/rn2web/coursebreak.html?_wv=5123&_bid=2356&n_r=1&from=dongtai&plg_auth=1&plg_dev=1"));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(27, HardCodeUtil.a(2131902964), "https://pub.idqqimg.com/pc/misc/files/20170310/f668a11f690c49bc82210b5773e9f27b.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(28, HardCodeUtil.a(2131892059), "https://pub.idqqimg.com/pc/misc/files/20170310/25b9983be4dd4092bf03f6cac00e0095.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(30, HardCodeUtil.a(2131902967), "https://pub.idqqimg.com/pc/misc/files/20170321/831513c842904cdda53780b36110478e.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(31, HardCodeUtil.a(2131902961), "https://pub.idqqimg.com/pc/misc/files/20170310/9f15b7bd262c42b28a285e3e12a49808.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(32, HardCodeUtil.a(2131902965), "https://pub.idqqimg.com/pc/misc/files/20170310/4fedf2b96f4d4acda93fe619d9cb925e.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(33, HardCodeUtil.a(2131902977), "https://pub.idqqimg.com/pc/misc/files/20170321/9cd89480b0284a27a8938318dbc897df.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(35, HardCodeUtil.a(2131917386), "https://pub.idqqimg.com/pc/misc/files/20170310/6f2aad7545014d13a230cb237390b567.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(36, HardCodeUtil.a(2131902979), "https://pub.idqqimg.com/pc/misc/files/20170310/43121a2425204707868e3e271a9969a7.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(37, HardCodeUtil.a(2131888047), "https://pub.idqqimg.com/pc/misc/files/20170310/5cba92c8405749bbb66d13cd2f42c7b5.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(38, HardCodeUtil.a(2131902962), "https://pub.idqqimg.com/pc/misc/files/20170322/3152361128324bfd97776b10c803f73c.png", ""));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(39, "QQ红包", "https://pub.idqqimg.com/pc/misc/files/20170310/96d80f6c7cef4e3aa8d45237cc301295.png", "https://mqq.tenpay.com/mqq/hongbao/index.shtml?_wv=2098179&_wvNb=D12928&f=17&_vacf=qw&_wvNt=FFFFFF&_wvSb=1"));
     localArrayList.add(new FunctionModuleConfigManager.FunctionItem(40, "我的其他QQ帐号", "https://pub.idqqimg.com/pc/misc/files/20170510/e74d00a108ba43e8b7e324ad425dc85c.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(41, HardCodeUtil.a(2131705090), "https://pub.idqqimg.com/pc/misc/files/20170510/9a58b5bdda80403cb3a2923d8f96f519.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(43, HardCodeUtil.a(2131716346), "https://pub.idqqimg.com/pc/misc/files/20170510/445bcc0024c24add97831ec6e987d5a8.png", ""));
-    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(44, HardCodeUtil.a(2131705067), "https://pub.idqqimg.com/pc/misc/files/20170510/439579e680cc45789586480ff897aad2.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(41, HardCodeUtil.a(2131902980), "https://pub.idqqimg.com/pc/misc/files/20170510/9a58b5bdda80403cb3a2923d8f96f519.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(43, HardCodeUtil.a(2131913788), "https://pub.idqqimg.com/pc/misc/files/20170510/445bcc0024c24add97831ec6e987d5a8.png", ""));
+    localArrayList.add(new FunctionModuleConfigManager.FunctionItem(44, HardCodeUtil.a(2131902957), "https://pub.idqqimg.com/pc/misc/files/20170510/439579e680cc45789586480ff897aad2.png", ""));
     return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0).getString("contentUrl", "");
   }
   
   public List<FunctionModuleConfigManager.FunctionItem> a()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0).getString("content", "");
+    Object localObject1 = this.a.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0).getString("content", "");
     ArrayList localArrayList1 = new ArrayList();
     StringBuilder localStringBuilder = new StringBuilder("parseServletConfigContent");
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
@@ -375,13 +368,13 @@ public class FunctionModuleConfigManager
     }
     else
     {
-      localObject1 = b();
+      localObject1 = c();
     }
     Object localObject3 = localObject1;
     Object localObject1 = new ArrayList(localObject3.size() + 1);
     ArrayList localArrayList = new ArrayList(localObject3.size() + 1);
     localObject2 = new ArrayList();
-    boolean bool2 = StudyModeManager.a();
+    boolean bool2 = StudyModeManager.h();
     Object localObject6 = localObject3.iterator();
     boolean bool1;
     Object localObject5;
@@ -394,23 +387,23 @@ public class FunctionModuleConfigManager
         break;
       }
       localObject5 = (FunctionModuleConfigManager.FunctionItem)((Iterator)localObject6).next();
-      if ((((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int == 28) && (QFileAssistantUtils.a(((FunctionModuleConfigManager)localObject4).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-        ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaLangString = ((FunctionModuleConfigManager)localObject4).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131698288);
+      if ((((FunctionModuleConfigManager.FunctionItem)localObject5).a == 28) && (QFileAssistantUtils.a(((FunctionModuleConfigManager)localObject4).a))) {
+        ((FunctionModuleConfigManager.FunctionItem)localObject5).b = ((FunctionModuleConfigManager)localObject4).a.getApp().getString(2131896189);
       }
-      int[] arrayOfInt = SearchUtils.a(paramString, ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaLangString, true);
+      int[] arrayOfInt = SearchUtils.b(paramString, ((FunctionModuleConfigManager.FunctionItem)localObject5).b, true);
       if ((arrayOfInt != null) && (arrayOfInt.length >= 3)) {
-        if ((arrayOfInt[0] > -1) && ((((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int != 15) || (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab())))
+        if ((arrayOfInt[0] > -1) && ((((FunctionModuleConfigManager.FunctionItem)localObject5).a != 15) || (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab())))
         {
-          i = ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int;
-          if (((((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int != 111) || (((ITempMsgBoxManager)((FunctionModuleConfigManager)localObject4).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).msgBoxSwitch())) && ((!bool2) || (!jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int)))))
+          i = ((FunctionModuleConfigManager.FunctionItem)localObject5).a;
+          if (((((FunctionModuleConfigManager.FunctionItem)localObject5).a != 111) || (((ITempMsgBoxManager)((FunctionModuleConfigManager)localObject4).a.getRuntimeService(ITempMsgBoxManager.class, "")).msgBoxSwitch())) && ((!bool2) || (!g.contains(Integer.valueOf(((FunctionModuleConfigManager.FunctionItem)localObject5).a)))) && ((((FunctionModuleConfigManager.FunctionItem)localObject5).a != 123) || (((IGameMsgManagerService)((FunctionModuleConfigManager)localObject4).a.getRuntimeService(IGameMsgManagerService.class, "")).isGrayOpen())))
           {
             localObject4 = new StringBuilder();
-            ((StringBuilder)localObject4).append(((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int);
+            ((StringBuilder)localObject4).append(((FunctionModuleConfigManager.FunctionItem)localObject5).a);
             ((StringBuilder)localObject4).append("");
-            localObject4 = new GroupBaseNetSearchModelItem(paramString, ((StringBuilder)localObject4).toString(), ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaLangString, ((FunctionModuleConfigManager.FunctionItem)localObject5).b, ((FunctionModuleConfigManager.FunctionItem)localObject5).c, "", 268435456L, null, paramInt);
-            ((GroupBaseNetSearchModelItem)localObject4).a(7);
-            ((GroupBaseNetSearchModelItem)localObject4).a = arrayOfInt;
-            if (((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaLangString.equals(paramString)) {
+            localObject4 = new GroupBaseNetSearchModelItem(paramString, ((StringBuilder)localObject4).toString(), ((FunctionModuleConfigManager.FunctionItem)localObject5).b, ((FunctionModuleConfigManager.FunctionItem)localObject5).c, ((FunctionModuleConfigManager.FunctionItem)localObject5).d, "", 268435456L, null, paramInt);
+            ((GroupBaseNetSearchModelItem)localObject4).b(7);
+            ((GroupBaseNetSearchModelItem)localObject4).H = arrayOfInt;
+            if (((FunctionModuleConfigManager.FunctionItem)localObject5).b.equals(paramString)) {
               localArrayList.add(0, localObject4);
             } else {
               localArrayList.add(localObject4);
@@ -424,31 +417,31 @@ public class FunctionModuleConfigManager
     while (((Iterator)localObject4).hasNext())
     {
       localObject5 = (FunctionModuleConfigManager.FunctionItem)((Iterator)localObject4).next();
-      if (((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaUtilList != null) {
-        if (((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaUtilList.size() != 0)
+      if (((FunctionModuleConfigManager.FunctionItem)localObject5).e != null) {
+        if (((FunctionModuleConfigManager.FunctionItem)localObject5).e.size() != 0)
         {
           i = 0;
           bool1 = false;
-          while (i < ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaUtilList.size())
+          while (i < ((FunctionModuleConfigManager.FunctionItem)localObject5).e.size())
           {
-            bool1 = paramString.contains((CharSequence)((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaUtilList.get(i));
+            bool1 = paramString.contains((CharSequence)((FunctionModuleConfigManager.FunctionItem)localObject5).e.get(i));
             if (bool1) {
               break;
             }
             i += 1;
           }
-          if ((bool1) && ((((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int != 15) || (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab())))
+          if ((bool1) && ((((FunctionModuleConfigManager.FunctionItem)localObject5).a != 15) || (!((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isShowMainRecommendTab())))
           {
-            if ((((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int == 28) && (QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-              ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131698288);
+            if ((((FunctionModuleConfigManager.FunctionItem)localObject5).a == 28) && (QFileAssistantUtils.a(this.a))) {
+              ((FunctionModuleConfigManager.FunctionItem)localObject5).b = this.a.getApp().getString(2131896189);
             }
-            i = ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int;
-            if ((!bool2) || (!jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int))))
+            i = ((FunctionModuleConfigManager.FunctionItem)localObject5).a;
+            if ((!bool2) || (!g.contains(Integer.valueOf(((FunctionModuleConfigManager.FunctionItem)localObject5).a))))
             {
               localObject6 = new StringBuilder();
-              ((StringBuilder)localObject6).append(((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_Int);
+              ((StringBuilder)localObject6).append(((FunctionModuleConfigManager.FunctionItem)localObject5).a);
               ((StringBuilder)localObject6).append(localObject3);
-              ((List)localObject2).add(new GroupBaseNetSearchModelItem(paramString, ((StringBuilder)localObject6).toString(), ((FunctionModuleConfigManager.FunctionItem)localObject5).jdField_a_of_type_JavaLangString, ((FunctionModuleConfigManager.FunctionItem)localObject5).b, ((FunctionModuleConfigManager.FunctionItem)localObject5).c, "", 268435456L, null, paramInt));
+              ((List)localObject2).add(new GroupBaseNetSearchModelItem(paramString, ((StringBuilder)localObject6).toString(), ((FunctionModuleConfigManager.FunctionItem)localObject5).b, ((FunctionModuleConfigManager.FunctionItem)localObject5).c, ((FunctionModuleConfigManager.FunctionItem)localObject5).d, "", 268435456L, null, paramInt));
             }
           }
         }
@@ -470,20 +463,20 @@ public class FunctionModuleConfigManager
   
   public void a(String paramString)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0);
+    SharedPreferences localSharedPreferences = this.a.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0);
     localSharedPreferences.edit().putString("content", paramString);
     localSharedPreferences.edit().commit();
   }
   
   public void a(StringBuilder paramStringBuilder)
   {
-    Object localObject = (SearchFunctionModuleBean)QConfigManager.a().a(190);
+    Object localObject = (SearchFunctionModuleBean)QConfigManager.b().b(190);
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = ((SearchFunctionModuleBean)localObject).jdField_a_of_type_JavaLangString;
+      localObject = ((SearchFunctionModuleBean)localObject).a;
     }
-    String str = a();
+    String str = b();
     paramStringBuilder.append(",netFunctionUrl=");
     paramStringBuilder.append((String)localObject);
     paramStringBuilder.append(",localContentUrl=");
@@ -497,6 +490,11 @@ public class FunctionModuleConfigManager
     b((String)localObject);
   }
   
+  public String b()
+  {
+    return this.a.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0).getString("contentUrl", "");
+  }
+  
   public void b(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
@@ -504,7 +502,7 @@ public class FunctionModuleConfigManager
       QLog.i("search_manager_configFunctionModuleConfigManager", 1, "getFunctionListFile fileUrl isEmpty");
       return;
     }
-    if (paramString.equals(a()))
+    if (paramString.equals(b()))
     {
       QLog.i("search_manager_configFunctionModuleConfigManager", 1, "getFunctionListFile equals");
       return;
@@ -518,7 +516,7 @@ public class FunctionModuleConfigManager
   
   public void c(String paramString)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0);
+    SharedPreferences localSharedPreferences = this.a.getApp().getSharedPreferences("search_manager_configFunctionModuleConfigManager", 0);
     localSharedPreferences.edit().putString("contentUrl", paramString);
     localSharedPreferences.edit().commit();
   }
@@ -527,7 +525,7 @@ public class FunctionModuleConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.FunctionModuleConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,12 @@ public class QQMapActivity$MapRuntime
   extends PluginRuntime
   implements Thread.UncaughtExceptionHandler
 {
-  private BroadcastReceiver a;
   protected Thread.UncaughtExceptionHandler a;
-  
-  public QQMapActivity$MapRuntime()
-  {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QQMapActivity.MapRuntime.1(this);
-  }
+  private BroadcastReceiver b = new QQMapActivity.MapRuntime.1(this);
   
   protected void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+    this.a = Thread.getDefaultUncaughtExceptionHandler();
     Thread.setDefaultUncaughtExceptionHandler(this);
     super.onCreate(paramBundle);
     paramBundle = new IntentFilter();
@@ -35,14 +30,14 @@ public class QQMapActivity$MapRuntime
     localStringBuilder.append("mqq.intent.action.EXIT_");
     localStringBuilder.append(MobileQQ.getMobileQQ().getPackageName());
     paramBundle.addAction(localStringBuilder.toString());
-    MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+    MobileQQ.getContext().registerReceiver(this.b, paramBundle);
     Step.AmStepFactory.b(12, BaseApplicationImpl.sDirector, null).step();
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     PluginRuntime.handleCrash(paramThrowable, "QQMapActivity", MobileQQ.getContext());
-    Thread.UncaughtExceptionHandler localUncaughtExceptionHandler = this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler;
+    Thread.UncaughtExceptionHandler localUncaughtExceptionHandler = this.a;
     if (localUncaughtExceptionHandler != null) {
       localUncaughtExceptionHandler.uncaughtException(paramThread, paramThrowable);
     }
@@ -50,7 +45,7 @@ public class QQMapActivity$MapRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.MapRuntime
  * JD-Core Version:    0.7.0.1
  */

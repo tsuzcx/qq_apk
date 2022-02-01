@@ -71,18 +71,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691287);
+          return ((QQAppInterface)localObject).getApp().getString(2131888237);
         }
-        return HardCodeUtil.a(2131706640);
+        return HardCodeUtil.a(2131904491);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691287);
+          return ((QQAppInterface)localObject).getApp().getString(2131888237);
         }
-        return HardCodeUtil.a(2131706611);
+        return HardCodeUtil.a(2131904462);
       }
-      return HardCodeUtil.a(2131706612);
+      return HardCodeUtil.a(2131904463);
     }
     return null;
   }
@@ -129,7 +129,7 @@ public class MessageForDevPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevPtt
  * JD-Core Version:    0.7.0.1
  */

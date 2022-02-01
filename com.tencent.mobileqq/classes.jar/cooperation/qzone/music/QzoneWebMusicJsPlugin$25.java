@@ -23,15 +23,15 @@ class QzoneWebMusicJsPlugin$25
       if (this.val$bundle != null)
       {
         localObject1 = (SongInfo)this.val$bundle.getParcelable("param.song");
-        if ((localObject1 != null) && (((SongInfo)localObject1).b == 9) && (((SongInfo)localObject1).a != null))
+        if ((localObject1 != null) && (((SongInfo)localObject1).m == 9) && (((SongInfo)localObject1).o != null))
         {
           int i = this.val$bundle.getInt("param.state");
           localJSONObject.put("code", 0);
           localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("uin", this.val$bundle.getLong("param.uin"));
-          ((JSONObject)localObject2).put("detailUrl", ((SongInfo)localObject1).a.c);
-          ((JSONObject)localObject2).put("broadcastID", ((SongInfo)localObject1).a.a);
-          ((JSONObject)localObject2).put("broadcastName", ((SongInfo)localObject1).a.b);
+          ((JSONObject)localObject2).put("detailUrl", ((SongInfo)localObject1).o.c);
+          ((JSONObject)localObject2).put("broadcastID", ((SongInfo)localObject1).o.a);
+          ((JSONObject)localObject2).put("broadcastName", ((SongInfo)localObject1).o.b);
           if (i == 2) {
             ((JSONObject)localObject2).put("state", "playing");
           } else if (i == 1) {
@@ -59,7 +59,7 @@ class QzoneWebMusicJsPlugin$25
       if ((this.this$0.isDestroy) || (QzoneWebMusicJsPlugin.access$700() == null)) {
         break label353;
       }
-      if (QzoneWebMusicJsPlugin.access$700().a)
+      if (QzoneWebMusicJsPlugin.access$700().c)
       {
         this.this$0.callJs4OpenApi(QzoneWebMusicJsPlugin.access$700(), 0, localJSONObject.toString());
         return;
@@ -80,7 +80,7 @@ class QzoneWebMusicJsPlugin$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.25
  * JD-Core Version:    0.7.0.1
  */

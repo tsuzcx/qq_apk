@@ -8,12 +8,12 @@ public class QiDianPrivatePlusPanelAppLoader
 {
   protected void b(BaseChatPie paramBaseChatPie)
   {
-    a(paramBaseChatPie.a.a, 1104864066);
+    a(paramBaseChatPie.ah.a, 1104864066);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.troop.QiDianPrivatePlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

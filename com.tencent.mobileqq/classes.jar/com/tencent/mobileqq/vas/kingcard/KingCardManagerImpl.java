@@ -14,19 +14,9 @@ import org.jetbrains.annotations.NotNull;
 public final class KingCardManagerImpl
   implements IKingCardManager
 {
-  public static final KingCardManagerImpl.Companion a;
+  public static final KingCardManagerImpl.Companion a = new KingCardManagerImpl.Companion(null);
   @NotNull
-  private final String a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasKingcardKingCardManagerImpl$Companion = new KingCardManagerImpl.Companion(null);
-  }
-  
-  public KingCardManagerImpl()
-  {
-    this.jdField_a_of_type_JavaLangString = "KingCardManagerImpl";
-  }
+  private final String b = "KingCardManagerImpl";
   
   public void addChangeListener(@NotNull Function1<? super Boolean, Unit> paramFunction1)
   {
@@ -55,7 +45,7 @@ public final class KingCardManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.kingcard.KingCardManagerImpl
  * JD-Core Version:    0.7.0.1
  */

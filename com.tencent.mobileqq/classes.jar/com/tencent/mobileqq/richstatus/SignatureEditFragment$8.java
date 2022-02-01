@@ -11,13 +11,13 @@ class SignatureEditFragment$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SignatureEditFragment.a(this.a).a(8589934618L, null);
+    SignatureEditFragment.g(this.a).a(8589934618L, null);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureEditFragment.8
  * JD-Core Version:    0.7.0.1
  */

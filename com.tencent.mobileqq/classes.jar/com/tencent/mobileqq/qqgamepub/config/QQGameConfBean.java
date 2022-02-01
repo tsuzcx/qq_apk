@@ -8,193 +8,189 @@ import org.json.JSONObject;
 public class QQGameConfBean
 {
   public int a;
-  public String a;
-  public boolean a;
   public int b;
-  public String b;
-  public boolean b;
   public int c;
-  public int d = 0;
-  public int e = 0;
-  public int f;
-  public int g = 168;
-  
-  public QQGameConfBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public String d = "";
+  public String e = "";
+  public boolean f = true;
+  public boolean g = false;
+  public int h = 0;
+  public int i = 0;
+  public int j;
+  public int k = 168;
   
   public static QQGameConfBean a()
   {
-    return (QQGameConfBean)QConfigManager.a().a(441);
+    return (QQGameConfBean)QConfigManager.b().b(441);
   }
   
   public static QQGameConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject1 = "hippySwitch";
-    QQGameConfBean localQQGameConfBean = new QQGameConfBean();
-    int i = 0;
-    Object localObject2 = paramArrayOfQConfItem;
-    for (;;)
+    localQQGameConfBean = new QQGameConfBean();
+    int m = 0;
+    try
     {
-      try
+      Object localObject;
+      while (m < paramArrayOfQConfItem.length)
       {
-        if (i < localObject2.length)
-        {
-          localObject2 = new JSONObject(localObject2[i].jdField_a_of_type_JavaLangString);
-          StringBuilder localStringBuilder;
-          if (((JSONObject)localObject2).has("pubaccountSwitch"))
-          {
-            localQQGameConfBean.jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("pubaccountSwitch");
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed swtich=");
-              localStringBuilder.append(localQQGameConfBean.jdField_a_of_type_Int);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("fullPopIntervalDay"))
-          {
-            localQQGameConfBean.jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("fullPopIntervalDay");
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed fullPopIntervalDay=");
-              localStringBuilder.append(localQQGameConfBean.jdField_b_of_type_Int);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("isFeedByWeb"))
-          {
-            localQQGameConfBean.c = ((JSONObject)localObject2).optInt("isFeedByWeb");
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed isFeedByWeb=");
-              localStringBuilder.append(localQQGameConfBean.c);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("gamePubUrl"))
-          {
-            localQQGameConfBean.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("gamePubUrl");
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed gamePubUlr=");
-              localStringBuilder.append(localQQGameConfBean.jdField_a_of_type_JavaLangString);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("feedUrl"))
-          {
-            localQQGameConfBean.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("feedUrl");
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed feedUrl=");
-              localStringBuilder.append(localQQGameConfBean.jdField_a_of_type_JavaLangString);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (!((JSONObject)localObject2).has((String)localObject1)) {
-            break label833;
-          }
-          if (((JSONObject)localObject2).optInt((String)localObject1, 0) != 1) {
-            break label828;
-          }
-          bool = true;
-          localQQGameConfBean.jdField_a_of_type_Boolean = bool;
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder();
-            localStringBuilder.append("onParsed hippySwitch=");
-            localStringBuilder.append(localQQGameConfBean.jdField_a_of_type_Boolean);
-            QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-          }
-          if (((JSONObject)localObject2).has("hippySoDownload"))
-          {
-            if (((JSONObject)localObject2).optInt("hippySoDownload", 0) != 1) {
-              break label836;
-            }
-            bool = true;
-            localQQGameConfBean.jdField_b_of_type_Boolean = bool;
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed hippySoDownload=");
-              localStringBuilder.append(localQQGameConfBean.jdField_b_of_type_Boolean);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("hippyJsPluginType"))
-          {
-            localQQGameConfBean.d = ((JSONObject)localObject2).optInt("hippyJsPluginType", 0);
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed hippyJsPluginType=");
-              localStringBuilder.append(localQQGameConfBean.d);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("gameCenterPreLoadType"))
-          {
-            localQQGameConfBean.e = ((JSONObject)localObject2).optInt("gameCenterPreLoadType", 0);
-            if (QLog.isColorLevel())
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("onParsed gameCenterPreLoadType=");
-              localStringBuilder.append(localQQGameConfBean.e);
-              QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
-            }
-          }
-          if (((JSONObject)localObject2).has("publicAccountSessionConfig"))
-          {
-            localObject2 = ((JSONObject)localObject2).optJSONObject("publicAccountSessionConfig");
-            if (localObject2 != null)
-            {
-              localQQGameConfBean.f = ((JSONObject)localObject2).optInt("style");
-              localQQGameConfBean.g = ((JSONObject)localObject2).optInt("unUsedTime", 168);
-            }
-            if (QLog.isColorLevel())
-            {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append("onParsed publicAccountSessionConfig, sessionStyle=");
-              ((StringBuilder)localObject2).append(localQQGameConfBean.f);
-              ((StringBuilder)localObject2).append(", sessionUnUsedTime=");
-              ((StringBuilder)localObject2).append(localQQGameConfBean.g);
-              QLog.d("QQGameConfBean", 2, ((StringBuilder)localObject2).toString());
-            }
-          }
-          i += 1;
-        }
-      }
-      catch (Throwable paramArrayOfQConfItem)
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("QQGameConfBean parse error e=");
-        ((StringBuilder)localObject1).append(paramArrayOfQConfItem.toString());
-        QLog.e("QQGameConfBean", 1, ((StringBuilder)localObject1).toString());
+        localObject = new JSONObject(paramArrayOfQConfItem[m].b);
+        a(localQQGameConfBean, (JSONObject)localObject);
+        b(localQQGameConfBean, (JSONObject)localObject);
+        m += 1;
       }
       return localQQGameConfBean;
-      label828:
-      boolean bool = false;
-      continue;
-      label833:
-      continue;
-      label836:
-      bool = false;
+    }
+    catch (Throwable paramArrayOfQConfItem)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QQGameConfBean parse error e=");
+      ((StringBuilder)localObject).append(paramArrayOfQConfItem.toString());
+      QLog.e("QQGameConfBean", 1, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  private static void a(QQGameConfBean paramQQGameConfBean, JSONObject paramJSONObject)
+  {
+    StringBuilder localStringBuilder;
+    if (paramJSONObject.has("pubaccountSwitch"))
+    {
+      paramQQGameConfBean.a = paramJSONObject.optInt("pubaccountSwitch");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed swtich=");
+        localStringBuilder.append(paramQQGameConfBean.a);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("fullPopIntervalDay"))
+    {
+      paramQQGameConfBean.b = paramJSONObject.optInt("fullPopIntervalDay");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed fullPopIntervalDay=");
+        localStringBuilder.append(paramQQGameConfBean.b);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("isFeedByWeb"))
+    {
+      paramQQGameConfBean.c = paramJSONObject.optInt("isFeedByWeb");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed isFeedByWeb=");
+        localStringBuilder.append(paramQQGameConfBean.c);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("gamePubUrl"))
+    {
+      paramQQGameConfBean.e = paramJSONObject.optString("gamePubUrl");
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed gamePubUlr=");
+        localStringBuilder.append(paramQQGameConfBean.d);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("feedUrl"))
+    {
+      paramQQGameConfBean.d = paramJSONObject.optString("feedUrl");
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("onParsed feedUrl=");
+        paramJSONObject.append(paramQQGameConfBean.d);
+        QLog.d("QQGameConfBean", 2, paramJSONObject.toString());
+      }
+    }
+  }
+  
+  private static void b(QQGameConfBean paramQQGameConfBean, JSONObject paramJSONObject)
+  {
+    boolean bool1 = paramJSONObject.has("hippySwitch");
+    boolean bool2 = true;
+    StringBuilder localStringBuilder;
+    if (bool1)
+    {
+      if (paramJSONObject.optInt("hippySwitch", 0) == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      paramQQGameConfBean.f = bool1;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed hippySwitch=");
+        localStringBuilder.append(paramQQGameConfBean.f);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("hippySoDownload"))
+    {
+      if (paramJSONObject.optInt("hippySoDownload", 0) == 1) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
+      paramQQGameConfBean.g = bool1;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed hippySoDownload=");
+        localStringBuilder.append(paramQQGameConfBean.g);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("hippyJsPluginType"))
+    {
+      paramQQGameConfBean.h = paramJSONObject.optInt("hippyJsPluginType", 0);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed hippyJsPluginType=");
+        localStringBuilder.append(paramQQGameConfBean.h);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("gameCenterPreLoadType"))
+    {
+      paramQQGameConfBean.i = paramJSONObject.optInt("gameCenterPreLoadType", 0);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed gameCenterPreLoadType=");
+        localStringBuilder.append(paramQQGameConfBean.i);
+        QLog.d("QQGameConfBean", 2, localStringBuilder.toString());
+      }
+    }
+    if (paramJSONObject.has("publicAccountSessionConfig"))
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("publicAccountSessionConfig");
+      if (paramJSONObject != null)
+      {
+        paramQQGameConfBean.j = paramJSONObject.optInt("style");
+        paramQQGameConfBean.k = paramJSONObject.optInt("unUsedTime", 168);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("onParsed publicAccountSessionConfig, sessionStyle=");
+        paramJSONObject.append(paramQQGameConfBean.j);
+        paramJSONObject.append(", sessionUnUsedTime=");
+        paramJSONObject.append(paramQQGameConfBean.k);
+        QLog.d("QQGameConfBean", 2, paramJSONObject.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.config.QQGameConfBean
  * JD-Core Version:    0.7.0.1
  */

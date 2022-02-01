@@ -14,7 +14,6 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,55 +25,15 @@ import org.json.JSONObject;
 
 public class VideoExtractFrameManager
 {
-  private static long jdField_a_of_type_Long;
-  private static VideoExtractFrameTask jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoExtractFrameTask;
-  private static ArrayList<VideoExtractFrameManager.VideoInfo> jdField_a_of_type_JavaUtilArrayList;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static long jdField_b_of_type_Long;
-  private static AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private static long c;
-  
-  private static ArrayList<VideoExtractFrameManager.VideoInfo> a()
-  {
-    if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      JSONArray localJSONArray = jdField_a_of_type_OrgJsonJSONObject.getJSONArray("videoList");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        VideoExtractFrameManager.VideoInfo localVideoInfo = new VideoExtractFrameManager.VideoInfo();
-        Object localObject = (JSONObject)localJSONArray.get(i);
-        localVideoInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("vid");
-        localVideoInfo.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("bitrate");
-        localVideoInfo.jdField_b_of_type_Long = ((JSONObject)localObject).getLong("timeout_ms");
-        localVideoInfo.jdField_a_of_type_Float = Float.valueOf(((JSONObject)localObject).getString("hevc_level")).floatValue();
-        localVideoInfo.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("max_hashdiff");
-        localVideoInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("tag");
-        localObject = ((JSONObject)localObject).getJSONArray("frameInfo");
-        int j = 0;
-        while (j < ((JSONArray)localObject).length())
-        {
-          VideoExtractFrameTask.FrameInfo localFrameInfo = new VideoExtractFrameTask.FrameInfo();
-          JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(j);
-          localFrameInfo.jdField_a_of_type_Int = localJSONObject.getInt("index");
-          localFrameInfo.jdField_a_of_type_Long = localJSONObject.getLong("serverHash");
-          localVideoInfo.jdField_a_of_type_JavaUtilArrayList.add(localFrameInfo);
-          j += 1;
-        }
-        localArrayList.add(localVideoInfo);
-        i += 1;
-      }
-      return localArrayList;
-    }
-    catch (Throwable localThrowable) {}
-    return null;
-  }
+  private static JSONObject a;
+  private static JSONObject b;
+  private static ArrayList<VideoExtractFrameManager.VideoInfo> c;
+  private static VideoExtractFrameTask d;
+  private static AtomicBoolean e = new AtomicBoolean(false);
+  private static AtomicBoolean f = new AtomicBoolean(false);
+  private static long g;
+  private static long h;
+  private static long i;
   
   public static void a()
   {
@@ -82,9 +41,9 @@ public class VideoExtractFrameManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onEnterBackground() mHasRun = ");
-      localStringBuilder.append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      localStringBuilder.append(e.get());
       localStringBuilder.append(", mHasDestory = ");
-      localStringBuilder.append(jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      localStringBuilder.append(f.get());
       QLog.d("VideoExtractFrame", 2, localStringBuilder.toString());
     }
     if (Looper.getMainLooper() == null)
@@ -94,126 +53,28 @@ public class VideoExtractFrameManager
       }
       return;
     }
-    if (!TVK_SDKMgr.isInstalled(BaseApplication.getContext()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoExtractFrame", 2, "视频SDK未初始化，直接返回");
-      }
-      return;
-    }
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+    if (!e.compareAndSet(false, true))
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoExtractFrame", 2, "当前进程已执行过一次，直接返回");
       }
       return;
     }
-    if (!a())
+    if (!h())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoExtractFrame", 2, "条件不满足，不进行检测逻辑");
       }
       return;
     }
-    if (!b())
+    if (!j())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoExtractFrame", 2, "当前设备OPENGL版本号低于2.0，直接返回");
       }
       return;
     }
-    c();
-  }
-  
-  private static boolean a()
-  {
-    String str = (String)RIJSPUtils.a("kandian_video_extract_frame", "");
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("serverConfig = ");
-      ((StringBuilder)localObject).append(str);
-      QLog.d("VideoExtractFrame", 2, ((StringBuilder)localObject).toString());
-    }
-    boolean bool2 = TextUtils.isEmpty(str);
-    boolean bool1 = false;
-    if (bool2) {
-      return false;
-    }
-    try
-    {
-      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str);
-      str = jdField_a_of_type_OrgJsonJSONObject.getString("version");
-      int i = jdField_a_of_type_OrgJsonJSONObject.getInt("tryCount");
-      int j = jdField_a_of_type_OrgJsonJSONObject.getInt("succCount");
-      bool2 = TextUtils.isEmpty(str);
-      if (bool2) {
-        return false;
-      }
-      if (NetworkUtil.getSystemNetwork(null) != 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoExtractFrame", 2, "当前网络环境非WIFI，不进行检测逻辑");
-        }
-        return false;
-      }
-      localObject = (String)RIJSPUtils.a("kandian_video_extract_frame_local_result", "");
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("localResult = ");
-        localStringBuilder.append((String)localObject);
-        QLog.d("VideoExtractFrame", 2, localStringBuilder.toString());
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      int k;
-      int m;
-      label412:
-      return false;
-    }
-    catch (Exception localException1)
-    {
-      try
-      {
-        jdField_b_of_type_OrgJsonJSONObject = new JSONObject((String)localObject);
-        localObject = jdField_b_of_type_OrgJsonJSONObject.optString("KEY_LOCAL_RESULT_VERSION", "");
-        k = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-        m = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-        if ((str.equals(localObject)) && ((k >= i) || (m >= j)))
-        {
-          if (!QLog.isColorLevel()) {
-            break label438;
-          }
-          QLog.d("VideoExtractFrame", 2, "已到达运行上限");
-          return false;
-        }
-        if (!str.equals(localObject))
-        {
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_VERSION", str);
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-          RIJSPUtils.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
-          break label412;
-          jdField_b_of_type_OrgJsonJSONObject = new JSONObject();
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_VERSION", str);
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-          RIJSPUtils.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
-        }
-        jdField_a_of_type_JavaUtilArrayList = a();
-        if (jdField_a_of_type_JavaUtilArrayList != null) {
-          bool1 = true;
-        }
-        return bool1;
-      }
-      catch (Exception localException2)
-      {
-        return false;
-      }
-      localException1 = localException1;
-      return false;
-    }
+    g();
   }
   
   public static void b()
@@ -223,18 +84,18 @@ public class VideoExtractFrameManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onEnterForeground() mHasRun = ");
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      ((StringBuilder)localObject).append(e.get());
       ((StringBuilder)localObject).append(", mHasDestory = ");
-      ((StringBuilder)localObject).append(jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      ((StringBuilder)localObject).append(f.get());
       QLog.d("VideoExtractFrame", 2, ((StringBuilder)localObject).toString());
     }
-    if ((jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)))
+    if ((e.get()) && (!f.compareAndSet(false, true)))
     {
-      localObject = jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoExtractFrameTask;
+      localObject = d;
       if (localObject != null)
       {
         ((VideoExtractFrameTask)localObject).b();
-        jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoExtractFrameTask = null;
+        d = null;
       }
     }
   }
@@ -245,92 +106,92 @@ public class VideoExtractFrameManager
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.7.05295");
-      localJSONObject.put("subversion", "8.7.0");
-      if (jdField_a_of_type_OrgJsonJSONObject == null) {
-        break label648;
+      localJSONObject.put("version", "8.8.175770");
+      localJSONObject.put("subversion", "8.8.17");
+      if (a == null) {
+        break label621;
       }
-      localObject = jdField_a_of_type_OrgJsonJSONObject.optString("version");
+      localObject = a.optString("version");
     }
     catch (Exception paramVideoInfo)
     {
       for (;;)
       {
-        int i;
-        int k;
+        int j;
         int m;
+        int n;
         continue;
         Object localObject = "";
         continue;
         boolean bool1 = false;
         continue;
-        int j = 0;
+        int k = 0;
         paramInt = 0;
       }
     }
     localJSONObject.put("server_version", localObject);
-    localJSONObject.put("video_tag", paramVideoInfo.jdField_b_of_type_JavaLangString);
-    localJSONObject.put("video_vid", paramVideoInfo.jdField_a_of_type_JavaLangString);
-    localJSONObject.put("video_bitrate", paramVideoInfo.jdField_a_of_type_Long);
-    localJSONObject.put("video_width", paramVideoInfo.jdField_b_of_type_Int);
-    localJSONObject.put("video_height", paramVideoInfo.c);
-    localJSONObject.put("task_cost_time", jdField_b_of_type_Long);
-    localJSONObject.put("extract_frame_cost_time", c);
+    localJSONObject.put("video_tag", paramVideoInfo.f);
+    localJSONObject.put("video_vid", paramVideoInfo.a);
+    localJSONObject.put("video_bitrate", paramVideoInfo.b);
+    localJSONObject.put("video_width", paramVideoInfo.g);
+    localJSONObject.put("video_height", paramVideoInfo.h);
+    localJSONObject.put("task_cost_time", h);
+    localJSONObject.put("extract_frame_cost_time", i);
     localJSONObject.put("return_code", paramInt);
     localJSONObject.put("return_code_detail", paramString);
     bool1 = true;
-    i = 0;
+    j = 0;
     if (paramInt == 1)
     {
-      k = 2147483647;
+      m = 2147483647;
       if (!bool1) {
-        break label661;
+        break label635;
       }
       paramString = paramHashMap.values().iterator();
-      j = 0;
-      i = 2147483647;
+      k = 0;
+      j = 2147483647;
       paramInt = 0;
       while (paramString.hasNext())
       {
         localObject = (VideoExtractFrameTask.FrameInfo)paramString.next();
         boolean bool2 = bool1;
-        if (((VideoExtractFrameTask.FrameInfo)localObject).jdField_b_of_type_Int > paramVideoInfo.jdField_a_of_type_Int) {
+        if (((VideoExtractFrameTask.FrameInfo)localObject).d > paramVideoInfo.e) {
           bool2 = false;
         }
-        m = j + ((VideoExtractFrameTask.FrameInfo)localObject).jdField_b_of_type_Int;
-        k = i;
-        if (i > ((VideoExtractFrameTask.FrameInfo)localObject).jdField_b_of_type_Int) {
-          k = ((VideoExtractFrameTask.FrameInfo)localObject).jdField_b_of_type_Int;
+        n = k + ((VideoExtractFrameTask.FrameInfo)localObject).d;
+        m = j;
+        if (j > ((VideoExtractFrameTask.FrameInfo)localObject).d) {
+          m = ((VideoExtractFrameTask.FrameInfo)localObject).d;
         }
-        i = k;
         j = m;
+        k = n;
         bool1 = bool2;
-        if (paramInt < ((VideoExtractFrameTask.FrameInfo)localObject).jdField_b_of_type_Int)
+        if (paramInt < ((VideoExtractFrameTask.FrameInfo)localObject).d)
         {
-          paramInt = ((VideoExtractFrameTask.FrameInfo)localObject).jdField_b_of_type_Int;
-          i = k;
+          paramInt = ((VideoExtractFrameTask.FrameInfo)localObject).d;
           j = m;
+          k = n;
           bool1 = bool2;
         }
       }
-      m = j / paramHashMap.size();
-      k = i;
-      i = m;
+      n = k / paramHashMap.size();
+      m = j;
+      j = n;
       localJSONObject.put("is_success", String.valueOf(bool1));
-      localJSONObject.put("avg_hash_diff", i);
-      localJSONObject.put("min_hash_diff", k);
+      localJSONObject.put("avg_hash_diff", j);
+      localJSONObject.put("min_hash_diff", m);
       localJSONObject.put("max_hash_diff", paramInt);
-      localJSONObject.put("total_hash_diff", j);
+      localJSONObject.put("total_hash_diff", k);
       paramVideoInfo = new JSONArray();
       paramString = paramHashMap.values().iterator();
       while (paramString.hasNext())
       {
         paramHashMap = (VideoExtractFrameTask.FrameInfo)paramString.next();
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("frame_index", paramHashMap.jdField_a_of_type_Int);
-        ((JSONObject)localObject).put("hash_diff", paramHashMap.jdField_b_of_type_Int);
-        ((JSONObject)localObject).put("server_hash", paramHashMap.jdField_a_of_type_Long);
-        ((JSONObject)localObject).put("local_hash", paramHashMap.jdField_b_of_type_Long);
+        ((JSONObject)localObject).put("frame_index", paramHashMap.a);
+        ((JSONObject)localObject).put("hash_diff", paramHashMap.d);
+        ((JSONObject)localObject).put("server_hash", paramHashMap.b);
+        ((JSONObject)localObject).put("local_hash", paramHashMap.c);
         paramVideoInfo.put(localObject);
       }
       localJSONObject.put("detail_list", paramVideoInfo);
@@ -356,16 +217,184 @@ public class VideoExtractFrameManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("innerDoExtractFrame start() videoInfo.tag = ");
-      localStringBuilder.append(paramVideoInfo.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(paramVideoInfo.f);
       QLog.d("VideoExtractFrame", 2, localStringBuilder.toString());
     }
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoExtractFrameTask = new VideoExtractFrameTask(BaseApplication.getContext(), paramString, paramHashMap, paramLong);
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoExtractFrameTask.a(new VideoExtractFrameManager.2(paramVideoInfo));
-    jdField_a_of_type_ComTencentMobileqqKandianBizVideoVideoExtractFrameTask.a();
+    g = System.currentTimeMillis();
+    d = new VideoExtractFrameTask(BaseApplication.getContext(), paramString, paramHashMap, paramLong);
+    d.a(new VideoExtractFrameManager.2(paramVideoInfo));
+    d.a();
   }
   
-  private static boolean b()
+  private static void g()
+  {
+    try
+    {
+      int j = b.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
+      b.put("KEY_LOCAL_RESULT_TRY_COUNT", j + 1);
+      RIJSPUtils.a("kandian_video_extract_frame_local_result", b.toString());
+      float f1 = VideoDeviceInfoHelper.b();
+      Object localObject = c.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((VideoExtractFrameManager.VideoInfo)((Iterator)localObject).next()).d > f1) {
+          ((Iterator)localObject).remove();
+        }
+      }
+      if (c.size() == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoExtractFrame", 2, "当前设备无支持播放的视频，直接返回");
+        }
+        return;
+      }
+      j = c.size();
+      j = new Random().nextInt(j);
+      localObject = (VideoExtractFrameManager.VideoInfo)c.get(j);
+      HashMap localHashMap = new HashMap();
+      Iterator localIterator = ((VideoExtractFrameManager.VideoInfo)localObject).i.iterator();
+      while (localIterator.hasNext())
+      {
+        VideoExtractFrameTask.FrameInfo localFrameInfo = (VideoExtractFrameTask.FrameInfo)localIterator.next();
+        localHashMap.put(Integer.valueOf(localFrameInfo.a), localFrameInfo);
+      }
+      ThirdVideoManager.a().a(((VideoExtractFrameManager.VideoInfo)localObject).a, new VideoExtractFrameManager.1((VideoExtractFrameManager.VideoInfo)localObject, localHashMap));
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  private static boolean h()
+  {
+    String str = (String)RIJSPUtils.b("kandian_video_extract_frame", "");
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("serverConfig = ");
+      ((StringBuilder)localObject).append(str);
+      QLog.d("VideoExtractFrame", 2, ((StringBuilder)localObject).toString());
+    }
+    boolean bool2 = TextUtils.isEmpty(str);
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
+    }
+    try
+    {
+      a = new JSONObject(str);
+      str = a.getString("version");
+      int j = a.getInt("tryCount");
+      int k = a.getInt("succCount");
+      bool2 = TextUtils.isEmpty(str);
+      if (bool2) {
+        return false;
+      }
+      if (NetworkUtil.getSystemNetwork(null) != 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoExtractFrame", 2, "当前网络环境非WIFI，不进行检测逻辑");
+        }
+        return false;
+      }
+      localObject = (String)RIJSPUtils.b("kandian_video_extract_frame_local_result", "");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("localResult = ");
+        localStringBuilder.append((String)localObject);
+        QLog.d("VideoExtractFrame", 2, localStringBuilder.toString());
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+      int m;
+      int n;
+      label420:
+      return false;
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        b = new JSONObject((String)localObject);
+        localObject = b.optString("KEY_LOCAL_RESULT_VERSION", "");
+        m = b.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
+        n = b.optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
+        if ((str.equals(localObject)) && ((m >= j) || (n >= k)))
+        {
+          if (!QLog.isColorLevel()) {
+            break label446;
+          }
+          QLog.d("VideoExtractFrame", 2, "已到达运行上限");
+          return false;
+        }
+        if (!str.equals(localObject))
+        {
+          b.put("KEY_LOCAL_RESULT_VERSION", str);
+          b.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
+          b.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
+          RIJSPUtils.a("kandian_video_extract_frame_local_result", b.toString());
+          break label420;
+          b = new JSONObject();
+          b.put("KEY_LOCAL_RESULT_VERSION", str);
+          b.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
+          b.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
+          RIJSPUtils.a("kandian_video_extract_frame_local_result", b.toString());
+        }
+        c = i();
+        if (c != null) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      catch (Exception localException2)
+      {
+        return false;
+      }
+      localException1 = localException1;
+      return false;
+    }
+  }
+  
+  private static ArrayList<VideoExtractFrameManager.VideoInfo> i()
+  {
+    if (a == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      JSONArray localJSONArray = a.getJSONArray("videoList");
+      int j = 0;
+      while (j < localJSONArray.length())
+      {
+        VideoExtractFrameManager.VideoInfo localVideoInfo = new VideoExtractFrameManager.VideoInfo();
+        Object localObject = (JSONObject)localJSONArray.get(j);
+        localVideoInfo.a = ((JSONObject)localObject).getString("vid");
+        localVideoInfo.b = ((JSONObject)localObject).getLong("bitrate");
+        localVideoInfo.c = ((JSONObject)localObject).getLong("timeout_ms");
+        localVideoInfo.d = Float.valueOf(((JSONObject)localObject).getString("hevc_level")).floatValue();
+        localVideoInfo.e = ((JSONObject)localObject).getInt("max_hashdiff");
+        localVideoInfo.f = ((JSONObject)localObject).optString("tag");
+        localObject = ((JSONObject)localObject).getJSONArray("frameInfo");
+        int k = 0;
+        while (k < ((JSONArray)localObject).length())
+        {
+          VideoExtractFrameTask.FrameInfo localFrameInfo = new VideoExtractFrameTask.FrameInfo();
+          JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(k);
+          localFrameInfo.a = localJSONObject.getInt("index");
+          localFrameInfo.b = localJSONObject.getLong("serverHash");
+          localVideoInfo.i.add(localFrameInfo);
+          k += 1;
+        }
+        localArrayList.add(localVideoInfo);
+        j += 1;
+      }
+      return localArrayList;
+    }
+    catch (Throwable localThrowable) {}
+    return null;
+  }
+  
+  private static boolean j()
   {
     try
     {
@@ -375,8 +404,8 @@ public class VideoExtractFrameManager
         localObject = ((ActivityManager)localObject).getDeviceConfigurationInfo();
         if (localObject != null)
         {
-          int i = ((ConfigurationInfo)localObject).reqGlEsVersion;
-          if (i >= 131072) {
+          int j = ((ConfigurationInfo)localObject).reqGlEsVersion;
+          if (j >= 131072) {
             return true;
           }
         }
@@ -388,47 +417,10 @@ public class VideoExtractFrameManager
     }
     return false;
   }
-  
-  private static void c()
-  {
-    try
-    {
-      int i = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-      jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", i + 1);
-      RIJSPUtils.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
-      float f = VideoDeviceInfoHelper.a();
-      Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((VideoExtractFrameManager.VideoInfo)((Iterator)localObject).next()).jdField_a_of_type_Float > f) {
-          ((Iterator)localObject).remove();
-        }
-      }
-      if (jdField_a_of_type_JavaUtilArrayList.size() == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoExtractFrame", 2, "当前设备无支持播放的视频，直接返回");
-        }
-        return;
-      }
-      i = jdField_a_of_type_JavaUtilArrayList.size();
-      i = new Random().nextInt(i);
-      localObject = (VideoExtractFrameManager.VideoInfo)jdField_a_of_type_JavaUtilArrayList.get(i);
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = ((VideoExtractFrameManager.VideoInfo)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        VideoExtractFrameTask.FrameInfo localFrameInfo = (VideoExtractFrameTask.FrameInfo)localIterator.next();
-        localHashMap.put(Integer.valueOf(localFrameInfo.jdField_a_of_type_Int), localFrameInfo);
-      }
-      ThirdVideoManager.a().a(((VideoExtractFrameManager.VideoInfo)localObject).jdField_a_of_type_JavaLangString, new VideoExtractFrameManager.1((VideoExtractFrameManager.VideoInfo)localObject, localHashMap));
-      return;
-    }
-    catch (Exception localException) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoExtractFrameManager
  * JD-Core Version:    0.7.0.1
  */

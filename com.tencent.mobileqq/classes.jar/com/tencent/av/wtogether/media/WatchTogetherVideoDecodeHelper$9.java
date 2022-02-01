@@ -10,12 +10,12 @@ class WatchTogetherVideoDecodeHelper$9
     WatchTogetherVideoDecodeHelper.a(this.this$0, null);
     WatchTogetherVideoDecodeHelper.b(this.this$0, false);
     WatchTogetherVideoDecodeHelper.d(this.this$0, false);
-    if (!WatchTogetherVideoDecodeHelper.c(this.this$0))
+    if (!WatchTogetherVideoDecodeHelper.h(this.this$0))
     {
       WatchTogetherVideoDecodeHelper.a(this.this$0, "onResponsePauseMessage");
       return;
     }
-    WatchTogetherVideoDecodeHelper.a(this.this$0);
+    WatchTogetherVideoDecodeHelper.g(this.this$0);
   }
 }
 

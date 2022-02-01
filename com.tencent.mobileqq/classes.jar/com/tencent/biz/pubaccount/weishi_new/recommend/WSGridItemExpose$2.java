@@ -19,11 +19,11 @@ class WSGridItemExpose$2
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.a)
     {
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
+      if (i < this.b.size())
       {
-        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.jdField_a_of_type_JavaUtilList.get(i);
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.b.get(i);
         if (!WSGridItemExpose.a(this.this$0).containsKey(Integer.valueOf(i)))
         {
           WSGridItemExpose.a(this.this$0).put(Integer.valueOf(i), localstSimpleMetaFeed.id);
@@ -35,19 +35,19 @@ class WSGridItemExpose$2
           localHashMap2.put(Integer.valueOf(i), localstSimpleMetaFeed.id);
         }
         int j = localstSimpleMetaFeed.waterFallCardStyle.cardType;
-        if ((this.jdField_a_of_type_Boolean) && (j != 11) && (j != 12)) {
+        if ((this.c) && (j != 11) && (j != 12)) {
           WSFallKeyPicMonitor.a(1, WeishiUtils.a(localstSimpleMetaFeed, true));
         }
       }
       i += 1;
     }
     WSGridItemExpose.a(this.this$0, localHashMap1, localHashMap2);
-    WSGridItemExpose.a(localHashMap1, WSGridItemExpose.a(this.this$0));
+    WSGridItemExpose.a(localHashMap1, WSGridItemExpose.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridItemExpose.2
  * JD-Core Version:    0.7.0.1
  */

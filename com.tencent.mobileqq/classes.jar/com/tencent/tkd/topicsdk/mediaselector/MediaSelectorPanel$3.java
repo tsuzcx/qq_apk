@@ -11,20 +11,20 @@ public final class MediaSelectorPanel$3
 {
   public void a()
   {
-    MediaSelectorPanel.a(this.a).setVisibility(0);
-    this.a.a().setVisibility(8);
-    this.a.b();
+    MediaSelectorPanel.b(this.a).setVisibility(0);
+    this.a.getAlbumPermissionView().setVisibility(8);
+    this.a.d();
   }
   
   public void b()
   {
-    MediaSelectorPanel.a(this.a).setVisibility(8);
-    this.a.a().setVisibility(0);
+    MediaSelectorPanel.b(this.a).setVisibility(8);
+    this.a.getAlbumPermissionView().setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaSelectorPanel.3
  * JD-Core Version:    0.7.0.1
  */

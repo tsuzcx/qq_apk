@@ -12,12 +12,12 @@ class AppBarLayout$BaseBehavior$1
   
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialAppbarAppBarLayout$BaseBehavior.a(this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout, this.jdField_a_of_type_ComGoogleAndroidMaterialAppbarAppBarLayout, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.c.a_(this.a, this.b, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.AppBarLayout.BaseBehavior.1
  * JD-Core Version:    0.7.0.1
  */

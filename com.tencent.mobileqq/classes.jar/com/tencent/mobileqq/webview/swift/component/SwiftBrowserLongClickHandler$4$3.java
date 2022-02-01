@@ -14,18 +14,18 @@ class SwiftBrowserLongClickHandler$4$3
     if (QLog.isColorLevel()) {
       QLog.d("SwiftBrowserLongClickHandler", 2, "showQR Button");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.d()) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.addButton(2131693260);
+    if (this.a.h()) {
+      this.b.this$0.a.addButton(2131890808);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQrscanScannerResult.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.addButton(2131693259);
+    if (this.a.g()) {
+      this.b.this$0.a.addButton(2131890807);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler$4.this$0.a.updateAllButton();
+    this.b.this$0.a.updateAllButton();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.4.3
  * JD-Core Version:    0.7.0.1
  */

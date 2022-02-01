@@ -36,7 +36,7 @@ class TopicLabelListView$1
     if (paramView == null)
     {
       localViewHolder = new TopicLabelListView.ViewHolder(this.a, null);
-      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
+      paramView = new LabelViewItem(TopicLabelListView.b(this.a));
       paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       paramView.setTag(localViewHolder);
     }
@@ -52,7 +52,7 @@ class TopicLabelListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView.1
  * JD-Core Version:    0.7.0.1
  */

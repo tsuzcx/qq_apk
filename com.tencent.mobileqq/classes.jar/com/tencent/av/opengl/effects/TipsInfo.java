@@ -12,42 +12,34 @@ import java.util.Map;
 
 public class TipsInfo
 {
-  private static TipsInfo jdField_a_of_type_ComTencentAvOpenglEffectsTipsInfo;
-  private int jdField_a_of_type_Int = 0;
-  private EffectPendantTips jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private final Map<String, Drawable> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private static TipsInfo a;
+  private final Map<String, Drawable> b = new HashMap();
+  private String c = null;
+  private boolean d = false;
+  private boolean e = false;
+  private EffectPendantTips f = null;
+  private int g = 0;
   
   public static TipsInfo a()
   {
-    if (jdField_a_of_type_ComTencentAvOpenglEffectsTipsInfo == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvOpenglEffectsTipsInfo == null) {
-          jdField_a_of_type_ComTencentAvOpenglEffectsTipsInfo = new TipsInfo();
+        if (a == null) {
+          a = new TipsInfo();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvOpenglEffectsTipsInfo;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    d();
-    e();
-    a(0);
+    return a;
   }
   
   public void a(int paramInt)
   {
-    if (!this.b) {
+    if (!this.e) {
       return;
     }
-    EffectPendantTips localEffectPendantTips = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+    EffectPendantTips localEffectPendantTips = this.f;
     if (localEffectPendantTips != null) {
       localEffectPendantTips.a(paramInt, new TipsInfo.1(this));
     }
@@ -58,8 +50,8 @@ public class TipsInfo
   
   public void a(long paramLong)
   {
-    e();
-    d();
+    g();
+    f();
     a(0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("clearState_");
@@ -69,7 +61,7 @@ public class TipsInfo
   
   public void a(EffectPendantTips paramEffectPendantTips)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips = paramEffectPendantTips;
+    this.f = paramEffectPendantTips;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -82,19 +74,19 @@ public class TipsInfo
   
   public void a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)))
+    if ((!TextUtils.isEmpty(paramString)) && (!this.b.containsKey(paramString)))
     {
       Object localObject = BaseApplicationImpl.getApplication().getResources();
       if ("fivea".equals(paramString)) {
-        localObject = ((Resources)localObject).getDrawable(2130842206);
+        localObject = ((Resources)localObject).getDrawable(2130843141);
       } else if ("palmup".equals(paramString)) {
-        localObject = ((Resources)localObject).getDrawable(2130842207);
+        localObject = ((Resources)localObject).getDrawable(2130843142);
       } else if ("qheart".equals(paramString)) {
-        localObject = ((Resources)localObject).getDrawable(2130842208);
+        localObject = ((Resources)localObject).getDrawable(2130843143);
       } else {
         localObject = null;
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+      this.b.put(paramString, localObject);
       if (AVCoreLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -116,24 +108,24 @@ public class TipsInfo
       localStringBuilder.append("setGestureType[");
       localStringBuilder.append(paramString1);
       localStringBuilder.append("], GestureTips[");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("->");
       localStringBuilder.append(paramString2);
       localStringBuilder.append("]");
       QLog.d("TipsInfo", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString2;
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_Int -= 1;
+      this.g -= 1;
     } else {
-      this.jdField_a_of_type_Int += 1;
+      this.g += 1;
     }
-    if (this.jdField_a_of_type_Int < 0) {
-      this.jdField_a_of_type_Int = 0;
+    if (this.g < 0) {
+      this.g = 0;
     }
     if (QLog.isColorLevel())
     {
@@ -141,34 +133,32 @@ public class TipsInfo
       localStringBuilder.append("setCanShowTip, canShowTip[");
       localStringBuilder.append(paramBoolean);
       localStringBuilder.append("], disableShowTipCount[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.g);
       localStringBuilder.append("]");
       QLog.i("TipsInfo", 2, localStringBuilder.toString());
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int <= 0;
-  }
-  
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    f();
+    g();
+    a(0);
   }
   
   public void b(String paramString)
   {
-    if (!a()) {
+    if (!c()) {
       return;
     }
-    d();
-    e();
-    EffectPendantTips localEffectPendantTips = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+    f();
+    g();
+    EffectPendantTips localEffectPendantTips = this.f;
     if (localEffectPendantTips != null) {
       localEffectPendantTips.b(paramString);
     }
-    this.b = true;
+    this.e = true;
     if (AVCoreLog.isColorLevel()) {
       AVCoreLog.i("TipsInfo", "showErrorTips");
     }
@@ -176,27 +166,27 @@ public class TipsInfo
   
   public void b(String paramString1, String paramString2)
   {
-    if (a())
+    if (c())
     {
-      if (this.b) {
+      if (this.e) {
         return;
       }
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString1)) {
+      if (TextUtils.equals(this.c, paramString1)) {
         return;
       }
-      d();
-      paramString2 = (Drawable)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
+      f();
+      paramString2 = (Drawable)this.b.get(paramString2);
       Object localObject;
       if (paramString2 != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+        localObject = this.f;
         if (localObject != null) {
           ((EffectPendantTips)localObject).a(paramString2, paramString1);
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+        localObject = this.f;
         if (localObject != null) {
           ((EffectPendantTips)localObject).a(paramString1);
         }
@@ -215,58 +205,68 @@ public class TipsInfo
     }
   }
   
-  public void c()
+  public boolean c()
   {
-    if (a())
+    return this.g <= 0;
+  }
+  
+  public void d()
+  {
+    this.b.clear();
+  }
+  
+  public void e()
+  {
+    if (c())
     {
-      if (this.b) {
+      if (this.e) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.d) {
         return;
       }
-      e();
-      EffectPendantTips localEffectPendantTips = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+      g();
+      EffectPendantTips localEffectPendantTips = this.f;
       if (localEffectPendantTips != null) {
         localEffectPendantTips.a(100);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.d = true;
       if (AVCoreLog.isColorLevel()) {
         AVCoreLog.i("TipsInfo", "showFaceTips");
       }
     }
   }
   
-  public void d()
+  public void f()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    EffectPendantTips localEffectPendantTips = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+    EffectPendantTips localEffectPendantTips = this.f;
     if (localEffectPendantTips != null) {
       localEffectPendantTips.b(0);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     if (AVCoreLog.isColorLevel()) {
       AVCoreLog.i("TipsInfo", "hideFaceTips");
     }
   }
   
-  public void e()
+  public void g()
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("hideGestureTips, mCurGestureTip[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append("]");
       QLog.w("TipsInfo", 1, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.c)) {
       return;
     }
     a("hideGestureTips", null);
-    Object localObject = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips;
+    Object localObject = this.f;
     if (localObject != null) {
       ((EffectPendantTips)localObject).b(0);
     }

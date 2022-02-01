@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="56.0dip" android:layout_height="78.0dip" android:layout_marginRight="12.0dip" android:layout_marginEnd="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="56.0dip" layout="@layout/da7" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/8p" android:gravity="center" android:layout_gravity="bottom" android:id="@id/tv_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lines="1" android:includeFontPadding="false" />
+</FrameLayout>

@@ -34,7 +34,7 @@ public class QfavMainQIPCModule
     return a;
   }
   
-  QQAppInterface a()
+  QQAppInterface b()
   {
     return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   }
@@ -42,7 +42,7 @@ public class QfavMainQIPCModule
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     Bundle localBundle = new Bundle();
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = b();
     if (localQQAppInterface == null) {
       return EIPCResult.createResult(100, localBundle);
     }
@@ -57,7 +57,7 @@ public class QfavMainQIPCModule
         paramInt = paramString.size();
       }
       l = paramBundle.getLong("reqTimestamp");
-      localQQAppInterface.getFileManagerEngine().a().onGettedFileList(l, paramString, paramBundle);
+      localQQAppInterface.getFileManagerEngine().h().onGettedFileList(l, paramString, paramBundle);
       paramString = new StringBuilder();
       paramString.append("onCall ACTION_GET_FAVLIST 收到");
       paramString.append(paramInt);
@@ -69,7 +69,7 @@ public class QfavMainQIPCModule
       paramBundle.setClassLoader(getClass().getClassLoader());
       bool = paramBundle.getBoolean("refresh_list_succ", false);
       paramBundle.putString("delete_favids", paramBundle.getString("refresh_deleted_list"));
-      localQQAppInterface.getFileManagerEngine().a().onFileListRefreshed(bool, paramBundle);
+      localQQAppInterface.getFileManagerEngine().h().onFileListRefreshed(bool, paramBundle);
       paramString = new StringBuilder();
       paramString.append("onCall ACTION_REFRESH_FAVLIST bSucc:");
       paramString.append(bool);
@@ -80,13 +80,13 @@ public class QfavMainQIPCModule
       l = paramBundle.getLong("download_fav_id");
       paramString = paramBundle.getString("fav_thumb_path");
       paramInt = paramBundle.getInt("thumb_format");
-      localQQAppInterface.getFileManagerEngine().a().onFileThumbUpdated(l, paramString, paramInt);
+      localQQAppInterface.getFileManagerEngine().h().onFileThumbUpdated(l, paramString, paramInt);
     }
     else if ("ondownloadFile".equals(paramString))
     {
       l = paramBundle.getLong("download_fav_id");
       paramString = paramBundle.getString("fav_save_path");
-      localQQAppInterface.getFileManagerEngine().a().onFileDownloaded(l, paramString);
+      localQQAppInterface.getFileManagerEngine().h().onFileDownloaded(l, paramString);
     }
     else if ("onAVChatting".equals(paramString))
     {
@@ -97,7 +97,7 @@ public class QfavMainQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavMainQIPCModule
  * JD-Core Version:    0.7.0.1
  */

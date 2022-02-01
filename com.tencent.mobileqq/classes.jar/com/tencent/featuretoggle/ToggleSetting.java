@@ -10,84 +10,67 @@ import java.util.Map;
 
 public final class ToggleSetting
 {
-  private static volatile int jdField_a_of_type_Int = -1;
-  private static long jdField_a_of_type_Long = 120000L;
   @SuppressLint({"StaticFieldLeak"})
-  private static Context jdField_a_of_type_AndroidContentContext;
-  private static ToggleConfig jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-  private static String jdField_a_of_type_JavaLangString = "Toggle";
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static long jdField_b_of_type_Long = 0L;
-  private static String jdField_b_of_type_JavaLangString = "";
-  private static boolean jdField_b_of_type_Boolean = true;
-  private static volatile long jdField_c_of_type_Long = SystemClock.elapsedRealtime() - 30000L;
-  private static boolean jdField_c_of_type_Boolean = true;
-  private static volatile long jdField_d_of_type_Long = SystemClock.elapsedRealtime() - 30000L;
-  private static boolean jdField_d_of_type_Boolean = true;
-  private static boolean e = false;
+  private static Context a;
+  private static ToggleConfig b;
+  private static String c = "Toggle";
+  private static long d = 120000L;
+  private static String e = "";
+  private static volatile int f = -1;
+  private static boolean g = true;
+  private static boolean h = true;
+  private static boolean i = true;
+  private static boolean j = true;
+  private static long k = 0L;
+  private static boolean l = false;
+  private static volatile long m = SystemClock.elapsedRealtime() - 30000L;
+  private static volatile long n = SystemClock.elapsedRealtime() - 30000L;
   
-  public static int a()
+  public static int A()
   {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if (localToggleConfig == null) {
-      return (int)(Runtime.getRuntime().totalMemory() / 1024L / 8L);
-    }
-    return localToggleConfig.b();
+    return f;
   }
   
-  public static long a()
+  public static boolean B()
   {
-    return jdField_c_of_type_Long;
+    return h;
   }
   
-  public static Context a()
+  public static boolean C()
   {
-    return jdField_a_of_type_AndroidContentContext;
+    return i;
+  }
+  
+  public static boolean D()
+  {
+    return j;
   }
   
   public static ToggleConfig a()
   {
-    return jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-  }
-  
-  public static String a()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if (localToggleConfig == null) {
-      return "";
-    }
-    return localToggleConfig.h();
-  }
-  
-  public static Map<String, String> a()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if ((localToggleConfig != null) && (localToggleConfig.a() != null)) {
-      return jdField_a_of_type_ComTencentFeaturetoggleToggleConfig.a();
-    }
-    return new HashMap();
+    return b;
   }
   
   public static void a(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
+    f = paramInt;
   }
   
   public static void a(long paramLong)
   {
-    jdField_c_of_type_Long = paramLong;
+    m = paramLong;
   }
   
   public static void a(Context paramContext)
   {
-    jdField_a_of_type_AndroidContentContext = paramContext;
+    a = paramContext;
   }
   
   public static void a(Context paramContext, ToggleConfig paramToggleConfig)
   {
     a(paramContext);
     a(paramToggleConfig);
-    if (AppUtils.a(paramContext))
+    if (AppUtils.f(paramContext))
     {
       a(true);
       paramToggleConfig.b(true);
@@ -102,17 +85,17 @@ public final class ToggleSetting
       }
     }
     if (Utils.a(paramToggleConfig.e())) {
-      paramToggleConfig.b(AppUtils.a(paramContext));
+      paramToggleConfig.b(AppUtils.b(paramContext));
     }
-    if ((!paramToggleConfig.a()) && (AppUtils.a(paramContext, "TOGGLE_IS_DEBUG", false))) {
+    if ((!paramToggleConfig.f()) && (AppUtils.a(paramContext, "TOGGLE_IS_DEBUG", false))) {
       paramToggleConfig.a(true);
     }
-    b(paramToggleConfig.a());
+    b(paramToggleConfig.m());
   }
   
   public static void a(ToggleConfig paramToggleConfig)
   {
-    jdField_a_of_type_ComTencentFeaturetoggleToggleConfig = paramToggleConfig;
+    b = paramToggleConfig;
   }
   
   public static void a(String paramString)
@@ -120,40 +103,21 @@ public final class ToggleSetting
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Toggle");
     localStringBuilder.append(paramString);
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    c = localStringBuilder.toString();
   }
   
   public static void a(boolean paramBoolean)
   {
-    e = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if (localToggleConfig == null) {
-      return true;
-    }
-    return localToggleConfig.c();
+    l = paramBoolean;
   }
   
   public static int b()
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static long b()
-  {
-    return jdField_d_of_type_Long;
-  }
-  
-  public static String b()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig == null) {
-      return "";
+      return (int)(Runtime.getRuntime().totalMemory() / 1024L / 8L);
     }
-    return localToggleConfig.a();
+    return localToggleConfig.o();
   }
   
   static void b(int paramInt)
@@ -174,12 +138,12 @@ public final class ToggleSetting
   
   public static void b(long paramLong)
   {
-    jdField_d_of_type_Long = paramLong;
+    n = paramLong;
   }
   
   public static void b(String paramString)
   {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig != null) {
       localToggleConfig.c(paramString);
     }
@@ -187,69 +151,41 @@ public final class ToggleSetting
   
   public static void b(boolean paramBoolean)
   {
-    jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean b()
-  {
-    return e;
-  }
-  
-  public static long c()
-  {
-    return jdField_b_of_type_Long;
+    h = paramBoolean;
   }
   
   public static String c()
   {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig == null) {
       return "";
     }
-    return localToggleConfig.b();
+    return localToggleConfig.n();
   }
   
   public static void c(long paramLong)
   {
-    jdField_b_of_type_Long = paramLong;
+    k = paramLong;
   }
   
   public static void c(String paramString)
   {
-    jdField_b_of_type_JavaLangString = paramString;
+    e = paramString;
   }
   
   public static void c(boolean paramBoolean)
   {
-    jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean c()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if (localToggleConfig == null) {
-      return false;
-    }
-    return localToggleConfig.a();
+    i = paramBoolean;
   }
   
   public static long d()
   {
-    return 30000L;
-  }
-  
-  public static String d()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if (localToggleConfig == null) {
-      return "";
-    }
-    return localToggleConfig.c();
+    return m;
   }
   
   public static void d(long paramLong)
   {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig != null) {
       localToggleConfig.a(paramLong);
     }
@@ -257,107 +193,171 @@ public final class ToggleSetting
   
   public static void d(boolean paramBoolean)
   {
-    jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean d()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
-    if (localToggleConfig == null) {
-      return false;
-    }
-    return localToggleConfig.b();
+    j = paramBoolean;
   }
   
   public static long e()
   {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    return n;
+  }
+  
+  public static void e(long paramLong)
+  {
+    d = paramLong;
+  }
+  
+  public static boolean f()
+  {
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig == null) {
-      return 120000L;
+      return true;
+    }
+    return localToggleConfig.h();
+  }
+  
+  public static boolean g()
+  {
+    return l;
+  }
+  
+  public static Map<String, String> h()
+  {
+    ToggleConfig localToggleConfig = b;
+    if ((localToggleConfig != null) && (localToggleConfig.l() != null)) {
+      return b.l();
+    }
+    return new HashMap();
+  }
+  
+  public static long i()
+  {
+    return k;
+  }
+  
+  public static Context j()
+  {
+    return a;
+  }
+  
+  public static String k()
+  {
+    ToggleConfig localToggleConfig = b;
+    if (localToggleConfig == null) {
+      return "";
     }
     return localToggleConfig.a();
   }
   
-  public static String e()
+  public static String l()
   {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
+    if (localToggleConfig == null) {
+      return "";
+    }
+    return localToggleConfig.b();
+  }
+  
+  public static String m()
+  {
+    ToggleConfig localToggleConfig = b;
+    if (localToggleConfig == null) {
+      return "";
+    }
+    return localToggleConfig.c();
+  }
+  
+  public static String n()
+  {
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig == null) {
       return "Default";
     }
     return localToggleConfig.d();
   }
   
-  public static void e(long paramLong)
+  public static String o()
   {
-    jdField_a_of_type_Long = paramLong;
-  }
-  
-  public static boolean e()
-  {
-    return jdField_b_of_type_Boolean;
-  }
-  
-  public static long f()
-  {
-    return jdField_a_of_type_Long;
-  }
-  
-  public static String f()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig == null) {
       return "";
     }
     return localToggleConfig.e();
   }
   
-  public static boolean f()
+  public static boolean p()
   {
-    return jdField_c_of_type_Boolean;
-  }
-  
-  public static String g()
-  {
-    return "1.0.7.2";
-  }
-  
-  public static boolean g()
-  {
-    return jdField_d_of_type_Boolean;
-  }
-  
-  public static String h()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static String i()
-  {
-    ToggleConfig localToggleConfig = jdField_a_of_type_ComTencentFeaturetoggleToggleConfig;
+    ToggleConfig localToggleConfig = b;
     if (localToggleConfig == null) {
-      return "";
+      return false;
     }
     return localToggleConfig.f();
   }
   
-  public static String j()
+  public static boolean q()
+  {
+    ToggleConfig localToggleConfig = b;
+    if (localToggleConfig == null) {
+      return false;
+    }
+    return localToggleConfig.g();
+  }
+  
+  public static String r()
+  {
+    return "1.0.7.3";
+  }
+  
+  public static String s()
+  {
+    return c;
+  }
+  
+  public static String t()
+  {
+    ToggleConfig localToggleConfig = b;
+    if (localToggleConfig == null) {
+      return "";
+    }
+    return localToggleConfig.i();
+  }
+  
+  public static String u()
   {
     return "Android";
   }
   
-  public static String k()
+  public static long v()
   {
-    return jdField_b_of_type_JavaLangString;
+    return 30000L;
   }
   
-  public static String l()
+  public static long w()
   {
-    return jdField_a_of_type_ComTencentFeaturetoggleToggleConfig.g();
+    ToggleConfig localToggleConfig = b;
+    if (localToggleConfig == null) {
+      return 120000L;
+    }
+    return localToggleConfig.j();
+  }
+  
+  public static long x()
+  {
+    return d;
+  }
+  
+  public static String y()
+  {
+    return e;
+  }
+  
+  public static String z()
+  {
+    return b.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.ToggleSetting
  * JD-Core Version:    0.7.0.1
  */

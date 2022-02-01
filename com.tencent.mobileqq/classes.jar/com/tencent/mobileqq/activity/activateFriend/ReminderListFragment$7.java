@@ -10,13 +10,13 @@ class ReminderListFragment$7
   
   public void run()
   {
-    ReminderListFragment.a(this.this$0).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean);
-    ReminderListFragment.a(this.this$0).b();
+    ReminderListFragment.g(this.this$0).a(this.a, this.b);
+    ReminderListFragment.e(this.this$0).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.7
  * JD-Core Version:    0.7.0.1
  */

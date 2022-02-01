@@ -15,7 +15,7 @@ public class QQGameTeamConfProcessor
     QQGameTeamConfBean localQQGameTeamConfBean2;
     try
     {
-      QQGameTeamConfBean localQQGameTeamConfBean1 = (QQGameTeamConfBean)QConfigManager.a().a(720);
+      QQGameTeamConfBean localQQGameTeamConfBean1 = (QQGameTeamConfBean)QConfigManager.b().b(720);
     }
     catch (Throwable localThrowable)
     {
@@ -108,7 +108,7 @@ public class QQGameTeamConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQGameTeamConfProcessor
  * JD-Core Version:    0.7.0.1
  */

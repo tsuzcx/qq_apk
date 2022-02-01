@@ -26,85 +26,23 @@ public class AvGameMusicPlayer
   extends AVGameUIEventCallback
   implements IGameEffectPlayer
 {
-  private static AvGameMusicPlayer jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
+  private static AvGameMusicPlayer a;
+  private List<String> b;
+  private int c = 0;
+  private String d;
   
   private AvGameMusicPlayer()
   {
-    e();
+    f();
   }
   
   static float a(String paramString)
   {
-    paramString = AvGameConfigUtil.a().a(paramString);
+    paramString = AvGameConfigUtil.a().c(paramString);
     if (TextUtils.isEmpty(paramString)) {
       return 0.5F;
     }
     return Float.parseFloat(paramString);
-  }
-  
-  static int a(String paramString)
-  {
-    if ("succeed".equals(paramString)) {
-      return 0;
-    }
-    if ("failed".equals(paramString)) {
-      return 1;
-    }
-    return -1;
-  }
-  
-  public static AvGameMusicPlayer a()
-  {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer == null) {
-          jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer = new AvGameMusicPlayer();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer;
-  }
-  
-  static String a(int paramInt)
-  {
-    List localList = AvGameConfigUtil.a().a(paramInt);
-    if ((localList != null) && (localList.size() > 0)) {
-      return (String)localList.get(0);
-    }
-    return "";
-  }
-  
-  static String a(ITopic paramITopic, String paramString)
-  {
-    if ((!"over".equals(paramString)) && (paramITopic != null) && (paramITopic.b() == 3))
-    {
-      int i = a(paramString);
-      if (-1 == i)
-      {
-        QLog.d("AvGameMusicPlayer", 1, String.format("isVideoEffectValid() index is invalid [index] %d ", new Object[] { Integer.valueOf(i) }));
-        return null;
-      }
-      paramITopic = ((TopicBase)paramITopic).a(i);
-      if (paramITopic == null)
-      {
-        QLog.d("AvGameMusicPlayer", 1, "isVideoEffectValid() res is null ");
-        return null;
-      }
-      paramITopic = AvGameResDownloadUtil.a(paramITopic.b(), ".mp3");
-      if (!FileUtils.fileExists(paramITopic))
-      {
-        QLog.d("AvGameMusicPlayer", 1, String.format("isVideoEffectValid() effectFile is not exist [effectFile] %s ", new Object[] { paramITopic }));
-        return null;
-      }
-      return paramITopic;
-    }
-    QLog.d("AvGameMusicPlayer", 1, "isVideoEffectValid() is game over or iTopic is empty ");
-    return null;
   }
   
   private boolean a(int paramInt1, String paramString, int paramInt2, float paramFloat)
@@ -137,15 +75,15 @@ public class AvGameMusicPlayer
       if (Build.VERSION.SDK_INT >= 16)
       {
         bool1 = bool3;
-        bool3 = AudioProcess.a().startPlay(paramInt1);
+        bool3 = AudioProcess.b().startPlay(paramInt1);
         bool1 = bool3;
-        AudioProcess.a().addFile(paramString, 1, paramFloat, paramInt2);
+        AudioProcess.b().addFile(paramString, 1, paramFloat, paramInt2);
         bool1 = bool3;
         bool2 = bool3;
-        if (!this.jdField_a_of_type_JavaUtilList.contains(paramString))
+        if (!this.b.contains(paramString))
         {
           bool1 = bool3;
-          this.jdField_a_of_type_JavaUtilList.add(paramString);
+          this.b.add(paramString);
           return bool3;
         }
       }
@@ -161,26 +99,88 @@ public class AvGameMusicPlayer
     return bool2;
   }
   
-  public static void b()
+  static int b(String paramString)
   {
-    if (jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer != null) {
-      a().d();
+    if ("succeed".equals(paramString)) {
+      return 0;
+    }
+    if ("failed".equals(paramString)) {
+      return 1;
+    }
+    return -1;
+  }
+  
+  public static AvGameMusicPlayer b()
+  {
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new AvGameMusicPlayer();
+        }
+      }
+      finally {}
+    }
+    return a;
+  }
+  
+  static String b(ITopic paramITopic, String paramString)
+  {
+    if ((!"over".equals(paramString)) && (paramITopic != null) && (paramITopic.b() == 3))
+    {
+      int i = b(paramString);
+      if (-1 == i)
+      {
+        QLog.d("AvGameMusicPlayer", 1, String.format("isVideoEffectValid() index is invalid [index] %d ", new Object[] { Integer.valueOf(i) }));
+        return null;
+      }
+      paramITopic = ((TopicBase)paramITopic).a(i);
+      if (paramITopic == null)
+      {
+        QLog.d("AvGameMusicPlayer", 1, "isVideoEffectValid() res is null ");
+        return null;
+      }
+      paramITopic = AvGameResDownloadUtil.a(paramITopic.b(), ".mp3");
+      if (!FileUtils.fileExists(paramITopic))
+      {
+        QLog.d("AvGameMusicPlayer", 1, String.format("isVideoEffectValid() effectFile is not exist [effectFile] %s ", new Object[] { paramITopic }));
+        return null;
+      }
+      return paramITopic;
+    }
+    QLog.d("AvGameMusicPlayer", 1, "isVideoEffectValid() is game over or iTopic is empty ");
+    return null;
+  }
+  
+  public static void c()
+  {
+    if (a != null) {
+      b().e();
     }
   }
   
-  private void e()
+  static String d(int paramInt)
   {
-    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.a();
+    List localList = AvGameConfigUtil.a().c(paramInt);
+    if ((localList != null) && (localList.size() > 0)) {
+      return (String)localList.get(0);
+    }
+    return "";
+  }
+  
+  private void f()
+  {
+    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.p();
     if (localIAVGameBusinessCtrl != null) {
       localIAVGameBusinessCtrl.a(this);
     }
-    this.jdField_a_of_type_JavaLangString = AvGameResDownloadUtil.b();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.d = AvGameResDownloadUtil.b();
+    this.b = new ArrayList();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.d))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AvGameMusicPlayer", 2, String.format("playBgMusic() resPath null", new Object[0]));
@@ -192,17 +192,17 @@ public class AvGameMusicPlayer
     if (((paramInt == 2) || (paramInt == 5)) && (paramBoolean))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("cj_bg");
       localStringBuilder.append(".mp3");
       if (!new File(localStringBuilder.toString()).exists()) {
         return;
       }
-      f = AvGameConfigUtil.a().b();
+      f = AvGameConfigUtil.a().o();
     }
     else
     {
-      str = a(paramInt);
+      str = d(paramInt);
       f = a(str);
     }
     if (QLog.isColorLevel()) {
@@ -213,12 +213,12 @@ public class AvGameMusicPlayer
   
   public void a(ITopic paramITopic, String paramString)
   {
-    String str = a(paramITopic, paramString);
+    String str = b(paramITopic, paramString);
     paramITopic = str;
     if (TextUtils.isEmpty(str))
     {
       paramITopic = new StringBuilder();
-      paramITopic.append(this.jdField_a_of_type_JavaLangString);
+      paramITopic.append(this.d);
       paramITopic.append(paramString);
       paramITopic.append(".mp3");
       paramITopic = paramITopic.toString();
@@ -228,10 +228,10 @@ public class AvGameMusicPlayer
   
   public void a(String paramString, boolean paramBoolean, float paramFloat)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.d)))
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(".mp3");
       paramString = ((StringBuilder)localObject).toString();
@@ -243,7 +243,7 @@ public class AvGameMusicPlayer
       }
       if (Build.VERSION.SDK_INT >= 16)
       {
-        this.jdField_a_of_type_Int = 1;
+        this.c = 1;
         paramBoolean = a(3, paramString, i, paramFloat);
         if (paramBoolean) {
           paramString = "0X800B053";
@@ -255,11 +255,11 @@ public class AvGameMusicPlayer
         } else {
           localObject = "0X800B054";
         }
-        ReportController.b(null, "dc00898", "", "", paramString, (String)localObject, IGameEngine.a().a().d(), 0, "", "", "", "");
+        ReportController.b(null, "dc00898", "", "", paramString, (String)localObject, IGameEngine.I().s().p(), 0, "", "", "", "");
       }
       return;
     }
-    QLog.d("AvGameMusicPlayer", 1, String.format("playBgMusic() filePath or fileName is empty just return [bgMusicFileName,resPath,volumeScale] %s , %s , %f", new Object[] { paramString, this.jdField_a_of_type_JavaLangString, Float.valueOf(paramFloat) }));
+    QLog.d("AvGameMusicPlayer", 1, String.format("playBgMusic() filePath or fileName is empty just return [bgMusicFileName,resPath,volumeScale] %s , %s , %f", new Object[] { paramString, this.d, Float.valueOf(paramFloat) }));
   }
   
   public void a(boolean paramBoolean)
@@ -268,18 +268,18 @@ public class AvGameMusicPlayer
     localStringBuilder.append("onSystemCallStateChanged() isCalling =");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(" playingBgStatus =");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
     QLog.d("AvGameMusicPlayer", 1, localStringBuilder.toString());
-    if ((Build.VERSION.SDK_INT >= 16) && (this.jdField_a_of_type_Int == 1))
+    if ((Build.VERSION.SDK_INT >= 16) && (this.c == 1))
     {
       if (paramBoolean)
       {
-        AudioProcess.a().pausePlay();
-        this.jdField_a_of_type_Int = 2;
+        AudioProcess.b().pausePlay();
+        this.c = 2;
         return;
       }
-      AudioProcess.a().resumePlay();
-      this.jdField_a_of_type_Int = 1;
+      AudioProcess.b().resumePlay();
+      this.c = 1;
     }
   }
   
@@ -305,49 +305,49 @@ public class AvGameMusicPlayer
       } else {
         str = "0X800B056";
       }
-      ReportController.b(null, "dc00898", "", "", paramString, str, IGameEngine.a().a().d(), 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", paramString, str, IGameEngine.I().s().p(), 0, "", "", "", "");
     }
   }
   
-  public void c()
+  public void d()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AvGameMusicPlayer", 2, "stopPlay() ");
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.jdField_a_of_type_Int = 3;
-      AudioProcess.a().stopPlay();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      this.c = 3;
+      AudioProcess.b().stopPlay();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        AudioProcess.a().removeFile(str);
+        AudioProcess.b().removeFile(str);
       }
     }
   }
   
-  public void d()
+  public void e()
   {
-    this.jdField_a_of_type_Int = 0;
-    Object localObject = IAVGameBusinessCtrl.a();
+    this.c = 0;
+    Object localObject = IAVGameBusinessCtrl.p();
     if (localObject != null) {
       ((IAVGameBusinessCtrl)localObject).b(this);
     }
-    jdField_a_of_type_ComTencentAvgameQavAudioAvGameMusicPlayer = null;
+    a = null;
     if (Build.VERSION.SDK_INT >= 16)
     {
-      localObject = this.jdField_a_of_type_JavaUtilList;
+      localObject = this.b;
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          AudioProcess.a().removeFile(str);
+          AudioProcess.b().removeFile(str);
         }
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList = null;
+        this.b.clear();
+        this.b = null;
       }
       QLog.d("AvGameMusicPlayer", 1, "destroy() ");
     }

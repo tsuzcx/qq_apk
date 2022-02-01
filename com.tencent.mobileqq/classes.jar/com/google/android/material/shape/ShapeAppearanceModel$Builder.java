@@ -6,49 +6,49 @@ import androidx.annotation.NonNull;
 public final class ShapeAppearanceModel$Builder
 {
   @NonNull
-  private CornerSize jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
+  private CornerTreatment a = MaterialShapeUtils.a();
   @NonNull
-  private CornerTreatment jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
+  private CornerTreatment b = MaterialShapeUtils.a();
   @NonNull
-  private EdgeTreatment jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
+  private CornerTreatment c = MaterialShapeUtils.a();
   @NonNull
-  private CornerSize jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
+  private CornerTreatment d = MaterialShapeUtils.a();
   @NonNull
-  private CornerTreatment jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
+  private CornerSize e = new AbsoluteCornerSize(0.0F);
   @NonNull
-  private EdgeTreatment jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
+  private CornerSize f = new AbsoluteCornerSize(0.0F);
   @NonNull
-  private CornerSize jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
+  private CornerSize g = new AbsoluteCornerSize(0.0F);
   @NonNull
-  private CornerTreatment jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
+  private CornerSize h = new AbsoluteCornerSize(0.0F);
   @NonNull
-  private EdgeTreatment jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
+  private EdgeTreatment i = MaterialShapeUtils.b();
   @NonNull
-  private CornerSize jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(0.0F);
+  private EdgeTreatment j = MaterialShapeUtils.b();
   @NonNull
-  private CornerTreatment jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = MaterialShapeUtils.a();
+  private EdgeTreatment k = MaterialShapeUtils.b();
   @NonNull
-  private EdgeTreatment jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = MaterialShapeUtils.a();
+  private EdgeTreatment l = MaterialShapeUtils.b();
   
   public ShapeAppearanceModel$Builder() {}
   
   public ShapeAppearanceModel$Builder(@NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramShapeAppearanceModel.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramShapeAppearanceModel.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramShapeAppearanceModel.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramShapeAppearanceModel.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramShapeAppearanceModel.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramShapeAppearanceModel.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramShapeAppearanceModel.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize;
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramShapeAppearanceModel.e;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramShapeAppearanceModel.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramShapeAppearanceModel.jdField_b_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramShapeAppearanceModel.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramShapeAppearanceModel.jdField_d_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment;
+    this.a = paramShapeAppearanceModel.b;
+    this.b = paramShapeAppearanceModel.c;
+    this.c = paramShapeAppearanceModel.d;
+    this.d = paramShapeAppearanceModel.e;
+    this.e = paramShapeAppearanceModel.f;
+    this.f = paramShapeAppearanceModel.g;
+    this.g = paramShapeAppearanceModel.h;
+    this.h = paramShapeAppearanceModel.i;
+    this.i = paramShapeAppearanceModel.j;
+    this.j = paramShapeAppearanceModel.k;
+    this.k = paramShapeAppearanceModel.l;
+    this.l = paramShapeAppearanceModel.m;
   }
   
-  private static float a(CornerTreatment paramCornerTreatment)
+  private static float f(CornerTreatment paramCornerTreatment)
   {
     if ((paramCornerTreatment instanceof RoundedCornerTreatment)) {
       return ((RoundedCornerTreatment)paramCornerTreatment).a;
@@ -92,7 +92,7 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder a(@NonNull EdgeTreatment paramEdgeTreatment)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramEdgeTreatment;
+    this.i = paramEdgeTreatment;
     return this;
   }
   
@@ -105,7 +105,7 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder b(@Dimension float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(paramFloat);
+    this.e = new AbsoluteCornerSize(paramFloat);
     return this;
   }
   
@@ -118,17 +118,17 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder b(@NonNull CornerSize paramCornerSize)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramCornerSize;
+    this.e = paramCornerSize;
     return this;
   }
   
   @NonNull
   public Builder b(@NonNull CornerTreatment paramCornerTreatment)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramCornerTreatment;
-    float f = a(paramCornerTreatment);
-    if (f != -1.0F) {
-      b(f);
+    this.a = paramCornerTreatment;
+    float f1 = f(paramCornerTreatment);
+    if (f1 != -1.0F) {
+      b(f1);
     }
     return this;
   }
@@ -136,14 +136,14 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder b(@NonNull EdgeTreatment paramEdgeTreatment)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeEdgeTreatment = paramEdgeTreatment;
+    this.k = paramEdgeTreatment;
     return this;
   }
   
   @NonNull
   public Builder c(@Dimension float paramFloat)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(paramFloat);
+    this.f = new AbsoluteCornerSize(paramFloat);
     return this;
   }
   
@@ -156,17 +156,17 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder c(@NonNull CornerSize paramCornerSize)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramCornerSize;
+    this.f = paramCornerSize;
     return this;
   }
   
   @NonNull
   public Builder c(@NonNull CornerTreatment paramCornerTreatment)
   {
-    this.jdField_b_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramCornerTreatment;
-    float f = a(paramCornerTreatment);
-    if (f != -1.0F) {
-      c(f);
+    this.b = paramCornerTreatment;
+    float f1 = f(paramCornerTreatment);
+    if (f1 != -1.0F) {
+      c(f1);
     }
     return this;
   }
@@ -174,7 +174,7 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder d(@Dimension float paramFloat)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(paramFloat);
+    this.g = new AbsoluteCornerSize(paramFloat);
     return this;
   }
   
@@ -187,17 +187,17 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder d(@NonNull CornerSize paramCornerSize)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramCornerSize;
+    this.g = paramCornerSize;
     return this;
   }
   
   @NonNull
   public Builder d(@NonNull CornerTreatment paramCornerTreatment)
   {
-    this.jdField_c_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramCornerTreatment;
-    float f = a(paramCornerTreatment);
-    if (f != -1.0F) {
-      d(f);
+    this.c = paramCornerTreatment;
+    float f1 = f(paramCornerTreatment);
+    if (f1 != -1.0F) {
+      d(f1);
     }
     return this;
   }
@@ -205,31 +205,31 @@ public final class ShapeAppearanceModel$Builder
   @NonNull
   public Builder e(@Dimension float paramFloat)
   {
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize = new AbsoluteCornerSize(paramFloat);
+    this.h = new AbsoluteCornerSize(paramFloat);
     return this;
   }
   
   @NonNull
   public Builder e(@NonNull CornerSize paramCornerSize)
   {
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerSize = paramCornerSize;
+    this.h = paramCornerSize;
     return this;
   }
   
   @NonNull
   public Builder e(@NonNull CornerTreatment paramCornerTreatment)
   {
-    this.jdField_d_of_type_ComGoogleAndroidMaterialShapeCornerTreatment = paramCornerTreatment;
-    float f = a(paramCornerTreatment);
-    if (f != -1.0F) {
-      e(f);
+    this.d = paramCornerTreatment;
+    float f1 = f(paramCornerTreatment);
+    if (f1 != -1.0F) {
+      e(f1);
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapeAppearanceModel.Builder
  * JD-Core Version:    0.7.0.1
  */

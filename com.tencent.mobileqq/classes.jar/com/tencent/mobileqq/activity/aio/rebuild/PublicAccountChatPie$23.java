@@ -15,15 +15,15 @@ class PublicAccountChatPie$23
   public void a(boolean paramBoolean)
   {
     PublicAccountChatPie localPublicAccountChatPie = this.a;
-    localPublicAccountChatPie.aa = false;
-    localPublicAccountChatPie.aB();
-    this.a.ao();
-    AddMessageHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources().getString(2131698342), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, true);
+    localPublicAccountChatPie.cE = false;
+    localPublicAccountChatPie.bR();
+    this.a.bz();
+    AddMessageHelper.a(this.a.d, this.a.ah.b, this.a.d.getApp().getResources().getString(2131896266), this.a.ah.a, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.23
  * JD-Core Version:    0.7.0.1
  */

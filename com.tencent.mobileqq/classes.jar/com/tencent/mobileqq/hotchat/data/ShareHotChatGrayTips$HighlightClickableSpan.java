@@ -16,28 +16,28 @@ import mqq.app.AppActivity;
 class ShareHotChatGrayTips$HighlightClickableSpan
   extends ClickableSpan
 {
-  private IHotChatShare jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare;
-  private ShareHotChatGrayTips jdField_a_of_type_ComTencentMobileqqHotchatDataShareHotChatGrayTips;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQAppInterface> a;
   private WeakReference<Context> b;
+  private ShareHotChatGrayTips c;
+  private String d;
+  private IHotChatShare e;
   
   public ShareHotChatGrayTips$HighlightClickableSpan(QQAppInterface paramQQAppInterface, Context paramContext, ShareHotChatGrayTips paramShareHotChatGrayTips, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = new WeakReference(paramQQAppInterface);
     this.b = new WeakReference(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqHotchatDataShareHotChatGrayTips = paramShareHotChatGrayTips;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatShare((AppActivity)paramContext, paramQQAppInterface, null);
+    this.c = paramShareHotChatGrayTips;
+    this.d = paramString;
+    this.e = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatShare((AppActivity)paramContext, paramQQAppInterface, null);
   }
   
   public void onClick(View paramView)
   {
-    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (((Context)this.b.get() != null) && (this.jdField_a_of_type_ComTencentMobileqqHotchatDataShareHotChatGrayTips != null))
+    paramView = (QQAppInterface)this.a.get();
+    if (((Context)this.b.get() != null) && (this.c != null))
     {
-      paramView = ((HotChatManager)paramView.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqHotchatDataShareHotChatGrayTips.mTroopUin);
-      this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare.handleShare(paramView);
+      paramView = ((HotChatManager)paramView.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(this.c.mTroopUin);
+      this.e.handleShare(paramView);
     }
   }
   
@@ -49,7 +49,7 @@ class ShareHotChatGrayTips$HighlightClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.data.ShareHotChatGrayTips.HighlightClickableSpan
  * JD-Core Version:    0.7.0.1
  */

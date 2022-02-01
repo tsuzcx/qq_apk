@@ -9,12 +9,12 @@ class SubscribeQRCodeShareHelper$2$1$1
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    SubscribeQRCodeShareHelper.a(this.a.a.this$0, SubscribeQRCodeShareHelper.b(this.a.a.this$0));
+    SubscribeQRCodeShareHelper.b(this.a.b.this$0, SubscribeQRCodeShareHelper.e(this.a.b.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2.1.1
  * JD-Core Version:    0.7.0.1
  */

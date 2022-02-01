@@ -12,17 +12,17 @@ class PublishHomeWorkFragment$7
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
     paramView = this.a;
-    paramView.jdField_a_of_type_Boolean = (paramBoolean ^ true);
+    paramView.F = (paramBoolean ^ true);
     if (paramBoolean)
     {
-      paramView.l = true;
-      paramView.c(paramView.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard.a());
+      paramView.al = true;
+      paramView.c(paramView.d.a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ final class ReportUtil$3
     try
     {
       Parcel localParcel = Parcel.obtain();
-      localParcel.unmarshall(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte.length);
+      localParcel.unmarshall(this.a, 0, this.a.length);
       localParcel.setDataPosition(0);
       localBaseArticleInfo = new BaseArticleInfo(localParcel);
       try
@@ -38,7 +38,7 @@ final class ReportUtil$3
       return;
     }
     long l1 = NetConnInfoCenter.getServerTime();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.b;
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     JSONObject localJSONObject = new JSONObject();
     if (localBaseActivity != null) {
@@ -58,7 +58,7 @@ final class ReportUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.ReportUtil.3
  * JD-Core Version:    0.7.0.1
  */

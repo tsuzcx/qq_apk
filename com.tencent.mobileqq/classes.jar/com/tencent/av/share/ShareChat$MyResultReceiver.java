@@ -9,27 +9,27 @@ import java.lang.ref.WeakReference;
 class ShareChat$MyResultReceiver
   extends ResultReceiver
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private WeakReference<ShareChat.SharePanel> jdField_a_of_type_JavaLangRefWeakReference;
+  private int a;
   private int b;
+  private long c;
+  private WeakReference<ShareChat.SharePanel> d;
   
   public ShareChat$MyResultReceiver(Handler paramHandler, ShareChat.SharePanel paramSharePanel, int paramInt1, int paramInt2, long paramLong)
   {
     super(paramHandler);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramSharePanel);
-    this.jdField_a_of_type_Int = paramInt1;
+    this.d = new WeakReference(paramSharePanel);
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    paramBundle = (ShareChat.SharePanel)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramBundle = (ShareChat.SharePanel)this.d.get();
     if (paramBundle == null) {
       return;
     }
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     int i = 2;
     StringBuilder localStringBuilder;
     if (j != 1)
@@ -45,7 +45,7 @@ class ShareChat$MyResultReceiver
           localStringBuilder.append("startTroop2DCode.PARAM_ActivityResultReceiver, resultCode[");
           localStringBuilder.append(paramInt);
           localStringBuilder.append("], seq[");
-          localStringBuilder.append(this.jdField_a_of_type_Long);
+          localStringBuilder.append(this.c);
           localStringBuilder.append("]");
           QLog.w("ShareChat", 1, localStringBuilder.toString());
           paramBundle.a(5, this.b, 3);
@@ -55,14 +55,14 @@ class ShareChat$MyResultReceiver
         localStringBuilder.append("startTroop2DCode.PARAM_QRForwardReceiver, resultCode[");
         localStringBuilder.append(paramInt);
         localStringBuilder.append("], seq[");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.c);
         localStringBuilder.append("], mIHandle[");
-        localStringBuilder.append(paramBundle.a);
+        localStringBuilder.append(paramBundle.f);
         localStringBuilder.append("]");
         QLog.w("ShareChat", 1, localStringBuilder.toString());
-        if (paramBundle.a != null)
+        if (paramBundle.f != null)
         {
-          paramBundle = paramBundle.a;
+          paramBundle = paramBundle.f;
           j = this.b;
           if (paramInt != -1) {
             i = 3;
@@ -76,7 +76,7 @@ class ShareChat$MyResultReceiver
         localStringBuilder.append("shareToMobileQQ.onReceiveResult, resultCode[");
         localStringBuilder.append(paramInt);
         localStringBuilder.append("], seq[");
-        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append(this.c);
         localStringBuilder.append("]");
         QLog.w("ShareChat", 1, localStringBuilder.toString());
         j = this.b;
@@ -92,7 +92,7 @@ class ShareChat$MyResultReceiver
       localStringBuilder.append("shareToQzone.onReceiveResult, resultCode[");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("], seq[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.c);
       localStringBuilder.append("]");
       QLog.w("ShareChat", 1, localStringBuilder.toString());
       j = this.b;
@@ -105,7 +105,7 @@ class ShareChat$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

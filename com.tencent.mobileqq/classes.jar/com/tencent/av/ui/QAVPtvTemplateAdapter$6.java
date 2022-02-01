@@ -11,17 +11,17 @@ class QAVPtvTemplateAdapter$6
   
   public void run()
   {
-    int k = this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-    int m = this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition();
+    int k = this.this$0.g.getFirstVisiblePosition();
+    int m = this.this$0.g.getLastVisiblePosition();
     int i = 0;
     Object localObject1;
-    while (i < this.this$0.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.this$0.a.size())
     {
-      localObject1 = (QavListItemBase.ItemInfo)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localObject1 != null) && (((QavListItemBase.ItemInfo)localObject1).jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+      localObject1 = (QavListItemBase.ItemInfo)this.this$0.a.get(i);
+      if ((localObject1 != null) && (((QavListItemBase.ItemInfo)localObject1).a.equals(this.a)))
       {
-        ((QavListItemBase.ItemInfo)localObject1).b = false;
-        ((QavListItemBase.ItemInfo)localObject1).jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+        ((QavListItemBase.ItemInfo)localObject1).e = false;
+        ((QavListItemBase.ItemInfo)localObject1).d = this.b;
         j = i;
         if (i < k) {
           break label195;
@@ -30,17 +30,17 @@ class QAVPtvTemplateAdapter$6
         if (i > m) {
           break label195;
         }
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - k);
+        localObject1 = this.this$0.g.getChildAt(i - k);
         j = i;
         if (!(localObject1 instanceof QavListItemBase)) {
           break label195;
         }
         j = i;
-        if (!this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter().equals(this.this$0)) {
+        if (!this.this$0.g.getAdapter().equals(this.this$0)) {
           break label195;
         }
         localObject1 = (QavListItemBase)localObject1;
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.b) {
           j = 1000;
         } else {
           j = -1;
@@ -57,29 +57,29 @@ class QAVPtvTemplateAdapter$6
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onDownloadFinish, seq[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.c);
       ((StringBuilder)localObject1).append("], id[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append("], suc[");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append("], sel[");
-      ((StringBuilder)localObject1).append(this.this$0.d);
+      ((StringBuilder)localObject1).append(this.this$0.j);
       ((StringBuilder)localObject1).append("]");
       QLog.i("QAVPtvTemplateAdapter", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       Object localObject2 = null;
       localObject1 = localObject2;
-      if (this.this$0.d == j)
+      if (this.this$0.j == j)
       {
         localObject1 = localObject2;
         if (j != -1) {
-          localObject1 = (QavListItemBase.ItemInfo)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(j);
+          localObject1 = (QavListItemBase.ItemInfo)this.this$0.a.get(j);
         }
       }
       if (localObject1 != null) {
-        this.this$0.a(this.jdField_a_of_type_Long, (QavListItemBase.ItemInfo)localObject1);
+        this.this$0.a(this.c, (QavListItemBase.ItemInfo)localObject1);
       }
     }
   }

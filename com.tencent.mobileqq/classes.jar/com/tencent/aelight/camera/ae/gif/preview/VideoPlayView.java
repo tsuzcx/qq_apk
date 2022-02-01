@@ -8,9 +8,9 @@ import android.util.AttributeSet;
 public class VideoPlayView
   extends GLSurfaceView
 {
-  private static final String jdField_a_of_type_JavaLangString = "VideoPlayView";
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final VideoPlayerRenderer jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoPlayerRenderer;
+  private static final String a = "VideoPlayView";
+  private final VideoPlayerRenderer b;
+  private MediaPlayer c;
   
   public VideoPlayView(Context paramContext)
   {
@@ -22,8 +22,8 @@ public class VideoPlayView
     super(paramContext, paramAttributeSet);
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 0, 0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoPlayerRenderer = new VideoPlayerRenderer(this);
-    setRenderer(this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoPlayerRenderer);
+    this.b = new VideoPlayerRenderer(this);
+    setRenderer(this.b);
     setRenderMode(0);
   }
   
@@ -32,14 +32,14 @@ public class VideoPlayView
     if (paramMediaPlayer == null) {
       return this;
     }
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.c;
     if (localMediaPlayer != null)
     {
       localMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+      this.c = null;
     }
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoPlayerRenderer.a(paramMediaPlayer);
+    this.c = paramMediaPlayer;
+    this.b.a(paramMediaPlayer);
     return this;
   }
   
@@ -50,7 +50,7 @@ public class VideoPlayView
   
   public void setFrameRenderCallback(VideoFilterProcess.FrameRenderCallback paramFrameRenderCallback)
   {
-    VideoPlayerRenderer localVideoPlayerRenderer = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoPlayerRenderer;
+    VideoPlayerRenderer localVideoPlayerRenderer = this.b;
     if (localVideoPlayerRenderer != null) {
       localVideoPlayerRenderer.a(paramFrameRenderCallback);
     }
@@ -58,7 +58,7 @@ public class VideoPlayView
   
   public void setNeedComposeAlpha(boolean paramBoolean)
   {
-    VideoPlayerRenderer localVideoPlayerRenderer = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoPlayerRenderer;
+    VideoPlayerRenderer localVideoPlayerRenderer = this.b;
     if (localVideoPlayerRenderer != null) {
       localVideoPlayerRenderer.a(paramBoolean);
     }
@@ -66,7 +66,7 @@ public class VideoPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.preview.VideoPlayView
  * JD-Core Version:    0.7.0.1
  */

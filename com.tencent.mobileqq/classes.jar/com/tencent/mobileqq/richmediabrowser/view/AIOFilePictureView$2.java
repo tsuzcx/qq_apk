@@ -9,19 +9,19 @@ import java.util.ArrayList;
 class AIOFilePictureView$2
   implements Runnable
 {
-  AIOFilePictureView$2(AIOFilePictureView paramAIOFilePictureView, File paramFile, ArrayList paramArrayList) {}
+  AIOFilePictureView$2(AIOFilePictureView paramAIOFilePictureView, File paramFile, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaIoFile != null)
+      if (this.a != null)
       {
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append("file://");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        ((StringBuilder)localObject).append(this.a.getAbsolutePath());
         localObject = Uri.parse(((StringBuilder)localObject).toString());
-        AIOFilePictureView.a(this.this$0, (Uri)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+        AIOFilePictureView.a(this.this$0, (Uri)localObject, this.b, this.c);
         return;
       }
     }
@@ -37,7 +37,7 @@ class AIOFilePictureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFilePictureView.2
  * JD-Core Version:    0.7.0.1
  */

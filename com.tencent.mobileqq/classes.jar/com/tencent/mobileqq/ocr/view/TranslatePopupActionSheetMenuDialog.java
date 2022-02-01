@@ -18,20 +18,20 @@ public class TranslatePopupActionSheetMenuDialog
   extends PopupWindow
   implements View.OnClickListener, Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private TranslatePopupActionSheetMenuDialog.MenuItem jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem;
-  private TranslatePopupActionSheetMenuDialog.OnClickActionListener jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener;
-  private TranslatePopupActionSheetMenuDialog.OnDismissListener jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener;
+  private Activity a;
+  private Animation b;
+  private TranslatePopupActionSheetMenuDialog.OnClickActionListener c;
+  private TranslatePopupActionSheetMenuDialog.OnDismissListener d;
+  private TranslatePopupActionSheetMenuDialog.MenuItem e;
+  private int f;
+  private WindowManager.LayoutParams g;
+  private View h;
   
   public void dismiss()
   {
     try
     {
-      this.jdField_a_of_type_AndroidAppActivity.getWindowManager().removeView(this.jdField_a_of_type_AndroidViewView);
+      this.a.getWindowManager().removeView(this.h);
     }
     catch (Exception localException)
     {
@@ -43,32 +43,32 @@ public class TranslatePopupActionSheetMenuDialog
     if (Build.VERSION.SDK_INT >= 11)
     {
       super.dismiss();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener;
+      localObject = this.c;
       if (localObject != null)
       {
-        TranslatePopupActionSheetMenuDialog.MenuItem localMenuItem = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem;
+        TranslatePopupActionSheetMenuDialog.MenuItem localMenuItem = this.e;
         if (localMenuItem != null) {
           ((TranslatePopupActionSheetMenuDialog.OnClickActionListener)localObject).a(localMenuItem);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem = null;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener;
+      this.e = null;
+      localObject = this.d;
       if (localObject != null) {
         ((TranslatePopupActionSheetMenuDialog.OnDismissListener)localObject).a();
       }
     }
     else if (isShowing())
     {
-      localObject = this.jdField_a_of_type_AndroidViewAnimationAnimation;
+      localObject = this.b;
       if ((localObject != null) && (!((Animation)localObject).hasEnded())) {
         return;
       }
-      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)
+      if (this.b == null)
       {
-        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidAppActivity, 2130772372);
-        this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+        this.b = AnimationUtils.loadAnimation(this.a, 2130772464);
+        this.b.setAnimationListener(this);
       }
-      getContentView().startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      getContentView().startAnimation(this.b);
     }
   }
   
@@ -86,16 +86,16 @@ public class TranslatePopupActionSheetMenuDialog
     if (QLog.isColorLevel()) {
       QLog.i("TranslatePopupActionSheetMenuDialog", 2, "onAnimationEnd");
     }
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnClickActionListener;
+    paramAnimation = this.c;
     if (paramAnimation != null)
     {
-      TranslatePopupActionSheetMenuDialog.MenuItem localMenuItem = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem;
+      TranslatePopupActionSheetMenuDialog.MenuItem localMenuItem = this.e;
       if (localMenuItem != null) {
         paramAnimation.a(localMenuItem);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem = null;
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$OnDismissListener;
+    this.e = null;
+    paramAnimation = this.d;
     if (paramAnimation != null) {
       paramAnimation.a();
     }
@@ -108,7 +108,7 @@ public class TranslatePopupActionSheetMenuDialog
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTranslatePopupActionSheetMenuDialog$MenuItem = ((TranslatePopupActionSheetMenuDialog.MenuItem)paramView.getTag());
+    this.e = ((TranslatePopupActionSheetMenuDialog.MenuItem)paramView.getTag());
     dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -116,12 +116,12 @@ public class TranslatePopupActionSheetMenuDialog
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
     int i = getMaxAvailableHeight(paramView, paramInt2);
-    if (i < this.jdField_a_of_type_Int) {
+    if (i < this.f) {
       setHeight(i);
     }
     try
     {
-      this.jdField_a_of_type_AndroidAppActivity.getWindowManager().addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      this.a.getWindowManager().addView(this.h, this.g);
     }
     catch (Exception localException)
     {
@@ -141,7 +141,7 @@ public class TranslatePopupActionSheetMenuDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.TranslatePopupActionSheetMenuDialog
  * JD-Core Version:    0.7.0.1
  */

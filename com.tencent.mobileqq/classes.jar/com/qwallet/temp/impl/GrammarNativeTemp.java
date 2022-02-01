@@ -6,11 +6,6 @@ import com.qwallet.temp.IGrammarNativeTemp;
 public class GrammarNativeTemp
   implements IGrammarNativeTemp
 {
-  public float a()
-  {
-    return GrammarNative.getResultCfd();
-  }
-  
   public int a()
   {
     return GrammarNative.begin();
@@ -36,14 +31,19 @@ public class GrammarNativeTemp
     return GrammarNative.end();
   }
   
-  public int c()
+  public float c()
+  {
+    return GrammarNative.getResultCfd();
+  }
+  
+  public int d()
   {
     return GrammarNative.destroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.GrammarNativeTemp
  * JD-Core Version:    0.7.0.1
  */

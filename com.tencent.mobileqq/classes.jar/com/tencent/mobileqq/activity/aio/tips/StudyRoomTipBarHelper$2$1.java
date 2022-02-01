@@ -7,12 +7,12 @@ class StudyRoomTipBarHelper$2$1
   
   public void run()
   {
-    StudyRoomTipBarHelper.2.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsStudyRoomTipBarHelper$2, this.jdField_a_of_type_Int);
+    StudyRoomTipBarHelper.2.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.StudyRoomTipBarHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

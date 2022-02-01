@@ -5,20 +5,14 @@ import java.util.Iterator;
 
 public class Observable
 {
-  private Observable.TCHashMap<Integer, Observer> a;
-  protected String a;
-  
-  public Observable()
-  {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_ComTencentQqcamerakitCommonObservable$TCHashMap = new Observable.TCHashMap(this);
-  }
+  private Observable.TCHashMap<Integer, Observer> a = new Observable.TCHashMap(this);
+  protected String b = getClass().getSimpleName();
   
   public void a(int paramInt1, int paramInt2, String paramString, Object... paramVarArgs)
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentQqcamerakitCommonObservable$TCHashMap.a(Integer.valueOf(paramInt1));
+      Object localObject = this.a.b(Integer.valueOf(paramInt1));
       if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
       {
         localObject = ((ArrayList)localObject).iterator();
@@ -43,7 +37,7 @@ public class Observable
   {
     try
     {
-      this.jdField_a_of_type_ComTencentQqcamerakitCommonObservable$TCHashMap.a(paramObserver);
+      this.a.a(paramObserver);
       return;
     }
     finally
@@ -62,7 +56,7 @@ public class Observable
       while (i < j)
       {
         int k = paramVarArgs[i];
-        this.jdField_a_of_type_ComTencentQqcamerakitCommonObservable$TCHashMap.a(Integer.valueOf(k), paramObserver);
+        this.a.a(Integer.valueOf(k), paramObserver);
         i += 1;
       }
       return;
@@ -76,7 +70,7 @@ public class Observable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.common.Observable
  * JD-Core Version:    0.7.0.1
  */

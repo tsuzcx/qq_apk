@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.profilecard.bussiness.troopgame;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QBaseActivity;
@@ -26,6 +29,8 @@ import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.profilecard.base.component.AbsQQProfileContentComponent;
 import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
 import com.tencent.mobileqq.profilecard.base.config.IProfileConfig;
@@ -51,6 +56,7 @@ import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import java.text.NumberFormat;
@@ -58,7 +64,7 @@ import java.util.ArrayList;
 
 public class ProfileTroopMemGameInfoComponent
   extends AbsQQProfileContentComponent
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener, AbsListView.OnScrollListener
 {
   private static final String TAG = "ProfileTroopMemGameInfoComponent";
   private boolean gameCardInfoPrepared = false;
@@ -89,12 +95,12 @@ public class ProfileTroopMemGameInfoComponent
         if (TextUtils.isEmpty(((ProfileCardInfo)this.mData).troopUin)) {
           return false;
         }
-        localObject = (TroopGameCardConfig)QConfigManager.a().a(695);
+        localObject = (TroopGameCardConfig)QConfigManager.b().b(695);
         bool1 = bool3;
         if (localObject != null)
         {
           bool1 = bool3;
-          if (((TroopGameCardConfig)localObject).a(((ProfileCardInfo)this.mData).troopUin)) {
+          if (((TroopGameCardConfig)localObject).d(((ProfileCardInfo)this.mData).troopUin)) {
             bool1 = true;
           }
         }
@@ -117,7 +123,7 @@ public class ProfileTroopMemGameInfoComponent
     if (this.mApp == null) {
       return false;
     }
-    TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).troopUin);
+    TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).f(((ProfileCardInfo)this.mData).troopUin);
     return (localTroopInfo != null) && (localTroopInfo.isHomeworkTroop());
   }
   
@@ -126,13 +132,13 @@ public class ProfileTroopMemGameInfoComponent
     if (!checkGrayTroop()) {
       return false;
     }
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return false;
     }
     if (this.mApp == null) {
       return false;
     }
-    TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).troopUin);
+    TroopInfo localTroopInfo = ((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).f(((ProfileCardInfo)this.mData).troopUin);
     if (localTroopInfo == null) {
       return false;
     }
@@ -154,6 +160,14 @@ public class ProfileTroopMemGameInfoComponent
     return (localTroopMemberInfo.cmduinFlagEx3Grocery & 1L) == 0L;
   }
   
+  private String getProfileCardUin()
+  {
+    if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (((ProfileCardInfo)this.mData).allInOne.uin != null)) {
+      return ((ProfileCardInfo)this.mData).allInOne.uin;
+    }
+    return null;
+  }
+  
   private void layoutAvatarListView()
   {
     int i;
@@ -163,16 +177,16 @@ public class ProfileTroopMemGameInfoComponent
       i = this.mProfileGameInfo.bestHeroList.size();
     }
     ArrayList localArrayList = new ArrayList(3);
-    Object localObject1 = (URLImageView)((View)this.mViewContainer).findViewById(2131376800);
-    Object localObject2 = (URLImageView)((View)this.mViewContainer).findViewById(2131376801);
-    Object localObject3 = (URLImageView)((View)this.mViewContainer).findViewById(2131376802);
+    Object localObject1 = (URLImageView)((View)this.mViewContainer).findViewById(2131445114);
+    Object localObject2 = (URLImageView)((View)this.mViewContainer).findViewById(2131445115);
+    Object localObject3 = (URLImageView)((View)this.mViewContainer).findViewById(2131445116);
     localArrayList.add(localObject1);
     localArrayList.add(localObject2);
     localArrayList.add(localObject3);
     localObject1 = new ArrayList(3);
-    localObject2 = (ImageView)((View)this.mViewContainer).findViewById(2131376803);
-    localObject3 = (ImageView)((View)this.mViewContainer).findViewById(2131376804);
-    ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131376805);
+    localObject2 = (ImageView)((View)this.mViewContainer).findViewById(2131445120);
+    localObject3 = (ImageView)((View)this.mViewContainer).findViewById(2131445121);
+    ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131445122);
     ((ArrayList)localObject1).add(localObject2);
     ((ArrayList)localObject1).add(localObject3);
     ((ArrayList)localObject1).add(localImageView);
@@ -187,14 +201,14 @@ public class ProfileTroopMemGameInfoComponent
       else
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ViewUtils.b(20.0F);
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ViewUtils.b(20.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = ViewUtils.dpToPx(20.0F);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = ViewUtils.dpToPx(20.0F);
         localObject2 = URLDrawable.getDrawable(((ProfileGameInfo.UserHeroInfo)this.mProfileGameInfo.bestHeroList.get(j)).heroIcon, (URLDrawable.URLDrawableOptions)localObject2);
         if (localObject2 != null)
         {
-          int k = ViewUtils.b(20.0F);
+          int k = ViewUtils.dpToPx(20.0F);
           ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.a(k, k));
-          ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.n);
+          ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.o);
           ((URLImageView)localArrayList.get(j)).setImageDrawable((Drawable)localObject2);
         }
         ((URLImageView)localArrayList.get(j)).setVisibility(0);
@@ -212,7 +226,7 @@ public class ProfileTroopMemGameInfoComponent
   
   private void layoutCardViewBg(boolean paramBoolean)
   {
-    ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131367457);
+    ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131433963);
     Object localObject = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getMemberGameCardBgImagePath(paramBoolean);
     localObject = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getImageBitmap((String)localObject);
     if (localObject != null) {
@@ -222,11 +236,11 @@ public class ProfileTroopMemGameInfoComponent
   
   private void layoutGameInfoTextView(int paramInt, boolean paramBoolean)
   {
-    TextView localTextView1 = (TextView)((View)this.mViewContainer).findViewById(2131379069);
+    TextView localTextView1 = (TextView)((View)this.mViewContainer).findViewById(2131447793);
     localTextView1.setText(String.valueOf(this.mProfileGameInfo.gamesTotal));
-    TextView localTextView2 = (TextView)((View)this.mViewContainer).findViewById(2131371672);
+    TextView localTextView2 = (TextView)((View)this.mViewContainer).findViewById(2131439093);
     localTextView2.setText(String.valueOf(this.mProfileGameInfo.mvpTotal));
-    TextView localTextView3 = (TextView)((View)this.mViewContainer).findViewById(2131381155);
+    TextView localTextView3 = (TextView)((View)this.mViewContainer).findViewById(2131450185);
     try
     {
       NumberFormat localNumberFormat = NumberFormat.getPercentInstance();
@@ -237,7 +251,7 @@ public class ProfileTroopMemGameInfoComponent
     {
       localException.printStackTrace();
     }
-    TextView localTextView4 = (TextView)((View)this.mViewContainer).findViewById(2131367734);
+    TextView localTextView4 = (TextView)((View)this.mViewContainer).findViewById(2131434301);
     Object localObject = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getOccupationTypeText(this.mProfileGameInfo.bestOccupation);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       localTextView4.setText((CharSequence)localObject);
@@ -248,11 +262,11 @@ public class ProfileTroopMemGameInfoComponent
       localTextView2.setTextColor(-1);
       localTextView3.setTextColor(-1);
       localTextView4.setTextColor(-1);
-      localTextView1 = (TextView)((View)this.mViewContainer).findViewById(2131379068);
-      localTextView2 = (TextView)((View)this.mViewContainer).findViewById(2131371671);
-      localTextView3 = (TextView)((View)this.mViewContainer).findViewById(2131381154);
-      localTextView4 = (TextView)((View)this.mViewContainer).findViewById(2131367733);
-      localObject = (TextView)((View)this.mViewContainer).findViewById(2131367732);
+      localTextView1 = (TextView)((View)this.mViewContainer).findViewById(2131447792);
+      localTextView2 = (TextView)((View)this.mViewContainer).findViewById(2131439092);
+      localTextView3 = (TextView)((View)this.mViewContainer).findViewById(2131450184);
+      localTextView4 = (TextView)((View)this.mViewContainer).findViewById(2131434300);
+      localObject = (TextView)((View)this.mViewContainer).findViewById(2131434299);
       localTextView1.setTextColor(Color.parseColor("#98989F"));
       localTextView2.setTextColor(Color.parseColor("#98989F"));
       localTextView3.setTextColor(Color.parseColor("#98989F"));
@@ -265,14 +279,14 @@ public class ProfileTroopMemGameInfoComponent
   {
     if (paramInt / 100000 >= 8)
     {
-      localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131377819);
+      localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131446288);
       localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getGameGradeStarImagePathById(paramInt);
       localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getImageBitmap((String)localObject2);
       if (localObject2 != null) {
         ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
       }
-      localObject1 = (TextView)((View)this.mViewContainer).findViewById(2131377825);
-      localObject2 = this.mActivity.getString(2131693331, new Object[] { String.valueOf(paramInt % 10000) });
+      localObject1 = (TextView)((View)this.mViewContainer).findViewById(2131446294);
+      localObject2 = this.mActivity.getString(2131890879, new Object[] { String.valueOf(paramInt % 10000) });
       if (!TextUtils.isEmpty((CharSequence)localObject2)) {
         ((TextView)localObject1).setText((CharSequence)localObject2);
       }
@@ -282,26 +296,26 @@ public class ProfileTroopMemGameInfoComponent
     }
     else
     {
-      localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131375977);
+      localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131444163);
       localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getGameGradeStarImagePathById(paramInt);
       localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getImageBitmap((String)localObject2);
       if (localObject2 != null) {
         ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
       }
-      localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131375976);
+      localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131444162);
       localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getGameGradeNumberIconPathById(paramInt);
       localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getImageBitmap((String)localObject2);
       if (localObject2 != null) {
         ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
       }
     }
-    Object localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131375974);
+    Object localObject1 = (ImageView)((View)this.mViewContainer).findViewById(2131444160);
     Object localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getGameGradeIconPathById(paramInt);
     localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getImageBitmap((String)localObject2);
     if (localObject2 != null) {
       ((ImageView)localObject1).setImageBitmap((Bitmap)localObject2);
     }
-    localObject1 = (TextView)((View)this.mViewContainer).findViewById(2131375978);
+    localObject1 = (TextView)((View)this.mViewContainer).findViewById(2131444164);
     localObject2 = ((ITroopGameCardUtilsApi)QRoute.api(ITroopGameCardUtilsApi.class)).getGradeDescById(paramInt);
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       ((TextView)localObject1).setText((CharSequence)localObject2);
@@ -313,23 +327,32 @@ public class ProfileTroopMemGameInfoComponent
   
   private boolean layoutTitleView(ProfileCardInfo paramProfileCardInfo, boolean paramBoolean)
   {
-    Object localObject2 = (TextView)((View)this.mViewContainer).findViewById(2131367496);
+    Object localObject2 = (TextView)((View)this.mViewContainer).findViewById(2131434014);
     Object localObject1 = getGenderName(paramProfileCardInfo);
     if (paramProfileCardInfo.allInOne.pa == 0) {
-      localObject1 = HardCodeUtil.a(2131708470);
+      localObject1 = HardCodeUtil.a(2131906256);
     }
-    ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject1, this.mActivity.getString(2131693372) }));
+    ((TextView)localObject2).setText(String.format("%s%s", new Object[] { localObject1, this.mActivity.getString(2131890921) }));
     updateItemTheme((View)this.mViewContainer, (TextView)localObject2, null, null);
-    paramProfileCardInfo = (TextView)((View)this.mViewContainer).findViewById(2131367458);
-    localObject1 = ((View)this.mViewContainer).findViewById(2131367478);
+    paramProfileCardInfo = (TextView)((View)this.mViewContainer).findViewById(2131433964);
+    localObject1 = ((View)this.mViewContainer).findViewById(2131433986);
     if (paramBoolean) {
       paramProfileCardInfo.setTextColor(Color.parseColor("#98989F"));
     }
     localObject2 = this.mProfileGameInfo;
     if ((localObject2 != null) && (!((ProfileGameInfo)localObject2).isEmpty()))
     {
-      paramProfileCardInfo.setText(2131693305);
+      paramProfileCardInfo.setText(2131890853);
       ((View)localObject1).setVisibility(0);
+      ((View)localObject1).setOnClickListener(this);
+      paramBoolean = this.mApp.getCurrentUin().equals(getProfileCardUin());
+      localObject1 = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+      if (paramBoolean) {
+        paramProfileCardInfo = "1";
+      } else {
+        paramProfileCardInfo = "2";
+      }
+      ((IGameMsgHelperApi)localObject1).reportForGameMsg("1104466820", "1", "145", "8939", "893907", "208847", "", "", "8", paramProfileCardInfo);
       return false;
     }
     ((View)localObject1).setVisibility(8);
@@ -391,7 +414,7 @@ public class ProfileTroopMemGameInfoComponent
     {
       if (this.mViewContainer == null)
       {
-        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131561566, null);
+        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131627927, null);
         bool1 = true;
       }
       else
@@ -430,6 +453,55 @@ public class ProfileTroopMemGameInfoComponent
     return bool1;
   }
   
+  private void onGameInfoClicked(View paramView)
+  {
+    if ((this.mProfileGameInfo != null) && (this.mApp != null) && (!TextUtils.isEmpty(this.mProfileGameInfo.encrptOpenId)) && (!TextUtils.isEmpty(this.mProfileGameInfo.partition)) && (!TextUtils.isEmpty(this.mProfileGameInfo.platid)))
+    {
+      if (TextUtils.isEmpty(this.mProfileGameInfo.area)) {
+        return;
+      }
+      if (!((IGameMsgManagerService)this.mApp.getRuntimeService(IGameMsgManagerService.class, "")).isJumpGameProfileCard()) {
+        return;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject = new StringBuilder("https://speed.gamecenter.qq.com/pushgame/v1/game-profile/sgame?_wv=134&_wwv=2&source=4");
+        ((StringBuilder)localObject).append("&uid=");
+        ((StringBuilder)localObject).append(this.mProfileGameInfo.encrptOpenId);
+        ((StringBuilder)localObject).append("&partition=");
+        ((StringBuilder)localObject).append(this.mProfileGameInfo.partition);
+        ((StringBuilder)localObject).append("&platID=");
+        ((StringBuilder)localObject).append(this.mProfileGameInfo.platid);
+        ((StringBuilder)localObject).append("&area=");
+        ((StringBuilder)localObject).append(this.mProfileGameInfo.area);
+        Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+        localIntent.putExtra("url", ((StringBuilder)localObject).toString());
+        paramView.getContext().startActivity(localIntent);
+        boolean bool = this.mApp.getCurrentUin().equals(getProfileCardUin());
+        localObject = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
+        if (!bool) {
+          break label326;
+        }
+        paramView = "1";
+        ((IGameMsgHelperApi)localObject).reportForGameMsg("1104466820", "1", "145", "8939", "893907", "208848", "", "", "20", paramView);
+        return;
+      }
+      catch (Throwable paramView)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onGameInfoClicked e:");
+        ((StringBuilder)localObject).append(paramView);
+        QLog.e("ProfileTroopMemGameInfoComponent", 1, ((StringBuilder)localObject).toString());
+      }
+      return;
+      label326:
+      paramView = "2";
+    }
+  }
+  
   private boolean personalGameCardSwitchEnabled()
   {
     Object localObject = this.mData;
@@ -443,7 +515,7 @@ public class ProfileTroopMemGameInfoComponent
         if (this.mApp == null) {
           return false;
         }
-        boolean bool4 = StudyModeManager.a();
+        boolean bool4 = StudyModeManager.h();
         boolean bool5 = this.mConfigHelper.isSwitchEnable(14);
         boolean bool1;
         if (ProfileSettingUtils.a.a(42505, ((ProfileCardInfo)this.mData).card, this.mQQAppInterface) == 1) {
@@ -528,7 +600,7 @@ public class ProfileTroopMemGameInfoComponent
     if (this.mData == null) {
       return false;
     }
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return false;
     }
     StringBuilder localStringBuilder;
@@ -613,7 +685,7 @@ public class ProfileTroopMemGameInfoComponent
     if (this.mActivity == null) {
       return "他";
     }
-    String str = this.mActivity.getString(2131699580);
+    String str = this.mActivity.getString(2131897611);
     Object localObject = str;
     if (paramProfileCardInfo != null)
     {
@@ -621,9 +693,9 @@ public class ProfileTroopMemGameInfoComponent
       if (paramProfileCardInfo.card != null)
       {
         if (paramProfileCardInfo.card.shGender == 1) {
-          paramProfileCardInfo = this.mActivity.getString(2131699579);
+          paramProfileCardInfo = this.mActivity.getString(2131897610);
         } else {
-          paramProfileCardInfo = this.mActivity.getString(2131699580);
+          paramProfileCardInfo = this.mActivity.getString(2131897611);
         }
         localObject = paramProfileCardInfo;
       }
@@ -643,22 +715,26 @@ public class ProfileTroopMemGameInfoComponent
     }
     if ((this.mData != null) && (((ProfileCardInfo)this.mData).allInOne != null) && (((ProfileCardInfo)this.mData).card != null))
     {
-      if (!StudyModeManager.a())
+      if (!StudyModeManager.h())
       {
         if (checkTroopGameCardSwitch())
         {
           if (QLog.isColorLevel()) {
             QLog.e("ProfileTroopMemGameInfoComponent", 2, "initNetRequest.checkTroopGameCardSwitch = true");
           }
-          if (!checkIsHwTroop()) {
+          if (!checkIsHwTroop())
+          {
             requestTroopMemberInfo();
+            this.mInit = true;
           }
         }
         else
         {
           boolean bool = personalGameCardSwitchEnabled();
-          if (bool) {
+          if (bool)
+          {
             requestGameCardInfo("0", ((ProfileCardInfo)this.mData).allInOne.uin);
+            this.mInit = true;
           }
           if (QLog.isColorLevel())
           {
@@ -672,12 +748,19 @@ public class ProfileTroopMemGameInfoComponent
       else if (QLog.isColorLevel()) {
         QLog.d("ProfileTroopMemGameInfoComponent", 2, "initNetRequest.studyMode = true");
       }
-      this.mInit = true;
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("ProfileTroopMemGameInfoComponent", 2, "initNetRequest.mData is not ready");
     }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView.getId() == 2131433986) {
+      onGameInfoClicked(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
@@ -686,7 +769,7 @@ public class ProfileTroopMemGameInfoComponent
     if ((this.mActivity != null) && (this.mApp != null))
     {
       this.mActivity.addObserver(this.mTroopGameObserver);
-      checkAndUpdateTroopInfo(((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).b(((ProfileCardInfo)this.mData).troopUin));
+      checkAndUpdateTroopInfo(((TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER)).f(((ProfileCardInfo)this.mData).troopUin));
       this.gameCardInfoPrepared = false;
       this.hasReport = false;
       if (this.mDelegate != null) {
@@ -760,7 +843,7 @@ public class ProfileTroopMemGameInfoComponent
     }
     Object localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
     ITroopGameHandler localITroopGameHandler = (ITroopGameHandler)this.mApp.getBusinessHandler(BusinessHandlerFactory.TROOP_GAME_HANDLER);
-    localObject = ((TroopManager)localObject).b(((ProfileCardInfo)this.mData).troopUin);
+    localObject = ((TroopManager)localObject).f(((ProfileCardInfo)this.mData).troopUin);
     checkAndUpdateTroopInfo((TroopInfo)localObject);
     if (localObject != null)
     {
@@ -777,7 +860,7 @@ public class ProfileTroopMemGameInfoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troopgame.ProfileTroopMemGameInfoComponent
  * JD-Core Version:    0.7.0.1
  */

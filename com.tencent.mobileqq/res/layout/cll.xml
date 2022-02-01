@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.qqmini.minigame.widget.DragLinearLayout android:id="@id/bei" android:background="@drawable/dk3" android:layout_width="140.0dip" android:layout_height="25.0dip" android:layout_marginTop="80.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="left" android:id="@id/bej" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已连接" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="14.0sp" android:textColor="@android:color/white" android:gravity="right" android:id="@id/beh" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已结束" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</com.tencent.qqmini.minigame.widget.DragLinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/a5m">
+        <ImageView android:id="@id/e7j" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/38" android:layout_height="@dimen/38" android:layout_marginRight="@dimen/4" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/3q" android:singleLine="true" style="@style/a5o" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <TextView android:id="@id/puc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" style="@style/a5o" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/a5m">
+        <TextView android:id="@id/j8_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/a5n" />
+    </LinearLayout>
+</LinearLayout>

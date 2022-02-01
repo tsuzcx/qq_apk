@@ -147,45 +147,45 @@ public class TroopCreateUtils
     if (paramAppRuntime == null)
     {
       paramAppRuntime = new StringBuilder();
-      paramAppRuntime.append(paramInviteMemberInfo.jdField_a_of_type_JavaLangString);
+      paramAppRuntime.append(paramInviteMemberInfo.a);
       paramAppRuntime.append("");
       return paramAppRuntime.toString();
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      paramString = ((ITroopMemberNameService)paramAppRuntime.getRuntimeService(ITroopMemberNameService.class, "")).getTroopMemberName(paramString, paramInviteMemberInfo.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.equals(paramString, paramInviteMemberInfo.jdField_a_of_type_JavaLangString)) {
+      paramString = ((ITroopMemberNameService)paramAppRuntime.getRuntimeService(ITroopMemberNameService.class, "")).getTroopMemberName(paramString, paramInviteMemberInfo.a);
+      if (!TextUtils.equals(paramString, paramInviteMemberInfo.a)) {
         return paramString;
       }
     }
-    if (paramAppRuntime.getAccount().equals(paramInviteMemberInfo.jdField_a_of_type_JavaLangString)) {
+    if (paramAppRuntime.getAccount().equals(paramInviteMemberInfo.a)) {
       return paramInviteMemberInfo.b;
     }
     paramString = (IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "");
-    if (paramString.isFriend(paramInviteMemberInfo.jdField_a_of_type_JavaLangString))
+    if (paramString.isFriend(paramInviteMemberInfo.a))
     {
-      paramAppRuntime = paramString.getFriend(paramInviteMemberInfo.jdField_a_of_type_JavaLangString, true);
+      paramAppRuntime = paramString.getFriend(paramInviteMemberInfo.a, true);
       if ((paramAppRuntime != null) && (!TextUtils.isEmpty(paramAppRuntime.name))) {
         return paramAppRuntime.name;
       }
-      return paramInviteMemberInfo.jdField_a_of_type_JavaLangString;
+      return paramInviteMemberInfo.a;
     }
-    if (paramInviteMemberInfo.jdField_a_of_type_Int == 1)
+    if (paramInviteMemberInfo.c == 1)
     {
-      paramAppRuntime = ((ITroopMemberInfoService)paramAppRuntime.getRuntimeService(ITroopMemberInfoService.class, "")).getTroopMember(paramInviteMemberInfo.c, paramInviteMemberInfo.jdField_a_of_type_JavaLangString);
+      paramAppRuntime = ((ITroopMemberInfoService)paramAppRuntime.getRuntimeService(ITroopMemberInfoService.class, "")).getTroopMember(paramInviteMemberInfo.e, paramInviteMemberInfo.a);
       if ((paramAppRuntime != null) && (!TextUtils.isEmpty(paramAppRuntime.friendnick))) {
         return paramAppRuntime.friendnick;
       }
     }
-    else if (paramInviteMemberInfo.jdField_a_of_type_Int == 2)
+    else if (paramInviteMemberInfo.c == 2)
     {
-      paramAppRuntime = ((IDiscussionService)paramAppRuntime.getRuntimeService(IDiscussionService.class, "")).getDiscussionMemberNickName(paramAppRuntime, paramInviteMemberInfo.c, paramInviteMemberInfo.jdField_a_of_type_JavaLangString);
+      paramAppRuntime = ((IDiscussionService)paramAppRuntime.getRuntimeService(IDiscussionService.class, "")).getDiscussionMemberNickName(paramAppRuntime, paramInviteMemberInfo.e, paramInviteMemberInfo.a);
       if (!TextUtils.isEmpty(paramAppRuntime)) {
         return paramAppRuntime;
       }
     }
     paramAppRuntime = new StringBuilder();
-    paramAppRuntime.append(paramInviteMemberInfo.jdField_a_of_type_JavaLangString);
+    paramAppRuntime.append(paramInviteMemberInfo.a);
     paramAppRuntime.append("");
     return paramAppRuntime.toString();
   }
@@ -247,14 +247,14 @@ public class TroopCreateUtils
   
   public static void a(Context paramContext)
   {
-    String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.7.0", Integer.valueOf(0) });
+    String str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.8.17", Integer.valueOf(0) });
     Intent localIntent = new Intent();
     localIntent.putExtra("url", str);
     localIntent.putExtra("isShowAd", false);
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("hide_operation_bar", true);
     a(paramContext, localIntent, "/base/browser");
-    ((Activity)paramContext).overridePendingTransition(2130772006, 2130772007);
+    ((Activity)paramContext).overridePendingTransition(2130772009, 2130772010);
     if (QLog.isColorLevel()) {
       QLog.d("Q.troopCreate", 2, "enterTroopCreate");
     }
@@ -264,9 +264,9 @@ public class TroopCreateUtils
   {
     String str;
     if ((paramInt != 1) && (paramInt != 2)) {
-      str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.7.0", Integer.valueOf(0) });
+      str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.8.17", Integer.valueOf(0) });
     } else {
-      str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.7.0", Integer.valueOf(1) });
+      str = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.8.17", Integer.valueOf(1) });
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("url", str);
@@ -275,7 +275,7 @@ public class TroopCreateUtils
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("troop_create_from", paramInt);
     a(paramContext, localIntent, "/base/browser", 51);
-    ((Activity)paramContext).overridePendingTransition(2130772006, 2130772007);
+    ((Activity)paramContext).overridePendingTransition(2130772009, 2130772010);
     if (QLog.isColorLevel()) {
       QLog.d("Q.troopCreate", 2, "enterTroopCreateForResult");
     }
@@ -300,7 +300,7 @@ public class TroopCreateUtils
   
   public static void a(Context paramContext, String paramString)
   {
-    Object localObject = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.7.0", Integer.valueOf(0) });
+    Object localObject = String.format("https://admin.qun.qq.com/mcreatev3/index.html?_bid=206&ver=%s&clientversion=%s&fromlocation=%s&_wv=2097152", new Object[] { "1", "8.8.17", Integer.valueOf(0) });
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(String.format("&initgrouptype=%s", new Object[] { paramString }));
@@ -311,7 +311,7 @@ public class TroopCreateUtils
     ((Intent)localObject).putExtra("hide_more_button", true);
     ((Intent)localObject).putExtra("hide_operation_bar", true);
     a(paramContext, (Intent)localObject, "/base/browser");
-    ((Activity)paramContext).overridePendingTransition(2130772006, 2130772007);
+    ((Activity)paramContext).overridePendingTransition(2130772009, 2130772010);
     if (QLog.isColorLevel()) {
       QLog.d("Q.troopCreate", 2, "enterTroopCreateFromH5");
     }
@@ -332,36 +332,21 @@ public class TroopCreateUtils
     a(paramContext, localIntent, "/base/start/splash");
   }
   
-  public static void a(AppInterface paramAppInterface)
-  {
-    Object localObject = paramAppInterface;
-    if (paramAppInterface == null) {
-      localObject = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    }
-    paramAppInterface = ((AppInterface)localObject).getPreferences();
-    localObject = ((AppInterface)localObject).getCurrentAccountUin();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("show_new_create_big_troop2_");
-    localStringBuilder.append((String)localObject);
-    localObject = localStringBuilder.toString();
-    paramAppInterface.edit().putBoolean((String)localObject, true).apply();
-  }
-  
   public static void a(AppRuntime paramAppRuntime, List<TroopCreateInfo.InviteMemberInfo> paramList)
   {
     Object localObject = paramList.iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext()) {
-      if (((TroopCreateInfo.InviteMemberInfo)((Iterator)localObject).next()).jdField_a_of_type_JavaLangString.equals(paramAppRuntime.getCurrentAccountUin())) {
+      if (((TroopCreateInfo.InviteMemberInfo)((Iterator)localObject).next()).a.equals(paramAppRuntime.getCurrentAccountUin())) {
         i = 1;
       }
     }
     if (i == 0)
     {
       localObject = new TroopCreateInfo.InviteMemberInfo();
-      ((TroopCreateInfo.InviteMemberInfo)localObject).jdField_a_of_type_JavaLangString = paramAppRuntime.getCurrentUin();
-      ((TroopCreateInfo.InviteMemberInfo)localObject).jdField_a_of_type_Int = 0;
-      paramAppRuntime = ((IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(((TroopCreateInfo.InviteMemberInfo)localObject).jdField_a_of_type_JavaLangString, true);
+      ((TroopCreateInfo.InviteMemberInfo)localObject).a = paramAppRuntime.getCurrentUin();
+      ((TroopCreateInfo.InviteMemberInfo)localObject).c = 0;
+      paramAppRuntime = ((IFriendDataService)paramAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(((TroopCreateInfo.InviteMemberInfo)localObject).a, true);
       if (paramAppRuntime != null) {
         paramAppRuntime = paramAppRuntime.getFriendNick();
       } else {
@@ -389,15 +374,30 @@ public class TroopCreateUtils
   public static void b(Activity paramActivity, String paramString)
   {
     if (paramString.equals("20001")) {
-      paramString = QVIPPrettyTroopProcessor.c().a();
+      paramString = QVIPPrettyTroopProcessor.e().a();
     } else if (paramString.equals("20002")) {
-      paramString = QVIPPrettyTroopProcessor.c().b();
+      paramString = QVIPPrettyTroopProcessor.e().b();
     } else {
       paramString = "";
     }
     Intent localIntent = new Intent();
     localIntent.putExtra("url", paramString);
     a(paramActivity, localIntent, "/base/browser");
+  }
+  
+  public static void b(AppInterface paramAppInterface)
+  {
+    Object localObject = paramAppInterface;
+    if (paramAppInterface == null) {
+      localObject = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+    }
+    paramAppInterface = ((AppInterface)localObject).getPreferences();
+    localObject = ((AppInterface)localObject).getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("show_new_create_big_troop2_");
+    localStringBuilder.append((String)localObject);
+    localObject = localStringBuilder.toString();
+    paramAppInterface.edit().putBoolean((String)localObject, true).apply();
   }
   
   public static void b(AppRuntime paramAppRuntime, List<ResultRecord> paramList)
@@ -442,7 +442,7 @@ public class TroopCreateUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.TroopCreateUtils
  * JD-Core Version:    0.7.0.1
  */

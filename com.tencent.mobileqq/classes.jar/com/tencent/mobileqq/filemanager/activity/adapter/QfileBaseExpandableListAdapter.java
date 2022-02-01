@@ -20,23 +20,54 @@ import java.util.Set;
 public abstract class QfileBaseExpandableListAdapter
   extends PinnedHeaderExpandableListView.ExpandableListAdapter
 {
-  protected QfileBaseExpandableListAdapter.IQfileViewBinder a;
-  private ExpandableListView jdField_a_of_type_ComTencentWidgetExpandableListView;
-  Object jdField_a_of_type_JavaLangObject;
-  LinkedHashMap<String, List<Object>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  protected Context b;
+  private ExpandableListView a;
+  protected Context e;
+  protected QfileBaseExpandableListAdapter.IQfileViewBinder f;
+  Object g;
+  LinkedHashMap<String, List<Object>> h = new LinkedHashMap();
   
   public QfileBaseExpandableListAdapter(Context paramContext, Object paramObject)
   {
     if (paramObject != null) {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramObject);
+      this.h = ((LinkedHashMap)paramObject);
     }
-    this.b = paramContext;
+    this.e = paramContext;
   }
   
-  String a(int paramInt)
+  protected List<Object> a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.h.keySet().iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (i != paramInt) {
+        i += 1;
+      } else {
+        return (List)this.h.get(str);
+      }
+    }
+    return null;
+  }
+  
+  public void a(QfileBaseExpandableListAdapter.IQfileViewBinder paramIQfileViewBinder)
+  {
+    this.f = paramIQfileViewBinder;
+  }
+  
+  public void a(ExpandableListView paramExpandableListView)
+  {
+    this.a = paramExpandableListView;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.g = paramObject;
+  }
+  
+  String b(int paramInt)
+  {
+    Iterator localIterator = this.h.keySet().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -50,37 +81,6 @@ public abstract class QfileBaseExpandableListAdapter
     return null;
   }
   
-  protected List<Object> a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (i != paramInt) {
-        i += 1;
-      } else {
-        return (List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
-      }
-    }
-    return null;
-  }
-  
-  public void a(QfileBaseExpandableListAdapter.IQfileViewBinder paramIQfileViewBinder)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter$IQfileViewBinder = paramIQfileViewBinder;
-  }
-  
-  public void a(ExpandableListView paramExpandableListView)
-  {
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
   public void configHeaderView(View paramView, int paramInt)
   {
     QfileBaseExpandableListAdapter.QfileGroupTag localQfileGroupTag2 = (QfileBaseExpandableListAdapter.QfileGroupTag)paramView.getTag();
@@ -88,17 +88,17 @@ public abstract class QfileBaseExpandableListAdapter
     if (localQfileGroupTag2 == null)
     {
       localQfileGroupTag1 = new QfileBaseExpandableListAdapter.QfileGroupTag();
-      localQfileGroupTag1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367855));
-      paramView.findViewById(2131365107).setVisibility(8);
-      paramView.findViewById(2131369450).setVisibility(8);
-      localQfileGroupTag1.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369353));
+      localQfileGroupTag1.b = ((SingleLineTextView)paramView.findViewById(2131434435));
+      paramView.findViewById(2131431254).setVisibility(8);
+      paramView.findViewById(2131436506).setVisibility(8);
+      localQfileGroupTag1.c = ((CheckBox)paramView.findViewById(2131436369));
       paramView.setTag(localQfileGroupTag1);
     }
     paramView.setOnClickListener(new QfileBaseExpandableListAdapter.3(this, paramInt));
-    localQfileGroupTag1.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.isGroupExpanded(paramInt));
+    localQfileGroupTag1.c.setChecked(this.a.isGroupExpanded(paramInt));
     paramView = (String)getGroup(paramInt);
-    localQfileGroupTag1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramView);
-    localQfileGroupTag1.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+    localQfileGroupTag1.b.setText(paramView);
+    localQfileGroupTag1.c.setVisibility(0);
   }
   
   public Object getChild(int paramInt1, int paramInt2)
@@ -126,12 +126,12 @@ public abstract class QfileBaseExpandableListAdapter
   
   public Object getGroup(int paramInt)
   {
-    return a(paramInt);
+    return b(paramInt);
   }
   
   public int getGroupCount()
   {
-    return this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().size();
+    return this.h.keySet().size();
   }
   
   public long getGroupId(int paramInt)
@@ -147,30 +147,30 @@ public abstract class QfileBaseExpandableListAdapter
     }
     else
     {
-      paramView = LayoutInflater.from(this.b).inflate(2131560817, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.e).inflate(2131627075, paramViewGroup, false);
       paramViewGroup = new QfileBaseExpandableListAdapter.QfileGroupTag();
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367855));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369353));
-      paramView.findViewById(2131365107).setVisibility(8);
-      paramView.findViewById(2131369450).setVisibility(8);
+      paramViewGroup.b = ((SingleLineTextView)paramView.findViewById(2131434435));
+      paramViewGroup.c = ((CheckBox)paramView.findViewById(2131436369));
+      paramView.findViewById(2131431254).setVisibility(8);
+      paramView.findViewById(2131436506).setVisibility(8);
       paramView.setTag(paramViewGroup);
     }
     paramView.setOnClickListener(new QfileBaseExpandableListAdapter.1(this, paramInt));
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       paramView.setAccessibilityDelegate(new CustomAccessibilityDelegate(paramView, new QfileBaseExpandableListAdapter.2(this, paramInt)));
     }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
+    paramViewGroup.c.setVisibility(0);
+    paramViewGroup.c.setChecked(paramBoolean);
+    paramViewGroup.c.setClickable(false);
     String str = (String)getGroup(paramInt);
-    paramViewGroup.jdField_a_of_type_Int = paramInt;
-    paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(str);
+    paramViewGroup.a = paramInt;
+    paramViewGroup.b.setText(str);
     return paramView;
   }
   
   public int getHeaderViewLayoutResourceId()
   {
-    return 2131560817;
+    return 2131627075;
   }
   
   public boolean hasStableIds()
@@ -186,12 +186,12 @@ public abstract class QfileBaseExpandableListAdapter
   public void onGroupCollapsed(int paramInt)
   {
     super.onGroupCollapsed(paramInt);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       String str = (String)getGroup(paramInt);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(HardCodeUtil.a(2131698203));
+      localStringBuilder.append(HardCodeUtil.a(2131896104));
       QQTextToSpeechHelper.a(localStringBuilder.toString());
     }
   }
@@ -199,19 +199,19 @@ public abstract class QfileBaseExpandableListAdapter
   public void onGroupExpanded(int paramInt)
   {
     super.onGroupExpanded(paramInt);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       String str = (String)getGroup(paramInt);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(HardCodeUtil.a(2131698204));
+      localStringBuilder.append(HardCodeUtil.a(2131896105));
       QQTextToSpeechHelper.a(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter
  * JD-Core Version:    0.7.0.1
  */

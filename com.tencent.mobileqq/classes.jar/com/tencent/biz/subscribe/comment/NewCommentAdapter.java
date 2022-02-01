@@ -20,48 +20,37 @@ import java.util.Map;
 public class NewCommentAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private OnCommentElementClickListener jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<CertifiedAccountMeta.StComment> jdField_a_of_type_JavaUtilList;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private Context a;
+  private List<CertifiedAccountMeta.StComment> b;
+  private Map<String, Integer> c;
+  private OnCommentElementClickListener d;
+  private String e;
   
   public NewCommentAdapter(Context paramContext, OnCommentElementClickListener paramOnCommentElementClickListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener = paramOnCommentElementClickListener;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-  }
-  
-  public int a(CertifiedAccountMeta.StComment paramStComment)
-  {
-    if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(3));
-      notifyDataSetChanged();
-      return 3;
-    }
-    return -1;
+    this.a = paramContext;
+    this.b = new ArrayList();
+    this.d = paramOnCommentElementClickListener;
+    this.c = new HashMap();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.c.clear();
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > paramInt + 1) {
-      a((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    if (this.b.size() > paramInt + 1) {
+      a((CertifiedAccountMeta.StComment)this.b.get(paramInt));
     }
   }
   
   public void a(int paramInt, CertifiedAccountMeta.StComment paramStComment)
   {
-    if ((paramStComment != null) && (paramInt <= this.jdField_a_of_type_JavaUtilList.size())) {
-      this.jdField_a_of_type_JavaUtilList.add(paramInt, paramStComment);
+    if ((paramStComment != null) && (paramInt <= this.b.size())) {
+      this.b.add(paramInt, paramStComment);
     }
   }
   
@@ -69,21 +58,16 @@ public class NewCommentAdapter
   {
     if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(paramStComment.vecReply.size()));
+      this.c.put(paramStComment.id.get(), Integer.valueOf(paramStComment.vecReply.size()));
       notifyDataSetChanged();
     }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void a(String paramString, CertifiedAccountMeta.StReply paramStReply)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramStReply != null))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
@@ -100,15 +84,15 @@ public class NewCommentAdapter
     boolean bool1 = false;
     if (!bool2)
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      int i = this.b.size() - 1;
       while (i >= 0)
       {
-        if (paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get()))
+        if (paramString.equals(((CertifiedAccountMeta.StComment)this.b.get(i)).id.get()))
         {
-          if (this.jdField_a_of_type_JavaUtilList.remove(i) != null) {
+          if (this.b.remove(i) != null) {
             bool1 = true;
           }
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+          this.c.remove(paramString);
           return bool1;
         }
         i -= 1;
@@ -121,12 +105,12 @@ public class NewCommentAdapter
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      int i = this.b.size() - 1;
       while (i >= 0)
       {
-        if (paramString.equals(((CertifiedAccountMeta.StComment)this.jdField_a_of_type_JavaUtilList.get(i)).id.get()))
+        if (paramString.equals(((CertifiedAccountMeta.StComment)this.b.get(i)).id.get()))
         {
-          if (this.jdField_a_of_type_JavaUtilList.set(i, paramStComment) == null) {
+          if (this.b.set(i, paramStComment) == null) {
             break;
           }
           return true;
@@ -141,7 +125,7 @@ public class NewCommentAdapter
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
@@ -171,7 +155,7 @@ public class NewCommentAdapter
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramStReply.id.get())))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext())
       {
         CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)localIterator.next();
@@ -200,7 +184,7 @@ public class NewCommentAdapter
   public boolean a(Collection<CertifiedAccountMeta.StComment> paramCollection)
   {
     if (paramCollection != null) {
-      return this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
+      return this.b.addAll(paramCollection);
     }
     return false;
   }
@@ -210,23 +194,39 @@ public class NewCommentAdapter
     if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
     {
       int i = 10;
-      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramStComment.id.get());
+      Integer localInteger = (Integer)this.c.get(paramStComment.id.get());
       if (localInteger != null) {
         i = 10 + localInteger.intValue();
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramStComment.id.get(), Integer.valueOf(i));
+      this.c.put(paramStComment.id.get(), Integer.valueOf(i));
       notifyDataSetChanged();
     }
   }
   
+  public void b(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public int c(CertifiedAccountMeta.StComment paramStComment)
+  {
+    if ((paramStComment != null) && (!TextUtils.isEmpty(paramStComment.id.get())))
+    {
+      this.c.put(paramStComment.id.get(), Integer.valueOf(3));
+      notifyDataSetChanged();
+      return 3;
+    }
+    return -1;
+  }
+  
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -245,19 +245,19 @@ public class NewCommentAdapter
     }
     else
     {
-      localObject = new CommentView(this.jdField_a_of_type_AndroidContentContext);
-      ((CommentView)localObject).setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
+      localObject = new CommentView(this.a);
+      ((CommentView)localObject).setOnCommentElementClickListener(this.d);
       ((View)localObject).setTag(localObject);
     }
     paramView = (CommentView)((View)localObject).getTag();
     paramView.setPosition(paramInt);
     int i = 3;
     paramView.setDisplayNum(3);
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localStComment.id.get());
+    Integer localInteger = (Integer)this.c.get(localStComment.id.get());
     if (localInteger != null) {
       i = localInteger.intValue();
     }
-    paramView.setData(localStComment, i, this.jdField_a_of_type_JavaLangString);
+    paramView.setData(localStComment, i, this.e);
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
     return localObject;
   }

@@ -20,9 +20,9 @@ import org.json.JSONObject;
 public class StructMsgItemSummary
   extends AbsStructMsgTextElement
 {
-  public boolean c = false;
-  public int o = 0;
-  public int p = 3;
+  public int aM = 0;
+  public boolean aN = false;
+  public int aO = 3;
   
   public StructMsgItemSummary()
   {
@@ -71,7 +71,7 @@ public class StructMsgItemSummary
             localObject1 = localObject2;
             if (localTroopManager != null)
             {
-              localObject3 = localTroopManager.b(((JSONObject)localObject3).optString("groupcode"));
+              localObject3 = localTroopManager.f(((JSONObject)localObject3).optString("groupcode"));
               localObject1 = localObject2;
               if (localObject3 != null)
               {
@@ -85,7 +85,7 @@ public class StructMsgItemSummary
             localStringBuilder.append("加入群聊“");
             localStringBuilder.append(ContactUtils.a((String)localObject1, 12.0F));
             localStringBuilder.append("”，进入可查看详情。");
-            this.ai = localStringBuilder.toString();
+            this.aA = localStringBuilder.toString();
           }
         }
         catch (Throwable localThrowable)
@@ -100,56 +100,56 @@ public class StructMsgItemSummary
     return super.a(paramContext, paramView, paramBundle);
   }
   
-  public String a()
-  {
-    return "Summary";
-  }
-  
   public void a(AbsShareMsg paramAbsShareMsg)
   {
-    paramAbsShareMsg.mContentSummary = this.ai;
+    paramAbsShareMsg.mContentSummary = this.aA;
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    this.c = paramBoolean;
-    this.o = paramInt;
+    this.aN = paramBoolean;
+    this.aM = paramInt;
   }
   
-  public int b()
+  public String b()
   {
-    if ((this.a != null) && (this.a.mMsgServiceID == 35)) {
-      return super.b();
+    return "Summary";
+  }
+  
+  public void c(int paramInt)
+  {
+    this.aO = paramInt;
+  }
+  
+  public int d()
+  {
+    if ((this.as != null) && (this.as.mMsgServiceID == 35)) {
+      return super.d();
     }
-    return this.p;
+    return this.aO;
   }
   
-  public void b(int paramInt)
+  public int f()
   {
-    this.p = paramInt;
+    return 2131448780;
   }
   
-  public int c()
+  public int i()
   {
-    return 2131379906;
-  }
-  
-  public int e()
-  {
-    if ((this.c) && (this.o != 0)) {
+    if ((this.aN) && (this.aM != 0)) {
       return -1;
     }
     return -8355712;
   }
   
-  public int f()
+  public int j()
   {
     return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemSummary
  * JD-Core Version:    0.7.0.1
  */

@@ -17,14 +17,14 @@ class MultiVideoCtrlLayerUI4Discussion$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Boolean) {
+    if (this.this$0.b) {
       return;
     }
     Object localObject2 = null;
-    if (this.jdField_a_of_type_Int == 2131695542)
+    if (this.a == 2131893301)
     {
-      if (this.this$0.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-        localObject2 = (String)this.this$0.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
+      if (this.this$0.a.containsKey(this.b)) {
+        localObject2 = (String)this.this$0.a.get(this.b);
       }
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
@@ -33,12 +33,12 @@ class MultiVideoCtrlLayerUI4Discussion$1
       }
       else
       {
-        localObject1 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, String.valueOf(this.this$0.b), this.this$0.jdField_e_of_type_Int);
+        localObject1 = this.this$0.am.a(this.b, String.valueOf(this.this$0.j), this.this$0.h);
       }
     }
     else
     {
-      localObject2 = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, String.valueOf(this.this$0.b), this.this$0.jdField_e_of_type_Int);
+      localObject2 = this.this$0.am.a(this.b, String.valueOf(this.this$0.j), this.this$0.h);
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject1 = localObject2;
@@ -47,19 +47,19 @@ class MultiVideoCtrlLayerUI4Discussion$1
       else
       {
         localObject1 = localObject2;
-        if (this.this$0.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_JavaLangString)) {
-          localObject1 = (String)this.this$0.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
+        if (this.this$0.a.containsKey(this.b)) {
+          localObject1 = (String)this.this$0.a.get(this.b);
         }
       }
     }
-    float f = this.this$0.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297162);
-    Object localObject1 = UITools.a((Context)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get(), (String)localObject1, this.this$0.jdField_e_of_type_AndroidWidgetTextView, f);
+    float f = this.this$0.aj.getDimensionPixelSize(2131297547);
+    Object localObject1 = UITools.a((Context)this.this$0.ak.get(), (String)localObject1, this.this$0.as, f);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append(this.this$0.jdField_a_of_type_AndroidContentResResources.getString(this.jdField_a_of_type_Int));
+    ((StringBuilder)localObject2).append(this.this$0.aj.getString(this.a));
     localObject1 = ((StringBuilder)localObject2).toString();
-    TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 3009, (String)localObject1);
-    localObject2 = this.this$0.d;
+    TipsUtil.a(this.this$0.al, 3009, (String)localObject1);
+    localObject2 = this.this$0.X;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showHrMeetingInOrOutWordingWithDelay str=");
     localStringBuilder.append((String)localObject1);

@@ -12,25 +12,25 @@ class ReadInJoyChannelPanelFragment$2
   
   public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyStaticGridView.getHeight() > 0)
+    if (this.a.getHeight() > 0)
     {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.b.getVisibility() == 8) {
+        this.b.setVisibility(0);
       }
     }
-    else if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)
+    else if (this.b.getVisibility() == 0)
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
       localAlphaAnimation.setFillAfter(true);
       localAlphaAnimation.setDuration(400L);
       localAlphaAnimation.setAnimationListener(new ReadInJoyChannelPanelFragment.2.1(this));
-      this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+      this.b.startAnimation(localAlphaAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyChannelPanelFragment.2
  * JD-Core Version:    0.7.0.1
  */

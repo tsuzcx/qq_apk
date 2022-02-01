@@ -19,22 +19,17 @@ class TabBarView$1
           return;
         }
         paramMessage = this.a;
-        TabBarView.a(paramMessage, paramMessage.o, this.a.n);
-        paramMessage = this.a;
-        paramMessage.a = 1.0F;
-        TabBarView.b(paramMessage, paramMessage.o, this.a.n);
-        paramMessage = this.a;
-        paramMessage.o = paramMessage.n;
-        this.a.invalidate();
-        TabBarView.a(this.a);
+        paramMessage.r = 1.0F;
+        paramMessage.invalidate();
+        this.a.c();
         return;
       }
-      if (this.a.a < 1.0F)
+      if (this.a.r < 1.0F)
       {
         paramMessage = this.a;
-        d = paramMessage.a;
+        d = paramMessage.r;
         Double.isNaN(d);
-        paramMessage.a = ((float)(d + 0.1D));
+        paramMessage.r = ((float)(d + 0.1D));
         this.a.invalidate();
         sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
         return;
@@ -43,17 +38,17 @@ class TabBarView$1
       return;
     }
     paramMessage = this.a;
-    paramMessage.a = 0.0F;
-    double d = paramMessage.a;
+    paramMessage.r = 0.0F;
+    double d = paramMessage.r;
     Double.isNaN(d);
-    paramMessage.a = ((float)(d + 0.1D));
+    paramMessage.r = ((float)(d + 0.1D));
     this.a.invalidate();
     sendMessageDelayed(TabBarView.a(this.a).obtainMessage(1), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView.1
  * JD-Core Version:    0.7.0.1
  */

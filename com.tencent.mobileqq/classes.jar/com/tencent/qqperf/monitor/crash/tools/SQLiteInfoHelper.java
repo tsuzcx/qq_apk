@@ -69,36 +69,12 @@ public class SQLiteInfoHelper
     return null;
   }
   
-  private static Object a(Object paramObject)
-  {
-    try
-    {
-      Object localObject1 = paramObject.getClass().getMethod("getApplicationThread", new Class[0]);
-      ((Method)localObject1).setAccessible(true);
-      Object localObject2 = ((Method)localObject1).invoke(paramObject, new Object[0]);
-      localObject1 = localObject2;
-      if (localObject2 == null)
-      {
-        localObject1 = paramObject.getClass().getDeclaredField("mAppThread");
-        ((Field)localObject1).setAccessible(true);
-        localObject1 = ((Field)localObject1).get(paramObject);
-      }
-      return localObject1;
-    }
-    catch (Throwable paramObject)
-    {
-      label58:
-      break label58;
-    }
-    return null;
-  }
-  
   private static String a(Object paramObject)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      Method localMethod = a(paramObject);
+      Method localMethod = b(paramObject);
       localMethod.setAccessible(true);
       Debug.MemoryInfo localMemoryInfo = new Debug.MemoryInfo();
       Debug.getMemoryInfo(localMemoryInfo);
@@ -135,28 +111,6 @@ public class SQLiteInfoHelper
     QLog.d("SQLiteInfoHelper", 1, localStringBuilder.toString());
     FileUtils.writeFile(paramString.getBytes(), (String)localObject, true);
     return localObject;
-  }
-  
-  @NonNull
-  private static Method a(Object paramObject)
-  {
-    paramObject = paramObject.getClass().getDeclaredMethods();
-    int j = paramObject.length;
-    int i = 0;
-    while (i < j)
-    {
-      Method localMethod = paramObject[i];
-      if ((localMethod.getName().equals("dumpMemInfo")) && ((localMethod.getModifiers() & 0x2) != 0))
-      {
-        Class[] arrayOfClass = localMethod.getParameterTypes();
-        QLog.e("SQLiteInfoHelper", 1, new Object[] { "getDumpMemInfoMethod: ", Arrays.toString(arrayOfClass) });
-        if ((arrayOfClass != null) && (arrayOfClass.length != 0) && (PrintWriter.class.equals(arrayOfClass[0]))) {
-          return localMethod;
-        }
-      }
-      i += 1;
-    }
-    return null;
   }
   
   private static Method a(Method[] paramArrayOfMethod)
@@ -248,6 +202,28 @@ public class SQLiteInfoHelper
     return j;
   }
   
+  @NonNull
+  private static Method b(Object paramObject)
+  {
+    paramObject = paramObject.getClass().getDeclaredMethods();
+    int j = paramObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      Method localMethod = paramObject[i];
+      if ((localMethod.getName().equals("dumpMemInfo")) && ((localMethod.getModifiers() & 0x2) != 0))
+      {
+        Class[] arrayOfClass = localMethod.getParameterTypes();
+        QLog.e("SQLiteInfoHelper", 1, new Object[] { "getDumpMemInfoMethod: ", Arrays.toString(arrayOfClass) });
+        if ((arrayOfClass != null) && (arrayOfClass.length != 0) && (PrintWriter.class.equals(arrayOfClass[0]))) {
+          return localMethod;
+        }
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
   private static void b(StringBuilder paramStringBuilder)
   {
     Object localObject = a(MobileQQ.sMobileQQ, null);
@@ -256,7 +232,7 @@ public class SQLiteInfoHelper
       QLog.e("SQLiteInfoHelper", 1, "appendSQLiteMemInfo: activityThread == null");
       return;
     }
-    localObject = a(localObject);
+    localObject = c(localObject);
     if (localObject == null)
     {
       QLog.e("SQLiteInfoHelper", 1, "appendSQLiteMemInfo: applicationThread == null");
@@ -286,6 +262,30 @@ public class SQLiteInfoHelper
       i += 1;
     }
     return false;
+  }
+  
+  private static Object c(Object paramObject)
+  {
+    try
+    {
+      Object localObject1 = paramObject.getClass().getMethod("getApplicationThread", new Class[0]);
+      ((Method)localObject1).setAccessible(true);
+      Object localObject2 = ((Method)localObject1).invoke(paramObject, new Object[0]);
+      localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = paramObject.getClass().getDeclaredField("mAppThread");
+        ((Field)localObject1).setAccessible(true);
+        localObject1 = ((Field)localObject1).get(paramObject);
+      }
+      return localObject1;
+    }
+    catch (Throwable paramObject)
+    {
+      label60:
+      break label60;
+    }
+    return null;
   }
   
   private static void c(StringBuilder paramStringBuilder)
@@ -340,7 +340,7 @@ public class SQLiteInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.tools.SQLiteInfoHelper
  * JD-Core Version:    0.7.0.1
  */

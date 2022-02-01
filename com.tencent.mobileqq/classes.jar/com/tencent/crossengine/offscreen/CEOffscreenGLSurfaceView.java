@@ -1,36 +1,29 @@
 package com.tencent.crossengine.offscreen;
 
-import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.SurfaceHolder;
-import com.tencent.crossengine.CEApplication;
 
 public class CEOffscreenGLSurfaceView
   extends GLSurfaceView
 {
   private OffscreenWorldRender a;
   
-  public CEOffscreenGLSurfaceView(Context paramContext, CEApplication paramCEApplication, String paramString)
+  public void onPause()
   {
-    super(paramContext);
-    super.setZOrderOnTop(true);
-    super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-    super.getHolder().setFormat(-2);
-    a(paramContext, paramCEApplication, paramString);
+    OffscreenWorldRender localOffscreenWorldRender = this.a;
+    if (localOffscreenWorldRender != null) {
+      localOffscreenWorldRender.a();
+    }
+    super.onPause();
   }
   
-  private void a(Context paramContext, CEApplication paramCEApplication, String paramString)
+  public void onResume()
   {
-    setEGLContextClientVersion(3);
-    setDebugFlags(1);
-    this.a = new OffscreenWorldRender(paramContext, paramCEApplication.getNativeHandle(), paramString);
-    setRenderer(this.a);
-    setRenderMode(1);
-  }
-  
-  public void a()
-  {
-    this.a.a();
+    OffscreenWorldRender localOffscreenWorldRender = this.a;
+    if (localOffscreenWorldRender != null) {
+      localOffscreenWorldRender.b();
+    }
+    super.onResume();
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
@@ -50,7 +43,7 @@ public class CEOffscreenGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.offscreen.CEOffscreenGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

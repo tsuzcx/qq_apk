@@ -34,102 +34,27 @@ import org.json.JSONObject;
 
 class UrlQRProcessor$ConcurrentReqManager
 {
-  private UrlQRProcessor.ConcurrentReqManager.MiniAppReqResult jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$MiniAppReqResult = null;
-  private UrlQRProcessor.ConcurrentReqManager.UrlDecodeReqResult jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult = null;
-  private final MiniAppCmdInterface jdField_a_of_type_ComTencentMobileqqMiniReuseMiniAppCmdInterface = new UrlQRProcessor.ConcurrentReqManager.2(this);
-  private final QRCodeBusinessObserver jdField_a_of_type_ComTencentMobileqqQrscanQRCodeBusinessObserver = new UrlQRProcessor.ConcurrentReqManager.1(this);
-  private final ScannerParams jdField_a_of_type_ComTencentMobileqqQrscanScannerParams;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private final WeakReference<QQAppInterface> a;
   private final WeakReference<OnQRHandleResultCallback> b;
+  private final ScannerParams c;
+  private final String d;
+  private boolean e = false;
+  private UrlQRProcessor.ConcurrentReqManager.UrlDecodeReqResult f = null;
+  private UrlQRProcessor.ConcurrentReqManager.MiniAppReqResult g = null;
+  private final QRCodeBusinessObserver h = new UrlQRProcessor.ConcurrentReqManager.1(this);
+  private final MiniAppCmdInterface i = new UrlQRProcessor.ConcurrentReqManager.2(this);
   
   public UrlQRProcessor$ConcurrentReqManager(QQAppInterface paramQQAppInterface, ScannerParams paramScannerParams, String paramString, OnQRHandleResultCallback paramOnQRHandleResultCallback)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.a = new WeakReference(paramQQAppInterface);
     this.b = new WeakReference(paramOnQRHandleResultCallback);
-    this.jdField_a_of_type_ComTencentMobileqqQrscanScannerParams = paramScannerParams;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  private int a()
-  {
-    ScannerParams localScannerParams = this.jdField_a_of_type_ComTencentMobileqqQrscanScannerParams;
-    if ((localScannerParams != null) && (localScannerParams.b)) {
-      return 1012;
-    }
-    return 1011;
-  }
-  
-  @Nullable
-  private INTERFACE.StApiAppInfo a()
-  {
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$MiniAppReqResult.jdField_a_of_type_OrgJsonJSONObject;
-    boolean bool = this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$MiniAppReqResult.jdField_a_of_type_Boolean;
-    long l = ((JSONObject)localObject2).optLong("retCode");
-    Object localObject1 = ((JSONObject)localObject2).optString("errMsg");
-    if ((bool) && (l == 0L))
-    {
-      localObject1 = (byte[])((JSONObject)localObject2).opt("appInfo_pb");
-      if (localObject1 != null)
-      {
-        if (localObject1.length == 0) {
-          return null;
-        }
-        localObject2 = new INTERFACE.StApiAppInfo();
-        try
-        {
-          ((INTERFACE.StApiAppInfo)localObject2).mergeFrom((byte[])localObject1);
-          bool = TextUtils.isEmpty(((INTERFACE.StApiAppInfo)localObject2).appId.get());
-          if (!bool) {
-            return localObject2;
-          }
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          QLog.e("IQRScanConst_BaseQRScanResultProcessor", 2, "handleMiniAppReqResult: pb error", localInvalidProtocolBufferMicroException);
-        }
-      }
-      return null;
-    }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("getMiniAppInfo, retCode=");
-    ((StringBuilder)localObject2).append(l);
-    ((StringBuilder)localObject2).append(",errMsg = ");
-    ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException);
-    QLog.e("IQRScanConst_BaseQRScanResultProcessor", 2, ((StringBuilder)localObject2).toString());
-    return null;
-  }
-  
-  private void a()
-  {
-    OnQRHandleResultCallback localOnQRHandleResultCallback = (OnQRHandleResultCallback)this.b.get();
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localOnQRHandleResultCallback != null) && (localQQAppInterface != null))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqQrscanScannerParams == null) {
-        return;
-      }
-      AppActivity localAppActivity = (AppActivity)localOnQRHandleResultCallback.a();
-      if (((Build.VERSION.SDK_INT >= 17) && (localAppActivity.isDestroyed())) || (localAppActivity.isFinishing())) {
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult != null)
-      {
-        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$MiniAppReqResult == null)) {
-          return;
-        }
-        if ((this.jdField_a_of_type_Boolean) && (a(localAppActivity, localOnQRHandleResultCallback))) {
-          return;
-        }
-        a(localQQAppInterface, localAppActivity, localOnQRHandleResultCallback);
-      }
-    }
+    this.c = paramScannerParams;
+    this.d = paramString;
   }
   
   private void a(QQAppInterface paramQQAppInterface, Activity paramActivity, OnQRHandleResultCallback paramOnQRHandleResultCallback)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = this.d;
     Uri localUri = Uri.parse((String)localObject1);
     String str1;
     if (localUri == null) {
@@ -140,8 +65,8 @@ class UrlQRProcessor$ConcurrentReqManager
     if (QLog.isColorLevel()) {
       QLog.i("IQRScanConst_BaseQRScanResultProcessor", 2, String.format("JumpUrl requestUrlDecode authSig=%s url=%s", new Object[] { str1, localObject1 }));
     }
-    boolean bool1 = this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult.jdField_a_of_type_Boolean;
-    Object localObject4 = this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult.jdField_a_of_type_AndroidOsBundle;
+    boolean bool1 = this.f.b;
+    Object localObject4 = this.f.c;
     String str3;
     if ((bool1) && (localObject4 != null)) {
       str3 = ((Bundle)localObject4).getString("result");
@@ -193,13 +118,13 @@ class UrlQRProcessor$ConcurrentReqManager
                   bool2 = ((JSONObject)localObject6).isNull("extvalue");
                   if (!bool2)
                   {
-                    i = 1;
+                    j = 1;
                     continue;
                   }
                 }
-                i = 0;
+                j = 0;
                 if ((!((JSONObject)localObject6).has("exttype")) || (((JSONObject)localObject6).isNull("exttype"))) {
-                  break label952;
+                  break label931;
                 }
               }
             }
@@ -208,10 +133,10 @@ class UrlQRProcessor$ConcurrentReqManager
           try
           {
             if ("2".equals(((JSONObject)localObject6).optString("exttype"))) {
-              break label946;
+              break label925;
             }
             if (!"1".equals(((JSONObject)localObject6).optString("exttype"))) {
-              break label952;
+              break label931;
             }
           }
           catch (Exception localException4)
@@ -224,37 +149,37 @@ class UrlQRProcessor$ConcurrentReqManager
               }
               JumpAction localJumpAction = JumpParser.a(paramQQAppInterface, paramActivity, ((JSONObject)localObject6).optString("a_a"));
               if (localJumpAction == null) {
-                break label853;
+                break label832;
               }
               localJumpAction.a();
               return;
               localException4 = localException4;
               continue;
               if ((!((JSONObject)localObject6).has("url")) || (((JSONObject)localObject6).isNull("url"))) {
-                break label853;
+                break label832;
               }
-              j = ((JSONObject)localObject6).optInt("url_level");
+              k = ((JSONObject)localObject6).optInt("url_level");
               localObject4 = ((JSONObject)localObject6).optString("url");
               bool1 = TextUtils.isEmpty((CharSequence)localObject4);
               if (bool1) {
                 continue;
               }
-              i = j;
+              j = k;
               Object localObject2 = localObject4;
-              if (j != 2) {
+              if (k != 2) {
                 continue;
               }
               localObject2 = Uri.parse((String)localObject4).toString();
-              i = j;
+              j = k;
               continue;
-              i = 0;
+              j = 0;
               localObject2 = localObject1;
-              if ((i == 1) || (i == 2)) {
+              if ((j == 1) || (j == 2)) {
                 continue;
               }
-              i = 0;
+              j = 0;
               localObject1 = localObject2;
-              break label856;
+              break label835;
               try
               {
                 localObject1 = new ActivityURIRequest(paramActivity, "/pubaccount/browser");
@@ -280,7 +205,7 @@ class UrlQRProcessor$ConcurrentReqManager
           if (bool1) {
             ((Bundle)localObject4).putBoolean("issupportwpa", bool1);
           }
-          if ((j != 0) && (i != 0))
+          if ((k != 0) && (j != 0))
           {
             str4 = ((JSONObject)localObject6).optString("exttype");
             localObject6 = ((JSONObject)localObject6).optString("extvalue");
@@ -296,10 +221,10 @@ class UrlQRProcessor$ConcurrentReqManager
           if ((str2 != null) && ("webapi".equalsIgnoreCase(str2))) {
             ((Bundle)localObject4).putString("sourceId", "3_40002");
           }
-          i = ((IQRJumpApi)QRoute.api(IQRJumpApi.class)).handleResult(paramQQAppInterface, paramActivity, localQRActionEntity, str3, (Bundle)localObject4);
+          j = ((IQRJumpApi)QRoute.api(IQRJumpApi.class)).handleResult(paramQQAppInterface, paramActivity, localQRActionEntity, str3, (Bundle)localObject4);
           try
           {
-            UrlQRProcessor.a(i, str3, paramActivity, paramQQAppInterface);
+            UrlQRProcessor.a(j, str3, paramActivity, paramQQAppInterface);
             paramOnQRHandleResultCallback.b();
             return;
           }
@@ -310,46 +235,46 @@ class UrlQRProcessor$ConcurrentReqManager
       {
         Object localObject6;
         localObject3 = localException7;
-        i = 0;
+        j = 0;
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append("handle url error: ");
         ((StringBuilder)localObject5).append(((Exception)localObject3).getMessage());
         QLog.e("IQRScanConst_BaseQRScanResultProcessor", 1, ((StringBuilder)localObject5).toString());
-        break label856;
+        break label835;
       }
-      label853:
-      int i = 0;
-      label856:
+      label832:
+      int j = 0;
+      label835:
       Object localObject3 = DialogUtil.a(paramActivity, 230);
-      ((QQCustomDialog)localObject3).setTitle(2131716701);
+      ((QQCustomDialog)localObject3).setTitle(2131914165);
       ((QQCustomDialog)localObject3).setMessage((CharSequence)localObject1);
       Object localObject5 = new UrlQRProcessor.ConcurrentReqManager.3(this, paramOnQRHandleResultCallback);
-      ((QQCustomDialog)localObject3).setPositiveButton(2131694583, new UrlQRProcessor.ConcurrentReqManager.4(this, (String)localObject1, paramActivity, paramOnQRHandleResultCallback));
-      ((QQCustomDialog)localObject3).setNegativeButton(2131690728, (DialogInterface.OnClickListener)localObject5);
+      ((QQCustomDialog)localObject3).setPositiveButton(2131892267, new UrlQRProcessor.ConcurrentReqManager.4(this, (String)localObject1, paramActivity, paramOnQRHandleResultCallback));
+      ((QQCustomDialog)localObject3).setNegativeButton(2131887648, (DialogInterface.OnClickListener)localObject5);
       ((QQCustomDialog)localObject3).setOnCancelListener((DialogInterface.OnCancelListener)localObject5);
       ((QQCustomDialog)localObject3).show();
-      UrlQRProcessor.a(i, (String)localObject1, paramActivity, paramQQAppInterface);
+      UrlQRProcessor.a(j, (String)localObject1, paramActivity, paramQQAppInterface);
       return;
-      label946:
-      int j = 1;
+      label925:
+      int k = 1;
       continue;
-      label952:
-      j = 0;
+      label931:
+      k = 0;
     }
   }
   
   private boolean a(Activity paramActivity, OnQRHandleResultCallback paramOnQRHandleResultCallback)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult;
-    if ((localObject != null) && (((UrlQRProcessor.ConcurrentReqManager.UrlDecodeReqResult)localObject).jdField_a_of_type_Boolean))
+    Object localObject = this.f;
+    if ((localObject != null) && (((UrlQRProcessor.ConcurrentReqManager.UrlDecodeReqResult)localObject).b))
     {
-      if (this.jdField_a_of_type_ComTencentBizQrcodeProcessorUrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult.jdField_a_of_type_AndroidOsBundle == null) {
+      if (this.f.c == null) {
         return false;
       }
-      localObject = a();
+      localObject = d();
       if (localObject != null)
       {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppByApiAppInfo(paramActivity, (INTERFACE.StApiAppInfo)localObject, a());
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppByApiAppInfo(paramActivity, (INTERFACE.StApiAppInfo)localObject, e());
         paramOnQRHandleResultCallback.b();
         return true;
       }
@@ -357,21 +282,96 @@ class UrlQRProcessor$ConcurrentReqManager
     return false;
   }
   
-  @NonNull
-  public MiniAppCmdInterface a()
+  private void c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniReuseMiniAppCmdInterface;
+    OnQRHandleResultCallback localOnQRHandleResultCallback = (OnQRHandleResultCallback)this.b.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if ((localOnQRHandleResultCallback != null) && (localQQAppInterface != null))
+    {
+      if (this.c == null) {
+        return;
+      }
+      AppActivity localAppActivity = (AppActivity)localOnQRHandleResultCallback.d();
+      if (((Build.VERSION.SDK_INT >= 17) && (localAppActivity.isDestroyed())) || (localAppActivity.isFinishing())) {
+        return;
+      }
+      if (this.f != null)
+      {
+        if ((this.e) && (this.g == null)) {
+          return;
+        }
+        if ((this.e) && (a(localAppActivity, localOnQRHandleResultCallback))) {
+          return;
+        }
+        a(localQQAppInterface, localAppActivity, localOnQRHandleResultCallback);
+      }
+    }
+  }
+  
+  @Nullable
+  private INTERFACE.StApiAppInfo d()
+  {
+    Object localObject2 = this.g.b;
+    boolean bool = this.g.a;
+    long l = ((JSONObject)localObject2).optLong("retCode");
+    Object localObject1 = ((JSONObject)localObject2).optString("errMsg");
+    if ((bool) && (l == 0L))
+    {
+      localObject1 = (byte[])((JSONObject)localObject2).opt("appInfo_pb");
+      if (localObject1 != null)
+      {
+        if (localObject1.length == 0) {
+          return null;
+        }
+        localObject2 = new INTERFACE.StApiAppInfo();
+        try
+        {
+          ((INTERFACE.StApiAppInfo)localObject2).mergeFrom((byte[])localObject1);
+          bool = TextUtils.isEmpty(((INTERFACE.StApiAppInfo)localObject2).appId.get());
+          if (!bool) {
+            return localObject2;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          QLog.e("IQRScanConst_BaseQRScanResultProcessor", 2, "handleMiniAppReqResult: pb error", localInvalidProtocolBufferMicroException);
+        }
+      }
+      return null;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getMiniAppInfo, retCode=");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append(",errMsg = ");
+    ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException);
+    QLog.e("IQRScanConst_BaseQRScanResultProcessor", 2, ((StringBuilder)localObject2).toString());
+    return null;
+  }
+  
+  private int e()
+  {
+    ScannerParams localScannerParams = this.c;
+    if ((localScannerParams != null) && (localScannerParams.e)) {
+      return 1012;
+    }
+    return 1011;
   }
   
   @NonNull
   public QRCodeBusinessObserver a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQrscanQRCodeBusinessObserver;
+    return this.h;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
+  }
+  
+  @NonNull
+  public MiniAppCmdInterface b()
+  {
+    return this.i;
   }
 }
 

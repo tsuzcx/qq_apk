@@ -41,33 +41,33 @@ class EnterpriseQQManager$2
       EnterpriseQQManager.a(this.a, System.currentTimeMillis());
       synchronized (EnterpriseQQManager.a())
       {
-        if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a).size() > 0))
+        if ((EnterpriseQQManager.c(this.a) != null) && (EnterpriseQQManager.c(this.a).size() > 0))
         {
-          localObject1 = EnterpriseQQManager.a(this.a).iterator();
+          localObject1 = EnterpriseQQManager.c(this.a).iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localEventRequest = (EnterpriseQQManager.EventRequest)((Iterator)localObject1).next();
             if (localEventRequest != null) {
-              this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localEventRequest.a, localEventRequest.b, true, d1, d2);
+              this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.b(this.a), localEventRequest.a, localEventRequest.b, true, d1, d2);
             }
           }
-          EnterpriseQQManager.a(this.a).clear();
+          EnterpriseQQManager.c(this.a).clear();
         }
       }
     }
     synchronized (EnterpriseQQManager.a())
     {
-      if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a).size() > 0))
+      if ((EnterpriseQQManager.c(this.a) != null) && (EnterpriseQQManager.c(this.a).size() > 0))
       {
-        Iterator localIterator = EnterpriseQQManager.a(this.a).iterator();
+        Iterator localIterator = EnterpriseQQManager.c(this.a).iterator();
         while (localIterator.hasNext())
         {
           localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
           if (localEventRequest != null) {
-            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
+            this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.b(this.a), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
           }
         }
-        EnterpriseQQManager.a(this.a).clear();
+        EnterpriseQQManager.c(this.a).clear();
       }
       EnterpriseQQManager.a(this.a, null);
       EnterpriseQQManager.a(this.a, null);
@@ -81,7 +81,7 @@ class EnterpriseQQManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.2
  * JD-Core Version:    0.7.0.1
  */

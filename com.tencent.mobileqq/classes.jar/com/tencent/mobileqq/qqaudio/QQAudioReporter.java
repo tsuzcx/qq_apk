@@ -11,20 +11,15 @@ import java.util.Random;
 
 public class QQAudioReporter
 {
-  private static Random a;
   public static boolean a = false;
   public static boolean b = false;
-  private static boolean c = false;
+  private static Random c = new Random();
   private static boolean d = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilRandom = new Random();
-  }
+  private static boolean e = false;
   
   public static void a(int paramInt)
   {
-    if (!d)
+    if (!e)
     {
       HashMap localHashMap = new HashMap();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -41,17 +36,17 @@ public class QQAudioReporter
       localStringBuilder.append(Build.MODEL);
       localHashMap.put("param_deviceName", localStringBuilder.toString());
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actRPPttPlayerType", true, 0L, 0L, localHashMap, "");
-      d = true;
+      e = true;
     }
   }
   
   public static void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2)
   {
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 100) < 10)
+    if (Math.abs(c.nextInt() % 100) < 10)
     {
-      int i = QQAudioSystemInfo.d();
-      int j = QQAudioSystemInfo.c();
-      long l1 = QQAudioSystemInfo.c();
+      int i = QQAudioSystemInfo.h();
+      int j = QQAudioSystemInfo.g();
+      long l1 = QQAudioSystemInfo.f();
       long l2 = DeviceInfoUtil.a() / 1048576L;
       HashMap localHashMap = new HashMap();
       localHashMap.put("cpuArch", String.valueOf(i));
@@ -62,7 +57,7 @@ public class QQAudioReporter
       if (paramInt2 > 2) {
         bool = b;
       } else {
-        bool = jdField_a_of_type_Boolean;
+        bool = a;
       }
       localHashMap.put("v7so", String.valueOf(bool));
       localHashMap.put("type", String.valueOf(paramInt2));
@@ -73,7 +68,7 @@ public class QQAudioReporter
   
   public static void a(boolean paramBoolean)
   {
-    if (!c)
+    if (!d)
     {
       HashMap localHashMap = new HashMap();
       if (paramBoolean) {
@@ -92,7 +87,7 @@ public class QQAudioReporter
       ((StringBuilder)localObject).append(Build.MODEL);
       localHashMap.put("param_deviceName", ((StringBuilder)localObject).toString());
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actRPSonicSoLoadStatus", true, 0L, 0L, localHashMap, "");
-      c = true;
+      d = true;
     }
   }
   
@@ -104,12 +99,12 @@ public class QQAudioReporter
     {
       if (paramBoolean)
       {
-        jdField_a_of_type_Boolean = true;
+        a = true;
         i = 0;
       }
       else
       {
-        jdField_a_of_type_Boolean = false;
+        a = false;
       }
     }
     else if (paramBoolean)
@@ -130,7 +125,7 @@ public class QQAudioReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.QQAudioReporter
  * JD-Core Version:    0.7.0.1
  */

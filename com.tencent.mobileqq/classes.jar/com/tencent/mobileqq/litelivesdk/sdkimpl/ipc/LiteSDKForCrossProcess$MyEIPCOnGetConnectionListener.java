@@ -39,7 +39,7 @@ class LiteSDKForCrossProcess$MyEIPCOnGetConnectionListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.ipc.LiteSDKForCrossProcess.MyEIPCOnGetConnectionListener
  * JD-Core Version:    0.7.0.1
  */

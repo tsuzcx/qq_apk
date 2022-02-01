@@ -5,37 +5,29 @@ import com.tencent.featuretoggle.hltxkg.common.e.c;
 
 public final class a
 {
-  private byte jdField_a_of_type_Byte;
-  public int a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private byte b;
-  public int b;
-  private int c = -1;
+  public int a = -1;
+  public int b = -1;
+  private String c = "";
+  private int d = -1;
+  private byte e;
+  private byte f = 1;
   
-  public a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Byte = 1;
-  }
+  public a() {}
   
   public a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_Byte = 1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
+    this.c = paramString;
+    this.d = paramInt;
   }
   
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
   
   public final void a(byte paramByte)
   {
-    this.jdField_a_of_type_Byte = paramByte;
+    this.e = paramByte;
   }
   
   public final boolean a(String paramString)
@@ -70,8 +62,8 @@ public final class a
             localObject = new StringBuilder("[");
             ((StringBuilder)localObject).append(paramString);
             ((StringBuilder)localObject).append("]");
-            this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-            this.c = i;
+            this.c = ((StringBuilder)localObject).toString();
+            this.d = i;
             return true;
           }
           return false;
@@ -87,16 +79,16 @@ public final class a
     if (paramString.length != 2) {
       return false;
     }
-    this.jdField_a_of_type_JavaLangString = paramString[0];
-    if (!c.d(this.jdField_a_of_type_JavaLangString)) {
+    this.c = paramString[0];
+    if (!c.d(this.c)) {
       return false;
     }
     try
     {
-      this.c = Integer.parseInt(paramString[1]);
-      if (this.c >= 0)
+      this.d = Integer.parseInt(paramString[1]);
+      if (this.d >= 0)
       {
-        i = this.c;
+        i = this.d;
         return i <= 65535;
       }
       return false;
@@ -110,39 +102,39 @@ public final class a
   
   public final byte b()
   {
-    return this.jdField_a_of_type_Byte;
+    return this.e;
   }
   
   public final int c()
   {
-    return this.c;
+    return this.d;
   }
   
   public final String d()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(":");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
   
   public final boolean e()
   {
-    return this.jdField_a_of_type_Byte == 3;
+    return this.e == 3;
   }
   
   public final boolean f()
   {
-    int i = this.jdField_a_of_type_Byte;
+    int i = this.e;
     return (i != 3) && (i != 4);
   }
   
   public final boolean g()
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.charAt(0) == '['))
+    if ((!TextUtils.isEmpty(this.c)) && (this.c.charAt(0) == '['))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.c;
       if (str.charAt(str.length() - 1) == ']') {
         return true;
       }
@@ -153,19 +145,19 @@ public final class a
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(":");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",protocalType:");
-    localStringBuilder.append(this.jdField_b_of_type_Byte);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(",ipType:");
-    localStringBuilder.append(this.jdField_a_of_type_Byte);
+    localStringBuilder.append(this.e);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.a.a
  * JD-Core Version:    0.7.0.1
  */

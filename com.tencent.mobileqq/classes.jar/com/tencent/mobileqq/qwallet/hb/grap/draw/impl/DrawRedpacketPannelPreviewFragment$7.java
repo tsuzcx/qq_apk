@@ -17,9 +17,9 @@ class DrawRedpacketPannelPreviewFragment$7
       QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
     }
     DrawRedpacketPannelPreviewFragment.a(this.a, false);
-    DrawRedpacketPannelPreviewFragment.a(this.a);
-    DrawRedpacketPannelPreviewFragment.d(this.a).setTextColor(Color.parseColor("#878B99"));
-    DrawRedpacketPannelPreviewFragment.d(this.a).setText(HardCodeUtil.a(R.string.ar));
+    DrawRedpacketPannelPreviewFragment.k(this.a);
+    DrawRedpacketPannelPreviewFragment.m(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.m(this.a).setText(HardCodeUtil.a(R.string.ay));
   }
   
   public void a(int paramInt)
@@ -27,14 +27,14 @@ class DrawRedpacketPannelPreviewFragment$7
     if (QLog.isColorLevel()) {
       QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
     }
-    DrawRedpacketPannelPreviewFragment.c(this.a);
+    DrawRedpacketPannelPreviewFragment.q(this.a);
   }
   
   public void a(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawRedpacketPannelPreviewFragment.7
  * JD-Core Version:    0.7.0.1
  */

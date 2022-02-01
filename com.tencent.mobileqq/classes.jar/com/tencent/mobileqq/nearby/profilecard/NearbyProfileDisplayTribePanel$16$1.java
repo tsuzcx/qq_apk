@@ -17,68 +17,68 @@ class NearbyProfileDisplayTribePanel$16$1
 {
   NearbyProfileDisplayTribePanel$16$1(NearbyProfileDisplayTribePanel.16 param16, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.f = true;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.uin;
+      this.b.a.L = true;
+      Object localObject = this.b.a.e.allinone.uin;
       paramView = (View)localObject;
-      if (StringUtil.a((String)localObject))
+      if (StringUtil.isEmpty((String)localObject))
       {
         paramView = (View)localObject;
-        if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a) != null) {
-          paramView = NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a).uin;
+        if (NearbyProfileDisplayTribePanel.j(this.b.a) != null) {
+          paramView = NearbyProfileDisplayTribePanel.j(this.b.a).uin;
         }
       }
-      if (StringUtil.a(paramView)) {
+      if (StringUtil.isEmpty(paramView)) {
         paramView = "0";
       }
       long l;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.mTinyId == 0L)
+      if (this.b.a.e.mTinyId == 0L)
       {
-        if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a) != null) {
-          l = NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a).tinyId;
+        if (NearbyProfileDisplayTribePanel.j(this.b.a) != null) {
+          l = NearbyProfileDisplayTribePanel.j(this.b.a).tinyId;
         } else {
           l = 0L;
         }
       }
       else {
-        l = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.mTinyId;
+        l = this.b.a.e.mTinyId;
       }
       if ((!"0".equals(paramView)) || (l != 0L))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app != null) {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app.getHotChatMng(false);
+        if (this.b.a.e.app != null) {
+          localObject = this.b.a.e.app.getHotChatMng(false);
         } else {
           localObject = null;
         }
-        if (((localObject == null) || (!((HotChatManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.troopUin))) && (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.profileEntryType != 33) && (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.profileEntryType != 4) && (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.profileEntryType != 31))
+        if (((localObject == null) || (!((HotChatManager)localObject).b(this.b.a.e.allinone.troopUin))) && (this.b.a.e.allinone.profileEntryType != 33) && (this.b.a.e.allinone.profileEntryType != 4) && (this.b.a.e.allinone.profileEntryType != 31))
         {
           localObject = null;
           paramInt = 20003;
         }
         else
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.troopUin;
+          localObject = this.b.a.e.allinone.troopUin;
           paramInt = 20012;
         }
-        NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.mTinyId, paramView, (String)localObject, paramInt, "", this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.reportExtra);
+        NewReportPlugin.a(this.b.a.e, this.b.a.e.mTinyId, paramView, (String)localObject, paramInt, "", this.b.a.e.allinone.reportExtra);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
-      if ((NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a) != null) && (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a).iIsGodFlag == 1)) {
-        if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a).gender == 0) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
-        } else if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a).gender == 1) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
+      ReportController.b(this.b.a.e.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
+      if ((NearbyProfileDisplayTribePanel.j(this.b.a) != null) && (NearbyProfileDisplayTribePanel.j(this.b.a).iIsGodFlag == 1)) {
+        if (NearbyProfileDisplayTribePanel.j(this.b.a).gender == 0) {
+          ReportController.b(this.b.a.e.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
+        } else if (NearbyProfileDisplayTribePanel.j(this.b.a).gender == 1) {
+          ReportController.b(this.b.a.e.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
         }
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
-      if (ProfileEntryUtils.isFromHotChat(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.allinone.profileEntryType)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel$16.a.a.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
+      ReportController.b(this.b.a.e.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
+      if (ProfileEntryUtils.isFromHotChat(this.b.a.e.allinone.profileEntryType)) {
+        ReportController.b(this.b.a.e.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
       }
     }
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    paramView = this.a;
     if (paramView != null) {
       paramView.dismiss();
     }
@@ -86,7 +86,7 @@ class NearbyProfileDisplayTribePanel$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.16.1
  * JD-Core Version:    0.7.0.1
  */

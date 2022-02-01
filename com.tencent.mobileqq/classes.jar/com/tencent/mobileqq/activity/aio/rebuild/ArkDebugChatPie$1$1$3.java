@@ -11,13 +11,13 @@ class ArkDebugChatPie$1$1$3
   
   public void run()
   {
-    ArkAppMgr.getInstance().setDebugAppPathCache(this.jdField_a_of_type_JavaLangString, this.b);
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildArkDebugChatPie$1$1.a.this$0.a, HardCodeUtil.a(2131700894), 0).a();
+    ArkAppMgr.getInstance().setDebugAppPathCache(this.a, this.b);
+    QQToast.makeText(this.c.a.this$0.e, HardCodeUtil.a(2131898918), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.3
  * JD-Core Version:    0.7.0.1
  */

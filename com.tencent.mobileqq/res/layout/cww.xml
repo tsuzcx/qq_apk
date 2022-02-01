@@ -1,11 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/f7l" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="16.0sp" android:textColor="@color/skin_black_group_item" android:gravity="center_vertical" android:id="@id/c0l" android:background="@drawable/jg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="75.0dip" android:text="@string/b2l" android:drawableRight="@drawable/common_arrow_right_selector" />
-        <com.tencent.mobileqq.emosm.view.DragSortListView android:id="@android:id/list" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" dslv:click_remove_id="@id/ayu" dslv:collapsed_height="1.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/bq3" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="fcy" dslv:float_alpha="0.6" dslv:ignore_delete_enabled="true" dslv:remove_enabled="true" dslv:remove_mode="ayq" dslv:slide_shuffle_speed="0.3" />
-    </LinearLayout>
-    <View android:id="@id/iry" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/ac8" />
-    <com.tencent.mobileqq.widget.QQBlurView android:id="@id/ac8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="43.5dip" android:layout_alignParentBottom="true" />
-    <Button android:textSize="17.0sp" android:textColor="@color/a3x" android:id="@id/ams" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/b2_" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<com.tencent.biz.qqcircle.widgets.QCircleDoublePraiseView android:layout_gravity="center" android:id="@id/p3n" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

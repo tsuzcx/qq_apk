@@ -1,6 +1,6 @@
 package com.tencent.aelight.camera.aeeditor.module.params;
 
-import com.tencent.tavcut.bean.Size;
+import com.tencent.qcircle.tavcut.bean.Size;
 
 public abstract interface VideoParamStrategy
 {
@@ -14,7 +14,7 @@ public abstract interface VideoParamStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.params.VideoParamStrategy
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class ODLoadingActivity$3
   {
     try
     {
-      ((IVPluginManager)this.jdField_a_of_type_JavaUtilConcurrentFuture.get(6L, TimeUnit.SECONDS)).enter(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidOsBundle, ODLoadingActivity.a(this.this$0));
+      ((IVPluginManager)this.a.get(6L, TimeUnit.SECONDS)).enter(this.this$0, this.b, this.c, ODLoadingActivity.c(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -30,7 +30,7 @@ class ODLoadingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity.3
  * JD-Core Version:    0.7.0.1
  */

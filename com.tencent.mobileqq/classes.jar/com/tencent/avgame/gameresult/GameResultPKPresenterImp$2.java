@@ -14,7 +14,7 @@ class GameResultPKPresenterImp$2
     if (QLog.isColorLevel()) {
       QLog.i("GameResultPKPresenterImp", 2, String.format("onSurvivalPoolEnter isSuc:%b errCode:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(paramInt), paramString }));
     }
-    this.a.a.b(GameEngine.a().a());
+    this.a.a.b(GameEngine.a().s());
   }
 }
 

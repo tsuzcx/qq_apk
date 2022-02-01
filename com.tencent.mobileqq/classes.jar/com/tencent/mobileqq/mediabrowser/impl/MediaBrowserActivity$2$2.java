@@ -9,8 +9,8 @@ class MediaBrowserActivity$2$2
   
   public void run()
   {
-    if (MediaBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserImplMediaBrowserActivity$2.a) != null) {
-      MediaBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserImplMediaBrowserActivity$2.a).notifyImageProgress(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    if (MediaBrowserActivity.a(this.g.a) != null) {
+      MediaBrowserActivity.a(this.g.a).notifyImageProgress(this.a, this.b, this.c, this.d, this.e, this.f);
     }
   }
 }

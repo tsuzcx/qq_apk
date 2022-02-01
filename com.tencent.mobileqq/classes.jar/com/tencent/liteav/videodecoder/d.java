@@ -1,6 +1,7 @@
 package com.tencent.liteav.videodecoder;
 
 import android.util.Log;
+import com.tencent.liteav.basic.log.TXCLog;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -9,6 +10,7 @@ import java.io.OutputStream;
 public class d
 {
   private boolean a = false;
+  private boolean b = false;
   
   private void a(c paramc)
   {
@@ -29,7 +31,7 @@ public class d
     paramc.b(5, "HRD: time_offset_length");
   }
   
-  private void b(c paramc)
+  private boolean b(c paramc)
   {
     if ((paramc.d("VUI: aspect_ratio_info_present_flag")) && ((int)paramc.a(8, "VUI: aspect_ratio") == 255))
     {
@@ -85,8 +87,16 @@ public class d
       paramc.b("VUI log2_max_mv_length_horizontal");
       paramc.b("VUI log2_max_mv_length_vertical");
       paramc.b("VUI num_reorder_frames");
-      paramc.c(1, "VUI: max_dec_frame_buffering");
-      return;
+      if (!this.b)
+      {
+        int i = paramc.c(false);
+        paramc = new StringBuilder();
+        paramc.append("decode: do not add max_dec_frame_buffering when it is ");
+        paramc.append(i);
+        TXCLog.w("[H264SPSModifier]", paramc.toString());
+        this.b = true;
+      }
+      return false;
     }
     if (this.a) {
       Log.d("[H264SPSModifier]", "steve:VUI has NO bs restriction!!");
@@ -99,6 +109,12 @@ public class d
     paramc.c(10, "VUI: log2_max_mv_length_vertical");
     paramc.c(0, "VUI: num_reorder_frames");
     paramc.c(1, "VUI: max_dec_frame_buffering");
+    if (!this.b)
+    {
+      TXCLog.w("[H264SPSModifier]", "decode: add max_dec_frame_buffering 1 when it is no exist");
+      this.b = true;
+    }
+    return true;
   }
   
   public byte[] a(InputStream paramInputStream)
@@ -187,7 +203,9 @@ public class d
         Log.d("[H264SPSModifier]", "vui_parameters_present_flag exist!! modify max_dec_frame_buffering");
       }
       paramInputStream.a(true, "VUI set 1: ");
-      b(paramInputStream);
+      if (!b(paramInputStream)) {
+        return null;
+      }
     }
     else
     {
@@ -211,6 +229,11 @@ public class d
       paramInputStream.c(10, "VUI: log2_max_mv_length_vertical");
       paramInputStream.c(0, "VUI: num_reorder_frames");
       paramInputStream.c(1, "VUI: max_dec_frame_buffering");
+      if (!this.b)
+      {
+        TXCLog.w("[H264SPSModifier]", "decode: add max_dec_frame_buffering 1 when vui is no exist");
+        this.b = true;
+      }
     }
     paramInputStream.c();
     byte[] arrayOfByte = ((ByteArrayOutputStream)localObject1).toByteArray();
@@ -278,7 +301,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.d
  * JD-Core Version:    0.7.0.1
  */

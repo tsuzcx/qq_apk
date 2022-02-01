@@ -9,8 +9,8 @@ import java.util.List;
 public class HomeFeedData
   extends FeedListPageLoaderBase.FeedData
 {
-  public List<StoryHomeFeed> b = new ArrayList();
-  public boolean e;
+  public List<StoryHomeFeed> f = new ArrayList();
+  public boolean h;
   
   public HomeFeedData(ErrorMessage paramErrorMessage)
   {
@@ -20,14 +20,14 @@ public class HomeFeedData
   public String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       StoryHomeFeed localStoryHomeFeed = (StoryHomeFeed)localIterator.next();
       localStringBuilder.append("feedId:");
-      localStringBuilder.append(localStoryHomeFeed.a().feedId);
+      localStringBuilder.append(localStoryHomeFeed.g().feedId);
       localStringBuilder.append("unionId:");
-      localStringBuilder.append(localStoryHomeFeed.a().getOwner().getUnionId());
+      localStringBuilder.append(localStoryHomeFeed.g().getOwner().getUnionId());
     }
     return localStringBuilder.toString();
   }
@@ -38,7 +38,7 @@ public class HomeFeedData
     localStringBuilder.append("FeedData{");
     localStringBuilder.append(super.toString());
     localStringBuilder.append("mFeedItems=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

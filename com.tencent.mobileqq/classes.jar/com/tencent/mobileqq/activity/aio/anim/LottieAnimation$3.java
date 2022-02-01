@@ -21,7 +21,7 @@ class LottieAnimation$3
   
   public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    Object localObject1 = LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation);
+    Object localObject1 = LottieAnimation.e(this.b);
     Object localObject2 = null;
     Object localObject4 = null;
     if (localObject1 == null) {
@@ -29,7 +29,7 @@ class LottieAnimation$3
     }
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inScaled = true;
-    localOptions.inDensity = LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).getContext().getResources().getDisplayMetrics().densityDpi;
+    localOptions.inDensity = LottieAnimation.e(this.b).getContext().getResources().getDisplayMetrics().densityDpi;
     localObject1 = localObject2;
     for (;;)
     {
@@ -37,7 +37,7 @@ class LottieAnimation$3
       {
         localObject5 = new StringBuilder();
         localObject1 = localObject2;
-        ((StringBuilder)localObject5).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject5).append(this.a);
         localObject1 = localObject2;
         ((StringBuilder)localObject5).append(File.separator);
         localObject1 = localObject2;
@@ -46,10 +46,10 @@ class LottieAnimation$3
         localObject5 = ((StringBuilder)localObject5).toString();
         paramLottieImageAsset = localObject4;
         localObject1 = localObject2;
-        if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) != null)
+        if (LottieAnimation.d(this.b) != null)
         {
           localObject1 = localObject2;
-          paramLottieImageAsset = (Bitmap)LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).get(localObject5);
+          paramLottieImageAsset = (Bitmap)LottieAnimation.d(this.b).get(localObject5);
         }
         if (paramLottieImageAsset != null) {
           return paramLottieImageAsset;
@@ -66,7 +66,7 @@ class LottieAnimation$3
           localObject1 = paramLottieImageAsset;
           localOutOfMemoryError2.printStackTrace();
           localObject1 = paramLottieImageAsset;
-          if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) < 10)
+          if (LottieAnimation.f(this.b) < 10)
           {
             localObject1 = paramLottieImageAsset;
             localObject3 = new StringBuilder();
@@ -77,7 +77,7 @@ class LottieAnimation$3
             localObject1 = paramLottieImageAsset;
             QLog.e("LottieAnimation", 1, ((StringBuilder)localObject3).toString());
             localObject1 = paramLottieImageAsset;
-            LottieAnimation.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation);
+            LottieAnimation.g(this.b);
           }
           localObject1 = paramLottieImageAsset;
         }
@@ -103,7 +103,7 @@ class LottieAnimation$3
     }
     localObject3 = paramLottieImageAsset;
     localObject1 = paramLottieImageAsset;
-    if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) < 10)
+    if (LottieAnimation.f(this.b) < 10)
     {
       localObject1 = paramLottieImageAsset;
       localObject3 = new StringBuilder();
@@ -114,17 +114,17 @@ class LottieAnimation$3
       localObject1 = paramLottieImageAsset;
       QLog.e("LottieAnimation", 1, ((StringBuilder)localObject3).toString());
       localObject1 = paramLottieImageAsset;
-      LottieAnimation.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation);
+      LottieAnimation.g(this.b);
       localObject3 = paramLottieImageAsset;
     }
     if (localObject3 != null)
     {
       localObject1 = localObject3;
       paramLottieImageAsset = (LottieImageAsset)localObject3;
-      if (LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation) != null)
+      if (LottieAnimation.d(this.b) != null)
       {
         localObject1 = localObject3;
-        LottieAnimation.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimLottieAnimation).put(localObject5, localObject3);
+        LottieAnimation.d(this.b).put(localObject5, localObject3);
         return localObject3;
       }
     }
@@ -145,7 +145,7 @@ class LottieAnimation$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.LottieAnimation.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ class ColorNoteSmallScreenRelativeLayout$6
   {
     try
     {
-      InputStream localInputStream = this.this$0.getContext().getAssets().open(this.jdField_a_of_type_JavaLangString);
-      ColorNoteSmallScreenRelativeLayout.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localInputStream, new ColorNoteSmallScreenRelativeLayout.6.1(this)));
+      InputStream localInputStream = this.this$0.getContext().getAssets().open(this.a);
+      ColorNoteSmallScreenRelativeLayout.a(this.this$0, LottieComposition.Factory.fromInputStream(this.b, localInputStream, new ColorNoteSmallScreenRelativeLayout.6.1(this)));
       return;
     }
     catch (Throwable localThrowable)
@@ -27,7 +27,7 @@ class ColorNoteSmallScreenRelativeLayout$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.6
  * JD-Core Version:    0.7.0.1
  */

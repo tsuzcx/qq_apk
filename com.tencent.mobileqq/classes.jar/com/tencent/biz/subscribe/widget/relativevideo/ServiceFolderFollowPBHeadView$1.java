@@ -19,16 +19,16 @@ class ServiceFolderFollowPBHeadView$1
     if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
       SubscribeLaucher.a(ServiceFolderFollowPBHeadView.a(this.a));
     } else {
-      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
+      QLog.e(ServiceFolderFollowPBHeadView.b(), 2, "jump error mJumpWebMessageListUrl is null");
     }
-    ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+    ServiceFolderFollowPBHeadView.b(this.a).setVisibility(8);
     ReportController.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,16 +18,11 @@ public class QQStoryCommentDialog
   extends ReportDialog
   implements View.OnClickListener, TextView.OnEditorActionListener, InputMethodLinearLayout.onSizeChangeListenner
 {
-  protected static final HashMap<String, String> a;
-  protected EditText a;
-  protected QQStoryCommentDialog.OnSendListener a;
-  protected String a;
-  protected boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  protected static final HashMap<String, String> a = new HashMap();
+  protected EditText b;
+  protected String c;
+  protected boolean d;
+  protected QQStoryCommentDialog.OnSendListener e;
   
   public int a(CharSequence paramCharSequence)
   {
@@ -40,7 +35,7 @@ public class QQStoryCommentDialog
     int i = 0;
     while (j < k)
     {
-      if (StringUtil.c(paramCharSequence.charAt(j))) {
+      if (StringUtil.isChinese(paramCharSequence.charAt(j))) {
         i += 3;
       } else {
         i += 1;
@@ -52,11 +47,11 @@ public class QQStoryCommentDialog
   
   public void dismiss()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.d)
     {
-      String str = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+      String str = this.b.getEditableText().toString();
       if (!TextUtils.isEmpty(str)) {
-        jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, str);
+        a.put(this.c, str);
       }
     }
     super.dismiss();
@@ -70,17 +65,21 @@ public class QQStoryCommentDialog
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    boolean bool = true;
     if (4 == paramInt)
     {
-      paramKeyEvent = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryCommentDialog$OnSendListener;
-      if (paramKeyEvent != null)
+      QQStoryCommentDialog.OnSendListener localOnSendListener = this.e;
+      if (localOnSendListener != null)
       {
-        this.jdField_a_of_type_Boolean = true;
-        paramKeyEvent.a(this, paramTextView.getText().toString());
-        return true;
+        this.d = true;
+        localOnSendListener.a(this, paramTextView.getText().toString());
+        break label47;
       }
     }
-    return false;
+    bool = false;
+    label47:
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool;
   }
   
   public void onSizeChange(boolean paramBoolean)
@@ -92,20 +91,20 @@ public class QQStoryCommentDialog
   
   public void show()
   {
-    String str = (String)jdField_a_of_type_JavaUtilHashMap.get(this.jdField_a_of_type_JavaLangString);
-    jdField_a_of_type_JavaUtilHashMap.clear();
+    String str = (String)a.get(this.c);
+    a.clear();
     if (!TextUtils.isEmpty(str))
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
-      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(str.length());
+      this.b.setText(str);
+      this.b.setSelection(str.length());
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryCommentDialog
  * JD-Core Version:    0.7.0.1
  */

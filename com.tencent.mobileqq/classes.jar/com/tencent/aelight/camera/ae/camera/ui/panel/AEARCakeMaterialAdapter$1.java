@@ -10,13 +10,13 @@ class AEARCakeMaterialAdapter$1
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialHolder.getLayoutPosition();
-    AEARCakeMaterialAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakeMaterialAdapter, i);
+    int i = this.a.getLayoutPosition();
+    AEARCakeMaterialAdapter.a(this.b, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakeMaterialAdapter.1
  * JD-Core Version:    0.7.0.1
  */

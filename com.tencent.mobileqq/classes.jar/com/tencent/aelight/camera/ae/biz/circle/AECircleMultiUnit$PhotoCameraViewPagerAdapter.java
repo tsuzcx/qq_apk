@@ -23,7 +23,7 @@ final class AECircleMultiUnit$PhotoCameraViewPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = AECircleMultiUnit.PageData.a((AECircleMultiUnit.PageData)this.a.get(paramInt));
+    View localView = AECircleMultiUnit.PageData.b((AECircleMultiUnit.PageData)this.a.get(paramInt));
     if ((AECircleMultiUnit.PageData.a((AECircleMultiUnit.PageData)this.a.get(paramInt)) instanceof AECirclePhotoUnit)) {
       ((AECirclePhotoUnit)AECircleMultiUnit.PageData.a((AECircleMultiUnit.PageData)this.a.get(paramInt))).a();
     }
@@ -38,7 +38,7 @@ final class AECircleMultiUnit$PhotoCameraViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleMultiUnit.PhotoCameraViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

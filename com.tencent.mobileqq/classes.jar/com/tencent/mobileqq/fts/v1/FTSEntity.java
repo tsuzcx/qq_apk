@@ -123,7 +123,7 @@ public abstract class FTSEntity
     String str = this.mContent;
     if ((str != null) && (!TextUtils.isEmpty(str)))
     {
-      this.mContentIndex = FTSV2FieldUtils.b(this.mContent);
+      this.mContentIndex = FTSV2FieldUtils.c(this.mContent);
       this.mSegmentCount += FTSV2FieldUtils.a(this.mContentIndex);
     }
     else
@@ -138,7 +138,7 @@ public abstract class FTSEntity
     String str = this.mContent;
     if ((str != null) && (!TextUtils.isEmpty(str)))
     {
-      this.mContentIndex = FTSV2FieldUtils.b(this.mContent);
+      this.mContentIndex = FTSV2FieldUtils.c(this.mContent);
       this.mSegmentCount += FTSV2FieldUtils.a(this.mContentIndex);
       return;
     }
@@ -159,7 +159,7 @@ public abstract class FTSEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v1.FTSEntity
  * JD-Core Version:    0.7.0.1
  */

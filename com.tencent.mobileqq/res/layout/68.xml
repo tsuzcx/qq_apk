@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="@android:color/white" android:paddingTop="14.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="62.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.common.danmaku.edit.views.RoundBackgroundLinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_weight="1.0" app:roundBackgroundColor="#fff7f7f7" app:roundBackgroundRadius="6.0dip">
+        <HorizontalScrollView android:scrollbars="none" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.tencent.common.danmaku.edit.views.RichEditText android:textSize="16.0dip" android:textColor="#ff262626" android:textColorHint="#ffa6a6a6" android:id="@id/bys" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" android:imeOptions="flagNoExtractUi" />
+        </HorizontalScrollView>
+        <ImageView android:id="@id/o5w" android:padding="6.0dip" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/h24" />
+        <RelativeLayout android:background="@drawable/h23" android:layout_width="25.0dip" android:layout_height="16.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="#ffb0b3bf" android:id="@id/qk1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </com.tencent.common.danmaku.edit.views.RoundBackgroundLinearLayout>
+    <com.tencent.common.danmaku.edit.views.RoundRelativeLayout android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="56.0dip" android:layout_height="30.0dip" app:round_radius="15.0dip">
+        <TextView android:textColor="#ffb0b3bf" android:gravity="center" android:id="@id/qnu" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="发布" android:includeFontPadding="false" />
+    </com.tencent.common.danmaku.edit.views.RoundRelativeLayout>
+</LinearLayout>

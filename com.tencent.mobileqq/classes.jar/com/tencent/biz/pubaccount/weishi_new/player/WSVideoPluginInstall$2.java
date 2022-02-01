@@ -13,14 +13,14 @@ class WSVideoPluginInstall$2
   {
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("[WSVideoPluginInstall.java][installPlugin] start install video sdk in subThread. mIsInitialized:");
-    localStringBuilder1.append(WSVideoPluginInstall.b());
+    localStringBuilder1.append(WSVideoPluginInstall.d());
     WSLog.e("WS_VIDEO_WSVideoPluginInstall", localStringBuilder1.toString());
-    if (!WSVideoPluginInstall.b()) {
+    if (!WSVideoPluginInstall.d()) {
       WSVideoPluginInstall.a(this.this$0);
     }
     try
     {
-      WSVideoPluginInstall.a(this.this$0).a(BaseApplicationImpl.getContext(), new WSVideoPluginInstall.SDKInstallListener(WSVideoPluginInstall.a(this.this$0)));
+      WSVideoPluginInstall.c(this.this$0).a(BaseApplicationImpl.getContext(), new WSVideoPluginInstall.SDKInstallListener(WSVideoPluginInstall.b(this.this$0)));
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ class WSVideoPluginInstall$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,13 +11,13 @@ class TKDToastModule$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), TKDToastModule.access$000(this.this$0, this.val$type), this.val$message, this.val$duration).a();
+    QQToast.makeText(BaseApplicationImpl.getApplication(), TKDToastModule.access$000(this.this$0, this.val$type), this.val$message, this.val$duration).show();
     this.val$promise.resolve("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDToastModule.1
  * JD-Core Version:    0.7.0.1
  */

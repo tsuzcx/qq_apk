@@ -10,12 +10,12 @@ class QQMapRoutingHelper$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsQQMapRoutingHelper$1.a.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_AndroidOsBundle.getInt("routeMode"));
+    this.c.a.a(this.a, this.b.getInt("routeMode"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.QQMapRoutingHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

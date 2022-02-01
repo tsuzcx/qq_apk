@@ -11,17 +11,17 @@ class ArkAiDictUpdateMgr$4
   {
     if (paramBoolean)
     {
-      QLog.i("ArkDict.Update", 1, String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkDictDictInfo.jdField_a_of_type_JavaLangString }));
-      this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr$IUpdateDictCallback.a(true);
+      QLog.i("ArkDict.Update", 1, String.format("updateDict, incremental update success, name=%s", new Object[] { this.a.b }));
+      this.b.a(true);
       return;
     }
-    QLog.i("ArkDict.Update", 1, String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkDictDictInfo.jdField_a_of_type_JavaLangString }));
-    ArkAiDictUpdateMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkDictArkAiDictUpdateMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkDictDictInfo, new ArkAiDictUpdateMgr.4.1(this));
+    QLog.i("ArkDict.Update", 1, String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.a.b }));
+    ArkAiDictUpdateMgr.a(this.d, this.c, this.a, new ArkAiDictUpdateMgr.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr.4
  * JD-Core Version:    0.7.0.1
  */

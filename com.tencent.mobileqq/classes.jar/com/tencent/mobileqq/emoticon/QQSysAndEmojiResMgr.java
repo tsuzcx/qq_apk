@@ -6,18 +6,17 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor;
 import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean;
+import com.tencent.mobileqq.emoticonview.download.AniStickerResReloaderMgr;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngineListener;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.abtest.ABTestController;
-import com.tencent.mobileqq.utils.abtest.ABTestUtil;
-import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
@@ -34,7 +33,8 @@ import mqq.app.MobileQQ;
 public class QQSysAndEmojiResMgr
   implements INetEngineListener
 {
-  private static final String KEY_TYPE_MD5 = "md5_type_";
+  public static final String EMOTICON_RES_DIRNAME = "qq_emoticon_res";
+  public static final String KEY_TYPE_MD5 = "md5_type_";
   public static final int REPORT_ENTRANCE_AIO = 1;
   public static final int REPORT_ENTRANCE_FAV_TEXT = 3;
   public static final int REPORT_ENTRANCE_FORWARD_INNER = 4;
@@ -47,13 +47,43 @@ public class QQSysAndEmojiResMgr
   public static final int RES_QQEMOJI = 3;
   public static final int RES_QQSYS_APNG = 4;
   public static final int RES_QQSYS_GIF = 1;
+  public static final int RES_QQSYS_LOTTIE = 5;
   public static final int RES_QQSYS_STATIC = 2;
   public static final int RES_SUCCESS = 100;
-  private static final String SP_QQ_EMOTICON = "qq_emoticon_sp";
+  public static final String SP_QQ_EMOTICON = "qq_emoticon_sp";
+  private static final String SVG_DIR_NAME = "qsvg";
   public static final String TAG = "QQSysAndEmojiResMgr";
   protected List<String> mDownloadingList = new ArrayList(3);
   private QQEmojiResImpl mEmojiResImpl = new QQEmojiResImpl();
   private QQSysFaceResImpl mQQSysFaceResImpl = new QQSysFaceResImpl();
+  
+  public static String getAniStickerFullResPath(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".json");
+    return getFullResPath(5, localStringBuilder.toString());
+  }
+  
+  public static String getAniStickerRandomResultFullResPath(String paramString1, String paramString2, String paramString3)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(".json");
+    return getFullResPath(5, localStringBuilder.toString());
+  }
   
   public static String getFullResPath(int paramInt, String paramString)
   {
@@ -65,7 +95,13 @@ public class QQSysAndEmojiResMgr
       {
         if (paramInt != 3)
         {
-          if (paramInt == 4) {
+          if (paramInt != 4)
+          {
+            if (paramInt == 5) {
+              localStringBuilder.append("qlottie");
+            }
+          }
+          else {
             localStringBuilder.append("sysface_res/apng");
           }
         }
@@ -118,6 +154,28 @@ public class QQSysAndEmojiResMgr
     localStringBuilder.append("res");
     localStringBuilder.append(File.separator);
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+  }
+  
+  public static String getSvgResSaveDirPath()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getResSavePath());
+    localStringBuilder.append("qsvg");
+    return localStringBuilder.toString();
+  }
+  
+  public static String getSvgResSavePath(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getSvgResSaveDirPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".svg");
+    return localStringBuilder.toString();
   }
   
   protected boolean checkNeedDownload(int paramInt, String paramString)
@@ -177,31 +235,22 @@ public class QQSysAndEmojiResMgr
   
   protected List<QQSysAndEmojiResMgr.DownloadResItem> getDownloadItemList()
   {
-    QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean localSystemAndEmojiConfBean = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)QConfigManager.a().a(545);
+    QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean localSystemAndEmojiConfBean = QQSysAndEmojiConfProcessor.a();
     ArrayList localArrayList = new ArrayList(3);
-    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.a)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.b)) && (checkNeedDownload(1, localSystemAndEmojiConfBean.b)))
-    {
-      Object localObject = ABTestController.a().a(545);
-      String str = ((ExpEntityInfo)localObject).getExpName();
-      ((ExpEntityInfo)localObject).a();
-      localObject = ((ExpEntityInfo)localObject).getAssignment();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("exp:");
-      localStringBuilder.append(str);
-      localStringBuilder.append(" grp:");
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append("url:");
-      localStringBuilder.append(localSystemAndEmojiConfBean.a);
-      localStringBuilder.append(" md5:");
-      localStringBuilder.append(localSystemAndEmojiConfBean.b);
-      ABTestUtil.a("QQSysAndEmojiConfProcessor", localStringBuilder.toString());
-      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.a, localSystemAndEmojiConfBean.b, 1));
+    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.b)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.c)) && (checkNeedDownload(1, localSystemAndEmojiConfBean.c))) {
+      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.b, localSystemAndEmojiConfBean.c, 1));
     }
-    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.c)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.d)) && (checkNeedDownload(2, localSystemAndEmojiConfBean.d))) {
-      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.c, localSystemAndEmojiConfBean.d, 2));
+    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.d)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.e)) && (checkNeedDownload(2, localSystemAndEmojiConfBean.e))) {
+      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.d, localSystemAndEmojiConfBean.e, 2));
     }
-    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.e)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.f)) && (checkNeedDownload(3, localSystemAndEmojiConfBean.f))) {
-      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.e, localSystemAndEmojiConfBean.f, 3));
+    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.f)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.g)) && (checkNeedDownload(3, localSystemAndEmojiConfBean.g))) {
+      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.f, localSystemAndEmojiConfBean.g, 3));
+    }
+    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.j)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.k)) && ((checkNeedDownload(4, localSystemAndEmojiConfBean.k)) || (!FileUtils.fileExists(getSvgResSaveDirPath())))) {
+      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.j, localSystemAndEmojiConfBean.k, 4));
+    }
+    if ((!TextUtils.isEmpty(localSystemAndEmojiConfBean.l)) && (!TextUtils.isEmpty(localSystemAndEmojiConfBean.m)) && ((checkNeedDownload(5, localSystemAndEmojiConfBean.m)) || (!FileUtils.fileExists(getFullResPath(5, ""))))) {
+      localArrayList.add(new QQSysAndEmojiResMgr.DownloadResItem(localSystemAndEmojiConfBean.l, localSystemAndEmojiConfBean.m, 5));
     }
     return localArrayList;
   }
@@ -257,6 +306,8 @@ public class QQSysAndEmojiResMgr
             getResImpl(1).resDownloadFinish();
           } else if (((QQSysAndEmojiResMgr.DownloadResItem)localObject).mType == 3) {
             getResImpl(2).resDownloadFinish();
+          } else if (((QQSysAndEmojiResMgr.DownloadResItem)localObject).mType == 5) {
+            AniStickerResReloaderMgr.getInstance().resDownloadFinish();
           }
         }
       }
@@ -386,7 +437,7 @@ public class QQSysAndEmojiResMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResMgr
  * JD-Core Version:    0.7.0.1
  */

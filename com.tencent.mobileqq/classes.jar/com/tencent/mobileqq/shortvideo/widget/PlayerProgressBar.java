@@ -10,38 +10,36 @@ import android.view.View;
 public class PlayerProgressBar
   extends View
 {
-  public int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  public int a = 1;
   public int b = 1;
   public int c = 1;
   private int d = -14342358;
   private int e = -15550475;
   private int f = -10066330;
   private int g;
+  private Rect h = new Rect();
+  private Paint i = new Paint();
   
   public PlayerProgressBar(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 1;
   }
   
   public PlayerProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 1;
   }
   
   private int a(int paramInt)
   {
-    int i = this.g;
-    int j = this.c;
-    if (i == j) {
+    int j = this.g;
+    int k = this.c;
+    if (j == k) {
       return paramInt;
     }
-    i = paramInt * i / j;
-    paramInt = i;
-    if (i <= 0) {
+    j = paramInt * j / k;
+    paramInt = j;
+    if (j <= 0) {
       paramInt = 1;
     }
     return paramInt;
@@ -49,11 +47,11 @@ public class PlayerProgressBar
   
   private int a(int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (paramInt1 == i) {
+    int j = this.a;
+    if (paramInt1 == j) {
       return paramInt2;
     }
-    paramInt2 = paramInt2 * paramInt1 / i;
+    paramInt2 = paramInt2 * paramInt1 / j;
     paramInt1 = paramInt2;
     if (paramInt2 <= 0) {
       paramInt1 = 1;
@@ -67,34 +65,34 @@ public class PlayerProgressBar
     if (super.isInEditMode()) {
       return;
     }
-    int i = this.b;
-    int j = this.jdField_a_of_type_Int;
-    if (i > j) {
-      this.b = j;
+    int j = this.b;
+    int k = this.a;
+    if (j > k) {
+      this.b = k;
     }
-    j = super.getWidth();
-    int k = super.getHeight();
-    i = a(this.b, j);
-    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    k = super.getWidth();
+    int m = super.getHeight();
+    j = a(this.b, k);
+    Rect localRect = this.h;
     localRect.top = 0;
-    localRect.bottom = k;
-    localRect.left = i;
-    localRect.right = j;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    j = a(i);
-    localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.bottom = m;
+    localRect.left = j;
+    localRect.right = k;
+    this.i.setColor(this.d);
+    paramCanvas.drawRect(this.h, this.i);
+    k = a(j);
+    localRect = this.h;
     localRect.left = 0;
-    localRect.right = j;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (j < i)
+    localRect.right = k;
+    this.i.setColor(this.e);
+    paramCanvas.drawRect(this.h, this.i);
+    if (k < j)
     {
-      localRect = this.jdField_a_of_type_AndroidGraphicsRect;
-      localRect.left = j;
-      localRect.right = i;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.f);
-      paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localRect = this.h;
+      localRect.left = k;
+      localRect.right = j;
+      this.i.setColor(this.f);
+      paramCanvas.drawRect(this.h, this.i);
     }
   }
   
@@ -110,7 +108,7 @@ public class PlayerProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.PlayerProgressBar
  * JD-Core Version:    0.7.0.1
  */

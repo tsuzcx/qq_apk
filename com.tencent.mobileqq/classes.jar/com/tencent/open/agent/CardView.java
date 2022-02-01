@@ -22,7 +22,7 @@ public class CardView
     this.b = paramContext.heightPixels;
   }
   
-  protected float a()
+  protected float getAspectRatio()
   {
     return 2.214984F;
   }
@@ -42,13 +42,13 @@ public class CardView
   {
     super.onMeasure(paramInt1, paramInt2);
     float f1 = this.a;
-    float f2 = f1 / a();
+    float f2 = f1 / getAspectRatio();
     super.setMeasuredDimension((int)f1, (int)f2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.CardView
  * JD-Core Version:    0.7.0.1
  */

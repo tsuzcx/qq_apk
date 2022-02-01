@@ -16,7 +16,7 @@ public class HomeFeedPresenter$VideoDeleteRec
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
     SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "upload status change event:%s", paramDeleteStoryVideoEvent);
-    HomeFeedPresenter.a(paramHomeFeedPresenter, paramDeleteStoryVideoEvent.a);
+    HomeFeedPresenter.b(paramHomeFeedPresenter, paramDeleteStoryVideoEvent.a);
   }
   
   public Class acceptEventClass()

@@ -18,17 +18,17 @@ class TroopAioKeywordTipBar$4
   
   public void run()
   {
-    TroopAioKeywordTipBar.b(this.this$0, false);
-    if (!TroopAioKeywordTipBar.c(this.this$0))
+    TroopAioKeywordTipBar.c(this.this$0, false);
+    if (!TroopAioKeywordTipBar.h(this.this$0))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopAioKeywordTipBar", 2, "checkMsgForShow, mIsCanCheck = false");
       }
       return;
     }
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-    int j = this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-    TroopAioKeywordTipManager localTroopAioKeywordTipManager = (TroopAioKeywordTipManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER);
+    int i = this.this$0.J.getFirstVisiblePosition() - this.this$0.J.getHeaderViewsCount();
+    int j = this.this$0.J.getLastVisiblePosition() - this.this$0.J.getHeaderViewsCount();
+    TroopAioKeywordTipManager localTroopAioKeywordTipManager = (TroopAioKeywordTipManager)this.this$0.D.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER);
     if (i >= 0)
     {
       if (j < 0) {
@@ -39,7 +39,7 @@ class TroopAioKeywordTipBar$4
       Object localObject;
       while (i <= j)
       {
-        localObject = (MessageRecord)this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getItem(i);
+        localObject = (MessageRecord)this.this$0.I.getItem(i);
         if (localObject != null) {
           if (!((MessageRecord)localObject).isSend()) {
             localArrayList1.add(localObject);
@@ -51,16 +51,16 @@ class TroopAioKeywordTipBar$4
       }
       if (localArrayList2.size() > 0)
       {
-        if ((TroopAioKeywordTipBar.b(this.this$0) != null) && (TroopAioKeywordTipBar.b(this.this$0) == localArrayList2.get(0))) {
+        if ((TroopAioKeywordTipBar.i(this.this$0) != null) && (TroopAioKeywordTipBar.i(this.this$0) == localArrayList2.get(0))) {
           return;
         }
-        localObject = localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.a(this.this$0), 1);
-        if ((TroopAioKeywordTipBar.a(this.this$0)) && ((((Pair)localObject).second == null) || ((TroopAioKeywordTipBar.a(this.this$0) != null) && (TroopAioKeywordTipBar.a(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
+        localObject = localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.j(this.this$0), 1);
+        if ((TroopAioKeywordTipBar.a(this.this$0)) && ((((Pair)localObject).second == null) || ((TroopAioKeywordTipBar.e(this.this$0) != null) && (TroopAioKeywordTipBar.e(this.this$0).ruleId != ((Integer)((Pair)localObject).second).intValue())))) {
           TroopAioKeywordTipBar.a(this.this$0, false);
         } else {
           TroopAioKeywordTipBar.b(this.this$0, (MessageRecord)localArrayList2.get(0));
         }
-        localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.a(this.this$0), 1, new TroopAioKeywordTipBar.4.1(this, localArrayList1, localTroopAioKeywordTipManager));
+        localTroopAioKeywordTipManager.a(localArrayList2, TroopAioKeywordTipBar.j(this.this$0), 1, new TroopAioKeywordTipBar.4.1(this, localArrayList1, localTroopAioKeywordTipManager));
         return;
       }
       if ((localArrayList1.size() > 0) && (!TroopAioKeywordTipBar.a(this.this$0))) {
@@ -71,7 +71,7 @@ class TroopAioKeywordTipBar$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.4
  * JD-Core Version:    0.7.0.1
  */

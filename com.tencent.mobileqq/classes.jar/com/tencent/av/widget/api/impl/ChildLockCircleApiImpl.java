@@ -23,22 +23,22 @@ public class ChildLockCircleApiImpl
     try
     {
       Object localObject = (AVActivity)paramContext;
-      paramContext = ((AVActivity)localObject).a();
-      localObject = (DoubleVideoCtrlUI)((AVActivity)localObject).a;
-      boolean bool = paramContext.a().w;
+      paramContext = ((AVActivity)localObject).r();
+      localObject = (DoubleVideoCtrlUI)((AVActivity)localObject).K;
+      boolean bool = paramContext.k().af;
       if (!bool)
       {
-        paramContext.a().x = true;
+        paramContext.k().ag = true;
         ((DoubleVideoCtrlUI)localObject).e(true);
-        paramContext.a().v = 2;
+        paramContext.k().ah = 2;
         if (QLog.isColorLevel()) {
           QLog.e("ChildLockCircleApiImpl", 2, "[childLock] action lock");
         }
         ReportController.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
         return;
       }
-      paramContext.a().x = false;
-      ((DoubleVideoCtrlUI)localObject).s();
+      paramContext.k().ag = false;
+      ((DoubleVideoCtrlUI)localObject).w();
       if (QLog.isColorLevel()) {
         QLog.e("ChildLockCircleApiImpl", 2, "[childLock] action unlock");
       }
@@ -57,7 +57,7 @@ public class ChildLockCircleApiImpl
   {
     try
     {
-      if (!((AVActivity)paramContext).a().a().w)
+      if (!((AVActivity)paramContext).r().k().af)
       {
         ReportController.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
         return;
@@ -73,10 +73,10 @@ public class ChildLockCircleApiImpl
   
   public boolean onLockSuccess(Context paramContext)
   {
-    paramContext = ((AVActivity)paramContext).a();
+    paramContext = ((AVActivity)paramContext).r();
     if (paramContext != null)
     {
-      paramContext.a().v = 1;
+      paramContext.k().ah = 1;
       return true;
     }
     return false;
@@ -89,12 +89,12 @@ public class ChildLockCircleApiImpl
   
   public boolean updateText(Context paramContext)
   {
-    return ((AVActivity)paramContext).a().a().w ^ true;
+    return ((AVActivity)paramContext).r().k().af ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.widget.api.impl.ChildLockCircleApiImpl
  * JD-Core Version:    0.7.0.1
  */

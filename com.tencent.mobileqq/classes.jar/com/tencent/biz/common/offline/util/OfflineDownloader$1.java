@@ -19,11 +19,11 @@ class OfflineDownloader$1
     paramTMAssistantDownloadClient = (DownloadInfo)OfflineDownloader.a().get(paramString);
     if (paramTMAssistantDownloadClient != null)
     {
-      if (paramTMAssistantDownloadClient.a == null) {
+      if (paramTMAssistantDownloadClient.d == null) {
         return;
       }
       int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      paramTMAssistantDownloadClient.a.progress(i);
+      paramTMAssistantDownloadClient.d.progress(i);
     }
   }
   
@@ -51,7 +51,7 @@ class OfflineDownloader$1
       return;
     }
     paramString2 = (DownloadInfo)OfflineDownloader.a().get(paramString1);
-    if ((paramString2 != null) && (paramString2.a != null))
+    if ((paramString2 != null) && (paramString2.d != null))
     {
       if (paramInt1 != 2)
       {
@@ -62,7 +62,7 @@ class OfflineDownloader$1
             if (paramInt1 != 5) {
               return;
             }
-            this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
+            this.a.a(paramString2.d, paramString1, paramString2.c, paramInt2, "offline zip download fail");
             try
             {
               this.a.a.cancelDownloadTask(paramString1);
@@ -106,7 +106,7 @@ class OfflineDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.util.OfflineDownloader.1
  * JD-Core Version:    0.7.0.1
  */

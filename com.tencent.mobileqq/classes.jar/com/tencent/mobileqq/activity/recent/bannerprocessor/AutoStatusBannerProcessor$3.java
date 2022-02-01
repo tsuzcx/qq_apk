@@ -16,14 +16,14 @@ class AutoStatusBannerProcessor$3
   
   public void onClick(View paramView)
   {
-    Intent localIntent = AutoStatusManager.a((AppInterface)AutoStatusBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorAutoStatusBannerProcessor).getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConfigAutoStatusItem.a);
-    AutoStatusBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorAutoStatusBannerProcessor).startActivity(localIntent);
+    Intent localIntent = AutoStatusManager.a((AppInterface)AutoStatusBannerProcessor.b(this.b).getAppRuntime(), this.a.b);
+    AutoStatusBannerProcessor.c(this.b).startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.AutoStatusBannerProcessor.3
  * JD-Core Version:    0.7.0.1
  */

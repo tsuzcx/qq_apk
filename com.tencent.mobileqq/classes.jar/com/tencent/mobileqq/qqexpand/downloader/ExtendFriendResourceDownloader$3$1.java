@@ -59,7 +59,7 @@ class ExtendFriendResourceDownloader$3$1
         ((StringBuilder)localObject).append(localLimitChatRes.b);
         QLog.i("ExtendFriendResourceDownloader", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = ExpandLimitChatResourceUtil.c();
+      Object localObject = ExpandLimitChatResourceUtil.e();
       boolean bool = ExtendFriendResourceDownloader.b(this.a.this$0, paramNetResp.mReq.mOutPath, (String)localObject);
       i = bool;
       if (!bool)
@@ -70,10 +70,10 @@ class ExtendFriendResourceDownloader$3$1
       label318:
       if ((i != 0) && (ExtendFriendResourceDownloader.a(this.a.this$0, localLimitChatRes)))
       {
-        ((IExpandHandler)ExtendFriendResourceDownloader.a(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(8, true, Boolean.valueOf(true));
+        ((IExpandHandler)ExtendFriendResourceDownloader.e(this.a.this$0).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(8, true, Boolean.valueOf(true));
         QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  needNotifyUi  .");
       }
-      ExtendFriendResourceDownloader.a(this.a.this$0, localLimitChatRes);
+      ExtendFriendResourceDownloader.b(this.a.this$0, localLimitChatRes);
     }
   }
   
@@ -81,7 +81,7 @@ class ExtendFriendResourceDownloader$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.downloader.ExtendFriendResourceDownloader.3.1
  * JD-Core Version:    0.7.0.1
  */

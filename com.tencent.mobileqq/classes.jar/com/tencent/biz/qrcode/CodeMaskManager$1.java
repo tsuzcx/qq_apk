@@ -18,15 +18,15 @@ class CodeMaskManager$1
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    SharedPreferences.Editor localEditor = this.a.edit();
     localEditor.putLong("updateTemplate2", System.currentTimeMillis());
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("https://qm.qq.com/cgi-bin/tpl?v=1&os=a&resx=");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
-    ((StringBuilder)localObject1).append("&resy=");
     ((StringBuilder)localObject1).append(this.b);
-    ((StringBuilder)localObject1).append("&t=");
+    ((StringBuilder)localObject1).append("&resy=");
     ((StringBuilder)localObject1).append(this.c);
+    ((StringBuilder)localObject1).append("&t=");
+    ((StringBuilder)localObject1).append(this.d);
     ((StringBuilder)localObject1).append("&");
     ((StringBuilder)localObject1).append("mType");
     ((StringBuilder)localObject1).append("=");
@@ -34,7 +34,7 @@ class CodeMaskManager$1
     Object localObject2 = ((StringBuilder)localObject1).toString();
     try
     {
-      localObject1 = HttpUtil.openUrl(this.this$0.jdField_a_of_type_AndroidAppActivity, (String)localObject2, "GET", null, null);
+      localObject1 = HttpUtil.openUrl(this.this$0.c, (String)localObject2, "GET", null, null);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -50,7 +50,7 @@ class CodeMaskManager$1
         localObject2 = ((JSONObject)localObject2).getJSONArray("tpls");
         if (((JSONArray)localObject2).length() > 0)
         {
-          this.this$0.jdField_a_of_type_AndroidOsHandler.post(new CodeMaskManager.1.1(this, (JSONArray)localObject2));
+          this.this$0.g.post(new CodeMaskManager.1.1(this, (JSONArray)localObject2));
           localEditor.putString("tpl_json", (String)localObject1);
         }
       }
@@ -63,7 +63,7 @@ class CodeMaskManager$1
       localEditor.putLong("updateTemplate2", 0L);
     }
     localEditor.commit();
-    this.this$0.jdField_a_of_type_JavaLangThread = null;
+    this.this$0.d = null;
   }
 }
 

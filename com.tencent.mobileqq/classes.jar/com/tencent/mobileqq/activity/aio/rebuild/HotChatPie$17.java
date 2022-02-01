@@ -20,21 +20,21 @@ class HotChatPie$17
   
   public void run()
   {
-    if (!NetworkUtil.isNetworkAvailable(this.this$0.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.this$0.e))
     {
-      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, 1, this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131694425), 0).a();
+      QQToast.makeText(this.this$0.e, 1, this.this$0.e.getString(2131892105), 0).show();
       return;
     }
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isBuLuoHotChat()))
+    if ((this.this$0.bR != null) && (this.this$0.bR.isBuLuoHotChat()))
     {
       Object localObject1 = null;
-      Object localObject2 = (TicketManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-      Object localObject3 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      Object localObject2 = (TicketManager)this.this$0.d.getManager(2);
+      Object localObject3 = this.this$0.d.getCurrentAccountUin();
       if (localObject2 != null) {
         localObject1 = ((TicketManager)localObject2).getSkey((String)localObject3);
       }
       localObject2 = new Bundle();
-      Object localObject4 = this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.getTribeId();
+      Object localObject4 = this.this$0.bR.getTribeId();
       ((Bundle)localObject2).putString("bid", (String)localObject4);
       Object localObject5 = new StringBuilder();
       ((StringBuilder)localObject5).append(this.a);
@@ -56,11 +56,11 @@ class HotChatPie$17
       ((StringBuilder)localObject5).append((String)localObject1);
       ((Bundle)localObject2).putString("Cookie", ((StringBuilder)localObject5).toString());
       ((Bundle)localObject2).putString("Referer", String.format("https://buluo.qq.com/mobile/barindex.html?bid=%s&scene=detail_titleNav&_wv=1027", new Object[] { localObject4 }));
-      localObject1 = this.this$0.jdField_a_of_type_AndroidContentContext;
-      localObject3 = this.this$0.jdField_a_of_type_ComTencentWidgetXListView;
-      localObject4 = this.this$0.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter;
+      localObject1 = this.this$0.e;
+      localObject3 = this.this$0.ck;
+      localObject4 = this.this$0.cl;
       localObject5 = HotChatPie.a(this.this$0);
-      TextView localTextView = this.this$0.j;
+      TextView localTextView = this.this$0.cm;
       if (this.b == 0) {
         i = 1;
       } else {
@@ -72,7 +72,7 @@ class HotChatPie$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.17
  * JD-Core Version:    0.7.0.1
  */

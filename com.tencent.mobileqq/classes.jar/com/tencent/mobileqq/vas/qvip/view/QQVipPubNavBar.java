@@ -20,14 +20,14 @@ import com.tencent.qphone.base.util.QLog;
 public class QQVipPubNavBar
   extends NavBarCommon
 {
-  private static final String jdField_a_of_type_JavaLangString = "QQVipPubNavBar";
-  private int jdField_a_of_type_Int = 0;
+  private static final String b = "QQVipPubNavBar";
   protected ImageView a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
+  private RelativeLayout c;
+  private LinearLayout d;
+  private TextView e;
+  private TextView f;
+  private String g;
+  private int h = 0;
   
   public QQVipPubNavBar(Context paramContext)
   {
@@ -49,31 +49,31 @@ public class QQVipPubNavBar
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
+    this.d = new LinearLayout(getContext());
     Object localObject = new RelativeLayout.LayoutParams(-2, -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    this.d.setOrientation(0);
     ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.b(40.0F, getResources());
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
+    addView(this.d, (ViewGroup.LayoutParams)localObject);
+    this.c = new RelativeLayout(getContext());
     localObject = new LinearLayout.LayoutParams(AIOUtils.b(30.0F, getResources()), AIOUtils.b(64.0F, getResources()));
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131369216);
+    this.d.addView(this.c, (ViewGroup.LayoutParams)localObject);
+    this.a = new ImageView(getContext());
+    this.a.setId(2131436194);
     localObject = new RelativeLayout.LayoutParams(AIOUtils.b(24.0F, getResources()), AIOUtils.b(24.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.c.addView(this.a, (ViewGroup.LayoutParams)localObject);
+    this.f = new TextView(getContext());
     localObject = new LinearLayout.LayoutParams(-2, -1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new QQVipPubNavBar.1(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.f.setSingleLine();
+    this.f.setTextColor(-1);
+    this.f.setTextSize(10.0F);
+    this.f.setGravity(17);
+    this.d.addView(this.f, (ViewGroup.LayoutParams)localObject);
+    this.d.setOnClickListener(new QQVipPubNavBar.1(this));
+    this.d.setVisibility(8);
   }
   
   private void b(String paramString)
@@ -88,46 +88,46 @@ public class QQVipPubNavBar
     getContext().startActivity(localIntent);
   }
   
-  public TextView a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369249));
-    }
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "[getTitleTextView] titleTv is null");
-    }
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
   public void a(String paramString)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.a;
     if (localImageView != null)
     {
       localImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130847159);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.a.setImageResource(2130848711);
+      this.f.setText("");
+      this.g = paramString;
       setCurType(4);
     }
   }
   
+  public TextView getTitleTextView()
+  {
+    if (this.e == null) {
+      this.e = ((TextView)findViewById(2131436227));
+    }
+    if (this.e == null)
+    {
+      this.e = new TextView(getContext());
+      QLog.e(b, 2, "[getTitleTextView] titleTv is null");
+    }
+    return this.e;
+  }
+  
   public void setCurType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0)
+    this.h = paramInt;
+    if (this.h == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.d.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.d.setVisibility(0);
   }
   
   public void setTitle(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131378784);
+    TextView localTextView = (TextView)findViewById(2131447463);
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -135,7 +135,7 @@ public class QQVipPubNavBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipPubNavBar
  * JD-Core Version:    0.7.0.1
  */

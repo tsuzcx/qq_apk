@@ -2,16 +2,16 @@ package com.tencent.mobileqq.startup.step;
 
 class MigrateSubscribeDB$SubscribeRecentData
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  String d;
-  String e;
-  String f;
+  String a;
+  String b;
+  String c;
+  long d;
+  long e;
+  long f;
+  String g;
+  String h;
+  String i;
+  int j;
   
   private MigrateSubscribeDB$SubscribeRecentData(MigrateSubscribeDB paramMigrateSubscribeDB) {}
   
@@ -19,31 +19,31 @@ class MigrateSubscribeDB$SubscribeRecentData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mSubscribeID: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" | mSubscribeName: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" | mLastMsg: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" | mLastMsgTime: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" | mLastMsgID: ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(" | mLastReorderTime: ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(" | mDraft: ");
     localStringBuilder.append(this.d);
-    localStringBuilder.append(" | mDraftTime: ");
+    localStringBuilder.append(" | mLastMsgID: ");
     localStringBuilder.append(this.e);
-    localStringBuilder.append(" | mSubscribeHeadUrl: ");
+    localStringBuilder.append(" | mLastReorderTime: ");
     localStringBuilder.append(this.f);
+    localStringBuilder.append(" | mDraft: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" | mDraftTime: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(" | mSubscribeHeadUrl: ");
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" | mUnreadCount: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.j);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.MigrateSubscribeDB.SubscribeRecentData
  * JD-Core Version:    0.7.0.1
  */

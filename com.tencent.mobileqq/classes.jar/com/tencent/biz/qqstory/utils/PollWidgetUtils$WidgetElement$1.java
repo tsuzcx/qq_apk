@@ -11,9 +11,9 @@ class PollWidgetUtils$WidgetElement$1
   
   public void onClick(View paramView)
   {
-    PollWidgetUtils.OnWidgetElementClickListener localOnWidgetElementClickListener = this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener;
+    PollWidgetUtils.OnWidgetElementClickListener localOnWidgetElementClickListener = this.a.k;
     if (localOnWidgetElementClickListener != null) {
-      localOnWidgetElementClickListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper, this.a);
+      localOnWidgetElementClickListener.a(this.a.i, this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

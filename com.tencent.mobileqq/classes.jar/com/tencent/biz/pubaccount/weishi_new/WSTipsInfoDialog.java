@@ -12,27 +12,27 @@ public class WSTipsInfoDialog
   extends SafeDialog
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private Context a;
+  private TextView b;
   
   public WSTipsInfoDialog(Context paramContext)
   {
-    this(paramContext, 2131755338);
+    this(paramContext, 2131952032);
   }
   
   protected WSTipsInfoDialog(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     b();
   }
   
   private void b()
   {
-    setContentView(2131559997);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381253));
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131381213);
-    TextView localTextView = (TextView)findViewById(2131381245);
+    setContentView(2131626040);
+    this.b = ((TextView)findViewById(2131450301));
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131450261);
+    TextView localTextView = (TextView)findViewById(2131450293);
     localFrameLayout.setOnClickListener(this);
     localTextView.setOnClickListener(this);
   }
@@ -46,13 +46,13 @@ public class WSTipsInfoDialog
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.b.setText(paramString);
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i != 2131381213) && (i != 2131381245)) {
+    if ((i != 2131450261) && (i != 2131450293)) {
       return;
     }
     WSFollowBeaconReport.c();
@@ -61,7 +61,7 @@ public class WSTipsInfoDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSTipsInfoDialog
  * JD-Core Version:    0.7.0.1
  */

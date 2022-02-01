@@ -18,9 +18,9 @@ class LoginWelcomeManager$2
       QLog.d("LoginWelcomeManager", 2, String.format("onTroopManagerFailed result=%s", new Object[] { Integer.valueOf(paramInt2) }));
     }
     if (1 == paramInt1) {
-      QQToast.a(LoginWelcomeManager.a(this.a).getApp(), 4, 2131718220, 1).a();
+      QQToast.makeText(LoginWelcomeManager.b(this.a).getApp(), 4, 2131915702, 1).show();
     }
-    LoginWelcomeManager.a(this.a).removeObserver(this);
+    LoginWelcomeManager.b(this.a).removeObserver(this);
     this.a.b();
   }
   
@@ -33,7 +33,7 @@ class LoginWelcomeManager$2
     }
     if (1 == paramInt1)
     {
-      QQToast.a(LoginWelcomeManager.a(this.a).getApp(), 5, 2131718221, 1).a();
+      QQToast.makeText(LoginWelcomeManager.b(this.a).getApp(), 5, 2131915703, 1).show();
       Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
       localBundle.putString("uin", String.valueOf(paramString));
       paramInt1 = i;
@@ -42,7 +42,7 @@ class LoginWelcomeManager$2
       }
       localBundle.putInt("result", paramInt1);
     }
-    LoginWelcomeManager.a(this.a).removeObserver(this);
+    LoginWelcomeManager.b(this.a).removeObserver(this);
     this.a.b();
   }
   
@@ -67,12 +67,12 @@ class LoginWelcomeManager$2
       }
     }
     this.a.b();
-    LoginWelcomeManager.a(this.a).removeObserver(this);
+    LoginWelcomeManager.b(this.a).removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeManager.2
  * JD-Core Version:    0.7.0.1
  */

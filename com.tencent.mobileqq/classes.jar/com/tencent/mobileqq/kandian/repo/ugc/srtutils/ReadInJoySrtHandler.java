@@ -8,17 +8,17 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class ReadInJoySrtHandler
 {
   public static int a = 1;
-  private static ReadInJoySrtHandler jdField_a_of_type_ComTencentMobileqqKandianRepoUgcSrtutilsReadInJoySrtHandler;
-  private SparseArray<ReadInJoySrtHandler.IRuleManager> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private static ReadInJoySrtHandler c;
+  private SparseArray<ReadInJoySrtHandler.IRuleManager> b = new SparseArray();
   
   private ReadInJoySrtHandler.IRuleManager a(int paramInt)
   {
-    ReadInJoySrtHandler.IRuleManager localIRuleManager2 = (ReadInJoySrtHandler.IRuleManager)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    ReadInJoySrtHandler.IRuleManager localIRuleManager2 = (ReadInJoySrtHandler.IRuleManager)this.b.get(paramInt);
     ReadInJoySrtHandler.IRuleManager localIRuleManager1 = localIRuleManager2;
     if (localIRuleManager2 == null)
     {
       localIRuleManager1 = SRTFactory.a(paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localIRuleManager1);
+      this.b.put(paramInt, localIRuleManager1);
     }
     return localIRuleManager1;
   }
@@ -27,10 +27,10 @@ public class ReadInJoySrtHandler
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqKandianRepoUgcSrtutilsReadInJoySrtHandler == null) {
-        jdField_a_of_type_ComTencentMobileqqKandianRepoUgcSrtutilsReadInJoySrtHandler = new ReadInJoySrtHandler();
+      if (c == null) {
+        c = new ReadInJoySrtHandler();
       }
-      ReadInJoySrtHandler localReadInJoySrtHandler = jdField_a_of_type_ComTencentMobileqqKandianRepoUgcSrtutilsReadInJoySrtHandler;
+      ReadInJoySrtHandler localReadInJoySrtHandler = c;
       return localReadInJoySrtHandler;
     }
     finally {}
@@ -74,7 +74,7 @@ public class ReadInJoySrtHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.srtutils.ReadInJoySrtHandler
  * JD-Core Version:    0.7.0.1
  */

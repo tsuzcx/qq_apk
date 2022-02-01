@@ -6,32 +6,14 @@ import java.util.Locale;
 
 public class LogUtils
 {
-  private static String a(String paramString, Object... paramVarArgs)
-  {
-    if (paramString == null) {
-      return "null";
-    }
-    String str = paramString;
-    if (paramVarArgs != null)
-    {
-      if (paramVarArgs.length == 0) {
-        return paramString;
-      }
-      str = String.format(Locale.US, paramString, paramVarArgs);
-    }
-    return str;
-  }
-  
   public static void a(String paramString, Object... paramVarArgs)
   {
     a(4, paramString, paramVarArgs);
   }
   
-  public static void a(Throwable paramThrowable) {}
-  
   private static boolean a(int paramInt, String paramString, Object... paramVarArgs)
   {
-    paramString = a(paramString, paramVarArgs);
+    paramString = f(paramString, paramVarArgs);
     if (paramInt != 3)
     {
       if (paramInt != 4)
@@ -74,17 +56,9 @@ public class LogUtils
     return true;
   }
   
-  public static boolean a(String paramString, Object... paramVarArgs)
-  {
-    if (ToggleSetting.c()) {
-      return a(5, paramString, paramVarArgs);
-    }
-    return true;
-  }
-  
   public static boolean a(Throwable paramThrowable)
   {
-    if (ToggleSetting.c()) {
+    if (ToggleSetting.p()) {
       return a(5, paramThrowable);
     }
     return true;
@@ -92,24 +66,50 @@ public class LogUtils
   
   public static void b(String paramString, Object... paramVarArgs)
   {
-    if (ToggleSetting.c()) {
+    if (ToggleSetting.p()) {
       a(3, paramString, paramVarArgs);
     }
   }
   
-  public static boolean b(String paramString, Object... paramVarArgs)
+  public static void b(Throwable paramThrowable) {}
+  
+  public static boolean c(String paramString, Object... paramVarArgs)
   {
-    if (ToggleSetting.c()) {
+    if (ToggleSetting.p()) {
+      return a(5, paramString, paramVarArgs);
+    }
+    return true;
+  }
+  
+  public static boolean d(String paramString, Object... paramVarArgs)
+  {
+    if (ToggleSetting.p()) {
       return a(6, paramString, paramVarArgs);
     }
     return true;
   }
   
-  public static void c(String paramString, Object... paramVarArgs) {}
+  public static void e(String paramString, Object... paramVarArgs) {}
+  
+  private static String f(String paramString, Object... paramVarArgs)
+  {
+    if (paramString == null) {
+      return "null";
+    }
+    String str = paramString;
+    if (paramVarArgs != null)
+    {
+      if (paramVarArgs.length == 0) {
+        return paramString;
+      }
+      str = String.format(Locale.US, paramString, paramVarArgs);
+    }
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.LogUtils
  * JD-Core Version:    0.7.0.1
  */

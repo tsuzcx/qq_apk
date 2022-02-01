@@ -18,13 +18,12 @@ import org.xmlpull.v1.XmlSerializer;
 public class StructMsgItemTagList
   extends AbsStructMsgElement
 {
-  public ArrayList<AbsStructMsgElement> a;
-  private String ac = "";
+  public ArrayList<AbsStructMsgElement> au = new ArrayList();
+  private String av = "";
   
   public StructMsgItemTagList()
   {
-    this.jdField_a_of_type_JavaLangString = "taglist";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = "taglist";
   }
   
   private LinearLayout a(Context paramContext)
@@ -33,9 +32,9 @@ public class StructMsgItemTagList
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.setOrientation(0);
     paramContext.setLayoutParams(localLayoutParams);
-    paramContext.setId(2131362418);
-    if (AppSetting.d) {
-      paramContext.setContentDescription(this.ac);
+    paramContext.setId(2131428026);
+    if (AppSetting.e) {
+      paramContext.setContentDescription(this.av);
     }
     return paramContext;
   }
@@ -55,10 +54,10 @@ public class StructMsgItemTagList
         for (;;)
         {
           paramBundle = paramView;
-          if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          if (i >= this.au.size()) {
             break;
           }
-          ((AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, ((LinearLayout)localObject).getChildAt(i), localBundle);
+          ((AbsStructMsgElement)this.au.get(i)).a(paramContext, ((LinearLayout)localObject).getChildAt(i), localBundle);
           i += 1;
         }
       }
@@ -73,10 +72,10 @@ public class StructMsgItemTagList
       for (;;)
       {
         paramBundle = paramView;
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i >= this.au.size()) {
           break;
         }
-        paramBundle = ((AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, null, localBundle);
+        paramBundle = ((AbsStructMsgElement)this.au.get(i)).a(paramContext, null, localBundle);
         if (j == 0)
         {
           LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
@@ -94,15 +93,10 @@ public class StructMsgItemTagList
     return paramBundle;
   }
   
-  public String a()
-  {
-    return "taglist";
-  }
-  
   public void a(AbsStructMsgElement paramAbsStructMsgElement)
   {
     if ((paramAbsStructMsgElement instanceof StructMsgItemTag)) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramAbsStructMsgElement);
+      this.au.add(paramAbsStructMsgElement);
     }
   }
   
@@ -116,7 +110,7 @@ public class StructMsgItemTagList
       AbsStructMsgElement localAbsStructMsgElement = StructMsgElementFactory.a(paramObjectInput.readUTF());
       if (localAbsStructMsgElement != null)
       {
-        localAbsStructMsgElement.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+        localAbsStructMsgElement.as = this.as;
         localAbsStructMsgElement.a(paramObjectInput);
         a(localAbsStructMsgElement);
       }
@@ -127,8 +121,8 @@ public class StructMsgItemTagList
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramObjectOutput.writeInt(this.au.size());
+    Iterator localIterator = this.au.iterator();
     while (localIterator.hasNext()) {
       ((AbsStructMsgElement)localIterator.next()).a(paramObjectOutput);
     }
@@ -136,12 +130,12 @@ public class StructMsgItemTagList
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramXmlSerializer.startTag(null, this.b);
+    Iterator localIterator = this.au.iterator();
     while (localIterator.hasNext()) {
       ((AbsStructMsgElement)localIterator.next()).a(paramXmlSerializer);
     }
-    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
+    paramXmlSerializer.endTag(null, this.b);
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
@@ -176,10 +170,15 @@ public class StructMsgItemTagList
     }
     return true;
   }
+  
+  public String b()
+  {
+    return "taglist";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemTagList
  * JD-Core Version:    0.7.0.1
  */

@@ -27,34 +27,34 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 public class CfgProcess
 {
-  private final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(10);
-  private final ConcurrentHashMap<String, CopyOnWriteArraySet<CfgProcess.OnGetConfigListener>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private final SparseArray<String> a = new SparseArray(10);
+  private final ConcurrentHashMap<String, CopyOnWriteArraySet<CfgProcess.OnGetConfigListener>> b;
   
   public CfgProcess()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(271, "batch_add_friend_for_troop_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(275, "confess_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(358, "contact_top_entry_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(372, "breaking_ice_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(326, "sosointerface_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(357, "register_invitation_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(330, "hiboom_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(296, "extend_friend_config_785");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(369, "account_logout_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(379, "qqsettingme_f2f_guide_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(378, "profile_btn_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(381, "profile_switch_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(401, "smart_devices_discovery_config");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(407, "hide_qq_xman");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(405, "add_contact_page_public_account_switch");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(408, "select_member_entry_switch");
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(355, "troop_member_list_config");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+    this.a.put(271, "batch_add_friend_for_troop_config");
+    this.a.put(275, "confess_config");
+    this.a.put(358, "contact_top_entry_config");
+    this.a.put(372, "breaking_ice_config");
+    this.a.put(326, "sosointerface_config");
+    this.a.put(357, "register_invitation_config");
+    this.a.put(330, "hiboom_config");
+    this.a.put(296, "extend_friend_config_785");
+    this.a.put(369, "account_logout_config");
+    this.a.put(379, "qqsettingme_f2f_guide_config");
+    this.a.put(378, "profile_btn_config");
+    this.a.put(381, "profile_switch_config");
+    this.a.put(401, "smart_devices_discovery_config");
+    this.a.put(407, "hide_qq_xman");
+    this.a.put(405, "add_contact_page_public_account_switch");
+    this.a.put(408, "select_member_entry_switch");
+    this.a.put(355, "troop_member_list_config");
+    this.b = new ConcurrentHashMap(10);
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.a.size())
     {
-      String str = (String)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new CopyOnWriteArraySet());
+      String str = (String)this.a.valueAt(i);
+      this.b.put(str, new CopyOnWriteArraySet());
       i += 1;
     }
     a("qqsettingme_f2f_guide_config", new OnF2FConfigListener());
@@ -63,7 +63,7 @@ public class CfgProcess
   
   public static String a(String paramString1, String paramString2)
   {
-    return SharedPreUtils.a(BaseApplicationImpl.getApplication(), paramString1, paramString2);
+    return SharedPreUtils.s(BaseApplicationImpl.getApplication(), paramString1, paramString2);
   }
   
   private CopyOnWriteArraySet<CfgProcess.OnGetConfigListener> a(String paramString)
@@ -71,30 +71,30 @@ public class CfgProcess
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString) < 0) {
+    if (this.a.indexOfValue(paramString) < 0) {
       return null;
     }
-    return (CopyOnWriteArraySet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    return (CopyOnWriteArraySet)this.b.get(paramString);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.b.clear();
+    this.a.clear();
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     if (QLog.isColorLevel())
     {
-      paramQQAppInterface = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+      paramQQAppInterface = (String)this.a.get(paramInt1);
       QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigFail [id: %s, tag: %s, isSuc: %s, result: %s]", new Object[] { Integer.valueOf(paramInt1), paramQQAppInterface, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt)
   {
-    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    String str1 = (String)this.a.get(paramInt);
     if (TextUtils.isEmpty(str1))
     {
       if (QLog.isColorLevel()) {
@@ -105,12 +105,12 @@ public class CfgProcess
     String str2 = paramQQAppInterface.getCurrentAccountUin();
     BaseApplication localBaseApplication = paramQQAppInterface.getApp();
     CfgProcess.CfgParseResult localCfgParseResult = new CfgProcess.CfgParseResult();
-    localCfgParseResult.jdField_b_of_type_Int = paramConfig.version.get();
-    localCfgParseResult.jdField_a_of_type_Int = SharedPreUtils.c(localBaseApplication, str2, str1);
-    if (localCfgParseResult.jdField_b_of_type_Int == localCfgParseResult.jdField_a_of_type_Int)
+    localCfgParseResult.b = paramConfig.version.get();
+    localCfgParseResult.a = SharedPreUtils.q(localBaseApplication, str2, str1);
+    if (localCfgParseResult.b == localCfgParseResult.a)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localCfgParseResult.jdField_b_of_type_Int) });
+        QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localCfgParseResult.b) });
       }
       return;
     }
@@ -153,7 +153,7 @@ public class CfgProcess
         {
           try
           {
-            localCfgParseResult.jdField_a_of_type_JavaLangString = new String(paramConfig, StandardCharsets.UTF_8);
+            localCfgParseResult.d = new String(paramConfig, StandardCharsets.UTF_8);
             paramConfig = localContent;
             j = i;
           }
@@ -186,7 +186,7 @@ public class CfgProcess
       }
       else
       {
-        localCfgParseResult.jdField_a_of_type_JavaLangString = localContent.content.get().toStringUtf8();
+        localCfgParseResult.d = localContent.content.get().toStringUtf8();
         paramConfig = localContent;
         j = i;
       }
@@ -196,11 +196,11 @@ public class CfgProcess
       j = 0;
       paramConfig = localContent;
     }
-    if (localCfgParseResult.jdField_a_of_type_JavaLangString == null) {
-      localCfgParseResult.jdField_a_of_type_JavaLangString = "";
+    if (localCfgParseResult.d == null) {
+      localCfgParseResult.d = "";
     }
-    localCfgParseResult.jdField_b_of_type_Boolean = true;
-    localCfgParseResult.jdField_a_of_type_Boolean = false;
+    localCfgParseResult.f = true;
+    localCfgParseResult.e = false;
     if (localCfgParseResult.c == 0)
     {
       try
@@ -218,9 +218,9 @@ public class CfgProcess
           QLog.i("CfgProcess", 2, ((StringBuilder)localObject1).toString());
         }
       }
-      if (!localCfgParseResult.jdField_a_of_type_Boolean)
+      if (!localCfgParseResult.e)
       {
-        SharedPreUtils.a(localBaseApplication, str2, str1, localCfgParseResult.jdField_a_of_type_JavaLangString);
+        SharedPreUtils.a(localBaseApplication, str2, str1, localCfgParseResult.d);
       }
       else if (QLog.isColorLevel())
       {
@@ -254,8 +254,8 @@ public class CfgProcess
         }
       }
     }
-    if (localCfgParseResult.jdField_b_of_type_Boolean) {
-      i = localCfgParseResult.jdField_b_of_type_Int;
+    if (localCfgParseResult.f) {
+      i = localCfgParseResult.b;
     } else {
       i = 0;
     }
@@ -264,19 +264,19 @@ public class CfgProcess
     {
       paramQQAppInterface = Locale.getDefault();
       i = 0;
-      j = localCfgParseResult.jdField_a_of_type_Int;
-      int k = localCfgParseResult.jdField_b_of_type_Int;
+      j = localCfgParseResult.a;
+      int k = localCfgParseResult.b;
       int m = localCfgParseResult.c;
       if (paramConfig != null) {
         i = paramConfig.task_id.get();
       }
-      QLog.i("CfgProcess", 2, String.format(paramQQAppInterface, "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, task_id:%s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), localCfgParseResult.jdField_a_of_type_JavaLangString }));
+      QLog.i("CfgProcess", 2, String.format(paramQQAppInterface, "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, task_id:%s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), localCfgParseResult.d }));
     }
   }
   
   public void a(ConfigurationService.ConfigSeq paramConfigSeq, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    String str1 = (String)this.a.get(paramInt);
     if (TextUtils.isEmpty(str1))
     {
       if (QLog.isColorLevel()) {
@@ -287,16 +287,16 @@ public class CfgProcess
     String str2 = paramQQAppInterface.getCurrentUin();
     paramQQAppInterface = paramQQAppInterface.getApp();
     int i;
-    if (SharedPreUtils.d(paramQQAppInterface, str2, str1) != AppSetting.a())
+    if (SharedPreUtils.r(paramQQAppInterface, str2, str1) != AppSetting.d())
     {
-      SharedPreUtils.d(paramQQAppInterface, str2, str1, AppSetting.a());
+      SharedPreUtils.d(paramQQAppInterface, str2, str1, AppSetting.d());
       SharedPreUtils.c(paramQQAppInterface, str2, str1, 0);
       paramConfigSeq.version.set(0);
       i = 0;
     }
     else
     {
-      i = SharedPreUtils.c(paramQQAppInterface, str2, str1);
+      i = SharedPreUtils.q(paramQQAppInterface, str2, str1);
       paramConfigSeq.version.set(i);
     }
     paramConfigSeq.compress.set(1);
@@ -307,7 +307,7 @@ public class CfgProcess
   
   public boolean a(CfgProcess.OnGetConfigListener paramOnGetConfigListener)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    Iterator localIterator = this.b.values().iterator();
     boolean bool = false;
     while (localIterator.hasNext()) {
       bool |= ((CopyOnWriteArraySet)localIterator.next()).remove(paramOnGetConfigListener);
@@ -335,7 +335,7 @@ public class CfgProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.CfgProcess
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ class DoubleVideoCtrlUI$15
   public void a()
   {
     DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.a;
-    localDoubleVideoCtrlUI.j = true;
-    localDoubleVideoCtrlUI.O();
+    localDoubleVideoCtrlUI.aU = true;
+    localDoubleVideoCtrlUI.aj();
   }
   
   public void b()
   {
-    this.a.j = false;
+    this.a.aU = false;
   }
 }
 

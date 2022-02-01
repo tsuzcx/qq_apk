@@ -10,14 +10,14 @@ class QQFMSettings$5$1$1$3
   public void run()
   {
     QQFMSettings.a(4, "-------onMovedOver-------");
-    QQFMSettings.a(4, QQFileManagerUtilImpl.a());
-    this.a.a.a.a.a();
-    this.a.a.a.this$0.b();
+    QQFMSettings.a(4, QQFileManagerUtilImpl.h());
+    this.a.a.c.c.a();
+    this.a.a.c.this$0.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.settings.QQFMSettings.5.1.1.3
  * JD-Core Version:    0.7.0.1
  */

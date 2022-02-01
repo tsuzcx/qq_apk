@@ -16,12 +16,12 @@ class NearbyPeopleProfileActivity$3
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext())) {
       return;
     }
-    if (NearbyPeopleProfileActivity.access$300(this.this$0) == null) {
+    if (this.this$0.mCard == null) {
       return;
     }
-    byte[] arrayOfByte = NearbyPeopleProfileActivity.access$300(this.this$0).vSeed;
-    long l = NearbyPeopleProfileActivity.access$300(this.this$0).feedPreviewTime;
-    if (NearbyPeopleProfileActivity.access$300(this.this$0).isHostSelf)
+    byte[] arrayOfByte = this.this$0.mCard.vSeed;
+    long l = this.this$0.mCard.feedPreviewTime;
+    if (this.this$0.mCard.isHostSelf)
     {
       NearbyProfileUtil.a(this.this$0.mCardHandler, this.this$0.app, 0L, this.this$0.allinone.uin, this.this$0.fetchFromType, arrayOfByte, l, true, this.this$0.allinone.likeSource, NearbyPeopleProfileActivity.isFromTribe(this.this$0.from), NearbyPeopleProfileActivity.access$100(this.this$0), NearbyPeopleProfileActivity.access$000(this.this$0));
       return;
@@ -33,7 +33,7 @@ class NearbyPeopleProfileActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.3
  * JD-Core Version:    0.7.0.1
  */

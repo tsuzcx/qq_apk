@@ -11,18 +11,18 @@ class DownloadManagerV2$11
   
   public void run()
   {
-    if (DownloadManagerV2.a(this.this$0).get(this.a) != null) {
+    if (DownloadManagerV2.c(this.this$0).get(this.a) != null) {
       return;
     }
-    DownloadInfo localDownloadInfo = DownloadInfoDB.a().a(this.a);
+    DownloadInfo localDownloadInfo = DownloadInfoDB.a().b(this.a);
     if (localDownloadInfo != null) {
-      this.this$0.c(localDownloadInfo);
+      this.this$0.e(localDownloadInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.11
  * JD-Core Version:    0.7.0.1
  */

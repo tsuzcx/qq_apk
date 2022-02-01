@@ -16,9 +16,9 @@ class ScreenShareAskAction$1
   
   public void run()
   {
-    BaseActivity localBaseActivity = (BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext;
-    String str1 = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("requestUin");
-    Object localObject = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("expireDate");
+    BaseActivity localBaseActivity = (BaseActivity)this.this$0.b;
+    String str1 = (String)this.this$0.f.get("requestUin");
+    Object localObject = (String)this.this$0.f.get("expireDate");
     long l1;
     if (localObject != null) {
       l1 = Long.parseLong((String)localObject);
@@ -41,12 +41,12 @@ class ScreenShareAskAction$1
     }
     if (l2 > l1)
     {
-      QQToast.a(this.this$0.jdField_a_of_type_AndroidContentContext, 1, 2131718557, 1).a();
+      QQToast.makeText(this.this$0.b, 1, 2131916056, 1).show();
     }
     else if (str1.equals(ScreenShareAskAction.a(this.this$0).getCurrentAccountUin()))
     {
-      localObject = localBaseActivity.getString(2131718562);
-      String str2 = localBaseActivity.getString(2131718561);
+      localObject = localBaseActivity.getString(2131916061);
+      String str2 = localBaseActivity.getString(2131916060);
       DialogUtil.a(localBaseActivity, 230, null, (CharSequence)localObject, str2, str2, new ScreenShareAskAction.1.1(this), null).show();
     }
     else
@@ -58,7 +58,7 @@ class ScreenShareAskAction$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ScreenShareAskAction.1
  * JD-Core Version:    0.7.0.1
  */

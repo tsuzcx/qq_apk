@@ -14,6 +14,8 @@ public class RichProtoProc
   public static final String C2C_PTT_DW = "c2c_ptt_dw";
   public static final String C2C_PTT_UP = "c2c_ptt_up";
   public static final String FRIEND_AVATAR_UP = "friend_avatar_up";
+  public static final String GLD_PIC_DW = "gld_pic_dw";
+  public static final String GLD_PIC_UP = "gld_pic_up";
   public static final String GRP_PIC_DW = "grp_pic_dw";
   public static final String GRP_PIC_UP = "grp_pic_up";
   public static final String GRP_PTT_DW = "grp_ptt_dw";
@@ -27,7 +29,7 @@ public class RichProtoProc
   public static final String SHORT_VIDEO_FW = "short_video_fw";
   public static final String SHORT_VIDEO_UP = "short_video_up";
   public static final String SNAP_PIC_UP = "snap_pic_up";
-  @ConfigInject(configPath="Foundation/Transfile/src/main/resources/Inject_InitProtoHandlerConfig.yml", version=1)
+  @ConfigInject(configPath="Foundation/Transfile/src/main/resources/Inject_InitProtoHandlerConfig.yml", version=2)
   public static HashMap<String, Class<? extends RichProtoProc.RichProtoHandler>> handlerMaps = new HashMap();
   
   static
@@ -45,9 +47,11 @@ public class RichProtoProc
     handlerMaps.put("grp_ptt_dw", GroupPttDownHandler.class);
     handlerMaps.put("c2c_ptt_dw", C2CPttDownHandler.class);
     handlerMaps.put("c2c_ptt_up", C2CPttUpHandler.class);
+    handlerMaps.put("gld_pic_dw", GuildPicDownHandler.class);
     handlerMaps.put("grp_pic_dw", GroupPicDownHandler.class);
     handlerMaps.put("c2c_pic_dw", C2CPicDownHandler.class);
     handlerMaps.put("grp_ptt_up", GroupPttUpHandler.class);
+    handlerMaps.put("gld_pic_up", GuildPicUpHandler.class);
     handlerMaps.put("grp_pic_up", GroupPicUpHandler.class);
     handlerMaps.put("c2c_pic_up", C2CPicUpHandler.class);
   }
@@ -109,7 +113,7 @@ public class RichProtoProc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProtoProc
  * JD-Core Version:    0.7.0.1
  */

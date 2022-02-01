@@ -15,8 +15,8 @@ class QQVipHelper$1$1
   public void run()
   {
     IPublicAccountDetail localIPublicAccountDetail = (IPublicAccountDetail)QRoute.api(IPublicAccountDetail.class);
-    localIPublicAccountDetail.init(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localIPublicAccountDetail.init(this.a);
+    Object localObject = this.b;
     localObject = ((QQAppInterface)localObject).getEntityManagerFactory(((QQAppInterface)localObject).getAccount()).createEntityManager();
     if (localObject != null) {
       ((EntityManager)localObject).persistOrReplace(localIPublicAccountDetail.getEntity());
@@ -25,7 +25,7 @@ class QQVipHelper$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.util.QQVipHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

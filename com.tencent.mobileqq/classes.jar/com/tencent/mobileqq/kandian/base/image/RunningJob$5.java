@@ -12,19 +12,19 @@ class RunningJob$5
   
   public void run()
   {
-    Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.this$0.h.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference.get() != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageManager != null)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageManager.loadImage(this.this$0.jdField_a_of_type_ComTencentMobileqqKandianBaseImageImageRequest, (IBitmapCallback)localWeakReference.get());
+      if ((localWeakReference.get() != null) && (this.this$0.c != null)) {
+        this.this$0.c.loadImage(this.this$0.b, (IBitmapCallback)localWeakReference.get());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.RunningJob.5
  * JD-Core Version:    0.7.0.1
  */

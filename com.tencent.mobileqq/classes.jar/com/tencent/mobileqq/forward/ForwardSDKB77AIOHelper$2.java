@@ -13,23 +13,23 @@ import mqq.os.MqqHandler;
 class ForwardSDKB77AIOHelper$2
   extends BroadcastReceiver
 {
-  ForwardSDKB77AIOHelper$2(ForwardSDKB77AIOHelper paramForwardSDKB77AIOHelper, String paramString) {}
+  ForwardSDKB77AIOHelper$2(ForwardSDKB77AIOHelper paramForwardSDKB77AIOHelper) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper) != null) && (!ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper).isFinishing()))
+    if ((ForwardSDKB77AIOHelper.a(this.a) != null) && (!ForwardSDKB77AIOHelper.a(this.a).isFinishing()))
     {
-      ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper);
-      ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper).removeMessages(93);
-      ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper).removeMessages(94);
-      paramContext = ((ForwardSdkStatusManager)ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper).a.getManager(QQManagerFactory.SDK_SHARE)).a(this.jdField_a_of_type_JavaLangString);
+      ForwardSDKB77AIOHelper.d(this.a);
+      ForwardSDKB77AIOHelper.e(this.a).removeMessages(93);
+      ForwardSDKB77AIOHelper.e(this.a).removeMessages(94);
+      paramContext = ((ForwardSdkStatusManager)ForwardSDKB77AIOHelper.c(this.a).d.getManager(QQManagerFactory.SDK_SHARE)).a(ForwardSDKB77AIOHelper.f(this.a));
       if (paramContext == null)
       {
         QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive b77Result == null");
         return;
       }
-      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive parseB77Result");
-      ForwardSDKB77AIOHelper.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77AIOHelper, paramContext);
+      QLog.d("SDK_SHARE.ForwardSDKB77AIOHelper", 1, new Object[] { "onReceive parseB77Result key:", ForwardSDKB77AIOHelper.f(this.a) });
+      ForwardSDKB77AIOHelper.a(this.a, paramContext);
       return;
     }
     QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive null == mActivity || mActivity.isFinishing()");
@@ -37,7 +37,7 @@ class ForwardSDKB77AIOHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77AIOHelper.2
  * JD-Core Version:    0.7.0.1
  */

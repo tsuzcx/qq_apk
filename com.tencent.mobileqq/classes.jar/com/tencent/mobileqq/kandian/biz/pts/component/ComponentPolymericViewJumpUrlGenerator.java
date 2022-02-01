@@ -47,9 +47,9 @@ public class ComponentPolymericViewJumpUrlGenerator
   @Nullable
   private static String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (!paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.isEmpty()))
+    if ((paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g != null) && (!paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.isEmpty()))
     {
-      paramAbsBaseArticleInfo = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0)).b;
+      paramAbsBaseArticleInfo = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0)).c;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -83,7 +83,7 @@ public class ComponentPolymericViewJumpUrlGenerator
     QLog.e("HorizontalListView", 1, ((StringBuilder)localObject).toString());
     l = 0L;
     paramAbsBaseArticleInfo = new StringBuilder();
-    paramAbsBaseArticleInfo.append(ReadInJoyConstants.k);
+    paramAbsBaseArticleInfo.append(ReadInJoyConstants.l);
     paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l).getBytes(), 2));
     localObject = paramAbsBaseArticleInfo.toString();
     paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
@@ -103,11 +103,11 @@ public class ComponentPolymericViewJumpUrlGenerator
   
   private static String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+    if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null))
     {
-      long l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a;
+      long l = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
       paramAbsBaseArticleInfo = new StringBuilder();
-      paramAbsBaseArticleInfo.append(ReadInJoyConstants.g);
+      paramAbsBaseArticleInfo.append(ReadInJoyConstants.h);
       paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l).getBytes(), 2));
       String str = paramAbsBaseArticleInfo.toString();
       paramAbsBaseArticleInfo = str;
@@ -149,7 +149,7 @@ public class ComponentPolymericViewJumpUrlGenerator
     QLog.e("HorizontalListView", 1, ((StringBuilder)localObject).toString());
     l = 0L;
     paramAbsBaseArticleInfo = new StringBuilder();
-    paramAbsBaseArticleInfo.append(ReadInJoyConstants.k);
+    paramAbsBaseArticleInfo.append(ReadInJoyConstants.l);
     paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l).getBytes(), 2));
     localObject = paramAbsBaseArticleInfo.toString();
     paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
@@ -162,11 +162,11 @@ public class ComponentPolymericViewJumpUrlGenerator
       paramAbsBaseArticleInfo.append(l);
       QLog.d("PolymericSmallVideo", 2, paramAbsBaseArticleInfo.toString());
       return localObject;
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo != null))
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.s != null))
       {
-        l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo.a;
+        l = paramAbsBaseArticleInfo.mSocialFeedInfo.s.e;
         paramAbsBaseArticleInfo = new StringBuilder();
-        paramAbsBaseArticleInfo.append(ReadInJoyConstants.g);
+        paramAbsBaseArticleInfo.append(ReadInJoyConstants.h);
         paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l).getBytes(), 2));
         localObject = paramAbsBaseArticleInfo.toString();
         paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
@@ -181,11 +181,11 @@ public class ComponentPolymericViewJumpUrlGenerator
           return localObject;
         }
       }
-      else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser != null))
+      else if ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.c != null))
       {
-        l = paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.a;
+        l = paramAbsBaseArticleInfo.mSocialFeedInfo.c.a;
         paramAbsBaseArticleInfo = new StringBuilder();
-        paramAbsBaseArticleInfo.append(ReadInJoyConstants.g);
+        paramAbsBaseArticleInfo.append(ReadInJoyConstants.h);
         paramAbsBaseArticleInfo.append(Base64Util.encodeToString(String.valueOf(l).getBytes(), 2));
         localObject = paramAbsBaseArticleInfo.toString();
         paramAbsBaseArticleInfo = (AbsBaseArticleInfo)localObject;
@@ -210,7 +210,7 @@ public class ComponentPolymericViewJumpUrlGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentPolymericViewJumpUrlGenerator
  * JD-Core Version:    0.7.0.1
  */

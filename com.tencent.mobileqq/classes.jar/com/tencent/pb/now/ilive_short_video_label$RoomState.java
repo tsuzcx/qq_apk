@@ -50,7 +50,7 @@ public final class ilive_short_video_label$RoomState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.RoomState
  * JD-Core Version:    0.7.0.1
  */

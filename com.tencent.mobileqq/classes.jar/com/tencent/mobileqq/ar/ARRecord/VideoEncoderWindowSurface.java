@@ -10,54 +10,54 @@ import javax.microedition.khronos.egl.EGLSurface;
 
 public class VideoEncoderWindowSurface
 {
-  private EglSurfaceBase jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase;
-  private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = (EGL10)EGLContext.getEGL();
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext();
-  private EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentDisplay();
-  private EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentSurface(12377);
+  private EGL10 a = (EGL10)EGLContext.getEGL();
+  private EGLDisplay b = this.a.eglGetCurrentDisplay();
+  private EGLContext c = this.a.eglGetCurrentContext();
+  private EGLSurface d = this.a.eglGetCurrentSurface(12377);
+  private EglSurfaceBase e;
   
   public VideoEncoderWindowSurface(EglCore paramEglCore, Surface paramSurface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase = new EglSurfaceBase(paramEglCore);
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase.a(paramSurface);
+    this.e = new EglSurfaceBase(paramEglCore);
+    this.e.a(paramSurface);
   }
   
   public void a()
   {
-    EGL10 localEGL10 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-    EGLDisplay localEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-    EGLSurface localEGLSurface = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    EGL10 localEGL10 = this.a;
+    EGLDisplay localEGLDisplay = this.b;
+    EGLSurface localEGLSurface = this.d;
+    localEGL10.eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.c);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase.a(paramLong);
+    this.e.a(paramLong);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase.b();
+    this.e.b();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase.a();
+    this.e.c();
   }
   
   public void d()
   {
-    EglSurfaceBase localEglSurfaceBase = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase;
+    EglSurfaceBase localEglSurfaceBase = this.e;
     if (localEglSurfaceBase != null)
     {
       localEglSurfaceBase.a();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase = null;
+      this.e = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.VideoEncoderWindowSurface
  * JD-Core Version:    0.7.0.1
  */

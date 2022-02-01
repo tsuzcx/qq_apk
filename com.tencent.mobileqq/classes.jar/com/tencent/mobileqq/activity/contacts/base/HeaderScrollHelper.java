@@ -11,17 +11,8 @@ import com.tencent.mobileqq.activity.contacts.troop.TroopFragment.ContactsPinned
 
 public class HeaderScrollHelper
 {
-  private int jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-  private HeaderScrollHelper.ScrollableContainer jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper$ScrollableContainer;
-  
-  private View a()
-  {
-    HeaderScrollHelper.ScrollableContainer localScrollableContainer = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper$ScrollableContainer;
-    if (localScrollableContainer == null) {
-      return null;
-    }
-    return localScrollableContainer.a();
-  }
+  private int a = Build.VERSION.SDK_INT;
+  private HeaderScrollHelper.ScrollableContainer b;
   
   private boolean a(android.widget.AdapterView paramAdapterView)
   {
@@ -60,10 +51,19 @@ public class HeaderScrollHelper
     return false;
   }
   
+  private View b()
+  {
+    HeaderScrollHelper.ScrollableContainer localScrollableContainer = this.b;
+    if (localScrollableContainer == null) {
+      return null;
+    }
+    return localScrollableContainer.getScrollableView();
+  }
+  
   @SuppressLint({"NewApi"})
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    View localView = a();
+    View localView = b();
     if ((localView instanceof android.widget.AbsListView))
     {
       ((android.widget.AbsListView)localView).smoothScrollBy(paramInt2, paramInt3);
@@ -86,12 +86,12 @@ public class HeaderScrollHelper
   
   public void a(HeaderScrollHelper.ScrollableContainer paramScrollableContainer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollHelper$ScrollableContainer = paramScrollableContainer;
+    this.b = paramScrollableContainer;
   }
   
   public void a(boolean paramBoolean)
   {
-    View localView = a();
+    View localView = b();
     if (localView != null)
     {
       if ((localView instanceof ContactsFPSPinnedHeaderExpandableListView))
@@ -112,7 +112,7 @@ public class HeaderScrollHelper
   
   public boolean a()
   {
-    View localView = a();
+    View localView = b();
     if (localView == null) {
       return true;
     }
@@ -130,7 +130,7 @@ public class HeaderScrollHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.HeaderScrollHelper
  * JD-Core Version:    0.7.0.1
  */

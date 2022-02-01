@@ -16,22 +16,21 @@ public class LoadMoreLayout
   extends FrameLayout
   implements ILoadMoreLayout
 {
-  protected int a;
   protected Context a;
-  protected LinearLayout a;
-  protected ProgressBar a;
-  protected TextView a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
+  protected LinearLayout b;
+  protected ProgressBar c;
+  protected TextView d;
+  protected int e = -1;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected String i;
+  protected String j;
   
   public LoadMoreLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
     b();
   }
@@ -39,8 +38,7 @@ public class LoadMoreLayout
   public LoadMoreLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
     b();
   }
@@ -48,27 +46,26 @@ public class LoadMoreLayout
   public LoadMoreLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
     b();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131706334);
-    this.c = HardCodeUtil.a(2131706336);
-    this.d = HardCodeUtil.a(2131706333);
-    this.b = StoryApi.a(2131699915);
-    this.e = HardCodeUtil.a(2131706335);
+    this.f = HardCodeUtil.a(2131904193);
+    this.h = HardCodeUtil.a(2131904195);
+    this.i = HardCodeUtil.a(2131904192);
+    this.g = StoryApi.b(2131897968);
+    this.j = HardCodeUtil.a(2131904194);
   }
   
   private boolean a(int paramInt)
   {
-    if (!a(this.jdField_a_of_type_Int, paramInt)) {
+    if (!a(this.e, paramInt)) {
       return false;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -82,30 +79,30 @@ public class LoadMoreLayout
               if (paramInt != 5) {
                 return true;
               }
-              this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-              this.jdField_a_of_type_AndroidWidgetTextView.setText(this.e);
-              this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+              this.c.setVisibility(8);
+              this.d.setText(this.j);
+              this.b.setVisibility(0);
               return true;
             }
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+            this.b.setVisibility(8);
             return true;
           }
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.c.setVisibility(8);
+          this.d.setText(this.f);
+          this.b.setVisibility(0);
           return true;
         }
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        this.c.setVisibility(0);
+        this.d.setText(this.h);
+        this.b.setVisibility(0);
         return true;
       }
-      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.c.setVisibility(0);
+      this.d.setText(this.g);
+      this.b.setVisibility(0);
       return true;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.b.setVisibility(8);
     return true;
   }
   
@@ -157,22 +154,22 @@ public class LoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561840, null));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131373132));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378460));
+    this.b = ((LinearLayout)LayoutInflater.from(this.a).inflate(2131628219, null));
+    this.c = ((ProgressBar)this.b.findViewById(2131440737));
+    this.d = ((TextView)this.b.findViewById(2131447062));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    super.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
+    super.addView(this.b, localLayoutParams);
     a(0);
   }
   
   public boolean checkState(int paramInt)
   {
-    return a(this.jdField_a_of_type_Int, paramInt);
+    return a(this.e, paramInt);
   }
   
   public int getState()
   {
-    return this.jdField_a_of_type_Int;
+    return this.e;
   }
   
   public boolean setState(int paramInt)

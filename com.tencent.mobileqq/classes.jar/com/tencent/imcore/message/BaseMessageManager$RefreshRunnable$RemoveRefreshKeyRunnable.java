@@ -15,12 +15,12 @@ class BaseMessageManager$RefreshRunnable$RemoveRefreshKeyRunnable
   
   public void run()
   {
-    this.a.a.getRefreshActionMap().remove(BaseMessageManager.RefreshRunnable.a(this.this$0));
+    this.a.b.getRefreshActionMap().remove(BaseMessageManager.RefreshRunnable.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.RefreshRunnable.RemoveRefreshKeyRunnable
  * JD-Core Version:    0.7.0.1
  */

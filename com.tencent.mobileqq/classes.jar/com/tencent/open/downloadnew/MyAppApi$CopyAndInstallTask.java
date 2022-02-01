@@ -12,12 +12,12 @@ import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
 public class MyAppApi$CopyAndInstallTask
   extends YybHandleUtil.InstallBaseTask
 {
-  MyAppApi.InstallParams jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams;
+  MyAppApi.InstallParams a;
   
   public MyAppApi$CopyAndInstallTask(MyAppApi paramMyAppApi, Activity paramActivity, MyAppApi.InstallParams paramInstallParams)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams = paramInstallParams;
+    this.a = paramInstallParams;
   }
   
   protected void a(Boolean paramBoolean)
@@ -27,79 +27,79 @@ public class MyAppApi$CopyAndInstallTask
     {
       if (YybHandleUtil.a())
       {
-        Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
-        ((MyAppApi)localObject).jdField_a_of_type_Boolean = true;
-        ((MyAppApi)localObject).jdField_b_of_type_Boolean = false;
+        Object localObject = this.b;
+        ((MyAppApi)localObject).d = true;
+        ((MyAppApi)localObject).e = false;
         long l = -1L;
-        int i = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Int;
+        int i = this.a.e;
         if (i != 0)
         {
           if (i != 2)
           {
             if (i != 3) {
-              l = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
+              l = this.b.a(this.a.a, this.a.b, this.a.c);
             } else {
-              l = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle);
+              l = this.b.b(this.a.a);
             }
           }
           else
           {
-            localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
-            ((MyAppApi)localObject).e = true;
-            if (((MyAppApi)localObject).jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null) {
-              l = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+            localObject = this.b;
+            ((MyAppApi)localObject).p = true;
+            if (((MyAppApi)localObject).q != null) {
+              l = this.b.d().addDownloadTaskFromAuthorize(this.b.q, "2");
             } else {
               LogUtility.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
             }
           }
         }
         else {
-          l = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
+          l = this.b.b(this.a.a, this.a.b, this.a.c);
         }
-        localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
-        ((MyAppApi)localObject).jdField_a_of_type_Long = l;
-        ((MyAppApi)localObject).jdField_b_of_type_Long = System.currentTimeMillis();
-        if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle != null))
+        localObject = this.b;
+        ((MyAppApi)localObject).f = l;
+        ((MyAppApi)localObject).g = System.currentTimeMillis();
+        if ((paramBoolean.booleanValue()) && (this.a.a != null))
         {
-          paramBoolean = StaticAnalyz.a(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i), "NEWYYB");
-          StaticAnalyz.a("311", paramBoolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.b));
-          localObject = CommonDataAdapter.a().a();
+          paramBoolean = StaticAnalyz.a(this.a.a.getString(DownloadConstants.i), "NEWYYB");
+          StaticAnalyz.a("311", paramBoolean, this.a.a.getString(DownloadConstants.b));
+          localObject = CommonDataAdapter.a().b();
           if (localObject != null) {
-            StaticAnalyz.a((Context)localObject, "312", paramBoolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.b));
+            StaticAnalyz.a((Context)localObject, "312", paramBoolean, this.a.a.getString(DownloadConstants.b));
           }
         }
-        if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing())) {
-          this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+        if ((this.b.k != null) && (this.b.k.isShowing())) {
+          this.b.k.dismiss();
         }
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-          this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+        if (this.a.d != null) {
+          this.a.d.onClick(null, 0);
         }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+        this.b.i = null;
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+      if (this.a.d != null) {
+        this.a.d.onClick(null, 0);
       }
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      this.b.i = null;
     }
   }
   
   protected void onCancelled()
   {
     super.onCancelled();
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+    if (this.a.d != null) {
+      this.a.d.onClick(null, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.CopyAndInstallTask
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class GameListView$12
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (IGameEngine.k()) {
+    if (IGameEngine.J()) {
       return;
     }
     paramDialogInterface = new StringBuilder();
     paramDialogInterface.append("");
-    paramDialogInterface.append(IGameEngine.a().a().a());
+    paramDialogInterface.append(IGameEngine.I().s().i());
     ReportController.b(null, "dc00898", "", "", "0X800B75F", "0X800B75F", 0, 0, "", paramDialogInterface.toString(), "", "");
   }
 }

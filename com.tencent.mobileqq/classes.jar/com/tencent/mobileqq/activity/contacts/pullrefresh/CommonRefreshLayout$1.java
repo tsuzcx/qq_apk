@@ -8,14 +8,14 @@ class CommonRefreshLayout$1
   public void run()
   {
     if (CommonRefreshLayout.a(this.this$0) != null) {
-      CommonRefreshLayout.a(this.this$0).onViewCompleteAfterRefresh(CommonRefreshLayout.a(this.this$0));
+      CommonRefreshLayout.a(this.this$0).onViewCompleteAfterRefresh(CommonRefreshLayout.b(this.this$0));
     }
-    this.this$0.b();
+    this.this$0.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout.1
  * JD-Core Version:    0.7.0.1
  */

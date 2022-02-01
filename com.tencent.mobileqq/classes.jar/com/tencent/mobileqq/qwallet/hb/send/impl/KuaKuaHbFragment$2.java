@@ -13,13 +13,13 @@ class KuaKuaHbFragment$2
   public void onClick(View paramView)
   {
     if (KuaKuaHbFragment.a(this.a) != null) {
-      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.a(this.a).getText().toString());
+      KuaKuaHbFragment.a(this.a).a(KuaKuaHbFragment.b(this.a).getText().toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.KuaKuaHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

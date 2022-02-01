@@ -34,17 +34,17 @@ public class VideoDrawableHandler$DecodeFrameTask
     {
       i = 0;
     }
-    if ((localBitmap != null) && (this.this$0.jdField_a_of_type_AndroidGraphicsBitmap != localBitmap)) {
-      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+    if ((localBitmap != null) && (this.this$0.b != localBitmap)) {
+      synchronized (this.this$0.i)
       {
-        this.this$0.b = this.this$0.jdField_a_of_type_AndroidGraphicsBitmap;
-        this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
-        this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, 0, 0).sendToTarget();
+        this.this$0.c = this.this$0.b;
+        this.this$0.b = localBitmap;
+        this.this$0.g.obtainMessage(0, 0, 0).sendToTarget();
       }
     }
-    this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, 1, 0).sendToTarget();
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler$OnGetFrameListener != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler$OnGetFrameListener.a(this.a, i);
+    this.this$0.g.obtainMessage(0, 1, 0).sendToTarget();
+    if (this.this$0.j != null) {
+      this.this$0.j.a(this.a, i);
     }
     if (QLog.isColorLevel())
     {
@@ -52,14 +52,14 @@ public class VideoDrawableHandler$DecodeFrameTask
       localStringBuilder.append("task run at:");
       localStringBuilder.append(this.a);
       localStringBuilder.append(" bmp:");
-      localStringBuilder.append(this.this$0.jdField_a_of_type_AndroidGraphicsBitmap);
+      localStringBuilder.append(this.this$0.b);
       QLog.i("VideoDrawableHandler", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler.DecodeFrameTask
  * JD-Core Version:    0.7.0.1
  */

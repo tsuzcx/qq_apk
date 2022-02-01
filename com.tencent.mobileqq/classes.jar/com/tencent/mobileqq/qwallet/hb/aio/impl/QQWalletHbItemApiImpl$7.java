@@ -42,9 +42,9 @@ class QQWalletHbItemApiImpl$7
     Object localObject3 = (MessageForQQWalletMsg)paramView.getTag();
     paramView = ((MessageForQQWalletMsg)localObject3).mQQWalletRedPacketMsg;
     Object localObject1 = (IPasswdRedBagService)this.a.mAppInterface.getRuntimeService(IPasswdRedBagService.class, "");
-    if (((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(this.a.sessionInfo.jdField_a_of_type_JavaLangString))
+    if (((IAnonymousChatApi)QRoute.api(IAnonymousChatApi.class)).getAioAnonymousStatus(this.a.sessionInfo.b))
     {
-      ((IPasswdRedBagService)localObject1).createPasswdRedBagAnonymousTips(this.a.sessionInfo.jdField_a_of_type_JavaLangString, 10);
+      ((IPasswdRedBagService)localObject1).createPasswdRedBagAnonymousTips(this.a.sessionInfo.b, 10);
       if (QLog.isColorLevel()) {
         QLog.d("PasswdRedBagSgervice", 2, "current is in Anonymous, dont show passwdredbag tips");
       }
@@ -52,9 +52,9 @@ class QQWalletHbItemApiImpl$7
     }
     Object localObject2 = ((IPasswdRedBagService)localObject1).getPasswdRedBagInfoById(paramView.redPacketId);
     l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    if ((localObject2 != null) && ((((PasswdRedBagInfo)localObject2).jdField_a_of_type_Boolean) || (((PasswdRedBagInfo)localObject2).b) || (((PasswdRedBagInfo)localObject2).jdField_a_of_type_Long < l)))
+    if ((localObject2 != null) && ((((PasswdRedBagInfo)localObject2).f) || (((PasswdRedBagInfo)localObject2).g) || (((PasswdRedBagInfo)localObject2).d < l)))
     {
-      ((IPasswdRedBagService)localObject1).setPasswdRedBagOpen(paramView.redPacketId, this.a.sessionInfo.jdField_a_of_type_JavaLangString, this.a.sessionInfo.jdField_a_of_type_Int);
+      ((IPasswdRedBagService)localObject1).setPasswdRedBagOpen(paramView.redPacketId, this.a.sessionInfo.b, this.a.sessionInfo.a);
       Object localObject4 = new StringBuilder();
       ((StringBuilder)localObject4).append("msgType=");
       ((StringBuilder)localObject4).append(((MessageForQQWalletMsg)localObject3).messageType);
@@ -67,9 +67,9 @@ class QQWalletHbItemApiImpl$7
       {
         paramView = new StringBuilder();
         paramView.append("click open passwdredbag, isPasswdRedBagOpen=");
-        paramView.append(((PasswdRedBagInfo)localObject2).jdField_a_of_type_Boolean);
+        paramView.append(((PasswdRedBagInfo)localObject2).f);
         paramView.append(",isPasswdRedBagFinish=");
-        paramView.append(((PasswdRedBagInfo)localObject2).b);
+        paramView.append(((PasswdRedBagInfo)localObject2).g);
         paramView.append(",isPasswdRedBagOverDue=");
         paramView.append(((PasswdRedBagInfo)localObject2).a());
         QLog.d("PasswdRedBagSgervice", 2, paramView.toString());
@@ -77,9 +77,9 @@ class QQWalletHbItemApiImpl$7
     }
     else if (this.a.mBaseChatPie != null)
     {
-      localObject3 = this.a.mBaseChatPie.a();
+      localObject3 = this.a.mBaseChatPie.f();
       if ((localObject3 != null) && (localObject2 != null)) {
-        ((IQWalletAIOLifeCycleHelper)localObject3).a(paramView.redPacketId, ((PasswdRedBagInfo)localObject2).e, paramView.body.subChannel);
+        ((IQWalletAIOLifeCycleHelper)localObject3).a(paramView.redPacketId, ((PasswdRedBagInfo)localObject2).i, paramView.body.subChannel);
       }
     }
     try
@@ -93,7 +93,7 @@ class QQWalletHbItemApiImpl$7
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("show passwdredbag tips = ");
-        ((StringBuilder)localObject1).append(paramView.elem.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramView.elem.c);
         QLog.d("PasswdRedBagSgervice", 2, ((StringBuilder)localObject1).toString());
       }
       return;
@@ -106,7 +106,7 @@ class QQWalletHbItemApiImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.QQWalletHbItemApiImpl.7
  * JD-Core Version:    0.7.0.1
  */

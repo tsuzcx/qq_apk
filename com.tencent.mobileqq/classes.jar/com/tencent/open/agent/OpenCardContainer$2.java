@@ -15,22 +15,22 @@ class OpenCardContainer$2
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = OpenCardContainer.VirtualAccountAdapter.a(this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).iterator();
+    paramAdapterView = OpenCardContainer.VirtualAccountAdapter.a(this.a.l).iterator();
     while (paramAdapterView.hasNext()) {
-      ((VirtualAccountInfo)paramAdapterView.next()).a = false;
+      ((VirtualAccountInfo)paramAdapterView.next()).d = false;
     }
     paramAdapterView = new StringBuilder();
     paramAdapterView.append("onItemClick position=");
     paramAdapterView.append(paramInt);
     SSOLog.a("OpenCardContainer", new Object[] { paramAdapterView.toString() });
-    ((VirtualAccountInfo)OpenCardContainer.VirtualAccountAdapter.a(this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).get(paramInt)).a = true;
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.notifyDataSetChanged();
+    ((VirtualAccountInfo)OpenCardContainer.VirtualAccountAdapter.a(this.a.l).get(paramInt)).d = true;
+    this.a.k.setMainAccountSelect(false);
+    this.a.l.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenCardContainer.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,39 +13,39 @@ class FriendTeamListInnerFrame$3
   
   public ArrayList<ResultRecord> a()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getResultRecordList();
+    return this.a.f.getResultRecordList();
   }
   
-  public void a()
+  public ArrayList<String> b()
   {
-    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
-    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
+    return this.a.f.getSelectedUinList();
+  }
+  
+  public void c()
+  {
+    FriendTeamListInnerFrame.b(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.b(this.a).getGroupCount() > 0)
     {
-      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
-      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      Groups localGroups1 = FriendTeamListInnerFrame.b(this.a).b(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.b(this.a).b(1008L);
       if ((localGroups1 != null) || (localGroups2 != null))
       {
         FriendTeamListInnerFrame.a(this.a).expandGroup(0);
         FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
         FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
         if (localGroups1 != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper.a();
+          this.a.d.a();
         }
         if (localGroups2 != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper.c();
+          this.a.d.c();
         }
       }
     }
   }
-  
-  public ArrayList<String> b()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectMemberActivity.getSelectedUinList();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.FriendTeamListInnerFrame.3
  * JD-Core Version:    0.7.0.1
  */

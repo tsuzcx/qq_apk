@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>radio_disable</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="radio_disable">
+            <rect id="bounds" fill="#D8D8D8" opacity="0" x="0" y="0" width="60" height="60"></rect>
+            <path d="M6,30 C6,43.2 16.8,54 30,54 C43.2,54 54,43.2 54,30 C54,16.8 43.2,6 30,6 C16.8,6 6,16.8 6,30 Z M10,30 C10,19 19,10 30,10 C41,10 50,19 50,30 C50,41 41,50 30,50 C19,50 10,41 10,30 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero" opacity="0.1"></path>
+        </g>
+    </g>
+</svg>

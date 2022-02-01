@@ -20,30 +20,30 @@ class BindGroupConfirmActivity$1
   
   public void a(Exception paramException)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((this.a.s != null) && (this.a.s.isShowing())) {
+      this.a.s.dismiss();
     }
     this.a.b(paramException);
   }
   
   public void a(JSONObject paramJSONObject)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((this.a.s != null) && (this.a.s.isShowing())) {
+      this.a.s.dismiss();
     }
     try
     {
       if (paramJSONObject.getInt("ret") == 0)
       {
-        if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
+        if (this.a.t == null)
         {
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690651));
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690650, new Object[] { this.a.e }), this.a);
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
+          this.a.t = new ShareAioResultDialog(this.a);
+          this.a.t.a(this.a.p.getString(2131887562));
+          this.a.t.a(this.a.p.getString(2131887561, new Object[] { this.a.q }), this.a);
+          this.a.t.a(this.a);
         }
-        if (!this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
+        if (!this.a.t.isShowing()) {
+          this.a.t.show();
         }
       }
       else
@@ -55,19 +55,19 @@ class BindGroupConfirmActivity$1
             QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
           }
           paramJSONObject = paramJSONObject.getString("msg");
-          QQToast.a(CommonDataAdapter.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
+          QQToast.makeText(CommonDataAdapter.a().b(), paramJSONObject, 0).create(this.a.getTitleBarHeight()).show();
           return;
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690654), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690655), 2131690874, 2131694583, this.a, null);
+        if (this.a.u == null) {
+          this.a.u = DialogUtil.a(this.a, 230, this.a.p.getString(2131887565), this.a.p.getString(2131887566), 2131887812, 2131892267, this.a, null);
         }
         paramJSONObject = paramJSONObject.getString("msg");
         if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramJSONObject);
+          this.a.u.setMessage(paramJSONObject);
         }
-        if (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())
+        if (!this.a.u.isShowing())
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+          this.a.u.show();
           return;
         }
       }
@@ -80,7 +80,7 @@ class BindGroupConfirmActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.1
  * JD-Core Version:    0.7.0.1
  */

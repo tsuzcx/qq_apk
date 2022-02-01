@@ -23,7 +23,7 @@ class ForwardSdkBaseOption$MySSOAccountObserver
     if ((paramString != null) && (paramBundle != null)) {
       ForwardSdkBaseOption.a(paramString, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, false);
     }
-    if ((paramString != null) && (!paramString.n) && (ForwardSdkBaseOption.a(paramString) != null)) {
+    if ((paramString != null) && (!paramString.as) && (ForwardSdkBaseOption.a(paramString) != null)) {
       ForwardSdkBaseOption.a(paramString).sendEmptyMessage(0);
     }
   }
@@ -40,14 +40,14 @@ class ForwardSdkBaseOption$MySSOAccountObserver
     if (paramArrayOfByte != null)
     {
       ForwardSdkBaseOption.a(paramArrayOfByte, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
-      paramArrayOfByte.k = paramString;
-      paramArrayOfByte.n = true;
+      paramArrayOfByte.at = paramString;
+      paramArrayOfByte.as = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.MySSOAccountObserver
  * JD-Core Version:    0.7.0.1
  */

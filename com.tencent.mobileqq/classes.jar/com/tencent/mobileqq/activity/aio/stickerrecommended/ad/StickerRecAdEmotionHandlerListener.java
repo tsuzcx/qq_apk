@@ -42,10 +42,10 @@ public class StickerRecAdEmotionHandlerListener
     Object localObject1 = localArrayList;
     if (paramAdEmoCfg != null)
     {
-      if (!paramAdEmoCfg.jdField_a_of_type_Boolean) {
+      if (!paramAdEmoCfg.a) {
         return null;
       }
-      Object localObject2 = paramAdEmoCfg.jdField_a_of_type_JavaUtilList;
+      Object localObject2 = paramAdEmoCfg.c;
       localObject1 = localArrayList;
       if (localObject2 != null)
       {
@@ -57,7 +57,7 @@ public class StickerRecAdEmotionHandlerListener
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (AdItem)((Iterator)localObject1).next();
-          if (a(((AdItem)localObject2).jdField_a_of_type_JavaUtilList, paramString))
+          if (a(((AdItem)localObject2).a, paramString))
           {
             new AdEmoReportUtil().a(this.a, paramBaseSessionInfo, paramString);
             if ((((AdItem)localObject2).b != null) && (((AdItem)localObject2).b.size() > 0))
@@ -70,7 +70,7 @@ public class StickerRecAdEmotionHandlerListener
           }
         }
         localObject1 = localArrayList;
-        if (paramAdEmoCfg.jdField_a_of_type_Int == 1)
+        if (paramAdEmoCfg.b == 1)
         {
           Collections.shuffle(localArrayList);
           localObject1 = localArrayList;
@@ -87,7 +87,7 @@ public class StickerRecAdEmotionHandlerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.ad.StickerRecAdEmotionHandlerListener
  * JD-Core Version:    0.7.0.1
  */

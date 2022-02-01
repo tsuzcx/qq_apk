@@ -18,24 +18,9 @@ import mqq.app.AppRuntime;
 
 public class QQReminderAMSHelper
 {
-  private static AcsMsg a(Bundle paramBundle)
-  {
-    AcsMsg localAcsMsg = new AcsMsg();
-    localAcsMsg.busi_id = paramBundle.getString("busi_id");
-    localAcsMsg.msg_id = paramBundle.getString("msg_id");
-    localAcsMsg.content = paramBundle.getString("content");
-    localAcsMsg.btn_text = paramBundle.getString("btn_text");
-    localAcsMsg.title = paramBundle.getString("title");
-    localAcsMsg.mn_reserved = paramBundle.getString("mn_reserved");
-    localAcsMsg.notice_time = paramBundle.getLong("notice_time");
-    localAcsMsg.banner_type = paramBundle.getInt("banner_type");
-    localAcsMsg.banner_url = paramBundle.getString("banner_url");
-    return localAcsMsg;
-  }
-  
   static void a(AcsMsg paramAcsMsg)
   {
-    if (!a(paramAcsMsg)) {
+    if (!b(paramAcsMsg)) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -59,7 +44,7 @@ public class QQReminderAMSHelper
         }
         return;
       }
-      ((IQQReminderDataService)localAppRuntime.getRuntimeService(IQQReminderDataService.class, "")).doNotifyByPush(a(paramBundle));
+      ((IQQReminderDataService)localAppRuntime.getRuntimeService(IQQReminderDataService.class, "")).doNotifyByPush(b(paramBundle));
       return;
     }
     QIPCClientHelper.getInstance().callServer("QQNotifyIPCModule", "add_msg", paramBundle, null);
@@ -115,11 +100,6 @@ public class QQReminderAMSHelper
     return ((ActivateFriendsManager)localAppRuntime.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).a(true);
   }
   
-  public static boolean a(AcsMsg paramAcsMsg)
-  {
-    return (paramAcsMsg != null) && ("bf15cdd9f2aa2b578f3af4c3e433f077".equals(paramAcsMsg.busi_id));
-  }
-  
   public static boolean a(String paramString)
   {
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
@@ -138,10 +118,30 @@ public class QQReminderAMSHelper
     }
     return true;
   }
+  
+  private static AcsMsg b(Bundle paramBundle)
+  {
+    AcsMsg localAcsMsg = new AcsMsg();
+    localAcsMsg.busi_id = paramBundle.getString("busi_id");
+    localAcsMsg.msg_id = paramBundle.getString("msg_id");
+    localAcsMsg.content = paramBundle.getString("content");
+    localAcsMsg.btn_text = paramBundle.getString("btn_text");
+    localAcsMsg.title = paramBundle.getString("title");
+    localAcsMsg.mn_reserved = paramBundle.getString("mn_reserved");
+    localAcsMsg.notice_time = paramBundle.getLong("notice_time");
+    localAcsMsg.banner_type = paramBundle.getInt("banner_type");
+    localAcsMsg.banner_url = paramBundle.getString("banner_url");
+    return localAcsMsg;
+  }
+  
+  public static boolean b(AcsMsg paramAcsMsg)
+  {
+    return (paramAcsMsg != null) && ("bf15cdd9f2aa2b578f3af4c3e433f077".equals(paramAcsMsg.busi_id));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQReminderAMSHelper
  * JD-Core Version:    0.7.0.1
  */

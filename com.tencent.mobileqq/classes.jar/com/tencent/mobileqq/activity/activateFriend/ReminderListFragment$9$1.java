@@ -10,9 +10,9 @@ class ReminderListFragment$9$1
   
   public void run()
   {
-    PullToRefreshRecyclerView localPullToRefreshRecyclerView = ReminderListFragment.a(this.a.a);
+    PullToRefreshRecyclerView localPullToRefreshRecyclerView = ReminderListFragment.e(this.a.b);
     PullToRefreshBase.Mode localMode;
-    if (ReminderListFragment.a(this.a.a)) {
+    if (ReminderListFragment.m(this.a.b)) {
       localMode = PullToRefreshBase.Mode.BOTH;
     } else {
       localMode = PullToRefreshBase.Mode.PULL_FROM_START;
@@ -22,7 +22,7 @@ class ReminderListFragment$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.9.1
  * JD-Core Version:    0.7.0.1
  */

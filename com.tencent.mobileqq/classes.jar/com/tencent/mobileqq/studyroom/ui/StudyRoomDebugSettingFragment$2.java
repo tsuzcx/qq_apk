@@ -17,21 +17,21 @@ class StudyRoomDebugSettingFragment$2
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    PluginUpdater.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity());
+    PluginUpdater.a(paramBoolean, this.c.getQBaseActivity());
     if (!paramBoolean)
     {
-      paramCompoundButton = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity().getAppRuntime();
+      paramCompoundButton = (QQAppInterface)this.c.getQBaseActivity().getAppRuntime();
       if (paramCompoundButton != null) {
         ((IPluginManager)paramCompoundButton.getManager(QQManagerFactory.MGR_PLUGIN)).b();
       }
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
+    this.a.setEnabled(paramBoolean);
+    this.b.setEnabled(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomDebugSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

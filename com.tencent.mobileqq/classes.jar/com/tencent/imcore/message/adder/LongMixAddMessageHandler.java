@@ -20,7 +20,7 @@ public class LongMixAddMessageHandler
     if ((!paramMessageRecord.isSendFromLocal()) && ((paramMessageRecord.msgtype == -1036) || (paramMessageRecord.msgtype == -1035)))
     {
       MixedMsgManager localMixedMsgManager = (MixedMsgManager)paramQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER);
-      if (paramQQAppInterface.mAutomator.a() == 1)
+      if (paramQQAppInterface.mAutomator.f() == 1)
       {
         localMixedMsgManager.a(paramMessageRecord);
         return;
@@ -44,7 +44,7 @@ public class LongMixAddMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.adder.LongMixAddMessageHandler
  * JD-Core Version:    0.7.0.1
  */

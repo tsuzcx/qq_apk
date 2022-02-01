@@ -11,22 +11,22 @@ class MultiCardFragment$12
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f1 = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$ZoomParam;
+    paramValueAnimator = this.a;
     if (paramValueAnimator == null) {
       return;
     }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    paramValueAnimator.a.setScaleX(f2);
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$ZoomParam.a.setScaleY(f2);
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$ZoomParam.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$ZoomParam.a.setTranslationY(this.b * f1);
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$ZoomParam.a.getLayoutParams().height = ((int)(this.c * ((1.0F - (1.0F - this.d) * f1) / f2)));
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardFragment$ZoomParam.a.requestLayout();
+    float f2 = 1.0F - (1.0F - this.b) * f1;
+    paramValueAnimator.f.setScaleX(f2);
+    this.a.f.setScaleY(f2);
+    this.a.f.setTranslationX(0.0F);
+    this.a.f.setTranslationY(this.c * f1);
+    this.a.f.getLayoutParams().height = ((int)(this.d * ((1.0F - (1.0F - this.e) * f1) / f2)));
+    this.a.f.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.12
  * JD-Core Version:    0.7.0.1
  */

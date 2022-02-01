@@ -9,12 +9,12 @@ class RedpointHandler$2
   
   public void run()
   {
-    RedpointHandler.b(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLbsInfo, this.b);
+    RedpointHandler.b(this.this$0, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RedpointHandler.2
  * JD-Core Version:    0.7.0.1
  */

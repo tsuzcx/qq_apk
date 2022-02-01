@@ -27,21 +27,21 @@ public class MultiBiuSameContentUtils
       {
         Object localObject2 = (articlesummary.MultiBiuSameContent)paramList.next();
         localObject1 = new MultiBiuSameContent();
-        ((MultiBiuSameContent)localObject1).jdField_a_of_type_JavaLangString = ((articlesummary.MultiBiuSameContent)localObject2).bytes_biu_comments.get().toStringUtf8();
-        ((MultiBiuSameContent)localObject1).jdField_a_of_type_Long = ((articlesummary.MultiBiuSameContent)localObject2).uint64_uin.get();
-        ((MultiBiuSameContent)localObject1).jdField_a_of_type_Int = ((articlesummary.MultiBiuSameContent)localObject2).enum_uin_type.get();
-        ((MultiBiuSameContent)localObject1).jdField_b_of_type_Int = ((articlesummary.MultiBiuSameContent)localObject2).uint32_biu_time.get();
-        ((MultiBiuSameContent)localObject1).jdField_b_of_type_Long = ((articlesummary.MultiBiuSameContent)localObject2).uint64_feeds_id.get();
-        ((MultiBiuSameContent)localObject1).jdField_c_of_type_Int = ((articlesummary.MultiBiuSameContent)localObject2).uint32_feeds_type.get();
-        ((MultiBiuSameContent)localObject1).d = ((articlesummary.MultiBiuSameContent)localObject2).uint32_strategy_id.get();
-        ((MultiBiuSameContent)localObject1).jdField_c_of_type_Long = ((articlesummary.MultiBiuSameContent)localObject2).uint64_algorithm_id.get();
+        ((MultiBiuSameContent)localObject1).b = ((articlesummary.MultiBiuSameContent)localObject2).bytes_biu_comments.get().toStringUtf8();
+        ((MultiBiuSameContent)localObject1).a = ((articlesummary.MultiBiuSameContent)localObject2).uint64_uin.get();
+        ((MultiBiuSameContent)localObject1).c = ((articlesummary.MultiBiuSameContent)localObject2).enum_uin_type.get();
+        ((MultiBiuSameContent)localObject1).d = ((articlesummary.MultiBiuSameContent)localObject2).uint32_biu_time.get();
+        ((MultiBiuSameContent)localObject1).e = ((articlesummary.MultiBiuSameContent)localObject2).uint64_feeds_id.get();
+        ((MultiBiuSameContent)localObject1).f = ((articlesummary.MultiBiuSameContent)localObject2).uint32_feeds_type.get();
+        ((MultiBiuSameContent)localObject1).g = ((articlesummary.MultiBiuSameContent)localObject2).uint32_strategy_id.get();
+        ((MultiBiuSameContent)localObject1).h = ((articlesummary.MultiBiuSameContent)localObject2).uint64_algorithm_id.get();
         if ((((articlesummary.MultiBiuSameContent)localObject2).rpt_biu_mutli_level.has()) && (((articlesummary.MultiBiuSameContent)localObject2).rpt_biu_mutli_level.get() != null))
         {
           localObject2 = ((articlesummary.MultiBiuSameContent)localObject2).rpt_biu_mutli_level.get().iterator();
           while (((Iterator)localObject2).hasNext())
           {
             articlesummary.BiuOneLevelItem localBiuOneLevelItem = (articlesummary.BiuOneLevelItem)((Iterator)localObject2).next();
-            ((MultiBiuSameContent)localObject1).jdField_a_of_type_JavaUtilArrayList.add(SocializeFeedsInfoUtils.a(localBiuOneLevelItem));
+            ((MultiBiuSameContent)localObject1).i.add(SocializeFeedsInfoUtils.a(localBiuOneLevelItem));
           }
         }
         localArrayList.add(localObject1);
@@ -62,7 +62,7 @@ public class MultiBiuSameContentUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.MultiBiuSameContentUtils
  * JD-Core Version:    0.7.0.1
  */

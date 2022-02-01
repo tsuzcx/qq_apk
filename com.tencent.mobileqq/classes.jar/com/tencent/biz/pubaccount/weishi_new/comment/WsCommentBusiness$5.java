@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
 import UserGrowth.stPostCommentReplyV2Rsp;
+import UserGrowth.stSimpleMetaPerson;
 import UserGrowth.stSimpleMetaReply;
 import com.tencent.biz.pubaccount.weishi_new.net.IWeishiServiceListener;
 import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
@@ -15,23 +16,26 @@ class WsCommentBusiness$5
   
   public void a(WeishiTask paramWeishiTask)
   {
-    if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyV2Rsp))
+    if ((paramWeishiTask.m instanceof stPostCommentReplyV2Rsp))
     {
-      stPostCommentReplyV2Rsp localstPostCommentReplyV2Rsp = (stPostCommentReplyV2Rsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      WsCommentBusiness localWsCommentBusiness = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness;
-      int i = paramWeishiTask.b;
-      paramWeishiTask = paramWeishiTask.jdField_a_of_type_JavaLangString;
-      stSimpleMetaReply localstSimpleMetaReply = this.jdField_a_of_type_UserGrowthStSimpleMetaReply;
-      paramWeishiTask = localWsCommentBusiness.a(new Object[] { Integer.valueOf(4), Integer.valueOf(i), paramWeishiTask, localstPostCommentReplyV2Rsp, localstSimpleMetaReply, localstSimpleMetaReply.id, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.hashCode()) });
+      stPostCommentReplyV2Rsp localstPostCommentReplyV2Rsp = (stPostCommentReplyV2Rsp)paramWeishiTask.m;
+      if ((localstPostCommentReplyV2Rsp.reply != null) && (localstPostCommentReplyV2Rsp.reply.poster != null)) {
+        this.a.poster.id = localstPostCommentReplyV2Rsp.reply.poster.id;
+      }
+      WsCommentBusiness localWsCommentBusiness = this.b;
+      int i = paramWeishiTask.e;
+      paramWeishiTask = paramWeishiTask.c;
+      stSimpleMetaReply localstSimpleMetaReply = this.a;
+      paramWeishiTask = localWsCommentBusiness.a(new Object[] { Integer.valueOf(4), Integer.valueOf(i), paramWeishiTask, localstPostCommentReplyV2Rsp, localstSimpleMetaReply, localstSimpleMetaReply.id, Integer.valueOf(this.b.hashCode()) });
       StoryDispatcher.a().dispatch(paramWeishiTask);
       return;
     }
-    WSLog.d(WsCommentBusiness.a(), "添加回复失败new！");
+    WSLog.d("WsCommentBusiness", "添加回复失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness.5
  * JD-Core Version:    0.7.0.1
  */

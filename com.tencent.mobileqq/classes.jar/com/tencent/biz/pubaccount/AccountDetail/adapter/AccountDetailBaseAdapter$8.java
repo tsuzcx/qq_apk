@@ -10,14 +10,14 @@ class AccountDetailBaseAdapter$8
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter$OtherTopHolder.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter$OtherTopHolder.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailAdapterAccountDetailBaseAdapter$OtherTopHolder.d.setLayoutParams(this.c);
+    this.a.d.setLayoutParams(this.b);
+    this.a.e.setLayoutParams(this.c);
+    this.a.f.setLayoutParams(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.8
  * JD-Core Version:    0.7.0.1
  */

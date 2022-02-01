@@ -60,7 +60,7 @@ public class BeaconReport
       localStringBuilder.append("  SDKVersion:");
       localStringBuilder.append(sdkVersion);
       ABTestLog.stepReport(localStringBuilder.toString(), new Object[0]);
-      registerTunnel("JS0B558T33E4YJ", "3.0.14", "10000000");
+      registerTunnel("JS0B558T33E4YJ", "3.1.1", "10000000");
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -154,7 +154,7 @@ public class BeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.report.BeaconReport
  * JD-Core Version:    0.7.0.1
  */

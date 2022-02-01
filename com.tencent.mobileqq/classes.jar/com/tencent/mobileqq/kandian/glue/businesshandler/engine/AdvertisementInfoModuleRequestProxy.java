@@ -6,13 +6,10 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.kandian.ad.api.entity.IRIJAdvertisementInfoModule;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
 import com.tencent.mobileqq.kandian.biz.ad.IRIJAdvertisementRequestProxy;
-import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngine;
-import com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngineFactory;
 import com.tencent.mobileqq.kandian.repo.common.IFindRemovedEntity;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyEngineModule;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.concurrent.ExecutorService;
@@ -41,7 +38,7 @@ public class AdvertisementInfoModuleRequestProxy
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    IRIJAdvertisementInfoModule localIRIJAdvertisementInfoModule = (IRIJAdvertisementInfoModule)((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().c();
+    IRIJAdvertisementInfoModule localIRIJAdvertisementInfoModule = ReadInJoyLogicEngine.a().M();
     if (localIRIJAdvertisementInfoModule != null) {
       localIRIJAdvertisementInfoModule.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
@@ -51,7 +48,7 @@ public class AdvertisementInfoModuleRequestProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.AdvertisementInfoModuleRequestProxy
  * JD-Core Version:    0.7.0.1
  */

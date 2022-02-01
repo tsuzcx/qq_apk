@@ -5,38 +5,38 @@ import java.util.Map;
 
 public class ForwardImageDownUpMgr
 {
-  private static ForwardImageDownUpMgr jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static ForwardImageDownUpMgr a;
+  private Map<String, String> b = new HashMap();
   
   public static ForwardImageDownUpMgr a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr == null) {
-      jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr = new ForwardImageDownUpMgr();
+    if (a == null) {
+      a = new ForwardImageDownUpMgr();
     }
-    return jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr;
+    return a;
   }
   
   public static String a(String paramString)
   {
-    ForwardImageDownUpMgr localForwardImageDownUpMgr = jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr;
+    ForwardImageDownUpMgr localForwardImageDownUpMgr = a;
     if (localForwardImageDownUpMgr == null) {
       return null;
     }
-    paramString = (String)localForwardImageDownUpMgr.jdField_a_of_type_JavaUtilMap.remove(paramString);
-    if (jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-      jdField_a_of_type_ComTencentMobileqqForwardForwardImageDownUpMgr = null;
+    paramString = (String)localForwardImageDownUpMgr.b.remove(paramString);
+    if (a.b.isEmpty()) {
+      a = null;
     }
     return paramString;
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+    this.b.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardImageDownUpMgr
  * JD-Core Version:    0.7.0.1
  */

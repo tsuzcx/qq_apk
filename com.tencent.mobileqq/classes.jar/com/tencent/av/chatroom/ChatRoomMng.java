@@ -37,27 +37,27 @@ import tencent.av.chatroom.chatroom_sso.RoomKey;
 public class ChatRoomMng
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int = 0;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  Comparator<ChatRoomMsg> jdField_a_of_type_JavaUtilComparator = new ChatRoomMng.1(this);
-  private final ConcurrentHashMap<ChatRoomInfo, ConcurrentLinkedQueue<ChatRoomMsg>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final ConcurrentLinkedQueue<ChatRoomInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private final ConcurrentLinkedQueue<ChatRoomObserver> b = new ConcurrentLinkedQueue();
+  Comparator<ChatRoomMsg> a = new ChatRoomMng.1(this);
+  private final VideoAppInterface b;
+  private final ConcurrentLinkedQueue<ChatRoomInfo> c = new ConcurrentLinkedQueue();
+  private final ConcurrentLinkedQueue<ChatRoomObserver> d = new ConcurrentLinkedQueue();
+  private final ConcurrentHashMap<ChatRoomInfo, ConcurrentLinkedQueue<ChatRoomMsg>> e = new ConcurrentHashMap();
+  private final Handler f;
+  private int g = 0;
   
   public ChatRoomMng(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.b = paramVideoAppInterface;
+    this.f = new Handler(Looper.getMainLooper(), this);
   }
   
   private ChatRoomInfo a(chatroom_sso.RoomKey paramRoomKey)
   {
-    Object localObject1 = SessionMgr.a().a();
-    int i = ((SessionInfo)localObject1).a();
-    long l5 = ((SessionInfo)localObject1).a();
-    long l3 = ((SessionInfo)localObject1).b();
-    long l4 = ((SessionInfo)localObject1).d();
+    Object localObject1 = SessionMgr.a().b();
+    int i = ((SessionInfo)localObject1).x();
+    long l5 = ((SessionInfo)localObject1).y();
+    long l3 = ((SessionInfo)localObject1).D();
+    long l4 = ((SessionInfo)localObject1).E();
     long l2 = l3;
     long l1 = l4;
     Object localObject2;
@@ -67,12 +67,12 @@ public class ChatRoomMng
       l1 = l4;
       if (l5 == paramRoomKey.id.get())
       {
-        localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        localObject2 = this.b.b();
         if (localObject2 != null) {
           ((VideoController)localObject2).a("pushMsg", (SessionInfo)localObject1);
         }
-        l2 = ((SessionInfo)localObject1).b();
-        l1 = ((SessionInfo)localObject1).d();
+        l2 = ((SessionInfo)localObject1).D();
+        l1 = ((SessionInfo)localObject1).E();
       }
     }
     if ((i == paramRoomKey.type.get()) && (l5 == paramRoomKey.id.get()) && (l2 == paramRoomKey.room_id.get()) && (l1 == paramRoomKey.create_ts.get())) {
@@ -82,11 +82,11 @@ public class ChatRoomMng
     }
     if (localObject1 != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         localObject2 = (ChatRoomInfo)localIterator.next();
-        if ((localObject2 != null) && (((ChatRoomInfo)localObject2).jdField_a_of_type_Int == paramRoomKey.type.get()) && (((ChatRoomInfo)localObject2).jdField_b_of_type_Long == paramRoomKey.id.get()) && (((ChatRoomInfo)localObject2).jdField_c_of_type_Long == paramRoomKey.create_ts.get()) && (((ChatRoomInfo)localObject2).jdField_a_of_type_Long != paramRoomKey.room_id.get()))
+        if ((localObject2 != null) && (((ChatRoomInfo)localObject2).a == paramRoomKey.type.get()) && (((ChatRoomInfo)localObject2).c == paramRoomKey.id.get()) && (((ChatRoomInfo)localObject2).d == paramRoomKey.create_ts.get()) && (((ChatRoomInfo)localObject2).b != paramRoomKey.room_id.get()))
         {
           paramRoomKey = (chatroom_sso.RoomKey)localObject2;
           break label289;
@@ -109,31 +109,76 @@ public class ChatRoomMng
     return localObject1;
   }
   
-  private ConcurrentLinkedQueue<ChatRoomMsg> a(ChatRoomInfo paramChatRoomInfo)
-  {
-    ConcurrentLinkedQueue localConcurrentLinkedQueue2 = (ConcurrentLinkedQueue)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramChatRoomInfo);
-    ConcurrentLinkedQueue localConcurrentLinkedQueue1 = localConcurrentLinkedQueue2;
-    if (localConcurrentLinkedQueue2 == null)
-    {
-      localConcurrentLinkedQueue1 = new ConcurrentLinkedQueue();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramChatRoomInfo, localConcurrentLinkedQueue1);
-    }
-    return localConcurrentLinkedQueue1;
-  }
-  
   private void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
   {
-    this.jdField_a_of_type_Int = (paramInt | this.jdField_a_of_type_Int);
-    if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1, paramChatRoomInfo))
+    this.g = (paramInt | this.g);
+    if (!this.f.hasMessages(1, paramChatRoomInfo))
     {
       Message localMessage = Message.obtain();
       localMessage.what = 1;
       localMessage.obj = paramChatRoomInfo;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      this.f.sendMessage(localMessage);
     }
   }
   
-  private void a(ChatRoomInfo paramChatRoomInfo, long paramLong)
+  private void a(ChatRoomMsg paramChatRoomMsg)
+  {
+    if (paramChatRoomMsg != null)
+    {
+      if (paramChatRoomMsg.e == null) {
+        return;
+      }
+      ChatRoomInfo localChatRoomInfo = paramChatRoomMsg.e;
+      long l1 = 0L;
+      try
+      {
+        l2 = Long.parseLong(this.b.getCurrentAccountUin());
+        l1 = l2;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.i("ChatRoomMng", 1, "sendMsg get self uin fail.", localThrowable);
+      }
+      long l2 = AudioHelper.c();
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("sendMsg, seq[");
+        ((StringBuilder)localObject1).append(l2);
+        ((StringBuilder)localObject1).append("], room[");
+        ((StringBuilder)localObject1).append(localChatRoomInfo);
+        ((StringBuilder)localObject1).append("], msg[");
+        ((StringBuilder)localObject1).append(paramChatRoomMsg);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("ChatRoomMng", 2, ((StringBuilder)localObject1).toString());
+      }
+      paramChatRoomMsg.b();
+      Object localObject2 = new chatroom_sso.RoomKey();
+      ((chatroom_sso.RoomKey)localObject2).type.set(localChatRoomInfo.a);
+      ((chatroom_sso.RoomKey)localObject2).room_id.set(localChatRoomInfo.b);
+      ((chatroom_sso.RoomKey)localObject2).id.set(localChatRoomInfo.c);
+      ((chatroom_sso.RoomKey)localObject2).create_ts.set((int)localChatRoomInfo.d);
+      chatroom_sso.Msg localMsg = new chatroom_sso.Msg();
+      localMsg.msg.set(paramChatRoomMsg.g);
+      localMsg.uin.set(l1);
+      Object localObject1 = new chatroom_sso.ReqSendMsg();
+      ((chatroom_sso.ReqSendMsg)localObject1).room_key.set((MessageMicro)localObject2);
+      ((chatroom_sso.ReqSendMsg)localObject1).msg.set(localMsg);
+      localObject2 = new NewIntent(this.b.getApplication(), VideoServlet.class);
+      ((NewIntent)localObject2).putExtra("reqType", 21);
+      ((NewIntent)localObject2).putExtra("ssoCmd", "QQRTCSvc.chatroom_send_msg");
+      ((NewIntent)localObject2).putExtra("vMsg", ((chatroom_sso.ReqSendMsg)localObject1).toByteArray());
+      ((NewIntent)localObject2).putExtra("room_key", localChatRoomInfo);
+      ((NewIntent)localObject2).putExtra("localSeq", paramChatRoomMsg.h);
+      SeqUtil.a((Intent)localObject2, l2);
+      this.b.startServlet((NewIntent)localObject2);
+      if (paramChatRoomMsg.j == ChatRoomMsg.a) {
+        a(1, localChatRoomInfo);
+      }
+    }
+  }
+  
+  private void b(ChatRoomInfo paramChatRoomInfo, long paramLong)
   {
     if (paramChatRoomInfo == null) {
       return;
@@ -147,91 +192,46 @@ public class ChatRoomMng
       ((StringBuilder)localObject).append("], retryDelay[");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append("], canRetry[");
-      ((StringBuilder)localObject).append(paramChatRoomInfo.a());
+      ((StringBuilder)localObject).append(paramChatRoomInfo.b());
       ((StringBuilder)localObject).append("]");
       QLog.i("ChatRoomMng", 2, ((StringBuilder)localObject).toString());
     }
     paramLong = Math.max(paramLong, 1000L);
-    if (paramChatRoomInfo.a())
+    if (paramChatRoomInfo.b())
     {
       localObject = Message.obtain();
       ((Message)localObject).obj = paramChatRoomInfo;
       ((Message)localObject).what = 3;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, paramLong);
-    }
-  }
-  
-  private void a(ChatRoomMsg paramChatRoomMsg)
-  {
-    if (paramChatRoomMsg != null)
-    {
-      if (paramChatRoomMsg.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo == null) {
-        return;
-      }
-      ChatRoomInfo localChatRoomInfo = paramChatRoomMsg.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
-      long l1 = 0L;
-      try
-      {
-        l2 = Long.parseLong(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-        l1 = l2;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.i("ChatRoomMng", 1, "sendMsg get self uin fail.", localThrowable);
-      }
-      long l2 = AudioHelper.b();
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("sendMsg, seq[");
-        ((StringBuilder)localObject1).append(l2);
-        ((StringBuilder)localObject1).append("], room[");
-        ((StringBuilder)localObject1).append(localChatRoomInfo);
-        ((StringBuilder)localObject1).append("], msg[");
-        ((StringBuilder)localObject1).append(paramChatRoomMsg);
-        ((StringBuilder)localObject1).append("]");
-        QLog.i("ChatRoomMng", 2, ((StringBuilder)localObject1).toString());
-      }
-      paramChatRoomMsg.a();
-      Object localObject2 = new chatroom_sso.RoomKey();
-      ((chatroom_sso.RoomKey)localObject2).type.set(localChatRoomInfo.jdField_a_of_type_Int);
-      ((chatroom_sso.RoomKey)localObject2).room_id.set(localChatRoomInfo.jdField_a_of_type_Long);
-      ((chatroom_sso.RoomKey)localObject2).id.set(localChatRoomInfo.jdField_b_of_type_Long);
-      ((chatroom_sso.RoomKey)localObject2).create_ts.set((int)localChatRoomInfo.jdField_c_of_type_Long);
-      chatroom_sso.Msg localMsg = new chatroom_sso.Msg();
-      localMsg.msg.set(paramChatRoomMsg.jdField_a_of_type_JavaLangString);
-      localMsg.uin.set(l1);
-      Object localObject1 = new chatroom_sso.ReqSendMsg();
-      ((chatroom_sso.ReqSendMsg)localObject1).room_key.set((MessageMicro)localObject2);
-      ((chatroom_sso.ReqSendMsg)localObject1).msg.set(localMsg);
-      localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
-      ((NewIntent)localObject2).putExtra("reqType", 21);
-      ((NewIntent)localObject2).putExtra("ssoCmd", "QQRTCSvc.chatroom_send_msg");
-      ((NewIntent)localObject2).putExtra("vMsg", ((chatroom_sso.ReqSendMsg)localObject1).toByteArray());
-      ((NewIntent)localObject2).putExtra("room_key", localChatRoomInfo);
-      ((NewIntent)localObject2).putExtra("localSeq", paramChatRoomMsg.jdField_b_of_type_Long);
-      SeqUtil.a((Intent)localObject2, l2);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.startServlet((NewIntent)localObject2);
-      if (paramChatRoomMsg.e == ChatRoomMsg.jdField_a_of_type_Int) {
-        a(1, localChatRoomInfo);
-      }
+      this.f.sendMessageDelayed((Message)localObject, paramLong);
     }
   }
   
   private void b(ChatRoomMsg paramChatRoomMsg)
   {
-    if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(2, paramChatRoomMsg))
+    if (!this.f.hasMessages(2, paramChatRoomMsg))
     {
       Message localMessage = Message.obtain();
       localMessage.what = 2;
       localMessage.obj = paramChatRoomMsg;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      this.f.sendMessage(localMessage);
     }
+  }
+  
+  private ConcurrentLinkedQueue<ChatRoomMsg> c(ChatRoomInfo paramChatRoomInfo)
+  {
+    ConcurrentLinkedQueue localConcurrentLinkedQueue2 = (ConcurrentLinkedQueue)this.e.get(paramChatRoomInfo);
+    ConcurrentLinkedQueue localConcurrentLinkedQueue1 = localConcurrentLinkedQueue2;
+    if (localConcurrentLinkedQueue2 == null)
+    {
+      localConcurrentLinkedQueue1 = new ConcurrentLinkedQueue();
+      this.e.put(paramChatRoomInfo, localConcurrentLinkedQueue1);
+    }
+    return localConcurrentLinkedQueue1;
   }
   
   public ChatRoomInfo a(int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    Iterator localIterator = this.c.iterator();
     while (localIterator.hasNext())
     {
       ChatRoomInfo localChatRoomInfo = (ChatRoomInfo)localIterator.next();
@@ -248,11 +248,11 @@ public class ChatRoomMng
     Object localObject;
     if (localChatRoomInfo != null)
     {
-      localObject = (ConcurrentLinkedQueue)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localChatRoomInfo);
+      localObject = (ConcurrentLinkedQueue)this.e.get(localChatRoomInfo);
       if (localObject == null)
       {
         localObject = new ConcurrentLinkedQueue();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localChatRoomInfo, localObject);
+        this.e.put(localChatRoomInfo, localObject);
       }
       else
       {
@@ -261,23 +261,23 @@ public class ChatRoomMng
       localObject = Message.obtain();
       ((Message)localObject).obj = localChatRoomInfo;
       ((Message)localObject).what = 3;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.f.sendMessage((Message)localObject);
     }
     if ((QLog.isDevelopLevel()) && (paramSessionInfo != null))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("enterChatRoom, SessionType[");
-      ((StringBuilder)localObject).append(paramSessionInfo.d);
+      ((StringBuilder)localObject).append(paramSessionInfo.g);
       ((StringBuilder)localObject).append("], relationType[");
-      ((StringBuilder)localObject).append(paramSessionInfo.E);
+      ((StringBuilder)localObject).append(paramSessionInfo.aQ);
       ((StringBuilder)localObject).append("], relationId[");
-      ((StringBuilder)localObject).append(paramSessionInfo.f);
+      ((StringBuilder)localObject).append(paramSessionInfo.aN);
       ((StringBuilder)localObject).append("], peerUin[");
-      ((StringBuilder)localObject).append(paramSessionInfo.c);
+      ((StringBuilder)localObject).append(paramSessionInfo.s);
       ((StringBuilder)localObject).append("], extraUin[");
-      ((StringBuilder)localObject).append(paramSessionInfo.e);
+      ((StringBuilder)localObject).append(paramSessionInfo.u);
       ((StringBuilder)localObject).append("], isDoubleVideoMeeting[");
-      ((StringBuilder)localObject).append(paramSessionInfo.y);
+      ((StringBuilder)localObject).append(paramSessionInfo.am);
       ((StringBuilder)localObject).append("], room[");
       ((StringBuilder)localObject).append(localChatRoomInfo);
       ((StringBuilder)localObject).append("]");
@@ -291,10 +291,10 @@ public class ChatRoomMng
     Object localObject;
     if (paramSessionInfo != null)
     {
-      int i = paramSessionInfo.a();
-      long l5 = paramSessionInfo.a();
-      long l3 = paramSessionInfo.b();
-      long l4 = paramSessionInfo.d();
+      int i = paramSessionInfo.x();
+      long l5 = paramSessionInfo.y();
+      long l3 = paramSessionInfo.D();
+      long l4 = paramSessionInfo.E();
       long l2 = l3;
       long l1 = l4;
       if (paramBoolean) {
@@ -312,12 +312,12 @@ public class ChatRoomMng
         else
         {
           if (i == 2) {
-            VideoController.a().c();
+            VideoController.f().ao();
           } else if (i == 1) {
-            VideoController.a().d();
+            VideoController.f().ap();
           }
-          l2 = paramSessionInfo.b();
-          l1 = paramSessionInfo.d();
+          l2 = paramSessionInfo.D();
+          l1 = paramSessionInfo.E();
         }
       }
       ChatRoomInfo localChatRoomInfo = a(i, l2, l5, l1);
@@ -326,24 +326,24 @@ public class ChatRoomMng
         if ((l2 != 0L) && (l5 != 0L) && (i != 0))
         {
           localChatRoomInfo = new ChatRoomInfo(i, l2, l5, l1);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localChatRoomInfo);
+          this.c.add(localChatRoomInfo);
         }
         localObject = localChatRoomInfo;
         if (QLog.isDevelopLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("getRoomInfo, SessionType[");
-          ((StringBuilder)localObject).append(paramSessionInfo.d);
+          ((StringBuilder)localObject).append(paramSessionInfo.g);
           ((StringBuilder)localObject).append("], relationType[");
-          ((StringBuilder)localObject).append(paramSessionInfo.E);
+          ((StringBuilder)localObject).append(paramSessionInfo.aQ);
           ((StringBuilder)localObject).append("], relationId[");
-          ((StringBuilder)localObject).append(paramSessionInfo.f);
+          ((StringBuilder)localObject).append(paramSessionInfo.aN);
           ((StringBuilder)localObject).append("], peerUin[");
-          ((StringBuilder)localObject).append(paramSessionInfo.c);
+          ((StringBuilder)localObject).append(paramSessionInfo.s);
           ((StringBuilder)localObject).append("], extraUin[");
-          ((StringBuilder)localObject).append(paramSessionInfo.e);
+          ((StringBuilder)localObject).append(paramSessionInfo.u);
           ((StringBuilder)localObject).append("], isDoubleVideoMeeting[");
-          ((StringBuilder)localObject).append(paramSessionInfo.y);
+          ((StringBuilder)localObject).append(paramSessionInfo.am);
           ((StringBuilder)localObject).append("], type[");
           ((StringBuilder)localObject).append(i);
           ((StringBuilder)localObject).append("], roomID[");
@@ -377,7 +377,7 @@ public class ChatRoomMng
     if (paramChatRoomInfo == null) {
       return null;
     }
-    Object localObject2 = a(paramChatRoomInfo);
+    Object localObject2 = c(paramChatRoomInfo);
     paramChatRoomInfo = localObject1;
     if (localObject2 != null)
     {
@@ -392,7 +392,7 @@ public class ChatRoomMng
             break;
           }
           paramChatRoomInfo = (ChatRoomMsg)((Iterator)localObject2).next();
-        } while ((paramChatRoomInfo == null) || (paramChatRoomInfo.jdField_b_of_type_Long != paramLong));
+        } while ((paramChatRoomInfo == null) || (paramChatRoomInfo.h != paramLong));
       }
     }
     return paramChatRoomInfo;
@@ -403,7 +403,7 @@ public class ChatRoomMng
     if (QLog.isColorLevel()) {
       QLog.i("ChatRoomMng", 2, "clearObserver");
     }
-    this.b.clear();
+    this.d.clear();
   }
   
   public void a(int paramInt, byte[] paramArrayOfByte)
@@ -497,44 +497,18 @@ public class ChatRoomMng
       if (localChatRoomInfo2 != paramVideoController) {
         a(localChatRoomInfo2);
       }
-      paramVideoController.jdField_c_of_type_Boolean = true;
+      paramVideoController.j = true;
       if ((localChatRoomInfo2 != paramVideoController) && (localChatRoomInfo2 != null)) {
-        paramVideoController.d = localChatRoomInfo2.jdField_a_of_type_Long;
+        paramVideoController.k = localChatRoomInfo2.b;
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3, paramVideoController);
+      this.f.removeMessages(3, paramVideoController);
       paramSessionInfo = Message.obtain();
       paramSessionInfo.obj = paramVideoController;
       paramSessionInfo.what = 3;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramSessionInfo);
+      this.f.sendMessage(paramSessionInfo);
     }
     if (QLog.isColorLevel()) {
       QLog.i("ChatRoomMng", 2, String.format("onSwitchTerminalSuccess, ret[%s], pre[%s], cur[%s]", new Object[] { Boolean.valueOf(bool), localChatRoomInfo2, paramVideoController }));
-    }
-  }
-  
-  public void a(SessionInfo paramSessionInfo)
-  {
-    ChatRoomInfo localChatRoomInfo = a(paramSessionInfo, false);
-    a(localChatRoomInfo);
-    if ((QLog.isDevelopLevel()) && (paramSessionInfo != null))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("quitChatRoom, SessionType[");
-      localStringBuilder.append(paramSessionInfo.d);
-      localStringBuilder.append("], relationType[");
-      localStringBuilder.append(paramSessionInfo.E);
-      localStringBuilder.append("], relationId[");
-      localStringBuilder.append(paramSessionInfo.f);
-      localStringBuilder.append("], peerUin[");
-      localStringBuilder.append(paramSessionInfo.c);
-      localStringBuilder.append("], extraUin[");
-      localStringBuilder.append(paramSessionInfo.e);
-      localStringBuilder.append("], isDoubleVideoMeeting[");
-      localStringBuilder.append(paramSessionInfo.y);
-      localStringBuilder.append("], room[");
-      localStringBuilder.append(localChatRoomInfo);
-      localStringBuilder.append("]");
-      QLog.i("ChatRoomMng", 4, localStringBuilder.toString());
     }
   }
   
@@ -542,8 +516,8 @@ public class ChatRoomMng
   {
     if (paramChatRoomInfo != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(paramChatRoomInfo);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramChatRoomInfo);
+      this.c.remove(paramChatRoomInfo);
+      this.e.remove(paramChatRoomInfo);
     }
     if (QLog.isColorLevel())
     {
@@ -565,15 +539,15 @@ public class ChatRoomMng
       long l1 = 0L;
       try
       {
-        long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+        long l2 = Long.parseLong(this.b.getCurrentAccountUin());
         l1 = l2;
       }
       catch (Throwable localThrowable)
       {
         QLog.i("ChatRoomMng", 1, "sendMsg get self uin fail.", localThrowable);
       }
-      paramString = new ChatRoomMsg(paramChatRoomInfo, l1, paramString, paramLong, -9223372036854775808L, ChatRoomMsg.jdField_a_of_type_Int);
-      a(paramChatRoomInfo).add(paramString);
+      paramString = new ChatRoomMsg(paramChatRoomInfo, l1, paramString, paramLong, -9223372036854775808L, ChatRoomMsg.a);
+      c(paramChatRoomInfo).add(paramString);
       a(paramString);
     }
   }
@@ -585,13 +559,13 @@ public class ChatRoomMng
       if (paramList == null) {
         return;
       }
-      paramChatRoomInfo = (ConcurrentLinkedQueue)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramChatRoomInfo);
+      paramChatRoomInfo = (ConcurrentLinkedQueue)this.e.get(paramChatRoomInfo);
       if ((paramChatRoomInfo != null) && (paramChatRoomInfo.size() > 0)) {
         paramList.addAll(paramChatRoomInfo);
       }
       try
       {
-        Collections.sort(paramList, this.jdField_a_of_type_JavaUtilComparator);
+        Collections.sort(paramList, this.a);
         return;
       }
       catch (Throwable paramChatRoomInfo)
@@ -647,8 +621,8 @@ public class ChatRoomMng
       localStringBuilder.append("]");
       QLog.i("ChatRoomMng", 2, localStringBuilder.toString());
     }
-    if ((paramChatRoomObserver != null) && (!this.b.contains(paramChatRoomObserver))) {
-      this.b.add(paramChatRoomObserver);
+    if ((paramChatRoomObserver != null) && (!this.d.contains(paramChatRoomObserver))) {
+      this.d.add(paramChatRoomObserver);
     }
   }
   
@@ -657,58 +631,58 @@ public class ChatRoomMng
   {
     // Byte code:
     //   0: aload 4
-    //   2: invokestatic 578	com/tencent/av/utils/SeqUtil:a	(Landroid/content/Intent;)J
+    //   2: invokestatic 591	com/tencent/av/utils/SeqUtil:a	(Landroid/content/Intent;)J
     //   5: lstore 11
-    //   7: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   7: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   10: ifeq +96 -> 106
-    //   13: new 158	java/lang/StringBuilder
+    //   13: new 166	java/lang/StringBuilder
     //   16: dup
-    //   17: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   17: invokespecial 167	java/lang/StringBuilder:<init>	()V
     //   20: astore 13
     //   22: aload 13
-    //   24: ldc_w 580
-    //   27: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc_w 593
+    //   27: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: pop
     //   31: aload 13
     //   33: aload_1
-    //   34: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: pop
     //   38: aload 13
-    //   40: ldc_w 582
-    //   43: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: ldc_w 595
+    //   43: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 13
     //   49: iload_2
-    //   50: invokevirtual 227	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 359	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload 13
-    //   56: ldc_w 584
-    //   59: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: ldc_w 597
+    //   59: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   62: pop
     //   63: aload 13
     //   65: iload_3
-    //   66: invokevirtual 390	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   66: invokevirtual 400	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   69: pop
     //   70: aload 13
-    //   72: ldc_w 586
-    //   75: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: ldc_w 599
+    //   75: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: pop
     //   79: aload 13
     //   81: lload 11
-    //   83: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 241	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   86: pop
     //   87: aload 13
-    //   89: ldc 170
-    //   91: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: ldc 178
+    //   91: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
-    //   95: ldc 172
+    //   95: ldc 180
     //   97: iconst_2
     //   98: aload 13
-    //   100: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   103: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   106: ldc_w 333
+    //   100: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   103: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   106: ldc_w 308
     //   109: aload_1
-    //   110: invokevirtual 589	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   110: invokevirtual 602	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   113: istore 8
     //   115: iconst_m1
     //   116: istore 7
@@ -719,29 +693,29 @@ public class ChatRoomMng
     //   124: aconst_null
     //   125: astore 14
     //   127: iload 8
-    //   129: ifeq +527 -> 656
+    //   129: ifeq +526 -> 655
     //   132: aload 4
-    //   134: ldc_w 346
-    //   137: invokevirtual 595	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   140: checkcast 139	com/tencent/av/chatroom/ChatRoomInfo
+    //   134: ldc_w 321
+    //   137: invokevirtual 608	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   140: checkcast 147	com/tencent/av/chatroom/ChatRoomInfo
     //   143: astore_1
     //   144: aload 4
-    //   146: ldc_w 351
+    //   146: ldc_w 326
     //   149: lconst_0
-    //   150: invokevirtual 599	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   150: invokevirtual 612	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   153: lstore 11
     //   155: aload_1
     //   156: ifnull +28 -> 184
     //   159: aload_0
     //   160: aload_1
-    //   161: getfield 140	com/tencent/av/chatroom/ChatRoomInfo:jdField_a_of_type_Int	I
+    //   161: getfield 149	com/tencent/av/chatroom/ChatRoomInfo:a	I
     //   164: aload_1
-    //   165: getfield 148	com/tencent/av/chatroom/ChatRoomInfo:jdField_a_of_type_Long	J
+    //   165: getfield 156	com/tencent/av/chatroom/ChatRoomInfo:b	J
     //   168: aload_1
-    //   169: getfield 143	com/tencent/av/chatroom/ChatRoomInfo:jdField_b_of_type_Long	J
+    //   169: getfield 152	com/tencent/av/chatroom/ChatRoomInfo:c	J
     //   172: aload_1
-    //   173: getfield 146	com/tencent/av/chatroom/ChatRoomInfo:jdField_c_of_type_Long	J
-    //   176: invokevirtual 421	com/tencent/av/chatroom/ChatRoomMng:a	(IJJJ)Lcom/tencent/av/chatroom/ChatRoomInfo;
+    //   173: getfield 154	com/tencent/av/chatroom/ChatRoomInfo:d	J
+    //   176: invokevirtual 436	com/tencent/av/chatroom/ChatRoomMng:a	(IJJJ)Lcom/tencent/av/chatroom/ChatRoomInfo;
     //   179: astore 4
     //   181: goto +6 -> 187
     //   184: aconst_null
@@ -751,7 +725,7 @@ public class ChatRoomMng
     //   192: aload_0
     //   193: aload 4
     //   195: lload 11
-    //   197: invokevirtual 601	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)Lcom/tencent/av/chatroom/ChatRoomMsg;
+    //   197: invokevirtual 614	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)Lcom/tencent/av/chatroom/ChatRoomMsg;
     //   200: astore 13
     //   202: goto +6 -> 208
     //   205: aconst_null
@@ -770,9 +744,9 @@ public class ChatRoomMng
     //   233: aload 5
     //   235: arraylength
     //   236: ifle +296 -> 532
-    //   239: new 603	tencent/av/chatroom/chatroom_sso$RspSendMsg
+    //   239: new 616	tencent/av/chatroom/chatroom_sso$RspSendMsg
     //   242: dup
-    //   243: invokespecial 604	tencent/av/chatroom/chatroom_sso$RspSendMsg:<init>	()V
+    //   243: invokespecial 617	tencent/av/chatroom/chatroom_sso$RspSendMsg:<init>	()V
     //   246: astore 16
     //   248: iload 7
     //   250: istore_3
@@ -780,31 +754,31 @@ public class ChatRoomMng
     //   253: astore_1
     //   254: aload 16
     //   256: aload 5
-    //   258: invokevirtual 605	tencent/av/chatroom/chatroom_sso$RspSendMsg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   258: invokevirtual 618	tencent/av/chatroom/chatroom_sso$RspSendMsg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   261: pop
     //   262: iload 7
     //   264: istore_3
     //   265: aload 14
     //   267: astore_1
     //   268: aload 16
-    //   270: getfield 608	tencent/av/chatroom/chatroom_sso$RspSendMsg:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   273: invokevirtual 94	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   270: getfield 621	tencent/av/chatroom/chatroom_sso$RspSendMsg:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   273: invokevirtual 102	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   276: istore 6
     //   278: iload 6
     //   280: istore_3
     //   281: aload 14
     //   283: astore_1
     //   284: aload 16
-    //   286: getfield 611	tencent/av/chatroom/chatroom_sso$RspSendMsg:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   289: invokevirtual 613	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   286: getfield 624	tencent/av/chatroom/chatroom_sso$RspSendMsg:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   289: invokevirtual 626	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   292: astore 5
     //   294: iload 6
     //   296: istore_3
     //   297: aload 5
     //   299: astore_1
     //   300: aload 16
-    //   302: getfield 616	tencent/av/chatroom/chatroom_sso$RspSendMsg:msg_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   305: invokevirtual 94	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   302: getfield 629	tencent/av/chatroom/chatroom_sso$RspSendMsg:msg_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   305: invokevirtual 102	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   308: istore 7
     //   310: iload 7
     //   312: i2l
@@ -815,29 +789,29 @@ public class ChatRoomMng
     //   320: astore_1
     //   321: goto +19 -> 340
     //   324: astore 5
-    //   326: ldc 172
+    //   326: ldc 180
     //   328: iconst_1
-    //   329: ldc_w 618
+    //   329: ldc_w 631
     //   332: aload 5
-    //   334: invokestatic 261	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   334: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   337: lconst_0
     //   338: lstore 9
-    //   340: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   340: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   343: ifeq +46 -> 389
-    //   346: ldc 172
+    //   346: ldc 180
     //   348: iconst_2
-    //   349: ldc_w 620
+    //   349: ldc_w 633
     //   352: iconst_4
     //   353: anewarray 4	java/lang/Object
     //   356: dup
     //   357: iconst_0
     //   358: iload_3
-    //   359: invokestatic 481	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   359: invokestatic 496	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   362: aastore
     //   363: dup
     //   364: iconst_1
     //   365: lload 9
-    //   367: invokestatic 484	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   367: invokestatic 499	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   370: aastore
     //   371: dup
     //   372: iconst_2
@@ -846,379 +820,405 @@ public class ChatRoomMng
     //   375: dup
     //   376: iconst_3
     //   377: lload 11
-    //   379: invokestatic 484	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   379: invokestatic 499	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   382: aastore
-    //   383: invokestatic 490	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   386: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   383: invokestatic 505	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   386: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   389: iload_3
     //   390: ifeq +55 -> 445
     //   393: aload 13
-    //   395: getstatic 622	com/tencent/av/chatroom/ChatRoomMsg:jdField_b_of_type_Int	I
-    //   398: invokevirtual 624	com/tencent/av/chatroom/ChatRoomMsg:a	(I)V
+    //   395: getstatic 635	com/tencent/av/chatroom/ChatRoomMsg:b	I
+    //   398: invokevirtual 637	com/tencent/av/chatroom/ChatRoomMsg:a	(I)V
     //   401: aload 15
     //   403: aload 13
-    //   405: invokespecial 626	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomMsg;)V
+    //   405: invokespecial 639	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomMsg;)V
     //   408: aload 13
-    //   410: invokevirtual 628	com/tencent/av/chatroom/ChatRoomMsg:b	()Z
-    //   413: ifeq +685 -> 1098
-    //   416: invokestatic 201	android/os/Message:obtain	()Landroid/os/Message;
+    //   410: invokevirtual 641	com/tencent/av/chatroom/ChatRoomMsg:c	()Z
+    //   413: ifeq +684 -> 1097
+    //   416: invokestatic 199	android/os/Message:obtain	()Landroid/os/Message;
     //   419: astore_1
     //   420: aload_1
     //   421: iconst_4
-    //   422: putfield 204	android/os/Message:what	I
+    //   422: putfield 202	android/os/Message:what	I
     //   425: aload_1
     //   426: aload 13
-    //   428: putfield 208	android/os/Message:obj	Ljava/lang/Object;
+    //   428: putfield 206	android/os/Message:obj	Ljava/lang/Object;
     //   431: aload 15
-    //   433: getfield 59	com/tencent/av/chatroom/ChatRoomMng:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   433: getfield 64	com/tencent/av/chatroom/ChatRoomMng:f	Landroid/os/Handler;
     //   436: aload_1
-    //   437: ldc2_w 629
-    //   440: invokevirtual 239	android/os/Handler:sendMessageDelayed	(Landroid/os/Message;J)Z
+    //   437: ldc2_w 642
+    //   440: invokevirtual 371	android/os/Handler:sendMessageDelayed	(Landroid/os/Message;J)Z
     //   443: pop
     //   444: return
     //   445: aload 13
     //   447: lload 9
-    //   449: putfield 631	com/tencent/av/chatroom/ChatRoomMsg:d	J
+    //   449: putfield 644	com/tencent/av/chatroom/ChatRoomMsg:k	J
     //   452: aload 13
-    //   454: getstatic 633	com/tencent/av/chatroom/ChatRoomMsg:c	I
-    //   457: invokevirtual 624	com/tencent/av/chatroom/ChatRoomMsg:a	(I)V
+    //   454: getstatic 646	com/tencent/av/chatroom/ChatRoomMsg:c	I
+    //   457: invokevirtual 637	com/tencent/av/chatroom/ChatRoomMsg:a	(I)V
     //   460: aload 15
     //   462: aload 13
-    //   464: invokespecial 626	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomMsg;)V
+    //   464: invokespecial 639	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomMsg;)V
     //   467: aload 4
-    //   469: getfield 635	com/tencent/av/chatroom/ChatRoomInfo:jdField_a_of_type_Boolean	Z
+    //   469: getfield 648	com/tencent/av/chatroom/ChatRoomInfo:h	Z
     //   472: ifne +15 -> 487
-    //   475: ldc_w 637
-    //   478: invokestatic 641	com/tencent/av/chatroom/ChatRoomUtil:a	(Ljava/lang/String;)V
+    //   475: ldc_w 650
+    //   478: invokestatic 654	com/tencent/av/chatroom/ChatRoomUtil:b	(Ljava/lang/String;)V
     //   481: aload 4
     //   483: iconst_1
-    //   484: putfield 635	com/tencent/av/chatroom/ChatRoomInfo:jdField_a_of_type_Boolean	Z
+    //   484: putfield 648	com/tencent/av/chatroom/ChatRoomInfo:h	Z
     //   487: aload 4
-    //   489: getfield 643	com/tencent/av/chatroom/ChatRoomInfo:jdField_b_of_type_Boolean	Z
-    //   492: ifne +606 -> 1098
+    //   489: getfield 656	com/tencent/av/chatroom/ChatRoomInfo:i	Z
+    //   492: ifne +605 -> 1097
     //   495: aload 13
-    //   497: getfield 290	com/tencent/av/chatroom/ChatRoomMsg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   500: invokestatic 529	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   503: ifne +595 -> 1098
+    //   497: getfield 265	com/tencent/av/chatroom/ChatRoomMsg:g	Ljava/lang/String;
+    //   500: invokestatic 542	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   503: ifne +594 -> 1097
     //   506: aload 13
-    //   508: getfield 290	com/tencent/av/chatroom/ChatRoomMsg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   508: getfield 265	com/tencent/av/chatroom/ChatRoomMsg:g	Ljava/lang/String;
     //   511: bipush 20
-    //   513: invokevirtual 647	java/lang/String:indexOf	(I)I
-    //   516: iflt +582 -> 1098
-    //   519: ldc_w 649
-    //   522: invokestatic 641	com/tencent/av/chatroom/ChatRoomUtil:a	(Ljava/lang/String;)V
+    //   513: invokevirtual 660	java/lang/String:indexOf	(I)I
+    //   516: iflt +581 -> 1097
+    //   519: ldc_w 662
+    //   522: invokestatic 654	com/tencent/av/chatroom/ChatRoomUtil:b	(Ljava/lang/String;)V
     //   525: aload 4
     //   527: iconst_1
-    //   528: putfield 643	com/tencent/av/chatroom/ChatRoomInfo:jdField_b_of_type_Boolean	Z
+    //   528: putfield 656	com/tencent/av/chatroom/ChatRoomInfo:i	Z
     //   531: return
     //   532: aload 13
-    //   534: getstatic 622	com/tencent/av/chatroom/ChatRoomMsg:jdField_b_of_type_Int	I
-    //   537: invokevirtual 624	com/tencent/av/chatroom/ChatRoomMsg:a	(I)V
+    //   534: getstatic 635	com/tencent/av/chatroom/ChatRoomMsg:b	I
+    //   537: invokevirtual 637	com/tencent/av/chatroom/ChatRoomMsg:a	(I)V
     //   540: aload 15
     //   542: aload 13
-    //   544: invokespecial 626	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomMsg;)V
-    //   547: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   550: ifeq +548 -> 1098
-    //   553: new 158	java/lang/StringBuilder
+    //   544: invokespecial 639	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomMsg;)V
+    //   547: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   550: ifeq +547 -> 1097
+    //   553: new 166	java/lang/StringBuilder
     //   556: dup
-    //   557: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   557: invokespecial 167	java/lang/StringBuilder:<init>	()V
     //   560: astore_1
     //   561: aload_1
-    //   562: ldc_w 651
-    //   565: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   562: ldc_w 664
+    //   565: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   568: pop
     //   569: aload_1
     //   570: lload 11
-    //   572: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   572: invokevirtual 241	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   575: pop
     //   576: aload_1
-    //   577: ldc 170
-    //   579: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   577: ldc 178
+    //   579: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   582: pop
-    //   583: ldc 172
+    //   583: ldc 180
     //   585: iconst_2
     //   586: aload_1
-    //   587: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   590: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   587: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   590: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   593: return
-    //   594: new 158	java/lang/StringBuilder
+    //   594: new 166	java/lang/StringBuilder
     //   597: dup
-    //   598: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   598: invokespecial 167	java/lang/StringBuilder:<init>	()V
     //   601: astore 4
     //   603: aload 4
-    //   605: ldc_w 653
-    //   608: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   605: ldc_w 666
+    //   608: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   611: pop
     //   612: aload 4
     //   614: lload 11
-    //   616: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   616: invokevirtual 241	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   619: pop
     //   620: aload 4
-    //   622: ldc_w 268
-    //   625: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   628: pop
-    //   629: aload 4
-    //   631: aload_1
-    //   632: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   635: pop
-    //   636: aload 4
-    //   638: ldc 170
-    //   640: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   643: pop
-    //   644: ldc 172
-    //   646: iconst_1
-    //   647: aload 4
-    //   649: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   652: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   655: return
-    //   656: ldc_w 655
-    //   659: aload_1
-    //   660: invokevirtual 589	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   663: ifeq +435 -> 1098
-    //   666: aload 4
-    //   668: ldc_w 346
-    //   671: invokevirtual 595	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   674: checkcast 139	com/tencent/av/chatroom/ChatRoomInfo
-    //   677: astore_1
-    //   678: aload_1
-    //   679: ifnull +28 -> 707
-    //   682: aload_0
-    //   683: aload_1
-    //   684: getfield 140	com/tencent/av/chatroom/ChatRoomInfo:jdField_a_of_type_Int	I
-    //   687: aload_1
-    //   688: getfield 148	com/tencent/av/chatroom/ChatRoomInfo:jdField_a_of_type_Long	J
-    //   691: aload_1
-    //   692: getfield 143	com/tencent/av/chatroom/ChatRoomInfo:jdField_b_of_type_Long	J
-    //   695: aload_1
-    //   696: getfield 146	com/tencent/av/chatroom/ChatRoomInfo:jdField_c_of_type_Long	J
-    //   699: invokevirtual 421	com/tencent/av/chatroom/ChatRoomMng:a	(IJJJ)Lcom/tencent/av/chatroom/ChatRoomInfo;
-    //   702: astore 13
-    //   704: goto +6 -> 710
-    //   707: aconst_null
-    //   708: astore 13
-    //   710: aload 13
-    //   712: ifnonnull +48 -> 760
-    //   715: new 158	java/lang/StringBuilder
-    //   718: dup
-    //   719: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   722: astore 4
-    //   724: aload 4
-    //   726: ldc_w 657
-    //   729: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   732: pop
-    //   733: aload 4
-    //   735: aload_1
-    //   736: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   739: pop
-    //   740: aload 4
-    //   742: ldc 170
-    //   744: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   747: pop
-    //   748: ldc 172
-    //   750: iconst_1
-    //   751: aload 4
-    //   753: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   756: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   759: return
-    //   760: ldc2_w 228
-    //   763: lstore 9
-    //   765: iload_2
-    //   766: ifeq +277 -> 1043
-    //   769: aload 5
-    //   771: ifnull +272 -> 1043
-    //   774: aload 5
-    //   776: arraylength
-    //   777: ifle +266 -> 1043
-    //   780: new 659	tencent/av/chatroom/chatroom_sso$RspGetMsg
-    //   783: dup
-    //   784: invokespecial 660	tencent/av/chatroom/chatroom_sso$RspGetMsg:<init>	()V
-    //   787: astore 14
-    //   789: iload 7
-    //   791: istore 6
-    //   793: aload 14
-    //   795: aload 5
-    //   797: invokevirtual 661	tencent/av/chatroom/chatroom_sso$RspGetMsg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   800: pop
-    //   801: iload 7
-    //   803: istore 6
-    //   805: aload 14
-    //   807: getfield 662	tencent/av/chatroom/chatroom_sso$RspGetMsg:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   810: invokevirtual 94	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   813: istore_3
-    //   814: iload_3
-    //   815: istore 6
-    //   817: aload 14
-    //   819: getfield 663	tencent/av/chatroom/chatroom_sso$RspGetMsg:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   822: invokevirtual 613	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   825: astore_1
-    //   826: aload 16
-    //   828: astore 5
-    //   830: aload 14
-    //   832: getfield 667	tencent/av/chatroom/chatroom_sso$RspGetMsg:msg_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   835: invokevirtual 672	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   838: astore 4
-    //   840: aload 4
-    //   842: astore 5
-    //   844: aload 14
-    //   846: getfield 676	tencent/av/chatroom/chatroom_sso$RspGetMsg:retry	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   849: invokevirtual 680	com/tencent/mobileqq/pb/PBBoolField:get	()Z
-    //   852: istore_2
-    //   853: aload 14
-    //   855: getfield 683	tencent/av/chatroom/chatroom_sso$RspGetMsg:retry_delay	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   858: invokevirtual 102	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   861: lstore 11
-    //   863: lload 11
-    //   865: lstore 9
-    //   867: goto +49 -> 916
-    //   870: astore 14
-    //   872: aload 4
-    //   874: astore 5
-    //   876: goto +25 -> 901
-    //   879: astore 4
-    //   881: goto +14 -> 895
-    //   884: astore 4
-    //   886: aconst_null
-    //   887: astore_1
-    //   888: aload 15
-    //   890: astore 5
-    //   892: iload 6
-    //   894: istore_3
-    //   895: iconst_0
-    //   896: istore_2
-    //   897: aload 4
-    //   899: astore 14
-    //   901: ldc 172
-    //   903: iconst_1
-    //   904: ldc_w 685
-    //   907: aload 14
-    //   909: invokestatic 261	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   912: aload 5
-    //   914: astore 4
-    //   916: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   919: ifeq +73 -> 992
-    //   922: aload 4
-    //   924: ifnonnull +9 -> 933
-    //   927: iconst_0
-    //   928: istore 6
-    //   930: goto +12 -> 942
-    //   933: aload 4
-    //   935: invokeinterface 554 1 0
-    //   940: istore 6
-    //   942: ldc 172
-    //   944: iconst_2
-    //   945: ldc_w 687
-    //   948: iconst_5
-    //   949: anewarray 4	java/lang/Object
-    //   952: dup
-    //   953: iconst_0
-    //   954: iload_3
-    //   955: invokestatic 481	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   958: aastore
-    //   959: dup
-    //   960: iconst_1
-    //   961: aload_1
-    //   962: aastore
-    //   963: dup
-    //   964: iconst_2
-    //   965: iload 6
-    //   967: invokestatic 481	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   970: aastore
-    //   971: dup
-    //   972: iconst_3
-    //   973: iload_2
-    //   974: invokestatic 512	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   977: aastore
-    //   978: dup
-    //   979: iconst_4
-    //   980: lload 9
-    //   982: invokestatic 484	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   985: aastore
-    //   986: invokestatic 490	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   989: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   992: iload_3
-    //   993: ifne +41 -> 1034
-    //   996: iload_2
-    //   997: ifeq +27 -> 1024
-    //   1000: aload 4
-    //   1002: ifnull +13 -> 1015
-    //   1005: aload 4
-    //   1007: invokeinterface 554 1 0
-    //   1012: ifne +12 -> 1024
-    //   1015: aload_0
-    //   1016: aload 13
-    //   1018: lload 9
-    //   1020: invokespecial 689	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)V
-    //   1023: return
-    //   1024: aload_0
-    //   1025: aload 13
-    //   1027: aload 4
-    //   1029: iconst_0
-    //   1030: invokevirtual 691	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;Ljava/util/List;Z)V
-    //   1033: return
-    //   1034: aload_0
-    //   1035: aload 13
-    //   1037: lload 9
-    //   1039: invokespecial 689	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)V
-    //   1042: return
-    //   1043: aload_0
-    //   1044: aload 13
-    //   1046: ldc2_w 228
-    //   1049: invokespecial 689	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)V
-    //   1052: invokestatic 156	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1055: ifeq +43 -> 1098
-    //   1058: new 158	java/lang/StringBuilder
-    //   1061: dup
-    //   1062: invokespecial 159	java/lang/StringBuilder:<init>	()V
-    //   1065: astore_1
-    //   1066: aload_1
-    //   1067: ldc_w 693
-    //   1070: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1073: pop
-    //   1074: aload_1
-    //   1075: lload 11
-    //   1077: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1080: pop
-    //   1081: aload_1
-    //   1082: ldc 170
-    //   1084: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1087: pop
-    //   1088: ldc 172
-    //   1090: iconst_2
-    //   1091: aload_1
-    //   1092: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1095: invokestatic 180	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1098: return
+    //   622: ldc 243
+    //   624: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   627: pop
+    //   628: aload 4
+    //   630: aload_1
+    //   631: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   634: pop
+    //   635: aload 4
+    //   637: ldc 178
+    //   639: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   642: pop
+    //   643: ldc 180
+    //   645: iconst_1
+    //   646: aload 4
+    //   648: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   651: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   654: return
+    //   655: ldc_w 668
+    //   658: aload_1
+    //   659: invokevirtual 602	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   662: ifeq +435 -> 1097
+    //   665: aload 4
+    //   667: ldc_w 321
+    //   670: invokevirtual 608	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   673: checkcast 147	com/tencent/av/chatroom/ChatRoomInfo
+    //   676: astore_1
+    //   677: aload_1
+    //   678: ifnull +28 -> 706
+    //   681: aload_0
+    //   682: aload_1
+    //   683: getfield 149	com/tencent/av/chatroom/ChatRoomInfo:a	I
+    //   686: aload_1
+    //   687: getfield 156	com/tencent/av/chatroom/ChatRoomInfo:b	J
+    //   690: aload_1
+    //   691: getfield 152	com/tencent/av/chatroom/ChatRoomInfo:c	J
+    //   694: aload_1
+    //   695: getfield 154	com/tencent/av/chatroom/ChatRoomInfo:d	J
+    //   698: invokevirtual 436	com/tencent/av/chatroom/ChatRoomMng:a	(IJJJ)Lcom/tencent/av/chatroom/ChatRoomInfo;
+    //   701: astore 13
+    //   703: goto +6 -> 709
+    //   706: aconst_null
+    //   707: astore 13
+    //   709: aload 13
+    //   711: ifnonnull +48 -> 759
+    //   714: new 166	java/lang/StringBuilder
+    //   717: dup
+    //   718: invokespecial 167	java/lang/StringBuilder:<init>	()V
+    //   721: astore 4
+    //   723: aload 4
+    //   725: ldc_w 670
+    //   728: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   731: pop
+    //   732: aload 4
+    //   734: aload_1
+    //   735: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   738: pop
+    //   739: aload 4
+    //   741: ldc 178
+    //   743: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   746: pop
+    //   747: ldc 180
+    //   749: iconst_1
+    //   750: aload 4
+    //   752: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   755: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   758: return
+    //   759: ldc2_w 360
+    //   762: lstore 9
+    //   764: iload_2
+    //   765: ifeq +277 -> 1042
+    //   768: aload 5
+    //   770: ifnull +272 -> 1042
+    //   773: aload 5
+    //   775: arraylength
+    //   776: ifle +266 -> 1042
+    //   779: new 672	tencent/av/chatroom/chatroom_sso$RspGetMsg
+    //   782: dup
+    //   783: invokespecial 673	tencent/av/chatroom/chatroom_sso$RspGetMsg:<init>	()V
+    //   786: astore 14
+    //   788: iload 7
+    //   790: istore 6
+    //   792: aload 14
+    //   794: aload 5
+    //   796: invokevirtual 674	tencent/av/chatroom/chatroom_sso$RspGetMsg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   799: pop
+    //   800: iload 7
+    //   802: istore 6
+    //   804: aload 14
+    //   806: getfield 675	tencent/av/chatroom/chatroom_sso$RspGetMsg:result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   809: invokevirtual 102	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   812: istore_3
+    //   813: iload_3
+    //   814: istore 6
+    //   816: aload 14
+    //   818: getfield 676	tencent/av/chatroom/chatroom_sso$RspGetMsg:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   821: invokevirtual 626	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   824: astore_1
+    //   825: aload 16
+    //   827: astore 5
+    //   829: aload 14
+    //   831: getfield 680	tencent/av/chatroom/chatroom_sso$RspGetMsg:msg_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   834: invokevirtual 685	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   837: astore 4
+    //   839: aload 4
+    //   841: astore 5
+    //   843: aload 14
+    //   845: getfield 689	tencent/av/chatroom/chatroom_sso$RspGetMsg:retry	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   848: invokevirtual 693	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   851: istore_2
+    //   852: aload 14
+    //   854: getfield 696	tencent/av/chatroom/chatroom_sso$RspGetMsg:retry_delay	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   857: invokevirtual 110	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   860: lstore 11
+    //   862: lload 11
+    //   864: lstore 9
+    //   866: goto +49 -> 915
+    //   869: astore 14
+    //   871: aload 4
+    //   873: astore 5
+    //   875: goto +25 -> 900
+    //   878: astore 4
+    //   880: goto +14 -> 894
+    //   883: astore 4
+    //   885: aconst_null
+    //   886: astore_1
+    //   887: aload 15
+    //   889: astore 5
+    //   891: iload 6
+    //   893: istore_3
+    //   894: iconst_0
+    //   895: istore_2
+    //   896: aload 4
+    //   898: astore 14
+    //   900: ldc 180
+    //   902: iconst_1
+    //   903: ldc_w 698
+    //   906: aload 14
+    //   908: invokestatic 232	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   911: aload 5
+    //   913: astore 4
+    //   915: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   918: ifeq +73 -> 991
+    //   921: aload 4
+    //   923: ifnonnull +9 -> 932
+    //   926: iconst_0
+    //   927: istore 6
+    //   929: goto +12 -> 941
+    //   932: aload 4
+    //   934: invokeinterface 567 1 0
+    //   939: istore 6
+    //   941: ldc 180
+    //   943: iconst_2
+    //   944: ldc_w 700
+    //   947: iconst_5
+    //   948: anewarray 4	java/lang/Object
+    //   951: dup
+    //   952: iconst_0
+    //   953: iload_3
+    //   954: invokestatic 496	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   957: aastore
+    //   958: dup
+    //   959: iconst_1
+    //   960: aload_1
+    //   961: aastore
+    //   962: dup
+    //   963: iconst_2
+    //   964: iload 6
+    //   966: invokestatic 496	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   969: aastore
+    //   970: dup
+    //   971: iconst_3
+    //   972: iload_2
+    //   973: invokestatic 528	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   976: aastore
+    //   977: dup
+    //   978: iconst_4
+    //   979: lload 9
+    //   981: invokestatic 499	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   984: aastore
+    //   985: invokestatic 505	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   988: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   991: iload_3
+    //   992: ifne +41 -> 1033
+    //   995: iload_2
+    //   996: ifeq +27 -> 1023
+    //   999: aload 4
+    //   1001: ifnull +13 -> 1014
+    //   1004: aload 4
+    //   1006: invokeinterface 567 1 0
+    //   1011: ifne +12 -> 1023
+    //   1014: aload_0
+    //   1015: aload 13
+    //   1017: lload 9
+    //   1019: invokespecial 702	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)V
+    //   1022: return
+    //   1023: aload_0
+    //   1024: aload 13
+    //   1026: aload 4
+    //   1028: iconst_0
+    //   1029: invokevirtual 704	com/tencent/av/chatroom/ChatRoomMng:a	(Lcom/tencent/av/chatroom/ChatRoomInfo;Ljava/util/List;Z)V
+    //   1032: return
+    //   1033: aload_0
+    //   1034: aload 13
+    //   1036: lload 9
+    //   1038: invokespecial 702	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)V
+    //   1041: return
+    //   1042: aload_0
+    //   1043: aload 13
+    //   1045: ldc2_w 360
+    //   1048: invokespecial 702	com/tencent/av/chatroom/ChatRoomMng:b	(Lcom/tencent/av/chatroom/ChatRoomInfo;J)V
+    //   1051: invokestatic 164	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1054: ifeq +43 -> 1097
+    //   1057: new 166	java/lang/StringBuilder
+    //   1060: dup
+    //   1061: invokespecial 167	java/lang/StringBuilder:<init>	()V
+    //   1064: astore_1
+    //   1065: aload_1
+    //   1066: ldc_w 706
+    //   1069: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1072: pop
+    //   1073: aload_1
+    //   1074: lload 11
+    //   1076: invokevirtual 241	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1079: pop
+    //   1080: aload_1
+    //   1081: ldc 178
+    //   1083: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1086: pop
+    //   1087: ldc 180
+    //   1089: iconst_2
+    //   1090: aload_1
+    //   1091: invokevirtual 184	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1094: invokestatic 188	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1097: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1099	0	this	ChatRoomMng
-    //   0	1099	1	paramString	String
-    //   0	1099	2	paramBoolean	boolean
-    //   0	1099	3	paramInt	int
-    //   0	1099	4	paramIntent	Intent
-    //   0	1099	5	paramArrayOfByte	byte[]
-    //   276	690	6	i	int
-    //   116	686	7	j	int
+    //   0	1098	0	this	ChatRoomMng
+    //   0	1098	1	paramString	String
+    //   0	1098	2	paramBoolean	boolean
+    //   0	1098	3	paramInt	int
+    //   0	1098	4	paramIntent	Intent
+    //   0	1098	5	paramArrayOfByte	byte[]
+    //   276	689	6	i	int
+    //   116	685	7	j	int
     //   113	15	8	bool	boolean
-    //   313	725	9	l1	long
-    //   5	1071	11	l2	long
-    //   20	1025	13	localObject	Object
-    //   125	729	14	localRspGetMsg	tencent.av.chatroom.chatroom_sso.RspGetMsg
-    //   870	1	14	localInvalidProtocolBufferMicroException	InvalidProtocolBufferMicroException
-    //   899	9	14	localIntent	Intent
-    //   122	767	15	localChatRoomMng	ChatRoomMng
-    //   119	708	16	localRspSendMsg	tencent.av.chatroom.chatroom_sso.RspSendMsg
+    //   313	724	9	l1	long
+    //   5	1070	11	l2	long
+    //   20	1024	13	localObject	Object
+    //   125	728	14	localRspGetMsg	tencent.av.chatroom.chatroom_sso.RspGetMsg
+    //   869	1	14	localInvalidProtocolBufferMicroException	InvalidProtocolBufferMicroException
+    //   898	9	14	localIntent	Intent
+    //   122	766	15	localChatRoomMng	ChatRoomMng
+    //   119	707	16	localRspSendMsg	tencent.av.chatroom.chatroom_sso.RspSendMsg
     // Exception table:
     //   from	to	target	type
     //   254	262	324	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
     //   268	278	324	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
     //   284	294	324	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
     //   300	310	324	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   853	863	870	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   830	840	879	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   844	853	879	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   793	801	884	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   805	814	884	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   817	826	884	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   852	862	869	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   829	839	878	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   843	852	878	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   792	800	883	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   804	813	883	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   816	825	883	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+  }
+  
+  public void b(SessionInfo paramSessionInfo)
+  {
+    ChatRoomInfo localChatRoomInfo = a(paramSessionInfo, false);
+    a(localChatRoomInfo);
+    if ((QLog.isDevelopLevel()) && (paramSessionInfo != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("quitChatRoom, SessionType[");
+      localStringBuilder.append(paramSessionInfo.g);
+      localStringBuilder.append("], relationType[");
+      localStringBuilder.append(paramSessionInfo.aQ);
+      localStringBuilder.append("], relationId[");
+      localStringBuilder.append(paramSessionInfo.aN);
+      localStringBuilder.append("], peerUin[");
+      localStringBuilder.append(paramSessionInfo.s);
+      localStringBuilder.append("], extraUin[");
+      localStringBuilder.append(paramSessionInfo.u);
+      localStringBuilder.append("], isDoubleVideoMeeting[");
+      localStringBuilder.append(paramSessionInfo.am);
+      localStringBuilder.append("], room[");
+      localStringBuilder.append(localChatRoomInfo);
+      localStringBuilder.append("]");
+      QLog.i("ChatRoomMng", 4, localStringBuilder.toString());
+    }
   }
   
   protected void b(ChatRoomInfo paramChatRoomInfo)
@@ -1228,7 +1228,7 @@ public class ChatRoomMng
       QLog.i("ChatRoomMng", 1, "reqGetMsgFromServer, no room info.");
       return;
     }
-    long l = AudioHelper.b();
+    long l = AudioHelper.c();
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -1239,29 +1239,29 @@ public class ChatRoomMng
       ((StringBuilder)localObject1).append("]");
       QLog.i("ChatRoomMng", 2, ((StringBuilder)localObject1).toString());
     }
-    int i = (int)paramChatRoomInfo.jdField_c_of_type_Long;
+    int i = (int)paramChatRoomInfo.d;
     Object localObject2 = new chatroom_sso.RoomKey();
-    ((chatroom_sso.RoomKey)localObject2).type.set(paramChatRoomInfo.jdField_a_of_type_Int);
-    ((chatroom_sso.RoomKey)localObject2).room_id.set(paramChatRoomInfo.jdField_a_of_type_Long);
-    ((chatroom_sso.RoomKey)localObject2).id.set(paramChatRoomInfo.jdField_b_of_type_Long);
+    ((chatroom_sso.RoomKey)localObject2).type.set(paramChatRoomInfo.a);
+    ((chatroom_sso.RoomKey)localObject2).room_id.set(paramChatRoomInfo.b);
+    ((chatroom_sso.RoomKey)localObject2).id.set(paramChatRoomInfo.c);
     ((chatroom_sso.RoomKey)localObject2).create_ts.set(i);
     Object localObject1 = new chatroom_sso.ReqGetMsg();
     ((chatroom_sso.ReqGetMsg)localObject1).room_key.set((MessageMicro)localObject2);
-    if (paramChatRoomInfo.jdField_c_of_type_Boolean)
+    if (paramChatRoomInfo.j)
     {
       ((chatroom_sso.ReqGetMsg)localObject1).is_terminal_switch.set(true);
-      if (paramChatRoomInfo.d != 0L) {
-        ((chatroom_sso.ReqGetMsg)localObject1).room_id.set(paramChatRoomInfo.d);
+      if (paramChatRoomInfo.k != 0L) {
+        ((chatroom_sso.ReqGetMsg)localObject1).room_id.set(paramChatRoomInfo.k);
       }
     }
     paramChatRoomInfo.a();
-    localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
+    localObject2 = new NewIntent(this.b.getApplication(), VideoServlet.class);
     ((NewIntent)localObject2).putExtra("reqType", 21);
     ((NewIntent)localObject2).putExtra("ssoCmd", "QQRTCSvc.chatroom_get_msg");
     ((NewIntent)localObject2).putExtra("vMsg", ((chatroom_sso.ReqGetMsg)localObject1).toByteArray());
     ((NewIntent)localObject2).putExtra("room_key", paramChatRoomInfo);
     SeqUtil.a((Intent)localObject2, l);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.startServlet((NewIntent)localObject2);
+    this.b.startServlet((NewIntent)localObject2);
   }
   
   public void b(ChatRoomObserver paramChatRoomObserver)
@@ -1275,7 +1275,7 @@ public class ChatRoomMng
       QLog.i("ChatRoomMng", 2, localStringBuilder.toString());
     }
     if (paramChatRoomObserver != null) {
-      this.b.remove(paramChatRoomObserver);
+      this.d.remove(paramChatRoomObserver);
     }
   }
   
@@ -1285,10 +1285,10 @@ public class ChatRoomMng
     ChatRoomObserver localChatRoomObserver;
     if (paramMessage.what == 1)
     {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = 0;
+      int i = this.g;
+      this.g = 0;
       paramMessage = (ChatRoomInfo)paramMessage.obj;
-      localIterator = this.b.iterator();
+      localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         localChatRoomObserver = (ChatRoomObserver)localIterator.next();
@@ -1300,7 +1300,7 @@ public class ChatRoomMng
     if (paramMessage.what == 2)
     {
       paramMessage = (ChatRoomMsg)paramMessage.obj;
-      localIterator = this.b.iterator();
+      localIterator = this.d.iterator();
       while (localIterator.hasNext())
       {
         localChatRoomObserver = (ChatRoomObserver)localIterator.next();
@@ -1317,7 +1317,7 @@ public class ChatRoomMng
     if (paramMessage.what == 4)
     {
       paramMessage = (ChatRoomMsg)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.b())) {
+      if ((paramMessage != null) && (paramMessage.c())) {
         a(paramMessage);
       }
     }

@@ -10,18 +10,18 @@ class AIOGalleryActivity$AIOGalleryManager$1$5
   
   public void run()
   {
-    if (AIOGalleryActivity.AIOGalleryManager.l(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a) != null)
+    if (AIOGalleryActivity.AIOGalleryManager.m(this.i.a) != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("IAIOImageProviderCallBack", 2, "[carverW]IAIOImageProviderCallBack.notifyVideoUrl ");
       }
-      ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.m(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity$AIOGalleryManager$1.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c);
+      ((AIOGalleryScene)AIOGalleryActivity.AIOGalleryManager.n(this.i.a)).a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager.1.5
  * JD-Core Version:    0.7.0.1
  */

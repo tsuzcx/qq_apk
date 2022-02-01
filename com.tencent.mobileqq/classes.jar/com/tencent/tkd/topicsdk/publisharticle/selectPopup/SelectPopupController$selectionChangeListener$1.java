@@ -17,9 +17,9 @@ final class SelectPopupController$selectionChangeListener$1
   
   public final void invoke(int paramInt1, int paramInt2)
   {
-    if (SelectPopupController.a(this.this$0).isShowing())
+    if (SelectPopupController.c(this.this$0).isShowing())
     {
-      if ((paramInt1 > SelectPopupController.a(this.this$0)) && (paramInt1 <= SelectPopupController.a(this.this$0) + SelectPopupController.b(this.this$0) + 1)) {
+      if ((paramInt1 > SelectPopupController.a(this.this$0)) && (paramInt1 <= SelectPopupController.a(this.this$0) + SelectPopupController.f(this.this$0) + 1)) {
         paramInt1 = 0;
       } else {
         paramInt1 = 1;
@@ -27,14 +27,14 @@ final class SelectPopupController$selectionChangeListener$1
       if (paramInt1 != 0) {
         this.this$0.a(1);
       }
-      paramInt1 = SelectPopupController.c(this.this$0);
+      paramInt1 = SelectPopupController.g(this.this$0);
       SelectPopupController.c(this.this$0, false, false, 3, null);
-      if (SelectPopupController.c(this.this$0) < paramInt1)
+      if (SelectPopupController.g(this.this$0) < paramInt1)
       {
         SelectPopupController.a(this.this$0, false, true);
         return;
       }
-      if (paramInt1 < SelectPopupController.c(this.this$0)) {
+      if (paramInt1 < SelectPopupController.g(this.this$0)) {
         SelectPopupController.a(this.this$0, true, false);
       }
     }
@@ -42,7 +42,7 @@ final class SelectPopupController$selectionChangeListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupController.selectionChangeListener.1
  * JD-Core Version:    0.7.0.1
  */

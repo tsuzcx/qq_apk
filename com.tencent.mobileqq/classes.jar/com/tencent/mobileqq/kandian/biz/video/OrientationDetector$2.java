@@ -13,18 +13,18 @@ class OrientationDetector$2
   
   public void run()
   {
-    OrientationDetector.a(this.this$0, this.a.getRequestedOrientation());
+    OrientationDetector.b(this.this$0, this.a.getRequestedOrientation());
     OrientationDetector localOrientationDetector = this.this$0;
     OrientationDetector.a(localOrientationDetector, new OrientationDetector.RotationObserver(localOrientationDetector, new Handler(Looper.getMainLooper())));
-    OrientationDetector.a(this.this$0).a();
+    OrientationDetector.b(this.this$0).b();
     OrientationDetector.a(this.this$0, ((IVideoFeedsHelper)QRoute.api(IVideoFeedsHelper.class)).isSystemAutoRotateOpen(this.a));
     localOrientationDetector = this.this$0;
-    localOrientationDetector.a(OrientationDetector.a(localOrientationDetector));
+    localOrientationDetector.a(OrientationDetector.c(localOrientationDetector));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.OrientationDetector.2
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ final class StoryVideoUploadManager$3
   
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    int i = StoryVideoUploadManager.a();
+    int i = StoryVideoUploadManager.c();
     paramJobContext = new StringBuilder();
     paramJobContext.append(this.a);
     paramJobContext.append(" : fireCreateStoryVideo count = %d");
@@ -26,7 +26,7 @@ final class StoryVideoUploadManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.3
  * JD-Core Version:    0.7.0.1
  */

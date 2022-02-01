@@ -15,85 +15,84 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 public class SelectTouchBarView
   extends RelativeLayout
 {
-  protected int a;
-  private Context a;
   protected TextView a;
-  protected MutliSeletedBottomLine a;
-  protected CharSequence a;
-  private int b;
-  protected MutliSeletedBottomLine b;
+  protected CharSequence b;
+  protected int c;
+  protected MutliSeletedBottomLine d;
+  protected MutliSeletedBottomLine e;
+  private Context f;
+  private int g = -1;
   
   public SelectTouchBarView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131558575, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362484));
-    a((RelativeLayout)findViewById(2131362483));
-  }
-  
-  private void a(RelativeLayout paramRelativeLayout)
-  {
-    int i = (int)DeviceInfoUtil.a(true);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.measure(j, j);
-    j = (i - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() - DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 16.0F)) / 2;
-    i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine = new MutliSeletedBottomLine(this.jdField_a_of_type_AndroidContentContext, i, false);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine = new MutliSeletedBottomLine(this.jdField_a_of_type_AndroidContentContext, i, true);
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, -2);
-    localLayoutParams1.addRule(9);
-    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(i, -2);
-    localLayoutParams2.addRule(11);
-    paramRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine, localLayoutParams1);
-    paramRelativeLayout.addView(this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine, localLayoutParams2);
-  }
-  
-  public SelectTouchBarView a()
-  {
-    if (this.jdField_a_of_type_Int <= 0) {
-      this.jdField_a_of_type_Int = 30;
-    }
-    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    localLayoutParams.height = this.jdField_a_of_type_Int;
-    localLayoutParams.width = -1;
-    setLayoutParams(localLayoutParams);
-    a();
-    return this;
+    this.f = paramContext;
+    LayoutInflater.from(paramContext).inflate(2131624132, this);
+    this.a = ((TextView)findViewById(2131428093));
+    a((RelativeLayout)findViewById(2131428092));
   }
   
   public SelectTouchBarView a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     if (paramInt <= 0) {
-      this.jdField_a_of_type_Int = 0;
+      this.c = 0;
     }
-    setMinimumHeight(this.jdField_a_of_type_Int);
+    setMinimumHeight(this.c);
     return this;
   }
   
   public SelectTouchBarView a(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (!TextUtils.isEmpty(paramCharSequence)))
+    if ((this.a != null) && (!TextUtils.isEmpty(paramCharSequence)))
     {
-      this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramCharSequence);
+      this.b = paramCharSequence;
+      this.a.setText(paramCharSequence);
+      this.a.setContentDescription(paramCharSequence);
     }
     return this;
   }
   
   public void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362483);
-    localRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
-    localRelativeLayout.removeView(this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131428092);
+    localRelativeLayout.removeView(this.d);
+    localRelativeLayout.removeView(this.e);
     a(localRelativeLayout);
     invalidate();
+  }
+  
+  protected void a(RelativeLayout paramRelativeLayout)
+  {
+    int i = (int)DeviceInfoUtil.a(true);
+    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
+    this.a.measure(j, j);
+    j = (i - this.a.getMeasuredWidth() - DisplayUtil.a(this.f, 16.0F)) / 2;
+    i = j;
+    if (j < 0) {
+      i = 0;
+    }
+    this.d = new MutliSeletedBottomLine(this.f, i, false);
+    this.e = new MutliSeletedBottomLine(this.f, i, true);
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(i, -2);
+    localLayoutParams1.addRule(9);
+    RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(i, -2);
+    localLayoutParams2.addRule(11);
+    paramRelativeLayout.addView(this.d, localLayoutParams1);
+    paramRelativeLayout.addView(this.e, localLayoutParams2);
+  }
+  
+  public SelectTouchBarView b()
+  {
+    if (this.c <= 0) {
+      this.c = 30;
+    }
+    ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
+    localLayoutParams.height = this.c;
+    localLayoutParams.width = -1;
+    setLayoutParams(localLayoutParams);
+    a();
+    return this;
   }
   
   public void setCheckedNum(int paramInt)
@@ -111,19 +110,19 @@ public class SelectTouchBarView
       localStringBuilder2.append("条)");
       localStringBuilder1.append(localStringBuilder2.toString());
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder1.toString());
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(localStringBuilder1.toString());
+    this.a.setText(localStringBuilder1.toString());
+    this.a.setContentDescription(localStringBuilder1.toString());
     a();
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.a.setOnClickListener(paramOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SelectTouchBarView
  * JD-Core Version:    0.7.0.1
  */

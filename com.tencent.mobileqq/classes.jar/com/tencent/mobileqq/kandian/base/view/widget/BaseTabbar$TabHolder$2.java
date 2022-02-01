@@ -16,7 +16,7 @@ class BaseTabbar$TabHolder$2
   {
     QLog.d("TabBarView", 4, "onAnimationEnd");
     BaseTabbar.TabHolder.b(this.a);
-    this.a.b.clearAnimation();
+    this.a.e.clearAnimation();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -25,7 +25,7 @@ class BaseTabbar$TabHolder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.BaseTabbar.TabHolder.2
  * JD-Core Version:    0.7.0.1
  */

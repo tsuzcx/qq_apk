@@ -17,14 +17,14 @@ final class ViolaBizUtils$3
   public void run()
   {
     JSONObject localJSONObject = new JSONObject();
-    Collections.sort(this.jdField_a_of_type_JavaUtilList);
-    JSONArray localJSONArray = RIJUgcUtils.a(this.jdField_a_of_type_JavaUtilList);
+    Collections.sort(this.a);
+    JSONArray localJSONArray = RIJUgcUtils.a(this.a);
     ThreadManagerV2.getUIHandlerV2().post(new ViolaBizUtils.3.1(this, localJSONObject, localJSONArray));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.utils.ViolaBizUtils.3
  * JD-Core Version:    0.7.0.1
  */

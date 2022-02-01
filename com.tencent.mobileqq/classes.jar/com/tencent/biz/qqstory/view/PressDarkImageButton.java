@@ -17,21 +17,16 @@ import android.widget.ImageButton;
 public class PressDarkImageButton
   extends ImageButton
 {
-  public static final int[] a;
-  public float a;
-  public int a;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
+  public static final int[] a = { 16843210, 16843211, 2131034825 };
   public float b;
-  public int b;
-  private boolean b;
-  private boolean c;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843210, 16843211, 2131034544 };
-  }
+  public float c;
+  public int d;
+  public int e;
+  private Bitmap f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private Paint j;
   
   public PressDarkImageButton(Context paramContext)
   {
@@ -51,57 +46,57 @@ public class PressDarkImageButton
     //   1: aload_1
     //   2: aload_2
     //   3: iload_3
-    //   4: invokespecial 33	android/widget/ImageButton:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    //   4: invokespecial 40	android/widget/ImageButton:<init>	(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     //   7: aload_0
     //   8: fconst_1
-    //   9: putfield 35	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Float	F
+    //   9: putfield 42	com/tencent/biz/qqstory/view/PressDarkImageButton:b	F
     //   12: aload_0
-    //   13: ldc 36
-    //   15: putfield 38	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_b_of_type_Float	F
+    //   13: ldc 43
+    //   15: putfield 45	com/tencent/biz/qqstory/view/PressDarkImageButton:c	F
     //   18: aload_0
     //   19: iconst_0
-    //   20: putfield 40	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Int	I
+    //   20: putfield 47	com/tencent/biz/qqstory/view/PressDarkImageButton:d	I
     //   23: aload_0
     //   24: iconst_0
-    //   25: putfield 42	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_b_of_type_Int	I
+    //   25: putfield 49	com/tencent/biz/qqstory/view/PressDarkImageButton:e	I
     //   28: aload_0
     //   29: iconst_0
-    //   30: putfield 44	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Boolean	Z
+    //   30: putfield 51	com/tencent/biz/qqstory/view/PressDarkImageButton:g	Z
     //   33: aload_0
     //   34: iconst_0
-    //   35: putfield 46	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_b_of_type_Boolean	Z
+    //   35: putfield 53	com/tencent/biz/qqstory/view/PressDarkImageButton:h	Z
     //   38: aload_0
     //   39: iconst_1
-    //   40: putfield 48	com/tencent/biz/qqstory/view/PressDarkImageButton:c	Z
+    //   40: putfield 55	com/tencent/biz/qqstory/view/PressDarkImageButton:i	Z
     //   43: aload_1
     //   44: aload_2
-    //   45: getstatic 23	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_ArrayOfInt	[I
-    //   48: invokevirtual 54	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    //   45: getstatic 30	com/tencent/biz/qqstory/view/PressDarkImageButton:a	[I
+    //   48: invokevirtual 61	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
     //   51: astore 4
     //   53: aload_0
     //   54: aload 4
     //   56: iconst_0
     //   57: aload_0
-    //   58: getfield 35	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Float	F
-    //   61: invokevirtual 60	android/content/res/TypedArray:getFloat	(IF)F
-    //   64: putfield 35	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Float	F
+    //   58: getfield 42	com/tencent/biz/qqstory/view/PressDarkImageButton:b	F
+    //   61: invokevirtual 67	android/content/res/TypedArray:getFloat	(IF)F
+    //   64: putfield 42	com/tencent/biz/qqstory/view/PressDarkImageButton:b	F
     //   67: aload_0
     //   68: aload 4
     //   70: iconst_1
     //   71: aload_0
-    //   72: getfield 38	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_b_of_type_Float	F
-    //   75: invokevirtual 60	android/content/res/TypedArray:getFloat	(IF)F
-    //   78: putfield 38	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_b_of_type_Float	F
+    //   72: getfield 45	com/tencent/biz/qqstory/view/PressDarkImageButton:c	F
+    //   75: invokevirtual 67	android/content/res/TypedArray:getFloat	(IF)F
+    //   78: putfield 45	com/tencent/biz/qqstory/view/PressDarkImageButton:c	F
     //   81: aload_0
     //   82: aload 4
     //   84: iconst_2
     //   85: iconst_0
-    //   86: invokevirtual 64	android/content/res/TypedArray:getBoolean	(IZ)Z
-    //   89: putfield 44	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Boolean	Z
+    //   86: invokevirtual 71	android/content/res/TypedArray:getBoolean	(IZ)Z
+    //   89: putfield 51	com/tencent/biz/qqstory/view/PressDarkImageButton:g	Z
     //   92: aload 4
-    //   94: invokevirtual 67	android/content/res/TypedArray:recycle	()V
+    //   94: invokevirtual 74	android/content/res/TypedArray:recycle	()V
     //   97: aload_0
-    //   98: getfield 44	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Boolean	Z
+    //   98: getfield 51	com/tencent/biz/qqstory/view/PressDarkImageButton:g	Z
     //   101: ifeq +231 -> 332
     //   104: aconst_null
     //   105: astore 4
@@ -113,13 +108,13 @@ public class PressDarkImageButton
     //   113: newarray int
     //   115: dup
     //   116: iconst_0
-    //   117: ldc 68
+    //   117: ldc 75
     //   119: iastore
     //   120: dup
     //   121: iconst_1
-    //   122: ldc 69
+    //   122: ldc 76
     //   124: iastore
-    //   125: invokevirtual 54	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    //   125: invokevirtual 61	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
     //   128: astore_1
     //   129: aload_1
     //   130: astore 5
@@ -129,8 +124,8 @@ public class PressDarkImageButton
     //   136: aload_1
     //   137: iconst_0
     //   138: iconst_0
-    //   139: invokevirtual 73	android/content/res/TypedArray:getDimensionPixelSize	(II)I
-    //   142: putfield 40	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_Int	I
+    //   139: invokevirtual 80	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   142: putfield 47	com/tencent/biz/qqstory/view/PressDarkImageButton:d	I
     //   145: aload_1
     //   146: astore 5
     //   148: aload_1
@@ -139,20 +134,20 @@ public class PressDarkImageButton
     //   152: aload_1
     //   153: iconst_1
     //   154: iconst_0
-    //   155: invokevirtual 73	android/content/res/TypedArray:getDimensionPixelSize	(II)I
-    //   158: putfield 42	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_b_of_type_Int	I
+    //   155: invokevirtual 80	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   158: putfield 49	com/tencent/biz/qqstory/view/PressDarkImageButton:e	I
     //   161: aload_1
     //   162: astore 5
     //   164: aload_1
     //   165: astore 4
     //   167: aload_0
-    //   168: getfield 75	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   168: getfield 82	com/tencent/biz/qqstory/view/PressDarkImageButton:f	Landroid/graphics/Bitmap;
     //   171: ifnonnull +116 -> 287
     //   174: aload_1
     //   175: astore 5
     //   177: aload_1
     //   178: astore 4
-    //   180: getstatic 80	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   180: getstatic 87	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
     //   183: astore_2
     //   184: aload_2
     //   185: ifnull +24 -> 209
@@ -161,50 +156,50 @@ public class PressDarkImageButton
     //   191: aload_1
     //   192: astore 4
     //   194: aload_0
-    //   195: getstatic 80	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   198: ldc 82
-    //   200: invokevirtual 88	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   203: checkcast 90	android/graphics/Bitmap
-    //   206: putfield 75	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   195: getstatic 87	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   198: ldc 89
+    //   200: invokevirtual 95	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   203: checkcast 97	android/graphics/Bitmap
+    //   206: putfield 82	com/tencent/biz/qqstory/view/PressDarkImageButton:f	Landroid/graphics/Bitmap;
     //   209: aload_1
     //   210: astore 5
     //   212: aload_1
     //   213: astore 4
     //   215: aload_0
-    //   216: getfield 75	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   216: getfield 82	com/tencent/biz/qqstory/view/PressDarkImageButton:f	Landroid/graphics/Bitmap;
     //   219: ifnonnull +68 -> 287
     //   222: aload_1
     //   223: astore 5
     //   225: aload_1
     //   226: astore 4
     //   228: aload_0
-    //   229: invokestatic 96	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   232: invokevirtual 100	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   235: ldc 101
-    //   237: invokestatic 106	com/tencent/mobileqq/util/BitmapManager:b	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-    //   240: putfield 75	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   229: invokestatic 103	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   232: invokevirtual 107	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   235: ldc 108
+    //   237: invokestatic 113	com/tencent/mobileqq/util/BitmapManager:b	(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+    //   240: putfield 82	com/tencent/biz/qqstory/view/PressDarkImageButton:f	Landroid/graphics/Bitmap;
     //   243: aload_1
     //   244: astore 5
     //   246: aload_1
     //   247: astore 4
     //   249: aload_0
-    //   250: getfield 75	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   250: getfield 82	com/tencent/biz/qqstory/view/PressDarkImageButton:f	Landroid/graphics/Bitmap;
     //   253: ifnull +34 -> 287
     //   256: aload_1
     //   257: astore 5
     //   259: aload_1
     //   260: astore 4
-    //   262: getstatic 80	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   262: getstatic 87	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
     //   265: ifnull +22 -> 287
     //   268: aload_1
     //   269: astore 5
     //   271: aload_1
     //   272: astore 4
-    //   274: getstatic 80	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   277: ldc 82
+    //   274: getstatic 87	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   277: ldc 89
     //   279: aload_0
-    //   280: getfield 75	com/tencent/biz/qqstory/view/PressDarkImageButton:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   283: invokevirtual 110	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   280: getfield 82	com/tencent/biz/qqstory/view/PressDarkImageButton:f	Landroid/graphics/Bitmap;
+    //   283: invokevirtual 117	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   286: pop
     //   287: aload_1
     //   288: ifnull +44 -> 332
@@ -215,18 +210,18 @@ public class PressDarkImageButton
     //   299: aload 4
     //   301: astore 5
     //   303: aload_1
-    //   304: invokevirtual 113	java/lang/Exception:printStackTrace	()V
+    //   304: invokevirtual 120	java/lang/Exception:printStackTrace	()V
     //   307: aload 4
     //   309: ifnull +23 -> 332
     //   312: aload 4
     //   314: astore_1
     //   315: aload_1
-    //   316: invokevirtual 67	android/content/res/TypedArray:recycle	()V
+    //   316: invokevirtual 74	android/content/res/TypedArray:recycle	()V
     //   319: return
     //   320: aload 5
     //   322: ifnull +8 -> 330
     //   325: aload 5
-    //   327: invokevirtual 67	android/content/res/TypedArray:recycle	()V
+    //   327: invokevirtual 74	android/content/res/TypedArray:recycle	()V
     //   330: aload_1
     //   331: athrow
     //   332: return
@@ -268,40 +263,40 @@ public class PressDarkImageButton
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int != 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    if ((this.g) && (this.h) && (this.d != 0) && (this.e != 0) && (this.f != null))
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+      if (this.j == null) {
+        this.j = new Paint();
       }
-      float f = getResources().getDisplayMetrics().density / 2.0F;
+      float f1 = getResources().getDisplayMetrics().density / 2.0F;
       Matrix localMatrix = new Matrix();
-      localMatrix.setScale(f, f);
-      localMatrix.setTranslate(this.jdField_a_of_type_Int * 0.625F, this.jdField_b_of_type_Int * 0.2564103F);
+      localMatrix.setScale(f1, f1);
+      localMatrix.setTranslate(this.d * 0.625F, this.e * 0.2564103F);
       if (isPressed()) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_b_of_type_Float * 255.0F));
+        this.j.setAlpha((int)(this.c * 255.0F));
       } else {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
+        this.j.setAlpha((int)(this.b * 255.0F));
       }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.f, localMatrix, this.j);
     }
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (!this.c) {
+    if (!this.i) {
       return;
     }
     if (isPressed())
     {
       if (Build.VERSION.SDK_INT >= 16)
       {
-        super.setImageAlpha((int)(this.jdField_b_of_type_Float * 255.0F));
+        super.setImageAlpha((int)(this.c * 255.0F));
         return;
       }
       if (Build.VERSION.SDK_INT >= 11)
       {
-        super.setAlpha(this.jdField_b_of_type_Float);
+        super.setAlpha(this.c);
         return;
       }
       super.setColorFilter(-3355444, PorterDuff.Mode.MULTIPLY);
@@ -309,12 +304,12 @@ public class PressDarkImageButton
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      super.setImageAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
+      super.setImageAlpha((int)(this.b * 255.0F));
       return;
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      super.setAlpha(this.jdField_a_of_type_Float);
+      super.setAlpha(this.b);
       return;
     }
     super.clearColorFilter();
@@ -322,26 +317,26 @@ public class PressDarkImageButton
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    if (this.h != paramBoolean)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.h = paramBoolean;
       invalidate();
     }
   }
   
   public void setEnableDark(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.i = paramBoolean;
     if (!paramBoolean)
     {
       if (Build.VERSION.SDK_INT >= 16)
       {
-        super.setImageAlpha((int)(this.jdField_a_of_type_Float * 255.0F));
+        super.setImageAlpha((int)(this.b * 255.0F));
         return;
       }
       if (Build.VERSION.SDK_INT >= 11)
       {
-        super.setAlpha(this.jdField_a_of_type_Float);
+        super.setAlpha(this.b);
         return;
       }
       super.clearColorFilter();
@@ -350,17 +345,17 @@ public class PressDarkImageButton
   
   public void setInvalid()
   {
-    this.c = false;
+    this.i = false;
     super.setEnabled(false);
     super.setClickable(false);
     if (Build.VERSION.SDK_INT >= 16)
     {
-      super.setImageAlpha((int)(this.jdField_b_of_type_Float * 255.0F));
+      super.setImageAlpha((int)(this.c * 255.0F));
       return;
     }
     if (Build.VERSION.SDK_INT >= 11)
     {
-      super.setAlpha(this.jdField_b_of_type_Float);
+      super.setAlpha(this.c);
       return;
     }
     super.setColorFilter(-3355444, PorterDuff.Mode.MULTIPLY);

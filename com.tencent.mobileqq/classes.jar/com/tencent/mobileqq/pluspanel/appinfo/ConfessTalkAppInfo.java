@@ -24,7 +24,7 @@ public class ConfessTalkAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130843866;
+    return 2130844821;
   }
   
   public int getAppID()
@@ -45,7 +45,7 @@ public class ConfessTalkAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698709);
+    return BaseApplicationImpl.getContext().getString(2131896667);
   }
   
   public void init()
@@ -56,11 +56,11 @@ public class ConfessTalkAppInfo
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800956E", "0X800956E", 0, 0, "", "", "", "");
     if (!NetworkUtil.isNetSupportHw(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131692183, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2131889169, 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
       return;
     }
     if (SystemClock.elapsedRealtime() - this.mConfessTalkIconLastClickTime < 5000L)
@@ -69,8 +69,8 @@ public class ConfessTalkAppInfo
     }
     else
     {
-      ((TroopChatPie)paramBaseChatPie).d(HardCodeUtil.a(2131708299));
-      ((ITroopInfoHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).a(paramSessionInfo.a, false);
+      ((TroopChatPie)paramBaseChatPie).f(HardCodeUtil.a(2131906089));
+      ((ITroopInfoHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER)).a(paramSessionInfo.b, false);
     }
     paramPlusPanelViewModel.a(true);
     this.mConfessTalkIconLastClickTime = SystemClock.elapsedRealtime();
@@ -78,7 +78,7 @@ public class ConfessTalkAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ConfessTalkAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class QCircleHandler$1
     if (paramBoolean) {}
     try
     {
-      QzonePluginProxyActivity.launchPluingActivityForResult(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentIntent, 0);
+      QzonePluginProxyActivity.launchPluingActivityForResult(this.a, this.b, this.c, 0);
       return;
     }
     catch (Exception localException)
@@ -29,7 +29,7 @@ class QCircleHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.QCircleHandler.1
  * JD-Core Version:    0.7.0.1
  */

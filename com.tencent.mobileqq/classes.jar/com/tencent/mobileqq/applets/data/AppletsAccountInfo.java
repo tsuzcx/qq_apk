@@ -70,7 +70,7 @@ public class AppletsAccountInfo
   
   public String toString()
   {
-    String str = StringUtil.e(String.valueOf(this.uin));
+    String str = StringUtil.getSimpleUinForPrint(String.valueOf(this.uin));
     StringBuilder localStringBuilder = new StringBuilder("--AppletsAccountInfo--");
     localStringBuilder.append(",shortUin:");
     localStringBuilder.append(str);
@@ -87,7 +87,7 @@ public class AppletsAccountInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletsAccountInfo
  * JD-Core Version:    0.7.0.1
  */

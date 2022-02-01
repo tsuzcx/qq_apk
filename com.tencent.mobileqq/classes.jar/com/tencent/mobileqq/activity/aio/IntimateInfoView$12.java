@@ -12,22 +12,22 @@ class IntimateInfoView$12
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.a.a)) && (IntimateInfoView.a(this.a) != null))
+    if ((!TextUtils.isEmpty(this.a.d)) && (IntimateInfoView.c(this.a) != null))
     {
-      if (IntimateInfoView.a(this.a) == 1)
+      if (IntimateInfoView.m(this.a) == 1)
       {
         paramDialogInterface = this.a;
-        IntimateInfoView.b(paramDialogInterface, paramDialogInterface.a);
+        IntimateInfoView.b(paramDialogInterface, paramDialogInterface.d);
         return;
       }
       paramDialogInterface = this.a;
-      IntimateInfoView.a(paramDialogInterface, paramDialogInterface.a, IntimateInfoView.a(this.a).maskType);
+      IntimateInfoView.a(paramDialogInterface, paramDialogInterface.d, IntimateInfoView.c(this.a).maskType);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.12
  * JD-Core Version:    0.7.0.1
  */

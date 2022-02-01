@@ -9,50 +9,50 @@ import com.tencent.aelight.camera.ae.view.AEDownLoadingView;
 public class MaterialContentAdapter$ContentItemVH
   extends RecyclerView.ViewHolder
 {
-  public TextView a;
-  public AEDownLoadingView a;
-  public ImageView b;
-  public TextView b;
   public ImageView c;
-  public ImageView d;
+  public TextView d;
   public ImageView e;
   public ImageView f;
   public ImageView g;
+  public ImageView h;
+  public ImageView i;
+  public AEDownLoadingView j;
+  public TextView k;
   
   public MaterialContentAdapter$ContentItemVH(View paramView)
   {
     super(paramView);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122331));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122795));
-    this.c = ((ImageView)paramView.findViewById(2064122325));
-    this.d = ((ImageView)paramView.findViewById(2064122327));
-    this.e = ((ImageView)paramView.findViewById(2064122295));
-    this.f = ((ImageView)paramView.findViewById(2064122313));
-    this.g = ((ImageView)paramView.findViewById(2064122307));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2064122512));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122776));
+    this.c = ((ImageView)paramView.findViewById(2063991213));
+    this.d = ((TextView)paramView.findViewById(2063991570));
+    this.e = ((ImageView)paramView.findViewById(2063991207));
+    this.f = ((ImageView)paramView.findViewById(2063991209));
+    this.g = ((ImageView)paramView.findViewById(2063991174));
+    this.h = ((ImageView)paramView.findViewById(2063991194));
+    this.i = ((ImageView)paramView.findViewById(2063991186));
+    this.j = ((AEDownLoadingView)paramView.findViewById(2063991328));
+    this.k = ((TextView)paramView.findViewById(2063991551));
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setBgCorner(paramInt3 / 2);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setMinimumHeight(paramInt3);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setMinimumWidth(paramInt3);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgressSizeAndMode(paramInt1, paramInt2, false);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setBgColor(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgressColor(-1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.a(false);
+    this.j.setBgCorner(paramInt3 / 2);
+    this.j.setMinimumHeight(paramInt3);
+    this.j.setMinimumWidth(paramInt3);
+    this.j.setProgressSizeAndMode(paramInt1, paramInt2, false);
+    this.j.setBgColor(0);
+    this.j.setProgressColor(-1);
+    this.j.a(false);
   }
   
   private void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.g.getVisibility() != 0))
+    if ((paramBoolean) && (this.i.getVisibility() != 0))
     {
-      this.g.setVisibility(0);
+      this.i.setVisibility(0);
       return;
     }
-    if ((!paramBoolean) && (this.g.getVisibility() != 4)) {
-      this.g.setVisibility(4);
+    if ((!paramBoolean) && (this.i.getVisibility() != 4)) {
+      this.i.setVisibility(4);
     }
   }
   
@@ -60,24 +60,24 @@ public class MaterialContentAdapter$ContentItemVH
   {
     if (paramBoolean)
     {
-      if (this.f.getVisibility() != 0)
+      if (this.h.getVisibility() != 0)
       {
-        this.f.setVisibility(0);
-        this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(0);
+        this.h.setVisibility(0);
+        this.j.setVisibility(0);
       }
       a(false);
     }
-    else if (this.f.getVisibility() != 4)
+    else if (this.h.getVisibility() != 4)
     {
-      this.f.setVisibility(4);
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setVisibility(4);
+      this.h.setVisibility(4);
+      this.j.setVisibility(4);
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAEDownLoadingView.setProgress(paramInt);
+    this.j.setProgress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter.ContentItemVH
  * JD-Core Version:    0.7.0.1
  */

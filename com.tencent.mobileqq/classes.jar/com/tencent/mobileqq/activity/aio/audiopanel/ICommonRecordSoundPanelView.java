@@ -8,23 +8,23 @@ import mqq.app.AppRuntime;
 public abstract interface ICommonRecordSoundPanelView
   extends IBasePresenterView
 {
-  public abstract Handler a();
-  
-  public abstract AppActivity a();
-  
-  public abstract AppRuntime a();
-  
-  public abstract void a();
-  
   public abstract void a(String paramString);
   
   public abstract void b(int paramInt);
   
   public abstract void b(String paramString);
   
-  public abstract void d();
-  
   public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract AppRuntime getApp();
+  
+  public abstract Handler getCallBack();
+  
+  public abstract AppActivity getViewContext();
   
   public abstract void setRecordTime(String paramString);
   
@@ -32,7 +32,7 @@ public abstract interface ICommonRecordSoundPanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ICommonRecordSoundPanelView
  * JD-Core Version:    0.7.0.1
  */

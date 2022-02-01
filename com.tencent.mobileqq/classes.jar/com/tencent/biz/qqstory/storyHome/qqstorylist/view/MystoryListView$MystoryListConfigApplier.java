@@ -21,9 +21,9 @@ public class MystoryListView$MystoryListConfigApplier
     if ((paramSegmentList instanceof MystoryListView))
     {
       paramSegmentList = (MystoryListView)paramSegmentList;
-      Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-      Object localObject = paramSegmentList.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView;
-      boolean bool = paramSegmentList.a();
+      Activity localActivity = paramSegmentList.b;
+      Object localObject = paramSegmentList.a;
+      boolean bool = paramSegmentList.g();
       paramSegmentList.a(StoryApi.a(localActivity, 5));
       paramSegmentList.a(new NewMyStorySegment(localActivity, (IMyStoryListView)localObject));
       paramSegmentList.a(new NewDividerSegment(localActivity));
@@ -31,11 +31,11 @@ public class MystoryListView$MystoryListConfigApplier
       localObject = new FeedSegment(localActivity, localActivity, 10, (IMyStoryListView)localObject, bool);
       paramSegmentList.a((SegmentView)localObject);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131707091));
+      localStringBuilder.append(HardCodeUtil.a(2131904929));
       localStringBuilder.append(QQStoryConstant.a);
       localStringBuilder.append("\n拍摄一段视频，分享眼前的世界");
-      paramSegmentList.a(new PlaceholderSegment(localActivity, "FeedSegment", localStringBuilder.toString(), 2130846837, 2130846838));
-      ((FeedSegment)localObject).a_(true);
+      paramSegmentList.a(new PlaceholderSegment(localActivity, "FeedSegment", localStringBuilder.toString(), 2130848389, 2130848390));
+      ((FeedSegment)localObject).c(true);
       return;
     }
     throw new IllegalArgumentException("arg should match type!");

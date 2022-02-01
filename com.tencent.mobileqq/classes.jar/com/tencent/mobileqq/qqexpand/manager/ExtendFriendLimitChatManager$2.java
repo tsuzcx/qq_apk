@@ -11,22 +11,22 @@ class ExtendFriendLimitChatManager$2
   
   protected void a(boolean paramBoolean, int paramInt, MatchInfo paramMatchInfo, String paramString)
   {
-    this.a.a().a(paramBoolean, paramInt, paramMatchInfo, paramString);
+    this.a.c().a(paramBoolean, paramInt, paramMatchInfo, paramString);
   }
   
   protected void a(boolean paramBoolean, MatchInfo paramMatchInfo)
   {
-    this.a.a().a(paramBoolean, paramMatchInfo);
+    this.a.c().a(paramBoolean, paramMatchInfo);
   }
   
-  protected void f(boolean paramBoolean)
+  protected void g(boolean paramBoolean)
   {
-    this.a.a().a(paramBoolean);
+    this.a.c().a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExtendFriendLimitChatManager.2
  * JD-Core Version:    0.7.0.1
  */

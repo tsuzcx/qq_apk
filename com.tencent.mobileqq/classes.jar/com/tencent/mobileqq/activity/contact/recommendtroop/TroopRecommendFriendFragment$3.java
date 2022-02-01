@@ -17,17 +17,17 @@ class TroopRecommendFriendFragment$3
       return;
     }
     paramView = ((MemberViewHolder)paramViewHolder).a;
-    TroopUtils.a(TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a), paramView.a, TroopRecommendFriendFragment.a(this.a), TroopRecommendFriendFragment.a(this.a));
+    TroopUtils.a(TroopRecommendFriendFragment.c(this.a), TroopRecommendFriendFragment.d(this.a), paramView.a, TroopRecommendFriendFragment.e(this.a), TroopRecommendFriendFragment.f(this.a));
   }
   
-  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public boolean b(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.3
  * JD-Core Version:    0.7.0.1
  */

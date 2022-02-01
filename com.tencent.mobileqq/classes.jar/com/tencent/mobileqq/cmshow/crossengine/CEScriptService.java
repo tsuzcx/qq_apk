@@ -3,7 +3,6 @@ package com.tencent.mobileqq.cmshow.crossengine;
 import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.crossengine.CEApplication;
-import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.cmshow.crossengine.model.CEArgument;
 import com.tencent.mobileqq.cmshow.crossengine.script.plugin.AudioModulePlugin;
@@ -12,6 +11,7 @@ import com.tencent.mobileqq.cmshow.crossengine.script.plugin.FrameRecorderPlugin
 import com.tencent.mobileqq.cmshow.crossengine.script.plugin.IModuleEventPlugin;
 import com.tencent.mobileqq.cmshow.crossengine.script.plugin.LogModulePlugin;
 import com.tencent.mobileqq.cmshow.crossengine.script.task.CEScriptTaskBuilder;
+import com.tencent.mobileqq.cmshow.engine.EngineContext;
 import com.tencent.mobileqq.cmshow.engine.EngineHelper;
 import com.tencent.mobileqq.cmshow.engine.model.Argument;
 import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
@@ -42,79 +42,161 @@ import org.json.JSONObject;
 public final class CEScriptService
   implements IScriptService
 {
-  public static final CEScriptService.Companion a;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final CEEngineContext jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext;
+  public static final CEScriptService.Companion a = new CEScriptService.Companion(null);
+  private final String b;
   @NotNull
-  private final CEScriptTaskBuilder jdField_a_of_type_ComTencentMobileqqCmshowCrossengineScriptTaskCEScriptTaskBuilder;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<IEventPlugin> jdField_a_of_type_JavaUtilList;
-  private final Map<String, List<IEventPlugin>> jdField_a_of_type_JavaUtilMap;
-  private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  private final List<IEventPlugin> jdField_b_of_type_JavaUtilList;
-  private final Map<String, List<IModuleEventPlugin>> jdField_b_of_type_JavaUtilMap;
-  private final List<Script> c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEScriptService$Companion = new CEScriptService.Companion(null);
-  }
+  private final CEScriptTaskBuilder c;
+  private final ReentrantLock d;
+  private final List<IEventPlugin> e;
+  private final List<IEventPlugin> f;
+  private final Map<String, List<IEventPlugin>> g;
+  private final Map<String, List<IModuleEventPlugin>> h;
+  private final Handler i;
+  private final List<Script> j;
+  private final CEEngineContext k;
   
   public CEScriptService(@NotNull CEEngineContext paramCEEngineContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext = paramCEEngineContext;
+    this.k = paramCEEngineContext;
     paramCEEngineContext = new StringBuilder();
     paramCEEngineContext.append("[cmshow][CECMShowOffscreenEngine][CEScriptService][");
-    paramCEEngineContext.append(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a());
+    paramCEEngineContext.append(this.k.k());
     paramCEEngineContext.append(']');
-    this.jdField_a_of_type_JavaLangString = paramCEEngineContext.toString();
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineScriptTaskCEScriptTaskBuilder = new CEScriptTaskBuilder();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    this.jdField_b_of_type_JavaUtilList = ((List)new ArrayList());
-    this.jdField_a_of_type_JavaUtilMap = ((Map)new LinkedHashMap());
-    this.jdField_b_of_type_JavaUtilMap = ((Map)new LinkedHashMap());
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-    this.c = ((List)new ArrayList());
-    paramCEEngineContext = this.jdField_a_of_type_JavaLangString;
+    this.b = paramCEEngineContext.toString();
+    this.c = new CEScriptTaskBuilder((EngineContext)this.k);
+    this.d = new ReentrantLock();
+    this.e = ((List)new ArrayList());
+    this.f = ((List)new ArrayList());
+    this.g = ((Map)new LinkedHashMap());
+    this.h = ((Map)new LinkedHashMap());
+    this.i = new Handler(ThreadManager.getSubThreadLooper());
+    this.j = ((List)new ArrayList());
+    paramCEEngineContext = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("create ");
     localStringBuilder.append(this);
     localStringBuilder.append(" for ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a());
+    localStringBuilder.append(this.k.k());
     QLog.i(paramCEEngineContext, 1, localStringBuilder.toString());
     a((IEventPlugin)new GeneralEventPlugin());
     a((IEventPlugin)new LogModulePlugin());
     a((IEventPlugin)new FileModulePlugin());
-    a((IEventPlugin)new FrameRecorderPlugin(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext));
+    a((IEventPlugin)new FrameRecorderPlugin(this.k));
     a((IEventPlugin)new AudioModulePlugin());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a((IScriptService)this);
+    this.k.a((IScriptService)this);
   }
   
-  private final String a(CEArgument paramCEArgument)
+  private final String a(Argument paramArgument)
+  {
+    Object localObject1 = (String)null;
+    Iterator localIterator = ((Iterable)this.f).iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (IEventPlugin)localIterator.next();
+      if (((IEventPlugin)localObject2).a(paramArgument.f()))
+      {
+        localObject2 = ((IEventPlugin)localObject2).a(paramArgument);
+        if (localObject1 == null) {
+          localObject1 = localObject2;
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  private final JSONObject a(CEArgument paramCEArgument)
+  {
+    JSONObject localJSONObject = (JSONObject)null;
+    Object localObject2 = (List)this.h.get(paramCEArgument.a());
+    int m;
+    if (localObject2 != null) {
+      m = ((List)localObject2).size();
+    } else {
+      m = 0;
+    }
+    int n = 1;
+    Object localObject1;
+    if ((localObject2 != null) && (m != 0))
+    {
+      if (paramCEArgument.c())
+      {
+        localObject2 = ((Iterable)localObject2).iterator();
+        for (;;)
+        {
+          localObject1 = localJSONObject;
+          if (!((Iterator)localObject2).hasNext()) {
+            break;
+          }
+          localObject1 = (IModuleEventPlugin)((Iterator)localObject2).next();
+          this.i.post((Runnable)new CEScriptService.onModuleScriptEvent..inlined.forEach.lambda.1((IModuleEventPlugin)localObject1, this, paramCEArgument));
+        }
+      }
+      localJSONObject = ((IModuleEventPlugin)((List)localObject2).get(0)).a(paramCEArgument);
+      localObject1 = localJSONObject;
+      if (m > 1) {
+        for (;;)
+        {
+          localObject1 = localJSONObject;
+          if (n >= m) {
+            break;
+          }
+          ((IModuleEventPlugin)((List)localObject2).get(n)).a(paramCEArgument);
+          n += 1;
+        }
+      }
+      return localObject1;
+    }
+    if (Intrinsics.areEqual("error", paramCEArgument.f()))
+    {
+      localObject1 = this.b;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onScriptEvent error, ");
+      ((StringBuilder)localObject2).append(paramCEArgument.g());
+      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    }
+    return localJSONObject;
+  }
+  
+  private final void a(IModuleEventPlugin paramIModuleEventPlugin)
+  {
+    Object localObject = paramIModuleEventPlugin.b();
+    if (this.h.containsKey(localObject))
+    {
+      localObject = (List)this.h.get(localObject);
+      if (localObject != null) {
+        ((List)localObject).add(paramIModuleEventPlugin);
+      }
+    }
+    else
+    {
+      this.h.put(localObject, new CEScriptService.addModuleEventPlugin.1(paramIModuleEventPlugin));
+    }
+  }
+  
+  private final String b(CEArgument paramCEArgument)
   {
     Object localObject1 = null;
     Object localObject2 = (List)null;
-    localObject2 = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+    localObject2 = (Lock)this.d;
     ((Lock)localObject2).lock();
     try
     {
-      Object localObject3 = (List)this.jdField_a_of_type_JavaUtilMap.get(paramCEArgument.c());
+      Object localObject3 = (List)this.g.get(paramCEArgument.f());
       if (localObject3 != null) {
         localObject1 = CollectionsKt.toMutableList((Collection)localObject3);
       }
       localObject3 = Unit.INSTANCE;
       ((Lock)localObject2).unlock();
-      int i;
+      int m;
       if (localObject1 != null) {
-        i = ((List)localObject1).size();
+        m = ((List)localObject1).size();
       } else {
-        i = 0;
+        m = 0;
       }
-      int j = 1;
-      if ((localObject1 != null) && (i != 0))
+      int n = 1;
+      if ((localObject1 != null) && (m != 0))
       {
-        if (paramCEArgument.a())
+        if (paramCEArgument.c())
         {
           if (localObject1 == null) {
             Intrinsics.throwNpe();
@@ -123,7 +205,7 @@ public final class CEScriptService
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (IEventPlugin)((Iterator)localObject1).next();
-            this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new CEScriptService.onCmdScriptEvent..inlined.forEach.lambda.1((IEventPlugin)localObject2, this, paramCEArgument));
+            this.i.post((Runnable)new CEScriptService.onCmdScriptEvent..inlined.forEach.lambda.1((IEventPlugin)localObject2, this, paramCEArgument));
           }
           paramCEArgument = "{}";
         }
@@ -136,18 +218,18 @@ public final class CEScriptService
           localObject3 = (Argument)paramCEArgument;
           localObject2 = ((IEventPlugin)localObject2).a((Argument)localObject3);
           paramCEArgument = (CEArgument)localObject2;
-          if (i > 1) {
+          if (m > 1) {
             for (;;)
             {
               paramCEArgument = (CEArgument)localObject2;
-              if (j >= i) {
+              if (n >= m) {
                 break;
               }
               if (localObject1 == null) {
                 Intrinsics.throwNpe();
               }
-              ((IEventPlugin)((List)localObject1).get(j)).a((Argument)localObject3);
-              j += 1;
+              ((IEventPlugin)((List)localObject1).get(n)).a((Argument)localObject3);
+              n += 1;
             }
           }
         }
@@ -156,15 +238,15 @@ public final class CEScriptService
         }
         return "{}";
       }
-      if (Intrinsics.areEqual("error", paramCEArgument.c()))
+      if (Intrinsics.areEqual("error", paramCEArgument.f()))
       {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = this.b;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onScriptEvent error, ");
-        ((StringBuilder)localObject2).append(paramCEArgument.d());
+        ((StringBuilder)localObject2).append(paramCEArgument.g());
         QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       }
-      if (EngineHelper.a.a(paramCEArgument.c())) {
+      if (EngineHelper.a.a(paramCEArgument.f())) {
         return a((Argument)paramCEArgument);
       }
       return "{}";
@@ -179,99 +261,12 @@ public final class CEScriptService
     }
   }
   
-  private final String a(Argument paramArgument)
-  {
-    Object localObject1 = (String)null;
-    Iterator localIterator = ((Iterable)this.jdField_b_of_type_JavaUtilList).iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject2 = (IEventPlugin)localIterator.next();
-      if (((IEventPlugin)localObject2).a(paramArgument.c()))
-      {
-        localObject2 = ((IEventPlugin)localObject2).a(paramArgument);
-        if (localObject1 == null) {
-          localObject1 = localObject2;
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  private final JSONObject a(CEArgument paramCEArgument)
-  {
-    JSONObject localJSONObject = (JSONObject)null;
-    Object localObject2 = (List)this.jdField_b_of_type_JavaUtilMap.get(paramCEArgument.a());
-    int i;
-    if (localObject2 != null) {
-      i = ((List)localObject2).size();
-    } else {
-      i = 0;
-    }
-    int j = 1;
-    Object localObject1;
-    if ((localObject2 != null) && (i != 0))
-    {
-      if (paramCEArgument.a())
-      {
-        localObject2 = ((Iterable)localObject2).iterator();
-        for (;;)
-        {
-          localObject1 = localJSONObject;
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-          localObject1 = (IModuleEventPlugin)((Iterator)localObject2).next();
-          this.jdField_a_of_type_AndroidOsHandler.post((Runnable)new CEScriptService.onModuleScriptEvent..inlined.forEach.lambda.1((IModuleEventPlugin)localObject1, this, paramCEArgument));
-        }
-      }
-      localJSONObject = ((IModuleEventPlugin)((List)localObject2).get(0)).a(paramCEArgument);
-      localObject1 = localJSONObject;
-      if (i > 1) {
-        for (;;)
-        {
-          localObject1 = localJSONObject;
-          if (j >= i) {
-            break;
-          }
-          ((IModuleEventPlugin)((List)localObject2).get(j)).a(paramCEArgument);
-          j += 1;
-        }
-      }
-      return localObject1;
-    }
-    if (Intrinsics.areEqual("error", paramCEArgument.c()))
-    {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("onScriptEvent error, ");
-      ((StringBuilder)localObject2).append(paramCEArgument.d());
-      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    }
-    return localJSONObject;
-  }
-  
-  private final void a(IModuleEventPlugin paramIModuleEventPlugin)
-  {
-    Object localObject = paramIModuleEventPlugin.a();
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(localObject))
-    {
-      localObject = (List)this.jdField_b_of_type_JavaUtilMap.get(localObject);
-      if (localObject != null) {
-        ((List)localObject).add(paramIModuleEventPlugin);
-      }
-    }
-    else
-    {
-      this.jdField_b_of_type_JavaUtilMap.put(localObject, new CEScriptService.addModuleEventPlugin.1(paramIModuleEventPlugin));
-    }
-  }
-  
   private final void b(IModuleEventPlugin paramIModuleEventPlugin)
   {
-    Object localObject = paramIModuleEventPlugin.a();
-    if (this.jdField_b_of_type_JavaUtilMap.containsKey(localObject))
+    Object localObject = paramIModuleEventPlugin.b();
+    if (this.h.containsKey(localObject))
     {
-      localObject = (List)this.jdField_b_of_type_JavaUtilMap.get(localObject);
+      localObject = (List)this.h.get(localObject);
       if (localObject != null) {
         ((List)localObject).remove(paramIModuleEventPlugin);
       }
@@ -280,47 +275,47 @@ public final class CEScriptService
   
   private final void b(Script paramScript)
   {
-    ??? = this.jdField_a_of_type_JavaLangString;
+    ??? = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("addScriptToWaitList: ");
     localStringBuilder.append(paramScript);
     QLog.d((String)???, 1, localStringBuilder.toString());
-    synchronized (this.c)
+    synchronized (this.j)
     {
-      this.c.add(paramScript);
+      this.j.add(paramScript);
       return;
     }
   }
   
   private final void c(IEventPlugin paramIEventPlugin)
   {
-    Iterator localIterator = ((Iterable)paramIEventPlugin.a()).iterator();
+    Iterator localIterator = ((Iterable)paramIEventPlugin.c()).iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      if (this.g.containsKey(localObject))
       {
-        localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        localObject = (List)this.g.get(localObject);
         if (localObject != null) {
           ((List)localObject).add(paramIEventPlugin);
         }
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, new CEScriptService.addCmdEventPlugin..inlined.forEach.lambda.1(this, paramIEventPlugin));
+        this.g.put(localObject, new CEScriptService.addCmdEventPlugin..inlined.forEach.lambda.1(this, paramIEventPlugin));
       }
     }
   }
   
   private final void d(IEventPlugin paramIEventPlugin)
   {
-    Iterator localIterator = ((Iterable)paramIEventPlugin.a()).iterator();
+    Iterator localIterator = ((Iterable)paramIEventPlugin.c()).iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      if (this.g.containsKey(localObject))
       {
-        localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        localObject = (List)this.g.get(localObject);
         if (localObject != null) {
           ((List)localObject).remove(paramIEventPlugin);
         }
@@ -331,7 +326,7 @@ public final class CEScriptService
   @NotNull
   public CEScriptTaskBuilder a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineScriptTaskCEScriptTaskBuilder;
+    return this.c;
   }
   
   @Nullable
@@ -340,10 +335,10 @@ public final class CEScriptService
     Intrinsics.checkParameterIsNotNull(paramString, "reqParams");
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onScriptEvent: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a());
+      localStringBuilder.append(this.k.k());
       localStringBuilder.append(", ");
       localStringBuilder.append(paramString);
       QLog.d(str, 4, localStringBuilder.toString());
@@ -357,105 +352,67 @@ public final class CEScriptService
       }
       return null;
     }
-    return a(paramString);
-  }
-  
-  public final void a()
-  {
-    Object localObject2 = (List)new ArrayList();
-    synchronized (this.c)
-    {
-      ((List)localObject2).addAll((Collection)this.c);
-      this.c.clear();
-      Object localObject4 = Unit.INSTANCE;
-      ??? = ((List)localObject2).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject2 = (Script)((Iterator)???).next();
-        localObject4 = this.jdField_a_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("evaluateScript evaluateWaitList: ");
-        localStringBuilder.append(localObject2);
-        QLog.d((String)localObject4, 1, localStringBuilder.toString());
-        if (CmShowWnsUtils.x()) {
-          this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().evaluateWorldJs((String)new CEScriptService.evaluateWaitList.2(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a()).get(), ((Script)localObject2).a());
-        } else {
-          this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().evaluateJs(((Script)localObject2).a());
-        }
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw localObject3;
-    }
+    return b(paramString);
   }
   
   public void a(@NotNull Script paramScript)
   {
     Intrinsics.checkParameterIsNotNull(paramScript, "script");
-    if (!this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a())
+    paramScript.a(this.k.i());
+    if (!this.k.a())
     {
       b(paramScript);
       return;
     }
     CharSequence localCharSequence;
-    if (paramScript.a().length() > 100) {
-      localCharSequence = paramScript.a().subSequence(0, 100);
+    if (paramScript.e().length() > 100) {
+      localCharSequence = paramScript.e().subSequence(0, 100);
     } else {
-      localCharSequence = (CharSequence)paramScript.a();
+      localCharSequence = (CharSequence)paramScript.e();
     }
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("evaluateScript id:");
-    localStringBuilder.append(paramScript.a());
+    localStringBuilder.append(paramScript.i());
     localStringBuilder.append(", content:");
     localStringBuilder.append(localCharSequence);
     QLog.d(str, 4, localStringBuilder.toString());
-    if (CmShowWnsUtils.x())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().evaluateWorldJs((String)new CEScriptService.evaluateScript.1(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a()).get(), paramScript.a());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().evaluateJs(paramScript.a());
+    paramScript.b();
+    this.k.c().evaluateWorldJs((String)new CEScriptService.evaluateScript.1(this.k.k()).get(), paramScript.e());
+    paramScript.j();
   }
   
   public void a(@NotNull IEventPlugin paramIEventPlugin)
   {
     Intrinsics.checkParameterIsNotNull(paramIEventPlugin, "plugin");
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("registerPlugin:");
-    ((StringBuilder)localObject2).append(paramIEventPlugin);
-    QLog.d((String)localObject1, 4, ((StringBuilder)localObject2).toString());
-    localObject1 = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-    ((Lock)localObject1).lock();
+    Lock localLock = (Lock)this.d;
+    localLock.lock();
     try
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramIEventPlugin);
-      if (paramIEventPlugin.a()) {
-        this.jdField_b_of_type_JavaUtilList.add(paramIEventPlugin);
+      this.e.add(paramIEventPlugin);
+      if (paramIEventPlugin.d()) {
+        this.f.add(paramIEventPlugin);
       }
-      Collections.sort(this.jdField_a_of_type_JavaUtilList, (Comparator)CEScriptService.registerPlugin.1.1.a);
-      this.jdField_b_of_type_JavaUtilMap.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      paramIEventPlugin = this.jdField_a_of_type_JavaUtilList.iterator();
+      Collections.sort(this.e, (Comparator)CEScriptService.registerPlugin.1.1.a);
+      this.h.clear();
+      this.g.clear();
+      paramIEventPlugin = this.e.iterator();
       while (paramIEventPlugin.hasNext())
       {
-        localObject2 = (IEventPlugin)paramIEventPlugin.next();
-        if ((localObject2 instanceof IModuleEventPlugin)) {
-          a((IModuleEventPlugin)localObject2);
+        IEventPlugin localIEventPlugin = (IEventPlugin)paramIEventPlugin.next();
+        if ((localIEventPlugin instanceof IModuleEventPlugin)) {
+          a((IModuleEventPlugin)localIEventPlugin);
         } else {
-          c((IEventPlugin)localObject2);
+          c(localIEventPlugin);
         }
       }
       paramIEventPlugin = Unit.INSTANCE;
-      ((Lock)localObject1).unlock();
+      localLock.unlock();
       return;
     }
     finally
     {
-      ((Lock)localObject1).unlock();
+      localLock.unlock();
     }
     for (;;)
     {
@@ -469,22 +426,79 @@ public final class CEScriptService
     ThreadManager.excute((Runnable)new CEScriptService.onNativeEvent.1(this, paramString1, paramString2), 16, null, true);
   }
   
-  public final void b()
+  public void b(@NotNull IEventPlugin paramIEventPlugin)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Intrinsics.checkParameterIsNotNull(paramIEventPlugin, "plugin");
+    Lock localLock = (Lock)this.d;
+    localLock.lock();
+    try
+    {
+      if (this.e.contains(paramIEventPlugin))
+      {
+        this.e.remove(paramIEventPlugin);
+        if ((paramIEventPlugin instanceof IModuleEventPlugin)) {
+          b((IModuleEventPlugin)paramIEventPlugin);
+        } else {
+          d(paramIEventPlugin);
+        }
+      }
+      if (this.f.contains(paramIEventPlugin)) {
+        this.f.remove(paramIEventPlugin);
+      }
+      paramIEventPlugin = Unit.INSTANCE;
+      return;
+    }
+    finally
+    {
+      localLock.unlock();
+    }
+  }
+  
+  public final void c()
+  {
+    Object localObject2 = (List)new ArrayList();
+    synchronized (this.j)
+    {
+      ((List)localObject2).addAll((Collection)this.j);
+      this.j.clear();
+      Object localObject4 = Unit.INSTANCE;
+      ??? = ((List)localObject2).iterator();
+      while (((Iterator)???).hasNext())
+      {
+        localObject2 = (Script)((Iterator)???).next();
+        localObject4 = this.b;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("evaluateScript evaluateWaitList: ");
+        localStringBuilder.append(localObject2);
+        QLog.d((String)localObject4, 1, localStringBuilder.toString());
+        ((Script)localObject2).b();
+        this.k.c().evaluateWorldJs((String)new CEScriptService.evaluateWaitList.2(this.k.k()).get(), ((Script)localObject2).e());
+        ((Script)localObject2).j();
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
+    }
+  }
+  
+  public final void d()
+  {
+    Object localObject1 = this.b;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("destroy ");
     ((StringBuilder)localObject2).append(this);
     ((StringBuilder)localObject2).append(" for ");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a());
+    ((StringBuilder)localObject2).append(this.k.k());
     QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    localObject1 = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+    localObject1 = (Lock)this.d;
     ((Lock)localObject1).lock();
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.e.clear();
+      this.f.clear();
+      this.g.clear();
       localObject2 = Unit.INSTANCE;
       return;
     }
@@ -493,43 +507,10 @@ public final class CEScriptService
       ((Lock)localObject1).unlock();
     }
   }
-  
-  public void b(@NotNull IEventPlugin paramIEventPlugin)
-  {
-    Intrinsics.checkParameterIsNotNull(paramIEventPlugin, "plugin");
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("unRegisterPlugin:");
-    localStringBuilder.append(paramIEventPlugin);
-    QLog.d((String)localObject, 4, localStringBuilder.toString());
-    localObject = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-    ((Lock)localObject).lock();
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramIEventPlugin))
-      {
-        this.jdField_a_of_type_JavaUtilList.remove(paramIEventPlugin);
-        if ((paramIEventPlugin instanceof IModuleEventPlugin)) {
-          b((IModuleEventPlugin)paramIEventPlugin);
-        } else {
-          d(paramIEventPlugin);
-        }
-      }
-      if (this.jdField_b_of_type_JavaUtilList.contains(paramIEventPlugin)) {
-        this.jdField_b_of_type_JavaUtilList.remove(paramIEventPlugin);
-      }
-      paramIEventPlugin = Unit.INSTANCE;
-      return;
-    }
-    finally
-    {
-      ((Lock)localObject).unlock();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.CEScriptService
  * JD-Core Version:    0.7.0.1
  */

@@ -20,23 +20,6 @@ import java.util.List;
 
 public class StoryMsgNotificationUtils
 {
-  protected static List<String> a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramContext = paramContext.getPackageManager();
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.addCategory("android.intent.category.HOME");
-    paramContext = paramContext.queryIntentActivities(localIntent, 65536);
-    if (paramContext != null)
-    {
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext()) {
-        localArrayList.add(((ResolveInfo)paramContext.next()).activityInfo.packageName);
-      }
-    }
-    return localArrayList;
-  }
-  
   protected static void a(int paramInt, QQAppInterface paramQQAppInterface)
   {
     if ((paramQQAppInterface != null) && (paramInt != 0)) {
@@ -59,7 +42,7 @@ public class StoryMsgNotificationUtils
       if (localList.size() == 0) {
         return false;
       }
-      return a(paramContext).contains(((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName());
+      return b(paramContext).contains(((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName());
     }
     return false;
   }
@@ -143,10 +126,27 @@ public class StoryMsgNotificationUtils
     }
     return false;
   }
+  
+  protected static List<String> b(Context paramContext)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramContext = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.addCategory("android.intent.category.HOME");
+    paramContext = paramContext.queryIntentActivities(localIntent, 65536);
+    if (paramContext != null)
+    {
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext()) {
+        localArrayList.add(((ResolveInfo)paramContext.next()).activityInfo.packageName);
+      }
+    }
+    return localArrayList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryMsgNotificationUtils
  * JD-Core Version:    0.7.0.1
  */

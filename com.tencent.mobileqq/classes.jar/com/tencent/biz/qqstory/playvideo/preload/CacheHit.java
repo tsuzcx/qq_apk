@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class CacheHit
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<String> a = new ArrayList();
+  private String b;
   
   public CacheHit(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
 }
 

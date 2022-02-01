@@ -10,8 +10,8 @@ class CommonSuspensionGestureLayout$8
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaCommonSuspensionGestureLayout).a(false, this.jdField_a_of_type_Int, 2);
-    CommonSuspensionGestureLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaCommonSuspensionGestureLayout, 2);
+    CommonSuspensionGestureLayout.g(this.b).a(false, this.a, 2);
+    CommonSuspensionGestureLayout.d(this.b, 2);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class CommonSuspensionGestureLayout$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.CommonSuspensionGestureLayout.8
  * JD-Core Version:    0.7.0.1
  */

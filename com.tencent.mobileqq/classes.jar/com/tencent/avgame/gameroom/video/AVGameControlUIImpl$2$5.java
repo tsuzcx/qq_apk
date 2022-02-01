@@ -10,7 +10,7 @@ class AVGameControlUIImpl$2$5
   
   public void run()
   {
-    if ((GameEngine.a().f()) && (!GameEngine.a().g()) && (GameEngine.a().a().a() == 0)) {
+    if ((GameEngine.a().A()) && (!GameEngine.a().B()) && (GameEngine.a().s().j() == 0)) {
       return;
     }
     AVGameControlUIImpl.c(this.a.a);

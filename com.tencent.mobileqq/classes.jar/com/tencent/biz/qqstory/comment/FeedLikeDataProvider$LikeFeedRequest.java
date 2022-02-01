@@ -12,17 +12,17 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class FeedLikeDataProvider$LikeFeedRequest
   extends LegoRequestBase
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int b = -1;
+  String a;
+  boolean b;
+  int c;
+  int d = -1;
   
   public FeedLikeDataProvider$LikeFeedRequest(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.a = paramString;
+    this.b = paramBoolean;
+    this.d = paramInt1;
+    this.c = paramInt2;
   }
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
@@ -48,28 +48,28 @@ public class FeedLikeDataProvider$LikeFeedRequest
     return FeedLikeDataProvider.b;
   }
   
-  protected byte[] a()
+  protected byte[] b()
   {
     qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
-    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.a));
     PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       i = 1;
     } else {
       i = 2;
     }
     localPBUInt32Field.set(i);
-    localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
-    if (this.b != -1) {
-      localReqLikeFeed.type.set(this.b);
+    localReqLikeFeed.source.set(this.c);
+    if (this.d != -1) {
+      localReqLikeFeed.type.set(this.d);
     }
     return localReqLikeFeed.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeDataProvider.LikeFeedRequest
  * JD-Core Version:    0.7.0.1
  */

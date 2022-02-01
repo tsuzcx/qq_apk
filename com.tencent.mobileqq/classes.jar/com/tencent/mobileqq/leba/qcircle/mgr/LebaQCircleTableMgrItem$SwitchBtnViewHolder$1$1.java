@@ -20,22 +20,22 @@ class LebaQCircleTableMgrItem$SwitchBtnViewHolder$1$1
     {
       paramBaseRequest = new StringBuilder();
       paramBaseRequest.append("setCircleSwitch success isChecked");
-      paramBaseRequest.append(this.jdField_a_of_type_Boolean);
+      paramBaseRequest.append(this.a);
       QLog.w("LebaQCircleTableMgrItem", 1, paramBaseRequest.toString());
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.a)
       {
-        QCircleUtils.a().clearPedPoint();
+        QCircleUtils.b().clearPedPoint();
         QLog.w("LebaQCircleTableMgrItem", 1, "setCircleSwitch success clearPedPoint");
       }
     }
     else
     {
-      paramBoolean = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+      paramBoolean = TextUtils.isEmpty(this.b);
       paramString = "0";
       if (!paramBoolean)
       {
         paramSetMultiCircleSwitchRsp = QzoneConfig.getInstance();
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.a) {
           paramBaseRequest = "0";
         } else {
           paramBaseRequest = "1";
@@ -43,7 +43,7 @@ class LebaQCircleTableMgrItem$SwitchBtnViewHolder$1$1
         paramSetMultiCircleSwitchRsp.updateOneConfig("qqcircle", "qqcircle_entrance_enable_on_children_mode", paramBaseRequest);
       }
       paramSetMultiCircleSwitchRsp = QzoneConfig.getInstance();
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         paramBaseRequest = paramString;
       } else {
         paramBaseRequest = "1";
@@ -58,7 +58,7 @@ class LebaQCircleTableMgrItem$SwitchBtnViewHolder$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleTableMgrItem.SwitchBtnViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

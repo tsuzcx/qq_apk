@@ -5,19 +5,14 @@ import java.util.List;
 
 public class CacheData$TagCache
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<StrangerInfo> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
+  public List<StrangerInfo> a = new ArrayList();
+  public long b;
   public int c;
-  
-  public CacheData$TagCache()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public byte[] d;
+  public String e;
+  public boolean f;
+  public int g;
+  public int h;
   
   public boolean equals(Object paramObject)
   {
@@ -28,12 +23,12 @@ public class CacheData$TagCache
       bool1 = bool2;
       if ((paramObject instanceof TagCache))
       {
-        paramObject = ((TagCache)paramObject).jdField_a_of_type_JavaLangString;
+        paramObject = ((TagCache)paramObject).e;
         bool1 = bool2;
         if (paramObject != null)
         {
           bool1 = bool2;
-          if (this.jdField_a_of_type_JavaLangString.equals(paramObject)) {
+          if (this.e.equals(paramObject)) {
             bool1 = true;
           }
         }
@@ -47,37 +42,37 @@ public class CacheData$TagCache
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mUpdateTime");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" ");
     localStringBuilder.append("mUpdateTime");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" ");
     localStringBuilder.append("mSearchKey");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" ");
     localStringBuilder.append("mLoadOver");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" ");
     localStringBuilder.append("mCurPos");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" ");
     localStringBuilder.append("mOffset");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" ");
     localStringBuilder.append("size");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(this.a.size());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.feed.CacheData.TagCache
  * JD-Core Version:    0.7.0.1
  */

@@ -10,10 +10,10 @@ class GAudioMembersCtrlActivity$RefreshFaceRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvUiGAudioMemberListCtrl.a();
+    if (this.this$0.c != null) {
+      this.this$0.c.a();
     }
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
+    this.this$0.a.a().postDelayed(this, 2000L);
   }
 }
 

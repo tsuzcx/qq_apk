@@ -20,16 +20,16 @@ public class QVipFriendTagProcessor
   {
     QVipFriendTagConfig localQVipFriendTagConfig = new QVipFriendTagConfig();
     boolean bool = false;
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     try
     {
       paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem);
       if (paramArrayOfQConfItem.optInt("is_show_recover_entry", 1) == 1) {
         bool = true;
       }
-      localQVipFriendTagConfig.jdField_a_of_type_Boolean = bool;
-      localQVipFriendTagConfig.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.optString("recover_text", localQVipFriendTagConfig.jdField_a_of_type_JavaLangString);
-      localQVipFriendTagConfig.b = paramArrayOfQConfItem.optString("recover_url", localQVipFriendTagConfig.b);
+      localQVipFriendTagConfig.a = bool;
+      localQVipFriendTagConfig.b = paramArrayOfQConfItem.optString("recover_text", localQVipFriendTagConfig.b);
+      localQVipFriendTagConfig.c = paramArrayOfQConfItem.optString("recover_url", localQVipFriendTagConfig.c);
       return localQVipFriendTagConfig;
     }
     catch (JSONException paramArrayOfQConfItem)
@@ -60,7 +60,7 @@ public class QVipFriendTagProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipFriendTagProcessor
  * JD-Core Version:    0.7.0.1
  */

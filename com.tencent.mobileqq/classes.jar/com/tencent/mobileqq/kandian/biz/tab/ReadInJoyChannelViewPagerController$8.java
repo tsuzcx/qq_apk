@@ -9,11 +9,11 @@ class ReadInJoyChannelViewPagerController$8
   
   public void run()
   {
-    if (this.this$0.a() != 0)
+    if (this.this$0.d() != 0)
     {
       View localView = this.a;
       if (localView != null) {
-        localView.findViewById(2131369098).setVisibility(4);
+        localView.findViewById(2131436062).setVisibility(4);
       }
       localView = this.b;
       if (localView != null) {
@@ -24,7 +24,7 @@ class ReadInJoyChannelViewPagerController$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.8
  * JD-Core Version:    0.7.0.1
  */

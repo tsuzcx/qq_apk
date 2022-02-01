@@ -25,83 +25,6 @@ public class TroopRobot2MsgSendListener
 {
   private boolean a;
   
-  public void a(AIOContext paramAIOContext)
-  {
-    if (!this.a) {
-      return;
-    }
-    EditTextUI localEditTextUI = paramAIOContext.a().a().a();
-    QQAppInterface localQQAppInterface = paramAIOContext.a();
-    BaseSessionInfo localBaseSessionInfo = paramAIOContext.a();
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)paramAIOContext.a(52);
-    AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(25);
-    localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobot2MsgSendListener", 2, "clickSendTextButton process talking state");
-    }
-    ITroopRobotService localITroopRobotService = (ITroopRobotService)localQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
-    boolean bool1 = localITroopRobotService.isTalking();
-    Object localObject = localITroopRobotService.getTalkingRobotUin();
-    String str1 = localITroopRobotService.getTalkingNickName();
-    ArrayList localArrayList = new ArrayList();
-    String str2 = AtTroopMemberSpan.a(localEditTextUI.b(), localArrayList);
-    int i = 0;
-    while (i < localArrayList.size())
-    {
-      AtTroopMemberInfo localAtTroopMemberInfo = (AtTroopMemberInfo)localArrayList.get(i);
-      if (localITroopRobotService.isRobotUin(localAtTroopMemberInfo.uin))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("");
-        ((StringBuilder)localObject).append(localAtTroopMemberInfo.uin);
-        localObject = ((StringBuilder)localObject).toString();
-        str1 = ContactUtils.b(localQQAppInterface, localBaseSessionInfo.a, (String)localObject);
-        if (!bool1)
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("");
-          localStringBuilder.append(localAtTroopMemberInfo.uin);
-          if (!localITroopRobotService.isTalkingMsg(str2, localStringBuilder.toString(), localBaseSessionInfo.a))
-          {
-            bool1 = false;
-            break label286;
-          }
-        }
-        bool1 = true;
-        label286:
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("");
-        localStringBuilder.append(localAtTroopMemberInfo.uin);
-        bool2 = localITroopRobotService.isEndingMsg(str2, localStringBuilder.toString(), localBaseSessionInfo.a);
-        break label348;
-      }
-      i += 1;
-    }
-    boolean bool2 = false;
-    label348:
-    if ((bool1) && (!bool2))
-    {
-      localEditTextUI.a(AtTroopMemberSpan.a(localQQAppInterface, paramAIOContext.a(), localBaseSessionInfo.a, (String)localObject, str1, false, localEditTextUI.a(), true));
-      localEditTextUI.b(" ");
-      localEditTextUI.c(localEditTextUI.a().length());
-      ((TroopAIOContext)paramAIOContext).a(localITroopRobotService.getTalkingRobotUin(), localITroopRobotService.getTalkingNickName(), true, 0);
-    }
-    else
-    {
-      TroopPobingItemBuilder.a(localQQAppInterface, str2, localArrayList, localBaseSessionInfo.a);
-      if ((str2 == null) || (str2.length() <= 3478)) {
-        localEditTextUI.a("");
-      }
-      if (localAIOShortcutBarEvent.a().getBoolean("mIsShowRobotIcon")) {
-        localAIOShortcutBarHelper.c(26);
-      }
-      localAIOShortcutBarEvent.a().putBoolean("mHasRobotOldFlag", false);
-      localITroopRobotService.closeTalking();
-    }
-    localAIOShortcutBarEvent.a().putBoolean("isSending", false);
-    localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
-  }
-  
   public boolean a(AIOContext paramAIOContext)
   {
     this.a = false;
@@ -128,10 +51,87 @@ public class TroopRobot2MsgSendListener
     }
     return false;
   }
+  
+  public void b(AIOContext paramAIOContext)
+  {
+    if (!this.a) {
+      return;
+    }
+    EditTextUI localEditTextUI = paramAIOContext.p().d().f();
+    QQAppInterface localQQAppInterface = paramAIOContext.a();
+    BaseSessionInfo localBaseSessionInfo = paramAIOContext.O();
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)paramAIOContext.a(52);
+    AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(25);
+    localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopRobot2MsgSendListener", 2, "clickSendTextButton process talking state");
+    }
+    ITroopRobotService localITroopRobotService = (ITroopRobotService)localQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+    boolean bool1 = localITroopRobotService.isTalking();
+    Object localObject = localITroopRobotService.getTalkingRobotUin();
+    String str1 = localITroopRobotService.getTalkingNickName();
+    ArrayList localArrayList = new ArrayList();
+    String str2 = AtTroopMemberSpan.a(localEditTextUI.c(), localArrayList);
+    int i = 0;
+    while (i < localArrayList.size())
+    {
+      AtTroopMemberInfo localAtTroopMemberInfo = (AtTroopMemberInfo)localArrayList.get(i);
+      if (localITroopRobotService.isRobotUin(localAtTroopMemberInfo.uin))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(localAtTroopMemberInfo.uin);
+        localObject = ((StringBuilder)localObject).toString();
+        str1 = ContactUtils.b(localQQAppInterface, localBaseSessionInfo.b, (String)localObject);
+        if (!bool1)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("");
+          localStringBuilder.append(localAtTroopMemberInfo.uin);
+          if (!localITroopRobotService.isTalkingMsg(str2, localStringBuilder.toString(), localBaseSessionInfo.b))
+          {
+            bool1 = false;
+            break label286;
+          }
+        }
+        bool1 = true;
+        label286:
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(localAtTroopMemberInfo.uin);
+        bool2 = localITroopRobotService.isEndingMsg(str2, localStringBuilder.toString(), localBaseSessionInfo.b);
+        break label348;
+      }
+      i += 1;
+    }
+    boolean bool2 = false;
+    label348:
+    if ((bool1) && (!bool2))
+    {
+      localEditTextUI.a(AtTroopMemberSpan.a(localQQAppInterface, paramAIOContext.b(), localBaseSessionInfo.b, (String)localObject, str1, false, localEditTextUI.b(), true));
+      localEditTextUI.b(" ");
+      localEditTextUI.d(localEditTextUI.a().length());
+      ((TroopAIOContext)paramAIOContext).a(localITroopRobotService.getTalkingRobotUin(), localITroopRobotService.getTalkingNickName(), true, 0);
+    }
+    else
+    {
+      TroopPobingItemBuilder.a(localQQAppInterface, str2, localArrayList, localBaseSessionInfo.b);
+      if ((str2 == null) || (str2.length() <= 3478)) {
+        localEditTextUI.a("");
+      }
+      if (localAIOShortcutBarEvent.a().getBoolean("mIsShowRobotIcon")) {
+        localAIOShortcutBarHelper.d(26);
+      }
+      localAIOShortcutBarEvent.a().putBoolean("mHasRobotOldFlag", false);
+      localITroopRobotService.closeTalking();
+    }
+    localAIOShortcutBarEvent.a().putBoolean("isSending", false);
+    localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopRobot2MsgSendListener
  * JD-Core Version:    0.7.0.1
  */

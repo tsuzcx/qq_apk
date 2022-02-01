@@ -22,27 +22,27 @@ class AEGIFStickerListPart$5
     if (paramAEDownloadStateWrapper == null) {
       return;
     }
-    boolean bool = AEGIFStickerListPart.a(this.a);
+    boolean bool = AEGIFStickerListPart.g(this.a);
     if (bool) {
       AEGIFStickerListPart.a(this.a, null);
     }
-    Object localObject1 = AEGIFStickerListPart.a(this.a).iterator();
+    Object localObject1 = AEGIFStickerListPart.h(this.a).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (AEMaterialWrapper)((Iterator)localObject1).next();
-      if (((AEMaterialWrapper)localObject2).jdField_a_of_type_JavaLangString.equals(paramAEDownloadStateWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id))
+      if (((AEMaterialWrapper)localObject2).a.equals(paramAEDownloadStateWrapper.a.id))
       {
-        if (((AEMaterialWrapper)localObject2).jdField_a_of_type_Int != paramAEDownloadStateWrapper.jdField_a_of_type_Int)
+        if (((AEMaterialWrapper)localObject2).f != paramAEDownloadStateWrapper.b)
         {
-          ((AEMaterialWrapper)localObject2).jdField_a_of_type_Int = paramAEDownloadStateWrapper.jdField_a_of_type_Int;
-          AEGIFStickerListPart.a(this.a).a((AEMaterialWrapper)localObject2, bool);
+          ((AEMaterialWrapper)localObject2).f = paramAEDownloadStateWrapper.b;
+          AEGIFStickerListPart.i(this.a).a((AEMaterialWrapper)localObject2, bool);
         }
-        if ((((AEMaterialWrapper)localObject2).jdField_a_of_type_Int == 2) && (((AEMaterialWrapper)localObject2).jdField_a_of_type_JavaLangString.equals(AEGIFStickerListPart.b(this.a))) && (!bool)) {
-          AEGIFStickerListPart.a(this.a).b((AEMaterialWrapper)localObject2);
+        if ((((AEMaterialWrapper)localObject2).f == 2) && (((AEMaterialWrapper)localObject2).a.equals(AEGIFStickerListPart.j(this.a))) && (!bool)) {
+          AEGIFStickerListPart.k(this.a).b((AEMaterialWrapper)localObject2);
         }
       }
     }
-    Object localObject2 = AEGIFStickerListPart.b(this.a).iterator();
+    Object localObject2 = AEGIFStickerListPart.l(this.a).iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = (AEGifCategoryWrapper)((Iterator)localObject2).next();
@@ -52,15 +52,15 @@ class AEGIFStickerListPart$5
         while (localIterator.hasNext())
         {
           localObject1 = (AEMaterialWrapper)localIterator.next();
-          if ((localObject1 != null) && (!TextUtils.isEmpty(((AEMaterialWrapper)localObject1).jdField_a_of_type_JavaLangString)) && (((AEMaterialWrapper)localObject1).jdField_a_of_type_JavaLangString.equals(paramAEDownloadStateWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id))) {
+          if ((localObject1 != null) && (!TextUtils.isEmpty(((AEMaterialWrapper)localObject1).a)) && (((AEMaterialWrapper)localObject1).a.equals(paramAEDownloadStateWrapper.a.id))) {
             break label277;
           }
         }
         localObject1 = null;
         label277:
         if (localObject1 != null) {
-          if (((AEMaterialWrapper)localObject1).jdField_a_of_type_Int != paramAEDownloadStateWrapper.jdField_a_of_type_Int) {
-            ((AEMaterialWrapper)localObject1).jdField_a_of_type_Int = paramAEDownloadStateWrapper.jdField_a_of_type_Int;
+          if (((AEMaterialWrapper)localObject1).f != paramAEDownloadStateWrapper.b) {
+            ((AEMaterialWrapper)localObject1).f = paramAEDownloadStateWrapper.b;
           }
         }
       }
@@ -69,7 +69,7 @@ class AEGIFStickerListPart$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart.5
  * JD-Core Version:    0.7.0.1
  */

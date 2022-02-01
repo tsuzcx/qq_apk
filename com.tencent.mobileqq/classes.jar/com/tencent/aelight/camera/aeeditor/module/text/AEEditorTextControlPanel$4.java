@@ -42,35 +42,35 @@ class AEEditorTextControlPanel$4
           return;
         }
         paramString = this.a;
-        AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.a(paramString), false);
+        AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.d(paramString), false);
         paramString = this.a;
-        AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.b(paramString), false);
+        AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.e(paramString), false);
         paramString = this.a;
-        AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.c(paramString), true);
-        AEReportUtils.a(AEEditorTextControlPanel.a(this.a), 14);
+        AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.f(paramString), true);
+        AEReportUtils.a(AEEditorTextControlPanel.g(this.a), 14);
         return;
       }
       paramString = this.a;
-      AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.a(paramString), false);
+      AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.d(paramString), false);
       paramString = this.a;
-      AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.b(paramString), true);
+      AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.e(paramString), true);
       paramString = this.a;
-      AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.c(paramString), false);
-      AEReportUtils.a(AEEditorTextControlPanel.a(this.a), 13);
+      AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.f(paramString), false);
+      AEReportUtils.a(AEEditorTextControlPanel.g(this.a), 13);
       return;
     }
     paramString = this.a;
-    AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.a(paramString), true);
+    AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.d(paramString), true);
     paramString = this.a;
-    AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.b(paramString), false);
+    AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.e(paramString), false);
     paramString = this.a;
-    AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.c(paramString), false);
-    AEReportUtils.a(AEEditorTextControlPanel.a(this.a), 12);
+    AEEditorTextControlPanel.a(paramString, AEEditorTextControlPanel.f(paramString), false);
+    AEReportUtils.a(AEEditorTextControlPanel.g(this.a), 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextControlPanel.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ public class MSFConfigBean
   private boolean e = true;
   private boolean f = false;
   private boolean g = false;
+  private int h = 120;
   
   public static MSFConfigBean a(String paramString)
   {
@@ -30,6 +31,7 @@ public class MSFConfigBean
       localMSFConfigBean.f = paramString.optBoolean("isBinderConnectOptEnable", false);
       localMSFConfigBean.g = paramString.optBoolean("isChangeHuaweiDSCheck", false);
       localMSFConfigBean.a = paramString.optBoolean("isNeedLoadMsgFromDeepSleep", false);
+      localMSFConfigBean.h = paramString.optInt("deepSleepDetectInterval", 120);
       return localMSFConfigBean;
     }
     catch (Exception paramString)
@@ -54,6 +56,7 @@ public class MSFConfigBean
         localJSONObject.put("isSendQuickHBByScreenOnEnable", paramMSFConfigBean.e);
         localJSONObject.put("isChangeHuaweiDSCheck", paramMSFConfigBean.g);
         localJSONObject.put("isNeedLoadMsgFromDeepSleep", paramMSFConfigBean.a);
+        localJSONObject.put("deepSleepDetectInterval", paramMSFConfigBean.h);
       }
       catch (JSONException paramMSFConfigBean)
       {
@@ -80,13 +83,15 @@ public class MSFConfigBean
     localStringBuilder.append(this.g);
     localStringBuilder.append(", isNeedLoadMsgFromDeepSleep=");
     localStringBuilder.append(this.a);
+    localStringBuilder.append(", deepSleepDetectInterval=");
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MSFConfigBean
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class CMRTipsFilter
     {
       paramMessageRecord = new SpannableStringBuilder();
       paramIntent = paramIntent.getStringExtra("uinname");
-      paramAIOContext = CrmUtils.b(paramAIOContext.a(), paramMessage.frienduin);
+      paramAIOContext = CrmUtils.e(paramAIOContext.a(), paramMessage.frienduin);
       if (TextUtils.isEmpty(paramAIOContext))
       {
         paramMessageRecord.append(paramIntent);
@@ -30,19 +30,19 @@ public class CMRTipsFilter
     return null;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    return null;
-  }
-  
   public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
     return false;
   }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.CMRTipsFilter
  * JD-Core Version:    0.7.0.1
  */

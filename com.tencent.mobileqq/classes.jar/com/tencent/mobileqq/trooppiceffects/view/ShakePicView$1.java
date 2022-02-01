@@ -13,7 +13,7 @@ class ShakePicView$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
+    this.a.d.postDelayed(new ShakePicView.1.1(this), 160L);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -22,7 +22,7 @@ class ShakePicView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,93 +20,89 @@ class WsCommentBusiness$2
   
   public void a(WeishiTask paramWeishiTask)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    Object localObject1 = WsCommentBusiness.a();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("评论列表请求耗时：");
-    ((StringBuilder)localObject2).append(l);
-    ((StringBuilder)localObject2).append("毫秒");
-    WSLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
-    WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "", false);
-    if (!paramWeishiTask.a()) {
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+    long l = System.currentTimeMillis() - this.a;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("评论列表请求耗时：");
+    ((StringBuilder)localObject1).append(l);
+    ((StringBuilder)localObject1).append("毫秒");
+    WSLog.a("WsCommentBusiness", ((StringBuilder)localObject1).toString());
+    WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, "", false);
+    if (!paramWeishiTask.b()) {
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, paramWeishiTask.d, paramWeishiTask.c);
     }
-    WsCommentBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, true);
+    WsCommentBusiness.a(this.d, this.b.id, true);
     localObject1 = null;
-    if ((paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stQQGetFeedCommentListV2Rsp))
+    if ((paramWeishiTask.m instanceof stQQGetFeedCommentListV2Rsp))
     {
-      localObject1 = (stQQGetFeedCommentListV2Rsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      localObject2 = ((stQQGetFeedCommentListV2Rsp)localObject1).rsp;
-      if (localObject2 == null)
+      localObject1 = (stQQGetFeedCommentListV2Rsp)paramWeishiTask.m;
+      stGetFeedCommentListV2Rsp localstGetFeedCommentListV2Rsp = ((stQQGetFeedCommentListV2Rsp)localObject1).rsp;
+      if (localstGetFeedCommentListV2Rsp == null)
       {
-        WSLog.d(WsCommentBusiness.a(), "stGetFeedCommentListRsp is null!");
+        WSLog.d("WsCommentBusiness", "stGetFeedCommentListRsp is null!");
         return;
       }
-      Object localObject3 = ((stGetFeedCommentListV2Rsp)localObject2).comments;
-      Object localObject4 = WsCommentBusiness.a();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("-------------getCommentSize:");
-      localStringBuilder.append(((stGetFeedCommentListV2Rsp)localObject2).comments.size());
-      localStringBuilder.append(", attachInfo:");
-      localStringBuilder.append(((stGetFeedCommentListV2Rsp)localObject2).attach_info);
-      localStringBuilder.append("isFinish：");
-      localStringBuilder.append(((stGetFeedCommentListV2Rsp)localObject2).is_finished);
-      WSLog.d((String)localObject4, localStringBuilder.toString());
-      if (this.jdField_a_of_type_Boolean)
+      Object localObject2 = localstGetFeedCommentListV2Rsp.comments;
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("-------------getCommentSize:");
+      ((StringBuilder)localObject3).append(localstGetFeedCommentListV2Rsp.comments.size());
+      ((StringBuilder)localObject3).append(", attachInfo:");
+      ((StringBuilder)localObject3).append(localstGetFeedCommentListV2Rsp.attach_info);
+      ((StringBuilder)localObject3).append("isFinish：");
+      ((StringBuilder)localObject3).append(localstGetFeedCommentListV2Rsp.is_finished);
+      WSLog.d("WsCommentBusiness", ((StringBuilder)localObject3).toString());
+      if (this.c)
       {
-        localObject4 = (ArrayList)WsCommentBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness).get(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id);
+        localObject3 = (ArrayList)WsCommentBusiness.b(this.d).get(this.b.id);
         int i;
-        if (localObject4 != null) {
-          i = ((ArrayList)localObject4).size();
+        if (localObject3 != null) {
+          i = ((ArrayList)localObject3).size();
         } else {
           i = 0;
         }
-        localObject1 = WsCommentBusiness.a((ArrayList)localObject3, ((stQQGetFeedCommentListV2Rsp)localObject1).comment_text, i);
-        if (localObject4 != null)
+        localObject1 = WsCommentBusiness.a((ArrayList)localObject2, ((stQQGetFeedCommentListV2Rsp)localObject1).comment_text, i);
+        if (localObject3 != null)
         {
-          ((ArrayList)localObject4).addAll((Collection)localObject1);
-          WsCommentBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness).put(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, localObject4);
+          ((ArrayList)localObject3).addAll((Collection)localObject1);
+          WsCommentBusiness.b(this.d).put(this.b.id, localObject3);
         }
         else
         {
-          WsCommentBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness).put(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, localObject1);
+          WsCommentBusiness.b(this.d).put(this.b.id, localObject1);
         }
-        localObject3 = WsCommentBusiness.a();
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append("保存评论");
-        ((StringBuilder)localObject4).append(((ArrayList)localObject1).size());
-        ((StringBuilder)localObject4).append("条");
-        WSLog.d((String)localObject3, ((StringBuilder)localObject4).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("保存评论");
+        ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+        ((StringBuilder)localObject2).append("条");
+        WSLog.d("WsCommentBusiness", ((StringBuilder)localObject2).toString());
       }
       else
       {
-        localObject1 = WsCommentBusiness.a((ArrayList)localObject3, ((stQQGetFeedCommentListV2Rsp)localObject1).comment_text, 0);
-        WsCommentBusiness.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness).put(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, Integer.valueOf(((stGetFeedCommentListV2Rsp)localObject2).total_comment_num));
-        WsCommentBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness).put(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, localObject1);
-        localObject3 = WsCommentBusiness.a();
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append("保存评论");
-        ((StringBuilder)localObject4).append(((ArrayList)localObject1).size());
-        ((StringBuilder)localObject4).append("条");
-        WSLog.d((String)localObject3, ((StringBuilder)localObject4).toString());
+        localObject1 = WsCommentBusiness.a((ArrayList)localObject2, ((stQQGetFeedCommentListV2Rsp)localObject1).comment_text, 0);
+        WsCommentBusiness.c(this.d).put(this.b.id, Integer.valueOf(localstGetFeedCommentListV2Rsp.total_comment_num));
+        WsCommentBusiness.b(this.d).put(this.b.id, localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("保存评论");
+        ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+        ((StringBuilder)localObject2).append("条");
+        WSLog.d("WsCommentBusiness", ((StringBuilder)localObject2).toString());
       }
-      ((stGetFeedCommentListV2Rsp)localObject2).comments = ((ArrayList)localObject1);
-      WsCommentBusiness.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id, ((stGetFeedCommentListV2Rsp)localObject2).attach_info, ((stGetFeedCommentListV2Rsp)localObject2).is_finished, true);
-      WSLog.d(WsCommentBusiness.a(), "获取评论 dispatch responseCommentEvent");
-      localObject1 = localObject2;
+      localstGetFeedCommentListV2Rsp.comments = ((ArrayList)localObject1);
+      WsCommentBusiness.a(this.d, this.b.id, localstGetFeedCommentListV2Rsp.attach_info, localstGetFeedCommentListV2Rsp.is_finished, true);
+      WSLog.d("WsCommentBusiness", "获取评论 dispatch responseCommentEvent");
+      localObject1 = localstGetFeedCommentListV2Rsp;
     }
     else
     {
-      WSLog.d(WsCommentBusiness.a(), "获取评论失败new！");
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, -1, "数据无法解析或为空");
+      WSLog.d("WsCommentBusiness", "获取评论失败new！");
+      WsBeaconReportPresenter.a().a(l, paramWeishiTask.g, -1, "数据无法解析或为空");
     }
-    paramWeishiTask = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.a(new Object[] { Integer.valueOf(9), Integer.valueOf(paramWeishiTask.b), paramWeishiTask.jdField_a_of_type_JavaLangString, localObject1, Integer.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentBusiness.hashCode()), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id });
+    paramWeishiTask = this.d.a(new Object[] { Integer.valueOf(9), Integer.valueOf(paramWeishiTask.e), paramWeishiTask.c, localObject1, Integer.valueOf(this.d.hashCode()), Boolean.valueOf(this.c), this.b.id });
     StoryDispatcher.a().dispatch(paramWeishiTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentBusiness.2
  * JD-Core Version:    0.7.0.1
  */

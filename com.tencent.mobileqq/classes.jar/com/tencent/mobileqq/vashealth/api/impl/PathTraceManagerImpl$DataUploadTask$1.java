@@ -30,7 +30,7 @@ class PathTraceManagerImpl$DataUploadTask$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    PathTraceManagerImpl.DataUploadTask.a(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask, paramBoolean, paramInt);
+    PathTraceManagerImpl.DataUploadTask.a(this.f, paramBoolean, paramInt);
     if (paramBoolean) {}
     for (;;)
     {
@@ -55,66 +55,66 @@ class PathTraceManagerImpl$DataUploadTask$1
         }
         if ((paramInt != -1) && (paramBundle.retCode.get() == 0))
         {
-          if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+          if (paramInt >= this.b.size())
           {
-            this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", 1);
-            if (this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mUIHandler != null)
+            this.a.put("retCode", 1);
+            if (this.f.this$0.mUIHandler != null)
             {
               paramBundle = Message.obtain();
               paramBundle.what = 1;
-              paramBundle.obj = this.jdField_a_of_type_OrgJsonJSONObject;
-              this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mUIHandler.sendMessage(paramBundle);
+              paramBundle.obj = this.a;
+              this.f.this$0.mUIHandler.sendMessage(paramBundle);
             }
-            this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.pathTraceDelete(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqVashealthTracePathData.startTime));
+            this.f.this$0.pathTraceDelete(Long.valueOf(this.c.startTime));
             QLog.d("PathTraceManager", 1, "upload success");
-            PathTraceManagerImpl.access$302(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0, null);
-            this.jdField_a_of_type_AndroidContentSharedPreferences.edit().clear().commit();
+            PathTraceManagerImpl.access$302(this.f.this$0, null);
+            this.d.edit().clear().commit();
             return;
           }
-          if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+          if (this.b.size() > 0)
           {
-            if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+            if (this.b.size() > 0)
             {
               i = paramInt;
               if (i < paramInt + 3000)
               {
                 paramBundle = new QQSportsOrbit.OrbitPoint();
-                paramBundle.latitude.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).latitude);
-                paramBundle.longitude.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).longitude);
-                paramBundle.timef.set((int)((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).time);
-                paramBundle.speedf.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).speed);
-                paramBundle.accuracy.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).accuracy);
-                paramBundle.step.set(((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).steps);
-                paramBundle.altitude.set((float)((TracePointsData)this.jdField_a_of_type_JavaUtilList.get(i)).altitude);
-                this.jdField_a_of_type_ComTencentMobileqqVashealthPbQQSportsOrbit$OrbitReq.tracePath.add(paramBundle);
-                if (i != this.jdField_a_of_type_JavaUtilList.size() - 1) {
+                paramBundle.latitude.set(((TracePointsData)this.b.get(i)).latitude);
+                paramBundle.longitude.set(((TracePointsData)this.b.get(i)).longitude);
+                paramBundle.timef.set((int)((TracePointsData)this.b.get(i)).time);
+                paramBundle.speedf.set(((TracePointsData)this.b.get(i)).speed);
+                paramBundle.accuracy.set(((TracePointsData)this.b.get(i)).accuracy);
+                paramBundle.step.set(((TracePointsData)this.b.get(i)).steps);
+                paramBundle.altitude.set((float)((TracePointsData)this.b.get(i)).altitude);
+                this.e.tracePath.add(paramBundle);
+                if (i != this.b.size() - 1) {
                   break label850;
                 }
               }
             }
-            if (paramInt + 3000 >= this.jdField_a_of_type_JavaUtilList.size()) {
-              this.jdField_a_of_type_ComTencentMobileqqVashealthPbQQSportsOrbit$OrbitReq.isOver.set(1);
+            if (paramInt + 3000 >= this.b.size()) {
+              this.e.isOver.set(1);
             } else {
-              this.jdField_a_of_type_ComTencentMobileqqVashealthPbQQSportsOrbit$OrbitReq.isOver.set(0);
+              this.e.isOver.set(0);
             }
-            this.jdField_a_of_type_ComTencentMobileqqVashealthPbQQSportsOrbit$OrbitReq.num.set(paramInt + 1);
+            this.e.num.set(paramInt + 1);
           }
-          paramBundle = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mApp.getApplicationContext(), WebSSOAgentServlet.class);
-          paramBundle.putExtra("extra_cmd", PathTraceManagerImpl.DataUploadTask.a(this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask));
-          paramBundle.putExtra("extra_data", PathTraceManagerImpl.gzip(this.jdField_a_of_type_ComTencentMobileqqVashealthPbQQSportsOrbit$OrbitReq.toByteArray()));
-          this.jdField_a_of_type_ComTencentMobileqqVashealthPbQQSportsOrbit$OrbitReq.tracePath.clear();
+          paramBundle = new NewIntent(this.f.this$0.mApp.getApplicationContext(), WebSSOAgentServlet.class);
+          paramBundle.putExtra("extra_cmd", PathTraceManagerImpl.DataUploadTask.a(this.f));
+          paramBundle.putExtra("extra_data", PathTraceManagerImpl.gzip(this.e.toByteArray()));
+          this.e.tracePath.clear();
           paramBundle.putExtra("extra_timeout", 15000);
           paramBundle.setObserver(this);
-          this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mApp.startServlet(paramBundle);
+          this.f.this$0.mApp.startServlet(paramBundle);
           return;
         }
-        this.jdField_a_of_type_OrgJsonJSONObject.put("retCode", -10);
-        if (this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mUIHandler != null)
+        this.a.put("retCode", -10);
+        if (this.f.this$0.mUIHandler != null)
         {
           paramBundle = Message.obtain();
           paramBundle.what = 1;
-          paramBundle.obj = this.jdField_a_of_type_OrgJsonJSONObject;
-          this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mUIHandler.sendMessage(paramBundle);
+          paramBundle.obj = this.a;
+          this.f.this$0.mUIHandler.sendMessage(paramBundle);
         }
         return;
       }
@@ -131,12 +131,12 @@ class PathTraceManagerImpl$DataUploadTask$1
       {
         paramBundle = new JSONObject();
         paramBundle.put("retCode", -10);
-        if (this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mUIHandler != null)
+        if (this.f.this$0.mUIHandler != null)
         {
           localObject = Message.obtain();
           ((Message)localObject).what = 1;
           ((Message)localObject).obj = paramBundle;
-          this.jdField_a_of_type_ComTencentMobileqqVashealthApiImplPathTraceManagerImpl$DataUploadTask.this$0.mUIHandler.sendMessage((Message)localObject);
+          this.f.this$0.mUIHandler.sendMessage((Message)localObject);
           return;
         }
       }
@@ -155,7 +155,7 @@ class PathTraceManagerImpl$DataUploadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.PathTraceManagerImpl.DataUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

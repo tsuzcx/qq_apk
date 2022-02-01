@@ -13,7 +13,7 @@ class PublishHomeWorkFragment$21
   
   public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.p();
+    this.a.A();
     if (paramJSONObject != null) {}
     try
     {
@@ -22,7 +22,7 @@ class PublishHomeWorkFragment$21
         paramInt = paramJSONObject.optInt("retcode");
         if (paramInt == 0)
         {
-          this.a.k();
+          this.a.u();
           return;
         }
         boolean bool = paramJSONObject.has("wording");
@@ -32,15 +32,15 @@ class PublishHomeWorkFragment$21
         }
         if (!TextUtils.isEmpty(paramBundle))
         {
-          QQToast.a(this.a.getActivity(), paramBundle, 0).a();
+          QQToast.makeText(this.a.getActivity(), paramBundle, 0).show();
           return;
         }
         if (paramInt == 111000)
         {
-          QQToast.a(this.a.getActivity(), 2131697451, 0).a();
+          QQToast.makeText(this.a.getActivity(), 2131895224, 0).show();
           return;
         }
-        QQToast.a(this.a.getActivity(), 2131697501, 0).a();
+        QQToast.makeText(this.a.getActivity(), 2131895274, 0).show();
       }
       return;
     }
@@ -49,7 +49,7 @@ class PublishHomeWorkFragment$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.21
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ public class ShapePath$PathLineOperation
   
   public void a(@NonNull Matrix paramMatrix, @NonNull Path paramPath)
   {
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Matrix localMatrix = this.g;
     paramMatrix.invert(localMatrix);
     paramPath.transform(localMatrix);
-    paramPath.lineTo(this.jdField_a_of_type_Float, this.b);
+    paramPath.lineTo(this.a, this.b);
     paramPath.transform(paramMatrix);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapePath.PathLineOperation
  * JD-Core Version:    0.7.0.1
  */

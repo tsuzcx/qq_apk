@@ -13,19 +13,19 @@ class TroopAioKeywordTipBar$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar) != null)
+    if (TroopAioKeywordTipBar.c(this.b) != null)
     {
-      TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar).a.clearAnimation();
-      TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar).a.setVisibility(8);
+      TroopAioKeywordTipBar.c(this.b).a.clearAnimation();
+      TroopAioKeywordTipBar.c(this.b).a.setVisibility(8);
     }
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, false);
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, null);
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, null);
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, -1);
-    if ((!this.jdField_a_of_type_Boolean) && (!TroopAioKeywordTipBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar)))
+    TroopAioKeywordTipBar.b(this.b, false);
+    TroopAioKeywordTipBar.a(this.b, null);
+    TroopAioKeywordTipBar.a(this.b, null);
+    TroopAioKeywordTipBar.a(this.b, -1);
+    if ((!this.a) && (!TroopAioKeywordTipBar.f(this.b)))
     {
-      ThreadManager.getUIHandler().post(TroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar));
-      TroopAioKeywordTipBar.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar, true);
+      ThreadManager.getUIHandler().post(TroopAioKeywordTipBar.g(this.b));
+      TroopAioKeywordTipBar.c(this.b, true);
     }
   }
   
@@ -35,7 +35,7 @@ class TroopAioKeywordTipBar$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.3
  * JD-Core Version:    0.7.0.1
  */

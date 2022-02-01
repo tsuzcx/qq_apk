@@ -10,8 +10,8 @@ class QZoneManagerImp$1$1
   public void run()
   {
     long l = QZoneManagerImp.a(this.a.a);
-    QZoneManagerImp.a(this.a.a);
-    QZoneManagerImp.a(this.a.a, QZoneManagerImp.b(this.a.a));
+    QZoneManagerImp.b(this.a.a);
+    QZoneManagerImp.a(this.a.a, QZoneManagerImp.c(this.a.a));
     this.a.a.a(l | QZoneManagerImp.a(this.a.a));
     if (QLog.isColorLevel())
     {
@@ -24,7 +24,7 @@ class QZoneManagerImp$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.1.1
  * JD-Core Version:    0.7.0.1
  */

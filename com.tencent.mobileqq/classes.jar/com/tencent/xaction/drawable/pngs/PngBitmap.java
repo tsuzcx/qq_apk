@@ -9,26 +9,26 @@ import android.graphics.Rect;
 public class PngBitmap
 {
   public Bitmap a;
-  public NinePatch a;
+  public NinePatch b;
   
   public void a(Bitmap paramBitmap)
   {
     if (paramBitmap != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      paramBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap.getNinePatchChunk();
+      this.a = paramBitmap;
+      paramBitmap = this.a.getNinePatchChunk();
       if ((paramBitmap != null) && (NinePatch.isNinePatchChunk(paramBitmap)))
       {
-        this.jdField_a_of_type_AndroidGraphicsNinePatch = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, paramBitmap, null);
+        this.b = new NinePatch(this.a, paramBitmap, null);
         return;
       }
-      this.jdField_a_of_type_AndroidGraphicsNinePatch = null;
+      this.b = null;
     }
   }
   
   public void a(Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (paramPaint != null) {
@@ -37,16 +37,16 @@ public class PngBitmap
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      localObject = this.a;
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()) && (paramPaint != null)) {
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramRect1, paramRect2, paramPaint);
+        paramCanvas.drawBitmap(this.a, paramRect1, paramRect2, paramPaint);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.drawable.pngs.PngBitmap
  * JD-Core Version:    0.7.0.1
  */

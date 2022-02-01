@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqcircle.widgets.pick.IphonePickerView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/mao" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentTop="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <View android:id="@id/jls" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+            <Button android:textSize="17.0dip" android:textColor="@color/skin_color_button_common_white" android:id="@id/maf" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/qtn" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/i9" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/cb" android:id="@id/im0" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qtm" android:drawableRight="@drawable/common_arrow_right_selector" android:drawablePadding="3.0dip" android:layout_centerInParent="true" style="@style/i9" />
+            <Button android:textSize="17.0dip" android:textColor="@color/qcircle_skin_color_text_link" android:id="@id/jlr" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/qtl" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i9" />
+            <View android:id="@id/jlt" android:background="@color/qcircle_skin_color_bg_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/jmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/azn" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip">
+            <com.tencent.biz.qqcircle.widgets.pick.WheelView android:id="@id/bdy" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/azr" android:layout_marginBottom="@dimen/azp" android:layout_weight="4.0" />
+            <com.tencent.biz.qqcircle.widgets.pick.WheelView android:id="@id/d9j" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/azr" android:layout_marginBottom="@dimen/azp" android:layout_weight="3.0" />
+            <com.tencent.biz.qqcircle.widgets.pick.WheelView android:id="@id/ey2" android:focusable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="@dimen/azr" android:layout_marginBottom="@dimen/azp" android:layout_weight="3.0" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/azn">
+            <View android:id="@id/e_x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/w0" />
+            <View android:id="@id/e_b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/vz" android:layout_below="@id/e_x" />
+        </RelativeLayout>
+    </FrameLayout>
+</com.tencent.biz.qqcircle.widgets.pick.IphonePickerView>

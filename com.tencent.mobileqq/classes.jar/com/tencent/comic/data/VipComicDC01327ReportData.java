@@ -2,8 +2,7 @@ package com.tencent.comic.data;
 
 public class VipComicDC01327ReportData
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "", "", "", "", "", "", "", "", "", "" };
+  private String a = "";
   private String b = "";
   private String c = "";
   private String d = "";
@@ -15,16 +14,17 @@ public class VipComicDC01327ReportData
   private String j = "";
   private String k = "";
   private String l = "";
-  private String m = "";
+  private String[] m = { "", "", "", "", "", "", "", "", "", "" };
   private String n = "";
-  private String o = "1001";
-  private String p = "";
+  private String o = "";
+  private String p = "1001";
   private String q = "";
   private String r = "";
+  private String s = "";
   
   public VipComicDC01327ReportData a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
@@ -33,7 +33,7 @@ public class VipComicDC01327ReportData
     int i1 = 0;
     for (;;)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = this.m;
       if ((i1 >= arrayOfString.length) || (i1 >= paramVarArgs.length)) {
         break;
       }
@@ -45,12 +45,7 @@ public class VipComicDC01327ReportData
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return this.a;
   }
   
   public VipComicDC01327ReportData b(String paramString)
@@ -143,7 +138,7 @@ public class VipComicDC01327ReportData
   
   public VipComicDC01327ReportData j(String paramString)
   {
-    this.p = paramString;
+    this.q = paramString;
     return this;
   }
   
@@ -154,7 +149,7 @@ public class VipComicDC01327ReportData
   
   public VipComicDC01327ReportData k(String paramString)
   {
-    this.q = paramString;
+    this.r = paramString;
     return this;
   }
   
@@ -165,7 +160,7 @@ public class VipComicDC01327ReportData
   
   public VipComicDC01327ReportData l(String paramString)
   {
-    this.r = paramString;
+    this.s = paramString;
     return this;
   }
   
@@ -174,7 +169,7 @@ public class VipComicDC01327ReportData
     return this.l;
   }
   
-  public String m()
+  public String[] m()
   {
     return this.m;
   }
@@ -203,10 +198,15 @@ public class VipComicDC01327ReportData
   {
     return this.r;
   }
+  
+  public String s()
+  {
+    return this.s;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.comic.data.VipComicDC01327ReportData
  * JD-Core Version:    0.7.0.1
  */

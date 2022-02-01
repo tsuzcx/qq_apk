@@ -19,34 +19,34 @@ class ArkAppQQModule$12
   
   public void run()
   {
-    Object localObject2 = ark.arkGetContainer(this.jdField_a_of_type_Long);
+    Object localObject2 = ark.arkGetContainer(this.a);
     if (localObject2 == null) {
       return;
     }
-    Object localObject1 = ArkAppQQModuleBase.a();
+    Object localObject1 = ArkAppQQModuleBase.f();
     if ((localObject1 instanceof BaseActivity))
     {
       localObject1 = ((BaseActivity)localObject1).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
       if ((localObject1 instanceof ChatFragment))
       {
-        Object localObject3 = ((ChatFragment)localObject1).a();
+        Object localObject3 = ((ChatFragment)localObject1).k();
         if (localObject3 != null)
         {
-          localObject1 = ((BaseChatPie)localObject3).a();
+          localObject1 = ((BaseChatPie)localObject3).aE();
           if (localObject1 != null)
           {
             localObject2 = ArkAppContainer.a((ark.Container)localObject2);
             if (localObject2 != null)
             {
               localObject2 = (ArkAppContainer)((WeakReference)localObject2).get();
-              localObject3 = this.this$0.a(((BaseChatPie)localObject3).b(), (ArkAppContainer)localObject2);
+              localObject3 = this.this$0.a(((BaseChatPie)localObject3).bv(), (ArkAppContainer)localObject2);
               if (localObject3 != null)
               {
-                ArkTipsManager.a().a(((MessageForArkApp)localObject3).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject3, this.jdField_a_of_type_JavaLangString, ArkAppQQModuleBase.a());
+                ArkTipsManager.b().a(((MessageForArkApp)localObject3).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject3, this.b, ArkAppQQModuleBase.e());
                 return;
               }
-              if ((ArkTipsManager.a().a()) && (localObject2 != null)) {
-                ArkTipsManager.a().a((ArkAppContainer)localObject2, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
+              if ((ArkTipsManager.b().c()) && (localObject2 != null)) {
+                ArkTipsManager.b().a((ArkAppContainer)localObject2, (SessionInfo)localObject1, this.b);
               }
             }
           }
@@ -55,7 +55,7 @@ class ArkAppQQModule$12
         {
           localObject1 = ArkAppContainer.a((ark.Container)localObject2);
           if (localObject1 != null) {
-            ArkTipsManager.a().a((ArkAppContainer)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
+            ArkTipsManager.b().a((ArkAppContainer)((WeakReference)localObject1).get(), null, this.b);
           }
         }
       }
@@ -64,7 +64,7 @@ class ArkAppQQModule$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.12
  * JD-Core Version:    0.7.0.1
  */

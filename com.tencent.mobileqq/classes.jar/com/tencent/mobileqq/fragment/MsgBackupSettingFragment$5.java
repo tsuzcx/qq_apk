@@ -23,22 +23,22 @@ class MsgBackupSettingFragment$5
     localStringBuilder.append("createSession end, session = ");
     localStringBuilder.append(l);
     QLog.d("MsgBackup", 1, localStringBuilder.toString());
-    i = ((MsgBackupJniProxy)localObject).start(l, MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.a(this.this$0), MsgBackupSettingFragment.b(this.this$0));
+    i = ((MsgBackupJniProxy)localObject).start(l, MsgBackupSettingFragment.c(this.this$0), MsgBackupSettingFragment.d(this.this$0), MsgBackupSettingFragment.e(this.this$0));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("start ret = ");
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append(", ip = ");
-    ((StringBuilder)localObject).append(MsgBackupSettingFragment.a(this.this$0)[0]);
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.c(this.this$0)[0]);
     ((StringBuilder)localObject).append(", udpport = ");
-    ((StringBuilder)localObject).append(MsgBackupSettingFragment.a(this.this$0));
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.d(this.this$0));
     ((StringBuilder)localObject).append(", tcpport = ");
-    ((StringBuilder)localObject).append(MsgBackupSettingFragment.b(this.this$0));
+    ((StringBuilder)localObject).append(MsgBackupSettingFragment.e(this.this$0));
     QLog.d("MsgBackup", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.MsgBackupSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -13,47 +13,42 @@ public class RecommendActivityNodeViewHolder
 {
   public RecommendActivityNodeViewHolder(ViewGroup paramViewGroup)
   {
-    super(paramViewGroup, 2131561714);
-  }
-  
-  public void a()
-  {
-    this.a.setTag(2131374589, null);
+    super(paramViewGroup, 2131628093);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    this.a.setDisplayState(2);
-    c(paramMsgTabNodeInfo.jdField_b_of_type_JavaLangString);
+    this.c.setDisplayState(2);
+    c(paramMsgTabNodeInfo.k);
     StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
-    if (!TextUtils.isEmpty(paramMsgTabNodeInfo.j))
+    if (!TextUtils.isEmpty(paramMsgTabNodeInfo.y))
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-        str = HardCodeUtil.a(2131713188);
+      localStoryMsgNodeFrameLayout = this.c;
+      if (TextUtils.isEmpty(paramMsgTabNodeInfo.l)) {
+        str = HardCodeUtil.a(2131910743);
       } else {
-        str = paramMsgTabNodeInfo.c;
+        str = paramMsgTabNodeInfo.l;
       }
-      localStoryMsgNodeFrameLayout.setNodeName(str, paramMsgTabNodeInfo.j);
+      localStoryMsgNodeFrameLayout.setNodeName(str, paramMsgTabNodeInfo.y);
     }
     else
     {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-        str = HardCodeUtil.a(2131713195);
+      localStoryMsgNodeFrameLayout = this.c;
+      if (TextUtils.isEmpty(paramMsgTabNodeInfo.l)) {
+        str = HardCodeUtil.a(2131910750);
       } else {
-        str = paramMsgTabNodeInfo.c;
+        str = paramMsgTabNodeInfo.l;
       }
       localStoryMsgNodeFrameLayout.setNodeName(str, false);
     }
-    if ((paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList == null) || (paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.a.a(1, 1 - paramMsgTabNodeInfo.jdField_b_of_type_Int);
+    if ((paramMsgTabNodeInfo.e == null) || (paramMsgTabNodeInfo.e.isEmpty())) {
+      this.c.a(1, 1 - paramMsgTabNodeInfo.i);
     }
-    String str = (String)this.a.getTag(2131374589);
-    if (!TextUtils.equals(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, str))
+    String str = (String)this.c.getTag(2131442759);
+    if (!TextUtils.equals(paramMsgTabNodeInfo.d, str))
     {
-      int i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
+      int i = paramMsgTabNodeInfo.b;
       if (i != 10)
       {
         if (i != 11) {
@@ -65,14 +60,19 @@ public class RecommendActivityNodeViewHolder
       else {
         str = "2";
       }
-      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, str });
-      this.a.setTag(2131374589, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.d, str });
+      this.c.setTag(2131442759, paramMsgTabNodeInfo.d);
     }
+  }
+  
+  public void b()
+  {
+    this.c.setTag(2131442759, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.RecommendActivityNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

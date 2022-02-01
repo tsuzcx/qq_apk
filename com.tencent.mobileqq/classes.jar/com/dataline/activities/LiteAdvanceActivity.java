@@ -43,107 +43,137 @@ public class LiteAdvanceActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  public Handler a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Switch jdField_a_of_type_ComTencentWidgetSwitch;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private Switch jdField_b_of_type_ComTencentWidgetSwitch;
-  private boolean jdField_b_of_type_Boolean;
-  private View jdField_c_of_type_AndroidViewView;
-  private Switch jdField_c_of_type_ComTencentWidgetSwitch;
-  private boolean jdField_c_of_type_Boolean;
-  
-  public LiteAdvanceActivity()
-  {
-    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-  }
+  protected String a = AppConstants.DATALINE_PC_UIN;
+  int b = 0;
+  public Handler c = new Handler();
+  private Switch d;
+  private Switch e;
+  private Switch f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private View j;
+  private View k;
+  private View l;
+  private TextView m;
   
   private void a()
   {
-    setContentView(2131559006);
-    Object localObject1 = (ImageView)findViewById(2131368343);
-    Object localObject2 = (TextView)findViewById(2131368773);
-    TextView localTextView1 = (TextView)findViewById(2131365169);
-    TextView localTextView2 = (TextView)findViewById(2131372112);
-    TextView localTextView3 = (TextView)findViewById(2131372113);
-    int i = this.jdField_a_of_type_Int;
-    if (i == 0)
+    setContentView(2131624640);
+    Object localObject1 = (ImageView)findViewById(2131435219);
+    Object localObject2 = (TextView)findViewById(2131435692);
+    TextView localTextView1 = (TextView)findViewById(2131431322);
+    TextView localTextView2 = (TextView)findViewById(2131439582);
+    TextView localTextView3 = (TextView)findViewById(2131439583);
+    int n = this.b;
+    if (n == 0)
     {
-      ((ImageView)localObject1).setBackgroundResource(2130844282);
-      ((TextView)localObject2).setText(2131693779);
-      localTextView1.setText(2131693731);
-      localTextView2.setText(2131693754);
-      localTextView3.setText(2131693755);
+      ((ImageView)localObject1).setBackgroundResource(2130845599);
+      ((TextView)localObject2).setText(2131891354);
+      localTextView1.setText(2131891306);
+      localTextView2.setText(2131891329);
+      localTextView3.setText(2131891330);
     }
-    else if (i == 1)
+    else if (n == 1)
     {
-      ((ImageView)localObject1).setBackgroundResource(2130844277);
-      ((TextView)localObject2).setText(2131693780);
-      localTextView1.setText(2131693732);
-      localTextView2.setText(2131693733);
-      localTextView3.setText(2131693734);
+      ((ImageView)localObject1).setBackgroundResource(2130845594);
+      ((TextView)localObject2).setText(2131891355);
+      localTextView1.setText(2131891307);
+      localTextView2.setText(2131891308);
+      localTextView3.setText(2131891309);
     }
-    setTitle(2131695182);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131380860);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131362240);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131364676);
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376305));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(FMSettings.a().getDefaultRecvPath());
-    this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377845));
-    this.jdField_c_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_c_of_type_Boolean);
-    this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.1(this));
-    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377841));
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.2(this));
-    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131372401));
-    this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
-    this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.3(this));
-    if (ChatActivityConstants.jdField_a_of_type_Boolean)
+    setTitle(2131892915);
+    this.j = findViewById(2131449841);
+    this.j.setOnClickListener(this);
+    this.k = findViewById(2131427821);
+    this.k.setOnClickListener(this);
+    this.l = findViewById(2131430765);
+    this.l.setOnClickListener(this);
+    this.m = ((TextView)findViewById(2131444516));
+    this.m.setText(FMSettings.a().getDefaultRecvPath());
+    this.f = ((Switch)findViewById(2131446319));
+    this.f.setChecked(this.i);
+    this.f.setOnCheckedChangeListener(new LiteAdvanceActivity.1(this));
+    this.d = ((Switch)findViewById(2131446314));
+    this.d.setChecked(this.g);
+    this.d.setOnCheckedChangeListener(new LiteAdvanceActivity.2(this));
+    this.e = ((Switch)findViewById(2131439922));
+    this.e.setChecked(this.h);
+    this.e.setOnCheckedChangeListener(new LiteAdvanceActivity.3(this));
+    if (ChatActivityConstants.b)
     {
       localObject2 = this.leftView.getText().toString();
       localObject1 = localObject2;
-      if (!getString(2131690529).equals(localObject2))
+      if (!getString(2131887440).equals(localObject2))
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706273));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131901576));
         ((StringBuilder)localObject1).append((String)localObject2);
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706274));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904135));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       this.leftView.setContentDescription((CharSequence)localObject1);
     }
   }
   
-  private void a(boolean paramBoolean)
+  private boolean a(boolean paramBoolean)
+  {
+    RecentUserProxy localRecentUserProxy = this.app.getProxyManager().g();
+    String str = this.a;
+    if ((str != null) && (str.length() != 0) && (localRecentUserProxy != null))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setChatAtTop top: ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(" uin: ");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(" userType: ");
+        ((StringBuilder)localObject).append(6000);
+        QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
+      }
+      RecentUser localRecentUser = localRecentUserProxy.c(str, 6000);
+      Object localObject = localRecentUser;
+      if (localRecentUser == null) {
+        localObject = new RecentUser(str, 6000);
+      }
+      if (paramBoolean) {
+        ((RecentUser)localObject).showUpTime = (System.currentTimeMillis() / 1000L);
+      } else {
+        ((RecentUser)localObject).showUpTime = 0L;
+      }
+      localRecentUserProxy.b((RecentUser)localObject);
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop params error, return false.");
+    }
+    return false;
+  }
+  
+  private void b(boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    int i = this.jdField_a_of_type_Int;
-    if (i == 0)
+    int n = this.b;
+    if (n == 0)
     {
       localSharedPreferences.edit().putBoolean("auto_receive_files", paramBoolean).commit();
       return;
     }
-    if (i == 1) {
+    if (n == 1) {
       localSharedPreferences.edit().putBoolean("auto_receive_files_ipad", paramBoolean).commit();
     }
   }
   
-  private boolean a()
+  private boolean b()
   {
-    Object localObject = this.app.getProxyManager().a();
-    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.app.getProxyManager().g();
+    String str = this.a;
     boolean bool = false;
     if ((str != null) && (str.length() != 0) && (localObject != null))
     {
-      localObject = ((RecentUserProxy)localObject).b(str, 6000);
+      localObject = ((RecentUserProxy)localObject).c(str, 6000);
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -169,86 +199,64 @@ public class LiteAdvanceActivity
     return false;
   }
   
-  private boolean a(boolean paramBoolean)
+  private void c()
   {
-    RecentUserProxy localRecentUserProxy = this.app.getProxyManager().a();
-    String str = this.jdField_a_of_type_JavaLangString;
-    if ((str != null) && (str.length() != 0) && (localRecentUserProxy != null))
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("setChatAtTop top: ");
-        ((StringBuilder)localObject).append(paramBoolean);
-        ((StringBuilder)localObject).append(" uin: ");
-        ((StringBuilder)localObject).append(str);
-        ((StringBuilder)localObject).append(" userType: ");
-        ((StringBuilder)localObject).append(6000);
-        QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
-      }
-      RecentUser localRecentUser = localRecentUserProxy.b(str, 6000);
-      Object localObject = localRecentUser;
-      if (localRecentUser == null) {
-        localObject = new RecentUser(str, 6000);
-      }
-      if (paramBoolean) {
-        ((RecentUser)localObject).showUpTime = (System.currentTimeMillis() / 1000L);
-      } else {
-        ((RecentUser)localObject).showUpTime = 0L;
-      }
-      localRecentUserProxy.b((RecentUser)localObject);
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop params error, return false.");
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    String str = getString(2131693704);
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
+    String str = getString(2131891279);
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this, null);
     localActionSheet.setMainTitle(str);
-    localActionSheet.addButton(getResources().getString(2131693710), 3);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addButton(getResources().getString(2131891285), 3);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new LiteAdvanceActivity.4(this, localActionSheet));
     localActionSheet.show();
   }
   
-  private void b(boolean paramBoolean)
+  private void c(boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    int i = this.jdField_a_of_type_Int;
-    if (i == 0)
+    int n = this.b;
+    if (n == 0)
     {
       localSharedPreferences.edit().putBoolean("dl_pc_online_notify", paramBoolean).commit();
       return;
     }
-    if (i == 1) {
+    if (n == 1) {
       localSharedPreferences.edit().putBoolean("dl_ipad_online_notify", paramBoolean).commit();
     }
   }
   
-  private boolean b()
+  private boolean d()
   {
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    int i = this.jdField_a_of_type_Int;
+    int n = this.b;
     boolean bool = false;
-    if (i == 0) {
+    if (n == 0) {
       return localSharedPreferences.getBoolean("auto_receive_files", false);
     }
-    if (i == 1) {
+    if (n == 1) {
       bool = localSharedPreferences.getBoolean("auto_receive_files_ipad", false);
     }
     return bool;
   }
   
-  private void c()
+  private boolean e()
+  {
+    SharedPreferences localSharedPreferences = this.app.getPreferences();
+    int n = this.b;
+    boolean bool = true;
+    if (n == 0) {
+      return localSharedPreferences.getBoolean("dl_pc_online_notify", true);
+    }
+    if (n == 1) {
+      bool = localSharedPreferences.getBoolean("dl_ipad_online_notify", true);
+    }
+    return bool;
+  }
+  
+  private void f()
   {
     if (!Environment.getExternalStorageState().equals("mounted"))
     {
-      FMToastUtil.a(2131719713);
+      FMToastUtil.a(2131917316);
       return;
     }
     try
@@ -262,43 +270,29 @@ public class LiteAdvanceActivity
     }
   }
   
-  private boolean c()
+  private void g()
   {
-    SharedPreferences localSharedPreferences = this.app.getPreferences();
-    int i = this.jdField_a_of_type_Int;
-    boolean bool = true;
-    if (i == 0) {
-      return localSharedPreferences.getBoolean("dl_pc_online_notify", true);
-    }
-    if (i == 1) {
-      bool = localSharedPreferences.getBoolean("dl_ipad_online_notify", true);
-    }
-    return bool;
+    c();
   }
   
-  private void d()
+  private void h()
   {
-    b();
-  }
-  
-  private void e()
-  {
-    HardCodeUtil.a(2131706272);
-    if (FileManagerUtil.a(this, getString(2131693779)))
+    HardCodeUtil.a(2131904134);
+    if (FileManagerUtil.d(this, getString(2131891354)))
     {
-      this.app.getApp().getString(2131692087);
+      this.app.getApp().getString(2131889065);
       return;
     }
-    int i = this.jdField_a_of_type_Int;
-    if (i == 0)
+    int n = this.b;
+    if (n == 0)
     {
-      FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131693779), 2130844282);
+      FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131891354), 2130845599);
       DataLineReportUtil.q(this.app);
       return;
     }
-    if (i == 1)
+    if (n == 1)
     {
-      FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131693779), 2130844282);
+      FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131891354), 2130845599);
       DataLineReportUtil.q(this.app);
     }
   }
@@ -327,47 +321,47 @@ public class LiteAdvanceActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("targetUin");
-    paramBundle = this.jdField_a_of_type_JavaLangString;
+    this.a = getIntent().getStringExtra("targetUin");
+    paramBundle = this.a;
     if ((paramBundle != null) && (paramBundle.length() != 0))
     {
-      if (this.jdField_a_of_type_JavaLangString.equals(AppConstants.DATALINE_IPAD_UIN)) {
-        this.jdField_a_of_type_Int = 1;
+      if (this.a.equals(AppConstants.DATALINE_IPAD_UIN)) {
+        this.b = 1;
       } else {
-        this.jdField_a_of_type_Int = 0;
+        this.b = 0;
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+      this.b = 0;
+      this.a = AppConstants.DATALINE_PC_UIN;
     }
-    this.jdField_a_of_type_Boolean = b();
-    this.jdField_b_of_type_Boolean = c();
-    this.jdField_c_of_type_Boolean = a();
+    this.g = d();
+    this.h = e();
+    this.i = b();
     a();
     return true;
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131362240)
+    int n = paramView.getId();
+    if (n != 2131427821)
     {
-      if (i != 2131364676)
+      if (n != 2131430765)
       {
-        if (i == 2131380860)
+        if (n == 2131449841)
         {
           StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
-          c();
+          f();
         }
       }
       else {
-        d();
+        g();
       }
     }
     else {
-      e();
+      h();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

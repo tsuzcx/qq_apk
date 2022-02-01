@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
@@ -23,6 +22,7 @@ import com.tencent.mobileqq.apollo.res.api.impl.ApolloGifDownloaderImpl;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -36,13 +36,13 @@ import java.util.Random;
 class ApolloResponseManager$ResponseAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<Integer> a = new ArrayList();
+  Context b;
+  int c;
   
   public ApolloResponseManager$ResponseAdapter(ApolloResponseManager paramApolloResponseManager, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   public void a(List<Integer> paramList, int paramInt)
@@ -55,12 +55,12 @@ class ApolloResponseManager$ResponseAdapter
       ((StringBuilder)localObject1).append(paramList.toString());
       QLog.i("[cmshow]ApolloResponseManager", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      Object localObject2 = (ApolloDaoManagerServiceImpl)ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager).getRuntimeService(IApolloDaoManagerService.class, "all");
-      Object localObject3 = (ApolloManagerServiceImpl)ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager).getRuntimeService(IApolloManagerService.class, "all");
+      this.a.clear();
+      Object localObject2 = (ApolloDaoManagerServiceImpl)ApolloResponseManager.a(this.d).getRuntimeService(IApolloDaoManagerService.class, "all");
+      Object localObject3 = (ApolloManagerServiceImpl)ApolloResponseManager.a(this.d).getRuntimeService(IApolloManagerService.class, "all");
       ArrayList localArrayList = new ArrayList();
       localObject1 = new ArrayList();
       int i = paramList.size();
@@ -74,7 +74,7 @@ class ApolloResponseManager$ResponseAdapter
           StringBuilder localStringBuilder;
           if ((((ApolloActionData)localObject4).feeType == 9) && ((((ApolloManagerServiceImpl)localObject3).mUserActionId == null) || (!((ApolloManagerServiceImpl)localObject3).mUserActionId.containsKey(Integer.valueOf(((ApolloActionData)localObject4).actionId)))))
           {
-            if (!((ApolloManagerServiceImpl)ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager).getRuntimeService(IApolloManagerService.class, "all")).isSuperYellow(ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager).getCurrentUin()))
+            if (!((ApolloManagerServiceImpl)ApolloResponseManager.a(this.d).getRuntimeService(IApolloManagerService.class, "all")).isSuperYellow(ApolloResponseManager.a(this.d).getCurrentUin()))
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("remove vip data:");
@@ -110,7 +110,7 @@ class ApolloResponseManager$ResponseAdapter
         QLog.e("[cmshow]ApolloResponseManager", 1, paramList.toString());
         return;
       }
-      Collections.sort((List)localObject1, this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager.jdField_a_of_type_JavaUtilComparator);
+      Collections.sort((List)localObject1, this.d.b);
       localObject2 = new Random();
       i = ((List)localObject1).size() - 1;
       paramInt = 0;
@@ -118,7 +118,7 @@ class ApolloResponseManager$ResponseAdapter
       {
         if (i <= 1)
         {
-          this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
+          this.a.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
           localArrayList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).feeType));
         }
         else if (((List)localObject1).get(paramInt) != null)
@@ -131,22 +131,22 @@ class ApolloResponseManager$ResponseAdapter
             {
               j = ((Random)localObject2).nextInt(i - paramInt + 1) + paramInt;
               k = ((ApolloActionData)((List)localObject1).get(j)).actionId;
-            } while (this.jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(k)));
-            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(k));
+            } while (this.a.contains(Integer.valueOf(k)));
+            this.a.add(Integer.valueOf(k));
             localArrayList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(j)).feeType));
           }
           else
           {
-            this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
+            this.a.add(Integer.valueOf(((ApolloActionData)((List)localObject1).get(paramInt)).actionId));
             localArrayList.add(Integer.valueOf(j));
           }
         }
         paramInt += 1;
       }
       notifyDataSetChanged();
-      Object localObject4 = String.valueOf(ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager));
-      paramInt = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager));
-      i = this.jdField_a_of_type_Int;
+      Object localObject4 = String.valueOf(ApolloResponseManager.b(this.d));
+      paramInt = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(ApolloResponseManager.c(this.d));
+      i = this.c;
       int j = paramList.size();
       localObject3 = "0";
       if (j > 0) {
@@ -173,12 +173,12 @@ class ApolloResponseManager$ResponseAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -188,37 +188,37 @@ class ApolloResponseManager$ResponseAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources();
+    Object localObject3 = this.b.getResources();
     int i = ((Integer)getItem(paramInt)).intValue();
     Object localObject4;
     if (paramView == null)
     {
-      paramView = new ApolloResponseManager.Holder(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager);
-      paramViewGroup = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramView = new ApolloResponseManager.Holder(this.d);
+      paramViewGroup = new LinearLayout(this.b);
       localObject1 = (LinearLayout)paramViewGroup;
       ((LinearLayout)localObject1).setOrientation(1);
-      localObject4 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((LinearLayout)localObject4).setBackgroundResource(2130838562);
+      localObject4 = new LinearLayout(this.b);
+      ((LinearLayout)localObject4).setBackgroundResource(2130838621);
       ((LinearLayout)localObject4).setOrientation(0);
-      Object localObject5 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-      int j = AIOUtils.b(28.0F, (Resources)localObject3);
+      Object localObject5 = new URLImageView(this.b);
+      int j = ViewUtils.dip2px(28.0F);
       Object localObject6 = new LinearLayout.LayoutParams(j, j);
-      ((LinearLayout.LayoutParams)localObject6).leftMargin = AIOUtils.b(2.2F, (Resources)localObject3);
+      ((LinearLayout.LayoutParams)localObject6).leftMargin = ViewUtils.dip2px(2.2F);
       ((LinearLayout.LayoutParams)localObject6).gravity = 16;
       ((LinearLayout)localObject4).addView((View)localObject5, (ViewGroup.LayoutParams)localObject6);
-      localObject6 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+      localObject6 = new TextView(this.b);
       ((TextView)localObject6).setTextSize(11.0F);
       ((TextView)localObject6).setMaxLines(1);
       ((TextView)localObject6).setIncludeFontPadding(false);
       ((TextView)localObject6).setGravity(1);
-      ((TextView)localObject6).setTextColor(((Resources)localObject3).getColor(2131165505));
+      ((TextView)localObject6).setTextColor(((Resources)localObject3).getColor(2131165830));
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams.gravity = 16;
       ((LinearLayout)localObject4).addView((View)localObject6, localLayoutParams);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject5);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject6);
-      localObject5 = new View(this.jdField_a_of_type_AndroidContentContext);
-      paramView.jdField_a_of_type_AndroidViewView = ((View)localObject5);
+      paramView.a = ((URLImageView)localObject5);
+      paramView.b = ((TextView)localObject6);
+      localObject5 = new View(this.b);
+      paramView.c = ((View)localObject5);
       ((LinearLayout)localObject1).addView((View)localObject4);
       ((LinearLayout)localObject1).addView((View)localObject5);
       paramViewGroup.setTag(paramView);
@@ -229,54 +229,54 @@ class ApolloResponseManager$ResponseAdapter
       paramViewGroup = paramView;
       paramView = (View)localObject1;
     }
-    paramViewGroup.setTag(2131362787, Integer.valueOf(i));
-    paramViewGroup.setTag(2131362788, Integer.valueOf(this.jdField_a_of_type_Int));
-    Object localObject1 = paramView.jdField_a_of_type_AndroidViewView;
+    paramViewGroup.setTag(2131428473, Integer.valueOf(i));
+    paramViewGroup.setTag(2131428474, Integer.valueOf(this.c));
+    Object localObject1 = paramView.c;
     float f;
-    if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) {
+    if (paramInt == this.a.size() - 1) {
       f = 8.0F;
     } else {
       f = 5.0F;
     }
-    ((View)localObject1).setMinimumHeight(AIOUtils.b(f, (Resources)localObject3));
+    ((View)localObject1).setMinimumHeight(ViewUtils.dip2px(f));
     try
     {
       localObject1 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Resources)localObject3).getDrawable(2130838493);
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Resources)localObject3).getDrawable(2130838495);
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Resources)localObject3).getDrawable(2130838557);
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Resources)localObject3).getDrawable(2130838559);
       localObject3 = new URL("apollo_gif", "", String.valueOf(i));
       localObject4 = new File(ApolloGifDownloaderImpl.getApolloGifFilePath(i));
-      paramView.jdField_a_of_type_ComTencentImageURLImageView.setTag(Integer.valueOf(i));
+      paramView.a.setTag(Integer.valueOf(i));
       if (((File)localObject4).exists())
       {
         localObject1 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+        paramView.a.setImageDrawable((Drawable)localObject1);
       }
       else
       {
         localObject1 = URLDrawable.getDrawable((URL)localObject3, (URLDrawable.URLDrawableOptions)localObject1);
         ((URLDrawable)localObject1).setTag(Integer.valueOf(i));
-        paramView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+        paramView.a.setImageDrawable((Drawable)localObject1);
       }
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    Object localObject2 = ((ApolloDaoManagerServiceImpl)ApolloResponseManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager).getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(i);
+    Object localObject2 = ((ApolloDaoManagerServiceImpl)ApolloResponseManager.a(this.d).getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(i);
     if (localObject2 != null)
     {
       localObject2 = ((ApolloActionData)localObject2).actionName;
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+      paramView.b.setText((CharSequence)localObject2);
     }
-    paramViewGroup.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqApolloAioApolloResponseManager.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramViewGroup.setOnClickListener(this.d.a);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.ApolloResponseManager.ResponseAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class TroopUnclaimedHbList$HbListAdapter$1
   
   public void run()
   {
-    if (TroopUnclaimedHbList.a(this.a.a) != null) {
-      TroopUnclaimedHbList.a(this.a.a).invalidateItemDecorations();
+    if (TroopUnclaimedHbList.e(this.a.a) != null) {
+      TroopUnclaimedHbList.e(this.a.a).invalidateItemDecorations();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.HbListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

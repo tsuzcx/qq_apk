@@ -141,7 +141,7 @@ public class ReportWorker
             ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "ep_mall", "0X80057A3", 0, 0, ((StringBuilder)localObject2).toString(), "", "", "");
             if (TextUtils.isApolloEmoticon(k))
             {
-              VasVipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(((IApolloManagerService)this.mAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getApolloUserStatus()) });
+              VasVipUtils.a(this.mAppInterface, "cmshow", "Apollo", "0X800812E", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.mCurType), 0, new String[] { String.valueOf(k), String.valueOf(((IApolloManagerService)this.mAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getApolloUserStatus()) });
               localArrayList.add(Integer.valueOf(QQSysFaceUtil.convertToServer(k)));
             }
             EmoticonOperateReport.reportAIOEmoticonMonitorSendStatus("0", 1);
@@ -196,7 +196,7 @@ public class ReportWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ReportWorker
  * JD-Core Version:    0.7.0.1
  */

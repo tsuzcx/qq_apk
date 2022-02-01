@@ -28,6 +28,7 @@ public abstract class ConstraintHelper
   protected int[] mIds = new int[32];
   private HashMap<Integer, String> mMap = new HashMap();
   protected String mReferenceIds;
+  protected String mReferenceTags;
   protected boolean mUseViewMeasure = false;
   private View[] mViews = null;
   protected Context myContext;
@@ -96,6 +97,51 @@ public abstract class ConstraintHelper
     i = this.mCount;
     arrayOfInt[i] = paramInt;
     this.mCount = (i + 1);
+  }
+  
+  private void addTag(String paramString)
+  {
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return;
+      }
+      if (this.myContext == null) {
+        return;
+      }
+      String str = paramString.trim();
+      paramString = null;
+      if ((getParent() instanceof ConstraintLayout)) {
+        paramString = (ConstraintLayout)getParent();
+      }
+      if (paramString == null)
+      {
+        Log.w("ConstraintHelper", "Parent not a ConstraintLayout");
+        return;
+      }
+      int j = paramString.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        View localView = paramString.getChildAt(i);
+        Object localObject = localView.getLayoutParams();
+        if (((localObject instanceof ConstraintLayout.LayoutParams)) && (str.equals(((ConstraintLayout.LayoutParams)localObject).constraintTag))) {
+          if (localView.getId() == -1)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("to use ConstraintTag view ");
+            ((StringBuilder)localObject).append(localView.getClass().getSimpleName());
+            ((StringBuilder)localObject).append(" must have an ID");
+            Log.w("ConstraintHelper", ((StringBuilder)localObject).toString());
+          }
+          else
+          {
+            addRscID(localView.getId());
+          }
+        }
+        i += 1;
+      }
+    }
   }
   
   private int[] convertReferenceString(View paramView, String paramString)
@@ -304,8 +350,14 @@ public abstract class ConstraintHelper
           this.mReferenceIds = paramAttributeSet.getString(k);
           setIds(this.mReferenceIds);
         }
+        else if (k == R.styleable.ConstraintLayout_Layout_constraint_referenced_tags)
+        {
+          this.mReferenceTags = paramAttributeSet.getString(k);
+          setReferenceTags(this.mReferenceTags);
+        }
         i += 1;
       }
+      paramAttributeSet.recycle();
     }
   }
   
@@ -337,6 +389,10 @@ public abstract class ConstraintHelper
     String str = this.mReferenceIds;
     if (str != null) {
       setIds(str);
+    }
+    str = this.mReferenceTags;
+    if (str != null) {
+      setReferenceTags(str);
     }
   }
   
@@ -407,6 +463,27 @@ public abstract class ConstraintHelper
     }
   }
   
+  protected void setReferenceTags(String paramString)
+  {
+    this.mReferenceTags = paramString;
+    if (paramString == null) {
+      return;
+    }
+    int i = 0;
+    this.mCount = 0;
+    for (;;)
+    {
+      int j = paramString.indexOf(',', i);
+      if (j == -1)
+      {
+        addTag(paramString.substring(i));
+        return;
+      }
+      addTag(paramString.substring(i, j));
+      i = j + 1;
+    }
+  }
+  
   public void setReferencedIds(int[] paramArrayOfInt)
   {
     this.mReferenceIds = null;
@@ -416,6 +493,14 @@ public abstract class ConstraintHelper
     {
       addRscID(paramArrayOfInt[i]);
       i += 1;
+    }
+  }
+  
+  public void setTag(int paramInt, Object paramObject)
+  {
+    super.setTag(paramInt, paramObject);
+    if ((paramObject == null) && (this.mReferenceIds == null)) {
+      addRscID(paramInt);
     }
   }
   
@@ -487,7 +572,7 @@ public abstract class ConstraintHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.constraintlayout.widget.ConstraintHelper
  * JD-Core Version:    0.7.0.1
  */

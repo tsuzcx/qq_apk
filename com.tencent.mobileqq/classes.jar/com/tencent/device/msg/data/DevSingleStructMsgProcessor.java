@@ -40,22 +40,22 @@ import tencent.im.oidb.device.MiniFileProto.MiniFile;
 public class DevSingleStructMsgProcessor
   extends DeviceFileObserver
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<DevSingleStructMsgProcessor.CallbackPack> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ConcurrentHashMap<Long, DevSingleStructMsgProcessor.SessionPack> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(20);
-  private ConcurrentHashMap<Long, Long> b = new ConcurrentHashMap(10);
+  private final QQAppInterface a;
+  private ConcurrentHashMap<Long, DevSingleStructMsgProcessor.SessionPack> b = new ConcurrentHashMap(20);
+  private ArrayList<DevSingleStructMsgProcessor.CallbackPack> c = new ArrayList();
+  private ConcurrentHashMap<Long, Long> d = new ConcurrentHashMap(10);
   
   public DevSingleStructMsgProcessor(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private void a(long paramLong1, String paramString, int paramInt, long paramLong2)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong1)))
+    if (!this.b.containsKey(Long.valueOf(paramLong1)))
     {
       paramString = new DevSingleStructMsgProcessor.SessionPack(this, paramString, paramInt, paramLong2);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), paramString);
+      this.b.put(Long.valueOf(paramLong1), paramString);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -63,73 +63,25 @@ public class DevSingleStructMsgProcessor
     }
   }
   
-  private void a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
+  private void d(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.c.size())
     {
-      Object localObject = (DevSingleStructMsgProcessor.CallbackPack)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      Object localObject = (DevSingleStructMsgProcessor.CallbackPack)this.c.get(i);
       View localView = ((DevSingleStructMsgProcessor.CallbackPack)localObject).a();
-      localObject = ((DevSingleStructMsgProcessor.CallbackPack)localObject).a();
+      localObject = ((DevSingleStructMsgProcessor.CallbackPack)localObject).b();
       if ((localView != null) && (localObject != null))
       {
         ((MessageForDeviceSingleStruct.DeviceSingleStructItemCallback)localObject).a(localView, paramMessageForDeviceSingleStruct);
       }
       else
       {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        this.c.remove(i);
         i -= 1;
       }
       i += 1;
     }
-  }
-  
-  public long a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
-  {
-    if ((paramMessageForDeviceSingleStruct != null) && (!TextUtils.isEmpty(paramMessageForDeviceSingleStruct.strMediaKey)))
-    {
-      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
-      {
-        paramMessageForDeviceSingleStruct = Looper.getMainLooper();
-        if (Thread.currentThread() == paramMessageForDeviceSingleStruct.getThread())
-        {
-          FMToastUtil.a(2131693759);
-          return 0L;
-        }
-        new Handler(paramMessageForDeviceSingleStruct).post(new DevSingleStructMsgProcessor.1(this));
-        return 0L;
-      }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID))) {
-        return paramMessageForDeviceSingleStruct.nMediaSessionID;
-      }
-      Object localObject = (DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
-      int i = paramMessageForDeviceSingleStruct.nDataType;
-      if (i != 1)
-      {
-        if (i != 2) {
-          i = 0;
-        } else {
-          i = 2201;
-        }
-      }
-      else {
-        i = 2154;
-      }
-      long l = ((DeviceFileHandler)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForDeviceSingleStruct.strMediaKey, paramMessageForDeviceSingleStruct.strFileKey2, paramMessageForDeviceSingleStruct.nMediaChannelType, i);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForDeviceSingleStruct.frienduin, paramMessageForDeviceSingleStruct.istroop, paramMessageForDeviceSingleStruct.uniseq);
-      if ((localObject instanceof MessageForDeviceSingleStruct)) {
-        ((MessageForDeviceSingleStruct)localObject).nMediaSessionID = l;
-      }
-      paramMessageForDeviceSingleStruct.nMediaSessionID = l;
-      if (l != 0L) {
-        a(l, paramMessageForDeviceSingleStruct.frienduin, paramMessageForDeviceSingleStruct.istroop, paramMessageForDeviceSingleStruct.uniseq);
-      }
-      return l;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DevSingleStructMsgProcessor", 2, "mr is null or strMediaKey is empty in downloadMediaFile!");
-    }
-    return 0L;
   }
   
   public long a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct, View paramView, MessageForDeviceSingleStruct.DeviceSingleStructItemCallback paramDeviceSingleStructItemCallback)
@@ -142,7 +94,7 @@ public class DevSingleStructMsgProcessor
       if (paramView != null)
       {
         int j = 0;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.c.iterator();
         DevSingleStructMsgProcessor.CallbackPack localCallbackPack;
         do
         {
@@ -155,21 +107,21 @@ public class DevSingleStructMsgProcessor
         localCallbackPack.b = new WeakReference(paramDeviceSingleStructItemCallback);
         int i = 1;
         if (i == 0) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(new DevSingleStructMsgProcessor.CallbackPack(this, paramView, paramDeviceSingleStructItemCallback));
+          this.c.add(new DevSingleStructMsgProcessor.CallbackPack(this, paramView, paramDeviceSingleStructItemCallback));
         }
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nCoverSessionID))) {
+      if (this.b.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nCoverSessionID))) {
         return paramMessageForDeviceSingleStruct.nCoverSessionID;
       }
-      if (this.b.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.uniseq)))
+      if (this.d.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.uniseq)))
       {
-        l = ((Long)this.b.get(Long.valueOf(paramMessageForDeviceSingleStruct.uniseq))).longValue();
-        if (MessageCache.a() - l < 3600L) {
+        l = ((Long)this.d.get(Long.valueOf(paramMessageForDeviceSingleStruct.uniseq))).longValue();
+        if (MessageCache.c() - l < 3600L) {
           return paramMessageForDeviceSingleStruct.nCoverSessionID;
         }
       }
-      long l = ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForDeviceSingleStruct.strCoverKey, paramMessageForDeviceSingleStruct.strCoverKey2, paramMessageForDeviceSingleStruct.nCoverChannelType, 2154);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForDeviceSingleStruct.frienduin, paramMessageForDeviceSingleStruct.istroop, paramMessageForDeviceSingleStruct.uniseq);
+      long l = ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(this.a, paramMessageForDeviceSingleStruct.strCoverKey, paramMessageForDeviceSingleStruct.strCoverKey2, paramMessageForDeviceSingleStruct.nCoverChannelType, 2154);
+      paramView = this.a.getMessageFacade().a(paramMessageForDeviceSingleStruct.frienduin, paramMessageForDeviceSingleStruct.istroop, paramMessageForDeviceSingleStruct.uniseq);
       if ((paramView instanceof MessageForDeviceSingleStruct)) {
         ((MessageForDeviceSingleStruct)paramView).nCoverSessionID = l;
       }
@@ -187,14 +139,14 @@ public class DevSingleStructMsgProcessor
   
   public MessageForDeviceSingleStruct a(Long paramLong)
   {
-    paramLong = (DevSingleStructMsgProcessor.SessionPack)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramLong);
+    paramLong = (DevSingleStructMsgProcessor.SessionPack)this.b.get(paramLong);
     if (paramLong == null) {
       return null;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface))
     {
-      paramLong = ((QQAppInterface)localAppRuntime).getMessageFacade().a(paramLong.jdField_a_of_type_JavaLangString, paramLong.jdField_a_of_type_Int, paramLong.jdField_a_of_type_Long);
+      paramLong = ((QQAppInterface)localAppRuntime).getMessageFacade().a(paramLong.a, paramLong.b, paramLong.c);
       if (paramLong == null)
       {
         if (QLog.isColorLevel()) {
@@ -216,13 +168,13 @@ public class DevSingleStructMsgProcessor
     localMessageForDeviceSingleStruct.istroop = 9501;
     localMessageForDeviceSingleStruct.issend = 0;
     localMessageForDeviceSingleStruct.isread = false;
-    localMessageForDeviceSingleStruct.selfuin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localMessageForDeviceSingleStruct.selfuin = this.a.getCurrentAccountUin();
     localMessageForDeviceSingleStruct.senderuin = Long.toString(paramDataPoint.mDin);
     localMessageForDeviceSingleStruct.frienduin = Long.toString(paramDataPoint.mDin);
     localMessageForDeviceSingleStruct.nDataType = 1;
     localMessageForDeviceSingleStruct.parseFromJson(paramDataPoint.mValue);
     localMessageForDeviceSingleStruct.msg = localMessageForDeviceSingleStruct.strTitle;
-    Object localObject = (DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
+    Object localObject = (DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
     StringBuilder localStringBuilder2;
     if ((!TextUtils.isEmpty(localMessageForDeviceSingleStruct.strCoverKey)) && (localMessageForDeviceSingleStruct.nCoverChannelType == 1))
     {
@@ -288,30 +240,30 @@ public class DevSingleStructMsgProcessor
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageForDeviceSingleStruct, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    this.a.getMessageFacade().a(localMessageForDeviceSingleStruct, this.a.getCurrentAccountUin());
     int i;
     if (localMessageForDeviceSingleStruct.nDataType == 2) {
       i = 4;
     } else {
       i = 3;
     }
-    DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramDataPoint.mDin);
+    DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(paramDataPoint.mDin);
     int j;
     if (localDeviceInfo != null) {
       j = localDeviceInfo.productId;
     } else {
       j = 0;
     }
-    SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDataPoint.mDin, "Usr_AIO_ReceiveMsg", i, 0, j);
+    SmartDeviceReport.a(this.a, paramDataPoint.mDin, "Usr_AIO_ReceiveMsg", i, 0, j);
     if ((localDeviceInfo != null) && (localDeviceInfo.isAdmin == 1) && (!TextUtils.isEmpty(localMessageForDeviceSingleStruct.faceRect))) {
-      SmartDeviceReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDataPoint.mDin, "FR_StrangerComming", 0, 0, 0);
+      SmartDeviceReport.a(this.a, paramDataPoint.mDin, "FR_StrangerComming", 0, 0, 0);
     }
     return localMessageForDeviceSingleStruct.msg;
   }
   
   public void a()
   {
-    this.b.clear();
+    this.d.clear();
   }
   
   public void a(Session paramSession, float paramFloat)
@@ -345,9 +297,9 @@ public class DevSingleStructMsgProcessor
       {
         localMessageForDeviceSingleStruct.strCoverPath = paramSession.strFilePathSrc;
         if (paramBoolean) {
-          this.b.remove(Long.valueOf(localMessageForDeviceSingleStruct.uniseq));
+          this.d.remove(Long.valueOf(localMessageForDeviceSingleStruct.uniseq));
         } else {
-          this.b.put(Long.valueOf(localMessageForDeviceSingleStruct.uniseq), Long.valueOf(MessageCache.a()));
+          this.d.put(Long.valueOf(localMessageForDeviceSingleStruct.uniseq), Long.valueOf(MessageCache.c()));
         }
       }
       else
@@ -382,14 +334,14 @@ public class DevSingleStructMsgProcessor
         }
       }
       localMessageForDeviceSingleStruct.serial();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageForDeviceSingleStruct.frienduin, 9501, localMessageForDeviceSingleStruct.uniseq, localMessageForDeviceSingleStruct.msgData);
+      this.a.getMessageFacade().a(localMessageForDeviceSingleStruct.frienduin, 9501, localMessageForDeviceSingleStruct.uniseq, localMessageForDeviceSingleStruct.msgData);
       if ((localMessageForDeviceSingleStruct.nCoverSessionID == paramSession.uSessionID) && (paramBoolean)) {
-        a(localMessageForDeviceSingleStruct);
+        d(localMessageForDeviceSingleStruct);
       }
       if ((localMessageForDeviceSingleStruct.nMediaSessionID == paramSession.uSessionID) && (paramBoolean)) {
-        a(localMessageForDeviceSingleStruct);
+        d(localMessageForDeviceSingleStruct);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramSession.uSessionID));
+      this.b.remove(Long.valueOf(paramSession.uSessionID));
       return;
       label310:
       if (QLog.isColorLevel()) {
@@ -400,7 +352,55 @@ public class DevSingleStructMsgProcessor
   
   public boolean a(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID));
+    return this.b.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID));
+  }
+  
+  public long b(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
+  {
+    if ((paramMessageForDeviceSingleStruct != null) && (!TextUtils.isEmpty(paramMessageForDeviceSingleStruct.strMediaKey)))
+    {
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+      {
+        paramMessageForDeviceSingleStruct = Looper.getMainLooper();
+        if (Thread.currentThread() == paramMessageForDeviceSingleStruct.getThread())
+        {
+          FMToastUtil.a(2131891334);
+          return 0L;
+        }
+        new Handler(paramMessageForDeviceSingleStruct).post(new DevSingleStructMsgProcessor.1(this));
+        return 0L;
+      }
+      if (this.b.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID))) {
+        return paramMessageForDeviceSingleStruct.nMediaSessionID;
+      }
+      Object localObject = (DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER);
+      int i = paramMessageForDeviceSingleStruct.nDataType;
+      if (i != 1)
+      {
+        if (i != 2) {
+          i = 0;
+        } else {
+          i = 2201;
+        }
+      }
+      else {
+        i = 2154;
+      }
+      long l = ((DeviceFileHandler)localObject).a(this.a, paramMessageForDeviceSingleStruct.strMediaKey, paramMessageForDeviceSingleStruct.strFileKey2, paramMessageForDeviceSingleStruct.nMediaChannelType, i);
+      localObject = this.a.getMessageFacade().a(paramMessageForDeviceSingleStruct.frienduin, paramMessageForDeviceSingleStruct.istroop, paramMessageForDeviceSingleStruct.uniseq);
+      if ((localObject instanceof MessageForDeviceSingleStruct)) {
+        ((MessageForDeviceSingleStruct)localObject).nMediaSessionID = l;
+      }
+      paramMessageForDeviceSingleStruct.nMediaSessionID = l;
+      if (l != 0L) {
+        a(l, paramMessageForDeviceSingleStruct.frienduin, paramMessageForDeviceSingleStruct.istroop, paramMessageForDeviceSingleStruct.uniseq);
+      }
+      return l;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DevSingleStructMsgProcessor", 2, "mr is null or strMediaKey is empty in downloadMediaFile!");
+    }
+    return 0L;
   }
   
   public void b(Session paramSession)
@@ -417,22 +417,22 @@ public class DevSingleStructMsgProcessor
     }
   }
   
-  public boolean b(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
+  public boolean c(MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID));
+    if (this.b.containsKey(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID))) {
+      this.b.remove(Long.valueOf(paramMessageForDeviceSingleStruct.nMediaSessionID));
     }
     paramMessageForDeviceSingleStruct.nMediaFileStatus = 6;
     paramMessageForDeviceSingleStruct.nMediaProgress = 0.0F;
     paramMessageForDeviceSingleStruct.serial();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForDeviceSingleStruct.frienduin, 9501, paramMessageForDeviceSingleStruct.uniseq, paramMessageForDeviceSingleStruct.msgData);
-    ((DeviceFileHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(0, paramMessageForDeviceSingleStruct.nMediaSessionID, false);
+    this.a.getMessageFacade().a(paramMessageForDeviceSingleStruct.frienduin, 9501, paramMessageForDeviceSingleStruct.uniseq, paramMessageForDeviceSingleStruct.msgData);
+    ((DeviceFileHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEFILE_HANDLER)).a(0, paramMessageForDeviceSingleStruct.nMediaSessionID, false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DevSingleStructMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

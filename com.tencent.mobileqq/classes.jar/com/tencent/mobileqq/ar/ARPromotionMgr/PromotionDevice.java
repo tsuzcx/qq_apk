@@ -7,9 +7,9 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PromotionDevice
 {
-  static int jdField_a_of_type_Int = -1;
-  static final String jdField_a_of_type_JavaLangString = PromotionUtil.jdField_a_of_type_JavaLangString;
+  static final String a = PromotionUtil.a;
   static int b = -1;
+  static int c = -1;
   
   public static boolean a()
   {
@@ -18,12 +18,12 @@ public class PromotionDevice
   
   public static boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
-    int i = DeviceInfoUtil.a();
+    int i = DeviceInfoUtil.d();
     String str;
     StringBuilder localStringBuilder;
     if (i < paramInt2)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isSupportOfDevice, error OSversion[");
       localStringBuilder.append(paramInt2);
@@ -33,10 +33,10 @@ public class PromotionDevice
       QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
-    paramInt2 = DeviceInfoUtil.b();
+    paramInt2 = DeviceInfoUtil.h();
     if (paramInt2 < paramInt1)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isSupportOfDevice, error cpucount[");
       localStringBuilder.append(paramInt1);
@@ -46,10 +46,10 @@ public class PromotionDevice
       QLog.w(str, 1, localStringBuilder.toString());
       return false;
     }
-    long l = DeviceInfoUtil.b();
+    long l = DeviceInfoUtil.k();
     if (l < paramLong1)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isSupportOfDevice, error cpuFrequency[");
       localStringBuilder.append(paramLong1);
@@ -62,7 +62,7 @@ public class PromotionDevice
     paramLong1 = DeviceInfoUtil.a();
     if (paramLong1 < paramLong2)
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("isSupportOfDevice, error memory[");
       localStringBuilder.append(paramLong2);
@@ -82,7 +82,7 @@ public class PromotionDevice
   
   public static boolean c()
   {
-    int i = jdField_a_of_type_Int;
+    int i = b;
     boolean bool = false;
     if (i == -1)
     {
@@ -102,15 +102,15 @@ public class PromotionDevice
       } else {
         i = 0;
       }
-      jdField_a_of_type_Int = i;
-      String str = jdField_a_of_type_JavaLangString;
+      b = i;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isDevicesSupport, DeviceSupportFromLocal[");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(b);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    if (jdField_a_of_type_Int == 1) {
+    if (b == 1) {
       bool = true;
     }
     return bool;
@@ -123,7 +123,7 @@ public class PromotionDevice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionDevice
  * JD-Core Version:    0.7.0.1
  */

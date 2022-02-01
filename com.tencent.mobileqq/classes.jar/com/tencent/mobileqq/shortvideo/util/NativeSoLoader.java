@@ -10,67 +10,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NativeSoLoader
 {
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public static boolean b;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    b = false;
-  }
-  
-  public static byte a(String paramString)
-  {
-    if (paramString == null) {
-      return -1;
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
-    ((StringBuilder)localObject).append("/lib");
-    ((StringBuilder)localObject).append(paramString);
-    ((StringBuilder)localObject).append(".so");
-    paramString = ((StringBuilder)localObject).toString();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("start TKNativeSo: ");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.i("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject).toString());
-    }
-    localObject = new File(paramString);
-    if ((!jdField_a_of_type_Boolean) && (((File)localObject).exists())) {
-      try
-      {
-        System.load(paramString);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("load ");
-          ((StringBuilder)localObject).append(paramString);
-          ((StringBuilder)localObject).append(" success!");
-          QLog.i("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject).toString());
-        }
-        return 0;
-      }
-      catch (UnsatisfiedLinkError paramString)
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("load from tk dir failed: ");
-          ((StringBuilder)localObject).append(paramString.getMessage());
-          QLog.i("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject).toString());
-        }
-        return -3;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
-    }
-    return -2;
-  }
+  public static boolean a = false;
+  public static boolean b = false;
+  private static final byte[] c = new byte[0];
+  private static AtomicBoolean d = new AtomicBoolean(false);
   
   public static String a()
   {
@@ -104,15 +47,15 @@ public class NativeSoLoader
       ((StringBuilder)localObject3).append("isSoFileExist: exist= ");
       ((StringBuilder)localObject3).append(((File)???).exists());
       ((StringBuilder)localObject3).append(" isUncompressZip=");
-      ((StringBuilder)localObject3).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject3).append(a);
       QLog.d("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject3).toString());
     }
-    boolean bool1 = jdField_a_of_type_Boolean;
+    boolean bool1 = a;
     boolean bool2 = false;
     if ((!bool1) && (((File)???).exists())) {}
     for (;;)
     {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+      synchronized (c)
       {
         localObject3 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
         StringBuilder localStringBuilder = new StringBuilder();
@@ -139,10 +82,61 @@ public class NativeSoLoader
       bool1 = true;
     }
   }
+  
+  public static byte b(String paramString)
+  {
+    if (paramString == null) {
+      return -1;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append("/lib");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".so");
+    paramString = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start TKNativeSo: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject).toString());
+    }
+    localObject = new File(paramString);
+    if ((!a) && (((File)localObject).exists())) {
+      try
+      {
+        System.load(paramString);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("load ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" success!");
+          QLog.i("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject).toString());
+        }
+        return 0;
+      }
+      catch (UnsatisfiedLinkError paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("load from tk dir failed: ");
+          ((StringBuilder)localObject).append(paramString.getMessage());
+          QLog.i("TK_Config_NativeSoLoader", 2, ((StringBuilder)localObject).toString());
+        }
+        return -3;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
+    }
+    return -2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.NativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

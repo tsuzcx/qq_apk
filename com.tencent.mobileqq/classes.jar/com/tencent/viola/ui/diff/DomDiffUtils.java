@@ -214,7 +214,7 @@ public class DomDiffUtils
       {
         Map.Entry localEntry = (Map.Entry)paramMap1.next();
         if (!paramMap2.containsKey(localEntry.getKey())) {
-          localArrayList.add(localEntry.getKey());
+          localArrayList.add((String)localEntry.getKey());
         }
       }
       return localArrayList;
@@ -296,7 +296,7 @@ public class DomDiffUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.diff.DomDiffUtils
  * JD-Core Version:    0.7.0.1
  */

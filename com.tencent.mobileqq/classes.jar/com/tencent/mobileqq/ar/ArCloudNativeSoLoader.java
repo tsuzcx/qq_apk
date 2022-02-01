@@ -15,20 +15,6 @@ import org.xmlpull.v1.XmlPullParser;
 
 public class ArCloudNativeSoLoader
 {
-  public static int a(String paramString)
-  {
-    try
-    {
-      int i = ArNativeSoLoaderBase.a("arcloud", "v8.4.1.1", ArNativeSoLoaderBase.b("arcloud", "v8.4.1.1", "arcloud"), paramString);
-      return i;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
   public static int a(String paramString1, String paramString2)
   {
     try
@@ -73,7 +59,7 @@ public class ArCloudNativeSoLoader
     }
     try
     {
-      localObject1 = a(FileUtils.readFileToString((File)localObject2));
+      localObject1 = c(FileUtils.readFileToString((File)localObject2));
       if (((HashMap)localObject1).size() > 0)
       {
         localObject1 = ((HashMap)localObject1).entrySet().iterator();
@@ -184,60 +170,6 @@ public class ArCloudNativeSoLoader
     return "libARCloud";
   }
   
-  private static HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    int i;
-    try
-    {
-      localObject1 = Xml.newPullParser();
-      ((XmlPullParser)localObject1).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-      i = ((XmlPullParser)localObject1).getEventType();
-    }
-    catch (Exception localException)
-    {
-      Object localObject1;
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("parseSoMd5FromXmlConfig failed. error = ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      ((StringBuilder)localObject2).append(", xmlConfigContent = ");
-      ((StringBuilder)localObject2).append(paramString);
-      QLog.e("AREngine_ArCloudNativeSoLoader", 2, ((StringBuilder)localObject2).toString());
-      return localHashMap;
-    }
-    localObject2 = ((XmlPullParser)localObject1).getName();
-    if (((String)localObject2).equalsIgnoreCase("libARCloud")) {
-      localHashMap.put("libARCloud", ((XmlPullParser)localObject1).nextText());
-    } else if (((String)localObject2).equalsIgnoreCase("libARCloud_64")) {
-      localHashMap.put("libARCloud_64", ((XmlPullParser)localObject1).nextText());
-    }
-    for (;;)
-    {
-      i = ((XmlPullParser)localObject1).next();
-      while (i == 1)
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("parseSoMd5FromXmlConfig successfully. soMd5List = ");
-        ((StringBuilder)localObject1).append(localHashMap);
-        QLog.d("AREngine_ArCloudNativeSoLoader", 2, ((StringBuilder)localObject1).toString());
-        return localHashMap;
-      }
-      if (i == 2) {
-        break;
-      }
-    }
-  }
-  
-  public static boolean a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ArNativeSoLoaderBase.a("arcloud", "v8.4.1.1", ArNativeSoLoaderBase.b("arcloud", "v8.4.1.1", "arcloud")));
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(a());
-    localStringBuilder.append(".so");
-    return new File(localStringBuilder.toString()).exists();
-  }
-  
   public static boolean a(String paramString)
   {
     boolean bool = false;
@@ -291,10 +223,78 @@ public class ArCloudNativeSoLoader
     }
     finally {}
   }
+  
+  public static int b(String paramString)
+  {
+    try
+    {
+      int i = ArNativeSoLoaderBase.b("arcloud", "v8.4.1.1", ArNativeSoLoaderBase.b("arcloud", "v8.4.1.1", "arcloud"), paramString);
+      return i;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static boolean b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ArNativeSoLoaderBase.a("arcloud", "v8.4.1.1", ArNativeSoLoaderBase.b("arcloud", "v8.4.1.1", "arcloud")));
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(a());
+    localStringBuilder.append(".so");
+    return new File(localStringBuilder.toString()).exists();
+  }
+  
+  private static HashMap<String, String> c(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    int i;
+    try
+    {
+      localObject1 = Xml.newPullParser();
+      ((XmlPullParser)localObject1).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      i = ((XmlPullParser)localObject1).getEventType();
+    }
+    catch (Exception localException)
+    {
+      Object localObject1;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("parseSoMd5FromXmlConfig failed. error = ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      ((StringBuilder)localObject2).append(", xmlConfigContent = ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.e("AREngine_ArCloudNativeSoLoader", 2, ((StringBuilder)localObject2).toString());
+      return localHashMap;
+    }
+    localObject2 = ((XmlPullParser)localObject1).getName();
+    if (((String)localObject2).equalsIgnoreCase("libARCloud")) {
+      localHashMap.put("libARCloud", ((XmlPullParser)localObject1).nextText());
+    } else if (((String)localObject2).equalsIgnoreCase("libARCloud_64")) {
+      localHashMap.put("libARCloud_64", ((XmlPullParser)localObject1).nextText());
+    }
+    for (;;)
+    {
+      i = ((XmlPullParser)localObject1).next();
+      while (i == 1)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parseSoMd5FromXmlConfig successfully. soMd5List = ");
+        ((StringBuilder)localObject1).append(localHashMap);
+        QLog.d("AREngine_ArCloudNativeSoLoader", 2, ((StringBuilder)localObject1).toString());
+        return localHashMap;
+      }
+      if (i == 2) {
+        break;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArCloudNativeSoLoader
  * JD-Core Version:    0.7.0.1
  */

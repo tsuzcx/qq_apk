@@ -20,12 +20,7 @@ import mqq.app.AppRuntime;
 public class DonDisturbBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.m;
-  }
+  public static final int a = BannerTypeCollections.m;
   
   public DonDisturbBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -39,12 +34,12 @@ public class DonDisturbBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131699219));
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839273));
-    paramBanner.setButtonText(HardCodeUtil.a(2131701144));
-    paramBanner.a().setBackgroundResource(0);
-    paramBanner.a().setTextColor(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getColor(2131167064));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsText(this.f.getString(2131897235));
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130839451));
+    paramBanner.setButtonText(HardCodeUtil.a(2131899161));
+    paramBanner.getButton().setBackgroundResource(0);
+    paramBanner.getButton().setTextColor(this.f.getResources().getColor(2131168002));
     paramBanner.setOriginalOnClickListener(new DonDisturbBannerProcessor.1(this));
     paramBanner.setOnClickListener(new DonDisturbBannerProcessor.2(this));
     paramBanner.setVisibility(8);
@@ -53,37 +48,37 @@ public class DonDisturbBannerProcessor
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity))
+    if (FriendsStatusUtil.a(this.f))
     {
       if (paramMessage == null) {
         return;
       }
-      TipsBar localTipsBar = (TipsBar)paramBanner.a;
+      TipsBar localTipsBar = (TipsBar)paramBanner.c;
       if (paramMessage.arg1 == 2)
       {
         localTipsBar.setVisibility(0);
-        ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 2, 0, "", "", "", "");
+        ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 2, 0, "", "", "", "");
         return;
       }
-      paramBanner.a.setVisibility(8);
+      paramBanner.c.setVisibility(8);
       return;
     }
-    paramBanner.a.setVisibility(8);
+    paramBanner.c.setVisibility(8);
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
   
   public void b(AppRuntime paramAppRuntime)
   {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
+    BannerManager.a().a(a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.DonDisturbBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class ReceiptMessageDetailFragment$7
   
   public void onReceiptMessageFetchReadStatusResult(long paramLong1, int paramInt, long paramLong2)
   {
-    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
+    if (ReceiptMessageDetailFragment.s(this.a) == paramLong1)
     {
       if (paramInt == 0)
       {
@@ -33,23 +33,23 @@ class ReceiptMessageDetailFragment$7
           }
           ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)localObject, paramInt, true);
         }
-        ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+        ReceiptMessageDetailFragment.j(this.a).removeObserver(this);
         return;
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("get read status in c2c fail with reply code: ");
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ReceiptMessageDetailFragment", 4, ((StringBuilder)localObject).toString());
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      ReceiptMessageDetailFragment.j(this.a).removeObserver(this);
       if (this.a.isAdded()) {
-        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+        ReceiptMessageDetailFragment.r(this.a).sendEmptyMessage(20);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.7
  * JD-Core Version:    0.7.0.1
  */

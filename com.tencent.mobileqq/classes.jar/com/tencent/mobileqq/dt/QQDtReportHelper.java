@@ -10,14 +10,9 @@ import java.util.TreeMap;
 
 public class QQDtReportHelper
 {
-  private static long a;
   public static boolean a;
   private static boolean b;
-  
-  private static long a()
-  {
-    return SystemClock.uptimeMillis() - a;
-  }
+  private static long c;
   
   public static void a()
   {
@@ -53,7 +48,7 @@ public class QQDtReportHelper
     }
     if ("dt_appout".equals(paramString))
     {
-      if (a == 0L)
+      if (c == 0L)
       {
         QLog.d("QQDtReportHelper", 1, "848QQDT [doSupplementReport] startTimestamp is 0");
         return;
@@ -71,12 +66,12 @@ public class QQDtReportHelper
   
   public static void a(String paramString, Map<String, String> paramMap)
   {
-    if ((b) && (a == 0L))
+    if ((b) && (c == 0L))
     {
       QLog.d("QQDtReportHelper", 1, "848QQDT [supplementReportForSwitchAccount] startTimestamp is 0");
       return;
     }
-    a(Long.valueOf(a()), paramString, paramMap);
+    a(Long.valueOf(d()), paramString, paramMap);
   }
   
   private static void a(Map<String, String> paramMap1, Map<String, String> paramMap2)
@@ -107,24 +102,29 @@ public class QQDtReportHelper
     }
     QLog.d("QQDtReportHelper", 1, "848QQDT [onQQLogout]");
     a("dt_appout", null);
-    a = 0L;
+    c = 0L;
   }
   
   public static void c()
   {
-    a = SystemClock.uptimeMillis();
+    c = SystemClock.uptimeMillis();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("848QQDT [updateStartTime] timeStamp: ");
-      localStringBuilder.append(a);
+      localStringBuilder.append(c);
       QLog.d("QQDtReportHelper", 2, localStringBuilder.toString());
     }
+  }
+  
+  private static long d()
+  {
+    return SystemClock.uptimeMillis() - c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dt.QQDtReportHelper
  * JD-Core Version:    0.7.0.1
  */

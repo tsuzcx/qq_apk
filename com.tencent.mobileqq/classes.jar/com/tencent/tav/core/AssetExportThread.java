@@ -1,6 +1,5 @@
 package com.tencent.tav.core;
 
-import android.graphics.Matrix;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
@@ -8,11 +7,9 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import com.tencent.tav.asset.Asset;
-import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.AudioInfo;
-import com.tencent.tav.decoder.DecoderUtils;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.report.ExportReportSession;
 import java.util.ArrayList;
@@ -39,6 +36,7 @@ class AssetExportThread
   @Nullable
   private AssetExportSession.ExportCallbackHandler callbackHandler;
   private volatile boolean cancel = false;
+  private MediaSyncClock clock;
   private final ExportConfig encodeOption;
   private Handler exportHandler;
   private AssetExportSession exportSession;
@@ -61,6 +59,7 @@ class AssetExportThread
     this.audioMix = paramAudioMix;
     this.audioInfo = new AudioInfo(paramExportConfig.getAudioSampleRateHz(), paramExportConfig.getAudioChannelCount(), 2);
     this.encodeOption = paramExportConfig;
+    this.clock = new MediaSyncClock(paramExportConfig.enableAVSync);
   }
   
   private void appendErrorMsg(ExportErrorStatus paramExportErrorStatus)
@@ -96,7 +95,7 @@ class AssetExportThread
     Object localObject = (ArrayList)this.exportSession.asset.tracksWithMediaType(2);
     if (localObject != null)
     {
-      localObject = new AssetReaderAudioMixOutput((ArrayList)localObject, null);
+      localObject = new AssetReaderAudioMixOutput((ArrayList)localObject, null, this.exportSession.isAudioRevertMode());
       ((AssetReaderAudioMixOutput)localObject).setAudioMix(this.audioMix);
       ((AssetReaderAudioMixOutput)localObject).setAudioInfo(this.audioInfo);
       return localObject;
@@ -106,7 +105,7 @@ class AssetExportThread
   
   private AssetWriterInput createAudioWriterInput()
   {
-    return new AssetWriterInput(2);
+    return new AssetWriterInput(2, this.encodeOption);
   }
   
   private AssetReaderOutput createVideoTrackOutput()
@@ -131,7 +130,7 @@ class AssetExportThread
     if (localExportReportSession != null) {
       localExportReportSession.setFramePerSecond(this.encodeOption.getVideoFrameRate());
     }
-    return new AssetWriterInput(1);
+    return new AssetWriterInput(1, this.encodeOption);
   }
   
   private void exportError(int paramInt, Throwable paramThrowable)
@@ -162,6 +161,7 @@ class AssetExportThread
         appendErrorMsg(paramExportErrorStatus);
         setStatus(AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusFailed);
         setCancel(true);
+        this.clock.close();
         this.exportSession.exportErrorStatus = paramExportErrorStatus;
         if (this.reportSession != null) {
           this.reportSession.onExportError();
@@ -182,8 +182,8 @@ class AssetExportThread
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: invokespecial 345	com/tencent/tav/core/AssetExportThread:getStatus	()Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
-    //   8: getstatic 375	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   5: invokespecial 363	com/tencent/tav/core/AssetExportThread:getStatus	()Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   8: getstatic 396	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
     //   11: if_acmpne +8 -> 19
     //   14: aload_0
     //   15: monitorexit
@@ -191,22 +191,22 @@ class AssetExportThread
     //   17: monitorexit
     //   18: return
     //   19: aload_0
-    //   20: getfield 104	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
+    //   20: getfield 106	com/tencent/tav/core/AssetExportThread:exportSession	Lcom/tencent/tav/core/AssetExportSession;
     //   23: fconst_1
-    //   24: putfield 379	com/tencent/tav/core/AssetExportSession:progress	F
+    //   24: putfield 400	com/tencent/tav/core/AssetExportSession:progress	F
     //   27: aload_0
-    //   28: getstatic 375	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
-    //   31: invokespecial 359	com/tencent/tav/core/AssetExportThread:setStatus	(Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;)V
+    //   28: getstatic 396	com/tencent/tav/core/AssetExportSession$AssetExportSessionStatus:AssetExportSessionStatusCompleted	Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;
+    //   31: invokespecial 377	com/tencent/tav/core/AssetExportThread:setStatus	(Lcom/tencent/tav/core/AssetExportSession$AssetExportSessionStatus;)V
     //   34: aload_0
     //   35: monitorexit
     //   36: aload_0
-    //   37: getfield 102	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
+    //   37: getfield 104	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
     //   40: ifnull +10 -> 50
     //   43: aload_0
-    //   44: getfield 102	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
-    //   47: invokevirtual 382	com/tencent/tav/report/ExportReportSession:onExportSuccess	()V
+    //   44: getfield 104	com/tencent/tav/core/AssetExportThread:reportSession	Lcom/tencent/tav/report/ExportReportSession;
+    //   47: invokevirtual 403	com/tencent/tav/report/ExportReportSession:onExportSuccess	()V
     //   50: aload_0
-    //   51: invokespecial 372	com/tencent/tav/core/AssetExportThread:handlerCallback	()V
+    //   51: invokespecial 393	com/tencent/tav/core/AssetExportThread:handlerCallback	()V
     //   54: aload_0
     //   55: monitorexit
     //   56: return
@@ -250,9 +250,15 @@ class AssetExportThread
     this.videoExportThread = new HandlerThread("VideoWriter");
     this.videoWriter.setWriterProgressListener(new AssetExportThread.VideoWriterProgressListener(this, null));
     this.videoWriter.requestMediaDataWhenReadyOnQueue(this.videoExportThread, new AssetExportThread.VideoRequestMediaDataCallback(this, null));
-    this.audioExportThread = new HandlerThread("AudioWriter");
-    this.audioWriter.setWriterProgressListener(new AssetExportThread.AudioWriterProgressListener(this, null));
-    this.audioWriter.requestMediaDataWhenReadyOnQueue(this.audioExportThread, new AssetExportThread.AudioRequestMediaDataCallback(this, null));
+    if (this.audioWriter != null)
+    {
+      this.audioExportThread = new HandlerThread("AudioWriter");
+      this.audioWriter.setWriterProgressListener(new AssetExportThread.AudioWriterProgressListener(this, null));
+      this.audioWriter.requestMediaDataWhenReadyOnQueue(this.audioExportThread, new AssetExportThread.AudioRequestMediaDataCallback(this, null));
+      return;
+    }
+    this.audioReadFinish = true;
+    this.audioWriterDone = true;
   }
   
   private void finish()
@@ -326,32 +332,25 @@ class AssetExportThread
     }
     this.assetWriter = new AssetWriter(this.exportSession.outputFilePath, this.exportSession.outputFileType);
     this.assetWriter.setRenderContextParams(this.renderContextParams);
-    Object localObject;
     if (this.exportSession.timeRange != null)
     {
       this.assetWriter.startSessionAtSourceTime(this.exportSession.timeRange.getStart());
       this.assetWriter.endSessionAtSourceTime(this.exportSession.timeRange.getEnd());
-      localObject = this.reportSession;
-      if (localObject != null) {
-        ((ExportReportSession)localObject).setFileDurationUs(this.exportSession.timeRange.getDurationUs());
+      ExportReportSession localExportReportSession = this.reportSession;
+      if (localExportReportSession != null) {
+        localExportReportSession.setFileDurationUs(this.exportSession.timeRange.getDurationUs());
       }
     }
     this.assetWriter.setEncodeOption(this.encodeOption);
     this.videoWriter = createVideoWriterInput();
     this.audioWriter = createAudioWriterInput();
-    if (this.assetWriter.canAddInput(this.videoWriter))
-    {
-      localObject = null;
-      if (this.exportSession.appliesPreferredTrackTransform) {
-        localObject = DecoderUtils.getPreferMatrix(new CGSize(this.encodeOption.getOutputWidth(), this.encodeOption.getOutputHeight()), this.exportSession.asset.getNaturalSize(), this.exportSession.asset.getPreferRotation());
-      }
-      this.videoWriter.setTransform((Matrix)localObject);
+    if (this.assetWriter.canAddInput(this.videoWriter)) {
       this.assetWriter.addInput(this.videoWriter);
     }
     if (this.assetWriter.canAddInput(this.audioWriter)) {
       this.assetWriter.addInput(this.audioWriter);
     }
-    this.assetWriter.startWriting();
+    this.assetWriter.startWriting(this.exportSession.videoEncoder, this.exportSession.muxerCreator);
     this.assetReader.startReading(this.assetWriter);
   }
   
@@ -418,6 +417,7 @@ class AssetExportThread
     {
       setStatus(AssetExportSession.AssetExportSessionStatus.AssetExportSessionStatusCancelled);
       setCancel(true);
+      this.clock.close();
       handlerCallback();
       this.callbackHandler = null;
       if (this.reportSession != null)
@@ -497,7 +497,7 @@ class AssetExportThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportThread
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,10 @@ class GamePKResultFragment$4$1
   
   public void run()
   {
-    if (GamePKResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGamePKResultFragment$4.a).a(this.jdField_a_of_type_JavaLangString))
+    if (GamePKResultFragment.b(this.b.a).a(this.a))
     {
-      GamePKResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGamePKResultFragment$4.a).setVisibility(0);
-      GamePKResultFragment.a(this.jdField_a_of_type_ComTencentAvgameGameresultGamePKResultFragment$4.a).a("");
+      GamePKResultFragment.b(this.b.a).setVisibility(0);
+      GamePKResultFragment.b(this.b.a).b("");
     }
   }
 }

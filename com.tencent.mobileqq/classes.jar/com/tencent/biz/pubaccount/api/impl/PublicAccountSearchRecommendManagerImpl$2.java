@@ -33,10 +33,10 @@ class PublicAccountSearchRecommendManagerImpl$2
         {
           localObject4 = (IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)((Iterator)localObject3).next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("uin", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).jdField_a_of_type_JavaLangString);
+          localJSONObject.put("uin", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).a);
           localJSONObject.put("name", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).b);
-          localJSONObject.put("time", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).jdField_a_of_type_Long);
-          localJSONObject.put("isPA", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).jdField_a_of_type_Boolean);
+          localJSONObject.put("time", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).d);
+          localJSONObject.put("isPA", ((IPublicAccountSearchRecommendManager.PublicAccountSearchHistoryItem)localObject4).c);
           ((JSONArray)localObject2).put(localJSONObject);
         }
         localObject3 = new JSONObject();
@@ -73,7 +73,7 @@ class PublicAccountSearchRecommendManagerImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountSearchRecommendManagerImpl.2
  * JD-Core Version:    0.7.0.1
  */

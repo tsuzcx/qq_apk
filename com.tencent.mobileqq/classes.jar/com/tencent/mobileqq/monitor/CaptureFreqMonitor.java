@@ -4,19 +4,12 @@ import com.tencent.qphone.base.util.QLog;
 
 public class CaptureFreqMonitor
 {
-  public static CaptureFreqMonitorItem a;
   public static String a = "AutoMonitor_Camera";
-  public static boolean a = false;
-  public static CaptureFreqMonitorItem b;
-  public static boolean b;
-  public static CaptureFreqMonitorItem c = new CaptureFreqMonitorItem(5);
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem = new CaptureFreqMonitorItem();
-    jdField_b_of_type_Boolean = true;
-    jdField_b_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem = new CaptureFreqMonitorItem(3);
-  }
+  public static boolean b = false;
+  public static CaptureFreqMonitorItem c = new CaptureFreqMonitorItem();
+  public static boolean d = true;
+  public static CaptureFreqMonitorItem e = new CaptureFreqMonitorItem(3);
+  public static CaptureFreqMonitorItem f = new CaptureFreqMonitorItem(5);
   
   public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
@@ -69,19 +62,19 @@ public class CaptureFreqMonitor
   
   public static void a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.a())
+    if (c.b())
     {
-      jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_b_of_type_Long = System.currentTimeMillis();
-      long l = jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_b_of_type_Long - jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_a_of_type_Long;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, avgRenderCost=%d, cost=%d, frameCount=%d, frameFreq=%d", new Object[] { Integer.valueOf(a(jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_a_of_type_ArrayOfInt, 0, jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_b_of_type_Int)), Long.valueOf(l), Integer.valueOf(jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_b_of_type_Int), Long.valueOf(jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_b_of_type_Int * 1000 / l) }));
-      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, render cost: %s", new Object[] { a(jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_a_of_type_ArrayOfInt, jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.jdField_b_of_type_Int) }));
-      jdField_a_of_type_ComTencentMobileqqMonitorCaptureFreqMonitorItem.c();
+      c.e = System.currentTimeMillis();
+      long l = c.e - c.d;
+      QLog.d(a, 1, String.format("CameraEditStatistic, avgRenderCost=%d, cost=%d, frameCount=%d, frameFreq=%d", new Object[] { Integer.valueOf(a(c.h, 0, c.f)), Long.valueOf(l), Integer.valueOf(c.f), Long.valueOf(c.f * 1000 / l) }));
+      QLog.d(a, 1, String.format("CameraEditStatistic, render cost: %s", new Object[] { a(c.h, c.f) }));
+      c.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.monitor.CaptureFreqMonitor
  * JD-Core Version:    0.7.0.1
  */

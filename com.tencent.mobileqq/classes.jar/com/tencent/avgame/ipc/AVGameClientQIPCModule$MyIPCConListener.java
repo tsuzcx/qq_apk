@@ -10,24 +10,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 class AVGameClientQIPCModule$MyIPCConListener
   implements EIPCOnGetConnectionListener, EIPClientConnectListener
 {
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  AtomicInteger a = new AtomicInteger(0);
   
   private AVGameClientQIPCModule$MyIPCConListener(AVGameClientQIPCModule paramAVGameClientQIPCModule) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 2;
+    return this.a.get() == 2;
   }
   
   public void connectFailed()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(3);
+    this.a.set(3);
     QLog.i("AVGameClientQIPCModule", 1, "connectFailed");
   }
   
   public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    this.a.set(2);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("connectSuccess, server[");
     localStringBuilder.append(paramEIPCConnection.procName);
@@ -46,7 +46,7 @@ class AVGameClientQIPCModule$MyIPCConListener
     localStringBuilder.append("]");
     QLog.i("AVGameClientQIPCModule", 1, localStringBuilder.toString());
     if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+      this.a.set(2);
     }
   }
   
@@ -61,7 +61,7 @@ class AVGameClientQIPCModule$MyIPCConListener
     localStringBuilder.append("]");
     QLog.i("AVGameClientQIPCModule", 1, localStringBuilder.toString());
     if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+      this.a.set(4);
     }
   }
 }

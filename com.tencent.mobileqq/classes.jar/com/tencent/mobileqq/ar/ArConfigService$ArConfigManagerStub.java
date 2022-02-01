@@ -30,35 +30,12 @@ class ArConfigService$ArConfigManagerStub
   public ArConfigService$ArConfigManagerStub(ArConfigService paramArConfigService)
   {
     QLog.d("ArConfig_ArConfigService", 1, "ArConfigManagerStub constructor");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramArConfigService);
-  }
-  
-  public ARCommonConfigInfo a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    ARCommonConfigInfo localARCommonConfigInfo = null;
-    if (localObject != null) {
-      localObject = (ArConfigService)((WeakReference)localObject).get();
-    } else {
-      localObject = null;
-    }
-    if (localObject == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "getARCommonConfigInfo error arConfigService is null");
-      return null;
-    }
-    if (((ArConfigService)localObject).jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager != null) {
-      localARCommonConfigInfo = ((ArConfigService)localObject).jdField_a_of_type_ComTencentMobileqqArARGlobalConfigManager.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localARCommonConfigInfo }));
-    }
-    return localARCommonConfigInfo;
+    this.a = new WeakReference(paramArConfigService);
   }
   
   public ArConfigInfo a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject1 = this.a;
     StringBuilder localStringBuilder = null;
     if (localObject1 != null) {
       localObject1 = (ArConfigService)((WeakReference)localObject1).get();
@@ -70,7 +47,7 @@ class ArConfigService$ArConfigManagerStub
       QLog.d("ArConfig_ArConfigService", 1, "getArConfigInfo error arConfigService is null");
       return null;
     }
-    Object localObject2 = (QQAppInterface)((ArConfigService)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (QQAppInterface)((ArConfigService)localObject1).a.get();
     localObject1 = localStringBuilder;
     if (localObject2 != null)
     {
@@ -90,86 +67,9 @@ class ArConfigService$ArConfigManagerStub
     return localObject1;
   }
   
-  public ArEffectConfig a()
-  {
-    StringBuilder localStringBuilder = null;
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-        break label31;
-      }
-      localObject1 = (ArConfigService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    catch (Exception localException)
-    {
-      Object localObject1;
-      label23:
-      Object localObject2;
-      break label23;
-    }
-    QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error weakArConfigService is null");
-    label31:
-    localObject1 = null;
-    if (localObject1 == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService is null");
-      return null;
-    }
-    if (((ArConfigService)localObject1).jdField_a_of_type_JavaLangRefWeakReference == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService.weakApp is null");
-      return null;
-    }
-    localObject2 = (QQAppInterface)((ArConfigService)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
-    localObject1 = localStringBuilder;
-    if (localObject2 != null)
-    {
-      localObject2 = (ArResourceManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
-      localObject1 = localStringBuilder;
-      if (localObject2 != null) {
-        localObject1 = ((ArResourceManager)localObject2).a();
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getArEffectConfig|mEffectConfig=");
-      localStringBuilder.append(localObject1);
-      QLog.d("ArConfig_ArConfigService", 2, localStringBuilder.toString());
-    }
-    return localObject1;
-  }
-  
-  public void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject1 != null) {
-      localObject1 = (ArConfigService)((WeakReference)localObject1).get();
-    } else {
-      localObject1 = null;
-    }
-    if (localObject1 == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "downloadResource error arConfigService is null");
-      return;
-    }
-    localObject1 = (QQAppInterface)((ArConfigService)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject1 != null)
-    {
-      Object localObject2 = (ArResourceManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
-      if (localObject2 != null)
-      {
-        ((ArResourceManager)localObject2).a(false, false);
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("click_download", "1");
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(((QQAppInterface)localObject1).getCurrentAccountUin(), "ar_client_download_times", true, 0L, 0L, (HashMap)localObject2, null);
-      }
-    }
-  }
-  
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -180,16 +80,16 @@ class ArConfigService$ArConfigManagerStub
       QLog.d("ArConfig_ArConfigService", 1, "downloadFaceResource error arConfigService is null");
       return;
     }
-    if ((ArConfigService.a((ArConfigService)localObject) instanceof QQAppInterface))
+    if ((ArConfigService.c((ArConfigService)localObject) instanceof QQAppInterface))
     {
-      FaceScanDownloadManager.a(paramInt, (QQAppInterface)ArConfigService.b((ArConfigService)localObject));
+      FaceScanDownloadManager.a(paramInt, (QQAppInterface)ArConfigService.d((ArConfigService)localObject));
       ((IAEOldResDownload)QRoute.api(IAEOldResDownload.class)).requestDownload(AEOldResInfo.b, new ArConfigService.ArConfigManagerStub.1(this), false);
     }
   }
   
   public void a(ArConfigInfo paramArConfigInfo)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -200,19 +100,19 @@ class ArConfigService$ArConfigManagerStub
       QLog.d("ArConfig_ArConfigService", 1, "handleNewConfig error arConfigService is null");
       return;
     }
-    localObject = (QQAppInterface)((ArConfigService)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+    localObject = (QQAppInterface)((ArConfigService)localObject).a.get();
     if (localObject != null)
     {
       localObject = (ArResourceManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
       if (localObject != null) {
-        ((ArResourceManager)localObject).a(paramArConfigInfo);
+        ((ArResourceManager)localObject).b(paramArConfigInfo);
       }
     }
   }
   
   public void a(IArFaceCallback paramIArFaceCallback)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -230,7 +130,7 @@ class ArConfigService$ArConfigManagerStub
   
   public void a(IArRemoteCallback paramIArRemoteCallback)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -248,7 +148,7 @@ class ArConfigService$ArConfigManagerStub
   
   public void a(IArSoCallback paramIArSoCallback)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -260,63 +160,63 @@ class ArConfigService$ArConfigManagerStub
       return;
     }
     if (paramIArSoCallback != null) {
-      ArConfigService.c((ArConfigService)localObject).register(paramIArSoCallback);
+      ArConfigService.y((ArConfigService)localObject).register(paramIArSoCallback);
     }
   }
   
-  public boolean a()
+  public ArEffectConfig b()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject != null) {
-      localObject = (ArConfigService)((WeakReference)localObject).get();
-    } else {
-      localObject = null;
-    }
-    boolean bool1 = false;
-    if (localObject == null)
+    StringBuilder localStringBuilder = null;
+    try
     {
-      QLog.d("ArConfig_ArConfigService", 1, "isFaceResConfigReady error arConfigService is null");
-      return false;
+      if (this.a == null) {
+        break label31;
+      }
+      localObject1 = (ArConfigService)this.a.get();
     }
-    if ((ArConfigService.c((ArConfigService)localObject) instanceof QQAppInterface))
+    catch (Exception localException)
     {
-      boolean bool2 = FaceScanDownloadManager.a((QQAppInterface)ArConfigService.d((ArConfigService)localObject));
-      bool1 = bool2;
-      if (!bool2)
-      {
-        FaceScanDownloadManager.a((QQAppInterface)ArConfigService.e((ArConfigService)localObject));
-        bool1 = bool2;
+      Object localObject1;
+      label23:
+      Object localObject2;
+      break label23;
+    }
+    QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error weakArConfigService is null");
+    label31:
+    localObject1 = null;
+    if (localObject1 == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService is null");
+      return null;
+    }
+    if (((ArConfigService)localObject1).a == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "getArEffectConfig error arConfigService.weakApp is null");
+      return null;
+    }
+    localObject2 = (QQAppInterface)((ArConfigService)localObject1).a.get();
+    localObject1 = localStringBuilder;
+    if (localObject2 != null)
+    {
+      localObject2 = (ArResourceManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
+      localObject1 = localStringBuilder;
+      if (localObject2 != null) {
+        localObject1 = ((ArResourceManager)localObject2).c();
       }
     }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject != null) {
-      localObject = (ArConfigService)((WeakReference)localObject).get();
-    } else {
-      localObject = null;
-    }
-    if (localObject == null)
+    if (QLog.isColorLevel())
     {
-      QLog.d("ArConfig_ArConfigService", 1, "cancelDownload error arConfigService is null");
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getArEffectConfig|mEffectConfig=");
+      localStringBuilder.append(localObject1);
+      QLog.d("ArConfig_ArConfigService", 2, localStringBuilder.toString());
     }
-    localObject = (QQAppInterface)((ArConfigService)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject != null)
-    {
-      localObject = (ArResourceManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
-      if (localObject != null) {
-        ((ArResourceManager)localObject).a.a();
-      }
-    }
+    return localObject1;
   }
   
   public void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -327,7 +227,7 @@ class ArConfigService$ArConfigManagerStub
       QLog.d("ArConfig_ArConfigService", 1, "onToolScannerActivityStateChanged error arConfigService is null");
       return;
     }
-    localObject = (IQRScanMainProcService)ArConfigService.f((ArConfigService)localObject).getRuntimeService(IQRScanMainProcService.class, "");
+    localObject = (IQRScanMainProcService)ArConfigService.z((ArConfigService)localObject).getRuntimeService(IQRScanMainProcService.class, "");
     if (localObject != null) {
       ((IQRScanMainProcService)localObject).onToolScannerActivityStateChanged(paramInt);
     }
@@ -335,7 +235,7 @@ class ArConfigService$ArConfigManagerStub
   
   public void b(IArFaceCallback paramIArFaceCallback)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -354,7 +254,7 @@ class ArConfigService$ArConfigManagerStub
   public void b(IArRemoteCallback paramIArRemoteCallback)
   {
     QLog.d("ArConfig_ArConfigService", 1, "unregisterCallback");
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -372,7 +272,7 @@ class ArConfigService$ArConfigManagerStub
   
   public void b(IArSoCallback paramIArSoCallback)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -384,13 +284,113 @@ class ArConfigService$ArConfigManagerStub
       return;
     }
     if (paramIArSoCallback != null) {
-      ArConfigService.c((ArConfigService)localObject).unregister(paramIArSoCallback);
+      ArConfigService.y((ArConfigService)localObject).unregister(paramIArSoCallback);
     }
   }
   
-  public boolean b()
+  public ARCommonConfigInfo c()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
+    ARCommonConfigInfo localARCommonConfigInfo = null;
+    if (localObject != null) {
+      localObject = (ArConfigService)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    if (localObject == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "getARCommonConfigInfo error arConfigService is null");
+      return null;
+    }
+    if (((ArConfigService)localObject).b != null) {
+      localARCommonConfigInfo = ((ArConfigService)localObject).b.d();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("getARCommonConfigInfo arCommonConfigInfo=%s", new Object[] { localARCommonConfigInfo }));
+    }
+    return localARCommonConfigInfo;
+  }
+  
+  public void d()
+  {
+    Object localObject1 = this.a;
+    if (localObject1 != null) {
+      localObject1 = (ArConfigService)((WeakReference)localObject1).get();
+    } else {
+      localObject1 = null;
+    }
+    if (localObject1 == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "downloadResource error arConfigService is null");
+      return;
+    }
+    localObject1 = (QQAppInterface)((ArConfigService)localObject1).a.get();
+    if (localObject1 != null)
+    {
+      Object localObject2 = (ArResourceManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
+      if (localObject2 != null)
+      {
+        ((ArResourceManager)localObject2).a(false, false);
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("click_download", "1");
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(((QQAppInterface)localObject1).getCurrentAccountUin(), "ar_client_download_times", true, 0L, 0L, (HashMap)localObject2, null);
+      }
+    }
+  }
+  
+  public void e()
+  {
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = (ArConfigService)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    if (localObject == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "cancelDownload error arConfigService is null");
+      return;
+    }
+    localObject = (QQAppInterface)((ArConfigService)localObject).a.get();
+    if (localObject != null)
+    {
+      localObject = (ArResourceManager)((QQAppInterface)localObject).getManager(QQManagerFactory.AR_RESOURCE_MANAGER);
+      if (localObject != null) {
+        ((ArResourceManager)localObject).e.a();
+      }
+    }
+  }
+  
+  public boolean f()
+  {
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = (ArConfigService)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    boolean bool1 = false;
+    if (localObject == null)
+    {
+      QLog.d("ArConfig_ArConfigService", 1, "isFaceResConfigReady error arConfigService is null");
+      return false;
+    }
+    if ((ArConfigService.e((ArConfigService)localObject) instanceof QQAppInterface))
+    {
+      boolean bool2 = FaceScanDownloadManager.a((QQAppInterface)ArConfigService.f((ArConfigService)localObject));
+      bool1 = bool2;
+      if (!bool2)
+      {
+        FaceScanDownloadManager.b((QQAppInterface)ArConfigService.g((ArConfigService)localObject));
+        bool1 = bool2;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean g()
+  {
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -406,16 +406,16 @@ class ArConfigService$ArConfigManagerStub
     if (ArConfigService.a())
     {
       bool1 = bool2;
-      if (ArConfigService.a((ArConfigService)localObject))
+      if (ArConfigService.h((ArConfigService)localObject))
       {
         bool1 = bool2;
-        if (ArConfigService.b((ArConfigService)localObject))
+        if (ArConfigService.i((ArConfigService)localObject))
         {
           bool1 = bool2;
-          if (ArConfigService.c((ArConfigService)localObject))
+          if (ArConfigService.j((ArConfigService)localObject))
           {
             bool1 = bool2;
-            if (ArConfigService.d((ArConfigService)localObject)) {
+            if (ArConfigService.k((ArConfigService)localObject)) {
               bool1 = true;
             }
           }
@@ -425,9 +425,9 @@ class ArConfigService$ArConfigManagerStub
     return bool1;
   }
   
-  public void c()
+  public void h()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -439,24 +439,24 @@ class ArConfigService$ArConfigManagerStub
       return;
     }
     ArConfigService.a((ArConfigService)localObject, false);
-    ArConfigService.a((ArConfigService)localObject);
-    ArConfigService.b((ArConfigService)localObject);
-    ArConfigService.c((ArConfigService)localObject);
-    ArConfigService.d((ArConfigService)localObject);
-    ArConfigService.e((ArConfigService)localObject);
-    if (!ArConfigService.e((ArConfigService)localObject))
+    ArConfigService.l((ArConfigService)localObject);
+    ArConfigService.m((ArConfigService)localObject);
+    ArConfigService.n((ArConfigService)localObject);
+    ArConfigService.o((ArConfigService)localObject);
+    ArConfigService.p((ArConfigService)localObject);
+    if (!ArConfigService.q((ArConfigService)localObject))
     {
-      int i = (ArConfigService.a((ArConfigService)localObject) + ArConfigService.b((ArConfigService)localObject) + ArConfigService.c((ArConfigService)localObject) + ArConfigService.d((ArConfigService)localObject) + ArConfigService.e((ArConfigService)localObject)) / 5;
-      ArConfigService.a((ArConfigService)localObject).post(new ArConfigService.ArConfigManagerStub.2(this, (ArConfigService)localObject, i));
+      int i = (ArConfigService.r((ArConfigService)localObject) + ArConfigService.s((ArConfigService)localObject) + ArConfigService.t((ArConfigService)localObject) + ArConfigService.u((ArConfigService)localObject) + ArConfigService.v((ArConfigService)localObject)) / 5;
+      ArConfigService.w((ArConfigService)localObject).post(new ArConfigService.ArConfigManagerStub.2(this, (ArConfigService)localObject, i));
       if (i == 100) {
-        ArConfigService.a((ArConfigService)localObject).post(new ArConfigService.ArConfigManagerStub.3(this, (ArConfigService)localObject));
+        ArConfigService.w((ArConfigService)localObject).post(new ArConfigService.ArConfigManagerStub.3(this, (ArConfigService)localObject));
       }
     }
   }
   
-  public boolean c()
+  public boolean i()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -467,12 +467,12 @@ class ArConfigService$ArConfigManagerStub
       QLog.d("ArConfig_ArConfigService", 1, "isArCoreSoReady error arConfigService is null");
       return false;
     }
-    return ArConfigService.c((ArConfigService)localObject);
+    return ArConfigService.j((ArConfigService)localObject);
   }
   
-  public void d()
+  public void j()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (ArConfigService)((WeakReference)localObject).get();
     } else {
@@ -483,12 +483,12 @@ class ArConfigService$ArConfigManagerStub
       QLog.d("ArConfig_ArConfigService", 1, "downloadArCoreSo error arConfigService is null");
       return;
     }
-    ArConfigService.d((ArConfigService)localObject);
+    ArConfigService.o((ArConfigService)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.ArConfigManagerStub
  * JD-Core Version:    0.7.0.1
  */

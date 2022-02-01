@@ -17,42 +17,42 @@ public class PokeEmoItemView
   extends View
   implements Runnable
 {
-  public int a;
-  private long jdField_a_of_type_Long;
-  public Paint a;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public String a;
-  private boolean jdField_a_of_type_Boolean = false;
   public int b;
-  public Paint b;
-  private boolean b;
   public int c;
   public int d;
-  private int e = 200;
+  public int e;
+  public Paint f;
+  public Paint g;
+  private long h;
+  private int i = 200;
+  private boolean j = false;
+  private boolean k;
+  private Drawable l;
   
   public PokeEmoItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = AIOUtils.b(16.0F, paramContext.getResources());
-    this.c = AIOUtils.b(80.0F, paramContext.getResources());
-    this.jdField_a_of_type_Int = AIOUtils.b(2.0F, paramContext.getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(AIOUtils.b(24.0F, paramContext.getResources()));
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(AIOUtils.b(4.0F, paramContext.getResources()));
+    this.c = AIOUtils.b(16.0F, paramContext.getResources());
+    this.d = AIOUtils.b(80.0F, paramContext.getResources());
+    this.b = AIOUtils.b(2.0F, paramContext.getResources());
+    this.f = new Paint();
+    this.f.setAntiAlias(true);
+    this.f.setColor(Color.parseColor("#FFDC4F"));
+    this.f.setTextSize(AIOUtils.b(24.0F, paramContext.getResources()));
+    this.g = new Paint(this.f);
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setColor(Color.parseColor("#418DFF"));
+    this.g.setStrokeWidth(AIOUtils.b(4.0F, paramContext.getResources()));
   }
   
   private float a(long paramLong)
   {
-    long l = this.jdField_a_of_type_Long;
-    if (l == 0L) {
+    long l1 = this.h;
+    if (l1 == 0L) {
       return 0.0F;
     }
-    double d1 = (paramLong - l) % 400L;
+    double d1 = (paramLong - l1) % 400L;
     Double.isNaN(d1);
     d1 = d1 / 400.0D * 20.0D;
     if (d1 < 10.0D) {
@@ -65,39 +65,39 @@ public class PokeEmoItemView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.j;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    int k = getMeasuredWidth();
-    int i = this.d;
-    int m = this.c;
-    int n = this.jdField_b_of_type_Int;
-    int i1 = this.jdField_a_of_type_Int;
-    int j = paramCanvas.save();
-    if (this.jdField_b_of_type_Boolean) {
-      paramCanvas.translate(k - m - (i - n) - i1, 0.0F);
+    String str = this.a;
+    int i1 = getMeasuredWidth();
+    int m = this.e;
+    int i2 = this.d;
+    int i3 = this.c;
+    int i4 = this.b;
+    int n = paramCanvas.save();
+    if (this.k) {
+      paramCanvas.translate(i1 - i2 - (m - i3) - i4, 0.0F);
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Object localObject = this.l;
     if (localObject != null) {
       ((Drawable)localObject).draw(paramCanvas);
     }
-    long l = SystemClock.uptimeMillis();
-    k = this.c - this.jdField_b_of_type_Int;
-    localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetricsInt();
-    m = getMeasuredHeight() - ((Paint.FontMetricsInt)localObject).descent - 4;
-    paramCanvas.rotate(a(l), i / 2 + k, ((Paint.FontMetricsInt)localObject).ascent / 2 + m);
-    float f1 = k;
-    float f2 = m;
-    paramCanvas.drawText(str, f1, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawText(str, f1, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restoreToCount(j);
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = l;
+    long l1 = SystemClock.uptimeMillis();
+    i1 = this.d - this.c;
+    localObject = this.f.getFontMetricsInt();
+    i2 = getMeasuredHeight() - ((Paint.FontMetricsInt)localObject).descent - 4;
+    paramCanvas.rotate(a(l1), m / 2 + i1, ((Paint.FontMetricsInt)localObject).ascent / 2 + i2);
+    float f1 = i1;
+    float f2 = i2;
+    paramCanvas.drawText(str, f1, f2, this.g);
+    paramCanvas.drawText(str, f1, f2, this.f);
+    paramCanvas.restoreToCount(n);
+    if (this.h == 0L) {
+      this.h = l1;
     }
-    postDelayed(this, this.e);
+    postDelayed(this, this.i);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -116,48 +116,48 @@ public class PokeEmoItemView
   {
     if (paramDrawable != null)
     {
-      int i = this.c;
-      paramDrawable.setBounds(0, 0, i, i);
+      int m = this.d;
+      paramDrawable.setBounds(0, 0, m, m);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.l = paramDrawable;
     invalidate(getLeft(), getTop(), getRight(), getBottom());
   }
   
   public void setIsSend(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void setText(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      this.d = ((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString));
+      this.e = ((int)this.f.measureText(paramString));
       invalidate(getLeft(), getTop(), getRight(), getBottom());
     }
     else
     {
-      this.d = 0;
+      this.e = 0;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void setTypeFace(Typeface paramTypeface)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.j) {
       return;
     }
     if (paramTypeface != null)
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(paramTypeface);
+      this.j = true;
+      this.f.setTypeface(paramTypeface);
+      this.g.setTypeface(paramTypeface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.PokeEmoItemView
  * JD-Core Version:    0.7.0.1
  */

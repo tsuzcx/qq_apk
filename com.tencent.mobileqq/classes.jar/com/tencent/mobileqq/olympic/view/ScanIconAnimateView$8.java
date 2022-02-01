@@ -13,8 +13,8 @@ class ScanIconAnimateView$8
   public void onAnimationEnd(Animator paramAnimator)
   {
     ScanIconAnimateView.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.b();
+    if (this.a.t != null) {
+      this.a.t.b();
     }
   }
   
@@ -22,14 +22,14 @@ class ScanIconAnimateView$8
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if (this.a.t != null) {
+      this.a.t.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.view.ScanIconAnimateView.8
  * JD-Core Version:    0.7.0.1
  */

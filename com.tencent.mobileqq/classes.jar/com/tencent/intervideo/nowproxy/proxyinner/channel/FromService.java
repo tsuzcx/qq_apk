@@ -10,9 +10,9 @@ public class FromService
 {
   public static final Parcelable.Creator<FromService> CREATOR = new FromService.1();
   public int a;
-  public Bundle a;
   public int b;
   public int c;
+  public Bundle d;
   
   public int describeContents()
   {
@@ -21,10 +21,10 @@ public class FromService
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.a);
     paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
-    paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
+    paramParcel.writeBundle(this.d);
   }
 }
 

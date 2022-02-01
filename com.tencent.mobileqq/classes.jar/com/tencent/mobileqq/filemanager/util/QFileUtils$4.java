@@ -12,14 +12,14 @@ final class QFileUtils$4
   
   public void a()
   {
-    ForwardBaseOption.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, ForwardRecentTranslucentActivity.class, 103);
+    ForwardBaseOption.a(this.a, this.b, ForwardRecentTranslucentActivity.class, 103);
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.4
  * JD-Core Version:    0.7.0.1
  */

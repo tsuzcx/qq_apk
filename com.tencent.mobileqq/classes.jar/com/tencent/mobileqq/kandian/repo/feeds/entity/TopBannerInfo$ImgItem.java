@@ -10,14 +10,14 @@ import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
 public class TopBannerInfo$ImgItem
   extends TopBannerInfo.BaseItem
 {
-  public String f;
+  public String k;
   
   public TopBannerInfo$ImgItem(int paramInt)
   {
     super(paramInt);
   }
   
-  public static TopBannerInfo.BaseItem b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  public static TopBannerInfo.BaseItem c(oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
     if (!paramBannerItem.msg_article_content_item.has()) {
       return null;
@@ -30,13 +30,13 @@ public class TopBannerInfo$ImgItem
       localImgItem = new ImgItem(4);
     }
     if (localContentBannerItem.bytes_image_url.has()) {
-      localImgItem.c = localContentBannerItem.bytes_image_url.get().toStringUtf8();
+      localImgItem.e = localContentBannerItem.bytes_image_url.get().toStringUtf8();
     }
     if (localContentBannerItem.bytes_link_url.has()) {
-      localImgItem.f = localContentBannerItem.bytes_link_url.get().toStringUtf8();
+      localImgItem.k = localContentBannerItem.bytes_link_url.get().toStringUtf8();
     }
     if (localContentBannerItem.bytes_rowkey.has()) {
-      localImgItem.e = localContentBannerItem.bytes_rowkey.get().toStringUtf8();
+      localImgItem.g = localContentBannerItem.bytes_rowkey.get().toStringUtf8();
     }
     a(localImgItem, paramBannerItem);
     a(paramBannerItem, localImgItem);
@@ -47,14 +47,14 @@ public class TopBannerInfo$ImgItem
   {
     oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
     oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = new oidb_cmd0xbc9.ContentBannerItem();
-    if (!TextUtils.isEmpty(this.c)) {
-      localContentBannerItem.bytes_image_url.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.f)) {
-      localContentBannerItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.f));
-    }
     if (!TextUtils.isEmpty(this.e)) {
-      localContentBannerItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(this.e));
+      localContentBannerItem.bytes_image_url.set(ByteStringMicro.copyFromUtf8(this.e));
+    }
+    if (!TextUtils.isEmpty(this.k)) {
+      localContentBannerItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.k));
+    }
+    if (!TextUtils.isEmpty(this.g)) {
+      localContentBannerItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(this.g));
     }
     localBannerItem.msg_article_content_item.set(localContentBannerItem);
     return localBannerItem;
@@ -64,13 +64,13 @@ public class TopBannerInfo$ImgItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" jump: ");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.k);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TopBannerInfo.ImgItem
  * JD-Core Version:    0.7.0.1
  */

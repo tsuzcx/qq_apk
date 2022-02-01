@@ -12,16 +12,16 @@ class LikeRankingListActivity$6
   
   public void run()
   {
-    this.this$0.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.strNick);
-    this.this$0.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.this$0.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.this$0.a.setVisibility(0);
-    this.this$0.d.setVisibility(0);
+    this.this$0.s.setText(this.a.strNick);
+    this.this$0.s.setVisibility(0);
+    this.this$0.t.setVisibility(0);
+    this.this$0.r.setVisibility(0);
+    this.this$0.u.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.6
  * JD-Core Version:    0.7.0.1
  */

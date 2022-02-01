@@ -39,7 +39,7 @@ public class e
   int d = 0;
   int e = 0;
   int f = 0;
-  int g = 0;
+  int g = (int)a(paramContext);
   final int h = 30;
   final int i = ViewConfiguration.getTouchSlop();
   private int j = -1;
@@ -111,16 +111,15 @@ public class e
     return localObject;
   }
   
-  float a(Context paramContext, int paramInt)
+  float a(Context paramContext)
   {
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    return TypedValue.applyDimension(1, paramInt, paramContext);
+    return TypedValue.applyDimension(1, 30.0F, paramContext.getResources().getDisplayMetrics());
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if ((paramValueAnimator != null) && ((paramValueAnimator instanceof Number)))
+    if ((paramValueAnimator instanceof Number))
     {
       int m = ((Number)paramValueAnimator).intValue();
       layout(m, getTop(), getWidth() + m, getBottom());
@@ -251,7 +250,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class QQToastNotifier$1
   public void handleMessage(Message paramMessage)
   {
     QQToastNotifier.ToastData localToastData = (QQToastNotifier.ToastData)paramMessage.obj;
-    Object localObject = localToastData.jdField_a_of_type_JavaLangString;
+    Object localObject = localToastData.msgString;
     if (localObject != null)
     {
       paramMessage = (Message)localObject;
@@ -32,7 +32,7 @@ class QQToastNotifier$1
     {
       try
       {
-        paramMessage = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(localToastData.b);
+        paramMessage = this.this$0.mContext.getResources().getString(localToastData.msgId);
       }
       catch (Exception paramMessage)
       {
@@ -40,37 +40,37 @@ class QQToastNotifier$1
         paramMessage = (Message)localObject;
       }
     }
-    if (this.a.jdField_a_of_type_AndroidWidgetToast == null)
+    if (this.this$0.mToast == null)
     {
-      localObject = this.a;
-      ((QQToastNotifier)localObject).jdField_a_of_type_AndroidWidgetToast = QQToast.a(((QQToastNotifier)localObject).jdField_a_of_type_AndroidContentContext, localToastData.jdField_a_of_type_Int, paramMessage, localToastData.c).a(localToastData.d);
+      localObject = this.this$0;
+      ((QQToastNotifier)localObject).mToast = QQToast.makeText(((QQToastNotifier)localObject).mContext, localToastData.icon, paramMessage, localToastData.duration).create(localToastData.offset);
     }
     else
     {
       try
       {
-        localObject = this.a.jdField_a_of_type_AndroidWidgetToast.getView();
-        ((TextView)((View)localObject).findViewById(2131378963)).setText(paramMessage);
-        ((ImageView)((View)localObject).findViewById(2131378961)).setImageResource(QQToast.a(localToastData.jdField_a_of_type_Int));
-        this.a.jdField_a_of_type_AndroidWidgetToast.setDuration(localToastData.c);
+        localObject = this.this$0.mToast.getView();
+        ((TextView)((View)localObject).findViewById(2131447672)).setText(paramMessage);
+        ((ImageView)((View)localObject).findViewById(2131447670)).setImageResource(QQToast.getIconRes(localToastData.icon));
+        this.this$0.mToast.setDuration(localToastData.duration);
       }
       catch (Throwable paramMessage)
       {
         paramMessage.printStackTrace();
-        this.a.jdField_a_of_type_AndroidWidgetToast = null;
+        this.this$0.mToast = null;
         if (QLog.isColorLevel()) {
           QLog.i("QQToastNotifier", 2, paramMessage.toString());
         }
       }
     }
-    if (this.a.jdField_a_of_type_AndroidWidgetToast != null) {
-      this.a.jdField_a_of_type_AndroidWidgetToast.show();
+    if (this.this$0.mToast != null) {
+      this.this$0.mToast.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToastNotifier.1
  * JD-Core Version:    0.7.0.1
  */

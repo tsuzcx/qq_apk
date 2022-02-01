@@ -6,16 +6,16 @@ import mqq.app.AppRuntime;
 abstract class VipComicJumpActivity$PluginCheckJob
   implements Runnable
 {
-  final WeakReference<AppRuntime> a;
+  final WeakReference<AppRuntime> b;
   
   VipComicJumpActivity$PluginCheckJob(AppRuntime paramAppRuntime)
   {
-    this.a = new WeakReference(paramAppRuntime);
+    this.b = new WeakReference(paramAppRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.VipComicJumpActivity.PluginCheckJob
  * JD-Core Version:    0.7.0.1
  */

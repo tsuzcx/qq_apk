@@ -36,17 +36,17 @@ public class ReadConfigTask<T extends ConfigInfo>
   {
     paramResources = this.mConfigInfoClass;
     if (this.mConfigID != 0) {
-      this.mConfigInfo = ConfigHandler.getConfigInfoNew(this.TAG, null, this.mConfigID, paramResources, this.mUin);
+      this.mConfigInfo = ConfigHandler.getConfigInfoNew(this.mTAG, null, this.mConfigID, paramResources, this.mUin);
     } else {
-      this.mConfigInfo = ConfigHandler.getConfigInfo(this.TAG, null, 0, paramResources, this.mUin, this.mSPName, this.mSPKey_Config, this.mSPKey_Ver);
+      this.mConfigInfo = ConfigHandler.getConfigInfo(this.mTAG, null, 0, paramResources, this.mUin, this.mSPName, this.mSPKey_Config, this.mSPKey_Ver);
     }
-    paramResources = this.TAG;
+    paramResources = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReadConfigTask,ConfigInfo[");
     localStringBuilder.append(this.mConfigInfo);
     localStringBuilder.append("]");
     QLog.w(paramResources, 1, localStringBuilder.toString());
-    QQAudioHelper.a((AppInterface)this.mRefApp.get());
+    QQAudioHelper.b((AppInterface)this.mRefApp.get());
     return true;
   }
   
@@ -60,7 +60,7 @@ public class ReadConfigTask<T extends ConfigInfo>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.ReadConfigTask
  * JD-Core Version:    0.7.0.1
  */

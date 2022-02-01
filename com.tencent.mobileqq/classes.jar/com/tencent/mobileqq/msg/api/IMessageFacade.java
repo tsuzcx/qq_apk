@@ -90,6 +90,10 @@ public abstract interface IMessageFacade
   
   public abstract Message getIncomingMsg();
   
+  public abstract int getIsLastMsgCacheLazyLoad();
+  
+  public abstract boolean getIsLastMsgCacheLoaded();
+  
   public abstract Message getLastMessage(String paramString, int paramInt);
   
   public abstract Message getLastMessage(String paramString, int paramInt1, int paramInt2);
@@ -208,7 +212,7 @@ public abstract interface IMessageFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.IMessageFacade
  * JD-Core Version:    0.7.0.1
  */

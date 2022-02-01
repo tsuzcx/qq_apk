@@ -20,9 +20,9 @@ class RelativePersonalBottomView$1
   {
     if (RelativePersonalBottomView.a(this.a).getId() == paramInt)
     {
-      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+      RelativePersonalBottomView.b(this.a).setCurrentItem(0);
     }
-    else if (RelativePersonalBottomView.b(this.a).getId() == paramInt)
+    else if (RelativePersonalBottomView.c(this.a).getId() == paramInt)
     {
       boolean bool;
       if (Build.VERSION.SDK_INT >= 23) {
@@ -33,11 +33,11 @@ class RelativePersonalBottomView$1
       if (!bool)
       {
         DialogUtil.a((PublicFragmentActivity)this.a.getContext());
-        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
+        RelativePersonalBottomView.d(this.a).getChildAt(0).performClick();
       }
       else
       {
-        RelativePersonalBottomView.a(this.a).setCurrentItem(1);
+        RelativePersonalBottomView.b(this.a).setCurrentItem(1);
       }
     }
     EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
@@ -45,7 +45,7 @@ class RelativePersonalBottomView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.1
  * JD-Core Version:    0.7.0.1
  */

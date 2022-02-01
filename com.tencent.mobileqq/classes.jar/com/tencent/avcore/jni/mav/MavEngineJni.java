@@ -73,37 +73,8 @@ public class MavEngineJni
   private int getOsType()
   {
     AVCoreSystemInfo localAVCoreSystemInfo = this.mSysInfo;
-    if (localAVCoreSystemInfo != null)
-    {
-      int j = localAVCoreSystemInfo.getOsType();
-      int i = j;
-      if (j == 200)
-      {
-        if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT <= 22)) {
-          return 118;
-        }
-        if (Build.VERSION.SDK_INT == 23) {
-          return 119;
-        }
-        if ((Build.VERSION.SDK_INT != 24) && (Build.VERSION.SDK_INT != 25))
-        {
-          if ((Build.VERSION.SDK_INT != 26) && (Build.VERSION.SDK_INT != 27))
-          {
-            i = j;
-            if (Build.VERSION.SDK_INT == 28) {
-              return 122;
-            }
-          }
-          else
-          {
-            return 121;
-          }
-        }
-        else {
-          i = 120;
-        }
-      }
-      return i;
+    if (localAVCoreSystemInfo != null) {
+      return localAVCoreSystemInfo.getOsType();
     }
     return 0;
   }
@@ -214,6 +185,8 @@ public class MavEngineJni
   
   native int debugSwitch(boolean paramBoolean);
   
+  native void enableAIDenoise(boolean paramBoolean);
+  
   native void enableDumpAudioData(boolean paramBoolean);
   
   native void enableLocalSpeechRecognizeModel(boolean paramBoolean);
@@ -250,7 +223,7 @@ public class MavEngineJni
   
   native int ignore(int paramInt1, long paramLong, int paramInt2);
   
-  native void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4);
+  native void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4, boolean paramBoolean);
   
   native int invite(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
   

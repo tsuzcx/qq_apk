@@ -13,37 +13,37 @@ final class MethodCallHandlerImpl
   implements MethodChannel.MethodCallHandler
 {
   @Nullable
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final AppSettingsManager jdField_a_of_type_ComBaseflowPermissionhandlerAppSettingsManager;
+  private Activity a;
   @Nullable
-  private PermissionManager.ActivityRegistry jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$ActivityRegistry;
+  private PermissionManager.ActivityRegistry b;
+  private final AppSettingsManager c;
+  private final Context d;
+  private final PermissionManager e;
   @Nullable
-  private PermissionManager.PermissionRegistry jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$PermissionRegistry;
-  private final PermissionManager jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager;
-  private final ServiceManager jdField_a_of_type_ComBaseflowPermissionhandlerServiceManager;
+  private PermissionManager.PermissionRegistry f;
+  private final ServiceManager g;
   
   MethodCallHandlerImpl(Context paramContext, AppSettingsManager paramAppSettingsManager, PermissionManager paramPermissionManager, ServiceManager paramServiceManager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerAppSettingsManager = paramAppSettingsManager;
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager = paramPermissionManager;
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerServiceManager = paramServiceManager;
+    this.d = paramContext;
+    this.c = paramAppSettingsManager;
+    this.e = paramPermissionManager;
+    this.g = paramServiceManager;
   }
   
   public void a(@Nullable Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public void a(@Nullable PermissionManager.ActivityRegistry paramActivityRegistry)
   {
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$ActivityRegistry = paramActivityRegistry;
+    this.b = paramActivityRegistry;
   }
   
   public void a(@Nullable PermissionManager.PermissionRegistry paramPermissionRegistry)
   {
-    this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$PermissionRegistry = paramPermissionRegistry;
+    this.f = paramPermissionRegistry;
   }
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
@@ -93,41 +93,41 @@ final class MethodCallHandlerImpl
               paramResult.notImplemented();
               return;
             }
-            paramMethodCall = this.jdField_a_of_type_ComBaseflowPermissionhandlerAppSettingsManager;
-            localObject = this.jdField_a_of_type_AndroidContentContext;
+            paramMethodCall = this.c;
+            localObject = this.d;
             paramResult.getClass();
-            paramMethodCall.a((Context)localObject, new _..Lambda.TR2UE6xvkpeRG17hPoBKZeEIKug(paramResult), new _..Lambda.MethodCallHandlerImpl.Eq_JFI2oYuoDin3ZEKekEyA_Kdc(paramResult));
+            paramMethodCall.a((Context)localObject, new _..Lambda.TR2UE6xvkpeRG17hPoBKZeEIKug(paramResult), new _..Lambda.MethodCallHandlerImpl.lAKVN_rfsJIjtKSETVKc2ryD3Qk(paramResult));
             return;
           }
           i = Integer.parseInt(paramMethodCall.arguments.toString());
-          paramMethodCall = this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager;
-          localObject = this.jdField_a_of_type_AndroidAppActivity;
+          paramMethodCall = this.e;
+          localObject = this.a;
           paramResult.getClass();
-          paramMethodCall.a(i, (Activity)localObject, new _..Lambda.WNQCVwak_kfCyfzR026kfI0_xwI(paramResult), new _..Lambda.MethodCallHandlerImpl.srvZpHfJnKwaDTQpc3Kbx_XJu_k(paramResult));
+          paramMethodCall.a(i, (Activity)localObject, new _..Lambda.WNQCVwak_kfCyfzR026kfI0_xwI(paramResult), new _..Lambda.MethodCallHandlerImpl.Eq_JFI2oYuoDin3ZEKekEyA_Kdc(paramResult));
           return;
         }
         paramMethodCall = (List)paramMethodCall.arguments();
-        localObject = this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager;
-        localActivity = this.jdField_a_of_type_AndroidAppActivity;
-        PermissionManager.ActivityRegistry localActivityRegistry = this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$ActivityRegistry;
-        PermissionManager.PermissionRegistry localPermissionRegistry = this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager$PermissionRegistry;
+        localObject = this.e;
+        localActivity = this.a;
+        PermissionManager.ActivityRegistry localActivityRegistry = this.b;
+        PermissionManager.PermissionRegistry localPermissionRegistry = this.f;
         paramResult.getClass();
-        ((PermissionManager)localObject).a(paramMethodCall, localActivity, localActivityRegistry, localPermissionRegistry, new _..Lambda.tkd1HTc7lzMA_RNRmpQPzCnzrNM(paramResult), new _..Lambda.MethodCallHandlerImpl.M_fJsohuhGTxNaajHVl4rDteOE4(paramResult));
+        ((PermissionManager)localObject).a(paramMethodCall, localActivity, localActivityRegistry, localPermissionRegistry, new _..Lambda.tkd1HTc7lzMA_RNRmpQPzCnzrNM(paramResult), new _..Lambda.MethodCallHandlerImpl.srvZpHfJnKwaDTQpc3Kbx_XJu_k(paramResult));
         return;
       }
       i = Integer.parseInt(paramMethodCall.arguments.toString());
-      paramMethodCall = this.jdField_a_of_type_ComBaseflowPermissionhandlerPermissionManager;
-      localObject = this.jdField_a_of_type_AndroidContentContext;
-      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+      paramMethodCall = this.e;
+      localObject = this.d;
+      Activity localActivity = this.a;
       paramResult.getClass();
-      paramMethodCall.a(i, (Context)localObject, localActivity, new _..Lambda.dmmm8DBenCjBo3Fgt2Az2dG7ZxI(paramResult), new _..Lambda.MethodCallHandlerImpl.nBDkVfzRvSfmmA4LbPddaEjgddw(paramResult));
+      paramMethodCall.a(i, (Context)localObject, localActivity, new _..Lambda.dmmm8DBenCjBo3Fgt2Az2dG7ZxI(paramResult), new _..Lambda.MethodCallHandlerImpl.M_fJsohuhGTxNaajHVl4rDteOE4(paramResult));
       return;
     }
     i = Integer.parseInt(paramMethodCall.arguments.toString());
-    paramMethodCall = this.jdField_a_of_type_ComBaseflowPermissionhandlerServiceManager;
-    localObject = this.jdField_a_of_type_AndroidContentContext;
+    paramMethodCall = this.g;
+    localObject = this.d;
     paramResult.getClass();
-    paramMethodCall.a(i, (Context)localObject, new _..Lambda.kvb3eDz1QeqVBPF6VqNqPbsSWUA(paramResult), new _..Lambda.MethodCallHandlerImpl.jGtwiG_3jQ2lAp2Gyt9WGWiMz80(paramResult));
+    paramMethodCall.a(i, (Context)localObject, new _..Lambda.kvb3eDz1QeqVBPF6VqNqPbsSWUA(paramResult), new _..Lambda.MethodCallHandlerImpl.nBDkVfzRvSfmmA4LbPddaEjgddw(paramResult));
   }
 }
 

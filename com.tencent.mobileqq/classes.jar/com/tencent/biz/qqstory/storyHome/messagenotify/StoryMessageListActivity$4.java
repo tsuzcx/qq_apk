@@ -13,7 +13,7 @@ class StoryMessageListActivity$4
   {
     this.a.d();
     paramDialogInterface.dismiss();
-    StoryReportor.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
+    StoryReportor.a(this.a.e(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
   }
 }
 

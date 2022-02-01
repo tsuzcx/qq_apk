@@ -14,18 +14,18 @@ class PreviewSimpleFilePresenter$1
   
   public void onClick(View paramView)
   {
-    int i = QFileUtils.b(this.a.a.e());
+    int i = QFileUtils.b(this.a.c.z());
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i);
     localStringBuilder.append("");
     ReportController.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, localStringBuilder.toString(), "", "", "");
-    this.a.a.h();
+    this.a.c.T();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.PreviewSimpleFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

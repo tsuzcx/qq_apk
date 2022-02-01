@@ -10,11 +10,11 @@ import org.json.JSONObject;
 
 public class TencentDocGrayTipsBean
 {
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private String b = "";
   private String c = "";
+  private int d = 0;
+  private String e = "";
   
   public static TencentDocGrayTipsBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -23,7 +23,7 @@ public class TencentDocGrayTipsBean
       TencentDocGrayTipsBean localTencentDocGrayTipsBean = new TencentDocGrayTipsBean();
       try
       {
-        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].b);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -51,14 +51,14 @@ public class TencentDocGrayTipsBean
         return;
       }
       if ((((IAudioHelper)QRoute.api(IAudioHelper.class)).isDev()) && (((IAudioHelper)QRoute.api(IAudioHelper.class)).getDebugValue(10) == 1)) {
-        ((IAudioHelper)QRoute.api(IAudioHelper.class)).writeTestLog(HardCodeUtil.a(2131714637));
+        ((IAudioHelper)QRoute.api(IAudioHelper.class)).writeTestLog(HardCodeUtil.a(2131912146));
       }
     }
     try
     {
       paramJSONObject.put("tencentDocAIOGrayTipsEnable", true);
-      paramJSONObject.put("plainContent", HardCodeUtil.a(2131714630));
-      paramJSONObject.put("hightLightContent", HardCodeUtil.a(2131714633));
+      paramJSONObject.put("plainContent", HardCodeUtil.a(2131912139));
+      paramJSONObject.put("hightLightContent", HardCodeUtil.a(2131912142));
       paramJSONObject.put("showTimes", 3);
       paramJSONObject.put("linkUrl", "https://docs.qq.com/desktop");
     }
@@ -68,35 +68,25 @@ public class TencentDocGrayTipsBean
       break label114;
     }
     if (paramJSONObject.has("tencentDocAIOGrayTipsEnable")) {
-      paramTencentDocGrayTipsBean.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("tencentDocAIOGrayTipsEnable");
+      paramTencentDocGrayTipsBean.a = paramJSONObject.optBoolean("tencentDocAIOGrayTipsEnable");
     }
     if (paramJSONObject.has("plainContent")) {
-      paramTencentDocGrayTipsBean.jdField_a_of_type_JavaLangString = paramJSONObject.optString("plainContent");
+      paramTencentDocGrayTipsBean.b = paramJSONObject.optString("plainContent");
     }
     if (paramJSONObject.has("hightLightContent")) {
-      paramTencentDocGrayTipsBean.b = paramJSONObject.optString("hightLightContent");
+      paramTencentDocGrayTipsBean.c = paramJSONObject.optString("hightLightContent");
     }
     if (paramJSONObject.has("showTimes")) {
-      paramTencentDocGrayTipsBean.jdField_a_of_type_Int = paramJSONObject.optInt("showTimes");
+      paramTencentDocGrayTipsBean.d = paramJSONObject.optInt("showTimes");
     }
     if (paramJSONObject.has("linkUrl")) {
-      paramTencentDocGrayTipsBean.c = paramJSONObject.optString("linkUrl");
+      paramTencentDocGrayTipsBean.e = paramJSONObject.optString("linkUrl");
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public String b()
@@ -108,10 +98,20 @@ public class TencentDocGrayTipsBean
   {
     return this.c;
   }
+  
+  public int d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocGrayTipsBean
  * JD-Core Version:    0.7.0.1
  */

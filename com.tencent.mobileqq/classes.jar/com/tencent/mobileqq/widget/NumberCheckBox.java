@@ -11,9 +11,9 @@ import android.widget.CheckBox;
 public class NumberCheckBox
   extends CheckBox
 {
-  private int jdField_a_of_type_Int = -1;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a = -1;
+  private boolean b = false;
+  private Paint c = new Paint();
   
   public NumberCheckBox(Context paramContext)
   {
@@ -28,15 +28,20 @@ public class NumberCheckBox
   public NumberCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167402));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.c.setColor(paramContext.getResources().getColor(2131168479));
+    this.c.setStyle(Paint.Style.FILL);
+  }
+  
+  public int getNumber()
+  {
+    return this.a;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean) {
-      paramCanvas.drawCircle(getWidth() / 2.0F, getHeight() / 2.0F, Math.min(getWidth() / 2.0F, getHeight() / 2.0F), this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.b) {
+      paramCanvas.drawCircle(getWidth() / 2.0F, getHeight() / 2.0F, Math.min(getWidth() / 2.0F, getHeight() / 2.0F), this.c);
     }
   }
   
@@ -45,7 +50,7 @@ public class NumberCheckBox
     super.setChecked(paramBoolean);
     if (paramBoolean)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if (i >= 0)
       {
         str = String.valueOf(i);
@@ -61,9 +66,9 @@ public class NumberCheckBox
   
   public void setCheckedNumber(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.a != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
+      this.a = paramInt;
       setText(String.valueOf(paramInt));
     }
     setChecked(true);
@@ -71,17 +76,17 @@ public class NumberCheckBox
   
   public void setForegroundColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.c.setColor(paramInt);
   }
   
   public void setNeedForeground(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NumberCheckBox
  * JD-Core Version:    0.7.0.1
  */

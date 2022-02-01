@@ -35,23 +35,23 @@ public class TroopStoryAIOVideoListSynchronizer
   extends DefaultPlayerVideoListSynchronizer
   implements DefaultPlayerVideoListSynchronizer.RetryableSynchronizer
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  IVidToVideoInfoPuller.OnFinishCallBack jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet;
-  List<StoryVideoItem> jdField_a_of_type_JavaUtilList;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  List<String> jdField_b_of_type_JavaUtilList;
-  boolean jdField_b_of_type_Boolean;
+  String b;
   boolean c;
+  boolean d;
+  QQAppInterface e;
+  String f;
+  long g;
+  long h;
+  int i;
+  List<StoryVideoItem> j;
+  List<String> k;
+  AtomicBoolean l;
+  HashSet<String> m;
+  IVidToVideoInfoPuller.OnFinishCallBack n;
   
   private void a(List<MessageRecord> paramList, List<StoryVideoItem> paramList1, List<StoryVideoItem> paramList2, List<String> paramList3)
   {
-    TroopStoryManager localTroopStoryManager = (TroopStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_STORY_MANAGER);
+    TroopStoryManager localTroopStoryManager = (TroopStoryManager)this.e.getManager(QQManagerFactory.TROOP_STORY_MANAGER);
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     StoryManager localStoryManager = (StoryManager)SuperManager.a(5);
     Iterator localIterator = paramList.iterator();
@@ -110,15 +110,15 @@ public class TroopStoryAIOVideoListSynchronizer
         paramList2.add(paramList);
       }
       label428:
-      if (localMessageRecord.shmsgseq < this.jdField_b_of_type_Long) {
-        this.jdField_b_of_type_Long = localMessageRecord.shmsgseq;
+      if (localMessageRecord.shmsgseq < this.h) {
+        this.h = localMessageRecord.shmsgseq;
       }
-      long l = localMessageRecord.getId();
-      if ((l > 0L) && (l < this.jdField_a_of_type_Long)) {
-        this.jdField_a_of_type_Long = l;
+      long l1 = localMessageRecord.getId();
+      if ((l1 > 0L) && (l1 < this.g)) {
+        this.g = l1;
       }
-      if (localMessageRecord.versionCode < this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Int = localMessageRecord.versionCode;
+      if (localMessageRecord.versionCode < this.i) {
+        this.i = localMessageRecord.versionCode;
       }
     }
   }
@@ -126,21 +126,21 @@ public class TroopStoryAIOVideoListSynchronizer
   void a()
   {
     DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent localPlayerVideoListEvent = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    localPlayerVideoListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localPlayerVideoListEvent.jdField_a_of_type_Boolean = false;
-    localPlayerVideoListEvent.jdField_b_of_type_Boolean = this.c;
-    localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    localPlayerVideoListEvent.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-    localPlayerVideoListEvent.jdField_b_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
+    localPlayerVideoListEvent.a = this.b;
+    localPlayerVideoListEvent.i = false;
+    localPlayerVideoListEvent.j = this.d;
+    localPlayerVideoListEvent.e.addAll(this.j);
+    localPlayerVideoListEvent.h = this.j.size();
+    localPlayerVideoListEvent.m = this.k;
     StoryDispatcher.a().dispatch(localPlayerVideoListEvent);
   }
   
   protected void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+    if (!this.l.compareAndSet(false, true)) {
       return;
     }
-    if ((!this.c) && ((!this.jdField_b_of_type_Boolean) || (paramInt <= 0)))
+    if ((!this.d) && ((!this.c) || (paramInt <= 0)))
     {
       int[] arrayOfInt = new int[2];
       int[] tmp41_39 = arrayOfInt;
@@ -149,34 +149,34 @@ public class TroopStoryAIOVideoListSynchronizer
       tmp47_41[1] = -2057;
       tmp47_41;
       Object localObject2 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
+      this.j.clear();
+      this.k.clear();
       Object localObject1 = localObject2;
       Object localObject3;
-      if (!this.jdField_b_of_type_Boolean)
+      if (!this.c)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(1).a(this.jdField_b_of_type_JavaLangString, 1, tmp41_39);
+        localObject3 = this.e.getMessageProxy(1).a(this.f, 1, tmp41_39);
         localObject1 = localObject3;
         if (((List)localObject3).size() < 50) {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_b_of_type_JavaLangString, 1, tmp41_39, 50);
+          localObject1 = this.e.getMessageFacade().a(this.f, 1, tmp41_39, 50);
         }
-        a((List)localObject1, this.jdField_a_of_type_JavaUtilList, (List)localObject2, this.jdField_b_of_type_JavaUtilList);
-        this.jdField_b_of_type_Boolean = true;
+        a((List)localObject1, this.j, (List)localObject2, this.k);
+        this.c = true;
       }
       for (localObject1 = localObject2; ((List)localObject1).size() <= 25; localObject1 = localObject2)
       {
-        this.jdField_b_of_type_Long -= 1L;
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-        String str = this.jdField_b_of_type_JavaLangString;
-        long l1 = this.jdField_a_of_type_Long;
-        int i = this.jdField_a_of_type_Int;
-        long l2 = this.jdField_b_of_type_Long;
+        this.h -= 1L;
+        localObject3 = this.e.getMessageFacade();
+        String str = this.f;
+        long l1 = this.g;
+        int i1 = this.i;
+        long l2 = this.h;
         localObject2 = localObject1;
-        localObject3 = ((QQMessageFacade)localObject3).a(str, 1, l1, i, l2, tmp41_39, 50);
-        a((List)localObject3, this.jdField_a_of_type_JavaUtilList, (List)localObject2, this.jdField_b_of_type_JavaUtilList);
+        localObject3 = ((QQMessageFacade)localObject3).a(str, 1, l1, i1, l2, tmp41_39, 50);
+        a((List)localObject3, this.j, (List)localObject2, this.k);
         if (((List)localObject3).size() < 50)
         {
-          this.c = true;
+          this.d = true;
           break;
         }
       }
@@ -236,11 +236,11 @@ public class TroopStoryAIOVideoListSynchronizer
   
   void a(List<StoryVideoItem> paramList, boolean paramBoolean)
   {
-    IVidToVideoInfoPuller.OnFinishCallBack localOnFinishCallBack = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+    IVidToVideoInfoPuller.OnFinishCallBack localOnFinishCallBack = this.n;
     if (localOnFinishCallBack != null)
     {
       localOnFinishCallBack.a(paramList, paramBoolean);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack = null;
+      this.n = null;
     }
   }
   

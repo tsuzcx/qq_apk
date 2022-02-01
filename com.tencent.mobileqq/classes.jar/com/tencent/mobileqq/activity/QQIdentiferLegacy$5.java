@@ -21,7 +21,7 @@ class QQIdentiferLegacy$5
       if ("mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
       {
         QLog.d("QQIdentiferLegacy", 1, "received account kicked broadcast");
-        QQIdentiferLegacy.a(this.a).finish();
+        QQIdentiferLegacy.b(this.a).finish();
       }
     }
     else
@@ -36,17 +36,17 @@ class QQIdentiferLegacy$5
         paramContext = new Intent();
         paramIntent = new Bundle();
         paramIntent.putInt("ret", 204);
-        paramIntent.putString("errMsg", IdentificationConstant.a);
+        paramIntent.putString("errMsg", IdentificationConstant.f);
         paramContext.putExtra("data", paramIntent);
-        QQIdentiferLegacy.a(this.a).setResult(2, paramContext);
-        QQIdentiferLegacy.a(this.a).finish();
+        QQIdentiferLegacy.b(this.a).setResult(2, paramContext);
+        QQIdentiferLegacy.b(this.a).finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class LbsManager$3$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPOIList.result.error_code.get(), this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$3.a, this.jdField_a_of_type_JavaUtilArrayList);
+    this.a.a(this.b.result.error_code.get(), this.d.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.LbsManager.3.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,12 +24,12 @@ final class PwdSetUtil$1
       localStringBuilder.append(paramDialogInterface.getMessage());
       QLog.e("PwdSetUtil", 1, localStringBuilder.toString());
     }
-    PwdSetUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    PwdSetUtil.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.login.PwdSetUtil.1
  * JD-Core Version:    0.7.0.1
  */

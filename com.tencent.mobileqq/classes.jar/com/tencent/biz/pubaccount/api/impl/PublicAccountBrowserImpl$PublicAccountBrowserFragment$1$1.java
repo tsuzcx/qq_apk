@@ -13,7 +13,7 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1$1
   {
     try
     {
-      boolean bool = SubscriptRecommendController.a((AppInterface)this.a.a.getAppRuntime(), false, PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a.a));
+      boolean bool = SubscriptRecommendController.a((AppInterface)this.a.a.getAppRuntime(), false, PublicAccountBrowserImpl.PublicAccountBrowserFragment.c(this.a.a));
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -31,7 +31,7 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,18 +24,6 @@ public class ModifyPwdTopBarHandler
     super(paramAppInterface);
   }
   
-  private ToServiceMsg a(long paramLong)
-  {
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(3788);
-    localOIDBSSOPkg.uint32_service_type.set(0);
-    ToServiceMsg localToServiceMsg = createToServiceMsg("OidbSvc.0xecc_0");
-    localToServiceMsg.putWupBuffer(localOIDBSSOPkg.toByteArray());
-    localToServiceMsg.extraData.putLong("mark_extra_tag", paramLong);
-    localToServiceMsg.setTimeout(30000L);
-    return localToServiceMsg;
-  }
-  
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     boolean bool1;
@@ -150,13 +138,25 @@ public class ModifyPwdTopBarHandler
     notifyUI(1, bool1, new Object[] { Long.valueOf(l), Boolean.valueOf(bool2), paramToServiceMsg, paramFromServiceMsg, Integer.valueOf(i) });
   }
   
+  private ToServiceMsg b(long paramLong)
+  {
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3788);
+    localOIDBSSOPkg.uint32_service_type.set(0);
+    ToServiceMsg localToServiceMsg = createToServiceMsg("OidbSvc.0xecc_0");
+    localToServiceMsg.putWupBuffer(localOIDBSSOPkg.toByteArray());
+    localToServiceMsg.extraData.putLong("mark_extra_tag", paramLong);
+    localToServiceMsg.setTimeout(30000L);
+    return localToServiceMsg;
+  }
+  
   public void a(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("fetchDisplayInfo pbMark: ");
     localStringBuilder.append(paramLong);
     QLog.d("ModifyPwdTopBarHandler", 1, localStringBuilder.toString());
-    sendPbReq(a(paramLong));
+    sendPbReq(b(paramLong));
   }
   
   public Set<String> getCommandList()
@@ -190,7 +190,7 @@ public class ModifyPwdTopBarHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.security.business.ModifyPwdTopBarHandler
  * JD-Core Version:    0.7.0.1
  */

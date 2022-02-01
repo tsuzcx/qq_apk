@@ -19,7 +19,7 @@ class TroopCardAppInfoHelperApiImpl$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl.bIsDestroy) {
+    if (this.b.bIsDestroy) {
       return;
     }
     if ((paramBoolean) && (paramBundle != null))
@@ -31,12 +31,12 @@ class TroopCardAppInfoHelperApiImpl$1
         ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
         if ((((oidb_sso.OIDBSSOPkg)localObject).uint32_result.has()) && (((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get() == 0) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.has()) && (((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get() != null))
         {
-          localObject = TroopCardAppInfoHelperApiImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl, (oidb_sso.OIDBSSOPkg)localObject);
+          localObject = TroopCardAppInfoHelperApiImpl.access$100(this.b, (oidb_sso.OIDBSSOPkg)localObject);
           if ((localObject != null) && (((ArrayList)localObject).size() > 0))
           {
-            if (!this.jdField_a_of_type_Boolean)
+            if (!this.a)
             {
-              TroopCardAppInfoHelperApiImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl, (List)localObject);
+              TroopCardAppInfoHelperApiImpl.access$200(this.b, (List)localObject);
               return;
             }
             paramBundle = new ArrayList();
@@ -46,13 +46,13 @@ class TroopCardAppInfoHelperApiImpl$1
               Long localLong = (Long)((Iterator)localObject).next();
               new TroopAppInfo().appId = localLong.longValue();
             }
-            TroopCardAppInfoHelperApiImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl, paramBundle);
+            TroopCardAppInfoHelperApiImpl.access$300(this.b, paramBundle);
             return;
           }
-          TroopCardAppInfoHelperApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl);
+          TroopCardAppInfoHelperApiImpl.access$000(this.b);
           return;
         }
-        TroopCardAppInfoHelperApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl);
+        TroopCardAppInfoHelperApiImpl.access$000(this.b);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramBundle)
@@ -64,16 +64,16 @@ class TroopCardAppInfoHelperApiImpl$1
           ((StringBuilder)localObject).append(QLog.getStackTraceString(paramBundle));
           QLog.d("TroopCardAppInfoHandler", 2, ((StringBuilder)localObject).toString());
         }
-        TroopCardAppInfoHelperApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl);
+        TroopCardAppInfoHelperApiImpl.access$000(this.b);
         return;
       }
     }
-    TroopCardAppInfoHelperApiImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsApiImplTroopCardAppInfoHelperApiImpl);
+    TroopCardAppInfoHelperApiImpl.access$000(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopCardAppInfoHelperApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

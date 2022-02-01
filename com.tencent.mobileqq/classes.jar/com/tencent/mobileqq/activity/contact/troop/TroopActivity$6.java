@@ -28,14 +28,14 @@ class TroopActivity$6
           ((StringBuilder)localObject).append("ondelete: uin ");
           ((StringBuilder)localObject).append(localDelResult.uin.get());
           QLog.d("TroopActivity", 2, ((StringBuilder)localObject).toString());
-          if (this.a.a != null)
+          if (this.a.q != null)
           {
             int i = 0;
-            while (i < this.a.a.size())
+            while (i < this.a.q.size())
             {
-              localObject = (Stranger)this.a.a.get(i);
+              localObject = (Stranger)this.a.q.get(i);
               if (((Stranger)localObject).uin.equals(String.valueOf(localDelResult.uin.get()))) {
-                this.a.a.remove(localObject);
+                this.a.q.remove(localObject);
               }
               i += 1;
             }
@@ -54,11 +54,11 @@ class TroopActivity$6
     {
       if (paramList != null)
       {
-        this.a.a.clear();
-        this.a.a.addAll(paramList);
+        this.a.q.clear();
+        this.a.q.addAll(paramList);
         paramList = new StringBuilder();
         paramList.append("onGetListRemote :");
-        paramList.append(this.a.a.size());
+        paramList.append(this.a.q.size());
         QLog.d("TroopActivity", 2, paramList.toString());
       }
     }
@@ -71,18 +71,18 @@ class TroopActivity$6
   {
     if ((paramBoolean) && (paramList != null))
     {
-      this.a.a.clear();
-      this.a.a.addAll(paramList);
+      this.a.q.clear();
+      this.a.q.addAll(paramList);
       paramList = new StringBuilder();
       paramList.append("onGetListLocal :");
-      paramList.append(this.a.a.size());
+      paramList.append(this.a.q.size());
       QLog.d("TroopActivity", 2, paramList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,7 @@ public class TAVStickerTexture
   
   public TAVStickerTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this(paramInt1, paramInt2, paramInt3, paramInt4, createTexture(paramInt3));
+    this(paramInt1, paramInt2, paramInt3, paramInt4, createTexture(paramInt1, paramInt2, paramInt3));
   }
   
   public TAVStickerTexture(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -100,17 +100,19 @@ public class TAVStickerTexture
     }
   }
   
-  public static int createTexture(int paramInt)
+  public static int createTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     int i = arrayOfInt[0];
-    GLES20.glBindTexture(paramInt, i);
+    GLES20.glBindTexture(paramInt3, i);
     checkEglError("glBindTexture mTextureID");
-    GLES20.glTexParameterf(paramInt, 10241, 9729.0F);
-    GLES20.glTexParameterf(paramInt, 10240, 9729.0F);
-    GLES20.glTexParameteri(paramInt, 10242, 33071);
-    GLES20.glTexParameteri(paramInt, 10243, 33071);
+    GLES20.glTexParameterf(paramInt3, 10241, 9729.0F);
+    GLES20.glTexParameterf(paramInt3, 10240, 9729.0F);
+    GLES20.glTexParameteri(paramInt3, 10242, 33071);
+    GLES20.glTexParameteri(paramInt3, 10243, 33071);
+    GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+    GLES20.glBindTexture(paramInt3, 0);
     checkEglError("glTexParameter");
     return i;
   }
@@ -290,7 +292,11 @@ public class TAVStickerTexture
         return false;
       }
       checkEglError("before updateTexImage");
-      this.surfaceTexture.updateTexImage();
+      ??? = this.surfaceTexture;
+      if (??? == null) {
+        return false;
+      }
+      ((SurfaceTexture)???).updateTexImage();
       this.textureInfo.setTextureMatrix(getTextureMatrix(this.surfaceTexture, this.preferRotation));
       return true;
     }
@@ -375,7 +381,7 @@ public class TAVStickerTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerTexture
  * JD-Core Version:    0.7.0.1
  */

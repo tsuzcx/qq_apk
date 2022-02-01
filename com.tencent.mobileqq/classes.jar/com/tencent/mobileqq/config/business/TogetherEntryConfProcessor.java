@@ -20,12 +20,12 @@ public class TogetherEntryConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      TogetherEntryBean localTogetherEntryBean = TogetherEntryBean.a(paramArrayOfQConfItem[0].a);
+      TogetherEntryBean localTogetherEntryBean = TogetherEntryBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("TogetherEntryConfProcessor", 2, localStringBuilder.toString());
       }
       return localTogetherEntryBean;
@@ -84,7 +84,7 @@ public class TogetherEntryConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TogetherEntryConfProcessor
  * JD-Core Version:    0.7.0.1
  */

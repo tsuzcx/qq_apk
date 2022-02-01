@@ -13,17 +13,17 @@ import java.io.File;
 public class ApngDecodeWrapper
   implements GifDecoderWrapper
 {
-  private NativeApngDecoder jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterNativeApngDecoder;
-  private String jdField_a_of_type_JavaLangString;
+  private NativeApngDecoder a;
+  private String b;
   
   public ApngDecodeWrapper(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public ApngDecodeWrapper(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString1;
   }
   
   public int a()
@@ -33,7 +33,7 @@ public class ApngDecodeWrapper
   
   public Bitmap getNextGifFrame(long paramLong)
   {
-    NativeApngDecoder localNativeApngDecoder = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterNativeApngDecoder;
+    NativeApngDecoder localNativeApngDecoder = this.a;
     if (localNativeApngDecoder != null) {
       return localNativeApngDecoder.a(paramLong);
     }
@@ -42,7 +42,7 @@ public class ApngDecodeWrapper
   
   public void init()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.b)) {
       return;
     }
     if (!((IVasApngIPCModule)QRoute.api(IVasApngIPCModule.class)).loadSoLib())
@@ -53,11 +53,11 @@ public class ApngDecodeWrapper
       }
       return;
     }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    File localFile = new File(this.b);
     if ((localFile.exists()) && (localFile.isFile())) {
       try
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterNativeApngDecoder = new NativeApngDecoder(localFile);
+        this.a = new NativeApngDecoder(localFile);
         return;
       }
       catch (Exception localException)
@@ -69,12 +69,12 @@ public class ApngDecodeWrapper
   
   public void release()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterNativeApngDecoder = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.ApngDecodeWrapper
  * JD-Core Version:    0.7.0.1
  */

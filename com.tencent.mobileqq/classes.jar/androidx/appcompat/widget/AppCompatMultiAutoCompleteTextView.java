@@ -9,8 +9,10 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.MultiAutoCompleteTextView;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.view.TintableBackgroundView;
 
@@ -22,19 +24,20 @@ public class AppCompatMultiAutoCompleteTextView
   private final AppCompatBackgroundHelper mBackgroundTintHelper;
   private final AppCompatTextHelper mTextHelper;
   
-  public AppCompatMultiAutoCompleteTextView(Context paramContext)
+  public AppCompatMultiAutoCompleteTextView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
+  public AppCompatMultiAutoCompleteTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2131034222);
+    this(paramContext, paramAttributeSet, R.attr.autoCompleteTextViewStyle);
   }
   
-  public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public AppCompatMultiAutoCompleteTextView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(TintContextWrapper.wrap(paramContext), paramAttributeSet, paramInt);
+    ThemeUtils.checkAppCompatTheme(this, getContext());
     paramContext = TintTypedArray.obtainStyledAttributes(getContext(), paramAttributeSet, TINT_ATTRS, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setDropDownBackgroundDrawable(paramContext.getDrawable(0));

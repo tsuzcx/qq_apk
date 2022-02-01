@@ -28,6 +28,6 @@
             <ImageView android:layout_width="18.0dip" android:layout_height="16.0dip" android:src="@drawable/car" android:scaleType="fitXY" />
             <TextView android:textSize="17.0sp" android:textColor="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/gjy" />
         </LinearLayout>
-        <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:gravity="center" android:id="@id/iqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="XXXX邀请你加入相册，一起上传照片/视频" android:layout_below="@id/iqy" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/black" android:gravity="center" android:id="@id/iqx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="XXXX邀请你加入相册，一起上传照片/视频" android:layout_below="@id/iqy" android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </LinearLayout>

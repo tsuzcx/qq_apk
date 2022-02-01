@@ -10,13 +10,13 @@ import javax.microedition.khronos.egl.EGLDisplay;
 class HWVideoPlayView$1
   implements GLSurfaceView.EGLContextFactory
 {
-  private int jdField_a_of_type_Int = 12440;
+  private int b = 12440;
   
   HWVideoPlayView$1(HWVideoPlayView paramHWVideoPlayView) {}
   
   public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -42,7 +42,7 @@ class HWVideoPlayView$1
       paramEGL10.append(Thread.currentThread().getId());
       QLog.e("HWVideoPlayView", 1, paramEGL10.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaMediacodecWidgetHWVideoPlayView.a();
+    this.a.a();
     if (QLog.isColorLevel())
     {
       paramEGL10 = new StringBuilder();
@@ -58,7 +58,7 @@ class HWVideoPlayView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.mediacodec.widget.HWVideoPlayView.1
  * JD-Core Version:    0.7.0.1
  */

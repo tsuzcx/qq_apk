@@ -41,66 +41,58 @@ public class SubscribeCommentInputPopupWindow
   extends SafeDialog
   implements DialogInterface.OnDismissListener, View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler;
   protected View a;
-  private AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-  private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  protected CommentEditText a;
-  private SoftKeyboardStateHelper jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper;
-  private SubscribeCommentInputPopupWindow.EventListener jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow$EventListener;
-  private SubscribeCommentInputPopupWindow.OnDismissListener jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow$OnDismissListener;
-  private IEmoticonMainPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
-  private SystemAndEmojiEmoticonPanel jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = -1;
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageButton jdField_b_of_type_AndroidWidgetImageButton;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
+  protected CommentEditText b;
+  private SharedPreferences d;
+  private SharedPreferences.Editor e;
+  private Activity f;
+  private ImageButton g;
+  private ImageButton h;
+  private Button i;
+  private int j;
+  private IEmoticonMainPanel k;
+  private SystemAndEmojiEmoticonPanel l;
+  private InputMethodManager m;
+  private boolean n = false;
+  private int o = -1;
+  private boolean p = false;
+  private int q = 0;
+  private SubscribeCommentInputPopupWindow.EventListener r;
+  private SubscribeCommentInputPopupWindow.OnDismissListener s;
+  private View t;
+  private SoftKeyboardStateHelper u;
+  private Handler v;
+  private AlphaAnimation w;
+  private LinearLayout x;
+  private boolean y = false;
   
   public SubscribeCommentInputPopupWindow(Activity paramActivity)
   {
-    super(paramActivity, 2131755690);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558735, null);
+    super(paramActivity, 2131952655);
+    this.f = paramActivity;
+    this.a = LayoutInflater.from(getContext()).inflate(2131624355, null);
     b();
     setCancelable(true);
-    d();
-    setContentView(this.jdField_a_of_type_AndroidViewView);
-    f();
+    e();
+    setContentView(this.a);
+    h();
     setOnDismissListener(this);
-    D_();
-  }
-  
-  private Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
+    aF_();
   }
   
   private void b(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
+    Object localObject = this.k;
     if (localObject != null) {
       ((IEmoticonMainPanel)localObject).getView().setVisibility(8);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel;
+    localObject = this.l;
     if (localObject != null) {
       ((SystemAndEmojiEmoticonPanel)localObject).setVisibility(8);
     }
-    d(this.jdField_b_of_type_AndroidViewView);
+    d(this.t);
     if (paramBoolean) {
-      a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
+      a(this.b);
     }
   }
   
@@ -110,39 +102,6 @@ public class SubscribeCommentInputPopupWindow
     localLayoutParams.height = paramView.getHeight();
     localLayoutParams.weight = 0.0F;
     paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131364941));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363924));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText = ((CommentEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131378535));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnInputBackListener(new SubscribeCommentInputPopupWindow.1(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setEditableFactory(QzoneTextBuilder.a);
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363962));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131364001));
-    this.jdField_a_of_type_AndroidContentSharedPreferences = getContext().getSharedPreferences("weishi_comment_prefs_version", 0);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("GroupSoftKeyboardHeight", AIOUtils.b(250.0F, getContext().getResources()));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mEmojiPanel initView() step1 :");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    QLog.d("QCircleBaseInputPopupWindow", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Int = ScreenUtil.dip2px(250.0F);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("mEmojiPanel initView() step2 :");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
-      QLog.d("QCircleBaseInputPopupWindow", 1, localStringBuilder.toString());
-    }
-    e();
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363669);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new SubscribeCommentInputPopupWindow.2(this));
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method"));
-    this.jdField_a_of_type_Boolean = true;
-    g();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
   
   private void d(View paramView)
@@ -155,157 +114,131 @@ public class SubscribeCommentInputPopupWindow
   
   private void e()
   {
-    SubscribeCommentInputPopupWindow.3 local3 = new SubscribeCommentInputPopupWindow.3(this);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    this.x = ((LinearLayout)this.a.findViewById(2131431066));
+    this.g = ((ImageButton)this.a.findViewById(2131429880));
+    this.b = ((CommentEditText)this.a.findViewById(2131447156));
+    this.b.setOnInputBackListener(new SubscribeCommentInputPopupWindow.1(this));
+    this.b.setEditableFactory(QzoneTextBuilder.a);
+    this.h = ((ImageButton)this.a.findViewById(2131429918));
+    this.i = ((Button)this.a.findViewById(2131429958));
+    this.d = getContext().getSharedPreferences("weishi_comment_prefs_version", 0);
+    this.e = this.d.edit();
+    this.j = this.d.getInt("GroupSoftKeyboardHeight", AIOUtils.b(250.0F, getContext().getResources()));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mEmojiPanel initView() step1 :");
+    localStringBuilder.append(this.j);
+    QLog.d("QCircleBaseInputPopupWindow", 1, localStringBuilder.toString());
+    if (this.j == 0)
     {
-      int i = getContext().getResources().getDimensionPixelSize(2131299168);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel = ((IEmoticonMainPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131366117));
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.setCallBack(local3);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.setOnlySysAndEmoji(true);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.init((QQAppInterface)localObject, 100003, getContext(), i, null, null, false);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.hideAllTabs();
-      return;
+      this.j = ScreenUtil.dip2px(250.0F);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mEmojiPanel initView() step2 :");
+      localStringBuilder.append(this.j);
+      QLog.d("QCircleBaseInputPopupWindow", 1, localStringBuilder.toString());
     }
-    QLog.e("QCircleBaseInputPopupWindow", 1, "initEmojiPanel() runtime != QQAppInterface");
-    localObject = this.jdField_a_of_type_AndroidAppActivity;
-    if ((localObject != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = new SystemAndEmojiEmoticonPanel((Context)localObject, local3);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setBackgroundColor(-1);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel);
-    }
+    f();
+    this.t = this.a.findViewById(2131429582);
+    this.t.setOnClickListener(new SubscribeCommentInputPopupWindow.2(this));
+    this.m = ((InputMethodManager)this.f.getSystemService("input_method"));
+    this.n = true;
+    i();
+    this.a.setVisibility(4);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    i();
-  }
-  
-  private void g()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
-    if ((localObject != null) && (((IEmoticonMainPanel)localObject).getView().getLayoutParams() != null))
+    SubscribeCommentInputPopupWindow.3 local3 = new SubscribeCommentInputPopupWindow.3(this);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().getLayoutParams().height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel.getView().invalidate();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("mEmojiPanel onGetKeyBoardHeight() :");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      QLog.d("QCircleBaseInputPopupWindow", 1, ((StringBuilder)localObject).toString());
+      int i1 = getContext().getResources().getDimensionPixelSize(2131299920);
+      this.k = ((IEmoticonMainPanel)this.a.findViewById(2131432403));
+      this.k.setCallBack(local3);
+      this.k.setOnlySysAndEmoji(true);
+      this.k.init((QQAppInterface)localObject, 100003, getContext(), i1, null, null, false);
+      this.k.hideAllTabs();
+      return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel;
-    if ((localObject != null) && (((SystemAndEmojiEmoticonPanel)localObject).getLayoutParams() != null))
+    QLog.e("QCircleBaseInputPopupWindow", 1, "initEmojiPanel() runtime != QQAppInterface");
+    localObject = this.f;
+    if ((localObject != null) && (this.x != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getLayoutParams().height = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.invalidate();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("mEmojiPanel onGetKeyBoardHeight() :");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-      QLog.d("QCircleBaseInputPopupWindow", 1, ((StringBuilder)localObject).toString());
+      this.l = new SystemAndEmojiEmoticonPanel((Context)localObject, local3);
+      this.l.setBackgroundColor(-1);
+      this.x.addView(this.l);
     }
   }
   
   private void h()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper = new SoftKeyboardStateHelper(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper.a(new SubscribeCommentInputPopupWindow.5(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver();
+    this.g.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    this.h.setOnClickListener(this);
+    this.i.setOnClickListener(this);
+    k();
   }
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setImeOptions(268435456);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnEditorActionListener(new SubscribeCommentInputPopupWindow.7(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.addTextChangedListener(new SubscribeCommentInputPopupWindow.8(this));
+    Object localObject = this.k;
+    if ((localObject != null) && (((IEmoticonMainPanel)localObject).getView().getLayoutParams() != null))
+    {
+      this.k.getView().getLayoutParams().height = this.j;
+      this.k.getView().invalidate();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mEmojiPanel onGetKeyBoardHeight() :");
+      ((StringBuilder)localObject).append(this.j);
+      QLog.d("QCircleBaseInputPopupWindow", 1, ((StringBuilder)localObject).toString());
+    }
+    localObject = this.l;
+    if ((localObject != null) && (((SystemAndEmojiEmoticonPanel)localObject).getLayoutParams() != null))
+    {
+      this.l.getLayoutParams().height = this.j;
+      this.l.invalidate();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mEmojiPanel onGetKeyBoardHeight() :");
+      ((StringBuilder)localObject).append(this.j);
+      QLog.d("QCircleBaseInputPopupWindow", 1, ((StringBuilder)localObject).toString());
+    }
   }
   
   private void j()
   {
-    if (this.jdField_b_of_type_Boolean) {
-      c(this.jdField_b_of_type_AndroidViewView);
+    this.u = new SoftKeyboardStateHelper(this.a);
+    this.u.a(new SubscribeCommentInputPopupWindow.5(this));
+    this.a.getViewTreeObserver();
+  }
+  
+  private void k()
+  {
+    this.b.setImeOptions(268435456);
+    this.b.setOnEditorActionListener(new SubscribeCommentInputPopupWindow.7(this));
+    this.b.addTextChangedListener(new SubscribeCommentInputPopupWindow.8(this));
+  }
+  
+  private void l()
+  {
+    if (this.p) {
+      c(this.t);
     }
-    this.jdField_c_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIEmoticonMainPanel;
+    this.y = true;
+    Object localObject = this.k;
     if (localObject != null) {
       ((IEmoticonMainPanel)localObject).getView().setVisibility(0);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel;
+    localObject = this.l;
     if (localObject != null) {
       ((SystemAndEmojiEmoticonPanel)localObject).setVisibility(0);
     }
-    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
+    b(this.b);
   }
   
-  @TargetApi(19)
-  public void D_()
+  private Handler m()
   {
-    super.D_();
-    Object localObject = getWindow();
-    if (localObject == null) {
-      return;
+    if (this.v == null) {
+      this.v = new Handler(Looper.getMainLooper());
     }
-    localObject = ((Window)localObject).getDecorView();
-    if ((localObject instanceof ViewGroup))
-    {
-      localObject = (ViewGroup)localObject;
-      int i = 0;
-      localObject = ((ViewGroup)localObject).getChildAt(0);
-      if ((localObject instanceof ViewGroup))
-      {
-        localObject = (ViewGroup)localObject;
-        int j = ((ViewGroup)localObject).getChildCount();
-        while (i < j)
-        {
-          View localView = ((ViewGroup)localObject).getChildAt(i);
-          if (localView == null) {
-            return;
-          }
-          if (localView.getId() == 16908290) {
-            return;
-          }
-          if (!(localView instanceof ViewStub)) {
-            localView.setAlpha(0.0F);
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public String a()
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText;
-    String str = "";
-    if (localObject1 == null) {
-      return "";
-    }
-    Object localObject2;
-    if ((((CommentEditText)localObject1).getText() instanceof QzoneTextBuilder))
-    {
-      localObject2 = (QzoneTextBuilder)this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText();
-      localObject1 = str;
-      if (localObject2 != null) {
-        localObject1 = ((QzoneTextBuilder)localObject2).toPlainText();
-      }
-    }
-    else
-    {
-      localObject1 = str;
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText() instanceof QQTextBuilder))
-      {
-        localObject2 = (QQTextBuilder)this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText();
-        localObject1 = str;
-        if (localObject2 != null) {
-          localObject1 = ((QQTextBuilder)localObject2).toPlainText();
-        }
-      }
-    }
-    return QzoneEmotionUtils.splash2Emo(((String)localObject1).replaceAll(HardCodeUtil.a(2131705865), HardCodeUtil.a(2131705867)).replaceAll(HardCodeUtil.a(2131705864), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131717181), "/chigua")).trim();
+    return this.v;
   }
   
   public void a(View paramView)
@@ -316,34 +249,70 @@ public class SubscribeCommentInputPopupWindow
   
   public void a(SubscribeCommentInputPopupWindow.EventListener paramEventListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow$EventListener = paramEventListener;
+    this.r = paramEventListener;
   }
   
   public void a(SubscribeCommentInputPopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow$OnDismissListener = paramOnDismissListener;
+    this.s = paramOnDismissListener;
   }
   
   public void a(String paramString)
   {
-    CommentEditText localCommentEditText = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText;
+    CommentEditText localCommentEditText = this.b;
     if (localCommentEditText == null) {
       return;
     }
     localCommentEditText.setText(paramString);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(paramString.length());
+    this.b.setSelection(paramString.length());
   }
   
   public void a(boolean paramBoolean)
   {
     show();
-    h();
+    j();
     if (paramBoolean)
     {
-      a().post(new SubscribeCommentInputPopupWindow.11(this));
+      m().post(new SubscribeCommentInputPopupWindow.11(this));
       return;
     }
-    a().post(new SubscribeCommentInputPopupWindow.12(this));
+    m().post(new SubscribeCommentInputPopupWindow.12(this));
+  }
+  
+  @TargetApi(19)
+  public void aF_()
+  {
+    super.aF_();
+    Object localObject = getWindow();
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((Window)localObject).getDecorView();
+    if ((localObject instanceof ViewGroup))
+    {
+      localObject = (ViewGroup)localObject;
+      int i1 = 0;
+      localObject = ((ViewGroup)localObject).getChildAt(0);
+      if ((localObject instanceof ViewGroup))
+      {
+        localObject = (ViewGroup)localObject;
+        int i2 = ((ViewGroup)localObject).getChildCount();
+        while (i1 < i2)
+        {
+          View localView = ((ViewGroup)localObject).getChildAt(i1);
+          if (localView == null) {
+            return;
+          }
+          if (localView.getId() == 16908290) {
+            return;
+          }
+          if (!(localView instanceof ViewStub)) {
+            localView.setAlpha(0.0F);
+          }
+          i1 += 1;
+        }
+      }
+    }
   }
   
   protected void b()
@@ -366,7 +335,7 @@ public class SubscribeCommentInputPopupWindow
   
   public void b(String paramString)
   {
-    CommentEditText localCommentEditText = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText;
+    CommentEditText localCommentEditText = this.b;
     if (localCommentEditText != null) {
       localCommentEditText.setHint(paramString);
     }
@@ -374,19 +343,50 @@ public class SubscribeCommentInputPopupWindow
   
   protected void c()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(200L);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new SubscribeCommentInputPopupWindow.4(this));
-      this.jdField_a_of_type_AndroidViewView.setAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-      this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.start();
+      this.w = new AlphaAnimation(0.0F, 1.0F);
+      this.w.setDuration(200L);
+      this.w.setAnimationListener(new SubscribeCommentInputPopupWindow.4(this));
+      this.a.setAnimation(this.w);
+      this.w.start();
     }
+  }
+  
+  public String d()
+  {
+    Object localObject1 = this.b;
+    String str = "";
+    if (localObject1 == null) {
+      return "";
+    }
+    Object localObject2;
+    if ((((CommentEditText)localObject1).getText() instanceof QzoneTextBuilder))
+    {
+      localObject2 = (QzoneTextBuilder)this.b.getText();
+      localObject1 = str;
+      if (localObject2 != null) {
+        localObject1 = ((QzoneTextBuilder)localObject2).toPlainText();
+      }
+    }
+    else
+    {
+      localObject1 = str;
+      if ((this.b.getText() instanceof QQTextBuilder))
+      {
+        localObject2 = (QQTextBuilder)this.b.getText();
+        localObject1 = str;
+        if (localObject2 != null) {
+          localObject1 = ((QQTextBuilder)localObject2).toPlainText();
+        }
+      }
+    }
+    return QzoneEmotionUtils.splash2Emo(((String)localObject1).replaceAll(HardCodeUtil.a(2131903750), HardCodeUtil.a(2131903752)).replaceAll(HardCodeUtil.a(2131903749), "/MM").replaceAll(BaseApplicationImpl.sApplication.getResources().getString(2131914654), "/chigua")).trim();
   }
   
   public void dismiss()
   {
-    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
+    b(this.b);
     b(false);
     super.dismiss();
   }
@@ -401,45 +401,45 @@ public class SubscribeCommentInputPopupWindow
     {
     default: 
       break;
-    case 2131378535: 
+    case 2131447156: 
       QLog.d("QCircleBaseInputPopupWindow", 1, "text_input");
       b(true);
-      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      this.h.setVisibility(8);
+      this.g.setVisibility(0);
       break;
-    case 2131364001: 
-      localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow$EventListener;
+    case 2131429958: 
+      localObject = this.r;
       if (localObject != null) {
         ((SubscribeCommentInputPopupWindow.EventListener)localObject).a();
       }
       break;
-    case 2131363962: 
+    case 2131429918: 
       QLog.d("QCircleBaseInputPopupWindow", 1, "btn_keyboard");
       b(true);
-      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+      this.h.setVisibility(8);
+      this.g.setVisibility(0);
       break;
-    case 2131363924: 
+    case 2131429880: 
       QLog.d("QCircleBaseInputPopupWindow", 1, "btn_emotion");
-      j();
-      this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      l();
+      this.h.setVisibility(0);
+      this.g.setVisibility(8);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper;
+    paramDialogInterface = this.u;
     if (paramDialogInterface != null)
     {
       paramDialogInterface.a();
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper = null;
+      this.u = null;
     }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_b_of_type_Boolean = false;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizSubscribeCommentSubscribeCommentInputPopupWindow$OnDismissListener;
+    this.g.setVisibility(8);
+    this.h.setVisibility(0);
+    this.p = false;
+    paramDialogInterface = this.s;
     if (paramDialogInterface != null) {
       paramDialogInterface.a();
     }

@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.qqexpand.bean.chat.ExpandFriendData;
 
 class LimitChatPie$20
-  implements View.OnClickListener
+  implements Runnable
 {
   LimitChatPie$20(LimitChatPie paramLimitChatPie) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.B) {
-      LimitChatPie.b(this.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    LimitChatPie localLimitChatPie = this.this$0;
+    LimitChatPie.c(localLimitChatPie, ExpandFriendData.getMatchSrc(localLimitChatPie.d, this.this$0.ah.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.20
  * JD-Core Version:    0.7.0.1
  */

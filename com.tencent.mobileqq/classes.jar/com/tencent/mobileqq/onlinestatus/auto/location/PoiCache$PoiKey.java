@@ -5,11 +5,11 @@ import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 class PoiCache$PoiKey
 {
-  private LatLng jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng;
+  private LatLng b;
   
   public PoiCache$PoiKey(PoiCache paramPoiCache, LatLng paramLatLng)
   {
-    this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng = paramLatLng;
+    this.b = paramLatLng;
   }
   
   public boolean equals(Object paramObject)
@@ -23,23 +23,23 @@ class PoiCache$PoiKey
         return false;
       }
       paramObject = (PoiKey)paramObject;
-      double d = LocationUtil.a(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, paramObject.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+      double d = LocationUtil.a(this.b, paramObject.b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[status][poiCache][");
-        localStringBuilder.append(PoiCache.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationPoiCache));
+        localStringBuilder.append(PoiCache.a(this.a));
         localStringBuilder.append("] equals? this.latLng: ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(" that.latLng: ");
-        localStringBuilder.append(paramObject.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+        localStringBuilder.append(paramObject.b);
         localStringBuilder.append(" distance: ");
         localStringBuilder.append(d);
         localStringBuilder.append(" validDistance: ");
-        localStringBuilder.append(PoiCache.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationPoiCache));
+        localStringBuilder.append(PoiCache.b(this.a));
         QLog.d("PoiCache", 2, localStringBuilder.toString());
       }
-      return d < PoiCache.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationPoiCache);
+      return d < PoiCache.b(this.a);
     }
     return false;
   }
@@ -51,7 +51,7 @@ class PoiCache$PoiKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.PoiCache.PoiKey
  * JD-Core Version:    0.7.0.1
  */

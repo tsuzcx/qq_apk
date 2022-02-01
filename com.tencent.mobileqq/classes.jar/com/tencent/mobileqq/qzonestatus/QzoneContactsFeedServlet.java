@@ -42,10 +42,10 @@ public class QzoneContactsFeedServlet
     {
       a(paramBoolean, paramnewest_feeds_rsp);
       localQQAppInterface.getContactsFeedManager().a(paramnewest_feeds_rsp);
-      localQQAppInterface.getContactsFeedManager().d();
+      localQQAppInterface.getContactsFeedManager().f();
       return;
     }
-    localQQAppInterface.getContactsFeedManager().c();
+    localQQAppInterface.getContactsFeedManager().e();
   }
   
   protected void a(boolean paramBoolean, newest_feeds_rsp paramnewest_feeds_rsp)
@@ -87,7 +87,7 @@ public class QzoneContactsFeedServlet
             {
               localObject2 = (Long)((Iterator)localObject4).next();
               Object localObject5 = (QzoneData)((Map)localObject3).get(localObject2);
-              localObject2 = localFriendsManager.a(String.valueOf(localObject2));
+              localObject2 = localFriendsManager.x(String.valueOf(localObject2));
               if (localObject2 == null) {
                 continue;
               }
@@ -145,7 +145,7 @@ public class QzoneContactsFeedServlet
                 }
                 localNumberFormatException2.feedType = 2;
                 localNumberFormatException2.feedTime = ((META.StStoryFeed)localObject6).createTime.get();
-                localNumberFormatException2.feedContent = BaseApplicationImpl.getApplication().getString(2131689947);
+                localNumberFormatException2.feedContent = BaseApplicationImpl.getApplication().getString(2131886588);
                 localNumberFormatException2.feedHasPhoto = false;
                 localNumberFormatException2.feedPhotoUrl = ((META.StStoryFeed)localObject6).coverImage.url.get();
                 localArrayList.add(localNumberFormatException2);
@@ -170,7 +170,7 @@ public class QzoneContactsFeedServlet
             if (((Iterator)localObject3).hasNext())
             {
               localObject1 = (feed_info)((Iterator)localObject3).next();
-              ExtensionInfo localExtensionInfo = localFriendsManager.a(String.valueOf(((feed_info)localObject1).opuin));
+              ExtensionInfo localExtensionInfo = localFriendsManager.x(String.valueOf(((feed_info)localObject1).opuin));
               if (localExtensionInfo == null) {
                 break label944;
               }
@@ -262,7 +262,7 @@ public class QzoneContactsFeedServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedServlet
  * JD-Core Version:    0.7.0.1
  */

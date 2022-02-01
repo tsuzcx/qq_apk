@@ -15,13 +15,8 @@ import org.jetbrains.annotations.NotNull;
 public final class SuperPlayerSDKMgr
   implements IPlayerSDKMgr, SDKInitListener
 {
-  private static IPlayerSDKEventListener a;
-  public static final SuperPlayerSDKMgr a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperSuperplayerSuperPlayerSDKMgr = new SuperPlayerSDKMgr();
-  }
+  public static final SuperPlayerSDKMgr a = new SuperPlayerSDKMgr();
+  private static IPlayerSDKEventListener b;
   
   public void a()
   {
@@ -33,13 +28,13 @@ public final class SuperPlayerSDKMgr
   public void a(@NotNull IPlayerSDKEventListener paramIPlayerSDKEventListener)
   {
     Intrinsics.checkParameterIsNotNull(paramIPlayerSDKEventListener, "listener");
-    jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerSDKEventListener = paramIPlayerSDKEventListener;
-    QQVideoPlaySDKManager.a((Context)BaseApplicationImpl.getContext(), (SDKInitListener)this);
+    b = paramIPlayerSDKEventListener;
+    QQVideoPlaySDKManager.initSDKAsync((Context)BaseApplicationImpl.getContext(), (SDKInitListener)this);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return QQVideoPlaySDKManager.a();
+    return QQVideoPlaySDKManager.isSDKReady();
   }
   
   public void onSDKInited(boolean paramBoolean)
@@ -47,14 +42,14 @@ public final class SuperPlayerSDKMgr
     IPlayerSDKEventListener localIPlayerSDKEventListener;
     if (paramBoolean)
     {
-      localIPlayerSDKEventListener = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerSDKEventListener;
+      localIPlayerSDKEventListener = b;
       if (localIPlayerSDKEventListener != null) {
         localIPlayerSDKEventListener.a();
       }
     }
     else
     {
-      localIPlayerSDKEventListener = jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerSDKEventListener;
+      localIPlayerSDKEventListener = b;
       if (localIPlayerSDKEventListener != null) {
         localIPlayerSDKEventListener.a(0);
       }
@@ -63,7 +58,7 @@ public final class SuperPlayerSDKMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.wrapper.superplayer.SuperPlayerSDKMgr
  * JD-Core Version:    0.7.0.1
  */

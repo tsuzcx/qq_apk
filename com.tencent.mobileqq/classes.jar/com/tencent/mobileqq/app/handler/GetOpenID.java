@@ -12,7 +12,7 @@ public class GetOpenID
 {
   public static void a(BaseMessageHandler paramBaseMessageHandler, String paramString)
   {
-    if (((MessageCache)paramBaseMessageHandler.a().getMsgCache()).a(paramString) != null) {
+    if (((MessageCache)paramBaseMessageHandler.b().getMsgCache()).T(paramString) != null) {
       return;
     }
     if (QLog.isColorLevel())
@@ -22,7 +22,7 @@ public class GetOpenID
       ((StringBuilder)localObject).append(paramString);
       QLog.d("openid", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (AccountManager)paramBaseMessageHandler.a().getManager(0);
+    Object localObject = (AccountManager)paramBaseMessageHandler.b().getManager(0);
     HashMap localHashMap = new HashMap();
     RequestCustomSig localRequestCustomSig = new RequestCustomSig();
     localRequestCustomSig.ulCustumFlag = 8192L;
@@ -35,7 +35,7 @@ public class GetOpenID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.GetOpenID
  * JD-Core Version:    0.7.0.1
  */

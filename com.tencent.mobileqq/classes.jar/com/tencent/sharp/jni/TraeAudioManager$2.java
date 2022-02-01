@@ -17,11 +17,11 @@ class TraeAudioManager$2
       localStringBuilder.append("focusChange[");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("], focusSteamType[");
-      localStringBuilder.append(this.a.e);
+      localStringBuilder.append(this.a.m);
       localStringBuilder.append("], mAudioManager.getMode()[");
-      localStringBuilder.append(TraeAudioManager.a(this.a).getMode());
+      localStringBuilder.append(TraeAudioManager.c(this.a).getMode());
       localStringBuilder.append("], mActiveMode[");
-      localStringBuilder.append(this.a.a);
+      localStringBuilder.append(this.a.e);
       localStringBuilder.append("]");
       QLog.w("TraeAudioManager", 2, localStringBuilder.toString());
     }
@@ -29,7 +29,7 @@ class TraeAudioManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.2
  * JD-Core Version:    0.7.0.1
  */

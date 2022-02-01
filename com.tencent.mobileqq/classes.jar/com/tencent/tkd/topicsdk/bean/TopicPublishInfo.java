@@ -14,30 +14,25 @@ public final class TopicPublishInfo
 {
   public static final Parcelable.Creator CREATOR = new TopicPublishInfo.Creator();
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
+  private String a;
   @NotNull
   private String b;
   @NotNull
   private String c;
+  private final boolean d;
   
   public TopicPublishInfo(@NotNull String paramString1, @NotNull String paramString2, @NotNull String paramString3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
     this.c = paramString3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   @NotNull
@@ -52,6 +47,11 @@ public final class TopicPublishInfo
     return this.c;
   }
   
+  public final boolean d()
+  {
+    return this.d;
+  }
+  
   public int describeContents()
   {
     return 0;
@@ -63,7 +63,7 @@ public final class TopicPublishInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TopicPublishInfo { ");
     localStringBuilder.append("coverUrl = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
     localStringBuilder.append("title = ");
     localStringBuilder.append(this.b);
@@ -72,7 +72,7 @@ public final class TopicPublishInfo
     localStringBuilder.append(this.c);
     localStringBuilder.append(',');
     localStringBuilder.append("allowSubmit = ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" }");
     return localStringBuilder.toString();
   }
@@ -84,7 +84,7 @@ public final class TopicPublishInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.TopicPublishInfo
  * JD-Core Version:    0.7.0.1
  */

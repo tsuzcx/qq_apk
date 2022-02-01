@@ -27,7 +27,6 @@ public class FringesTextItems
   extends DynamicTextItem
 {
   public static final float a;
-  private static final String jdField_a_of_type_JavaLangString = "FringesTextItems";
   public static final float b;
   public static final float c;
   public static final float d;
@@ -35,25 +34,26 @@ public class FringesTextItems
   public static final float f;
   public static final float g;
   public static final float h;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  DrawFilter jdField_a_of_type_AndroidGraphicsDrawFilter = new PaintFlagsDrawFilter(0, 3);
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private Bitmap b;
+  private static final String s = "FringesTextItems";
+  private RectF A = new RectF();
   float i;
-  float j;
-  float k;
-  float l;
-  private float m;
-  private float n;
+  DrawFilter j = new PaintFlagsDrawFilter(0, 3);
+  float p;
+  float q;
+  float r;
+  private StaticLayout t;
+  private Bitmap u;
+  private Bitmap v;
+  private TextPaint w = new TextPaint();
+  private Paint x;
+  private float y;
+  private float z;
   
   static
   {
     float f1 = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
-    jdField_a_of_type_Float = 2.0F * f1;
-    jdField_b_of_type_Float = 13.0F * f1;
+    a = 2.0F * f1;
+    b = 13.0F * f1;
     c = 1.0F * f1;
     float f2 = 5.0F * f1;
     d = f2;
@@ -66,15 +66,15 @@ public class FringesTextItems
   public FringesTextItems(int paramInt, List<String> paramList, Typeface paramTypeface, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.b(20.0F, BaseApplicationImpl.getContext().getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSkewX(-0.25F);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-6741743);
+    this.w.setAntiAlias(true);
+    this.w.setTypeface(paramTypeface);
+    this.w.setTextSize(AIOUtils.b(20.0F, BaseApplicationImpl.getContext().getResources()));
+    this.w.setTextSkewX(-0.25F);
+    this.w.setColor(-6741743);
     boolean bool;
     try
     {
-      Paint.class.getDeclaredMethod("setLetterSpacing", new Class[] { Float.TYPE }).invoke(this.jdField_a_of_type_AndroidTextTextPaint, new Object[] { Float.valueOf(0.4F) });
+      Paint.class.getDeclaredMethod("setLetterSpacing", new Class[] { Float.TYPE }).invoke(this.w, new Object[] { Float.valueOf(0.4F) });
       bool = true;
     }
     catch (Exception paramTypeface)
@@ -87,13 +87,13 @@ public class FringesTextItems
     localStringBuilder.append("setLetterSpacing");
     localStringBuilder.append(bool);
     QLog.i(paramTypeface, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap2;
+    this.x = new Paint();
+    this.x.setColor(-1);
+    this.x.setAntiAlias(true);
+    this.x.setStrokeWidth(2.0F);
+    this.x.setStyle(Paint.Style.STROKE);
+    this.v = paramBitmap1;
+    this.u = paramBitmap2;
     if (!paramList.isEmpty()) {
       a(0, (String)paramList.get(0));
     }
@@ -102,153 +102,143 @@ public class FringesTextItems
   private void c(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.translate(this.m - this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), 0.0F);
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
+    paramCanvas.translate(this.y - this.v.getWidth(), 0.0F);
+    paramCanvas.drawBitmap(this.v, 0.0F, 0.0F, null);
     paramCanvas.restore();
     paramCanvas.save();
-    paramCanvas.translate(0.0F, this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight() + e - (this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + g));
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
+    paramCanvas.translate(0.0F, this.v.getHeight() + e - (this.u.getHeight() + g));
+    paramCanvas.drawBitmap(this.u, 0.0F, 0.0F, null);
     paramCanvas.restore();
     paramCanvas.save();
-    paramCanvas.translate(jdField_b_of_type_Float - (this.jdField_a_of_type_AndroidTextStaticLayout.getWidth() - this.i) * 0.5F, e + this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+    paramCanvas.translate(b - (this.t.getWidth() - this.i) * 0.5F, e + this.v.getHeight());
     paramCanvas.save();
-    float f1 = jdField_a_of_type_Float;
+    float f1 = a;
     paramCanvas.translate(-f1, -f1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-65536);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.w.setColor(-65536);
+    this.t.draw(paramCanvas);
     paramCanvas.restore();
     paramCanvas.save();
-    f1 = jdField_a_of_type_Float;
+    f1 = a;
     paramCanvas.translate(f1, f1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16776961);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.w.setColor(-16776961);
+    this.t.draw(paramCanvas);
     paramCanvas.restore();
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    if (super.b(0))
+    this.w.setColor(-1);
+    this.t.draw(paramCanvas);
+    if (super.f(0))
     {
-      f1 = this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
-      float f2 = this.jdField_a_of_type_AndroidTextStaticLayout.getWidth() / 2.0F;
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      f1 = this.t.getHeight();
+      float f2 = this.t.getWidth() / 2.0F;
+      RectF localRectF = this.A;
       float f3 = this.i;
       localRectF.left = (f2 - f3 / 2.0F);
-      float f4 = jdField_a_of_type_Float;
+      float f4 = a;
       localRectF.top = (-f4);
       localRectF.right = (f2 + f3 / 2.0F);
       localRectF.bottom = (f1 + f4);
-      paramCanvas.drawRoundRect(localRectF, 6.0F, 6.0F, a());
+      paramCanvas.drawRoundRect(localRectF, 6.0F, 6.0F, s());
     }
     paramCanvas.restore();
     paramCanvas.save();
-    paramCanvas.translate(0.0F, this.n - c);
-    paramCanvas.drawLine(0.0F, 0.0F, this.m, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.translate(0.0F, this.z - c);
+    paramCanvas.drawLine(0.0F, 0.0F, this.y, 0.0F, this.x);
     paramCanvas.restore();
   }
   
   private void d(Canvas paramCanvas)
   {
     paramCanvas.save();
-    paramCanvas.translate(this.m - this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth(), 0.0F);
-    paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
+    paramCanvas.translate(this.y - this.v.getWidth(), 0.0F);
+    paramCanvas.drawBitmap(this.v, 0.0F, 0.0F, null);
     paramCanvas.restore();
     paramCanvas.save();
-    paramCanvas.translate(this.k, this.l);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, null);
+    paramCanvas.translate(this.q, this.r);
+    paramCanvas.drawBitmap(this.u, 0.0F, 0.0F, null);
     paramCanvas.restore();
     paramCanvas.save();
-    if (this.k > 0.0F) {
-      f1 = jdField_b_of_type_Float;
+    if (this.q > 0.0F) {
+      f1 = b;
     } else {
-      f1 = jdField_b_of_type_Float + (this.m - this.j) * 0.5F;
+      f1 = b + (this.y - this.p) * 0.5F;
     }
-    paramCanvas.translate(f1 - (this.jdField_a_of_type_AndroidTextStaticLayout.getWidth() - this.i) * 0.5F, f + this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+    paramCanvas.translate(f1 - (this.t.getWidth() - this.i) * 0.5F, f + this.v.getHeight());
     paramCanvas.save();
-    float f1 = jdField_a_of_type_Float;
+    float f1 = a;
     paramCanvas.translate(-f1, -f1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-65536);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.w.setColor(-65536);
+    this.t.draw(paramCanvas);
     paramCanvas.restore();
     paramCanvas.save();
-    f1 = jdField_a_of_type_Float;
+    f1 = a;
     paramCanvas.translate(f1, f1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16776961);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    this.w.setColor(-16776961);
+    this.t.draw(paramCanvas);
     paramCanvas.restore();
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-    if (super.b(0))
+    this.w.setColor(-1);
+    this.t.draw(paramCanvas);
+    if (super.f(0))
     {
-      f1 = this.jdField_a_of_type_AndroidTextStaticLayout.getHeight();
-      float f2 = this.jdField_a_of_type_AndroidTextStaticLayout.getWidth() / 2.0F;
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      f1 = this.t.getHeight();
+      float f2 = this.t.getWidth() / 2.0F;
+      RectF localRectF = this.A;
       float f3 = this.i;
       localRectF.left = (f2 - f3 / 2.0F);
-      float f4 = jdField_a_of_type_Float;
+      float f4 = a;
       localRectF.top = (-f4);
       localRectF.right = (f2 + f3 / 2.0F);
       localRectF.bottom = (f1 + f4);
-      paramCanvas.drawRoundRect(localRectF, 6.0F, 6.0F, a());
+      paramCanvas.drawRoundRect(localRectF, 6.0F, 6.0F, s());
     }
     paramCanvas.restore();
     paramCanvas.save();
-    paramCanvas.translate(0.0F, this.n - c);
-    paramCanvas.drawLine(0.0F, 0.0F, this.m, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.translate(0.0F, this.z - c);
+    paramCanvas.drawLine(0.0F, 0.0F, this.y, 0.0F, this.x);
     paramCanvas.restore();
-  }
-  
-  public float a()
-  {
-    return this.m;
-  }
-  
-  public int a()
-  {
-    return 1;
   }
   
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    String str = super.b(paramInt);
+    String str = super.c(paramInt);
     paramString = str;
     if (TextUtils.isEmpty(str)) {
       paramString = "　　";
     }
-    paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131705048));
-    this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(paramString, this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_CENTER, 1.2F, 0.0F, false);
+    paramInt = (int)this.w.measureText(HardCodeUtil.a(2131902938));
+    this.t = new StaticLayout(paramString, this.w, paramInt, Layout.Alignment.ALIGN_CENTER, 1.2F, 0.0F, false);
     float f1 = 0.0F;
     this.i = 0.0F;
-    int i1 = this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount();
+    int k = this.t.getLineCount();
     paramInt = 0;
-    while (paramInt < i1)
+    while (paramInt < k)
     {
-      this.i = Math.max(this.jdField_a_of_type_AndroidTextStaticLayout.getLineWidth(paramInt), this.i);
+      this.i = Math.max(this.t.getLineWidth(paramInt), this.i);
       paramInt += 1;
     }
-    this.j = (this.i + jdField_a_of_type_Float * 2.0F + jdField_b_of_type_Float * 2.0F);
-    if (i1 == 1)
+    this.p = (this.i + a * 2.0F + b * 2.0F);
+    if (k == 1)
     {
-      this.m = this.j;
-      this.n = (this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + jdField_a_of_type_Float * 2.0F + c + d + e + this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+      this.y = this.p;
+      this.z = (this.t.getHeight() + a * 2.0F + c + d + e + this.v.getHeight());
       return;
     }
-    paramString = this.jdField_a_of_type_AndroidTextStaticLayout;
-    paramInt = i1 - 2;
-    float f2 = (paramString.getLineWidth(paramInt) * 0.5F + h + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) * 2.0F;
-    this.m = Math.max(this.j, f2);
-    this.n = (this.jdField_a_of_type_AndroidTextStaticLayout.getHeight() + jdField_a_of_type_Float * 2.0F + c + d + f + this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
-    float f3 = this.j;
+    paramString = this.t;
+    paramInt = k - 2;
+    float f2 = (paramString.getLineWidth(paramInt) * 0.5F + h + this.u.getWidth()) * 2.0F;
+    this.y = Math.max(this.p, f2);
+    this.z = (this.t.getHeight() + a * 2.0F + c + d + f + this.v.getHeight());
+    float f3 = this.p;
     if (f2 <= f3) {
       f1 = (f3 - f2) * 0.5F;
     }
-    this.k = f1;
-    this.l = (this.jdField_a_of_type_AndroidTextStaticLayout.getLineBottom(paramInt) - this.jdField_a_of_type_AndroidTextTextPaint.descent() - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() + this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight() + f);
+    this.q = f1;
+    this.r = (this.t.getLineBottom(paramInt) - this.w.descent() - this.u.getHeight() + this.v.getHeight() + f);
   }
   
   public void a(Canvas paramCanvas)
   {
-    paramCanvas.setDrawFilter(this.jdField_a_of_type_AndroidGraphicsDrawFilter);
-    if (this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() == 1)
+    paramCanvas.setDrawFilter(this.j);
+    if (this.t.getLineCount() == 1)
     {
       c(paramCanvas);
       return;
@@ -261,19 +251,29 @@ public class FringesTextItems
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.n;
+    return 1;
   }
   
-  public int b()
+  public float c()
+  {
+    return this.y;
+  }
+  
+  public float d()
+  {
+    return this.z;
+  }
+  
+  public int g()
   {
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.FringesTextItems
  * JD-Core Version:    0.7.0.1
  */

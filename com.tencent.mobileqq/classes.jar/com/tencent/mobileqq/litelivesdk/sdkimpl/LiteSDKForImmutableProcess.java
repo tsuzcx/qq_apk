@@ -15,35 +15,35 @@ public class LiteSDKForImmutableProcess
   extends BaseLiteSDKImpl
   implements SDKInitListener
 {
-  private static ILiveSDK jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private static final Object a = new Object();
+  private static ILiveSDK b = null;
   
   private LiteSDKForImmutableProcess()
   {
-    if (!QQVideoPlaySDKManager.a()) {
-      QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
+    if (!QQVideoPlaySDKManager.isSDKReady()) {
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplicationImpl.getContext(), this);
     }
   }
   
-  public static ILiveSDK a()
+  public static ILiveSDK f()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (b == null) {
+      synchronized (a)
       {
-        if (jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK == null) {
-          jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK = new LiteSDKForImmutableProcess();
+        if (b == null) {
+          b = new LiteSDKForImmutableProcess();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqLitelivesdkApiILiveSDK;
+    return b;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    if ((BusinessManager.a.a() != null) && (BusinessManager.a.a().a.equals(paramString1))) {
+    if ((BusinessManager.a.b() != null) && (BusinessManager.a.b().a.equals(paramString1))) {
       RoomManager.a(BaseApplicationImpl.getContext(), paramString2);
     } else {
-      BusinessManager.a.a(paramString1).a(new LiteSDKForImmutableProcess.1(this, paramString2));
+      BusinessManager.a.c(paramString1).a(new LiteSDKForImmutableProcess.1(this, paramString2));
     }
     return true;
   }
@@ -59,7 +59,7 @@ public class LiteSDKForImmutableProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.sdkimpl.LiteSDKForImmutableProcess
  * JD-Core Version:    0.7.0.1
  */

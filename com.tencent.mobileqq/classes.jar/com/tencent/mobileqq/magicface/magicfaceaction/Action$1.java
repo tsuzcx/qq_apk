@@ -20,43 +20,43 @@ class Action$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("fun startMagicPlay begins, sumPlayTimes:");
-      ((StringBuilder)localObject).append(this.a.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.a.l);
       ((StringBuilder)localObject).append(",actionGlobalData.openSound:");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.d);
+      ((StringBuilder)localObject).append(this.a.a.n);
       QLog.d("Action", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.a.jdField_c_of_type_Int == 0)
+    if (this.a.l == 0)
     {
-      this.a.b();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.c != null) && (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.c.length() > 0) && (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.d))
+      this.a.c();
+      if ((this.a.d.f != null) && (this.a.d.f.length() > 0) && (this.a.a.n))
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.e > 0)
+        if (this.a.d.h > 0)
         {
-          localObject = this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes;
-          ((MagicfacePlayRes)localObject).e -= 1;
+          localObject = this.a.d;
+          ((MagicfacePlayRes)localObject).h -= 1;
         }
         if (QLog.isColorLevel()) {
           QLog.d("Action", 2, "fun startMagicPlay begins, start play Sound.");
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.c, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.e);
+        this.a.g.a(this.a.d.f, this.a.d.h);
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.a)
+      if (this.a.d.k)
       {
-        this.a.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
-        if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.h == -1) {
-          this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(new long[] { 0L, 1000L }, 0);
+        this.a.m = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
+        if (this.a.d.l == -1) {
+          this.a.m.vibrate(new long[] { 0L, 1000L }, 0);
         } else {
-          this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.h * 1000);
+          this.a.m.vibrate(this.a.d.l * 1000);
         }
       }
     }
     Object localObject = this.a;
-    ((Action)localObject).jdField_c_of_type_Int += 1;
+    ((Action)localObject).l += 1;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("fun startMagicPlay ends, sumPlayTimes:");
-      ((StringBuilder)localObject).append(this.a.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.a.l);
       QLog.d("Action", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -67,48 +67,48 @@ class Action$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("func endMagicPlay begins, isStop:");
-      localStringBuilder.append(this.a.jdField_c_of_type_Boolean);
+      localStringBuilder.append(this.a.k);
       localStringBuilder.append(",timeout:");
-      localStringBuilder.append(this.a.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a.e);
       localStringBuilder.append(",playTimes:");
-      localStringBuilder.append(this.a.jdField_b_of_type_Int);
+      localStringBuilder.append(this.a.f);
       localStringBuilder.append(",sumPlayTimes:");
-      localStringBuilder.append(this.a.jdField_c_of_type_Int);
+      localStringBuilder.append(this.a.l);
       localStringBuilder.append(",isTimeout:");
-      localStringBuilder.append(this.a.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.a.j);
       QLog.d("Action", 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_c_of_type_Boolean)
+    if (this.a.k)
     {
-      this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      this.a.o.countDown();
       return;
     }
-    if (this.a.jdField_a_of_type_Int == -1)
+    if (this.a.e == -1)
     {
-      if (this.a.jdField_b_of_type_Int == -1)
+      if (this.a.f == -1)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
+        this.a.g.a(this.a.d);
         return;
       }
-      if (this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int)
+      if (this.a.f > this.a.l)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
+        this.a.g.a(this.a.d);
         return;
       }
-      if (this.a.jdField_b_of_type_Int == this.a.jdField_c_of_type_Int)
+      if (this.a.f == this.a.l)
       {
-        this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+        this.a.o.countDown();
         return;
       }
     }
-    if (!this.a.jdField_b_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
+    if (!this.a.j) {
+      this.a.g.a(this.a.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.Action.1
  * JD-Core Version:    0.7.0.1
  */

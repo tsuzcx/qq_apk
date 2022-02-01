@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
 
 public class FloatParser
   implements ValueParser<Float>
@@ -14,7 +14,7 @@ public class FloatParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.FloatParser
  * JD-Core Version:    0.7.0.1
  */

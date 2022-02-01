@@ -13,20 +13,20 @@ import mqq.app.MobileQQ;
 
 final class PBPackage
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final WeiyunPB.MsgHead jdField_a_of_type_ComTencentMobileqqWeiyunPbWeiyunPB$MsgHead;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
+  private static final AtomicInteger c = new AtomicInteger(0);
+  private final WeiyunPB.MsgHead a;
+  private final byte[] b;
   
   PBPackage(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunPbWeiyunPB$MsgHead = a(paramInt);
+    this.b = paramArrayOfByte;
+    this.a = a(paramInt);
   }
   
   PBPackage(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunPbWeiyunPB$MsgHead = paramMsgHead;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.a = paramMsgHead;
+    this.b = paramArrayOfByte;
   }
   
   private WeiyunPB.MsgHead a(int paramInt)
@@ -51,22 +51,22 @@ final class PBPackage
   
   public int a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    return c.getAndIncrement();
   }
   
-  public WeiyunPB.MsgHead a()
+  public WeiyunPB.MsgHead b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWeiyunPbWeiyunPB$MsgHead;
+    return this.a;
   }
   
-  public byte[] a()
+  public byte[] c()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.channel.PBPackage
  * JD-Core Version:    0.7.0.1
  */

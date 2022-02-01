@@ -33,15 +33,15 @@ class DiscussionListAdapter2$3
     if ((localObject instanceof DiscussionInfo))
     {
       DiscussionInfo localDiscussionInfo = (DiscussionInfo)localObject;
-      if (NetworkUtil.getSystemNetwork(DiscussionListAdapter2.a(this.a)) == 0)
+      if (NetworkUtil.getSystemNetwork(DiscussionListAdapter2.b(this.a)) == 0)
       {
-        localObject = (BaseActivity)DiscussionListAdapter2.a(this.a);
-        QQToast.a((Context)localObject, 2131696114, 0).b(((BaseActivity)localObject).getTitleBarHeight());
+        localObject = (BaseActivity)DiscussionListAdapter2.b(this.a);
+        QQToast.makeText((Context)localObject, 2131893879, 0).show(((BaseActivity)localObject).getTitleBarHeight());
       }
-      else if ((!localDiscussionInfo.hasCollect) && (((DiscussionManager)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a() >= 80))
+      else if ((!localDiscussionInfo.hasCollect) && (((DiscussionManager)this.a.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c() >= 80))
       {
-        localObject = (BaseActivity)DiscussionListAdapter2.a(this.a);
-        QQToast.a((Context)localObject, DiscussionListAdapter2.a(this.a).getString(2131696113, new Object[] { String.valueOf(80) }), 0).b(((BaseActivity)localObject).getTitleBarHeight());
+        localObject = (BaseActivity)DiscussionListAdapter2.b(this.a);
+        QQToast.makeText((Context)localObject, DiscussionListAdapter2.b(this.a).getString(2131893878, new Object[] { String.valueOf(80) }), 0).show(((BaseActivity)localObject).getTitleBarHeight());
       }
       else
       {
@@ -64,7 +64,7 @@ class DiscussionListAdapter2$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.DiscussionListAdapter2.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class SmartDevicePluginLoader$1
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    DialogInterface.OnDismissListener localOnDismissListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener;
+    DialogInterface.OnDismissListener localOnDismissListener = this.a;
     if (localOnDismissListener != null) {
       localOnDismissListener.onDismiss(paramDialogInterface);
     }
@@ -18,7 +18,7 @@ class SmartDevicePluginLoader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.SmartDevicePluginLoader.1
  * JD-Core Version:    0.7.0.1
  */

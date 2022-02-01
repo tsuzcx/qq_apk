@@ -7,26 +7,26 @@ import mqq.os.MqqHandler;
 
 public class LaunchTrace
 {
-  private int a;
   public long a;
-  public boolean a;
   public long b;
-  private boolean b;
   public long c;
-  private boolean c;
   public long d;
-  private boolean d;
   public long e;
-  private boolean e;
-  private long f;
-  private long g;
+  public boolean f;
+  private boolean g;
   private long h;
   private long i;
   private long j;
+  private long k;
+  private long l;
+  private boolean m;
+  private boolean n;
+  private int o;
+  private boolean p;
   
   void a()
   {
-    this.g = SystemClock.elapsedRealtime();
+    this.i = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.LaunchTrace", 2, "installStartTime");
     }
@@ -34,21 +34,21 @@ public class LaunchTrace
   
   void a(int paramInt, boolean paramBoolean)
   {
-    if (this.f > 0L) {
-      this.jdField_e_of_type_Long = (SystemClock.elapsedRealtime() - this.f);
+    if (this.h > 0L) {
+      this.e = (SystemClock.elapsedRealtime() - this.h);
     }
-    this.jdField_a_of_type_Int = paramInt;
-    if ((!paramBoolean) && (this.jdField_e_of_type_Boolean)) {
+    this.o = paramInt;
+    if ((!paramBoolean) && (this.p)) {
       ThreadManager.getSubThreadHandler().post(new LaunchTrace.1(this));
     }
-    QLog.d("QFlutter.LaunchTrace", 1, String.format("[QFlutterLaunchCost]onLaunchFinish,isPreloadProcess: %s, errorCode: %s, isLocalEngineExist: %s, isLocalAppExist: %s, launchCost: %s, installCost: %s, loadAssetCost: %s, loadEngineCost: %s, isQuickInstall: %s", new Object[] { Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.jdField_d_of_type_Boolean), Long.valueOf(this.jdField_e_of_type_Long), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_d_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    QLog.d("QFlutter.LaunchTrace", 1, String.format("[QFlutterLaunchCost]onLaunchFinish,isPreloadProcess: %s, errorCode: %s, isLocalEngineExist: %s, isLocalAppExist: %s, launchCost: %s, installCost: %s, loadAssetCost: %s, loadEngineCost: %s, isQuickInstall: %s", new Object[] { Boolean.valueOf(this.g), Integer.valueOf(paramInt), Boolean.valueOf(this.m), Boolean.valueOf(this.n), Long.valueOf(this.e), Long.valueOf(this.a), Long.valueOf(this.b), Long.valueOf(this.d), Boolean.valueOf(this.f) }));
   }
   
   void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_e_of_type_Boolean = paramBoolean2;
-    this.f = SystemClock.elapsedRealtime();
+    this.g = paramBoolean1;
+    this.p = paramBoolean2;
+    this.h = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.LaunchTrace", 2, "onLaunchStart");
     }
@@ -56,25 +56,20 @@ public class LaunchTrace
   
   void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (this.g > 0L) {
-      this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.g);
+    if (this.i > 0L) {
+      this.a = (SystemClock.elapsedRealtime() - this.i);
     }
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    this.jdField_d_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_Boolean = paramBoolean3;
+    this.m = paramBoolean1;
+    this.n = paramBoolean2;
+    this.f = paramBoolean3;
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.LaunchTrace", 2, String.format("onInstallFinish, isLocalEngineExist: %s, isLocalAppExist: %s, isQuickInstall: %b, installCost: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Long.valueOf(this.jdField_a_of_type_Long) }));
+      QLog.d("QFlutter.LaunchTrace", 2, String.format("onInstallFinish, isLocalEngineExist: %s, isLocalAppExist: %s, isQuickInstall: %b, installCost: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Long.valueOf(this.a) }));
     }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_d_of_type_Boolean) && (this.jdField_c_of_type_Boolean);
   }
   
   void b()
   {
-    this.h = SystemClock.elapsedRealtime();
+    this.j = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.LaunchTrace", 2, "onLoadAssetStart");
     }
@@ -82,17 +77,17 @@ public class LaunchTrace
   
   void c()
   {
-    if (this.h > 0L) {
-      this.jdField_b_of_type_Long = (SystemClock.elapsedRealtime() - this.h);
+    if (this.j > 0L) {
+      this.b = (SystemClock.elapsedRealtime() - this.j);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.LaunchTrace", 2, String.format("onLoadAssetFinish, loadAssetCost: %s", new Object[] { Long.valueOf(this.jdField_b_of_type_Long) }));
+      QLog.d("QFlutter.LaunchTrace", 2, String.format("onLoadAssetFinish, loadAssetCost: %s", new Object[] { Long.valueOf(this.b) }));
     }
   }
   
   void d()
   {
-    this.i = SystemClock.elapsedRealtime();
+    this.k = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.LaunchTrace", 2, "onReloadAssetIfNeedStart");
     }
@@ -100,17 +95,17 @@ public class LaunchTrace
   
   void e()
   {
-    if (this.i > 0L) {
-      this.jdField_c_of_type_Long = (SystemClock.elapsedRealtime() - this.i);
+    if (this.k > 0L) {
+      this.c = (SystemClock.elapsedRealtime() - this.k);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.LaunchTrace", 2, String.format("onReloadAssetIfNeedFinish, reloadAssetIfNeedCost: %s", new Object[] { Long.valueOf(this.jdField_c_of_type_Long) }));
+      QLog.d("QFlutter.LaunchTrace", 2, String.format("onReloadAssetIfNeedFinish, reloadAssetIfNeedCost: %s", new Object[] { Long.valueOf(this.c) }));
     }
   }
   
   void f()
   {
-    this.j = SystemClock.elapsedRealtime();
+    this.l = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.LaunchTrace", 2, "onLoadEngineStart");
     }
@@ -118,30 +113,35 @@ public class LaunchTrace
   
   void g()
   {
-    if (this.j > 0L) {
-      this.jdField_d_of_type_Long = (SystemClock.elapsedRealtime() - this.j);
+    if (this.l > 0L) {
+      this.d = (SystemClock.elapsedRealtime() - this.l);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.LaunchTrace", 2, String.format("onLoadEngineFinish, loadEngineCost: %s", new Object[] { Long.valueOf(this.jdField_d_of_type_Long) }));
+      QLog.d("QFlutter.LaunchTrace", 2, String.format("onLoadEngineFinish, loadEngineCost: %s", new Object[] { Long.valueOf(this.d) }));
     }
   }
   
-  public void h()
+  public boolean h()
   {
-    this.f = 0L;
-    this.g = 0L;
-    this.jdField_a_of_type_Long = 0L;
+    return (this.n) && (this.m);
+  }
+  
+  public void i()
+  {
     this.h = 0L;
-    this.jdField_b_of_type_Long = 0L;
+    this.i = 0L;
+    this.a = 0L;
     this.j = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
+    this.b = 0L;
+    this.l = 0L;
+    this.d = 0L;
+    this.e = 0L;
+    this.o = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.LaunchTrace
  * JD-Core Version:    0.7.0.1
  */

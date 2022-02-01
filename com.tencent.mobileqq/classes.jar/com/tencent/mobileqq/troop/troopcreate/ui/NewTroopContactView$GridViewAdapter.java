@@ -26,46 +26,46 @@ public class NewTroopContactView$GridViewAdapter
   extends BaseAdapter
   implements DecodeTaskCompletionListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean = false;
+  private final Drawable b;
+  private boolean c = false;
+  private Context d;
   
   public NewTroopContactView$GridViewAdapter(NewTroopContactView paramNewTroopContactView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844953);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext.getResources().getDrawable(2130846389);
+    this.d = paramContext;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.c != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.c.size() > 0))
+      if ((this.a.o != null) && (this.a.o.size() > 0))
       {
-        String str = ((ResultRecord)this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.c.get(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.c.size() - 1)).uin;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.a(str))
+        String str = ((ResultRecord)this.a.o.get(this.a.o.size() - 1)).uin;
+        if (this.a.a(str))
         {
-          NewTroopContactView.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView, str);
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView$ExpandableListAdapter.notifyDataSetChanged();
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.b(false);
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.o();
+          NewTroopContactView.a(this.a, str);
+          this.a.y.notifyDataSetChanged();
+          this.a.b(false);
+          this.a.p();
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.c = false;
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.c.size();
+    return this.a.o.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.c.get(paramInt);
+    return this.a.o.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -78,14 +78,14 @@ public class NewTroopContactView$GridViewAdapter
     ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getLayoutInflater().inflate(2131559277, null);
+      localView = this.a.a.getLayoutInflater().inflate(2131625198, null);
     }
     localView.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)localView.findViewById(2131366401);
+    ImageView localImageView = (ImageView)localView.findViewById(2131432714);
     if (paramInt == getCount() - 1)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (this.c) {
+        paramView = this.b;
       } else {
         paramView = null;
       }
@@ -102,27 +102,27 @@ public class NewTroopContactView$GridViewAdapter
     } else {
       i = 1;
     }
-    TextView localTextView = (TextView)localView.findViewById(2131379723);
+    TextView localTextView = (TextView)localView.findViewById(2131448522);
     if (localResultRecord.type == 5)
     {
-      localImageView.setImageResource(2130842159);
+      localImageView.setImageResource(2130843087);
       localTextView.setVisibility(0);
-      localTextView.setText(NewTroopContactView.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView).getHeaderText(localResultRecord.name));
+      localTextView.setText(NewTroopContactView.b(this.a).getHeaderText(localResultRecord.name));
     }
     else
     {
       String str = localResultRecord.uin;
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(i, str);
+      Bitmap localBitmap = this.a.s.getBitmapFromCache(i, str);
       paramView = localBitmap;
       if (localBitmap == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(str, i, true);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_AndroidGraphicsBitmap;
+        this.a.s.requestDecodeFace(str, i, true);
+        paramView = this.a.t;
       }
-      localImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources(), paramView));
+      localImageView.setBackgroundDrawable(new BitmapDrawable(this.a.a.getResources(), paramView));
       localTextView.setVisibility(8);
     }
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       localImageView.setContentDescription(localResultRecord.name);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
@@ -131,22 +131,22 @@ public class NewTroopContactView$GridViewAdapter
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.c = false;
     super.notifyDataSetChanged();
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView == null) {
+    if (this.a.i == null) {
       return;
     }
     paramInt1 = 0;
-    while (paramInt1 < this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView.getChildCount())
+    while (paramInt1 < this.a.i.getChildCount())
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView.getChildAt(paramInt1);
+      View localView = this.a.i.getChildAt(paramInt1);
       Object localObject = localView.getTag();
       if ((localObject != null) && ((localObject instanceof ResultRecord)) && (paramString.equals(((ResultRecord)localObject).uin))) {
-        ((ImageView)localView.findViewById(2131366401)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources(), paramBitmap));
+        ((ImageView)localView.findViewById(2131432714)).setBackgroundDrawable(new BitmapDrawable(this.a.a.getResources(), paramBitmap));
       }
       paramInt1 += 1;
     }
@@ -154,7 +154,7 @@ public class NewTroopContactView$GridViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.GridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

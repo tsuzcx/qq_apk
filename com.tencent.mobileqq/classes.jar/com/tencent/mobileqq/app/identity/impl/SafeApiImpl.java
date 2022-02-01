@@ -63,7 +63,7 @@ public class SafeApiImpl
   
   public boolean getIsPushRecommandDevLock(AppRuntime paramAppRuntime)
   {
-    return EquipmentLockImpl.a().c();
+    return EquipmentLockImpl.a().i();
   }
   
   public boolean getLoginDevList(AppRuntime paramAppRuntime, String paramString, long paramLong)
@@ -124,7 +124,7 @@ public class SafeApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.impl.SafeApiImpl
  * JD-Core Version:    0.7.0.1
  */

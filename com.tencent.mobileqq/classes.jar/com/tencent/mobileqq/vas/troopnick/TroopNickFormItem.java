@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 public final class TroopNickFormItem
   extends FormSimpleItem
 {
-  private boolean d;
+  private boolean a;
   
   public TroopNickFormItem(@Nullable Context paramContext)
   {
@@ -24,12 +24,12 @@ public final class TroopNickFormItem
   
   public void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickFormItem
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ public class AccountShowUtils
   
   public static void a(Container paramContainer, IReadInJoyModel paramIReadInJoyModel, String paramString)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     paramContainer = paramContainer.getVirtualView();
     AvatarView localAvatarView = (AvatarView)paramContainer.findViewBaseByName("id_partner_info_avator");
     if (localAvatarView != null) {
@@ -37,7 +37,7 @@ public class AccountShowUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.AccountShowUtils
  * JD-Core Version:    0.7.0.1
  */

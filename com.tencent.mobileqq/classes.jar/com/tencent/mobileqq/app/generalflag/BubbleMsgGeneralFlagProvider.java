@@ -28,8 +28,8 @@ public class BubbleMsgGeneralFlagProvider
     {
       int i = paramPbSendMsgReq.toByteArray().length;
       paramQQAppInterface = (ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-      int j = paramQQAppInterface.d();
-      int k = paramQQAppInterface.b();
+      int j = paramQQAppInterface.f();
+      int k = paramQQAppInterface.d();
       boolean bool2 = false;
       boolean bool1;
       if (k > 0)
@@ -41,10 +41,10 @@ public class BubbleMsgGeneralFlagProvider
           if (paramQQAppInterface != null)
           {
             bool1 = bool2;
-            if (paramQQAppInterface.a != null)
+            if (paramQQAppInterface.s != null)
             {
               bool1 = bool2;
-              if (paramQQAppInterface.a.size() <= 0) {}
+              if (paramQQAppInterface.s.size() <= 0) {}
             }
           }
         }
@@ -140,7 +140,7 @@ public class BubbleMsgGeneralFlagProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.generalflag.BubbleMsgGeneralFlagProvider
  * JD-Core Version:    0.7.0.1
  */

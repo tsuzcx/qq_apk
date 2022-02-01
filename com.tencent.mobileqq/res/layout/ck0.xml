@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/jt9" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/mmj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/mmi" android:layout="@layout/cjt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/iag" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
-        <include layout="@layout/cl3" />
-        <ViewStub android:layout_gravity="center" android:id="@id/mr1" android:layout="@layout/cjy" android:layout_width="24.0dip" android:layout_height="24.0dip" />
-    </LinearLayout>
-    <ViewStub android:id="@id/ni2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/oib" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/9i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ViewStub android:id="@id/odq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

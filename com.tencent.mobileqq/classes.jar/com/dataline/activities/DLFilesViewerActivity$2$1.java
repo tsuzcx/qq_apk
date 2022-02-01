@@ -9,7 +9,7 @@ class DLFilesViewerActivity$2$1
   
   public void run()
   {
-    DLFilesViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity$2.a).a(this.jdField_a_of_type_Long, DLFilesViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesDLFilesViewerActivity$2.a), this.jdField_a_of_type_Float);
+    DLFilesViewerActivity.b(this.c.a).a(this.a, DLFilesViewerActivity.e(this.c.a), this.b);
   }
 }
 

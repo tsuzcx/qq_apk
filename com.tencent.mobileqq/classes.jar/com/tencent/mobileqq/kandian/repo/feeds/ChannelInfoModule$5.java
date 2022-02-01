@@ -10,43 +10,43 @@ class ChannelInfoModule$5
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
       ReadInJoyLogicEngineEventDispatcher.a().c(false, null);
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.b)
     {
-      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
+      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.c);
       return;
     }
     ChannelInfoModule.a(this.this$0, true);
-    this.this$0.a(this.jdField_a_of_type_JavaUtilList, true);
-    this.this$0.f(this.jdField_b_of_type_JavaUtilList);
-    if (!RIJQQAppInterfaceUtil.a())
+    this.this$0.a(this.c, true);
+    this.this$0.g(this.d);
+    if (!RIJQQAppInterfaceUtil.g())
     {
-      Object localObject = this.this$0.a(this.jdField_a_of_type_JavaUtilList);
-      SpecialChannelFilter.a().a(this.jdField_b_of_type_JavaUtilList);
+      Object localObject = this.this$0.e(this.c);
+      SpecialChannelFilter.a().a(this.d);
       SpecialChannelFilter.a().b((List)localObject);
-      localObject = this.this$0.g();
-      if (!this.jdField_b_of_type_JavaUtilList.equals(localObject))
+      localObject = this.this$0.m();
+      if (!this.d.equals(localObject))
       {
         localObject = this.this$0;
-        ((ChannelInfoModule)localObject).e(((ChannelInfoModule)localObject).g());
+        ((ChannelInfoModule)localObject).f(((ChannelInfoModule)localObject).m());
       }
     }
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.this$0.e());
-    if (!RIJQQAppInterfaceUtil.a())
+    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.this$0.i());
+    if (!RIJQQAppInterfaceUtil.g())
     {
-      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.this$0.f());
+      ReadInJoyLogicEngineEventDispatcher.a().c(true, this.this$0.j());
       return;
     }
-    ReadInJoyLogicEngineEventDispatcher.a().c(true, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().c(true, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ChannelInfoModule.5
  * JD-Core Version:    0.7.0.1
  */

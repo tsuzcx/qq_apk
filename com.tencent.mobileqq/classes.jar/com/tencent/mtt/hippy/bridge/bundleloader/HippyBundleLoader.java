@@ -15,11 +15,11 @@ public abstract interface HippyBundleLoader
   
   public abstract String getRawPath();
   
-  public abstract boolean load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback);
+  public abstract void load(HippyBridge paramHippyBridge, NativeCallback paramNativeCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader
  * JD-Core Version:    0.7.0.1
  */

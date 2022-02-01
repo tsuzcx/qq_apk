@@ -22,16 +22,16 @@ class BridgeHelper$MyReceiver
     {
       try
       {
-        paramContext.unregisterReceiver(BridgeHelper.a());
+        paramContext.unregisterReceiver(BridgeHelper.c());
       }
       catch (Exception paramIntent)
       {
         paramIntent.printStackTrace();
       }
       BridgeHelper.a(null);
-      if (BridgeHelper.a() != null)
+      if (BridgeHelper.d() != null)
       {
-        BridgeHelper.a().dismiss();
+        BridgeHelper.d().dismiss();
         BridgeHelper.a(null);
       }
       if ((paramContext instanceof BridgePluginInstallActivity))
@@ -46,7 +46,7 @@ class BridgeHelper$MyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.pluginbridge.BridgeHelper.MyReceiver
  * JD-Core Version:    0.7.0.1
  */

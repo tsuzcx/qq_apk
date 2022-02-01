@@ -18,11 +18,11 @@ public final class LongContentInfoUpdater$Companion
   public final LongContentInfoUpdater a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    Map localMap = LongContentInfoUpdater.a();
+    Map localMap = LongContentInfoUpdater.f();
     paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSocialFeedInfo;
     if (paramAbsBaseArticleInfo != null)
     {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.a;
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.L;
       if (paramAbsBaseArticleInfo != null)
       {
         paramAbsBaseArticleInfo = Integer.valueOf(paramAbsBaseArticleInfo.a);
@@ -36,7 +36,7 @@ public final class LongContentInfoUpdater$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.longcontentinfoupdater.LongContentInfoUpdater.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -20,17 +20,17 @@ public class FormResHelper
           if (paramInt != 3)
           {
             if (paramInt != 4) {
-              return paramResources.getColorStateList(2131167056);
+              return paramResources.getColorStateList(2131167993);
             }
-            return paramResources.getColorStateList(2131167190);
+            return paramResources.getColorStateList(2131168175);
           }
-          return paramResources.getColorStateList(2131167152);
+          return paramResources.getColorStateList(2131168133);
         }
-        return paramResources.getColorStateList(2131167138);
+        return paramResources.getColorStateList(2131168118);
       }
-      return paramResources.getColorStateList(2131167064);
+      return paramResources.getColorStateList(2131168002);
     }
-    return paramResources.getColorStateList(2131167056);
+    return paramResources.getColorStateList(2131167993);
   }
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
@@ -38,9 +38,9 @@ public class FormResHelper
     if (paramBoolean)
     {
       if (a) {
-        return paramResources.getDrawable(2130839433);
+        return paramResources.getDrawable(2130839622);
       }
-      return paramResources.getDrawable(2130850703);
+      return paramResources.getDrawable(2130852507);
     }
     if (paramInt != 0)
     {
@@ -49,27 +49,27 @@ public class FormResHelper
         if (paramInt != 2)
         {
           if (paramInt != 3) {
-            return paramResources.getDrawable(2130839433);
+            return paramResources.getDrawable(2130839622);
           }
           if (a) {
-            return paramResources.getDrawable(2130839440);
+            return paramResources.getDrawable(2130839629);
           }
-          return paramResources.getDrawable(2130850708);
+          return paramResources.getDrawable(2130852512);
         }
         if (a) {
-          return paramResources.getDrawable(2130839443);
+          return paramResources.getDrawable(2130839632);
         }
-        return paramResources.getDrawable(2130850717);
+        return paramResources.getDrawable(2130852521);
       }
       if (a) {
-        return paramResources.getDrawable(2130839443);
+        return paramResources.getDrawable(2130839632);
       }
-      return paramResources.getDrawable(2130850717);
+      return paramResources.getDrawable(2130852521);
     }
     if (a) {
-      return paramResources.getDrawable(2130839433);
+      return paramResources.getDrawable(2130839622);
     }
-    return paramResources.getDrawable(2130850703);
+    return paramResources.getDrawable(2130852507);
   }
   
   public static void a(boolean paramBoolean)
@@ -79,7 +79,7 @@ public class FormResHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormResHelper
  * JD-Core Version:    0.7.0.1
  */

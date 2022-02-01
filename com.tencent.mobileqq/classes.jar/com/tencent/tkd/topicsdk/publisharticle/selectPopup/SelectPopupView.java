@@ -24,89 +24,89 @@ import org.jetbrains.annotations.Nullable;
 public final class SelectPopupView
   extends PopupWindow
 {
-  private int jdField_a_of_type_Int = 12;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  @Nullable
-  private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private String a = "";
   @NotNull
-  private String jdField_b_of_type_JavaLangString = "";
+  private String b = "";
+  private int c = 12;
+  private View d;
+  private TextView e;
+  private TextView f;
+  private ImageView g;
+  private TextView h;
   @Nullable
-  private Function0<Unit> jdField_b_of_type_KotlinJvmFunctionsFunction0;
-  private TextView c;
+  private Function0<Unit> i;
+  @Nullable
+  private Function0<Unit> j;
   
   public SelectPopupView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.layout.F, null, false);
-    View localView = paramAttributeSet.findViewById(R.id.bi);
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.layout.B, null, false);
+    View localView = paramAttributeSet.findViewById(R.id.aH);
     Intrinsics.checkExpressionValueIsNotNull(localView, "it.findViewById(R.id.tv_title)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView);
-    localView = paramAttributeSet.findViewById(R.id.bm);
+    this.e = ((TextView)localView);
+    localView = paramAttributeSet.findViewById(R.id.aK);
     Intrinsics.checkExpressionValueIsNotNull(localView, "it.findViewById(R.id.tv_wording)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView);
-    localView = paramAttributeSet.findViewById(R.id.V);
+    this.f = ((TextView)localView);
+    localView = paramAttributeSet.findViewById(R.id.B);
     Intrinsics.checkExpressionValueIsNotNull(localView, "it.findViewById(R.id.iv_cancel)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView);
-    localView = paramAttributeSet.findViewById(R.id.aW);
+    this.g = ((ImageView)localView);
+    localView = paramAttributeSet.findViewById(R.id.ax);
     Intrinsics.checkExpressionValueIsNotNull(localView, "it.findViewById(R.id.tv_count_limit)");
-    this.c = ((TextView)localView);
+    this.h = ((TextView)localView);
     Intrinsics.checkExpressionValueIsNotNull(paramAttributeSet, "LayoutInflater.from(cont…_limit)\n                }");
-    this.jdField_a_of_type_AndroidViewView = paramAttributeSet;
-    setContentView(this.jdField_a_of_type_AndroidViewView);
+    this.d = paramAttributeSet;
+    setContentView(this.d);
     setWidth(DisplayUtils.a.a(paramContext, 254.0F));
     setHeight(-2);
     if (Build.VERSION.SDK_INT >= 21) {
       setElevation(10.0F);
     }
     setBackgroundDrawable(null);
-    this.jdField_b_of_type_AndroidWidgetTextView.addTextChangedListener((TextWatcher)new SelectPopupView.2(this));
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.f.addTextChangedListener((TextWatcher)new SelectPopupView.2(this));
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramString);
+    this.a = paramString;
+    this.e.setText((CharSequence)paramString);
   }
   
   public final void a(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener((View.OnClickListener)new SelectPopupView.onCloseClickListener.1(paramFunction0));
+    this.i = paramFunction0;
+    this.g.setOnClickListener((View.OnClickListener)new SelectPopupView.onCloseClickListener.1(paramFunction0));
+  }
+  
+  public final int b()
+  {
+    return this.c;
   }
   
   public final void b(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)paramString);
+    this.b = paramString;
+    this.f.setText((CharSequence)paramString);
   }
   
   public final void b(@Nullable Function0<Unit> paramFunction0)
   {
-    this.jdField_b_of_type_KotlinJvmFunctionsFunction0 = paramFunction0;
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new SelectPopupView.onLayoutClickListener.1(paramFunction0));
+    this.j = paramFunction0;
+    this.d.setOnClickListener((View.OnClickListener)new SelectPopupView.onLayoutClickListener.1(paramFunction0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.selectPopup.SelectPopupView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,16 +4,16 @@ import java.util.List;
 
 public class TroopDetailOnlineData
 {
-  public int a;
-  public long a;
-  public String a;
   public List<TroopOnlineMemberItem> a;
-  public int b;
-  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.onlinemember.data.TroopDetailOnlineData
  * JD-Core Version:    0.7.0.1
  */

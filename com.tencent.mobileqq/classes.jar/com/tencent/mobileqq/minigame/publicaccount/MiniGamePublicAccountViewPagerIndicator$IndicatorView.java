@@ -11,8 +11,8 @@ import java.lang.reflect.Array;
 class MiniGamePublicAccountViewPagerIndicator$IndicatorView
   extends View
 {
-  private static final int HEIGHT = ViewUtils.b(2.0F);
-  private static final int SPACE = ViewUtils.b(2.5F);
+  private static final int HEIGHT = ViewUtils.dpToPx(2.0F);
+  private static final int SPACE = ViewUtils.dpToPx(2.5F);
   private MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig mConfig;
   
   public MiniGamePublicAccountViewPagerIndicator$IndicatorView(Context paramContext, MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig paramIndicatorViewConfig)
@@ -83,7 +83,7 @@ class MiniGamePublicAccountViewPagerIndicator$IndicatorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountViewPagerIndicator.IndicatorView
  * JD-Core Version:    0.7.0.1
  */

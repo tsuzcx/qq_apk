@@ -24,8 +24,8 @@ class NearbyProfileEditPanel$21
       if (QLog.isColorLevel()) {
         QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
       }
-      this.a.a.dismissWaittingDialog();
-      this.a.a.showToast(HardCodeUtil.a(2131707335));
+      this.a.F.dismissWaittingDialog();
+      this.a.F.showToast(HardCodeUtil.a(2131905158));
       return;
     }
     if (localFileMsg.fileType == 8)
@@ -37,17 +37,17 @@ class NearbyProfileEditPanel$21
         paramMessage.append(NearbyPeoplePhotoUploadProcessor.mPhotoId);
         QLog.i("Q.nearby_people_card.upload_local_photo", 2, paramMessage.toString());
       }
-      if (NearbyProfileEditPanel.a(this.a) != null)
+      if (NearbyProfileEditPanel.f(this.a) != null)
       {
-        NearbyProfileEditPanel.a(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
-        NearbyProfileEditPanel.d(this.a);
+        NearbyProfileEditPanel.f(this.a).a = NearbyPeoplePhotoUploadProcessor.mPhotoId;
+        NearbyProfileEditPanel.g(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.21
  * JD-Core Version:    0.7.0.1
  */

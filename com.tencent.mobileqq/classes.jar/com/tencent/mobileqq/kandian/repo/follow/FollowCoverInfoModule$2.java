@@ -26,7 +26,7 @@ class FollowCoverInfoModule$2
         } else {
           ((SharedPreferences.Editor)localObject).putString("follow_tab_topic_update_info", Base64.encodeToString(localTopicRecommendFeedsInfo.a().toByteArray(), 0));
         }
-        ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", FollowCoverInfoModule.a(this.this$0));
+        ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", FollowCoverInfoModule.b(this.this$0));
         RIJSPUtils.a((SharedPreferences.Editor)localObject, true);
       }
     }
@@ -34,7 +34,7 @@ class FollowCoverInfoModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.follow.FollowCoverInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

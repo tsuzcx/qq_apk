@@ -10,8 +10,8 @@ class PopupDialog$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PopupDialog.a.a != null) {
-      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
+    if (PopupDialog.a.h != null) {
+      PopupDialog.a.h.onClick(paramDialogInterface, paramInt);
     }
     paramDialogInterface.dismiss();
     PopupDialog.a();

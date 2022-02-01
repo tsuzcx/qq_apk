@@ -11,7 +11,6 @@ import com.tencent.biz.pubaccount.ecshopassit.EcShopHandler;
 import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
 import com.tencent.biz.pubaccount.subscript.SubscriptHandler;
 import com.tencent.biz.pubaccount.util.PublicAccountClassApi;
-import com.tencent.biz.pubaccount.util.VideoPlayDianZanHandler;
 import com.tencent.biz.qqstory.base.QQStoryHandler;
 import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
 import com.tencent.device.file.DeviceFileHandler;
@@ -65,7 +64,6 @@ import com.tencent.mobileqq.qcircle.api.IQCircleClassApi;
 import com.tencent.mobileqq.qqexpand.ExpandClassManager;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.quicklogin.business.QuickLoginHandler;
-import com.tencent.mobileqq.qwallet.QWalletStaticApi;
 import com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHandler;
 import com.tencent.mobileqq.security.business.ModifyPwdTopBarHandler;
 import com.tencent.mobileqq.simpleui.SimpleUIHandler;
@@ -196,7 +194,6 @@ public class BusinessHandlerFactory
   public static final String QQ_DAILY_HANDLER;
   public static final String QUICK_LOGIN;
   public static final String QWALLET_AUTH_HANDLER;
-  public static final String QWALLET_HANDLER;
   public static final String QZONENOTIFY_HANDLER;
   public static final String READINJOY_AD_MATERIAL_HANDLER;
   public static final String READINJOY_HANDLER;
@@ -336,18 +333,17 @@ public class BusinessHandlerFactory
     NEARFIELD_TROOP_HANDLER = NearFieldTroopHandler.class.getName();
     PPC_LOGIN_AUTH = PPCLoginAuthHandler.class.getName();
     GET_ROAMMESSAGE_HANDLER = MessageRoamHandler.class.getName();
-    NEARBY_CARD_HANDLER = QQNearbyManager.b();
+    NEARBY_CARD_HANDLER = QQNearbyManager.r();
     READINJOY_HANDLER = ((IRIJHandlerNameApi)QRoute.api(IRIJHandlerNameApi.class)).getReadInJoyHandlerName();
     MSF_NET_TRANSPORT_PROVIDER_HANDLER = MSFNetTransportProvider.class.getName();
     SUBSCRIPT_HANDLER = SubscriptHandler.class.getName();
-    NEARBY_RELEVANT_HANDLER = QQNearbyManager.a();
+    NEARBY_RELEVANT_HANDLER = QQNearbyManager.q();
     ECSHOP_HANDLER = EcShopHandler.class.getName();
     BUBBLE_DIYTEXT_HANDLER = BubbleDiyHandler.class.getName();
-    APOLLO_EXTENSION_HANDLER = ApolloClassFactoryApi.b();
+    APOLLO_EXTENSION_HANDLER = ApolloClassFactoryApi.h();
     FAVEMO_ROAMING_HANDLER = ((IEmoticonBusinessProxyApi)QRoute.api(IEmoticonBusinessProxyApi.class)).getFavEmoHandlerImplClassName();
     VIPRECOMMENDPAY_HANDLER = VIPRecommendPayHandler.class.getName();
     PRINTER_STATUS_HANDLER = PrinterStatusHandler.class.getName();
-    QWALLET_HANDLER = QWalletStaticApi.a();
     QCALLCARD_HANDLER = QCallCardHandler.class.getName();
     MQQ_COMIC_HANDLER = ((IEmoticonBusinessProxyApi)QRoute.api(IEmoticonBusinessProxyApi.class)).getVipComicMqqHandlerImplClassName();
     GLOBAL_SEARCH_HANDLER = GlobalSearchHandler.class.getName();
@@ -374,7 +370,7 @@ public class BusinessHandlerFactory
     UNITE_SEARCH_HANDLER = UniteSearchHandler.class.getName();
     PROFILE_PERSONALITY_LABEL = PersonalityLabelHandler.class.getName();
     DIY_PENDANT_HANDLER = DiyPendantHandler.class.getName();
-    APOLLO_CONTENT_UPDATE_HANDLER = ApolloClassFactoryApi.a();
+    APOLLO_CONTENT_UPDATE_HANDLER = ApolloClassFactoryApi.g();
     IMMERSION_HANDLER = ImmersionHandler.class.getName();
     POKE_BIG_RES_HANDLER = PokeBigResHandler.class.getName();
     NOW_SMALL_VIDEO_HANDLER = NowSmallVideoHandler.class.getName();
@@ -382,8 +378,8 @@ public class BusinessHandlerFactory
     READ_INJOY_SKIN_HANDLER = ((IRIJHandlerNameApi)QRoute.api(IRIJHandlerNameApi.class)).getReadInJoySkinHandlerName();
     TEAM_WORK_HANDLER = ((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getTeamWorkHandlerName();
     CONFESS_HANDLER = ConfessHandler.class.getName();
-    PUBLIC_ACCOUNT_VIDEO_DIANZAN = VideoPlayDianZanHandler.class.getName();
-    EXTEND_FRIEND_HANDLER = ExpandClassManager.a();
+    PUBLIC_ACCOUNT_VIDEO_DIANZAN = ((IRIJHandlerNameApi)QRoute.api(IRIJHandlerNameApi.class)).getVideoPlayDianZanHandler();
+    EXTEND_FRIEND_HANDLER = ExpandClassManager.b();
     COMMPLGUGIN_HANDLER = ((ILebaHandler)QRoute.api(ILebaHandler.class)).getCommPluginHandlerClassName();
     NOW_PROXY_HANDLER = NowRecordInfo.class.getName();
     CONTACT_BIND_HANDLER = ContactBindHandler.class.getName();
@@ -394,7 +390,7 @@ public class BusinessHandlerFactory
     ESHOP_AD_HANDLER = ((IEcshopAdApi)QRoute.api(IEcshopAdApi.class)).getEcshopAdHandlerClassName();
     TEAM_WORK_FILE_EXPORT_HANDLER = ((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getExportHandlerName();
     GROUP_TEAM_WORK_HANDLER = ((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getGroupTeamWorkHandlerName();
-    NOW_CHANNEL_HANDLER_V2 = QQNearbyManager.e();
+    NOW_CHANNEL_HANDLER_V2 = QQNearbyManager.u();
     NOTIFICATION_CONTROLLER_HANDLER = NotificationController.class.getName();
     MINIMSG_HANDLER = MiniMsgHandler.class.getName();
     APPLET_PUSH_HANDLER = AppletsHandler.class.getName();
@@ -485,7 +481,7 @@ public class BusinessHandlerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BusinessHandlerFactory
  * JD-Core Version:    0.7.0.1
  */

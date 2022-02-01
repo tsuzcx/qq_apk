@@ -49,11 +49,11 @@ public class QWalletPrivacyFragment
     localObject2 = QWalletTools.a((String)localObject1, getQBaseActivity(), new QWalletPrivacyFragment.1(this));
     if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str1)))
     {
-      localObject1 = DialogUtil.a(getQBaseActivity(), 230, R.layout.A, str2, (CharSequence)localObject2, R.string.dq, R.string.dp, new QWalletPrivacyFragment.2(this), new QWalletPrivacyFragment.3(this));
+      localObject1 = DialogUtil.a(getQBaseActivity(), 230, R.layout.D, str2, (CharSequence)localObject2, R.string.dt, R.string.ds, new QWalletPrivacyFragment.2(this), new QWalletPrivacyFragment.3(this));
       ((QQCustomDialog)localObject1).setCancelable(false);
       ((QQCustomDialog)localObject1).setCanceledOnTouchOutside(false);
       ((QQCustomDialog)localObject1).show();
-      paramView = (RelativeLayout)paramView.findViewById(R.id.bF);
+      paramView = (RelativeLayout)paramView.findViewById(R.id.bP);
       localObject1 = new ColorDrawable(-1);
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
@@ -82,7 +82,7 @@ public class QWalletPrivacyFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(R.layout.z, paramViewGroup, false);
+    return paramLayoutInflater.inflate(R.layout.C, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -108,7 +108,7 @@ public class QWalletPrivacyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletPrivacyFragment
  * JD-Core Version:    0.7.0.1
  */

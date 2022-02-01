@@ -4,6 +4,8 @@ public class QQSysAndEmojiResMgr$DownloadResItem
 {
   public static final int TYPE_CONFIG_RES = 1;
   public static final int TYPE_EMOJI_RES = 3;
+  public static final int TYPE_LOTTIE_RES = 5;
+  public static final int TYPE_SVG_RES = 4;
   public static final int TYPE_SYSFACE_RES = 2;
   public String mMd5;
   public String mName;
@@ -29,7 +31,7 @@ public class QQSysAndEmojiResMgr$DownloadResItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.QQSysAndEmojiResMgr.DownloadResItem
  * JD-Core Version:    0.7.0.1
  */

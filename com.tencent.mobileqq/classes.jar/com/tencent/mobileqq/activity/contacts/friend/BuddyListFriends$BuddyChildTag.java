@@ -10,22 +10,22 @@ import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 public class BuddyListFriends$BuddyChildTag
   extends BuddyListItem.ViewTag
 {
-  public ImageView a;
-  public LinearLayout a;
-  public URLImageView a;
-  public SimpleTextView a;
-  public MutualMarkIconsView a;
-  public OnlineStatusView a;
-  public StringBuilder a;
-  public boolean a;
-  public ImageView b;
-  public URLImageView b;
-  public boolean b;
-  public ImageView c;
+  public SimpleTextView d;
+  public ImageView e;
+  public ImageView f;
+  public URLImageView g;
+  public ImageView h;
+  public LinearLayout i;
+  public URLImageView j;
+  public MutualMarkIconsView k;
+  public StringBuilder l;
+  public boolean m;
+  public boolean n;
+  public OnlineStatusView o;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.BuddyListFriends.BuddyChildTag
  * JD-Core Version:    0.7.0.1
  */

@@ -19,35 +19,35 @@ import com.tencent.mobileqq.widget.QQToast;
 public class ZhituRightIconClickListener
   implements IOnRightIconClickListener
 {
-  public void a(AIOContext paramAIOContext, View paramView)
-  {
-    AIOZhituHelper localAIOZhituHelper = (AIOZhituHelper)paramAIOContext.a(116);
-    localAIOZhituHelper.a ^= true;
-    ImageButton localImageButton = paramAIOContext.a().a().a().a();
-    AIOZhituHelper.a(paramAIOContext.a(), localImageButton);
-    localImageButton.setActivated(localAIOZhituHelper.a);
-    if (localAIOZhituHelper.a) {
-      paramAIOContext.a().a(28, false);
-    } else {
-      paramAIOContext.a().a(true);
-    }
-    ((AIODtReportHelper)paramAIOContext.a(101)).a(paramView);
-  }
-  
   public boolean a(AIOContext paramAIOContext, View paramView)
   {
-    if (!ZhituManager.a(paramAIOContext.a()).a(paramAIOContext.a().a().a().a()))
+    if (!ZhituManager.a(paramAIOContext.a()).a(paramAIOContext.p().d().f().a()))
     {
-      QQToast.a(paramAIOContext.a(), HardCodeUtil.a(2131701202), 0).a();
+      QQToast.makeText(paramAIOContext.b(), HardCodeUtil.a(2131899214), 0).show();
       ReportController.b(paramAIOContext.a(), "dc00898", "", "", "0X800932D", "0X800932D", 0, 0, "", "", "", "");
       return true;
     }
     return false;
   }
+  
+  public void b(AIOContext paramAIOContext, View paramView)
+  {
+    AIOZhituHelper localAIOZhituHelper = (AIOZhituHelper)paramAIOContext.a(116);
+    localAIOZhituHelper.a ^= true;
+    ImageButton localImageButton = paramAIOContext.p().d().c().b();
+    AIOZhituHelper.a(paramAIOContext.a(), localImageButton);
+    localImageButton.setActivated(localAIOZhituHelper.a);
+    if (localAIOZhituHelper.a) {
+      paramAIOContext.q().a(28, false);
+    } else {
+      paramAIOContext.q().a(true);
+    }
+    ((AIODtReportHelper)paramAIOContext.a(101)).d(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.righticon.ZhituRightIconClickListener
  * JD-Core Version:    0.7.0.1
  */

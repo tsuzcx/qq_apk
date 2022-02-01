@@ -234,7 +234,7 @@ public class FriendProfileCardActivity
         return true;
       }
     }
-    if (Utils.b(paramAllInOne.uin))
+    if (Utils.c(paramAllInOne.uin))
     {
       paramIntent = ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).getBabyQProfileCardIntent(this, paramAllInOne);
       if (paramIntent != null)
@@ -1042,22 +1042,22 @@ public class FriendProfileCardActivity
     if (QLog.isColorLevel()) {
       QLog.d("FriendProfileCardActivity", 2, "initProfileCardLayout");
     }
-    this.mRootView = View.inflate(this, 2131561378, null);
-    this.mBgContainerView = this.mRootView.findViewById(2131373095);
-    this.mFgContainerView = this.mRootView.findViewById(2131373108);
-    this.mTitleContainerView = this.mRootView.findViewById(2131373117);
-    this.mBottomContainerView = this.mRootView.findViewById(2131373096);
-    this.mProfileListView = ((PullToZoomHeaderListView)this.mRootView.findViewById(2131365037));
+    this.mRootView = View.inflate(this, 2131627734, null);
+    this.mBgContainerView = this.mRootView.findViewById(2131440688);
+    this.mFgContainerView = this.mRootView.findViewById(2131440710);
+    this.mTitleContainerView = this.mRootView.findViewById(2131440720);
+    this.mBottomContainerView = this.mRootView.findViewById(2131440689);
+    this.mProfileListView = ((PullToZoomHeaderListView)this.mRootView.findViewById(2131431170));
     this.mProfileListView.setVerticalScrollBarEnabled(false);
     this.mProfileListView.setMotionEventInterceptor(this);
     this.mProfileListView.setNeedCheckSpringback(true);
     this.mProfileListView.setOnScrollListener(this.onScrollListener);
-    this.mNightModeMask = this.mRootView.findViewById(2131374298);
-    this.mContentView = View.inflate(this, 2131561333, null);
-    this.mHeaderContainerView = this.mContentView.findViewById(2131368785);
-    this.mContentContainerView = this.mContentView.findViewById(2131368793);
+    this.mNightModeMask = this.mRootView.findViewById(2131442461);
+    this.mContentView = View.inflate(this, 2131627689, null);
+    this.mHeaderContainerView = this.mContentView.findViewById(2131435706);
+    this.mContentContainerView = this.mContentView.findViewById(2131435714);
     this.mContentContainerView.setVisibility(0);
-    Object localObject = (ImageView)this.mContentView.findViewById(2131368779);
+    Object localObject = (ImageView)this.mContentView.findViewById(2131435700);
     if (localObject != null) {}
     try
     {
@@ -1080,7 +1080,7 @@ public class FriendProfileCardActivity
     setContentView(this.mTopView);
     localObject = (FrameLayout)findViewById(16908290);
     if (localObject != null) {
-      ((FrameLayout)localObject).setBackgroundResource(2130845954);
+      ((FrameLayout)localObject).setBackgroundResource(2130847424);
     }
     localObject = this.mUIHandler;
     if (localObject != null)
@@ -1241,7 +1241,7 @@ public class FriendProfileCardActivity
   
   private void profileEntryReport()
   {
-    if (Utils.b(this.mProfileCardInfo.allInOne.uin))
+    if (Utils.c(this.mProfileCardInfo.allInOne.uin))
     {
       int i;
       if (this.mProfileCardInfo.allInOne.profileEntryType == 59) {
@@ -1518,19 +1518,19 @@ public class FriendProfileCardActivity
       paramCard = new StringBuilder();
       paramCard.append("updateNameArray()");
       paramCard.append(", strNick = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[0]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[0]));
       paramCard.append(", strRemark = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[4]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[4]));
       paramCard.append(", strContactName = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[3]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[3]));
       paramCard.append(", strCircleName = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[2]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[2]));
       paramCard.append(", strRecommenName = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[5]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[5]));
       paramCard.append(", strTroopNickName = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[1]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[1]));
       paramCard.append(", strAutoRemark = ");
-      paramCard.append(Utils.a(this.mProfileCardInfo.nameArray[6]));
+      paramCard.append(Utils.i(this.mProfileCardInfo.nameArray[6]));
       QLog.d("FriendProfileCardActivity", 2, paramCard.toString());
     }
   }
@@ -1598,7 +1598,7 @@ public class FriendProfileCardActivity
       }
       else
       {
-        localFrameLayout.setForeground(getResources().getDrawable(2130850439));
+        localFrameLayout.setForeground(getResources().getDrawable(2130852235));
         this.mContentView.setBackgroundResource(0);
         this.mContentContainerView.setBackgroundResource(0);
         if (this.mNightModeMask != null)
@@ -1933,7 +1933,7 @@ public class FriendProfileCardActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.activity.FriendProfileCardActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -132,9 +132,9 @@ public class WebProcessPreloadImpl
   
   public boolean isWebProcessExist()
   {
-    Util.a("Web_Module_Check_Is_Exit");
+    Util.f("Web_Module_Check_Is_Exit");
     boolean bool = QIPCServerHelper.getInstance().isModuleRunning("modular_web");
-    Util.b("Web_Module_Check_Is_Exit");
+    Util.g("Web_Module_Check_Is_Exit");
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -244,7 +244,7 @@ public class WebProcessPreloadImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.api.impl.WebProcessPreloadImpl
  * JD-Core Version:    0.7.0.1
  */

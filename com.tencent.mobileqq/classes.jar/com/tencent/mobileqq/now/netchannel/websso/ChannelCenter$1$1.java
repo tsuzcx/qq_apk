@@ -11,14 +11,14 @@ class ChannelCenter$1$1
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WebServiceSSO--onSuccess final cmd=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter$1.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b.a);
     Log.i("ChannelCenter", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoChannelCenter$1.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoIChannelListener.a(this.jdField_a_of_type_ArrayOfByte);
+    this.b.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.ChannelCenter.1.1
  * JD-Core Version:    0.7.0.1
  */

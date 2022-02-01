@@ -15,23 +15,18 @@ import org.jetbrains.annotations.Nullable;
 public final class ForwardAskAnonymouslyMsgOption
   extends ForwardArkMsgOption
 {
-  public static final ForwardAskAnonymouslyMsgOption.Companion a;
-  private boolean j = true;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqForwardForwardAskAnonymouslyMsgOption$Companion = new ForwardAskAnonymouslyMsgOption.Companion(null);
-  }
+  public static final ForwardAskAnonymouslyMsgOption.Companion a = new ForwardAskAnonymouslyMsgOption.Companion(null);
+  private boolean ad = true;
   
   public ForwardAskAnonymouslyMsgOption(@Nullable Intent paramIntent)
   {
     super(paramIntent);
   }
   
-  protected void a()
+  protected void b()
   {
-    super.a();
-    String str = SdkShareReporter.c(this.jdField_a_of_type_AndroidOsBundle.getInt("uintype"));
+    super.b();
+    String str = SdkShareReporter.d(this.t.getInt("uintype"));
     if (str != null)
     {
       int i = str.hashCode();
@@ -50,43 +45,43 @@ public final class ForwardAskAnonymouslyMsgOption
     QLog.e("ForwardAskAnonymouslyMsgOption", 2, "forwardOnConfirm no friend or troop type");
   }
   
-  public boolean a()
+  protected void c()
   {
-    boolean bool = super.a();
-    this.j = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_qzone", true);
+    if (ag()) {
+      this.C.add(ForwardAbility.ForwardAbilityType.e);
+    }
+    if (ah()) {
+      this.C.add(ForwardAbility.ForwardAbilityType.d);
+    }
+    if (ai()) {
+      this.C.add(ForwardAbility.ForwardAbilityType.c);
+    }
+    if (q()) {
+      this.C.add(ForwardAbility.ForwardAbilityType.f);
+    }
+  }
+  
+  public boolean e()
+  {
+    boolean bool = super.e();
+    this.ad = this.r.getBooleanExtra("k_qzone", true);
     return bool;
   }
   
-  protected void b()
+  protected boolean q()
   {
-    if (p()) {
-      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.d);
-    }
-    if (q()) {
-      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.c);
-    }
-    if (r()) {
-      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.b);
-    }
-    if (e()) {
-      this.jdField_a_of_type_JavaUtilSet.add(ForwardAbility.ForwardAbilityType.e);
-    }
+    return this.ad;
   }
   
-  protected boolean e()
+  public boolean r()
   {
-    return this.j;
-  }
-  
-  public boolean f()
-  {
-    ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).shareInviteToQZone(this.jdField_a_of_type_AndroidAppActivity);
+    ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).shareInviteToQZone(this.s);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardAskAnonymouslyMsgOption
  * JD-Core Version:    0.7.0.1
  */

@@ -20,16 +20,16 @@ class ThumbItemBuilder$2
   
   public void onClick(View paramView)
   {
-    Object localObject1 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    Object localObject1 = new Intent(this.b.c, QQBrowserActivity.class);
     ((Intent)localObject1).putExtra("individuation_url_type", 40303);
-    Object localObject2 = IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    Object localObject2 = IndividuationUrlHelper.a(this.b.c, "call", "mvip.gongneng.anroid.individuation.web");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject2);
     localStringBuilder.append("&funcallId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localObject2 = localStringBuilder.toString();
-    VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject2, 524288L, (Intent)localObject1, true, -1);
-    int j = ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).g();
+    VasWebviewUtil.b(this.b.c, (String)localObject2, 524288L, (Intent)localObject1, true, -1);
+    int j = ((ISVIPHandler)this.b.a.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).j();
     int i;
     if (j == 2)
     {
@@ -42,7 +42,7 @@ class ThumbItemBuilder$2
         i = 2;
       }
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject1 = this.b.a;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("");
     ((StringBuilder)localObject2).append(i);
@@ -52,7 +52,7 @@ class ThumbItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

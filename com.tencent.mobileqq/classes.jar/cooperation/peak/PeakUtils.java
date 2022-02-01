@@ -28,20 +28,17 @@ import com.tencent.util.BinderWarpper;
 
 public final class PeakUtils
 {
-  public static final SparseBooleanArray a;
   public static PreloadProcHitSession a;
-  public static String a;
-  public static final int[] a;
+  public static String b = RichMediaBrowserConstants.EXTRA_IS_REPLY_SRC_MSG_EXIST;
+  public static final SparseBooleanArray c = new SparseBooleanArray();
+  public static final int[] d = { 5, 7, 9 };
   
   static
   {
-    jdField_a_of_type_JavaLangString = RichMediaBrowserConstants.EXTRA_IS_REPLY_SRC_MSG_EXIST;
-    jdField_a_of_type_AndroidUtilSparseBooleanArray = new SparseBooleanArray();
-    jdField_a_of_type_ArrayOfInt = new int[] { 5, 7, 9 };
     int i = 0;
     while (i < 10)
     {
-      int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      int[] arrayOfInt = d;
       int m = arrayOfInt.length;
       int j = 0;
       for (;;)
@@ -52,7 +49,7 @@ public final class PeakUtils
         }
         if (i == arrayOfInt[j] - 1)
         {
-          jdField_a_of_type_AndroidUtilSparseBooleanArray.put(i, true);
+          c.put(i, true);
           j = k;
           break label94;
         }
@@ -61,7 +58,7 @@ public final class PeakUtils
       j = 0;
       label94:
       if (j == 0) {
-        jdField_a_of_type_AndroidUtilSparseBooleanArray.put(i, false);
+        c.put(i, false);
       }
       i += 1;
     }
@@ -99,7 +96,7 @@ public final class PeakUtils
     }
     localBundle.putInt("extra.EXTRA_ENTRANCE", paramInt2);
     if (paramAIORichMediaData != null) {
-      localBundle.putBoolean(RichMediaBrowserConstants.EXTRA_IS_MIXED_MSG, paramAIORichMediaData.l);
+      localBundle.putBoolean(RichMediaBrowserConstants.EXTRA_IS_MIXED_MSG, paramAIORichMediaData.S);
     }
     if ((!(paramContext instanceof SplashActivity)) && (!(paramContext instanceof ChatActivity)))
     {
@@ -136,12 +133,12 @@ public final class PeakUtils
           localBundle.putBoolean("extra.FROM_AIO", true);
           localBundle.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
           MultiForwardActivity localMultiForwardActivity = (MultiForwardActivity)paramContext;
-          localBundle.putString("uin", localMultiForwardActivity.getChatFragment().a().a().jdField_a_of_type_JavaLangString);
+          localBundle.putString("uin", localMultiForwardActivity.getChatFragment().k().aE().b);
           String str = localBundle.getString("extra.GROUP_UIN");
           if ((str != null) && (((QQAppInterface)paramIAIOImageProvider).getTroopMask(str) == 2)) {
             localBundle.putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ChatActivity.class.getName());
           }
-          if ((paramAIORichMediaData != null) && (paramAIORichMediaData.k))
+          if ((paramAIORichMediaData != null) && (paramAIORichMediaData.R))
           {
             localBundle.putLong("key_multi_forward_seq", localMultiForwardActivity.getIntent().getLongExtra("origin_merge_structing_msg_uniseq", 0L));
             localMultiForwardActivity.a.a = true;
@@ -164,7 +161,7 @@ public final class PeakUtils
     } else if ((paramContext instanceof Activity)) {
       ((Activity)paramContext).startActivityForResult(paramBundle, paramInt1);
     }
-    paramContext = jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitSession;
+    paramContext = a;
     if (paramContext != null) {
       paramContext.b();
     }
@@ -195,14 +192,14 @@ public final class PeakUtils
     {
       paramContext.startActivity(paramBundle);
       if ((bool) && ((paramContext instanceof Activity))) {
-        ((Activity)paramContext).overridePendingTransition(2130772074, 2130772084);
+        ((Activity)paramContext).overridePendingTransition(2130772104, 2130772114);
       }
     }
     else if ((paramContext instanceof Activity))
     {
       ((Activity)paramContext).startActivityForResult(paramBundle, paramInt1);
     }
-    paramContext = jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitSession;
+    paramContext = a;
     if (paramContext != null) {
       paramContext.b();
     }
@@ -210,7 +207,7 @@ public final class PeakUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.peak.PeakUtils
  * JD-Core Version:    0.7.0.1
  */

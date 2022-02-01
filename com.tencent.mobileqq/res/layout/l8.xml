@@ -2,7 +2,7 @@
 <FrameLayout android:orientation="vertical" android:id="@id/bi_" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:gravity="center" android:layout_gravity="top" android:orientation="horizontal" android:id="@id/bi5" android:background="@drawable/tips_popup_win_bg" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/zs" android:layout_marginLeft="10.0dip" android:layout_marginTop="-3.0dip" android:layout_marginRight="10.0dip">
-        <ImageView android:layout_gravity="center" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/cgb" />
+        <ImageView android:layout_gravity="center" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/common_black_tips_icon_info" />
         <TextView android:textColor="@android:color/white" android:gravity="center" android:id="@id/f18" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="首次使用将下载600K插件包" />
     </LinearLayout>
     <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip">

@@ -10,12 +10,12 @@ import java.util.List;
 public class AVGameLobbyBannerCellViewHolder
   extends BaseViewHolder<AVGameLobbyBannerContentInfo>
 {
-  private AutoResizeAsyncImageView a;
+  private AutoResizeAsyncImageView d;
   
   public AVGameLobbyBannerCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.a = ((AutoResizeAsyncImageView)paramView.findViewById(2131363203));
+    this.d = ((AutoResizeAsyncImageView)paramView.findViewById(2131429077));
     a(paramView);
   }
   
@@ -25,9 +25,9 @@ public class AVGameLobbyBannerCellViewHolder
     if (paramAVGameLobbyBannerContentInfo == null) {
       return;
     }
-    paramViewHolderContext = paramAVGameLobbyBannerContentInfo.a();
+    paramViewHolderContext = paramAVGameLobbyBannerContentInfo.b();
     if ((paramViewHolderContext != null) && (paramViewHolderContext.size() > 0)) {
-      this.a.a(((AVGameLobbyConstants.BannerInfo)paramViewHolderContext.get(0)).a);
+      this.d.a(((AVGameLobbyConstants.BannerInfo)paramViewHolderContext.get(0)).a);
     }
   }
 }

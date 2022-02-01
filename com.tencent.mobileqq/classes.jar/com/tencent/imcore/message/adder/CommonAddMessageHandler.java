@@ -29,7 +29,7 @@ public class CommonAddMessageHandler
   
   public void a(AppRuntime paramAppRuntime, IMessageManager paramIMessageManager, MessageRecord paramMessageRecord, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Map<String, MessageRecord> paramMap, String paramString, int paramInt)
   {
-    if ((paramMessageRecord.istroop != 3000) && (paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 0))
+    if ((paramMessageRecord.istroop != 3000) && (paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 0) && (paramMessageRecord.istroop != 10014))
     {
       ((BaseMessageManager)paramIMessageManager).a(paramMessageRecord, true, 1);
       return;
@@ -39,7 +39,7 @@ public class CommonAddMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.adder.CommonAddMessageHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -11,87 +11,24 @@ import java.util.List;
 public class DbCacheManager
   extends AbstractDbCacheManager
 {
-  protected Cursor a;
-  protected DbCacheManager.OnCloseListener a;
-  protected String b;
-  protected final ArrayList<WeakReference<DbCacheManager.OnChangeListener>> b;
-  protected String c;
+  protected Cursor h;
+  protected String i;
+  protected String j;
+  protected final ArrayList<WeakReference<DbCacheManager.OnChangeListener>> k = new ArrayList();
+  protected DbCacheManager.OnCloseListener l;
   
   protected DbCacheManager(Context paramContext, Class<? extends DbCacheData> paramClass, long paramLong, String paramString)
   {
     super(paramContext, paramClass, paramLong, paramString);
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    d();
-  }
-  
-  public int a()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidDatabaseCursor != null)
-        {
-          i = this.jdField_a_of_type_AndroidDatabaseCursor.getCount();
-          return i;
-        }
-      }
-      finally {}
-      int i = 0;
-    }
+    k();
   }
   
   public DbCacheData a(int paramInt)
   {
     try
     {
-      DbCacheData localDbCacheData = a(this.jdField_a_of_type_AndroidDatabaseCursor, paramInt);
+      DbCacheData localDbCacheData = a(this.h, paramInt);
       return localDbCacheData;
-    }
-    finally {}
-  }
-  
-  protected List<DbCacheManager.OnChangeListener> a()
-  {
-    Object localObject3;
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
-      {
-        ArrayList localArrayList1 = new ArrayList();
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        Object localObject1;
-        for (;;)
-        {
-          localObject1 = localArrayList1;
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject1 = (WeakReference)localIterator.next();
-          if (localObject1 == null) {
-            localObject1 = null;
-          } else {
-            localObject1 = (DbCacheManager.OnChangeListener)((WeakReference)localObject1).get();
-          }
-          if (localObject1 != null) {
-            localArrayList1.add(localObject1);
-          }
-        }
-        return localObject1;
-      }
-    }
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidDatabaseCursor != null) {
-        this.jdField_a_of_type_AndroidDatabaseCursor.close();
-      }
-      d();
-      b();
-      return;
     }
     finally {}
   }
@@ -103,7 +40,7 @@ public class DbCacheManager
       super.a(paramSQLiteDatabase, paramInt);
       return;
     }
-    a(paramSQLiteDatabase, this.jdField_b_of_type_JavaLangString);
+    a(paramSQLiteDatabase, this.i);
   }
   
   public void a(DbCacheData paramDbCacheData, int paramInt)
@@ -118,7 +55,7 @@ public class DbCacheManager
   
   void a(DbCacheManager.OnCloseListener paramOnCloseListener)
   {
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheManager$OnCloseListener = paramOnCloseListener;
+    this.l = paramOnCloseListener;
   }
   
   public void a(DbCacheData[] paramArrayOfDbCacheData, int paramInt)
@@ -129,22 +66,6 @@ public class DbCacheManager
       return;
     }
     finally {}
-  }
-  
-  protected void b()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        DbCacheManager.OnChangeListener localOnChangeListener = (DbCacheManager.OnChangeListener)((Iterator)localObject).next();
-        if (localOnChangeListener != null) {
-          localOnChangeListener.a(this);
-        }
-      }
-    }
   }
   
   public void b(DbCacheData paramDbCacheData, String paramString)
@@ -167,11 +88,89 @@ public class DbCacheManager
     finally {}
   }
   
-  protected void d()
+  protected void c()
   {
     try
     {
-      this.jdField_a_of_type_AndroidDatabaseCursor = a(this.jdField_b_of_type_JavaLangString, this.c);
+      if (this.h != null) {
+        this.h.close();
+      }
+      k();
+      d();
+      return;
+    }
+    finally {}
+  }
+  
+  protected void d()
+  {
+    Object localObject = j();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        DbCacheManager.OnChangeListener localOnChangeListener = (DbCacheManager.OnChangeListener)((Iterator)localObject).next();
+        if (localOnChangeListener != null) {
+          localOnChangeListener.a(this);
+        }
+      }
+    }
+  }
+  
+  public int i()
+  {
+    for (;;)
+    {
+      try
+      {
+        if (this.h != null)
+        {
+          m = this.h.getCount();
+          return m;
+        }
+      }
+      finally {}
+      int m = 0;
+    }
+  }
+  
+  protected List<DbCacheManager.OnChangeListener> j()
+  {
+    Object localObject3;
+    synchronized (this.k)
+    {
+      if (this.k.size() > 0)
+      {
+        ArrayList localArrayList1 = new ArrayList();
+        Iterator localIterator = this.k.iterator();
+        Object localObject1;
+        for (;;)
+        {
+          localObject1 = localArrayList1;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject1 = (WeakReference)localIterator.next();
+          if (localObject1 == null) {
+            localObject1 = null;
+          } else {
+            localObject1 = (DbCacheManager.OnChangeListener)((WeakReference)localObject1).get();
+          }
+          if (localObject1 != null) {
+            localArrayList1.add(localObject1);
+          }
+        }
+        return localObject1;
+      }
+    }
+  }
+  
+  protected void k()
+  {
+    try
+    {
+      this.h = a(this.i, this.j);
       return;
     }
     finally {}
@@ -179,7 +178,7 @@ public class DbCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.component.cache.database.DbCacheManager
  * JD-Core Version:    0.7.0.1
  */

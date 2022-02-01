@@ -13,10 +13,10 @@ import com.tencent.mobileqq.selectmember.api.ISelectMemberApi;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
 import org.json.JSONObject;
 
 @JsPlugin(secondary=true)
@@ -38,19 +38,19 @@ public class GroupPlugin
     localIntent.putExtra("group_name", paramString1);
     localIntent.putExtra("param_exit_animation", 3);
     ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivityForResult(paramBaseActivity, localIntent, 20001);
-    paramBaseActivity.overridePendingTransition(2130772011, 0);
+    paramBaseActivity.overridePendingTransition(2130772014, 0);
   }
   
   private void a(RequestEvent paramRequestEvent, String paramString1, int paramInt, String paramString2)
   {
-    ActivityResultManager.g().addActivityResultListener(new GroupPlugin.1(this, paramRequestEvent));
+    ((IActivityResultManager)this.mMiniAppContext.getManager(IActivityResultManager.class)).addActivityResultListener(new GroupPlugin.1(this, paramRequestEvent));
     BaseActivity localBaseActivity = (BaseActivity)this.mMiniAppContext.getAttachedActivity();
     if ((TroopInfo)localBaseActivity.getAppInterface().getEntityManagerFactory().createEntityManager().find(TroopInfo.class, paramString1) != null)
     {
       a(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    paramRequestEvent.fail(HardCodeUtil.a(2131705451));
+    paramRequestEvent.fail(HardCodeUtil.a(2131903339));
   }
   
   @JsEvent({"getMultiMemList"})
@@ -93,10 +93,10 @@ public class GroupPlugin
           a(paramRequestEvent, str2, i, str1);
           return;
         }
-        paramRequestEvent.fail(HardCodeUtil.a(2131705452));
+        paramRequestEvent.fail(HardCodeUtil.a(2131903340));
         return;
       }
-      paramRequestEvent.fail(HardCodeUtil.a(2131705453));
+      paramRequestEvent.fail(HardCodeUtil.a(2131903341));
       return;
       label151:
       j = 0;
@@ -117,7 +117,7 @@ public class GroupPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.GroupPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -163,11 +163,6 @@ public class QQBridgeModule
     cancelUploadingVideo(paramJSONObject, getCallbackId(paramPromise));
   }
   
-  public void chooseVideoAddToTopic(JSONObject paramJSONObject, Promise paramPromise)
-  {
-    chooseVideoAddToTopic(paramJSONObject, getCallbackId(paramPromise));
-  }
-  
   public void getALDConfig(JSONObject paramJSONObject, Promise paramPromise)
   {
     if ((!TextUtils.isEmpty(paramJSONObject.optString("key", ""))) && (paramJSONObject.has("id"))) {
@@ -207,11 +202,6 @@ public class QQBridgeModule
     {
       paramJSONObject.printStackTrace();
     }
-  }
-  
-  public void getCreateTopicPermission(JSONObject paramJSONObject, Promise paramPromise)
-  {
-    getCreateTopicPermission(paramJSONObject, getCallbackId(paramPromise));
   }
   
   public void getDeviceInfo(Promise paramPromise, boolean paramBoolean)
@@ -372,7 +362,7 @@ public class QQBridgeModule
               if (paramJSONObject == null) {
                 break label421;
               }
-              paramJSONObject.b("viola");
+              paramJSONObject.c("viola");
               paramJSONObject.a();
               invokeCallJS(paramPromise, null);
               return;
@@ -383,9 +373,9 @@ public class QQBridgeModule
               paramJSONObject = new StringBuilder();
               paramJSONObject.append("ns:");
               paramJSONObject.append(str1);
-              paramJSONObject.append(HardCodeUtil.a(2131701413));
+              paramJSONObject.append(HardCodeUtil.a(2131899438));
               paramJSONObject.append(str2);
-              paramJSONObject.append(HardCodeUtil.a(2131701408));
+              paramJSONObject.append(HardCodeUtil.a(2131899434));
               invokeErrorCallJS(paramPromise, paramJSONObject.toString());
               return;
             }
@@ -415,7 +405,7 @@ public class QQBridgeModule
       label421:
       return;
     }
-    invokeErrorCallJS(paramPromise, HardCodeUtil.a(2131701417));
+    invokeErrorCallJS(paramPromise, HardCodeUtil.a(2131899442));
     QLog.d("QQBridgeModule", 1, "ns or method not exists");
   }
   
@@ -489,16 +479,6 @@ public class QQBridgeModule
   public void openAddVideoView(JSONObject paramJSONObject, Promise paramPromise)
   {
     openAddVideoView(paramJSONObject, getCallbackId(paramPromise));
-  }
-  
-  public void openCreateTopicView(Promise paramPromise)
-  {
-    openCreateTopicView(getCallbackId(paramPromise));
-  }
-  
-  public void openEditTopicView(JSONObject paramJSONObject, Promise paramPromise)
-  {
-    openEditTopicView(paramJSONObject, getCallbackId(paramPromise));
   }
   
   public void openRewardAd(JSONObject paramJSONObject, Promise paramPromise)
@@ -596,7 +576,7 @@ public class QQBridgeModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBridgeModule
  * JD-Core Version:    0.7.0.1
  */

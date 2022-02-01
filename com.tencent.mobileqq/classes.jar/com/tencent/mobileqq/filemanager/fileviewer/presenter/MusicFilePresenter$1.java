@@ -12,9 +12,9 @@ class MusicFilePresenter$1
   
   public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.a != null))
+    if ((paramBoolean) && (this.a.b != null))
     {
-      this.a.a.a(paramInt);
+      this.a.b.a(paramInt);
       this.a.b(paramInt);
     }
   }
@@ -22,23 +22,23 @@ class MusicFilePresenter$1
   public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
     MusicFilePresenter.a(this.a, false);
-    if ((this.a.a != null) && (!this.a.a.b(MusicFilePresenter.a(this.a)))) {
-      this.a.a.d();
+    if ((this.a.b != null) && (!this.a.b.b(MusicFilePresenter.a(this.a)))) {
+      this.a.b.g();
     }
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
     MusicFilePresenter.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.e();
+    if (this.a.b != null) {
+      this.a.b.h();
     }
     EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,29 +14,14 @@ import java.util.Timer;
 public class SoundPoolUtil
 {
   protected SoundPool a;
-  protected HashMap<String, Integer> a;
+  protected HashMap<String, Integer> b;
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    if (this.a != null)
     {
       QQAudioUtils.a(BaseApplicationImpl.getContext(), false);
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
-    if (localObject != null)
-    {
-      localObject = (Integer)((HashMap)localObject).get(paramString);
-      if (localObject != null)
-      {
-        QQAudioUtils.a(BaseApplicationImpl.getContext(), false);
-        this.jdField_a_of_type_AndroidMediaSoundPool.stop(((Integer)localObject).intValue());
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-      }
+      this.a.release();
     }
   }
   
@@ -44,7 +29,7 @@ public class SoundPoolUtil
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+      Object localObject = this.b;
       if ((localObject != null) && (((HashMap)localObject).containsKey(paramString))) {
         return false;
       }
@@ -52,16 +37,16 @@ public class SoundPoolUtil
       if (!((File)localObject).exists()) {
         return false;
       }
-      if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-        this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
+      if (this.a == null) {
+        this.a = new SoundPool(1, 3, 0);
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      if (this.b == null) {
+        this.b = new HashMap();
       }
       if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(null);
+        this.a.setOnLoadCompleteListener(null);
       }
-      int i = this.jdField_a_of_type_AndroidMediaSoundPool.load(((File)localObject).getAbsolutePath(), 1);
+      int i = this.a.load(((File)localObject).getAbsolutePath(), 1);
       if (i == 0)
       {
         if (QLog.isColorLevel())
@@ -73,7 +58,7 @@ public class SoundPoolUtil
         }
         return false;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
+      this.b.put(paramString, Integer.valueOf(i));
       return true;
     }
     return false;
@@ -85,28 +70,28 @@ public class SoundPoolUtil
       return false;
     }
     QQAudioUtils.a(BaseApplicationImpl.getContext(), true);
-    if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, paramInt2, 0);
+    if (this.a == null) {
+      this.a = new SoundPool(1, paramInt2, 0);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.b == null) {
+      this.b = new HashMap();
     }
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (!this.b.containsKey(paramString))
     {
       if (!a(paramString)) {
         return false;
       }
       if (Build.VERSION.SDK_INT >= 8)
       {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new SoundPoolUtil.1(this, paramInt1, paramString));
+        this.a.setOnLoadCompleteListener(new SoundPoolUtil.1(this, paramInt1, paramString));
         return true;
       }
-      paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+      paramInt1 = ((Integer)this.b.get(paramString)).intValue();
       ThreadManager.getTimer().schedule(new SoundPoolUtil.2(this, paramInt1, paramString), 200L);
       return true;
     }
-    paramInt1 = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-    if (this.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0)
+    paramInt1 = ((Integer)this.b.get(paramString)).intValue();
+    if (this.a.play(paramInt1, 1.0F, 1.0F, 0, 0, 1.0F) == 0)
     {
       if (QLog.isColorLevel())
       {
@@ -119,10 +104,25 @@ public class SoundPoolUtil
     }
     return true;
   }
+  
+  public void b(String paramString)
+  {
+    Object localObject = this.b;
+    if (localObject != null)
+    {
+      localObject = (Integer)((HashMap)localObject).get(paramString);
+      if (localObject != null)
+      {
+        QQAudioUtils.a(BaseApplicationImpl.getContext(), false);
+        this.a.stop(((Integer)localObject).intValue());
+        this.b.remove(paramString);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.SoundPoolUtil
  * JD-Core Version:    0.7.0.1
  */

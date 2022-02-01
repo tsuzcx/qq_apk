@@ -9,13 +9,13 @@ class EditARCakeButton$1$1
   
   public void run()
   {
-    EditARCakeButton.a(this.a.this$0).setEnabled(true);
-    EditARCakeButton.a(this.a.this$0);
+    EditARCakeButton.b(this.a.this$0).setEnabled(true);
+    EditARCakeButton.c(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditARCakeButton.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -46,18 +46,18 @@ import mqq.app.MobileQQ;
 public class QQProxyForQlink
   implements QlAndQQInterface.QQ2Ql, QlAndQQInterface.Ql2QQ
 {
-  private int jdField_a_of_type_Int = 0;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private QlAndQQInterface.WorkState jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState = new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false);
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private int jdField_b_of_type_Int = -1;
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
+  private QQAppInterface a;
+  private Timer b;
+  private int c = 0;
+  private QlAndQQInterface.WorkState d = new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false);
+  private QQCustomDialog e;
+  private BroadcastReceiver f = null;
+  private int g = -1;
+  private BroadcastReceiver h = null;
   
   public QQProxyForQlink(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private void a(Activity paramActivity, int paramInt, String paramString, OnQRHandleResultCallback paramOnQRHandleResultCallback)
@@ -65,15 +65,15 @@ public class QQProxyForQlink
     if (paramActivity == null) {
       return;
     }
-    String str = HardCodeUtil.a(2131710651);
+    String str = HardCodeUtil.a(2131908334);
     StringBuilder localStringBuilder;
     if (1 == paramInt)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(str);
-      localStringBuilder.append(HardCodeUtil.a(2131710654));
+      localStringBuilder.append(HardCodeUtil.a(2131908337));
       localStringBuilder.append(paramString);
-      localStringBuilder.append(HardCodeUtil.a(2131710649));
+      localStringBuilder.append(HardCodeUtil.a(2131908332));
       paramString = localStringBuilder.toString();
     }
     for (;;)
@@ -83,17 +83,17 @@ public class QQProxyForQlink
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(str);
-        localStringBuilder.append(HardCodeUtil.a(2131710653));
+        localStringBuilder.append(HardCodeUtil.a(2131908336));
         localStringBuilder.append(paramString);
-        localStringBuilder.append(HardCodeUtil.a(2131710648));
+        localStringBuilder.append(HardCodeUtil.a(2131908331));
         paramString = localStringBuilder.toString();
       }
       else
       {
-        paramString = HardCodeUtil.a(2131710650);
+        paramString = HardCodeUtil.a(2131908333);
       }
     }
-    DialogUtil.a(paramActivity, 230, paramActivity.getString(2131698398), paramString, 2131698392, 2131698392, new QQProxyForQlink.8(this, paramOnQRHandleResultCallback), null).show();
+    DialogUtil.a(paramActivity, 230, paramActivity.getString(2131896322), paramString, 2131896316, 2131896316, new QQProxyForQlink.8(this, paramOnQRHandleResultCallback), null).show();
   }
   
   public static void a(Context paramContext, int paramInt, Bundle paramBundle)
@@ -103,7 +103,7 @@ public class QQProxyForQlink
       if (QLog.isColorLevel()) {
         QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
       }
-      Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131710652), 0).show();
+      Toast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131908335), 0).show();
       return;
     }
     Intent localIntent = new Intent(paramContext, QlinkBridgeActivity.class);
@@ -120,31 +120,31 @@ public class QQProxyForQlink
     paramContext.startActivity(localIntent);
   }
   
-  private void h()
+  private void j()
   {
     try
     {
-      Timer localTimer = this.jdField_a_of_type_JavaUtilTimer;
+      Timer localTimer = this.b;
       if (localTimer != null) {
         return;
       }
       QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ setQlinkHeartTimer");
-      this.jdField_a_of_type_JavaUtilTimer = new Timer();
-      this.jdField_a_of_type_JavaUtilTimer.schedule(new QQProxyForQlink.9(this), 0L, 5000L);
+      this.b = new Timer();
+      this.b.schedule(new QQProxyForQlink.9(this), 0L, 5000L);
       return;
     }
     finally {}
   }
   
-  private void i()
+  private void k()
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      if (this.b != null)
       {
         QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ cancelQlinkHeartTimer");
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
+        this.b.cancel();
+        this.b = null;
       }
       return;
     }
@@ -155,17 +155,17 @@ public class QQProxyForQlink
     }
   }
   
-  private void j()
+  private void l()
   {
-    if (this.jdField_b_of_type_AndroidContentBroadcastReceiver == null)
+    if (this.h == null)
     {
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new QQProxyForQlink.10(this);
+      this.h = new QQProxyForQlink.10(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_CHANGED");
       localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
       localIntentFilter.addAction("mqq.intent.action.LOGOUT");
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Object localObject = this.a;
       if (localObject != null) {
         localObject = ((QQAppInterface)localObject).getApp();
       } else {
@@ -173,52 +173,52 @@ public class QQProxyForQlink
       }
       if (localObject != null)
       {
-        ((BaseApplication)localObject).registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+        ((BaseApplication)localObject).registerReceiver(this.h, localIntentFilter);
         return;
       }
       QLog.e("QQProxyForQlink", 1, "registerAccountReceiver error. fail");
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
+      this.h = null;
     }
   }
   
-  private void k()
+  private void m()
   {
-    if (this.jdField_b_of_type_AndroidContentBroadcastReceiver != null)
+    if (this.h != null)
     {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.a;
       if ((localQQAppInterface != null) && (localQQAppInterface.getApp() != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
+        this.a.getApp().unregisterReceiver(this.h);
+        this.h = null;
         return;
       }
       QLog.e("QQProxyForQlink", 1, "unregisterAccountReceiver error.");
     }
   }
   
-  private void l()
+  private void n()
   {
     for (;;)
     {
       try
       {
-        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+        if (this.f == null)
         {
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = new QQProxyForQlink.11(this);
+          this.f = new QQProxyForQlink.11(this);
           IntentFilter localIntentFilter = new IntentFilter();
           localIntentFilter.addAction("com.tencent.qlink.finishworkingdlg");
-          if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+          if (this.a == null) {
             break label91;
           }
-          BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+          BaseApplication localBaseApplication = this.a.getApp();
           if (localBaseApplication != null)
           {
-            localBaseApplication.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+            localBaseApplication.registerReceiver(this.f, localIntentFilter);
           }
           else
           {
             QLog.e("QQProxyForQlink", 1, "registerFinishWorkingDlgReceiver error.fail");
-            this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+            this.f = null;
           }
         }
         return;
@@ -229,15 +229,15 @@ public class QQProxyForQlink
     }
   }
   
-  private void m()
+  private void o()
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp() != null))
+      if (this.f != null) {
+        if ((this.a != null) && (this.a.getApp() != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+          this.a.getApp().unregisterReceiver(this.f);
+          this.f = null;
         }
         else
         {
@@ -250,29 +250,15 @@ public class QQProxyForQlink
     finally {}
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mTransferingCount;
-  }
-  
   public QlAndQQInterface.WorkState a()
   {
-    return this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState;
-  }
-  
-  public void a()
-  {
-    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit");
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((localQQAppInterface != null) && (localQQAppInterface.getApp() != null)) {
-      ThreadManager.executeOnSubThread(new QQProxyForQlink.1(this));
-    }
+    return this.d;
   }
   
   public void a(int paramInt)
   {
-    int i = this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mTransferingCount;
-    Object localObject = this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState;
+    int i = this.d.mTransferingCount;
+    Object localObject = this.d;
     ((QlAndQQInterface.WorkState)localObject).mTransferingCount = paramInt;
     if (i != ((QlAndQQInterface.WorkState)localObject).mTransferingCount)
     {
@@ -284,8 +270,8 @@ public class QQProxyForQlink
         QLog.i("QQProxyForQlink", 4, ((StringBuilder)localObject).toString());
       }
       localObject = BannerManager.a();
-      i = QLinkTransingBannerProcessor.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink().a() != 0) {
+      i = QLinkTransingBannerProcessor.a;
+      if (this.a.getQQProxyForQlink().h() != 0) {
         paramInt = 2;
       } else {
         paramInt = 0;
@@ -296,54 +282,54 @@ public class QQProxyForQlink
   
   public void a(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnClickListener paramOnClickListener3, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
+    if (this.e != null) {
       return;
     }
-    String str2 = ContactUtils.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin);
+    String str2 = ContactUtils.d(this.a, this.d.mPeerUin);
     String str1;
     if (str2 != null)
     {
       str1 = str2;
-      if (!this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin.equalsIgnoreCase(str2)) {}
+      if (!this.d.mPeerUin.equalsIgnoreCase(str2)) {}
     }
-    else if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerNick != null)
+    else if (this.d.mPeerNick != null)
     {
-      str1 = this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerNick;
+      str1 = this.d.mPeerNick;
     }
     else
     {
-      str1 = this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin;
+      str1 = this.d.mPeerUin;
     }
-    if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode == 1)
+    if (this.d.mMode == 1)
     {
       a("0X8004854", 1);
       paramOnClickListener3 = new StringBuilder();
-      paramOnClickListener3.append(paramActivity.getResources().getString(2131698438));
+      paramOnClickListener3.append(paramActivity.getResources().getString(2131896362));
       paramOnClickListener3.append(str1);
-      paramOnClickListener3.append(paramActivity.getResources().getString(2131698439));
+      paramOnClickListener3.append(paramActivity.getResources().getString(2131896363));
       paramOnClickListener3 = paramOnClickListener3.toString();
-      if ((paramString != null) && (!paramString.equalsIgnoreCase(this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin))) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131698399), paramOnClickListener3, paramActivity.getResources().getString(2131698440), paramActivity.getResources().getString(2131698440), paramOnClickListener2, null);
+      if ((paramString != null) && (!paramString.equalsIgnoreCase(this.d.mPeerUin))) {
+        this.e = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131896323), paramOnClickListener3, paramActivity.getResources().getString(2131896364), paramActivity.getResources().getString(2131896364), paramOnClickListener2, null);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131698399), paramOnClickListener3, paramActivity.getResources().getString(2131698440), paramActivity.getResources().getString(2131698441), paramOnClickListener1, paramOnClickListener2);
+        this.e = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131896323), paramOnClickListener3, paramActivity.getResources().getString(2131896364), paramActivity.getResources().getString(2131896365), paramOnClickListener1, paramOnClickListener2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.e.show();
     }
-    else if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode == 2)
+    else if (this.d.mMode == 2)
     {
       a("0X8004856", 1);
       paramOnClickListener1 = new StringBuilder();
       paramOnClickListener1.append(str1);
-      paramOnClickListener1.append(paramActivity.getResources().getString(2131698437));
+      paramOnClickListener1.append(paramActivity.getResources().getString(2131896361));
       paramOnClickListener1 = paramOnClickListener1.toString();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131698399), paramOnClickListener1, paramActivity.getResources().getString(2131698436), paramActivity.getResources().getString(2131698436), paramOnClickListener3, null);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+      this.e = DialogUtil.a(paramActivity, 230, paramActivity.getResources().getString(2131896323), paramOnClickListener1, paramActivity.getResources().getString(2131896360), paramActivity.getResources().getString(2131896360), paramOnClickListener3, null);
+      this.e.show();
     }
     else if (QLog.isColorLevel())
     {
       QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - working but op err");
     }
-    paramActivity = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    paramActivity = this.e;
     if (paramActivity != null) {
       paramActivity.setOnDismissListener(new QQProxyForQlink.5(this));
     }
@@ -374,7 +360,7 @@ public class QQProxyForQlink
     case 1: 
       a("0X800484F", 1);
     }
-    if (!this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mWorking)
+    if (!this.d.mWorking)
     {
       Object localObject = null;
       paramString = localObject;
@@ -409,20 +395,20 @@ public class QQProxyForQlink
   public void a(Bundle paramBundle)
   {
     paramBundle = (QlAndQQInterface.WorkState)paramBundle.getSerializable("wstate");
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mForIphone = paramBundle.mForIphone;
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode = paramBundle.mMode;
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerNick = paramBundle.mPeerNick;
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin = paramBundle.mPeerUin;
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mState = paramBundle.mState;
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mTransferingCount = paramBundle.mTransferingCount;
-    this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mWorking = paramBundle.mWorking;
+    this.d.mForIphone = paramBundle.mForIphone;
+    this.d.mMode = paramBundle.mMode;
+    this.d.mPeerNick = paramBundle.mPeerNick;
+    this.d.mPeerUin = paramBundle.mPeerUin;
+    this.d.mState = paramBundle.mState;
+    this.d.mTransferingCount = paramBundle.mTransferingCount;
+    this.d.mWorking = paramBundle.mWorking;
   }
   
   public void a(QlAndQQInterface.DailogClickInfo paramDailogClickInfo)
   {
     Bundle localBundle = new Bundle();
     localBundle.putSerializable(QlAndQQInterface.a, paramDailogClickInfo);
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQlinkServiceMgr().a("cmd.senddailogclickinfo", localBundle);
+    int i = this.a.getQlinkServiceMgr().a("cmd.senddailogclickinfo", localBundle);
     if (QLog.isDevelopLevel())
     {
       paramDailogClickInfo = new StringBuilder();
@@ -438,47 +424,47 @@ public class QQProxyForQlink
       return;
     }
     Object localObject = FileManagerUtil.a(paramInsertFMFileInfo.filePath);
-    long l1 = FileManagerUtil.a(paramInsertFMFileInfo.filePath);
+    long l1 = FileManagerUtil.h(paramInsertFMFileInfo.filePath);
     long l2 = MessageRecordFactory.a(-1000).uniseq;
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(l2, paramInsertFMFileInfo.uin, 0);
+    FileManagerEntity localFileManagerEntity = this.a.getFileManagerDataCenter().b(l2, paramInsertFMFileInfo.uin, 0);
     localFileManagerEntity.setCloudType(5);
     localFileManagerEntity.nSessionId = paramInsertFMFileInfo.sessionId;
     localFileManagerEntity.setFilePath(paramInsertFMFileInfo.filePath);
-    localFileManagerEntity.nFileType = FileManagerUtil.a(paramInsertFMFileInfo.filePath);
+    localFileManagerEntity.nFileType = FileManagerUtil.c(paramInsertFMFileInfo.filePath);
     localFileManagerEntity.strThumbPath = paramInsertFMFileInfo.thumbPath;
     localFileManagerEntity.fileName = ((String)localObject);
     localFileManagerEntity.fileSize = l1;
-    localFileManagerEntity.srvTime = (MessageCache.a() * 1000L);
-    localFileManagerEntity.msgSeq = FileManagerUtil.a();
-    localFileManagerEntity.msgUid = FileManagerUtil.b();
+    localFileManagerEntity.srvTime = (MessageCache.c() * 1000L);
+    localFileManagerEntity.msgSeq = FileManagerUtil.f();
+    localFileManagerEntity.msgUid = FileManagerUtil.g();
     localFileManagerEntity.isReaded = true;
     localFileManagerEntity.peerUin = paramInsertFMFileInfo.uin;
     localFileManagerEntity.nOlSenderProgress = paramInsertFMFileInfo.transSeq;
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localFriendsManager.e(String.valueOf(localFileManagerEntity.peerUin)) != null) {
+    FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (localFriendsManager.m(String.valueOf(localFileManagerEntity.peerUin)) != null) {
       localFileManagerEntity.peerType = 0;
     } else {
       localFileManagerEntity.peerType = 1003;
     }
-    localFileManagerEntity.peerNick = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInsertFMFileInfo.uin, null, 0);
+    localFileManagerEntity.peerNick = FileManagerUtil.a(this.a, paramInsertFMFileInfo.uin, null, 0);
     localFileManagerEntity.status = 1;
-    localFriendsManager.b(paramInsertFMFileInfo.uin);
+    localFriendsManager.n(paramInsertFMFileInfo.uin);
     if (paramInsertFMFileInfo.bSend)
     {
       localFileManagerEntity.nOpType = 0;
       localFileManagerEntity.bSend = true;
       TransfileUtile.makeTransFileProtocolData(paramInsertFMFileInfo.filePath, 0L, 0, true);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
+      this.a.getFileManagerDataCenter().a(localFileManagerEntity);
     }
     else
     {
       localFileManagerEntity.nOpType = 1;
       localFileManagerEntity.bSend = false;
       TransfileUtile.makeTransFileProtocolData(paramInsertFMFileInfo.filePath, l1, 0, false, null);
-      TransFileUtil.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), (String)localObject, 0, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
+      TransFileUtil.getTransferFilePath(this.a.getAccount(), (String)localObject, 0, null);
+      this.a.getFileManagerDataCenter().a(localFileManagerEntity);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity);
+    this.a.getFileManagerDataCenter().c(localFileManagerEntity);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("insertFM sessionid:");
     ((StringBuilder)localObject).append(paramInsertFMFileInfo.sessionId);
@@ -493,7 +479,7 @@ public class QQProxyForQlink
   {
     Bundle localBundle = new Bundle();
     localBundle.putSerializable(QlAndQQInterface.a, paramUserInfo);
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQlinkServiceMgr().a("cmd.senduserinfo", localBundle);
+    int i = this.a.getQlinkServiceMgr().a("cmd.senduserinfo", localBundle);
     if (QLog.isDevelopLevel())
     {
       paramUserInfo = new StringBuilder();
@@ -505,8 +491,8 @@ public class QQProxyForQlink
   
   public void a(String paramString)
   {
-    String str = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    String str = ContactUtils.c(this.a, paramString);
+    FriendsManager localFriendsManager = (FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
     QlAndQQInterface.UserInfo localUserInfo = new QlAndQQInterface.UserInfo();
     localUserInfo.uin = paramString;
     if (str != null) {
@@ -514,7 +500,7 @@ public class QQProxyForQlink
     } else {
       localUserInfo.nick = paramString;
     }
-    paramString = localFriendsManager.e(paramString);
+    paramString = localFriendsManager.m(paramString);
     localUserInfo.isFriend = false;
     if (paramString != null) {
       localUserInfo.isFriend = paramString.isFriend();
@@ -533,7 +519,7 @@ public class QQProxyForQlink
       localStringBuilder.append(paramInt);
       QLog.d("QQProxyForQlink", 4, localStringBuilder.toString());
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", paramString, paramString, 0, paramInt, 0, "", "", "", "");
+    ReportController.b(this.a, "CliOper", "", "", paramString, paramString, 0, paramInt, 0, "", "", "", "");
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
@@ -583,7 +569,7 @@ public class QQProxyForQlink
     if (paramAppActivity == null) {
       return;
     }
-    DialogUtil.a(paramAppActivity, 230, paramAppActivity.getString(2131698416), paramAppActivity.getString(2131698417), 2131698392, 2131698392, new QQProxyForQlink.7(this, paramOnQRHandleResultCallback), null).show();
+    DialogUtil.a(paramAppActivity, 230, paramAppActivity.getString(2131896340), paramAppActivity.getString(2131896341), 2131896316, 2131896316, new QQProxyForQlink.7(this, paramOnQRHandleResultCallback), null).show();
   }
   
   public void a(AppActivity paramAppActivity, String paramString, OnQRHandleResultCallback paramOnQRHandleResultCallback)
@@ -593,15 +579,15 @@ public class QQProxyForQlink
       if (paramString == null) {
         return;
       }
-      QlinkHelper.QRScanInfo localQRScanInfo = QlinkHelper.a(paramString);
+      QlinkHelper.QRScanInfo localQRScanInfo = QlinkHelper.e(paramString);
       if (localQRScanInfo == null)
       {
-        DialogUtil.a(paramAppActivity, 230, paramAppActivity.getString(2131698398), paramAppActivity.getString(2131698418), 2131698392, 2131698392, new QQProxyForQlink.6(this, paramOnQRHandleResultCallback), null).show();
+        DialogUtil.a(paramAppActivity, 230, paramAppActivity.getString(2131896322), paramAppActivity.getString(2131896342), 2131896316, 2131896316, new QQProxyForQlink.6(this, paramOnQRHandleResultCallback), null).show();
         return;
       }
-      if (this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mWorking)
+      if (this.d.mWorking)
       {
-        a(paramAppActivity, this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode, this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerNick, paramOnQRHandleResultCallback);
+        a(paramAppActivity, this.d.mMode, this.d.mPeerNick, paramOnQRHandleResultCallback);
         return;
       }
       boolean bool = "qlink".equalsIgnoreCase(paramAppActivity.getIntent().getStringExtra("from"));
@@ -621,7 +607,7 @@ public class QQProxyForQlink
       if (paramString != null) {
         localBundle.putString("subfrom", paramString);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink();
+      this.a.getQQProxyForQlink();
       a(paramAppActivity, 11, localBundle);
       paramOnQRHandleResultCallback.b();
     }
@@ -629,10 +615,10 @@ public class QQProxyForQlink
   
   public boolean a(QlAndQQInterface.SendFileInfos paramSendFileInfos)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink().a("0X8004763", 1);
+    this.a.getQQProxyForQlink().a("0X8004763", 1);
     Bundle localBundle = new Bundle();
     localBundle.putSerializable(QlAndQQInterface.a, paramSendFileInfos);
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQlinkServiceMgr().a("cmd.sendfilemsgs", localBundle);
+    int i = this.a.getQlinkServiceMgr().a("cmd.sendfilemsgs", localBundle);
     if (QLog.isDevelopLevel())
     {
       paramSendFileInfos = new StringBuilder();
@@ -663,7 +649,7 @@ public class QQProxyForQlink
         QlAndQQInterface.SendFileInfo localSendFileInfo = new QlAndQQInterface.SendFileInfo();
         localSendFileInfo.sessionid = FileManagerUtil.a().longValue();
         localSendFileInfo.filePath = paramList;
-        localSendFileInfo.fileSize = FileManagerUtil.a(paramList);
+        localSendFileInfo.fileSize = FileManagerUtil.h(paramList);
         localSendFileInfos.infos.add(localSendFileInfo);
       }
       return a(localSendFileInfos);
@@ -674,12 +660,19 @@ public class QQProxyForQlink
     return false;
   }
   
-  public void b() {}
+  public void b()
+  {
+    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppInit");
+    QQAppInterface localQQAppInterface = this.a;
+    if ((localQQAppInterface != null) && (localQQAppInterface.getApp() != null)) {
+      ThreadManager.executeOnSubThread(new QQProxyForQlink.1(this));
+    }
+  }
   
   public void b(int paramInt)
   {
     if (1 == paramInt) {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext());
+      FileManagerUtil.a(this.a.getApplication().getApplicationContext());
     }
   }
   
@@ -690,20 +683,20 @@ public class QQProxyForQlink
       if (paramBundle.getBoolean("qlinkexit", false))
       {
         QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ qlink is exit:");
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState = new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false);
-        i();
+        this.d = new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false);
+        k();
         return;
       }
       paramBundle = (QlAndQQInterface.WorkState)paramBundle.getSerializable("wstate");
       if (paramBundle != null)
       {
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mForIphone = paramBundle.mForIphone;
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mMode = paramBundle.mMode;
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerNick = paramBundle.mPeerNick;
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mPeerUin = paramBundle.mPeerUin;
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mState = paramBundle.mState;
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mTransferingCount = paramBundle.mTransferingCount;
-        this.jdField_a_of_type_CooperationQlinkQlAndQQInterface$WorkState.mWorking = paramBundle.mWorking;
+        this.d.mForIphone = paramBundle.mForIphone;
+        this.d.mMode = paramBundle.mMode;
+        this.d.mPeerNick = paramBundle.mPeerNick;
+        this.d.mPeerUin = paramBundle.mPeerUin;
+        this.d.mState = paramBundle.mState;
+        this.d.mTransferingCount = paramBundle.mTransferingCount;
+        this.d.mWorking = paramBundle.mWorking;
       }
       else
       {
@@ -714,23 +707,16 @@ public class QQProxyForQlink
     {
       QLog.e("QQProxyForQlink", 1, "[QLINK]-QQ respHeart. info = null");
     }
-    this.jdField_a_of_type_Int = 0;
+    this.c = 0;
   }
   
-  public void c()
-  {
-    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppDestroy");
-    k();
-    m();
-    i();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
+  public void c() {}
   
   public void c(int paramInt)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("cmd", paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQlinkServiceMgr().a("cmd.sendsimplecmd", localBundle);
+    this.a.getQlinkServiceMgr().a("cmd.sendsimplecmd", localBundle);
   }
   
   public void c(Bundle paramBundle)
@@ -759,7 +745,7 @@ public class QQProxyForQlink
       a(paramBundle.getBundle(QlAndQQInterface.a));
       return;
     case 22: 
-      d();
+      e();
       return;
     case 21: 
       QlinkReliableReport.b();
@@ -792,35 +778,49 @@ public class QQProxyForQlink
   
   public void d()
   {
-    QLog.d("QQProxyForQlink", 4, "[QLINK]-QQ nofityQlinkStart");
-    h();
+    QLog.i("QQProxyForQlink", 1, "[QLINK]-QQ UI_LOG:QQProxyForQlink. onAppDestroy");
+    m();
+    o();
+    k();
+    this.a = null;
   }
   
   public void e()
   {
+    QLog.d("QQProxyForQlink", 4, "[QLINK]-QQ nofityQlinkStart");
+    j();
+  }
+  
+  public void f()
+  {
     Bundle localBundle = new Bundle();
     localBundle.putInt("param", 1);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.a;
     if ((localQQAppInterface != null) && (localQQAppInterface.getQlinkServiceMgr() != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQlinkServiceMgr().a("cmd.sendheart", localBundle);
+      this.a.getQlinkServiceMgr().a("cmd.sendheart", localBundle);
     }
   }
   
-  public void f() {}
+  public void g() {}
   
-  public void g()
+  public int h()
   {
-    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    return this.d.mTransferingCount;
+  }
+  
+  public void i()
+  {
+    QQCustomDialog localQQCustomDialog = this.e;
     if (localQQCustomDialog != null)
     {
       localQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.e = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QQProxyForQlink
  * JD-Core Version:    0.7.0.1
  */

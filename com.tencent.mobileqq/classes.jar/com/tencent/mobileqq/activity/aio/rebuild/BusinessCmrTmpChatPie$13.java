@@ -41,11 +41,11 @@ class BusinessCmrTmpChatPie$13
       if (paramInt == 0)
       {
         paramBundle = new EqqDetail((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject);
-        CrmUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-        this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
+        CrmUtils.a(this.a.d, paramBundle);
+        this.a.bV = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
         BusinessCmrTmpChatPie.a(this.a, paramBundle);
         paramBundle = this.a;
-        paramBundle.b(paramBundle.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent());
+        paramBundle.c(paramBundle.f.getIntent());
         return;
       }
       if (QLog.isColorLevel())
@@ -71,7 +71,7 @@ class BusinessCmrTmpChatPie$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.13
  * JD-Core Version:    0.7.0.1
  */

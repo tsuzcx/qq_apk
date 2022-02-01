@@ -15,20 +15,22 @@ public final class stPublisherRsp
   public boolean newUser = false;
   public String newsUserText = "";
   public int noInstallAction = 0;
+  public int showGuide = 0;
   public String weishiSchema = "";
   
   public stPublisherRsp() {}
   
-  public stPublisherRsp(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt, stPublisherGuide paramstPublisherGuide, String paramString3, String paramString4)
+  public stPublisherRsp(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt1, stPublisherGuide paramstPublisherGuide, String paramString3, String paramString4, int paramInt2)
   {
     this.enable = paramBoolean1;
     this.newUser = paramBoolean2;
     this.newsUserText = paramString1;
     this.weishiSchema = paramString2;
-    this.noInstallAction = paramInt;
+    this.noInstallAction = paramInt1;
     this.guide = paramstPublisherGuide;
     this.miniAppSchema = paramString3;
     this.h5Url = paramString4;
+    this.showGuide = paramInt2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -41,6 +43,7 @@ public final class stPublisherRsp
     this.guide = ((stPublisherGuide)paramJceInputStream.read(cache_guide, 5, false));
     this.miniAppSchema = paramJceInputStream.readString(6, false);
     this.h5Url = paramJceInputStream.readString(7, false);
+    this.showGuide = paramJceInputStream.read(this.showGuide, 8, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -68,6 +71,7 @@ public final class stPublisherRsp
     if (localObject != null) {
       paramJceOutputStream.write((String)localObject, 7);
     }
+    paramJceOutputStream.write(this.showGuide, 8);
   }
 }
 

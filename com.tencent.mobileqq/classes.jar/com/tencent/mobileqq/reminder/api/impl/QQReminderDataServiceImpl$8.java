@@ -13,7 +13,7 @@ class QQReminderDataServiceImpl$8
   {
     if (paramInt == 2003)
     {
-      OnGetReminderListByDayListener localOnGetReminderListByDayListener = this.jdField_a_of_type_ComTencentMobileqqReminderOnGetReminderListByDayListener;
+      OnGetReminderListByDayListener localOnGetReminderListByDayListener = this.a;
       if (localOnGetReminderListByDayListener != null) {
         localOnGetReminderListByDayListener.a(paramBoolean, paramBundle);
       }
@@ -22,7 +22,7 @@ class QQReminderDataServiceImpl$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.api.impl.QQReminderDataServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

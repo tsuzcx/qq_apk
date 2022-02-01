@@ -25,53 +25,122 @@ public class TemplateFactory
   extends TemplateWithHotReloadFactory
   implements ITemplateFactoryConst
 {
-  private static TemplateFactoryCache jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactoryCache = new TemplateFactoryCache();
-  private DynamicChannelConfig jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsBasicDynamicChannelConfig;
-  private StyleConfigHelper jdField_a_of_type_ComTencentMobileqqKandianGluePtsStyleConfigHelper = new StyleConfigHelper();
-  private String jdField_a_of_type_JavaLangString = "-1";
-  private String b;
+  private static TemplateFactoryCache b = new TemplateFactoryCache();
+  private String a = "-1";
+  private String c;
+  private DynamicChannelConfig d;
+  private StyleConfigHelper e = new StyleConfigHelper();
   
   public static TemplateFactory a(String paramString, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      RealTimeTemplateFactory.a(paramString, true);
-      return jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
+      RealTimeTemplateFactory.b(paramString, true);
+      return b.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
     }
-    paramString = jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactoryCache.get(paramString);
+    paramString = b.get(paramString);
     if (paramString != null) {
-      return paramString.a;
+      return paramString.c;
     }
     return null;
   }
   
-  public static void a()
+  public static void c(String paramString)
   {
-    QLog.d("TemplateFactory", 1, "reset: ");
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactoryCache.reset();
+    StyleConfigHelper.TemplateFactoryWrapper localTemplateFactoryWrapper = StyleConfigHelper.a().a(BaseApplicationImpl.getContext(), paramString);
+    localTemplateFactoryWrapper.c.b(paramString);
+    b.put(paramString, localTemplateFactoryWrapper);
   }
   
-  private void b()
+  public static void d()
+  {
+    QLog.d("TemplateFactory", 1, "reset: ");
+    b.reset();
+  }
+  
+  private void g()
   {
     Iterator localIterator = this.nameTemplateMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
       TemplateBean localTemplateBean = (TemplateBean)((Map.Entry)localIterator.next()).getValue();
       localTemplateBean.setId(this.templateId.get());
-      localTemplateBean.setStyleSource(this.jdField_a_of_type_JavaLangString);
+      localTemplateBean.setStyleSource(this.a);
     }
   }
   
-  public static void c(String paramString)
+  public String a()
   {
-    StyleConfigHelper.TemplateFactoryWrapper localTemplateFactoryWrapper = StyleConfigHelper.a().a(BaseApplicationImpl.getContext(), paramString);
-    localTemplateFactoryWrapper.a.b(paramString);
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsFactoryTemplateFactoryCache.put(paramString, localTemplateFactoryWrapper);
+    return this.a;
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsBasicDynamicChannelConfig;
+    this.templateId.set(paramInt);
+    g();
+  }
+  
+  public void a(OfflineUtils.ConfigData paramConfigData)
+  {
+    if (paramConfigData == null)
+    {
+      QLog.d("TemplateFactory", 2, "updateProteusConfig, configData is null.");
+      return;
+    }
+    this.d = paramConfigData.d;
+  }
+  
+  public void a(String paramString)
+  {
+    this.a = paramString;
+    g();
+  }
+  
+  public boolean a(TemplateBean paramTemplateBean)
+  {
+    boolean bool = true;
+    if (paramTemplateBean == null) {
+      return true;
+    }
+    RealTimeTemplateFactory localRealTimeTemplateFactory = RealTimeTemplateFactory.b(this.c, false);
+    if ((localRealTimeTemplateFactory != null) && (localRealTimeTemplateFactory.getTemplate(paramTemplateBean.getStyleName()) != null)) {
+      return localRealTimeTemplateFactory.a(paramTemplateBean);
+    }
+    if (paramTemplateBean.getId() == getTemplateId())
+    {
+      if (!a().equals(paramTemplateBean.getStyleSource())) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public String b()
+  {
+    return this.c;
+  }
+  
+  public void b(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public TemplateFactory c()
+  {
+    TemplateFactory localTemplateFactory = new TemplateFactory();
+    localTemplateFactory.templateId = new AtomicInteger(getTemplateId());
+    localTemplateFactory.a(this.a);
+    localTemplateFactory.b(this.c);
+    HashMap localHashMap = new HashMap();
+    localHashMap.putAll(this.nameTemplateMap);
+    localTemplateFactory.nameTemplateMap = localHashMap;
+    return localTemplateFactory;
+  }
+  
+  public int e()
+  {
+    Object localObject = this.d;
     if (localObject != null)
     {
       localObject = ((DynamicChannelConfig)localObject).a("column_count");
@@ -94,84 +163,15 @@ public class TemplateFactory
     return 1;
   }
   
-  public DynamicChannelConfig a()
+  public DynamicChannelConfig f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsBasicDynamicChannelConfig;
-  }
-  
-  public TemplateFactory a()
-  {
-    TemplateFactory localTemplateFactory = new TemplateFactory();
-    localTemplateFactory.templateId = new AtomicInteger(getTemplateId());
-    localTemplateFactory.a(this.jdField_a_of_type_JavaLangString);
-    localTemplateFactory.b(this.b);
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll(this.nameTemplateMap);
-    localTemplateFactory.nameTemplateMap = localHashMap;
-    return localTemplateFactory;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.templateId.set(paramInt);
-    b();
-  }
-  
-  public void a(OfflineUtils.ConfigData paramConfigData)
-  {
-    if (paramConfigData == null)
-    {
-      QLog.d("TemplateFactory", 2, "updateProteusConfig, configData is null.");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsBasicDynamicChannelConfig = paramConfigData.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsBasicDynamicChannelConfig;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    b();
-  }
-  
-  public boolean a(TemplateBean paramTemplateBean)
-  {
-    boolean bool = true;
-    if (paramTemplateBean == null) {
-      return true;
-    }
-    RealTimeTemplateFactory localRealTimeTemplateFactory = RealTimeTemplateFactory.a(this.b, false);
-    if ((localRealTimeTemplateFactory != null) && (localRealTimeTemplateFactory.getTemplate(paramTemplateBean.getStyleName()) != null)) {
-      return localRealTimeTemplateFactory.a(paramTemplateBean);
-    }
-    if (paramTemplateBean.getId() == getTemplateId())
-    {
-      if (!a().equals(paramTemplateBean.getStyleSource())) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
+    return this.d;
   }
   
   public Map<String, TemplateBean> getNameTemplateMap()
   {
     Map localMap = super.getNameTemplateMap();
-    RealTimeTemplateFactory localRealTimeTemplateFactory = RealTimeTemplateFactory.a(this.b, false);
+    RealTimeTemplateFactory localRealTimeTemplateFactory = RealTimeTemplateFactory.b(this.c, false);
     if (localRealTimeTemplateFactory != null) {
       localMap.putAll(localRealTimeTemplateFactory.getNameTemplateMap());
     }
@@ -180,7 +180,7 @@ public class TemplateFactory
   
   public TemplateBean getTemplate(String paramString)
   {
-    Object localObject1 = RealTimeTemplateFactory.a(this.b, false);
+    Object localObject1 = RealTimeTemplateFactory.b(this.c, false);
     if (localObject1 != null)
     {
       localObject1 = ((RealTimeTemplateFactory)localObject1).getTemplate(paramString);
@@ -192,7 +192,7 @@ public class TemplateFactory
     localObject1 = localTemplateBean;
     if (localTemplateBean == null)
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianGluePtsStyleConfigHelper.a(this.b);
+      Object localObject2 = this.e.b(this.c);
       localObject1 = localTemplateBean;
       if (((StyleConfigHelper.Config)localObject2).d != null)
       {
@@ -204,7 +204,7 @@ public class TemplateFactory
       }
     }
     if (localObject1 == null) {
-      ProteusReportUtil.a(this.jdField_a_of_type_JavaLangString, this.b, paramString);
+      ProteusReportUtil.a(this.a, this.c, paramString);
     }
     return localObject1;
   }
@@ -216,7 +216,7 @@ public class TemplateFactory
   
   protected void onAddTemplate(String paramString, TemplateBean paramTemplateBean)
   {
-    paramTemplateBean.setStyleSource(this.jdField_a_of_type_JavaLangString);
+    paramTemplateBean.setStyleSource(this.a);
   }
   
   public String toString()
@@ -224,9 +224,9 @@ public class TemplateFactory
     StringBuilder localStringBuilder1 = new StringBuilder();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("serviceId: ");
-    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(this.c);
     ((StringBuilder)localObject).append(" bid: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("\n");
     localStringBuilder1.append(((StringBuilder)localObject).toString());
     localObject = getNameTemplateMap().entrySet().iterator();
@@ -246,7 +246,7 @@ public class TemplateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.factory.TemplateFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ class ArkAppDownloadModule$5
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
-    localObject = DialogUtil.a((Context)localObject, 230, null, this.jdField_a_of_type_JavaLangString, ((Context)localObject).getString(2131690728), this.jdField_a_of_type_AndroidContentContext.getString(2131690145), new ArkAppDownloadModule.5.1(this), new ArkAppDownloadModule.5.2(this));
-    ((QQCustomDialog)localObject).setCheckBox(this.d, null);
+    Object localObject = this.a;
+    localObject = DialogUtil.a((Context)localObject, 230, null, this.b, ((Context)localObject).getString(2131887648), this.a.getString(2131887044), new ArkAppDownloadModule.5.1(this), new ArkAppDownloadModule.5.2(this));
+    ((QQCustomDialog)localObject).setCheckBox(this.g, null);
     ((QQCustomDialog)localObject).show();
-    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "6", "", this.b, "");
+    ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "6", "", this.d, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.5
  * JD-Core Version:    0.7.0.1
  */

@@ -200,7 +200,7 @@ public class InputViewPanelControl
     {
       paramEditText = getPalinText(paramEditText);
       if (!TextUtils.isEmpty(paramEditText)) {
-        return ReplaceFormatUser(paramEditText, paramList).replaceAll(HardCodeUtil.a(2131705862), HardCodeUtil.a(2131705866)).replaceAll(HardCodeUtil.a(2131705863), "/MM");
+        return ReplaceFormatUser(paramEditText, paramList).replaceAll(HardCodeUtil.a(2131903747), HardCodeUtil.a(2131903751)).replaceAll(HardCodeUtil.a(2131903748), "/MM");
       }
     }
     return "";
@@ -352,7 +352,7 @@ public class InputViewPanelControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.share.InputViewPanelControl
  * JD-Core Version:    0.7.0.1
  */

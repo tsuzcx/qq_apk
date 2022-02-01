@@ -13,7 +13,7 @@ public class WtloginReporter
 {
   public static void a(Context paramContext, EventSaver paramEventSaver, String paramString1, String paramString2)
   {
-    if (!PrivacyPolicyHelper.a())
+    if (!PrivacyPolicyHelper.d())
     {
       QLog.i("WtloginReporter", 1, "reportSaveEvent user no allow");
       return;
@@ -58,12 +58,12 @@ public class WtloginReporter
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
+    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.WtloginReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -34,13 +34,13 @@ public class WSPlayerForNetInfoHandler
     ((StringBuilder)localObject).append(Thread.currentThread());
     WSLog.e("WSPlayerForNetInfoHandler", ((StringBuilder)localObject).toString());
     localObject = (WSPlayerManager)this.a.get();
-    if ((localObject != null) && (((WSPlayerManager)localObject).a() != null))
+    if ((localObject != null) && (((WSPlayerManager)localObject).r() != null))
     {
-      WSPlayerParam localWSPlayerParam = ((WSPlayerManager)localObject).a();
-      if ((!((WSPlayerManager)localObject).f()) && (!((WSPlayerManager)localObject).e()))
+      WSPlayerParam localWSPlayerParam = ((WSPlayerManager)localObject).r();
+      if ((!((WSPlayerManager)localObject).j()) && (!((WSPlayerManager)localObject).i()))
       {
-        if (((WSPlayerManager)localObject).g()) {
-          ((WSPlayerManager)localObject).a();
+        if (((WSPlayerManager)localObject).k()) {
+          ((WSPlayerManager)localObject).b();
         }
       }
       else {
@@ -109,7 +109,7 @@ public class WSPlayerForNetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerForNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

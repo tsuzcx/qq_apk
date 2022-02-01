@@ -10,12 +10,12 @@ class MessengerService$8
   
   public void a(Bundle paramBundle)
   {
-    this.a.a(paramBundle);
+    this.b.a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.8
  * JD-Core Version:    0.7.0.1
  */

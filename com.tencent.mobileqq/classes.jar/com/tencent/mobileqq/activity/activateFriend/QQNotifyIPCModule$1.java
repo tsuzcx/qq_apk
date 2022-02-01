@@ -13,12 +13,12 @@ class QQNotifyIPCModule$1
   {
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("allowed", paramBoolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendQQNotifyIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
+    this.b.callbackResult(this.a, EIPCResult.createResult(0, localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

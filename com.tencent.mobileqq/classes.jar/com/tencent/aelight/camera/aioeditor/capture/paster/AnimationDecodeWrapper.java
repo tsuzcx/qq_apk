@@ -12,12 +12,12 @@ import mqq.app.MobileQQ;
 public class AnimationDecodeWrapper
   implements GifDecoderWrapper
 {
-  private InfoStickerDrawable jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetInfoStickerDrawable;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private InfoStickerDrawable b;
   
   public AnimationDecodeWrapper(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.a = paramString2;
   }
   
   public int a()
@@ -42,7 +42,7 @@ public class AnimationDecodeWrapper
       ((StringBuilder)localObject).append(paramLong);
       QLog.d("AnimationDecodeWrapper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetInfoStickerDrawable;
+    Object localObject = this.b;
     if (localObject != null) {
       return ((InfoStickerDrawable)localObject).a(paramLong);
     }
@@ -51,17 +51,17 @@ public class AnimationDecodeWrapper
   
   public void init()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetInfoStickerDrawable = InformationFaceConstant.a(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString);
+    this.b = InformationFaceConstant.a(MobileQQ.getContext(), this.a);
   }
   
   public void release()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiWidgetInfoStickerDrawable = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.AnimationDecodeWrapper
  * JD-Core Version:    0.7.0.1
  */

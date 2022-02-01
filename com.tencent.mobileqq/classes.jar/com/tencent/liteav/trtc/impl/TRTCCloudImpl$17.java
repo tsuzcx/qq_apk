@@ -1,42 +1,78 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.basic.module.Monitor;
-import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
-import com.tencent.rtmp.ui.TXCloudVideoView;
+import android.text.TextUtils;
+import com.tencent.trtc.TRTCCloudDef.TRTCSwitchRoomConfig;
 
 class TRTCCloudImpl$17
   implements Runnable
 {
-  TRTCCloudImpl$17(TRTCCloudImpl paramTRTCCloudImpl, String paramString) {}
+  TRTCCloudImpl$17(TRTCCloudImpl paramTRTCCloudImpl, TRTCCloudDef.TRTCSwitchRoomConfig paramTRTCSwitchRoomConfig) {}
   
   public void run()
   {
-    Object localObject1 = this.this$0.mRoomInfo.getUser(this.val$userId);
-    if (localObject1 == null)
+    Object localObject = new StringBuilder();
+    int k = this.val$config.roomId;
+    int j = 0;
+    int i = 0;
+    ((StringBuilder)localObject).append(String.format("switchRoom roomId:%d, strRoomId:%s", new Object[] { Integer.valueOf(k), this.val$config.strRoomId }));
+    ((StringBuilder)localObject).append(" self:");
+    ((StringBuilder)localObject).append(this.this$0.hashCode());
+    localObject = ((StringBuilder)localObject).toString();
+    this.this$0.apiOnlineLog((String)localObject);
+    if ((!TRTCCloudImpl.access$2000(this.this$0, this.val$config.roomId)) && (TextUtils.isEmpty(this.val$config.strRoomId)))
     {
-      localObject1 = this.this$0;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("stopRemoteRender user is not exist ");
-      ((StringBuilder)localObject2).append(this.val$userId);
-      ((TRTCCloudImpl)localObject1).apiLog(((StringBuilder)localObject2).toString());
+      this.this$0.apiLog("Switch room failed with invalid room id");
+      this.this$0.runOnListenerThread(new TRTCCloudImpl.17.1(this));
       return;
     }
-    this.this$0.apiLog(String.format("stopRemoteView userID:%s tinyID:%d streamType:%d", new Object[] { this.val$userId, Long.valueOf(((TRTCRoomInfo.UserInfo)localObject1).tinyID), Integer.valueOf(((TRTCRoomInfo.UserInfo)localObject1).streamType) }));
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(String.format("stopRemoteView userID:%s", new Object[] { this.val$userId }));
-    ((StringBuilder)localObject2).append(" self:");
-    ((StringBuilder)localObject2).append(this.this$0.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject2).toString(), "", 0);
-    TXCEventRecorderProxy.a(String.valueOf(((TRTCRoomInfo.UserInfo)localObject1).tinyID), 4015, 0L, -1L, "", 0);
-    TRTCCloudImpl.access$2800(this.this$0, (TRTCRoomInfo.UserInfo)localObject1, Boolean.valueOf(false));
-    localObject2 = ((TRTCRoomInfo.UserInfo)localObject1).mainRender.view;
-    this.this$0.runOnMainThread(new TRTCCloudImpl.17.1(this, (TXCloudVideoView)localObject2));
-    ((TRTCRoomInfo.UserInfo)localObject1).mainRender.view = null;
+    if (((TRTCCloudImpl.access$2000(this.this$0, this.val$config.roomId)) && (this.val$config.roomId == this.this$0.mRoomInfo.roomId)) || ((!TRTCCloudImpl.access$2000(this.this$0, this.val$config.roomId)) && (this.val$config.strRoomId == this.this$0.mRoomInfo.strRoomId)))
+    {
+      this.this$0.apiLog("Switch room to the same one");
+      this.this$0.runOnListenerThread(new TRTCCloudImpl.17.2(this));
+      return;
+    }
+    this.this$0.mRoomInfo.forEachUser(new TRTCCloudImpl.17.3(this));
+    this.this$0.mRoomInfo.clearUserList();
+    boolean bool = TRTCCloudImpl.access$2000(this.this$0, this.val$config.roomId);
+    String str2 = "";
+    if (bool)
+    {
+      i = this.val$config.roomId;
+      this.this$0.mRoomInfo.roomId = this.val$config.roomId;
+      this.this$0.mRoomInfo.strRoomId = "";
+    }
+    else if (!TextUtils.isEmpty(this.val$config.strRoomId))
+    {
+      this.this$0.mRoomInfo.strRoomId = this.val$config.strRoomId;
+      this.this$0.mRoomInfo.roomId = -1L;
+      localObject = this.val$config.strRoomId;
+      i = j;
+      break label401;
+    }
+    localObject = "";
+    label401:
+    String str1;
+    if (!TextUtils.isEmpty(this.val$config.userSig))
+    {
+      this.this$0.mRoomInfo.userSig = this.val$config.userSig;
+      str1 = this.val$config.userSig;
+    }
+    else
+    {
+      str1 = "";
+    }
+    if (!TextUtils.isEmpty(this.val$config.privateMapKey))
+    {
+      this.this$0.mRoomInfo.privateMapKey = this.val$config.privateMapKey;
+      str2 = this.val$config.privateMapKey;
+    }
+    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
+    localTRTCCloudImpl.nativeSwitchRoom(localTRTCCloudImpl.mNativeRtcContext, i, (String)localObject, str1, str2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.17
  * JD-Core Version:    0.7.0.1
  */

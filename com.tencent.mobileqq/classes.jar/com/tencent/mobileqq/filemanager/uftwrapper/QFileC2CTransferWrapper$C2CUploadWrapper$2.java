@@ -12,24 +12,24 @@ class QFileC2CTransferWrapper$C2CUploadWrapper$2
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt, long paramLong3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CUploadWrapper.jdField_a_of_type_Boolean) {
+    if (this.b.b) {
       return;
     }
     if ((paramBoolean) && (paramLong1 != 58L)) {
-      ForwardOrderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUftwrapperQFileC2CTransferWrapper$C2CUploadWrapper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong3);
+      ForwardOrderManager.a().a(this.b.a, paramLong3);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadSendMsgCallback != null)
+    if (this.a != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("seq", paramInt);
       localBundle.putLong("uniSeq", paramLong3);
-      this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadSendMsgCallback.a(paramBoolean, paramLong1, localBundle);
+      this.a.a(paramBoolean, paramLong1, localBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.uftwrapper.QFileC2CTransferWrapper.C2CUploadWrapper.2
  * JD-Core Version:    0.7.0.1
  */

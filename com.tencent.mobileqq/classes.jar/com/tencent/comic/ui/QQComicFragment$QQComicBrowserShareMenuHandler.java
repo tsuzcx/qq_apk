@@ -37,13 +37,13 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
     if (paramWebColorNoteInjectImpl == null) {
       return;
     }
-    Object localObject4 = this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getString(1996881920);
-    Object localObject1 = this.jdField_a_of_type_ComTencentComicUiQQComicFragment.a();
+    Object localObject4 = this.a.getString(1996881920);
+    Object localObject1 = this.a.c();
     Object localObject2 = "";
     if (localObject1 != null)
     {
-      localObject2 = ((QQComicJsPlugin)localObject1).c;
-      localObject1 = ((QQComicJsPlugin)localObject1).d;
+      localObject2 = ((QQComicJsPlugin)localObject1).f;
+      localObject1 = ((QQComicJsPlugin)localObject1).g;
     }
     else
     {
@@ -53,10 +53,10 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
     if (((String)localObject2).isEmpty())
     {
       localObject3 = localObject2;
-      if (this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getSwiftTitleUI() != null) {
-        if (!this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getSwiftTitleUI().a().isEmpty())
+      if (this.a.getSwiftTitleUI() != null) {
+        if (!this.a.getSwiftTitleUI().h().isEmpty())
         {
-          localObject3 = this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getSwiftTitleUI().a();
+          localObject3 = this.a.getSwiftTitleUI().h();
         }
         else
         {
@@ -108,56 +108,56 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
     paramWebColorNoteInjectImpl.a(new QQComicFragment.QQComicBrowserShareMenuHandler.1(this, paramQQBrowserActivity, (String)localObject2, (String)localObject1, ((JSONObject)localObject3).toString().getBytes()));
   }
   
-  private void d()
+  private void b()
   {
-    IWebColorNoteInject localIWebColorNoteInject = ((QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).getWebColorNoteInjector();
+    IWebColorNoteInject localIWebColorNoteInject = ((QQBrowserActivity)this.d).getWebColorNoteInjector();
     if (localIWebColorNoteInject != null) {
       localIWebColorNoteInject.a();
     }
   }
   
-  public List<ShareActionSheetBuilder.ActionSheetItem>[] a()
+  public List<ShareActionSheetBuilder.ActionSheetItem>[] aE_()
   {
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject = this.jdField_a_of_type_ComTencentComicUiQQComicFragment.a();
+    Object localObject = this.a.a();
     String str1 = localObject[0];
     String str2 = localObject[1];
     String str3 = localObject[2];
     String str4 = localObject[3];
     String str5 = localObject[4];
-    VipComicShareReportUtils.a((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "6", str4, str5);
-    if ((this.jdField_a_of_type_Long & 0x8) == 0L)
+    VipComicShareReportUtils.a((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "6", str4, str5);
+    if ((this.j & 0x8) == 0L)
     {
       localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
-      VipComicShareReportUtils.a((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "1", str4, str5);
+      VipComicShareReportUtils.a((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "1", str4, str5);
     }
-    if ((this.jdField_a_of_type_Long & 0x10) == 0L)
+    if ((this.j & 0x10) == 0L)
     {
       localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-      VipComicShareReportUtils.a((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "2", str4, str5);
+      VipComicShareReportUtils.a((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "2", str4, str5);
     }
-    boolean bool = WXShareHelper.a().a();
-    if (((this.jdField_a_of_type_Long & 0x4000) == 0L) && (bool))
+    boolean bool = WXShareHelper.a().b();
+    if (((this.j & 0x4000) == 0L) && (bool))
     {
       localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
-      VipComicShareReportUtils.a((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "3", str4, str5);
+      VipComicShareReportUtils.a((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "3", str4, str5);
     }
-    if (((this.jdField_a_of_type_Long & 0x8000) == 0L) && (bool))
+    if (((this.j & 0x8000) == 0L) && (bool))
     {
       localArrayList2.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
-      VipComicShareReportUtils.a((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "4", str4, str5);
+      VipComicShareReportUtils.a((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "4", str4, str5);
     }
     ArrayList localArrayList1 = new ArrayList();
-    if ((this.jdField_a_of_type_Long & 0x2000) == 0L)
+    if ((this.j & 0x2000) == 0L)
     {
       localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(14));
-      VipComicShareReportUtils.b((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "1", str4, str5);
+      VipComicShareReportUtils.b((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "1", str4, str5);
     }
-    QQComicJsPlugin localQQComicJsPlugin = this.jdField_a_of_type_ComTencentComicUiQQComicFragment.a();
+    QQComicJsPlugin localQQComicJsPlugin = this.a.c();
     int i;
-    if ((localQQComicJsPlugin != null) && (localQQComicJsPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0))
+    if ((localQQComicJsPlugin != null) && (localQQComicJsPlugin.e.get() >= 0))
     {
-      if (localQQComicJsPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
+      if (localQQComicJsPlugin.e.get() == 1) {
         i = 1;
       } else {
         i = 0;
@@ -174,9 +174,9 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
       } else {
         localObject = "4";
       }
-      VipComicShareReportUtils.b((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, (String)localObject, str4, str5);
+      VipComicShareReportUtils.b((AppInterface)this.a.getAppRuntime(), str1, str2, str3, (String)localObject, str4, str5);
     }
-    localObject = (QQBrowserActivity)this.jdField_a_of_type_AndroidAppActivity;
+    localObject = (QQBrowserActivity)this.d;
     String str6 = ((QQBrowserActivity)localObject).getOriginalUrl();
     if ((str6 != null) && (str6.indexOf("cancelColorTab=1") == -1))
     {
@@ -187,7 +187,7 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
         if (localWebColorNoteInjectImpl.a(str6))
         {
           i = 70;
-          if (localWebColorNoteInjectImpl.c())
+          if (localWebColorNoteInjectImpl.d())
           {
             i = 82;
             localObject = "3";
@@ -197,29 +197,29 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
             localObject = "2";
           }
           localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(i));
-          VipComicShareReportUtils.b((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, (String)localObject, str4, str5);
+          VipComicShareReportUtils.b((AppInterface)this.a.getAppRuntime(), str1, str2, str3, (String)localObject, str4, str5);
         }
       }
     }
-    if ((localQQComicJsPlugin != null) && ((localQQComicJsPlugin.jdField_a_of_type_Int & 0x2) > 0))
+    if ((localQQComicJsPlugin != null) && ((localQQComicJsPlugin.h & 0x2) > 0))
     {
       localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
-      VipComicShareReportUtils.b((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "9", str4, str5);
+      VipComicShareReportUtils.b((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "9", str4, str5);
     }
-    if ((localQQComicJsPlugin != null) && ((localQQComicJsPlugin.jdField_a_of_type_Int & 0x1) > 0))
+    if ((localQQComicJsPlugin != null) && ((localQQComicJsPlugin.h & 0x1) > 0))
     {
       localArrayList1.add(ShareActionSheetBuilder.ActionSheetItem.build(40));
-      VipComicShareReportUtils.b((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "10", str4, str5);
+      VipComicShareReportUtils.b((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "10", str4, str5);
     }
     return (List[])new ArrayList[] { localArrayList2, localArrayList1 };
   }
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.dismiss();
+    this.h.dismiss();
     int j = paramActionSheetItem.action;
-    paramShareActionSheet = d();
-    Object localObject = this.jdField_a_of_type_ComTencentComicUiQQComicFragment.a();
+    paramShareActionSheet = g();
+    Object localObject = this.a.a();
     String str1 = localObject[0];
     String str2 = localObject[1];
     String str3 = localObject[2];
@@ -229,129 +229,129 @@ class QQComicFragment$QQComicBrowserShareMenuHandler
     {
       if (j == 3)
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))
+        if (TextUtils.isEmpty(this.f.S))
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 2, false);
+          this.f.a(paramShareActionSheet, 2, false);
           return;
         }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 2, false);
+        this.f.b(paramShareActionSheet, 2, false);
         return;
       }
       if ((j != 9) && (j != 10))
       {
         if (j == 14)
         {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)) {
+          if (TextUtils.isEmpty(this.f.S)) {
             return;
           }
-          this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getWebView().callJs(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p, new String[] { "6" });
-          VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "1", str4, (String)localObject);
+          this.a.getWebView().callJs(this.f.S, new String[] { "6" });
+          VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "1", str4, (String)localObject);
           return;
         }
         if (j == 117)
         {
-          VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "5", str4, (String)localObject);
-          this.jdField_a_of_type_ComTencentComicUiQQComicFragment.a();
+          VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "5", str4, (String)localObject);
+          this.a.b();
           return;
         }
         if (j == 116)
         {
-          VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "4", str4, (String)localObject);
-          this.jdField_a_of_type_ComTencentComicUiQQComicFragment.a();
+          VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "4", str4, (String)localObject);
+          this.a.b();
           return;
         }
         if (j == 70)
         {
-          VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "2", str4, (String)localObject);
-          d();
+          VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "2", str4, (String)localObject);
+          b();
           return;
         }
         if (j == 82)
         {
-          VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "3", str4, (String)localObject);
-          d();
+          VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "3", str4, (String)localObject);
+          b();
           return;
         }
         if (j == 72)
         {
-          if (this.jdField_a_of_type_AndroidOsBundle == null) {
-            this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+          if (this.B == null) {
+            this.B = new Bundle();
           }
-          this.jdField_a_of_type_AndroidOsBundle.putString("to_qq", paramActionSheetItem.uin);
-          this.jdField_a_of_type_AndroidOsBundle.putString("to_uin_name", paramActionSheetItem.label);
-          this.jdField_a_of_type_AndroidOsBundle.putInt("to_uin_type", paramActionSheetItem.uinType);
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))
+          this.B.putString("to_qq", paramActionSheetItem.uin);
+          this.B.putString("to_uin_name", paramActionSheetItem.label);
+          this.B.putInt("to_uin_type", paramActionSheetItem.uinType);
+          if (TextUtils.isEmpty(this.f.S))
           {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 1, false);
+            this.f.a(paramShareActionSheet, 1, false);
             return;
           }
-          if (this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a != null)
+          if (this.f.A != null)
           {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a().show();
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a.callJs(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p, new String[] { String.valueOf(101) });
+            this.f.u().show();
+            this.f.A.callJs(this.f.S, new String[] { String.valueOf(101) });
           }
         }
         else if (j == 40)
         {
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))
+          if (!TextUtils.isEmpty(this.f.S))
           {
-            VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "10", str4, (String)localObject);
-            this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getWebView().callJs(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p, new String[] { "7" });
+            VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "10", str4, (String)localObject);
+            this.a.getWebView().callJs(this.f.S, new String[] { "7" });
           }
         }
-        else if ((j == 11) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p)))
+        else if ((j == 11) && (!TextUtils.isEmpty(this.f.S)))
         {
-          VipComicShareReportUtils.c((AppInterface)this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getAppRuntime(), str1, str2, str3, "9", str4, (String)localObject);
-          this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getWebView().callJs(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p, new String[] { "8" });
+          VipComicShareReportUtils.c((AppInterface)this.a.getAppRuntime(), str1, str2, str3, "9", str4, (String)localObject);
+          this.a.getWebView().callJs(this.f.S, new String[] { "8" });
         }
       }
       else
       {
         int i;
-        if (!WXShareHelper.a().a()) {
-          i = 2131720478;
-        } else if (!WXShareHelper.a().b()) {
-          i = 2131720479;
+        if (!WXShareHelper.a().b()) {
+          i = 2131918154;
+        } else if (!WXShareHelper.a().c()) {
+          i = 2131918155;
         } else {
           i = -1;
         }
         if (i != -1)
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getContext(), 0, i, 1).b(this.jdField_a_of_type_ComTencentComicUiQQComicFragment.getResources().getDimensionPixelSize(1996619776));
+          QQToast.makeText(this.a.getContext(), 0, i, 1).show(this.a.getResources().getDimensionPixelSize(1996619776));
           return;
         }
         if (j == 9)
         {
-          if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))
+          if (TextUtils.isEmpty(this.f.S))
           {
-            this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 3, true);
+            this.f.a(paramShareActionSheet, 3, true);
             return;
           }
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 3, true);
+          this.f.b(paramShareActionSheet, 3, true);
           return;
         }
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))
+        if (TextUtils.isEmpty(this.f.S))
         {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 4, true);
+          this.f.a(paramShareActionSheet, 4, true);
           return;
         }
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 4, true);
+        this.f.b(paramShareActionSheet, 4, true);
       }
     }
     else
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.p))
+      if (TextUtils.isEmpty(this.f.S))
       {
-        this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 1, false);
+        this.f.a(paramShareActionSheet, 1, false);
         return;
       }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(paramShareActionSheet, 1, false);
+      this.f.b(paramShareActionSheet, 1, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicFragment.QQComicBrowserShareMenuHandler
  * JD-Core Version:    0.7.0.1
  */

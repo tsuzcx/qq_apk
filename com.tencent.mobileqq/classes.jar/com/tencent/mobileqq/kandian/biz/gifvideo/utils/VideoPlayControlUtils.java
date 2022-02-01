@@ -32,7 +32,7 @@ public class VideoPlayControlUtils
   
   public static void a(Container paramContainer)
   {
-    if (VideoPlayController.a.a())
+    if (VideoPlayController.a.f())
     {
       paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
       while (paramContainer.hasNext())
@@ -127,7 +127,7 @@ public class VideoPlayControlUtils
         float f = ReadInJoyDisplayUtils.a((View)localObject);
         if (paramAbsBaseArticleInfo != null)
         {
-          if (paramAbsBaseArticleInfo.equals(((IPlayableView)localObject).a()))
+          if (paramAbsBaseArticleInfo.equals(((IPlayableView)localObject).getArticleInfo()))
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("find article: ");
@@ -136,7 +136,7 @@ public class VideoPlayControlUtils
             break label136;
           }
         }
-        else if ((((IPlayableView)localObject).a()) && (f >= 80.0F))
+        else if ((((IPlayableView)localObject).c()) && (f >= 80.0F))
         {
           QLog.d("gifvideo.VideoPlayControlUtils", 2, ">= 80f");
           break label136;
@@ -158,7 +158,7 @@ public class VideoPlayControlUtils
         if ((localObject instanceof IPlayableView))
         {
           localObject = (IPlayableView)localObject;
-          if ((((IPlayableView)localObject).a()) && (j != i)) {
+          if ((((IPlayableView)localObject).c()) && (j != i)) {
             ((IPlayableView)localObject).a();
           }
         }
@@ -215,7 +215,7 @@ public class VideoPlayControlUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.utils.VideoPlayControlUtils
  * JD-Core Version:    0.7.0.1
  */

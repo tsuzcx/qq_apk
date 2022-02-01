@@ -23,68 +23,68 @@ class QQOperateTips$3
   
   public void onClick(View paramView)
   {
-    if ((QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips) != null) && (QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).get() != null))
+    if ((QQOperateTips.g(this.b) != null) && (QQOperateTips.g(this.b).get() != null))
     {
-      FriendHotTipsBar.c(QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips), QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_JavaLangString);
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperationViopTipTask.url.startsWith("mqqapi");
+      FriendHotTipsBar.c(QQOperateTips.b(this.b), QQOperateTips.a(this.b).b);
+      boolean bool = this.a.url.startsWith("mqqapi");
       int j = 2;
       if (bool)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperationViopTipTask.url.contains("c2c")) && (QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_Int == 0)) {
-          ChatActivityUtils.a(QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips), (Context)QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).get(), QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_Int, QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).d, null, true, QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).b, true, true, null, "from_internal");
-        } else if ((this.jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperationViopTipTask.url.contains("discussion")) && (QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_Int == 3000)) {
-          ChatActivityUtils.a(QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips), (Context)QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).get(), QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_Int, QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_JavaLangString, true, true, null, null);
+        if ((this.a.url.contains("c2c")) && (QQOperateTips.a(this.b).a == 0)) {
+          ChatActivityUtils.a(QQOperateTips.b(this.b), (Context)QQOperateTips.g(this.b).get(), QQOperateTips.a(this.b).a, QQOperateTips.a(this.b).b, QQOperateTips.a(this.b).e, null, true, QQOperateTips.a(this.b).c, true, true, null, "from_internal");
+        } else if ((this.a.url.contains("discussion")) && (QQOperateTips.a(this.b).a == 3000)) {
+          ChatActivityUtils.a(QQOperateTips.b(this.b), (Context)QQOperateTips.g(this.b).get(), QQOperateTips.a(this.b).a, QQOperateTips.a(this.b).b, true, true, null, null);
         }
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperationViopTipTask.url.startsWith("http"))
+      else if (this.a.url.startsWith("http"))
       {
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperationViopTipTask.url;
+        Object localObject2 = this.a.url;
         localObject1 = localObject2;
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
           StringBuilder localStringBuilder;
           if (((String)localObject2).contains("?"))
           {
-            localObject1 = (TicketManager)QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).getManager(2);
+            localObject1 = (TicketManager)QQOperateTips.b(this.b).getManager(2);
             localStringBuilder = new StringBuilder();
             localStringBuilder.append((String)localObject2);
             localStringBuilder.append("&sid=");
-            localStringBuilder.append(((TicketManager)localObject1).getSkey(QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).getCurrentAccountUin()));
+            localStringBuilder.append(((TicketManager)localObject1).getSkey(QQOperateTips.b(this.b).getCurrentAccountUin()));
             localObject1 = localStringBuilder.toString();
           }
           else
           {
-            localObject1 = (TicketManager)QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).getManager(2);
+            localObject1 = (TicketManager)QQOperateTips.b(this.b).getManager(2);
             localStringBuilder = new StringBuilder();
             localStringBuilder.append((String)localObject2);
             localStringBuilder.append("?sid=");
-            localStringBuilder.append(((TicketManager)localObject1).getSkey(QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).getCurrentAccountUin()));
+            localStringBuilder.append(((TicketManager)localObject1).getSkey(QQOperateTips.b(this.b).getCurrentAccountUin()));
             localObject1 = localStringBuilder.toString();
           }
         }
-        localObject2 = new Intent((Context)QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).get(), QQBrowserActivity.class);
+        localObject2 = new Intent((Context)QQOperateTips.g(this.b).get(), QQBrowserActivity.class);
         ((Intent)localObject2).putExtra("url", (String)localObject1);
         ((Intent)localObject2).putExtra("hide_left_button", true);
         ((Intent)localObject2).putExtra("show_right_close_button", true);
         ((Intent)localObject2).putExtra("finish_animation_up_down", true);
-        ((Context)QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).get()).startActivity((Intent)localObject2);
+        ((Context)QQOperateTips.g(this.b).get()).startActivity((Intent)localObject2);
         i = 2;
         break label528;
       }
       int i = 1;
       label528:
-      Object localObject1 = QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips);
-      if (QQOperateTips.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsQQOperateTips).jdField_a_of_type_Int == 0) {
+      Object localObject1 = QQOperateTips.b(this.b);
+      if (QQOperateTips.a(this.b).a == 0) {
         j = 1;
       }
-      ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X800416C", "0X800416C", 0, 0, String.valueOf(j), String.valueOf(1), String.valueOf(i), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqConfigOperationQQOperationViopTipTask.taskid));
+      ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "0X800416C", "0X800416C", 0, 0, String.valueOf(j), String.valueOf(1), String.valueOf(i), String.valueOf(this.a.taskid));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.QQOperateTips.3
  * JD-Core Version:    0.7.0.1
  */

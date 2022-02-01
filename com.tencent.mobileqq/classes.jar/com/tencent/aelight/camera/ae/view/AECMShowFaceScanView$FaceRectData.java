@@ -4,28 +4,28 @@ import android.graphics.RectF;
 
 public class AECMShowFaceScanView$FaceRectData
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  RectF jdField_a_of_type_AndroidGraphicsRectF;
+  int a;
+  RectF b;
+  float c;
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(RectF paramRectF)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+    this.b = paramRectF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AECMShowFaceScanView.FaceRectData
  * JD-Core Version:    0.7.0.1
  */

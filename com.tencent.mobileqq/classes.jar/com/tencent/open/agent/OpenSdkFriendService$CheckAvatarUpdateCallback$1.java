@@ -14,13 +14,13 @@ class OpenSdkFriendService$CheckAvatarUpdateCallback$1
   public void run()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.a)
     {
       try
       {
-        String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-        str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.a, str);
-        ImageLoader.a().a(str);
+        String str = this.b.getJSONObject(i).getString("openid");
+        str = QZonePortraitData.a(this.c.a.e, str);
+        ImageLoader.a().b(str);
       }
       catch (JSONException localJSONException)
       {
@@ -32,7 +32,7 @@ class OpenSdkFriendService$CheckAvatarUpdateCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1
  * JD-Core Version:    0.7.0.1
  */

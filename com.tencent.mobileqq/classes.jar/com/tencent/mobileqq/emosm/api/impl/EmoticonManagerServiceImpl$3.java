@@ -15,18 +15,18 @@ class EmoticonManagerServiceImpl$3
   {
     if ((paramPicEmoticonInfo != null) && (paramPicEmoticonInfo.emoticon != null))
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.a)
       {
-        EmoticonOperateReport.reportNewSoundEvent(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplEmoticonManagerServiceImpl.app, "0X800A937", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, paramPicEmoticonInfo.emoticon.epId);
+        EmoticonOperateReport.reportNewSoundEvent(this.c.app, "0X800A937", this.b.a, paramPicEmoticonInfo.emoticon.epId);
         return;
       }
-      EmoticonOperateReport.reportNewSoundEvent(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplEmoticonManagerServiceImpl.app, "0X800A936", this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.a, paramPicEmoticonInfo.emoticon.epId);
+      EmoticonOperateReport.reportNewSoundEvent(this.c.app, "0X800A936", this.b.a, paramPicEmoticonInfo.emoticon.epId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ final class ArkAiDictMgr$4
   {
     try
     {
-      if (ArkAiDictMgr.a(this.a))
+      if (ArkAiDictMgr.c(this.a))
       {
-        String str = ArkAiDictUpdateMgr.a();
+        String str = ArkAiDictUpdateMgr.b();
         if (str == null)
         {
           QLog.i("ArkDict.DictMgr", 1, String.format(Locale.CHINA, "reloadWordData, local dict config not available", new Object[0]));
           return;
         }
-        if ((ArkAiDictMgr.b() != null) && (ArkAiDictMgr.b().equals(str)))
+        if ((ArkAiDictMgr.f() != null) && (ArkAiDictMgr.f().equals(str)))
         {
-          QLog.i("ArkDict.DictMgr", 1, String.format(Locale.CHINA, "reloadWordData, dict already loaded, dict-id=%s", new Object[] { ArkAiDictMgr.b() }));
+          QLog.i("ArkDict.DictMgr", 1, String.format(Locale.CHINA, "reloadWordData, dict already loaded, dict-id=%s", new Object[] { ArkAiDictMgr.f() }));
           return;
         }
         localObject = ArkAiDictMgr.a(str);
@@ -62,7 +62,7 @@ final class ArkAiDictMgr$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictMgr.4
  * JD-Core Version:    0.7.0.1
  */

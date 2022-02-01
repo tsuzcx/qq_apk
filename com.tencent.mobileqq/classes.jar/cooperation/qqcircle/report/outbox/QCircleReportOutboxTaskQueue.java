@@ -5,9 +5,9 @@ import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.qcircle.api.db.util.Singleton;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import cooperation.qqcircle.utils.QCircleHostStubUtil;
@@ -41,7 +41,7 @@ public class QCircleReportOutboxTaskQueue
   
   private QCircleReportOutboxTaskQueue()
   {
-    RFLog.d("QCircleReportOutboxTaskQueue", RFLog.USR, "new instance");
+    QLog.d("QCircleReportOutboxTaskQueue", 1, "new instance");
     this.mHandlerThread = new HandlerThread("qqcircle_report_outbox", 10);
     this.mHandlerThread.start();
     this.mHandler = new Handler(this.mHandlerThread.getLooper(), this);
@@ -62,7 +62,7 @@ public class QCircleReportOutboxTaskQueue
   
   public static SimpleTaskQueue getInstance()
   {
-    if (QCircleConfigHelper.d()) {
+    if (QCircleConfigHelper.av()) {
       return (SimpleTaskQueue)sSingleton.get(null);
     }
     return new SimpleTaskQueue();
@@ -141,11 +141,10 @@ public class QCircleReportOutboxTaskQueue
   
   private void onResetTask()
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onResetTask task size:");
     localStringBuilder.append(getTaskCount());
-    RFLog.i("QCircleReportOutboxTaskQueue", i, localStringBuilder.toString());
+    QLog.i("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
     QCircleReportOutboxTaskManager.getInstance().reset();
     release();
   }
@@ -157,11 +156,10 @@ public class QCircleReportOutboxTaskQueue
       this.mHandler.removeCallbacks(this.checkRetry);
       this.mHandler.postDelayed(this.checkRetry, 3000L);
     }
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onRestore taskList size:");
     localStringBuilder.append(getTaskCount());
-    RFLog.i("QCircleReportOutboxTaskQueue", i, localStringBuilder.toString());
+    QLog.i("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
   }
   
   private void onResumeTask(Message paramMessage)
@@ -177,11 +175,10 @@ public class QCircleReportOutboxTaskQueue
   
   private void release()
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("release uin:");
     localStringBuilder.append(QCircleHostStubUtil.getCurrentAccount());
-    RFLog.i("QCircleReportOutboxTaskQueue", i, localStringBuilder.toString());
+    QLog.i("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
     this.mHandler.removeCallbacksAndMessages(null);
     this.mHandlerThread.quit();
     this.mHandlerThread = null;
@@ -226,23 +223,20 @@ public class QCircleReportOutboxTaskQueue
     if (localCopyOnWriteArrayList != null)
     {
       int j = localCopyOnWriteArrayList.size();
-      int i = RFLog.USR;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkRetry taskList size:");
       ((StringBuilder)localObject).append(j);
-      RFLog.i("QCircleReportOutboxTaskQueue", i, ((StringBuilder)localObject).toString());
-      i = 0;
+      QLog.i("QCircleReportOutboxTaskQueue", 1, ((StringBuilder)localObject).toString());
+      int i = 0;
       while (i < j)
       {
         localObject = (QCircleReportOutboxTask)localCopyOnWriteArrayList.get(i);
         ((QCircleReportOutboxTask)localObject).printTaskInfo("QCircleReportOutboxTaskQueue", "checkRetry");
         if (((QCircleReportOutboxTask)localObject).getState() != 1)
         {
-          int k;
           StringBuilder localStringBuilder;
           if (needRetry((QCircleReportOutboxTask)localObject))
           {
-            k = RFLog.USR;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("retryTask id:");
             localStringBuilder.append(((QCircleReportOutboxTask)localObject).getTaskId());
@@ -252,13 +246,12 @@ public class QCircleReportOutboxTaskQueue
             localStringBuilder.append(((QCircleReportOutboxTask)localObject).mCmdName);
             localStringBuilder.append(" ,curRetryNum:");
             localStringBuilder.append(((QCircleReportOutboxTask)localObject).getRetryNum());
-            RFLog.d("QCircleReportOutboxTaskQueue", k, localStringBuilder.toString());
+            QLog.d("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
             resumeTask((QCircleReportOutboxTask)localObject);
           }
           else
           {
             reportOutboxResendFinalFailed((QCircleReportOutboxTask)localObject);
-            k = RFLog.USR;
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("removeTask id:");
             localStringBuilder.append(((QCircleReportOutboxTask)localObject).getTaskId());
@@ -270,7 +263,7 @@ public class QCircleReportOutboxTaskQueue
             localStringBuilder.append(((QCircleReportOutboxTask)localObject).getRetryNum());
             localStringBuilder.append(" ,resultCode:");
             localStringBuilder.append(((QCircleReportOutboxTask)localObject).getResultCode());
-            RFLog.d("QCircleReportOutboxTaskQueue", k, localStringBuilder.toString());
+            QLog.d("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
             removeTask((QCircleReportOutboxTask)localObject);
           }
         }
@@ -335,11 +328,10 @@ public class QCircleReportOutboxTaskQueue
   {
     long l = System.currentTimeMillis();
     CopyOnWriteArrayList localCopyOnWriteArrayList = QCircleReportOutboxTaskManager.getInstance().getTaskList();
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getTaskList timeCost:");
     localStringBuilder.append(System.currentTimeMillis() - l);
-    RFLog.d("QCircleReportOutboxTaskQueue", i, localStringBuilder.toString());
+    QLog.d("QCircleReportOutboxTaskQueue", 1, localStringBuilder.toString());
     return localCopyOnWriteArrayList;
   }
   
@@ -403,13 +395,12 @@ public class QCircleReportOutboxTaskQueue
       }
       else
       {
-        int i = RFLog.USR;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("removeTask id:");
         ((StringBuilder)localObject).append(paramQCircleReportOutboxTask.getTaskId());
         ((StringBuilder)localObject).append(",unexpect state:");
         ((StringBuilder)localObject).append(paramQCircleReportOutboxTask.getState());
-        RFLog.d("QCircleReportOutboxTaskQueue", i, ((StringBuilder)localObject).toString());
+        QLog.d("QCircleReportOutboxTaskQueue", 1, ((StringBuilder)localObject).toString());
         bool1 = bool2;
       }
     }
@@ -447,7 +438,7 @@ public class QCircleReportOutboxTaskQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue
  * JD-Core Version:    0.7.0.1
  */

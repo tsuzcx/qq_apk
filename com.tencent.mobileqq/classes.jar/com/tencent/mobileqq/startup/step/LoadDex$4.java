@@ -21,12 +21,12 @@ class LoadDex$4
         QLog.d("LoadDex", 2, "", localThrowable);
       }
     }
-    Step.AmStepFactory.b(29, this.this$0.mDirector, null).step();
+    Step.AmStepFactory.b(30, this.this$0.mDirector, null).step();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadDex.4
  * JD-Core Version:    0.7.0.1
  */

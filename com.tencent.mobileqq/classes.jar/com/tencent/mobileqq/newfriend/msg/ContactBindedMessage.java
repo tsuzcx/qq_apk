@@ -9,18 +9,18 @@ public class ContactBindedMessage
   
   public ContactBindedMessage(ContactBinded paramContactBinded)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPhonecontactDataContactBinded = paramContactBinded;
-    this.jdField_a_of_type_Long = paramContactBinded.timestamp;
+    this.a = paramContactBinded;
+    this.d = paramContactBinded.timestamp;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPhonecontactDataContactBinded.isReaded;
+    return this.a.isReaded;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.msg.ContactBindedMessage
  * JD-Core Version:    0.7.0.1
  */

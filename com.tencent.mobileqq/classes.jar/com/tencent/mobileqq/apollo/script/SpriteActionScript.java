@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.apollo.script;
 
+import android.content.SharedPreferences;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.game.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
@@ -10,11 +12,12 @@ import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.cmshow.brickengine.BKScriptUtils;
 import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
 import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
 import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
+import com.tencent.mobileqq.cmshow.engine.script.ScriptUtils;
 import com.tencent.mobileqq.cmshow.engine.script.task.AbsScriptTask;
 import com.tencent.mobileqq.cmshow.engine.script.task.CommonInitTask;
 import com.tencent.mobileqq.cmshow.engine.script.task.IScriptTaskBuilder;
@@ -42,18 +45,18 @@ public class SpriteActionScript
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteActionScript", 2, new Object[] { "[init], width:", Integer.valueOf(paramInt1), ",height:", Integer.valueOf(paramInt2), ",vHeight:", Integer.valueOf(paramInt3), ",aioType:", Integer.valueOf(paramInt4), "friendUin:", paramString, ",spriteFrom:", Integer.valueOf(paramInt5), ", isBubbleMeme:", Boolean.valueOf(paramBoolean) });
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext == null)
+    if (this.f == null)
     {
       QLog.w("[cmshow][scripted]SpriteActionScript", 1, "init error, mSpriteContext null");
       return;
     }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+    QQAppInterface localQQAppInterface = this.f.l();
     if (localQQAppInterface == null)
     {
       QLog.w("[cmshow][scripted]SpriteActionScript", 1, "init error, appInterface null");
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+    Object localObject = this.f.o();
     if (localObject == null)
     {
       QLog.w("[cmshow][scripted]SpriteActionScript", 1, "init error, scriptService null");
@@ -61,18 +64,14 @@ public class SpriteActionScript
     }
     try
     {
-      localObject = (CommonInitTask)((IScriptService)localObject).a().a(ScriptTaskType.COMMON_INIT);
-      ((CommonInitTask)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_b_of_type_Boolean).a(ApolloGameUtil.a(localQQAppInterface, paramInt4, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString)).a(paramString).b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_b_of_type_JavaLangString).a(paramBoolean);
-      ((CommonInitTask)localObject).a(paramInt1).b(paramInt2).c(paramInt3).b(paramInt5);
+      localObject = (CommonInitTask)((IScriptService)localObject).b().a(ScriptTaskType.COMMON_INIT);
+      ((CommonInitTask)localObject).c(this.f.j).a(ApolloGameUtil.a(localQQAppInterface, paramInt4, this.f.b)).a(paramString).b(this.f.c).a(paramBoolean);
+      ((CommonInitTask)localObject).c(paramInt1).d(paramInt2).e(paramInt3).b(paramInt5);
       paramString = ((CommonInitTask)localObject).a();
-      if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(paramString);
-      } else {
-        QLog.e("[cmshow][scripted]SpriteActionScript", 1, "commonInitScript is null");
-      }
+      this.f.a(paramString);
       if (QLog.isColorLevel())
       {
-        QLog.d("[cmshow][scripted]SpriteActionScript", 2, paramString);
+        QLog.d("[cmshow][scripted]SpriteActionScript", 2, new Object[] { paramString });
         return;
       }
     }
@@ -84,12 +83,12 @@ public class SpriteActionScript
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() != null))
+    if ((this.f != null) && (this.f.n() != null))
     {
-      ICMShowView localICMShowView = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().a().a();
+      ICMShowView localICMShowView = this.f.n().c().a();
       int i = localICMShowView.getRenderWidth();
       int j = localICMShowView.getRenderHeight();
-      a(i, localICMShowView.getInitHeight(), j, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c);
+      a(i, localICMShowView.getInitHeight(), j, this.f.a, this.f.b, this.f.i, this.f.l);
       return;
     }
     QLog.e("[cmshow][scripted]SpriteActionScript", 1, "onLoadFinish mSpriteContext null error");
@@ -97,7 +96,7 @@ public class SpriteActionScript
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d != 0) {
+    if (this.f.i != 0) {
       return;
     }
     if (QLog.isColorLevel()) {
@@ -108,39 +107,58 @@ public class SpriteActionScript
       localObject = new JSONObject();
       ((JSONObject)localObject).put("errCode", 0);
       ((JSONObject)localObject).put("status", paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_panel_status_change.local", ((JSONObject)localObject).toString());
+      this.f.a("sc.script_panel_status_change.local", ((JSONObject)localObject).toString());
       if (1 != paramInt) {
-        break label258;
+        break label372;
       }
       localObject = "panel_close_clk";
     }
     catch (Throwable localThrowable)
     {
       Object localObject;
+      int i;
+      int j;
+      long l;
+      DtReportParamsBuilder localDtReportParamsBuilder;
       QLog.e("[cmshow][scripted]SpriteActionScript", 1, "[notifyPanelStatusChanged],", localThrowable);
       return;
     }
-    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), "cmshow", "Apollo", (String)localObject, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int), ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportUserResult(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_b_of_type_Int), new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-    if (paramInt == 2) {
-      localObject = "click";
+    VipUtils.a(this.f.l(), "cmshow", "Apollo", (String)localObject, ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.f.a), ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportUserResult(this.f.d), new String[] { "", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+    localObject = BaseApplicationImpl.getApplication().getSharedPreferences("CmshowIntimateAction_sp", 4);
+    i = ((SharedPreferences)localObject).getInt("relationType", 0);
+    j = ((SharedPreferences)localObject).getInt("actionId", 0);
+    l = ((SharedPreferences)localObject).getLong("timestamp", 0L);
+    localDtReportParamsBuilder = new DtReportParamsBuilder().a(ApolloDtReportUtil.a(this.f.l())).b(ApolloDtReportUtil.a(this.f.a)).c(this.f.b);
+    if ((i > 0) && (j > 0) && (l > 0L))
+    {
+      l /= 1000L;
+      localDtReportParamsBuilder.f(String.valueOf(j)).b(Integer.valueOf(i)).a(Long.valueOf(l));
+    }
+    else
+    {
+      localDtReportParamsBuilder.b(Integer.valueOf(0));
     }
     for (;;)
     {
-      ApolloDtReportUtil.a("aio", "sprite", (String)localObject, new DtReportParamsBuilder().a(ApolloDtReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a())).b(ApolloDtReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int)).b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString).a());
+      ApolloDtReportUtil.a("aio", "sprite", (String)localObject, localDtReportParamsBuilder.a());
       return;
       for (;;)
       {
         break;
-        label258:
+        label372:
         if (2 != paramInt) {
-          break label270;
+          break label385;
         }
         str = "panel_open_clk";
       }
-      label270:
+      label385:
       String str = "";
       break;
-      str = "close";
+      if (paramInt == 2) {
+        str = "click";
+      } else {
+        str = "close";
+      }
     }
   }
   
@@ -155,7 +173,7 @@ public class SpriteActionScript
       localJSONObject.put("errCode", 0);
       localJSONObject.put("width", paramInt1);
       localJSONObject.put("height", paramInt2);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_draw_area_change.local", localJSONObject.toString());
+      this.f.a("sc.script_draw_area_change.local", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -185,7 +203,7 @@ public class SpriteActionScript
       if (!TextUtils.isEmpty(str)) {
         ((JSONObject)localObject).put("tabType", Integer.valueOf(str));
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_on_sprite_single_clicked.local", ((JSONObject)localObject).toString());
+      this.f.a("sc.script_on_sprite_single_clicked.local", ((JSONObject)localObject).toString());
       return;
     }
     catch (Throwable paramString1)
@@ -215,7 +233,7 @@ public class SpriteActionScript
         }
       }
       ((JSONObject)localObject).put("uinList", localJSONArray);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_user_dressOrStatus_changed.local", ((JSONObject)localObject).toString());
+      this.f.a("sc.script_user_dressOrStatus_changed.local", ((JSONObject)localObject).toString());
       return;
     }
     catch (Throwable paramArrayList)
@@ -243,7 +261,7 @@ public class SpriteActionScript
         localJSONObject.put("width", paramInt1);
         localJSONObject.put("height", paramInt2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_notify_screen_size_change.local", localJSONObject.toString());
+      this.f.a("sc.script_notify_screen_size_change.local", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -254,7 +272,7 @@ public class SpriteActionScript
   
   public void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c()) && (this.jdField_a_of_type_Boolean)) {
+    if ((this.f.c()) && (this.d)) {
       try
       {
         Object localObject = new StringBuilder();
@@ -284,24 +302,24 @@ public class SpriteActionScript
         ApolloActionHelperImpl.attach3DInfoToJson(paramString, paramQQAppInterface, (JSONObject)localObject, null);
         ((JSONObject)localObject).put("dress", localJSONArray);
         ((JSONObject)localObject).put("role", ApolloActionHelperImpl.getApolloRsc(0, paramInt1));
-        paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+        paramQQAppInterface = this.f.v();
         if (paramQQAppInterface != null)
         {
-          if (!this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c)
+          if (!this.f.l)
           {
-            paramArrayOfInt = paramQQAppInterface.a(paramString, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext, true);
+            paramArrayOfInt = paramQQAppInterface.a(paramString, this.f, true);
             paramQQAppInterface = paramArrayOfInt;
             if (paramArrayOfInt == null) {
               paramQQAppInterface = new JSONObject();
             }
             ((JSONObject)localObject).put("pet", paramQQAppInterface);
-            ((JSONObject)localObject).put("nameplate", SpriteRscBuilder.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), paramString, paramInt1, true));
+            ((JSONObject)localObject).put("nameplate", SpriteRscBuilder.a(this.f.l(), paramString, paramInt1, true));
           }
-          paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_b_of_type_JavaLangString;
+          paramQQAppInterface = this.f.c;
           if ((!TextUtils.isEmpty(paramQQAppInterface)) && (paramQQAppInterface.equals(paramString))) {
-            paramQQAppInterface = HardCodeUtil.a(2131714125);
+            paramQQAppInterface = HardCodeUtil.a(2131911655);
           } else {
-            paramQQAppInterface = SpriteUtil.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a(), this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString, true);
+            paramQQAppInterface = SpriteUtil.a(this.f.l(), this.f.a, paramString, this.f.b, true);
           }
           if (!TextUtils.isEmpty(paramQQAppInterface)) {
             ((JSONObject)localObject).put("nickname", SpriteUtil.a(Base64Util.encodeToString(paramQQAppInterface.getBytes("utf-8"), 0)));
@@ -312,7 +330,7 @@ public class SpriteActionScript
         paramString = new JSONObject();
         paramString.put("errCode", 0);
         paramString.put("dressInfo", paramQQAppInterface);
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_notify_dress_ready.local", paramString.toString());
+        this.f.a("sc.script_notify_dress_ready.local", paramString.toString());
         return;
       }
       catch (Throwable paramQQAppInterface)
@@ -324,6 +342,29 @@ public class SpriteActionScript
     QLog.w("[cmshow][scripted]SpriteActionScript", 1, "[notifyDressReady], surfaceView is destroyed. return");
   }
   
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteActionScript", 2, "[notifyRemoveBubble] ");
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("errCode", 0);
+      b();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        localJSONObject.put("uin", paramString);
+        this.f.a("sc.script_remove_bubble.local", localJSONObject.toString());
+        return;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("[cmshow][scripted]SpriteActionScript", 1, "[notifyAddBubble] ", paramString);
+    }
+  }
+  
   public void a(String paramString1, String paramString2)
   {
     try
@@ -333,7 +374,7 @@ public class SpriteActionScript
       localJSONObject.put("errCode", 0);
       localJSONObject.put("tabType", paramString1);
       localJSONObject.put("changeReason", paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_panel_tab_status_change.local", localJSONObject.toString());
+      this.f.a("sc.script_panel_tab_status_change.local", localJSONObject.toString());
       return;
     }
     catch (Throwable paramString1)
@@ -358,23 +399,23 @@ public class SpriteActionScript
         if (TextUtils.isEmpty(paramString1))
         {
           str = paramString1;
-          if (a() != null) {
-            str = a().getCurrentAccountUin();
+          if (b() != null) {
+            str = b().getCurrentAccountUin();
           }
         }
         paramString1 = new JSONObject();
         paramString1.put("errCode", 0);
-        paramString1.put("model", ApolloActionHelperImpl.getModelByUin(str, a()));
+        paramString1.put("model", ApolloActionHelperImpl.getModelByUin(str, b()));
         paramString1.put("text", paramString2);
         if (!TextUtils.isEmpty(str)) {
           paramString1.put("uin", str);
         }
-        QQAppInterface localQQAppInterface = a();
+        QQAppInterface localQQAppInterface = b();
         if (localQQAppInterface != null)
         {
           i = ((IApolloManagerService)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(str);
           paramString1.put("bubble", SpriteRscBuilder.a(paramString2, 0, paramInt, i));
-          this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_add_bubble.local", paramString1.toString());
+          this.f.a("sc.script_add_bubble.local", paramString1.toString());
           return;
         }
       }
@@ -384,6 +425,38 @@ public class SpriteActionScript
         return;
       }
       int i = 0;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteActionScript", 2, new Object[] { "[notifyAddBubble],imagePath:", paramString2 });
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("errCode", 0);
+      localJSONObject.put("text", new String(SpriteUtil.a(Base64Util.encodeToString("a".getBytes("utf-8"), 0))));
+      Object localObject = b();
+      if (localObject != null)
+      {
+        localObject = (IApolloManagerService)((QQAppInterface)localObject).getRuntimeService(IApolloManagerService.class, "all");
+        ((IApolloManagerService)localObject).getCmShowStatus(paramString1);
+        ((IApolloManagerService)localObject).getApolloUserStatus();
+      }
+      localJSONObject.put("bubble", SpriteRscBuilder.a(0, paramInt1, 1));
+      localJSONObject.put("bubbleImage", paramString2);
+      localJSONObject.put("duration", paramInt2);
+      this.f.a("sc.script_add_bubble.local", localJSONObject.toString());
+      return;
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("[cmshow][scripted]SpriteActionScript", 1, "[notifyAddBubble] ", paramString1);
     }
   }
   
@@ -397,7 +470,7 @@ public class SpriteActionScript
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("errCode", 0);
       localJSONObject.put("isShow", paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_set_sprite_visibility.local", localJSONObject.toString());
+      this.f.a("sc.script_set_sprite_visibility.local", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -421,7 +494,7 @@ public class SpriteActionScript
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("errCode", 0);
         localJSONObject.put("text", new String(SpriteUtil.a(Base64Util.encodeToString(paramString2.getBytes("utf-8"), 0))));
-        Object localObject = a();
+        Object localObject = b();
         if (localObject != null)
         {
           localObject = (IApolloManagerService)((QQAppInterface)localObject).getRuntimeService(IApolloManagerService.class, "all");
@@ -431,27 +504,32 @@ public class SpriteActionScript
           if (!bool)
           {
             localJSONObject.put("uin", paramString1);
-            paramString1 = BKScriptUtils.a(paramString2, 0, j);
+            paramString1 = ScriptUtils.a(paramString2, 0, j);
             if (TextUtils.isEmpty(paramString1))
             {
               QLog.e("[cmshow][scripted]SpriteActionScript", 1, "base role 0 is not exit, now check and download");
-              ApolloActionHelperImpl.checkBasicActionExit(a());
+              paramString2 = j();
+              if (paramString2 != null) {
+                paramString2.a(b());
+              } else {
+                QLog.e("[cmshow][scripted]SpriteActionScript", 1, "base role 0 is not exit, now check and download failed. apolloResManager is null!");
+              }
             }
             localJSONObject.put("bubble", paramString1);
           }
           else
           {
-            localObject = BKScriptUtils.a(paramString2, 0, 1);
-            paramString2 = BKScriptUtils.a(paramString2, 0, 2);
+            localObject = ScriptUtils.a(paramString2, 0, 1);
+            paramString2 = ScriptUtils.a(paramString2, 0, 2);
             if (i != 1) {
-              break label289;
+              break label313;
             }
             paramString1 = (String)localObject;
             localJSONObject.put("bubble2D", localObject);
             localJSONObject.put("bubble3D", paramString2);
             localJSONObject.put("bubble", paramString1);
           }
-          this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_add_bubble.local", localJSONObject.toString());
+          this.f.a("sc.script_add_bubble.local", localJSONObject.toString());
           return;
         }
       }
@@ -463,7 +541,7 @@ public class SpriteActionScript
       int i = 0;
       int j = 0;
       continue;
-      label289:
+      label313:
       paramString1 = paramString2;
     }
   }
@@ -478,7 +556,7 @@ public class SpriteActionScript
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("errCode", 0);
       localJSONObject.put("status", paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a("sc.script_notify_user_operation.local", localJSONObject.toString());
+      this.f.a("sc.script_notify_user_operation.local", localJSONObject.toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -489,7 +567,7 @@ public class SpriteActionScript
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteActionScript
  * JD-Core Version:    0.7.0.1
  */

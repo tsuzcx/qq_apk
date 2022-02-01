@@ -17,17 +17,10 @@ import mqq.app.AppRuntime;
 
 public class AudioDeviceHelper
 {
-  public static int a;
-  public static final List<Integer> a;
-  public static boolean a;
-  public static volatile boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(1796) });
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_Int = -1;
-  }
+  public static final List<Integer> a = Arrays.asList(new Integer[] { Integer.valueOf(1796) });
+  public static boolean b = true;
+  public static int c = -1;
+  public static volatile boolean d = false;
   
   public static void a(boolean paramBoolean, AppRuntime paramAppRuntime)
   {
@@ -36,7 +29,7 @@ public class AudioDeviceHelper
     }
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplication.getContext().getString(2131694982));
+    localStringBuilder.append(BaseApplication.getContext().getString(2131892709));
     localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
     localEditor.putBoolean(localStringBuilder.toString(), paramBoolean);
     localEditor.commit();
@@ -82,7 +75,7 @@ public class AudioDeviceHelper
   @TargetApi(14)
   public static boolean a(AudioManager paramAudioManager)
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!b) {
       return false;
     }
     if (Build.VERSION.SDK_INT < 14) {
@@ -101,10 +94,10 @@ public class AudioDeviceHelper
     if (localBluetoothAdapter.getProfileConnectionState(2) == 2) {
       return false;
     }
-    if (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(jdField_a_of_type_Int))) {
+    if (a.contains(Integer.valueOf(c))) {
       return false;
     }
-    if (b) {
+    if (d) {
       return false;
     }
     if (paramAudioManager.isBluetoothScoOn()) {
@@ -120,7 +113,7 @@ public class AudioDeviceHelper
     }
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext());
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(BaseApplication.getContext().getString(2131694982));
+    localStringBuilder.append(BaseApplication.getContext().getString(2131892709));
     localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
     return localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
   }
@@ -161,7 +154,7 @@ public class AudioDeviceHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioDeviceHelper
  * JD-Core Version:    0.7.0.1
  */

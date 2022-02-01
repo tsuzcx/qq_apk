@@ -61,25 +61,21 @@ import org.json.JSONObject;
 public class HttpCgiAsyncTask
   extends HttpAsyncTask<Bundle, Void, HashMap<String, Object>>
 {
-  protected Handler a;
-  protected HttpCgiAsyncTask.Callback a;
-  private boolean a;
+  protected Handler a = new Handler(Looper.getMainLooper());
+  protected HttpCgiAsyncTask.Callback b = null;
+  private boolean c;
   
   public HttpCgiAsyncTask(String paramString1, String paramString2, HttpCgiAsyncTask.Callback paramCallback)
   {
     super(paramString1, paramString2);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = null;
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = paramCallback;
+    this.b = paramCallback;
   }
   
   public HttpCgiAsyncTask(String paramString1, String paramString2, HttpCgiAsyncTask.Callback paramCallback, boolean paramBoolean)
   {
     super(paramString1, paramString2);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = null;
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = paramCallback;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramCallback;
+    this.c = paramBoolean;
   }
   
   public static int a(IOException paramIOException)
@@ -211,11 +207,6 @@ public class HttpCgiAsyncTask
     return b(paramVarArgs);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = null;
-  }
-  
   @SuppressLint({"InlinedApi", "NewApi"})
   public void a(Bundle paramBundle)
   {
@@ -231,7 +222,7 @@ public class HttpCgiAsyncTask
   protected void a(HashMap<String, Object> paramHashMap)
   {
     if (!isCancelled()) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new HttpCgiAsyncTask.1(this, paramHashMap));
+      this.a.post(new HttpCgiAsyncTask.1(this, paramHashMap));
     }
   }
   
@@ -242,7 +233,7 @@ public class HttpCgiAsyncTask
       return localHashMap;
     }
     long l1 = SystemClock.elapsedRealtime();
-    String str3 = MsfSdkUtils.insertMtype("yingyongbao", this.jdField_a_of_type_JavaLangString);
+    String str3 = MsfSdkUtils.insertMtype("yingyongbao", this.e);
     String str1 = paramVarArgs[0].getString("appid_for_getting_config");
     try
     {
@@ -259,7 +250,7 @@ public class HttpCgiAsyncTask
       break label59;
     }
     bool = false;
-    i = OpenConfig.a(CommonDataAdapter.a().a(), str1).b("Common_HttpRetryCount");
+    i = OpenConfig.a(CommonDataAdapter.a().b(), str1).d("Common_HttpRetryCount");
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("config 1:Common_HttpRetryCount            config_value:");
     ((StringBuilder)localObject1).append(i);
@@ -296,19 +287,19 @@ public class HttpCgiAsyncTask
       {
         try
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.e;
           try
           {
-            HttpBaseUtil.Statistic localStatistic = a((String)localObject1, this.b, paramVarArgs[0]);
-            String str2 = localStatistic.jdField_a_of_type_JavaLangString;
+            HttpBaseUtil.Statistic localStatistic = a((String)localObject1, this.f, paramVarArgs[0]);
+            String str2 = localStatistic.a;
             localObject1 = new JSONObject();
             if (str1 != null)
             {
-              ((JSONObject)localObject1).put("content", localStatistic.jdField_a_of_type_JavaIoInputStream);
+              ((JSONObject)localObject1).put("content", localStatistic.e);
             }
             else if (bool)
             {
-              str2 = HttpBaseUtil.a(str2);
+              str2 = HttpBaseUtil.b(str2);
               ((JSONObject)localObject1).put("content", str2);
             }
             else
@@ -319,19 +310,19 @@ public class HttpCgiAsyncTask
             try
             {
               ((StringBuilder)localObject2).append("response.isModified= ");
-              ((StringBuilder)localObject2).append(localStatistic.jdField_a_of_type_Int);
+              ((StringBuilder)localObject2).append(localStatistic.d);
               LogUtility.a("HttpCgiAsyncTask", ((StringBuilder)localObject2).toString());
-              i = localStatistic.jdField_a_of_type_Int;
+              i = localStatistic.d;
               if (i == 0) {
                 if (bool)
                 {
                   localObject2 = new JSONObject();
-                  ((JSONObject)localObject2).put("httpdatamodified", localStatistic.jdField_a_of_type_Int);
+                  ((JSONObject)localObject2).put("httpdatamodified", localStatistic.d);
                   ((JSONObject)localObject1).put("extend", localObject2);
                 }
                 else
                 {
-                  ((JSONObject)localObject1).put("httpdatamodified", localStatistic.jdField_a_of_type_Int);
+                  ((JSONObject)localObject1).put("httpdatamodified", localStatistic.d);
                 }
               }
               localHashMap.put("ResultType", Integer.valueOf(1));
@@ -375,7 +366,7 @@ public class HttpCgiAsyncTask
             try
             {
               i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
-              ReportManager.a().a(str3, l1, l2, 0L, i, CommonDataAdapter.a().a(), "1000002", null, this.jdField_a_of_type_Boolean);
+              ReportManager.a().a(str3, l1, l2, 0L, i, CommonDataAdapter.a().c(), "1000002", null, this.c);
               return localHashMap;
             }
             catch (Exception paramVarArgs)
@@ -469,10 +460,10 @@ public class HttpCgiAsyncTask
       {
         break label542;
       }
-      long l2 = localStatistic.jdField_a_of_type_Long;
+      long l2 = localStatistic.b;
       try
       {
-        l4 = localStatistic.b;
+        l4 = localStatistic.c;
         l3 = l2;
         l2 = l1;
         l1 = l4;
@@ -490,7 +481,7 @@ public class HttpCgiAsyncTask
         try
         {
           i = Integer.parseInt(paramVarArgs.getMessage().replace("http status code error:", ""));
-          ReportManager.a().a(str3, l1, l2, 0L, i, CommonDataAdapter.a().a(), "1000002", null, this.jdField_a_of_type_Boolean);
+          ReportManager.a().a(str3, l1, l2, 0L, i, CommonDataAdapter.a().c(), "1000002", null, this.c);
           return localHashMap;
         }
         catch (Exception paramVarArgs)
@@ -526,24 +517,29 @@ public class HttpCgiAsyncTask
         paramVarArgs.printStackTrace();
         l4 = l5;
       }
-      ReportManager.a().a(str3, l2, l3, l1, i, l4, "1000002", null, this.jdField_a_of_type_Boolean);
+      ReportManager.a().a(str3, l2, l3, l1, i, l4, "1000002", null, this.c);
       return localHashMap;
     }
   }
   
   public void b()
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.b = null;
+  }
+  
+  public void c()
+  {
+    Handler localHandler = this.a;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = null;
+      this.b = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.HttpCgiAsyncTask
  * JD-Core Version:    0.7.0.1
  */

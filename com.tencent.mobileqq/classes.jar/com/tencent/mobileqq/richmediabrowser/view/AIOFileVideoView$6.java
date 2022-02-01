@@ -2,14 +2,13 @@ package com.tencent.mobileqq.richmediabrowser.view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
+import com.tencent.mobileqq.mini.api.IMiniAppFileMaterialService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.richmediabrowser.IProvider;
 import com.tencent.mobileqq.richmediabrowser.ParamsManager;
 import com.tencent.mobileqq.richmediabrowser.api.IBrowserDepend;
-import com.tencent.mobileqq.richmediabrowser.api.IFileDepend;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
@@ -27,12 +26,11 @@ class AIOFileVideoView$6
   {
     if (paramActionSheetItem != null)
     {
-      if (!(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      if (!(this.b.c instanceof Activity)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
+      this.b.b.dismiss();
       int i = paramActionSheetItem.action;
-      boolean bool;
       if (i != 2) {
         if (i != 6)
         {
@@ -42,121 +40,108 @@ class AIOFileVideoView$6
             {
               if (i != 132)
               {
-                if (i != 26)
+                if (i != 166)
                 {
-                  if (i != 27)
+                  if (i != 26)
                   {
-                    Object localObject;
-                    if (i != 72)
+                    if (i != 27)
                     {
-                      if (i != 73) {
-                        switch (i)
-                        {
-                        default: 
-                          break;
-                        case 56: 
-                          AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData, 2);
-                          ReportController.b(null, "dc00898", "", "", "0X800AD48", "0X800AD48", AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e), 0, "", "", "", "");
-                          break;
-                        case 55: 
-                          AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData, 1);
-                          ReportController.b(null, "dc00898", "", "", "0X800AD47", "0X800AD47", AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.e), 0, "", "", "", "");
-                          break;
-                        case 54: 
-                          localObject = ParamsManager.a().a();
-                          paramShareActionSheet = (ShareActionSheet)localObject;
-                          if (TextUtils.isEmpty((CharSequence)localObject)) {
-                            paramShareActionSheet = ParamsManager.a().c();
+                      if (i != 72)
+                      {
+                        if (i != 73) {
+                          switch (i)
+                          {
+                          default: 
+                            break;
+                          case 56: 
+                            AIOFileVideoView.a(this.b, this.a, 2);
+                            ReportController.b(null, "dc00898", "", "", "0X800AD48", "0X800AD48", AIOFileVideoView.b(this.b, this.a.C), 0, "", "", "", "");
+                            break;
+                          case 55: 
+                            AIOFileVideoView.a(this.b, this.a, 1);
+                            ReportController.b(null, "dc00898", "", "", "0X800AD47", "0X800AD47", AIOFileVideoView.b(this.b, this.a.C), 0, "", "", "", "");
+                            break;
+                          case 54: 
+                            String str = ParamsManager.a().e();
+                            paramShareActionSheet = str;
+                            if (TextUtils.isEmpty(str)) {
+                              paramShareActionSheet = ParamsManager.a().j();
+                            }
+                            ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).jumpToTargetAIOPosition((Activity)this.b.c, ParamsManager.a().i(), ParamsManager.a().j(), paramShareActionSheet, this.a.c, this.a.e, this.a.f, false);
+                            break;
                           }
-                          ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).jumpToTargetAIOPosition((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, ParamsManager.a().a(), ParamsManager.a().c(), paramShareActionSheet, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.d, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int, false);
-                          break;
                         }
+                      }
+                      else
+                      {
+                        AIOFileVideoView.a(this.b, paramActionSheetItem, this.a);
+                        break label659;
                       }
                     }
                     else
                     {
-                      i = paramActionSheetItem.uinType;
-                      paramShareActionSheet = paramActionSheetItem.uin;
-                      if ((!AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView)) || (AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView) == null)) {
-                        break label812;
+                      if ((!AIOFileVideoView.a(this.b)) || (AIOFileVideoView.b(this.b) == null)) {
+                        break label659;
                       }
-                      localObject = AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
-                      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int == 1) {
-                        bool = true;
-                      } else {
-                        bool = false;
-                      }
-                      ((IFileDepend)QRoute.api(IFileDepend.class)).forwardToTargetFriend((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, (Intent)localObject, bool, paramShareActionSheet, i);
-                      break label812;
+                      AIOFileVideoView.b(this.b).a(this.a.a);
+                      QQToast.makeText(this.b.c, this.b.c.getString(2131915733), 0).show();
+                      break label659;
                     }
                   }
                   else
                   {
-                    if ((!AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView)) || (AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView) == null)) {
-                      break label812;
+                    if ((!AIOFileVideoView.a(this.b)) || (AIOFileVideoView.b(this.b) == null)) {
+                      break label659;
                     }
-                    AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-                    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext.getString(2131718241), 0).a();
-                    break label812;
+                    AIOFileVideoView.b(this.b).c(this.a.a);
+                    ReportController.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+                    QQToast.makeText(this.b.c, 2, this.b.c.getString(2131915732), 0).show();
+                    break label659;
                   }
                 }
                 else
                 {
-                  if ((!AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView)) || (AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView) == null)) {
-                    break label812;
-                  }
-                  AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView).c(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-                  ReportController.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-                  QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext.getString(2131718240), 0).a();
-                  break label812;
+                  ((IMiniAppFileMaterialService)QRoute.api(IMiniAppFileMaterialService.class)).showSupportedAppList((Activity)this.b.c, this.a.l);
+                  break label659;
                 }
               }
               else
               {
-                QbSdk.clearDefaultBrowser(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
-                QQFileManagerUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
-                break label812;
+                QbSdk.clearDefaultBrowser(this.b.c, this.a.l);
+                QQFileManagerUtil.a((Activity)this.b.c, this.a.l);
+                break label659;
               }
             }
             else
             {
-              QQFileManagerUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.c);
-              break label812;
+              QQFileManagerUtil.a((Activity)this.b.c, this.a.l);
+              break label659;
             }
           }
           else
           {
-            AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData);
-            break label812;
+            AIOFileVideoView.b(this.b, this.a);
+            break label659;
           }
         }
         else
         {
-          if ((!AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView)) || (AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView) == null)) {
-            break label812;
+          if ((!AIOFileVideoView.a(this.b)) || (AIOFileVideoView.b(this.b) == null)) {
+            break label659;
           }
-          AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView).d(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long);
-          break label812;
+          AIOFileVideoView.b(this.b).d(this.a.a);
+          break label659;
         }
       }
-      if ((AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView)) && (AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView) != null))
-      {
-        paramShareActionSheet = AIOFileVideoView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView).a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_a_of_type_Int, 0);
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserModelAIOFileVideoData.jdField_b_of_type_Int == 1) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-        ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).forwardToFriend((Activity)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.jdField_a_of_type_AndroidContentContext, paramShareActionSheet, bool, ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).getSharePanelType(), "");
-      }
-      label812:
-      ReportController.b(null, "dc00898", "", "", "0X8009EFA", "0X8009EFA", AIOFileVideoView.b(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView, paramActionSheetItem.action), 0, "", "", "", "");
+      AIOFileVideoView.a(this.b, this.a);
+      label659:
+      ReportController.b(null, "dc00898", "", "", "0X8009EFA", "0X8009EFA", AIOFileVideoView.c(this.b, paramActionSheetItem.action), 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView.6
  * JD-Core Version:    0.7.0.1
  */

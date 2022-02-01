@@ -14,7 +14,7 @@ class TroopAssistantActivity$20
   {
     try
     {
-      List localList = this.this$0.a();
+      List localList = this.this$0.e();
       StringBuilder localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("refreshTroopList -- data.size():");
       int j = 0;
@@ -40,7 +40,7 @@ class TroopAssistantActivity$20
       }
       try
       {
-        Collections.sort(localList, this.this$0.a);
+        Collections.sort(localList, this.this$0.L);
       }
       catch (Exception localException2)
       {
@@ -70,7 +70,7 @@ class TroopAssistantActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.20
  * JD-Core Version:    0.7.0.1
  */

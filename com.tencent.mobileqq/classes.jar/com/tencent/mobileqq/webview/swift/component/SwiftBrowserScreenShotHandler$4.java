@@ -21,7 +21,7 @@ class SwiftBrowserScreenShotHandler$4
   public void onClick(View paramView)
   {
     String str = "";
-    Object localObject1 = Uri.parse(SwiftBrowserScreenShotHandler.a(this.a).c());
+    Object localObject1 = Uri.parse(SwiftBrowserScreenShotHandler.a(this.a).m());
     Object localObject2;
     try
     {
@@ -37,22 +37,22 @@ class SwiftBrowserScreenShotHandler$4
     }
     ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject2, "", "");
     ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X8006A1D", "", "", (String)localObject2, "", "");
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.m)
     {
-      this.a.b = true;
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131695241, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299168));
+      this.a.n = true;
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892975, 0).show(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131299920));
     }
     else
     {
       localObject2 = this.a;
-      ((SwiftBrowserScreenShotHandler)localObject2).f(((SwiftBrowserScreenShotHandler)localObject2).jdField_a_of_type_JavaLangString);
+      ((SwiftBrowserScreenShotHandler)localObject2).f(((SwiftBrowserScreenShotHandler)localObject2).i);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.4
  * JD-Core Version:    0.7.0.1
  */

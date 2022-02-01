@@ -6,55 +6,55 @@ import mqq.os.MqqHandler;
 public class ShortVideoUtils$VideoFileSaveRunnable
   implements Runnable
 {
-  InputStream jdField_a_of_type_JavaIoInputStream;
-  String jdField_a_of_type_JavaLangString;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  boolean jdField_a_of_type_Boolean;
-  String b;
+  String a;
+  MqqHandler b;
+  String c;
+  boolean d;
+  InputStream e;
   
   /* Error */
   public void run()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   4: invokestatic 26	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: getfield 23	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:a	Ljava/lang/String;
+    //   4: invokestatic 29	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   7: ifne +13 -> 20
     //   10: aload_0
-    //   11: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokestatic 32	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   11: getfield 23	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:a	Ljava/lang/String;
+    //   14: invokestatic 35	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   17: ifne +60 -> 77
     //   20: aload_0
-    //   21: getfield 34	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   21: getfield 37	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:e	Ljava/io/InputStream;
     //   24: ifnonnull +53 -> 77
-    //   27: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   27: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   30: ifeq +37 -> 67
-    //   33: new 42	java/lang/StringBuilder
+    //   33: new 45	java/lang/StringBuilder
     //   36: dup
-    //   37: invokespecial 45	java/lang/StringBuilder:<init>	()V
+    //   37: invokespecial 48	java/lang/StringBuilder:<init>	()V
     //   40: astore_2
     //   41: aload_2
-    //   42: ldc 47
-    //   44: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: ldc 50
+    //   44: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   47: pop
     //   48: aload_2
     //   49: aload_0
-    //   50: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   53: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: getfield 23	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:a	Ljava/lang/String;
+    //   53: invokevirtual 54	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
-    //   57: ldc 53
+    //   57: ldc 56
     //   59: iconst_2
     //   60: aload_2
-    //   61: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 61	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   61: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 63	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   67: aload_0
-    //   68: getfield 63	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   68: getfield 65	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Lmqq/os/MqqHandler;
     //   71: iconst_1
-    //   72: invokevirtual 69	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   72: invokevirtual 71	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   75: pop
     //   76: return
     //   77: aload_0
-    //   78: getfield 34	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   78: getfield 37	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:e	Ljava/io/InputStream;
     //   81: astore_2
     //   82: aconst_null
     //   83: astore 8
@@ -66,90 +66,90 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   92: astore 7
     //   94: aload_2
     //   95: ifnonnull +18 -> 113
-    //   98: new 71	java/io/File
+    //   98: new 73	java/io/File
     //   101: dup
     //   102: aload_0
-    //   103: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   106: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
+    //   103: getfield 23	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:a	Ljava/lang/String;
+    //   106: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   109: astore_2
     //   110: goto +5 -> 115
     //   113: aconst_null
     //   114: astore_2
-    //   115: invokestatic 78	com/tencent/util/VersionUtils:b	()Z
+    //   115: invokestatic 80	com/tencent/util/VersionUtils:b	()Z
     //   118: ifeq +13 -> 131
-    //   121: getstatic 83	android/os/Environment:DIRECTORY_MOVIES	Ljava/lang/String;
-    //   124: invokestatic 87	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
+    //   121: getstatic 85	android/os/Environment:DIRECTORY_MOVIES	Ljava/lang/String;
+    //   124: invokestatic 89	android/os/Environment:getExternalStoragePublicDirectory	(Ljava/lang/String;)Ljava/io/File;
     //   127: astore_3
     //   128: goto +14 -> 142
-    //   131: new 71	java/io/File
+    //   131: new 73	java/io/File
     //   134: dup
-    //   135: getstatic 92	com/tencent/mobileqq/activity/richmedia/PathUtils:f	Ljava/lang/String;
-    //   138: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
+    //   135: getstatic 94	com/tencent/mobileqq/activity/richmedia/PathUtils:f	Ljava/lang/String;
+    //   138: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   141: astore_3
     //   142: aload_3
-    //   143: invokevirtual 95	java/io/File:mkdirs	()Z
+    //   143: invokevirtual 97	java/io/File:mkdirs	()Z
     //   146: pop
-    //   147: new 71	java/io/File
+    //   147: new 73	java/io/File
     //   150: dup
     //   151: aload_3
     //   152: aload_0
-    //   153: getfield 97	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Ljava/lang/String;
-    //   156: invokestatic 102	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   159: invokespecial 105	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   153: getfield 99	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:c	Ljava/lang/String;
+    //   156: invokestatic 104	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   159: invokespecial 107	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   162: astore 9
     //   164: aload_0
-    //   165: getfield 107	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_Boolean	Z
+    //   165: getfield 109	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:d	Z
     //   168: ifne +34 -> 202
     //   171: aload 9
-    //   173: invokevirtual 110	java/io/File:exists	()Z
+    //   173: invokevirtual 112	java/io/File:exists	()Z
     //   176: ifeq +26 -> 202
     //   179: aload_0
-    //   180: getfield 63	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   180: getfield 65	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Lmqq/os/MqqHandler;
     //   183: iconst_3
     //   184: aload_0
-    //   185: getfield 20	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   188: invokevirtual 114	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   185: getfield 23	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:a	Ljava/lang/String;
+    //   188: invokevirtual 116	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
     //   191: astore_2
     //   192: aload_0
-    //   193: getfield 63	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   193: getfield 65	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Lmqq/os/MqqHandler;
     //   196: aload_2
-    //   197: invokevirtual 118	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   197: invokevirtual 120	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
     //   200: pop
     //   201: return
-    //   202: new 120	java/io/FileOutputStream
+    //   202: new 122	java/io/FileOutputStream
     //   205: dup
     //   206: aload 9
-    //   208: invokespecial 123	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   208: invokespecial 125	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   211: astore 5
     //   213: aload 7
     //   215: astore_3
     //   216: aload 8
     //   218: astore 4
     //   220: aload_0
-    //   221: getfield 34	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   221: getfield 37	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:e	Ljava/io/InputStream;
     //   224: ifnull +18 -> 242
     //   227: aload 7
     //   229: astore_3
     //   230: aload 8
     //   232: astore 4
     //   234: aload_0
-    //   235: getfield 34	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
+    //   235: getfield 37	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:e	Ljava/io/InputStream;
     //   238: astore_2
     //   239: goto +19 -> 258
     //   242: aload 7
     //   244: astore_3
     //   245: aload 8
     //   247: astore 4
-    //   249: new 125	java/io/FileInputStream
+    //   249: new 127	java/io/FileInputStream
     //   252: dup
     //   253: aload_2
-    //   254: invokespecial 126	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   254: invokespecial 128	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   257: astore_2
     //   258: aload_2
     //   259: astore_3
     //   260: aload_2
     //   261: astore 4
-    //   263: ldc 127
+    //   263: ldc 129
     //   265: newarray byte
     //   267: astore 6
     //   269: aload_2
@@ -158,7 +158,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   272: astore 4
     //   274: aload_2
     //   275: aload 6
-    //   277: invokevirtual 133	java/io/InputStream:read	([B)I
+    //   277: invokevirtual 135	java/io/InputStream:read	([B)I
     //   280: istore_1
     //   281: iload_1
     //   282: iconst_m1
@@ -171,40 +171,40 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   293: aload 6
     //   295: iconst_0
     //   296: iload_1
-    //   297: invokevirtual 137	java/io/FileOutputStream:write	([BII)V
+    //   297: invokevirtual 139	java/io/FileOutputStream:write	([BII)V
     //   300: aload_2
     //   301: astore_3
     //   302: aload_2
     //   303: astore 4
     //   305: aload 5
-    //   307: invokevirtual 140	java/io/FileOutputStream:flush	()V
+    //   307: invokevirtual 142	java/io/FileOutputStream:flush	()V
     //   310: goto -41 -> 269
     //   313: aload_2
     //   314: astore_3
     //   315: aload_2
     //   316: astore 4
     //   318: aload_0
-    //   319: getfield 63	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   319: getfield 65	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Lmqq/os/MqqHandler;
     //   322: iconst_2
     //   323: aload 9
-    //   325: invokevirtual 143	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   328: invokevirtual 114	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
+    //   325: invokevirtual 145	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   328: invokevirtual 116	mqq/os/MqqHandler:obtainMessage	(ILjava/lang/Object;)Landroid/os/Message;
     //   331: astore 6
     //   333: aload_2
     //   334: astore_3
     //   335: aload_2
     //   336: astore 4
     //   338: aload_0
-    //   339: getfield 63	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   339: getfield 65	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Lmqq/os/MqqHandler;
     //   342: aload 6
-    //   344: invokevirtual 118	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
+    //   344: invokevirtual 120	mqq/os/MqqHandler:sendMessage	(Landroid/os/Message;)Z
     //   347: pop
     //   348: aload 5
-    //   350: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   350: invokevirtual 148	java/io/FileOutputStream:close	()V
     //   353: aload_2
     //   354: ifnull +96 -> 450
     //   357: aload_2
-    //   358: invokevirtual 147	java/io/InputStream:close	()V
+    //   358: invokevirtual 149	java/io/InputStream:close	()V
     //   361: return
     //   362: astore_2
     //   363: aload 5
@@ -231,27 +231,27 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   401: astore_3
     //   402: aload 5
     //   404: astore 4
-    //   406: invokestatic 40	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   406: invokestatic 43	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   409: ifeq +13 -> 422
-    //   412: ldc 53
+    //   412: ldc 56
     //   414: iconst_2
-    //   415: ldc 149
+    //   415: ldc 151
     //   417: aload 4
-    //   419: invokestatic 152	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   419: invokestatic 154	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   422: aload_0
-    //   423: getfield 63	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
+    //   423: getfield 65	com/tencent/aelight/camera/aioeditor/shortvideo/ShortVideoUtils$VideoFileSaveRunnable:b	Lmqq/os/MqqHandler;
     //   426: iconst_1
-    //   427: invokevirtual 69	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
+    //   427: invokevirtual 71	mqq/os/MqqHandler:sendEmptyMessage	(I)Z
     //   430: pop
     //   431: aload_3
     //   432: ifnull +10 -> 442
     //   435: aload_3
-    //   436: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   436: invokevirtual 148	java/io/FileOutputStream:close	()V
     //   439: goto +3 -> 442
     //   442: aload_2
     //   443: ifnull +7 -> 450
     //   446: aload_2
-    //   447: invokevirtual 147	java/io/InputStream:close	()V
+    //   447: invokevirtual 149	java/io/InputStream:close	()V
     //   450: return
     //   451: astore 5
     //   453: aload_3
@@ -263,12 +263,12 @@ public class ShortVideoUtils$VideoFileSaveRunnable
     //   461: aload 4
     //   463: ifnull +11 -> 474
     //   466: aload 4
-    //   468: invokevirtual 146	java/io/FileOutputStream:close	()V
+    //   468: invokevirtual 148	java/io/FileOutputStream:close	()V
     //   471: goto +3 -> 474
     //   474: aload_3
     //   475: ifnull +7 -> 482
     //   478: aload_3
-    //   479: invokevirtual 147	java/io/InputStream:close	()V
+    //   479: invokevirtual 149	java/io/InputStream:close	()V
     //   482: goto +5 -> 487
     //   485: aload_2
     //   486: athrow
@@ -341,7 +341,7 @@ public class ShortVideoUtils$VideoFileSaveRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.ShortVideoUtils.VideoFileSaveRunnable
  * JD-Core Version:    0.7.0.1
  */

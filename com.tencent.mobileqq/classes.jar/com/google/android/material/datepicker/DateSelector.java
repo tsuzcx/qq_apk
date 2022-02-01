@@ -17,9 +17,6 @@ import java.util.Collection;
 public abstract interface DateSelector<S>
   extends Parcelable
 {
-  @StyleRes
-  public abstract int a(Context paramContext);
-  
   @NonNull
   public abstract View a(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle, @NonNull CalendarConstraints paramCalendarConstraints, @NonNull OnSelectionChangedListener<S> paramOnSelectionChangedListener);
   
@@ -29,19 +26,22 @@ public abstract interface DateSelector<S>
   @NonNull
   public abstract String a(Context paramContext);
   
-  @NonNull
-  public abstract Collection<Long> a();
-  
   public abstract void a(long paramLong);
   
-  public abstract boolean a();
+  @StyleRes
+  public abstract int b(Context paramContext);
+  
+  public abstract boolean b();
   
   @NonNull
-  public abstract Collection<Pair<Long, Long>> b();
+  public abstract Collection<Long> c();
+  
+  @NonNull
+  public abstract Collection<Pair<Long, Long>> d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.DateSelector
  * JD-Core Version:    0.7.0.1
  */

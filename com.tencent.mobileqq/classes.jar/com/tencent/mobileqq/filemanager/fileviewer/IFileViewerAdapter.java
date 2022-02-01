@@ -5,15 +5,7 @@ import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 
 public abstract interface IFileViewerAdapter
 {
-  public abstract int a();
-  
   public abstract long a();
-  
-  public abstract FileManagerEntity a();
-  
-  public abstract WeiYunFileInfo a();
-  
-  public abstract String a();
   
   public abstract void a(int paramInt);
   
@@ -21,43 +13,51 @@ public abstract interface IFileViewerAdapter
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public abstract long b();
-  
   public abstract String b();
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract boolean b();
-  
-  public abstract int c();
-  
   public abstract long c();
-  
-  public abstract String c();
   
   public abstract int d();
   
-  public abstract String d();
+  public abstract long e();
   
-  public abstract int e();
-  
-  public abstract String e();
-  
-  public abstract String f();
+  public abstract int f();
   
   public abstract String g();
   
   public abstract String h();
   
   public abstract String i();
+  
+  public abstract String j();
+  
+  public abstract boolean k();
+  
+  public abstract String l();
+  
+  public abstract int m();
+  
+  public abstract int n();
+  
+  public abstract String o();
+  
+  public abstract String p();
+  
+  public abstract int q();
+  
+  public abstract FileManagerEntity r();
+  
+  public abstract WeiYunFileInfo s();
+  
+  public abstract String t();
+  
+  public abstract boolean u();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter
  * JD-Core Version:    0.7.0.1
  */

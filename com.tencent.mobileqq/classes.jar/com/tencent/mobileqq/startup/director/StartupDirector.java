@@ -19,12 +19,14 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.guard.GuardManager;
 import com.tencent.mobileqq.debug.DebugActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.splashad.SplashADView;
 import com.tencent.mobileqq.startup.step.CheckPermission;
 import com.tencent.mobileqq.startup.step.SetSplash;
 import com.tencent.mobileqq.startup.step.Step;
 import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.monitor.crash.QQCrashControlManager;
 import com.tencent.util.QQDeviceInfo;
@@ -38,90 +40,84 @@ import mqq.util.WeakReference;
 public class StartupDirector
   implements Handler.Callback
 {
-  public static int a;
-  public static boolean a;
+  private static final int[] A;
+  private static final int[] B;
+  private static final int[] C;
+  private static final int[] D;
+  private static final int[] E;
+  private static long P = 0L;
   public static final int[] a;
-  public static int b;
   public static boolean b;
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 1, 6, 9, 15 };
-  public static int c;
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 5, 7 };
-  public static long d;
-  private static final int[] jdField_d_of_type_ArrayOfInt = { 11, 12, 17, 18 };
-  public static long e;
-  private static final int[] jdField_e_of_type_ArrayOfInt = { 13, 11, 12, 17 };
-  private static final int[] jdField_f_of_type_ArrayOfInt = { 7, 19 };
-  private static final int[] jdField_g_of_type_ArrayOfInt = { 13, 11, 17 };
-  private static long jdField_h_of_type_Long;
-  private static final int[] jdField_h_of_type_ArrayOfInt = jdField_f_of_type_ArrayOfInt;
-  private static final int[] i = { 31, 5, 10 };
-  private static final int[] j = { 14, 5, 11, 10 };
-  private static final int[] k;
-  private static final int[] l;
-  private static final int[] m;
-  private static final int[] n;
-  private static final int[] o;
-  private static final int[] p;
-  private static final int[] q;
-  private static final int[] r;
-  public long a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  StartupDirector.SplashCallBack jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector$SplashCallBack;
-  private CheckPermission jdField_a_of_type_ComTencentMobileqqStartupStepCheckPermission;
-  private ArrayList<WeakReference<AppActivity>> jdField_a_of_type_JavaUtilArrayList;
-  private ConcurrentHashMap<Integer, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(8);
-  public AppActivity a;
-  public long b;
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  public long c;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int = -1;
-  private int jdField_e_of_type_Int = 0;
-  private int jdField_f_of_type_Int;
-  private long jdField_f_of_type_Long = 0L;
-  private int jdField_g_of_type_Int = -1;
-  private long jdField_g_of_type_Long;
+  public static boolean c;
+  public static boolean d;
+  public static int f;
+  public static int h;
+  public static long k;
+  public static long l;
+  public static int m = 0;
+  private static final int[] o = { 1, 6, 9, 15 };
+  private static final int[] p = { 5, 7 };
+  private static final int[] q = { 11, 12, 18, 19 };
+  private static final int[] r = { 13, 11, 12, 18 };
+  private static final int[] s = { 7, 20 };
+  private static final int[] t = { 13, 11, 18 };
+  private static final int[] u = s;
+  private static final int[] v = { 32, 5, 10 };
+  private static final int[] w = { 14, 5, 11, 10 };
+  private static final int[] x;
+  private static final int[] y;
+  private static final int[] z;
+  private int F = -1;
+  private ArrayList<WeakReference<AppActivity>> G;
+  private Handler H;
+  private Handler I;
+  private long J = 0L;
+  private CheckPermission K;
+  private boolean L;
+  private int M = 0;
+  private int N;
+  private long O;
+  private int Q = -1;
+  private ConcurrentHashMap<Integer, Long> R = new ConcurrentHashMap(8);
+  public AppActivity e;
+  public long g;
+  public long i = 0L;
+  public long j = 0L;
+  StartupDirector.SplashCallBack n;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 14, 5, 11, 10 };
-    k = new int[] { 14 };
-    l = new int[] { 5, 10, 8, 20 };
-    m = new int[] { 13, 5 };
-    n = new int[] { 13, 5, 14, 12, 10 };
-    o = new int[] { 13, 5, 14, 12, 21 };
-    p = new int[] { 13, 5, 14, 12 };
-    q = new int[] { 29, 32 };
-    r = new int[] { 5, 14, 8, 12, 10 };
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_d_of_type_Long = -1L;
-    jdField_e_of_type_Long = -1L;
-    jdField_h_of_type_Long = 0L;
-    jdField_c_of_type_Int = 0;
-  }
-  
-  public StartupDirector()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
+    a = new int[] { 14, 5, 11, 10 };
+    x = new int[] { 14 };
+    y = new int[] { 5, 10, 8, 21 };
+    z = new int[] { 13, 5 };
+    A = new int[] { 13, 5, 14, 12, 10 };
+    B = new int[] { 13, 5, 14, 12, 22 };
+    C = new int[] { 13, 5, 14, 12 };
+    D = new int[] { 30, 33 };
+    E = new int[] { 5, 14, 8, 12, 10 };
+    b = false;
+    c = false;
+    d = false;
+    f = 0;
+    h = 0;
+    k = -1L;
+    l = -1L;
   }
   
   /* Error */
   private final int a(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: new 122	java/io/File
+    //   0: new 148	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokevirtual 128	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   8: ldc 130
-    //   10: invokespecial 133	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   5: invokevirtual 154	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   8: ldc 156
+    //   10: invokespecial 159	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   13: astore 11
     //   15: aload 11
-    //   17: invokevirtual 137	java/io/File:exists	()Z
+    //   17: invokevirtual 163	java/io/File:exists	()Z
     //   20: istore 6
     //   22: aconst_null
     //   23: astore 10
@@ -139,18 +135,18 @@ public class StartupDirector
     //   41: istore_2
     //   42: iload 6
     //   44: ifeq +138 -> 182
-    //   47: new 139	java/io/BufferedInputStream
+    //   47: new 165	java/io/BufferedInputStream
     //   50: dup
-    //   51: new 141	java/io/FileInputStream
+    //   51: new 167	java/io/FileInputStream
     //   54: dup
     //   55: aload 11
-    //   57: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   60: invokespecial 147	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   57: invokespecial 170	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   60: invokespecial 173	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   63: astore 7
     //   65: aload 7
     //   67: astore_1
     //   68: aload 7
-    //   70: invokevirtual 151	java/io/BufferedInputStream:read	()I
+    //   70: invokevirtual 177	java/io/BufferedInputStream:read	()I
     //   73: istore_2
     //   74: iload_2
     //   75: iconst_m1
@@ -161,11 +157,11 @@ public class StartupDirector
     //   84: iload_2
     //   85: istore_3
     //   86: aload 7
-    //   88: invokevirtual 154	java/io/BufferedInputStream:close	()V
+    //   88: invokevirtual 180	java/io/BufferedInputStream:close	()V
     //   91: goto +91 -> 182
     //   94: astore_1
     //   95: aload_1
-    //   96: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   96: invokevirtual 183	java/io/IOException:printStackTrace	()V
     //   99: iload_3
     //   100: istore_2
     //   101: goto +81 -> 182
@@ -181,7 +177,7 @@ public class StartupDirector
     //   122: aload 7
     //   124: astore_1
     //   125: aload 8
-    //   127: invokevirtual 158	java/lang/Exception:printStackTrace	()V
+    //   127: invokevirtual 184	java/lang/Exception:printStackTrace	()V
     //   130: iload 4
     //   132: istore_2
     //   133: aload 7
@@ -189,7 +185,7 @@ public class StartupDirector
     //   138: iload 5
     //   140: istore_3
     //   141: aload 7
-    //   143: invokevirtual 154	java/io/BufferedInputStream:close	()V
+    //   143: invokevirtual 180	java/io/BufferedInputStream:close	()V
     //   146: iload 4
     //   148: istore_2
     //   149: goto +33 -> 182
@@ -201,11 +197,11 @@ public class StartupDirector
     //   160: aload 7
     //   162: ifnull +18 -> 180
     //   165: aload 7
-    //   167: invokevirtual 154	java/io/BufferedInputStream:close	()V
+    //   167: invokevirtual 180	java/io/BufferedInputStream:close	()V
     //   170: goto +10 -> 180
     //   173: astore 7
     //   175: aload 7
-    //   177: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   177: invokevirtual 183	java/io/IOException:printStackTrace	()V
     //   180: aload_1
     //   181: athrow
     //   182: iload_2
@@ -214,16 +210,16 @@ public class StartupDirector
     //   185: istore_2
     //   186: aload 10
     //   188: astore_1
-    //   189: new 160	java/io/FileOutputStream
+    //   189: new 186	java/io/FileOutputStream
     //   192: dup
     //   193: aload 11
-    //   195: invokespecial 161	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   195: invokespecial 187	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   198: astore 7
     //   200: aload 7
     //   202: iload_2
-    //   203: invokevirtual 164	java/io/FileOutputStream:write	(I)V
+    //   203: invokevirtual 190	java/io/FileOutputStream:write	(I)V
     //   206: aload 7
-    //   208: invokevirtual 165	java/io/FileOutputStream:close	()V
+    //   208: invokevirtual 191	java/io/FileOutputStream:close	()V
     //   211: iload_2
     //   212: ireturn
     //   213: astore 8
@@ -242,26 +238,26 @@ public class StartupDirector
     //   241: aload 7
     //   243: astore_1
     //   244: aload 8
-    //   246: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   246: invokevirtual 183	java/io/IOException:printStackTrace	()V
     //   249: aload 7
     //   251: ifnull +15 -> 266
     //   254: aload 7
-    //   256: invokevirtual 165	java/io/FileOutputStream:close	()V
+    //   256: invokevirtual 191	java/io/FileOutputStream:close	()V
     //   259: iload_2
     //   260: ireturn
     //   261: astore_1
     //   262: aload_1
-    //   263: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   263: invokevirtual 183	java/io/IOException:printStackTrace	()V
     //   266: iload_2
     //   267: ireturn
     //   268: aload_1
     //   269: ifnull +15 -> 284
     //   272: aload_1
-    //   273: invokevirtual 165	java/io/FileOutputStream:close	()V
+    //   273: invokevirtual 191	java/io/FileOutputStream:close	()V
     //   276: goto +8 -> 284
     //   279: astore_1
     //   280: aload_1
-    //   281: invokevirtual 157	java/io/IOException:printStackTrace	()V
+    //   281: invokevirtual 183	java/io/IOException:printStackTrace	()V
     //   284: aload 7
     //   286: athrow
     // Local variable table:
@@ -315,13 +311,13 @@ public class StartupDirector
     }
     StartupDirector localStartupDirector = new StartupDirector();
     localStartupDirector.a(0);
-    Step.AmStepFactory.b(0, localStartupDirector, jdField_b_of_type_ArrayOfInt).step();
+    Step.AmStepFactory.b(0, localStartupDirector, o).step();
     if (Build.VERSION.SDK_INT >= 21) {}
     try
     {
       DebugActivity.startNetworkPolicy();
     }
-    catch (Throwable localThrowable)
+    catch (Throwable localThrowable2)
     {
       label53:
       break label53;
@@ -330,26 +326,27 @@ public class StartupDirector
     {
       localStartupDirector.a(1);
       Step.AmStepFactory.b(49, localStartupDirector, null).step();
+      d = true;
       return localStartupDirector;
     }
     if (BaseApplicationImpl.sProcessId == 6)
     {
-      jdField_a_of_type_Boolean = false;
+      b = false;
       return localStartupDirector;
     }
-    jdField_a_of_type_Boolean = false;
+    b = false;
     Step.AmStepFactory.b(13, localStartupDirector, null).step();
     if (BaseApplicationImpl.sProcessId == 2)
     {
       Step.AmStepFactory.b(11, localStartupDirector, null).step();
       Step.AmStepFactory.b(39, localStartupDirector, null).step();
-      ThreadManager.post(Step.AmStepFactory.b(0, localStartupDirector, l), 10, null, false);
-      Step.AmStepFactory.b(0, localStartupDirector, k).step();
+      ThreadManager.post(Step.AmStepFactory.b(0, localStartupDirector, y), 10, null, false);
+      Step.AmStepFactory.b(0, localStartupDirector, x).step();
       return null;
     }
     if (BaseApplicationImpl.sProcessId == 10)
     {
-      Step.AmStepFactory.b(0, localStartupDirector, r).step();
+      Step.AmStepFactory.b(0, localStartupDirector, E).step();
       return null;
     }
     if ((BaseApplicationImpl.sProcessId != 5) && (BaseApplicationImpl.sProcessId != 7))
@@ -364,7 +361,7 @@ public class StartupDirector
       }
       if (BaseApplicationImpl.processName.endsWith(":peak"))
       {
-        ThreadManager.excute(Step.AmStepFactory.b(0, localStartupDirector, jdField_a_of_type_ArrayOfInt), 16, null, false);
+        ThreadManager.excute(Step.AmStepFactory.b(0, localStartupDirector, a), 16, null, false);
         Step.AmStepFactory.b(49, localStartupDirector, null).step();
         return null;
       }
@@ -379,39 +376,50 @@ public class StartupDirector
         Step.AmStepFactory.b(51, localStartupDirector, null).step();
         return null;
       }
-      if (BaseApplicationImpl.processName.endsWith(":troopbar"))
+      if ((!BaseApplicationImpl.processName.contains(":wxa_container")) && (!BaseApplicationImpl.processName.contains("com.tencent.ilink.ServiceProcess")))
       {
-        Step.AmStepFactory.b(12, localStartupDirector, null).step();
-        Step.AmStepFactory.b(11, localStartupDirector, null).step();
-        Step.AmStepFactory.b(14, localStartupDirector, null).step();
-      }
-      else
-      {
-        Step.AmStepFactory.b(0, localStartupDirector, j).step();
-      }
-      if (BaseApplicationImpl.processName.endsWith(":troophomework")) {
-        Step.AmStepFactory.b(37, localStartupDirector, null).step();
-      }
-      if (BaseApplicationImpl.processName.endsWith(":live"))
-      {
+        if (BaseApplicationImpl.processName.endsWith(":troopbar"))
+        {
+          Step.AmStepFactory.b(12, localStartupDirector, null).step();
+          Step.AmStepFactory.b(11, localStartupDirector, null).step();
+          Step.AmStepFactory.b(14, localStartupDirector, null).step();
+        }
+        else
+        {
+          Step.AmStepFactory.b(0, localStartupDirector, w).step();
+        }
+        if (BaseApplicationImpl.processName.endsWith(":troophomework")) {
+          Step.AmStepFactory.b(38, localStartupDirector, null).step();
+        }
+        if (!BaseApplicationImpl.processName.endsWith(":live")) {
+          break label612;
+        }
         Step.AmStepFactory.b(47, localStartupDirector, null).step();
         return null;
       }
-    }
-    else
-    {
-      Step.AmStepFactory.b(11, localStartupDirector, null).step();
-      Step.AmStepFactory.b(8, localStartupDirector, null).step();
-      Step.AmStepFactory.b(0, localStartupDirector, i).step();
-      Step.AmStepFactory.b(12, localStartupDirector, null).step();
-      Step.AmStepFactory.b(46, localStartupDirector, null).step();
-      if (BaseApplicationImpl.sProcessId == 7)
+      try
       {
-        Step.AmStepFactory.b(48, localStartupDirector, null).step();
-        Step.AmStepFactory.b(50, localStartupDirector, null).step();
-        Step.AmStepFactory.b(49, localStartupDirector, null).step();
+        ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).attachBaseContext(BaseApplicationImpl.sApplication);
+        return null;
+      }
+      catch (Throwable localThrowable1)
+      {
+        Log.e("StartupDirector", "attach wxMini failed !!", localThrowable1);
+        return null;
       }
     }
+    Step.AmStepFactory.b(11, localThrowable1, null).step();
+    Step.AmStepFactory.b(8, localThrowable1, null).step();
+    Step.AmStepFactory.b(0, localThrowable1, v).step();
+    Step.AmStepFactory.b(12, localThrowable1, null).step();
+    Step.AmStepFactory.b(46, localThrowable1, null).step();
+    if (BaseApplicationImpl.sProcessId == 7)
+    {
+      Step.AmStepFactory.b(48, localThrowable1, null).step();
+      Step.AmStepFactory.b(50, localThrowable1, null).step();
+      Step.AmStepFactory.b(49, localThrowable1, null).step();
+    }
+    label612:
     return null;
   }
   
@@ -419,23 +427,23 @@ public class StartupDirector
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("nextState ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.F);
     localStringBuilder.append(", ");
     localStringBuilder.append(paramInt);
     QLog.i("AutoMonitor", 1, localStringBuilder.toString());
-    if ((jdField_a_of_type_Boolean) || (BaseApplicationImpl.sProcessId == 1))
+    if ((b) || (BaseApplicationImpl.sProcessId == 1))
     {
       long l1;
-      if (this.jdField_d_of_type_Int != -1)
+      if (this.F != -1)
       {
         long l2 = SystemClock.uptimeMillis();
-        if (jdField_a_of_type_Boolean)
+        if (b)
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("STATE_");
-          localStringBuilder.append(this.jdField_d_of_type_Int);
+          localStringBuilder.append(this.F);
           localStringBuilder.append(", cost=");
-          localStringBuilder.append(l2 - jdField_h_of_type_Long);
+          localStringBuilder.append(l2 - P);
           localStringBuilder.append(" then ");
           localStringBuilder.append(paramInt);
           Log.i("AutoMonitor", localStringBuilder.toString());
@@ -443,7 +451,7 @@ public class StartupDirector
         l1 = l2;
         if (BaseApplicationImpl.sProcessId == 1)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_d_of_type_Int), Long.valueOf(l2 - jdField_h_of_type_Long));
+          this.R.put(Integer.valueOf(this.F), Long.valueOf(l2 - P));
           l1 = l2;
         }
       }
@@ -453,30 +461,30 @@ public class StartupDirector
       }
       if (paramInt != 1000)
       {
-        if (this.jdField_d_of_type_Int == -1) {
+        if (this.F == -1) {
           l1 = SystemClock.uptimeMillis();
         }
         if (l1 != 0L) {
-          jdField_h_of_type_Long = l1;
+          P = l1;
         }
       }
     }
-    this.jdField_d_of_type_Int = paramInt;
-    paramInt = this.jdField_d_of_type_Int;
+    this.F = paramInt;
+    paramInt = this.F;
     if ((paramInt == 2) || (paramInt == 1000))
     {
-      paramInt = this.jdField_d_of_type_Int;
+      paramInt = this.F;
       if (paramInt == 2)
       {
-        this.jdField_g_of_type_Int = ThreadManager.getSubThread().getPriority();
+        this.Q = ThreadManager.getSubThread().getPriority();
         ThreadManager.getSubThread().setPriority(10);
         ThreadManager.getRecentThread().setPriority(10);
         return;
       }
-      if ((paramInt == 1000) && (this.jdField_g_of_type_Int != -1))
+      if ((paramInt == 1000) && (this.Q != -1))
       {
-        ThreadManager.getSubThread().setPriority(this.jdField_g_of_type_Int);
-        ThreadManager.getRecentThread().setPriority(this.jdField_g_of_type_Int);
+        ThreadManager.getSubThread().setPriority(this.Q);
+        ThreadManager.getRecentThread().setPriority(this.Q);
       }
     }
   }
@@ -489,19 +497,19 @@ public class StartupDirector
       ((StringBuilder)localObject).append("onEndStep with ");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append(", when ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+      ((StringBuilder)localObject).append(this.F);
       QLog.i("AutoMonitor", 2, ((StringBuilder)localObject).toString());
     }
     BaseApplicationImpl.isInActionS = false;
     if (paramBoolean)
     {
       ThreadManager.getSubThreadHandler().postAtFrontOfQueue(Step.AmStepFactory.b(10, this, null));
-      if (jdField_a_of_type_Int == 1) {
-        ThreadManager.getSubThreadHandler().post(Step.AmStepFactory.b(22, this, null));
+      if (f == 1) {
+        ThreadManager.getSubThreadHandler().post(Step.AmStepFactory.b(23, this, null));
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    Object localObject = this.jdField_b_of_type_AndroidOsHandler;
+    this.H = null;
+    Object localObject = this.I;
     if (localObject != null) {
       ((Handler)localObject).removeCallbacksAndMessages(null);
     }
@@ -509,20 +517,20 @@ public class StartupDirector
     if (paramBoolean)
     {
       long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_b_of_type_Long;
+      long l2 = this.i;
       long l3 = BaseApplicationImpl.sShowTime;
       long l4 = l1 - BaseApplicationImpl.sShowTime;
-      jdField_e_of_type_Long = l1;
+      l = l1;
       if ((BaseApplicationImpl.sShowTime > 0L) && (NetworkUtil.isNetworkAvailable(BaseApplicationImpl.sApplication))) {
         BaseApplicationImpl.sShowTime = -l1;
       } else {
         BaseApplicationImpl.sShowTime = 0L;
       }
-      long l5 = this.jdField_a_of_type_Long;
-      long l6 = this.jdField_c_of_type_Long;
+      long l5 = this.g;
+      long l6 = this.j;
       if ((l3 > 0L) && (l4 < 30000L))
       {
-        jdField_d_of_type_Long = l4;
+        k = l4;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("ActionLoginS, cost=");
         ((StringBuilder)localObject).append(l4);
@@ -531,7 +539,7 @@ public class StartupDirector
       new StartupDirector.1(this).run();
       ThreadManager.getSubThreadHandler().postDelayed(new StartupDirector.2(this, l6, l5, l2, l1 - l2, l3, l4), 10000L);
       ThreadManager.getSubThreadHandler().postDelayed(new StartupDirector.3(this), 3000L);
-      if (this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector$SplashCallBack != null)
+      if (this.n != null)
       {
         localObject = SplashADView.a(null, null);
         if (localObject != null) {
@@ -545,82 +553,32 @@ public class StartupDirector
   
   private void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt)
   {
-    this.jdField_e_of_type_Int = 1;
+    this.M = 1;
     paramArrayOfInt1 = Step.AmStepFactory.b(0, this, paramArrayOfInt1);
     if (paramArrayOfInt2 != null)
     {
-      this.jdField_e_of_type_Int = 2;
-      this.jdField_f_of_type_Int = paramInt;
-      paramArrayOfInt1.setResultListener(this.jdField_b_of_type_AndroidOsHandler, 10);
+      this.M = 2;
+      this.N = paramInt;
+      paramArrayOfInt1.setResultListener(this.I, 10);
       paramArrayOfInt2 = Step.AmStepFactory.b(0, this, paramArrayOfInt2);
-      paramArrayOfInt2.setResultListener(this.jdField_b_of_type_AndroidOsHandler, 10);
+      paramArrayOfInt2.setResultListener(this.I, 10);
       new Handler(ThreadManager.getRecentThreadLooper()).post(paramArrayOfInt2);
     }
     else
     {
-      paramArrayOfInt1.setResultListener(this.jdField_b_of_type_AndroidOsHandler, paramInt);
+      paramArrayOfInt1.setResultListener(this.I, paramInt);
     }
     paramArrayOfInt1.step();
   }
   
-  private void b()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("realCreateActivity ");
-    ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
-    ((StringBuilder)localObject).append(", ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList);
-    QLog.i("AutoMonitor", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_d_of_type_Int == 3) {
-      a(4);
-    }
-    localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
-    {
-      int i1 = ((ArrayList)localObject).size() - 1;
-      while (i1 >= 0)
-      {
-        localObject = (WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (localObject != null) {
-          localObject = (AppActivity)((WeakReference)localObject).get();
-        } else {
-          localObject = null;
-        }
-        if (localObject != null) {
-          ((AppActivity)localObject).realOnCreate();
-        }
-        i1 -= 1;
-      }
-    }
-    if (BaseApplicationImpl.sLaunchTime > 0L)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      this.jdField_c_of_type_Long = (l1 - BaseApplicationImpl.sLaunchTime);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("ActionLoginA, cost=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
-      Log.d("AutoMonitor", ((StringBuilder)localObject).toString());
-      if (NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication)) {
-        BaseApplicationImpl.sLaunchTime = -l1;
-      } else {
-        BaseApplicationImpl.sLaunchTime = 0L;
-      }
-    }
-    a(5);
-    a(2, 0, 3000L);
-    if (BaseApplicationImpl.sProcessId == 1) {
-      b(12, 0, 10000L);
-    }
-  }
-  
   private void b(int paramInt1, int paramInt2, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+    if (this.H == null) {
+      this.H = new Handler(ThreadManager.getSubThreadLooper(), this);
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt1);
-    Message localMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(paramInt1, paramInt2, 0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramLong);
+    this.H.removeMessages(paramInt1);
+    Message localMessage = this.I.obtainMessage(paramInt1, paramInt2, 0);
+    this.H.sendMessageDelayed(localMessage, paramLong);
   }
   
   private void b(AppActivity paramAppActivity, boolean paramBoolean)
@@ -635,40 +593,85 @@ public class StartupDirector
     localTextView.setTextColor(-1);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     if (!paramBoolean) {
-      localTextView.setText(2131693395);
+      localTextView.setText(2131890944);
     } else {
-      localTextView.setText(HardCodeUtil.a(2131714156));
+      localTextView.setText(HardCodeUtil.a(2131911684));
     }
     paramAppActivity.setContentView(localTextView);
     QLog.flushLog();
-    this.jdField_b_of_type_AndroidOsHandler.postDelayed(new StartupDirector.5(this, paramAppActivity), 8000L);
+    this.I.postDelayed(new StartupDirector.5(this, paramAppActivity), 8000L);
   }
   
-  public void a()
+  private void d()
   {
-    a(2, 0, 0L);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("realCreateActivity ");
+    ((StringBuilder)localObject).append(this.F);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(this.G);
+    QLog.i("AutoMonitor", 1, ((StringBuilder)localObject).toString());
+    if (this.F == 3) {
+      a(4);
+    }
+    localObject = this.G;
+    if (localObject != null)
+    {
+      int i1 = ((ArrayList)localObject).size() - 1;
+      while (i1 >= 0)
+      {
+        localObject = (WeakReference)this.G.get(i1);
+        if (localObject != null) {
+          localObject = (AppActivity)((WeakReference)localObject).get();
+        } else {
+          localObject = null;
+        }
+        if (localObject != null) {
+          ((AppActivity)localObject).realOnCreate();
+        }
+        i1 -= 1;
+      }
+    }
+    if (BaseApplicationImpl.sLaunchTime > 0L)
+    {
+      long l1 = SystemClock.uptimeMillis();
+      this.j = (l1 - BaseApplicationImpl.sLaunchTime);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ActionLoginA, cost=");
+      ((StringBuilder)localObject).append(this.j);
+      Log.d("AutoMonitor", ((StringBuilder)localObject).toString());
+      if (NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication)) {
+        BaseApplicationImpl.sLaunchTime = -l1;
+      } else {
+        BaseApplicationImpl.sLaunchTime = 0L;
+      }
+    }
+    a(5);
+    a(2, 0, 3000L);
+    if (BaseApplicationImpl.sProcessId == 1) {
+      b(12, 0, 10000L);
+    }
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    if (this.jdField_b_of_type_AndroidOsHandler == null) {
-      this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    if (this.I == null) {
+      this.I = new Handler(Looper.getMainLooper(), this);
     }
-    this.jdField_b_of_type_AndroidOsHandler.removeMessages(paramInt1);
-    Message localMessage = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(paramInt1, paramInt2, 0);
-    this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramLong);
+    this.I.removeMessages(paramInt1);
+    Message localMessage = this.I.obtainMessage(paramInt1, paramInt2, 0);
+    this.I.sendMessageDelayed(localMessage, paramLong);
   }
   
   public void a(StartupDirector.SplashCallBack paramSplashCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector$SplashCallBack = paramSplashCallBack;
+    this.n = paramSplashCallBack;
   }
   
   public void a(AppActivity paramAppActivity, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onActivityFocusChanged when ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.F);
     localStringBuilder.append(", ");
     localStringBuilder.append(paramAppActivity);
     localStringBuilder.append(", ");
@@ -677,13 +680,13 @@ public class StartupDirector
     if (!paramBoolean) {
       return;
     }
-    this.jdField_b_of_type_AndroidOsHandler.removeMessages(2);
+    this.I.removeMessages(2);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqStartupStepCheckPermission == null) {
-        this.jdField_a_of_type_ComTencentMobileqqStartupStepCheckPermission = ((CheckPermission)Step.AmStepFactory.b(3, this, null));
+      if (this.K == null) {
+        this.K = ((CheckPermission)Step.AmStepFactory.b(3, this, null));
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqStartupStepCheckPermission.checkPermission(paramAppActivity))
+      if (!this.K.checkPermission(paramAppActivity))
       {
         BaseApplicationImpl.sLaunchTime = 0L;
         BaseApplicationImpl.sShowTime = 0L;
@@ -691,7 +694,7 @@ public class StartupDirector
       }
     }
     QQDeviceInfo.initHuaweiOaid();
-    int i1 = this.jdField_d_of_type_Int;
+    int i1 = this.F;
     if (i1 == 2)
     {
       if (1 == BaseApplicationImpl.sProcessId) {
@@ -715,16 +718,11 @@ public class StartupDirector
       a(true);
     }
     paramAppActivity = SplashADView.a(null, null);
-    if ((paramAppActivity != null) && (paramAppActivity.jdField_a_of_type_Boolean) && (paramAppActivity.jdField_b_of_type_Boolean))
+    if ((paramAppActivity != null) && (paramAppActivity.k) && (paramAppActivity.l))
     {
       QLog.i("SplashAD", 1, "adView resume Video");
       paramAppActivity.c();
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
   }
   
   public boolean a(Object paramObject, Intent paramIntent)
@@ -739,7 +737,7 @@ public class StartupDirector
       paramObject = null;
     }
     long l1 = SystemClock.uptimeMillis();
-    if ((this.jdField_d_of_type_Int == 1) && (Math.abs(l1 - BaseApplicationImpl.appStartTime) > 4000L))
+    if ((this.F == 1) && (Math.abs(l1 - BaseApplicationImpl.appStartTime) > 4000L))
     {
       BaseApplicationImpl.sShowTime = 0L;
       BaseApplicationImpl.sLaunchTime = 0L;
@@ -749,52 +747,52 @@ public class StartupDirector
     boolean bool1 = false;
     if (paramObject == null)
     {
-      i1 = this.jdField_d_of_type_Int;
+      i1 = this.F;
       if (i1 == 1)
       {
         BaseApplicationImpl.sIsBgStartup = true;
         BaseApplicationImpl.sShowTime = 0L;
         BaseApplicationImpl.sLaunchTime = 0L;
         if (paramIntent != null) {
-          jdField_a_of_type_Int = paramIntent.getIntExtra("k_start_mode", 0);
+          f = paramIntent.getIntExtra("k_start_mode", 0);
         }
         paramObject = new StringBuilder();
         paramObject.append("onActivityCreate");
-        paramObject.append(this.jdField_d_of_type_Int);
+        paramObject.append(this.F);
         paramObject.append(", ");
-        paramObject.append(jdField_a_of_type_Int);
+        paramObject.append(f);
         QLog.i("AutoMonitor", 1, paramObject.toString());
-        paramObject = n;
-        i1 = jdField_a_of_type_Int;
+        paramObject = A;
+        i1 = f;
         if (i1 == 1)
         {
-          paramObject = o;
+          paramObject = B;
         }
         else if (i1 == 2)
         {
-          paramObject = p;
+          paramObject = C;
           BaseApplicationImpl.appStartTime = 0L;
         }
         Step.AmStepFactory.b(0, this, paramObject).step();
-        QQCrashControlManager.d();
-        if (GuardManager.a != null) {
-          GuardManager.a.a(jdField_a_of_type_Int);
+        QQCrashControlManager.f();
+        if (GuardManager.sInstance != null) {
+          GuardManager.sInstance.updateStateOnPreStartEvent(f);
         }
         a(201);
         return false;
       }
       if (i1 == 2)
       {
-        Step.AmStepFactory.b(0, this, m).step();
+        Step.AmStepFactory.b(0, this, z).step();
         a(101);
         return false;
       }
-      if ((i1 == 201) && (jdField_a_of_type_Int == 2) && (paramIntent != null))
+      if ((i1 == 201) && (f == 2) && (paramIntent != null))
       {
         i1 = paramIntent.getIntExtra("k_start_mode", 0);
         paramObject = new StringBuilder();
         paramObject.append("onActivityCreate");
-        paramObject.append(this.jdField_d_of_type_Int);
+        paramObject.append(this.F);
         paramObject.append(", ");
         paramObject.append(i1);
         QLog.i("AutoMonitor", 1, paramObject.toString());
@@ -804,7 +802,7 @@ public class StartupDirector
       }
       return false;
     }
-    int i1 = this.jdField_d_of_type_Int;
+    int i1 = this.F;
     if ((i1 != 1) && (i1 != 2) && (i1 != 101) && (i1 != 201))
     {
       if ((i1 != 5) && (i1 != 6))
@@ -815,7 +813,7 @@ public class StartupDirector
       {
         BaseApplicationImpl.sLaunchTime = 0L;
         BaseApplicationImpl.sShowTime = 0L;
-        this.jdField_a_of_type_MqqAppAppActivity = paramObject;
+        this.e = paramObject;
         a(6);
         a(2, 0, 1000L);
       }
@@ -845,17 +843,17 @@ public class StartupDirector
         {
           QLog.e("AutoMonitor", 1, "", paramObject);
         }
-        jdField_b_of_type_Int = a(BaseApplicationImpl.sApplication);
-        if (jdField_b_of_type_Int <= 3) {
+        h = a(BaseApplicationImpl.sApplication);
+        if (h <= 3) {
           System.exit(-1);
         }
         return true;
       }
-      this.jdField_a_of_type_MqqAppAppActivity = paramObject;
+      this.e = paramObject;
       if ((paramObject instanceof InstallActivity)) {
         try
         {
-          new File(this.jdField_a_of_type_MqqAppAppActivity.getFilesDir(), "suicide_count").delete();
+          new File(this.e.getFilesDir(), "suicide_count").delete();
         }
         catch (Throwable paramIntent)
         {
@@ -869,7 +867,7 @@ public class StartupDirector
       }
       paramIntent = (SetSplash)Step.AmStepFactory.b(2, this, null);
       paramIntent.step();
-      if (paramIntent.jdField_a_of_type_Boolean)
+      if (paramIntent.a)
       {
         a(2, 0, 1000L);
         bool1 = true;
@@ -879,12 +877,12 @@ public class StartupDirector
         Step.AmStepFactory.b(7, this, null).step();
         a(2, 0, 0L);
       }
-      i1 = this.jdField_d_of_type_Int;
-      if ((i1 == 201) || ((i1 == 1) && (jdField_a_of_type_Int == 2))) {
-        this.jdField_b_of_type_Long = l1;
+      i1 = this.F;
+      if ((i1 == 201) || ((i1 == 1) && (f == 2))) {
+        this.i = l1;
       }
       bool2 = bool1;
-      if (this.jdField_d_of_type_Int == 1)
+      if (this.F == 1)
       {
         a(2);
         bool2 = bool1;
@@ -892,12 +890,22 @@ public class StartupDirector
     }
     if (bool2)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(2);
+      if (this.G == null) {
+        this.G = new ArrayList(2);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramObject));
+      this.G.add(new WeakReference(paramObject));
     }
     return bool2;
+  }
+  
+  public boolean b()
+  {
+    return this.L;
+  }
+  
+  public void c()
+  {
+    a(2, 0, 0L);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -907,7 +915,7 @@ public class StartupDirector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.director.StartupDirector
  * JD-Core Version:    0.7.0.1
  */

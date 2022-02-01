@@ -11,26 +11,26 @@ import mqq.util.WeakReference;
 final class PluginManagerInterfaceImpl$GetAccessTokenBundle
   implements Callable<Bundle>
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<PluginManagerInterfaceImpl> jdField_a_of_type_MqqUtilWeakReference;
+  private final WeakReference<PluginManagerInterfaceImpl> a;
   private final String b;
+  private final String c;
   
   PluginManagerInterfaceImpl$GetAccessTokenBundle(PluginManagerInterfaceImpl paramPluginManagerInterfaceImpl, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramPluginManagerInterfaceImpl);
+    this.b = paramString1;
+    this.c = paramString2;
+    this.a = new WeakReference(paramPluginManagerInterfaceImpl);
   }
   
   public Bundle a()
   {
-    Object localObject = (PluginManagerInterfaceImpl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (PluginManagerInterfaceImpl)this.a.get();
     Bundle[] arrayOfBundle = new Bundle[1];
     if (localObject != null)
     {
       localObject = (ILoginKeyHelper)QRoute.api(ILoginKeyHelper.class);
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      ((ILoginKeyHelper)localObject).getAccessToken(PluginManagerInterfaceImpl.a(), this.b, BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, new PluginManagerInterfaceImpl.GetAccessTokenBundle.1(this, (ILoginKeyHelper)localObject, arrayOfBundle, localCountDownLatch));
+      ((ILoginKeyHelper)localObject).getAccessToken(PluginManagerInterfaceImpl.f(), this.c, BaseApplicationImpl.getContext(), this.b, new PluginManagerInterfaceImpl.GetAccessTokenBundle.1(this, (ILoginKeyHelper)localObject, arrayOfBundle, localCountDownLatch));
       localCountDownLatch.await();
       return arrayOfBundle[0];
     }
@@ -43,7 +43,7 @@ final class PluginManagerInterfaceImpl$GetAccessTokenBundle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.GetAccessTokenBundle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/icx" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="@dimen/j2"
+<RelativeLayout android:id="@id/icx" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="@dimen/j2"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:id="@id/axa" android:background="@drawable/big" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="12.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <CheckBox android:id="@id/axa" android:background="@drawable/0x" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="12.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <ImageView android:gravity="center_vertical" android:id="@id/icon" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="12.0dip" android:scaleType="fitXY" android:layout_toRightOf="@id/axa" android:layout_centerVertical="true" />
     <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f5e" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="35.0dip" android:singleLine="true" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true" />
 </RelativeLayout>

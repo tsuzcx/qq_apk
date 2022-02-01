@@ -1,13 +1,14 @@
 package com.tencent.ad.tangram;
 
 import android.support.annotation.Keep;
+import java.util.List;
 
 @Keep
 public abstract interface Ad
 {
-  public abstract boolean canLaunchAppAfterInstalled();
-  
   public abstract boolean disableAutoDownload();
+  
+  public abstract boolean disableLaunchApp();
   
   public abstract long getAId();
   
@@ -50,6 +51,10 @@ public abstract interface Ad
   public abstract int getCreativeSize();
   
   public abstract int getDestType();
+  
+  public abstract List<?> getFeedbackItems();
+  
+  public abstract int getInnerShowType();
   
   public abstract String getJSONKeyForXiJingOffline();
   

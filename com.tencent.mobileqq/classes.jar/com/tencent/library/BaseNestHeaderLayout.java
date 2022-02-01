@@ -2,6 +2,7 @@ package com.tencent.library;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 
 public abstract class BaseNestHeaderLayout
   extends BaseLayout
@@ -15,6 +16,14 @@ public abstract class BaseNestHeaderLayout
   public BaseNestHeaderLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+  }
+  
+  public int getViewHeight()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return this.a.getMeasuredHeight();
   }
 }
 

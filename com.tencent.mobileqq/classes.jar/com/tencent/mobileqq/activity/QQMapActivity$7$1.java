@@ -16,7 +16,7 @@ class QQMapActivity$7$1
 {
   QQMapActivity$7$1(QQMapActivity.7 param7) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
@@ -24,8 +24,8 @@ class QQMapActivity$7$1
       {
         if (QfavBuilder.a((float)this.a.a.latitude, (float)this.a.a.longitude, this.a.a.mCurPoiName, this.a.a.loc, null).c(this.a.a.getIntent().getStringExtra("uin")).b(this.a.a, this.a.a.getIntent().getStringExtra("uin"), 1, null))
         {
-          paramInt = QQMapActivity.access$001(this.a.a).getDimensionPixelSize(2131299168);
-          QQToast.a(this.a.a, 2, this.a.a.getString(2131692185), 1).b(paramInt);
+          paramInt = QQMapActivity.access$001(this.a.a).getDimensionPixelSize(2131299920);
+          QQToast.makeText(this.a.a, 2, this.a.a.getString(2131889172), 1).show(paramInt);
           QQMapRoutingHelper.a("favorite_success");
         }
         QfavReport.a(null, 65, 7);
@@ -43,7 +43,7 @@ class QQMapActivity$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

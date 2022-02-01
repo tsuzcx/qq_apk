@@ -9,9 +9,9 @@ class RemoteServiceProxy$2
   
   public void run()
   {
-    while (!this.this$0.a.isEmpty())
+    while (!this.this$0.c.isEmpty())
     {
-      SendMsg localSendMsg = (SendMsg)this.this$0.a.poll();
+      SendMsg localSendMsg = (SendMsg)this.this$0.c.poll();
       if (localSendMsg != null) {
         try
         {
@@ -32,7 +32,7 @@ class RemoteServiceProxy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qappcenter.remote.RemoteServiceProxy.2
  * JD-Core Version:    0.7.0.1
  */

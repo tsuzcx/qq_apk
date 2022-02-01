@@ -8,12 +8,12 @@ import java.util.List;
 
 public class VasPalette$OcTreeQuantizer
 {
-  private static final Comparator<VasPalette.OcNode> jdField_a_of_type_JavaUtilComparator = new VasPalette.OcTreeQuantizer.1();
-  private List<VasPalette.OcNode> jdField_a_of_type_JavaUtilList;
+  private static final Comparator<VasPalette.OcNode> b = new VasPalette.OcTreeQuantizer.1();
+  private List<VasPalette.OcNode> a;
   
   public List<VasPalette.OcNode> a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return null;
     }
@@ -27,27 +27,27 @@ public class VasPalette$OcTreeQuantizer
     while (i < paramArrayOfInt.length)
     {
       ((VasPalette.OcTree)localObject).a(paramArrayOfInt[i]);
-      while (((VasPalette.OcTree)localObject).jdField_a_of_type_JavaUtilList.size() > paramInt) {
+      while (((VasPalette.OcTree)localObject).b.size() > paramInt) {
         ((VasPalette.OcTree)localObject).a();
       }
       i += 1;
     }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramArrayOfInt = ((VasPalette.OcTree)localObject).jdField_a_of_type_JavaUtilList.iterator();
+    this.a = new ArrayList();
+    paramArrayOfInt = ((VasPalette.OcTree)localObject).b.iterator();
     while (paramArrayOfInt.hasNext())
     {
       localObject = (VasPalette.OcNode)paramArrayOfInt.next();
-      ((VasPalette.OcNode)localObject).jdField_a_of_type_Long = ((int)((float)((VasPalette.OcNode)localObject).jdField_a_of_type_Long / ((VasPalette.OcNode)localObject).jdField_a_of_type_Int));
-      ((VasPalette.OcNode)localObject).b = ((int)((float)((VasPalette.OcNode)localObject).b / ((VasPalette.OcNode)localObject).jdField_a_of_type_Int));
-      ((VasPalette.OcNode)localObject).c = ((int)((float)((VasPalette.OcNode)localObject).c / ((VasPalette.OcNode)localObject).jdField_a_of_type_Int));
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
+      ((VasPalette.OcNode)localObject).a = ((int)((float)((VasPalette.OcNode)localObject).a / ((VasPalette.OcNode)localObject).d));
+      ((VasPalette.OcNode)localObject).b = ((int)((float)((VasPalette.OcNode)localObject).b / ((VasPalette.OcNode)localObject).d));
+      ((VasPalette.OcNode)localObject).c = ((int)((float)((VasPalette.OcNode)localObject).c / ((VasPalette.OcNode)localObject).d));
+      this.a.add(localObject);
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_JavaUtilComparator);
+    Collections.sort(this.a, b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette.OcTreeQuantizer
  * JD-Core Version:    0.7.0.1
  */

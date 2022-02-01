@@ -25,7 +25,7 @@ public class AnimatedImageSpan
     Drawable localDrawable = this.a;
     paramCharSequence = localDrawable;
     if ((localDrawable instanceof AnimatedImageDrawable)) {
-      paramCharSequence = ((AnimatedImageDrawable)localDrawable).a();
+      paramCharSequence = ((AnimatedImageDrawable)localDrawable).c();
     }
     if (paramCharSequence == null) {
       return;

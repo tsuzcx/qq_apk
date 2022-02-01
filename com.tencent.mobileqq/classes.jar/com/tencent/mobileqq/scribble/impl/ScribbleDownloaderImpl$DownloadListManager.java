@@ -10,70 +10,47 @@ import java.util.concurrent.locks.ReentrantLock;
 
 class ScribbleDownloaderImpl$DownloadListManager
 {
-  public final int a;
-  private ArrayList<ScribbleDownloadInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private PriorityBlockingQueue<ScribbleDownloadInfo> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
-  private Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  public final int a = -1;
   public final int b = 0;
   public final int c = 1;
   public final int d = 2;
   public final int e = 0;
   public final int f = -1;
+  private PriorityBlockingQueue<ScribbleDownloadInfo> h = new PriorityBlockingQueue();
+  private ArrayList<ScribbleDownloadInfo> i = new ArrayList();
+  private Lock j = new ReentrantLock();
   
-  ScribbleDownloaderImpl$DownloadListManager(ScribbleDownloaderImpl paramScribbleDownloaderImpl)
-  {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int a()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    try
-    {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      ScribbleDownloaderImpl localScribbleDownloaderImpl = this.jdField_a_of_type_ComTencentMobileqqScribbleImplScribbleDownloaderImpl;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("downing size is ");
-      localStringBuilder.append(i);
-      ScribbleDownloaderImpl.access$000(localScribbleDownloaderImpl, "getDownloadingSize", localStringBuilder.toString());
-      return i;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-    }
-  }
+  ScribbleDownloaderImpl$DownloadListManager(ScribbleDownloaderImpl paramScribbleDownloaderImpl) {}
   
   public int a(MessageForScribble paramMessageForScribble)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    this.j.lock();
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      int j = 0;
-      if (i > 0)
+      int k = this.i.size();
+      int m = 0;
+      if (k > 0)
       {
-        i = 0;
-        while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+        k = 0;
+        while (k < this.i.size())
         {
-          if (paramMessageForScribble.uniseq == ((ScribbleDownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq)
+          if (paramMessageForScribble.uniseq == ((ScribbleDownloadInfo)this.i.get(k)).a.uniseq)
           {
-            this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-            i = j;
+            this.i.remove(k);
+            k = m;
             break label84;
           }
-          i += 1;
+          k += 1;
         }
       }
-      i = -1;
+      k = -1;
       label84:
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      return i;
+      this.j.unlock();
+      return k;
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.j.unlock();
     }
     for (;;)
     {
@@ -83,88 +60,88 @@ class ScribbleDownloaderImpl$DownloadListManager
   
   public int a(ScribbleDownloadInfo paramScribbleDownloadInfo)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    this.j.lock();
     try
     {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      n = 0;
-      if (i <= 0) {
+      k = this.i.size();
+      i2 = 0;
+      if (k <= 0) {
         break label236;
       }
-      i = 0;
+      k = 0;
     }
     finally
     {
       for (;;)
       {
-        int n;
+        int i2;
         Iterator localIterator;
         ScribbleDownloadInfo localScribbleDownloadInfo;
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        this.j.unlock();
         for (;;)
         {
           throw paramScribbleDownloadInfo;
         }
-        i += 1;
+        k += 1;
         continue;
-        int i = 0;
-        int j = -1;
+        int k = 0;
+        int m = -1;
         continue;
-        int m = 1;
-        int k = 2;
+        int i1 = 1;
+        int n = 2;
       }
     }
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (paramScribbleDownloadInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq == ((ScribbleDownloadInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq)
+    if (k < this.i.size()) {
+      if (paramScribbleDownloadInfo.a.uniseq == ((ScribbleDownloadInfo)this.i.get(k)).a.uniseq)
       {
-        i = 1;
-        j = 1;
-        m = i;
-        k = j;
-        if (i == 0)
+        k = 1;
+        m = 1;
+        i1 = k;
+        n = m;
+        if (k == 0)
         {
-          m = i;
-          k = j;
-          if (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.size() > 0)
+          i1 = k;
+          n = m;
+          if (this.h.size() > 0)
           {
-            localIterator = this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
+            localIterator = this.h.iterator();
             do
             {
-              m = i;
-              k = j;
+              i1 = k;
+              n = m;
               if (!localIterator.hasNext()) {
                 break;
               }
               localScribbleDownloadInfo = (ScribbleDownloadInfo)localIterator.next();
-            } while (localScribbleDownloadInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq != paramScribbleDownloadInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq);
-            if (localScribbleDownloadInfo.jdField_a_of_type_Int >= paramScribbleDownloadInfo.jdField_a_of_type_Int) {
+            } while (localScribbleDownloadInfo.a.uniseq != paramScribbleDownloadInfo.a.uniseq);
+            if (localScribbleDownloadInfo.b >= paramScribbleDownloadInfo.b) {
               break label243;
             }
-            localScribbleDownloadInfo.jdField_a_of_type_Int = paramScribbleDownloadInfo.jdField_a_of_type_Int;
+            localScribbleDownloadInfo.b = paramScribbleDownloadInfo.b;
             break label243;
           }
         }
-        if (m == 0)
+        if (i1 == 0)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(paramScribbleDownloadInfo);
-          k = n;
+          this.h.add(paramScribbleDownloadInfo);
+          n = i2;
         }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        return k;
+        this.j.unlock();
+        return n;
       }
     }
   }
   
   public ScribbleDownloadInfo a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    this.j.lock();
     try
     {
       ScribbleDownloadInfo localScribbleDownloadInfo;
-      if (this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.size() > 0)
+      if (this.h.size() > 0)
       {
-        localScribbleDownloadInfo = (ScribbleDownloadInfo)this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.poll();
-        this.jdField_a_of_type_JavaUtilArrayList.add(localScribbleDownloadInfo);
+        localScribbleDownloadInfo = (ScribbleDownloadInfo)this.h.poll();
+        this.i.add(localScribbleDownloadInfo);
       }
       else
       {
@@ -174,13 +151,33 @@ class ScribbleDownloaderImpl$DownloadListManager
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.j.unlock();
+    }
+  }
+  
+  public int b()
+  {
+    this.j.lock();
+    try
+    {
+      int k = this.i.size();
+      this.j.unlock();
+      ScribbleDownloaderImpl localScribbleDownloaderImpl = this.g;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downing size is ");
+      localStringBuilder.append(k);
+      ScribbleDownloaderImpl.access$000(localScribbleDownloaderImpl, "getDownloadingSize", localStringBuilder.toString());
+      return k;
+    }
+    finally
+    {
+      this.j.unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.impl.ScribbleDownloaderImpl.DownloadListManager
  * JD-Core Version:    0.7.0.1
  */

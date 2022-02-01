@@ -352,7 +352,7 @@ public class QZonePluginDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.plugin.QZonePluginDownloader
  * JD-Core Version:    0.7.0.1
  */

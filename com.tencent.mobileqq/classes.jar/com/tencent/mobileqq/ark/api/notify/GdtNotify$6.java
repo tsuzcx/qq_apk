@@ -23,16 +23,16 @@ class GdtNotify$6
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      boolean bool = paramGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError.isSuccess();
+      boolean bool = paramGdtFeedbackResultParams.a.isSuccess();
       if (!bool)
       {
-        localJSONObject.put("error_code", paramGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError.getErrorCode());
-        GdtNotify.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangRefWeakReference, "ad_show_feedback_callback", localJSONObject, false);
+        localJSONObject.put("error_code", paramGdtFeedbackResultParams.a.getErrorCode());
+        GdtNotify.a(this.a, this.b, "ad_show_feedback_callback", localJSONObject, false);
         return;
       }
-      localJSONObject.put("action_type", paramGdtFeedbackResultParams.jdField_a_of_type_Int);
-      localJSONObject.put("error_code", paramGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError.getErrorCode());
-      GdtNotify.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangRefWeakReference, "ad_feedback_action_callback", localJSONObject, false);
+      localJSONObject.put("action_type", paramGdtFeedbackResultParams.b);
+      localJSONObject.put("error_code", paramGdtFeedbackResultParams.a.getErrorCode());
+      GdtNotify.a(this.a, this.b, "ad_feedback_action_callback", localJSONObject, false);
       return;
     }
     catch (JSONException paramGdtFeedbackResultParams) {}
@@ -40,7 +40,7 @@ class GdtNotify$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.notify.GdtNotify.6
  * JD-Core Version:    0.7.0.1
  */

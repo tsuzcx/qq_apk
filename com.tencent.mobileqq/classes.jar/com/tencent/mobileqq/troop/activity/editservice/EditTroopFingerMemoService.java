@@ -15,36 +15,16 @@ import mqq.app.MobileQQ;
 public class EditTroopFingerMemoService
   implements IEditInfoApi
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private IEditInfoActivity jdField_a_of_type_ComTencentMobileqqTroopActivityEditinfoIEditInfoActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  
-  public int a()
-  {
-    return 0;
-  }
+  private IEditInfoActivity a;
+  private EditText b;
+  private AppRuntime c;
+  private Context d;
+  private String e;
   
   public Intent a(Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("default_text");
+    this.e = paramIntent.getStringExtra("default_text");
     return paramIntent;
-  }
-  
-  public View.OnClickListener a()
-  {
-    return null;
-  }
-  
-  public EmoticonCallback a()
-  {
-    return new EditTroopFingerMemoService.2(this);
-  }
-  
-  public OnItemSelectListener a()
-  {
-    return new EditTroopFingerMemoService.1(this);
   }
   
   public void a(int paramInt) {}
@@ -53,21 +33,41 @@ public class EditTroopFingerMemoService
   
   public void a(ViewGroup paramViewGroup1, EditText paramEditText, ViewGroup paramViewGroup2)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.b = paramEditText;
   }
   
   public void a(IEditInfoActivity paramIEditInfoActivity)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    this.jdField_a_of_type_AndroidContentContext = paramIEditInfoActivity.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityEditinfoIEditInfoActivity = paramIEditInfoActivity;
+    this.c = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    this.d = paramIEditInfoActivity.getContext();
+    this.a = paramIEditInfoActivity;
   }
   
-  public void b() {}
+  public OnItemSelectListener b()
+  {
+    return new EditTroopFingerMemoService.1(this);
+  }
+  
+  public void c() {}
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public View.OnClickListener e()
+  {
+    return null;
+  }
+  
+  public EmoticonCallback f()
+  {
+    return new EditTroopFingerMemoService.2(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.editservice.EditTroopFingerMemoService
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import org.json.JSONObject;
 
 public class TempMsgBoxConfigData
 {
-  private List<SessionKey> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private List<SessionKey> b = new ArrayList();
   
   public static TempMsgBoxConfigData a(String paramString)
   {
@@ -28,7 +28,7 @@ public class TempMsgBoxConfigData
         bool = true;
         if (j == 1)
         {
-          localTempMsgBoxConfigData.jdField_a_of_type_Boolean = bool;
+          localTempMsgBoxConfigData.a = bool;
           paramString = paramString.optJSONArray("msg_box_types");
           if (paramString != null)
           {
@@ -40,7 +40,7 @@ public class TempMsgBoxConfigData
               i += 1;
               continue;
             }
-            localTempMsgBoxConfigData.jdField_a_of_type_JavaUtilList = localArrayList;
+            localTempMsgBoxConfigData.b = localArrayList;
           }
           return localTempMsgBoxConfigData;
         }
@@ -54,19 +54,19 @@ public class TempMsgBoxConfigData
     }
   }
   
-  public List<SessionKey> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  public List<SessionKey> b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxConfigData
  * JD-Core Version:    0.7.0.1
  */

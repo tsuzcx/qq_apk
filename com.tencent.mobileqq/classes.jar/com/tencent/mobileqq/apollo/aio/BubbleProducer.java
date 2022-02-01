@@ -4,14 +4,14 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.DrawerPushItem;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
+import com.tencent.mobileqq.apollo.bubble.ApolloAioBubblePush;
+import com.tencent.mobileqq.apollo.bubble.ApolloBubbleLogic;
 import com.tencent.mobileqq.apollo.game.api.IApolloGameManager;
 import com.tencent.mobileqq.apollo.game.api.impl.ApolloGameManagerImpl;
 import com.tencent.mobileqq.apollo.listener.ApolloStatusUpdateListener;
 import com.tencent.mobileqq.apollo.model.App3DConfig;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.task.ApolloAioBubblePush;
-import com.tencent.mobileqq.apollo.task.ApolloBubbleLogic;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -21,20 +21,20 @@ import mqq.app.AppRuntime;
 public class BubbleProducer
   implements ApolloStatusUpdateListener
 {
-  private int jdField_a_of_type_Int;
-  private final ApolloManagerServiceImpl jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   public boolean a;
   public boolean b;
-  private boolean c;
+  private final ApolloManagerServiceImpl c;
   private boolean d;
   private boolean e;
+  private int f;
+  private boolean g;
+  private AppRuntime h;
   
   public BubbleProducer(ApolloManagerServiceImpl paramApolloManagerServiceImpl, AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl = paramApolloManagerServiceImpl;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    a();
+    this.c = paramApolloManagerServiceImpl;
+    this.h = paramAppRuntime;
+    c();
     boolean bool2 = false;
     Object localObject;
     if (paramAppRuntime != null)
@@ -54,13 +54,13 @@ public class BubbleProducer
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.a = bool1;
     if ((localObject != null) && (((SharedPreferences)localObject).getInt("key_panel_shown_guide_for_action", 0) == 1)) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.c = bool1;
+    this.d = bool1;
     boolean bool1 = bool2;
     if (localObject != null)
     {
@@ -69,22 +69,22 @@ public class BubbleProducer
         bool1 = true;
       }
     }
-    this.d = bool1;
+    this.e = bool1;
     paramApolloManagerServiceImpl.addApolloStatusUpdateListener(this);
     ApolloBubbleLogic.a(paramAppRuntime);
   }
   
-  private void a()
+  private void c()
   {
-    this.b = this.jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl.is3dAvailable();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloApiImplApolloManagerServiceImpl.getApolloUserStatus();
+    this.b = this.c.is3dAvailable();
+    this.f = this.c.getApolloUserStatus();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
     try
     {
-      a();
+      c();
       return;
     }
     finally {}
@@ -103,10 +103,10 @@ public class BubbleProducer
         }
         try
         {
-          AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+          AppRuntime localAppRuntime = this.h;
           localObject1 = localAppRuntime.getCurrentUin();
           if (localAppRuntime == null) {
-            break label476;
+            break label477;
           }
           Object localObject2 = localAppRuntime.getApp();
           StringBuilder localStringBuilder = new StringBuilder();
@@ -114,7 +114,7 @@ public class BubbleProducer
           localStringBuilder.append((String)localObject1);
           localObject1 = ((BaseApplication)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
           if (localObject1 == null) {
-            break label482;
+            break label483;
           }
           i = ((SharedPreferences)localObject1).getInt("key_3d_bubble_ad_id", 0);
           QLog.d("[cmshow]ApolloManager", 1, new Object[] { "parseGuide3DBubbleAdv oldAdId=", Integer.valueOf(i), ", newAdId=", Integer.valueOf(paramInt) });
@@ -140,7 +140,7 @@ public class BubbleProducer
           ((ApolloDaoManagerServiceImpl)localAppRuntime.getRuntimeService(IApolloDaoManagerService.class, "all")).addPushItem((DrawerPushItem)localObject2);
           ((SharedPreferences)localObject1).edit().putInt("key_3d_bubble_ad_id", paramInt).commit();
           b(true);
-          if ((this.e) && (localAppRuntime != null)) {
+          if ((this.g) && (localAppRuntime != null)) {
             ((ApolloGameManagerImpl)localAppRuntime.getRuntimeService(IApolloGameManager.class, "all")).mBubblePush.a(localAppRuntime);
           }
           paramInt = Integer.parseInt((String)paramMap.get("packageId"));
@@ -153,10 +153,10 @@ public class BubbleProducer
         return;
       }
       finally {}
-      label476:
+      label477:
       Object localObject1 = null;
       continue;
-      label482:
+      label483:
       int i = 0;
     }
   }
@@ -165,8 +165,8 @@ public class BubbleProducer
   {
     try
     {
-      this.c = paramBoolean;
-      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime;
+      this.d = paramBoolean;
+      Object localObject3 = this.h;
       if (localObject3 != null)
       {
         Object localObject1 = ((AppRuntime)localObject3).getApp();
@@ -190,7 +190,7 @@ public class BubbleProducer
   {
     try
     {
-      boolean bool = this.c;
+      boolean bool = this.d;
       return bool;
     }
     finally
@@ -204,8 +204,8 @@ public class BubbleProducer
   {
     try
     {
-      this.d = paramBoolean;
-      Object localObject3 = this.jdField_a_of_type_MqqAppAppRuntime;
+      this.e = paramBoolean;
+      Object localObject3 = this.h;
       if (localObject3 != null)
       {
         Object localObject1 = ((AppRuntime)localObject3).getApp();
@@ -229,9 +229,9 @@ public class BubbleProducer
   {
     try
     {
-      if (this.d)
+      if (this.e)
       {
-        bool = ApolloBubbleLogic.jdField_a_of_type_Boolean;
+        bool = ApolloBubbleLogic.b;
         if (!bool)
         {
           bool = true;
@@ -251,7 +251,7 @@ public class BubbleProducer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.BubbleProducer
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class MultiVideoEnterPageActivity$1
   private void b()
   {
     boolean bool;
-    if ((!this.a.jdField_a_of_type_ComTencentAvVideoController.a().S) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().T)) {
+    if ((!this.a.u.k().bg) && (!this.a.u.k().bh)) {
       bool = false;
     } else {
       bool = true;
     }
     MultiVideoEnterPageActivity localMultiVideoEnterPageActivity = this.a;
-    VideoMsgTools.a(localMultiVideoEnterPageActivity, String.valueOf(localMultiVideoEnterPageActivity.jdField_a_of_type_ComTencentAvVideoController.a().f), bool, false);
+    VideoMsgTools.a(localMultiVideoEnterPageActivity, String.valueOf(localMultiVideoEnterPageActivity.u.k().aN), bool, false);
   }
   
   public void a() {}
@@ -29,7 +29,7 @@ class MultiVideoEnterPageActivity$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.jdField_a_of_type_JavaLangString;
+      String str = this.a.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MultiVideoMembersClickListener , Uin = ");
       localStringBuilder.append(paramLong);

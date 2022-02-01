@@ -6,9 +6,9 @@ public class SchemeUtil
 {
   public static JumpAction a(JumpAction paramJumpAction, String paramString1, String paramString2, String paramString3)
   {
-    paramJumpAction.a = paramString1;
-    paramJumpAction.b = paramString2;
-    paramJumpAction.c = paramString3;
+    paramJumpAction.c = paramString1;
+    paramJumpAction.d = paramString2;
+    paramJumpAction.e = paramString3;
     paramString1 = paramString1.split("\\?");
     if (paramString1.length != 2) {
       return paramJumpAction;

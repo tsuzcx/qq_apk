@@ -36,10 +36,10 @@ import org.json.JSONObject;
 public class QQApiPlugin
   extends WebViewPlugin
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ShareMsgImpl.ShareMsgImplListener jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$ShareMsgImplListener = new QQApiPlugin.1(this);
-  ShareMsgImpl jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl;
-  WebUiUtils.QQBrowserBaseActivityInterface jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$QQBrowserBaseActivityInterface = null;
+  Context a;
+  ShareMsgImpl b;
+  WebUiUtils.QQBrowserBaseActivityInterface c = null;
+  ShareMsgImpl.ShareMsgImplListener d = new QQApiPlugin.1(this);
   
   public QQApiPlugin()
   {
@@ -103,15 +103,15 @@ public class QQApiPlugin
   
   Activity a()
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.mRuntime.d(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
   }
   
   public String a(String paramString)
   {
-    Object localObject = this.mRuntime.a().getAccount();
-    if ((this.mRuntime.a() != null) && (this.mRuntime.a().getIntent() != null)) {
-      paramString = a(BaseApplicationImpl.getApplication(), "https://cgi.connect.qq.com/api/get_openids_by_appids", paramString, this.mRuntime.a().getIntent().getStringExtra("vkey"), (String)localObject);
+    Object localObject = this.mRuntime.c().getAccount();
+    if ((this.mRuntime.f() != null) && (this.mRuntime.f().getIntent() != null)) {
+      paramString = a(BaseApplicationImpl.getApplication(), "https://cgi.connect.qq.com/api/get_openids_by_appids", paramString, this.mRuntime.f().getIntent().getStringExtra("vkey"), (String)localObject);
     } else {
       paramString = "";
     }
@@ -123,29 +123,6 @@ public class QQApiPlugin
       QLog.d("QQApi", 2, ((StringBuilder)localObject).toString());
     }
     return paramString;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      Object localObject = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject).optString("appID");
-      String str1 = ((JSONObject)localObject).optString("paramsStr");
-      String str2 = ((JSONObject)localObject).optString("packageName");
-      String str3 = ((JSONObject)localObject).optString("flags");
-      String str4 = ((JSONObject)localObject).optString("type");
-      localObject = ((JSONObject)localObject).optString("subappid");
-      a(paramString, str1, str2, str3, str4, (String)localObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("launchAppWithTokens", 2, "parse params error");
-      }
-      paramString.printStackTrace();
-    }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -160,9 +137,9 @@ public class QQApiPlugin
     AppLaucherHelper localAppLaucherHelper = new AppLaucherHelper();
     Object localObject1 = null;
     Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$QQBrowserBaseActivityInterface == null)
+    if (this.c == null)
     {
-      localObject2 = this.jdField_a_of_type_AndroidContentContext;
+      localObject2 = this.a;
       if (!(localObject2 instanceof PublicFragmentActivityForTool))
       {
         if (!(localObject2 instanceof QBaseActivity)) {
@@ -172,7 +149,7 @@ public class QQApiPlugin
         break label113;
       }
     }
-    localObject1 = this.mRuntime.a();
+    localObject1 = this.mRuntime.b();
     label113:
     if (localObject1 == null) {
       return;
@@ -214,7 +191,7 @@ public class QQApiPlugin
     j = k;
     if (bool)
     {
-      paramString5 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
+      paramString5 = this.a.getPackageManager();
       localObject2 = new Intent("android.intent.action.VIEW");
       ((Intent)localObject2).setData(Uri.parse(paramString4));
       j = k;
@@ -239,13 +216,36 @@ public class QQApiPlugin
         }
         paramString2 = "";
       }
-      localAppLaucherHelper.a(paramString4, this.jdField_a_of_type_AndroidContentContext, paramString2, (AppInterface)localObject1, paramString1, paramString3, i, paramString6);
+      localAppLaucherHelper.a(paramString4, this.a, paramString2, (AppInterface)localObject1, paramString1, paramString3, i, paramString6);
       return;
     }
-    localAppLaucherHelper.a((AppInterface)localObject1, this.jdField_a_of_type_AndroidContentContext, paramString1, paramString2, paramString3, i);
+    localAppLaucherHelper.a((AppInterface)localObject1, this.a, paramString1, paramString2, paramString3, i);
   }
   
   public void b(String paramString)
+  {
+    try
+    {
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optString("appID");
+      String str1 = ((JSONObject)localObject).optString("paramsStr");
+      String str2 = ((JSONObject)localObject).optString("packageName");
+      String str3 = ((JSONObject)localObject).optString("flags");
+      String str4 = ((JSONObject)localObject).optString("type");
+      localObject = ((JSONObject)localObject).optString("subappid");
+      a(paramString, str1, str2, str3, str4, (String)localObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("launchAppWithTokens", 2, "parse params error");
+      }
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void c(String paramString)
   {
     try
     {
@@ -253,8 +253,8 @@ public class QQApiPlugin
       paramString = (SwiftBrowserMiscHandler)super.getBrowserComponent(32);
       if (paramString != null)
       {
-        Message localMessage = paramString.a.obtainMessage(0, i, 0);
-        paramString.a.sendMessage(localMessage);
+        Message localMessage = paramString.c.obtainMessage(0, i, 0);
+        paramString.c.sendMessage(localMessage);
       }
       return;
     }
@@ -266,7 +266,7 @@ public class QQApiPlugin
     if ("QQApi".equals(paramString2))
     {
       boolean bool1;
-      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {
+      if ((paramJsBridgeListener != null) && (paramJsBridgeListener.c)) {
         bool1 = true;
       } else {
         bool1 = false;
@@ -277,27 +277,27 @@ public class QQApiPlugin
       paramString2 = null;
       if ((bool2) && (i == 1))
       {
-        paramString1 = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0]));
+        paramString1 = Boolean.valueOf(PackageUtil.a(this.a, paramVarArgs[0]));
       }
       else if (("checkAppInstalled".equals(paramString3)) && (i == 1))
       {
-        paramString1 = PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0]);
+        paramString1 = PackageUtil.b(this.a, paramVarArgs[0]);
       }
       else if (("checkAppInstalledBatch".equals(paramString3)) && (i == 1))
       {
-        paramString1 = PackageUtil.b(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0]);
+        paramString1 = PackageUtil.c(this.a, paramVarArgs[0]);
       }
       else if (("isAppInstalledBatch".equals(paramString3)) && (i == 1))
       {
-        paramString1 = PackageUtil.c(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0]);
+        paramString1 = PackageUtil.d(this.a, paramVarArgs[0]);
       }
       else if (("startAppWithPkgName".equals(paramString3)) && (i == 1))
       {
-        paramString1 = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0], null));
+        paramString1 = Boolean.valueOf(PackageUtil.a(this.a, paramVarArgs[0], null));
       }
       else if (("startAppWithPkgNameAndOpenId".equals(paramString3)) && (i == 2))
       {
-        paramString1 = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0], paramVarArgs[1]));
+        paramString1 = Boolean.valueOf(PackageUtil.a(this.a, paramVarArgs[0], paramVarArgs[1]));
       }
       else if (("getOpenidBatch".equals(paramString3)) && (i == 1))
       {
@@ -307,7 +307,7 @@ public class QQApiPlugin
       {
         if (i == 1)
         {
-          a(paramVarArgs[0]);
+          b(paramVarArgs[0]);
           paramString1 = paramString2;
         }
         else
@@ -322,47 +322,47 @@ public class QQApiPlugin
       }
       else if (("getAppsVerionCodeBatch".equals(paramString3)) && (i == 1))
       {
-        paramString1 = PackageUtil.d(this.jdField_a_of_type_AndroidContentContext, paramVarArgs[0]);
+        paramString1 = PackageUtil.e(this.a, paramVarArgs[0]);
       }
       else if (("setShareURL".equals(paramString3)) && (i == 1))
       {
-        paramString1 = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.a(paramVarArgs[0]));
+        paramString1 = Boolean.valueOf(this.b.a(paramVarArgs[0]));
       }
       else if (("setShareInfo".equals(paramString3)) && (i == 1))
       {
-        paramString1 = Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.b(paramVarArgs[0]));
+        paramString1 = Boolean.valueOf(this.b.b(paramVarArgs[0]));
       }
       else if (("setToolHiddenFlags".equals(paramString3)) && (i == 1))
       {
-        b(paramVarArgs[0]);
+        c(paramVarArgs[0]);
         paramString1 = paramString2;
       }
       else if (("shareMsg".equals(paramString3)) && (i == 1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.a(paramVarArgs[0], bool1);
+        this.b.a(paramVarArgs[0], bool1);
         paramString1 = paramString2;
       }
       else if (("shareText".equals(paramString3)) && (i == 1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.b(paramVarArgs[0]);
+        this.b.d(paramVarArgs[0]);
         paramString1 = paramString2;
       }
       else if (("shareHypertext".equals(paramString3)) && (i == 1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.c(paramVarArgs[0]);
+        this.b.e(paramVarArgs[0]);
         paramString1 = paramString2;
       }
       else if (("sendPokeMsg".equals(paramString3)) && (i == 1))
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.d(paramVarArgs[0]);
+        this.b.f(paramVarArgs[0]);
         paramString1 = paramString2;
       }
       else
       {
         if ((!"shareArkMessage".equals(paramString3)) || (i != 1)) {
-          break label677;
+          break label678;
         }
-        this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.a(paramVarArgs[0]);
+        this.b.c(paramVarArgs[0]);
         paramString1 = paramString2;
       }
       if (bool1)
@@ -373,48 +373,48 @@ public class QQApiPlugin
       paramJsBridgeListener.a(paramString1);
       return true;
     }
-    label677:
+    label678:
     return false;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
     super.onActivityResult(paramIntent, paramByte, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.a(paramIntent, paramByte, paramInt);
+    this.b.a(paramIntent, paramByte, paramInt);
   }
   
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = a();
-    this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl = new ShareMsgImpl(this.jdField_a_of_type_AndroidContentContext, this.mRuntime.a(), this.mRuntime.a(), this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$ShareMsgImplListener);
-    this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.a(this);
-    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+    this.a = a();
+    this.b = new ShareMsgImpl(this.a, this.mRuntime.d(), this.mRuntime.b(), this.d);
+    this.b.a(this);
+    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.d());
     if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.QQBrowserBaseActivityInterface))) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewpluginWebUiUtils$QQBrowserBaseActivityInterface = ((WebUiUtils.QQBrowserBaseActivityInterface)localWebUiBaseInterface);
+      this.c = ((WebUiUtils.QQBrowserBaseActivityInterface)localWebUiBaseInterface);
     }
   }
   
   protected void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.a();
+    this.b.a();
     super.onDestroy();
   }
   
   public void setWebUiInterface(WebUiBaseInterface paramWebUiBaseInterface)
   {
     super.setWebUiInterface(paramWebUiBaseInterface);
-    ShareMsgImpl localShareMsgImpl = this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl;
+    ShareMsgImpl localShareMsgImpl = this.b;
     if (localShareMsgImpl != null)
     {
       localShareMsgImpl.a(paramWebUiBaseInterface);
-      this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.b(this);
+      this.b.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQApiPlugin
  * JD-Core Version:    0.7.0.1
  */

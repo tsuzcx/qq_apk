@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuBuilder.Callback;
@@ -94,12 +95,12 @@ public class StandaloneActionMode
   
   public void onCloseSubMenu(SubMenuBuilder paramSubMenuBuilder) {}
   
-  public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+  public boolean onMenuItemSelected(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
     return this.mCallback.onActionItemClicked(this, paramMenuItem);
   }
   
-  public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+  public void onMenuModeChange(@NonNull MenuBuilder paramMenuBuilder)
   {
     invalidate();
     this.mContextView.showOverflowMenu();

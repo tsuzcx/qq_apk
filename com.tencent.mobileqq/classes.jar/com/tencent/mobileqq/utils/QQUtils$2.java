@@ -14,9 +14,9 @@ final class QQUtils$2
   {
     String str1;
     String str2;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719390);
+      str1 = this.b.getApp().getString(2131916945);
       str2 = "0";
     }
     else
@@ -25,14 +25,14 @@ final class QQUtils$2
       str2 = "1";
     }
     if (str1 != null) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, str1, 0).b(this.jdField_a_of_type_Int);
+      QQToast.makeText(this.b.getApp(), 2, str1, 0).show(this.c);
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.jdField_a_of_type_JavaLangString, str2, "", "");
+    ReportController.b(this.b, "CliOper", "", "", "Fast_launch", "Fast_launch_creat", 0, 0, this.d, str2, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQUtils.2
  * JD-Core Version:    0.7.0.1
  */

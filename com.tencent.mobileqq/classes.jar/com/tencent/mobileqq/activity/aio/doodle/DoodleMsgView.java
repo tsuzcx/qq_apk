@@ -17,38 +17,23 @@ import mqq.util.WeakReference;
 public class DoodleMsgView
   extends BaseDoodleMsgView
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private DoodleDrawer.DoodleDrawerListener jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener;
-  private DoodleDrawer jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
-  private Timer jdField_a_of_type_JavaUtilTimer;
-  private TimerTask jdField_a_of_type_JavaUtilTimerTask;
-  private WeakReference<DoodleMsgViewListener> jdField_a_of_type_MqqUtilWeakReference = null;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private DoodleDrawer a;
+  private TimerTask b;
+  private Timer c;
+  private long d = -1L;
+  private Bitmap e;
+  private Canvas f;
+  private DoodleDrawer.DoodleDrawerListener g;
+  private Paint h;
+  private Paint i;
+  private Handler j = new Handler();
+  private WeakReference<DoodleMsgViewListener> k = null;
+  private int l;
+  private int m;
   
   public DoodleMsgView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer != null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer = new DoodleDrawer();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener = new DoodleMsgView.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener, 1, paramInt1, paramInt2);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilTimerTask != null;
   }
   
   /* Error */
@@ -58,10 +43,10 @@ public class DoodleMsgView
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 44	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   3: getfield 61	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:f	Landroid/graphics/Canvas;
     //   6: ifnull +14 -> 20
     //   9: aload_0
-    //   10: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   10: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   13: ifnull +7 -> 20
     //   16: aload_0
     //   17: monitorexit
@@ -70,98 +55,98 @@ public class DoodleMsgView
     //   20: iconst_0
     //   21: istore 4
     //   23: aload_0
-    //   24: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   24: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   27: ifnull +18 -> 45
-    //   30: invokestatic 82	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
+    //   30: invokestatic 68	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
     //   33: aload_0
-    //   34: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   37: invokevirtual 85	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Landroid/graphics/Bitmap;)V
+    //   34: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
+    //   37: invokevirtual 71	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Landroid/graphics/Bitmap;)V
     //   40: aload_0
     //   41: aconst_null
-    //   42: putfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   42: putfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   45: aload_0
     //   46: aconst_null
-    //   47: putfield 44	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   47: putfield 61	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:f	Landroid/graphics/Canvas;
     //   50: aload_0
-    //   51: invokestatic 82	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
+    //   51: invokestatic 68	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
     //   54: iload_1
     //   55: iload_2
-    //   56: invokevirtual 89	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:c	(II)Landroid/graphics/Bitmap;
-    //   59: putfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   56: invokevirtual 74	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:i	(II)Landroid/graphics/Bitmap;
+    //   59: putfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   62: iload 4
     //   64: istore_3
     //   65: aload_0
-    //   66: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   66: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   69: ifnull +148 -> 217
     //   72: aload_0
-    //   73: new 91	android/graphics/Canvas
+    //   73: new 76	android/graphics/Canvas
     //   76: dup
     //   77: aload_0
-    //   78: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   81: invokespecial 93	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
-    //   84: putfield 44	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   78: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
+    //   81: invokespecial 78	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   84: putfield 61	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:f	Landroid/graphics/Canvas;
     //   87: aload_0
-    //   88: getfield 44	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
-    //   91: new 95	android/graphics/PaintFlagsDrawFilter
+    //   88: getfield 61	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:f	Landroid/graphics/Canvas;
+    //   91: new 80	android/graphics/PaintFlagsDrawFilter
     //   94: dup
     //   95: iconst_0
     //   96: iconst_3
-    //   97: invokespecial 97	android/graphics/PaintFlagsDrawFilter:<init>	(II)V
-    //   100: invokevirtual 101	android/graphics/Canvas:setDrawFilter	(Landroid/graphics/DrawFilter;)V
+    //   97: invokespecial 83	android/graphics/PaintFlagsDrawFilter:<init>	(II)V
+    //   100: invokevirtual 87	android/graphics/Canvas:setDrawFilter	(Landroid/graphics/DrawFilter;)V
     //   103: iconst_1
     //   104: istore_3
     //   105: goto +112 -> 217
-    //   108: ldc 103
+    //   108: ldc 89
     //   110: iconst_2
-    //   111: ldc 105
-    //   113: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   111: ldc 91
+    //   113: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   116: aload_0
-    //   117: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   117: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   120: ifnull +18 -> 138
-    //   123: invokestatic 82	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
+    //   123: invokestatic 68	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
     //   126: aload_0
-    //   127: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   130: invokevirtual 85	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Landroid/graphics/Bitmap;)V
+    //   127: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
+    //   130: invokevirtual 71	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Landroid/graphics/Bitmap;)V
     //   133: aload_0
     //   134: aconst_null
-    //   135: putfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   135: putfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   138: aload_0
     //   139: aconst_null
-    //   140: putfield 44	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   140: putfield 61	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:f	Landroid/graphics/Canvas;
     //   143: iload 4
     //   145: istore_3
     //   146: goto +71 -> 217
     //   149: astore 5
-    //   151: new 113	java/lang/StringBuilder
+    //   151: new 98	java/lang/StringBuilder
     //   154: dup
-    //   155: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   155: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   158: astore 6
     //   160: aload 6
-    //   162: ldc 116
-    //   164: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   162: ldc 101
+    //   164: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   167: pop
     //   168: aload 6
     //   170: aload 5
-    //   172: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   172: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   175: pop
-    //   176: ldc 103
+    //   176: ldc 89
     //   178: iconst_2
     //   179: aload 6
-    //   181: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   184: invokestatic 111	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   187: aload_0
-    //   188: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   188: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   191: ifnull +18 -> 209
-    //   194: invokestatic 82	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
+    //   194: invokestatic 68	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	()Lcom/tencent/mobileqq/activity/aio/doodle/DoodleResHelper;
     //   197: aload_0
-    //   198: getfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   201: invokevirtual 85	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Landroid/graphics/Bitmap;)V
+    //   198: getfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
+    //   201: invokevirtual 71	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Landroid/graphics/Bitmap;)V
     //   204: aload_0
     //   205: aconst_null
-    //   206: putfield 41	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   206: putfield 63	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:e	Landroid/graphics/Bitmap;
     //   209: aload_0
     //   210: aconst_null
-    //   211: putfield 44	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:jdField_a_of_type_AndroidGraphicsCanvas	Landroid/graphics/Canvas;
+    //   211: putfield 61	com/tencent/mobileqq/activity/aio/doodle/DoodleMsgView:f	Landroid/graphics/Canvas;
     //   214: iload 4
     //   216: istore_3
     //   217: aload_0
@@ -206,13 +191,23 @@ public class DoodleMsgView
     //   65	103	228	java/lang/OutOfMemoryError
   }
   
+  private void b(int paramInt1, int paramInt2)
+  {
+    if (this.a != null) {
+      return;
+    }
+    this.a = new DoodleDrawer();
+    this.g = new DoodleMsgView.1(this);
+    this.a.a(this.g, 1, paramInt1, paramInt2);
+  }
+  
   private void b(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
+    Object localObject = this.a;
     if (localObject == null) {
       return;
     }
-    long l1 = ((DoodleDrawer)localObject).a();
+    long l1 = ((DoodleDrawer)localObject).f();
     float f1;
     float f2;
     if (l1 <= 3000L)
@@ -236,22 +231,22 @@ public class DoodleMsgView
       }
     }
     l1 /= 25L;
-    long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer.a();
-    this.jdField_a_of_type_JavaUtilTimerTask = new DoodleMsgView.2(this, l2, l2 / (l1 + 1L));
-    this.jdField_a_of_type_JavaUtilTimer = new Timer();
-    this.jdField_a_of_type_Long = 0L;
-    localObject = this.jdField_a_of_type_JavaUtilTimer;
-    TimerTask localTimerTask = this.jdField_a_of_type_JavaUtilTimerTask;
+    long l2 = this.a.f();
+    this.b = new DoodleMsgView.2(this, l2, l2 / (l1 + 1L));
+    this.c = new Timer();
+    this.d = 0L;
+    localObject = this.c;
+    TimerTask localTimerTask = this.b;
     if (paramLong <= 0L) {
       paramLong = 0L;
     }
     ((Timer)localObject).schedule(localTimerTask, paramLong, 25L);
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    localObject = this.k;
     if (localObject != null)
     {
       localObject = (DoodleMsgViewListener)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((DoodleMsgViewListener)localObject).f();
+        ((DoodleMsgViewListener)localObject).h();
       }
     }
   }
@@ -260,13 +255,13 @@ public class DoodleMsgView
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.h == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        this.h = new Paint();
+        this.h.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
       }
-      if ((this.jdField_a_of_type_AndroidGraphicsCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsPaint != null)) {
-        this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
+      if ((this.f != null) && (this.h != null)) {
+        this.f.drawPaint(this.h);
       }
       return;
     }
@@ -277,43 +272,39 @@ public class DoodleMsgView
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilTimerTask != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-        this.jdField_a_of_type_JavaUtilTimerTask = null;
+        this.b.cancel();
+        this.b = null;
       }
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
+        this.c.cancel();
+        this.c = null;
       }
       return;
     }
     finally {}
   }
   
-  public int a()
+  private boolean g()
   {
-    DoodleDrawer localDoodleDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
-    if (localDoodleDrawer != null) {
-      return localDoodleDrawer.b();
-    }
-    return 4;
+    return this.b != null;
   }
   
   protected void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer != null)
+    if (this.a != null)
     {
       d();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer.a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer = null;
+      this.a.a();
+      this.a = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer$DoodleDrawerListener = null;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.g = null;
+    if (this.e != null)
     {
-      DoodleResHelper.a().a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      DoodleResHelper.a().a(this.e);
+      this.e = null;
     }
     QLog.d("DoodleMsgView", 2, "DoodleMsgView unInit");
   }
@@ -321,21 +312,21 @@ public class DoodleMsgView
   public void a(long paramLong)
   {
     QLog.d("DoodleMsgView", 2, "play:");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
-    if ((localObject != null) && (((DoodleDrawer)localObject).c() != 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((DoodleDrawer)localObject).e() != 0))
     {
-      if (a()) {
+      if (g()) {
         d();
       }
       b(paramLong);
       return;
     }
-    localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    localObject = this.k;
     if (localObject != null)
     {
       localObject = (DoodleMsgViewListener)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((DoodleMsgViewListener)localObject).g();
+        ((DoodleMsgViewListener)localObject).i();
       }
     }
   }
@@ -343,22 +334,22 @@ public class DoodleMsgView
   public void a(DoodleMsgViewListener paramDoodleMsgViewListener, int paramInt1, int paramInt2)
   {
     QLog.d("DoodleMsgView", 2, "DoodleMsgView init begin");
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramDoodleMsgViewListener);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    a(paramInt1, paramInt2);
+    this.k = new WeakReference(paramDoodleMsgViewListener);
+    this.f = null;
+    this.l = paramInt1;
+    this.m = paramInt2;
+    b(paramInt1, paramInt2);
     QLog.d("DoodleMsgView", 2, "DoodleMsgView init end");
   }
   
   protected void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+    this.j.post(paramRunnable);
   }
   
   public void a(boolean paramBoolean)
   {
-    DoodleDrawer localDoodleDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
+    DoodleDrawer localDoodleDrawer = this.a;
     if (localDoodleDrawer != null) {
       localDoodleDrawer.a(paramBoolean);
     }
@@ -366,9 +357,9 @@ public class DoodleMsgView
   
   public void b()
   {
-    DoodleDrawer localDoodleDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
+    DoodleDrawer localDoodleDrawer = this.a;
     if (localDoodleDrawer != null) {
-      localDoodleDrawer.b();
+      localDoodleDrawer.c();
     }
   }
   
@@ -384,10 +375,10 @@ public class DoodleMsgView
       QLog.d("DoodleMsgView", 2, "stop");
     }
     f();
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer != null) && (isShown()))
+    this.d = -9223372036854775808L;
+    if ((this.a != null) && (isShown()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer.a(2147483647L, false);
+      this.a.a(2147483647L, false);
       if (QLog.isColorLevel()) {
         QLog.d("DoodleMsgView", 2, "preparesegments");
       }
@@ -395,19 +386,28 @@ public class DoodleMsgView
     QLog.d("DoodleMsgView", 2, "stop end");
   }
   
+  public int getDataState()
+  {
+    DoodleDrawer localDoodleDrawer = this.a;
+    if (localDoodleDrawer != null) {
+      return localDoodleDrawer.d();
+    }
+    return 4;
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    DoodleDrawer localDoodleDrawer = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
-    if ((localDoodleDrawer != null) && (localDoodleDrawer.b() != 0))
+    DoodleDrawer localDoodleDrawer = this.a;
+    if ((localDoodleDrawer != null) && (localDoodleDrawer.d() != 0))
     {
       QLog.d("DoodleMsgView", 2, "onDraw not ready");
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()), new Rect(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int), null);
+      if (this.e != null) {
+        paramCanvas.drawBitmap(this.e, new Rect(0, 0, this.e.getWidth(), this.e.getHeight()), new Rect(0, 0, this.l, this.m), null);
       }
       return;
     }
@@ -422,7 +422,7 @@ public class DoodleMsgView
     ((StringBuilder)localObject).append(" prepare:");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.d("DoodleMsgView", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleDrawer;
+    localObject = this.a;
     if (localObject == null) {
       return;
     }
@@ -434,21 +434,21 @@ public class DoodleMsgView
     }
     paramString = new StringBuilder();
     paramString.append("drawer setdata same data:");
-    paramString.append(a());
+    paramString.append(getDataState());
     QLog.d("DoodleMsgView", 2, paramString.toString());
-    paramString = this.jdField_a_of_type_MqqUtilWeakReference;
+    paramString = this.k;
     if (paramString != null)
     {
       paramString = (DoodleMsgViewListener)paramString.get();
       if (paramString != null) {
-        paramString.a(a());
+        paramString.a(getDataState());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView
  * JD-Core Version:    0.7.0.1
  */

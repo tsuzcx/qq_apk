@@ -22,22 +22,22 @@ public class AvGameResDownloadManager
   implements IResDownloadManager.IResDownloadListener
 {
   public static String a;
-  private AvGameResDownloadManager.IStatusListener jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$IStatusListener;
-  private IResDownloadManager jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager;
+  private IResDownloadManager b;
+  private AvGameResDownloadManager.IStatusListener c;
   
   public AvGameResDownloadManager(AppInterface paramAppInterface)
   {
     if ((paramAppInterface instanceof BaseQQAppInterface)) {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager = ((IResDownloadManager)((BaseQQAppInterface)paramAppInterface).getRuntimeService(IResDownloadManager.class));
+      this.b = ((IResDownloadManager)((BaseQQAppInterface)paramAppInterface).getRuntimeService(IResDownloadManager.class));
     } else {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager = new ResDownloadManagerImpl(paramAppInterface);
+      this.b = new ResDownloadManagerImpl(paramAppInterface);
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager.addListener(this);
+    this.b.addListener(this);
   }
   
   private void a(int paramInt, String paramString)
   {
-    AvGameResDownloadManager.IStatusListener localIStatusListener = this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$IStatusListener;
+    AvGameResDownloadManager.IStatusListener localIStatusListener = this.c;
     if (localIStatusListener != null)
     {
       if (paramInt == 0)
@@ -54,7 +54,7 @@ public class AvGameResDownloadManager
     if (QLog.isColorLevel()) {
       QLog.d("AvGameResDownloadManager", 2, "onDownloadStart()");
     }
-    AvGameResDownloadManager.IStatusListener localIStatusListener = this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$IStatusListener;
+    AvGameResDownloadManager.IStatusListener localIStatusListener = this.c;
     if (localIStatusListener != null) {
       localIStatusListener.a();
     }
@@ -67,7 +67,7 @@ public class AvGameResDownloadManager
       if (QLog.isColorLevel()) {
         QLog.d("AvGameResDownloadManager", 2, "startDownload res...");
       }
-      this.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager.download(paramResInfo.a, paramResInfo.b, ".zip", true, 1);
+      this.b.download(paramResInfo.a, paramResInfo.b, ".zip", true, 1);
       return;
     }
     finally {}
@@ -95,7 +95,7 @@ public class AvGameResDownloadManager
       localStringBuilder.append(str);
       QLog.d("AvGameResDownloadManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$IStatusListener = paramIStatusListener;
+    this.c = paramIStatusListener;
     if ((paramResInfo != null) && (!TextUtils.isEmpty(paramResInfo.a)) && (!TextUtils.isEmpty(paramResInfo.b)))
     {
       a(paramResInfo);
@@ -104,7 +104,7 @@ public class AvGameResDownloadManager
     if (QLog.isColorLevel()) {
       QLog.i("AvGameResDownloadManager", 2, "need pull config");
     }
-    ((AvGameConfProcessor)QConfigManager.a().a(642)).a(new AvGameResDownloadManager.1(this));
+    ((AvGameConfProcessor)QConfigManager.b().a(642)).a(new AvGameResDownloadManager.1(this));
   }
   
   public void a(String paramString1, String paramString2, int paramInt)
@@ -120,7 +120,7 @@ public class AvGameResDownloadManager
       localStringBuilder.append(paramInt);
       QLog.d("AvGameResDownloadManager", 2, localStringBuilder.toString());
     }
-    paramString1 = this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$IStatusListener;
+    paramString1 = this.c;
     if (paramString1 != null) {
       paramString1.a(paramInt);
     }
@@ -158,20 +158,20 @@ public class AvGameResDownloadManager
     if (paramList != null) {}
     try
     {
-      if ((paramList.size() >= 1) && (((TopicBase)paramList.get(0)).b != null))
+      if ((paramList.size() >= 1) && (((TopicBase)paramList.get(0)).l != null))
       {
         AvGameResHandler.a();
         int i = 0;
         while (i < paramList.size())
         {
-          Iterator localIterator = ((TopicBase)paramList.get(i)).b.iterator();
+          Iterator localIterator = ((TopicBase)paramList.get(i)).l.iterator();
           while (localIterator.hasNext())
           {
             AVRes localAVRes = (AVRes)localIterator.next();
             String str1 = localAVRes.b();
             String str2 = AvGameResHandler.a(str1, paramString);
             if ((!FileUtils.fileExists(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(localAVRes.a()))) {
-              this.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager.download(localAVRes.a(), str1, paramString, paramBoolean, 1);
+              this.b.download(localAVRes.a(), str1, paramString, paramBoolean, 1);
             } else {
               QLog.d("AvGameResDownloadManager", 1, String.format("startDownload() [isExist,avResUrl,avResMd5] %b , %s , %s", new Object[] { Boolean.valueOf(FileUtils.fileExists(str2)), localAVRes.a(), str1 }));
             }
@@ -192,8 +192,8 @@ public class AvGameResDownloadManager
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$IStatusListener = null;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicGameresApiIResDownloadManager.removeListener(this);
+    this.c = null;
+    this.b.removeListener(this);
   }
 }
 

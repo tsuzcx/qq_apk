@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.search.business.contact.model;
 
+import android.content.Intent;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
@@ -14,148 +15,89 @@ import com.tencent.mobileqq.search.api.ISearchPieceFetcher;
 import com.tencent.mobileqq.search.base.util.ReportTask;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.troop.temporaryban.api.ITemporarilyBannedTroopUtilApi;
 
 public class ContactSearchModelTroop
   extends IContactSearchModel
 {
   public int a;
-  private long jdField_a_of_type_Long;
-  private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private long jdField_b_of_type_Long = IContactSearchable.M;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private TroopInfo b;
+  private long c;
+  private String d;
+  private String e;
+  private String f;
+  private long g = IContactSearchable.Q;
   
   public ContactSearchModelTroop(AppInterface paramAppInterface, int paramInt, TroopInfo paramTroopInfo, long paramLong)
   {
     super(paramAppInterface, paramInt, paramLong);
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = paramTroopInfo;
-    if (((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().a(paramTroopInfo.troopuin))
-    {
-      this.jdField_b_of_type_Long = IContactSearchable.C;
-      return;
+    this.b = paramTroopInfo;
+    if (((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache().a(paramTroopInfo.troopuin)) {
+      this.g = IContactSearchable.G;
+    } else if ((this.b.troopmask == 2) && (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isUinInAssist(paramTroopInfo.troopuin))) {
+      this.g = IContactSearchable.G;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopmask == 2) && (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isUinInAssist(paramTroopInfo.troopuin))) {
-      this.jdField_b_of_type_Long = IContactSearchable.C;
-    }
+    f(7);
   }
   
-  private void a()
+  private void w()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.getNewTroopNameOrTroopName();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isQidianPrivateTroop())
+    this.d = this.b.getNewTroopNameOrTroopName();
+    if (this.b.isQidianPrivateTroop())
     {
-      this.jdField_b_of_type_JavaLangString = "";
+      this.e = "";
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop())
+    if (this.b.isNewTroop())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.wMemberNumClient);
-      localStringBuilder.append(HardCodeUtil.a(2131702697));
-      this.jdField_b_of_type_JavaLangString = String.valueOf(localStringBuilder.toString());
+      localStringBuilder.append(this.b.wMemberNumClient);
+      localStringBuilder.append(HardCodeUtil.a(2131900687));
+      this.e = String.valueOf(localStringBuilder.toString());
       return;
     }
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin;
-  }
-  
-  public int a()
-  {
-    return 4;
-  }
-  
-  protected long a(String paramString)
-  {
-    this.c = paramString;
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopRemark))
-    {
-      l = SearchUtils.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopRemark, IContactSearchable.f);
-      if (l > this.jdField_a_of_type_Long)
-      {
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_Int = 3;
-      }
-    }
-    long l = SearchUtils.b(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.getNewTroopNameOrTroopName(), IContactSearchable.f);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 1;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) && (!this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.hasSetTroopName())) {
-        return -9223372036854775808L;
-      }
-    }
-    l = SearchUtils.a(paramString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, IContactSearchable.o, false);
-    if (l > this.jdField_a_of_type_Long)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isQidianPrivateTroop()) {
-        return -9223372036854775808L;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.isNewTroop()) {
-        return -9223372036854775808L;
-      }
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Int = 2;
-    }
-    l = this.jdField_a_of_type_Long;
-    if (l != -9223372036854775808L)
-    {
-      this.jdField_a_of_type_Long = (l + this.jdField_b_of_type_Long);
-      a();
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public TroopInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
+    this.e = this.b.troopuin;
   }
   
   public CharSequence a()
   {
-    if ((this.jdField_a_of_type_Int == 3) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopRemark)) && (this.jdField_b_of_type_Int != -1) && (this.jdField_b_of_type_Int != 7)) {
-      return f();
+    if ((this.a == 3) && (!TextUtils.isEmpty(this.b.troopRemark)) && (this.n != -1) && (this.n != 7)) {
+      return s();
     }
-    if (SearchUtils.a(this.jdField_b_of_type_Int)) {
+    if (SearchUtils.b(this.n)) {
       return "";
     }
-    if (this.jdField_b_of_type_Int == 8) {
+    if (this.n == 8) {
       return "";
     }
-    return HardCodeUtil.a(2131702739);
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin;
+    return HardCodeUtil.a(2131900729);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    if (SearchUtils.a(this.jdField_b_of_type_Int))
+    if (SearchUtils.b(this.n))
     {
       ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).markEnterAioFromSearch();
-      ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).enterChatWin(paramView.getContext(), this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, 1, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.getTroopDisplayName(), false);
-      SearchUtils.a(this.c, 20, 2, paramView);
-      ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).saveCurrentSearchKeyword(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.c);
-      SearchUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, b().toString(), this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, 1);
-      SearchUtils.a(this.c, 30, paramView, false);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("uin", this.b.troopuin);
+      localIntent.putExtra("uintype", 1);
+      if (!((ITemporarilyBannedTroopUtilApi)QRoute.api(ITemporarilyBannedTroopUtilApi.class)).checkTemporarilyBannedTroop(paramView.getContext(), this.m, localIntent)) {
+        ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).enterChatWin(paramView.getContext(), this.m, this.b.troopuin, 1, this.b.getTroopDisplayName(), false);
+      }
+      SearchUtils.a(this.f, 20, 2, paramView);
+      ((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).saveCurrentSearchKeyword(this.m, this.f);
+      SearchUtils.a(this.m, d().toString(), this.b.troopuin, this.b.troopcode, 1);
+      SearchUtils.a(this.f, 30, paramView, false);
       SearchUtils.a(this, paramView);
-      if (((a() instanceof String)) && (!this.jdField_b_of_type_Boolean)) {
-        SearchUtils.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.c, this.i, (String)a(), e());
+      if (((i() instanceof String)) && (!this.r)) {
+        SearchUtils.b(this.m, this.f, this.p, (String)i(), o());
       }
       if (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isUniteSearchActivity(paramView.getContext())) {
-        if ((this.i != null) && (!TextUtils.isEmpty(this.i))) {
-          UniteSearchReportController.a(null, 0, this.jdField_b_of_type_Int, "0X8009D31", 2, 0, null, null);
+        if ((this.p != null) && (!TextUtils.isEmpty(this.p))) {
+          UniteSearchReportController.a(null, 0, this.n, "0X8009D31", 2, 0, null, null);
         } else {
-          UniteSearchReportController.a(null, 0, this.jdField_b_of_type_Int, "0X8009D3B", 0, 0, null, null);
+          UniteSearchReportController.a(null, 0, this.n, "0X8009D3B", 0, 0, null, null);
         }
       }
     }
@@ -163,57 +105,120 @@ public class ContactSearchModelTroop
     {
       SearchUtils.a(paramView, this);
     }
-    new ReportTask(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a("dc00899").b("Grp_listNew").c("search_result").d("clk_grp").a(new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin }).a();
+    new ReportTask(this.m).a("dc00899").b("Grp_listNew").c("search_result").d("clk_grp").a(new String[] { this.b.troopuin }).a();
   }
   
-  public boolean a()
+  public int b()
   {
-    return false;
-  }
-  
-  public String b()
-  {
-    return this.c;
+    return 4;
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int d()
-  {
-    return 1;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public String d()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int e()
-  {
-    return 2;
+    return this.b.troopuin;
   }
   
   public CharSequence f()
   {
+    return null;
+  }
+  
+  public String g()
+  {
+    return this.f;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public Object i()
+  {
+    return this.b.troopuin;
+  }
+  
+  public int j()
+  {
+    return 1;
+  }
+  
+  public String m()
+  {
+    return this.d;
+  }
+  
+  public String n()
+  {
+    return this.e;
+  }
+  
+  protected long n_(String paramString)
+  {
+    this.f = paramString;
+    this.c = -9223372036854775808L;
+    if (!TextUtils.isEmpty(this.b.troopRemark))
+    {
+      l = SearchUtils.b(paramString, this.b.troopRemark, IContactSearchable.j);
+      if (l > this.c)
+      {
+        this.c = l;
+        this.a = 3;
+      }
+    }
+    long l = SearchUtils.b(paramString, this.b.getNewTroopNameOrTroopName(), IContactSearchable.j);
+    if (l > this.c)
+    {
+      this.c = l;
+      this.a = 1;
+      if ((this.b.isNewTroop()) && (!this.b.hasSetTroopName())) {
+        return -9223372036854775808L;
+      }
+    }
+    l = SearchUtils.a(paramString, this.b.troopuin, IContactSearchable.s, false);
+    if (l > this.c)
+    {
+      if (this.b.isQidianPrivateTroop()) {
+        return -9223372036854775808L;
+      }
+      if (this.b.isNewTroop()) {
+        return -9223372036854775808L;
+      }
+      this.c = l;
+      this.a = 2;
+    }
+    l = this.c;
+    if (l != -9223372036854775808L)
+    {
+      this.c = (l + this.g);
+      w();
+    }
+    return this.c;
+  }
+  
+  public int o()
+  {
+    return 2;
+  }
+  
+  public CharSequence s()
+  {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(HardCodeUtil.a(2131702718));
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopRemark)) {
-      localSpannableStringBuilder.append(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopRemark, this.c, 6, false));
+    localSpannableStringBuilder.append(HardCodeUtil.a(2131900708));
+    if (!TextUtils.isEmpty(this.b.troopRemark)) {
+      localSpannableStringBuilder.append(SearchUtils.a(this.b.troopRemark, this.f, 6, false));
     }
     return localSpannableStringBuilder;
+  }
+  
+  public TroopInfo t()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.model.ContactSearchModelTroop
  * JD-Core Version:    0.7.0.1
  */

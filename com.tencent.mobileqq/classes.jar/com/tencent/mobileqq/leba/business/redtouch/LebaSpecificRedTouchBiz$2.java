@@ -14,7 +14,7 @@ class LebaSpecificRedTouchBiz$2
   
   public void run()
   {
-    int i = MatchChatMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = MatchChatMsgUtil.b(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -22,14 +22,14 @@ class LebaSpecificRedTouchBiz$2
       localStringBuilder.append(i);
       QLog.d("LebaSpecificRedTouchBiz", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
+    if (this.b != null) {
       ThreadManager.getUIHandler().post(new LebaSpecificRedTouchBiz.2.1(this, i));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.redtouch.LebaSpecificRedTouchBiz.2
  * JD-Core Version:    0.7.0.1
  */

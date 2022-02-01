@@ -3,18 +3,15 @@ package androidx.appcompat.view.menu;
 import android.content.Context;
 import android.view.MenuItem;
 import android.view.SubMenu;
-import androidx.collection.ArrayMap;
+import androidx.collection.SimpleArrayMap;
 import androidx.core.internal.view.SupportMenuItem;
 import androidx.core.internal.view.SupportSubMenu;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 abstract class BaseMenuWrapper
 {
   final Context mContext;
-  private Map<SupportMenuItem, MenuItem> mMenuItems;
-  private Map<SupportSubMenu, SubMenu> mSubMenus;
+  private SimpleArrayMap<SupportMenuItem, MenuItem> mMenuItems;
+  private SimpleArrayMap<SupportSubMenu, SubMenu> mSubMenus;
   
   BaseMenuWrapper(Context paramContext)
   {
@@ -28,7 +25,7 @@ abstract class BaseMenuWrapper
     {
       SupportMenuItem localSupportMenuItem = (SupportMenuItem)paramMenuItem;
       if (this.mMenuItems == null) {
-        this.mMenuItems = new ArrayMap();
+        this.mMenuItems = new SimpleArrayMap();
       }
       paramMenuItem = (MenuItem)this.mMenuItems.get(paramMenuItem);
       localObject = paramMenuItem;
@@ -47,7 +44,7 @@ abstract class BaseMenuWrapper
     {
       SupportSubMenu localSupportSubMenu = (SupportSubMenu)paramSubMenu;
       if (this.mSubMenus == null) {
-        this.mSubMenus = new ArrayMap();
+        this.mSubMenus = new SimpleArrayMap();
       }
       SubMenu localSubMenu = (SubMenu)this.mSubMenus.get(localSupportSubMenu);
       paramSubMenu = localSubMenu;
@@ -63,41 +60,47 @@ abstract class BaseMenuWrapper
   
   final void internalClear()
   {
-    Map localMap = this.mMenuItems;
-    if (localMap != null) {
-      localMap.clear();
+    SimpleArrayMap localSimpleArrayMap = this.mMenuItems;
+    if (localSimpleArrayMap != null) {
+      localSimpleArrayMap.clear();
     }
-    localMap = this.mSubMenus;
-    if (localMap != null) {
-      localMap.clear();
+    localSimpleArrayMap = this.mSubMenus;
+    if (localSimpleArrayMap != null) {
+      localSimpleArrayMap.clear();
     }
   }
   
   final void internalRemoveGroup(int paramInt)
   {
-    Object localObject = this.mMenuItems;
-    if (localObject == null) {
+    if (this.mMenuItems == null) {
       return;
     }
-    localObject = ((Map)localObject).keySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramInt == ((MenuItem)((Iterator)localObject).next()).getGroupId()) {
-        ((Iterator)localObject).remove();
+    int j;
+    for (int i = 0; i < this.mMenuItems.size(); i = j + 1)
+    {
+      j = i;
+      if (((SupportMenuItem)this.mMenuItems.keyAt(i)).getGroupId() == paramInt)
+      {
+        this.mMenuItems.removeAt(i);
+        j = i - 1;
       }
     }
   }
   
   final void internalRemoveItem(int paramInt)
   {
-    Object localObject = this.mMenuItems;
-    if (localObject == null) {
+    if (this.mMenuItems == null) {
       return;
     }
-    localObject = ((Map)localObject).keySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (paramInt == ((MenuItem)((Iterator)localObject).next()).getItemId()) {
-        ((Iterator)localObject).remove();
+    int i = 0;
+    while (i < this.mMenuItems.size())
+    {
+      if (((SupportMenuItem)this.mMenuItems.keyAt(i)).getItemId() == paramInt)
+      {
+        this.mMenuItems.removeAt(i);
+        return;
       }
+      i += 1;
     }
   }
 }

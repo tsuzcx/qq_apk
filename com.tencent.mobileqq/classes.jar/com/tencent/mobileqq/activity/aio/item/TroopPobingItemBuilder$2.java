@@ -11,9 +11,9 @@ class TroopPobingItemBuilder$2
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363820) {
+    if (paramView.getId() == 2131429755) {
       TroopPobingItemBuilder.a(this.a).a(paramView);
-    } else if (paramView.getId() == 2131363821) {
+    } else if (paramView.getId() == 2131429756) {
       TroopPobingItemBuilder.a(this.a).b(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +21,7 @@ class TroopPobingItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopPobingItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

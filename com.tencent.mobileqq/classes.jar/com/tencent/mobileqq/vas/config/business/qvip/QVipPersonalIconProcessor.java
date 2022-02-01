@@ -8,9 +8,9 @@ public class QVipPersonalIconProcessor
   extends BaseQVipConfigProcessor<QVipPersonalIconConfig>
 {
   @NonNull
-  public static QVipPersonalIconConfig c()
+  public static QVipPersonalIconConfig e()
   {
-    QVipPersonalIconConfig localQVipPersonalIconConfig2 = (QVipPersonalIconConfig)QConfigManager.a().a(618);
+    QVipPersonalIconConfig localQVipPersonalIconConfig2 = (QVipPersonalIconConfig)QConfigManager.b().b(618);
     QVipPersonalIconConfig localQVipPersonalIconConfig1 = localQVipPersonalIconConfig2;
     if (localQVipPersonalIconConfig2 == null) {
       localQVipPersonalIconConfig1 = new QVipPersonalIconConfig();
@@ -27,7 +27,7 @@ public class QVipPersonalIconProcessor
   @NonNull
   public QVipPersonalIconConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    return QVipPersonalIconConfig.a(paramArrayOfQConfItem[0].a);
+    return QVipPersonalIconConfig.a(paramArrayOfQConfItem[0].b);
   }
   
   @NonNull
@@ -48,7 +48,7 @@ public class QVipPersonalIconProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipPersonalIconProcessor
  * JD-Core Version:    0.7.0.1
  */

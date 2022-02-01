@@ -29,45 +29,45 @@ import org.json.JSONObject;
 public class ImageInfo
   extends UploadEditItemInfo
 {
-  public int a;
-  public long a;
   public String a;
-  public URL a;
-  public ConcurrentHashMap<String, TroopHomeworkHelper.UploadFileTask> a;
-  public int b;
   protected String b;
   public String c;
-  public int d;
-  public String d;
-  public int e;
+  public URL d;
+  public String e;
+  public int f;
+  public int j;
+  public int k;
+  public int l;
+  public ConcurrentHashMap<String, TroopHomeworkHelper.UploadFileTask> m;
+  public long n;
   
   public ImageInfo() {}
   
   public ImageInfo(String paramString)
   {
     a(paramString);
-    a();
-    this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
+    f();
+    this.e = String.valueOf(hashCode());
   }
   
   public ImageInfo(JSONObject paramJSONObject)
   {
     a(paramJSONObject);
-    this.jdField_d_of_type_JavaLangString = String.valueOf(hashCode());
+    this.e = String.valueOf(hashCode());
   }
   
-  public static String b()
+  public static String h()
   {
-    Object localObject = new VFSFile(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
+    Object localObject = new VFSFile(TroopHWJsPlugin.a);
     if (!((VFSFile)localObject).exists())
     {
       ((VFSFile)localObject).mkdirs();
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(TroopHWJsPlugin.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(TroopHWJsPlugin.a);
       ((StringBuilder)localObject).append(".nomedia");
       FileUtils.createFileIfNotExits(((StringBuilder)localObject).toString());
     }
-    return TroopHWJsPlugin.jdField_a_of_type_JavaLangString;
+    return TroopHWJsPlugin.a;
   }
   
   public int a()
@@ -77,21 +77,21 @@ public class ImageInfo
   
   public Stream<ImageInfo> a(XMediaEditor paramXMediaEditor)
   {
-    this.f = 1;
+    this.o = 1;
     Object localObject2 = Stream.of(this).map(new ThreadOffFunction("ImageInfo", 2));
     Object localObject1 = localObject2;
-    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localObject1 = ((Stream)localObject2).map(new ImageInfo.CompressImageSegment(this.jdField_d_of_type_Int));
+    if (!FileUtils.fileExistsAndNotEmpty(this.c)) {
+      localObject1 = ((Stream)localObject2).map(new ImageInfo.CompressImageSegment(this.k));
     }
     localObject2 = localObject1;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.b)) {
       localObject2 = ((Stream)localObject1).map(new ImageInfo.UploadMediaSegment(0, paramXMediaEditor, paramXMediaEditor.a("troopuin")));
     }
-    localObject1 = paramXMediaEditor.findViewHolderForLayoutPosition(this.jdField_c_of_type_Int);
+    localObject1 = paramXMediaEditor.findViewHolderForLayoutPosition(this.g);
     if ((localObject1 instanceof ImageItem.ImageViewHolder))
     {
       localObject1 = (ImageItem.ImageViewHolder)localObject1;
-      if (this.jdField_d_of_type_JavaLangString.equals(((ImageItem.ImageViewHolder)localObject1).a.getTag())) {
+      if (this.e.equals(((ImageItem.ImageViewHolder)localObject1).g.getTag())) {
         ((ImageItem)((XMediaEditorAdapter)paramXMediaEditor.getAdapter()).a.a(1)).a((ImageItem.ImageViewHolder)localObject1, this, 0);
       }
     }
@@ -100,80 +100,24 @@ public class ImageInfo
   
   public TroopHomeworkHelper.UploadFileTask a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (this.m == null) {
+      this.m = new ConcurrentHashMap();
     }
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1))
+    if (!this.m.containsKey(paramString1))
     {
       paramString2 = new TroopHomeworkHelper.UploadFileTask(MobileQQ.sMobileQQ.waitAppRuntime(null), paramString1, paramString2);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramString2);
+      this.m.put(paramString1, paramString2);
       return paramString2;
     }
-    return (TroopHomeworkHelper.UploadFileTask)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return this.jdField_b_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", "img");
-      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("width", this.jdField_a_of_type_Int);
-      localJSONObject.put("height", this.jdField_b_of_type_Int);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      label52:
-      break label52;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("ImageInfo", 2, "ImageInfo getContent exception.");
-    }
-    return localJSONObject;
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    if (FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      SafeBitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, localOptions);
-      this.jdField_a_of_type_Int = localOptions.outWidth;
-      this.jdField_b_of_type_Int = localOptions.outHeight;
-      int i = JpegExifReader.readOrientation(this.jdField_a_of_type_JavaLangString);
-      if ((i == 6) || (i == 5) || (i == 8) || (i == 7))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize need orientation. before width=", Integer.valueOf(this.jdField_a_of_type_Int), ", height=", Integer.valueOf(this.jdField_b_of_type_Int), ", path=", this.jdField_a_of_type_JavaLangString });
-        }
-        i = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = i;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize result. width=", Integer.valueOf(this.jdField_a_of_type_Int), ", height=", Integer.valueOf(this.jdField_b_of_type_Int), ", path=", this.jdField_a_of_type_JavaLangString, ", cost=", Long.valueOf(System.currentTimeMillis() - l) });
-      }
-    }
+    return (TroopHomeworkHelper.UploadFileTask)this.m.get(paramString1);
   }
   
   public void a(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_JavaNetURL = new File(paramString).toURI().toURL();
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.d = new File(paramString).toURI().toURL();
+      this.a = paramString;
       return;
     }
     catch (Exception paramString)
@@ -189,15 +133,10 @@ public class ImageInfo
     if (QLog.isColorLevel()) {
       QLog.d("ImageInfo", 2, new Object[] { "ImageInfo createFrom json: ", paramJSONObject });
     }
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.h = paramJSONObject;
     b(paramJSONObject.optString("url"));
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
-  }
-  
-  public boolean a()
-  {
-    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString) ^ true;
+    this.f = paramJSONObject.optInt("width");
+    this.j = paramJSONObject.optInt("height");
   }
   
   public int b()
@@ -209,8 +148,8 @@ public class ImageInfo
   {
     try
     {
-      this.jdField_a_of_type_JavaNetURL = new URL(paramString);
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.d = new URL(paramString);
+      this.b = paramString;
       return;
     }
     catch (Exception paramString)
@@ -221,14 +160,75 @@ public class ImageInfo
     QLog.e("ImageInfo", 1, "Image setURLFromContentUrl exception.");
   }
   
-  public boolean b()
+  public boolean c()
   {
-    return TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
+    return TextUtils.isEmpty(this.b) ^ true;
+  }
+  
+  public JSONObject d()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("type", "img");
+      localJSONObject.put("url", this.b);
+      localJSONObject.put("width", this.f);
+      localJSONObject.put("height", this.j);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      label56:
+      break label56;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ImageInfo", 2, "ImageInfo getContent exception.");
+    }
+    return localJSONObject;
+  }
+  
+  public String e()
+  {
+    if (TextUtils.isEmpty(this.a)) {
+      return this.b;
+    }
+    return this.a;
+  }
+  
+  public void f()
+  {
+    long l1 = System.currentTimeMillis();
+    if (FileUtils.fileExistsAndNotEmpty(this.a))
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      SafeBitmapFactory.decodeFile(this.a, localOptions);
+      this.f = localOptions.outWidth;
+      this.j = localOptions.outHeight;
+      int i = JpegExifReader.readOrientation(this.a);
+      if ((i == 6) || (i == 5) || (i == 8) || (i == 7))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize need orientation. before width=", Integer.valueOf(this.f), ", height=", Integer.valueOf(this.j), ", path=", this.a });
+        }
+        i = this.f;
+        this.f = this.j;
+        this.j = i;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageInfo", 2, new Object[] { "calculateLocalImageSize result. width=", Integer.valueOf(this.f), ", height=", Integer.valueOf(this.j), ", path=", this.a, ", cost=", Long.valueOf(System.currentTimeMillis() - l1) });
+      }
+    }
+  }
+  
+  public boolean g()
+  {
+    return TextUtils.isEmpty(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

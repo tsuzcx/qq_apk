@@ -6,16 +6,16 @@ import android.widget.TextView;
 
 class ReadInJoySearchHistoryAdapter$ViewHolder
 {
-  public int a;
-  public LinearLayout a;
-  public RelativeLayout a;
   public TextView a;
+  public LinearLayout b;
+  public RelativeLayout c;
+  public int d;
   
   ReadInJoySearchHistoryAdapter$ViewHolder(ReadInJoySearchHistoryAdapter paramReadInJoySearchHistoryAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ReadInJoySearchHistoryAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

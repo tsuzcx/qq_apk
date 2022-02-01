@@ -20,27 +20,27 @@ class DrawerBizFacade$1$3
   
   public void run()
   {
-    int i = ((Bundle)this.jdField_a_of_type_JavaLangObject).getInt("type");
+    int i = ((Bundle)this.a).getInt("type");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("VipInfoHandler paySuccess ");
     ((StringBuilder)localObject).append(i);
     QLog.e("QQSettingRedesign", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor;
-    if ((localObject != null) && (((QQSettingMeSuperMemberProcessor)localObject).b().a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.b().a.payHide == 1))
+    localObject = this.b;
+    if ((localObject != null) && (((QQSettingMeSuperMemberProcessor)localObject).l().d != null) && (this.b.l().d.payHide == 1))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.b().a.enable = 0;
+      this.b.l().d.enable = 0;
       QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
-      VipInfoHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$1.a.a.getCurrentUin(), this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeQQSettingMeSuperMemberProcessor.b().a);
+      VipInfoHandler.a(this.c.a.a.getCurrentUin(), this.b.l().d);
       ThreadManagerV2.getUIHandlerV2().post(new DrawerBizFacade.1.3.1(this));
     }
-    QVipConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$1.a.a, "last_pull_pay_rule", 0L);
-    localObject = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$1.a.a.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$1.a.a.getCurrentAccountUin());
-    ((VipInfoHandler)((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$1.a.a).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeDrawerBizFacade$1.a.a.getCurrentUin());
+    QVipConfigManager.b(this.c.a.a, "last_pull_pay_rule", 0L);
+    localObject = ((TicketManager)this.c.a.a.getManager(2)).getSkey(this.c.a.a.getCurrentAccountUin());
+    ((VipInfoHandler)((QQAppInterface)this.c.a.a).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER)).a((String)localObject, this.c.a.a.getCurrentUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.DrawerBizFacade.1.3
  * JD-Core Version:    0.7.0.1
  */

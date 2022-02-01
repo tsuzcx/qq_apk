@@ -21,8 +21,8 @@ class AVGameNetWorkQualityManager$MyNetObserver
       localStringBuilder.append("]");
       QLog.d("AVGameNetWorkQualityManager", 2, localStringBuilder.toString());
     }
-    AVGameNetWorkQualityManager.b(this.a).removeCallbacks(AVGameNetWorkQualityManager.a(this.a));
-    AVGameNetWorkQualityManager.b(this.a).post(AVGameNetWorkQualityManager.a(this.a));
+    AVGameNetWorkQualityManager.d(this.a).removeCallbacks(AVGameNetWorkQualityManager.c(this.a));
+    AVGameNetWorkQualityManager.d(this.a).post(AVGameNetWorkQualityManager.c(this.a));
   }
 }
 

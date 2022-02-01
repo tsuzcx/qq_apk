@@ -86,18 +86,18 @@ public class VasCommonAdapterImpl
   
   public void checkFZEngineReady()
   {
-    if (!FastColorFontHelper.a().c.get())
+    if (!FastColorFontHelper.a().d.get())
     {
-      FastColorFontHelper.a().a().a();
-      FastColorFontHelper.a().c.set(true);
+      FastColorFontHelper.a().b().a();
+      FastColorFontHelper.a().d.set(true);
     }
   }
   
   public void clearMagicFontCache(AppRuntime paramAppRuntime)
   {
-    synchronized (TextItemBuilder.a)
+    synchronized (TextItemBuilder.B)
     {
-      TextItemBuilder.a.clear();
+      TextItemBuilder.B.clear();
       VasUtils.a((AppInterface)paramAppRuntime);
       return;
     }
@@ -113,8 +113,8 @@ public class VasCommonAdapterImpl
     if ((paramContext instanceof BaseActivity))
     {
       paramContext = (BaseActivity)paramContext;
-      if ((paramContext.getChatFragment() != null) && (paramContext.getChatFragment().a() != null)) {
-        return new BaseChatPieAdapter(paramContext.getChatFragment().a());
+      if ((paramContext.getChatFragment() != null) && (paramContext.getChatFragment().k() != null)) {
+        return new BaseChatPieAdapter(paramContext.getChatFragment().k());
       }
     }
     return null;
@@ -156,12 +156,12 @@ public class VasCommonAdapterImpl
   public QQProgressDialog getProgressDialog(Context paramContext)
   {
     BaseActivity localBaseActivity = (BaseActivity)paramContext;
-    if ((localBaseActivity.getChatFragment() != null) && (localBaseActivity.getChatFragment().a() != null))
+    if ((localBaseActivity.getChatFragment() != null) && (localBaseActivity.getChatFragment().k() != null))
     {
-      if (localBaseActivity.getChatFragment().a().a == null) {
-        localBaseActivity.getChatFragment().a().a = new QQProgressDialog(paramContext);
+      if (localBaseActivity.getChatFragment().k().af == null) {
+        localBaseActivity.getChatFragment().k().af = new QQProgressDialog(paramContext);
       }
-      return localBaseActivity.getChatFragment().a().a;
+      return localBaseActivity.getChatFragment().k().af;
     }
     return null;
   }
@@ -174,7 +174,7 @@ public class VasCommonAdapterImpl
   public void getRichTextChatConfig(AppInterface paramAppInterface)
   {
     if ((paramAppInterface instanceof QQAppInterface)) {
-      RichTextChatManager.a((QQAppInterface)paramAppInterface).a(paramAppInterface);
+      RichTextChatManager.a((QQAppInterface)paramAppInterface).d(paramAppInterface);
     }
   }
   
@@ -193,17 +193,17 @@ public class VasCommonAdapterImpl
       Object localObject = (BaseChatPie)paramIBaseChatPieAdapter.a();
       paramIBaseChatPieAdapter = new ChatActivityFacade.SendMsgParams();
       ((BaseChatPie)localObject).a(paramIBaseChatPieAdapter);
-      AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)((BaseChatPie)localObject).a(52);
+      AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)((BaseChatPie)localObject).q(52);
       if (localAIOShortcutBarHelper != null)
       {
         AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(18);
         localAIOShortcutBarEvent.a().putBoolean("isSendToRobotServer", false);
         localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
-        paramIBaseChatPieAdapter.i = localAIOShortcutBarEvent.a().getBoolean("result", false);
+        paramIBaseChatPieAdapter.y = localAIOShortcutBarEvent.a().getBoolean("result", false);
       }
       if (localObject != null)
       {
-        localObject = (QWalletAIOLifeCycleHelper)((BaseChatPie)localObject).a(27);
+        localObject = (QWalletAIOLifeCycleHelper)((BaseChatPie)localObject).q(27);
         if (localObject != null) {
           ((QWalletAIOLifeCycleHelper)localObject).a(paramString, paramIBaseChatPieAdapter, 0);
         }
@@ -230,20 +230,20 @@ public class VasCommonAdapterImpl
         paramArrayOfByte = ((hiboom_auth.TTipsInfo)localObject3).str_title.get();
         Object localObject2 = paramArrayOfByte;
         if (android.text.TextUtils.isEmpty(paramArrayOfByte)) {
-          localObject2 = HardCodeUtil.a(2131705560);
+          localObject2 = HardCodeUtil.a(2131903447);
         }
         Object localObject1 = ((hiboom_auth.TTipsInfo)localObject3).str_msg.get();
         paramArrayOfByte = (byte[])localObject1;
         if (android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
           if (i == 1)
           {
-            paramArrayOfByte = HardCodeUtil.a(2131705564);
+            paramArrayOfByte = HardCodeUtil.a(2131903451);
           }
           else
           {
             paramArrayOfByte = (byte[])localObject1;
             if (i == 2) {
-              paramArrayOfByte = HardCodeUtil.a(2131705569);
+              paramArrayOfByte = HardCodeUtil.a(2131903455);
             }
           }
         }
@@ -252,18 +252,18 @@ public class VasCommonAdapterImpl
         if (android.text.TextUtils.isEmpty(str1)) {
           if (i == 1)
           {
-            localObject1 = HardCodeUtil.a(2131705565);
+            localObject1 = HardCodeUtil.a(2131903452);
           }
           else
           {
             localObject1 = str1;
             if (i == 2) {
-              localObject1 = HardCodeUtil.a(2131705562);
+              localObject1 = HardCodeUtil.a(2131903449);
             }
           }
         }
         String str2 = ((hiboom_auth.TTipsInfo)localObject3).str_url.get();
-        str1 = HardCodeUtil.a(2131705568);
+        str1 = HardCodeUtil.a(2131898212);
         localObject3 = new VasCommonAdapterImpl.1(this, i, str2, paramContext, (hiboom_auth.TTipsInfo)localObject3, paramInt);
         try
         {
@@ -272,7 +272,7 @@ public class VasCommonAdapterImpl
           if (paramContext == null) {
             return;
           }
-          ((IVasService)paramContext.a().getRuntimeService(IVasService.class, "")).getHiBoomManager().setIsHiBoomListInit(false);
+          ((IVasService)paramContext.h().getRuntimeService(IVasService.class, "")).getHiBoomManager().setIsHiBoomListInit(false);
           return;
         }
         catch (Exception paramContext) {}
@@ -329,12 +329,12 @@ public class VasCommonAdapterImpl
   
   public boolean isFZEngineInited()
   {
-    return FastColorFontHelper.a().a.get();
+    return FastColorFontHelper.a().b.get();
   }
   
   public boolean isFZSoLoaded()
   {
-    return FastColorFontHelper.a().b.get();
+    return FastColorFontHelper.a().c.get();
   }
   
   public boolean isFragmentStyleOrEmoStore(Intent paramIntent)
@@ -351,7 +351,7 @@ public class VasCommonAdapterImpl
   
   public boolean isLaterVersionByUrlConfig(String paramString1, String paramString2)
   {
-    return SwiftWebViewUtils.a(paramString1, "8.7.0");
+    return SwiftWebViewUtils.a(paramString1, "8.8.17");
   }
   
   public String isShowAdKey()
@@ -465,7 +465,7 @@ public class VasCommonAdapterImpl
   public void reportRedPacket(AppRuntime paramAppRuntime)
   {
     String str;
-    if (((IndividualRedPacketManager)paramAppRuntime.getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER)).a()) {
+    if (((IndividualRedPacketManager)paramAppRuntime.getManager(QQManagerFactory.INDIVIDUAL_RED_PACKET_MANAGER)).f()) {
       str = "1";
     } else {
       str = "0";
@@ -499,7 +499,7 @@ public class VasCommonAdapterImpl
   
   public void setColorNickEnabke(boolean paramBoolean)
   {
-    ColorNickManager.a.set(paramBoolean);
+    ColorNickManager.e.set(paramBoolean);
   }
   
   public void setHiBoomMaxSize(int paramInt)
@@ -509,12 +509,12 @@ public class VasCommonAdapterImpl
   
   public void setSignatureEnable(boolean paramBoolean)
   {
-    SignatureManager.a = paramBoolean;
+    SignatureManager.i = paramBoolean;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("diySigEnable = ");
-      localStringBuilder.append(SignatureManager.a);
+      localStringBuilder.append(SignatureManager.i);
       QLog.d("DiySignature", 2, localStringBuilder.toString());
     }
   }
@@ -522,7 +522,7 @@ public class VasCommonAdapterImpl
   public void setVipCardDrawable(Resources paramResources, ImageView paramImageView, String paramString)
   {
     if (paramResources != null) {
-      VipUtils.a(paramResources, paramImageView, paramString, paramResources.getDrawable(2130847296));
+      VipUtils.a(paramResources, paramImageView, paramString, paramResources.getDrawable(2130848947));
     }
   }
   
@@ -537,7 +537,7 @@ public class VasCommonAdapterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasCommonAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

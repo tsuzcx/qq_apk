@@ -4,51 +4,51 @@ import androidx.annotation.NonNull;
 
 public class UserEditInfo
 {
-  public float a;
-  public int a;
   public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
-  public int c = -1;
-  public boolean c;
+  public int c;
   public int d;
+  public boolean e;
+  public int f = -1;
+  public int g;
+  public boolean h;
+  public float i;
+  public boolean j;
   
   public UserEditInfo() {}
   
   public UserEditInfo(UserEditInfo paramUserEditInfo)
   {
-    this.jdField_a_of_type_JavaLangString = paramUserEditInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramUserEditInfo.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramUserEditInfo.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramUserEditInfo.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramUserEditInfo.jdField_a_of_type_Boolean;
+    this.a = paramUserEditInfo.a;
+    this.b = paramUserEditInfo.b;
     this.c = paramUserEditInfo.c;
     this.d = paramUserEditInfo.d;
-    this.jdField_b_of_type_Boolean = paramUserEditInfo.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Float = paramUserEditInfo.jdField_a_of_type_Float;
+    this.e = paramUserEditInfo.e;
+    this.f = paramUserEditInfo.f;
+    this.g = paramUserEditInfo.g;
+    this.h = paramUserEditInfo.h;
+    this.i = paramUserEditInfo.i;
   }
   
   @NonNull
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append(this.c);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.h);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.UserEditInfo
  * JD-Core Version:    0.7.0.1
  */

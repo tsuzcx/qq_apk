@@ -31,52 +31,52 @@ public class NearbyRedInfoImpl
   
   public String getCornerInfo()
   {
-    return this.mNearbyRedInfo.jdField_b_of_type_JavaLangString;
+    return this.mNearbyRedInfo.i;
   }
   
   public int getRedAppIdType()
   {
-    return this.mNearbyRedInfo.d;
+    return this.mNearbyRedInfo.h;
   }
   
   public int getRedNum()
   {
-    return this.mNearbyRedInfo.jdField_b_of_type_Int;
+    return this.mNearbyRedInfo.c;
   }
   
   public int getRedPointReportType()
   {
-    return this.mNearbyRedInfo.jdField_c_of_type_Int;
+    return this.mNearbyRedInfo.g;
   }
   
   public int getRedType()
   {
-    return this.mNearbyRedInfo.jdField_a_of_type_Int;
+    return this.mNearbyRedInfo.b;
   }
   
   public List<String> getRedUrl()
   {
-    return this.mNearbyRedInfo.jdField_a_of_type_JavaUtilList;
+    return this.mNearbyRedInfo.e;
   }
   
   public String getTipTextInfo()
   {
-    return this.mNearbyRedInfo.jdField_c_of_type_JavaLangString;
+    return this.mNearbyRedInfo.j;
   }
   
   public void setCornerInfo(String paramString)
   {
-    this.mNearbyRedInfo.jdField_b_of_type_JavaLangString = paramString;
+    this.mNearbyRedInfo.i = paramString;
   }
   
   public void setRedAppIdType(int paramInt)
   {
-    this.mNearbyRedInfo.d = paramInt;
+    this.mNearbyRedInfo.h = paramInt;
   }
   
   public void setRedPointReportType(int paramInt)
   {
-    this.mNearbyRedInfo.jdField_c_of_type_Int = paramInt;
+    this.mNearbyRedInfo.g = paramInt;
   }
   
   public void setRedType(int paramInt)
@@ -86,12 +86,12 @@ public class NearbyRedInfoImpl
   
   public void setTipTextInfo(String paramString)
   {
-    this.mNearbyRedInfo.jdField_c_of_type_JavaLangString = paramString;
+    this.mNearbyRedInfo.j = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.impl.NearbyRedInfoImpl
  * JD-Core Version:    0.7.0.1
  */

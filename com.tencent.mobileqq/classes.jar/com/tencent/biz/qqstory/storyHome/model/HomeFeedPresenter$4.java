@@ -7,7 +7,7 @@ final class HomeFeedPresenter$4
   
   public void run()
   {
-    HomeFeedPresenter.a(this.a);
+    HomeFeedPresenter.b(this.a);
   }
 }
 

@@ -5,16 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class WriteTogetherTemplateConfBean
 {
-  @SerializedName("templateArray")
-  public WriteTogetherTemplateConfBean.Template[] a;
   @SerializedName("templateConfig")
-  public WriteTogetherTemplateConfBean.TemplateBean[] a;
-  
-  public WriteTogetherTemplateConfBean()
-  {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$TemplateBean = new WriteTogetherTemplateConfBean.TemplateBean[0];
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqWritetogetherconfigWriteTogetherTemplateConfBean$Template = new WriteTogetherTemplateConfBean.Template[0];
-  }
+  public WriteTogetherTemplateConfBean.TemplateBean[] a = new WriteTogetherTemplateConfBean.TemplateBean[0];
+  @SerializedName("templateArray")
+  public WriteTogetherTemplateConfBean.Template[] b = new WriteTogetherTemplateConfBean.Template[0];
   
   public static WriteTogetherTemplateConfBean a(String paramString)
   {
@@ -26,7 +20,7 @@ public class WriteTogetherTemplateConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherconfig.WriteTogetherTemplateConfBean
  * JD-Core Version:    0.7.0.1
  */

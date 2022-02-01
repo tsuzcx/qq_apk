@@ -33,13 +33,13 @@ public class OtHelper
   {
     paramString3 = new Changeset.Builder(paramString3.length() - paramInt2);
     paramString3.a(paramInt1, a(paramString2, 0, paramInt1));
-    paramString3.a(paramString1, Arrays.asList(new Pair[] { new Pair("author", paramString4) }), paramIChangesetTracker.a());
+    paramString3.a(paramString1, Arrays.asList(new Pair[] { new Pair("author", paramString4) }), paramIChangesetTracker.d());
     return paramString3.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.client.OtHelper
  * JD-Core Version:    0.7.0.1
  */

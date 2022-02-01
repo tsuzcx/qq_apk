@@ -72,7 +72,7 @@ public class GameCenterVideoView
   
   private void doActionAfterSDKInit(Runnable paramRunnable)
   {
-    if (QQVideoPlaySDKManager.a())
+    if (QQVideoPlaySDKManager.isSDKReady())
     {
       paramRunnable.run();
       return;
@@ -80,7 +80,7 @@ public class GameCenterVideoView
     if (this.mSDKInitListener == null)
     {
       this.mSDKInitListener = new GameCenterVideoView.SDKInitListenerWithAction(this, paramRunnable);
-      QQVideoPlaySDKManager.a(BaseApplication.getContext(), this.mSDKInitListener);
+      QQVideoPlaySDKManager.initSDKAsync(BaseApplication.getContext(), this.mSDKInitListener);
       return;
     }
     this.mSDKInitListener.action = paramRunnable;
@@ -354,7 +354,7 @@ public class GameCenterVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.gamecenter.GameCenterVideoView
  * JD-Core Version:    0.7.0.1
  */

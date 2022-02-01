@@ -12,7 +12,7 @@ class AvAddFriendService$1
   {
     if (QLog.isColorLevel())
     {
-      String str = AvAddFriendService.a;
+      String str = AvAddFriendService.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("好友onUpdateCustomHead success = ");
       localStringBuilder.append(paramBoolean);

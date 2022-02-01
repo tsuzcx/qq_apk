@@ -23,7 +23,7 @@ public class StateMachineInjectImpl
     }
   }
   
-  public void e(FrameFragment paramFrameFragment)
+  public void f(FrameFragment paramFrameFragment)
   {
     if ((paramFrameFragment instanceof MainFragment)) {
       ((IStateManager)QRoute.api(IStateManager.class)).onMainFragmentChange(false);
@@ -32,7 +32,7 @@ public class StateMachineInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.StateMachineInjectImpl
  * JD-Core Version:    0.7.0.1
  */

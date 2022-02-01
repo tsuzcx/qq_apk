@@ -29,7 +29,7 @@ class CapturePtvTemplateManager$3
       ((StringBuilder)localObject).append(Thread.currentThread().getId());
       QLog.i("CapturePtvTemplateManager_PTV", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new File(CapturePtvTemplateManager.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
+    Object localObject = new File(CapturePtvTemplateManager.d, "temp_ptv_template_zip");
     if (!((File)localObject).exists())
     {
       if (QLog.isColorLevel()) {
@@ -49,7 +49,7 @@ class CapturePtvTemplateManager$3
       }
       paramNetResp = "";
     }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramNetResp)))
+    if ((!TextUtils.isEmpty(this.a)) && (this.a.equalsIgnoreCase(paramNetResp)))
     {
       try
       {
@@ -58,7 +58,7 @@ class CapturePtvTemplateManager$3
       catch (Exception paramNetResp)
       {
         NewFlowCameraReporter.a(-3);
-        SharedPreUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+        SharedPreUtils.g(this.c.getApp(), 0);
         if (!QLog.isColorLevel()) {
           break label189;
         }
@@ -70,15 +70,15 @@ class CapturePtvTemplateManager$3
       NewFlowCameraReporter.a(-2);
     }
     label189:
-    paramNetResp = new File(this.c);
+    paramNetResp = new File(this.d);
     if (paramNetResp.exists())
     {
       paramNetResp = CapturePtvTemplateManager.a(paramNetResp);
-      localObject = CapturePtvTemplateManager.a(null, paramNetResp, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
+      localObject = CapturePtvTemplateManager.a(null, paramNetResp, this.e.k);
       if ((localObject != null) && (!((List)localObject).isEmpty()))
       {
-        CapturePtvTemplateManager.a(paramNetResp, "ptv_template_new.cfg");
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.c(false);
+        CapturePtvTemplateManager.b(paramNetResp, "ptv_template_new.cfg");
+        this.e.c(false);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -89,7 +89,7 @@ class CapturePtvTemplateManager$3
         NewFlowCameraReporter.a(1);
         return;
       }
-      CapturePtvTemplateManager.a(paramNetResp, "ptv_template_new.cfg");
+      CapturePtvTemplateManager.b(paramNetResp, "ptv_template_new.cfg");
       if (QLog.isColorLevel()) {
         QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
       }
@@ -99,14 +99,14 @@ class CapturePtvTemplateManager$3
     if (QLog.isColorLevel()) {
       QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
     }
-    SharedPreUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
+    SharedPreUtils.g(this.c.getApp(), 0);
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.3
  * JD-Core Version:    0.7.0.1
  */

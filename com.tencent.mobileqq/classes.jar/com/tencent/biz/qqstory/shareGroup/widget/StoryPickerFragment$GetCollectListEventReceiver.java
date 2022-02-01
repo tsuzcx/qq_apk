@@ -24,12 +24,12 @@ class StoryPickerFragment$GetCollectListEventReceiver
   
   public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
   {
-    if (!TextUtils.equals(paramStoryPickerFragment.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(paramStoryPickerFragment.d, paramGetCollectionListEvent.i)) {
       return;
     }
-    boolean bool = paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess();
-    ArrayList localArrayList = new ArrayList(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList.size());
-    List localList = paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList;
+    boolean bool = paramGetCollectionListEvent.g.isSuccess();
+    ArrayList localArrayList = new ArrayList(paramGetCollectionListEvent.e.size());
+    List localList = paramGetCollectionListEvent.e;
     int i = 0;
     while (i < localList.size())
     {
@@ -40,20 +40,20 @@ class StoryPickerFragment$GetCollectListEventReceiver
         while (j < localVideoCollectionItem.collectionVideoUIItemList.size())
         {
           VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localVideoCollectionItem.collectionVideoUIItemList.get(j);
-          if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString))
+          if (paramStoryPickerFragment.f.contains(localFakeVideoUIItem.a))
           {
-            localFakeVideoUIItem.jdField_a_of_type_Boolean = true;
-            if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
-              localFakeVideoUIItem.b = true;
+            localFakeVideoUIItem.c = true;
+            if (paramStoryPickerFragment.f.size() >= 20) {
+              localFakeVideoUIItem.d = true;
             }
           }
           else
           {
-            localFakeVideoUIItem.jdField_a_of_type_Boolean = false;
-            if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.size() >= 20) {
-              localFakeVideoUIItem.b = false;
+            localFakeVideoUIItem.c = false;
+            if (paramStoryPickerFragment.f.size() >= 20) {
+              localFakeVideoUIItem.d = false;
             } else {
-              localFakeVideoUIItem.b = true;
+              localFakeVideoUIItem.d = true;
             }
           }
           j += 1;
@@ -62,28 +62,28 @@ class StoryPickerFragment$GetCollectListEventReceiver
       }
       i += 1;
     }
-    if ((bool) && (paramGetCollectionListEvent.e))
+    if ((bool) && (paramGetCollectionListEvent.h))
     {
       if (localArrayList.isEmpty())
       {
-        paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(8);
+        paramStoryPickerFragment.c.setVisibility(0);
+        paramStoryPickerFragment.a.setVisibility(8);
       }
       else
       {
-        paramStoryPickerFragment.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(0);
+        paramStoryPickerFragment.c.setVisibility(8);
+        paramStoryPickerFragment.a.setVisibility(0);
       }
       if (paramGetCollectionListEvent.c) {
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a(localArrayList);
+        paramStoryPickerFragment.b.a(localArrayList);
       } else {
-        paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.b(localArrayList);
+        paramStoryPickerFragment.b.b(localArrayList);
       }
     }
     if (paramGetCollectionListEvent.c) {
-      paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a(bool);
+      paramStoryPickerFragment.a.a(bool);
     }
-    paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(bool, paramGetCollectionListEvent.jdField_a_of_type_Boolean ^ true);
+    paramStoryPickerFragment.a.j.a(bool, paramGetCollectionListEvent.a ^ true);
     paramStoryPickerFragment.stopTitleProgress();
   }
   

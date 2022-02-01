@@ -6,18 +6,18 @@ import java.net.URL;
 public abstract class URLGalleryImage
   extends GalleryImage
 {
-  public Drawable a()
+  public abstract URL b();
+  
+  public Drawable d()
   {
     return null;
   }
   
-  public abstract URL a();
-  
-  public abstract Drawable b();
+  public abstract Drawable e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.URLGalleryImage
  * JD-Core Version:    0.7.0.1
  */

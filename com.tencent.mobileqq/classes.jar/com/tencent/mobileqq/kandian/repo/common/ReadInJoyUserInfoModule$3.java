@@ -11,12 +11,12 @@ import java.util.concurrent.ConcurrentHashMap;
 class ReadInJoyUserInfoModule$3
   implements Runnable
 {
-  ReadInJoyUserInfoModule$3(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, List paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  ReadInJoyUserInfoModule$3(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, List paramList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -30,31 +30,31 @@ class ReadInJoyUserInfoModule$3
       }
       else
       {
-        if (ReadInJoyUserInfoModule.a(this.this$0) != null)
+        if (ReadInJoyUserInfoModule.b(this.this$0) != null)
         {
-          localObject = ReadInJoyUserInfoModule.a(this.this$0).a(str);
+          localObject = ReadInJoyUserInfoModule.b(this.this$0).a(str);
           if (localObject != null)
           {
             QLog.d("ReadInJoyUserInfoModule", 2, "getSingleReadInJoyUserInfoWithParams, hit cache, do not request again.");
-            ReadInJoyUserInfoModule.a(this.this$0).a(str, (ReadInJoyUserInfo)localObject);
+            ReadInJoyUserInfoModule.b(this.this$0).a(str, (ReadInJoyUserInfo)localObject);
             continue;
           }
         }
         ReadInJoyUserInfoModule.a(this.this$0).put(str, Boolean.valueOf(true));
-        Object localObject = ReadInJoyUserInfoModule.a(this.this$0).a(str);
+        Object localObject = ReadInJoyUserInfoModule.b(this.this$0).b(str);
         if ((localObject == null) || (((List)localObject).size() <= 0)) {
           localArrayList.add(str);
         }
       }
     }
     if (localArrayList.size() > 0) {
-      this.this$0.a(localArrayList, this.jdField_a_of_type_Int, this.b, this.c, this.d, 0);
+      this.this$0.a(localArrayList, this.b, this.c, this.d, this.e, 0, this.f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,19 @@ package com.tencent.mobileqq.vas;
 
 public class IndividualRedPacketResDownloader$RedPacketTemplateInfo
 {
-  public static int b = 2;
-  public static int c = 1;
-  public int a;
-  public IndividualRedPacketResDownloader.DecorateInfo a;
+  public static int f = 2;
+  public static int g = 1;
   public String a;
   public IndividualRedPacketResDownloader.DecorateInfo b;
   public IndividualRedPacketResDownloader.DecorateInfo c;
-  public int d;
+  public IndividualRedPacketResDownloader.DecorateInfo d;
   public int e;
+  public int h;
+  public int i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividualRedPacketResDownloader.RedPacketTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

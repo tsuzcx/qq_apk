@@ -16,15 +16,15 @@ class ShareMsgImpl$3$3
   {
     if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
     {
-      ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareWebPage(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b, this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e, this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b, "2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a) ^ true);
+      ((IWxShareHelperFromReadInjoy)QRoute.api(IWxShareHelperFromReadInjoy.class)).shareWebPage(this.b.this$0.e, this.b.f, this.a, this.b.g, this.b.b, "2".equals(this.b.a) ^ true);
       return;
     }
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.this$0.b, this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.d, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.e, this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.b, "2".equals(this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$3.a) ^ true);
+    WXShareHelper.a().a(this.b.this$0.e, this.b.f, this.a, this.b.g, this.b.b, "2".equals(this.b.a) ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.3.3
  * JD-Core Version:    0.7.0.1
  */

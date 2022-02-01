@@ -24,11 +24,11 @@ public class AECameraEntryManager
   
   public static int a(AEBaseCameraUnit paramAEBaseCameraUnit)
   {
-    if ((paramAEBaseCameraUnit != null) && (paramAEBaseCameraUnit.b() != null)) {
-      return paramAEBaseCameraUnit.b().j();
+    if ((paramAEBaseCameraUnit != null) && (paramAEBaseCameraUnit.u() != null)) {
+      return paramAEBaseCameraUnit.u().w();
     }
-    if ((paramAEBaseCameraUnit != null) && (paramAEBaseCameraUnit.a() != null) && (paramAEBaseCameraUnit.a().getIntent() != null)) {
-      return paramAEBaseCameraUnit.a().getIntent().getIntExtra("AECAMERA_MODE", 200);
+    if ((paramAEBaseCameraUnit != null) && (paramAEBaseCameraUnit.s() != null) && (paramAEBaseCameraUnit.s().getIntent() != null)) {
+      return paramAEBaseCameraUnit.s().getIntent().getIntExtra("AECAMERA_MODE", 200);
     }
     return 200;
   }
@@ -51,21 +51,6 @@ public class AECameraEntryManager
     return 200;
   }
   
-  @NonNull
-  public static String a(@Nullable String paramString)
-  {
-    if ("camera".equals(paramString)) {
-      return String.valueOf(AECaptureMode.NORMAL.name);
-    }
-    if ("play".equals(paramString)) {
-      return String.valueOf(AECaptureMode.PLAY.name);
-    }
-    if ("gif".equals(paramString)) {
-      return String.valueOf(AECaptureMode.GIF.name);
-    }
-    return String.valueOf(AECaptureMode.NORMAL.name);
-  }
-  
   public static boolean a(int paramInt)
   {
     return paramInt == AECameraEntry.t.a();
@@ -81,10 +66,10 @@ public class AECameraEntryManager
       if (paramActivity.getIntent() != null)
       {
         int i = paramActivity.getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-        if (i != AECameraEntry.L.a())
+        if (i != AECameraEntry.N.a())
         {
           bool1 = bool2;
-          if (i != AECameraEntry.K.a()) {}
+          if (i != AECameraEntry.M.a()) {}
         }
         else
         {
@@ -95,20 +80,15 @@ public class AECameraEntryManager
     return bool1;
   }
   
-  public static boolean a(Intent paramIntent)
-  {
-    return (paramIntent == null) || (paramIntent.getIntExtra("VIDEO_STORY_JUMP_TO_TYPE", 0) == 0);
-  }
-  
   public static boolean a(Intent paramIntent, int paramInt)
   {
-    return (paramInt == 14) && (!a(paramIntent)) && (!b(paramIntent));
+    return (paramInt == 14) && (!c(paramIntent)) && (!e(paramIntent));
   }
   
   public static boolean a(AEPituCameraUnit paramAEPituCameraUnit)
   {
-    if ((paramAEPituCameraUnit != null) && (paramAEPituCameraUnit.a() != null)) {
-      return k(paramAEPituCameraUnit.a().getIntent());
+    if ((paramAEPituCameraUnit != null) && (paramAEPituCameraUnit.s() != null)) {
+      return o(paramAEPituCameraUnit.s().getIntent());
     }
     return false;
   }
@@ -119,6 +99,21 @@ public class AECameraEntryManager
       return 0;
     }
     return paramIntent.getIntExtra("VIDEO_STORY_JUMP_TO_TYPE", 0);
+  }
+  
+  @NonNull
+  public static String b(@Nullable String paramString)
+  {
+    if ("camera".equals(paramString)) {
+      return String.valueOf(AECaptureMode.NORMAL.name);
+    }
+    if ("play".equals(paramString)) {
+      return String.valueOf(AECaptureMode.PLAY.name);
+    }
+    if ("gif".equals(paramString)) {
+      return String.valueOf(AECaptureMode.GIF.name);
+    }
+    return String.valueOf(AECaptureMode.NORMAL.name);
   }
   
   public static boolean b(int paramInt)
@@ -138,22 +133,9 @@ public class AECameraEntryManager
     return c(paramActivity.getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a()));
   }
   
-  public static boolean b(Intent paramIntent)
-  {
-    return (paramIntent == null) || (paramIntent.getIntExtra("VIDEO_STORY_MEDIA_TYPE", 100) == 100);
-  }
-  
-  public static int c(Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return 100;
-    }
-    return paramIntent.getIntExtra("VIDEO_STORY_MEDIA_TYPE", 100);
-  }
-  
   public static boolean c(int paramInt)
   {
-    return (paramInt == AECameraEntry.g.a()) || (paramInt == AECameraEntry.o.a()) || (paramInt == AECameraEntry.r.a()) || (paramInt == AECameraEntry.v.a());
+    return (paramInt == AECameraEntry.g.a()) || (paramInt == AECameraEntry.o.a()) || (paramInt == AECameraEntry.r.a()) || (paramInt == AECameraEntry.e.a()) || (paramInt == AECameraEntry.v.a());
   }
   
   public static boolean c(Activity paramActivity)
@@ -165,18 +147,20 @@ public class AECameraEntryManager
     if (paramActivity == null) {
       return false;
     }
-    int i;
-    if (paramActivity.hasExtra("ORIGIN_VIDEO_STORY_FROM_TYPE")) {
-      i = paramActivity.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    } else {
-      i = paramActivity.getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    }
-    return e(i);
+    return e(h(paramActivity));
   }
   
   public static boolean c(Intent paramIntent)
   {
-    return (r(paramIntent)) || (s(paramIntent)) || (t(paramIntent));
+    return (paramIntent == null) || (paramIntent.getIntExtra("VIDEO_STORY_JUMP_TO_TYPE", 0) == 0);
+  }
+  
+  public static int d(Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return 100;
+    }
+    return paramIntent.getIntExtra("VIDEO_STORY_MEDIA_TYPE", 100);
   }
   
   public static boolean d(int paramInt)
@@ -194,21 +178,11 @@ public class AECameraEntryManager
     if (paramActivity == null) {
       return false;
     }
-    int i;
-    if (paramActivity.hasExtra("ORIGIN_VIDEO_STORY_FROM_TYPE")) {
-      i = paramActivity.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    } else {
-      i = paramActivity.getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    }
+    int i = h(paramActivity);
     if (AECameraEntry.n.a() == i) {
       bool = true;
     }
     return bool;
-  }
-  
-  public static boolean d(Intent paramIntent)
-  {
-    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.n.a());
   }
   
   public static boolean e(int paramInt)
@@ -218,8 +192,7 @@ public class AECameraEntryManager
   
   public static boolean e(Intent paramIntent)
   {
-    int i = a(paramIntent);
-    return (i == AECameraEntry.k.a()) || (i == AECameraEntry.l.a());
+    return (paramIntent == null) || (paramIntent.getIntExtra("VIDEO_STORY_MEDIA_TYPE", 100) == 100);
   }
   
   public static boolean f(int paramInt)
@@ -229,28 +202,30 @@ public class AECameraEntryManager
   
   public static boolean f(Intent paramIntent)
   {
-    int i = a(paramIntent);
-    return (i == AECameraEntry.H.a()) || (i == AECameraEntry.I.a());
+    return (x(paramIntent)) || (y(paramIntent)) || (z(paramIntent));
   }
   
   public static boolean g(int paramInt)
   {
-    return (paramInt == AECameraEntry.x.a()) || (h(paramInt)) || (i(paramInt));
+    return (paramInt == AECameraEntry.x.a()) || (h(paramInt)) || (i(paramInt)) || (j(paramInt));
   }
   
   public static boolean g(Intent paramIntent)
   {
-    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.e.a());
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.n.a());
+  }
+  
+  public static int h(Intent paramIntent)
+  {
+    if (paramIntent.hasExtra("ORIGIN_VIDEO_STORY_FROM_TYPE")) {
+      return paramIntent.getIntExtra("ORIGIN_VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
+    }
+    return paramIntent.getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
   }
   
   public static boolean h(int paramInt)
   {
     return (paramInt == AECameraEntry.A.a()) || (paramInt == AECameraEntry.z.a());
-  }
-  
-  public static boolean h(Intent paramIntent)
-  {
-    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.i.a());
   }
   
   public static boolean i(int paramInt)
@@ -260,35 +235,67 @@ public class AECameraEntryManager
   
   public static boolean i(Intent paramIntent)
   {
-    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.K.a());
+    int i = a(paramIntent);
+    return (i == AECameraEntry.k.a()) || (i == AECameraEntry.l.a());
   }
   
   public static boolean j(int paramInt)
   {
-    return (paramInt != AECameraEntry.e.a()) && (paramInt != AECameraEntry.i.a()) && (paramInt != AECameraEntry.p.a()) && (paramInt != AECameraEntry.w.a()) && (paramInt != AECameraEntry.x.a()) && (paramInt != AECameraEntry.K.a()) && (paramInt != AECameraEntry.L.a());
+    return paramInt == AECameraEntry.K.a();
   }
   
   public static boolean j(Intent paramIntent)
   {
-    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.L.a());
+    int i = a(paramIntent);
+    return (i == AECameraEntry.H.a()) || (i == AECameraEntry.I.a());
+  }
+  
+  public static boolean k(int paramInt)
+  {
+    return (paramInt != AECameraEntry.e.a()) && (paramInt != AECameraEntry.i.a()) && (paramInt != AECameraEntry.p.a()) && (paramInt != AECameraEntry.w.a()) && (paramInt != AECameraEntry.x.a()) && (paramInt != AECameraEntry.M.a()) && (paramInt != AECameraEntry.N.a());
   }
   
   public static boolean k(Intent paramIntent)
   {
-    return ((paramIntent != null) && ((a(paramIntent) == AECameraEntry.x.a()) || (m(paramIntent)))) || (o(paramIntent));
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.e.a());
   }
   
   public static boolean l(Intent paramIntent)
   {
-    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.J.a());
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.i.a());
   }
   
   public static boolean m(Intent paramIntent)
   {
-    return (paramIntent != null) && ((a(paramIntent) == AECameraEntry.z.a()) || (a(paramIntent) == AECameraEntry.A.a()));
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.M.a());
   }
   
   public static boolean n(Intent paramIntent)
+  {
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.N.a());
+  }
+  
+  public static boolean o(Intent paramIntent)
+  {
+    return ((paramIntent != null) && ((a(paramIntent) == AECameraEntry.x.a()) || (r(paramIntent)))) || (t(paramIntent)) || (u(paramIntent));
+  }
+  
+  public static boolean p(Intent paramIntent)
+  {
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.L.a());
+  }
+  
+  public static boolean q(Intent paramIntent)
+  {
+    return (paramIntent != null) && (a(paramIntent) == AECameraEntry.J.a());
+  }
+  
+  public static boolean r(Intent paramIntent)
+  {
+    return (paramIntent != null) && ((a(paramIntent) == AECameraEntry.z.a()) || (a(paramIntent) == AECameraEntry.A.a()));
+  }
+  
+  public static boolean s(Intent paramIntent)
   {
     boolean bool = false;
     if (paramIntent == null) {
@@ -301,12 +308,23 @@ public class AECameraEntryManager
     return bool;
   }
   
-  public static boolean o(Intent paramIntent)
+  public static boolean t(Intent paramIntent)
   {
     return (paramIntent != null) && (a(paramIntent) == AECameraEntry.E.a());
   }
   
-  private static boolean p(Intent paramIntent)
+  public static boolean u(Intent paramIntent)
+  {
+    boolean bool;
+    if ((paramIntent != null) && (a(paramIntent) == AECameraEntry.K.a())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    return Boolean.valueOf(bool).booleanValue();
+  }
+  
+  private static boolean v(Intent paramIntent)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -320,29 +338,29 @@ public class AECameraEntryManager
     return bool1;
   }
   
-  private static boolean q(Intent paramIntent)
+  private static boolean w(Intent paramIntent)
   {
     return (paramIntent != null) && (paramIntent.getIntExtra("VIDEO_STORY_MEDIA_TYPE", 100) == 101);
   }
   
-  private static boolean r(Intent paramIntent)
+  private static boolean x(Intent paramIntent)
   {
-    return (d(paramIntent)) && (q(paramIntent));
+    return (g(paramIntent)) && (w(paramIntent));
   }
   
-  private static boolean s(Intent paramIntent)
+  private static boolean y(Intent paramIntent)
   {
-    return (p(paramIntent)) && (q(paramIntent));
+    return (v(paramIntent)) && (w(paramIntent));
   }
   
-  private static boolean t(Intent paramIntent)
+  private static boolean z(Intent paramIntent)
   {
-    return (e(paramIntent)) && (q(paramIntent));
+    return (i(paramIntent)) && (w(paramIntent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.entry.AECameraEntryManager
  * JD-Core Version:    0.7.0.1
  */

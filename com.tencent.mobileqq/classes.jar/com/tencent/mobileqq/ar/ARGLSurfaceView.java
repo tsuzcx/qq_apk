@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private ARGLSurfaceView.ARGLSurfaceViewCallback jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback = null;
-  private ARGLSurfaceView.OnEglContextDestoryListener jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$OnEglContextDestoryListener;
+  private ARGLSurfaceView.ARGLSurfaceViewCallback a = null;
+  private ARGLSurfaceView.OnEglContextDestoryListener b;
   
   public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, ARGLSurfaceView.ARGLSurfaceViewCallback paramARGLSurfaceViewCallback)
   {
@@ -33,7 +33,7 @@ public class ARGLSurfaceView
     if (paramCallback != null) {
       getHolder().addCallback(paramCallback);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback = paramARGLSurfaceViewCallback;
+    this.a = paramARGLSurfaceViewCallback;
   }
   
   public void onPause()
@@ -48,7 +48,7 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    ARGLSurfaceView.ARGLSurfaceViewCallback localARGLSurfaceViewCallback = this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$ARGLSurfaceViewCallback;
+    ARGLSurfaceView.ARGLSurfaceViewCallback localARGLSurfaceViewCallback = this.a;
     if (localARGLSurfaceViewCallback != null) {
       localARGLSurfaceViewCallback.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
@@ -58,7 +58,7 @@ public class ARGLSurfaceView
   
   public void setOnEglContextDestoryListener(ARGLSurfaceView.OnEglContextDestoryListener paramOnEglContextDestoryListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARGLSurfaceView$OnEglContextDestoryListener = paramOnEglContextDestoryListener;
+    this.b = paramOnEglContextDestoryListener;
   }
   
   @Deprecated
@@ -69,7 +69,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

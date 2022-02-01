@@ -24,19 +24,19 @@ class AudioRecordPlayer$6
     return localArrayList;
   }
   
-  public void a(List<String> paramList)
+  public void b(List<String> paramList)
   {
     AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "startSpeakingEvent uin[%s] ", new Object[] { paramList.toString() });
-    Iterator localIterator = AudioRecordPlayer.a(this.a).iterator();
+    Iterator localIterator = AudioRecordPlayer.h(this.a).iterator();
     while (localIterator.hasNext()) {
       ((IAudioVolumeListener)localIterator.next()).a(paramList);
     }
   }
   
-  public void b(List<String> paramList)
+  public void c(List<String> paramList)
   {
     AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "stopSpeakingEvent uin[%s] ", new Object[] { paramList.toString() });
-    Iterator localIterator = AudioRecordPlayer.a(this.a).iterator();
+    Iterator localIterator = AudioRecordPlayer.h(this.a).iterator();
     while (localIterator.hasNext()) {
       ((IAudioVolumeListener)localIterator.next()).b(paramList);
     }
@@ -44,7 +44,7 @@ class AudioRecordPlayer$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.6
  * JD-Core Version:    0.7.0.1
  */

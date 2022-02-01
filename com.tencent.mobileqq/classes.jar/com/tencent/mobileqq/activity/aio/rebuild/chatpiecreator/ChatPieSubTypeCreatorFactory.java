@@ -7,32 +7,32 @@ import com.tencent.mobileqq.activity.aio.core.chatpiecreator.IChatPieCreatorFact
 public class ChatPieSubTypeCreatorFactory
   implements IChatPieCreatorFactory
 {
-  private static ChatPieSubTypeCreatorFactory jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatpiecreatorChatPieSubTypeCreatorFactory;
-  private final ArrayMap<Integer, IChatPieCreator> jdField_a_of_type_AndroidxCollectionArrayMap = new ArrayMap();
+  private static ChatPieSubTypeCreatorFactory a;
+  private final ArrayMap<Integer, IChatPieCreator> b = new ArrayMap();
   
   private ChatPieSubTypeCreatorFactory()
   {
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(1), new BusinessCmrTmpChatPieCreator());
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(3), new MultiForwardChatPieCreator());
-    this.jdField_a_of_type_AndroidxCollectionArrayMap.put(Integer.valueOf(4), new UpComingMsgChatPieCreator());
+    this.b.put(Integer.valueOf(1), new BusinessCmrTmpChatPieCreator());
+    this.b.put(Integer.valueOf(3), new MultiForwardChatPieCreator());
+    this.b.put(Integer.valueOf(4), new UpComingMsgChatPieCreator());
   }
   
   public static ChatPieSubTypeCreatorFactory a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatpiecreatorChatPieSubTypeCreatorFactory == null) {
-      jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatpiecreatorChatPieSubTypeCreatorFactory = new ChatPieSubTypeCreatorFactory();
+    if (a == null) {
+      a = new ChatPieSubTypeCreatorFactory();
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatpiecreatorChatPieSubTypeCreatorFactory;
+    return a;
   }
   
   public IChatPieCreator a(int paramInt)
   {
-    return (IChatPieCreator)this.jdField_a_of_type_AndroidxCollectionArrayMap.get(Integer.valueOf(paramInt));
+    return (IChatPieCreator)this.b.get(Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpiecreator.ChatPieSubTypeCreatorFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public final class AioLimitColdPalaceHelper$1
 {
   public void onMessageRecordAdded(@Nullable List<MessageRecord> paramList)
   {
-    if (AioLimitColdPalaceHelper.a(this.a)) {
+    if (AioLimitColdPalaceHelper.b(this.a)) {
       return;
     }
     Object localObject2;
@@ -41,20 +41,20 @@ public final class AioLimitColdPalaceHelper$1
       ((StringBuilder)localObject2).append(localObject1);
       QLog.i("AioLimitColdPalaceHelper", 2, ((StringBuilder)localObject2).toString());
     }
-    if ((this.a.a()) && (this.a.b()))
+    if ((this.a.i()) && (this.a.j()))
     {
       if (QLog.isColorLevel()) {
         QLog.i("AioLimitColdPalaceHelper", 2, "onMessageRecordAdded: has insert ");
       }
       return;
     }
-    if (this.a.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+    if (this.a.a().ah != null)
     {
-      localObject1 = this.a.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      localObject1 = this.a.a().ah;
       if (localObject1 == null) {
         Intrinsics.throwNpe();
       }
-      if ((!TextUtils.isEmpty((CharSequence)((SessionInfo)localObject1).a)) && (paramList != null))
+      if ((!TextUtils.isEmpty((CharSequence)((SessionInfo)localObject1).b)) && (paramList != null))
       {
         paramList = paramList.iterator();
         while (paramList.hasNext())
@@ -62,16 +62,16 @@ public final class AioLimitColdPalaceHelper$1
           localObject1 = (MessageRecord)paramList.next();
           if (!((ILimitChatUtils)QRoute.api(ILimitChatUtils.class)).isSystemMessage(((MessageRecord)localObject1).msgtype))
           {
-            localObject2 = this.a.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+            localObject2 = this.a.a().ah;
             if (localObject2 == null) {
               Intrinsics.throwNpe();
             }
-            if (Intrinsics.areEqual(((SessionInfo)localObject2).a, ((MessageRecord)localObject1).senderuin))
+            if (Intrinsics.areEqual(((SessionInfo)localObject2).b, ((MessageRecord)localObject1).senderuin))
             {
               localObject1 = this.a;
-              ((AioLimitColdPalaceHelper)localObject1).b(((AioLimitColdPalaceHelper)localObject1).b() + 1);
-              if ((this.a.a()) && (!this.a.b()) && (this.a.b() >= this.a.c())) {
-                this.a.f();
+              ((AioLimitColdPalaceHelper)localObject1).b(((AioLimitColdPalaceHelper)localObject1).h() + 1);
+              if ((this.a.i()) && (!this.a.j()) && (this.a.h() >= this.a.k())) {
+                this.a.o();
               }
             }
           }
@@ -90,8 +90,8 @@ public final class AioLimitColdPalaceHelper$1
     QLog.d("AioLimitColdPalaceHelper", 1, paramSendMessageHandler.toString());
     if (paramInt2 == 69)
     {
-      paramSendMessageHandler = ColdPalaceHelper.a;
-      paramString2 = this.a.a().jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramSendMessageHandler = ColdPalaceHelper.f;
+      paramString2 = this.a.a().d;
       Intrinsics.checkExpressionValueIsNotNull(paramString2, "mChatPie.app");
       paramSendMessageHandler = paramSendMessageHandler.a((BaseQQAppInterface)paramString2);
       if (paramString1 == null) {
@@ -103,7 +103,7 @@ public final class AioLimitColdPalaceHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.AioLimitColdPalaceHelper.1
  * JD-Core Version:    0.7.0.1
  */

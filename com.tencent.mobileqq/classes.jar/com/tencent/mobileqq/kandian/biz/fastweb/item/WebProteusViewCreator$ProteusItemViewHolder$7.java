@@ -12,12 +12,12 @@ class WebProteusViewCreator$ProteusItemViewHolder$7
   
   public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
   {
-    FastWebDislikeUtils.a(paramContext, paramProteusItemData.b, paramProteusItemData.a);
+    FastWebDislikeUtils.a(paramContext, paramProteusItemData.aQ, paramProteusItemData.aR);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.7
  * JD-Core Version:    0.7.0.1
  */

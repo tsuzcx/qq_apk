@@ -23,6 +23,9 @@ import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
 import com.tencent.mobileqq.startup.step.InstallPlugins;
 import com.tencent.mobileqq.startup.step.InstallPlugins.QzoneInstallResult;
 import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.utils.abtest.ABTestController;
+import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qzonehub.api.IQZoneApiProxy;
 import com.tencent.qzonehub.api.contentbox.IFeedViewHolderInterface;
@@ -43,6 +46,7 @@ import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import mqq.app.AppRuntime;
 import mqq.app.MSFServlet;
+import mqq.app.MobileQQ;
 import mqq.app.Servlet;
 import mqq.app.ServletContainer;
 import mqq.util.WeakReference;
@@ -63,6 +67,9 @@ public class QZoneApiProxyImpl
   private static final String QZONE_SP_NAME = "qzone_api_proxy_sp_name";
   public static final String SCHOOL_LIST_CLASS_NAME = "com.qzone.feed.ui.activity.QQSchoolExtendFeedsListView";
   private static final String SERVLET_CLASS_NAME = "com.qzone.common.servlet.QZoneServlet";
+  static final String SP_AB_TEST_EXPERIMENT_TYPE = "KEY_EXPERIMENT_TYPE";
+  static final String SP_AB_TEST_SHOW_QZONE = "SP_AB_TEST_SHOW_QZONE_STATE";
+  static final String ShowQzoneInSimpleUISharedPreference = "switch_show_qzone_in_simple_ui";
   private static final String TAG = "QZoneApiProxyImpl";
   private static volatile boolean sIsEnvInit = false;
   private static volatile boolean sIsInit = false;
@@ -150,7 +157,7 @@ public class QZoneApiProxyImpl
     String str = getSelfSharedPreferences(paramContext).getString("msg_page_title", "");
     paramContext = str;
     if (TextUtils.isEmpty(str)) {
-      paramContext = HardCodeUtil.a(2131719439);
+      paramContext = HardCodeUtil.a(2131916999);
     }
     return paramContext;
   }
@@ -178,7 +185,7 @@ public class QZoneApiProxyImpl
     }
     if (AutomatorHelper.b)
     {
-      if (InstallPlugins.a == null)
+      if (InstallPlugins.c == null)
       {
         i = Build.VERSION.SDK_INT;
         if ((i == 21) || (i == 22))
@@ -187,7 +194,7 @@ public class QZoneApiProxyImpl
           return false;
         }
       }
-      else if (!InstallPlugins.a.a)
+      else if (!InstallPlugins.c.a)
       {
         QZLog.i("QZoneApiProxyImpl", "isQZonePluginValid qzone install failed");
         return false;
@@ -355,12 +362,50 @@ public class QZoneApiProxyImpl
     return null;
   }
   
+  public String getExpContentInSimpleUI(AppRuntime paramAppRuntime)
+  {
+    ExpEntityInfo localExpEntityInfo = ABTestController.a().a("exp_shouq_dongtai_jianjie_copy_copy");
+    boolean bool = localExpEntityInfo.g();
+    String str = "exp_shouq_dongtai_jianjie_C";
+    if (bool) {
+      str = "exp_shouq_dongtai_jianjie_A";
+    } else if (localExpEntityInfo.a("exp_shouq_dongtai_jianjie_B")) {
+      str = "exp_shouq_dongtai_jianjie_B";
+    } else if (!localExpEntityInfo.a("exp_shouq_dongtai_jianjie_C")) {
+      str = null;
+    }
+    if (!TextUtils.isEmpty(str))
+    {
+      saveShowQzoneABTest(paramAppRuntime, str);
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("getExpContentInSimpleUI from net expValue=");
+      paramAppRuntime.append(str);
+      QLog.i("QZoneApiProxyImpl", 1, paramAppRuntime.toString());
+      return str;
+    }
+    str = loadShowQzoneABTest(paramAppRuntime);
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("getExpContentInSimpleUI from local expValue=");
+    paramAppRuntime.append(str);
+    QLog.i("QZoneApiProxyImpl", 1, paramAppRuntime.toString());
+    paramAppRuntime = str;
+    if (TextUtils.isEmpty(str)) {
+      paramAppRuntime = "exp_shouq_dongtai_jianjie_A";
+    }
+    return paramAppRuntime;
+  }
+  
   public AppRuntime getLastRuntime()
   {
     if (sLastRuntimeRef == null) {
       return null;
     }
     return (AppRuntime)sLastRuntimeRef.get();
+  }
+  
+  public boolean getShowQzoneInSimpleUI()
+  {
+    return MobileQQ.getContext().getSharedPreferences("switch_show_qzone_in_simple_ui", 0).getBoolean("enabled", false);
   }
   
   public boolean initEnv(@NonNull Context paramContext, @NonNull AppRuntime paramAppRuntime)
@@ -423,7 +468,7 @@ public class QZoneApiProxyImpl
     if (sIsInit) {
       return true;
     }
-    ((IPluginManager)paramAppRuntime.getManager(QQManagerFactory.MGR_PLUGIN)).d("qzone_plugin.apk");
+    ((IPluginManager)paramAppRuntime.getManager(QQManagerFactory.MGR_PLUGIN)).e("qzone_plugin.apk");
     paramContext = loadQZoneClass(paramContext, "com.qzone.common.servlet.QZoneServlet");
     int j = 0;
     if (paramContext == null) {
@@ -619,6 +664,37 @@ public class QZoneApiProxyImpl
     return Build.VERSION.SDK_INT > 19;
   }
   
+  boolean isShowQzoneFrameEnabled(AppRuntime paramAppRuntime)
+  {
+    if ("exp_shouq_dongtai_jianjie_C".equals(getExpContentInSimpleUI(paramAppRuntime)))
+    {
+      QZLog.i("QZoneApiProxyImpl", "isShowQzoneFrameEnabled, EXP_QQ_LEBA_CONCISE_THEME_CONTENT_C, show-qzone is false");
+      return false;
+    }
+    int i = LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 0, paramAppRuntime.getLongAccountUin());
+    if ((0x10000 & i) == 0)
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("grayMask no");
+      paramAppRuntime.append(i);
+      QZLog.e("QZoneApiProxyImpl", paramAppRuntime.toString());
+      return false;
+    }
+    return true;
+  }
+  
+  String loadShowQzoneABTest(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return "";
+    }
+    SharedPreferences localSharedPreferences = paramAppRuntime.getApplicationContext().getSharedPreferences("SP_AB_TEST_SHOW_QZONE_STATE", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KEY_EXPERIMENT_TYPE");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    return localSharedPreferences.getString(localStringBuilder.toString(), "");
+  }
+  
   public boolean needLoadQZoneEnv()
   {
     return needLoadQZoneEnv(null);
@@ -679,42 +755,30 @@ public class QZoneApiProxyImpl
   
   public boolean needShowQzoneFrame(@Nullable Context paramContext, @Nullable AppRuntime paramAppRuntime)
   {
-    boolean bool1 = false;
     if (paramContext != null)
     {
       if (paramAppRuntime == null) {
         return false;
       }
-      if (!needLoadQZoneEnv()) {
-        return false;
-      }
-      if (!QQTheme.f())
+      if (!QQTheme.isNowSimpleUI())
       {
         QZLog.e("QZoneApiProxyImpl", "isNowSimpleUI no");
         return false;
       }
-      int i = LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 0, paramAppRuntime.getLongAccountUin());
-      if ((0x10000 & i) == 0)
+      if (!isShowQzoneFrameEnabled(paramAppRuntime))
       {
-        paramContext = new StringBuilder();
-        paramContext.append("grayMask no");
-        paramContext.append(i);
-        QZLog.e("QZoneApiProxyImpl", paramContext.toString());
+        QZLog.i("QZoneApiProxyImpl", "isShowQzoneFrameEnabled no");
         return false;
       }
-      boolean bool2 = isQZonePluginValid(paramContext, paramAppRuntime);
-      bool1 = bool2;
-      if (bool2)
-      {
-        bool1 = bool2;
-        if (paramAppRuntime != QZoneApiProxy.getLastRuntime())
-        {
-          onAccountChange(paramContext, paramAppRuntime);
-          bool1 = bool2;
-        }
+      if (!isQZonePluginValid(paramContext, paramAppRuntime)) {
+        return false;
       }
+      if (paramAppRuntime != QZoneApiProxy.getLastRuntime()) {
+        onAccountChange(paramContext, paramAppRuntime);
+      }
+      return true;
     }
-    return bool1;
+    return false;
   }
   
   public boolean needShowSchoolExtendFeed(@Nullable Activity paramActivity, @Nullable AppRuntime paramAppRuntime)
@@ -747,7 +811,7 @@ public class QZoneApiProxyImpl
       int i;
       try
       {
-        paramActivity.getLayoutInflater().inflate(2131561068, null);
+        paramActivity.getLayoutInflater().inflate(2131627411, null);
         i = 1;
       }
       catch (Throwable paramActivity)
@@ -838,10 +902,27 @@ public class QZoneApiProxyImpl
       initServlet(paramContext, paramAppRuntime);
     }
   }
+  
+  void saveShowQzoneABTest(AppRuntime paramAppRuntime, String paramString)
+  {
+    if (paramAppRuntime == null) {
+      return;
+    }
+    SharedPreferences.Editor localEditor = paramAppRuntime.getApplicationContext().getSharedPreferences("SP_AB_TEST_SHOW_QZONE_STATE", 0).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KEY_EXPERIMENT_TYPE");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    localEditor.putString(localStringBuilder.toString(), paramString).apply();
+  }
+  
+  public void setShowQzoneInSimpleUI(boolean paramBoolean)
+  {
+    MobileQQ.getContext().getSharedPreferences("switch_show_qzone_in_simple_ui", 0).edit().putBoolean("enabled", paramBoolean).apply();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QZoneApiProxyImpl
  * JD-Core Version:    0.7.0.1
  */

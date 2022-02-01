@@ -22,56 +22,6 @@ import mqq.util.WeakReference;
 
 public class AVUtil
 {
-  public static int a()
-  {
-    SessionInfo localSessionInfo = SessionMgr.a().a();
-    if (localSessionInfo != null)
-    {
-      if (localSessionInfo.d == 3) {
-        return 3;
-      }
-      if (localSessionInfo.d == 4) {
-        return 4;
-      }
-      if (localSessionInfo.d == 1) {
-        return 1;
-      }
-      int i = localSessionInfo.d;
-    }
-    return 2;
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (paramInt == 3000) {
-      return 1;
-    }
-    if (paramInt == 1) {
-      return 2;
-    }
-    if (paramInt == 0) {
-      return 3;
-    }
-    return 0;
-  }
-  
-  public static long a(String paramString)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        long l = Long.parseLong(paramString);
-        return l;
-      }
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.fillInStackTrace();
-    }
-    return 0L;
-  }
-  
   public static void a(Activity paramActivity)
   {
     if (paramActivity == null) {
@@ -136,7 +86,7 @@ public class AVUtil
   
   public static void a(String paramString, int paramInt)
   {
-    a(paramString, a(), 0, String.valueOf(paramInt), "", "", "");
+    a(paramString, c(), 0, String.valueOf(paramInt), "", "", "");
   }
   
   public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -217,14 +167,16 @@ public class AVUtil
   
   public static int b(int paramInt)
   {
-    int i = 0;
     if (paramInt == 3000) {
-      return 1004;
+      return 1;
     }
     if (paramInt == 1) {
-      i = 1000;
+      return 2;
     }
-    return i;
+    if (paramInt == 0) {
+      return 3;
+    }
+    return 0;
   }
   
   public static boolean b()
@@ -248,14 +200,6 @@ public class AVUtil
     return bool;
   }
   
-  public static boolean b(int paramInt)
-  {
-    if (paramInt != 1) {
-      return paramInt == 3000;
-    }
-    return true;
-  }
-  
   public static boolean b(String paramString)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
@@ -269,7 +213,55 @@ public class AVUtil
     return bool;
   }
   
+  public static int c()
+  {
+    SessionInfo localSessionInfo = SessionMgr.a().b();
+    if (localSessionInfo != null)
+    {
+      if (localSessionInfo.g == 3) {
+        return 3;
+      }
+      if (localSessionInfo.g == 4) {
+        return 4;
+      }
+      if (localSessionInfo.g == 1) {
+        return 1;
+      }
+      int i = localSessionInfo.g;
+    }
+    return 2;
+  }
+  
   public static int c(int paramInt)
+  {
+    int i = 0;
+    if (paramInt == 3000) {
+      return 1004;
+    }
+    if (paramInt == 1) {
+      i = 1000;
+    }
+    return i;
+  }
+  
+  public static long c(String paramString)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        long l = Long.parseLong(paramString);
+        return l;
+      }
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.fillInStackTrace();
+    }
+    return 0L;
+  }
+  
+  public static int d(int paramInt)
   {
     if (paramInt == 2) {
       return 1004;
@@ -277,7 +269,20 @@ public class AVUtil
     return 1000;
   }
   
-  public static boolean c(int paramInt)
+  public static boolean e(int paramInt)
+  {
+    if (paramInt != 1) {
+      return paramInt == 3000;
+    }
+    return true;
+  }
+  
+  public static void f(int paramInt)
+  {
+    a("0X800BC0E", c(), 0, String.valueOf(paramInt), "", "", "");
+  }
+  
+  public static boolean g(int paramInt)
   {
     return (paramInt == 2) || (paramInt == 4);
   }

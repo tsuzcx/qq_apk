@@ -14,7 +14,7 @@ class QfileBaseRecentFileTabView$2
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "queryFileEntitiesFromDB thread start");
+      QLog.i(QfileBaseRecentFileTabView.a, 2, "queryFileEntitiesFromDB thread start");
     }
     List localList;
     if ((this.this$0.b != null) && (this.this$0.b.trim().length() != 0)) {
@@ -22,7 +22,7 @@ class QfileBaseRecentFileTabView$2
     } else {
       localList = ((IQQFileDataCenter)QfileBaseRecentFileTabView.b(this.this$0).getRuntimeService(IQQFileDataCenter.class)).queryMaxRecentReocrds();
     }
-    Collections.sort(localList, this.this$0.jdField_a_of_type_JavaUtilComparator);
+    Collections.sort(localList, this.this$0.q);
     if (localList != null) {
       QfileBaseRecentFileTabView.a(this.this$0, new QfileBaseRecentFileTabView.2.1(this, localList));
     }
@@ -30,7 +30,7 @@ class QfileBaseRecentFileTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

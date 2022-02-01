@@ -16,13 +16,13 @@ final class MultiVoiceFloatingWindowModule$onNetworkListener$1
   
   public final void onNetWorkChange(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (MultiVoiceFloatingWindowModule.a(this.a) == null) {
+    if (MultiVoiceFloatingWindowModule.k(this.a) == null) {
       return;
     }
-    if (!MultiVoiceFloatingWindowModule.d(this.a)) {
+    if (!MultiVoiceFloatingWindowModule.n(this.a)) {
       return;
     }
-    Object localObject = MultiVoiceFloatingWindowModule.a(this.a);
+    Object localObject = MultiVoiceFloatingWindowModule.b(this.a);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "roomBizContext");
     int i = ((RoomBizContext)localObject).getEnterRoomInfo().bootModulesIndex;
     localObject = this.a.getAudienceRoomPager();
@@ -33,10 +33,10 @@ final class MultiVoiceFloatingWindowModule$onNetworkListener$1
       }
       if (paramBoolean1)
       {
-        localObject = MultiVoiceFloatingWindowModule.a(this.a);
+        localObject = MultiVoiceFloatingWindowModule.i(this.a);
         if (localObject != null)
         {
-          ((TextView)localObject).setText(2131694540);
+          ((TextView)localObject).setText(2131892224);
           ((TextView)localObject).postDelayed((Runnable)new MultiVoiceFloatingWindowModule.onNetworkListener.1.1.1((TextView)localObject), 5000L);
         }
       }
@@ -45,7 +45,7 @@ final class MultiVoiceFloatingWindowModule$onNetworkListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.onNetworkListener.1
  * JD-Core Version:    0.7.0.1
  */

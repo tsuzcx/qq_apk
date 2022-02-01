@@ -16,20 +16,20 @@ public final class DebugBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "debug";
-  }
-  
   public void a()
   {
     a("detailLog", (Function2)new DebugBridgeInvokeHandler.register.1(this));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "debug";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.DebugBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

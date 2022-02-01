@@ -25,27 +25,27 @@ class TroopGiftActionButton$1
   {
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+      this.a.clearAnimation();
       paramMotionEvent = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
       paramMotionEvent.setDuration(100L);
       paramMotionEvent.setAnimationListener(new TroopGiftActionButton.1.1(this));
-      this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(paramMotionEvent);
-      paramMotionEvent = new ImageView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext());
+      this.a.startAnimation(paramMotionEvent);
+      paramMotionEvent = new ImageView(this.b.getContext());
       Object localObject = new GradientDrawable();
       ((GradientDrawable)localObject).setShape(1);
-      ((GradientDrawable)localObject).setCornerRadius(DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
-      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton).optString("buttonEffectColor")));
+      ((GradientDrawable)localObject).setCornerRadius(DisplayUtil.a(this.b.getContext(), 56.0F));
+      ((GradientDrawable)localObject).setColor(Color.parseColor(TroopGiftActionButton.a(this.b).optString("buttonEffectColor")));
       ((GradientDrawable)localObject).setAlpha(192);
       paramMotionEvent.setImageDrawable((Drawable)localObject);
-      localObject = new RelativeLayout.LayoutParams(DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F), DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.getContext(), 56.0F));
+      localObject = new RelativeLayout.LayoutParams(DisplayUtil.a(this.b.getContext(), 56.0F), DisplayUtil.a(this.b.getContext(), 56.0F));
       ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
+      this.b.addView(paramMotionEvent, (ViewGroup.LayoutParams)localObject);
       localObject = new ScaleAnimation(1.0F, 1.7F, 1.0F, 1.7F, 1, 0.5F, 1, 0.5F);
       ((ScaleAnimation)localObject).setDuration(150L);
       ((ScaleAnimation)localObject).setAnimationListener(new TroopGiftActionButton.1.2(this, paramMotionEvent));
       paramMotionEvent.startAnimation((Animation)localObject);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a.onClick(paramView);
+      if (this.b.b != null) {
+        this.b.b.onClick(paramView);
       }
     }
     return true;
@@ -53,7 +53,7 @@ class TroopGiftActionButton$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftActionButton.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,6 @@ import java.util.HashMap;
 
 public abstract interface IViolaUiDelegate
 {
-  public abstract OnTitleChangeListener a();
-  
-  public abstract HashMap<String, Object> a();
-  
   public abstract void a();
   
   public abstract void a(int paramInt);
@@ -25,17 +21,21 @@ public abstract interface IViolaUiDelegate
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public abstract HashMap<String, Object> b();
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract boolean b();
+  public abstract OnTitleChangeListener c();
+  
+  public abstract boolean d();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.api.IViolaUiDelegate
  * JD-Core Version:    0.7.0.1
  */

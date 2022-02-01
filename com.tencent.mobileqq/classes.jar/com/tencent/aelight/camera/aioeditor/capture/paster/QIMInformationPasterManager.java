@@ -25,29 +25,29 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QIMInformationPasterManager
   extends IQIMManager
 {
-  private static File jdField_a_of_type_JavaIoFile;
-  private static String jdField_a_of_type_JavaLangString;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  QIMInformationPasterManager.InformationPasterResDownloader jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager$InformationPasterResDownloader = null;
-  private WeakReference<RelativeLayout> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private ConcurrentLinkedQueue<InformationFacePackage.Item> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private static File c;
+  private static String d;
+  QIMInformationPasterManager.InformationPasterResDownloader a = null;
+  private Context b;
+  private ConcurrentLinkedQueue<InformationFacePackage.Item> e = new ConcurrentLinkedQueue();
+  private RelativeLayout f = null;
+  private WeakReference<RelativeLayout> g = null;
   
   private boolean d(InformationFacePackage.Item paramItem)
   {
-    Object localObject = jdField_a_of_type_JavaIoFile;
+    Object localObject = c;
     if (localObject != null)
     {
       if (!((File)localObject).exists())
       {
-        jdField_a_of_type_JavaIoFile.mkdirs();
+        c.mkdirs();
       }
-      else if (!jdField_a_of_type_JavaIoFile.isDirectory())
+      else if (!c.isDirectory())
       {
-        jdField_a_of_type_JavaIoFile.delete();
-        jdField_a_of_type_JavaIoFile.mkdirs();
+        c.delete();
+        c.mkdirs();
       }
-      localObject = jdField_a_of_type_JavaIoFile.list();
+      localObject = c.list();
       if (localObject != null)
       {
         int j = localObject.length;
@@ -57,18 +57,18 @@ public class QIMInformationPasterManager
         {
           String str = localObject[i];
           bool2 = bool1;
-          if (str.startsWith(paramItem.g))
+          if (str.startsWith(paramItem.i))
           {
             StringBuilder localStringBuilder;
             if (str.endsWith(".zip"))
             {
               localStringBuilder = new StringBuilder();
-              localStringBuilder.append(jdField_a_of_type_JavaIoFile);
+              localStringBuilder.append(c);
               localStringBuilder.append(str);
               FileUtils.delete(localStringBuilder.toString(), false);
               bool2 = bool1;
             }
-            else if (str.endsWith(paramItem.f))
+            else if (str.endsWith(paramItem.h))
             {
               bool2 = true;
             }
@@ -81,7 +81,7 @@ public class QIMInformationPasterManager
                 if (!str.endsWith("tmp"))
                 {
                   localStringBuilder = new StringBuilder();
-                  localStringBuilder.append(jdField_a_of_type_JavaLangString);
+                  localStringBuilder.append(d);
                   localStringBuilder.append(str);
                   FileUtils.delete(localStringBuilder.toString(), false);
                   bool2 = bool1;
@@ -99,14 +99,25 @@ public class QIMInformationPasterManager
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-    jdField_a_of_type_JavaIoFile = InfoStickerSaveUtils.a();
-    jdField_a_of_type_JavaLangString = InfoStickerSaveUtils.a();
+    if (this.f != null)
+    {
+      Object localObject = this.g;
+      if (localObject != null)
+      {
+        localObject = (RelativeLayout)((WeakReference)localObject).get();
+        if (localObject != null)
+        {
+          ((RelativeLayout)localObject).removeView(this.f);
+          this.g = null;
+          this.f = null;
+        }
+      }
+    }
   }
   
   public void a(InformationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
@@ -122,7 +133,7 @@ public class QIMInformationPasterManager
     while (paramDoodleEmojiItem.hasNext())
     {
       InformationFacePackage.Item localItem = (InformationFacePackage.Item)paramDoodleEmojiItem.next();
-      if ((localItem.b == 1) && (!a(localItem))) {
+      if ((localItem.f == 1) && (!a(localItem))) {
         a(localItem, new QIMInformationPasterManager.3(this));
       }
     }
@@ -135,8 +146,8 @@ public class QIMInformationPasterManager
   
   public boolean a(InformationFacePackage.Item paramItem)
   {
-    if (TextUtils.isEmpty(paramItem.e)) {
-      return paramItem.a != 7;
+    if (TextUtils.isEmpty(paramItem.g)) {
+      return paramItem.c != 7;
     }
     if (!d(paramItem)) {
       return false;
@@ -160,29 +171,16 @@ public class QIMInformationPasterManager
     return false;
   }
   
-  public void b() {}
-  
   public boolean b(InformationFacePackage.Item paramItem)
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAioeditorCapturePasterQIMInformationPasterManager$InformationPasterResDownloader.a(paramItem.e);
+    return this.a.a(paramItem.g);
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-      if (localObject != null)
-      {
-        localObject = (RelativeLayout)((WeakReference)localObject).get();
-        if (localObject != null)
-        {
-          ((RelativeLayout)localObject).removeView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-          this.jdField_a_of_type_JavaLangRefWeakReference = null;
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-        }
-      }
-    }
+    this.b = BaseApplication.getContext();
+    c = InfoStickerSaveUtils.a();
+    d = InfoStickerSaveUtils.b();
   }
   
   public boolean c(InformationFacePackage.Item paramItem)
@@ -190,10 +188,10 @@ public class QIMInformationPasterManager
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
-      ((StringBuilder)localObject).append(paramItem.g);
+      ((StringBuilder)localObject).append(d);
+      ((StringBuilder)localObject).append(paramItem.i);
       ((StringBuilder)localObject).append("_");
-      ((StringBuilder)localObject).append(paramItem.f);
+      ((StringBuilder)localObject).append(paramItem.h);
       localObject = new File(((StringBuilder)localObject).toString());
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdir();
@@ -220,10 +218,12 @@ public class QIMInformationPasterManager
     }
     return false;
   }
+  
+  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.QIMInformationPasterManager
  * JD-Core Version:    0.7.0.1
  */

@@ -43,7 +43,7 @@ public class QQDebugWebSocket
   {
     this.miniAppContext = paramIMiniAppContext;
     this.gameInfo = paramMiniAppInfo;
-    this.TAG = "[debugger].QQDebugWebSocket";
+    TAG = "[debugger].QQDebugWebSocket";
   }
   
   private String covertProfileToIdeData(String paramString)
@@ -68,7 +68,7 @@ public class QQDebugWebSocket
   {
     try
     {
-      String str = this.TAG;
+      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("qq onSocketMessage cmd:");
       localStringBuilder.append(paramString1);
@@ -97,7 +97,7 @@ public class QQDebugWebSocket
     }
     catch (JSONException paramString1)
     {
-      QMLog.e(this.TAG, "qq onSocketMessage", paramString1);
+      QMLog.e(TAG, "qq onSocketMessage", paramString1);
     }
   }
   
@@ -124,7 +124,7 @@ public class QQDebugWebSocket
     }
     catch (JSONException paramString)
     {
-      QMLog.e(this.TAG, "qq onSocketMessage", paramString);
+      QMLog.e(TAG, "qq onSocketMessage", paramString);
     }
   }
   
@@ -142,7 +142,7 @@ public class QQDebugWebSocket
     }
     catch (JSONException paramString)
     {
-      QMLog.e(this.TAG, "qq onSocketMessage", paramString);
+      QMLog.e(TAG, "qq onSocketMessage", paramString);
     }
   }
   
@@ -164,7 +164,7 @@ public class QQDebugWebSocket
       dealDebugMessageMaster(paramString1, paramString2);
       return;
     }
-    String str = this.TAG;
+    String str = TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("qq onSocketMessage cmd:");
     localStringBuilder.append(paramString1);
@@ -249,7 +249,7 @@ public class QQDebugWebSocket
     }
     catch (Exception localException)
     {
-      String str = this.TAG;
+      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getSetupContexString error:");
       localStringBuilder.append(localException);
@@ -270,7 +270,7 @@ public class QQDebugWebSocket
     }
     catch (Exception localException)
     {
-      String str = this.TAG;
+      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getSetupContexString error:");
       localStringBuilder.append(localException);
@@ -308,7 +308,7 @@ public class QQDebugWebSocket
   private void sendQQDeviceMsgInfo()
   {
     String str1 = getSendCmdString("DebugMessageClient", "setupContext", getSetupContexData());
-    String str2 = this.TAG;
+    String str2 = TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("sendQQDeviceMsgInfo deviceInfoCmd:");
     localStringBuilder.append(str1);
@@ -356,7 +356,7 @@ public class QQDebugWebSocket
     }
     catch (Exception paramString1)
     {
-      paramString2 = this.TAG;
+      paramString2 = TAG;
       paramJSONObject = new StringBuilder();
       paramJSONObject.append("send Cmd error:");
       paramJSONObject.append(paramString1);
@@ -384,7 +384,7 @@ public class QQDebugWebSocket
   
   public void sendMessageToDebugger(@NonNull String paramString)
   {
-    Object localObject1 = this.TAG;
+    Object localObject1 = TAG;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("v8 onSocketMessage:");
     ((StringBuilder)localObject2).append(paramString);
@@ -404,7 +404,7 @@ public class QQDebugWebSocket
       }
       catch (JSONException localJSONException)
       {
-        QMLog.e(this.TAG, "v8 onSocketMessage error", localJSONException);
+        QMLog.e(TAG, "v8 onSocketMessage error", localJSONException);
       }
     }
     sendQQDebugMethodMsg("DebugMessageClient", covertV8ToIdeData(paramString));
@@ -438,7 +438,7 @@ public class QQDebugWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.QQDebugWebSocket
  * JD-Core Version:    0.7.0.1
  */

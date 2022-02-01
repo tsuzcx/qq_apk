@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.os.Process;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 
 public class VsDeviceInfo
 {
@@ -115,7 +116,7 @@ public class VsDeviceInfo
     }
     if (i != 0)
     {
-      str = ((TelephonyManager)this.context.getSystemService("phone")).getDeviceId();
+      str = PhoneInfoMonitor.getDeviceId((TelephonyManager)this.context.getSystemService("phone"));
       if (str == null) {
         return "";
       }
@@ -126,7 +127,7 @@ public class VsDeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsDeviceInfo
  * JD-Core Version:    0.7.0.1
  */

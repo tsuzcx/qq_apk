@@ -10,37 +10,37 @@ class ChatHistorySelectBottomBar$2
   
   public void a(View paramView)
   {
-    if ((ChatHistorySelectBottomBar.a(this.a)) && (ChatHistorySelectBottomBar.a(this.a) != null))
+    if ((ChatHistorySelectBottomBar.a(this.a)) && (ChatHistorySelectBottomBar.b(this.a) != null))
     {
-      if (paramView.getId() == 2131366035)
+      if (paramView.getId() == 2131432311)
       {
-        ChatHistorySelectBottomBar.a(this.a).a(1);
+        ChatHistorySelectBottomBar.b(this.a).a(1);
         return;
       }
-      if (paramView.getId() == 2131366040)
+      if (paramView.getId() == 2131432316)
       {
-        ChatHistorySelectBottomBar.a(this.a).a(3);
+        ChatHistorySelectBottomBar.b(this.a).a(3);
         return;
       }
-      if (paramView.getId() == 2131366037)
+      if (paramView.getId() == 2131432313)
       {
-        ChatHistorySelectBottomBar.a(this.a).a(2);
+        ChatHistorySelectBottomBar.b(this.a).a(2);
         return;
       }
-      if (paramView.getId() == 2131366034)
+      if (paramView.getId() == 2131432310)
       {
-        ChatHistorySelectBottomBar.a(this.a).a(4);
+        ChatHistorySelectBottomBar.b(this.a).a(4);
         return;
       }
-      if (paramView.getId() == 2131366036) {
-        ChatHistorySelectBottomBar.a(this.a).a(5);
+      if (paramView.getId() == 2131432312) {
+        ChatHistorySelectBottomBar.b(this.a).a(5);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.widget.ChatHistorySelectBottomBar.2
  * JD-Core Version:    0.7.0.1
  */

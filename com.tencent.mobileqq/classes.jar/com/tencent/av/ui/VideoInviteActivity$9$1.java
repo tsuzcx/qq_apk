@@ -10,24 +10,24 @@ class VideoInviteActivity$9$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    if (this.b.b.Q != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131373510, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363119, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363130, false);
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131363129, false);
+      this.b.b.Q.setViewEnable(2131441182, false);
+      this.b.b.Q.setViewEnable(2131428972, false);
+      this.b.b.Q.setViewEnable(2131428983, false);
+      this.b.b.Q.setViewEnable(2131428982, false);
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.c, 250);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.a().b(250);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.c, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.e = true;
-    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.finish();
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity$9.a.overridePendingTransition(0, 2130772219);
+    this.b.b.d().a(this.b.b.o, 250);
+    this.b.b.d().b(250);
+    this.b.b.d().b(this.b.b.o, this.a);
+    this.b.b.s = true;
+    QLog.d(this.b.b.a, 1, "onClose()-> onOutAnimationEnd ->finish  ");
+    this.b.b.finish();
+    this.b.b.overridePendingTransition(0, 2130772285);
   }
 }
 

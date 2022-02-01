@@ -7,14 +7,14 @@ public class DataReport$ShortCut_For_Effect
 {
   public static void a()
   {
-    DataReport.a("0X800A3D9", VideoController.a().a().d);
+    DataReport.a("0X800A3D9", VideoController.f().k().g);
   }
   
   public static void a(boolean paramBoolean)
   {
-    int i = VideoController.a().a().d;
+    SessionInfo localSessionInfo = VideoController.f().k();
     if (paramBoolean) {
-      DataReport.a("0X800A3DA", i);
+      AVUtil.a("0X800BC0C", DataReport.b(localSessionInfo), 2, "", "", "", "");
     }
   }
 }

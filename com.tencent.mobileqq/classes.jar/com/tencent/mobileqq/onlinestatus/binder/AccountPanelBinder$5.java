@@ -10,12 +10,12 @@ class AccountPanelBinder$5
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAccountPanelViewContainer.a(paramString);
+    this.a.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.binder.AccountPanelBinder.5
  * JD-Core Version:    0.7.0.1
  */

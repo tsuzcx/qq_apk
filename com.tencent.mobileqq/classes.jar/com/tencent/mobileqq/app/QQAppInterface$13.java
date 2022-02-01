@@ -16,7 +16,7 @@ class QQAppInterface$13
   public void onFinish(int paramInt)
   {
     if (paramInt == 0) {
-      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2200(this.this$0)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
+      PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2300(this.this$0)).edit().putLong("security_scan_last_time", System.currentTimeMillis()).putBoolean("security_scan_last_result", false).commit();
     }
   }
   
@@ -27,12 +27,12 @@ class QQAppInterface$13
     if (QLog.isColorLevel()) {
       QLog.d("security_scan", 2, "Find Risk");
     }
-    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2100(this.this$0)).edit().putBoolean("security_scan_last_result", true).commit();
+    PreferenceManager.getDefaultSharedPreferences(QQAppInterface.access$2200(this.this$0)).edit().putBoolean("security_scan_last_result", true).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.13
  * JD-Core Version:    0.7.0.1
  */

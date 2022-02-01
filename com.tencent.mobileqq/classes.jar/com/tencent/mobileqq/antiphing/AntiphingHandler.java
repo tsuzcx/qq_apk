@@ -42,45 +42,22 @@ public class AntiphingHandler
   extends WebViewPlugin
   implements BusinessObserver
 {
-  private int jdField_a_of_type_Int = 1;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout = null;
-  private AntiphishingUrlConfig jdField_a_of_type_ComTencentMobileqqAntiphingAntiphishingUrlConfig = null;
-  BrowserAppInterface jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  private AntiphingToast jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast = null;
-  private String jdField_a_of_type_JavaLangString = "Antiphishing";
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 1;
-  private boolean jdField_b_of_type_Boolean = true;
-  private final int c = 0;
-  private final int d = 1;
+  QQAppInterface a = null;
+  BrowserAppInterface b = null;
+  private boolean c = false;
+  private boolean d = true;
+  private int e = 1;
+  private String f = "Antiphishing";
+  private FrameLayout g = null;
+  private int h = 1;
+  private AntiphishingUrlConfig i = null;
+  private AntiphingToast j = null;
+  private final int k = 0;
+  private final int l = 1;
   
   public AntiphingHandler()
   {
     this.mPluginNameSpace = "InputClickEvent";
-  }
-  
-  private String a()
-  {
-    Object localObject2 = this.mRuntime;
-    Object localObject1 = null;
-    if (localObject2 != null)
-    {
-      localObject2 = this.mRuntime.a();
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-      }
-      if (localObject1 == null) {
-        return null;
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(((AppInterface)localObject1).getApplication().getFilesDir().getAbsolutePath());
-      ((StringBuilder)localObject2).append(File.separator);
-      ((StringBuilder)localObject2).append("antiphishingconfig.xml");
-      localObject1 = ((StringBuilder)localObject2).toString();
-    }
-    return localObject1;
   }
   
   private void a(int paramInt)
@@ -102,43 +79,100 @@ public class AntiphingHandler
   
   private boolean a(Context paramContext, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       if (QLog.isColorLevel()) {
-        a(this.jdField_a_of_type_JavaLangString, 2, "Toast Already Shown! yoffset ");
+        a(this.f, 2, "Toast Already Shown! yoffset ");
       }
       return false;
     }
     Object localObject;
     if (QLog.isColorLevel())
     {
-      paramContext = this.jdField_a_of_type_JavaLangString;
+      paramContext = this.f;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Show Toast! yoffset =  ");
       ((StringBuilder)localObject).append(paramInt);
       a(paramContext, 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout == null) && (this.mRuntime != null) && (this.mRuntime.a() != null)) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.mRuntime.a().findViewById(2131362722));
+    this.c = true;
+    if ((this.g == null) && (this.mRuntime != null) && (this.mRuntime.d() != null)) {
+      this.g = ((FrameLayout)this.mRuntime.d().findViewById(2131428408));
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast;
+    paramContext = this.j;
     if (paramContext != null)
     {
-      localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      localObject = this.g;
       if (localObject != null)
       {
-        paramContext.a(2131719708, 3000, (FrameLayout)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetAntiphingToast.a(paramString);
+        paramContext.a(2131917311, 3000, (FrameLayout)localObject);
+        this.j.a(paramString);
         return true;
       }
     }
     return false;
   }
   
-  private boolean a(String paramString)
+  private boolean a(String paramString, AntiphingHandler.InfoData paramInfoData)
   {
-    int i = 0;
+    if (paramString == null) {
+      return false;
+    }
+    String str = paramString.trim().toLowerCase().replace(" ", "");
+    boolean bool = str.endsWith("@qq.com");
+    Object localObject = this.a;
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = this.b;
+    }
+    if (paramString == null) {
+      return false;
+    }
+    paramString = paramString.getApplication().getAllAccounts();
+    if ((paramString != null) && (paramString.size() != 0))
+    {
+      int m = 0;
+      while (m < paramString.size())
+      {
+        localObject = (SimpleAccount)paramString.get(m);
+        if (localObject == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(this.f, 2, "sAccount == null!");
+          }
+        }
+        else
+        {
+          localObject = ((SimpleAccount)localObject).getUin();
+          if (localObject != null)
+          {
+            if (((String)localObject).equalsIgnoreCase(str))
+            {
+              paramInfoData.a = ((String)localObject);
+              paramInfoData.b = 1;
+              return true;
+            }
+            if ((bool == true) && (str.contains((CharSequence)localObject)))
+            {
+              paramInfoData.a = ((String)localObject);
+              paramInfoData.b = 2;
+              return true;
+            }
+          }
+        }
+        m += 1;
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.f, 2, "uin number is zero!");
+    }
+    return false;
+  }
+  
+  private boolean b(String paramString)
+  {
+    int m = 0;
     if (paramString == null) {
       return false;
     }
@@ -159,7 +193,7 @@ public class AntiphingHandler
     str = "";
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.f;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(" Is QQ Domain, input url  : ");
       localStringBuilder.append(Util.b(paramString, new String[0]));
@@ -176,18 +210,18 @@ public class AntiphingHandler
     {
       if (!bool)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAntiphingAntiphishingUrlConfig;
+        localObject = this.i;
         if (localObject != null)
         {
           localObject = ((AntiphishingUrlConfig)localObject).a();
           if (localObject != null) {
-            while (i < ((ArrayList)localObject).size())
+            while (m < ((ArrayList)localObject).size())
             {
-              if (str.endsWith((String)((ArrayList)localObject).get(i)))
+              if (str.endsWith((String)((ArrayList)localObject).get(m)))
               {
                 if (QLog.isColorLevel())
                 {
-                  localObject = this.jdField_a_of_type_JavaLangString;
+                  localObject = this.f;
                   localStringBuilder = new StringBuilder();
                   localStringBuilder.append(" Is trust Domain, match config, input url  : ");
                   localStringBuilder.append(paramString);
@@ -197,83 +231,39 @@ public class AntiphingHandler
                 }
                 return true;
               }
-              i += 1;
+              m += 1;
             }
           }
         }
       }
     }
     else if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Low Memory !");
+      QLog.d(this.f, 2, "Low Memory !");
     }
     return bool;
   }
   
-  private boolean a(String paramString, AntiphingHandler.InfoData paramInfoData)
+  private String c()
   {
-    if (paramString == null) {
-      return false;
-    }
-    String str = paramString.trim().toLowerCase().replace(" ", "");
-    boolean bool = str.endsWith("@qq.com");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    paramString = (String)localObject;
-    if (localObject == null) {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
-    }
-    if (paramString == null) {
-      return false;
-    }
-    paramString = paramString.getApplication().getAllAccounts();
-    if ((paramString != null) && (paramString.size() != 0))
+    Object localObject2 = this.mRuntime;
+    Object localObject1 = null;
+    if (localObject2 != null)
     {
-      int i = 0;
-      while (i < paramString.size())
-      {
-        localObject = (SimpleAccount)paramString.get(i);
-        if (localObject == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sAccount == null!");
-          }
-        }
-        else
-        {
-          localObject = ((SimpleAccount)localObject).getUin();
-          if (localObject != null)
-          {
-            if (((String)localObject).equalsIgnoreCase(str))
-            {
-              paramInfoData.jdField_a_of_type_JavaLangString = ((String)localObject);
-              paramInfoData.jdField_a_of_type_Int = 1;
-              return true;
-            }
-            if ((bool == true) && (str.contains((CharSequence)localObject)))
-            {
-              paramInfoData.jdField_a_of_type_JavaLangString = ((String)localObject);
-              paramInfoData.jdField_a_of_type_Int = 2;
-              return true;
-            }
-          }
-        }
-        i += 1;
+      localObject2 = this.mRuntime.b();
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
       }
-      return false;
+      if (localObject1 == null) {
+        return null;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((AppInterface)localObject1).getApplication().getFilesDir().getAbsolutePath());
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append("antiphishingconfig.xml");
+      localObject1 = ((StringBuilder)localObject2).toString();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uin number is zero!");
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    int i = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = i;
-    if (i > 1000000) {
-      this.jdField_a_of_type_Int = 1;
-    }
+    return localObject1;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, Long paramLong, int paramInt5)
@@ -281,7 +271,7 @@ public class AntiphingHandler
     Object localObject;
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Send a Packet to Server!, xffset = ");
       localStringBuilder.append(paramInt1);
@@ -313,19 +303,19 @@ public class AntiphingHandler
       ((antiphishingAlertQuery.RequestPack)localObject).i32_xoffset.set(paramInt1);
       ((antiphishingAlertQuery.RequestPack)localObject).i32_yoffset.set(paramInt2);
       ((antiphishingAlertQuery.RequestPack)localObject).str_url.set(paramString);
-      ((antiphishingAlertQuery.RequestPack)localObject).u32_seq.set(this.jdField_a_of_type_Int);
+      ((antiphishingAlertQuery.RequestPack)localObject).u32_seq.set(this.e);
       ((antiphishingAlertQuery.RequestPack)localObject).u32_proto_ver.set(1);
-      paramLong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramLong = this.a;
       paramString = paramLong;
       if (paramLong == null) {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
+        paramString = this.b;
       }
       if (paramString == null) {
         return;
       }
-      if (this.mRuntime.a() != null)
+      if (this.mRuntime.d() != null)
       {
-        paramLong = new NewIntent(this.mRuntime.a().getApplicationContext(), ProtoServlet.class);
+        paramLong = new NewIntent(this.mRuntime.d().getApplicationContext(), ProtoServlet.class);
         paramLong.putExtra("uin", paramString.getAccount());
         paramLong.putExtra("data", ((antiphishingAlertQuery.RequestPack)localObject).toByteArray());
         paramLong.putExtra("cmd", "SecuritySvc.UrlQuery");
@@ -337,33 +327,33 @@ public class AntiphingHandler
   
   public void a(String paramString)
   {
-    if (a(paramString))
+    if (b(paramString))
     {
       if (QLog.isColorLevel()) {
-        a(this.jdField_a_of_type_JavaLangString, 2, "IS QQ Domain! ");
+        a(this.f, 2, "IS QQ Domain! ");
       }
       return;
     }
     if (QLog.isColorLevel()) {
-      a(this.jdField_a_of_type_JavaLangString, 2, "The url is not QQ Domain and load js into webview");
+      a(this.f, 2, "The url is not QQ Domain and load js into webview");
     }
     callJs("(function(){var objs = document.getElementsByTagName(\"input\");for(var i=0;i<objs.length;i++){if(objs[i].type!='password'){objs[i].addEventListener('blur',function(e){  var valText =e.srcElement.value;var rect  = this.getBoundingClientRect();  var xoffset = rect.left + (document.documentElement.scrollLeft || document.body.scrollLeft || 0 ); var yoffset = rect.top + (document.documentElement.scrollTop || document.body.scrollTop || 0 ); var xWidth = rect.right - rect.left; var yHeight = rect.bottom -rect.top; valText = valText.replace(\"/\", \"_\"); if(valText.indexOf(\"/\") == -1){ var para = \"jsbridge://InputClickEvent/onClickInputCtrl/0/\" + valText + \"/\" + xoffset + \"/\" + yoffset + \"/\" + xWidth + \"/\" + yHeight;  window.open(para);}}, false);}}})();");
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
       if (QLog.isColorLevel()) {
-        a(this.jdField_a_of_type_JavaLangString, 2, "Dlg Already Shown! ");
+        a(this.f, 2, "Dlg Already Shown! ");
       }
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "On Show Dialog !");
+      QLog.d(this.f, 2, "On Show Dialog !");
     }
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (localActivity == null) {
       return;
     }
@@ -421,21 +411,21 @@ public class AntiphingHandler
   {
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("bShow =  ");
       localStringBuilder.append(paramBoolean);
       a(str, 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public boolean a()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject2 = this.a;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
+      localObject1 = this.b;
     }
     if (localObject1 == null) {
       return true;
@@ -448,36 +438,46 @@ public class AntiphingHandler
   
   public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    if (this.jdField_a_of_type_Boolean == true)
+    if (this.c == true)
     {
       if (QLog.isColorLevel()) {
-        a(this.jdField_a_of_type_JavaLangString, 2, "Already Shown Tips!!");
+        a(this.f, 2, "Already Shown Tips!!");
       }
       return false;
     }
     if (QLog.isColorLevel()) {
-      a(this.jdField_a_of_type_JavaLangString, 2, "Js is call back!");
+      a(this.f, 2, "Js is call back!");
     }
     AntiphingHandler.InfoData localInfoData = new AntiphingHandler.InfoData(this);
     if (!a(paramString1, localInfoData))
     {
       if (QLog.isColorLevel()) {
-        a(this.jdField_a_of_type_JavaLangString, 2, "The input value is not uin!");
+        a(this.f, 2, "The input value is not uin!");
       }
       return false;
     }
     try
     {
-      long l = Long.parseLong(localInfoData.jdField_a_of_type_JavaLangString);
-      int i = (int)Float.parseFloat(paramString3);
-      int j = (int)Float.parseFloat(paramString4);
-      int k = (int)Float.parseFloat(paramString5);
-      float f = Float.parseFloat(paramString6);
-      a(i, j, k, (int)f, paramString2, Long.valueOf(l), localInfoData.jdField_a_of_type_Int);
+      long l1 = Long.parseLong(localInfoData.a);
+      int m = (int)Float.parseFloat(paramString3);
+      int n = (int)Float.parseFloat(paramString4);
+      int i1 = (int)Float.parseFloat(paramString5);
+      float f1 = Float.parseFloat(paramString6);
+      a(m, n, i1, (int)f1, paramString2, Long.valueOf(l1), localInfoData.b);
       return true;
     }
     catch (Exception paramString1) {}
     return false;
+  }
+  
+  public void b()
+  {
+    this.c = false;
+    int m = this.e + 1;
+    this.e = m;
+    if (m > 1000000) {
+      this.e = 1;
+    }
   }
   
   public long getWebViewEventByNameSpace(String paramString)
@@ -489,7 +489,7 @@ public class AntiphingHandler
   {
     if (paramLong == 8589934594L)
     {
-      a();
+      b();
       a(paramString);
       return false;
     }
@@ -519,13 +519,13 @@ public class AntiphingHandler
   
   public void onActivityReady()
   {
-    AntiphishingUrlConfig localAntiphishingUrlConfig = this.jdField_a_of_type_ComTencentMobileqqAntiphingAntiphishingUrlConfig;
-    String str = a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface;
+    AntiphishingUrlConfig localAntiphishingUrlConfig = this.i;
+    String str = c();
+    Object localObject = this.b;
     if (localObject != null) {
       localObject = ((BrowserAppInterface)localObject).getApplication();
     } else {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
     }
     localAntiphishingUrlConfig.a(str, (Context)localObject);
   }
@@ -534,11 +534,11 @@ public class AntiphingHandler
   {
     if ((paramAppRuntime instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppRuntime);
+      this.a = ((QQAppInterface)paramAppRuntime);
       return;
     }
     if ((paramAppRuntime instanceof BrowserAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface = ((BrowserAppInterface)paramAppRuntime);
+      this.b = ((BrowserAppInterface)paramAppRuntime);
     }
   }
   
@@ -551,26 +551,26 @@ public class AntiphingHandler
   {
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.f;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("Received AlertQuery Server Packet! type = ");
       ((StringBuilder)localObject2).append(paramInt);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
     if (!paramBoolean) {
       return;
     }
-    if (this.mRuntime.a() == null) {
+    if (this.mRuntime.d() == null) {
       return;
     }
-    Context localContext = this.mRuntime.a().getApplicationContext();
-    Object localObject3 = localContext.getString(2131718646);
-    Object localObject4 = localContext.getString(2131718645);
-    Object localObject2 = localContext.getString(2131718644);
-    Object localObject1 = localContext.getString(2131718643);
+    Context localContext = this.mRuntime.d().getApplicationContext();
+    Object localObject3 = localContext.getString(2131916147);
+    Object localObject4 = localContext.getString(2131916146);
+    Object localObject2 = localContext.getString(2131916145);
+    Object localObject1 = localContext.getString(2131916144);
     antiphishingAlertQuery.ResponsePack localResponsePack;
     if ((paramBoolean) && (paramBundle != null)) {
       localResponsePack = new antiphishingAlertQuery.ResponsePack();
@@ -579,28 +579,28 @@ public class AntiphingHandler
     {
       localResponsePack.mergeFrom(paramBundle.getByteArray("data"));
       paramBoolean = localResponsePack.u32_alert_type.has();
-      int j = 0;
+      int n = 0;
       if (paramBoolean) {
         paramInt = localResponsePack.u32_alert_type.get();
       } else {
         paramInt = 0;
       }
-      int i;
+      int m;
       if (localResponsePack.u32_default_wording.has()) {
-        i = localResponsePack.u32_default_wording.get();
+        m = localResponsePack.u32_default_wording.get();
       } else {
-        i = 0;
+        m = 0;
       }
       if (paramInt == 1)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Safe Url! No ALert !");
+          QLog.d(this.f, 2, "Safe Url! No ALert !");
         }
       }
       else
       {
         paramBundle = (Bundle)localObject3;
-        if (i == 2) {
+        if (m == 2) {
           if ((paramInt == 2) && (localResponsePack.str_toast.has()))
           {
             paramBundle = localResponsePack.str_toast.get().toString();
@@ -647,7 +647,7 @@ public class AntiphingHandler
         label444:
         if (QLog.isColorLevel())
         {
-          paramBundle = this.jdField_a_of_type_JavaLangString;
+          paramBundle = this.f;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("toasttext:");
           ((StringBuilder)localObject2).append((String)localObject3);
@@ -662,36 +662,36 @@ public class AntiphingHandler
           QLog.d(paramBundle, 2, ((StringBuilder)localObject2).toString());
         }
         if (localResponsePack.u32_seq.has()) {
-          i = localResponsePack.u32_seq.get();
+          m = localResponsePack.u32_seq.get();
         } else {
-          i = 0;
+          m = 0;
         }
-        if (i == this.jdField_a_of_type_Int)
+        if (m == this.e)
         {
           if (paramInt == 2)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onReceive: Show Tips");
+              QLog.d(this.f, 2, "onReceive: Show Tips");
             }
             a(localContext, (String)localObject3, 104);
           }
           else if (paramInt == 3)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_JavaLangString, 2, "onReceive: Show Dlg");
+              QLog.d(this.f, 2, "onReceive: Show Dlg");
             }
             a((String)localObject4, localObject5, (String)localObject6, (String)localObject1);
           }
           else if (QLog.isDevelopLevel())
           {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 4, "onReceive: UnknowType ");
+            QLog.d(this.f, 4, "onReceive: UnknowType ");
           }
         }
         else if (QLog.isDevelopLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 4, "onReceive: Sequence Changed!");
+          QLog.d(this.f, 4, "onReceive: Sequence Changed!");
         }
       }
-      paramInt = j;
+      paramInt = n;
       if (localResponsePack.u32_svr_url_ver.has()) {
         paramInt = localResponsePack.u32_svr_url_ver.get();
       }
@@ -707,14 +707,14 @@ public class AntiphingHandler
       }
       if ((paramInt != 0) && (paramBundle != null) && (localObject1 != null))
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAntiphingAntiphishingUrlConfig;
+        localObject2 = this.i;
         if (localObject2 != null) {
           ((AntiphishingUrlConfig)localObject2).a(paramInt, paramBundle, (String)localObject1, localContext);
         }
       }
       else if (QLog.isDevelopLevel())
       {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 4, "onReceive: types unknow !");
+        QLog.d(this.f, 4, "onReceive: types unknow !");
       }
       return;
     }
@@ -723,7 +723,7 @@ public class AntiphingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphingHandler
  * JD-Core Version:    0.7.0.1
  */

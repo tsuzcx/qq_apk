@@ -11,17 +11,17 @@ class IntimateInfoShareHelper$5
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(IntimateInfoShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper), paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(IntimateInfoShareHelper.e(this.b), paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateInfoShareHelper.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.b.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.5
  * JD-Core Version:    0.7.0.1
  */

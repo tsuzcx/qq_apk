@@ -123,7 +123,7 @@ public class IntimateInfoHandler
     boolean bool;
     if (i == 0)
     {
-      ((IntimateInfoManager)this.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(paramToServiceMsg);
+      ((IntimateInfoManager)this.a.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).b(paramToServiceMsg);
       bool = true;
     }
     else
@@ -405,8 +405,8 @@ public class IntimateInfoHandler
             } else {
               k = 0;
             }
-            paramObject.jdField_a_of_type_Long = l;
-            paramObject.jdField_a_of_type_Int = k;
+            paramObject.a = l;
+            paramObject.b = k;
             paramFromServiceMsg.add(paramObject);
             j += 1;
           }
@@ -669,7 +669,7 @@ public class IntimateInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimateInfoHandler
  * JD-Core Version:    0.7.0.1
  */

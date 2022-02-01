@@ -20,9 +20,13 @@ import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.service.message.MessageUtils;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem.TroopEssenceMsgItemKey;
 import com.tencent.mobileqq.troop.essencemsg.TroopEssenceUtil;
+import com.tencent.mobileqq.troop.todo.TroopTodoReportUtils;
+import com.tencent.mobileqq.troop.todo.TroopTodoUtils;
+import com.tencent.mobileqq.troop.todo.TroopTodoUtils.TroopTodoMsgItemKey;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
@@ -35,7 +39,6 @@ import mqq.app.AppRuntime;
 public class BaseBubbleBuilderMenuHelper
 {
   public static int a = 1;
-  public static HashMap<Integer, QQCustomMenuItem> a;
   public static int b = 2;
   public static int c = 4;
   public static int d = 8;
@@ -51,46 +54,50 @@ public class BaseBubbleBuilderMenuHelper
   public static int n = 8192;
   public static int o = 16384;
   public static int p = 32768;
+  public static int q = 65536;
+  public static int r = 131072;
+  public static HashMap<Integer, QQCustomMenuItem> s = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(jdField_a_of_type_Int), new QQCustomMenuItem(2131365311, localBaseApplication.getString(2131691293), 2130838904));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(b), new QQCustomMenuItem(2131367180, localBaseApplication.getString(2131692644), 2130838912));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(c), new QQCustomMenuItem(2131371562, localBaseApplication.getString(2131694322), 2130838920));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(d), new QQCustomMenuItem(2131371603, localBaseApplication.getString(2131694356), 2130838922));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(e), new QQCustomMenuItem(2131365480, localBaseApplication.getString(2131690788), 2130838907));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(f), new QQCustomMenuItem(2131366308, localBaseApplication.getString(2131719846), 0));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(g), new QQCustomMenuItem(2131366309, localBaseApplication.getString(2131719847), 0));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(h), new QQCustomMenuItem(2131366494, localBaseApplication.getString(2131692184), 2130838911));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), new QQCustomMenuItem(2131380215, localBaseApplication.getString(2131690921), 0));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), new QQCustomMenuItem(2131376417, localBaseApplication.getString(2131697695), 2130838918));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(k), new QQCustomMenuItem(2131376430, localBaseApplication.getString(2131697701), 2130838918));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(l), new QQCustomMenuItem(2131362480, localBaseApplication.getString(2131689936), 2130838922));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(o), new QQCustomMenuItem(2131362480, localBaseApplication.getString(2131689936), 2130838922));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(m), new QQCustomMenuItem(2131376471, localBaseApplication.getString(2131718154), 2130838919));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(n), new QQCustomMenuItem(2131364271, localBaseApplication.getString(2131690787), 2130838901));
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(p), new QQCustomMenuItem(2131367202, localBaseApplication.getString(2131692644), 2130838912));
+    s.put(Integer.valueOf(a), new QQCustomMenuItem(2131431492, localBaseApplication.getString(2131888243), 2130839058));
+    s.put(Integer.valueOf(b), new QQCustomMenuItem(2131433636, localBaseApplication.getString(2131889668), 2130839066));
+    s.put(Integer.valueOf(c), new QQCustomMenuItem(2131438943, localBaseApplication.getString(2131891960), 2130839074));
+    s.put(Integer.valueOf(d), new QQCustomMenuItem(2131439015, localBaseApplication.getString(2131892030), 2130839076));
+    s.put(Integer.valueOf(e), new QQCustomMenuItem(2131431695, localBaseApplication.getString(2131887718), 2130839061));
+    s.put(Integer.valueOf(f), new QQCustomMenuItem(2131432607, localBaseApplication.getString(2131917451), 0));
+    s.put(Integer.valueOf(g), new QQCustomMenuItem(2131432608, localBaseApplication.getString(2131917452), 0));
+    s.put(Integer.valueOf(h), new QQCustomMenuItem(2131432813, localBaseApplication.getString(2131889171), 2130839065));
+    s.put(Integer.valueOf(i), new QQCustomMenuItem(2131449133, localBaseApplication.getString(2131887860), 0));
+    s.put(Integer.valueOf(j), new QQCustomMenuItem(2131444634, localBaseApplication.getString(2131895468), 2130839072));
+    s.put(Integer.valueOf(k), new QQCustomMenuItem(2131444651, localBaseApplication.getString(2131895474), 2130839072));
+    s.put(Integer.valueOf(l), new QQCustomMenuItem(2131428089, localBaseApplication.getString(2131886577), 2130839076));
+    s.put(Integer.valueOf(o), new QQCustomMenuItem(2131428089, localBaseApplication.getString(2131886577), 2130839076));
+    s.put(Integer.valueOf(m), new QQCustomMenuItem(2131444710, localBaseApplication.getString(2131915632), 2130839073));
+    s.put(Integer.valueOf(n), new QQCustomMenuItem(2131430288, localBaseApplication.getString(2131887713), 2130839055));
+    s.put(Integer.valueOf(p), new QQCustomMenuItem(2131433658, localBaseApplication.getString(2131889668), 2130839066));
+    s.put(Integer.valueOf(q), new QQCustomMenuItem(2131430651, localBaseApplication.getString(2131887753), 0));
+    s.put(Integer.valueOf(r), new QQCustomMenuItem(2131430283, localBaseApplication.getString(2131887714), 0));
   }
   
   public static QQCustomMenuItem a(int paramInt)
   {
-    return (QQCustomMenuItem)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    return (QQCustomMenuItem)s.get(Integer.valueOf(paramInt));
   }
   
   public static void a(int paramInt, QQCustomMenu paramQQCustomMenu)
   {
     QQCustomMenuItem localQQCustomMenuItem = a(paramInt);
-    paramQQCustomMenu.a(localQQCustomMenuItem.a(), localQQCustomMenuItem.a(), localQQCustomMenuItem.b());
+    paramQQCustomMenu.a(localQQCustomMenuItem.b(), localQQCustomMenuItem.a(), localQQCustomMenuItem.c());
   }
   
   public static void a(@NonNull ChatMessage paramChatMessage, @NonNull QQCustomMenu paramQQCustomMenu)
   {
-    if ((!AppSetting.j) && (paramChatMessage.istroop == 0)) {
+    if ((!AppSetting.o) && (paramChatMessage.istroop == 0)) {
       return;
     }
-    if (UinTypeUtil.a(paramChatMessage.istroop) == 1032) {
+    if (UinTypeUtil.e(paramChatMessage.istroop) == 1032) {
       return;
     }
     a(e, paramQQCustomMenu);
@@ -118,14 +125,14 @@ public class BaseBubbleBuilderMenuHelper
     if ((!paramMessageRecord.isSend()) && (!TroopUtils.a((QQAppInterface)localObject1, paramMessageRecord, ((QQAppInterface)localObject1).getCurrentAccountUin()))) {
       return;
     }
-    if ((AnonymousChatHelper.a(paramMessageRecord)) && (!TroopAnonyRevokeConfProcessor.a().a)) {
+    if ((AnonymousChatHelper.c(paramMessageRecord)) && (!TroopAnonyRevokeConfProcessor.a().a)) {
       return;
     }
-    if (UinTypeUtil.a(paramMessageRecord.istroop) == 1032) {
+    if (UinTypeUtil.e(paramMessageRecord.istroop) == 1032) {
       return;
     }
     Object localObject2 = (FriendsManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((paramMessageRecord.istroop == 0) && (!((FriendsManager)localObject2).b(paramMessageRecord.frienduin))) {
+    if ((paramMessageRecord.istroop == 0) && (!((FriendsManager)localObject2).n(paramMessageRecord.frienduin))) {
       return;
     }
     if (paramMessageRecord.istroop == 1)
@@ -157,6 +164,11 @@ public class BaseBubbleBuilderMenuHelper
         paramQQCustomMenu.a(new String[] { localObject2, paramMessageRecord }).a();
       }
     }
+  }
+  
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, Long paramLong)
+  {
+    ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString, paramString, 0, 0, String.valueOf(TroopTodoReportUtils.a(paramQQAppInterface, paramLong.longValue())), String.valueOf(TroopTodoReportUtils.a(paramChatMessage)), TroopTodoReportUtils.b(paramChatMessage), "");
   }
   
   private static boolean a(MessageRecord paramMessageRecord)
@@ -237,7 +249,7 @@ public class BaseBubbleBuilderMenuHelper
       {
         localObject = (QQAppInterface)localObject;
         if (paramChatMessage.istroop == 1) {
-          if ((!RobotUtils.a((QQAppInterface)localObject, paramChatMessage.senderuin)) && (!AnonymousChatHelper.a(paramChatMessage)) && (!ConfessMsgUtil.a(paramChatMessage)) && (!"1000000".equals(paramChatMessage.senderuin)) && (paramChatMessage.isSupportReply()))
+          if ((!RobotUtils.a((QQAppInterface)localObject, paramChatMessage.senderuin)) && (!AnonymousChatHelper.c(paramChatMessage)) && (!ConfessMsgUtil.b(paramChatMessage)) && (!"1000000".equals(paramChatMessage.senderuin)) && (paramChatMessage.isSupportReply()))
           {
             if (!paramChatMessage.isSend())
             {
@@ -253,9 +265,9 @@ public class BaseBubbleBuilderMenuHelper
             paramQQCustomMenu = new StringBuilder("addReplyOnlyMenu isRobot=");
             paramQQCustomMenu.append(RobotUtils.a((QQAppInterface)localObject, paramChatMessage.senderuin));
             paramQQCustomMenu.append(" isAnonymousMsg=");
-            paramQQCustomMenu.append(AnonymousChatHelper.a(paramChatMessage));
+            paramQQCustomMenu.append(AnonymousChatHelper.c(paramChatMessage));
             paramQQCustomMenu.append(" isConfessMsg=");
-            paramQQCustomMenu.append(ConfessMsgUtil.a(paramChatMessage));
+            paramQQCustomMenu.append(ConfessMsgUtil.b(paramChatMessage));
             paramQQCustomMenu.append(" isNotSupport=");
             paramQQCustomMenu.append(paramChatMessage.isSupportReply() ^ true);
             QLog.d("BaseBubbleBuilderMenuHelper", 2, paramQQCustomMenu.toString());
@@ -266,6 +278,49 @@ public class BaseBubbleBuilderMenuHelper
   }
   
   public static void d(ChatMessage paramChatMessage, QQCustomMenu paramQQCustomMenu)
+  {
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      localObject = BaseApplicationImpl.getApplication().peekAppRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        break label36;
+      }
+    }
+    Object localObject = null;
+    label36:
+    if (localObject == null) {
+      return;
+    }
+    if (paramChatMessage.istroop == 1)
+    {
+      long l1 = 0L;
+      try
+      {
+        long l2 = Long.parseLong(paramChatMessage.frienduin);
+        l1 = l2;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      int i1 = TroopTodoUtils.a((QQAppInterface)localObject, new TroopTodoUtils.TroopTodoMsgItemKey(l1, paramChatMessage.shmsgseq, MessageUtils.b(paramChatMessage.msgUid)), paramChatMessage, l1);
+      if (i1 == 2)
+      {
+        a(r, paramQQCustomMenu);
+        a("0X800BC6E", (QQAppInterface)localObject, paramChatMessage, Long.valueOf(l1));
+        return;
+      }
+      if (i1 == 1)
+      {
+        a(q, paramQQCustomMenu);
+        a("0X800BC6C", (QQAppInterface)localObject, paramChatMessage, Long.valueOf(l1));
+      }
+    }
+  }
+  
+  public static void e(ChatMessage paramChatMessage, QQCustomMenu paramQQCustomMenu)
   {
     if (BaseApplicationImpl.sProcessId == 1)
     {
@@ -307,7 +362,7 @@ public class BaseBubbleBuilderMenuHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseBubbleBuilderMenuHelper
  * JD-Core Version:    0.7.0.1
  */

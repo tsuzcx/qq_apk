@@ -37,14 +37,14 @@ class ReadInjoyIMAXAdFragment$2
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).removeMessages(-2);
-    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment).sendEmptyMessage(-2);
+    ReadInjoyIMAXAdFragment.a(this.c, this.a, this.b);
+    ReadInjoyIMAXAdFragment.e(this.c).removeMessages(-2);
+    ReadInjoyIMAXAdFragment.e(this.c).sendEmptyMessage(-2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.2
  * JD-Core Version:    0.7.0.1
  */

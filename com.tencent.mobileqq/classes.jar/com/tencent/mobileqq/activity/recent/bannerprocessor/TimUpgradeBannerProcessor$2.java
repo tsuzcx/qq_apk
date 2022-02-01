@@ -20,9 +20,9 @@ class TimUpgradeBannerProcessor$2
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)TimUpgradeBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorTimUpgradeBannerProcessor).getAppRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.a();
-    UpgradeTIMWrapper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper);
+    QQAppInterface localQQAppInterface = (QQAppInterface)TimUpgradeBannerProcessor.c(this.b).getAppRuntime();
+    this.a.b();
+    UpgradeTIMWrapper.a(localQQAppInterface, this.a);
     BannerManager.a().a(TimUpgradeBannerProcessor.a, 0, null);
     ReportController.b(localQQAppInterface, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -30,7 +30,7 @@ class TimUpgradeBannerProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.TimUpgradeBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

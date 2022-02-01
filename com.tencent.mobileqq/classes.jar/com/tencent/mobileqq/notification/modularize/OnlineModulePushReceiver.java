@@ -39,14 +39,14 @@ public final class OnlineModulePushReceiver
   
   private final void a(PushComponent paramPushComponent, Notification paramNotification)
   {
-    QQNotificationManager.getInstance().notify("OnlineModulePushReceiver", paramPushComponent.jdField_d_of_type_Int, paramNotification);
+    QQNotificationManager.getInstance().notify("OnlineModulePushReceiver", paramPushComponent.d, paramNotification);
     this.a.vibratorAndAudio();
-    ((Map)OnlineModulePushReceiverKt.a()).put(Integer.valueOf(paramPushComponent.jdField_d_of_type_Int), Integer.valueOf(paramPushComponent.jdField_a_of_type_Int));
-    ReportController.b(null, "dc00898", "", "", "0X800AE73", "0X800AE73", paramPushComponent.jdField_a_of_type_Int, 0, String.valueOf(paramPushComponent.jdField_b_of_type_Int), String.valueOf(paramPushComponent.jdField_c_of_type_Int), "", "");
+    ((Map)OnlineModulePushReceiverKt.b()).put(Integer.valueOf(paramPushComponent.d), Integer.valueOf(paramPushComponent.a));
+    ReportController.b(null, "dc00898", "", "", "0X800AE73", "0X800AE73", paramPushComponent.a, 0, String.valueOf(paramPushComponent.b), String.valueOf(paramPushComponent.c), "", "");
     paramNotification = PushUtil.a;
     String str = this.a.getCurrentUin();
     Intrinsics.checkExpressionValueIsNotNull(str, "app.currentUin");
-    paramNotification.a(str, 117, String.valueOf(paramPushComponent.jdField_c_of_type_Int), paramPushComponent.e);
+    paramNotification.a(str, 117, String.valueOf(paramPushComponent.c), paramPushComponent.i);
   }
   
   private final void a(PushComponent paramPushComponent, ByteStringMicro paramByteStringMicro)
@@ -64,9 +64,9 @@ public final class OnlineModulePushReceiver
       {
         paramByteStringMicro = paramByteStringMicro.getBytes(localCharset);
         Intrinsics.checkExpressionValueIsNotNull(paramByteStringMicro, "(this as java.lang.String).getBytes(charset)");
-        paramPushComponent.jdField_a_of_type_ArrayOfByte = paramByteStringMicro;
+        paramPushComponent.n = paramByteStringMicro;
         Intrinsics.checkExpressionValueIsNotNull(localObject, "triggerInfo");
-        paramPushComponent.e = ((String)localObject);
+        paramPushComponent.i = ((String)localObject);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
@@ -89,17 +89,17 @@ public final class OnlineModulePushReceiver
       }
       return;
     }
-    if ((paramPushComponent.jdField_d_of_type_Boolean) && (paramPushComponent.jdField_c_of_type_Boolean))
+    if ((paramPushComponent.m) && (paramPushComponent.l))
     {
       a(paramPushComponent, (Notification)localObject);
       return;
     }
-    if ((paramPushComponent.jdField_d_of_type_Boolean) && (bool))
+    if ((paramPushComponent.m) && (bool))
     {
       a(paramPushComponent, (Notification)localObject);
       return;
     }
-    if ((paramPushComponent.jdField_c_of_type_Boolean) && (!bool))
+    if ((paramPushComponent.l) && (!bool))
     {
       a(paramPushComponent, (Notification)localObject);
       return;
@@ -115,7 +115,7 @@ public final class OnlineModulePushReceiver
   
   private final void c(PushComponent paramPushComponent)
   {
-    QQNotificationManager.getInstance().cancel("OnlineModulePushReceiver", paramPushComponent.jdField_d_of_type_Int);
+    QQNotificationManager.getInstance().cancel("OnlineModulePushReceiver", paramPushComponent.d);
   }
   
   @NotNull
@@ -125,16 +125,16 @@ public final class OnlineModulePushReceiver
     PushComponent localPushComponent = new PushComponent();
     Object localObject = paramMsgBody.msg_content.str_title.get();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "msgBody.msg_content.str_title.get()");
-    localPushComponent.jdField_a_of_type_JavaLangString = ((String)localObject);
+    localPushComponent.e = ((String)localObject);
     localObject = paramMsgBody.msg_content.msg_image.str_url.get();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "msgBody.msg_content.msg_image.str_url.get()");
-    localPushComponent.jdField_b_of_type_JavaLangString = ((String)localObject);
+    localPushComponent.f = ((String)localObject);
     localObject = paramMsgBody.msg_content.str_desc.get();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "msgBody.msg_content.str_desc.get()");
-    localPushComponent.jdField_c_of_type_JavaLangString = ((String)localObject);
+    localPushComponent.g = ((String)localObject);
     localObject = paramMsgBody.msg_content.msg_forward.str_url.get();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "msgBody.msg_content.msg_forward.str_url.get()");
-    localPushComponent.jdField_d_of_type_JavaLangString = ((String)localObject);
+    localPushComponent.h = ((String)localObject);
     int i = paramMsgBody.msg_content.msg_forward.uint32_type.get();
     boolean bool2 = false;
     boolean bool1;
@@ -143,24 +143,24 @@ public final class OnlineModulePushReceiver
     } else {
       bool1 = false;
     }
-    localPushComponent.jdField_a_of_type_Boolean = bool1;
-    localPushComponent.jdField_a_of_type_Int = paramMsgBody.int32_service_id.get();
-    localPushComponent.jdField_b_of_type_Int = paramMsgBody.int32_sub_service_id.get();
-    localPushComponent.jdField_d_of_type_Int = paramMsgBody.int32_notify_id.get();
-    localPushComponent.jdField_c_of_type_Int = paramMsgBody.int32_push_id.get();
+    localPushComponent.j = bool1;
+    localPushComponent.a = paramMsgBody.int32_service_id.get();
+    localPushComponent.b = paramMsgBody.int32_sub_service_id.get();
+    localPushComponent.d = paramMsgBody.int32_notify_id.get();
+    localPushComponent.c = paramMsgBody.int32_push_id.get();
     if (paramMsgBody.int32_recall_flag.get() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    localPushComponent.jdField_b_of_type_Boolean = bool1;
+    localPushComponent.k = bool1;
     i = paramMsgBody.int32_type.get();
     if ((i != 1) && (i != 2)) {
       bool1 = false;
     } else {
       bool1 = true;
     }
-    localPushComponent.jdField_c_of_type_Boolean = bool1;
+    localPushComponent.l = bool1;
     if (i != 0)
     {
       bool1 = bool2;
@@ -170,10 +170,10 @@ public final class OnlineModulePushReceiver
     {
       bool1 = true;
     }
-    localPushComponent.jdField_d_of_type_Boolean = bool1;
+    localPushComponent.m = bool1;
     localObject = paramMsgBody.msg_content.bytes_ext_data.get().toByteArray();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "msgBody.msg_content.byte…_data.get().toByteArray()");
-    localPushComponent.jdField_a_of_type_ArrayOfByte = ((byte[])localObject);
+    localPushComponent.n = ((byte[])localObject);
     paramMsgBody = paramMsgBody.msg_content.bytes_ext_data.get();
     Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.msg_content.bytes_ext_data.get()");
     a(localPushComponent, paramMsgBody);
@@ -199,7 +199,7 @@ public final class OnlineModulePushReceiver
       QLog.d("OnlineModulePushReceiver", 1, new Object[] { "onPushReceived: called. ", localStringBuilder.toString() });
       return;
     }
-    if (paramPushComponent.jdField_b_of_type_Boolean)
+    if (paramPushComponent.k)
     {
       c(paramPushComponent);
       return;
@@ -226,7 +226,7 @@ public final class OnlineModulePushReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.OnlineModulePushReceiver
  * JD-Core Version:    0.7.0.1
  */

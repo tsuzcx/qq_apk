@@ -15,7 +15,7 @@ class TavPlayerProxy
       b(paramSendMsgTavEvent, paramTavPlayer);
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("composition");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("composition");
     if ((paramSendMsgTavEvent instanceof TAVComposition)) {
       paramTavPlayer.a((TAVComposition)paramSendMsgTavEvent, false);
     }
@@ -39,7 +39,7 @@ class TavPlayerProxy
       c(paramSendMsgTavEvent, paramTavPlayer);
       return;
     }
-    paramSendMsgTavEvent = paramSendMsgTavEvent.a("videoView");
+    paramSendMsgTavEvent = paramSendMsgTavEvent.b("videoView");
     if (!(paramSendMsgTavEvent instanceof TavVideoView))
     {
       b("videoView");
@@ -60,7 +60,7 @@ class TavPlayerProxy
       d(paramSendMsgTavEvent, paramTavPlayer);
       return;
     }
-    paramTavPlayer.c();
+    paramTavPlayer.d();
     a();
   }
   
@@ -71,7 +71,7 @@ class TavPlayerProxy
       e(paramSendMsgTavEvent, paramTavPlayer);
       return;
     }
-    paramTavPlayer.b();
+    paramTavPlayer.c();
     a();
   }
   
@@ -82,7 +82,7 @@ class TavPlayerProxy
       b(paramSendMsgTavEvent);
       return;
     }
-    paramTavPlayer.a(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("time")));
+    paramTavPlayer.a(ObjConvector.b(paramSendMsgTavEvent.c().getJSONObject("time")));
     a();
   }
   
@@ -92,7 +92,7 @@ class TavPlayerProxy
     TavPlayer localTavPlayer = new TavPlayer();
     if ("composition".equals(paramObjCreateTavEvent.b()))
     {
-      paramObjCreateTavEvent = paramObjCreateTavEvent.a("composition");
+      paramObjCreateTavEvent = paramObjCreateTavEvent.b("composition");
       if ((paramObjCreateTavEvent instanceof TAVComposition)) {
         localTavPlayer.a((TAVComposition)paramObjCreateTavEvent, false);
       }
@@ -104,7 +104,7 @@ class TavPlayerProxy
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TavPlayer))
     {
       b();
@@ -115,7 +115,7 @@ class TavPlayerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

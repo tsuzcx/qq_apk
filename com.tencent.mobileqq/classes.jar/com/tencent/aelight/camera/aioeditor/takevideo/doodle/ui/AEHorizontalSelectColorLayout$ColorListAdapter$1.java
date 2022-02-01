@@ -11,27 +11,27 @@ class AEHorizontalSelectColorLayout$ColorListAdapter$1
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorVH.getAdapterPosition();
-    AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter, i);
-    if (i < AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter))
+    int i = this.a.getAdapterPosition();
+    AEHorizontalSelectColorLayout.ColorListAdapter.b(this.b, i);
+    if (i < AEHorizontalSelectColorLayout.ColorListAdapter.a(this.b))
     {
-      if (AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter) != null) {
-        AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter).a(0, 0);
+      if (AEHorizontalSelectColorLayout.ColorListAdapter.b(this.b) != null) {
+        AEHorizontalSelectColorLayout.ColorListAdapter.b(this.b).a(0, 0);
       }
     }
     else
     {
-      i = ((Integer)AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter).get(i - AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter))).intValue();
-      if (AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter) != null) {
-        AEHorizontalSelectColorLayout.ColorListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter).a(1, i);
+      i = ((Integer)AEHorizontalSelectColorLayout.ColorListAdapter.c(this.b).get(i - AEHorizontalSelectColorLayout.ColorListAdapter.a(this.b))).intValue();
+      if (AEHorizontalSelectColorLayout.ColorListAdapter.b(this.b) != null) {
+        AEHorizontalSelectColorLayout.ColorListAdapter.b(this.b).a(1, i);
       }
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$ColorListAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.AEHorizontalSelectColorLayout.ColorListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

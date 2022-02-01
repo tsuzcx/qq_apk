@@ -13,16 +13,16 @@ class Rdm$1
   
   public void run()
   {
-    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
+    PatchConfig localPatchConfig = PatchConfigManager.b(BaseApplicationImpl.sApplication, "dex");
     if ((localPatchConfig != null) && (localPatchConfig.a(BaseApplicationImpl.sApplication, BaseApplicationImpl.processName))) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localPatchConfig.b(), 0);
+      PatchSharedPreUtil.updateCountFailStartupPatch(BaseApplicationImpl.sApplication, this.a, localPatchConfig.e(), 0);
     }
-    QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
+    QFixApplicationImpl.resetNTryCount(BaseApplicationImpl.sApplication);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.Rdm.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,6 @@ import org.json.JSONObject;
 
 public class ReadInJoyNoteCardUtil
 {
-  static float a()
-  {
-    AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
-    if (Build.MODEL.startsWith("NXT")) {
-      return localAladdinConfig.getFloatFromString("blow_level_android_huawei_mate_8", 0.95F);
-    }
-    return localAladdinConfig.getFloatFromString("blow_level_android", 1.0F);
-  }
-  
   public static int a()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
@@ -57,11 +48,6 @@ public class ReadInJoyNoteCardUtil
     return 0;
   }
   
-  public static String a()
-  {
-    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_maintext", "");
-  }
-  
   public static void a(Context paramContext, String paramString, int paramInt)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
@@ -91,11 +77,6 @@ public class ReadInJoyNoteCardUtil
     paramContext.apply();
   }
   
-  public static int b()
-  {
-    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_sum", 5);
-  }
-  
   public static int b(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
@@ -107,7 +88,7 @@ public class ReadInJoyNoteCardUtil
   
   public static String b()
   {
-    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_smalltext", "");
+    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_maintext", "");
   }
   
   public static void b(Context paramContext, String paramString, long paramLong)
@@ -128,11 +109,6 @@ public class ReadInJoyNoteCardUtil
     localStringBuilder.append(paramString);
     paramContext.putString(localStringBuilder.toString(), localJSONObject.toString());
     paramContext.apply();
-  }
-  
-  public static int c()
-  {
-    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_daily", 3);
   }
   
   public static int c(Context paramContext, String paramString)
@@ -161,12 +137,36 @@ public class ReadInJoyNoteCardUtil
   
   public static String c()
   {
+    return Aladdin.getConfig(217).getString("zhitiao_feeds_return_smalltext", "");
+  }
+  
+  public static String d()
+  {
     return Aladdin.getConfig(217).getString("zhitiao_feeds_text", "");
+  }
+  
+  public static int e()
+  {
+    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_sum", 5);
+  }
+  
+  public static int f()
+  {
+    return Aladdin.getConfig(217).getIntegerFromString("guide_card_max_daily", 3);
+  }
+  
+  static float g()
+  {
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(217);
+    if (Build.MODEL.startsWith("NXT")) {
+      return localAladdinConfig.getFloatFromString("blow_level_android_huawei_mate_8", 0.95F);
+    }
+    return localAladdinConfig.getFloatFromString("blow_level_android", 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.notecard.ReadInJoyNoteCardUtil
  * JD-Core Version:    0.7.0.1
  */

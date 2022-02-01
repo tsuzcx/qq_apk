@@ -16,12 +16,12 @@ class IdentificationApiPlugin$5
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     paramArrayOfString = this.a;
-    IdentificationApiPlugin.a(paramArrayOfString, paramArrayOfString.a);
+    IdentificationApiPlugin.a(paramArrayOfString, paramArrayOfString.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.IdentificationApiPlugin.5
  * JD-Core Version:    0.7.0.1
  */

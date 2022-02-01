@@ -21,7 +21,7 @@ public class StoryDetailPresenter$GetUserInfoReceiver
       return;
     }
     SLog.a(this.TAG, "receive user info event. %s.", paramUpdateUserInfoEvent.toString());
-    StoryDetailPresenter.a(paramStoryDetailPresenter).c();
+    StoryDetailPresenter.e(paramStoryDetailPresenter).c();
   }
   
   public Class acceptEventClass()

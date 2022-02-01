@@ -12,7 +12,7 @@ class RecommendTroopServiceImpl$2
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiImplRecommendTroopServiceImpl.mGetRecommmendTroopLock.append(2, Boolean.valueOf(false));
+    this.b.mGetRecommmendTroopLock.append(2, Boolean.valueOf(false));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -25,7 +25,7 @@ class RecommendTroopServiceImpl$2
       paramBundle = paramBundle.getByteArray("data");
       if (paramBundle != null)
       {
-        RecommendTroopServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplRecommendTroopServiceImpl, 2, this.jdField_a_of_type_Long, paramBundle);
+        RecommendTroopServiceImpl.access$000(this.b, 2, this.a, paramBundle);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -36,7 +36,7 @@ class RecommendTroopServiceImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.RecommendTroopServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

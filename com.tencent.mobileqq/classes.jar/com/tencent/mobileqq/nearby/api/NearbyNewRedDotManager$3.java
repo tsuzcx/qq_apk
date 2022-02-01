@@ -25,9 +25,9 @@ class NearbyNewRedDotManager$3
     }
     if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyApiNearbyNewRedDotManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
-      ((IRedTouchServer)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler();
+      this.b.b(this.a, paramList);
+      ((IRedTouchServer)this.a.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.a);
+      paramString = this.a.getMsgHandler();
       if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
         paramString.a("businessbase_processor").a(105, true, null);
       }
@@ -36,7 +36,7 @@ class NearbyNewRedDotManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.NearbyNewRedDotManager.3
  * JD-Core Version:    0.7.0.1
  */

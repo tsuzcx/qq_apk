@@ -18,18 +18,18 @@ class DeviceSwitchThread$SpeakerSwitchThread
     a(true);
     d();
     int i = 0;
-    while (this.b)
+    while (this.g)
     {
       String str;
       StringBuilder localStringBuilder;
       if (!TraeUtils.a())
       {
-        if ((this.a) && (i > 4))
+        if ((this.f) && (i > 4))
         {
-          SessionInfo localSessionInfo = VideoController.a().a();
-          if (!localSessionInfo.E)
+          SessionInfo localSessionInfo = VideoController.f().k();
+          if (!localSessionInfo.aG)
           {
-            str = DeviceSwitchThread.a();
+            str = DeviceSwitchThread.f();
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("SpeakerSwitchThread, 不需要打开扬声器, sessionInfo[");
             localStringBuilder.append(localSessionInfo);
@@ -54,7 +54,7 @@ class DeviceSwitchThread$SpeakerSwitchThread
       {
         if (QLog.isColorLevel())
         {
-          str = DeviceSwitchThread.a();
+          str = DeviceSwitchThread.f();
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("SpeakerSwitchThread InterruptedException[");
           localStringBuilder.append(localInterruptedException.getMessage());
@@ -68,7 +68,7 @@ class DeviceSwitchThread$SpeakerSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.DeviceSwitchThread.SpeakerSwitchThread
  * JD-Core Version:    0.7.0.1
  */

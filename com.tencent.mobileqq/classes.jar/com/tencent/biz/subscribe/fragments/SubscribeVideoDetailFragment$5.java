@@ -12,7 +12,7 @@ class SubscribeVideoDetailFragment$5
   {
     if (SubscribeVideoDetailFragment.a(this.this$0) != null)
     {
-      SubscribeVideoDetailFragment.a(this.this$0).a(SubscribeVideoDetailFragment.a(this.this$0).b(), true);
+      SubscribeVideoDetailFragment.a(this.this$0).a(SubscribeVideoDetailFragment.a(this.this$0).v(), true);
       SubscribeVideoDetailFragment.a(this.this$0).c(this.a);
     }
   }

@@ -35,59 +35,66 @@ class SuperPlayerMgrInternal$EventHandler
             {
               if (i != 85)
               {
-                if (i != 92)
+                if (i != 5)
                 {
-                  if (i != 5)
+                  if (i != 6)
                   {
-                    if (i != 6)
+                    if (i != 23)
                     {
-                      if (i != 23)
+                      if (i != 24)
                       {
-                        if (i != 24)
+                        if (i != 92)
                         {
-                          switch (i)
+                          if (i != 93)
                           {
-                          default: 
                             switch (i)
                             {
                             default: 
+                              switch (i)
+                              {
+                              default: 
+                                return;
+                              case 90: 
+                                SuperPlayerMgrInternal.access$100(this.this$0).handleResumeDownload();
+                                return;
+                              case 89: 
+                                SuperPlayerMgrInternal.access$100(this.this$0).handlePauseDownload();
+                                return;
+                              }
+                              paramMessage = (SuperPlayerMgrCommons.SwitchDefnParams)paramMessage.obj;
+                              SuperPlayerMgrInternal.access$100(this.this$0).handleSwitchDefinition(paramMessage.a, paramMessage.b);
                               return;
-                            case 90: 
-                              SuperPlayerMgrInternal.access$100(this.this$0).handleResumeDownload();
+                            case 15: 
+                              SuperPlayerMgrInternal.access$100(this.this$0).handleReset();
                               return;
-                            case 89: 
-                              SuperPlayerMgrInternal.access$100(this.this$0).handlePauseDownload();
+                            case 14: 
+                              SuperPlayerMgrInternal.access$100(this.this$0).handleStop();
+                              return;
+                            case 13: 
+                              SuperPlayerMgrInternal.access$100(this.this$0).handlePause();
                               return;
                             }
-                            SuperPlayerMgrInternal.access$100(this.this$0).handleSwitchDefinition((String)paramMessage.obj);
-                            return;
-                          case 15: 
-                            SuperPlayerMgrInternal.access$100(this.this$0).handleReset();
-                            return;
-                          case 14: 
-                            SuperPlayerMgrInternal.access$100(this.this$0).handleStop();
-                            return;
-                          case 13: 
-                            SuperPlayerMgrInternal.access$100(this.this$0).handlePause();
+                            SuperPlayerMgrInternal.access$100(this.this$0).handleStart();
                             return;
                           }
-                          SuperPlayerMgrInternal.access$100(this.this$0).handleStart();
+                          paramMessage = (SuperPlayerMgrCommons.SwitchDefnForUrlParams)paramMessage.obj;
+                          SuperPlayerMgrInternal.access$100(this.this$0).handleSwitchDefinitionForUrl(paramMessage.a, paramMessage.b);
                           return;
                         }
-                        SuperPlayerMgrInternal.access$100(this.this$0).handleSeekTo(paramMessage.arg1, paramMessage.arg2);
+                        paramMessage = (int[])paramMessage.obj;
+                        SuperPlayerMgrInternal.access$100(this.this$0).handleSetBusinessDownloadStrategy(paramMessage[0], paramMessage[1], paramMessage[2], paramMessage[3]);
                         return;
                       }
-                      SuperPlayerMgrInternal.access$100(this.this$0).handleSeekTo(paramMessage.arg1);
+                      SuperPlayerMgrInternal.access$100(this.this$0).handleSeekTo(paramMessage.arg1, paramMessage.arg2);
                       return;
                     }
-                    SuperPlayerMgrInternal.access$100(this.this$0).handleSetSurface((Surface)paramMessage.obj);
+                    SuperPlayerMgrInternal.access$100(this.this$0).handleSeekTo(paramMessage.arg1);
                     return;
                   }
-                  SuperPlayerMgrInternal.access$100(this.this$0).handleUpdatePlayerVideoView((ISPlayerVideoView)paramMessage.obj);
+                  SuperPlayerMgrInternal.access$100(this.this$0).handleSetSurface((Surface)paramMessage.obj);
                   return;
                 }
-                paramMessage = (int[])paramMessage.obj;
-                SuperPlayerMgrInternal.access$100(this.this$0).handleSetBusinessDownloadStrategy(paramMessage[0], paramMessage[1], paramMessage[2], paramMessage[3]);
+                SuperPlayerMgrInternal.access$100(this.this$0).handleUpdatePlayerVideoView((ISPlayerVideoView)paramMessage.obj);
                 return;
               }
               paramMessage = (SuperPlayerMgrCommons.LoopbackParams)paramMessage.obj;
@@ -112,7 +119,7 @@ class SuperPlayerMgrInternal$EventHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgrInternal.EventHandler
  * JD-Core Version:    0.7.0.1
  */

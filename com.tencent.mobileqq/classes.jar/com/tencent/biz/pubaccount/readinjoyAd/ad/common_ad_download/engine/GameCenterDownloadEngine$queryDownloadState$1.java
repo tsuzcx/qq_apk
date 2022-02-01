@@ -19,16 +19,16 @@ final class GameCenterDownloadEngine$queryDownloadState$1
   
   public final void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData == null) {
+      if (this.b == null) {
         return;
       }
       Object localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.a);
+      ((ArrayList)localObject2).add(this.b.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("queryDownloadState: pkg = ");
-      Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      Object localObject1 = this.b;
       AdDownloadStateHandler localAdDownloadStateHandler = null;
       if (localObject1 != null) {
         localObject1 = ((ADVideoAppDownloadData)localObject1).d;
@@ -37,7 +37,7 @@ final class GameCenterDownloadEngine$queryDownloadState$1
       }
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append("  url = ");
-      ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
+      ADVideoAppDownloadData localADVideoAppDownloadData = this.b;
       localObject1 = localAdDownloadStateHandler;
       if (localADVideoAppDownloadData != null) {
         localObject1 = localADVideoAppDownloadData.c;
@@ -45,20 +45,20 @@ final class GameCenterDownloadEngine$queryDownloadState$1
       localStringBuilder.append((String)localObject1);
       ReadInJoyAdLog.a("AD_DOWNLOAD_TAG", localStringBuilder.toString());
       localObject1 = new AdDownloadInfo();
-      ((AdDownloadInfo)localObject1).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d);
-      ((AdDownloadInfo)localObject1).c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.a);
-      if (RIJAdDownloadUtil.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData.d))
+      ((AdDownloadInfo)localObject1).a(this.b.d);
+      ((AdDownloadInfo)localObject1).c(this.b.a);
+      if (RIJAdDownloadUtil.a.a(this.b.d))
       {
         localAdDownloadStateHandler = AdDownloadStateHandler.OnQueryResult;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject2 = this.a;
         ((AdDownloadInfo)localObject1).a(1);
         localAdDownloadStateHandler.doCallBack((RIJDownloadView)localObject2, (AdDownloadInfo)localObject1);
         return;
       }
-      if (YYBDownloadEngine.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData))
+      if (YYBDownloadEngine.a.a(this.b))
       {
         localAdDownloadStateHandler = AdDownloadStateHandler.OnQueryResult;
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+        localObject2 = this.a;
         ((AdDownloadInfo)localObject1).a(5);
         localAdDownloadStateHandler.doCallBack((RIJDownloadView)localObject2, (AdDownloadInfo)localObject1);
         return;
@@ -69,7 +69,7 @@ final class GameCenterDownloadEngine$queryDownloadState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.GameCenterDownloadEngine.queryDownloadState.1
  * JD-Core Version:    0.7.0.1
  */

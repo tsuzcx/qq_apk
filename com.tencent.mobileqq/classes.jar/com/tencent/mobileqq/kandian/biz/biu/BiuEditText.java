@@ -21,21 +21,21 @@ import org.jetbrains.annotations.NotNull;
 public class BiuEditText
   extends EditText
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
-  private boolean jdField_a_of_type_Boolean = true;
+  private TextWatcher a;
   private boolean b = true;
+  private boolean c = true;
   
   public BiuEditText(Context paramContext)
   {
     super(paramContext);
-    c();
+    d();
     b();
   }
   
   public BiuEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    c();
+    d();
     b();
   }
   
@@ -54,7 +54,7 @@ public class BiuEditText
       localStringBuilder.append(arrayOfISpan.length);
       QLog.d("BiuEditText", 2, localStringBuilder.toString());
     }
-    if ((paramInt == 0) && (!this.jdField_a_of_type_Boolean) && (arrayOfISpan.length != 0) && ((arrayOfISpan[0] instanceof TopicSpan))) {
+    if ((paramInt == 0) && (!this.b) && (arrayOfISpan.length != 0) && ((arrayOfISpan[0] instanceof TopicSpan))) {
       i = 1;
     } else {
       i = 0;
@@ -126,27 +126,6 @@ public class BiuEditText
     return localObject;
   }
   
-  private boolean a()
-  {
-    Editable localEditable = getEditableText();
-    int i = 0;
-    if (localEditable == null) {
-      return false;
-    }
-    TopicSpan[] arrayOfTopicSpan = (TopicSpan[])localEditable.getSpans(0, localEditable.length(), TopicSpan.class);
-    int j = arrayOfTopicSpan.length;
-    boolean bool = false;
-    while (i < j)
-    {
-      TopicSpan localTopicSpan = arrayOfTopicSpan[i];
-      if (getSelectionStart() == localEditable.getSpanEnd(localTopicSpan)) {
-        bool = true;
-      }
-      i += 1;
-    }
-    return bool;
-  }
-  
   private boolean a(KeyEvent paramKeyEvent, int paramInt)
   {
     boolean bool2 = false;
@@ -160,13 +139,13 @@ public class BiuEditText
         return false;
       }
       bool1 = bool2;
-      if (a())
+      if (c())
       {
         bool1 = bool2;
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.b)
         {
           bool1 = bool2;
-          if (!this.b) {
+          if (!this.c) {
             bool1 = true;
           }
         }
@@ -189,7 +168,34 @@ public class BiuEditText
     setOnKeyListener(new BiuEditText.1(this));
   }
   
-  private boolean b()
+  private boolean c()
+  {
+    Editable localEditable = getEditableText();
+    int i = 0;
+    if (localEditable == null) {
+      return false;
+    }
+    TopicSpan[] arrayOfTopicSpan = (TopicSpan[])localEditable.getSpans(0, localEditable.length(), TopicSpan.class);
+    int j = arrayOfTopicSpan.length;
+    boolean bool = false;
+    while (i < j)
+    {
+      TopicSpan localTopicSpan = arrayOfTopicSpan[i];
+      if (getSelectionStart() == localEditable.getSpanEnd(localTopicSpan)) {
+        bool = true;
+      }
+      i += 1;
+    }
+    return bool;
+  }
+  
+  private void d()
+  {
+    this.a = new DeleteAsAWholeWatcher();
+    addTextChangedListener(this.a);
+  }
+  
+  private boolean e()
   {
     if (getSelectionStart() == getSelectionEnd()) {
       return false;
@@ -207,18 +213,22 @@ public class BiuEditText
     return true;
   }
   
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new DeleteAsAWholeWatcher();
-    addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-  }
-  
   public void a()
   {
-    TextWatcher localTextWatcher = this.jdField_a_of_type_AndroidTextTextWatcher;
+    TextWatcher localTextWatcher = this.a;
     if (localTextWatcher != null) {
       removeTextChangedListener(localTextWatcher);
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -247,7 +257,7 @@ public class BiuEditText
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    if ((paramInt == 16908321) && (b())) {
+    if ((paramInt == 16908321) && (e())) {
       return true;
     }
     return super.onTextContextMenuItem(paramInt);
@@ -255,7 +265,7 @@ public class BiuEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.BiuEditText
  * JD-Core Version:    0.7.0.1
  */

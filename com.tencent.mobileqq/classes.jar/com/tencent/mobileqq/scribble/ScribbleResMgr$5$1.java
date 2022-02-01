@@ -29,8 +29,8 @@ class ScribbleResMgr$5$1
       Object localObject2;
       if (i == 3)
       {
-        localObject2 = ScribbleResMgr.a(this.a.this$0);
-        localObject1 = ScribbleResMgr.b(this.a.this$0);
+        localObject2 = ScribbleResMgr.b(this.a.this$0);
+        localObject1 = ScribbleResMgr.c(this.a.this$0);
       }
       else
       {
@@ -39,8 +39,8 @@ class ScribbleResMgr$5$1
       }
       if (this.a.a == 4)
       {
-        localObject2 = ScribbleResMgr.c(this.a.this$0);
-        localObject1 = ScribbleResMgr.d(this.a.this$0);
+        localObject2 = ScribbleResMgr.d(this.a.this$0);
+        localObject1 = ScribbleResMgr.e(this.a.this$0);
       }
       String str = FileUtils.calcMd5((String)localObject2);
       if ((!TextUtils.isEmpty(str)) && (str.equalsIgnoreCase((String)localObject1)))
@@ -100,7 +100,7 @@ class ScribbleResMgr$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleResMgr.5.1
  * JD-Core Version:    0.7.0.1
  */

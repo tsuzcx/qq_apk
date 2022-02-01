@@ -24,8 +24,8 @@ import org.json.JSONObject;
 public class CouponActivity$CouponWebViewFragment
   extends WebViewFragment
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  int b = 0;
   
   private void a()
   {
@@ -46,7 +46,7 @@ public class CouponActivity$CouponWebViewFragment
     } else {
       paramInt1 = 0;
     }
-    if ((paramInt1 != 0) && ((this.jdField_a_of_type_Int & paramInt1) == 0))
+    if ((paramInt1 != 0) && ((this.b & paramInt1) == 0))
     {
       paramIntent = new Intent();
       paramIntent.putExtra("toPage", paramInt1);
@@ -58,19 +58,19 @@ public class CouponActivity$CouponWebViewFragment
   public boolean doOnCreate(Bundle paramBundle)
   {
     Object localObject1 = this.intent.getExtras().getString("url");
-    this.jdField_a_of_type_Int = this.intent.getIntExtra("from", 10);
+    this.b = this.intent.getIntExtra("from", 10);
     this.intent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.intent.putExtra("title", super.getResources().getString(2131696091));
-      this.jdField_a_of_type_Boolean = true;
+      this.intent.putExtra("title", super.getResources().getString(2131893856));
+      this.a = true;
     }
     else
     {
       this.intent.removeExtra("title");
     }
     super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       paramBundle = new StringBuffer();
     }
     try
@@ -98,7 +98,7 @@ public class CouponActivity$CouponWebViewFragment
       label220:
       break label220;
     }
-    if ((this.jdField_a_of_type_Int & 0x5) == 0)
+    if ((this.b & 0x5) == 0)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append(CouponActivity.a);
@@ -114,7 +114,7 @@ public class CouponActivity$CouponWebViewFragment
       paramBundle = ((StringBuilder)localObject1).toString();
     }
     this.intent.putExtra("url", paramBundle);
-    this.intent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
+    this.intent.putExtra("from", this.b & 0x1C | 0x10);
     a();
     ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
     return true;
@@ -127,10 +127,10 @@ public class CouponActivity$CouponWebViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == getSwiftTitleUI().c)
+    if (paramView == getSwiftTitleUI().f)
     {
       Intent localIntent;
-      if ((this.jdField_a_of_type_Int & 0x4) != 0)
+      if ((this.b & 0x4) != 0)
       {
         localIntent = new Intent();
         localIntent.putExtra("isNeedFinish", true);
@@ -143,7 +143,7 @@ public class CouponActivity$CouponWebViewFragment
         localIntent = new Intent(super.getQBaseActivity(), CouponActivity.class);
         localIntent.putExtra("url", "https://web.p.qq.com/qqmpmobile/coupon/mycoupons.html?_bid=108");
         localIntent.putExtra("source", "2");
-        localIntent.putExtra("from", this.jdField_a_of_type_Int & 0xC | 0x5);
+        localIntent.putExtra("from", this.b & 0xC | 0x5);
         super.getQBaseActivity().startActivityForResult(localIntent, 100);
       }
     }
@@ -156,7 +156,7 @@ public class CouponActivity$CouponWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.coupon.CouponActivity.CouponWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

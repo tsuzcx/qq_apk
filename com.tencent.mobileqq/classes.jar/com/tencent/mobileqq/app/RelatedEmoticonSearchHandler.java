@@ -47,22 +47,22 @@ public class RelatedEmoticonSearchHandler
   extends BusinessHandler
 {
   public static final String a = "com.tencent.mobileqq.app.RelatedEmoticonSearchHandler";
-  private BaseQQAppInterface a;
+  private BaseQQAppInterface b;
   
   public RelatedEmoticonSearchHandler(BaseQQAppInterface paramBaseQQAppInterface)
   {
     super(paramBaseQQAppInterface);
-    this.a = paramBaseQQAppInterface;
+    this.b = paramBaseQQAppInterface;
   }
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     notifyUI(1, false, Integer.valueOf(paramInt));
   }
   
   protected String a(int paramInt)
   {
-    BaseQQAppInterface localBaseQQAppInterface = this.a;
+    BaseQQAppInterface localBaseQQAppInterface = this.b;
     if (localBaseQQAppInterface == null) {
       return "";
     }
@@ -79,14 +79,14 @@ public class RelatedEmoticonSearchHandler
   
   protected String a(MessageForPic paramMessageForPic)
   {
-    if (this.a == null) {
+    if (this.b == null) {
       return null;
     }
     paramMessageForPic = paramMessageForPic.picExtraData.textSummary;
-    String str1 = a(2131691279);
-    String str2 = a(2131691280);
-    String str3 = a(2131691286);
-    String str4 = a(2131691283);
+    String str1 = a(2131888229);
+    String str2 = a(2131888230);
+    String str3 = a(2131888236);
+    String str4 = a(2131888233);
     if ((!TextUtils.isEmpty(paramMessageForPic)) && (!str1.equals(paramMessageForPic)) && (!str2.equals(paramMessageForPic)) && (!str3.equals(paramMessageForPic)) && (!str4.equals(paramMessageForPic)) && (paramMessageForPic.startsWith("[")) && (paramMessageForPic.endsWith("]"))) {
       return paramMessageForPic;
     }
@@ -139,14 +139,14 @@ public class RelatedEmoticonSearchHandler
   {
     if ((paramList != null) && (paramMarkFaceMessage != null) && (paramString1 != null) && (paramString2 != null))
     {
-      if (this.a == null) {
+      if (this.b == null) {
         return;
       }
       paramMarkFaceMessage = paramMarkFaceMessage.faceName;
       if (!TextUtils.isEmpty(paramMarkFaceMessage)) {
         paramList.add(paramMarkFaceMessage);
       }
-      paramMarkFaceMessage = ((IEmoticonManagerService)this.a.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonById(paramString2, paramString1);
+      paramMarkFaceMessage = ((IEmoticonManagerService)this.b.getRuntimeService(IEmoticonManagerService.class)).syncFindEmoticonById(paramString2, paramString1);
       if (paramMarkFaceMessage != null) {
         if (!TextUtils.isEmpty(paramMarkFaceMessage.keywords)) {
           try
@@ -179,7 +179,7 @@ public class RelatedEmoticonSearchHandler
   
   public void b(ChatMessage paramChatMessage, int paramInt)
   {
-    if (this.a == null) {
+    if (this.b == null) {
       return;
     }
     oidb_0xe9c.RelatedFaceReq localRelatedFaceReq = new oidb_0xe9c.RelatedFaceReq();
@@ -295,13 +295,13 @@ public class RelatedEmoticonSearchHandler
     paramChatMessage = new oidb_0xe9c.ReqBody();
     long l = System.currentTimeMillis();
     paramChatMessage.bytes_session_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(l)));
-    paramChatMessage.uint64_src_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+    paramChatMessage.uint64_src_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     paramChatMessage.uint32_src_term.set(3);
-    paramChatMessage.uint32_aio_type.set(EmoticonPanelUtils.b(paramInt));
-    paramChatMessage.str_client_ver.set("8.7.0");
+    paramChatMessage.uint32_aio_type.set(EmoticonPanelUtils.f(paramInt));
+    paramChatMessage.str_client_ver.set("8.8.17");
     paramChatMessage.relatedFaceReqBody.set(localRelatedFaceReq);
     Object localObject1 = (IEmosmService)QRoute.api(IEmosmService.class);
-    localObject2 = this.a;
+    localObject2 = this.b;
     localObject1 = ((IEmosmService)localObject1).findFriendCardByUin((BaseQQAppInterface)localObject2, ((BaseQQAppInterface)localObject2).getCurrentAccountUin());
     if (localObject1 != null) {
       paramChatMessage.uint32_age.set(((Card)localObject1).age);
@@ -328,16 +328,16 @@ public class RelatedEmoticonSearchHandler
           a(paramToServiceMsg.relatedFaceRspBody.rpt_img_info.get(), paramToServiceMsg.relatedFaceRspBody.img_num.get());
           return;
         }
-        a(i);
+        b(i);
         return;
       }
-      a(i);
+      b(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RelatedEmoticonSearchHandler
  * JD-Core Version:    0.7.0.1
  */

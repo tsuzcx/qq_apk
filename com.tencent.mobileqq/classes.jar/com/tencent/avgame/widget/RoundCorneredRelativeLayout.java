@@ -19,9 +19,9 @@ import android.widget.RelativeLayout;
 public class RoundCorneredRelativeLayout
   extends RelativeLayout
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+  private boolean a = false;
+  private Paint b = new Paint();
+  private float[] c = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
   
   @TargetApi(11)
   public RoundCorneredRelativeLayout(Context paramContext)
@@ -39,14 +39,14 @@ public class RoundCorneredRelativeLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
@@ -54,30 +54,30 @@ public class RoundCorneredRelativeLayout
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
     Path localPath1 = new Path();
-    localPath1.addRoundRect(new RectF(getPaddingLeft(), getPaddingTop(), i - getPaddingRight(), j - getPaddingBottom()), this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
+    localPath1.addRoundRect(new RectF(getPaddingLeft(), getPaddingTop(), i - getPaddingRight(), j - getPaddingBottom()), this.c, Path.Direction.CW);
     float f1 = i;
     float f2 = j;
     paramCanvas.saveLayer(new RectF(0.0F, 0.0F, f1, f2), null, 31);
     super.dispatchDraw(paramCanvas);
     if (Build.VERSION.SDK_INT <= 27)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-      paramCanvas.drawPath(localPath1, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.b.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      paramCanvas.drawPath(localPath1, this.b);
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+      this.b.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
       Path localPath2 = new Path();
       localPath2.addRect(0.0F, 0.0F, f1, f2, Path.Direction.CW);
       localPath2.op(localPath1, Path.Op.DIFFERENCE);
-      paramCanvas.drawPath(localPath2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(localPath2, this.b);
     }
     paramCanvas.restore();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (isClickable()) && (isEnabled()))
+    if ((this.a) && (isClickable()) && (isEnabled()))
     {
       int i = paramMotionEvent.getAction();
       if (i != 0) {
@@ -104,12 +104,12 @@ public class RoundCorneredRelativeLayout
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
+    this.c = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
   }
   
   public void setRadius(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 };
+    this.c = new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 };
   }
 }
 

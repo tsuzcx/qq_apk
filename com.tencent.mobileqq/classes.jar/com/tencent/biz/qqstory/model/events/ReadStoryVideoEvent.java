@@ -6,17 +6,17 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 public class ReadStoryVideoEvent
   extends BaseEvent
 {
-  public long a;
   public String a;
-  public String b;
+  public long b;
+  public String c;
   
   public ReadStoryVideoEvent(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
-    this.b = paramStoryVideoItem.mVid;
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
+    this.a = paramString;
+    this.b = paramStoryVideoItem.mVideoIndex;
+    this.c = paramStoryVideoItem.mVid;
+    if (this.b == 0L) {
+      this.b = paramStoryVideoItem.mCreateTime;
     }
   }
   
@@ -24,12 +24,12 @@ public class ReadStoryVideoEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReadStoryVideoEvent{unionId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", videoIndex=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", vid='");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", vid='");
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -37,7 +37,7 @@ public class ReadStoryVideoEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.events.ReadStoryVideoEvent
  * JD-Core Version:    0.7.0.1
  */

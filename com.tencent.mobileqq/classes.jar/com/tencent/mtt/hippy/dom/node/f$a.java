@@ -14,15 +14,14 @@ class f$a
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what != 3) {
-      return;
+    if (paramMessage.what == 3) {
+      this.a.a = true;
     }
-    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.f.a
  * JD-Core Version:    0.7.0.1
  */

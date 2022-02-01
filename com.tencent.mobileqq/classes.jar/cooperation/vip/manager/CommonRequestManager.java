@@ -11,14 +11,14 @@ import mqq.os.MqqHandler;
 public abstract class CommonRequestManager
   extends MSFServlet
 {
-  protected long a()
+  public abstract QzoneExternalRequest a(Intent paramIntent);
+  
+  protected long b()
   {
     return 10000L;
   }
   
-  public abstract QzoneExternalRequest a(Intent paramIntent);
-  
-  public void a(Intent paramIntent)
+  public void b(Intent paramIntent)
   {
     ThreadManager.getSubThreadHandler().post(new CommonRequestManager.1(this, paramIntent));
   }
@@ -41,7 +41,7 @@ public abstract class CommonRequestManager
       QLog.e("CommonRequestManager", 1, paramIntent.toString());
       paramIntent = new byte[4];
     }
-    paramPacket.setTimeout(a());
+    paramPacket.setTimeout(b());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("SQQzoneSvc.");
     ((StringBuilder)localObject).append(localQzoneExternalRequest.uniKey());
@@ -51,7 +51,7 @@ public abstract class CommonRequestManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.CommonRequestManager
  * JD-Core Version:    0.7.0.1
  */

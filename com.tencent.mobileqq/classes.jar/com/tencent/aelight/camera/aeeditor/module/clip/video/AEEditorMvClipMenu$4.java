@@ -10,14 +10,14 @@ class AEEditorMvClipMenu$4
   
   public void onClick(View paramView)
   {
-    if (AEEditorMvClipMenu.a(this.a) != null) {
-      AEEditorMvClipMenu.a(this.a).a();
+    if (AEEditorMvClipMenu.c(this.a) != null) {
+      AEEditorMvClipMenu.c(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.clip.video.AEEditorMvClipMenu.4
  * JD-Core Version:    0.7.0.1
  */

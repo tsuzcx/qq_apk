@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 class CountrySelectActivity$ViewHolder
 {
-  public ImageView a;
   public TextView a;
-  public String a;
+  public ImageView b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.CountrySelectActivity.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

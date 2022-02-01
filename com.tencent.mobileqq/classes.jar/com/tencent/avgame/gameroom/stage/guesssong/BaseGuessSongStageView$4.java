@@ -9,8 +9,8 @@ class BaseGuessSongStageView$4
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.setVisibility(8);
+    if (this.this$0.j != null) {
+      this.this$0.j.setVisibility(8);
     }
   }
 }

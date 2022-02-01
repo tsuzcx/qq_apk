@@ -9,7 +9,7 @@ import com.tencent.qqmini.minigame.api.MiniEnginePackage;
 import com.tencent.qqmini.minigame.gpkg.MiniGamePkg;
 import com.tencent.qqmini.minigame.manager.GameInfoManager;
 import com.tencent.qqmini.minigame.manager.GameReportManager;
-import com.tencent.qqmini.minigame.task.GameRuntimeCreateTask;
+import com.tencent.qqmini.minigame.report.MiniGameBeaconReport;
 import com.tencent.qqmini.minigame.task.GpkgLoadAsyncTask;
 import com.tencent.qqmini.minigame.task.InitGameRuntimeTask;
 import com.tencent.qqmini.minigame.task.TritonEngineInitTask;
@@ -40,18 +40,18 @@ public class GameRuntimeLoader
   @MiniKeep
   public static final BaseRuntimeLoader.Creator<GameRuntimeLoader> CREATOR = new GameRuntimeLoader.1();
   public static final String LOG_TAG = "GameRuntimeLoader";
-  private GameInfoManager mGameInfoManager = new GameInfoManager(this);
-  private GameRuntimeCreateTask mGameRuntimeCreateTask;
+  private final Bundle mBundle;
+  private GameInfoManager mGameInfoManager;
   private GpkgLoadAsyncTask mGpkgLoadTask;
   private InitGameRuntimeTask mInitGameRuntimeTask;
   private MiniAppInfoLoadTask mMiniAppInfoLoadTask;
-  private GameReportManager mReportManager = new GameReportManager(this);
   private TritonEngineInitTask mTritonEngineInitTask;
   private MiniGamePkg miniGamePkg;
   
-  private GameRuntimeLoader(Context paramContext)
+  private GameRuntimeLoader(Context paramContext, Bundle paramBundle)
   {
     super(paramContext);
+    this.mBundle = paramBundle;
   }
   
   private boolean isGameEngineReady()
@@ -69,17 +69,6 @@ public class GameRuntimeLoader
       }
     }
     return false;
-  }
-  
-  private void onGameRuntimeCreateTask(GameRuntimeCreateTask paramGameRuntimeCreateTask)
-  {
-    if (paramGameRuntimeCreateTask.isSucceed())
-    {
-      paramGameRuntimeCreateTask = paramGameRuntimeCreateTask.getGameRuntime();
-      paramGameRuntimeCreateTask.setGameInfoManager(this.mGameInfoManager);
-      paramGameRuntimeCreateTask.setGameReportManager(this.mReportManager);
-      this.mRuntime = paramGameRuntimeCreateTask;
-    }
   }
   
   private void onGpkgLoadAsyncTaskDone(GpkgLoadAsyncTask paramGpkgLoadAsyncTask)
@@ -108,9 +97,6 @@ public class GameRuntimeLoader
       {
         SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject, "1", null, "page_view", "load_fail", "pkg_task_fail", "");
         MiniAppReportManager2.reportPageView("2launch_fail", "pkg_task_fail", null, (MiniAppInfo)localObject);
-        if (localObject != null) {
-          localObject = ((MiniAppInfo)localObject).appId;
-        }
       }
     }
     int i;
@@ -150,9 +136,6 @@ public class GameRuntimeLoader
       {
         SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject, "1", null, "page_view", "load_fail", "baselib_task_fail", "");
         MiniAppReportManager2.reportPageView("2launch_fail", "baselib_task_fail", null, (MiniAppInfo)localObject);
-        if (localObject != null) {
-          localObject = ((MiniAppInfo)localObject).appId;
-        }
       }
     }
     else if (getAppStateManager().isFromPreload)
@@ -172,6 +155,30 @@ public class GameRuntimeLoader
       i = 2013;
     }
     notifyRuntimeEvent(i, new Object[] { Integer.valueOf(paramTritonEngineInitTask.retCode) });
+    if ((getAppStateManager().isFromPreload) && (this.mMiniAppInfo == null)) {
+      preloadReport();
+    }
+  }
+  
+  private void preloadReport()
+  {
+    Bundle localBundle = this.mBundle;
+    if (localBundle == null)
+    {
+      QMLog.e("BaseRuntimeLoader", "[preloadReport] mBundle null!");
+      return;
+    }
+    long l1 = localBundle.getLong("time_start_broadcast", 0L);
+    long l2 = this.mBundle.getLong("time_broadcast_receive", 0L);
+    if (l1 != 0L)
+    {
+      if (l2 == 0L) {
+        return;
+      }
+      MiniGameBeaconReport.reportPreloadTime(l1, l2, System.currentTimeMillis());
+      this.mBundle.remove("time_start_broadcast");
+      this.mBundle.remove("time_broadcast_receive");
+    }
   }
   
   private void sendPreloadBaseLibVersion()
@@ -194,17 +201,21 @@ public class GameRuntimeLoader
   {
     paramContext = new GameRuntime(paramContext);
     paramContext.setRuntimeMsgObserver(this);
+    this.mGameInfoManager = new GameInfoManager(this);
+    GameReportManager localGameReportManager = new GameReportManager(this);
+    paramContext.setGameInfoManager(this.mGameInfoManager);
+    paramContext.setGameReportManager(localGameReportManager);
+    this.mRuntime = paramContext;
     return paramContext;
   }
   
   public BaseTask[] createTasks()
   {
-    this.mGameRuntimeCreateTask = new GameRuntimeCreateTask(this.mContext, this);
     this.mMiniAppInfoLoadTask = new MiniAppInfoLoadTask(this.mContext, this);
     this.mTritonEngineInitTask = new TritonEngineInitTask(this.mContext, this);
     this.mGpkgLoadTask = new GpkgLoadAsyncTask(this.mContext, this);
     this.mInitGameRuntimeTask = new InitGameRuntimeTask(this.mContext, this);
-    this.mInitGameRuntimeTask.addDependTask(this.mTritonEngineInitTask.addDependTask(this.mGameRuntimeCreateTask)).addDependTask(this.mGpkgLoadTask.addDependTask(this.mMiniAppInfoLoadTask));
+    this.mInitGameRuntimeTask.addDependTask(this.mTritonEngineInitTask).addDependTask(this.mGpkgLoadTask.addDependTask(this.mMiniAppInfoLoadTask));
     return new BaseTask[] { this.mInitGameRuntimeTask };
   }
   
@@ -213,19 +224,9 @@ public class GameRuntimeLoader
     return false;
   }
   
-  public GameInfoManager getGameInfoManager()
-  {
-    return this.mGameInfoManager;
-  }
-  
   public MiniGamePkg getMiniGamePkg()
   {
     return this.miniGamePkg;
-  }
-  
-  public GameReportManager getReportManager()
-  {
-    return this.mReportManager;
   }
   
   public List<TaskExecutionStatics> getTaskExecuteStatics()
@@ -297,9 +298,7 @@ public class GameRuntimeLoader
     localStringBuilder.append(" done! succ:");
     localStringBuilder.append(paramBaseTask.isSucceed());
     QMLog.i("GameRuntimeLoader", localStringBuilder.toString());
-    if ((paramBaseTask instanceof GameRuntimeCreateTask)) {
-      onGameRuntimeCreateTask((GameRuntimeCreateTask)paramBaseTask);
-    } else if ((paramBaseTask instanceof GpkgLoadAsyncTask)) {
+    if ((paramBaseTask instanceof GpkgLoadAsyncTask)) {
       onGpkgLoadAsyncTaskDone((GpkgLoadAsyncTask)paramBaseTask);
     } else if ((paramBaseTask instanceof TritonEngineInitTask)) {
       onTritonEngineInitTask((TritonEngineInitTask)paramBaseTask);
@@ -330,7 +329,7 @@ public class GameRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

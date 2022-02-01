@@ -10,16 +10,9 @@ import org.json.JSONObject;
 
 public class TogetherEntryBean
 {
-  public int a;
-  public ArrayList<TogetherEntryData> a;
-  public boolean a;
-  
-  public TogetherEntryBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
-  }
+  public boolean a = false;
+  public int b = 10;
+  public ArrayList<TogetherEntryData> c = new ArrayList(4);
   
   public static TogetherEntryBean a(String paramString)
   {
@@ -30,8 +23,8 @@ public class TogetherEntryBean
     {
       TogetherEntryBean localTogetherEntryBean = new TogetherEntryBean();
       paramString = new JSONObject(paramString);
-      localTogetherEntryBean.jdField_a_of_type_Boolean = paramString.optBoolean("showEntrance", false);
-      localTogetherEntryBean.jdField_a_of_type_Int = paramString.optInt("bannerInterval", 10);
+      localTogetherEntryBean.a = paramString.optBoolean("showEntrance", false);
+      localTogetherEntryBean.b = paramString.optInt("bannerInterval", 10);
       paramString = paramString.optJSONArray("array");
       if (paramString != null)
       {
@@ -40,17 +33,17 @@ public class TogetherEntryBean
         {
           JSONObject localJSONObject = (JSONObject)paramString.get(i);
           TogetherEntryData localTogetherEntryData = new TogetherEntryData();
-          localTogetherEntryData.jdField_b_of_type_Int = localJSONObject.optInt("id");
-          localTogetherEntryData.jdField_c_of_type_Int = localJSONObject.optInt("order");
-          localTogetherEntryData.a = localJSONObject.optString("title");
-          localTogetherEntryData.jdField_b_of_type_JavaLangString = localJSONObject.optString("subTitle");
-          localTogetherEntryData.d = Color.parseColor(localJSONObject.optString("bgColor"));
-          localTogetherEntryData.jdField_c_of_type_JavaLangString = localJSONObject.optString("imageUrl");
-          localTogetherEntryBean.jdField_a_of_type_JavaUtilArrayList.add(localTogetherEntryData);
+          localTogetherEntryData.g = localJSONObject.optInt("id");
+          localTogetherEntryData.h = localJSONObject.optInt("order");
+          localTogetherEntryData.i = localJSONObject.optString("title");
+          localTogetherEntryData.j = localJSONObject.optString("subTitle");
+          localTogetherEntryData.k = Color.parseColor(localJSONObject.optString("bgColor"));
+          localTogetherEntryData.l = localJSONObject.optString("imageUrl");
+          localTogetherEntryBean.c.add(localTogetherEntryData);
           i += 1;
         }
       }
-      Collections.sort(localTogetherEntryBean.jdField_a_of_type_JavaUtilArrayList, new TogetherEntryBean.1());
+      Collections.sort(localTogetherEntryBean.c, new TogetherEntryBean.1());
       paramString = new StringBuilder();
       paramString.append("confBean = ");
       paramString.append(localTogetherEntryBean.toString());
@@ -73,7 +66,7 @@ public class TogetherEntryBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TogetherEntryBean
  * JD-Core Version:    0.7.0.1
  */

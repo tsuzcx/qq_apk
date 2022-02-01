@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#ff1f1f4d" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/pl7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/pkz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="20.0dip">
+        <ImageView android:id="@id/pk_" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/j53" />
+        <View android:id="@id/pk7" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/mz" android:textColor="@color/al3" android:id="@id/pl0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="游戏" android:layout_alignRight="@id/pk7" />
+        <View android:background="#ff6666ff" android:layout_width="wrap_content" android:layout_height="4.0dip" android:layout_marginTop="8.0dip" android:layout_below="@id/pl0" />
+        <TextView android:textSize="@dimen/mz" android:textColor="#ff7d7db3" android:id="@id/pl6" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:text="视频" android:layout_alignLeft="@id/pk7" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/pka" android:background="@drawable/ggk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bp3" android:layout_marginTop="14.0dip" android:layout_marginRight="@dimen/bp3" android:layout_marginBottom="10.0dip" android:layout_below="@id/pkz">
+        <RelativeLayout android:id="@id/pkd" android:layout_width="@dimen/bp1" android:layout_height="@dimen/bp1">
+            <com.tencent.image.URLImageView android:id="@id/pkb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/j58" />
+            <TextView android:textSize="@dimen/ms" android:textColor="@color/al3" android:id="@id/pkc" android:background="@drawable/ggl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="编辑封面" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/pl2" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_margin="4.0dip" android:src="@drawable/j5_" android:layout_alignLeft="@id/pky" android:layout_alignTop="@id/pky" />
+        <EditText android:textSize="@dimen/mz" android:textColor="@color/al3" android:textColorHint="#ff7d7db3" android:gravity="center|left|top" android:id="@id/pky" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="10.0dip" android:hint="\u0009\u0009\u0009\u0009输入标题更吸引人哦" android:lines="3" android:layout_toRightOf="@id/pkd" android:layout_alignTop="@id/pkd" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/pkk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="17.0dip" android:layout_toRightOf="@id/pkd" android:layout_alignBottom="@id/pkd">
+            <ImageView android:id="@id/pkj" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/j5g" />
+            <TextView android:textSize="@dimen/mp" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/pki" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="我的位置" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/pks" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="@dimen/bp2" android:layout_marginRight="@dimen/bp2" android:layout_below="@id/pka">
+        <com.tencent.image.URLImageView android:id="@id/pkg" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/j59" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/mv" android:textColor="@color/al3" android:id="@id/pkq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="王者荣耀" android:layout_toRightOf="@id/pkg" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/pkr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/j5l" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/ms" android:textColor="#ff7d7db3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更换直播游戏" android:layout_toLeftOf="@id/pkr" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/pke" android:background="#ff7d7db3" android:layout_width="fill_parent" android:layout_height="0.100000024dip" android:layout_marginLeft="@dimen/bp2" android:layout_marginRight="@dimen/bp2" android:layout_below="@id/pks" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/pkv" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="@dimen/bp3" android:layout_marginRight="@dimen/bp3" android:layout_below="@id/pke">
+        <TextView android:textColor="@color/al3" android:id="@id/pku" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开播方式" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/pl5" android:layout_width="96.0dip" android:layout_height="31.0dip" android:layout_centerVertical="true">
+            <Switch android:id="@id/pkw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:checked="false" android:textOn="" android:textOff="" android:thumb="@drawable/ggh" android:track="@drawable/gge" />
+            <TextView android:textSize="@dimen/ms" android:textColor="@color/al3" android:gravity="center" android:layout_width="48.0dip" android:layout_height="fill_parent" android:text="手机" />
+            <TextView android:textSize="@dimen/ms" android:textColor="@color/al3" android:gravity="center" android:layout_width="48.0dip" android:layout_height="fill_parent" android:text="电脑" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View android:id="@id/pkf" android:background="#ff7d7db3" android:layout_width="fill_parent" android:layout_height="0.100000024dip" android:layout_marginLeft="@dimen/bp2" android:layout_marginRight="@dimen/bp2" android:layout_below="@id/pkv" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/pk8" android:layout_below="@id/pkf">
+        <TextView android:gravity="center" android:id="@id/pk9" android:visibility="gone" android:layout_width="250.0dip" android:layout_height="wrap_content" android:text="开始手机直播后，观众会实时看到你手机上的游戏画面" android:layout_centerInParent="true" />
+        <ScrollView android:id="@id/plm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:paddingTop="26.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bp2" android:layout_marginRight="@dimen/bp2">
+                <TextView android:textSize="@dimen/ms" android:textColor="#ff7d7db3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1. 复制以下内容，粘贴到直播工具，连接推流\n2. 成功获得推流后，点击当前界面下方“开始游戏直播”按钮，开启直播间" android:lineSpacingExtra="6.0dip" />
+                <TextView android:textSize="@dimen/ms" android:textColor="#ff7d7db3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ms" android:text="直播工具" />
+                <TextView android:textSize="@dimen/mp" android:textColor="#ff7d7db3" android:ellipsize="end" android:id="@id/pl4" android:background="@drawable/ggu" android:paddingLeft="10.0dip" android:paddingTop="9.0dip" android:paddingRight="10.0dip" android:paddingBottom="9.0dip" android:layout_width="232.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:lines="1" android:drawableRight="@drawable/j5j" />
+                <TextView android:textSize="@dimen/ms" android:textColor="#ff7d7db3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ms" android:text="串流密钥" />
+                <TextView android:textSize="@dimen/mp" android:textColor="#ff7d7db3" android:ellipsize="end" android:id="@id/pl3" android:background="@drawable/ggu" android:paddingLeft="10.0dip" android:paddingTop="9.0dip" android:paddingRight="10.0dip" android:paddingBottom="9.0dip" android:layout_width="232.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:lines="1" android:drawableRight="@drawable/j5j" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip">
+                    <TextView android:textSize="@dimen/ms" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="推流状态：" />
+                    <TextView android:textSize="@dimen/ms" android:textColor="@color/lw" android:id="@id/pll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正常" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/pk8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/bp3" android:layout_alignParentBottom="true">
+        <Button android:enabled="false" android:textColor="@color/b0_" android:id="@id/pkt" android:background="@drawable/ggt" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginBottom="12.0dip" android:text="开始游戏直播" />
+        <LinearLayout android:layout_gravity="center" android:id="@id/pko" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:textSize="@dimen/mp" android:textColor="#ff7d7db3" android:id="@id/pkn" android:paddingLeft="6.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:checked="false" android:text="我已阅读" style="@style/acr" />
+            <TextView android:textSize="10.0dip" android:textColor="#ff6666ff" android:id="@id/pkp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="《腾讯视频直播协议》" />
+        </LinearLayout>
+        <TextView android:textSize="10.0dip" android:textColor="#ff7d7db3" android:layout_gravity="center" android:id="@id/pkx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="腾讯直播中台提供服务支持" />
+    </LinearLayout>
+</RelativeLayout>

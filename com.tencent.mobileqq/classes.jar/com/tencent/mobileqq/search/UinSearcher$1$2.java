@@ -11,12 +11,12 @@ class UinSearcher$1$2
   
   public void onDismiss()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92E", "0X800A92E", UinSearcher.b(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), 0, "", "", "", "");
+    ReportController.b(this.a, "dc00898", "", "", "0X800A92E", "0X800A92E", UinSearcher.i(this.b.a), 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.UinSearcher.1.2
  * JD-Core Version:    0.7.0.1
  */

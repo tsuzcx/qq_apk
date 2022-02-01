@@ -14,7 +14,7 @@ class AuthDevVerifyCodeActivity$4
       if ((AuthDevVerifyCodeActivity.access$300(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
         AuthDevVerifyCodeActivity.access$302(this.this$0, new QQProgressDialog(this.this$0, this.this$0.getTitleBarHeight()));
-        AuthDevVerifyCodeActivity.access$300(this.this$0).c(2131694668);
+        AuthDevVerifyCodeActivity.access$300(this.this$0).c(2131892360);
       }
     }
     catch (Throwable localThrowable)
@@ -28,7 +28,7 @@ class AuthDevVerifyCodeActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity.4
  * JD-Core Version:    0.7.0.1
  */

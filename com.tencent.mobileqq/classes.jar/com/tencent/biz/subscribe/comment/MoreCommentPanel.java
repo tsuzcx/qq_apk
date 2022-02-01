@@ -12,22 +12,22 @@ import com.tencent.qphone.base.util.QLog;
 public class MoreCommentPanel
   extends RelativeLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private Context a;
+  private TextView b;
+  private ImageView c;
+  private boolean d = false;
   
   public MoreCommentPanel(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
   }
   
   public MoreCommentPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     a();
   }
   
@@ -35,19 +35,19 @@ public class MoreCommentPanel
   {
     try
     {
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562642, this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371485));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371483));
-      if (this.jdField_a_of_type_Boolean)
+      LayoutInflater.from(this.a).inflate(2131629073, this);
+      this.b = ((TextView)findViewById(2131438860));
+      this.c = ((ImageView)findViewById(2131438858));
+      if (this.d)
       {
-        setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166900));
-        setBackgroundResource(2130849494);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165329));
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849492);
+        setBackgroundColor(this.a.getResources().getColor(2131167820));
+        setBackgroundResource(2130851178);
+        this.b.setTextColor(this.a.getResources().getColor(2131165566));
+        this.c.setImageResource(2130851176);
         return;
       }
-      setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165878));
-      setBackgroundResource(2130849493);
+      setBackgroundColor(this.a.getResources().getColor(2131166521));
+      setBackgroundResource(2130851177);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -59,7 +59,7 @@ public class MoreCommentPanel
   
   public void setHintText(CharSequence paramCharSequence)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.b;
     if (localTextView != null) {
       localTextView.setText(paramCharSequence);
     }

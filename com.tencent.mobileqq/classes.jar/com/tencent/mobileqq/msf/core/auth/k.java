@@ -340,7 +340,7 @@ public class k
     {
       boolean bool = paramFromServiceMsg.getServiceCmd().equals("login.chguin");
       long l2 = ((Long)paramFromServiceMsg.getAttribute("__timestamp_net2msf")).longValue() - ((Long)paramToServiceMsg.getAttribute("__timestamp_addSendQueue")).longValue();
-      long l3 = com.tencent.mobileqq.msf.core.c.j.a(paramToServiceMsg, paramFromServiceMsg);
+      long l3 = com.tencent.mobileqq.msf.core.d.j.a(paramToServiceMsg, paramFromServiceMsg);
       if (paramToServiceMsg.getAttributes().containsKey("_tag_socket")) {
         localObject1 = (String)paramToServiceMsg.getAttribute("_tag_socket");
       } else {
@@ -383,7 +383,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.k
  * JD-Core Version:    0.7.0.1
  */

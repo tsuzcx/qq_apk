@@ -368,7 +368,7 @@ public class ApkgManager
     }
     else if (paramOnGetApkgInfoListener != null)
     {
-      paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, HardCodeUtil.a(2131700508));
+      paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, HardCodeUtil.a(2131898539));
     }
   }
   
@@ -518,7 +518,7 @@ public class ApkgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager
  * JD-Core Version:    0.7.0.1
  */

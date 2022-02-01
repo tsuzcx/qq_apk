@@ -21,38 +21,24 @@ import java.util.Random;
 public class AEGifTipsPopupPart
   extends VideoStoryBasePart
 {
-  private static List<String> jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "Xiaomi_MI 4C" });
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131689741), HardCodeUtil.a(2131689742), HardCodeUtil.a(2131689743) };
-  private View jdField_a_of_type_AndroidViewView;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private boolean jdField_b_of_type_Boolean;
-  private Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  private boolean jdField_c_of_type_Boolean;
+  private static final String[] j = { HardCodeUtil.a(2131886378), HardCodeUtil.a(2131886379), HardCodeUtil.a(2131886380) };
+  private static List<String> k = Arrays.asList(new String[] { "Xiaomi_MI 4C" });
+  private boolean a;
+  private View b;
+  private TextView c;
+  private View d;
+  private Animation e;
+  private Animation f;
+  private Animation g;
+  private boolean h;
+  private boolean i;
+  private Runnable l;
   
   private String a()
   {
-    int i = Math.abs(new Random(System.currentTimeMillis()).nextInt());
-    String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-    return arrayOfString[(i % arrayOfString.length)];
-  }
-  
-  private void a()
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 15.0F);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setDuration(300L);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatCount(-1);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setRepeatMode(2);
-    this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(new AEGifTipsPopupPart.2(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+    int m = Math.abs(new Random(System.currentTimeMillis()).nextInt());
+    String[] arrayOfString = j;
+    return arrayOfString[(m % arrayOfString.length)];
   }
   
   private void a(Runnable paramRunnable)
@@ -64,47 +50,47 @@ public class AEGifTipsPopupPart
     localScaleAnimation.setInterpolator(new DecelerateInterpolator(3.0F));
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
     localAlphaAnimation.setDuration(500L);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.5F, 1, 0.0F, 0, this.jdField_b_of_type_AndroidViewView.getY() + this.jdField_b_of_type_AndroidViewView.getHeight() / 2 - this.jdField_a_of_type_AndroidViewView.getY(), 1, 0.0F);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.5F, 1, 0.0F, 0, this.d.getY() + this.d.getHeight() / 2 - this.b.getY(), 1, 0.0F);
     localTranslateAnimation.setDuration(500L);
     localTranslateAnimation.setInterpolator(new DecelerateInterpolator(3.0F));
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.addAnimation(localAlphaAnimation);
     localAnimationSet.addAnimation(localTranslateAnimation);
     localAnimationSet.setAnimationListener(new AEGifTipsPopupPart.3(this, paramRunnable));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
+    this.b.startAnimation(localAnimationSet);
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (a()) {
+    if (c()) {
       return;
     }
-    this.jdField_c_of_type_Boolean = false;
+    this.i = false;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("###  show tips, random = ");
     localStringBuilder.append(paramBoolean1);
     QLog.d("AEGifTipsPopupPart", 4, localStringBuilder.toString());
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     if (paramBoolean1) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(a());
+      this.c.setText(a());
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(b());
+      this.c.setText(b());
     }
-    if (a(this.jdField_a_of_type_AndroidViewAnimationAnimation)) {
+    if (a(this.e)) {
       return;
     }
-    if (a(this.jdField_b_of_type_AndroidViewAnimationAnimation)) {
+    if (a(this.f)) {
       return;
     }
-    if (a(this.jdField_c_of_type_AndroidViewAnimationAnimation))
+    if (a(this.g))
     {
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+      this.g.setAnimationListener(null);
+      this.g.cancel();
+      this.g = null;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (this.b == null) {
       return;
     }
     if (paramBoolean2)
@@ -112,17 +98,7 @@ public class AEGifTipsPopupPart
       a(new AEGifTipsPopupPart.1(this));
       return;
     }
-    a();
-  }
-  
-  private static boolean a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(Build.MANUFACTURER);
-    ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(Build.MODEL);
-    localObject = ((StringBuilder)localObject).toString();
-    return jdField_a_of_type_JavaUtilList.contains(localObject);
+    d();
   }
   
   private static boolean a(Animation paramAnimation)
@@ -132,76 +108,100 @@ public class AEGifTipsPopupPart
   
   private String b()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString[0];
+    return j[0];
   }
   
-  private void b()
+  private static boolean c()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    return k.contains(localObject);
+  }
+  
+  private void d()
+  {
+    if (this.i) {
+      return;
+    }
+    this.b.setVisibility(0);
+    this.f = new TranslateAnimation(0.0F, 0.0F, 0.0F, 15.0F);
+    this.f.setDuration(300L);
+    this.f.setRepeatCount(-1);
+    this.f.setRepeatMode(2);
+    this.f.setAnimationListener(new AEGifTipsPopupPart.2(this));
+    this.b.startAnimation(this.f);
+  }
+  
+  private void e()
   {
     QLog.d("AEGifTipsPopupPart", 4, "###  hide tips");
-    this.jdField_c_of_type_Boolean = true;
-    if (a(this.jdField_a_of_type_AndroidViewAnimationAnimation))
+    this.i = true;
+    if (a(this.e))
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.reset();
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
+      this.e.setAnimationListener(null);
+      this.e.reset();
+      this.e = null;
     }
-    if (a(this.jdField_b_of_type_AndroidViewAnimationAnimation))
+    if (a(this.f))
     {
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.reset();
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
+      this.f.setAnimationListener(null);
+      this.f.reset();
+      this.f = null;
     }
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
-    ((View)localObject).removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
+    ((View)localObject).removeCallbacks(this.l);
+    if (this.b.getVisibility() != 0) {
       return;
     }
     localObject = new AnimationSet(false);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F);
     localScaleAnimation.setDuration(300L);
     localScaleAnimation.setInterpolator(new AccelerateInterpolator(3.0F));
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.5F, 1, 0.0F, 0, this.jdField_b_of_type_AndroidViewView.getY() + this.jdField_b_of_type_AndroidViewView.getHeight() / 2 - this.jdField_a_of_type_AndroidViewView.getY());
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.5F, 1, 0.0F, 0, this.d.getY() + this.d.getHeight() / 2 - this.b.getY());
     localTranslateAnimation.setDuration(300L);
     localTranslateAnimation.setInterpolator(new AccelerateInterpolator(3.0F));
     ((AnimationSet)localObject).addAnimation(localScaleAnimation);
     ((AnimationSet)localObject).addAnimation(localTranslateAnimation);
     ((AnimationSet)localObject).setAnimationListener(new AEGifTipsPopupPart.4(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localObject);
+    this.b.startAnimation((Animation)localObject);
   }
   
-  private boolean b()
+  private boolean f()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.h) {
       return false;
     }
-    return AECameraPrefsUtil.a().a("has_enter_aio_gif", false, 0) ^ true;
+    return AECameraPrefsUtil.a().b("has_enter_aio_gif", false, 0) ^ true;
   }
   
-  private void c()
+  private void g()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
     AECameraPrefsUtil.a().a("has_enter_aio_gif", true, 0);
   }
   
-  private void d()
+  private void h()
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
-    if (a()) {
+    if (c()) {
       return;
     }
-    if (!a(this.jdField_a_of_type_AndroidViewAnimationAnimation))
+    if (!a(this.e))
     {
-      if (a(this.jdField_b_of_type_AndroidViewAnimationAnimation)) {
+      if (a(this.f)) {
         return;
       }
-      boolean bool = b();
+      boolean bool = f();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("###  showIfFirstTimeEnter， first = ");
       localStringBuilder.append(bool);
@@ -209,36 +209,36 @@ public class AEGifTipsPopupPart
       if (bool)
       {
         a(false, false);
-        c();
+        g();
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidViewView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
+      this.a = false;
+      this.b.postDelayed(this.l, 5000L);
     }
   }
   
-  private void e()
+  private void i()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    if (a(this.jdField_a_of_type_AndroidViewAnimationAnimation))
+    this.a = false;
+    this.b.removeCallbacks(this.l);
+    this.b.setVisibility(4);
+    if (a(this.e))
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
+      this.e.setAnimationListener(null);
+      this.e.cancel();
+      this.e = null;
     }
-    if (a(this.jdField_b_of_type_AndroidViewAnimationAnimation))
+    if (a(this.f))
     {
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
+      this.f.setAnimationListener(null);
+      this.f.cancel();
+      this.f = null;
     }
-    if (a(this.jdField_c_of_type_AndroidViewAnimationAnimation))
+    if (a(this.g))
     {
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.setAnimationListener(null);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.cancel();
-      this.jdField_c_of_type_AndroidViewAnimationAnimation = null;
+      this.g.setAnimationListener(null);
+      this.g.cancel();
+      this.g = null;
     }
   }
   
@@ -249,9 +249,9 @@ public class AEGifTipsPopupPart
   
   protected void initView()
   {
-    this.jdField_b_of_type_AndroidViewView = this.mRootView.findViewById(2064122218);
-    this.jdField_a_of_type_AndroidViewView = this.mRootView.findViewById(2064122236);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122237));
+    this.d = this.mRootView.findViewById(2063991100);
+    this.b = this.mRootView.findViewById(2063991118);
+    this.c = ((TextView)this.b.findViewById(2063991119));
   }
   
   public void onActivityPause()
@@ -261,13 +261,13 @@ public class AEGifTipsPopupPart
   
   public void onActivityResume()
   {
-    d();
+    h();
     super.onActivityResume();
   }
   
   public void onDestroy()
   {
-    e();
+    i();
     super.onDestroy();
   }
   
@@ -276,12 +276,12 @@ public class AEGifTipsPopupPart
     if (paramInt != 786435) {
       return;
     }
-    b();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGifTipsPopupPart
  * JD-Core Version:    0.7.0.1
  */

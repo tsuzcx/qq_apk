@@ -15,15 +15,15 @@ class VideoPlayerView$5
   
   public void onClick(View paramView)
   {
-    if (VideoPlayerView.a(this.a))
+    if (VideoPlayerView.f(this.a))
     {
-      VideoPlayerView.c(this.a);
+      VideoPlayerView.g(this.a);
     }
     else
     {
-      VideoPlayerView.d(this.a);
-      if (VideoPlayerView.a(this.a) != null) {
-        VSReporter.b(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).poster.nick.get(), VideoPlayerView.a(this.a).title.get() });
+      VideoPlayerView.h(this.a);
+      if (VideoPlayerView.c(this.a) != null) {
+        VSReporter.b(VideoPlayerView.c(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.c(this.a).poster.nick.get(), VideoPlayerView.c(this.a).title.get() });
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

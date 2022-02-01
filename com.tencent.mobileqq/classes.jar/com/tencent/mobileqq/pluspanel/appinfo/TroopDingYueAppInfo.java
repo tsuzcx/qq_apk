@@ -24,7 +24,7 @@ public class TroopDingYueAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130842554;
+    return 2130843507;
   }
   
   public int getAppID()
@@ -37,26 +37,26 @@ public class TroopDingYueAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131697319);
+    return BaseApplicationImpl.getContext().getString(2131895092);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
     paramPlusPanelViewModel.a("chat_tool_dingyue", localQQAppInterface.getCurrentAccountUin());
     paramPlusPanelViewModel.b(paramBaseChatPie);
-    paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
+    paramPlusPanelViewModel = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://buluo.qq.com/cgi-bin/bar/group_subscribe/entrance?gid=");
-    localStringBuilder.append(paramSessionInfo.a);
+    localStringBuilder.append(paramSessionInfo.b);
     paramPlusPanelViewModel.putExtra("url", localStringBuilder.toString());
-    paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
+    paramBaseChatPie.aX().startActivity(paramPlusPanelViewModel);
     ReportController.b(localQQAppInterface, "P_CliOper", "Grp_AIO", "", "add_page", "Clk_sub", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.TroopDingYueAppInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.kandian.biz.follow.popup;
 
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
@@ -17,7 +16,7 @@ public final class RIJFollowRecommendReport$Companion
   @NotNull
   public final RIJTransMergeKanDianReport.ReportR5Builder a(@Nullable Integer paramInteger)
   {
-    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
+    RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g();
     int i = 2;
     int j;
     if ((paramInteger != null) && (paramInteger.intValue() == 2))
@@ -29,7 +28,7 @@ public final class RIJFollowRecommendReport$Companion
     {
       j = 2;
     }
-    localReportR5Builder.addStringNotThrow("uin", RIJQQAppInterfaceUtil.a());
+    localReportR5Builder.addStringNotThrow("uin", RIJQQAppInterfaceUtil.d());
     localReportR5Builder.addStringNotThrow("acc_rec_location", i);
     localReportR5Builder.addStringNotThrow("trigger_type", 1);
     localReportR5Builder.addStringNotThrow("scene_type", j);
@@ -48,12 +47,12 @@ public final class RIJFollowRecommendReport$Companion
     localStringBuilder.append(", r5 = ");
     localStringBuilder.append(paramString2);
     QLog.i("RIJFollowRecommendReportUtil", 1, localStringBuilder.toString());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", paramString1, paramString1, 0, 0, "", "", "", paramString2, false);
+    PublicAccountReportUtils.a(null, "", paramString1, paramString1, 0, 0, "", "", "", paramString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJFollowRecommendReport.Companion
  * JD-Core Version:    0.7.0.1
  */

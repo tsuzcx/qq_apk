@@ -11,20 +11,20 @@ public class VideoProxy
   implements IVideoService
 {
   @ConfigInject(configPath="Business/qqconnectface-api/src/main/resources/Inject_connect_face_config.yml", version=1)
-  private static ArrayList<Class<? extends IVideoService>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private IVideoService jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiIVideoService;
+  private static ArrayList<Class<? extends IVideoService>> a = new ArrayList();
+  private IVideoService b;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(FaceVideo.class);
+    a.add(FaceVideo.class);
   }
   
   public VideoProxy()
   {
-    Class localClass = (Class)jdField_a_of_type_JavaUtilArrayList.get(0);
+    Class localClass = (Class)a.get(0);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiIVideoService = ((IVideoService)localClass.newInstance());
+      this.b = ((IVideoService)localClass.newInstance());
       return;
     }
     catch (Exception localException)
@@ -35,12 +35,12 @@ public class VideoProxy
   
   public boolean a(AppRuntime paramAppRuntime)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceApiIVideoService.a(paramAppRuntime);
+    return this.b.a(paramAppRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqconnectface.impl.VideoProxy
  * JD-Core Version:    0.7.0.1
  */

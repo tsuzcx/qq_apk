@@ -22,12 +22,12 @@ import mqq.app.AppRuntime;
 public class ZanBannerView
   extends FrameLayout
 {
-  private static String jdField_a_of_type_JavaLangString = "spKeyZanBannerIndex";
-  private int jdField_a_of_type_Int = -1;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private PraiseConfigHelper.EntryBannerInfo jdField_a_of_type_ComTencentMobileqqProfileLikePraiseConfigHelper$EntryBannerInfo;
-  private ZanBannerView.BannerHolder jdField_a_of_type_ComTencentMobileqqVasZanBannerView$BannerHolder;
-  private List<PraiseConfigHelper.EntryBannerInfo> jdField_a_of_type_JavaUtilList;
+  private static String a = "spKeyZanBannerIndex";
+  private List<PraiseConfigHelper.EntryBannerInfo> b;
+  private int c = -1;
+  private PraiseConfigHelper.EntryBannerInfo d;
+  private RelativeLayout e;
+  private ZanBannerView.BannerHolder f;
   
   public ZanBannerView(Context paramContext)
   {
@@ -47,59 +47,46 @@ public class ZanBannerView
     a(paramContext);
   }
   
-  private PraiseConfigHelper.EntryBannerInfo a()
-  {
-    if (a()) {
-      return null;
-    }
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseConfigHelper$EntryBannerInfo = ((PraiseConfigHelper.EntryBannerInfo)localList.get(i % localList.size()));
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int).commit();
-    return this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseConfigHelper$EntryBannerInfo;
-  }
-  
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131561934, null));
-    this.jdField_a_of_type_ComTencentMobileqqVasZanBannerView$BannerHolder = new ZanBannerView.BannerHolder(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_Int = BaseApplicationImpl.getApplication().getRuntime().getPreferences().getInt(jdField_a_of_type_JavaLangString, 0);
-    if (this.jdField_a_of_type_Int > 100) {
-      this.jdField_a_of_type_Int = 0;
+    this.e = ((RelativeLayout)LayoutInflater.from(paramContext).inflate(2131628358, null));
+    this.f = new ZanBannerView.BannerHolder(this.e);
+    addView(this.e);
+    this.c = BaseApplicationImpl.getApplication().getRuntime().getPreferences().getInt(a, 0);
+    if (this.c > 100) {
+      this.c = 0;
     }
   }
   
   private void a(ZanBannerView.BannerHolder paramBannerHolder)
   {
-    Object localObject = a();
+    Object localObject = getNextInfo();
     if (localObject != null)
     {
-      paramBannerHolder.jdField_a_of_type_AndroidWidgetTextView.setText(((PraiseConfigHelper.EntryBannerInfo)localObject).jdField_a_of_type_JavaLangString);
-      paramBannerHolder.jdField_b_of_type_AndroidWidgetTextView.setText(((PraiseConfigHelper.EntryBannerInfo)localObject).b);
-      if (((PraiseConfigHelper.EntryBannerInfo)localObject).jdField_a_of_type_JavaUtilVector != null)
+      paramBannerHolder.b.setText(((PraiseConfigHelper.EntryBannerInfo)localObject).a);
+      paramBannerHolder.c.setText(((PraiseConfigHelper.EntryBannerInfo)localObject).b);
+      if (((PraiseConfigHelper.EntryBannerInfo)localObject).c != null)
       {
-        int i = ((PraiseConfigHelper.EntryBannerInfo)localObject).jdField_a_of_type_JavaUtilVector.size();
+        int i = ((PraiseConfigHelper.EntryBannerInfo)localObject).c.size();
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        int j = ViewUtils.b(36.0F);
+        int j = ViewUtils.dpToPx(36.0F);
         localURLDrawableOptions.mRequestWidth = j;
         localURLDrawableOptions.mRequestHeight = j;
         URLDrawable localURLDrawable;
         if (i == 1)
         {
-          localURLDrawable = URLDrawable.getDrawable((String)((PraiseConfigHelper.EntryBannerInfo)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
-          paramBannerHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-          paramBannerHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+          localURLDrawable = URLDrawable.getDrawable((String)((PraiseConfigHelper.EntryBannerInfo)localObject).c.get(0), localURLDrawableOptions);
+          paramBannerHolder.d.setImageDrawable(localURLDrawable);
+          paramBannerHolder.e.setVisibility(8);
           return;
         }
         if (i > 1)
         {
-          localURLDrawable = URLDrawable.getDrawable((String)((PraiseConfigHelper.EntryBannerInfo)localObject).jdField_a_of_type_JavaUtilVector.get(0), localURLDrawableOptions);
-          localObject = URLDrawable.getDrawable((String)((PraiseConfigHelper.EntryBannerInfo)localObject).jdField_a_of_type_JavaUtilVector.get(1), localURLDrawableOptions);
-          paramBannerHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
-          paramBannerHolder.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-          paramBannerHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+          localURLDrawable = URLDrawable.getDrawable((String)((PraiseConfigHelper.EntryBannerInfo)localObject).c.get(0), localURLDrawableOptions);
+          localObject = URLDrawable.getDrawable((String)((PraiseConfigHelper.EntryBannerInfo)localObject).c.get(1), localURLDrawableOptions);
+          paramBannerHolder.d.setImageDrawable(localURLDrawable);
+          paramBannerHolder.e.setImageDrawable((Drawable)localObject);
+          paramBannerHolder.e.setVisibility(0);
         }
       }
     }
@@ -107,37 +94,50 @@ public class ZanBannerView
   
   private boolean a()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     return (localList == null) || (localList.isEmpty());
   }
   
-  public String a()
+  private PraiseConfigHelper.EntryBannerInfo getNextInfo()
   {
-    PraiseConfigHelper.EntryBannerInfo localEntryBannerInfo = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseConfigHelper$EntryBannerInfo;
+    if (a()) {
+      return null;
+    }
+    List localList = this.b;
+    int i = this.c;
+    this.c = (i + 1);
+    this.d = ((PraiseConfigHelper.EntryBannerInfo)localList.get(i % localList.size()));
+    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt(a, this.c).commit();
+    return this.d;
+  }
+  
+  public String getCurrentClickUrl()
+  {
+    PraiseConfigHelper.EntryBannerInfo localEntryBannerInfo = this.d;
     if (localEntryBannerInfo != null) {
-      return localEntryBannerInfo.c;
+      return localEntryBannerInfo.d;
     }
     return null;
   }
   
-  public String b()
+  public String getCurrentReportName()
   {
-    PraiseConfigHelper.EntryBannerInfo localEntryBannerInfo = this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseConfigHelper$EntryBannerInfo;
+    PraiseConfigHelper.EntryBannerInfo localEntryBannerInfo = this.d;
     if (localEntryBannerInfo != null) {
-      return localEntryBannerInfo.d;
+      return localEntryBannerInfo.e;
     }
     return "";
   }
   
   public void setInfoList(List<PraiseConfigHelper.EntryBannerInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    a(this.jdField_a_of_type_ComTencentMobileqqVasZanBannerView$BannerHolder);
+    this.b = paramList;
+    a(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ZanBannerView
  * JD-Core Version:    0.7.0.1
  */

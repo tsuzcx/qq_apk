@@ -43,37 +43,37 @@ class SpecailCareListActivity$4
         this.a.h();
         if (paramBoolean)
         {
-          if (this.a.c != null)
+          if (this.a.m != null)
           {
             this.a.d();
-            QQToast.a(BaseApplication.getContext(), 2, 2131689599, 0).b(this.a.getTitleBarHeight());
+            QQToast.makeText(BaseApplication.getContext(), 2, 2131886209, 0).show(this.a.getTitleBarHeight());
           }
           else
           {
-            QQToast.a(BaseApplication.getContext(), 2, 2131699325, 0).b(this.a.getTitleBarHeight());
+            QQToast.makeText(BaseApplication.getContext(), 2, 2131897342, 0).show(this.a.getTitleBarHeight());
           }
           this.a.a();
-          this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+          this.a.o.notifyDataSetChanged();
           return;
         }
-        if (this.a.c != null)
+        if (this.a.m != null)
         {
-          QQToast.a(BaseApplication.getContext(), 1, 2131699309, 0).b(this.a.getTitleBarHeight());
+          QQToast.makeText(BaseApplication.getContext(), 1, 2131897326, 0).show(this.a.getTitleBarHeight());
           return;
         }
-        QQToast.a(BaseApplication.getContext(), 1, 2131699324, 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(BaseApplication.getContext(), 1, 2131897341, 0).show(this.a.getTitleBarHeight());
         return;
       }
       if (paramBoolean)
       {
         this.a.a();
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+        this.a.o.notifyDataSetChanged();
       }
     }
     else if (paramBoolean)
     {
       this.a.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+      this.a.o.notifyDataSetChanged();
     }
   }
   
@@ -91,7 +91,7 @@ class SpecailCareListActivity$4
     if (paramBoolean)
     {
       this.a.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+      this.a.o.notifyDataSetChanged();
     }
   }
   
@@ -105,28 +105,28 @@ class SpecailCareListActivity$4
       localStringBuilder.append(", isComplete=");
       localStringBuilder.append(paramBoolean2);
       localStringBuilder.append(" mIsPullRefresh=");
-      localStringBuilder.append(this.a.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.a.r);
       QLog.d("SpecailCareListActivity", 2, localStringBuilder.toString());
     }
     if ((!paramBoolean1) || (paramBoolean2))
     {
       this.a.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+      this.a.o.notifyDataSetChanged();
     }
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.r)
     {
       if ((paramBoolean1) && (paramBoolean2))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
-        this.a.jdField_a_of_type_Boolean = false;
+        this.a.j.a(0);
+        this.a.A.sendEmptyMessageDelayed(2001, 1000L);
+        this.a.r = false;
         return;
       }
       if (!paramBoolean1)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
-        this.a.jdField_a_of_type_Boolean = false;
+        this.a.j.a(1);
+        this.a.A.sendEmptyMessageDelayed(2001, 1000L);
+        this.a.r = false;
       }
     }
   }
@@ -142,12 +142,12 @@ class SpecailCareListActivity$4
     }
     if (paramBoolean)
     {
-      if (this.a.d != 0)
+      if (this.a.E != 0)
       {
-        this.a.b = true;
+        this.a.y = true;
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+      this.a.o.notifyDataSetChanged();
     }
   }
   
@@ -160,12 +160,12 @@ class SpecailCareListActivity$4
       paramArrayOfString.append(paramBoolean);
       QLog.d("SpecailCareListActivity", 2, paramArrayOfString.toString());
     }
-    if (this.a.d != 0)
+    if (this.a.E != 0)
     {
-      this.a.b = true;
+      this.a.y = true;
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+    this.a.o.notifyDataSetChanged();
   }
   
   protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
@@ -182,13 +182,13 @@ class SpecailCareListActivity$4
     if (paramBoolean1)
     {
       this.a.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$SpecailCareListAdapter.notifyDataSetChanged();
+      this.a.o.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.4
  * JD-Core Version:    0.7.0.1
  */

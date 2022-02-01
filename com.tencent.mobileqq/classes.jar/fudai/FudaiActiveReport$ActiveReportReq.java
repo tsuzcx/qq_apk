@@ -43,7 +43,7 @@ public final class FudaiActiveReport$ActiveReportReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     fudai.FudaiActiveReport.ActiveReportReq
  * JD-Core Version:    0.7.0.1
  */

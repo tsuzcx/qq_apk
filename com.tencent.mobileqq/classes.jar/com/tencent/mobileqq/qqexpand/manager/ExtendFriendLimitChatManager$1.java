@@ -33,15 +33,15 @@ class ExtendFriendLimitChatManager$1
     }
     if ((ExtendFriendLimitChatManager.a(this.a) != null) && (ExtendFriendLimitChatManager.a(this.a).get() != null))
     {
-      if (this.a.a() == 2)
+      if (this.a.f() == 2)
       {
         if ((paramInt == 0) && (paramMatchInfo != null))
         {
-          ExtendFriendLimitChatManager.a(this.a, paramMatchInfo.a());
+          ExtendFriendLimitChatManager.a(this.a, paramMatchInfo.c());
           localObject = this.a;
-          ((ExtendFriendLimitChatManager)localObject).a = paramString1;
-          ((ExtendFriendLimitChatManager)localObject).a().a(105);
-          if (!ExtendFriendLimitChatManager.a(this.a))
+          ((ExtendFriendLimitChatManager)localObject).b = paramString1;
+          ((ExtendFriendLimitChatManager)localObject).d().b(105);
+          if (!ExtendFriendLimitChatManager.b(this.a))
           {
             QQNotificationManager.getInstance().createLimitChatNotificationChannel();
             ExtendFriendLimitChatManager.a(this.a, true);
@@ -49,7 +49,7 @@ class ExtendFriendLimitChatManager$1
         }
         else
         {
-          this.a.a().a(104);
+          this.a.d().b(104);
         }
         ((ExtendFriendLimitChatManager.LimitChatMatchListener)ExtendFriendLimitChatManager.a(this.a).get()).a(paramInt, paramMatchInfo, paramString1, paramString2);
       }
@@ -62,7 +62,7 @@ class ExtendFriendLimitChatManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.ExtendFriendLimitChatManager.1
  * JD-Core Version:    0.7.0.1
  */

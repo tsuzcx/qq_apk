@@ -13,17 +13,17 @@ import com.tencent.qphone.base.util.QLog;
 public class DatalineFilesAdapter$ItemHolder
   implements Cloneable
 {
-  int jdField_a_of_type_Int;
-  public Button a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
   public DLFileInfo a;
-  public AsyncImageView a;
-  public WaitTextView a;
-  public TextView b;
-  public TextView c;
+  int b;
+  public ImageView c;
+  public WaitTextView d;
+  public AsyncImageView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
+  public ProgressBar i;
+  public RelativeLayout j;
+  public Button k;
   
   public DatalineFilesAdapter$ItemHolder(DatalineFilesAdapter paramDatalineFilesAdapter) {}
   

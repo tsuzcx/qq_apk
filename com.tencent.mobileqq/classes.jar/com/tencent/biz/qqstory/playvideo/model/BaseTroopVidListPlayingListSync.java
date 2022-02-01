@@ -8,19 +8,19 @@ public abstract class BaseTroopVidListPlayingListSync
   extends DefaultPlayerVideoListSynchronizer
   implements DefaultPlayerVideoListSynchronizer.RetryableSynchronizer
 {
-  protected TroopVidToVideoInfoPuller a;
-  protected String a;
+  protected TroopVidToVideoInfoPuller b;
+  protected String c;
   
   protected abstract TroopVidToVideoInfoPuller a();
   
   protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller = a();
-      this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_Boolean);
+      this.b = a();
+      this.b.a(this.a);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a();
+    this.b.a();
   }
   
   public boolean isValidate()
@@ -30,7 +30,7 @@ public abstract class BaseTroopVidListPlayingListSync
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.BaseTroopVidListPlayingListSync
  * JD-Core Version:    0.7.0.1
  */

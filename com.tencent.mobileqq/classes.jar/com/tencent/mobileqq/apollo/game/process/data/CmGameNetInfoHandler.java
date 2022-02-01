@@ -10,20 +10,20 @@ import org.json.JSONObject;
 public class CmGameNetInfoHandler
   implements INetInfoHandler
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
+  private long a = 0L;
+  private int b;
   
   public CmGameNetInfoHandler(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   private void a(int paramInt)
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
+    if (System.currentTimeMillis() - this.a < 500L) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.a = System.currentTimeMillis();
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -34,11 +34,11 @@ public class CmGameNetInfoHandler
     }
     try
     {
-      localObject1 = CmGameUtil.a(this.jdField_a_of_type_Int);
+      localObject1 = CmGameUtil.a(this.b);
       if (localObject1 == null) {
         return;
       }
-      localObject1 = ((CmGameLauncher)localObject1).a();
+      localObject1 = ((CmGameLauncher)localObject1).e();
       if (localObject1 == null) {
         return;
       }
@@ -88,7 +88,7 @@ public class CmGameNetInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.data.CmGameNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

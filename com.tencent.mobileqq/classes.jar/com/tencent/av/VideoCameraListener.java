@@ -14,83 +14,69 @@ public class VideoCameraListener
   extends CameraDataProcess
   implements CameraListener
 {
-  private final VideoController jdField_a_of_type_ComTencentAvVideoController;
-  private WeakReference<VideoCameraListener.SwitchCameraListener> jdField_a_of_type_MqqUtilWeakReference = null;
-  private boolean b = false;
+  private final VideoController d;
+  private boolean e = false;
+  private WeakReference<VideoCameraListener.SwitchCameraListener> f = null;
   
   public VideoCameraListener(VideoController paramVideoController)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
+    this.d = paramVideoController;
   }
   
   public int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = this.jdField_a_of_type_ComTencentAvVideoController.a().d;
+    int i = this.d.k().g;
     if (paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentAvVideoController.a().n = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().H = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().b(paramLong, true);
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 1) {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "afterOpenCamera.1", 2);
-      } else if ((this.jdField_a_of_type_ComTencentAvVideoController.a().d == 3) || (this.jdField_a_of_type_ComTencentAvVideoController.a().d == 4)) {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, "afterOpenCamera.2", 4);
+      this.d.k().M = false;
+      this.d.k().aK = false;
+      this.d.k().b(paramLong, true);
+      if (this.d.k().g == 1) {
+        this.d.k().a(paramLong, "afterOpenCamera.1", 2);
+      } else if ((this.d.k().g == 3) || (this.d.k().g == 4)) {
+        this.d.k().a(paramLong, "afterOpenCamera.2", 4);
       }
-      VideoController localVideoController = this.jdField_a_of_type_ComTencentAvVideoController;
-      localVideoController.c(localVideoController.a().d);
+      VideoController localVideoController = this.d;
+      localVideoController.c(localVideoController.k().g);
     }
     return i;
   }
   
-  public void a()
-  {
-    long l = AudioHelper.b();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("notifyCameraNoData, seq[");
-      localStringBuilder.append(l);
-      localStringBuilder.append("]");
-      QLog.i("CameraDataProcess", 2, localStringBuilder.toString());
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a.a(new Object[] { Integer.valueOf(38), Integer.valueOf(1), Long.valueOf(l) });
-  }
-  
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentAvVideoController.a().a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
+    this.d.aj().a(new Object[] { Integer.valueOf(38), Integer.valueOf(2), Long.valueOf(paramLong) });
   }
   
   public void a(long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (((SessionInfo)localObject).d == 2)
+    Object localObject = this.d.k();
+    if (((SessionInfo)localObject).g == 2)
     {
       if (paramBoolean)
       {
         ((SessionInfo)localObject).b(paramLong, false);
-        if (!((SessionInfo)localObject).k)
+        if (!((SessionInfo)localObject).I)
         {
           ((SessionInfo)localObject).a(paramLong, "CloseCameraRunnable.1", 1);
-          ((SessionInfo)localObject).H = true;
+          ((SessionInfo)localObject).aK = true;
         }
       }
     }
-    else if ((((SessionInfo)localObject).d == 4) && (!((SessionInfo)localObject).k)) {
+    else if ((((SessionInfo)localObject).g == 4) && (!((SessionInfo)localObject).I)) {
       ((SessionInfo)localObject).a(paramLong, "CloseCameraRunnable.2", 3);
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.c(((SessionInfo)localObject).d);
-    localObject = this.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
-    this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = null;
+    this.d.c(((SessionInfo)localObject).g);
+    localObject = this.a;
+    this.a = null;
     if (localObject != null) {
-      ((FramePerfData)localObject).d();
+      ((FramePerfData)localObject).i();
     }
   }
   
   public void a(boolean paramBoolean, VideoCameraListener.SwitchCameraListener paramSwitchCameraListener)
   {
-    this.b = paramBoolean;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramSwitchCameraListener);
+    this.e = paramBoolean;
+    this.f = new WeakReference(paramSwitchCameraListener);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -105,7 +91,21 @@ public class VideoCameraListener
   
   public void b()
   {
-    EffectsRenderController localEffectsRenderController = this.jdField_a_of_type_ComTencentAvVideoController.a(true);
+    long l = AudioHelper.c();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyCameraNoData, seq[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("CameraDataProcess", 2, localStringBuilder.toString());
+    }
+    this.d.e.a(new Object[] { Integer.valueOf(38), Integer.valueOf(1), Long.valueOf(l) });
+  }
+  
+  public void c()
+  {
+    EffectsRenderController localEffectsRenderController = this.d.m(true);
     if (localEffectsRenderController != null)
     {
       a(localEffectsRenderController);
@@ -114,9 +114,9 @@ public class VideoCameraListener
     QLog.i("CameraDataProcess", 1, "checkEffectCtrl, ctrl is null.");
   }
   
-  public void c()
+  public void d()
   {
-    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = this.f;
     if (localObject != null) {
       ((WeakReference)localObject).clear();
     }
@@ -124,36 +124,36 @@ public class VideoCameraListener
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("clearSwitchCameraListener, isStart[");
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append("]");
       QLog.i("SurfaceTag", 2, ((StringBuilder)localObject).toString());
     }
   }
   
-  public void d() {}
+  public void e() {}
   
-  public void e()
+  public void f()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
+    this.b = 0;
+    this.c = false;
   }
   
   public void onPreviewData(CameraFrame paramCameraFrame)
   {
     if (paramCameraFrame.a())
     {
-      paramCameraFrame.b();
+      paramCameraFrame.e();
       if (QLog.isColorLevel()) {
         QLog.e("OnPreviewData", 2, "onPreviewData data is null");
       }
       return;
     }
-    if (this.b)
+    if (this.e)
     {
       if (QLog.isColorLevel()) {
         QLog.i("SurfaceTag", 2, "onPreviewData, first frame for switchCamera");
       }
-      Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      Object localObject = this.f;
       if (localObject == null) {
         localObject = null;
       } else {
@@ -162,7 +162,7 @@ public class VideoCameraListener
       if (localObject != null) {
         ((VideoCameraListener.SwitchCameraListener)localObject).a();
       }
-      this.b = false;
+      this.e = false;
     }
     super.onPreviewData(paramCameraFrame);
   }

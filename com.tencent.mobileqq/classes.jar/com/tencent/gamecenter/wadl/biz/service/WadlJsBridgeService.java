@@ -17,20 +17,20 @@ public class WadlJsBridgeService
   extends AppService
   implements Handler.Callback
 {
-  private static String jdField_a_of_type_JavaLangString = "WadlJsBridgeService";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Looper jdField_a_of_type_AndroidOsLooper;
+  private static String a = "WadlJsBridgeService";
   private String b = "WadlJsBridgeService.Thread";
+  private Looper c;
+  private Handler d;
   
   public WadlJsBridgeService()
   {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "WadlJsBridgeService new instance");
+    QLog.i(a, 1, "WadlJsBridgeService new instance");
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     String str1 = (String)paramMessage.obj;
-    String str2 = jdField_a_of_type_JavaLangString;
+    String str2 = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleMessage what=");
     localStringBuilder.append(paramMessage.what);
@@ -67,8 +67,8 @@ public class WadlJsBridgeService
       return false;
     }
     paramMessage = new WadlParams(str1, "");
-    paramMessage.d = 4;
-    paramMessage.p = "biz_src_zf_games";
+    paramMessage.h = 4;
+    paramMessage.A = "biz_src_zf_games";
     WadlProxyServiceUtil.a().c(paramMessage);
     return false;
   }
@@ -81,22 +81,22 @@ public class WadlJsBridgeService
   public void onCreate()
   {
     super.onCreate();
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "onCreate...");
+    QLog.i(a, 1, "onCreate...");
     HandlerThread localHandlerThread = new HandlerThread(this.b, 10);
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsLooper = localHandlerThread.getLooper();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsLooper, this);
+    this.c = localHandlerThread.getLooper();
+    this.d = new Handler(this.c, this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "Service is Destroyed");
+    QLog.i(a, 1, "Service is Destroyed");
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onStartCommand flags=,");
     localStringBuilder.append(paramInt1);
@@ -109,24 +109,24 @@ public class WadlJsBridgeService
     {
       paramInt1 = paramIntent.getIntExtra("ACTIONNAME", 0);
       paramIntent = paramIntent.getStringExtra("id");
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onStartCommand action= ");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(",id=");
       localStringBuilder.append(paramIntent);
       QLog.i((String)localObject, 1, localStringBuilder.toString());
-      localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localObject = this.d.obtainMessage();
       ((Message)localObject).what = paramInt1;
       ((Message)localObject).obj = paramIntent;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.d.sendMessage((Message)localObject);
     }
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.service.WadlJsBridgeService
  * JD-Core Version:    0.7.0.1
  */

@@ -15,45 +15,39 @@ public class PollWidgetUtils$SingleOptionElement
   extends PollWidgetUtils.OptionElement
   implements View.OnTouchListener
 {
-  public static final int[] a;
-  public static final int[] b;
-  public static final int[] c = { 2130844638, 2130844641 };
-  public static final int[] d = { 2131378580, 2131378581 };
-  int jdField_a_of_type_Int;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public boolean a;
-  TextView b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131363994, 2131363995 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130844637, 2130844640 };
-  }
+  public static final int[] a = { 2131429951, 2131429952 };
+  public static final int[] b = { 2130846010, 2130846013 };
+  public static final int[] c = { 2130846011, 2130846014 };
+  public static final int[] d = { 2131447206, 2131447207 };
+  int e;
+  TextView f;
+  TextView g;
+  public boolean h;
   
   public PollWidgetUtils$SingleOptionElement(PollWidgetUtils.WidgetWrapper paramWidgetWrapper, View paramView, int paramInt)
   {
     super(paramWidgetWrapper, paramView);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(jdField_a_of_type_ArrayOfInt[paramInt]));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(d[paramInt]));
+    this.e = paramInt;
+    this.f = ((TextView)paramView.findViewById(a[paramInt]));
+    this.g = ((TextView)paramView.findViewById(d[paramInt]));
     paramView.setOnTouchListener(this);
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%.0f%%", new Object[] { Float.valueOf(paramFloat) }));
+    this.g.setText(String.format(Locale.getDefault(), "%.0f%%", new Object[] { Float.valueOf(paramFloat) }));
   }
   
   public void a(CharSequence paramCharSequence)
   {
     CharSequence localCharSequence;
     if (TextUtils.isEmpty(paramCharSequence)) {
-      localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getHint();
+      localCharSequence = this.f.getHint();
     } else {
       localCharSequence = paramCharSequence;
     }
     int j;
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+    if (this.g.getVisibility() == 0) {
       j = 1;
     } else {
       j = 0;
@@ -62,7 +56,7 @@ public class PollWidgetUtils$SingleOptionElement
     float[] arrayOfFloat1;
     if (j != 0)
     {
-      k = UIUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 72.5F);
+      k = UIUtils.a(this.f.getContext(), 72.5F);
       arrayOfFloat1 = new float[3];
       float[] tmp67_65 = arrayOfFloat1;
       tmp67_65[0] = 21.0F;
@@ -74,7 +68,7 @@ public class PollWidgetUtils$SingleOptionElement
     }
     else
     {
-      k = UIUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 84.0F);
+      k = UIUtils.a(this.f.getContext(), 84.0F);
       arrayOfFloat1 = new float[2];
       float[] tmp107_105 = arrayOfFloat1;
       tmp107_105[0] = 28.0F;
@@ -82,9 +76,9 @@ public class PollWidgetUtils$SingleOptionElement
       tmp112_107[1] = 21.0F;
       tmp112_107;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(k);
+    this.f.setMaxWidth(k);
     float[] arrayOfFloat2 = new float[localCharSequence.length()];
-    Paint localPaint = new Paint(this.jdField_a_of_type_AndroidWidgetTextView.getPaint());
+    Paint localPaint = new Paint(this.f.getPaint());
     int i1 = -1;
     int i = 0;
     for (;;)
@@ -93,15 +87,15 @@ public class PollWidgetUtils$SingleOptionElement
       if (i >= arrayOfFloat1.length) {
         break label312;
       }
-      localPaint.setTextSize(TypedValue.applyDimension(1, arrayOfFloat1[i], this.jdField_a_of_type_AndroidWidgetTextView.getResources().getDisplayMetrics()));
+      localPaint.setTextSize(TypedValue.applyDimension(1, arrayOfFloat1[i], this.f.getResources().getDisplayMetrics()));
       localPaint.getTextWidths(localCharSequence.toString(), arrayOfFloat2);
       int i2 = arrayOfFloat2.length;
       m = 0;
       int n = 0;
       while (m < i2)
       {
-        float f = arrayOfFloat2[m];
-        n = (int)(n + f);
+        float f1 = arrayOfFloat2[m];
+        n = (int)(n + f1);
         m += 1;
       }
       if ((n <= k) || (i == arrayOfFloat1.length - 1)) {
@@ -109,15 +103,15 @@ public class PollWidgetUtils$SingleOptionElement
       }
       i += 1;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, arrayOfFloat1[i]);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    this.f.setTextSize(1, arrayOfFloat1[i]);
+    this.f.setText(paramCharSequence);
     SLog.a("Q.qqstory.widget.PollWidgetUtils", "text size = %s", Float.valueOf(arrayOfFloat1[i]));
     int m = i;
     label312:
-    paramCharSequence = PollWidgetUtils.a(this.jdField_a_of_type_AndroidWidgetTextView, 2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    paramCharSequence = PollWidgetUtils.a(this.f, 2);
+    this.f.setText(paramCharSequence);
     if ((j != 0) && (m == arrayOfFloat1.length - 1)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
+      this.g.setTextSize(1, 20.0F);
     }
   }
   
@@ -131,42 +125,42 @@ public class PollWidgetUtils$SingleOptionElement
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_Int]);
-      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.01F, 0.0F, 2.0F, -35568);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.01F, 0.0F, 2.0F, -35568);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.j.setBackgroundResource(b[this.e]);
+      this.f.setShadowLayer(0.01F, 0.0F, 2.0F, -35568);
+      this.f.setTextColor(-1);
+      this.g.setShadowLayer(0.01F, 0.0F, 2.0F, -35568);
+      this.g.setTextColor(-1);
       return;
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
+    if (this.h) {
+      this.j.setBackgroundResource(0);
     } else {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(c[this.jdField_a_of_type_Int]);
+      this.j.setBackgroundResource(c[this.e]);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.f.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.f.setTextColor(-16777216);
+    this.g.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+    this.g.setTextColor(-16777216);
   }
   
   public void c(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0))
+    if ((paramBoolean) && (this.g.getVisibility() != 0))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+      this.g.setVisibility(0);
+      a(this.f.getText());
       return;
     }
-    if ((!paramBoolean) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0))
+    if ((!paramBoolean) && (this.g.getVisibility() == 0))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+      this.g.setVisibility(8);
+      a(this.f.getText());
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!a()) && (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener != null) && (this.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper.a()))
+    if ((!b()) && (this.k != null) && (this.i.g()))
     {
       int i = paramMotionEvent.getActionMasked();
       if (i != 0)

@@ -14,7 +14,7 @@ class PTSAppLoader$2
     PTSAppLoader.2.1 local1 = new PTSAppLoader.2.1(this);
     try
     {
-      HtmlOffline.a();
+      HtmlOffline.b();
     }
     catch (Throwable localThrowable2)
     {
@@ -39,7 +39,7 @@ class PTSAppLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.loaders.PTSAppLoader.2
  * JD-Core Version:    0.7.0.1
  */

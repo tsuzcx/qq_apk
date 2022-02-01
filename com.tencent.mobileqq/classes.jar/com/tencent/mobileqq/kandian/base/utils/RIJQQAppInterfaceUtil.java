@@ -8,7 +8,25 @@ import mqq.manager.WtloginManager;
 
 public class RIJQQAppInterfaceUtil
 {
-  public static long a()
+  public static QQAppInterface a()
+  {
+    AppRuntime localAppRuntime = e();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public static QQAppInterface b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
+  public static long c()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null) {
@@ -22,16 +40,7 @@ public class RIJQQAppInterfaceUtil
     return ((AppRuntime)localObject).getLongAccountUin();
   }
   
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = a();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static String a()
+  public static String d()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     if (localObject != null) {
@@ -50,7 +59,7 @@ public class RIJQQAppInterfaceUtil
     return localObject;
   }
   
-  public static AppRuntime a()
+  public static AppRuntime e()
   {
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     if (localBaseApplicationImpl != null) {
@@ -59,21 +68,7 @@ public class RIJQQAppInterfaceUtil
     return null;
   }
   
-  public static boolean a()
-  {
-    return a() instanceof QQAppInterface;
-  }
-  
-  public static QQAppInterface b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public static String b()
+  public static String f()
   {
     if (BaseApplicationImpl.getApplication() == null) {
       return null;
@@ -96,10 +91,15 @@ public class RIJQQAppInterfaceUtil
     }
     return null;
   }
+  
+  public static boolean g()
+  {
+    return e() instanceof QQAppInterface;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil
  * JD-Core Version:    0.7.0.1
  */

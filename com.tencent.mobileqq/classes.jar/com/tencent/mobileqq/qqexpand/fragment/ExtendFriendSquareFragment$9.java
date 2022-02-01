@@ -9,12 +9,12 @@ class ExtendFriendSquareFragment$9
   
   public void run()
   {
-    this.this$0.a.scrollToPositionWithOffset(this.a, this.b);
+    this.this$0.o.scrollToPositionWithOffset(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSquareFragment.9
  * JD-Core Version:    0.7.0.1
  */

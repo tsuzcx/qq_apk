@@ -2,18 +2,18 @@ package cooperation.vip.qqbanner.data;
 
 public final class CountDownImmersionData
 {
-  public long a;
   public String a;
-  public boolean a;
   public String b;
   public String c;
   public String d;
-  public String e;
+  public long e;
   public String f;
   public String g;
   public String h;
   public String i;
   public String j;
+  public String k;
+  public boolean l;
   
   public static CountDownImmersionData a()
   {
@@ -22,25 +22,25 @@ public final class CountDownImmersionData
   
   public CountDownImmersionData a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public CountDownImmersionData b()
   {
     CountDownImmersionData localCountDownImmersionData = new CountDownImmersionData();
-    localCountDownImmersionData.j = this.j;
+    localCountDownImmersionData.k = this.k;
     localCountDownImmersionData.d = this.d;
     localCountDownImmersionData.b = this.b;
-    localCountDownImmersionData.g = this.g;
-    localCountDownImmersionData.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localCountDownImmersionData.h = this.h;
     localCountDownImmersionData.e = this.e;
     localCountDownImmersionData.f = this.f;
-    localCountDownImmersionData.h = this.h;
-    localCountDownImmersionData.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localCountDownImmersionData.c = this.c;
+    localCountDownImmersionData.g = this.g;
     localCountDownImmersionData.i = this.i;
-    localCountDownImmersionData.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localCountDownImmersionData.a = this.a;
+    localCountDownImmersionData.c = this.c;
+    localCountDownImmersionData.j = this.j;
+    localCountDownImmersionData.l = this.l;
     return localCountDownImmersionData;
   }
   
@@ -58,43 +58,43 @@ public final class CountDownImmersionData
   
   public CountDownImmersionData d(String paramString)
   {
-    this.e = paramString;
+    this.f = paramString;
     return this;
   }
   
   public CountDownImmersionData e(String paramString)
   {
-    this.f = paramString;
+    this.g = paramString;
     return this;
   }
   
   public CountDownImmersionData f(String paramString)
   {
-    this.g = paramString;
+    this.h = paramString;
     return this;
   }
   
   public CountDownImmersionData g(String paramString)
   {
-    this.h = paramString;
+    this.i = paramString;
     return this;
   }
   
   public CountDownImmersionData h(String paramString)
   {
-    this.i = paramString;
+    this.j = paramString;
     return this;
   }
   
   public CountDownImmersionData i(String paramString)
   {
-    this.j = paramString;
+    this.k = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.qqbanner.data.CountDownImmersionData
  * JD-Core Version:    0.7.0.1
  */

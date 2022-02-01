@@ -1,5 +1,6 @@
 package com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter.entity;
 
+import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter.IJsEntityFormatter;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -7,6 +8,7 @@ import org.json.JSONObject;
 public class JsSdkVersionEntity
   implements IJsEntityFormatter
 {
+  private static final String TAG = "JsSdkVersionEntity";
   private int mSdkVersion;
   
   private JsSdkVersionEntity() {}
@@ -25,14 +27,17 @@ public class JsSdkVersionEntity
     }
     catch (JSONException localJSONException)
     {
-      localJSONException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("format ");
+      localStringBuilder.append(localJSONException);
+      Log.e("JsSdkVersionEntity", localStringBuilder.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.entityformatter.entity.JsSdkVersionEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -30,12 +30,12 @@ class ARTransferDoorLogicManager$4
       localStringBuilder.append(localUnsatisfiedLinkError.getMessage());
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    this.this$0.i();
+    this.this$0.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorLogicManager.4
  * JD-Core Version:    0.7.0.1
  */

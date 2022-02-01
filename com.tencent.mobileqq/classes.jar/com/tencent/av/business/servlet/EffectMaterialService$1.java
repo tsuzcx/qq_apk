@@ -42,9 +42,9 @@ class EffectMaterialService$1
     if (i != 0)
     {
       this.a.extraData.putLong("KEY_REQUEST_TIME", System.currentTimeMillis());
-      localObject1 = new NewIntent(EffectMaterialService.a(this.this$0).getApplication(), EffectMaterialServlet.class);
+      localObject1 = new NewIntent(EffectMaterialService.b(this.this$0).getApplication(), EffectMaterialServlet.class);
       ((NewIntent)localObject1).putExtra(ToServiceMsg.class.getSimpleName(), this.a);
-      EffectMaterialService.a(this.this$0).startServlet((NewIntent)localObject1);
+      EffectMaterialService.b(this.this$0).startServlet((NewIntent)localObject1);
       return;
     }
     localObject1 = new FromServiceMsg(this.a.getUin(), (String)localObject1);

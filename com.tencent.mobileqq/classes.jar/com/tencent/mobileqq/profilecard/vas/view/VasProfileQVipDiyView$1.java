@@ -18,7 +18,7 @@ class VasProfileQVipDiyView$1
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)VasProfileQVipDiyView.access$000(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.val$cardInfo.allInOne.uin);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)VasProfileQVipDiyView.access$000(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.val$cardInfo.allInOne.uin);
     VasProfileQVipDiyView.1.1 local1 = new VasProfileQVipDiyView.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
     if ((this.val$isInit) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId)))
@@ -30,7 +30,7 @@ class VasProfileQVipDiyView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class PasterDataManager$1
   
   public void run()
   {
-    if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
+    if (!this.this$0.a) {
+      this.this$0.i.a(1, Collections.EMPTY_LIST);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.PasterDataManager.1
  * JD-Core Version:    0.7.0.1
  */

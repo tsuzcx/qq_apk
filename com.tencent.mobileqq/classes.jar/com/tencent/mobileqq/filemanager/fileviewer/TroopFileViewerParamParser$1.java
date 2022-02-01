@@ -12,16 +12,16 @@ class TroopFileViewerParamParser$1
   
   public FileBrowserModelBase a()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser.a();
+    List localList = this.b.b();
     if ((localList != null) && (localList.size() > 0)) {
-      return new TroopFileModel(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, TroopFileViewerParamParser.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerTroopFileViewerParamParser));
+      return new TroopFileModel(this.b.a, this.a, localList, TroopFileViewerParamParser.a(this.b));
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.TroopFileViewerParamParser.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,19 +22,19 @@ public class RedPointUtils
 {
   public static int a(int paramInt)
   {
-    Object localObject = QQStoryContext.a();
+    Object localObject = QQStoryContext.j();
     if (localObject == null)
     {
       SLog.c("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId() error, app is null", new Throwable());
       return 0;
     }
-    localObject = ((TroopRedTouchManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).a(paramInt);
+    localObject = ((TroopRedTouchManager)((QQAppInterface)localObject).getManager(QQManagerFactory.MGR_RED_TOUCH_EX)).e(paramInt);
     if (localObject == null)
     {
       SLog.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is null", Integer.valueOf(paramInt));
       return 0;
     }
-    SLog.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is %s", Integer.valueOf(paramInt), PBUtils.a((MessageMicro)localObject));
+    SLog.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is %s", Integer.valueOf(paramInt), PBUtils.b((MessageMicro)localObject));
     paramInt = ((oidb_0x791.RedDotInfo)localObject).uint32_number.get();
     boolean bool = ((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get();
     ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.get();
@@ -46,7 +46,7 @@ public class RedPointUtils
   
   public static int a(QQAppInterface paramQQAppInterface)
   {
-    return ((MsgTabStoryNodeConfigManager)paramQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a;
+    return ((MsgTabStoryNodeConfigManager)paramQQAppInterface.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).f;
   }
   
   public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, String paramString, int paramInt2)

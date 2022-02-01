@@ -3,7 +3,7 @@ package com.tencent.secprotocol.t;
 import com.tencent.secprotocol.ByteData;
 import java.util.TimerTask;
 
-public final class ReportLogHelper$a
+public class ReportLogHelper$a
   extends TimerTask
 {
   public void run()
@@ -20,7 +20,7 @@ public final class ReportLogHelper$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.secprotocol.t.ReportLogHelper.a
  * JD-Core Version:    0.7.0.1
  */

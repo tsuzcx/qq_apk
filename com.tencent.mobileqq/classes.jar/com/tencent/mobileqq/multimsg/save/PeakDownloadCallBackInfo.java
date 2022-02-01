@@ -2,26 +2,26 @@ package com.tencent.mobileqq.multimsg.save;
 
 public class PeakDownloadCallBackInfo
 {
-  public int a;
   public long a;
-  public String a;
-  public boolean a;
   public int b;
   public int c;
+  public int d;
+  public String e;
+  public boolean f;
   
   public PeakDownloadCallBackInfo(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramLong;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramString;
+    this.f = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.PeakDownloadCallBackInfo
  * JD-Core Version:    0.7.0.1
  */

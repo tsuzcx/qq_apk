@@ -6,13 +6,13 @@ import java.io.OutputStream;
 public class ChunkedOutputStream
   extends DataOutputStream
 {
-  private static final byte[] c = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
-  private static final byte[] d = { 13, 10 };
-  private static final byte[] e = { 48, 13, 10 };
-  protected int a;
-  protected byte[] a;
-  protected int b;
-  protected byte[] b;
+  private static final byte[] e = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private static final byte[] f = { 13, 10 };
+  private static final byte[] g = { 48, 13, 10 };
+  protected byte[] a = null;
+  protected int b = 0;
+  protected int c = -1;
+  protected byte[] d = new byte[32];
   
   public ChunkedOutputStream(OutputStream paramOutputStream)
   {
@@ -22,29 +22,25 @@ public class ChunkedOutputStream
   public ChunkedOutputStream(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
     super(paramOutputStream);
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_ArrayOfByte = new byte[32];
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_b_of_type_Int = paramArrayOfByte.length;
+    this.a = paramArrayOfByte;
+    this.c = paramArrayOfByte.length;
   }
   
   protected void a()
   {
-    this.out.write(e, 0, 3);
-    this.out.write(d, 0, 2);
+    this.out.write(g, 0, 3);
+    this.out.write(f, 0, 2);
     this.out.flush();
   }
   
   protected final void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int + 1 >= this.jdField_b_of_type_Int) {
+    if (this.b + 1 >= this.c) {
       b();
     }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    byte[] arrayOfByte = this.a;
+    int i = this.b;
+    this.b = (i + 1);
     arrayOfByte[i] = ((byte)(paramInt & 0xFF));
   }
   
@@ -66,46 +62,46 @@ public class ChunkedOutputStream
     if (paramInt2 == 0) {
       return;
     }
-    byte[] arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.d;
     arrayOfByte[30] = 13;
     arrayOfByte[31] = 10;
     int j = paramInt2;
     int i = 3;
     while (j > 15)
     {
-      this.jdField_b_of_type_ArrayOfByte[(32 - i)] = c[(j % 16)];
+      this.d[(32 - i)] = e[(j % 16)];
       j >>= 4;
       i += 1;
     }
-    arrayOfByte = this.jdField_b_of_type_ArrayOfByte;
+    arrayOfByte = this.d;
     int k = 32 - i;
-    arrayOfByte[k] = c[j];
-    this.out.write(this.jdField_b_of_type_ArrayOfByte, k, i);
+    arrayOfByte[k] = e[j];
+    this.out.write(this.d, k, i);
     this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-    this.out.write(d, 0, 2);
+    this.out.write(f, 0, 2);
     this.out.flush();
   }
   
   protected void b()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 0) {
       return;
     }
-    a(this.jdField_a_of_type_ArrayOfByte, 0, i);
-    this.jdField_a_of_type_Int = 0;
+    a(this.a, 0, i);
+    this.b = 0;
   }
   
   public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int + paramInt2 >= this.jdField_b_of_type_Int) {
+    if (this.b + paramInt2 >= this.c) {
       b();
     }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.a;
     if (paramInt2 < arrayOfByte.length)
     {
-      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.jdField_a_of_type_Int, paramInt2);
-      this.jdField_a_of_type_Int += paramInt2;
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, this.b, paramInt2);
+      this.b += paramInt2;
       return;
     }
     a(paramArrayOfByte, paramInt1, paramInt2);
@@ -134,7 +130,7 @@ public class ChunkedOutputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.stream.ChunkedOutputStream
  * JD-Core Version:    0.7.0.1
  */

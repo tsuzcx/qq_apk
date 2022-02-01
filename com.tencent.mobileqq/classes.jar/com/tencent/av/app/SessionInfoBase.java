@@ -5,34 +5,34 @@ import com.tencent.qphone.base.util.QLog;
 public class SessionInfoBase
   extends DeprecatedClass.Session
 {
-  protected int ah = 0;
-  protected long l = 0L;
+  protected long cM = 0L;
+  protected int cN = 0;
   
-  public long b()
+  public long D()
   {
-    return this.l;
+    return this.cM;
   }
   
-  public void c(long paramLong)
+  public int E()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setRoomId old room id[");
-    localStringBuilder.append(this.l);
-    localStringBuilder.append("], new room id[");
-    localStringBuilder.append(paramLong);
-    localStringBuilder.append("].");
-    QLog.i("SessionInfoBase", 1, localStringBuilder.toString());
-    this.l = paramLong;
-  }
-  
-  public int d()
-  {
-    return this.ah;
+    return this.cN;
   }
   
   public void e(int paramInt)
   {
-    this.ah = paramInt;
+    this.cN = paramInt;
+  }
+  
+  public void e(long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRoomId old room id[");
+    localStringBuilder.append(this.cM);
+    localStringBuilder.append("], new room id[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("].");
+    QLog.i("SessionInfoBase", 1, localStringBuilder.toString());
+    this.cM = paramLong;
   }
   
   public boolean equals(Object paramObject)
@@ -46,15 +46,15 @@ public class SessionInfoBase
         return false;
       }
       paramObject = (SessionInfoBase)paramObject;
-      return this.l == paramObject.l;
+      return this.cM == paramObject.cM;
     }
     return false;
   }
   
   public int hashCode()
   {
-    long l1 = this.l;
-    return (int)(l1 ^ l1 >>> 32);
+    long l = this.cM;
+    return (int)(l ^ l >>> 32);
   }
 }
 

@@ -14,10 +14,10 @@ final class ReportUtil$4
   
   public void run()
   {
-    Context localContext = this.jdField_a_of_type_AndroidContentContext;
-    AbsBaseArticleInfo localAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    Context localContext = this.a;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = this.b;
     int i = (int)localAbsBaseArticleInfo.mChannelID;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo.a()) {
+    if (this.c.a()) {
       localObject = "2";
     } else {
       localObject = "1";
@@ -25,18 +25,18 @@ final class ReportUtil$4
     Object localObject = RIJTransMergeKanDianReport.a(localContext, localAbsBaseArticleInfo, i, (String)localObject);
     try
     {
-      ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID);
+      ((JSONObject)localObject).put("rowkey", this.b.innerUniqueID);
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    ReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, "0X800A731", ((JSONObject)localObject).toString());
+    ReportUtil.a(this.b, "0X800A731", ((JSONObject)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.ReportUtil.4
  * JD-Core Version:    0.7.0.1
  */

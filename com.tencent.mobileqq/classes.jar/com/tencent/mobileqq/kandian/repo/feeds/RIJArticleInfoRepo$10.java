@@ -10,7 +10,7 @@ class RIJArticleInfoRepo$10
   
   public void run()
   {
-    boolean bool = RIJArticleInfoRepo.a(this.this$0).execSQL(this.a);
+    boolean bool = RIJArticleInfoRepo.b(this.this$0).execSQL(this.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[clearChannelArticleInfoAndKeepCache] deleteRes = ");
     localStringBuilder.append(bool);
@@ -21,7 +21,7 @@ class RIJArticleInfoRepo$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJArticleInfoRepo.10
  * JD-Core Version:    0.7.0.1
  */

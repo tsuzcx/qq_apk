@@ -19,17 +19,17 @@ public class HotChatServiceImpl
     if ((paramAppInterface instanceof QQAppInterface)) {
       return HotChatManager.a(paramString, (QQAppInterface)paramAppInterface);
     }
-    return 2130842648;
+    return 2130843601;
   }
   
   public String getHotChatName(String paramString)
   {
-    paramString = ((HotChatManager)this.mApp.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString);
+    paramString = ((HotChatManager)this.mApp.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramString);
     if (paramString != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString.name);
-      localStringBuilder.append(HardCodeUtil.a(2131702759));
+      localStringBuilder.append(HardCodeUtil.a(2131900750));
       return localStringBuilder.toString();
     }
     return null;
@@ -42,7 +42,7 @@ public class HotChatServiceImpl
   
   public boolean isRobotHotChat(String paramString)
   {
-    paramString = ((HotChatManager)this.mApp.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(paramString);
+    paramString = ((HotChatManager)this.mApp.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).c(paramString);
     if (paramString != null) {
       return paramString.isRobotHotChat;
     }
@@ -58,7 +58,7 @@ public class HotChatServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.HotChatServiceImpl
  * JD-Core Version:    0.7.0.1
  */

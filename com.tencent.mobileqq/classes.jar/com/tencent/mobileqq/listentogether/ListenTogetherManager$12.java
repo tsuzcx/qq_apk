@@ -13,22 +13,22 @@ class ListenTogetherManager$12
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.a();
+      this.c.b();
       paramDialogInterface.dismiss();
       return;
     }
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager.b();
+      this.c.c();
       paramDialogInterface.dismiss();
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager;
-      ListenTogetherManager.a(paramDialogInterface, (ListenTogetherSession)ListenTogetherManager.a(paramDialogInterface).get(ListenTogetherUtils.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString)));
+      paramDialogInterface = this.c;
+      ListenTogetherManager.b(paramDialogInterface, (ListenTogetherSession)ListenTogetherManager.b(paramDialogInterface).get(ListenTogetherUtils.a(this.a, this.b)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.12
  * JD-Core Version:    0.7.0.1
  */

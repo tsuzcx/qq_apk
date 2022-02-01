@@ -26,14 +26,21 @@ class DropFrameMonitor$2
       paramMessage = DropFrameMonitor.access$300(this.this$0);
       paramMessage.dropCount += i;
       paramMessage = DropFrameMonitor.access$300(this.this$0);
-      paramMessage.duration += (float)l;
+      float f1 = paramMessage.duration;
+      float f2 = (float)l;
+      paramMessage.duration = (f1 + f2);
+      if (i < 8)
+      {
+        paramMessage = DropFrameMonitor.access$300(this.this$0);
+        paramMessage.smoothTime += f2;
+      }
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.dropframe.DropFrameMonitor.2
  * JD-Core Version:    0.7.0.1
  */

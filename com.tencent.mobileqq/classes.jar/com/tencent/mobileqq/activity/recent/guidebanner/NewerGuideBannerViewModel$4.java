@@ -7,12 +7,12 @@ class NewerGuideBannerViewModel$4
   
   public void run()
   {
-    NewerGuideBannerViewModel.a(this.this$0);
+    NewerGuideBannerViewModel.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerViewModel.4
  * JD-Core Version:    0.7.0.1
  */

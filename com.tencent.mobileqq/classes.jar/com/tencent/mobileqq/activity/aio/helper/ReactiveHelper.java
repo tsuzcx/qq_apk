@@ -24,7 +24,7 @@ public class ReactiveHelper
       if (localObject == null) {
         return;
       }
-      localObject = ((BaseChatPie)localObject).a;
+      localObject = ((BaseChatPie)localObject).d;
       if (localObject == null) {
         return;
       }
@@ -54,7 +54,7 @@ public class ReactiveHelper
     Object localObject1 = localObject2;
     if (localObject3 != null)
     {
-      localObject3 = ((BaseChatPie)localObject3).a();
+      localObject3 = ((BaseChatPie)localObject3).aX();
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = ((Activity)localObject3).getIntent();
@@ -65,7 +65,7 @@ public class ReactiveHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.ReactiveHelper
  * JD-Core Version:    0.7.0.1
  */

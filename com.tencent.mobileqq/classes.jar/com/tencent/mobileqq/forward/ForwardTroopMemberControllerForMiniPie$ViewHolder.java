@@ -6,7 +6,7 @@ import android.view.View;
 class ForwardTroopMemberControllerForMiniPie$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  public int a = ForwardTroopMemberControllerForMiniPie.b;
+  public int c = ForwardTroopMemberControllerForMiniPie.b;
   
   public ForwardTroopMemberControllerForMiniPie$ViewHolder(View paramView)
   {
@@ -16,7 +16,7 @@ class ForwardTroopMemberControllerForMiniPie$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -18,12 +18,12 @@ public class TroopCommonProcessor
 {
   public void a(List<String> paramList)
   {
-    TroopUtils.a(paramList);
+    TroopUtils.b(paramList);
   }
   
   public boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    return SharedPreUtils.a(paramContext, paramString1).contains(paramString2);
+    return SharedPreUtils.as(paramContext, paramString1).contains(paramString2);
   }
   
   public boolean a(AppRuntime paramAppRuntime, TroopInfo paramTroopInfo, boolean paramBoolean)
@@ -49,7 +49,7 @@ public class TroopCommonProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.TroopCommonProcessor
  * JD-Core Version:    0.7.0.1
  */

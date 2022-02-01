@@ -16,43 +16,43 @@ class QfileLocalFileMediaTabView$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.clear();
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.f) && ((QfileLocalFileMediaTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0) & 0x2) > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put("Camera", new ArrayList());
+    this.e.this$0.v.clear();
+    this.e.this$0.v.addAll(this.a);
+    this.e.this$0.l.clear();
+    if ((this.e.this$0.n) && ((QfileLocalFileMediaTabView.c(this.e.this$0) & 0x2) > 0)) {
+      this.e.this$0.l.put("Camera", new ArrayList());
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Object localObject = this.b.keySet().iterator();
     String str;
     while (((Iterator)localObject).hasNext())
     {
       str = (String)((Iterator)localObject).next();
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(HardCodeUtil.a(2131698191))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put(HardCodeUtil.a(2131698191), new ArrayList());
+      if (!this.e.this$0.l.containsKey(HardCodeUtil.a(2131896092))) {
+        this.e.this$0.l.put(HardCodeUtil.a(2131896092), new ArrayList());
       }
-      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(HardCodeUtil.a(2131698191))).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+      ((List)this.e.this$0.l.get(HardCodeUtil.a(2131896092))).addAll((Collection)this.b.get(str));
     }
-    localObject = this.b.keySet().iterator();
+    localObject = this.c.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       str = (String)((Iterator)localObject).next();
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(HardCodeUtil.a(2131698188))) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.put(HardCodeUtil.a(2131698188), new ArrayList());
+      if (!this.e.this$0.l.containsKey(HardCodeUtil.a(2131896089))) {
+        this.e.this$0.l.put(HardCodeUtil.a(2131896089), new ArrayList());
       }
-      ((List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(HardCodeUtil.a(2131698188))).addAll((Collection)this.b.get(str));
+      ((List)this.e.this$0.l.get(HardCodeUtil.a(2131896089))).addAll((Collection)this.c.get(str));
     }
-    localObject = HardCodeUtil.a(2131698191);
-    if ((this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(localObject)) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.containsKey(localObject))) {
-      ((List)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).addAll((Collection)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.get(localObject));
+    localObject = HardCodeUtil.a(2131896092);
+    if ((this.d.containsKey(localObject)) && (this.e.this$0.l.containsKey(localObject))) {
+      ((List)this.d.get(localObject)).addAll((Collection)this.e.this$0.l.get(localObject));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.c.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.i();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView$1.this$0.setSelect(0);
+    this.e.this$0.l.putAll(this.d);
+    this.e.this$0.i();
+    this.e.this$0.setSelect(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView.1.1
  * JD-Core Version:    0.7.0.1
  */

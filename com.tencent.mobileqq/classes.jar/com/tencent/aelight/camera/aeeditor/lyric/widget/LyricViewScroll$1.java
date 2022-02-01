@@ -7,7 +7,7 @@ import android.util.Log;
 class LyricViewScroll$1
   extends Handler
 {
-  int jdField_a_of_type_Int;
+  int a;
   
   LyricViewScroll$1(LyricViewScroll paramLyricViewScroll) {}
   
@@ -19,41 +19,41 @@ class LyricViewScroll$1
       if (i != 2) {
         return;
       }
-      paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll;
-      paramMessage.jdField_b_of_type_Boolean = true;
-      if (LyricViewScroll.a(paramMessage) != null) {
-        LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll).b();
+      paramMessage = this.b;
+      paramMessage.d = true;
+      if (LyricViewScroll.c(paramMessage) != null) {
+        LyricViewScroll.c(this.b).b();
       }
     }
-    else if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.getScrollY())
+    else if (this.a == this.b.getScrollY())
     {
-      paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll;
-      paramMessage.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      paramMessage = this.b;
+      paramMessage.a = this.a;
       if (LyricViewScroll.a(paramMessage) != null) {
-        LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll).b(this.jdField_a_of_type_Int);
+        LyricViewScroll.a(this.b).b(this.a);
       }
       Log.d("LyricViewScroll", "fling stop");
-      LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll, false);
-      LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(2, this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.jdField_b_of_type_Int);
-      paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll;
-      paramMessage.jdField_b_of_type_Boolean = false;
-      if (LyricViewScroll.a(paramMessage) != null) {
-        LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll).a();
+      LyricViewScroll.a(this.b, false);
+      LyricViewScroll.b(this.b).sendEmptyMessageDelayed(2, this.b.e);
+      paramMessage = this.b;
+      paramMessage.d = false;
+      if (LyricViewScroll.c(paramMessage) != null) {
+        LyricViewScroll.c(this.b).a();
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.getScrollY();
-      if (LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll) != null) {
-        LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll).a(this.jdField_a_of_type_Int);
+      this.a = this.b.getScrollY();
+      if (LyricViewScroll.a(this.b) != null) {
+        LyricViewScroll.a(this.b).a(this.a);
       }
-      LyricViewScroll.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll).sendEmptyMessageDelayed(1, 100L);
+      LyricViewScroll.b(this.b).sendEmptyMessageDelayed(1, 100L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewScroll.1
  * JD-Core Version:    0.7.0.1
  */

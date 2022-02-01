@@ -2,6 +2,7 @@ package com.tencent.mobileqq.ar.view;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,11 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.PromotionItem;
 import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionDevice;
@@ -30,6 +35,7 @@ import com.tencent.mobileqq.ar.utils.PromotionUtils;
 import com.tencent.mobileqq.ar.utils.PromotionUtils.ARTransferDoorInfo;
 import com.tencent.mobileqq.ar.utils.PromotionUtils.BasePromotionInfo;
 import com.tencent.mobileqq.ar.utils.PromotionUtils.NonePromotion;
+import com.tencent.mobileqq.education.request.api.IStudyRuntimeService;
 import com.tencent.mobileqq.olympic.activity.PromotionEntry;
 import com.tencent.mobileqq.olympic.activity.PromotionEntry.OnARPromotionEntryListenr;
 import com.tencent.mobileqq.olympic.activity.PromotionRes;
@@ -41,6 +47,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 @TargetApi(11)
@@ -48,71 +55,88 @@ public class ScanEntryProviderContainerView
   extends FrameLayout
   implements ScanEntryResourceDelegate.OnAREntryResourcePreapreListener, ScanEntryContainerViewListener, PromotionEntry.OnARPromotionEntryListenr, PromotionRes.ARTransferPromotionResStatusCallBack
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = 0L;
+  private boolean A = false;
+  private boolean B = true;
+  private boolean C = false;
+  private int D = 0;
+  private FrameAnimationViewWraper E = new FrameAnimationViewWraper();
+  private View.OnTouchListener F = new ScanEntryProviderContainerView.1(this);
+  private ScanEntryProviderContainerView.onVoiceScanStatusListener G = new ScanEntryProviderContainerView.3(this);
+  private PromotionConfigInfo.PromotionItem H;
   protected Context a;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ScanEntryProviderContainerView.1(this);
-  View jdField_a_of_type_AndroidViewView;
-  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  protected AppInterface a;
-  private PromotionConfigInfo.PromotionItem jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem;
-  private ARCommonConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-  private ScanEntryResourceDelegate jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate;
-  private UniformGLRenderManager jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-  private PromotionUtils.BasePromotionInfo jdField_a_of_type_ComTencentMobileqqArUtilsPromotionUtils$BasePromotionInfo = null;
-  private FrameAnimationViewWraper jdField_a_of_type_ComTencentMobileqqArViewFrameAnimationViewWraper = new FrameAnimationViewWraper();
-  private ScanEntryProviderContainerView.onVoiceScanStatusListener jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView$onVoiceScanStatusListener = new ScanEntryProviderContainerView.3(this);
-  private ScanEntryProviderView jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView = null;
-  private ScanEntryProviderViewBuilder jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder;
-  private PromotionEntry jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry = null;
-  private PromotionRes jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes = null;
-  private HashMap<Integer, ScanEntryProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = true;
-  private boolean c = true;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f = false;
-  private boolean g = false;
-  private boolean h = false;
-  private boolean i = false;
-  private boolean j = true;
-  private boolean k = false;
+  protected AppInterface b;
+  View c;
+  FrameLayout d;
+  LinearLayout e;
+  private ScanEntryProviderViewBuilder f;
+  private HashMap<Integer, ScanEntryProviderView> g = new HashMap();
+  private ScanEntryProviderView h = null;
+  private int i = -1;
+  private boolean j = false;
+  private ScanEntryResourceDelegate k;
+  private ARCommonConfigInfo l;
+  private UniformGLRenderManager m;
+  private Rect n;
+  private boolean o = true;
+  private Handler p;
+  private boolean q = true;
+  private boolean r = false;
+  private PromotionUtils.BasePromotionInfo s = null;
+  private boolean t = false;
+  private PromotionEntry u = null;
+  private PromotionRes v = null;
+  private boolean w = false;
+  private boolean x = false;
+  private boolean y = false;
+  private long z = 0L;
   
   public ScanEntryProviderContainerView(Context paramContext)
   {
     super(paramContext);
-    g();
+    k();
   }
   
   public ScanEntryProviderContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    g();
+    k();
   }
   
   public ScanEntryProviderContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    g();
+    k();
+  }
+  
+  private void a(View paramView, String paramString)
+  {
+    RelativeLayout localRelativeLayout = (RelativeLayout)((ScanTorchActivity)this.a).findViewById(2131445273);
+    BubbleTextView localBubbleTextView = new BubbleTextView(this.a);
+    localBubbleTextView.setId(2131445270);
+    localBubbleTextView.setText(paramString);
+    localBubbleTextView.setTextSize(2, 14.0F);
+    localBubbleTextView.setTextColor(Color.parseColor("#000000"));
+    localBubbleTextView.e = Color.parseColor("#ffffff");
+    localBubbleTextView.setPadding(20, 20, 20, 40);
+    paramString = new RelativeLayout.LayoutParams(-2, -2);
+    paramString.addRule(2, 2131429655);
+    localRelativeLayout.addView(localBubbleTextView, paramString);
+    localBubbleTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ScanEntryProviderContainerView.8(this, paramView, localBubbleTextView, paramString));
   }
   
   private void a(PromotionUtils.BasePromotionInfo paramBasePromotionInfo)
   {
     QLog.d("ScanEntryProviderContainerView", 2, "preparePromotionResource");
-    this.jdField_a_of_type_ComTencentMobileqqArUtilsPromotionUtils$BasePromotionInfo = paramBasePromotionInfo;
-    if ((PromotionDevice.a()) && (this.c))
+    this.s = paramBasePromotionInfo;
+    if ((PromotionDevice.a()) && (this.q))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes == null)
+      if (this.v == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes = new PromotionRes((ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.a(this);
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        this.v = new PromotionRes((ScanTorchActivity)this.a);
+        this.v.a(this);
+        this.v.a(this.b);
       }
-      paramBasePromotionInfo = this.jdField_a_of_type_ComTencentMobileqqArUtilsPromotionUtils$BasePromotionInfo;
+      paramBasePromotionInfo = this.s;
       if ((paramBasePromotionInfo instanceof PromotionUtils.ARTransferDoorInfo))
       {
         paramBasePromotionInfo = ((PromotionUtils.ARTransferDoorInfo)paramBasePromotionInfo).a;
@@ -122,163 +146,165 @@ public class ScanEntryProviderContainerView
       {
         paramBasePromotionInfo = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramBasePromotionInfo);
+      this.v.a(this.b, paramBasePromotionInfo);
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArUtilsPromotionUtils$BasePromotionInfo instanceof PromotionUtils.ARTransferDoorInfo)) {
+    if ((this.s instanceof PromotionUtils.ARTransferDoorInfo)) {
       ThreadManager.getUIHandler().postDelayed(new ScanEntryProviderContainerView.2(this), 1000L);
     }
     QLog.d("ScanEntryProviderContainerView", 2, "doTransferDoor device not support");
   }
   
-  private void g()
+  private void k()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2131560961, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2131627302, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidViewView = localView;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131376930));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131363732));
-    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder = new ScanEntryProviderViewBuilder(1);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.c = localView;
+    this.d = ((FrameLayout)localView.findViewById(2131445290));
+    this.e = ((LinearLayout)localView.findViewById(2131429655));
+    this.f = new ScanEntryProviderViewBuilder(1);
+    this.p = new Handler();
   }
   
-  private void h()
+  private void l()
   {
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject = (ImageView)findViewById(2131445410);
+    if ((localObject != null) && (((ImageView)localObject).getVisibility() != 0)) {
+      return;
+    }
+    localObject = (IStudyRuntimeService)BaseApplicationImpl.sApplication.getRuntime().getRuntimeService(IStudyRuntimeService.class, "all");
+    if (((IStudyRuntimeService)localObject).getShowScanAnswerSearchTip())
+    {
+      a(findViewById(2131445410), this.a.getString(2131888845));
+      ((IStudyRuntimeService)localObject).saveShowScanAnswerSearchTip(true);
+    }
+  }
+  
+  private void m()
+  {
+    LinearLayout localLinearLayout = this.e;
     if (localLinearLayout != null) {
       localLinearLayout.setVisibility(8);
     }
   }
   
-  public RelativeLayout a()
+  private void n()
   {
-    return (RelativeLayout)this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public ARCommonConfigInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
-  }
-  
-  public ScanEntryResourceDelegate a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate;
-  }
-  
-  public UniformGLRenderManager a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager;
-  }
-  
-  public PromotionRes a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes;
+    View localView = findViewById(2131445270);
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a();
-    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a();
-    String[] arrayOfString = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a();
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a();
-    int m = 0;
-    while (m < arrayOfInt.length)
+    this.f.a(this.D);
+    this.f.a();
+    int[] arrayOfInt = this.f.b();
+    String[] arrayOfString = this.f.c();
+    int i3 = this.f.d();
+    int i1 = 0;
+    while (i1 < arrayOfInt.length)
     {
-      ScanEntryProviderViewBuilder.ScanEntryProviderViewItem localScanEntryProviderViewItem = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a(m);
-      ImageView localImageView = (ImageView)findViewById(arrayOfInt[m]);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a(m);
+      ScanEntryProviderViewBuilder.ScanEntryProviderViewItem localScanEntryProviderViewItem = this.f.b(i1);
+      ImageView localImageView = (ImageView)findViewById(arrayOfInt[i1]);
+      Object localObject = this.f.c(i1);
       if ((localObject != null) && (localScanEntryProviderViewItem != null))
       {
-        int n;
-        if (localScanEntryProviderViewItem.jdField_a_of_type_Int == 1) {
-          n = i1 - 1;
+        int i2;
+        if (localScanEntryProviderViewItem.a == 1) {
+          i2 = i3 - 1;
         } else {
-          n = 0;
+          i2 = 0;
         }
-        localObject = new FrameAnimationDrawable((int[])localObject, localImageView, n);
-        localImageView.setTag(Integer.valueOf(localScanEntryProviderViewItem.jdField_a_of_type_Int));
-        localImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-        localImageView.setContentDescription(arrayOfString[m]);
-        this.jdField_a_of_type_ComTencentMobileqqArViewFrameAnimationViewWraper.a(localScanEntryProviderViewItem.jdField_a_of_type_Int, (FrameAnimationDrawable)localObject);
+        localObject = new FrameAnimationDrawable((int[])localObject, localImageView, i2);
+        localImageView.setVisibility(0);
+        localImageView.setTag(Integer.valueOf(localScanEntryProviderViewItem.a));
+        localImageView.setOnTouchListener(this.F);
+        localImageView.setContentDescription(arrayOfString[i1]);
+        this.E.a(localScanEntryProviderViewItem.a, (FrameAnimationDrawable)localObject);
       }
-      m += 1;
+      i1 += 1;
+    }
+    if (this.D == 1) {
+      l();
     }
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
     paramBundle.getBoolean("COLD_START", false);
-    int m = paramBundle.getInt("fromSource", 1);
-    int n = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a(paramInt);
+    int i1 = paramBundle.getInt("fromSource", 1);
+    int i2 = this.f.d(paramInt);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("showProviderEntry index=");
-    ((StringBuilder)localObject).append(n);
+    ((StringBuilder)localObject).append(i2);
     QLog.i("ScanEntryProviderContainerView", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == n)
+    if (this.i == i2)
     {
       QLog.i("ScanEntryProviderContainerView", 1, "showProviderEntry value equal return");
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    localObject = this.h;
     if (localObject != null)
     {
       ((ScanEntryProviderView)localObject).g();
-      this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.c(false);
-      this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.setVisibility(8);
+      this.h.c(false);
+      this.h.setVisibility(8);
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(n)))
+    if (this.g.containsKey(Integer.valueOf(i2)))
     {
-      localObject = (ScanEntryProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(n));
+      localObject = (ScanEntryProviderView)this.g.get(Integer.valueOf(i2));
     }
     else
     {
-      ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a(paramInt, this.jdField_a_of_type_AndroidContentContext, this);
+      ScanEntryProviderView localScanEntryProviderView = this.f.a(paramInt, this.a, this);
       localObject = localScanEntryProviderView;
       if (localScanEntryProviderView != null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(n), localScanEntryProviderView);
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(localScanEntryProviderView);
+        this.g.put(Integer.valueOf(i2), localScanEntryProviderView);
+        this.d.addView(localScanEntryProviderView);
         localObject = localScanEntryProviderView;
       }
     }
-    if ((localObject != null) && (!((ScanEntryProviderView)localObject).k))
+    if ((localObject != null) && (!((ScanEntryProviderView)localObject).D))
     {
-      ((ScanEntryProviderView)localObject).setAppInterface(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      ((ScanEntryProviderView)localObject).setAppInterface(this.b);
       ((ScanEntryProviderView)localObject).a(paramBundle);
-      ((ScanEntryProviderView)localObject).setRectAreas(this.jdField_a_of_type_AndroidGraphicsRect);
+      ((ScanEntryProviderView)localObject).setRectAreas(this.n);
       if (paramInt == 1) {
-        ((QRScanEntryView)localObject).setVoiceScanStatusListener(this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderContainerView$onVoiceScanStatusListener);
+        ((QRScanEntryView)localObject).setVoiceScanStatusListener(this.G);
       }
     }
-    this.jdField_a_of_type_Int = n;
-    this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView = ((ScanEntryProviderView)localObject);
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    this.i = i2;
+    this.h = ((ScanEntryProviderView)localObject);
+    paramBundle = this.h;
     if (paramBundle != null)
     {
       paramBundle.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.f();
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+      this.h.f();
+      paramBundle = this.l;
       if (paramBundle != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.a(paramBundle);
+        this.h.a(paramBundle);
       }
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem;
+      paramBundle = this.H;
       if (paramBundle != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+        localObject = this.h;
         if ((localObject instanceof ARScanEntryView)) {
           ((ARScanEntryView)localObject).a(paramBundle);
         }
       }
-      if ((paramInt != 2) && (this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView.c())) {
+      if ((paramInt != 2) && (this.h.n())) {
         a(true);
       } else if (paramInt == 2) {
         a(false);
       }
     }
-    paramInt = this.jdField_a_of_type_Int;
+    paramInt = this.i;
     if (paramInt == 1)
     {
-      ReportController.b(null, "CliOper", "", "", "0X8008F23", "0X8008F23", 0, 0, Integer.toString(m), "0", "0", "");
+      ReportController.b(null, "CliOper", "", "", "0X8008F23", "0X8008F23", 0, 0, Integer.toString(i1), "0", "0", "");
       return;
     }
     if (paramInt == 2) {
@@ -288,14 +314,14 @@ public class ScanEntryProviderContainerView
   
   public void a(Rect paramRect)
   {
-    if ((paramRect != null) && (!paramRect.equals(this.jdField_a_of_type_AndroidGraphicsRect)))
+    if ((paramRect != null) && (!paramRect.equals(this.n)))
     {
-      this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      this.n = paramRect;
+      Iterator localIterator = this.g.entrySet().iterator();
       while (localIterator.hasNext())
       {
         ScanEntryProviderView localScanEntryProviderView = (ScanEntryProviderView)((Map.Entry)localIterator.next()).getValue();
-        if ((localScanEntryProviderView != null) && (localScanEntryProviderView.k)) {
+        if ((localScanEntryProviderView != null) && (localScanEntryProviderView.D)) {
           localScanEntryProviderView.setRectAreas(paramRect);
         }
       }
@@ -307,16 +333,16 @@ public class ScanEntryProviderContainerView
     if (QLog.isColorLevel()) {
       QLog.d("ScanEntryProviderContainerView", 2, "notifyPromotionEntryReady");
     }
-    if (d())
+    if (j())
     {
-      h();
+      m();
       return;
     }
-    PromotionEntry localPromotionEntry = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry;
+    PromotionEntry localPromotionEntry = this.u;
     if (localPromotionEntry == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry = new PromotionEntry(this);
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPromotionItem);
+      this.u = new PromotionEntry(this);
+      this.u.a(this.b, paramPromotionItem);
       return;
     }
     localPromotionEntry.a(true);
@@ -333,9 +359,9 @@ public class ScanEntryProviderContainerView
     localStringBuilder.append("], ready[");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append("]isAlreadyEnterPromotion=");
-    localStringBuilder.append(d());
+    localStringBuilder.append(j());
     QLog.d("ScanEntryProviderContainerView", 1, localStringBuilder.toString());
-    if ((!this.i) && (d()))
+    if ((!this.A) && (j()))
     {
       if (paramBoolean)
       {
@@ -348,32 +374,32 @@ public class ScanEntryProviderContainerView
         ThreadManager.getUIHandler().post(paramPromotionItem);
         return;
       }
-      if ((paramPromotionItem == null) && (d()))
+      if ((paramPromotionItem == null) && (j()))
       {
         ThreadManager.getUIHandler().postDelayed(new ScanEntryProviderContainerView.5(this), 1000L);
         return;
       }
-      if (d())
+      if (j())
       {
-        paramPromotionItem = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+        paramPromotionItem = this.h;
         if ((paramPromotionItem != null) && ((paramPromotionItem instanceof ARScanEntryView))) {
-          ((ARScanEntryView)paramPromotionItem).e(true);
+          ((ARScanEntryView)paramPromotionItem).f(true);
         }
       }
       return;
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = paramPromotionItem;
+      this.H = paramPromotionItem;
     }
   }
   
   public void a(ARCommonConfigInfo paramARCommonConfigInfo)
   {
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    ScanEntryProviderView localScanEntryProviderView = this.h;
     if (localScanEntryProviderView != null) {
       localScanEntryProviderView.a(paramARCommonConfigInfo);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = paramARCommonConfigInfo;
+    this.l = paramARCommonConfigInfo;
   }
   
   public void a(PromotionUtils.BasePromotionInfo paramBasePromotionInfo, boolean paramBoolean)
@@ -381,13 +407,13 @@ public class ScanEntryProviderContainerView
     QLog.i("ScanEntryProviderContainerView", 1, "showProviderEntry with bundle");
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("COLD_START", true);
-    localBundle.putBoolean("hide_album", this.b ^ true);
+    localBundle.putBoolean("hide_album", this.o ^ true);
     if ((!paramBoolean) && (((paramBasePromotionInfo instanceof PromotionUtils.ARTransferDoorInfo)) || ((paramBasePromotionInfo instanceof PromotionUtils.NonePromotion)))) {
       a(paramBasePromotionInfo);
     }
-    if ((!paramBoolean) && (paramBasePromotionInfo != null) && ((paramBasePromotionInfo == null) || (paramBasePromotionInfo.c)))
+    if ((!paramBoolean) && (paramBasePromotionInfo != null) && ((paramBasePromotionInfo == null) || (paramBasePromotionInfo.l)))
     {
-      paramBoolean = paramBasePromotionInfo.c;
+      paramBoolean = paramBasePromotionInfo.l;
       if ((paramBasePromotionInfo instanceof PromotionUtils.ARTransferDoorInfo))
       {
         localBundle.putInt("fromSource", 2);
@@ -397,11 +423,11 @@ public class ScanEntryProviderContainerView
       }
       if (paramBoolean)
       {
-        localBundle.putLong("recognitionMask", paramBasePromotionInfo.jdField_a_of_type_Long);
+        localBundle.putLong("recognitionMask", paramBasePromotionInfo.g);
         localBundle.putBoolean("NoLimitParams", false);
-        localBundle.putBoolean("enableARCloud", paramBasePromotionInfo.jdField_a_of_type_Boolean);
-        ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-        this.k = true;
+        localBundle.putBoolean("enableARCloud", paramBasePromotionInfo.j);
+        ((ViewGroup)this.c).removeView(this.e);
+        this.C = true;
         localBundle.putInt("fromSource", 2);
         a(3, localBundle);
       }
@@ -409,17 +435,17 @@ public class ScanEntryProviderContainerView
     }
     if (paramBoolean)
     {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.k = true;
+      ((ViewGroup)this.c).removeView(this.e);
+      this.C = true;
     }
     a(1, localBundle);
   }
   
   public void a(String paramString)
   {
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    ScanEntryProviderView localScanEntryProviderView = this.h;
     if (localScanEntryProviderView != null) {
-      localScanEntryProviderView.a(paramString);
+      localScanEntryProviderView.i_(paramString);
     }
   }
   
@@ -432,14 +458,14 @@ public class ScanEntryProviderContainerView
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ScanEntryProviderContainerView", 2, ((StringBuilder)localObject).toString());
     }
-    if (!d())
+    if (!j())
     {
       if (QLog.isColorLevel()) {
         QLog.d("ScanEntryProviderContainerView", 2, "updatePromotionResProgress not show,because not under promotion mode");
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    Object localObject = this.h;
     if ((localObject != null) && ((localObject instanceof ARScanEntryView))) {
       ((ARScanEntryView)localObject).a(paramString, true);
     }
@@ -451,13 +477,13 @@ public class ScanEntryProviderContainerView
     paramPromotionItem.append("enterTransferDoorMode[");
     paramPromotionItem.append(paramString);
     paramPromotionItem.append("], mIsTransferDoorMode[");
-    paramPromotionItem.append(this.d);
+    paramPromotionItem.append(this.r);
     paramPromotionItem.append("], ready[");
     paramPromotionItem.append(paramBoolean);
     paramPromotionItem.append("]");
     QLog.d("ScanEntryProviderContainerView", 1, paramPromotionItem.toString());
-    this.d = true;
-    h();
+    this.r = true;
+    m();
   }
   
   public void a(boolean paramBoolean)
@@ -469,40 +495,40 @@ public class ScanEntryProviderContainerView
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("ScanEntryProviderContainerView", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.c)
+    if (!this.q)
     {
       QLog.d("ScanEntryProviderContainerView", 1, "onAllowShowEntryChange refuse ,becauseof h5 not allowed show entry");
       return;
     }
-    if (!this.f)
+    if (!this.w)
     {
-      this.e = paramBoolean;
+      this.t = paramBoolean;
       return;
     }
-    boolean bool2 = this.g;
+    boolean bool2 = this.x;
     boolean bool1 = false;
-    if ((!bool2) || ((bool2) && (!this.h) && (this.jdField_a_of_type_Int != 2)) || (this.jdField_a_of_type_Int == 1)) {
+    if ((!bool2) || ((bool2) && (!this.y) && (this.i != 2)) || (this.i == 1)) {
       paramBoolean = false;
     }
-    if ((this.e == paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null)) {
+    if ((this.t == paramBoolean) && (this.u != null)) {
       return;
     }
-    this.e = paramBoolean;
-    if ((this.e) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry == null) && (!this.d))
+    this.t = paramBoolean;
+    if ((this.t) && (this.u == null) && (!this.r))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes;
+      localObject = this.v;
       if (localObject != null) {
-        ((PromotionRes)localObject).f(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        ((PromotionRes)localObject).g(this.b);
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry;
+    Object localObject = this.u;
     if (localObject != null)
     {
-      if (this.d) {
+      if (this.r) {
         paramBoolean = bool1;
       } else {
-        paramBoolean = this.e;
+        paramBoolean = this.t;
       }
       ((PromotionEntry)localObject).a(paramBoolean);
     }
@@ -513,24 +539,15 @@ public class ScanEntryProviderContainerView
     if (QLog.isColorLevel()) {
       QLog.d("ScanEntryProviderContainerView", 2, "updatePromotionEntryVisiableInfo");
     }
-    this.f = true;
-    this.g = paramBoolean1;
-    this.h = paramBoolean2;
-    this.jdField_a_of_type_AndroidOsHandler.post(new ScanEntryProviderContainerView.6(this));
-  }
-  
-  public boolean a()
-  {
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
-    if (localScanEntryProviderView != null) {
-      return localScanEntryProviderView.a();
-    }
-    return false;
+    this.w = true;
+    this.x = paramBoolean1;
+    this.y = paramBoolean2;
+    this.p.post(new ScanEntryProviderContainerView.6(this));
   }
   
   public void b()
   {
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    ScanEntryProviderView localScanEntryProviderView = this.h;
     if (localScanEntryProviderView != null) {
       localScanEntryProviderView.c();
     }
@@ -548,30 +565,30 @@ public class ScanEntryProviderContainerView
     }
     ((StringBuilder)localObject1).append(bool);
     QLog.d("ScanEntryProviderContainerView", 1, ((StringBuilder)localObject1).toString());
-    if ((this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView != null) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry != null))
+    if ((this.h != null) && (this.u != null))
     {
       if (paramPromotionItem == null) {
         return;
       }
-      if (PromotionResDownload.a(false, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramPromotionItem) != null)
+      if (PromotionResDownload.a(false, this.b.getCurrentAccountUin(), paramPromotionItem) != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes == null)
+        if (this.v == null)
         {
           QLog.d("ScanEntryProviderContainerView", 1, "operateBtnOnClick, 资源还没准备好");
-          PromotionUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPromotionItem.a);
+          PromotionUtil.a(this.b).a(this.b, paramPromotionItem.e);
         }
         else
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("operateBtnOnClick, 资源还没准备好, TotalProgress[");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.a());
+          ((StringBuilder)localObject1).append(this.v.b());
           ((StringBuilder)localObject1).append("], isDownloading[");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.a());
+          ((StringBuilder)localObject1).append(this.v.d());
           ((StringBuilder)localObject1).append("], isDownloadError[");
-          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.b());
+          ((StringBuilder)localObject1).append(this.v.e());
           ((StringBuilder)localObject1).append("]");
           QLog.w("ScanEntryProviderContainerView", 1, ((StringBuilder)localObject1).toString());
-          this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.c(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+          this.v.c(this.b);
         }
         bool = false;
       }
@@ -579,16 +596,16 @@ public class ScanEntryProviderContainerView
       {
         bool = true;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+      localObject1 = this.h;
       if ((localObject1 instanceof ARScanEntryView))
       {
         localObject1 = (ARScanEntryView)localObject1;
-        if (!((ARScanEntryView)localObject1).b())
+        if (!((ARScanEntryView)localObject1).k())
         {
           QLog.d("ScanEntryProviderContainerView", 1, "onPromotionEntryClick refuse,AREngine not ready");
           return;
         }
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem;
+        Object localObject2 = this.H;
         if (localObject2 != null) {
           ((ARScanEntryView)localObject1).a((PromotionConfigInfo.PromotionItem)localObject2);
         }
@@ -596,7 +613,7 @@ public class ScanEntryProviderContainerView
         ReportController.b(null, "dc00898", "", "", "0X80098C7", "0X80098C7", 2, 0, "", "", "", "");
         if (!bool)
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes;
+          localObject2 = this.v;
           if (localObject2 != null) {
             ((PromotionRes)localObject2).a(true);
           }
@@ -605,21 +622,21 @@ public class ScanEntryProviderContainerView
       }
       else
       {
-        int m = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderViewBuilder.a(3);
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(m)))
+        int i1 = this.f.d(3);
+        if (this.g.containsKey(Integer.valueOf(i1)))
         {
-          localObject1 = (ARScanEntryView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(m));
+          localObject1 = (ARScanEntryView)this.g.get(Integer.valueOf(i1));
           ((ScanEntryProviderView)localObject1).g();
           ((ScanEntryProviderView)localObject1).c(true);
-          this.jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(m));
+          this.g.remove(Integer.valueOf(i1));
         }
         localObject1 = PromotionUtils.a(null);
-        ((Bundle)localObject1).putString("Title", paramPromotionItem.b);
+        ((Bundle)localObject1).putString("Title", paramPromotionItem.f);
         a(3, (Bundle)localObject1);
         ReportController.b(null, "dc00898", "", "", "0X80098C7", "0X80098C7", 1, 0, "", "", "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry.a(false, paramPromotionItem);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes;
+      this.u.a(false, paramPromotionItem);
+      localObject1 = this.v;
       if (localObject1 != null) {
         ((PromotionRes)localObject1).a(true);
       }
@@ -637,67 +654,139 @@ public class ScanEntryProviderContainerView
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("ScanEntryProviderContainerView", 2, ((StringBuilder)localObject).toString());
     }
-    if ((!this.k) && (!this.d))
+    if ((!this.C) && (!this.r))
     {
-      if (this.j == paramBoolean) {
+      if (this.B == paramBoolean) {
         return;
       }
-      this.j = paramBoolean;
+      this.B = paramBoolean;
       localObject = new ScanEntryProviderContainerView.7(this, paramBoolean);
       if (Thread.currentThread() == Looper.getMainLooper().getThread())
       {
         ((Runnable)localObject).run();
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject);
+      this.p.post((Runnable)localObject);
     }
-  }
-  
-  public boolean b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanEntryProviderContainerView", 2, "isEngineReady = ");
-    }
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
-    if (localScanEntryProviderView == null) {
-      return false;
-    }
-    if ((localScanEntryProviderView instanceof ARScanEntryView)) {
-      return ((ARScanEntryView)localScanEntryProviderView).b();
-    }
-    return false;
   }
   
   public void c()
   {
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
+    ScanEntryProviderView localScanEntryProviderView = this.h;
     if (localScanEntryProviderView != null) {
       localScanEntryProviderView.d();
     }
   }
   
-  public boolean c()
+  public boolean d()
   {
-    return this.e;
+    ScanEntryProviderView localScanEntryProviderView = this.h;
+    if (localScanEntryProviderView != null) {
+      return localScanEntryProviderView.a();
+    }
+    return false;
   }
   
-  public void d()
+  public void e()
   {
     QLog.i("ScanEntryProviderContainerView", 1, "doOnWindowFocusFirstTimeVisiable");
-    if ((!this.d) && (this.c)) {
+    if ((!this.r) && (this.q)) {
       a(true);
     }
   }
   
-  public boolean d()
+  public void f()
+  {
+    ScanEntryProviderView localScanEntryProviderView = this.h;
+    if ((localScanEntryProviderView != null) && ((localScanEntryProviderView instanceof ARScanEntryView))) {
+      ((ARScanEntryView)localScanEntryProviderView).h();
+    }
+  }
+  
+  public void g()
+  {
+    Object localObject = this.g.entrySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((ScanEntryProviderView)((Map.Entry)((Iterator)localObject).next()).getValue()).e();
+    }
+    localObject = this.v;
+    if (localObject != null)
+    {
+      ((PromotionRes)localObject).b(this.b);
+      this.v = null;
+    }
+    localObject = this.u;
+    if (localObject != null)
+    {
+      ((PromotionEntry)localObject).a(this.b);
+      this.u = null;
+    }
+    localObject = this.E;
+    if (localObject != null) {
+      ((FrameAnimationViewWraper)localObject).b();
+    }
+    this.A = true;
+  }
+  
+  public ARCommonConfigInfo getARCommonConfig()
+  {
+    return this.l;
+  }
+  
+  public int getBottomHeight()
+  {
+    return this.n.bottom;
+  }
+  
+  public PromotionRes getPromotionManager()
+  {
+    return this.v;
+  }
+  
+  public UniformGLRenderManager getRenderEngine()
+  {
+    return this.m;
+  }
+  
+  public RelativeLayout getTopView()
+  {
+    return (RelativeLayout)this.c;
+  }
+  
+  public ScanEntryResourceDelegate getUniformResManger()
+  {
+    return this.k;
+  }
+  
+  public boolean h()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanEntryProviderContainerView", 2, "isEngineReady = ");
+    }
+    ScanEntryProviderView localScanEntryProviderView = this.h;
+    if (localScanEntryProviderView == null) {
+      return false;
+    }
+    if ((localScanEntryProviderView instanceof ARScanEntryView)) {
+      return ((ARScanEntryView)localScanEntryProviderView).k();
+    }
+    return false;
+  }
+  
+  public boolean i()
+  {
+    return this.t;
+  }
+  
+  public boolean j()
   {
     if (PromotionDevice.a())
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqArUtilsPromotionUtils$BasePromotionInfo instanceof PromotionUtils.ARTransferDoorInfo)) {
+      if ((this.s instanceof PromotionUtils.ARTransferDoorInfo)) {
         return true;
       }
-      PromotionEntry localPromotionEntry = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry;
-      if ((localPromotionEntry != null) && (localPromotionEntry.jdField_a_of_type_Boolean))
+      PromotionEntry localPromotionEntry = this.u;
+      if ((localPromotionEntry != null) && (localPromotionEntry.b))
       {
         QLog.d("ScanEntryProviderContainerView", 1, "autoEnterTransferDoorMode, 已经点过入口");
         return true;
@@ -706,65 +795,37 @@ public class ScanEntryProviderContainerView
     return false;
   }
   
-  public void e()
+  public void setEntranceType(int paramInt)
   {
-    ScanEntryProviderView localScanEntryProviderView = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryProviderView;
-    if ((localScanEntryProviderView != null) && ((localScanEntryProviderView instanceof ARScanEntryView))) {
-      ((ARScanEntryView)localScanEntryProviderView).h();
-    }
-  }
-  
-  public void f()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((ScanEntryProviderView)((Map.Entry)((Iterator)localObject).next()).getValue()).e();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes;
-    if (localObject != null)
-    {
-      ((PromotionRes)localObject).b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry;
-    if (localObject != null)
-    {
-      ((PromotionEntry)localObject).a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionEntry = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqArViewFrameAnimationViewWraper;
-    if (localObject != null) {
-      ((FrameAnimationViewWraper)localObject).b();
-    }
-    this.i = true;
+    this.D = paramInt;
   }
   
   public void setInitEnv(AppInterface paramAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramAppInterface;
+    this.a = paramContext;
   }
   
   public void setRenderEngine(UniformGLRenderManager paramUniformGLRenderManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArModelUniformGLRenderManager = paramUniformGLRenderManager;
+    this.m = paramUniformGLRenderManager;
   }
   
   public void setScanRect(Rect paramRect, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.b = paramBoolean;
+    this.n = paramRect;
+    this.o = paramBoolean;
   }
   
   public void setUniformResManager(ScanEntryResourceDelegate paramScanEntryResourceDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate = paramScanEntryResourceDelegate;
-    this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate.a(this);
+    this.k = paramScanEntryResourceDelegate;
+    this.k.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView
  * JD-Core Version:    0.7.0.1
  */

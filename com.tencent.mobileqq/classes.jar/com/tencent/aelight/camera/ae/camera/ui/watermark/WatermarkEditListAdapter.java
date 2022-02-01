@@ -30,19 +30,19 @@ public class WatermarkEditListAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
   implements DatePicker.OnDateChangedListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WatermarkEditListAdapter.OnDateItemClickedListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$OnDateItemClickedListener;
-  private final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
-  private final List<WMElement> jdField_a_of_type_JavaUtilList;
-  private WMElement jdField_a_of_type_OrgLightBeanWMElement;
-  private boolean jdField_a_of_type_Boolean = true;
+  private final List<WMElement> a;
+  private Activity b;
+  private WatermarkEditListAdapter.OnDateItemClickedListener c;
+  private boolean d = true;
+  private WMElement e;
+  private EditText f;
+  private TextView g;
+  private final SimpleDateFormat h = new SimpleDateFormat("yyyy年MM月dd日");
   
   public WatermarkEditListAdapter(Activity paramActivity, List<WMElement> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramList;
+    this.b = paramActivity;
   }
   
   private String a(WMElement paramWMElement)
@@ -64,10 +64,41 @@ public class WatermarkEditListAdapter
     {
       AEQLog.a("WatermarkEditListAdapter", "getDisplayText---parseLong error: ", paramWMElement);
     }
-    return this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date(l1));
+    return this.h.format(new Date(l1));
   }
   
-  private Date a(String paramString)
+  private void a(EditText paramEditText)
+  {
+    if (paramEditText != null) {
+      paramEditText.postDelayed(new WatermarkEditListAdapter.8(this, paramEditText), 200L);
+    }
+  }
+  
+  private void a(EditText paramEditText, WMElement paramWMElement)
+  {
+    this.f.setTextColor(-1);
+    this.f = paramEditText;
+    this.e = paramWMElement;
+    this.f.setCursorVisible(true);
+    paramEditText = this.c;
+    if (paramEditText != null) {
+      paramEditText.a();
+    }
+  }
+  
+  private void a(WatermarkEditListAdapter.EditTextViewHolder paramEditTextViewHolder)
+  {
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.f.getContext(), 2131953338);
+    localQQCustomDialog.setContentView(2131624611);
+    localQQCustomDialog.setTitle(HardCodeUtil.a(2131913794));
+    localQQCustomDialog.setMessage(HardCodeUtil.a(2131913798));
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131898212), new WatermarkEditListAdapter.6(this));
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131913795), new WatermarkEditListAdapter.7(this, paramEditTextViewHolder));
+    localQQCustomDialog.setCanceledOnTouchOutside(false);
+    localQQCustomDialog.show();
+  }
+  
+  private Date b(String paramString)
   {
     long l;
     try
@@ -82,37 +113,6 @@ public class WatermarkEditListAdapter
     return new Date(l);
   }
   
-  private void a(EditText paramEditText)
-  {
-    if (paramEditText != null) {
-      paramEditText.postDelayed(new WatermarkEditListAdapter.8(this, paramEditText), 200L);
-    }
-  }
-  
-  private void a(EditText paramEditText, WMElement paramWMElement)
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_OrgLightBeanWMElement = paramWMElement;
-    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
-    paramEditText = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$OnDateItemClickedListener;
-    if (paramEditText != null) {
-      paramEditText.a();
-    }
-  }
-  
-  private void a(WatermarkEditListAdapter.EditTextViewHolder paramEditTextViewHolder)
-  {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this.jdField_a_of_type_AndroidWidgetEditText.getContext(), 2131756189);
-    localQQCustomDialog.setContentView(2131558978);
-    localQQCustomDialog.setTitle(HardCodeUtil.a(2131716352));
-    localQQCustomDialog.setMessage(HardCodeUtil.a(2131716357));
-    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131716353), new WatermarkEditListAdapter.6(this));
-    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131716354), new WatermarkEditListAdapter.7(this, paramEditTextViewHolder));
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.show();
-  }
-  
   private void b(EditText paramEditText)
   {
     if (paramEditText != null) {
@@ -122,20 +122,20 @@ public class WatermarkEditListAdapter
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (this.jdField_a_of_type_AndroidWidgetEditText != null))
+    Object localObject = this.a;
+    if ((localObject != null) && (!((List)localObject).isEmpty()) && (this.f != null))
     {
-      localObject = this.jdField_a_of_type_OrgLightBeanWMElement;
+      localObject = this.e;
       if (localObject != null) {
-        if ((!"SINCE".equals(((WMElement)localObject).type)) && (!"COUNTDOWN".equals(this.jdField_a_of_type_OrgLightBeanWMElement.type)))
+        if ((!"SINCE".equals(((WMElement)localObject).type)) && (!"COUNTDOWN".equals(this.e.type)))
         {
-          if ("PLAIN_TEXT".equals(this.jdField_a_of_type_OrgLightBeanWMElement.type))
+          if ("PLAIN_TEXT".equals(this.e.type))
           {
-            this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-            localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+            this.f.requestFocus();
+            localObject = this.f;
             ((EditText)localObject).setSelection(((EditText)localObject).getText().toString().length());
-            ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).showSoftInput(this.jdField_a_of_type_AndroidWidgetEditText, 1);
-            localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$OnDateItemClickedListener;
+            ((InputMethodManager)AEModule.getContext().getSystemService("input_method")).showSoftInput(this.f, 1);
+            localObject = this.c;
             if (localObject != null) {
               ((WatermarkEditListAdapter.OnDateItemClickedListener)localObject).a();
             }
@@ -143,14 +143,14 @@ public class WatermarkEditListAdapter
         }
         else
         {
-          if (AECameraEntryManager.k(this.jdField_a_of_type_AndroidAppActivity.getIntent())) {
-            this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2063925310));
+          if (AECameraEntryManager.o(this.b.getIntent())) {
+            this.f.setTextColor(this.b.getResources().getColor(2063794238));
           } else {
-            this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2063925311));
+            this.f.setTextColor(this.b.getResources().getColor(2063794239));
           }
-          localObject = this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$OnDateItemClickedListener;
+          localObject = this.c;
           if (localObject != null) {
-            ((WatermarkEditListAdapter.OnDateItemClickedListener)localObject).a(a(this.jdField_a_of_type_OrgLightBeanWMElement.getInnerValue()));
+            ((WatermarkEditListAdapter.OnDateItemClickedListener)localObject).a(b(this.e.getInnerValue()));
           }
         }
       }
@@ -159,15 +159,15 @@ public class WatermarkEditListAdapter
   
   public void a(WatermarkEditListAdapter.OnDateItemClickedListener paramOnDateItemClickedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$OnDateItemClickedListener = paramOnDateItemClickedListener;
+    this.c = paramOnDateItemClickedListener;
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    if (this.a == null) {
       return;
     }
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.g;
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -176,7 +176,7 @@ public class WatermarkEditListAdapter
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList == null) {
       return 0;
     }
@@ -185,89 +185,89 @@ public class WatermarkEditListAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    WMElement localWMElement = (WMElement)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    WMElement localWMElement = (WMElement)this.a.get(paramInt);
     if (localWMElement == null) {
       return;
     }
     paramViewHolder = (WatermarkEditListAdapter.EditTextViewHolder)paramViewHolder;
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_AndroidWidgetEditText = paramViewHolder.jdField_a_of_type_AndroidWidgetEditText;
-        this.jdField_a_of_type_OrgLightBeanWMElement = localWMElement;
+        this.d = false;
+        this.f = paramViewHolder.a;
+        this.e = localWMElement;
       }
       if (getItemCount() == 1) {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setSingleLine(false);
+        paramViewHolder.a.setSingleLine(false);
       }
     }
     if (paramInt == getItemCount() - 1) {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramViewHolder.b.setVisibility(8);
     }
-    paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new WatermarkEditListAdapter.1(this, localWMElement, paramViewHolder));
+    paramViewHolder.c.setOnClickListener(new WatermarkEditListAdapter.1(this, localWMElement, paramViewHolder));
     if ("EDITABLE_LOCATION".equals(localWMElement.type))
     {
-      paramViewHolder.b.setVisibility(8);
-      paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView;
-      if (paramViewHolder.jdField_a_of_type_AndroidWidgetTextView != null)
+      paramViewHolder.f.setVisibility(8);
+      paramViewHolder.e.setVisibility(0);
+      this.g = paramViewHolder.g;
+      if (paramViewHolder.g != null)
       {
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(a(localWMElement));
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setOnClickListener(new WatermarkEditListAdapter.2(this));
+        paramViewHolder.g.setText(a(localWMElement));
+        paramViewHolder.e.setOnClickListener(new WatermarkEditListAdapter.2(this));
       }
     }
     else if ((!"SINCE".equals(localWMElement.type)) && (!"COUNTDOWN".equals(localWMElement.type)))
     {
       if (("CHECK_IN".equals(localWMElement.type)) || ("PLAIN_TEXT".equals(localWMElement.type)))
       {
-        paramViewHolder.b.setVisibility(0);
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setText(a(localWMElement));
+        paramViewHolder.f.setVisibility(0);
+        paramViewHolder.e.setVisibility(8);
+        paramViewHolder.a.setText(a(localWMElement));
         if ("CHECK_IN".equals(localWMElement.type))
         {
-          paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-          paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
-          paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2064056413);
-          paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+          paramViewHolder.a.setFocusable(false);
+          paramViewHolder.a.setFocusableInTouchMode(false);
+          paramViewHolder.c.setBackgroundResource(2063925382);
+          paramViewHolder.c.setVisibility(0);
         }
         else
         {
-          paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-          paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
-          paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-          paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2064056412);
-          paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+          paramViewHolder.a.setFocusable(true);
+          paramViewHolder.a.setFocusableInTouchMode(true);
+          paramViewHolder.a.requestFocus();
+          paramViewHolder.c.setBackgroundResource(2063925381);
+          paramViewHolder.c.setVisibility(0);
         }
-        paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new WatermarkEditListAdapter.4(this, paramViewHolder, localWMElement));
-        paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new WatermarkEditListAdapter.5(this, paramViewHolder, localWMElement));
+        paramViewHolder.a.setOnFocusChangeListener(new WatermarkEditListAdapter.4(this, paramViewHolder, localWMElement));
+        paramViewHolder.a.setOnClickListener(new WatermarkEditListAdapter.5(this, paramViewHolder, localWMElement));
       }
     }
     else
     {
-      paramViewHolder.b.setVisibility(0);
-      paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setText(a(localWMElement));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setFocusable(false);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new WatermarkEditListAdapter.3(this, paramViewHolder, localWMElement));
-      b(paramViewHolder.jdField_a_of_type_AndroidWidgetEditText);
+      paramViewHolder.f.setVisibility(0);
+      paramViewHolder.e.setVisibility(8);
+      paramViewHolder.c.setVisibility(4);
+      paramViewHolder.a.setText(a(localWMElement));
+      paramViewHolder.a.setFocusable(false);
+      paramViewHolder.a.setCursorVisible(false);
+      paramViewHolder.a.setOnClickListener(new WatermarkEditListAdapter.3(this, paramViewHolder, localWMElement));
+      b(paramViewHolder.a);
     }
   }
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return new WatermarkEditListAdapter.EditTextViewHolder(this, LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2064318504, paramViewGroup, false));
+    return new WatermarkEditListAdapter.EditTextViewHolder(this, LayoutInflater.from(this.b).inflate(2064056371, paramViewGroup, false));
   }
   
   public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_OrgLightBeanWMElement != null))
+    if ((this.f != null) && (this.e != null))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt1);
-      localStringBuilder.append(HardCodeUtil.a(2131716356));
+      localStringBuilder.append(HardCodeUtil.a(2131913797));
       int i = paramInt2 + 1;
       String str = "0";
       if (i < 10) {
@@ -277,7 +277,7 @@ public class WatermarkEditListAdapter
       }
       localStringBuilder.append(paramDatePicker);
       localStringBuilder.append(i);
-      localStringBuilder.append(HardCodeUtil.a(2131716351));
+      localStringBuilder.append(HardCodeUtil.a(2131913793));
       if (paramInt3 < 10) {
         paramDatePicker = str;
       } else {
@@ -285,18 +285,18 @@ public class WatermarkEditListAdapter
       }
       localStringBuilder.append(paramDatePicker);
       localStringBuilder.append(paramInt3);
-      localStringBuilder.append(HardCodeUtil.a(2131716355));
+      localStringBuilder.append(HardCodeUtil.a(2131913796));
       paramDatePicker = localStringBuilder.toString();
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramDatePicker);
+      this.f.setText(paramDatePicker);
       paramDatePicker = Calendar.getInstance();
       paramDatePicker.set(paramInt1, paramInt2, paramInt3);
-      this.jdField_a_of_type_AndroidWidgetEditText.setTag(paramDatePicker.getTime());
+      this.f.setTag(paramDatePicker.getTime());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter
  * JD-Core Version:    0.7.0.1
  */

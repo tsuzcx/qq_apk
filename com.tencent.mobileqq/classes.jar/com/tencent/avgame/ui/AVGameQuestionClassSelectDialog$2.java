@@ -12,8 +12,8 @@ class AVGameQuestionClassSelectDialog$2
   
   public void onClick(View paramView)
   {
-    if (AVGameQuestionClassSelectDialog.a(this.a)) {
-      AVGameQuestionClassSelectDialog.a(this.a).removeMessages(0);
+    if (AVGameQuestionClassSelectDialog.c(this.a)) {
+      AVGameQuestionClassSelectDialog.d(this.a).removeMessages(0);
     }
     AVGameQuestionClassSelectDialog.a(this.a, null);
     EventCollector.getInstance().onViewClicked(paramView);

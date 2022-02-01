@@ -48,7 +48,7 @@ public class AccountDetailBaseInfoModel
     mobileqq_mp.SetFunctionFlagRequset localSetFunctionFlagRequset = new mobileqq_mp.SetFunctionFlagRequset();
     localSetFunctionFlagRequset.version.set(1);
     localSetFunctionFlagRequset.uin.set((int)Long.parseLong(paramString));
-    localSetFunctionFlagRequset.type.set(paramPaConfigInfo.e);
+    localSetFunctionFlagRequset.type.set(paramPaConfigInfo.g);
     localSetFunctionFlagRequset.value.set(paramInt);
     localSetFunctionFlagRequset.account_type.set(1);
     localNewIntent.putExtra("data", localSetFunctionFlagRequset.toByteArray());
@@ -58,7 +58,7 @@ public class AccountDetailBaseInfoModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailBaseInfoModel
  * JD-Core Version:    0.7.0.1
  */

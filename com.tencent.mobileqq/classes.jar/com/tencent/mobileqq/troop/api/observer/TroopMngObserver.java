@@ -3,11 +3,12 @@ package com.tencent.mobileqq.troop.api.observer;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import java.util.ArrayList;
+import trpc.mizarproto.passthrough.FunctionLockMsg.FunctionLockBeatRsp;
 
 public class TroopMngObserver
   implements BusinessObserver
 {
-  public static final int a;
+  private static int a;
   public static final int b;
   public static final int c;
   public static final int d;
@@ -19,51 +20,55 @@ public class TroopMngObserver
   public static final int j;
   public static final int k;
   public static final int l;
-  private static int m;
+  public static final int m;
+  public static final int n;
   
   static
   {
-    int n = m;
-    m = n + 1;
-    a = n;
-    n = m;
-    m = n + 1;
-    b = n;
-    n = m;
-    m = n + 1;
-    c = n;
-    n = m;
-    m = n + 1;
-    d = n;
-    n = m;
-    m = n + 1;
-    e = n;
-    n = m;
-    m = n + 1;
-    f = n;
-    n = m;
-    m = n + 1;
-    g = n;
-    n = m;
-    m = n + 1;
-    h = n;
-    n = m;
-    m = n + 1;
-    i = n;
-    n = m;
-    m = n + 1;
-    j = n;
-    n = m;
-    m = n + 1;
-    k = n;
-    n = m;
-    m = n + 1;
-    l = n;
+    int i1 = a;
+    a = i1 + 1;
+    b = i1;
+    i1 = a;
+    a = i1 + 1;
+    c = i1;
+    i1 = a;
+    a = i1 + 1;
+    d = i1;
+    i1 = a;
+    a = i1 + 1;
+    e = i1;
+    i1 = a;
+    a = i1 + 1;
+    f = i1;
+    i1 = a;
+    a = i1 + 1;
+    g = i1;
+    i1 = a;
+    a = i1 + 1;
+    h = i1;
+    i1 = a;
+    a = i1 + 1;
+    i = i1;
+    i1 = a;
+    a = i1 + 1;
+    j = i1;
+    i1 = a;
+    a = i1 + 1;
+    k = i1;
+    i1 = a;
+    a = i1 + 1;
+    l = i1;
+    i1 = a;
+    a = i1 + 1;
+    m = i1;
+    i1 = a;
+    a = i1 + 1;
+    n = i1;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     a(paramBoolean, paramObject);
@@ -71,7 +76,7 @@ public class TroopMngObserver
   
   private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != c) {
+    if (paramInt != d) {
       return;
     }
     paramObject = (Object[])paramObject;
@@ -90,7 +95,7 @@ public class TroopMngObserver
   
   private void c(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != b) {
+    if (paramInt != c) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -104,7 +109,7 @@ public class TroopMngObserver
   
   private void d(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != d) {
+    if (paramInt != e) {
       return;
     }
     Object[] arrayOfObject = (Object[])paramObject;
@@ -119,7 +124,7 @@ public class TroopMngObserver
   
   private void e(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != g) {
+    if (paramInt != h) {
       return;
     }
     if ((paramObject instanceof String))
@@ -132,7 +137,7 @@ public class TroopMngObserver
   
   private void f(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != e) {
+    if (paramInt != f) {
       return;
     }
     paramObject = (Object[])paramObject;
@@ -141,7 +146,7 @@ public class TroopMngObserver
   
   private void g(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != f) {
+    if (paramInt != g) {
       return;
     }
     paramObject = (Object[])paramObject;
@@ -150,7 +155,7 @@ public class TroopMngObserver
   
   private void h(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != h) {
+    if (paramInt != i) {
       return;
     }
     if ((paramObject instanceof Object[])) {
@@ -160,7 +165,7 @@ public class TroopMngObserver
   
   private void i(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != i) {
+    if (paramInt != j) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -182,7 +187,7 @@ public class TroopMngObserver
   
   private void j(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != j) {
+    if (paramInt != k) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -201,7 +206,7 @@ public class TroopMngObserver
   
   private void k(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != k) {
+    if (paramInt != l) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -215,11 +220,23 @@ public class TroopMngObserver
   
   private void l(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != l) {
+    if (paramInt != m) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof String))) {
       b((String)paramObject);
+    }
+  }
+  
+  private void m(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt != n) {
+      return;
+    }
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], (FunctionLockMsg.FunctionLockBeatRsp)paramObject[1]);
     }
   }
   
@@ -247,6 +264,8 @@ public class TroopMngObserver
   
   protected void a(boolean paramBoolean, String paramString, int paramInt, long paramLong) {}
   
+  protected void a(boolean paramBoolean, String paramString, FunctionLockMsg.FunctionLockBeatRsp paramFunctionLockBeatRsp) {}
+  
   protected void b(String paramString) {}
   
   protected void c(String paramString) {}
@@ -265,11 +284,12 @@ public class TroopMngObserver
     j(paramInt, paramBoolean, paramObject);
     k(paramInt, paramBoolean, paramObject);
     l(paramInt, paramBoolean, paramObject);
+    m(paramInt, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.observer.TroopMngObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class QIMSlidingItemView
   extends LinearLayout
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  QIMSlidingItemView.SlidingItemData jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData;
+  ImageView a;
+  TextView b;
+  QIMSlidingItemView.SlidingItemData c;
   
   public QIMSlidingItemView(@NonNull Context paramContext)
   {
@@ -39,35 +39,35 @@ public class QIMSlidingItemView
   {
     setOrientation(0);
     setGravity(16);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.a = new ImageView(getContext());
+    this.b = new TextView(getContext());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.b(13.0F, getResources()), AIOUtils.b(12.0F, getResources()));
     localLayoutParams.gravity = 17;
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    addView(this.a, localLayoutParams);
+    this.a.setVisibility(8);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.leftMargin = AIOUtils.b(4.0F, getResources());
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+    addView(this.b, localLayoutParams);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramInt1);
+    this.b.setGravity(17);
+    this.b.setSingleLine();
+    this.b.setTextSize(0, paramInt1);
     setPadding(paramInt2, 0, paramInt2, 0);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)
+    this.b.setTextColor(paramInt);
+    if (this.a.getVisibility() == 0)
     {
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      ImageView localImageView = this.a;
       if (paramBoolean) {
-        paramInt = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData.b;
+        paramInt = this.c.c;
       } else {
-        paramInt = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData.jdField_a_of_type_Int;
+        paramInt = this.c.b;
       }
       localImageView.setImageResource(paramInt);
     }
@@ -75,18 +75,18 @@ public class QIMSlidingItemView
   
   public void setData(QIMSlidingItemView.SlidingItemData paramSlidingItemData)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData = paramSlidingItemData;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData.jdField_a_of_type_Int != 0)
+    this.c = paramSlidingItemData;
+    this.b.setText(this.c.a);
+    if (this.c.b != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingItemView$SlidingItemData.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.setImageResource(this.c.b);
+      this.a.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMSlidingItemView
  * JD-Core Version:    0.7.0.1
  */

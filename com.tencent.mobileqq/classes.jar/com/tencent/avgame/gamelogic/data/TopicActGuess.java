@@ -9,36 +9,36 @@ import trpc.qq_vgame.common.AvGameCommon.GuessActionQuestionInfo;
 public class TopicActGuess
   extends Topic
 {
-  public ITopic a()
-  {
-    TopicActGuess localTopicActGuess = new TopicActGuess();
-    try
-    {
-      localTopicActGuess.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localTopicActGuess.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localTopicActGuess.b = this.b;
-      localTopicActGuess.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
-      localTopicActGuess.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-      return localTopicActGuess;
-    }
-    catch (Exception localException) {}
-    return localTopicActGuess;
-  }
-  
   public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
   {
     AvGameCommon.GuessActionQuestionInfo localGuessActionQuestionInfo = (AvGameCommon.GuessActionQuestionInfo)paramGameQuestionInfo.topic.get();
-    this.jdField_a_of_type_Int = paramGameQuestionInfo.id.get();
-    this.jdField_a_of_type_JavaLangString = localGuessActionQuestionInfo.question.get();
-    this.b = localGuessActionQuestionInfo.answer.get();
-    this.jdField_a_of_type_ArrayOfJavaLangString[0] = localGuessActionQuestionInfo.reward_type.get();
-    this.jdField_a_of_type_ArrayOfJavaLangString[1] = localGuessActionQuestionInfo.extra_reward.get();
-    this.jdField_a_of_type_ArrayOfJavaLangString[2] = localGuessActionQuestionInfo.reward_stroke_color.get();
+    this.a = paramGameQuestionInfo.id.get();
+    this.b = localGuessActionQuestionInfo.question.get();
+    this.c = localGuessActionQuestionInfo.answer.get();
+    this.d[0] = localGuessActionQuestionInfo.reward_type.get();
+    this.d[1] = localGuessActionQuestionInfo.extra_reward.get();
+    this.d[2] = localGuessActionQuestionInfo.reward_stroke_color.get();
   }
   
   public int b()
   {
     return 1;
+  }
+  
+  public ITopic j()
+  {
+    TopicActGuess localTopicActGuess = new TopicActGuess();
+    try
+    {
+      localTopicActGuess.a = this.a;
+      localTopicActGuess.b = this.b;
+      localTopicActGuess.c = this.c;
+      localTopicActGuess.d = this.d;
+      localTopicActGuess.f = this.f;
+      return localTopicActGuess;
+    }
+    catch (Exception localException) {}
+    return localTopicActGuess;
   }
 }
 

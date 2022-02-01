@@ -10,24 +10,24 @@ public class VideoInfo$DownloadBarInfo
 {
   public static final Parcelable.Creator<DownloadBarInfo> CREATOR = new VideoInfo.DownloadBarInfo.1();
   public int a;
-  public UrlJumpInfo a;
-  public String a;
-  public int b;
   public String b;
   public String c;
   public String d;
+  public int e;
+  public UrlJumpInfo f;
+  public String g;
   
   public VideoInfo$DownloadBarInfo() {}
   
   protected VideoInfo$DownloadBarInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
     this.d = paramParcel.readString();
+    this.e = paramParcel.readInt();
+    this.f = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
+    this.g = paramParcel.readString();
   }
   
   public int describeContents()
@@ -39,22 +39,22 @@ public class VideoInfo$DownloadBarInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DownloadBarInfo{appearTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", logoUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", downloadBtnText='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", openBtnText='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", buttonBgColor=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", jumpInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo);
-    localStringBuilder.append(", commonData='");
+    localStringBuilder.append(", openBtnText='");
     localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", buttonBgColor=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", jumpInfo=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", commonData='");
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -62,18 +62,18 @@ public class VideoInfo$DownloadBarInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUrlJumpInfo, paramInt);
     paramParcel.writeString(this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeParcelable(this.f, paramInt);
+    paramParcel.writeString(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.DownloadBarInfo
  * JD-Core Version:    0.7.0.1
  */

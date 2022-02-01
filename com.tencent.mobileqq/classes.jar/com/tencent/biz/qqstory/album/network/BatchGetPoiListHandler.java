@@ -23,28 +23,28 @@ import java.util.Set;
 public class BatchGetPoiListHandler
   implements CmdTaskManger.CommandCallback<BatchGetPoiListRequest, BatchGetPoiListRequest.BatchGetPoiListResponse>
 {
-  private long jdField_a_of_type_Long;
-  private BatchGetPoiListHandler.BatchGetPOIListener jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkBatchGetPoiListHandler$BatchGetPOIListener;
-  private ErrorMessage jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
-  private HashMap<String, GeoHashPhotoGroup> jdField_a_of_type_JavaUtilHashMap;
-  private List<BatchGetPoiListRequest> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private HashMap<String, AddressItem> b = new HashMap();
+  private HashMap<String, GeoHashPhotoGroup> a;
+  private BatchGetPoiListHandler.BatchGetPOIListener b;
+  private List<BatchGetPoiListRequest> c = new ArrayList();
+  private long d;
+  private ErrorMessage e;
+  private HashMap<String, AddressItem> f = new HashMap();
   
   private void b()
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.c.size() == 0)
     {
-      SLog.d("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "handleResult. all request has finish timecost=%s, errorInfo=%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage });
-      BatchGetPoiListHandler.BatchGetPOIListener localBatchGetPOIListener = this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkBatchGetPoiListHandler$BatchGetPOIListener;
+      SLog.d("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "handleResult. all request has finish timecost=%s, errorInfo=%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - this.d), this.e });
+      BatchGetPoiListHandler.BatchGetPOIListener localBatchGetPOIListener = this.b;
       if (localBatchGetPOIListener != null) {
-        localBatchGetPOIListener.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage, this.b);
+        localBatchGetPOIListener.a(this.e, this.f);
       }
     }
   }
   
   public void a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((HashMap)localObject1).size() != 0)) {}
     for (;;)
     {
@@ -52,12 +52,12 @@ public class BatchGetPoiListHandler
       int i;
       try
       {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        localObject1 = StoryScanManager.a(this.jdField_a_of_type_JavaUtilHashMap);
+        this.d = SystemClock.uptimeMillis();
+        localObject1 = StoryScanManager.a(this.a);
         if (((List)localObject1).size() == 0)
         {
-          if (this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkBatchGetPoiListHandler$BatchGetPOIListener != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkBatchGetPoiListHandler$BatchGetPOIListener.a(new ErrorMessage(-1, "BatchGetPoiListHandler gps error"), null);
+          if (this.b != null) {
+            this.b.a(new ErrorMessage(-1, "BatchGetPoiListHandler gps error"), null);
           }
           return;
         }
@@ -80,7 +80,7 @@ public class BatchGetPoiListHandler
         List localList = ((List)localObject1).subList(m, k);
         BatchGetPoiListRequest localBatchGetPoiListRequest = new BatchGetPoiListRequest();
         localBatchGetPoiListRequest.a(localList);
-        this.jdField_a_of_type_JavaUtilList.add(localBatchGetPoiListRequest);
+        this.c.add(localBatchGetPoiListRequest);
         CmdTaskManger.a().a(localBatchGetPoiListRequest, this);
         j += 1;
       }
@@ -88,7 +88,7 @@ public class BatchGetPoiListHandler
       {
         SLog.d("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "sendRequest total=%d, batch count=%d", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(i) });
         return;
-        BatchGetPoiListHandler.BatchGetPOIListener localBatchGetPOIListener = this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkBatchGetPoiListHandler$BatchGetPOIListener;
+        BatchGetPoiListHandler.BatchGetPOIListener localBatchGetPOIListener = this.b;
         if (localBatchGetPOIListener != null) {
           localBatchGetPOIListener.a(new ErrorMessage(-1, "BatchGetPoiListHandler no photo"), null);
         }
@@ -101,52 +101,52 @@ public class BatchGetPoiListHandler
   
   public void a(BatchGetPoiListHandler.BatchGetPOIListener paramBatchGetPOIListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumNetworkBatchGetPoiListHandler$BatchGetPOIListener = paramBatchGetPOIListener;
+    this.b = paramBatchGetPOIListener;
   }
   
   public void a(@NonNull BatchGetPoiListRequest paramBatchGetPoiListRequest, @Nullable BatchGetPoiListRequest.BatchGetPoiListResponse paramBatchGetPoiListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramBatchGetPoiListRequest);
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()))
+      this.c.remove(paramBatchGetPoiListRequest);
+      if ((this.e != null) && (this.e.isFail()))
       {
         b();
         return;
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      this.e = paramErrorMessage;
       if ((paramBatchGetPoiListResponse != null) && (!paramErrorMessage.isFail()))
       {
-        paramErrorMessage = new HashMap(this.jdField_a_of_type_JavaUtilHashMap.size());
-        if (paramBatchGetPoiListResponse.jdField_a_of_type_JavaUtilList.size() > 0)
+        paramErrorMessage = new HashMap(this.a.size());
+        if (paramBatchGetPoiListResponse.a.size() > 0)
         {
-          Iterator localIterator1 = paramBatchGetPoiListResponse.jdField_a_of_type_JavaUtilList.iterator();
+          Iterator localIterator1 = paramBatchGetPoiListResponse.a.iterator();
           for (;;)
           {
             if (!localIterator1.hasNext()) {
               break label225;
             }
             AddressItem localAddressItem = (AddressItem)localIterator1.next();
-            Iterator localIterator2 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+            Iterator localIterator2 = this.a.entrySet().iterator();
             if (localIterator2.hasNext())
             {
               GeoHashPhotoGroup localGeoHashPhotoGroup = (GeoHashPhotoGroup)((Map.Entry)localIterator2.next()).getValue();
-              if (localGeoHashPhotoGroup.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps == null) {
+              if (localGeoHashPhotoGroup.d == null) {
                 break;
               }
-              qqstory_struct.GpsMsg localGpsMsg = localGeoHashPhotoGroup.jdField_a_of_type_ComTencentBizQqstoryAlbumToolsGeoHashUtils$Gps.a();
+              qqstory_struct.GpsMsg localGpsMsg = localGeoHashPhotoGroup.d.c();
               if ((localGpsMsg.lat.get() != localAddressItem.latitude) || (localGpsMsg.lng.get() != localAddressItem.longitude)) {
                 break;
               }
-              paramErrorMessage.put(localGeoHashPhotoGroup.jdField_a_of_type_JavaLangString, localAddressItem);
+              paramErrorMessage.put(localGeoHashPhotoGroup.a, localAddressItem);
             }
           }
         }
         label225:
-        if (paramBatchGetPoiListResponse.jdField_a_of_type_JavaUtilList.size() != paramBatchGetPoiListRequest.a()) {
-          SLog.e("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "handle poi request. request length=%d, rsp length=%d", new Object[] { Integer.valueOf(paramBatchGetPoiListRequest.a()), Integer.valueOf(paramBatchGetPoiListResponse.jdField_a_of_type_JavaUtilList.size()) });
+        if (paramBatchGetPoiListResponse.a.size() != paramBatchGetPoiListRequest.b()) {
+          SLog.e("Q.qqstory.recommendAlbum.logic.BatchGetPoiListHandler", "handle poi request. request length=%d, rsp length=%d", new Object[] { Integer.valueOf(paramBatchGetPoiListRequest.b()), Integer.valueOf(paramBatchGetPoiListResponse.a.size()) });
         }
-        this.b.putAll(paramErrorMessage);
+        this.f.putAll(paramErrorMessage);
         b();
         return;
       }
@@ -162,12 +162,12 @@ public class BatchGetPoiListHandler
   
   public void a(@NonNull HashMap<String, GeoHashPhotoGroup> paramHashMap)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.a = paramHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.network.BatchGetPoiListHandler
  * JD-Core Version:    0.7.0.1
  */

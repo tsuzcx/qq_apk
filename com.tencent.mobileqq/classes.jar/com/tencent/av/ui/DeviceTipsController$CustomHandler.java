@@ -1,17 +1,11 @@
 package com.tencent.av.ui;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 
 class DeviceTipsController$CustomHandler
   extends Handler
 {
-  public DeviceTipsController$CustomHandler(DeviceTipsController paramDeviceTipsController, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
   public void handleMessage(Message paramMessage)
   {
     if (paramMessage.what != 256) {

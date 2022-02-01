@@ -12,39 +12,39 @@ final class AVEnterPopActionSheetUtil$2
 {
   AVEnterPopActionSheetUtil$2(VideoActionSheet paramVideoActionSheet, int[] paramArrayOfInt, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    paramInt = this.jdField_a_of_type_ArrayOfInt[paramInt];
+    this.a.dismiss();
+    paramInt = this.b[paramInt];
     if (paramInt != 1)
     {
       if (paramInt != 2)
       {
         paramInt = 0;
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      else if (this.c.a == 1)
       {
-        AVEnterPopActionSheetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+        AVEnterPopActionSheetUtil.a(this.d, this.e, this.c, false);
         paramInt = 4;
       }
       else
       {
-        AVEnterPopActionSheetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, this.jdField_a_of_type_Int, null);
+        AVEnterPopActionSheetUtil.a(this.d, this.e, this.c, false, this.f, null);
         paramInt = 2;
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    else if (this.c.a == 1)
     {
-      AVEnterPopActionSheetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+      AVEnterPopActionSheetUtil.a(this.d, this.e, this.c, true);
       paramInt = 3;
     }
     else
     {
-      AVEnterPopActionSheetUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, null);
+      AVEnterPopActionSheetUtil.a(this.d, this.e, this.c, true, this.f, null);
       paramInt = 1;
     }
     if (paramInt > 0) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
+      ReportController.b(this.d, "CliOper", "", "", "0X800A518", "0X800A518", 0, paramInt, "", "", "", "");
     }
   }
 }

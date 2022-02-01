@@ -1,26 +1,21 @@
 package com.tencent.av.ui;
 
-import android.view.View;
+import com.tencent.av.SessionMgr;
+import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redtouch.AVRedTouchUtil;
-import com.tencent.mobileqq.tianshu.ui.RedTouch;
 
 class AVActivity$10
   implements Runnable
 {
-  AVActivity$10(AVActivity paramAVActivity, View paramView) {}
+  AVActivity$10(AVActivity paramAVActivity) {}
   
   public void run()
   {
-    VideoAppInterface localVideoAppInterface = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-    if (localVideoAppInterface == null) {
-      return;
-    }
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null) && (!this.this$0.isDestroyed()))
+    if ((this.this$0.H != null) && (this.this$0.H.n("BEAUTY_SKIN") > 0))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = AVRedTouchUtil.a(localVideoAppInterface, this.a, 1);
-      if ((this.a.getVisibility() == 8) && (this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null)) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.setVisibility(8);
+      SessionInfo localSessionInfo = SessionMgr.a().b();
+      if (localSessionInfo != null) {
+        localSessionInfo.S = true;
       }
     }
   }

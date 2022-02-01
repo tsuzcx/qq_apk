@@ -27,25 +27,9 @@ public final class SelectCommunityView$mAdapter$1
   public View a(@NotNull Context paramContext, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.q, paramViewGroup, false);
+    paramContext = LayoutInflater.from(paramContext).inflate(R.layout.l, paramViewGroup, false);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "LayoutInflater.from(cont…      false\n            )");
     return paramContext;
-  }
-  
-  @NotNull
-  public SelectCommunityView.CommunityViewHolder a(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
-  {
-    Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramContext = (TextView)paramView.findViewById(R.id.bk);
-    paramViewGroup = (TextView)paramView.findViewById(R.id.aT);
-    ImageView localImageView = (ImageView)paramView.findViewById(R.id.W);
-    paramView = (ImageView)paramView.findViewById(R.id.Z);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "titleText");
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "introView");
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "coverImageView");
-    Intrinsics.checkExpressionValueIsNotNull(localImageView, "checkView");
-    return new SelectCommunityView.CommunityViewHolder(paramContext, paramViewGroup, paramView, localImageView);
   }
   
   public void a(int paramInt, @NotNull CommunityInfo paramCommunityInfo, @NotNull SelectCommunityView.CommunityViewHolder paramCommunityViewHolder, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
@@ -53,8 +37,8 @@ public final class SelectCommunityView$mAdapter$1
     Intrinsics.checkParameterIsNotNull(paramCommunityInfo, "bean");
     Intrinsics.checkParameterIsNotNull(paramCommunityViewHolder, "holder");
     Intrinsics.checkParameterIsNotNull(paramView, "itemView");
-    paramView = a().getResources().getDrawable(R.drawable.c);
-    paramView.setBounds(0, 0, DisplayUtils.a.a(a(), 15.0F), DisplayUtils.a.a(a(), 15.0F));
+    paramView = b().getResources().getDrawable(R.drawable.c);
+    paramView.setBounds(0, 0, DisplayUtils.a.a(b(), 15.0F), DisplayUtils.a.a(b(), 15.0F));
     paramViewGroup = paramCommunityViewHolder.a();
     paramViewGroup.setText((CharSequence)paramCommunityInfo.getTitle());
     DisplayUtils localDisplayUtils = DisplayUtils.a;
@@ -63,18 +47,34 @@ public final class SelectCommunityView$mAdapter$1
     paramViewGroup.setCompoundDrawablePadding(localDisplayUtils.a(localContext, 3.0F));
     paramViewGroup.setCompoundDrawables(paramView, null, null, null);
     paramCommunityViewHolder.b().setText((CharSequence)paramCommunityInfo.getIntro());
-    com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a.a(a()).a(paramCommunityViewHolder.a()).a(paramCommunityInfo.getCoverUrl());
-    if (Intrinsics.areEqual(this.a.c(), paramCommunityInfo.getCommunityId()))
+    com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a.a(b()).a(paramCommunityViewHolder.c()).a(paramCommunityInfo.getCoverUrl());
+    if (Intrinsics.areEqual(this.a.getSelectedCommunityId(), paramCommunityInfo.getCommunityId()))
     {
-      paramCommunityViewHolder.b().setVisibility(0);
+      paramCommunityViewHolder.d().setVisibility(0);
       return;
     }
-    paramCommunityViewHolder.b().setVisibility(4);
+    paramCommunityViewHolder.d().setVisibility(4);
+  }
+  
+  @NotNull
+  public SelectCommunityView.CommunityViewHolder b(@NotNull Context paramContext, @NotNull View paramView, @Nullable ViewGroup paramViewGroup)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramView, "itemView");
+    paramContext = (TextView)paramView.findViewById(R.id.aI);
+    paramViewGroup = (TextView)paramView.findViewById(R.id.au);
+    ImageView localImageView = (ImageView)paramView.findViewById(R.id.C);
+    paramView = (ImageView)paramView.findViewById(R.id.E);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "titleText");
+    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "introView");
+    Intrinsics.checkExpressionValueIsNotNull(paramView, "coverImageView");
+    Intrinsics.checkExpressionValueIsNotNull(localImageView, "checkView");
+    return new SelectCommunityView.CommunityViewHolder(paramContext, paramViewGroup, paramView, localImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.SelectCommunityView.mAdapter.1
  * JD-Core Version:    0.7.0.1
  */

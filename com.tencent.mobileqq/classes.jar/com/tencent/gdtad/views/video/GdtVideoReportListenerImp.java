@@ -8,12 +8,12 @@ import com.tencent.gdtad.statistics.GdtImpressionReporter.GdtVideoReportInfo;
 public class GdtVideoReportListenerImp
   implements GdtVideoReportListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
+  private long a = -1L;
+  private int b = -1;
   
   public GdtVideoReportListenerImp(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   private void c(GdtVideoData paramGdtVideoData, long paramLong, GdtImpressionReporter.GdtVideoReportInfo paramGdtVideoReportInfo)
@@ -34,53 +34,53 @@ public class GdtVideoReportListenerImp
       GdtLog.d("GdtVideoStatistics", "return data == null error");
       return;
     }
-    if (!paramGdtVideoReportInfo.a())
+    if (!paramGdtVideoReportInfo.e())
     {
-      l = this.jdField_a_of_type_Long;
+      l = this.a;
       if ((l != -1L) && (paramLong != 0L))
       {
         if (l > paramLong)
         {
           GdtLog.d("GdtVideoStatistics", "startPositionMillis > currentPositionMillis reset startPositionMillis = 0");
-          this.jdField_a_of_type_Long = 0L;
+          this.a = 0L;
         }
       }
       else {
         GdtLog.d("GdtVideoStatistics", "return startPositionMillis =-1");
       }
     }
-    else if (this.jdField_a_of_type_Long == -1L)
+    else if (this.a == -1L)
     {
-      this.jdField_a_of_type_Long = 0L;
+      this.a = 0L;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("report start:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(" end:");
     ((StringBuilder)localObject).append(paramLong);
     GdtLog.b("GdtVideoStatistics", ((StringBuilder)localObject).toString());
     localObject = (GdtAd)paramGdtVideoData.getAd();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.a;
     boolean bool;
     if (paramLong == paramGdtVideoData.getDurationMillis()) {
       bool = true;
     } else {
       bool = false;
     }
-    GdtImpressionReporter.a((GdtAd)localObject, l, paramLong, bool, this.jdField_a_of_type_Int, paramGdtVideoReportInfo);
+    GdtImpressionReporter.a((GdtAd)localObject, l, paramLong, bool, this.b, paramGdtVideoReportInfo);
     paramGdtVideoReportInfo.b();
     paramGdtVideoReportInfo.d();
-    this.jdField_a_of_type_Long = -1L;
+    this.a = -1L;
   }
   
   public void a(GdtVideoData paramGdtVideoData, long paramLong)
   {
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = paramLong;
+    if (this.a <= 0L) {
+      this.a = paramLong;
     }
     paramGdtVideoData = new StringBuilder();
     paramGdtVideoData.append("onStarted start:");
-    paramGdtVideoData.append(this.jdField_a_of_type_Long);
+    paramGdtVideoData.append(this.a);
     GdtLog.b("GdtVideoStatistics", paramGdtVideoData.toString());
   }
   
@@ -94,7 +94,7 @@ public class GdtVideoReportListenerImp
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onCompleted start:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     GdtLog.b("GdtVideoStatistics", localStringBuilder.toString());
     if (paramGdtVideoData == null) {
       return;
@@ -102,7 +102,7 @@ public class GdtVideoReportListenerImp
     c(paramGdtVideoData, paramGdtVideoData.getDurationMillis(), paramGdtVideoReportInfo);
     paramGdtVideoReportInfo.a(13);
     if (paramGdtVideoData.isLoop()) {
-      this.jdField_a_of_type_Long = 0L;
+      this.a = 0L;
     }
   }
   
@@ -110,17 +110,17 @@ public class GdtVideoReportListenerImp
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onStopped start:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" end:");
     localStringBuilder.append(paramLong);
     GdtLog.b("GdtVideoStatistics", localStringBuilder.toString());
     c(paramGdtVideoData, paramLong, paramGdtVideoReportInfo);
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoReportListenerImp
  * JD-Core Version:    0.7.0.1
  */

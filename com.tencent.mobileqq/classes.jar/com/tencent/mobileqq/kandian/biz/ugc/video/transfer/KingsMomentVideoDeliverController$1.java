@@ -19,7 +19,7 @@ class KingsMomentVideoDeliverController$1
       if (localFileMsg.commandId != 10) {
         return;
       }
-      if (localFileMsg.uniseq != this.a.a.mUniseq) {
+      if (localFileMsg.uniseq != this.a.p.mUniseq) {
         return;
       }
       if (localFileMsg.fileMd5.equals(KingsMomentVideoDeliverController.a(this.a))) {
@@ -62,7 +62,7 @@ class KingsMomentVideoDeliverController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.video.transfer.KingsMomentVideoDeliverController.1
  * JD-Core Version:    0.7.0.1
  */

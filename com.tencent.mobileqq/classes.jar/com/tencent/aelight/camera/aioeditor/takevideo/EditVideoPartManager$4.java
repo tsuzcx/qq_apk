@@ -30,49 +30,49 @@ class EditVideoPartManager$4
   public void a(GenerateContext paramGenerateContext)
   {
     super.onNext(paramGenerateContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.o();
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager;
+    this.b.z();
+    Object localObject1 = this.b;
     boolean bool = false;
-    ((EditVideoPartManager)localObject1).p = false;
+    ((EditVideoPartManager)localObject1).E = false;
     SLog.e("Q.qqstory.publish.edit.EditVideoPartManager", "PUBLISH onNext");
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_JavaUtilList.iterator();
+    localObject1 = this.b.J.iterator();
     while (((Iterator)localObject1).hasNext()) {
       ((EditVideoPart)((Iterator)localObject1).next()).b(paramGenerateContext);
     }
-    StoryReportor.b("publish_story", "publish_saveToEntry", 0, 0, new String[] { "", String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) });
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet() > 0)
+    StoryReportor.b("publish_story", "publish_saveToEntry", 0, 0, new String[] { "", String.valueOf(SystemClock.uptimeMillis() - this.a) });
+    if (this.b.ah.decrementAndGet() > 0)
     {
       SLog.d("Q.qqstory.publish.edit.EditVideoPartManager", "waiting for another observer finish");
       return;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager;
-    ((EditVideoPartManager)localObject1).p = false;
-    ((EditVideoPartManager)localObject1).jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.dismissLoadingDialog();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b.isEmpty())
+    localObject1 = this.b;
+    ((EditVideoPartManager)localObject1).E = false;
+    ((EditVideoPartManager)localObject1).H.dismissLoadingDialog();
+    if (this.b.ai.isEmpty())
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity() != null)
+      if (this.b.H.getActivity() != null)
       {
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a() == 14)
+        if (this.b.I.h() == 14)
         {
           SLog.b("Q.qqstory.publish.edit.EditVideoPartManager", "Q.videostory.publish.upload[peak process]  sendBroadcast notify publish start(to read info from db)");
-          localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().getIntent();
+          localObject2 = this.b.H.getActivity().getIntent();
           if ((((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isStoryDefaultShare((Intent)localObject2)) && (!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromCheckEntry((Intent)localObject2)) && (!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromMiniApp((Intent)localObject2)) && (!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isQzoneTailEntry((Intent)localObject2)))
           {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext().sendBroadcast(new Intent("action_fire_create_video_story"));
+            this.b.H.getContext().sendBroadcast(new Intent("action_fire_create_video_story"));
           }
-          else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoStoryButton != null)
+          else if (this.b.M != null)
           {
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoStoryButton.a(HardCodeUtil.a(2131703901), false, 0);
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoStoryButton.a(2);
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoStoryButton.a(5);
-            localObject1 = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraStructEditorPublishParam;
+            this.b.M.a(HardCodeUtil.a(2131901839), false, 0);
+            this.b.M.a(2);
+            this.b.M.a(5);
+            localObject1 = paramGenerateContext.m;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("publishParam = ");
             ((StringBuilder)localObject3).append(localObject1);
             SLog.b("Q.qqstory.publish.edit.EditVideoPartManager", ((StringBuilder)localObject3).toString());
-            if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity() != null)
+            if (this.b.H.getActivity() != null)
             {
-              paramGenerateContext = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().getIntent();
+              paramGenerateContext = this.b.H.getActivity().getIntent();
               int j;
               if (paramGenerateContext != null)
               {
@@ -84,11 +84,11 @@ class EditVideoPartManager$4
                 i = 0;
                 j = 0;
               }
-              localObject3 = SaveVideoActivity.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext(), ((PublishParam)localObject1).b, j, i, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a());
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoStoryButton.a(((PublishParam)localObject1).b);
+              localObject3 = SaveVideoActivity.a(this.b.H.getContext(), ((PublishParam)localObject1).b, j, i, this.b.I.h());
+              this.b.M.a(((PublishParam)localObject1).b);
               int i = ((Intent)localObject2).getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
               ((Intent)localObject3).putExtra("mediacodec_encode_enable", true);
-              if (((PublishParam)localObject1).e != 0) {
+              if (((PublishParam)localObject1).m != 0) {
                 bool = true;
               }
               ((Intent)localObject3).putExtra("video_edit_flag", bool);
@@ -105,45 +105,45 @@ class EditVideoPartManager$4
                 ((Intent)localObject3).putExtra("key_camera_material_name", (String)localObject2);
                 ((Intent)localObject3).putExtra("qqstory_slide_show_scene", paramGenerateContext.getIntExtra("qqstory_slide_show_scene", -1));
               }
-              if ((!AECameraEntry.l.a(i)) && (!AECameraEntry.k.a(i))) {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().startActivityForResult((Intent)localObject3, 211);
+              if ((!AECameraEntry.l.b(i)) && (!AECameraEntry.k.b(i))) {
+                this.b.H.getActivity().startActivityForResult((Intent)localObject3, 211);
               } else {
-                this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().startActivityForResult((Intent)localObject3, 21);
+                this.b.H.getActivity().startActivityForResult((Intent)localObject3, 21);
               }
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoStoryButton.a(5, ((PublishParam)localObject1).jdField_a_of_type_Long);
+              this.b.M.a(5, ((PublishParam)localObject1).j);
             }
           }
         }
-        else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a() == 2) && (EditVideoPartManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager)))
+        else if ((this.b.I.h() == 2) && (EditVideoPartManager.a(this.b)))
         {
           AEQLog.b("Q.qqstory.publish.edit.EditVideoPartManager", "in AIO sending video ark msg process");
-          EditVideoPartManager.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager, paramGenerateContext);
+          EditVideoPartManager.a(this.b, paramGenerateContext);
           return;
         }
-        localObject1 = paramGenerateContext.jdField_a_of_type_ComTencentAelightCameraStructEditorPublishParam;
+        localObject1 = paramGenerateContext.m;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("publishParam = ");
         ((StringBuilder)localObject2).append(localObject1);
         SLog.b("Q.qqstory.publish.edit.EditVideoPartManager", ((StringBuilder)localObject2).toString());
-        localObject2 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getPublishIntent(paramGenerateContext);
-        Object localObject3 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager;
-        ((EditVideoPartManager)localObject3).a((Intent)localObject2, ((EditVideoPartManager)localObject3).jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a(), (PublishParam)localObject1, paramGenerateContext.jdField_a_of_type_ComTencentMobileqqTribeDataTribeVideoPublishParams);
+        localObject2 = this.b.H.getPublishIntent(paramGenerateContext);
+        Object localObject3 = this.b;
+        ((EditVideoPartManager)localObject3).a((Intent)localObject2, ((EditVideoPartManager)localObject3).I.h(), (PublishParam)localObject1, paramGenerateContext.r);
       }
     }
     else
     {
-      paramGenerateContext = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b.iterator();
+      paramGenerateContext = this.b.ai.iterator();
       while (paramGenerateContext.hasNext()) {
         SLog.c("Q.qqstory.publish.edit.EditVideoPartManager", "publish error %s", (Error)paramGenerateContext.next());
       }
-      paramGenerateContext = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext();
+      paramGenerateContext = this.b.H.getContext();
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b.size());
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131703990));
-      QQToast.a(paramGenerateContext, ((StringBuilder)localObject1).toString(), 0).a();
-      paramGenerateContext = (EditVideoPlayerExport)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(EditVideoPlayerExport.class);
+      ((StringBuilder)localObject1).append(this.b.ai.size());
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131901920));
+      QQToast.makeText(paramGenerateContext, ((StringBuilder)localObject1).toString(), 0).show();
+      paramGenerateContext = (EditVideoPlayerExport)this.b.a(EditVideoPlayerExport.class);
       if (paramGenerateContext != null) {
-        paramGenerateContext.w_();
+        paramGenerateContext.i();
       }
     }
   }
@@ -159,13 +159,13 @@ class EditVideoPartManager$4
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramError.getMessage());
     localStringBuilder.append("");
-    StoryReportor.b("publish_story", "publish_saveToEntry", 0, -1, new String[] { localStringBuilder.toString(), String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) });
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramError);
+    StoryReportor.b("publish_story", "publish_saveToEntry", 0, -1, new String[] { localStringBuilder.toString(), String.valueOf(SystemClock.uptimeMillis() - this.a) });
+    this.b.a(paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoPartManager.4
  * JD-Core Version:    0.7.0.1
  */

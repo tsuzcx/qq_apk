@@ -20,11 +20,11 @@ import java.util.List;
 
 public class HttpMqqJumper
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
+  private Context b;
+  private SessionInfo c;
+  private QQAppInterface d;
+  private BaseChatPie e;
   
   public HttpMqqJumper(Context paramContext)
   {
@@ -33,32 +33,27 @@ public class HttpMqqJumper
   
   public HttpMqqJumper(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private boolean a()
-  {
-    return (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("http://")) || (this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("https://"));
+    this.b = paramContext;
+    this.d = paramQQAppInterface;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if (this.b != null)
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      Object localObject1 = this.c;
       if (localObject1 != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        if (this.d == null) {
           return;
         }
-        localObject1 = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
+        localObject1 = ((SessionInfo)localObject1).b;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
           return;
         }
         try
         {
-          localObject2 = NewReportPlugin.b((String)localObject1, NewReportPlugin.b(2));
+          localObject2 = NewReportPlugin.b((String)localObject1, NewReportPlugin.c(2));
           if (QLog.isColorLevel())
           {
             localObject3 = new StringBuilder();
@@ -68,14 +63,14 @@ public class HttpMqqJumper
             ((StringBuilder)localObject3).append((String)localObject2);
             QLog.i("HttpMqqJumper", 2, ((StringBuilder)localObject3).toString());
           }
-          Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
+          Object localObject3 = this.d.getMessageFacade().a(this.c.b, this.c.a, -1L, this.c.v, false);
           Object localObject4 = new ArrayList();
           if (localObject3 != null) {
             ((List)localObject4).addAll((Collection)localObject3);
           }
-          localObject3 = NewReportPlugin.a((String)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, 10, (List)localObject4);
+          localObject3 = NewReportPlugin.a((String)localObject1, this.d.getCurrentAccountUin(), 25004, 10, (List)localObject4);
           localObject4 = ((String)localObject3).replaceAll((String)localObject1, (String)localObject2);
-          Bundle localBundle = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          Bundle localBundle = NewReportPlugin.a(this.c);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -85,7 +80,7 @@ public class HttpMqqJumper
             localStringBuilder.append((String)localObject4);
             QLog.i("HttpMqqJumper", 2, localStringBuilder.toString());
           }
-          NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a, (String)localObject1, (String)localObject2, null, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 25004, (String)localObject4, localBundle);
+          NewReportPlugin.a(this.e.f, (String)localObject1, (String)localObject2, null, null, this.d.getCurrentAccountUin(), 25004, (String)localObject4, localBundle);
           return;
         }
         catch (Throwable localThrowable)
@@ -99,75 +94,80 @@ public class HttpMqqJumper
     }
   }
   
-  private boolean b()
-  {
-    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://jubao.qq.com");
-  }
-  
   private boolean c()
   {
-    return this.jdField_a_of_type_JavaLangString.toLowerCase().startsWith("mqq://");
+    return (this.a.toLowerCase().startsWith("http://")) || (this.a.toLowerCase().startsWith("https://"));
+  }
+  
+  private boolean d()
+  {
+    return this.a.toLowerCase().startsWith("mqq://jubao.qq.com");
+  }
+  
+  private boolean e()
+  {
+    return this.a.toLowerCase().startsWith("mqq://");
   }
   
   public HttpMqqJumper a(SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.c = paramSessionInfo;
     return this;
   }
   
   public HttpMqqJumper a(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.e = paramBaseChatPie;
     return this;
   }
   
   public HttpMqqJumper a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     return this;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if (this.b != null)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.a)) {
         return;
       }
       Object localObject = null;
-      if (b())
+      if (d())
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace("mqq://", "https://");
+        this.a = this.a.replace("mqq://", "https://");
         b();
-      }
-      else if (a())
-      {
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
       }
       else if (c())
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject = new Intent(this.b, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", this.a);
+      }
+      else if (e())
+      {
+        localObject = this.d;
         if (localObject != null)
         {
-          localObject = JumpParser.a((BaseQQAppInterface)localObject, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+          localObject = JumpParser.a((BaseQQAppInterface)localObject, this.b, this.a);
           if (localObject != null)
           {
-            ((JumpAction)localObject).d();
+            ((JumpAction)localObject).g();
             ((JumpAction)localObject).a();
           }
         }
         return;
       }
       if (localObject != null) {
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+        this.b.startActivity((Intent)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.HttpMqqJumper
  * JD-Core Version:    0.7.0.1
  */

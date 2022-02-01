@@ -19,25 +19,59 @@ import java.io.IOException;
 public class LogcatUtil
   implements Handler.Callback
 {
-  private static LogcatUtil jdField_a_of_type_ComTencentLogcatLogcatUtil = new LogcatUtil();
-  private static final String jdField_a_of_type_JavaLangString;
   private static final String b;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  LogcatUtil.LogcatThread jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread;
+  private static final String c;
+  private static LogcatUtil e = new LogcatUtil();
+  LogcatUtil.LogcatThread a;
+  private Handler d = new Handler(ThreadManager.getSubThreadLooper(), this);
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/tencent/MobileQQ/log/logcat");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
     localStringBuilder.append("/tencent/MobileQQ/private");
-    b = localStringBuilder.toString();
+    c = localStringBuilder.toString();
   }
   
-  private static void a()
+  private static void a(File paramFile)
+  {
+    paramFile = paramFile.listFiles();
+    int j = paramFile.length;
+    int i = 0;
+    while (i < j)
+    {
+      File localFile = paramFile[i];
+      if (localFile.isDirectory())
+      {
+        a(localFile);
+      }
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("private file path :");
+        localStringBuilder.append(localFile.getAbsolutePath());
+        QLog.d("LogcatUtil", 1, localStringBuilder.toString());
+      }
+      i += 1;
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      LogcatUtil localLogcatUtil = e;
+      if ((localLogcatUtil != null) && (localLogcatUtil.b(paramString))) {
+        e.c(paramString);
+      }
+    }
+  }
+  
+  private static void b()
   {
     QLog.e("LogcatUtil", 1, "get trace file begin");
     String str3 = ThreadTraceHelper.a(String.valueOf(100));
@@ -84,60 +118,26 @@ public class LogcatUtil
     QLog.e("LogcatUtil", 1, new Object[] { "get trace file fileName = ", str3, ",get java trace status=", Boolean.valueOf(bool) });
   }
   
-  private static void a(File paramFile)
-  {
-    paramFile = paramFile.listFiles();
-    int j = paramFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      File localFile = paramFile[i];
-      if (localFile.isDirectory())
-      {
-        a(localFile);
-      }
-      else
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("private file path :");
-        localStringBuilder.append(localFile.getAbsolutePath());
-        QLog.d("LogcatUtil", 1, localStringBuilder.toString());
-      }
-      i += 1;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      LogcatUtil localLogcatUtil = jdField_a_of_type_ComTencentLogcatLogcatUtil;
-      if ((localLogcatUtil != null) && (localLogcatUtil.a(paramString))) {
-        jdField_a_of_type_ComTencentLogcatLogcatUtil.b(paramString);
-      }
-    }
-  }
-  
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
     return (paramString.equals("$logcat start")) || (paramString.equals("$logcat stop")) || (paramString.equals("$list private files")) || (paramString.startsWith("$get private file ")) || (paramString.startsWith("$get trace file"));
   }
   
-  private void b(String paramString)
+  private void c(String paramString)
   {
     if (paramString.equals("$logcat start"))
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.d.sendEmptyMessage(1);
       return;
     }
     if (paramString.equals("$logcat stop"))
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.d.sendEmptyMessage(2);
       return;
     }
     if (paramString.equals("$list private files"))
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      this.d.sendEmptyMessage(3);
       return;
     }
     if (paramString.startsWith("$get private file "))
@@ -150,16 +150,16 @@ public class LogcatUtil
       localObject = Message.obtain();
       ((Message)localObject).obj = paramString;
       ((Message)localObject).what = 4;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.d.sendMessage((Message)localObject);
       return;
     }
     if (paramString.equals("$get trace file")) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+      this.d.sendEmptyMessage(5);
     }
   }
   
   /* Error */
-  private void c(String paramString)
+  private void d(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -185,91 +185,91 @@ public class LogcatUtil
     //   37: invokevirtual 253	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
     //   40: iconst_1
     //   41: iadd
-    //   42: invokevirtual 217	java/lang/String:substring	(I)Ljava/lang/String;
+    //   42: invokevirtual 218	java/lang/String:substring	(I)Ljava/lang/String;
     //   45: astore 4
     //   47: goto +3 -> 50
-    //   50: invokestatic 148	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   50: invokestatic 174	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   53: invokevirtual 261	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
     //   56: invokevirtual 264	java/io/File:getParentFile	()Ljava/io/File;
     //   59: astore 8
-    //   61: new 16	java/lang/StringBuilder
+    //   61: new 19	java/lang/StringBuilder
     //   64: dup
-    //   65: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   65: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   68: astore 9
     //   70: aload 9
     //   72: ldc_w 266
-    //   75: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: pop
     //   79: aload 9
     //   81: aload 8
-    //   83: invokevirtual 31	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   86: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 34	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   86: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   89: pop
-    //   90: ldc 68
+    //   90: ldc 82
     //   92: iconst_1
     //   93: aload 9
-    //   95: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   101: new 27	java/io/File
+    //   95: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   101: new 30	java/io/File
     //   104: dup
     //   105: aload 8
     //   107: aload_1
     //   108: invokespecial 269	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   111: astore_1
-    //   112: new 16	java/lang/StringBuilder
+    //   112: new 19	java/lang/StringBuilder
     //   115: dup
-    //   116: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   116: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   119: astore 8
     //   121: aload 8
     //   123: ldc_w 271
-    //   126: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: pop
     //   130: aload 8
     //   132: aload_1
-    //   133: invokevirtual 31	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   136: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: invokevirtual 34	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   136: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   139: pop
-    //   140: ldc 68
+    //   140: ldc 82
     //   142: iconst_1
     //   143: aload 8
-    //   145: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   145: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   148: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   151: aload_1
     //   152: invokevirtual 274	java/io/File:length	()J
     //   155: ldc2_w 275
     //   158: lcmp
     //   159: ifle +13 -> 172
-    //   162: ldc 68
+    //   162: ldc 82
     //   164: iconst_1
     //   165: ldc_w 278
-    //   168: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   168: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   171: return
     //   172: new 280	java/io/FileInputStream
     //   175: dup
     //   176: aload_1
     //   177: invokespecial 282	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   180: astore_1
-    //   181: new 16	java/lang/StringBuilder
+    //   181: new 19	java/lang/StringBuilder
     //   184: dup
-    //   185: invokespecial 19	java/lang/StringBuilder:<init>	()V
+    //   185: invokespecial 22	java/lang/StringBuilder:<init>	()V
     //   188: astore 5
     //   190: aload 5
     //   192: ldc_w 284
-    //   195: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   195: invokevirtual 38	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   198: pop
     //   199: aload 5
     //   201: aload_1
     //   202: invokevirtual 288	java/io/FileInputStream:available	()I
-    //   205: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   205: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   208: pop
-    //   209: ldc 68
+    //   209: ldc 82
     //   211: iconst_1
     //   212: aload 5
-    //   214: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   217: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   220: new 27	java/io/File
+    //   214: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   220: new 30	java/io/File
     //   223: dup
-    //   224: getstatic 46	com/tencent/logcat/LogcatUtil:b	Ljava/lang/String;
+    //   224: getstatic 49	com/tencent/logcat/LogcatUtil:c	Ljava/lang/String;
     //   227: invokespecial 290	java/io/File:<init>	(Ljava/lang/String;)V
     //   230: astore 5
     //   232: aload 5
@@ -280,7 +280,7 @@ public class LogcatUtil
     //   245: pop
     //   246: goto +41 -> 287
     //   249: aload 5
-    //   251: invokevirtual 173	java/io/File:listFiles	()[Ljava/io/File;
+    //   251: invokevirtual 72	java/io/File:listFiles	()[Ljava/io/File;
     //   254: astore 6
     //   256: aload 6
     //   258: ifnull +29 -> 287
@@ -304,7 +304,7 @@ public class LogcatUtil
     //   284: goto -17 -> 267
     //   287: new 301	java/io/FileOutputStream
     //   290: dup
-    //   291: new 27	java/io/File
+    //   291: new 30	java/io/File
     //   294: dup
     //   295: aload 5
     //   297: aload 4
@@ -331,10 +331,10 @@ public class LogcatUtil
     //   339: invokevirtual 314	java/io/FileInputStream:close	()V
     //   342: aload 4
     //   344: invokevirtual 315	java/io/FileOutputStream:close	()V
-    //   347: ldc 68
+    //   347: ldc 82
     //   349: iconst_1
     //   350: ldc_w 317
-    //   353: invokestatic 184	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   353: invokestatic 87	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   356: aload_1
     //   357: invokevirtual 314	java/io/FileInputStream:close	()V
     //   360: goto +8 -> 368
@@ -383,11 +383,11 @@ public class LogcatUtil
     //   443: astore 5
     //   445: aload 4
     //   447: astore 6
-    //   449: ldc 68
+    //   449: ldc 82
     //   451: iconst_1
     //   452: ldc_w 322
     //   455: aload 7
-    //   457: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   457: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   460: aload_1
     //   461: ifnull +15 -> 476
     //   464: aload_1
@@ -410,11 +410,11 @@ public class LogcatUtil
     //   496: astore 5
     //   498: aload 4
     //   500: astore 6
-    //   502: ldc 68
+    //   502: ldc 82
     //   504: iconst_1
     //   505: ldc_w 322
     //   508: aload 7
-    //   510: invokestatic 116	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   510: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   513: aload_1
     //   514: ifnull +15 -> 529
     //   517: aload_1
@@ -546,13 +546,13 @@ public class LogcatUtil
             if (i != 5) {
               return true;
             }
-            a();
+            b();
             return true;
           }
           paramMessage = (String)paramMessage.obj;
           if (!TextUtils.isEmpty(paramMessage))
           {
-            c(paramMessage);
+            d(paramMessage);
             return true;
           }
           QLog.e("LogcatUtil", 1, "private fileName is null");
@@ -574,30 +574,30 @@ public class LogcatUtil
           return true;
         }
       }
-      paramMessage = this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread;
+      paramMessage = this.a;
       if (paramMessage != null)
       {
         if (paramMessage.a != null) {
-          this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread.a.destroy();
+          this.a.a.destroy();
         }
-        if (this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread.b != null) {
-          this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread.b.destroy();
+        if (this.a.b != null) {
+          this.a.b.destroy();
         }
-        this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread = null;
+        this.a = null;
         return true;
       }
     }
-    else if (this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread == null)
+    else if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread = new LogcatUtil.LogcatThread();
-      this.jdField_a_of_type_ComTencentLogcatLogcatUtil$LogcatThread.start();
+      this.a = new LogcatUtil.LogcatThread();
+      this.a.start();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.logcat.LogcatUtil
  * JD-Core Version:    0.7.0.1
  */

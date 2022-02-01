@@ -22,19 +22,19 @@ public class LebaDiyIconPartImpl
   
   public boolean addPersonalBackgroundToIcon(Context paramContext, View paramView, int paramInt)
   {
-    QVipPersonalIconConfig localQVipPersonalIconConfig = QVipPersonalIconProcessor.c();
-    if (!localQVipPersonalIconConfig.a()) {
+    QVipPersonalIconConfig localQVipPersonalIconConfig = QVipPersonalIconProcessor.e();
+    if (!localQVipPersonalIconConfig.b()) {
       return false;
     }
-    String str = localQVipPersonalIconConfig.a(String.valueOf(paramInt));
+    String str = localQVipPersonalIconConfig.b(String.valueOf(paramInt));
     if (str != null) {}
     try
     {
-      paramInt = localQVipPersonalIconConfig.a(str);
+      paramInt = localQVipPersonalIconConfig.c(str);
       if (!SkinEngine.getInstances().checkResExist(paramInt)) {
         return false;
       }
-      ViewUtils.a(paramView, paramContext.getResources().getDrawable(paramInt));
+      ViewUtils.setViewBackground(paramView, paramContext.getResources().getDrawable(paramInt));
       return true;
     }
     catch (Exception paramContext) {}
@@ -44,33 +44,33 @@ public class LebaDiyIconPartImpl
   
   public boolean addPersonalBackgroundToIcon(ImageView paramImageView, Drawable paramDrawable, String paramString)
   {
-    Object localObject = QVipPersonalIconProcessor.c();
-    if (!((QVipPersonalIconConfig)localObject).a())
+    Object localObject = QVipPersonalIconProcessor.e();
+    if (!((QVipPersonalIconConfig)localObject).b())
     {
       paramDrawable.clearColorFilter();
       paramImageView.setImageDrawable(paramDrawable);
-      ViewUtils.a(paramImageView, null);
+      ViewUtils.setViewBackground(paramImageView, null);
       paramImageView.setPadding(0, 0, 0, 0);
       return false;
     }
     try
     {
-      int i = ((QVipPersonalIconConfig)localObject).a(paramString);
+      int i = ((QVipPersonalIconConfig)localObject).c(paramString);
       if (!SkinEngine.getInstances().checkResExist(i))
       {
         QLog.i("LebaDiyIconPartImpl", 1, "addPersonalBackgroundToIcon ： 主题包没有该资源");
         paramDrawable.clearColorFilter();
         paramImageView.setImageDrawable(paramDrawable);
-        ViewUtils.a(paramImageView, null);
+        ViewUtils.setViewBackground(paramImageView, null);
         paramImageView.setPadding(0, 0, 0, 0);
         return false;
       }
-      ViewUtils.a(paramImageView, paramImageView.getResources().getDrawable(i));
+      ViewUtils.setViewBackground(paramImageView, paramImageView.getResources().getDrawable(i));
       paramDrawable.setColorFilter(-1, PorterDuff.Mode.SRC_IN);
       paramString = (RelativeLayout.LayoutParams)paramImageView.getLayoutParams();
       int k = paramString.width;
       i = paramString.height;
-      int j = ViewUtils.b(18.0F);
+      int j = ViewUtils.dpToPx(18.0F);
       k -= j;
       int m = k / 2;
       i -= j;
@@ -87,7 +87,7 @@ public class LebaDiyIconPartImpl
       QLog.i("LebaDiyIconPartImpl", 1, ((StringBuilder)localObject).toString());
       paramDrawable.clearColorFilter();
       paramImageView.setImageDrawable(paramDrawable);
-      ViewUtils.a(paramImageView, null);
+      ViewUtils.setViewBackground(paramImageView, null);
       paramImageView.setPadding(0, 0, 0, 0);
     }
     return false;
@@ -95,7 +95,7 @@ public class LebaDiyIconPartImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.impl.LebaDiyIconPartImpl
  * JD-Core Version:    0.7.0.1
  */

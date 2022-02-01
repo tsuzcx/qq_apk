@@ -22,7 +22,7 @@ class MessageHandler$14
       QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
-      this.a.a.getMessageFacade().k();
+      this.a.n.getMessageFacade().C();
     }
   }
   
@@ -38,13 +38,13 @@ class MessageHandler$14
       QLog.d("Q.msg.MessageHandler", 2, localStringBuilder.toString());
     }
     if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.a.getMessageFacade().k();
+      this.a.n.getMessageFacade().C();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageHandler.14
  * JD-Core Version:    0.7.0.1
  */

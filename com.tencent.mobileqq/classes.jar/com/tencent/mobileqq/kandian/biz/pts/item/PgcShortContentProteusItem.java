@@ -15,7 +15,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.kandian.base.view.widget.IReadInJoyListItemAutoPlayCallback;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.common.baseui.IReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView;
@@ -38,7 +38,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.PGCFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SocializeFeedsInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.api.IReadInJoyModel;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -49,8 +48,8 @@ import org.json.JSONObject;
 public class PgcShortContentProteusItem
   extends PgcProteusItem
 {
-  private ReadInJoyShareHelperV2 jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
-  private QShareUtils jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesQShareUtils;
+  private ReadInJoyShareHelperV2 a;
+  private QShareUtils b;
   
   private List<Integer> a()
   {
@@ -112,7 +111,7 @@ public class PgcShortContentProteusItem
     ViewBase localViewBase = paramViewBase.findViewBaseByName("id_pgc_short_content_video_audio_icon");
     paramViewBase = paramViewBase.findViewBaseByName("id_pgc_float_contain");
     NativeVideoView localNativeVideoView = ((ReadInJoyVideoView)localObject).a();
-    ViewBean localViewBean = paramIReadInJoyModel.a().mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
+    ViewBean localViewBean = paramIReadInJoyModel.k().mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
     if ((localViewBase != null) && (paramViewBase != null) && (localNativeVideoView != null))
     {
       if (localViewBean == null) {
@@ -127,8 +126,8 @@ public class PgcShortContentProteusItem
       localObject = ((ReadInJoyVideoView)localObject).a();
       PgcShortContentProteusItem.6 local6 = new PgcShortContentProteusItem.6(this);
       PgcShortContentProteusItem.Bool localBool = new PgcShortContentProteusItem.Bool(this, true);
-      if ((IReadInJoyListItemAutoPlayCallback)paramContainer.getTag(2131376090) == null) {
-        paramContainer.setTag(2131376090, new PgcShortContentProteusItem.7(this, (View)localObject, localBool, localNativeVideoView));
+      if ((IReadInJoyListItemAutoPlayCallback)paramContainer.getTag(2131444293) == null) {
+        paramContainer.setTag(2131444293, new PgcShortContentProteusItem.7(this, (View)localObject, localBool, localNativeVideoView));
       }
       localNativeVideoView.setOnCheckShownListener(local6);
       if (localObject != null) {
@@ -143,14 +142,13 @@ public class PgcShortContentProteusItem
   {
     String str1 = RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo);
     Object localObject = paramAbsBaseArticleInfo.mSocialFeedInfo;
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     String str2 = paramAbsBaseArticleInfo.mSubscribeID;
-    long l1 = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Long;
+    long l1 = ((SocializeFeedsInfo)localObject).a;
     long l2 = paramAbsBaseArticleInfo.mArticleID;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
     ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mStrategyId);
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str2, "0X800AB52", "0X800AB52", 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject).toString(), str1, false);
+    PublicAccountReportUtils.a(null, str2, "0X800AB52", "0X800AB52", 0, 0, String.valueOf(l1), String.valueOf(l2), ((StringBuilder)localObject).toString(), str1, false);
   }
   
   private boolean a(int paramInt)
@@ -161,31 +159,31 @@ public class PgcShortContentProteusItem
   private void c(IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Activity localActivity = paramIReadInJoyModel.a().a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2 = new ReadInJoyShareHelperV2(localActivity, (AppInterface)localObject, new PgcShortContentProteusItem.PgcShortContentProteusItemSheetClickProcessor(this, paramIReadInJoyModel.a(), new WeakReference(localActivity)));
+    Activity localActivity = paramIReadInJoyModel.u().a();
+    this.a = new ReadInJoyShareHelperV2(localActivity, (AppInterface)localObject, new PgcShortContentProteusItem.PgcShortContentProteusItemSheetClickProcessor(this, paramIReadInJoyModel.k(), new WeakReference(localActivity)));
     paramViewBase.getNativeView().addOnAttachStateChangeListener(new PgcShortContentProteusItem.12(this));
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().getIntent();
+    localObject = this.a.f().getIntent();
     if ((localObject != null) && (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_source_key")))) {
       ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_feeds_kandian");
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2.a().setActionSheetTitle(HardCodeUtil.a(2131713504));
+    this.a.a().setActionSheetTitle(HardCodeUtil.a(2131911054));
     if (paramViewBase.getName().equals("id_share_button_style_a"))
     {
-      paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
+      paramViewBase = this.a;
       localObject = a();
-      paramIReadInJoyModel = paramIReadInJoyModel.a().innerUniqueID;
+      paramIReadInJoyModel = paramIReadInJoyModel.k().innerUniqueID;
       paramViewBase.a(new List[] { localObject }, 22, paramIReadInJoyModel);
       return;
     }
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareReadInJoyShareHelperV2;
+    paramViewBase = this.a;
     localObject = a();
-    paramIReadInJoyModel = paramIReadInJoyModel.a().innerUniqueID;
+    paramIReadInJoyModel = paramIReadInJoyModel.k().innerUniqueID;
     paramViewBase.a(new List[] { localObject }, 13, paramIReadInJoyModel);
   }
   
   protected View a(int paramInt, Context paramContext, IReadInJoyModel paramIReadInJoyModel, ReadInJoyMiddleBodyView paramReadInJoyMiddleBodyView)
   {
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
     switch (paramInt)
     {
     default: 
@@ -223,11 +221,11 @@ public class PgcShortContentProteusItem
       localNumberFormatException.printStackTrace();
     }
     localProteusItemDataBuilder.a(paramAbsBaseArticleInfo, l1);
-    if ((paramInt != 20) && (paramInt != 16) && (paramInt != 83) && (paramInt != 86) && ((!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSummary)) || (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mTitle)) || ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_JavaLangString != null)))) {
+    if ((paramInt != 20) && (paramInt != 16) && (paramInt != 83) && (paramInt != 86) && ((!TextUtils.isEmpty(paramAbsBaseArticleInfo.mSummary)) || (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mTitle)) || ((paramAbsBaseArticleInfo.mSocialFeedInfo != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.t.c != null)))) {
       localProteusItemDataBuilder.p(paramAbsBaseArticleInfo);
     }
     if ((paramInt == 34) || (paramInt == 85)) {
-      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131707980));
+      localProteusItemDataBuilder.c(paramAbsBaseArticleInfo, HardCodeUtil.a(2131905790));
     }
     localProteusItemDataBuilder.i(paramAbsBaseArticleInfo);
     if (a(paramInt)) {
@@ -246,7 +244,7 @@ public class PgcShortContentProteusItem
     ViewBase localViewBase = paramContainer.getVirtualView();
     BindViewHelper.f(localViewBase, paramIReadInJoyModel);
     BindViewHelper.e(localViewBase, paramIReadInJoyModel);
-    BindViewHelper.a(localViewBase, paramIReadInJoyModel.a());
+    BindViewHelper.a(localViewBase, paramIReadInJoyModel.k());
     BindViewHelper.c(localViewBase, paramIReadInJoyModel);
     c(paramInt1, paramContainer, paramIReadInJoyModel, paramInt2, localViewBase);
     b(paramInt1, paramContainer, paramIReadInJoyModel, paramInt2, localViewBase);
@@ -257,12 +255,12 @@ public class PgcShortContentProteusItem
   
   protected void a(int paramInt1, IReadInJoyModel paramIReadInJoyModel, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
   {
-    if (paramNativeMiddleBodyView.a() != null)
+    if (paramNativeMiddleBodyView.getContent() != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.u() == null) {
         return;
       }
-      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+      ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
       if (paramInt1 != 110)
       {
         if (paramInt1 != 111)
@@ -270,12 +268,12 @@ public class PgcShortContentProteusItem
           if (paramInt1 != 132) {
             return;
           }
-          paramNativeMiddleBodyView = (PgcSmallView)paramNativeMiddleBodyView.a();
-          ShortWithLongContentUtil.a(paramIReadInJoyModel.a());
+          paramNativeMiddleBodyView = (PgcSmallView)paramNativeMiddleBodyView.getContent();
+          ShortWithLongContentUtil.a(paramIReadInJoyModel.k());
           paramNativeMiddleBodyView.a(paramIReadInJoyModel);
           try
           {
-            if ((!paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.jdField_a_of_type_Boolean) || (paramIReadInJoyModel.a().mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityLongContentInfo == null)) {
+            if ((!paramIReadInJoyModel.k().mSocialFeedInfo.t.f) || (paramIReadInJoyModel.k().mSocialFeedInfo.L == null)) {
               return;
             }
             paramNativeMiddleBodyView.setOnClickListener(new PgcShortContentProteusItem.5(this, paramIReadInJoyModel, paramNativeMiddleBodyView, paramContainer));
@@ -289,8 +287,8 @@ public class PgcShortContentProteusItem
         }
         else
         {
-          ShortWithLongContentUtil.a(paramIReadInJoyModel.a());
-          paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
+          ShortWithLongContentUtil.a(paramIReadInJoyModel.k());
+          paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.getContent();
           paramContainer = ComponentContentGridImage.a(paramIReadInJoyModel, paramInt1);
           paramNativeMiddleBodyView.setMIReadInJoyModel(paramIReadInJoyModel);
           paramNativeMiddleBodyView.a(paramContainer);
@@ -299,9 +297,9 @@ public class PgcShortContentProteusItem
       }
       else
       {
-        ShortWithLongContentUtil.a(paramIReadInJoyModel.a());
-        paramNativeMiddleBodyView.a().setOnClickListener(new PgcShortContentProteusItem.4(this, paramIReadInJoyModel, paramContainer, localReadInJoyBaseAdapter));
-        ((ComponentView)paramNativeMiddleBodyView.a()).a(paramIReadInJoyModel);
+        ShortWithLongContentUtil.a(paramIReadInJoyModel.k());
+        paramNativeMiddleBodyView.getContent().setOnClickListener(new PgcShortContentProteusItem.4(this, paramIReadInJoyModel, paramContainer, localReadInJoyBaseAdapter));
+        ((ComponentView)paramNativeMiddleBodyView.getContent()).a(paramIReadInJoyModel);
       }
     }
   }
@@ -344,7 +342,7 @@ public class PgcShortContentProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem
  * JD-Core Version:    0.7.0.1
  */

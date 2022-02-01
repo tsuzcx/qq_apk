@@ -7,7 +7,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.MagnifierSDK;
 import com.tencent.qqperf.monitor.base.IAPMMemoryClearListener;
-import com.tencent.qqperf.monitor.base.IAPMModuleCelling;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
@@ -17,43 +16,36 @@ public class MemoryReporter
   implements Handler.Callback
 {
   public static int a;
-  private static MemoryReporter jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryReporter;
-  public static ArrayList<String> a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  private Vector<IAPMMemoryClearListener> jdField_a_of_type_JavaUtilVector = new Vector();
-  public boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public static ArrayList<String> c = new ArrayList();
+  private static MemoryReporter d;
+  public boolean b = false;
+  private Handler e = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private Vector<IAPMMemoryClearListener> f = new Vector();
   
   private MemoryReporter()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = MagnifierSDK.a().a().d();
-    a(MemoryClearManager.a());
+    a(MemoryClearManager.b());
   }
   
   public static MemoryReporter a()
   {
-    if (jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryReporter == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryReporter == null) {
-          jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryReporter = new MemoryReporter();
+        if (d == null) {
+          d = new MemoryReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQqperfOptClearmemoryMemoryReporter;
+    return d;
   }
   
   private void a(int paramInt, ClearMemoryConfig.MemoryLevelInfo paramMemoryLevelInfo)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    synchronized (this.f)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      Iterator localIterator = this.f.iterator();
       while (localIterator.hasNext()) {
         ((IAPMMemoryClearListener)localIterator.next()).a(paramInt, paramMemoryLevelInfo);
       }
@@ -65,32 +57,22 @@ public class MemoryReporter
     }
   }
   
-  private void c()
+  private void d()
   {
     long l1 = Runtime.getRuntime().totalMemory();
     long l2 = Runtime.getRuntime().freeMemory();
-    long l3 = (100 - MagnifierSDK.a().a().jdField_a_of_type_Int) * Runtime.getRuntime().maxMemory() / 100L;
+    long l3 = (100 - MagnifierSDK.b().j().d) * Runtime.getRuntime().maxMemory() / 100L;
     if (QLog.isColorLevel()) {
       QLog.d("MemoryReporter", 2, new Object[] { "ReportDump  calculateSharpMemory heapSize= ", Long.valueOf(l1 - l2) });
     }
-    int i = jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (MagnifierSDK.a().a().jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
+    int i = a;
   }
   
   public void a(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    synchronized (this.f)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
+      Iterator localIterator = this.f.iterator();
       while (localIterator.hasNext()) {
         ((IAPMMemoryClearListener)localIterator.next()).a(paramLong);
       }
@@ -104,9 +86,9 @@ public class MemoryReporter
   
   public void a(IAPMMemoryClearListener paramIAPMMemoryClearListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    synchronized (this.f)
     {
-      this.jdField_a_of_type_JavaUtilVector.add(paramIAPMMemoryClearListener);
+      this.f.add(paramIAPMMemoryClearListener);
       return;
     }
   }
@@ -114,7 +96,7 @@ public class MemoryReporter
   public boolean a(long paramLong1, long paramLong2, ClearMemoryConfig paramClearMemoryConfig, int paramInt)
   {
     ClearMemoryConfig.MemoryLevelInfo localMemoryLevelInfo = paramClearMemoryConfig.a(paramInt);
-    if ((localMemoryLevelInfo != null) && (paramLong1 >= localMemoryLevelInfo.jdField_a_of_type_Int * paramLong2 / 100L))
+    if ((localMemoryLevelInfo != null) && (paramLong1 >= localMemoryLevelInfo.a * paramLong2 / 100L))
     {
       if (QLog.isColorLevel())
       {
@@ -125,7 +107,7 @@ public class MemoryReporter
         localStringBuilder.append(paramLong1 / 1024L / 84L);
         QLog.d("MemoryReporter", 2, localStringBuilder.toString());
       }
-      paramClearMemoryConfig.jdField_a_of_type_Int = localMemoryLevelInfo.b;
+      paramClearMemoryConfig.c = localMemoryLevelInfo.b;
       a(paramInt, localMemoryLevelInfo);
       return true;
     }
@@ -134,18 +116,28 @@ public class MemoryReporter
   
   public void b()
   {
-    jdField_a_of_type_Int = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("MemoryReporter", 2, new Object[] { "ReportDump setDumpReported = ", Integer.valueOf(jdField_a_of_type_Int) });
+    if (MagnifierSDK.b().j().h.b) {
+      this.e.sendEmptyMessage(2);
+    }
+    if (this.b) {
+      this.e.sendEmptyMessage(1);
     }
   }
   
   public void b(IAPMMemoryClearListener paramIAPMMemoryClearListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    synchronized (this.f)
     {
-      this.jdField_a_of_type_JavaUtilVector.remove(paramIAPMMemoryClearListener);
+      this.f.remove(paramIAPMMemoryClearListener);
       return;
+    }
+  }
+  
+  public void c()
+  {
+    a = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("MemoryReporter", 2, new Object[] { "ReportDump setDumpReported = ", Integer.valueOf(a) });
     }
   }
   
@@ -167,16 +159,16 @@ public class MemoryReporter
         return true;
         l1 = Runtime.getRuntime().totalMemory();
         long l2 = Runtime.getRuntime().maxMemory();
-        paramMessage = MagnifierSDK.a().a().jdField_a_of_type_ComTencentQqperfOptClearmemoryClearMemoryConfig;
-        MemoryClearManager.a().c();
+        paramMessage = MagnifierSDK.b().j().h;
+        MemoryClearManager.b().e();
         if (a(l1, l2, paramMessage, 1))
         {
-          i = paramMessage.jdField_a_of_type_Int * 1000;
+          i = paramMessage.c * 1000;
         }
         else
         {
           if (a(l1, l2, paramMessage, 2)) {}
-          for (i = paramMessage.jdField_a_of_type_Int;; i = paramMessage.jdField_a_of_type_Int)
+          for (i = paramMessage.c;; i = paramMessage.c)
           {
             i *= 1000;
             break label141;
@@ -187,7 +179,7 @@ public class MemoryReporter
           i = 30000;
         }
         label141:
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+        this.e.removeMessages(2);
         int j = i;
         if (!bool)
         {
@@ -196,13 +188,13 @@ public class MemoryReporter
             j = i * 2;
           }
         }
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, j);
+        this.e.sendEmptyMessageDelayed(2, j);
       }
     }
-    c();
-    MemoryClearManager.a().a(bool);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    paramMessage = this.jdField_a_of_type_AndroidOsHandler;
+    d();
+    MemoryClearManager.b().a(bool);
+    this.e.removeMessages(1);
+    paramMessage = this.e;
     if (bool) {
       l1 = 5000L;
     } else {
@@ -214,7 +206,7 @@ public class MemoryReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.MemoryReporter
  * JD-Core Version:    0.7.0.1
  */

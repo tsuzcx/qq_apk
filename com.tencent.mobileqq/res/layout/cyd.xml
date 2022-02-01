@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/nbt" android:background="@color/qcircle_skin_color_bg_last_seen_divider" android:layout_width="fill_parent" android:layout_height="157.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/is1" android:background="#ffffffff" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:overScrollMode="never" />
-    <RelativeLayout android:layout_gravity="center" android:id="@id/bw1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/fq0" android:layout_width="153.0dip" android:layout_height="163.0dip" android:layout_marginBottom="@dimen/n2" android:src="@drawable/dhj" android:layout_centerHorizontal="true" />
-        <TextView android:textAppearance="?android:textAppearanceMedium" android:textSize="16.0sp" android:textColor="@color/es" android:id="@id/mca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/w4y" android:layout_below="@id/fq0" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <ImageView android:layout_gravity="top" android:id="@id/o69" android:background="@drawable/qcircle_skin_feed_divider" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_last_seen_divider" android:layout_gravity="center_horizontal" android:id="@id/qkd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="上次读到这里, 没有更多新动态" />
+    <Button android:textSize="14.0dip" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/qkc" android:background="@drawable/qcircle_skin_btn_small_primary_normal" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="75.0dip" android:text="去广场看更多" />
+</FrameLayout>

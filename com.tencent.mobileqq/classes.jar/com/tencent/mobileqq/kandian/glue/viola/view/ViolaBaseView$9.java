@@ -2,6 +2,8 @@ package com.tencent.mobileqq.kandian.glue.viola.view;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoaderManager;
+import com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoaderManager.Companion;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
@@ -16,35 +18,43 @@ class ViolaBaseView$9
   
   public void run()
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(AppConstants.SDCARD_PATH_READINJOY_VIOLA_JS_SOURCE_PATH);
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559&time=");
-    ((StringBuilder)localObject2).append(System.currentTimeMillis());
-    ((StringBuilder)localObject1).append(MD5.a(((StringBuilder)localObject2).toString()));
-    ((StringBuilder)localObject1).append(".zip");
-    localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
-    if (TextUtils.isEmpty((CharSequence)localObject1))
+    String str = ViolaSoLoaderManager.a.a().j();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppConstants.SDCARD_PATH_READINJOY_VIOLA_JS_SOURCE_PATH);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("&time=");
+    localStringBuilder.append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append(MD5.b(localStringBuilder.toString()));
+    ((StringBuilder)localObject).append(".zip");
+    localObject = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString());
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(ViolaBaseView.b(), 2, "loadSOFromNet [url:https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559] get localPath error, download cancel");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("loadSOFromNet [url:");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("] get localPath error, download cancel");
+        QLog.e("ViolaBaseView", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    if (new File((String)localObject1).exists()) {
-      FileUtils.deleteFile((String)localObject1);
+    if (new File((String)localObject).exists()) {
+      FileUtils.deleteFile((String)localObject);
     }
-    boolean bool = HttpDownloadUtil.download(null, "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559", new File((String)localObject1));
-    localObject2 = ViolaBaseView.b();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("loadSOFromNet [ url:https://sqimg.qq.com/qq_product_operations/kan/violaLibs/so_799.zip?v_bid=3559] Download to ");
-    localStringBuilder.append((String)localObject1);
+    boolean bool = HttpDownloadUtil.download(null, str, new File((String)localObject));
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadSOFromNet [ url:");
+    localStringBuilder.append(str);
+    localStringBuilder.append("] Download to ");
+    localStringBuilder.append((String)localObject);
     localStringBuilder.append(",isSuss:");
     localStringBuilder.append(bool);
-    QLog.d((String)localObject2, 2, localStringBuilder.toString());
-    if ((bool) && (new File((String)localObject1).exists()))
+    QLog.d("ViolaBaseView", 2, localStringBuilder.toString());
+    if ((bool) && (new File((String)localObject).exists()))
     {
-      ViolaBaseView.a(this.this$0, (String)localObject1);
+      ViolaBaseView.b(this.this$0, (String)localObject);
       return;
     }
     ViolaBaseView.a(this.this$0, 6);
@@ -52,7 +62,7 @@ class ViolaBaseView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.view.ViolaBaseView.9
  * JD-Core Version:    0.7.0.1
  */

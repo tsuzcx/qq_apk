@@ -23,29 +23,74 @@ public class EditVideoQimMusic
   extends EditVideoPart
   implements View.OnClickListener, MusicMuteListener, EditMusicExport
 {
-  private QimMusicPlayer jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer = (QimMusicPlayer)QIMManager.a().c(8);
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = true;
+  private boolean a;
+  private long b = -1L;
+  private QimMusicPlayer c = (QimMusicPlayer)QIMManager.a().d(8);
+  private boolean d = false;
+  private boolean e = true;
   
   public EditVideoQimMusic(@NonNull EditVideoPartManager paramEditVideoPartManager, boolean paramBoolean)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
-  private Bundle a()
+  private void a(int paramInt, GenerateContext paramGenerateContext, MusicItemInfo paramMusicItemInfo)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle != null) {
-      return this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_AndroidOsBundle.getBundle("container");
+    boolean bool = paramGenerateContext.d.getBooleanExtra("isMixOriginal", this.a);
+    if (paramMusicItemInfo != null)
+    {
+      paramGenerateContext.d.backgroundMusicOffset = paramMusicItemInfo.musicStart;
+      int j = paramMusicItemInfo.musicEnd - paramMusicItemInfo.musicStart;
+      int i = j;
+      if (!this.t.l()) {
+        i = Math.min(j, (int)this.t.b(paramInt));
+      }
+      paramGenerateContext.d.backgroundMusicDuration = i;
+      paramGenerateContext.d.backgroundMusicPath = paramMusicItemInfo.getLocalPath();
+      paramGenerateContext.d.isMuteRecordVoice = (bool ^ true);
+      paramGenerateContext.d.putExtra("vs_publish_entry_json_key_music_id", Integer.valueOf(paramMusicItemInfo.mItemId));
+      paramGenerateContext.d.putExtra("vs_publish_entry_json_key_music_mid_id", paramMusicItemInfo.mSongMid);
+      paramGenerateContext.d.putExtra("vs_publish_entry_json_key_song_name", paramMusicItemInfo.mMusicName);
+      paramGenerateContext.d.putExtra("vs_publish_entry_json_key_music_album_pic", paramMusicItemInfo.mAlbumUrl);
+      return;
     }
-    return null;
+    paramMusicItemInfo = this.c.j();
+    if ((paramMusicItemInfo != null) && ((paramMusicItemInfo.mType == 3) || (paramMusicItemInfo.isDownloading()))) {
+      paramGenerateContext.d.backgroundMusicPath = null;
+    }
   }
   
-  private MusicItemInfo a()
+  private void b(int paramInt, @NonNull GenerateContext paramGenerateContext, MusicItemInfo paramMusicItemInfo)
   {
-    Bundle localBundle = a();
+    if (paramMusicItemInfo != null)
+    {
+      if (paramMusicItemInfo.isMyMusicInfo())
+      {
+        paramGenerateContext.d.backgroundMusicOffset = paramMusicItemInfo.musicStart;
+        paramInt = Math.min(paramMusicItemInfo.musicEnd - paramMusicItemInfo.musicStart, (int)this.t.b(paramInt));
+        paramGenerateContext.d.backgroundMusicDuration = paramInt;
+      }
+      else
+      {
+        paramGenerateContext.d.backgroundMusicOffset = 0;
+        paramGenerateContext.d.backgroundMusicDuration = ((int)this.t.b(paramInt));
+      }
+      paramGenerateContext.d.backgroundMusicPath = paramMusicItemInfo.getLocalPath();
+      paramGenerateContext.d.isMuteRecordVoice = true;
+      return;
+    }
+    paramMusicItemInfo = this.c.j();
+    if ((paramMusicItemInfo != null) && (paramMusicItemInfo.mType == 3))
+    {
+      paramGenerateContext.d.backgroundMusicPath = null;
+      paramGenerateContext.d.isMuteRecordVoice = true;
+    }
+  }
+  
+  private MusicItemInfo c()
+  {
+    Bundle localBundle = i();
     Object localObject = null;
     if (localBundle != null) {
       localBundle = localBundle.getBundle(MusicProviderView.class.getSimpleName());
@@ -86,84 +131,34 @@ public class EditVideoQimMusic
     return localObject;
   }
   
-  private void a(int paramInt, GenerateContext paramGenerateContext, MusicItemInfo paramMusicItemInfo)
+  private Bundle i()
   {
-    boolean bool = paramGenerateContext.a.getBooleanExtra("isMixOriginal", this.jdField_a_of_type_Boolean);
-    if (paramMusicItemInfo != null)
-    {
-      paramGenerateContext.a.backgroundMusicOffset = paramMusicItemInfo.musicStart;
-      int j = paramMusicItemInfo.musicEnd - paramMusicItemInfo.musicStart;
-      int i = j;
-      if (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.e()) {
-        i = Math.min(j, (int)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramInt));
-      }
-      paramGenerateContext.a.backgroundMusicDuration = i;
-      paramGenerateContext.a.backgroundMusicPath = paramMusicItemInfo.getLocalPath();
-      paramGenerateContext.a.isMuteRecordVoice = (bool ^ true);
-      paramGenerateContext.a.putExtra("vs_publish_entry_json_key_music_id", Integer.valueOf(paramMusicItemInfo.mItemId));
-      paramGenerateContext.a.putExtra("vs_publish_entry_json_key_music_mid_id", paramMusicItemInfo.mSongMid);
-      paramGenerateContext.a.putExtra("vs_publish_entry_json_key_song_name", paramMusicItemInfo.mMusicName);
-      paramGenerateContext.a.putExtra("vs_publish_entry_json_key_music_album_pic", paramMusicItemInfo.mAlbumUrl);
-      return;
+    if (this.t.ad != null) {
+      return this.t.ad.getBundle("container");
     }
-    paramMusicItemInfo = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.b();
-    if ((paramMusicItemInfo != null) && ((paramMusicItemInfo.mType == 3) || (paramMusicItemInfo.isDownloading()))) {
-      paramGenerateContext.a.backgroundMusicPath = null;
-    }
-  }
-  
-  private void b(int paramInt, @NonNull GenerateContext paramGenerateContext, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramMusicItemInfo != null)
-    {
-      if (paramMusicItemInfo.isMyMusicInfo())
-      {
-        paramGenerateContext.a.backgroundMusicOffset = paramMusicItemInfo.musicStart;
-        paramInt = Math.min(paramMusicItemInfo.musicEnd - paramMusicItemInfo.musicStart, (int)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramInt));
-        paramGenerateContext.a.backgroundMusicDuration = paramInt;
-      }
-      else
-      {
-        paramGenerateContext.a.backgroundMusicOffset = 0;
-        paramGenerateContext.a.backgroundMusicDuration = ((int)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(paramInt));
-      }
-      paramGenerateContext.a.backgroundMusicPath = paramMusicItemInfo.getLocalPath();
-      paramGenerateContext.a.isMuteRecordVoice = true;
-      return;
-    }
-    paramMusicItemInfo = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.b();
-    if ((paramMusicItemInfo != null) && (paramMusicItemInfo.mType == 3))
-    {
-      paramGenerateContext.a.backgroundMusicPath = null;
-      paramGenerateContext.a.isMuteRecordVoice = true;
-    }
-  }
-  
-  public void A_()
-  {
-    super.A_();
+    return null;
   }
   
   public void a()
   {
     super.a();
     a(EditMusicExport.class, this);
-    QimMusicPlayer localQimMusicPlayer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer;
+    QimMusicPlayer localQimMusicPlayer = this.c;
     if (localQimMusicPlayer != null)
     {
       localQimMusicPlayer.a(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.a(this.jdField_a_of_type_Boolean);
+      this.c.a(this.a);
     }
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
   {
     super.a(paramInt, paramGenerateContext);
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer;
+    Object localObject1 = this.c;
     if (localObject1 == null) {
       return;
     }
-    MusicItemInfo localMusicItemInfo = ((QimMusicPlayer)localObject1).a();
+    MusicItemInfo localMusicItemInfo = ((QimMusicPlayer)localObject1).i();
     if (localMusicItemInfo != null)
     {
       Object localObject2 = localMusicItemInfo.mTagName;
@@ -178,7 +173,7 @@ public class EditVideoQimMusic
       localStringBuilder.append(localMusicItemInfo.mItemId);
       ((IAEBaseReportParam)localObject2).setEditMusicId(localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a == 14))
+    if ((this.t.I != null) && (this.t.I.a == 14))
     {
       a(paramInt, paramGenerateContext, localMusicItemInfo);
       return;
@@ -188,93 +183,98 @@ public class EditVideoQimMusic
   
   public void a(boolean paramBoolean)
   {
-    EditVideoPlayerExport localEditVideoPlayerExport = (EditVideoPlayerExport)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(EditVideoPlayerExport.class);
+    EditVideoPlayerExport localEditVideoPlayerExport = (EditVideoPlayerExport)this.t.a(EditVideoPlayerExport.class);
     if (localEditVideoPlayerExport != null) {
       localEditVideoPlayerExport.a(paramBoolean);
     }
   }
   
-  public void b()
+  public void at_()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer == null) {
+    super.at_();
+  }
+  
+  public void ax_()
+  {
+    super.ax_();
+    this.d = true;
+    QimMusicPlayer localQimMusicPlayer = this.c;
+    if (localQimMusicPlayer != null) {
+      localQimMusicPlayer.b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.c == null) {
       return;
     }
     Object localObject1;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.d)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("playBgMusic in = null isPause=");
-        ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject1).append(this.d);
         QLog.d("EditVideoQimMusic", 2, ((StringBuilder)localObject1).toString());
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer = ((QimMusicPlayer)QIMManager.a().c(8));
+    this.c = ((QimMusicPlayer)QIMManager.a().d(8));
     Object localObject2;
-    if (this.c)
+    if (this.e)
     {
-      this.c = false;
-      localObject2 = a();
+      this.e = false;
+      localObject2 = c();
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.e();
+        this.c.e();
         localObject1 = localObject2;
       }
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.a();
+      localObject1 = this.c.i();
     }
     long l = System.currentTimeMillis();
     if (QLog.isColorLevel())
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("playBgMusic in mPreTime=");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append(" currentTime=");
       ((StringBuilder)localObject2).append(l);
       QLog.d("EditVideoQimMusic", 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.a((MusicItemInfo)localObject1, true, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c());
+    this.c.a((MusicItemInfo)localObject1, true, this.t.y());
   }
   
-  public void d()
+  public void f()
   {
-    super.d();
-    this.jdField_b_of_type_Boolean = false;
+    super.f();
+    this.d = false;
     if (QLog.isColorLevel()) {
       QLog.d("EditVideoQimMusic", 2, "onResume");
     }
   }
   
-  public void e()
+  public void g()
   {
-    super.e();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer.a(null);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer = null;
+    super.g();
+    this.c.a(null);
+    this.c = null;
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b(0);
-  }
-  
-  public void z_()
-  {
-    super.z_();
-    this.jdField_b_of_type_Boolean = true;
-    QimMusicPlayer localQimMusicPlayer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQimMusicPlayer;
-    if (localQimMusicPlayer != null) {
-      localQimMusicPlayer.d();
-    }
+    this.t.d(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.music.EditVideoQimMusic
  * JD-Core Version:    0.7.0.1
  */

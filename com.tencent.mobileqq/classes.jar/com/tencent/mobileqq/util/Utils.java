@@ -16,6 +16,7 @@ import android.os.StatFs;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -39,34 +40,21 @@ import org.json.JSONObject;
 
 public class Utils
 {
-  private static int jdField_a_of_type_Int;
-  static Boolean jdField_a_of_type_JavaLangBoolean = null;
-  protected static String a;
-  private static StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private static final Set<Long> jdField_a_of_type_JavaUtilSet;
-  protected static final char[] a;
-  public static final String[] a;
-  public static String b;
+  protected static final char[] a = { 12290, -225, -255, 33, 63, -244, -229, 44, 32 };
+  protected static String b = ".*(\\+86|086)?\\d{5,12}.*";
+  public static String c = "";
+  public static String d;
+  public static final String[] e = { HardCodeUtil.a(2131897687), HardCodeUtil.a(2131897685), HardCodeUtil.a(2131897696), HardCodeUtil.a(2131897690), HardCodeUtil.a(2131897697), HardCodeUtil.a(2131897688), HardCodeUtil.a(2131897683), HardCodeUtil.a(2131897694), HardCodeUtil.a(2131897693), HardCodeUtil.a(2131897699), HardCodeUtil.a(2131897684), HardCodeUtil.a(2131897689) };
+  static Boolean f = null;
+  private static final Set<Long> g = new Utils.1(100);
+  private static StringBuilder h;
+  private static int i;
   
   static
   {
-    jdField_a_of_type_ArrayOfChar = new char[] { 12290, -225, -255, 33, 63, -244, -229, 44, 32 };
-    jdField_a_of_type_JavaLangString = ".*(\\+86|086)?\\d{5,12}.*";
-    jdField_a_of_type_JavaUtilSet = new Utils.1(100);
-    b = null;
-    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { HardCodeUtil.a(2131699654), HardCodeUtil.a(2131699652), HardCodeUtil.a(2131699663), HardCodeUtil.a(2131699657), HardCodeUtil.a(2131699664), HardCodeUtil.a(2131699655), HardCodeUtil.a(2131699650), HardCodeUtil.a(2131699661), HardCodeUtil.a(2131699660), HardCodeUtil.a(2131699666), HardCodeUtil.a(2131699651), HardCodeUtil.a(2131699656) };
-  }
-  
-  private static byte a(char paramChar)
-  {
-    return (byte)"0123456789ABCDEF".indexOf(paramChar);
-  }
-  
-  public static float a(float paramFloat, Resources paramResources)
-  {
-    return paramFloat * paramResources.getDisplayMetrics().density + 0.5F;
+    d = null;
+    h = new StringBuilder();
+    i = 0;
   }
   
   public static final float a(int paramInt, Resources paramResources)
@@ -79,11 +67,11 @@ public class Utils
   
   public static int a(byte paramByte)
   {
-    int i = paramByte;
+    int j = paramByte;
     if (paramByte < 0) {
-      i = paramByte + 256;
+      j = paramByte + 256;
     }
-    return i;
+    return j;
   }
   
   public static final int a(float paramFloat, Resources paramResources)
@@ -92,49 +80,6 @@ public class Utils
       return 0;
     }
     return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
-  }
-  
-  public static int a(int paramInt)
-  {
-    int j = jdField_a_of_type_JavaLangStringBuilder.length();
-    int i = 2;
-    if (j > 560) {}
-    try
-    {
-      j = jdField_a_of_type_JavaLangStringBuilder.toString().getBytes("utf-8").length;
-      if ((jdField_a_of_type_Int != j) && (QLog.isColorLevel()))
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("calculate byte num not equal byte num returned by getBytes(),totalByteNum is:");
-        localStringBuilder.append(jdField_a_of_type_Int);
-        localStringBuilder.append(",byteNum");
-        localStringBuilder.append(j);
-        QLog.d("Utils", 2, localStringBuilder.toString());
-      }
-      label88:
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      jdField_a_of_type_Int = 0;
-      if ((paramInt >= 0) && (paramInt < 128)) {
-        i = 1;
-      } else if ((paramInt < 128) || (paramInt >= 2048)) {
-        if ((paramInt >= 2048) && (paramInt < 65536)) {
-          i = 3;
-        } else if ((paramInt >= 65536) && (paramInt < 2097152)) {
-          i = 4;
-        } else if ((paramInt >= 2097152) && (paramInt < 67108864)) {
-          i = 5;
-        } else {
-          i = 6;
-        }
-      }
-      jdField_a_of_type_JavaLangStringBuilder.append(Character.toChars(paramInt));
-      jdField_a_of_type_Int += i;
-      return i;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      break label88;
-    }
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -203,19 +148,19 @@ public class Utils
   
   public static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = paramInt1;
+    int j = paramInt1;
     if (paramInt2 != 0)
     {
-      i = paramInt1;
+      j = paramInt1;
       if (paramInt3 != 0)
       {
         if (paramInt2 == paramInt3) {
           return paramInt1;
         }
-        i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+        j = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
       }
     }
-    return i;
+    return j;
   }
   
   public static int a(long paramLong)
@@ -259,8 +204,8 @@ public class Utils
     }
     try
     {
-      int i = new JSONObject(paramIntent).optInt("resultCode", -1);
-      return i;
+      int j = new JSONObject(paramIntent).optInt("resultCode", -1);
+      return j;
     }
     catch (JSONException paramIntent)
     {
@@ -282,11 +227,6 @@ public class Utils
       return -1;
     }
     return paramBitmap.getRowBytes() * paramBitmap.getHeight();
-  }
-  
-  public static int a(String paramString)
-  {
-    return a(paramString)[0];
   }
   
   public static long a()
@@ -322,371 +262,6 @@ public class Utils
     long l2 = a(paramArrayOfByte[(paramInt + 2)]) << 8;
     long l3 = a(paramArrayOfByte[(paramInt + 1)]) << 16;
     return a(paramArrayOfByte[paramInt]) << 24 | l1 | l2 | l3;
-  }
-  
-  public static ByteStringMicro a(String paramString)
-  {
-    return ByteStringMicro.copyFrom(b(paramString));
-  }
-  
-  public static String a(int paramInt)
-  {
-    if (paramInt >= 1)
-    {
-      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      if (paramInt <= arrayOfString.length) {
-        return arrayOfString[(paramInt - 1)];
-      }
-    }
-    return "";
-  }
-  
-  public static String a(int paramInt1, int paramInt2)
-  {
-    return a(a(paramInt1, paramInt2));
-  }
-  
-  @SuppressLint({"NewApi"})
-  public static String a(Context paramContext)
-  {
-    if (Environment.getExternalStorageState().equals("mounted"))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("/Android/data/");
-      localStringBuilder.append(paramContext.getPackageName());
-      localStringBuilder.append("/cache/");
-      paramContext = localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
-      localStringBuilder.append(paramContext);
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
-  /* Error */
-  public static String a(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_0
-    //   4: invokevirtual 308	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   7: aload_1
-    //   8: invokevirtual 314	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   11: astore_2
-    //   12: new 316	java/io/BufferedReader
-    //   15: dup
-    //   16: new 318	java/io/InputStreamReader
-    //   19: dup
-    //   20: aload_2
-    //   21: invokespecial 321	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   24: invokespecial 324	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   27: astore_0
-    //   28: aload_0
-    //   29: astore_3
-    //   30: aload_2
-    //   31: astore 4
-    //   33: new 43	java/lang/StringBuilder
-    //   36: dup
-    //   37: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   40: astore 5
-    //   42: aload_0
-    //   43: astore_3
-    //   44: aload_2
-    //   45: astore 4
-    //   47: aload_0
-    //   48: invokevirtual 327	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   51: astore 7
-    //   53: aload 7
-    //   55: ifnull +19 -> 74
-    //   58: aload_0
-    //   59: astore_3
-    //   60: aload_2
-    //   61: astore 4
-    //   63: aload 5
-    //   65: aload 7
-    //   67: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: pop
-    //   71: goto -29 -> 42
-    //   74: aload_0
-    //   75: astore_3
-    //   76: aload_2
-    //   77: astore 4
-    //   79: aload 5
-    //   81: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: astore 5
-    //   86: aload_0
-    //   87: invokevirtual 330	java/io/BufferedReader:close	()V
-    //   90: goto +28 -> 118
-    //   93: astore_0
-    //   94: ldc 133
-    //   96: iconst_1
-    //   97: iconst_3
-    //   98: anewarray 4	java/lang/Object
-    //   101: dup
-    //   102: iconst_0
-    //   103: ldc_w 332
-    //   106: aastore
-    //   107: dup
-    //   108: iconst_1
-    //   109: aload_1
-    //   110: aastore
-    //   111: dup
-    //   112: iconst_2
-    //   113: aload_0
-    //   114: aastore
-    //   115: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   118: aload 5
-    //   120: astore_0
-    //   121: aload_2
-    //   122: ifnull +177 -> 299
-    //   125: aload_2
-    //   126: invokevirtual 338	java/io/InputStream:close	()V
-    //   129: aload 5
-    //   131: areturn
-    //   132: astore_0
-    //   133: ldc 133
-    //   135: iconst_1
-    //   136: iconst_3
-    //   137: anewarray 4	java/lang/Object
-    //   140: dup
-    //   141: iconst_0
-    //   142: ldc_w 340
-    //   145: aastore
-    //   146: dup
-    //   147: iconst_1
-    //   148: aload_1
-    //   149: aastore
-    //   150: dup
-    //   151: iconst_2
-    //   152: aload_0
-    //   153: aastore
-    //   154: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   157: aload 5
-    //   159: areturn
-    //   160: astore 5
-    //   162: goto +30 -> 192
-    //   165: astore_0
-    //   166: aconst_null
-    //   167: astore_3
-    //   168: goto +137 -> 305
-    //   171: astore 5
-    //   173: aconst_null
-    //   174: astore_0
-    //   175: goto +17 -> 192
-    //   178: astore_0
-    //   179: aconst_null
-    //   180: astore_3
-    //   181: aload_3
-    //   182: astore_2
-    //   183: goto +122 -> 305
-    //   186: astore 5
-    //   188: aconst_null
-    //   189: astore_2
-    //   190: aload_2
-    //   191: astore_0
-    //   192: aload_0
-    //   193: astore_3
-    //   194: aload_2
-    //   195: astore 4
-    //   197: ldc 133
-    //   199: iconst_1
-    //   200: iconst_3
-    //   201: anewarray 4	java/lang/Object
-    //   204: dup
-    //   205: iconst_0
-    //   206: ldc_w 342
-    //   209: aastore
-    //   210: dup
-    //   211: iconst_1
-    //   212: aload_1
-    //   213: aastore
-    //   214: dup
-    //   215: iconst_2
-    //   216: aload 5
-    //   218: aastore
-    //   219: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   222: aload_0
-    //   223: ifnull +35 -> 258
-    //   226: aload_0
-    //   227: invokevirtual 330	java/io/BufferedReader:close	()V
-    //   230: goto +28 -> 258
-    //   233: astore_0
-    //   234: ldc 133
-    //   236: iconst_1
-    //   237: iconst_3
-    //   238: anewarray 4	java/lang/Object
-    //   241: dup
-    //   242: iconst_0
-    //   243: ldc_w 332
-    //   246: aastore
-    //   247: dup
-    //   248: iconst_1
-    //   249: aload_1
-    //   250: aastore
-    //   251: dup
-    //   252: iconst_2
-    //   253: aload_0
-    //   254: aastore
-    //   255: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   258: aload 6
-    //   260: astore_0
-    //   261: aload_2
-    //   262: ifnull +37 -> 299
-    //   265: aload_2
-    //   266: invokevirtual 338	java/io/InputStream:close	()V
-    //   269: aconst_null
-    //   270: areturn
-    //   271: astore_0
-    //   272: ldc 133
-    //   274: iconst_1
-    //   275: iconst_3
-    //   276: anewarray 4	java/lang/Object
-    //   279: dup
-    //   280: iconst_0
-    //   281: ldc_w 340
-    //   284: aastore
-    //   285: dup
-    //   286: iconst_1
-    //   287: aload_1
-    //   288: aastore
-    //   289: dup
-    //   290: iconst_2
-    //   291: aload_0
-    //   292: aastore
-    //   293: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   296: aload 6
-    //   298: astore_0
-    //   299: aload_0
-    //   300: areturn
-    //   301: astore_0
-    //   302: aload 4
-    //   304: astore_2
-    //   305: aload_3
-    //   306: ifnull +35 -> 341
-    //   309: aload_3
-    //   310: invokevirtual 330	java/io/BufferedReader:close	()V
-    //   313: goto +28 -> 341
-    //   316: astore_3
-    //   317: ldc 133
-    //   319: iconst_1
-    //   320: iconst_3
-    //   321: anewarray 4	java/lang/Object
-    //   324: dup
-    //   325: iconst_0
-    //   326: ldc_w 332
-    //   329: aastore
-    //   330: dup
-    //   331: iconst_1
-    //   332: aload_1
-    //   333: aastore
-    //   334: dup
-    //   335: iconst_2
-    //   336: aload_3
-    //   337: aastore
-    //   338: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   341: aload_2
-    //   342: ifnull +35 -> 377
-    //   345: aload_2
-    //   346: invokevirtual 338	java/io/InputStream:close	()V
-    //   349: goto +28 -> 377
-    //   352: astore_2
-    //   353: ldc 133
-    //   355: iconst_1
-    //   356: iconst_3
-    //   357: anewarray 4	java/lang/Object
-    //   360: dup
-    //   361: iconst_0
-    //   362: ldc_w 340
-    //   365: aastore
-    //   366: dup
-    //   367: iconst_1
-    //   368: aload_1
-    //   369: aastore
-    //   370: dup
-    //   371: iconst_2
-    //   372: aload_2
-    //   373: aastore
-    //   374: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   377: goto +5 -> 382
-    //   380: aload_0
-    //   381: athrow
-    //   382: goto -2 -> 380
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	385	0	paramContext	Context
-    //   0	385	1	paramString	String
-    //   11	335	2	localObject1	Object
-    //   352	21	2	localIOException1	IOException
-    //   29	281	3	localContext	Context
-    //   316	21	3	localIOException2	IOException
-    //   31	272	4	localObject2	Object
-    //   40	118	5	localObject3	Object
-    //   160	1	5	localIOException3	IOException
-    //   171	1	5	localIOException4	IOException
-    //   186	31	5	localIOException5	IOException
-    //   1	296	6	localObject4	Object
-    //   51	15	7	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   86	90	93	java/io/IOException
-    //   125	129	132	java/io/IOException
-    //   33	42	160	java/io/IOException
-    //   47	53	160	java/io/IOException
-    //   63	71	160	java/io/IOException
-    //   79	86	160	java/io/IOException
-    //   12	28	165	finally
-    //   12	28	171	java/io/IOException
-    //   3	12	178	finally
-    //   3	12	186	java/io/IOException
-    //   226	230	233	java/io/IOException
-    //   265	269	271	java/io/IOException
-    //   33	42	301	finally
-    //   47	53	301	finally
-    //   63	71	301	finally
-    //   79	86	301	finally
-    //   197	222	301	finally
-    //   309	313	316	java/io/IOException
-    //   345	349	352	java/io/IOException
-  }
-  
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramString == null)
-    {
-      localStringBuilder.append("null");
-    }
-    else if (paramString.length() == 0)
-    {
-      localStringBuilder.append("");
-    }
-    else
-    {
-      int j = paramString.length();
-      int i = 1;
-      if (j > 10)
-      {
-        localStringBuilder.append(paramString.charAt(0));
-        localStringBuilder.append(paramString.charAt(1));
-        localStringBuilder.append("***");
-        localStringBuilder.append(paramString.charAt(j - 1));
-        localStringBuilder.append('[');
-        localStringBuilder.append(j);
-        localStringBuilder.append(']');
-      }
-      else
-      {
-        localStringBuilder.append(paramString.charAt(0));
-        while (i < paramString.length())
-        {
-          localStringBuilder.append('*');
-          i += 1;
-        }
-      }
-    }
-    return localStringBuilder.toString();
   }
   
   public static String a(String paramString, int paramInt)
@@ -741,21 +316,21 @@ public class Utils
           if (paramArrayOfString1 == null) {
             return null;
           }
-          int j = paramArrayOfString1.length;
-          int i = 0;
-          while (i < j)
+          int k = paramArrayOfString1.length;
+          int j = 0;
+          while (j < k)
           {
-            localObject1 = paramArrayOfString1[i];
+            localObject1 = paramArrayOfString1[j];
             if ((localObject1 != null) && (((String)localObject1).length() > 0) && (paramString1.startsWith((String)localObject1)))
             {
-              i = 1;
-              break label163;
+              j = 1;
+              break label161;
             }
-            i += 1;
+            j += 1;
           }
-          i = 0;
-          label163:
-          if (i == 0) {
+          j = 0;
+          label161:
+          if (j == 0) {
             return null;
           }
           localObject1 = localObject2;
@@ -767,51 +342,51 @@ public class Utils
               if (paramString2 == null) {
                 return null;
               }
-              j = paramArrayOfString2.length;
-              i = 0;
-              while (i < j)
+              k = paramArrayOfString2.length;
+              j = 0;
+              while (j < k)
               {
-                paramString1 = paramArrayOfString2[i];
+                paramString1 = paramArrayOfString2[j];
                 if ((paramString1 != null) && (paramString1.length() > 0) && (paramString2.contains(paramString1)))
                 {
-                  i = 1;
-                  break label249;
+                  j = 1;
+                  break label247;
                 }
-                i += 1;
+                j += 1;
               }
-              i = 0;
-              label249:
-              if (i == 0) {
+              j = 0;
+              label247:
+              if (j == 0) {
                 return null;
               }
               paramArrayOfString1 = paramString2.toCharArray();
               paramString1 = "";
-              j = 0;
-              for (int k = 0; j < paramArrayOfString1.length; k = i)
+              k = 0;
+              for (int m = 0; k < paramArrayOfString1.length; m = j)
               {
-                char c = paramArrayOfString1[j];
-                if ((c >= '0') && (c <= '9'))
+                char c1 = paramArrayOfString1[k];
+                if ((c1 >= '0') && (c1 <= '9'))
                 {
                   paramString2 = new StringBuilder();
                   paramString2.append(paramString1);
-                  paramString2.append(String.valueOf(c));
+                  paramString2.append(String.valueOf(c1));
                   paramString2 = paramString2.toString();
-                  i = 1;
+                  j = 1;
                 }
                 else
                 {
                   paramString2 = paramString1;
-                  i = k;
-                  if (k != 0)
+                  j = m;
+                  if (m != 0)
                   {
                     if (paramString1.length() >= paramInt) {
                       break;
                     }
                     paramString2 = "";
-                    i = 0;
+                    j = 0;
                   }
                 }
-                j += 1;
+                k += 1;
                 paramString1 = paramString2;
               }
               localObject1 = localObject2;
@@ -828,32 +403,6 @@ public class Utils
       }
     }
     return localObject1;
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
-    {
-      StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
-      int i = 0;
-      while (i < paramArrayOfByte.length)
-      {
-        String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-        if (str.length() < 2) {
-          localStringBuffer.append(0);
-        }
-        localStringBuffer.append(str.toUpperCase());
-        i += 1;
-      }
-      return localStringBuffer.toString();
-    }
-    return null;
-  }
-  
-  public static short a(byte[] paramArrayOfByte, int paramInt)
-  {
-    int i = a(paramArrayOfByte[(paramInt + 1)]);
-    return (short)(a(paramArrayOfByte[paramInt]) << 8 | i);
   }
   
   public static void a(View paramView)
@@ -874,16 +423,16 @@ public class Utils
       }
       Rect localRect = new Rect();
       paramDrawable.getPadding(localRect);
-      int i = paramView.getPaddingTop();
-      int j = localRect.top;
-      int k = paramView.getPaddingLeft();
-      int m = localRect.left;
-      int n = paramView.getPaddingRight();
-      int i1 = localRect.right;
-      int i2 = paramView.getPaddingBottom();
-      int i3 = localRect.bottom;
+      int j = paramView.getPaddingTop();
+      int k = localRect.top;
+      int m = paramView.getPaddingLeft();
+      int n = localRect.left;
+      int i1 = paramView.getPaddingRight();
+      int i2 = localRect.right;
+      int i3 = paramView.getPaddingBottom();
+      int i4 = localRect.bottom;
       paramView.setBackgroundDrawable(paramDrawable);
-      paramView.setPadding(k + m, i + j, n + i1, i2 + i3);
+      paramView.setPadding(m + n, j + k, i1 + i2, i3 + i4);
     }
   }
   
@@ -913,23 +462,21 @@ public class Utils
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder(10);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
+    int k = paramVarArgs.length;
+    int j = 0;
+    while (j < k)
     {
-      localStringBuilder.append(paramVarArgs[i]);
-      i += 1;
+      localStringBuilder.append(paramVarArgs[j]);
+      j += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.d(paramString, 2, localStringBuilder.toString());
     }
   }
   
-  public static void a(Throwable paramThrowable) {}
-  
-  public static boolean a()
+  public static boolean a(char paramChar)
   {
-    return (Environment.getExternalStorageState().equals("mounted")) && (Environment.getExternalStorageDirectory().exists());
+    return (paramChar >= '一') && (paramChar <= 40895);
   }
   
   public static boolean a(Context paramContext, String paramString)
@@ -958,100 +505,57 @@ public class Utils
     return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
-  public static boolean a(String paramString)
+  private static byte b(char paramChar)
   {
-    return (paramString == null) || (paramString.equals(AppConstants.VOTE_MSG_UIN)) || (paramString.equals(String.valueOf(AppConstants.JOIN_TROOP_UIN))) || (paramString.equals(String.valueOf(AppConstants.SYSTEM_MSG_UIN))) || (paramString.equals(String.valueOf(AppConstants.LBS_HELLO_UIN))) || (paramString.equals(String.valueOf(AppConstants.QQBROADCAST_MSG_UIN))) || (paramString.equals(String.valueOf(AppConstants.RECOMMEND_CONTACT_UIN))) || (paramString.equals(String.valueOf(AppConstants.TROOP_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.TROOP_BAR_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.SERVICE_ACCOUNT_FOLDER_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATALINE_PC_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATALINE_IPAD_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATALINE_PRINTER_UIN))) || (paramString.equals(String.valueOf(AppConstants.SMARTDEVICE_UIN))) || (paramString.equals(String.valueOf(AppConstants.SUBACCOUNT_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.SAME_STATE_BOX_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATE_UIN))) || (paramString.equals(String.valueOf(AppConstants.TROOP_NOTIFICATION_UIN))) || (paramString.equals(String.valueOf(AppConstants.SEC_MSG_UIN))) || (paramString.equals(String.valueOf(AppConstants.WIFI_HOT_CHAT_UIN))) || (paramString.equals(String.valueOf(AppConstants.ACTIVATE_FRIENDS_UIN))) || (paramString.equals(String.valueOf(AppConstants.EC_SHOP_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.READINJOY_UIN))) || (paramString.equals(String.valueOf(AppConstants.DINGDONG_UIN))) || (paramString.equals(String.valueOf(AppConstants.SEND_BLESS_UIN))) || (paramString.equals(String.valueOf(AppConstants.KANDIAN_MERGE_UIN))) || (paramString.equals(String.valueOf(66600000L))) || (paramString.equals(String.valueOf(9946L))) || (paramString.equals(String.valueOf(AppConstants.CONFESS_UIN))) || (paramString.equals(String.valueOf(AppConstants.TEMP_MSG_BOX_UIN)));
+    return (byte)"0123456789ABCDEF".indexOf(paramChar);
   }
   
-  public static byte[] a(int paramInt)
+  public static float b(float paramFloat, Resources paramResources)
   {
-    int i = (byte)(paramInt & 0xFF);
-    int j = (byte)((0xFF00 & paramInt) >> 8);
-    int k = (byte)((0xFF0000 & paramInt) >> 16);
-    return new byte[] { (byte)((paramInt & 0xFF000000) >> 24), k, j, i };
+    return paramFloat * paramResources.getDisplayMetrics().density + 0.5F;
   }
   
-  public static byte[] a(String paramString)
+  public static int b(int paramInt)
   {
-    if ((paramString != null) && (paramString.length() != 0))
+    int k = h.length();
+    int j = 2;
+    if (k > 560) {}
+    try
     {
-      int j = paramString.length() / 2;
-      byte[] arrayOfByte = new byte[j];
-      paramString = paramString.toUpperCase().toCharArray();
-      int i = 0;
-      while (i < j)
+      k = h.toString().getBytes("utf-8").length;
+      if ((i != k) && (QLog.isColorLevel()))
       {
-        int k = i * 2;
-        int m = a(paramString[k]);
-        arrayOfByte[i] = ((byte)(a(paramString[(k + 1)]) | m << 4));
-        i += 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("calculate byte num not equal byte num returned by getBytes(),totalByteNum is:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(",byteNum");
+        localStringBuilder.append(k);
+        QLog.d("Utils", 2, localStringBuilder.toString());
       }
-      return arrayOfByte;
-    }
-    return null;
-  }
-  
-  public static int[] a(String paramString)
-  {
-    int[] arrayOfInt = new int[2];
-    if (paramString == null)
-    {
-      arrayOfInt[1] = 0;
-      arrayOfInt[0] = 0;
-      return arrayOfInt;
-    }
-    int i2 = paramString.length();
-    int k = 0;
-    int i = 0;
-    int n;
-    for (int m = 0; k < i2; m = n)
-    {
-      int i3 = paramString.codePointAt(k);
-      int j;
-      if (i3 == 20)
-      {
-        j = k + 4;
-        if (j < i2)
-        {
-          n = k + 1;
-          if ((paramString.charAt(n) == 'ÿ') || (paramString.charAt(n) == 'ǿ'))
-          {
-            i += 20;
-            n = m + 1;
-            break label190;
-          }
-        }
-        j = k + 1;
-        if ((j < i2) && (paramString.charAt(j) >= 'Ą'))
-        {
-          i += 40;
-          n = m;
-        }
-        else
-        {
-          i += 12;
-          n = m;
+      label91:
+      h.setLength(0);
+      i = 0;
+      if ((paramInt >= 0) && (paramInt < 128)) {
+        j = 1;
+      } else if ((paramInt < 128) || (paramInt >= 2048)) {
+        if ((paramInt >= 2048) && (paramInt < 65536)) {
+          j = 3;
+        } else if ((paramInt >= 65536) && (paramInt < 2097152)) {
+          j = 4;
+        } else if ((paramInt >= 2097152) && (paramInt < 67108864)) {
+          j = 5;
+        } else {
+          j = 6;
         }
       }
-      else
-      {
-        int i1 = i + a(i3);
-        j = k;
-        i = i1;
-        n = m;
-        if (i3 > 255)
-        {
-          j = k + 1;
-          n = m;
-          i = i1;
-        }
-      }
-      label190:
-      k = j + 1;
+      h.append(Character.toChars(paramInt));
+      i += j;
+      return j;
     }
-    arrayOfInt[0] = i;
-    arrayOfInt[1] = m;
-    return arrayOfInt;
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      break label91;
+    }
   }
   
   public static int b(long paramLong1, long paramLong2)
@@ -1059,77 +563,314 @@ public class Utils
     return a(paramLong1 - -9223372036854775808L, paramLong2 - -9223372036854775808L);
   }
   
-  public static long b()
+  public static String b(int paramInt1, int paramInt2)
   {
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-    int i = localStatFs.getBlockSize();
-    int j = localStatFs.getAvailableBlocks();
-    return i * j;
+    return c(a(paramInt1, paramInt2));
   }
   
-  public static String b(int paramInt)
+  @SuppressLint({"NewApi"})
+  public static String b(Context paramContext)
   {
-    if ((paramInt >= 1) && (paramInt < 10000)) {
-      return String.valueOf(paramInt);
-    }
-    StringBuilder localStringBuilder;
-    float f;
-    if ((paramInt >= 10000) && (paramInt < 100000000))
+    if (Environment.getExternalStorageState().equals("mounted"))
     {
-      if (paramInt % 10000 < 500)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramInt / 10000);
-        localStringBuilder.append("万");
-        return localStringBuilder.toString();
-      }
-      f = paramInt * 1.0F / 10000.0F;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("/Android/data/");
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append("/cache/");
+      paramContext = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Math.round(f * 10.0F) * 1.0F / 10.0F);
-      localStringBuilder.append("万");
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+      localStringBuilder.append(paramContext);
       return localStringBuilder.toString();
     }
-    if (paramInt >= 100000000)
-    {
-      if (paramInt % 100000000 < 5000000)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramInt / 100000000);
-        localStringBuilder.append("亿");
-        return localStringBuilder.toString();
-      }
-      f = paramInt * 1.0F / 1.0E+008F;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Math.round(f * 10.0F) * 1.0F / 10.0F);
-      localStringBuilder.append("亿");
-      return localStringBuilder.toString();
-    }
-    return "";
+    return null;
   }
   
-  public static String b(String paramString)
+  /* Error */
+  public static String b(Context paramContext, String paramString)
   {
-    try
-    {
-      Object localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramString.getBytes(Charset.forName("US-ASCII")), 0, paramString.length());
-      paramString = new StringBuilder();
-      localObject = ((MessageDigest)localObject).digest();
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString.append(String.format("%02x", new Object[] { Integer.valueOf(localObject[i] & 0xFF) }));
-        i += 1;
-      }
-      paramString = paramString.toString();
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aload_0
+    //   4: invokevirtual 463	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   7: aload_1
+    //   8: invokevirtual 469	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   11: astore_2
+    //   12: new 471	java/io/BufferedReader
+    //   15: dup
+    //   16: new 473	java/io/InputStreamReader
+    //   19: dup
+    //   20: aload_2
+    //   21: invokespecial 476	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   24: invokespecial 479	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   27: astore_0
+    //   28: aload_0
+    //   29: astore_3
+    //   30: aload_2
+    //   31: astore 4
+    //   33: new 54	java/lang/StringBuilder
+    //   36: dup
+    //   37: invokespecial 56	java/lang/StringBuilder:<init>	()V
+    //   40: astore 5
+    //   42: aload_0
+    //   43: astore_3
+    //   44: aload_2
+    //   45: astore 4
+    //   47: aload_0
+    //   48: invokevirtual 482	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   51: astore 7
+    //   53: aload 7
+    //   55: ifnull +19 -> 74
+    //   58: aload_0
+    //   59: astore_3
+    //   60: aload_2
+    //   61: astore 4
+    //   63: aload 5
+    //   65: aload 7
+    //   67: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: goto -29 -> 42
+    //   74: aload_0
+    //   75: astore_3
+    //   76: aload_2
+    //   77: astore 4
+    //   79: aload 5
+    //   81: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: astore 5
+    //   86: aload_0
+    //   87: invokevirtual 483	java/io/BufferedReader:close	()V
+    //   90: goto +28 -> 118
+    //   93: astore_0
+    //   94: ldc 130
+    //   96: iconst_1
+    //   97: iconst_3
+    //   98: anewarray 4	java/lang/Object
+    //   101: dup
+    //   102: iconst_0
+    //   103: ldc_w 485
+    //   106: aastore
+    //   107: dup
+    //   108: iconst_1
+    //   109: aload_1
+    //   110: aastore
+    //   111: dup
+    //   112: iconst_2
+    //   113: aload_0
+    //   114: aastore
+    //   115: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   118: aload 5
+    //   120: astore_0
+    //   121: aload_2
+    //   122: ifnull +177 -> 299
+    //   125: aload_2
+    //   126: invokevirtual 491	java/io/InputStream:close	()V
+    //   129: aload 5
+    //   131: areturn
+    //   132: astore_0
+    //   133: ldc 130
+    //   135: iconst_1
+    //   136: iconst_3
+    //   137: anewarray 4	java/lang/Object
+    //   140: dup
+    //   141: iconst_0
+    //   142: ldc_w 493
+    //   145: aastore
+    //   146: dup
+    //   147: iconst_1
+    //   148: aload_1
+    //   149: aastore
+    //   150: dup
+    //   151: iconst_2
+    //   152: aload_0
+    //   153: aastore
+    //   154: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   157: aload 5
+    //   159: areturn
+    //   160: astore 5
+    //   162: goto +30 -> 192
+    //   165: astore_0
+    //   166: aconst_null
+    //   167: astore_3
+    //   168: goto +137 -> 305
+    //   171: astore 5
+    //   173: aconst_null
+    //   174: astore_0
+    //   175: goto +17 -> 192
+    //   178: astore_0
+    //   179: aconst_null
+    //   180: astore_3
+    //   181: aload_3
+    //   182: astore_2
+    //   183: goto +122 -> 305
+    //   186: astore 5
+    //   188: aconst_null
+    //   189: astore_2
+    //   190: aload_2
+    //   191: astore_0
+    //   192: aload_0
+    //   193: astore_3
+    //   194: aload_2
+    //   195: astore 4
+    //   197: ldc 130
+    //   199: iconst_1
+    //   200: iconst_3
+    //   201: anewarray 4	java/lang/Object
+    //   204: dup
+    //   205: iconst_0
+    //   206: ldc_w 495
+    //   209: aastore
+    //   210: dup
+    //   211: iconst_1
+    //   212: aload_1
+    //   213: aastore
+    //   214: dup
+    //   215: iconst_2
+    //   216: aload 5
+    //   218: aastore
+    //   219: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   222: aload_0
+    //   223: ifnull +35 -> 258
+    //   226: aload_0
+    //   227: invokevirtual 483	java/io/BufferedReader:close	()V
+    //   230: goto +28 -> 258
+    //   233: astore_0
+    //   234: ldc 130
+    //   236: iconst_1
+    //   237: iconst_3
+    //   238: anewarray 4	java/lang/Object
+    //   241: dup
+    //   242: iconst_0
+    //   243: ldc_w 485
+    //   246: aastore
+    //   247: dup
+    //   248: iconst_1
+    //   249: aload_1
+    //   250: aastore
+    //   251: dup
+    //   252: iconst_2
+    //   253: aload_0
+    //   254: aastore
+    //   255: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   258: aload 6
+    //   260: astore_0
+    //   261: aload_2
+    //   262: ifnull +37 -> 299
+    //   265: aload_2
+    //   266: invokevirtual 491	java/io/InputStream:close	()V
+    //   269: aconst_null
+    //   270: areturn
+    //   271: astore_0
+    //   272: ldc 130
+    //   274: iconst_1
+    //   275: iconst_3
+    //   276: anewarray 4	java/lang/Object
+    //   279: dup
+    //   280: iconst_0
+    //   281: ldc_w 493
+    //   284: aastore
+    //   285: dup
+    //   286: iconst_1
+    //   287: aload_1
+    //   288: aastore
+    //   289: dup
+    //   290: iconst_2
+    //   291: aload_0
+    //   292: aastore
+    //   293: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   296: aload 6
+    //   298: astore_0
+    //   299: aload_0
+    //   300: areturn
+    //   301: astore_0
+    //   302: aload 4
+    //   304: astore_2
+    //   305: aload_3
+    //   306: ifnull +35 -> 341
+    //   309: aload_3
+    //   310: invokevirtual 483	java/io/BufferedReader:close	()V
+    //   313: goto +28 -> 341
+    //   316: astore_3
+    //   317: ldc 130
+    //   319: iconst_1
+    //   320: iconst_3
+    //   321: anewarray 4	java/lang/Object
+    //   324: dup
+    //   325: iconst_0
+    //   326: ldc_w 485
+    //   329: aastore
+    //   330: dup
+    //   331: iconst_1
+    //   332: aload_1
+    //   333: aastore
+    //   334: dup
+    //   335: iconst_2
+    //   336: aload_3
+    //   337: aastore
+    //   338: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   341: aload_2
+    //   342: ifnull +35 -> 377
+    //   345: aload_2
+    //   346: invokevirtual 491	java/io/InputStream:close	()V
+    //   349: goto +28 -> 377
+    //   352: astore_2
+    //   353: ldc 130
+    //   355: iconst_1
+    //   356: iconst_3
+    //   357: anewarray 4	java/lang/Object
+    //   360: dup
+    //   361: iconst_0
+    //   362: ldc_w 493
+    //   365: aastore
+    //   366: dup
+    //   367: iconst_1
+    //   368: aload_1
+    //   369: aastore
+    //   370: dup
+    //   371: iconst_2
+    //   372: aload_2
+    //   373: aastore
+    //   374: invokestatic 488	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   377: goto +5 -> 382
+    //   380: aload_0
+    //   381: athrow
+    //   382: goto -2 -> 380
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	385	0	paramContext	Context
+    //   0	385	1	paramString	String
+    //   11	335	2	localObject1	Object
+    //   352	21	2	localIOException1	IOException
+    //   29	281	3	localContext	Context
+    //   316	21	3	localIOException2	IOException
+    //   31	272	4	localObject2	Object
+    //   40	118	5	localObject3	Object
+    //   160	1	5	localIOException3	IOException
+    //   171	1	5	localIOException4	IOException
+    //   186	31	5	localIOException5	IOException
+    //   1	296	6	localObject4	Object
+    //   51	15	7	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   86	90	93	java/io/IOException
+    //   125	129	132	java/io/IOException
+    //   33	42	160	java/io/IOException
+    //   47	53	160	java/io/IOException
+    //   63	71	160	java/io/IOException
+    //   79	86	160	java/io/IOException
+    //   12	28	165	finally
+    //   12	28	171	java/io/IOException
+    //   3	12	178	finally
+    //   3	12	186	java/io/IOException
+    //   226	230	233	java/io/IOException
+    //   265	269	271	java/io/IOException
+    //   33	42	301	finally
+    //   47	53	301	finally
+    //   63	71	301	finally
+    //   79	86	301	finally
+    //   197	222	301	finally
+    //   309	313	316	java/io/IOException
+    //   345	349	352	java/io/IOException
   }
   
   public static String b(String paramString, int paramInt)
@@ -1155,13 +896,91 @@ public class Utils
   
   public static String b(String paramString1, String paramString2)
   {
-    String str = HardCodeUtil.a(2131699665);
+    String str = HardCodeUtil.a(2131897698);
     return a(paramString1, paramString2, new String[] { "106" }, new String[] { str, "Login Verification Code" }, 3);
+  }
+  
+  public static String b(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+    {
+      StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+      int j = 0;
+      while (j < paramArrayOfByte.length)
+      {
+        String str = Integer.toHexString(paramArrayOfByte[j] & 0xFF);
+        if (str.length() < 2) {
+          localStringBuffer.append(0);
+        }
+        localStringBuffer.append(str.toUpperCase());
+        j += 1;
+      }
+      return localStringBuffer.toString();
+    }
+    return null;
+  }
+  
+  public static short b(byte[] paramArrayOfByte, int paramInt)
+  {
+    int j = a(paramArrayOfByte[(paramInt + 1)]);
+    return (short)(a(paramArrayOfByte[paramInt]) << 8 | j);
   }
   
   public static boolean b()
   {
-    Boolean localBoolean = jdField_a_of_type_JavaLangBoolean;
+    return (Environment.getExternalStorageState().equals("mounted")) && (Environment.getExternalStorageDirectory().exists());
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return (paramString == null) || (paramString.equals(AppConstants.VOTE_MSG_UIN)) || (paramString.equals(String.valueOf(AppConstants.JOIN_TROOP_UIN))) || (paramString.equals(String.valueOf(AppConstants.SYSTEM_MSG_UIN))) || (paramString.equals(String.valueOf(AppConstants.LBS_HELLO_UIN))) || (paramString.equals(String.valueOf(AppConstants.QQBROADCAST_MSG_UIN))) || (paramString.equals(String.valueOf(AppConstants.RECOMMEND_CONTACT_UIN))) || (paramString.equals(String.valueOf(AppConstants.TROOP_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.TROOP_BAR_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.SERVICE_ACCOUNT_FOLDER_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATALINE_PC_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATALINE_IPAD_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATALINE_PRINTER_UIN))) || (paramString.equals(String.valueOf(AppConstants.SMARTDEVICE_UIN))) || (paramString.equals(String.valueOf(AppConstants.SUBACCOUNT_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.SAME_STATE_BOX_UIN))) || (paramString.equals(String.valueOf(AppConstants.DATE_UIN))) || (paramString.equals(String.valueOf(AppConstants.TROOP_NOTIFICATION_UIN))) || (paramString.equals(String.valueOf(AppConstants.SEC_MSG_UIN))) || (paramString.equals(String.valueOf(AppConstants.WIFI_HOT_CHAT_UIN))) || (paramString.equals(String.valueOf(AppConstants.ACTIVATE_FRIENDS_UIN))) || (paramString.equals(String.valueOf(AppConstants.EC_SHOP_ASSISTANT_UIN))) || (paramString.equals(String.valueOf(AppConstants.READINJOY_UIN))) || (paramString.equals(String.valueOf(AppConstants.DINGDONG_UIN))) || (paramString.equals(String.valueOf(AppConstants.SEND_BLESS_UIN))) || (paramString.equals(String.valueOf(AppConstants.KANDIAN_MERGE_UIN))) || (paramString.equals(String.valueOf(66600000L))) || (paramString.equals(String.valueOf(9946L))) || (paramString.equals(String.valueOf(AppConstants.CONFESS_UIN))) || (paramString.equals(String.valueOf(AppConstants.TEMP_MSG_BOX_UIN)));
+  }
+  
+  public static long c()
+  {
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    int j = localStatFs.getBlockSize();
+    int k = localStatFs.getAvailableBlocks();
+    return j * k;
+  }
+  
+  public static String c(int paramInt)
+  {
+    if (paramInt >= 1)
+    {
+      String[] arrayOfString = e;
+      if (paramInt <= arrayOfString.length) {
+        return arrayOfString[(paramInt - 1)];
+      }
+    }
+    return "";
+  }
+  
+  public static String c(String paramString1, String paramString2)
+  {
+    String str1 = HardCodeUtil.a(2131897695);
+    String str2 = HardCodeUtil.a(2131897686);
+    return a(paramString1, paramString2, new String[] { "1062", "1065", "1066", "1069" }, new String[] { str1, str2 }, 3);
+  }
+  
+  public static boolean c(String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    return AppConstants.BABY_Q_UIN.equals(paramString);
+  }
+  
+  public static String d(String paramString1, String paramString2)
+  {
+    String str1 = HardCodeUtil.a(2131897691);
+    String str2 = HardCodeUtil.a(2131897692);
+    return a(paramString1, paramString2, new String[] { "10010", "106" }, new String[] { str1, str2, "QQ" }, 3);
+  }
+  
+  public static boolean d()
+  {
+    Boolean localBoolean = f;
     Object localObject = localBoolean;
     boolean bool2;
     long l1;
@@ -1190,53 +1009,78 @@ public class Utils
       break label60;
     }
     boolean bool1 = bool2;
-    if (jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(l1))) {
+    if (g.contains(Long.valueOf(l1))) {
       bool1 = true;
     }
     localObject = Boolean.valueOf(bool1);
     return ((Boolean)localObject).booleanValue();
   }
   
-  public static boolean b(String paramString)
+  public static boolean d(String paramString)
   {
-    if (paramString == null) {
-      return false;
+    try
+    {
+      l = Long.parseLong(paramString);
     }
-    return AppConstants.BABY_Q_UIN.equals(paramString);
+    catch (NumberFormatException paramString)
+    {
+      long l;
+      label8:
+      break label8;
+    }
+    l = 0L;
+    return ((l >= 2726500000L) && (l <= 2726511999L)) || ((l >= 800000000L) && (l <= 800099999L)) || ((l >= 938000000L) && (l <= 938099999L)) || ((l >= 1068660000L) && (l <= 1068669960L)) || ((l >= 2355000000L) && (l <= 2355199999L)) || (l == 56268888L);
   }
   
-  public static byte[] b(String paramString)
+  public static byte[] d(int paramInt)
   {
-    int k = paramString.length();
-    if ((k & 0x1) == 0)
+    int j = (byte)(paramInt & 0xFF);
+    int k = (byte)((0xFF00 & paramInt) >> 8);
+    int m = (byte)((0xFF0000 & paramInt) >> 16);
+    return new byte[] { (byte)((paramInt & 0xFF000000) >> 24), m, k, j };
+  }
+  
+  public static String e(int paramInt)
+  {
+    if ((paramInt >= 1) && (paramInt < 10000)) {
+      return String.valueOf(paramInt);
+    }
+    StringBuilder localStringBuilder;
+    float f1;
+    if ((paramInt >= 10000) && (paramInt < 100000000))
     {
-      byte[] arrayOfByte = new byte[k >> 1];
-      int i = 0;
-      int j = 0;
-      while (i < k)
+      if (paramInt % 10000 < 500)
       {
-        int m = i + 1;
-        arrayOfByte[j] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4 | Character.digit(paramString.charAt(m), 16)) & 0xFF));
-        j += 1;
-        i = m + 1;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt / 10000);
+        localStringBuilder.append("万");
+        return localStringBuilder.toString();
       }
-      return arrayOfByte;
+      f1 = paramInt * 1.0F / 10000.0F;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Math.round(f1 * 10.0F) * 1.0F / 10.0F);
+      localStringBuilder.append("万");
+      return localStringBuilder.toString();
     }
-    paramString = new RuntimeException("Odd number of characters.");
-    for (;;)
+    if (paramInt >= 100000000)
     {
-      throw paramString;
+      if (paramInt % 100000000 < 5000000)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt / 100000000);
+        localStringBuilder.append("亿");
+        return localStringBuilder.toString();
+      }
+      f1 = paramInt * 1.0F / 1.0E+008F;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Math.round(f1 * 10.0F) * 1.0F / 10.0F);
+      localStringBuilder.append("亿");
+      return localStringBuilder.toString();
     }
+    return "";
   }
   
-  public static String c(String paramString1, String paramString2)
-  {
-    String str1 = HardCodeUtil.a(2131699662);
-    String str2 = HardCodeUtil.a(2131699653);
-    return a(paramString1, paramString2, new String[] { "1062", "1065", "1066", "1069" }, new String[] { str1, str2 }, 3);
-  }
-  
-  public static boolean c()
+  public static boolean e()
   {
     Object localObject = MobileQQ.sMobileQQ.getAllAccounts();
     boolean bool;
@@ -1255,42 +1099,240 @@ public class Utils
     return bool;
   }
   
-  public static boolean c(String paramString)
-  {
-    try
-    {
-      l = Long.parseLong(paramString);
-    }
-    catch (NumberFormatException paramString)
-    {
-      long l;
-      label8:
-      break label8;
-    }
-    l = 0L;
-    return ((l >= 2726500000L) && (l <= 2726511999L)) || ((l >= 800000000L) && (l <= 800099999L)) || ((l >= 938000000L) && (l <= 938099999L)) || ((l >= 1068660000L) && (l <= 1068669960L)) || ((l >= 2355000000L) && (l <= 2355199999L)) || (l == 56268888L);
-  }
-  
-  public static String d(String paramString1, String paramString2)
-  {
-    String str1 = HardCodeUtil.a(2131699658);
-    String str2 = HardCodeUtil.a(2131699659);
-    return a(paramString1, paramString2, new String[] { "10010", "106" }, new String[] { str1, str2, "QQ" }, 3);
-  }
-  
-  public static boolean d(String paramString)
+  public static boolean e(String paramString)
   {
     return (paramString != null) && (paramString.length() > 0) && (!"0".equals(paramString)) && (!"10000".equals(paramString)) && (!"1000000".equals(paramString)) && (!"80000000".equals(paramString));
   }
   
-  public static boolean e(String paramString)
+  public static int f(String paramString)
   {
-    return Pattern.matches(jdField_a_of_type_JavaLangString, paramString);
+    return g(paramString)[0];
+  }
+  
+  public static int[] g(String paramString)
+  {
+    int[] arrayOfInt = new int[2];
+    if (paramString == null)
+    {
+      arrayOfInt[1] = 0;
+      arrayOfInt[0] = 0;
+      return arrayOfInt;
+    }
+    int i3 = paramString.length();
+    int m = 0;
+    int j = 0;
+    int i1;
+    for (int n = 0; m < i3; n = i1)
+    {
+      int i4 = paramString.codePointAt(m);
+      int k;
+      if (i4 == 20)
+      {
+        k = m + 4;
+        if (k < i3)
+        {
+          i1 = m + 1;
+          if ((paramString.charAt(i1) == 'ÿ') || (paramString.charAt(i1) == 'ǿ'))
+          {
+            j += 20;
+            i1 = n + 1;
+            break label190;
+          }
+        }
+        k = m + 1;
+        if ((k < i3) && (paramString.charAt(k) >= 'Ą'))
+        {
+          j += 40;
+          i1 = n;
+        }
+        else
+        {
+          j += 12;
+          i1 = n;
+        }
+      }
+      else
+      {
+        int i2 = j + b(i4);
+        k = m;
+        j = i2;
+        i1 = n;
+        if (i4 > 255)
+        {
+          k = m + 1;
+          i1 = n;
+          j = i2;
+        }
+      }
+      label190:
+      m = k + 1;
+    }
+    arrayOfInt[0] = j;
+    arrayOfInt[1] = n;
+    return arrayOfInt;
+  }
+  
+  public static byte[] h(String paramString)
+  {
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      int k = paramString.length() / 2;
+      byte[] arrayOfByte = new byte[k];
+      paramString = paramString.toUpperCase().toCharArray();
+      int j = 0;
+      while (j < k)
+      {
+        int m = j * 2;
+        int n = b(paramString[m]);
+        arrayOfByte[j] = ((byte)(b(paramString[(m + 1)]) | n << 4));
+        j += 1;
+      }
+      return arrayOfByte;
+    }
+    return null;
+  }
+  
+  public static String i(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramString == null)
+    {
+      localStringBuilder.append("null");
+    }
+    else if (paramString.length() == 0)
+    {
+      localStringBuilder.append("");
+    }
+    else
+    {
+      int k = paramString.length();
+      int j = 1;
+      if (k > 10)
+      {
+        localStringBuilder.append(paramString.charAt(0));
+        localStringBuilder.append(paramString.charAt(1));
+        localStringBuilder.append("***");
+        localStringBuilder.append(paramString.charAt(k - 1));
+        localStringBuilder.append('[');
+        localStringBuilder.append(k);
+        localStringBuilder.append(']');
+      }
+      else
+      {
+        localStringBuilder.append(paramString.charAt(0));
+        while (j < paramString.length())
+        {
+          localStringBuilder.append('*');
+          j += 1;
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean j(String paramString)
+  {
+    return Pattern.matches(b, paramString);
+  }
+  
+  public static ByteStringMicro k(String paramString)
+  {
+    return ByteStringMicro.copyFrom(l(paramString));
+  }
+  
+  public static byte[] l(String paramString)
+  {
+    int m = paramString.length();
+    if ((m & 0x1) == 0)
+    {
+      byte[] arrayOfByte = new byte[m >> 1];
+      int j = 0;
+      int k = 0;
+      while (j < m)
+      {
+        int n = j + 1;
+        arrayOfByte[k] = ((byte)((Character.digit(paramString.charAt(j), 16) << 4 | Character.digit(paramString.charAt(n), 16)) & 0xFF));
+        k += 1;
+        j = n + 1;
+      }
+      return arrayOfByte;
+    }
+    paramString = new RuntimeException("Odd number of characters.");
+    for (;;)
+    {
+      throw paramString;
+    }
+  }
+  
+  public static String m(String paramString)
+  {
+    try
+    {
+      Object localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramString.getBytes(Charset.forName("US-ASCII")), 0, paramString.length());
+      paramString = new StringBuilder();
+      localObject = ((MessageDigest)localObject).digest();
+      int k = localObject.length;
+      int j = 0;
+      while (j < k)
+      {
+        paramString.append(String.format("%02x", new Object[] { Integer.valueOf(localObject[j] & 0xFF) }));
+        j += 1;
+      }
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  public static int n(String paramString)
+  {
+    int k = 0;
+    int j = 0;
+    while (k < paramString.length())
+    {
+      if (a(paramString.charAt(k))) {
+        j += 2;
+      } else {
+        j += 1;
+      }
+      k += 1;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getMixStringLength, str :");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(",length :");
+    localStringBuilder.append(j);
+    QLog.d("Utils", 1, localStringBuilder.toString());
+    return j;
+  }
+  
+  public static String o(@NonNull String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("armeabi-v7a");
+    localObject = ((StringBuilder)localObject).toString();
+    if (!new File((String)localObject).exists())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("appendAbiSuffixIfExists, ");
+      ((StringBuilder)localObject).append("armeabi-v7a");
+      ((StringBuilder)localObject).append(" path not exist.");
+      QLog.i("Utils", 2, ((StringBuilder)localObject).toString());
+      return paramString;
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.Utils
  * JD-Core Version:    0.7.0.1
  */

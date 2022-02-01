@@ -11,10 +11,6 @@ public abstract class XC_MethodHook
   {
     super(paramInt);
   }
-  
-  protected void afterHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam) {}
-  
-  protected void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam) {}
 }
 
 

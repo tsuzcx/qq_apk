@@ -12,7 +12,7 @@ class QRDisplayActivity$28
 {
   QRDisplayActivity$28(QRDisplayActivity paramQRDisplayActivity, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     paramInt = paramView.getId();
     if (paramInt != 7)
@@ -22,21 +22,21 @@ class QRDisplayActivity$28
         if (paramInt == 10)
         {
           QidCardManager.QidCardReport.b("0X800B974");
-          QidCardManager.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, 1);
+          QidCardManager.a(this.b.app, this.b, 1);
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(8);
-        ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
+        this.b.b(8);
+        ReportController.b(this.b.app, "CliOper", "", "", "0X800AEB7", "0X800AEB7", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.app, "CliOper", "", "", "0X800AEB6", "0X800AEB6", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b(7);
+      ReportController.b(this.b.app, "CliOper", "", "", "0X800AEB6", "0X800AEB6", 0, 0, "", "", "", "");
+      this.b.b(7);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 

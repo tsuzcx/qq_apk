@@ -18,12 +18,12 @@ class FrameHelperActivity$7
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidViewViewGroup != null)
+    if (this.this$0.ai != null)
     {
       if (FrameHelperActivity.a(this.this$0) == null) {
         return;
       }
-      RandomCoverView localRandomCoverView = (RandomCoverView)this.this$0.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378997);
+      RandomCoverView localRandomCoverView = (RandomCoverView)this.this$0.ai.findViewById(2131447715);
       Object localObject1 = this.a.getCurrentAccountUin();
       localObject1 = ProfileCardUtil.a(this.a, (String)localObject1);
       String str = (String)localObject1.getCoverData(0)[0];
@@ -35,7 +35,7 @@ class FrameHelperActivity$7
         ((StringBuilder)localObject2).append(str);
         QLog.d("Q.profilecard.", 2, ((StringBuilder)localObject2).toString());
       }
-      if ((!TextUtils.isEmpty(str)) && (!DrawerCoverUtil.b()))
+      if ((!TextUtils.isEmpty(str)) && (!DrawerCoverUtil.c()))
       {
         if (QLog.isColorLevel())
         {
@@ -54,26 +54,26 @@ class FrameHelperActivity$7
         boolean bool = true;
         ((FrameHelperActivity.QQSettingMeListener)localObject2).a(true);
         ThreadManager.getUIHandler().post(new FrameHelperActivity.7.2(this, localRandomCoverView));
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame == null) && (QLog.isColorLevel())) {
+        if ((this.this$0.ah == null) && (QLog.isColorLevel())) {
           QLog.d("Q.recent", 2, new Object[] { "setDrawerBg: mDrawerFrame=null, app", this.a });
         }
         localObject2 = this.this$0;
-        QBaseActivity localQBaseActivity = ((FrameHelperActivity)localObject2).a();
+        QBaseActivity localQBaseActivity = ((FrameHelperActivity)localObject2).C();
         QQAppInterface localQQAppInterface = this.a;
         FrameHelperActivity.QQSettingMeListener localQQSettingMeListener = FrameHelperActivity.a(this.this$0);
-        if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame == null) || (!this.this$0.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a())) {
+        if ((this.this$0.ah == null) || (!this.this$0.ah.b())) {
           bool = false;
         }
         FrameHelperActivity.a((FrameHelperActivity)localObject2, DrawerCoverUtil.a(localQBaseActivity, localQQAppInterface, (Card)localObject1, localRandomCoverView, str, localQQSettingMeListener, bool));
         return;
       }
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(new FrameHelperActivity.7.3(this, (Card)localObject1), 3000L);
+      this.this$0.q.postDelayed(new FrameHelperActivity.7.3(this, (Card)localObject1), 3000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -19,13 +19,13 @@ class TroopMemberListActivity$1
   
   public void run()
   {
-    ??? = this.jdField_a_of_type_AndroidContentIntent;
+    ??? = this.a;
     boolean bool2 = false;
     int i;
     if (??? != null)
     {
       i = ((Intent)???).getIntExtra("memberOperationFlag", 0);
-      ??? = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("memberOperateUin");
+      ??? = this.a.getStringExtra("memberOperateUin");
     }
     else
     {
@@ -49,19 +49,19 @@ class TroopMemberListActivity$1
     else if ((i & 0x2) != 0)
     {
       localObject2 = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.this$0.app, this.this$0.mTroopUin, (String)???);
-      if ((localObject2 != null) && (this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService != null))
+      if ((localObject2 != null) && (this.b != null))
       {
         this.this$0.removeItem((String)???);
         synchronized (this.this$0)
         {
-          localObject2 = this.this$0.convertTroopMemberInfo((TroopMemberInfo)localObject2, this.jdField_a_of_type_ComTencentMobileqqFriendApiIFriendDataService);
+          localObject2 = this.this$0.convertTroopMemberInfo((TroopMemberInfo)localObject2, this.b);
           this.this$0.mListData.add(localObject2);
         }
       }
     }
     if ((i & 0x4) != 0)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopInfoService;
+      ??? = this.c;
       if (??? != null)
       {
         TroopMemberListActivity localTroopMemberListActivity = this.this$0;
@@ -120,7 +120,7 @@ class TroopMemberListActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.1
  * JD-Core Version:    0.7.0.1
  */

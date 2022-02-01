@@ -23,15 +23,15 @@ import java.util.List;
 public abstract class BaseMvpMessageAdapter<M extends IFaceModel, V extends IFaceView>
   extends BaseMvpFaceAdapter<M, V>
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
-  private String jdField_a_of_type_JavaLangString;
-  private List<MessageSearchResultDetailModel> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d = 0;
-  private int e;
+  private int a;
+  private int d;
+  private int e = 0;
+  private List<MessageSearchResultDetailModel> f;
+  private FullMessageSearchResult.SearchResultItem g;
+  private String h;
+  private int i;
+  private String j;
+  private QQAppInterface k;
   
   public BaseMvpMessageAdapter(ListView paramListView, IFaceDecoder paramIFaceDecoder, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
   {
@@ -39,18 +39,18 @@ public abstract class BaseMvpMessageAdapter<M extends IFaceModel, V extends IFac
     if (paramSearchResultItem != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem = paramSearchResultItem;
-        this.jdField_a_of_type_JavaLangString = paramSearchResultItem.user.uin;
-        this.e = paramSearchResultItem.user.getType();
+        this.g = paramSearchResultItem;
+        this.h = paramSearchResultItem.user.uin;
+        this.i = paramSearchResultItem.user.getType();
       }
       catch (NullPointerException paramListView)
       {
         QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "BaseMvpMessageAdapter init e:", paramListView.toString() });
       }
     }
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.j = paramString;
+    this.k = paramQQAppInterface;
+    this.f = new ArrayList();
   }
   
   private void a(MessageRecord paramMessageRecord)
@@ -71,7 +71,7 @@ public abstract class BaseMvpMessageAdapter<M extends IFaceModel, V extends IFac
   
   private void b()
   {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
+    if ((this.e - this.d == this.a) && (this.c == 0)) {
       a();
     }
   }
@@ -80,37 +80,37 @@ public abstract class BaseMvpMessageAdapter<M extends IFaceModel, V extends IFac
   {
     try
     {
-      int j = this.jdField_a_of_type_JavaUtilList.size();
-      int i = j + 50;
-      if (i >= this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size()) {
-        i = this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.size();
+      int n = this.f.size();
+      int m = n + 50;
+      if (m >= this.g.secondPageMessageUniseq.size()) {
+        m = this.g.secondPageMessageUniseq.size();
       }
-      while (j < i)
+      while (n < m)
       {
-        MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_JavaLangString, this.e, ((Long)this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.secondPageMessageUniseq.get(j)).longValue());
+        MessageRecord localMessageRecord = this.k.getMessageFacade().b(this.h, this.i, ((Long)this.g.secondPageMessageUniseq.get(n)).longValue());
         if (localMessageRecord != null)
         {
           a(localMessageRecord);
           if (localMessageRecord.msg != null) {
-            this.jdField_a_of_type_JavaUtilList.add(new MessageSearchResultDetailModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem.user, localMessageRecord));
+            this.f.add(new MessageSearchResultDetailModel(this.k, this.j, this.g.user, localMessageRecord));
           }
         }
-        j += 1;
+        n += 1;
       }
       return;
     }
     catch (NullPointerException localNullPointerException)
     {
       QLog.e("Q.uniteSearch.BaseMvpAdapter", 1, new Object[] { "initData e:", localNullPointerException.toString() });
-      super.a(this.jdField_a_of_type_JavaUtilList);
+      super.a(this.f);
     }
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
+    this.d = paramInt1;
+    this.a = paramInt2;
+    this.e = paramInt3;
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -121,7 +121,7 @@ public abstract class BaseMvpMessageAdapter<M extends IFaceModel, V extends IFac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.adapter.BaseMvpMessageAdapter
  * JD-Core Version:    0.7.0.1
  */

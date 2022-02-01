@@ -8,19 +8,19 @@ import com.tencent.qphone.base.util.QLog;
 
 public class VideoFeedsGameAdComBarConfigure
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static final String jdField_a_of_type_JavaLangString = "VideoFeedsGameAdComBarConfigure";
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String b;
+  private static final String a = "VideoFeedsGameAdComBarConfigure";
+  private static int b;
+  private QQAppInterface c;
+  private String d;
   
   public VideoFeedsGameAdComBarConfigure(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount();
-    jdField_a_of_type_Int = 0;
+    this.c = paramQQAppInterface;
+    this.d = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount();
+    b = 0;
   }
   
-  private int c()
+  private int d()
   {
     boolean bool = ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).checkIsVideoFeedsGameAdComBarLocalConfigToday();
     int i = 0;
@@ -31,7 +31,7 @@ public class VideoFeedsGameAdComBarConfigure
     {
       localIReadInJoyHelper = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("VideoFeedsGameAdComBarConfigure_DALIY");
       localIReadInJoyHelper.updateReadInJoySpValue(localStringBuilder.toString(), localInteger);
     }
@@ -39,27 +39,22 @@ public class VideoFeedsGameAdComBarConfigure
     {
       localIReadInJoyHelper = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.d);
       localStringBuilder.append("VideoFeedsGameAdComBarConfigure_DALIY");
       i = ((Integer)localIReadInJoyHelper.getReadInJoySpValue(localStringBuilder.toString(), localInteger)).intValue();
     }
     return i;
   }
   
-  public int a()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
   public void a()
   {
     try
     {
-      int i = c();
-      jdField_a_of_type_Int += 1;
+      int i = d();
+      b += 1;
       IReadInJoyHelper localIReadInJoyHelper = (IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class);
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.b);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append("VideoFeedsGameAdComBarConfigure_DALIY");
       localIReadInJoyHelper.updateReadInJoySpValue(((StringBuilder)localObject).toString(), Integer.valueOf(i + 1));
       return;
@@ -69,7 +64,7 @@ public class VideoFeedsGameAdComBarConfigure
       Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("解析引流条出现的条件出错: ");
         localStringBuilder.append(localException.getMessage());
@@ -80,12 +75,17 @@ public class VideoFeedsGameAdComBarConfigure
   
   public int b()
   {
-    return c();
+    return b;
+  }
+  
+  public int c()
+  {
+    return d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComBarConfigure
  * JD-Core Version:    0.7.0.1
  */

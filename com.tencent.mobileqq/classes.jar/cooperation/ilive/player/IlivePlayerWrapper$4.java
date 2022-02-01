@@ -17,15 +17,15 @@ class IlivePlayerWrapper$4
     localStringBuilder.append("CachePlayer onError : what = ");
     localStringBuilder.append(paramInt1);
     QLog.e("CachePlayer", 1, localStringBuilder.toString());
-    if (IlivePlayerWrapper.a(this.a) != null) {
-      IlivePlayerWrapper.a(this.a).onError(paramITPPlayer, paramInt1, paramInt2, paramLong1, paramLong2);
+    if (IlivePlayerWrapper.e(this.a) != null) {
+      IlivePlayerWrapper.e(this.a).onError(paramITPPlayer, paramInt1, paramInt2, paramLong1, paramLong2);
     }
-    IlivePlayerWrapper.b(this.a);
+    IlivePlayerWrapper.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.player.IlivePlayerWrapper.4
  * JD-Core Version:    0.7.0.1
  */

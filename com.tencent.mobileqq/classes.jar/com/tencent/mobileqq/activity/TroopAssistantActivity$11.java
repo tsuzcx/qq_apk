@@ -16,14 +16,14 @@ class TroopAssistantActivity$11
     if (!paramString.equals(this.a.app.getAccount())) {
       return;
     }
-    this.a.a.obtainMessage(1).sendToTarget();
+    this.a.I.obtainMessage(1).sendToTarget();
     this.a.runOnUiThread(new TroopAssistantActivity.11.1(this));
   }
   
   protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
     if (paramBoolean) {
-      this.a.a.sendEmptyMessage(1);
+      this.a.I.sendEmptyMessage(1);
     }
   }
   
@@ -54,7 +54,7 @@ class TroopAssistantActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.11
  * JD-Core Version:    0.7.0.1
  */

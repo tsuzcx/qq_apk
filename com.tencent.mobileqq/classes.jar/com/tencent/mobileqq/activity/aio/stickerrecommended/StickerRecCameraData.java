@@ -21,29 +21,17 @@ import java.net.URL;
 public class StickerRecCameraData
   extends BaseLocalStickerRecEmoticon
 {
-  private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private CameraEmotionData a;
+  private boolean b;
+  private String c;
   
   public StickerRecCameraData(BaseQQAppInterface paramBaseQQAppInterface, CameraEmotionData paramCameraEmotionData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData = paramCameraEmotionData;
+    this.a = paramCameraEmotionData;
     paramBaseQQAppInterface = (ICameraEmotionRoamingDBManagerService)paramBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class);
     if (paramBaseQQAppInterface != null) {
-      this.jdField_a_of_type_JavaLangString = paramBaseQQAppInterface.getCustomEmoticonPath(paramCameraEmotionData);
+      this.c = paramBaseQQAppInterface.getCustomEmoticonPath(paramCameraEmotionData);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.exposeNum;
-  }
-  
-  public URLDrawable.URLDrawableOptions a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.url;
-    return localURLDrawableOptions;
   }
   
   public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
@@ -54,17 +42,72 @@ public class StickerRecCameraData
     return super.a(paramURL, paramURLDrawableOptions);
   }
   
-  public String a()
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.url;
+    ((ICameraEmoRoamingManagerService)paramBaseQQAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class)).syncIncreaseEmoticonExposeNum(this.a);
   }
   
-  public URL a()
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
+  {
+    if (((paramContext instanceof QBaseActivity)) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramBaseSessionInfo.a, paramBaseSessionInfo.b)))
+    {
+      paramContext = (QBaseActivity)paramContext;
+      QQToast.makeText(paramBaseQQAppInterface.getApp(), HardCodeUtil.a(2131897799), 0).show(paramContext.getTitleBarHeight());
+      return;
+    }
+    this.b = true;
+    CustomEmotionSenderUtil.sendCustomEmotion(paramBaseQQAppInterface, paramContext, paramBaseSessionInfo, this.c, true, this.a.strContext, null);
+    ((ICameraEmoRoamingManagerService)paramBaseQQAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class)).asyncIncreaseEmotionClickNum(this.a);
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public URLDrawable.URLDrawableOptions c()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this.a.url;
+    return localURLDrawableOptions;
+  }
+  
+  public boolean d()
+  {
+    return this.b;
+  }
+  
+  public String e()
+  {
+    return this.a.url;
+  }
+  
+  public boolean g()
+  {
+    return true;
+  }
+  
+  public int h()
+  {
+    return this.a.exposeNum;
+  }
+  
+  public int i()
+  {
+    return this.a.clickNum;
+  }
+  
+  public int j()
+  {
+    return 3;
+  }
+  
+  public URL k()
   {
     URL localURL2;
     try
     {
-      URL localURL1 = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.jdField_a_of_type_JavaLangString);
+      URL localURL1 = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.c);
     }
     catch (MalformedURLException localMalformedURLException)
     {
@@ -82,66 +125,23 @@ public class StickerRecCameraData
     return localURL2;
   }
   
-  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
+  public String l()
   {
-    ((ICameraEmoRoamingManagerService)paramBaseQQAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class)).syncIncreaseEmoticonExposeNum(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-  }
-  
-  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
-  {
-    if (((paramContext instanceof QBaseActivity)) && (((IHotChatUtil)QRoute.api(IHotChatUtil.class)).isHotChatMsg(paramBaseSessionInfo.jdField_a_of_type_Int, paramBaseSessionInfo.jdField_a_of_type_JavaLangString)))
-    {
-      paramContext = (QBaseActivity)paramContext;
-      QQToast.a(paramBaseQQAppInterface.getApp(), HardCodeUtil.a(2131699766), 0).b(paramContext.getTitleBarHeight());
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    CustomEmotionSenderUtil.sendCustomEmotion(paramBaseQQAppInterface, paramContext, paramBaseSessionInfo, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.strContext, null);
-    ((ICameraEmoRoamingManagerService)paramBaseQQAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class)).asyncIncreaseEmotionClickNum(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.clickNum;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int c()
-  {
-    return 3;
-  }
-  
-  public String c()
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.md5;
+    String str = this.a.md5;
     if (str != null) {
       return str.toLowerCase();
     }
     return null;
   }
   
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public String d()
+  public String m()
   {
     return "a-";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCameraData
  * JD-Core Version:    0.7.0.1
  */

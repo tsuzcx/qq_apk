@@ -11,7 +11,7 @@ public class NewAlbumListAdapter
   extends AlbumListAdapter
 {
   public long a;
-  public QQAlbumInfo a;
+  public QQAlbumInfo b;
   
   public NewAlbumListAdapter(AlbumListFragment paramAlbumListFragment)
   {
@@ -90,7 +90,7 @@ public class NewAlbumListAdapter
     List localList = super.a();
     if (localList != null)
     {
-      QQAlbumInfo localQQAlbumInfo = this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo;
+      QQAlbumInfo localQQAlbumInfo = this.b;
       if (localQQAlbumInfo != null) {
         localList.add(0, localQQAlbumInfo);
       }
@@ -98,22 +98,16 @@ public class NewAlbumListAdapter
     return localList;
   }
   
-  public void a()
-  {
-    super.a();
-    ThreadManager.post(new NewAlbumListAdapter.1(this), 2, null, false);
-  }
-  
   public void a(long paramLong)
   {
     if (paramLong == 0L) {
       return;
     }
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
     QQAlbumInfo localQQAlbumInfo = new QQAlbumInfo();
     localQQAlbumInfo.id = "qzone_album";
     localQQAlbumInfo.name = "空间相册";
-    localQQAlbumInfo.mMediaFileCount = ((int)this.jdField_a_of_type_Long);
+    localQQAlbumInfo.mMediaFileCount = ((int)this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -121,12 +115,18 @@ public class NewAlbumListAdapter
       localStringBuilder.append(paramLong);
       QLog.d("QQAlbum", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataQQAlbumInfo = localQQAlbumInfo;
+    this.b = localQQAlbumInfo;
+  }
+  
+  public void b()
+  {
+    super.b();
+    ThreadManager.post(new NewAlbumListAdapter.1(this), 2, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.NewAlbumListAdapter
  * JD-Core Version:    0.7.0.1
  */

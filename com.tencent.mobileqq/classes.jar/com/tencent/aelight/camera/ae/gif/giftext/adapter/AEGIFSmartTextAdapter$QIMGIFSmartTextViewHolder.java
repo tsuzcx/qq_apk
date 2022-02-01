@@ -12,7 +12,7 @@ class AEGIFSmartTextAdapter$QIMGIFSmartTextViewHolder
   public AEGIFSmartTextAdapter$QIMGIFSmartTextViewHolder(View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2064122527));
+    this.a = ((TextView)paramView.findViewById(2063991346));
   }
   
   public void a(boolean paramBoolean)
@@ -22,7 +22,7 @@ class AEGIFSmartTextAdapter$QIMGIFSmartTextViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFSmartTextAdapter.QIMGIFSmartTextViewHolder
  * JD-Core Version:    0.7.0.1
  */

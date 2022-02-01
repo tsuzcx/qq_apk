@@ -11,7 +11,7 @@ class GameRoomPresenterImp$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.a.a();
+    paramDialogInterface = this.a.m();
     if (paramDialogInterface != null)
     {
       if (paramDialogInterface.isFinishing()) {
@@ -20,7 +20,7 @@ class GameRoomPresenterImp$6
       this.a.a(false, 1);
       GameRoomViewLayoutParamsDef.H = 0;
       GameRoomViewLayoutParamsDef.I = 0;
-      this.a.a.e();
+      this.a.a.i();
     }
   }
 }

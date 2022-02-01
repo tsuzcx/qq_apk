@@ -10,13 +10,13 @@ import java.util.concurrent.ArrayBlockingQueue;
 class LayoutInflateProcessor$InflateTask
   implements Runnable
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private LayoutInflateProcessor.InflateParams[] jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor$InflateParams;
+  private LayoutInflateProcessor.InflateParams[] a;
+  private LayoutInflater b;
   
   public LayoutInflateProcessor$InflateTask(LayoutInflateProcessor.InflateParams[] paramArrayOfInflateParams, LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor$InflateParams = paramArrayOfInflateParams;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.a = paramArrayOfInflateParams;
+    this.b = paramLayoutInflater;
   }
   
   private boolean a(LayoutInflateProcessor.InflateParams paramInflateParams)
@@ -32,12 +32,12 @@ class LayoutInflateProcessor$InflateTask
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("preload start: resid=");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidViewLayoutInflater.getContext().getResources().getResourceEntryName(LayoutInflateProcessor.InflateParams.a(paramInflateParams)));
+        ((StringBuilder)localObject1).append(this.b.getContext().getResources().getResourceEntryName(LayoutInflateProcessor.InflateParams.a(paramInflateParams)));
         QLog.d("LayoutPreloadInflater", 2, ((StringBuilder)localObject1).toString());
       }
       try
       {
-        localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(LayoutInflateProcessor.InflateParams.a(paramInflateParams), LayoutInflateProcessor.InflateParams.a(paramInflateParams), false);
+        localObject1 = this.b.inflate(LayoutInflateProcessor.InflateParams.a(paramInflateParams), LayoutInflateProcessor.InflateParams.c(paramInflateParams), false);
       }
       catch (RuntimeException localRuntimeException)
       {
@@ -50,8 +50,8 @@ class LayoutInflateProcessor$InflateTask
       }
       if (localObject1 != null)
       {
-        if (LayoutInflateProcessor.InflateParams.a(paramInflateParams) != null) {
-          LayoutInflateProcessor.InflateParams.a(paramInflateParams).a((View)localObject1);
+        if (LayoutInflateProcessor.InflateParams.d(paramInflateParams) != null) {
+          LayoutInflateProcessor.InflateParams.d(paramInflateParams).a((View)localObject1);
         }
         if ((paramInflateParams.a != null) && (paramInflateParams.a.size() < 9))
         {
@@ -65,7 +65,7 @@ class LayoutInflateProcessor$InflateTask
   
   public void run()
   {
-    LayoutInflateProcessor.InflateParams[] arrayOfInflateParams = this.jdField_a_of_type_ArrayOfComTencentMobileqqKandianBaseViewWidgetLayoutInflateProcessor$InflateParams;
+    LayoutInflateProcessor.InflateParams[] arrayOfInflateParams = this.a;
     int k = arrayOfInflateParams.length;
     int i = 0;
     while (i < k)
@@ -84,7 +84,7 @@ class LayoutInflateProcessor$InflateTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.LayoutInflateProcessor.InflateTask
  * JD-Core Version:    0.7.0.1
  */

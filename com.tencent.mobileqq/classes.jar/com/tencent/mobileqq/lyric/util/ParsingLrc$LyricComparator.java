@@ -8,7 +8,7 @@ class ParsingLrc$LyricComparator
 {
   public int a(Sentence paramSentence1, Sentence paramSentence2)
   {
-    if (paramSentence1.a >= paramSentence2.a) {
+    if (paramSentence1.b >= paramSentence2.b) {
       return 1;
     }
     return -1;
@@ -16,7 +16,7 @@ class ParsingLrc$LyricComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.util.ParsingLrc.LyricComparator
  * JD-Core Version:    0.7.0.1
  */

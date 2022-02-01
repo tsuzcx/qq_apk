@@ -7,12 +7,12 @@ class ReadInJoyDeliverUGCActivity$9$1
   
   public void run()
   {
-    this.a.a.c(this.a.a.b);
+    this.a.a.d(this.a.a.q);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

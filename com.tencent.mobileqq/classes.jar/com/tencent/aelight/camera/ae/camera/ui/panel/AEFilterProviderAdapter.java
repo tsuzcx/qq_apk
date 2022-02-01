@@ -22,15 +22,15 @@ import java.util.List;
 public class AEFilterProviderAdapter
   extends RecyclerView.Adapter<AEFilterProviderAdapter.ViewHolder>
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AEFilterProviderAdapter.OnItemClickListener jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter$OnItemClickListener;
-  List<QIMFilterCategoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<QIMFilterCategoryItem> a = new ArrayList();
+  int b;
+  private Context c;
+  private AEFilterProviderAdapter.OnItemClickListener d;
   
   public AEFilterProviderAdapter(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramContext;
+    this.b = paramInt;
   }
   
   private boolean a()
@@ -44,21 +44,21 @@ public class AEFilterProviderAdapter
   
   public AEFilterProviderAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new AEFilterProviderAdapter.ViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318469, paramViewGroup, false));
+    return new AEFilterProviderAdapter.ViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056328, paramViewGroup, false));
   }
   
   public void a(AEFilterProviderAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.d = paramOnItemClickListener;
   }
   
   public void a(AEFilterProviderAdapter.ViewHolder paramViewHolder, int paramInt)
   {
-    Object localObject1 = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject1 = (QIMFilterCategoryItem)this.a.get(paramInt);
     if (localObject1 != null)
     {
-      QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Object localObject2 = VideoFilterTools.a().c(this.jdField_a_of_type_Int);
+      QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a.get(paramInt);
+      Object localObject2 = VideoFilterTools.a().c(this.b);
       boolean bool1;
       if (localObject2 != null) {
         bool1 = TextUtils.equals(((QIMFilterCategoryItem)localObject2).a, localQIMFilterCategoryItem.a);
@@ -67,7 +67,7 @@ public class AEFilterProviderAdapter
       }
       boolean bool2 = bool1;
       if (!bool1) {
-        if (((localObject2 == null) || (((QIMFilterCategoryItem)localObject2).c())) && (localQIMFilterCategoryItem.c())) {
+        if (((localObject2 == null) || (((QIMFilterCategoryItem)localObject2).d())) && (localQIMFilterCategoryItem.d())) {
           bool2 = true;
         } else {
           bool2 = false;
@@ -79,8 +79,8 @@ public class AEFilterProviderAdapter
         AEFilterProviderAdapter.ViewHolder.a(paramViewHolder).setVisibility(8);
       }
       localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844573);
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844573);
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.c.getResources().getDrawable(2130845946);
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.c.getResources().getDrawable(2130845946);
       if (paramInt == 0) {
         localObject1 = "https://qd.myapp.com/myapp/qqteam/QIM/fliters-QIM/other/none2.png";
       } else {
@@ -91,8 +91,8 @@ public class AEFilterProviderAdapter
         ((URLDrawable)localObject1).restartDownload();
       }
       AEFilterProviderAdapter.ViewHolder.b(paramViewHolder).setImageDrawable((Drawable)localObject1);
-      AEFilterProviderAdapter.ViewHolder.a(paramViewHolder).setText(localQIMFilterCategoryItem.b);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEFilterProviderAdapter$OnItemClickListener != null) {
+      AEFilterProviderAdapter.ViewHolder.c(paramViewHolder).setText(localQIMFilterCategoryItem.b);
+      if (this.d != null) {
         paramViewHolder.itemView.setOnClickListener(new AEFilterProviderAdapter.1(this, paramViewHolder));
       }
       paramViewHolder.itemView.setTag(localQIMFilterCategoryItem);
@@ -101,13 +101,13 @@ public class AEFilterProviderAdapter
   
   public void a(List<QIMFilterCategoryItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public long getItemId(int paramInt)
@@ -117,7 +117,7 @@ public class AEFilterProviderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEFilterProviderAdapter
  * JD-Core Version:    0.7.0.1
  */

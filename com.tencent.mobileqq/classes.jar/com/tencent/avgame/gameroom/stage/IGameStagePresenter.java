@@ -22,11 +22,11 @@ public abstract interface IGameStagePresenter
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean a();
-  
-  public abstract boolean a(boolean paramBoolean);
-  
   public abstract void b(EngineData paramEngineData);
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(boolean paramBoolean);
   
   public abstract void c(EngineData paramEngineData);
   

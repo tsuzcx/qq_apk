@@ -19,12 +19,12 @@ class PrinterActivity$1
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    paramInt = PrinterActivity.a(this.a).a.a();
+    paramInt = PrinterActivity.a(this.a).e.b();
     if (paramInt > 0)
     {
-      PrinterActivity.a(this.a).a.a.b();
-      this.a.a.setSelectionFromBottom(paramInt, 0);
-      PrinterActivity.a(this.a).a.a.notifyDataSetChanged();
+      PrinterActivity.a(this.a).e.i.d();
+      this.a.c.setSelectionFromBottom(paramInt, 0);
+      PrinterActivity.a(this.a).e.i.notifyDataSetChanged();
     }
     return false;
   }

@@ -301,7 +301,7 @@ public class AppBrandUI
       ((StringBuilder)localObject2).append("onResume miniConfig.launchParam.tempState=");
       ((StringBuilder)localObject2).append(localMiniAppConfig.launchParam.tempState);
       ((StringBuilder)localObject2).append("---");
-      ((StringBuilder)localObject2).append(DeviceInfoUtil.a());
+      ((StringBuilder)localObject2).append(DeviceInfoUtil.A());
       QLog.d("AppBrandUI", 4, ((StringBuilder)localObject2).toString());
     }
     Object localObject2 = localMiniAppConfig.config.mini_appid;
@@ -429,7 +429,7 @@ public class AppBrandUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.AppBrandUI
  * JD-Core Version:    0.7.0.1
  */

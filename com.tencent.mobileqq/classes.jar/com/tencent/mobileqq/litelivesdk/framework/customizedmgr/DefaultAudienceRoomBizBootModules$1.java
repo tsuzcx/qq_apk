@@ -12,39 +12,39 @@ class DefaultAudienceRoomBizBootModules$1
     return null;
   }
   
-  public String b()
+  public String d()
   {
     return "https://ilive.qq.com/1014/h5/lite_room.html";
   }
   
-  public String c()
+  public String e()
   {
     return "https://fastest.ilive.qq.com/1014/h5/lite_room.html";
   }
   
-  public String d()
+  public String f()
   {
     return "https://ilive.qq.com/1014/h5/lite_record.html";
   }
   
-  public String e()
+  public String g()
   {
     return "https://fastest.ilive.qq.com/1014/h5/lite_record.html";
   }
   
-  public String f()
+  public String h()
   {
     return "https://ilive.qq.com/1014/h5/lite_temporary.html";
   }
   
-  public String g()
+  public String i()
   {
     return "https://fastest.ilive.qq.com/1014/h5/lite_temporary.html";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.customizedmgr.DefaultAudienceRoomBizBootModules.1
  * JD-Core Version:    0.7.0.1
  */

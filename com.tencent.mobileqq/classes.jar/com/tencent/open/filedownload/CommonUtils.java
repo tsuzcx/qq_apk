@@ -72,8 +72,8 @@ public class CommonUtils
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = 234;
       localURLDrawableOptions.mRequestWidth = 234;
-      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130841922);
-      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130841922);
+      localURLDrawableOptions.mFailedDrawable = BaseApplication.getContext().getResources().getDrawable(2130842839);
+      localURLDrawableOptions.mLoadingDrawable = BaseApplication.getContext().getResources().getDrawable(2130842839);
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       paramString.setAutoDownload(true);
       paramString.setURLDrawableListener(new CommonUtils.1(paramImageView));
@@ -89,8 +89,8 @@ public class CommonUtils
   
   public static boolean a()
   {
-    MyAppApi.a();
-    return MyAppApi.b();
+    MyAppApi.l();
+    return MyAppApi.m();
   }
   
   private static String b(String paramString)
@@ -108,7 +108,7 @@ public class CommonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.filedownload.CommonUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -79,26 +79,10 @@ import mqq.app.AppRuntime;
 
 public class PlayModeUtils
 {
-  private static SparseArray<PlayModeUtils.DebugInfo> a;
-  public static final String a;
-  public static final int[] a;
-  public static final String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.report_comment");
-    b = StoryApi.a(2131699904);
-    jdField_a_of_type_ArrayOfInt = new int[] { 90 };
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  public static int a(int paramInt)
-  {
-    if ((paramInt != 76) && (paramInt != 77)) {
-      return 220;
-    }
-    return 221;
-  }
+  public static final String a = StoryApi.a("StorySvc.report_comment");
+  public static final String b = StoryApi.b(2131897957);
+  public static final int[] c = { 90 };
+  private static SparseArray<PlayModeUtils.DebugInfo> d = new SparseArray();
   
   public static int a(int paramInt1, int paramInt2)
   {
@@ -125,15 +109,6 @@ public class PlayModeUtils
     return i;
   }
   
-  public static int a(StoryVideoItem paramStoryVideoItem, int paramInt, String paramString)
-  {
-    paramString = new PublishVideoEntry();
-    paramString.doodlePath = null;
-    paramString.mLocalRawVideoDir = paramStoryVideoItem.mLocalVideoPath;
-    paramString.businessId = 1;
-    return 0;
-  }
-  
   public static Context a()
   {
     return BaseApplicationImpl.getApplication().getApplicationContext();
@@ -142,23 +117,14 @@ public class PlayModeUtils
   @NonNull
   public static PlayModeUtils.DebugInfo a(int paramInt)
   {
-    PlayModeUtils.DebugInfo localDebugInfo2 = (PlayModeUtils.DebugInfo)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    PlayModeUtils.DebugInfo localDebugInfo2 = (PlayModeUtils.DebugInfo)d.get(paramInt);
     PlayModeUtils.DebugInfo localDebugInfo1 = localDebugInfo2;
     if (localDebugInfo2 == null)
     {
       localDebugInfo1 = new PlayModeUtils.DebugInfo();
-      jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localDebugInfo1);
+      d.put(paramInt, localDebugInfo1);
     }
     return localDebugInfo1;
-  }
-  
-  public static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    throw new InvalidParameterException("can't get AppInterface");
   }
   
   public static String a(QQUserUIItem paramQQUserUIItem)
@@ -231,19 +197,19 @@ public class PlayModeUtils
     }
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131708205), 0).a();
-      StoryReportor.b("story_net", jdField_a_of_type_JavaLangString, 0, 99980, new String[] { "", "0", StoryReportor.a(BaseApplication.getContext()) });
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131906000), 0).show();
+      StoryReportor.b("story_net", a, 0, 99980, new String[] { "", "0", StoryReportor.a(BaseApplication.getContext()) });
       if (QLog.isColorLevel()) {
         QLog.w("Q.qqstory.player.PlayModeUtils", 2, "reportVideoCommemt - isNetSupport is false----");
       }
       return;
     }
-    paramContext = (ActionSheet)ActionSheetHelper.b(paramContext, null);
-    paramContext.addButton(HardCodeUtil.a(2131708197), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708216), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708213), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708201), 5);
-    paramContext.addCancelButton(2131690728);
+    paramContext = (ActionSheet)ActionSheetHelper.c(paramContext, null);
+    paramContext.addButton(HardCodeUtil.a(2131905992), 5);
+    paramContext.addButton(HardCodeUtil.a(2131906011), 5);
+    paramContext.addButton(HardCodeUtil.a(2131906008), 5);
+    paramContext.addButton(HardCodeUtil.a(2131905996), 5);
+    paramContext.addCancelButton(2131887648);
     paramContext.setOnButtonClickListener(new PlayModeUtils.8(paramCommentEntry, paramContext));
     if (!paramContext.isShowing()) {
       paramContext.show();
@@ -254,15 +220,15 @@ public class PlayModeUtils
   {
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131708214), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131906009), 0).show();
       return;
     }
-    paramContext = (ActionSheet)ActionSheetHelper.b(paramContext, null);
-    paramContext.addButton(HardCodeUtil.a(2131708212), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708206), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708219), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708196), 5);
-    paramContext.addCancelButton(2131690728);
+    paramContext = (ActionSheet)ActionSheetHelper.c(paramContext, null);
+    paramContext.addButton(HardCodeUtil.a(2131906007), 5);
+    paramContext.addButton(HardCodeUtil.a(2131906001), 5);
+    paramContext.addButton(HardCodeUtil.a(2131906014), 5);
+    paramContext.addButton(HardCodeUtil.a(2131905991), 5);
+    paramContext.addCancelButton(2131887648);
     paramContext.setOnButtonClickListener(new PlayModeUtils.7(paramQQUserUIItem, paramContext));
     paramContext.setOnDismissListener(paramOnDismissListener);
     if (!paramContext.isShowing()) {
@@ -274,15 +240,15 @@ public class PlayModeUtils
   {
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131708199), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131905994), 0).show();
       return;
     }
-    paramContext = (ActionSheet)ActionSheetHelper.b(paramContext, null);
-    paramContext.addButton(HardCodeUtil.a(2131708195), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708198), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708217), 5);
-    paramContext.addButton(HardCodeUtil.a(2131708218), 5);
-    paramContext.addCancelButton(2131690728);
+    paramContext = (ActionSheet)ActionSheetHelper.c(paramContext, null);
+    paramContext.addButton(HardCodeUtil.a(2131905990), 5);
+    paramContext.addButton(HardCodeUtil.a(2131905993), 5);
+    paramContext.addButton(HardCodeUtil.a(2131906012), 5);
+    paramContext.addButton(HardCodeUtil.a(2131906013), 5);
+    paramContext.addCancelButton(2131887648);
     paramContext.setOnButtonClickListener(new PlayModeUtils.9(paramStoryVideoItem, paramContext));
     paramContext.setOnDismissListener(paramOnDismissListener);
     if (!paramContext.isShowing()) {
@@ -337,7 +303,7 @@ public class PlayModeUtils
   
   public static void a(Resources paramResources, QQUserUIItem paramQQUserUIItem, ImageView paramImageView, float paramFloat1, TextView paramTextView, float paramFloat2, float paramFloat3, boolean paramBoolean, String paramString)
   {
-    Drawable localDrawable = ImageUtil.e();
+    Drawable localDrawable = ImageUtil.j();
     if (paramQQUserUIItem == null)
     {
       if (QLog.isColorLevel()) {
@@ -363,7 +329,7 @@ public class PlayModeUtils
       }
       else if (paramQQUserUIItem.isVipButNoFriend())
       {
-        localObject = paramResources.getDrawable(2130847062);
+        localObject = paramResources.getDrawable(2130848614);
         i = AIOUtils.b(paramFloat2, paramResources);
         int j = AIOUtils.b(paramFloat3, paramResources);
         if (localObject != null)
@@ -384,7 +350,7 @@ public class PlayModeUtils
       paramTextView.setCompoundDrawables(null, null, null, null);
       if (!TextUtils.isEmpty(paramQQUserUIItem.qq))
       {
-        paramResources = FaceDrawable.getFaceDrawable(a(), 1, paramQQUserUIItem.qq, 3, localDrawable, localDrawable);
+        paramResources = FaceDrawable.getFaceDrawable(b(), 1, paramQQUserUIItem.qq, 3, localDrawable, localDrawable);
         if (paramResources == null) {
           paramResources = localDrawable;
         }
@@ -446,8 +412,8 @@ public class PlayModeUtils
   
   public static final void a(ImageView paramImageView, String paramString)
   {
-    Drawable localDrawable = ImageUtil.f();
-    paramImageView.setImageDrawable(FaceDrawable.getFaceDrawable(a(), 1, paramString, 3, localDrawable, localDrawable));
+    Drawable localDrawable = ImageUtil.m();
+    paramImageView.setImageDrawable(FaceDrawable.getFaceDrawable(b(), 1, paramString, 3, localDrawable, localDrawable));
   }
   
   protected static void a(ImageView paramImageView, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, Drawable paramDrawable, DownloadParams.DecodeHandler paramDecodeHandler, Object paramObject, String paramString2)
@@ -538,14 +504,14 @@ public class PlayModeUtils
     String str = null;
     DownloadParams.DecodeHandler localDecodeHandler;
     if (paramBoolean) {
-      localDecodeHandler = URLDrawableDecodeHandler.a;
+      localDecodeHandler = URLDrawableDecodeHandler.b;
     } else {
       localDecodeHandler = null;
     }
     if (paramBoolean) {
       str = "StoryPlayModeRound";
     }
-    if (FileUtil.b(paramString1))
+    if (FileUtil.d(paramString1))
     {
       a(paramImageView, paramString1, paramInt1, paramInt2, true, localDecodeHandler, null, str);
       return;
@@ -555,16 +521,16 @@ public class PlayModeUtils
   
   public static void a(ImageView paramImageView, String paramString1, String paramString2, boolean paramBoolean, PlayModeUtils.ImageViewLoadCallback paramImageViewLoadCallback)
   {
-    boolean bool = FileUtil.b(paramString1);
+    boolean bool = FileUtil.d(paramString1);
     DownloadParams.DecodeHandler localDecodeHandler;
     if (paramBoolean) {
-      localDecodeHandler = URLDrawableDecodeHandler.q;
+      localDecodeHandler = URLDrawableDecodeHandler.r;
     } else {
       localDecodeHandler = null;
     }
     int[] arrayOfInt;
     if (paramBoolean) {
-      arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      arrayOfInt = c;
     } else {
       arrayOfInt = null;
     }
@@ -598,13 +564,13 @@ public class PlayModeUtils
   public static void a(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, PlayModeUtils.FeedShareInteractStatusObserver paramFeedShareInteractStatusObserver)
   {
     GetCollectionVideoListRequest localGetCollectionVideoListRequest = new GetCollectionVideoListRequest();
-    localGetCollectionVideoListRequest.jdField_c_of_type_JavaLangString = paramShareFromMemoryPlayInfo.uid;
-    localGetCollectionVideoListRequest.d = "";
-    localGetCollectionVideoListRequest.jdField_c_of_type_Int = 20;
-    localGetCollectionVideoListRequest.jdField_e_of_type_Int = paramShareFromMemoryPlayInfo.shareTimeZone;
-    localGetCollectionVideoListRequest.jdField_e_of_type_JavaLangString = paramShareFromMemoryPlayInfo.feedId;
-    localGetCollectionVideoListRequest.f = paramShareFromMemoryPlayInfo.identify;
-    localGetCollectionVideoListRequest.g = paramShareFromMemoryPlayInfo.videoListOrder;
+    localGetCollectionVideoListRequest.g = paramShareFromMemoryPlayInfo.uid;
+    localGetCollectionVideoListRequest.h = "";
+    localGetCollectionVideoListRequest.i = 20;
+    localGetCollectionVideoListRequest.k = paramShareFromMemoryPlayInfo.shareTimeZone;
+    localGetCollectionVideoListRequest.l = paramShareFromMemoryPlayInfo.feedId;
+    localGetCollectionVideoListRequest.m = paramShareFromMemoryPlayInfo.identify;
+    localGetCollectionVideoListRequest.n = paramShareFromMemoryPlayInfo.videoListOrder;
     CmdTaskManger.a().a(localGetCollectionVideoListRequest, new PlayModeUtils.6(paramFeedShareInteractStatusObserver));
   }
   
@@ -616,7 +582,7 @@ public class PlayModeUtils
     long l = System.currentTimeMillis();
     paramString = new Bundle();
     paramString.putLong("key_for_start_time", l);
-    ProtoUtils.a(paramQQAppInterface, paramVideoInfoObserver, localReqBatchGetVideoFullInfoList.toByteArray(), GetVideoFullInfoListRequest.jdField_a_of_type_JavaLangString, paramString);
+    ProtoUtils.a(paramQQAppInterface, paramVideoInfoObserver, localReqBatchGetVideoFullInfoList.toByteArray(), GetVideoFullInfoListRequest.g, paramString);
   }
   
   protected static final void a(FFmpeg paramFFmpeg, String paramString1, StoryVideoItem paramStoryVideoItem, String paramString2, int paramInt, String paramString3)
@@ -643,7 +609,7 @@ public class PlayModeUtils
   
   public static boolean a(StoryVideoItem paramStoryVideoItem, Context paramContext)
   {
-    if (UIUtils.b()) {
+    if (UIUtils.d()) {
       return false;
     }
     SLog.a("Q.qqstory.player.PlayModeUtils", "onClickRetryUploadBtn=%s", paramStoryVideoItem);
@@ -653,19 +619,36 @@ public class PlayModeUtils
       SLog.d("Q.qqstory.player.PlayModeUtils", "video file not exist, vid:%s", new Object[] { paramStoryVideoItem.mVid });
       String str = paramStoryVideoItem.mVid;
       paramContext = DialogUtil.a(paramContext, 230);
-      paramContext.setTitle(HardCodeUtil.a(2131708204));
+      paramContext.setTitle(HardCodeUtil.a(2131905999));
       if (StoryVideoUploadManager.StoryVideoPublishStatusEvent.b(paramStoryVideoItem.mUpLoadFailedError)) {
-        paramContext.setMessage(HardCodeUtil.a(2131708211));
+        paramContext.setMessage(HardCodeUtil.a(2131906006));
       } else {
-        paramContext.setMessage(HardCodeUtil.a(2131708207));
+        paramContext.setMessage(HardCodeUtil.a(2131906002));
       }
-      paramContext.setPositiveButton(HardCodeUtil.a(2131708210), new PlayModeUtils.11(paramStoryVideoItem, str));
+      paramContext.setPositiveButton(HardCodeUtil.a(2131906005), new PlayModeUtils.11(paramStoryVideoItem, str));
       paramContext.setCancelable(false);
       paramContext.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       paramContext.show();
       return false;
     }
     return StoryVideoUploadManager.a(paramStoryVideoItem, paramContext);
+  }
+  
+  public static int b(int paramInt)
+  {
+    if ((paramInt != 76) && (paramInt != 77)) {
+      return 220;
+    }
+    return 221;
+  }
+  
+  public static QQAppInterface b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    throw new InvalidParameterException("can't get AppInterface");
   }
   
   public static final String b(QQUserUIItem paramQQUserUIItem)
@@ -684,7 +667,7 @@ public class PlayModeUtils
   
   protected static void b(ImageView paramImageView, String paramString1, int paramInt1, int paramInt2, boolean paramBoolean, DownloadParams.DecodeHandler paramDecodeHandler, Object paramObject, String paramString2)
   {
-    a(paramImageView, paramString1, paramInt1, paramInt2, paramBoolean, ImageUtil.e(), paramDecodeHandler, paramObject, paramString2);
+    a(paramImageView, paramString1, paramInt1, paramInt2, paramBoolean, ImageUtil.j(), paramDecodeHandler, paramObject, paramString2);
   }
   
   public static void b(ImageView paramImageView, String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
@@ -692,14 +675,14 @@ public class PlayModeUtils
     String str = null;
     DownloadParams.DecodeHandler localDecodeHandler;
     if (paramBoolean) {
-      localDecodeHandler = URLDrawableDecodeHandler.a;
+      localDecodeHandler = URLDrawableDecodeHandler.b;
     } else {
       localDecodeHandler = null;
     }
     if (paramBoolean) {
       str = "StoryPlayModeRound";
     }
-    if (FileUtil.b(paramString1))
+    if (FileUtil.d(paramString1))
     {
       b(paramImageView, paramString1, paramInt1, paramInt2, true, localDecodeHandler, null, str);
       return;
@@ -709,16 +692,16 @@ public class PlayModeUtils
   
   public static void b(ImageView paramImageView, String paramString1, String paramString2, boolean paramBoolean, PlayModeUtils.ImageViewLoadCallback paramImageViewLoadCallback)
   {
-    boolean bool = FileUtil.b(paramString1);
+    boolean bool = FileUtil.d(paramString1);
     DownloadParams.DecodeHandler localDecodeHandler;
     if (paramBoolean) {
-      localDecodeHandler = URLDrawableDecodeHandler.q;
+      localDecodeHandler = URLDrawableDecodeHandler.r;
     } else {
       localDecodeHandler = null;
     }
     int[] arrayOfInt;
     if (paramBoolean) {
-      arrayOfInt = jdField_a_of_type_ArrayOfInt;
+      arrayOfInt = c;
     } else {
       arrayOfInt = null;
     }
@@ -749,7 +732,7 @@ public class PlayModeUtils
     }
     if (paramStoryVideoItem.mIsPicture == 1)
     {
-      c(paramStoryVideoItem, paramInt, paramString);
+      d(paramStoryVideoItem, paramInt, paramString);
       return;
     }
     long l1 = SystemClock.uptimeMillis();
@@ -757,7 +740,7 @@ public class PlayModeUtils
     int i;
     try
     {
-      i = a(paramStoryVideoItem, paramInt, str);
+      i = c(paramStoryVideoItem, paramInt, str);
     }
     catch (IllegalStateException localIllegalStateException)
     {
@@ -767,7 +750,7 @@ public class PlayModeUtils
     if (i == 0)
     {
       paramString = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 2, paramStoryVideoItem);
-      paramString.b = str;
+      paramString.d = str;
       StoryDispatcher.a().dispatch(paramString);
       long l2 = paramStoryVideoItem.mVideoDuration;
       StoryReportor.a("play_video", "down_watermark_time", 1, 0, new String[] { String.valueOf(SystemClock.uptimeMillis() - l1), String.valueOf(l2) });
@@ -780,7 +763,7 @@ public class PlayModeUtils
     ((StringBuilder)localObject1).append(i);
     QLog.e("Q.qqstory.player.PlayModeUtils", 1, ((StringBuilder)localObject1).toString());
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(QQStoryConstant.l);
+    ((StringBuilder)localObject1).append(QQStoryConstant.m);
     ((StringBuilder)localObject1).append(paramStoryVideoItem.mVid);
     ((StringBuilder)localObject1).append(".mp4");
     Object localObject2 = ((StringBuilder)localObject1).toString();
@@ -794,14 +777,14 @@ public class PlayModeUtils
       }
       return;
     }
-    if (FileUtils.c(str))
+    if (FileUtils.d(str))
     {
       paramStoryVideoItem = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 2, paramStoryVideoItem);
-      paramStoryVideoItem.b = str;
+      paramStoryVideoItem.d = str;
       StoryDispatcher.a().dispatch(paramStoryVideoItem);
       return;
     }
-    if (FileUtils.c((String)localObject2))
+    if (FileUtils.d((String)localObject2))
     {
       a((FFmpeg)localObject1, (String)localObject2, paramStoryVideoItem, str, paramInt, paramString);
       return;
@@ -820,12 +803,12 @@ public class PlayModeUtils
       {
         localObject3 = new ArrayList();
         Object localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(QQStoryConstant.l);
+        ((StringBuilder)localObject4).append(QQStoryConstant.m);
         ((StringBuilder)localObject4).append("hflip");
         ((StringBuilder)localObject4).append(paramStoryVideoItem.mVid);
         ((StringBuilder)localObject4).append(".mp4");
         localObject4 = ((StringBuilder)localObject4).toString();
-        if (!FileUtils.c((String)localObject4))
+        if (!FileUtils.d((String)localObject4))
         {
           localObject5 = new FFmpegCommandUnit();
           ((FFmpegCommandUnit)localObject5).cmdType = 10;
@@ -863,8 +846,17 @@ public class PlayModeUtils
     return paramStoryVideoItem.id == -1000L;
   }
   
+  public static int c(StoryVideoItem paramStoryVideoItem, int paramInt, String paramString)
+  {
+    paramString = new PublishVideoEntry();
+    paramString.doodlePath = null;
+    paramString.mLocalRawVideoDir = paramStoryVideoItem.mLocalVideoPath;
+    paramString.businessId = 1;
+    return 0;
+  }
+  
   @TargetApi(10)
-  public static void c(StoryVideoItem paramStoryVideoItem, int paramInt, String paramString)
+  public static void d(StoryVideoItem paramStoryVideoItem, int paramInt, String paramString)
   {
     PlayModeUtils.DownloadStatusChangeEvent localDownloadStatusChangeEvent = new PlayModeUtils.DownloadStatusChangeEvent(paramString, 0, paramStoryVideoItem);
     StoryDispatcher.a().dispatch(localDownloadStatusChangeEvent);
@@ -873,7 +865,7 @@ public class PlayModeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils
  * JD-Core Version:    0.7.0.1
  */

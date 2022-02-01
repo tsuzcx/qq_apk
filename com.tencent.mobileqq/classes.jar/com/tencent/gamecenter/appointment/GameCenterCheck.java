@@ -30,15 +30,15 @@ public class GameCenterCheck
     ((IQQGameAdService)localObject1).updatePullAdInfo(true, l);
     ((IQQGameAdService)QRoute.api(IQQGameAdService.class)).pullAd();
     GameCenterUtil.a();
-    if ((!GameCenterUtil.b) && (!GameCenterUtil.a) && (!GameCenterUtil.c) && (!GameCenterUtil.d) && (!GameCenterUtil.e))
+    if ((!GameCenterUtil.c) && (!GameCenterUtil.b) && (!GameCenterUtil.d) && (!GameCenterUtil.e) && (!GameCenterUtil.f))
     {
       if (QLog.isColorLevel()) {
         QLog.w("GameCenterCheck", 2, "GameCenterCheck switch is off");
       }
       return super.doStep();
     }
-    Object localObject3 = Long.valueOf(GameCenterSpUtils.a("APPOINTMENT_LASTGET_TIME"));
-    Object localObject2 = Long.valueOf(GameCenterSpUtils.a("APPOINTMENT_LOAD_GAP"));
+    Object localObject3 = Long.valueOf(GameCenterSpUtils.c("APPOINTMENT_LASTGET_TIME"));
+    Object localObject2 = Long.valueOf(GameCenterSpUtils.c("APPOINTMENT_LOAD_GAP"));
     localObject1 = localObject2;
     if (0L == ((Long)localObject2).longValue()) {
       localObject1 = Long.valueOf(30L);
@@ -52,21 +52,21 @@ public class GameCenterCheck
       ((StringBuilder)localObject2).append(", lastTime:");
       ((StringBuilder)localObject2).append(localObject3);
       ((StringBuilder)localObject2).append(",isAppointDownload=");
-      ((StringBuilder)localObject2).append(GameCenterUtil.b);
-      ((StringBuilder)localObject2).append(",isDelayDownload=");
-      ((StringBuilder)localObject2).append(GameCenterUtil.a);
-      ((StringBuilder)localObject2).append(",isUpdateDownload=");
       ((StringBuilder)localObject2).append(GameCenterUtil.c);
-      ((StringBuilder)localObject2).append(",isResApkDownload=");
+      ((StringBuilder)localObject2).append(",isDelayDownload=");
+      ((StringBuilder)localObject2).append(GameCenterUtil.b);
+      ((StringBuilder)localObject2).append(",isUpdateDownload=");
       ((StringBuilder)localObject2).append(GameCenterUtil.d);
-      ((StringBuilder)localObject2).append(",isResDefDownload=");
+      ((StringBuilder)localObject2).append(",isResApkDownload=");
       ((StringBuilder)localObject2).append(GameCenterUtil.e);
+      ((StringBuilder)localObject2).append(",isResDefDownload=");
+      ((StringBuilder)localObject2).append(GameCenterUtil.f);
       QLog.i("GameCenterCheck", 2, ((StringBuilder)localObject2).toString());
     }
     if (l - ((Long)localObject3).longValue() >= ((Long)localObject1).longValue()) {
       i = 0;
     }
-    localObject2 = (IQQGameCheckService)this.mAutomator.a.getRuntimeService(IQQGameCheckService.class, "");
+    localObject2 = (IQQGameCheckService)this.mAutomator.k.getRuntimeService(IQQGameCheckService.class, "");
     if (i != 0)
     {
       ((IQQGameCheckService)localObject2).checkGameCenter();
@@ -100,7 +100,7 @@ public class GameCenterCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.appointment.GameCenterCheck
  * JD-Core Version:    0.7.0.1
  */

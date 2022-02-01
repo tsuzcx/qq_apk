@@ -12,13 +12,13 @@ class ArkFullScreenAppActivity$8$1
   
   public void run()
   {
-    Intent localIntent = this.a.a.a(ArkFullScreenAppActivity.a(this.a.a).a);
+    Intent localIntent = this.a.b.a(ArkFullScreenAppActivity.b(this.a.b).g);
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkFullScreenAppActivity.8.1.1(this, localIntent));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

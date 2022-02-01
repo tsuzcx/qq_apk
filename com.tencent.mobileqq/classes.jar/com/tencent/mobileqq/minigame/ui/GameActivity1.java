@@ -25,6 +25,7 @@ import com.tencent.mobileqq.colornote.api.IColorNoteController;
 import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
 import com.tencent.mobileqq.colornote.smallscreen.IServiceSyncListener;
 import com.tencent.mobileqq.mini.appbrand.ui.MiniBaseActivity;
+import com.tencent.mobileqq.mini.manager.MiniAppDetainManager;
 import com.tencent.mobileqq.mini.ui.MiniAIOEntryView;
 import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingWindowBroadcast;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -71,7 +72,7 @@ public class GameActivity1
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 102	com/tencent/qqmini/proxyimpl/MiniSdkUtil:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
+    //   1: invokestatic 102	com/tencent/qqmini/proxyimpl/MiniSdkUtil:b	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppConfig;
     //   4: astore_2
     //   5: invokestatic 108	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   8: astore_1
@@ -251,7 +252,7 @@ public class GameActivity1
     setContentView((View)localObject);
     FrameLayout localFrameLayout = new FrameLayout(this);
     ((RelativeLayout)localObject).addView(localFrameLayout, new RelativeLayout.LayoutParams(-1, -1));
-    MiniSDKClientQIPCModule.a();
+    MiniSDKClientQIPCModule.b();
     initUIProxy(getIntent());
     localObject = this.mUIProxy;
     if (localObject == null)
@@ -272,6 +273,7 @@ public class GameActivity1
     this.mColorNoteServiceListenr = new GameActivity1.4(this);
     this.mColorNoteController.setServiceSyncListener(this.mColorNoteServiceListenr);
     GdtManager.a().a(this, new GdtManager.Params());
+    MiniAppDetainManager.INSTANCE.preloadAppDetainRecord(paramBundle);
     getSharedPreferences("sdk_conf", 4).edit().putInt("usersdk", 1).apply();
     return bool;
   }
@@ -496,7 +498,7 @@ public class GameActivity1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity1
  * JD-Core Version:    0.7.0.1
  */

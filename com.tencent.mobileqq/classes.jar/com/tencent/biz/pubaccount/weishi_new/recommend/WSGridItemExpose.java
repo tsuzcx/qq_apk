@@ -29,17 +29,17 @@ import org.json.JSONObject;
 
 public class WSGridItemExpose
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private WSHandlerThread jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread;
-  private final String jdField_a_of_type_JavaLangString;
-  private final Map<Integer, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private final Map<Integer, String> a = new ConcurrentHashMap();
   private final Map<Integer, stSimpleMetaFeed> b = new ConcurrentHashMap();
   private final Map<Integer, String> c = new ConcurrentHashMap();
+  private WSHandlerThread d;
+  private Handler e;
+  private final String f;
   
   public WSGridItemExpose(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    d();
+    this.f = paramString;
+    e();
   }
   
   private void a(stReportItem paramstReportItem, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
@@ -48,11 +48,11 @@ public class WSGridItemExpose
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[WSGridItemExpose.java][handleOnScrollForReport] mSubTabId:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.f);
       localStringBuilder.append(", position:");
       localStringBuilder.append(paramInt);
       WSLog.e("WSFeedsItemExposeLog", localStringBuilder.toString());
-      WSGridBeaconReport.a("gzh_exposure", paramstSimpleMetaFeed, paramstReportItem, 0, this.jdField_a_of_type_JavaLangString);
+      WSGridBeaconReport.a("gzh_exposure", paramstSimpleMetaFeed, paramstReportItem, 0, this.f);
     }
     this.b.put(Integer.valueOf(paramInt), paramstSimpleMetaFeed);
     this.c.put(Integer.valueOf(paramInt), paramstSimpleMetaFeed.id);
@@ -77,7 +77,7 @@ public class WSGridItemExpose
       }
       localstReportItem.optype = 6;
       WSReportDc00898.a(6, localstH5OpInfo.type, paramInteger.intValue(), paramstSimpleMetaFeed.h5_op_info.id);
-      WSGridBeaconReport.a("gzh_exposure", 0, paramstSimpleMetaFeed, this.jdField_a_of_type_JavaLangString);
+      WSGridBeaconReport.a("gzh_exposure", 0, paramstSimpleMetaFeed, this.f);
       WSLog.a("weishi-report", "luopan report H5");
       return;
     }
@@ -225,16 +225,16 @@ public class WSGridItemExpose
     }
   }
   
-  private void d()
+  private void e()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread = new WSHandlerThread();
-      HandlerThread localHandlerThread = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread.a();
+      this.d = new WSHandlerThread();
+      HandlerThread localHandlerThread = this.d.a();
       if (!localHandlerThread.isAlive()) {
         localHandlerThread.start();
       }
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+      this.e = new Handler(localHandlerThread.getLooper());
       return;
     }
     catch (Exception localException)
@@ -247,17 +247,12 @@ public class WSGridItemExpose
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilMap.size();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    return this.a.size();
   }
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.e;
     if (localHandler == null) {
       return;
     }
@@ -266,42 +261,47 @@ public class WSGridItemExpose
   
   public void a(List<stSimpleMetaFeed> paramList, boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+    if (this.e == null) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSGridItemExpose.java][exposeRefreshCard] mSubTabId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", lastVisiblePosition:");
     localStringBuilder.append(paramInt);
     WSLog.e("WSFeedsItemExposeLog", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.post(new WSGridItemExpose.2(this, paramInt, paramList, paramBoolean));
+    this.e.post(new WSGridItemExpose.2(this, paramInt, paramList, paramBoolean));
   }
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread;
-    if (localObject != null)
-    {
-      ((WSHandlerThread)localObject).a();
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSHandlerThread = null;
-    }
-    localObject = this.jdField_a_of_type_AndroidOsHandler;
-    if (localObject != null)
-    {
-      ((Handler)localObject).removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
+    this.a.clear();
   }
   
   public void c()
+  {
+    Object localObject = this.d;
+    if (localObject != null)
+    {
+      ((WSHandlerThread)localObject).b();
+      this.d = null;
+    }
+    localObject = this.e;
+    if (localObject != null)
+    {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
+      this.e = null;
+    }
+  }
+  
+  public void d()
   {
     ThreadManager.getSubThreadHandler().post(new WSGridItemExpose.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridItemExpose
  * JD-Core Version:    0.7.0.1
  */

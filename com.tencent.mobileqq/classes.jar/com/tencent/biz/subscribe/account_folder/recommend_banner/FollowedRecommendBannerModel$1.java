@@ -44,11 +44,11 @@ class FollowedRecommendBannerModel$1
         }
         ThreadManager.getUIHandler().post(new FollowedRecommendBannerModel.1.1(this, paramBaseRequest, paramBoolean));
       }
-      VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(0L, System.currentTimeMillis() - FollowedRecommendBannerModel.a(this.a)));
+      VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(0L, System.currentTimeMillis() - FollowedRecommendBannerModel.b(this.a)));
       return;
     }
     SLog.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList error");
-    VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(paramLong, System.currentTimeMillis() - FollowedRecommendBannerModel.a(this.a)));
+    VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(paramLong, System.currentTimeMillis() - FollowedRecommendBannerModel.b(this.a)));
   }
 }
 

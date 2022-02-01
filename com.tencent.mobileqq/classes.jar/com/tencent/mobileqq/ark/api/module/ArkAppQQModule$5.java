@@ -14,7 +14,7 @@ class ArkAppQQModule$5
   
   public void run()
   {
-    Activity localActivity = ArkAppQQModuleBase.a();
+    Activity localActivity = ArkAppQQModuleBase.f();
     if ((localActivity instanceof BaseActivity))
     {
       Bundle localBundle = new Bundle();
@@ -31,7 +31,7 @@ class ArkAppQQModule$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.5
  * JD-Core Version:    0.7.0.1
  */

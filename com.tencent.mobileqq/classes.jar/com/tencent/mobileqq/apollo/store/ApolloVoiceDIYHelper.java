@@ -8,33 +8,33 @@ import java.lang.ref.WeakReference;
 
 public class ApolloVoiceDIYHelper
 {
-  private double jdField_a_of_type_Double = 2147483647.0D;
-  private int jdField_a_of_type_Int;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<ApolloTextureView> a;
   private int b;
   private int c;
-  private int d = -1;
+  private int d;
+  private double e = 2147483647.0D;
+  private int f = -1;
   
   private void b(double paramDouble)
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.a.get();
     if (localApolloTextureView == null) {
       return;
     }
     localApolloTextureView.getRender().mIsFrameMode = true;
     localApolloTextureView.getRender().mDuration = paramDouble;
     localApolloTextureView.getRenderImpl().a(0L);
-    String[] arrayOfString2 = ApolloActionHelperImpl.getActionRscPath(13, this.jdField_a_of_type_Int, this.b, true);
+    String[] arrayOfString2 = ApolloActionHelperImpl.getActionRscPath(13, this.b, this.c, true);
     String[] arrayOfString1 = null;
-    if (this.c == 1) {
-      arrayOfString1 = ApolloActionHelperImpl.getActionRscPath(13, this.jdField_a_of_type_Int, this.b, false);
+    if (this.d == 1) {
+      arrayOfString1 = ApolloActionHelperImpl.getActionRscPath(13, this.b, this.c, false);
     }
-    localApolloTextureView.getRenderImpl().a(this.jdField_a_of_type_Int, 0, arrayOfString2, arrayOfString1);
+    localApolloTextureView.getRenderImpl().a(this.b, 0, arrayOfString2, arrayOfString1);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Double = 2147483647.0D;
+    this.e = 2147483647.0D;
   }
   
   public void a(double paramDouble)
@@ -45,37 +45,37 @@ public class ApolloVoiceDIYHelper
       ((StringBuilder)localObject).append("[renderFrame], curSec:");
       ((StringBuilder)localObject).append(paramDouble);
       ((StringBuilder)localObject).append(",lastDur:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Double);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("[cmshow]ApolloVoiceDIYHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (ApolloTextureView)this.a.get();
     if (localObject == null) {
       return;
     }
-    double d1 = this.jdField_a_of_type_Double;
+    double d1 = this.e;
     if (paramDouble <= d1) {
       b(paramDouble);
     } else {
       ((ApolloTextureView)localObject).queueEvent(new ApolloVoiceDIYHelper.1(this, (ApolloTextureView)localObject, paramDouble - d1));
     }
-    this.jdField_a_of_type_Double = paramDouble;
+    this.e = paramDouble;
   }
   
   public void a(ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
-    if (paramInt1 != this.d) {
+    this.a = new WeakReference(paramApolloTextureView);
+    if (paramInt1 != this.f) {
       a();
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = this.jdField_a_of_type_Int;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.b = paramInt1;
+    this.f = this.b;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloVoiceDIYHelper
  * JD-Core Version:    0.7.0.1
  */

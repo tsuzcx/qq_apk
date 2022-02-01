@@ -14,16 +14,14 @@ import mqq.app.AppRuntime;
 public class QQSettingMeViewModel
   extends BaseViewModel<QQSettingMeBaseRepository>
 {
-  public static ViewModelProvider.Factory a;
+  public static ViewModelProvider.Factory a = new QQSettingMeViewModel.1();
   @ConfigInject(configPath="/Foundation/QQActivity/src/main/resources/Inject_QQSettingMe_processor.yml", version=2)
-  private static ArrayList<Class<? extends IDrawerBizFacade>> jdField_a_of_type_JavaUtilArrayList;
-  private IDrawerBizFacade jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeIDrawerBizFacade;
+  private static ArrayList<Class<? extends IDrawerBizFacade>> b = new ArrayList();
+  private IDrawerBizFacade c;
   
   static
   {
-    jdField_a_of_type_AndroidxLifecycleViewModelProvider$Factory = new QQSettingMeViewModel.1();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList.add(DrawerBizFacade.class);
+    b.add(DrawerBizFacade.class);
   }
   
   public QQSettingMeViewModel(QQSettingMeBaseRepository paramQQSettingMeBaseRepository)
@@ -33,15 +31,15 @@ public class QQSettingMeViewModel
   
   public IDrawerBizFacade a()
   {
-    IDrawerBizFacade localIDrawerBizFacade = this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeIDrawerBizFacade;
+    IDrawerBizFacade localIDrawerBizFacade = this.c;
     if (localIDrawerBizFacade != null) {
       return localIDrawerBizFacade;
     }
-    if (jdField_a_of_type_JavaUtilArrayList.size() != 0) {
+    if (b.size() != 0) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeIDrawerBizFacade = ((IDrawerBizFacade)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance());
-        localIDrawerBizFacade = this.jdField_a_of_type_ComTencentMobileqqActivityQqsettingmeIDrawerBizFacade;
+        this.c = ((IDrawerBizFacade)((Class)b.get(0)).newInstance());
+        localIDrawerBizFacade = this.c;
         return localIDrawerBizFacade;
       }
       catch (InstantiationException localInstantiationException)
@@ -60,12 +58,7 @@ public class QQSettingMeViewModel
   
   public IQQSettingMeProcessor a(String paramString)
   {
-    return ((IProcessorDispatcher)a()).a(paramString);
-  }
-  
-  public void a()
-  {
-    a().a();
+    return ((IProcessorDispatcher)a()).b(paramString);
   }
   
   public void a(View paramView, MotionEvent paramMotionEvent)
@@ -76,11 +69,6 @@ public class QQSettingMeViewModel
   public void a(QQSettingMe paramQQSettingMe)
   {
     a().a(paramQQSettingMe);
-  }
-  
-  public void a(String paramString)
-  {
-    a().a(paramString);
   }
   
   public void a(AppRuntime paramAppRuntime)
@@ -95,40 +83,50 @@ public class QQSettingMeViewModel
   
   public void b()
   {
-    a().b();
+    a().a();
+  }
+  
+  public void b(String paramString)
+  {
+    a().a(paramString);
   }
   
   public void c()
   {
-    a().c();
+    a().b();
   }
   
   public void d()
   {
-    a().d();
+    a().c();
   }
   
   public void e()
   {
-    a().e();
+    a().d();
   }
   
   public void f()
   {
-    a().f();
+    a().e();
   }
   
   public void g()
   {
-    a().g();
+    a().f();
   }
   
   public void h()
   {
-    a().h();
+    a().g();
   }
   
   public void i()
+  {
+    a().h();
+  }
+  
+  public void j()
   {
     a().i();
   }
@@ -140,7 +138,7 @@ public class QQSettingMeViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeViewModel
  * JD-Core Version:    0.7.0.1
  */

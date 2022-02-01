@@ -9,8 +9,8 @@ class BaseGuessStarStageView$3
   
   public void run()
   {
-    if (this.this$0.b != null) {
-      this.this$0.b.setVisibility(8);
+    if (this.this$0.l != null) {
+      this.this$0.l.setVisibility(8);
     }
   }
 }

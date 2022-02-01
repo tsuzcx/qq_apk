@@ -19,7 +19,7 @@ class TroopMemberApiService$7
   
   protected void a(Boolean paramBoolean)
   {
-    if ((paramBoolean.booleanValue()) && (this.a.a))
+    if ((paramBoolean.booleanValue()) && (this.a.p))
     {
       paramBoolean = (ITroopAppService)TroopMemberApiService.b(this.a).getRuntimeService(ITroopAppService.class, "all");
       ArrayList localArrayList = new ArrayList();
@@ -33,16 +33,16 @@ class TroopMemberApiService$7
           {
             TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)((Iterator)localObject).next();
             localArrayList.add(Integer.valueOf(localTroopAIOAppInfo.appid));
-            if (localTroopAIOAppInfo.appid == this.a.d)
+            if (localTroopAIOAppInfo.appid == this.a.m)
             {
-              QQToast.a(BaseApplication.getContext(), 2, 2131719765, 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
+              QQToast.makeText(BaseApplication.getContext(), 2, 2131917369, 0).show(this.a.getResources().getDimensionPixelSize(2131299920));
               return;
             }
           }
         }
-        localArrayList.add(Integer.valueOf(this.a.d));
+        localArrayList.add(Integer.valueOf(this.a.m));
         localObject = new ArrayList();
-        ((ArrayList)localObject).add(Integer.valueOf(this.a.d));
+        ((ArrayList)localObject).add(Integer.valueOf(this.a.m));
         paramBoolean.addTroopApp(localArrayList, (ArrayList)localObject);
       }
     }
@@ -51,15 +51,15 @@ class TroopMemberApiService$7
   protected void b(Boolean paramBoolean)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.e);
-    localBundle.putInt("type", b);
+    localBundle.putInt("seq", this.a.n);
+    localBundle.putInt("type", c);
     localBundle.putBoolean("isSuccess", paramBoolean.booleanValue());
     this.a.a(44, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.7
  * JD-Core Version:    0.7.0.1
  */

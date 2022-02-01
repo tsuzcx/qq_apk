@@ -15,15 +15,15 @@ class AIOUpComingMsgHelper$5
     super.onAddColorNote(paramBundle, paramBoolean);
     if (paramBoolean)
     {
-      QQToast.a(AIOUpComingMsgHelper.a(this.a).a(), 2, 2131720133, 0).a();
+      QQToast.makeText(AIOUpComingMsgHelper.d(this.a).aX(), 2, 2131917762, 0).show();
       return;
     }
-    QQToast.a(AIOUpComingMsgHelper.a(this.a).a(), 0, 2131720132, 0).a();
+    QQToast.makeText(AIOUpComingMsgHelper.d(this.a).aX(), 0, 2131917761, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.AIOUpComingMsgHelper.5
  * JD-Core Version:    0.7.0.1
  */

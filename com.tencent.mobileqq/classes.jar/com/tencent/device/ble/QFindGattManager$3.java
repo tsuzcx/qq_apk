@@ -38,17 +38,17 @@ class QFindGattManager$3
       paramContext = this.a.a(i);
       if (paramContext != null)
       {
-        paramContext.jdField_a_of_type_Boolean = false;
-        paramContext.c = false;
-        paramContext.b = false;
-        JNIEngineLite.disconnectBle(paramContext.jdField_a_of_type_Int);
-        QFindGattManager.b(this.a).remove(paramContext);
-        if (this.a.jdField_a_of_type_ComTencentDeviceQfindPeerInfo == paramContext) {
-          this.a.jdField_a_of_type_ComTencentDeviceQfindPeerInfo = null;
+        paramContext.g = false;
+        paramContext.i = false;
+        paramContext.h = false;
+        JNIEngineLite.disconnectBle(paramContext.a);
+        QFindGattManager.c(this.a).remove(paramContext);
+        if (this.a.a == paramContext) {
+          this.a.a = null;
         }
-        QFindGattManager.a(this.a).remove(paramContext);
+        QFindGattManager.d(this.a).remove(paramContext);
         QFindGattManager.a(this.a, i);
-        this.a.a(paramContext);
+        this.a.b(paramContext);
         return;
       }
       if (QLog.isColorLevel())
@@ -75,13 +75,13 @@ class QFindGattManager$3
         {
           QFindGattManager.a(this.a, i);
           if (paramContext != null) {
-            this.a.a(paramContext);
+            this.a.b(paramContext);
           }
         }
       }
-      else if (("onDeviceVerifyRsp".equals(paramContext)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null))
+      else if (("onDeviceVerifyRsp".equals(paramContext)) && (this.a.c != null))
       {
-        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(100);
+        this.a.c.removeMessages(100);
       }
     }
     else
@@ -91,14 +91,14 @@ class QFindGattManager$3
       if (paramContext != null)
       {
         QFindGattManager.a(this.a, i);
-        this.a.a(paramContext);
+        this.a.b(paramContext);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.ble.QFindGattManager.3
  * JD-Core Version:    0.7.0.1
  */

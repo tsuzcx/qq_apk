@@ -8,10 +8,10 @@ import android.widget.FrameLayout;
 public class UpScrollHideView
   extends FrameLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private UpScrollHideView.onViewHideListener jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener = null;
-  private int b = 0;
+  private float a;
+  private int b = -1;
+  private int c = 0;
+  private UpScrollHideView.onViewHideListener d = null;
   
   public UpScrollHideView(Context paramContext)
   {
@@ -42,13 +42,13 @@ public class UpScrollHideView
         }
         else
         {
-          i = paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int);
+          i = paramMotionEvent.findPointerIndex(this.b);
           if (i == -1) {
             return true;
           }
           float f = paramMotionEvent.getY(i);
-          this.b = ((int)(this.jdField_a_of_type_Float - f));
-          i = this.b;
+          this.c = ((int)(this.a - f));
+          i = this.c;
           if (i <= 0) {
             break label145;
           }
@@ -56,10 +56,10 @@ public class UpScrollHideView
           return true;
         }
       }
-      if (this.b > getHeight())
+      if (this.c > getHeight())
       {
         setVisibility(8);
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener;
+        paramMotionEvent = this.d;
         if (paramMotionEvent != null) {
           paramMotionEvent.a();
         }
@@ -68,13 +68,13 @@ public class UpScrollHideView
       {
         scrollTo(0, 0);
       }
-      this.jdField_a_of_type_Int = -1;
+      this.b = -1;
       return true;
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getY();
-      this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
+      this.a = paramMotionEvent.getY();
+      this.b = paramMotionEvent.getPointerId(0);
     }
     label145:
     return true;
@@ -82,12 +82,12 @@ public class UpScrollHideView
   
   public void setOnViewHideListener(UpScrollHideView.onViewHideListener paramonViewHideListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetUpScrollHideView$onViewHideListener = paramonViewHideListener;
+    this.d = paramonViewHideListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.UpScrollHideView
  * JD-Core Version:    0.7.0.1
  */

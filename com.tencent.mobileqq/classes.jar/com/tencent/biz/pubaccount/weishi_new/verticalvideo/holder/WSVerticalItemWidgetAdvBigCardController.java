@@ -21,69 +21,38 @@ public class WSVerticalItemWidgetAdvBigCardController
   extends AbsWsVerticalUIGroup
   implements View.OnClickListener
 {
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSBigCardCommercialInfo jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private WSVerticalItemWidgetAdvBigCardController.BigCardStatusChangeListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController$BigCardStatusChangeListener;
-  private WSBezierInterpolator jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoUtilsWSBezierInterpolator;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private WSBezierInterpolator jdField_b_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoUtilsWSBezierInterpolator;
-  private View c;
-  private int d;
+  private View g;
+  private TextView h;
+  private TextView i;
+  private KandianUrlImageView j;
+  private WSVerticalPageFragment k;
+  private int l;
+  private boolean m = false;
+  private WSBigCardCommercialInfo n;
+  private WSVerticalItemWidgetAdvBigCardController.BigCardStatusChangeListener o;
+  private ValueAnimator p;
+  private ValueAnimator q;
+  private WSBezierInterpolator r;
+  private WSBezierInterpolator s;
+  private int t;
   
-  public WSVerticalItemWidgetAdvBigCardController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder, View paramView)
+  public WSVerticalItemWidgetAdvBigCardController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder, int paramInt)
   {
     super(paramContext);
-    this.c = paramView;
+    this.t = paramInt;
     if (paramWSVerticalVideoHolder != null) {
-      paramContext = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      paramContext = paramWSVerticalVideoHolder.d;
     } else {
       paramContext = null;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoUtilsWSBezierInterpolator = new WSBezierInterpolator(0.42F, 0.0F, 1.0F, 1.0F);
-    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoUtilsWSBezierInterpolator = new WSBezierInterpolator(0.0F, 0.0F, 0.58F, 1.0F);
+    this.k = paramContext;
+    this.r = new WSBezierInterpolator(0.42F, 0.0F, 1.0F, 1.0F);
+    this.s = new WSBezierInterpolator(0.0F, 0.0F, 0.58F, 1.0F);
   }
   
-  private boolean a()
+  private void f(int paramInt)
   {
-    WSBigCardCommercialInfo localWSBigCardCommercialInfo = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo;
-    return (localWSBigCardCommercialInfo != null) && (localWSBigCardCommercialInfo.a());
-  }
-  
-  private int c()
-  {
-    if (this.d <= ViewUtils.a(92.0F))
-    {
-      Object localObject = this.c;
-      int i;
-      if (localObject == null) {
-        i = 0;
-      } else {
-        i = ((View)localObject).getMeasuredHeight();
-      }
-      int j = ViewUtils.a(92.0F);
-      this.d = (i + j);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("initTransitionDistance:");
-      ((StringBuilder)localObject).append(this.d);
-      ((StringBuilder)localObject).append(", bottomHeight:");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(", selfHeight:");
-      ((StringBuilder)localObject).append(j);
-      WSLog.a("WSAdvBigCardController", ((StringBuilder)localObject).toString());
-    }
-    return this.d;
-  }
-  
-  private void e(int paramInt)
-  {
-    if (!a())
+    if (!l())
     {
       WSLog.a("WSAdvBigCardController", "planToHideCard return");
       return;
@@ -92,55 +61,80 @@ public class WSVerticalItemWidgetAdvBigCardController
     localStringBuilder.append("planToHideCard delayTime:");
     localStringBuilder.append(paramInt);
     WSLog.a("WSAdvBigCardController", localStringBuilder.toString());
-    i();
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setStartDelay(paramInt);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
+    p();
+    this.q.setStartDelay(paramInt);
+    this.q.start();
   }
   
-  private void f()
+  private boolean l()
   {
-    if (WeishiUtils.c()) {
+    WSBigCardCommercialInfo localWSBigCardCommercialInfo = this.n;
+    return (localWSBigCardCommercialInfo != null) && (localWSBigCardCommercialInfo.j());
+  }
+  
+  private void m()
+  {
+    if (WeishiUtils.o()) {
       return;
     }
-    e(0);
+    f(0);
   }
   
-  private void g()
+  private void n()
   {
-    WSVerticalJumpUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, (WSVerticalItemData)a(), true);
+    WSVerticalJumpUtils.a(this.k, (WSVerticalItemData)c(), true);
   }
   
-  private void h()
+  private void o()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.p;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    int i = c();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { i, 0 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoUtilsWSBezierInterpolator);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new WSVerticalItemWidgetAdvBigCardController.1(this, i, 0));
+    int i1 = q();
+    this.p = ObjectAnimator.ofFloat(this.b, "translationY", new float[] { i1, 0 });
+    this.p.setInterpolator(this.r);
+    this.p.setDuration(300L);
+    this.p.addListener(new WSVerticalItemWidgetAdvBigCardController.1(this, i1, 0));
   }
   
-  private void i()
+  private void p()
   {
-    ValueAnimator localValueAnimator = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.q;
     if (localValueAnimator != null) {
       localValueAnimator.cancel();
     }
-    int i = c();
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "translationY", new float[] { 0, i });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoUtilsWSBezierInterpolator);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new WSVerticalItemWidgetAdvBigCardController.2(this, 0, i));
+    int i1 = q();
+    this.q = ObjectAnimator.ofFloat(this.b, "translationY", new float[] { 0, i1 });
+    this.q.setInterpolator(this.s);
+    this.q.setDuration(300L);
+    this.q.addListener(new WSVerticalItemWidgetAdvBigCardController.2(this, 0, i1));
   }
   
-  private void j()
+  private int q()
   {
-    Object localObject = (WSVerticalItemData)a();
-    if ((localObject != null) && (((WSVerticalItemData)localObject).a() != null)) {
-      localObject = ((WSVerticalItemData)localObject).a().feed_desc;
+    if (this.l <= ViewUtils.dip2px(92.0F))
+    {
+      int i1 = this.t;
+      int i2 = ViewUtils.dip2px(92.0F);
+      this.l = (i1 + i2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initTransitionDistance:");
+      localStringBuilder.append(this.l);
+      localStringBuilder.append(", bottomHeight:");
+      localStringBuilder.append(i1);
+      localStringBuilder.append(", selfHeight:");
+      localStringBuilder.append(i2);
+      WSLog.a("WSAdvBigCardController", localStringBuilder.toString());
+    }
+    return this.l;
+  }
+  
+  private void r()
+  {
+    Object localObject = (WSVerticalItemData)c();
+    if ((localObject != null) && (((WSVerticalItemData)localObject).b() != null)) {
+      localObject = ((WSVerticalItemData)localObject).b().feed_desc;
     } else {
       localObject = null;
     }
@@ -149,28 +143,28 @@ public class WSVerticalItemWidgetAdvBigCardController
     localStringBuilder2.append("feedDesc:");
     localStringBuilder2.append((String)localObject);
     localStringBuilder1.append(localStringBuilder2.toString());
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo != null)
+    if (this.n != null)
     {
       localStringBuilder1.append(", wsCommercialInfo:[");
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("bigCardIcon:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.d());
+      ((StringBuilder)localObject).append(this.n.f());
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(",bigCardTitle:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.c());
+      ((StringBuilder)localObject).append(this.n.e());
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(",bigCardBtnText:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.e());
+      ((StringBuilder)localObject).append(this.n.g());
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(",smallCardText:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.b());
+      ((StringBuilder)localObject).append(this.n.c());
       localStringBuilder1.append(((StringBuilder)localObject).toString());
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(",smallCardIcon:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.a());
+      ((StringBuilder)localObject).append(this.n.b());
       ((StringBuilder)localObject).append("]");
       localStringBuilder1.append(((StringBuilder)localObject).toString());
     }
@@ -181,137 +175,137 @@ public class WSVerticalItemWidgetAdvBigCardController
     WSLog.a("WSAdvBigCardController", localStringBuilder1.toString());
   }
   
-  private void k()
+  private void s()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
       WSLog.a("WSAdvBigCardController", "resetCardStatus view null");
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setTranslationY(c());
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.b.setTranslationY(q());
+    this.b.setVisibility(8);
   }
   
-  private void l()
+  private void t()
   {
-    if (!a())
+    if (!l())
     {
       WSLog.a("WSAdvBigCardController", "planToShowCard return");
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    h();
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.b();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(i);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.m = false;
+    o();
+    int i1 = this.n.h();
+    this.p.setStartDelay(i1);
+    this.p.start();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("planToShowCard delayStartTime:");
-    localStringBuilder.append(i);
+    localStringBuilder.append(i1);
     WSLog.a("WSAdvBigCardController", localStringBuilder.toString());
   }
   
   protected void a()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if ((localWSVerticalItemData.a() instanceof WSBigCardCommercialInfo))
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
+    if ((localWSVerticalItemData.f() instanceof WSBigCardCommercialInfo))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo = ((WSBigCardCommercialInfo)localWSVerticalItemData.a());
-      j();
+      this.n = ((WSBigCardCommercialInfo)localWSVerticalItemData.f());
+      r();
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo = null;
+    this.n = null;
   }
   
   public void a(WSVerticalItemWidgetAdvBigCardController.BigCardStatusChangeListener paramBigCardStatusChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalItemWidgetAdvBigCardController$BigCardStatusChangeListener = paramBigCardStatusChangeListener;
-  }
-  
-  protected int b()
-  {
-    return 2131559987;
+    this.o = paramBigCardStatusChangeListener;
   }
   
   protected void b()
   {
-    if (a())
+    if (l())
     {
       WSLog.b("WSAdvBigCardController", "onUpdateUI");
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.c());
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.e());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setImage(WeishiUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommercialWSBigCardCommercialInfo.d()));
-      k();
-      if (this.jdField_a_of_type_Boolean) {
-        l();
+      this.h.setText(this.n.e());
+      this.i.setText(this.n.g());
+      this.j.setImage(WeishiUtils.c(this.n.f()));
+      s();
+      if (this.m) {
+        t();
       }
     }
     a(8);
   }
   
-  protected void c()
-  {
-    WSLog.b("WSAdvBigCardController", "onRecycle");
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if (localValueAnimator != null) {
-      localValueAnimator.cancel();
-    }
-    localValueAnimator = this.jdField_b_of_type_AndroidAnimationValueAnimator;
-    if (localValueAnimator != null) {
-      localValueAnimator.cancel();
-    }
-  }
-  
-  protected void c(int paramInt)
+  protected void d(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onPageSelected， position:");
     localStringBuilder.append(paramInt);
     WSLog.b("WSAdvBigCardController", localStringBuilder.toString());
-    if (!a())
+    if (!l())
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.m = true;
       return;
     }
-    l();
+    t();
   }
   
-  protected void d(int paramInt)
+  protected void e(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onPageUnselected， position:");
     localStringBuilder.append(paramInt);
     WSLog.b("WSAdvBigCardController", localStringBuilder.toString());
-    if (!a()) {
+    if (!l()) {
       return;
     }
-    e(0);
+    f(0);
   }
   
-  protected void e()
+  protected void f()
   {
-    this.jdField_b_of_type_AndroidViewView = a(2131363523);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363525));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131363522));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131363526));
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    WSLog.b("WSAdvBigCardController", "onRecycle");
+    ValueAnimator localValueAnimator = this.p;
+    if (localValueAnimator != null) {
+      localValueAnimator.cancel();
+    }
+    localValueAnimator = this.q;
+    if (localValueAnimator != null) {
+      localValueAnimator.cancel();
+    }
+  }
+  
+  protected int i()
+  {
+    return 2131626030;
+  }
+  
+  protected void j()
+  {
+    this.g = c(2131429427);
+    this.h = ((TextView)c(2131429429));
+    this.i = ((TextView)c(2131429426));
+    this.j = ((KandianUrlImageView)c(2131429430));
+    this.g.setOnClickListener(this);
+    this.i.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_b_of_type_AndroidViewView)
+    if (paramView == this.g)
     {
-      f();
+      m();
       return;
     }
-    if (paramView == this.jdField_b_of_type_AndroidWidgetTextView) {
-      g();
+    if (paramView == this.i) {
+      n();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemWidgetAdvBigCardController
  * JD-Core Version:    0.7.0.1
  */

@@ -15,19 +15,19 @@ import tencent.im.msg.im_msg_head.HttpConnHead;
 class BigDataHandler$BigDataDownloadListener
   implements INetEngineListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject = null;
-  private WeakReference<BigDataHandler> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
+  private int a = -1;
   private int b = -1;
+  private Object c = null;
+  private WeakReference<BigDataHandler> d = null;
+  private byte[] e = null;
   
   public BigDataHandler$BigDataDownloadListener(int paramInt1, BigDataHandler paramBigDataHandler, byte[] paramArrayOfByte, int paramInt2, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBigDataHandler);
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.c = paramObject;
+    this.d = new WeakReference(paramBigDataHandler);
+    this.e = paramArrayOfByte;
   }
   
   public void onResp(NetResp paramNetResp)
@@ -35,7 +35,7 @@ class BigDataHandler$BigDataDownloadListener
     if (QLog.isColorLevel()) {
       QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp");
     }
-    BigDataHandler localBigDataHandler = (BigDataHandler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    BigDataHandler localBigDataHandler = (BigDataHandler)this.d.get();
     if (localBigDataHandler == null)
     {
       if (QLog.isColorLevel()) {
@@ -80,8 +80,8 @@ class BigDataHandler$BigDataDownloadListener
             {
               localObject1 = new byte[j];
               paramNetResp.read((byte[])localObject1);
-              paramNetResp = new Cryptor().decrypt((byte[])localObject1, this.jdField_a_of_type_ArrayOfByte);
-              localBigDataHandler.a(this.jdField_a_of_type_Int, true, paramNetResp, this.b, this.jdField_a_of_type_JavaLangObject);
+              paramNetResp = new Cryptor().decrypt((byte[])localObject1, this.e);
+              localBigDataHandler.a(this.a, true, paramNetResp, this.b, this.c);
               return;
             }
             if (QLog.isColorLevel())
@@ -91,7 +91,7 @@ class BigDataHandler$BigDataDownloadListener
               paramNetResp.append(i);
               QLog.d("BigDataHandler", 2, paramNetResp.toString());
             }
-            localBigDataHandler.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+            localBigDataHandler.a(this.a, false, null, this.b, this.c);
             return;
           }
           if (QLog.isColorLevel())
@@ -103,7 +103,7 @@ class BigDataHandler$BigDataDownloadListener
             paramNetResp.append(j);
             QLog.d("BigDataHandler", 2, paramNetResp.toString());
           }
-          localBigDataHandler.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+          localBigDataHandler.a(this.a, false, null, this.b, this.c);
           return;
         }
         localObject1 = new StringBuilder();
@@ -129,7 +129,7 @@ class BigDataHandler$BigDataDownloadListener
           ((StringBuilder)localObject2).append((String)localObject1);
           QLog.d("BigDataHandler", 2, ((StringBuilder)localObject2).toString());
         }
-        localBigDataHandler.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+        localBigDataHandler.a(this.a, false, null, this.b, this.c);
         return;
       }
       catch (Exception paramNetResp)
@@ -141,7 +141,7 @@ class BigDataHandler$BigDataDownloadListener
           ((StringBuilder)localObject1).append(paramNetResp.getMessage());
           QLog.d("BigDataHandler", 2, ((StringBuilder)localObject1).toString());
         }
-        localBigDataHandler.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+        localBigDataHandler.a(this.a, false, null, this.b, this.c);
         return;
       }
     }
@@ -158,14 +158,14 @@ class BigDataHandler$BigDataDownloadListener
       ((StringBuilder)localObject1).append(i);
       QLog.d("BigDataHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    localBigDataHandler.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
+    localBigDataHandler.a(this.a, false, null, this.b, this.c);
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.BigDataHandler.BigDataDownloadListener
  * JD-Core Version:    0.7.0.1
  */

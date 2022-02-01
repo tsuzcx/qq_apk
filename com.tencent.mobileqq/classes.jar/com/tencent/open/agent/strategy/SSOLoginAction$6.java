@@ -14,20 +14,20 @@ class SSOLoginAction$6
   public void a(AccountInfo paramAccountInfo)
   {
     AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", paramAccountInfo);
-    AuthMemoryCache.a().a(this.jdField_a_of_type_JavaLangString, paramAccountInfo);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, false);
+    AuthMemoryCache.a().a(this.b, paramAccountInfo);
+    SSOLoginAction.a(this.d, this.a, this.b, false);
   }
   
   public void a(String paramString, Bundle paramBundle)
   {
     AuthReporter.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", "", false);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, false, true);
-    AuthReporter.a(this.b, "0X800B65D");
+    SSOLoginAction.a(this.d, this.a, this.b, false, true);
+    AuthReporter.a(this.c, "0X800B65D");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.6
  * JD-Core Version:    0.7.0.1
  */

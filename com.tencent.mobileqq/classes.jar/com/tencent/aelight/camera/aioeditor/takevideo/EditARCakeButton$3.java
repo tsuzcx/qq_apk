@@ -12,20 +12,20 @@ class EditARCakeButton$3
   
   public void a(boolean paramBoolean, int paramInt, @NonNull String paramString, @NonNull AIOShareObject paramAIOShareObject)
   {
-    if (TextUtils.equals(EditARCakeButton.a(this.a), paramString))
+    if (TextUtils.equals(EditARCakeButton.d(this.a), paramString))
     {
       if (paramBoolean)
       {
-        EditARCakeButton.b(this.a);
+        EditARCakeButton.e(this.a);
         return;
       }
-      EditARCakeButton.c(this.a);
+      EditARCakeButton.f(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditARCakeButton.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ class ARScanEntryView$25
   
   public void run()
   {
-    ARScanEntryView.d(this.this$0);
-    this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.this$0.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new ARScanEntryView.25.1(this));
+    ARScanEntryView.n(this.this$0);
+    this.this$0.f.setVisibility(8);
+    this.this$0.e.setVisibility(0);
+    this.this$0.e.setOnClickListener(new ARScanEntryView.25.1(this));
     if (QLog.isColorLevel()) {
       QLog.i("AREngine_ARScanEntryView", 2, "onMultiARAnimationInteraction 请点击屏幕进入下一动画片段！");
     }
@@ -24,7 +24,7 @@ class ARScanEntryView$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.25
  * JD-Core Version:    0.7.0.1
  */

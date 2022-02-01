@@ -12,8 +12,8 @@ class EditTextDialog$5
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.a(this.a.a.b(), true);
+    if ((paramBoolean) && (this.a.y != null)) {
+      this.a.y.a(this.a.y.g(), true);
     }
     paramView = new StringBuilder();
     paramView.append("onFocusChange:");
@@ -23,7 +23,7 @@ class EditTextDialog$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.5
  * JD-Core Version:    0.7.0.1
  */

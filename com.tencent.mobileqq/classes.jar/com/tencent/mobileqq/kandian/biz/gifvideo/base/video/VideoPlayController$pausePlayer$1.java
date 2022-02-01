@@ -18,16 +18,16 @@ final class VideoPlayController$pausePlayer$1
   
   public final void invoke()
   {
-    IPlayer localIPlayer = this.this$0.a();
+    IPlayer localIPlayer = this.this$0.i();
     if (localIPlayer != null) {
-      localIPlayer.b();
+      localIPlayer.h();
     }
     this.$runnable.invoke();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.pausePlayer.1
  * JD-Core Version:    0.7.0.1
  */

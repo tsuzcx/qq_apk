@@ -11,12 +11,12 @@ class EditLocalVideoActivity$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    EditLocalVideoActivity.g(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.3
  * JD-Core Version:    0.7.0.1
  */

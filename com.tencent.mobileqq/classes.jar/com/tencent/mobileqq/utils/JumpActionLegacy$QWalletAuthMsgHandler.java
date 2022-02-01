@@ -17,10 +17,10 @@ class JumpActionLegacy$QWalletAuthMsgHandler
     if (paramMessage.what != 1) {
       return;
     }
-    if (JumpActionLegacy.a(this.a) != null)
+    if (JumpActionLegacy.i(this.a) != null)
     {
-      JumpActionLegacy.a(this.a).a();
-      this.a.a.removeObserver(JumpActionLegacy.a(this.a));
+      JumpActionLegacy.i(this.a).a();
+      this.a.H.removeObserver(JumpActionLegacy.i(this.a));
     }
     if (paramMessage.arg1 != 1)
     {
@@ -35,7 +35,7 @@ class JumpActionLegacy$QWalletAuthMsgHandler
       paramMessage = (RespCheckChangePwdAuth)paramMessage.obj;
       if (paramMessage.retCode == 0)
       {
-        JumpActionLegacy.b(this.a);
+        JumpActionLegacy.j(this.a);
         return;
       }
       if (QLog.isColorLevel())
@@ -53,7 +53,7 @@ class JumpActionLegacy$QWalletAuthMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.QWalletAuthMsgHandler
  * JD-Core Version:    0.7.0.1
  */

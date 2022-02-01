@@ -17,7 +17,7 @@ class LocationShareViewModel$3
   
   public Pair<LocationRoom.RoomKey, LocationRoom.Venue> a()
   {
-    return new Pair(LocationShareViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+    return new Pair(LocationShareViewModel.a(this.b), this.a);
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
@@ -37,7 +37,7 @@ class LocationShareViewModel$3
       localStringBuilder.append(paramInt2);
       QLog.d("Q.LocationShare", 2, new Object[] { localObject, localStringBuilder.toString() });
     }
-    if (paramRoomKey.equals(LocationShareViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel)))
+    if (paramRoomKey.equals(LocationShareViewModel.a(this.b)))
     {
       if (paramVenue == null) {
         return;
@@ -48,7 +48,7 @@ class LocationShareViewModel$3
       }
       else
       {
-        QQToast.a(LocationShareViewModel.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel), 1, "移除失败，请稍后重试", 0).a();
+        QQToast.makeText(LocationShareViewModel.b(this.b), 1, "移除失败，请稍后重试", 0).show();
         if ((paramInt2 != 10001) && (paramInt2 != 10003) && (paramInt2 != 10004) && (paramInt2 != 10100)) {
           ReportController.b(null, "CliOper", "", "", "0X800A96A", "0X800A96A", 1, 0, "0", "0", "0", "");
         } else {
@@ -56,16 +56,16 @@ class LocationShareViewModel$3
         }
       }
       paramRoomKey = new VenueOptBean();
-      paramRoomKey.b = 2;
-      paramRoomKey.c = 2;
-      paramRoomKey.a = paramBoolean;
-      this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel.c.postValue(paramRoomKey);
+      paramRoomKey.d = 2;
+      paramRoomKey.e = 2;
+      paramRoomKey.b = paramBoolean;
+      this.b.c.postValue(paramRoomKey);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.LocationShareViewModel.3
  * JD-Core Version:    0.7.0.1
  */

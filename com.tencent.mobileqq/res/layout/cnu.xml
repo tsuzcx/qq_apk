@@ -1,8 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.kandian.base.view.widget.FixWidthRatioRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:ratioH="1" app:ratioW="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.image.URLImageView android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/enp" android:background="@drawable/e7_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h41" />
-    </FrameLayout>
-</com.tencent.mobileqq.kandian.base.view.widget.FixWidthRatioRelativeLayout>
+<TextView android:id="@android:id/title" android:background="@color/0" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/2c" android:maxHeight="@dimen/2c" android:minHeight="@dimen/2c" android:contentDescription="分隔栏"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

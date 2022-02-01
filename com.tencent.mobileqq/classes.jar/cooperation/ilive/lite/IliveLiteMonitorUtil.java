@@ -19,10 +19,8 @@ import mqq.os.MqqHandler;
 
 public class IliveLiteMonitorUtil
 {
-  private static long jdField_a_of_type_Long = 0L;
-  private static boolean jdField_a_of_type_Boolean = true;
-  private static long jdField_b_of_type_Long = 0L;
-  private static boolean jdField_b_of_type_Boolean = true;
+  private static boolean a = true;
+  private static boolean b = true;
   private static boolean c = true;
   private static boolean d = true;
   private static boolean e = true;
@@ -30,29 +28,18 @@ public class IliveLiteMonitorUtil
   private static boolean g = true;
   private static boolean h = true;
   private static boolean i = true;
-  private static boolean j = true;
-  
-  public static long a()
-  {
-    return jdField_b_of_type_Long;
-  }
-  
-  public static HashMap<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("cpu_num", String.valueOf(DeviceInfoUtil.b()));
-    localHashMap.put("device_level", String.valueOf(DeviceInfoUtils.a()));
-    return localHashMap;
-  }
+  private static long j = 0L;
+  private static long k = 0L;
+  private static boolean l = true;
   
   public static void a()
   {
-    if (!jdField_b_of_type_Boolean) {
+    if (!b) {
       return;
     }
     a("live_activity_launch");
     a("live_activity_frame");
-    jdField_b_of_type_Boolean = false;
+    b = false;
   }
   
   public static void a(int paramInt)
@@ -62,7 +49,7 @@ public class IliveLiteMonitorUtil
     }
     a("live_click_process_state");
     HashMap localHashMap = new HashMap();
-    boolean bool = b();
+    boolean bool = f();
     String str2 = "1";
     String str1;
     if (bool) {
@@ -71,7 +58,7 @@ public class IliveLiteMonitorUtil
       str1 = "0";
     }
     localHashMap.put("tool_exist", str1);
-    if (c()) {
+    if (g()) {
       str1 = str2;
     } else {
       str1 = "0";
@@ -102,18 +89,18 @@ public class IliveLiteMonitorUtil
   
   public static void a(String paramString1, String paramString2)
   {
-    if (!TimeMonitorManager.a().a(paramString1)) {
+    if (!TimeMonitorManager.a().c(paramString1)) {
       return;
     }
-    TimeMonitorManager.a().a(paramString1).a(paramString2);
+    TimeMonitorManager.a().d(paramString1).a(paramString2);
   }
   
   public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    if (!TimeMonitorManager.a().a(paramString)) {
+    if (!TimeMonitorManager.a().c(paramString)) {
       return;
     }
-    TimeMonitorManager.a().a(paramString).a(paramString, paramHashMap);
+    TimeMonitorManager.a().d(paramString).a(paramString, paramHashMap);
     TimeMonitorManager.a().a(paramString);
   }
   
@@ -127,8 +114,8 @@ public class IliveLiteMonitorUtil
       str = "0";
     }
     localHashMap.put("has_cache", str);
-    localHashMap.put("offest_time", String.valueOf(jdField_a_of_type_Long));
-    jdField_a_of_type_Boolean = false;
+    localHashMap.put("offest_time", String.valueOf(j));
+    a = false;
     a("lite_login_auth", localHashMap);
   }
   
@@ -155,11 +142,6 @@ public class IliveLiteMonitorUtil
     a("live_enter_with_rtmp", localHashMap);
   }
   
-  public static boolean a()
-  {
-    return (b()) && (c());
-  }
-  
   public static void b()
   {
     if (!d) {
@@ -182,7 +164,7 @@ public class IliveLiteMonitorUtil
   
   public static void b(String paramString)
   {
-    if (!TimeMonitorManager.a().a(paramString)) {
+    if (!TimeMonitorManager.a().c(paramString)) {
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -194,13 +176,8 @@ public class IliveLiteMonitorUtil
     }
     localHashMap.put("is_first", str);
     h = false;
-    TimeMonitorManager.a().a(paramString).a(localHashMap);
+    TimeMonitorManager.a().d(paramString).a(localHashMap);
     TimeMonitorManager.a().a(paramString);
-  }
-  
-  public static boolean b()
-  {
-    return PreloadProcHitSession.a("com.tencent.mobileqq:tool");
   }
   
   public static void c()
@@ -210,16 +187,11 @@ public class IliveLiteMonitorUtil
   
   public static void c(String paramString)
   {
-    if (!TimeMonitorManager.a().a(paramString)) {
+    if (!TimeMonitorManager.a().c(paramString)) {
       return;
     }
-    TimeMonitorManager.a().a(paramString).b(paramString);
+    TimeMonitorManager.a().d(paramString).b(paramString);
     TimeMonitorManager.a().a(paramString);
-  }
-  
-  public static boolean c()
-  {
-    return IliveEntranceUtil.a(BaseApplicationImpl.getContext(), "com.tencent.mobileqq.activity.PreloadWebService");
   }
   
   public static void d()
@@ -227,19 +199,19 @@ public class IliveLiteMonitorUtil
     if (!g) {
       return;
     }
-    TimeMonitorManager.a().a("live_launch_total_time", a());
+    TimeMonitorManager.a().a("live_launch_total_time", j());
     c("live_launch_total_time");
     g = false;
   }
   
   public static void d(String paramString)
   {
-    if (jdField_b_of_type_Long != 0L) {
+    if (k != 0L) {
       return;
     }
     try
     {
-      jdField_b_of_type_Long = Long.parseLong(paramString);
+      k = Long.parseLong(paramString);
       return;
     }
     catch (NumberFormatException paramString)
@@ -249,33 +221,34 @@ public class IliveLiteMonitorUtil
     }
   }
   
-  private static boolean d()
-  {
-    BusinessConfig localBusinessConfig = LiteLiveSDKFactory.a().a();
-    if (localBusinessConfig == null) {
-      return false;
-    }
-    return "1".equals(localBusinessConfig.a.get("has_preload"));
-  }
-  
   public static void e()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       return;
     }
     a("lite_login_auth");
-    jdField_a_of_type_Long = System.currentTimeMillis() - LocalMultiProcConfig.getLong4Uin("key_qq_ilive_connect_auth_time", 0L, IliveAuthManager.getLongUin());
-    jdField_a_of_type_Boolean = false;
+    j = System.currentTimeMillis() - LocalMultiProcConfig.getLong4Uin("key_qq_ilive_connect_auth_time", 0L, IliveAuthManager.getLongUin());
+    a = false;
   }
   
-  public static void f()
+  public static boolean f()
   {
-    if (!j) {
+    return PreloadProcHitSession.a("com.tencent.mobileqq:tool");
+  }
+  
+  public static boolean g()
+  {
+    return IliveEntranceUtil.b(BaseApplicationImpl.getContext(), "com.tencent.mobileqq.activity.PreloadWebService");
+  }
+  
+  public static void h()
+  {
+    if (!l) {
       return;
     }
     a("live_has_init_sdk");
     HashMap localHashMap = new HashMap();
-    boolean bool = LiteLiveSDKFactory.a().a();
+    boolean bool = LiteLiveSDKFactory.a().c();
     String str2 = "1";
     String str1;
     if (bool) {
@@ -284,27 +257,49 @@ public class IliveLiteMonitorUtil
       str1 = "0";
     }
     localHashMap.put("has_init_sdk", str1);
-    if (d()) {
+    if (l()) {
       str1 = str2;
     } else {
       str1 = "0";
     }
     localHashMap.put("has_enter_preload", str1);
-    j = false;
+    l = false;
     a("live_has_init_sdk", localHashMap);
   }
   
-  public static void g()
+  public static HashMap<String, String> i()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cpu_num", String.valueOf(DeviceInfoUtil.h()));
+    localHashMap.put("device_level", String.valueOf(DeviceInfoUtils.getPerfLevel()));
+    return localHashMap;
+  }
+  
+  public static long j()
+  {
+    return k;
+  }
+  
+  public static void k()
   {
     if (!i) {
       return;
     }
     ThreadManager.getFileThreadHandler().post(new IliveLiteMonitorUtil.1());
   }
+  
+  private static boolean l()
+  {
+    BusinessConfig localBusinessConfig = LiteLiveSDKFactory.a().b();
+    if (localBusinessConfig == null) {
+      return false;
+    }
+    return "1".equals(localBusinessConfig.m.get("has_preload"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.IliveLiteMonitorUtil
  * JD-Core Version:    0.7.0.1
  */

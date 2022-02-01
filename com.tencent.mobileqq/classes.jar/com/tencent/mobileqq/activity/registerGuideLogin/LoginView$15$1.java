@@ -10,16 +10,16 @@ class LoginView$15$1
   
   public void run()
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.this$0.a.isFinishing()))
+    if ((this.a.b != null) && (this.a.b.isShowing()) && (!this.a.this$0.b.isFinishing()))
     {
-      this.a.a.dismiss();
-      this.a.a.cancel();
+      this.a.b.dismiss();
+      this.a.b.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.15.1
  * JD-Core Version:    0.7.0.1
  */

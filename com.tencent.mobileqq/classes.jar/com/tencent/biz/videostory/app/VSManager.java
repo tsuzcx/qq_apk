@@ -10,12 +10,12 @@ public class VSManager
   implements Manager
 {
   protected static BaseApplicationImpl a;
-  public static boolean a = true;
-  private AppInterface a;
+  public static boolean b = true;
+  private AppInterface c;
   
   public VSManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.c = paramAppInterface;
     a();
   }
   
@@ -23,9 +23,9 @@ public class VSManager
   {
     try
     {
-      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = false;
+      a = BaseApplicationImpl.getApplication();
+      if (b) {
+        b = false;
       }
       VSConfigManager.a();
       QLog.i("Q.videostory.VSManager", 1, "init");
@@ -38,7 +38,7 @@ public class VSManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.app.VSManager
  * JD-Core Version:    0.7.0.1
  */

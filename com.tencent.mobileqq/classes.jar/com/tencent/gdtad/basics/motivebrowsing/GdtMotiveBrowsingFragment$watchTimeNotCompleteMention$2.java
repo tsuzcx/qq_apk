@@ -12,12 +12,12 @@ final class GdtMotiveBrowsingFragment$watchTimeNotCompleteMention$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GdtMotiveBrowsingFragment.c(this.a);
+    GdtMotiveBrowsingFragment.j(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingFragment.watchTimeNotCompleteMention.2
  * JD-Core Version:    0.7.0.1
  */

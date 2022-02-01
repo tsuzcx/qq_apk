@@ -17,18 +17,18 @@ import java.net.URL;
 class QidianProfileCardActivity$ForwardRunnable
   implements Runnable
 {
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private WeakReference<QidianProfileCardActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QidianProfileCardActivity> a;
+  private URLDrawable b;
   
   QidianProfileCardActivity$ForwardRunnable(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQidianProfileCardActivity);
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.a = new WeakReference(paramQidianProfileCardActivity);
+    this.b = paramURLDrawable;
   }
   
   public void run()
   {
-    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.a.get();
     if (localQidianProfileCardActivity == null) {
       return;
     }
@@ -40,14 +40,14 @@ class QidianProfileCardActivity$ForwardRunnable
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(AppConstants.SDCARD_IMG_FORWARD_URLDRAWABLE);
-    ((StringBuilder)localObject).append(Utils.Crc64String(localQidianProfileCardActivity.a.allInOne.uin));
-    ((StringBuilder)localObject).append(Utils.Crc64String(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString()));
+    ((StringBuilder)localObject).append(Utils.Crc64String(localQidianProfileCardActivity.e.allInOne.uin));
+    ((StringBuilder)localObject).append(Utils.Crc64String(this.b.getURL().toString()));
     String str = ((StringBuilder)localObject).toString();
     localObject = str;
     if (!new File(str).exists()) {
       try
       {
-        localObject = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(str);
+        localObject = this.b.saveTo(str);
       }
       catch (IOException localIOException)
       {
@@ -59,9 +59,9 @@ class QidianProfileCardActivity$ForwardRunnable
       }
     }
     localBundle.putBoolean("forward_urldrawable", true);
-    localBundle.putString("forward_urldrawable_thumb_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    localBundle.putString("forward_urldrawable_thumb_url", this.b.getURL().toString());
     localBundle.putString("forward_filepath", localIOException);
-    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
+    localBundle.putString("forward_urldrawable_big_url", this.b.getURL().toString());
     localBundle.putString("forward_extra", localIOException);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
@@ -70,7 +70,7 @@ class QidianProfileCardActivity$ForwardRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.ForwardRunnable
  * JD-Core Version:    0.7.0.1
  */

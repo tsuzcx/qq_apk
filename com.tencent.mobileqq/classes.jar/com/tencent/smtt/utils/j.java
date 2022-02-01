@@ -1,242 +1,218 @@
 package com.tencent.smtt.utils;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
-import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.smtt.sdk.WebView;
+import android.util.Log;
+import com.tencent.smtt.sdk.c;
+import java.security.MessageDigest;
+import java.util.Locale;
+import java.util.Random;
+import java.util.UUID;
 
 public class j
 {
-  private static String a;
-  private static String b = "GA";
-  private static String c = "GE";
-  private static String d = "9422";
-  private static String e = "0";
-  private static String f = "";
-  private static boolean g = false;
-  private static boolean h = false;
-  private static boolean i = false;
+  private static SharedPreferences a;
+  private static SharedPreferences.Editor b;
   
   private static String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" ");
-    localStringBuilder.append(Build.MODEL.replaceAll("[ |\\/|\\_|\\&|\\|]", ""));
-    localStringBuilder.append(" ");
-    return localStringBuilder.toString();
+    try
+    {
+      String str = Build.SERIAL;
+      if (!TextUtils.isEmpty(str)) {
+        if (!str.contains("unknown")) {
+          return str;
+        }
+      }
+      str = b();
+      return str;
+    }
+    catch (Exception localException)
+    {
+      return "unknown";
+    }
+    return localException;
   }
   
   public static String a(Context paramContext)
   {
-    if (!TextUtils.isEmpty(a)) {
-      return a;
+    if (!c(paramContext)) {
+      return "";
     }
-    a = a(paramContext, String.valueOf(WebView.getTbsSDKVersion(paramContext)), "0", b, c, d, e, f, g);
-    return a;
+    a = paramContext.getApplicationContext().getSharedPreferences("tsui", 0);
+    Object localObject = a;
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).getString("tsui", "");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        return localObject;
+      }
+    }
+    localObject = new StringBuilder();
+    String str1 = b();
+    String str2 = b.k(paramContext);
+    String str3 = a();
+    String str4 = b(paramContext).replace("-", "");
+    if ((str1 != null) && (str1.length() > 0))
+    {
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append("|");
+    }
+    if ((str2 != null) && (str2.length() > 0))
+    {
+      ((StringBuilder)localObject).append(str2);
+      ((StringBuilder)localObject).append("|");
+    }
+    if ((str3 != null) && (str3.length() > 0))
+    {
+      ((StringBuilder)localObject).append(str3);
+      ((StringBuilder)localObject).append("|");
+    }
+    if ((str4 != null) && (str4.length() > 0)) {
+      ((StringBuilder)localObject).append(str4);
+    }
+    if (((StringBuilder)localObject).length() > 0) {}
+    try
+    {
+      localObject = a(a(((StringBuilder)localObject).toString()));
+      if ((localObject != null) && (((String)localObject).length() > 0))
+      {
+        a(paramContext, "tsui", (String)localObject);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      label219:
+      break label219;
+    }
+    localObject = UUID.randomUUID().toString().replace("-", "");
+    a(paramContext, "tsui", (String)localObject);
+    return localObject;
   }
   
-  private static String a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean)
+  private static String a(byte[] paramArrayOfByte)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(b(paramContext));
-    ((StringBuilder)localObject).append("*");
-    ((StringBuilder)localObject).append(c(paramContext));
-    String str2 = ((StringBuilder)localObject).toString();
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() == 1) {
+        localStringBuilder.append("0");
+      }
+      localStringBuilder.append(str);
+      i += 1;
+    }
+    return localStringBuilder.toString().toUpperCase(Locale.CHINA);
+  }
+  
+  private static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (a == null) {
+      a = paramContext.getApplicationContext().getSharedPreferences("tsui", 0);
+    }
+    b = a.edit();
+    b.putString(paramString1, paramString2);
+    b.commit();
+  }
+  
+  private static byte[] a(String paramString)
+  {
     try
     {
-      localObject = paramContext.getApplicationContext().getApplicationInfo();
-      PackageInfo localPackageInfo = paramContext.getPackageManager().getPackageInfo(((ApplicationInfo)localObject).packageName, 0);
-      localObject = ((ApplicationInfo)localObject).packageName;
-      try
-      {
-        if (!TextUtils.isEmpty(paramString7)) {
-          break label137;
-        }
-        paramString7 = localPackageInfo.versionName;
-      }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException1)
-      {
-        paramString7 = (String)localObject;
-      }
-      localNameNotFoundException2.printStackTrace();
+      MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
+      localMessageDigest.reset();
+      localMessageDigest.update(paramString.getBytes("UTF-8"));
+      paramString = localMessageDigest.digest();
+      return paramString;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException2)
+    catch (Exception paramString)
     {
-      paramString7 = "";
+      label27:
+      break label27;
     }
-    String str1 = "";
-    localObject = paramString7;
-    paramString7 = str1;
-    label137:
-    String str3 = a((String)localObject);
-    boolean bool = "QB".equals(str3);
-    str1 = "PAD";
-    if (bool)
-    {
-      if (paramBoolean)
-      {
-        paramContext = str1;
-        break label189;
-      }
-    }
-    else if (d(paramContext))
-    {
-      paramContext = str1;
-      break label189;
-    }
-    paramContext = "PHONE";
-    label189:
-    localStringBuilder.append("QV");
-    localStringBuilder.append("=");
-    localStringBuilder.append("3");
-    a(localStringBuilder, "PL", "ADR");
-    a(localStringBuilder, "PR", str3);
-    a(localStringBuilder, "PP", (String)localObject);
-    a(localStringBuilder, "PPVN", paramString7);
-    if (!TextUtils.isEmpty(paramString1)) {
-      a(localStringBuilder, "TBSVC", paramString1);
-    }
-    a(localStringBuilder, "CO", "SYS");
-    if (!TextUtils.isEmpty(paramString2)) {
-      a(localStringBuilder, "COVC", paramString2);
-    }
-    a(localStringBuilder, "PB", paramString4);
-    a(localStringBuilder, "VE", paramString3);
-    a(localStringBuilder, "DE", paramContext);
-    if (TextUtils.isEmpty(paramString6)) {
-      paramString6 = "0";
-    }
-    a(localStringBuilder, "CHID", paramString6);
-    a(localStringBuilder, "LCID", paramString5);
-    paramContext = a();
-    label414:
-    try
-    {
-      paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
-      paramContext = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      label368:
-      break label368;
-    }
-    if (!TextUtils.isEmpty(paramContext)) {
-      a(localStringBuilder, "MO", paramContext);
-    }
-    a(localStringBuilder, "RL", str2);
-    paramContext = Build.VERSION.RELEASE;
-    try
-    {
-      paramString1 = new String(paramContext.getBytes("UTF-8"), "ISO8859-1");
-      paramContext = paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      break label414;
-    }
-    if (!TextUtils.isEmpty(paramContext)) {
-      a(localStringBuilder, "OS", paramContext);
-    }
-    paramContext = new StringBuilder();
-    paramContext.append(Build.VERSION.SDK_INT);
-    paramContext.append("");
-    a(localStringBuilder, "API", paramContext.toString());
+    return "".getBytes();
+  }
+  
+  private static String b()
+  {
+    int i = new Random().nextInt(2147483646);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Build.FINGERPRINT);
+    localStringBuilder.append(i);
     return localStringBuilder.toString();
   }
   
-  private static String a(String paramString)
+  private static String b(Context paramContext)
   {
-    if ("com.tencent.mm".equals(paramString)) {
-      return "WX";
-    }
-    if ("com.tencent.mobileqq".equals(paramString)) {
-      return "QQ";
-    }
-    if ("com.qzone".equals(paramString)) {
-      return "QZ";
-    }
-    if ("com.tencent.mtt".equals(paramString)) {
-      return "QB";
-    }
-    return "TRD";
-  }
-  
-  private static void a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
-  {
-    paramStringBuilder.append("&");
-    paramStringBuilder.append(paramString1);
-    paramStringBuilder.append("=");
-    paramStringBuilder.append(paramString2);
-  }
-  
-  private static int b(Context paramContext)
-  {
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (paramContext != null) {
-      return paramContext.getWidth();
-    }
-    return -1;
-  }
-  
-  private static int c(Context paramContext)
-  {
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (paramContext != null) {
-      return paramContext.getHeight();
-    }
-    return -1;
-  }
-  
-  private static boolean d(Context paramContext)
-  {
-    if (h) {
-      return i;
-    }
-    for (;;)
+    try
     {
-      try
-      {
-        if (Math.min(b(paramContext), c(paramContext)) * 160 / e(paramContext) >= 700)
-        {
-          bool = true;
-          i = bool;
-          h = true;
-          return i;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        return false;
-      }
-      boolean bool = false;
+      paramContext = q.d(paramContext);
+      int i = new Random().nextInt(2147483646);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(i);
+      localStringBuilder.append(Build.BOARD.length() % 10);
+      localStringBuilder.append(Build.BRAND.length() % 10);
+      localStringBuilder.append(Build.DEVICE.length() % 10);
+      localStringBuilder.append(Build.HARDWARE.length() % 10);
+      localStringBuilder.append(Build.ID.length() % 10);
+      localStringBuilder.append(paramContext.length() % 10);
+      localStringBuilder.append(Build.PRODUCT.length() % 10);
+      localStringBuilder.append(Build.SERIAL.length() % 10);
+      paramContext = new UUID(localStringBuilder.toString().hashCode(), Build.SERIAL.hashCode()).toString();
+      return paramContext;
     }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return "";
   }
   
-  private static int e(Context paramContext)
+  private static boolean c(Context paramContext)
   {
-    Object localObject = (WindowManager)paramContext.getSystemService("window");
-    paramContext = new DisplayMetrics();
-    localObject = ((WindowManager)localObject).getDefaultDisplay();
-    if (localObject != null)
+    boolean bool1 = true;
+    try
     {
-      ((Display)localObject).getMetrics(paramContext);
-      return paramContext.densityDpi;
+      boolean bool2 = paramContext.getSharedPreferences("sai", 0).getBoolean("sui", true);
+      bool1 = bool2;
+      localStringBuilder = new StringBuilder();
+      bool1 = bool2;
+      localStringBuilder.append("isSDKUIDEnable is ");
+      bool1 = bool2;
+      localStringBuilder.append(bool2);
+      bool1 = bool2;
+      Log.d("SDKUID", localStringBuilder.toString());
+      bool1 = bool2;
+      localStringBuilder = new StringBuilder();
+      bool1 = bool2;
+      localStringBuilder.append("isSDKUIDEnable is ");
+      bool1 = bool2;
+      localStringBuilder.append(bool2);
+      bool1 = bool2;
+      TbsLog.i("SDKUID", localStringBuilder.toString());
+      bool1 = bool2;
+      c.a().a(paramContext, Integer.valueOf(1002), new j.1(paramContext));
+      return bool2;
     }
-    return 160;
+    catch (Throwable paramContext)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stack is ");
+      localStringBuilder.append(Log.getStackTraceString(paramContext));
+      TbsLog.i("SDKUID", localStringBuilder.toString());
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.utils.j
  * JD-Core Version:    0.7.0.1
  */

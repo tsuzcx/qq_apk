@@ -81,12 +81,12 @@ public class SubscribePermissionAdapter
   {
     LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
     if (paramInt == SubscribeItemModel.SubscribeViewType.TITLE.ordinal()) {
-      return new SubscribePermissionAdapter.TitleViewHolder(localLayoutInflater.inflate(2131559386, paramViewGroup, false));
+      return new SubscribePermissionAdapter.TitleViewHolder(localLayoutInflater.inflate(2131625352, paramViewGroup, false));
     }
     if ((paramInt != SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE.ordinal()) && (paramInt != SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE.ordinal()) && (paramInt != SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE.ordinal())) {
       return null;
     }
-    return new SubscribePermissionAdapter.SubscribeViewHolder(localLayoutInflater.inflate(2131559385, paramViewGroup, false));
+    return new SubscribePermissionAdapter.SubscribeViewHolder(localLayoutInflater.inflate(2131625351, paramViewGroup, false));
   }
   
   public void setData(List<SubscribeItemModel> paramList)
@@ -97,7 +97,7 @@ public class SubscribePermissionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.SubscribePermissionAdapter
  * JD-Core Version:    0.7.0.1
  */

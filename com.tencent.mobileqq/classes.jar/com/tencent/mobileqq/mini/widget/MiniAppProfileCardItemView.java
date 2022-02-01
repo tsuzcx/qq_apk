@@ -45,10 +45,10 @@ public class MiniAppProfileCardItemView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561352, this, true);
-    this.mIconView = ((ImageView)findViewById(2131371130));
-    this.mNameView = ((TextView)findViewById(2131371131));
-    this.mGapView = findViewById(2131371127);
+    this.mLayoutInflater.inflate(2131627708, this, true);
+    this.mIconView = ((ImageView)findViewById(2131438471));
+    this.mNameView = ((TextView)findViewById(2131438472));
+    this.mGapView = findViewById(2131438468);
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, int paramInt)
@@ -97,7 +97,7 @@ public class MiniAppProfileCardItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ final class StoryScanManager$2
 {
   public int a(StoryAlbum paramStoryAlbum1, StoryAlbum paramStoryAlbum2)
   {
-    if (paramStoryAlbum1.a() > paramStoryAlbum2.a()) {
+    if (paramStoryAlbum1.b() > paramStoryAlbum2.b()) {
       return 1;
     }
-    if (paramStoryAlbum1.a() < paramStoryAlbum2.a()) {
+    if (paramStoryAlbum1.b() < paramStoryAlbum2.b()) {
       return -1;
     }
-    if (paramStoryAlbum1.c() == paramStoryAlbum2.c()) {
+    if (paramStoryAlbum1.h() == paramStoryAlbum2.h()) {
       return 0;
     }
-    if (paramStoryAlbum1.c() < paramStoryAlbum2.c()) {
+    if (paramStoryAlbum1.h() < paramStoryAlbum2.h()) {
       return 1;
     }
     return -1;
@@ -25,7 +25,7 @@ final class StoryScanManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryScanManager.2
  * JD-Core Version:    0.7.0.1
  */

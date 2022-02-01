@@ -15,12 +15,12 @@ import java.util.Iterator;
 public class WifiSdkObserver
   implements BusinessObserver
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private WifiSdkObserver.IWifiSdkListener jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver$IWifiSdkListener;
+  private WifiSdkObserver.IWifiSdkListener a;
+  private QQAppInterface b;
   
   public WifiSdkObserver(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private void a(SCPullConchs paramSCPullConchs)
@@ -64,7 +64,7 @@ public class WifiSdkObserver
                         QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs channel is wrong");
                       }
                     }
-                    else if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+                    else if (this.b == null)
                     {
                       if (QLog.isColorLevel()) {
                         QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs app is null");
@@ -83,8 +83,8 @@ public class WifiSdkObserver
                         localStringBuilder.append((String)localObject2);
                         QLog.d("WifiSdk", 2, localStringBuilder.toString());
                       }
-                      WifiSdkSharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i, (String)localObject2);
-                      WifiSdkSharedPreUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
+                      WifiSdkSharedPreUtils.a(this.b.getApp(), this.b.getCurrentAccountUin(), i, (String)localObject2);
+                      WifiSdkSharedPreUtils.b(this.b.getApp(), this.b.getCurrentAccountUin(), System.currentTimeMillis());
                     }
                   }
                   else if (QLog.isColorLevel()) {
@@ -102,7 +102,7 @@ public class WifiSdkObserver
                         QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs channel is wrong");
                       }
                     }
-                    else if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+                    else if (this.b == null)
                     {
                       if (QLog.isColorLevel()) {
                         QLog.d("WifiSdk", 2, "WifiSdkObserver, handlePullConchs app is null");
@@ -118,8 +118,8 @@ public class WifiSdkObserver
                         localStringBuilder.append((String)localObject2);
                         QLog.d("WifiSdk", 2, localStringBuilder.toString());
                       }
-                      WifiSdkSharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (String)localObject2);
-                      WifiSdkSharedPreUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), System.currentTimeMillis());
+                      WifiSdkSharedPreUtils.h(this.b.getApp(), (String)localObject2);
+                      WifiSdkSharedPreUtils.b(this.b.getApp(), this.b.getCurrentAccountUin(), System.currentTimeMillis());
                     }
                   }
                   else if (QLog.isColorLevel()) {
@@ -154,7 +154,7 @@ public class WifiSdkObserver
   
   public void a(WifiSdkObserver.IWifiSdkListener paramIWifiSdkListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver$IWifiSdkListener = paramIWifiSdkListener;
+    this.a = paramIWifiSdkListener;
   }
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
@@ -195,17 +195,17 @@ public class WifiSdkObserver
       }
       if (!TextUtils.isEmpty(paramObject))
       {
-        WifiSdkSharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramObject);
+        WifiSdkSharedPreUtils.a(this.b.getApp(), this.b.getCurrentAccountUin(), paramObject);
         break label248;
         paramObject = (WifiSecurityCheckInfo)paramObject;
-        a(paramObject.jdField_a_of_type_MConchSCPullConchs);
-        if (this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver$IWifiSdkListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver$IWifiSdkListener.a(paramObject.jdField_a_of_type_MWIFISCGet3rdCloudCheck);
+        a(paramObject.b);
+        if (this.a != null) {
+          this.a.a(paramObject.a);
         }
       }
     }
     label248:
-    paramObject = this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver$IWifiSdkListener;
+    paramObject = this.a;
     if (paramObject != null) {
       paramObject.a(paramInt);
     }
@@ -213,7 +213,7 @@ public class WifiSdkObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.WifiSdkObserver
  * JD-Core Version:    0.7.0.1
  */

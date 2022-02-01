@@ -7,7 +7,7 @@ class RelativeLiveFeedsAdapter$1$1
   
   public void run()
   {
-    RelativeLiveFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeLiveFeedsAdapter$1.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
+    RelativeLiveFeedsAdapter.a(this.c.a, this.a, this.b);
   }
 }
 

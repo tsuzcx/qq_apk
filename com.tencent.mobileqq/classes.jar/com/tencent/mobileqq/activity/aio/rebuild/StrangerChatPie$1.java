@@ -12,15 +12,15 @@ class StrangerChatPie$1
   
   public void onClick(View paramView)
   {
-    if (!this.a.B) {
-      ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+    if (!this.a.aY) {
+      ChatActivityFacade.a(this.a.ah, this.a.d, this.a.aX());
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie.1
  * JD-Core Version:    0.7.0.1
  */

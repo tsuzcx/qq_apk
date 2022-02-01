@@ -10,7 +10,7 @@ class QRDisplayActivity$11
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.h = false;
+    this.a.aM = false;
   }
 }
 

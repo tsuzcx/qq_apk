@@ -18,36 +18,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GameResultUploadMgrForRemote
 {
-  private volatile WeakReference<BaseQQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private ConcurrentHashMap<String, GameResultUploadMgrForRemote.UploadInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private volatile WeakReference<BaseQQAppInterface> a;
+  private ConcurrentHashMap<String, GameResultUploadMgrForRemote.UploadInfo> b = new ConcurrentHashMap();
   
   public GameResultUploadMgrForRemote(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseQQAppInterface);
-  }
-  
-  private BaseQQAppInterface a()
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      synchronized (this.jdField_a_of_type_JavaLangRefWeakReference)
-      {
-        BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        return localBaseQQAppInterface;
-      }
-    }
-    return null;
-  }
-  
-  @SuppressLint({"HandlerLeak"})
-  private TransProcessorHandler a()
-  {
-    return new GameResultUploadMgrForRemote.1(this, ThreadManagerV2.getFileThreadLooper());
+    this.a = new WeakReference(paramBaseQQAppInterface);
   }
   
   private String a(BaseQQAppInterface paramBaseQQAppInterface, String paramString1, int paramInt, String paramString2)
   {
     ITransFileController localITransFileController = (ITransFileController)paramBaseQQAppInterface.getRuntimeService(ITransFileController.class);
-    Object localObject = a();
+    Object localObject = c();
     localITransFileController.addHandle((TransProcessorHandler)localObject);
     ((TransProcessorHandler)localObject).addFilter(new Class[] { BDHCommonUploadProcessor.class });
     localObject = new TransferRequest();
@@ -70,12 +52,30 @@ public class GameResultUploadMgrForRemote
     return paramString1;
   }
   
+  private BaseQQAppInterface b()
+  {
+    if (this.a != null) {
+      synchronized (this.a)
+      {
+        BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)this.a.get();
+        return localBaseQQAppInterface;
+      }
+    }
+    return null;
+  }
+  
+  @SuppressLint({"HandlerLeak"})
+  private TransProcessorHandler c()
+  {
+    return new GameResultUploadMgrForRemote.1(this, ThreadManagerV2.getFileThreadLooper());
+  }
+  
   public void a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      synchronized (this.jdField_a_of_type_JavaLangRefWeakReference)
+    if (this.a != null) {
+      synchronized (this.a)
       {
-        this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+        this.a.clear();
         return;
       }
     }
@@ -85,7 +85,7 @@ public class GameResultUploadMgrForRemote
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
+      if (!this.b.containsKey(paramString))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
@@ -93,7 +93,7 @@ public class GameResultUploadMgrForRemote
         QLog.w("GameResultUploadMgrForRemote_GameRC", 1, localStringBuilder.toString());
         return;
       }
-      ThreadManagerV2.excute(new GameResultUploadMgrForRemote.3(this, (GameResultUploadMgrForRemote.UploadInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString), paramString), 16, null, false);
+      ThreadManagerV2.excute(new GameResultUploadMgrForRemote.3(this, (GameResultUploadMgrForRemote.UploadInfo)this.b.get(paramString), paramString), 16, null, false);
       return;
     }
     finally {}
@@ -105,32 +105,32 @@ public class GameResultUploadMgrForRemote
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 108	java/lang/StringBuilder
+    //   2: new 91	java/lang/StringBuilder
     //   5: dup
-    //   6: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   6: invokespecial 92	java/lang/StringBuilder:<init>	()V
     //   9: astore_3
     //   10: aload_3
     //   11: aload_1
-    //   12: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: pop
     //   16: aload_3
-    //   17: ldc 220
-    //   19: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc 222
+    //   19: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: pop
-    //   23: ldc 197
+    //   23: ldc 199
     //   25: iconst_1
     //   26: aload_3
-    //   27: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 223	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   27: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 225	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: aload_0
-    //   34: getfield 19	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   34: getfield 20	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote:b	Ljava/util/concurrent/ConcurrentHashMap;
     //   37: astore_3
     //   38: aload_3
     //   39: monitorenter
     //   40: aload_0
-    //   41: getfield 19	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   41: getfield 20	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote:b	Ljava/util/concurrent/ConcurrentHashMap;
     //   44: aload_1
-    //   45: invokevirtual 193	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   45: invokevirtual 195	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
     //   48: ifne +8 -> 56
     //   51: aload_3
     //   52: monitorexit
@@ -138,9 +138,9 @@ public class GameResultUploadMgrForRemote
     //   54: monitorexit
     //   55: return
     //   56: aload_0
-    //   57: getfield 19	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   57: getfield 20	com/tencent/avgame/gameresult/GameResultUploadMgrForRemote:b	Ljava/util/concurrent/ConcurrentHashMap;
     //   60: aload_1
-    //   61: invokevirtual 226	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   61: invokevirtual 228	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   64: pop
     //   65: aload_3
     //   66: monitorexit
@@ -175,20 +175,20 @@ public class GameResultUploadMgrForRemote
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString1);
+      boolean bool = this.b.containsKey(paramString1);
       if (!bool) {
         return;
       }
-      GameResultUploadMgrForRemote.UploadInfo localUploadInfo = (GameResultUploadMgrForRemote.UploadInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
-      localUploadInfo.jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$GameResultUploadCallback.a(paramString1, paramInt, paramString2);
+      GameResultUploadMgrForRemote.UploadInfo localUploadInfo = (GameResultUploadMgrForRemote.UploadInfo)this.b.get(paramString1);
+      localUploadInfo.f.a(paramString1, paramInt, paramString2);
       if (paramInt == 0)
       {
-        localUploadInfo.jdField_a_of_type_Boolean = false;
+        localUploadInfo.c = false;
       }
       else if (paramInt == 1)
       {
-        localUploadInfo.jdField_b_of_type_Boolean = false;
-        if (localUploadInfo.c) {
+        localUploadInfo.d = false;
+        if (localUploadInfo.e) {
           b(paramString1);
         }
       }
@@ -209,10 +209,10 @@ public class GameResultUploadMgrForRemote
         QLog.i("GameResultUploadMgrForRemote_GameRC", 1, ((StringBuilder)localObject).toString());
       }
       Object localObject = new GameResultUploadMgrForRemote.UploadInfo(this, null);
-      ((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_a_of_type_JavaLangString = paramString2;
-      ((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_b_of_type_JavaLangString = paramString3;
-      ((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$GameResultUploadCallback = paramGameResultUploadCallback;
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, localObject);
+      ((GameResultUploadMgrForRemote.UploadInfo)localObject).a = paramString2;
+      ((GameResultUploadMgrForRemote.UploadInfo)localObject).b = paramString3;
+      ((GameResultUploadMgrForRemote.UploadInfo)localObject).f = paramGameResultUploadCallback;
+      this.b.put(paramString1, localObject);
       ThreadManagerV2.excute(new GameResultUploadMgrForRemote.2(this, paramString2, (GameResultUploadMgrForRemote.UploadInfo)localObject, paramBaseQQAppInterface, paramString1), 16, null, false);
       return true;
     }
@@ -223,25 +223,25 @@ public class GameResultUploadMgrForRemote
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+      boolean bool = this.b.containsKey(paramString);
       if (!bool) {
         return;
       }
-      Object localObject = (GameResultUploadMgrForRemote.UploadInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if ((!((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_b_of_type_Boolean) && (!((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_a_of_type_Boolean))
+      Object localObject = (GameResultUploadMgrForRemote.UploadInfo)this.b.get(paramString);
+      if ((!((GameResultUploadMgrForRemote.UploadInfo)localObject).d) && (!((GameResultUploadMgrForRemote.UploadInfo)localObject).c))
       {
-        String str = ((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_a_of_type_JavaLangString;
-        localObject = ((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+        String str = ((GameResultUploadMgrForRemote.UploadInfo)localObject).a;
+        localObject = ((GameResultUploadMgrForRemote.UploadInfo)localObject).b;
+        this.b.remove(paramString);
         if (QLog.isDevelopLevel()) {
           QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("清理资源[%s]", new Object[] { paramString }));
         }
         ThreadManagerV2.excute(new GameResultUploadMgrForRemote.4(this, str, (String)localObject), 16, null, false);
         return;
       }
-      ((GameResultUploadMgrForRemote.UploadInfo)localObject).c = true;
+      ((GameResultUploadMgrForRemote.UploadInfo)localObject).e = true;
       if (QLog.isDevelopLevel()) {
-        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("视频正在上传[%b], 图片正在上传[%b],需要延迟清理", new Object[] { Boolean.valueOf(((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_b_of_type_Boolean), Boolean.valueOf(((GameResultUploadMgrForRemote.UploadInfo)localObject).jdField_a_of_type_Boolean) }));
+        QLog.i("GameResultUploadMgrForRemote_GameRC", 1, String.format("视频正在上传[%b], 图片正在上传[%b],需要延迟清理", new Object[] { Boolean.valueOf(((GameResultUploadMgrForRemote.UploadInfo)localObject).d), Boolean.valueOf(((GameResultUploadMgrForRemote.UploadInfo)localObject).c) }));
       }
       return;
     }

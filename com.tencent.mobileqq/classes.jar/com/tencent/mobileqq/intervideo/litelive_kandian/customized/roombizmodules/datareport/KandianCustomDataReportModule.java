@@ -22,22 +22,104 @@ public class KandianCustomDataReportModule
   extends RoomBizModule
   implements IPlayerState
 {
-  private long jdField_a_of_type_Long;
-  private HeartbeatReportMgr jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr = new HeartbeatReportMgr(this);
-  private OnGetRoomExtInfoListener jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener;
-  private String jdField_a_of_type_JavaLangString = "1";
-  private boolean jdField_a_of_type_Boolean = false;
-  private long jdField_b_of_type_Long = 0L;
-  private boolean jdField_b_of_type_Boolean = false;
-  private long jdField_c_of_type_Long = 0L;
-  private boolean jdField_c_of_type_Boolean = false;
+  private HeartbeatReportMgr a = new HeartbeatReportMgr(this);
+  private String b = "1";
+  private boolean c = false;
+  private boolean d = false;
+  private long e;
+  private long f = 0L;
+  private long g = 0L;
+  private boolean h = false;
+  private OnGetRoomExtInfoListener i;
   
   public KandianCustomDataReportModule(OnGetRoomExtInfoListener paramOnGetRoomExtInfoListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener = paramOnGetRoomExtInfoListener;
+    this.i = paramOnGetRoomExtInfoListener;
   }
   
-  private int a()
+  private void a(long paramLong)
+  {
+    if (this.c)
+    {
+      QLog.i("DataReportMgr", 1, "firstFrameVisibleReported true");
+      return;
+    }
+    this.c = e();
+    Map localMap = g();
+    localMap.put("timelong", String.valueOf(paramLong));
+    String str;
+    if (this.h) {
+      str = "1";
+    } else {
+      str = "0";
+    }
+    localMap.put("zt_str1", str);
+    if ((this.c) && (!this.h)) {
+      localMap.put("zt_str2", BusinessManager.a.h());
+    }
+    DataReportMgr.a().a(this.c, localMap);
+  }
+  
+  private void b()
+  {
+    this.e = System.currentTimeMillis();
+    this.g = System.currentTimeMillis();
+    this.c = false;
+    this.d = false;
+    this.h = false;
+    this.a.a(this.i);
+  }
+  
+  private void c()
+  {
+    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null))
+    {
+      String str1 = h();
+      String str2 = i();
+      String str3 = j();
+      DataReportMgr.a().a(str1, str2, str3, this.i);
+      return;
+    }
+    QLog.i("DataReportMgr", 1, "roomBizContext or getEnterRoomInfo null");
+  }
+  
+  private void d()
+  {
+    if (this.d)
+    {
+      QLog.i("DataReportMgr", 1, "exitRoomReported true");
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onExitRoom roomId = ");
+    localStringBuilder.append(h());
+    localStringBuilder.append(", vid = ");
+    localStringBuilder.append(i());
+    QLog.i("DataReportMgr", 1, localStringBuilder.toString());
+    this.d = true;
+    this.c = false;
+    this.a.b(g());
+    DataReportMgr.a().a(System.currentTimeMillis() - this.g, g());
+  }
+  
+  private boolean e()
+  {
+    int k = f();
+    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
+    boolean bool = false;
+    int j;
+    if (localIAudienceRoomPager != null) {
+      j = getAudienceRoomPager().getCurrentIndex();
+    } else {
+      j = 0;
+    }
+    if (k == j) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private int f()
   {
     if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
       return this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
@@ -45,11 +127,11 @@ public class KandianCustomDataReportModule
     return 0;
   }
   
-  private Map<String, String> a()
+  private Map<String, String> g()
   {
-    String str3 = b();
-    String str2 = c();
-    String str1 = d();
+    String str3 = h();
+    String str2 = i();
+    String str1 = j();
     HashMap localHashMap = new HashMap();
     Object localObject = str3;
     if (str3 == null) {
@@ -66,71 +148,21 @@ public class KandianCustomDataReportModule
       localObject = "";
     }
     localHashMap.put("ab_token", localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener;
-    if ((localObject != null) && (((OnGetRoomExtInfoListener)localObject).a() != null))
+    localObject = this.i;
+    if ((localObject != null) && (((OnGetRoomExtInfoListener)localObject).c() != null))
     {
-      localHashMap.put("zt_int4", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().followStatus);
-      localHashMap.put("zt_int5", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType);
-      localHashMap.put("state", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().state);
-      if ("1".equals(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType)) {
-        localHashMap.put("program_id", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().programId);
+      localHashMap.put("zt_int4", this.i.c().followStatus);
+      localHashMap.put("zt_int5", this.i.c().liveType);
+      localHashMap.put("state", this.i.c().state);
+      if ("1".equals(this.i.c().liveType)) {
+        localHashMap.put("program_id", this.i.c().programId);
       }
-      localHashMap.put("anchor", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().anchorUid);
+      localHashMap.put("anchor", this.i.c().anchorUid);
     }
     return localHashMap;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener);
-  }
-  
-  private void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.i("DataReportMgr", 1, "firstFrameVisibleReported true");
-      return;
-    }
-    this.jdField_a_of_type_Boolean = a();
-    Map localMap = a();
-    localMap.put("timelong", String.valueOf(paramLong));
-    String str;
-    if (this.jdField_c_of_type_Boolean) {
-      str = "1";
-    } else {
-      str = "0";
-    }
-    localMap.put("zt_str1", str);
-    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
-      localMap.put("zt_str2", BusinessManager.a.c());
-    }
-    DataReportMgr.a().a(this.jdField_a_of_type_Boolean, localMap);
-  }
-  
-  private boolean a()
-  {
-    int j = a();
-    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
-    boolean bool = false;
-    int i;
-    if (localIAudienceRoomPager != null) {
-      i = getAudienceRoomPager().getCurrentIndex();
-    } else {
-      i = 0;
-    }
-    if (j == i) {
-      bool = true;
-    }
-    return bool;
-  }
-  
-  private String b()
+  private String h()
   {
     RoomBizContext localRoomBizContext = this.roomBizContext;
     String str2 = "";
@@ -152,20 +184,7 @@ public class KandianCustomDataReportModule
     return str1;
   }
   
-  private void b()
-  {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null))
-    {
-      String str1 = b();
-      String str2 = c();
-      String str3 = d();
-      DataReportMgr.a().a(str1, str2, str3, this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener);
-      return;
-    }
-    QLog.i("DataReportMgr", 1, "roomBizContext or getEnterRoomInfo null");
-  }
-  
-  private String c()
+  private String i()
   {
     RoomBizContext localRoomBizContext = this.roomBizContext;
     String str2 = "";
@@ -187,26 +206,7 @@ public class KandianCustomDataReportModule
     return str1;
   }
   
-  private void c()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      QLog.i("DataReportMgr", 1, "exitRoomReported true");
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onExitRoom roomId = ");
-    localStringBuilder.append(b());
-    localStringBuilder.append(", vid = ");
-    localStringBuilder.append(c());
-    QLog.i("DataReportMgr", 1, localStringBuilder.toString());
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.b(a());
-    DataReportMgr.a().a(System.currentTimeMillis() - this.jdField_c_of_type_Long, a());
-  }
-  
-  private String d()
+  private String j()
   {
     RoomBizContext localRoomBizContext = this.roomBizContext;
     String str2 = "";
@@ -227,7 +227,7 @@ public class KandianCustomDataReportModule
   
   public String a()
   {
-    if (this.jdField_a_of_type_JavaLangString.equals("3")) {
+    if (this.b.equals("3")) {
       return "3";
     }
     try
@@ -235,70 +235,70 @@ public class KandianCustomDataReportModule
       Object localObject = (AVPlayerBuilderServiceInterface)getRoomEngine().getService(AVPlayerBuilderServiceInterface.class);
       if (localObject == null)
       {
-        this.jdField_a_of_type_JavaLangString = "3";
-        return this.jdField_a_of_type_JavaLangString;
+        this.b = "3";
+        return this.b;
       }
       if ((((AVPlayerBuilderServiceInterface)localObject).isPlaying()) && (((AVPlayerBuilderServiceInterface)localObject).isPaused()))
       {
-        this.jdField_a_of_type_JavaLangString = "2";
-        localObject = this.jdField_a_of_type_JavaLangString;
+        this.b = "2";
+        localObject = this.b;
         return localObject;
       }
-      this.jdField_a_of_type_JavaLangString = "1";
-      return this.jdField_a_of_type_JavaLangString;
+      this.b = "1";
+      return this.b;
     }
     catch (Exception localException)
     {
       label86:
       break label86;
     }
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public void onActivityResume(LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityResume(paramLifecycleOwner);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.a(false);
+    this.a.a(false);
   }
   
   public void onActivityStop(LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityStop(paramLifecycleOwner);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.a(true);
+    this.a.a(true);
   }
   
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
-    a();
-    if (a() == 0) {
-      this.jdField_a_of_type_Long = BusinessManager.a.a();
+    b();
+    if (f() == 0) {
+      this.e = BusinessManager.a.i();
     }
     getEvent().observe(PlayerStateEvent.class, new KandianCustomDataReportModule.1(this));
-    if ((a() == 0) && (a())) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.a(a());
+    if ((f() == 0) && (e())) {
+      this.a.a(g());
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((this.isUserVisibleHint) || ((a()) && (a() == 0))) {
-      c();
+    if ((this.isUserVisibleHint) || ((e()) && (f() == 0))) {
+      d();
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.a();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener = null;
+    this.a.a();
+    this.i = null;
   }
   
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    b();
+    c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onEnterRoom roomId = ");
-    localStringBuilder.append(b());
+    localStringBuilder.append(h());
     localStringBuilder.append(", vid = ");
-    localStringBuilder.append(c());
+    localStringBuilder.append(i());
     QLog.i("DataReportMgr", 1, localStringBuilder.toString());
   }
   
@@ -310,11 +310,11 @@ public class KandianCustomDataReportModule
   public void onSwitchRoom(SwitchRoomInfo paramSwitchRoomInfo)
   {
     super.onSwitchRoom(paramSwitchRoomInfo);
-    a();
     b();
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.a(a());
-    if (this.jdField_b_of_type_Long > 0L) {
+    c();
+    this.h = true;
+    this.a.a(g());
+    if (this.f > 0L) {
       a(0L);
     }
   }
@@ -324,19 +324,19 @@ public class KandianCustomDataReportModule
     super.onVisibleToUser(paramBoolean);
     if (!paramBoolean)
     {
-      c();
-      int i = getAudienceRoomPager().getScrollDirection();
+      d();
+      int j = getAudienceRoomPager().getScrollDirection();
       paramBoolean = true;
-      if (i != 1) {
+      if (j != 1) {
         paramBoolean = false;
       }
-      DataReportMgr.a().b(paramBoolean, a());
+      DataReportMgr.a().b(paramBoolean, g());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.KandianCustomDataReportModule
  * JD-Core Version:    0.7.0.1
  */

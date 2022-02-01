@@ -13,7 +13,7 @@ final class MatchChatMsgUtil$1
   
   public void run()
   {
-    int i = MatchChatMsgUtil.a(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface);
+    int i = MatchChatMsgUtil.b(this.a);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -21,7 +21,7 @@ final class MatchChatMsgUtil$1
       localStringBuilder.append(i);
       QLog.d("MatchChatMsgUtil", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
+    if (this.b != null) {
       ThreadManager.getUIHandler().post(new MatchChatMsgUtil.1.1(this, i));
     }
   }

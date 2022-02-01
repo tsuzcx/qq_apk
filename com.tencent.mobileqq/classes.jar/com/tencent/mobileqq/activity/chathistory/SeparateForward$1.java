@@ -20,24 +20,24 @@ class SeparateForward$1
   protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
     SeparateForward.a(this.a).removeMessages(1);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+    if ((this.a.a != null) && (this.a.a.isShowing()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      MultiMsgManager.a().b.clear();
+      this.a.a.dismiss();
+      MultiMsgManager.a().d.clear();
       if ((paramBoolean) && (paramObject != null)) {
-        MultiMsgManager.a().b.putAll((Map)paramObject);
+        MultiMsgManager.a().d.putAll((Map)paramObject);
       }
       Object localObject;
-      if (MultiMsgManager.a().b.size() == 0)
+      if (MultiMsgManager.a().d.size() == 0)
       {
-        localObject = (QBaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+        localObject = (QBaseActivity)this.a.b.get();
         if (localObject != null) {
-          QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131698526, 0).b(((QBaseActivity)localObject).getTitleBarHeight());
+          QQToast.makeText(this.a.c.getApp(), 2131896472, 0).show(((QBaseActivity)localObject).getTitleBarHeight());
         }
       }
       else
       {
-        this.a.a((Map)paramObject, MultiMsgManager.a().a);
+        this.a.a((Map)paramObject, MultiMsgManager.a().c);
       }
       if (QLog.isDevelopLevel())
       {
@@ -53,7 +53,7 @@ class SeparateForward$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SeparateForward.1
  * JD-Core Version:    0.7.0.1
  */

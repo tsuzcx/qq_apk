@@ -15,15 +15,15 @@ public final class SubCommentCreateData
   implements Parcelable
 {
   public static final SubCommentCreateData.CREATOR CREATOR = new SubCommentCreateData.CREATOR(null);
-  private long jdField_a_of_type_Long;
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  @Nullable
-  private List<BaseCommentData.CommentRptData> jdField_a_of_type_JavaUtilList;
+  private String a = "";
   @NotNull
   private String b = "";
+  @Nullable
+  private List<BaseCommentData.CommentRptData> c;
+  private long d;
   @NotNull
-  private String c = "";
+  private String e = "";
   
   public SubCommentCreateData(int paramInt, @NotNull String paramString)
   {
@@ -48,57 +48,52 @@ public final class SubCommentCreateData
     if (str == null) {
       str = "";
     }
-    this.jdField_a_of_type_JavaLangString = str;
+    this.a = str;
     str = paramParcel.readString();
     if (str == null) {
       str = "";
     }
     this.b = str;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.d = paramParcel.readLong();
     paramParcel = paramParcel.readString();
     if (paramParcel == null) {
       paramParcel = "";
     }
-    this.c = paramParcel;
+    this.e = paramParcel;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @Nullable
-  public final List<BaseCommentData.CommentRptData> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public final void a(@Nullable List<BaseCommentData.CommentRptData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public final long b()
-  {
-    return this.jdField_a_of_type_Long;
+    this.c = paramList;
   }
   
   @NotNull
   public final String b()
   {
     return this.b;
+  }
+  
+  @Nullable
+  public final List<BaseCommentData.CommentRptData> c()
+  {
+    return this.c;
   }
   
   public final void d(@NotNull String paramString)
@@ -115,25 +110,30 @@ public final class SubCommentCreateData
   public final void e(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.c = paramString;
+    this.e = paramString;
   }
   
-  @NotNull
-  public final String f()
+  public final long l()
   {
-    return this.c;
+    return this.d;
   }
   
   @NotNull
-  public final String g()
+  public final String m()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final String n()
   {
     Object localObject1 = new StringBuilder(this.b);
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject2 = this.c;
     if (localObject2 != null)
     {
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
-        ((StringBuilder)localObject1).append(((BaseCommentData.CommentRptData)((Iterator)localObject2).next()).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(((BaseCommentData.CommentRptData)((Iterator)localObject2).next()).b);
       }
     }
     localObject1 = ((StringBuilder)localObject1).toString();
@@ -151,13 +151,13 @@ public final class SubCommentCreateData
     localStringBuilder.append(this.b);
     localStringBuilder.append(", ");
     localStringBuilder.append("firstCommentId: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
     localStringBuilder.append("repliedSubAuthorId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", ");
     localStringBuilder.append("repliedSubCommentId: ");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     return localStringBuilder.toString();
   }
   
@@ -165,15 +165,15 @@ public final class SubCommentCreateData
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.c);
+    paramParcel.writeLong(this.d);
+    paramParcel.writeString(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.entity.SubCommentCreateData
  * JD-Core Version:    0.7.0.1
  */

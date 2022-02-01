@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient android:startColor="@color/qcircle_skin_color_gradient_tab_underline_start" android:endColor="@color/qcircle_skin_color_gradient_tab_underline_end" android:angle="0.0" />
+    <corners android:radius="10.0dip" />
+</shape>

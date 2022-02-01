@@ -23,23 +23,23 @@ import java.util.Set;
 public class TagManager
   implements IManager
 {
-  private long jdField_a_of_type_Long;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private Set<String> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  
-  private QQStoryContext a()
-  {
-    return QQStoryContext.a();
-  }
+  private EntityManager a;
+  private Set<String> b = Collections.synchronizedSet(new HashSet());
+  private long c;
   
   public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
   {
     return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
   }
   
+  private QQStoryContext c()
+  {
+    return QQStoryContext.a();
+  }
+  
   public List<TagItem.TagInfoBase> a(String paramString)
   {
-    Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+    Object localObject = a(this.a, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
     paramString = (String)localObject;
     if (localObject == null) {
       paramString = new ArrayList();
@@ -109,54 +109,7 @@ public class TagManager
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = a().a().createEntityManager();
-  }
-  
-  public void a(String paramString, List<TagItem.TagInfoBase> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    try
-    {
-      Object localObject = a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
-          localTagEntry.setStatus(1001);
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localTagEntry);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().begin();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localObject = ((TagItem.TagInfoBase)paramList.next()).a();
-        ((TagEntry)localObject).feedId = paramString;
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace((Entity)localObject);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().commit();
-      throw paramString;
-    }
-    finally
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
-        return;
-      }
-      finally
-      {
-        break label185;
-      }
-      paramString = finally;
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction().end();
-    }
-    label185:
-    for (;;) {}
+    this.a = c().d().createEntityManager();
   }
   
   public void a(List<String> paramList)
@@ -166,9 +119,9 @@ public class TagManager
     }
     Object localObject = new ArrayList();
     ArrayList localArrayList = new ArrayList();
-    if (Math.abs(this.jdField_a_of_type_Long - System.currentTimeMillis()) > 60000L)
+    if (Math.abs(this.c - System.currentTimeMillis()) > 60000L)
     {
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.b.clear();
     }
     else
     {
@@ -176,7 +129,7 @@ public class TagManager
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        if (this.jdField_a_of_type_JavaUtilSet.contains(str)) {
+        if (this.b.contains(str)) {
           localArrayList.add(str);
         } else {
           ((List)localObject).add(str);
@@ -190,21 +143,68 @@ public class TagManager
     if (paramList.size() == 0) {
       return;
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.c = System.currentTimeMillis();
     localObject = new GetFeedTagInfoListRequest();
-    ((GetFeedTagInfoListRequest)localObject).a = paramList;
+    ((GetFeedTagInfoListRequest)localObject).e = paramList;
     CmdTaskManger.a().a((NetworkRequest)localObject, new TagManager.1(this));
     SLog.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    this.a.close();
+  }
+  
+  public void b(String paramString, List<TagItem.TagInfoBase> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    try
+    {
+      Object localObject = a(this.a, TagEntry.class, TagEntry.class.getSimpleName(), "feedId=?", new String[] { paramString });
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          TagEntry localTagEntry = (TagEntry)((Iterator)localObject).next();
+          localTagEntry.setStatus(1001);
+          this.a.remove(localTagEntry);
+        }
+      }
+      this.a.getTransaction().begin();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localObject = ((TagItem.TagInfoBase)paramList.next()).a();
+        ((TagEntry)localObject).feedId = paramString;
+        this.a.persistOrReplace((Entity)localObject);
+      }
+      this.a.getTransaction().commit();
+      throw paramString;
+    }
+    finally
+    {
+      try
+      {
+        this.a.getTransaction().end();
+        return;
+      }
+      finally
+      {
+        break label185;
+      }
+      paramString = finally;
+      this.a.getTransaction().end();
+    }
+    label185:
+    for (;;) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TagManager
  * JD-Core Version:    0.7.0.1
  */

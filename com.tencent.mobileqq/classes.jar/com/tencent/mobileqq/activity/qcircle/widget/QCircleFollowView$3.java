@@ -25,26 +25,26 @@ class QCircleFollowView$3
     QLog.d("QCircleFollowView", 1, paramBaseRequest.toString());
     if ((paramBoolean) && (paramLong == 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.a(this.jdField_a_of_type_Int, true);
-      if (this.jdField_a_of_type_Int == 1) {
+      this.c.a(this.b, true);
+      if (this.b == 1) {
         SimpleEventBus.getInstance().dispatchEvent(new QCircleFuelAnimationEvent());
       }
-      QCircleFollowView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView, paramStDoFollowRsp, this.jdField_a_of_type_Int);
+      QCircleFollowView.a(this.c, paramStDoFollowRsp, this.b);
       return;
     }
-    paramBaseRequest = this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.getContext();
+    paramBaseRequest = this.c.getContext();
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2131697906;
+    if (this.a) {
+      i = 2131895730;
     } else {
-      i = 2131698039;
+      i = 2131895939;
     }
-    QQToast.a(paramBaseRequest, 1, i, 0).a();
+    QQToast.makeText(paramBaseRequest, 1, i, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleFollowView.3
  * JD-Core Version:    0.7.0.1
  */

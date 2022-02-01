@@ -30,22 +30,7 @@ public class QzoneAlbumRedTouchManager
     this.a = paramQQAppInterface;
   }
   
-  private SharedPreferences a()
-  {
-    Object localObject = this.a;
-    if ((localObject != null) && (((QQAppInterface)localObject).getCurrentAccountUin() != null)) {
-      localObject = this.a.getCurrentAccountUin();
-    } else {
-      localObject = "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append("_QZoneAlbumRedTouch");
-    localObject = localStringBuilder.toString();
-    return BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
-  }
-  
-  public static boolean c()
+  public static boolean g()
   {
     long l;
     if (QLog.isColorLevel()) {
@@ -67,9 +52,19 @@ public class QzoneAlbumRedTouchManager
     return false;
   }
   
-  public long a()
+  private SharedPreferences i()
   {
-    return a().getLong("key_photo_guide_has_red_date", 0L);
+    Object localObject = this.a;
+    if ((localObject != null) && (((QQAppInterface)localObject).getCurrentAccountUin() != null)) {
+      localObject = this.a.getCurrentAccountUin();
+    } else {
+      localObject = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_QZoneAlbumRedTouch");
+    localObject = localStringBuilder.toString();
+    return BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
   }
   
   public void a()
@@ -99,9 +94,25 @@ public class QzoneAlbumRedTouchManager
     }
   }
   
-  public boolean a()
+  public void b()
   {
-    long l2 = a();
+    if (this.a == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
+    }
+    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.1(this));
+  }
+  
+  public long c()
+  {
+    return i().getLong("key_photo_guide_has_red_date", 0L);
+  }
+  
+  public boolean d()
+  {
+    long l2 = c();
     if (l2 <= 0L)
     {
       if (QLog.isColorLevel()) {
@@ -124,18 +135,7 @@ public class QzoneAlbumRedTouchManager
     return false;
   }
   
-  public void b()
-  {
-    if (this.a == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "clearRedTouch");
-    }
-    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.1(this));
-  }
-  
-  public boolean b()
+  public boolean e()
   {
     Object localObject = this.a;
     if (localObject == null) {
@@ -149,21 +149,21 @@ public class QzoneAlbumRedTouchManager
     return (localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1);
   }
   
-  public void c()
+  public void f()
   {
     if ((!PhotoUtils.isCurrentDayInQzone()) && (PhotoUtils.isOverLastCheck()) && (PhotoUtils.isInCheckTimeQuantum()))
     {
       LocalMultiProcConfig.putLong("key_photo_guide_last_check", System.currentTimeMillis());
-      if (!b())
+      if (!e())
       {
         if (QLog.isColorLevel()) {
           QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
         }
-        if ((!a()) && (c())) {
-          d();
+        if ((!d()) && (g())) {
+          h();
         }
       }
-      else if (!c())
+      else if (!g())
       {
         if (QLog.isColorLevel()) {
           QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
@@ -174,10 +174,10 @@ public class QzoneAlbumRedTouchManager
   }
   
   @TargetApi(9)
-  public void d()
+  public void h()
   {
     int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "GuideSelectPhotoSendRedJumpToQzone", 0);
-    Object localObject = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    Object localObject = i().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
     if (Build.VERSION.SDK_INT < 9) {
       ((SharedPreferences.Editor)localObject).commit();
     } else {
@@ -205,7 +205,7 @@ public class QzoneAlbumRedTouchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,26 +11,26 @@ import com.tencent.mobileqq.statistics.ReportController;
 class VipUtils$VipTouchListener
   implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private QQAppInterface a;
   private boolean b;
+  private ImageView c;
+  private String d;
+  private int e;
+  private boolean f;
   
   public VipUtils$VipTouchListener(QQAppInterface paramQQAppInterface, boolean paramBoolean1, ImageView paramImageView, String paramString, int paramInt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
+    this.a = paramQQAppInterface;
+    this.b = paramBoolean1;
+    this.c = paramImageView;
+    this.d = paramString;
+    this.e = paramInt;
+    this.f = paramBoolean2;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return false;
     }
     int i = paramMotionEvent.getAction();
@@ -43,38 +43,38 @@ class VipUtils$VipTouchListener
         }
         if (Build.VERSION.SDK_INT >= 16)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+          this.c.setImageAlpha(255);
           return true;
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+        this.c.setAlpha(255);
         return true;
       }
       if (Build.VERSION.SDK_INT >= 16) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+        this.c.setImageAlpha(255);
       } else {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+        this.c.setAlpha(255);
       }
-      if (this.b)
+      if (this.f)
       {
-        VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
+        VipUtils.b(paramView, this.e, this.d);
+        ReportController.b(this.a, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
         return true;
       }
-      VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      VipUtils.a(paramView, this.e, this.d);
       return true;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
+      this.c.setImageAlpha(127);
       return true;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+    this.c.setAlpha(127);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.VipTouchListener
  * JD-Core Version:    0.7.0.1
  */

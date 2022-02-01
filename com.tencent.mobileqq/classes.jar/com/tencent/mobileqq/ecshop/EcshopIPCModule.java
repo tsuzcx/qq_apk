@@ -35,7 +35,7 @@ public class EcshopIPCModule
   {
     Object localObject = ((IRecentUserProxyService)paramBaseQQAppInterface.getRuntimeService(IRecentUserProxyService.class)).getRecentUserCache();
     int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getUinType(paramBaseQQAppInterface, paramString);
-    localObject = ((RecentUserProxy)localObject).b(paramString, i);
+    localObject = ((RecentUserProxy)localObject).c(paramString, i);
     paramBaseQQAppInterface = (BaseQQAppInterface)localObject;
     if (localObject == null)
     {
@@ -85,7 +85,7 @@ public class EcshopIPCModule
       QLog.d("EcshopIPCModule", 1, ((StringBuilder)localObject).toString());
     }
     RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)paramBaseQQAppInterface.getRuntimeService(IRecentUserProxyService.class)).getRecentUserCache();
-    RecentUser localRecentUser = localRecentUserProxy.b(paramString, i);
+    RecentUser localRecentUser = localRecentUserProxy.c(paramString, i);
     Object localObject = localRecentUser;
     if (localRecentUser == null)
     {
@@ -192,7 +192,7 @@ public class EcshopIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.EcshopIPCModule
  * JD-Core Version:    0.7.0.1
  */

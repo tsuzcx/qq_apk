@@ -9,7 +9,7 @@ public class NearbyCardManagerUtilsImpl
 {
   public boolean isTinyId(String paramString)
   {
-    return NearbyCardManager.a(paramString);
+    return NearbyCardManager.c(paramString);
   }
   
   public boolean showDowndTribeAppDialg(Activity paramActivity, String paramString1, String paramString2, int paramInt)
@@ -24,12 +24,12 @@ public class NearbyCardManagerUtilsImpl
   
   public void updateNearbyProfileCardHead(Object paramObject)
   {
-    NearbyCardManager.b(paramObject);
+    NearbyCardManager.c(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.api.impl.NearbyCardManagerUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

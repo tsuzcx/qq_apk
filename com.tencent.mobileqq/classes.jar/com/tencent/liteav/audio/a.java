@@ -1,87 +1,100 @@
 package com.tencent.liteav.audio;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.TXCCommonUtil;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class a
 {
-  private final SharedPreferences a = TXCCommonUtil.getAppContext().getSharedPreferences("txc_audio_settings", 0);
+  private HashMap<String, HashSet<Integer>> a = new HashMap();
   
   public static a a()
   {
     return a.a.a();
   }
   
-  @SuppressLint({"ApplySharedPref"})
-  private void a(String paramString, Object paramObject)
+  public void a(int paramInt)
   {
-    SharedPreferences.Editor localEditor = this.a.edit();
-    if ((paramObject instanceof Integer)) {
-      localEditor.putInt(paramString, ((Integer)paramObject).intValue());
-    } else if ((paramObject instanceof String)) {
-      localEditor.putString(paramString, paramObject.toString());
-    } else if ((paramObject instanceof Boolean)) {
-      localEditor.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
-    } else if ((paramObject instanceof Long)) {
-      localEditor.putLong(paramString, ((Long)paramObject).longValue());
-    } else if ((paramObject instanceof Float)) {
-      localEditor.putFloat(paramString, ((Float)paramObject).floatValue());
-    } else if ((paramObject instanceof Double)) {
-      localEditor.putLong(paramString, Double.doubleToRawLongBits(((Double)paramObject).doubleValue()));
-    }
-    localEditor.commit();
-  }
-  
-  private Object b(String paramString, Object paramObject)
-  {
-    try
+    Object localObject1 = new HashSet();
+    Object localObject2 = this.a.entrySet().iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      if ((paramObject instanceof String)) {
-        return this.a.getString(paramString, paramObject.toString());
-      }
-      if ((paramObject instanceof Integer)) {
-        return Integer.valueOf(this.a.getInt(paramString, ((Integer)paramObject).intValue()));
-      }
-      if ((paramObject instanceof Boolean)) {
-        return Boolean.valueOf(this.a.getBoolean(paramString, ((Boolean)paramObject).booleanValue()));
-      }
-      if ((paramObject instanceof Long)) {
-        return Long.valueOf(this.a.getLong(paramString, ((Long)paramObject).longValue()));
-      }
-      if ((paramObject instanceof Float)) {
-        return Float.valueOf(this.a.getFloat(paramString, ((Float)paramObject).floatValue()));
-      }
-      if ((paramObject instanceof Double))
+      Object localObject3 = (Map.Entry)((Iterator)localObject2).next();
+      String str = (String)((Map.Entry)localObject3).getKey();
+      localObject3 = (HashSet)((Map.Entry)localObject3).getValue();
+      ((HashSet)localObject3).remove(Integer.valueOf(paramInt));
+      if (((HashSet)localObject3).isEmpty())
       {
-        double d = Double.longBitsToDouble(this.a.getLong(paramString, Double.doubleToLongBits(((Double)paramObject).doubleValue())));
-        return Double.valueOf(d);
+        ((HashSet)localObject1).add(str);
+        TXCAudioEngine.getInstance().stopRemoteAudio(str);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("stopPlay, tinyId:");
+        ((StringBuilder)localObject3).append(str);
+        TXCLog.i("AudioPlayManager", ((StringBuilder)localObject3).toString());
       }
-      return paramObject;
     }
-    catch (Exception localException)
+    localObject1 = ((HashSet)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      TXCLog.e("TXCAudioSettings", "get value from sharedpreference failed for key: %s", new Object[] { paramString, localException });
+      localObject2 = (String)((Iterator)localObject1).next();
+      this.a.remove(localObject2);
     }
-    return paramObject;
   }
   
-  public void a(String paramString, long paramLong)
+  public void a(String paramString, int paramInt)
   {
-    a(paramString, Long.valueOf(paramLong));
+    Object localObject = (HashSet)this.a.get(paramString);
+    if (localObject == null) {
+      return;
+    }
+    ((HashSet)localObject).remove(Integer.valueOf(paramInt));
+    if (((HashSet)localObject).isEmpty())
+    {
+      this.a.remove(paramString);
+      TXCAudioEngine.getInstance().stopRemoteAudio(paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stopRemoteAudio. tinyId:");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", sessionId:");
+      ((StringBuilder)localObject).append(paramInt);
+      TXCLog.i("AudioPlayManager", ((StringBuilder)localObject).toString());
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ignore stopRemoteAudio. because the same user is playing in other session. tinyId:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", cur sessionId:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", other sessionId:");
+    localStringBuilder.append(((Integer)((HashSet)localObject).iterator().next()).intValue());
+    TXCLog.i("AudioPlayManager", localStringBuilder.toString());
   }
   
-  public long b(String paramString, long paramLong)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    return ((Long)b(paramString, Long.valueOf(paramLong))).longValue();
+    HashSet localHashSet = (HashSet)this.a.get(paramString);
+    Object localObject = localHashSet;
+    if (localHashSet == null)
+    {
+      localObject = new HashSet();
+      this.a.put(paramString, localObject);
+    }
+    ((HashSet)localObject).add(Integer.valueOf(paramInt));
+    TXCAudioEngine.getInstance().startRemoteAudio(paramString, paramBoolean);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startRemoteAudio tinyId:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", sessionId:");
+    ((StringBuilder)localObject).append(paramInt);
+    TXCLog.i("AudioPlayManager", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.a
  * JD-Core Version:    0.7.0.1
  */

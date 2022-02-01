@@ -18,18 +18,18 @@ class VideoForDataline$1
   
   public void a(DatalineDownloadRespInfo paramDatalineDownloadRespInfo)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    long l = paramDatalineDownloadRespInfo.jdField_a_of_type_Long;
-    String str = paramDatalineDownloadRespInfo.d;
-    Object localObject1 = paramDatalineDownloadRespInfo.jdField_b_of_type_JavaLangString;
-    int i = paramDatalineDownloadRespInfo.jdField_a_of_type_Int;
-    Object localObject2 = paramDatalineDownloadRespInfo.j;
-    List localList = paramDatalineDownloadRespInfo.jdField_b_of_type_JavaUtilList;
-    localObject2 = VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline, (String)localObject2, i);
+    DataLineHandler localDataLineHandler = (DataLineHandler)VideoForDataline.a(this.b).getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    long l = paramDatalineDownloadRespInfo.a;
+    String str = paramDatalineDownloadRespInfo.g;
+    Object localObject1 = paramDatalineDownloadRespInfo.d;
+    int i = paramDatalineDownloadRespInfo.e;
+    Object localObject2 = paramDatalineDownloadRespInfo.n;
+    List localList = paramDatalineDownloadRespInfo.p;
+    localObject2 = VideoForDataline.a(this.b, (String)localObject2, i);
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = localObject2;
     }
-    paramDatalineDownloadRespInfo = paramDatalineDownloadRespInfo.e;
+    paramDatalineDownloadRespInfo = paramDatalineDownloadRespInfo.h;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("http://");
     ((StringBuilder)localObject2).append((String)localObject1);
@@ -44,13 +44,13 @@ class VideoForDataline$1
       ((StringBuilder)localObject2).append((String)localObject1);
       QLog.i("VideoForDataline<QFile>XOXO", 1, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoDownloadManager$FileVideoManagerCallback.a((String)localObject1, paramDatalineDownloadRespInfo);
-    localDataLineHandler.OnSessionStart(VideoForDataline.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataVideoForDataline).sessionid);
+    this.a.a((String)localObject1, paramDatalineDownloadRespInfo);
+    localDataLineHandler.OnSessionStart(VideoForDataline.b(this.b).sessionid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.data.VideoForDataline.1
  * JD-Core Version:    0.7.0.1
  */

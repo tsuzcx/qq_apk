@@ -13,11 +13,11 @@ class ShengpiziHbFragment$5
   
   public void run()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ShengpiziHbFragment.a(this.this$0).getLayoutParams();
-    int j = this.this$0.jdField_a_of_type_AndroidWidgetButton.getTop() - this.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getTop() - ScreenUtil.dip2px(16.0F) - ScreenUtil.dip2px(8.0F) - ScreenUtil.dip2px(8.0F);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ShengpiziHbFragment.f(this.this$0).getLayoutParams();
+    int j = this.this$0.b.getTop() - this.this$0.r.getTop() - ScreenUtil.dip2px(16.0F) - ScreenUtil.dip2px(8.0F) - ScreenUtil.dip2px(8.0F);
     int i = j;
-    if (j < this.this$0.a()) {
-      i = this.this$0.a();
+    if (j < this.this$0.b()) {
+      i = this.this$0.b();
     }
     localLayoutParams.width = -1;
     localLayoutParams.height = i;
@@ -25,7 +25,7 @@ class ShengpiziHbFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ShengpiziHbFragment.5
  * JD-Core Version:    0.7.0.1
  */

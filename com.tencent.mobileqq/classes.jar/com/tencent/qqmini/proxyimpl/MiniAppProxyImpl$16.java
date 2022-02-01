@@ -13,7 +13,7 @@ class MiniAppProxyImpl$16
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+    this.a.removeActivityResultListener(this);
     if (paramInt1 == 1003)
     {
       if ((paramInt2 == -1) && (paramIntent != null))
@@ -31,17 +31,17 @@ class MiniAppProxyImpl$16
           QLog.d("MiniAppProxyImpl", 1, paramIntent.toString());
           paramIntent = "获取版本信息失败";
         }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy$IAppUpdateListener.onGetAppUpdateResult(bool, paramIntent);
+        this.b.onGetAppUpdateResult(bool, paramIntent);
         return true;
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyMiniAppProxy$IAppUpdateListener.onGetAppUpdateResult(true, "版本过低需要更新");
+      this.b.onGetAppUpdateResult(true, "版本过低需要更新");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.16
  * JD-Core Version:    0.7.0.1
  */

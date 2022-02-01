@@ -15,26 +15,26 @@ class UniformDownloader$1
     Object localObject = this.this$0;
     if (UniformDownloader.a((UniformDownloader)localObject, false, UniformDownloader.a((UniformDownloader)localObject)))
     {
-      this.this$0.b();
+      this.this$0.d();
       return;
     }
-    localObject = this.jdField_a_of_type_AndroidOsBundle;
+    localObject = this.a;
     if (localObject != null) {
       ((Bundle)localObject).putBundle("_CB_USERDATA", UniformDownloader.b(this.this$0));
     }
-    localObject = UniformDownloader.a(this.this$0).iterator();
+    localObject = UniformDownloader.c(this.this$0).iterator();
     while (((Iterator)localObject).hasNext())
     {
       IUniformDownloaderListener localIUniformDownloaderListener = (IUniformDownloaderListener)((Iterator)localObject).next();
       if (localIUniformDownloaderListener != null) {
-        localIUniformDownloaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+        localIUniformDownloaderListener.a(this.b, this.c, this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloader.1
  * JD-Core Version:    0.7.0.1
  */

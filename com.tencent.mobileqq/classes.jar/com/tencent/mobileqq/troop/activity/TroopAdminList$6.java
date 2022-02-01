@@ -24,7 +24,7 @@ class TroopAdminList$6
     Object localObject1 = (TroopAdminList.ViewHolder)paramView.getTag();
     if (localObject1 != null)
     {
-      localObject1 = ((TroopAdminList.ViewHolder)localObject1).a;
+      localObject1 = ((TroopAdminList.ViewHolder)localObject1).y;
       if (this.a.app.getCurrentAccountUin().equals(localObject1))
       {
         localObject1 = new AllInOne((String)localObject1, 0);
@@ -32,15 +32,15 @@ class TroopAdminList$6
       else
       {
         int i = this.a.getIntent().getIntExtra("t_s_f", -1);
-        Object localObject2 = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e((String)localObject1);
-        TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.c);
+        Object localObject2 = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).m((String)localObject1);
+        TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.a.i);
         if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
         {
           if (localTroopInfo != null)
           {
             localObject1 = new AllInOne((String)localObject1, 20);
-            ((AllInOne)localObject1).troopUin = this.a.d;
-            ((AllInOne)localObject1).troopCode = this.a.c;
+            ((AllInOne)localObject1).troopUin = this.a.j;
+            ((AllInOne)localObject1).troopCode = this.a.i;
           }
           else
           {
@@ -56,16 +56,16 @@ class TroopAdminList$6
         else if (localTroopInfo != null)
         {
           localObject1 = new AllInOne((String)localObject1, 21);
-          ((AllInOne)localObject1).troopUin = this.a.d;
-          ((AllInOne)localObject1).troopCode = this.a.c;
+          ((AllInOne)localObject1).troopUin = this.a.j;
+          ((AllInOne)localObject1).troopCode = this.a.i;
           ((AllInOne)localObject1).subSourceId = 12;
         }
         else
         {
           localObject1 = new AllInOne((String)localObject1, 23);
           localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("troop_code", this.a.d);
-          ((Bundle)localObject2).putString("troop_uin", this.a.c);
+          ((Bundle)localObject2).putString("troop_code", this.a.j);
+          ((Bundle)localObject2).putString("troop_uin", this.a.i);
           ((AllInOne)localObject1).extras.putBundle("flc_extra_param", (Bundle)localObject2);
         }
       }
@@ -76,7 +76,7 @@ class TroopAdminList$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.6
  * JD-Core Version:    0.7.0.1
  */

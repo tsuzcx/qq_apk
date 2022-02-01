@@ -14,17 +14,17 @@ class HotChatPie$3
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter.getLastPullUpEndIndex() != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter.isLastPullUpEnded()))
+    if ((paramInt == 0) && (this.a.ck != null) && (this.a.ck.getLastVisiblePosition() == this.a.ck.getCount() - 1) && (this.a.cl != null) && (this.a.cl.getLastPullUpEndIndex() != 0) && (this.a.cl.isLastPullUpEnded()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter.setPullUpStarted();
+      this.a.cl.setPullUpStarted();
       paramAbsListView = this.a;
-      HotChatPie.a(paramAbsListView, paramAbsListView.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter.getLastPullUpEndIndex(), 10);
+      HotChatPie.a(paramAbsListView, paramAbsListView.cl.getLastPullUpEndIndex(), 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,29 +10,29 @@ class VideoPreDownloadMgr$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.b.equals(VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr$3.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr)))
+    if (this.a.b.equals(VideoPreDownloadMgr.b(this.b.b)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr$3.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.a, this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.b))
+      if (this.b.b.a(this.a.a, this.a.b))
       {
         if (QLog.isColorLevel())
         {
-          String str = VideoPreDownloadMgr.a();
+          String str = VideoPreDownloadMgr.e();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("innerDoPreDownload() 缓冲已存在，跳过, vid=");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.b);
+          localStringBuilder.append(this.a.b);
           QLog.i(str, 2, localStringBuilder.toString());
         }
-        VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr$3.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr, null);
-        VideoPreDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr$3.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr);
+        VideoPreDownloadMgr.a(this.b.b, null);
+        VideoPreDownloadMgr.c(this.b.b);
         return;
       }
-      VideoPreDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr$3.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr, this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.a, this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.b, this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerVideourlVideoUrlInfo.d, this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoVideoPreDownloadMgr$3.jdField_a_of_type_Int);
+      VideoPreDownloadMgr.a(this.b.b, this.a.a, this.a.b, this.a.m, this.b.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoPreDownloadMgr.3.1
  * JD-Core Version:    0.7.0.1
  */

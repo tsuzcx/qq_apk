@@ -38,7 +38,7 @@ public class LiteLuxuryGiftController
   public static final int VIBRATE_RANGE_ALL = 1;
   public static final int VIBRATE_SYNCHRONIZE_INTERVAL = 100000;
   private final int COMBO_LUXURY_GIFT = 101;
-  DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder().showImageForEmptyUri(2130840466).showImageOnFail(2130840466).cacheInMemory(true).cacheOnDisk(true).considerExifParams(false).bitmapConfig(Bitmap.Config.RGB_565).displayer(new FadeInBitmapDisplayer(300)).build();
+  DisplayImageOptions displayImageOptions = new DisplayImageOptions.Builder().showImageForEmptyUri(2130841228).showImageOnFail(2130841228).cacheInMemory(true).cacheOnDisk(true).considerExifParams(false).bitmapConfig(Bitmap.Config.RGB_565).displayer(new FadeInBitmapDisplayer(300)).build();
   private boolean isPrepareState = false;
   private LiteLuxuryGiftComponentImpl mComponentImpl;
   private Context mContext;
@@ -123,16 +123,16 @@ public class LiteLuxuryGiftController
     this.mGiftType = 2;
     ((H264GiftView)localObject).setVisibility(0);
     localObject = new LottieGiftInfo();
-    ((LottieGiftInfo)localObject).jdField_a_of_type_JavaLangString = this.mCurrentWebGiftInfo.senderName;
-    ((LottieGiftInfo)localObject).jdField_b_of_type_JavaLangString = this.mCurrentWebGiftInfo.senderHeadUrl;
+    ((LottieGiftInfo)localObject).a = this.mCurrentWebGiftInfo.senderName;
+    ((LottieGiftInfo)localObject).b = this.mCurrentWebGiftInfo.senderHeadUrl;
     ((LottieGiftInfo)localObject).c = this.mCurrentWebGiftInfo.effectId;
     ((LottieGiftInfo)localObject).d = this.mCurrentWebGiftInfo.giftName;
     ((LottieGiftInfo)localObject).e = this.mCurrentWebGiftInfo.effectNum;
     ((LottieGiftInfo)localObject).f = this.mCurrentWebGiftInfo.comment;
     ((LottieGiftInfo)localObject).g = this.mCurrentWebGiftInfo.anchorName;
-    ((LottieGiftInfo)localObject).jdField_a_of_type_Long = this.mCurrentWebGiftInfo.anchorUin;
-    ((LottieGiftInfo)localObject).h = this.mCurrentWebGiftInfo.linkMicGiftComment;
-    ((LottieGiftInfo)localObject).jdField_b_of_type_Long = this.mLuxuryGiftAdapter.getAnchorUin();
+    ((LottieGiftInfo)localObject).h = this.mCurrentWebGiftInfo.anchorUin;
+    ((LottieGiftInfo)localObject).i = this.mCurrentWebGiftInfo.linkMicGiftComment;
+    ((LottieGiftInfo)localObject).j = this.mLuxuryGiftAdapter.getAnchorUin();
     this.mH264GiftView.setLottieGiftInfo((LottieGiftInfo)localObject);
     localObject = this.mLuxuryGiftData;
     if (localObject != null) {
@@ -500,7 +500,7 @@ public class LiteLuxuryGiftController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.components.luxurygift.LiteLuxuryGiftController
  * JD-Core Version:    0.7.0.1
  */

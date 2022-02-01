@@ -23,12 +23,12 @@ class NonMainProcAvatarLoader$2
   {
     if (paramMessage.what == 1000)
     {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.a.g.size() > 0)
       {
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
-        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        paramMessage = new ArrayList(this.a.g.size());
+        paramMessage.addAll(this.a.g);
         this.a.a(paramMessage);
-        this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
+        this.a.g.removeAll(paramMessage);
       }
     }
     else if (paramMessage.what == 1002) {
@@ -39,9 +39,9 @@ class NonMainProcAvatarLoader$2
         paramMessage = ((Bundle)localObject2).getString("uin");
         localObject2 = ((Bundle)localObject2).getString("path");
         if (localObject1 != null) {
-          this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramMessage, localObject1);
+          this.a.d.put(paramMessage, localObject1);
         }
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.a.h.iterator();
         while (localIterator.hasNext())
         {
           FaceObserver localFaceObserver = (FaceObserver)localIterator.next();
@@ -76,7 +76,7 @@ class NonMainProcAvatarLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.NonMainProcAvatarLoader.2
  * JD-Core Version:    0.7.0.1
  */

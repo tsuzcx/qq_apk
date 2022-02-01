@@ -13,13 +13,13 @@ class SendHbMainFragment$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBannerTipsBar.setVisibility(8);
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
+    this.a.setVisibility(8);
+    this.b.edit().putInt("red_packet_bulletin", this.c).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.SendHbMainFragment.2
  * JD-Core Version:    0.7.0.1
  */

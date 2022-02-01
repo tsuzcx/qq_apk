@@ -48,7 +48,7 @@ public class PublicQuickPayServiceImpl
     if ((localDialog != null) && (localDialog.isShowing())) {
       this.mCustomSingleButtonDialog.dismiss();
     }
-    this.mCustomSingleButtonDialog = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).DialogUtils$createNewUpgradeYYBInstalledDialog(paramContext, HardCodeUtil.a(R.string.by), "", HardCodeUtil.a(R.string.z), new PublicQuickPayServiceImpl.2(this), null, null);
+    this.mCustomSingleButtonDialog = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).DialogUtils$createNewUpgradeYYBInstalledDialog(paramContext, HardCodeUtil.a(R.string.bC), "", HardCodeUtil.a(R.string.z), new PublicQuickPayServiceImpl.2(this), null, null);
     this.mCustomSingleButtonDialog.show();
   }
   
@@ -138,7 +138,7 @@ public class PublicQuickPayServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.PublicQuickPayServiceImpl
  * JD-Core Version:    0.7.0.1
  */

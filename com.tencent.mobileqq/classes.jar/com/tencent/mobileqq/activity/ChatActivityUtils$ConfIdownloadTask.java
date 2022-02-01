@@ -13,13 +13,13 @@ import org.json.JSONObject;
 public class ChatActivityUtils$ConfIdownloadTask
   extends BaseDownloadAsyncTask
 {
-  ChatActivityUtils.OnDownloadAsyncTaskListener jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$OnDownloadAsyncTaskListener;
-  final String jdField_a_of_type_JavaLangString;
+  ChatActivityUtils.OnDownloadAsyncTaskListener a;
+  final String b;
   
   ChatActivityUtils$ConfIdownloadTask(String paramString, ChatActivityUtils.OnDownloadAsyncTaskListener paramOnDownloadAsyncTaskListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$OnDownloadAsyncTaskListener = paramOnDownloadAsyncTaskListener;
+    this.b = paramString;
+    this.a = paramOnDownloadAsyncTaskListener;
   }
   
   public static void a(String paramString1, String paramString2, ChatActivityUtils.OnDownloadAsyncTaskListener paramOnDownloadAsyncTaskListener)
@@ -36,10 +36,10 @@ public class ChatActivityUtils$ConfIdownloadTask
     paramString1 = new ConfIdownloadTask(paramString1, paramOnDownloadAsyncTaskListener);
     paramString2 = new ArrayList();
     paramOnDownloadAsyncTaskListener = new DownloadParams();
-    paramOnDownloadAsyncTaskListener.jdField_a_of_type_JavaLangString = ((String)localObject);
-    paramOnDownloadAsyncTaskListener.b = 1000;
-    paramOnDownloadAsyncTaskListener.c = 1000;
-    paramOnDownloadAsyncTaskListener.jdField_a_of_type_Int = 0;
+    paramOnDownloadAsyncTaskListener.a = ((String)localObject);
+    paramOnDownloadAsyncTaskListener.d = 1000;
+    paramOnDownloadAsyncTaskListener.e = 1000;
+    paramOnDownloadAsyncTaskListener.c = 0;
     paramString2.add(paramOnDownloadAsyncTaskListener);
     paramString1.execute(new ArrayList[] { paramString2 });
   }
@@ -47,7 +47,7 @@ public class ChatActivityUtils$ConfIdownloadTask
   @TargetApi(9)
   public void a(DownloadParams paramDownloadParams)
   {
-    boolean bool = paramDownloadParams.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_a_of_type_Boolean;
+    boolean bool = paramDownloadParams.f.f;
     int k = 0;
     int m = 0;
     int i = -100;
@@ -55,14 +55,14 @@ public class ChatActivityUtils$ConfIdownloadTask
     {
       try
       {
-        paramDownloadParams = new String(paramDownloadParams.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_a_of_type_ArrayOfByte, "UTF-8");
+        paramDownloadParams = new String(paramDownloadParams.f.a, "UTF-8");
       }
       catch (Exception paramDownloadParams)
       {
         i = -1;
         if (QLog.isColorLevel())
         {
-          localObject1 = this.jdField_a_of_type_JavaLangString;
+          localObject1 = this.b;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("getConfId.Complete :");
           ((StringBuilder)localObject2).append(paramDownloadParams.toString());
@@ -81,7 +81,7 @@ public class ChatActivityUtils$ConfIdownloadTask
       i = ((JSONObject)localObject1).getInt("retcode");
       if (QLog.isColorLevel())
       {
-        localObject2 = this.jdField_a_of_type_JavaLangString;
+        localObject2 = this.b;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("getConfId.Complete : retcode = ");
         ((StringBuilder)localObject3).append(i);
@@ -161,7 +161,7 @@ public class ChatActivityUtils$ConfIdownloadTask
     label315:
     if (QLog.isColorLevel())
     {
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.b;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("getConfId.Complete : errorCode = ");
       ((StringBuilder)localObject3).append((String)localObject1);
@@ -179,7 +179,7 @@ public class ChatActivityUtils$ConfIdownloadTask
     label392:
     if (QLog.isColorLevel())
     {
-      localObject2 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = this.b;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("getConfId.Complete : errorCode = ");
       ((StringBuilder)localObject3).append((String)localObject1);
@@ -195,7 +195,7 @@ public class ChatActivityUtils$ConfIdownloadTask
     j = 0;
     paramDownloadParams = (DownloadParams)localObject1;
     label472:
-    localObject1 = this.jdField_a_of_type_JavaLangString;
+    localObject1 = this.b;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("getConfId.Complete, ret[");
     ((StringBuilder)localObject2).append(i);
@@ -207,17 +207,17 @@ public class ChatActivityUtils$ConfIdownloadTask
     ((StringBuilder)localObject2).append(paramDownloadParams);
     ((StringBuilder)localObject2).append("]");
     QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    paramDownloadParams = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$OnDownloadAsyncTaskListener;
+    paramDownloadParams = this.a;
     if (paramDownloadParams != null)
     {
       paramDownloadParams.a(k, j);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$OnDownloadAsyncTaskListener = null;
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.ConfIdownloadTask
  * JD-Core Version:    0.7.0.1
  */

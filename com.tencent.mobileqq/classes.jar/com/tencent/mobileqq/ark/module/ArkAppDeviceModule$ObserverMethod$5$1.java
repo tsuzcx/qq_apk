@@ -10,12 +10,12 @@ class ArkAppDeviceModule$ObserverMethod$5$1
   public void run()
   {
     ArkAppDeviceModule.ObserverMethod.5.1.1 local1 = new ArkAppDeviceModule.ObserverMethod.5.1.1(this);
-    this.a.jdField_a_of_type_ComTencentMobileqqArkModuleArkAppDeviceModule$ObserverMethod.a.a.a(local1, this.a.jdField_a_of_type_Long);
+    this.a.b.a.a.a(local1, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.module.ArkAppDeviceModule.ObserverMethod.5.1
  * JD-Core Version:    0.7.0.1
  */

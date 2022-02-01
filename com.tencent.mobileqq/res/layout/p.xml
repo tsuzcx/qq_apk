@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dpr" android:background="@drawable/buc" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dpr" android:background="@drawable/6j" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/e7j" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/g4p" />
-    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/nf8" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="34.0dip" app:dinifly_loop="true" />
+    <ImageView android:id="@id/e7j" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/i4p" />
+    <com.tencent.mobileqq.dinifly.DiniFlyAnimationView android:id="@id/oc6" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="34.0dip" app:dinifly_loop="true" />
     <TextView android:textSize="14.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/e85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/afe" android:maxLines="1" android:singleLine="true" />
 </LinearLayout>

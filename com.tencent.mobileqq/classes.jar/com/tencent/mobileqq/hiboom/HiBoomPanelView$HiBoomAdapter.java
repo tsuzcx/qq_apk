@@ -14,37 +14,37 @@ import java.util.List;
 public class HiBoomPanelView$HiBoomAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<Integer> a = new ArrayList();
   
   public HiBoomPanelView$HiBoomAdapter(HiBoomPanelView paramHiBoomPanelView)
   {
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
+    this.a.add(Integer.valueOf(-1));
   }
   
   public int a(int paramInt)
   {
-    return ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt)).intValue();
+    return ((Integer)this.a.get(paramInt)).intValue();
   }
   
   public void a(List<Integer> paramList1, List<Integer> paramList2, List<Integer> paramList3)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.clear();
     if (paramList1 != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList1);
+      this.a.addAll(paramList1);
     }
     if ((paramList2 != null) && (paramList2.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList2);
+      this.a.addAll(paramList2);
     }
     if ((paramList3 != null) && (paramList3.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList3);
+      this.a.addAll(paramList3);
     }
-    this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(-1));
+    this.a.add(Integer.valueOf(-1));
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public int getItemViewType(int paramInt)
@@ -60,18 +60,18 @@ public class HiBoomPanelView$HiBoomAdapter
     if ((paramViewHolder instanceof HiBoomPanelView.HiBoomViewHolder))
     {
       HiBoomPanelView.HiBoomViewHolder localHiBoomViewHolder = (HiBoomPanelView.HiBoomViewHolder)paramViewHolder;
-      localHiBoomViewHolder.jdField_a_of_type_Int = paramInt;
-      if (localHiBoomViewHolder.jdField_a_of_type_Boolean)
+      localHiBoomViewHolder.h = paramInt;
+      if (localHiBoomViewHolder.i)
       {
         int i = a(paramInt);
         ViewGroup.LayoutParams localLayoutParams = localHiBoomViewHolder.itemView.getLayoutParams();
-        localLayoutParams.height = HiBoomPanelView.jdField_a_of_type_Int;
-        localLayoutParams.width = HiBoomPanelView.b;
-        localHiBoomViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.c, HiBoomPanelView.c);
-        localLayoutParams = localHiBoomViewHolder.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.getLayoutParams();
-        localLayoutParams.width = (HiBoomPanelView.b - HiBoomPanelView.c - HiBoomPanelView.d * 2);
+        localLayoutParams.height = HiBoomPanelView.b;
+        localLayoutParams.width = HiBoomPanelView.c;
+        localHiBoomViewHolder.itemView.setPadding(0, 0, HiBoomPanelView.d, HiBoomPanelView.d);
+        localLayoutParams = localHiBoomViewHolder.a.getLayoutParams();
+        localLayoutParams.width = (HiBoomPanelView.c - HiBoomPanelView.d - HiBoomPanelView.e * 2);
         localLayoutParams.height = localLayoutParams.width;
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.a(localHiBoomViewHolder, i);
+        this.b.a(localHiBoomViewHolder, i);
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -86,7 +86,7 @@ public class HiBoomPanelView$HiBoomAdapter
     boolean bool = false;
     try
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext()).inflate(2131563037, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.b.getContext()).inflate(2131629651, paramViewGroup, false);
       bool = true;
     }
     catch (Exception paramViewGroup)
@@ -96,14 +96,14 @@ public class HiBoomPanelView$HiBoomAdapter
     }
     localObject = paramViewGroup;
     if (paramViewGroup == null) {
-      localObject = new View(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext());
+      localObject = new View(this.b.getContext());
     }
-    return new HiBoomPanelView.HiBoomViewHolder(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView, (View)localObject, bool);
+    return new HiBoomPanelView.HiBoomViewHolder(this.b, (View)localObject, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter
  * JD-Core Version:    0.7.0.1
  */

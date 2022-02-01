@@ -36,9 +36,9 @@ class ShoppingFragment$6
     boolean bool = false;
     if ((paramBoolean) && (paramLong == 0L) && (paramStGetFeedListRsp != null))
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter.a().b(paramStGetFeedListRsp.livePageInfo.get());
+      this.a.D().b(paramStGetFeedListRsp.livePageInfo.get());
       paramBaseRequest = paramStGetFeedListRsp.hotLive.get();
-      paramString = this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersRelativeFeedsAdapter;
+      paramString = this.a;
       localObject = paramStGetFeedListRsp.extInfo;
       paramBoolean = bool;
       if (paramStGetFeedListRsp.isFinish.get() == 1) {
@@ -48,13 +48,13 @@ class ShoppingFragment$6
       return;
     }
     if (!TextUtils.isEmpty(paramString)) {
-      QQToast.a(ShoppingFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityShoppingShoppingFragment), 1, paramString, 0).a();
+      QQToast.makeText(ShoppingFragment.c(this.b), 1, paramString, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment.6
  * JD-Core Version:    0.7.0.1
  */

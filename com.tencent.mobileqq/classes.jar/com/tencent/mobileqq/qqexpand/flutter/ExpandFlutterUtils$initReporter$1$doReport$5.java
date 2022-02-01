@@ -15,12 +15,12 @@ final class ExpandFlutterUtils$initReporter$1$doReport$5
   public final void run()
   {
     ExpandFlutterUtils.initReporter.1 local1 = this.this$0;
-    QQUserAction.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_KotlinJvmInternalRef$BooleanRef.element, this.jdField_a_of_type_KotlinJvmInternalRef$LongRef.element, this.jdField_b_of_type_KotlinJvmInternalRef$LongRef.element, this.jdField_a_of_type_JavaUtilMap, this.jdField_b_of_type_KotlinJvmInternalRef$BooleanRef.element, this.jdField_b_of_type_KotlinJvmInternalRef$BooleanRef.element);
+    QQUserAction.a(this.a, this.b, this.c.element, this.d.element, this.e.element, this.f, this.g.element, this.g.element);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterUtils.initReporter.1.doReport.5
  * JD-Core Version:    0.7.0.1
  */

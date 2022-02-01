@@ -15,8 +15,8 @@ class StoryListPresenter$4$1$1
   public void onClick(View paramView)
   {
     StoryReportor.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
-    this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.a(false, true, 13, null);
-    this.a.a.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+    this.a.b.this$0.c.a(false, true, 13, null);
+    this.a.b.this$0.h.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

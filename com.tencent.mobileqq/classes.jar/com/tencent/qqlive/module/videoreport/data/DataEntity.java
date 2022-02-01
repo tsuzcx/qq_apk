@@ -14,6 +14,7 @@ public class DataEntity
   SparseArray<ElementDataEntity> elementVirtualParentParams;
   @Nullable
   IDynamicParams eventDynamicParams;
+  Map<String, Object> extendMap;
   Map<String, Object> innerParams;
   String pageContentId;
   String pageId;
@@ -84,11 +85,18 @@ public class DataEntity
     localDataEntity.innerParams = ((Map)localObject1);
     localObject1 = this.parentEntity;
     if (localObject1 == null) {
-      localObject1 = localObject2;
+      localObject1 = null;
     } else {
       localObject1 = ((DataEntity)localObject1).copy();
     }
     localDataEntity.parentEntity = ((DataEntity)localObject1);
+    localObject1 = this.extendMap;
+    if (localObject1 == null) {
+      localObject1 = localObject2;
+    } else {
+      localObject1 = new HashMap((Map)localObject1);
+    }
+    localDataEntity.extendMap = ((Map)localObject1);
     localDataEntity.eventDynamicParams = this.eventDynamicParams;
     return localDataEntity;
   }
@@ -114,6 +122,7 @@ public class DataEntity
     localStringBuilder.append('\'');
     localStringBuilder.append(", pageParams=");
     localStringBuilder.append(this.pageParams);
+    localStringBuilder.append('\'');
     localStringBuilder.append(", innerParams=");
     localStringBuilder.append(this.innerParams);
     localStringBuilder.append('}');
@@ -122,7 +131,7 @@ public class DataEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.DataEntity
  * JD-Core Version:    0.7.0.1
  */

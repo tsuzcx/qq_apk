@@ -11,23 +11,23 @@ class VideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver
   
   public void run()
   {
-    VideoPreDownloadMgr localVideoPreDownloadMgr = VideoFeedsFirstVideoRecommendationManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsFirstVideoRecommendationManager);
+    VideoPreDownloadMgr localVideoPreDownloadMgr = VideoFeedsFirstVideoRecommendationManager.a(this.a);
     if (localVideoPreDownloadMgr != null) {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_Int == 1)
+      if (this.b.a == 1)
       {
-        if (!localVideoPreDownloadMgr.a(null, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_JavaLangString)) {
-          localVideoPreDownloadMgr.a(null, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.d);
+        if (!localVideoPreDownloadMgr.a(null, this.b.b)) {
+          localVideoPreDownloadMgr.a(null, this.b.b, 0, this.b.e);
         }
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_Int == 2) {
-        ThirdVideoManager.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_JavaLangString, new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1.1(this, localVideoPreDownloadMgr));
+      else if (this.b.a == 2) {
+        ThirdVideoManager.a().a(this.b.b, new VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1.1(this, localVideoPreDownloadMgr));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1
  * JD-Core Version:    0.7.0.1
  */

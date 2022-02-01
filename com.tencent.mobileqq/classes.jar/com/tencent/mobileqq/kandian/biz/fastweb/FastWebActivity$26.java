@@ -9,12 +9,12 @@ class FastWebActivity$26
   
   public void run()
   {
-    FastWebActivity.a(this.this$0).a(FastWebActivity.a(this.this$0).c);
+    FastWebActivity.p(this.this$0).a(FastWebActivity.d(this.this$0).e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.26
  * JD-Core Version:    0.7.0.1
  */

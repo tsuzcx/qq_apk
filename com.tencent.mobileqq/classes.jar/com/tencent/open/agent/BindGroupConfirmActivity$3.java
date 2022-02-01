@@ -12,13 +12,13 @@ class BindGroupConfirmActivity$3
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.p == null) {
       return;
     }
     Object localObject2 = null;
     try
     {
-      localObject1 = BitmapFactory.decodeResource(this.this$0.a, 2130842700);
+      localObject1 = BitmapFactory.decodeResource(this.this$0.p, 2130843653);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
@@ -44,7 +44,7 @@ class BindGroupConfirmActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.3
  * JD-Core Version:    0.7.0.1
  */

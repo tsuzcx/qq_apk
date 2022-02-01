@@ -12,22 +12,22 @@ class TroopMemberListInnerFrame$3
   
   public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopMemberListInnerFrame.c.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopMemberListInnerFrame.c);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopMemberListInnerFrame;
-    localObject = TroopMemberListInnerFrame.a((TroopMemberListInnerFrame)localObject, ((TroopMemberListInnerFrame)localObject).c);
+    this.b.w.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.removeView(this.b.w);
+    Object localObject = this.b;
+    localObject = TroopMemberListInnerFrame.a((TroopMemberListInnerFrame)localObject, ((TroopMemberListInnerFrame)localObject).w);
     if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopMemberListInnerFrame.c.setTag(localObject);
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopMemberListInnerFrame.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberTroopMemberListInnerFrame.a.notifyDataSetChanged();
+    this.b.w.setTag(localObject);
+    if (this.b.e != null) {
+      this.b.e.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.TroopMemberListInnerFrame.3
  * JD-Core Version:    0.7.0.1
  */

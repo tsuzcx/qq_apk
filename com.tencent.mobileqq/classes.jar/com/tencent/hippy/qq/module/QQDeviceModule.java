@@ -37,7 +37,7 @@ public class QQDeviceModule
     localStringBuilder.append("{\"qqVersion\":\"");
     localStringBuilder.append(str);
     localStringBuilder.append("\",\"qqBuild\":\"");
-    localStringBuilder.append("5295");
+    localStringBuilder.append("5770");
     localStringBuilder.append("\"}");
     paramPromise.resolve(localStringBuilder.toString());
   }
@@ -60,7 +60,7 @@ public class QQDeviceModule
         paramHippyMap = paramHippyMap.getString("businessIdForAidTicketAndTaidTicket");
         if (TextUtils.isEmpty(paramHippyMap))
         {
-          paramHippyMap = GdtDeviceInfoHelper.a(BaseApplication.getContext());
+          paramHippyMap = GdtDeviceInfoHelper.b(BaseApplication.getContext());
         }
         else
         {
@@ -101,7 +101,7 @@ public class QQDeviceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQDeviceModule
  * JD-Core Version:    0.7.0.1
  */

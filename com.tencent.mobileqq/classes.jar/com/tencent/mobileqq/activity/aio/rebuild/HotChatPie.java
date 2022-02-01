@@ -74,9 +74,9 @@ import com.tencent.mobileqq.troop.data.TroopAioTips;
 import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
 import com.tencent.mobileqq.troop.observer.TroopRedDotObserver;
 import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.troop.widget.RedDotRadioButton;
 import com.tencent.mobileqq.troop.widget.TroopUsingTimeReport;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
@@ -97,44 +97,39 @@ public class HotChatPie
   extends BaseTroopChatPie
   implements RadioGroup.OnCheckedChangeListener
 {
-  protected static final String[] a;
-  static long c;
-  public boolean M = false;
-  public boolean N = false;
-  boolean O = false;
-  boolean P;
-  boolean Q = false;
-  ViewPluginManager jdField_a_of_type_ComTencentBizViewpluginViewPluginManager = null;
-  private BaseTroopMsgObserver jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseTroopMsgObserver;
-  public HotChatManager a;
-  HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = (HotChatObserver)((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatObserverImpl(this);
-  public HotChatInfo a;
-  IHotChatPostListAdapter jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter;
-  public IHotChatSCHelper a;
-  IHotChatShare jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare;
-  TroopRedDotObserver jdField_a_of_type_ComTencentMobileqqTroopObserverTroopRedDotObserver = new HotChatPie.1(this);
-  RedDotRadioButton jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton;
-  protected TroopUsingTimeReport a;
-  private PullRefreshHeader jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader;
-  SegmentedControlView jdField_a_of_type_ComTencentWidgetSegmentedControlView;
-  XListView jdField_a_of_type_ComTencentWidgetXListView;
-  long jdField_b_of_type_Long = 0L;
-  Dialog jdField_b_of_type_AndroidAppDialog;
-  RedDotRadioButton jdField_b_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton;
-  public Dialog c;
-  public String e;
-  View i = null;
-  public int j;
-  View jdField_j_of_type_AndroidViewView;
-  TextView jdField_j_of_type_AndroidWidgetTextView;
-  public int k = 0;
-  int l = 0;
-  protected int m = -1;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "@all", HardCodeUtil.a(2131705667) };
-  }
+  static long cj;
+  protected static final String[] cs = { "@all", HardCodeUtil.a(2131903552) };
+  public boolean bO = false;
+  public boolean bP = false;
+  public HotChatManager bQ;
+  public HotChatInfo bR;
+  public String bS;
+  boolean bT = false;
+  public IHotChatSCHelper bU;
+  IHotChatShare bV;
+  Dialog bW;
+  public Dialog bX;
+  boolean bY;
+  public int bZ;
+  private BaseTroopMsgObserver br;
+  private PullRefreshHeader bs;
+  long ca = 0L;
+  public int cb = 0;
+  boolean cc = false;
+  View cd = null;
+  SegmentedControlView ce;
+  RedDotRadioButton cf;
+  RedDotRadioButton cg;
+  int ch = 0;
+  View ci;
+  XListView ck;
+  IHotChatPostListAdapter cl;
+  TextView cm;
+  protected int cn = -1;
+  protected TroopUsingTimeReport co;
+  TroopRedDotObserver cp = new HotChatPie.1(this);
+  ViewPluginManager cq = null;
+  HotChatObserver cr = (HotChatObserver)((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatObserverImpl(this);
   
   public HotChatPie(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, Context paramContext)
   {
@@ -143,80 +138,80 @@ public class HotChatPie
   
   private void a(Intent paramIntent, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    if ((!this.P) && (paramBoolean) && (paramIntent.getBooleanExtra("param_newly_created_hot_chat", false)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    if ((!this.bY) && (paramBoolean) && (paramIntent.getBooleanExtra("param_newly_created_hot_chat", false)) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
       paramIntent = HotChatHelper.a(paramString3, 1);
-      paramIntent = ((IHotChatApi)QRoute.api(IHotChatApi.class)).makeShareGrayTip(HardCodeUtil.a(2131713820), HardCodeUtil.a(2131705671), paramString1, paramString2, paramIntent, paramString3);
+      paramIntent = ((IHotChatApi)QRoute.api(IHotChatApi.class)).makeShareGrayTip(HardCodeUtil.a(2131911360), HardCodeUtil.a(2131903556), paramString1, paramString2, paramIntent, paramString3);
       if (!TextUtils.isEmpty(paramIntent))
       {
-        this.P = true;
+        this.bY = true;
         paramString2 = MessageRecordFactory.a(-2033);
-        long l1 = MessageCache.a();
-        paramString3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-        paramString2.init(paramString3, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString3, paramIntent, l1, -2033, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, l1);
+        long l = MessageCache.c();
+        paramString3 = this.d.getCurrentAccountUin();
+        paramString2.init(paramString3, this.ah.b, paramString3, paramIntent, l, -2033, this.ah.a, l);
         paramString2.isread = true;
-        if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, false)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString2, paramString3);
+        if (!MessageHandlerUtils.a(this.d, paramString2, false)) {
+          this.d.getMessageFacade().a(paramString2, paramString3);
         }
       }
-      this.jdField_b_of_type_AndroidAppDialog = HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new HotChatPie.12(this, paramString1));
+      this.bW = HotChatHelper.a(this.f, new HotChatPie.12(this, paramString1));
     }
   }
   
-  private void at()
+  private void bH()
   {
-    if (this.jdField_j_of_type_AndroidViewView == null) {
-      this.jdField_j_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559222, null);
+    if (this.ci == null) {
+      this.ci = LayoutInflater.from(this.e).inflate(2131625142, null);
     }
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
+    if (this.ck == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_j_of_type_AndroidViewView.findViewById(2131379127));
-      this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131366238));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559642, this.jdField_a_of_type_ComTencentWidgetXListView, false));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setHeaderBgColor(-16777216);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTextColor(-1, -1, -1, -1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setArrowColor(-1);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollHeight(10);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollHeader(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839396));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setDividerHeight(30);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new HotChatPie.3(this));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new HotChatPie.4(this));
+      this.ck = ((XListView)this.ci.findViewById(2131447863));
+      this.cm = ((TextView)this.ci.findViewById(2131432530));
+      this.bs = ((PullRefreshHeader)LayoutInflater.from(this.e).inflate(2131625671, this.ck, false));
+      this.bs.setHeaderBgColor(-16777216);
+      this.bs.setTextColor(-1, -1, -1, -1, -1);
+      this.bs.setArrowColor(-1);
+      this.ck.setOverScrollHeader(this.bs);
+      this.ck.setOverScrollHeight(10);
+      this.ck.setOverscrollHeader(this.e.getResources().getDrawable(2130839580));
+      this.ck.setDividerHeight(30);
+      this.ck.setOnScrollListener(new HotChatPie.3(this));
+      this.ck.setOverScrollListener(new HotChatPie.4(this));
     }
     Object localObject = new RelativeLayout.LayoutParams(-1, -1);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(8);
+    if (this.X != null) {
+      this.X.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setVisibility(8);
+    if (this.W != null) {
+      this.W.setVisibility(8);
     }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_j_of_type_AndroidViewView) == -1)
+    if (this.o.indexOfChild(this.ci) == -1)
     {
-      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131370119);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_j_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setVisibility(8);
+      ((RelativeLayout.LayoutParams)localObject).addRule(6, 2131437281);
+      this.o.addView(this.ci, (ViewGroup.LayoutParams)localObject);
+      this.U.setVisibility(8);
     }
-    int i1 = SharedPreUtils.R(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    int n = 1;
-    if (i1 != 1) {
-      n = 0;
+    int j = SharedPreUtils.ai(this.e, this.d.getCurrentUin());
+    int i = 1;
+    if (j != 1) {
+      i = 0;
     }
-    if (n != 0)
+    if (i != 0)
     {
-      if (this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager == null)
+      if (this.cq == null)
       {
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager = new ViewPluginManager(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, "QQ_Hotchat_post_list.apk", "2586", "/hotchatPostListPlugin/opt");
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(new HotChatPie.5(this), false);
+        this.cq = new ViewPluginManager(this.f, "QQ_Hotchat_post_list.apk", "2586", "/hotchatPostListPlugin/opt");
+        this.cq.a(new HotChatPie.5(this), false);
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter == null)
+    else if (this.cl == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatPostListAdapter(this.jdField_a_of_type_AndroidContentContext, null);
-      this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter((ListAdapter)this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter);
+      this.cl = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatPostListAdapter(this.e, null);
+      this.ck.setAdapter((ListAdapter)this.cl);
     }
-    if (this.jdField_a_of_type_ComTencentWidgetXListView.getVisibility() != 8)
+    if (this.ck.getVisibility() != 8)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter;
+      localObject = this.cl;
       if ((localObject == null) || (((IHotChatPostListAdapter)localObject).getCount() != 0)) {}
     }
     else
@@ -225,81 +220,19 @@ public class HotChatPie
     }
   }
   
-  private void au()
+  private void bI()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
+    Object localObject = this.bR;
     if ((localObject != null) && (((HotChatInfo)localObject).pkFlag != 0))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper == null)
+      if (this.bU == null)
       {
         ThreadManager.post(new HotChatPie.10(this), 5, null, true);
         localObject = new HotChatPie.11(this);
-        this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatSCHelper(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (IHotChatSCHelper.OnShowNoteListener)localObject, this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.uuid);
+        this.bU = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatSCHelper(this.d, (IHotChatSCHelper.OnShowNoteListener)localObject, this.bR.uuid);
       }
-      this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper.startCheckDelay(10000L);
+      this.bU.startCheckDelay(10000L);
     }
-  }
-  
-  private void b(int paramInt, boolean paramBoolean)
-  {
-    Object localObject;
-    if (paramInt == 1)
-    {
-      if (this.jdField_j_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_j_of_type_AndroidViewView);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setVisibility(0);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setVisibility(0);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
-      }
-      this.m = 1;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton;
-      if ((localObject != null) && (((RedDotRadioButton)localObject).a()))
-      {
-        e(131072);
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(false);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a() > 0)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.c(0);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo != null) && (paramBoolean))
-      {
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isBuLuoHotChat()) {
-          localObject = "2";
-        } else {
-          localObject = "1";
-        }
-        ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "hot_room", "exp_aio", 0, 0, (String)localObject, "", "", "");
-      }
-    }
-    else if (paramInt == 2)
-    {
-      localObject = this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton;
-      if ((localObject != null) && (((RedDotRadioButton)localObject).a()))
-      {
-        this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton.a(false);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter;
-        if (localObject != null) {
-          c(0, ((IHotChatPostListAdapter)localObject).getCount());
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.c(4);
-      at();
-      Q();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-      if (localObject != null) {
-        ((HotChatInfo)localObject).clearRedPoint();
-      }
-      this.m = 2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-        this.l = this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount();
-      }
-    }
-    ReportController.b(null, "dc00899", "grp_lbs", "", "hot_room", "exp_visit_post", 0, 0, "", "", "", "");
   }
   
   private void c(int paramInt1, int paramInt2)
@@ -308,7 +241,7 @@ public class HotChatPie
     if (QLog.isColorLevel())
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c);
       ((StringBuilder)localObject).append("Q.hotchat.aio_post_list_req");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -320,129 +253,263 @@ public class HotChatPie
     }
   }
   
-  private void m(boolean paramBoolean)
+  private void c(int paramInt, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramInt == 1)
+    {
+      if (this.ci != null) {
+        this.o.removeView(this.ci);
+      }
+      this.U.setVisibility(0);
+      if (this.W != null) {
+        this.W.setVisibility(0);
+      }
+      if (this.X != null) {
+        this.X.setVisibility(0);
+      }
+      this.cn = 1;
+      localObject = this.cf;
+      if ((localObject != null) && (((RedDotRadioButton)localObject).a()))
+      {
+        j(131072);
+        this.cf.a(false);
+      }
+      if ((this.bp != null) && (this.bp.m() > 0)) {
+        this.bp.d(0);
+      }
+      if ((this.bR != null) && (paramBoolean))
+      {
+        QQAppInterface localQQAppInterface = this.d;
+        if (this.bR.isBuLuoHotChat()) {
+          localObject = "2";
+        } else {
+          localObject = "1";
+        }
+        ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "hot_room", "exp_aio", 0, 0, (String)localObject, "", "", "");
+      }
+    }
+    else if (paramInt == 2)
+    {
+      localObject = this.cg;
+      if ((localObject != null) && (((RedDotRadioButton)localObject).a()))
+      {
+        this.cg.a(false);
+        localObject = this.cl;
+        if (localObject != null) {
+          c(0, ((IHotChatPostListAdapter)localObject).getCount());
+        }
+      }
+      this.bp.d(4);
+      bH();
+      aw();
+      localObject = this.bR;
+      if (localObject != null) {
+        ((HotChatInfo)localObject).clearRedPoint();
+      }
+      this.cn = 2;
+      if (this.V != null) {
+        this.ch = this.V.getCount();
+      }
+    }
+    ReportController.b(null, "dc00899", "grp_lbs", "", "hot_room", "exp_visit_post", 0, 0, "", "", "", "");
+  }
+  
+  private void p(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(8);
-      if (this.i == null) {
-        this.i = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559931, null);
+      this.q.setVisibility(8);
+      this.r.setVisibility(8);
+      if (this.cd == null) {
+        this.cd = LayoutInflater.from(this.e).inflate(2131625974, null);
       }
-      if (this.jdField_a_of_type_ComTencentWidgetSegmentedControlView == null)
+      if (this.ce == null)
       {
         localObject = new RelativeLayout.LayoutParams(-1, -1);
         ((RelativeLayout.LayoutParams)localObject).addRule(14);
         ((RelativeLayout.LayoutParams)localObject).topMargin = 32;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.addView(this.i, (ViewGroup.LayoutParams)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.b();
-        this.jdField_a_of_type_ComTencentWidgetSegmentedControlView = ((SegmentedControlView)this.i.findViewById(2131368300));
+        this.p.addView(this.cd, (ViewGroup.LayoutParams)localObject);
+        this.p.b();
+        this.ce = ((SegmentedControlView)this.cd.findViewById(2131435173));
       }
-      this.jdField_a_of_type_ComTencentWidgetSegmentedControlView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton = ((RedDotRadioButton)this.i.findViewById(2131368298));
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton;
+      this.ce.setVisibility(0);
+      this.cf = ((RedDotRadioButton)this.cd.findViewById(2131435171));
+      Object localObject = this.cf;
       if (localObject != null)
       {
         ((RedDotRadioButton)localObject).setChecked(true);
-        this.m = 1;
+        this.cn = 1;
       }
-      this.jdField_b_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton = ((RedDotRadioButton)this.i.findViewById(2131368299));
-      this.jdField_a_of_type_ComTencentWidgetSegmentedControlView.setOnCheckedChangeListener(this);
+      this.cg = ((RedDotRadioButton)this.cd.findViewById(2131435172));
+      this.ce.setOnCheckedChangeListener(this);
       return;
     }
-    if ((this.i != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.indexOfChild(this.i) != -1)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.removeView(this.i);
+    if ((this.cd != null) && (this.p.indexOfChild(this.cd) != -1)) {
+      this.p.removeView(this.cd);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
+    this.q.setVisibility(0);
+    this.r.setVisibility(0);
   }
   
-  private void n(boolean paramBoolean)
+  private void q(boolean paramBoolean)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new HotChatPie.2(this, paramBoolean));
+    this.m.post(new HotChatPie.2(this, paramBoolean));
   }
   
-  public void A()
+  public void B()
   {
-    super.A();
-  }
-  
-  protected void K()
-  {
-    aB();
-    aq();
-    super.K();
-    this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
-    NearbyTransitActivity.a("AIOShow", 2);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    Object localObject2 = ((Intent)localObject1).getStringExtra("uin");
-    String str1 = ((Intent)localObject1).getStringExtra("uinname");
-    String str2 = ((Intent)localObject1).getStringExtra("hotnamecode");
-    int n = 0;
-    a((Intent)localObject1, (String)localObject2, str1, str2, ((Intent)localObject1).getBooleanExtra("param_newly_created_hot_chat", false));
-    if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a()) {
-      ThreadManager.post(new HotChatPie.8(this), 8, null, true);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopRedDotObserver);
-    }
-    au();
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat()))
+    Object localObject = this.ah.b;
+    if ((this.bQ.a((String)localObject)) && (!TextUtils.isEmpty(this.bR.uuid)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.need2ReqRedPoint()) {
-        ThreadManager.post(new HotChatPie.9(this), 8, null, true);
+      localObject = new Intent(this.f, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a("https://nearby.qq.com/hot_chat/room_info.html", "_wv", "3"), "_bid", "2581"), "gc", this.bR.troopUin), "rid", this.bR.uuid), "rname", this.bR.name), "rtype", String.valueOf(this.bR.hotChatType)), "rnum", String.valueOf(this.bR.memberCount)));
+      aX().startActivity((Intent)localObject);
+      ReportController.b(this.d, "CliOper", "", "", "0X8004414", "0X8004414", 0, 0, "", "", "", "");
+      if (this.bR.isGameRoom) {
+        ReportController.b(this.d, "dc00899", "Grp_wolf", "", "in_game", "clk_grp_card", 0, 0, "", "", "", "");
       }
-      n = 1;
     }
     else
     {
-      b(1, false);
+      QQToast.makeText(this.d.getApp(), HardCodeUtil.a(2131903560), 0).show(this.f.getTitleBarHeight());
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (n != 0) {
-      localObject1 = "2";
-    } else {
-      localObject1 = "1";
+  }
+  
+  protected void E()
+  {
+    String str = ContactUtils.a(this.d, this.ah.b, this.ah.c, ContactUtils.c(this.ah.a), 3);
+    if (!TextUtils.equals(str, this.ah.b)) {
+      this.ah.e = str;
     }
-    ReportController.b((AppRuntime)localObject2, "dc00899", "grp_lbs", "", "hot_room", "exp_aio", 0, 0, (String)localObject1, "", "", "");
+  }
+  
+  public void K()
+  {
+    Object localObject = this.bU;
+    if (localObject != null)
+    {
+      ((IHotChatSCHelper)localObject).destroy();
+      this.bU = null;
+    }
+    localObject = this.bR;
+    if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
+    {
+      this.d.removeObserver(this.cp);
+      c(1, false);
+      if ((this.cd != null) && (this.p.indexOfChild(this.cd) != -1)) {
+        this.p.removeView(this.cd);
+      }
+      this.cd = null;
+      this.ce = null;
+      this.ci = null;
+      this.ck = null;
+      this.cl = null;
+      this.cq = null;
+    }
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.ca;
+    ReportController.b(this.d, "CliOper", "", "", "0X8006587", "0X8006587", 0, 0, String.valueOf(l1 - l2), String.valueOf(this.cb), "", "");
+    if (this.f.getIntent() != null) {
+      this.f.getIntent().getBooleanExtra("open_chatfragment_fromphoto", false);
+    }
+    localObject = this.bX;
+    if (localObject != null)
+    {
+      ((Dialog)localObject).dismiss();
+      this.bX = null;
+    }
+    localObject = this.bW;
+    if (localObject != null)
+    {
+      ((Dialog)localObject).dismiss();
+      this.bW = null;
+    }
+    localObject = this.bV;
+    if (localObject != null) {
+      ((IHotChatShare)localObject).onDestroy();
+    }
+    localObject = this.cl;
+    if (localObject != null) {
+      ((IHotChatPostListAdapter)localObject).destroy();
+    }
+    ((ITroopRobotService)this.d.getRuntimeService(ITroopRobotService.class, "all")).closeTalking();
+    localObject = this.co;
+    if (localObject != null) {
+      ((TroopUsingTimeReport)localObject).c();
+    }
+    super.K();
   }
   
   public void O()
   {
     super.O();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addDefaultObservers(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseTroopMsgObserver);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().addProxyObserver(this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyObserver);
-    }
+    this.cc = true;
   }
   
   public void P()
   {
     super.P();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseTroopMsgObserver);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().removeProxyObserver(this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyObserver);
+    IHotChatSCHelper localIHotChatSCHelper = this.bU;
+    if (localIHotChatSCHelper != null) {
+      localIHotChatSCHelper.stopCheck();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
   }
   
-  protected AIOContext a()
+  public void S()
   {
-    return new HotChatContext();
+    super.S();
+    this.cc = false;
+    HotChatInfo localHotChatInfo = this.bR;
+    if ((localHotChatInfo != null) && (localHotChatInfo.isBuLuoHotChat()) && (this.cn == 2) && (this.bp != null)) {
+      this.bp.d(4);
+    }
+    this.co.b();
   }
   
-  protected MsgList a()
+  public void U()
   {
-    return new MsgListBuilder(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).a(new Scroller()).a(new ListUI(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a(new UnreadTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a((MsgListRefresher)((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatMsgListRefresher(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext)).a();
+    super.U();
+    Object localObject = this.f.getIntent();
+    if (localObject == null) {
+      return;
+    }
+    String str = ((Intent)localObject).getStringExtra("uin");
+    int i = ((Intent)localObject).getIntExtra("uintype", -1);
+    if ((this.ah.b != null) && ((!this.ah.b.equals(str)) || (this.ah.a != i))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      localObject = this.bR;
+      if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
+      {
+        this.ci = null;
+        this.ck = null;
+      }
+    }
   }
   
-  protected HelperProvider a()
+  public boolean V()
   {
-    return new HotHelperProvider(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    HotGiftPanelHelper localHotGiftPanelHelper = (HotGiftPanelHelper)q(136);
+    if ((localHotGiftPanelHelper.g != null) && (localHotGiftPanelHelper.g.b()))
+    {
+      localHotGiftPanelHelper.g.a();
+      return true;
+    }
+    boolean bool = super.V();
+    if ((!this.aj) && (this.bO) && (!bool)) {
+      HotChatManager.a(this.e, this.bO);
+    }
+    return bool;
+  }
+  
+  public void X()
+  {
+    super.X();
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -451,13 +518,13 @@ public class HotChatPie
     {
       if (paramInt1 == 3)
       {
-        Intent localIntent = AIOUtils.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class), null);
+        Intent localIntent = AIOUtils.a(new Intent(this.f, SplashActivity.class), null);
         localIntent.putExtras(new Bundle(paramIntent.getExtras()));
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+        this.f.startActivity(localIntent);
       }
     }
-    else if ((paramInt2 == 8001) && (this.jdField_a_of_type_ComTencentWidgetXPanelContainer != null)) {
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    else if ((paramInt2 == 8001) && (this.n != null)) {
+      this.n.b();
     }
     super.a(paramInt1, paramInt2, paramIntent);
   }
@@ -466,8 +533,8 @@ public class HotChatPie
   
   public void a(ChatMessage paramChatMessage, String paramString)
   {
-    ActionSheet localActionSheet = ActionSheet.create(a());
-    String str2 = HardCodeUtil.a(2131705676);
+    ActionSheet localActionSheet = ActionSheet.create(aX());
+    String str2 = HardCodeUtil.a(2131903561);
     String str3 = paramChatMessage.getExtInfoFromExtStr("hotchat_gender");
     String str1 = str2;
     try
@@ -475,7 +542,7 @@ public class HotChatPie
       if (Integer.parseInt(str3) != 1) {
         break label101;
       }
-      str1 = HardCodeUtil.a(2131705673);
+      str1 = HardCodeUtil.a(2131903558);
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -486,7 +553,7 @@ public class HotChatPie
     str1 = str2;
     if (QLog.isColorLevel())
     {
-      str1 = this.jdField_b_of_type_JavaLangString;
+      str1 = this.c;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("showHeadLongClickActionSheet, NumberFormatException, genderStr:");
       localStringBuilder.append(str3);
@@ -495,21 +562,21 @@ public class HotChatPie
     }
     label101:
     localActionSheet.addButton(str1);
-    localActionSheet.addButton(HardCodeUtil.a(2131705670), 3);
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addButton(HardCodeUtil.a(2131903555), 3);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.setOnButtonClickListener(new HotChatPie.16(this, localActionSheet, paramChatMessage, paramString));
     localActionSheet.show();
   }
   
   public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    if (this.Q) {
+    if (this.cc) {
       return;
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.c);
       localStringBuilder.append(paramString4);
       paramString4 = localStringBuilder.toString();
       localStringBuilder = new StringBuilder();
@@ -525,37 +592,37 @@ public class HotChatPie
       localStringBuilder.append(paramString3);
       QLog.i(paramString4, 2, localStringBuilder.toString());
     }
-    paramString1 = this.c;
+    paramString1 = this.bX;
     if ((paramString1 != null) && (paramString1.isShowing())) {
-      this.c.dismiss();
+      this.bX.dismiss();
     }
     if ((paramBoolean) && (paramInt == 0))
     {
-      QQToast.a(a(), HardCodeUtil.a(2131705656), 0).b(a().getTitleBarHeight());
+      QQToast.makeText(aX(), HardCodeUtil.a(2131903542), 0).show(aX().getTitleBarHeight());
       return;
     }
-    QQToast.a(a(), HardCodeUtil.a(2131705658), 0).b(a().getTitleBarHeight());
+    QQToast.makeText(aX(), HardCodeUtil.a(2131903544), 0).show(aX().getTitleBarHeight());
   }
   
   public boolean a(String paramString1, String paramString2, String paramString3)
   {
-    if (!TextUtils.equals(paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (!TextUtils.equals(paramString1, this.ah.b)) {
       return false;
     }
-    if (this.Q) {
+    if (this.cc) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(paramString1);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
+    this.bR = this.bQ.c(paramString1);
+    paramString1 = this.bR;
     boolean bool = true;
     if ((paramString1 != null) && (!paramString1.memoShowed))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.memoShowed = true;
+      this.bR.memoShowed = true;
       ThreadManager.post(new HotChatPie.14(this), 8, null, true);
       if (!TextUtils.isEmpty(paramString2))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic == null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic = new TroopFeedsCenterLogic(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.d, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, this.F, null);
+        if (this.bj == null) {
+          this.bj = new TroopFeedsCenterLogic(this.d, this.f, this.ah, this.o, this.A, this.bp, this.bm, null);
         }
         paramString1 = paramString3;
         if (!TextUtils.isEmpty(paramString3))
@@ -577,8 +644,8 @@ public class HotChatPie
             }
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopLogicTroopFeedsCenterLogic.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString2, paramString1);
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper;
+        this.bj.a(this.d, this.e, paramString2, paramString1);
+        paramString1 = this.bU;
         if (paramString1 == null) {
           break label243;
         }
@@ -593,174 +660,213 @@ public class HotChatPie
   
   public boolean a(boolean paramBoolean)
   {
-    this.v = false;
-    ((FastImageHelper)a(83)).a(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseTroopMsgObserver = new BaseTroopMsgObserver(this);
-    this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatShare(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport = new TroopUsingTimeReport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "Grp_time", "Grp_AIO", "visit_time");
+    this.aJ = false;
+    ((FastImageHelper)q(83)).a(false);
+    this.br = new BaseTroopMsgObserver(this);
+    this.bV = ((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatShare(this.f, this.d, null);
+    this.co = new TroopUsingTimeReport(this.d, this.ah.b, "Grp_time", "Grp_AIO", "visit_time");
     return super.a(paramBoolean);
   }
   
-  public void aB()
+  protected void ap()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    HotChatInfo localHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if (localHotChatInfo != null)
+    bS();
+    bB();
+    super.ap();
+    this.ca = SystemClock.elapsedRealtime();
+    NearbyTransitActivity.a("AIOShow", 2);
+    Object localObject1 = this.f.getIntent();
+    Object localObject2 = ((Intent)localObject1).getStringExtra("uin");
+    String str1 = ((Intent)localObject1).getStringExtra("uinname");
+    String str2 = ((Intent)localObject1).getStringExtra("hotnamecode");
+    int i = 0;
+    a((Intent)localObject1, (String)localObject2, str1, str2, ((Intent)localObject1).getBooleanExtra("param_newly_created_hot_chat", false));
+    if (this.bQ.a()) {
+      ThreadManager.post(new HotChatPie.8(this), 8, null, true);
+    }
+    this.bR = this.bQ.c(this.ah.b);
+    localObject1 = this.bR;
+    if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat())) {
+      this.d.addObserver(this.cp);
+    }
+    bI();
+    localObject1 = this.bR;
+    if ((localObject1 != null) && (((HotChatInfo)localObject1).isBuLuoHotChat()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a();
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getBooleanExtra("param_newly_created_hot_chat", false)) {
-        ThreadManager.post(new HotChatPie.15(this, localHotChatInfo), 8, null, true);
+      if (this.bR.need2ReqRedPoint()) {
+        ThreadManager.post(new HotChatPie.9(this), 8, null, true);
       }
+      i = 1;
+    }
+    else
+    {
+      c(1, false);
+    }
+    localObject2 = this.d;
+    if (i != 0) {
+      localObject1 = "2";
+    } else {
+      localObject1 = "1";
+    }
+    ReportController.b((AppRuntime)localObject2, "dc00899", "grp_lbs", "", "hot_room", "exp_aio", 0, 0, (String)localObject1, "", "", "");
+  }
+  
+  public void au()
+  {
+    super.au();
+    this.d.addObserver(this.cr);
+    this.d.addDefaultObservers(this.br);
+    if (this.d.getProxyManager() != null) {
+      this.d.getProxyManager().addProxyObserver(this.bq);
     }
   }
   
-  public void ap()
+  public void av()
   {
-    super.ap();
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693187));
-    HotChatInfo localHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if ((localHotChatInfo != null) && (localHotChatInfo.state != 0)) {
-      ThreadManager.post(new HotChatPie.7(this), 5, null, false);
+    super.av();
+    this.d.removeObserver(this.br);
+    if (this.d.getProxyManager() != null) {
+      this.d.getProxyManager().removeProxyObserver(this.bq);
     }
+    this.d.removeObserver(this.cr);
+  }
+  
+  protected HelperProvider b()
+  {
+    return new HotHelperProvider(this.f);
   }
   
   protected void b(int paramInt1, int paramInt2)
   {
     super.b(paramInt1, paramInt2);
-    this.jdField_j_of_type_Int = paramInt2;
+    this.bZ = paramInt2;
   }
   
-  protected void b(Intent paramIntent)
+  public void bA()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
+    super.bA();
+    this.u.setContentDescription(this.f.getString(2131890727));
+    HotChatInfo localHotChatInfo = this.bR;
+    if ((localHotChatInfo != null) && (localHotChatInfo.state != 0)) {
+      ThreadManager.post(new HotChatPie.7(this), 5, null, false);
+    }
+  }
+  
+  public boolean bF()
+  {
+    return true;
+  }
+  
+  public int bR()
+  {
+    return this.cn;
+  }
+  
+  public void bS()
+  {
+    this.bR = this.bQ.c(this.ah.b);
+    HotChatInfo localHotChatInfo = this.bR;
+    if (localHotChatInfo != null)
+    {
+      this.bQ.i();
+      if (!this.f.getIntent().getBooleanExtra("param_newly_created_hot_chat", false)) {
+        ThreadManager.post(new HotChatPie.15(this, localHotChatInfo), 8, null, true);
+      }
+    }
+  }
+  
+  protected void c(Intent paramIntent)
+  {
+    Object localObject = this.bR;
     if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
     {
-      HtmlOffline.a("2586", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new HotChatPie.6(this), true, 0);
+      HtmlOffline.a("2586", this.d, new HotChatPie.6(this), true, 0);
       return;
     }
-    localObject = this.jdField_a_of_type_ComTencentWidgetSegmentedControlView;
+    localObject = this.ce;
     if (localObject != null)
     {
       ((SegmentedControlView)localObject).setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.removeView(this.i);
-      this.jdField_a_of_type_ComTencentWidgetSegmentedControlView = null;
+      this.p.removeView(this.cd);
+      this.ce = null;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
-    super.b(paramIntent);
+    this.q.setVisibility(0);
+    this.r.setVisibility(0);
+    super.c(paramIntent);
   }
   
-  protected void c()
+  protected AIOContext d()
   {
-    this.jdField_b_of_type_JavaLangString = "HotChatPie";
+    return new HotChatContext();
   }
   
-  public void c(boolean paramBoolean)
+  protected MsgList e()
   {
-    if (this.M)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a();
-      }
-      HotChatManager.a(this.jdField_a_of_type_AndroidContentContext, this.M);
-      return;
-    }
-    super.c(paramBoolean);
-  }
-  
-  protected void d(Intent paramIntent)
-  {
-    super.d(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHotChatMng(true);
-    this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        NearbyUtils.a("PttShow", new Object[] { "HotChatPie_updateSession_business HotChatInfo is null", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString });
-      }
-      b(0);
-      return;
-    }
-    this.k = ((HotChatInfo)localObject).userCreate;
-    if ((paramIntent != null) && (paramIntent.getIntExtra("hot_chat_from", 1) == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.c())) {
-      HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    }
-    paramIntent = (AIOShortcutBarHelper)a(52);
-    if ((paramIntent != null) && (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isRobotHotChat))
-    {
-      localObject = new AIOShortcutBarHelper.AIOShortcutBarEvent(14);
-      ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putLong("roBotUin", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.robotUin);
-      paramIntent.a((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject);
-    }
-  }
-  
-  public boolean d()
-  {
-    HotGiftPanelHelper localHotGiftPanelHelper = (HotGiftPanelHelper)a(136);
-    if ((localHotGiftPanelHelper.a != null) && (localHotGiftPanelHelper.a.a()))
-    {
-      localHotGiftPanelHelper.a.a();
-      return true;
-    }
-    boolean bool = super.d();
-    if ((!this.jdField_f_of_type_Boolean) && (this.M) && (!bool)) {
-      HotChatManager.a(this.jdField_a_of_type_AndroidContentContext, this.M);
-    }
-    return bool;
+    return new MsgListBuilder(this.i).a(new Scroller()).a(new ListUI(this.i)).a(new UnreadTask(this.i)).a((MsgListRefresher)((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatMsgListRefresher(this.i)).a();
   }
   
   protected void e(Intent paramIntent)
   {
-    this.M = paramIntent.getBooleanExtra("abp_flag", false);
-    this.N = paramIntent.getBooleanExtra("is_from_web", false);
-    if ((this.N) && (!this.M))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131690529);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131705665));
-      return;
-    }
-    if (this.M)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131705677));
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(HardCodeUtil.a(2131705663));
-      return;
-    }
     super.e(paramIntent);
+    this.bQ = this.d.getHotChatMng(true);
+    this.bR = this.bQ.c(this.ah.b);
+    Object localObject = this.bR;
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        NearbyUtils.a("PttShow", new Object[] { "HotChatPie_updateSession_business HotChatInfo is null", this.ah.b });
+      }
+      f(0);
+      return;
+    }
+    this.cb = ((HotChatInfo)localObject).userCreate;
+    if ((paramIntent != null) && (paramIntent.getIntExtra("hot_chat_from", 1) == 2) && (this.bQ.e())) {
+      HotChatHelper.a(this.d, this.f);
+    }
+    paramIntent = (AIOShortcutBarHelper)q(52);
+    if ((paramIntent != null) && (this.bR.isRobotHotChat))
+    {
+      localObject = new AIOShortcutBarHelper.AIOShortcutBarEvent(14);
+      ((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject).a().putLong("roBotUin", this.bR.robotUin);
+      paramIntent.a((AIOShortcutBarHelper.AIOShortcutBarEvent)localObject);
+    }
   }
   
-  public int g()
+  protected void f(Intent paramIntent)
   {
-    return this.m;
+    this.bO = paramIntent.getBooleanExtra("abp_flag", false);
+    this.bP = paramIntent.getBooleanExtra("is_from_web", false);
+    if ((this.bP) && (!this.bO))
+    {
+      this.s.setText(2131887440);
+      this.s.setContentDescription(HardCodeUtil.a(2131901576));
+      return;
+    }
+    if (this.bO)
+    {
+      this.s.setText(HardCodeUtil.a(2131903562));
+      this.s.setContentDescription(HardCodeUtil.a(2131903549));
+      return;
+    }
+    super.f(paramIntent);
   }
   
-  public void g(int paramInt)
+  public void f(boolean paramBoolean)
   {
-    super.g(paramInt);
+    if (this.bO)
+    {
+      if (this.bp != null) {
+        this.bp.v();
+      }
+      HotChatManager.a(this.e, this.bO);
+      return;
+    }
+    super.f(paramBoolean);
   }
   
   protected void h()
   {
-    HotChatInfo localHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if ((localHotChatInfo != null) && (localHotChatInfo.isBuLuoHotChat())) {
-      return;
-    }
-    localHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    int n;
-    if ((localHotChatInfo != null) && (localHotChatInfo.mFissionRoomNum > 0)) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    a(true);
-    if (n != 0)
-    {
-      this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_f_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131693199), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.mFissionRoomNum) }));
-      this.jdField_f_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
-      return;
-    }
-    this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.c = "HotChatPie";
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -771,50 +877,23 @@ public class HotChatPie
     return true;
   }
   
-  protected void j()
+  public void l(int paramInt)
   {
-    this.d.setVisibility(4);
-  }
-  
-  public void k()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a((String)localObject)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.uuid)))
-    {
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a(URLUtil.a("https://nearby.qq.com/hot_chat/room_info.html", "_wv", "3"), "_bid", "2581"), "gc", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.troopUin), "rid", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.uuid), "rname", this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.name), "rtype", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.hotChatType)), "rnum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.memberCount)));
-      a().startActivity((Intent)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004414", "0X8004414", 0, 0, "", "", "", "");
-      if (this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.isGameRoom) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "clk_grp_card", 0, 0, "", "", "", "");
-      }
-    }
-    else
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), HardCodeUtil.a(2131705675), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-    }
-  }
-  
-  protected void n()
-  {
-    String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString, ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 3);
-    if (!TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = str;
-    }
+    super.l(paramInt);
   }
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    int n;
-    if (paramInt == 2131368298) {
-      n = 1;
+    int i;
+    if (paramInt == 2131435171) {
+      i = 1;
     } else {
-      n = 2;
+      i = 2;
     }
-    b(n, true);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    c(i, true);
+    QQAppInterface localQQAppInterface = this.d;
     String str;
-    if (paramInt == 2131368298) {
+    if (paramInt == 2131435171) {
       str = "clk_hot_room";
     } else {
       str = "clk_see_post";
@@ -823,134 +902,50 @@ public class HotChatPie
     EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
   
-  public void p()
+  protected void u()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper;
-    if (localObject != null)
+    HotChatInfo localHotChatInfo = this.bR;
+    if ((localHotChatInfo != null) && (localHotChatInfo.isBuLuoHotChat())) {
+      return;
+    }
+    localHotChatInfo = this.bR;
+    int i;
+    if ((localHotChatInfo != null) && (localHotChatInfo.mFissionRoomNum > 0)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    b(true);
+    if (i != 0)
     {
-      ((IHotChatSCHelper)localObject).destroy();
-      this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper = null;
+      this.I.setVisibility(0);
+      this.I.setText(String.format(this.f.getString(2131890739), new Object[] { Integer.valueOf(this.bR.mFissionRoomNum) }));
+      this.I.setTextSize(1, 12.0F);
+      return;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopObserverTroopRedDotObserver);
-      b(1, false);
-      if ((this.i != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.indexOfChild(this.i) != -1)) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.removeView(this.i);
-      }
-      this.i = null;
-      this.jdField_a_of_type_ComTencentWidgetSegmentedControlView = null;
-      this.jdField_j_of_type_AndroidViewView = null;
-      this.jdField_a_of_type_ComTencentWidgetXListView = null;
-      this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter = null;
-      this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager = null;
-    }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = this.jdField_b_of_type_Long;
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006587", "0X8006587", 0, 0, String.valueOf(l1 - l2), String.valueOf(this.k), "", "");
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getBooleanExtra("open_chatfragment_fromphoto", false);
-    }
-    localObject = this.c;
-    if (localObject != null)
-    {
-      ((Dialog)localObject).dismiss();
-      this.c = null;
-    }
-    localObject = this.jdField_b_of_type_AndroidAppDialog;
-    if (localObject != null)
-    {
-      ((Dialog)localObject).dismiss();
-      this.jdField_b_of_type_AndroidAppDialog = null;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare;
-    if (localObject != null) {
-      ((IHotChatShare)localObject).onDestroy();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatPostListAdapter;
-    if (localObject != null) {
-      ((IHotChatPostListAdapter)localObject).destroy();
-    }
-    ((ITroopRobotService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopRobotService.class, "all")).closeTalking();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport;
-    if (localObject != null) {
-      ((TroopUsingTimeReport)localObject).b();
-    }
-    super.p();
-  }
-  
-  public void u()
-  {
-    super.u();
-    this.Q = true;
-  }
-  
-  public boolean u()
-  {
-    return true;
+    this.I.setVisibility(8);
   }
   
   public void update(Observable paramObservable, Object paramObject)
   {
     super.update(paramObservable, paramObject);
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) && ((paramObject instanceof MessageForDeliverGiftTips))) {
+    if ((this.f.isResume()) && ((paramObject instanceof MessageForDeliverGiftTips))) {
       AIOAnimationControlManager.a(this, false);
     }
-    paramObservable = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotRadioButton;
-    if ((paramObservable != null) && (!paramObservable.a()) && (paramObject != null) && ((paramObject instanceof MessageRecord)) && (this.m == 2)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new HotChatPie.13(this));
+    paramObservable = this.cf;
+    if ((paramObservable != null) && (!paramObservable.a()) && (paramObject != null) && ((paramObject instanceof MessageRecord)) && (this.cn == 2)) {
+      this.m.post(new HotChatPie.13(this));
     }
   }
   
-  public void v()
+  protected void z()
   {
-    super.v();
-    IHotChatSCHelper localIHotChatSCHelper = this.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatSCHelper;
-    if (localIHotChatSCHelper != null) {
-      localIHotChatSCHelper.stopCheck();
-    }
-  }
-  
-  public void y()
-  {
-    super.y();
-    this.Q = false;
-    HotChatInfo localHotChatInfo = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-    if ((localHotChatInfo != null) && (localHotChatInfo.isBuLuoHotChat()) && (this.m == 2) && (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.c(4);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopUsingTimeReport.a();
-  }
-  
-  public void z()
-  {
-    super.z();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    if (localObject == null) {
-      return;
-    }
-    String str = ((Intent)localObject).getStringExtra("uin");
-    int n = ((Intent)localObject).getIntExtra("uintype", -1);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(str)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != n))) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    if (n != 0)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo;
-      if ((localObject != null) && (((HotChatInfo)localObject).isBuLuoHotChat()))
-      {
-        this.jdField_j_of_type_AndroidViewView = null;
-        this.jdField_a_of_type_ComTencentWidgetXListView = null;
-      }
-    }
+    this.A.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,15 @@ public class AEARCakeDownloadMaterialRunnable
   public void run()
   {
     AEQLog.a(a, "arcake download material~~~~~~~");
-    CameraDataServiceHandler localCameraDataServiceHandler = (CameraDataServiceHandler)QQStoryContext.a().getBusinessHandler(PeakAppInterface.d);
+    CameraDataServiceHandler localCameraDataServiceHandler = (CameraDataServiceHandler)QQStoryContext.k().getBusinessHandler(PeakAppInterface.e);
     localCameraDataServiceHandler.b();
-    VSConfigManager.a().a();
+    VSConfigManager.a().b();
     localCameraDataServiceHandler.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEARCakeDownloadMaterialRunnable
  * JD-Core Version:    0.7.0.1
  */

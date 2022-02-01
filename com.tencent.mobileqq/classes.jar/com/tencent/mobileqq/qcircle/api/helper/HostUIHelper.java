@@ -53,6 +53,7 @@ public class HostUIHelper
     if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
       ((Activity)mHostContext.get()).finish();
+      ((Activity)mHostContext.get()).overridePendingTransition(0, 0);
       clearHostContext();
       return true;
     }
@@ -111,11 +112,15 @@ public class HostUIHelper
     boolean bool1 = bool2;
     try
     {
-      if ((paramContext instanceof QPublicTransFragmentActivity))
-      {
-        boolean bool3 = ((Activity)paramContext).getIntent().getStringExtra("public_fragment_class").equals(((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName());
-        bool1 = bool2;
-        if (bool3) {
+      if ((paramContext instanceof QPublicTransFragmentActivity)) {
+        if (!((Activity)paramContext).getIntent().getStringExtra("public_fragment_class").equals(((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName()))
+        {
+          boolean bool3 = ((Activity)paramContext).getIntent().getStringExtra("public_fragment_class").equals(((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransLoginOutFragmentClass().getCanonicalName());
+          bool1 = bool2;
+          if (!bool3) {}
+        }
+        else
+        {
           bool1 = true;
         }
       }
@@ -161,6 +166,39 @@ public class HostUIHelper
       paramHostEnvironmentLifeCycle.addFlags(268435456);
       paramHostEnvironmentLifeCycle.setClass(MobileQQ.getContext(), QPublicTransFragmentActivity.class);
       paramHostEnvironmentLifeCycle.putExtra("public_fragment_class", ((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransFragmentClass().getCanonicalName());
+      paramHostEnvironmentLifeCycle.putExtra("public_fragment_window_feature", 1);
+      MobileQQ.getContext().startActivity(paramHostEnvironmentLifeCycle);
+    }
+  }
+  
+  public static void openLoginOutEnvironment(HostUIHelper.HostEnvironmentLifeCycle paramHostEnvironmentLifeCycle, Intent paramIntent)
+  {
+    if (paramHostEnvironmentLifeCycle == null) {
+      return;
+    }
+    if (!getLifeCycleListeners().contains(paramHostEnvironmentLifeCycle)) {
+      getLifeCycleListeners().add(paramHostEnvironmentLifeCycle);
+    }
+    java.lang.ref.WeakReference localWeakReference = mHostContext;
+    if ((localWeakReference != null) && (localWeakReference.get() != null))
+    {
+      paramIntent = mHostContext;
+      if ((paramIntent != null) && (paramIntent.get() != null))
+      {
+        paramHostEnvironmentLifeCycle.onEnvironmentCreated((Context)mHostContext.get());
+        paramHostEnvironmentLifeCycle.onEnvironmentStarted((Context)mHostContext.get());
+        paramHostEnvironmentLifeCycle.onEnvironmentResume((Context)mHostContext.get());
+      }
+    }
+    else
+    {
+      paramHostEnvironmentLifeCycle = paramIntent;
+      if (paramIntent == null) {
+        paramHostEnvironmentLifeCycle = new Intent();
+      }
+      paramHostEnvironmentLifeCycle.addFlags(268435456);
+      paramHostEnvironmentLifeCycle.setClass(MobileQQ.getContext(), QPublicTransFragmentActivity.class);
+      paramHostEnvironmentLifeCycle.putExtra("public_fragment_class", ((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleHostTransLoginOutFragmentClass().getCanonicalName());
       paramHostEnvironmentLifeCycle.putExtra("public_fragment_window_feature", 1);
       MobileQQ.getContext().startActivity(paramHostEnvironmentLifeCycle);
     }
@@ -226,6 +264,7 @@ public class HostUIHelper
     return this.mQCircleHookPluginIntentCallBack;
   }
   
+  @Deprecated
   public boolean isDenyNotAsk()
   {
     if (QBaseActivity.sTopActivity != null)
@@ -251,6 +290,7 @@ public class HostUIHelper
     }
   }
   
+  @Deprecated
   public void requestPermissions(Object paramObject)
   {
     if (QBaseActivity.sTopActivity != null)
@@ -287,7 +327,7 @@ public class HostUIHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.helper.HostUIHelper
  * JD-Core Version:    0.7.0.1
  */

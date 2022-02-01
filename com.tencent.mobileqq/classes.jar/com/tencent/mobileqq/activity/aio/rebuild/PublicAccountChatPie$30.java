@@ -19,26 +19,26 @@ class PublicAccountChatPie$30
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.b, 2, "updateUnfollowInfo");
+      QLog.d(this.this$0.c, 2, "updateUnfollowInfo");
     }
-    if (this.this$0.K)
+    if (this.this$0.bG)
     {
       int i = ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getAccountType(this.a.getAccountFlag());
       if ((i == -3) || (i == -4)) {
-        ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.getUin());
+        ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).removeMsgID(this.this$0.d, this.a.getUin());
       }
     }
-    if (this.this$0.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler != null) {
-      this.this$0.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountHandler.onUnfollowPublicAccount(this.a);
+    if (this.this$0.bo != null) {
+      this.this$0.bo.onUnfollowPublicAccount(this.a);
     }
     PublicAccountChatPie.b(this.this$0, this.a);
-    PublicAccountChatPie.a(this.this$0).post(new PublicAccountChatPie.30.1(this));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    PublicAccountChatPie.r(this.this$0).post(new PublicAccountChatPie.30.1(this));
+    this.this$0.d.getMessageFacade().c(this.this$0.ah.b, 1008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.30
  * JD-Core Version:    0.7.0.1
  */

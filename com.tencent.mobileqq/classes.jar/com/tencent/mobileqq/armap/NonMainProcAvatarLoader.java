@@ -25,67 +25,54 @@ import java.util.List;
 public class NonMainProcAvatarLoader
   implements INonMainProcAvatarLoader
 {
-  private byte jdField_a_of_type_Byte = 3;
-  protected float a;
-  protected int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new NonMainProcAvatarLoader.1(this);
   protected Context a;
-  public Bitmap a;
-  protected Handler a;
-  protected LruCache<String, Bitmap> a;
-  protected ArrayList<String> a;
-  protected HashSet<String> a;
-  final List<FaceObserver> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  protected Handler b;
-  protected LruCache<String, String> b;
+  public Bitmap b = null;
+  protected int c;
+  protected LruCache<String, Bitmap> d = new LruCache(60);
+  protected LruCache<String, String> e = new LruCache(120);
+  protected HashSet<String> f = new HashSet();
+  protected ArrayList<String> g = new ArrayList();
+  final List<FaceObserver> h = Collections.synchronizedList(new ArrayList());
+  protected Handler i = new NonMainProcAvatarLoader.2(this, Looper.getMainLooper());
+  protected Handler j = new NonMainProcAvatarLoader.3(this, ThreadManager.getSubThreadLooper());
+  protected float k = 1.0F;
+  private byte l = 3;
+  private BroadcastReceiver m = new NonMainProcAvatarLoader.1(this);
   
   public NonMainProcAvatarLoader(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(60);
-    this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidOsHandler = new NonMainProcAvatarLoader.2(this, Looper.getMainLooper());
-    this.jdField_b_of_type_AndroidOsHandler = new NonMainProcAvatarLoader.3(this, ThreadManager.getSubThreadLooper());
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramContext;
+    this.k = this.a.getResources().getDisplayMetrics().density;
+    this.c = paramInt;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BaseImageUtil.f();
+      this.b = BaseImageUtil.k();
       return;
     }
     catch (OutOfMemoryError paramContext) {}
   }
   
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
   protected Bitmap a(Bitmap paramBitmap)
   {
-    float f2 = this.jdField_a_of_type_Float;
-    int i = paramBitmap.getWidth();
+    float f2 = this.k;
+    int n = paramBitmap.getWidth();
     float f1 = f2;
-    if (i > 0)
+    if (n > 0)
     {
-      float f3 = i;
+      float f3 = n;
       float f4 = 50;
       f1 = f2;
       if (f3 < f2 * f4) {
         f1 = f3 / f4;
       }
     }
-    i = (int)(50 * f1);
-    return BaseImageUtil.a(paramBitmap, i, i, i);
+    n = (int)(50 * f1);
+    return BaseImageUtil.a(paramBitmap, n, n, n);
   }
   
   public Bitmap a(String paramString, boolean paramBoolean)
   {
-    return a(paramString, paramBoolean, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    return a(paramString, paramBoolean, this.b);
   }
   
   public Bitmap a(String paramString, boolean paramBoolean, Bitmap paramBitmap)
@@ -93,7 +80,7 @@ public class NonMainProcAvatarLoader
     Object localObject1;
     try
     {
-      localObject1 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
+      localObject1 = (Bitmap)this.d.get(paramString);
       Object localObject2;
       if (localObject1 != null)
       {
@@ -113,21 +100,21 @@ public class NonMainProcAvatarLoader
         ((StringBuilder)localObject1).append(paramString);
         QLog.d("NonMainAppHeadLoader", 2, ((StringBuilder)localObject1).toString());
       }
-      if (!TextUtils.isEmpty((CharSequence)this.jdField_b_of_type_AndroidSupportV4UtilLruCache.get(paramString)))
+      if (!TextUtils.isEmpty((CharSequence)this.e.get(paramString)))
       {
         localObject1 = new ArrayList(1);
         localObject2 = Message.obtain();
         ((ArrayList)localObject1).add(paramString);
         ((Message)localObject2).obj = localObject1;
         ((Message)localObject2).what = 1001;
-        this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+        this.j.sendMessage((Message)localObject2);
         return paramBitmap;
       }
-      if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString)))
+      if ((paramBoolean) && (!this.g.contains(paramString)))
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 50L);
+        this.g.add(paramString);
+        this.i.removeMessages(1000);
+        this.i.sendEmptyMessageDelayed(1000, 50L);
         return paramBitmap;
       }
     }
@@ -152,7 +139,7 @@ public class NonMainProcAvatarLoader
     localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
+      this.a.registerReceiver(this.m, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
       return;
     }
     catch (Throwable localThrowable)
@@ -165,12 +152,12 @@ public class NonMainProcAvatarLoader
   
   public void a(byte paramByte)
   {
-    this.jdField_a_of_type_Byte = paramByte;
+    this.l = paramByte;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(FaceObserver paramFaceObserver)
@@ -178,10 +165,10 @@ public class NonMainProcAvatarLoader
     if (paramFaceObserver == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.h)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramFaceObserver)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramFaceObserver);
+      if (!this.h.contains(paramFaceObserver)) {
+        this.h.add(paramFaceObserver);
       }
       return;
     }
@@ -194,11 +181,11 @@ public class NonMainProcAvatarLoader
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("sendQQHeadRequest, reqSize:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashSet.size());
+      ((StringBuilder)localObject).append(this.f.size());
       ((StringBuilder)localObject).append(" cacheSize:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidSupportV4UtilLruCache.size());
+      ((StringBuilder)localObject).append(this.d.size());
       ((StringBuilder)localObject).append(" ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidSupportV4UtilLruCache.size());
+      ((StringBuilder)localObject).append(this.e.size());
       QLog.d("NonMainAppHeadLoader", 2, ((StringBuilder)localObject).toString());
     }
     if (paramArrayList != null)
@@ -211,27 +198,44 @@ public class NonMainProcAvatarLoader
       while (paramArrayList.hasNext())
       {
         String str = (String)paramArrayList.next();
-        if (!this.jdField_a_of_type_JavaUtilHashSet.contains(str)) {
+        if (!this.f.contains(str)) {
           ((ArrayList)localObject).add(str);
         }
       }
       paramArrayList = new Intent("com.tencent.qqhead.getheadreq");
-      paramArrayList.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-      paramArrayList.putExtra("faceType", this.jdField_a_of_type_Int);
+      paramArrayList.setPackage(this.a.getPackageName());
+      paramArrayList.putExtra("faceType", this.c);
       paramArrayList.putStringArrayListExtra("uinList", (ArrayList)localObject);
-      this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramArrayList, "com.tencent.qqhead.permission.getheadresp");
-      this.jdField_a_of_type_JavaUtilHashSet.addAll((Collection)localObject);
+      this.a.sendBroadcast(paramArrayList, "com.tencent.qqhead.permission.getheadresp");
+      this.f.addAll((Collection)localObject);
     }
   }
   
-  public void b()
+  public Bitmap b()
+  {
+    return this.b;
+  }
+  
+  public void b(FaceObserver paramFaceObserver)
+  {
+    if (paramFaceObserver == null) {
+      return;
+    }
+    synchronized (this.h)
+    {
+      this.h.remove(paramFaceObserver);
+      return;
+    }
+  }
+  
+  public void c()
   {
     if (QLog.isColorLevel()) {
       QLog.d("NonMainAppHeadLoader", 2, "destroy");
     }
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.a.unregisterReceiver(this.m);
     }
     catch (Throwable localThrowable)
     {
@@ -245,14 +249,14 @@ public class NonMainProcAvatarLoader
     }
     try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      synchronized (this.h)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilHashSet.clear();
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        this.jdField_b_of_type_AndroidSupportV4UtilLruCache.evictAll();
-        this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+        this.h.clear();
+        this.f.clear();
+        this.i.removeCallbacksAndMessages(null);
+        this.j.removeCallbacksAndMessages(null);
+        this.e.evictAll();
+        this.d.evictAll();
         return;
       }
       StringBuilder localStringBuilder2;
@@ -269,22 +273,10 @@ public class NonMainProcAvatarLoader
       }
     }
   }
-  
-  public void b(FaceObserver paramFaceObserver)
-  {
-    if (paramFaceObserver == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.remove(paramFaceObserver);
-      return;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.NonMainProcAvatarLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -34,14 +34,17 @@ class ProfilePresentWallComponent$1
       } else {
         ReportController.b(ProfilePresentWallComponent.access$500(this.this$0), "", "", "", "0X800A1C9", "0X800A1C9", 0, 0, "", "", "", "");
       }
-      ProfileCardReport.reportPresentClick(ProfilePresentWallComponent.access$600(this.this$0), (ProfileCardInfo)ProfilePresentWallComponent.access$700(this.this$0));
+      if ((((ProfileCardInfo)ProfilePresentWallComponent.access$600(this.this$0)).allInOne.pa == 20) || (((ProfileCardInfo)ProfilePresentWallComponent.access$700(this.this$0)).allInOne.pa == 21)) {
+        ProfilePresentWallComponent.access$800(this.this$0, 102);
+      }
+      ProfileCardReport.reportPresentClick(ProfilePresentWallComponent.access$900(this.this$0), (ProfileCardInfo)ProfilePresentWallComponent.access$1000(this.this$0));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.presentwall.ProfilePresentWallComponent.1
  * JD-Core Version:    0.7.0.1
  */

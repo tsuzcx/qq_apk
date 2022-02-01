@@ -20,8 +20,8 @@ class TroopRequestActivity$21
     ArrayList localArrayList = new ArrayList();
     try
     {
-      if (!TextUtils.isEmpty(this.a.b)) {
-        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+      if (!TextUtils.isEmpty(this.a.e)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.e)));
       }
       IStrangerService localIStrangerService = (IStrangerService)TroopRequestActivity.a(this.a).getRuntimeService(IStrangerService.class, "all");
       if (localIStrangerService != null) {
@@ -39,7 +39,7 @@ class TroopRequestActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.21
  * JD-Core Version:    0.7.0.1
  */

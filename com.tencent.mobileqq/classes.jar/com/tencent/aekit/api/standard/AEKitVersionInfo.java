@@ -2,8 +2,8 @@ package com.tencent.aekit.api.standard;
 
 public class AEKitVersionInfo
 {
-  public static final String BUILD_ID = "2.1.0.12";
-  public static final String COMMIT = "72a9864";
+  public static final String BUILD_ID = "2.2.0.34";
+  public static final String COMMIT = "ba8184a";
 }
 
 

@@ -11,7 +11,7 @@ class MemoriesProfileSegment$1
   
   public void run()
   {
-    ((UserManager)SuperManager.a(2)).a(MemoriesProfileSegment.a(this.this$0).a);
+    ((UserManager)SuperManager.a(2)).a(MemoriesProfileSegment.a(this.this$0).b);
   }
 }
 

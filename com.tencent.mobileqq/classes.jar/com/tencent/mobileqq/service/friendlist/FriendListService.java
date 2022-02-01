@@ -48,9 +48,9 @@ import tencent.im.oidb.cmd0xd6b.Oidb_0xd6b.ReqBody;
 public class FriendListService
   extends BaseProtocolCoder
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "friendlist", "BumpSvc" };
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  private TroopService jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService = new TroopService(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  private static final String[] a = { "friendlist", "BumpSvc" };
+  private QQAppInterface b = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private TroopService c = new TroopService(this.b);
   
   private long a(String paramString)
   {
@@ -85,15 +85,15 @@ public class FriendListService
     long l3 = paramToServiceMsg.extraData.getLong("lFromMobile");
     long l4 = paramToServiceMsg.extraData.getLong("lToMobile");
     Object localObject = paramToServiceMsg.extraData.getByteArray("vSig");
-    byte b = paramToServiceMsg.extraData.getByte("bGroupId");
+    byte b1 = paramToServiceMsg.extraData.getByte("bGroupId");
     String str = paramToServiceMsg.extraData.getString("strNickName");
     paramToServiceMsg = new ReqHeader();
     paramToServiceMsg.shVersion = 1;
     paramToServiceMsg.lMID = l1;
-    paramToServiceMsg.iAppID = AppSetting.a();
+    paramToServiceMsg.iAppID = AppSetting.d();
     paramToServiceMsg.eBusiType = 1;
     paramToServiceMsg.eMqqSysType = 2;
-    localObject = new ReqConfirmContactFriend((byte)i, l2, l3, l4, (byte[])localObject, b, null, str);
+    localObject = new ReqConfirmContactFriend((byte)i, l2, l3, l4, (byte[])localObject, b1, null, str);
     paramUniPacket.setServantName("BumpSvc");
     paramUniPacket.setFuncName("CMD_CONFIRM_CONTACT_FRIEND");
     paramUniPacket.put("ReqHeader", paramToServiceMsg);
@@ -281,15 +281,15 @@ public class FriendListService
     if (l2 == 0L) {
       return false;
     }
-    byte b = paramToServiceMsg.getByte("group_id");
-    if (b < 0) {
+    byte b1 = paramToServiceMsg.getByte("group_id");
+    if (b1 < 0) {
       return false;
     }
     paramToServiceMsg = new MovGroupMem();
     paramToServiceMsg.Ver = 1;
     paramToServiceMsg.wReqLen = 5;
     paramToServiceMsg.dwUin = l2;
-    paramToServiceMsg.cGroupid = b;
+    paramToServiceMsg.cGroupid = b1;
     paramToServiceMsg.wReserveLen = 0;
     MovGroupMemReq localMovGroupMemReq = new MovGroupMemReq();
     localMovGroupMemReq.uin = l1;
@@ -302,7 +302,7 @@ public class FriendListService
       localDataOutputStream.writeByte(1);
       localDataOutputStream.writeShort(5);
       localDataOutputStream.writeInt((int)l2);
-      localDataOutputStream.writeByte(b);
+      localDataOutputStream.writeByte(b1);
       localDataOutputStream.writeShort(0);
       localDataOutputStream.close();
       localObject = ((ByteArrayOutputStream)localObject).toByteArray();
@@ -414,7 +414,7 @@ public class FriendListService
     localObject = new ArrayList(1);
     try
     {
-      localGetFriendListReq.uin = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localGetFriendListReq.uin = Long.parseLong(this.b.getCurrentAccountUin());
       ((ArrayList)localObject).add(Long.valueOf(Long.parseLong(paramToServiceMsg)));
       localGetFriendListReq.uinList = ((ArrayList)localObject);
       paramUniPacket.setServantName("mqq.IMService.FriendListServiceServantObj");
@@ -552,7 +552,7 @@ public class FriendListService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -584,7 +584,7 @@ public class FriendListService
     if ((!"friendlist.GetTroopListReqV2".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"friendlist.GetMultiTroopInfoReq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"friendlist.getTroopRemark".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"friendlist.getTroopMemberList".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"friendlist.ModifyGroupCardReq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"friendlist.ModifyGroupInfoReq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) && (!"friendlist.GetTroopAppointRemarkReq".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService.decode(paramToServiceMsg, paramFromServiceMsg);
+    return this.c.decode(paramToServiceMsg, paramFromServiceMsg);
   }
   
   public void decodeRespMsg(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
@@ -621,12 +621,12 @@ public class FriendListService
     if ((!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.GetTroopListReqV2")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.getTroopMemberList")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.getTroopRemark")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.GetMultiTroopInfoReq")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.ModifyGroupCardReq")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.GetTroopAppointRemarkReq")) && (!paramToServiceMsg.getServiceCmd().equalsIgnoreCase("friendlist.ModifyGroupInfoReq"))) {
       return false;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService.encodeReqMsg(paramToServiceMsg, paramUniPacket);
+    return this.c.encodeReqMsg(paramToServiceMsg, paramUniPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.friendlist.FriendListService
  * JD-Core Version:    0.7.0.1
  */

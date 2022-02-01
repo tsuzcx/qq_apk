@@ -79,7 +79,7 @@ public final class ModeInfoLayoutKt
     localObject1 = (ViewGroup)localObject1;
     Object localObject2 = new TextView(((ViewGroup)localObject1).getContext());
     ((TextView)localObject2).setTag(localObject1);
-    ((TextView)localObject2).setId(2131371136);
+    ((TextView)localObject2).setId(2131438477);
     View localView2 = (View)localObject2;
     paramContext = localView2.getLayoutParams();
     if (paramContext != null) {
@@ -121,11 +121,11 @@ public final class ModeInfoLayoutKt
       paramContext.leftMargin = LayoutAttrsKt.getDp(14);
     }
     ((TextView)localObject2).setTextSize(12.0F);
-    ((TextView)localObject2).setTextColor(((TextView)localObject2).getResources().getColor(2131167063));
+    ((TextView)localObject2).setTextColor(((TextView)localObject2).getResources().getColor(2131168001));
     ((ViewGroup)localObject1).addView(localView2);
     localObject2 = new ImageView(((ViewGroup)localObject1).getContext());
     ((ImageView)localObject2).setTag(localObject1);
-    ((ImageView)localObject2).setId(2131371135);
+    ((ImageView)localObject2).setId(2131438476);
     localView2 = (View)localObject2;
     j = LayoutAttrsKt.getDp(30);
     paramContext = localView2.getLayoutParams();
@@ -158,7 +158,7 @@ public final class ModeInfoLayoutKt
     {
       localView2.setLayoutParams((ViewGroup.LayoutParams)new ViewGroup.MarginLayoutParams(i, -1));
     }
-    ((ImageView)localObject2).setImageResource(2130850483);
+    ((ImageView)localObject2).setImageResource(2130852279);
     localLayoutParams = localView2.getLayoutParams();
     paramContext = localLayoutParams;
     if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
@@ -213,7 +213,7 @@ public final class ModeInfoLayoutKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.layout.ModeInfoLayoutKt
  * JD-Core Version:    0.7.0.1
  */

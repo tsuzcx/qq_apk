@@ -50,21 +50,21 @@ public class RangeButtonView
   public RangeButtonView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aN, 0, 0);
-    this.params.barLeftPadding = paramContext.getDimension(R.styleable.ba, dp2px(26.0F));
-    this.params.barRightPadding = paramContext.getDimension(R.styleable.bb, dp2px(26.0F));
-    this.params.titleTopPadding = paramContext.getDimension(R.styleable.bi, dp2px(8.0F));
-    this.params.titleColor = paramContext.getColor(R.styleable.bh, 17170446);
-    this.params.lineOffset = paramContext.getDimension(R.styleable.be, dp2px(24.0F));
-    this.params.lineColor = paramContext.getColor(R.styleable.bc, 17170446);
-    this.params.lineHeight = paramContext.getDimension(R.styleable.bd, dp2px(8.0F));
-    this.params.lineWeight = paramContext.getDimension(R.styleable.bf, dp2px(1.0F));
-    this.params.thumbSrcId = paramContext.getResourceId(R.styleable.bg, 2130845211);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.cY, 0, 0);
+    this.params.barLeftPadding = paramContext.getDimension(R.styleable.cZ, dp2px(26.0F));
+    this.params.barRightPadding = paramContext.getDimension(R.styleable.da, dp2px(26.0F));
+    this.params.titleTopPadding = paramContext.getDimension(R.styleable.dh, dp2px(8.0F));
+    this.params.titleColor = paramContext.getColor(R.styleable.dg, 17170446);
+    this.params.lineOffset = paramContext.getDimension(R.styleable.dd, dp2px(24.0F));
+    this.params.lineColor = paramContext.getColor(R.styleable.db, 17170446);
+    this.params.lineHeight = paramContext.getDimension(R.styleable.dc, dp2px(8.0F));
+    this.params.lineWeight = paramContext.getDimension(R.styleable.de, dp2px(1.0F));
+    this.params.thumbSrcId = paramContext.getResourceId(R.styleable.df, 2130846653);
     paramContext.recycle();
     this.paint = new TextPaint();
     this.paint.setAntiAlias(true);
     this.thumbBmp = BitmapFactory.decodeResource(getResources(), this.params.thumbSrcId);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       this.mTouchHelper = new RangeButtonView.RangeButtonTouchHelper(this, this);
       ViewCompat.setAccessibilityDelegate(this, this.mTouchHelper);
@@ -151,7 +151,7 @@ public class RangeButtonView
   @TargetApi(14)
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.d) && (this.mTouchHelper.dispatchHoverEvent(paramMotionEvent))) {
+    if ((AppSetting.e) && (this.mTouchHelper.dispatchHoverEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -264,7 +264,7 @@ public class RangeButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView
  * JD-Core Version:    0.7.0.1
  */

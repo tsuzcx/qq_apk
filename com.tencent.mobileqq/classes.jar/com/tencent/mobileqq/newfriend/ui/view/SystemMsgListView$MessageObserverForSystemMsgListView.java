@@ -35,10 +35,10 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
   
   protected void a(String paramString)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNewfriendUiViewBaseNewFriendView$INewFriendContext.a())
+    if (this.a.a.g())
     {
-      paramString = SystemMsgListView.a(this.a).getResources().getString(2131719418);
-      QQToast.a(SystemMsgListView.a(this.a), 1, paramString, 0).b(this.a.a());
+      paramString = SystemMsgListView.b(this.a).getResources().getString(2131916977);
+      QQToast.makeText(SystemMsgListView.b(this.a), 1, paramString, 0).show(this.a.getTitleBarHeight());
       return;
     }
     if (QLog.isColorLevel()) {
@@ -61,9 +61,9 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
         l1 = l2;
       }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1012);
+    this.a.f.sendEmptyMessage(1012);
     structmsg.StructMsg localStructMsg = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getStructMsgFromMap(Long.valueOf(l1));
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqNewfriendUiViewBaseNewFriendView$INewFriendContext.a())
+    if (!this.a.a.g())
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin");
@@ -73,20 +73,20 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
     if (!paramBoolean)
     {
       if (TextUtils.isEmpty(paramString3)) {
-        paramString3 = SystemMsgListView.a(this.a).getResources().getString(2131718739);
+        paramString3 = SystemMsgListView.b(this.a).getResources().getString(2131916242);
       }
-      QQToast.a(SystemMsgListView.a(this.a), 1, paramString3, 0).b(this.a.a());
+      QQToast.makeText(SystemMsgListView.b(this.a), 1, paramString3, 0).show(this.a.getTitleBarHeight());
       ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).changeStructMsgActionsWhenFail(localStructMsg, paramInt3, paramString2, paramString4);
       return;
     }
-    paramString1 = SystemMsgListView.a(this.a).getResources().getString(2131692656);
-    QQToast.a(SystemMsgListView.a(this.a), 2, paramString1, 0).b(this.a.a());
+    paramString1 = SystemMsgListView.b(this.a).getResources().getString(2131889681);
+    QQToast.makeText(SystemMsgListView.b(this.a), 2, paramString1, 0).show(this.a.getTitleBarHeight());
     l2 = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getCurrentUniseq();
     ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).changeStructMsgActions(localStructMsg, paramInt1, paramString2, paramInt2);
     if ((l2 != 0L) && (localStructMsg != null)) {
       try
       {
-        ((IMessageFacade)this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l2, localStructMsg.toByteArray());
+        ((IMessageFacade)this.a.b.getRuntimeService(IMessageFacade.class, "")).updateMsgContentByUniseq(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, l2, localStructMsg.toByteArray());
       }
       catch (Exception paramString1)
       {
@@ -108,7 +108,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
       paramString3.putString("base_nick", paramString1);
       paramString3.putInt("verfy_type", localStructMsg.msg.sub_type.get());
       paramString3.putString("verfy_msg", localStructMsg.msg.msg_additional.get());
-      if (FriendSystemMessage.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
+      if (FriendSystemMessage.a(this.a.b, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
       {
         paramString4 = new String(localStructMsg.msg.bytes_game_nick.get().toByteArray());
         paramString2 = paramString1;
@@ -118,7 +118,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
         paramString3.putString("base_nick", paramString2);
         paramString3.putBoolean("isFromWzry", true);
       }
-      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startRemarkAfterAgree(this.a.jdField_a_of_type_ComTencentMobileqqNewfriendUiViewBaseNewFriendView$INewFriendContext.getActivity(), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
+      ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).startRemarkAfterAgree(this.a.a.getActivity(), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
     }
   }
   
@@ -127,7 +127,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.bengin");
     }
-    this.a.k();
+    this.a.l();
     if (paramBoolean1)
     {
       if (QLog.isColorLevel()) {
@@ -139,7 +139,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
     }
     else if (paramBoolean2)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
+      this.a.f.sendEmptyMessage(1016);
     }
   }
   
@@ -148,8 +148,8 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgError");
     }
-    this.a.k();
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
+    this.a.l();
+    this.a.f.sendEmptyMessage(1016);
   }
   
   protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
@@ -157,7 +157,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
     if (QLog.isColorLevel()) {
       QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.bengin");
     }
-    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {
+    if (((Activity)SystemMsgListView.b(this.a)).isFinishing()) {
       return;
     }
     if (paramBoolean1)
@@ -170,7 +170,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
         if (SystemMsgListView.a(this.a) != null) {
           SystemMsgListView.a(this.a).c();
         }
-        this.a.i();
+        this.a.j();
         return;
       }
       catch (Exception paramList)
@@ -182,7 +182,7 @@ public class SystemMsgListView$MessageObserverForSystemMsgListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.view.SystemMsgListView.MessageObserverForSystemMsgListView
  * JD-Core Version:    0.7.0.1
  */

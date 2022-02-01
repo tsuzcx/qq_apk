@@ -8,43 +8,33 @@ import com.tencent.qphone.base.util.QLog;
 public class MoveGestureDetector
   extends BaseGestureDetector
 {
-  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private final MoveGestureDetector.OnMoveGestureListener jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector$OnMoveGestureListener;
-  private PointF b;
-  private PointF c;
-  private PointF d = new PointF();
-  private PointF e = new PointF();
+  private static final PointF h = new PointF();
+  private final MoveGestureDetector.OnMoveGestureListener i;
+  private PointF j;
+  private PointF k;
+  private PointF l = new PointF();
+  private PointF m = new PointF();
   
   public MoveGestureDetector(Context paramContext, MoveGestureDetector.OnMoveGestureListener paramOnMoveGestureListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector$OnMoveGestureListener = paramOnMoveGestureListener;
+    this.i = paramOnMoveGestureListener;
   }
   
-  private PointF a(MotionEvent paramMotionEvent)
+  private PointF c(MotionEvent paramMotionEvent)
   {
-    int j = paramMotionEvent.getPointerCount();
+    int i1 = paramMotionEvent.getPointerCount();
     float f2 = 0.0F;
-    int i = 0;
+    int n = 0;
     float f1 = 0.0F;
-    while (i < j)
+    while (n < i1)
     {
-      f2 += paramMotionEvent.getX(i);
-      f1 += paramMotionEvent.getY(i);
-      i += 1;
+      f2 += paramMotionEvent.getX(n);
+      f1 += paramMotionEvent.getY(n);
+      n += 1;
     }
-    float f3 = j;
+    float f3 = i1;
     return new PointF(f2 / f3, f1 / f3);
-  }
-  
-  public float a()
-  {
-    return this.d.x;
-  }
-  
-  public PointF a()
-  {
-    return this.e;
   }
   
   protected void a(int paramInt, MotionEvent paramMotionEvent)
@@ -54,49 +44,13 @@ public class MoveGestureDetector
       if (paramInt != 2) {
         return;
       }
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector$OnMoveGestureListener.b(this);
+      this.b = this.i.b(this);
       return;
     }
     a();
-    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    this.jdField_a_of_type_Long = 0L;
-    a(paramMotionEvent);
-  }
-  
-  protected void a(MotionEvent paramMotionEvent)
-  {
-    super.a(paramMotionEvent);
-    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
-    if ((paramMotionEvent != null) && (localMotionEvent != null))
-    {
-      this.jdField_b_of_type_AndroidGraphicsPointF = a(paramMotionEvent);
-      this.c = a(localMotionEvent);
-      int i;
-      if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount()) {
-        i = 1;
-      } else {
-        i = 0;
-      }
-      if (i != 0) {
-        paramMotionEvent = jdField_a_of_type_AndroidGraphicsPointF;
-      } else {
-        paramMotionEvent = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.c.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.c.y);
-      }
-      this.e = paramMotionEvent;
-      paramMotionEvent = this.d;
-      paramMotionEvent.x += this.e.x;
-      paramMotionEvent = this.d;
-      paramMotionEvent.y += this.e.y;
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
-    }
-  }
-  
-  public float b()
-  {
-    return this.d.y;
+    this.c = MotionEvent.obtain(paramMotionEvent);
+    this.g = 0L;
+    b(paramMotionEvent);
   }
   
   protected void b(int paramInt, MotionEvent paramMotionEvent)
@@ -108,17 +62,63 @@ public class MoveGestureDetector
       }
       else
       {
-        a(paramMotionEvent);
-        if ((this.jdField_a_of_type_Float / this.jdField_b_of_type_Float <= 0.67F) || (!this.jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector$OnMoveGestureListener.a(this)) || (this.jdField_a_of_type_AndroidViewMotionEvent == null)) {
+        b(paramMotionEvent);
+        if ((this.e / this.f <= 0.67F) || (!this.i.a(this)) || (this.c == null)) {
           return;
         }
-        this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        this.c.recycle();
+        this.c = MotionEvent.obtain(paramMotionEvent);
         return;
       }
     }
-    this.jdField_a_of_type_ComTencentAvOpenglGesturedetectorsMoveGestureDetector$OnMoveGestureListener.a(this);
+    this.i.c(this);
     a();
+  }
+  
+  protected void b(MotionEvent paramMotionEvent)
+  {
+    super.b(paramMotionEvent);
+    MotionEvent localMotionEvent = this.c;
+    if ((paramMotionEvent != null) && (localMotionEvent != null))
+    {
+      this.j = c(paramMotionEvent);
+      this.k = c(localMotionEvent);
+      int n;
+      if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount()) {
+        n = 1;
+      } else {
+        n = 0;
+      }
+      if (n != 0) {
+        paramMotionEvent = h;
+      } else {
+        paramMotionEvent = new PointF(this.j.x - this.k.x, this.j.y - this.k.y);
+      }
+      this.m = paramMotionEvent;
+      paramMotionEvent = this.l;
+      paramMotionEvent.x += this.m.x;
+      paramMotionEvent = this.l;
+      paramMotionEvent.y += this.m.y;
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+    }
+  }
+  
+  public float c()
+  {
+    return this.l.x;
+  }
+  
+  public float d()
+  {
+    return this.l.y;
+  }
+  
+  public PointF e()
+  {
+    return this.m;
   }
 }
 

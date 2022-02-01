@@ -11,7 +11,7 @@ class FolderTextView$2
   
   public void onClick(View paramView)
   {
-    if (FolderTextView.a(this.a) == 0) {
+    if (FolderTextView.b(this.a) == 0) {
       FolderTextView.a(this.a, 1);
     } else {
       FolderTextView.a(this.a, 0);
@@ -22,7 +22,7 @@ class FolderTextView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FolderTextView.2
  * JD-Core Version:    0.7.0.1
  */

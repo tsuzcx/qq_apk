@@ -11,9 +11,9 @@ import org.json.JSONObject;
 public class QVipBigClubSVIP9Processor
   extends BaseQVipConfigProcessor<QVipBigClubSVIP9Config>
 {
-  public static QVipBigClubSVIP9Config c()
+  public static QVipBigClubSVIP9Config e()
   {
-    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)QConfigManager.a().a(427);
+    QVipBigClubSVIP9Config localQVipBigClubSVIP9Config2 = (QVipBigClubSVIP9Config)QConfigManager.b().b(427);
     QVipBigClubSVIP9Config localQVipBigClubSVIP9Config1 = localQVipBigClubSVIP9Config2;
     if (localQVipBigClubSVIP9Config2 == null) {
       localQVipBigClubSVIP9Config1 = new QVipBigClubSVIP9Config();
@@ -32,7 +32,7 @@ public class QVipBigClubSVIP9Processor
   {
     QVipBigClubSVIP9Config localQVipBigClubSVIP9Config = new QVipBigClubSVIP9Config();
     boolean bool = false;
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+    paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     try
     {
       if (!TextUtils.isEmpty(paramArrayOfQConfItem))
@@ -76,7 +76,7 @@ public class QVipBigClubSVIP9Processor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipBigClubSVIP9Processor
  * JD-Core Version:    0.7.0.1
  */

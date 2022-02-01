@@ -17,13 +17,13 @@ class ContactSearchEngine$4
     if ((localISearchListener != null) && (localList1 != null))
     {
       SearchRespData localSearchRespData = new SearchRespData(this.a.a, 1);
-      if (ContactSearchEngine.a(this.this$0) == null)
+      if (ContactSearchEngine.b(this.this$0) == null)
       {
         localISearchListener.a(localList1, localSearchRespData);
         return;
       }
       localISearchListener.a(localList1);
-      List localList2 = ContactSearchEngine.a(this.this$0).a(this.a);
+      List localList2 = ContactSearchEngine.b(this.this$0).a(this.a);
       if ((localList2 != null) && (!localList2.isEmpty())) {
         localList1.addAll(localList2);
       }
@@ -33,7 +33,7 @@ class ContactSearchEngine$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.ContactSearchEngine.4
  * JD-Core Version:    0.7.0.1
  */

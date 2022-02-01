@@ -5,20 +5,25 @@ import org.json.JSONObject;
 
 public class FastWebPtsLiteDataUtil
 {
-  static PtsData a(JSONObject paramJSONObject)
+  static boolean a(JSONObject paramJSONObject)
   {
-    String str = a(paramJSONObject);
+    return (paramJSONObject != null) && (paramJSONObject.has("pts_page_name"));
+  }
+  
+  static PtsData b(JSONObject paramJSONObject)
+  {
+    String str = c(paramJSONObject);
     if (paramJSONObject != null) {
       paramJSONObject = paramJSONObject.toString();
     } else {
       paramJSONObject = "";
     }
     paramJSONObject = new PtsData(str, str, paramJSONObject);
-    paramJSONObject.a();
+    paramJSONObject.b();
     return paramJSONObject;
   }
   
-  private static String a(JSONObject paramJSONObject)
+  private static String c(JSONObject paramJSONObject)
   {
     String str = "";
     if (paramJSONObject != null) {
@@ -26,15 +31,10 @@ public class FastWebPtsLiteDataUtil
     }
     return str;
   }
-  
-  static boolean a(JSONObject paramJSONObject)
-  {
-    return (paramJSONObject != null) && (paramJSONObject.has("pts_page_name"));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPtsLiteDataUtil
  * JD-Core Version:    0.7.0.1
  */

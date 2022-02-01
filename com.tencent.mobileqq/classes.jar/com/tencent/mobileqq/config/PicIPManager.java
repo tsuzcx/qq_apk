@@ -21,21 +21,25 @@ import org.json.JSONObject;
 
 public class PicIPManager
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private static Hashtable<String, ArrayList<String>>[] jdField_a_of_type_ArrayOfJavaUtilHashtable;
-  private static boolean[] jdField_a_of_type_ArrayOfBoolean;
   public static final String[][] a;
-  private static String[] b;
+  private static boolean[] b;
+  private static String[] c;
+  private static String[] d;
+  private static Hashtable<String, ArrayList<String>>[] e;
   
   static
   {
     int k = 8;
     int i = 0;
-    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "q_qlogo_cn_2g", "q_qlogo_cn_3g", "q_qlogo_cn_4g", "q_qlogo_cn_wifi" }, { "p_qlogo_cn_2g", "p_qlogo_cn_3g", "p_plogo_cn_4g", "p_plogo_cn_wifi" }, { "p_qpic_cn_2g", "p_qpic_cn_3g", "p_qpic_cn_4g", "p_qpic_cn_wifi" }, { "pgdt_gtimg_cn_2g", "pgdt_gtimg_cn_3g", "pgdt_gtimg_cn_4g", "pgdt_gtimg_cn_wifi" }, { "sqimg_qq_com_2g", "sqimg_qq_com_3g", "sqimg_qq_com_4g", "sqimg_qq_com_wifi" }, { "download_wegame_qq_com_2g", "download_wegame_qq_com_3g", "download_wegame_qq_com_4g", "download_wegame_qq_com_wifi" }, { "wfqqreader_3g_qq_cn_2g", "wfqqreader_3g_qq_cn_3g", "wfqqreader_3g_qq_cn_4g", "wfqqreader_3g_qq_cn_wifi" }, { "buluo_qq_com_2g", "buluo_qq_com_3g", "buluo_qq_com_4g", "buluo_qq_com_wifi" } };
-    jdField_a_of_type_ArrayOfBoolean = new boolean[13];
-    jdField_a_of_type_ArrayOfJavaLangString = new String[14];
-    b = new String[14];
-    jdField_a_of_type_ArrayOfJavaUtilHashtable = new Hashtable[11];
+    String[] arrayOfString1 = { "p_qlogo_cn_2g", "p_qlogo_cn_3g", "p_plogo_cn_4g", "p_plogo_cn_wifi" };
+    String[] arrayOfString2 = { "pgdt_gtimg_cn_2g", "pgdt_gtimg_cn_3g", "pgdt_gtimg_cn_4g", "pgdt_gtimg_cn_wifi" };
+    String[] arrayOfString3 = { "sqimg_qq_com_2g", "sqimg_qq_com_3g", "sqimg_qq_com_4g", "sqimg_qq_com_wifi" };
+    String[] arrayOfString4 = { "download_wegame_qq_com_2g", "download_wegame_qq_com_3g", "download_wegame_qq_com_4g", "download_wegame_qq_com_wifi" };
+    a = new String[][] { { "q_qlogo_cn_2g", "q_qlogo_cn_3g", "q_qlogo_cn_4g", "q_qlogo_cn_wifi" }, arrayOfString1, { "p_qpic_cn_2g", "p_qpic_cn_3g", "p_qpic_cn_4g", "p_qpic_cn_wifi" }, arrayOfString2, arrayOfString3, arrayOfString4, { "wfqqreader_3g_qq_cn_2g", "wfqqreader_3g_qq_cn_3g", "wfqqreader_3g_qq_cn_4g", "wfqqreader_3g_qq_cn_wifi" }, { "buluo_qq_com_2g", "buluo_qq_com_3g", "buluo_qq_com_4g", "buluo_qq_com_wifi" } };
+    b = new boolean[13];
+    c = new String[14];
+    d = new String[14];
+    e = new Hashtable[11];
     int j;
     for (;;)
     {
@@ -43,12 +47,12 @@ public class PicIPManager
       if (i > 7) {
         break;
       }
-      jdField_a_of_type_ArrayOfJavaUtilHashtable[i] = new Hashtable(4);
+      e[i] = new Hashtable(4);
       i += 1;
     }
     while (j < 11)
     {
-      jdField_a_of_type_ArrayOfJavaUtilHashtable[j] = new Hashtable(3);
+      e[j] = new Hashtable(3);
       j += 1;
     }
   }
@@ -75,11 +79,11 @@ public class PicIPManager
       }
       i = 2;
     }
-    if ((jdField_a_of_type_Array2dOfJavaLangString[paramInt][i].equals(b[paramInt])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[paramInt]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    if ((a[paramInt][i].equals(d[paramInt])) && (!TextUtils.isEmpty(c[paramInt]))) {
+      return c[paramInt];
     }
     int j;
-    if (jdField_a_of_type_ArrayOfBoolean[paramInt] == 0)
+    if (b[paramInt] == 0)
     {
       localObject1 = BaseApplication.getContext().getSharedPreferences("QQHeadIPList", 4);
       if (localObject1 == null) {
@@ -88,7 +92,7 @@ public class PicIPManager
       j = 0;
       while (j <= 3)
       {
-        String str = ((SharedPreferences)localObject1).getString(jdField_a_of_type_Array2dOfJavaLangString[paramInt][j], null);
+        String str = ((SharedPreferences)localObject1).getString(a[paramInt][j], null);
         if (!TextUtils.isEmpty(str))
         {
           Object localObject2 = str.split("\\|");
@@ -101,7 +105,7 @@ public class PicIPManager
               localArrayList.add(localObject2[k]);
               k += 1;
             }
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].put(jdField_a_of_type_Array2dOfJavaLangString[paramInt][j], localArrayList);
+            e[paramInt].put(a[paramInt][j], localArrayList);
           }
           if (QLog.isColorLevel())
           {
@@ -113,19 +117,19 @@ public class PicIPManager
         }
         j += 1;
       }
-      jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
+      b[paramInt] = true;
     }
-    Object localObject1 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(jdField_a_of_type_Array2dOfJavaLangString[paramInt][i]);
+    Object localObject1 = (ArrayList)e[paramInt].get(a[paramInt][i]);
     if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
     {
       double d1 = Math.random();
       double d2 = ((ArrayList)localObject1).size();
       Double.isNaN(d2);
       j = (int)(d1 * d2);
-      jdField_a_of_type_ArrayOfJavaLangString[paramInt] = ((String)((ArrayList)localObject1).get(j));
-      b[paramInt] = jdField_a_of_type_Array2dOfJavaLangString[paramInt][i];
+      c[paramInt] = ((String)((ArrayList)localObject1).get(j));
+      d[paramInt] = a[paramInt][i];
     }
-    return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    return c[paramInt];
     label376:
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("getIpList netType unknown netType=");
@@ -136,12 +140,12 @@ public class PicIPManager
   
   public static String a(int paramInt, String paramString)
   {
-    String str = String.valueOf(DeviceInfoUtil.g());
-    if ((str.equals(b[paramInt])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[paramInt]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    String str = String.valueOf(DeviceInfoUtil.X());
+    if ((str.equals(d[paramInt])) && (!TextUtils.isEmpty(c[paramInt]))) {
+      return c[paramInt];
     }
     Object localObject1;
-    if (jdField_a_of_type_ArrayOfBoolean[paramInt] == 0)
+    if (b[paramInt] == 0)
     {
       if (QLog.isColorLevel())
       {
@@ -180,18 +184,18 @@ public class PicIPManager
           Object localObject2 = paramString.getJSONObject(i);
           localObject1 = ((JSONObject)localObject2).getString("apn");
           localObject2 = ((JSONObject)localObject2).getString("ip");
-          ArrayList localArrayList = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(localObject1);
+          ArrayList localArrayList = (ArrayList)e[paramInt].get(localObject1);
           if (localArrayList == null)
           {
             localArrayList = new ArrayList();
             localArrayList.add(localObject2);
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].put(localObject1, localArrayList);
+            e[paramInt].put(localObject1, localArrayList);
             break label376;
           }
           localArrayList.add(localObject2);
           break label376;
         }
-        jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
+        b[paramInt] = true;
       }
       catch (JSONException paramString)
       {
@@ -199,16 +203,16 @@ public class PicIPManager
           paramString.printStackTrace();
         }
       }
-      paramString = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(str);
+      paramString = (ArrayList)e[paramInt].get(str);
       if ((paramString != null) && (!paramString.isEmpty()))
       {
         double d1 = Math.random();
         double d2 = paramString.size();
         Double.isNaN(d2);
         i = (int)(d1 * d2);
-        jdField_a_of_type_ArrayOfJavaLangString[paramInt] = ((String)paramString.get(i));
-        b[paramInt] = str;
-        return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+        c[paramInt] = ((String)paramString.get(i));
+        d[paramInt] = str;
+        return c[paramInt];
       }
       return null;
       label376:
@@ -219,8 +223,8 @@ public class PicIPManager
   public static String a(ArrayList<FileStorageServerListInfo> paramArrayList)
   {
     String str = String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext()));
-    if ((str.equals(b[12])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[12]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[12];
+    if ((str.equals(d[12])) && (!TextUtils.isEmpty(c[12]))) {
+      return c[12];
     }
     if (paramArrayList != null)
     {
@@ -234,9 +238,9 @@ public class PicIPManager
       if (paramArrayList == null) {
         return null;
       }
-      b[12] = str;
-      jdField_a_of_type_ArrayOfJavaLangString[12] = paramArrayList.sIP;
-      return jdField_a_of_type_ArrayOfJavaLangString[12];
+      d[12] = str;
+      c[12] = paramArrayList.sIP;
+      return c[12];
     }
     return null;
   }
@@ -249,7 +253,7 @@ public class PicIPManager
     int i = 0;
     while (i <= 7)
     {
-      jdField_a_of_type_ArrayOfBoolean[i] = false;
+      b[i] = false;
       i += 1;
     }
   }
@@ -295,15 +299,15 @@ public class PicIPManager
     Object localObject2;
     while (i <= 7)
     {
-      localObject2 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[i].get(Integer.valueOf(j));
+      localObject2 = (ArrayList)e[i].get(Integer.valueOf(j));
       if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty())) {
         ((ArrayList)localObject2).clear();
       }
       if (localObject1 != null) {
-        ((SharedPreferences.Editor)localObject1).putString(jdField_a_of_type_Array2dOfJavaLangString[i][j], "");
+        ((SharedPreferences.Editor)localObject1).putString(a[i][j], "");
       }
-      jdField_a_of_type_ArrayOfJavaLangString[i] = null;
-      b[i] = null;
+      c[i] = null;
+      d[i] = null;
       i += 1;
     }
     if (localObject1 != null) {
@@ -387,7 +391,7 @@ public class PicIPManager
               }
               k += 1;
             }
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[i].put(jdField_a_of_type_Array2dOfJavaLangString[i][j], localObject3);
+            e[i].put(a[i][j], localObject3);
             if (QLog.isColorLevel())
             {
               localObject1 = new StringBuilder();
@@ -398,7 +402,7 @@ public class PicIPManager
               QLog.i("PicIPManager", 2, ((StringBuilder)localObject1).toString());
             }
             if (localSharedPreferences != null) {
-              localSharedPreferences.edit().putString(jdField_a_of_type_Array2dOfJavaLangString[i][j], ((StringBuilder)localObject2).toString()).commit();
+              localSharedPreferences.edit().putString(a[i][j], ((StringBuilder)localObject2).toString()).commit();
             }
           }
         }
@@ -416,8 +420,8 @@ public class PicIPManager
   public static String b(ArrayList<FileStorageServerListInfo> paramArrayList)
   {
     String str = String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext()));
-    if ((str.equals(b[13])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[13]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[13];
+    if ((str.equals(d[13])) && (!TextUtils.isEmpty(c[13]))) {
+      return c[13];
     }
     if (paramArrayList != null)
     {
@@ -431,16 +435,16 @@ public class PicIPManager
       if (paramArrayList == null) {
         return null;
       }
-      b[13] = str;
-      jdField_a_of_type_ArrayOfJavaLangString[13] = paramArrayList.sIP;
-      return jdField_a_of_type_ArrayOfJavaLangString[13];
+      d[13] = str;
+      c[13] = paramArrayList.sIP;
+      return c[13];
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.PicIPManager
  * JD-Core Version:    0.7.0.1
  */

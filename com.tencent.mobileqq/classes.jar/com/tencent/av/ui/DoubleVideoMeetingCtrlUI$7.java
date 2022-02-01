@@ -10,15 +10,15 @@ class DoubleVideoMeetingCtrlUI$7
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.am == null) {
       return;
     }
-    if (this.this$0.a.a().aw)
+    if (this.this$0.am.k().cn)
     {
-      this.this$0.a.a(this.a, 4, false, false);
+      this.this$0.am.a(this.a, 4, false, false);
       DoubleVideoMeetingCtrlUI localDoubleVideoMeetingCtrlUI = this.this$0;
       localDoubleVideoMeetingCtrlUI.c = true;
-      localDoubleVideoMeetingCtrlUI.a.l();
+      localDoubleVideoMeetingCtrlUI.am.ac();
     }
   }
 }

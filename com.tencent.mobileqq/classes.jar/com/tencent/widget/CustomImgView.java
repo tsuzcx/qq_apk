@@ -48,7 +48,7 @@ public class CustomImgView
     this.b.setDuplicateParentStateEnabled(true);
   }
   
-  public Drawable a()
+  public Drawable getDrawable()
   {
     return this.a.getDrawable();
   }
@@ -94,7 +94,7 @@ public class CustomImgView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.CustomImgView
  * JD-Core Version:    0.7.0.1
  */

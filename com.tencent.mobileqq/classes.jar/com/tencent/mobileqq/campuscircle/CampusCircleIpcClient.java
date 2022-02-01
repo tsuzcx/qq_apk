@@ -27,40 +27,6 @@ public class CampusCircleIpcClient
     return a;
   }
   
-  public Bundle a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleIpcClient", 2, "getRedPoint");
-      }
-      Object localObject1 = new Bundle();
-      localObject1 = QIPCClientHelper.getInstance().getClient().callServer("CampusCircleIpcServer_Model", "action_get_red_point", (Bundle)localObject1);
-      if ((localObject1 != null) && (((EIPCResult)localObject1).isSuccess()) && (((EIPCResult)localObject1).data != null))
-      {
-        localObject1 = ((EIPCResult)localObject1).data;
-        return localObject1;
-      }
-      return null;
-    }
-    finally {}
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCircleIpcClient", 2, "reportMedalRedPoint");
-      }
-      Bundle localBundle = new Bundle();
-      localBundle.putString("from", "web");
-      QIPCClientHelper.getInstance().callServer("CampusCircleIpcServer_Model", "action_report_medal_red_point", localBundle, this);
-      return;
-    }
-    finally {}
-  }
-  
   public void a(int paramInt)
   {
     Object localObject = new Bundle();
@@ -115,43 +81,26 @@ public class CampusCircleIpcClient
     finally {}
   }
   
-  public Object[] a()
+  public Bundle b()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        Object localObject1 = new Bundle();
-        localObject1 = QIPCClientHelper.getInstance().getClient().callServer("CampusCircleIpcServer_Model", "action_confess_is_in_troop_aio", (Bundle)localObject1);
-        if ((localObject1 != null) && (((EIPCResult)localObject1).code == 0) && (((EIPCResult)localObject1).data != null))
-        {
-          bool2 = ((EIPCResult)localObject1).data.getBoolean("isInTroopAIO", false);
-          if (!QLog.isColorLevel()) {
-            break label137;
-          }
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("isInTroopAIO isInAIO ");
-          ((StringBuilder)localObject1).append(bool2);
-          QLog.i("CampusCircleIpcClient", 2, ((StringBuilder)localObject1).toString());
-          break label137;
-        }
-        if (!QLog.isColorLevel()) {
-          break label142;
-        }
-        QLog.i("CampusCircleIpcClient", 2, "isInTroopAIO err");
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcClient", 2, "getRedPoint");
       }
-      finally {}
-      return new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) };
-      label137:
-      boolean bool1 = true;
-      continue;
-      label142:
-      bool1 = false;
-      boolean bool2 = false;
+      Object localObject1 = new Bundle();
+      localObject1 = QIPCClientHelper.getInstance().getClient().callServer("CampusCircleIpcServer_Model", "action_get_red_point", (Bundle)localObject1);
+      if ((localObject1 != null) && (((EIPCResult)localObject1).isSuccess()) && (((EIPCResult)localObject1).data != null))
+      {
+        localObject1 = ((EIPCResult)localObject1).data;
+        return localObject1;
+      }
+      return null;
     }
+    finally {}
   }
   
-  public Object[] a(String paramString)
+  public Object[] b(String paramString)
   {
     try
     {
@@ -196,7 +145,22 @@ public class CampusCircleIpcClient
     finally {}
   }
   
-  public Bundle b()
+  public void c()
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CampusCircleIpcClient", 2, "reportMedalRedPoint");
+      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString("from", "web");
+      QIPCClientHelper.getInstance().callServer("CampusCircleIpcServer_Model", "action_report_medal_red_point", localBundle, this);
+      return;
+    }
+    finally {}
+  }
+  
+  public Bundle d()
   {
     for (;;)
     {
@@ -243,7 +207,7 @@ public class CampusCircleIpcClient
     }
   }
   
-  public void b()
+  public void e()
   {
     try
     {
@@ -254,6 +218,42 @@ public class CampusCircleIpcClient
       return;
     }
     finally {}
+  }
+  
+  public Object[] f()
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject1 = new Bundle();
+        localObject1 = QIPCClientHelper.getInstance().getClient().callServer("CampusCircleIpcServer_Model", "action_confess_is_in_troop_aio", (Bundle)localObject1);
+        if ((localObject1 != null) && (((EIPCResult)localObject1).code == 0) && (((EIPCResult)localObject1).data != null))
+        {
+          bool2 = ((EIPCResult)localObject1).data.getBoolean("isInTroopAIO", false);
+          if (!QLog.isColorLevel()) {
+            break label137;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("isInTroopAIO isInAIO ");
+          ((StringBuilder)localObject1).append(bool2);
+          QLog.i("CampusCircleIpcClient", 2, ((StringBuilder)localObject1).toString());
+          break label137;
+        }
+        if (!QLog.isColorLevel()) {
+          break label142;
+        }
+        QLog.i("CampusCircleIpcClient", 2, "isInTroopAIO err");
+      }
+      finally {}
+      return new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) };
+      label137:
+      boolean bool1 = true;
+      continue;
+      label142:
+      bool1 = false;
+      boolean bool2 = false;
+    }
   }
   
   public void onCallback(EIPCResult paramEIPCResult)
@@ -276,7 +276,7 @@ public class CampusCircleIpcClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleIpcClient
  * JD-Core Version:    0.7.0.1
  */

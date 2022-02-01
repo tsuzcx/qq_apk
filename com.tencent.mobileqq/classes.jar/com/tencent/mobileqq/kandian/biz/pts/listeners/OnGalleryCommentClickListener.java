@@ -11,30 +11,30 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 public class OnGalleryCommentClickListener
   implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private AbsBaseArticleInfo a;
+  private Context b;
   
   public OnGalleryCommentClickListener(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramContext;
   }
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    paramViewBase = this.a;
     if (paramViewBase == null) {
       return;
     }
-    if (RIJFeedsType.T(paramViewBase)) {
-      RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+    if (RIJFeedsType.ab(paramViewBase)) {
+      RIJJumpUtils.a(this.b, this.a);
     }
-    GalleryReportedUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, "0X8009A73", null);
+    GalleryReportedUtils.a(this.b, this.a, "0X8009A73", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnGalleryCommentClickListener
  * JD-Core Version:    0.7.0.1
  */

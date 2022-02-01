@@ -10,28 +10,38 @@ import mqq.app.MobileQQ;
 
 public class VasUtil
 {
-  public static AppInterface a()
-  {
-    return (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
-  
-  public static IVasDepTemp a()
-  {
-    return (IVasDepTemp)QRoute.api(IVasDepTemp.class);
-  }
-  
   @Deprecated
   public static IVasService a()
   {
     return (IVasService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IVasService.class, "all");
   }
   
-  public static IVasSingedApi a(AppRuntime paramAppRuntime)
+  public static IVasService a(AppRuntime paramAppRuntime)
+  {
+    return (IVasService)paramAppRuntime.getRuntimeService(IVasService.class, "all");
+  }
+  
+  public static IVasDepTemp b()
+  {
+    return (IVasDepTemp)QRoute.api(IVasDepTemp.class);
+  }
+  
+  public static IVasSingedApi b(AppRuntime paramAppRuntime)
   {
     return (IVasSingedApi)paramAppRuntime.getRuntimeService(IVasSingedApi.class, "all");
   }
   
-  public static String a()
+  public static AppRuntime c()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public static AppInterface d()
+  {
+    return (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public static String e()
   {
     if (MobileQQ.sMobileQQ == null) {
       return "";
@@ -47,15 +57,10 @@ public class VasUtil
     }
     return localObject;
   }
-  
-  public static AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.util.VasUtil
  * JD-Core Version:    0.7.0.1
  */

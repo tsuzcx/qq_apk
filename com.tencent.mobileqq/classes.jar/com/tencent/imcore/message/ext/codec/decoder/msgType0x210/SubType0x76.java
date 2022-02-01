@@ -22,7 +22,7 @@ public class SubType0x76
     long l2 = paramMsgInfo.lMsgUid;
     int j = paramMsgInfo.shMsgType;
     int k = (int)paramMsgType0x210.uSubMsgType;
-    if (((ActivateFriendsManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).a(paramMsgInfo.shMsgSeq))
+    if (((ActivateFriendsManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).b(paramMsgInfo.shMsgSeq))
     {
       if (QLog.isColorLevel())
       {
@@ -46,7 +46,7 @@ public class SubType0x76
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x76
  * JD-Core Version:    0.7.0.1
  */

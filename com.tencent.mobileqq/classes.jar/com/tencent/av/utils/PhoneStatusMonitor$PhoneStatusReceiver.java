@@ -25,7 +25,7 @@ class PhoneStatusMonitor$PhoneStatusReceiver
       paramIntent.append("]");
       QLog.d("PhoneStatusMonitor", 2, paramIntent.toString());
     }
-    this.a.c();
+    this.a.d();
   }
 }
 

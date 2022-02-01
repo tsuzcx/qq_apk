@@ -13,14 +13,14 @@ public class StoryConfigImplement
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)a.get();
     if (localQQAppInterface != null) {
-      return localQQAppInterface.getNowLiveManager().a;
+      return localQQAppInterface.getNowLiveManager().d;
     }
-    throw new IllegalStateException(HardCodeUtil.a(2131714202));
+    throw new IllegalStateException(HardCodeUtil.a(2131911725));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.boundaries.implement.StoryConfigImplement
  * JD-Core Version:    0.7.0.1
  */

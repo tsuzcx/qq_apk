@@ -14,36 +14,36 @@ import org.json.JSONObject;
 
 public class SlideShowConfigManager
 {
-  private static SlideShowConfigManager jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowConfigManager;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Map<String, List<SlideShowConfigManager.Music>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static SlideShowConfigManager b;
+  private Context a;
+  private Map<String, List<SlideShowConfigManager.Music>> c = new ConcurrentHashMap();
   
   public SlideShowConfigManager(Context paramContext)
   {
     if (paramContext == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramContext);
+    this.a = paramContext;
+    b(paramContext);
   }
   
   public static SlideShowConfigManager a(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowConfigManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowConfigManager == null) {
-          jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowConfigManager = new SlideShowConfigManager(paramContext);
+        if (b == null) {
+          b = new SlideShowConfigManager(paramContext);
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowConfigManager;
+    return b;
   }
   
-  private void a(Context paramContext)
+  private void b(Context paramContext)
   {
-    paramContext = (SlideShowStoryConfigBean)QConfigManager.a().a(362);
+    paramContext = (SlideShowStoryConfigBean)QConfigManager.b().b(362);
     if (paramContext != null) {
       paramContext = paramContext.a;
     } else {
@@ -58,7 +58,7 @@ public class SlideShowConfigManager
       QLog.d("SlideShowConfigManager", 2, ((StringBuilder)localObject1).toString());
     }
     if (!TextUtils.isEmpty(paramContext)) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.c.clear();
     }
     try
     {
@@ -80,7 +80,7 @@ public class SlideShowConfigManager
           localArrayList.add(localMusic);
           j += 1;
         }
-        this.jdField_a_of_type_JavaUtilMap.put(localObject1, localArrayList);
+        this.c.put(localObject1, localArrayList);
         i += 1;
       }
     }
@@ -96,13 +96,13 @@ public class SlideShowConfigManager
   
   public List<SlideShowConfigManager.Music> a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      a(this.jdField_a_of_type_AndroidContentContext);
+    if (this.c.size() == 0) {
+      b(this.a);
     }
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    paramString = (List)this.c.get(paramString);
     if (paramString != null)
     {
       if (paramString.size() == 0) {

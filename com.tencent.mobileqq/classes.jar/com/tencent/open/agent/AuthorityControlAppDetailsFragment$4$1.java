@@ -9,13 +9,13 @@ class AuthorityControlAppDetailsFragment$4$1
   
   public void run()
   {
-    AuthorityControlAppDetailsFragment.a(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment).setVisibility(0);
-    AuthorityControlAppDetailsFragment.b(this.a.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment, this.a.jdField_a_of_type_ComTencentOpenModelAppInfo);
+    AuthorityControlAppDetailsFragment.f(this.a.b).setVisibility(0);
+    AuthorityControlAppDetailsFragment.b(this.a.b, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

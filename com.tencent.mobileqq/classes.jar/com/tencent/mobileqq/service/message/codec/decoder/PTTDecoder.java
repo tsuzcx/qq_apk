@@ -147,7 +147,7 @@ public class PTTDecoder
         {
           ArrayList localArrayList = new ArrayList();
           localArrayList.add(paramMessageRecord);
-          ConfessMsgUtil.a(paramMsg, localElem, localArrayList, paramMessageHandler.a);
+          ConfessMsgUtil.a(paramMsg, localElem, localArrayList, paramMessageHandler.n);
         }
       }
     }
@@ -199,7 +199,7 @@ public class PTTDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.PTTDecoder
  * JD-Core Version:    0.7.0.1
  */

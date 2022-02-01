@@ -12,18 +12,18 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class SearchHistoryAdapter
   extends BaseAdapter
 {
-  Handler jdField_a_of_type_AndroidOsHandler;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  Handler a;
+  QQAppInterface b;
+  String[] c;
   
   public String a(int paramInt)
   {
-    return this.a[paramInt];
+    return this.c[paramInt];
   }
   
   public int getCount()
   {
-    String[] arrayOfString = this.a;
+    String[] arrayOfString = this.c;
     if (arrayOfString == null) {
       return 0;
     }
@@ -41,7 +41,7 @@ public class SearchHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559334, paramViewGroup, false);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131625300, paramViewGroup, false);
       paramView = new SearchHistoryAdapter.HistoryHolder(localView);
     }
     else
@@ -57,7 +57,7 @@ public class SearchHistoryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SearchHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

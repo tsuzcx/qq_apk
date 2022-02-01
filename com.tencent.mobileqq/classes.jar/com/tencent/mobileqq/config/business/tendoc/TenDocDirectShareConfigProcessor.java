@@ -11,7 +11,7 @@ public class TenDocDirectShareConfigProcessor
 {
   public static TenDocDirectShareConfigBean a()
   {
-    return (TenDocDirectShareConfigBean)QConfigManager.a().a(486);
+    return (TenDocDirectShareConfigBean)QConfigManager.b().b(486);
   }
   
   @NonNull
@@ -60,7 +60,7 @@ public class TenDocDirectShareConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TenDocDirectShareConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

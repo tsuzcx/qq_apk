@@ -17,10 +17,10 @@ class GameBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    if (GameBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor) != null) {
-      GameBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).sendEmptyMessageDelayed(1000, 2500L);
+    if (GameBannerProcessor.a(this.b) != null) {
+      GameBannerProcessor.b(this.b).sendEmptyMessageDelayed(1000, 2500L);
     }
-    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
+    Object localObject = this.a.getString("activity");
     if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
@@ -35,30 +35,30 @@ class GameBannerProcessor$1
     localObject = null;
     if (localObject != null)
     {
-      localObject = new Intent(GameBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).getApplicationContext(), (Class)localObject);
-      str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
+      localObject = new Intent(GameBannerProcessor.c(this.b).getApplicationContext(), (Class)localObject);
+      str = this.a.getString("action");
       if (!TextUtils.isEmpty(str)) {
         ((Intent)localObject).setAction(str);
       }
-      str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
+      str = this.a.getString("category");
       if (!TextUtils.isEmpty(str)) {
         ((Intent)localObject).addCategory(str);
       }
-      str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
+      str = this.a.getString("url");
       if (!TextUtils.isEmpty(str)) {
         ((Intent)localObject).putExtra("url", str);
       }
-      ((Intent)localObject).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+      ((Intent)localObject).setFlags(this.a.getInt("flags", 0));
       ((Intent)localObject).putExtra("force_no_reload", true);
-      GameBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).startActivity((Intent)localObject);
+      GameBannerProcessor.d(this.b).startActivity((Intent)localObject);
     }
-    ReportController.a(GameBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
+    ReportController.a(GameBannerProcessor.e(this.b).getAppRuntime(), "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.GameBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

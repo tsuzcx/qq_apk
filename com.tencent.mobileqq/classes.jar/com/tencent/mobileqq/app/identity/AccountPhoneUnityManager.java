@@ -30,9 +30,9 @@ import tencent.im.oidb.cmd0x9ae.cmd0x9ae.SmallTips;
 public class AccountPhoneUnityManager
   extends BaseAccountLifecycle
 {
-  private long jdField_a_of_type_Long;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private Dialog a;
+  private BroadcastReceiver b;
+  private long c;
   
   private void b(Context paramContext)
   {
@@ -42,84 +42,74 @@ public class AccountPhoneUnityManager
     {
       QLog.d("AccountPhoneUnityManager", 1, "unregisterReceiver, context is null, use application");
       localObject = BaseApplication.getContext();
-      paramContext = this.jdField_a_of_type_AndroidContentBroadcastReceiver;
+      paramContext = this.b;
       if (paramContext != null)
       {
         try
         {
           QLog.d("AccountPhoneUnityManager", 1, "unregisterReceiver");
-          ((Context)localObject).unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+          ((Context)localObject).unregisterReceiver(this.b);
         }
         catch (Exception paramContext)
         {
           QLog.d("AccountPhoneUnityManager", 1, new Object[] { "unregisterReceiver error : ", paramContext.getMessage() });
         }
-        this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+        this.b = null;
       }
       return;
     }
     finally {}
   }
   
-  private boolean c()
-  {
-    return new PhoneUnityProxy().a(QBaseActivity.sTopActivity);
-  }
-  
-  private void g()
+  private void j()
   {
     if (MobileQQ.sProcessId != 1)
     {
       QLog.d("AccountPhoneUnityManager", 1, "refresh only run in main process");
       return;
     }
-    AppRuntime localAppRuntime = a();
+    AppRuntime localAppRuntime = i();
     if (localAppRuntime == null)
     {
       QLog.d("AccountPhoneUnityManager", 1, "refresh, app is null");
       return;
     }
     ThreadManager.getUIHandler().postDelayed(new AccountPhoneUnityManager.1(this, localAppRuntime), 800L);
-    if (a()) {
-      f();
+    if (g()) {
+      a();
     }
   }
   
-  AppRuntime a()
+  private boolean k()
+  {
+    return new PhoneUnityProxy().a(QBaseActivity.sTopActivity);
+  }
+  
+  void a()
   {
     if (MobileQQ.sProcessId != 1)
     {
-      QLog.d("AccountPhoneUnityManager", 1, "getAppInterface only run in main process");
-      return null;
+      QLog.d("AccountPhoneUnityManager", 1, "refreshPhoneUnityData only run in main process");
+      return;
     }
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (!localAppRuntime.isLogin())
-    {
-      QLog.e("AccountPhoneUnityManager", 1, "getAppInterface, but not login");
-      return null;
+    AppRuntime localAppRuntime = i();
+    if (localAppRuntime == null) {
+      return;
     }
-    return localAppRuntime;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPhoneUnityManager", 2, "onAccountLoginOrSwitch");
-    }
-    g();
+    LoginVerifyServlet.c(localAppRuntime, new AccountPhoneUnityManager.2(this, localAppRuntime));
   }
   
   public void a(Activity paramActivity)
   {
-    if ((IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog)) && (!new PhoneUnityProxy().a(paramActivity)))
+    if ((IdentityUtils.a(this.a)) && (!new PhoneUnityProxy().a(paramActivity)))
     {
-      boolean bool = IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog, paramActivity);
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      boolean bool = IdentityUtils.a(this.a, paramActivity);
+      this.a.dismiss();
       if (QLog.isColorLevel()) {
         QLog.d("AccountPhoneUnityManager", 2, new Object[] { "dialog is showing, current activity is dialog context [", Boolean.valueOf(bool), "] activity : ", paramActivity.getClass().getSimpleName() });
       }
       if ((!bool) && (QBaseActivity.sTopActivity != null)) {
-        f();
+        a();
       }
     }
   }
@@ -133,12 +123,12 @@ public class AccountPhoneUnityManager
       return;
     }
     finally {}
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+    if (this.b == null)
     {
       QLog.d("AccountPhoneUnityManager", 1, "registerReceiver");
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.mobileqq.InvitationWebViewPlugin.accountIdentityNotify");
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new AccountPhoneUnityManager.PhoneUnityReceiver(null);
-      paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      this.b = new AccountPhoneUnityManager.PhoneUnityReceiver(null);
+      paramContext.registerReceiver(this.b, localIntentFilter);
     }
   }
   
@@ -148,7 +138,7 @@ public class AccountPhoneUnityManager
     {
       try
       {
-        if (IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog))
+        if (IdentityUtils.a(this.a))
         {
           QLog.d("AccountPhoneUnityManager", 1, "dialog is showing");
           return;
@@ -156,11 +146,11 @@ public class AccountPhoneUnityManager
         QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
         if ((localQBaseActivity != null) && (!localQBaseActivity.isFinishing()))
         {
-          boolean bool = IdentityUtils.a(paramString1);
-          this.jdField_a_of_type_AndroidAppDialog = IdentityUtils.a(localQBaseActivity, paramString2, paramString3, paramString4, paramString5, false, new AccountPhoneUnityManager.4(this, bool, localQBaseActivity, paramAppRuntime), new AccountPhoneUnityManager.5(this, paramActivity, bool, paramAppRuntime));
-          this.jdField_a_of_type_AndroidAppDialog.show();
-          this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(new AccountPhoneUnityManager.6(this));
-          this.jdField_a_of_type_AndroidAppDialog.setOnCancelListener(new AccountPhoneUnityManager.7(this));
+          boolean bool = IdentityUtils.b(paramString1);
+          this.a = IdentityUtils.a(localQBaseActivity, paramString2, paramString3, paramString4, paramString5, false, new AccountPhoneUnityManager.4(this, bool, localQBaseActivity, paramAppRuntime), new AccountPhoneUnityManager.5(this, paramActivity, bool, paramAppRuntime));
+          this.a.show();
+          this.a.setOnDismissListener(new AccountPhoneUnityManager.6(this));
+          this.a.setOnCancelListener(new AccountPhoneUnityManager.7(this));
           if (bool)
           {
             paramString1 = "0X800B3E6";
@@ -183,7 +173,7 @@ public class AccountPhoneUnityManager
   {
     try
     {
-      if (!b())
+      if (!h())
       {
         if (QLog.isColorLevel()) {
           QLog.d("AccountPhoneUnityManager", 1, "not need show banner");
@@ -252,19 +242,19 @@ public class AccountPhoneUnityManager
     }
     String str6 = paramAppRuntime.getAccount();
     BaseSharedPreUtil.a((Context)localObject2, str6, true, "phone_unity_jwt", str4);
-    bool2 = IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog);
+    bool2 = IdentityUtils.a(this.a);
     if (!bool1)
     {
       QLog.d("AccountPhoneUnityManager", 1, new Object[] { "need auth false, isShowing : ", Boolean.valueOf(bool2) });
       if (bool2) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.a.dismiss();
       }
       a(paramAppRuntime, (Context)localObject2);
       return;
     }
     if (bool2)
     {
-      if ((IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog, (Activity)localObject2)) || (c())) {
+      if ((IdentityUtils.a(this.a, (Activity)localObject2)) || (k())) {
         i = 1;
       }
       if (i != 0)
@@ -272,30 +262,51 @@ public class AccountPhoneUnityManager
         QLog.d("AccountPhoneUnityManager", 1, "dialog is invalid");
         return;
       }
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.dismiss();
     }
     BaseSharedPreUtil.a((Context)localObject2, str6, true, "phone_unity_banner_tips", paramRspBody);
     BaseSharedPreUtil.a((Context)localObject2, str6, true, "phone_unity_banner_tips_need_show", Boolean.valueOf(true));
     ThreadManager.getUIHandler().postDelayed(new AccountPhoneUnityManager.3(this, str5, str1, str2, str3, (String)localObject1, paramAppRuntime, (Activity)localObject2), 700L);
   }
   
-  boolean a()
+  public void b()
   {
-    Object localObject = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPhoneUnityManager", 2, "onAccountLoginOrSwitch");
+    }
+    j();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPhoneUnityManager", 2, "onForegroundSwitch");
+    }
+    j();
+  }
+  
+  public void f()
+  {
+    b(QBaseActivity.sTopActivity);
+  }
+  
+  boolean g()
+  {
+    Object localObject = i();
     if (localObject == null) {
       return false;
     }
-    if (IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog))
+    if (IdentityUtils.a(this.a))
     {
-      if (c())
+      if (k())
       {
         QLog.d("AccountPhoneUnityManager", 1, new Object[] { "current top activity : ", QBaseActivity.sTopActivity.getActivityName(), " is in white list" });
         return false;
       }
-      bool = IdentityUtils.a(this.jdField_a_of_type_AndroidAppDialog, QBaseActivity.sTopActivity);
+      bool = IdentityUtils.a(this.a, QBaseActivity.sTopActivity);
       QLog.d("AccountPhoneUnityManager", 1, new Object[] { "dialog is showing, dialog is top activity[", Boolean.valueOf(bool), "]" });
       if (!bool) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        this.a.dismiss();
       }
       return bool ^ true;
     }
@@ -307,19 +318,11 @@ public class AccountPhoneUnityManager
     return bool ^ true;
   }
   
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPhoneUnityManager", 2, "onForegroundSwitch");
-    }
-    g();
-  }
-  
-  boolean b()
+  boolean h()
   {
     try
     {
-      Object localObject1 = a();
+      Object localObject1 = i();
       if (localObject1 == null) {
         return false;
       }
@@ -330,28 +333,25 @@ public class AccountPhoneUnityManager
     finally {}
   }
   
-  public void e()
-  {
-    b(QBaseActivity.sTopActivity);
-  }
-  
-  void f()
+  AppRuntime i()
   {
     if (MobileQQ.sProcessId != 1)
     {
-      QLog.d("AccountPhoneUnityManager", 1, "refreshPhoneUnityData only run in main process");
-      return;
+      QLog.d("AccountPhoneUnityManager", 1, "getAppInterface only run in main process");
+      return null;
     }
-    AppRuntime localAppRuntime = a();
-    if (localAppRuntime == null) {
-      return;
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (!localAppRuntime.isLogin())
+    {
+      QLog.e("AccountPhoneUnityManager", 1, "getAppInterface, but not login");
+      return null;
     }
-    LoginVerifyServlet.c(localAppRuntime, new AccountPhoneUnityManager.2(this, localAppRuntime));
+    return localAppRuntime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager
  * JD-Core Version:    0.7.0.1
  */

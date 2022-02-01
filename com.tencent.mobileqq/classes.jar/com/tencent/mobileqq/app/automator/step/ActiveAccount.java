@@ -9,9 +9,13 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.guild.api.IGuildHandlerNameApi;
+import com.tencent.mobileqq.guild.message.registerproxy.IGuildRegisterProxyMsgHandler;
 import com.tencent.mobileqq.openapi.OpenApiManager;
+import com.tencent.mobileqq.qqguildsdk.api.IGPSService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.startup.director.StartupDirector;
@@ -27,77 +31,86 @@ import com.tencent.qqperf.UnifiedMonitor;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class ActiveAccount
   extends AsyncStep
 {
+  private void a()
+  {
+    IGPSService localIGPSService = (IGPSService)this.mAutomator.k.getRuntimeService(IGPSService.class, "");
+    int i = ((IGuildRegisterProxyMsgHandler)this.mAutomator.k.getBusinessHandler(((IGuildHandlerNameApi)QRoute.api(IGuildHandlerNameApi.class)).getGuildRegisterProxyMsgHandlerName())).d();
+    localIGPSService.startGProSdk(this.mAutomator.k.getAccount(), i);
+  }
+  
   protected int doStep()
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onInitState: ");
-      ((StringBuilder)localObject).append(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      ((StringBuilder)localObject).append(this.mAutomator.k.getAccount());
       QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.mAutomator.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("startService", Long.valueOf(SystemClock.uptimeMillis() - StartupDirector.e));
+    a();
+    this.mAutomator.a = System.currentTimeMillis();
+    this.mAutomator.j.put("startService", Long.valueOf(SystemClock.uptimeMillis() - StartupDirector.l));
     localObject = this.mAutomator;
-    BaseApplication localBaseApplication = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    BaseApplication localBaseApplication = this.mAutomator.k.getApp();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("acc_info");
-    localStringBuilder.append(this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    ((Automator)localObject).jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
-    localObject = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localStringBuilder.append(this.mAutomator.k.getAccount());
+    ((Automator)localObject).d = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
+    localObject = this.mAutomator.k;
     ThemeUtil.initTheme((AppRuntime)localObject);
     try
     {
-      ((QQAppInterface)localObject).addManager(true, this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", -1L));
+      ((QQAppInterface)localObject).addManager(true, this.mAutomator.d.getLong("PREF_PLUGIN_DELAY_TIME", -1L));
       bool = false;
     }
     catch (Throwable localThrowable1)
     {
       try
       {
-        this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("PREF_PLUGIN_DELAY_TIME", 0L).apply();
+        this.mAutomator.d.edit().putLong("PREF_PLUGIN_DELAY_TIME", 0L).apply();
         boolean bool = true;
         ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).initAllData((AppInterface)localObject);
-        ((QQAppInterface)localObject).initFaceSettingCache();
+        ThreadManager.getSubThreadHandler().post(new ActiveAccount.1(this, (QQAppInterface)localObject));
         ((IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "")).onActiveAccount();
-        UnifiedMonitor.a().a();
+        UnifiedMonitor.a().b();
         OpenApiManager.getInstance().onRuntimeActive((QQAppInterface)localObject);
         if (!TroopNotificationUtils.a(((QQAppInterface)localObject).getCurrentAccountUin())) {
-          break label327;
+          break label345;
         }
         if (!QLog.isColorLevel()) {
-          break label289;
+          break label305;
         }
         QLog.d("QQInitHandler", 2, "addSystemMsgSeq:0");
         ((QQAppInterface)localObject).getMsgCache().e("last_group_seq", 0L);
         ((QQAppInterface)localObject).getMsgCache().e("last_group_suspicious_seq", 0L);
         TroopNotificationUtils.a(((QQAppInterface)localObject).getCurrentAccountUin(), false);
         ((QQAppInterface)localObject).getMsgCache().e("last_friend_seq_47", 0L);
-        if (AnonymousChatHelper.a == null) {
-          break label339;
+        if (AnonymousChatHelper.k == null) {
+          break label357;
         }
-        AnonymousChatHelper.a().a();
+        AnonymousChatHelper.a().b();
         if (!(((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER) instanceof WerewolvesHandler)) {
-          break label365;
+          break label383;
         }
         ((WerewolvesHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a();
         localObject = new File(AppConstants.SDCARD_PATH);
         if (FileUtils.fileExists(AppConstants.SDCARD_PATH)) {
-          break label390;
+          break label408;
         }
         ((File)localObject).mkdirs();
         CleanCache.a(AppConstants.SDCARD_PATH);
-        QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getLong("PREF_PLUGIN_DELAY_TIME", -1L)), " hasCrashInAddManager=", Boolean.valueOf(bool) });
+        QLog.d("QQInitHandler", 2, new Object[] { "pluginManageDelayTime=", Long.valueOf(this.mAutomator.d.getLong("PREF_PLUGIN_DELAY_TIME", -1L)), " hasCrashInAddManager=", Boolean.valueOf(bool) });
         return 7;
         localThrowable1 = localThrowable1;
       }
       catch (Throwable localThrowable2)
       {
-        break label211;
+        break label215;
       }
     }
     ((QQAppInterface)localObject).addManager(true);
@@ -107,7 +120,7 @@ public class ActiveAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ActiveAccount
  * JD-Core Version:    0.7.0.1
  */

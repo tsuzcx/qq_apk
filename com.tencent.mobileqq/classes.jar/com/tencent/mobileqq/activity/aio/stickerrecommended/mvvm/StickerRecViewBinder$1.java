@@ -14,17 +14,17 @@ class StickerRecViewBinder$1
     if (StickerRecViewBinder.a(this.a) != null)
     {
       StickerRecViewBinder.a(this.a).b();
-      StickerRecViewBinder.a(this.a).a(paramStickerRecLiveData.jdField_a_of_type_Int);
-      StickerRecViewBinder.a(this.a).b(paramStickerRecLiveData.c);
-      StickerRecViewBinder.a(this.a).a(paramStickerRecLiveData.jdField_a_of_type_JavaLangString);
-      StickerRecViewBinder.a(this.a).c(paramStickerRecLiveData.b);
-      StickerRecViewBinder.a(this.a).a(paramStickerRecLiveData.jdField_a_of_type_JavaUtilList);
+      StickerRecViewBinder.a(this.a).a(paramStickerRecLiveData.d);
+      StickerRecViewBinder.a(this.a).b(paramStickerRecLiveData.e);
+      StickerRecViewBinder.a(this.a).a(paramStickerRecLiveData.b);
+      StickerRecViewBinder.a(this.a).c(paramStickerRecLiveData.c);
+      StickerRecViewBinder.a(this.a).a(paramStickerRecLiveData.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.mvvm.StickerRecViewBinder.1
  * JD-Core Version:    0.7.0.1
  */

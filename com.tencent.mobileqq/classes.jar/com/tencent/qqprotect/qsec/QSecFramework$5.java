@@ -12,13 +12,13 @@ class QSecFramework$5
     if ((paramInt1 == 1) && (paramInt2 == 1))
     {
       d.e(1, d.x(), null);
-      QSecFramework.a(this.a).b(this);
+      QSecFramework.e(this.a).b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework.5
  * JD-Core Version:    0.7.0.1
  */

@@ -11,35 +11,35 @@ import java.util.List;
 public class RecentExpirePlayingListSync
   extends BasePagePlayingListSync
 {
-  protected String c;
+  protected String j;
   
   protected void a()
   {
     DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent localPlayerVideoListEvent = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    localPlayerVideoListEvent.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localPlayerVideoListEvent.jdField_b_of_type_JavaLangString = this.c;
-    localPlayerVideoListEvent.jdField_a_of_type_Boolean = true;
-    localPlayerVideoListEvent.jdField_b_of_type_Boolean = true;
-    StoryItem localStoryItem = ((StoryManager)SuperManager.a(5)).a(this.c, 2);
+    localPlayerVideoListEvent.a = this.h;
+    localPlayerVideoListEvent.b = this.j;
+    localPlayerVideoListEvent.i = true;
+    localPlayerVideoListEvent.j = true;
+    StoryItem localStoryItem = ((StoryManager)SuperManager.a(5)).a(this.j, 2);
     StoryVideoItem localStoryVideoItem = new StoryVideoItem();
     if (localStoryItem != null)
     {
       if (TextUtils.isEmpty(localStoryVideoItem.mOwnerUid)) {
-        localStoryVideoItem.mOwnerUid = this.c;
+        localStoryVideoItem.mOwnerUid = this.j;
       }
       localStoryVideoItem.mVideoThumbnailUrl = localStoryItem.getCoverUrl();
-      localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.add(localStoryVideoItem);
+      localPlayerVideoListEvent.e.add(localStoryVideoItem);
+      this.b.clear();
+      this.b.add(localStoryVideoItem);
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.d = true;
   }
   
   protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.RecentExpirePlayingListSync
  * JD-Core Version:    0.7.0.1
  */

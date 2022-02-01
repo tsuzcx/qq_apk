@@ -11,25 +11,25 @@ class FilePreviewActivity$11
   
   public void run()
   {
-    if (this.this$0.b == null)
+    if (this.this$0.O == null)
     {
       localObject = this.this$0;
-      ((FilePreviewActivity)localObject).b = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).a);
+      ((FilePreviewActivity)localObject).O = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).v);
     }
     Object localObject = new AlphaAnimation(1.0F, 0.0F);
     ((AlphaAnimation)localObject).setFillAfter(true);
     FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localObject;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = 1500;
-    this.this$0.b.a(localFilePreviewAnim);
-    this.this$0.b.a();
+    localFilePreviewAnim.a = localObject;
+    localFilePreviewAnim.c = false;
+    localFilePreviewAnim.b = FilePreviewAnimQueue.a;
+    localFilePreviewAnim.d = 1500;
+    this.this$0.O.a(localFilePreviewAnim);
+    this.this$0.O.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.11
  * JD-Core Version:    0.7.0.1
  */

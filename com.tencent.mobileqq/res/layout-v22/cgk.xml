@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/dqq" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingHorizontal="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/o0v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fontFamily="PingFangSC-Regular" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/far" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:fontFamily="PingFangSC-Regular" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/mts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:fontFamily="PingFangSC-Regular" />
+    <com.tencent.mobileqq.troop.widget.RoundRectUrlImageView android:id="@id/r1j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:scaleType="fitXY" />
+    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:id="@id/ojh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:fontFamily="PingFangSC-Regular" />
+    <com.tencent.mobileqq.troop.widget.RoundRectUrlImageView android:id="@id/ojg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:scaleType="fitXY" />
+</LinearLayout>

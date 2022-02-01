@@ -11,31 +11,31 @@ import java.util.concurrent.Callable;
 public class TroopFileSearchManager$CallableForSearchData
   implements Callable<List<IContactSearchable>>
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Context b;
+  private QQAppInterface c;
+  private long d;
   
   public TroopFileSearchManager$CallableForSearchData(TroopFileSearchManager paramTroopFileSearchManager, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramContext;
+    this.c = paramQQAppInterface;
+    this.d = paramLong;
   }
   
   public List<IContactSearchable> a()
   {
     long l1 = System.currentTimeMillis();
     ArrayList localArrayList = new ArrayList();
-    long l2 = IContactSearchable.E;
-    long l3 = this.jdField_a_of_type_Long;
+    long l2 = IContactSearchable.I;
+    long l3 = this.d;
     Object localObject;
     if (l2 == l3)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager;
-      ((TroopFileSearchManager)localObject).a = ((TroopFileSearchManager)localObject).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l3, true);
-      localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager.a);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchManager;
-      ((TroopFileSearchManager)localObject).b = ((TroopFileSearchManager)localObject).a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+      localObject = this.a;
+      ((TroopFileSearchManager)localObject).a = ((TroopFileSearchManager)localObject).a(this.b, this.c, l3, true);
+      localArrayList.addAll(this.a.a);
+      localObject = this.a;
+      ((TroopFileSearchManager)localObject).b = ((TroopFileSearchManager)localObject).a(this.b, this.c, false);
     }
     if (QLog.isColorLevel())
     {
@@ -49,7 +49,7 @@ public class TroopFileSearchManager$CallableForSearchData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchManager.CallableForSearchData
  * JD-Core Version:    0.7.0.1
  */

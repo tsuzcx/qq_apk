@@ -197,7 +197,7 @@ public class FaceConfigChecker
   
   public static boolean a()
   {
-    int i = FaceSharedPreUtils.a();
+    int i = FaceSharedPreUtils.b();
     boolean bool = false;
     QLog.d("FaceConfigChecker", 1, new Object[] { "local res version : ", Integer.valueOf(i) });
     if (i >= 7) {
@@ -273,8 +273,8 @@ public class FaceConfigChecker
   
   public static boolean b()
   {
-    int i = FaceSharedPreUtils.b();
-    int j = FaceConfigManager.a();
+    int i = FaceSharedPreUtils.c();
+    int j = FaceConfigManager.f();
     boolean bool = false;
     QLog.d("FaceConfigChecker", 1, new Object[] { "current download bits is : ", Integer.valueOf(i), " app setting so bits is : ", Integer.valueOf(j) });
     if (i == j) {
@@ -291,8 +291,8 @@ public class FaceConfigChecker
       QLog.e("FaceConfigChecker", 1, "checkConfigVersionLimit item is null");
       return false;
     }
-    QLog.d("FaceConfigChecker", 1, new Object[] { "config version : ", Integer.valueOf(paramConfigItem.a) });
-    if (paramConfigItem.a >= 7) {
+    QLog.d("FaceConfigChecker", 1, new Object[] { "config version : ", Integer.valueOf(paramConfigItem.j) });
+    if (paramConfigItem.j >= 7) {
       bool = true;
     }
     return bool;
@@ -305,9 +305,9 @@ public class FaceConfigChecker
       QLog.e("FaceConfigChecker", 1, "checkConfigVersionUpdate item is null");
       return true;
     }
-    int i = FaceSharedPreUtils.a();
-    QLog.d("FaceConfigChecker", 1, new Object[] { "local res version is ", Integer.valueOf(i), " config version is ", Integer.valueOf(paramConfigItem.a) });
-    return i < paramConfigItem.a;
+    int i = FaceSharedPreUtils.b();
+    QLog.d("FaceConfigChecker", 1, new Object[] { "local res version is ", Integer.valueOf(i), " config version is ", Integer.valueOf(paramConfigItem.j) });
+    return i < paramConfigItem.j;
   }
   
   public static boolean d(ConfigItem paramConfigItem)
@@ -322,7 +322,7 @@ public class FaceConfigChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.FaceConfigChecker
  * JD-Core Version:    0.7.0.1
  */

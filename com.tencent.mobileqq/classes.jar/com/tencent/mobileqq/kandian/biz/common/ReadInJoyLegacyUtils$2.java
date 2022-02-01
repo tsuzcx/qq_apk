@@ -13,13 +13,13 @@ final class ReadInJoyLegacyUtils$2
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new ReadInJoyLegacyUtils.2.1(this, paramObject));
+      this.a.runOnUiThread(new ReadInJoyLegacyUtils.2.1(this, paramObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyLegacyUtils.2
  * JD-Core Version:    0.7.0.1
  */

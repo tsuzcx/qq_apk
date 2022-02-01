@@ -45,6 +45,8 @@ public class UniteEntity
     {
     default: 
       return "";
+    case 13: 
+      return "battery_status";
     case 12: 
       return "ex_status";
     case 11: 
@@ -83,7 +85,7 @@ public class UniteEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteEntity
  * JD-Core Version:    0.7.0.1
  */

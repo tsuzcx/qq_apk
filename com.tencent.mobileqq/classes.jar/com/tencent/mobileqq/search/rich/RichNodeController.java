@@ -15,27 +15,27 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class RichNodeController
 {
-  private static String jdField_a_of_type_JavaLangString = "RichNodeController";
-  private static final Set<WeakReference<IRichNode>> jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private Map<Integer, RichNodeController.NodeInfo> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private int b;
-  private int c;
+  private static String a = "RichNodeController";
+  private static final Set<WeakReference<IRichNode>> h = Collections.synchronizedSet(new HashSet());
+  private Map<Integer, RichNodeController.NodeInfo> b = new ConcurrentHashMap();
+  private int c = 0;
+  private int d;
+  private int e;
+  private Runnable f;
+  private Handler g = null;
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    synchronized (h)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Iterator localIterator = h.iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (WeakReference)localIterator.next();
         if (localObject2 == null)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(item == null");
+            QLog.d(a, 2, "onDestroy.(item == null");
           }
           localIterator.remove();
         }
@@ -45,18 +45,18 @@ public class RichNodeController
           if (localObject2 == null)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "onDestroy.(node == null");
+              QLog.d(a, 2, "onDestroy.(node == null");
             }
             localIterator.remove();
           }
           else
           {
             a((IRichNode)localObject2);
-            ((IRichNode)localObject2).d();
+            ((IRichNode)localObject2).g();
           }
         }
       }
-      jdField_a_of_type_JavaUtilSet.clear();
+      h.clear();
       return;
     }
     for (;;)
@@ -72,38 +72,38 @@ public class RichNodeController
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("pauseAll, puase:");
       ((StringBuilder)localObject2).append(paramBoolean);
       ((StringBuilder)localObject2).append(" startPos:");
-      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(this.d);
       ((StringBuilder)localObject2).append(" endPos:");
-      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append(this.e);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0)
+    if (this.b.size() == 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "pauseAll, map is empty");
+        QLog.d(a, 2, "pauseAll, map is empty");
       }
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Object localObject1 = this.b.values().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (RichNodeController.NodeInfo)((Iterator)localObject1).next();
       if (localObject2 != null)
       {
-        localObject2 = ((RichNodeController.NodeInfo)localObject2).a;
+        localObject2 = ((RichNodeController.NodeInfo)localObject2).b;
         if (localObject2 != null)
         {
           localObject2 = (IRichNode)((WeakReference)localObject2).get();
           if (localObject2 != null) {
             if (paramBoolean) {
-              ((IRichNode)localObject2).b();
+              ((IRichNode)localObject2).e();
             } else {
-              ((IRichNode)localObject2).c();
+              ((IRichNode)localObject2).f();
             }
           }
         }
@@ -113,16 +113,16 @@ public class RichNodeController
   
   public static void b()
   {
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    synchronized (h)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Iterator localIterator = h.iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (WeakReference)localIterator.next();
         if (localObject2 == null)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
+            QLog.d(a, 2, "onPause item == null");
           }
           localIterator.remove();
         }
@@ -132,13 +132,13 @@ public class RichNodeController
           if (localObject2 == null)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
+              QLog.d(a, 2, "onPause node == null");
             }
             localIterator.remove();
           }
           else
           {
-            ((IRichNode)localObject2).b();
+            ((IRichNode)localObject2).e();
           }
         }
       }
@@ -154,25 +154,25 @@ public class RichNodeController
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("restartPlayTimer:");
       localStringBuilder.append(paramInt);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (this.g == null) {
+      this.g = new Handler(Looper.getMainLooper());
     }
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (this.f != null) {
+      this.g.removeCallbacksAndMessages(null);
     }
     if (paramInt < 0) {
       return;
     }
-    if (this.jdField_a_of_type_JavaLangRunnable == null) {
-      this.jdField_a_of_type_JavaLangRunnable = new RichNodeController.1(this);
+    if (this.f == null) {
+      this.f = new RichNodeController.1(this);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt);
+    this.g.postDelayed(this.f, paramInt);
   }
   
   public static void c() {}
@@ -181,10 +181,10 @@ public class RichNodeController
   
   private void e()
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+    if (this.b.size() == 0) {
       return;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Map.Entry)localIterator.next();
@@ -193,13 +193,13 @@ public class RichNodeController
       {
         localIterator.remove();
       }
-      else if (((RichNodeController.NodeInfo)localObject2).a == null)
+      else if (((RichNodeController.NodeInfo)localObject2).b == null)
       {
         localIterator.remove();
       }
       else
       {
-        localObject2 = (IRichNode)((RichNodeController.NodeInfo)localObject2).a.get();
+        localObject2 = (IRichNode)((RichNodeController.NodeInfo)localObject2).b.get();
         if (localObject2 == null)
         {
           localIterator.remove();
@@ -209,12 +209,12 @@ public class RichNodeController
           localObject1 = (Integer)((Map.Entry)localObject1).getKey();
           if (localObject1 == null)
           {
-            ((IRichNode)localObject2).b();
+            ((IRichNode)localObject2).e();
             localIterator.remove();
           }
-          else if ((((Integer)localObject1).intValue() < this.b) || (((Integer)localObject1).intValue() > this.c))
+          else if ((((Integer)localObject1).intValue() < this.d) || (((Integer)localObject1).intValue() > this.e))
           {
-            ((IRichNode)localObject2).b();
+            ((IRichNode)localObject2).e();
             localIterator.remove();
           }
         }
@@ -224,16 +224,16 @@ public class RichNodeController
   
   private static void f()
   {
-    synchronized (jdField_a_of_type_JavaUtilSet)
+    synchronized (h)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
+      Iterator localIterator = h.iterator();
       while (localIterator.hasNext())
       {
         Object localObject2 = (WeakReference)localIterator.next();
         if (localObject2 == null)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause item == null");
+            QLog.d(a, 2, "onPause item == null");
           }
           localIterator.remove();
         }
@@ -243,13 +243,13 @@ public class RichNodeController
           if (localObject2 == null)
           {
             if (QLog.isColorLevel()) {
-              QLog.d(jdField_a_of_type_JavaLangString, 2, "onPause node == null");
+              QLog.d(a, 2, "onPause node == null");
             }
             localIterator.remove();
           }
           else
           {
-            ((IRichNode)localObject2).c();
+            ((IRichNode)localObject2).f();
           }
         }
       }
@@ -263,8 +263,8 @@ public class RichNodeController
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0)
+    this.c = paramInt;
+    if (this.c == 0)
     {
       b(100);
       return;
@@ -275,21 +275,21 @@ public class RichNodeController
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 == this.b) && (this.c == paramInt1 + paramInt2)) {
+    if ((paramInt1 == this.d) && (this.e == paramInt1 + paramInt2)) {
       return;
     }
     if (QLog.isColorLevel())
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setScorllData, mStartPos:");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(" endPos:");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.e);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.b = paramInt1;
-    this.c = (paramInt1 + paramInt2);
+    this.d = paramInt1;
+    this.e = (paramInt1 + paramInt2);
     e();
   }
   
@@ -301,23 +301,23 @@ public class RichNodeController
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject1 = a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("registerNode, nPos:");
       ((StringBuilder)localObject2).append(paramInt);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new RichNodeController.NodeInfo(paramInt, paramIRichNode));
-    if (this.jdField_a_of_type_Int != 0) {
-      paramIRichNode.b();
+    this.b.put(Integer.valueOf(paramInt), new RichNodeController.NodeInfo(paramInt, paramIRichNode));
+    if (this.c != 0) {
+      paramIRichNode.e();
     } else {
-      paramIRichNode.c();
+      paramIRichNode.f();
     }
-    Object localObject1 = jdField_a_of_type_JavaUtilSet;
+    Object localObject1 = h;
     boolean bool2 = false;
     try
     {
-      localObject2 = jdField_a_of_type_JavaUtilSet.iterator();
+      localObject2 = h.iterator();
       Object localObject3;
       do
       {
@@ -330,14 +330,14 @@ public class RichNodeController
       boolean bool1 = true;
       if (QLog.isColorLevel())
       {
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("find in list:");
         ((StringBuilder)localObject3).append(bool1);
         QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
       }
       if (!bool1) {
-        jdField_a_of_type_JavaUtilSet.add(new WeakReference(paramIRichNode));
+        h.add(new WeakReference(paramIRichNode));
       }
       return;
     }
@@ -350,7 +350,7 @@ public class RichNodeController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeController
  * JD-Core Version:    0.7.0.1
  */

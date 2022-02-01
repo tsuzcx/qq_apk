@@ -23,12 +23,13 @@ import com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager;
 import com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager.AtlasCallback;
 import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils;
 import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentUtils.CommentReportR5Builder;
+import com.tencent.mobileqq.kandian.biz.comment.bean.CommentComponentArgs;
 import com.tencent.mobileqq.kandian.biz.comment.guide.GuidePopuppWindow;
 import com.tencent.mobileqq.kandian.biz.comment.guide.GuidePopuppWindow.OnGuideDismissListener;
 import com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils;
 import com.tencent.mobileqq.kandian.biz.common.RIJSocialBottomUtils.Companion;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebDislikeUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSDataConverter;
 import com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebPTSUtils;
@@ -36,7 +37,6 @@ import com.tencent.mobileqq.kandian.biz.fastweb.util.RIJCoinAnimationUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.util.RIJUniteReportUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.util.ReportUtil;
 import com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertController;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.pts.ReadInjoyContext;
 import com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager;
 import com.tencent.mobileqq.kandian.biz.reward.RIJVideoRewardCoinManager.Callback;
@@ -58,7 +58,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyObserver;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.FastWebArticleInfo;
 import com.tencent.mobileqq.kandian.repo.pts.entity.ProteusItemData;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.BubblePopupWindow;
@@ -72,40 +71,34 @@ import org.json.JSONObject;
 public class ReadInJoyFastWebBottomSocialViewNew
   extends FrameLayout
 {
-  public static final String a;
-  public static final String b;
-  private int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TemplateBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
-  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private Share jdField_a_of_type_ComTencentBizWebviewpluginShare;
-  ReadInJoyAtlasManager.AtlasCallback jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback = new ReadInJoyFastWebBottomSocialViewNew.6(this);
-  private GuidePopuppWindow jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow;
-  private ReadInJoyFastWebBottomSocialViewNew.DoShareClick jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$DoShareClick = null;
-  private ReadInJoyFastWebBottomSocialViewNew.OnOpenCommentEditListener jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$OnOpenCommentEditListener;
-  RIJVideoRewardCoinManager.Callback jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager$Callback = new ReadInJoyFastWebBottomSocialViewNew.9(this);
-  private RIJVideoRewardCoinManager jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager;
-  private KandianFavoriteBroadcastReceiver jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver;
-  private IUserLevelCallBack jdField_a_of_type_ComTencentMobileqqKandianRepoAccountIUserLevelCallBack;
-  private final ReadInJoyObserver jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver = new ReadInJoyFastWebBottomSocialViewNew.11(this);
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private FastWebArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-  private HashMap<String, ArrayList<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131712780);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131712960);
-  }
+  public static final String a = HardCodeUtil.a(2131910353);
+  public static final String b = HardCodeUtil.a(2131910526);
+  private boolean A;
+  private final ReadInJoyObserver B = new ReadInJoyFastWebBottomSocialViewNew.11(this);
+  ReadInJoyAtlasManager.AtlasCallback c = new ReadInJoyFastWebBottomSocialViewNew.6(this);
+  RIJVideoRewardCoinManager.Callback d = new ReadInJoyFastWebBottomSocialViewNew.9(this);
+  private VafContext e;
+  private Container f;
+  private TemplateBean g;
+  private GuidePopuppWindow h;
+  private View i;
+  private BubblePopupWindow j;
+  private int k = -1;
+  private int l = 0;
+  private boolean m = false;
+  private IUserLevelCallBack n;
+  private ReadInJoyFastWebBottomSocialViewNew.OnOpenCommentEditListener o;
+  private ReadInJoyFastWebBottomSocialViewNew.DoShareClick p = null;
+  private RIJVideoRewardCoinManager q;
+  private View r;
+  private int s = 0;
+  private boolean t = false;
+  private Share u;
+  private KandianFavoriteBroadcastReceiver v;
+  private HashMap<String, ArrayList<String>> w = new HashMap();
+  private AbsBaseArticleInfo x;
+  private FastWebArticleInfo y;
+  private Context z;
   
   public ReadInJoyFastWebBottomSocialViewNew(Context paramContext)
   {
@@ -118,45 +111,39 @@ public class ReadInJoyFastWebBottomSocialViewNew
     super(paramContext, paramAttributeSet);
   }
   
-  private String a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return "3";
-    }
-    return "1";
-  }
-  
   private void a(int paramInt, Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
     f(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
     paramAbsBaseArticleInfo = RIJUserLevelModule.getInstance();
     if (paramAbsBaseArticleInfo != null) {
-      paramAbsBaseArticleInfo.doActionsByUserLevel(paramContext, paramInt, this.jdField_a_of_type_ComTencentMobileqqKandianRepoAccountIUserLevelCallBack);
+      paramAbsBaseArticleInfo.doActionsByUserLevel(paramContext, paramInt, this.n);
     }
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new ReadInjoyContext();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-    ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    this.e = new ReadInjoyContext();
+    this.e.setContext(paramContext);
+    ProteusSupportUtil.a(this.e, "native_article");
   }
   
   private void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$OnOpenCommentEditListener;
-    if (((localObject == null) || (!((ReadInJoyFastWebBottomSocialViewNew.OnOpenCommentEditListener)localObject).a())) && ((paramContext instanceof Activity))) {
-      ReadInJoyCommentUtils.a((Activity)paramContext, paramAbsBaseArticleInfo, null, 4, "", null, false, null, -1);
+    Object localObject = this.o;
+    if (((localObject == null) || (!((ReadInJoyFastWebBottomSocialViewNew.OnOpenCommentEditListener)localObject).a())) && ((paramContext instanceof Activity)))
+    {
+      localObject = new CommentComponentArgs().a(paramAbsBaseArticleInfo).a(4).a("");
+      ReadInJoyCommentUtils.a((Activity)paramContext, (CommentComponentArgs)localObject);
     }
     localObject = new ReadInJoyCommentUtils.CommentReportR5Builder(paramAbsBaseArticleInfo, null).a(1).a();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(RIJQQAppInterfaceUtil.a(), ReadInJoyCommentUtils.a(paramAbsBaseArticleInfo), "0X800900C", "0X800900C", 0, 0, String.valueOf(paramAbsBaseArticleInfo.mArticleID), String.valueOf(paramAbsBaseArticleInfo.mStrategyId), paramAbsBaseArticleInfo.innerUniqueID, (String)localObject, false);
-    int i = (int)paramAbsBaseArticleInfo.mChannelID;
+    PublicAccountReportUtils.a(RIJQQAppInterfaceUtil.a(), ReadInJoyCommentUtils.a(paramAbsBaseArticleInfo), "0X800900C", "0X800900C", 0, 0, String.valueOf(paramAbsBaseArticleInfo.mArticleID), String.valueOf(paramAbsBaseArticleInfo.mStrategyId), paramAbsBaseArticleInfo.innerUniqueID, (String)localObject, false);
+    int i1 = (int)paramAbsBaseArticleInfo.mChannelID;
     if (paramFastWebArticleInfo.a()) {
       paramFastWebArticleInfo = "2";
     } else {
       paramFastWebArticleInfo = "1";
     }
-    ReportUtil.a(paramAbsBaseArticleInfo, "0X8008990", RIJTransMergeKanDianReport.a(paramContext, paramAbsBaseArticleInfo, i, paramFastWebArticleInfo).toString());
+    ReportUtil.a(paramAbsBaseArticleInfo, "0X8008990", RIJTransMergeKanDianReport.a(paramContext, paramAbsBaseArticleInfo, i1, paramFastWebArticleInfo).toString());
   }
   
   private void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, int paramInt)
@@ -166,48 +153,48 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   private void a(Context paramContext, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    Object localObject = this.j;
     if ((localObject != null) && (((BubblePopupWindow)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
+      this.j.dismiss();
     }
     if ((paramContext != null) && (paramFastWebArticleInfo != null))
     {
-      int i = BiuBehaviour.b();
+      int i1 = BiuBehaviour.b();
       boolean bool = true;
-      if (i != 1) {
+      if (i1 != 1) {
         bool = false;
       }
       a(bool, paramContext, paramFastWebArticleInfo);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      i = (int)((AbsBaseArticleInfo)localObject).mChannelID;
+      localObject = this.x;
+      Context localContext = this.z;
+      i1 = (int)((AbsBaseArticleInfo)localObject).mChannelID;
       if (paramFastWebArticleInfo.a()) {
         paramContext = "2";
       } else {
         paramContext = "1";
       }
-      ReportUtil.a((AbsBaseArticleInfo)localObject, "0X8008991", RIJTransMergeKanDianReport.a(localContext, (AbsBaseArticleInfo)localObject, i, paramContext, 0).toString());
+      ReportUtil.a((AbsBaseArticleInfo)localObject, "0X8008991", RIJTransMergeKanDianReport.a(localContext, (AbsBaseArticleInfo)localObject, i1, paramContext, 0).toString());
     }
   }
   
   private void a(ViewBase paramViewBase)
   {
-    FastWebDislikeUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, "0X8009A5A", a());
+    FastWebDislikeUtils.a(this.x, "0X8009A5A", getReportParams());
   }
   
   private void a(ViewBase paramViewBase, int paramInt)
   {
     paramViewBase = FastWebPTSUtils.b(paramViewBase, paramInt);
     if ((paramViewBase instanceof TextView)) {
-      ((TextView)paramViewBase).setText(FastWebPTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo.jdField_e_of_type_Int, HardCodeUtil.a(2131718309)));
+      ((TextView)paramViewBase).setText(FastWebPTSUtils.a(this.y.M, HardCodeUtil.a(2131915801)));
     }
     if (paramInt == 6)
     {
-      setData(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
+      setData(this.y, this.x);
       return;
     }
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FastWebActivity)) {
-      f();
+    if ((this.z instanceof FastWebActivity)) {
+      g();
     }
   }
   
@@ -236,12 +223,12 @@ public class ReadInJoyFastWebBottomSocialViewNew
     if (paramUserLevelInfo == null) {
       return;
     }
-    int i = paramUserLevelInfo.currentOpType;
-    if (i != 1)
+    int i1 = paramUserLevelInfo.currentOpType;
+    if (i1 != 1)
     {
-      if (i != 2)
+      if (i1 != 2)
       {
-        if (i != 3) {
+        if (i1 != 3) {
           return;
         }
         h(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
@@ -255,37 +242,37 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver == null)
+    if (this.v == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver = new KandianFavoriteBroadcastReceiver(this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback);
+      this.v = new KandianFavoriteBroadcastReceiver(this.c);
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("com.tencent.process.fav");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver, (IntentFilter)localObject);
+      this.z.registerReceiver(this.v, (IntentFilter)localObject);
     }
     Object localObject = new ArrayList();
     ((List)localObject).add(paramAbsBaseArticleInfo.innerUniqueID);
-    ReadInJoyAtlasManager.getInstance().getAtlasFavoriteStatus((List)localObject, this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback);
+    ReadInJoyAtlasManager.getInstance().getAtlasFavoriteStatus((List)localObject, this.c);
   }
   
   private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, int paramInt)
   {
-    int i;
-    if (this.jdField_c_of_type_Int == 5) {
-      i = 2;
-    } else if (paramFastWebArticleInfo.jdField_c_of_type_Boolean) {
-      i = 1;
+    int i1;
+    if (this.s == 5) {
+      i1 = 2;
+    } else if (paramFastWebArticleInfo.z) {
+      i1 = 1;
     } else {
-      i = 3;
+      i1 = 3;
     }
-    RIJUniteReportUtils.a.a("0X800BAFF", paramAbsBaseArticleInfo, paramInt, "click_type", Integer.valueOf(i));
+    RIJUniteReportUtils.a.a("0X800BAFF", paramAbsBaseArticleInfo, paramInt, "click_type", Integer.valueOf(i1));
   }
   
   private void a(ProteusItemData paramProteusItemData, Context paramContext, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    if (!a()) {
+    if (!d()) {
       return;
     }
-    ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView();
+    ViewBase localViewBase = this.f.getVirtualView();
     ViewFactory.findClickableViewListener(localViewBase, new ReadInJoyFastWebBottomSocialViewNew.1(this, paramProteusItemData, paramContext));
     a(localViewBase, paramContext, paramFastWebArticleInfo);
   }
@@ -294,25 +281,25 @@ public class ReadInJoyFastWebBottomSocialViewNew
   {
     if (paramProteusItemData != null)
     {
-      if (paramProteusItemData.c == null) {
+      if (paramProteusItemData.bb == null) {
         return;
       }
-      if (paramProteusItemData.c.has("like_normalstate_image")) {
-        FastWebDislikeUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, "0X80099DA", a());
+      if (paramProteusItemData.bb.has("like_normalstate_image")) {
+        FastWebDislikeUtils.a(this.x, "0X80099DA", getReportParams());
       }
-      if (paramProteusItemData.c.has("coin_img_status"))
+      if (paramProteusItemData.bb.has("coin_img_status"))
       {
         paramProteusItemData = RIJVideoRewardCoinManager.a;
-        String str = paramFastWebArticleInfo.j;
-        int i;
-        if (paramFastWebArticleInfo.jdField_e_of_type_Boolean) {
-          i = 3;
+        String str = paramFastWebArticleInfo.q;
+        int i1;
+        if (paramFastWebArticleInfo.N) {
+          i1 = 3;
         } else {
-          i = 1;
+          i1 = 1;
         }
-        paramProteusItemData.a("0X800B2EA", new RIJVideoRewardCoinManager.RIJRewardData(str, i), 7);
+        paramProteusItemData.a("0X800B2EA", new RIJVideoRewardCoinManager.RIJRewardData(str, i1), 7);
       }
-      FastWebDislikeUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramFastWebArticleInfo, 1);
+      FastWebDislikeUtils.a(this.x, paramFastWebArticleInfo, 1);
     }
   }
   
@@ -320,8 +307,8 @@ public class ReadInJoyFastWebBottomSocialViewNew
   {
     try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.bindData(paramJSONObject);
-      ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
+      this.g.bindData(paramJSONObject);
+      ProteusSupportUtil.a(this.f.getVirtualView(), this.g.getViewBean());
       return;
     }
     catch (Exception paramJSONObject)
@@ -335,7 +322,7 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   private void a(boolean paramBoolean, Context paramContext, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    RIJSocialBottomUtils.a.a(18, 0, paramBoolean, paramContext, 2002, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramFastWebArticleInfo);
+    RIJSocialBottomUtils.a.a(18, 0, paramBoolean, paramContext, 2002, this.x, paramFastWebArticleInfo);
   }
   
   private void a(boolean paramBoolean, String paramString)
@@ -347,18 +334,85 @@ public class ReadInJoyFastWebBottomSocialViewNew
   {
     if (paramBoolean)
     {
-      FastWebPTSUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo, paramBoolean, this.jdField_b_of_type_AndroidViewView, RIJVideoRewardCoinManager.a.a(paramInt1));
-      RIJCoinAnimationUtils.a.a(this.jdField_b_of_type_AndroidViewView, "https://pub.idqqimg.com/pc/misc/files/20210202/54fa2ff5d2124007bcd6a11c95ce1f08.png", 1);
-      QQToast.a(BaseApplicationImpl.getContext(), 2, paramString, 0).a();
+      FastWebPTSUtils.a(this.y, paramBoolean, this.r, RIJVideoRewardCoinManager.a.a(paramInt1));
+      RIJCoinAnimationUtils.a.a(this.r, "https://pub.idqqimg.com/pc/misc/files/20210202/54fa2ff5d2124007bcd6a11c95ce1f08.png", 1);
+      QQToast.makeText(BaseApplicationImpl.getContext(), 2, paramString, 0).show();
       a(null, paramInt2);
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, paramString, 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, paramString, 0).show();
   }
   
-  private boolean a()
+  private boolean a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, GuidePopuppWindow.OnGuideDismissListener paramOnGuideDismissListener)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+    if (!(paramContext instanceof Activity)) {
+      return false;
+    }
+    paramContext = (Activity)paramContext;
+    if (this.h == null) {
+      this.h = new GuidePopuppWindow(paramContext, paramAbsBaseArticleInfo);
+    }
+    if ((!this.h.a(paramAbsBaseArticleInfo.innerUniqueID)) && (CommentGuideConfigHandler.b()))
+    {
+      if (this.i == null) {
+        this.i = ((ViewStub)paramContext.findViewById(2131444273)).inflate();
+      }
+      this.h.a(new ReadInJoyFastWebBottomSocialViewNew.4(this, paramOnGuideDismissListener));
+      this.i.setVisibility(0);
+      this.h.a(paramAbsBaseArticleInfo);
+      this.h.a(paramContext.getWindow().getDecorView());
+      return true;
+    }
+    return false;
+  }
+  
+  private void b(Context paramContext)
+  {
+    if (this.q == null)
+    {
+      if (!(paramContext instanceof Activity)) {
+        return;
+      }
+      this.q = new RIJVideoRewardCoinManager((Activity)paramContext, this.d);
+    }
+  }
+  
+  private void b(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    if ((paramContext instanceof FastWebActivity))
+    {
+      ((FastWebActivity)paramContext).a(false, true);
+    }
+    else if (this.m)
+    {
+      ReadInJoyFastWebBottomSocialViewNew.DoShareClick localDoShareClick = this.p;
+      if (localDoShareClick != null) {
+        localDoShareClick.a(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
+      }
+    }
+    FastWebDislikeUtils.a(paramAbsBaseArticleInfo, "0X8009A5B", getReportParams());
+  }
+  
+  private void c() {}
+  
+  private void c(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    if (1 == this.l)
+    {
+      QQToast.makeText(paramContext, 1, 2131915266, 0).show();
+      return;
+    }
+    g(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
+  }
+  
+  private void d(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
+  {
+    h(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
+  }
+  
+  private boolean d()
+  {
+    Object localObject2 = this.f;
     Object localObject1 = "";
     boolean bool;
     if (localObject2 == null)
@@ -383,75 +437,6 @@ public class ReadInJoyFastWebBottomSocialViewNew
     return bool;
   }
   
-  private boolean a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, GuidePopuppWindow.OnGuideDismissListener paramOnGuideDismissListener)
-  {
-    if (!(paramContext instanceof Activity)) {
-      return false;
-    }
-    paramContext = (Activity)paramContext;
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow = new GuidePopuppWindow(paramContext, paramAbsBaseArticleInfo);
-    }
-    if ((!this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow.a(paramAbsBaseArticleInfo.innerUniqueID)) && (CommentGuideConfigHandler.b()))
-    {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = ((ViewStub)paramContext.findViewById(2131376073)).inflate();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow.a(new ReadInJoyFastWebBottomSocialViewNew.4(this, paramOnGuideDismissListener));
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow.a(paramAbsBaseArticleInfo);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow.a(paramContext.getWindow().getDecorView());
-      return true;
-    }
-    return false;
-  }
-  
-  private void b(Context paramContext)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager == null)
-    {
-      if (!(paramContext instanceof Activity)) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager = new RIJVideoRewardCoinManager((Activity)paramContext, this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager$Callback);
-    }
-  }
-  
-  private void b(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    if ((paramContext instanceof FastWebActivity))
-    {
-      ((FastWebActivity)paramContext).a(false, true);
-    }
-    else if (this.jdField_a_of_type_Boolean)
-    {
-      ReadInJoyFastWebBottomSocialViewNew.DoShareClick localDoShareClick = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$DoShareClick;
-      if (localDoShareClick != null) {
-        localDoShareClick.a(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-      }
-    }
-    FastWebDislikeUtils.a(paramAbsBaseArticleInfo, "0X8009A5B", a());
-  }
-  
-  private void c() {}
-  
-  private void c(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    if (1 == this.jdField_b_of_type_Int)
-    {
-      QQToast.a(paramContext, 1, 2131717791, 0).a();
-      return;
-    }
-    g(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-  }
-  
-  private void d() {}
-  
-  private void d(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
-  {
-    h(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-  }
-  
   private void e() {}
   
   private void e(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
@@ -459,16 +444,18 @@ public class ReadInJoyFastWebBottomSocialViewNew
     a(2, paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
   }
   
-  private void f()
-  {
-    ReadInJoyLogicEngineEventDispatcher.a().a(new ReadInJoyFastWebBottomSocialViewNew.10(this));
-  }
+  private void f() {}
   
   private void f(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoAccountIUserLevelCallBack == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoAccountIUserLevelCallBack = new ReadInJoyFastWebBottomSocialViewNew.2(this, paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
+    if (this.n == null) {
+      this.n = new ReadInJoyFastWebBottomSocialViewNew.2(this, paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
     }
+  }
+  
+  private void g()
+  {
+    ReadInJoyLogicEngineEventDispatcher.a().a(new ReadInJoyFastWebBottomSocialViewNew.10(this));
   }
   
   private void g(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
@@ -478,7 +465,7 @@ public class ReadInJoyFastWebBottomSocialViewNew
       if (paramFastWebArticleInfo == null) {
         return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.m)
       {
         RIJSocialBottomUtils.a.a(paramContext, paramAbsBaseArticleInfo, true);
         return;
@@ -490,6 +477,14 @@ public class ReadInJoyFastWebBottomSocialViewNew
     }
   }
   
+  private String getSourceFrom()
+  {
+    if (this.m) {
+      return "3";
+    }
+    return "1";
+  }
+  
   private void h(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
     if (paramFastWebArticleInfo == null)
@@ -497,34 +492,34 @@ public class ReadInJoyFastWebBottomSocialViewNew
       QLog.d("ReadInJoyFastWebBottomSocialViewNew", 2, "like click event failed");
       return;
     }
-    if (paramFastWebArticleInfo.jdField_a_of_type_Boolean)
+    if (paramFastWebArticleInfo.h)
     {
-      paramFastWebArticleInfo.jdField_a_of_type_Boolean = false;
-      paramFastWebArticleInfo.jdField_a_of_type_Int -= 1;
-      ReportUtil.b(paramAbsBaseArticleInfo, "0X8009765", a());
+      paramFastWebArticleInfo.h = false;
+      paramFastWebArticleInfo.f -= 1;
+      ReportUtil.b(paramAbsBaseArticleInfo, "0X8009765", getSourceFrom());
     }
     else
     {
-      paramFastWebArticleInfo.jdField_a_of_type_Boolean = true;
-      paramFastWebArticleInfo.jdField_a_of_type_Int += 1;
-      ReportUtil.b(paramAbsBaseArticleInfo, "0X8009764", a());
+      paramFastWebArticleInfo.h = true;
+      paramFastWebArticleInfo.f += 1;
+      ReportUtil.b(paramAbsBaseArticleInfo, "0X8009764", getSourceFrom());
     }
-    d();
+    e();
     i(paramContext, paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-    a(paramFastWebArticleInfo.jdField_a_of_type_Int);
+    a(paramFastWebArticleInfo.f);
     ReadInJoyLogicEngineEventDispatcher.a().e();
-    ReadInJoyLogicEngine.a().a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin(), paramFastWebArticleInfo.jdField_a_of_type_Boolean, paramFastWebArticleInfo);
-    if ((paramAbsBaseArticleInfo != null) && (paramFastWebArticleInfo.jdField_a_of_type_Boolean)) {
+    ReadInJoyLogicEngine.a().a(RIJQQAppInterfaceUtil.c(), paramFastWebArticleInfo.h, paramFastWebArticleInfo);
+    if ((paramAbsBaseArticleInfo != null) && (paramFastWebArticleInfo.h)) {
       RIJFeedsDynamicInsertController.INSTANCE.requestInsertArticlesAndRecordAction(paramAbsBaseArticleInfo.innerUniqueID, new RIJFeedsInsertAction(ActionType.ACTION_LOVE, 0, 0, 0), 5);
     }
     paramContext = RIJUniteReportUtils.a;
-    int i;
-    if (paramFastWebArticleInfo.jdField_a_of_type_Boolean) {
-      i = 1;
+    int i1;
+    if (paramFastWebArticleInfo.h) {
+      i1 = 1;
     } else {
-      i = 3;
+      i1 = 3;
     }
-    paramContext.a(paramAbsBaseArticleInfo, 1, i);
+    paramContext.a(paramAbsBaseArticleInfo, 1, i1);
   }
   
   private void i(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
@@ -534,26 +529,26 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   private void j(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    BubblePopupWindow localBubblePopupWindow = this.j;
     if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
+      this.j.dismiss();
     }
     if ((paramAbsBaseArticleInfo != null) && (paramContext != null))
     {
-      TimeSliceHelper.c(paramAbsBaseArticleInfo.innerUniqueID);
-      int i = BiuBehaviour.a();
+      TimeSliceHelper.d(paramAbsBaseArticleInfo.innerUniqueID);
+      int i1 = BiuBehaviour.a();
       boolean bool = true;
-      if (i != 1) {
+      if (i1 != 1) {
         bool = false;
       }
       a(bool, paramContext, paramFastWebArticleInfo);
-      i = (int)paramAbsBaseArticleInfo.mChannelID;
+      i1 = (int)paramAbsBaseArticleInfo.mChannelID;
       if (paramFastWebArticleInfo.a()) {
         paramFastWebArticleInfo = "2";
       } else {
         paramFastWebArticleInfo = "1";
       }
-      ReportUtil.a(paramAbsBaseArticleInfo, "0X8008991", RIJTransMergeKanDianReport.a(paramContext, paramAbsBaseArticleInfo, i, paramFastWebArticleInfo, 0).toString());
+      ReportUtil.a(paramAbsBaseArticleInfo, "0X8008991", RIJTransMergeKanDianReport.a(paramContext, paramAbsBaseArticleInfo, i1, paramFastWebArticleInfo, 0).toString());
     }
   }
   
@@ -565,17 +560,17 @@ public class ReadInJoyFastWebBottomSocialViewNew
     if ((paramContext instanceof FastWebActivity))
     {
       QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "enter scroll");
-      ((FastWebActivity)paramContext).c();
-      int i = (int)paramAbsBaseArticleInfo.mChannelID;
+      ((FastWebActivity)paramContext).d();
+      int i1 = (int)paramAbsBaseArticleInfo.mChannelID;
       if (paramFastWebArticleInfo.a()) {
         paramFastWebArticleInfo = "2";
       } else {
         paramFastWebArticleInfo = "1";
       }
-      ReportUtil.a(paramAbsBaseArticleInfo, "0X8008990", RIJTransMergeKanDianReport.a(paramContext, paramAbsBaseArticleInfo, i, paramFastWebArticleInfo).toString());
+      ReportUtil.a(paramAbsBaseArticleInfo, "0X8008990", RIJTransMergeKanDianReport.a(paramContext, paramAbsBaseArticleInfo, i1, paramFastWebArticleInfo).toString());
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
       RIJSocialBottomUtils.a.a(paramContext, paramAbsBaseArticleInfo, false);
       return;
@@ -591,29 +586,22 @@ public class ReadInJoyFastWebBottomSocialViewNew
     QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, paramContext);
   }
   
-  public Map<String, Object> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("source_from", a());
-    return localHashMap;
-  }
-  
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject = this.z;
     if (localObject != null)
     {
-      KandianFavoriteBroadcastReceiver localKandianFavoriteBroadcastReceiver = this.jdField_a_of_type_ComTencentMobileqqKandianBizShareKandianFavoriteBroadcastReceiver;
+      KandianFavoriteBroadcastReceiver localKandianFavoriteBroadcastReceiver = this.v;
       if (localKandianFavoriteBroadcastReceiver != null) {
         ((Context)localObject).unregisterReceiver(localKandianFavoriteBroadcastReceiver);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$DoShareClick = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager;
+    this.p = null;
+    localObject = this.q;
     if (localObject != null) {
-      ((RIJVideoRewardCoinManager)localObject).j();
+      ((RIJVideoRewardCoinManager)localObject).i();
     }
-    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.B);
   }
   
   public void a(int paramInt) {}
@@ -625,16 +613,16 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   public void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null) {
+    if (this.x == null) {
       return;
     }
-    Share localShare = this.jdField_a_of_type_ComTencentBizWebviewpluginShare;
+    Share localShare = this.u;
     if (localShare != null) {
       localShare.destroy();
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginShare = new Share(ReadInJoyUtils.a(), paramActivity);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo);
-    this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleContentUrl, 9, false);
+    this.u = new Share(ReadInJoyUtils.b(), paramActivity);
+    this.u.a(this.x);
+    this.u.a(this.x.mArticleContentUrl, 9, false);
   }
   
   public void a(Context paramContext, FastWebArticleInfo paramFastWebArticleInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -644,29 +632,29 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   public void a(Context paramContext, FastWebArticleInfo paramFastWebArticleInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.l = paramInt;
     setData(paramContext, paramFastWebArticleInfo, paramAbsBaseArticleInfo);
   }
   
   public void a(View paramView, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, int paramInt)
   {
     RIJVideoRewardCoinManager.Companion localCompanion = RIJVideoRewardCoinManager.a;
-    String str = paramFastWebArticleInfo.j;
-    int i;
-    if (paramFastWebArticleInfo.jdField_e_of_type_Boolean) {
-      i = 3;
+    String str = paramFastWebArticleInfo.q;
+    int i1;
+    if (paramFastWebArticleInfo.N) {
+      i1 = 3;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    localCompanion.a("0X800B2EB", new RIJVideoRewardCoinManager.RIJRewardData(str, i), paramInt);
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    FastWebPTSUtils.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizRewardRIJVideoRewardCoinManager, paramInt);
+    localCompanion.a("0X800B2EB", new RIJVideoRewardCoinManager.RIJRewardData(str, i1), paramInt);
+    this.r = paramView;
+    FastWebPTSUtils.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo, this.q, paramInt);
   }
   
   public void a(ReadInJoyFastWebBottomSocialViewNew.DoShareClick paramDoShareClick)
   {
     if (paramDoShareClick != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$DoShareClick = paramDoShareClick;
+      this.p = paramDoShareClick;
     }
   }
   
@@ -674,10 +662,17 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   public void b() {}
   
+  public Map<String, Object> getReportParams()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("source_from", getSourceFrom());
+    return localHashMap;
+  }
+  
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    e();
+    f();
   }
   
   public void setData(Context paramContext, FastWebArticleInfo paramFastWebArticleInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -686,11 +681,11 @@ public class ReadInJoyFastWebBottomSocialViewNew
     boolean bool;
     if ((paramContext != null) && (paramFastWebArticleInfo != null) && (paramAbsBaseArticleInfo != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFastWebArticleInfo = paramFastWebArticleInfo;
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
+      this.x = paramAbsBaseArticleInfo;
+      this.y = paramFastWebArticleInfo;
+      this.z = paramContext;
       localProteusItemData = FastWebPTSDataConverter.a(paramAbsBaseArticleInfo, paramFastWebArticleInfo);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null) {
+      if (this.e == null) {
         a(paramContext);
       }
       bool = paramFastWebArticleInfo.c();
@@ -699,21 +694,21 @@ public class ReadInJoyFastWebBottomSocialViewNew
     {
       try
       {
-        if ((this.jdField_a_of_type_Int == -1) || ((bool ^ true) != this.jdField_a_of_type_Int))
+        if ((this.k == -1) || ((bool ^ true) != this.k))
         {
           removeAllViews();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = localProteusItemData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean);
-          addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+          this.g = localProteusItemData.bd;
+          this.f = this.e.getViewFactory().inflate(this.e, this.g);
+          addView(this.f);
           if (!paramFastWebArticleInfo.c()) {
             break label264;
           }
-          i = 0;
-          this.jdField_a_of_type_Int = i;
+          i1 = 0;
+          this.k = i1;
           setBackgroundColor(-1);
           a(localProteusItemData, paramFastWebArticleInfo);
           b(paramContext);
-          ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsReadInJoyObserver);
+          ReadInJoyLogicEngineEventDispatcher.a().a(this.B);
         }
       }
       catch (Exception localException)
@@ -723,25 +718,25 @@ public class ReadInJoyFastWebBottomSocialViewNew
         localStringBuilder.append(localException);
         QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, localStringBuilder.toString());
       }
-      if (!a()) {
+      if (!d()) {
         return;
       }
-      a(localProteusItemData.c);
+      a(localProteusItemData.bb);
       a(localProteusItemData, paramContext, paramFastWebArticleInfo);
       a(paramAbsBaseArticleInfo);
       setVisibility(0);
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView());
+      a(this.f.getVirtualView());
       return;
       QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "setData error!  params is null!");
       return;
       label264:
-      int i = 1;
+      int i1 = 1;
     }
   }
   
   public void setData(FastWebArticleInfo paramFastWebArticleInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    setData(this.jdField_a_of_type_AndroidContentContext, paramFastWebArticleInfo, paramAbsBaseArticleInfo);
+    setData(this.z, paramFastWebArticleInfo, paramAbsBaseArticleInfo);
   }
   
   public void setFavoriteArticle(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, int paramInt)
@@ -751,22 +746,22 @@ public class ReadInJoyFastWebBottomSocialViewNew
   
   public void setIsWebBottomView(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public void setOnOpenCommentEditListener(ReadInJoyFastWebBottomSocialViewNew.OnOpenCommentEditListener paramOnOpenCommentEditListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew$OnOpenCommentEditListener = paramOnOpenCommentEditListener;
+    this.o = paramOnOpenCommentEditListener;
   }
   
   public void setProteusContext(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
+    this.e = paramVafContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialViewNew
  * JD-Core Version:    0.7.0.1
  */

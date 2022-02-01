@@ -9,49 +9,27 @@ import mqq.app.MobileQQ;
 
 public class FDNative
 {
-  private static FDNative jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static FDNative a;
   private boolean b = false;
+  private boolean c = false;
   
   private FDNative()
   {
     System.loadLibrary("qq_fd");
   }
   
-  public static int a()
-  {
-    int i = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getInt("FDHookFailTime", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("FDStats", 2, new Object[] { "getFailTime ", Integer.valueOf(i) });
-    }
-    return i;
-  }
-  
   public static FDNative a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {
-          jdField_a_of_type_ComTencentMobileqqStatisticsFDNative = new FDNative();
+        if (a == null) {
+          a = new FDNative();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
-  }
-  
-  public static void a()
-  {
-    if (a() >= 30)
-    {
-      long l = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getLong("FDHookLastInterval", 0L);
-      if ((System.currentTimeMillis() - l > 86400000L) && (l != 0L))
-      {
-        a(0);
-        a(true, true);
-      }
-    }
+    return a;
   }
   
   public static void a(int paramInt)
@@ -80,7 +58,7 @@ public class FDNative
     }
   }
   
-  public static boolean b()
+  public static boolean c()
   {
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext());
     localSharedPreferences.getBoolean("FDHookChanged", false);
@@ -89,6 +67,28 @@ public class FDNative
       QLog.d("FDStats", 2, new Object[] { "getEnableHook ", Boolean.valueOf(bool) });
     }
     return bool;
+  }
+  
+  public static void d()
+  {
+    if (e() >= 30)
+    {
+      long l = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getLong("FDHookLastInterval", 0L);
+      if ((System.currentTimeMillis() - l > 86400000L) && (l != 0L))
+      {
+        a(0);
+        a(true, true);
+      }
+    }
+  }
+  
+  public static int e()
+  {
+    int i = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getInt("FDHookFailTime", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("FDStats", 2, new Object[] { "getFailTime ", Integer.valueOf(i) });
+    }
+    return i;
   }
   
   public static native Object nativeCollectFDList();
@@ -105,7 +105,22 @@ public class FDNative
   
   public static native int nativeStop();
   
-  public ArrayList<Integer> a()
+  public void a(String paramString) {}
+  
+  public boolean b()
+  {
+    if (!this.c)
+    {
+      this.b = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getBoolean("FDLog", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("FDStats", 2, new Object[] { "getEnableLog ", Boolean.valueOf(this.b) });
+      }
+      this.c = true;
+    }
+    return this.b;
+  }
+  
+  public ArrayList<Integer> f()
   {
     ArrayList localArrayList = (ArrayList)nativeCollectFDList();
     if (QLog.isColorLevel())
@@ -118,25 +133,10 @@ public class FDNative
     }
     return localArrayList;
   }
-  
-  public void a(String paramString) {}
-  
-  public boolean a()
-  {
-    if (!this.b)
-    {
-      this.jdField_a_of_type_Boolean = PreferenceManager.getDefaultSharedPreferences(MobileQQ.sMobileQQ.getApplicationContext()).getBoolean("FDLog", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FDStats", 2, new Object[] { "getEnableLog ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-      }
-      this.b = true;
-    }
-    return this.jdField_a_of_type_Boolean;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDNative
  * JD-Core Version:    0.7.0.1
  */

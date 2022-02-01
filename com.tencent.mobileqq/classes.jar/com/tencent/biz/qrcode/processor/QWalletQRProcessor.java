@@ -91,11 +91,6 @@ public class QWalletQRProcessor
     }
   }
   
-  public boolean a()
-  {
-    return super.a();
-  }
-  
   public boolean a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     return 1 == paramInt1;
@@ -109,11 +104,11 @@ public class QWalletQRProcessor
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+    if (!(this.a instanceof QQAppInterface)) {
       return false;
     }
-    paramString2 = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-    paramScannerParams = (Activity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a();
+    paramString2 = (QQAppInterface)this.a;
+    paramScannerParams = (Activity)this.b.d();
     String str = paramString1.toLowerCase();
     if (QRUtils.d(str))
     {
@@ -122,7 +117,7 @@ public class QWalletQRProcessor
     }
     if (QRUtils.e(str))
     {
-      ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).doQRCodePay(paramString2, paramScannerParams, paramString1, this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback);
+      ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).doQRCodePay(paramString2, paramScannerParams, paramString1, this.b);
       return true;
     }
     if (QRUtils.f(str))
@@ -133,16 +128,21 @@ public class QWalletQRProcessor
     return false;
   }
   
+  public boolean b()
+  {
+    return super.b();
+  }
+  
   protected boolean c(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (paramIntent != null)
     {
       paramIntent = paramIntent.getStringExtra("retdata");
       if (!TextUtils.isEmpty(paramIntent)) {
-        a((Activity)this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.a(), paramIntent);
+        a((Activity)this.b.d(), paramIntent);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqQrscanOnQRHandleResultCallback.b();
+    this.b.b();
     return true;
   }
 }

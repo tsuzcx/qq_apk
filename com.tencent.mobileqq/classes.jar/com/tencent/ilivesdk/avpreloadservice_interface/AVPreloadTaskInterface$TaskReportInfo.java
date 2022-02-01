@@ -2,72 +2,72 @@ package com.tencent.ilivesdk.avpreloadservice_interface;
 
 public class AVPreloadTaskInterface$TaskReportInfo
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long;
-  int c;
+  int a;
+  int b;
+  long c;
+  long d;
+  boolean e;
+  int f;
+  String g;
   
-  public int a()
+  public long a()
   {
     return this.c;
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.e = paramBoolean;
   }
   
   public long b()
   {
-    return this.jdField_b_of_type_Long;
+    return this.d;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.d = paramLong;
   }
   
   public void c(int paramInt)
   {
-    this.c = paramInt;
+    this.f = paramInt;
+  }
+  
+  public boolean c()
+  {
+    return this.e;
+  }
+  
+  public int d()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadTaskInterface.TaskReportInfo
  * JD-Core Version:    0.7.0.1
  */

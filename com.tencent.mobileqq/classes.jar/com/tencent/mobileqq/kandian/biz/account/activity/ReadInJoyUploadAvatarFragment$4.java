@@ -50,25 +50,25 @@ class ReadInJoyUploadAvatarFragment$4
         paramInt = i;
         break;
       case 1004: 
-        paramString1 = HardCodeUtil.a(2131712757);
+        paramString1 = HardCodeUtil.a(2131910331);
         paramInt = i;
         break;
       case 1003: 
-        paramString1 = HardCodeUtil.a(2131712790);
+        paramString1 = HardCodeUtil.a(2131910363);
         paramInt = i;
         break;
       case 1002: 
-        paramString1 = HardCodeUtil.a(2131712985);
+        paramString1 = HardCodeUtil.a(2131910549);
         break;
       case 1001: 
-        paramString1 = HardCodeUtil.a(2131713050);
+        paramString1 = HardCodeUtil.a(2131910611);
       }
       paramInt = 2;
     }
     else
     {
       paramInt = 0;
-      paramString3 = HardCodeUtil.a(2131713045);
+      paramString3 = HardCodeUtil.a(2131910606);
       paramString2 = paramString1;
       paramString1 = paramString3;
     }
@@ -85,7 +85,7 @@ class ReadInJoyUploadAvatarFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.account.activity.ReadInJoyUploadAvatarFragment.4
  * JD-Core Version:    0.7.0.1
  */

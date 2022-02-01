@@ -19,7 +19,7 @@ class PublicAccountFragment$2
       QLog.d("Contacts.PublicAccountFragment", 2, paramObject.toString());
     }
     if (paramInt == 0) {
-      this.a.i();
+      this.a.k();
     }
   }
   
@@ -33,7 +33,7 @@ class PublicAccountFragment$2
       QLog.d("Contacts.PublicAccountFragment", 2, paramObject.toString());
     }
     if (paramInt == 0) {
-      this.a.i();
+      this.a.k();
     }
   }
   
@@ -52,18 +52,18 @@ class PublicAccountFragment$2
     {
       if (PublicAccountFragment.a(this.a))
       {
-        if (PublicAccountFragment.a(this.a) != null) {
-          PublicAccountFragment.b(this.a).a(this.a.b(), true, null);
+        if (PublicAccountFragment.b(this.a) != null) {
+          PublicAccountFragment.c(this.a).a(this.a.i(), true, null);
         }
         PublicAccountFragment.a(this.a, false);
       }
-      this.a.i();
+      this.a.k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment.2
  * JD-Core Version:    0.7.0.1
  */

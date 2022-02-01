@@ -25,189 +25,183 @@ public class AdData
   implements Parcelable
 {
   public static final Parcelable.Creator<AdData> CREATOR = new AdData.1();
-  public String A;
-  public String B;
+  public int A;
+  public ArrayList<String> B = null;
   public String C;
   public String D;
-  public String E;
+  public ArrayList<DislikeInfo> E = null;
   public String F;
   public String G;
   public String H;
   public String I;
-  public String J;
+  public long J;
   public String K;
   public String L;
   public String M;
   public String N;
-  public String O;
+  public int O;
   public String P;
   public String Q;
-  public String R;
+  public long R;
   public String S;
   public String T;
   public String U;
-  public String V;
-  public String W;
+  public long V;
+  public int W;
   public String X;
-  public String Y;
-  public String Z;
-  public double a;
-  public AdvertisementInfo a;
-  public AdAppDownloadInfo a;
-  public AdGameComponentInfo a;
-  public AdvertisementExtInfo a;
-  public ArrayList<String> a;
-  public JSONObject a;
+  public long Y;
+  public long Z;
+  public int aA;
+  public int aB;
+  public JSONObject aC;
+  public int aD;
+  public JSONObject aE;
+  public int aF;
+  public int aG;
+  public String aH;
+  public String aI;
+  public String aJ;
+  public String aK;
+  public String aL;
+  public String aM;
+  public String aN;
+  public String aO;
   public String aa;
-  public String ab;
+  public boolean ab;
   public String ac;
-  public long b;
-  public ArrayList<DislikeInfo> b;
-  public JSONObject b;
-  public int c;
-  public long c;
-  public ArrayList<String> c;
-  public boolean c;
-  public int d;
-  public long d;
-  public ArrayList<String> d;
-  public boolean d;
-  public int e;
-  public long e;
-  public boolean e;
-  public int f;
-  public long f;
-  public int g;
-  public int h;
-  public int i;
-  public String i;
-  public int j;
-  public String j;
-  public int k;
+  public boolean ad;
+  public int ae;
+  public ArrayList<String> af;
+  public ArrayList<String> ag;
+  public String ah;
+  public String ai;
+  public String aj;
+  public String ak;
+  public String al;
+  public int am;
+  public AdAppDownloadInfo an;
+  public int ao;
+  public int ap;
+  public String aq;
+  public int ar;
+  public AdGameComponentInfo as;
+  public String at;
+  public String au;
+  public int av;
+  public String aw;
+  public int ax;
+  public String ay;
+  public AdvertisementExtInfo az;
+  public AdvertisementInfo j;
   public String k;
-  public int l;
   public String l;
-  public int m;
   public String m;
-  public int n;
   public String n;
   public int o;
-  public String o;
-  public int p;
   public String p;
-  public int q;
   public String q;
-  public int r;
   public String r;
   public int s;
-  public String s = "1";
-  public int t;
   public String t;
-  public String u;
-  public String v;
+  public String u = "";
+  public boolean v;
   public String w;
-  public String x;
-  public String y;
-  public String z;
+  public String x = "1";
+  public int y;
+  public double z;
   
   public AdData(int paramInt)
   {
     super(paramInt);
-    this.jdField_q_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.h = 0;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.L = HardCodeUtil.a(2131700045);
-    this.jdField_l_of_type_Int = 0;
-    this.U = null;
-    this.Z = "0";
+    this.W = 0;
+    this.ab = false;
+    this.ad = true;
+    this.ah = HardCodeUtil.a(2131898091);
+    this.ap = 0;
+    this.ay = null;
+    this.aL = "0";
   }
   
   public AdData(Parcel paramParcel)
   {
     super(paramParcel);
-    this.jdField_q_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
     boolean bool = false;
-    this.h = 0;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.L = HardCodeUtil.a(2131700045);
-    this.jdField_l_of_type_Int = 0;
-    this.U = null;
-    this.Z = "0";
-    this.jdField_i_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_j_of_type_JavaLangString = paramParcel.readString();
+    this.W = 0;
+    this.ab = false;
+    this.ad = true;
+    this.ah = HardCodeUtil.a(2131898091);
+    this.ap = 0;
+    this.ay = null;
+    this.aL = "0";
     this.k = paramParcel.readString();
-    this.jdField_l_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_m_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_n_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_o_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_p_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_q_of_type_JavaLangString = paramParcel.readString();
+    this.l = paramParcel.readString();
+    this.m = paramParcel.readString();
+    this.n = paramParcel.readString();
+    this.o = paramParcel.readInt();
+    this.p = paramParcel.readString();
+    this.q = paramParcel.readString();
+    this.r = paramParcel.readString();
+    this.s = paramParcel.readInt();
+    this.t = paramParcel.readString();
+    this.u = paramParcel.readString();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.jdField_c_of_type_Boolean = bool;
-    this.jdField_r_of_type_JavaLangString = paramParcel.readString();
-    this.s = paramParcel.readString();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Double = paramParcel.readDouble();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readList(this.jdField_a_of_type_JavaUtilArrayList, String.class.getClassLoader());
-    this.t = paramParcel.readString();
-    this.jdField_u_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    paramParcel.readList(this.jdField_b_of_type_JavaUtilArrayList, DislikeInfo.class.getClassLoader());
-    this.jdField_v_of_type_JavaLangString = paramParcel.readString();
+    this.v = bool;
     this.w = paramParcel.readString();
     this.x = paramParcel.readString();
-    this.y = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.z = paramParcel.readString();
-    this.A = paramParcel.readString();
-    this.B = paramParcel.readString();
+    this.y = paramParcel.readInt();
+    this.z = paramParcel.readDouble();
+    this.A = paramParcel.readInt();
+    this.B = new ArrayList();
+    paramParcel.readList(this.B, String.class.getClassLoader());
     this.C = paramParcel.readString();
-    this.g = paramParcel.readInt();
     this.D = paramParcel.readString();
-    this.E = paramParcel.readString();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.E = new ArrayList();
+    paramParcel.readList(this.E, DislikeInfo.class.getClassLoader());
     this.F = paramParcel.readString();
     this.G = paramParcel.readString();
     this.H = paramParcel.readString();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.h = paramParcel.readInt();
     this.I = paramParcel.readString();
-    this.jdField_e_of_type_Long = paramParcel.readLong();
-    this.jdField_f_of_type_Long = paramParcel.readLong();
-    this.jdField_i_of_type_Int = paramParcel.readInt();
+    this.J = paramParcel.readLong();
+    this.K = paramParcel.readString();
     this.L = paramParcel.readString();
     this.M = paramParcel.readString();
     this.N = paramParcel.readString();
-    this.O = paramParcel.readString();
+    this.O = paramParcel.readInt();
     this.P = paramParcel.readString();
-    this.jdField_m_of_type_Int = paramParcel.readInt();
-    this.jdField_n_of_type_Int = paramParcel.readInt();
-    this.U = paramParcel.readString();
+    this.Q = paramParcel.readString();
+    this.R = paramParcel.readLong();
+    this.S = paramParcel.readString();
     this.T = paramParcel.readString();
-    this.W = paramParcel.readString();
+    this.U = paramParcel.readString();
+    this.V = paramParcel.readLong();
+    this.W = paramParcel.readInt();
     this.X = paramParcel.readString();
-    this.Y = paramParcel.readString();
-    this.aa = paramParcel.readString();
-    this.ab = paramParcel.readString();
+    this.Y = paramParcel.readLong();
+    this.Z = paramParcel.readLong();
+    this.ae = paramParcel.readInt();
+    this.ah = paramParcel.readString();
+    this.ai = paramParcel.readString();
+    this.aj = paramParcel.readString();
+    this.ak = paramParcel.readString();
+    this.al = paramParcel.readString();
+    this.ar = paramParcel.readInt();
+    this.av = paramParcel.readInt();
+    this.ay = paramParcel.readString();
+    this.aw = paramParcel.readString();
+    this.aI = paramParcel.readString();
+    this.aJ = paramParcel.readString();
+    this.aK = paramParcel.readString();
+    this.aM = paramParcel.readString();
+    this.aN = paramParcel.readString();
   }
   
   public static boolean a(BaseData paramBaseData)
   {
-    int i1 = paramBaseData.jdField_u_of_type_Int;
-    if ((i1 != 17) && (i1 != 22)) {
-      switch (i1)
+    int i = paramBaseData.aP;
+    if ((i != 17) && (i != 22)) {
+      switch (i)
       {
       default: 
         return false;
@@ -218,37 +212,37 @@ public class AdData
   
   private void c(JSONObject paramJSONObject)
   {
-    this.jdField_j_of_type_Int = paramJSONObject.optInt("appDownLoadStyle");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo = new AdAppDownloadInfo();
+    this.am = paramJSONObject.optInt("appDownLoadStyle");
+    this.an = new AdAppDownloadInfo();
     if (paramJSONObject.has("appDownloadInfo"))
     {
       paramJSONObject = paramJSONObject.optJSONObject("appDownloadInfo");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.a(paramJSONObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.b))
+      this.an.a(paramJSONObject);
+      if (!TextUtils.isEmpty(this.an.b))
       {
-        this.jdField_p_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.b;
-        this.D = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.b;
-        this.jdField_q_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.d;
+        this.t = this.an.b;
+        this.P = this.an.b;
+        this.u = this.an.d;
         try
         {
-          this.jdField_c_of_type_Long = Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.c);
+          this.R = Long.parseLong(this.an.c);
         }
         catch (Exception paramJSONObject)
         {
           paramJSONObject.printStackTrace();
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.e)) {
-          this.E = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.e;
+        if (!TextUtils.isEmpty(this.an.e)) {
+          this.Q = this.an.e;
         }
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo.f = this.A;
+      this.an.f = this.L;
       return;
     }
-    paramJSONObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo;
-    paramJSONObject.b = this.jdField_p_of_type_JavaLangString;
-    paramJSONObject.f = this.A;
-    paramJSONObject.e = this.E;
-    paramJSONObject.c = String.valueOf(this.jdField_c_of_type_Long);
+    paramJSONObject = this.an;
+    paramJSONObject.b = this.t;
+    paramJSONObject.f = this.L;
+    paramJSONObject.e = this.Q;
+    paramJSONObject.c = String.valueOf(this.R);
   }
   
   private void d(JSONObject paramJSONObject)
@@ -259,33 +253,33 @@ public class AdData
       if (localJSONArray.length() < 0) {
         return;
       }
-      int i1 = this.jdField_c_of_type_Int;
-      if (i1 == 1)
+      int i = this.o;
+      if (i == 1)
       {
-        this.jdField_l_of_type_JavaLangString = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true);
+        this.n = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true);
         return;
       }
-      if (i1 == 3)
+      if (i == 3)
       {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        int i2 = localJSONArray.length();
-        i1 = 0;
-        while (i1 < i2)
+        this.B = new ArrayList();
+        int i1 = localJSONArray.length();
+        i = 0;
+        while (i < i1)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(i1), true));
-          i1 += 1;
+          this.B.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(i), true));
+          i += 1;
         }
-        if (i2 < 3)
+        if (i1 < 3)
         {
-          if (i2 == 2)
+          if (i1 == 2)
           {
-            this.jdField_a_of_type_JavaUtilArrayList.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true));
+            this.B.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true));
             return;
           }
-          if (i2 == 1)
+          if (i1 == 1)
           {
-            this.jdField_a_of_type_JavaUtilArrayList.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true));
-            this.jdField_a_of_type_JavaUtilArrayList.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true));
+            this.B.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true));
+            this.B.add(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(localJSONArray.optString(0), true));
           }
         }
       }
@@ -300,14 +294,14 @@ public class AdData
       {
         localObject = paramJSONObject.opt("bytes_extra_data");
         if ((localObject instanceof JSONObject)) {
-          this.U = localObject.toString();
+          this.ay = localObject.toString();
         }
       }
-      if (TextUtils.isEmpty(this.U)) {
-        this.U = new JSONObject().toString();
+      if (TextUtils.isEmpty(this.ay)) {
+        this.ay = new JSONObject().toString();
       }
-      Object localObject = new JSONObject(this.U);
-      ((JSONObject)localObject).put("ad_switchs", this.jdField_v_of_type_JavaLangString);
+      Object localObject = new JSONObject(this.ay);
+      ((JSONObject)localObject).put("ad_switchs", this.F);
       if (paramJSONObject.has("wechat_app_username")) {
         ((JSONObject)localObject).put("wechat_app_username", paramJSONObject.optString("wechat_app_username"));
       }
@@ -324,13 +318,13 @@ public class AdData
         ((JSONObject)localObject).put("wechat_ad_trace_data", paramJSONObject.optString("wechat_ad_trace_data"));
       }
       if (paramJSONObject.has("ad_source")) {
-        this.jdField_q_of_type_Int = paramJSONObject.optInt("ad_source");
+        this.aB = paramJSONObject.optInt("ad_source");
       }
-      ((JSONObject)localObject).put("AdSource", this.jdField_q_of_type_Int);
-      ((JSONObject)localObject).put("jump_type", this.Z);
+      ((JSONObject)localObject).put("AdSource", this.aB);
+      ((JSONObject)localObject).put("jump_type", this.aL);
       ((JSONObject)localObject).put("button_flag", paramJSONObject.optInt("button_flag", -1));
-      this.U = ((JSONObject)localObject).toString();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdvertisementExtInfo = new AdvertisementExtInfo(this.U);
+      this.ay = ((JSONObject)localObject).toString();
+      this.az = new AdvertisementExtInfo(this.ay);
       return;
     }
     catch (JSONException paramJSONObject)
@@ -352,17 +346,17 @@ public class AdData
       ArrayList localArrayList = new ArrayList();
       if (paramJSONObject != null)
       {
-        int i1 = 0;
-        while (i1 < paramJSONObject.length())
+        int i = 0;
+        while (i < paramJSONObject.length())
         {
           DislikeInfo localDislikeInfo = new DislikeInfo();
-          JSONObject localJSONObject = paramJSONObject.getJSONObject(i1);
-          localDislikeInfo.jdField_a_of_type_Long = localJSONObject.optInt("id");
-          localDislikeInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("reason");
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          localDislikeInfo.e = localJSONObject.optInt("id");
+          localDislikeInfo.c = localJSONObject.optString("reason");
           localArrayList.add(localDislikeInfo);
-          i1 += 1;
+          i += 1;
         }
-        this.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+        this.E = localArrayList;
       }
       return;
     }
@@ -393,7 +387,7 @@ public class AdData
         localStringBuilder.append(paramJSONObject);
         QLog.d("fillCommonData", 2, localStringBuilder.toString());
       }
-      this.K = paramJSONObject;
+      this.ac = paramJSONObject;
       return;
     }
     catch (JSONException paramJSONObject)
@@ -417,18 +411,18 @@ public class AdData
       localStringBuilder.append(paramJSONObject);
       QLog.d("fillCommonData", 2, localStringBuilder.toString());
     }
-    this.jdField_e_of_type_Boolean = (paramJSONObject.equals("0") ^ true);
+    this.ad = (paramJSONObject.equals("0") ^ true);
   }
   
   private void i(JSONObject paramJSONObject)
   {
-    this.jdField_i_of_type_Int = paramJSONObject.optInt("c2s_switch");
+    this.ae = paramJSONObject.optInt("c2s_switch");
     boolean bool = paramJSONObject.has("c2s_click_url");
-    int i2 = 0;
+    int i1 = 0;
     JSONArray localJSONArray;
-    int i3;
+    int i2;
     ArrayList localArrayList;
-    int i1;
+    int i;
     String str;
     StringBuilder localStringBuilder;
     if (bool)
@@ -436,12 +430,12 @@ public class AdData
       localJSONArray = paramJSONObject.optJSONArray("c2s_click_url");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        i3 = localJSONArray.length();
+        i2 = localJSONArray.length();
         localArrayList = new ArrayList();
-        i1 = 0;
-        while (i1 < i3)
+        i = 0;
+        while (i < i2)
         {
-          str = (String)localJSONArray.opt(i1);
+          str = (String)localJSONArray.opt(i);
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
@@ -450,9 +444,9 @@ public class AdData
             QLog.d("fillCommonData_C2S", 2, localStringBuilder.toString());
           }
           localArrayList.add(str);
-          i1 += 1;
+          i += 1;
         }
-        this.jdField_c_of_type_JavaUtilArrayList = localArrayList;
+        this.af = localArrayList;
       }
     }
     if (paramJSONObject.has("c2s_exposure_url"))
@@ -460,12 +454,12 @@ public class AdData
       localJSONArray = paramJSONObject.optJSONArray("c2s_exposure_url");
       if ((localJSONArray != null) && (localJSONArray.length() > 0))
       {
-        i3 = localJSONArray.length();
+        i2 = localJSONArray.length();
         localArrayList = new ArrayList();
-        i1 = i2;
-        while (i1 < i3)
+        i = i1;
+        while (i < i2)
         {
-          str = (String)localJSONArray.opt(i1);
+          str = (String)localJSONArray.opt(i);
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
@@ -474,78 +468,26 @@ public class AdData
             QLog.d("fillCommonData_C2S", 2, localStringBuilder.toString());
           }
           localArrayList.add(str);
-          i1 += 1;
+          i += 1;
         }
-        this.jdField_d_of_type_JavaUtilArrayList = localArrayList;
+        this.ag = localArrayList;
       }
     }
-    this.jdField_n_of_type_Int = paramJSONObject.optInt("phone_component_id");
-    this.jdField_r_of_type_Int = paramJSONObject.optInt("experimental_ad_style");
+    this.av = paramJSONObject.optInt("phone_component_id");
+    this.aD = paramJSONObject.optInt("experimental_ad_style");
     if (QLog.isColorLevel())
     {
       paramJSONObject = new StringBuilder();
       paramJSONObject.append(" corporateImageName= ");
-      paramJSONObject.append(this.I);
+      paramJSONObject.append(this.X);
       paramJSONObject.append(" traceID = ");
-      paramJSONObject.append(this.jdField_u_of_type_JavaLangString);
+      paramJSONObject.append(this.D);
       paramJSONObject.append(" c2s_switch ");
-      paramJSONObject.append(this.jdField_i_of_type_Int);
+      paramJSONObject.append(this.ae);
       paramJSONObject.append(" experimental_ad_style ");
-      paramJSONObject.append(this.jdField_r_of_type_Int);
+      paramJSONObject.append(this.aD);
       QLog.d("fillCommonData_C2S", 2, paramJSONObject.toString());
     }
-  }
-  
-  public int a()
-  {
-    if ((this.jdField_v_of_type_Int == 2) && (!TextUtils.isEmpty(this.aa)))
-    {
-      if ("1".equals(this.aa)) {
-        return 65;
-      }
-      if ("2".equals(this.aa)) {
-        return 184;
-      }
-      if ("3".equals(this.aa)) {
-        return 194;
-      }
-      return 65;
-    }
-    int i1 = this.jdField_u_of_type_Int;
-    if (i1 != 17)
-    {
-      switch (i1)
-      {
-      default: 
-        return 0;
-      case 10: 
-        return 65;
-      }
-      return 184;
-    }
-    return 185;
-  }
-  
-  public String a()
-  {
-    if (!TextUtils.isEmpty(this.D)) {
-      return this.D;
-    }
-    if (!TextUtils.isEmpty(this.jdField_p_of_type_JavaLangString)) {
-      return this.jdField_p_of_type_JavaLangString;
-    }
-    if (h()) {}
-    try
-    {
-      String str = this.jdField_b_of_type_OrgJsonJSONObject.optJSONObject("extendInfo").optString("game_pkg_name");
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      label56:
-      break label56;
-    }
-    return null;
   }
   
   public void a() {}
@@ -557,12 +499,12 @@ public class AdData
       if (paramObject == null) {
         return;
       }
-      if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+      if (this.aC == null) {
+        this.aC = new JSONObject();
       }
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramObject);
+        this.aC.put(paramString, paramObject);
         return;
       }
       catch (JSONException paramString)
@@ -583,77 +525,77 @@ public class AdData
     if (paramJSONObject == null) {
       return;
     }
-    this.jdField_v_of_type_JavaLangString = paramString;
-    this.h = paramJSONObject.optInt("autoplay");
-    this.w = paramJSONObject.optString("video");
-    this.x = paramJSONObject.optString("effect_url");
-    this.y = paramJSONObject.optString("landing_page_report_url");
-    this.jdField_b_of_type_Long = paramJSONObject.optLong("cl");
-    this.z = paramJSONObject.optString("productid");
-    this.A = paramJSONObject.optString("mqq_via");
-    this.B = paramJSONObject.optString("trl");
-    this.C = paramJSONObject.optString("canvas_json");
-    this.g = paramJSONObject.optInt("desttype");
-    this.D = paramJSONObject.optString("pkg_name");
-    this.E = paramJSONObject.optString("pkgurl");
-    this.jdField_c_of_type_Long = paramJSONObject.optLong("appid");
-    this.F = paramJSONObject.optString("pkg_download_schema");
-    this.G = paramJSONObject.optString("invoke_url");
-    this.H = paramJSONObject.optString("subordinate_product_id");
-    this.jdField_d_of_type_Long = paramJSONObject.optLong("noco_id");
-    this.I = paramJSONObject.optString("corporate_image_name");
+    this.F = paramString;
+    this.W = paramJSONObject.optInt("autoplay");
+    this.G = paramJSONObject.optString("video");
+    this.H = paramJSONObject.optString("effect_url");
+    this.I = paramJSONObject.optString("landing_page_report_url");
+    this.J = paramJSONObject.optLong("cl");
+    this.K = paramJSONObject.optString("productid");
+    this.L = paramJSONObject.optString("mqq_via");
+    this.M = paramJSONObject.optString("trl");
+    this.N = paramJSONObject.optString("canvas_json");
+    this.O = paramJSONObject.optInt("desttype");
+    this.P = paramJSONObject.optString("pkg_name");
+    this.Q = paramJSONObject.optString("pkgurl");
+    this.R = paramJSONObject.optLong("appid");
+    this.S = paramJSONObject.optString("pkg_download_schema");
+    this.T = paramJSONObject.optString("invoke_url");
+    this.U = paramJSONObject.optString("subordinate_product_id");
+    this.V = paramJSONObject.optLong("noco_id");
+    this.X = paramJSONObject.optString("corporate_image_name");
     if (paramJSONObject.has("inner_ad")) {
-      this.aa = paramJSONObject.optJSONObject("inner_ad").optString("style");
+      this.aM = paramJSONObject.optJSONObject("inner_ad").optString("style");
     }
-    this.jdField_e_of_type_Long = paramJSONObject.optLong("algo_id");
-    this.jdField_f_of_type_Long = paramJSONObject.optLong("algo_group");
-    this.jdField_c_of_type_Boolean = paramJSONObject.has("native");
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_r_of_type_JavaLangString = paramJSONObject.optString("native");
+    this.Y = paramJSONObject.optLong("algo_id");
+    this.Z = paramJSONObject.optLong("algo_group");
+    this.v = paramJSONObject.has("native");
+    if (this.v) {
+      this.w = paramJSONObject.optString("native");
     }
-    this.jdField_i_of_type_JavaLangString = paramJSONObject.optString("posid");
-    this.jdField_j_of_type_JavaLangString = paramJSONObject.optString("title");
-    this.k = paramJSONObject.optString("content");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("img_type");
+    this.k = paramJSONObject.optString("posid");
+    this.l = paramJSONObject.optString("title");
+    this.m = paramJSONObject.optString("content");
+    this.o = paramJSONObject.optInt("img_type");
     d(paramJSONObject);
-    this.jdField_m_of_type_JavaLangString = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(paramJSONObject.optString("click_url"), true);
-    this.jdField_n_of_type_JavaLangString = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(paramJSONObject.optString("jump_url"), true);
-    this.jdField_o_of_type_JavaLangString = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(paramJSONObject.optString("expose_url"), true);
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("producttype");
-    this.jdField_p_of_type_JavaLangString = paramJSONObject.optString("pkg_name");
-    this.jdField_q_of_type_JavaLangString = paramJSONObject.optString("app_name");
-    this.s = paramJSONObject.optString("openudid");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("ad_id");
-    this.jdField_a_of_type_Double = paramJSONObject.optDouble("ecpm");
-    this.jdField_f_of_type_Int = paramJSONObject.optInt("isContract");
-    this.jdField_u_of_type_JavaLangString = paramJSONObject.optString("traceid");
-    this.t = paramJSONObject.optString("viewid");
-    this.jdField_e_of_type_Int = paramJSONObject.optInt("advertiser_id");
-    this.J = paramJSONObject.optString("corporate_logo");
-    this.L = paramJSONObject.optString("AdsIconText");
-    this.O = paramJSONObject.optString("tags");
-    this.M = paramJSONObject.optString("article_id");
-    this.N = paramJSONObject.optString("rowkey");
-    this.P = paramJSONObject.optString("cash_tag");
+    this.p = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(paramJSONObject.optString("click_url"), true);
+    this.q = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(paramJSONObject.optString("jump_url"), true);
+    this.r = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addHeadForUrl(paramJSONObject.optString("expose_url"), true);
+    this.s = paramJSONObject.optInt("producttype");
+    this.t = paramJSONObject.optString("pkg_name");
+    this.u = paramJSONObject.optString("app_name");
+    this.x = paramJSONObject.optString("openudid");
+    this.y = paramJSONObject.optInt("ad_id");
+    this.z = paramJSONObject.optDouble("ecpm");
+    this.A = paramJSONObject.optInt("isContract");
+    this.D = paramJSONObject.optString("traceid");
+    this.C = paramJSONObject.optString("viewid");
+    this.y = paramJSONObject.optInt("advertiser_id");
+    this.aa = paramJSONObject.optString("corporate_logo");
+    this.ah = paramJSONObject.optString("AdsIconText");
+    this.ak = paramJSONObject.optString("tags");
+    this.ai = paramJSONObject.optString("article_id");
+    this.aj = paramJSONObject.optString("rowkey");
+    this.al = paramJSONObject.optString("cash_tag");
     boolean bool = false;
-    this.jdField_p_of_type_Int = paramJSONObject.optInt("ad_jump_mode", 0);
-    this.jdField_o_of_type_Int = paramJSONObject.optInt("show_inner_floating_bar");
-    this.jdField_m_of_type_Int = paramJSONObject.optInt("mini_program_type");
+    this.aA = paramJSONObject.optInt("ad_jump_mode", 0);
+    this.ax = paramJSONObject.optInt("show_inner_floating_bar");
+    this.ar = paramJSONObject.optInt("mini_program_type");
     if (paramJSONObject.optInt("has_ams_popsheet") == 1) {
       bool = true;
     }
-    this.jdField_d_of_type_Boolean = bool;
-    this.Z = paramJSONObject.optString("jump_type");
+    this.ab = bool;
+    this.aL = paramJSONObject.optString("jump_type");
     c(paramJSONObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo = new AdGameComponentInfo();
-    paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo;
-    paramString.a(paramJSONObject, paramString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdAppDownloadInfo);
-    this.T = paramJSONObject.optString("ext", "");
-    if (TextUtils.isEmpty(this.T)) {
-      this.T = new JSONObject().toString();
+    this.as = new AdGameComponentInfo();
+    paramString = this.as;
+    paramString.a(paramJSONObject, paramString, this.an);
+    this.aw = paramJSONObject.optString("ext", "");
+    if (TextUtils.isEmpty(this.aw)) {
+      this.aw = new JSONObject().toString();
     }
-    this.R = paramJSONObject.optString("__ADSTR__");
-    this.S = paramJSONObject.optString("adtag");
+    this.at = paramJSONObject.optString("__ADSTR__");
+    this.au = paramJSONObject.optString("adtag");
     try
     {
       e(paramJSONObject);
@@ -666,13 +608,13 @@ public class AdData
     }
     h(paramJSONObject);
     i(paramJSONObject);
-    this.W = paramJSONObject.optString("liujin_report_url");
-    this.X = paramJSONObject.optString("ticket");
-    if (TextUtils.isEmpty(this.X)) {
-      this.X = paramJSONObject.optString("ad_encrypted_ticket");
+    this.aI = paramJSONObject.optString("liujin_report_url");
+    this.aJ = paramJSONObject.optString("ticket");
+    if (TextUtils.isEmpty(this.aJ)) {
+      this.aJ = paramJSONObject.optString("ad_encrypted_ticket");
     }
-    this.Y = paramJSONObject.optString("ams_nfb_url");
-    this.ac = paramJSONObject.optString("original_exposure_url");
+    this.aK = paramJSONObject.optString("ams_nfb_url");
+    this.aO = paramJSONObject.optString("original_exposure_url");
   }
   
   public boolean a(JSONObject paramJSONObject, int paramInt)
@@ -685,77 +627,129 @@ public class AdData
     return 0;
   }
   
-  public boolean h()
+  public boolean j()
   {
-    JSONObject localJSONObject = this.jdField_b_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject = this.aE;
     return (localJSONObject != null) && (!TextUtils.isEmpty(localJSONObject.optString("sAdID")));
+  }
+  
+  public String k()
+  {
+    if (!TextUtils.isEmpty(this.P)) {
+      return this.P;
+    }
+    if (!TextUtils.isEmpty(this.t)) {
+      return this.t;
+    }
+    if (j()) {}
+    try
+    {
+      String str = this.aE.optJSONObject("extendInfo").optString("game_pkg_name");
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      label56:
+      break label56;
+    }
+    return null;
+  }
+  
+  public int l()
+  {
+    if ((this.aT == 2) && (!TextUtils.isEmpty(this.aM)))
+    {
+      if ("1".equals(this.aM)) {
+        return 65;
+      }
+      if ("2".equals(this.aM)) {
+        return 184;
+      }
+      if ("3".equals(this.aM)) {
+        return 194;
+      }
+      return 65;
+    }
+    int i = this.aP;
+    if (i != 17)
+    {
+      switch (i)
+      {
+      default: 
+        return 0;
+      case 10: 
+        return 65;
+      }
+      return 184;
+    }
+    return 185;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jdField_i_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
     paramParcel.writeString(this.k);
-    paramParcel.writeString(this.jdField_l_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.jdField_m_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_n_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_o_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeString(this.jdField_p_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_q_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_c_of_type_Boolean);
-    paramParcel.writeString(this.jdField_r_of_type_JavaLangString);
-    paramParcel.writeString(this.s);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeDouble(this.jdField_a_of_type_Double);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
+    paramParcel.writeString(this.l);
+    paramParcel.writeString(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeInt(this.o);
+    paramParcel.writeString(this.p);
+    paramParcel.writeString(this.q);
+    paramParcel.writeString(this.r);
+    paramParcel.writeInt(this.s);
     paramParcel.writeString(this.t);
-    paramParcel.writeString(this.jdField_u_of_type_JavaLangString);
-    paramParcel.writeList(this.jdField_b_of_type_JavaUtilArrayList);
-    paramParcel.writeString(this.jdField_v_of_type_JavaLangString);
+    paramParcel.writeString(this.u);
+    paramParcel.writeByte((byte)this.v);
     paramParcel.writeString(this.w);
     paramParcel.writeString(this.x);
-    paramParcel.writeString(this.y);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.z);
-    paramParcel.writeString(this.A);
-    paramParcel.writeString(this.B);
+    paramParcel.writeInt(this.y);
+    paramParcel.writeDouble(this.z);
+    paramParcel.writeInt(this.A);
+    paramParcel.writeList(this.B);
     paramParcel.writeString(this.C);
-    paramParcel.writeInt(this.g);
     paramParcel.writeString(this.D);
-    paramParcel.writeString(this.E);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
+    paramParcel.writeList(this.E);
     paramParcel.writeString(this.F);
     paramParcel.writeString(this.G);
     paramParcel.writeString(this.H);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeInt(this.h);
     paramParcel.writeString(this.I);
-    paramParcel.writeLong(this.jdField_e_of_type_Long);
-    paramParcel.writeLong(this.jdField_f_of_type_Long);
-    paramParcel.writeInt(this.jdField_i_of_type_Int);
+    paramParcel.writeLong(this.J);
+    paramParcel.writeString(this.K);
     paramParcel.writeString(this.L);
     paramParcel.writeString(this.M);
     paramParcel.writeString(this.N);
-    paramParcel.writeString(this.O);
+    paramParcel.writeInt(this.O);
     paramParcel.writeString(this.P);
-    paramParcel.writeInt(this.jdField_m_of_type_Int);
-    paramParcel.writeInt(this.jdField_n_of_type_Int);
-    paramParcel.writeString(this.U);
+    paramParcel.writeString(this.Q);
+    paramParcel.writeLong(this.R);
+    paramParcel.writeString(this.S);
     paramParcel.writeString(this.T);
-    paramParcel.writeString(this.W);
+    paramParcel.writeString(this.U);
+    paramParcel.writeLong(this.V);
+    paramParcel.writeInt(this.W);
     paramParcel.writeString(this.X);
-    paramParcel.writeString(this.Y);
-    paramParcel.writeString(this.aa);
-    paramParcel.writeString(this.ab);
+    paramParcel.writeLong(this.Y);
+    paramParcel.writeLong(this.Z);
+    paramParcel.writeInt(this.ae);
+    paramParcel.writeString(this.ah);
+    paramParcel.writeString(this.ai);
+    paramParcel.writeString(this.aj);
+    paramParcel.writeString(this.ak);
+    paramParcel.writeString(this.al);
+    paramParcel.writeInt(this.ar);
+    paramParcel.writeInt(this.av);
+    paramParcel.writeString(this.ay);
+    paramParcel.writeString(this.aw);
+    paramParcel.writeString(this.aI);
+    paramParcel.writeString(this.aJ);
+    paramParcel.writeString(this.aK);
+    paramParcel.writeString(this.aM);
+    paramParcel.writeString(this.aN);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.data.AdData
  * JD-Core Version:    0.7.0.1
  */

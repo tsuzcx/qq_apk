@@ -3,10 +3,12 @@ package com.tencent.mobileqq.kandian.biz.search.searchresult;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
 import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
+import com.tencent.mobileqq.kandian.repo.common.RIJUGJsonUtils;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -25,10 +27,16 @@ import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 
 public class KDSearchResultHeader
 {
+  private static Map<String, String> a;
+  
   public static Map<String, String> a()
   {
+    Object localObject = a;
+    if (localObject != null) {
+      return localObject;
+    }
     HashMap localHashMap = new HashMap();
-    Object localObject = new GdtDeviceInfoHelper.Params();
+    localObject = new GdtDeviceInfoHelper.Params();
     ((GdtDeviceInfoHelper.Params)localObject).a = "ce2d9f";
     localObject = GdtDeviceInfoHelper.a(BaseApplicationImpl.getApplication(), (GdtDeviceInfoHelper.Params)localObject);
     if (localObject != null) {
@@ -38,7 +46,7 @@ public class KDSearchResultHeader
     }
     a(localHashMap);
     localHashMap.put("imei", MobileInfoUtil.getImei());
-    localHashMap.put("mac", DeviceInfoUtil.c(BaseApplication.getContext()));
+    localHashMap.put("mac", DeviceInfoUtil.d(BaseApplication.getContext()));
     if (localObject != null)
     {
       localHashMap.put("md5_android_id", ((qq_ad_get.QQAdGet.DeviceInfo)localObject).md5_android_id.get());
@@ -65,6 +73,9 @@ public class KDSearchResultHeader
     }
     localHashMap.put("device", Build.MODEL);
     localHashMap.put("osver", Build.VERSION.RELEASE);
+    localHashMap.put("Q-GUID", UserAction.getQIMEI());
+    localHashMap.put("Q-UA2", RIJUGJsonUtils.c());
+    a = localHashMap;
     return localHashMap;
   }
   
@@ -143,7 +154,7 @@ public class KDSearchResultHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.search.searchresult.KDSearchResultHeader
  * JD-Core Version:    0.7.0.1
  */

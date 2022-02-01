@@ -14,16 +14,16 @@ class OnlineStatusAIOPopUpWindow$2
   {
     if ((this.a.isShowing()) && (paramBoolean) && (paramBundle != null) && (paramBundle.getString("key_auto_reply") != null))
     {
-      OnlineStatusAIOPopUpWindow.a(this.a).setVisibility(0);
+      OnlineStatusAIOPopUpWindow.b(this.a).setVisibility(0);
       paramBundle = new QQText(paramBundle.getString("key_auto_reply"), 3, 16);
-      OnlineStatusAIOPopUpWindow.a(this.a).setText(paramBundle);
+      OnlineStatusAIOPopUpWindow.b(this.a).setText(paramBundle);
       OnlineStatusAIOPopUpWindow.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.OnlineStatusAIOPopUpWindow.2
  * JD-Core Version:    0.7.0.1
  */

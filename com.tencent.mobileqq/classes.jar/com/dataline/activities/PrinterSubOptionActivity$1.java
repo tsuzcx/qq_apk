@@ -14,19 +14,19 @@ class PrinterSubOptionActivity$1
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a != null)
+    if (this.a.c.h != null)
     {
-      List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a();
+      List localList = this.a.c.h.a();
       if ((localList != null) && (localList.size() <= 0))
       {
-        this.a.findViewById(2131366222).setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+        this.a.findViewById(2131432510).setVisibility(0);
+        this.a.a.setVisibility(8);
       }
       else
       {
         PrinterSubOptionActivity.a(this.a);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a.a();
+      this.a.c.h.c();
     }
   }
 }

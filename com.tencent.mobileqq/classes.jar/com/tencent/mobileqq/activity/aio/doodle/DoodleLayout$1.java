@@ -8,7 +8,7 @@ class DoodleLayout$1
   public void a()
   {
     if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
+      DoodleLayout.a(this.a).a(this.a.b(true, false));
     }
   }
   
@@ -21,7 +21,7 @@ class DoodleLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -43,11 +43,11 @@ public class SignatureTemplateDownloader
     String str = getSigTplUri(Integer.parseInt(paramString1), paramString2);
     Object localObject = new File(SignatureTemplateConfig.a(paramString1, paramString2));
     paramString2 = new DownloadTask(str, (File)localObject);
-    paramString2.k = paramBoolean;
+    paramString2.E = paramBoolean;
     if (paramAppRuntime != null) {
       if (DownloaderFactory.a(paramString2, paramAppRuntime) == 0)
       {
-        if ((((File)localObject).exists()) && (!SignatureManager.a(((File)localObject).getAbsolutePath())))
+        if ((((File)localObject).exists()) && (!SignatureManager.c(((File)localObject).getAbsolutePath())))
         {
           ((File)localObject).delete();
         }
@@ -63,13 +63,13 @@ public class SignatureTemplateDownloader
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append("");
-        paramAppRuntime.append(paramString2.a);
+        paramAppRuntime.append(paramString2.c);
         paramAppRuntime = paramAppRuntime.toString();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("error code = ");
-        ((StringBuilder)localObject).append(paramString2.a);
+        ((StringBuilder)localObject).append(paramString2.c);
         ((StringBuilder)localObject).append(" errorMsg = ");
-        ((StringBuilder)localObject).append(paramString2.b);
+        ((StringBuilder)localObject).append(paramString2.d);
         ((StringBuilder)localObject).append("url = ");
         ((StringBuilder)localObject).append(str);
         VasMonitorHandler.a(null, "individual_v2_signature_download_fail", paramAppRuntime, ((StringBuilder)localObject).toString(), null, 0.0F);
@@ -77,9 +77,9 @@ public class SignatureTemplateDownloader
         paramAppRuntime.append("tlpId:");
         paramAppRuntime.append(paramString1);
         paramAppRuntime.append(" errCode:");
-        paramAppRuntime.append(paramString2.a);
+        paramAppRuntime.append(paramString2.c);
         paramAppRuntime.append(" errMsg:");
-        paramAppRuntime.append(paramString2.b);
+        paramAppRuntime.append(paramString2.d);
         VasMonitorDT.a("individual_v2_signature_download_fail", paramAppRuntime.toString());
       }
     }
@@ -106,7 +106,7 @@ public class SignatureTemplateDownloader
     }
     if (paramDownloadParams.useSharpPImage)
     {
-      localObject = new File(QQSharpPUtil.a((File)localObject));
+      localObject = new File(QQSharpPUtil.b((File)localObject));
       if (((File)localObject).exists()) {
         return localObject;
       }
@@ -116,7 +116,7 @@ public class SignatureTemplateDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.SignatureTemplateDownloader
  * JD-Core Version:    0.7.0.1
  */

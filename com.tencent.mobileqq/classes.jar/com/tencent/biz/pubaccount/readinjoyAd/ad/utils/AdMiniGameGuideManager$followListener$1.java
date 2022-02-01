@@ -24,7 +24,7 @@ final class AdMiniGameGuideManager$followListener$1
         if (localObject1 == null) {
           break label205;
         }
-        localObject1 = Boolean.valueOf(((FollowingMember)localObject1).a());
+        localObject1 = Boolean.valueOf(((FollowingMember)localObject1).d());
         if (localObject1 == null) {
           continue;
         }
@@ -33,14 +33,14 @@ final class AdMiniGameGuideManager$followListener$1
         FollowingMember localFollowingMember = (FollowingMember)paramMap.get(Long.valueOf(1001008899179L));
         localObject1 = localObject3;
         if (localFollowingMember != null) {
-          localObject1 = Boolean.valueOf(localFollowingMember.a());
+          localObject1 = Boolean.valueOf(localFollowingMember.d());
         }
         localStringBuilder.append(localObject1);
         QLog.e("AdMiniGameUtil", 2, localStringBuilder.toString());
         localObject1 = AdMiniGameGuideManager.a;
         paramMap = (FollowingMember)paramMap.get(Long.valueOf(1001008899179L));
         bool = true;
-        if ((paramMap == null) || (paramMap.a() != true)) {
+        if ((paramMap == null) || (paramMap.d() != true)) {
           break label211;
         }
         ((AdMiniGameGuideManager)localObject1).a(bool);
@@ -66,7 +66,7 @@ final class AdMiniGameGuideManager$followListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdMiniGameGuideManager.followListener.1
  * JD-Core Version:    0.7.0.1
  */

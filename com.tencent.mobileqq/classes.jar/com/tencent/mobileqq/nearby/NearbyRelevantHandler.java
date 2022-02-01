@@ -40,13 +40,13 @@ public class NearbyRelevantHandler
   implements INearbyRelevantHandler
 {
   public static final String a = "com.tencent.mobileqq.nearby.NearbyRelevantHandler";
-  private QQAppInterface a;
-  protected Set<String> a;
+  protected Set<String> b;
+  private QQAppInterface c;
   
   public NearbyRelevantHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -102,7 +102,7 @@ public class NearbyRelevantHandler
           if (4 <= n)
           {
             paramFromServiceMsg = String.valueOf(PkgTools.getLongData(paramToServiceMsg, 0));
-            if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+            if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.c.getAccount())))
             {
               if (QLog.isColorLevel()) {
                 QLog.w("NearbyRelevantHandler", 2, "handle_oidb_0x480_9 uin error");
@@ -154,13 +154,13 @@ public class NearbyRelevantHandler
     boolean bool2;
     if (bool1)
     {
-      paramToServiceMsg = NearbyManagerHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramToServiceMsg = NearbyManagerHelper.a(this.c);
       if (i == 0) {
         bool2 = true;
       } else {
         bool2 = false;
       }
-      paramToServiceMsg.a(bool2);
+      paramToServiceMsg.b(bool2);
     }
     if (i == 0) {
       bool2 = bool3;
@@ -261,9 +261,9 @@ public class NearbyRelevantHandler
         NearbyUtils.a("handleGetNearbyUneadMsg", new Object[] { Integer.valueOf(m), Integer.valueOf(k) });
       }
       if (k != 0) {
-        NearbyManagerHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(k);
+        NearbyManagerHelper.a(this.c).b(k);
       }
-      ((INearbyProcessMonitor)QRoute.api(INearbyProcessMonitor.class)).reportCheckNearbyUnreadFlag(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), k);
+      ((INearbyProcessMonitor)QRoute.api(INearbyProcessMonitor.class)).reportCheckNearbyUnreadFlag(this.c.getCurrentAccountUin(), k);
     }
   }
   
@@ -281,27 +281,27 @@ public class NearbyRelevantHandler
     //   14: goto +6 -> 20
     //   17: iconst_0
     //   18: istore 5
-    //   20: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   23: ifeq +36 -> 59
-    //   26: new 125	java/lang/StringBuilder
+    //   26: new 126	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   30: invokespecial 127	java/lang/StringBuilder:<init>	()V
     //   33: astore_2
     //   34: aload_2
     //   35: ldc_w 318
-    //   38: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: pop
     //   42: aload_2
     //   43: iload 5
-    //   45: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   48: pop
-    //   49: ldc 137
+    //   49: ldc 138
     //   51: iconst_2
     //   52: aload_2
-    //   53: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   53: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 146	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   59: aload_0
-    //   60: getfield 23	com/tencent/mobileqq/nearby/NearbyRelevantHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   60: getfield 25	com/tencent/mobileqq/nearby/NearbyRelevantHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   63: getstatic 324	com/tencent/mobileqq/app/QQManagerFactory:NEARBY_GENERAL_MANAGER	I
     //   66: invokevirtual 328	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
     //   69: checkcast 330	com/tencent/mobileqq/nearby/INearByGeneralManager
@@ -321,14 +321,14 @@ public class NearbyRelevantHandler
     //   100: istore 7
     //   102: iload 5
     //   104: istore 9
-    //   106: new 97	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   106: new 98	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   109: dup
-    //   110: invokespecial 98	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
+    //   110: invokespecial 99	tencent/im/oidb/oidb_sso$OIDBSSOPkg:<init>	()V
     //   113: aload_3
     //   114: checkcast 334	[B
     //   117: checkcast 334	[B
-    //   120: invokevirtual 106	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   123: checkcast 97	tencent/im/oidb/oidb_sso$OIDBSSOPkg
+    //   120: invokevirtual 107	tencent/im/oidb/oidb_sso$OIDBSSOPkg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   123: checkcast 98	tencent/im/oidb/oidb_sso$OIDBSSOPkg
     //   126: astore_3
     //   127: aload_3
     //   128: ifnull +732 -> 860
@@ -339,8 +339,8 @@ public class NearbyRelevantHandler
     //   139: iload 5
     //   141: istore 9
     //   143: aload_3
-    //   144: getfield 113	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   147: invokevirtual 118	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   144: getfield 114	tencent/im/oidb/oidb_sso$OIDBSSOPkg:uint32_result	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   147: invokevirtual 119	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   150: ifne +710 -> 860
     //   153: iconst_1
     //   154: istore 5
@@ -351,7 +351,7 @@ public class NearbyRelevantHandler
     //   165: istore 7
     //   167: iload 5
     //   169: istore 9
-    //   171: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   171: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   174: ifeq +88 -> 262
     //   177: iload 5
     //   179: istore 8
@@ -359,9 +359,9 @@ public class NearbyRelevantHandler
     //   183: istore 7
     //   185: iload 5
     //   187: istore 9
-    //   189: new 125	java/lang/StringBuilder
+    //   189: new 126	java/lang/StringBuilder
     //   192: dup
-    //   193: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   193: invokespecial 127	java/lang/StringBuilder:<init>	()V
     //   196: astore 13
     //   198: iload 5
     //   200: istore 8
@@ -371,7 +371,7 @@ public class NearbyRelevantHandler
     //   208: istore 9
     //   210: aload 13
     //   212: ldc_w 336
-    //   215: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   218: pop
     //   219: iload 5
     //   221: istore 8
@@ -381,7 +381,7 @@ public class NearbyRelevantHandler
     //   229: istore 9
     //   231: aload 13
     //   233: iload 5
-    //   235: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   235: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   238: pop
     //   239: iload 5
     //   241: istore 8
@@ -389,11 +389,11 @@ public class NearbyRelevantHandler
     //   245: istore 7
     //   247: iload 5
     //   249: istore 9
-    //   251: ldc 137
+    //   251: ldc 138
     //   253: iconst_2
     //   254: aload 13
-    //   256: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   259: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   256: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   259: invokestatic 146	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   262: iload 10
     //   264: istore 6
     //   266: iload 5
@@ -411,8 +411,8 @@ public class NearbyRelevantHandler
     //   291: iload 5
     //   293: istore 4
     //   295: aload_3
-    //   296: getfield 149	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   299: invokevirtual 152	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   296: getfield 150	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   299: invokevirtual 153	com/tencent/mobileqq/pb/PBBytesField:has	()Z
     //   302: ifeq +459 -> 761
     //   305: iload 5
     //   307: istore 8
@@ -425,8 +425,8 @@ public class NearbyRelevantHandler
     //   321: iload 5
     //   323: istore 4
     //   325: aload_3
-    //   326: getfield 149	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   329: invokevirtual 155	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   326: getfield 150	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   329: invokevirtual 156	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
     //   332: ifnull +429 -> 761
     //   335: iload 5
     //   337: istore 8
@@ -435,9 +435,9 @@ public class NearbyRelevantHandler
     //   343: iload 5
     //   345: istore 9
     //   347: aload_3
-    //   348: getfield 149	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   351: invokevirtual 155	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   354: invokevirtual 160	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   348: getfield 150	tencent/im/oidb/oidb_sso$OIDBSSOPkg:bytes_bodybuffer	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   351: invokevirtual 156	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   354: invokevirtual 161	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
     //   357: invokestatic 342	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
     //   360: invokevirtual 345	java/nio/ByteBuffer:getInt	()I
     //   363: invokestatic 350	com/tencent/mobileqq/util/Utils:a	(I)J
@@ -449,11 +449,11 @@ public class NearbyRelevantHandler
     //   376: iload 5
     //   378: istore 9
     //   380: aload_0
-    //   381: getfield 23	com/tencent/mobileqq/nearby/NearbyRelevantHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   381: getfield 25	com/tencent/mobileqq/nearby/NearbyRelevantHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   384: invokevirtual 306	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   387: lload 11
-    //   389: invokestatic 172	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   392: invokevirtual 180	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   389: invokestatic 173	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   392: invokevirtual 181	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   395: ifeq +53 -> 448
     //   398: iload 5
     //   400: istore 8
@@ -474,7 +474,7 @@ public class NearbyRelevantHandler
     //   432: istore 9
     //   434: aload_2
     //   435: iload 6
-    //   437: invokeinterface 357 2 0
+    //   437: invokeinterface 358 2 0
     //   442: iconst_1
     //   443: istore 4
     //   445: goto +316 -> 761
@@ -484,7 +484,7 @@ public class NearbyRelevantHandler
     //   454: istore 7
     //   456: iload 5
     //   458: istore 9
-    //   460: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   460: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   463: ifeq +128 -> 591
     //   466: iload 5
     //   468: istore 8
@@ -492,9 +492,9 @@ public class NearbyRelevantHandler
     //   472: istore 7
     //   474: iload 5
     //   476: istore 9
-    //   478: new 125	java/lang/StringBuilder
+    //   478: new 126	java/lang/StringBuilder
     //   481: dup
-    //   482: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   482: invokespecial 127	java/lang/StringBuilder:<init>	()V
     //   485: astore_2
     //   486: iload 5
     //   488: istore 8
@@ -503,8 +503,8 @@ public class NearbyRelevantHandler
     //   494: iload 5
     //   496: istore 9
     //   498: aload_2
-    //   499: ldc_w 359
-    //   502: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: ldc_w 360
+    //   502: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   505: pop
     //   506: iload 5
     //   508: istore 8
@@ -514,9 +514,9 @@ public class NearbyRelevantHandler
     //   516: istore 9
     //   518: aload_2
     //   519: aload_0
-    //   520: getfield 23	com/tencent/mobileqq/nearby/NearbyRelevantHandler:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   520: getfield 25	com/tencent/mobileqq/nearby/NearbyRelevantHandler:c	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   523: invokevirtual 306	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   526: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   526: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   529: pop
     //   530: iload 5
     //   532: istore 8
@@ -525,8 +525,8 @@ public class NearbyRelevantHandler
     //   538: iload 5
     //   540: istore 9
     //   542: aload_2
-    //   543: ldc_w 361
-    //   546: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   543: ldc_w 362
+    //   546: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   549: pop
     //   550: iload 5
     //   552: istore 8
@@ -536,7 +536,7 @@ public class NearbyRelevantHandler
     //   560: istore 9
     //   562: aload_2
     //   563: lload 11
-    //   565: invokevirtual 364	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   565: invokevirtual 365	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   568: pop
     //   569: iload 5
     //   571: istore 8
@@ -544,11 +544,11 @@ public class NearbyRelevantHandler
     //   575: istore 7
     //   577: iload 5
     //   579: istore 9
-    //   581: ldc 137
+    //   581: ldc 138
     //   583: iconst_2
     //   584: aload_2
-    //   585: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   588: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   585: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   588: invokestatic 146	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   591: iconst_0
     //   592: istore 4
     //   594: iload 10
@@ -559,114 +559,114 @@ public class NearbyRelevantHandler
     //   605: astore_2
     //   606: iload 9
     //   608: istore 8
-    //   610: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   610: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   613: ifeq +17 -> 630
     //   616: iload 9
     //   618: istore 8
-    //   620: ldc 137
+    //   620: ldc 138
     //   622: iconst_2
-    //   623: ldc_w 366
+    //   623: ldc_w 367
     //   626: aload_2
-    //   627: invokestatic 369	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   630: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   627: invokestatic 370	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   630: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   633: ifeq +58 -> 691
-    //   636: new 125	java/lang/StringBuilder
+    //   636: new 126	java/lang/StringBuilder
     //   639: dup
-    //   640: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   640: invokespecial 127	java/lang/StringBuilder:<init>	()V
     //   643: astore_2
     //   644: aload_2
     //   645: ldc_w 336
-    //   648: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   648: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   651: pop
     //   652: aload_2
     //   653: iconst_0
-    //   654: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   654: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   657: pop
     //   658: aload_2
-    //   659: ldc_w 371
-    //   662: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: ldc_w 372
+    //   662: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   665: pop
     //   666: aload_2
     //   667: aload_1
     //   668: getfield 256	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   671: ldc_w 352
     //   674: invokevirtual 356	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
-    //   677: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   677: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   680: pop
-    //   681: ldc 137
+    //   681: ldc 138
     //   683: iconst_2
     //   684: aload_2
-    //   685: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   688: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   685: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   688: invokestatic 146	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   691: iconst_0
     //   692: istore 5
     //   694: goto +145 -> 839
-    //   697: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   697: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   700: ifeq +59 -> 759
-    //   703: new 125	java/lang/StringBuilder
+    //   703: new 126	java/lang/StringBuilder
     //   706: dup
-    //   707: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   707: invokespecial 127	java/lang/StringBuilder:<init>	()V
     //   710: astore_3
     //   711: aload_3
     //   712: ldc_w 336
-    //   715: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   715: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   718: pop
     //   719: aload_3
     //   720: iload 8
-    //   722: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   722: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   725: pop
     //   726: aload_3
-    //   727: ldc_w 371
-    //   730: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   727: ldc_w 372
+    //   730: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   733: pop
     //   734: aload_3
     //   735: aload_1
     //   736: getfield 256	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   739: ldc_w 352
     //   742: invokevirtual 356	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
-    //   745: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   745: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   748: pop
-    //   749: ldc 137
+    //   749: ldc 138
     //   751: iconst_2
     //   752: aload_3
-    //   753: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   756: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   753: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   756: invokestatic 146	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   759: aload_2
     //   760: athrow
     //   761: iload 6
     //   763: istore 7
     //   765: iload 4
     //   767: istore 5
-    //   769: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   769: invokestatic 124	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   772: ifeq +67 -> 839
-    //   775: new 125	java/lang/StringBuilder
+    //   775: new 126	java/lang/StringBuilder
     //   778: dup
-    //   779: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   779: invokespecial 127	java/lang/StringBuilder:<init>	()V
     //   782: astore_2
     //   783: aload_2
     //   784: ldc_w 336
-    //   787: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   787: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   790: pop
     //   791: aload_2
     //   792: iload 4
-    //   794: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   794: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   797: pop
     //   798: aload_2
-    //   799: ldc_w 371
-    //   802: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   799: ldc_w 372
+    //   802: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   805: pop
     //   806: aload_2
     //   807: aload_1
     //   808: getfield 256	com/tencent/qphone/base/remote/ToServiceMsg:extraData	Landroid/os/Bundle;
     //   811: ldc_w 352
     //   814: invokevirtual 356	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
-    //   817: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   817: invokevirtual 212	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   820: pop
-    //   821: ldc 137
+    //   821: ldc 138
     //   823: iconst_2
     //   824: aload_2
-    //   825: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   828: invokestatic 145	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   825: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   828: invokestatic 146	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   831: iload 4
     //   833: istore 5
     //   835: iload 6
@@ -675,13 +675,13 @@ public class NearbyRelevantHandler
     //   840: bipush 14
     //   842: iload 5
     //   844: iconst_1
-    //   845: anewarray 203	java/lang/Boolean
+    //   845: anewarray 204	java/lang/Boolean
     //   848: dup
     //   849: iconst_0
     //   850: iload 7
-    //   852: invokestatic 206	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   852: invokestatic 207	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   855: aastore
-    //   856: invokevirtual 87	com/tencent/mobileqq/nearby/NearbyRelevantHandler:notifyUI	(IZLjava/lang/Object;)V
+    //   856: invokevirtual 89	com/tencent/mobileqq/nearby/NearbyRelevantHandler:notifyUI	(IZLjava/lang/Object;)V
     //   859: return
     //   860: iconst_0
     //   861: istore 5
@@ -779,7 +779,7 @@ public class NearbyRelevantHandler
           if (4 <= n)
           {
             paramFromServiceMsg = String.valueOf(PkgTools.getLongData(paramToServiceMsg, 0));
-            if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+            if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.c.getAccount())))
             {
               if (QLog.isColorLevel()) {
                 QLog.i("NearbyRelevantHandler", 2, "handleGetNotifyOnLikeSwitch uin error");
@@ -831,7 +831,7 @@ public class NearbyRelevantHandler
     boolean bool2;
     if (bool1)
     {
-      paramToServiceMsg = (INearByGeneralManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER);
+      paramToServiceMsg = (INearByGeneralManager)this.c.getManager(QQManagerFactory.NEARBY_GENERAL_MANAGER);
       if (i == 0) {
         bool2 = true;
       } else {
@@ -902,7 +902,7 @@ public class NearbyRelevantHandler
                   if (4 <= paramFromServiceMsg.length)
                   {
                     paramFromServiceMsg = String.valueOf(PkgTools.getLongData(paramFromServiceMsg, 0));
-                    if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+                    if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.c.getAccount())))
                     {
                       if (QLog.isColorLevel()) {
                         QLog.w("Q.dating", 2, "handle_oidb_0x4ff_41933 uin error");
@@ -924,14 +924,14 @@ public class NearbyRelevantHandler
   public void a()
   {
     Object localObject = (INearbySPUtil)QRoute.api(INearbySPUtil.class);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
+    String str = this.c.getAccount();
     Long localLong = Long.valueOf(0L);
     long l2 = ((Long)((INearbySPUtil)localObject).getValue(str, "nearby_event_file", 4, "dating_last_event_id", localLong)).longValue();
-    long l3 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "nearby_event_file", 4, "dating_read_event_id", localLong)).longValue();
-    long l4 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "nearby_event_file", 4, "rank_last_event_seq", localLong)).longValue();
-    long l5 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "nearby_event_file", 4, "rank_read_event_seq", localLong)).longValue();
-    long l1 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "nearby_event_file", 4, "freshfeed_last_event_seq", localLong)).longValue();
-    long l6 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "nearby_event_file", 4, "freshfeed_red_event_seq", localLong)).longValue();
+    long l3 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.c.getAccount(), "nearby_event_file", 4, "dating_read_event_id", localLong)).longValue();
+    long l4 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.c.getAccount(), "nearby_event_file", 4, "rank_last_event_seq", localLong)).longValue();
+    long l5 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.c.getAccount(), "nearby_event_file", 4, "rank_read_event_seq", localLong)).longValue();
+    long l1 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.c.getAccount(), "nearby_event_file", 4, "freshfeed_last_event_seq", localLong)).longValue();
+    long l6 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.c.getAccount(), "nearby_event_file", 4, "freshfeed_red_event_seq", localLong)).longValue();
     localObject = new cmd0x5fc.ReqBody();
     ((cmd0x5fc.ReqBody)localObject).uint64_last_event_id.set(l2);
     ((cmd0x5fc.ReqBody)localObject).uint64_read_event_id.set(l3);
@@ -939,7 +939,7 @@ public class NearbyRelevantHandler
     ((cmd0x5fc.ReqBody)localObject).uint64_last_nearby_event_id.set(l4);
     ((cmd0x5fc.ReqBody)localObject).uint64_read_nearby_event_id.set(l5);
     ((cmd0x5fc.ReqBody)localObject).uint32_fetch_nearby_event_count.set(30);
-    if (((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getNotifySwitchState(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()))
+    if (((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getNotifySwitchState(this.c.getAccount()))
     {
       ((cmd0x5fc.ReqBody)localObject).uint64_last_feed_event_id.set(l1);
       ((cmd0x5fc.ReqBody)localObject).uint64_read_feed_event_id.set(l6);
@@ -987,7 +987,7 @@ public class NearbyRelevantHandler
     cmd0x9e4.ReqBody localReqBody = new cmd0x9e4.ReqBody();
     try
     {
-      Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      Long.parseLong(this.c.getAccount());
       localReqBody.rpt_uint64_uins.set(paramList);
       localReqBody.uint32_req_god_flag.set(1);
       localReqBody.uint32_req_profession.set(1);
@@ -1027,7 +1027,7 @@ public class NearbyRelevantHandler
         localObject1 = new oidb_sso.OIDBSSOPkg();
         ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1279);
         ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(9);
-        long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        long l = Long.parseLong(this.c.getCurrentAccountUin());
         if (paramBoolean == true)
         {
           s = 0;
@@ -1064,7 +1064,7 @@ public class NearbyRelevantHandler
   {
     try
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      long l = Long.parseLong(this.c.getAccount());
       Object localObject = new byte[9];
       PkgTools.dWord2Byte((byte[])localObject, 0, l);
       localObject[4] = 0;
@@ -1087,16 +1087,16 @@ public class NearbyRelevantHandler
   
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x9e4_22");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x480_9");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x4ff_9");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x5fc_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x4ff_41993");
+      this.b = new HashSet();
+      this.b.add("OidbSvc.0x9e4_22");
+      this.b.add("OidbSvc.0x480_9");
+      this.b.add("OidbSvc.0x4ff_9");
+      this.b.add("OidbSvc.0x5fc_0");
+      this.b.add("OidbSvc.0x4ff_41993");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.b;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -1157,7 +1157,7 @@ public class NearbyRelevantHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyRelevantHandler
  * JD-Core Version:    0.7.0.1
  */

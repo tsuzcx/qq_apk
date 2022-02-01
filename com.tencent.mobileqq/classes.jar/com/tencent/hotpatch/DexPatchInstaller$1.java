@@ -13,22 +13,22 @@ final class DexPatchInstaller$1
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig.b();
-    int i = PatchSharedPreUtil.getCountFailStartupPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str);
+    String str = this.a.e();
+    int i = PatchSharedPreUtil.getCountFailStartupPatch(this.b, BaseApplicationImpl.processName, str);
     if (i <= 5) {
-      PatchSharedPreUtil.updateCountFailStartupPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str, i + 1);
+      PatchSharedPreUtil.updateCountFailStartupPatch(this.b, BaseApplicationImpl.processName, str, i + 1);
     }
-    PatchConfigManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig);
+    PatchConfigManager.a(this.b, this.a);
     if ((501 == DexPatchInstaller.a) || (502 == DexPatchInstaller.a))
     {
-      i = PatchSharedPreUtil.getCountFailInstallPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str);
-      PatchSharedPreUtil.updateCountFailInstallPatch(this.jdField_a_of_type_AndroidContentContext, BaseApplicationImpl.processName, str, i + 1);
+      i = PatchSharedPreUtil.getCountFailInstallPatch(this.b, BaseApplicationImpl.processName, str);
+      PatchSharedPreUtil.updateCountFailInstallPatch(this.b, BaseApplicationImpl.processName, str, i + 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hotpatch.DexPatchInstaller.1
  * JD-Core Version:    0.7.0.1
  */

@@ -51,19 +51,6 @@ public class TianshuBannerManager
     return localHashMap;
   }
   
-  private static List<TianShuAdPosItemData> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TianShuManager.isRequestEnable(715))
-    {
-      TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-      localTianShuAdPosItemData.b = 5;
-      localTianShuAdPosItemData.a = 715;
-      localArrayList.add(localTianShuAdPosItemData);
-    }
-    return localArrayList;
-  }
-  
   private void a(TianShuAccess.GetAdsRsp paramGetAdsRsp, String paramString)
   {
     if (paramGetAdsRsp.mapAds.has()) {
@@ -108,26 +95,34 @@ public class TianshuBannerManager
   {
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = VasADBannerResDownloadManager.a().a(paramQQAppInterface.getAccount());
+      paramQQAppInterface = VasADBannerResDownloadManager.a().c(paramQQAppInterface.getAccount());
       if ((paramQQAppInterface instanceof VasADBannerCountDownImmersionInfo))
       {
-        paramQQAppInterface = ((VasADBannerCountDownImmersionInfo)paramQQAppInterface).a();
+        paramQQAppInterface = ((VasADBannerCountDownImmersionInfo)paramQQAppInterface).f();
         if (paramQQAppInterface != null) {
-          return paramQQAppInterface.a;
+          return paramQQAppInterface.l;
         }
       }
     }
     return false;
   }
   
+  private static List<TianShuAdPosItemData> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (TianShuManager.isRequestEnable(715))
+    {
+      TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+      localTianShuAdPosItemData.b = 5;
+      localTianShuAdPosItemData.a = 715;
+      localArrayList.add(localTianShuAdPosItemData);
+    }
+    return localArrayList;
+  }
+  
   public void a()
   {
     this.a = null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
   }
   
   public void a(VasADBannerConfigInfo paramVasADBannerConfigInfo)
@@ -136,7 +131,7 @@ public class TianshuBannerManager
     if (localObject == null) {
       return;
     }
-    localObject = VasADBannerResDownloadManager.a().a(((QQAppInterface)localObject).getAccount());
+    localObject = VasADBannerResDownloadManager.a().c(((QQAppInterface)localObject).getAccount());
     if (paramVasADBannerConfigInfo != null)
     {
       if (localObject == null) {
@@ -149,8 +144,8 @@ public class TianshuBannerManager
         i = j;
         if (((VasADBannerConfigInfo)localObject).a() != null)
         {
-          paramVasADBannerConfigInfo = paramVasADBannerConfigInfo.a().d;
-          localObject = ((VasADBannerConfigInfo)localObject).a().d;
+          paramVasADBannerConfigInfo = paramVasADBannerConfigInfo.a().f;
+          localObject = ((VasADBannerConfigInfo)localObject).a().f;
           i = j;
           if (!TextUtils.isEmpty(paramVasADBannerConfigInfo))
           {
@@ -169,15 +164,20 @@ public class TianshuBannerManager
   
   public void a(String paramString)
   {
-    if (("vas_banner_pull_refresh".equals(paramString)) && (this.a != null) && (VasADBannerResDownloadManager.a().a(this.a.getAccount()) != null) && (!a(this.a))) {
+    if (("vas_banner_pull_refresh".equals(paramString)) && (this.a != null) && (VasADBannerResDownloadManager.a().c(this.a.getAccount()) != null) && (!a(this.a))) {
       BannerManager.a().b(VasADBannerProcessor.a, 3001);
     }
-    TianShuManager.getInstance().requestAdv(a(), new TianshuBannerManager.TianShuGetSplashCallback(this, paramString));
+    TianShuManager.getInstance().requestAdv(b(), new TianshuBannerManager.TianShuGetSplashCallback(this, paramString));
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    this.a = paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuBannerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapte
 public class AEAutoTemplateAdapterMaterial
   extends MaterialContentAdapter
 {
-  private int a = 0;
+  private int b = 0;
   
   public AEAutoTemplateAdapterMaterial(@NonNull Context paramContext)
   {
@@ -23,32 +23,32 @@ public class AEAutoTemplateAdapterMaterial
   
   protected MaterialContentAdapter.ContentItemVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new MaterialContentAdapter.ContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064318605, paramViewGroup, false));
+    return new MaterialContentAdapter.ContentItemVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2064056483, paramViewGroup, false));
   }
   
   public void a() {}
   
   public void a(int paramInt)
   {
-    this.a = paramInt;
+    this.b = paramInt;
   }
   
   public void a(MaterialContentAdapter.ContentItemVH paramContentItemVH, int paramInt, @NonNull MetaMaterial paramMetaMaterial)
   {
     super.a(paramContentItemVH, paramInt, paramMetaMaterial);
     if (!TextUtils.isEmpty(paramMetaMaterial.id)) {
-      AEReportUtils.d(paramMetaMaterial.id);
+      AEReportUtils.c(paramMetaMaterial.id);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    notifyItemRangeChanged(0, this.a);
+    notifyItemRangeChanged(0, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.autotemplate.AEAutoTemplateAdapterMaterial
  * JD-Core Version:    0.7.0.1
  */

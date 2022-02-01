@@ -14,8 +14,8 @@ public class RotateLayout$LayoutParams
   public RotateLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bj);
-    this.a = paramContext.getInt(R.styleable.a, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bl);
+    this.a = paramContext.getInt(R.styleable.bm, 0);
     paramContext.recycle();
   }
   

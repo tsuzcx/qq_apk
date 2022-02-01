@@ -28,14 +28,24 @@ class VideoFeedsRecommendFragment$VideoStatusListenerImpl
 {
   private VideoFeedsRecommendFragment$VideoStatusListenerImpl(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
+  private void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      VideoFeedsRecommendFragment.c(this.a).addOnLayoutChangeListener(new VideoFeedsRecommendFragment.VideoStatusListenerImpl.1(this));
+      return;
+    }
+    VideoFeedsRecommendFragment.c(this.a).b();
+  }
+  
   public void a(VideoPlayParam paramVideoPlayParam) {}
   
   public void a(VideoPlayParam paramVideoPlayParam, int paramInt)
   {
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null) && (!paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.r))
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.c != null) && (!paramVideoPlayParam.c.aq))
     {
-      paramVideoPlayParam = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_JavaLangString;
-      VideoFeedsRecommendFragment.a(this.a).a(paramVideoPlayParam);
+      paramVideoPlayParam = paramVideoPlayParam.c.b;
+      VideoFeedsRecommendFragment.T(this.a).a(paramVideoPlayParam);
     }
   }
   
@@ -43,8 +53,8 @@ class VideoFeedsRecommendFragment$VideoStatusListenerImpl
   
   public void a(VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).b();
+    if (VideoFeedsRecommendFragment.t(this.a) != null) {
+      VideoFeedsRecommendFragment.t(this.a).b();
     }
   }
   
@@ -55,148 +65,143 @@ class VideoFeedsRecommendFragment$VideoStatusListenerImpl
   public void c(VideoPlayParam paramVideoPlayParam)
   {
     Object localObject;
-    if ((VideoPreloadStrategyConoller.a().a((VideoPlayerWrapper)VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoPlayerWrapper)) && (ReadInJoyHelper.y(VideoFeedsRecommendFragment.a(this.a))) && (paramVideoPlayParam == VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam))
+    if ((VideoPreloadStrategyConoller.a().a((VideoPlayerWrapper)VideoFeedsRecommendFragment.g(this.a).az.h)) && (ReadInJoyHelper.ab(VideoFeedsRecommendFragment.y(this.a))) && (paramVideoPlayParam == VideoFeedsRecommendFragment.g(this.a).az))
     {
-      int i = VideoFeedsRecommendFragment.a(this.a).c;
-      int j = VideoFeedsRecommendFragment.a(this.a).getHeaderViewsCount();
-      localObject = VideoFeedsRecommendFragment.a(this.a).findViewHolderForLayoutPosition(i + j + 1);
+      int i = VideoFeedsRecommendFragment.g(this.a).Z;
+      int j = VideoFeedsRecommendFragment.c(this.a).getHeaderViewsCount();
+      localObject = VideoFeedsRecommendFragment.c(this.a).findViewHolderForLayoutPosition(i + j + 1);
       if ((localObject instanceof BaseVideoItemHolder))
       {
         localObject = (BaseVideoItemHolder)localObject;
-        if (((BaseVideoItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam != null) {
-          VideoFeedsRecommendFragment.a(this.a).b(((BaseVideoItemHolder)localObject).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam);
+        if (((BaseVideoItemHolder)localObject).az != null) {
+          VideoFeedsRecommendFragment.O(this.a).b(((BaseVideoItemHolder)localObject).az);
         }
       }
     }
-    if ((VideoFeedsRecommendFragment.a(this.a).c == 0) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_Int == 0)) {
-      VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsVideoUIDelegate.a(3);
+    if ((VideoFeedsRecommendFragment.g(this.a).Z == 0) && (paramVideoPlayParam.c.a == 0)) {
+      VideoFeedsRecommendFragment.g(this.a).aB.a(3);
     }
-    if ((VideoFeedsRecommendFragment.a(this.a) != null) && (paramVideoPlayParam != null) && (VideoFeedsRecommendFragment.a(this.a).size() > 0) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null) && ((paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo instanceof VideoInfo)))
+    if ((VideoFeedsRecommendFragment.t(this.a) != null) && (paramVideoPlayParam != null) && (VideoFeedsRecommendFragment.e(this.a).size() > 0) && (paramVideoPlayParam.c != null) && ((paramVideoPlayParam.c instanceof VideoInfo)))
     {
-      localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-      if (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.r)
+      localObject = paramVideoPlayParam.c;
+      if (paramVideoPlayParam.c.aq)
       {
-        if (((VideoInfo)localObject).jdField_a_of_type_ComTencentMobileqqKandianBizAdReportVideoAdTimeReportData.a <= 0L) {
-          ((VideoInfo)localObject).jdField_a_of_type_ComTencentMobileqqKandianBizAdReportVideoAdTimeReportData.a = VideoFeedsRecommendFragment.a(this.a).a();
+        if (((VideoInfo)localObject).at.c <= 0L) {
+          ((VideoInfo)localObject).at.c = VideoFeedsRecommendFragment.t(this.a).i();
         }
-        VideoFeedsRecommendFragment.a(this.a).f();
+        VideoFeedsRecommendFragment.t(this.a).f();
       }
       else
       {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        localObject = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_JavaLangString;
-        if ((localObject != null) && (((String)localObject).equalsIgnoreCase(((VideoInfo)VideoFeedsRecommendFragment.a(this.a).get(0)).jdField_a_of_type_JavaLangString))) {
-          VideoFeedsRecommendFragment.a(this.a).b(0);
+        VideoFeedsRecommendFragment.t(this.a).a();
+        localObject = paramVideoPlayParam.c.b;
+        if ((localObject != null) && (((String)localObject).equalsIgnoreCase(((VideoInfo)VideoFeedsRecommendFragment.e(this.a).get(0)).b))) {
+          VideoFeedsRecommendFragment.t(this.a).b(0);
         } else {
-          VideoFeedsRecommendFragment.a(this.a).b(VideoFeedsRecommendFragment.a(this.a).c + 1);
+          VideoFeedsRecommendFragment.t(this.a).b(VideoFeedsRecommendFragment.g(this.a).Z + 1);
         }
       }
     }
-    if ((VideoFeedsRecommendFragment.a(this.a) != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null)) {
-      VideoFeedsRecommendFragment.a(this.a).a(paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.jdField_a_of_type_JavaLangString);
+    if ((VideoFeedsRecommendFragment.s(this.a) != null) && (paramVideoPlayParam.c != null)) {
+      VideoFeedsRecommendFragment.s(this.a).a(paramVideoPlayParam.c.b);
     }
-    if ((VideoFeedsRecommendFragment.a(this.a) != null) && (paramVideoPlayParam != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null)) {
-      VideoFeedsRecommendFragment.a(this.a).a(paramVideoPlayParam);
+    if ((VideoFeedsRecommendFragment.T(this.a) != null) && (paramVideoPlayParam != null) && (paramVideoPlayParam.c != null)) {
+      VideoFeedsRecommendFragment.T(this.a).a(paramVideoPlayParam);
     }
   }
   
   public void d(VideoPlayParam paramVideoPlayParam)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null)
+    if (VideoFeedsRecommendFragment.M(this.a) != null)
     {
-      bool = VideoFeedsRecommendFragment.a(this.a).c();
+      bool = VideoFeedsRecommendFragment.M(this.a).d();
       VideoFeedsPlayActivity.a("video play completion!, in weishi mode! interrupted weishi ad");
       if (bool) {
         return;
       }
     }
     VideoFeedsPlayActivity.a("video play completion!, move to next position");
-    boolean bool = VideoFeedsRecommendFragment.d(this.a);
-    if (VideoFeedsRecommendFragment.a(this.a))
+    boolean bool = VideoFeedsRecommendFragment.J(this.a);
+    if (VideoFeedsRecommendFragment.k(this.a))
     {
       if (bool)
       {
-        VideoFeedsRecommendFragment.a(this.a).b();
+        VideoFeedsRecommendFragment.c(this.a).a();
         return;
       }
-      VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoFeedsVideoUIDelegate.a(5);
+      VideoFeedsRecommendFragment.g(this.a).aB.a(5);
       return;
     }
-    if (VideoFeedsRecommendFragment.d(this.a))
+    if (VideoFeedsRecommendFragment.J(this.a))
     {
-      if ((VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a() != null))
+      if ((VideoFeedsRecommendFragment.z(this.a) != null) && (VideoFeedsRecommendFragment.z(this.a).b() != null))
       {
-        VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo));
-        VideoFeedsRecommendFragment.a(this.a).a();
+        VideoFeedsRecommendFragment.z(this.a).a(VideoFeedsRecommendFragment.Q(this.a).a(VideoFeedsRecommendFragment.g(this.a).az.c));
+        VideoFeedsRecommendFragment.Q(this.a).a();
         return;
       }
-      VideoFeedsRecommendFragment.a(this.a).b();
+      VideoFeedsRecommendFragment.c(this.a).a();
     }
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo != null) && (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.r))
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.c != null) && (paramVideoPlayParam.c.aq))
     {
-      VideoInfo localVideoInfo = paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
-      if (!((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(localVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizAdEntityVideoAdInfo).mShowAdButton)
+      VideoInfo localVideoInfo = paramVideoPlayParam.c;
+      if (!((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(localVideoInfo.as).mShowAdButton)
       {
-        if ((VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a() != null) && (VideoFeedsRecommendFragment.a(this.a) != null))
+        if ((VideoFeedsRecommendFragment.R(this.a) != null) && (VideoFeedsRecommendFragment.R(this.a).i() != null) && (VideoFeedsRecommendFragment.d(this.a) != null))
         {
-          VideoFeedsRecommendFragment.a(this.a).e();
-          VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a());
+          VideoFeedsRecommendFragment.R(this.a).f();
+          VideoFeedsRecommendFragment.d(this.a).a(VideoFeedsRecommendFragment.R(this.a).i());
         }
         return;
       }
     }
-    if (VideoFeedsRecommendFragment.a(this.a).a(paramVideoPlayParam)) {
+    if (VideoFeedsRecommendFragment.R(this.a).a(paramVideoPlayParam)) {
       return;
     }
-    if (VideoFeedsRecommendFragment.a(this.a).c == VideoFeedsRecommendFragment.a(this.a).size() - 1) {
+    if (VideoFeedsRecommendFragment.g(this.a).Z == VideoFeedsRecommendFragment.e(this.a).size() - 1) {
       return;
     }
-    if ((!VideoFeedsRecommendFragment.f(this.a)) && (NetworkUtil.isMobileNetWork(VideoFeedsRecommendFragment.a(this.a).getApplication().getApplicationContext()))) {
+    if ((!VideoFeedsRecommendFragment.S(this.a)) && (NetworkUtil.isMobileNetWork(VideoFeedsRecommendFragment.y(this.a).getApplication().getApplicationContext()))) {
       return;
     }
-    if (VideoFeedsRecommendFragment.a(this.a).b())
+    if (VideoFeedsRecommendFragment.f(this.a).k())
     {
       VideoFeedsRecommendFragment.a(this.a, true);
       return;
     }
-    if (bool)
-    {
-      VideoFeedsRecommendFragment.a(this.a).addOnLayoutChangeListener(new VideoFeedsRecommendFragment.VideoStatusListenerImpl.1(this));
-      return;
-    }
-    VideoFeedsRecommendFragment.a(this.a).a();
+    a(bool);
   }
   
   public void e(VideoPlayParam paramVideoPlayParam)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsAccessibilityHelper.a.a(VideoFeedsRecommendFragment.a(this.a).g, true);
+    if (VideoFeedsRecommendFragment.g(this.a) != null) {
+      VideoFeedsAccessibilityHelper.a.a(VideoFeedsRecommendFragment.g(this.a).ad, true);
     }
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).b();
+    if (VideoFeedsRecommendFragment.t(this.a) != null) {
+      VideoFeedsRecommendFragment.t(this.a).b();
     }
   }
   
   public void f(VideoPlayParam paramVideoPlayParam)
   {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsAccessibilityHelper.a.a(VideoFeedsRecommendFragment.a(this.a).g, false);
+    if (VideoFeedsRecommendFragment.g(this.a) != null) {
+      VideoFeedsAccessibilityHelper.a.a(VideoFeedsRecommendFragment.g(this.a).ad, false);
     }
-    if (paramVideoPlayParam.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.r)
+    if (paramVideoPlayParam.c.aq)
     {
-      VideoFeedsRecommendFragment.a(this.a).f();
-      VideoFeedsRecommendFragment.a(this.a).g();
+      VideoFeedsRecommendFragment.t(this.a).f();
+      VideoFeedsRecommendFragment.T(this.a).h();
       return;
     }
-    VideoFeedsRecommendFragment.a(this.a).a();
-    VideoFeedsRecommendFragment.a(this.a).a();
+    VideoFeedsRecommendFragment.t(this.a).a();
+    VideoFeedsRecommendFragment.T(this.a).a();
   }
   
   public void g(VideoPlayParam paramVideoPlayParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.VideoStatusListenerImpl
  * JD-Core Version:    0.7.0.1
  */

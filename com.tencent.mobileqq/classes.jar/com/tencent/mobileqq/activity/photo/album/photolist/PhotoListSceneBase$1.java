@@ -15,14 +15,14 @@ class PhotoListSceneBase$1
   
   public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mMediaQueryHelper != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition() + this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mMediaQueryHelper.mEachCount / 2 > this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.getItemCount()) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.a.get())) {
-      this.a.d();
+    if ((paramInt == 0) && (this.a.d.e.mMediaQueryHelper != null) && (this.a.m.findLastVisibleItemPosition() + this.a.d.e.mMediaQueryHelper.mEachCount / 2 > this.a.t.getItemCount()) && (!this.a.d.g.L.get())) {
+      this.a.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.PhotoListSceneBase.1
  * JD-Core Version:    0.7.0.1
  */

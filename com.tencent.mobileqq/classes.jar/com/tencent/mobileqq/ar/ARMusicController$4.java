@@ -33,8 +33,8 @@ class ARMusicController$4
       localStringBuilder.append(paramInt1);
       QLog.d("ARMusicController", 2, localStringBuilder.toString());
     }
-    ARMusicController.a(this.a).add(Integer.valueOf(paramInt1));
-    if (ARMusicController.b(this.a).contains(Integer.valueOf(paramInt1)))
+    ARMusicController.e(this.a).add(Integer.valueOf(paramInt1));
+    if (ARMusicController.f(this.a).contains(Integer.valueOf(paramInt1)))
     {
       paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
       return;
@@ -43,7 +43,7 @@ class ARMusicController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARMusicController.4
  * JD-Core Version:    0.7.0.1
  */

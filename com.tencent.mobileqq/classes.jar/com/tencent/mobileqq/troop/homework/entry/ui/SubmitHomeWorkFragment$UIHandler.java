@@ -33,23 +33,23 @@ public class SubmitHomeWorkFragment$UIHandler
   
   void a(SubmitHomeWorkFragment paramSubmitHomeWorkFragment)
   {
-    if (paramSubmitHomeWorkFragment.jdField_a_of_type_JavaUtilLinkedList != null)
+    if (paramSubmitHomeWorkFragment.F != null)
     {
-      if (paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor == null) {
+      if (paramSubmitHomeWorkFragment.d == null) {
         return;
       }
-      if (paramSubmitHomeWorkFragment.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
+      if (paramSubmitHomeWorkFragment.F.isEmpty())
       {
-        paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.setVisibility(8);
-        paramSubmitHomeWorkFragment.b.a();
-        paramSubmitHomeWorkFragment.b.setHint(paramSubmitHomeWorkFragment.getActivity().getString(2131697490));
-        paramSubmitHomeWorkFragment.b.getAdapter().notifyDataSetChanged();
+        paramSubmitHomeWorkFragment.d.setVisibility(8);
+        paramSubmitHomeWorkFragment.e.a();
+        paramSubmitHomeWorkFragment.e.setHint(paramSubmitHomeWorkFragment.getActivity().getString(2131895263));
+        paramSubmitHomeWorkFragment.e.getAdapter().notifyDataSetChanged();
         return;
       }
-      if (!paramSubmitHomeWorkFragment.jdField_c_of_type_Boolean)
+      if (!paramSubmitHomeWorkFragment.z)
       {
-        paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.c();
-        Iterator localIterator = paramSubmitHomeWorkFragment.jdField_a_of_type_JavaUtilLinkedList.iterator();
+        paramSubmitHomeWorkFragment.d.c();
+        Iterator localIterator = paramSubmitHomeWorkFragment.F.iterator();
         while (localIterator.hasNext())
         {
           JSONObject localJSONObject = (JSONObject)localIterator.next();
@@ -60,11 +60,11 @@ public class SubmitHomeWorkFragment$UIHandler
             localStringBuilder.append(localJSONObject.optString("type"));
             QLog.d("SubmitHomeWorkFragment", 2, localStringBuilder.toString());
           }
-          paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(EditItemInfoFactory.a(localJSONObject));
+          paramSubmitHomeWorkFragment.d.a(EditItemInfoFactory.a(localJSONObject));
         }
-        paramSubmitHomeWorkFragment.jdField_c_of_type_Boolean = true;
-        if (paramSubmitHomeWorkFragment.jdField_c_of_type_JavaLangString == null) {
-          paramSubmitHomeWorkFragment.jdField_c_of_type_JavaLangString = paramSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a();
+        paramSubmitHomeWorkFragment.z = true;
+        if (paramSubmitHomeWorkFragment.D == null) {
+          paramSubmitHomeWorkFragment.D = paramSubmitHomeWorkFragment.d.getData();
         }
       }
     }
@@ -89,11 +89,11 @@ public class SubmitHomeWorkFragment$UIHandler
             if (i != 102) {
               return;
             }
-            i = (int)localSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
+            i = (int)localSubmitHomeWorkFragment.x.getRecordTime();
             if (i < 1000)
             {
-              QQToast.a(localSubmitHomeWorkFragment.getActivity(), HardCodeUtil.a(2131714431), 0).a();
-              localSubmitHomeWorkFragment.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
+              QQToast.makeText(localSubmitHomeWorkFragment.getActivity(), HardCodeUtil.a(2131911941), 0).show();
+              localSubmitHomeWorkFragment.x.e();
               return;
             }
             if (!NetworkUtil.isNetSupport(localSubmitHomeWorkFragment.getActivity()))
@@ -101,9 +101,9 @@ public class SubmitHomeWorkFragment$UIHandler
               if (QLog.isColorLevel()) {
                 QLog.d("SubmitHomeWorkFragment", 2, "no network toast");
               }
-              QQToast.a(localSubmitHomeWorkFragment.getActivity(), 2131697226, 0).a();
-              localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = false;
-              localSubmitHomeWorkFragment.k();
+              QQToast.makeText(localSubmitHomeWorkFragment.getActivity(), 2131894999, 0).show();
+              localSubmitHomeWorkFragment.y = false;
+              localSubmitHomeWorkFragment.r();
               return;
             }
             paramMessage = paramMessage.obj.toString();
@@ -114,27 +114,27 @@ public class SubmitHomeWorkFragment$UIHandler
             } else {
               l = 0L;
             }
-            paramMessage = new AudioInfo(paramMessage, null, i / 1000, (int)l, localSubmitHomeWorkFragment.d);
-            localSubmitHomeWorkFragment.b.a(paramMessage);
-            localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = false;
-            localSubmitHomeWorkFragment.k();
+            paramMessage = new AudioInfo(paramMessage, null, i / 1000, (int)l, localSubmitHomeWorkFragment.H);
+            localSubmitHomeWorkFragment.e.a(paramMessage);
+            localSubmitHomeWorkFragment.y = false;
+            localSubmitHomeWorkFragment.r();
             return;
           }
-          localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = false;
-          localSubmitHomeWorkFragment.k();
+          localSubmitHomeWorkFragment.y = false;
+          localSubmitHomeWorkFragment.r();
           return;
         }
         a(localSubmitHomeWorkFragment);
         return;
       }
-      localSubmitHomeWorkFragment.jdField_a_of_type_Boolean = true;
-      localSubmitHomeWorkFragment.jdField_a_of_type_ComTencentWidgetActionSheet.setOutsideDismissEnableCompat(false);
+      localSubmitHomeWorkFragment.y = true;
+      localSubmitHomeWorkFragment.w.setOutsideDismissEnableCompat(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.UIHandler
  * JD-Core Version:    0.7.0.1
  */

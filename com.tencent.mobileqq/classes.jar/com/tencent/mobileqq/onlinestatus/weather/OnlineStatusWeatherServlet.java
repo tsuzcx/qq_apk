@@ -114,7 +114,7 @@ public class OnlineStatusWeatherServlet
         paramRspBody.append(localFriends.area);
         QLog.d("WeatherServlet", 2, paramRspBody.toString());
       }
-      localFriends.weatherFlag = (OnlineStatusUtil.c(localFriends) ^ true);
+      localFriends.weatherFlag = (OnlineStatusUtil.d(localFriends) ^ true);
       localIFriendDataService.saveFriend(localFriends);
       ((OnlineStatusDataManager)((IOnlineStatusManagerService)localAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IOnlineStatusDataManager.class)).b(paramInt, paramIntent);
     }
@@ -206,7 +206,7 @@ public class OnlineStatusWeatherServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.weather.OnlineStatusWeatherServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,14 @@ public class VoiceTextPttPlayView
   extends RelativeLayout
   implements View.OnClickListener, PttAudioWaveView.SeekProgressListener, VoicePlayer.VoicePlayerListener
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private PttAudioWaveView jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView;
-  private VoicePlayer jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b;
+  private TextView a;
+  private PttAudioWaveView b;
+  private VoicePlayer c;
+  private String d;
+  private int e;
+  private int f;
+  private float g = 0.0F;
+  private boolean h = false;
   
   public VoiceTextPttPlayView(Context paramContext)
   {
@@ -54,25 +54,9 @@ public class VoiceTextPttPlayView
     c();
   }
   
-  private int a(int paramInt)
-  {
-    paramInt /= 1000;
-    if (paramInt <= 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("1\"");
-      return paramInt;
-    }
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("\"");
-    localTextView.setText(localStringBuilder.toString());
-    return paramInt;
-  }
-  
   private int a(int paramInt1, int paramInt2, RecordParams.RecorderParam paramRecorderParam)
   {
-    int i = ViewUtils.c((int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()));
+    int i = ViewUtils.pxToDp((int)this.a.getPaint().measureText(this.a.getText().toString()));
     paramInt2 = ((IVoice2TxtTmpApi)QRoute.api(IVoice2TxtTmpApi.class)).getWaveViewLen(getContext(), paramInt2, 0.0F, i, 5, false, false);
     if (QLog.isColorLevel())
     {
@@ -82,33 +66,49 @@ public class VoiceTextPttPlayView
       localStringBuilder.append(" duration=");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append("  param.waveSampleLen");
-      localStringBuilder.append(paramRecorderParam.f);
+      localStringBuilder.append(paramRecorderParam.g);
       QLog.d("VoiceTextPttPlayView", 2, localStringBuilder.toString());
     }
     paramInt1 = paramInt2;
-    if (paramInt2 > ViewUtils.b(120.0F)) {
-      paramInt1 = ViewUtils.b(120.0F);
+    if (paramInt2 > ViewUtils.dpToPx(120.0F)) {
+      paramInt1 = ViewUtils.dpToPx(120.0F);
     }
     return paramInt1;
   }
   
   private void a(int paramInt1, int paramInt2, RecordParams.RecorderParam paramRecorderParam, VoiceTextPanel paramVoiceTextPanel)
   {
-    paramRecorderParam = PttAudioWaveView.a(paramRecorderParam.a, paramRecorderParam.f);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setAudioData(paramRecorderParam, paramInt2, paramInt1 / 1000);
+    paramRecorderParam = PttAudioWaveView.a(paramRecorderParam.h, paramRecorderParam.g);
+    this.b.setAudioData(paramRecorderParam, paramInt2, paramInt1 / 1000);
     paramRecorderParam = new RelativeLayout.LayoutParams(-2, -1);
     paramRecorderParam.width = paramInt2;
     paramRecorderParam.addRule(15, -1);
-    paramRecorderParam.leftMargin = ViewUtils.b(5.0F);
-    paramRecorderParam.rightMargin = ViewUtils.b(5.0F);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setLayoutParams(paramRecorderParam);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setVisibility(0);
+    paramRecorderParam.leftMargin = ViewUtils.dpToPx(5.0F);
+    paramRecorderParam.rightMargin = ViewUtils.dpToPx(5.0F);
+    this.b.setLayoutParams(paramRecorderParam);
+    this.b.setVisibility(0);
     paramRecorderParam = (LinearLayout.LayoutParams)getLayoutParams();
-    paramRecorderParam.width = (ViewUtils.b(13.0F) + paramInt2 + (int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()));
+    paramRecorderParam.width = (ViewUtils.dpToPx(13.0F) + paramInt2 + (int)this.a.getPaint().measureText(this.a.getText().toString()));
     setLayoutParams(paramRecorderParam);
     if (paramVoiceTextPanel != null) {
       paramVoiceTextPanel.c();
     }
+  }
+  
+  private int b(int paramInt)
+  {
+    paramInt /= 1000;
+    if (paramInt <= 0)
+    {
+      this.a.setText("1\"");
+      return paramInt;
+    }
+    TextView localTextView = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("\"");
+    localTextView.setText(localStringBuilder.toString());
+    return paramInt;
   }
   
   private void c()
@@ -127,48 +127,48 @@ public class VoiceTextPttPlayView
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView = new PttAudioWaveView(getContext());
+    this.b = new PttAudioWaveView(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
-    localLayoutParams.width = ViewUtils.b(120.0F);
+    localLayoutParams.width = ViewUtils.dpToPx(120.0F);
     localLayoutParams.addRule(15, -1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setLayoutParams(localLayoutParams);
-    addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setSeekListener(this);
+    this.b.setVisibility(8);
+    this.b.setLayoutParams(localLayoutParams);
+    addView(this.b);
+    this.b.setOnClickListener(this);
+    this.b.setSeekListener(this);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.a = new TextView(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
     localLayoutParams.addRule(11, -1);
-    localLayoutParams.rightMargin = ViewUtils.b(5.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    localLayoutParams.rightMargin = ViewUtils.dpToPx(5.0F);
+    this.a.setTextSize(2, 14.0F);
+    this.a.setLayoutParams(localLayoutParams);
+    this.a.setGravity(16);
+    addView(this.a);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setProgress(0.0F);
-    this.jdField_a_of_type_Boolean = false;
+    this.g = 0.0F;
+    this.b.setProgress(0.0F);
+    this.h = false;
     g();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(false);
+    this.b.setCanSupportSlide(false);
   }
   
   private void g()
   {
-    VoicePlayer localVoicePlayer = this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer;
+    VoicePlayer localVoicePlayer = this.c;
     if (localVoicePlayer != null)
     {
-      localVoicePlayer.e();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = null;
+      localVoicePlayer.f();
+      this.c = null;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) && (!this.jdField_a_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_Float - 0.0F) < 1.0E-008D)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(false);
+    if ((this.b != null) && (!this.h) && (Math.abs(this.g - 0.0F) < 1.0E-008D)) {
+      this.b.setCanSupportSlide(false);
     }
   }
   
@@ -179,15 +179,15 @@ public class VoiceTextPttPlayView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer = new VoicePlayer(this.jdField_a_of_type_JavaLangString, new Handler(), this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(getContext());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.a(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsVoicePlayer.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setCanSupportSlide(true);
+      this.c = new VoicePlayer(this.d, new Handler(), this.e);
+      this.c.a(getContext());
+      this.c.h();
+      this.c.a(this);
+      this.c.a(paramInt);
+      this.c.c();
+      this.b.setCanSupportSlide(true);
       return;
     }
     g();
@@ -200,13 +200,13 @@ public class VoiceTextPttPlayView
   
   public void a(PttAudioWaveView paramPttAudioWaveView)
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.h = true;
     g();
   }
   
   public void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat)
   {
-    int i = (int)(paramFloat * this.b);
+    int i = (int)(paramFloat * this.f);
     if (QLog.isColorLevel())
     {
       paramPttAudioWaveView = new StringBuilder();
@@ -219,8 +219,8 @@ public class VoiceTextPttPlayView
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Float = (paramInt2 / paramInt1);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setProgress(this.jdField_a_of_type_Float);
+    this.g = (paramInt2 / paramInt1);
+    this.b.setProgress(this.g);
   }
   
   public void b()
@@ -232,23 +232,23 @@ public class VoiceTextPttPlayView
   
   public void onClick(View paramView)
   {
-    a((int)(this.jdField_a_of_type_Float * this.b));
+    a((int)(this.g * this.f));
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setDuration(int paramInt, String paramString, RecordParams.RecorderParam paramRecorderParam, VoiceTextPanel paramVoiceTextPanel)
   {
-    this.b = paramInt;
-    a(paramInt, a(paramInt, a(paramInt), paramRecorderParam), paramRecorderParam, paramVoiceTextPanel);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramRecorderParam.c;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.setProgressColor(getContext().getResources().getColorStateList(2131167047).getDefaultColor());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColorStateList(2131167047).getDefaultColor());
+    this.f = paramInt;
+    a(paramInt, a(paramInt, b(paramInt), paramRecorderParam), paramRecorderParam, paramVoiceTextPanel);
+    this.d = paramString;
+    this.e = paramRecorderParam.c;
+    this.b.setProgressColor(getContext().getResources().getColorStateList(2131167984).getDefaultColor());
+    this.a.setTextColor(getContext().getResources().getColorStateList(2131167984).getDefaultColor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPttPlayView
  * JD-Core Version:    0.7.0.1
  */

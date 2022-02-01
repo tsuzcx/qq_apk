@@ -21,7 +21,7 @@ class ReceiptMsgManager$2
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (ChatMessage)localIterator.next();
@@ -30,7 +30,7 @@ class ReceiptMsgManager$2
         MessageForPic localMessageForPic = (MessageForPic)localObject;
         if (new File(localMessageForPic.path).exists())
         {
-          int i = this.jdField_a_of_type_AndroidOsBundle.getInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", 0);
+          int i = this.b.getInt("ReceiptMsgManager.EXTRA_KEY_PHOTO_SIZE_SPEC", 0);
           ReceiptMsgManager.a(this.this$0, localMessageForPic, i);
           localMessageForPic.md5 = ReceiptMsgManager.a(this.this$0, localMessageForPic.path);
           BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -39,7 +39,7 @@ class ReceiptMsgManager$2
           SafeBitmapFactory.decodeFile(localMessageForPic.path, localOptions);
           localMessageForPic.width = localOptions.outWidth;
           localMessageForPic.height = localOptions.outHeight;
-          ReceiptMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject, Integer.toString(i));
+          ReceiptMsgManager.b(this.c, (MessageRecord)localObject, Integer.toString(i));
           if (RichMediaUtil.isPicLandscape(localMessageForPic.path))
           {
             localMessageForPic.width = localOptions.outHeight;
@@ -61,12 +61,12 @@ class ReceiptMsgManager$2
         }
       }
     }
-    ReceiptMsgManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ReceiptMsgManager.a(this.this$0, 2), false, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_AndroidOsBundle);
+    ReceiptMsgManager.a(this.this$0, this.c, this.d.b, this.d.a, this.d.c, ReceiptMsgManager.a(this.this$0, 2), false, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMsgManager.2
  * JD-Core Version:    0.7.0.1
  */

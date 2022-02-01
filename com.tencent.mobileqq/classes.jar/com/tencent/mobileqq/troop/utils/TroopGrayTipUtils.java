@@ -41,9 +41,9 @@ public class TroopGrayTipUtils
       }
       return;
     }
-    Object localObject = HardCodeUtil.a(2131719929);
-    String str2 = HardCodeUtil.a(2131719927);
-    String str1 = HardCodeUtil.a(2131719928);
+    Object localObject = HardCodeUtil.a(2131917534);
+    String str2 = HardCodeUtil.a(2131917532);
+    String str1 = HardCodeUtil.a(2131917533);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(" ");
@@ -68,7 +68,7 @@ public class TroopGrayTipUtils
       i += 1;
     }
     paramList = new ArrayList();
-    i = BaseApplicationImpl.getApplication().getResources().getColor(2131167363);
+    i = BaseApplicationImpl.getApplication().getResources().getColor(2131168418);
     localObject = new GrayTipsMessageConstants.HighlightItem(0, ((String)localObject).length(), Long.parseLong(paramString2), 0, 50, localStringBuilder.toString(), "", "", "", i);
     paramString2 = new GrayTipsMessageConstants.HighlightItem(str2.length() - str1.length(), str2.length(), Long.parseLong(paramString2), 0, 51, "", "", "", "", i);
     paramList.add(localObject);
@@ -86,7 +86,7 @@ public class TroopGrayTipUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGrayTipUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -15,15 +15,15 @@ class ApkSimpleFilePresenter$3
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent();
-    localIntent.setClass(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterApkSimpleFilePresenter.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerPresenterApkSimpleFilePresenter.a.startActivity(localIntent);
+    localIntent.setClass(this.b.d, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.a);
+    this.b.d.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.ApkSimpleFilePresenter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -23,7 +23,7 @@ public class ByteData
   public static final int MSG_DATA_UPING = 163;
   public static final int MSG_DATA_WRITE_SP = 162;
   public static final int MSG_INTERNAL_DATA_UPING = 161;
-  public static final String MY_VERSION = "0.3.8";
+  public static final String MY_VERSION = "0.4.2";
   public static final long REQUEST_TIME_BUFF = 43200L;
   public static final int RH_SCV = 1;
   public static final String SP_MARK_TIME = "mark_time_";
@@ -43,7 +43,7 @@ public class ByteData
   public boolean mPoxyInit = false;
   public boolean mPoxyNativeLoaded = false;
   public final String mThradName = "ByteThread";
-  public String mUin = null;
+  public final String mUin = null;
   public final byte[] status = { 0, 0, 0, 0 };
   
   public ByteData()
@@ -251,7 +251,7 @@ public class ByteData
       {
         processName = s.getProcessName(paramContext);
         this.mBmpMgr = new a(paramContext, processName);
-        this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.3.8");
+        this.cData = new a.a.a.b.b(paramContext, paramString1, "", paramString2, paramString3, paramString4, sSessionID, paramString5, "0.4.2");
         setContext(paramContext);
         initLoadlibrary();
         checkProgressName();
@@ -321,7 +321,7 @@ public class ByteData
       if (!this.mPoxyInit) {
         return;
       }
-      if ((this.filterStatus) && (!processName.equals(this.filterName))) {
+      if ((this.filterStatus) && (!processName.equalsIgnoreCase(this.filterName))) {
         return;
       }
       try
@@ -376,7 +376,7 @@ public class ByteData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData
  * JD-Core Version:    0.7.0.1
  */

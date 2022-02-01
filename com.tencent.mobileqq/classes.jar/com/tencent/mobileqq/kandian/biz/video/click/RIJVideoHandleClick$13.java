@@ -21,7 +21,7 @@ class RIJVideoHandleClick$13
   public void onClick(View paramView)
   {
     VideoFeedsViewHolder localVideoFeedsViewHolder = (VideoFeedsViewHolder)paramView.getTag();
-    AbsBaseArticleInfo localAbsBaseArticleInfo = RIJVideoHandleClick.a(this.a).a(localVideoFeedsViewHolder.jdField_a_of_type_Int);
+    AbsBaseArticleInfo localAbsBaseArticleInfo = RIJVideoHandleClick.b(this.a).c(localVideoFeedsViewHolder.P);
     if (localAbsBaseArticleInfo == null)
     {
       if (QLog.isColorLevel()) {
@@ -29,32 +29,32 @@ class RIJVideoHandleClick$13
       }
       return;
     }
-    if ((RIJVideoHandleClick.a(this.a).a().a() != null) && (RIJVideoHandleClick.a(this.a).a().a().a()))
+    if ((RIJVideoHandleClick.b(this.a).a().z() != null) && (RIJVideoHandleClick.b(this.a).a().z().g()))
     {
-      RIJVideoHandleClick.a(this.a).a().a().a();
-      RIJVideoHandleClick.a(this.a).a().f(true);
+      RIJVideoHandleClick.b(this.a).a().z().c();
+      RIJVideoHandleClick.b(this.a).a().f(true);
     }
     boolean bool;
-    if ((paramView.getId() != 2131368584) && (!RIJSocialBottomViewAladdinConfig.d())) {
+    if ((paramView.getId() != 2131435496) && (!RIJSocialBottomViewAladdinConfig.d())) {
       bool = false;
     } else {
       bool = true;
     }
-    VideoShareHelper localVideoShareHelper = RIJVideoHandleClick.a(this.a).a().a();
+    VideoShareHelper localVideoShareHelper = RIJVideoHandleClick.b(this.a).a().d();
     if (localVideoShareHelper == null)
     {
       QLog.e("RIJVideoHandleClick", 1, "handleVideoShareClick share failed for videoShareHelper is null.");
       return;
     }
-    localVideoShareHelper.a(localVideoFeedsViewHolder.g, localVideoFeedsViewHolder.jdField_a_of_type_Int);
-    localVideoShareHelper.a(RIJVideoHandleClick.a(this.a).a().a());
-    localVideoShareHelper.a(localAbsBaseArticleInfo, RIJFullVideoPlayActivity.a(localVideoFeedsViewHolder.jdField_a_of_type_ComTencentMobileqqKandianBizVideoFeedsEntityVideoPlayParam, localAbsBaseArticleInfo, RIJVideoHandleClick.a(this.a).a().a(), RIJVideoHandleClick.a(this.a)), RIJVideoHandleClick.a(this.a).a().a(), new RIJVideoHandleClick.13.1(this, localAbsBaseArticleInfo), RIJVideoHandleClick.a(this.a).a().b(), bool);
-    VideoHandler.a(paramView);
+    localVideoShareHelper.a(localVideoFeedsViewHolder.Q, localVideoFeedsViewHolder.P);
+    localVideoShareHelper.a(RIJVideoHandleClick.b(this.a).a().v());
+    localVideoShareHelper.a(localAbsBaseArticleInfo, RIJFullVideoPlayActivity.a(localVideoFeedsViewHolder.t, localAbsBaseArticleInfo, RIJVideoHandleClick.b(this.a).a().z(), RIJVideoHandleClick.b(this.a)), RIJVideoHandleClick.b(this.a).a().z(), new RIJVideoHandleClick.13.1(this, localAbsBaseArticleInfo), RIJVideoHandleClick.b(this.a).a().B(), bool);
+    VideoHandler.b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.click.RIJVideoHandleClick.13
  * JD-Core Version:    0.7.0.1
  */

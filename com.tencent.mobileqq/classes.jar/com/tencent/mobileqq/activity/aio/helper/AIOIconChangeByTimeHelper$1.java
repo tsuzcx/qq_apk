@@ -14,14 +14,14 @@ class AIOIconChangeByTimeHelper$1
   {
     synchronized (AIOIconChangeByTimeHelper.a(this.this$0))
     {
-      if (AIOIconChangeByTimeHelper.a(this.this$0) != null)
+      if (AIOIconChangeByTimeHelper.b(this.this$0) != null)
       {
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("android.intent.action.TIME_TICK");
         localIntentFilter.addAction("android.intent.action.TIMEZONE_CHANGED");
         localIntentFilter.addAction("android.intent.action.TIME_SET");
-        AIOIconChangeByTimeHelper.a(this.this$0).a.registerReceiver(AIOIconChangeByTimeHelper.a(this.this$0), localIntentFilter);
-        AIOIconChangeByTimeHelper.a(this.this$0).set(1);
+        AIOIconChangeByTimeHelper.b(this.this$0).e.registerReceiver(AIOIconChangeByTimeHelper.c(this.this$0), localIntentFilter);
+        AIOIconChangeByTimeHelper.d(this.this$0).set(1);
       }
       return;
     }
@@ -29,7 +29,7 @@ class AIOIconChangeByTimeHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOIconChangeByTimeHelper.1
  * JD-Core Version:    0.7.0.1
  */

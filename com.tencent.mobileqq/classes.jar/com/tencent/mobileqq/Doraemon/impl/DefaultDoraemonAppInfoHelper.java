@@ -27,13 +27,13 @@ import org.json.JSONObject;
 
 public class DefaultDoraemonAppInfoHelper
 {
-  private static DefaultDoraemonAppInfoHelper jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper = new DefaultDoraemonAppInfoHelper();
-  long jdField_a_of_type_Long = 0L;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  Map<String, UserPermission> jdField_a_of_type_JavaUtilMap = new HashMap();
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean = false;
-  long b = 0L;
+  private static DefaultDoraemonAppInfoHelper g = new DefaultDoraemonAppInfoHelper();
+  final Object a = new Object();
+  boolean b = false;
+  JSONObject c;
+  Map<String, UserPermission> d = new HashMap();
+  long e = 0L;
+  long f = 0L;
   
   static
   {
@@ -42,39 +42,39 @@ public class DefaultDoraemonAppInfoHelper
   
   public static DefaultDoraemonAppInfoHelper a()
   {
-    return jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper;
+    return g;
   }
   
   /* Error */
   private static String a(android.content.Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: new 54	java/io/InputStreamReader
+    //   0: new 59	java/io/InputStreamReader
     //   3: dup
     //   4: aload_0
-    //   5: invokevirtual 60	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   8: invokevirtual 66	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
+    //   5: invokevirtual 65	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   8: invokevirtual 71	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
     //   11: aload_1
-    //   12: invokevirtual 72	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   15: invokespecial 75	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   12: invokevirtual 77	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   15: invokespecial 80	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   18: astore_1
     //   19: aload_1
     //   20: astore_0
-    //   21: new 77	java/io/BufferedReader
+    //   21: new 82	java/io/BufferedReader
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 80	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   26: invokespecial 85	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   29: astore_2
     //   30: aload_1
     //   31: astore_0
-    //   32: new 82	java/lang/StringBuilder
+    //   32: new 87	java/lang/StringBuilder
     //   35: dup
-    //   36: invokespecial 83	java/lang/StringBuilder:<init>	()V
+    //   36: invokespecial 88	java/lang/StringBuilder:<init>	()V
     //   39: astore_3
     //   40: aload_1
     //   41: astore_0
     //   42: aload_2
-    //   43: invokevirtual 87	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   43: invokevirtual 92	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   46: astore 4
     //   48: aload 4
     //   50: ifnull +24 -> 74
@@ -82,22 +82,22 @@ public class DefaultDoraemonAppInfoHelper
     //   54: astore_0
     //   55: aload_3
     //   56: aload 4
-    //   58: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 96	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: aload_1
     //   63: astore_0
     //   64: aload_3
     //   65: bipush 10
-    //   67: invokevirtual 94	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 99	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   70: pop
     //   71: goto -31 -> 40
     //   74: aload_1
     //   75: astore_0
     //   76: aload_3
-    //   77: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   80: astore_2
     //   81: aload_1
-    //   82: invokevirtual 100	java/io/InputStreamReader:close	()V
+    //   82: invokevirtual 105	java/io/InputStreamReader:close	()V
     //   85: aload_2
     //   86: areturn
     //   87: astore_2
@@ -112,18 +112,18 @@ public class DefaultDoraemonAppInfoHelper
     //   100: aload_1
     //   101: astore_0
     //   102: aload_2
-    //   103: invokevirtual 103	java/lang/Exception:printStackTrace	()V
+    //   103: invokevirtual 108	java/lang/Exception:printStackTrace	()V
     //   106: aload_1
     //   107: ifnull +7 -> 114
     //   110: aload_1
-    //   111: invokevirtual 100	java/io/InputStreamReader:close	()V
+    //   111: invokevirtual 105	java/io/InputStreamReader:close	()V
     //   114: aconst_null
     //   115: areturn
     //   116: astore_1
     //   117: aload_0
     //   118: ifnull +7 -> 125
     //   121: aload_0
-    //   122: invokevirtual 100	java/io/InputStreamReader:close	()V
+    //   122: invokevirtual 105	java/io/InputStreamReader:close	()V
     //   125: goto +5 -> 130
     //   128: aload_1
     //   129: athrow
@@ -183,13 +183,13 @@ public class DefaultDoraemonAppInfoHelper
     }
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject = this.c;
     if (localJSONObject == null) {
       return false;
     }
-    if ((UserPermission)this.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
+    if ((UserPermission)this.d.get(paramString) != null) {
       return true;
     }
     Iterator localIterator = localJSONObject.keys();
@@ -216,12 +216,12 @@ public class DefaultDoraemonAppInfoHelper
     return false;
   }
   
-  private boolean b(String paramString)
+  private boolean c(String paramString)
   {
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaUtilMap.clear();
+      this.c = new JSONObject(paramString);
+      this.d.clear();
       return true;
     }
     catch (JSONException paramString)
@@ -235,11 +235,11 @@ public class DefaultDoraemonAppInfoHelper
   
   public UserPermission a(String paramString)
   {
-    JSONObject localJSONObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject1 = this.c;
     if (localJSONObject1 == null) {
       return null;
     }
-    UserPermission localUserPermission = (UserPermission)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    UserPermission localUserPermission = (UserPermission)this.d.get(paramString);
     Object localObject = localUserPermission;
     if (localUserPermission == null)
     {
@@ -287,55 +287,11 @@ public class DefaultDoraemonAppInfoHelper
           break;
         }
         localObject = localJSONArray.optString(i);
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString);
+        this.d.put(localObject, paramString);
         i += 1;
       }
     }
     return localObject;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      boolean bool1 = this.jdField_a_of_type_Boolean;
-      if (bool1) {
-        return;
-      }
-      Object localObject1 = BaseApplication.getContext().getSharedPreferences("DoraemonApiGroup.json", 4);
-      String str = ((SharedPreferences)localObject1).getString("app_version", null);
-      boolean bool2 = false;
-      bool1 = bool2;
-      if (TextUtils.equals(str, "8.7.0"))
-      {
-        str = ((SharedPreferences)localObject1).getString("content", null);
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(str))
-        {
-          bool2 = b(str);
-          bool1 = bool2;
-          if (bool2)
-          {
-            this.b = ((SharedPreferences)localObject1).getLong("version", 0L);
-            bool1 = bool2;
-          }
-        }
-      }
-      if (!bool1)
-      {
-        QLog.i("DoraemonOpenAPI.permissionHelper", 1, "fail to read group info, use default");
-        localObject1 = a(BaseApplication.getContext(), "DoraemonApiGroup.json");
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          bool1 = b((String)localObject1);
-        }
-        if (!bool1) {
-          QLog.e("DoraemonOpenAPI.permissionHelper", 1, "fail to read default group info!");
-        }
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    finally {}
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3, DefaultDoraemonAppInfoHelper.OnGetAppInfo paramOnGetAppInfo)
@@ -357,16 +313,16 @@ public class DefaultDoraemonAppInfoHelper
       return;
     }
     paramString1 = new MiniAppInfo(paramString2, paramInt);
-    paramString1.k = paramString3;
-    paramString1.i = paramString4;
-    paramString1.j = paramString5;
+    paramString1.t = paramString3;
+    paramString1.r = paramString4;
+    paramString1.s = paramString5;
     Stream.of(paramString1).map(new ThreadOffFunction("DoraemonOpenAPI.permissionHelper", 16)).map(new DefaultDoraemonAppInfoHelper.EnsureInitJobSegment(null)).map(new DefaultDoraemonAppInfoHelper.GetAppAPIPermissionJobSegment(null)).map(new DefaultDoraemonAppInfoHelper.4(this, paramString2, paramInt)).map(new UIThreadOffFunction(null)).subscribe(new DefaultDoraemonAppInfoHelper.3(this, paramOnGetAppInfo));
   }
   
   public void a(List<Integer> paramList, Set<String> paramSet)
   {
     paramSet.clear();
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject = this.c;
     if (localJSONObject == null) {
       return;
     }
@@ -393,13 +349,57 @@ public class DefaultDoraemonAppInfoHelper
   
   public void b()
   {
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    if (l > this.jdField_a_of_type_Long) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    try
+    {
+      boolean bool1 = this.b;
+      if (bool1) {
+        return;
+      }
+      Object localObject1 = BaseApplication.getContext().getSharedPreferences("DoraemonApiGroup.json", 4);
+      String str = ((SharedPreferences)localObject1).getString("app_version", null);
+      boolean bool2 = false;
+      bool1 = bool2;
+      if (TextUtils.equals(str, "8.8.17"))
       {
-        if (l > this.jdField_a_of_type_Long)
+        str = ((SharedPreferences)localObject1).getString("content", null);
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(str))
         {
-          this.jdField_a_of_type_Long = (l + 300000L);
+          bool2 = c(str);
+          bool1 = bool2;
+          if (bool2)
+          {
+            this.f = ((SharedPreferences)localObject1).getLong("version", 0L);
+            bool1 = bool2;
+          }
+        }
+      }
+      if (!bool1)
+      {
+        QLog.i("DoraemonOpenAPI.permissionHelper", 1, "fail to read group info, use default");
+        localObject1 = a(BaseApplication.getContext(), "DoraemonApiGroup.json");
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          bool1 = c((String)localObject1);
+        }
+        if (!bool1) {
+          QLog.e("DoraemonOpenAPI.permissionHelper", 1, "fail to read default group info!");
+        }
+      }
+      this.b = true;
+      return;
+    }
+    finally {}
+  }
+  
+  public void c()
+  {
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    if (l > this.e) {
+      synchronized (this.a)
+      {
+        if (l > this.e)
+        {
+          this.e = (l + 300000L);
           ThreadManager.post(new DefaultDoraemonAppInfoHelper.1(this), 5, null, false);
           return;
         }
@@ -410,7 +410,7 @@ public class DefaultDoraemonAppInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper
  * JD-Core Version:    0.7.0.1
  */

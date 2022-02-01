@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:ordering="together"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <objectAnimator android:duration="300" android:startOffset="400" android:valueFrom="0.0f" android:valueTo="1.136f" android:propertyName="scaleX" />
-    <objectAnimator android:duration="300" android:startOffset="400" android:valueFrom="0.0f" android:valueTo="1.136f" android:propertyName="scaleY" />
-    <objectAnimator android:duration="166" android:startOffset="700" android:valueFrom="1.136f" android:valueTo="0.86" android:propertyName="scaleX" />
-    <objectAnimator android:duration="166" android:startOffset="700" android:valueFrom="1.136f" android:valueTo="0.86" android:propertyName="scaleY" />
-    <objectAnimator android:duration="134" android:startOffset="866" android:valueFrom="0.86" android:valueTo="1.0f" android:propertyName="scaleX" />
-    <objectAnimator android:duration="134" android:startOffset="866" android:valueFrom="0.86" android:valueTo="1.0f" android:propertyName="scaleY" />
-</set>
+<pathInterpolator android:controlX1="0.2" android:controlY1="0.0" android:controlX2="0.8" android:controlY2="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

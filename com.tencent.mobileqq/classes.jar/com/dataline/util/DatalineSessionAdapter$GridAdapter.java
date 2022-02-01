@@ -17,18 +17,18 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class DatalineSessionAdapter$GridAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  public ItemHolder a;
   public DataLineMsgSet a;
-  private AsyncImageView[] jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView = new AsyncImageView[3];
-  private int b;
+  public ItemHolder b;
+  private int d;
+  private int e;
+  private AsyncImageView[] f = new AsyncImageView[3];
   
   private DatalineSessionAdapter$GridAdapter(DatalineSessionAdapter paramDatalineSessionAdapter, ItemHolder paramItemHolder, DataLineMsgSet paramDataLineMsgSet, int paramInt)
   {
-    this.jdField_a_of_type_ComDatalineUtilItemHolder = paramItemHolder;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet = paramDataLineMsgSet;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramInt;
+    this.b = paramItemHolder;
+    this.a = paramDataLineMsgSet;
+    this.d = paramInt;
+    this.e = paramInt;
     b();
   }
   
@@ -37,20 +37,20 @@ class DatalineSessionAdapter$GridAdapter
     int i = 0;
     while (i < 3)
     {
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i] = new AsyncImageView(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComDatalineActivitiesLiteActivity);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Int, this.b));
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setAdjustViewBounds(false);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setDefaultImage(2130851161);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setIsDrawRound(false);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setAsyncClipSize(this.jdField_a_of_type_Int, this.b);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setClickable(true);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setLongClickable(true);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnClickListener(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnLongClickListener(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setOnTouchListener(this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i].setContentDescription(HardCodeUtil.a(2131702915));
+      this.f[i] = new AsyncImageView(this.c.c);
+      this.f[i].setLayoutParams(new AbsListView.LayoutParams(this.d, this.e));
+      this.f[i].setAdjustViewBounds(false);
+      this.f[i].setScaleType(ImageView.ScaleType.CENTER_CROP);
+      this.f[i].setDefaultImage(2130853415);
+      this.f[i].setIsDrawRound(false);
+      this.f[i].setAsyncClipSize(this.d, this.e);
+      this.f[i].setTag(this.b);
+      this.f[i].setClickable(true);
+      this.f[i].setLongClickable(true);
+      this.f[i].setOnClickListener(this.c.e);
+      this.f[i].setOnLongClickListener(this.c.c.R);
+      this.f[i].setOnTouchListener(this.c.c.S);
+      this.f[i].setContentDescription(HardCodeUtil.a(2131900892));
       i += 1;
     }
   }
@@ -60,12 +60,12 @@ class DatalineSessionAdapter$GridAdapter
     int i = 0;
     while (i < 3)
     {
-      AsyncImageView localAsyncImageView = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[i];
-      localAsyncImageView.setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
-      DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(i);
+      AsyncImageView localAsyncImageView = this.f[i];
+      localAsyncImageView.setTag(this.b);
+      DataLineMsgRecord localDataLineMsgRecord = this.a.getAt(i);
       if (localDataLineMsgRecord == null)
       {
-        localAsyncImageView.setImageResource(2130851161);
+        localAsyncImageView.setImageResource(2130853415);
       }
       else
       {
@@ -87,7 +87,7 @@ class DatalineSessionAdapter$GridAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(paramInt);
+    return this.a.getAt(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -104,12 +104,12 @@ class DatalineSessionAdapter$GridAdapter
     }
     else
     {
-      AsyncImageView localAsyncImageView = this.jdField_a_of_type_ArrayOfComDatalineUtilWidgetAsyncImageView[paramInt];
-      localAsyncImageView.setTag(this.jdField_a_of_type_ComDatalineUtilItemHolder);
-      DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getAt(paramInt);
+      AsyncImageView localAsyncImageView = this.f[paramInt];
+      localAsyncImageView.setTag(this.b);
+      DataLineMsgRecord localDataLineMsgRecord = this.a.getAt(paramInt);
       if (localDataLineMsgRecord == null)
       {
-        localAsyncImageView.setImageResource(2130851161);
+        localAsyncImageView.setImageResource(2130853415);
         localObject = localAsyncImageView;
       }
       else

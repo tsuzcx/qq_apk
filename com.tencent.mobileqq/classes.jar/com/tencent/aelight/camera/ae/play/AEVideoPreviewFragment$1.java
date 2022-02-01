@@ -1,7 +1,7 @@
 package com.tencent.aelight.camera.ae.play;
 
 import android.widget.SeekBar;
-import com.tencent.tavcut.player.MoviePlayer.onVideoProgressListener;
+import com.tencent.qcircle.tavcut.player.MoviePlayer.onVideoProgressListener;
 
 class AEVideoPreviewFragment$1
   implements MoviePlayer.onVideoProgressListener
@@ -17,7 +17,7 @@ class AEVideoPreviewFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoPreviewFragment.1
  * JD-Core Version:    0.7.0.1
  */

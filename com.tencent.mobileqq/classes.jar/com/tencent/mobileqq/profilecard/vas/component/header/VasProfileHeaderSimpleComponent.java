@@ -31,8 +31,8 @@ public class VasProfileHeaderSimpleComponent
   
   private void handleDiyCardClick(DataTag paramDataTag)
   {
-    if ((paramDataTag.jdField_a_of_type_JavaLangObject instanceof View)) {
-      ((View)paramDataTag.jdField_a_of_type_JavaLangObject).setVisibility(8);
+    if ((paramDataTag.b instanceof View)) {
+      ((View)paramDataTag.b).setVisibility(8);
     }
     goToDiyCardEditPage();
     VasWebviewUtil.a("", "card_mall", "0X8008119", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "", "");
@@ -99,7 +99,7 @@ public class VasProfileHeaderSimpleComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       DataTag localDataTag = (DataTag)paramView.getTag();
-      if (localDataTag.jdField_a_of_type_Int == 73) {
+      if (localDataTag.a == 73) {
         handleDiyCardClick(localDataTag);
       }
     }
@@ -108,7 +108,7 @@ public class VasProfileHeaderSimpleComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.VasProfileHeaderSimpleComponent
  * JD-Core Version:    0.7.0.1
  */

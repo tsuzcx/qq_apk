@@ -25,13 +25,13 @@ class PhoneUnityBindInfoActivity$2
       if (paramInt == 39)
       {
         paramString = this.a;
-        DialogUtil.a(paramString, 230, paramString.getString(2131694771), this.a.getString(2131694774), null, this.a.getString(2131692016), new PhoneUnityBindInfoActivity.2.2(this), null).show();
+        DialogUtil.a(paramString, 230, paramString.getString(2131892474), this.a.getString(2131892477), null, this.a.getString(2131888983), new PhoneUnityBindInfoActivity.2.2(this), null).show();
       }
       else
       {
         String str = paramString;
         if (TextUtils.isEmpty(paramString)) {
-          str = this.a.getString(2131694750);
+          str = this.a.getString(2131892453);
         }
         if (QLog.isColorLevel())
         {
@@ -40,7 +40,7 @@ class PhoneUnityBindInfoActivity$2
           paramString.append(paramInt);
           QLog.d("SecSvcObserver", 4, paramString.toString());
         }
-        QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, str, 0).show(this.a.getTitleBarHeight());
       }
       PhoneUnityBindInfoActivity.access$800(this.a).a = false;
       PhoneUnityBindInfoActivity.access$700(this.a).setChecked(false);
@@ -84,7 +84,7 @@ class PhoneUnityBindInfoActivity$2
     else
     {
       QLog.i("SecSvcObserver", 1, "onGetPhoneUnityInfo: re-pull PhoneUnityInfo fail, close self");
-      PhoneUnityBindInfoActivity.access$400(this.a, 2131694769);
+      PhoneUnityBindInfoActivity.access$400(this.a, 2131892472);
       PhoneUnityBindInfoActivity.access$200(this.a);
       if (PhoneUnityBindInfoActivity.access$500(this.a) == null) {
         PhoneUnityBindInfoActivity.access$502(this.a, new PhoneUnityBindInfoActivity.2.1(this));
@@ -149,9 +149,9 @@ class PhoneUnityBindInfoActivity$2
         {
           localObject = paramString;
           if (TextUtils.isEmpty(paramString)) {
-            localObject = this.a.getString(2131694767);
+            localObject = this.a.getString(2131892470);
           }
-          QQToast.a(this.a, (CharSequence)localObject, 0).b(this.a.getTitleBarHeight());
+          QQToast.makeText(this.a, (CharSequence)localObject, 0).show(this.a.getTitleBarHeight());
         }
       }
       PhoneUnityBindInfoActivity.access$700(this.a).setChecked(true);
@@ -164,7 +164,7 @@ class PhoneUnityBindInfoActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity.2
  * JD-Core Version:    0.7.0.1
  */

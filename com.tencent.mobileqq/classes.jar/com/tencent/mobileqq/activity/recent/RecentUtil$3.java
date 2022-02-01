@@ -9,12 +9,12 @@ final class RecentUtil$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    this.a.a(this.b, this.c, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.3
  * JD-Core Version:    0.7.0.1
  */

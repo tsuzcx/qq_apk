@@ -15,16 +15,16 @@ class SDKEmotionSettingManager$15
   
   public void onClick(View paramView)
   {
-    if (!SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager)) {
-      if (this.jdField_a_of_type_Int == 1)
+    if (!SDKEmotionSettingManager.l(this.c)) {
+      if (this.a == 1)
       {
-        SDKSetEmotionPreviewFragment.a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0), SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager), null);
+        SDKSetEmotionPreviewFragment.a((String)this.b.get(0), SDKEmotionSettingManager.a(this.c), null);
       }
       else
       {
         Intent localIntent = new Intent();
-        localIntent.putStringArrayListExtra("path_list", this.jdField_a_of_type_JavaUtilArrayList);
-        PublicFragmentActivity.a(SDKEmotionSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityEmogroupstoreSDKEmotionSettingManager), localIntent, SDKSetEmotionPreviewFragment.class);
+        localIntent.putStringArrayListExtra("path_list", this.b);
+        PublicFragmentActivity.a(SDKEmotionSettingManager.a(this.c), localIntent, SDKSetEmotionPreviewFragment.class);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -32,7 +32,7 @@ class SDKEmotionSettingManager$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.15
  * JD-Core Version:    0.7.0.1
  */

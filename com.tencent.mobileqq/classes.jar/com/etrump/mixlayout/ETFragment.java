@@ -13,37 +13,37 @@ import com.tencent.mobileqq.vas.font.api.IETFontAdapter;
 
 public class ETFragment
 {
-  private int jdField_a_of_type_Int = -1;
-  private CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
-  private ETParagraph jdField_a_of_type_ComEtrumpMixlayoutETParagraph;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
-  private int c;
-  private int d;
+  private ETParagraph a;
+  private String b;
+  private CharacterStyle c;
+  private int d = -1;
   private int e;
-  private int f = -1;
-  private int g = 0;
-  private int h = 0;
+  private int f;
+  private int g;
+  private int h;
+  private int i = -1;
+  private int j = 0;
+  private int k = 0;
   
   public ETFragment(CharacterStyle paramCharacterStyle, int paramInt)
   {
-    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
-    this.b = ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSpanWidth(paramCharacterStyle);
-    this.c = ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSpanHeight(paramCharacterStyle);
-    this.jdField_a_of_type_Int = paramInt;
-    this.e = 2;
+    this.c = paramCharacterStyle;
+    this.e = ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSpanWidth(paramCharacterStyle);
+    this.f = ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getSpanHeight(paramCharacterStyle);
+    this.d = paramInt;
+    this.h = 2;
   }
   
   public ETFragment(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = -1;
-    this.e = 0;
+    this.b = paramString;
+    this.g = -1;
+    this.h = 0;
   }
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, Paint paramPaint)
   {
-    ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).systemDrawSpan(paramCanvas, paramInt1, paramInt2, paramPaint, this.jdField_a_of_type_AndroidTextStyleCharacterStyle, a());
+    ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).systemDrawSpan(paramCanvas, paramInt1, paramInt2, paramPaint, this.c, c());
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, ETFont paramETFont, int paramInt1, int paramInt2)
@@ -57,8 +57,8 @@ public class ETFragment
     localPaint.setAntiAlias(true);
     localPaint.setDither(true);
     localPaint.setTextSize(paramETFont.getSize());
-    int i = (int)localPaint.getFontMetrics().ascent;
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, paramInt1, paramInt2 - i, localPaint);
+    int m = (int)localPaint.getFontMetrics().ascent;
+    paramCanvas.drawText(this.b, paramInt1, paramInt2 - m, localPaint);
   }
   
   private void a(Canvas paramCanvas, Paint paramPaint, ETFont paramETFont, int paramInt1, int paramInt2, int paramInt3)
@@ -70,105 +70,83 @@ public class ETFragment
     localPaint.reset();
     localPaint.setColor(paramETFont.getColor());
     localPaint.setStrokeWidth(paramETFont.getSize() / 12);
-    int i = this.b;
+    int m = this.e;
     float f1 = paramInt1;
     float f2 = paramInt2 + paramInt3 - 3;
-    paramCanvas.drawLine(f1, f2, i + paramInt1, f2, localPaint);
+    paramCanvas.drawLine(f1, f2, m + paramInt1, f2, localPaint);
   }
   
-  private void a(ETEngine paramETEngine)
+  private void b(ETEngine paramETEngine)
   {
-    ETFont localETFont = this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a();
+    ETFont localETFont = this.a.g();
     if ((localETFont != null) && (paramETEngine != null))
     {
-      Object localObject = this.jdField_a_of_type_JavaLangString;
+      Object localObject = this.b;
       if ((localObject != null) && (((String)localObject).length() != 0))
       {
         localObject = new Paint.FontMetrics();
         paramETEngine.native_getFontMetrics((Paint.FontMetrics)localObject, localETFont);
-        this.f = ((int)Math.abs(((Paint.FontMetrics)localObject).descent));
+        this.i = ((int)Math.abs(((Paint.FontMetrics)localObject).descent));
         return;
       }
-      this.f = 0;
+      this.i = 0;
       return;
     }
-    this.f = 0;
-  }
-  
-  public int a()
-  {
-    ETFont localETFont = this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a();
-    if (localETFont != null) {
-      return localETFont.getSize();
-    }
-    return 16;
+    this.i = 0;
   }
   
   public int a(ETEngine paramETEngine)
   {
-    if (this.f < 0) {
-      a(paramETEngine);
+    if (this.i < 0) {
+      b(paramETEngine);
     }
-    return this.f;
-  }
-  
-  public CharacterStyle a()
-  {
-    if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfEmoticonSpan(this.jdField_a_of_type_AndroidTextStyleCharacterStyle)) {
-      return this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-    }
-    return null;
-  }
-  
-  public ETParagraph a()
-  {
-    return this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph;
+    return this.i;
   }
   
   public String a()
   {
-    if (this.e == 0) {
-      return this.jdField_a_of_type_JavaLangString;
+    if (this.h == 0) {
+      return this.b;
     }
     return null;
   }
   
   public void a(int paramInt)
   {
-    if (this.e == 0)
+    if (this.h == 0)
     {
-      this.g = paramInt;
-      this.h = (paramInt + this.jdField_a_of_type_JavaLangString.length());
+      this.j = paramInt;
+      this.k = (paramInt + this.b.length());
       return;
     }
-    this.g = 0;
-    this.h = 0;
+    this.j = 0;
+    this.k = 0;
   }
   
   public void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramCanvas != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph != null))
+    if ((paramCanvas != null) && (this.a != null))
     {
       Paint localPaint = new Paint();
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a() == true)
+      if (this.a.d() == true)
       {
-        localPaint.setColor(this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.c());
+        localPaint.setColor(this.a.e());
         localPaint.setStyle(Paint.Style.FILL);
-        paramCanvas.drawRect(new Rect(paramInt1, paramInt2, this.b + paramInt1, paramInt2 + paramInt3), localPaint);
+        paramCanvas.drawRect(new Rect(paramInt1, paramInt2, this.e + paramInt1, paramInt2 + paramInt3), localPaint);
       }
-      if (this.jdField_a_of_type_AndroidTextStyleCharacterStyle != null)
+      if (this.c != null)
       {
-        a(paramCanvas, paramInt1, paramInt2 + paramInt3 - this.c, localPaint);
+        a(paramCanvas, paramInt1, paramInt2 + paramInt3 - this.f, localPaint);
         return;
       }
-      ETFont localETFont = this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a();
+      ETFont localETFont = this.a.g();
       if (localETFont == null) {
         return;
       }
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.b() == true) {
+      if (this.a.f() == true) {
         a(paramCanvas, localPaint, localETFont, paramInt1, paramInt2, paramInt3);
       }
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.e == 1)) {
+      if ((this.b != null) && (this.h == 1)) {
         a(paramCanvas, localPaint, localETFont, paramInt1, paramInt2);
       }
     }
@@ -178,25 +156,25 @@ public class ETFragment
   {
     if ((paramETEngine != null) && (paramBitmap != null))
     {
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph == null) {
+      if (this.a == null) {
         return;
       }
-      Object localObject = this.jdField_a_of_type_JavaLangString;
+      Object localObject = this.b;
       if (localObject != null)
       {
         if (((String)localObject).length() == 0) {
           return;
         }
-        if (this.e == 0)
+        if (this.h == 0)
         {
-          localObject = this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a();
+          localObject = this.a.g();
           if (paramETDecoration == null)
           {
-            paramETEngine.native_drawText(this.jdField_a_of_type_JavaLangString, paramBitmap, paramInt1, paramInt2, (ETFont)localObject);
+            paramETEngine.native_drawText(this.b, paramBitmap, paramInt1, paramInt2, (ETFont)localObject);
             return;
           }
           if (1 == paramETDecoration.getDecorationType()) {
-            paramETDecoration.drawFrameText(this.g, this.h, paramBitmap, paramInt1, paramInt2, (IETFont)localObject);
+            paramETDecoration.drawFrameText(this.j, this.k, paramBitmap, paramInt1, paramInt2, (IETFont)localObject);
           }
         }
       }
@@ -205,87 +183,77 @@ public class ETFragment
   
   public void a(ETParagraph paramETParagraph)
   {
-    this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph = paramETParagraph;
+    this.a = paramETParagraph;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public ETTextRange[] a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = this.e;
-    int j = 0;
-    if ((2 != i) && (1 != i))
+    int m = this.h;
+    int n = 0;
+    if ((2 != m) && (1 != m))
     {
-      Object localObject2 = this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a();
+      Object localObject2 = this.a.g();
       Object localObject3 = new Paint();
       ((Paint)localObject3).setTextSize(((ETFont)localObject2).getSize());
-      int k = this.jdField_a_of_type_JavaLangString.length();
-      localObject1 = new int[k];
-      paramETEngine.native_getTextWidths(this.jdField_a_of_type_JavaLangString, (ETFont)localObject2, (Paint)localObject3, (int[])localObject1);
-      paramETEngine = new ETTextRange[k];
-      i = paramInt1;
-      paramInt1 = j;
-      while (paramInt1 < k)
+      int i1 = this.b.length();
+      localObject1 = new int[i1];
+      paramETEngine.native_getTextWidths(this.b, (ETFont)localObject2, (Paint)localObject3, (int[])localObject1);
+      paramETEngine = new ETTextRange[i1];
+      m = paramInt1;
+      paramInt1 = n;
+      while (paramInt1 < i1)
       {
-        j = localObject1[paramInt1] + i;
-        localObject2 = new Rect(i, paramInt2, j, paramInt2 + paramInt3);
+        n = localObject1[paramInt1] + m;
+        localObject2 = new Rect(m, paramInt2, n, paramInt2 + paramInt3);
         localObject3 = new ETTextRange();
-        ((ETTextRange)localObject3).jdField_a_of_type_Int = paramInt4;
-        ((ETTextRange)localObject3).jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_JavaLangString.charAt(paramInt1));
-        ((ETTextRange)localObject3).jdField_a_of_type_AndroidGraphicsRect = ((Rect)localObject2);
+        ((ETTextRange)localObject3).b = paramInt4;
+        ((ETTextRange)localObject3).a = String.valueOf(this.b.charAt(paramInt1));
+        ((ETTextRange)localObject3).c = ((Rect)localObject2);
         paramETEngine[paramInt1] = localObject3;
         paramInt1 += 1;
-        i = j;
+        m = n;
       }
       return paramETEngine;
     }
-    paramETEngine = new Rect(paramInt1, paramInt2, this.b + paramInt1, paramInt3 + paramInt2);
+    paramETEngine = new Rect(paramInt1, paramInt2, this.e + paramInt1, paramInt3 + paramInt2);
     Object localObject1 = new ETTextRange();
-    ((ETTextRange)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    ((ETTextRange)localObject1).jdField_a_of_type_AndroidGraphicsRect = paramETEngine;
-    ((ETTextRange)localObject1).jdField_a_of_type_Int = paramInt4;
+    ((ETTextRange)localObject1).a = this.b;
+    ((ETTextRange)localObject1).c = paramETEngine;
+    ((ETTextRange)localObject1).b = paramInt4;
     return new ETTextRange[] { localObject1 };
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public CharacterStyle b()
-  {
-    return this.jdField_a_of_type_AndroidTextStyleCharacterStyle;
   }
   
   public String b()
   {
-    if (1 == this.e) {
-      return this.jdField_a_of_type_JavaLangString;
+    if (1 == this.h) {
+      return this.b;
     }
     return null;
   }
   
   public void b(int paramInt)
   {
-    this.b = paramInt;
+    this.e = paramInt;
   }
   
   public void b(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramCanvas != null) && (this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph != null))
+    if ((paramCanvas != null) && (this.a != null))
     {
       Paint localPaint = new Paint();
-      if (this.jdField_a_of_type_AndroidTextStyleCharacterStyle != null) {
+      if (this.c != null) {
         return;
       }
-      ETFont localETFont = this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.a();
+      ETFont localETFont = this.a.g();
       if (localETFont == null) {
         return;
       }
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETParagraph.b() == true) {
+      if (this.a.f() == true) {
         a(paramCanvas, localPaint, localETFont, paramInt1, paramInt2, paramInt3);
       }
     }
@@ -293,32 +261,64 @@ public class ETFragment
   
   public int c()
   {
-    return this.b;
+    ETFont localETFont = this.a.g();
+    if (localETFont != null) {
+      return localETFont.getSize();
+    }
+    return 16;
   }
   
   public void c(int paramInt)
   {
-    this.c = paramInt;
+    this.f = paramInt;
   }
   
   public int d()
   {
-    return this.c;
+    return this.d;
   }
   
   public void d(int paramInt)
   {
-    this.d = paramInt;
+    this.g = paramInt;
   }
   
   public int e()
   {
-    return this.d;
+    return this.e;
   }
   
   public void e(int paramInt)
   {
-    this.e = paramInt;
+    this.h = paramInt;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public ETParagraph h()
+  {
+    return this.a;
+  }
+  
+  public CharacterStyle i()
+  {
+    if (((IETFontAdapter)QRoute.api(IETFontAdapter.class)).isInstanceOfEmoticonSpan(this.c)) {
+      return this.c;
+    }
+    return null;
+  }
+  
+  public CharacterStyle j()
+  {
+    return this.c;
   }
 }
 

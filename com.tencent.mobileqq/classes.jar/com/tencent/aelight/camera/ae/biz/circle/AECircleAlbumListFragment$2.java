@@ -15,18 +15,18 @@ class AECircleAlbumListFragment$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("load Scroll Position,index:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" top:");
       localStringBuilder.append(this.b);
       QLog.d("AlbumListActivity", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleAlbumListFragment.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    this.c.f.setSelectionFromTop(this.a, this.b);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleAlbumListFragment.2
  * JD-Core Version:    0.7.0.1
  */

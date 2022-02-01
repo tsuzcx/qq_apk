@@ -4,6 +4,7 @@ import com.tencent.mobileqq.kandian.biz.feeds.api.FixPosArticleInterface.FixPosA
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @QAPI(process={"all"})
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IReadInJoyLogicEngineFactory
   extends QRouteApi
 {
-  @Nullable
+  @NotNull
   public abstract IReadInJoyLogicEngine createReadInJoyLogicEngine();
   
   @Nullable
@@ -28,7 +29,7 @@ public abstract interface IReadInJoyLogicEngineFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyLogicEngineFactory
  * JD-Core Version:    0.7.0.1
  */

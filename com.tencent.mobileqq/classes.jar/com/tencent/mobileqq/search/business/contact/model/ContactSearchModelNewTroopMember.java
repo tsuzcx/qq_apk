@@ -16,26 +16,26 @@ public class ContactSearchModelNewTroopMember
   
   public CharSequence a()
   {
-    if (SearchUtils.a(this.b)) {
-      return HardCodeUtil.a(2131702732);
+    if (SearchUtils.b(this.n)) {
+      return HardCodeUtil.a(2131900722);
     }
-    return HardCodeUtil.a(2131702698);
+    return HardCodeUtil.a(2131900688);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    if (!SearchUtils.a(this.b)) {
+    if (!SearchUtils.b(this.n)) {
       SearchUtils.a(paramView, this);
     }
     if (SearchConfigManager.needSeparate) {
-      SearchUtils.a("search", "contact", "contacts", 0, 0, new String[] { SearchUtils.a(this.b) });
+      SearchUtils.a("search", "contact", "contacts", 0, 0, new String[] { SearchUtils.a(this.n) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.model.ContactSearchModelNewTroopMember
  * JD-Core Version:    0.7.0.1
  */

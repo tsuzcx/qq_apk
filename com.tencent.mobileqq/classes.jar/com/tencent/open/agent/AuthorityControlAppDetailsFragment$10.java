@@ -18,12 +18,12 @@ class AuthorityControlAppDetailsFragment$10
     if (localBaseActivity != null) {
       localBaseActivity.doOnBackPressed();
     }
-    AuthorityControlAppDetailsFragment.a(this.a).a(null);
+    AuthorityControlAppDetailsFragment.n(this.a).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.10
  * JD-Core Version:    0.7.0.1
  */

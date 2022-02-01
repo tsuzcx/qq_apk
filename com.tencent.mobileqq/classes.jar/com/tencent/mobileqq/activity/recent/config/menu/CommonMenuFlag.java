@@ -29,7 +29,7 @@ public class CommonMenuFlag
     {
       localObject = (TroopManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_MANAGER);
       j = paramRecentBaseData.mMenuFlag;
-      if (((TroopManager)localObject).a(paramBaseQQAppInterface.mUser.uin)) {
+      if (((TroopManager)localObject).o(paramBaseQQAppInterface.mUser.uin)) {
         i = 32;
       }
       paramRecentBaseData.mMenuFlag = (j | i);
@@ -52,7 +52,7 @@ public class CommonMenuFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.menu.CommonMenuFlag
  * JD-Core Version:    0.7.0.1
  */

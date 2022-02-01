@@ -25,45 +25,42 @@ import java.util.List;
 
 public class NearbyMineHelper
 {
-  private static Object a;
-  public static final HashMap a;
   public static boolean a = false;
-  public static final String[] a;
+  public static final HashMap b = new HashMap();
+  public static final String[] c = { "100510.100511", "100510.100513", "100510.100514", "100510.100519", "100510.100521", "100510.100520", "100510.100516", "100510.100517", "100510.100524", "100510.100523" };
+  private static Object d = new Object();
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
     NearbyMyTabCard.NearbyMyTabConfigExtraVal localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100511";
     localNearbyMyTabConfigExtraVal.pathId = 100511;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10001), localNearbyMyTabConfigExtraVal);
+    b.put(Integer.valueOf(10001), localNearbyMyTabConfigExtraVal);
     localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100514";
     localNearbyMyTabConfigExtraVal.pathId = 100514;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10002), localNearbyMyTabConfigExtraVal);
+    b.put(Integer.valueOf(10002), localNearbyMyTabConfigExtraVal);
     localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100520";
     localNearbyMyTabConfigExtraVal.pathId = 100520;
     localNearbyMyTabConfigExtraVal.actionName = "0X80049F3";
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10003), localNearbyMyTabConfigExtraVal);
+    b.put(Integer.valueOf(10003), localNearbyMyTabConfigExtraVal);
     localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100521";
     localNearbyMyTabConfigExtraVal.pathId = 100521;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10004), localNearbyMyTabConfigExtraVal);
+    b.put(Integer.valueOf(10004), localNearbyMyTabConfigExtraVal);
     localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100517";
     localNearbyMyTabConfigExtraVal.pathId = 100517;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10005), localNearbyMyTabConfigExtraVal);
+    b.put(Integer.valueOf(10005), localNearbyMyTabConfigExtraVal);
     localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100513";
     localNearbyMyTabConfigExtraVal.pathId = 100513;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10006), localNearbyMyTabConfigExtraVal);
+    b.put(Integer.valueOf(10006), localNearbyMyTabConfigExtraVal);
     localNearbyMyTabConfigExtraVal = new NearbyMyTabCard.NearbyMyTabConfigExtraVal();
     localNearbyMyTabConfigExtraVal.path = "100510.100524";
     localNearbyMyTabConfigExtraVal.pathId = 100524;
-    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(10010), localNearbyMyTabConfigExtraVal);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "100510.100511", "100510.100513", "100510.100514", "100510.100519", "100510.100521", "100510.100520", "100510.100516", "100510.100517", "100510.100524", "100510.100523" };
-    jdField_a_of_type_JavaLangObject = new Object();
+    b.put(Integer.valueOf(10010), localNearbyMyTabConfigExtraVal);
   }
   
   public static int a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -137,7 +134,7 @@ public class NearbyMineHelper
     }
     Class[] arrayOfClass = new Class[1];
     arrayOfClass[0] = Object.class;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramAppInterface.getCurrentAccountUin());
@@ -238,7 +235,7 @@ public class NearbyMineHelper
       QLog.i("NewNearbyMyTab", 2, "updateNearbyNumAppinfo main. start");
     }
     IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
-    if ((jdField_a_of_type_Boolean) && (localIRedTouchManager.isNumRedTouchEnable(100510)))
+    if ((a) && (localIRedTouchManager.isNumRedTouchEnable(100510)))
     {
       int i;
       if (((Boolean)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(paramQQAppInterface.getAccount(), "nearby_event_file", 4, "config_show_date", Boolean.valueOf(false))).booleanValue()) {
@@ -319,12 +316,12 @@ public class NearbyMineHelper
       int k = 0;
       for (;;)
       {
-        paramArrayOfObject = jdField_a_of_type_ArrayOfJavaLangString;
+        paramArrayOfObject = c;
         if (j >= paramArrayOfObject.length) {
           break;
         }
         int i2 = Integer.parseInt(paramArrayOfObject[j].substring(paramArrayOfObject[j].lastIndexOf(".") + 1));
-        Object localObject2 = localIRedTouchManager.getAppInfoByPath(jdField_a_of_type_ArrayOfJavaLangString[j]);
+        Object localObject2 = localIRedTouchManager.getAppInfoByPath(c[j]);
         if ((((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info != null))
         {
           paramArrayOfObject = ((BusinessInfoCheckUpdate.AppInfo)localObject2).red_display_info.red_type_info.get();
@@ -491,7 +488,7 @@ public class NearbyMineHelper
         return;
       }
       NearbyUtils.a("Q.nearby", "storeNearbyMyTabCard", new Object[] { paramNearbyMyTabCard });
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (d)
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
@@ -520,7 +517,7 @@ public class NearbyMineHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper
  * JD-Core Version:    0.7.0.1
  */

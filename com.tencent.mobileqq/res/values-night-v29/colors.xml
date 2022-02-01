@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="aqt">#ff262626</color>
-    <color name="aqu">#ffe6e6e6</color>
-    <color name="aqv">#ff808080</color>
+    <color name="b8m">#ff262626</color>
+    <color name="b8n">#ffe6e6e6</color>
+    <color name="b8o">#ff808080</color>
 </resources>

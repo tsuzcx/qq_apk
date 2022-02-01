@@ -18,7 +18,7 @@ class IntimateInfoView$9
       if (paramBitmap == null) {
         return;
       }
-      IntimateInfoView.a(this.a).a(paramBitmap, paramString);
+      IntimateInfoView.k(this.a).a(paramBitmap, paramString);
       if (QLog.isColorLevel())
       {
         paramBitmap = new StringBuilder();
@@ -33,7 +33,7 @@ class IntimateInfoView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.9
  * JD-Core Version:    0.7.0.1
  */

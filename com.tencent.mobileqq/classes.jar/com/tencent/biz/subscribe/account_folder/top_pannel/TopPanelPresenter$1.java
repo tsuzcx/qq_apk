@@ -21,12 +21,12 @@ class TopPanelPresenter$1
     {
       paramBaseRequest = new StringBuilder();
       paramBaseRequest.append("sendRequest GetRecommendUserList success  time ==> ");
-      paramBaseRequest.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      paramBaseRequest.append(System.currentTimeMillis() - this.a);
       SLog.c("VSNetworkHelper", paramBaseRequest.toString());
       if (paramStGetRecommendUserListRsp != null)
       {
-        paramBaseRequest = TopPanelPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelPresenter, paramStGetRecommendUserListRsp);
-        TopPanelPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelPresenter, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
+        paramBaseRequest = TopPanelPresenter.a(this.b, paramStGetRecommendUserListRsp);
+        TopPanelPresenter.a(this.b, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
         int i = paramStGetRecommendUserListRsp.isFinish.get();
         paramBoolean = true;
         if (i != 1) {
@@ -38,7 +38,7 @@ class TopPanelPresenter$1
     }
     else
     {
-      SLog.c(TopPanelPresenter.a(), "sendRequest GetRecommendUserList error");
+      SLog.c(TopPanelPresenter.c(), "sendRequest GetRecommendUserList error");
     }
   }
 }

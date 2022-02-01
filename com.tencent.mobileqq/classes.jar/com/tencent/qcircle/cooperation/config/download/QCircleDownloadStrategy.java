@@ -15,7 +15,7 @@ public class QCircleDownloadStrategy
   
   public String getDownloadRootPath()
   {
-    return QCircleConstants.QCIRCLE_DOWNLOAD_ROOT_PATH;
+    return QCircleConstants.i;
   }
   
   public SharedPreferences getSP()
@@ -35,7 +35,7 @@ public class QCircleDownloadStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.cooperation.config.download.QCircleDownloadStrategy
  * JD-Core Version:    0.7.0.1
  */

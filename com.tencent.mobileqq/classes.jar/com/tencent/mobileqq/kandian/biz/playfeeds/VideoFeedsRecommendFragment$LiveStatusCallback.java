@@ -24,14 +24,14 @@ class VideoFeedsRecommendFragment$LiveStatusCallback
     {
       RIJLiveStatusModule.UserInfoItem localUserInfoItem = (RIJLiveStatusModule.UserInfoItem)paramList.next();
       paramInt = 0;
-      Iterator localIterator = VideoFeedsRecommendFragment.a(this.a).iterator();
+      Iterator localIterator = VideoFeedsRecommendFragment.e(this.a).iterator();
       while (localIterator.hasNext())
       {
         VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-        if ((!TextUtils.isEmpty(localVideoInfo.j)) && (localVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus == null) && (Long.parseLong(localVideoInfo.j) == localUserInfoItem.jdField_a_of_type_Long))
+        if ((!TextUtils.isEmpty(localVideoInfo.q)) && (localVideoInfo.aO == null) && (Long.parseLong(localVideoInfo.q) == localUserInfoItem.a))
         {
-          localVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus = localUserInfoItem.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus;
-          if (localUserInfoItem.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityLiveStatus.a == 1) {
+          localVideoInfo.aO = localUserInfoItem.b;
+          if (localUserInfoItem.b.a == 1) {
             paramInt = 1;
           }
         }
@@ -44,7 +44,7 @@ class VideoFeedsRecommendFragment$LiveStatusCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.LiveStatusCallback
  * JD-Core Version:    0.7.0.1
  */

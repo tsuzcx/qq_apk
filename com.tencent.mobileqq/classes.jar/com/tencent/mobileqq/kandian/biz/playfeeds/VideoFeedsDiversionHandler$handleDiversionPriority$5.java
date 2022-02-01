@@ -19,17 +19,17 @@ final class VideoFeedsDiversionHandler$handleDiversionPriority$5
   
   public final void invoke()
   {
-    UGDownloadInfo localUGDownloadInfo1 = this.$videoInfo.a;
-    UGDownloadInfo localUGDownloadInfo2 = this.$videoInfo.b;
+    UGDownloadInfo localUGDownloadInfo1 = this.$videoInfo.az;
+    UGDownloadInfo localUGDownloadInfo2 = this.$videoInfo.aA;
     VideoFeedsDiversionHandler.a(VideoFeedsDiversionHandler.a, this.$videoInfo);
     VideoInfo localVideoInfo = this.$videoInfo;
-    localVideoInfo.a = localUGDownloadInfo1;
-    localVideoInfo.b = localUGDownloadInfo2;
+    localVideoInfo.az = localUGDownloadInfo1;
+    localVideoInfo.aA = localUGDownloadInfo2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsDiversionHandler.handleDiversionPriority.5
  * JD-Core Version:    0.7.0.1
  */

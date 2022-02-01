@@ -21,15 +21,15 @@ class UniteGrayTipItemBuilder$4
     if (paramInt == 1)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
+        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.a), ",holder.mPosition=", Long.valueOf(this.b) });
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (GrayTipsMessageConstants.HighlightItem)localIterator.next();
         if (localObject != null)
         {
-          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((GrayTipsMessageConstants.HighlightItem)localObject).start, ((GrayTipsMessageConstants.HighlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
+          localObject = (ClickableSpan[])this.d.getSpans(((GrayTipsMessageConstants.HighlightItem)localObject).start, ((GrayTipsMessageConstants.HighlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
           if (localObject.length > 0) {
             localObject[0].onClick(paramView);
           }
@@ -40,7 +40,7 @@ class UniteGrayTipItemBuilder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

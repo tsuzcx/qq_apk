@@ -17,11 +17,11 @@ import java.util.Map;
 
 public class RichNodeFactory
 {
-  private static volatile RichNodeFactory jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeFactory;
   public static final String a;
-  private Map<Integer, ArkNodeConfig> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  private Map<Integer, NativeNodeConfig> b = new HashMap();
+  private static volatile RichNodeFactory d;
+  private Map<Integer, ArkNodeConfig> b = new HashMap();
+  private Map<Integer, NativeNodeConfig> c = new HashMap();
+  private boolean e = true;
   
   static
   {
@@ -29,33 +29,23 @@ public class RichNodeFactory
     localStringBuilder.append(Environment.getExternalStorageDirectory());
     localStringBuilder.append(File.separator);
     localStringBuilder.append("ArkApp");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-  }
-  
-  private IRichNode a(int paramInt)
-  {
-    IRichNode localIRichNode2 = c(paramInt);
-    IRichNode localIRichNode1 = localIRichNode2;
-    if (localIRichNode2 == null) {
-      localIRichNode1 = b(paramInt);
-    }
-    return localIRichNode1;
+    a = localStringBuilder.toString();
   }
   
   public static RichNodeFactory a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeFactory == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeFactory == null)
+        if (d == null)
         {
-          jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeFactory = new RichNodeFactory();
-          jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeFactory.b();
+          d = new RichNodeFactory();
+          d.c();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeFactory;
+    return d;
   }
   
   private void a(List<NativeNodeConfig> arg1, List<ArkNodeConfig> paramList1)
@@ -69,20 +59,20 @@ public class RichNodeFactory
         ((StringBuilder)???).append(???.size());
         QLog.d("RichNodeFactory", 2, ((StringBuilder)???).toString());
       }
-      synchronized (this.b)
+      synchronized (this.c)
       {
-        this.b.clear();
+        this.c.clear();
         ??? = ???.iterator();
         while (???.hasNext())
         {
           NativeNodeConfig localNativeNodeConfig = (NativeNodeConfig)???.next();
-          this.b.put(Integer.valueOf(localNativeNodeConfig.a()), localNativeNodeConfig);
+          this.c.put(Integer.valueOf(localNativeNodeConfig.a()), localNativeNodeConfig);
         }
       }
     }
-    synchronized (this.b)
+    synchronized (this.c)
     {
-      this.b.clear();
+      this.c.clear();
       if (QLog.isColorLevel()) {
         QLog.d("RichNodeFactory", 2, "updateConfig， nativesize = 0");
       }
@@ -95,21 +85,21 @@ public class RichNodeFactory
           ???.append(paramList1.size());
           QLog.d("RichNodeFactory", 2, ???.toString());
         }
-        synchronized (this.jdField_a_of_type_JavaUtilMap)
+        synchronized (this.b)
         {
-          this.jdField_a_of_type_JavaUtilMap.clear();
+          this.b.clear();
           paramList1 = paramList1.iterator();
           while (paramList1.hasNext())
           {
             ??? = (ArkNodeConfig)paramList1.next();
-            this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(((ArkNodeConfig)???).a()), ???);
+            this.b.put(Integer.valueOf(((ArkNodeConfig)???).b()), ???);
           }
           return;
         }
       }
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaUtilMap.clear();
+        this.b.clear();
         if (QLog.isColorLevel()) {
           QLog.d("RichNodeFactory", 2, "updateConfig， arksize = 0");
         }
@@ -124,9 +114,19 @@ public class RichNodeFactory
   
   private IRichNode b(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    IRichNode localIRichNode2 = d(paramInt);
+    IRichNode localIRichNode1 = localIRichNode2;
+    if (localIRichNode2 == null) {
+      localIRichNode1 = c(paramInt);
+    }
+    return localIRichNode1;
+  }
+  
+  private IRichNode c(int paramInt)
+  {
+    synchronized (this.b)
     {
-      ArkNodeConfig localArkNodeConfig = (ArkNodeConfig)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      ArkNodeConfig localArkNodeConfig = (ArkNodeConfig)this.b.get(Integer.valueOf(paramInt));
       if (localArkNodeConfig != null) {
         return new ArkRichNode(localArkNodeConfig);
       }
@@ -134,12 +134,12 @@ public class RichNodeFactory
     }
   }
   
-  private void b()
+  private void c()
   {
-    c();
+    d();
   }
   
-  private IRichNode c(int paramInt)
+  private IRichNode d(int paramInt)
   {
     if (paramInt == 101) {
       return new NativeTemplateOneRichNode();
@@ -147,7 +147,7 @@ public class RichNodeFactory
     return null;
   }
   
-  private void c()
+  private void d()
   {
     Object localObject2 = SearchRichConfBean.a();
     if (localObject2 == null)
@@ -157,15 +157,15 @@ public class RichNodeFactory
       }
       return;
     }
-    this.jdField_a_of_type_Boolean = ((SearchRichConfBean)localObject2).a();
+    this.e = ((SearchRichConfBean)localObject2).b();
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("mRichSwitchOn :");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.e);
       QLog.d("RichNodeFactory", 2, ((StringBuilder)localObject1).toString());
     }
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.e;
     ArrayList localArrayList = null;
     if (!bool)
     {
@@ -185,7 +185,7 @@ public class RichNodeFactory
           break;
         }
         localObject1 = (SearchRichConfBean.RichBaseTemplate)localIterator.next();
-        ((List)localObject2).add(new ArkNodeConfig(((SearchRichConfBean.RichBaseTemplate)localObject1).a, ((SearchRichConfBean.RichBaseTemplate)localObject1).b, ((SearchRichConfBean.RichBaseTemplate)localObject1).c, ((SearchRichConfBean.RichBaseTemplate)localObject1).d, "", null));
+        ((List)localObject2).add(new ArkNodeConfig(((SearchRichConfBean.RichBaseTemplate)localObject1).a, ((SearchRichConfBean.RichBaseTemplate)localObject1).c, ((SearchRichConfBean.RichBaseTemplate)localObject1).d, ((SearchRichConfBean.RichBaseTemplate)localObject1).e, "", null));
       }
     }
     localObject1 = null;
@@ -219,13 +219,13 @@ public class RichNodeFactory
       return null;
     }
     Object localObject = (RichSearchModelNode)paramIModel;
-    int i = ((RichSearchModelNode)localObject).f();
-    paramIModel = a(i);
+    int i = ((RichSearchModelNode)localObject).r();
+    paramIModel = b(i);
     if (paramIModel != null)
     {
-      String str1 = ((RichSearchModelNode)localObject).c();
-      String str2 = ((RichSearchModelNode)localObject).e();
-      localObject = ((RichSearchModelNode)localObject).d();
+      String str1 = ((RichSearchModelNode)localObject).s();
+      String str2 = ((RichSearchModelNode)localObject).v();
+      localObject = ((RichSearchModelNode)localObject).t();
       paramIModel.a(paramQQAppInterface, paramContext, i, str1, (String)localObject, str2);
       if (QLog.isColorLevel())
       {
@@ -242,11 +242,6 @@ public class RichNodeFactory
     return paramIModel;
   }
   
-  public void a()
-  {
-    c();
-  }
-  
   public boolean a(int paramInt)
   {
     if (QLog.isColorLevel())
@@ -256,21 +251,21 @@ public class RichNodeFactory
       ((StringBuilder)???).append(paramInt);
       QLog.d("RichNodeFactory", 2, ((StringBuilder)???).toString());
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RichNodeFactory", 2, "nodeExist， switch off");
       }
       return false;
     }
-    synchronized (this.b)
+    synchronized (this.c)
     {
-      if (this.b.get(Integer.valueOf(paramInt)) != null) {
+      if (this.c.get(Integer.valueOf(paramInt)) != null) {
         return true;
       }
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.b)
       {
-        ArkNodeConfig localArkNodeConfig = (ArkNodeConfig)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        ArkNodeConfig localArkNodeConfig = (ArkNodeConfig)this.b.get(Integer.valueOf(paramInt));
         if (localArkNodeConfig != null) {
           return true;
         }
@@ -278,10 +273,15 @@ public class RichNodeFactory
     }
     return false;
   }
+  
+  public void b()
+  {
+    d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeFactory
  * JD-Core Version:    0.7.0.1
  */

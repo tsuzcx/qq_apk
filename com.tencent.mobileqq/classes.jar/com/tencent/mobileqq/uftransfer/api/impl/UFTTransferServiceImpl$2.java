@@ -12,17 +12,17 @@ class UFTTransferServiceImpl$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo.b())
+    if (this.a.f())
     {
-      UFTTransferServiceImpl.access$300(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqUftransferApiImplUFTTransferKey, this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo, this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig, this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback);
+      UFTTransferServiceImpl.access$300(this.this$0).a(this.b, this.a, this.c, this.d);
       return;
     }
-    UFTTransferServiceImpl.access$000(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqUftransferApiImplUFTTransferKey, this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTC2CUploadInfo, this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig, this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadCallback);
+    UFTTransferServiceImpl.access$000(this.this$0).a(this.b, this.a, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.api.impl.UFTTransferServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

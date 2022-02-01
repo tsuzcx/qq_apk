@@ -10,41 +10,41 @@ import java.lang.ref.WeakReference;
 public class DetailGeneralCommentEventProxy$OnActionSheetButtonClickListener
   implements ActionSheet.OnButtonClickListener
 {
-  private final int jdField_a_of_type_Int;
-  private final CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
-  private final ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private WeakReference<DetailGeneralCommentEventProxy.ActionSheetEventCallback> jdField_a_of_type_JavaLangRefWeakReference;
+  private final CommentEntry a;
+  private final ActionSheet b;
+  private final int c;
+  private WeakReference<DetailGeneralCommentEventProxy.ActionSheetEventCallback> d;
   
   public DetailGeneralCommentEventProxy$OnActionSheetButtonClickListener(ActionSheet paramActionSheet, CommentEntry paramCommentEntry, int paramInt, DetailGeneralCommentEventProxy.ActionSheetEventCallback paramActionSheetEventCallback)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = paramActionSheet;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActionSheetEventCallback);
+    this.b = paramActionSheet;
+    this.a = paramCommentEntry;
+    this.c = paramInt;
+    this.d = new WeakReference(paramActionSheetEventCallback);
   }
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+    paramView = this.b.getContent(paramInt);
     SLog.a("Q.qqstory.detail.DetailGeneralCommentEventProxy", "on action sheet item click. item is %s.", paramView);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)
+    if (this.d.get() == null)
     {
       SLog.e("Q.qqstory.detail.DetailGeneralCommentEventProxy", "callback is null when action sheet item click.");
       return;
     }
-    DetailGeneralCommentEventProxy.ActionSheetEventCallback localActionSheetEventCallback = (DetailGeneralCommentEventProxy.ActionSheetEventCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    DetailGeneralCommentEventProxy.ActionSheetEventCallback localActionSheetEventCallback = (DetailGeneralCommentEventProxy.ActionSheetEventCallback)this.d.get();
     if (DetailGeneralCommentEventProxy.a.equals(paramView)) {
-      localActionSheetEventCallback.a(this.jdField_a_of_type_Int);
+      localActionSheetEventCallback.b(this.c);
     } else if (DetailGeneralCommentEventProxy.b.equals(paramView)) {
-      localActionSheetEventCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry, this.jdField_a_of_type_Int);
+      localActionSheetEventCallback.a(this.a, this.c);
     } else if (DetailGeneralCommentEventProxy.c.equals(paramView)) {
-      localActionSheetEventCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localActionSheetEventCallback.a(this.a);
     } else if (DetailGeneralCommentEventProxy.d.equals(paramView)) {
-      localActionSheetEventCallback.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localActionSheetEventCallback.b(this.a);
     } else if (DetailGeneralCommentEventProxy.e.equals(paramView)) {
-      localActionSheetEventCallback.c(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      localActionSheetEventCallback.c(this.a);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.dismiss();
   }
 }
 

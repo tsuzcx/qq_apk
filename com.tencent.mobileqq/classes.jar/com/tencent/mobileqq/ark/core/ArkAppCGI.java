@@ -31,26 +31,14 @@ import org.json.JSONObject;
 public class ArkAppCGI
   implements INetEngineListener
 {
-  static int jdField_a_of_type_Int;
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("Last-Modified[ ]*=[ ]*\\[([^\\[\\]]+)\\]");
-  private final ArkAppCenter jdField_a_of_type_ComTencentMobileqqArkBaseArkAppCenter;
-  private final ArrayList<ArkAppCGI.QueryTask> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  static int a;
+  private static final Pattern d = Pattern.compile("Last-Modified[ ]*=[ ]*\\[([^\\[\\]]+)\\]");
+  private final ArkAppCenter b;
+  private final ArrayList<ArkAppCGI.QueryTask> c = new ArrayList();
   
   public ArkAppCGI(ArkAppCenter paramArkAppCenter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkBaseArkAppCenter = paramArkAppCenter;
-  }
-  
-  private int a(String paramString)
-  {
-    int j = 5381;
-    int i = 0;
-    while (i < paramString.length())
-    {
-      j += (j << 5) + paramString.charAt(i);
-      i += 1;
-    }
-    return 0x7FFFFFFF & j;
+    this.b = paramArkAppCenter;
   }
   
   private static String a()
@@ -63,8 +51,8 @@ public class ArkAppCGI
       localObject1 = ((StringBuilder)localObject1).toString();
       new File((String)localObject1).mkdirs();
       long l = System.currentTimeMillis();
-      int i = jdField_a_of_type_Int + 1;
-      jdField_a_of_type_Int = i;
+      int i = a + 1;
+      a = i;
       localObject1 = String.format("%s/%s", new Object[] { localObject1, String.format("cgi_%d_%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) }) });
       return localObject1;
     }
@@ -145,7 +133,7 @@ public class ArkAppCGI
     Object localObject;
     if (!paramBoolean)
     {
-      QLog.i("ArkApp.ArkAppCGI", 1, String.format("onQueryPackageNameByAppID: fail, url=%s", new Object[] { paramQueryTask_QueryPackageNameByAppID.jdField_a_of_type_JavaLangString }));
+      QLog.i("ArkApp.ArkAppCGI", 1, String.format("onQueryPackageNameByAppID: fail, url=%s", new Object[] { paramQueryTask_QueryPackageNameByAppID.a }));
       paramArrayOfByte = null;
     }
     else
@@ -154,15 +142,15 @@ public class ArkAppCGI
       paramArrayOfByte = (byte[])localObject;
       if (localObject == null)
       {
-        QLog.i("ArkApp.ArkAppCGI", 1, String.format("onQueryPackageNameByAppID: parseReply fail, url=%s", new Object[] { paramQueryTask_QueryPackageNameByAppID.jdField_a_of_type_JavaLangString }));
+        QLog.i("ArkApp.ArkAppCGI", 1, String.format("onQueryPackageNameByAppID: parseReply fail, url=%s", new Object[] { paramQueryTask_QueryPackageNameByAppID.a }));
         paramArrayOfByte = (byte[])localObject;
       }
     }
     int i = 0;
-    while (i < paramQueryTask_QueryPackageNameByAppID.jdField_b_of_type_JavaUtilArrayList.size())
+    while (i < paramQueryTask_QueryPackageNameByAppID.e.size())
     {
-      localObject = paramQueryTask_QueryPackageNameByAppID.jdField_a_of_type_JavaUtilArrayList.get(i);
-      ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramQueryTask_QueryPackageNameByAppID.jdField_b_of_type_JavaUtilArrayList.get(i);
+      localObject = paramQueryTask_QueryPackageNameByAppID.d.get(i);
+      ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramQueryTask_QueryPackageNameByAppID.e.get(i);
       if (localArkAppCGICallback != null)
       {
         if (paramArrayOfByte != null) {
@@ -170,7 +158,7 @@ public class ArkAppCGI
         } else {
           paramBoolean = false;
         }
-        localArkAppCGICallback.a(paramBoolean, paramArrayOfByte, paramQueryTask_QueryPackageNameByAppID.d, localObject);
+        localArkAppCGICallback.a(paramBoolean, paramArrayOfByte, paramQueryTask_QueryPackageNameByAppID.j, localObject);
       }
       i += 1;
     }
@@ -178,16 +166,16 @@ public class ArkAppCGI
   
   private boolean a(String paramString, long paramLong, Object paramObject, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.c)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.c.iterator();
       while (localIterator.hasNext())
       {
         ArkAppCGI.QueryTask localQueryTask = (ArkAppCGI.QueryTask)localIterator.next();
-        if ((localQueryTask.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (localQueryTask.jdField_a_of_type_Long == paramLong))
+        if ((localQueryTask.a.equalsIgnoreCase(paramString)) && (localQueryTask.g == paramLong))
         {
-          localQueryTask.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-          localQueryTask.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+          localQueryTask.d.add(paramObject);
+          localQueryTask.e.add(paramArkAppCGICallback);
           return true;
         }
       }
@@ -199,28 +187,40 @@ public class ArkAppCGI
     }
   }
   
+  private int b(String paramString)
+  {
+    int j = 5381;
+    int i = 0;
+    while (i < paramString.length())
+    {
+      j += (j << 5) + paramString.charAt(i);
+      i += 1;
+    }
+    return 0x7FFFFFFF & j;
+  }
+  
   final void a(ArkAppCGI.QueryTask paramQueryTask, ArkAppCGI.ITaskHttpResult arg2)
   {
-    paramQueryTask.jdField_a_of_type_ComTencentMobileqqArkCoreArkAppCGI$ITaskHttpResult = ???;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    paramQueryTask.f = ???;
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramQueryTask);
-      ??? = this.jdField_a_of_type_ComTencentMobileqqArkBaseArkAppCenter.a();
+      this.c.add(paramQueryTask);
+      ??? = this.b.d();
       if (??? == null)
       {
         QLog.i("ArkApp.ArkAppCGI", 1, "runTask_retry, app is null, return");
         return;
       }
       File localFile = new File(a());
-      paramQueryTask.jdField_a_of_type_JavaIoFile = localFile;
+      paramQueryTask.b = localFile;
       HashMap localHashMap = new HashMap();
-      if (paramQueryTask.jdField_b_of_type_JavaLangString != null) {
-        localHashMap.put("Cookie", paramQueryTask.jdField_b_of_type_JavaLangString);
+      if (paramQueryTask.h != null) {
+        localHashMap.put("Cookie", paramQueryTask.h);
       }
-      if (paramQueryTask.c != null) {
-        localHashMap.put("Referer", paramQueryTask.c);
+      if (paramQueryTask.i != null) {
+        localHashMap.put("Referer", paramQueryTask.i);
       }
-      NetUtil.a(???, paramQueryTask.jdField_a_of_type_JavaLangString, localHashMap, localFile.toString(), new ArkAppCGI.1(this, paramQueryTask));
+      NetUtil.a(???, paramQueryTask.a, localHashMap, localFile.toString(), new ArkAppCGI.1(this, paramQueryTask));
       return;
     }
   }
@@ -232,7 +232,7 @@ public class ArkAppCGI
       QLog.i("ArkApp.ArkAppCGI", 1, "ArkSafe,doReport=null");
       return;
     }
-    ArkAppSSO localArkAppSSO = this.jdField_a_of_type_ComTencentMobileqqArkBaseArkAppCenter.a();
+    ArkAppSSO localArkAppSSO = this.b.k();
     if (localArkAppSSO == null) {
       return;
     }
@@ -247,7 +247,7 @@ public class ArkAppCGI
   {
     if ((paramString != null) && (paramString.length() > 0))
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqArkBaseArkAppCenter.a();
+      Object localObject1 = this.b.d();
       if (localObject1 == null)
       {
         QLog.i("ArkApp.ArkAppCGI", 1, "queryPackageNameByAppID, app is null, return");
@@ -258,7 +258,7 @@ public class ArkAppCGI
       if ((str1 != null) && (str1.length() > 0))
       {
         localObject2 = ((TicketManager)localObject2).getSkey(((AppRuntime)localObject1).getCurrentAccountUin());
-        String str2 = String.format("https://cgi.connect.qq.com/qqconnectwebsite/v2/appinfo/apkname/get?appid=%s&token=%d", new Object[] { paramString, Integer.valueOf(a(str1)) });
+        String str2 = String.format("https://cgi.connect.qq.com/qqconnectwebsite/v2/appinfo/apkname/get?appid=%s&token=%d", new Object[] { paramString, Integer.valueOf(b(str1)) });
         if (a(str2, -1L, paramObject, paramArkAppCGICallback)) {
           return;
         }
@@ -282,12 +282,12 @@ public class ArkAppCGI
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append("; skey=");
         localStringBuilder.append((String)localObject2);
-        localQueryTask_QueryPackageNameByAppID.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
-        localQueryTask_QueryPackageNameByAppID.jdField_a_of_type_JavaLangString = str2;
-        localQueryTask_QueryPackageNameByAppID.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-        localQueryTask_QueryPackageNameByAppID.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
-        localQueryTask_QueryPackageNameByAppID.d = paramString;
-        localQueryTask_QueryPackageNameByAppID.c = "https://connect.qq.com";
+        localQueryTask_QueryPackageNameByAppID.h = localStringBuilder.toString();
+        localQueryTask_QueryPackageNameByAppID.a = str2;
+        localQueryTask_QueryPackageNameByAppID.d.add(paramObject);
+        localQueryTask_QueryPackageNameByAppID.e.add(paramArkAppCGICallback);
+        localQueryTask_QueryPackageNameByAppID.j = paramString;
+        localQueryTask_QueryPackageNameByAppID.i = "https://connect.qq.com";
         a(localQueryTask_QueryPackageNameByAppID, new ArkAppCGI.3(this));
         return;
       }
@@ -318,7 +318,7 @@ public class ArkAppCGI
     if (bool1) {
       try
       {
-        localObject = localQueryTask.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
+        localObject = localQueryTask.c.toByteArray();
         bool2 = bool1;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
@@ -334,7 +334,7 @@ public class ArkAppCGI
     paramNetResp = (String)paramNetResp.mRespProperties.get("param_rspHeader");
     if (!TextUtils.isEmpty(paramNetResp))
     {
-      paramNetResp = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramNetResp);
+      paramNetResp = d.matcher(paramNetResp);
       if (!paramNetResp.find()) {}
     }
     try
@@ -342,14 +342,14 @@ public class ArkAppCGI
       paramNetResp = paramNetResp.group(1);
       localSimpleDateFormat2 = new SimpleDateFormat("E,d MMM y HH:mm:ss 'GMT'", Locale.US);
       localSimpleDateFormat2.setTimeZone(TimeZone.getTimeZone("GMT"));
-      localQueryTask.jdField_a_of_type_Long = localSimpleDateFormat2.parse(paramNetResp).getTime();
+      localQueryTask.g = localSimpleDateFormat2.parse(paramNetResp).getTime();
     }
     catch (ParseException paramNetResp)
     {
       label183:
       break label183;
     }
-    QLog.i("ArkApp.ArkAppCGI", 1, String.format("lastModified time parse fail, url=%s", new Object[] { localQueryTask.jdField_a_of_type_JavaLangString }));
+    QLog.i("ArkApp.ArkAppCGI", 1, String.format("lastModified time parse fail, url=%s", new Object[] { localQueryTask.a }));
     a(localQueryTask, bool2, localSimpleDateFormat1);
   }
   
@@ -357,7 +357,7 @@ public class ArkAppCGI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppCGI
  * JD-Core Version:    0.7.0.1
  */

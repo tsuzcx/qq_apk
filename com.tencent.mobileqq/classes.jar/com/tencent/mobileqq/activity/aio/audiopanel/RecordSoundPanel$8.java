@@ -11,12 +11,12 @@ class RecordSoundPanel$8
   public void run()
   {
     this.this$0.a();
-    ((AudioPanelAioHelper)this.this$0.a.a(128)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
+    ((AudioPanelAioHelper)this.this$0.a.q(128)).a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel.8
  * JD-Core Version:    0.7.0.1
  */

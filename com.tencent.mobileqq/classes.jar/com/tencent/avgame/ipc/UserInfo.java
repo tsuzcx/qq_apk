@@ -9,39 +9,39 @@ public class UserInfo
 {
   public static final Parcelable.Creator<UserInfo> CREATOR = new UserInfo.1();
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
   public String b;
-  public int c;
   public String c;
+  public boolean d;
+  public int e;
+  public int f;
+  public String g;
   
   protected UserInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.c = paramParcel.readString();
     boolean bool;
     if (paramParcel.readByte() != 0) {
       bool = true;
     } else {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    this.d = bool;
+    this.e = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    this.g = paramParcel.readString();
   }
   
   public UserInfo(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_JavaLangString = null;
+    this.a = 0;
+    this.b = paramString;
+    this.c = null;
+    this.d = false;
+    this.e = 0;
+    this.f = 0;
+    this.g = null;
   }
   
   public int describeContents()
@@ -53,32 +53,32 @@ public class UserInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{uin: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", type: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", name: ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", isFriend: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", age: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", gender: ");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", head: ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeByte((byte)this.d);
+    paramParcel.writeInt(this.e);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeString(this.g);
   }
 }
 

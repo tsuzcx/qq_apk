@@ -4,15 +4,15 @@ import org.json.JSONObject;
 
 public class TencentDocEditConvertConfigBean$TencentDocEditConvertConfigItem
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 0;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int = 0;
-  private String jdField_b_of_type_JavaLangString = "";
-  private String c = "";
+  private int a = 0;
+  private String b = "";
+  private float c = 1.0F;
   private String d = "";
   private String e = "";
   private String f = "";
+  private String g = "";
+  private String h = "";
+  private int i = 0;
   
   public static TencentDocEditConvertConfigItem a(JSONObject paramJSONObject)
   {
@@ -20,44 +20,29 @@ public class TencentDocEditConvertConfigBean$TencentDocEditConvertConfigItem
       return null;
     }
     TencentDocEditConvertConfigItem localTencentDocEditConvertConfigItem = new TencentDocEditConvertConfigItem();
-    localTencentDocEditConvertConfigItem.jdField_a_of_type_Int = paramJSONObject.getInt("type");
-    localTencentDocEditConvertConfigItem.jdField_a_of_type_JavaLangString = paramJSONObject.getString("color");
-    localTencentDocEditConvertConfigItem.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("alpha"));
-    localTencentDocEditConvertConfigItem.jdField_b_of_type_JavaLangString = paramJSONObject.getString("text");
-    localTencentDocEditConvertConfigItem.c = paramJSONObject.getString("tcolor");
-    localTencentDocEditConvertConfigItem.d = paramJSONObject.getString("icon");
-    localTencentDocEditConvertConfigItem.f = paramJSONObject.getString("tshow");
-    localTencentDocEditConvertConfigItem.e = paramJSONObject.getString("tpress");
-    localTencentDocEditConvertConfigItem.jdField_b_of_type_Int = paramJSONObject.getInt("click");
+    localTencentDocEditConvertConfigItem.a = paramJSONObject.getInt("type");
+    localTencentDocEditConvertConfigItem.b = paramJSONObject.getString("color");
+    localTencentDocEditConvertConfigItem.c = ((float)paramJSONObject.getDouble("alpha"));
+    localTencentDocEditConvertConfigItem.d = paramJSONObject.getString("text");
+    localTencentDocEditConvertConfigItem.e = paramJSONObject.getString("tcolor");
+    localTencentDocEditConvertConfigItem.f = paramJSONObject.getString("icon");
+    localTencentDocEditConvertConfigItem.h = paramJSONObject.getString("tshow");
+    localTencentDocEditConvertConfigItem.g = paramJSONObject.getString("tpress");
+    localTencentDocEditConvertConfigItem.i = paramJSONObject.getInt("click");
     return localTencentDocEditConvertConfigItem;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    return this.a;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
-  public String c()
+  public float c()
   {
     return this.c;
   }
@@ -76,10 +61,25 @@ public class TencentDocEditConvertConfigBean$TencentDocEditConvertConfigItem
   {
     return this.f;
   }
+  
+  public String g()
+  {
+    return this.g;
+  }
+  
+  public String h()
+  {
+    return this.h;
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocEditConvertConfigBean.TencentDocEditConvertConfigItem
  * JD-Core Version:    0.7.0.1
  */

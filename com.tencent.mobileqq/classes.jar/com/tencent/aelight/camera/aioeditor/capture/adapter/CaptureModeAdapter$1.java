@@ -14,16 +14,16 @@ class CaptureModeAdapter$1
     if (localInteger.intValue() == CaptureModeAdapter.a(this.a)) {
       return;
     }
-    ((TextView)CaptureModeAdapter.a(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.b(this.a));
+    ((TextView)CaptureModeAdapter.b(this.a).get(CaptureModeAdapter.a(this.a))).setTextColor(CaptureModeAdapter.c(this.a));
     CaptureModeAdapter.a(this.a, localInteger.intValue());
-    if (CaptureModeAdapter.a(this.a) != null) {
-      CaptureModeAdapter.a(this.a).a(localInteger.intValue(), paramView);
+    if (CaptureModeAdapter.d(this.a) != null) {
+      CaptureModeAdapter.d(this.a).a(localInteger.intValue(), paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.adapter.CaptureModeAdapter.1
  * JD-Core Version:    0.7.0.1
  */

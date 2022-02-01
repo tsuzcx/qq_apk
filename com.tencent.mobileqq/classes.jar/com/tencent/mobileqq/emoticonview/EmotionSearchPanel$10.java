@@ -69,7 +69,7 @@ class EmotionSearchPanel$10
           ((IEmosmService)QRoute.api(IEmosmService.class)).showEmoticonPanel(this.this$0.aioContext, 12);
         }
         this.this$0.startExitAinm();
-        if (!StringUtil.a(this.this$0.emotionInput.getText().toString())) {
+        if (!StringUtil.isEmpty(this.this$0.emotionInput.getText().toString())) {
           EmoticonUtils.report("0X800AE25", 0);
         }
       }
@@ -79,7 +79,7 @@ class EmotionSearchPanel$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel.10
  * JD-Core Version:    0.7.0.1
  */

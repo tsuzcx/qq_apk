@@ -13,13 +13,13 @@ class QQGamePadFaceFragment$1
     if ((!QQGamePadFaceFragment.a(this.a)) && (paramInt3 - paramInt1 > 0) && (paramInt4 - paramInt2 > 0))
     {
       QQGamePadFaceFragment.a(this.a, true);
-      QQGamePadFaceFragment.a(this.a);
+      QQGamePadFaceFragment.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment.1
  * JD-Core Version:    0.7.0.1
  */

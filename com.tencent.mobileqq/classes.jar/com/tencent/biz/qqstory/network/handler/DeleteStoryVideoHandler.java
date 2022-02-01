@@ -33,14 +33,14 @@ public class DeleteStoryVideoHandler
     paramDeleteVideoRespond.append(paramErrorMessage);
     SLog.c("Q.qqstory.player:DeleteStoryVideoHandler", paramDeleteVideoRespond.toString());
     paramDeleteVideoRespond = (StoryManager)SuperManager.a(5);
-    DeleteStoryVideoEvent localDeleteStoryVideoEvent = new DeleteStoryVideoEvent(paramErrorMessage, paramDeleteVideoRequest.a, false);
-    StoryVideoItem localStoryVideoItem = paramDeleteVideoRespond.a(paramDeleteVideoRequest.a);
+    DeleteStoryVideoEvent localDeleteStoryVideoEvent = new DeleteStoryVideoEvent(paramErrorMessage, paramDeleteVideoRequest.e, false);
+    StoryVideoItem localStoryVideoItem = paramDeleteVideoRespond.a(paramDeleteVideoRequest.e);
     if (localStoryVideoItem != null)
     {
       localDeleteStoryVideoEvent.b = localStoryVideoItem.mOwnerUid;
-      localDeleteStoryVideoEvent.a = localStoryVideoItem.mVideoIndex;
-      if (localDeleteStoryVideoEvent.a == 0L) {
-        localDeleteStoryVideoEvent.a = localStoryVideoItem.mCreateTime;
+      localDeleteStoryVideoEvent.e = localStoryVideoItem.mVideoIndex;
+      if (localDeleteStoryVideoEvent.e == 0L) {
+        localDeleteStoryVideoEvent.e = localStoryVideoItem.mCreateTime;
       }
     }
     if (paramErrorMessage.isFail())
@@ -48,8 +48,8 @@ public class DeleteStoryVideoHandler
       StoryDispatcher.a().dispatch(localDeleteStoryVideoEvent);
       return;
     }
-    b(paramDeleteVideoRequest.a);
-    paramDeleteVideoRespond.a(paramDeleteVideoRequest.a);
+    b(paramDeleteVideoRequest.e);
+    paramDeleteVideoRespond.j(paramDeleteVideoRequest.e);
     StoryDispatcher.a().dispatch(localDeleteStoryVideoEvent);
   }
   
@@ -100,7 +100,7 @@ public class DeleteStoryVideoHandler
         ((VideoCollectionItem)localObject).collectionCount -= 1;
         if (((VideoCollectionItem)localObject).collectionCount <= 0)
         {
-          localMemoryManager.a((VideoCollectionItem)localObject);
+          localMemoryManager.b((VideoCollectionItem)localObject);
           localUpdateMemoriesEvent.a.add(new DeleteStoryVideoHandler.StateVideoCollectionItem(1, (VideoCollectionItem)localObject));
         }
         else
@@ -114,7 +114,7 @@ public class DeleteStoryVideoHandler
       localVideoCollectionItem.collectionVideoUIItemList.remove(new VideoCollectionItem.FakeVideoUIItem(paramString, null));
       if (localVideoCollectionItem.collectionCount <= 0)
       {
-        localMemoryManager.a(localVideoCollectionItem);
+        localMemoryManager.b(localVideoCollectionItem);
         localUpdateMemoriesEvent.a.add(new DeleteStoryVideoHandler.StateVideoCollectionItem(1, localVideoCollectionItem));
       }
       else
@@ -131,7 +131,7 @@ public class DeleteStoryVideoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DeleteStoryVideoHandler
  * JD-Core Version:    0.7.0.1
  */

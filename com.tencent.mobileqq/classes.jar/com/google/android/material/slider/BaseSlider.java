@@ -28,6 +28,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.SeekBar;
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
@@ -35,6 +36,7 @@ import androidx.annotation.Dimension;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.math.MathUtils;
@@ -66,76 +68,76 @@ import java.util.List;
 abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeListener<S>, T extends BaseOnSliderTouchListener<S>>
   extends View
 {
-  static final int jdField_a_of_type_Int = R.style.H;
-  private static final String jdField_a_of_type_JavaLangString = "BaseSlider";
-  private float jdField_a_of_type_Float;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
+  static final int a = R.style.J;
+  private static final String b = "BaseSlider";
+  private int A;
+  private int B;
+  private int C;
+  private float D;
+  private MotionEvent E;
+  private LabelFormatter F;
+  private boolean G = false;
+  private float H;
+  private float I;
+  private ArrayList<Float> J = new ArrayList();
+  private int K = -1;
+  private int L = -1;
+  private float M = 0.0F;
+  private float[] N;
+  private boolean O = true;
+  private int P;
+  private boolean Q;
+  private boolean R = false;
+  private boolean S;
   @NonNull
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private ColorStateList T;
   @NonNull
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private final AccessibilityManager jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
+  private ColorStateList U;
   @NonNull
-  private final MaterialShapeDrawable jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable = new MaterialShapeDrawable();
-  private BaseSlider<S, L, T>.AccessibilityEventSender jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityEventSender;
+  private ColorStateList V;
   @NonNull
-  private final BaseSlider.AccessibilityHelper jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper;
+  private ColorStateList W;
   @NonNull
-  private final BaseSlider.TooltipDrawableFactory jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$TooltipDrawableFactory;
-  private LabelFormatter jdField_a_of_type_ComGoogleAndroidMaterialSliderLabelFormatter;
-  private ArrayList<Float> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ColorStateList Z;
   @NonNull
-  private final List<TooltipDrawable> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private float jdField_b_of_type_Float;
-  private final int jdField_b_of_type_Int;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
+  private final MaterialShapeDrawable aa = new MaterialShapeDrawable();
+  private float ab;
+  private int ac = 0;
   @NonNull
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
+  private final Paint c;
   @NonNull
-  private final Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private final Paint d;
   @NonNull
-  private final List<L> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
+  private final Paint e;
   @NonNull
-  private ColorStateList jdField_c_of_type_AndroidContentResColorStateList;
+  private final Paint f;
   @NonNull
-  private final Paint jdField_c_of_type_AndroidGraphicsPaint;
+  private final Paint g;
   @NonNull
-  private final List<T> jdField_c_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_c_of_type_Boolean = true;
-  private float jdField_d_of_type_Float = 0.0F;
-  private int jdField_d_of_type_Int;
+  private final Paint h;
   @NonNull
-  private ColorStateList jdField_d_of_type_AndroidContentResColorStateList;
+  private final BaseSlider.AccessibilityHelper i;
+  private final AccessibilityManager j;
+  private BaseSlider<S, L, T>.AccessibilityEventSender k;
   @NonNull
-  private final Paint jdField_d_of_type_AndroidGraphicsPaint;
-  private boolean jdField_d_of_type_Boolean;
-  private float jdField_e_of_type_Float;
-  private int jdField_e_of_type_Int;
+  private final BaseSlider.TooltipDrawableFactory l;
   @NonNull
-  private ColorStateList jdField_e_of_type_AndroidContentResColorStateList;
+  private final List<TooltipDrawable> m = new ArrayList();
   @NonNull
-  private final Paint jdField_e_of_type_AndroidGraphicsPaint;
-  private boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int;
+  private final List<L> n = new ArrayList();
   @NonNull
-  private final Paint jdField_f_of_type_AndroidGraphicsPaint;
-  private boolean jdField_f_of_type_Boolean;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
-  private int m = -1;
-  private int n = -1;
-  private int o;
-  private int p = 0;
+  private final List<T> o = new ArrayList();
+  private boolean p = false;
+  private ValueAnimator q;
+  private ValueAnimator r;
+  private final int s;
+  private int t;
+  private int u;
+  private int v;
+  private int w;
+  private int x;
+  private int y;
+  private int z;
   
   public BaseSlider(@NonNull Context paramContext)
   {
@@ -144,106 +146,40 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public BaseSlider(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.H);
+    this(paramContext, paramAttributeSet, R.attr.P);
   }
   
   public BaseSlider(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.jdField_d_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_d_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_e_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_f_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
+    this.c = new Paint();
+    this.c.setStyle(Paint.Style.STROKE);
+    this.c.setStrokeCap(Paint.Cap.ROUND);
+    this.d = new Paint();
+    this.d.setStyle(Paint.Style.STROKE);
+    this.d.setStrokeCap(Paint.Cap.ROUND);
+    this.e = new Paint(1);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this.f = new Paint(1);
+    this.f.setStyle(Paint.Style.FILL);
+    this.g = new Paint();
+    this.g.setStyle(Paint.Style.STROKE);
+    this.g.setStrokeCap(Paint.Cap.ROUND);
+    this.h = new Paint();
+    this.h.setStyle(Paint.Style.STROKE);
+    this.h.setStrokeCap(Paint.Cap.ROUND);
     a(paramContext.getResources());
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$TooltipDrawableFactory = new BaseSlider.1(this, paramAttributeSet, paramInt);
+    this.l = new BaseSlider.1(this, paramAttributeSet, paramInt);
     a(paramContext, paramAttributeSet, paramInt);
     setFocusable(true);
     setClickable(true);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.D(2);
-    this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper = new BaseSlider.AccessibilityHelper(this);
-    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper);
-    this.jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager = ((AccessibilityManager)getContext().getSystemService("accessibility"));
-  }
-  
-  private double a(float paramFloat)
-  {
-    float f1 = this.jdField_d_of_type_Float;
-    if (f1 > 0.0F)
-    {
-      int i1 = (int)((this.jdField_c_of_type_Float - this.jdField_b_of_type_Float) / f1);
-      double d1 = Math.round(paramFloat * i1);
-      double d2 = i1;
-      Double.isNaN(d1);
-      Double.isNaN(d2);
-      return d1 / d2;
-    }
-    return paramFloat;
-  }
-  
-  private float a(float paramFloat)
-  {
-    float f1 = this.jdField_b_of_type_Float;
-    paramFloat = (paramFloat - f1) / (this.jdField_c_of_type_Float - f1);
-    if (c()) {
-      return 1.0F - paramFloat;
-    }
-    return paramFloat;
-  }
-  
-  private float a(int paramInt)
-  {
-    float f1 = f();
-    float f2 = (this.jdField_c_of_type_Float - this.jdField_b_of_type_Float) / f1;
-    float f3 = paramInt;
-    if (f2 <= f3) {
-      return f1;
-    }
-    return Math.round(f2 / f3) * f1;
-  }
-  
-  private float a(int paramInt, float paramFloat)
-  {
-    float f2 = this.jdField_d_of_type_Float;
-    float f1 = 0.0F;
-    if (f2 == 0.0F) {
-      f1 = c();
-    }
-    f2 = f1;
-    if (this.p == 0) {
-      f2 = b(f1);
-    }
-    f1 = f2;
-    if (c()) {
-      f1 = -f2;
-    }
-    int i1 = paramInt + 1;
-    if (i1 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-      f2 = this.jdField_c_of_type_Float;
-    } else {
-      f2 = ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(i1)).floatValue() - f1;
-    }
-    paramInt -= 1;
-    if (paramInt < 0) {
-      f1 = this.jdField_b_of_type_Float;
-    } else {
-      f1 = ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).floatValue() + f1;
-    }
-    return MathUtils.clamp(paramFloat, f1, f2);
+    this.aa.D(2);
+    this.s = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.i = new BaseSlider.AccessibilityHelper(this);
+    ViewCompat.setAccessibilityDelegate(this, this.i);
+    this.j = ((AccessibilityManager)getContext().getSystemService("accessibility"));
   }
   
   private static float a(ValueAnimator paramValueAnimator, float paramFloat)
@@ -282,9 +218,9 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
     }
     Object localObject;
     if (paramBoolean) {
-      localObject = this.jdField_b_of_type_AndroidAnimationValueAnimator;
+      localObject = this.r;
     } else {
-      localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+      localObject = this.q;
     }
     float f3 = a((ValueAnimator)localObject, f1);
     float f1 = f2;
@@ -327,38 +263,399 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
         default: 
           return null;
         case 22: 
-          b(1);
+          d(1);
           return Boolean.valueOf(true);
         case 21: 
-          b(-1);
+          d(-1);
           return Boolean.valueOf(true);
-          a(-1);
+          c(-1);
           return Boolean.valueOf(true);
           label91:
-          a(1);
+          c(1);
           return Boolean.valueOf(true);
         }
       }
-      this.m = this.n;
+      this.K = this.L;
       postInvalidate();
       return Boolean.valueOf(true);
     }
     if (paramKeyEvent.hasNoModifiers()) {
-      return Boolean.valueOf(a(1));
+      return Boolean.valueOf(c(1));
     }
     if (paramKeyEvent.isShiftPressed()) {
-      return Boolean.valueOf(a(-1));
+      return Boolean.valueOf(c(-1));
     }
     return Boolean.valueOf(false);
   }
   
-  private Float a(int paramInt)
+  private void a(int paramInt)
+  {
+    this.P = Math.max(paramInt - this.y * 2, 0);
+    l();
+  }
+  
+  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    TypedArray localTypedArray = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.gs, paramInt, a, new int[0]);
+    this.H = localTypedArray.getFloat(R.styleable.gv, 0.0F);
+    this.I = localTypedArray.getFloat(R.styleable.gw, 1.0F);
+    setValues(new Float[] { Float.valueOf(this.H) });
+    this.M = localTypedArray.getFloat(R.styleable.gu, 0.0F);
+    boolean bool = localTypedArray.hasValue(R.styleable.gK);
+    if (bool) {
+      paramInt = R.styleable.gK;
+    } else {
+      paramInt = R.styleable.gM;
+    }
+    int i1;
+    if (bool) {
+      i1 = R.styleable.gK;
+    } else {
+      i1 = R.styleable.gL;
+    }
+    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, paramInt);
+    if (paramAttributeSet == null) {
+      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.k);
+    }
+    setTrackInactiveTintList(paramAttributeSet);
+    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, i1);
+    if (paramAttributeSet == null) {
+      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.h);
+    }
+    setTrackActiveTintList(paramAttributeSet);
+    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, R.styleable.gB);
+    this.aa.g(paramAttributeSet);
+    if (localTypedArray.hasValue(R.styleable.gE)) {
+      setThumbStrokeColor(MaterialResources.a(paramContext, localTypedArray, R.styleable.gE));
+    }
+    setThumbStrokeWidth(localTypedArray.getDimension(R.styleable.gF, 0.0F));
+    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, R.styleable.gx);
+    if (paramAttributeSet == null) {
+      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.i);
+    }
+    setHaloTintList(paramAttributeSet);
+    this.O = localTypedArray.getBoolean(R.styleable.gJ, true);
+    bool = localTypedArray.hasValue(R.styleable.gG);
+    if (bool) {
+      paramInt = R.styleable.gG;
+    } else {
+      paramInt = R.styleable.gI;
+    }
+    if (bool) {
+      i1 = R.styleable.gG;
+    } else {
+      i1 = R.styleable.gH;
+    }
+    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, paramInt);
+    if (paramAttributeSet == null) {
+      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.j);
+    }
+    setTickInactiveTintList(paramAttributeSet);
+    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, i1);
+    if (paramAttributeSet != null) {
+      paramContext = paramAttributeSet;
+    } else {
+      paramContext = AppCompatResources.getColorStateList(paramContext, R.color.g);
+    }
+    setTickActiveTintList(paramContext);
+    setThumbRadius(localTypedArray.getDimensionPixelSize(R.styleable.gD, 0));
+    setHaloRadius(localTypedArray.getDimensionPixelSize(R.styleable.gy, 0));
+    setThumbElevation(localTypedArray.getDimension(R.styleable.gC, 0.0F));
+    setTrackHeight(localTypedArray.getDimensionPixelSize(R.styleable.gN, 0));
+    this.w = localTypedArray.getInt(R.styleable.gz, 0);
+    if (!localTypedArray.getBoolean(R.styleable.gt, true)) {
+      setEnabled(false);
+    }
+    localTypedArray.recycle();
+  }
+  
+  private void a(@NonNull Resources paramResources)
+  {
+    this.v = paramResources.getDimensionPixelSize(R.dimen.ao);
+    this.t = paramResources.getDimensionPixelOffset(R.dimen.am);
+    this.y = this.t;
+    this.u = paramResources.getDimensionPixelSize(R.dimen.al);
+    this.z = paramResources.getDimensionPixelOffset(R.dimen.an);
+    this.C = paramResources.getDimensionPixelSize(R.dimen.ak);
+  }
+  
+  private void a(@NonNull Canvas paramCanvas)
+  {
+    if (this.O)
+    {
+      if (this.M <= 0.0F) {
+        return;
+      }
+      float[] arrayOfFloat = getActiveRange();
+      int i2 = a(this.N, arrayOfFloat[0]);
+      int i1 = a(this.N, arrayOfFloat[1]);
+      arrayOfFloat = this.N;
+      i2 *= 2;
+      paramCanvas.drawPoints(arrayOfFloat, 0, i2, this.g);
+      arrayOfFloat = this.N;
+      i1 *= 2;
+      paramCanvas.drawPoints(arrayOfFloat, i2, i1 - i2, this.h);
+      arrayOfFloat = this.N;
+      paramCanvas.drawPoints(arrayOfFloat, i1, arrayOfFloat.length - i1, this.g);
+    }
+  }
+  
+  private void a(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    float[] arrayOfFloat = getActiveRange();
+    int i1 = this.y;
+    float f2 = i1;
+    float f3 = arrayOfFloat[1];
+    float f1 = paramInt1;
+    f2 += f3 * f1;
+    if (f2 < i1 + paramInt1)
+    {
+      f3 = paramInt2;
+      paramCanvas.drawLine(f2, f3, i1 + paramInt1, f3, this.c);
+    }
+    paramInt1 = this.y;
+    f1 = paramInt1 + arrayOfFloat[0] * f1;
+    if (f1 > paramInt1)
+    {
+      f2 = paramInt1;
+      f3 = paramInt2;
+      paramCanvas.drawLine(f2, f3, f1, f3, this.c);
+    }
+  }
+  
+  private void a(TooltipDrawable paramTooltipDrawable)
+  {
+    paramTooltipDrawable.a(ViewUtils.f(this));
+  }
+  
+  private void a(TooltipDrawable paramTooltipDrawable, float paramFloat)
+  {
+    paramTooltipDrawable.a(g(paramFloat));
+    int i1 = this.y + (int)(b(paramFloat) * this.P) - paramTooltipDrawable.getIntrinsicWidth() / 2;
+    int i2 = n() - (this.C + this.A);
+    paramTooltipDrawable.setBounds(i1, i2 - paramTooltipDrawable.getIntrinsicHeight(), paramTooltipDrawable.getIntrinsicWidth() + i1, i2);
+    Rect localRect = new Rect(paramTooltipDrawable.getBounds());
+    DescendantOffsetUtils.a(ViewUtils.f(this), this, localRect);
+    paramTooltipDrawable.setBounds(localRect);
+    ViewUtils.g(this).a(paramTooltipDrawable);
+  }
+  
+  private boolean a(float paramFloat)
+  {
+    double d1 = new BigDecimal(Float.toString(paramFloat)).subtract(new BigDecimal(Float.toString(this.H))).divide(new BigDecimal(Float.toString(this.M)), MathContext.DECIMAL64).doubleValue();
+    double d2 = Math.round(d1);
+    Double.isNaN(d2);
+    return Math.abs(d2 - d1) < 0.0001D;
+  }
+  
+  private boolean a(int paramInt, float paramFloat)
+  {
+    if (Math.abs(paramFloat - ((Float)this.J.get(paramInt)).floatValue()) < 0.0001D) {
+      return false;
+    }
+    paramFloat = b(paramInt, paramFloat);
+    this.J.set(paramInt, Float.valueOf(paramFloat));
+    this.L = paramInt;
+    b(paramInt);
+    return true;
+  }
+  
+  private float b(float paramFloat)
+  {
+    float f1 = this.H;
+    paramFloat = (paramFloat - f1) / (this.I - f1);
+    if (c()) {
+      return 1.0F - paramFloat;
+    }
+    return paramFloat;
+  }
+  
+  private float b(int paramInt, float paramFloat)
+  {
+    float f2 = this.M;
+    float f1 = 0.0F;
+    if (f2 == 0.0F) {
+      f1 = getMinSeparation();
+    }
+    f2 = f1;
+    if (this.ac == 0) {
+      f2 = e(f1);
+    }
+    f1 = f2;
+    if (c()) {
+      f1 = -f2;
+    }
+    int i1 = paramInt + 1;
+    if (i1 >= this.J.size()) {
+      f2 = this.I;
+    } else {
+      f2 = ((Float)this.J.get(i1)).floatValue() - f1;
+    }
+    paramInt -= 1;
+    if (paramInt < 0) {
+      f1 = this.H;
+    } else {
+      f1 = ((Float)this.J.get(paramInt)).floatValue() + f1;
+    }
+    return MathUtils.clamp(paramFloat, f1, f2);
+  }
+  
+  @NonNull
+  private static TooltipDrawable b(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray)
+  {
+    return TooltipDrawable.a(paramContext, null, 0, paramTypedArray.getResourceId(R.styleable.gA, R.style.N));
+  }
+  
+  private void b(int paramInt)
+  {
+    Object localObject = this.n.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((BaseOnChangeListener)((Iterator)localObject).next()).a(this, ((Float)this.J.get(paramInt)).floatValue(), true);
+    }
+    localObject = this.j;
+    if ((localObject != null) && (((AccessibilityManager)localObject).isEnabled())) {
+      h(paramInt);
+    }
+  }
+  
+  private void b(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    float[] arrayOfFloat = getActiveRange();
+    int i1 = this.y;
+    float f1 = i1;
+    float f2 = arrayOfFloat[1];
+    float f3 = paramInt1;
+    float f4 = i1;
+    float f5 = arrayOfFloat[0];
+    float f6 = paramInt2;
+    paramCanvas.drawLine(f4 + f5 * f3, f6, f1 + f2 * f3, f6, this.d);
+  }
+  
+  private void b(TooltipDrawable paramTooltipDrawable)
+  {
+    ViewOverlayImpl localViewOverlayImpl = ViewUtils.g(this);
+    if (localViewOverlayImpl != null)
+    {
+      localViewOverlayImpl.b(paramTooltipDrawable);
+      paramTooltipDrawable.b(ViewUtils.f(this));
+    }
+  }
+  
+  private double c(float paramFloat)
+  {
+    float f1 = this.M;
+    if (f1 > 0.0F)
+    {
+      int i1 = (int)((this.I - this.H) / f1);
+      double d1 = Math.round(paramFloat * i1);
+      double d2 = i1;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      return d1 / d2;
+    }
+    return paramFloat;
+  }
+  
+  private void c(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    Float localFloat;
+    if (!isEnabled())
+    {
+      localIterator = this.J.iterator();
+      while (localIterator.hasNext())
+      {
+        localFloat = (Float)localIterator.next();
+        paramCanvas.drawCircle(this.y + b(localFloat.floatValue()) * paramInt1, paramInt2, this.A, this.e);
+      }
+    }
+    Iterator localIterator = this.J.iterator();
+    while (localIterator.hasNext())
+    {
+      localFloat = (Float)localIterator.next();
+      paramCanvas.save();
+      int i1 = this.y;
+      int i2 = (int)(b(localFloat.floatValue()) * paramInt1);
+      int i3 = this.A;
+      paramCanvas.translate(i1 + i2 - i3, paramInt2 - i3);
+      this.aa.draw(paramCanvas);
+      paramCanvas.restore();
+    }
+  }
+  
+  private boolean c(int paramInt)
+  {
+    int i1 = this.L;
+    this.L = ((int)MathUtils.clamp(i1 + paramInt, 0L, this.J.size() - 1));
+    paramInt = this.L;
+    if (paramInt == i1) {
+      return false;
+    }
+    if (this.K != -1) {
+      this.K = paramInt;
+    }
+    m();
+    postInvalidate();
+    return true;
+  }
+  
+  private void d()
+  {
+    int i1 = Math.max(this.A - this.u, 0);
+    this.y = (this.t + i1);
+    if (ViewCompat.isLaidOut(this)) {
+      a(getWidth());
+    }
+  }
+  
+  private void d(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    if (o())
+    {
+      paramInt1 = (int)(this.y + b(((Float)this.J.get(this.L)).floatValue()) * paramInt1);
+      if (Build.VERSION.SDK_INT < 28)
+      {
+        int i1 = this.B;
+        paramCanvas.clipRect(paramInt1 - i1, paramInt2 - i1, paramInt1 + i1, i1 + paramInt2, Region.Op.UNION);
+      }
+      paramCanvas.drawCircle(paramInt1, paramInt2, this.B, this.f);
+    }
+  }
+  
+  private boolean d(float paramFloat)
+  {
+    return a(this.K, paramFloat);
+  }
+  
+  private boolean d(int paramInt)
+  {
+    int i1 = paramInt;
+    if (c()) {
+      if (paramInt == -2147483648) {
+        i1 = 2147483647;
+      } else {
+        i1 = -paramInt;
+      }
+    }
+    return c(i1);
+  }
+  
+  private float e(float paramFloat)
+  {
+    if (paramFloat == 0.0F) {
+      return 0.0F;
+    }
+    paramFloat = (paramFloat - this.y) / this.P;
+    float f1 = this.H;
+    return paramFloat * (f1 - this.I) + f1;
+  }
+  
+  private Float e(int paramInt)
   {
     float f1;
-    if (this.jdField_e_of_type_Boolean) {
-      f1 = a(20);
+    if (this.R) {
+      f1 = f(20);
     } else {
-      f1 = f();
+      f1 = x();
     }
     if (paramInt != 21)
     {
@@ -385,10 +682,44 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
     return Float.valueOf(f1);
   }
   
-  private String a(float paramFloat)
+  private void e()
+  {
+    float f1 = this.H;
+    if (f1 < this.I) {
+      return;
+    }
+    throw new IllegalStateException(String.format("valueFrom(%s) must be smaller than valueTo(%s)", new Object[] { Float.toString(f1), Float.toString(this.I) }));
+  }
+  
+  private float f(float paramFloat)
+  {
+    return b(paramFloat) * this.P + this.y;
+  }
+  
+  private float f(int paramInt)
+  {
+    float f1 = x();
+    float f2 = (this.I - this.H) / f1;
+    float f3 = paramInt;
+    if (f2 <= f3) {
+      return f1;
+    }
+    return Math.round(f2 / f3) * f1;
+  }
+  
+  private void f()
+  {
+    float f1 = this.I;
+    if (f1 > this.H) {
+      return;
+    }
+    throw new IllegalStateException(String.format("valueTo(%s) must be greater than valueFrom(%s)", new Object[] { Float.toString(f1), Float.toString(this.H) }));
+  }
+  
+  private String g(float paramFloat)
   {
     if (a()) {
-      return this.jdField_a_of_type_ComGoogleAndroidMaterialSliderLabelFormatter.a(paramFloat);
+      return this.F.a(paramFloat);
     }
     String str;
     if ((int)paramFloat == paramFloat) {
@@ -399,444 +730,18 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
     return String.format(str, new Object[] { Float.valueOf(paramFloat) });
   }
   
-  private void a()
+  private void g()
   {
-    int i1 = Math.max(this.j - this.jdField_d_of_type_Int, 0);
-    this.h = (this.jdField_c_of_type_Int + i1);
-    if (ViewCompat.isLaidOut(this)) {
-      c(getWidth());
-    }
-  }
-  
-  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
-  {
-    TypedArray localTypedArray = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.ar, paramInt, jdField_a_of_type_Int, new int[0]);
-    this.jdField_b_of_type_Float = localTypedArray.getFloat(R.styleable.eo, 0.0F);
-    this.jdField_c_of_type_Float = localTypedArray.getFloat(R.styleable.ep, 1.0F);
-    setValues(new Float[] { Float.valueOf(this.jdField_b_of_type_Float) });
-    this.jdField_d_of_type_Float = localTypedArray.getFloat(R.styleable.en, 0.0F);
-    boolean bool = localTypedArray.hasValue(R.styleable.eD);
-    if (bool) {
-      paramInt = R.styleable.eD;
-    } else {
-      paramInt = R.styleable.eF;
-    }
-    int i1;
-    if (bool) {
-      i1 = R.styleable.eD;
-    } else {
-      i1 = R.styleable.eE;
-    }
-    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, paramInt);
-    if (paramAttributeSet == null) {
-      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.k);
-    }
-    setTrackInactiveTintList(paramAttributeSet);
-    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, i1);
-    if (paramAttributeSet == null) {
-      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.h);
-    }
-    setTrackActiveTintList(paramAttributeSet);
-    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, R.styleable.eu);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(paramAttributeSet);
-    if (localTypedArray.hasValue(R.styleable.ex)) {
-      setThumbStrokeColor(MaterialResources.a(paramContext, localTypedArray, R.styleable.ex));
-    }
-    setThumbStrokeWidth(localTypedArray.getDimension(R.styleable.ey, 0.0F));
-    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, R.styleable.eq);
-    if (paramAttributeSet == null) {
-      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.i);
-    }
-    setHaloTintList(paramAttributeSet);
-    this.jdField_c_of_type_Boolean = localTypedArray.getBoolean(R.styleable.eC, true);
-    bool = localTypedArray.hasValue(R.styleable.ez);
-    if (bool) {
-      paramInt = R.styleable.ez;
-    } else {
-      paramInt = R.styleable.eB;
-    }
-    if (bool) {
-      i1 = R.styleable.ez;
-    } else {
-      i1 = R.styleable.eA;
-    }
-    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, paramInt);
-    if (paramAttributeSet == null) {
-      paramAttributeSet = AppCompatResources.getColorStateList(paramContext, R.color.j);
-    }
-    setTickInactiveTintList(paramAttributeSet);
-    paramAttributeSet = MaterialResources.a(paramContext, localTypedArray, i1);
-    if (paramAttributeSet != null) {
-      paramContext = paramAttributeSet;
-    } else {
-      paramContext = AppCompatResources.getColorStateList(paramContext, R.color.g);
-    }
-    setTickActiveTintList(paramContext);
-    setThumbRadius(localTypedArray.getDimensionPixelSize(R.styleable.ew, 0));
-    setHaloRadius(localTypedArray.getDimensionPixelSize(R.styleable.er, 0));
-    setThumbElevation(localTypedArray.getDimension(R.styleable.ev, 0.0F));
-    setTrackHeight(localTypedArray.getDimensionPixelSize(R.styleable.eG, 0));
-    this.jdField_f_of_type_Int = localTypedArray.getInt(R.styleable.es, 0);
-    if (!localTypedArray.getBoolean(R.styleable.em, true)) {
-      setEnabled(false);
-    }
-    localTypedArray.recycle();
-  }
-  
-  private void a(@NonNull Resources paramResources)
-  {
-    this.jdField_e_of_type_Int = paramResources.getDimensionPixelSize(R.dimen.ao);
-    this.jdField_c_of_type_Int = paramResources.getDimensionPixelOffset(R.dimen.am);
-    this.h = this.jdField_c_of_type_Int;
-    this.jdField_d_of_type_Int = paramResources.getDimensionPixelSize(R.dimen.al);
-    this.i = paramResources.getDimensionPixelOffset(R.dimen.an);
-    this.l = paramResources.getDimensionPixelSize(R.dimen.ak);
-  }
-  
-  private void a(@NonNull Canvas paramCanvas)
-  {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.M > 0.0F)
     {
-      if (this.jdField_d_of_type_Float <= 0.0F) {
+      if (a(this.I)) {
         return;
       }
-      float[] arrayOfFloat = a();
-      int i2 = a(this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat[0]);
-      int i1 = a(this.jdField_a_of_type_ArrayOfFloat, arrayOfFloat[1]);
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      i2 *= 2;
-      paramCanvas.drawPoints(arrayOfFloat, 0, i2, this.jdField_e_of_type_AndroidGraphicsPaint);
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      i1 *= 2;
-      paramCanvas.drawPoints(arrayOfFloat, i2, i1 - i2, this.jdField_f_of_type_AndroidGraphicsPaint);
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      paramCanvas.drawPoints(arrayOfFloat, i1, arrayOfFloat.length - i1, this.jdField_e_of_type_AndroidGraphicsPaint);
+      throw new IllegalStateException(String.format("The stepSize(%s) must be 0, or a factor of the valueFrom(%s)-valueTo(%s) range", new Object[] { Float.toString(this.M), Float.toString(this.H), Float.toString(this.I) }));
     }
   }
   
-  private void a(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    float[] arrayOfFloat = a();
-    int i1 = this.h;
-    float f2 = i1;
-    float f3 = arrayOfFloat[1];
-    float f1 = paramInt1;
-    f2 += f3 * f1;
-    if (f2 < i1 + paramInt1)
-    {
-      f3 = paramInt2;
-      paramCanvas.drawLine(f2, f3, i1 + paramInt1, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    paramInt1 = this.h;
-    f1 = paramInt1 + arrayOfFloat[0] * f1;
-    if (f1 > paramInt1)
-    {
-      f2 = paramInt1;
-      f3 = paramInt2;
-      paramCanvas.drawLine(f2, f3, f1, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-  }
-  
-  private void a(TooltipDrawable paramTooltipDrawable)
-  {
-    paramTooltipDrawable.a(ViewUtils.a(this));
-  }
-  
-  private void a(TooltipDrawable paramTooltipDrawable, float paramFloat)
-  {
-    paramTooltipDrawable.a(a(paramFloat));
-    int i1 = this.h + (int)(a(paramFloat) * this.o) - paramTooltipDrawable.getIntrinsicWidth() / 2;
-    int i2 = b() - (this.l + this.j);
-    paramTooltipDrawable.setBounds(i1, i2 - paramTooltipDrawable.getIntrinsicHeight(), paramTooltipDrawable.getIntrinsicWidth() + i1, i2);
-    Rect localRect = new Rect(paramTooltipDrawable.getBounds());
-    DescendantOffsetUtils.a(ViewUtils.a(this), this, localRect);
-    paramTooltipDrawable.setBounds(localRect);
-    ViewUtils.b(this).a(paramTooltipDrawable);
-  }
-  
-  private void a(@NonNull ArrayList<Float> paramArrayList)
-  {
-    if (!paramArrayList.isEmpty())
-    {
-      Collections.sort(paramArrayList);
-      if ((this.jdField_a_of_type_JavaUtilArrayList.size() == paramArrayList.size()) && (this.jdField_a_of_type_JavaUtilArrayList.equals(paramArrayList))) {
-        return;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_f_of_type_Boolean = true;
-      this.n = 0;
-      j();
-      h();
-      n();
-      postInvalidate();
-      return;
-    }
-    throw new IllegalArgumentException("At least one value must be set");
-  }
-  
-  private boolean a(float paramFloat)
-  {
-    double d1 = new BigDecimal(Float.toString(paramFloat)).subtract(new BigDecimal(Float.toString(this.jdField_b_of_type_Float))).divide(new BigDecimal(Float.toString(this.jdField_d_of_type_Float)), MathContext.DECIMAL64).doubleValue();
-    double d2 = Math.round(d1);
-    Double.isNaN(d2);
-    return Math.abs(d2 - d1) < 0.0001D;
-  }
-  
-  private boolean a(int paramInt)
-  {
-    int i1 = this.n;
-    this.n = ((int)MathUtils.clamp(i1 + paramInt, 0L, this.jdField_a_of_type_JavaUtilArrayList.size() - 1));
-    paramInt = this.n;
-    if (paramInt == i1) {
-      return false;
-    }
-    if (this.m != -1) {
-      this.m = paramInt;
-    }
-    j();
-    postInvalidate();
-    return true;
-  }
-  
-  private boolean a(int paramInt, float paramFloat)
-  {
-    if (Math.abs(paramFloat - ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).floatValue()) < 0.0001D) {
-      return false;
-    }
-    paramFloat = a(paramInt, paramFloat);
-    this.jdField_a_of_type_JavaUtilArrayList.set(paramInt, Float.valueOf(paramFloat));
-    this.n = paramInt;
-    d(paramInt);
-    return true;
-  }
-  
-  private float[] a()
-  {
-    float f2 = ((Float)Collections.max(a())).floatValue();
-    float f1 = ((Float)Collections.min(a())).floatValue();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1) {
-      f1 = this.jdField_b_of_type_Float;
-    }
-    f1 = a(f1);
-    f2 = a(f2);
-    if (c()) {
-      return new float[] { f2, f1 };
-    }
-    return new float[] { f1, f2 };
-  }
-  
-  private float b(float paramFloat)
-  {
-    if (paramFloat == 0.0F) {
-      return 0.0F;
-    }
-    paramFloat = (paramFloat - this.h) / this.o;
-    float f1 = this.jdField_b_of_type_Float;
-    return paramFloat * (f1 - this.jdField_c_of_type_Float) + f1;
-  }
-  
-  private int b()
-  {
-    int i2 = this.i;
-    int i3 = this.jdField_f_of_type_Int;
-    int i1 = 0;
-    if (i3 == 1) {
-      i1 = ((TooltipDrawable)this.jdField_a_of_type_JavaUtilList.get(0)).getIntrinsicHeight();
-    }
-    return i2 + i1;
-  }
-  
-  @NonNull
-  private static TooltipDrawable b(@NonNull Context paramContext, @NonNull TypedArray paramTypedArray)
-  {
-    return TooltipDrawable.a(paramContext, null, 0, paramTypedArray.getResourceId(R.styleable.et, R.style.L));
-  }
-  
-  private void b()
-  {
-    float f1 = this.jdField_b_of_type_Float;
-    if (f1 < this.jdField_c_of_type_Float) {
-      return;
-    }
-    throw new IllegalStateException(String.format("valueFrom(%s) must be smaller than valueTo(%s)", new Object[] { Float.toString(f1), Float.toString(this.jdField_c_of_type_Float) }));
-  }
-  
-  private void b(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    float[] arrayOfFloat = a();
-    int i1 = this.h;
-    float f1 = i1;
-    float f2 = arrayOfFloat[1];
-    float f3 = paramInt1;
-    float f4 = i1;
-    float f5 = arrayOfFloat[0];
-    float f6 = paramInt2;
-    paramCanvas.drawLine(f4 + f5 * f3, f6, f1 + f2 * f3, f6, this.jdField_b_of_type_AndroidGraphicsPaint);
-  }
-  
-  private void b(TooltipDrawable paramTooltipDrawable)
-  {
-    ViewOverlayImpl localViewOverlayImpl = ViewUtils.b(this);
-    if (localViewOverlayImpl != null)
-    {
-      localViewOverlayImpl.b(paramTooltipDrawable);
-      paramTooltipDrawable.b(ViewUtils.a(this));
-    }
-  }
-  
-  private boolean b(float paramFloat)
-  {
-    return a(this.m, paramFloat);
-  }
-  
-  private boolean b(int paramInt)
-  {
-    int i1 = paramInt;
-    if (c()) {
-      if (paramInt == -2147483648) {
-        i1 = 2147483647;
-      } else {
-        i1 = -paramInt;
-      }
-    }
-    return a(i1);
-  }
-  
-  private float c(float paramFloat)
-  {
-    return a(paramFloat) * this.o + this.h;
-  }
-  
-  private void c()
-  {
-    float f1 = this.jdField_c_of_type_Float;
-    if (f1 > this.jdField_b_of_type_Float) {
-      return;
-    }
-    throw new IllegalStateException(String.format("valueTo(%s) must be greater than valueFrom(%s)", new Object[] { Float.toString(f1), Float.toString(this.jdField_b_of_type_Float) }));
-  }
-  
-  private void c(int paramInt)
-  {
-    this.o = Math.max(paramInt - this.h * 2, 0);
-    i();
-  }
-  
-  private void c(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Float localFloat;
-    if (!isEnabled())
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        localFloat = (Float)localIterator.next();
-        paramCanvas.drawCircle(this.h + a(localFloat.floatValue()) * paramInt1, paramInt2, this.j, this.jdField_c_of_type_AndroidGraphicsPaint);
-      }
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      localFloat = (Float)localIterator.next();
-      paramCanvas.save();
-      int i1 = this.h;
-      int i2 = (int)(a(localFloat.floatValue()) * paramInt1);
-      int i3 = this.j;
-      paramCanvas.translate(i1 + i2 - i3, paramInt2 - i3);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.draw(paramCanvas);
-      paramCanvas.restore();
-    }
-  }
-  
-  private float d()
-  {
-    float f2 = this.jdField_e_of_type_Float;
-    float f1 = f2;
-    if (c()) {
-      f1 = 1.0F - f2;
-    }
-    f2 = this.jdField_c_of_type_Float;
-    float f3 = this.jdField_b_of_type_Float;
-    return f1 * (f2 - f3) + f3;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_d_of_type_Float > 0.0F)
-    {
-      if (a(this.jdField_c_of_type_Float)) {
-        return;
-      }
-      throw new IllegalStateException(String.format("The stepSize(%s) must be 0, or a factor of the valueFrom(%s)-valueTo(%s) range", new Object[] { Float.toString(this.jdField_d_of_type_Float), Float.toString(this.jdField_b_of_type_Float), Float.toString(this.jdField_c_of_type_Float) }));
-    }
-  }
-  
-  private void d(int paramInt)
-  {
-    Object localObject = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((BaseOnChangeListener)((Iterator)localObject).next()).a(this, ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).floatValue(), true);
-    }
-    localObject = this.jdField_a_of_type_AndroidViewAccessibilityAccessibilityManager;
-    if ((localObject != null) && (((AccessibilityManager)localObject).isEnabled())) {
-      f(paramInt);
-    }
-  }
-  
-  private void d(@NonNull Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    if (d())
-    {
-      paramInt1 = (int)(this.h + a(((Float)this.jdField_a_of_type_JavaUtilArrayList.get(this.n)).floatValue()) * paramInt1);
-      if (Build.VERSION.SDK_INT < 28)
-      {
-        int i1 = this.k;
-        paramCanvas.clipRect(paramInt1 - i1, paramInt2 - i1, paramInt1 + i1, i1 + paramInt2, Region.Op.UNION);
-      }
-      paramCanvas.drawCircle(paramInt1, paramInt2, this.k, this.jdField_d_of_type_AndroidGraphicsPaint);
-    }
-  }
-  
-  private boolean d()
-  {
-    return (this.jdField_d_of_type_Boolean) || (Build.VERSION.SDK_INT < 21) || (!(getBackground() instanceof RippleDrawable));
-  }
-  
-  private float e()
-  {
-    double d2 = a(this.jdField_e_of_type_Float);
-    double d1 = d2;
-    if (c()) {
-      d1 = 1.0D - d2;
-    }
-    float f1 = this.jdField_c_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    d2 = f1 - f2;
-    Double.isNaN(d2);
-    double d3 = f2;
-    Double.isNaN(d3);
-    return (float)(d1 * d2 + d3);
-  }
-  
-  private void e()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Float localFloat = (Float)localIterator.next();
-      if ((localFloat.floatValue() >= this.jdField_b_of_type_Float) && (localFloat.floatValue() <= this.jdField_c_of_type_Float))
-      {
-        if ((this.jdField_d_of_type_Float > 0.0F) && (!a(localFloat.floatValue()))) {
-          throw new IllegalStateException(String.format("Value(%s) must be equal to valueFrom(%s) plus a multiple of stepSize(%s) when using stepSize(%s)", new Object[] { Float.toString(localFloat.floatValue()), Float.toString(this.jdField_b_of_type_Float), Float.toString(this.jdField_d_of_type_Float), Float.toString(this.jdField_d_of_type_Float) }));
-        }
-      }
-      else {
-        throw new IllegalStateException(String.format("Slider value(%s) must be greater or equal to valueFrom(%s), and lower or equal to valueTo(%s)", new Object[] { Float.toString(localFloat.floatValue()), Float.toString(this.jdField_b_of_type_Float), Float.toString(this.jdField_c_of_type_Float) }));
-      }
-    }
-  }
-  
-  private void e(int paramInt)
+  private void g(int paramInt)
   {
     if (paramInt != 1)
     {
@@ -847,65 +752,289 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
           if (paramInt != 66) {
             return;
           }
-          b(-2147483648);
+          d(-2147483648);
           return;
         }
-        b(2147483647);
+        d(2147483647);
         return;
       }
-      a(-2147483648);
+      c(-2147483648);
       return;
     }
-    a(2147483647);
+    c(2147483647);
   }
   
-  private boolean e()
+  private float[] getActiveRange()
   {
-    return b(e());
-  }
-  
-  private float f()
-  {
-    float f2 = this.jdField_d_of_type_Float;
-    float f1 = f2;
-    if (f2 == 0.0F) {
-      f1 = 1.0F;
+    float f2 = ((Float)Collections.max(getValues())).floatValue();
+    float f1 = ((Float)Collections.min(getValues())).floatValue();
+    if (this.J.size() == 1) {
+      f1 = this.H;
     }
-    return f1;
+    f1 = b(f1);
+    f2 = b(f2);
+    if (c()) {
+      return new float[] { f2, f1 };
+    }
+    return new float[] { f1, f2 };
   }
   
-  private void f()
+  private float getValueOfTouchPosition()
   {
-    float f1 = this.jdField_d_of_type_Float;
+    double d2 = c(this.ab);
+    double d1 = d2;
+    if (c()) {
+      d1 = 1.0D - d2;
+    }
+    float f1 = this.I;
+    float f2 = this.H;
+    d2 = f1 - f2;
+    Double.isNaN(d2);
+    double d3 = f2;
+    Double.isNaN(d3);
+    return (float)(d1 * d2 + d3);
+  }
+  
+  private float getValueOfTouchPositionAbsolute()
+  {
+    float f2 = this.ab;
+    float f1 = f2;
+    if (c()) {
+      f1 = 1.0F - f2;
+    }
+    f2 = this.I;
+    float f3 = this.H;
+    return f1 * (f2 - f3) + f3;
+  }
+  
+  private void h()
+  {
+    Iterator localIterator = this.J.iterator();
+    while (localIterator.hasNext())
+    {
+      Float localFloat = (Float)localIterator.next();
+      if ((localFloat.floatValue() >= this.H) && (localFloat.floatValue() <= this.I))
+      {
+        if ((this.M > 0.0F) && (!a(localFloat.floatValue()))) {
+          throw new IllegalStateException(String.format("Value(%s) must be equal to valueFrom(%s) plus a multiple of stepSize(%s) when using stepSize(%s)", new Object[] { Float.toString(localFloat.floatValue()), Float.toString(this.H), Float.toString(this.M), Float.toString(this.M) }));
+        }
+      }
+      else {
+        throw new IllegalStateException(String.format("Slider value(%s) must be greater or equal to valueFrom(%s), and lower or equal to valueTo(%s)", new Object[] { Float.toString(localFloat.floatValue()), Float.toString(this.H), Float.toString(this.I) }));
+      }
+    }
+  }
+  
+  private void h(int paramInt)
+  {
+    BaseSlider.AccessibilityEventSender localAccessibilityEventSender = this.k;
+    if (localAccessibilityEventSender == null) {
+      this.k = new BaseSlider.AccessibilityEventSender(this, null);
+    } else {
+      removeCallbacks(localAccessibilityEventSender);
+    }
+    this.k.a(paramInt);
+    postDelayed(this.k, 200L);
+  }
+  
+  private void i()
+  {
+    float f1 = this.M;
     if (f1 == 0.0F) {
       return;
     }
     if ((int)f1 != f1) {
-      Log.w(jdField_a_of_type_JavaLangString, String.format("Floating point value used for %s(%s). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the  value correctly.", new Object[] { "stepSize", Float.valueOf(f1) }));
+      Log.w(b, String.format("Floating point value used for %s(%s). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the  value correctly.", new Object[] { "stepSize", Float.valueOf(f1) }));
     }
-    f1 = this.jdField_b_of_type_Float;
+    f1 = this.H;
     if ((int)f1 != f1) {
-      Log.w(jdField_a_of_type_JavaLangString, String.format("Floating point value used for %s(%s). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the  value correctly.", new Object[] { "valueFrom", Float.valueOf(f1) }));
+      Log.w(b, String.format("Floating point value used for %s(%s). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the  value correctly.", new Object[] { "valueFrom", Float.valueOf(f1) }));
     }
-    f1 = this.jdField_c_of_type_Float;
+    f1 = this.I;
     if ((int)f1 != f1) {
-      Log.w(jdField_a_of_type_JavaLangString, String.format("Floating point value used for %s(%s). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the  value correctly.", new Object[] { "valueTo", Float.valueOf(f1) }));
+      Log.w(b, String.format("Floating point value used for %s(%s). Using floats can have rounding errors which may result in incorrect values. Instead, consider using integers with a custom LabelFormatter to display the  value correctly.", new Object[] { "valueTo", Float.valueOf(f1) }));
     }
   }
   
-  private void f(int paramInt)
+  private void j()
   {
-    BaseSlider.AccessibilityEventSender localAccessibilityEventSender = this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityEventSender;
-    if (localAccessibilityEventSender == null) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityEventSender = new BaseSlider.AccessibilityEventSender(this, null);
-    } else {
-      removeCallbacks(localAccessibilityEventSender);
+    if (this.S)
+    {
+      e();
+      f();
+      g();
+      h();
+      i();
+      this.S = false;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityEventSender.a(paramInt);
-    postDelayed(this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityEventSender, 200L);
   }
   
-  private boolean f()
+  private void k()
+  {
+    if (this.m.size() > this.J.size())
+    {
+      localObject = this.m.subList(this.J.size(), this.m.size());
+      Iterator localIterator = ((List)localObject).iterator();
+      while (localIterator.hasNext())
+      {
+        TooltipDrawable localTooltipDrawable = (TooltipDrawable)localIterator.next();
+        if (ViewCompat.isAttachedToWindow(this)) {
+          b(localTooltipDrawable);
+        }
+      }
+      ((List)localObject).clear();
+    }
+    while (this.m.size() < this.J.size())
+    {
+      localObject = this.l.a();
+      this.m.add(localObject);
+      if (ViewCompat.isAttachedToWindow(this)) {
+        a((TooltipDrawable)localObject);
+      }
+    }
+    int i2 = this.m.size();
+    int i1 = 1;
+    if (i2 == 1) {
+      i1 = 0;
+    }
+    Object localObject = this.m.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((TooltipDrawable)((Iterator)localObject).next()).n(i1);
+    }
+  }
+  
+  private void l()
+  {
+    if (this.M <= 0.0F) {
+      return;
+    }
+    j();
+    int i2 = Math.min((int)((this.I - this.H) / this.M + 1.0F), this.P / (this.x * 2) + 1);
+    float[] arrayOfFloat = this.N;
+    if ((arrayOfFloat == null) || (arrayOfFloat.length != i2 * 2)) {
+      this.N = new float[i2 * 2];
+    }
+    float f1 = this.P / (i2 - 1);
+    int i1 = 0;
+    while (i1 < i2 * 2)
+    {
+      arrayOfFloat = this.N;
+      arrayOfFloat[i1] = (this.y + i1 / 2 * f1);
+      arrayOfFloat[(i1 + 1)] = n();
+      i1 += 2;
+    }
+  }
+  
+  private void m()
+  {
+    if ((!o()) && (getMeasuredWidth() > 0))
+    {
+      Drawable localDrawable = getBackground();
+      if ((localDrawable instanceof RippleDrawable))
+      {
+        int i1 = (int)(b(((Float)this.J.get(this.L)).floatValue()) * this.P + this.y);
+        int i2 = n();
+        int i3 = this.B;
+        DrawableCompat.setHotspotBounds(localDrawable, i1 - i3, i2 - i3, i1 + i3, i2 + i3);
+      }
+    }
+  }
+  
+  private int n()
+  {
+    int i2 = this.z;
+    int i3 = this.w;
+    int i1 = 0;
+    if (i3 == 1) {
+      i1 = ((TooltipDrawable)this.m.get(0)).getIntrinsicHeight();
+    }
+    return i2 + i1;
+  }
+  
+  private boolean o()
+  {
+    return (this.Q) || (Build.VERSION.SDK_INT < 21) || (!(getBackground() instanceof RippleDrawable));
+  }
+  
+  private boolean p()
+  {
+    return d(getValueOfTouchPosition());
+  }
+  
+  private void q()
+  {
+    if (this.p)
+    {
+      this.p = false;
+      this.r = a(false);
+      this.q = null;
+      this.r.addListener(new BaseSlider.3(this));
+      this.r.start();
+    }
+  }
+  
+  private void r()
+  {
+    if (this.w == 2) {
+      return;
+    }
+    if (!this.p)
+    {
+      this.p = true;
+      this.q = a(true);
+      this.r = null;
+      this.q.start();
+    }
+    Object localObject = this.m.iterator();
+    int i1 = 0;
+    while ((i1 < this.J.size()) && (((Iterator)localObject).hasNext()))
+    {
+      if (i1 != this.L) {
+        a((TooltipDrawable)((Iterator)localObject).next(), ((Float)this.J.get(i1)).floatValue());
+      }
+      i1 += 1;
+    }
+    if (((Iterator)localObject).hasNext())
+    {
+      a((TooltipDrawable)((Iterator)localObject).next(), ((Float)this.J.get(this.L)).floatValue());
+      return;
+    }
+    localObject = new IllegalStateException(String.format("Not enough labels(%d) to display all the values(%d)", new Object[] { Integer.valueOf(this.m.size()), Integer.valueOf(this.J.size()) }));
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
+  }
+  
+  private void s()
+  {
+    this.c.setStrokeWidth(this.x);
+    this.d.setStrokeWidth(this.x);
+    this.g.setStrokeWidth(this.x / 2.0F);
+    this.h.setStrokeWidth(this.x / 2.0F);
+  }
+  
+  private void setValuesInternal(@NonNull ArrayList<Float> paramArrayList)
+  {
+    if (!paramArrayList.isEmpty())
+    {
+      Collections.sort(paramArrayList);
+      if ((this.J.size() == paramArrayList.size()) && (this.J.equals(paramArrayList))) {
+        return;
+      }
+      this.J = paramArrayList;
+      this.S = true;
+      this.L = 0;
+      m();
+      k();
+      u();
+      postInvalidate();
+      return;
+    }
+    throw new IllegalArgumentException("At least one value must be set");
+  }
+  
+  private boolean t()
   {
     for (ViewParent localViewParent = getParent();; localViewParent = localViewParent.getParent())
     {
@@ -925,230 +1054,72 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
     return false;
   }
   
-  private void g()
+  private void u()
   {
-    if (this.jdField_f_of_type_Boolean)
-    {
-      b();
-      c();
-      d();
-      e();
-      f();
-      this.jdField_f_of_type_Boolean = false;
-    }
-  }
-  
-  private void h()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_JavaUtilList.size());
-      Iterator localIterator = ((List)localObject).iterator();
-      while (localIterator.hasNext())
-      {
-        TooltipDrawable localTooltipDrawable = (TooltipDrawable)localIterator.next();
-        if (ViewCompat.isAttachedToWindow(this)) {
-          b(localTooltipDrawable);
-        }
-      }
-      ((List)localObject).clear();
-    }
-    while (this.jdField_a_of_type_JavaUtilList.size() < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$TooltipDrawableFactory.a();
-      this.jdField_a_of_type_JavaUtilList.add(localObject);
-      if (ViewCompat.isAttachedToWindow(this)) {
-        a((TooltipDrawable)localObject);
-      }
-    }
-    int i2 = this.jdField_a_of_type_JavaUtilList.size();
-    int i1 = 1;
-    if (i2 == 1) {
-      i1 = 0;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((TooltipDrawable)((Iterator)localObject).next()).n(i1);
-    }
-  }
-  
-  private void i()
-  {
-    if (this.jdField_d_of_type_Float <= 0.0F) {
-      return;
-    }
-    g();
-    int i2 = Math.min((int)((this.jdField_c_of_type_Float - this.jdField_b_of_type_Float) / this.jdField_d_of_type_Float + 1.0F), this.o / (this.g * 2) + 1);
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    if ((arrayOfFloat == null) || (arrayOfFloat.length != i2 * 2)) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[i2 * 2];
-    }
-    float f1 = this.o / (i2 - 1);
-    int i1 = 0;
-    while (i1 < i2 * 2)
-    {
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-      arrayOfFloat[i1] = (this.h + i1 / 2 * f1);
-      arrayOfFloat[(i1 + 1)] = b();
-      i1 += 2;
-    }
-  }
-  
-  private void j()
-  {
-    if ((!d()) && (getMeasuredWidth() > 0))
-    {
-      Drawable localDrawable = getBackground();
-      if ((localDrawable instanceof RippleDrawable))
-      {
-        int i1 = (int)(a(((Float)this.jdField_a_of_type_JavaUtilArrayList.get(this.n)).floatValue()) * this.o + this.h);
-        int i2 = b();
-        int i3 = this.k;
-        DrawableCompat.setHotspotBounds(localDrawable, i1 - i3, i2 - i3, i1 + i3, i2 + i3);
-      }
-    }
-  }
-  
-  private void k()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_AndroidAnimationValueAnimator = a(false);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new BaseSlider.3(this));
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
-    }
-  }
-  
-  private void l()
-  {
-    if (this.jdField_f_of_type_Int == 2) {
-      return;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = a(true);
-      this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i1 = 0;
-    while ((i1 < this.jdField_a_of_type_JavaUtilArrayList.size()) && (((Iterator)localObject).hasNext()))
-    {
-      if (i1 != this.n) {
-        a((TooltipDrawable)((Iterator)localObject).next(), ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(i1)).floatValue());
-      }
-      i1 += 1;
-    }
-    if (((Iterator)localObject).hasNext())
-    {
-      a((TooltipDrawable)((Iterator)localObject).next(), ((Float)this.jdField_a_of_type_JavaUtilArrayList.get(this.n)).floatValue());
-      return;
-    }
-    localObject = new IllegalStateException(String.format("Not enough labels(%d) to display all the values(%d)", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
-    for (;;)
-    {
-      throw ((Throwable)localObject);
-    }
-  }
-  
-  private void m()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g / 2.0F);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setStrokeWidth(this.g / 2.0F);
-  }
-  
-  private void n()
-  {
-    Iterator localIterator1 = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator1 = this.n.iterator();
     while (localIterator1.hasNext())
     {
       BaseOnChangeListener localBaseOnChangeListener = (BaseOnChangeListener)localIterator1.next();
-      Iterator localIterator2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator2 = this.J.iterator();
       while (localIterator2.hasNext()) {
         localBaseOnChangeListener.a(this, ((Float)localIterator2.next()).floatValue(), false);
       }
     }
   }
   
-  private void o()
+  private void v()
   {
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.o.iterator();
     while (localIterator.hasNext()) {
       ((BaseOnSliderTouchListener)localIterator.next()).a(this);
     }
   }
   
-  private void p()
+  private void w()
   {
-    Iterator localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.o.iterator();
     while (localIterator.hasNext()) {
       ((BaseOnSliderTouchListener)localIterator.next()).b(this);
     }
   }
   
-  public float a()
+  private float x()
   {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.m;
-  }
-  
-  @NonNull
-  List<Float> a()
-  {
-    return new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  protected void a(int paramInt)
-  {
-    this.m = paramInt;
+    float f2 = this.M;
+    float f1 = f2;
+    if (f2 == 0.0F) {
+      f1 = 1.0F;
+    }
+    return f1;
   }
   
   void a(int paramInt, Rect paramRect)
   {
-    paramInt = this.h + (int)(a(((Float)a().get(paramInt)).floatValue()) * this.o);
-    int i1 = b();
-    int i2 = this.j;
+    paramInt = this.y + (int)(b(((Float)getValues().get(paramInt)).floatValue()) * this.P);
+    int i1 = n();
+    int i2 = this.A;
     paramRect.set(paramInt - i2, i1 - i2, paramInt + i2, i1 + i2);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialSliderLabelFormatter != null;
-  }
-  
-  public float b()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  protected void b(int paramInt)
-  {
-    this.p = paramInt;
+    return this.F != null;
   }
   
   protected boolean b()
   {
-    if (this.m != -1) {
+    if (this.K != -1) {
       return true;
     }
-    float f4 = d();
-    float f5 = c(f4);
-    this.m = 0;
-    float f1 = Math.abs(((Float)this.jdField_a_of_type_JavaUtilArrayList.get(this.m)).floatValue() - f4);
+    float f4 = getValueOfTouchPositionAbsolute();
+    float f5 = f(f4);
+    this.K = 0;
+    float f1 = Math.abs(((Float)this.J.get(this.K)).floatValue() - f4);
     int i1 = 1;
-    while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i1 < this.J.size())
     {
-      float f3 = Math.abs(((Float)this.jdField_a_of_type_JavaUtilArrayList.get(i1)).floatValue() - f4);
-      float f6 = c(((Float)this.jdField_a_of_type_JavaUtilArrayList.get(i1)).floatValue());
+      float f3 = Math.abs(((Float)this.J.get(i1)).floatValue() - f4);
+      float f6 = f(((Float)this.J.get(i1)).floatValue());
       if (Float.compare(f3, f1) > 1) {
         break;
       }
@@ -1160,7 +1131,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
       }
       if (Float.compare(f3, f1) < 0)
       {
-        this.m = i1;
+        this.K = i1;
       }
       else
       {
@@ -1168,28 +1139,23 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
         if (Float.compare(f3, f1) != 0) {
           break label228;
         }
-        if (Math.abs(f6 - f5) < this.jdField_b_of_type_Int)
+        if (Math.abs(f6 - f5) < this.s)
         {
-          this.m = -1;
+          this.K = -1;
           return false;
         }
         f2 = f1;
         if (i2 == 0) {
           break label228;
         }
-        this.m = i1;
+        this.K = i1;
       }
       float f2 = f3;
       label228:
       i1 += 1;
       f1 = f2;
     }
-    return this.m != -1;
-  }
-  
-  protected float c()
-  {
-    return 0.0F;
+    return this.K != -1;
   }
   
   final boolean c()
@@ -1199,7 +1165,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public boolean dispatchHoverEvent(@NonNull MotionEvent paramMotionEvent)
   {
-    return (this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper.dispatchHoverEvent(paramMotionEvent)) || (super.dispatchHoverEvent(paramMotionEvent));
+    return (this.i.dispatchHoverEvent(paramMotionEvent)) || (super.dispatchHoverEvent(paramMotionEvent));
   }
   
   public boolean dispatchKeyEvent(@NonNull KeyEvent paramKeyEvent)
@@ -1210,11 +1176,11 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_e_of_type_AndroidContentResColorStateList));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_d_of_type_AndroidContentResColorStateList));
-    this.jdField_e_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_c_of_type_AndroidContentResColorStateList));
-    this.jdField_f_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_b_of_type_AndroidContentResColorStateList));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.c.setColor(a(this.Z));
+    this.d.setColor(a(this.W));
+    this.g.setColor(a(this.V));
+    this.h.setColor(a(this.U));
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
       TooltipDrawable localTooltipDrawable = (TooltipDrawable)localIterator.next();
@@ -1222,17 +1188,169 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
         localTooltipDrawable.setState(getDrawableState());
       }
     }
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.isStateful()) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setState(getDrawableState());
+    if (this.aa.isStateful()) {
+      this.aa.setState(getDrawableState());
     }
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_a_of_type_AndroidContentResColorStateList));
-    this.jdField_d_of_type_AndroidGraphicsPaint.setAlpha(63);
+    this.f.setColor(a(this.T));
+    this.f.setAlpha(63);
+  }
+  
+  @NonNull
+  public CharSequence getAccessibilityClassName()
+  {
+    return SeekBar.class.getName();
+  }
+  
+  @VisibleForTesting
+  final int getAccessibilityFocusedVirtualViewId()
+  {
+    return this.i.getAccessibilityFocusedVirtualViewId();
+  }
+  
+  public int getActiveThumbIndex()
+  {
+    return this.K;
+  }
+  
+  public int getFocusedThumbIndex()
+  {
+    return this.L;
+  }
+  
+  @Dimension
+  public int getHaloRadius()
+  {
+    return this.B;
+  }
+  
+  @NonNull
+  public ColorStateList getHaloTintList()
+  {
+    return this.T;
+  }
+  
+  public int getLabelBehavior()
+  {
+    return this.w;
+  }
+  
+  protected float getMinSeparation()
+  {
+    return 0.0F;
+  }
+  
+  public float getStepSize()
+  {
+    return this.M;
+  }
+  
+  public float getThumbElevation()
+  {
+    return this.aa.U();
+  }
+  
+  @Dimension
+  public int getThumbRadius()
+  {
+    return this.A;
+  }
+  
+  public ColorStateList getThumbStrokeColor()
+  {
+    return this.aa.N();
+  }
+  
+  public float getThumbStrokeWidth()
+  {
+    return this.aa.P();
+  }
+  
+  @NonNull
+  public ColorStateList getThumbTintList()
+  {
+    return this.aa.M();
+  }
+  
+  @NonNull
+  public ColorStateList getTickActiveTintList()
+  {
+    return this.U;
+  }
+  
+  @NonNull
+  public ColorStateList getTickInactiveTintList()
+  {
+    return this.V;
+  }
+  
+  @NonNull
+  public ColorStateList getTickTintList()
+  {
+    if (this.V.equals(this.U)) {
+      return this.U;
+    }
+    throw new IllegalStateException("The inactive and active ticks are different colors. Use the getTickColorInactive() and getTickColorActive() methods instead.");
+  }
+  
+  @NonNull
+  public ColorStateList getTrackActiveTintList()
+  {
+    return this.W;
+  }
+  
+  @Dimension
+  public int getTrackHeight()
+  {
+    return this.x;
+  }
+  
+  @NonNull
+  public ColorStateList getTrackInactiveTintList()
+  {
+    return this.Z;
+  }
+  
+  @Dimension
+  public int getTrackSidePadding()
+  {
+    return this.y;
+  }
+  
+  @NonNull
+  public ColorStateList getTrackTintList()
+  {
+    if (this.Z.equals(this.W)) {
+      return this.W;
+    }
+    throw new IllegalStateException("The inactive and active parts of the track are different colors. Use the getInactiveTrackColor() and getActiveTrackColor() methods instead.");
+  }
+  
+  @Dimension
+  public int getTrackWidth()
+  {
+    return this.P;
+  }
+  
+  public float getValueFrom()
+  {
+    return this.H;
+  }
+  
+  public float getValueTo()
+  {
+    return this.I;
+  }
+  
+  @NonNull
+  List<Float> getValues()
+  {
+    return new ArrayList(this.J);
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext()) {
       a((TooltipDrawable)localIterator.next());
     }
@@ -1240,12 +1358,12 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   protected void onDetachedFromWindow()
   {
-    Object localObject = this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityEventSender;
+    Object localObject = this.k;
     if (localObject != null) {
       removeCallbacks((Runnable)localObject);
     }
-    this.jdField_a_of_type_Boolean = false;
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    this.p = false;
+    localObject = this.m.iterator();
     while (((Iterator)localObject).hasNext()) {
       b((TooltipDrawable)((Iterator)localObject).next());
     }
@@ -1254,26 +1372,26 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   protected void onDraw(@NonNull Canvas paramCanvas)
   {
-    if (this.jdField_f_of_type_Boolean)
+    if (this.S)
     {
-      g();
-      i();
+      j();
+      l();
     }
     super.onDraw(paramCanvas);
-    int i1 = b();
-    a(paramCanvas, this.o, i1);
-    if (((Float)Collections.max(a())).floatValue() > this.jdField_b_of_type_Float) {
-      b(paramCanvas, this.o, i1);
+    int i1 = n();
+    a(paramCanvas, this.P, i1);
+    if (((Float)Collections.max(getValues())).floatValue() > this.H) {
+      b(paramCanvas, this.P, i1);
     }
     a(paramCanvas);
-    if (((this.jdField_b_of_type_Boolean) || (isFocused())) && (isEnabled()))
+    if (((this.G) || (isFocused())) && (isEnabled()))
     {
-      d(paramCanvas, this.o, i1);
-      if (this.m != -1) {
-        l();
+      d(paramCanvas, this.P, i1);
+      if (this.K != -1) {
+        r();
       }
     }
-    c(paramCanvas, this.o, i1);
+    c(paramCanvas, this.P, i1);
   }
   
   protected void onFocusChanged(boolean paramBoolean, int paramInt, @Nullable Rect paramRect)
@@ -1281,13 +1399,13 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
     if (!paramBoolean)
     {
-      this.m = -1;
-      k();
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper.clearKeyboardFocusForVirtualView(this.n);
+      this.K = -1;
+      q();
+      this.i.clearKeyboardFocusForVirtualView(this.L);
       return;
     }
-    e(paramInt);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper.requestKeyboardFocusForVirtualView(this.n);
+    g(paramInt);
+    this.i.requestKeyboardFocusForVirtualView(this.L);
   }
   
   public boolean onKeyDown(int paramInt, @NonNull KeyEvent paramKeyEvent)
@@ -1295,10 +1413,10 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
     if (!isEnabled()) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 1) {
-      this.m = 0;
+    if (this.J.size() == 1) {
+      this.K = 0;
     }
-    if (this.m == -1)
+    if (this.K == -1)
     {
       localObject = a(paramInt, paramKeyEvent);
       if (localObject != null) {
@@ -1306,13 +1424,13 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
       }
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
-    this.jdField_e_of_type_Boolean |= paramKeyEvent.isLongPress();
-    Object localObject = a(paramInt);
+    this.R |= paramKeyEvent.isLongPress();
+    Object localObject = e(paramInt);
     if (localObject != null)
     {
-      if (b(((Float)this.jdField_a_of_type_JavaUtilArrayList.get(this.m)).floatValue() + ((Float)localObject).floatValue()))
+      if (d(((Float)this.J.get(this.K)).floatValue() + ((Float)localObject).floatValue()))
       {
-        j();
+        m();
         postInvalidate();
       }
       return true;
@@ -1327,33 +1445,33 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
       else
       {
         if (paramKeyEvent.hasNoModifiers()) {
-          return a(1);
+          return c(1);
         }
         if (paramKeyEvent.isShiftPressed()) {
-          return a(-1);
+          return c(-1);
         }
         return false;
       }
     }
-    this.m = -1;
-    k();
+    this.K = -1;
+    q();
     postInvalidate();
     return true;
   }
   
   public boolean onKeyUp(int paramInt, @NonNull KeyEvent paramKeyEvent)
   {
-    this.jdField_e_of_type_Boolean = false;
+    this.R = false;
     return super.onKeyUp(paramInt, paramKeyEvent);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int i1 = this.jdField_e_of_type_Int;
-    int i2 = this.jdField_f_of_type_Int;
+    int i1 = this.v;
+    int i2 = this.w;
     paramInt2 = 0;
     if (i2 == 1) {
-      paramInt2 = ((TooltipDrawable)this.jdField_a_of_type_JavaUtilList.get(0)).getIntrinsicHeight();
+      paramInt2 = ((TooltipDrawable)this.m.get(0)).getIntrinsicHeight();
     }
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(i1 + paramInt2, 1073741824));
   }
@@ -1362,31 +1480,31 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   {
     paramParcelable = (BaseSlider.SliderState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    this.jdField_b_of_type_Float = paramParcelable.jdField_a_of_type_Float;
-    this.jdField_c_of_type_Float = paramParcelable.jdField_b_of_type_Float;
-    a(paramParcelable.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_d_of_type_Float = paramParcelable.jdField_c_of_type_Float;
-    if (paramParcelable.jdField_a_of_type_Boolean) {
+    this.H = paramParcelable.a;
+    this.I = paramParcelable.b;
+    setValuesInternal(paramParcelable.c);
+    this.M = paramParcelable.d;
+    if (paramParcelable.e) {
       requestFocus();
     }
-    n();
+    u();
   }
   
   protected Parcelable onSaveInstanceState()
   {
     BaseSlider.SliderState localSliderState = new BaseSlider.SliderState(super.onSaveInstanceState());
-    localSliderState.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
-    localSliderState.jdField_b_of_type_Float = this.jdField_c_of_type_Float;
-    localSliderState.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-    localSliderState.jdField_c_of_type_Float = this.jdField_d_of_type_Float;
-    localSliderState.jdField_a_of_type_Boolean = hasFocus();
+    localSliderState.a = this.H;
+    localSliderState.b = this.I;
+    localSliderState.c = new ArrayList(this.J);
+    localSliderState.d = this.M;
+    localSliderState.e = hasFocus();
     return localSliderState;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    c(paramInt1);
-    j();
+    a(paramInt1);
+    m();
   }
   
   public boolean onTouchEvent(@NonNull MotionEvent paramMotionEvent)
@@ -1395,9 +1513,9 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
       return false;
     }
     float f1 = paramMotionEvent.getX();
-    this.jdField_e_of_type_Float = ((f1 - this.h) / this.o);
-    this.jdField_e_of_type_Float = Math.max(0.0F, this.jdField_e_of_type_Float);
-    this.jdField_e_of_type_Float = Math.min(1.0F, this.jdField_e_of_type_Float);
+    this.ab = ((f1 - this.y) / this.P);
+    this.ab = Math.max(0.0F, this.ab);
+    this.ab = Math.min(1.0F, this.ab);
     int i1 = paramMotionEvent.getActionMasked();
     if (i1 != 0)
     {
@@ -1405,60 +1523,65 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
       {
         if (i1 == 2)
         {
-          if (!this.jdField_b_of_type_Boolean)
+          if (!this.G)
           {
-            if ((f()) && (Math.abs(f1 - this.jdField_a_of_type_Float) < this.jdField_b_of_type_Int)) {
+            if ((t()) && (Math.abs(f1 - this.D) < this.s)) {
               return false;
             }
             getParent().requestDisallowInterceptTouchEvent(true);
-            o();
+            v();
           }
           if (b())
           {
-            this.jdField_b_of_type_Boolean = true;
-            e();
-            j();
+            this.G = true;
+            p();
+            m();
             invalidate();
           }
         }
       }
       else
       {
-        this.jdField_b_of_type_Boolean = false;
-        MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
-        if ((localMotionEvent != null) && (localMotionEvent.getActionMasked() == 0) && (Math.abs(this.jdField_a_of_type_AndroidViewMotionEvent.getX() - paramMotionEvent.getX()) <= this.jdField_b_of_type_Int) && (Math.abs(this.jdField_a_of_type_AndroidViewMotionEvent.getY() - paramMotionEvent.getY()) <= this.jdField_b_of_type_Int) && (b())) {
-          o();
+        this.G = false;
+        MotionEvent localMotionEvent = this.E;
+        if ((localMotionEvent != null) && (localMotionEvent.getActionMasked() == 0) && (Math.abs(this.E.getX() - paramMotionEvent.getX()) <= this.s) && (Math.abs(this.E.getY() - paramMotionEvent.getY()) <= this.s) && (b())) {
+          v();
         }
-        if (this.m != -1)
+        if (this.K != -1)
         {
-          e();
-          this.m = -1;
           p();
+          this.K = -1;
+          w();
         }
-        k();
+        q();
         invalidate();
       }
     }
     else
     {
-      this.jdField_a_of_type_Float = f1;
-      if (!f())
+      this.D = f1;
+      if (!t())
       {
         getParent().requestDisallowInterceptTouchEvent(true);
         if (b())
         {
           requestFocus();
-          this.jdField_b_of_type_Boolean = true;
-          e();
-          j();
+          this.G = true;
+          p();
+          m();
           invalidate();
-          o();
+          v();
         }
       }
     }
-    setPressed(this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    setPressed(this.G);
+    this.E = MotionEvent.obtain(paramMotionEvent);
     return true;
+  }
+  
+  protected void setActiveThumbIndex(int paramInt)
+  {
+    this.K = paramInt;
   }
   
   public void setEnabled(boolean paramBoolean)
@@ -1475,10 +1598,10 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setFocusedThumbIndex(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((paramInt >= 0) && (paramInt < this.J.size()))
     {
-      this.n = paramInt;
-      this.jdField_a_of_type_ComGoogleAndroidMaterialSliderBaseSlider$AccessibilityHelper.requestKeyboardFocusForVirtualView(this.n);
+      this.L = paramInt;
+      this.i.requestKeyboardFocusForVirtualView(this.L);
       postInvalidate();
       return;
     }
@@ -1487,14 +1610,14 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setHaloRadius(@Dimension @IntRange(from=0L) int paramInt)
   {
-    if (paramInt == this.k) {
+    if (paramInt == this.B) {
       return;
     }
-    this.k = paramInt;
+    this.B = paramInt;
     Drawable localDrawable = getBackground();
-    if ((!d()) && ((localDrawable instanceof RippleDrawable)))
+    if ((!o()) && ((localDrawable instanceof RippleDrawable)))
     {
-      DrawableUtils.a((RippleDrawable)localDrawable, this.k);
+      DrawableUtils.a((RippleDrawable)localDrawable, this.B);
       return;
     }
     postInvalidate();
@@ -1507,53 +1630,58 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setHaloTintList(@NonNull ColorStateList paramColorStateList)
   {
-    if (paramColorStateList.equals(this.jdField_a_of_type_AndroidContentResColorStateList)) {
+    if (paramColorStateList.equals(this.T)) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
+    this.T = paramColorStateList;
     Drawable localDrawable = getBackground();
-    if ((!d()) && ((localDrawable instanceof RippleDrawable)))
+    if ((!o()) && ((localDrawable instanceof RippleDrawable)))
     {
       ((RippleDrawable)localDrawable).setColor(paramColorStateList);
       return;
     }
-    this.jdField_d_of_type_AndroidGraphicsPaint.setColor(a(paramColorStateList));
-    this.jdField_d_of_type_AndroidGraphicsPaint.setAlpha(63);
+    this.f.setColor(a(paramColorStateList));
+    this.f.setAlpha(63);
     invalidate();
   }
   
   public void setLabelBehavior(int paramInt)
   {
-    if (this.jdField_f_of_type_Int != paramInt)
+    if (this.w != paramInt)
     {
-      this.jdField_f_of_type_Int = paramInt;
+      this.w = paramInt;
       requestLayout();
     }
   }
   
   public void setLabelFormatter(@Nullable LabelFormatter paramLabelFormatter)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialSliderLabelFormatter = paramLabelFormatter;
+    this.F = paramLabelFormatter;
+  }
+  
+  protected void setSeparationUnit(int paramInt)
+  {
+    this.ac = paramInt;
   }
   
   public void setStepSize(float paramFloat)
   {
     if (paramFloat >= 0.0F)
     {
-      if (this.jdField_d_of_type_Float != paramFloat)
+      if (this.M != paramFloat)
       {
-        this.jdField_d_of_type_Float = paramFloat;
-        this.jdField_f_of_type_Boolean = true;
+        this.M = paramFloat;
+        this.S = true;
         postInvalidate();
       }
       return;
     }
-    throw new IllegalArgumentException(String.format("The stepSize(%s) must be 0, or a factor of the valueFrom(%s)-valueTo(%s) range", new Object[] { Float.toString(paramFloat), Float.toString(this.jdField_b_of_type_Float), Float.toString(this.jdField_c_of_type_Float) }));
+    throw new IllegalArgumentException(String.format("The stepSize(%s) must be 0, or a factor of the valueFrom(%s)-valueTo(%s) range", new Object[] { Float.toString(paramFloat), Float.toString(this.H), Float.toString(this.I) }));
   }
   
   public void setThumbElevation(float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.r(paramFloat);
+    this.aa.r(paramFloat);
   }
   
   public void setThumbElevationResource(@DimenRes int paramInt)
@@ -1563,14 +1691,14 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setThumbRadius(@Dimension @IntRange(from=0L) int paramInt)
   {
-    if (paramInt == this.j) {
+    if (paramInt == this.A) {
       return;
     }
-    this.j = paramInt;
-    a();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.setShapeAppearanceModel(ShapeAppearanceModel.a().a(0, this.j).a());
-    MaterialShapeDrawable localMaterialShapeDrawable = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable;
-    paramInt = this.j;
+    this.A = paramInt;
+    d();
+    this.aa.setShapeAppearanceModel(ShapeAppearanceModel.a().a(0, this.A).a());
+    MaterialShapeDrawable localMaterialShapeDrawable = this.aa;
+    paramInt = this.A;
     localMaterialShapeDrawable.setBounds(0, 0, paramInt * 2, paramInt * 2);
     postInvalidate();
   }
@@ -1582,7 +1710,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setThumbStrokeColor(@Nullable ColorStateList paramColorStateList)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.h(paramColorStateList);
+    this.aa.h(paramColorStateList);
     postInvalidate();
   }
   
@@ -1595,7 +1723,7 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setThumbStrokeWidth(float paramFloat)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.n(paramFloat);
+    this.aa.n(paramFloat);
     postInvalidate();
   }
   
@@ -1608,30 +1736,30 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setThumbTintList(@NonNull ColorStateList paramColorStateList)
   {
-    if (paramColorStateList.equals(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.b())) {
+    if (paramColorStateList.equals(this.aa.M())) {
       return;
     }
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeMaterialShapeDrawable.g(paramColorStateList);
+    this.aa.g(paramColorStateList);
     invalidate();
   }
   
   public void setTickActiveTintList(@NonNull ColorStateList paramColorStateList)
   {
-    if (paramColorStateList.equals(this.jdField_b_of_type_AndroidContentResColorStateList)) {
+    if (paramColorStateList.equals(this.U)) {
       return;
     }
-    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_f_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_b_of_type_AndroidContentResColorStateList));
+    this.U = paramColorStateList;
+    this.h.setColor(a(this.U));
     invalidate();
   }
   
   public void setTickInactiveTintList(@NonNull ColorStateList paramColorStateList)
   {
-    if (paramColorStateList.equals(this.jdField_c_of_type_AndroidContentResColorStateList)) {
+    if (paramColorStateList.equals(this.V)) {
       return;
     }
-    this.jdField_c_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_e_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_c_of_type_AndroidContentResColorStateList));
+    this.V = paramColorStateList;
+    this.g.setColor(a(this.V));
     invalidate();
   }
   
@@ -1643,40 +1771,40 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setTickVisible(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean)
+    if (this.O != paramBoolean)
     {
-      this.jdField_c_of_type_Boolean = paramBoolean;
+      this.O = paramBoolean;
       postInvalidate();
     }
   }
   
   public void setTrackActiveTintList(@NonNull ColorStateList paramColorStateList)
   {
-    if (paramColorStateList.equals(this.jdField_d_of_type_AndroidContentResColorStateList)) {
+    if (paramColorStateList.equals(this.W)) {
       return;
     }
-    this.jdField_d_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_d_of_type_AndroidContentResColorStateList));
+    this.W = paramColorStateList;
+    this.d.setColor(a(this.W));
     invalidate();
   }
   
   public void setTrackHeight(@Dimension @IntRange(from=0L) int paramInt)
   {
-    if (this.g != paramInt)
+    if (this.x != paramInt)
     {
-      this.g = paramInt;
-      m();
+      this.x = paramInt;
+      s();
       postInvalidate();
     }
   }
   
   public void setTrackInactiveTintList(@NonNull ColorStateList paramColorStateList)
   {
-    if (paramColorStateList.equals(this.jdField_e_of_type_AndroidContentResColorStateList)) {
+    if (paramColorStateList.equals(this.Z)) {
       return;
     }
-    this.jdField_e_of_type_AndroidContentResColorStateList = paramColorStateList;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(a(this.jdField_e_of_type_AndroidContentResColorStateList));
+    this.Z = paramColorStateList;
+    this.c.setColor(a(this.Z));
     invalidate();
   }
   
@@ -1688,33 +1816,33 @@ abstract class BaseSlider<S extends BaseSlider<S, L, T>, L extends BaseOnChangeL
   
   public void setValueFrom(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_f_of_type_Boolean = true;
+    this.H = paramFloat;
+    this.S = true;
     postInvalidate();
   }
   
   public void setValueTo(float paramFloat)
   {
-    this.jdField_c_of_type_Float = paramFloat;
-    this.jdField_f_of_type_Boolean = true;
+    this.I = paramFloat;
+    this.S = true;
     postInvalidate();
   }
   
   void setValues(@NonNull List<Float> paramList)
   {
-    a(new ArrayList(paramList));
+    setValuesInternal(new ArrayList(paramList));
   }
   
   void setValues(@NonNull Float... paramVarArgs)
   {
     ArrayList localArrayList = new ArrayList();
     Collections.addAll(localArrayList, paramVarArgs);
-    a(localArrayList);
+    setValuesInternal(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.slider.BaseSlider
  * JD-Core Version:    0.7.0.1
  */

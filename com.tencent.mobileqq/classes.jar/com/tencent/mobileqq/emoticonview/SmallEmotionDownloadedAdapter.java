@@ -184,12 +184,12 @@ public class SmallEmotionDownloadedAdapter
       if (bool)
       {
         paramViewHolder = this.mContext;
-        paramInt = 2131699777;
+        paramInt = 2131897810;
       }
       else
       {
         paramViewHolder = this.mContext;
-        paramInt = 2131699778;
+        paramInt = 2131897811;
       }
       localTextView.setText(paramViewHolder.getString(paramInt));
       localTextView.setTextColor(-8947849);
@@ -198,7 +198,7 @@ public class SmallEmotionDownloadedAdapter
       paramViewHolder.leftMargin = ((int)(this.density * 5.0F));
       paramViewHolder.gravity = 16;
       localObject2 = new ImageView(this.mContext);
-      ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130846444));
+      ((ImageView)localObject2).setBackgroundDrawable(this.mContext.getResources().getDrawable(2130847917));
       paramView.addView((View)localObject2, paramViewHolder);
       paramViewGroup.addView(paramView);
       ((SmallEmotionDownloadedAdapter.SmallEmotionDownloadedViewHolder)localObject1).linearLayout = paramView;
@@ -260,7 +260,7 @@ public class SmallEmotionDownloadedAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmotionDownloadedAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ import java.util.HashMap;
 public class QwalletToHomeAction
   extends JumpAction
 {
-  private QQAppInterface a;
+  private QQAppInterface H;
   
   public QwalletToHomeAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.H = paramQQAppInterface;
   }
   
   private boolean a(String paramString1, String paramString2, long paramLong)
@@ -36,7 +36,7 @@ public class QwalletToHomeAction
     if (paramString2 != null) {
       ((Bundle)localObject).putString("entry", paramString2);
     }
-    paramString1 = new Intent(this.jdField_a_of_type_AndroidContentContext, JumpActivity.class);
+    paramString1 = new Intent(this.b, JumpActivity.class);
     paramString1.putExtra("srvBundle", (Bundle)localObject);
     if (paramLong != 0L) {
       paramString1.putExtra("vacreport_key_seq", paramLong);
@@ -47,7 +47,7 @@ public class QwalletToHomeAction
     ((StringBuilder)localObject).append("&seq=");
     ((StringBuilder)localObject).append(paramLong);
     paramString1.setData(Uri.parse(((StringBuilder)localObject).toString()));
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramString1);
+    this.b.startActivity(paramString1);
     return true;
   }
   
@@ -66,16 +66,16 @@ public class QwalletToHomeAction
       localBundle.putBundle("extra_pay_data", paramBundle);
     }
     VACDReportUtil.a(paramLong, null, "loadPluginStart", null, 0, null);
-    QWalletPayBridge.launchForeground((Activity)this.jdField_a_of_type_AndroidContentContext, localBundle);
+    QWalletPayBridge.launchForeground((Activity)this.b, localBundle);
     return true;
   }
   
   private boolean c()
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof QBaseActivity)) {
+    if (!(this.b instanceof QBaseActivity)) {
       return false;
     }
-    ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).launchQWalletAct((QBaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false);
+    ((IQWalletHelper)QRoute.api(IQWalletHelper.class)).launchQWalletAct((QBaseActivity)this.b, this.H, true, false);
     return true;
   }
   
@@ -85,20 +85,20 @@ public class QwalletToHomeAction
     {
       try
       {
-        bool = "0".equals(this.jdField_a_of_type_JavaUtilHashMap.get("viewtype"));
-        if ((bool) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("src_type"))) && ((this.jdField_a_of_type_JavaUtilHashMap.get("view") == null) || ("0".equals(this.jdField_a_of_type_JavaUtilHashMap.get("view"))))) {
+        bool = "0".equals(this.f.get("viewtype"));
+        if ((bool) && (!TextUtils.isEmpty((CharSequence)this.f.get("src_type"))) && ((this.f.get("view") == null) || ("0".equals(this.f.get("view"))))) {
           return c();
         }
-        if (("0".equals(this.jdField_a_of_type_JavaUtilHashMap.get("viewtype"))) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilHashMap.get("src_type"))))
+        if (("0".equals(this.f.get("viewtype"))) && (!TextUtils.isEmpty((CharSequence)this.f.get("src_type"))))
         {
-          bool = this.jdField_a_of_type_JavaUtilHashMap.containsKey("entry");
+          bool = this.f.containsKey("entry");
           localObject2 = null;
           if (!bool) {
             break label491;
           }
-          str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("entry");
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("seq")) {
-            localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("seq");
+          str = (String)this.f.get("entry");
+          if (this.f.containsKey("seq")) {
+            localObject2 = (String)this.f.get("seq");
           }
           l2 = 0L;
           bool = TextUtils.isEmpty((CharSequence)localObject2);
@@ -119,7 +119,7 @@ public class QwalletToHomeAction
         ((StringBuilder)localObject2).append("doAction error: ");
         ((StringBuilder)localObject2).append(localException1.getMessage());
         QLog.e("QwalletToHomeAction", 1, ((StringBuilder)localObject2).toString());
-        b_("QwalletToHomeAction");
+        h_("QwalletToHomeAction");
         return false;
       }
       try
@@ -133,7 +133,7 @@ public class QwalletToHomeAction
       {
         continue;
       }
-      localObject2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("view");
+      localObject2 = (String)this.f.get("view");
       if ((!"1".equals(localObject2)) && (!"2".equals(localObject2)) && (!"3".equals(localObject2)) && (!"4".equals(localObject2)) && (!"5".equals(localObject2)) && (!"6".equals(localObject2)) && (!"7".equals(localObject2)) && (!"9".equals(localObject2)) && (!"10".equals(localObject2)) && (!"11".equals(localObject2)))
       {
         if ("8".equals(localObject2)) {
@@ -143,11 +143,11 @@ public class QwalletToHomeAction
       else
       {
         localBundle = new Bundle();
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("tokenid")) {
-          localBundle.putString("tokenid", (String)this.jdField_a_of_type_JavaUtilHashMap.get("tokenid"));
+        if (this.f.containsKey("tokenid")) {
+          localBundle.putString("tokenid", (String)this.f.get("tokenid"));
         }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("data")) {
-          localBundle.putString("data", (String)this.jdField_a_of_type_JavaUtilHashMap.get("data"));
+        if (this.f.containsKey("data")) {
+          localBundle.putString("data", (String)this.f.get("data"));
         }
         bool = a((String)localObject2, str, l1, localBundle);
         return bool;
@@ -160,7 +160,7 @@ public class QwalletToHomeAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QwalletToHomeAction
  * JD-Core Version:    0.7.0.1
  */

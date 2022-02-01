@@ -25,19 +25,19 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString1))
+      if (this.a.y.n.equals(paramString1))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onListenTogetherJoinedCountChange msg=%s", new Object[] { paramString2 }));
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString = paramString2;
+        this.a.y.c = paramString2;
         if (paramInt == 1)
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherHandler.a(paramString1);
+          this.a.u.a(paramString1);
           return;
         }
         paramString1 = this.a;
-        ListenTogetherPlayFragment.a(paramString1, ListenTogetherPlayFragment.a(paramString1), this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+        ListenTogetherPlayFragment.a(paramString1, ListenTogetherPlayFragment.a(paramString1), this.a.y.c);
       }
     }
   }
@@ -50,24 +50,24 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramListenTogetherSession.e))
+      if (this.a.y.n.equals(paramListenTogetherSession.n))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onUIModuleNeedRefresh session=%s", new Object[] { paramListenTogetherSession }));
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession = paramListenTogetherSession;
-        MusicInfo localMusicInfo = paramListenTogetherSession.a();
-        if ((paramListenTogetherSession.i == 2) && (paramListenTogetherSession.h != 3) && (paramListenTogetherSession.h != 4) && (localMusicInfo != null))
+        this.a.y = paramListenTogetherSession;
+        MusicInfo localMusicInfo = paramListenTogetherSession.e();
+        if ((paramListenTogetherSession.q == 2) && (paramListenTogetherSession.p != 3) && (paramListenTogetherSession.p != 4) && (localMusicInfo != null))
         {
           a(localMusicInfo);
           localObject = this.a;
-          ListenTogetherPlayFragment.a((ListenTogetherPlayFragment)localObject, ((ListenTogetherPlayFragment)localObject).jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a(), paramListenTogetherSession.h, this.a.jdField_a_of_type_JavaLangString);
+          ListenTogetherPlayFragment.a((ListenTogetherPlayFragment)localObject, ((ListenTogetherPlayFragment)localObject).x.a(), paramListenTogetherSession.p, this.a.B);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, "onExit");
         }
-        QQToast.a((Context)localObject, 2131693659, 1).a();
+        QQToast.makeText((Context)localObject, 2131891234, 1).show();
         this.a.getBaseActivity().finish();
       }
     }
@@ -81,14 +81,14 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.equals(paramISong))
+      if (!this.a.x.equals(paramISong))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onPlayMusicChange %s", new Object[] { paramISong }));
         }
         localObject = this.a;
-        ((ListenTogetherPlayFragment)localObject).jdField_a_of_type_ComTencentMobileqqListentogetherDataISong = paramISong;
-        ((ListenTogetherPlayFragment)localObject).jdField_a_of_type_JavaLangString = null;
+        ((ListenTogetherPlayFragment)localObject).x = paramISong;
+        ((ListenTogetherPlayFragment)localObject).B = null;
         ListenTogetherPlayFragment.a((ListenTogetherPlayFragment)localObject, paramISong);
       }
     }
@@ -102,7 +102,7 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherDataISong.a().equals(paramString1))
+      if (this.a.x.a().equals(paramString1))
       {
         if (QLog.isColorLevel())
         {
@@ -113,8 +113,8 @@ class ListenTogetherPlayFragment$3
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetLyric %s %d", new Object[] { paramString1, Integer.valueOf(i) }));
         }
         localObject = this.a;
-        ((ListenTogetherPlayFragment)localObject).jdField_a_of_type_JavaLangString = paramString2;
-        ListenTogetherPlayFragment.a((ListenTogetherPlayFragment)localObject, paramString1, ((ListenTogetherPlayFragment)localObject).jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.h, paramString2);
+        ((ListenTogetherPlayFragment)localObject).B = paramString2;
+        ListenTogetherPlayFragment.a((ListenTogetherPlayFragment)localObject, paramString1, ((ListenTogetherPlayFragment)localObject).y.p, paramString2);
       }
     }
   }
@@ -127,13 +127,13 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(paramString))
+      if (this.a.y.n.equals(paramString))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onGetGroupJoinedUsers uin=%s num=%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
         }
         paramString = this.a;
-        ListenTogetherPlayFragment.a(paramString, paramList, paramString.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.jdField_a_of_type_JavaLangString);
+        ListenTogetherPlayFragment.a(paramString, paramList, paramString.y.c);
       }
     }
   }
@@ -146,12 +146,12 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e))
+      if (this.a.y.n.equals(this.a.y.n))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onPauseListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
         }
-        QQToast.a(localBaseActivity, 2131693667, 1).a();
+        QQToast.makeText(localBaseActivity, 2131891242, 1).show();
       }
     }
   }
@@ -164,12 +164,12 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e))
+      if (this.a.y.n.equals(this.a.y.n))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onResumeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
         }
-        QQToast.a(localBaseActivity, 2131693669, 1).a();
+        QQToast.makeText(localBaseActivity, 2131891244, 1).show();
       }
     }
   }
@@ -182,12 +182,12 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e))
+      if (this.a.y.n.equals(this.a.y.n))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onCutListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
         }
-        QQToast.a(localBaseActivity, 2131693647, 1).a();
+        QQToast.makeText(localBaseActivity, 2131891222, 1).show();
       }
     }
   }
@@ -200,19 +200,19 @@ class ListenTogetherPlayFragment$3
       if (!this.a.isAdded()) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e.equals(this.a.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession.e))
+      if (this.a.y.n.equals(this.a.y.n))
       {
         if (QLog.isColorLevel()) {
           QLog.i("ListenTogetherPlayFragment", 2, String.format("onChangePlayModeListenTogetherFail [%s, %d]", new Object[] { paramString, Integer.valueOf(paramInt) }));
         }
-        QQToast.a(localBaseActivity, 2131693668, 1).a();
+        QQToast.makeText(localBaseActivity, 2131891243, 1).show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.3
  * JD-Core Version:    0.7.0.1
  */

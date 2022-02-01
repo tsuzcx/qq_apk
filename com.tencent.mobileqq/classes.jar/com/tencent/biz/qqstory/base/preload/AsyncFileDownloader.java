@@ -19,27 +19,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AsyncFileDownloader
 {
-  protected AsyncFileDownloader.InnerAIOShortVideoDownloader a;
-  protected AsyncFileDownloader.InnerBaseDownloader a;
-  protected String a;
   public List<WeakReference<IVideoPreloader.OnPreloadListener>> a;
-  protected Map<String, DownloadTask> a;
-  
-  public AsyncFileDownloader()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerBaseDownloader = new AsyncFileDownloader.InnerBaseDownloader(this, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader = new AsyncFileDownloader.InnerAIOShortVideoDownloader(this, null);
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
+  protected AsyncFileDownloader.InnerBaseDownloader b = new AsyncFileDownloader.InnerBaseDownloader(this, null);
+  protected AsyncFileDownloader.InnerAIOShortVideoDownloader c = new AsyncFileDownloader.InnerAIOShortVideoDownloader(this, null);
+  protected Map<String, DownloadTask> d = new ConcurrentHashMap();
+  protected String e;
   
   private boolean b(DownloadTask paramDownloadTask)
   {
-    if ((paramDownloadTask.d != null) && (paramDownloadTask.d.contains("qqstocdnd")))
+    if ((paramDownloadTask.f != null) && (paramDownloadTask.f.contains("qqstocdnd")))
     {
-      String str = ((VideoServerInfoManager)SuperManager.a(4)).a();
+      String str = ((VideoServerInfoManager)SuperManager.a(4)).e();
       SLog.a("AsyncFileDownloader", "get url key:%s", str);
       if ((str != null) && (!str.equals("00"))) {
-        paramDownloadTask.d = URLUtil.a(paramDownloadTask.d, "authkey", str);
+        paramDownloadTask.f = URLUtil.a(paramDownloadTask.f, "authkey", str);
       } else {
         return false;
       }
@@ -49,16 +42,16 @@ public class AsyncFileDownloader
   
   public void a(List<WeakReference<IVideoPreloader.OnPreloadListener>> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
   }
   
   public boolean a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.e))
     {
-      DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_JavaLangString);
+      DownloadTask localDownloadTask = (DownloadTask)this.d.remove(this.e);
       if (localDownloadTask != null) {
-        localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.b(localDownloadTask);
+        localDownloadTask.n.b(localDownloadTask);
       }
       return true;
     }
@@ -67,10 +60,10 @@ public class AsyncFileDownloader
   
   public boolean a(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilMap.remove(paramDownloadTask.jdField_a_of_type_JavaLangString);
+    paramDownloadTask = (DownloadTask)this.d.remove(paramDownloadTask.a);
     if (paramDownloadTask != null)
     {
-      paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.b(paramDownloadTask);
+      paramDownloadTask.n.b(paramDownloadTask);
       return true;
     }
     return false;
@@ -85,19 +78,19 @@ public class AsyncFileDownloader
     }
     Object localObject2 = null;
     Object localObject3 = null;
-    if (TextUtils.isEmpty(paramDownloadTask.d))
+    if (TextUtils.isEmpty(paramDownloadTask.f))
     {
       Object localObject1 = localObject3;
       if (TroopStoryUtil.a(paramDownloadTask.b)) {
-        if (paramDownloadTask.jdField_a_of_type_Int != 2)
+        if (paramDownloadTask.c != 2)
         {
           localObject1 = localObject3;
-          if (paramDownloadTask.jdField_a_of_type_Int != 0) {}
+          if (paramDownloadTask.c != 0) {}
         }
         else
         {
           QQStoryContext.a();
-          localObject2 = TroopStoryUtil.a(QQStoryContext.a(), paramDownloadTask.b);
+          localObject2 = TroopStoryUtil.a(QQStoryContext.j(), paramDownloadTask.b);
           localObject1 = localObject3;
           if ((localObject2 instanceof MessageForShortVideo)) {
             localObject1 = (MessageForShortVideo)localObject2;
@@ -113,7 +106,7 @@ public class AsyncFileDownloader
         return false;
       }
     }
-    if (!NetworkUtils.a(QQStoryContext.a().a()))
+    if (!NetworkUtils.a(QQStoryContext.a().c()))
     {
       if (paramDownloadResult != null) {
         paramDownloadResult.a(paramDownloadTask, new ErrorMessage(9004, "no net work"));
@@ -127,18 +120,18 @@ public class AsyncFileDownloader
       }
       return false;
     }
-    paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult = paramDownloadResult;
-    paramDownloadTask.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramDownloadTask.m = paramDownloadResult;
+    paramDownloadTask.p = System.currentTimeMillis();
     if (localObject2 != null)
     {
-      paramDownloadTask.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)localObject2);
-      paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader;
+      paramDownloadTask.v = ((MessageForShortVideo)localObject2);
+      paramDownloadTask.n = this.c;
     }
     else
     {
-      paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerBaseDownloader;
+      paramDownloadTask.n = this.b;
     }
-    if (!paramDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.a())
+    if (!paramDownloadTask.n.a())
     {
       if (paramDownloadResult != null) {
         paramDownloadResult.a(paramDownloadTask, new ErrorMessage(15, "downloader not prepare"));
@@ -151,7 +144,7 @@ public class AsyncFileDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader
  * JD-Core Version:    0.7.0.1
  */

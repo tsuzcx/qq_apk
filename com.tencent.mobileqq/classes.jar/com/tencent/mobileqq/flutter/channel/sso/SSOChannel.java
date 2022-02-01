@@ -23,34 +23,24 @@ public class SSOChannel
   extends BaseMethodChannel
   implements BusinessObserver
 {
-  public static final AtomicInteger a;
-  private Map<Integer, MethodChannel.Result> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
-  
-  public SSOChannel()
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  }
+  public static final AtomicInteger d = new AtomicInteger();
+  private Map<Integer, MethodChannel.Result> e = new ConcurrentHashMap();
   
   private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
   {
     if ((paramRequestPacket != null) && (paramResult != null))
     {
-      int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
+      int i = d.incrementAndGet();
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", d().getAccount(), paramRequestPacket.cmd);
       localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
       localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
       localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramResult);
+      this.e.put(Integer.valueOf(i), paramResult);
       localToServiceMsg.putWupBuffer(paramRequestPacket.body);
-      paramResult = new NewIntent(a().getApplication(), FlutterServlet.class);
+      paramResult = new NewIntent(d().getApplication(), FlutterServlet.class);
       paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
       paramResult.setObserver(this);
-      a().startServlet(paramResult);
+      d().startServlet(paramResult);
       if (QLog.isColorLevel()) {
         QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
       }
@@ -64,25 +54,25 @@ public class SSOChannel
     ThreadManager.getUIHandler().post(new SSOChannel.2(this, paramResponsePacket, paramString, paramResult));
   }
   
-  public MethodChannel.MethodCallHandler a()
-  {
-    return new SSOChannel.1(this);
-  }
-  
-  public MethodCodec a()
-  {
-    return SSOChannelHandler.a;
-  }
-  
   public String a()
   {
     return "sso_channel";
   }
   
-  public void a()
+  public MethodCodec b()
   {
-    super.a();
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    return SSOChannelHandler.b;
+  }
+  
+  public MethodChannel.MethodCallHandler c()
+  {
+    return new SSOChannel.1(this);
+  }
+  
+  public void f()
+  {
+    super.f();
+    this.e.clear();
   }
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
@@ -107,7 +97,7 @@ public class SSOChannel
       paramBundle.isSuc = Boolean.valueOf(((FromServiceMsg)localObject).isSuccess());
       paramBundle.errCode = Integer.valueOf(((FromServiceMsg)localObject).getResultCode());
       paramBundle.body = arrayOfByte;
-      localObject = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+      localObject = (MethodChannel.Result)this.e.remove(Integer.valueOf(paramInt));
       a(localToServiceMsg.getServiceCmd(), paramBundle, (MethodChannel.Result)localObject);
       return;
     }
@@ -116,7 +106,7 @@ public class SSOChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.SSOChannel
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ class SignatureFontAdapter$2
   {
     if ((SignatureFontAdapter.a(this.a) < 0) || (SignatureFontAdapter.b(this.a) < SignatureFontAdapter.a(this.a)))
     {
-      SignatureFontAdapter.a(this.a).shouldStartAnimation = true;
-      SignatureFontAdapter.a(this.a).startAnimation(false, false);
+      SignatureFontAdapter.c(this.a).shouldStartAnimation = true;
+      SignatureFontAdapter.c(this.a).startAnimation(false, false);
       if (SignatureFontAdapter.a(this.a) > 0) {
-        SignatureFontAdapter.c(this.a);
+        SignatureFontAdapter.d(this.a);
       }
     }
   }
@@ -25,7 +25,7 @@ class SignatureFontAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.SignatureFontAdapter.2
  * JD-Core Version:    0.7.0.1
  */

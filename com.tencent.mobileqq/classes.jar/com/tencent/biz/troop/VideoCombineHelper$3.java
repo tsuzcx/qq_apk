@@ -7,12 +7,12 @@ class VideoCombineHelper$3
   
   public void run()
   {
-    new VideoCombineHelper.DownLoadTask(this.this$0, new VideoCombineHelper.3.1(this), this.jdField_a_of_type_JavaLangString).a();
+    new VideoCombineHelper.DownLoadTask(this.this$0, new VideoCombineHelper.3.1(this), this.c).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.3
  * JD-Core Version:    0.7.0.1
  */

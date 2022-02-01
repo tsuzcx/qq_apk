@@ -10,37 +10,37 @@ class QWalletApiProxyImpl$1
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus();
+    int i = this.a.getStatus();
     boolean bool = true;
     if (i == 1)
     {
-      ??? = this.jdField_a_of_type_ComQwalletTempIQWalletApiProxy$OnDecodeListener;
+      ??? = this.b;
       if (??? != null) {
-        ((IQWalletApiProxy.OnDecodeListener)???).a(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        ((IQWalletApiProxy.OnDecodeListener)???).a(true, this.a);
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getConstantState() != null) {
-        synchronized (this.jdField_a_of_type_ComTencentImageURLDrawable.getConstantState())
+      if (this.a.getConstantState() != null) {
+        synchronized (this.a.getConstantState())
         {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+          this.a.downloadImediatly();
         }
       }
-      ??? = this.jdField_a_of_type_ComQwalletTempIQWalletApiProxy$OnDecodeListener;
+      ??? = this.b;
       if (??? != null)
       {
-        if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
+        if (this.a.getStatus() != 1) {
           bool = false;
         }
-        ((IQWalletApiProxy.OnDecodeListener)???).a(bool, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        ((IQWalletApiProxy.OnDecodeListener)???).a(bool, this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.QWalletApiProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

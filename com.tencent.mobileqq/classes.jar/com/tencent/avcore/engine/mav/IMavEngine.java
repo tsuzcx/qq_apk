@@ -16,6 +16,8 @@ public abstract interface IMavEngine
   
   public abstract int debugSwitch(boolean paramBoolean);
   
+  public abstract void enableAIDenoise(boolean paramBoolean);
+  
   public abstract void enableDumpAudioData(boolean paramBoolean);
   
   public abstract boolean enableLoopback(boolean paramBoolean);
@@ -50,7 +52,7 @@ public abstract interface IMavEngine
   
   public abstract int ignore(int paramInt1, long paramLong, int paramInt2);
   
-  public abstract void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4);
+  public abstract void init(Context paramContext, long paramLong, int paramInt, String paramString1, SDKConfigInfo paramSDKConfigInfo, String paramString2, String paramString3, String paramString4, boolean paramBoolean);
   
   public abstract int invite(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3);
   

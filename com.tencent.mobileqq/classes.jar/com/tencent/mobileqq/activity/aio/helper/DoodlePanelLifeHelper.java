@@ -26,21 +26,30 @@ public class DoodlePanelLifeHelper
   
   private void a()
   {
-    BaseDoodlePanel localBaseDoodlePanel = (BaseDoodlePanel)this.a.a().b(18);
+    BaseDoodlePanel localBaseDoodlePanel = (BaseDoodlePanel)this.a.q().d(18);
     if (localBaseDoodlePanel != null) {
-      localBaseDoodlePanel.b();
+      localBaseDoodlePanel.c();
     }
   }
   
-  public int a()
+  public boolean a(boolean paramBoolean)
+  {
+    BaseDoodlePanel localBaseDoodlePanel = (BaseDoodlePanel)this.a.q().d(18);
+    if (localBaseDoodlePanel == null) {
+      return false;
+    }
+    return localBaseDoodlePanel.a();
+  }
+  
+  public int bM_()
   {
     return 0;
   }
   
-  public boolean a(int paramInt)
+  public boolean d(int paramInt)
   {
     ((IDoodlePanelHelper)QRoute.api(IDoodlePanelHelper.class)).destroyCache();
-    BaseDoodlePanel localBaseDoodlePanel = (BaseDoodlePanel)this.a.a().b(18);
+    BaseDoodlePanel localBaseDoodlePanel = (BaseDoodlePanel)this.a.q().d(18);
     if (localBaseDoodlePanel == null) {
       return false;
     }
@@ -50,16 +59,7 @@ public class DoodlePanelLifeHelper
     return false;
   }
   
-  public boolean a(boolean paramBoolean)
-  {
-    BaseDoodlePanel localBaseDoodlePanel = (BaseDoodlePanel)this.a.a().b(18);
-    if (localBaseDoodlePanel == null) {
-      return false;
-    }
-    return localBaseDoodlePanel.a();
-  }
-  
-  public void d(int paramInt)
+  public void e(int paramInt)
   {
     ((IDoodlePanelHelper)QRoute.api(IDoodlePanelHelper.class)).destroy();
   }
@@ -105,7 +105,7 @@ public class DoodlePanelLifeHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.DoodlePanelLifeHelper
  * JD-Core Version:    0.7.0.1
  */

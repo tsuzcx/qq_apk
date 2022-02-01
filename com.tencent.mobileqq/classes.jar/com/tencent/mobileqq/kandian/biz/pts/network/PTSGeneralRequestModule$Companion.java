@@ -24,7 +24,7 @@ public final class PTSGeneralRequestModule$Companion
       QLog.i("PTSGeneralRequestModule", 1, paramPTSComposer.toString());
       return;
     }
-    Object localObject = ReadInJoyUtils.a();
+    Object localObject = ReadInJoyUtils.b();
     if (localObject != null)
     {
       localObject = (ReadInJoyLogicManager)((QQAppInterface)localObject).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
@@ -33,7 +33,7 @@ public final class PTSGeneralRequestModule$Companion
         localObject = ((ReadInJoyLogicManager)localObject).getReadInJoyLogicEngine();
         if (localObject != null)
         {
-          localObject = ((ReadInJoyLogicEngine)localObject).a();
+          localObject = ((ReadInJoyLogicEngine)localObject).r();
           if (localObject != null)
           {
             if (paramString1 == null) {
@@ -53,7 +53,7 @@ public final class PTSGeneralRequestModule$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.network.PTSGeneralRequestModule.Companion
  * JD-Core Version:    0.7.0.1
  */

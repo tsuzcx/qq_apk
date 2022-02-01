@@ -2,8 +2,6 @@ package com.tencent.mobileqq.qqaudio.audioplayer;
 
 public abstract interface IAudioFilePlayer
 {
-  public abstract int a();
-  
   public abstract void a();
   
   public abstract void a(float paramFloat);
@@ -16,10 +14,6 @@ public abstract interface IAudioFilePlayer
   
   public abstract void a(String paramString);
   
-  public abstract boolean a();
-  
-  public abstract int b();
-  
   public abstract void b(int paramInt);
   
   public abstract void c();
@@ -28,13 +22,19 @@ public abstract interface IAudioFilePlayer
   
   public abstract void e();
   
-  public abstract void f();
+  public abstract boolean f();
   
   public abstract void g();
+  
+  public abstract int h();
+  
+  public abstract int i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.IAudioFilePlayer
  * JD-Core Version:    0.7.0.1
  */

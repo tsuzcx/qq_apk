@@ -1,70 +1,76 @@
 package com.tencent.mobileqq.cmshow.engine.script.task;
 
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/task/BackgroundInitTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/AbsScriptTask;", "()V", "apolloId", "", "getApolloId$cmshow_impl_release", "()Ljava/lang/String;", "setApolloId$cmshow_impl_release", "(Ljava/lang/String;)V", "roleId", "", "getRoleId$cmshow_impl_release", "()I", "setRoleId$cmshow_impl_release", "(I)V", "roleType", "getRoleType$cmshow_impl_release", "setRoleType$cmshow_impl_release", "scale", "", "getScale$cmshow_impl_release", "()F", "setScale$cmshow_impl_release", "(F)V", "xPosition", "getXPosition$cmshow_impl_release", "setXPosition$cmshow_impl_release", "yPosition", "getYPosition$cmshow_impl_release", "setYPosition$cmshow_impl_release", "setApolloId", "setPosition", "x", "y", "setRoleId", "setRoleType", "setScale", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/task/BackgroundInitTask;", "Lcom/tencent/mobileqq/cmshow/engine/script/task/AbsScriptTask;", "apolloResManager", "Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;", "(Lcom/tencent/mobileqq/cmshow/engine/resource/IApolloResManager;)V", "apolloId", "", "getApolloId$cmshow_impl_release", "()Ljava/lang/String;", "setApolloId$cmshow_impl_release", "(Ljava/lang/String;)V", "roleId", "", "getRoleId$cmshow_impl_release", "()I", "setRoleId$cmshow_impl_release", "(I)V", "roleType", "getRoleType$cmshow_impl_release", "setRoleType$cmshow_impl_release", "scale", "", "getScale$cmshow_impl_release", "()F", "setScale$cmshow_impl_release", "(F)V", "xPosition", "getXPosition$cmshow_impl_release", "setXPosition$cmshow_impl_release", "yPosition", "getYPosition$cmshow_impl_release", "setYPosition$cmshow_impl_release", "setApolloId", "setPosition", "x", "y", "setRoleId", "setRoleType", "setScale", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public abstract class BackgroundInitTask
   extends AbsScriptTask
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 1;
+  private int a = 1;
   @Nullable
-  private String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float c;
+  private String b;
+  private int c;
+  private float d = 1.0F;
+  private float e;
+  private float f;
   
-  public final float a()
+  public BackgroundInitTask(@NotNull IApolloResManager paramIApolloResManager)
   {
-    return this.jdField_a_of_type_Float;
+    super(paramIApolloResManager);
   }
   
   @NotNull
   public final BackgroundInitTask a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_b_of_type_Float = paramFloat1;
-    this.c = paramFloat2;
+    this.e = paramFloat1;
+    this.f = paramFloat2;
     return this;
-  }
-  
-  @NotNull
-  public final BackgroundInitTask a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public final float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public final float c()
-  {
-    return this.c;
   }
   
   public final int c()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
-  public final int d()
+  @NotNull
+  public final BackgroundInitTask c(int paramInt)
   {
-    return this.jdField_b_of_type_Int;
+    this.a = paramInt;
+    return this;
   }
   
   @Nullable
-  public final String e()
+  public final String l()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public final int m()
+  {
+    return this.c;
+  }
+  
+  public final float n()
+  {
+    return this.d;
+  }
+  
+  public final float o()
+  {
+    return this.e;
+  }
+  
+  public final float p()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.task.BackgroundInitTask
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class FriendProfileMoreInfoActivity$15
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     paramDialogInterface = this.a;
-    paramDialogInterface.a(FriendProfileMoreInfoActivity.a(paramDialogInterface), false);
+    paramDialogInterface.a(FriendProfileMoreInfoActivity.i(paramDialogInterface), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.15
  * JD-Core Version:    0.7.0.1
  */

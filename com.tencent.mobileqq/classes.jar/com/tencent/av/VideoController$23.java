@@ -11,8 +11,8 @@ class VideoController$23
   
   public void run()
   {
-    if (this.this$0.a().E) {
-      ((AudioManager)this.this$0.a.getSystemService("audio")).setSpeakerphoneOn(true);
+    if (this.this$0.k().aG) {
+      ((AudioManager)this.this$0.f.getSystemService("audio")).setSpeakerphoneOn(true);
     }
   }
 }

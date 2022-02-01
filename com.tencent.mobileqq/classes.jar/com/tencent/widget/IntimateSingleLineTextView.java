@@ -55,12 +55,12 @@ public class IntimateSingleLineTextView
   
   protected boolean isSameDrawable(Drawable paramDrawable, SingleLineTextView.IconDrawable paramIconDrawable)
   {
-    return (paramDrawable == paramIconDrawable.mDrawable) || (((paramIconDrawable.mDrawable instanceof MutualMarkIconProxyDrawable)) && (((MutualMarkIconProxyDrawable)paramIconDrawable.mDrawable).a() == paramDrawable));
+    return (paramDrawable == paramIconDrawable.mDrawable) || (((paramIconDrawable.mDrawable instanceof MutualMarkIconProxyDrawable)) && (((MutualMarkIconProxyDrawable)paramIconDrawable.mDrawable).d() == paramDrawable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.IntimateSingleLineTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -17,24 +17,24 @@ import java.io.File;
 
 public class LevelEggsElement
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private final AIOAnimationConatiner jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-  private final AioAnimationRule.JumpImage jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage;
-  private final AioAnimationRule jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private final ListView jdField_a_of_type_ComTencentWidgetListView;
+  private View a;
+  private LottieDrawable b;
+  private final AIOAnimationConatiner c;
+  private final ListView d;
+  private final AioAnimationRule e;
+  private final AioAnimationRule.JumpImage f;
   
   public LevelEggsElement(AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView, AioAnimationRule paramAioAnimationRule, AioAnimationRule.JumpImage paramJumpImage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule = paramAioAnimationRule;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage = paramJumpImage;
+    this.c = paramAIOAnimationConatiner;
+    this.d = paramListView;
+    this.e = paramAioAnimationRule;
+    this.f = paramJumpImage;
   }
   
   private View a(Drawable paramDrawable)
   {
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetListView.getContext());
+    ImageView localImageView = new ImageView(this.d.getContext());
     localImageView.setImageDrawable(paramDrawable);
     Rect localRect = paramDrawable.getBounds();
     if (localRect.isEmpty()) {
@@ -52,7 +52,7 @@ public class LevelEggsElement
   {
     try
     {
-      String str = paramJumpImage.e;
+      String str = paramJumpImage.h;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append(AioAnimationConfigHelper.a);
       ((StringBuilder)localObject).append(str);
@@ -63,8 +63,8 @@ public class LevelEggsElement
       localStringBuilder.append(str);
       localStringBuilder.append("/images");
       str = localStringBuilder.toString();
-      paramJumpImage = new LevelEggsPosition(paramJumpImage.b);
-      LottieHelper.a(this.jdField_a_of_type_ComTencentWidgetListView.getContext(), (String)localObject, str, paramJumpImage.a / 2, paramJumpImage.b / 2, new LevelEggsElement.1(this));
+      paramJumpImage = new LevelEggsPosition(paramJumpImage.d);
+      LottieHelper.a(this.d.getContext(), (String)localObject, str, paramJumpImage.a / 2, paramJumpImage.b / 2, new LevelEggsElement.1(this));
       return;
     }
     catch (Throwable paramJumpImage)
@@ -75,7 +75,7 @@ public class LevelEggsElement
   
   private void a(AioAnimationRule.JumpImage paramJumpImage, LevelEggsElement.AnimationListener paramAnimationListener)
   {
-    Object localObject = paramJumpImage.e;
+    Object localObject = paramJumpImage.h;
     paramAnimationListener = new StringBuilder();
     paramAnimationListener.append(AioAnimationConfigHelper.a);
     paramAnimationListener.append((String)localObject);
@@ -106,15 +106,15 @@ public class LevelEggsElement
   public void a(LevelEggsElement.AnimationListener paramAnimationListener)
   {
     QLog.i("LevelEggsElement", 1, "[start] start level eggs.");
-    Drawable localDrawable = AioAnimationRule.JumpImage.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage);
+    Drawable localDrawable = AioAnimationRule.JumpImage.a(this.c.getContext(), this.f);
     if (localDrawable != null)
     {
-      this.jdField_a_of_type_AndroidViewView = a(localDrawable);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.addViewInLayout(this.jdField_a_of_type_AndroidViewView, -1, AIOAnimationConatiner.a, false);
+      this.a = a(localDrawable);
+      this.c.addViewInLayout(this.a, -1, AIOAnimationConatiner.a, false);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage.c == 3) {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule$JumpImage, paramAnimationListener);
+    if (this.f.g == 3) {
+      a(this.f, paramAnimationListener);
     }
   }
   
@@ -126,7 +126,7 @@ public class LevelEggsElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.LevelEggsElement
  * JD-Core Version:    0.7.0.1
  */

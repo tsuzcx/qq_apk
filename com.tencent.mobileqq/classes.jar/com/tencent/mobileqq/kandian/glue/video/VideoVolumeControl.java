@@ -9,14 +9,16 @@ import android.os.Handler;
 import android.os.Looper;
 import android.telephony.TelephonyManager;
 import android.widget.ImageView;
+import com.tencent.avbiz.AVBizModuleFactory;
+import com.tencent.avbiz.IModule;
+import com.tencent.avbiz.IModule.FocusChangeListener;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.kandian.base.image.api.IImageManager;
+import com.tencent.mobileqq.kandian.base.image.ImageManager;
 import com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoVolumeControl;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,7 +30,7 @@ import mqq.util.WeakReference;
 import org.jetbrains.annotations.Nullable;
 
 public class VideoVolumeControl
-  implements IVideoVolumeControl
+  implements IModule.FocusChangeListener, IVideoVolumeControl
 {
   public static final String SET_MUTE_REASON_FROM_CLICK_VIDEO_NO_AUTO_PLAY = "noAutoPlayClickVideoInReadInjoy";
   public static final String SET_MUTE_REASON_FROM_KANDIAN_FEED = "jumpFromKandianFeed";
@@ -165,7 +167,7 @@ public class VideoVolumeControl
     {
       localObject = (VideoPlayManager)localIterator.next();
       if (localObject != null) {
-        ((VideoPlayManager)localObject).f();
+        ((VideoPlayManager)localObject).D();
       }
     }
     localIterator = this.videoMgrs.keySet().iterator();
@@ -173,7 +175,7 @@ public class VideoVolumeControl
     {
       localObject = (VideoFeedsPlayManager)localIterator.next();
       if (localObject != null) {
-        ((VideoFeedsPlayManager)localObject).g();
+        ((VideoFeedsPlayManager)localObject).s();
       }
     }
   }
@@ -188,7 +190,7 @@ public class VideoVolumeControl
       while (localIterator.hasNext())
       {
         localObject = (VideoPlayManager)localIterator.next();
-        if ((localObject != null) && (((VideoPlayManager)localObject).a()))
+        if ((localObject != null) && (((VideoPlayManager)localObject).g()))
         {
           if (QLog.isColorLevel())
           {
@@ -197,17 +199,17 @@ public class VideoVolumeControl
             localStringBuilder.append(localObject);
             QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, localStringBuilder.toString());
           }
-          if (((VideoPlayManager)localObject).a() != 5) {
+          if (((VideoPlayManager)localObject).j() != 5) {
             ((VideoPlayManager)localObject).b(true);
           }
-          ((VideoPlayManager)localObject).a();
+          ((VideoPlayManager)localObject).c();
         }
       }
       localIterator = this.videoMgrs.keySet().iterator();
       while (localIterator.hasNext())
       {
         localObject = (VideoFeedsPlayManager)localIterator.next();
-        if ((localObject != null) && (((VideoFeedsPlayManager)localObject).d()))
+        if ((localObject != null) && (((VideoFeedsPlayManager)localObject).k()))
         {
           if (QLog.isColorLevel())
           {
@@ -216,10 +218,10 @@ public class VideoVolumeControl
             localStringBuilder.append(localObject);
             QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, localStringBuilder.toString());
           }
-          if (((VideoFeedsPlayManager)localObject).a() != 5) {
+          if (((VideoFeedsPlayManager)localObject).r() != 5) {
             ((VideoFeedsPlayManager)localObject).b(true);
           }
-          ((VideoFeedsPlayManager)localObject).b();
+          ((VideoFeedsPlayManager)localObject).g();
         }
       }
     }
@@ -304,6 +306,9 @@ public class VideoVolumeControl
     }
     this.mOriginalRingMode = this.audioManager.getRingerMode();
     this.mPreRingDode = this.mOriginalRingMode;
+    paramActivity = AVBizModuleFactory.getModuleByName("看点");
+    paramActivity.setListener(this);
+    paramActivity.requestAVFocus();
   }
   
   public boolean isInPhoneCall(@Nullable Context paramContext)
@@ -319,6 +324,54 @@ public class VideoVolumeControl
   public boolean needSmoothVideo()
   {
     return this.audioSwithSet ^ true;
+  }
+  
+  public void onFocusGain()
+  {
+    Iterator localIterator = this.videoManagers.keySet().iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (VideoPlayManager)localIterator.next();
+      if (localObject != null) {
+        ((VideoPlayManager)localObject).h();
+      }
+    }
+    this.shouldMuteInReadInJoy = false;
+    localIterator = this.videoMgrs.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (VideoFeedsPlayManager)localIterator.next();
+      if (localObject != null) {
+        ((VideoFeedsPlayManager)localObject).onFocusGain();
+      }
+    }
+    this.shouldMuteInVideoFeed = false;
+    this.shouldMute = false;
+  }
+  
+  public void onFocusLoss()
+  {
+    Iterator localIterator = this.videoManagers.keySet().iterator();
+    Object localObject;
+    while (localIterator.hasNext())
+    {
+      localObject = (VideoPlayManager)localIterator.next();
+      if (localObject != null) {
+        ((VideoPlayManager)localObject).i();
+      }
+    }
+    this.shouldMuteInReadInJoy = true;
+    localIterator = this.videoMgrs.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (VideoFeedsPlayManager)localIterator.next();
+      if (localObject != null) {
+        ((VideoFeedsPlayManager)localObject).onFocusLoss();
+      }
+    }
+    this.shouldMuteInVideoFeed = true;
+    this.shouldMute = true;
   }
   
   public void outKandianModule(Activity paramActivity)
@@ -362,7 +415,7 @@ public class VideoVolumeControl
         this.shouleIgnoreVolumeReceiverFristTime = false;
       }
       if ((paramActivity instanceof ReadInJoyNewFeedsActivity)) {
-        ((IImageManager)QRoute.api(IImageManager.class)).clean();
+        ImageManager.get().clean();
       }
       paramActivity = this.mInKandianResumeTimer;
       if (paramActivity != null)
@@ -371,8 +424,12 @@ public class VideoVolumeControl
         this.mInKandianResumeTimer.purge();
         this.mInKandianResumeTimer = null;
       }
+      paramActivity = AVBizModuleFactory.getModuleByName("看点");
+      paramActivity.setListener(this);
+      paramActivity.abandonAVFocus();
+      return;
     }
-    else if (QLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("outKandianModule origin:");
@@ -510,7 +567,7 @@ public class VideoVolumeControl
         if (localObject != null)
         {
           ((VideoPlayManager)localObject).c(paramBoolean);
-          bool |= ((VideoPlayManager)localObject).a();
+          bool |= ((VideoPlayManager)localObject).g();
         }
       }
       this.shouldMuteInReadInJoy = paramBoolean;
@@ -527,7 +584,7 @@ public class VideoVolumeControl
         if (localObject != null)
         {
           ((VideoFeedsPlayManager)localObject).d(paramBoolean);
-          ((VideoFeedsPlayManager)localObject).d();
+          ((VideoFeedsPlayManager)localObject).k();
         }
       }
       this.shouldMuteInVideoFeed = paramBoolean;
@@ -545,13 +602,13 @@ public class VideoVolumeControl
           if ((paramString != null) && (paramString.get() != null)) {
             if (paramBoolean)
             {
-              ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130843178));
-              ((ImageView)paramString.get()).setContentDescription(HardCodeUtil.a(2131716186));
+              ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130844132));
+              ((ImageView)paramString.get()).setContentDescription(HardCodeUtil.a(2131913635));
             }
             else
             {
-              ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130843179));
-              ((ImageView)paramString.get()).setContentDescription(HardCodeUtil.a(2131716187));
+              ((ImageView)paramString.get()).setImageDrawable(((ImageView)paramString.get()).getResources().getDrawable(2130844133));
+              ((ImageView)paramString.get()).setContentDescription(HardCodeUtil.a(2131913636));
             }
           }
           paramInt += 1;
@@ -614,7 +671,7 @@ public class VideoVolumeControl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.VideoVolumeControl
  * JD-Core Version:    0.7.0.1
  */

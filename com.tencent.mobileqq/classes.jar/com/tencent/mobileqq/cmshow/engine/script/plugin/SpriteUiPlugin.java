@@ -15,6 +15,7 @@ import com.tencent.mobileqq.apollo.script.SpriteBridge;
 import com.tencent.mobileqq.apollo.script.SpriteContext;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
+import com.tencent.mobileqq.apollo.utils.ApolloPanelUtil;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.cmshow.engine.model.Argument;
@@ -26,52 +27,51 @@ import kotlin.TypeCastException;
 import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
 import mqq.app.api.IRuntimeService;
+import mqq.util.LogUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/plugin/SpriteUiPlugin;", "Lcom/tencent/mobileqq/cmshow/engine/script/plugin/IEventPlugin;", "mSpriteContext", "Lcom/tencent/mobileqq/apollo/script/SpriteContext;", "(Lcom/tencent/mobileqq/apollo/script/SpriteContext;)V", "priority", "Lcom/tencent/mobileqq/cmshow/engine/script/plugin/PluginCmdConstant$PlugPriority;", "getPriority", "()Lcom/tencent/mobileqq/cmshow/engine/script/plugin/PluginCmdConstant$PlugPriority;", "handleChangedCompleted", "", "argument", "Lcom/tencent/mobileqq/cmshow/engine/model/Argument;", "handleEvent", "handleOnApolloClick", "handlePanelStatusChange", "handleShowToast", "handleSpriteStatus", "observedEvents", "", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/engine/script/plugin/SpriteUiPlugin;", "Lcom/tencent/mobileqq/cmshow/engine/script/plugin/IEventPlugin;", "mSpriteContext", "Lcom/tencent/mobileqq/apollo/script/SpriteContext;", "(Lcom/tencent/mobileqq/apollo/script/SpriteContext;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "TAG$1", "priority", "Lcom/tencent/mobileqq/cmshow/engine/script/plugin/PluginCmdConstant$PlugPriority;", "getPriority", "()Lcom/tencent/mobileqq/cmshow/engine/script/plugin/PluginCmdConstant$PlugPriority;", "handleChangedCompleted", "argument", "Lcom/tencent/mobileqq/cmshow/engine/model/Argument;", "handleEvent", "handleOnApolloClick", "handlePanelStatusChange", "handleShowToast", "handleSpriteChangedCompleted", "handleSpriteStatus", "observedEvents", "", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class SpriteUiPlugin
   implements IEventPlugin
 {
   @Deprecated
-  public static final SpriteUiPlugin.Companion a;
+  public static final SpriteUiPlugin.Companion a = new SpriteUiPlugin.Companion(null);
   @NotNull
-  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.mutableListOf(new String[] { "cs.script_change_panel_status.local", "cs.script_show_toast.local", "cs.script_sprite_status_change.local", "cs.script_action_apollo_click.local", "cs.script_sprite_model_change_notify.local" });
-  private final SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+  private static final List<String> f = CollectionsKt.mutableListOf(new String[] { "cs.script_change_panel_status.local", "cs.script_show_toast.local", "cs.script_sprite_status_change.local", "cs.script_action_apollo_click.local", "cs.script_sprite_model_change_notify.local", "cs.script_sprite_model_ready.local" });
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginSpriteUiPlugin$Companion = new SpriteUiPlugin.Companion(null);
-  }
+  private final String c;
+  @NotNull
+  private final PluginCmdConstant.PlugPriority d;
+  private final SpriteContext e;
   
   public SpriteUiPlugin(@NotNull SpriteContext paramSpriteContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.UI;
+    this.e = paramSpriteContext;
+    this.c = "[cmshow][SpriteUiPlugin]";
+    this.d = PluginCmdConstant.PlugPriority.UI;
   }
   
   private final String b(Argument paramArgument)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() == null) {
+      if (this.e.l() == null) {
         return null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d != 0) {
+      if (this.e.i != 0) {
         return null;
       }
-      int i = new JSONObject(paramArgument.b()).optInt("status");
-      paramArgument = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
+      int i = new JSONObject(paramArgument.e()).optInt("status");
+      paramArgument = this.e.l().getRuntimeService(ISpriteScriptManager.class, "all");
       Intrinsics.checkExpressionValueIsNotNull(paramArgument, "mSpriteContext.app.getRu…ava, ProcessConstant.ALL)");
       ((ISpriteScriptManager)paramArgument).getUIHandler().a(i);
       return null;
     }
     catch (Throwable paramArgument)
     {
-      QLog.e("[cmshow][SpriteUiPlugin]", 1, paramArgument, new Object[0]);
+      QLog.e(this.c, 1, paramArgument, new Object[0]);
     }
     return null;
   }
@@ -80,21 +80,21 @@ public final class SpriteUiPlugin
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() == null) {
+      if (this.e.l() == null) {
         return null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d != 0) {
+      if (this.e.i != 0) {
         return null;
       }
-      paramArgument = new JSONObject(paramArgument.b()).optString("text");
-      IRuntimeService localIRuntimeService = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
+      paramArgument = new JSONObject(paramArgument.e()).optString("text");
+      IRuntimeService localIRuntimeService = this.e.l().getRuntimeService(ISpriteScriptManager.class, "all");
       Intrinsics.checkExpressionValueIsNotNull(localIRuntimeService, "mSpriteContext.app.getRu…ava, ProcessConstant.ALL)");
       ((ISpriteScriptManager)localIRuntimeService).getUIHandler().a(paramArgument);
       return null;
     }
     catch (Throwable paramArgument)
     {
-      QLog.e("[cmshow][SpriteUiPlugin]", 1, paramArgument, new Object[0]);
+      QLog.e(this.c, 1, paramArgument, new Object[0]);
     }
     return null;
   }
@@ -103,21 +103,21 @@ public final class SpriteUiPlugin
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() == null) {
+      if (this.e.l() == null) {
         return null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d != 0) {
+      if (this.e.i != 0) {
         return null;
       }
-      paramArgument = new JSONObject(paramArgument.b());
+      paramArgument = new JSONObject(paramArgument.e());
       int i = paramArgument.optInt("status");
       int j = paramArgument.optInt("whiteHeight");
-      QLog.d("[cmshow][SpriteUiPlugin]", 2, new Object[] { "[handleSpriteStatus], status:", Integer.valueOf(i), ",whiteHeight:", Integer.valueOf(j) });
-      paramArgument = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
+      QLog.d(this.c, 2, new Object[] { "[handleSpriteStatus], status:", Integer.valueOf(i), ",whiteHeight:", Integer.valueOf(j) });
+      paramArgument = this.e.l().getRuntimeService(ISpriteScriptManager.class, "all");
       Intrinsics.checkExpressionValueIsNotNull(paramArgument, "mSpriteContext.app.getRu…ava, ProcessConstant.ALL)");
       paramArgument = (ISpriteScriptManager)paramArgument;
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c) {
-        QLog.i("[cmshow][SpriteUiPlugin]", 1, "[handleSpriteStatus], isBubbleMeme no need margin");
+      if (this.e.l) {
+        QLog.i(this.c, 1, "[handleSpriteStatus], isBubbleMeme no need margin");
       } else {
         paramArgument.getUIHandler().a(i, j);
       }
@@ -131,7 +131,7 @@ public final class SpriteUiPlugin
     }
     catch (Throwable paramArgument)
     {
-      QLog.e("[cmshow][SpriteUiPlugin]", 1, "handleSpriteStatus exception,", paramArgument);
+      QLog.e(this.c, 1, "handleSpriteStatus exception,", paramArgument);
     }
     return null;
   }
@@ -140,30 +140,30 @@ public final class SpriteUiPlugin
   {
     try
     {
-      paramArgument = new JSONObject(paramArgument.b());
+      paramArgument = new JSONObject(paramArgument.e());
       int i = paramArgument.optInt("from");
       Object localObject;
       if (i == 0)
       {
         paramArgument = paramArgument.optString("url");
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() == null)
+        if (this.e.m() == null)
         {
-          QLog.e("[cmshow][SpriteUiPlugin]", 1, "handleOnApolloClick mSpriteContent is nil");
+          QLog.e(this.c, 1, "handleOnApolloClick mSpriteContent is nil");
           return null;
         }
         if (!TextUtils.isEmpty((CharSequence)paramArgument))
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+          localObject = this.e.m();
           Intrinsics.checkExpressionValueIsNotNull(localObject, "mSpriteContext.pie");
-          if (((BaseChatPie)localObject).a() == null)
+          if (((BaseChatPie)localObject).aX() == null)
           {
-            QLog.e("[cmshow][SpriteUiPlugin]", 1, "handleOnApolloClick activity is nil");
+            QLog.e(this.c, 1, "handleOnApolloClick activity is nil");
             return null;
           }
           localObject = (IApolloUtil)QRoute.api(IApolloUtil.class);
-          BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+          BaseChatPie localBaseChatPie = this.e.m();
           Intrinsics.checkExpressionValueIsNotNull(localBaseChatPie, "mSpriteContext.pie");
-          ((IApolloUtil)localObject).openWebViewActivity((Context)localBaseChatPie.a(), paramArgument);
+          ((IApolloUtil)localObject).openWebViewActivity((Context)localBaseChatPie.aX(), paramArgument);
           return null;
         }
       }
@@ -172,8 +172,8 @@ public final class SpriteUiPlugin
         int j = paramArgument.optInt("apolloStatus");
         int k = paramArgument.optInt("clickPart");
         paramArgument = paramArgument.optString("apolloId");
-        QLog.d("[cmshow][SpriteUiPlugin]", 2, new Object[] { "handleOnApolloClick,from:", Integer.valueOf(i), ",apolloStatus:", Integer.valueOf(j), ",clickPart:", Integer.valueOf(k), "apolloId:", paramArgument });
-        localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+        QLog.d(this.c, 2, new Object[] { "handleOnApolloClick,from:", Integer.valueOf(i), ",apolloStatus:", Integer.valueOf(j), ",clickPart:", Integer.valueOf(k), "apolloId:", paramArgument });
+        localObject = this.e.u();
         if (localObject != null)
         {
           ((ISpriteDrawerInfoCallback)localObject).a(j, k, paramArgument);
@@ -183,42 +183,42 @@ public final class SpriteUiPlugin
     }
     catch (Exception paramArgument)
     {
-      QLog.e("[cmshow][scripted]SpriteActionScript", 1, "Exception:", (Throwable)paramArgument);
+      QLog.e(this.c, 1, "Exception:", (Throwable)paramArgument);
     }
     return null;
   }
   
   private final String f(Argument paramArgument)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() == null) {
+    if (this.e.l() == null) {
       return null;
     }
-    paramArgument = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(IApolloManagerService.class, "all");
+    paramArgument = this.e.l().getRuntimeService(IApolloManagerService.class, "all");
     if (paramArgument != null)
     {
       paramArgument = (ApolloManagerServiceImpl)paramArgument;
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(IApolloDaoManagerService.class, "all");
+      Object localObject1 = this.e.l().getRuntimeService(IApolloDaoManagerService.class, "all");
       if (localObject1 != null)
       {
         Object localObject2 = (ApolloDaoManagerServiceImpl)localObject1;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
+        localObject1 = this.e.l().getRuntimeService(ISpriteScriptManager.class, "all");
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "mSpriteContext.app.getRu…ava, ProcessConstant.ALL)");
         localObject1 = (ISpriteScriptManager)localObject1;
-        if ((paramArgument.getApolloUserStatus() == 2) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d == 0))
+        if ((paramArgument.getApolloUserStatus() == 2) && (this.e.i == 0) && (!String.valueOf(303).equals(ApolloPanelUtil.a())))
         {
           paramArgument = ((ApolloDaoManagerServiceImpl)localObject2).getActionInfoById(3000059);
           if (paramArgument != null)
           {
             localObject2 = new SpriteTaskParam();
             ((SpriteTaskParam)localObject2).f = paramArgument.actionId;
-            ((SpriteTaskParam)localObject2).jdField_c_of_type_Int = 0;
+            ((SpriteTaskParam)localObject2).c = 0;
             ((SpriteTaskParam)localObject2).g = 3;
             ((SpriteTaskParam)localObject2).e = paramArgument.personNum;
-            ((SpriteTaskParam)localObject2).jdField_a_of_type_Long = -10000L;
-            ((SpriteTaskParam)localObject2).jdField_a_of_type_Boolean = true;
-            ((SpriteTaskParam)localObject2).b = false;
-            ((SpriteTaskParam)localObject2).jdField_c_of_type_JavaLangString = paramArgument.bubbleText;
-            ((SpriteTaskParam)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getCurrentAccountUin().toString();
+            ((SpriteTaskParam)localObject2).h = -10000L;
+            ((SpriteTaskParam)localObject2).l = true;
+            ((SpriteTaskParam)localObject2).q = false;
+            ((SpriteTaskParam)localObject2).o = paramArgument.bubbleText;
+            ((SpriteTaskParam)localObject2).j = this.e.l().getCurrentAccountUin().toString();
             ((ISpriteScriptManager)localObject1).getSpriteBridge().b((SpriteTaskParam)localObject2);
           }
         }
@@ -229,17 +229,31 @@ public final class SpriteUiPlugin
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl");
   }
   
+  private final String g(Argument paramArgument)
+  {
+    if (this.e.l() == null) {
+      return null;
+    }
+    paramArgument = new JSONObject(paramArgument.e()).optString("uin");
+    QLog.e(this.c, 1, new Object[] { "handleSpriteChangedCompleted: uin:", LogUtil.wrapLogUin(paramArgument) });
+    paramArgument = this.e.u();
+    if (paramArgument != null) {
+      paramArgument.d();
+    }
+    return null;
+  }
+  
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
+    return this.d;
   }
   
   @Nullable
   public String a(@NotNull Argument paramArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramArgument, "argument");
-    String str = paramArgument.c();
+    String str = paramArgument.f();
     switch (str.hashCode())
     {
     default: 
@@ -259,6 +273,11 @@ public final class SpriteUiPlugin
         return f(paramArgument);
       }
       break;
+    case -739533882: 
+      if (str.equals("cs.script_sprite_model_ready.local")) {
+        return g(paramArgument);
+      }
+      break;
     case -1750280106: 
       if (str.equals("cs.script_sprite_status_change.local")) {
         return d(paramArgument);
@@ -273,26 +292,26 @@ public final class SpriteUiPlugin
     return null;
   }
   
-  @NotNull
-  public List<String> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return IEventPlugin.DefaultImpls.a(this);
-  }
-  
   public boolean a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public List<String> c()
+  {
+    return f;
+  }
+  
+  public boolean d()
+  {
+    return IEventPlugin.DefaultImpls.a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.SpriteUiPlugin
  * JD-Core Version:    0.7.0.1
  */

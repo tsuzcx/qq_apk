@@ -23,7 +23,7 @@ public class MoblieModelConfig
     if (paramString.equalsIgnoreCase("SCH-N719"))
     {
       MobileIssueSettings.b = false;
-      DualSimManager.jdField_a_of_type_Int = 3;
+      DualSimManager.a = 3;
       return;
     }
     if (paramString.equalsIgnoreCase("GT-I9103"))
@@ -71,7 +71,7 @@ public class MoblieModelConfig
     if (paramString.equalsIgnoreCase("HTC T328w"))
     {
       MobileIssueSettings.b = false;
-      DualSimManager.jdField_a_of_type_Int = 5;
+      DualSimManager.a = 5;
     }
   }
   
@@ -79,10 +79,10 @@ public class MoblieModelConfig
   {
     if (paramString.equalsIgnoreCase("MOT-XT788"))
     {
-      MobileIssueSettings.jdField_a_of_type_Boolean = false;
+      MobileIssueSettings.a = false;
       MobileIssueSettings.b = false;
-      DualSimManager.jdField_a_of_type_Int = 2;
-      DualSimManager.jdField_a_of_type_JavaLangString = "subscription";
+      DualSimManager.a = 2;
+      DualSimManager.b = "subscription";
     }
   }
   
@@ -118,7 +118,7 @@ public class MoblieModelConfig
     if (paramString.equalsIgnoreCase("ZTE V889D"))
     {
       MobileIssueSettings.b = false;
-      DualSimManager.jdField_a_of_type_Int = 2;
+      DualSimManager.a = 2;
       return;
     }
     if (paramString.equalsIgnoreCase("ZTE-T U960s"))
@@ -329,7 +329,7 @@ public class MoblieModelConfig
       return;
     }
     if (paramString.equalsIgnoreCase("vivo V1")) {
-      MobileIssueSettings.jdField_a_of_type_Int = 90;
+      MobileIssueSettings.n = 90;
     }
   }
   
@@ -427,7 +427,7 @@ public class MoblieModelConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.kapalaiadapter.MoblieModelConfig
  * JD-Core Version:    0.7.0.1
  */

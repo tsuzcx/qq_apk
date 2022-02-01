@@ -2,15 +2,15 @@ package com.tencent.mobileqq.qqexpand.bean.chat;
 
 public class SchoolInfo
 {
-  public long a;
   public String a;
   public String b;
+  public long c;
   
   public SchoolInfo(String paramString1, String paramString2, long paramLong)
   {
     this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString2;
+    this.c = paramLong;
   }
   
   public String toString()
@@ -20,17 +20,17 @@ public class SchoolInfo
     localStringBuilder.append(this.b);
     localStringBuilder.append("}");
     localStringBuilder.append("{schoolName: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("}");
     localStringBuilder.append("{schoolState: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.bean.chat.SchoolInfo
  * JD-Core Version:    0.7.0.1
  */

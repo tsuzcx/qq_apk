@@ -15,15 +15,15 @@ class DiscussChatPie$4$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie$4.a.a.a);
+    paramDialogInterface = AIOUtils.a(new Intent(this.a, SplashActivity.class), null);
+    paramDialogInterface.putExtra("uin", this.b.a.ah.b);
     paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    this.a.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.DiscussChatPie.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,21 +17,21 @@ class SearchBaseFragment$3
       if (paramInt2 == 201) {
         return;
       }
-      if (this.a.e == 0)
+      if (this.a.n == 0)
       {
-        if (this.a.a == null) {
+        if (this.a.k == null) {
           return;
         }
-        int i = this.a.a.getChildCount();
+        int i = this.a.k.getChildCount();
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
+          paramBitmap = this.a.k.getChildAt(paramInt2).getTag();
           if ((paramBitmap != null) && ((paramBitmap instanceof SearchBaseFragment.ItemViewHolder)))
           {
             paramBitmap = (SearchBaseFragment.ItemViewHolder)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+            if (paramBitmap.i == paramInt1) {
+              this.a.a(paramBitmap, paramBitmap.l);
             }
           }
           paramInt2 += 1;
@@ -42,7 +42,7 @@ class SearchBaseFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.3
  * JD-Core Version:    0.7.0.1
  */

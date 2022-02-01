@@ -20,7 +20,7 @@ public final class VideoColumnBannerManager$jumpToColumnPlay$1$1
     Intrinsics.checkParameterIsNotNull(paramMap, "map");
     paramString2 = this.a;
     if (paramString2 != null) {
-      paramString2.a(paramString1);
+      paramString2.c(paramString1);
     }
   }
   
@@ -29,13 +29,13 @@ public final class VideoColumnBannerManager$jumpToColumnPlay$1$1
     Intrinsics.checkParameterIsNotNull(paramString, "s");
     paramString = this.a;
     if (paramString != null) {
-      paramString.o();
+      paramString.W();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoColumnBannerManager.jumpToColumnPlay.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class QWalletIPCModule$9
   
   public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
+    this.a.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -21,15 +21,15 @@ class QWalletIPCModule$9
       localStringBuilder.append(paramRedPacketInfoBase.resPath);
       QLog.d("QWalletIPCModule", 2, localStringBuilder.toString());
     }
-    paramRedPacketInfoBase = this.jdField_a_of_type_AndroidOsResultReceiver;
+    paramRedPacketInfoBase = this.b;
     if (paramRedPacketInfoBase != null) {
-      paramRedPacketInfoBase.send(0, this.jdField_a_of_type_AndroidOsBundle);
+      paramRedPacketInfoBase.send(0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.ipc.impl.QWalletIPCModule.9
  * JD-Core Version:    0.7.0.1
  */

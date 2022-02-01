@@ -18,20 +18,12 @@ import java.util.List;
 class RecommendBannerContentAdaper
   extends RecyclerView.Adapter<RecommendBannerContentAdaper.ViewHolder>
 {
-  protected CertifiedAccountMeta.StEntry a;
-  private IRecommendBannerFlowListener jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener;
   protected List<RecommendInfoItem> a;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c = false;
-  
-  protected int a()
-  {
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null) {
-      return 1;
-    }
-    return 0;
-  }
+  protected CertifiedAccountMeta.StEntry b;
+  private IRecommendBannerFlowListener c;
+  private boolean d;
+  private boolean e;
+  private boolean f = false;
   
   public RecommendBannerContentAdaper.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
@@ -41,25 +33,25 @@ class RecommendBannerContentAdaper
     {
       localObject = new RecommendBannerEntryItemView((Context)localObject);
       ((RecommendBannerEntryItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerEntryItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerEntryItemView)localObject).setInNightMode(this.b);
+      ((RecommendBannerEntryItemView)localObject).setIsCloseShadow(this.d);
+      ((RecommendBannerEntryItemView)localObject).setInNightMode(this.e);
       return new RecommendBannerContentAdaper.ViewHolder(this, (View)localObject);
     }
     if (paramInt == 1)
     {
       localObject = new RecommendBannerItemView((Context)localObject);
       ((RecommendBannerItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerItemView)localObject).setInNightMode(this.b);
-      ((RecommendBannerItemView)localObject).setInNewFolderPage(this.c);
+      ((RecommendBannerItemView)localObject).setIsCloseShadow(this.d);
+      ((RecommendBannerItemView)localObject).setInNightMode(this.e);
+      ((RecommendBannerItemView)localObject).setInNewFolderPage(this.f);
       return new RecommendBannerContentAdaper.ViewHolder(this, (View)localObject);
     }
     if (paramInt == 2)
     {
       localObject = new RecommendBannerFeedItemView((Context)localObject);
       ((RecommendBannerFeedItemView)localObject).setLayoutParams(paramViewGroup);
-      ((RecommendBannerFeedItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
-      ((RecommendBannerFeedItemView)localObject).setInNightMode(this.b);
+      ((RecommendBannerFeedItemView)localObject).setIsCloseShadow(this.d);
+      ((RecommendBannerFeedItemView)localObject).setInNightMode(this.e);
       return new RecommendBannerContentAdaper.ViewHolder(this, (View)localObject);
     }
     return null;
@@ -67,26 +59,26 @@ class RecommendBannerContentAdaper
   
   public List<RecommendInfoItem> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(CertifiedAccountMeta.StEntry paramStEntry, List<RecommendInfoItem> paramList)
   {
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramStEntry;
+    this.a = paramList;
   }
   
   public void a(IRecommendBannerFlowListener paramIRecommendBannerFlowListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener = paramIRecommendBannerFlowListener;
+    this.c = paramIRecommendBannerFlowListener;
   }
   
   public void a(RecommendBannerContentAdaper.ViewHolder paramViewHolder)
   {
     super.onViewAttachedToWindow(paramViewHolder);
-    int i = paramViewHolder.getAdapterPosition() - a();
-    if ((!ArrayUtils.a(i, a())) && (a().get(i) != null)) {
-      VSReporter.a(((RecommendInfoItem)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_page", "recom_exp", 0, 0, new String[] { "", "", String.valueOf(i), ((RecommendInfoItem)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get() });
+    int i = paramViewHolder.getAdapterPosition() - b();
+    if ((!ArrayUtils.isOutOfArrayIndex(i, a())) && (a().get(i) != null)) {
+      VSReporter.a(((RecommendInfoItem)a().get(i)).b.id.get(), "auth_page", "recom_exp", 0, 0, new String[] { "", "", String.valueOf(i), ((RecommendInfoItem)a().get(i)).b.nick.get() });
     }
   }
   
@@ -95,20 +87,20 @@ class RecommendBannerContentAdaper
     if (paramViewHolder != null) {
       if ((paramViewHolder.itemView instanceof RecommendBannerEntryItemView))
       {
-        ((RecommendBannerEntryItemView)paramViewHolder.itemView).setEntry(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry);
+        ((RecommendBannerEntryItemView)paramViewHolder.itemView).setEntry(this.b);
       }
       else
       {
-        int i = paramInt - a();
+        int i = paramInt - b();
         if ((paramViewHolder.itemView instanceof RecommendBannerItemView))
         {
           RecommendBannerItemView localRecommendBannerItemView = (RecommendBannerItemView)paramViewHolder.itemView;
-          localRecommendBannerItemView.setData(((RecommendInfoItem)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, i);
-          localRecommendBannerItemView.setRecommendBannerFolwListener(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerIRecommendBannerFlowListener);
+          localRecommendBannerItemView.setData(((RecommendInfoItem)a().get(i)).b, i);
+          localRecommendBannerItemView.setRecommendBannerFolwListener(this.c);
         }
         else if ((paramViewHolder.itemView instanceof RecommendBannerFeedItemView))
         {
-          ((RecommendBannerFeedItemView)paramViewHolder.itemView).setData(((RecommendInfoItem)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, i);
+          ((RecommendBannerFeedItemView)paramViewHolder.itemView).setData(((RecommendInfoItem)a().get(i)).c, i);
         }
       }
     }
@@ -117,33 +109,41 @@ class RecommendBannerContentAdaper
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
+  }
+  
+  protected int b()
+  {
+    if (this.b != null) {
+      return 1;
+    }
+    return 0;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void c(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public int getItemCount()
   {
     if (a() == null) {
-      return a();
+      return b();
     }
-    return a().size() + a();
+    return a().size() + b();
   }
   
   public int getItemViewType(int paramInt)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null)) {
+    if ((paramInt == 0) && (this.b != null)) {
       return 3;
     }
-    return ((RecommendInfoItem)a().get(paramInt - a())).jdField_a_of_type_Int;
+    return ((RecommendInfoItem)a().get(paramInt - b())).a;
   }
 }
 

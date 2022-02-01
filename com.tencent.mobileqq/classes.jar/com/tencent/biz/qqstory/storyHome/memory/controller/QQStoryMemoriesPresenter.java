@@ -16,43 +16,42 @@ public class QQStoryMemoriesPresenter
   implements IEventReceiver
 {
   public int a;
-  protected QQStoryObserver a;
-  public QQUserUIItem a;
-  private StoryMemoriesFragment jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment;
-  private QQStoryMemoriesPresenter.DeleteShareGroupMemberEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver;
-  private QQStoryMemoriesPresenter.UpdateUserInfoEventReceiver jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$UpdateUserInfoEventReceiver;
-  public String a;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public String b;
+  public QQUserUIItem c;
+  protected QQStoryObserver d = new QQStoryMemoriesPresenter.1(this);
+  private StoryMemoriesFragment e;
+  private AtomicBoolean f = new AtomicBoolean(false);
+  private QQStoryMemoriesPresenter.DeleteShareGroupMemberEventReceiver g;
+  private QQStoryMemoriesPresenter.UpdateUserInfoEventReceiver h;
   
   public QQStoryMemoriesPresenter(int paramInt, String paramString, StoryMemoriesFragment paramStoryMemoriesFragment)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new QQStoryMemoriesPresenter.1(this);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryStoryMemoriesFragment = paramStoryMemoriesFragment;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.e = paramStoryMemoriesFragment;
+    this.b = paramString;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_JavaLangString);
-    PlayModeUtils.a().addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver = new QQStoryMemoriesPresenter.DeleteShareGroupMemberEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$UpdateUserInfoEventReceiver = new QQStoryMemoriesPresenter.UpdateUserInfoEventReceiver(this);
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$UpdateUserInfoEventReceiver);
+    this.c = ((UserManager)SuperManager.a(2)).b(this.b);
+    PlayModeUtils.b().addObserver(this.d);
+    this.g = new QQStoryMemoriesPresenter.DeleteShareGroupMemberEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.g);
+    this.h = new QQStoryMemoriesPresenter.UpdateUserInfoEventReceiver(this);
+    StoryDispatcher.a().registerSubscriber(this.h);
   }
   
   public void b()
   {
-    PlayModeUtils.a().removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$DeleteShareGroupMemberEventReceiver);
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerQQStoryMemoriesPresenter$UpdateUserInfoEventReceiver);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    PlayModeUtils.b().removeObserver(this.d);
+    StoryDispatcher.a().unRegisterSubscriber(this.g);
+    StoryDispatcher.a().unRegisterSubscriber(this.h);
+    this.f.set(true);
   }
   
   public boolean isValidate()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
+    return this.f.get() ^ true;
   }
 }
 

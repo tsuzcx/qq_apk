@@ -16,32 +16,29 @@ import java.nio.ByteBuffer;
 @TargetApi(18)
 public class QavRecordEncoder
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private QavVideoAudioRecorder jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
-  private String jdField_a_of_type_JavaLangString;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
-  public volatile boolean a;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long = 0L;
-  private MediaCodec jdField_b_of_type_AndroidMediaMediaCodec;
-  public volatile boolean b;
-  private long c;
+  public volatile boolean a = false;
+  public volatile boolean b = false;
   public volatile boolean c;
-  private long jdField_d_of_type_Long = 0L;
-  private boolean jdField_d_of_type_Boolean = false;
+  private MediaMuxer d;
+  private int e;
+  private int f;
+  private String g;
+  private MediaCodec.BufferInfo h = new MediaCodec.BufferInfo();
+  private Surface i;
+  private MediaCodec j;
+  private MediaCodec k;
+  private MediaFormat l;
+  private ByteBuffer m = null;
+  private long n = 0L;
+  private QavVideoAudioRecorder o;
+  private long p = 0L;
+  private long q = 0L;
+  private long r = 0L;
+  private boolean s = false;
   
   public QavRecordEncoder(QavVideoAudioRecorder paramQavVideoAudioRecorder)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = paramQavVideoAudioRecorder;
+    this.o = paramQavVideoAudioRecorder;
   }
   
   private void a(boolean paramBoolean)
@@ -51,17 +48,17 @@ public class QavRecordEncoder
       if (QLog.isColorLevel()) {
         QLog.d("QavRecordEncoder", 2, "sending EOS to encoder");
       }
-      this.jdField_a_of_type_AndroidMediaMediaCodec.signalEndOfInputStream();
+      this.j.signalEndOfInputStream();
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-    int j;
+    Object localObject1 = this.j.getOutputBuffers();
+    int i2;
     do
     {
-      int i = 0;
+      int i1 = 0;
       for (;;)
       {
-        j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-        if (j == -1)
+        i2 = this.j.dequeueOutputBuffer(this.h, 10000L);
+        if (i2 == -1)
         {
           if (!paramBoolean)
           {
@@ -74,20 +71,20 @@ public class QavRecordEncoder
           if (QLog.isColorLevel()) {
             QLog.d("QavRecordEncoder", 2, "no output available, spinning to await EOS");
           }
-          i += 1;
-          if (i > 100) {
+          i1 += 1;
+          if (i1 > 100) {
             throw new RuntimeException("Encoder is not stopped after dequeue 100 times.");
           }
         }
-        else if (j == -3)
+        else if (i2 == -3)
         {
-          localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          localObject1 = this.j.getOutputBuffers();
         }
-        else if (j == -2)
+        else if (i2 == -2)
         {
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.a)
           {
-            localObject2 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+            localObject2 = this.j.getOutputFormat();
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -95,17 +92,17 @@ public class QavRecordEncoder
               localStringBuilder.append(localObject2);
               QLog.d("QavRecordEncoder", 2, localStringBuilder.toString());
             }
-            this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject2);
-            if ((!this.jdField_c_of_type_Boolean) && ((this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean)))
+            this.e = this.d.addTrack((MediaFormat)localObject2);
+            if ((!this.c) && ((this.b) || (this.s)))
             {
-              this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-              this.jdField_c_of_type_Boolean = true;
-              if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a != null) {
-                this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a.j();
+              this.d.start();
+              this.c = true;
+              if (this.o.a != null) {
+                this.o.a.t();
               }
             }
-            this.jdField_a_of_type_Boolean = true;
-            this.jdField_d_of_type_Long = System.currentTimeMillis();
+            this.a = true;
+            this.r = System.currentTimeMillis();
           }
           else
           {
@@ -114,42 +111,42 @@ public class QavRecordEncoder
         }
         else
         {
-          if (j >= 0) {
+          if (i2 >= 0) {
             break;
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("unexpected result from encoder.dequeueOutputBuffer: ");
-          ((StringBuilder)localObject2).append(j);
+          ((StringBuilder)localObject2).append(i2);
           QLog.w("QavRecordEncoder", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      Object localObject2 = localObject1[j];
+      Object localObject2 = localObject1[i2];
       if (localObject2 == null) {
         break label528;
       }
-      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0)
+      if ((this.h.flags & 0x2) != 0)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QavRecordEncoder", 2, "ignoring BUFFER_FLAG_CODEC_CONFIG");
         }
-        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
+        this.h.size = 0;
       }
-      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0) && (this.jdField_c_of_type_Boolean))
+      if ((this.h.size != 0) && (this.c))
       {
-        ((ByteBuffer)localObject2).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-        ((ByteBuffer)localObject2).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-        if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs >= this.jdField_c_of_type_Long)
+        ((ByteBuffer)localObject2).position(this.h.offset);
+        ((ByteBuffer)localObject2).limit(this.h.offset + this.h.size);
+        if (this.h.presentationTimeUs >= this.q)
         {
-          this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, (ByteBuffer)localObject2, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          this.q = this.h.presentationTimeUs;
+          this.d.writeSampleData(this.e, (ByteBuffer)localObject2, this.h);
         }
         else
         {
           QLog.e("QavRecordEncoder", 1, "handleVideoFrame, find older frame");
         }
       }
-      this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
-    } while ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0);
+      this.j.releaseOutputBuffer(i2, false);
+    } while ((this.h.flags & 0x4) == 0);
     if (!paramBoolean)
     {
       QLog.w("QavRecordEncoder", 2, "reached end of stream unexpectedly");
@@ -163,18 +160,13 @@ public class QavRecordEncoder
     label528:
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("encoderOutputBuffer ");
-    ((StringBuilder)localObject1).append(j);
+    ((StringBuilder)localObject1).append(i2);
     ((StringBuilder)localObject1).append(" was null");
     localObject1 = new RuntimeException(((StringBuilder)localObject1).toString());
     for (;;)
     {
       throw ((Throwable)localObject1);
     }
-  }
-  
-  public Surface a()
-  {
-    return this.jdField_a_of_type_AndroidViewSurface;
   }
   
   public void a()
@@ -184,7 +176,7 @@ public class QavRecordEncoder
   
   protected void a(PCMFrame paramPCMFrame, boolean paramBoolean)
   {
-    if (AudioHelper.b())
+    if (AudioHelper.e())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleAudioFrame, frame[");
@@ -192,28 +184,28 @@ public class QavRecordEncoder
       ((StringBuilder)localObject).append("], endOfStream[");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append("], mNoAudio[");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.s);
       ((StringBuilder)localObject).append("]");
       QLog.w("QavRecordEncoder", 1, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.s) {
       return;
     }
-    this.jdField_a_of_type_JavaNioByteBuffer.clear();
-    this.jdField_a_of_type_JavaNioByteBuffer.put(paramPCMFrame.a);
-    this.jdField_a_of_type_JavaNioByteBuffer.position(paramPCMFrame.a.length);
-    this.jdField_a_of_type_JavaNioByteBuffer.flip();
-    Object localObject = this.jdField_b_of_type_AndroidMediaMediaCodec.getInputBuffers();
-    int i;
-    for (int j = 0;; j = i)
+    this.m.clear();
+    this.m.put(paramPCMFrame.a);
+    this.m.position(paramPCMFrame.a.length);
+    this.m.flip();
+    Object localObject = this.k.getInputBuffers();
+    int i1;
+    for (int i2 = 0;; i2 = i1)
     {
-      int k = this.jdField_b_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-      if (k >= 0)
+      int i3 = this.k.dequeueInputBuffer(10000L);
+      if (i3 >= 0)
       {
-        localObject = localObject[k];
+        localObject = localObject[i3];
         ((ByteBuffer)localObject).clear();
-        ((ByteBuffer)localObject).put(this.jdField_a_of_type_JavaNioByteBuffer);
-        this.jdField_b_of_type_AndroidMediaMediaCodec.queueInputBuffer(k, 0, paramPCMFrame.a.length, paramPCMFrame.jdField_b_of_type_Long, 0);
+        ((ByteBuffer)localObject).put(this.m);
+        this.k.queueInputBuffer(i3, 0, paramPCMFrame.a.length, paramPCMFrame.c, 0);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -224,8 +216,8 @@ public class QavRecordEncoder
       }
       else
       {
-        i = j;
-        if (k != -1) {
+        i1 = i2;
+        if (i3 != -1) {
           continue;
         }
         if (!paramBoolean)
@@ -239,27 +231,27 @@ public class QavRecordEncoder
           if (QLog.isColorLevel()) {
             QLog.d("QavRecordEncoder", 2, "encode, encode, no output available, spinning to await EOS");
           }
-          j += 1;
-          i = j;
-          if (j <= 10) {
+          i2 += 1;
+          i1 = i2;
+          if (i2 <= 10) {
             continue;
           }
         }
       }
-      paramPCMFrame = this.jdField_b_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-      i = 0;
-      label412:
-      label828:
-      label831:
+      paramPCMFrame = this.k.getOutputBuffers();
+      i1 = 0;
+      label413:
+      label829:
+      label832:
       for (;;)
       {
-        j = this.jdField_b_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-        if (j == -1)
+        i2 = this.k.dequeueOutputBuffer(this.h, 10000L);
+        if (i2 == -1)
         {
           if (!paramBoolean)
           {
             if (!QLog.isColorLevel()) {
-              break label828;
+              break label829;
             }
             QLog.d("QavRecordEncoder", 2, "no output available yet");
             return;
@@ -267,45 +259,45 @@ public class QavRecordEncoder
           if (QLog.isColorLevel()) {
             QLog.d("QavRecordEncoder", 2, "no output available, spinning to await EOS");
           }
-          j = i + 1;
-          i = j;
-          if (j <= 10) {}
+          i2 = i1 + 1;
+          i1 = i2;
+          if (i2 <= 10) {}
         }
         else
         {
-          if (j != -3) {
-            break label412;
+          if (i2 != -3) {
+            break label413;
           }
-          paramPCMFrame = this.jdField_b_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+          paramPCMFrame = this.k.getOutputBuffers();
         }
         for (;;)
         {
-          break label831;
-          if (j == -2)
+          break label832;
+          if (i2 == -2)
           {
-            if (!this.jdField_b_of_type_Boolean)
+            if (!this.b)
             {
-              localObject = this.jdField_b_of_type_AndroidMediaMediaCodec.getOutputFormat();
-              this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+              localObject = this.k.getOutputFormat();
+              this.f = this.d.addTrack((MediaFormat)localObject);
               if (QLog.isColorLevel())
               {
                 StringBuilder localStringBuilder = new StringBuilder();
                 localStringBuilder.append("encoder output format changed, newFormat[");
                 localStringBuilder.append(localObject);
                 localStringBuilder.append("], mAudioTrackIndex[");
-                localStringBuilder.append(this.jdField_b_of_type_Int);
+                localStringBuilder.append(this.f);
                 localStringBuilder.append("]");
                 QLog.w("QavRecordEncoder", 1, localStringBuilder.toString());
               }
-              if ((!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
+              if ((!this.c) && (this.a))
               {
-                this.jdField_c_of_type_Boolean = true;
-                this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-                if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a != null) {
-                  this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a.j();
+                this.c = true;
+                this.d.start();
+                if (this.o.a != null) {
+                  this.o.a.t();
                 }
               }
-              this.jdField_b_of_type_Boolean = true;
+              this.b = true;
             }
             else
             {
@@ -314,42 +306,42 @@ public class QavRecordEncoder
           }
           else
           {
-            if (j >= 0) {
+            if (i2 >= 0) {
               break;
             }
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("unexpected result from encoder.dequeueOutputBuffer: ");
-            ((StringBuilder)localObject).append(j);
+            ((StringBuilder)localObject).append(i2);
             QLog.w("QavRecordEncoder", 2, ((StringBuilder)localObject).toString());
           }
         }
-        localObject = paramPCMFrame[j];
+        localObject = paramPCMFrame[i2];
         if (localObject == null) {
           break;
         }
-        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0)
+        if ((this.h.flags & 0x2) != 0)
         {
           if (QLog.isColorLevel()) {
             QLog.d("QavRecordEncoder", 2, "ignoring BUFFER_FLAG_CODEC_CONFIG");
           }
-          this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
+          this.h.size = 0;
         }
-        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0) && (this.jdField_c_of_type_Boolean))
+        if ((this.h.size != 0) && (this.c))
         {
-          ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-          ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-          if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs >= this.jdField_b_of_type_Long)
+          ((ByteBuffer)localObject).position(this.h.offset);
+          ((ByteBuffer)localObject).limit(this.h.offset + this.h.size);
+          if (this.h.presentationTimeUs >= this.p)
           {
-            this.jdField_b_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-            this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_b_of_type_Int, (ByteBuffer)localObject, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+            this.p = this.h.presentationTimeUs;
+            this.d.writeSampleData(this.f, (ByteBuffer)localObject, this.h);
           }
           else
           {
             QLog.e("QavRecordEncoder", 1, "handleAudioFrame, find older frame");
           }
         }
-        this.jdField_b_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
-        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)
+        this.k.releaseOutputBuffer(i2, false);
+        if ((this.h.flags & 0x4) != 0)
         {
           if (!paramBoolean)
           {
@@ -361,11 +353,11 @@ public class QavRecordEncoder
           }
           return;
         }
-        i = 0;
+        i1 = 0;
       }
       paramPCMFrame = new StringBuilder();
       paramPCMFrame.append("encoderOutputBuffer ");
-      paramPCMFrame.append(j);
+      paramPCMFrame.append(i2);
       paramPCMFrame.append(" was null");
       throw new RuntimeException(paramPCMFrame.toString());
     }
@@ -373,12 +365,12 @@ public class QavRecordEncoder
   
   public void a(EncodeConfig paramEncodeConfig)
   {
-    this.jdField_a_of_type_JavaLangString = paramEncodeConfig.jdField_a_of_type_JavaLangString;
-    Object localObject = MediaFormat.createVideoFormat("video/avc", paramEncodeConfig.jdField_a_of_type_Int, paramEncodeConfig.jdField_b_of_type_Int);
+    this.g = paramEncodeConfig.b;
+    Object localObject = MediaFormat.createVideoFormat("video/avc", paramEncodeConfig.c, paramEncodeConfig.d);
     ((MediaFormat)localObject).setInteger("color-format", 2130708361);
-    ((MediaFormat)localObject).setInteger("bitrate", paramEncodeConfig.c);
-    ((MediaFormat)localObject).setInteger("frame-rate", paramEncodeConfig.d);
-    ((MediaFormat)localObject).setInteger("i-frame-interval", paramEncodeConfig.e);
+    ((MediaFormat)localObject).setInteger("bitrate", paramEncodeConfig.e);
+    ((MediaFormat)localObject).setInteger("frame-rate", paramEncodeConfig.f);
+    ((MediaFormat)localObject).setInteger("i-frame-interval", paramEncodeConfig.g);
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -387,36 +379,36 @@ public class QavRecordEncoder
       localStringBuilder.append(localObject);
       QLog.d("QavRecordEncoder", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_JavaNioByteBuffer == null) {
-      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(32768);
+    if (this.m == null) {
+      this.m = ByteBuffer.allocateDirect(32768);
     }
-    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
-    this.jdField_a_of_type_AndroidMediaMediaCodec.configure((MediaFormat)localObject, null, null, 1);
-    this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
-    this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", 48000, 1);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", 2);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("channel-mask", 12);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("bitrate", 128000);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("channel-count", 1);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("sample-rate", 48000);
-    this.jdField_a_of_type_AndroidMediaMediaFormat.setInteger("max-input-size", 32768);
+    this.j = MediaCodec.createEncoderByType("video/avc");
+    this.j.configure((MediaFormat)localObject, null, null, 1);
+    this.i = this.j.createInputSurface();
+    this.j.start();
+    this.n = 0L;
+    this.l = MediaFormat.createAudioFormat("audio/mp4a-latm", 48000, 1);
+    this.l.setInteger("aac-profile", 2);
+    this.l.setInteger("channel-mask", 12);
+    this.l.setInteger("bitrate", 128000);
+    this.l.setInteger("channel-count", 1);
+    this.l.setInteger("sample-rate", 48000);
+    this.l.setInteger("max-input-size", 32768);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("AudioFormat: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaMediaFormat);
+      ((StringBuilder)localObject).append(this.l);
       QLog.d("QavRecordEncoder", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("audio/mp4a-latm");
-    localObject = this.jdField_b_of_type_AndroidMediaMediaCodec;
+    this.k = MediaCodec.createEncoderByType("audio/mp4a-latm");
+    localObject = this.k;
     if (localObject != null)
     {
-      ((MediaCodec)localObject).configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
-      this.jdField_b_of_type_AndroidMediaMediaCodec.start();
+      ((MediaCodec)localObject).configure(this.l, null, null, 1);
+      this.k.start();
     }
-    localObject = new File(paramEncodeConfig.jdField_a_of_type_JavaLangString);
+    localObject = new File(paramEncodeConfig.b);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -436,63 +428,29 @@ public class QavRecordEncoder
       localStringBuilder.append("]");
       QLog.i("QavRecordEncoder", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramEncodeConfig.jdField_a_of_type_JavaLangString, 0);
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramEncodeConfig.g);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Long = (System.currentTimeMillis() + 99999999L);
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    if (this.jdField_b_of_type_AndroidMediaMediaCodec == null) {
-      this.jdField_d_of_type_Boolean = true;
+    this.d = new MediaMuxer(paramEncodeConfig.b, 0);
+    this.d.setOrientationHint(paramEncodeConfig.l);
+    this.e = -1;
+    this.f = -1;
+    this.a = false;
+    this.b = false;
+    this.c = false;
+    this.r = (System.currentTimeMillis() + 99999999L);
+    this.s = false;
+    this.q = 0L;
+    this.p = 0L;
+    if (this.k == null) {
+      this.s = true;
     }
   }
   
   public void a(byte[] paramArrayOfByte, long paramLong)
   {
-    long l = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Long = (1L + l);
-    paramArrayOfByte = new PCMFrame(paramArrayOfByte, l);
-    paramArrayOfByte.jdField_b_of_type_Long = paramLong;
+    long l1 = this.n;
+    this.n = (1L + l1);
+    paramArrayOfByte = new PCMFrame(paramArrayOfByte, l1);
+    paramArrayOfByte.c = paramLong;
     a(paramArrayOfByte, false);
-  }
-  
-  public boolean a()
-  {
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      if (this.jdField_c_of_type_Boolean) {
-        return false;
-      }
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_d_of_type_Long > 2000L)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("onAudioTrackTimeout has timeout, ready=");
-        ((StringBuilder)localObject).append(this.jdField_d_of_type_Long);
-        ((StringBuilder)localObject).append(", now=");
-        ((StringBuilder)localObject).append(l);
-        QLog.d("QavRecordEncoder", 1, ((StringBuilder)localObject).toString());
-        this.jdField_d_of_type_Boolean = true;
-        localObject = this.jdField_a_of_type_AndroidMediaMediaMuxer;
-        if (localObject != null)
-        {
-          ((MediaMuxer)localObject).start();
-          this.jdField_c_of_type_Boolean = true;
-          if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a != null) {
-            this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a.j();
-          }
-        }
-        QavRecordReporter.e();
-        return false;
-      }
-      return true;
-    }
-    return false;
   }
   
   public void b()
@@ -500,24 +458,24 @@ public class QavRecordEncoder
     if (QLog.isColorLevel()) {
       QLog.d("QavRecordEncoder", 2, "QavRecordEncoder stop.");
     }
-    long l = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Long = (1L + l);
-    Object localObject = new PCMFrame(new byte[0], l);
-    ((PCMFrame)localObject).jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    long l1 = this.n;
+    this.n = (1L + l1);
+    Object localObject = new PCMFrame(new byte[0], l1);
+    ((PCMFrame)localObject).c = this.p;
     a((PCMFrame)localObject, true);
     a(true);
     c();
-    localObject = this.jdField_a_of_type_JavaNioByteBuffer;
+    localObject = this.m;
     if (localObject != null)
     {
       ((ByteBuffer)localObject).clear();
-      this.jdField_a_of_type_JavaNioByteBuffer = null;
+      this.m = null;
     }
   }
   
   public void c()
   {
-    MediaCodec localMediaCodec1 = this.jdField_b_of_type_AndroidMediaMediaCodec;
+    MediaCodec localMediaCodec1 = this.k;
     StringBuilder localStringBuilder;
     if (localMediaCodec1 != null)
     {
@@ -534,7 +492,7 @@ public class QavRecordEncoder
       }
       try
       {
-        this.jdField_b_of_type_AndroidMediaMediaCodec.release();
+        this.k.release();
       }
       catch (Exception localException2)
       {
@@ -543,9 +501,9 @@ public class QavRecordEncoder
         localStringBuilder.append(localException2);
         QLog.w("QavRecordEncoder", 2, localStringBuilder.toString());
       }
-      this.jdField_b_of_type_AndroidMediaMediaCodec = null;
+      this.k = null;
     }
-    MediaCodec localMediaCodec2 = this.jdField_a_of_type_AndroidMediaMediaCodec;
+    MediaCodec localMediaCodec2 = this.j;
     if (localMediaCodec2 != null)
     {
       try
@@ -561,7 +519,7 @@ public class QavRecordEncoder
       }
       try
       {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+        this.j.release();
       }
       catch (Exception localException4)
       {
@@ -570,18 +528,18 @@ public class QavRecordEncoder
         localStringBuilder.append(localException4);
         QLog.w("QavRecordEncoder", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+      this.j = null;
     }
-    if (this.jdField_a_of_type_AndroidMediaMediaMuxer != null)
+    if (this.d != null)
     {
       try
       {
-        if (this.jdField_c_of_type_Boolean)
+        if (this.c)
         {
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
+          this.c = false;
+          this.d.stop();
         }
-        this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+        this.d.release();
       }
       catch (Exception localException5)
       {
@@ -590,13 +548,52 @@ public class QavRecordEncoder
         localStringBuilder.append(localException5);
         QLog.e("QavRecordEncoder", 2, localStringBuilder.toString(), localException5);
       }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+      this.d = null;
     }
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
+    this.e = -1;
+    this.f = -1;
+    this.a = false;
+    this.b = false;
+    this.c = false;
+  }
+  
+  public Surface d()
+  {
+    return this.i;
+  }
+  
+  public boolean e()
+  {
+    if (!this.b)
+    {
+      if (this.c) {
+        return false;
+      }
+      long l1 = System.currentTimeMillis();
+      if (l1 - this.r > 2000L)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onAudioTrackTimeout has timeout, ready=");
+        ((StringBuilder)localObject).append(this.r);
+        ((StringBuilder)localObject).append(", now=");
+        ((StringBuilder)localObject).append(l1);
+        QLog.d("QavRecordEncoder", 1, ((StringBuilder)localObject).toString());
+        this.s = true;
+        localObject = this.d;
+        if (localObject != null)
+        {
+          ((MediaMuxer)localObject).start();
+          this.c = true;
+          if (this.o.a != null) {
+            this.o.a.t();
+          }
+        }
+        QavRecordReporter.e();
+        return false;
+      }
+      return true;
+    }
+    return false;
   }
 }
 

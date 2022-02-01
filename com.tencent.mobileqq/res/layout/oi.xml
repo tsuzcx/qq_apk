@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/olk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/qv9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <com.tencent.mobileqq.kandian.base.view.widget.ResizeURLImageView android:id="@id/csj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
     <View android:id="@id/csm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="14.0dip" android:textColor="#ffa6a6a6" android:id="@id/efs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mzu" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
@@ -24,14 +24,14 @@
     </LinearLayout>
     <SeekBar android:id="@id/ilj" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/ng" android:thumb="@null" android:layout_alignParentBottom="true" />
     <RelativeLayout android:id="@id/close" android:visibility="visible" android:clickable="true" android:layout_width="60.0dip" android:layout_height="58.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
-        <ImageView android:id="@id/dun" android:background="@null" android:layout_width="36.0dip" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:src="@drawable/dry" android:scaleType="centerInside" android:contentDescription="@string/mzr" />
+        <ImageView android:id="@id/dun" android:background="@null" android:layout_width="36.0dip" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:src="@drawable/dry" android:scaleType="centerInside" android:contentDescription="@string/lr0" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/vp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="horizontal" android:id="@id/vq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="35.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/vq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_below="@id/crx" android:layout_centerHorizontal="true">
             <Button android:textSize="16.0sp" android:textColor="@color/ai2" android:id="@id/crw" android:background="@drawable/ne" android:layout_width="90.0dip" android:layout_height="30.0dip" android:layout_marginRight="25.0dip" android:text="@string/mzq" />
             <Button android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/cru" android:background="@drawable/nc" android:layout_width="90.0dip" android:layout_height="30.0dip" android:text="@string/mzs" />
         </LinearLayout>
-        <TextView android:textSize="16.0sp" android:ellipsize="end" android:gravity="center" android:id="@id/crx" android:layout_width="100.0dip" android:layout_height="30.0dip" android:layout_marginBottom="10.0dip" android:scaleType="centerCrop" android:text="" android:singleLine="true" android:layout_above="@id/vq" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0sp" android:ellipsize="end" android:gravity="center" android:id="@id/crx" android:layout_width="100.0dip" android:layout_height="30.0dip" android:scaleType="centerCrop" android:text="" android:singleLine="true" android:layout_centerInParent="true" />
         <ImageView android:id="@id/crv" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginBottom="5.0dip" android:scaleType="centerCrop" android:layout_above="@id/crx" android:layout_centerHorizontal="true" />
     </RelativeLayout>
 </merge>

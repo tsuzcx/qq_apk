@@ -20,7 +20,7 @@ public class ArkPopupMenu
     paramContext.setPopupWindow(paramBubblePopupWindow, new ArkPopupMenu.1());
     paramContext.setMenu(paramQQCustomMenu);
     paramContext.setMenuIconClickListener(paramOnClickListener);
-    paramContext.a();
+    paramContext.c();
     return paramContext;
   }
   
@@ -42,7 +42,7 @@ public class ArkPopupMenu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.base.ArkPopupMenu
  * JD-Core Version:    0.7.0.1
  */

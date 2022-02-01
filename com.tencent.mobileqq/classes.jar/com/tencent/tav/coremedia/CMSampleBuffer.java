@@ -12,7 +12,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState)
   {
-    Utils.a(paramCMSampleState);
+    Utils.checkNotNull(paramCMSampleState);
     this.state = paramCMSampleState;
     this.state.setNewFrame(false);
     this.texture = null;
@@ -21,7 +21,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
   {
-    Utils.a(paramCMSampleState);
+    Utils.checkNotNull(paramCMSampleState);
     this.state = paramCMSampleState;
     this.texture = paramTextureInfo;
     this.sampleByteBuffer = null;
@@ -29,7 +29,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
-    Utils.a(paramCMSampleState);
+    Utils.checkNotNull(paramCMSampleState);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.texture = paramTextureInfo;
@@ -38,7 +38,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
   {
-    Utils.a(paramCMSampleState);
+    Utils.checkNotNull(paramCMSampleState);
     this.state = paramCMSampleState;
     this.sampleByteBuffer = paramByteBuffer;
     this.texture = null;
@@ -46,7 +46,7 @@ public class CMSampleBuffer
   
   public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
-    Utils.a(paramCMSampleState);
+    Utils.checkNotNull(paramCMSampleState);
     this.state = paramCMSampleState;
     this.state.setNewFrame(paramBoolean);
     this.sampleByteBuffer = paramByteBuffer;
@@ -130,7 +130,7 @@ public class CMSampleBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleBuffer
  * JD-Core Version:    0.7.0.1
  */

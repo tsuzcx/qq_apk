@@ -13,9 +13,9 @@ class ArkAiDictUpdateMgr$1
   
   public void run()
   {
-    DictConfig localDictConfig1 = ArkAiDictUpdateMgr.a();
+    DictConfig localDictConfig1 = ArkAiDictUpdateMgr.c();
     Object localObject3 = ArkAiDictUpdateMgr.a(localDictConfig1);
-    DictConfig localDictConfig2 = ArkAiDictUpdateMgr.b();
+    DictConfig localDictConfig2 = ArkAiDictUpdateMgr.d();
     Object localObject2 = new ArrayList();
     Object localObject4 = ((Map)localObject3).keySet().iterator();
     while (((Iterator)localObject4).hasNext())
@@ -34,13 +34,13 @@ class ArkAiDictUpdateMgr$1
     }
     if (((ArrayList)localObject2).isEmpty())
     {
-      ArkAiDictUpdateMgr.a(localDictConfig1);
+      ArkAiDictUpdateMgr.b(localDictConfig1);
       ArkAiDictMgr.b(ArkAiDictUpdateMgr.a(this.this$0));
       return;
     }
     try
     {
-      if (ArkAiDictUpdateMgr.a(this.this$0))
+      if (ArkAiDictUpdateMgr.b(this.this$0))
       {
         QLog.i("ArkDict.Update", 1, "updateLocalDict, update in progress, wait current task complete");
         ArkAiDictUpdateMgr.a(this.this$0, true);
@@ -48,8 +48,8 @@ class ArkAiDictUpdateMgr$1
       }
       ArkAiDictUpdateMgr.b(this.this$0, true);
       localObject3 = new ArkAiDictUpdateMgr.UpdateState(null);
-      ((ArkAiDictUpdateMgr.UpdateState)localObject3).jdField_a_of_type_Boolean = true;
-      ((ArkAiDictUpdateMgr.UpdateState)localObject3).jdField_a_of_type_Int = ((ArrayList)localObject2).size();
+      ((ArkAiDictUpdateMgr.UpdateState)localObject3).b = true;
+      ((ArkAiDictUpdateMgr.UpdateState)localObject3).a = ((ArrayList)localObject2).size();
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -67,7 +67,7 @@ class ArkAiDictUpdateMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkAiDictUpdateMgr.1
  * JD-Core Version:    0.7.0.1
  */

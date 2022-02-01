@@ -1,30 +1,30 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.TXCRenderAndDec;
+import com.tencent.trtc.TRTCCloudListener;
 
 class TRTCCloudImpl$173
-  implements TRTCRoomInfo.UserAction
+  implements Runnable
 {
-  TRTCCloudImpl$173(TRTCCloudImpl paramTRTCCloudImpl) {}
+  TRTCCloudImpl$173(TRTCCloudImpl paramTRTCCloudImpl, int paramInt, String paramString) {}
   
-  public void accept(String paramString, TRTCRoomInfo.UserInfo paramUserInfo)
+  public void run()
   {
-    if ((paramUserInfo.mainRender.render != null) && (paramUserInfo.mainRender.render.isRendering())) {
-      paramUserInfo.mainRender.render.updateLoadInfo();
-    }
-    if ((paramUserInfo.subRender.render != null) && (paramUserInfo.subRender.render.isRendering())) {
-      paramUserInfo.subRender.render.updateLoadInfo();
-    }
-    if (this.this$0.mDebugType != 0)
-    {
-      this.this$0.checkRemoteDashBoard(paramUserInfo.mainRender.view, paramUserInfo.mainRender.render, paramUserInfo);
-      this.this$0.checkRemoteDashBoard(paramUserInfo.subRender.view, paramUserInfo.subRender.render, paramUserInfo);
+    Object localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onStreamUnpublished err:");
+    localStringBuilder.append(this.val$code);
+    localStringBuilder.append(", msg:");
+    localStringBuilder.append(this.val$msg);
+    ((TRTCCloudImpl)localObject).apiOnlineLog(localStringBuilder.toString());
+    localObject = this.this$0.mTRTCListener;
+    if (localObject != null) {
+      ((TRTCCloudListener)localObject).onStopPublishCDNStream(this.val$code, this.val$msg);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.173
  * JD-Core Version:    0.7.0.1
  */

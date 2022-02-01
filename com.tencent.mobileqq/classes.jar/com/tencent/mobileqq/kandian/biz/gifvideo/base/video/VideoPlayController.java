@@ -44,139 +44,192 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayController;", "", "ptsVideoView", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;", "curState", "Ljava/util/concurrent/atomic/AtomicInteger;", "curAction", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/atomic/AtomicInteger;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "value", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "articleInfo", "getArticleInfo", "()Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "setArticleInfo", "(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)V", "getCurAction", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setCurAction", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "getCurState", "setCurState", "currentProgress", "", "getCurrentProgress", "()I", "setCurrentProgress", "(I)V", "eventListener", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IEventListener;", "getEventListener", "()Lcom/tencent/mobileqq/kandian/base/video/player/api/IEventListener;", "setEventListener", "(Lcom/tencent/mobileqq/kandian/base/video/player/api/IEventListener;)V", "", "isLoop", "()Z", "setLoop", "(Z)V", "isManualPause", "setManualPause", "isMute", "setMute", "mBusiType", "getMBusiType", "setMBusiType", "mFactory", "Lcom/tencent/mobileqq/kandian/base/video/player/wrapper/IPlayerFactory;", "mVid", "getMVid", "setMVid", "mVideoPlayer", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IPlayer;", "getMVideoPlayer", "()Lcom/tencent/mobileqq/kandian/base/video/player/api/IPlayer;", "setMVideoPlayer", "(Lcom/tencent/mobileqq/kandian/base/video/player/api/IPlayer;)V", "mVideoUrl", "getMVideoUrl", "setMVideoUrl", "mVideoView", "Lcom/tencent/mobileqq/kandian/base/video/player/api/IVideoView;", "getMVideoView", "()Lcom/tencent/mobileqq/kandian/base/video/player/api/IVideoView;", "setMVideoView", "(Lcom/tencent/mobileqq/kandian/base/video/player/api/IVideoView;)V", "needResumePlay", "getNeedResumePlay", "setNeedResumePlay", "onStateChangeListeners", "Ljava/util/concurrent/CopyOnWriteArrayList;", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayController$OnStateChangeListener;", "playErrorCode", "getPlayErrorCode", "setPlayErrorCode", "playErrorModule", "getPlayErrorModule", "setPlayErrorModule", "playErrorType", "getPlayErrorType", "setPlayErrorType", "getPtsVideoView", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;", "setPtsVideoView", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;)V", "useVid", "getUseVid", "setUseVid", "videoDtReportController", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoDtReportController;", "getVideoDtReportController", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoDtReportController;", "setVideoDtReportController", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoDtReportController;)V", "videoDynamicInsertController", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoDynamicInsertController;", "getVideoDynamicInsertController", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoDynamicInsertController;", "setVideoDynamicInsertController", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoDynamicInsertController;)V", "videoPlayListener", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayListener;", "getVideoPlayListener", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayListener;", "setVideoPlayListener", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayListener;)V", "videoPluginInstall", "Lcom/tencent/mobileqq/kandian/base/video/plugin/VideoPluginInstall;", "videoReportController", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoReportController;", "getVideoReportController", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoReportController;", "setVideoReportController", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoReportController;)V", "videoSeeLaterController", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoSeeLaterController;", "getVideoSeeLaterController", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoSeeLaterController;", "setVideoSeeLaterController", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoSeeLaterController;)V", "videoStrategy", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/utils/ReadInJoyVideoStrategy;", "xyAxis", "getXyAxis", "setXyAxis", "checkVideo", "commonOptimizeConfig", "", "info", "Lcom/tencent/mobileqq/kandian/base/video/player/wrapper/PlayerVideoInfo;", "commonPlayerOption", "Lcom/tencent/superplayer/api/SuperPlayerOption;", "isPrePlay", "completePlayer", "createVideoPlayer", "runnable", "Lkotlin/Function0;", "createVideoView", "destroy", "destroyPlayer", "error", "module", "errorType", "errorCode", "executeOnMainThread", "executeOnSubThread", "goToNextState", "initPlayer", "install", "videoPluginInstallListener", "Lcom/tencent/mobileqq/kandian/base/video/plugin/OnVideoPluginInstallListener;", "installVideoPlayer", "isValidBusiType", "isValidVideo", "onStateChanged", "oldState", "newState", "open", "openVideoByUrl", "videoUrl", "openVideoByVid", "vid", "pause", "pausePlayer", "play", "realPlay", "context", "Landroid/content/Context;", "videoInfo", "registerOnStateListener", "listener", "requestUrlByVid", "strategy", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/utils/IStrategy;", "callback", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/utils/IStrategy$URLCallback;", "resume", "savePlayTime", "seekToPlay", "selectUrlByVid", "setDtPgid", "dtPgid", "setDurationReportR5", "reportR5", "setResumePlay", "rowkey", "progress", "setTag", "suffix", "setTagOnVideoView", "start", "action", "startPlayer", "stop", "stopPlayer", "unRegisterOnStateListener", "updateProgress", "Companion", "OnStateChangeListener", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoPlayController
 {
-  public static final VideoPlayController.Companion a;
-  private static int g;
-  private static int h = 1;
-  private static int i = 2;
-  private static int j = h;
-  private int jdField_a_of_type_Int;
+  private static int F;
+  private static int G = 1;
+  private static int H = 2;
+  private static int I = G;
+  public static final VideoPlayController.Companion a = new VideoPlayController.Companion(null);
+  private int A;
   @NotNull
-  private IEventListener jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+  private IEventListener B;
   @Nullable
-  private IPlayer jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
-  @Nullable
-  private IVideoView jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView;
-  private IPlayerFactory jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerFactory;
-  private VideoPluginInstall jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall;
-  @Nullable
-  private VideoDtReportController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDtReportController;
-  @Nullable
-  private VideoDynamicInsertController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDynamicInsertController;
-  @Nullable
-  private VideoPlayListener jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayListener;
-  @Nullable
-  private VideoReportController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoReportController;
-  @Nullable
-  private VideoSeeLaterController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoSeeLaterController;
-  @Nullable
-  private VideoView jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  private ReadInJoyVideoStrategy jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoUtilsReadInJoyVideoStrategy;
-  @Nullable
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private VideoView C;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  private final CopyOnWriteArrayList<VideoPlayController.OnStateChangeListener> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private AtomicInteger D;
   @NotNull
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  @Nullable
-  private String jdField_b_of_type_JavaLangString;
+  private AtomicInteger E;
   @NotNull
-  private AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
+  private String b;
+  private int c;
+  private boolean d;
   @Nullable
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int f;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController$Companion = new VideoPlayController.Companion(null);
-  }
+  private String e;
+  @Nullable
+  private String f;
+  private boolean g;
+  private boolean h;
+  private int i;
+  @Nullable
+  private VideoPlayListener j;
+  private boolean k;
+  private int l;
+  private int m;
+  private int n;
+  @Nullable
+  private IPlayer o;
+  @Nullable
+  private IVideoView p;
+  @Nullable
+  private AbsBaseArticleInfo q;
+  private IPlayerFactory r;
+  private VideoPluginInstall s;
+  private final CopyOnWriteArrayList<VideoPlayController.OnStateChangeListener> t;
+  private ReadInJoyVideoStrategy u;
+  @Nullable
+  private VideoSeeLaterController v;
+  @Nullable
+  private VideoReportController w;
+  @Nullable
+  private VideoDtReportController x;
+  @Nullable
+  private VideoDynamicInsertController y;
+  private boolean z;
   
   public VideoPlayController(@Nullable VideoView paramVideoView, @NotNull AtomicInteger paramAtomicInteger1, @NotNull AtomicInteger paramAtomicInteger2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = paramVideoView;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger1;
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger2;
-    this.jdField_a_of_type_JavaLangString = "VideoPlayController";
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.f = -1;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoUtilsReadInJoyVideoStrategy = new ReadInJoyVideoStrategy();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoSeeLaterController = new VideoSeeLaterController(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoReportController = new VideoReportController(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDtReportController = new VideoDtReportController(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDynamicInsertController = new VideoDynamicInsertController(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener = ((IEventListener)new VideoPlayController.eventListener.1(this));
+    this.C = paramVideoView;
+    this.D = paramAtomicInteger1;
+    this.E = paramAtomicInteger2;
+    this.b = "VideoPlayController";
+    this.d = true;
+    this.e = "";
+    this.f = "";
+    this.g = true;
+    this.h = true;
+    this.t = new CopyOnWriteArrayList();
+    this.A = -1;
+    this.u = new ReadInJoyVideoStrategy();
+    this.v = new VideoSeeLaterController(this);
+    this.w = new VideoReportController(this);
+    this.x = new VideoDtReportController(this);
+    this.y = new VideoDynamicInsertController(this);
+    this.B = ((IEventListener)new VideoPlayController.eventListener.1(this));
   }
   
-  private final SuperPlayerOption a(boolean paramBoolean)
+  private final void B()
   {
-    LogUtils.setLogEnable(QLog.isColorLevel());
-    SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
-    localSuperPlayerOption.isPrePlay = paramBoolean;
-    Object localObject = Aladdin.getConfig(357);
-    localSuperPlayerOption.bufferPacketMinTotalDurationMs = ((AladdinConfig)localObject).getIntegerFromString("bufferPacketMinTotalDurationMs", 0);
-    localSuperPlayerOption.preloadPacketDurationMs = ((AladdinConfig)localObject).getIntegerFromString("preloadPacketDurationMs", 0);
-    localSuperPlayerOption.minBufferingPacketDurationMs = ((AladdinConfig)localObject).getIntegerFromString("minBufferingPacketDurationMs", 0);
-    if (QLog.isColorLevel())
+    Object localObject = this.p;
+    if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("commonPlayerOption: ");
-      localStringBuilder.append(localSuperPlayerOption);
-      QLog.d((String)localObject, 2, localStringBuilder.toString());
+      View localView = ((IVideoView)localObject).a();
+      if (localView != null)
+      {
+        if (!TextUtils.isEmpty((CharSequence)this.f)) {
+          localObject = this.f;
+        } else {
+          localObject = this.e;
+        }
+        localView.setTag(localObject);
+      }
     }
-    Intrinsics.checkExpressionValueIsNotNull(localSuperPlayerOption, "option");
-    return localSuperPlayerOption;
+  }
+  
+  private final IVideoView C()
+  {
+    Object localObject3 = this.C;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localObject3 != null)
+    {
+      localObject3 = ((VideoView)localObject3).getContext();
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        IPlayerFactory localIPlayerFactory = this.r;
+        localObject1 = localObject2;
+        if (localIPlayerFactory != null) {
+          localObject1 = localIPlayerFactory.a((Context)localObject3, VersionUtils.d());
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  private final void D()
+  {
+    if (E())
+    {
+      a((IStrategy)this.u, (IStrategy.URLCallback)new VideoPlayController.selectUrlByVid.1(this));
+      return;
+    }
+    if (this.d)
+    {
+      String str = this.f;
+      if (str != null) {
+        c(str);
+      }
+    }
+  }
+  
+  private final boolean E()
+  {
+    int i1 = this.c;
+    return (i1 == 2) || (i1 == 6);
+  }
+  
+  private final void F()
+  {
+    if (this.z)
+    {
+      int i1 = this.A;
+      if (i1 >= 0)
+      {
+        d(i1);
+        this.A = -1;
+      }
+      this.z = false;
+    }
+    IPlayer localIPlayer = this.o;
+    if (localIPlayer != null) {
+      localIPlayer.g();
+    }
   }
   
   private final void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
-    this.jdField_e_of_type_Int = paramInt3;
-    String str = this.jdField_a_of_type_JavaLangString;
+    this.l = paramInt1;
+    this.m = paramInt2;
+    this.n = paramInt3;
+    String str = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("playErrorModule:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(",playErrorType:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(",playErrorCode:");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.n);
     QLog.d(str, 1, localStringBuilder.toString());
-    VideoState.a.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView, this).a(-1);
+    VideoState.a.a(this.D, this.E, this.C, this).a(-1);
   }
   
   private final void a(Context paramContext, PlayerVideoInfo paramPlayerVideoInfo)
   {
     try
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+      localObject = this.o;
       if (localObject != null) {
-        ((IPlayer)localObject).c();
+        ((IPlayer)localObject).i();
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+      localObject = this.o;
       if (localObject != null)
       {
-        ((IPlayer)localObject).a(paramContext, paramPlayerVideoInfo, 0L, a(false));
+        ((IPlayer)localObject).a(paramContext, paramPlayerVideoInfo, 0L, d(false));
         return;
       }
     }
     catch (Exception paramContext)
     {
-      paramPlayerVideoInfo = this.jdField_a_of_type_JavaLangString;
+      paramPlayerVideoInfo = this.b;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("realPlay error, msg=");
       ((StringBuilder)localObject).append(paramContext);
@@ -193,34 +246,13 @@ public final class VideoPlayController
     }
   }
   
-  private final IVideoView b()
-  {
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (localObject3 != null)
-    {
-      localObject3 = ((VideoView)localObject3).getContext();
-      localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        IPlayerFactory localIPlayerFactory = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerFactory;
-        localObject1 = localObject2;
-        if (localIPlayerFactory != null) {
-          localObject1 = localIPlayerFactory.a((Context)localObject3, VersionUtils.d());
-        }
-      }
-    }
-    return localObject1;
-  }
-  
   private final void b(OnVideoPluginInstallListener paramOnVideoPluginInstallListener)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall = new VideoPluginInstall();
+    if (this.s == null) {
+      this.s = new VideoPluginInstall();
     }
-    VideoPluginInstall localVideoPluginInstall = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall;
-    if ((localVideoPluginInstall != null) && (localVideoPluginInstall.a() == true))
+    VideoPluginInstall localVideoPluginInstall = this.s;
+    if ((localVideoPluginInstall != null) && (localVideoPluginInstall.b() == true))
     {
       if (paramOnVideoPluginInstallListener != null) {
         paramOnVideoPluginInstallListener.a(true);
@@ -228,180 +260,96 @@ public final class VideoPlayController
     }
     else
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "not installed, now install");
+      QLog.d(this.b, 1, "not installed, now install");
       if (paramOnVideoPluginInstallListener != null)
       {
-        localVideoPluginInstall = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall;
+        localVideoPluginInstall = this.s;
         if (localVideoPluginInstall != null) {
           localVideoPluginInstall.a(paramOnVideoPluginInstallListener);
         }
       }
-      paramOnVideoPluginInstallListener = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPluginVideoPluginInstall;
+      paramOnVideoPluginInstallListener = this.s;
       if (paramOnVideoPluginInstallListener != null) {
         paramOnVideoPluginInstallListener.a();
       }
     }
   }
   
-  private final boolean c()
+  private final SuperPlayerOption d(boolean paramBoolean)
   {
-    int k = this.jdField_a_of_type_Int;
-    return (k == 2) || (k == 6);
+    LogUtils.setLogEnable(QLog.isColorLevel());
+    SuperPlayerOption localSuperPlayerOption = SuperPlayerOption.obtain();
+    localSuperPlayerOption.isPrePlay = paramBoolean;
+    Object localObject = Aladdin.getConfig(357);
+    localSuperPlayerOption.bufferPacketMinTotalDurationMs = ((AladdinConfig)localObject).getIntegerFromString("bufferPacketMinTotalDurationMs", 0);
+    localSuperPlayerOption.preloadPacketDurationMs = ((AladdinConfig)localObject).getIntegerFromString("preloadPacketDurationMs", 0);
+    localSuperPlayerOption.minBufferingPacketDurationMs = ((AladdinConfig)localObject).getIntegerFromString("minBufferingPacketDurationMs", 0);
+    if (QLog.isColorLevel())
+    {
+      localObject = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("commonPlayerOption: ");
+      localStringBuilder.append(localSuperPlayerOption);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    Intrinsics.checkExpressionValueIsNotNull(localSuperPlayerOption, "option");
+    return localSuperPlayerOption;
   }
   
   private final void h(Function0<Unit> paramFunction0)
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "createVideoPlayer");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    QLog.d(this.b, 1, "createVideoPlayer");
+    Object localObject = this.o;
     if (localObject != null) {
-      ((IPlayer)localObject).d();
+      ((IPlayer)localObject).k();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerFactory = PlayerHelper.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView = b();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
+    this.r = PlayerHelper.a.b();
+    this.p = C();
+    localObject = this.C;
     if (localObject != null) {
-      ((VideoView)localObject).setVideoView(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView);
+      ((VideoView)localObject).setVideoView(this.p);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerWrapperIPlayerFactory;
+    localObject = this.r;
     if (localObject != null) {
-      localObject = ((IPlayerFactory)localObject).a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView);
+      localObject = ((IPlayerFactory)localObject).a(this.p);
     } else {
       localObject = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer = ((IPlayer)localObject);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    this.o = ((IPlayer)localObject);
+    localObject = this.o;
     if (localObject != null) {
-      ((IPlayer)localObject).a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView);
+      ((IPlayer)localObject).a(this.p);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    localObject = this.o;
     if (localObject != null) {
-      ((IPlayer)localObject).a(this.jdField_c_of_type_Boolean);
+      ((IPlayer)localObject).a(this.h);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    localObject = this.o;
     if (localObject != null) {
-      ((IPlayer)localObject).b(this.jdField_b_of_type_Boolean);
+      ((IPlayer)localObject).b(this.g);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    localObject = this.o;
     if (localObject != null) {
-      ((IPlayer)localObject).a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener);
+      ((IPlayer)localObject).a(this.B);
     }
-    i();
+    B();
     paramFunction0.invoke();
-  }
-  
-  private final void i()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView;
-    if (localObject != null)
-    {
-      View localView = ((IVideoView)localObject).a();
-      if (localView != null)
-      {
-        if (!TextUtils.isEmpty((CharSequence)this.jdField_c_of_type_JavaLangString)) {
-          localObject = this.jdField_c_of_type_JavaLangString;
-        } else {
-          localObject = this.jdField_b_of_type_JavaLangString;
-        }
-        localView.setTag(localObject);
-      }
-    }
-  }
-  
-  private final void j()
-  {
-    if (c())
-    {
-      a((IStrategy)this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoUtilsReadInJoyVideoStrategy, (IStrategy.URLCallback)new VideoPlayController.selectUrlByVid.1(this));
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      String str = this.jdField_c_of_type_JavaLangString;
-      if (str != null) {
-        c(str);
-      }
-    }
-  }
-  
-  private final void k()
-  {
-    if (this.jdField_e_of_type_Boolean)
-    {
-      int k = this.f;
-      if (k >= 0)
-      {
-        d(k);
-        this.f = -1;
-      }
-      this.jdField_e_of_type_Boolean = false;
-    }
-    IPlayer localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
-    if (localIPlayer != null) {
-      localIPlayer.a();
-    }
-  }
-  
-  public final int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  @Nullable
-  public final IPlayer a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
-  }
-  
-  @Nullable
-  public final IVideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView;
-  }
-  
-  @Nullable
-  public final VideoPlayListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayListener;
-  }
-  
-  @Nullable
-  public final VideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  }
-  
-  @Nullable
-  public final AbsBaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final AtomicInteger a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  }
-  
-  public final void a()
-  {
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(6);
-    g();
+    return this.b;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public final void a(int paramInt1, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.t.iterator();
     while (localIterator.hasNext()) {
       ((VideoPlayController.OnStateChangeListener)localIterator.next()).onStateChanged(paramInt1, paramInt2);
     }
@@ -409,7 +357,7 @@ public final class VideoPlayController
   
   public final void a(@Nullable IPlayer paramIPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer = paramIPlayer;
+    this.o = paramIPlayer;
   }
   
   public final void a(@Nullable OnVideoPluginInstallListener paramOnVideoPluginInstallListener)
@@ -420,46 +368,46 @@ public final class VideoPlayController
   public final void a(@NotNull VideoPlayController.OnStateChangeListener paramOnStateChangeListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOnStateChangeListener, "listener");
-    if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramOnStateChangeListener)) {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramOnStateChangeListener);
+    if (!this.t.contains(paramOnStateChangeListener)) {
+      this.t.add(paramOnStateChangeListener);
     }
   }
   
   public final void a(@Nullable VideoPlayListener paramVideoPlayListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayListener = paramVideoPlayListener;
+    this.j = paramVideoPlayListener;
   }
   
   public final void a(@Nullable VideoView paramVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = paramVideoView;
+    this.C = paramVideoView;
   }
   
   public final void a(@Nullable IStrategy paramIStrategy, @Nullable IStrategy.URLCallback paramURLCallback)
   {
     if (paramIStrategy != null) {
-      paramIStrategy.a(this.jdField_c_of_type_JavaLangString, paramURLCallback);
+      paramIStrategy.a(this.f, paramURLCallback);
     }
   }
   
   public final void a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    paramAbsBaseArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoReportController;
+    this.q = paramAbsBaseArticleInfo;
+    paramAbsBaseArticleInfo = this.w;
     if (paramAbsBaseArticleInfo != null) {
-      paramAbsBaseArticleInfo.e();
+      paramAbsBaseArticleInfo.f();
     }
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.e = paramString;
   }
   
   public final void a(@NotNull String paramString, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "rowkey");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    Object localObject = this.q;
     if (localObject != null) {
       localObject = ((AbsBaseArticleInfo)localObject).innerUniqueID;
     } else {
@@ -467,8 +415,8 @@ public final class VideoPlayController
     }
     if (StringsKt.equals(paramString, (String)localObject, true))
     {
-      this.jdField_e_of_type_Boolean = true;
-      this.f = paramInt;
+      this.z = true;
+      this.A = paramInt;
     }
   }
   
@@ -480,59 +428,37 @@ public final class VideoPlayController
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    IPlayer localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    this.g = paramBoolean;
+    IPlayer localIPlayer = this.o;
     if (localIPlayer != null) {
-      localIPlayer.c(this.jdField_b_of_type_Boolean);
+      localIPlayer.c(this.g);
     }
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_d_of_type_Int;
   }
   
   @Nullable
   public final String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  @NotNull
-  public final AtomicInteger b()
-  {
-    return this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger;
-  }
-  
-  public final void b()
-  {
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(5);
-    g();
+    return this.e;
   }
   
   public final void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-    IPlayer localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    this.i = paramInt;
+    IPlayer localIPlayer = this.o;
     if (localIPlayer != null) {
-      localIPlayer.a(this.jdField_b_of_type_Int);
+      localIPlayer.a(this.i);
     }
   }
   
   public final void b(@NotNull VideoPlayController.OnStateChangeListener paramOnStateChangeListener)
   {
     Intrinsics.checkParameterIsNotNull(paramOnStateChangeListener, "listener");
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramOnStateChangeListener);
+    this.t.remove(paramOnStateChangeListener);
   }
   
   public final void b(@Nullable String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.f = paramString;
   }
   
   public final void b(@NotNull Function0<Unit> paramFunction0)
@@ -543,65 +469,25 @@ public final class VideoPlayController
   
   public final void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    IPlayer localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    this.h = paramBoolean;
+    IPlayer localIPlayer = this.o;
     if (localIPlayer != null) {
-      localIPlayer.a(this.jdField_c_of_type_Boolean);
+      localIPlayer.a(this.h);
     }
-  }
-  
-  public final boolean b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView;
-    if (localObject != null)
-    {
-      localObject = ((IVideoView)localObject).a();
-      if (localObject != null)
-      {
-        localObject = ((View)localObject).getTag();
-        break label30;
-      }
-    }
-    localObject = null;
-    label30:
-    localObject = (CharSequence)localObject;
-    boolean bool;
-    if ((!TextUtils.equals((CharSequence)this.jdField_c_of_type_JavaLangString, (CharSequence)localObject)) && (!TextUtils.equals((CharSequence)this.jdField_b_of_type_JavaLangString, (CharSequence)localObject))) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    localObject = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("checkVideo: ");
-    localStringBuilder.append(bool);
-    QLog.d((String)localObject, 1, localStringBuilder.toString());
-    return bool;
-  }
-  
-  public final int c()
-  {
-    return this.jdField_e_of_type_Int;
   }
   
   @Nullable
   public final String c()
   {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public final void c()
-  {
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
-    g();
+    return this.f;
   }
   
   public final void c(int paramInt)
   {
-    if (!this.jdField_d_of_type_Boolean)
+    if (!this.k)
     {
-      this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-      g();
+      this.E.set(paramInt);
+      s();
     }
   }
   
@@ -610,18 +496,18 @@ public final class VideoPlayController
     Intrinsics.checkParameterIsNotNull(paramString, "vid");
     PlayerVideoInfo localPlayerVideoInfo = new PlayerVideoInfo(1, paramString);
     a(localPlayerVideoInfo);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
+    Object localObject = this.C;
     if (localObject != null)
     {
       localObject = ((VideoView)localObject).getContext();
       if (localObject != null)
       {
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("opening ");
         localStringBuilder.append(paramString);
         QLog.d(str, 2, localStringBuilder.toString());
-        if (b()) {
+        if (q()) {
           a((Context)localObject, localPlayerVideoInfo);
         }
       }
@@ -636,18 +522,12 @@ public final class VideoPlayController
   
   public final void c(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public final void d()
-  {
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(7);
-    g();
+    this.k = paramBoolean;
   }
   
   public final void d(int paramInt)
   {
-    IPlayer localIPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+    IPlayer localIPlayer = this.o;
     if (localIPlayer != null) {
       localIPlayer.a(paramInt, 3);
     }
@@ -656,9 +536,9 @@ public final class VideoPlayController
   public final void d(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "videoUrl");
-    if ((b()) && (!TextUtils.isEmpty((CharSequence)paramString)))
+    if ((q()) && (!TextUtils.isEmpty((CharSequence)paramString)))
     {
-      Object localObject2 = ThirdVideoManager.a().a(paramString);
+      Object localObject2 = ThirdVideoManager.a().c(paramString);
       Object localObject1;
       if ((localObject2 != null) && (localObject2.length > 0))
       {
@@ -670,7 +550,7 @@ public final class VideoPlayController
         localObject1 = new String[1];
         localObject1[0] = paramString;
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
+      localObject2 = this.C;
       if (localObject2 != null)
       {
         localObject2 = ((VideoView)localObject2).getContext();
@@ -678,12 +558,12 @@ public final class VideoPlayController
         {
           localObject1 = new PlayerVideoInfo(101, "", (String[])localObject1);
           a((PlayerVideoInfo)localObject1);
-          String str = this.jdField_a_of_type_JavaLangString;
+          String str = this.b;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("opening ");
           localStringBuilder.append(paramString);
           QLog.d(str, 2, localStringBuilder.toString());
-          if (b()) {
+          if (q()) {
             a((Context)localObject2, (PlayerVideoInfo)localObject1);
           }
         }
@@ -697,14 +577,20 @@ public final class VideoPlayController
     g((Function0)new VideoPlayController.pausePlayer.1(this, paramFunction0));
   }
   
-  public final void e()
+  public final boolean d()
   {
-    g((Function0)new VideoPlayController.open.1(this));
+    return this.h;
+  }
+  
+  @Nullable
+  public final VideoPlayListener e()
+  {
+    return this.j;
   }
   
   public final void e(int paramInt)
   {
-    VideoDynamicInsertController localVideoDynamicInsertController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDynamicInsertController;
+    VideoDynamicInsertController localVideoDynamicInsertController = this.y;
     if (localVideoDynamicInsertController != null) {
       localVideoDynamicInsertController.a(paramInt);
     }
@@ -712,7 +598,7 @@ public final class VideoPlayController
   
   public final void e(@Nullable String paramString)
   {
-    VideoDtReportController localVideoDtReportController = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDtReportController;
+    VideoDtReportController localVideoDtReportController = this.x;
     if (localVideoDtReportController != null) {
       localVideoDtReportController.b(paramString);
     }
@@ -724,12 +610,9 @@ public final class VideoPlayController
     g((Function0)new VideoPlayController.destroyPlayer.1(this, paramFunction0));
   }
   
-  public final void f()
+  public final int f()
   {
-    VideoPlayListener localVideoPlayListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayListener;
-    if (localVideoPlayListener != null) {
-      localVideoPlayListener.c();
-    }
+    return this.l;
   }
   
   public final void f(@NotNull String paramString)
@@ -740,7 +623,7 @@ public final class VideoPlayController
   public final void f(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "runnable");
-    if (RIJThreadHandler.a())
+    if (RIJThreadHandler.f())
     {
       paramFunction0.invoke();
       return;
@@ -748,22 +631,9 @@ public final class VideoPlayController
     ThreadManager.getUIHandler().post((Runnable)new VideoPlayController.executeOnMainThread.1(this, paramFunction0));
   }
   
-  public final void g()
+  public final int g()
   {
-    VideoView localVideoView = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-    if (localVideoView != null) {
-      try
-      {
-        VideoState.a.a(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView, this).a();
-        Unit localUnit = Unit.INSTANCE;
-        return;
-      }
-      finally
-      {
-        localObject = finally;
-        throw localObject;
-      }
-    }
+    return this.m;
   }
   
   public final void g(@NotNull String paramString)
@@ -772,8 +642,8 @@ public final class VideoPlayController
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("VideoPlayController.");
     ((StringBuilder)localObject).append(paramString);
-    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoDtReportController;
+    this.b = ((StringBuilder)localObject).toString();
+    localObject = this.x;
     StringBuilder localStringBuilder;
     if (localObject != null)
     {
@@ -783,7 +653,7 @@ public final class VideoPlayController
       localStringBuilder.append(paramString);
       ((VideoDtReportController)localObject).a(localStringBuilder.toString());
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoReportController;
+    localObject = this.w;
     if (localObject != null)
     {
       localStringBuilder = new StringBuilder();
@@ -800,36 +670,161 @@ public final class VideoPlayController
     ThreadManager.getFileThreadHandler().post((Runnable)new VideoPlayController.executeOnSubThread.1(this, paramFunction0));
   }
   
-  public final void h()
+  public final int h()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    return this.n;
+  }
+  
+  @Nullable
+  public final IPlayer i()
+  {
+    return this.o;
+  }
+  
+  @Nullable
+  public final IVideoView j()
+  {
+    return this.p;
+  }
+  
+  @Nullable
+  public final AbsBaseArticleInfo k()
+  {
+    return this.q;
+  }
+  
+  public final void l()
+  {
+    this.E.set(6);
+    s();
+  }
+  
+  public final void m()
+  {
+    this.E.set(5);
+    s();
+  }
+  
+  public final void n()
+  {
+    this.E.set(4);
+    s();
+  }
+  
+  public final void o()
+  {
+    this.E.set(7);
+    s();
+  }
+  
+  public final void p()
+  {
+    g((Function0)new VideoPlayController.open.1(this));
+  }
+  
+  public final boolean q()
+  {
+    Object localObject = this.p;
+    if (localObject != null)
+    {
+      localObject = ((IVideoView)localObject).a();
+      if (localObject != null)
+      {
+        localObject = ((View)localObject).getTag();
+        break label30;
+      }
+    }
+    localObject = null;
+    label30:
+    localObject = (CharSequence)localObject;
+    boolean bool;
+    if ((!TextUtils.equals((CharSequence)this.f, (CharSequence)localObject)) && (!TextUtils.equals((CharSequence)this.e, (CharSequence)localObject))) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    localObject = this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkVideo: ");
+    localStringBuilder.append(bool);
+    QLog.d((String)localObject, 1, localStringBuilder.toString());
+    return bool;
+  }
+  
+  public final void r()
+  {
+    VideoPlayListener localVideoPlayListener = this.j;
+    if (localVideoPlayListener != null) {
+      localVideoPlayListener.c();
+    }
+  }
+  
+  public final void s()
+  {
+    VideoView localVideoView = this.C;
+    if (localVideoView != null) {
+      try
+      {
+        VideoState.a.a(this.D, this.E, this.C, this).a();
+        Unit localUnit = Unit.INSTANCE;
+        return;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+  }
+  
+  public final void t()
+  {
+    Object localObject1 = this.q;
     if (localObject1 != null)
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
-      long l;
+      Object localObject2 = this.o;
+      long l1;
       if (localObject2 != null)
       {
-        l = ((IPlayer)localObject2).b();
+        l1 = ((IPlayer)localObject2).o();
         localObject2 = (Map)VideoDataManager.a.a();
         String str = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
         Intrinsics.checkExpressionValueIsNotNull(str, "article.innerUniqueID");
-        ((Map)localObject2).put(str, Long.valueOf(l));
+        ((Map)localObject2).put(str, Long.valueOf(l1));
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIPlayer;
+      localObject2 = this.o;
       if (localObject2 != null)
       {
-        l = ((IPlayer)localObject2).a();
+        l1 = ((IPlayer)localObject2).n();
         localObject2 = (Map)VideoDataManager.a.b();
         localObject1 = ((AbsBaseArticleInfo)localObject1).innerUniqueID;
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "article.innerUniqueID");
-        ((Map)localObject2).put(localObject1, Long.valueOf(l));
+        ((Map)localObject2).put(localObject1, Long.valueOf(l1));
       }
     }
+  }
+  
+  @Nullable
+  public final VideoView u()
+  {
+    return this.C;
+  }
+  
+  @NotNull
+  public final AtomicInteger v()
+  {
+    return this.D;
+  }
+  
+  @NotNull
+  public final AtomicInteger w()
+  {
+    return this.E;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController
  * JD-Core Version:    0.7.0.1
  */

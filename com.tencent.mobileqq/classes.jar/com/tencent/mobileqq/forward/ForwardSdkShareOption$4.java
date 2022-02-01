@@ -32,10 +32,10 @@ class ForwardSdkShareOption$4
     if (paramBundle != null)
     {
       long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
-      QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "handleGetMessageState currentRequestTime =", Long.valueOf(ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption)), ", sendStamp = ", Long.valueOf(l) });
-      if ((l == -1L) || (l != ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption)))
+      QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "handleGetMessageState currentRequestTime =", Long.valueOf(ForwardSdkShareOption.a(this.d)), ", sendStamp = ", Long.valueOf(l) });
+      if ((l == -1L) || (l != ForwardSdkShareOption.a(this.d)))
       {
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, ForwardSdkShareOption.e(), this.jdField_a_of_type_JavaLangString);
+        ForwardSdkShareOption.a(this.d, ForwardSdkShareOption.aH(), this.a);
         return;
       }
     }
@@ -46,16 +46,16 @@ class ForwardSdkShareOption$4
     QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "大图发送消息后客户端收到回调=0X8009C94, errorCode=", Integer.valueOf(paramInt), ", fileType=4, toType=", this.b, ", title=", this.c });
     if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, "", this.jdField_a_of_type_JavaLangString);
+      ForwardSdkShareOption.a(this.d, "", this.a);
       return;
     }
     paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
-    ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSdkShareOption, (String)paramArrayOfByte[2], this.jdField_a_of_type_JavaLangString);
+    ForwardSdkShareOption.a(this.d, (String)paramArrayOfByte[2], this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.4
  * JD-Core Version:    0.7.0.1
  */

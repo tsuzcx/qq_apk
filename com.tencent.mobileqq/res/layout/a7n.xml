@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="#fff1f3f8" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:layout_gravity="start" android:id="@id/title" android:paddingLeft="?a3b" android:paddingTop="@dimen/ba1" android:paddingRight="?a3b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="?android:windowTitleStyle" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/aur" />
-</androidx.appcompat.widget.FitWindowsLinearLayout>
+    <ImageView android:id="@id/nz7" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/hij" android:scaleType="fitXY" android:layout_centerVertical="true" />
+    <TextView android:textSize="18.0dip" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ivu" android:layout_centerInParent="true" />
+    <FrameLayout android:id="@id/njx" android:layout_width="30.0dip" android:layout_height="64.0dip" android:layout_marginRight="12.0dip" android:layout_toLeftOf="@id/nz5">
+        <ImageView android:layout_gravity="center" android:id="@id/nz0" android:layout_width="@dimen/n4" android:layout_height="@dimen/n4" android:src="@drawable/j3m" />
+        <TextView android:layout_gravity="center|right|top" android:id="@id/dec" android:background="@drawable/fem" android:visibility="visible" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="10.0dip" />
+    </FrameLayout>
+    <ImageView android:id="@id/nz5" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/hxy" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/ob5" android:background="@drawable/j3l" android:layout_width="wrap_content" android:layout_height="38.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/njx" android:layout_centerVertical="true">
+        <TextView android:ellipsize="end" android:id="@id/qlk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="" android:lines="1" android:singleLine="true" android:maxLength="12" />
+    </LinearLayout>
+</RelativeLayout>

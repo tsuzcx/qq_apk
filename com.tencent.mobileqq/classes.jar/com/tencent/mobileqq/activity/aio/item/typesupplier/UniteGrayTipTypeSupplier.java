@@ -12,7 +12,7 @@ public class UniteGrayTipTypeSupplier
   public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     paramQQAppInterface = ((MessageForUniteGrayTip)paramChatMessage).tipParam;
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.b == 655384)) {
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.i == 655384)) {
       return 110;
     }
     return 64;
@@ -20,7 +20,7 @@ public class UniteGrayTipTypeSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.UniteGrayTipTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class PersonalityLabelGalleryActivity$4$3
   
   public void run()
   {
-    PersonalityLabelGalleryActivity.b(this.a.this$0);
+    PersonalityLabelGalleryActivity.e(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.4.3
  * JD-Core Version:    0.7.0.1
  */

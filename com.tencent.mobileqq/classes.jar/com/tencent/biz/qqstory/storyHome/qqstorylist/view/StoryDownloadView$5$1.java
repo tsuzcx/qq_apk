@@ -7,7 +7,7 @@ class StoryDownloadView$5$1
   
   public void run()
   {
-    this.a.a.a();
+    this.a.b.a();
   }
 }
 

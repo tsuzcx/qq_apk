@@ -16,16 +16,14 @@ public class FunctionSearchEngine
   implements ISearchEngine<GroupBaseNetSearchModelItem>
 {
   public static final String a = "FunctionSearchEngine";
-  private int a;
-  protected QQAppInterface a;
-  protected FunctionSearchEngine.SearchRunnable a;
+  protected QQAppInterface b;
+  protected FunctionSearchEngine.SearchRunnable c = new FunctionSearchEngine.1(this);
+  private int d = -1;
   
   public FunctionSearchEngine(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable = new FunctionSearchEngine.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramQQAppInterface;
+    this.d = paramInt;
   }
   
   public List<GroupBaseNetSearchModelItem> a(SearchRequest paramSearchRequest)
@@ -35,22 +33,22 @@ public class FunctionSearchEngine
     if (paramSearchRequest != null)
     {
       localObject1 = localObject2;
-      if (paramSearchRequest.jdField_a_of_type_JavaLangString != null)
+      if (paramSearchRequest.a != null)
       {
-        if (paramSearchRequest.jdField_a_of_type_JavaLangString.trim().length() == 0) {
+        if (paramSearchRequest.a.trim().length() == 0) {
           return null;
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject1 = this.b;
         if (localObject1 == null)
         {
-          QLog.e(jdField_a_of_type_JavaLangString, 1, "search, app is null.");
+          QLog.e(a, 1, "search, app is null.");
           return null;
         }
         localObject1 = (FunctionModuleConfigManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.FUNCTION_MODULE_MANAGER);
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(paramSearchRequest.jdField_a_of_type_JavaLangString);
-        localObject3 = ((FunctionModuleConfigManager)localObject1).a(((StringBuilder)localObject3).toString(), this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append(paramSearchRequest.a);
+        localObject3 = ((FunctionModuleConfigManager)localObject1).a(((StringBuilder)localObject3).toString(), this.d);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -76,7 +74,7 @@ public class FunctionSearchEngine
   
   public void a()
   {
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.b;
     if (localQQAppInterface != null) {
       FunctionModuleConfigManager.a(localQQAppInterface);
     }
@@ -84,17 +82,17 @@ public class FunctionSearchEngine
   
   public void a(SearchRequest paramSearchRequest, ISearchListener<GroupBaseNetSearchModelItem> paramISearchListener)
   {
-    if ((paramSearchRequest != null) && (paramSearchRequest.jdField_a_of_type_JavaLangString != null))
+    if ((paramSearchRequest != null) && (paramSearchRequest.a != null))
     {
-      if (paramSearchRequest.jdField_a_of_type_JavaLangString.trim().length() == 0) {
+      if (paramSearchRequest.a.trim().length() == 0) {
         return;
       }
-      synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable)
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest = paramSearchRequest;
-        this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = paramISearchListener;
-        ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable, 32);
-        ThreadManager.excute(this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable, 32, null, false);
+        this.c.a = paramSearchRequest;
+        this.c.b = paramISearchListener;
+        ThreadManager.removeJobFromThreadPool(this.c, 32);
+        ThreadManager.excute(this.c, 32, null, false);
         return;
       }
     }
@@ -102,11 +100,11 @@ public class FunctionSearchEngine
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable)
+    synchronized (this.c)
     {
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest = null;
-      this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = null;
-      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFunctionSearchEngine$SearchRunnable, 32);
+      this.c.a = null;
+      this.c.b = null;
+      ThreadManager.removeJobFromThreadPool(this.c, 32);
       return;
     }
   }
@@ -119,7 +117,7 @@ public class FunctionSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FunctionSearchEngine
  * JD-Core Version:    0.7.0.1
  */

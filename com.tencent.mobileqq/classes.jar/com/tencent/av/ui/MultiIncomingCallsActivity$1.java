@@ -13,13 +13,13 @@ class MultiIncomingCallsActivity$1
   
   protected void a(long paramLong1, long paramLong2, ArrayList<Memberinfo> paramArrayList)
   {
-    if (MultiIncomingCallsActivity.a(this.a) != null)
+    if (MultiIncomingCallsActivity.a(this.b) != null)
     {
-      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.a(this.a));
-      MultiIncomingCallsActivity.a(this.a, null);
+      ThreadManager.getUIHandler().removeCallbacks(MultiIncomingCallsActivity.a(this.b));
+      MultiIncomingCallsActivity.a(this.b, null);
     }
-    MultiIncomingCallsActivity.a(this.a, new MultiIncomingCallsActivity.1.1(this, paramArrayList));
-    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.a(this.a));
+    MultiIncomingCallsActivity.a(this.b, new MultiIncomingCallsActivity.1.1(this, paramArrayList));
+    ThreadManager.getUIHandler().post(MultiIncomingCallsActivity.a(this.b));
   }
 }
 

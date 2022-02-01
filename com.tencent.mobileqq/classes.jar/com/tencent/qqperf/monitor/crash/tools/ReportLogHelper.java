@@ -114,7 +114,7 @@ public abstract class ReportLogHelper
     //   157: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: pop
     //   161: aload_3
-    //   162: invokestatic 104	com/tencent/common/config/AppSetting:b	()Ljava/lang/String;
+    //   162: invokestatic 104	com/tencent/common/config/AppSetting:c	()Ljava/lang/String;
     //   165: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: pop
     //   169: aload 4
@@ -255,7 +255,7 @@ public abstract class ReportLogHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.crash.tools.ReportLogHelper
  * JD-Core Version:    0.7.0.1
  */

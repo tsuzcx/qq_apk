@@ -24,21 +24,6 @@ public final class VideoStructMsgHelper
 {
   public static final VideoStructMsgHelper a = new VideoStructMsgHelper();
   
-  private final String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    String str = (String)null;
-    if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.thirdIcon)) {
-      return paramAbsBaseArticleInfo.thirdIcon;
-    }
-    if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.mSubscribeID))
-    {
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSubscribeID;
-      Intrinsics.checkExpressionValueIsNotNull(paramAbsBaseArticleInfo, "videoInfo.mSubscribeID");
-      str = ReadInJoyUserInfoModule.a(ReadInJoyUserInfoModule.a(Long.parseLong(paramAbsBaseArticleInfo), null));
-    }
-    return str;
-  }
-  
   private final String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
     JSONObject localJSONObject1 = new JSONObject();
@@ -50,7 +35,7 @@ public final class VideoStructMsgHelper
         localJSONObject1.put("data", localJSONObject2);
         localJSONObject2.put("id", "none");
         localJSONObject2.put("rowkey", paramAbsBaseArticleInfo.rawkey);
-        localJSONObject2.put("uin", RIJQQAppInterfaceUtil.a());
+        localJSONObject2.put("uin", RIJQQAppInterfaceUtil.d());
         localJSONObject2.put("puin", paramAbsBaseArticleInfo.mSubscribeID);
         if (paramBoolean)
         {
@@ -61,7 +46,7 @@ public final class VideoStructMsgHelper
           ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.thirdName);
           ((StringBuilder)localObject).append('}');
           localJSONObject2.put("nick", ((StringBuilder)localObject).toString());
-          if (RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo))
+          if (RIJItemViewTypeUtils.E(paramAbsBaseArticleInfo))
           {
             localJSONObject2.put("contentJumpUrl", paramAbsBaseArticleInfo.mOriginalUrl);
           }
@@ -83,12 +68,12 @@ public final class VideoStructMsgHelper
           ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.mSubscribeName);
           ((StringBuilder)localObject).append('}');
           localJSONObject2.put("nick", ((StringBuilder)localObject).toString());
-          localJSONObject2.put("contentJumpUrl", c(paramAbsBaseArticleInfo));
+          localJSONObject2.put("contentJumpUrl", f(paramAbsBaseArticleInfo));
         }
-        localJSONObject2.put("avatar", a(paramAbsBaseArticleInfo));
-        localJSONObject2.put("avatarJumpUrl", b(paramAbsBaseArticleInfo));
+        localJSONObject2.put("avatar", d(paramAbsBaseArticleInfo));
+        localJSONObject2.put("avatarJumpUrl", e(paramAbsBaseArticleInfo));
         localJSONObject2.put("iconJumpUrl", "mqqapi://readinjoy/open?src_type=internal&target=1&version=1");
-        localJSONObject2.put("media", a(paramAbsBaseArticleInfo));
+        localJSONObject2.put("media", c(paramAbsBaseArticleInfo));
         localJSONObject2.put("title", paramAbsBaseArticleInfo.mTitle);
         localJSONObject2.put("type", 2);
         localJSONObject2.put("isAIO", 1);
@@ -111,7 +96,7 @@ public final class VideoStructMsgHelper
     }
   }
   
-  private final JSONArray a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private final JSONArray c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     JSONArray localJSONArray = new JSONArray();
     try
@@ -132,7 +117,22 @@ public final class VideoStructMsgHelper
     return localJSONArray;
   }
   
-  private final String b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private final String d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    String str = (String)null;
+    if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.thirdIcon)) {
+      return paramAbsBaseArticleInfo.thirdIcon;
+    }
+    if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.mSubscribeID))
+    {
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSubscribeID;
+      Intrinsics.checkExpressionValueIsNotNull(paramAbsBaseArticleInfo, "videoInfo.mSubscribeID");
+      str = ReadInJoyUserInfoModule.a(ReadInJoyUserInfoModule.a(Long.parseLong(paramAbsBaseArticleInfo), null));
+    }
+    return str;
+  }
+  
+  private final String e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     String str1 = paramAbsBaseArticleInfo.mSubscribeID;
     String str2 = PAVideoStructMsgUtil.a(str1, true);
@@ -142,12 +142,12 @@ public final class VideoStructMsgHelper
     return str2;
   }
   
-  private final String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private final String f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return d(paramAbsBaseArticleInfo);
+    return g(paramAbsBaseArticleInfo);
   }
   
-  private final String d(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private final String g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Object localObject;
     if (paramAbsBaseArticleInfo.aioShareUrl != null)
@@ -223,7 +223,7 @@ public final class VideoStructMsgHelper
   }
   
   @NotNull
-  public final JSONObject a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public final JSONObject b(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     JSONObject localJSONObject = new JSONObject();
     if (paramAbsBaseArticleInfo != null)
@@ -250,7 +250,7 @@ public final class VideoStructMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoStructMsgHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set
+<set android:background="#ff000000" android:shareInterpolator="false" android:zAdjustment="normal"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <set android:ordering="sequentially">
-        <objectAnimator android:interpolator="@interpolator/h" android:duration="200" android:valueFrom="0.2" android:valueTo="0.18" android:propertyName="scaleX" />
-        <objectAnimator android:interpolator="@interpolator/h" android:duration="300" android:valueFrom="0.18" android:valueTo="0.2" android:propertyName="scaleX" />
-    </set>
-    <set android:ordering="sequentially">
-        <objectAnimator android:interpolator="@interpolator/h" android:duration="200" android:valueFrom="0.2" android:valueTo="0.18" android:propertyName="scaleY" />
-        <objectAnimator android:interpolator="@interpolator/h" android:duration="300" android:valueFrom="0.18" android:valueTo="0.2" android:propertyName="scaleY" />
-    </set>
+    <alpha android:interpolator="@anim/js" android:duration="133" android:fillBefore="true" android:fillAfter="true" android:fromAlpha="0.6" android:toAlpha="1.0" android:fillEnabled="true" />
+    <translate android:interpolator="@anim/js" android:duration="433" android:fillBefore="true" android:fillAfter="true" android:startOffset="-183" android:fromYDelta="10.000002%" android:toYDelta="0.0" android:fillEnabled="true" />
+    <scale android:duration="433" android:pivotX="50.0%p" android:pivotY="50.0%p" android:fillBefore="true" android:fillAfter="true" android:startOffset="-183" android:fromXScale="0.9" android:toXScale="1.0" android:fromYScale="0.9" android:toYScale="1.0" android:fillEnabled="true" />
 </set>

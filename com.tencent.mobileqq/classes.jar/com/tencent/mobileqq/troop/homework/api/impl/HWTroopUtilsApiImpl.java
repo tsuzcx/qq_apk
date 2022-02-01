@@ -46,7 +46,7 @@ public class HWTroopUtilsApiImpl
   {
     setAIOHomeworkBtnRedPoint(paramAppInterface, paramString, 0);
     String str = String.valueOf(1104445552);
-    ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(TroopRedDotHandler.class.getName())).a(TroopRedDotObserver.a, true, new Object[] { paramString, str, Boolean.valueOf(false) });
+    ((ITroopRedDotHandler)paramAppInterface.getBusinessHandler(TroopRedDotHandler.class.getName())).a(TroopRedDotObserver.b, true, new Object[] { paramString, str, Boolean.valueOf(false) });
     clearHomeworkTroopRedPointWith0x8c2(paramAppInterface, paramString, str);
   }
   
@@ -91,7 +91,7 @@ public class HWTroopUtilsApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.api.impl.HWTroopUtilsApiImpl
  * JD-Core Version:    0.7.0.1
  */

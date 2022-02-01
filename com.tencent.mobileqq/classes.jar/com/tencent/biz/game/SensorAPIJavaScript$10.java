@@ -18,23 +18,23 @@ class SensorAPIJavaScript$10
     if (QLog.isDevelopLevel()) {
       QLog.d("SensorApi", 4, "start connectToWiFi");
     }
-    Object localObject = new WifiParsedResult(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
-    if (new BizWifiConfigManager(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((WifiParsedResult)localObject))
+    Object localObject = new WifiParsedResult(this.a, this.b, this.c, this.d);
+    if (new BizWifiConfigManager(this.e).a((WifiParsedResult)localObject))
     {
       localObject = new Message();
       ((Message)localObject).what = 5;
-      ((Message)localObject).obj = this.d;
-      this.this$0.a.sendMessage((Message)localObject);
+      ((Message)localObject).obj = this.f;
+      this.this$0.F.sendMessage((Message)localObject);
       return;
     }
     localObject = this.this$0;
-    ((SensorAPIJavaScript)localObject).c = false;
-    ((SensorAPIJavaScript)localObject).callJs(this.d, new String[] { Util.a(Integer.toString(1)) });
+    ((SensorAPIJavaScript)localObject).t = false;
+    ((SensorAPIJavaScript)localObject).callJs(this.f, new String[] { Util.c(Integer.toString(1)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.10
  * JD-Core Version:    0.7.0.1
  */

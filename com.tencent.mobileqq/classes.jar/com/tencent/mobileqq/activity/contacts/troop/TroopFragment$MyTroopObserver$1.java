@@ -7,12 +7,12 @@ class TroopFragment$MyTroopObserver$1
   
   public void run()
   {
-    this.a.a.h();
+    this.a.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

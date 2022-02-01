@@ -30,12 +30,12 @@ class EcshopReportHandler$1
       {
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
         int i;
-        if ((!"2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) && ((localMessageRecord.istroop != 1008) || (!ServiceAccountFolderManager.c(EcshopReportHandler.a(this.a), localMessageRecord.senderuin)))) {
+        if ((!"2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) && ((localMessageRecord.istroop != 1008) || (!ServiceAccountFolderManager.c(EcshopReportHandler.b(this.a), localMessageRecord.senderuin)))) {
           i = 0;
         } else {
           i = 1;
         }
-        if ((i != 0) || (localEcShopAssistantManager.a(localMessageRecord.senderuin)))
+        if ((i != 0) || (localEcShopAssistantManager.d(localMessageRecord.senderuin)))
         {
           if (i != 0) {
             localEcshopReportHandler.a(localMessageRecord);
@@ -48,7 +48,7 @@ class EcshopReportHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler.1
  * JD-Core Version:    0.7.0.1
  */

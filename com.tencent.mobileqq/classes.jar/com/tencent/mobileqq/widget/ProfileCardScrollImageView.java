@@ -10,15 +10,15 @@ import android.widget.ImageView;
 public class ProfileCardScrollImageView
   extends ImageView
 {
-  private int jdField_a_of_type_Int = 1500;
-  private long jdField_a_of_type_Long;
-  private DecelerateInterpolator jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = 0;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int d = 3;
+  private int a = 1500;
+  private int b = 0;
+  private int c = 0;
+  private long d;
+  private boolean e = false;
+  private DecelerateInterpolator f;
+  private int g = 3;
+  private boolean h = false;
+  private boolean i = false;
   
   public ProfileCardScrollImageView(Context paramContext)
   {
@@ -40,40 +40,40 @@ public class ProfileCardScrollImageView
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator == null) {
-      this.jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator = new DecelerateInterpolator(1.0F);
+    if (this.f == null) {
+      this.f = new DecelerateInterpolator(1.0F);
     }
   }
   
   public void a()
   {
-    this.d = 3;
+    this.g = 3;
     invalidate();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.d = 0;
-    this.jdField_c_of_type_Boolean = false;
+    this.c = paramInt;
+    this.g = 0;
+    this.i = false;
     invalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
       super.onDraw(paramCanvas);
       return;
     }
-    int i = this.d;
-    if (i != 0)
+    int j = this.g;
+    if (j != 0)
     {
-      if (i != 1)
+      if (j != 1)
       {
-        if (i != 3)
+        if (j != 3)
         {
-          if (i == 4)
+          if (j == 4)
           {
             paramCanvas.save();
             paramCanvas.translate(0.0F, 0.0F);
@@ -87,73 +87,73 @@ public class ProfileCardScrollImageView
       }
       else
       {
-        if (this.jdField_a_of_type_Long >= 0L)
+        if (this.d >= 0L)
         {
-          float f = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Int;
-          if (f >= 1.0F)
+          float f1 = (float)(SystemClock.uptimeMillis() - this.d) / this.a;
+          if (f1 >= 1.0F)
           {
-            if (!this.jdField_b_of_type_Boolean)
+            if (!this.h)
             {
-              this.jdField_b_of_type_Boolean = true;
-              this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+              this.h = true;
+              this.d = SystemClock.uptimeMillis();
             }
             else
             {
-              this.jdField_c_of_type_Boolean = true;
+              this.i = true;
             }
           }
           else
           {
-            f = Math.min(f, 1.0F);
-            if (!this.jdField_b_of_type_Boolean)
+            f1 = Math.min(f1, 1.0F);
+            if (!this.h)
             {
-              this.jdField_b_of_type_Int = ((int)(this.jdField_c_of_type_Int * this.jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator.getInterpolation(f)));
+              this.b = ((int)(this.c * this.f.getInterpolation(f1)));
             }
             else
             {
-              i = this.jdField_c_of_type_Int;
-              this.jdField_b_of_type_Int = (i - (int)(i * this.jdField_a_of_type_AndroidViewAnimationDecelerateInterpolator.getInterpolation(f)));
+              j = this.c;
+              this.b = (j - (int)(j * this.f.getInterpolation(f1)));
             }
           }
-          if (this.jdField_c_of_type_Boolean) {
-            this.d = 4;
+          if (this.i) {
+            this.g = 4;
           }
         }
         paramCanvas.save();
-        paramCanvas.translate(0.0F, this.jdField_b_of_type_Int);
+        paramCanvas.translate(0.0F, this.b);
         super.onDraw(paramCanvas);
         paramCanvas.restore();
-        if (this.jdField_c_of_type_Boolean) {
+        if (this.i) {
           invalidate();
         }
       }
     }
     else
     {
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      this.d = 1;
-      this.jdField_b_of_type_Boolean = false;
+      this.b = 0;
+      this.d = SystemClock.uptimeMillis();
+      this.g = 1;
+      this.h = false;
       super.onDraw(paramCanvas);
     }
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.i) {
       invalidate();
     }
   }
   
   public void setIsScroll(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setScrollDuration(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProfileCardScrollImageView
  * JD-Core Version:    0.7.0.1
  */

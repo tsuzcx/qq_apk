@@ -20,7 +20,7 @@ class FriendProfileMoreInfoActivity$16
   {
     paramContext = paramIntent.getAction();
     String str1 = paramIntent.getStringExtra("event");
-    if ((((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).n(this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
+    if ((((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).aa(this.a.J)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
     {
       paramContext = paramIntent.getStringExtra("data");
       if (TextUtils.isEmpty(paramContext)) {
@@ -31,7 +31,7 @@ class FriendProfileMoreInfoActivity$16
     {
       paramContext = new JSONObject(paramContext);
       paramIntent = paramContext.optString("groupCode");
-      if (!TextUtils.equals(this.a.a, paramIntent)) {
+      if (!TextUtils.equals(this.a.J, paramIntent)) {
         return;
       }
       paramContext.optString("content");
@@ -51,7 +51,7 @@ class FriendProfileMoreInfoActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.16
  * JD-Core Version:    0.7.0.1
  */

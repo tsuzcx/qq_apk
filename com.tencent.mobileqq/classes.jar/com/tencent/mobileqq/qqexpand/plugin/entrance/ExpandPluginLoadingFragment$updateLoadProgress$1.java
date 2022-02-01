@@ -19,24 +19,24 @@ final class ExpandPluginLoadingFragment$updateLoadProgress$1
     }
     int i = j;
     if (j == 0) {
-      if (ExpandPluginLoadingFragment.a(this.this$0)) {
+      if (ExpandPluginLoadingFragment.j(this.this$0)) {
         i = (int)60.0D;
       } else {
-        i = RangesKt.random(new IntRange(ExpandPluginLoadingFragment.b(this.this$0), ExpandPluginLoadingFragment.b(this.this$0) + 5), (Random)Random.Default);
+        i = RangesKt.random(new IntRange(ExpandPluginLoadingFragment.k(this.this$0), ExpandPluginLoadingFragment.k(this.this$0) + 5), (Random)Random.Default);
       }
     }
     ExpandPluginLoadingFragment.b(this.this$0, i);
-    if (ExpandPluginLoadingFragment.a(this.this$0)) {
-      j = RangesKt.random(new IntRange(ExpandPluginLoadingFragment.c(this.this$0), ExpandPluginLoadingFragment.c(this.this$0) + 2), (Random)Random.Default);
+    if (ExpandPluginLoadingFragment.j(this.this$0)) {
+      j = RangesKt.random(new IntRange(ExpandPluginLoadingFragment.l(this.this$0), ExpandPluginLoadingFragment.l(this.this$0) + 2), (Random)Random.Default);
     } else {
-      j = RangesKt.random(new IntRange(ExpandPluginLoadingFragment.b(this.this$0), ExpandPluginLoadingFragment.b(this.this$0) + 5), (Random)Random.Default);
+      j = RangesKt.random(new IntRange(ExpandPluginLoadingFragment.k(this.this$0), ExpandPluginLoadingFragment.k(this.this$0) + 5), (Random)Random.Default);
     }
     this.this$0.b(i + j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLoadingFragment.updateLoadProgress.1
  * JD-Core Version:    0.7.0.1
  */

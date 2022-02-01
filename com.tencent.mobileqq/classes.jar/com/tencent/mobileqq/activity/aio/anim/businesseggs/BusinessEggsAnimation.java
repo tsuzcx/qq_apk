@@ -17,26 +17,50 @@ import java.util.Queue;
 public class BusinessEggsAnimation
   extends AIOAnimationConatiner.AIOAnimator
 {
-  private BusinessEggsAnimation.BusinessEggsQueueDriver jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver;
-  private final Map<Long, AioAnimationRule> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private final Queue<BusinessEggsElement> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private final Queue<BusinessEggsElement> b = new LinkedList();
-  private final Queue<BusinessEggsElement> c = new LinkedList();
+  private BusinessEggsAnimation.BusinessEggsQueueDriver d;
+  private final Queue<BusinessEggsElement> e = new LinkedList();
+  private final Queue<BusinessEggsElement> f = new LinkedList();
+  private final Queue<BusinessEggsElement> g = new LinkedList();
+  private final Map<Long, AioAnimationRule> h = new HashMap();
   
   public BusinessEggsAnimation(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
   {
     super(paramInt, paramAIOAnimationConatiner, paramListView);
   }
   
-  private BusinessEggsElement a(Object... paramVarArgs)
+  private void a(BusinessEggsElement paramBusinessEggsElement, ChatMessage paramChatMessage)
   {
-    BusinessEggsElement localBusinessEggsElement = new BusinessEggsElement(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner, this.jdField_a_of_type_ComTencentWidgetListView);
+    paramBusinessEggsElement.a(new BusinessEggsAnimation.1(this, paramBusinessEggsElement, paramChatMessage));
+    paramBusinessEggsElement.a(new BusinessEggsAnimation.2(this));
+  }
+  
+  private void a(Queue<BusinessEggsElement> paramQueue)
+  {
+    if (!paramQueue.isEmpty())
+    {
+      Iterator localIterator = paramQueue.iterator();
+      while (localIterator.hasNext())
+      {
+        BusinessEggsElement localBusinessEggsElement = (BusinessEggsElement)localIterator.next();
+        if (localBusinessEggsElement.a()) {
+          localBusinessEggsElement.c();
+        }
+        localBusinessEggsElement.a(null);
+        localBusinessEggsElement.a(null);
+      }
+      paramQueue.clear();
+    }
+  }
+  
+  private BusinessEggsElement b(Object... paramVarArgs)
+  {
+    BusinessEggsElement localBusinessEggsElement = new BusinessEggsElement(this.a, this.b);
     try
     {
       Object localObject = (Drawable)paramVarArgs[0];
       paramVarArgs = (AioAnimationRule)paramVarArgs[1];
       long l = RandomUtils.a();
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(l), paramVarArgs);
+      this.h.put(Long.valueOf(l), paramVarArgs);
       localBusinessEggsElement.a = l;
       localBusinessEggsElement.a((Drawable)localObject);
       if (QLog.isColorLevel())
@@ -58,47 +82,18 @@ public class BusinessEggsAnimation
     return null;
   }
   
-  private void a(BusinessEggsElement paramBusinessEggsElement, ChatMessage paramChatMessage)
-  {
-    paramBusinessEggsElement.a(new BusinessEggsAnimation.1(this, paramBusinessEggsElement, paramChatMessage));
-    paramBusinessEggsElement.a(new BusinessEggsAnimation.2(this));
-  }
-  
-  private void a(Queue<BusinessEggsElement> paramQueue)
-  {
-    if (!paramQueue.isEmpty())
-    {
-      Iterator localIterator = paramQueue.iterator();
-      while (localIterator.hasNext())
-      {
-        BusinessEggsElement localBusinessEggsElement = (BusinessEggsElement)localIterator.next();
-        if (localBusinessEggsElement.a()) {
-          localBusinessEggsElement.b();
-        }
-        localBusinessEggsElement.a(null);
-        localBusinessEggsElement.a(null);
-      }
-      paramQueue.clear();
-    }
-  }
-  
   private void e()
   {
-    if (!this.jdField_a_of_type_JavaUtilQueue.isEmpty()) {
-      this.jdField_a_of_type_JavaUtilQueue.clear();
+    if (!this.e.isEmpty()) {
+      this.e.clear();
     }
-    a(this.b);
-    if (!this.c.isEmpty()) {
-      this.c.clear();
+    a(this.f);
+    if (!this.g.isEmpty()) {
+      this.g.clear();
     }
   }
   
   protected void a() {}
-  
-  protected boolean a(int paramInt)
-  {
-    return paramInt == 8;
-  }
   
   protected boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -110,10 +105,10 @@ public class BusinessEggsAnimation
     if (QLog.isColorLevel()) {
       QLog.i("BusinessEggsAnimation", 2, "[start] start animation");
     }
-    if (this.jdField_a_of_type_JavaUtilQueue.size() >= 10) {
+    if (this.e.size() >= 10) {
       return false;
     }
-    BusinessEggsElement localBusinessEggsElement = a(paramVarArgs);
+    BusinessEggsElement localBusinessEggsElement = b(paramVarArgs);
     if (localBusinessEggsElement == null) {
       return false;
     }
@@ -129,16 +124,21 @@ public class BusinessEggsAnimation
     QLog.e("BusinessEggsAnimation", 1, "[start] message is null");
     paramVarArgs = null;
     a(localBusinessEggsElement, paramVarArgs);
-    this.jdField_a_of_type_JavaUtilQueue.add(localBusinessEggsElement);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver == null)
+    this.e.add(localBusinessEggsElement);
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver = new BusinessEggsAnimation.BusinessEggsQueueDriver(this, null);
-      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver);
+      this.d = new BusinessEggsAnimation.BusinessEggsQueueDriver(this, null);
+      this.b.post(this.d);
     }
     return true;
   }
   
   protected void b() {}
+  
+  protected boolean b(int paramInt)
+  {
+    return paramInt == 8;
+  }
   
   protected void c()
   {
@@ -146,12 +146,12 @@ public class BusinessEggsAnimation
       QLog.i("BusinessEggsAnimation", 2, "[stop] stop animation");
     }
     e();
-    this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimBusinesseggsBusinessEggsAnimation$BusinessEggsQueueDriver);
+    this.b.removeCallbacks(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.businesseggs.BusinessEggsAnimation
  * JD-Core Version:    0.7.0.1
  */

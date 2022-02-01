@@ -5,15 +5,15 @@ import java.io.BufferedReader;
 public class PathParticleEmitter$ScaledNumericValue
   extends PathParticleEmitter.RangedNumericValue
 {
-  private float jdField_a_of_type_Float;
-  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
-  private float jdField_b_of_type_Float;
-  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
-  private boolean c;
+  float[] a = { 0.0F };
+  private float[] d = { 1.0F };
+  private float e;
+  private float f;
+  private boolean g;
   
   public float a(float paramFloat)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat1 = this.a;
     int j = arrayOfFloat1.length;
     int i = 1;
     while (i < j)
@@ -26,9 +26,9 @@ public class PathParticleEmitter$ScaledNumericValue
     i = -1;
     label46:
     if (i == -1) {
-      return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
+      return this.d[(j - 1)];
     }
-    float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+    float[] arrayOfFloat2 = this.d;
     j = i - 1;
     float f1 = arrayOfFloat2[j];
     float f2 = arrayOfFloat1[j];
@@ -38,54 +38,54 @@ public class PathParticleEmitter$ScaledNumericValue
   public void a(BufferedReader paramBufferedReader)
   {
     super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.b) {
       return;
     }
-    this.jdField_a_of_type_Float = PathParticleEmitter.a(paramBufferedReader, "highMin");
-    this.jdField_b_of_type_Float = PathParticleEmitter.a(paramBufferedReader, "highMax");
-    this.c = PathParticleEmitter.a(paramBufferedReader, "relative");
-    this.jdField_b_of_type_ArrayOfFloat = new float[PathParticleEmitter.a(paramBufferedReader, "scalingCount")];
+    this.e = PathParticleEmitter.d(paramBufferedReader, "highMin");
+    this.f = PathParticleEmitter.d(paramBufferedReader, "highMax");
+    this.g = PathParticleEmitter.b(paramBufferedReader, "relative");
+    this.d = new float[PathParticleEmitter.c(paramBufferedReader, "scalingCount")];
     int j = 0;
     int i = 0;
     float[] arrayOfFloat;
     StringBuilder localStringBuilder;
     for (;;)
     {
-      arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
+      arrayOfFloat = this.d;
       if (i >= arrayOfFloat.length) {
         break;
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("scaling");
       localStringBuilder.append(i);
-      arrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, localStringBuilder.toString());
+      arrayOfFloat[i] = PathParticleEmitter.d(paramBufferedReader, localStringBuilder.toString());
       i += 1;
     }
-    this.jdField_a_of_type_ArrayOfFloat = new float[PathParticleEmitter.a(paramBufferedReader, "timelineCount")];
+    this.a = new float[PathParticleEmitter.c(paramBufferedReader, "timelineCount")];
     i = j;
     for (;;)
     {
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      arrayOfFloat = this.a;
       if (i >= arrayOfFloat.length) {
         break;
       }
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("timeline");
       localStringBuilder.append(i);
-      arrayOfFloat[i] = PathParticleEmitter.a(paramBufferedReader, localStringBuilder.toString());
+      arrayOfFloat[i] = PathParticleEmitter.d(paramBufferedReader, localStringBuilder.toString());
       i += 1;
     }
   }
   
-  public boolean a()
-  {
-    return this.c;
-  }
-  
   public float b()
   {
-    float f = this.jdField_a_of_type_Float;
-    return f + (this.jdField_b_of_type_Float - f) * MathUtils.a();
+    float f1 = this.e;
+    return f1 + (this.f - f1) * MathUtils.a();
+  }
+  
+  public boolean c()
+  {
+    return this.g;
   }
 }
 

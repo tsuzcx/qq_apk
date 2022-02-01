@@ -20,16 +20,16 @@ class CardPicGalleryActivity$10
   
   public String a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((this.a.f != null) && (paramInt < this.a.f.size()) && (paramInt >= 0)) {
+      return (String)this.a.f.get(paramInt);
     }
     return null;
   }
   
   public int getCount()
   {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    if (this.a.f != null) {
+      return this.a.f.size();
     }
     return 0;
   }
@@ -44,9 +44,9 @@ class CardPicGalleryActivity$10
     CardPicGalleryActivity.ImagePhotoHolder localImagePhotoHolder;
     if (paramView == null)
     {
-      paramView = this.a.getLayoutInflater().inflate(2131560995, null);
+      paramView = this.a.getLayoutInflater().inflate(2131627336, null);
       localImagePhotoHolder = new CardPicGalleryActivity.ImagePhotoHolder();
-      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131364340));
+      localImagePhotoHolder.a = ((URLImageView)paramView.findViewById(2131430368));
       paramView.setTag(localImagePhotoHolder);
     }
     else
@@ -55,18 +55,18 @@ class CardPicGalleryActivity$10
     }
     Object localObject1 = a(paramInt);
     Object localObject2;
-    if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+    if ((this.a.g != 0) && (this.a.h == null))
     {
       localObject2 = this.a;
-      ((CardPicGalleryActivity)localObject2).jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((CardPicGalleryActivity)localObject2).getResources().getDrawable(this.a.jdField_a_of_type_Int);
+      ((CardPicGalleryActivity)localObject2).h = ((CardPicGalleryActivity)localObject2).getResources().getDrawable(this.a.g);
     }
     if (localObject1 != null)
     {
       try
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-          localObject1 = URLDrawable.getDrawable((String)localObject1, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        if (this.a.h != null) {
+          localObject1 = URLDrawable.getDrawable((String)localObject1, this.a.h, this.a.h);
         } else {
           localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
         }
@@ -76,19 +76,19 @@ class CardPicGalleryActivity$10
       {
         localException1.printStackTrace();
       }
-      if ((this.a.d == 1) && (!this.a.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if ((this.a.m == 1) && (!this.a.e)) {
+        this.a.d.setVisibility(8);
       } else {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.d.setVisibility(0);
       }
     }
     else
     {
       try
       {
-        if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+        if (this.a.h != null)
         {
-          localObject1 = URLDrawable.getDrawable("https://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          localObject1 = URLDrawable.getDrawable("https://aaa", this.a.h, this.a.h);
           localException1.a.setImageDrawable((Drawable)localObject1);
         }
         else
@@ -100,7 +100,7 @@ class CardPicGalleryActivity$10
       {
         localException2.printStackTrace();
       }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.a.d.setVisibility(8);
     }
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
@@ -108,7 +108,7 @@ class CardPicGalleryActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity.10
  * JD-Core Version:    0.7.0.1
  */

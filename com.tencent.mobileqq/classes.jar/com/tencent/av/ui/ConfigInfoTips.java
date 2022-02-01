@@ -16,27 +16,27 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class ConfigInfoTips
   implements View.OnClickListener
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ConfigInfoTips.1(this);
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private long[] jdField_a_of_type_ArrayOfLong = null;
-  private boolean b = false;
+  private long[] a = null;
+  private Context b = null;
+  private boolean c = false;
+  private boolean d = false;
+  private BroadcastReceiver e = new ConfigInfoTips.1(this);
   
   public ConfigInfoTips(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ArrayOfLong = new long[6];
+    this.b = paramContext;
+    this.a = new long[6];
   }
   
   private void a(View paramView)
   {
-    Object localObject1 = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    ((Activity)localObject1).findViewById(2131373369).setVisibility(0);
-    paramView = (TextView)((Activity)localObject1).findViewById(2131373371);
-    localObject1 = (TextView)((Activity)localObject1).findViewById(2131373370);
-    int i = ConfigInfo.getSharpConfigVersionFromFile(this.jdField_a_of_type_AndroidContentContext);
-    Object localObject2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.jdField_a_of_type_AndroidContentContext));
-    String str = ConfigSystemImpl.a(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject1 = (Activity)this.b;
+    ((Activity)localObject1).findViewById(2131441042).setVisibility(0);
+    paramView = (TextView)((Activity)localObject1).findViewById(2131441044);
+    localObject1 = (TextView)((Activity)localObject1).findViewById(2131441043);
+    int i = ConfigInfo.getSharpConfigVersionFromFile(this.b);
+    Object localObject2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.b));
+    String str = ConfigSystemImpl.d(this.b);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject2);
     localStringBuilder.append("\n----------\n");
@@ -104,30 +104,30 @@ public class ConfigInfoTips
   
   public void a()
   {
-    Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    View localView = ((Activity)localObject).findViewById(2131373368);
+    Object localObject = (Activity)this.b;
+    View localView = ((Activity)localObject).findViewById(2131441041);
     if (localView != null)
     {
       localView.setOnClickListener(this);
       localView.setVisibility(0);
     }
-    localView = ((Activity)localObject).findViewById(2131373370);
+    localView = ((Activity)localObject).findViewById(2131441043);
     if (localView != null) {
       localView.setOnClickListener(this);
     }
-    localObject = ((Activity)localObject).findViewById(2131373369);
+    localObject = ((Activity)localObject).findViewById(2131441042);
     if (localObject != null) {
       ((View)localObject).setOnClickListener(this);
     }
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
     ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigTipsConstant.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+    this.b.registerReceiver(this.e, (IntentFilter)localObject);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.b.unregisterReceiver(this.e);
   }
   
   public void onClick(View paramView)
@@ -136,16 +136,16 @@ public class ConfigInfoTips
     {
     default: 
       break;
-    case 2131373369: 
-    case 2131373370: 
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131373369).setVisibility(8);
+    case 2131441042: 
+    case 2131441043: 
+      ((Activity)this.b).findViewById(2131441042).setVisibility(8);
       break;
-    case 2131373368: 
-      long[] arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+    case 2131441041: 
+      long[] arrayOfLong = this.a;
       System.arraycopy(arrayOfLong, 1, arrayOfLong, 0, arrayOfLong.length - 1);
-      arrayOfLong = this.jdField_a_of_type_ArrayOfLong;
+      arrayOfLong = this.a;
       arrayOfLong[(arrayOfLong.length - 1)] = SystemClock.uptimeMillis();
-      if (this.jdField_a_of_type_ArrayOfLong[0] >= SystemClock.uptimeMillis() - 2000L) {
+      if (this.a[0] >= SystemClock.uptimeMillis() - 2000L) {
         a(paramView);
       }
       break;

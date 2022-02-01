@@ -8,16 +8,16 @@ import java.util.ArrayList;
 
 class ShortVideoResourceManager$HttpEngineSession
 {
-  int jdField_a_of_type_Int;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList<ShortVideoResourceManager.INet_ShortVideoResource> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-  int b = 0;
+  HttpNetReq a;
+  ArrayList<ShortVideoResourceManager.INet_ShortVideoResource> b = new ArrayList(1);
+  String c;
+  int d;
+  int e = 0;
   
   ShortVideoResourceManager$HttpEngineSession(ShortVideoResourceManager paramShortVideoResourceManager, HttpNetReq paramHttpNetReq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
-    this.b = 0;
+    this.a = paramHttpNetReq;
+    this.e = 0;
   }
   
   void a()
@@ -29,13 +29,13 @@ class ShortVideoResourceManager$HttpEngineSession
       localStringBuilder.append(this);
       QLog.d("ShortVideoResourceManager", 2, localStringBuilder.toString());
     }
-    this.b = 1;
-    ((IHttpEngineService)ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    this.e = 1;
+    ((IHttpEngineService)ShortVideoResourceManager.a(this.f).getRuntimeService(IHttpEngineService.class, "all")).sendReq(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.HttpEngineSession
  * JD-Core Version:    0.7.0.1
  */

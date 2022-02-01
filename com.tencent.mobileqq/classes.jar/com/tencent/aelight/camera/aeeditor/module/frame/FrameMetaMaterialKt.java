@@ -13,7 +13,7 @@ public final class FrameMetaMaterialKt
   public static final String a(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$frameColor");
-    return MetaMaterialKt.a(paramMetaMaterial, "frameColor");
+    return MetaMaterialKt.d(paramMetaMaterial, "frameColor");
   }
   
   public static final void a(@NotNull MetaMaterial paramMetaMaterial, @NotNull String paramString)
@@ -27,19 +27,19 @@ public final class FrameMetaMaterialKt
   public static final String b(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$frameDefaultColor");
-    return MetaMaterialKt.a(paramMetaMaterial, "frameDefaultColor");
+    return MetaMaterialKt.d(paramMetaMaterial, "frameDefaultColor");
   }
   
   @NotNull
   public static final String c(@NotNull MetaMaterial paramMetaMaterial)
   {
     Intrinsics.checkParameterIsNotNull(paramMetaMaterial, "$this$defaultEffect");
-    return MetaMaterialKt.a(paramMetaMaterial, "defaultEffect");
+    return MetaMaterialKt.d(paramMetaMaterial, "defaultEffect");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.frame.FrameMetaMaterialKt
  * JD-Core Version:    0.7.0.1
  */

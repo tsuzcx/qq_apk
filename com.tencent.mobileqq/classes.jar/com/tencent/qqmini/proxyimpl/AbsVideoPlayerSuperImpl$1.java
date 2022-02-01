@@ -20,17 +20,17 @@ class AbsVideoPlayerSuperImpl$1
     QLog.e("MiniAppVideoPlayer_SuperPlayer", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      AbsVideoPlayerSuperImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerSuperImpl, SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext()));
-      AbsVideoPlayerSuperImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerSuperImpl, SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, AbsVideoPlayerSuperImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerSuperImpl)));
-      if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoViewInitListener != null) && ((AbsVideoPlayerSuperImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerSuperImpl) instanceof View))) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoViewInitListener.onVideoViewInit((View)AbsVideoPlayerSuperImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAbsVideoPlayerSuperImpl));
+      AbsVideoPlayerSuperImpl.a(this.b, SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext()));
+      AbsVideoPlayerSuperImpl.a(this.b, SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 102, AbsVideoPlayerSuperImpl.a(this.b)));
+      if ((this.a != null) && ((AbsVideoPlayerSuperImpl.a(this.b) instanceof View))) {
+        this.a.onVideoViewInit((View)AbsVideoPlayerSuperImpl.a(this.b));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerSuperImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,18 +10,18 @@ class QQSettingMeHeadVipProcessor$1
   
   public void a()
   {
-    if (this.a.a != null)
+    if (this.a.c != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "enterWordListener");
       }
-      this.a.g();
+      this.a.i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeHeadVipProcessor.1
  * JD-Core Version:    0.7.0.1
  */

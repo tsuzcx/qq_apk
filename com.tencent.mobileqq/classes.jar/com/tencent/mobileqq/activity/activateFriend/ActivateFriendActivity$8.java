@@ -13,7 +13,7 @@ class ActivateFriendActivity$8
   
   protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    if ((ActivateFriendActivity.d(this.a) != paramBoolean2) && (paramBoolean2 == true))
     {
       ActivateFriendServlet.a(this.a.app, false, true, false, true);
       this.a.a();
@@ -23,7 +23,7 @@ class ActivateFriendActivity$8
   
   protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    if ((ActivateFriendActivity.d(this.a) != paramBoolean2) && (paramBoolean2 == true))
     {
       ActivateFriendServlet.a(this.a.app, false, true, false, true);
       this.a.a();
@@ -35,36 +35,36 @@ class ActivateFriendActivity$8
       {
         ActivateFriendActivity.a(this.a, paramBoolean2);
         int i;
-        if (ActivateFriendActivity.a(this.a))
+        if (ActivateFriendActivity.d(this.a))
         {
           localObject = this.a;
-          i = 2131689561;
+          i = 2131886171;
         }
         else
         {
           localObject = this.a;
-          i = 2131689562;
+          i = 2131886172;
         }
         localObject = ((ActivateFriendActivity)localObject).getString(i);
-        localObject = this.a.getString(2131689564, new Object[] { localObject });
-        QQToast.a(this.a, 2, (CharSequence)localObject, 0).b(this.a.getTitleBarHeight());
-        if (ActivateFriendActivity.a(this.a) != null)
+        localObject = this.a.getString(2131886174, new Object[] { localObject });
+        QQToast.makeText(this.a, 2, (CharSequence)localObject, 0).show(this.a.getTitleBarHeight());
+        if (ActivateFriendActivity.e(this.a) != null)
         {
-          ActivateFriendActivity.a(this.a).c();
-          ActivateFriendActivity.b(this.a);
+          ActivateFriendActivity.e(this.a).d();
+          ActivateFriendActivity.f(this.a);
         }
       }
       else
       {
         localObject = this.a;
-        QQToast.a((Context)localObject, 1, ((ActivateFriendActivity)localObject).getResources().getString(2131718834), 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText((Context)localObject, 1, ((ActivateFriendActivity)localObject).getResources().getString(2131916364), 0).show(this.a.getTitleBarHeight());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.8
  * JD-Core Version:    0.7.0.1
  */

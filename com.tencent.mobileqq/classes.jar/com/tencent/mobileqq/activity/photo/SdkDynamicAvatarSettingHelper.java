@@ -43,10 +43,10 @@ public final class SdkDynamicAvatarSettingHelper
     if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str3)))
     {
       localObject = new ShareAioResultDialog(paramActivity);
-      ((TextView)((ShareAioResultDialog)localObject).findViewById(2131378793)).setText(HardCodeUtil.a(2131713519));
+      ((TextView)((ShareAioResultDialog)localObject).findViewById(2131447473)).setText(HardCodeUtil.a(2131911068));
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(localQQAppInterface.getApplication().getString(2131718866));
+      localStringBuilder.append(localQQAppInterface.getApplication().getString(2131916399));
       localStringBuilder.append(str2);
       str2 = localStringBuilder.toString();
       paramActivity = new SdkDynamicAvatarSettingHelper.5(paramActivity, str1, str3, localQQAppInterface);
@@ -68,7 +68,7 @@ public final class SdkDynamicAvatarSettingHelper
       String str1 = localIntent.getStringExtra("share_id");
       Object localObject1 = localIntent.getStringExtra("app_name");
       Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(localQQAppInterface.getApplication().getString(2131718866));
+      ((StringBuilder)localObject2).append(localQQAppInterface.getApplication().getString(2131916399));
       ((StringBuilder)localObject2).append((String)localObject1);
       localObject2 = ((StringBuilder)localObject2).toString();
       String str2 = localIntent.getStringExtra("sdk_version");
@@ -114,8 +114,8 @@ public final class SdkDynamicAvatarSettingHelper
       try
       {
         paramString = DialogUtil.a(paramActivity, 230);
-        paramString.setMessage(HardCodeUtil.a(2131713518));
-        paramString.setNegativeButton(2131690728, new SdkDynamicAvatarSettingHelper.1(paramActivity));
+        paramString.setMessage(HardCodeUtil.a(2131911067));
+        paramString.setNegativeButton(2131887648, new SdkDynamicAvatarSettingHelper.1(paramActivity));
         paramString.setCancelable(false);
         paramString.show();
         return;
@@ -218,12 +218,12 @@ public final class SdkDynamicAvatarSettingHelper
       try
       {
         ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramActivity);
-        ((TextView)localShareAioResultDialog.findViewById(2131378793)).setText(paramString1);
-        paramString1 = localShareAioResultDialog.findViewById(2131365639);
-        View localView = localShareAioResultDialog.findViewById(2131363911);
+        ((TextView)localShareAioResultDialog.findViewById(2131447473)).setText(paramString1);
+        paramString1 = localShareAioResultDialog.findViewById(2131431870);
+        View localView = localShareAioResultDialog.findViewById(2131429863);
         paramString1.setVisibility(8);
         localView.setVisibility(8);
-        localShareAioResultDialog.findViewById(2131378794).setVisibility(8);
+        localShareAioResultDialog.findViewById(2131447474).setVisibility(8);
         localShareAioResultDialog.a(paramString2, new SdkDynamicAvatarSettingHelper.3(paramActivity, paramString3, paramString4));
         localShareAioResultDialog.setCancelable(false);
         localShareAioResultDialog.show();
@@ -276,11 +276,11 @@ public final class SdkDynamicAvatarSettingHelper
       String str1 = ((Intent)localObject).getStringExtra("pkg_name");
       String str2 = ((Intent)localObject).getStringExtra("share_id");
       localObject = DialogUtil.a(paramActivity, 230);
-      ((QQCustomDialog)localObject).setMessage(HardCodeUtil.a(2131713520));
-      ((QQCustomDialog)localObject).setTitle(2131692113);
+      ((QQCustomDialog)localObject).setMessage(HardCodeUtil.a(2131911069));
+      ((QQCustomDialog)localObject).setTitle(2131889094);
       paramActivity = new SdkDynamicAvatarSettingHelper.4(paramActivity, str1, str2);
-      ((QQCustomDialog)localObject).setNegativeButton(2131690728, paramActivity);
-      ((QQCustomDialog)localObject).setPositiveButton(2131718876, paramActivity);
+      ((QQCustomDialog)localObject).setNegativeButton(2131887648, paramActivity);
+      ((QQCustomDialog)localObject).setPositiveButton(2131916409, paramActivity);
       ((QQCustomDialog)localObject).setCancelable(false);
       ((QQCustomDialog)localObject).show();
       return;
@@ -293,7 +293,7 @@ public final class SdkDynamicAvatarSettingHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper
  * JD-Core Version:    0.7.0.1
  */

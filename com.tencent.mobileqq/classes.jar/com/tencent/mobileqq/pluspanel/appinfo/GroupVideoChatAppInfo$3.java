@@ -12,7 +12,7 @@ final class GroupVideoChatAppInfo$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QAVHrMeeting.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    QAVHrMeeting.a(this.a, Long.valueOf(this.b).longValue(), null);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
@@ -20,7 +20,7 @@ final class GroupVideoChatAppInfo$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo.3
  * JD-Core Version:    0.7.0.1
  */

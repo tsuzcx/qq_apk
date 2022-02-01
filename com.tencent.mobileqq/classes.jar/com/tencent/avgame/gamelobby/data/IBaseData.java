@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 public abstract interface IBaseData
 {
   @NonNull
-  public abstract int b();
+  public abstract int c();
 }
 
 

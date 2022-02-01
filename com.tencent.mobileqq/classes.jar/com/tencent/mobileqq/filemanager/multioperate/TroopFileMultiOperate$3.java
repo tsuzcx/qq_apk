@@ -11,14 +11,14 @@ class TroopFileMultiOperate$3
   
   public void a()
   {
-    QFileUtils.a(TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate), this.jdField_a_of_type_JavaUtilList, TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate), TroopFileMultiOperate.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultioperateTroopFileMultiOperate));
+    QFileUtils.a(TroopFileMultiOperate.a(this.b), this.a, TroopFileMultiOperate.b(this.b), TroopFileMultiOperate.c(this.b));
   }
   
   public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.TroopFileMultiOperate.3
  * JD-Core Version:    0.7.0.1
  */

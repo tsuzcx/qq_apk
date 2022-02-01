@@ -12,42 +12,42 @@ import java.util.ArrayList;
 
 public class GuideViewBuilder
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<GuideViewBuilder.GuideTarget> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  public PopupWindow a;
-  GuideViewBuilder.GuideView jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder$GuideView;
+  GuideViewBuilder.GuideView a;
+  Context b;
+  public PopupWindow c;
+  private SparseArray<GuideViewBuilder.GuideTarget> d = new SparseArray();
   
   public GuideViewBuilder(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder$GuideView = new GuideViewBuilder.GuideView(this, paramContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setWindowLayoutMode(-1, -1);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165488)));
+    this.b = paramContext;
+    this.a = new GuideViewBuilder.GuideView(this, paramContext);
+    this.c = new PopupWindow(this.b);
+    this.c.setWindowLayoutMode(-1, -1);
+    this.c.setFocusable(true);
+    this.c.setBackgroundDrawable(new ColorDrawable(this.b.getResources().getColor(2131165809)));
   }
   
   public GuideViewBuilder a(int paramInt, View paramView, GuideViewBuilder.GuideLayoutParams paramGuideLayoutParams)
   {
-    GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)this.d.get(paramInt);
     if (localGuideTarget != null) {
-      localGuideTarget.jdField_a_of_type_JavaUtilArrayList.add(new Pair(paramView, paramGuideLayoutParams));
+      localGuideTarget.c.add(new Pair(paramView, paramGuideLayoutParams));
     }
     return this;
   }
   
   public GuideViewBuilder a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+    if (this.d.get(paramInt) == null)
     {
       GuideViewBuilder.GuideTarget localGuideTarget = new GuideViewBuilder.GuideTarget(this, null);
-      localGuideTarget.jdField_a_of_type_AndroidViewView = paramView;
+      localGuideTarget.a = paramView;
       if (paramView.isShown())
       {
-        localGuideTarget.jdField_a_of_type_ArrayOfInt = new int[2];
-        paramView.getLocationOnScreen(localGuideTarget.jdField_a_of_type_ArrayOfInt);
+        localGuideTarget.b = new int[2];
+        paramView.getLocationOnScreen(localGuideTarget.b);
       }
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localGuideTarget);
+      this.d.put(paramInt, localGuideTarget);
     }
     return this;
   }
@@ -59,15 +59,15 @@ public class GuideViewBuilder
   
   public void a(PopupWindow.OnDismissListener paramOnDismissListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder$GuideView);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(new View(this.jdField_a_of_type_AndroidContentContext), 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder$GuideView.setOnClickListener(new GuideViewBuilder.1(this, paramBoolean));
+    this.c.setContentView(this.a);
+    this.c.showAtLocation(new View(this.b), 0, 0, 0);
+    this.c.setOnDismissListener(paramOnDismissListener);
+    this.a.setOnClickListener(new GuideViewBuilder.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GuideViewBuilder
  * JD-Core Version:    0.7.0.1
  */

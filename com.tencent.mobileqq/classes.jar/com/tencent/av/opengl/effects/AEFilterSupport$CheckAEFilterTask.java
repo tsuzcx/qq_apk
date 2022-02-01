@@ -12,19 +12,19 @@ final class AEFilterSupport$CheckAEFilterTask
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("CheckAEFilterTask before[");
-      localStringBuilder.append(AEFilterSupport.b());
+      localStringBuilder.append(AEFilterSupport.c());
       localStringBuilder.append("]");
       QLog.i("AEFilterSupport", 2, localStringBuilder.toString());
     }
-    if (AEFilterSupport.b() != 1) {
-      AEFilterSupport.a();
+    if (AEFilterSupport.c() != 1) {
+      AEFilterSupport.d();
     }
     AEFilterSupport.a(null);
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("CheckAEFilterTask after[");
-      localStringBuilder.append(AEFilterSupport.b());
+      localStringBuilder.append(AEFilterSupport.c());
       localStringBuilder.append("]");
       QLog.i("AEFilterSupport", 2, localStringBuilder.toString());
     }

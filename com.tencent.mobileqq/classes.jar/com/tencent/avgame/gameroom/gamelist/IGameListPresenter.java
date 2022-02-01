@@ -7,11 +7,7 @@ import java.util.List;
 
 public abstract interface IGameListPresenter
 {
-  public abstract int a();
-  
   public abstract List<GameItem> a();
-  
-  public abstract void a();
   
   public abstract void a(EngineData paramEngineData);
   
@@ -21,13 +17,11 @@ public abstract interface IGameListPresenter
   
   public abstract void a(IGameRoomPresenter paramIGameRoomPresenter);
   
-  public abstract boolean a();
-  
-  public abstract void b();
-  
   public abstract void b(GameItem paramGameItem, int paramInt);
   
-  public abstract void c();
+  public abstract boolean b();
+  
+  public abstract int c();
   
   public abstract void d();
   
@@ -38,6 +32,12 @@ public abstract interface IGameListPresenter
   public abstract void g();
   
   public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 

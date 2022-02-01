@@ -34,17 +34,11 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskResMgr;", "", "()V", "TAG", "", "hasInit", "", "getHasInit", "()Z", "setHasInit", "(Z)V", "lock", "getLock", "()Ljava/lang/Object;", "reqResList", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/materialdownload/MaterialData;", "addNewRes", "", "data", "doInit", "findResDataFromLocal", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskResMgr$SuperMaskJson;", "adId", "adSource", "getLocalResList", "getReqLocalResList", "result", "initLocalRes", "log", "msg", "removeInvalidRes", "SuperMaskJson", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskResMgr
 {
-  public static final SuperMaskResMgr a;
+  public static final SuperMaskResMgr a = new SuperMaskResMgr();
+  private static volatile boolean b;
+  private static ConcurrentHashMap<String, MaterialData> c = new ConcurrentHashMap();
   @NotNull
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ConcurrentHashMap<String, MaterialData> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr = new SuperMaskResMgr();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  private static final Object d = new Object();
   
   private final ConcurrentHashMap<String, MaterialData> a(ConcurrentHashMap<String, MaterialData> paramConcurrentHashMap)
   {
@@ -70,7 +64,7 @@ public final class SuperMaskResMgr
           if (((MaterialData)localEntry.getValue()).start_time < l)
           {
             ((ArrayList)localObject3).add(localEntry.getValue());
-            localObject5 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+            localObject5 = a;
             localObject6 = new StringBuilder();
             ((StringBuilder)localObject6).append("getReqLocalResList,startedResList.add:");
             ((StringBuilder)localObject6).append(((MaterialData)localEntry.getValue()).id);
@@ -79,7 +73,7 @@ public final class SuperMaskResMgr
           else
           {
             ((ArrayList)localObject1).add(localEntry.getValue());
-            localObject5 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+            localObject5 = a;
             localObject6 = new StringBuilder();
             ((StringBuilder)localObject6).append("getReqLocalResList,notStartResList.add:");
             ((StringBuilder)localObject6).append(((MaterialData)localEntry.getValue()).id);
@@ -88,7 +82,7 @@ public final class SuperMaskResMgr
         }
         else
         {
-          localObject5 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+          localObject5 = a;
           localObject6 = new StringBuilder();
           ((StringBuilder)localObject6).append("getReqLocalResList，文件不存在：");
           ((StringBuilder)localObject6).append(((MaterialData)localEntry.getValue()).id);
@@ -97,7 +91,7 @@ public final class SuperMaskResMgr
       }
       catch (Throwable localThrowable)
       {
-        localObject5 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+        localObject5 = a;
         localObject6 = new StringBuilder();
         ((StringBuilder)localObject6).append("getReqLocalResList，异常：");
         ((StringBuilder)localObject6).append(QLog.getStackTraceString(localThrowable));
@@ -186,7 +180,23 @@ public final class SuperMaskResMgr
   
   private final void a(String paramString) {}
   
-  private final ConcurrentHashMap<String, MaterialData> b()
+  private final void c()
+  {
+    synchronized (d)
+    {
+      boolean bool = b;
+      if (bool) {
+        return;
+      }
+      c = a.d();
+      b = true;
+      QLog.d("ReadInJoySuperMaskAd", 1, "SuperMaskResMgr init finish");
+      Unit localUnit = Unit.INSTANCE;
+      return;
+    }
+  }
+  
+  private final ConcurrentHashMap<String, MaterialData> d()
   {
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
     long l1 = NetConnInfoCenter.getServerTime();
@@ -212,7 +222,7 @@ public final class SuperMaskResMgr
       {
         if ((!TextUtils.isEmpty((CharSequence)((MaterialData)((Map.Entry)localObject2).getValue()).adid)) && (((MaterialData)((Map.Entry)localObject2).getValue()).end_time > l1))
         {
-          localObject3 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+          localObject3 = a;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("getLocalResList : 符合条件 = ");
           ((StringBuilder)localObject4).append(((MaterialData)((Map.Entry)localObject2).getValue()).id);
@@ -226,7 +236,7 @@ public final class SuperMaskResMgr
         }
         else
         {
-          localObject3 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+          localObject3 = a;
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("getLocalResList：不符合条件,id:");
           ((StringBuilder)localObject4).append(((MaterialData)((Map.Entry)localObject2).getValue()).id);
@@ -239,7 +249,7 @@ public final class SuperMaskResMgr
       }
       else
       {
-        localObject3 = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr;
+        localObject3 = a;
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("getLocalResList,文件不存在，id:");
         ((StringBuilder)localObject4).append((String)((Map.Entry)localObject2).getKey());
@@ -251,22 +261,6 @@ public final class SuperMaskResMgr
     ((StringBuilder)localObject1).append(System.currentTimeMillis() - l2);
     a(((StringBuilder)localObject1).toString());
     return localConcurrentHashMap;
-  }
-  
-  private final void b()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = jdField_a_of_type_Boolean;
-      if (bool) {
-        return;
-      }
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdSuper_maskMgrSuperMaskResMgr.b();
-      jdField_a_of_type_Boolean = true;
-      QLog.d("ReadInJoySuperMaskAd", 1, "SuperMaskResMgr init finish");
-      Unit localUnit = Unit.INSTANCE;
-      return;
-    }
   }
   
   @Nullable
@@ -286,8 +280,8 @@ public final class SuperMaskResMgr
       localStringBuilder.append("_");
       localStringBuilder.append(paramString1);
       paramString1 = ((IRIJSuperMaskService)localObject1).findDataById(localAppRuntime, localStringBuilder.toString());
-      if (SuperMaskExtKt.c(paramString1)) {
-        SuperMaskExtKt.a(paramString1);
+      if (SuperMaskExtKt.d(paramString1)) {
+        SuperMaskExtKt.c(paramString1);
       }
       localObject1 = localObject2;
       if (paramString1 != null) {
@@ -297,13 +291,43 @@ public final class SuperMaskResMgr
     return localObject1;
   }
   
-  @NotNull
-  public final ConcurrentHashMap<String, MaterialData> a()
+  public final void a()
   {
-    if (jdField_a_of_type_Boolean) {
-      localObject1 = jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (b) {
+      return;
+    }
+    if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
+    {
+      ThreadManagerV2.post((Runnable)SuperMaskResMgr.initLocalRes.1.a, 10, null, true);
+      return;
+    }
+    c();
+  }
+  
+  public final void a(@Nullable Object paramObject)
+  {
+    Object localObject = paramObject;
+    if (!(paramObject instanceof MaterialData)) {
+      localObject = null;
+    }
+    paramObject = (MaterialData)localObject;
+    if ((paramObject != null) && (SuperMaskExtKt.a(paramObject)) && (!TextUtils.isEmpty((CharSequence)paramObject.adid)))
+    {
+      SuperMaskExtKt.a(paramObject, new ConcurrentHashMap());
+      localObject = (Map)c;
+      String str = paramObject.adid;
+      Intrinsics.checkExpressionValueIsNotNull(str, "it.adid");
+      ((Map)localObject).put(str, paramObject);
+    }
+  }
+  
+  @NotNull
+  public final ConcurrentHashMap<String, MaterialData> b()
+  {
+    if (b) {
+      localObject1 = c;
     } else {
-      localObject1 = b();
+      localObject1 = d();
     }
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
     Object localObject2 = new ConcurrentHashMap();
@@ -353,36 +377,6 @@ public final class SuperMaskResMgr
     return localConcurrentHashMap;
   }
   
-  public final void a()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (Intrinsics.areEqual(Looper.getMainLooper(), Looper.myLooper()))
-    {
-      ThreadManagerV2.post((Runnable)SuperMaskResMgr.initLocalRes.1.a, 10, null, true);
-      return;
-    }
-    b();
-  }
-  
-  public final void a(@Nullable Object paramObject)
-  {
-    Object localObject = paramObject;
-    if (!(paramObject instanceof MaterialData)) {
-      localObject = null;
-    }
-    paramObject = (MaterialData)localObject;
-    if ((paramObject != null) && (SuperMaskExtKt.a(paramObject)) && (!TextUtils.isEmpty((CharSequence)paramObject.adid)))
-    {
-      SuperMaskExtKt.a(paramObject, new ConcurrentHashMap());
-      localObject = (Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-      String str = paramObject.adid;
-      Intrinsics.checkExpressionValueIsNotNull(str, "it.adid");
-      ((Map)localObject).put(str, paramObject);
-    }
-  }
-  
   public final void b(@Nullable Object paramObject)
   {
     Object localObject = paramObject;
@@ -391,13 +385,13 @@ public final class SuperMaskResMgr
     }
     paramObject = (MaterialData)localObject;
     if ((paramObject != null) && (!TextUtils.isEmpty((CharSequence)paramObject.adid))) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramObject.adid);
+      c.remove(paramObject.adid);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskResMgr
  * JD-Core Version:    0.7.0.1
  */

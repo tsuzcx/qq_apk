@@ -42,13 +42,13 @@ public class StaticStickerProviderView
   extends ProviderView
   implements QIMSlidingTabView.IOnTabCheckListener, AdapterObserver, BounceViewPager.PageChangedObserver
 {
-  private int jdField_a_of_type_Int = 0;
-  private IFaceSelectedListener jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener;
-  CaptureConfigUpdateObserver jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicCaptureConfigUpdateObserver = new StaticStickerProviderView.2(this);
-  FacePagerAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter;
-  FacePanelBaseAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
-  BounceViewPager jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
-  public ArrayList<String> a;
+  BounceViewPager a;
+  FacePagerAdapter b;
+  FacePanelBaseAdapter c;
+  public ArrayList<String> d;
+  CaptureConfigUpdateObserver e = new StaticStickerProviderView.2(this);
+  private IFaceSelectedListener f;
+  private int g = 0;
   
   public StaticStickerProviderView(Context paramContext)
   {
@@ -57,7 +57,7 @@ public class StaticStickerProviderView
   
   private void a(PasterDataManager paramPasterDataManager, EditVideoDoodle.DoodleFacePanelAdapter paramDoodleFacePanelAdapter)
   {
-    paramDoodleFacePanelAdapter.a(new ArrayList(paramPasterDataManager.a()));
+    paramDoodleFacePanelAdapter.a(new ArrayList(paramPasterDataManager.f()));
   }
   
   public static void a(Collection<FacePackage> paramCollection)
@@ -69,11 +69,11 @@ public class StaticStickerProviderView
     while (paramCollection.hasNext())
     {
       FacePackage localFacePackage = (FacePackage)paramCollection.next();
-      if (localFacePackage.jdField_a_of_type_Boolean) {
+      if (localFacePackage.g) {
         if ((localFacePackage instanceof NormalFacePackage)) {
-          Collections.shuffle(((NormalFacePackage)localFacePackage).a);
+          Collections.shuffle(((NormalFacePackage)localFacePackage).m);
         } else if ((localFacePackage instanceof LocationFacePackage)) {
-          Collections.shuffle(((LocationFacePackage)localFacePackage).a);
+          Collections.shuffle(((LocationFacePackage)localFacePackage).k);
         }
       }
     }
@@ -95,16 +95,16 @@ public class StaticStickerProviderView
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.initTabItemsWithString(localArrayList2);
-    this.jdField_a_of_type_JavaUtilArrayList = localArrayList2;
+    this.v.initTabItemsWithString(localArrayList2);
+    this.d = localArrayList2;
   }
   
-  private void k()
+  private void m()
   {
     long l1 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-    double d = Runtime.getRuntime().maxMemory();
-    Double.isNaN(d);
-    long l2 = (d * 0.8D);
+    double d1 = Runtime.getRuntime().maxMemory();
+    Double.isNaN(d1);
+    long l2 = (d1 * 0.8D);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -123,48 +123,43 @@ public class StaticStickerProviderView
     }
   }
   
-  protected int a()
-  {
-    return 2131560883;
-  }
-  
   public void a()
   {
     super.a();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
+    Object localObject = this.a;
     if (localObject != null) {
       ((BounceViewPager)localObject).b(this);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
+    localObject = this.c;
     if (localObject != null) {
       ((FacePanelBaseAdapter)localObject).b(this);
     }
-    localObject = ((PasterDataManager)QIMManager.a(4)).a();
+    localObject = ((PasterDataManager)QIMManager.a(4)).e();
     if (localObject != null) {
       ((EditVideoDoodle.DoodleFacePanelAdapter)localObject).b(this);
     }
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicCaptureConfigUpdateObserver);
+    if (this.s != null) {
+      this.s.unRegistObserver(this.e);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.onTabChecked(paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.b(paramInt);
+    this.v.onTabChecked(paramInt);
+    this.b.b(paramInt);
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.g == 1)
     {
-      if (paramInt1 < this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem())
+      if (paramInt1 < this.a.getCurrentItem())
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.c(paramInt1);
+        this.b.c(paramInt1);
         return;
       }
-      if (paramInt1 == this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem()) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.c(paramInt1 + 1);
+      if (paramInt1 == this.a.getCurrentItem()) {
+        this.b.c(paramInt1 + 1);
       }
     }
   }
@@ -172,45 +167,45 @@ public class StaticStickerProviderView
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560883, this, false);
+    if (this.w == null) {
+      this.w = LayoutInflater.from(getContext()).inflate(2131627206, this, false);
     }
-    a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)findViewById(2131366428));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter = new FacePagerAdapter(super.getContext());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.a(this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.setTabCheckListener(this);
+    a(this.w);
+    this.a = ((BounceViewPager)findViewById(2131432744));
+    this.b = new FacePagerAdapter(super.getContext());
+    this.a.setAdapter(this.b);
+    this.a.a(this);
+    this.v.setTabCheckListener(this);
     j();
     paramBundle = (PasterDataManager)QIMManager.a(4);
-    paramBundle.c();
-    Object localObject = paramBundle.a();
+    paramBundle.a();
+    Object localObject = paramBundle.e();
     a(paramBundle, (EditVideoDoodle.DoodleFacePanelAdapter)localObject);
     setAdapter((FacePanelBaseAdapter)localObject);
     localObject = (Activity)getContext();
     setDownloadListener(new StaticStickerProviderView.1(this, (Activity)localObject));
-    localObject = (DoodleLayout)((Activity)localObject).findViewById(2064122115);
+    localObject = (DoodleLayout)((Activity)localObject).findViewById(2063991015);
     if (localObject == null)
     {
       AEQLog.d("StaticStickerProviderView", "doodleLayout is null.");
       return;
     }
-    setOnFaceSelectedListener(((DoodleLayout)localObject).a());
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicCaptureConfigUpdateObserver);
+    setOnFaceSelectedListener(((DoodleLayout)localObject).getFaceSelectedListener());
+    this.s.registObserver(this.e);
     paramBundle.a(true, (Activity)getContext());
   }
   
   public void a(GestureHelper.ZoomItem paramZoomItem)
   {
-    if (((paramZoomItem instanceof FaceLayer.FaceItem)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if (((paramZoomItem instanceof FaceLayer.FaceItem)) && (this.d != null))
     {
       Object localObject = (FaceLayer.FaceItem)paramZoomItem;
-      paramZoomItem = ((FaceLayer.FaceItem)localObject).e;
-      localObject = ((FaceLayer.FaceItem)localObject).d;
+      paramZoomItem = ((FaceLayer.FaceItem)localObject).o;
+      localObject = ((FaceLayer.FaceItem)localObject).n;
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.d.size())
       {
-        if (TextUtils.equals((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (CharSequence)localObject))
+        if (TextUtils.equals((String)this.d.get(i), (CharSequence)localObject))
         {
           onTabChecked(i);
           postDelayed(new StaticStickerProviderView.3(this, i, paramZoomItem), 200L);
@@ -232,7 +227,7 @@ public class StaticStickerProviderView
   public void b()
   {
     super.b();
-    IFaceSelectedListener localIFaceSelectedListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener;
+    IFaceSelectedListener localIFaceSelectedListener = this.f;
     if (localIFaceSelectedListener != null) {
       localIFaceSelectedListener.a();
     }
@@ -240,9 +235,9 @@ public class StaticStickerProviderView
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.d(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem());
+    this.g = paramInt;
+    if (this.g == 0) {
+      this.b.d(this.a.getCurrentItem());
     }
   }
   
@@ -250,19 +245,19 @@ public class StaticStickerProviderView
   {
     super.c();
     PasterDataManager localPasterDataManager = (PasterDataManager)QIMManager.a(4);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramInt);
+    this.b.a(paramInt);
   }
   
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.removeAllViews();
-    k();
+    this.a.removeAllViews();
+    m();
   }
   
   public void e()
@@ -278,7 +273,7 @@ public class StaticStickerProviderView
   {
     j();
     PasterDataManager localPasterDataManager = (PasterDataManager)QIMManager.a(4);
-    EditVideoDoodle.DoodleFacePanelAdapter localDoodleFacePanelAdapter = localPasterDataManager.a();
+    EditVideoDoodle.DoodleFacePanelAdapter localDoodleFacePanelAdapter = localPasterDataManager.e();
     if (localDoodleFacePanelAdapter != null)
     {
       if (QLog.isColorLevel()) {
@@ -287,40 +282,45 @@ public class StaticStickerProviderView
       a(localPasterDataManager, localDoodleFacePanelAdapter);
       setAdapter(localDoodleFacePanelAdapter);
       h();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMSlidingTabView.onTabChecked(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem());
+      this.v.onTabChecked(this.a.getCurrentItem());
     }
+  }
+  
+  protected int getInflateLayout()
+  {
+    return 2131627206;
   }
   
   public void h()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.a();
+    this.b.a();
   }
   
   public void i()
   {
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter != null) && (PasterDataManager.a.compareAndSet(true, false))) {
+    if ((this.b != null) && (PasterDataManager.j.compareAndSet(true, false))) {
       g();
     }
   }
   
   public void onTabChecked(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(paramInt);
-    if (DoodleLayout.jdField_a_of_type_Boolean) {
+    this.a.setCurrentItem(paramInt);
+    if (DoodleLayout.c) {
       localObject = "2";
     } else {
       localObject = "1";
     }
     DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = ((FacePanelBaseAdapter)localObject).a(paramInt);
       if ((localObject != null) && ((localObject instanceof FacePackage)))
       {
         localObject = (FacePackage)localObject;
-        VideoEditReport.a("0X80076C7", "", "", ((FacePackage)localObject).jdField_a_of_type_JavaLangString, "");
-        VideoEditReport.a("0X80075DC", ((FacePackage)localObject).jdField_a_of_type_JavaLangString);
+        VideoEditReport.a("0X80076C7", "", "", ((FacePackage)localObject).a, "");
+        VideoEditReport.a("0X80075DC", ((FacePackage)localObject).a);
       }
     }
     if (paramInt == 1)
@@ -332,40 +332,40 @@ public class StaticStickerProviderView
   
   public void setAdapter(FacePanelBaseAdapter paramFacePanelBaseAdapter)
   {
-    FacePanelBaseAdapter localFacePanelBaseAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter;
+    FacePanelBaseAdapter localFacePanelBaseAdapter = this.c;
     if (localFacePanelBaseAdapter != null)
     {
       localFacePanelBaseAdapter.b(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter = null;
+      this.c = null;
     }
     if (paramFacePanelBaseAdapter != null)
     {
       paramFacePanelBaseAdapter.b(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter = paramFacePanelBaseAdapter;
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(this);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter);
+      this.c = paramFacePanelBaseAdapter;
+      this.c.a(this);
+      this.b.a(this.c);
     }
   }
   
   public void setCurrentItem(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(paramInt);
+    this.a.setCurrentItem(paramInt);
   }
   
   public void setDownloadListener(FaceListPage.FacePackagePageEventListener paramFacePackagePageEventListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramFacePackagePageEventListener);
+    this.b.a(paramFacePackagePageEventListener);
   }
   
   public void setOnFaceSelectedListener(IFaceSelectedListener paramIFaceSelectedListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener = paramIFaceSelectedListener;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramIFaceSelectedListener);
+    this.f = paramIFaceSelectedListener;
+    this.b.a(paramIFaceSelectedListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.StaticStickerProviderView
  * JD-Core Version:    0.7.0.1
  */

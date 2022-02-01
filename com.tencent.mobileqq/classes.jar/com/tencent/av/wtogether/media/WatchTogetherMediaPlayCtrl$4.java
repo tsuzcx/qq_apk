@@ -17,17 +17,17 @@ class WatchTogetherMediaPlayCtrl$4
   
   public void run()
   {
-    if (WatchTogetherMediaPlayCtrl.a(this.this$0) == null) {
+    if (WatchTogetherMediaPlayCtrl.d(this.this$0) == null) {
       return;
     }
     long l1 = this.a.getDurationMs();
     long l2 = this.a.getCurrentPositionMs();
     Object localObject = this.this$0;
     int i = (int)l1;
-    WatchTogetherMediaPlayCtrl.a((WatchTogetherMediaPlayCtrl)localObject, i);
-    localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).a;
-    WatchTogetherMediaPlayCtrl.a(this.this$0).a(((WTFileInfo)localObject).c(), WatchTogetherMediaPlayCtrl.a(this.this$0));
-    localObject = WatchTogetherMediaPlayCtrl.a(this.this$0).iterator();
+    WatchTogetherMediaPlayCtrl.b((WatchTogetherMediaPlayCtrl)localObject, i);
+    localObject = WatchTogetherMediaPlayCtrl.f(this.this$0).a;
+    WatchTogetherMediaPlayCtrl.h(this.this$0).a(((WTFileInfo)localObject).e(), WatchTogetherMediaPlayCtrl.g(this.this$0));
+    localObject = WatchTogetherMediaPlayCtrl.e(this.this$0).iterator();
     while (((Iterator)localObject).hasNext())
     {
       WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
@@ -38,16 +38,16 @@ class WatchTogetherMediaPlayCtrl$4
     if (l1 - l2 <= 60000L)
     {
       QLog.d("WatchTogetherMediaPlayCtrl", 1, "onVideoPrepared, video less than 1 min, seek to 0");
-      WatchTogetherMediaPlayCtrl.a(this.this$0).seekTo(0);
+      WatchTogetherMediaPlayCtrl.d(this.this$0).seekTo(0);
     }
-    WatchTogetherMediaPlayCtrl.a(this.this$0).start();
+    WatchTogetherMediaPlayCtrl.d(this.this$0).start();
     WatchTogetherMediaPlayCtrl.a(this.this$0, 5);
-    localObject = WatchTogetherMediaPlayCtrl.b(this.this$0).iterator();
+    localObject = WatchTogetherMediaPlayCtrl.i(this.this$0).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((Runnable)((Iterator)localObject).next()).run();
     }
-    WatchTogetherMediaPlayCtrl.b(this.this$0).clear();
-    WatchTogetherMediaPlayCtrl.b(this.this$0);
+    WatchTogetherMediaPlayCtrl.i(this.this$0).clear();
+    WatchTogetherMediaPlayCtrl.j(this.this$0);
   }
 }
 

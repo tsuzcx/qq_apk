@@ -13,19 +13,19 @@ class ChatHistory$7
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - this.a.b > 1000L)
+    if (l - this.a.J > 1000L)
     {
       ChatHistory localChatHistory = this.a;
-      localChatHistory.b = l;
-      localChatHistory.b();
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+      localChatHistory.J = l;
+      localChatHistory.c();
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.L, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.7
  * JD-Core Version:    0.7.0.1
  */

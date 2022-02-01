@@ -43,24 +43,24 @@ final class QQPlayerService$ServiceHandler
     if (QLog.isColorLevel()) {
       QLog.i("QQPlayerService", 2, "release player");
     }
-    if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (paramMessage.a != null)
     {
-      paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
+      paramMessage.a.release();
+      if (QQPlayerService.r() == paramMessage.a) {
         QQPlayerService.a(null);
       }
     }
-    if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
-      paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
+    if (paramMessage.b != null) {
+      paramMessage.b.quit();
     }
-    if (QQPlayerService.e() == paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
-      QQPlayerService.a(null);
+    if (QQPlayerService.s() == paramMessage.c) {
+      QQPlayerService.b(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.QQPlayerService.ServiceHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -10,54 +10,53 @@ import java.util.HashMap;
 public class SubscribeConstants
 {
   public static final String a;
-  public static final HashMap<String, String> a;
-  public static final String[] a;
   public static final String b;
-  public static final HashMap<String, String> b;
   public static final String c;
-  public static final HashMap<String, String> c;
   public static final String d;
-  private static final String e = VFSAssistantUtils.getSDKPrivatePath("cache/");
-  private static final String f = VFSAssistantUtils.getSDKPrivatePath("qsubscribe/");
+  public static final HashMap<String, String> e;
+  public static final HashMap<String, String> f;
+  public static final HashMap<String, String> g;
+  public static final String[] h = { "follow_guide_pics", "praise_guide_pics" };
+  private static final String i = VFSAssistantUtils.getSDKPrivatePath("cache/");
+  private static final String j = VFSAssistantUtils.getSDKPrivatePath("qsubscribe/");
   
   static
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append(j);
     ((StringBuilder)localObject).append("file/");
-    jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    a = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append(j);
     ((StringBuilder)localObject).append("cache/");
-    jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    b = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(a);
     ((StringBuilder)localObject).append("animation/");
-    jdField_c_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    c = ((StringBuilder)localObject).toString();
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(e);
+    ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append("tencent_sdk_download/");
     d = ((StringBuilder)localObject).toString();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilHashMap.put("follow_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/follow_guide_pics.zip");
-    jdField_a_of_type_JavaUtilHashMap.put("praise_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/praise_guide_pics.zip");
-    localObject = jdField_b_of_type_JavaUtilHashMap;
+    e = new HashMap();
+    f = new HashMap();
+    g = new HashMap();
+    e.put("follow_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/follow_guide_pics.zip");
+    e.put("praise_guide_pics", "https://down.qq.com/video_story/certified_account/animation_pics/praise_guide_pics.zip");
+    localObject = f;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(c);
     localStringBuilder.append("follow_guide_pics");
     localStringBuilder.append(File.separator);
     ((HashMap)localObject).put("follow_guide_pics", localStringBuilder.toString());
-    localObject = jdField_b_of_type_JavaUtilHashMap;
+    localObject = f;
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(c);
     localStringBuilder.append("praise_guide_pics");
     localStringBuilder.append(File.separator);
     ((HashMap)localObject).put("praise_guide_pics", localStringBuilder.toString());
-    jdField_c_of_type_JavaUtilHashMap.put("follow_guide_pics", "KEY_SUBSCRIBE_FOLLOW_GUIDE_DOWNLOAD_URL");
-    jdField_c_of_type_JavaUtilHashMap.put("praise_guide_pics", "KEY_SUBSCRIBE_FOLLOW_PRAISE_DOWNLOAD_URL");
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "follow_guide_pics", "praise_guide_pics" };
+    g.put("follow_guide_pics", "KEY_SUBSCRIBE_FOLLOW_GUIDE_DOWNLOAD_URL");
+    g.put("praise_guide_pics", "KEY_SUBSCRIBE_FOLLOW_PRAISE_DOWNLOAD_URL");
   }
   
   public static String a(String paramString)
@@ -72,7 +71,7 @@ public class SubscribeConstants
     if (paramString2 != null)
     {
       paramString1 = str;
-      if (!StringUtil.a(paramString2))
+      if (!StringUtil.isEmpty(paramString2))
       {
         paramString1 = new StringBuilder();
         paramString1.append(str);
@@ -92,14 +91,14 @@ public class SubscribeConstants
   public static String c(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append(paramString);
     paramString = localStringBuilder.toString();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QSUSCRIBE_DOWNLOAD_ROOT_PATH");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       localStringBuilder.append("   getSDKPrivatePath realPath=");
       localStringBuilder.append(paramString);
       QLog.d("SubscribeConstants", 4, localStringBuilder.toString());

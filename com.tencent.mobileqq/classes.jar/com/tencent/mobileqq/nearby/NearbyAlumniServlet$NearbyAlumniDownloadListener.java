@@ -10,13 +10,13 @@ import com.tencent.qphone.base.util.QLog;
 class NearbyAlumniServlet$NearbyAlumniDownloadListener
   implements INetEngineListener
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private Intent b;
+  private byte[] c;
   
   public NearbyAlumniServlet$NearbyAlumniDownloadListener(NearbyAlumniServlet paramNearbyAlumniServlet, Intent paramIntent, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.b = paramIntent;
+    this.c = paramArrayOfByte;
   }
   
   public void onResp(NetResp paramNetResp)
@@ -26,7 +26,7 @@ class NearbyAlumniServlet$NearbyAlumniDownloadListener
     }
     if ((paramNetResp != null) && (paramNetResp.mResult == 0))
     {
-      NearbyAlumniServlet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAlumniServlet, this.jdField_a_of_type_AndroidContentIntent, 0, paramNetResp.mRespData, this.jdField_a_of_type_ArrayOfByte);
+      NearbyAlumniServlet.a(this.a, this.b, 0, paramNetResp.mRespData, this.c);
       return;
     }
     if (QLog.isColorLevel())
@@ -44,8 +44,8 @@ class NearbyAlumniServlet$NearbyAlumniDownloadListener
       localStringBuilder.append(i);
       QLog.i("NearbyAlumniServlet", 2, localStringBuilder.toString());
     }
-    NearbyAlumniServlet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAlumniServlet, this.jdField_a_of_type_AndroidContentIntent, -10, null, new byte[1]);
-    paramNetResp = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAlumniServlet.a();
+    NearbyAlumniServlet.a(this.a, this.b, -10, null, new byte[1]);
+    paramNetResp = this.a.a();
     if (paramNetResp != null) {
       paramNetResp.onResponseException();
     }
@@ -55,7 +55,7 @@ class NearbyAlumniServlet$NearbyAlumniDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyAlumniServlet.NearbyAlumniDownloadListener
  * JD-Core Version:    0.7.0.1
  */

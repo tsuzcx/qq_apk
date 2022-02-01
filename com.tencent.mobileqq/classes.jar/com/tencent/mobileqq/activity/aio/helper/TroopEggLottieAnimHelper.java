@@ -22,16 +22,16 @@ public class TroopEggLottieAnimHelper
     if (localObject == null) {
       return;
     }
-    localObject = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("chat_inputBarContent");
+    localObject = ((BaseChatPie)localObject).f.getIntent().getStringExtra("chat_inputBarContent");
     if ((localObject != null) && (!((String)localObject).isEmpty()))
     {
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText((CharSequence)localObject);
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestFocus();
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSystemService("input_method");
+      this.a.Y.setText((CharSequence)localObject);
+      this.a.Y.requestFocus();
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.f.getSystemService("input_method");
       if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, 1);
+        localInputMethodManager.showSoftInput(this.a.Y, 1);
       }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.post(new TroopEggLottieAnimHelper.1(this, (String)localObject));
+      this.a.Y.post(new TroopEggLottieAnimHelper.1(this, (String)localObject));
     }
   }
   
@@ -55,7 +55,7 @@ public class TroopEggLottieAnimHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopEggLottieAnimHelper
  * JD-Core Version:    0.7.0.1
  */

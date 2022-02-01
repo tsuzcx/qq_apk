@@ -15,9 +15,9 @@ class TroopStoryMemoriesListAdapter$SubmitFailedVideoItemViewHolder$1
   
   public void onClick(View paramView)
   {
-    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.a.storyId);
     if (localStoryVideoItem != null) {
-      ((StoryVideoUploadManager)SuperManager.a().b(3)).a(localStoryVideoItem);
+      ((StoryVideoUploadManager)SuperManager.c().b(3)).a(localStoryVideoItem);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

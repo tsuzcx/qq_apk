@@ -10,9 +10,9 @@ class VideoMsgBroadcastReceiver$2
   
   public void run()
   {
-    Object localObject = VideoController.a();
+    Object localObject = VideoController.f();
     if (localObject != null) {
-      ((VideoController)localObject).a.receiveSharpVideoOfflineMsg(this.a);
+      ((VideoController)localObject).n.receiveSharpVideoOfflineMsg(this.a);
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("processSharpVideoOfflineMsg, data[");

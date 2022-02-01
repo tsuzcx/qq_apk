@@ -13,17 +13,17 @@ final class ExpandEntranceImpl$checkABTestPassTime$1$1
   
   public final void a(boolean paramBoolean)
   {
-    ExpandEntranceImpl localExpandEntranceImpl = this.jdField_a_of_type_ComTencentMobileqqQqexpandEntranceImplExpandEntranceImpl$checkABTestPassTime$1.this$0;
+    ExpandEntranceImpl localExpandEntranceImpl = this.a.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getABTestConfig success ");
     localStringBuilder.append(paramBoolean);
     QLog.d("ExpandEntranceImpl", 1, localStringBuilder.toString());
-    ExpandEntranceImpl.access$reportGetAbTestCost(localExpandEntranceImpl, paramBoolean, this.jdField_a_of_type_KotlinJvmInternalRef$LongRef.element);
+    ExpandEntranceImpl.access$reportGetAbTestCost(localExpandEntranceImpl, paramBoolean, this.b.element);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.impl.ExpandEntranceImpl.checkABTestPassTime.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,31 +13,23 @@ import java.util.Map;
 public class MemoryReporter
   implements Handler.Callback
 {
-  private static MemoryReporter jdField_a_of_type_ComTencentMobileqqFlutterReportMemoryReporter;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private static MemoryReporter a;
+  private Map<String, Integer> b;
+  private Handler c = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private String d;
   
   public static MemoryReporter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqFlutterReportMemoryReporter == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqFlutterReportMemoryReporter == null) {
-          jdField_a_of_type_ComTencentMobileqqFlutterReportMemoryReporter = new MemoryReporter();
+        if (a == null) {
+          a = new MemoryReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqFlutterReportMemoryReporter;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.Reporter", 2, "onPagePause");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    return a;
   }
   
   public void a(String paramString)
@@ -49,15 +41,23 @@ public class MemoryReporter
       ((StringBuilder)localObject).append(paramString);
       QLog.d("QFlutter.Reporter", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+    this.c.removeCallbacksAndMessages(null);
+    Object localObject = this.c.obtainMessage(0);
     ((Message)localObject).obj = paramString;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    this.c.sendMessage((Message)localObject);
   }
   
   public void a(boolean paramBoolean)
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.Reporter", 2, "onPagePause");
+    }
+    this.c.removeCallbacksAndMessages(null);
   }
   
   public void b(boolean paramBoolean)
@@ -66,7 +66,7 @@ public class MemoryReporter
       QLog.d("QFlutter.Reporter", 1, "onDestroy");
     }
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+      this.c.sendEmptyMessageDelayed(2, 2000L);
     }
   }
   
@@ -81,16 +81,16 @@ public class MemoryReporter
         if (i != 2) {
           return false;
         }
-        paramMessage = this.jdField_a_of_type_JavaUtilMap;
+        paramMessage = this.b;
         if (paramMessage != null)
         {
-          QFlutterReporter.a(true, false, paramMessage, this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaUtilMap = null;
-          this.jdField_a_of_type_JavaLangString = "";
+          QFlutterReporter.a(true, false, paramMessage, this.d);
+          this.b = null;
+          this.d = "";
           return false;
         }
       }
-      else if (this.jdField_a_of_type_JavaUtilMap != null)
+      else if (this.b != null)
       {
         boolean bool;
         if (paramMessage.arg1 == 1) {
@@ -98,11 +98,11 @@ public class MemoryReporter
         } else {
           bool = false;
         }
-        QFlutterReporter.a(bool, true, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_JavaLangString);
+        QFlutterReporter.a(bool, true, this.b, this.d);
         if (!bool)
         {
-          this.jdField_a_of_type_JavaUtilMap = null;
-          this.jdField_a_of_type_JavaLangString = "";
+          this.b = null;
+          this.d = "";
           return false;
         }
       }
@@ -117,15 +117,15 @@ public class MemoryReporter
       if (TextUtils.isEmpty(str)) {
         paramMessage = "unknown";
       }
-      this.jdField_a_of_type_JavaLangString = paramMessage;
-      this.jdField_a_of_type_JavaUtilMap = DeviceInfoUtil.a(BaseApplicationImpl.getContext());
+      this.d = paramMessage;
+      this.b = DeviceInfoUtil.b(BaseApplicationImpl.getContext());
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.report.MemoryReporter
  * JD-Core Version:    0.7.0.1
  */

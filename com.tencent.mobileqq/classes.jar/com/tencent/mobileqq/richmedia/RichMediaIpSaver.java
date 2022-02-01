@@ -8,21 +8,19 @@ import com.tencent.qphone.base.util.QLog;
 public class RichMediaIpSaver
   implements IRichMediaIpSaver
 {
-  public String a;
-  protected boolean a;
+  public String a = null;
   public String b = null;
   public String c = null;
   protected String d = null;
+  protected boolean e = true;
   
   public RichMediaIpSaver()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = true;
     AppNetConnInfo.registerConnectionChangeReceiver(BaseApplication.getContext(), this);
-    b();
+    e();
   }
   
-  public static String b()
+  public static String d()
   {
     return "XGIdentifier";
   }
@@ -41,19 +39,6 @@ public class RichMediaIpSaver
     }
   }
   
-  public void a()
-  {
-    try
-    {
-      AppNetConnInfo.unregisterNetInfoHandler(this);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
   public void a(int paramInt)
   {
     if (QLog.isColorLevel())
@@ -65,14 +50,14 @@ public class RichMediaIpSaver
     }
     if (paramInt == -1)
     {
-      this.jdField_a_of_type_JavaLangString = null;
+      this.a = null;
       this.b = null;
       this.c = null;
       return;
     }
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_JavaLangString = null;
+      this.a = null;
       return;
     }
     if (paramInt == 1)
@@ -85,11 +70,24 @@ public class RichMediaIpSaver
     }
   }
   
-  public boolean a()
+  public void b()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      AppNetConnInfo.unregisterNetInfoHandler(this);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public boolean c()
+  {
+    try
+    {
+      boolean bool = this.e;
       return bool;
     }
     finally
@@ -99,16 +97,16 @@ public class RichMediaIpSaver
     }
   }
   
-  public void b()
+  public void e()
   {
     try
     {
-      this.d = DeviceInfoUtil.b(BaseApplication.getContext());
-      this.jdField_a_of_type_Boolean = true;
+      this.d = DeviceInfoUtil.c(BaseApplication.getContext());
+      this.e = true;
       if (this.d == null)
       {
-        this.d = b();
-        this.jdField_a_of_type_Boolean = false;
+        this.d = d();
+        this.e = false;
       }
       if (QLog.isColorLevel())
       {
@@ -140,7 +138,7 @@ public class RichMediaIpSaver
   {
     try
     {
-      this.d = DeviceInfoUtil.b(BaseApplication.getContext());
+      this.d = DeviceInfoUtil.c(BaseApplication.getContext());
       a(-1);
       if (QLog.isColorLevel())
       {
@@ -162,8 +160,8 @@ public class RichMediaIpSaver
   {
     try
     {
-      this.d = b();
-      this.jdField_a_of_type_Boolean = false;
+      this.d = d();
+      this.e = false;
       a(-1);
       if (QLog.isColorLevel())
       {
@@ -185,8 +183,8 @@ public class RichMediaIpSaver
   {
     try
     {
-      this.d = DeviceInfoUtil.b(BaseApplication.getContext());
-      this.jdField_a_of_type_Boolean = true;
+      this.d = DeviceInfoUtil.c(BaseApplication.getContext());
+      this.e = true;
       a(-1);
       if (QLog.isColorLevel())
       {
@@ -208,8 +206,8 @@ public class RichMediaIpSaver
   {
     try
     {
-      this.d = b();
-      this.jdField_a_of_type_Boolean = false;
+      this.d = d();
+      this.e = false;
       a(-1);
       if (QLog.isColorLevel())
       {
@@ -243,7 +241,7 @@ public class RichMediaIpSaver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.RichMediaIpSaver
  * JD-Core Version:    0.7.0.1
  */

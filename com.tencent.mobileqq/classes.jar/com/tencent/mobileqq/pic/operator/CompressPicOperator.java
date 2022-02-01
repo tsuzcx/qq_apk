@@ -102,13 +102,13 @@ public class CompressPicOperator
   
   public void a()
   {
-    Object localObject = this.a;
-    CompressInfo localCompressInfo = ((PicReq)localObject).jdField_a_of_type_ComTencentMobileqqPicCompressInfo;
+    Object localObject = this.c;
+    CompressInfo localCompressInfo = ((PicReq)localObject).e;
     CompressOperator.a(localCompressInfo);
-    localObject = ((PicReq)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioPhotoICompressionCallBack;
+    localObject = ((PicReq)localObject).q;
     if (localObject != null)
     {
-      if (localCompressInfo.a) {
+      if (localCompressInfo.c) {
         ((ICompressionCallBack)localObject).a(localCompressInfo);
       } else {
         ((ICompressionCallBack)localObject).b(localCompressInfo);
@@ -120,7 +120,7 @@ public class CompressPicOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.CompressPicOperator
  * JD-Core Version:    0.7.0.1
  */

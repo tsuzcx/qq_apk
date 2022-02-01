@@ -7,139 +7,146 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopAioAgent.Message;
+import com.tencent.mobileqq.guild.temp.api.GuildManagerProvider;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.URLThemeImageView;
 import java.util.List;
 
 public class NavigateBarDelegateFactory
   implements INavigateBar
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<BaseTroopAioMsgNavigateBarDelegate> jdField_a_of_type_AndroidUtilSparseArray;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopAioMsgNavigateBar jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar;
+  final String a = "NavigateBarDelegateFactory";
+  private final QQAppInterface b;
+  private final Context c;
+  private final BaseSessionInfo d;
+  private final BaseAioMsgNavigateBar e;
+  private SparseArray<BaseAioMsgNavigateBarDelegate> f;
   
-  NavigateBarDelegateFactory(QQAppInterface paramQQAppInterface, Context paramContext, TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar, BaseSessionInfo paramBaseSessionInfo)
+  public NavigateBarDelegateFactory(QQAppInterface paramQQAppInterface, Context paramContext, BaseAioMsgNavigateBar paramBaseAioMsgNavigateBar, BaseSessionInfo paramBaseSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar = paramTroopAioMsgNavigateBar;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
+    this.b = paramQQAppInterface;
+    this.c = paramContext;
+    this.e = paramBaseAioMsgNavigateBar;
+    this.d = paramBaseSessionInfo;
     a();
   }
   
   public int a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      return ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt);
+    if (this.f.get(paramInt) != null) {
+      return ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt)).a(paramInt);
     }
     return 0;
   }
   
   @Nullable
-  public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public BaseAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1) != null) {
-      return ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1)).a(paramInt1, paramList, paramLong1, paramObject, paramLong2, paramLong3, paramInt2);
-    }
-    return null;
-  }
-  
-  public BaseTroopAioMsgNavigateBarDelegate a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      return ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt);
+    if (this.f.get(paramInt1) != null) {
+      return ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt1)).a(paramInt1, paramList, paramLong1, paramObject, paramLong2, paramLong3, paramInt2);
     }
     return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    Object localObject = new TroopAioMsgNavigateArk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateAtAll(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateAtMe(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateCalendar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateConfessToMe(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateDingDongAtMe(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateEffectPic(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateFlowers(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateFocusWord(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateGameParty(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateHomeWork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateHomeworkPraise(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateNewAblum(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateNewFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateReceipt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateReply(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateShopArk(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateSpecial(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateSticker(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateUnRead(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    localObject = new TroopAioMsgNavigateNotification(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqTroopNavigatebarTroopAioMsgNavigateBar, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(((BaseTroopAioMsgNavigateBarDelegate)localObject).a(), localObject);
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    this.f = new SparseArray();
+    Object localObject;
+    if (GuildManagerProvider.a(this.e))
     {
-      ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a();
+      localObject = (BaseAioMsgNavigateBarDelegate)GuildManagerProvider.a(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = (BaseAioMsgNavigateBarDelegate)GuildManagerProvider.b(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = (BaseAioMsgNavigateBarDelegate)GuildManagerProvider.c(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+    }
+    else
+    {
+      localObject = new TroopAioMsgNavigateArk(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateAtAll(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateAtMe(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateCalendar(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateConfessToMe(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateDingDongAtMe(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateEffectPic(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateFlowers(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateFocusWord(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateGameParty(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateHomeWork(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateHomeworkPraise(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateNewAblum(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateNewFile(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateReceipt(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateReply(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateShopArk(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateSpecial(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateSticker(this.b, this.c, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateUnRead(this.b, this.c, (TroopAioMsgNavigateBar)this.e, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+      localObject = new TroopAioMsgNavigateNotification(this.b, this.c, (TroopAioMsgNavigateBar)this.e, this.d);
+      this.f.put(((BaseAioMsgNavigateBarDelegate)localObject).c(), localObject);
+    }
+    int i = 0;
+    while (i < this.f.size())
+    {
+      ((BaseAioMsgNavigateBarDelegate)this.f.valueAt(i)).a();
       i += 1;
     }
   }
   
   public void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt, paramTextView1, paramTextView2, paramImageView, paramString);
+    if (this.f.get(paramInt) != null) {
+      ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt)).a(paramInt, paramTextView1, paramTextView2, paramImageView, paramString);
     }
   }
   
-  public void a(int paramInt1, TroopAioAgent.Message paramMessage, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
+  public void a(int paramInt1, AioAgent.Message paramMessage, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1) != null) {
-      ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1)).a(paramInt1, paramMessage, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
+    if (this.f.get(paramInt1) != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onClickMultiNavBar ");
+        localStringBuilder.append(this.f.get(paramInt1));
+        QLog.d("NavigateBarDelegateFactory", 2, localStringBuilder.toString());
+      }
+      ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt1)).a(paramInt1, paramMessage, paramString, paramInt2, paramTextView1, paramTextView2, paramLong);
     }
   }
   
   public void a(int paramInt, Object paramObject, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt, paramObject, paramString);
+    if (this.f.get(paramInt) != null) {
+      ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt)).a(paramInt, paramObject, paramString);
     }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      return ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).a(paramInt);
-    }
-    return paramInt == 103;
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1) != null) {
-      return ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1)).a(paramInt1, paramInt2);
+    if (this.f.get(paramInt1) != null) {
+      return ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt1)).a(paramInt1, paramInt2);
     }
     return false;
   }
@@ -159,24 +166,48 @@ public class NavigateBarDelegateFactory
   public void b()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.f.size())
     {
-      ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).b();
+      ((BaseAioMsgNavigateBarDelegate)this.f.valueAt(i)).b();
       i += 1;
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.f.clear();
   }
   
   public void b(int paramInt, Object paramObject, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((BaseTroopAioMsgNavigateBarDelegate)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramInt, paramObject, paramString);
+    if (this.f.get(paramInt) != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onClick ");
+        localStringBuilder.append(this.f.get(paramInt));
+        QLog.d("NavigateBarDelegateFactory", 2, localStringBuilder.toString());
+      }
+      ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt)).b(paramInt, paramObject, paramString);
     }
+  }
+  
+  public boolean b(int paramInt)
+  {
+    if (this.f.get(paramInt) != null) {
+      return ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt)).b(paramInt);
+    }
+    return paramInt == 103;
+  }
+  
+  public BaseAioMsgNavigateBarDelegate c(int paramInt)
+  {
+    if (this.f.get(paramInt) != null) {
+      return ((BaseAioMsgNavigateBarDelegate)this.f.get(paramInt)).c(paramInt);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.NavigateBarDelegateFactory
  * JD-Core Version:    0.7.0.1
  */

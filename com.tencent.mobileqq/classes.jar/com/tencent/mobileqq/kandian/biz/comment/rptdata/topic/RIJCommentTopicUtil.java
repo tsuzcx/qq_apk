@@ -48,7 +48,7 @@ public class RIJCommentTopicUtil
     if (a(i)) {
       return paramInt1;
     }
-    if (a(paramInt1, paramArrayOfInt)) {
+    if (b(paramInt1, paramArrayOfInt)) {
       return paramInt1;
     }
     if (a(paramInt2, paramInt1)) {
@@ -70,7 +70,7 @@ public class RIJCommentTopicUtil
     if (TextUtils.isEmpty(str)) {
       return;
     }
-    paramView = paramView.getTag(2131376111);
+    paramView = paramView.getTag(2131444314);
     if (!(paramView instanceof RIJCommentRptDataUtil.PTSCommentModel))
     {
       paramString = new StringBuilder();
@@ -80,7 +80,7 @@ public class RIJCommentTopicUtil
       return;
     }
     paramView = (RIJCommentRptDataUtil.PTSCommentModel)paramView;
-    RIJJumpUtils.a(BaseApplication.getContext(), paramString);
+    RIJJumpUtils.c(BaseApplication.getContext(), paramString);
     a(paramView, str);
   }
   
@@ -90,7 +90,7 @@ public class RIJCommentTopicUtil
     while (localIterator.hasNext())
     {
       BaseCommentData.CommentRptData localCommentRptData = (BaseCommentData.CommentRptData)localIterator.next();
-      if ((localCommentRptData.a == 3) && (TextUtils.equals(paramString, localCommentRptData.c))) {
+      if ((localCommentRptData.a == 3) && (TextUtils.equals(paramString, localCommentRptData.d))) {
         RIJCommentRptDataUtil.a(paramPTSCommentModel, localCommentRptData, "0X800B9E1");
       }
     }
@@ -98,7 +98,7 @@ public class RIJCommentTopicUtil
   
   public static boolean a()
   {
-    boolean bool = ReadInJoyHelper.f();
+    boolean bool = ReadInJoyHelper.l();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isCommentTopicDisplaySwitchOn: topicSwitchOn=");
     localStringBuilder.append(bool);
@@ -114,23 +114,6 @@ public class RIJCommentTopicUtil
   private static boolean a(int paramInt1, int paramInt2)
   {
     return paramInt2 - paramInt1 >= 12;
-  }
-  
-  private static boolean a(int paramInt, int[][] paramArrayOfInt)
-  {
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
-    {
-      int j = paramArrayOfInt.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (paramArrayOfInt[i][0] == paramInt) {
-          return true;
-        }
-        i += 1;
-      }
-    }
-    return false;
   }
   
   public static boolean a(Spannable paramSpannable)
@@ -251,10 +234,27 @@ public class RIJCommentTopicUtil
     }
     return false;
   }
+  
+  private static boolean b(int paramInt, int[][] paramArrayOfInt)
+  {
+    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
+    {
+      int j = paramArrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (paramArrayOfInt[i][0] == paramInt) {
+          return true;
+        }
+        i += 1;
+      }
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.rptdata.topic.RIJCommentTopicUtil
  * JD-Core Version:    0.7.0.1
  */

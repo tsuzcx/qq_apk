@@ -12,53 +12,48 @@ import java.util.Calendar;
 public class GetMyStoryVideoListStep
   implements Step
 {
-  protected GetMyStoryVideoListStep.Result a;
-  protected Step.ErrorCallBack a;
   protected Step.FinishCallBack a;
-  
-  public GetMyStoryVideoListStep()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = null;
-  }
+  protected Step.ErrorCallBack b;
+  protected GetMyStoryVideoListStep.Result c = null;
   
   public Object a()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result;
-  }
-  
-  public String a()
-  {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    SLog.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
-    d();
+    return this.c;
   }
   
   public void a(Step.ErrorCallBack paramErrorCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack = paramErrorCallBack;
+    this.b = paramErrorCallBack;
   }
   
   public void a(Step.FinishCallBack paramFinishCallBack)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack = paramFinishCallBack;
+    this.a = paramFinishCallBack;
   }
   
   public void a(Object paramObject) {}
   
-  public boolean a()
+  public void b()
+  {
+    SLog.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
+    g();
+  }
+  
+  public String c()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public boolean d()
   {
     return false;
   }
   
-  public void b() {}
+  public void e() {}
   
-  public void c() {}
+  public void f() {}
   
-  protected void d()
+  protected void g()
   {
     String str = StoryApi.a("StorySvc.homepage_my_day_710");
     qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
@@ -69,7 +64,7 @@ public class GetMyStoryVideoListStep
     int j = localCalendar.get(2);
     int k = localCalendar.get(5);
     localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result = new GetMyStoryVideoListStep.Result();
+    this.c = new GetMyStoryVideoListStep.Result();
     CmdTaskManger.a().a(new CommonRequest(str, localReqTodayStoryVidList, null), new GetMyStoryVideoListStep.2(this, localReqTodayStoryVidList, str));
   }
 }

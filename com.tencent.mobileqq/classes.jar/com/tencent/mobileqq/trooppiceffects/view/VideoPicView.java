@@ -14,8 +14,8 @@ public class VideoPicView
   implements IPicView
 {
   protected ImageView a;
-  protected SpriteVideoView a;
-  protected String a;
+  protected SpriteVideoView b;
+  protected String c;
   
   public VideoPicView(Context paramContext, int paramInt)
   {
@@ -25,38 +25,38 @@ public class VideoPicView
   public VideoPicView(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaLangString = TroopGiftUtil.a(paramInt1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = new SpriteVideoView(getContext(), true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setLooping(true);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, -1, -1);
-    addView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, paramInt2, paramInt3);
-  }
-  
-  public View a()
-  {
-    return this;
+    this.c = TroopGiftUtil.a(paramInt1);
+    this.a = new ImageView(getContext());
+    this.b = new SpriteVideoView(getContext(), true);
+    this.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b.setLooping(true);
+    addView(this.a, -1, -1);
+    addView(this.b, paramInt2, paramInt3);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(this.jdField_a_of_type_JavaLangString, null);
+    this.b.a(this.c, null);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.n();
+    this.b.o();
+  }
+  
+  public View getView()
+  {
+    return this;
   }
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    this.a.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.VideoPicView
  * JD-Core Version:    0.7.0.1
  */

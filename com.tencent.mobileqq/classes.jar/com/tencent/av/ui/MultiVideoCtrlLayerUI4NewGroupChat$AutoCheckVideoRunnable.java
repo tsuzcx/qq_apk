@@ -12,14 +12,14 @@ class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
+      QLog.d(this.this$0.X, 2, "AutoCheckVideoRunnable");
     }
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ab = true;
+    if (this.this$0.am != null) {
+      this.this$0.am.k().bv = true;
     }
-    MultiVideoCtrlLayerUI4NewGroupChat.e(this.this$0);
-    if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.this$0.b);
+    MultiVideoCtrlLayerUI4NewGroupChat.f(this.this$0);
+    if (this.this$0.al != null) {
+      this.this$0.al.a(this.this$0.j);
     }
   }
 }

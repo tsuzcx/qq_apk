@@ -7,12 +7,12 @@ class VideoViewVideoHolder$VideoPrepareSegment$2$1$1
   
   public void run()
   {
-    VideoViewVideoHolder.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a).a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$VideoPrepareSegment$2.a.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_JavaIoFile, true);
+    VideoViewVideoHolder.i(this.a.d.c.b).a(this.a.d.c.b, this.a.a, this.a.b, this.a.c, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoPrepareSegment.2.1.1
  * JD-Core Version:    0.7.0.1
  */

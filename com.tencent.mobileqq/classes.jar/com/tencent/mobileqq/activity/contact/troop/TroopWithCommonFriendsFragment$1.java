@@ -13,7 +13,7 @@ class TroopWithCommonFriendsFragment$1
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramInt;
     if (paramInt == 0)
     {
       paramRecyclerView = paramRecyclerView.getLayoutManager();
@@ -21,16 +21,16 @@ class TroopWithCommonFriendsFragment$1
         ((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition();
       }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null)
+    if (this.a.a != null)
     {
       if (paramInt != 0)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+        this.a.a.cancelPendingRequests();
+        this.a.a.pause();
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+      if (this.a.a.isPausing()) {
+        this.a.a.resume();
       }
     }
   }
@@ -42,7 +42,7 @@ class TroopWithCommonFriendsFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,19 @@ public class e
   implements c
 {
   public final String a;
-  public String b;
-  public RandomAccessFile c;
-  public d d = null;
-  public final LinkedHashMap<String, d> e = new LinkedHashMap();
+  public final LinkedHashMap<String, d> b = new LinkedHashMap();
+  public String c;
+  public File d;
+  public RandomAccessFile e;
+  public d f = null;
   
   public e(File paramFile, String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
     this.a = paramFile.getPath();
-    this.c = new RandomAccessFile(this.a, "r");
-    long l2 = this.c.length() - 22L;
+    this.d = null;
+    this.e = new RandomAccessFile(this.a, "r");
+    long l2 = this.e.length() - 22L;
     long l1 = 0L;
     if (l2 >= 0L)
     {
@@ -34,11 +36,11 @@ public class e
       }
       do
       {
-        this.c.seek(l2);
-        if (Integer.reverseBytes(this.c.readInt()) == 101010256)
+        this.e.seek(l2);
+        if (Integer.reverseBytes(this.e.readInt()) == 101010256)
         {
           paramFile = new byte[18];
-          this.c.readFully(paramFile);
+          this.e.readFully(paramFile);
           int j = paramFile.length;
           paramString = ByteOrder.LITTLE_ENDIAN;
           int i = 0;
@@ -51,15 +53,15 @@ public class e
           int i1 = paramFile.a();
           if ((j == n) && (k == 0) && (m == 0))
           {
-            paramFile = new BufferedInputStream(new e.a(this.c, i1), 4096);
+            paramFile = new BufferedInputStream(new e.a(this.e, i1), 4096);
             paramString = new byte[46];
             while (i < j)
             {
               d locald = new d(paramString, paramFile);
-              this.e.put(locald.a, locald);
-              if (locald.a.equals(this.b))
+              this.b.put(locald.a, locald);
+              if (locald.a.equals(this.c))
               {
-                this.d = locald;
+                this.f = locald;
                 return;
               }
               locald.a.contains("lib");
@@ -83,15 +85,15 @@ public class e
   public InputStream a(d paramd)
   {
     Object localObject2 = paramd.a;
-    if (this.c != null)
+    if (this.e != null)
     {
       if (localObject2 != null)
       {
-        ??? = (d)this.e.get(localObject2);
+        ??? = (d)this.b.get(localObject2);
         paramd = (d)???;
         if (??? == null)
         {
-          paramd = this.e;
+          paramd = this.b;
           ??? = new StringBuilder();
           ((StringBuilder)???).append((String)localObject2);
           ((StringBuilder)???).append("/");
@@ -104,7 +106,7 @@ public class e
         if ((??? != null) && ((((String)???).contains("../")) || (((String)???).contains("..\\")))) {
           throw new f();
         }
-        synchronized (this.c)
+        synchronized (this.e)
         {
           localObject2 = new e.a((RandomAccessFile)???, paramd.g + 28L);
           DataInputStream localDataInputStream = new DataInputStream((InputStream)localObject2);
@@ -124,6 +126,36 @@ public class e
       throw new NullPointerException();
     }
     throw new IllegalStateException("Zip file closed");
+  }
+  
+  public void a()
+  {
+    Object localObject1 = this.e;
+    if (localObject1 != null) {
+      try
+      {
+        this.e = null;
+        ((RandomAccessFile)localObject1).close();
+        localObject1 = this.d;
+        if (localObject1 != null)
+        {
+          ((File)localObject1).delete();
+          this.d = null;
+          return;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public void finalize()
+  {
+    try
+    {
+      super.finalize();
+      return;
+    }
+    finally {}
   }
 }
 

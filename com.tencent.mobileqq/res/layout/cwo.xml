@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/b4k" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/mg4" android:padding="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hzl" />
-    <TextView android:textSize="@dimen/bh2" android:textColor="@color/fl" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/x6d" />
-    <TextView android:textSize="@dimen/bh0" android:textColor="@color/fl" android:gravity="center" android:layout_width="fill_parent" android:layout_height="170.0dip" android:layout_marginBottom="20.0dip" android:text="@string/x6f" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.richframework.widget.RoundCornerImageView android:id="@id/nga" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:layout_gravity="bottom" android:background="@drawable/f3p" android:layout_width="fill_parent" android:layout_height="130.0dip" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="21.0dip">
+            <View android:layout_gravity="center|top" android:background="@drawable/ir8" android:layout_width="70.0dip" android:layout_height="70.0dip" />
+            <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:layout_gravity="center|top" android:id="@id/ng9" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_marginTop="4.0dip" android:src="@drawable/irp" app:authIconEnable="false" />
+            <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="bottom" android:id="@id/ngc" android:background="@drawable/ir_" android:paddingLeft="11.0dip" android:paddingTop="2.0dip" android:paddingRight="11.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip" android:includeFontPadding="false" />
+        </FrameLayout>
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/black" android:ellipsize="end" android:id="@id/nge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:maxLines="1" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/ngf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:maxLines="1" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ogh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <TextView android:textSize="11.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/ngd" android:background="@drawable/f3q" android:paddingLeft="11.0dip" android:paddingTop="5.0dip" android:paddingRight="11.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" android:maxLines="1" />
+            <TextView android:textSize="11.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/ngb" android:background="@drawable/f3q" android:paddingLeft="11.0dip" android:paddingTop="4.5dip" android:paddingRight="11.0dip" android:paddingBottom="4.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        </LinearLayout>
+        <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="15.0dip" android:gravity="center" android:id="@id/ng_" android:layout_width="188.0dip" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
+    </LinearLayout>
+</FrameLayout>

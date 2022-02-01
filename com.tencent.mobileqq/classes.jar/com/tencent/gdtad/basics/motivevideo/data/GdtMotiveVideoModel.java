@@ -10,10 +10,10 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class GdtMotiveVideoModel
 {
-  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData;
-  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
-  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+  private GdtMotiveVideoPageData a;
+  private qq_ad_get.QQAdGetRsp.AdInfo b;
+  private GdtVideoData c;
+  private GdtAd d;
   
   public GdtMotiveVideoModel(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
@@ -21,18 +21,18 @@ public class GdtMotiveVideoModel
     localStringBuilder.append("[GdtMotiveVideoModel]\n");
     localStringBuilder.append(paramGdtMotiveVideoPageData.adsContent);
     GdtLog.a("GdtMotiveVideoModel", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
+    this.a = paramGdtMotiveVideoPageData;
     b(paramGdtMotiveVideoPageData);
     a(paramGdtMotiveVideoPageData);
   }
   
   private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
+    this.d = new GdtAd(this.b);
+    this.c = new GdtVideoData();
+    this.c.setAd(this.d);
+    this.c.setPlayScene(11);
+    this.c.setUrl(paramGdtMotiveVideoPageData.url);
   }
   
   private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
@@ -44,7 +44,7 @@ public class GdtMotiveVideoModel
     }
     try
     {
-      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
+      this.b = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
       return;
     }
     catch (Throwable paramGdtMotiveVideoPageData)
@@ -53,29 +53,29 @@ public class GdtMotiveVideoModel
     }
   }
   
-  public GdtAd a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
-  }
-  
   public GdtMotiveVideoPageData a()
   {
-    return this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData;
+    return this.a;
   }
   
-  public GdtVideoData a()
+  public qq_ad_get.QQAdGetRsp.AdInfo b()
   {
-    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+    return this.b;
   }
   
-  public qq_ad_get.QQAdGetRsp.AdInfo a()
+  public GdtVideoData c()
   {
-    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
+    return this.c;
+  }
+  
+  public GdtAd d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel
  * JD-Core Version:    0.7.0.1
  */

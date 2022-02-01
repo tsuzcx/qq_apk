@@ -18,8 +18,8 @@ class AEEditorImageEditFragment$26$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment$26.a.b();
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilCollection);
+    this.b.b.e();
+    ArrayList localArrayList = new ArrayList(this.a);
     int i = localArrayList.size();
     String str2 = "unknown";
     String str1;
@@ -28,21 +28,21 @@ class AEEditorImageEditFragment$26$1
     } else {
       str1 = "unknown";
     }
-    FragmentActivity localFragmentActivity = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditAEEditorImageEditFragment$26.a.getActivity();
+    FragmentActivity localFragmentActivity = this.b.b.getActivity();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("导出失败: error code = ");
     localStringBuilder.append(str1);
-    QQToast.a(localFragmentActivity, localStringBuilder.toString(), 0).a();
+    QQToast.makeText(localFragmentActivity, localStringBuilder.toString(), 0).show();
     if (localArrayList.size() > 0) {
       str2 = localArrayList.toString();
     }
     AEQLog.e("AEEditorImageEditFragment", str2);
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).P_EXPORT_END(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).EXT1(), "pic"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).DESC(), str1), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).KEY_RET_CODE(), "-90000000") }));
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).reportPublishQuality(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).pExportEnd(), Arrays.asList(new FeedCloudCommon.Entry[] { ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).ext1(), "pic"), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).desc(), str1), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).newEntry(((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).keyRetCode(), "-90000000") }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.26.1
  * JD-Core Version:    0.7.0.1
  */

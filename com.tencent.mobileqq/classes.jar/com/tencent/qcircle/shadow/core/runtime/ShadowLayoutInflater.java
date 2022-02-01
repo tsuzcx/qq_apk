@@ -3,7 +3,7 @@ package com.tencent.qcircle.shadow.core.runtime;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.qcircle.shadow.core.runtime.skin.entity.SkinItem;
+import com.tencent.mobileqq.auto.engine.skin.entity.SkinItem;
 import java.util.HashMap;
 
 public class ShadowLayoutInflater
@@ -26,7 +26,7 @@ public class ShadowLayoutInflater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.shadow.core.runtime.ShadowLayoutInflater
  * JD-Core Version:    0.7.0.1
  */

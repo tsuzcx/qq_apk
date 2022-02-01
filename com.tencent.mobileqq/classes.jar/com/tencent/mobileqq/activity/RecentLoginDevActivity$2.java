@@ -14,16 +14,16 @@ class RecentLoginDevActivity$2
   
   public void onClick(View paramView)
   {
-    SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getTag();
+    SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)this.a.getTag();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localSvcDevLoginInfo.stDeviceItemDes);
-    RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity, localSvcDevLoginInfo.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentLoginDevActivity), this.jdField_a_of_type_Int);
+    RecentLoginDevActivity.a(this.c, localSvcDevLoginInfo.strDeviceName, localArrayList, RecentLoginDevActivity.a(this.c), this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity.2
  * JD-Core Version:    0.7.0.1
  */

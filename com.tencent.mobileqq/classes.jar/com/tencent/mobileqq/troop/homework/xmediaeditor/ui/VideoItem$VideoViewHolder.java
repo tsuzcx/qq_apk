@@ -14,14 +14,14 @@ public class VideoItem$VideoViewHolder
   
   protected void a()
   {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
+    this.g.setVisibility(4);
+    this.e.setVisibility(0);
+    this.d.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.VideoViewHolder
  * JD-Core Version:    0.7.0.1
  */

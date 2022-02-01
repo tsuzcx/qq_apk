@@ -79,9 +79,9 @@ class CTEntryMng$5
           if (localShort != null)
           {
             bool = paramBoolean;
-            if (localEntryUserSetting.b != localShort.shortValue())
+            if (localEntryUserSetting.c != localShort.shortValue())
             {
-              localEntryUserSetting.b = localShort.shortValue();
+              localEntryUserSetting.c = localShort.shortValue();
               bool = true;
             }
           }
@@ -99,8 +99,8 @@ class CTEntryMng$5
       }
       if (paramBoolean)
       {
-        CTEntryMng.b(this.a);
-        CTEntryMng.a(this.a);
+        CTEntryMng.e(this.a);
+        CTEntryMng.d(this.a);
       }
       if (QLog.isColorLevel()) {
         QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onGetCommonSwitchFromDetailInfo, needUpdate: %s, log: %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1 }));
@@ -117,11 +117,11 @@ class CTEntryMng$5
     if (paramBoolean)
     {
       CTEntryMng.EntryUserSetting localEntryUserSetting = CTEntryMng.a(this.a, paramShort1);
-      if ((localEntryUserSetting != null) && (localEntryUserSetting.b != paramShort2))
+      if ((localEntryUserSetting != null) && (localEntryUserSetting.c != paramShort2))
       {
-        localEntryUserSetting.b = paramShort2;
-        CTEntryMng.b(this.a);
-        CTEntryMng.a(this.a);
+        localEntryUserSetting.c = paramShort2;
+        CTEntryMng.e(this.a);
+        CTEntryMng.d(this.a);
         a(paramShort1, paramShort2);
       }
       if ((localEntryUserSetting != null) && (QLog.isColorLevel())) {
@@ -136,7 +136,7 @@ class CTEntryMng$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.5
  * JD-Core Version:    0.7.0.1
  */

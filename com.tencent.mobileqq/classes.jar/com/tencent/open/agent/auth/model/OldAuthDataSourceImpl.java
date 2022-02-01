@@ -33,8 +33,8 @@ import mqq.app.NewIntent;
 public class OldAuthDataSourceImpl
   implements IOldAuthDataSource
 {
-  private static String jdField_a_of_type_JavaLangString = "OldAuthorityDataSourceImpl";
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private static String a = "OldAuthorityDataSourceImpl";
+  private AppRuntime b = MobileQQ.sMobileQQ.waitAppRuntime(null);
   
   public void a(Bundle paramBundle, AccountInfo paramAccountInfo, Object[] paramArrayOfObject, OpensdkBusinessObserver paramOpensdkBusinessObserver)
   {
@@ -47,7 +47,7 @@ public class OldAuthDataSourceImpl
       localObject1 = Build.VERSION.RELEASE;
     }
     ((PBStringField)localObject2).set((String)localObject1);
-    localGetAuthApiListRequest.qqv.set(CommonDataAdapter.a().d());
+    localGetAuthApiListRequest.qqv.set(CommonDataAdapter.a().j());
     localGetAuthApiListRequest.app_type.set(1);
     localGetAuthApiListRequest.pf.set(AuthParamUtil.a(paramBundle, "pf", ""));
     localGetAuthApiListRequest.scope.set(AuthParamUtil.a(paramBundle, "scope", ""));
@@ -79,7 +79,7 @@ public class OldAuthDataSourceImpl
     }
     localGetAuthApiListRequest.need_pay.set(1);
     localGetAuthApiListRequest.skey.set(paramAccountInfo.b);
-    paramBundle = AuthParamUtil.a(paramBundle);
+    paramBundle = AuthParamUtil.b(paramBundle);
     if (!TextUtils.isEmpty(paramBundle)) {
       localGetAuthApiListRequest.appUniqueIdentifier.set(paramBundle);
     }
@@ -90,11 +90,11 @@ public class OldAuthDataSourceImpl
     paramBundle = (String)paramArrayOfObject[0];
     paramArrayOfObject = new NewIntent(MobileQQ.sMobileQQ, OpensdkServlet.class);
     paramArrayOfObject.setWithouLogin(true);
-    paramArrayOfObject.putExtra("uin", paramAccountInfo.jdField_a_of_type_JavaLangString);
+    paramArrayOfObject.putExtra("uin", paramAccountInfo.a);
     paramArrayOfObject.putExtra("data", AuthorityUtil.a(localGetAuthApiListRequest, "ConnAuthSvr.get_auth_api_list_emp".equals(paramBundle), paramAccountInfo));
     paramArrayOfObject.putExtra("cmd", paramBundle);
     paramArrayOfObject.setObserver(paramOpensdkBusinessObserver);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(paramArrayOfObject);
+    this.b.startServlet(paramArrayOfObject);
   }
   
   public void a(List<Permission> paramList, Bundle paramBundle, AccountInfo paramAccountInfo, Object[] paramArrayOfObject, OpensdkBusinessObserver paramOpensdkBusinessObserver)
@@ -107,7 +107,7 @@ public class OldAuthDataSourceImpl
     {
       localObject = (Permission)paramList.next();
       if (((Permission)localObject).a > 0) {
-        localAuthorizeRequest.openapi.add(Integer.valueOf(((Permission)localObject).b));
+        localAuthorizeRequest.openapi.add(Integer.valueOf(((Permission)localObject).e));
       }
     }
     Object localObject = localAuthorizeRequest.os;
@@ -118,7 +118,7 @@ public class OldAuthDataSourceImpl
     }
     ((PBStringField)localObject).set(paramList);
     localAuthorizeRequest.app_type.set(1);
-    localAuthorizeRequest.qqv.set(CommonDataAdapter.a().d());
+    localAuthorizeRequest.qqv.set(CommonDataAdapter.a().j());
     localAuthorizeRequest.pf.set(AuthParamUtil.a(paramBundle, "pf", "openmobile_android"));
     localObject = paramBundle.getString("sdkp");
     PBStringField localPBStringField = localAuthorizeRequest.sdkp;
@@ -135,11 +135,11 @@ public class OldAuthDataSourceImpl
     }
     localPBStringField.set(paramList);
     localAuthorizeRequest.response_type.set("token");
-    paramList = AuthParamUtil.a(paramBundle);
+    paramList = AuthParamUtil.b(paramBundle);
     if (!TextUtils.isEmpty(paramList)) {
       localAuthorizeRequest.appUniqueIdentifier.set(paramList);
     } else {
-      SSOLog.a(jdField_a_of_type_JavaLangString, new Object[] { "doAuthorize.appUniqueIdentifier is null" });
+      SSOLog.a(a, new Object[] { "doAuthorize.appUniqueIdentifier is null" });
     }
     localObject = paramBundle.getString("sign");
     if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -155,10 +155,10 @@ public class OldAuthDataSourceImpl
       localObject = OpenSdkVirtualUtil.a(paramList);
       paramList = localObject[1];
       localObject = localObject[2];
-      SSOLog.a(jdField_a_of_type_JavaLangString, new Object[] { "doAuthorize.getAuthorizeSign again" });
+      SSOLog.a(a, new Object[] { "doAuthorize.getAuthorizeSign again" });
       if (TextUtils.isEmpty(paramList))
       {
-        SSOLog.a(jdField_a_of_type_JavaLangString, new Object[] { "doAuthorize.getAuthorizeSign sign is null" });
+        SSOLog.a(a, new Object[] { "doAuthorize.getAuthorizeSign sign is null" });
       }
       else
       {
@@ -180,12 +180,12 @@ public class OldAuthDataSourceImpl
     paramList = (String)paramArrayOfObject[0];
     paramBundle = new NewIntent(MobileQQ.sMobileQQ, OpensdkServlet.class);
     paramBundle.setWithouLogin(true);
-    paramBundle.putExtra("uin", paramAccountInfo.jdField_a_of_type_JavaLangString);
+    paramBundle.putExtra("uin", paramAccountInfo.a);
     paramBundle.putExtra("data", AuthorityUtil.a(localAuthorizeRequest, "ConnAuthSvr.sdk_auth_api_emp".equals(paramList), paramAccountInfo));
     paramBundle.putExtra("cmd", paramList);
     OpenSdkVirtualUtil.a(paramBundle);
     paramBundle.setObserver(paramOpensdkBusinessObserver);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(paramBundle);
+    this.b.startServlet(paramBundle);
   }
   
   public void b(Bundle paramBundle, AccountInfo paramAccountInfo, Object[] paramArrayOfObject, OpensdkBusinessObserver paramOpensdkBusinessObserver)
@@ -202,11 +202,11 @@ public class OldAuthDataSourceImpl
       str = Build.VERSION.RELEASE;
     }
     localPBStringField.set(str);
-    localGetAppinfoRequest.qqv.set(CommonDataAdapter.a().d());
+    localGetAppinfoRequest.qqv.set(CommonDataAdapter.a().j());
     localGetAppinfoRequest.app_type.set(1);
     localGetAppinfoRequest.setHasFlag(true);
     localGetAppinfoRequest.need_ads.set(1);
-    paramBundle = AuthParamUtil.a(paramBundle);
+    paramBundle = AuthParamUtil.b(paramBundle);
     if (!TextUtils.isEmpty(paramBundle)) {
       localGetAppinfoRequest.appUniqueIdentifier.set(paramBundle);
     }
@@ -218,16 +218,16 @@ public class OldAuthDataSourceImpl
     paramBundle = (String)paramArrayOfObject[0];
     paramArrayOfObject = new NewIntent(MobileQQ.sMobileQQ, OpensdkServlet.class);
     paramArrayOfObject.setWithouLogin(true);
-    paramArrayOfObject.putExtra("uin", paramAccountInfo.jdField_a_of_type_JavaLangString);
+    paramArrayOfObject.putExtra("uin", paramAccountInfo.a);
     paramArrayOfObject.putExtra("data", AuthorityUtil.a(localGetAppinfoRequest, "ConnAuthSvr.get_app_info_emp".equals(paramBundle), paramAccountInfo));
     paramArrayOfObject.putExtra("cmd", paramBundle);
     paramArrayOfObject.setObserver(paramOpensdkBusinessObserver);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(paramArrayOfObject);
+    this.b.startServlet(paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.model.OldAuthDataSourceImpl
  * JD-Core Version:    0.7.0.1
  */

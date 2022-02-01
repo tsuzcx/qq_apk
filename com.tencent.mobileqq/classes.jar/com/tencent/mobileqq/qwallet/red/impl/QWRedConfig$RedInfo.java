@@ -61,8 +61,8 @@ public class QWRedConfig$RedInfo
       localRedInfo.imgType = paramJSONObject.optInt("imgType", 0);
       localRedInfo.goneType = paramJSONObject.optInt("goneType", 0);
       localRedInfo.showPos = paramJSONObject.optInt("showPos", 0);
-      localRedInfo.beginTime = QWalletTools.a(paramJSONObject.optString("beginTime"));
-      localRedInfo.endTime = QWalletTools.a(paramJSONObject.optString("endTime"));
+      localRedInfo.beginTime = QWalletTools.d(paramJSONObject.optString("beginTime"));
+      localRedInfo.endTime = QWalletTools.d(paramJSONObject.optString("endTime"));
       long l;
       if (localRedInfo.endTime == -1L) {
         l = 9223372036854775807L;
@@ -183,7 +183,7 @@ public class QWRedConfig$RedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.red.impl.QWRedConfig.RedInfo
  * JD-Core Version:    0.7.0.1
  */

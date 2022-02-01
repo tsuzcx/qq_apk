@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.c.e.a;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.e.a;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -128,7 +128,7 @@ public class e
       else
       {
         if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-          com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 8);
+          com.tencent.mobileqq.msf.core.d.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 8);
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("can not find ");
@@ -168,7 +168,7 @@ public class e
       QLog.e("MSF.S.AppProcessManager", 2, paramString.toString());
     }
     if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-      com.tencent.mobileqq.msf.core.c.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 7);
+      com.tencent.mobileqq.msf.core.d.e.a().a(e.a.c, paramFromServiceMsg.getWupBuffer(), 7);
     }
   }
   
@@ -423,7 +423,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.e
  * JD-Core Version:    0.7.0.1
  */

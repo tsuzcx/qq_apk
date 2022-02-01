@@ -11,11 +11,11 @@ class BaseWidgetView$1
   
   public void onClick(View paramView)
   {
-    if ((this.a.a() != null) && (!this.a.a(paramView)))
+    if ((this.a.getOnClickLister() != null) && (!this.a.a(paramView)))
     {
       BaseWidgetView localBaseWidgetView = this.a;
-      localBaseWidgetView.a(localBaseWidgetView.a());
-      this.a.a().onClick(paramView);
+      localBaseWidgetView.b(localBaseWidgetView.f());
+      this.a.getOnClickLister().onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

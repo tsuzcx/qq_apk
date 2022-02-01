@@ -14,16 +14,16 @@ import mqq.util.WeakReference;
 public class TenpayPlugin$QWalletPayJsPluginResultReceiver
   extends ResultReceiver
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   protected RequestEvent a;
-  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
+  private AppInterface b;
+  private WeakReference<Activity> c;
   
   public TenpayPlugin$QWalletPayJsPluginResultReceiver(RequestEvent paramRequestEvent, Handler paramHandler, AppInterface paramAppInterface, WeakReference<Activity> paramWeakReference)
   {
     super(paramHandler);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent = paramRequestEvent;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
+    this.a = paramRequestEvent;
+    this.b = paramAppInterface;
+    this.c = paramWeakReference;
   }
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
@@ -39,17 +39,17 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
       ((StringBuilder)localObject).append(paramBundle);
       QLog.i("TenpayPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null) && (paramBundle != null))
+    if ((this.a != null) && (paramBundle != null))
     {
-      localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      localObject = this.c;
       if (localObject != null)
       {
         if (((WeakReference)localObject).get() == null) {
           return;
         }
-        paramBundle = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapHbResult(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+        paramBundle = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapHbResult(paramInt, paramBundle, (Activity)this.c.get());
         if (paramBundle != null) {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
+          this.a.ok(paramBundle);
         }
       }
     }
@@ -57,7 +57,7 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TenpayPlugin.QWalletPayJsPluginResultReceiver
  * JD-Core Version:    0.7.0.1
  */

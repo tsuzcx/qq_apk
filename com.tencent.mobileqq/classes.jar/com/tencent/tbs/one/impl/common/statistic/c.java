@@ -9,6 +9,7 @@ import android.os.Build;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.tbs.one.impl.a.f;
 import com.tencent.tbs.sdk.BuildConfig;
 import java.util.Iterator;
@@ -348,7 +349,7 @@ public final class c
     {
       TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
       if (a(paramContext, "android.permission.READ_PHONE_STATE")) {
-        return localTelephonyManager.getDeviceId();
+        return PhoneInfoMonitor.getDeviceId(localTelephonyManager);
       }
       f.b("Require \"READ_PHONE_STATE\" permission for reading imei!", new Object[0]);
     }
@@ -377,7 +378,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tbs.one.impl.common.statistic.c
  * JD-Core Version:    0.7.0.1
  */

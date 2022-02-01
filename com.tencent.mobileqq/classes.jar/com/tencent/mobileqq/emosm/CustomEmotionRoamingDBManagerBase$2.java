@@ -21,7 +21,7 @@ class CustomEmotionRoamingDBManagerBase$2
       return;
     }
     boolean bool2 = false;
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     boolean bool1;
     if (i != 1)
     {
@@ -34,24 +34,24 @@ class CustomEmotionRoamingDBManagerBase$2
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("can not save fav emoticon data, type:");
-            localStringBuilder.append(this.jdField_a_of_type_Int);
+            localStringBuilder.append(this.a);
             QLog.d("CustomEmotionRoamingDBManagerBase", 2, localStringBuilder.toString());
             bool1 = bool2;
           }
         }
         else
         {
-          bool1 = ((EntityManager)localObject).remove(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+          bool1 = ((EntityManager)localObject).remove(this.b);
         }
       }
       else {
-        bool1 = ((EntityManager)localObject).update(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+        bool1 = ((EntityManager)localObject).update(this.b);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase.setStatus(1000);
-      ((EntityManager)localObject).persist(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionBase);
+      this.b.setStatus(1000);
+      ((EntityManager)localObject).persist(this.b);
       bool1 = bool2;
     }
     ((EntityManager)localObject).close();
@@ -59,7 +59,7 @@ class CustomEmotionRoamingDBManagerBase$2
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateCustomEmotionDataListInDB type:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append("save result: ");
       ((StringBuilder)localObject).append(bool1);
       QLog.d("CustomEmotionRoamingDBManagerBase", 2, ((StringBuilder)localObject).toString());
@@ -68,7 +68,7 @@ class CustomEmotionRoamingDBManagerBase$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.2
  * JD-Core Version:    0.7.0.1
  */

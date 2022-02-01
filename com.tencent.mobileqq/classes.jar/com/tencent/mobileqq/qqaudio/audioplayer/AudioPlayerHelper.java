@@ -13,42 +13,34 @@ import mqq.app.MobileQQ;
 public class AudioPlayerHelper
 {
   public static int a = 1000;
-  private static String jdField_a_of_type_JavaLangString;
-  private static AudioPlayerHelper.AudioPlayerParameter[] jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
-  
-  public static AudioPlayerHelper.AudioPlayerParameter a()
-  {
-    if (c()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, true);
-    }
-    return new AudioPlayerHelper.AudioPlayerParameter(3, 0, true);
-  }
+  private static AudioPlayerHelper.AudioPlayerParameter[] b;
+  private static String c;
   
   private static AudioPlayerHelper.AudioPlayerParameter a(int paramInt)
   {
     AudioPlayerHelper.AudioPlayerParameter localAudioPlayerParameter;
     if (paramInt == 0)
     {
-      localAudioPlayerParameter = a();
+      localAudioPlayerParameter = b();
     }
     else if (paramInt == 1)
     {
-      localAudioPlayerParameter = b();
+      localAudioPlayerParameter = c();
     }
     else if (paramInt == 2)
     {
-      localAudioPlayerParameter = a();
-      localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
+      localAudioPlayerParameter = b();
+      localAudioPlayerParameter.c = false;
     }
     else if (paramInt == 3)
     {
-      localAudioPlayerParameter = a();
-      localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
+      localAudioPlayerParameter = b();
+      localAudioPlayerParameter.c = false;
     }
     else
     {
-      localAudioPlayerParameter = c();
-      localAudioPlayerParameter.jdField_a_of_type_Boolean = false;
+      localAudioPlayerParameter = d();
+      localAudioPlayerParameter.c = false;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("!@$#_");
@@ -59,7 +51,7 @@ public class AudioPlayerHelper
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("m");
-    localAudioPlayerParameter.jdField_a_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), localAudioPlayerParameter.jdField_a_of_type_Int);
+    localAudioPlayerParameter.a = localSharedPreferences.getInt(localStringBuilder.toString(), localAudioPlayerParameter.a);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("s");
@@ -67,14 +59,14 @@ public class AudioPlayerHelper
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append("so");
-    localAudioPlayerParameter.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), localAudioPlayerParameter.jdField_a_of_type_Boolean);
+    localAudioPlayerParameter.c = localSharedPreferences.getBoolean(localStringBuilder.toString(), localAudioPlayerParameter.c);
     return a(paramInt, localAudioPlayerParameter);
   }
   
   private static AudioPlayerHelper.AudioPlayerParameter a(int paramInt, AudioPlayerHelper.AudioPlayerParameter paramAudioPlayerParameter)
   {
-    paramAudioPlayerParameter = new AudioPlayerHelper.AudioPlayerParameter(paramAudioPlayerParameter.b, paramAudioPlayerParameter.jdField_a_of_type_Int, paramAudioPlayerParameter.jdField_a_of_type_Boolean);
-    Object localObject = jdField_a_of_type_JavaLangString;
+    paramAudioPlayerParameter = new AudioPlayerHelper.AudioPlayerParameter(paramAudioPlayerParameter.b, paramAudioPlayerParameter.a, paramAudioPlayerParameter.c);
+    Object localObject = c;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -89,7 +81,7 @@ public class AudioPlayerHelper
         if (paramInt == 0)
         {
           if (!"-1".equals(localObject[0])) {
-            paramAudioPlayerParameter.jdField_a_of_type_Int = Integer.parseInt(localObject[0]);
+            paramAudioPlayerParameter.a = Integer.parseInt(localObject[0]);
           }
           if (!"-1".equals(localObject[1]))
           {
@@ -100,7 +92,7 @@ public class AudioPlayerHelper
         else if (paramInt == 1)
         {
           if (!"-1".equals(localObject[2])) {
-            paramAudioPlayerParameter.jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+            paramAudioPlayerParameter.a = Integer.parseInt(localObject[2]);
           }
           if (!"-1".equals(localObject[3]))
           {
@@ -121,66 +113,69 @@ public class AudioPlayerHelper
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean a()
-  {
-    return Build.MODEL.contains("Lenovo K900");
+    c = paramString;
   }
   
   public static AudioPlayerHelper.AudioPlayerParameter[] a()
   {
     try
     {
-      if (jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter == null)
+      if (b == null)
       {
-        jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter = new AudioPlayerHelper.AudioPlayerParameter[5];
-        jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter[0] = a(0);
-        jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter[1] = a(1);
-        jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter[2] = a(2);
-        jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter[3] = a(3);
-        jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter[4] = a(4);
+        b = new AudioPlayerHelper.AudioPlayerParameter[5];
+        b[0] = a(0);
+        b[1] = a(1);
+        b[2] = a(2);
+        b[3] = a(3);
+        b[4] = a(4);
       }
-      AudioPlayerHelper.AudioPlayerParameter[] arrayOfAudioPlayerParameter = jdField_a_of_type_ArrayOfComTencentMobileqqQqaudioAudioplayerAudioPlayerHelper$AudioPlayerParameter;
+      AudioPlayerHelper.AudioPlayerParameter[] arrayOfAudioPlayerParameter = b;
       return arrayOfAudioPlayerParameter;
     }
     finally {}
   }
   
-  @TargetApi(11)
   public static AudioPlayerHelper.AudioPlayerParameter b()
   {
-    if (m()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
-    }
-    if (d()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
-    }
-    if (e()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
-    }
-    if (f()) {
-      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
-    }
     if (g()) {
+      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, true);
+    }
+    return new AudioPlayerHelper.AudioPlayerParameter(3, 0, true);
+  }
+  
+  @TargetApi(11)
+  public static AudioPlayerHelper.AudioPlayerParameter c()
+  {
+    if (q()) {
+      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
+    }
+    if (h()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
     }
     if (i()) {
       return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
     }
-    if ((!a()) && (!h()))
+    if (j()) {
+      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
+    }
+    if (k()) {
+      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
+    }
+    if (m()) {
+      return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
+    }
+    if ((!e()) && (!l()))
     {
-      if (j()) {
+      if (n()) {
         return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
       }
-      if (k()) {
+      if (o()) {
         return new AudioPlayerHelper.AudioPlayerParameter(0, 2, false);
       }
-      if (l()) {
+      if (p()) {
         return new AudioPlayerHelper.AudioPlayerParameter(3, 3, false);
       }
-      if (n()) {
+      if (r()) {
         return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
       }
       if (Build.VERSION.SDK_INT >= 11) {
@@ -191,17 +186,22 @@ public class AudioPlayerHelper
     return new AudioPlayerHelper.AudioPlayerParameter(0, 0, false);
   }
   
-  public static boolean b()
-  {
-    return (DeviceInfoUtil.g()) || (DeviceInfoUtil.f());
-  }
-  
-  public static AudioPlayerHelper.AudioPlayerParameter c()
+  public static AudioPlayerHelper.AudioPlayerParameter d()
   {
     return new AudioPlayerHelper.AudioPlayerParameter(0, 2, true);
   }
   
-  private static boolean c()
+  public static boolean e()
+  {
+    return Build.MODEL.contains("Lenovo K900");
+  }
+  
+  public static boolean f()
+  {
+    return (DeviceInfoUtil.Q()) || (DeviceInfoUtil.P());
+  }
+  
+  private static boolean g()
   {
     String str = Build.MODEL;
     int i;
@@ -216,64 +216,64 @@ public class AudioPlayerHelper
     return (str.contains("SCH-I699")) && (Build.VERSION.SDK_INT == 10);
   }
   
-  private static boolean d()
+  private static boolean h()
   {
     return (Build.MODEL.contains("HUAWEI Y 200T")) && (Build.VERSION.SDK_INT <= 10);
   }
   
-  private static boolean e()
+  private static boolean i()
   {
     return (Build.MODEL.contains("Lenovo A278t")) && (Build.VERSION.SDK_INT <= 10);
   }
   
-  private static boolean f()
+  private static boolean j()
   {
     return (Build.MODEL.contains("ZTE-T U960s")) && (Build.VERSION.SDK_INT <= 10);
   }
   
-  private static boolean g()
+  private static boolean k()
   {
     return Build.MODEL.contains("5910");
   }
   
-  private static boolean h()
+  private static boolean l()
   {
     return Build.MODEL.contains("vivo X9");
   }
   
-  private static boolean i()
+  private static boolean m()
   {
     return Build.MODEL.contains("V926");
   }
   
-  private static boolean j()
+  private static boolean n()
   {
     return Build.MODEL.contains("ZTE N881E");
   }
   
-  private static boolean k()
+  private static boolean o()
   {
     return Build.MODEL.contains("LNV-Lenovo S870e");
   }
   
-  private static boolean l()
+  private static boolean p()
   {
     return Build.MODEL.contains("Coolpad 5891Q");
   }
   
-  private static boolean m()
+  private static boolean q()
   {
     return (Build.MODEL.contains("ME860")) && (Build.VERSION.SDK_INT <= 10);
   }
   
-  private static boolean n()
+  private static boolean r()
   {
     return Build.MODEL.contains("GT-S7500");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

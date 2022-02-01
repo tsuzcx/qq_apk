@@ -12,11 +12,11 @@ class VideoCompositeHelper$1
   {
     try
     {
-      SLog.d(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "composite thread try get lock");
+      SLog.d(VideoCompositeHelper.a, "composite thread try get lock");
       try
       {
-        SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "composite thread get lock and start doComposite");
-        this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack);
+        SLog.c(VideoCompositeHelper.a, "composite thread get lock and start doComposite");
+        this.this$0.b(this.a, this.b, this.c, this.d, this.e);
         return;
       }
       finally {}
@@ -24,14 +24,14 @@ class VideoCompositeHelper$1
     }
     catch (Exception localException)
     {
-      SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "do composite exception", localException);
-      this.jdField_a_of_type_ComTencentMobileqqEditorCompositeVideoCompositeHelper$VideoCompositeCallBack.a(942012, localException.getMessage(), "");
+      SLog.c(VideoCompositeHelper.a, "do composite exception", localException);
+      this.e.a(942012, localException.getMessage(), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.editor.composite.VideoCompositeHelper.1
  * JD-Core Version:    0.7.0.1
  */

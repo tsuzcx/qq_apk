@@ -15,12 +15,12 @@ class AuthorityActivity$3
     this.this$0.a(true);
     AuthorityActivity.a(this.this$0).d();
     AuthorityActivity localAuthorityActivity = this.this$0;
-    AuthUIUtil.a(localAuthorityActivity, localAuthorityActivity.getResources().getString(2131694647), new AuthorityActivity.3.1(this));
+    AuthUIUtil.a(localAuthorityActivity, localAuthorityActivity.getResources().getString(2131892333), new AuthorityActivity.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityActivity.3
  * JD-Core Version:    0.7.0.1
  */

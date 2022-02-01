@@ -12,45 +12,22 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/statemachine/VideoState;", "", "state", "Ljava/util/concurrent/atomic/AtomicInteger;", "action", "videoView", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;", "videoPlayController", "Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayController;", "(Ljava/util/concurrent/atomic/AtomicInteger;Ljava/util/concurrent/atomic/AtomicInteger;Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayController;)V", "getAction", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setAction", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "getState", "setState", "getVideoPlayController", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayController;", "setVideoPlayController", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoPlayController;)V", "getVideoView", "()Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;", "setVideoView", "(Lcom/tencent/mobileqq/kandian/biz/gifvideo/base/video/VideoView;)V", "changeToNewState", "", "newState", "", "goToNextState", "handleAction", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public class VideoState
 {
-  public static final VideoState.Companion a;
-  @Nullable
-  private VideoPlayController jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  @Nullable
-  private VideoView jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  @NotNull
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  public static final VideoState.Companion a = new VideoState.Companion(null);
   @NotNull
   private AtomicInteger b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoStatemachineVideoState$Companion = new VideoState.Companion(null);
-  }
+  @NotNull
+  private AtomicInteger c;
+  @Nullable
+  private VideoView d;
+  @Nullable
+  private VideoPlayController e;
   
   public VideoState(@NotNull AtomicInteger paramAtomicInteger1, @NotNull AtomicInteger paramAtomicInteger2, @Nullable VideoView paramVideoView, @Nullable VideoPlayController paramVideoPlayController)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger1;
-    this.b = paramAtomicInteger2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView = paramVideoView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController = paramVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoPlayController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoPlayController;
-  }
-  
-  @Nullable
-  public VideoView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseVideoVideoView;
-  }
-  
-  @NotNull
-  public AtomicInteger a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    this.b = paramAtomicInteger1;
+    this.c = paramAtomicInteger2;
+    this.d = paramVideoView;
+    this.e = paramVideoPlayController;
   }
   
   public void a()
@@ -60,19 +37,19 @@ public class VideoState
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        Object localObject1 = a();
+        Object localObject1 = d();
         if (localObject1 != null)
         {
           localObject1 = ((VideoView)localObject1).tag;
           localStringBuilder.append((String)localObject1);
           localStringBuilder.append(" handleAction curState: ");
-          localStringBuilder.append(a());
-          localStringBuilder.append(", curAction: ");
           localStringBuilder.append(b());
+          localStringBuilder.append(", curAction: ");
+          localStringBuilder.append(c());
           QLog.d("VideoState", 1, localStringBuilder.toString());
-          if (b().get() == 7)
+          if (c().get() == 7)
           {
-            localObject1 = a();
+            localObject1 = e();
             if (localObject1 != null) {
               ((VideoPlayController)localObject1).e((Function0)new VideoState.handleAction.1(this));
             }
@@ -88,9 +65,9 @@ public class VideoState
   
   public final void a(int paramInt)
   {
-    int i = a().get();
+    int i = b().get();
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = a();
+    Object localObject = d();
     if (localObject != null) {
       localObject = ((VideoView)localObject).tag;
     } else {
@@ -102,9 +79,9 @@ public class VideoState
     localStringBuilder.append(" to ");
     localStringBuilder.append(paramInt);
     QLog.d("VideoState", 1, localStringBuilder.toString());
-    a().set(paramInt);
-    d();
-    localObject = a();
+    b().set(paramInt);
+    h();
+    localObject = e();
     if (localObject != null) {
       ((VideoPlayController)localObject).a(i, paramInt);
     }
@@ -116,17 +93,35 @@ public class VideoState
     return this.b;
   }
   
-  public final void d()
+  @NotNull
+  public AtomicInteger c()
   {
-    VideoPlayController localVideoPlayController = a();
+    return this.c;
+  }
+  
+  @Nullable
+  public VideoView d()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public VideoPlayController e()
+  {
+    return this.e;
+  }
+  
+  public final void h()
+  {
+    VideoPlayController localVideoPlayController = e();
     if (localVideoPlayController != null) {
-      localVideoPlayController.g();
+      localVideoPlayController.s();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.statemachine.VideoState
  * JD-Core Version:    0.7.0.1
  */

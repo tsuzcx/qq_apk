@@ -39,185 +39,90 @@ public class AVGameVideoLayer
   extends GLViewGroup
   implements GLView.OnTouchListener, IAVGameMediaPlayerCtrl.PushDecodeMsg
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected AVGameAppInterface a;
-  UserInfoHandler jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler;
-  private AVGameControlUI jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
-  protected AVGameMediaRenderHelper a;
-  private AVGameScreenLayoutStyle jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameScreenLayoutStyle;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AVGameVideoLayer.1(this);
-  protected AVGameVideoView[] a;
-  protected final List<MemberVideoDisplayInfo> b;
-  protected AVGameVideoView[] b;
-  protected boolean c;
-  protected AVGameVideoView[] c;
-  protected volatile Rect d;
-  private boolean d;
+  protected final List<MemberVideoDisplayInfo> I = new ArrayList(8);
+  protected AVGameAppInterface J;
+  protected AVGameVideoView[] K = new AVGameVideoView[9];
+  protected AVGameVideoView[] L = new AVGameVideoView[9];
+  protected AVGameVideoView[] M = new AVGameVideoView[1];
+  protected volatile Rect N = null;
+  protected AVGameMediaRenderHelper O;
+  UserInfoHandler P;
+  protected boolean Q = false;
+  private Context R;
+  private boolean S = false;
+  private AVGameScreenLayoutStyle T;
+  private AVGameControlUI U;
+  private Runnable V = new AVGameVideoLayer.1(this);
   
   public AVGameVideoLayer(Context paramContext, AVGameAppInterface paramAVGameAppInterface)
   {
     super(paramContext);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList(8);
-    this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView = new AVGameVideoView[9];
-    this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView = new AVGameVideoView[9];
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView = new AVGameVideoView[1];
-    this.jdField_d_of_type_AndroidGraphicsRect = null;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface = paramAVGameAppInterface;
-    this.jdField_a_of_type_ComTencentAvgameBusinessHandlerUserInfoHandler = ((UserInfoHandler)this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getBusinessHandler(HandlerFactory.b));
-    q();
-    r();
-    g(2);
-    this.jdField_c_of_type_Boolean = false;
+    this.R = paramContext;
+    this.J = paramAVGameAppInterface;
+    this.P = ((UserInfoHandler)this.J.getBusinessHandler(HandlerFactory.b));
+    A();
+    H();
+    i(2);
+    this.Q = false;
   }
   
-  private void a(long paramLong, GLVideoView paramGLVideoView, String paramString, int paramInt, boolean paramBoolean)
-  {
-    if (paramGLVideoView != null)
-    {
-      String str = AVGameUtil.a(paramString, paramInt);
-      paramGLVideoView.a(paramString, paramInt);
-      paramGLVideoView.a(0);
-      paramGLVideoView.a(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin());
-      try
-      {
-        paramString = paramGLVideoView.a();
-        GraphicRenderMgr.getInstance().setAccountUin(this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin());
-        GraphicRenderMgr.setGlRender(str, paramString);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("setGlRender[initGLVideoViewBasePara], key[");
-        localStringBuilder.append(str);
-        localStringBuilder.append("], debug[");
-        localStringBuilder.append(paramGLVideoView.d());
-        localStringBuilder.append("], videoSrcType[");
-        localStringBuilder.append(paramInt);
-        localStringBuilder.append("], yuvTexture[");
-        localStringBuilder.append(paramString);
-        localStringBuilder.append("]");
-        QLog.w("AVGameVideoLayer", 1, localStringBuilder.toString());
-        QavSDK.a().a().a(paramLong, false, paramBoolean);
-        return;
-      }
-      catch (UnsatisfiedLinkError paramGLVideoView)
-      {
-        paramGLVideoView.printStackTrace();
-      }
-    }
-  }
-  
-  private void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("closeGLVideoView uin:=");
-    localStringBuilder.append(paramString);
-    AVLog.d("AVGameVideoLayer", localStringBuilder.toString());
-    paramInt = a(paramString, paramInt);
-    if (paramInt >= 0)
-    {
-      paramString = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[paramInt];
-      paramString.a(1);
-      paramString.b(null);
-      paramString.m(true);
-      paramString.k(false);
-      paramString.g(false);
-      paramString.l(true);
-      paramString.a(null, 0);
-      paramString.a("");
-    }
-  }
-  
-  private void a(String paramString1, long paramLong, String paramString2, int paramInt, boolean paramBoolean)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("closeGLVideoViewBasePara uin:=");
-    ((StringBuilder)localObject).append(paramString2);
-    AVLog.d("AVGameVideoLayer", ((StringBuilder)localObject).toString());
-    int i = a(paramString2, paramInt);
-    if (i >= 0)
-    {
-      paramString2 = AVGameUtil.a(paramString2, paramInt);
-      localObject = GraphicRenderMgr.getInstance();
-      ((IGraphicRender)localObject).flushGlRender(paramString2);
-      if ((!paramBoolean) && (paramInt == 1)) {
-        ((IGraphicRender)localObject).clearCameraFrames();
-      }
-      GraphicRenderMgr.setGlRender(paramString2, null);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("setGlRender[closeGLVideoViewBasePara], key[");
-      ((StringBuilder)localObject).append(paramString2);
-      ((StringBuilder)localObject).append("], index[");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append("], seq[");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append("], from[");
-      ((StringBuilder)localObject).append(paramString1);
-      ((StringBuilder)localObject).append("]");
-      QLog.w("AVGameVideoLayer", 1, ((StringBuilder)localObject).toString());
-      if (paramBoolean) {
-        QavSDK.a().a().a(paramLong, true, paramBoolean);
-      }
-    }
-  }
-  
-  private void q()
+  private void A()
   {
     Boolean localBoolean = Boolean.valueOf(false);
     int i = 0;
     AVGameVideoView[] arrayOfAVGameVideoView;
     for (;;)
     {
-      arrayOfAVGameVideoView = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
+      arrayOfAVGameVideoView = this.K;
       if (i >= arrayOfAVGameVideoView.length) {
         break;
       }
-      arrayOfAVGameVideoView[i] = new AVGameVideoView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface, String.format("%s_%s", new Object[] { "AVGameVideoLayer", Integer.valueOf(i) }), 0L);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].a(localBoolean);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].a(1);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].h(-1);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].c(i * 2);
-      a(this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i]);
+      arrayOfAVGameVideoView[i] = new AVGameVideoView(this.R, this.J, String.format("%s_%s", new Object[] { "AVGameVideoLayer", Integer.valueOf(i) }), 0L);
+      this.K[i].a(this.R);
+      this.K[i].a(localBoolean);
+      this.K[i].a(1);
+      this.K[i].i(-1);
+      this.K[i].c(i * 2);
+      a(this.K[i]);
       i += 1;
     }
     i = 0;
     for (;;)
     {
-      arrayOfAVGameVideoView = this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
+      arrayOfAVGameVideoView = this.L;
       if (i >= arrayOfAVGameVideoView.length) {
         break;
       }
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
-      AVGameAppInterface localAVGameAppInterface = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface;
+      Context localContext = this.R;
+      AVGameAppInterface localAVGameAppInterface = this.J;
       int j = i + 9;
       arrayOfAVGameVideoView[i] = new AVGameVideoView(localContext, localAVGameAppInterface, String.format("%s_%s", new Object[] { "AVGameVideoLayer", Integer.valueOf(j) }), 0L, false);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].a(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].a(1);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].a(localBoolean);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].h(-1);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].c(j * 2);
-      a(this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i]);
+      this.L[i].a(this.R);
+      this.L[i].a(1);
+      this.L[i].a(localBoolean);
+      this.L[i].i(-1);
+      this.L[i].c(j * 2);
+      a(this.L[i]);
       i += 1;
     }
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[0] = new AVGameVideoView(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface, String.format("%s_%s", new Object[] { "AVGameVideoLayer", Integer.valueOf(17) }), 0L, false);
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[0].c(81);
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[0].a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[0].a(localBoolean);
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[0].a(1);
-    a(this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[0]);
+    this.M[0] = new AVGameVideoView(this.R, this.J, String.format("%s_%s", new Object[] { "AVGameVideoLayer", Integer.valueOf(17) }), 0L, false);
+    this.M[0].c(81);
+    this.M[0].a(this.R);
+    this.M[0].a(localBoolean);
+    this.M[0].a(1);
+    a(this.M[0]);
   }
   
-  private void r()
+  private void H()
   {
-    d(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165311));
+    e(this.R.getResources().getColor(2131165547));
   }
   
-  private void s()
+  private void I()
   {
     AVLog.d("AVGameVideoLayer", "doResumeVideo");
-    Object localObject1 = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
-    Object localObject2 = AVGameBusinessCtrl.b().a();
+    Object localObject1 = this.J.getCurrentAccountUin();
+    Object localObject2 = AVGameBusinessCtrl.b().j();
     int j = 0;
     boolean bool2 = false;
     if (localObject2 != null)
@@ -257,23 +162,23 @@ public class AVGameVideoLayer
       ((StringBuilder)localObject1).append(";mHasDoGoOnStage:=");
       ((StringBuilder)localObject1).append(bool1);
       ((StringBuilder)localObject1).append(";mNeedReOpenCamera:=");
-      ((StringBuilder)localObject1).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject1).append(this.S);
       AVLog.d("AVGameVideoLayer", ((StringBuilder)localObject1).toString());
       if (bool2)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI;
+        localObject1 = this.U;
         if (localObject1 != null) {
-          ((AVGameControlUI)localObject1).c();
+          ((AVGameControlUI)localObject1).e();
         }
       }
     }
     else
     {
       int i = j;
-      if (GameEngine.a().f())
+      if (GameEngine.a().A())
       {
         i = j;
-        if (!GameEngine.a().g()) {
+        if (!GameEngine.a().B()) {
           i = 1;
         }
       }
@@ -283,9 +188,225 @@ public class AVGameVideoLayer
     }
   }
   
+  private void a(long paramLong, GLVideoView paramGLVideoView, String paramString, int paramInt, boolean paramBoolean)
+  {
+    if (paramGLVideoView != null)
+    {
+      String str = AVGameUtil.a(paramString, paramInt);
+      paramGLVideoView.a(paramString, paramInt);
+      paramGLVideoView.a(0);
+      paramGLVideoView.a(this.J.getCurrentAccountUin());
+      try
+      {
+        paramString = paramGLVideoView.B();
+        GraphicRenderMgr.getInstance().setAccountUin(this.J.getCurrentAccountUin());
+        GraphicRenderMgr.setGlRender(str, paramString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setGlRender[initGLVideoViewBasePara], key[");
+        localStringBuilder.append(str);
+        localStringBuilder.append("], debug[");
+        localStringBuilder.append(paramGLVideoView.T());
+        localStringBuilder.append("], videoSrcType[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("], yuvTexture[");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("]");
+        QLog.w("AVGameVideoLayer", 1, localStringBuilder.toString());
+        QavSDK.a().c().a(paramLong, false, paramBoolean);
+        return;
+      }
+      catch (UnsatisfiedLinkError paramGLVideoView)
+      {
+        paramGLVideoView.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("closeGLVideoView uin:=");
+    localStringBuilder.append(paramString);
+    AVLog.d("AVGameVideoLayer", localStringBuilder.toString());
+    paramInt = a(paramString, paramInt);
+    if (paramInt >= 0)
+    {
+      paramString = this.K[paramInt];
+      paramString.a(1);
+      paramString.b(null);
+      paramString.n(true);
+      paramString.l(false);
+      paramString.h(false);
+      paramString.m(true);
+      paramString.a(null, 0);
+      paramString.a("");
+    }
+  }
+  
+  private void a(String paramString1, long paramLong, String paramString2, int paramInt, boolean paramBoolean)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("closeGLVideoViewBasePara uin:=");
+    ((StringBuilder)localObject).append(paramString2);
+    AVLog.d("AVGameVideoLayer", ((StringBuilder)localObject).toString());
+    int i = a(paramString2, paramInt);
+    if (i >= 0)
+    {
+      paramString2 = AVGameUtil.a(paramString2, paramInt);
+      localObject = GraphicRenderMgr.getInstance();
+      ((IGraphicRender)localObject).flushGlRender(paramString2);
+      if ((!paramBoolean) && (paramInt == 1)) {
+        ((IGraphicRender)localObject).clearCameraFrames();
+      }
+      GraphicRenderMgr.setGlRender(paramString2, null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setGlRender[closeGLVideoViewBasePara], key[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("], index[");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("], seq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("], from[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("]");
+      QLog.w("AVGameVideoLayer", 1, ((StringBuilder)localObject).toString());
+      if (paramBoolean) {
+        QavSDK.a().c().a(paramLong, true, paramBoolean);
+      }
+    }
+  }
+  
+  public void B()
+  {
+    AVLog.d("AVGameVideoLayer", "doOnResume");
+    AVGameHandler.a().c().postDelayed(this.V, 500L);
+  }
+  
+  public void C()
+  {
+    AVLog.d("AVGameVideoLayer", "doOnStop");
+    String str = this.J.getCurrentAccountUin();
+    AVGameVideoView[] arrayOfAVGameVideoView = this.K;
+    int k = arrayOfAVGameVideoView.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      AVGameVideoView localAVGameVideoView = arrayOfAVGameVideoView[i];
+      if (localAVGameVideoView.c()) {
+        if (str.equalsIgnoreCase(localAVGameVideoView.R()))
+        {
+          b("VideoLayer_doOnStop", -1L);
+          j = 1;
+        }
+        else
+        {
+          b("VideoLayer_doOnStop", -1L, localAVGameVideoView.R(), localAVGameVideoView.S());
+        }
+      }
+      i += 1;
+    }
+    c(false);
+    if ((CameraUtils.a(this.R).isCameraOpened(-1L)) && (j != 0)) {
+      this.S = true;
+    }
+    AVGameHandler.a().c().removeCallbacks(this.V);
+  }
+  
+  public void D()
+  {
+    AVLog.d("AVGameVideoLayer", "doOnDestroy");
+    int i = 0;
+    AVGameVideoView[] arrayOfAVGameVideoView;
+    for (;;)
+    {
+      arrayOfAVGameVideoView = this.K;
+      if (i >= arrayOfAVGameVideoView.length) {
+        break;
+      }
+      arrayOfAVGameVideoView[i].a(1);
+      this.K[i].n(true);
+      this.K[i].l(false);
+      this.K[i].h(false);
+      i += 1;
+    }
+    this.K = null;
+    i = 0;
+    for (;;)
+    {
+      arrayOfAVGameVideoView = this.L;
+      if (i >= arrayOfAVGameVideoView.length) {
+        break;
+      }
+      arrayOfAVGameVideoView[i].a(1);
+      this.L[i].n(true);
+      this.L[i].l(false);
+      this.L[i].h(false);
+      i += 1;
+    }
+    this.L = null;
+    this.M = null;
+    this.S = false;
+    this.Q = true;
+  }
+  
+  protected void E()
+  {
+    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.O;
+    if (localAVGameMediaRenderHelper != null) {
+      localAVGameMediaRenderHelper.a(this.N, g(), h());
+    }
+  }
+  
+  public int F()
+  {
+    int i = 0;
+    for (;;)
+    {
+      Object localObject = this.K;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = localObject[i];
+      j = i;
+      if (TextUtils.isEmpty(((GLVideoView)localObject).R())) {
+        return j;
+      }
+      if (((GLVideoView)localObject).b() == 1) {
+        return i;
+      }
+      i += 1;
+    }
+    int j = -1;
+    return j;
+  }
+  
+  public int G()
+  {
+    int i = 0;
+    for (;;)
+    {
+      Object localObject = this.L;
+      if (i >= localObject.length) {
+        break;
+      }
+      localObject = localObject[i];
+      j = i;
+      if (TextUtils.isEmpty(((GLVideoView)localObject).R())) {
+        return j;
+      }
+      if (((GLVideoView)localObject).b() == 1) {
+        return i;
+      }
+      i += 1;
+    }
+    int j = -1;
+    return j;
+  }
+  
   public int a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView == null) {
+    if (this.K == null) {
       return -1;
     }
     if (!TextUtils.isEmpty(paramString))
@@ -293,12 +414,12 @@ public class AVGameVideoLayer
       int i = 0;
       for (;;)
       {
-        Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
+        Object localObject = this.K;
         if (i >= localObject.length) {
           break;
         }
         localObject = localObject[i];
-        if ((paramString.equals(((GLVideoView)localObject).c())) && (paramInt == ((GLVideoView)localObject).g()) && (((GLVideoView)localObject).a() == 0)) {
+        if ((paramString.equals(((GLVideoView)localObject).R())) && (paramInt == ((GLVideoView)localObject).S()) && (((GLVideoView)localObject).b() == 0)) {
           return i;
         }
         i += 1;
@@ -313,8 +434,8 @@ public class AVGameVideoLayer
     localStringBuilder.append("setVideoRenderPosition, rect[");
     localStringBuilder.append(paramRect.toString());
     QLog.w("AVGameVideoLayer", 1, localStringBuilder.toString());
-    this.jdField_d_of_type_AndroidGraphicsRect = paramRect;
-    b();
+    this.N = paramRect;
+    m();
   }
   
   public void a(GLCanvas paramGLCanvas)
@@ -325,7 +446,7 @@ public class AVGameVideoLayer
   
   public void a(AVGameControlUI paramAVGameControlUI)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUI = paramAVGameControlUI;
+    this.U = paramAVGameControlUI;
   }
   
   public void a(String paramString) {}
@@ -338,14 +459,14 @@ public class AVGameVideoLayer
     ((StringBuilder)localObject).append("], seq[");
     ((StringBuilder)localObject).append(paramLong);
     QLog.w("AVGameVideoLayer", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
+    localObject = this.J.getCurrentAccountUin();
     int i = a((String)localObject, 1);
     if (i < 0)
     {
-      i = f();
+      i = F();
       if (i >= 0)
       {
-        paramString = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i];
+        paramString = this.K[i];
         a(paramLong, paramString, (String)localObject, 1, false);
       }
       else
@@ -356,8 +477,8 @@ public class AVGameVideoLayer
     else
     {
       localObject = AVGameUtil.a((String)localObject, 1);
-      paramString = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i];
-      GraphicRenderMgr.setGlRender((String)localObject, paramString.a());
+      paramString = this.K[i];
+      GraphicRenderMgr.setGlRender((String)localObject, paramString.B());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setGlRender[openSelfVideoView], key[");
       localStringBuilder.append((String)localObject);
@@ -366,15 +487,15 @@ public class AVGameVideoLayer
       localStringBuilder.append("], forceToBigView[");
       localStringBuilder.append(false);
       localStringBuilder.append("], ");
-      localStringBuilder.append(paramString.d());
+      localStringBuilder.append(paramString.T());
       QLog.w("AVGameVideoLayer", 1, localStringBuilder.toString());
     }
     if (paramString != null)
     {
-      paramString.g(false);
-      paramString.k(false);
-      paramString.a(paramLong, CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).isFrontCamera());
-      paramString.m(true);
+      paramString.h(false);
+      paramString.l(false);
+      paramString.a(paramLong, CameraUtils.a(this.R).isFrontCamera());
+      paramString.n(true);
       paramString.a(0);
       paramString.a(ImageView.ScaleType.CENTER_CROP);
     }
@@ -394,10 +515,10 @@ public class AVGameVideoLayer
     localObject = AVGameUtil.a(paramString2, paramInt);
     if (i < 0)
     {
-      i = f();
+      i = F();
       if (i >= 0)
       {
-        paramString1 = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i];
+        paramString1 = this.K[i];
         a(paramLong, paramString1, paramString2, paramInt, true);
       }
       else
@@ -407,8 +528,8 @@ public class AVGameVideoLayer
     }
     else
     {
-      paramString1 = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i];
-      GraphicRenderMgr.setGlRender((String)localObject, paramString1.a());
+      paramString1 = this.K[i];
+      GraphicRenderMgr.setGlRender((String)localObject, paramString1.B());
       paramString2 = new StringBuilder();
       paramString2.append("setGlRender[openPeerVideo], key[");
       paramString2.append((String)localObject);
@@ -417,12 +538,12 @@ public class AVGameVideoLayer
       paramString2.append("], index[");
       paramString2.append(i);
       paramString2.append("], ");
-      paramString2.append(paramString1.d());
+      paramString2.append(paramString1.T());
       QLog.w("AVGameVideoLayer", 1, paramString2.toString());
     }
     if (paramString1 != null)
     {
-      paramString1.k(true);
+      paramString1.l(true);
       paramString1.a(paramLong, false);
       paramString1.a(0);
       paramString1.a(ImageView.ScaleType.CENTER_CROP);
@@ -433,11 +554,11 @@ public class AVGameVideoLayer
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
   {
-    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper;
-    if ((localAVGameMediaRenderHelper != null) && (!this.jdField_c_of_type_Boolean))
+    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.O;
+    if ((localAVGameMediaRenderHelper != null) && (!this.Q))
     {
       localAVGameMediaRenderHelper.a(paramArrayOfByte, paramInt1, paramInt2, paramLong);
-      b();
+      m();
     }
   }
   
@@ -456,7 +577,7 @@ public class AVGameVideoLayer
     ((StringBuilder)localObject).append("], seq[");
     ((StringBuilder)localObject).append(paramLong);
     QLog.w("AVGameVideoLayer", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
+    localObject = this.J.getCurrentAccountUin();
     if (a((String)localObject, 1) >= 0)
     {
       a(paramString, paramLong, (String)localObject, 1, false);
@@ -481,190 +602,62 @@ public class AVGameVideoLayer
   
   public void c(boolean paramBoolean)
   {
-    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper;
+    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.O;
     if (localAVGameMediaRenderHelper != null) {
       localAVGameMediaRenderHelper.a(paramBoolean);
     }
-    b();
+    m();
   }
   
   public void d(String paramString) {}
   
-  public int f()
-  {
-    int i = 0;
-    for (;;)
-    {
-      Object localObject = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject = localObject[i];
-      j = i;
-      if (TextUtils.isEmpty(((GLVideoView)localObject).c())) {
-        return j;
-      }
-      if (((GLVideoView)localObject).a() == 1) {
-        return i;
-      }
-      i += 1;
-    }
-    int j = -1;
-    return j;
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper = new AVGameMediaRenderHelper();
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper.a(b(), c());
-  }
-  
   protected void f(GLCanvas paramGLCanvas)
   {
     super.a(paramGLCanvas);
-    p();
-  }
-  
-  public int g()
-  {
-    int i = 0;
-    for (;;)
-    {
-      Object localObject = this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
-      if (i >= localObject.length) {
-        break;
-      }
-      localObject = localObject[i];
-      j = i;
-      if (TextUtils.isEmpty(((GLVideoView)localObject).c())) {
-        return j;
-      }
-      if (((GLVideoView)localObject).a() == 1) {
-        return i;
-      }
-      i += 1;
-    }
-    int j = -1;
-    return j;
-  }
-  
-  public void g()
-  {
-    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper;
-    if (localAVGameMediaRenderHelper != null)
-    {
-      localAVGameMediaRenderHelper.a();
-      this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper = null;
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameScreenLayoutStyle = AVGameScreenLayoutStyle.a(paramInt, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface);
+    E();
   }
   
   protected void h(GLCanvas paramGLCanvas)
   {
-    paramGLCanvas = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameScreenLayoutStyle;
+    paramGLCanvas = this.T;
     if (paramGLCanvas != null) {
-      paramGLCanvas.a(this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView, this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView, b(), c(), this.jdField_b_of_type_JavaUtilList);
+      paramGLCanvas.a(this.K, this.L, g(), h(), this.I);
     }
-    paramGLCanvas = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
+    paramGLCanvas = this.K;
     int j = paramGLCanvas.length;
     int i = 0;
     while (i < j)
     {
       Object localObject = paramGLCanvas[i];
-      if ((localObject.a()) && (localObject.g() == 2) && (localObject.c() == 0)) {
-        localObject.a((b() - 640) / 2, 40, (b() + 640) / 2, 520);
+      if ((localObject.c()) && (localObject.S() == 2) && (localObject.h() == 0)) {
+        localObject.b((g() - 640) / 2, 40, (g() + 640) / 2, 520);
       }
       i += 1;
     }
   }
   
-  public void l() {}
-  
-  public void m()
+  public void i(int paramInt)
   {
-    AVLog.d("AVGameVideoLayer", "doOnResume");
-    AVGameHandler.a().b().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+    this.T = AVGameScreenLayoutStyle.a(paramInt, this.R, this.J);
   }
   
-  public void n()
+  public void q()
   {
-    AVLog.d("AVGameVideoLayer", "doOnStop");
-    String str = this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
-    AVGameVideoView[] arrayOfAVGameVideoView = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
-    int k = arrayOfAVGameVideoView.length;
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    this.O = new AVGameMediaRenderHelper();
+    this.O.a(g(), h());
+  }
+  
+  public void r()
+  {
+    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.O;
+    if (localAVGameMediaRenderHelper != null)
     {
-      AVGameVideoView localAVGameVideoView = arrayOfAVGameVideoView[i];
-      if (localAVGameVideoView.a()) {
-        if (str.equalsIgnoreCase(localAVGameVideoView.c()))
-        {
-          b("VideoLayer_doOnStop", -1L);
-          j = 1;
-        }
-        else
-        {
-          b("VideoLayer_doOnStop", -1L, localAVGameVideoView.c(), localAVGameVideoView.g());
-        }
-      }
-      i += 1;
+      localAVGameMediaRenderHelper.a();
+      this.O = null;
     }
-    c(false);
-    if ((CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).isCameraOpened(-1L)) && (j != 0)) {
-      this.jdField_d_of_type_Boolean = true;
-    }
-    AVGameHandler.a().b().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void o()
-  {
-    AVLog.d("AVGameVideoLayer", "doOnDestroy");
-    int i = 0;
-    AVGameVideoView[] arrayOfAVGameVideoView;
-    for (;;)
-    {
-      arrayOfAVGameVideoView = this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
-      if (i >= arrayOfAVGameVideoView.length) {
-        break;
-      }
-      arrayOfAVGameVideoView[i].a(1);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].m(true);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].k(false);
-      this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].g(false);
-      i += 1;
-    }
-    this.jdField_a_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView = null;
-    i = 0;
-    for (;;)
-    {
-      arrayOfAVGameVideoView = this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView;
-      if (i >= arrayOfAVGameVideoView.length) {
-        break;
-      }
-      arrayOfAVGameVideoView[i].a(1);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].m(true);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].k(false);
-      this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView[i].g(false);
-      i += 1;
-    }
-    this.jdField_b_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView = null;
-    this.jdField_c_of_type_ArrayOfComTencentAvgameGameroomVideoAVGameVideoView = null;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  protected void p()
-  {
-    AVGameMediaRenderHelper localAVGameMediaRenderHelper = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameMediaRenderHelper;
-    if (localAVGameMediaRenderHelper != null) {
-      localAVGameMediaRenderHelper.a(this.jdField_d_of_type_AndroidGraphicsRect, b(), c());
-    }
-  }
+  public void z() {}
 }
 
 

@@ -24,7 +24,15 @@ public class MediaMsgTipsFilter
     return null;
   }
   
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    if ((paramMessageRecord instanceof MessageForPtt)) {
+      paramMessage.msg = ((MessageForPtt)paramMessageRecord).getSummaryMsg();
+    }
+    return paramMessage.msgtype == -2058;
+  }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
   {
     if (paramMessage.msgtype == -2016)
     {
@@ -41,10 +49,10 @@ public class MediaMsgTipsFilter
         if ((!((HotChatManager)paramAIOContext.a().getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramMessage.frienduin)) && (!((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(paramMessage))) {
           return paramMessage.getMessageText();
         }
-        return paramAIOContext.a().getResources().getString(2131691283);
+        return paramAIOContext.b().getResources().getString(2131888233);
       }
       if (paramMessage.msgtype == -7001) {
-        return paramAIOContext.a().getResources().getString(2131694329);
+        return paramAIOContext.b().getResources().getString(2131891967);
       }
       return null;
     }
@@ -54,18 +62,10 @@ public class MediaMsgTipsFilter
     }
     return paramMessage.msg;
   }
-  
-  public boolean a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    if ((paramMessageRecord instanceof MessageForPtt)) {
-      paramMessage.msg = ((MessageForPtt)paramMessageRecord).getSummaryMsg();
-    }
-    return paramMessage.msgtype == -2058;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.MediaMsgTipsFilter
  * JD-Core Version:    0.7.0.1
  */

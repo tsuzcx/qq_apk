@@ -9,21 +9,15 @@ import java.util.List;
 
 public class AEEditorMusicAdapter$AEEditorMusicInfo
 {
-  public static final AEEditorMusicInfo a;
-  public static final List<AEEditorMusicInfo> a;
-  public int a;
-  private VsMusicItemInfo a;
-  public boolean a;
-  public int b;
-  public final boolean b;
-  public final int c;
-  public final int d;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilList = a();
-    jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo = a();
-  }
+  public static final List<AEEditorMusicInfo> a = ;
+  public static final AEEditorMusicInfo b = l();
+  public boolean c;
+  public int d;
+  public int e = 0;
+  public final int f;
+  public final boolean g;
+  public final int h;
+  private VsMusicItemInfo i;
   
   public AEEditorMusicAdapter$AEEditorMusicInfo(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean, int paramInt)
   {
@@ -32,42 +26,44 @@ public class AEEditorMusicAdapter$AEEditorMusicInfo
   
   public AEEditorMusicAdapter$AEEditorMusicInfo(@NonNull VsMusicItemInfo paramVsMusicItemInfo, boolean paramBoolean1, int paramInt1, boolean paramBoolean2, int paramInt2)
   {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo = paramVsMusicItemInfo;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Int = 0;
-    this.c = paramInt1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.d = paramInt2;
-  }
-  
-  private static AEEditorMusicInfo a()
-  {
-    VsMusicItemInfo localVsMusicItemInfo = new VsMusicItemInfo();
-    localVsMusicItemInfo.mSongMid = "fakeMid_template_bgm";
-    localVsMusicItemInfo.mMusicName = "";
-    localVsMusicItemInfo.mUrl = "";
-    localVsMusicItemInfo.mAlbumUrl = "";
-    return new AEEditorMusicInfo(localVsMusicItemInfo, false, 3);
+    this.i = paramVsMusicItemInfo;
+    this.c = paramBoolean1;
+    this.d = 0;
+    this.f = paramInt1;
+    this.g = paramBoolean2;
+    this.h = paramInt2;
   }
   
   @NonNull
-  private static List<AEEditorMusicInfo> a()
+  private String j()
+  {
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
+    if (localVsMusicItemInfo == null) {
+      return "";
+    }
+    if (localVsMusicItemInfo.mMusicName == null) {
+      return "";
+    }
+    return this.i.mMusicName;
+  }
+  
+  @NonNull
+  private static List<AEEditorMusicInfo> k()
   {
     LinkedList localLinkedList = new LinkedList();
-    int j;
-    for (int i = 0; i < 6; i = j)
+    int k;
+    for (int j = 0; j < 6; j = k)
     {
       Object localObject = new VsMusicItemInfo();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("fakeMid");
-      j = i + 1;
-      localStringBuilder.append(j);
+      k = j + 1;
+      localStringBuilder.append(k);
       ((VsMusicItemInfo)localObject).mSongMid = localStringBuilder.toString();
       ((VsMusicItemInfo)localObject).mMusicName = "";
       ((VsMusicItemInfo)localObject).mUrl = "";
       ((VsMusicItemInfo)localObject).mAlbumUrl = "";
-      if (i == 0) {
+      if (j == 0) {
         localObject = new AEEditorMusicInfo((VsMusicItemInfo)localObject, false, 1);
       } else {
         localObject = new AEEditorMusicInfo((VsMusicItemInfo)localObject, false, 0);
@@ -77,55 +73,65 @@ public class AEEditorMusicAdapter$AEEditorMusicInfo
     return localLinkedList;
   }
   
-  @NonNull
-  private String f()
+  private static AEEditorMusicInfo l()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
-    if (localVsMusicItemInfo == null) {
-      return "";
-    }
-    if (localVsMusicItemInfo.mMusicName == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mMusicName;
+    VsMusicItemInfo localVsMusicItemInfo = new VsMusicItemInfo();
+    localVsMusicItemInfo.mSongMid = "fakeMid_template_bgm";
+    localVsMusicItemInfo.mMusicName = "";
+    localVsMusicItemInfo.mUrl = "";
+    localVsMusicItemInfo.mAlbumUrl = "";
+    return new AEEditorMusicInfo(localVsMusicItemInfo, false, 3);
   }
   
-  public int a()
+  public boolean a()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
-    if (localVsMusicItemInfo == null) {
-      return 0;
-    }
-    return localVsMusicItemInfo.musicStart;
+    return TextUtils.isEmpty(c());
   }
   
   @Nullable
-  public VsMusicItemInfo a()
+  public VsMusicItemInfo b()
   {
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+    return this.i;
   }
   
   @NonNull
-  public String a()
+  public String c()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
     if (localVsMusicItemInfo == null) {
       return "";
     }
     if (localVsMusicItemInfo.mSongMid == null) {
       return "";
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mSongMid;
+    return this.i.mSongMid;
   }
   
-  public boolean a()
+  @NonNull
+  public String d()
   {
-    return TextUtils.isEmpty(a());
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
+    if (localVsMusicItemInfo == null) {
+      return "";
+    }
+    if (localVsMusicItemInfo.mUrl == null) {
+      return "";
+    }
+    return this.i.mUrl;
   }
   
-  public int b()
+  public int e()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
+    if (localVsMusicItemInfo == null) {
+      return 0;
+    }
+    return localVsMusicItemInfo.musicStart;
+  }
+  
+  public int f()
+  {
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
     if (localVsMusicItemInfo == null) {
       return 0;
     }
@@ -133,55 +139,42 @@ public class AEEditorMusicAdapter$AEEditorMusicInfo
   }
   
   @NonNull
-  public String b()
+  public String g()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
-    if (localVsMusicItemInfo == null) {
-      return "";
-    }
-    if (localVsMusicItemInfo.mUrl == null) {
-      return "";
-    }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mUrl;
-  }
-  
-  @NonNull
-  public String c()
-  {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
     if (localVsMusicItemInfo == null) {
       return "";
     }
     if (localVsMusicItemInfo.mAlbumUrl == null) {
       return "";
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.mAlbumUrl;
+    return this.i.mAlbumUrl;
   }
   
   @NonNull
-  public String d()
+  public String h()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
     if (localVsMusicItemInfo == null) {
       return "";
     }
     if (localVsMusicItemInfo.b == null) {
       return "";
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.b;
+    return this.i.b;
   }
   
   @NonNull
-  public String e()
+  public String i()
   {
-    VsMusicItemInfo localVsMusicItemInfo = this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo;
+    VsMusicItemInfo localVsMusicItemInfo = this.i;
     if (localVsMusicItemInfo == null) {
       return "LRC";
     }
     if (TextUtils.isEmpty(localVsMusicItemInfo.a)) {
       return "LRC";
     }
-    return this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo.a;
+    return this.i.a;
   }
   
   @NonNull
@@ -189,24 +182,24 @@ public class AEEditorMusicAdapter$AEEditorMusicInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{songMid:");
-    localStringBuilder.append(a());
+    localStringBuilder.append(c());
     localStringBuilder.append(", songName:");
-    localStringBuilder.append(f());
+    localStringBuilder.append(j());
     localStringBuilder.append(", songUrl:");
-    localStringBuilder.append(b());
+    localStringBuilder.append(d());
     localStringBuilder.append(", selected:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", downloadStatus:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", itemType:");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", downloadStatus:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", itemType:");
+    localStringBuilder.append(this.f);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicAdapter.AEEditorMusicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class UFTC2CSetUploadSucOp$1
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("TId[");
-    ((StringBuilder)localObject).append(this.a.a());
+    ((StringBuilder)localObject).append(this.a.i());
     ((StringBuilder)localObject).append("] on set upload suc result. reqSuc:");
     ((StringBuilder)localObject).append(paramBoolean);
     ((StringBuilder)localObject).append(" errCode:");
@@ -32,7 +32,7 @@ class UFTC2CSetUploadSucOp$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CSetUploadSucOp.1
  * JD-Core Version:    0.7.0.1
  */

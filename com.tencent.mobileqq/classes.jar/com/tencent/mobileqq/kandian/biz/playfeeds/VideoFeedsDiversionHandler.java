@@ -30,8 +30,7 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/playfeeds/VideoFeedsDiversionHandler;", "", "()V", "columnBarPriority", "", "gameAdPriority", "goodsSoftAdPriority", "normalSoftAdPriority", "shuntBarPriority", "strongShuntBarPriority", "topbarPriority", "ugBarPriority", "clearFooterDiversion", "", "videoInfo", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/entity/VideoInfo;", "clearHeaderDiversion", "handleDiversionPriority", "holder", "Lcom/tencent/mobileqq/kandian/biz/video/playfeeds/viewholder/BaseVideoItemHolder;", "isSoftAdWhiteList", "", "sourceId", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class VideoFeedsDiversionHandler
 {
-  private static final int a;
-  public static final VideoFeedsDiversionHandler a;
+  public static final VideoFeedsDiversionHandler a = new VideoFeedsDiversionHandler();
   private static final int b;
   private static final int c;
   private static final int d;
@@ -39,19 +38,19 @@ public final class VideoFeedsDiversionHandler
   private static final int f;
   private static final int g;
   private static final int h;
+  private static final int i;
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsDiversionHandler = new VideoFeedsDiversionHandler();
     AladdinConfig localAladdinConfig = Aladdin.getConfig(362);
-    jdField_a_of_type_Int = localAladdinConfig.getIntegerFromString("up_kol_goods_soft_ad", 0);
-    b = localAladdinConfig.getIntegerFromString("up_kd_shunt_bar", 1);
-    c = localAladdinConfig.getIntegerFromString("up_topbar", 2);
-    d = localAladdinConfig.getIntegerFromString("up_not_kol_soft_ad", 3);
-    e = localAladdinConfig.getIntegerFromString("up_game_ad", 4);
-    f = localAladdinConfig.getIntegerFromString("ug_bar", 5);
-    g = localAladdinConfig.getIntegerFromString("bigBubble", 0);
-    h = localAladdinConfig.getIntegerFromString("column_bar", 1);
+    b = localAladdinConfig.getIntegerFromString("up_kol_goods_soft_ad", 0);
+    c = localAladdinConfig.getIntegerFromString("up_kd_shunt_bar", 1);
+    d = localAladdinConfig.getIntegerFromString("up_topbar", 2);
+    e = localAladdinConfig.getIntegerFromString("up_not_kol_soft_ad", 3);
+    f = localAladdinConfig.getIntegerFromString("up_game_ad", 4);
+    g = localAladdinConfig.getIntegerFromString("ug_bar", 5);
+    h = localAladdinConfig.getIntegerFromString("bigBubble", 0);
+    i = localAladdinConfig.getIntegerFromString("column_bar", 1);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -72,8 +71,8 @@ public final class VideoFeedsDiversionHandler
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        int i = Integer.parseInt((String)((Iterator)localObject).next());
-        if (i == paramInt) {
+        int j = Integer.parseInt((String)((Iterator)localObject).next());
+        if (j == paramInt) {
           return true;
         }
       }
@@ -96,23 +95,23 @@ public final class VideoFeedsDiversionHandler
       ((AdvertisementInfo)localObject).gameAdComData = ((GameAdComData)null);
     }
     ((IRIJVideoAdService)QRoute.api(IRIJVideoAdService.class)).setAdvertisementInfo(paramVideoInfo, null);
-    paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$TopBarInfo = ((VideoInfo.TopBarInfo)null);
-    localObject = paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo;
-    if ((localObject != null) && (((VideoInfo.ECommerceEntranceInfo)localObject).h == 0)) {
-      paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo = ((VideoInfo.ECommerceEntranceInfo)null);
+    paramVideoInfo.aD = ((VideoInfo.TopBarInfo)null);
+    localObject = paramVideoInfo.aG;
+    if ((localObject != null) && (((VideoInfo.ECommerceEntranceInfo)localObject).o == 0)) {
+      paramVideoInfo.aG = ((VideoInfo.ECommerceEntranceInfo)null);
     }
     localObject = (UGDownloadInfo)null;
-    paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo = ((UGDownloadInfo)localObject);
-    paramVideoInfo.b = ((UGDownloadInfo)localObject);
+    paramVideoInfo.az = ((UGDownloadInfo)localObject);
+    paramVideoInfo.aA = ((UGDownloadInfo)localObject);
   }
   
   private final void c(VideoInfo paramVideoInfo)
   {
-    VideoInfo.ECommerceEntranceInfo localECommerceEntranceInfo = paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo;
-    if ((localECommerceEntranceInfo != null) && (localECommerceEntranceInfo.h == 1)) {
-      paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo = ((VideoInfo.ECommerceEntranceInfo)null);
+    VideoInfo.ECommerceEntranceInfo localECommerceEntranceInfo = paramVideoInfo.aG;
+    if ((localECommerceEntranceInfo != null) && (localECommerceEntranceInfo.o == 1)) {
+      paramVideoInfo.aG = ((VideoInfo.ECommerceEntranceInfo)null);
     }
-    paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityVideoColumnInfo = ((VideoColumnInfo)null);
+    paramVideoInfo.ay = ((VideoColumnInfo)null);
   }
   
   public final void a(@NotNull VideoInfo paramVideoInfo)
@@ -128,13 +127,13 @@ public final class VideoFeedsDiversionHandler
     if ((AdvertisementInfo)localObjectRef.element != null) {
       if (((AdvertisementInfo)localObjectRef.element).mAdvertisementSoftInfo != null)
       {
-        int i;
-        if (a(((AdvertisementInfo)localObjectRef.element).mAdvertisementSoftInfo.c)) {
-          i = jdField_a_of_type_Int;
+        int j;
+        if (a(((AdvertisementInfo)localObjectRef.element).mAdvertisementSoftInfo.o)) {
+          j = b;
         } else {
-          i = d;
+          j = e;
         }
-        localSparseArray.put(i, new VideoFeedsDiversionHandler.handleDiversionPriority.2(localObjectRef, paramVideoInfo));
+        localSparseArray.put(j, new VideoFeedsDiversionHandler.handleDiversionPriority.2(localObjectRef, paramVideoInfo));
       }
       else
       {
@@ -145,21 +144,21 @@ public final class VideoFeedsDiversionHandler
           localObject = null;
         }
         if (localObject != null) {
-          localSparseArray.put(e, new VideoFeedsDiversionHandler.handleDiversionPriority.3(localObjectRef, paramVideoInfo));
+          localSparseArray.put(f, new VideoFeedsDiversionHandler.handleDiversionPriority.3(localObjectRef, paramVideoInfo));
         }
       }
     }
-    if ((paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo != null) && (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo.h == 0)) {
-      localSparseArray.put(b, new VideoFeedsDiversionHandler.handleDiversionPriority.4(paramVideoInfo));
+    if ((paramVideoInfo.aG != null) && (paramVideoInfo.aG.o == 0)) {
+      localSparseArray.put(c, new VideoFeedsDiversionHandler.handleDiversionPriority.4(paramVideoInfo));
     }
-    if ((paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityUGDownloadInfo != null) || (paramVideoInfo.b != null)) {
-      localSparseArray.put(f, new VideoFeedsDiversionHandler.handleDiversionPriority.5(paramVideoInfo));
+    if ((paramVideoInfo.az != null) || (paramVideoInfo.aA != null)) {
+      localSparseArray.put(g, new VideoFeedsDiversionHandler.handleDiversionPriority.5(paramVideoInfo));
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleHeaderDiversionPriority: videoInfo.title=");
-      ((StringBuilder)localObject).append(paramVideoInfo.c);
+      ((StringBuilder)localObject).append(paramVideoInfo.g);
       ((StringBuilder)localObject).append(", array=");
       ((StringBuilder)localObject).append(localSparseArray);
       QLog.d("VideoFeedsDiversionHandler", 2, ((StringBuilder)localObject).toString());
@@ -172,17 +171,17 @@ public final class VideoFeedsDiversionHandler
       }
     }
     localSparseArray.clear();
-    if ((paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo != null) && (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ECommerceEntranceInfo.h == 1)) {
-      localSparseArray.put(g, new VideoFeedsDiversionHandler.handleDiversionPriority.6(paramVideoInfo));
+    if ((paramVideoInfo.aG != null) && (paramVideoInfo.aG.o == 1)) {
+      localSparseArray.put(h, new VideoFeedsDiversionHandler.handleDiversionPriority.6(paramVideoInfo));
     }
-    if (paramVideoInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityVideoColumnInfo != null) {
-      localSparseArray.put(h, new VideoFeedsDiversionHandler.handleDiversionPriority.7(paramVideoInfo));
+    if (paramVideoInfo.ay != null) {
+      localSparseArray.put(i, new VideoFeedsDiversionHandler.handleDiversionPriority.7(paramVideoInfo));
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleBottomDiversionPriority: videoInfo.title=");
-      ((StringBuilder)localObject).append(paramVideoInfo.c);
+      ((StringBuilder)localObject).append(paramVideoInfo.g);
       ((StringBuilder)localObject).append(", array=");
       ((StringBuilder)localObject).append(localSparseArray);
       QLog.d("VideoFeedsDiversionHandler", 2, ((StringBuilder)localObject).toString());
@@ -199,19 +198,19 @@ public final class VideoFeedsDiversionHandler
   public final void a(@NotNull BaseVideoItemHolder paramBaseVideoItemHolder)
   {
     Intrinsics.checkParameterIsNotNull(paramBaseVideoItemHolder, "holder");
-    paramBaseVideoItemHolder = paramBaseVideoItemHolder.a;
+    paramBaseVideoItemHolder = paramBaseVideoItemHolder.az;
     if (paramBaseVideoItemHolder != null)
     {
-      paramBaseVideoItemHolder = paramBaseVideoItemHolder.a;
+      paramBaseVideoItemHolder = paramBaseVideoItemHolder.c;
       if ((paramBaseVideoItemHolder != null) && ((paramBaseVideoItemHolder instanceof VideoInfo))) {
-        jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsDiversionHandler.a(paramBaseVideoItemHolder);
+        a.a(paramBaseVideoItemHolder);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsDiversionHandler
  * JD-Core Version:    0.7.0.1
  */

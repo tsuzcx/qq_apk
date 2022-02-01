@@ -10,7 +10,7 @@ class QavVideoRecordUICtrl$8
   
   public void run()
   {
-    TipsUtil.a(((AVActivity)QavVideoRecordUICtrl.a(this.this$0).get()).a, 1022, 2131695766);
+    TipsUtil.a(((AVActivity)QavVideoRecordUICtrl.b(this.this$0).get()).H, 1022, 2131893525);
   }
 }
 

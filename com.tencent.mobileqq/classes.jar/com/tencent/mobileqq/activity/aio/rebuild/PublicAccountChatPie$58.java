@@ -16,21 +16,21 @@ class PublicAccountChatPie$58
     {
       if (((Integer)paramHashMap.get("result")).intValue() == 0)
       {
-        this.a.n(1);
-        this.a.a.sendEmptyMessageDelayed(10, 3000L);
+        this.a.u(1);
+        this.a.ce.sendEmptyMessageDelayed(10, 3000L);
         return;
       }
       paramHashMap = this.a;
-      paramHashMap.Y = true;
-      paramHashMap.aC();
-      if ((PublicAccountChatPie.a(this.a) != null) && (PublicAccountChatPie.a(this.a).isShowing())) {
-        PublicAccountChatPie.a(this.a).dismiss();
+      paramHashMap.cC = true;
+      paramHashMap.bS();
+      if ((PublicAccountChatPie.H(this.a) != null) && (PublicAccountChatPie.H(this.a).isShowing())) {
+        PublicAccountChatPie.H(this.a).dismiss();
       }
-      this.a.aD();
+      this.a.bT();
       return;
     }
-    this.a.n(2);
-    this.a.a.sendEmptyMessageDelayed(10, 3000L);
+    this.a.u(2);
+    this.a.ce.sendEmptyMessageDelayed(10, 3000L);
   }
   
   protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
@@ -41,16 +41,16 @@ class PublicAccountChatPie$58
         return;
       }
       PublicAccountChatPie localPublicAccountChatPie = this.a;
-      localPublicAccountChatPie.ab = true;
-      localPublicAccountChatPie.aa = ((Boolean)paramHashMap.get("result")).booleanValue();
-      this.a.aC();
-      this.a.aD();
+      localPublicAccountChatPie.cF = true;
+      localPublicAccountChatPie.cE = ((Boolean)paramHashMap.get("result")).booleanValue();
+      this.a.bS();
+      this.a.bT();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.58
  * JD-Core Version:    0.7.0.1
  */

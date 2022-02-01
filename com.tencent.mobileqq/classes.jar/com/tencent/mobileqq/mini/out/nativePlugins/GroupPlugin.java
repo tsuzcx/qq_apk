@@ -39,7 +39,7 @@ public class GroupPlugin
     localIntent.putExtra("group_name", paramString1);
     localIntent.putExtra("param_exit_animation", 3);
     ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivityForResult(paramBaseActivity, localIntent, 10);
-    paramBaseActivity.overridePendingTransition(2130772011, 0);
+    paramBaseActivity.overridePendingTransition(2130772014, 0);
   }
   
   private void gotoSelectMembers(String paramString1, int paramInt, String paramString2)
@@ -58,7 +58,7 @@ public class GroupPlugin
       gotoSelectMembers(paramInt, paramString2, localBaseActivity, paramString1);
       return;
     }
-    localJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131705451));
+    localJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131903339));
   }
   
   public void onDestroy()
@@ -117,10 +117,10 @@ public class GroupPlugin
           gotoSelectMembers(str, i, paramJSONObject);
           return;
         }
-        paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131705452));
+        paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131903340));
         return;
       }
-      paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131705453));
+      paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131903341));
       return;
       return;
       if (localJSONObject != null) {
@@ -138,7 +138,7 @@ public class GroupPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.GroupPlugin
  * JD-Core Version:    0.7.0.1
  */

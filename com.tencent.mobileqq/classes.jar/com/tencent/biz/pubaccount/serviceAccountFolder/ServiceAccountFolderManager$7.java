@@ -21,16 +21,16 @@ class ServiceAccountFolderManager$7
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", ServiceAccountFolderManager.b(this.this$0));
-      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ServiceAccountFolderManager.a(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_read_time", ServiceAccountFolderManager.c(this.this$0));
+      ((SharedPreferences.Editor)localObject).putLong("service_account_folder_last_enter_time", ServiceAccountFolderManager.b(this.this$0));
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("setFolderLastReadTime->mFolderLastReadTime:");
-        ((StringBuilder)localObject).append(ServiceAccountFolderManager.b(this.this$0));
+        ((StringBuilder)localObject).append(ServiceAccountFolderManager.c(this.this$0));
         ((StringBuilder)localObject).append(", mFolderLastEnterTime:");
-        ((StringBuilder)localObject).append(ServiceAccountFolderManager.a(this.this$0));
+        ((StringBuilder)localObject).append(ServiceAccountFolderManager.b(this.this$0));
         QLog.d("ServiceAccountFolderManager", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -38,7 +38,7 @@ class ServiceAccountFolderManager$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.7
  * JD-Core Version:    0.7.0.1
  */

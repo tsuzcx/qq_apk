@@ -39,9 +39,9 @@ import java.util.List;
 public class WSFollowPresenter
   extends WSBasePresenter<IWSFollowView>
 {
-  private int jdField_a_of_type_Int = 0;
-  private stFollowFeedsGlobalConfig jdField_a_of_type_UserGrowthStFollowFeedsGlobalConfig;
-  private WSLoadMoreReportHelper jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper = new WSLoadMoreReportHelper("focus");
+  private int a = 0;
+  private stFollowFeedsGlobalConfig b;
+  private WSLoadMoreReportHelper c = new WSLoadMoreReportHelper("focus");
   
   private void a(RecyclerView paramRecyclerView, String paramString)
   {
@@ -54,7 +54,7 @@ public class WSFollowPresenter
       if ((localObject instanceof WSRecommendFollowHolder))
       {
         localObject = (WSRecommendFollowHolder)localObject;
-        localstSimpleMetaPerson = ((WSRecommendFollowHolder)localObject).a();
+        localstSimpleMetaPerson = ((WSRecommendFollowHolder)localObject).b();
         if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
           ((WSRecommendFollowHolder)localObject).a();
         }
@@ -62,9 +62,9 @@ public class WSFollowPresenter
       else if ((localObject instanceof WSFollowFriendFeedHolder))
       {
         localObject = (WSFollowFriendFeedHolder)localObject;
-        localstSimpleMetaPerson = ((WSFollowFriendFeedHolder)localObject).a();
+        localstSimpleMetaPerson = ((WSFollowFriendFeedHolder)localObject).c();
         if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
-          ((WSFollowFriendFeedHolder)localObject).c();
+          ((WSFollowFriendFeedHolder)localObject).d();
         }
       }
       i += 1;
@@ -92,12 +92,12 @@ public class WSFollowPresenter
   
   private void a(String paramString)
   {
-    if (a() != null)
+    if (getView() != null)
     {
-      if (((IWSFollowView)a()).a() == null) {
+      if (((IWSFollowView)getView()).y() == null) {
         return;
       }
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)getView()).y().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter == null) {
         return;
       }
@@ -118,12 +118,12 @@ public class WSFollowPresenter
   
   private void a(boolean paramBoolean)
   {
-    if (a() != null)
+    if (getView() != null)
     {
-      if (((IWSFollowView)a()).a() == null) {
+      if (((IWSFollowView)getView()).x() == null) {
         return;
       }
-      Iterator localIterator = ((IWSFollowView)a()).a().a().iterator();
+      Iterator localIterator = ((IWSFollowView)getView()).x().a().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (BaseViewHolder)localIterator.next();
@@ -134,7 +134,7 @@ public class WSFollowPresenter
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("updateMuteStatus title:");
           if (((WSFollowFeedHolder)localObject).a != null) {
-            localObject = ((WSFollowFeedHolder)localObject).a.d;
+            localObject = ((WSFollowFeedHolder)localObject).a.g;
           } else {
             localObject = "videoInfo is null!";
           }
@@ -152,12 +152,12 @@ public class WSFollowPresenter
   
   private void b(String paramString)
   {
-    if (a() != null)
+    if (getView() != null)
     {
-      if (((IWSFollowView)a()).a() == null) {
+      if (((IWSFollowView)getView()).y() == null) {
         return;
       }
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)getView()).y().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter != null)
       {
         int j = localRecyclerViewWithHeaderFooter.getChildCount();
@@ -168,9 +168,9 @@ public class WSFollowPresenter
           if ((localObject instanceof WSFollowFeedHolder))
           {
             localObject = (WSFollowFeedHolder)localObject;
-            stFeed localstFeed = ((WSFollowFeedHolder)localObject).a();
+            stFeed localstFeed = ((WSFollowFeedHolder)localObject).i();
             if ((localstFeed != null) && (localstFeed.feed != null) && (localstFeed.feed.poster != null) && (TextUtils.equals(localstFeed.feed.poster.id, paramString))) {
-              ((WSFollowFeedHolder)localObject).f();
+              ((WSFollowFeedHolder)localObject).h();
             }
           }
           i += 1;
@@ -196,13 +196,13 @@ public class WSFollowPresenter
       if (localWSFriendFeedExposureEvent.video == null) {
         return;
       }
-      paramWSSimpleBaseEvent = ((IWSFollowView)a()).a();
+      paramWSSimpleBaseEvent = ((IWSFollowView)getView()).x();
       if (paramWSSimpleBaseEvent != null)
       {
         if (paramWSSimpleBaseEvent.getDataList() == null) {
           return;
         }
-        paramWSSimpleBaseEvent = ((IWSFollowView)a()).a();
+        paramWSSimpleBaseEvent = ((IWSFollowView)getView()).y();
         if (paramWSSimpleBaseEvent != null)
         {
           if (paramWSSimpleBaseEvent.getRecyclerView() == null) {
@@ -233,12 +233,12 @@ public class WSFollowPresenter
   
   private void c(String paramString)
   {
-    if (a() != null)
+    if (getView() != null)
     {
-      if (((IWSFollowView)a()).a() == null) {
+      if (((IWSFollowView)getView()).y() == null) {
         return;
       }
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)getView()).y().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter != null)
       {
         int j = localRecyclerViewWithHeaderFooter.getChildCount();
@@ -249,11 +249,11 @@ public class WSFollowPresenter
           if ((localObject instanceof WSFollowFeedHolder))
           {
             localObject = (WSFollowFeedHolder)localObject;
-            stFeed localstFeed = ((WSFollowFeedHolder)localObject).a();
+            stFeed localstFeed = ((WSFollowFeedHolder)localObject).i();
             if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(localstFeed.feed.id, paramString)))
             {
               WSLog.b("WSFollowPresenter", "updateLikeStatus");
-              ((WSFollowFeedHolder)localObject).e();
+              ((WSFollowFeedHolder)localObject).g();
             }
           }
           i += 1;
@@ -279,13 +279,13 @@ public class WSFollowPresenter
       if (((WSItemExposeEvent)localObject1).video == null) {
         return;
       }
-      paramWSSimpleBaseEvent = ((IWSFollowView)a()).a();
+      paramWSSimpleBaseEvent = ((IWSFollowView)getView()).x();
       if (paramWSSimpleBaseEvent != null)
       {
         if (paramWSSimpleBaseEvent.getDataList() == null) {
           return;
         }
-        localObject2 = ((IWSFollowView)a()).a();
+        localObject2 = ((IWSFollowView)getView()).y();
         if (localObject2 != null)
         {
           if (((XRecyclerView)localObject2).getRecyclerView() == null) {
@@ -294,7 +294,7 @@ public class WSFollowPresenter
           localObject1 = ((WSItemExposeEvent)localObject1).video;
           List localList = WSFeedDataManager.a().b;
           if (paramWSSimpleBaseEvent.getDataList().size() < localList.size()) {
-            ((IWSFollowView)a()).a(localList);
+            ((IWSFollowView)getView()).a(localList);
           }
           int i = 0;
           while (i < localList.size())
@@ -302,7 +302,7 @@ public class WSFollowPresenter
             if (((stFeed)localList.get(i)).feed == localObject1)
             {
               ((XRecyclerView)localObject2).getRecyclerView().scrollToPosition(i);
-              this.jdField_a_of_type_Int = i;
+              this.a = i;
               paramWSSimpleBaseEvent = new StringBuilder();
               paramWSSimpleBaseEvent.append("receive item expose event, position: ");
               paramWSSimpleBaseEvent.append(i);
@@ -320,12 +320,12 @@ public class WSFollowPresenter
   
   private void d(String paramString)
   {
-    if (a() != null)
+    if (getView() != null)
     {
-      if (((IWSFollowView)a()).a() == null) {
+      if (((IWSFollowView)getView()).y() == null) {
         return;
       }
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)getView()).y().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter != null)
       {
         int j = localRecyclerViewWithHeaderFooter.getChildCount();
@@ -336,7 +336,7 @@ public class WSFollowPresenter
           if ((localObject instanceof WSFollowFeedHolder))
           {
             localObject = (WSFollowFeedHolder)localObject;
-            stFeed localstFeed = ((WSFollowFeedHolder)localObject).a();
+            stFeed localstFeed = ((WSFollowFeedHolder)localObject).i();
             if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(localstFeed.feed.id, paramString))) {
               ((WSFollowFeedHolder)localObject).a(localstFeed.feed);
             }
@@ -347,11 +347,23 @@ public class WSFollowPresenter
     }
   }
   
+  private int e()
+  {
+    if ((getView() != null) && (((IWSFollowView)getView()).x() != null))
+    {
+      List localList = ((IWSFollowView)getView()).x().getDataList();
+      if (localList != null) {
+        return localList.size() - 1;
+      }
+    }
+    return -1;
+  }
+  
   private void e(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     WSLog.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
     paramWSSimpleBaseEvent = (FollowEvent)paramWSSimpleBaseEvent;
-    Object localObject1 = ((IWSFollowView)a()).a();
+    Object localObject1 = ((IWSFollowView)getView()).x();
     if (localObject1 != null)
     {
       if (((WSFollowAdapter)localObject1).getDataList() == null) {
@@ -418,7 +430,7 @@ public class WSFollowPresenter
     ((StringBuilder)localObject).append(" isDing:");
     ((StringBuilder)localObject).append(paramWSSimpleBaseEvent.getRspIsDing());
     WSLog.b("WSFollowPresenter", ((StringBuilder)localObject).toString());
-    localObject = ((IWSFollowView)a()).a();
+    localObject = ((IWSFollowView)getView()).x();
     if (localObject != null)
     {
       if (((WSFollowAdapter)localObject).getDataList() == null) {
@@ -463,7 +475,7 @@ public class WSFollowPresenter
   {
     WSLog.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
     paramWSSimpleBaseEvent = (WSAddCommentEvent)paramWSSimpleBaseEvent;
-    Object localObject = ((IWSFollowView)a()).a();
+    Object localObject = ((IWSFollowView)getView()).x();
     if (localObject != null)
     {
       if (((WSFollowAdapter)localObject).getDataList() == null) {
@@ -484,7 +496,7 @@ public class WSFollowPresenter
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
@@ -526,34 +538,34 @@ public class WSFollowPresenter
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (a() == null) {
+    if (getView() == null) {
       return;
     }
     if (paramBoolean1) {
-      ((IWSFollowView)a()).c();
+      ((IWSFollowView)getView()).r();
     }
     long l = System.currentTimeMillis();
     WSFeedDataManager.a().a(paramBoolean1, paramBoolean2, "", 9, l, new WSFollowPresenter.1(this, paramBoolean1));
   }
   
+  public void b()
+  {
+    this.c.b();
+  }
+  
   public void c()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper.b();
+    this.c.a(e());
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper.c();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper.d();
+    this.c.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowPresenter
  * JD-Core Version:    0.7.0.1
  */

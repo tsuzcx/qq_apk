@@ -13,87 +13,85 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopUsageTimeReport
   extends BroadcastReceiver
 {
-  private long jdField_a_of_type_Long;
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private long b;
-  public boolean b;
-  private long jdField_c_of_type_Long;
-  private volatile boolean jdField_c_of_type_Boolean = false;
+  public boolean a = false;
+  public boolean b = false;
+  private String c;
   private long d;
+  private long e;
+  private long f;
+  private long g;
+  private QQAppInterface h;
+  private IntentFilter i = new IntentFilter();
+  private SessionInfo j;
+  private volatile boolean k = false;
   
   private TroopUsageTimeReport()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.ACTION_SHUTDOWN");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.QUICKBOOT_POWEROFF");
+    this.i.addAction("android.intent.action.SCREEN_OFF");
+    this.i.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+    this.i.addAction("android.intent.action.ACTION_SHUTDOWN");
+    this.i.addAction("android.intent.action.QUICKBOOT_POWEROFF");
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      this.jdField_b_of_type_Long = System.currentTimeMillis();
-      long l = (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000L;
-      int i = (int)l;
-      if (i <= 0) {
-        i = 1;
+      this.e = System.currentTimeMillis();
+      long l = (this.e - this.d) / 1000L;
+      int m = (int)l;
+      if (m <= 0) {
+        m = 1;
       }
-      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      SessionInfo localSessionInfo = this.j;
       if (localSessionInfo != null)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        ReportController.b(this.h, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, m, 0, localSessionInfo.b, "", "", "");
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("uin=");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.c);
           localStringBuilder.append(",mTroopUin=");
-          localStringBuilder.append(localSessionInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localSessionInfo.b);
           localStringBuilder.append(",time=");
           localStringBuilder.append(l);
           localStringBuilder.append("s");
           QLog.d("TroopUsageTimeReport-->AioUseTime", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
     }
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.b)
     {
-      this.d = System.currentTimeMillis();
-      long l = (this.d - this.jdField_c_of_type_Long) / 1000L;
-      int i = (int)l;
-      if (i <= 0) {
-        i = 1;
+      this.g = System.currentTimeMillis();
+      long l = (this.g - this.f) / 1000L;
+      int m = (int)l;
+      if (m <= 0) {
+        m = 1;
       }
-      SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      SessionInfo localSessionInfo = this.j;
       if (localSessionInfo != null)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        ReportController.b(this.h, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, m, 0, localSessionInfo.b, "", "", "");
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("uin=");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.c);
           localStringBuilder.append(",mTroopUin=");
-          localStringBuilder.append(localSessionInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localSessionInfo.b);
           localStringBuilder.append(",time=");
           localStringBuilder.append(l);
           localStringBuilder.append("s");
           QLog.d("TroopUsageTimeReport-->TroopUseTime", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_b_of_type_Boolean = false;
+      this.b = false;
     }
   }
   
@@ -119,7 +117,7 @@ public class TroopUsageTimeReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopUsageTimeReport
  * JD-Core Version:    0.7.0.1
  */

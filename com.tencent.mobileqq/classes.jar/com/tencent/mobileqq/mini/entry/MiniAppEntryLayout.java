@@ -319,7 +319,7 @@ public class MiniAppEntryLayout
         if ((!ThemeUtil.isDefaultTheme()) && (!MiniAppUtils.isNightMode()))
         {
           this.mThemeBackgroudView.setVisibility(0);
-          this.mThemeBackgroudView.setImageResource(2130838740);
+          this.mThemeBackgroudView.setImageResource(2130838959);
         }
         else
         {
@@ -392,7 +392,7 @@ public class MiniAppEntryLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryLayout
  * JD-Core Version:    0.7.0.1
  */

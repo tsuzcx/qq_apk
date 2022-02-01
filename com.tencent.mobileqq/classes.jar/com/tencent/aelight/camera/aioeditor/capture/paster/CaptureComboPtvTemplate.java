@@ -11,109 +11,108 @@ import com.tencent.common.app.AppInterface;
 public class CaptureComboPtvTemplate
   extends CaptureComboBase
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private PtvTemplateManager.IPtvTemplateDownloadListener jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoPtvTemplateManager$IPtvTemplateDownloadListener = new CaptureComboPtvTemplate.1(this);
-  private QIMPtvTemplateManager jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoQIMPtvTemplateManager = (QIMPtvTemplateManager)QIMManager.a(3);
-  private PtvTemplateInfo jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoQIMPtvTemplateManager.a(paramString);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = QIMManager.a();
-  private int c;
+  private int f = 2;
+  private float g = 0.0F;
+  private AppInterface h = QIMManager.c();
+  private QIMPtvTemplateManager i = (QIMPtvTemplateManager)QIMManager.a(3);
+  private PtvTemplateInfo j = this.i.a(paramString);
+  private PtvTemplateManager.IPtvTemplateDownloadListener k = new CaptureComboPtvTemplate.1(this);
   
   public CaptureComboPtvTemplate(String paramString)
   {
     super(null);
-    this.jdField_c_of_type_Int = 2;
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo;
-    if ((paramString != null) && (paramString.b))
+    paramString = this.j;
+    if ((paramString != null) && (paramString.g))
     {
-      this.jdField_c_of_type_Int = 3;
+      this.f = 3;
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo == null) {
-      this.jdField_c_of_type_Int = 3;
-    }
-  }
-  
-  public float a()
-  {
-    try
-    {
-      float f = this.jdField_a_of_type_Float;
-      return f;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public int a()
-  {
-    try
-    {
-      int i = this.jdField_c_of_type_Int;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    if (this.j == null) {
+      this.f = 3;
     }
   }
   
   public int a(Activity paramActivity, int paramInt)
   {
-    paramActivity = this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo;
-    if ((paramActivity != null) && (paramActivity.b))
+    paramActivity = this.j;
+    if ((paramActivity != null) && (paramActivity.g))
     {
       paramActivity = new StringBuilder();
-      paramActivity.append(QIMPtvTemplateManager.a);
-      paramActivity.append(this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo.e);
+      paramActivity.append(QIMPtvTemplateManager.b);
+      paramActivity.append(this.j.e);
       paramActivity = paramActivity.toString();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoQIMPtvTemplateManager.a(this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo, 111);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoQIMPtvTemplateManager.a(this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo.a, this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo.jdField_c_of_type_Int, paramActivity);
+      this.i.a(this.j, 111);
+      this.i.a(this.j.a, this.j.l, paramActivity);
       return 0;
     }
     return -1;
   }
   
-  public void a(Activity paramActivity, int paramInt) {}
+  public void b(Activity paramActivity, int paramInt) {}
   
-  public int b()
+  public int c()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo == null)
+      int m = this.f;
+      return m;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int d()
+  {
+    try
+    {
+      if (this.j == null)
       {
-        this.jdField_c_of_type_Int = 3;
-        i = this.jdField_c_of_type_Int;
-        return i;
+        this.f = 3;
+        m = this.f;
+        return m;
       }
-      if (!this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo.b)
+      if (!this.j.g)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoQIMPtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo, this.jdField_a_of_type_ComTencentAelightCameraAioeditorShortvideoPtvTemplateManager$IPtvTemplateDownloadListener);
+        this.i.a(this.h, this.j, this.k);
         a();
-        this.jdField_c_of_type_Int = 1;
+        this.f = 1;
       }
-      else if (this.jdField_a_of_type_ComTencentAelightCameraStructEditorPtvTemplateInfo.jdField_c_of_type_Boolean)
+      else if (this.j.h)
       {
-        this.jdField_c_of_type_Int = 1;
+        this.f = 1;
       }
       else
       {
-        this.jdField_a_of_type_Float = 1.0F;
-        this.jdField_c_of_type_Int = 3;
+        this.g = 1.0F;
+        this.f = 3;
         b();
       }
-      int i = this.jdField_c_of_type_Int;
-      return i;
+      int m = this.f;
+      return m;
     }
     finally {}
+  }
+  
+  public float e()
+  {
+    try
+    {
+      float f1 = this.g;
+      return f1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.CaptureComboPtvTemplate
  * JD-Core Version:    0.7.0.1
  */

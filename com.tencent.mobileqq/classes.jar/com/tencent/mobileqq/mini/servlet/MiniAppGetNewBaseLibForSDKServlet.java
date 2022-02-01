@@ -13,11 +13,14 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import cooperation.qzone.QUA;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.Packet;
+import org.json.JSONObject;
 
 public class MiniAppGetNewBaseLibForSDKServlet
   extends MiniAppAbstractServlet
@@ -27,6 +30,23 @@ public class MiniAppGetNewBaseLibForSDKServlet
   public MiniAppGetNewBaseLibForSDKServlet()
   {
     this.observerId = 1057;
+  }
+  
+  public String getBaseLibUrl64(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return paramString2;
+      }
+      paramString1 = new JSONObject(paramString1).optString("downloadUrl_64", paramString2);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      QMLog.e("MiniAppGetNewBaseLibForSDKServlet", "Failed to parse downloadUrl_64", paramString1);
+    }
+    return paramString2;
   }
   
   public void onProcessData(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte)
@@ -47,7 +67,11 @@ public class MiniAppGetNewBaseLibForSDKServlet
     {
       Object localObject = (INTERFACE.StBaseLibInfo)paramArrayOfByte.next();
       BaseLibInfo localBaseLibInfo = new BaseLibInfo();
-      localBaseLibInfo.baseLibUrl = ((INTERFACE.StBaseLibInfo)localObject).downloadUrl.get();
+      if (QUAUtil.isAbi64()) {
+        localBaseLibInfo.baseLibUrl = getBaseLibUrl64(localBaseLibInfo.baseLibDesc, localBaseLibInfo.baseLibUrl);
+      } else {
+        localBaseLibInfo.baseLibUrl = ((INTERFACE.StBaseLibInfo)localObject).downloadUrl.get();
+      }
       localBaseLibInfo.baseLibVersion = ((INTERFACE.StBaseLibInfo)localObject).version.get();
       localBaseLibInfo.baseLibKey = null;
       localBaseLibInfo.baseLibDesc = ((INTERFACE.StBaseLibInfo)localObject).extInfo.get();
@@ -86,7 +110,7 @@ public class MiniAppGetNewBaseLibForSDKServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetNewBaseLibForSDKServlet
  * JD-Core Version:    0.7.0.1
  */

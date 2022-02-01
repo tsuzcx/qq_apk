@@ -3,8 +3,12 @@ package com.tencent.mobileqq.search.report;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.servlet.ReportServlet;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.studymode.api.IStudyModeManager;
+import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -94,15 +98,15 @@ public class UniteSearchReportController
     try
     {
       Integer.valueOf((String)localObject1);
-      ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, (String)localObject1, (String)localObject2, paramString2, "");
+      ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, (String)localObject1, (String)localObject2, paramString2, b());
       return;
     }
     catch (Exception localException)
     {
-      label187:
-      break label187;
+      label188:
+      break label188;
     }
-    ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, "0", (String)localObject2, paramString2, "");
+    ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, "0", (String)localObject2, paramString2, b());
   }
   
   public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3)
@@ -165,8 +169,8 @@ public class UniteSearchReportController
     if (paramString2 == null) {
       paramString2 = "";
     }
-    if (paramString3 == null) {
-      paramString3 = "";
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString3 = b();
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramInt3);
@@ -243,12 +247,25 @@ public class UniteSearchReportController
     b(paramString, localAppInterface, paramReportModel);
   }
   
+  public static String b()
+  {
+    int i;
+    if (QQTheme.isNowSimpleUI()) {
+      i = 2131897021;
+    } else if (((IStudyModeManager)QRoute.api(IStudyModeManager.class)).getStudyModeSwitch()) {
+      i = 2131897022;
+    } else {
+      i = 2131897020;
+    }
+    return BaseApplication.getContext().getString(i);
+  }
+  
   protected static void b(String paramString, AppInterface paramAppInterface, ReportModel paramReportModel)
   {
     if ((paramReportModel != null) && (paramAppInterface != null))
     {
       paramReportModel.uin = paramAppInterface.getCurrentAccountUin();
-      paramReportModel.version = "8.7.0";
+      paramReportModel.version = "8.8.17";
       Object localObject = new NewIntent(paramAppInterface.getApplication(), ReportServlet.class);
       ((NewIntent)localObject).putExtra("sendType", 2);
       ((NewIntent)localObject).putExtra("tag", paramString);
@@ -272,7 +289,7 @@ public class UniteSearchReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.report.UniteSearchReportController
  * JD-Core Version:    0.7.0.1
  */

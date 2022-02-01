@@ -43,8 +43,6 @@ import com.tencent.mobileqq.pic.PicUploadInfo;
 import com.tencent.mobileqq.pic.PicUploadInfo.Builder;
 import com.tencent.mobileqq.pic.api.IPicBus;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.DownloadGftData;
 import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
 import com.tencent.mobileqq.troop.utils.TroopGiftManager;
 import com.tencent.mobileqq.troop.utils.TroopGiftManager.ShowPicPrice;
@@ -55,6 +53,8 @@ import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
 import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
 import com.tencent.mobileqq.trooppiceffects.view.VideoPicView;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager.DownloadGftData;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -81,26 +81,19 @@ public class TroopPicEffectsEditActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, AdapterView.OnItemClickListener, Observer
 {
-  protected int a;
-  protected ProgressDialog a;
-  protected SparseArray<TroopGiftManager.ShowPicPrice> a;
-  protected Button a;
   protected FrameLayout a;
-  protected TroopPicEffectsEditActivity.ItemData a;
-  protected TroopPicEffectsEditActivity.ItemListAdapter a;
-  protected IPicView a;
-  protected HorizontalListView a;
-  protected String a;
-  protected TroopPicEffectsEditActivity.ItemData[] a;
-  protected String b;
-  protected String c;
-  
-  public TroopPicEffectsEditActivity()
-  {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = null;
-    this.jdField_a_of_type_Int = 40000;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(10);
-  }
+  protected HorizontalListView b;
+  protected TroopPicEffectsEditActivity.ItemListAdapter c;
+  protected IPicView d;
+  protected Button e;
+  protected String f;
+  protected String g;
+  protected String h;
+  protected ProgressDialog i;
+  protected TroopPicEffectsEditActivity.ItemData[] j = null;
+  protected TroopPicEffectsEditActivity.ItemData k;
+  protected int l = 40000;
+  protected SparseArray<TroopGiftManager.ShowPicPrice> m = new SparseArray(10);
   
   public static void a(Activity paramActivity, String paramString1, String paramString2)
   {
@@ -132,7 +125,7 @@ public class TroopPicEffectsEditActivity
       localObject1 = str;
       if (localObject2 != null)
       {
-        localObject2 = ((TroopManager)localObject2).c(this.b);
+        localObject2 = ((TroopManager)localObject2).g(this.g);
         localObject1 = str;
         if (localObject2 != null)
         {
@@ -147,53 +140,53 @@ public class TroopPicEffectsEditActivity
           }
         }
       }
-      localObject1 = paramString.replace("$GCODE$", this.b).replace("$CLIENTVER$", "android8.7.0").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject1);
+      localObject1 = paramString.replace("$GCODE$", this.g).replace("$CLIENTVER$", "android8.8.17").replace("$UIN$", this.app.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$ROLE$", (CharSequence)localObject1);
     }
     return localObject1;
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = new TroopPicEffectsEditActivity.ItemData[] { new TroopPicEffectsEditActivity.ItemData(40000, HardCodeUtil.a(2131715476), Color.parseColor("#F2575757"), true), new TroopPicEffectsEditActivity.ItemData(40002, HardCodeUtil.a(2131715479), Color.parseColor("#F23FCCDF"), false), new TroopPicEffectsEditActivity.ItemData(40001, HardCodeUtil.a(2131715492), Color.parseColor("#F2EF7AEE"), false), new TroopPicEffectsEditActivity.ItemData(40003, HardCodeUtil.a(2131715486), Color.parseColor("#F2FFA02D"), false), new TroopPicEffectsEditActivity.ItemData(40004, HardCodeUtil.a(2131715478), Color.parseColor("#F21CD28C"), false), new TroopPicEffectsEditActivity.ItemData(40005, HardCodeUtil.a(2131715485), Color.parseColor("#F2FF6EA2"), false) };
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[0];
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
+    this.j = new TroopPicEffectsEditActivity.ItemData[] { new TroopPicEffectsEditActivity.ItemData(40000, HardCodeUtil.a(2131912951), Color.parseColor("#F2575757"), true), new TroopPicEffectsEditActivity.ItemData(40002, HardCodeUtil.a(2131912954), Color.parseColor("#F23FCCDF"), false), new TroopPicEffectsEditActivity.ItemData(40001, HardCodeUtil.a(2131912967), Color.parseColor("#F2EF7AEE"), false), new TroopPicEffectsEditActivity.ItemData(40003, HardCodeUtil.a(2131912961), Color.parseColor("#F2FFA02D"), false), new TroopPicEffectsEditActivity.ItemData(40004, HardCodeUtil.a(2131912953), Color.parseColor("#F21CD28C"), false), new TroopPicEffectsEditActivity.ItemData(40005, HardCodeUtil.a(2131912960), Color.parseColor("#F2FF6EA2"), false) };
+    this.k = this.j[0];
+    this.b.setAdapter(this.c);
+    this.b.setOnItemClickListener(this);
     a(new TroopPicEffectsEditActivity.1(this));
   }
   
   public void a(int paramInt, String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView;
+    Object localObject1 = this.d;
     if (localObject1 != null)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(((IPicView)localObject1).a());
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.b();
+      this.a.removeView(((IPicView)localObject1).getView());
+      this.d.b();
     }
-    boolean bool = TroopGiftUtil.a(paramInt);
+    boolean bool = TroopGiftUtil.c(paramInt);
     switch (paramInt)
     {
     default: 
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new NormalPicView(this);
+      this.d = new NormalPicView(this);
       break;
     case 40003: 
     case 40004: 
     case 40005: 
-      int i = this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new VideoPicView(this, paramInt, i, i * 1024 / 750);
+      int n = this.a.getWidth();
+      this.d = new VideoPicView(this, paramInt, n, n * 1024 / 750);
       if (!bool)
       {
         localObject1 = (AIOAnimationControlManager)this.app.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
         ((AIOAnimationControlManager)localObject1).a(this);
-        ((AIOAnimationControlManager)localObject1).a(paramInt, this.b, null);
+        ((AIOAnimationControlManager)localObject1).a(paramInt, this.g, null);
       }
       break;
     case 40002: 
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new ShakePicView(this);
+      this.d = new ShakePicView(this);
       break;
     case 40001: 
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView = new PhantomPicView(this);
+      this.d = new PhantomPicView(this);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a(), -1, -1);
+    this.a.addView(this.d.getView(), -1, -1);
     paramInt = JpegExifReader.readOrientation(paramString);
     if (paramInt != 3)
     {
@@ -223,7 +216,7 @@ public class TroopPicEffectsEditActivity
       localObject1 = new Matrix();
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setRotate(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.setBitmap(Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject1, true));
+      this.d.setBitmap(Bitmap.createBitmap(paramString, 0, 0, paramString.getWidth(), paramString.getHeight(), (Matrix)localObject1, true));
     }
     catch (OutOfMemoryError paramString)
     {
@@ -238,18 +231,18 @@ public class TroopPicEffectsEditActivity
       paramString.printStackTrace();
     }
     if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView.a();
+      this.d.a();
     }
   }
   
   protected void a(PicReq paramPicReq)
   {
-    ThreadManager.post(new TroopPicEffectsEditActivity.3(this, paramPicReq.a), 8, null, true);
+    ThreadManager.post(new TroopPicEffectsEditActivity.3(this, paramPicReq.g), 8, null, true);
   }
   
   protected void a(TroopGiftCallback paramTroopGiftCallback)
   {
-    ((TroopGiftManager)this.app.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a("OidbSvc.0x6c3", 1731, 1, this.b, 1, 7, true, true, paramTroopGiftCallback);
+    ((TroopGiftManager)this.app.getManager(QQManagerFactory.TROOP_GIFT_MANAGER)).a("OidbSvc.0x6c3", 1731, 1, this.g, 1, 7, true, true, paramTroopGiftCallback);
   }
   
   protected void a(TroopPicEffectsEditActivity.ItemData paramItemData, im_msg_body.CustomFace paramCustomFace, ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver)
@@ -257,10 +250,10 @@ public class TroopPicEffectsEditActivity
     oidb_cmd0x991.ReqBody localReqBody = new oidb_cmd0x991.ReqBody();
     oidb_cmd0x991.User localUser = new oidb_cmd0x991.User();
     oidb_cmd0x991.Goods localGoods = new oidb_cmd0x991.Goods();
-    long l = Long.parseLong(this.b);
-    localUser.uint64_group.set(l);
+    long l1 = Long.parseLong(this.g);
+    localUser.uint64_group.set(l1);
     localUser.uint32_client.set(1);
-    localUser.bytes_version.set(ByteStringMicro.copyFrom(AppSetting.a().getBytes()), true);
+    localUser.bytes_version.set(ByteStringMicro.copyFrom(AppSetting.b().getBytes()), true);
     localUser.uint32_portal.set(600);
     oidb_cmd0x991.LoginSig localLoginSig = new oidb_cmd0x991.LoginSig();
     localLoginSig.uint32_type.set(1);
@@ -275,9 +268,9 @@ public class TroopPicEffectsEditActivity
       localLoginSig.bytes_sig.set(ByteStringMicro.copyFromUtf8((String)localObject));
     }
     localUser.msg_login_sig.set(localLoginSig);
-    localUser.uint32_instance_id.set(AppSetting.a());
-    localGoods.int32_product_id.set(paramItemData.jdField_a_of_type_Int);
-    localGoods.bytes_goods_name.set(ByteStringMicro.copyFrom(paramItemData.jdField_a_of_type_JavaLangString.getBytes()));
+    localUser.uint32_instance_id.set(AppSetting.d());
+    localGoods.int32_product_id.set(paramItemData.a);
+    localGoods.bytes_goods_name.set(ByteStringMicro.copyFrom(paramItemData.b.getBytes()));
     localGoods.int32_goods_price.set(9);
     localGoods.bytes_animation_param.set(ByteStringMicro.copyFrom("{}".getBytes()));
     localGoods.msg_img.set(paramCustomFace);
@@ -291,7 +284,22 @@ public class TroopPicEffectsEditActivity
     ProtoUtils.a(paramItemData, paramTroopProtocolObserver, paramCustomFace, ((StringBuilder)localObject).toString(), 2449, 0, new Bundle(), 5000L);
   }
   
-  protected void a(String paramString)
+  protected void b()
+  {
+    ProgressDialog localProgressDialog = this.i;
+    if (localProgressDialog == null)
+    {
+      this.i = new ReportProgressDialog(this, 2131953338);
+      this.i.setCancelable(true);
+      this.i.show();
+      this.i.setContentView(2131625585);
+      ((TextView)this.i.findViewById(2131440191)).setText(HardCodeUtil.a(2131912959));
+      return;
+    }
+    localProgressDialog.show();
+  }
+  
+  protected void b(String paramString)
   {
     if (!FileUtils.fileExistsAndNotEmpty(paramString))
     {
@@ -303,43 +311,28 @@ public class TroopPicEffectsEditActivity
     }
     Object localObject1 = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(2, 1007);
     Object localObject2 = new PicUploadInfo.Builder();
-    ((PicUploadInfo.Builder)localObject2).d(this.b);
-    ((PicUploadInfo.Builder)localObject2).a(this.jdField_a_of_type_JavaLangString);
+    ((PicUploadInfo.Builder)localObject2).d(this.g);
+    ((PicUploadInfo.Builder)localObject2).a(this.f);
     ((PicUploadInfo.Builder)localObject2).e(1);
-    ((PicUploadInfo.Builder)localObject2).e(this.c);
+    ((PicUploadInfo.Builder)localObject2).e(this.h);
     ((PicUploadInfo.Builder)localObject2).d(1007);
     ((PicUploadInfo.Builder)localObject2).f(0);
     ((PicUploadInfo.Builder)localObject2).k(0);
-    localObject2 = ((PicUploadInfo.Builder)localObject2).a();
+    localObject2 = ((PicUploadInfo.Builder)localObject2).k();
     if (!((PicReq)localObject1).a((PicUploadInfo)localObject2))
     {
       QLog.e("TroopPicEffectsEditActivity", 2, "sendPhotoTask. failed to bind the UpInfo to the sendReq");
       return;
     }
-    ((PicUploadInfo)localObject2).g = paramString;
+    ((PicUploadInfo)localObject2).n = paramString;
     a((PicReq)localObject1);
-  }
-  
-  protected void b()
-  {
-    ProgressDialog localProgressDialog = this.jdField_a_of_type_AndroidAppProgressDialog;
-    if (localProgressDialog == null)
-    {
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ReportProgressDialog(this, 2131756189);
-      this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
-      this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131559561);
-      ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131372646)).setText(HardCodeUtil.a(2131715484));
-      return;
-    }
-    localProgressDialog.show();
   }
   
   protected void c()
   {
-    ProgressDialog localProgressDialog = this.jdField_a_of_type_AndroidAppProgressDialog;
+    ProgressDialog localProgressDialog = this.i;
     if ((localProgressDialog != null) && (localProgressDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
+      this.i.dismiss();
     }
   }
   
@@ -355,20 +348,20 @@ public class TroopPicEffectsEditActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562994);
-    setTitle(HardCodeUtil.a(2131715483));
-    this.leftView.setText(HardCodeUtil.a(2131715488));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131379340));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131379341));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)findViewById(2131379339));
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter = new TroopPicEffectsEditActivity.ItemListAdapter(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(DisplayUtil.a(this, 5.0F));
+    setContentView(2131629602);
+    setTitle(HardCodeUtil.a(2131912958));
+    this.leftView.setText(HardCodeUtil.a(2131912963));
+    this.a = ((FrameLayout)findViewById(2131448077));
+    this.e = ((Button)findViewById(2131448078));
+    this.b = ((HorizontalListView)findViewById(2131448076));
+    this.c = new TroopPicEffectsEditActivity.ItemListAdapter(this);
+    this.e.setOnClickListener(this);
+    this.b.setDividerWidth(DisplayUtil.a(this, 5.0F));
     paramBundle = getIntent();
-    this.b = paramBundle.getStringExtra("friendUin");
-    this.c = paramBundle.getStringExtra("troopUin");
-    this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
-    a(40000, this.jdField_a_of_type_JavaLangString);
+    this.g = paramBundle.getStringExtra("friendUin");
+    this.h = paramBundle.getStringExtra("troopUin");
+    this.f = paramBundle.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+    a(40000, this.f);
     a();
     TroopPicEffectsController.a("action_select", "page_exp");
     return true;
@@ -377,11 +370,11 @@ public class TroopPicEffectsEditActivity
   protected void doOnDestroy()
   {
     c();
-    IPicView localIPicView = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView;
+    IPicView localIPicView = this.d;
     if (localIPicView != null) {
       localIPicView.b();
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = new TroopPicEffectsEditActivity.ItemData[0];
+    this.j = new TroopPicEffectsEditActivity.ItemData[0];
     ((AIOAnimationControlManager)this.app.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER)).b(this);
     super.doOnDestroy();
   }
@@ -394,7 +387,7 @@ public class TroopPicEffectsEditActivity
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    if (paramView == this.e)
     {
       a(new TroopPicEffectsEditActivity.2(this));
       b();
@@ -412,54 +405,54 @@ public class TroopPicEffectsEditActivity
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    a(this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData[paramInt].jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData;
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData = localObject1[paramInt];
-    this.jdField_a_of_type_Int = localObject1[paramInt].jdField_a_of_type_Int;
-    int k = 0;
-    int i = 0;
+    a(this.j[paramInt].a, this.f);
+    Object localObject1 = this.j;
+    this.k = localObject1[paramInt];
+    this.l = localObject1[paramInt].a;
+    int i2 = 0;
+    int n = 0;
     for (;;)
     {
-      localObject1 = this.jdField_a_of_type_ArrayOfComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemData;
-      if (i >= localObject1.length) {
+      localObject1 = this.j;
+      if (n >= localObject1.length) {
         break;
       }
-      localObject1 = localObject1[i];
+      localObject1 = localObject1[n];
       boolean bool;
-      if (i == paramInt) {
+      if (n == paramInt) {
         bool = true;
       } else {
         bool = false;
       }
-      ((TroopPicEffectsEditActivity.ItemData)localObject1).jdField_a_of_type_Boolean = bool;
-      i += 1;
+      ((TroopPicEffectsEditActivity.ItemData)localObject1).e = bool;
+      n += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsEditActivity$ItemListAdapter.notifyDataSetChanged();
-    Object localObject2 = (TroopGiftManager.ShowPicPrice)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Int);
+    this.c.notifyDataSetChanged();
+    Object localObject2 = (TroopGiftManager.ShowPicPrice)this.m.get(this.l);
     if (localObject2 != null) {
-      localObject1 = ((TroopGiftManager.ShowPicPrice)localObject2).jdField_a_of_type_JavaLangString;
+      localObject1 = ((TroopGiftManager.ShowPicPrice)localObject2).b;
     } else {
       localObject1 = "30金豆秀一下";
     }
     if (localObject2 != null) {
-      localObject2 = ((TroopGiftManager.ShowPicPrice)localObject2).b;
+      localObject2 = ((TroopGiftManager.ShowPicPrice)localObject2).c;
     } else {
       localObject2 = null;
     }
-    int j;
+    int i1;
     if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      i = ((String)localObject1).indexOf((String)localObject2);
-      j = ((String)localObject2).length() + i;
+      n = ((String)localObject1).indexOf((String)localObject2);
+      i1 = ((String)localObject2).length() + n;
     }
     else
     {
-      j = 0;
-      i = k;
+      i1 = 0;
+      n = i2;
     }
     localObject1 = new SpannableString((CharSequence)localObject1);
-    ((SpannableString)localObject1).setSpan(new StrikethroughSpan(), i, j, 18);
-    this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject1);
+    ((SpannableString)localObject1).setSpan(new StrikethroughSpan(), n, i1, 18);
+    this.e.setText((CharSequence)localObject1);
     TroopPicEffectsController.a("action_select", "clk_switch");
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
@@ -467,15 +460,15 @@ public class TroopPicEffectsEditActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     paramObservable = (AIOAnimationControlManager.DownloadGftData)paramObject;
-    if (paramObservable.jdField_a_of_type_Boolean)
+    if (paramObservable.b)
     {
-      paramObservable = paramObservable.jdField_a_of_type_JavaLangString;
+      paramObservable = paramObservable.a;
       paramObject = new StringBuilder();
       paramObject.append("");
-      paramObject.append(this.jdField_a_of_type_Int);
+      paramObject.append(this.l);
       if (paramObservable.equals(paramObject.toString()))
       {
-        paramObservable = this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsViewIPicView;
+        paramObservable = this.d;
         if ((paramObservable instanceof VideoPicView)) {
           ((VideoPicView)paramObservable).a();
         }
@@ -485,7 +478,7 @@ public class TroopPicEffectsEditActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity
  * JD-Core Version:    0.7.0.1
  */

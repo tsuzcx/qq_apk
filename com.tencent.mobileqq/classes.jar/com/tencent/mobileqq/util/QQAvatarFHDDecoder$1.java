@@ -68,7 +68,7 @@ class QQAvatarFHDDecoder$1
             ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
             return;
           }
-          QQAvatarFHDDecoder.a(this.a).obtainMessage(1).sendToTarget();
+          QQAvatarFHDDecoder.d(this.a).obtainMessage(1).sendToTarget();
         }
       }
     }
@@ -76,7 +76,7 @@ class QQAvatarFHDDecoder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQAvatarFHDDecoder.1
  * JD-Core Version:    0.7.0.1
  */

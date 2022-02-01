@@ -5,19 +5,19 @@ import com.tencent.mobileqq.app.BusinessObserver;
 public class TroopPhotoObserver
   implements BusinessObserver
 {
-  public static final int a;
-  private static int b;
+  private static int a;
+  public static final int c;
   
   static
   {
-    int i = b;
-    b = i + 1;
-    a = i;
+    int i = a;
+    a = i + 1;
+    c = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != c) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -39,7 +39,7 @@ public class TroopPhotoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopphoto.api.TroopPhotoObserver
  * JD-Core Version:    0.7.0.1
  */

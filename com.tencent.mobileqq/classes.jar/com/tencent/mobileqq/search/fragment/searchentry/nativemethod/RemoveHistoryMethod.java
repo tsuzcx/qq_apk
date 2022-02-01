@@ -23,7 +23,7 @@ class RemoveHistoryMethod
   
   public void onCallBack(HippyMap paramHippyMap, Promise paramPromise)
   {
-    paramPromise = SearchWordHistoryManager.a().a();
+    paramPromise = SearchWordHistoryManager.a().c();
     int i = 0;
     while (i < paramPromise.size())
     {
@@ -37,7 +37,7 @@ class RemoveHistoryMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RemoveHistoryMethod
  * JD-Core Version:    0.7.0.1
  */

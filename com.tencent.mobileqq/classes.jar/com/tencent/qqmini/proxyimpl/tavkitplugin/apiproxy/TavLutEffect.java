@@ -6,49 +6,49 @@ import com.tencent.tav.coremedia.CMTimeRange;
 public class TavLutEffect
   extends BaseEffectNode
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private CMTimeRange jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  private Bitmap a;
+  private String b;
+  private CMTimeRange c;
+  private float d = 1.0F;
   
   public BaseEffectNode.Filter a()
   {
     return new TavLutEffect.LutEffectFilter(this);
   }
   
-  public CMTimeRange a()
-  {
-    return this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.d = paramFloat;
   }
   
   public void a(CMTimeRange paramCMTimeRange)
   {
-    this.jdField_a_of_type_ComTencentTavCoremediaCMTimeRange = paramCMTimeRange;
+    this.c = paramCMTimeRange;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public CMTimeRange c()
+  {
+    return this.c;
+  }
+  
+  public float d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavLutEffect
  * JD-Core Version:    0.7.0.1
  */

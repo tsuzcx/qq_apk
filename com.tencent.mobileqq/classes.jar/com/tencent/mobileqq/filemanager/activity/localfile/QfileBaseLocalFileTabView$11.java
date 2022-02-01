@@ -11,37 +11,37 @@ class QfileBaseLocalFileTabView$11
   
   public void a()
   {
-    this.a.a.a().c();
+    this.a.C.A().c();
   }
   
   public void b()
   {
-    this.a.a.a().k();
+    this.a.C.A().k();
   }
   
   public void c()
   {
-    this.a.a.a().l();
+    this.a.C.A().l();
   }
   
   public void d()
   {
-    this.a.a.a().m();
+    this.a.C.A().m();
   }
   
   public void e()
   {
-    this.a.a.a().n();
+    this.a.C.A().n();
   }
   
   public void f()
   {
-    this.a.a.a().D();
+    this.a.C.A().D();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.11
  * JD-Core Version:    0.7.0.1
  */

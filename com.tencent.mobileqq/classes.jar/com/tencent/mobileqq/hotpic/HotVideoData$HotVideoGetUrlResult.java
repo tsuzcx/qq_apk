@@ -9,19 +9,19 @@ import java.util.ArrayList;
 
 public class HotVideoData$HotVideoGetUrlResult
 {
-  public int a;
-  public String a;
-  public ArrayList<ServerAddr> a;
   public boolean a;
   public String b;
-  public String c;
+  public ArrayList<ServerAddr> c;
+  public String d;
+  public String e;
+  public int f;
   
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.c.size() > 0)
     {
-      ServerAddr localServerAddr = (ServerAddr)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      ServerAddr localServerAddr = (ServerAddr)this.c.get(0);
       localStringBuilder.append("http://");
       localStringBuilder.append(localServerAddr.mIp);
       if (localServerAddr.port != 80)
@@ -33,15 +33,15 @@ public class HotVideoData$HotVideoGetUrlResult
     }
     else
     {
-      if (!this.c.startsWith("http://")) {
+      if (!this.e.startsWith("http://")) {
         localStringBuilder.append("http://");
       }
-      localStringBuilder.append(this.c);
-      if (!this.c.endsWith("/")) {
+      localStringBuilder.append(this.e);
+      if (!this.e.endsWith("/")) {
         localStringBuilder.append("/");
       }
     }
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     return localStringBuilder.toString();
   }
   
@@ -50,16 +50,16 @@ public class HotVideoData$HotVideoGetUrlResult
     Object localObject;
     if (HotVideoData.access$000())
     {
-      this.jdField_a_of_type_JavaUtilArrayList = paramShortVideoDownResp.mIpList;
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      this.c = paramShortVideoDownResp.mIpList;
+      localObject = this.c;
       if (localObject != null) {
         ((ArrayList)localObject).size();
       }
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilArrayList = paramShortVideoDownResp.mIpv6List;
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      this.c = paramShortVideoDownResp.mIpv6List;
+      localObject = this.c;
       if (localObject != null) {
         ((ArrayList)localObject).size();
       }
@@ -72,7 +72,7 @@ public class HotVideoData$HotVideoGetUrlResult
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onBusiProtoResp() cdn ---- mIpListSize:");
-        ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+        ArrayList localArrayList = this.c;
         if (localArrayList != null) {
           i = localArrayList.size();
         }
@@ -89,17 +89,17 @@ public class HotVideoData$HotVideoGetUrlResult
         ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(paramShortVideoDownResp.md5));
         QLog.d("HotVideoData", 2, ((StringBuilder)localObject).toString());
       }
-      this.b = paramShortVideoDownResp.mUrl;
-      this.jdField_a_of_type_Boolean = true;
+      this.d = paramShortVideoDownResp.mUrl;
+      this.a = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
     if (-5100026 == paramShortVideoDownResp.errCode)
     {
       if (QLog.isColorLevel()) {
         QLog.d("HotVideoData", 2, "onBusiProtoResp()---- 安全打击");
       }
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705712);
+      this.b = HardCodeUtil.a(2131903597);
       return;
     }
     if ((-9527 == paramShortVideoDownResp.errCode) && ((paramShortVideoDownResp.errStr.equals("H_400_-5103017")) || (paramShortVideoDownResp.errStr.equals("H_400_-5103059"))))
@@ -111,15 +111,15 @@ public class HotVideoData$HotVideoGetUrlResult
         ((StringBuilder)localObject).append(paramShortVideoDownResp.errCode);
         QLog.d("HotVideoData", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705713);
+      this.b = HardCodeUtil.a(2131903598);
       return;
     }
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131705714);
+    this.b = HardCodeUtil.a(2131903599);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoData.HotVideoGetUrlResult
  * JD-Core Version:    0.7.0.1
  */

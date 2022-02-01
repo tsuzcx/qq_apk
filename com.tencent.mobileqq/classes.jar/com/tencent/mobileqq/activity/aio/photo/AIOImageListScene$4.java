@@ -17,7 +17,7 @@ class AIOImageListScene$4
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject1 = this.a.a.a(paramInt);
+    Object localObject1 = this.a.u.h(paramInt);
     if (!AIORichMediaInfo.class.isInstance(localObject1)) {
       return;
     }
@@ -29,18 +29,18 @@ class AIOImageListScene$4
       ((StringBuilder)localObject2).append("onItemClick");
       ((StringBuilder)localObject2).append(paramInt);
       ((StringBuilder)localObject2).append(" FirstVisiblePosition ");
-      ((StringBuilder)localObject2).append(AIOImageListScene.a(this.a).getFirstVisiblePosition());
+      ((StringBuilder)localObject2).append(AIOImageListScene.l(this.a).getFirstVisiblePosition());
       ((StringBuilder)localObject2).append(" LastVisiblePosition ");
-      ((StringBuilder)localObject2).append(AIOImageListScene.b(this.a).getLastVisiblePosition());
+      ((StringBuilder)localObject2).append(AIOImageListScene.m(this.a).getLastVisiblePosition());
       QLog.d("AIOImageListScene", 2, ((StringBuilder)localObject2).toString());
     }
-    if (AIOImageListScene.a(this.a))
+    if (AIOImageListScene.n(this.a))
     {
       localObject2 = ((AIORichMediaInfo)localObject1).a;
       if (AIOFilePicData.class.isInstance(localObject2))
       {
         AIOFilePicData localAIOFilePicData = (AIOFilePicData)localObject2;
-        if ((localAIOFilePicData.a(20) == null) && (localAIOFilePicData.a(18) == null) && (localAIOFilePicData.a(16) == null)) {
+        if ((localAIOFilePicData.c(20) == null) && (localAIOFilePicData.c(18) == null) && (localAIOFilePicData.c(16) == null)) {
           if (QLog.isColorLevel())
           {
             paramAdapterView = new StringBuilder();
@@ -52,20 +52,20 @@ class AIOImageListScene$4
       }
       else if (AIOLightVideoData.class.isInstance(((AIORichMediaInfo)localObject1).a))
       {
-        QQToast.a(AIOImageListScene.l(this.a), HardCodeUtil.a(2131700308), 0).a();
+        QQToast.makeText(AIOImageListScene.o(this.a), HardCodeUtil.a(2131898348), 0).show();
         return;
       }
-      int i = this.a.a();
+      int i = this.a.B();
       if (i == 1)
       {
         if (AIOShortVideoData.class.isInstance(localObject2)) {
-          QQToast.a(AIOImageListScene.m(this.a), HardCodeUtil.a(2131700315), 0).a();
+          QQToast.makeText(AIOImageListScene.p(this.a), HardCodeUtil.a(2131898355), 0).show();
         }
       }
       else if (i == 2)
       {
         if (AIOImageData.class.isInstance(localObject2)) {
-          QQToast.a(AIOImageListScene.n(this.a), HardCodeUtil.a(2131700313), 0).a();
+          QQToast.makeText(AIOImageListScene.q(this.a), HardCodeUtil.a(2131898353), 0).show();
         }
       }
       else if ((i == 0) && (!AIOImageData.class.isInstance(localObject2)) && (!AIOFilePicData.class.isInstance(localObject2))) {
@@ -80,7 +80,7 @@ class AIOImageListScene$4
       if (!this.a.a(paramView, (GalleryImage)localObject1)) {
         ((AbstractImageAdapter)paramAdapterView.getAdapter()).notifyDataSetChanged();
       }
-      this.a.w();
+      this.a.A();
     }
     else
     {
@@ -89,14 +89,14 @@ class AIOImageListScene$4
         if (QLog.isColorLevel()) {
           QLog.d("AIOImageListScene", 2, "lightvideo could not be opened");
         }
-        QQToast.a(AIOImageListScene.o(this.a), HardCodeUtil.a(2131700318), 0).a();
+        QQToast.makeText(AIOImageListScene.r(this.a), HardCodeUtil.a(2131898358), 0).show();
         return;
       }
       AIOShortVideoData.class.isInstance(((AIORichMediaInfo)localObject1).a);
-      this.a.a.e(paramInt);
-      this.a.a.b(AIOImageListScene.c(this.a).getFirstVisiblePosition());
-      this.a.a.c(AIOImageListScene.d(this.a).getLastVisiblePosition());
-      this.a.t();
+      this.a.u.g(paramInt);
+      this.a.u.d(AIOImageListScene.s(this.a).getFirstVisiblePosition());
+      this.a.u.e(AIOImageListScene.t(this.a).getLastVisiblePosition());
+      this.a.D();
       this.a.a("Multi_Pic_big", 1);
     }
     if (QLog.isColorLevel())
@@ -105,18 +105,18 @@ class AIOImageListScene$4
       paramAdapterView.append("onItemClick");
       paramAdapterView.append(paramInt);
       paramAdapterView.append(" FirstVisiblePosition ");
-      paramAdapterView.append(AIOImageListScene.e(this.a).getFirstVisiblePosition());
+      paramAdapterView.append(AIOImageListScene.u(this.a).getFirstVisiblePosition());
       paramAdapterView.append(" LastVisiblePosition ");
-      paramAdapterView.append(AIOImageListScene.f(this.a).getLastVisiblePosition());
+      paramAdapterView.append(AIOImageListScene.v(this.a).getLastVisiblePosition());
       paramAdapterView.append(" SelectedIndex = ");
-      paramAdapterView.append(this.a.a.b());
+      paramAdapterView.append(this.a.u.b());
       QLog.d("AIOImageListScene", 2, paramAdapterView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageListScene.4
  * JD-Core Version:    0.7.0.1
  */

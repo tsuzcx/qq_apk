@@ -5,7 +5,7 @@ import com.tencent.mobileqq.ark.config.config.ArkAIKeyWordSDKShareConfig;
 public class ArkAIKeyWordSDKShareConfBean
   extends ArkConfBean
 {
-  private final ArkAIKeyWordSDKShareConfig a;
+  private final ArkAIKeyWordSDKShareConfig b;
   
   public ArkAIKeyWordSDKShareConfBean()
   {
@@ -15,7 +15,7 @@ public class ArkAIKeyWordSDKShareConfBean
   public ArkAIKeyWordSDKShareConfBean(String paramString, ArkAIKeyWordSDKShareConfig paramArkAIKeyWordSDKShareConfig)
   {
     super(paramString);
-    this.a = paramArkAIKeyWordSDKShareConfig;
+    this.b = paramArkAIKeyWordSDKShareConfig;
   }
   
   public int a()
@@ -25,7 +25,7 @@ public class ArkAIKeyWordSDKShareConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.config.bean.ArkAIKeyWordSDKShareConfBean
  * JD-Core Version:    0.7.0.1
  */

@@ -28,30 +28,30 @@ class RecentLoginDevActivity$4
       localStringBuilder.append(paramInt);
       QLog.d("Q.devlock.RecentLoginDevActivity", 2, localStringBuilder.toString());
     }
-    RecentLoginDevActivity.b(this.a);
+    RecentLoginDevActivity.d(this.a);
     if (paramBoolean)
     {
       ReportController.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
-      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
+      if ((paramInt > -1) && (RecentLoginDevActivity.e(this.a) != null) && (paramInt < RecentLoginDevActivity.e(this.a).size()))
       {
-        RecentLoginDevActivity.a(this.a).remove(paramInt);
+        RecentLoginDevActivity.e(this.a).remove(paramInt);
         paramString = this.a;
-        RecentLoginDevActivity.a(paramString, RecentLoginDevActivity.a(paramString));
+        RecentLoginDevActivity.b(paramString, RecentLoginDevActivity.e(paramString));
       }
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131692006), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 2, this.a.getString(2131888973), 0).show(this.a.getTitleBarHeight());
       return;
     }
     if (TextUtils.isEmpty(paramString))
     {
-      QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131694373), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), 1, this.a.getString(2131892051), 0).show(this.a.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getApplicationContext(), 1, paramString, 0).show(this.a.getTitleBarHeight());
   }
   
   protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
   {
-    RecentLoginDevActivity.b(this.a);
+    RecentLoginDevActivity.d(this.a);
     Object localObject;
     if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
     {
@@ -62,7 +62,7 @@ class RecentLoginDevActivity$4
       if (QLog.isColorLevel())
       {
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
+        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.e(this.a).iterator();
         while (paramSvcRspGetDevLoginInfo.hasNext())
         {
           localObject = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
@@ -87,7 +87,7 @@ class RecentLoginDevActivity$4
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
       }
       paramSvcRspGetDevLoginInfo = this.a;
-      RecentLoginDevActivity.a(paramSvcRspGetDevLoginInfo, RecentLoginDevActivity.a(paramSvcRspGetDevLoginInfo));
+      RecentLoginDevActivity.b(paramSvcRspGetDevLoginInfo, RecentLoginDevActivity.e(paramSvcRspGetDevLoginInfo));
       return;
     }
     if (QLog.isColorLevel())
@@ -108,12 +108,12 @@ class RecentLoginDevActivity$4
         QLog.d("Q.devlock.RecentLoginDevActivity", 2, ((StringBuilder)localObject).toString());
       }
     }
-    QQToast.a(this.a.getActivity(), 1, this.a.getString(2131692017), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getActivity(), 1, this.a.getString(2131888984), 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecentLoginDevActivity.4
  * JD-Core Version:    0.7.0.1
  */

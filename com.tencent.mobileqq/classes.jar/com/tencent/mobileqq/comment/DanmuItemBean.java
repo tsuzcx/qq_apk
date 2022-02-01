@@ -9,34 +9,26 @@ public class DanmuItemBean
   implements Parcelable
 {
   public static final Parcelable.Creator<DanmuItemBean> CREATOR = new DanmuItemBean.1();
-  public int a;
   public long a;
-  public String a;
-  public boolean a;
   public long b;
-  public String b;
   public long c;
-  public String c;
-  public long d;
+  public String d = "";
+  public String e = "";
+  public long f;
+  public boolean g;
+  public String h = "";
+  public int i;
   
-  public DanmuItemBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
+  public DanmuItemBean() {}
   
   public DanmuItemBean(long paramLong1, long paramLong2, long paramLong3, long paramLong4, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.d = paramLong3;
-    this.jdField_c_of_type_Long = paramLong4;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.f = paramLong3;
+    this.c = paramLong4;
+    this.d = paramString1;
+    this.e = paramString2;
   }
   
   public int describeContents()
@@ -48,25 +40,25 @@ public class DanmuItemBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DanmuItemBean{commentUin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", commentSeq=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", createTime=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", location=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", content=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", nickName='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", createTime=");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", nickName='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", createTime=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", anonymousFlag=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", anonymousNick=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", anonymousHeadPortrait=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
@@ -77,18 +69,18 @@ public class DanmuItemBean
     {
       try
       {
-        paramParcel.writeLong(this.jdField_a_of_type_Long);
-        paramParcel.writeLong(this.jdField_b_of_type_Long);
-        paramParcel.writeLong(this.d);
-        paramParcel.writeLong(this.jdField_c_of_type_Long);
-        paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-        paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-        if (this.jdField_a_of_type_Boolean)
+        paramParcel.writeLong(this.a);
+        paramParcel.writeLong(this.b);
+        paramParcel.writeLong(this.f);
+        paramParcel.writeLong(this.c);
+        paramParcel.writeString(this.d);
+        paramParcel.writeString(this.e);
+        if (this.g)
         {
           paramInt = 1;
           paramParcel.writeInt(paramInt);
-          paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-          paramParcel.writeInt(this.jdField_a_of_type_Int);
+          paramParcel.writeString(this.h);
+          paramParcel.writeInt(this.i);
           return;
         }
       }
@@ -103,7 +95,7 @@ public class DanmuItemBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuItemBean
  * JD-Core Version:    0.7.0.1
  */

@@ -17,37 +17,37 @@ public class WSGridTitlePlayLikeInnerItemView
     super(paramContext, paramView, paramWSRecommendAdapter);
   }
   
-  protected int a()
+  public void b()
+  {
+    super.b();
+    a(2131435991, new WSGridFeedInnerTitleController(this.b));
+    a(2131435989, new WSGridFeedInnerPlayCountController(this.b));
+    a(2131435990, new WSGridFeedInnerLikeCountController(this.b));
+  }
+  
+  protected boolean e()
+  {
+    return (!TextUtils.isEmpty(this.d.feed_desc)) || (this.d.playNum != 0) || (this.d.ding_count != 0);
+  }
+  
+  protected boolean f()
+  {
+    return false;
+  }
+  
+  protected int g()
   {
     return 0;
   }
   
-  protected boolean a()
+  protected int h()
   {
-    return (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feed_desc)) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.playNum != 0) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.ding_count != 0);
-  }
-  
-  protected int b()
-  {
-    return 2130841887;
-  }
-  
-  public void b()
-  {
-    super.b();
-    a(2131369028, new WSGridFeedInnerTitleController(this.jdField_a_of_type_AndroidContentContext));
-    a(2131369026, new WSGridFeedInnerPlayCountController(this.jdField_a_of_type_AndroidContentContext));
-    a(2131369027, new WSGridFeedInnerLikeCountController(this.jdField_a_of_type_AndroidContentContext));
-  }
-  
-  protected boolean b()
-  {
-    return false;
+    return 2130842805;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridTitlePlayLikeInnerItemView
  * JD-Core Version:    0.7.0.1
  */

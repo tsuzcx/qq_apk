@@ -25,13 +25,13 @@ class NearByFaceDrawable$1
       if (paramFaceInfo == null) {
         return;
       }
-      if (paramFaceInfo.b == this.a.mFaceInfo.b)
+      if (paramFaceInfo.d == this.a.mFaceInfo.d)
       {
-        if (!this.a.mFaceInfo.a.equals(paramFaceInfo.a)) {
+        if (!this.a.mFaceInfo.c.equals(paramFaceInfo.c)) {
           return;
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver != null) && (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
-          this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceObserver);
+        if ((this.a.b != null) && (this.a.a != null)) {
+          this.a.a.removeObserver(this.a.b);
         }
         if (paramBoolean)
         {
@@ -53,7 +53,7 @@ class NearByFaceDrawable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.NearByFaceDrawable.1
  * JD-Core Version:    0.7.0.1
  */

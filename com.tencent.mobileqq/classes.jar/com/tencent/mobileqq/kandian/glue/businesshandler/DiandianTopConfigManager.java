@@ -22,27 +22,22 @@ import tencent.im.oidb.oidb_0xb7e.RspBody;
 
 public class DiandianTopConfigManager
 {
-  private static DiandianTopConfigManager a;
-  protected static final Object a;
   public static final String a = "com.tencent.mobileqq.kandian.glue.businesshandler.DiandianTopConfigManager";
-  
-  static
-  {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
+  protected static final Object b = new Object();
+  private static DiandianTopConfigManager c;
   
   public static DiandianTopConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager = new DiandianTopConfigManager();
+        if (c == null) {
+          c = new DiandianTopConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerDiandianTopConfigManager;
+    return c;
   }
   
   public static void a(long paramLong)
@@ -59,7 +54,7 @@ public class DiandianTopConfigManager
   private void a(oidb_0xb7e.RspBody paramRspBody)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "fabricateModel");
+      QLog.d(a, 2, "fabricateModel");
     }
     if (paramRspBody == null)
     {
@@ -117,12 +112,12 @@ public class DiandianTopConfigManager
   private void a(byte[] paramArrayOfByte, long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "saveDiandianTopConfig");
+      QLog.d(a, 2, "saveDiandianTopConfig");
     }
     ThreadManager.post(new DiandianTopConfigManager.3(this, paramArrayOfByte, paramLong), 5, null, true);
   }
   
-  public static boolean a()
+  public static boolean c()
   {
     AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
@@ -133,26 +128,26 @@ public class DiandianTopConfigManager
     return System.currentTimeMillis() - l >= 43200000L;
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "loadDiandianTopConfig");
-    }
-    ThreadManager.post(new DiandianTopConfigManager.2(this), 5, null, true);
-  }
-  
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "requestDiandianTopConfig");
+      QLog.d(a, 2, "requestDiandianTopConfig");
     }
     oidb_0xb7e.ReqBody localReqBody = new oidb_0xb7e.ReqBody();
     ProtoUtils.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new DiandianTopConfigManager.1(this, paramBoolean), localReqBody.toByteArray(), "OidbSvc.0xb7e", 2942, 0, null, 0L);
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "loadDiandianTopConfig");
+    }
+    ThreadManager.post(new DiandianTopConfigManager.2(this), 5, null, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.DiandianTopConfigManager
  * JD-Core Version:    0.7.0.1
  */

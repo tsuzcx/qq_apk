@@ -12,7 +12,7 @@ public abstract interface ITeamWorkHttpUtils
   extends QRouteApi
 {
   public static final String DEFAULT_TENCENT_DOC_IMPORT_FORM = "https://docs.qq.com/cgi-go/imp/import_form_file";
-  public static final String DEFAULT_TENCENT_DOC_TEMPLATES_URL = "https://docs.qq.com/desktop/m/templates_list.html?padtype=0&_wv=2&_wwv=512";
+  public static final String DEFAULT_TENCENT_DOC_TEMPLATES_URL = "https://docs.qq.com/mall/m/index?padtype=0&_wv=2&_wwv=512&from_page=s_qq_myfile_menu_create";
   
   public abstract String checkIfExist(String paramString1, String paramString2);
   
@@ -50,7 +50,7 @@ public abstract interface ITeamWorkHttpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.ITeamWorkHttpUtils
  * JD-Core Version:    0.7.0.1
  */

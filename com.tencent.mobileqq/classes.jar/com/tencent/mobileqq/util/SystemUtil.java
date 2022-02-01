@@ -10,25 +10,8 @@ import java.lang.reflect.Method;
 public class SystemUtil
 {
   public static String a = "SystemUtil";
-  static boolean a;
   static boolean b;
-  
-  public static long a()
-  {
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-      long l = localStatFs.getBlockSize();
-      l = localStatFs.getAvailableBlocks() * l / 1024L;
-      return l;
-    }
-    catch (Exception localException)
-    {
-      label34:
-      break label34;
-    }
-    return 0L;
-  }
+  static boolean c;
   
   public static String a(String paramString)
   {
@@ -43,25 +26,6 @@ public class SystemUtil
       paramString.printStackTrace();
     }
     return null;
-  }
-  
-  public static void a()
-  {
-    boolean bool2 = true;
-    a = true;
-    boolean bool1 = bool2;
-    if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
-    {
-      bool1 = bool2;
-      if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
-        if (!TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
-          bool1 = bool2;
-        } else {
-          bool1 = false;
-        }
-      }
-    }
-    b = bool1;
   }
   
   public static boolean a()
@@ -83,6 +47,23 @@ public class SystemUtil
   {
     try
     {
+      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+      long l = localStatFs.getBlockSize();
+      l = localStatFs.getAvailableBlocks() * l / 1024L;
+      return l;
+    }
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
+    return 0L;
+  }
+  
+  public static long c()
+  {
+    try
+    {
       StatFs localStatFs = new StatFs("/data/data/com.tencent.mobileqq/files/");
       long l = localStatFs.getBlockSize();
       l = localStatFs.getAvailableBlocks() * l / 1024L;
@@ -96,21 +77,40 @@ public class SystemUtil
     return 0L;
   }
   
-  public static boolean b()
+  public static boolean d()
   {
-    if (a) {
-      return b;
+    if (b) {
+      return c;
     }
-    a();
+    e();
+    return c;
+  }
+  
+  public static void e()
+  {
+    boolean bool2 = true;
+    b = true;
+    boolean bool1 = bool2;
+    if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
+    {
+      bool1 = bool2;
+      if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
+        if (!TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
+        }
+      }
+    }
+    c = bool1;
+  }
+  
+  public static boolean f()
+  {
     return b;
   }
   
-  public static boolean c()
-  {
-    return a;
-  }
-  
-  public static boolean d()
+  public static boolean g()
   {
     boolean bool = false;
     try
@@ -125,14 +125,14 @@ public class SystemUtil
     return false;
   }
   
-  public static boolean e()
+  public static boolean h()
   {
     return (!TextUtils.isEmpty(a("ro.meizu.product.model"))) || ("meizu".equalsIgnoreCase(Build.BRAND)) || ("22c4185e".equalsIgnoreCase(Build.BRAND));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemUtil
  * JD-Core Version:    0.7.0.1
  */

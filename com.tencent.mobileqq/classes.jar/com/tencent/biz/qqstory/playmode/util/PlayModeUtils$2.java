@@ -9,12 +9,12 @@ final class PlayModeUtils$2
   
   public void run()
   {
-    PlayModeUtils.b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    PlayModeUtils.b(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.PlayModeUtils.2
  * JD-Core Version:    0.7.0.1
  */

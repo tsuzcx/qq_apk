@@ -18,9 +18,9 @@ final class ExpandPluginLoadingFragment$updateLoadingStatus$1
   
   public final void run()
   {
-    ExpandPluginLoadingFragment.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceLoadingStatus);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandPluginEntranceLoadingStatus;
-    int i = ExpandPluginLoadingFragment.WhenMappings.a[localObject.ordinal()];
+    ExpandPluginLoadingFragment.a(this.this$0, this.a);
+    Object localObject = this.a;
+    int i = ExpandPluginLoadingFragment.WhenMappings.$EnumSwitchMapping$0[localObject.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -33,17 +33,17 @@ final class ExpandPluginLoadingFragment$updateLoadingStatus$1
           this.this$0.d(2);
           return;
         }
-        ExpandPluginLoadingFragment.a(this.this$0).setVisibility(0);
+        ExpandPluginLoadingFragment.g(this.this$0).setVisibility(0);
         localObject = this.this$0;
-        if ((this.jdField_a_of_type_Int == 0) && (ExpandPluginLoadingFragment.a((ExpandPluginLoadingFragment)localObject) != 0)) {
-          i = ExpandPluginLoadingFragment.a(this.this$0);
+        if ((this.b == 0) && (ExpandPluginLoadingFragment.i((ExpandPluginLoadingFragment)localObject) != 0)) {
+          i = ExpandPluginLoadingFragment.i(this.this$0);
         } else {
-          i = this.jdField_a_of_type_Int;
+          i = this.b;
         }
         ExpandPluginLoadingFragment.a((ExpandPluginLoadingFragment)localObject, i);
         localObject = ExpandPluginLoadingFragment.a(this.this$0);
         if (localObject != null) {
-          ((TextView)localObject).setText(2131698875);
+          ((TextView)localObject).setText(2131896847);
         }
         localObject = ExpandPluginLoadingFragment.b(this.this$0);
         if (localObject != null) {
@@ -51,38 +51,38 @@ final class ExpandPluginLoadingFragment$updateLoadingStatus$1
         }
         localObject = ExpandPluginLoadingFragment.b(this.this$0);
         if (localObject != null) {
-          ((TextView)localObject).setText(2131698876);
-        }
-        localObject = ExpandPluginLoadingFragment.a(this.this$0);
-        if (localObject != null) {
-          ((URLImageView)localObject).setVisibility(8);
-        }
-        localObject = ExpandPluginLoadingFragment.a(this.this$0);
-        if (localObject != null) {
-          ((ImageView)localObject).setVisibility(0);
-        }
-        localObject = ExpandPluginLoadingFragment.a(this.this$0);
-        if (localObject != null) {
-          ((ProgressBar)localObject).setVisibility(8);
+          ((TextView)localObject).setText(2131896848);
         }
         localObject = ExpandPluginLoadingFragment.c(this.this$0);
         if (localObject != null) {
-          ((TextView)localObject).setVisibility(0);
+          ((URLImageView)localObject).setVisibility(8);
         }
         localObject = ExpandPluginLoadingFragment.d(this.this$0);
+        if (localObject != null) {
+          ((ImageView)localObject).setVisibility(0);
+        }
+        localObject = ExpandPluginLoadingFragment.e(this.this$0);
+        if (localObject != null) {
+          ((ProgressBar)localObject).setVisibility(8);
+        }
+        localObject = ExpandPluginLoadingFragment.f(this.this$0);
+        if (localObject != null) {
+          ((TextView)localObject).setVisibility(0);
+        }
+        localObject = ExpandPluginLoadingFragment.h(this.this$0);
         if (localObject != null) {
           ((TextView)localObject).setVisibility(8);
         }
         localObject = (Map)new HashMap();
-        ((Map)localObject).put("load_error", String.valueOf(this.b));
-        ((Map)localObject).put("error_reason", String.valueOf(this.jdField_a_of_type_Int));
+        ((Map)localObject).put("load_error", String.valueOf(this.c));
+        ((Map)localObject).put("error_reason", String.valueOf(this.b));
         ExpandReportUtils.a("expose#launch_download_error_page#view", true, -1L, -1L, (Map)localObject, true, true);
         return;
       }
-      ExpandPluginLoadingFragment.a(this.this$0).setVisibility(0);
+      ExpandPluginLoadingFragment.g(this.this$0).setVisibility(0);
       localObject = ExpandPluginLoadingFragment.a(this.this$0);
       if (localObject != null) {
-        ((TextView)localObject).setText(2131698875);
+        ((TextView)localObject).setText(2131896847);
       }
       localObject = ExpandPluginLoadingFragment.b(this.this$0);
       if (localObject != null) {
@@ -90,25 +90,25 @@ final class ExpandPluginLoadingFragment$updateLoadingStatus$1
       }
       localObject = ExpandPluginLoadingFragment.b(this.this$0);
       if (localObject != null) {
-        ((TextView)localObject).setText(2131698877);
-      }
-      localObject = ExpandPluginLoadingFragment.a(this.this$0);
-      if (localObject != null) {
-        ((URLImageView)localObject).setVisibility(8);
-      }
-      localObject = ExpandPluginLoadingFragment.a(this.this$0);
-      if (localObject != null) {
-        ((ImageView)localObject).setVisibility(0);
-      }
-      localObject = ExpandPluginLoadingFragment.a(this.this$0);
-      if (localObject != null) {
-        ((ProgressBar)localObject).setVisibility(8);
+        ((TextView)localObject).setText(2131896849);
       }
       localObject = ExpandPluginLoadingFragment.c(this.this$0);
       if (localObject != null) {
-        ((TextView)localObject).setVisibility(8);
+        ((URLImageView)localObject).setVisibility(8);
       }
       localObject = ExpandPluginLoadingFragment.d(this.this$0);
+      if (localObject != null) {
+        ((ImageView)localObject).setVisibility(0);
+      }
+      localObject = ExpandPluginLoadingFragment.e(this.this$0);
+      if (localObject != null) {
+        ((ProgressBar)localObject).setVisibility(8);
+      }
+      localObject = ExpandPluginLoadingFragment.f(this.this$0);
+      if (localObject != null) {
+        ((TextView)localObject).setVisibility(8);
+      }
+      localObject = ExpandPluginLoadingFragment.h(this.this$0);
       if (localObject != null) {
         ((TextView)localObject).setVisibility(8);
       }
@@ -117,25 +117,25 @@ final class ExpandPluginLoadingFragment$updateLoadingStatus$1
     }
     localObject = ExpandPluginLoadingFragment.a(this.this$0);
     if (localObject != null) {
-      ((TextView)localObject).setText(2131698874);
+      ((TextView)localObject).setText(2131896846);
     }
     localObject = ExpandPluginLoadingFragment.b(this.this$0);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
-    localObject = ExpandPluginLoadingFragment.a(this.this$0);
+    localObject = ExpandPluginLoadingFragment.c(this.this$0);
     if (localObject != null) {
       ((URLImageView)localObject).setVisibility(0);
     }
-    localObject = ExpandPluginLoadingFragment.a(this.this$0);
+    localObject = ExpandPluginLoadingFragment.d(this.this$0);
     if (localObject != null) {
       ((ImageView)localObject).setVisibility(8);
     }
-    localObject = ExpandPluginLoadingFragment.a(this.this$0);
+    localObject = ExpandPluginLoadingFragment.e(this.this$0);
     if (localObject != null) {
       ((ProgressBar)localObject).setVisibility(0);
     }
-    localObject = ExpandPluginLoadingFragment.c(this.this$0);
+    localObject = ExpandPluginLoadingFragment.f(this.this$0);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -143,7 +143,7 @@ final class ExpandPluginLoadingFragment$updateLoadingStatus$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLoadingFragment.updateLoadingStatus.1
  * JD-Core Version:    0.7.0.1
  */

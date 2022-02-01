@@ -40,7 +40,7 @@ public class KCWraperV2
     if (paramOrderCheckResult == null) {
       return;
     }
-    Object localObject1 = VasUtil.a();
+    Object localObject1 = VasUtil.d();
     if (localObject1 == null) {
       localObject1 = null;
     } else {
@@ -70,7 +70,7 @@ public class KCWraperV2
       }
       if (bool2)
       {
-        paramOrderCheckResult = ((TicketManager)VasUtil.a().getManager(2)).getSkey((String)localObject1);
+        paramOrderCheckResult = ((TicketManager)VasUtil.d().getManager(2)).getSkey((String)localObject1);
         ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).sendGetBaseVipInfoReq(paramOrderCheckResult, (String)localObject1);
       }
     }
@@ -113,8 +113,8 @@ public class KCWraperV2
     if (this.a.get()) {
       return;
     }
-    Context localContext = VasUtil.a().getApplicationContext();
-    File localFile = new File(TMSManager.a().a(localContext));
+    Context localContext = VasUtil.c().getApplicationContext();
+    File localFile = new File(TMSManager.b().a(localContext));
     if (!localFile.exists())
     {
       if (paramRunnable != null) {
@@ -126,12 +126,18 @@ public class KCWraperV2
     a(localContext, localFile);
   }
   
-  boolean a()
+  boolean a(Activity paramActivity)
+  {
+    ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startKingCardActivationFragment();
+    return true;
+  }
+  
+  boolean b()
   {
     if (this.a.get()) {
       return true;
     }
-    if (!new File(TMSManager.a().a(VasUtil.a().getApplicationContext())).exists()) {
+    if (!new File(TMSManager.b().a(VasUtil.c().getApplicationContext())).exists()) {
       return false;
     }
     try
@@ -155,13 +161,7 @@ public class KCWraperV2
     }
   }
   
-  boolean a(Activity paramActivity)
-  {
-    ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startKingCardActivationFragment();
-    return true;
-  }
-  
-  boolean b()
+  boolean c()
   {
     if (QLog.isColorLevel()) {
       QLog.e("KC.TMSManager", 1, "supportActivationView == true");
@@ -171,7 +171,7 @@ public class KCWraperV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2
  * JD-Core Version:    0.7.0.1
  */

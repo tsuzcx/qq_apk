@@ -19,20 +19,30 @@ import mqq.app.MobileQQ;
 
 public class QSecPushServiceMgr
 {
-  private int jdField_a_of_type_Int = 0;
-  private QSecCbMgr jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = null;
-  private QSecLibMgr jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr = null;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private HashMap<Integer, List<QSecPushServiceMgr.PushCmdData>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private HashMap<Integer, List<QSecPushServiceMgr.PushCmdData>> a = new HashMap();
+  private Object b = new Object();
+  private QSecLibMgr c = null;
+  private QSecCbMgr d = null;
+  private int e = 0;
   
   public QSecPushServiceMgr(QSecLibMgr paramQSecLibMgr, QSecCbMgr paramQSecCbMgr)
   {
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr = paramQSecLibMgr;
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = paramQSecCbMgr;
-    this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(new QSecPushServiceMgr.2(this));
+    this.c = paramQSecLibMgr;
+    this.d = paramQSecCbMgr;
+    this.c.a(new QSecPushServiceMgr.2(this));
   }
   
-  private QSecPushServiceMgr.PushCmdData a(byte[] paramArrayOfByte)
+  private void a(QSecPushServiceMgr.PushCmdData paramPushCmdData)
+  {
+    if (paramPushCmdData.a == 0)
+    {
+      c(paramPushCmdData);
+      return;
+    }
+    b(paramPushCmdData);
+  }
+  
+  private QSecPushServiceMgr.PushCmdData b(byte[] paramArrayOfByte)
   {
     int i;
     try
@@ -75,7 +85,7 @@ public class QSecPushServiceMgr
           i = localQSecPushSeriveBody.qsecNativeVer.get();
         }
       }
-      if ((i != 0) && (i != QSecFramework.a().a())) {
+      if ((i != 0) && (i != QSecFramework.c().b())) {
         return null;
       }
       if ((localQSecPushSeriveBody.packageName == null) || (!localQSecPushSeriveBody.packageName.has())) {
@@ -94,7 +104,7 @@ public class QSecPushServiceMgr
         if (!localQSecPushSeriveBody.pluginId.has()) {
           return null;
         }
-        paramArrayOfByte.jdField_a_of_type_Int = localQSecPushSeriveBody.pluginId.get();
+        paramArrayOfByte.a = localQSecPushSeriveBody.pluginId.get();
         if (localQSecPushSeriveBody.pluginCmd != null)
         {
           if (!localQSecPushSeriveBody.pluginCmd.has()) {
@@ -112,10 +122,10 @@ public class QSecPushServiceMgr
               if (localQSecPushSeriveBody.canCache.get() == 1) {
                 bool = true;
               }
-              paramArrayOfByte.jdField_a_of_type_Boolean = bool;
+              paramArrayOfByte.d = bool;
             }
             if ((localQSecPushSeriveBody.extraInfo != null) && (localQSecPushSeriveBody.extraInfo.has())) {
-              paramArrayOfByte.jdField_a_of_type_ArrayOfByte = localQSecPushSeriveBody.extraInfo.get().toByteArray();
+              paramArrayOfByte.e = localQSecPushSeriveBody.extraInfo.get().toByteArray();
             }
             return paramArrayOfByte;
           }
@@ -146,33 +156,23 @@ public class QSecPushServiceMgr
     }
   }
   
-  private void a(QSecPushServiceMgr.PushCmdData paramPushCmdData)
-  {
-    if (paramPushCmdData.jdField_a_of_type_Int == 0)
-    {
-      c(paramPushCmdData);
-      return;
-    }
-    b(paramPushCmdData);
-  }
-  
   private void b(QSecPushServiceMgr.PushCmdData paramPushCmdData)
   {
-    int i = this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr.a(paramPushCmdData.jdField_a_of_type_Int, paramPushCmdData.b, paramPushCmdData.c, new Object[] { paramPushCmdData.jdField_a_of_type_ArrayOfByte }, null);
-    if (((i == 17) || (i == 7) || (i == 4)) && (paramPushCmdData.jdField_a_of_type_Boolean)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i = this.c.a(paramPushCmdData.a, paramPushCmdData.b, paramPushCmdData.c, new Object[] { paramPushCmdData.e }, null);
+    if (((i == 17) || (i == 7) || (i == 4)) && (paramPushCmdData.d)) {
+      synchronized (this.b)
       {
-        if (this.jdField_a_of_type_Int < 50)
+        if (this.e < 50)
         {
-          List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramPushCmdData.jdField_a_of_type_Int));
+          List localList = (List)this.a.get(Integer.valueOf(paramPushCmdData.a));
           Object localObject1 = localList;
           if (localList == null)
           {
             localObject1 = new LinkedList();
-            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramPushCmdData.jdField_a_of_type_Int), localObject1);
+            this.a.put(Integer.valueOf(paramPushCmdData.a), localObject1);
           }
           ((List)localObject1).add(paramPushCmdData);
-          this.jdField_a_of_type_Int += 1;
+          this.e += 1;
         }
         return;
       }
@@ -188,11 +188,11 @@ public class QSecPushServiceMgr
         if (i != 3) {
           return;
         }
-        paramPushCmdData = paramPushCmdData.jdField_a_of_type_ArrayOfByte;
+        paramPushCmdData = paramPushCmdData.e;
         if (!FilterManager.a().a(paramPushCmdData)) {
           break label81;
         }
-        FilterManager.a().a();
+        FilterManager.a().b();
         return;
       }
     }
@@ -203,7 +203,7 @@ public class QSecPushServiceMgr
       {
         ((QPUpdateManager)paramPushCmdData.getManager(QQManagerFactory.QQPROTECT_UPDATE_MANAGER)).b(0);
         return;
-        this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(true);
+        this.d.a(true);
       }
       label81:
       return;
@@ -221,7 +221,7 @@ public class QSecPushServiceMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecPushServiceMgr
  * JD-Core Version:    0.7.0.1
  */

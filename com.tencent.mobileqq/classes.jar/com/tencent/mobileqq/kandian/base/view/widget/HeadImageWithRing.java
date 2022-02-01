@@ -9,12 +9,12 @@ import android.util.AttributeSet;
 public class HeadImageWithRing
   extends KanDianUrlRoundCornerImageView
 {
-  int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  boolean a;
+  Paint b;
   int c;
   int d;
+  int e;
+  int f;
   
   public HeadImageWithRing(Context paramContext)
   {
@@ -34,43 +34,43 @@ public class HeadImageWithRing
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      int i = this.d;
-      paramCanvas.drawCircle(i, i, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      int i = this.f;
+      paramCanvas.drawCircle(i, i, this.c, this.b);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_Int = ((int)((getMeasuredWidth() - getPaddingLeft() - getPaddingRight() - this.b) * 0.5F));
+    this.c = ((int)((getMeasuredWidth() - getPaddingLeft() - getPaddingRight() - this.d) * 0.5F));
     double d1 = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
     Double.isNaN(d1);
     double d2 = getPaddingLeft();
     Double.isNaN(d2);
-    this.d = ((int)(d1 * 0.5D + d2));
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.f = ((int)(d1 * 0.5D + d2));
+    this.b = new Paint(1);
+    this.b.setColor(this.e);
+    this.b.setStrokeWidth(this.d);
+    this.b.setStyle(Paint.Style.STROKE);
   }
   
   public void setAttrs(int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
+    this.d = paramInt1;
+    this.e = paramInt2;
   }
   
   public void setDrawRing(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.HeadImageWithRing
  * JD-Core Version:    0.7.0.1
  */

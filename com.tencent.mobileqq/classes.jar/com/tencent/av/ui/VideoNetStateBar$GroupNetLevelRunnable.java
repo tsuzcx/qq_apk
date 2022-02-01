@@ -11,37 +11,38 @@ class VideoNetStateBar$GroupNetLevelRunnable
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null)
+    if (this.this$0.g == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("VideoNetStateBar", 2, "mVideoController == null");
       }
       return;
     }
-    int i = this.this$0.jdField_a_of_type_ComTencentAvVideoController.f();
-    VideoNetStateBar localVideoNetStateBar = this.this$0;
-    localVideoNetStateBar.e = true;
+    int i = this.this$0.g.N();
+    Object localObject = this.this$0;
+    ((VideoNetStateBar)localObject).t = true;
     if ((i != 0) && (i != 1))
     {
       if (i != 2)
       {
         if (i == 3) {
-          localVideoNetStateBar.b = 1;
+          ((VideoNetStateBar)localObject).q = 1;
         }
       }
       else {
-        localVideoNetStateBar.b = 2;
+        ((VideoNetStateBar)localObject).q = 2;
       }
     }
     else {
-      this.this$0.b = 3;
+      this.this$0.q = 3;
     }
-    this.this$0.jdField_a_of_type_Int = 1;
+    this.this$0.p = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("VideoNetStateBar", 2, String.format("getGAudioNetLevel[%s], mCurNetLevel[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.this$0.b) }));
+      QLog.d("VideoNetStateBar", 2, String.format("getGAudioNetLevel[%s], mCurNetLevel[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.this$0.q) }));
     }
-    if ((this.this$0.jdField_a_of_type_JavaLangRunnable != null) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 2000L);
+    localObject = this.this$0.g;
+    if ((this.this$0.j != null) && (localObject != null) && (((VideoController)localObject).aH() != null)) {
+      ((VideoController)localObject).aH().postDelayed(this.this$0.j, 2000L);
     }
   }
 }

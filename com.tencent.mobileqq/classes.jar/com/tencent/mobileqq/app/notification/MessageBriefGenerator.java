@@ -31,7 +31,7 @@ public class MessageBriefGenerator
       return EmosmUtils.a(paramQQAppInterface.getApp(), paramMessage);
     }
     if (paramMessage.msgtype == -2009) {
-      return paramQQAppInterface.getMessageFacade().b(paramQQAppInterface.getApp(), paramMessage, true);
+      return paramQQAppInterface.getMessageFacade().c(paramQQAppInterface.getApp(), paramMessage, true);
     }
     if (paramMessage.msgtype == -2040)
     {
@@ -41,8 +41,8 @@ public class MessageBriefGenerator
     }
     if (paramMessage.msgtype == -2041)
     {
-      paramMessage = paramQQAppInterface.getApp().getString(2131690113);
-      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131690112);
+      paramMessage = paramQQAppInterface.getApp().getString(2131887012);
+      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131887011);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramMessage);
       ((StringBuilder)localObject).append(" ");
@@ -53,10 +53,10 @@ public class MessageBriefGenerator
       return a(paramQQAppInterface, paramMessage, "");
     }
     if (((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsg(paramMessage)) {
-      return paramQQAppInterface.getApp().getString(2131691283);
+      return paramQQAppInterface.getApp().getString(2131888233);
     }
     if (paramMessage.msgtype == -7001) {
-      return paramQQAppInterface.getApp().getString(2131694329);
+      return paramQQAppInterface.getApp().getString(2131891967);
     }
     if (paramMessage.msgtype == -2052)
     {
@@ -75,6 +75,9 @@ public class MessageBriefGenerator
       paramQQAppInterface.doParse();
       return paramQQAppInterface.getSummaryMsg();
     }
+    if (ActionMsgUtil.f(paramMessage.msgtype)) {
+      return EmosmUtils.b(paramQQAppInterface.getApp(), paramMessage);
+    }
     Object localObject = paramMessage.getMessageText();
     ITroopRobotService localITroopRobotService = (ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
     if (localITroopRobotService.hasRobotNewsClassId(paramMessage))
@@ -84,16 +87,16 @@ public class MessageBriefGenerator
       }
       paramQQAppInterface = localITroopRobotService.generateMoreDetailMsg(paramMessage);
       if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        break label378;
+        break label397;
       }
     }
     else if ((paramMessage.msgtype == -5040) && (ReactivePushHelper.a(paramQQAppInterface, paramMessage)))
     {
       paramQQAppInterface = ReactivePushHelper.a(paramMessage.msg);
-      break label378;
+      break label397;
     }
     paramQQAppInterface = (QQAppInterface)localObject;
-    label378:
+    label397:
     paramMessage = paramQQAppInterface;
     if (paramQQAppInterface == null) {
       paramMessage = "";
@@ -120,9 +123,9 @@ public class MessageBriefGenerator
       else
       {
         if (paramMessage.mMsgServiceID == 61) {
-          paramQQAppInterface = paramQQAppInterface.getApp().getResources().getString(2131698751);
+          paramQQAppInterface = paramQQAppInterface.getApp().getResources().getString(2131896709);
         } else if (paramMessage.mMsgServiceID == 107) {
-          paramQQAppInterface = paramQQAppInterface.getApp().getResources().getString(2131698563);
+          paramQQAppInterface = paramQQAppInterface.getApp().getResources().getString(2131896510);
         } else {
           paramQQAppInterface = paramMessage.mMsgBrief;
         }
@@ -144,7 +147,7 @@ public class MessageBriefGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.MessageBriefGenerator
  * JD-Core Version:    0.7.0.1
  */

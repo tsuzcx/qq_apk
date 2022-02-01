@@ -14,17 +14,17 @@ class ArkHorizontalListViewAdapter$2$1
   {
     if (paramBitmap != null)
     {
-      this.a.a.b.setVisibility(0);
-      this.a.a.a.setVisibility(0);
-      this.a.a.a.setImageBitmap(paramBitmap);
+      this.a.b.h.setVisibility(0);
+      this.a.b.i.setVisibility(0);
+      this.a.b.i.setImageBitmap(paramBitmap);
       return;
     }
-    this.a.a.a.setVisibility(8);
+    this.a.b.i.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class RvPolymericContainer$4
   
   private void a(Activity paramActivity, boolean paramBoolean)
   {
-    if (paramActivity != this.jdField_a_of_type_AndroidAppActivity) {
+    if (paramActivity != this.a) {
       return;
     }
     paramActivity = new StringBuilder();
@@ -23,11 +23,11 @@ class RvPolymericContainer$4
     QLog.d("RvPolymericContainer", 1, paramActivity.toString());
     if (paramBoolean)
     {
-      RvPolymericContainer.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericRvPolymericContainer);
+      RvPolymericContainer.e(this.b);
       return;
     }
-    if (RvPolymericContainer.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericRvPolymericContainer) != null) {
-      RvPolymericContainer.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericRvPolymericContainer).b();
+    if (RvPolymericContainer.d(this.b) != null) {
+      RvPolymericContainer.d(this.b).b();
     }
   }
   
@@ -35,7 +35,7 @@ class RvPolymericContainer$4
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if ((paramActivity == this.jdField_a_of_type_AndroidAppActivity) && (BaseApplication.getContext() != null)) {
+    if ((paramActivity == this.a) && (BaseApplication.getContext() != null)) {
       BaseApplication.getContext().unregisterActivityLifecycleCallbacks(this);
     }
   }
@@ -64,7 +64,7 @@ class RvPolymericContainer$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.RvPolymericContainer.4
  * JD-Core Version:    0.7.0.1
  */

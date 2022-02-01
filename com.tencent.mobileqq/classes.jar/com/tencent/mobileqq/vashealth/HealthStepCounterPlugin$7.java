@@ -23,30 +23,30 @@ class HealthStepCounterPlugin$7
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Current step data:");
     localStringBuilder.append(String.valueOf(paramSensorEvent.values[0]));
-    ((HealthStepCounterPlugin)localObject).e = localStringBuilder.toString();
+    ((HealthStepCounterPlugin)localObject).k = localStringBuilder.toString();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onSensorChanged:");
-    ((StringBuilder)localObject).append(this.a.e);
+    ((StringBuilder)localObject).append(this.a.k);
     QLog.d("HealthStepCounterPlugin", 1, ((StringBuilder)localObject).toString());
-    if ((HealthStepCounterPlugin.jdField_b_of_type_Int == 1) && (HealthStepCounterPlugin.jdField_b_of_type_Boolean))
+    if ((HealthStepCounterPlugin.n == 1) && (HealthStepCounterPlugin.p))
     {
-      this.a.c = ((int)paramSensorEvent.values[0]);
-      HealthStepCounterPlugin.jdField_b_of_type_Boolean = false;
+      this.a.q = ((int)paramSensorEvent.values[0]);
+      HealthStepCounterPlugin.p = false;
     }
-    if (HealthStepCounterPlugin.jdField_b_of_type_Int == 3)
+    if (HealthStepCounterPlugin.n == 3)
     {
-      HealthStepCounterPlugin.jdField_b_of_type_Int = 0;
-      this.a.d = ((int)paramSensorEvent.values[0]);
+      HealthStepCounterPlugin.n = 0;
+      this.a.r = ((int)paramSensorEvent.values[0]);
     }
     try
     {
       paramSensorEvent = new JSONObject();
       paramSensorEvent.put("retCode", 0);
-      paramSensorEvent.put("step", this.a.d - this.a.c);
+      paramSensorEvent.put("step", this.a.r - this.a.q);
       localObject = new JSONObject();
       ((JSONObject)localObject).put("source", "none");
       paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, (JSONObject)localObject);
-      if (!HealthStepCounterPlugin.a) {
+      if (!HealthStepCounterPlugin.o) {
         break label370;
       }
       localObject = this.a.mRuntime.a();
@@ -56,9 +56,9 @@ class HealthStepCounterPlugin$7
       ((CustomWebView)localObject).loadUrl(localStringBuilder.toString());
       paramSensorEvent = new StringBuilder();
       paramSensorEvent.append("Steps detect:");
-      paramSensorEvent.append(this.a.d - this.a.c);
+      paramSensorEvent.append(this.a.r - this.a.q);
       QLog.d("HealthStepCounterPlugin", 1, paramSensorEvent.toString());
-      HealthStepCounterPlugin.a = false;
+      HealthStepCounterPlugin.o = false;
     }
     catch (Exception paramSensorEvent)
     {
@@ -82,12 +82,12 @@ class HealthStepCounterPlugin$7
       QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
     }
     label370:
-    HealthStepCounterPlugin.jdField_b_of_type_Boolean = true;
+    HealthStepCounterPlugin.p = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthStepCounterPlugin.7
  * JD-Core Version:    0.7.0.1
  */

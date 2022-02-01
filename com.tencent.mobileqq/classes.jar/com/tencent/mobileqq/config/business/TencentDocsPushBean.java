@@ -32,7 +32,7 @@ public class TencentDocsPushBean
           if (i >= localObject2.length) {
             break;
           }
-          localObject2 = new JSONObject(localObject2[i].a);
+          localObject2 = new JSONObject(localObject2[i].b);
           if (((JSONObject)localObject2).has(str))
           {
             localObject2 = (JSONObject)((JSONObject)localObject2).get(str);
@@ -119,7 +119,7 @@ public class TencentDocsPushBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TencentDocsPushBean
  * JD-Core Version:    0.7.0.1
  */

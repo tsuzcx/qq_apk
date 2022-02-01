@@ -30,25 +30,22 @@ import mqq.os.MqqHandler;
 public class SendPanelManager
   implements Manager
 {
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private IPanelDataListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener;
-  private MessageDataManager jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager;
-  public volatile String a;
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
-  private List<RecentUser> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CopyOnWriteArrayList<SendPanelItemInfo> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  public volatile boolean a;
-  private volatile String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private volatile boolean c;
+  public volatile boolean a = false;
+  public volatile String b = null;
+  private MessageDataManager c;
+  private List<RecentUser> d = new ArrayList();
+  private HashMap<String, String> e;
+  private volatile boolean f = false;
+  private volatile boolean g = false;
+  private CopyOnWriteArrayList<SendPanelItemInfo> h = new CopyOnWriteArrayList();
+  private IPanelDataListener i;
+  private int j = 0;
+  private Handler k;
+  private volatile String l;
   
   private SendPanelManager()
   {
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    a();
+    d();
   }
   
   public static SendPanelManager a()
@@ -62,28 +59,28 @@ public class SendPanelManager
     Object localObject2 = localObject1;
     if (paramRecentUser != null)
     {
-      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      HashMap localHashMap = this.e;
       localObject2 = localObject1;
       if (localHashMap != null)
       {
         if (localHashMap.isEmpty()) {
           return "";
         }
-        int i = paramRecentUser.getType();
-        if (i != 0)
+        int m = paramRecentUser.getType();
+        if (m != 0)
         {
-          if (i != 1)
+          if (m != 1)
           {
-            if (i != 1000)
+            if (m != 1000)
             {
-              if (i != 1004)
+              if (m != 1004)
               {
-                if (i == 3000) {
-                  localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(paramRecentUser.uin);
+                if (m == 3000) {
+                  localObject1 = this.c.a(paramRecentUser.uin);
                 }
               }
               else {
-                localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(paramRecentUser.troopUin, paramRecentUser.uin);
+                localObject1 = this.c.a(paramRecentUser.troopUin, paramRecentUser.uin);
               }
             }
             else {
@@ -92,7 +89,7 @@ public class SendPanelManager
           }
           else
           {
-            localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+            localObject1 = this.e;
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append(paramRecentUser.uin);
             ((StringBuilder)localObject2).append(1);
@@ -101,7 +98,7 @@ public class SendPanelManager
         }
         else
         {
-          localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+          localObject1 = this.e;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(paramRecentUser.uin);
           ((StringBuilder)localObject2).append(0);
@@ -116,37 +113,29 @@ public class SendPanelManager
     return localObject2;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager = new MessageDataManager();
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    PeakIpcModuleClient.a();
-  }
-  
   private void a(SendPanelItemInfo paramSendPanelItemInfo, int paramInt1, int paramInt2)
   {
-    int i = paramSendPanelItemInfo.jdField_b_of_type_Int;
-    if (i == 1)
+    int m = paramSendPanelItemInfo.e;
+    if (m == 1)
     {
       if ((paramInt1 != 1003) && (paramInt1 != 1007))
       {
         if ((paramInt1 != 1004) && (paramInt1 != 1005) && (paramInt1 != 1006))
         {
-          paramSendPanelItemInfo.jdField_c_of_type_Int = paramInt2;
+          paramSendPanelItemInfo.f = paramInt2;
           return;
         }
-        paramSendPanelItemInfo.jdField_b_of_type_Int = 2;
+        paramSendPanelItemInfo.e = 2;
         return;
       }
-      paramSendPanelItemInfo.jdField_b_of_type_Int = 3;
-      paramSendPanelItemInfo.jdField_c_of_type_Int = 100;
+      paramSendPanelItemInfo.e = 3;
+      paramSendPanelItemInfo.f = 100;
       return;
     }
-    if ((i == 0) && ((paramInt1 == 1003) || (paramInt1 == 1007)))
+    if ((m == 0) && ((paramInt1 == 1003) || (paramInt1 == 1007)))
     {
-      paramSendPanelItemInfo.jdField_b_of_type_Int = 3;
-      paramSendPanelItemInfo.jdField_c_of_type_Int = 100;
+      paramSendPanelItemInfo.e = 3;
+      paramSendPanelItemInfo.f = 100;
     }
   }
   
@@ -162,7 +151,7 @@ public class SendPanelManager
       {
         RecentUser localRecentUser = (RecentUser)paramList.next();
         if (a(localRecentUser.getType())) {
-          this.jdField_a_of_type_JavaUtilList.add(localRecentUser);
+          this.d.add(localRecentUser);
         }
       }
     }
@@ -186,18 +175,26 @@ public class SendPanelManager
     return bool1;
   }
   
-  private void b()
+  private void d()
+  {
+    this.c = new MessageDataManager();
+    this.c.a();
+    this.k = new Handler(Looper.getMainLooper());
+    PeakIpcModuleClient.b();
+  }
+  
+  private void e()
   {
     if (QLog.isColorLevel()) {
       QLog.e("SendPanelManager", 2, "loadPanelData");
     }
-    IPanelDataListener localIPanelDataListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener;
+    IPanelDataListener localIPanelDataListener = this.i;
     if (localIPanelDataListener != null) {
       localIPanelDataListener.c();
     }
-    j();
-    d();
-    this.jdField_a_of_type_Int = 1;
+    m();
+    g();
+    this.j = 1;
     try
     {
       ThreadManager.getFileThreadHandler().post(new SendPanelManager.1(this));
@@ -207,7 +204,7 @@ public class SendPanelManager
     }
     catch (Exception localException)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener == null) {
+      if (this.i == null) {
         break label176;
       }
       if (!QLog.isColorLevel()) {
@@ -217,8 +214,8 @@ public class SendPanelManager
       localStringBuilder.append("loadPanelData exception = ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("SendPanelManager", 2, localStringBuilder.toString());
-      this.jdField_a_of_type_Int = 3;
-      i();
+      this.j = 3;
+      l();
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -226,50 +223,50 @@ public class SendPanelManager
       label88:
       break label88;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null)
+    if (this.i != null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("SendPanelManager", 2, "loadPanelData OutOfMemoryError");
       }
-      this.jdField_a_of_type_Int = 3;
-      i();
+      this.j = 3;
+      l();
       return;
     }
   }
   
-  private void c()
+  private void f()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("file_short_send_panel", 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("send_panel_animation_");
     localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
+    this.a = localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
   }
   
-  private void d()
+  private void g()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.e = new HashMap();
   }
   
-  private void e()
+  private void h()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(RecentUser.class, "select * from recent order by lastmsgtime desc", null));
-    f();
-    this.jdField_b_of_type_Boolean = true;
+    a(this.c.a(RecentUser.class, "select * from recent order by lastmsgtime desc", null));
+    i();
+    this.f = true;
     if (QLog.isColorLevel()) {
       QLog.e("SendPanelManager", 2, "loadRecentUserList finish");
     }
-    h();
+    k();
   }
   
-  private void f()
+  private void i()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.d;
     if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
       Object localObject2 = new ArrayList();
       localObject1 = new ArrayList();
-      Object localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject3 = this.d.iterator();
       while (((Iterator)localObject3).hasNext())
       {
         RecentUser localRecentUser = (RecentUser)((Iterator)localObject3).next();
@@ -279,7 +276,7 @@ public class SendPanelManager
           ((List)localObject1).add(localRecentUser);
         }
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.d.clear();
       if (((List)localObject2).size() > 0)
       {
         Collections.sort((List)localObject2, new RecentUserComparator());
@@ -287,7 +284,7 @@ public class SendPanelManager
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (RecentUser)((Iterator)localObject2).next();
-          this.jdField_a_of_type_JavaUtilList.add(localObject3);
+          this.d.add(localObject3);
         }
       }
       if (((List)localObject1).size() > 0)
@@ -297,49 +294,49 @@ public class SendPanelManager
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (RecentUser)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
+          this.d.add(localObject2);
         }
       }
     }
   }
   
-  private void g()
+  private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.a(0, this.jdField_a_of_type_JavaUtilHashMap);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageMessagecleanMessageDataManager.b(1, this.jdField_a_of_type_JavaUtilHashMap);
-    this.jdField_c_of_type_Boolean = true;
+    this.c.a(0, this.e);
+    this.c.b(1, this.e);
+    this.g = true;
     if (QLog.isColorLevel()) {
       QLog.e("SendPanelManager", 2, "loadNameList finish");
     }
-    h();
+    k();
   }
   
-  private void h()
+  private void k()
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    if ((this.f) && (this.g))
     {
       if (QLog.isColorLevel()) {
         QLog.e("SendPanelManager", 2, "conformAllData");
       }
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.d;
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = new ArrayList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.d.iterator();
         while (localIterator.hasNext())
         {
           RecentUser localRecentUser = (RecentUser)localIterator.next();
           SendPanelItemInfo localSendPanelItemInfo = new SendPanelItemInfo();
-          localSendPanelItemInfo.jdField_a_of_type_JavaLangString = localRecentUser.uin;
-          localSendPanelItemInfo.jdField_b_of_type_JavaLangString = localRecentUser.troopUin;
+          localSendPanelItemInfo.a = localRecentUser.uin;
+          localSendPanelItemInfo.b = localRecentUser.troopUin;
           if (localRecentUser.getType() == 1000)
           {
-            localSendPanelItemInfo.jdField_c_of_type_JavaLangString = localRecentUser.displayName;
+            localSendPanelItemInfo.c = localRecentUser.displayName;
             ((List)localObject).add(localRecentUser);
           }
           else
           {
-            localSendPanelItemInfo.jdField_c_of_type_JavaLangString = a(localRecentUser);
+            localSendPanelItemInfo.c = a(localRecentUser);
           }
           if (localRecentUser.getType() == 1)
           {
@@ -354,14 +351,14 @@ public class SendPanelManager
                 QLog.e("SendPanelManager", 2, "conformAllData troop is disband");
                 continue;
               }
-              localSendPanelItemInfo.jdField_c_of_type_Boolean = ((Boolean)localPair.second).booleanValue();
+              localSendPanelItemInfo.k = ((Boolean)localPair.second).booleanValue();
             }
           }
-          localSendPanelItemInfo.jdField_a_of_type_Int = localRecentUser.getType();
-          if ((localRecentUser.getType() == 0) && (!TextUtils.isEmpty(localSendPanelItemInfo.jdField_a_of_type_JavaLangString)) && ((TextUtils.isEmpty(localSendPanelItemInfo.jdField_c_of_type_JavaLangString)) || (localSendPanelItemInfo.jdField_a_of_type_JavaLangString.equals(localSendPanelItemInfo.jdField_c_of_type_JavaLangString)))) {
-            localSendPanelItemInfo.jdField_c_of_type_JavaLangString = PeakIpcController.a(localSendPanelItemInfo.jdField_a_of_type_JavaLangString);
+          localSendPanelItemInfo.d = localRecentUser.getType();
+          if ((localRecentUser.getType() == 0) && (!TextUtils.isEmpty(localSendPanelItemInfo.a)) && ((TextUtils.isEmpty(localSendPanelItemInfo.c)) || (localSendPanelItemInfo.a.equals(localSendPanelItemInfo.c)))) {
+            localSendPanelItemInfo.c = PeakIpcController.b(localSendPanelItemInfo.a);
           }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localSendPanelItemInfo);
+          this.h.add(localSendPanelItemInfo);
         }
         if (((List)localObject).size() > 0)
         {
@@ -370,82 +367,67 @@ public class SendPanelManager
             a((RecentUser)((Iterator)localObject).next());
           }
         }
-        localObject = this.jdField_a_of_type_JavaUtilList;
+        localObject = this.d;
         if (localObject != null) {
           ((List)localObject).clear();
         }
-        localObject = this.jdField_a_of_type_JavaUtilHashMap;
+        localObject = this.e;
         if (localObject != null) {
           ((HashMap)localObject).clear();
         }
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null)
+        if (this.i != null)
         {
           if (QLog.isColorLevel()) {
             QLog.e("SendPanelManager", 2, "conformAllData onLoadFinish");
           }
-          this.jdField_a_of_type_Int = 2;
-          i();
+          this.j = 2;
+          l();
         }
       }
-      else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null)
+      else if (this.i != null)
       {
         if (QLog.isColorLevel()) {
           QLog.e("SendPanelManager", 2, "conformAllData onLoadFinish recentUserList is empty");
         }
-        this.jdField_a_of_type_Int = 2;
-        i();
+        this.j = 2;
+        l();
       }
     }
   }
   
-  private void i()
+  private void l()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.4(this));
+    if (this.i != null) {
+      this.k.post(new SendPanelManager.4(this));
     }
   }
   
-  private void j()
+  private void m()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    this.d.clear();
+    this.j = 0;
+    this.f = false;
+    this.g = false;
+    Object localObject = this.e;
     if (localObject != null)
     {
       ((HashMap)localObject).clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.e = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    localObject = this.h;
     if (localObject != null) {
       ((CopyOnWriteArrayList)localObject).clear();
     }
   }
   
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public List<SendPanelItemInfo> a()
-  {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() > 0)) {
-      return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    }
-    b();
-    return null;
-  }
-  
   public void a(IPanelDataListener paramIPanelDataListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener = paramIPanelDataListener;
+    this.i = paramIPanelDataListener;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
@@ -457,39 +439,39 @@ public class SendPanelManager
       }
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null)
+    if (this.i != null)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+      Object localObject = this.h;
       if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() > 0))
       {
-        int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-        int i = 0;
-        while (i < j)
+        int n = this.h.size();
+        int m = 0;
+        while (m < n)
         {
-          localObject = (SendPanelItemInfo)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if ((!TextUtils.isEmpty(((SendPanelItemInfo)localObject).jdField_a_of_type_JavaLangString)) && (((SendPanelItemInfo)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) && (((SendPanelItemInfo)localObject).jdField_a_of_type_Int == paramInt1) && (((SendPanelItemInfo)localObject).jdField_b_of_type_Boolean))
+          localObject = (SendPanelItemInfo)this.h.get(m);
+          if ((!TextUtils.isEmpty(((SendPanelItemInfo)localObject).a)) && (((SendPanelItemInfo)localObject).a.equals(paramString)) && (((SendPanelItemInfo)localObject).d == paramInt1) && (((SendPanelItemInfo)localObject).j))
           {
             a((SendPanelItemInfo)localObject, paramInt2, paramInt3);
-            if (((SendPanelItemInfo)localObject).jdField_a_of_type_Long <= 0L) {
-              ((SendPanelItemInfo)localObject).jdField_a_of_type_Long = paramLong;
+            if (((SendPanelItemInfo)localObject).o <= 0L) {
+              ((SendPanelItemInfo)localObject).o = paramLong;
             }
             if (QLog.isColorLevel())
             {
               paramString = new StringBuilder();
               paramString.append("updateOperateStatus operateStatus = ");
-              paramString.append(((SendPanelItemInfo)localObject).jdField_b_of_type_Int);
+              paramString.append(((SendPanelItemInfo)localObject).e);
               paramString.append(" ,progress = ");
-              paramString.append(((SendPanelItemInfo)localObject).jdField_c_of_type_Int);
+              paramString.append(((SendPanelItemInfo)localObject).f);
               paramString.append(" ,position = ");
-              paramString.append(i);
+              paramString.append(m);
               paramString.append(", uinseq:");
-              paramString.append(((SendPanelItemInfo)localObject).jdField_a_of_type_Long);
+              paramString.append(((SendPanelItemInfo)localObject).o);
               QLog.i("SendPanelManager", 2, paramString.toString());
             }
-            this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.6(this, i, (SendPanelItemInfo)localObject));
+            this.k.post(new SendPanelManager.6(this, m, (SendPanelItemInfo)localObject));
             return;
           }
-          i += 1;
+          m += 1;
         }
       }
     }
@@ -504,12 +486,12 @@ public class SendPanelManager
       }
       return;
     }
-    paramString1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    paramString1 = this.h;
     if ((paramString1 != null) && (paramString1.size() > 0))
     {
-      paramString1 = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      paramString1 = this.h.iterator();
       while (paramString1.hasNext()) {
-        ((SendPanelItemInfo)paramString1.next()).g = paramString2;
+        ((SendPanelItemInfo)paramString1.next()).n = paramString2;
       }
     }
   }
@@ -520,71 +502,71 @@ public class SendPanelManager
     {
       SendPanelItemInfo localSendPanelItemInfo = null;
       Object localObject1 = null;
-      int j = -1;
-      CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+      int n = -1;
+      CopyOnWriteArrayList localCopyOnWriteArrayList = this.h;
       Object localObject2 = localSendPanelItemInfo;
-      int k = j;
+      int i1 = n;
       if (localCopyOnWriteArrayList != null)
       {
         localObject2 = localSendPanelItemInfo;
-        k = j;
+        i1 = n;
         if (localCopyOnWriteArrayList.size() > 0)
         {
-          int m = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          int i = 0;
+          int i2 = this.h.size();
+          int m = 0;
           for (;;)
           {
             localObject2 = localObject1;
-            k = j;
-            if (i >= m) {
+            i1 = n;
+            if (m >= i2) {
               break;
             }
-            localSendPanelItemInfo = (SendPanelItemInfo)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-            localSendPanelItemInfo.e = paramString2;
-            localSendPanelItemInfo.f = paramString3;
-            localSendPanelItemInfo.jdField_a_of_type_Boolean = paramBoolean;
+            localSendPanelItemInfo = (SendPanelItemInfo)this.h.get(m);
+            localSendPanelItemInfo.l = paramString2;
+            localSendPanelItemInfo.m = paramString3;
+            localSendPanelItemInfo.i = paramBoolean;
             localObject2 = localObject1;
-            k = j;
-            if (!TextUtils.isEmpty(localSendPanelItemInfo.jdField_a_of_type_JavaLangString))
+            i1 = n;
+            if (!TextUtils.isEmpty(localSendPanelItemInfo.a))
             {
               localObject2 = localObject1;
-              k = j;
-              if (localSendPanelItemInfo.jdField_a_of_type_JavaLangString.equals(paramString1))
+              i1 = n;
+              if (localSendPanelItemInfo.a.equals(paramString1))
               {
                 localObject2 = localObject1;
-                k = j;
-                if (paramInt == localSendPanelItemInfo.jdField_a_of_type_Int)
+                i1 = n;
+                if (paramInt == localSendPanelItemInfo.d)
                 {
-                  k = i;
+                  i1 = m;
                   localObject2 = localSendPanelItemInfo;
                 }
               }
             }
-            i += 1;
+            m += 1;
             localObject1 = localObject2;
-            j = k;
+            n = i1;
           }
         }
       }
       if (localObject2 != null)
       {
-        ((SendPanelItemInfo)localObject2).jdField_b_of_type_Int = 1;
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.7(this, k, (SendPanelItemInfo)localObject2));
+        ((SendPanelItemInfo)localObject2).e = 1;
+        if (this.i != null) {
+          this.k.post(new SendPanelManager.7(this, i1, (SendPanelItemInfo)localObject2));
         }
         if (paramBoolean) {
-          PeakIpcController.a(((SendPanelItemInfo)localObject2).e, paramString3, (SendPanelItemInfo)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+          PeakIpcController.a(((SendPanelItemInfo)localObject2).l, paramString3, (SendPanelItemInfo)localObject2, this.b, this.l);
         } else {
-          PeakIpcController.a(paramString2, (SendPanelItemInfo)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+          PeakIpcController.a(paramString2, (SendPanelItemInfo)localObject2, this.b, this.l);
         }
-        ((SendPanelItemInfo)localObject2).jdField_b_of_type_Boolean = true;
+        ((SendPanelItemInfo)localObject2).j = true;
         CaptureReportUtil.a((SendPanelItemInfo)localObject2);
-        ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportPostBtn(((SendPanelItemInfo)localObject2).g, ((SendPanelItemInfo)localObject2).jdField_a_of_type_Int);
+        ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportPostBtn(((SendPanelItemInfo)localObject2).n, ((SendPanelItemInfo)localObject2).d);
         paramString2 = new StringBuilder();
         paramString2.append("【updateFilePath】messageType:");
-        paramString2.append(((SendPanelItemInfo)localObject2).jdField_a_of_type_Int);
+        paramString2.append(((SendPanelItemInfo)localObject2).d);
         AEQLog.b("SendPanelManager", paramString2.toString());
-        a(paramString1, paramInt, ((SendPanelItemInfo)localObject2).g);
+        a(paramString1, paramInt, ((SendPanelItemInfo)localObject2).n);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -601,9 +583,9 @@ public class SendPanelManager
       paramString3.append(paramString2);
       QLog.e("SendPanelManager", 2, paramString3.toString());
     }
-    paramString1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener;
+    paramString1 = this.i;
     if (paramString1 != null) {
-      paramString1.g();
+      paramString1.e();
     }
   }
   
@@ -612,26 +594,26 @@ public class SendPanelManager
     Object localObject;
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener != null)
+      if (this.i != null)
       {
-        localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+        localObject = this.h;
         if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() > 0))
         {
-          int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          int i = 0;
-          while (i < j)
+          int n = this.h.size();
+          int m = 0;
+          while (m < n)
           {
-            localObject = (SendPanelItemInfo)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-            if ((!TextUtils.isEmpty(((SendPanelItemInfo)localObject).jdField_a_of_type_JavaLangString)) && (((SendPanelItemInfo)localObject).jdField_a_of_type_JavaLangString.equals(paramString1)) && (((SendPanelItemInfo)localObject).jdField_a_of_type_Int == 1000))
+            localObject = (SendPanelItemInfo)this.h.get(m);
+            if ((!TextUtils.isEmpty(((SendPanelItemInfo)localObject).a)) && (((SendPanelItemInfo)localObject).a.equals(paramString1)) && (((SendPanelItemInfo)localObject).d == 1000))
             {
-              ((SendPanelItemInfo)localObject).jdField_c_of_type_JavaLangString = paramString2;
+              ((SendPanelItemInfo)localObject).c = paramString2;
               if (QLog.isColorLevel()) {
                 QLog.e("SendPanelManager", 2, "updateTroopMemberName");
               }
-              this.jdField_a_of_type_AndroidOsHandler.post(new SendPanelManager.5(this, i, (SendPanelItemInfo)localObject));
+              this.k.post(new SendPanelManager.5(this, m, (SendPanelItemInfo)localObject));
               return;
             }
-            i += 1;
+            m += 1;
           }
         }
       }
@@ -666,9 +648,24 @@ public class SendPanelManager
     localEditor.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
   }
   
+  public List<SendPanelItemInfo> b()
+  {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.h;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() > 0)) {
+      return this.h;
+    }
+    e();
+    return null;
+  }
+  
   public void b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.l = paramString;
+  }
+  
+  public String c()
+  {
+    return this.l;
   }
   
   public void onDestroy()
@@ -676,18 +673,18 @@ public class SendPanelManager
     if (QLog.isColorLevel()) {
       QLog.e("SendPanelManager", 2, "onDestroy()");
     }
-    j();
-    IPanelDataListener localIPanelDataListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener;
+    m();
+    IPanelDataListener localIPanelDataListener = this.i;
     if (localIPanelDataListener != null)
     {
-      localIPanelDataListener.f();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelIPanelDataListener = null;
+      localIPanelDataListener.d();
+      this.i = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.sendpanel.SendPanelManager
  * JD-Core Version:    0.7.0.1
  */

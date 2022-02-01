@@ -12,24 +12,24 @@ import com.tencent.view.RendererUtils;
 
 public class RenderUtil
 {
-  static int jdField_a_of_type_Int = -1;
-  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  static int a = -1;
+  private static Boolean b;
   
   public static int a(boolean paramBoolean)
   {
-    int i = jdField_a_of_type_Int;
+    int i = a;
     int j = 1;
     if (i == -1)
     {
-      Object localObject = EffectFaceDeviceConfig.a();
-      if (((localObject != null) && (((EffectFaceDeviceConfig)localObject).f())) || (a())) {
-        jdField_a_of_type_Int = 1;
+      Object localObject = EffectFaceDeviceConfig.g();
+      if (((localObject != null) && (((EffectFaceDeviceConfig)localObject).f())) || (b())) {
+        a = 1;
       } else {
-        jdField_a_of_type_Int = 0;
+        a = 0;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getFrameAngle, mInversion[");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(a);
       ((StringBuilder)localObject).append("], manufacture[");
       ((StringBuilder)localObject).append(Build.MANUFACTURER);
       ((StringBuilder)localObject).append("], model[");
@@ -41,7 +41,7 @@ public class RenderUtil
     if (paramBoolean)
     {
       i = j;
-      if (jdField_a_of_type_Int != 1) {
+      if (a != 1) {
         i = 3;
       }
     }
@@ -50,7 +50,7 @@ public class RenderUtil
   
   public static void a()
   {
-    if (!EffectsRenderController.b()) {
+    if (!EffectsRenderController.c()) {
       return;
     }
     VideoPrefsUtil.setMaterialMute(true);
@@ -69,9 +69,9 @@ public class RenderUtil
     }
   }
   
-  private static boolean a()
+  private static boolean b()
   {
-    if (jdField_a_of_type_JavaLangBoolean == null)
+    if (b == null)
     {
       Object localObject = null;
       try
@@ -81,7 +81,7 @@ public class RenderUtil
         if ("1".equals(str))
         {
           localObject = str;
-          jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+          b = Boolean.valueOf(true);
           localObject = str;
         }
         else
@@ -98,13 +98,13 @@ public class RenderUtil
             else
             {
               localObject = str;
-              jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+              b = Boolean.valueOf(true);
               localObject = str;
               break label132;
             }
           }
           localObject = str;
-          jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+          b = Boolean.valueOf(false);
           localObject = str;
         }
       }
@@ -115,7 +115,7 @@ public class RenderUtil
       label132:
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isSpecialDevices, [");
-      localStringBuilder.append(jdField_a_of_type_JavaLangBoolean);
+      localStringBuilder.append(b);
       localStringBuilder.append("], manufacture[");
       localStringBuilder.append(Build.MANUFACTURER);
       localStringBuilder.append("], model[");
@@ -125,7 +125,7 @@ public class RenderUtil
       localStringBuilder.append("]");
       QLog.i("Render", 1, localStringBuilder.toString());
     }
-    return jdField_a_of_type_JavaLangBoolean.booleanValue();
+    return b.booleanValue();
   }
 }
 

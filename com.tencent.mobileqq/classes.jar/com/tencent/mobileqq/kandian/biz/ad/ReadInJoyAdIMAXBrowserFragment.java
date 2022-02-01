@@ -21,81 +21,76 @@ import mqq.app.AppRuntime;
 public class ReadInJoyAdIMAXBrowserFragment
   extends WebViewFragment
 {
-  public long a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private ActionEntity jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean;
+  public long a = 8996L;
   private ImageView b;
-  
-  public ReadInJoyAdIMAXBrowserFragment()
-  {
-    this.jdField_a_of_type_Long = 8996L;
-  }
-  
-  private View.OnClickListener a()
-  {
-    return new ReadInJoyAdIMAXBrowserFragment.3(this);
-  }
+  private ImageView c;
+  private AdvertisementInfo d;
+  private AppRuntime e;
+  private boolean f;
+  private ActionEntity g;
   
   private void a()
   {
-    AdvertisementInfo localAdvertisementInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+    AdvertisementInfo localAdvertisementInfo = this.d;
     if (localAdvertisementInfo == null) {
       return;
     }
     int i = localAdvertisementInfo.mImaxShowAdType;
     if (i == 1001)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity = ActionEntity.ImaxVideo;
+      this.g = ActionEntity.ImaxVideo;
       return;
     }
     if (i == 1002) {
-      this.jdField_a_of_type_ComTencentBizPubaccountNativeAdReportConstantActionEntity = ActionEntity.ImaxPic;
+      this.g = ActionEntity.ImaxPic;
     }
   }
   
   private void b()
   {
-    LiuHaiUtils.a(getQBaseActivity());
+    LiuHaiUtils.f(getQBaseActivity());
     if (LiuHaiUtils.b()) {
       LiuHaiUtils.enableNotch(getQBaseActivity());
     }
     int i;
     if (LiuHaiUtils.b()) {
-      i = LiuHaiUtils.b(getQBaseActivity());
+      i = LiuHaiUtils.e(getQBaseActivity());
     } else {
       i = 0;
     }
-    if (getUIStyleHandler().a.a != null) {
-      getUIStyleHandler().a.a.setVisibility(8);
+    if (getUIStyleHandler().g.o != null) {
+      getUIStyleHandler().g.o.setVisibility(8);
     }
-    if (getUIStyleHandler().d != null) {
-      getWebTitleBarInterface().a(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296653), 0);
+    if (getUIStyleHandler().x != null) {
+      getWebTitleBarInterface().a(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296967), 0);
     }
-    if (getUIStyleHandler().c == null) {
+    if (getUIStyleHandler().u == null) {
       return;
     }
     int j = UIUtils.a(getQBaseActivity(), 30.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getQBaseActivity());
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130843030);
+    this.b = new ImageView(getQBaseActivity());
+    this.b.setBackgroundResource(2130843986);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, j);
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(9);
     localLayoutParams.leftMargin = UIUtils.a(getQBaseActivity(), 15.0F);
     localLayoutParams.topMargin = (UIUtils.a(getQBaseActivity(), 15.0F) + i);
-    getUIStyleHandler().c.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new ReadInJoyAdIMAXBrowserFragment.2(this));
-    this.b = new ImageView(getQBaseActivity());
-    this.b.setBackgroundResource(2130843032);
+    getUIStyleHandler().u.addView(this.b, localLayoutParams);
+    this.b.setOnClickListener(new ReadInJoyAdIMAXBrowserFragment.2(this));
+    this.c = new ImageView(getQBaseActivity());
+    this.c.setBackgroundResource(2130843988);
     localLayoutParams = new RelativeLayout.LayoutParams(j, j);
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(11);
     localLayoutParams.rightMargin = UIUtils.a(getQBaseActivity(), 15.0F);
     localLayoutParams.topMargin = (UIUtils.a(getQBaseActivity(), 15.0F) + i);
-    getUIStyleHandler().c.addView(this.b, localLayoutParams);
-    this.b.setOnClickListener(a());
+    getUIStyleHandler().u.addView(this.c, localLayoutParams);
+    this.c.setOnClickListener(c());
+  }
+  
+  private View.OnClickListener c()
+  {
+    return new ReadInJoyAdIMAXBrowserFragment.3(this);
   }
   
   public WebViewKernelCallBack getWebViewKernelCallBack()
@@ -106,12 +101,12 @@ public class ReadInJoyAdIMAXBrowserFragment
   public void onResume()
   {
     super.onResume();
-    VideoFeedsHelper.b(getHostActivity());
+    VideoFeedsHelper.h(getHostActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ad.ReadInJoyAdIMAXBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

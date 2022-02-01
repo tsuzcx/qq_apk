@@ -14,7 +14,7 @@ public class QQStoryShareGroupProfileActivity$GetVideoByHotSortEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetHotSortVideoHandler.GetVideoByHotSortEvent paramGetVideoByHotSortEvent)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
+    if (!paramQQStoryShareGroupProfileActivity.G) {
       return;
     }
     QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetVideoByHotSortEvent);

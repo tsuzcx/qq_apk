@@ -41,18 +41,6 @@ public class WSVerticalUtils
     return localVideoPreDownloadParam;
   }
   
-  @NotNull
-  public static String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, "aio_home_page")) {
-      return "recommend_tab";
-    }
-    if (TextUtils.equals(paramString, "trends")) {
-      return "trends_ws";
-    }
-    return "vertical_page";
-  }
-  
   public static List<WSVerticalItemData> a(List<stSimpleMetaFeed> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
@@ -118,9 +106,9 @@ public class WSVerticalUtils
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (WSVerticalItemData)((Iterator)localObject1).next();
-        if ((((WSVerticalItemData)localObject2).a() instanceof stSimpleMetaFeed))
+        if ((((WSVerticalItemData)localObject2).b() instanceof stSimpleMetaFeed))
         {
-          localObject2 = ((WSVerticalItemData)localObject2).a();
+          localObject2 = ((WSVerticalItemData)localObject2).b();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramString);
           localStringBuilder.append(" title:");
@@ -141,10 +129,10 @@ public class WSVerticalUtils
     if ((paramList1.size() > paramInt) && (paramInt >= 0))
     {
       paramList1 = (WSVerticalItemData)paramList1.get(paramInt);
-      if (!(paramList1.a() instanceof stSimpleMetaFeed)) {
+      if (!(paramList1.b() instanceof stSimpleMetaFeed)) {
         return;
       }
-      paramList.add(a(paramList1.a()));
+      paramList.add(a(paramList1.b()));
     }
   }
   
@@ -162,7 +150,7 @@ public class WSVerticalUtils
       {
         paramSet = new StringBuilder();
         paramSet.append("[checkNoStartedVideo] title:");
-        paramSet.append(paramWSVideoInfo.d);
+        paramSet.append(paramWSVideoInfo.g);
         WSLog.d("WSVerticalUtils", paramSet.toString());
         return true;
       }
@@ -171,21 +159,29 @@ public class WSVerticalUtils
     return false;
   }
   
-  public static int b(String paramString)
+  @NotNull
+  public static String b(String paramString)
   {
-    if ((!TextUtils.equals(paramString, "recommend_tab")) && (!TextUtils.equals(paramString, "trends")) && (!TextUtils.equals(paramString, "aio_new_msg")) && (!TextUtils.equals(paramString, "mini_app_personal_main")) && (!TextUtils.equals(paramString, "mini_app_personal_guest")) && (!TextUtils.equals(paramString, "vertical_layer_collection")) && (!TextUtils.equals(paramString, "vertical_layer_collection_of_card")) && (!TextUtils.equals(paramString, "aio_home_page")) && (!TextUtils.equals(paramString, "qqchat")) && (!TextUtils.equals(paramString, "share")) && (!TextUtils.equals(paramString, "drama_history")) && (!TextUtils.equals(paramString, "drama_preview")) && (!TextUtils.equals(paramString, "qq_scheme_open_player")))
-    {
-      if ((!TextUtils.equals(paramString, "follow_tab")) && (!TextUtils.equals(paramString, "friend_feed"))) {
-        return -1;
-      }
-      return 0;
+    if (TextUtils.equals(paramString, "aio_home_page")) {
+      return "recommend_tab";
     }
-    return 1;
+    if (TextUtils.equals(paramString, "trends")) {
+      return "trends_ws";
+    }
+    return "vertical_page";
+  }
+  
+  public static int c(String paramString)
+  {
+    if ((!TextUtils.equals(paramString, "follow_tab")) && (!TextUtils.equals(paramString, "friend_feed"))) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
  * JD-Core Version:    0.7.0.1
  */

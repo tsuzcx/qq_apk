@@ -7,13 +7,13 @@ class DownloadInstContextMgr$2
   
   public void run()
   {
-    this.this$0.e(null);
+    this.this$0.f(null);
     this.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.DownloadInstContextMgr.2
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class AnimationUtils$4$1
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      this.a.c.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       return;
     }
-    this.a.a.setImageResource(2130851078);
+    this.a.c.setImageResource(2130853309);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

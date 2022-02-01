@@ -15,13 +15,13 @@ class ArticleReadInfoModule$2
   {
     List localList = ArticleReadInfoModule.a(this.this$0).query(ArticleReadInfo.class, true, null, null, null, null, null, null);
     ArticleReadInfoModule.a(this.this$0, localList);
-    ArticleReadInfoModule.a(this.this$0).set(true);
+    ArticleReadInfoModule.b(this.this$0).set(true);
     QLog.d("ArticleReadInfoModule", 1, "article info read load from db finish");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleReadInfoModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,18 @@ import mqq.app.AppRuntime;
 
 public abstract class UFTBaseTask
 {
-  protected final UFTTransferKey a;
   private final IUFTTaskCallback a;
-  protected final UFTBaseTaskInfo a;
-  protected final AppRuntime a;
-  protected boolean a;
+  protected final AppRuntime f;
+  protected final UFTTransferKey g;
+  protected final UFTBaseTaskInfo h;
+  protected boolean i = true;
   
   protected UFTBaseTask(AppRuntime paramAppRuntime, UFTTransferKey paramUFTTransferKey, UFTBaseTaskInfo paramUFTBaseTaskInfo, IUFTTaskCallback paramIUFTTaskCallback)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiImplUFTTransferKey = paramUFTTransferKey;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo = paramUFTBaseTaskInfo;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskIUFTTaskCallback = paramIUFTTaskCallback;
+    this.f = paramAppRuntime;
+    this.g = paramUFTTransferKey;
+    this.h = paramUFTBaseTaskInfo;
+    this.a = paramIUFTTaskCallback;
   }
   
   public static boolean a(AppRuntime paramAppRuntime, UFTTransferKey paramUFTTransferKey, UFTBaseTaskInfo paramUFTBaseTaskInfo, IUFTTaskCallback paramIUFTTaskCallback, String paramString)
@@ -49,55 +48,55 @@ public abstract class UFTBaseTask
     return true;
   }
   
-  public long a()
-  {
-    UFTBaseTaskInfo localUFTBaseTaskInfo = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
-    if (localUFTBaseTaskInfo != null) {
-      return localUFTBaseTaskInfo.a();
-    }
-    return 0L;
-  }
-  
-  protected UFTBaseTask a()
-  {
-    return this;
-  }
-  
-  protected final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    b(3);
-    UFTLogicThread.a().b(new UFTBaseTask.1(this, paramInt));
-  }
-  
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Boolean = true;
-    b(3);
+    this.i = true;
+    c(3);
   }
   
   public abstract boolean a(UFTBaseTask paramUFTBaseTask);
   
-  public void b(int paramInt)
+  protected final void b(int paramInt)
   {
-    UFTBaseTaskInfo localUFTBaseTaskInfo = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTBaseTaskInfo;
+    this.i = true;
+    c(3);
+    UFTLogicThread.a().b(new UFTBaseTask.1(this, paramInt));
+  }
+  
+  public void c(int paramInt)
+  {
+    UFTBaseTaskInfo localUFTBaseTaskInfo = this.h;
     if (localUFTBaseTaskInfo != null) {
       localUFTBaseTaskInfo.a(paramInt);
     }
   }
   
-  public boolean b()
+  protected abstract boolean dy_();
+  
+  public boolean k()
   {
-    this.jdField_a_of_type_Boolean = false;
-    b(2);
-    return c();
+    this.i = false;
+    c(2);
+    return dy_();
   }
   
-  protected abstract boolean c();
+  protected UFTBaseTask l()
+  {
+    return this;
+  }
+  
+  public long m()
+  {
+    UFTBaseTaskInfo localUFTBaseTaskInfo = this.h;
+    if (localUFTBaseTaskInfo != null) {
+      return localUFTBaseTaskInfo.n();
+    }
+    return 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.UFTBaseTask
  * JD-Core Version:    0.7.0.1
  */

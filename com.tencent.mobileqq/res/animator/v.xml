@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set android:ordering="together"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator android:duration="134" android:startOffset="0" android:valueFrom="1.0f" android:valueTo="0.969f" android:propertyName="scaleX" />
+    <objectAnimator android:duration="134" android:startOffset="0" android:valueFrom="1.0f" android:valueTo="0.969f" android:propertyName="scaleY" />
+    <objectAnimator android:duration="166" android:startOffset="134" android:valueFrom="1.0f" android:valueTo="0.5f" android:propertyName="alpha" />
+    <objectAnimator android:duration="166" android:startOffset="134" android:valueFrom="0.969f" android:valueTo="1.058f" android:propertyName="scaleX" />
+    <objectAnimator android:duration="166" android:startOffset="134" android:valueFrom="0.969f" android:valueTo="1.058f" android:propertyName="scaleY" />
+    <objectAnimator android:duration="166" android:startOffset="134" android:valueFrom="-5.0dip" android:valueTo="-3.0dip" android:propertyName="translationX" />
+    <objectAnimator android:duration="300" android:startOffset="300" android:valueFrom="0.5f" android:valueTo="0.0f" android:propertyName="alpha" />
+    <objectAnimator android:duration="300" android:startOffset="300" android:valueFrom="1.058f" android:valueTo="0.0f" android:propertyName="scaleX" />
+    <objectAnimator android:duration="300" android:startOffset="300" android:valueFrom="1.058f" android:valueTo="0.0f" android:propertyName="scaleY" />
+    <objectAnimator android:duration="300" android:startOffset="300" android:valueFrom="-3.0dip" android:valueTo="0" android:propertyName="translationX" />
+</set>

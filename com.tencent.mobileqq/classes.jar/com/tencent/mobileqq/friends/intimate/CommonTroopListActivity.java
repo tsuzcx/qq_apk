@@ -21,13 +21,13 @@ import java.util.ArrayList;
 public class CommonTroopListActivity
   extends IphoneTitleBarFragment
 {
-  private int jdField_a_of_type_Int = -1;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new CommonTroopListActivity.1(this);
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private CommonTroopListActivity.CommonTroopAdapter jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private ArrayList<IntimateInfo.CommonTroopInfo> jdField_a_of_type_JavaUtilArrayList;
+  private ListView a;
+  private QQAppInterface b;
+  private BaseActivity c;
+  private CommonTroopListActivity.CommonTroopAdapter d;
+  private ArrayList<IntimateInfo.CommonTroopInfo> e;
+  private int f = -1;
+  private View.OnClickListener g = new CommonTroopListActivity.1(this);
   
   public static void a(Context paramContext, ArrayList<IntimateInfo.CommonTroopInfo> paramArrayList, int paramInt)
   {
@@ -40,41 +40,41 @@ public class CommonTroopListActivity
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.mContentView.findViewById(2131365035));
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    this.a = ((ListView)this.mContentView.findViewById(2131431168));
+    paramLayoutInflater = this.c;
     if (paramLayoutInflater != null)
     {
-      setTitle(paramLayoutInflater.getString(2131693413));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getIntExtra("report_friend_type", -1);
-      this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getParcelableArrayListExtra("common_troop_list");
-      this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter = new CommonTroopListActivity.CommonTroopAdapter(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateCommonTroopListActivity$CommonTroopAdapter);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+      setTitle(paramLayoutInflater.getString(2131890962));
+      this.f = this.c.getIntent().getIntExtra("report_friend_type", -1);
+      this.e = this.c.getIntent().getParcelableArrayListExtra("common_troop_list");
+      this.d = new CommonTroopListActivity.CommonTroopAdapter(this, null);
+      this.d.a(this.e);
+      this.a.setAdapter(this.d);
+      this.b = this.c.app;
     }
-    ReportController.b(null, "dc00898", "", "", "0X8009F53", "0X8009F53", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X8009F53", "0X8009F53", this.f, 0, "", "", "", "");
   }
   
   protected int getContentLayoutId()
   {
-    return 2131559267;
+    return 2131625188;
   }
   
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getBaseActivity();
+    this.c = getBaseActivity();
   }
   
   public void onDetach()
   {
     super.onDetach();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.CommonTroopListActivity
  * JD-Core Version:    0.7.0.1
  */

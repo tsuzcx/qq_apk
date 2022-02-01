@@ -20,14 +20,14 @@ public class MessageSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  protected BaseSearchFragment a()
+  protected BaseSearchFragment c()
   {
     return new MessageSearchFragment();
   }
   
-  protected String a()
+  protected String d()
   {
-    return HardCodeUtil.a(2131706695);
+    return HardCodeUtil.a(2131904546);
   }
   
   @Override
@@ -48,7 +48,7 @@ public class MessageSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MessageSearchActivity
  * JD-Core Version:    0.7.0.1
  */

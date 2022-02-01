@@ -10,7 +10,7 @@ class EditButtonManager$4
   public void run()
   {
     Object localObject = this.this$0;
-    EditButtonManager.a((EditButtonManager)localObject, EditButtonManager.b((EditButtonManager)localObject));
+    EditButtonManager.a((EditButtonManager)localObject, EditButtonManager.d((EditButtonManager)localObject));
     EditButtonManager.b(this.this$0, null);
     EditButtonManager.a(this.this$0).start();
     localObject = this.a;
@@ -22,7 +22,7 @@ class EditButtonManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditButtonManager.4
  * JD-Core Version:    0.7.0.1
  */

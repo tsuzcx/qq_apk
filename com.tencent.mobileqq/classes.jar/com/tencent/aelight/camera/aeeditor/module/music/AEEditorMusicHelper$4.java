@@ -1,17 +1,15 @@
 package com.tencent.aelight.camera.aeeditor.module.music;
 
-import NS_QQ_STORY_CLIENT.CLIENT.StBatchGetMusicInfoRsp;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 import com.tencent.biz.richframework.network.request.BaseRequest;
+import qqcircle.QQCircleSmartMatchMusic.MusicInfoRsp;
 
 final class AEEditorMusicHelper$4
-  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StBatchGetMusicInfoRsp>
+  implements VSDispatchObserver.onVSRspCallBack<QQCircleSmartMatchMusic.MusicInfoRsp>
 {
-  AEEditorMusicHelper$4(VSDispatchObserver.onVSRspCallBack paramonVSRspCallBack, long paramLong) {}
-  
-  public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StBatchGetMusicInfoRsp paramStBatchGetMusicInfoRsp)
+  public void a(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleSmartMatchMusic.MusicInfoRsp paramMusicInfoRsp)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[requestDetailedMusicInfo], onReceive(), isSuccess=");
@@ -21,12 +19,12 @@ final class AEEditorMusicHelper$4
     ((StringBuilder)localObject).append(", errMsg=");
     ((StringBuilder)localObject).append(paramString);
     AEQLog.b("AEEditorMusicHelper", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentBizRichframeworkNetworkObserverVSDispatchObserver$onVSRspCallBack;
+    localObject = this.a;
     if (localObject != null) {
-      ((VSDispatchObserver.onVSRspCallBack)localObject).onReceive(paramBaseRequest, paramBoolean, paramLong, paramString, paramStBatchGetMusicInfoRsp);
+      ((VSDispatchObserver.onVSRspCallBack)localObject).onReceive(paramBaseRequest, paramBoolean, paramLong, paramString, paramMusicInfoRsp);
     }
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.b;
     int i = (int)paramLong;
     if (paramBoolean) {
       i = 1000;
@@ -40,7 +38,7 @@ final class AEEditorMusicHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicHelper.4
  * JD-Core Version:    0.7.0.1
  */

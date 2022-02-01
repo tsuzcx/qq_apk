@@ -1,14 +1,18 @@
 package com.tencent.mobileqq.dinifly.parser;
 
-import android.util.JsonReader;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.model.FontCharacter;
 import com.tencent.mobileqq.dinifly.model.content.ShapeGroup;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader;
+import com.tencent.mobileqq.dinifly.parser.moshi.JsonReader.Options;
 import java.util.ArrayList;
 import java.util.List;
 
 class FontCharacterParser
 {
+  private static final JsonReader.Options DATA_NAMES = JsonReader.Options.of(new String[] { "shapes" });
+  private static final JsonReader.Options NAMES = JsonReader.Options.of(new String[] { "ch", "size", "w", "style", "fFamily", "data" });
+  
   static FontCharacter parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
     ArrayList localArrayList = new ArrayList();
@@ -20,43 +24,7 @@ class FontCharacterParser
     char c = '\000';
     while (paramJsonReader.hasNext())
     {
-      String str3 = paramJsonReader.nextName();
-      switch (str3.hashCode())
-      {
-      default: 
-        break;
-      case 109780401: 
-        if (str3.equals("style")) {
-          i = 3;
-        }
-        break;
-      case 3530753: 
-        if (str3.equals("size")) {
-          i = 1;
-        }
-        break;
-      case 3076010: 
-        if (str3.equals("data")) {
-          i = 5;
-        }
-        break;
-      case 3173: 
-        if (str3.equals("ch")) {
-          i = 0;
-        }
-        break;
-      case 119: 
-        if (str3.equals("w")) {
-          i = 2;
-        }
-        break;
-      case -1866931350: 
-        if (str3.equals("fFamily")) {
-          i = 4;
-        }
-        break;
-      }
-      int i = -1;
+      int i = paramJsonReader.selectName(NAMES);
       if (i != 0)
       {
         if (i != 1)
@@ -69,23 +37,25 @@ class FontCharacterParser
               {
                 if (i != 5)
                 {
+                  paramJsonReader.skipName();
                   paramJsonReader.skipValue();
                 }
                 else
                 {
                   paramJsonReader.beginObject();
                   while (paramJsonReader.hasNext()) {
-                    if ("shapes".equals(paramJsonReader.nextName()))
+                    if (paramJsonReader.selectName(DATA_NAMES) != 0)
+                    {
+                      paramJsonReader.skipName();
+                      paramJsonReader.skipValue();
+                    }
+                    else
                     {
                       paramJsonReader.beginArray();
                       while (paramJsonReader.hasNext()) {
                         localArrayList.add((ShapeGroup)ContentModelParser.parse(paramJsonReader, paramLottieComposition));
                       }
                       paramJsonReader.endArray();
-                    }
-                    else
-                    {
-                      paramJsonReader.skipValue();
                     }
                   }
                   paramJsonReader.endObject();
@@ -117,7 +87,7 @@ class FontCharacterParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.FontCharacterParser
  * JD-Core Version:    0.7.0.1
  */

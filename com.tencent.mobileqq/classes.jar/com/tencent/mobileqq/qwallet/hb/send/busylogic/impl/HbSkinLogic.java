@@ -30,35 +30,35 @@ import mqq.observer.BusinessObserver;
 
 public class HbSkinLogic
 {
-  private static final String jdField_a_of_type_JavaLangString = HardCodeUtil.a(R.string.aS);
-  private int jdField_a_of_type_Int = -1;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new HbSkinLogic.3(this);
-  private IIndividualRedPacket jdField_a_of_type_ComQwalletTempIIndividualRedPacket = null;
-  private IRedPacket.OnGetSkinListener jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemIRedPacket$OnGetSkinListener = new HbSkinLogic.2(this);
-  private HbSkinInfo jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo = HbSkinInfo.HbSkinFactory.a(jdField_a_of_type_JavaLangString);
-  private SendHbActivity jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity;
-  private QwAdapter jdField_a_of_type_CooperationQwalletPluginQwAdapter;
-  List<HbSkinLogic.ItemSelectListener> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new HbSkinLogic.1(this);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private List<HbSkinInfo> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  private List<LinearLayout> c = new ArrayList();
+  private static final String b = HardCodeUtil.a(R.string.aW);
+  List<HbSkinLogic.ItemSelectListener> a = new ArrayList();
+  private List<HbSkinInfo> c = new ArrayList();
+  private SendHbActivity d;
+  private QwAdapter e;
+  private List<LinearLayout> f = new ArrayList();
+  private boolean g;
+  private int h = -1;
+  private int i = -1;
+  private IIndividualRedPacket j = null;
+  private HbSkinInfo k = HbSkinInfo.HbSkinFactory.a(b);
+  private boolean l = false;
+  private BusinessObserver m = new HbSkinLogic.1(this);
+  private IRedPacket.OnGetSkinListener n = new HbSkinLogic.2(this);
+  private AdapterView.OnItemClickListener o = new HbSkinLogic.3(this);
   
   public HbSkinLogic(SendHbActivity paramSendHbActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity = paramSendHbActivity;
-    d();
+    this.d = paramSendHbActivity;
+    g();
   }
   
   private void a(List<HbSkinInfo> paramList)
   {
-    paramList.add(HbSkinInfo.HbSkinFactory.b(jdField_a_of_type_JavaLangString));
-    if ((b()) && (!paramList.contains(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo)))
+    paramList.add(HbSkinInfo.HbSkinFactory.b(b));
+    if ((h()) && (!paramList.contains(this.k)))
     {
       QLog.d("HbSkinLogic", 2, "add vip info to list!");
-      paramList.add(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo);
+      paramList.add(this.k);
     }
   }
   
@@ -67,52 +67,47 @@ public class HbSkinLogic
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      SkinInfo localSkinInfo = ((HbSkinInfo)paramList.next()).jdField_a_of_type_WalletSkinInfo;
+      SkinInfo localSkinInfo = ((HbSkinInfo)paramList.next()).f;
       RedPacketInfoBase localRedPacketInfoBase = new RedPacketInfoBase();
       localRedPacketInfoBase.skinType = 1;
       localRedPacketInfoBase.skinId = localSkinInfo.skin_id;
-      localRedPacketInfoBase.isCache = HbSkinInfo.jdField_a_of_type_Boolean;
-      ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getSkin(localRedPacketInfoBase, this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemIRedPacket$OnGetSkinListener);
+      localRedPacketInfoBase.isCache = HbSkinInfo.e;
+      ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).getSkin(localRedPacketInfoBase, this.n);
     }
   }
   
-  private boolean b()
+  private void g()
   {
-    IIndividualRedPacket localIIndividualRedPacket = this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket;
+    ArrayList localArrayList = new ArrayList();
+    a(localArrayList);
+    this.e = new QwAdapter(this.d, localArrayList, R.layout.b, new HbSkinLogic.HbSkinHolder(this));
+    this.j = ((IIndividualRedPacket)((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getAppInterface().getRuntimeService(IIndividualRedPacket.class));
+    ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).registRedPacketSkinListObserver(this.m);
+    ApngImage.playByTag(0);
+  }
+  
+  private boolean h()
+  {
+    IIndividualRedPacket localIIndividualRedPacket = this.j;
     if (localIIndividualRedPacket != null) {
       return localIIndividualRedPacket.getIndividualRedPacketEnable();
     }
     return false;
   }
   
-  private void d()
-  {
-    ArrayList localArrayList = new ArrayList();
-    a(localArrayList);
-    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = new QwAdapter(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity, localArrayList, R.layout.jdField_b_of_type_Int, new HbSkinLogic.HbSkinHolder(this));
-    this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket = ((IIndividualRedPacket)((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getAppInterface().getRuntimeService(IIndividualRedPacket.class));
-    ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).registRedPacketSkinListObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    ApngImage.playByTag(0);
-  }
-  
-  public int a()
-  {
-    return HbSkinInfo.a(this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getList());
-  }
-  
   public void a()
   {
     QLog.i("HbSkinLogic", 2, "onDestroy called...");
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity = null;
-    this.c.clear();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getList().clear();
-    ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).unregistRedPacketSkinListObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
+    this.d = null;
+    this.f.clear();
+    this.a.clear();
+    this.e.getList().clear();
+    ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).unregistRedPacketSkinListObserver(this.m);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void a(Bundle paramBundle)
@@ -121,80 +116,75 @@ public class HbSkinLogic
       return;
     }
     b(0);
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.l)
     {
       QLog.i("HbSkinLogic", 2, "request skin list...");
       String str = paramBundle.getString("hb_from_type", "");
       if ("100".equals(str))
       {
         paramBundle = paramBundle.getString("hb_from", "");
-        ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).requestRedPacketSkinList(str, paramBundle, this.jdField_a_of_type_Int);
+        ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).requestRedPacketSkinList(str, paramBundle, this.h);
       }
       else
       {
         ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).requestRedPacketSkinList();
       }
-      this.jdField_b_of_type_Boolean = true;
+      this.l = true;
     }
   }
   
   public void a(View paramView)
   {
-    this.c.remove(paramView);
+    this.f.remove(paramView);
   }
   
   public void a(LinearLayout paramLinearLayout)
   {
-    this.c.add(paramLinearLayout);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity, 226.0F));
-    HorizontalListView localHorizontalListView = new HorizontalListView(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity);
-    localHorizontalListView.setDividerWidth(DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplSendHbActivity, 12.0F));
+    this.f.add(paramLinearLayout);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, DisplayUtil.a(this.d, 226.0F));
+    HorizontalListView localHorizontalListView = new HorizontalListView(this.d);
+    localHorizontalListView.setDividerWidth(DisplayUtil.a(this.d, 12.0F));
     paramLinearLayout.addView(localHorizontalListView, localLayoutParams);
-    localHorizontalListView.setAdapter(this.jdField_a_of_type_CooperationQwalletPluginQwAdapter);
-    localHorizontalListView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
-    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
+    localHorizontalListView.setAdapter(this.e);
+    localHorizontalListView.setOnItemClickListener(this.o);
+    this.e.notifyDataSetChanged();
   }
   
   public void a(HbSkinLogic.ItemSelectListener paramItemSelectListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramItemSelectListener);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a.add(paramItemSelectListener);
   }
   
   public void b()
   {
-    int i = a();
+    int i1 = e();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("set select skin: ");
-    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append(i1);
     QLog.i("HbSkinLogic", 2, ((StringBuilder)localObject).toString());
-    if (this.jdField_b_of_type_Int != i)
+    if (this.i != i1)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("set select skin id : ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append(" serverSkinId = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.i);
       QLog.i("HbSkinLogic", 2, ((StringBuilder)localObject).toString());
-      ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).setSelectedSkin(i, this.jdField_a_of_type_MqqObserverBusinessObserver);
+      ((IRedPacketManager)QRoute.api(IRedPacketManager.class)).setSelectedSkin(i1, this.m);
     }
-    if (-2 != i)
+    if (-2 != i1)
     {
       QLog.i("HbSkinLogic", 2, "clear vip info...");
-      localObject = this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket;
+      localObject = this.j;
       if (localObject != null) {
-        ((IIndividualRedPacket)localObject).setRedPacketFlags(((IIndividualRedPacket)localObject).IndividualRedPacketManager$FLAG_REDPACKET_CANNOT_USE(), this.jdField_a_of_type_ComQwalletTempIIndividualRedPacket.IndividualRedPacketManager$FLAG_REDPACKET_ENABLE(), true);
+        ((IIndividualRedPacket)localObject).setRedPacketFlags(((IIndividualRedPacket)localObject).IndividualRedPacketManager$FLAG_REDPACKET_CANNOT_USE(), this.j.IndividualRedPacketManager$FLAG_REDPACKET_ENABLE(), true);
       }
     }
   }
   
   public void b(int paramInt)
   {
-    Iterator localIterator = this.c.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext()) {
       ((ViewGroup)((LinearLayout)localIterator.next()).getParent()).setVisibility(paramInt);
     }
@@ -202,35 +192,45 @@ public class HbSkinLogic
   
   public void c()
   {
-    List localList = this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getList();
+    List localList = this.e.getList();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("is vip: ");
-    localStringBuilder.append(b());
+    localStringBuilder.append(h());
     QLog.d("HbSkinLogic", 2, localStringBuilder.toString());
-    if (b())
+    if (h())
     {
-      if (!localList.contains(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo))
+      if (!localList.contains(this.k))
       {
         QLog.d("HbSkinLogic", 2, "add vip info to list!");
-        localList.add(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo);
-        HbSkinInfo.c = this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo.jdField_a_of_type_WalletSkinInfo.skin_id;
+        localList.add(this.k);
+        HbSkinInfo.d = this.k.f.skin_id;
         HbSkinInfo.a(localList);
-        this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
+        this.e.notifyDataSetChanged();
       }
     }
-    else if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo))
+    else if (localList.contains(this.k))
     {
       QLog.d("HbSkinLogic", 2, "remove vip info to list!");
-      localList.remove(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendBusylogicImplHbSkinInfo);
-      HbSkinInfo.c = 0;
+      localList.remove(this.k);
+      HbSkinInfo.d = 0;
       HbSkinInfo.a(localList);
-      this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
+      this.e.notifyDataSetChanged();
     }
+  }
+  
+  public boolean d()
+  {
+    return this.g;
+  }
+  
+  public int e()
+  {
+    return HbSkinInfo.b(this.e.getList());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.busylogic.impl.HbSkinLogic
  * JD-Core Version:    0.7.0.1
  */

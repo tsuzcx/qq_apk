@@ -15,25 +15,25 @@ class NearbyHybridFragment$17
   
   protected void a(int paramInt, String paramString, Bitmap paramBitmap)
   {
-    if ((this.a.d != null) && (this.a.d.equals(paramString)) && (paramBitmap != null) && (this.a.b != null) && (this.a.b.getVisibility() == 0)) {
-      this.a.jdField_a_of_type_ComTencentImageURLImageView.setImageBitmap(paramBitmap);
+    if ((this.a.aa != null) && (this.a.aa.equals(paramString)) && (paramBitmap != null) && (this.a.t != null) && (this.a.t.getVisibility() == 0)) {
+      this.a.w.setImageBitmap(paramBitmap);
     }
   }
   
   protected void b()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface);
+    if (this.a.s != null) {
+      this.a.s.a(this.a.k);
     }
-    this.a.k();
-    this.a.l();
+    this.a.t();
+    this.a.u();
   }
   
   protected void b(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.17
  * JD-Core Version:    0.7.0.1
  */

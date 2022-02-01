@@ -18,30 +18,30 @@ class RedPacketKuaKuaFragment$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (RedPacketKuaKuaFragment.a(this.a) > 0)
+    if (RedPacketKuaKuaFragment.c(this.a) > 0)
     {
-      TextView localTextView = RedPacketKuaKuaFragment.a(this.a);
+      TextView localTextView = RedPacketKuaKuaFragment.d(this.a);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramEditable.length());
       localStringBuilder.append("/");
-      localStringBuilder.append(RedPacketKuaKuaFragment.a(this.a));
+      localStringBuilder.append(RedPacketKuaKuaFragment.c(this.a));
       localTextView.setText(localStringBuilder.toString());
     }
     if (paramEditable.toString().trim().length() > 0)
     {
-      this.a.a(HardCodeUtil.a(R.string.bk));
-      RedPacketKuaKuaFragment.a(this.a).removeCallbacks(RedPacketKuaKuaFragment.a(this.a));
-      RedPacketKuaKuaFragment.a(this.a).postDelayed(RedPacketKuaKuaFragment.a(this.a), RedPacketKuaKuaFragment.a(this.a) * 1000L);
+      this.a.a(HardCodeUtil.a(R.string.bo));
+      RedPacketKuaKuaFragment.f(this.a).removeCallbacks(RedPacketKuaKuaFragment.e(this.a));
+      RedPacketKuaKuaFragment.f(this.a).postDelayed(RedPacketKuaKuaFragment.e(this.a), RedPacketKuaKuaFragment.g(this.a) * 1000L);
       return;
     }
-    this.a.a(HardCodeUtil.a(R.string.bm));
+    this.a.a(HardCodeUtil.a(R.string.bq));
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     if ((paramInt1 == 0) && (paramInt3 > paramInt1))
     {
-      ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, RedPacketKuaKuaFragment.a(this.a).mQQWalletRedPacketMsg.elem.a, "", "", "");
+      ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "kuakua.get.begin", 0, 0, RedPacketKuaKuaFragment.b(this.a).mQQWalletRedPacketMsg.elem.c, "", "", "");
       return;
     }
   }
@@ -50,7 +50,7 @@ class RedPacketKuaKuaFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKuaKuaFragment.2
  * JD-Core Version:    0.7.0.1
  */

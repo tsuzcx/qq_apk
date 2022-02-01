@@ -19,8 +19,8 @@ import org.json.JSONObject;
 public class FriendClueApiPlugin
   extends WebViewPlugin
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Context a;
+  private AppInterface b;
   
   public FriendClueApiPlugin()
   {
@@ -29,7 +29,7 @@ public class FriendClueApiPlugin
   
   private Context a()
   {
-    Activity localActivity2 = this.mRuntime.a();
+    Activity localActivity2 = this.mRuntime.d();
     Activity localActivity1 = localActivity2;
     if (localActivity2 != null)
     {
@@ -44,7 +44,7 @@ public class FriendClueApiPlugin
   void a(String paramString)
   {
     paramString = new AllInOne(paramString, 1);
-    startActivityForResult(new Intent(this.jdField_a_of_type_AndroidContentContext, MoveToGroupActivity.class).putExtra("friendUin", paramString.uin), (byte)0);
+    startActivityForResult(new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", paramString.uin), (byte)0);
   }
   
   void b(String paramString)
@@ -101,13 +101,13 @@ public class FriendClueApiPlugin
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidContentContext = a();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = this.mRuntime.a();
+    this.a = a();
+    this.b = this.mRuntime.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueApiPlugin
  * JD-Core Version:    0.7.0.1
  */

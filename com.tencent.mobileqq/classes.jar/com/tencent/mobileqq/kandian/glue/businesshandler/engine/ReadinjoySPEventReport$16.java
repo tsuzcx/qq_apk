@@ -14,7 +14,7 @@ final class ReadinjoySPEventReport$16
   
   public void run()
   {
-    if (ReadinjoySPEventReport.b(19))
+    if (ReadinjoySPEventReport.j(19))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = new StringBuilder();
@@ -26,21 +26,21 @@ final class ReadinjoySPEventReport$16
       {
         localObject2 = (ReadinjoySPEventReport.ScrollStep)this.a.get(i);
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Int);
-        localStringBuilder.append("-");
-        localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Long);
+        localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).a);
         localStringBuilder.append("-");
         localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).b);
         localStringBuilder.append("-");
-        localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).c);
+        localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).d);
+        localStringBuilder.append("-");
+        localStringBuilder.append(((ReadinjoySPEventReport.ScrollStep)localObject2).e);
         ((StringBuilder)localObject1).append(localStringBuilder.toString());
         if (i != this.a.size() - 1) {
           ((StringBuilder)localObject1).append(":");
         } else {
-          k = ((ReadinjoySPEventReport.ScrollStep)localObject2).d;
+          k = ((ReadinjoySPEventReport.ScrollStep)localObject2).f;
         }
-        j += ((ReadinjoySPEventReport.ScrollStep)localObject2).b;
-        l += ((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Long;
+        j += ((ReadinjoySPEventReport.ScrollStep)localObject2).d;
+        l += ((ReadinjoySPEventReport.ScrollStep)localObject2).b;
         i += 1;
       }
       Object localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -77,12 +77,12 @@ final class ReadinjoySPEventReport$16
       localArrayList.add(localObject1);
       ReadinjoyReportUtils.a(19, localArrayList);
     }
-    ReadinjoySPEventReport.ScrollReportUtil.a();
+    ReadinjoySPEventReport.ScrollReportUtil.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.16
  * JD-Core Version:    0.7.0.1
  */

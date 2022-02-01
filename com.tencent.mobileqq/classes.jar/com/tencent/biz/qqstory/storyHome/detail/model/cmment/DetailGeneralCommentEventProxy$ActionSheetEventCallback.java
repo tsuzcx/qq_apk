@@ -4,11 +4,11 @@ import com.tencent.biz.qqstory.database.CommentEntry;
 
 public abstract interface DetailGeneralCommentEventProxy$ActionSheetEventCallback
 {
-  public abstract void a(int paramInt);
-  
   public abstract void a(CommentEntry paramCommentEntry);
   
   public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b(int paramInt);
   
   public abstract void b(CommentEntry paramCommentEntry);
   

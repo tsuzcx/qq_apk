@@ -68,35 +68,16 @@ public class FastWebAdtUtil
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramProteusBannerBigPicItemData)) {
       return 25;
     }
-    if (paramProteusBannerBigPicItemData.jdField_a_of_type_Boolean) {
+    if (paramProteusBannerBigPicItemData.a) {
       return 26;
     }
     return 10;
   }
   
-  private static int a(List<BaseData> paramList)
-  {
-    int i = paramList.size() - 1;
-    while (i > 0)
-    {
-      BaseData localBaseData = (BaseData)paramList.get(i);
-      if ((((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).isArticleContent(localBaseData)) && (localBaseData.u != 0))
-      {
-        int j = i;
-        if (i < paramList.size() - 1) {
-          j = i + 1;
-        }
-        return j;
-      }
-      i -= 1;
-    }
-    return 1;
-  }
-  
   private static int a(List<BaseData> paramList, BaseData paramBaseData)
   {
     int i;
-    if (paramBaseData.u == 9) {
+    if (paramBaseData.aP == 9) {
       i = ((RecommendAdData)paramBaseData).a;
     } else {
       i = 2;
@@ -105,7 +86,7 @@ public class FastWebAdtUtil
     for (int k = i; j < paramList.size(); k = i)
     {
       i = k;
-      if (((BaseData)paramList.get(j)).u == 6)
+      if (((BaseData)paramList.get(j)).aP == 6)
       {
         k -= 1;
         i = k;
@@ -128,49 +109,6 @@ public class FastWebAdtUtil
     return i;
   }
   
-  @NotNull
-  private static AdData a(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject.has("type")) && (paramJSONObject.optInt("type") == 100)) {
-      return new AttachedAdData();
-    }
-    if (!TextUtils.isEmpty(paramJSONObject.optString("video")))
-    {
-      localObject = new ProteusBannerVideoItemData();
-      if (paramJSONObject.has("video_file_size")) {
-        ((ProteusBannerVideoItemData)localObject).a = paramJSONObject.optLong("video_file_size");
-      }
-      return localObject;
-    }
-    Object localObject = new ProteusBannerBigPicItemData();
-    if (paramJSONObject.has("local_info"))
-    {
-      paramJSONObject = paramJSONObject.optJSONObject("local_info");
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("has local info ->");
-        localStringBuilder.append(paramJSONObject);
-        QLog.d("FastWebAdRequestUtil", 2, localStringBuilder.toString());
-      }
-      if (paramJSONObject != null)
-      {
-        ((ProteusBannerBigPicItemData)localObject).jdField_a_of_type_JavaLangString = paramJSONObject.optString("store_name");
-        ((ProteusBannerBigPicItemData)localObject).b = paramJSONObject.optString("store_addr");
-        ((ProteusBannerBigPicItemData)localObject).c = paramJSONObject.optString("store_url");
-        ((ProteusBannerBigPicItemData)localObject).e = paramJSONObject.optString("store_long");
-        ((ProteusBannerBigPicItemData)localObject).d = paramJSONObject.optString("store_lat");
-        ((ProteusBannerBigPicItemData)localObject).f = paramJSONObject.optString("dist_desc");
-        ((ProteusBannerBigPicItemData)localObject).g = paramJSONObject.optString("corporate_image_name");
-        ((ProteusBannerBigPicItemData)localObject).h = paramJSONObject.optString("distance_limit");
-        if ((!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).b)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).c)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).e)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).d)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).f)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).h))) {
-          ((ProteusBannerBigPicItemData)localObject).jdField_a_of_type_Boolean = true;
-        }
-      }
-    }
-    return localObject;
-  }
-  
   private static AdData a(JSONObject paramJSONObject, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     if (paramJSONObject == null)
@@ -184,19 +122,19 @@ public class FastWebAdtUtil
     if (paramInt1 == 2)
     {
       localObject = new ProteusInnerData();
-      ((AdData)localObject).f = true;
+      ((AdData)localObject).aS = true;
     }
     else if (paramInt1 == 1)
     {
-      localObject = a(paramJSONObject);
+      localObject = b(paramJSONObject);
     }
     else
     {
       localObject = new RecommendAdData();
     }
-    ((AdData)localObject).ab = paramJSONObject.toString();
-    ((AdData)localObject).v = paramInt1;
-    ((AdData)localObject).t = paramInt3;
+    ((AdData)localObject).aN = paramJSONObject.toString();
+    ((AdData)localObject).aT = paramInt1;
+    ((AdData)localObject).aG = paramInt3;
     ((AdData)localObject).a(paramJSONObject, paramString);
     if (((AdData)localObject).a(paramJSONObject, paramInt2))
     {
@@ -219,11 +157,11 @@ public class FastWebAdtUtil
     {
       try
       {
-        if (localAdData1.q == 32)
+        if (localAdData1.aB == 32)
         {
           paramJSONObject1 = localAdData1;
           localObject = localAdData1;
-          if (localAdData1.a != null)
+          if (localAdData1.j != null)
           {
             paramJSONObject1 = localAdData1;
             AdData localAdData2 = AdExposeFreshManager.a().a("RIJAdRefreshSceneNativeArticle", localAdData1);
@@ -235,7 +173,7 @@ public class FastWebAdtUtil
               if (!a(localAdData1, localAdData2))
               {
                 paramJSONObject1 = localAdData1;
-                localObject = new JSONObject(localAdData2.ab);
+                localObject = new JSONObject(localAdData2.aN);
                 paramJSONObject1 = localAdData1;
                 ((JSONObject)localObject).put("rowkey", paramString1);
                 paramJSONObject1 = localAdData1;
@@ -245,10 +183,10 @@ public class FastWebAdtUtil
                 paramJSONObject1 = paramString1;
                 paramString2.append("parseExposeFreshAdData，success, adId：");
                 if (paramString1 == null) {
-                  break label224;
+                  break label220;
                 }
                 paramJSONObject1 = paramString1;
-                paramJSONObject2 = Integer.valueOf(paramString1.e);
+                paramJSONObject2 = Integer.valueOf(paramString1.y);
                 paramJSONObject1 = paramString1;
                 paramString2.append(paramJSONObject2);
                 paramJSONObject1 = paramString1;
@@ -265,7 +203,7 @@ public class FastWebAdtUtil
         localObject = paramJSONObject1;
       }
       return localObject;
-      label224:
+      label220:
       paramJSONObject2 = "0";
     }
   }
@@ -286,9 +224,9 @@ public class FastWebAdtUtil
     while (localIterator.hasNext())
     {
       BaseData localBaseData = (BaseData)localIterator.next();
-      if ((localBaseData.u != 10) && (localBaseData.u != 17))
+      if ((localBaseData.aP != 10) && (localBaseData.aP != 17))
       {
-        if ((localBaseData.u == 22) && (((ProteusInnerData)localBaseData).g())) {
+        if ((localBaseData.aP == 22) && (((ProteusInnerData)localBaseData).h())) {
           i = 1;
         }
       }
@@ -311,7 +249,7 @@ public class FastWebAdtUtil
       while (((Iterator)localObject2).hasNext())
       {
         BaseData localBaseData = (BaseData)((Iterator)localObject2).next();
-        if ((localBaseData.u == 9) || (localBaseData.u == 10) || (localBaseData.u == 11) || (localBaseData.u == 17)) {
+        if ((localBaseData.aP == 9) || (localBaseData.aP == 10) || (localBaseData.aP == 11) || (localBaseData.aP == 17)) {
           ((List)localObject1).add(localBaseData);
         }
       }
@@ -323,10 +261,10 @@ public class FastWebAdtUtil
       while (paramList2.hasNext())
       {
         localObject1 = (BaseData)paramList2.next();
-        if ((((BaseData)localObject1).u != 10) && (((BaseData)localObject1).u != 11) && (((BaseData)localObject1).u != 17))
+        if ((((BaseData)localObject1).aP != 10) && (((BaseData)localObject1).aP != 11) && (((BaseData)localObject1).aP != 17))
         {
           int i;
-          if (((BaseData)localObject1).u == 22) {
+          if (((BaseData)localObject1).aP == 22) {
             i = b(paramList1, (BaseData)localObject1);
           } else {
             i = a(paramList1, (BaseData)localObject1);
@@ -337,7 +275,7 @@ public class FastWebAdtUtil
             {
               localObject2 = (BaseData)paramList1.get(i);
               if (((localObject2 instanceof RecommendTitleData)) && ((localObject1 instanceof ProteusBannerBigPicItemData))) {
-                ((RecommendTitleData)localObject2).jdField_a_of_type_Boolean = ((ProteusBannerBigPicItemData)localObject1).jdField_a_of_type_Boolean;
+                ((RecommendTitleData)localObject2).b = ((ProteusBannerBigPicItemData)localObject1).a;
               }
             }
             paramList1.add(i, localObject1);
@@ -356,35 +294,27 @@ public class FastWebAdtUtil
     return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
   
-  private static boolean a(List<BaseData> paramList)
-  {
-    paramList = paramList.iterator();
-    for (boolean bool = false; paramList.hasNext(); bool = true)
-    {
-      label9:
-      BaseData localBaseData = (BaseData)paramList.next();
-      if ((!(localBaseData instanceof ProteusInnerData)) || (!((ProteusInnerData)localBaseData).d())) {
-        break label9;
-      }
-    }
-    return bool;
-  }
-  
   private static int b(List<BaseData> paramList, BaseData paramBaseData)
   {
-    int j = paramBaseData.u;
+    int j = paramBaseData.aP;
     int i = -1;
     if (j == 22)
     {
-      paramBaseData = (ProteusInnerData)paramBaseData;
-      boolean bool = paramBaseData.g();
-      int i2 = paramBaseData.a;
+      Object localObject = (ProteusInnerData)paramBaseData;
+      paramBaseData = ((ProteusInnerData)localObject).i();
+      boolean bool = ((ProteusInnerData)localObject).h();
+      int i2 = ((ProteusInnerData)localObject).a;
       i = paramList.size() - 1;
       int k = 0;
       int n;
       for (j = 0; i > 0; j = n)
       {
-        paramBaseData = (BaseData)paramList.get(i);
+        localObject = (BaseData)paramList.get(i);
+        if ((!TextUtils.isEmpty(((BaseData)localObject).aZ)) && (!TextUtils.isEmpty(paramBaseData)) && (((BaseData)localObject).aZ.equals(paramBaseData)))
+        {
+          j = i;
+          break label229;
+        }
         int i1 = k;
         n = j;
         if (!bool)
@@ -395,11 +325,11 @@ public class FastWebAdtUtil
           {
             int m = k;
             n = j;
-            if (((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).isArticleContent(paramBaseData))
+            if (((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).isArticleContent((BaseData)localObject))
             {
               m = k;
               n = j;
-              if (paramBaseData.u != 0)
+              if (((BaseData)localObject).aP != 0)
               {
                 k += 1;
                 m = k;
@@ -412,8 +342,10 @@ public class FastWebAdtUtil
               }
             }
             i1 = m;
-            if (m == i2) {
-              break label175;
+            if (m == i2)
+            {
+              j = i2;
+              break label229;
             }
           }
         }
@@ -421,13 +353,57 @@ public class FastWebAdtUtil
         k = i1;
       }
       i = -1;
-      label175:
-      if ((i != -1) && (i2 > 0) && (i2 <= paramList.size())) {
+      j = i2;
+      label229:
+      if ((i != -1) && (j > 0) && (j <= paramList.size())) {
         return i;
       }
-      i = a(paramList);
+      i = f(paramList);
     }
     return i;
+  }
+  
+  @NotNull
+  private static AdData b(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject.has("type")) && (paramJSONObject.optInt("type") == 100)) {
+      return new AttachedAdData();
+    }
+    if (!TextUtils.isEmpty(paramJSONObject.optString("video")))
+    {
+      localObject = new ProteusBannerVideoItemData();
+      if (paramJSONObject.has("video_file_size")) {
+        ((ProteusBannerVideoItemData)localObject).c = paramJSONObject.optLong("video_file_size");
+      }
+      return localObject;
+    }
+    Object localObject = new ProteusBannerBigPicItemData();
+    if (paramJSONObject.has("local_info"))
+    {
+      paramJSONObject = paramJSONObject.optJSONObject("local_info");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("has local info ->");
+        localStringBuilder.append(paramJSONObject);
+        QLog.d("FastWebAdRequestUtil", 2, localStringBuilder.toString());
+      }
+      if (paramJSONObject != null)
+      {
+        ((ProteusBannerBigPicItemData)localObject).b = paramJSONObject.optString("store_name");
+        ((ProteusBannerBigPicItemData)localObject).c = paramJSONObject.optString("store_addr");
+        ((ProteusBannerBigPicItemData)localObject).d = paramJSONObject.optString("store_url");
+        ((ProteusBannerBigPicItemData)localObject).f = paramJSONObject.optString("store_long");
+        ((ProteusBannerBigPicItemData)localObject).e = paramJSONObject.optString("store_lat");
+        ((ProteusBannerBigPicItemData)localObject).g = paramJSONObject.optString("dist_desc");
+        ((ProteusBannerBigPicItemData)localObject).h = paramJSONObject.optString("corporate_image_name");
+        ((ProteusBannerBigPicItemData)localObject).i = paramJSONObject.optString("distance_limit");
+        if ((!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).b)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).c)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).d)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).f)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).e)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).g)) && (!TextUtils.isEmpty(((ProteusBannerBigPicItemData)localObject).i))) {
+          ((ProteusBannerBigPicItemData)localObject).a = true;
+        }
+      }
+    }
+    return localObject;
   }
   
   private static String b(Map<String, String> paramMap, JSONObject paramJSONObject)
@@ -537,7 +513,7 @@ public class FastWebAdtUtil
           paramString2.put("contentPadding", paramString1.get("contentPadding"));
         }
         paramString5.put("article_display_params", paramString2.toString());
-        paramString5.put("noExposeList", AdReqFreshManager.a().a());
+        paramString5.put("noExposeList", AdReqFreshManager.a().d());
         return paramString5;
       }
       catch (JSONException paramString1)
@@ -557,7 +533,7 @@ public class FastWebAdtUtil
       try
       {
         localObject1 = new GdtDeviceInfoHelper.Params();
-        ((GdtDeviceInfoHelper.Params)localObject1).jdField_a_of_type_JavaLangString = "ce2d9f";
+        ((GdtDeviceInfoHelper.Params)localObject1).a = "ce2d9f";
         localObject1 = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
         if (localObject1 == null) {
           break label675;
@@ -570,11 +546,11 @@ public class FastWebAdtUtil
         }
         localObject2 = "0000000000000000";
         localJSONObject.put("muid", localObject2);
-        localJSONObject.put("carrier", GdtDeviceUtil.a(BaseApplicationImpl.getContext()));
-        localJSONObject.put("carrier_code", AdDeviceInfoUtil.b());
+        localJSONObject.put("carrier", GdtDeviceUtil.b(BaseApplicationImpl.getContext()));
+        localJSONObject.put("carrier_code", AdDeviceInfoUtil.f());
         localJSONObject.put("c_os", "android");
-        localJSONObject.put("appid", String.valueOf(AppSetting.a()));
-        localJSONObject.put("app_version_id", AppSetting.a());
+        localJSONObject.put("appid", String.valueOf(AppSetting.d()));
+        localJSONObject.put("app_version_id", AppSetting.d());
         localJSONObject.put("imei", localObject3);
         if (localObject1 != null)
         {
@@ -634,7 +610,7 @@ public class FastWebAdtUtil
           }
         }
         localJSONObject.put("present_from", paramInt);
-        if (StudyModeManager.a()) {
+        if (StudyModeManager.h()) {
           localJSONObject.put("reqLearningPatternFlag", 1);
         }
         if (localObject1 != null)
@@ -666,7 +642,7 @@ public class FastWebAdtUtil
     while (localIterator.hasNext())
     {
       BaseData localBaseData = (BaseData)localIterator.next();
-      if (localBaseData.u == 17) {
+      if (localBaseData.aP == 17) {
         localArrayList.add(localBaseData);
       }
     }
@@ -682,7 +658,7 @@ public class FastWebAdtUtil
       while (localIterator.hasNext())
       {
         BaseData localBaseData = (BaseData)localIterator.next();
-        if (localBaseData.u == 22) {
+        if (localBaseData.aP == 22) {
           ((List)localObject).add(localBaseData);
         }
       }
@@ -695,7 +671,7 @@ public class FastWebAdtUtil
       {
         localObject = (BaseData)paramList2.next();
         int i;
-        if (((BaseData)localObject).u == 22) {
+        if (((BaseData)localObject).aP == 22) {
           i = b(paramList1, (BaseData)localObject);
         } else {
           i = a(paramList1, (BaseData)localObject);
@@ -720,48 +696,35 @@ public class FastWebAdtUtil
       }
       try
       {
-        Object localObject1 = new JSONObject(paramString1);
-        Object localObject2 = ((JSONObject)localObject1).optString("cookie");
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).saveAdCookie((String)localObject2);
-        String str = ((JSONObject)localObject1).optString("ad_switchs");
-        JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("result");
-        int j = ((JSONObject)localObject1).optInt("req_type", 0);
+        Object localObject = new JSONObject(paramString1);
+        String str = ((JSONObject)localObject).optString("cookie");
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).saveAdCookie(str);
+        str = ((JSONObject)localObject).optString("ad_switchs");
+        JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("result");
+        int j = ((JSONObject)localObject).optInt("req_type", 0);
         int i = 0;
         while (i < localJSONArray.length())
         {
-          localObject1 = localJSONArray.getJSONObject(i);
-          ((JSONObject)localObject1).put("rowkey", paramString2);
-          int k = a((JSONObject)localObject1);
+          localObject = localJSONArray.getJSONObject(i);
+          ((JSONObject)localObject).put("rowkey", paramString2);
+          int k = a((JSONObject)localObject);
           if (k == 1)
           {
-            localObject1 = a((JSONObject)localObject1, paramJSONObject, paramString2, 1, str, -1, j);
-            ReadInJoyAdUtils.a((AdData)localObject1);
+            localObject = a((JSONObject)localObject, paramJSONObject, paramString2, 1, str, -1, j);
+            ReadInJoyAdUtils.a((AdData)localObject);
           }
           else if (k == 2)
           {
-            localObject2 = a((JSONObject)localObject1, paramJSONObject, paramString2, 2, str, -1, j);
-            localObject1 = localObject2;
-            if (localObject2 != null)
-            {
-              localObject1 = localObject2;
-              if (((ProteusInnerData)localObject2).d())
-              {
-                localObject1 = localObject2;
-                if (a(paramList)) {
-                  break label246;
-                }
-              }
-            }
+            localObject = a((JSONObject)localObject, paramJSONObject, paramString2, 2, str, -1, j);
           }
           else
           {
-            localObject1 = a((JSONObject)localObject1, paramJSONObject, paramString2, 0, str, ((JSONObject)localObject1).getInt("ad_pos"), j);
-            ReadInJoyAdUtils.a((AdData)localObject1);
+            localObject = a((JSONObject)localObject, paramJSONObject, paramString2, 0, str, ((JSONObject)localObject).getInt("ad_pos"), j);
+            ReadInJoyAdUtils.a((AdData)localObject);
           }
-          if (localObject1 != null) {
-            paramList.add(localObject1);
+          if (localObject != null) {
+            paramList.add(localObject);
           }
-          label246:
           i += 1;
         }
         return true;
@@ -787,7 +750,7 @@ public class FastWebAdtUtil
     while (localIterator.hasNext())
     {
       BaseData localBaseData = (BaseData)localIterator.next();
-      if (localBaseData.u == 22) {
+      if (localBaseData.aP == 22) {
         localArrayList.add(localBaseData);
       }
     }
@@ -807,12 +770,12 @@ public class FastWebAdtUtil
       while (i < paramList.size())
       {
         AdData localAdData = (AdData)paramList.get(i);
-        if ((localAdData != null) && (localAdData.a != null))
+        if ((localAdData != null) && (localAdData.j != null))
         {
-          localAdData.a.scene = "RIJAdRefreshSceneNativeArticle";
-          if (localAdData.q == 32)
+          localAdData.j.scene = "RIJAdRefreshSceneNativeArticle";
+          if (localAdData.aB == 32)
           {
-            localHashSet1.add(Long.valueOf(localAdData.a.mAdAid));
+            localHashSet1.add(Long.valueOf(localAdData.j.mAdAid));
             localHashSet2.add(localAdData);
           }
         }
@@ -822,10 +785,29 @@ public class FastWebAdtUtil
       AdExposeFreshManager.a().b("RIJAdRefreshSceneNativeArticle", localHashSet2);
     }
   }
+  
+  private static int f(List<BaseData> paramList)
+  {
+    int i = paramList.size() - 1;
+    while (i > 0)
+    {
+      BaseData localBaseData = (BaseData)paramList.get(i);
+      if ((((IFastWebPTSUtils)QRoute.api(IFastWebPTSUtils.class)).isArticleContent(localBaseData)) && (localBaseData.aP != 0))
+      {
+        int j = i;
+        if (i < paramList.size() - 1) {
+          j = i + 1;
+        }
+        return j;
+      }
+      i -= 1;
+    }
+    return 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAdtUtil
  * JD-Core Version:    0.7.0.1
  */

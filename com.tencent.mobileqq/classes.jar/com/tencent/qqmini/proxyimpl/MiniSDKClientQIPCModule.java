@@ -41,24 +41,6 @@ public class MiniSDKClientQIPCModule
     return MiniSDKClientQIPCModule.MiniSDKClientClass.a();
   }
   
-  public static void a()
-  {
-    MiniSDKClientQIPCModule localMiniSDKClientQIPCModule = a();
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("register ");
-      localStringBuilder.append(localMiniSDKClientQIPCModule);
-      QMLog.i("MiniSDKClientQIPCModule", localStringBuilder.toString());
-      QIPCClientHelper.getInstance().register(localMiniSDKClientQIPCModule);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MiniSDKClientQIPCModule", 1, "register ipc module error.", localException);
-    }
-  }
-  
   private void a(Bundle paramBundle)
   {
     if (paramBundle != null)
@@ -260,8 +242,20 @@ public class MiniSDKClientQIPCModule
   
   public static void b()
   {
-    QMLog.i("MiniSDKClientQIPCModule", "unregister");
-    QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+    MiniSDKClientQIPCModule localMiniSDKClientQIPCModule = a();
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("register ");
+      localStringBuilder.append(localMiniSDKClientQIPCModule);
+      QMLog.i("MiniSDKClientQIPCModule", localStringBuilder.toString());
+      QIPCClientHelper.getInstance().register(localMiniSDKClientQIPCModule);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("MiniSDKClientQIPCModule", 1, "register ipc module error.", localException);
+    }
   }
   
   private void b(Bundle paramBundle)
@@ -406,6 +400,12 @@ public class MiniSDKClientQIPCModule
     a(localBaseRuntime, ((StringBuilder)localObject1).toString(), "fail", 3, "cancel");
   }
   
+  public static void c()
+  {
+    QMLog.i("MiniSDKClientQIPCModule", "unregister");
+    QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+  }
+  
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
     if (QLog.isColorLevel())
@@ -433,7 +433,7 @@ public class MiniSDKClientQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSDKClientQIPCModule
  * JD-Core Version:    0.7.0.1
  */

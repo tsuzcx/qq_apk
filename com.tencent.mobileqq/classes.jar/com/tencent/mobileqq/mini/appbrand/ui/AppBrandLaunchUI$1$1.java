@@ -15,12 +15,12 @@ class AppBrandLaunchUI$1$1
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(this.val$errMsg);
-    QQToast.a(localBaseApplication, 1, localStringBuilder.toString(), 1).a();
+    QQToast.makeText(localBaseApplication, 1, localStringBuilder.toString(), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI.1.1
  * JD-Core Version:    0.7.0.1
  */

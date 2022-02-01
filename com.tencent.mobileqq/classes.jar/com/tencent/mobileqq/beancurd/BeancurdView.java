@@ -28,24 +28,23 @@ import java.util.List;
 public abstract class BeancurdView
   implements View.OnClickListener
 {
-  protected int a;
-  protected Context a;
-  protected View a;
-  protected BeancurdView.OnClickBeancurdListener a;
-  protected MessageForBeancurd a;
-  protected BoxShadowLayout a;
-  protected int b;
+  protected View a = a(paramContext);
+  protected Context b;
   protected int c;
   protected int d;
+  protected int e;
+  protected int f;
+  protected MessageForBeancurd g;
+  protected BoxShadowLayout h;
+  protected BeancurdView.OnClickBeancurdListener i;
   
   public BeancurdView(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramContext);
+    this.b = paramContext;
+    b(paramContext);
     a();
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout = a(paramView, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setOnClickListener(this);
+    this.h = a(paramView, this.a);
+    this.h.setOnClickListener(this);
   }
   
   public static BeancurdView a(Context paramContext, View paramView, int paramInt)
@@ -64,7 +63,7 @@ public abstract class BeancurdView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844924);
+    this.a.setBackgroundResource(2130846358);
   }
   
   protected abstract View a(Context paramContext);
@@ -75,7 +74,7 @@ public abstract class BeancurdView
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167333));
+    localGradientDrawable.setColor(this.b.getResources().getColor(2131168376));
     localURLDrawableOptions.mLoadingDrawable = localGradientDrawable;
     localURLDrawableOptions.mFailedDrawable = localGradientDrawable;
     return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
@@ -83,33 +82,25 @@ public abstract class BeancurdView
   
   protected BoxShadowLayout a(View paramView1, View paramView2)
   {
-    int i = ViewUtils.b(123.0F);
+    int j = ViewUtils.dpToPx(123.0F);
     Object localObject = paramView1;
     if (paramView1 == null)
     {
-      localObject = new BoxShadowLayout(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject).setLayoutParams(new ViewGroup.MarginLayoutParams(-1, i));
+      localObject = new BoxShadowLayout(this.b);
+      ((View)localObject).setLayoutParams(new ViewGroup.MarginLayoutParams(-1, j));
     }
     paramView1 = (BoxShadowLayout)localObject;
-    paramView1.a(paramView2, this.c, this.jdField_a_of_type_Int, this.b);
-    i = (int)(ScreenUtil.getInstantScreenWidth(this.jdField_a_of_type_AndroidContentContext) * 0.14F);
+    paramView1.a(paramView2, this.e, this.c, this.d);
+    j = (int)(ScreenUtil.getInstantScreenWidth(this.b) * 0.14F);
     if (QLog.isColorLevel())
     {
       paramView2 = new StringBuilder();
       paramView2.append("beancurdview left margin is ");
-      paramView2.append(i);
+      paramView2.append(j);
       QLog.i("BeancurdView", 2, paramView2.toString());
     }
-    paramView1.a(i);
+    paramView1.a(j);
     return paramView1;
-  }
-  
-  protected void a(Context paramContext)
-  {
-    this.jdField_a_of_type_Int = ViewUtils.b(16.0F);
-    this.b = paramContext.getResources().getColor(2131166497);
-    this.c = ViewUtils.b(16.0F);
-    this.d = paramContext.getResources().getColor(2131165327);
   }
   
   protected void a(TextView paramTextView, MessageForBeancurd.Content paramContent)
@@ -120,11 +111,11 @@ public abstract class BeancurdView
       return;
     }
     paramTextView.setText(paramContent.detail);
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165327);
+    int j = this.b.getResources().getColor(2131165564);
     try
     {
-      int j = Color.parseColor(paramContent.color);
-      i = j;
+      int k = Color.parseColor(paramContent.color);
+      j = k;
     }
     catch (IllegalArgumentException paramContent)
     {
@@ -133,7 +124,7 @@ public abstract class BeancurdView
       localStringBuilder.append(paramContent);
       QLog.d("BeancurdView", 1, localStringBuilder.toString());
     }
-    paramTextView.setTextColor(i);
+    paramTextView.setTextColor(j);
   }
   
   protected void a(TextView paramTextView, List<MessageForBeancurd.Content> paramList)
@@ -145,17 +136,17 @@ public abstract class BeancurdView
       while (paramList.hasNext())
       {
         MessageForBeancurd.Content localContent = (MessageForBeancurd.Content)paramList.next();
-        int i = this.d;
+        int j = this.f;
         try
         {
-          int j = Color.parseColor(localContent.color);
-          i = j;
+          int k = Color.parseColor(localContent.color);
+          j = k;
         }
         catch (IllegalArgumentException localIllegalArgumentException)
         {
           QLog.d("BeancurdView", 2, "updateDetailIfNeed parse color err: ", localIllegalArgumentException);
         }
-        localSpannableStringBuilder.append(localContent.detail, new ForegroundColorSpan(i), 33);
+        localSpannableStringBuilder.append(localContent.detail, new ForegroundColorSpan(j), 33);
       }
       paramTextView.setText(localSpannableStringBuilder);
       return;
@@ -172,12 +163,20 @@ public abstract class BeancurdView
   
   public void a(BeancurdView.OnClickBeancurdListener paramOnClickBeancurdListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBeancurdBeancurdView$OnClickBeancurdListener = paramOnClickBeancurdListener;
+    this.i = paramOnClickBeancurdListener;
+  }
+  
+  protected void b(Context paramContext)
+  {
+    this.c = ViewUtils.dpToPx(16.0F);
+    this.d = paramContext.getResources().getColor(2131167339);
+    this.e = ViewUtils.dpToPx(16.0F);
+    this.f = paramContext.getResources().getColor(2131165564);
   }
   
   public void onClick(View paramView)
   {
-    BeancurdView.OnClickBeancurdListener localOnClickBeancurdListener = this.jdField_a_of_type_ComTencentMobileqqBeancurdBeancurdView$OnClickBeancurdListener;
+    BeancurdView.OnClickBeancurdListener localOnClickBeancurdListener = this.i;
     if (localOnClickBeancurdListener == null)
     {
       if (QLog.isColorLevel()) {
@@ -185,14 +184,14 @@ public abstract class BeancurdView
       }
     }
     else {
-      localOnClickBeancurdListener.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForBeancurd);
+      localOnClickBeancurdListener.a(this.g);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.beancurd.BeancurdView
  * JD-Core Version:    0.7.0.1
  */

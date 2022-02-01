@@ -52,18 +52,18 @@ public class AvatarPendantHandler
   
   private void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
   {
-    if ((paramChatMessage != null) && (paramChatMessage.senderuin != null) && (!AnonymousChatHelper.a(paramChatMessage)) && (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.n))
+    if ((paramChatMessage != null) && (paramChatMessage.senderuin != null) && (!AnonymousChatHelper.c(paramChatMessage)) && (!(this.d instanceof MultiForwardActivity)) && (!this.c.G))
     {
       String str = a(paramChatMessage);
-      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      FriendsManager localFriendsManager = (FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localFriendsManager != null)
       {
         a(paramChatMessage, paramBaseChatItemLayout, str, localFriendsManager);
       }
-      else if (paramBaseChatItemLayout.a != null)
+      else if (paramBaseChatItemLayout.ae != null)
       {
-        paramBaseChatItemLayout.a.setImageDrawable(null);
-        paramBaseChatItemLayout.a.setVisibility(8);
+        paramBaseChatItemLayout.ae.setImageDrawable(null);
+        paramBaseChatItemLayout.ae.setVisibility(8);
       }
       paramChatMessage.mPendantAnimatable = false;
       return;
@@ -73,8 +73,8 @@ public class AvatarPendantHandler
   
   private void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, String paramString, FriendsManager paramFriendsManager)
   {
-    ExtensionInfo localExtensionInfo = paramFriendsManager.a(paramString, false);
-    AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+    ExtensionInfo localExtensionInfo = paramFriendsManager.d(paramString, false);
+    AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.b.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
     String str;
     if ((localExtensionInfo != null) && (localExtensionInfo.lastUpdateTime < paramChatMessage.time))
     {
@@ -92,7 +92,7 @@ public class AvatarPendantHandler
           QLog.d("AvatarPendantHandler", 2, "handleAvatarPendant: message id not equals local");
         }
         AvatarPendantUtil.a(paramString);
-        AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        AvatarPendantUtil.a(this.b);
       }
       str = paramChatMessage.getExtInfoFromExtStr("vip_pendant_diy_id");
       if (QLog.isColorLevel())
@@ -110,7 +110,7 @@ public class AvatarPendantHandler
         break label260;
       }
       AvatarPendantUtil.a(paramString);
-      AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      AvatarPendantUtil.a(this.b);
     }
     catch (Exception localException)
     {
@@ -124,25 +124,25 @@ public class AvatarPendantHandler
     label260:
     if ((localExtensionInfo != null) && (localExtensionInfo.isPendantValid()))
     {
-      AvatarPendantManager.b = true;
+      AvatarPendantManager.d = true;
       if (AvatarPendantUtil.a(localExtensionInfo.pendantId)) {
         localAvatarPendantManager.a(localExtensionInfo.pendantId).a(paramBaseChatItemLayout, 2, paramChatMessage.uniseq, paramString, localExtensionInfo.pendantDiyId);
       } else {
         localAvatarPendantManager.a(localExtensionInfo.pendantId).a(paramBaseChatItemLayout, 1, paramChatMessage.uniseq, paramString, localExtensionInfo.pendantDiyId);
       }
-      if ((!paramFriendsManager.b(paramString)) && (localExtensionInfo.isPendantExpired())) {
+      if ((!paramFriendsManager.n(paramString)) && (localExtensionInfo.isPendantExpired())) {
         AvatarPendantUtil.a(paramString);
       }
-      if ((!localAvatarPendantManager.a(paramChatMessage.uniseq)) && (paramBaseChatItemLayout.a != null)) {
-        paramBaseChatItemLayout.a.setVisibility(4);
+      if ((!localAvatarPendantManager.b(paramChatMessage.uniseq)) && (paramBaseChatItemLayout.ae != null)) {
+        paramBaseChatItemLayout.ae.setVisibility(4);
       }
     }
     else
     {
-      if (paramBaseChatItemLayout.a != null)
+      if (paramBaseChatItemLayout.ae != null)
       {
-        paramBaseChatItemLayout.a.setImageDrawable(null);
-        paramBaseChatItemLayout.a.setVisibility(8);
+        paramBaseChatItemLayout.ae.setImageDrawable(null);
+        paramBaseChatItemLayout.ae.setVisibility(8);
       }
       if (localExtensionInfo == null) {
         AvatarPendantUtil.a(paramString);
@@ -157,20 +157,20 @@ public class AvatarPendantHandler
   
   protected void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt1, int paramInt2)
   {
-    if (SimpleUIUtil.a()) {
+    if (SimpleUIUtil.e()) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10007) {
+    if (this.c.a == 10007) {
       return;
     }
-    if ((paramChatMessage != null) && (!paramChatMessage.isShowQimStyleAvater) && ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h)) && (!ConfessMsgUtil.a(paramChatMessage)) && (UinTypeUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) != 1044) && (paramChatMessage.fakeSenderType == 0))
+    if ((paramChatMessage != null) && (!paramChatMessage.isShowQimStyleAvater) && ((!this.c.i) || (!this.c.p)) && (!ConfessMsgUtil.a(paramChatMessage)) && (UinTypeUtil.e(this.c.a) != 1044) && (paramChatMessage.fakeSenderType == 0))
     {
       if (AIOUtils.i) {
         return;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+      if (this.c.a == 1)
       {
-        TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        TroopInfo localTroopInfo = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.c.b);
         if ((localTroopInfo != null) && (localTroopInfo.hasOrgs())) {
           return;
         }
@@ -186,7 +186,7 @@ public class AvatarPendantHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.AvatarPendantHandler
  * JD-Core Version:    0.7.0.1
  */

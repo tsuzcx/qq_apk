@@ -54,9 +54,9 @@ public class EditTextViewer
     this.mActivity = ((Activity)paramContext);
     setOnClickListener(this);
     this.isFirstRender = true;
-    setBackgroundDrawable(getResources().getDrawable(2064056408));
-    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2064056407));
-    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2064122261);
+    setBackgroundDrawable(getResources().getDrawable(2063925377));
+    this.mAnimationDrawable = ((LayerDrawable)getResources().getDrawable(2063925376));
+    this.mAnimationSolidDrawable = this.mAnimationDrawable.findDrawableByLayerId(2063991136);
   }
   
   private boolean deleteSingleFile(String paramString)
@@ -184,7 +184,7 @@ public class EditTextViewer
     }
     showTextEditDlg();
     setTextSelected(false);
-    AEBaseDataReporter.a().m();
+    AEBaseDataReporter.a().n();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -251,7 +251,7 @@ public class EditTextViewer
   {
     if (!LightDeviceUtils.isNetworkAvailable(AEModule.getContext()))
     {
-      QQToast.a(getContext(), 2064515249, 1).a();
+      QQToast.makeText(getContext(), 2064187596, 1).show();
       return;
     }
     if (!this.inited) {
@@ -372,7 +372,7 @@ public class EditTextViewer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.EditTextViewer
  * JD-Core Version:    0.7.0.1
  */

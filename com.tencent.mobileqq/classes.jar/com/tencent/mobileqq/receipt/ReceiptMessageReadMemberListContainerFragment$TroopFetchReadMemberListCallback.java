@@ -36,37 +36,37 @@ class ReceiptMessageReadMemberListContainerFragment$TroopFetchReadMemberListCall
       while (paramArrayOfByte.hasNext())
       {
         ReceiptMessageReadMemberListFragment.MemberInfo localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)paramArrayOfByte.next();
-        if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.d((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.jdField_a_of_type_JavaLangString)) {
-          if (localMemberInfo.jdField_a_of_type_Long > 0L) {
-            ReceiptMessageReadMemberListContainerFragment.b((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+        if (!Long.toString(ReceiptMessageReadMemberListContainerFragment.t((ReceiptMessageReadMemberListContainerFragment)this.a)).equals(localMemberInfo.a)) {
+          if (localMemberInfo.c > 0L) {
+            ReceiptMessageReadMemberListContainerFragment.k((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
           } else {
-            ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
+            ReceiptMessageReadMemberListContainerFragment.j((ReceiptMessageReadMemberListContainerFragment)this.a).add(localMemberInfo);
           }
         }
       }
       if (paramBundle.uint64_next_uin.get() == 0L)
       {
-        ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
+        ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(2);
         return;
       }
-      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
-      ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
+      paramArrayOfByte = ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).obtainMessage(3, Long.valueOf(paramBundle.uint64_next_uin.get()));
+      ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendMessage(paramArrayOfByte);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       break label262;
     }
-    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+    ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
     return;
     label262:
     QLog.d("ReceiptMessageReadMemberListContainerFragment", 2, "fetch read member fail on invalid data");
-    ReceiptMessageReadMemberListContainerFragment.a((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
+    ReceiptMessageReadMemberListContainerFragment.f((ReceiptMessageReadMemberListContainerFragment)this.a).sendEmptyMessage(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment.TroopFetchReadMemberListCallback
  * JD-Core Version:    0.7.0.1
  */

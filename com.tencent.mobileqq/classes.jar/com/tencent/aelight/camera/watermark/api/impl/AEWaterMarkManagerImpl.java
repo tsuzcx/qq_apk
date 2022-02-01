@@ -9,7 +9,7 @@ public class AEWaterMarkManagerImpl
 {
   public SosoLocation getLocation()
   {
-    return WatermarkDataManager.a().a();
+    return WatermarkDataManager.a().c();
   }
   
   public void onConfigChange(boolean paramBoolean)
@@ -19,7 +19,7 @@ public class AEWaterMarkManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.watermark.api.impl.AEWaterMarkManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import com.tencent.qphone.base.util.QLog;
 
 class LebaQZoneFacePlayHelper$FacePlayInfo
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static FacePlayInfo jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  FaceDrawable jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable;
-  String jdField_a_of_type_JavaLangString;
-  volatile boolean jdField_a_of_type_Boolean;
-  private FacePlayInfo b;
+  private static final Object d = new Object();
+  private static FacePlayInfo e;
+  private static int g = 0;
+  String a;
+  volatile boolean b;
+  FaceDrawable c;
+  private FacePlayInfo f;
   
   static FacePlayInfo a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (d)
     {
-      if (jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo != null)
+      if (e != null)
       {
-        FacePlayInfo localFacePlayInfo = jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-        jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = localFacePlayInfo.b;
-        localFacePlayInfo.b = null;
-        jdField_a_of_type_Int -= 1;
+        FacePlayInfo localFacePlayInfo = e;
+        e = localFacePlayInfo.f;
+        localFacePlayInfo.f = null;
+        g -= 1;
         return localFacePlayInfo;
       }
       return new FacePlayInfo();
@@ -36,19 +36,24 @@ class LebaQZoneFacePlayHelper$FacePlayInfo
       QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "obtain FacePlayInfo:", paramString });
     }
     FacePlayInfo localFacePlayInfo = a();
-    localFacePlayInfo.jdField_a_of_type_JavaLangString = paramString;
-    FaceDrawable localFaceDrawable = localFacePlayInfo.a();
+    localFacePlayInfo.a = paramString;
+    FaceDrawable localFaceDrawable = localFacePlayInfo.b();
     if (localFaceDrawable != null) {
       localFaceDrawable.cancel();
     }
-    localFacePlayInfo.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable = FaceDrawable.getUserFaceDrawable(paramQQAppInterface, String.valueOf(paramString), (byte)4);
-    localFacePlayInfo.jdField_a_of_type_Boolean = false;
+    localFacePlayInfo.c = FaceDrawable.getUserFaceDrawable(paramQQAppInterface, String.valueOf(paramString), (byte)4);
+    localFacePlayInfo.b = false;
     return localFacePlayInfo;
   }
   
-  FaceDrawable a()
+  boolean a(String paramString)
   {
-    FaceDrawable localFaceDrawable2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDrawable;
+    return (!this.b) && (paramString != null) && (paramString.equals(this.a));
+  }
+  
+  FaceDrawable b()
+  {
+    FaceDrawable localFaceDrawable2 = this.c;
     FaceDrawable localFaceDrawable1 = localFaceDrawable2;
     if (localFaceDrawable2 == null) {
       localFaceDrawable1 = null;
@@ -56,41 +61,36 @@ class LebaQZoneFacePlayHelper$FacePlayInfo
     return localFaceDrawable1;
   }
   
-  void a()
+  void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "recycle FacePlayInfo:", this.jdField_a_of_type_JavaLangString });
+      QLog.d("UndealCount.Q.lebatab.lebaLebaQZoneFacePlayHelper", 2, new Object[] { "recycle FacePlayInfo:", this.a });
     }
-    this.jdField_a_of_type_Boolean = true;
-    ??? = a();
+    this.b = true;
+    ??? = b();
     if (??? != null) {
       ((FaceDrawable)???).cancel();
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.a = null;
+    synchronized (d)
     {
-      if (jdField_a_of_type_Int < 3)
+      if (g < 3)
       {
-        this.b = jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo;
-        jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper$FacePlayInfo = this;
+        this.f = e;
+        e = this;
       }
       return;
     }
   }
   
-  public boolean a()
+  public boolean d()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  boolean a(String paramString)
-  {
-    return (!this.jdField_a_of_type_Boolean) && (paramString != null) && (paramString.equals(this.jdField_a_of_type_JavaLangString));
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper.FacePlayInfo
  * JD-Core Version:    0.7.0.1
  */

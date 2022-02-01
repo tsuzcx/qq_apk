@@ -20,9 +20,9 @@ import org.json.JSONObject;
 public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule
   extends QIPCModule
 {
-  private IMiniAppContext jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
-  private WeakReference<RequestEvent> jdField_a_of_type_JavaLangRefWeakReference;
-  private CopyOnWriteArraySet<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  private CopyOnWriteArraySet<String> a = new CopyOnWriteArraySet();
+  private IMiniAppContext b;
+  private WeakReference<RequestEvent> c;
   
   private WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQIPCModule()
   {
@@ -36,22 +36,22 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
   
   public void a(IMiniAppContext paramIMiniAppContext)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
+    this.b = paramIMiniAppContext;
   }
   
   public void a(RequestEvent paramRequestEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramRequestEvent);
+    this.c = new WeakReference(paramRequestEvent);
   }
   
   public void a(String paramString)
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0) {
+      if (this.a.size() == 0) {
         QIPCClientHelper.getInstance().register(this);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramString);
+      this.a.add(paramString);
       return;
     }
     catch (Exception paramString)
@@ -64,8 +64,8 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramString);
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.size() == 0)
+      this.a.remove(paramString);
+      if (this.a.size() == 0)
       {
         QIPCClientHelper.getInstance().getClient().unRegisterModule(this);
         return;
@@ -103,7 +103,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
       localJSONObject.put("writtenBytes", ((File)localObject2).length());
       localJSONObject.put("totalBytes", ((File)localObject2).length());
       ((JSONObject)localObject1).put("data", localJSONObject);
-      localObject2 = (RequestEvent)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject2 = (RequestEvent)this.c.get();
       if (localObject2 != null) {
         ((RequestEvent)localObject2).jsService.evaluateSubscribeJS("custom_event_onWeiyunDownLoadEvent", ((JSONObject)localObject1).toString(), 0);
       }
@@ -112,8 +112,8 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
       ((JSONObject)localObject1).put("eventName", "success");
       paramBundle = new JSONObject();
       paramBundle.put("statusCode", 200);
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext != null) {
-        paramBundle.put("tempFilePath", ((IMiniAppFileManager)this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getManager(IMiniAppFileManager.class)).getWxFilePath(paramString));
+      if (this.b != null) {
+        paramBundle.put("tempFilePath", ((IMiniAppFileManager)this.b.getManager(IMiniAppFileManager.class)).getWxFilePath(paramString));
       }
       ((JSONObject)localObject1).put("data", paramBundle);
       if (localObject2 == null) {
@@ -142,7 +142,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
       paramBundle.put("errCode", localObject1);
       paramBundle.put("errMsg", localObject2);
       paramString.put("data", paramBundle);
-      paramBundle = (RequestEvent)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramBundle = (RequestEvent)this.c.get();
       if (paramBundle == null) {
         break label779;
       }
@@ -168,7 +168,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
       ((JSONObject)localObject2).put("retCode", paramInt);
       ((JSONObject)localObject2).put("retMsg", localObject1);
       paramString.put("data", localObject2);
-      localObject1 = (RequestEvent)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (RequestEvent)this.c.get();
       if (localObject1 != null) {
         ((RequestEvent)localObject1).jsService.evaluateSubscribeJS("custom_event_onWeiyunDownLoadEvent", paramString.toString(), 0);
       }
@@ -207,7 +207,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
       paramBundle.put("writtenBytes", l1);
       paramBundle.put("totalBytes", l2);
       paramString.put("data", paramBundle);
-      paramBundle = (RequestEvent)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramBundle = (RequestEvent)this.c.get();
       if (paramBundle == null) {
         break label779;
       }
@@ -223,7 +223,7 @@ public class WeiyunNativeBusiness$WeiyunDownloadBussiness$WeiyunDownloadClientQI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.WeiyunNativeBusiness.WeiyunDownloadBussiness.WeiyunDownloadClientQIPCModule
  * JD-Core Version:    0.7.0.1
  */

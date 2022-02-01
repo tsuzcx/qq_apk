@@ -19,34 +19,29 @@ import mqq.app.MobileQQ;
 
 public class AddFrdStateMng
 {
-  private static final String jdField_a_of_type_JavaLangString = "AddFrdStateMng";
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences = null;
-  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  final ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
-  public boolean a;
-  boolean b = false;
-  volatile boolean c = false;
+  private static final String g = "AddFrdStateMng";
+  final ConcurrentHashMap<String, Long> a = new ConcurrentHashMap(5);
+  SharedPreferences b = null;
+  public boolean c = false;
+  boolean d = false;
+  volatile boolean e = false;
+  WeakReference<QQAppInterface> f;
   
-  public AddFrdStateMng()
+  private void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void a()
-  {
-    if ((this.b) && (!this.c))
+    if ((this.d) && (!this.e))
     {
-      this.c = true;
+      this.e = true;
       ThreadManager.excute(new AddFrdStateMng.1(this), 16, null, false);
     }
   }
   
-  private void b()
+  private void c()
   {
-    if (!this.b)
+    if (!this.d)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "save cache no change");
+        QLog.i(g, 2, "save cache no change");
       }
       return;
     }
@@ -54,15 +49,15 @@ public class AddFrdStateMng
     if (localSharedPreferences == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "save cache pref is null");
+        QLog.i(g, 2, "save cache pref is null");
       }
       return;
     }
     try
     {
-      this.b = false;
-      Object localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
-      Object localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      this.d = false;
+      Object localObject1 = new ArrayList(this.a.size());
+      Object localObject2 = this.a.entrySet().iterator();
       Map.Entry localEntry;
       while (((Iterator)localObject2).hasNext())
       {
@@ -96,7 +91,7 @@ public class AddFrdStateMng
       localSharedPreferences.edit().putString("add_frd_state_list", ((StringBuilder)localObject2).toString()).apply();
       if (QLog.isColorLevel())
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("saveCache %s", new Object[] { ((StringBuilder)localObject2).toString() }));
+        QLog.i(g, 2, String.format("saveCache %s", new Object[] { ((StringBuilder)localObject2).toString() }));
         return;
       }
     }
@@ -113,7 +108,7 @@ public class AddFrdStateMng
       long l1 = System.currentTimeMillis();
       try
       {
-        localObject2 = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localObject2 = (Long)this.a.get(paramString);
       }
       catch (Throwable localThrowable)
       {
@@ -133,7 +128,7 @@ public class AddFrdStateMng
         if (Math.abs(l1 - ((Long)localObject1).longValue()) >= 604800000L)
         {
           if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("getAddFrdState long time ago [time:%s, cur: %s, du: %s]", new Object[] { localObject1, Long.valueOf(l1), Long.valueOf(Math.abs(l1 - ((Long)localObject1).longValue())) }));
+            QLog.i(g, 2, String.format("getAddFrdState long time ago [time:%s, cur: %s, du: %s]", new Object[] { localObject1, Long.valueOf(l1), Long.valueOf(Math.abs(l1 - ((Long)localObject1).longValue())) }));
           }
           localObject2 = Long.valueOf(0L);
           b(paramString);
@@ -150,7 +145,7 @@ public class AddFrdStateMng
           return 0;
         }
         j = i;
-        if (((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString))
+        if (((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramString))
         {
           b(paramString);
           j = 1;
@@ -163,9 +158,9 @@ public class AddFrdStateMng
   
   public SharedPreferences a()
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null)
+    if (this.b == null)
     {
-      Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject = this.f;
       if (localObject == null) {
         localObject = null;
       } else {
@@ -178,14 +173,14 @@ public class AddFrdStateMng
         localStringBuilder.append("add_frd_state_");
         localStringBuilder.append(str);
         str = localStringBuilder.toString();
-        this.jdField_a_of_type_AndroidContentSharedPreferences = ((QQAppInterface)localObject).getApplication().getSharedPreferences(str, 0);
+        this.b = ((QQAppInterface)localObject).getApplication().getSharedPreferences(str, 0);
       }
       else if (QLog.isColorLevel())
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "getPref app is null");
+        QLog.i(g, 2, "getPref app is null");
       }
     }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+    return this.b;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -194,7 +189,7 @@ public class AddFrdStateMng
     {
       try
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.c;
         if (bool) {
           continue;
         }
@@ -211,7 +206,7 @@ public class AddFrdStateMng
       }
       try
       {
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+        this.f = new WeakReference(paramQQAppInterface);
         paramQQAppInterface = a();
         if (paramQQAppInterface == null) {
           paramQQAppInterface = null;
@@ -255,13 +250,13 @@ public class AddFrdStateMng
               if ((localObject == null) || (localObject.length() <= 0)) {
                 continue;
               }
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject, Long.valueOf(l));
+              this.a.put(localObject, Long.valueOf(l));
               continue;
             }
           }
         }
         if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("init [%s, %s]", new Object[] { paramQQAppInterface, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.toString() }));
+          QLog.i(g, 2, String.format("init [%s, %s]", new Object[] { paramQQAppInterface, this.a.toString() }));
         }
       }
       catch (Throwable paramQQAppInterface)
@@ -269,7 +264,7 @@ public class AddFrdStateMng
         paramQQAppInterface.printStackTrace();
       }
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public void a(String paramString)
@@ -282,16 +277,16 @@ public class AddFrdStateMng
       long l = System.currentTimeMillis();
       try
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(l));
+        this.a.put(paramString, Long.valueOf(l));
       }
       catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
       }
-      this.b = true;
-      a();
+      this.d = true;
+      b();
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("markSendAddFrd uin:%s, time:%s", new Object[] { paramString, Long.valueOf(l) }));
+        QLog.i(g, 2, String.format("markSendAddFrd uin:%s, time:%s", new Object[] { paramString, Long.valueOf(l) }));
       }
     }
   }
@@ -306,7 +301,7 @@ public class AddFrdStateMng
       Object localObject = null;
       try
       {
-        Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+        Long localLong = (Long)this.a.remove(paramString);
         localObject = localLong;
       }
       catch (Throwable localThrowable)
@@ -314,18 +309,18 @@ public class AddFrdStateMng
         localThrowable.printStackTrace();
       }
       if (localObject != null) {
-        this.b = true;
+        this.d = true;
       }
-      a();
+      b();
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("removeFromCache uin:%s, change: %s", new Object[] { paramString, Boolean.valueOf(this.b) }));
+        QLog.i(g, 2, String.format("removeFromCache uin:%s, change: %s", new Object[] { paramString, Boolean.valueOf(this.d) }));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.addFrd.AddFrdStateMng
  * JD-Core Version:    0.7.0.1
  */

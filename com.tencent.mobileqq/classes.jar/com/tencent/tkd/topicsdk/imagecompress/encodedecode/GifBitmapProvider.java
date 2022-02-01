@@ -8,9 +8,9 @@ import org.jetbrains.annotations.Nullable;
 public final class GifBitmapProvider
   implements GifDecoder.BitmapProvider
 {
+  private final BitmapPool a;
   @Nullable
-  private final ArrayPool jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool;
-  private final BitmapPool jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeBitmapPool;
+  private final ArrayPool b;
   
   public GifBitmapProvider(BitmapPool paramBitmapPool)
   {
@@ -19,25 +19,25 @@ public final class GifBitmapProvider
   
   public GifBitmapProvider(BitmapPool paramBitmapPool, @Nullable ArrayPool paramArrayPool)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeBitmapPool = paramBitmapPool;
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool = paramArrayPool;
+    this.a = paramBitmapPool;
+    this.b = paramArrayPool;
   }
   
   @NotNull
   public Bitmap a(int paramInt1, int paramInt2, @NotNull Bitmap.Config paramConfig)
   {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeBitmapPool.a(paramInt1, paramInt2, paramConfig);
+    return this.a.a(paramInt1, paramInt2, paramConfig);
   }
   
   public void a(@NotNull Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeBitmapPool.a(paramBitmap);
+    this.a.a(paramBitmap);
   }
   
   @NotNull
   public byte[] a(int paramInt)
   {
-    ArrayPool localArrayPool = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool;
+    ArrayPool localArrayPool = this.b;
     if (localArrayPool == null) {
       return new byte[paramInt];
     }
@@ -45,9 +45,9 @@ public final class GifBitmapProvider
   }
   
   @NotNull
-  public int[] a(int paramInt)
+  public int[] b(int paramInt)
   {
-    ArrayPool localArrayPool = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressEncodedecodeArrayPool;
+    ArrayPool localArrayPool = this.b;
     if (localArrayPool == null) {
       return new int[paramInt];
     }
@@ -56,7 +56,7 @@ public final class GifBitmapProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.GifBitmapProvider
  * JD-Core Version:    0.7.0.1
  */

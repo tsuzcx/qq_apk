@@ -21,19 +21,19 @@ class AIOShareHelperImpl$4
     ((StringBuilder)localObject).append(paramBaseResp.errStr);
     AEQLog.b("AIOShareHelperImpl", ((StringBuilder)localObject).toString());
     WXShareHelper.a().b(this);
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareIAIOShareHelper$AIOWXShareListener;
+    localObject = this.a;
     boolean bool;
     if ((paramBaseResp != null) && (paramBaseResp.errCode == 0)) {
       bool = true;
     } else {
       bool = false;
     }
-    ((IAIOShareHelper.AIOWXShareListener)localObject).a(bool, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject);
+    ((IAIOShareHelper.AIOWXShareListener)localObject).a(bool, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.share.impl.AIOShareHelperImpl.4
  * JD-Core Version:    0.7.0.1
  */

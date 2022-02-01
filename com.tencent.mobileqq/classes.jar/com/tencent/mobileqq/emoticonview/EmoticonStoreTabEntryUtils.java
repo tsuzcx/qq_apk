@@ -13,7 +13,7 @@ public class EmoticonStoreTabEntryUtils
   
   public static boolean checkIsNeedShowGuide()
   {
-    return ((Boolean)EmotionSharedPreUtils.a("key_show_emoticon_story_tab_guide", Boolean.valueOf(true))).booleanValue();
+    return ((Boolean)EmotionSharedPreUtils.b("key_show_emoticon_story_tab_guide", Boolean.valueOf(true))).booleanValue();
   }
   
   public static boolean checkTabListCanShowGuide(List<EmotionPanelInfo> paramList)
@@ -35,7 +35,7 @@ public class EmoticonStoreTabEntryUtils
   
   public static boolean checkURLIsEmoStore(String paramString1, String paramString2)
   {
-    if ((!StringUtil.a(paramString1)) && (!StringUtil.a(paramString2)))
+    if ((!StringUtil.isEmpty(paramString1)) && (!StringUtil.isEmpty(paramString2)))
     {
       boolean bool = paramString1.startsWith(paramString2);
       if ((!bool) && (QLog.isColorLevel()))
@@ -59,7 +59,7 @@ public class EmoticonStoreTabEntryUtils
   
   public static String processEmoStoreHomeUrl(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     return paramString.replace(URL_NEED_REPLEACE_BODY, URL_REPLEACE_BODY);
@@ -108,7 +108,7 @@ public class EmoticonStoreTabEntryUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonStoreTabEntryUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,8 @@ class TroopCardGroup$2
   public void onClick(View paramView)
   {
     TroopCardGroup localTroopCardGroup = this.a;
-    localTroopCardGroup.a(localTroopCardGroup.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_more", 0, 0, "", this.a.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.str_desc.get(), "", "");
+    localTroopCardGroup.a(localTroopCardGroup.d.str_transfer_url.get());
+    ReportController.b(this.a.c, "P_CliOper", "Grp_find", "", "grptab", "Clk_more", 0, 0, "", this.a.d.title_bar.str_desc.get(), "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -13,6 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 
 public class KidModeUtils
 {
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return "null";
+    }
+    return String.valueOf(paramString.length());
+  }
+  
   public static void a(BaseActivity paramBaseActivity, String paramString, int paramInt)
   {
     if ((paramString != null) && (paramString.length() != 0))
@@ -24,7 +32,7 @@ public class KidModeUtils
       if (paramString.endsWith("\n")) {
         str = paramString.substring(0, paramString.length() - 1);
       }
-      new QQToastNotifier(paramBaseActivity).a(str, paramBaseActivity.getTitleBarHeight(), 0, paramInt);
+      new QQToastNotifier(paramBaseActivity).notifyUser(str, paramBaseActivity.getTitleBarHeight(), 0, paramInt);
     }
   }
   
@@ -36,23 +44,18 @@ public class KidModeUtils
       QLog.d("KidModeUtils", 2, "judgeAndShowUpgradeKidMode App=null");
       return;
     }
-    if (!StudyModeManager.a())
+    if (!StudyModeManager.h())
     {
       QLog.d("KidModeUtils", 2, "judgeAndShowUpgradeKidMode Switch=OFF");
       c(paramQQAppInterface);
       return;
     }
-    if (a(paramQQAppInterface))
+    if (d(paramQQAppInterface))
     {
       QLog.d("KidModeUtils", 2, "hasShowUpgradeTipsAtVersion=true");
       return;
     }
     ThreadManagerV2.getUIHandlerV2().post(new KidModeUtils.1(paramQQAppInterface));
-  }
-  
-  private static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return ((Boolean)SharedPreUtils.a(BaseApplicationImpl.getContext(), "", "study_mode_upgrade_dialog_has_show1", Boolean.valueOf(false))).booleanValue();
   }
   
   private static void b(QQAppInterface paramQQAppInterface)
@@ -62,7 +65,7 @@ public class KidModeUtils
       QLog.d("KidModeUtils", 2, "showKidModeUpgradeDialog sTopActivity is null");
       return;
     }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, 2131558978, null, BaseApplicationImpl.sApplication.getString(2131719273), BaseApplicationImpl.sApplication.getString(2131719272), null, null, new KidModeUtils.2());
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, 230, 2131624611, null, BaseApplicationImpl.sApplication.getString(2131916825), BaseApplicationImpl.sApplication.getString(2131916824), null, null, new KidModeUtils.2());
     if (!localQQCustomDialog.isShowing()) {
       localQQCustomDialog.show();
     }
@@ -72,7 +75,7 @@ public class KidModeUtils
   public static void b(String paramString, QQAppInterface paramQQAppInterface)
   {
     QLog.d("KidModeUtils", 1, new Object[] { "call judge from=", paramString });
-    if (!StudyModeManager.a())
+    if (!StudyModeManager.h())
     {
       QLog.d("KidModeUtils", 2, "manualSwitchMark Switch=OFF");
       return;
@@ -82,7 +85,7 @@ public class KidModeUtils
       QLog.d("KidModeUtils", 2, "manualSwitchMark App=null");
       return;
     }
-    if (a(paramQQAppInterface))
+    if (d(paramQQAppInterface))
     {
       QLog.d("KidModeUtils", 2, "hasShowUpgradeTipsAtVersion=true");
       return;
@@ -94,10 +97,15 @@ public class KidModeUtils
   {
     SharedPreUtils.a(BaseApplicationImpl.getContext(), "", true, "study_mode_upgrade_dialog_has_show1", Boolean.valueOf(true));
   }
+  
+  private static boolean d(QQAppInterface paramQQAppInterface)
+  {
+    return ((Boolean)SharedPreUtils.a(BaseApplicationImpl.getContext(), "", "study_mode_upgrade_dialog_has_show1", Boolean.valueOf(false))).booleanValue();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeUtils
  * JD-Core Version:    0.7.0.1
  */

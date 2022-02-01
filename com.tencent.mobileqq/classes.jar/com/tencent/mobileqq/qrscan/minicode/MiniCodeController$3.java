@@ -15,22 +15,22 @@ class MiniCodeController$3
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniCodeDetector != null) && (MiniCodeController.a(this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniCodeController) != null)) {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = this.jdField_a_of_type_ComTencentMobileqqQrscanMinicodeMiniCodeDetector.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Long);
+    if ((this.d != null) && (MiniCodeController.b(this.g) != null)) {
+      this.e[0] = this.d.a(this.f, this.a);
     } else {
-      this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+      this.e[0] = false;
     }
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("detectSync onDetectReady exec=");
-      ((StringBuilder)???).append(this.jdField_a_of_type_ArrayOfBoolean[0]);
+      ((StringBuilder)???).append(this.e[0]);
       QLog.i("MiniRecog.MiniCodeController", 2, ((StringBuilder)???).toString());
     }
-    if (this.jdField_a_of_type_ArrayOfBoolean[0] == 0) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (this.e[0] == 0) {
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        this.c.notifyAll();
         return;
       }
     }
@@ -40,23 +40,23 @@ class MiniCodeController$3
   
   public void a(List<AIRect> arg1, long paramLong)
   {
-    if (paramLong == this.jdField_a_of_type_Long)
+    if (paramLong == this.a)
     {
       int i = 0;
       while (i < ???.size())
       {
         AIRect localAIRect = (AIRect)???.get(i);
-        if ((localAIRect != null) && (!localAIRect.a.isEmpty())) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localAIRect);
+        if ((localAIRect != null) && (!localAIRect.b.isEmpty())) {
+          this.b.add(localAIRect);
         }
         i += 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.i("MiniRecog.MiniCodeController", 2, String.format("detectSync onDetectResult=%s", new Object[] { this.jdField_a_of_type_JavaUtilArrayList }));
+        QLog.i("MiniRecog.MiniCodeController", 2, String.format("detectSync onDetectResult=%s", new Object[] { this.b }));
       }
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.c)
       {
-        this.jdField_a_of_type_JavaLangObject.notifyAll();
+        this.c.notifyAll();
         return;
       }
     }
@@ -64,7 +64,7 @@ class MiniCodeController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.MiniCodeController.3
  * JD-Core Version:    0.7.0.1
  */

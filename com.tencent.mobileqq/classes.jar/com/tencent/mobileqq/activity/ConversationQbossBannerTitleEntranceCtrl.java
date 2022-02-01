@@ -11,6 +11,7 @@ import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
 import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import common.config.service.QzoneConfig;
@@ -21,41 +22,41 @@ import mqq.os.MqqHandler;
 public class ConversationQbossBannerTitleEntranceCtrl
   implements View.OnClickListener, QzoneConfig.QzoneConfigChangeListener
 {
-  private static long jdField_a_of_type_Long;
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Conversation jdField_a_of_type_ComTencentMobileqqActivityHomeConversation;
-  private boolean jdField_a_of_type_Boolean = false;
-  private View b;
+  private static long b;
+  private int a = 0;
+  private View c;
+  private View d;
+  private TextView e;
+  private Conversation f;
+  private Activity g;
+  private Handler h;
+  private boolean i = false;
   
   public ConversationQbossBannerTitleEntranceCtrl(Conversation paramConversation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation = paramConversation;
-    this.jdField_a_of_type_AndroidAppActivity = this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.f = paramConversation;
+    this.g = this.f.P();
+    this.h = new Handler(Looper.getMainLooper());
     QzoneConfig.getInstance().addListener(this);
   }
   
   private void c()
   {
     Object localObject;
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.c;
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
+      localObject = this.c;
       if (localObject != null) {
         ((View)localObject).setVisibility(8);
       }
-      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = this.e;
       if (localObject != null) {
         ((TextView)localObject).setVisibility(8);
       }
@@ -65,11 +66,11 @@ public class ConversationQbossBannerTitleEntranceCtrl
   private void d()
   {
     QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "hideAllEntrances");
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.e;
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -82,16 +83,16 @@ public class ConversationQbossBannerTitleEntranceCtrl
   
   public void a(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.i) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.i = true;
     if (paramView != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365232);
-      this.b = paramView.findViewById(2131374387);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365234));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      this.c = paramView.findViewById(2131431398);
+      this.d = paramView.findViewById(2131442553);
+      this.e = ((TextView)paramView.findViewById(2131431400));
+      this.c.setOnClickListener(this);
     }
     a(true);
   }
@@ -102,17 +103,17 @@ public class ConversationQbossBannerTitleEntranceCtrl
     localStringBuilder.append("updateQQCircle ");
     localStringBuilder.append(paramBoolean);
     QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, localStringBuilder.toString());
-    if ((QzoneConfig.isQQCircleShowMessageEntrance(StudyModeManager.a())) && (QzoneConfig.isQQCircleShowLebaBySwitchButton(StudyModeManager.a())))
+    if ((QCircleConfigHelper.b(StudyModeManager.h())) && (QCircleConfigHelper.e(StudyModeManager.h())))
     {
-      this.jdField_a_of_type_Int = 1;
+      this.a = 1;
       c();
     }
     else
     {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
       c();
     }
-    if (QzoneConfig.isQQCircleShowMessageEntrance(StudyModeManager.a())) {
+    if (QCircleConfigHelper.b(StudyModeManager.h())) {
       ThreadManager.getSubThreadHandler().post(new ConversationQbossBannerTitleEntranceCtrl.1(this));
     }
     b(paramBoolean);
@@ -120,34 +121,34 @@ public class ConversationQbossBannerTitleEntranceCtrl
   
   public void b()
   {
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
     QzoneConfig.getInstance().removeListener(this);
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int != 1) {
+    if (this.a != 1) {
       return;
     }
-    int i;
+    int j;
     if (paramBoolean) {
-      i = 2;
+      j = 2;
     } else {
-      i = 5;
+      j = 5;
     }
-    ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.2(this), i, null, false);
+    ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.2(this), j, null, false);
   }
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < 500L)
+    if (l - b < 500L)
     {
-      jdField_a_of_type_Long = l;
+      b = l;
     }
     else
     {
-      jdField_a_of_type_Long = l;
+      b = l;
       Object localObject;
       if (QLog.isDevelopLevel())
       {
@@ -156,12 +157,12 @@ public class ConversationQbossBannerTitleEntranceCtrl
         ((StringBuilder)localObject).append(System.currentTimeMillis());
         QLog.d("ConversationQbossBannerTitleEntranceCtrl", 4, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.a == 1)
       {
         localObject = new HashMap();
         ((HashMap)localObject).put("key_enable_splash", "1");
         ((HashMap)localObject).put("key_jump_from", "4");
-        QCircleUtils.a().enterBySchemeAction(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), "openfolder", (HashMap)localObject);
+        QCircleUtils.a().enterBySchemeAction(this.f.P(), "openfolder", (HashMap)localObject);
         ThreadManager.post(new ConversationQbossBannerTitleEntranceCtrl.3(this), 5, null, false);
       }
     }
@@ -171,12 +172,12 @@ public class ConversationQbossBannerTitleEntranceCtrl
   public void onConfigChange()
   {
     QLog.d("ConversationQbossBannerTitleEntranceCtrl", 1, "onConfigChange");
-    this.jdField_a_of_type_AndroidOsHandler.post(new ConversationQbossBannerTitleEntranceCtrl.4(this));
+    this.h.post(new ConversationQbossBannerTitleEntranceCtrl.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl
  * JD-Core Version:    0.7.0.1
  */

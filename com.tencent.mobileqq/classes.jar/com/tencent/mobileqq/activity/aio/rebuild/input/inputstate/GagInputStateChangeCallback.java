@@ -42,31 +42,31 @@ public class GagInputStateChangeCallback
       Object localObject2 = (FullScreenInputHelper)paramAIOContext.a(24);
       if (this.a == null)
       {
-        localObject1 = new TextView(paramAIOContext.a());
-        ((TextView)localObject1).setId(2131367429);
-        ((TextView)localObject1).setBackgroundResource(2130850178);
+        localObject1 = new TextView(paramAIOContext.b());
+        ((TextView)localObject1).setId(2131433932);
+        ((TextView)localObject1).setBackgroundResource(2130851969);
         ((TextView)localObject1).setTextSize(1, 17.0F);
-        ((TextView)localObject1).setTextColor(paramAIOContext.a().getResources().getColor(2131167035));
+        ((TextView)localObject1).setTextColor(paramAIOContext.b().getResources().getColor(2131167971));
         ((TextView)localObject1).setEnabled(false);
         ((TextView)localObject1).setGravity(17);
-        paramInt = ((ViewGroup)((FullScreenInputHelper)localObject2).a.getParent()).indexOfChild(((FullScreenInputHelper)localObject2).a);
-        localObject2 = new LinearLayout.LayoutParams(paramAIOContext.a().a().a().g(), -2);
-        ((LinearLayout.LayoutParams)localObject2).leftMargin = AIOUtils.b(14.0F, paramAIOContext.a().getResources());
+        paramInt = ((ViewGroup)((FullScreenInputHelper)localObject2).b.getParent()).indexOfChild(((FullScreenInputHelper)localObject2).b);
+        localObject2 = new LinearLayout.LayoutParams(paramAIOContext.p().d().f().k(), -2);
+        ((LinearLayout.LayoutParams)localObject2).leftMargin = AIOUtils.b(14.0F, paramAIOContext.b().getResources());
         ((LinearLayout.LayoutParams)localObject2).gravity = 80;
-        paramAIOContext.a().a().a().a((View)localObject1, paramInt, (ViewGroup.LayoutParams)localObject2);
+        paramAIOContext.p().d().e().a((View)localObject1, paramInt, (ViewGroup.LayoutParams)localObject2);
         this.a = ((TextView)localObject1);
         this.a.setVisibility(8);
       }
-      Object localObject1 = ((TroopGagMgr)paramAIOContext.a().getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramAIOContext.a().a, true);
+      Object localObject1 = ((TroopGagMgr)paramAIOContext.a().getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(paramAIOContext.O().b, true);
       if (localObject1 != null)
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("fightgag.doDisableInputStat text");
-        ((StringBuilder)localObject2).append(((SelfGagInfo)localObject1).b);
+        ((StringBuilder)localObject2).append(((SelfGagInfo)localObject1).c);
         QLog.d("GagInputStateChangeCallback", 1, ((StringBuilder)localObject2).toString());
-        this.a.setText(((SelfGagInfo)localObject1).b);
-        if (paramAIOContext.a().a() == 2) {
-          paramAIOContext.a().a(true);
+        this.a.setText(((SelfGagInfo)localObject1).c);
+        if (paramAIOContext.q().b() == 2) {
+          paramAIOContext.q().a(true);
         }
       }
       paramAIOContext = this.a;
@@ -78,7 +78,7 @@ public class GagInputStateChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.inputstate.GagInputStateChangeCallback
  * JD-Core Version:    0.7.0.1
  */

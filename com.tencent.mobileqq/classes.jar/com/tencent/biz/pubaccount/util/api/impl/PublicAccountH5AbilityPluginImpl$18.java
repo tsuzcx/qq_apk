@@ -48,14 +48,14 @@ class PublicAccountH5AbilityPluginImpl$18
           localObject2 = new JSONObject((String)localObject2);
           i = ((JSONObject)localObject2).optInt("ret");
           paramBundle = ((JSONObject)localObject2).optString("msg");
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.pUin = ((JSONObject)localObject2).optString("puin");
+          this.b.pUin = ((JSONObject)localObject2).optString("puin");
           if (i == -1)
           {
             paramInt = ((JSONObject)localObject2).optInt("refuseSec");
             if (paramInt > 0)
             {
-              this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.refuseConfig = true;
-              PublicAccountH5AbilityPluginImpl.access$100(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl).sendEmptyMessageDelayed(1000, paramInt * 1000);
+              this.b.refuseConfig = true;
+              PublicAccountH5AbilityPluginImpl.access$100(this.b).sendEmptyMessageDelayed(1000, paramInt * 1000);
             }
           }
           localObject2 = ((JSONObject)localObject2).optJSONArray("bitmap");
@@ -86,26 +86,26 @@ class PublicAccountH5AbilityPluginImpl$18
             continue;
           }
           localObject3 = new ArrayList();
-          Object localObject4 = (ArrayList)PublicAccountH5AbilityPluginImpl.needAuthorizedLists.get(this.jdField_a_of_type_JavaLangString);
+          Object localObject4 = (ArrayList)PublicAccountH5AbilityPluginImpl.needAuthorizedLists.get(this.a);
           paramInt = 0;
           if (paramInt < ((ArrayList)localObject2).size())
           {
             String str = (String)PublicAccountH5AbilityPluginImpl.map.get(Integer.valueOf(paramInt));
-            if ((str == null) || (((Integer)((ArrayList)localObject2).get(paramInt)).intValue() != 1) || (!this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.contains((ArrayList)localObject4, str))) {
+            if ((str == null) || (((Integer)((ArrayList)localObject2).get(paramInt)).intValue() != 1) || (!this.b.contains((ArrayList)localObject4, str))) {
               break label584;
             }
             ((ArrayList)localObject3).add(str);
             break label584;
           }
-          PublicAccountH5AbilityPluginImpl.authorizedLists.put(this.jdField_a_of_type_JavaLangString, localObject3);
-          PublicAccountH5AbilityPluginImpl.needAuthorizedLists.remove(this.jdField_a_of_type_JavaLangString);
+          PublicAccountH5AbilityPluginImpl.authorizedLists.put(this.a, localObject3);
+          PublicAccountH5AbilityPluginImpl.needAuthorizedLists.remove(this.a);
           localObject2 = new ArrayList();
           if (localObject4 != null)
           {
             paramInt = 0;
             if (paramInt < ((ArrayList)localObject4).size())
             {
-              if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.contains((ArrayList)localObject3, (String)((ArrayList)localObject4).get(paramInt))) {
+              if (this.b.contains((ArrayList)localObject3, (String)((ArrayList)localObject4).get(paramInt))) {
                 break label591;
               }
               ((ArrayList)localObject2).add(Integer.valueOf(paramInt));
@@ -118,9 +118,9 @@ class PublicAccountH5AbilityPluginImpl$18
         ((JSONObject)localObject1).put("msg", paramBundle);
         ((JSONObject)localObject1).put("retCode", paramInt);
         paramBundle = ((JSONObject)localObject1).toString();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.authCallback != null)
+        if (this.b.authCallback != null)
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.authCallback, new String[] { paramBundle });
+          this.b.callJs(this.b.authCallback, new String[] { paramBundle });
           return;
         }
       }
@@ -144,7 +144,7 @@ class PublicAccountH5AbilityPluginImpl$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.18
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,28 @@ package com.rookery.translate.model;
 
 public class Trans_entity
 {
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
+  private Boolean b;
   
   public Trans_entity(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
-  }
-  
-  public Boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangBoolean;
+    this.a = paramString;
+    this.b = Boolean.valueOf(paramBoolean);
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public void a()
+  public void b()
   {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(this.jdField_a_of_type_JavaLangBoolean.booleanValue() ^ true);
+    this.b = Boolean.valueOf(this.b.booleanValue() ^ true);
+  }
+  
+  public Boolean c()
+  {
+    return this.b;
   }
 }
 

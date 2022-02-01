@@ -8,38 +8,38 @@ import java.lang.ref.WeakReference;
 class QidianProfileCardActivity$SavePhotoRunnable
   implements Runnable
 {
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<QidianProfileCardActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QidianProfileCardActivity> a;
+  private URLDrawable b;
+  private String c;
   
   QidianProfileCardActivity$SavePhotoRunnable(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQidianProfileCardActivity);
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = new WeakReference(paramQidianProfileCardActivity);
+    this.b = paramURLDrawable;
+    this.c = paramString;
   }
   
   public void run()
   {
-    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QidianProfileCardActivity localQidianProfileCardActivity = (QidianProfileCardActivity)this.a.get();
     if (localQidianProfileCardActivity == null) {
       return;
     }
     try
     {
-      str = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      str = this.b.saveTo(this.c);
       if (str != null)
       {
-        ImageUtil.a(localQidianProfileCardActivity, str);
+        ImageUtil.b(localQidianProfileCardActivity, str);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localQidianProfileCardActivity.getString(2131694913));
+        localStringBuilder.append(localQidianProfileCardActivity.getString(2131892639));
         localStringBuilder.append(" ");
         localStringBuilder.append(str);
         str = localStringBuilder.toString();
       }
       else
       {
-        str = localQidianProfileCardActivity.getString(2131694911);
+        str = localQidianProfileCardActivity.getString(2131892637);
       }
     }
     catch (IOException localIOException)
@@ -52,17 +52,17 @@ class QidianProfileCardActivity$SavePhotoRunnable
       label87:
       break label87;
     }
-    str = localQidianProfileCardActivity.getString(2131694911);
+    str = localQidianProfileCardActivity.getString(2131892637);
     break label104;
     label97:
-    str = localQidianProfileCardActivity.getString(2131694911);
+    str = localQidianProfileCardActivity.getString(2131892637);
     label104:
     localQidianProfileCardActivity.runOnUiThread(new QidianProfileCardActivity.SavePhotoRunnable.1(this, localQidianProfileCardActivity, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.SavePhotoRunnable
  * JD-Core Version:    0.7.0.1
  */

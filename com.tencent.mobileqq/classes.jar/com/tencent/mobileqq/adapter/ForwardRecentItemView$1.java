@@ -16,22 +16,22 @@ class ForwardRecentItemView$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.b - this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_Int);
-    if (AppSetting.d)
+    this.a.leftMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.b.f.setLayoutParams(this.a);
+    this.b.b.setMaxWidth(this.b.j - this.b.i);
+    if (AppSetting.e)
     {
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.getResources();
+      paramValueAnimator = this.b.getResources();
       int i;
-      if (this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        i = 2131690858;
+      if (this.b.e.isChecked()) {
+        i = 2131887795;
       } else {
-        i = 2131720100;
+        i = 2131917725;
       }
       paramValueAnimator = paramValueAnimator.getString(i);
-      ForwardRecentItemView localForwardRecentItemView = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView;
+      ForwardRecentItemView localForwardRecentItemView = this.b;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentItemView.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b.h);
       localStringBuilder.append(paramValueAnimator);
       localForwardRecentItemView.setContentDescription(localStringBuilder.toString());
     }
@@ -39,7 +39,7 @@ class ForwardRecentItemView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ForwardRecentItemView.1
  * JD-Core Version:    0.7.0.1
  */

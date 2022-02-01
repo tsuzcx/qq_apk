@@ -35,7 +35,7 @@ public class VipIconExtender
     if (this.a == null)
     {
       this.a = new ImageView(this.mContext);
-      this.a.setId(2131380936);
+      this.a.setId(2131449926);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = AIOUtils.b(5.0F, this.mContext.getResources());
       this.layoutParams = localLayoutParams;
@@ -60,30 +60,30 @@ public class VipIconExtender
   public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
   {
     this.a.setVisibility(8);
-    boolean bool = QVipRedNameCardProcessor.c().a;
+    boolean bool = QVipRedNameCardProcessor.e().a;
     int j = 259;
     int i;
     Object localObject;
-    if ((bool) && (!SimpleUIUtil.a())) {
-      if ((paramNickNameLayoutData.c != 0) && (paramNickNameLayoutData.c != -100))
+    if ((bool) && (!SimpleUIUtil.e())) {
+      if ((paramNickNameLayoutData.l != 0) && (paramNickNameLayoutData.l != -100))
       {
         this.a.setVisibility(0);
-        if ((paramNickNameLayoutData.c & 0x2) != 0) {
+        if ((paramNickNameLayoutData.l & 0x2) != 0) {
           i = 259;
         } else {
           i = 3;
         }
-        localObject = VipUtils.VipIconUtils.a(i, paramNickNameLayoutData.d, paramNickNameLayoutData.e);
-        VipUtils.a(this.mContext.getResources(), this.a, (String)localObject, this.mContext.getResources().getDrawable(2130847300));
-        NamePlateCfgInfo.vipNamePlateExposeReport(BaseActivity.sTopActivity.app, paramNickNameLayoutData.e);
-        localObject = new NamePlateCfgInfo(i, paramNickNameLayoutData.e);
+        localObject = VipUtils.VipIconUtils.a(i, paramNickNameLayoutData.m, paramNickNameLayoutData.n);
+        VipUtils.a(this.mContext.getResources(), this.a, (String)localObject, this.mContext.getResources().getDrawable(2130848951));
+        NamePlateCfgInfo.vipNamePlateExposeReport(BaseActivity.sTopActivity.app, paramNickNameLayoutData.n);
+        localObject = new NamePlateCfgInfo(i, paramNickNameLayoutData.n);
         this.a.setTag(localObject);
       }
       else
       {
         localObject = new NamePlateCfgInfo();
-        ((NamePlateCfgInfo)localObject).mNamePlateId = paramNickNameLayoutData.e;
-        i = VipUtils.a(paramNickNameLayoutData.a);
+        ((NamePlateCfgInfo)localObject).mNamePlateId = paramNickNameLayoutData.n;
+        i = VipUtils.b(paramNickNameLayoutData.j);
         if (i != 1)
         {
           String str;
@@ -97,8 +97,8 @@ public class VipIconExtender
                 break label356;
               }
               this.a.setVisibility(0);
-              str = VipUtils.VipIconUtils.a(258, paramNickNameLayoutData.b, paramNickNameLayoutData.e);
-              VipUtils.a(this.mContext.getResources(), this.a, str, this.mContext.getResources().getDrawable(2130847300));
+              str = VipUtils.VipIconUtils.a(258, paramNickNameLayoutData.k, paramNickNameLayoutData.n);
+              VipUtils.a(this.mContext.getResources(), this.a, str, this.mContext.getResources().getDrawable(2130848951));
               ((NamePlateCfgInfo)localObject).mVipType = 258;
               break label356;
             }
@@ -106,8 +106,8 @@ public class VipIconExtender
           else
           {
             this.a.setVisibility(0);
-            str = VipUtils.VipIconUtils.a(2, paramNickNameLayoutData.b, paramNickNameLayoutData.e);
-            VipUtils.a(this.mContext.getResources(), this.a, str, this.mContext.getResources().getDrawable(2130847298));
+            str = VipUtils.VipIconUtils.a(2, paramNickNameLayoutData.k, paramNickNameLayoutData.n);
+            VipUtils.a(this.mContext.getResources(), this.a, str, this.mContext.getResources().getDrawable(2130848949));
             ((NamePlateCfgInfo)localObject).mVipType = 2;
             break label356;
           }
@@ -123,25 +123,25 @@ public class VipIconExtender
     } else {
       localObject = null;
     }
-    if ((localObject != null) && (((((IBizTroopInfoService)((QQAppInterface)localObject).getRuntimeService(IBizTroopInfoService.class, "")).getmIsShowTroopBigClub()) && (paramNickNameLayoutData.g == 0)) || ((paramNickNameLayoutData.g == -100) && (paramNickNameLayoutData.c != 0) && (paramNickNameLayoutData.c != -100) && (!SimpleUIUtil.a()))))
+    if ((localObject != null) && (((((IBizTroopInfoService)((QQAppInterface)localObject).getRuntimeService(IBizTroopInfoService.class, "")).getmIsShowTroopBigClub()) && (paramNickNameLayoutData.p == 0)) || ((paramNickNameLayoutData.p == -100) && (paramNickNameLayoutData.l != 0) && (paramNickNameLayoutData.l != -100) && (!SimpleUIUtil.e()))))
     {
       this.a.setVisibility(0);
-      if ((paramNickNameLayoutData.c & 0x2) != 0) {
+      if ((paramNickNameLayoutData.l & 0x2) != 0) {
         i = j;
       } else {
         i = 3;
       }
-      NamePlateCfgInfo.vipNamePlateExposeReport(BaseActivity.sTopActivity.app, paramNickNameLayoutData.e);
-      localObject = VipUtils.VipIconUtils.a(i, paramNickNameLayoutData.d, paramNickNameLayoutData.e);
-      VipUtils.a(this.mContext.getResources(), this.a, (String)localObject, this.mContext.getResources().getDrawable(2130847300));
-      paramNickNameLayoutData = new NamePlateCfgInfo(i, paramNickNameLayoutData.e);
+      NamePlateCfgInfo.vipNamePlateExposeReport(BaseActivity.sTopActivity.app, paramNickNameLayoutData.n);
+      localObject = VipUtils.VipIconUtils.a(i, paramNickNameLayoutData.m, paramNickNameLayoutData.n);
+      VipUtils.a(this.mContext.getResources(), this.a, (String)localObject, this.mContext.getResources().getDrawable(2130848951));
+      paramNickNameLayoutData = new NamePlateCfgInfo(i, paramNickNameLayoutData.n);
       this.a.setTag(paramNickNameLayoutData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basechatitemlayout.VipIconExtender
  * JD-Core Version:    0.7.0.1
  */

@@ -21,7 +21,7 @@ class PtvTemplateManager$4
       return;
     }
     this.a.usable = false;
-    Object localObject = this.this$0.a();
+    Object localObject = this.this$0.j();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -33,7 +33,7 @@ class PtvTemplateManager$4
     localHttpNetReq.mCallback = new PtvTemplateManager.4.1(this);
     localHttpNetReq.mReqUrl = this.a.resurl;
     localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = new File(PtvTemplateManager.a, this.a.name).getPath();
+    localHttpNetReq.mOutPath = new File(PtvTemplateManager.e, this.a.name).getPath();
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     ((IHttpEngineService)((QQAppInterface)localObject).getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
     if (QLog.isColorLevel())
@@ -47,7 +47,7 @@ class PtvTemplateManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.4
  * JD-Core Version:    0.7.0.1
  */

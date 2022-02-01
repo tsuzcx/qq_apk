@@ -18,14 +18,14 @@ class ProxyAuthManager$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    long l1 = System.currentTimeMillis() - this.a;
     Object localObject1 = paramBundle.getString("ssoAccount");
     int i = paramBundle.getInt("code");
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("ProxyAuth.doAuthorize.onReceive:  ssoAccount: ");
     ((StringBuilder)localObject2).append(AuthorityUtil.a((String)localObject1));
     ((StringBuilder)localObject2).append(", uin=*");
-    ((StringBuilder)localObject2).append(AuthorityUtil.a(this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString));
+    ((StringBuilder)localObject2).append(AuthorityUtil.a(this.b.a));
     ((StringBuilder)localObject2).append(", timeCost=");
     ((StringBuilder)localObject2).append(l1);
     ((StringBuilder)localObject2).append(", isSuccess=");
@@ -33,11 +33,11 @@ class ProxyAuthManager$1
     ((StringBuilder)localObject2).append(", code=");
     ((StringBuilder)localObject2).append(i);
     ((StringBuilder)localObject2).append(", cmd=");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.c);
     SSOLog.a("ProxyAuthManager", new Object[] { ((StringBuilder)localObject2).toString() });
-    if (!this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString.equals(localObject1))
+    if (!this.b.a.equals(localObject1))
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, -1, null);
+      this.d.a(false, -1, null);
       return;
     }
     if (paramBoolean)
@@ -47,8 +47,8 @@ class ProxyAuthManager$1
       {
         localObject1 = paramBundle.getByteArray("data");
         Object localObject3 = localObject1;
-        if (this.jdField_a_of_type_Boolean) {
-          localObject3 = OpenSdkVirtualUtil.a((byte[])localObject1, this.jdField_a_of_type_ComTencentOpenModelAccountInfo);
+        if (this.e) {
+          localObject3 = OpenSdkVirtualUtil.a((byte[])localObject1, this.b);
         }
         if (localObject3 != null)
         {
@@ -60,14 +60,14 @@ class ProxyAuthManager$1
             paramInt = i;
             localObject2 = ((auth.AuthResponse)localObject1).state.get();
             paramInt = i;
-            SSOLog.a("ProxyAuthManager", new Object[] { "code=", Integer.valueOf(i), ", respState=", localObject2, ", reqState=", this.b });
+            SSOLog.a("ProxyAuthManager", new Object[] { "code=", Integer.valueOf(i), ", respState=", localObject2, ", reqState=", this.f });
             if (i == 0)
             {
               paramInt = i;
-              if (this.b.equals(localObject2))
+              if (this.f.equals(localObject2))
               {
                 paramInt = i;
-                this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(true, i, AuthResponse.a((auth.AuthResponse)localObject1));
+                this.d.a(true, i, AuthResponse.a((auth.AuthResponse)localObject1));
                 paramInt = 1;
                 break label369;
               }
@@ -77,16 +77,16 @@ class ProxyAuthManager$1
             {
               label369:
               j = ((auth.AuthResponse)localObject1).ret.get();
-              AuthReporter.a(paramBundle, l1, j, 13, this.jdField_a_of_type_JavaLangString, this.c, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString);
-              l1 = this.jdField_a_of_type_Long;
+              AuthReporter.a(paramBundle, l1, j, 13, this.c, this.g, this.b.a);
+              l1 = this.a;
               long l2 = localObject3.length;
               long l3 = ((auth.AuthResponse)localObject1).toByteArray().length;
-              paramBundle = this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString;
+              paramBundle = this.b.a;
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("ret: ");
               ((StringBuilder)localObject2).append(j);
               AuthReporter.a("agent_authority", l1, l2, l3, 0, paramBundle, ((StringBuilder)localObject2).toString());
-              AuthReporter.a(0, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.c, j, null);
+              AuthReporter.a(0, "LOGIN_AUTH", this.b.a, this.g, j, null);
             }
             catch (Exception paramBundle)
             {
@@ -110,19 +110,19 @@ class ProxyAuthManager$1
         paramInt = j;
         label533:
         SSOLog.a("ProxyAuthManager", "-->exception catch", paramBundle);
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, null);
+        this.d.a(false, i, null);
       }
       if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, AuthResponse.a((auth.AuthResponse)localObject1));
+        this.d.a(false, i, AuthResponse.a((auth.AuthResponse)localObject1));
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentOpenAgentAuthorityAuthCallback.a(false, i, null);
-      AuthReporter.a("agent_authority", this.jdField_a_of_type_Long, 0L, 0L, i, this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, "");
-      AuthReporter.a(1, "LOGIN_AUTH", this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString, this.c, 3002, "");
-      paramBundle = this.jdField_a_of_type_ComTencentOpenModelAccountInfo.jdField_a_of_type_JavaLangString;
-      localObject1 = this.c;
+      this.d.a(false, i, null);
+      AuthReporter.a("agent_authority", this.a, 0L, 0L, i, this.b.a, "");
+      AuthReporter.a(1, "LOGIN_AUTH", this.b.a, this.g, 3002, "");
+      paramBundle = this.b.a;
+      localObject1 = this.g;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
       ((StringBuilder)localObject2).append(3002);
@@ -132,7 +132,7 @@ class ProxyAuthManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.authority.ProxyAuthManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ final class ProfileGuideDialogUtils$2
   {
     Object localObject = new Intent();
     ((Intent)localObject).putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
-    RouteUtils.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, "/base/browser");
+    RouteUtils.a(this.a, (Intent)localObject, "/base/browser");
     ReportController.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
-    localObject = this.jdField_a_of_type_AndroidAppDialog;
+    localObject = this.b;
     if ((localObject != null) && (((Dialog)localObject).isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.b.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ProfileGuideDialogUtils.2
  * JD-Core Version:    0.7.0.1
  */

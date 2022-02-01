@@ -13,14 +13,14 @@ class QCallDetailActivity$7
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = PhoneContactHelper.a(((TextView)paramView.findViewById(2131374196)).getText().toString());
+    paramAdapterView = PhoneContactHelper.a(((TextView)paramView.findViewById(2131442291)).getText().toString());
     paramView = this.a;
     paramView.a(paramView.getActivity(), paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.7
  * JD-Core Version:    0.7.0.1
  */

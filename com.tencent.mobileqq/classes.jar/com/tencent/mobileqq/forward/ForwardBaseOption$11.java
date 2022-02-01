@@ -13,13 +13,13 @@ class ForwardBaseOption$11
   public void run()
   {
     Object localObject1;
-    if (!this.this$0.jdField_a_of_type_Boolean)
+    if (!this.this$0.w)
     {
-      localObject2 = ForwardBaseOption.a(this.this$0, this.jdField_a_of_type_JavaLangString);
+      localObject2 = ForwardBaseOption.c(this.this$0, this.a);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+        this.this$0.b(this.b);
         if (QLog.isColorLevel()) {
           QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView getNormalDrawable null");
         }
@@ -27,7 +27,7 @@ class ForwardBaseOption$11
     }
     else
     {
-      localObject2 = ForwardBaseOption.a(this.this$0);
+      localObject2 = ForwardBaseOption.h(this.this$0);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -38,8 +38,8 @@ class ForwardBaseOption$11
       }
     }
     Object localObject2 = this.this$0;
-    ((ForwardBaseOption)localObject2).a(localObject1, ((ForwardBaseOption)localObject2).jdField_a_of_type_Boolean);
-    localObject2 = (ArrayList)this.this$0.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
+    ((ForwardBaseOption)localObject2).a(localObject1, ((ForwardBaseOption)localObject2).w);
+    localObject2 = (ArrayList)this.this$0.t.get("PhotoConst.PHOTO_PATHS");
     ForwardBaseOption localForwardBaseOption = this.this$0;
     int i;
     if (localObject2 != null) {
@@ -47,12 +47,12 @@ class ForwardBaseOption$11
     } else {
       i = 0;
     }
-    localForwardBaseOption.a(localObject1, true, i, this.this$0.jdField_a_of_type_Boolean);
+    localForwardBaseOption.a(localObject1, true, i, this.this$0.w);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.11
  * JD-Core Version:    0.7.0.1
  */

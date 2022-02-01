@@ -7,12 +7,12 @@ class AECMShowPhotoPreviewFragment$1$1
   
   public void run()
   {
-    AECMShowPhotoPreviewFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowPhotoPreviewFragment$1.a).a(this.jdField_a_of_type_Int);
+    AECMShowPhotoPreviewFragment.a(this.b.a).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowPhotoPreviewFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

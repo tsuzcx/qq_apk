@@ -12,13 +12,13 @@ class EmoticonManagerServiceImpl$16
   
   public void run()
   {
-    EmoticonTab localEmoticonTab = (EmoticonTab)this.this$0.em.find(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
+    EmoticonTab localEmoticonTab = (EmoticonTab)this.this$0.em.find(EmoticonTab.class, this.a);
     if (localEmoticonTab != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         localEmoticonTab.aioHave = false;
       }
-      if (this.b) {
+      if (this.c) {
         localEmoticonTab.kandianHave = false;
       }
       if ((!localEmoticonTab.aioHave) && (!localEmoticonTab.kandianHave)) {
@@ -26,14 +26,14 @@ class EmoticonManagerServiceImpl$16
       } else {
         EmoticonManagerServiceImpl.access$100(this.this$0, localEmoticonTab);
       }
-      this.this$0.removeKeywordEmoticonsCache(this.jdField_a_of_type_JavaLangString);
+      this.this$0.removeKeywordEmoticonsCache(this.a);
       EmotionSharedPreUtils.a(this.this$0.app.getApp(), this.this$0.app.getCurrentUin(), System.currentTimeMillis());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl.16
  * JD-Core Version:    0.7.0.1
  */

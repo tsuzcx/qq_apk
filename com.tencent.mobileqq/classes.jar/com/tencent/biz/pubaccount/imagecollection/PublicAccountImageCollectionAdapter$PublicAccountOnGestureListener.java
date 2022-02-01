@@ -12,7 +12,7 @@ class PublicAccountImageCollectionAdapter$PublicAccountOnGestureListener
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     com.tencent.biz.pubaccount.imagecollection.api.impl.PublicAccountImageCollectionMainActivityImpl.doubleTapFlag = true;
-    PublicAccountImageCollectionAdapter.b(this.a);
+    PublicAccountImageCollectionAdapter.e(this.a);
     return false;
   }
   
@@ -38,15 +38,15 @@ class PublicAccountImageCollectionAdapter$PublicAccountOnGestureListener
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if ((!(PublicAccountImageCollectionAdapter.a(this.a).getTag() instanceof PublicAccountImageCollectionAdapter.CoverHolder)) || (((PublicAccountImageCollectionAdapter.a(this.a).getTag() instanceof PublicAccountImageCollectionAdapter.CoverHolder)) && (!PublicAccountImageCollectionAdapter.a(this.a).a(PublicAccountImageCollectionAdapter.a(this.a)).booleanValue()))) {
-      PublicAccountImageCollectionAdapter.c(this.a);
+    if ((!(PublicAccountImageCollectionAdapter.f(this.a).getTag() instanceof PublicAccountImageCollectionAdapter.CoverHolder)) || (((PublicAccountImageCollectionAdapter.f(this.a).getTag() instanceof PublicAccountImageCollectionAdapter.CoverHolder)) && (!PublicAccountImageCollectionAdapter.g(this.a).b(PublicAccountImageCollectionAdapter.f(this.a)).booleanValue()))) {
+      PublicAccountImageCollectionAdapter.h(this.a);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionAdapter.PublicAccountOnGestureListener
  * JD-Core Version:    0.7.0.1
  */

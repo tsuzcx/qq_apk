@@ -44,16 +44,16 @@ public class QQUtils
   
   public static Dialog a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    paramActivity = new ReportDialog(paramActivity, 2131756189);
-    paramActivity.setContentView(2131561177);
-    TextView localTextView3 = (TextView)paramActivity.findViewById(2131380032);
-    TextView localTextView4 = (TextView)paramActivity.findViewById(2131380014);
-    TextView localTextView1 = (TextView)paramActivity.findViewById(2131380005);
-    TextView localTextView2 = (TextView)paramActivity.findViewById(2131380001);
+    paramActivity = new ReportDialog(paramActivity, 2131953338);
+    paramActivity.setContentView(2131627529);
+    TextView localTextView3 = (TextView)paramActivity.findViewById(2131448938);
+    TextView localTextView4 = (TextView)paramActivity.findViewById(2131448918);
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131448907);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131448903);
     localTextView3.setText(paramString1);
     localTextView4.setText(new SpannableString(paramString2));
-    paramString1 = (ImageView)paramActivity.findViewById(2131364474);
-    ((ImageButton)paramActivity.findViewById(2131364715)).setOnClickListener(new QQUtils.4(paramActivity));
+    paramString1 = (ImageView)paramActivity.findViewById(2131430531);
+    ((ImageButton)paramActivity.findViewById(2131430821)).setOnClickListener(new QQUtils.4(paramActivity));
     if (paramInt >= 0)
     {
       paramString1.setVisibility(0);
@@ -104,154 +104,6 @@ public class QQUtils
     return localIntent;
   }
   
-  /* Error */
-  public static Bitmap a(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 173	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
-    //   4: ifne +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: getstatic 175	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
-    //   12: astore_2
-    //   13: aload_0
-    //   14: invokevirtual 181	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   17: astore_0
-    //   18: aload_0
-    //   19: aload_2
-    //   20: invokestatic 187	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   23: aconst_null
-    //   24: ldc 189
-    //   26: iconst_1
-    //   27: anewarray 68	java/lang/String
-    //   30: dup
-    //   31: iconst_0
-    //   32: aload_1
-    //   33: aastore
-    //   34: aconst_null
-    //   35: invokevirtual 195	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   38: astore_0
-    //   39: aload_0
-    //   40: ifnull +62 -> 102
-    //   43: aconst_null
-    //   44: astore_2
-    //   45: aload_0
-    //   46: astore_1
-    //   47: aload_0
-    //   48: invokeinterface 201 1 0
-    //   53: ifeq +33 -> 86
-    //   56: aload_0
-    //   57: astore_1
-    //   58: aload_0
-    //   59: aload_0
-    //   60: ldc 203
-    //   62: invokeinterface 207 2 0
-    //   67: invokeinterface 211 2 0
-    //   72: astore_2
-    //   73: aload_0
-    //   74: astore_1
-    //   75: aload_2
-    //   76: iconst_0
-    //   77: aload_2
-    //   78: arraylength
-    //   79: invokestatic 216	com/tencent/mobileqq/util/BitmapManager:a	([BII)Landroid/graphics/Bitmap;
-    //   82: astore_2
-    //   83: goto -38 -> 45
-    //   86: aload_0
-    //   87: ifnull +9 -> 96
-    //   90: aload_0
-    //   91: invokeinterface 219 1 0
-    //   96: aload_2
-    //   97: areturn
-    //   98: astore_2
-    //   99: goto +19 -> 118
-    //   102: aload_0
-    //   103: ifnull +84 -> 187
-    //   106: goto +75 -> 181
-    //   109: astore_0
-    //   110: aconst_null
-    //   111: astore_1
-    //   112: goto +78 -> 190
-    //   115: astore_2
-    //   116: aconst_null
-    //   117: astore_0
-    //   118: aload_0
-    //   119: astore_1
-    //   120: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   123: ifeq +54 -> 177
-    //   126: aload_0
-    //   127: astore_1
-    //   128: getstatic 225	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
-    //   131: astore_3
-    //   132: aload_0
-    //   133: astore_1
-    //   134: new 227	java/lang/StringBuilder
-    //   137: dup
-    //   138: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   141: astore 4
-    //   143: aload_0
-    //   144: astore_1
-    //   145: aload 4
-    //   147: ldc 230
-    //   149: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: pop
-    //   153: aload_0
-    //   154: astore_1
-    //   155: aload 4
-    //   157: aload_2
-    //   158: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
-    //   161: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: pop
-    //   165: aload_0
-    //   166: astore_1
-    //   167: aload_3
-    //   168: iconst_2
-    //   169: aload 4
-    //   171: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   174: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   177: aload_0
-    //   178: ifnull +9 -> 187
-    //   181: aload_0
-    //   182: invokeinterface 219 1 0
-    //   187: aconst_null
-    //   188: areturn
-    //   189: astore_0
-    //   190: aload_1
-    //   191: ifnull +9 -> 200
-    //   194: aload_1
-    //   195: invokeinterface 219 1 0
-    //   200: goto +5 -> 205
-    //   203: aload_0
-    //   204: athrow
-    //   205: goto -2 -> 203
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	208	0	paramContext	Context
-    //   0	208	1	paramString	String
-    //   12	85	2	localObject	Object
-    //   98	1	2	localException1	java.lang.Exception
-    //   115	43	2	localException2	java.lang.Exception
-    //   131	37	3	str	String
-    //   141	29	4	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   47	56	98	java/lang/Exception
-    //   58	73	98	java/lang/Exception
-    //   75	83	98	java/lang/Exception
-    //   18	39	109	finally
-    //   18	39	115	java/lang/Exception
-    //   47	56	189	finally
-    //   58	73	189	finally
-    //   75	83	189	finally
-    //   120	126	189	finally
-    //   128	132	189	finally
-    //   134	143	189	finally
-    //   145	153	189	finally
-    //   155	165	189	finally
-    //   167	177	189	finally
-  }
-  
   public static Bitmap a(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     paramString2 = a(paramString2);
@@ -259,7 +111,7 @@ public class QQUtils
     if (!localFile.exists())
     {
       if (paramBoolean) {
-        return QQAppInterface.getCircleFaceBitmap(a(paramQQAppInterface.getApp(), paramString3), 50, 50);
+        return QQAppInterface.getCircleFaceBitmap(c(paramQQAppInterface.getApp(), paramString3), 50, 50);
       }
       if (!HttpDownloadUtil.download(paramQQAppInterface, paramString1, localFile))
       {
@@ -270,187 +122,6 @@ public class QQUtils
       }
     }
     return QQAppInterface.getCircleFaceBitmap(BitmapManager.a(paramString2), 50, 50);
-  }
-  
-  /* Error */
-  public static SparseArray<String> a(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 173	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
-    //   4: ifne +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: getstatic 175	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
-    //   12: astore_2
-    //   13: aload_0
-    //   14: invokevirtual 181	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   17: astore_0
-    //   18: aload_2
-    //   19: invokestatic 187	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   22: astore_2
-    //   23: new 227	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   30: astore_3
-    //   31: aload_3
-    //   32: ldc_w 271
-    //   35: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: pop
-    //   39: aload_3
-    //   40: aload_1
-    //   41: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: pop
-    //   45: aload_3
-    //   46: ldc_w 273
-    //   49: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: pop
-    //   53: aload_3
-    //   54: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: astore_1
-    //   58: aload_0
-    //   59: aload_2
-    //   60: iconst_2
-    //   61: anewarray 68	java/lang/String
-    //   64: dup
-    //   65: iconst_0
-    //   66: ldc_w 275
-    //   69: aastore
-    //   70: dup
-    //   71: iconst_1
-    //   72: ldc_w 277
-    //   75: aastore
-    //   76: aload_1
-    //   77: aconst_null
-    //   78: aconst_null
-    //   79: invokevirtual 195	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   82: astore_0
-    //   83: aload_0
-    //   84: ifnull +83 -> 167
-    //   87: aload_0
-    //   88: astore_1
-    //   89: new 279	android/util/SparseArray
-    //   92: dup
-    //   93: invokespecial 280	android/util/SparseArray:<init>	()V
-    //   96: astore_2
-    //   97: aload_0
-    //   98: astore_1
-    //   99: aload_0
-    //   100: invokeinterface 201 1 0
-    //   105: ifeq +46 -> 151
-    //   108: aload_0
-    //   109: astore_1
-    //   110: aload_0
-    //   111: aload_0
-    //   112: ldc_w 275
-    //   115: invokeinterface 207 2 0
-    //   120: invokeinterface 283 2 0
-    //   125: astore_3
-    //   126: aload_0
-    //   127: astore_1
-    //   128: aload_2
-    //   129: aload_0
-    //   130: aload_0
-    //   131: ldc_w 277
-    //   134: invokeinterface 207 2 0
-    //   139: invokeinterface 287 2 0
-    //   144: aload_3
-    //   145: invokevirtual 291	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   148: goto -51 -> 97
-    //   151: aload_0
-    //   152: ifnull +9 -> 161
-    //   155: aload_0
-    //   156: invokeinterface 219 1 0
-    //   161: aload_2
-    //   162: areturn
-    //   163: astore_2
-    //   164: goto +19 -> 183
-    //   167: aload_0
-    //   168: ifnull +84 -> 252
-    //   171: goto +75 -> 246
-    //   174: astore_0
-    //   175: aconst_null
-    //   176: astore_1
-    //   177: goto +78 -> 255
-    //   180: astore_2
-    //   181: aconst_null
-    //   182: astore_0
-    //   183: aload_0
-    //   184: astore_1
-    //   185: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   188: ifeq +54 -> 242
-    //   191: aload_0
-    //   192: astore_1
-    //   193: getstatic 225	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
-    //   196: astore_3
-    //   197: aload_0
-    //   198: astore_1
-    //   199: new 227	java/lang/StringBuilder
-    //   202: dup
-    //   203: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   206: astore 4
-    //   208: aload_0
-    //   209: astore_1
-    //   210: aload 4
-    //   212: ldc 230
-    //   214: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: pop
-    //   218: aload_0
-    //   219: astore_1
-    //   220: aload 4
-    //   222: aload_2
-    //   223: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
-    //   226: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: pop
-    //   230: aload_0
-    //   231: astore_1
-    //   232: aload_3
-    //   233: iconst_2
-    //   234: aload 4
-    //   236: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   239: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   242: aload_0
-    //   243: ifnull +9 -> 252
-    //   246: aload_0
-    //   247: invokeinterface 219 1 0
-    //   252: aconst_null
-    //   253: areturn
-    //   254: astore_0
-    //   255: aload_1
-    //   256: ifnull +9 -> 265
-    //   259: aload_1
-    //   260: invokeinterface 219 1 0
-    //   265: goto +5 -> 270
-    //   268: aload_0
-    //   269: athrow
-    //   270: goto -2 -> 268
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	273	0	paramContext	Context
-    //   0	273	1	paramString	String
-    //   12	150	2	localObject1	Object
-    //   163	1	2	localException1	java.lang.Exception
-    //   180	43	2	localException2	java.lang.Exception
-    //   30	203	3	localObject2	Object
-    //   206	29	4	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   89	97	163	java/lang/Exception
-    //   99	108	163	java/lang/Exception
-    //   110	126	163	java/lang/Exception
-    //   128	148	163	java/lang/Exception
-    //   18	83	174	finally
-    //   18	83	180	java/lang/Exception
-    //   89	97	254	finally
-    //   99	108	254	finally
-    //   110	126	254	finally
-    //   128	148	254	finally
-    //   185	191	254	finally
-    //   193	197	254	finally
-    //   199	208	254	finally
-    //   210	218	254	finally
-    //   220	230	254	finally
-    //   232	242	254	finally
   }
   
   public static String a()
@@ -530,7 +201,7 @@ public class QQUtils
   public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
   {
     Intent localIntent = new Intent();
-    KapalaiAdapterUtil.a().a(paramIntent);
+    KapalaiAdapterUtil.a().b(paramIntent);
     localIntent.putExtra("android.intent.extra.shortcut.INTENT", paramIntent);
     localIntent.putExtra("android.intent.extra.shortcut.NAME", "QQ");
     localIntent.putExtra("duplicate", false);
@@ -544,7 +215,7 @@ public class QQUtils
   public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent, String paramString, Bitmap paramBitmap)
   {
     Intent localIntent = new Intent();
-    KapalaiAdapterUtil.a().a(paramIntent);
+    KapalaiAdapterUtil.a().b(paramIntent);
     localIntent.putExtra("android.intent.extra.shortcut.INTENT", paramIntent);
     localIntent.putExtra("android.intent.extra.shortcut.NAME", paramString);
     int i = DisplayUtils.a(paramQQAppInterface.getApp());
@@ -567,7 +238,7 @@ public class QQUtils
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    SparseArray localSparseArray = a(paramQQAppInterface.getApp(), paramString);
+    SparseArray localSparseArray = b(paramQQAppInterface.getApp(), paramString);
     if (localSparseArray == null) {
       return;
     }
@@ -675,7 +346,7 @@ public class QQUtils
     localObject = paramQQAppInterface.getFaceBitmap(1, paramString1, (byte)3, true, 0);
     paramString1 = (String)localObject;
     if (localObject == null) {
-      paramString1 = ImageUtil.f();
+      paramString1 = ImageUtil.k();
     }
     a(paramQQAppInterface, localIntent, paramString2, paramString1);
   }
@@ -687,7 +358,7 @@ public class QQUtils
     }
     if (a(paramQQAppInterface.getApp(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.getApp().getString(2131692087);
+      paramString1 = paramQQAppInterface.getApp().getString(2131889065);
       if (paramString1 != null) {
         paramMqqHandler.post(new QQUtils.1(paramQQAppInterface, paramString1, paramInt1));
       }
@@ -711,10 +382,339 @@ public class QQUtils
   {
     return ShortcutUtils.a(paramContext, paramArrayOfString);
   }
+  
+  /* Error */
+  public static SparseArray<String> b(Context paramContext, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 533	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
+    //   4: ifne +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: getstatic 534	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 538	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: astore_0
+    //   18: aload_2
+    //   19: invokestatic 544	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   22: astore_2
+    //   23: new 291	java/lang/StringBuilder
+    //   26: dup
+    //   27: invokespecial 308	java/lang/StringBuilder:<init>	()V
+    //   30: astore_3
+    //   31: aload_3
+    //   32: ldc_w 546
+    //   35: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload_3
+    //   40: aload_1
+    //   41: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: pop
+    //   45: aload_3
+    //   46: ldc_w 548
+    //   49: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload_3
+    //   54: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: astore_1
+    //   58: aload_0
+    //   59: aload_2
+    //   60: iconst_2
+    //   61: anewarray 68	java/lang/String
+    //   64: dup
+    //   65: iconst_0
+    //   66: ldc_w 550
+    //   69: aastore
+    //   70: dup
+    //   71: iconst_1
+    //   72: ldc_w 552
+    //   75: aastore
+    //   76: aload_1
+    //   77: aconst_null
+    //   78: aconst_null
+    //   79: invokevirtual 558	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   82: astore_0
+    //   83: aload_0
+    //   84: ifnull +83 -> 167
+    //   87: aload_0
+    //   88: astore_1
+    //   89: new 395	android/util/SparseArray
+    //   92: dup
+    //   93: invokespecial 559	android/util/SparseArray:<init>	()V
+    //   96: astore_2
+    //   97: aload_0
+    //   98: astore_1
+    //   99: aload_0
+    //   100: invokeinterface 564 1 0
+    //   105: ifeq +46 -> 151
+    //   108: aload_0
+    //   109: astore_1
+    //   110: aload_0
+    //   111: aload_0
+    //   112: ldc_w 550
+    //   115: invokeinterface 568 2 0
+    //   120: invokeinterface 569 2 0
+    //   125: astore_3
+    //   126: aload_0
+    //   127: astore_1
+    //   128: aload_2
+    //   129: aload_0
+    //   130: aload_0
+    //   131: ldc_w 552
+    //   134: invokeinterface 568 2 0
+    //   139: invokeinterface 572 2 0
+    //   144: aload_3
+    //   145: invokevirtual 575	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   148: goto -51 -> 97
+    //   151: aload_0
+    //   152: ifnull +9 -> 161
+    //   155: aload_0
+    //   156: invokeinterface 578 1 0
+    //   161: aload_2
+    //   162: areturn
+    //   163: astore_2
+    //   164: goto +19 -> 183
+    //   167: aload_0
+    //   168: ifnull +85 -> 253
+    //   171: goto +76 -> 247
+    //   174: astore_0
+    //   175: aconst_null
+    //   176: astore_1
+    //   177: goto +79 -> 256
+    //   180: astore_2
+    //   181: aconst_null
+    //   182: astore_0
+    //   183: aload_0
+    //   184: astore_1
+    //   185: invokestatic 350	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   188: ifeq +55 -> 243
+    //   191: aload_0
+    //   192: astore_1
+    //   193: getstatic 236	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
+    //   196: astore_3
+    //   197: aload_0
+    //   198: astore_1
+    //   199: new 291	java/lang/StringBuilder
+    //   202: dup
+    //   203: invokespecial 308	java/lang/StringBuilder:<init>	()V
+    //   206: astore 4
+    //   208: aload_0
+    //   209: astore_1
+    //   210: aload 4
+    //   212: ldc_w 580
+    //   215: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: aload_0
+    //   220: astore_1
+    //   221: aload 4
+    //   223: aload_2
+    //   224: invokevirtual 581	java/lang/Exception:toString	()Ljava/lang/String;
+    //   227: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload_0
+    //   232: astore_1
+    //   233: aload_3
+    //   234: iconst_2
+    //   235: aload 4
+    //   237: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   240: invokestatic 356	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   243: aload_0
+    //   244: ifnull +9 -> 253
+    //   247: aload_0
+    //   248: invokeinterface 578 1 0
+    //   253: aconst_null
+    //   254: areturn
+    //   255: astore_0
+    //   256: aload_1
+    //   257: ifnull +9 -> 266
+    //   260: aload_1
+    //   261: invokeinterface 578 1 0
+    //   266: goto +5 -> 271
+    //   269: aload_0
+    //   270: athrow
+    //   271: goto -2 -> 269
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	274	0	paramContext	Context
+    //   0	274	1	paramString	String
+    //   12	150	2	localObject1	Object
+    //   163	1	2	localException1	java.lang.Exception
+    //   180	44	2	localException2	java.lang.Exception
+    //   30	204	3	localObject2	Object
+    //   206	30	4	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   89	97	163	java/lang/Exception
+    //   99	108	163	java/lang/Exception
+    //   110	126	163	java/lang/Exception
+    //   128	148	163	java/lang/Exception
+    //   18	83	174	finally
+    //   18	83	180	java/lang/Exception
+    //   89	97	255	finally
+    //   99	108	255	finally
+    //   110	126	255	finally
+    //   128	148	255	finally
+    //   185	191	255	finally
+    //   193	197	255	finally
+    //   199	208	255	finally
+    //   210	219	255	finally
+    //   221	231	255	finally
+    //   233	243	255	finally
+  }
+  
+  /* Error */
+  public static Bitmap c(Context paramContext, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 533	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
+    //   4: ifne +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: getstatic 534	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 538	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: astore_0
+    //   18: aload_0
+    //   19: aload_2
+    //   20: invokestatic 544	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   23: aconst_null
+    //   24: ldc_w 584
+    //   27: iconst_1
+    //   28: anewarray 68	java/lang/String
+    //   31: dup
+    //   32: iconst_0
+    //   33: aload_1
+    //   34: aastore
+    //   35: aconst_null
+    //   36: invokevirtual 558	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   39: astore_0
+    //   40: aload_0
+    //   41: ifnull +63 -> 104
+    //   44: aconst_null
+    //   45: astore_2
+    //   46: aload_0
+    //   47: astore_1
+    //   48: aload_0
+    //   49: invokeinterface 564 1 0
+    //   54: ifeq +34 -> 88
+    //   57: aload_0
+    //   58: astore_1
+    //   59: aload_0
+    //   60: aload_0
+    //   61: ldc_w 586
+    //   64: invokeinterface 568 2 0
+    //   69: invokeinterface 590 2 0
+    //   74: astore_2
+    //   75: aload_0
+    //   76: astore_1
+    //   77: aload_2
+    //   78: iconst_0
+    //   79: aload_2
+    //   80: arraylength
+    //   81: invokestatic 593	com/tencent/mobileqq/util/BitmapManager:a	([BII)Landroid/graphics/Bitmap;
+    //   84: astore_2
+    //   85: goto -39 -> 46
+    //   88: aload_0
+    //   89: ifnull +9 -> 98
+    //   92: aload_0
+    //   93: invokeinterface 578 1 0
+    //   98: aload_2
+    //   99: areturn
+    //   100: astore_2
+    //   101: goto +19 -> 120
+    //   104: aload_0
+    //   105: ifnull +85 -> 190
+    //   108: goto +76 -> 184
+    //   111: astore_0
+    //   112: aconst_null
+    //   113: astore_1
+    //   114: goto +79 -> 193
+    //   117: astore_2
+    //   118: aconst_null
+    //   119: astore_0
+    //   120: aload_0
+    //   121: astore_1
+    //   122: invokestatic 350	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   125: ifeq +55 -> 180
+    //   128: aload_0
+    //   129: astore_1
+    //   130: getstatic 236	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
+    //   133: astore_3
+    //   134: aload_0
+    //   135: astore_1
+    //   136: new 291	java/lang/StringBuilder
+    //   139: dup
+    //   140: invokespecial 308	java/lang/StringBuilder:<init>	()V
+    //   143: astore 4
+    //   145: aload_0
+    //   146: astore_1
+    //   147: aload 4
+    //   149: ldc_w 580
+    //   152: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: aload_0
+    //   157: astore_1
+    //   158: aload 4
+    //   160: aload_2
+    //   161: invokevirtual 581	java/lang/Exception:toString	()Ljava/lang/String;
+    //   164: invokevirtual 302	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: pop
+    //   168: aload_0
+    //   169: astore_1
+    //   170: aload_3
+    //   171: iconst_2
+    //   172: aload 4
+    //   174: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   177: invokestatic 356	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: aload_0
+    //   181: ifnull +9 -> 190
+    //   184: aload_0
+    //   185: invokeinterface 578 1 0
+    //   190: aconst_null
+    //   191: areturn
+    //   192: astore_0
+    //   193: aload_1
+    //   194: ifnull +9 -> 203
+    //   197: aload_1
+    //   198: invokeinterface 578 1 0
+    //   203: goto +5 -> 208
+    //   206: aload_0
+    //   207: athrow
+    //   208: goto -2 -> 206
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	211	0	paramContext	Context
+    //   0	211	1	paramString	String
+    //   12	87	2	localObject	Object
+    //   100	1	2	localException1	java.lang.Exception
+    //   117	44	2	localException2	java.lang.Exception
+    //   133	38	3	str	String
+    //   143	30	4	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   48	57	100	java/lang/Exception
+    //   59	75	100	java/lang/Exception
+    //   77	85	100	java/lang/Exception
+    //   18	40	111	finally
+    //   18	40	117	java/lang/Exception
+    //   48	57	192	finally
+    //   59	75	192	finally
+    //   77	85	192	finally
+    //   122	128	192	finally
+    //   130	134	192	finally
+    //   136	145	192	finally
+    //   147	156	192	finally
+    //   158	168	192	finally
+    //   170	180	192	finally
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQUtils
  * JD-Core Version:    0.7.0.1
  */

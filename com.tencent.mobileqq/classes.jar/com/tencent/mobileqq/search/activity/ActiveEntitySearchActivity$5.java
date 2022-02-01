@@ -24,31 +24,31 @@ class ActiveEntitySearchActivity$5
       paramSuggestUrlItem.append("handleSuggestUrlResult keyword=");
       paramSuggestUrlItem.append(paramString);
       paramSuggestUrlItem.append(" activity keyword=");
-      paramSuggestUrlItem.append(this.a.jdField_a_of_type_JavaLangString);
+      paramSuggestUrlItem.append(this.a.o);
       paramSuggestUrlItem.append(" size=");
       paramSuggestUrlItem.append(paramList1.size());
       QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, paramSuggestUrlItem.toString());
     }
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
+    if (paramString.equals(this.a.o))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
+      if (this.a.h == null) {
+        this.a.h = new AssociateSearchWordsFragment();
       }
       paramList1 = new ArrayList();
       paramSuggestUrlItem = new AssociateSearchWordsFragment.AssociateItem();
-      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
+      paramSuggestUrlItem.a = 1;
       StringBuilder localStringBuilder = new StringBuilder("");
       if ((paramList != null) && (paramList.size() > 0))
       {
         int i;
         for (paramInt = 0; paramInt < paramList.size(); paramInt = i)
         {
-          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
+          String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).b;
           AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
-          localAssociateItem.jdField_a_of_type_JavaLangString = str;
-          localAssociateItem.jdField_a_of_type_Int = 3;
+          localAssociateItem.b = str;
+          localAssociateItem.a = 3;
           i = paramInt + 1;
-          localAssociateItem.d = i;
+          localAssociateItem.i = i;
           paramList1.add(localAssociateItem);
           if (paramInt != paramList.size() - 1)
           {
@@ -62,10 +62,10 @@ class ActiveEntitySearchActivity$5
           }
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
-      paramString = new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(SearchUtils.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString());
+      this.a.h.a(true);
+      this.a.h.a(paramString);
+      this.a.h.a(paramList1);
+      paramString = new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(SearchUtils.a(this.a.n)).ver1(this.a.h()).ver4(localStringBuilder.toString());
       paramList = new StringBuilder();
       paramList.append("{experiment_id:");
       paramList.append(UniteSearchReportController.b);
@@ -91,7 +91,7 @@ class ActiveEntitySearchActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity.5
  * JD-Core Version:    0.7.0.1
  */

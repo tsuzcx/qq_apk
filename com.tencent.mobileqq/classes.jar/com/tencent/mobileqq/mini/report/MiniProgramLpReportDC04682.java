@@ -19,7 +19,7 @@ public class MiniProgramLpReportDC04682
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(MiniProgramReportHelper.newEntry("platform", "android"));
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(CommonDataAdapter.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(CommonDataAdapter.a().c())));
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
     {
       localArrayList.add(MiniProgramReportHelper.newEntry("appid", paramMiniAppConfig.config.appId));
@@ -51,7 +51,7 @@ public class MiniProgramLpReportDC04682
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04682
  * JD-Core Version:    0.7.0.1
  */

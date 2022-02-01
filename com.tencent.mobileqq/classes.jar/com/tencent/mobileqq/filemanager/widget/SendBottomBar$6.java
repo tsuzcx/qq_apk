@@ -15,39 +15,39 @@ class SendBottomBar$6
   
   public void OnClick(View paramView, int paramInt, String paramString)
   {
-    if (paramString.equals(HardCodeUtil.a(2131692344)))
+    if (paramString.equals(HardCodeUtil.a(2131889332)))
     {
-      paramView = QQFileManagerUtil.a("排序方式:\n时间", HardCodeUtil.a(2131692362), null);
-      SendBottomBar.a(this.a).setText(paramView);
-      if (SendBottomBar.a(this.a).g() == 0) {
+      paramView = QQFileManagerUtil.a("排序方式:\n时间", HardCodeUtil.a(2131889350), null);
+      SendBottomBar.p(this.a).setText(paramView);
+      if (SendBottomBar.c(this.a).L() == 0) {
         return;
       }
-      SendBottomBar.a(this.a).d(0);
+      SendBottomBar.c(this.a).d(0);
     }
-    else if (paramString.equals(HardCodeUtil.a(2131692343)))
+    else if (paramString.equals(HardCodeUtil.a(2131889331)))
     {
-      paramView = QQFileManagerUtil.a("排序方式:\n大小", HardCodeUtil.a(2131692342), null);
-      SendBottomBar.a(this.a).setText(paramView);
-      if (SendBottomBar.a(this.a).g() == 1) {
+      paramView = QQFileManagerUtil.a("排序方式:\n大小", HardCodeUtil.a(2131889330), null);
+      SendBottomBar.p(this.a).setText(paramView);
+      if (SendBottomBar.c(this.a).L() == 1) {
         return;
       }
-      SendBottomBar.a(this.a).d(1);
+      SendBottomBar.c(this.a).d(1);
     }
-    else if (paramString.equals(HardCodeUtil.a(2131692345)))
+    else if (paramString.equals(HardCodeUtil.a(2131889333)))
     {
-      paramView = QQFileManagerUtil.a("排序方式:\n类型", HardCodeUtil.a(2131692366), null);
-      SendBottomBar.a(this.a).setText(paramView);
-      if (SendBottomBar.a(this.a).g() == 2) {
+      paramView = QQFileManagerUtil.a("排序方式:\n类型", HardCodeUtil.a(2131889354), null);
+      SendBottomBar.p(this.a).setText(paramView);
+      if (SendBottomBar.c(this.a).L() == 2) {
         return;
       }
-      SendBottomBar.a(this.a).d(2);
+      SendBottomBar.c(this.a).d(2);
     }
-    this.a.a.dismiss();
+    this.a.b.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.6
  * JD-Core Version:    0.7.0.1
  */

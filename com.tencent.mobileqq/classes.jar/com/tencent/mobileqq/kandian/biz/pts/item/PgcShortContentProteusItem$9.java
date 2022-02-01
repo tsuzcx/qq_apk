@@ -19,26 +19,26 @@ class PgcShortContentProteusItem$9
   
   public void onViewAttachedToWindow(View paramView)
   {
-    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.a.u();
     PgcShortContentProteusItem.9.1 local1 = new PgcShortContentProteusItem.9.1(this);
     localReadInJoyBaseAdapter.b(local1);
-    paramView.setTag(2131376091, local1);
+    paramView.setTag(2131444294, local1);
     paramView = new IntentFilter();
     paramView.addAction("android.media.VOLUME_CHANGED_ACTION");
-    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramView);
+    BaseApplicationImpl.getApplication().getBaseContext().registerReceiver(this.d, paramView);
   }
   
   public void onViewDetachedFromWindow(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemPgcShortContentProteusItem$Bool.a(false);
-    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
-    paramView = (IReadInJoyListItemLifeCycle)paramView.getTag(2131376091);
+    this.c.a(false);
+    ReadInJoyBaseAdapter localReadInJoyBaseAdapter = (ReadInJoyBaseAdapter)this.a.u();
+    paramView = (IReadInJoyListItemLifeCycle)paramView.getTag(2131444294);
     if (paramView != null) {
       localReadInJoyBaseAdapter.c(paramView);
     }
     try
     {
-      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      BaseApplicationImpl.getApplication().getBaseContext().unregisterReceiver(this.d);
       return;
     }
     catch (Exception paramView)
@@ -49,7 +49,7 @@ class PgcShortContentProteusItem$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.9
  * JD-Core Version:    0.7.0.1
  */

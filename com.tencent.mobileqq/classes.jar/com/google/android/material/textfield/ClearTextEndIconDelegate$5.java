@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ClearTextEndIconDelegate$5
   implements View.OnClickListener
@@ -12,16 +13,17 @@ class ClearTextEndIconDelegate$5
   
   public void onClick(View paramView)
   {
-    paramView = this.a.a.a().getText();
-    if (paramView != null) {
-      paramView.clear();
+    Editable localEditable = this.a.a.getEditText().getText();
+    if (localEditable != null) {
+      localEditable.clear();
     }
-    this.a.a.d();
+    this.a.a.h();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.ClearTextEndIconDelegate.5
  * JD-Core Version:    0.7.0.1
  */

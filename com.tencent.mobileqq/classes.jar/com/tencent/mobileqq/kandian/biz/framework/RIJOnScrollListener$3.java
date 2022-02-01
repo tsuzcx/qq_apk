@@ -14,13 +14,13 @@ class RIJOnScrollListener$3
   public void run()
   {
     AdRequestData localAdRequestData = new AdRequestData();
-    localAdRequestData.a = true;
-    ReadInJoyLogicEngine.a().a(this.this$0.a.a().b(), 3, ((Integer)this.a.first).intValue(), ((Integer)this.a.second).intValue(), localAdRequestData);
+    localAdRequestData.e = true;
+    ReadInJoyLogicEngine.a().a(this.this$0.e.a().B(), 3, ((Integer)this.a.first).intValue(), ((Integer)this.a.second).intValue(), localAdRequestData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJOnScrollListener.3
  * JD-Core Version:    0.7.0.1
  */

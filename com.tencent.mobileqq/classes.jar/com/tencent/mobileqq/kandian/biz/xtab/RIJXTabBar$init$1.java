@@ -14,13 +14,13 @@ final class RIJXTabBar$init$1
   {
     paramView = RIJXTabBar.a(this.a);
     if (paramView != null) {
-      paramView.a(this.a.a());
+      paramView.a(this.a.getSelfBtnNotifyIcon());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabBar.init.1
  * JD-Core Version:    0.7.0.1
  */

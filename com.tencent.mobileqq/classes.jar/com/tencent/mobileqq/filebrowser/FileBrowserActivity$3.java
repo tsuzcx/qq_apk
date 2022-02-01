@@ -11,14 +11,14 @@ class FileBrowserActivity$3
   
   public void run()
   {
-    int i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-    CharSequence localCharSequence = TextUtils.ellipsize(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetTextView.getPaint(), i - 15, TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(localCharSequence);
+    int i = this.a.getMeasuredWidth();
+    CharSequence localCharSequence = TextUtils.ellipsize(this.b, this.a.getPaint(), i - 15, TextUtils.TruncateAt.END);
+    this.a.setText(localCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.FileBrowserActivity.3
  * JD-Core Version:    0.7.0.1
  */

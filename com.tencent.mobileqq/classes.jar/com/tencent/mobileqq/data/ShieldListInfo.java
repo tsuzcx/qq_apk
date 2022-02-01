@@ -32,6 +32,7 @@ public class ShieldListInfo
   public static final int SHIELD_LIST_SOURCE_ID_STRANGER_FRIEND = 50003;
   public static final int SHIELD_LIST_SOURCE_ID_VALIDATION = 21;
   public static final int SHIELD_LIST_SOURCE_ID_WPA = 10;
+  public static final int SHIELD_LIST_SOURCE_KAN_DIAN_MSG = 170;
   public static final int SHIELD_LIST_SOURCE_LIGHTALK = 27;
   public static final int SHIELD_LIST_SOURCE_MATCH_CAMPUS_CHAT = 166;
   public static final int SHIELD_LIST_SOURCE_MATCH_CHAT = 163;
@@ -52,74 +53,83 @@ public class ShieldListInfo
         if (paramInt != 10002) {
           if (paramInt != 10004)
           {
-            if ((paramInt == 24) || (paramInt == 25)) {
-              break label262;
-            }
-            if (paramInt != 1000)
+            if (paramInt != 10010)
             {
-              if (paramInt != 1001)
+              if (paramInt != 10013)
               {
-                if (paramInt != 1009)
+                if ((paramInt == 24) || (paramInt == 25)) {
+                  break label258;
+                }
+                if (paramInt != 1000)
                 {
-                  if (paramInt != 1010)
+                  if (paramInt != 1001)
                   {
-                    if (paramInt != 1044)
+                    if (paramInt != 1009)
                     {
-                      if (paramInt != 1045)
+                      if (paramInt != 1010)
                       {
-                        switch (paramInt)
+                        if (paramInt != 1044)
                         {
-                        default: 
-                          switch (paramInt)
+                          if (paramInt != 1045)
                           {
-                          default: 
-                            switch (paramInt)
+                            if (paramInt != 10007)
                             {
-                            default: 
-                              return -1;
-                            case 10010: 
-                              return 167;
-                            case 10009: 
-                              return 168;
-                            case 10008: 
+                              if (paramInt != 10008)
+                              {
+                                switch (paramInt)
+                                {
+                                default: 
+                                  switch (paramInt)
+                                  {
+                                  default: 
+                                    return -1;
+                                  case 1024: 
+                                    return 26;
+                                  case 1023: 
+                                    return 24;
+                                  case 1022: 
+                                    return 21;
+                                  case 1021: 
+                                    return 23;
+                                  case 1020: 
+                                    return 132;
+                                  }
+                                case 1006: 
+                                  return 8;
+                                case 1005: 
+                                  return 10;
+                                case 1004: 
+                                  return 7;
+                                }
+                                return 50003;
+                              }
                               return 165;
                             }
                             return 164;
-                          case 1024: 
-                            return 26;
-                          case 1023: 
-                            return 24;
-                          case 1022: 
-                            return 21;
-                          case 1021: 
-                            return 23;
-                          case 1020: 
-                            return 132;
                           }
-                        case 1006: 
-                          return 8;
-                        case 1005: 
-                          return 10;
-                        case 1004: 
-                          return 7;
+                          return 166;
                         }
-                        return 50003;
+                        return 163;
                       }
-                      return 166;
+                      return 11;
                     }
-                    return 163;
+                    return 18;
                   }
-                  return 11;
                 }
-                return 18;
+                else {
+                  return 6;
+                }
+              }
+              else
+              {
+                return 170;
               }
             }
             else {
-              return 6;
+              return 167;
             }
           }
-          else
-          {
+          else {
             return 153;
           }
         }
@@ -130,7 +140,7 @@ public class ShieldListInfo
         return 2164;
       }
     }
-    label262:
+    label258:
     i = 27;
     return i;
   }
@@ -145,58 +155,60 @@ public class ShieldListInfo
         {
           if (paramInt != 153)
           {
-            if (paramInt != 2164)
+            if (paramInt != 170)
             {
-              if (paramInt != 50003)
+              if (paramInt != 2164)
               {
-                switch (paramInt)
+                if (paramInt != 50003)
                 {
-                default: 
                   switch (paramInt)
                   {
                   default: 
                     switch (paramInt)
                     {
                     default: 
-                      return -1;
-                    case 168: 
-                      return 10009;
-                    case 167: 
-                      return 10010;
-                    case 166: 
-                      return 1045;
-                    case 165: 
-                      return 10008;
-                    case 164: 
-                      return 10007;
+                      switch (paramInt)
+                      {
+                      default: 
+                        return -1;
+                      case 167: 
+                        return 10010;
+                      case 166: 
+                        return 1045;
+                      case 165: 
+                        return 10008;
+                      case 164: 
+                        return 10007;
+                      }
+                      return 1044;
+                    case 27: 
+                      return 22;
+                    case 26: 
+                      return 1024;
+                    case 25: 
+                      return 1025;
+                    case 24: 
+                      return 1023;
                     }
-                    return 1044;
-                  case 27: 
-                    return 22;
-                  case 26: 
-                    return 1024;
-                  case 25: 
-                    return 1025;
-                  case 24: 
-                    return 1023;
+                    return 1021;
+                  case 11: 
+                    return 1010;
+                  case 10: 
+                    return 1005;
+                  case 9: 
+                    return 1001;
+                  case 8: 
+                    return 1006;
+                  case 7: 
+                    return 1004;
                   }
-                  return 1021;
-                case 11: 
-                  return 1010;
-                case 10: 
-                  return 1005;
-                case 9: 
-                  return 1001;
-                case 8: 
-                  return 1006;
-                case 7: 
-                  return 1004;
+                  return 1000;
                 }
-                return 1000;
+                return 1003;
               }
-              return 1003;
+              return 1036;
             }
-            return 1036;
+            return 10013;
           }
           return 10004;
         }
@@ -219,7 +231,7 @@ public class ShieldListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShieldListInfo
  * JD-Core Version:    0.7.0.1
  */

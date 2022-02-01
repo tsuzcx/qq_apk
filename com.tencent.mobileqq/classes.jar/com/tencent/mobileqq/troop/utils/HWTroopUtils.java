@@ -137,7 +137,7 @@ public class HWTroopUtils
         paramQQAppInterface.putExtra("url", paramString);
         paramContext.startActivity(paramQQAppInterface);
         if ((paramContext instanceof Activity)) {
-          ((Activity)paramContext).overridePendingTransition(2130772342, 2130772004);
+          ((Activity)paramContext).overridePendingTransition(2130772434, 2130772007);
         }
       }
     }
@@ -190,18 +190,18 @@ public class HWTroopUtils
         QLog.d("hw_troop", 2, ((StringBuilder)localObject2).toString());
       }
       paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, paramQQAppInterface.getCurrentAccountUin());
-      if (!((TroopBindPublicAccountMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(paramTroopTipsEntity.troopUin))
+      if (!((TroopBindPublicAccountMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).f(paramTroopTipsEntity.troopUin))
       {
         localObject2 = new MessageInfo();
         Object localObject3 = new MessageInfo();
-        ((MessageInfo)localObject3).a.a(4, ((MessageForGrayTips)localObject1).shmsgseq, ((MessageForGrayTips)localObject1).uniseq);
+        ((MessageInfo)localObject3).c.a(4, ((MessageForGrayTips)localObject1).shmsgseq, ((MessageForGrayTips)localObject1).uniseq);
         ((MessageInfo)localObject2).a((MessageInfo)localObject3);
         ((MessageForGrayTips)localObject1).mMessageInfo = ((MessageInfo)localObject3);
         ((TroopInfoManager)paramQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER)).a(paramTroopTipsEntity.troopUin, (MessageInfo)localObject2);
         Object localObject4 = new BaseMessageManager.AddMessageContext(paramQQAppInterface);
-        localObject3 = ((BaseMessageManager.AddMessageContext)localObject4).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
-        localObject4 = ((BaseMessageManager.AddMessageContext)localObject4).jdField_a_of_type_JavaUtilMap;
-        localObject3 = ((RecentUserProxy)localObject3).a(paramTroopTipsEntity.troopUin, 1);
+        localObject3 = ((BaseMessageManager.AddMessageContext)localObject4).k;
+        localObject4 = ((BaseMessageManager.AddMessageContext)localObject4).a;
+        localObject3 = ((RecentUserProxy)localObject3).b(paramTroopTipsEntity.troopUin, 1);
         int i = ((MessageInfo)localObject2).a();
         if (i >= ((RecentUser)localObject3).msgType)
         {
@@ -226,8 +226,8 @@ public class HWTroopUtils
     Object localObject1 = (MessageForGrayTips)MessageRecordFactory.a(-1013);
     ((MessageForGrayTips)localObject1).frienduin = paramString;
     Object localObject2 = BaseApplicationImpl.getApplication().getResources();
-    String str = ((Resources)localObject2).getString(2131697509);
-    localObject2 = ((Resources)localObject2).getString(2131697505);
+    String str = ((Resources)localObject2).getString(2131895282);
+    localObject2 = ((Resources)localObject2).getString(2131895278);
     ((MessageForGrayTips)localObject1).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, str, NetConnInfoCenter.getServerTime(), -1013, 1, paramInt);
     ((MessageForGrayTips)localObject1).time = paramLong;
     paramString = new Bundle();
@@ -305,7 +305,7 @@ public class HWTroopUtils
         FileInfo localFileInfo = new FileInfo();
         localFileInfo.d(paramString2);
         localFileInfo.b(false);
-        localFileInfo.e(((File)localObject1).getPath());
+        localFileInfo.f(((File)localObject1).getPath());
         localFileInfo.a(((File)localObject1).length());
         localFileInfo.b(((File)localObject1).lastModified());
         Object localObject2 = FileManagerUtil.a(localFileInfo);
@@ -313,9 +313,9 @@ public class HWTroopUtils
         localForwardFileInfo.b(((FileManagerEntity)localObject2).nSessionId);
         localForwardFileInfo.d(3);
         localForwardFileInfo.b(10000);
-        localForwardFileInfo.a(localFileInfo.c());
-        localForwardFileInfo.d(localFileInfo.d());
-        localForwardFileInfo.d(localFileInfo.a());
+        localForwardFileInfo.a(localFileInfo.d());
+        localForwardFileInfo.d(localFileInfo.e());
+        localForwardFileInfo.d(localFileInfo.f());
         localObject1 = new Intent(paramContext, FileBrowserActivity.class);
         ((Intent)localObject1).putExtra("fileinfo", localForwardFileInfo);
         if ((((FileManagerEntity)localObject2).nFileType == 0) || (((FileManagerEntity)localObject2).nFileType == 1))
@@ -399,7 +399,7 @@ public class HWTroopUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HWTroopUtils
  * JD-Core Version:    0.7.0.1
  */

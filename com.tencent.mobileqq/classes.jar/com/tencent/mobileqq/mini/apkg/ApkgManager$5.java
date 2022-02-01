@@ -35,7 +35,7 @@ class ApkgManager$5
     Object localObject = this.val$listener;
     if (localObject != null)
     {
-      ((ApkgManager.OnInitApkgListener)localObject).onInitApkgInfo(2, this.val$apkgInfo, HardCodeUtil.a(2131700510));
+      ((ApkgManager.OnInitApkgListener)localObject).onInitApkgInfo(2, this.val$apkgInfo, HardCodeUtil.a(2131898541));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDownloadFailed() called with: s = [");
       ((StringBuilder)localObject).append(paramString);
@@ -94,14 +94,14 @@ class ApkgManager$5
     {
       paramString = this.val$listener;
       if (paramString != null) {
-        paramString.onInitApkgInfo(3, this.val$apkgInfo, HardCodeUtil.a(2131700511));
+        paramString.onInitApkgInfo(3, this.val$apkgInfo, HardCodeUtil.a(2131898542));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.5
  * JD-Core Version:    0.7.0.1
  */

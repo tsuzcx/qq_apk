@@ -12,7 +12,7 @@ class GetUserGroupMemberListHandler$1
 {
   protected Object a(@NonNull JobContext paramJobContext, Void... paramVarArgs)
   {
-    ((ITroopMemberListHandler)this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardModelGetUserGroupMemberListHandler.a.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 0L, 5, this.jdField_a_of_type_Int, 0);
+    ((ITroopMemberListHandler)this.c.a.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER)).a(Long.valueOf(this.a).longValue(), 0L, 5, this.b, 0);
     return null;
   }
 }

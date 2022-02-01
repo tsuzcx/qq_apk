@@ -11,20 +11,20 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo;
+    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.a;
     ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
     if (localHardwareInfo2 == null) {
       localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
     }
-    localHardwareInfo1.b = DeviceInfoUtil.a(Process.myPid());
-    localHardwareInfo1.c = DeviceInfoUtil.f();
-    ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo = localHardwareInfo1;
-    ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    localHardwareInfo1.f = DeviceInfoUtil.a(Process.myPid());
+    localHardwareInfo1.g = DeviceInfoUtil.s();
+    ApolloGameStateMachine.a = localHardwareInfo1;
+    ApolloGameStateMachine.b.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.1
  * JD-Core Version:    0.7.0.1
  */

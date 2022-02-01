@@ -6,17 +6,17 @@ import android.widget.TextView;
 
 class SearchSougouResultItemBuilder$ViewHolder
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ViewGroup a;
   TextView b;
   TextView c;
+  TextView d;
+  ImageView e;
   
   SearchSougouResultItemBuilder$ViewHolder(SearchSougouResultItemBuilder paramSearchSougouResultItemBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchSougouResultItemBuilder.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

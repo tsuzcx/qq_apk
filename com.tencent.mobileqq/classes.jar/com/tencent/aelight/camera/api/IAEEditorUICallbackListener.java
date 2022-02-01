@@ -2,7 +2,7 @@ package com.tencent.aelight.camera.api;
 
 public abstract interface IAEEditorUICallbackListener
 {
-  public abstract void a(int paramInt);
+  public abstract void deleteMedia(int paramInt);
 }
 
 

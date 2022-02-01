@@ -11,13 +11,13 @@ class UniteGrayTipItemBuilder$3
   
   public void onClick(View paramView)
   {
-    UniteGrayTipItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipItemBuilder, this.jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipItemBuilder$Holder.a);
+    UniteGrayTipItemBuilder.a(this.b, this.a.q);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

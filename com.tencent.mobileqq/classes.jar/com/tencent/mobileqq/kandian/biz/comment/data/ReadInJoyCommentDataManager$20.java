@@ -12,16 +12,16 @@ class ReadInJoyCommentDataManager$20
   
   void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
-    boolean bool1 = this.jdField_a_of_type_Boolean;
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    boolean bool2 = this.b;
-    int i = this.jdField_a_of_type_Int;
+    boolean bool1 = this.a;
+    List localList = this.b;
+    boolean bool2 = this.c;
+    int i = this.d;
     paramOnDataChangeListener.onCommentListLoad(1, bool1, localList, bool2, i, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.20
  * JD-Core Version:    0.7.0.1
  */

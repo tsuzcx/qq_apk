@@ -1,8 +1,8 @@
 package com.tencent.biz.qcircleshadow.lib;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import com.tencent.biz.qcircleshadow.local.QCircleShadow;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.peak.api.IPeakHelperApi;
@@ -12,6 +12,8 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soload.api.SoLoadManager;
 import com.tencent.mobileqq.soload.biz.OnLoadListener;
 import com.tencent.mobileqq.soload.biz.entity.LoadExtResult;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.wink.api.IQQWinkLaucher;
 import com.tencent.qzonehub.api.font.IFontManager;
 import mqq.os.MqqHandler;
 
@@ -22,6 +24,11 @@ public class QCirclePluginInitHelper
   private static final String TAG = "QCirclePluginInitHelper";
   private static volatile QCirclePluginInitHelper sInstance;
   private boolean mRankSoLoaded;
+  
+  public static void PreloadWink(@NonNull Context paramContext)
+  {
+    ((IQQWinkLaucher)QRoute.api(IQQWinkLaucher.class)).preloadWink(paramContext);
+  }
   
   public static void cancelPeakAlive(@NonNull Context paramContext)
   {
@@ -47,11 +54,6 @@ public class QCirclePluginInitHelper
     return sInstance;
   }
   
-  public static String getPluginQUA()
-  {
-    return QCircleShadow.a().a();
-  }
-  
   public static String getReportVersionName()
   {
     return ((IAppSettingApi)QRoute.api(IAppSettingApi.class)).getReportVersionName();
@@ -64,7 +66,7 @@ public class QCirclePluginInitHelper
   
   public static boolean isVideoSDKReady()
   {
-    return QQVideoPlaySDKManager.a();
+    return QQVideoPlaySDKManager.isSDKReady();
   }
   
   public static void preloadPeakProcess(@NonNull Context paramContext)
@@ -80,6 +82,11 @@ public class QCirclePluginInitHelper
   public static void preloadToolProgress()
   {
     ThreadManager.getSubThreadHandler().post(new QCirclePluginInitHelper.1());
+  }
+  
+  public static void showPermissionSettingDialog2(Activity paramActivity, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    DialogUtil.a(paramActivity, paramArrayOfString, paramArrayOfInt);
   }
   
   public static void startFontSoDownload()
@@ -113,7 +120,7 @@ public class QCirclePluginInitHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginInitHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class LongTextAddMessageHandler$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgLongTextMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.a.b(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.adder.LongTextAddMessageHandler.1
  * JD-Core Version:    0.7.0.1
  */

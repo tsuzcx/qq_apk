@@ -15,19 +15,19 @@ class SubscribePlayerManager$2
   
   public void run()
   {
-    if (NetworkUtil.a(BaseApplicationImpl.context) != 1)
+    if (NetworkUtil.b(BaseApplicationImpl.context) != 1)
     {
       QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
       return;
     }
-    if (SubscribePlayerManager.a(this.this$0)) {
+    if (SubscribePlayerManager.c(this.this$0)) {
       return;
     }
-    if (SubscribePlayerManager.a(this.this$0).size() > 0)
+    if (SubscribePlayerManager.d(this.this$0).size() > 0)
     {
       SubscribePlayerManager.a(this.this$0, true);
       int i = 0;
-      Object localObject = SubscribePlayerManager.a(this.this$0).keySet().iterator();
+      Object localObject = SubscribePlayerManager.d(this.this$0).keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
@@ -35,9 +35,9 @@ class SubscribePlayerManager$2
           i = localInteger.intValue();
         }
       }
-      localObject = (AutoVideoItemBuilder.AutoVideoMsgViewHolder)SubscribePlayerManager.a(this.this$0).get(Integer.valueOf(i));
+      localObject = (AutoVideoItemBuilder.AutoVideoMsgViewHolder)SubscribePlayerManager.d(this.this$0).get(Integer.valueOf(i));
       if (localObject != null) {
-        SubscribePlayerManager.a(this.this$0, (AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject, ((AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject).b);
+        SubscribePlayerManager.a(this.this$0, (AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject, ((AutoVideoItemBuilder.AutoVideoMsgViewHolder)localObject).l);
       }
     }
   }

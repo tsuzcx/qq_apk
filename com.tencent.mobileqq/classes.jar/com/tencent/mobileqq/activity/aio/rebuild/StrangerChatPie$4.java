@@ -24,56 +24,56 @@ class StrangerChatPie$4
   {
     if (paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.a().getString(2131698323), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      this.a.V.notifyDataSetChanged();
+      QQToast.makeText(this.a.f, this.a.aX().getString(2131896247), 0).show(this.a.f.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.a().getString(2131698322), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    QQToast.makeText(this.a.f, this.a.aX().getString(2131896246), 0).show(this.a.f.getTitleBarHeight());
   }
   
   protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    if (((this.a.ah.a == 1025) || (this.a.ah.a == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.ah != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
       paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      if ((this.a.ah.b != null) && (paramHashMap != null) && (this.a.ah.b.equals(paramHashMap.uin)))
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
+        if (this.a.ah.a == 1024) {
+          this.a.ah.a = 1025;
         }
-        paramHashMap = ((StrangerQidianHelper)StrangerChatPie.a(this.a).a(61)).a();
+        paramHashMap = ((StrangerQidianHelper)StrangerChatPie.a(this.a).a(61)).b();
         if (paramHashMap != null)
         {
           StrangerChatPie.a(this.a, true);
-          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-          StrangerChatPie.a(this.a).setOnClickListener(null);
+          this.a.I.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
           StrangerChatPie.b(this.a).setOnClickListener(null);
-          this.a.f.setText(paramHashMap);
-          if (ChatActivityConstants.a) {
-            this.a.f.setContentDescription(paramHashMap);
+          StrangerChatPie.c(this.a).setOnClickListener(null);
+          this.a.I.setText(paramHashMap);
+          if (ChatActivityConstants.b) {
+            this.a.I.setContentDescription(paramHashMap);
           }
-          StrangerChatPie.a(this.a, true);
+          StrangerChatPie.b(this.a, true);
         }
         else
         {
-          StrangerChatPie.b(this.a, false);
+          StrangerChatPie.c(this.a, false);
         }
-        ((AddFriendHelper)StrangerChatPie.b(this.a).a(113)).e();
+        ((AddFriendHelper)StrangerChatPie.d(this.a).a(113)).g();
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onGetQidianUserDetailInfo not current curFriendUin");
+        QLog.d(this.a.c, 2, "onGetQidianUserDetailInfo not current curFriendUin");
       }
     }
     else if (QLog.isColorLevel())
     {
-      QLog.d(this.a.b, 2, "onGetQidianUserDetailInfo fail");
+      QLog.d(this.a.c, 2, "onGetQidianUserDetailInfo fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie.4
  * JD-Core Version:    0.7.0.1
  */

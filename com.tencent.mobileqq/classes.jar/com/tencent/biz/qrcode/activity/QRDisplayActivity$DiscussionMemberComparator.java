@@ -11,7 +11,7 @@ class QRDisplayActivity$DiscussionMemberComparator
   public int a(String paramString1, String paramString2)
   {
     if ((paramString1 != null) && (paramString2 != null)) {
-      return ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+      return ChnToSpell.b(paramString1, 1).compareTo(ChnToSpell.b(paramString2, 1));
     }
     if (paramString1 != null) {
       return 1;

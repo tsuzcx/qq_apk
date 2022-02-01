@@ -14,17 +14,17 @@ class AVServiceProxy$AVServiceForQQConnection
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceConnected");
+      QLog.d(AVServiceProxy.c(), 2, "AVServiceForQQ onServiceConnected");
     }
-    this.a.a = IAVServiceForQQ.Stub.a(paramIBinder);
+    this.a.b = IAVServiceForQQ.Stub.a(paramIBinder);
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceDisconnected");
+      QLog.d(AVServiceProxy.c(), 2, "AVServiceForQQ onServiceDisconnected");
     }
-    this.a.a = null;
+    this.a.b = null;
   }
 }
 

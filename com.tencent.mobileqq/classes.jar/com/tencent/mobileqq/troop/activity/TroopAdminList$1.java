@@ -11,13 +11,13 @@ class TroopAdminList$1
   protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      this.a.c();
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.1
  * JD-Core Version:    0.7.0.1
  */

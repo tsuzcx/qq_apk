@@ -9,8 +9,8 @@ public class GdtGetUserInfoHandler
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
     TroopMemberApiClient localTroopMemberApiClient = TroopMemberApiClient.a();
-    localTroopMemberApiClient.a();
-    localTroopMemberApiClient.i(new GdtGetUserInfoHandler.1(this, paramGdtAdWebPlugin, paramString, paramVarArgs, localTroopMemberApiClient));
+    localTroopMemberApiClient.e();
+    localTroopMemberApiClient.k(new GdtGetUserInfoHandler.1(this, paramGdtAdWebPlugin, paramString, paramVarArgs, localTroopMemberApiClient));
     paramVarArgs = null;
     if (paramGdtAdWebPlugin != null) {
       paramString = paramGdtAdWebPlugin.a();
@@ -18,7 +18,7 @@ public class GdtGetUserInfoHandler
       paramString = null;
     }
     if (paramGdtAdWebPlugin != null) {
-      paramVarArgs = paramGdtAdWebPlugin.a();
+      paramVarArgs = paramGdtAdWebPlugin.b();
     }
     AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
     return true;
@@ -26,7 +26,7 @@ public class GdtGetUserInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtGetUserInfoHandler
  * JD-Core Version:    0.7.0.1
  */

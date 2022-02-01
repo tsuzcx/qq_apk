@@ -13,21 +13,21 @@ class BlessActivity$7$1
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a.a), 2, "videoview bring to top");
+      QLog.d(BlessActivity.f(this.a.a), 2, "videoview bring to top");
     }
-    if (BlessActivity.b(this.a.a) != null) {
-      BlessActivity.b(this.a.a).setVisibility(8);
+    if (BlessActivity.h(this.a.a) != null) {
+      BlessActivity.h(this.a.a).setVisibility(8);
     }
-    if (BlessActivity.a(this.a.a) != null) {
-      BlessActivity.a(this.a.a).bringToFront();
+    if (BlessActivity.g(this.a.a) != null) {
+      BlessActivity.g(this.a.a).bringToFront();
     }
-    this.a.a.findViewById(2131369249).bringToFront();
-    this.a.a.findViewById(2131378784).bringToFront();
+    this.a.a.findViewById(2131436227).bringToFront();
+    this.a.a.findViewById(2131447463).bringToFront();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

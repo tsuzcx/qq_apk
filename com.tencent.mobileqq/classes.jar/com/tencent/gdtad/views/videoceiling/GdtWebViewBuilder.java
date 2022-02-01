@@ -24,12 +24,12 @@ public class GdtWebViewBuilder
   extends AbsWebView
   implements IWebViewBuilder
 {
-  protected Intent a;
+  protected Intent c;
   
   public GdtWebViewBuilder(Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
   {
     super(paramContext, paramActivity, paramAppInterface);
-    this.a = paramIntent;
+    this.c = paramIntent;
   }
   
   public void a()
@@ -39,7 +39,7 @@ public class GdtWebViewBuilder
   
   public void a(Bundle paramBundle)
   {
-    super.doOnCreate(this.a);
+    super.doOnCreate(this.c);
   }
   
   public void a(TouchWebView paramTouchWebView)
@@ -61,7 +61,7 @@ public class GdtWebViewBuilder
     {
       paramString = Uri.parse(paramString);
       localObject = paramString.getScheme();
-      if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+      if (AuthorizeConfig.a().d(paramWebView.getUrl(), (String)localObject).booleanValue())
       {
         paramWebView = new Intent("android.intent.action.VIEW", paramString);
         paramWebView.addFlags(268435456);
@@ -134,7 +134,7 @@ public class GdtWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

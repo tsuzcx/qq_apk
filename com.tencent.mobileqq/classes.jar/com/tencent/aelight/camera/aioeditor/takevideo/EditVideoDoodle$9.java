@@ -10,12 +10,12 @@ class EditVideoDoodle$9
   
   public void run()
   {
-    QQToast.a(this.this$0.a(), HardCodeUtil.a(2131704023), 0).a();
+    QQToast.makeText(this.this$0.u(), HardCodeUtil.a(2131901949), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoDoodle.9
  * JD-Core Version:    0.7.0.1
  */

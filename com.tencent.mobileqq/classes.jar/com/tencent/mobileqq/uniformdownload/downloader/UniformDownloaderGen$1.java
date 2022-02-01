@@ -27,7 +27,7 @@ class UniformDownloaderGen$1
   
   public void a(int paramInt, String paramString, Bundle paramBundle)
   {
-    UniformDownloaderGen.a(this.a);
+    UniformDownloaderGen.b(this.a);
     this.a.c(5);
     if (UniformDownloaderGen.a(this.a) != null) {
       UniformDownloaderGen.a(this.a).a(paramInt, paramString, paramBundle);
@@ -36,19 +36,19 @@ class UniformDownloaderGen$1
   
   public void a(String paramString, long paramLong, Bundle paramBundle)
   {
-    UniformDownloaderGen.a(this.a);
+    UniformDownloaderGen.b(this.a);
     this.a.c(4);
-    if (FileUtils.fileExists(this.a.d))
+    if (FileUtils.fileExists(this.a.f))
     {
       paramString = this.a;
-      paramString.d = QQFileManagerUtil.f(paramString.d);
+      paramString.f = QQFileManagerUtil.t(paramString.f);
     }
-    paramString = UniformDownloaderGen.g;
+    paramString = UniformDownloaderGen.a;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[UniformDL][");
-    ((StringBuilder)localObject).append(this.a.c);
+    ((StringBuilder)localObject).append(this.a.h);
     ((StringBuilder)localObject).append("]. >>>Download SUCCESS.  save file to: =");
-    ((StringBuilder)localObject).append(this.a.d);
+    ((StringBuilder)localObject).append(this.a.f);
     QLog.i(paramString, 1, ((StringBuilder)localObject).toString());
     long l1;
     long l2;
@@ -65,35 +65,35 @@ class UniformDownloaderGen$1
       l2 = l1;
       i = 1;
     }
-    if (!FileUtils.renameFile(new File(this.a.e), new File(this.a.d)))
+    if (!FileUtils.renameFile(new File(this.a.g), new File(this.a.f)))
     {
-      paramString = UniformDownloaderGen.g;
+      paramString = UniformDownloaderGen.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[UniformDL][");
-      ((StringBuilder)localObject).append(this.a.c);
+      ((StringBuilder)localObject).append(this.a.h);
       ((StringBuilder)localObject).append("].rename failed.temppath=");
-      ((StringBuilder)localObject).append(this.a.e);
+      ((StringBuilder)localObject).append(this.a.g);
       ((StringBuilder)localObject).append(" path=");
-      ((StringBuilder)localObject).append(this.a.d);
+      ((StringBuilder)localObject).append(this.a.f);
       QLog.e(paramString, 1, ((StringBuilder)localObject).toString());
       this.a.c(5);
       paramString = UDConstants.a(7);
-      localObject = UniformDownloadMgr.a().a();
+      localObject = UniformDownloadMgr.a().b();
       if (localObject != null)
       {
         localObject = (BaseQQAppInterface)localObject;
-        paramLong = this.a.c;
-        long l3 = this.a.a;
+        paramLong = this.a.h;
+        long l3 = this.a.p;
         long l4 = 7;
-        QQFileManagerUtil.a((BaseQQAppInterface)localObject, paramLong, "actFileUfGenDownload", l3, "", "", "", "", l4, paramString, l2, l1, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, "", 0, paramString, null);
-        QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.a.c, "actFileUfGenDownloadDetail", this.a.a, "", "", "", "", l4, paramString, l2, l1, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, "", 0, paramString, null);
+        QQFileManagerUtil.a((BaseQQAppInterface)localObject, paramLong, "actFileUfGenDownload", l3, "", "", "", "", l4, paramString, l2, l1, this.a.e, this.a.c, "", 0, paramString, null);
+        QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.a.h, "actFileUfGenDownloadDetail", this.a.p, "", "", "", "", l4, paramString, l2, l1, this.a.e, this.a.c, "", 0, paramString, null);
       }
       else
       {
-        localObject = UniformDownloaderGen.g;
+        localObject = UniformDownloaderGen.a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[UniformDL][");
-        localStringBuilder.append(this.a.c);
+        localStringBuilder.append(this.a.h);
         localStringBuilder.append("].report failed - 5");
         QLog.w((String)localObject, 1, localStringBuilder.toString());
       }
@@ -102,35 +102,35 @@ class UniformDownloaderGen$1
       }
       return;
     }
-    UniformDownloadBPTrans.a().a(this.a.jdField_b_of_type_JavaLangString);
-    paramString = UniformDownloadMgr.a().a();
+    UniformDownloadBPTrans.a().a(this.a.c);
+    paramString = UniformDownloadMgr.a().b();
     if (paramString != null)
     {
       paramString = (BaseQQAppInterface)paramString;
-      QQFileManagerUtil.a(paramString, this.a.c, "actFileUfGenDownload", System.currentTimeMillis() - this.a.a, "", "", "", "", l2, l1, this.a.jdField_b_of_type_Long, i, null);
-      QQFileManagerUtil.a(paramString, this.a.c, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.a, "", "", "", "", l2, l1, this.a.jdField_b_of_type_Long, i, null);
+      QQFileManagerUtil.a(paramString, this.a.h, "actFileUfGenDownload", System.currentTimeMillis() - this.a.p, "", "", "", "", l2, l1, this.a.e, i, null);
+      QQFileManagerUtil.a(paramString, this.a.h, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.p, "", "", "", "", l2, l1, this.a.e, i, null);
     }
     else
     {
-      paramString = UniformDownloaderGen.g;
+      paramString = UniformDownloaderGen.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[UniformDL][");
-      ((StringBuilder)localObject).append(this.a.c);
+      ((StringBuilder)localObject).append(this.a.h);
       ((StringBuilder)localObject).append("].report failed - 0");
       QLog.i(paramString, 1, ((StringBuilder)localObject).toString());
     }
     if (UniformDownloaderGen.a(this.a) != null)
     {
-      if ((this.a.jdField_b_of_type_Long > 0L) && (paramLong <= 0L)) {
-        paramLong = this.a.jdField_b_of_type_Long;
+      if ((this.a.e > 0L) && (paramLong <= 0L)) {
+        paramLong = this.a.e;
       }
-      UniformDownloaderGen.a(this.a).a(this.a.d, paramLong, paramBundle);
+      UniformDownloaderGen.a(this.a).a(this.a.f, paramLong, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderGen.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class WSReportDC898Base$1
   
   public void run()
   {
-    WSReportDc00898.a(WSReportDC898Base.a(this.this$0).b(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, WSReportDC898Base.a(this.this$0).c());
+    WSReportDc00898.a(WSReportDC898Base.a(this.this$0).b(), this.a, this.b, this.c, this.d, this.e, this.f, WSReportDC898Base.a(this.this$0).c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.dc898.WSReportDC898Base.1
  * JD-Core Version:    0.7.0.1
  */

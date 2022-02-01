@@ -14,13 +14,13 @@ import java.util.ArrayList;
 class ReminderListFragment$ReminderListAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private ArrayList<ReminderListItemModel> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ReminderListItemModel> b = new ArrayList();
   
   private ReminderListFragment$ReminderListAdapter(ReminderListFragment paramReminderListFragment) {}
   
   public void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (((ArrayList)localObject).isEmpty()) {
@@ -32,20 +32,20 @@ class ReminderListFragment$ReminderListAdapter
       for (;;)
       {
         j = k;
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i >= this.b.size()) {
           break;
         }
-        localObject = (ReminderListItemModel)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (paramString.equals(((ReminderListItemModel)localObject).jdField_a_of_type_WalletAcsMsg.msg_id))
+        localObject = (ReminderListItemModel)this.b.get(i);
+        if (paramString.equals(((ReminderListItemModel)localObject).a.msg_id))
         {
-          if (!StringUtil.a(((ReminderListItemModel)localObject).jdField_a_of_type_JavaLangString))
+          if (!StringUtil.isEmpty(((ReminderListItemModel)localObject).b))
           {
             j = i + 1;
-            if (j < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-              if ((((ReminderListItemModel)localObject).jdField_a_of_type_Int == 1) && (((ReminderListItemModel)this.jdField_a_of_type_JavaUtilArrayList.get(j)).jdField_a_of_type_Int == 1)) {
-                ((ReminderListItemModel)this.jdField_a_of_type_JavaUtilArrayList.get(j)).jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713311);
-              } else if ((((ReminderListItemModel)localObject).jdField_a_of_type_Int == 0) && (((ReminderListItemModel)this.jdField_a_of_type_JavaUtilArrayList.get(j)).jdField_a_of_type_Int == 0)) {
-                ((ReminderListItemModel)this.jdField_a_of_type_JavaUtilArrayList.get(j)).jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713300);
+            if (j < this.b.size()) {
+              if ((((ReminderListItemModel)localObject).c == 1) && (((ReminderListItemModel)this.b.get(j)).c == 1)) {
+                ((ReminderListItemModel)this.b.get(j)).b = HardCodeUtil.a(2131910864);
+              } else if ((((ReminderListItemModel)localObject).c == 0) && (((ReminderListItemModel)this.b.get(j)).c == 0)) {
+                ((ReminderListItemModel)this.b.get(j)).b = HardCodeUtil.a(2131910853);
               }
             }
           }
@@ -55,33 +55,33 @@ class ReminderListFragment$ReminderListAdapter
         i += 1;
       }
       i = j;
-      if (j == this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (j == this.b.size()) {
         i = j - 1;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      this.b.remove(i);
       notifyItemRemoved(i);
-      notifyItemRangeChanged(i, this.jdField_a_of_type_JavaUtilArrayList.size());
+      notifyItemRangeChanged(i, this.b.size());
       if (getItemCount() == 0) {
-        ReminderListFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment);
+        ReminderListFragment.j(this.a);
       }
-      ReminderListFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, paramString);
+      ReminderListFragment.b(this.a, paramString);
     }
   }
   
   public void a(ArrayList<ReminderListItemModel> paramArrayList, boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.b.clear();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    this.b.addAll(paramArrayList);
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
+      return this.b.size();
     }
     return 0;
   }
@@ -91,9 +91,9 @@ class ReminderListFragment$ReminderListAdapter
     if ((paramViewHolder instanceof ReminderListFragment.ReminderListItemVH))
     {
       ReminderListFragment.ReminderListItemVH localReminderListItemVH = (ReminderListFragment.ReminderListItemVH)paramViewHolder;
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.b;
       if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-        localReminderListItemVH.a((ReminderListItemModel)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+        localReminderListItemVH.a((ReminderListItemModel)this.b.get(paramInt));
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -101,13 +101,13 @@ class ReminderListFragment$ReminderListAdapter
   
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560912, null, false);
-    return new ReminderListFragment.ReminderListItemVH(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderListFragment, paramViewGroup);
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2131627253, null, false);
+    return new ReminderListFragment.ReminderListItemVH(this.a, paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.ReminderListAdapter
  * JD-Core Version:    0.7.0.1
  */

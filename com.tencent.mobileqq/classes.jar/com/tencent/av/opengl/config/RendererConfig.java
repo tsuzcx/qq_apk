@@ -8,13 +8,13 @@ import com.tencent.qphone.base.util.QLog;
 public class RendererConfig
 {
   public int a;
-  public String a;
   public int b;
   public int c;
+  public String d;
   
   public static RendererConfig a()
   {
-    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    IConfigParser localIConfigParser = ConfigManager.c(BaseApplication.getContext());
     if (!localIConfigParser.isEmpty())
     {
       RendererConfig localRendererConfig = new RendererConfig();
@@ -28,21 +28,21 @@ public class RendererConfig
   {
     try
     {
-      this.jdField_a_of_type_Int = paramIConfigParser.getIntValue("OpenGLBlowUp/IsOpen", 0);
+      this.a = paramIConfigParser.getIntValue("OpenGLBlowUp/IsOpen", 0);
       this.b = paramIConfigParser.getIntValue("OpenGLBlowUp/width", 0);
       this.c = paramIConfigParser.getIntValue("OpenGLBlowUp/level", 0);
-      this.jdField_a_of_type_JavaLangString = paramIConfigParser.getStringValue("OpenGLBlowUp/versionname", "");
+      this.d = paramIConfigParser.getStringValue("OpenGLBlowUp/versionname", "");
       if (QLog.isColorLevel())
       {
         paramIConfigParser = new StringBuilder();
         paramIConfigParser.append("OpenGLSharpenConfig isOpen: ");
-        paramIConfigParser.append(this.jdField_a_of_type_Int);
+        paramIConfigParser.append(this.a);
         paramIConfigParser.append(" width: ");
         paramIConfigParser.append(this.b);
         paramIConfigParser.append(" level: ");
         paramIConfigParser.append(this.c);
         paramIConfigParser.append(" versionName: ");
-        paramIConfigParser.append(this.jdField_a_of_type_JavaLangString);
+        paramIConfigParser.append(this.d);
         QLog.i("RendererConfig", 2, paramIConfigParser.toString());
       }
       return true;

@@ -36,22 +36,22 @@ class QQCustomDialogWtihForwardAvatar$2
     else
     {
       paramView.setTag(Long.valueOf(l2));
-      int i = this.jdField_a_of_type_Int;
+      int i = this.a;
       if ((i != 1) && (i != 3000)) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE6", "0X8009BE6", 0, 0, "", "", "", "");
+        ReportController.b(this.b, "CliOper", "", "", "0X8009BE6", "0X8009BE6", 0, 0, "", "", "", "");
       } else {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8009BE8", "0X8009BE8", 0, 0, "", "", "", "");
+        ReportController.b(this.b, "CliOper", "", "", "0X8009BE8", "0X8009BE8", 0, 0, "", "", "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.hideSoftInputFromWindow();
-      localObject = this.jdField_a_of_type_AndroidAppActivity;
-      MiniChatActivity.a((Activity)localObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, 0.86F, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.a((Activity)localObject, 0.78F));
+      this.f.hideSoftInputFromWindow();
+      localObject = this.c;
+      MiniChatActivity.a((Activity)localObject, this.a, this.d, this.e, 0.86F, this.f.a((Activity)localObject, 0.78F));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar.2
  * JD-Core Version:    0.7.0.1
  */

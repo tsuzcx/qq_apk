@@ -13,22 +13,22 @@ class CustomMenuBar$1
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843394);
+    this.a.setImageResource(2130844348);
     if (CustomMenuBar.a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131166096));
+      this.b.setTextColor(this.c.getResources().getColor(2131166823));
     } else {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131166095));
+      this.b.setTextColor(this.c.getResources().getColor(2131166822));
     }
-    CustomMenuBar localCustomMenuBar = this.jdField_a_of_type_ComTencentBizUiCustomMenuBar;
-    localCustomMenuBar.jdField_a_of_type_Boolean = false;
-    localCustomMenuBar.b = true;
-    localCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
+    CustomMenuBar localCustomMenuBar = this.c;
+    localCustomMenuBar.f = false;
+    localCustomMenuBar.g = true;
+    localCustomMenuBar.j.removeCallbacks(this.c.k);
+    this.c.j.postDelayed(this.c.k, 50L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.ui.CustomMenuBar.1
  * JD-Core Version:    0.7.0.1
  */

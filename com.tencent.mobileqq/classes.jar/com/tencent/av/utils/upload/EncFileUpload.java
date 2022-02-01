@@ -12,7 +12,7 @@ public class EncFileUpload
   
   public void a(String paramString, FileUpload.UploadCallback paramUploadCallback)
   {
-    super.a(paramString, paramUploadCallback);
+    super.b(paramString, paramUploadCallback);
   }
 }
 

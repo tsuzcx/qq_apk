@@ -5,31 +5,26 @@ import java.util.List;
 
 public class AudioTransClientInfoHandlerExtend$InfoInterfaceData
 {
-  private static InfoInterfaceData a;
+  private static InfoInterfaceData e = new InfoInterfaceData();
   public int a;
-  public long a;
-  public List<NetAddr> a;
-  public int b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData = new InfoInterfaceData();
-  }
+  public long b;
+  public int c;
+  public List<NetAddr> d;
   
   public static InfoInterfaceData a()
   {
-    return jdField_a_of_type_ComTencentAvBusinessHandlerAudioTransClientInfoHandlerExtend$InfoInterfaceData;
+    return e;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mChannelType[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], mSessionId[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("], mTransType[");
     localStringBuilder.append(this.b);
+    localStringBuilder.append("], mTransType[");
+    localStringBuilder.append(this.c);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

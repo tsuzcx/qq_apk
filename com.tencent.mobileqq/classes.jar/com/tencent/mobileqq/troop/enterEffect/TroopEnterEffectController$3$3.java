@@ -20,7 +20,7 @@ class TroopEnterEffectController$3$3
     if (paramString2.equals("$AVATAR$"))
     {
       paramString1 = FaceDrawable.getDefaultDrawable(1, 3);
-      paramISprite = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$3.a.jdField_a_of_type_JavaLangString, 3, paramString1, paramString1, new TroopEnterEffectController.3.3.1(this, paramISprite));
+      paramISprite = FaceDrawable.getFaceDrawable(this.a, 1, this.b.a.b, 3, paramString1, paramString1, new TroopEnterEffectController.3.3.1(this, paramISprite));
     }
     try
     {
@@ -31,12 +31,12 @@ class TroopEnterEffectController$3$3
     if (paramString2.equals("$SVIP$"))
     {
       paramISprite = new StringBuilder();
-      paramISprite.append(TroopEnterEffectController.jdField_a_of_type_JavaLangString);
-      paramISprite.append(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$3.a.jdField_a_of_type_Int);
-      paramString1 = TroopEnterEffectController.a(paramISprite.toString(), this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$3.a);
+      paramISprite.append(TroopEnterEffectController.a);
+      paramISprite.append(this.b.a.a);
+      paramString1 = TroopEnterEffectController.a(paramISprite.toString(), this.b.a);
       paramISprite = paramString1;
       if (paramString1 == null) {
-        paramISprite = TroopEnterEffectController.a(TroopEnterEffectController.b(), this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$3.a);
+        paramISprite = TroopEnterEffectController.a(TroopEnterEffectController.c(), this.b.a);
       }
       paramString1 = paramISprite;
       if (paramISprite == null) {
@@ -57,7 +57,7 @@ class TroopEnterEffectController$3$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.3
  * JD-Core Version:    0.7.0.1
  */

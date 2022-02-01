@@ -13,31 +13,31 @@ import java.lang.ref.WeakReference;
 public class BridgeStream
   extends InputStream
 {
-  private BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  private final WeakReference<BridgeStream.IBridgeStreamCallback> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private BufferedInputStream jdField_b_of_type_JavaIoBufferedInputStream;
-  private boolean jdField_b_of_type_Boolean = true;
+  private BufferedInputStream a;
+  private BufferedInputStream b;
+  private ByteArrayOutputStream c;
+  private boolean d = true;
+  private boolean e = true;
+  private final WeakReference<BridgeStream.IBridgeStreamCallback> f;
   
   public BridgeStream(BridgeStream.IBridgeStreamCallback paramIBridgeStreamCallback, ByteArrayOutputStream paramByteArrayOutputStream, BufferedInputStream paramBufferedInputStream)
   {
     if (paramBufferedInputStream != null)
     {
-      this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream;
-      this.jdField_a_of_type_Boolean = false;
+      this.a = paramBufferedInputStream;
+      this.d = false;
     }
     if (paramByteArrayOutputStream != null)
     {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-      this.jdField_b_of_type_JavaIoBufferedInputStream = new BufferedInputStream(new ByteArrayInputStream(paramByteArrayOutputStream.toByteArray()));
-      this.jdField_b_of_type_Boolean = false;
+      this.c = paramByteArrayOutputStream;
+      this.b = new BufferedInputStream(new ByteArrayInputStream(paramByteArrayOutputStream.toByteArray()));
+      this.e = false;
     }
     else
     {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+      this.c = new ByteArrayOutputStream();
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIBridgeStreamCallback);
+    this.f = new WeakReference(paramIBridgeStreamCallback);
   }
   
   @TargetApi(9)
@@ -48,37 +48,37 @@ public class BridgeStream
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("close: memory stream and socket stream, netStreamReadComplete=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(", memStreamReadComplete=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("[cmshow]Apollo_client_BridgeStream", 2, ((StringBuilder)localObject).toString());
     }
     for (;;)
     {
       try
       {
-        if (this.jdField_b_of_type_JavaIoBufferedInputStream != null)
+        if (this.b != null)
         {
-          this.jdField_b_of_type_JavaIoBufferedInputStream.close();
-          this.jdField_b_of_type_JavaIoBufferedInputStream = null;
+          this.b.close();
+          this.b = null;
         }
-        if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-          this.jdField_a_of_type_JavaIoBufferedInputStream = null;
+          this.a.close();
+          this.a = null;
         }
-        localObject = (BridgeStream.IBridgeStreamCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (BridgeStream.IBridgeStreamCallback)this.f.get();
         if (localObject != null)
         {
-          if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
+          if ((this.d) && (this.e))
           {
             bool = true;
-            ((BridgeStream.IBridgeStreamCallback)localObject).a(bool, this.jdField_a_of_type_JavaIoByteArrayOutputStream);
+            ((BridgeStream.IBridgeStreamCallback)localObject).a(bool, this.c);
           }
         }
         else
         {
-          this.jdField_a_of_type_JavaIoByteArrayOutputStream = null;
+          this.c = null;
           return;
         }
       }
@@ -105,14 +105,14 @@ public class BridgeStream
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 42	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_b_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
+    //   3: getfield 46	com/tencent/mobileqq/apollo/store/webview/BridgeStream:b	Ljava/io/BufferedInputStream;
     //   6: ifnull +152 -> 158
     //   9: aload_0
-    //   10: getfield 20	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_b_of_type_Boolean	Z
+    //   10: getfield 24	com/tencent/mobileqq/apollo/store/webview/BridgeStream:e	Z
     //   13: ifne +145 -> 158
     //   16: aload_0
-    //   17: getfield 42	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_b_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
-    //   20: invokevirtual 116	java/io/BufferedInputStream:read	()I
+    //   17: getfield 46	com/tencent/mobileqq/apollo/store/webview/BridgeStream:b	Ljava/io/BufferedInputStream;
+    //   20: invokevirtual 118	java/io/BufferedInputStream:read	()I
     //   23: istore_1
     //   24: goto +3 -> 27
     //   27: iload_1
@@ -122,32 +122,32 @@ public class BridgeStream
     //   31: if_icmpne +55 -> 86
     //   34: aload_0
     //   35: iconst_1
-    //   36: putfield 20	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_b_of_type_Boolean	Z
+    //   36: putfield 24	com/tencent/mobileqq/apollo/store/webview/BridgeStream:e	Z
     //   39: iload_1
     //   40: istore_2
     //   41: aload_0
-    //   42: getfield 22	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
+    //   42: getfield 26	com/tencent/mobileqq/apollo/store/webview/BridgeStream:a	Ljava/io/BufferedInputStream;
     //   45: ifnull +41 -> 86
     //   48: iload_1
     //   49: istore_2
     //   50: aload_0
-    //   51: getfield 18	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_a_of_type_Boolean	Z
+    //   51: getfield 22	com/tencent/mobileqq/apollo/store/webview/BridgeStream:d	Z
     //   54: ifne +32 -> 86
     //   57: aload_0
-    //   58: getfield 22	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
-    //   61: invokevirtual 116	java/io/BufferedInputStream:read	()I
+    //   58: getfield 26	com/tencent/mobileqq/apollo/store/webview/BridgeStream:a	Ljava/io/BufferedInputStream;
+    //   61: invokevirtual 118	java/io/BufferedInputStream:read	()I
     //   64: istore_2
     //   65: iconst_m1
     //   66: iload_2
     //   67: if_icmpeq +14 -> 81
     //   70: aload_0
-    //   71: getfield 24	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_a_of_type_JavaIoByteArrayOutputStream	Ljava/io/ByteArrayOutputStream;
+    //   71: getfield 28	com/tencent/mobileqq/apollo/store/webview/BridgeStream:c	Ljava/io/ByteArrayOutputStream;
     //   74: iload_2
-    //   75: invokevirtual 120	java/io/ByteArrayOutputStream:write	(I)V
+    //   75: invokevirtual 122	java/io/ByteArrayOutputStream:write	(I)V
     //   78: goto +8 -> 86
     //   81: aload_0
     //   82: iconst_1
-    //   83: putfield 18	com/tencent/mobileqq/apollo/store/webview/BridgeStream:jdField_a_of_type_Boolean	Z
+    //   83: putfield 22	com/tencent/mobileqq/apollo/store/webview/BridgeStream:d	Z
     //   86: aload_0
     //   87: monitorexit
     //   88: iload_2
@@ -155,34 +155,34 @@ public class BridgeStream
     //   90: astore_3
     //   91: goto +63 -> 154
     //   94: astore_3
-    //   95: new 65	java/lang/StringBuilder
+    //   95: new 69	java/lang/StringBuilder
     //   98: dup
-    //   99: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   99: invokespecial 70	java/lang/StringBuilder:<init>	()V
     //   102: astore 4
     //   104: aload 4
-    //   106: ldc 122
-    //   108: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: ldc 124
+    //   108: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: pop
     //   112: aload 4
     //   114: aload_3
-    //   115: invokevirtual 103	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   118: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokevirtual 106	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   118: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   121: pop
-    //   122: ldc 79
+    //   122: ldc 83
     //   124: iconst_2
     //   125: aload 4
-    //   127: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 106	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   127: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   133: aload_3
-    //   134: instanceof 108
+    //   134: instanceof 110
     //   137: ifeq +8 -> 145
     //   140: aload_3
-    //   141: checkcast 108	java/io/IOException
+    //   141: checkcast 110	java/io/IOException
     //   144: athrow
-    //   145: new 108	java/io/IOException
+    //   145: new 110	java/io/IOException
     //   148: dup
     //   149: aload_3
-    //   150: invokespecial 111	java/io/IOException:<init>	(Ljava/lang/Throwable;)V
+    //   150: invokespecial 113	java/io/IOException:<init>	(Ljava/lang/Throwable;)V
     //   153: athrow
     //   154: aload_0
     //   155: monitorexit
@@ -275,7 +275,7 @@ public class BridgeStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.BridgeStream
  * JD-Core Version:    0.7.0.1
  */

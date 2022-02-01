@@ -4,11 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.liteav.basic.util.h;
 import java.util.Map;
 import java.util.Vector;
 
@@ -20,6 +21,8 @@ public class TXCStreamDownloader
   private g mAccUrlFetcher;
   private Context mApplicationContext;
   private int mChannelType = 0;
+  private int mConnectRetryInterval = 3;
+  private int mConnectRetryLimit = 3;
   private long mCurrentNalTs = 0L;
   private int mDownloadFormat = 1;
   private TXIStreamDownloader mDownloader = null;
@@ -44,10 +47,68 @@ public class TXCStreamDownloader
   
   static
   {
-    com.tencent.liteav.basic.util.f.f();
+    h.f();
   }
   
   public TXCStreamDownloader(Context paramContext, int paramInt)
+  {
+    createDownloader(paramContext, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("new inner downloader. instance:");
+    localStringBuilder.append(this.mDownloader.hashCode());
+    apiLog(localStringBuilder.toString());
+    this.mDownloadFormat = paramInt;
+    this.mAccUrlFetcher = new g(paramContext);
+    this.mApplicationContext = paramContext;
+    paramContext = this.mApplicationContext;
+    if (paramContext != null) {
+      this.mHandler = new Handler(paramContext.getMainLooper());
+    }
+  }
+  
+  private void apiError(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCStreamDownloader(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.e("TXCStreamDownloader", paramString.toString());
+  }
+  
+  private void apiLog(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCStreamDownloader(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.i("TXCStreamDownloader", paramString.toString());
+  }
+  
+  private void apiWarn(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCStreamDownloader(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.w("TXCStreamDownloader", paramString.toString());
+  }
+  
+  private void createDownloader(Context paramContext, int paramInt)
   {
     if (paramInt == 0)
     {
@@ -58,19 +119,17 @@ public class TXCStreamDownloader
     {
       this.mDownloader = new TXCRTMPDownloader(paramContext);
     }
-    TXIStreamDownloader localTXIStreamDownloader = this.mDownloader;
-    if (localTXIStreamDownloader != null)
+    paramContext = this.mDownloader;
+    if (paramContext != null)
     {
-      localTXIStreamDownloader.setListener(this);
+      paramContext.setListener(this);
       this.mDownloader.setNotifyListener(this);
       this.mDownloader.setRestartListener(this);
-    }
-    this.mDownloadFormat = paramInt;
-    this.mAccUrlFetcher = new g(paramContext);
-    this.mApplicationContext = paramContext;
-    paramContext = this.mApplicationContext;
-    if (paramContext != null) {
-      this.mHandler = new Handler(paramContext.getMainLooper());
+      paramContext = this.mDownloader;
+      paramContext.connectRetryLimit = this.mConnectRetryLimit;
+      paramContext.connectRetryInterval = this.mConnectRetryInterval;
+      paramContext.setHeaders(this.mHeaders);
+      this.mDownloader.setUserID(getID());
     }
   }
   
@@ -121,25 +180,42 @@ public class TXCStreamDownloader
   
   private native String nativeGetRTMPProxyUserId();
   
+  private void notifySwitchStreamResult(boolean paramBoolean)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("notify switch stream result. result: ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    apiLog(((StringBuilder)localObject).toString());
+    localObject = this.mNotifyListener;
+    if (localObject == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+    localBundle.putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
+    if (paramBoolean)
+    {
+      localBundle.putInt("EVT_ID", 2015);
+      localBundle.putCharSequence("EVT_MSG", "Switched resolution successfully");
+      ((b)localObject).onNotifyEvent(2015, localBundle);
+      return;
+    }
+    localBundle.putInt("EVT_ID", -2307);
+    localBundle.putCharSequence("EVT_MSG", "Failed to switch resolution");
+    ((b)localObject).onNotifyEvent(-2307, localBundle);
+  }
+  
   private void playStreamWithRawUrl(String paramString, boolean paramBoolean)
   {
     if (this.mDownloader != null)
     {
       if ((paramString != null) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) && (paramString.contains(".flv")))
       {
-        int i = this.mDownloader.connectRetryLimit;
-        int j = this.mDownloader.connectRetryInterval;
-        this.mDownloader = null;
-        this.mDownloader = new TXCFLVDownloader(this.mApplicationContext);
-        this.mDownloader.setFlvSessionKey(this.mFlvSessionKey);
-        this.mDownloader.setListener(this);
-        this.mDownloader.setNotifyListener(this);
-        this.mDownloader.setRestartListener(this);
-        localObject = this.mDownloader;
-        ((TXIStreamDownloader)localObject).connectRetryLimit = i;
-        ((TXIStreamDownloader)localObject).connectRetryInterval = j;
-        ((TXIStreamDownloader)localObject).setHeaders(this.mHeaders);
-        this.mDownloader.setUserID(getID());
+        createDownloader(this.mApplicationContext, 0);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("new downloader for play raw url. instance:");
+        ((StringBuilder)localObject).append(this.mDownloader.hashCode());
+        apiLog(((StringBuilder)localObject).toString());
       }
       setStatusValue(7112, Long.valueOf(1L));
       Object localObject = new Vector();
@@ -299,7 +375,7 @@ public class TXCStreamDownloader
                       }
                       else
                       {
-                        ((Bundle)localObject2).putString("EVT_MSG", "begine receiving stream");
+                        ((Bundle)localObject2).putString("EVT_MSG", "begin receiving stream");
                         localObject1 = localObject2;
                       }
                     }
@@ -365,6 +441,7 @@ public class TXCStreamDownloader
         ((Bundle)localObject1).putString("EVT_MSG", (String)localObject2);
       }
       ((Bundle)localObject1).putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+      ((Bundle)localObject1).putLong("EVT_UTC_TIME", TXCTimeUtil.getUtcTimeTick());
       localb.onNotifyEvent(paramInt, (Bundle)localObject1);
       if ((paramInt == 3001) || (paramInt == 3002) || (paramInt == 3003) || (paramInt == 3004) || (paramInt == 3005) || (paramInt == 3006) || (paramInt == 3007) || (paramInt == 3008) || (paramInt == 3009) || (paramInt == 3010) || (paramInt == 2101) || (paramInt == 2102) || (paramInt == 2109) || (paramInt == 2110) || (paramInt == -2301) || (paramInt == -2304) || (paramInt == -2308) || (paramInt == -2309))
       {
@@ -443,31 +520,20 @@ public class TXCStreamDownloader
     {
       int i = (int)(System.currentTimeMillis() - this.mSwitchStartTime);
       this.mSwitchStartTime = 0L;
-      Bundle localBundle = new Bundle();
-      localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
       if (paramBoolean)
       {
         this.mDownloader = paramTXIStreamDownloader;
         this.mDownloader.setListener(this);
         this.mDownloader.setNotifyListener(this);
         this.mDownloader.setRestartListener(this);
-        localBundle.putInt("EVT_ID", 2015);
-        localBundle.putCharSequence("EVT_MSG", "Switched resolution successfully");
-        if (this.mNotifyListener != null) {
-          this.mNotifyListener.onNotifyEvent(2015, localBundle);
-        }
-        TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.bw, i, "");
+        TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.bx, i, "");
       }
       else
       {
-        localBundle.putInt("EVT_ID", -2307);
-        localBundle.putCharSequence("EVT_MSG", "Failed to switch resolution");
-        if (this.mNotifyListener != null) {
-          this.mNotifyListener.onNotifyEvent(-2307, localBundle);
-        }
-        TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.bx);
+        TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.by);
       }
       this.mStreamSwitcher = null;
+      notifySwitchStreamResult(paramBoolean);
       return;
     }
   }
@@ -530,6 +596,7 @@ public class TXCStreamDownloader
   
   public void setRetryInterval(int paramInt)
   {
+    this.mConnectRetryInterval = paramInt;
     TXIStreamDownloader localTXIStreamDownloader = this.mDownloader;
     if (localTXIStreamDownloader != null) {
       localTXIStreamDownloader.connectRetryInterval = paramInt;
@@ -538,6 +605,7 @@ public class TXCStreamDownloader
   
   public void setRetryTimes(int paramInt)
   {
+    this.mConnectRetryLimit = paramInt;
     TXIStreamDownloader localTXIStreamDownloader = this.mDownloader;
     if (localTXIStreamDownloader != null) {
       localTXIStreamDownloader.connectRetryLimit = paramInt;
@@ -546,6 +614,18 @@ public class TXCStreamDownloader
   
   public int start(String paramString, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("start url:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" ,enableNearestIP:");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append(" ,channeyType:");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" ,enableMessage:");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    ((StringBuilder)localObject).append(" ,enableMetaData:");
+    ((StringBuilder)localObject).append(paramBoolean3);
+    apiLog(((StringBuilder)localObject).toString());
     boolean bool1 = true;
     this.mDownloaderRunning = true;
     this.mRecvFirstNal = false;
@@ -554,7 +634,7 @@ public class TXCStreamDownloader
     this.mChannelType = paramInt;
     this.mEnableMessage = paramBoolean2;
     this.mEnableMetaData = paramBoolean3;
-    Object localObject = Long.valueOf(0L);
+    localObject = Long.valueOf(0L);
     setStatusValue(7113, localObject);
     setStatusValue(7114, localObject);
     setStatusValue(7115, localObject);
@@ -585,17 +665,17 @@ public class TXCStreamDownloader
       if (paramInt != 0)
       {
         if (paramInt == -1) {
-          TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.at, paramInt, "invalid playUrl");
+          TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.au, paramInt, "invalid playUrl");
         } else if (paramInt == -2) {
-          TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.at, paramInt, "invalid streamID");
+          TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.au, paramInt, "invalid streamID");
         } else if (paramInt == -3) {
-          TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.at, paramInt, "invalid signature");
+          TXCDRApi.txReportDAU(this.mApplicationContext, com.tencent.liteav.basic.datareport.a.au, paramInt, "invalid signature");
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("getAccelerateStreamPlayUrl failed, result = ");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append(", play stream with raw url");
-        TXCLog.e("TXCStreamDownloader", ((StringBuilder)localObject).toString());
+        apiError(((StringBuilder)localObject).toString());
         onNotifyEvent(-2302, null);
         playStreamWithRawUrl(paramString, paramBoolean2);
         paramString = this.mHandler;
@@ -650,30 +730,70 @@ public class TXCStreamDownloader
   
   public boolean switchStream(String paramString)
   {
-    synchronized (this.mListenerLock)
+    for (;;)
     {
-      if ((this.mStreamSwitcher == null) && (this.mDownloader != null) && ((this.mDownloader instanceof TXCFLVDownloader)))
+      synchronized (this.mListenerLock)
       {
-        TXCFLVDownloader localTXCFLVDownloader = new TXCFLVDownloader(this.mApplicationContext, (TXCFLVDownloader)this.mDownloader);
-        localTXCFLVDownloader.connectRetryLimit = this.mDownloader.connectRetryLimit;
-        localTXCFLVDownloader.connectRetryInterval = this.mDownloader.connectRetryInterval;
-        localTXCFLVDownloader.setHeaders(this.mHeaders);
-        localTXCFLVDownloader.setUserID(getID());
-        localTXCFLVDownloader.setFlvSessionKey(this.mFlvSessionKey);
-        this.mStreamSwitcher = new d(this);
-        this.mStreamSwitcher.a(this);
-        this.mStreamSwitcher.a(this.mDownloader, localTXCFLVDownloader, this.mCurrentNalTs, this.mLastIFramelTs, paramString);
-        this.mSwitchStartTime = System.currentTimeMillis();
-        return true;
+        localObject = this.mDownloader;
+        if ((this.mStreamSwitcher == null) && (localObject != null) && ((localObject instanceof TXCFLVDownloader)))
+        {
+          TXCFLVDownloader localTXCFLVDownloader1 = (TXCFLVDownloader)this.mDownloader;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[SwitchStream] prepare to switch stream. hasRecvData:");
+          ((StringBuilder)localObject).append(localTXCFLVDownloader1.hasRecvAVData());
+          apiLog(((StringBuilder)localObject).toString());
+          if (!localTXCFLVDownloader1.hasRecvAVData())
+          {
+            apiError("[SwitchStream] force restart downloader when no av data.");
+            localTXCFLVDownloader1.setListener(null);
+            localTXCFLVDownloader1.setNotifyListener(null);
+            localTXCFLVDownloader1.setRestartListener(null);
+            stop();
+            createDownloader(this.mApplicationContext, this.mDownloadFormat);
+            start(paramString, this.mEnableNearestIP, this.mChannelType, this.mEnableMessage, this.mEnableMetaData);
+            notifySwitchStreamResult(true);
+          }
+          else
+          {
+            TXCFLVDownloader localTXCFLVDownloader2 = new TXCFLVDownloader(this.mApplicationContext, localTXCFLVDownloader1);
+            localTXCFLVDownloader2.connectRetryLimit = localTXCFLVDownloader1.connectRetryLimit;
+            localTXCFLVDownloader2.connectRetryInterval = localTXCFLVDownloader1.connectRetryInterval;
+            localTXCFLVDownloader2.setHeaders(this.mHeaders);
+            localTXCFLVDownloader2.setUserID(getID());
+            localTXCFLVDownloader2.setFlvSessionKey(this.mFlvSessionKey);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("switch stream. switcher instance:");
+            localStringBuilder.append(this.mStreamSwitcher);
+            localStringBuilder.append(" new downloader instance:");
+            localStringBuilder.append(localTXCFLVDownloader2.hashCode());
+            localStringBuilder.append(" old downloader instance:");
+            if (this.mDownloader == null) {
+              break label378;
+            }
+            localObject = Integer.valueOf(this.mDownloader.hashCode());
+            localStringBuilder.append(localObject);
+            apiLog(localStringBuilder.toString());
+            this.mStreamSwitcher = new d(this);
+            this.mStreamSwitcher.a(this);
+            this.mStreamSwitcher.a(localTXCFLVDownloader1, localTXCFLVDownloader2, this.mCurrentNalTs, this.mLastIFramelTs, paramString);
+            this.mSwitchStartTime = System.currentTimeMillis();
+          }
+          return true;
+        }
+        else
+        {
+          apiError("stream_switch stream is changing ignore this change");
+          return false;
+        }
       }
-      TXCLog.w("TXCStreamDownloader", "stream_switch stream is changing ignore this change");
-      return false;
+      label378:
+      Object localObject = "0";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

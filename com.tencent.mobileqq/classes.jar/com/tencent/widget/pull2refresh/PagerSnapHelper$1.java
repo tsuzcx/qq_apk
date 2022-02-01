@@ -28,16 +28,16 @@ class PagerSnapHelper$1
       ((StringBuilder)localObject).append(", itemCount=");
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append(", centerPosition=");
-      ((StringBuilder)localObject).append(PagerSnapHelper.c(this.a));
+      ((StringBuilder)localObject).append(PagerSnapHelper.j(this.a));
       ((StringBuilder)localObject).append(", currentPosition=");
       ((StringBuilder)localObject).append(i);
       QLog.d("PagerSnapHelper", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt1 <= i) && (paramInt1 + paramInt2 - 1 >= i))
     {
-      PagerSnapHelper.OnLayoutChangedListenerImpl.a(PagerSnapHelper.a(this.a), paramBoolean);
-      PagerSnapHelper.a(this.a).addOnLayoutChangeListener(PagerSnapHelper.a(this.a));
-      PagerSnapHelper.a(this.a).requestLayout();
+      PagerSnapHelper.OnLayoutChangedListenerImpl.a(PagerSnapHelper.k(this.a), paramBoolean);
+      PagerSnapHelper.b(this.a).addOnLayoutChangeListener(PagerSnapHelper.k(this.a));
+      PagerSnapHelper.b(this.a).requestLayout();
     }
   }
   
@@ -60,17 +60,17 @@ class PagerSnapHelper$1
   
   public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= PagerSnapHelper.c(this.a))
+    if (paramInt1 <= PagerSnapHelper.j(this.a))
     {
       PagerSnapHelper localPagerSnapHelper = this.a;
-      PagerSnapHelper.c(localPagerSnapHelper, PagerSnapHelper.c(localPagerSnapHelper) + paramInt2);
+      PagerSnapHelper.c(localPagerSnapHelper, PagerSnapHelper.j(localPagerSnapHelper) + paramInt2);
     }
     a(paramInt1, paramInt2, false);
   }
   
   public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt1 == PagerSnapHelper.c(this.a)) {
+    if (paramInt1 == PagerSnapHelper.j(this.a)) {
       PagerSnapHelper.c(this.a, paramInt2);
     }
     a(paramInt1, paramInt3, false);
@@ -78,17 +78,17 @@ class PagerSnapHelper$1
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    if (paramInt1 <= PagerSnapHelper.c(this.a))
+    if (paramInt1 <= PagerSnapHelper.j(this.a))
     {
       PagerSnapHelper localPagerSnapHelper = this.a;
-      PagerSnapHelper.c(localPagerSnapHelper, PagerSnapHelper.c(localPagerSnapHelper) - paramInt2);
+      PagerSnapHelper.c(localPagerSnapHelper, PagerSnapHelper.j(localPagerSnapHelper) - paramInt2);
     }
     a(paramInt1, paramInt2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.PagerSnapHelper.1
  * JD-Core Version:    0.7.0.1
  */

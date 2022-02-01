@@ -13,6 +13,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.R.layout;
 import androidx.appcompat.view.ActionBarPolicy;
 import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.appcompat.view.menu.BaseMenuPresenter;
@@ -54,7 +55,7 @@ class ActionMenuPresenter
   
   public ActionMenuPresenter(Context paramContext)
   {
-    super(paramContext, 2131558403, 2131558402);
+    super(paramContext, R.layout.abc_action_menu_layout, R.layout.abc_action_menu_item_layout);
   }
   
   private View findViewForItem(MenuItem paramMenuItem)
@@ -559,7 +560,6 @@ class ActionMenuPresenter
     {
       this.mPostedOpenRunnable = new ActionMenuPresenter.OpenOverflowRunnable(this, new ActionMenuPresenter.OverflowPopup(this, this.mContext, this.mMenu, this.mOverflowButton, true));
       ((View)this.mMenuView).post(this.mPostedOpenRunnable);
-      super.onSubMenuSelected(null);
       return true;
     }
     return false;

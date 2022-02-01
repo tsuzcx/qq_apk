@@ -15,19 +15,19 @@ import java.util.List;
 public class DatalineFileSaveModel
   extends QFileSaveModel
 {
-  private MessageForDLFile a;
+  private MessageForDLFile d;
   
   public DatalineFileSaveModel(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     super(paramQQAppInterface, paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile = ((MessageForDLFile)paramChatMessage);
+    this.d = ((MessageForDLFile)paramChatMessage);
   }
   
-  private DataLineMsgRecord a()
+  private DataLineMsgRecord h()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.deviceType;
-    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.associatedId;
-    DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
+    int i = this.d.deviceType;
+    long l = this.d.associatedId;
+    DataLineMsgRecord localDataLineMsgRecord = this.a.getMessageFacade().d(i).a(l);
     if (localDataLineMsgRecord == null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -39,74 +39,74 @@ public class DatalineFileSaveModel
     return localDataLineMsgRecord;
   }
   
-  public long a()
+  public boolean a()
   {
-    DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord != null) {
-      return localDataLineMsgRecord.filesize;
+    DataLineMsgRecord localDataLineMsgRecord = h();
+    if (localDataLineMsgRecord == null) {
+      return false;
     }
-    return 0L;
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
+    localDataLineHandler.b(localArrayList);
+    return true;
   }
   
-  public QFileControlReq a()
+  public boolean b()
   {
-    DatalineFileControlReq localDatalineFileControlReq = new DatalineFileControlReq(a());
-    localDatalineFileControlReq.a(new DatalineFileSaveModel.1(this));
-    return localDatalineFileControlReq;
+    DataLineMsgRecord localDataLineMsgRecord = h();
+    if (localDataLineMsgRecord == null) {
+      return false;
+    }
+    ((DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
+    return true;
   }
   
-  public String a()
+  public String c()
   {
-    DataLineMsgRecord localDataLineMsgRecord = a();
+    DataLineMsgRecord localDataLineMsgRecord = h();
     if (localDataLineMsgRecord != null) {
       return localDataLineMsgRecord.path;
     }
     return "";
   }
   
-  public boolean a()
+  public boolean d()
   {
-    DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {
-      return false;
-    }
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
-    localDataLineHandler.a(localArrayList);
-    return true;
-  }
-  
-  public String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.frienduin);
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.uniseq);
-    return localStringBuilder.toString();
-  }
-  
-  public boolean b()
-  {
-    DataLineMsgRecord localDataLineMsgRecord = a();
-    if (localDataLineMsgRecord == null) {
-      return false;
-    }
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgRecord.groupId, localDataLineMsgRecord.sessionid, false);
-    return true;
-  }
-  
-  public boolean c()
-  {
-    DataLineMsgRecord localDataLineMsgRecord = a();
+    DataLineMsgRecord localDataLineMsgRecord = h();
     if (localDataLineMsgRecord != null) {
       return localDataLineMsgRecord.bIsTransfering;
     }
     return false;
   }
+  
+  public QFileControlReq e()
+  {
+    DatalineFileControlReq localDatalineFileControlReq = new DatalineFileControlReq(h());
+    localDatalineFileControlReq.a(new DatalineFileSaveModel.1(this));
+    return localDatalineFileControlReq;
+  }
+  
+  public String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.d.frienduin);
+    localStringBuilder.append(this.d.uniseq);
+    return localStringBuilder.toString();
+  }
+  
+  public long g()
+  {
+    DataLineMsgRecord localDataLineMsgRecord = h();
+    if (localDataLineMsgRecord != null) {
+      return localDataLineMsgRecord.filesize;
+    }
+    return 0L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.DatalineFileSaveModel
  * JD-Core Version:    0.7.0.1
  */

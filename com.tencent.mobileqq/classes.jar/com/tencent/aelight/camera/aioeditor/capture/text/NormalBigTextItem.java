@@ -13,19 +13,19 @@ class NormalBigTextItem
   public NormalBigTextItem(int paramInt, List<String> paramList)
   {
     super(paramInt, paramList);
-    this.jdField_a_of_type_Int = AIOUtils.b(36.0F, BaseApplicationImpl.getContext().getResources());
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    c(this.jdField_a_of_type_Int);
+    this.k = AIOUtils.b(36.0F, BaseApplicationImpl.getContext().getResources());
+    this.g.setTypeface(Typeface.DEFAULT_BOLD);
+    g(this.k);
   }
   
-  public int d()
+  public int t()
   {
     return AIOUtils.b(36.0F, BaseApplicationImpl.getContext().getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.NormalBigTextItem
  * JD-Core Version:    0.7.0.1
  */

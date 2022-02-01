@@ -25,29 +25,22 @@ import org.json.JSONObject;
 public class ReadInJoyRefreshManager
   implements Manager
 {
-  public static volatile boolean b = true;
-  protected int a;
-  protected long a;
+  public static volatile boolean j = true;
   protected AppInterface a;
-  protected DownloaderInterface a;
-  protected String a;
-  protected ArrayList<ReadInJoyRefreshManager.OnRefreshChangedListener> a;
-  protected HashMap<String, String> a;
-  protected boolean a;
-  protected int b;
-  private int c = -1;
+  protected DownloaderInterface b;
+  protected HashMap<String, String> c = new HashMap();
+  protected ArrayList<ReadInJoyRefreshManager.OnRefreshChangedListener> d = new ArrayList();
+  protected int e = -1;
+  protected String f = "";
+  protected long g = -1L;
+  protected int h = -1;
+  protected boolean i = false;
+  private int k = -1;
   
   public ReadInJoyRefreshManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((DownloaderFactory)paramAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
+    this.a = paramAppInterface;
+    this.b = ((DownloaderFactory)paramAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
   }
   
   public static RefreshData b(Context paramContext, int paramInt)
@@ -65,27 +58,22 @@ public class ReadInJoyRefreshManager
   
   private void b(int paramInt1, String paramString, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    RefreshRes.a(this.jdField_a_of_type_JavaLangString, paramLong);
+    this.e = paramInt1;
+    this.f = paramString;
+    this.g = paramLong;
+    this.h = paramInt2;
+    RefreshRes.a(this.f, paramLong);
     paramInt1 = 0;
-    while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (paramInt1 < this.d.size())
     {
-      ((ReadInJoyRefreshManager.OnRefreshChangedListener)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      ((ReadInJoyRefreshManager.OnRefreshChangedListener)this.d.get(paramInt1)).a(this.e, this.f, this.g);
       paramInt1 += 1;
     }
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   public RefreshData a(Context paramContext, int paramInt)
   {
-    paramContext = SharedPreUtils.a(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    paramContext = SharedPreUtils.P(paramContext, this.a.getCurrentAccountUin(), paramInt);
     RefreshData localRefreshData = null;
     if (paramContext != null) {}
     try
@@ -104,14 +92,9 @@ public class ReadInJoyRefreshManager
     return localRefreshData;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_Int = -1;
+    this.e = -1;
   }
   
   public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
@@ -126,10 +109,10 @@ public class ReadInJoyRefreshManager
   
   public void a(ReadInJoyRefreshManager.OnRefreshChangedListener paramOnRefreshChangedListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.d)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramOnRefreshChangedListener)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramOnRefreshChangedListener);
+      if (!this.d.contains(paramOnRefreshChangedListener)) {
+        this.d.add(paramOnRefreshChangedListener);
       }
       return;
     }
@@ -137,12 +120,7 @@ public class ReadInJoyRefreshManager
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return (a() == 1) && (RefreshRes.b() == 1);
+    this.i = paramBoolean;
   }
   
   public boolean a(RefreshData paramRefreshData, int paramInt)
@@ -161,10 +139,10 @@ public class ReadInJoyRefreshManager
       QLog.d("ReadInJoyRefreshManager", 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject2 = RefreshRes.a((String)localObject1);
-    if (RefreshRes.a((String)localObject1)) {
+    if (RefreshRes.b((String)localObject1)) {
       return true;
     }
-    Object localObject3 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject3 = this.c;
     Object localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append("refresh_");
     ((StringBuilder)localObject4).append((String)localObject1);
@@ -172,7 +150,7 @@ public class ReadInJoyRefreshManager
       return false;
     }
     FileUtils.deleteDirectory((String)localObject2);
-    localObject3 = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject3 = this.c;
     localObject4 = new StringBuilder();
     ((StringBuilder)localObject4).append("refresh_");
     ((StringBuilder)localObject4).append((String)localObject1);
@@ -185,37 +163,52 @@ public class ReadInJoyRefreshManager
     localObject3 = new Bundle();
     ((Bundle)localObject3).putString("refreshId", (String)localObject1);
     localObject1 = new DownloadTask(paramRefreshData.url, (File)localObject4);
-    ((DownloadTask)localObject1).jdField_b_of_type_Int = paramInt1;
-    ((DownloadTask)localObject1).d = 60L;
-    ((DownloadTask)localObject1).m = true;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.startDownload((DownloadTask)localObject1, new ReadInJoyRefreshManager.2(this, (String)localObject2, paramRefreshData, paramInt2), (Bundle)localObject3);
+    ((DownloadTask)localObject1).e = paramInt1;
+    ((DownloadTask)localObject1).u = 60L;
+    ((DownloadTask)localObject1).G = true;
+    this.b.startDownload((DownloadTask)localObject1, new ReadInJoyRefreshManager.2(this, (String)localObject2, paramRefreshData, paramInt2), (Bundle)localObject3);
     return false;
   }
   
   public void b(ReadInJoyRefreshManager.OnRefreshChangedListener paramOnRefreshChangedListener)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.d)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramOnRefreshChangedListener);
+      this.d.remove(paramOnRefreshChangedListener);
       return;
     }
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return (d() == 1) && (RefreshRes.g() == 1);
+  }
+  
+  public String c()
+  {
+    return this.f;
+  }
+  
+  public int d()
+  {
+    return this.e;
+  }
+  
+  public boolean e()
+  {
+    return this.i;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Int = -1;
-    jdField_b_of_type_Boolean = false;
+    this.d.clear();
+    this.e = -1;
+    j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoyRefreshManager
  * JD-Core Version:    0.7.0.1
  */

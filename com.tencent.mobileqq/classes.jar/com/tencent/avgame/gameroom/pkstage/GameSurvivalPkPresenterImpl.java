@@ -9,27 +9,32 @@ public class GameSurvivalPkPresenterImpl
   implements ISurvivalStagePresenter
 {
   protected EngineData a;
-  private IGameRoomPresenter jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter;
-  private ISurvivalStageView jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView;
+  private ISurvivalStageView b;
+  private IGameRoomPresenter c;
   
   public GameSurvivalPkPresenterImpl(ISurvivalStageView paramISurvivalStageView)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView = paramISurvivalStageView;
+    this.b = paramISurvivalStageView;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.d();
+    this.b.d();
   }
   
   private void a(EngineData paramEngineData, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.l(), paramBoolean);
+    this.b.a(paramEngineData.R(), paramBoolean);
   }
   
-  private boolean a(EngineData paramEngineData)
+  private void b()
   {
-    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    this.b.f();
+  }
+  
+  private boolean b(EngineData paramEngineData)
+  {
+    EngineData localEngineData = this.a;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localEngineData != null)
@@ -41,7 +46,7 @@ public class GameSurvivalPkPresenterImpl
       if (localEngineData != null)
       {
         bool1 = bool2;
-        if (localEngineData.o() == paramEngineData.o()) {
+        if (localEngineData.X() == paramEngineData.X()) {
           bool1 = true;
         }
       }
@@ -49,42 +54,37 @@ public class GameSurvivalPkPresenterImpl
     return bool1;
   }
   
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.f();
-  }
-  
-  private void b(EngineData paramEngineData)
-  {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.b();
-  }
-  
   private void c(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.c();
+    this.b.b();
   }
   
   private void d(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.h());
+    this.b.c();
   }
   
   private void e(EngineData paramEngineData)
   {
-    if (paramEngineData.a != null)
+    this.b.a(paramEngineData.ag());
+  }
+  
+  private void f(EngineData paramEngineData)
+  {
+    if (paramEngineData.x != null)
     {
       int i = 0;
       try
       {
-        int j = Color.parseColor(paramEngineData.a.j);
+        int j = Color.parseColor(paramEngineData.x.p);
         i = j;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(i);
-      this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.a.k, paramEngineData.a.l, paramEngineData.a.m, paramEngineData.a.n, paramEngineData.a.o);
+      this.b.a(i);
+      this.b.a(paramEngineData.x.q, paramEngineData.x.r, paramEngineData.x.s, paramEngineData.x.t, paramEngineData.x.u);
     }
   }
   
@@ -93,8 +93,8 @@ public class GameSurvivalPkPresenterImpl
     if (paramEngineData == null) {
       return;
     }
-    int i = paramEngineData.o();
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData);
+    int i = paramEngineData.X();
+    this.b.a(paramEngineData);
     EngineData localEngineData;
     switch (i)
     {
@@ -102,82 +102,82 @@ public class GameSurvivalPkPresenterImpl
     default: 
       break;
     case 10: 
-      if (!a(paramEngineData)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(true);
+      if (!b(paramEngineData)) {
+        this.b.a(true);
       }
       break;
     case 8: 
     case 9: 
-      if (!a(paramEngineData)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.e();
+      if (!b(paramEngineData)) {
+        this.b.e();
       }
       break;
     case 6: 
     case 7: 
-      if (!a(paramEngineData)) {
-        b(paramEngineData);
+      if (!b(paramEngineData)) {
+        c(paramEngineData);
       }
       break;
     case 5: 
-      if (!a(paramEngineData)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a();
+      if (!b(paramEngineData)) {
+        this.b.a();
       }
       break;
     case 4: 
-      if (!a(paramEngineData))
+      if (!b(paramEngineData))
       {
-        localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
-        if ((localEngineData != null) && (localEngineData.o() == 9)) {
-          this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.e();
+        localEngineData = this.a;
+        if ((localEngineData != null) && (localEngineData.X() == 9)) {
+          this.b.e();
         } else {
-          this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(false);
+          this.b.a(false);
         }
       }
       break;
     case 2: 
-      if (!a(paramEngineData)) {
+      if (!b(paramEngineData)) {
         a();
       }
       break;
     case 1: 
-      if (a(paramEngineData))
+      if (b(paramEngineData))
       {
         a(paramEngineData, true);
       }
       else
       {
-        localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
-        if (((localEngineData != null) && (localEngineData.o() != 0)) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData == null) || (paramEngineData == null)) {
-          c(paramEngineData);
+        localEngineData = this.a;
+        if (((localEngineData != null) && (localEngineData.X() != 0)) || (this.a == null) || (paramEngineData == null)) {
+          d(paramEngineData);
         }
       }
       break;
     case 0: 
-      if (a(paramEngineData))
+      if (b(paramEngineData))
       {
         a(paramEngineData, false);
-        if (paramEngineData.g()) {
-          d(paramEngineData);
+        if (paramEngineData.N()) {
+          e(paramEngineData);
         } else {
           b();
         }
       }
       else
       {
-        if (paramEngineData.g()) {
-          e(paramEngineData);
+        if (paramEngineData.N()) {
+          f(paramEngineData);
         }
         a(paramEngineData, false);
-        b(paramEngineData);
+        c(paramEngineData);
       }
       break;
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = paramEngineData.a();
+    this.a = paramEngineData.w();
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter = paramIGameRoomPresenter;
+    this.c = paramIGameRoomPresenter;
   }
 }
 

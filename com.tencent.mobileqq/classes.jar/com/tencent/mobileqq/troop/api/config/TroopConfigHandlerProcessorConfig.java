@@ -10,29 +10,45 @@ import java.util.Iterator;
 
 public class TroopConfigHandlerProcessorConfig
 {
-  private static TroopConfigHandlerProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopConfigHandlerProcessorConfig;
-  private static ArrayList<AbsTroopConfigHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopConfigHandlerProcessor> a = new ArrayList();
+  private static TroopConfigHandlerProcessorConfig b;
   
   private TroopConfigHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopConfigHandlerProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopConfigHandlerProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopConfigHandlerProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopConfigHandlerProcessorConfig = new TroopConfigHandlerProcessorConfig();
+        if (b == null) {
+          b = new TroopConfigHandlerProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopConfigHandlerProcessorConfig;
+    return b;
   }
   
-  void a()
+  public void a(AppInterface paramAppInterface, oidb_0x496.AioKeyword paramAioKeyword)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      ((AbsTroopConfigHandlerProcessor)localIterator.next()).a(paramAppInterface, paramAioKeyword);
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface, oidb_0x496.GroupMsgConfig paramGroupMsgConfig)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      ((AbsTroopConfigHandlerProcessor)localIterator.next()).a(paramAppInterface, paramGroupMsgConfig);
+    }
+  }
+  
+  void b()
   {
     if (BizTroopCustomizedProcessorRegister.h != null)
     {
@@ -43,7 +59,7 @@ public class TroopConfigHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopConfigHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -52,26 +68,10 @@ public class TroopConfigHandlerProcessorConfig
       }
     }
   }
-  
-  public void a(AppInterface paramAppInterface, oidb_0x496.AioKeyword paramAioKeyword)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AbsTroopConfigHandlerProcessor)localIterator.next()).a(paramAppInterface, paramAioKeyword);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, oidb_0x496.GroupMsgConfig paramGroupMsgConfig)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AbsTroopConfigHandlerProcessor)localIterator.next()).a(paramAppInterface, paramGroupMsgConfig);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopConfigHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

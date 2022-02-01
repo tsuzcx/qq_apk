@@ -21,14 +21,14 @@ class ArkAppQQModule$MethodGetUIN
     paramVariantWrapper.SetString(ArkQQAPIIPCModule.a());
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.MethodGetUIN
  * JD-Core Version:    0.7.0.1
  */

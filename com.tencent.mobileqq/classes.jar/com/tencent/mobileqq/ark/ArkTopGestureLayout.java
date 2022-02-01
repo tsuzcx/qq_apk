@@ -26,7 +26,7 @@ public class ArkTopGestureLayout
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i;
-    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.i()) {
+    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.D()) {
       i = 1;
     } else {
       i = 0;
@@ -39,7 +39,7 @@ public class ArkTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ class FastWebActivity$4
   
   public ColorNote getColorNote()
   {
-    Object localObject = FastWebActivity.a(this.a);
+    Object localObject = FastWebActivity.d(this.a);
     String str2 = "";
-    if ((localObject != null) && (FastWebActivity.a(this.a).g != null)) {
-      localObject = FastWebActivity.a(this.a).g;
+    if ((localObject != null) && (FastWebActivity.d(this.a).n != null)) {
+      localObject = FastWebActivity.d(this.a).n;
     } else {
       localObject = "";
     }
@@ -25,30 +25,30 @@ class FastWebActivity$4
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(ReadInJoyLauncher.b);
     String str1;
-    if (this.a.a == null) {
+    if (this.a.g == null) {
       str1 = "";
     } else {
-      str1 = this.a.a.innerUniqueID;
+      str1 = this.a.g.innerUniqueID;
     }
     localStringBuilder.append(str1);
     localBuilder = localBuilder.a(localStringBuilder.toString());
-    if (this.a.a == null) {
+    if (this.a.g == null) {
       str1 = "";
     } else {
-      str1 = this.a.a.mTitle;
+      str1 = this.a.g.mTitle;
     }
     localBuilder = localBuilder.b(str1);
-    if (this.a.a == null) {
+    if (this.a.g == null) {
       str1 = str2;
     } else {
-      str1 = this.a.a.mSubscribeName;
+      str1 = this.a.g.mSubscribeName;
     }
-    return localBuilder.c(str1).d((String)localObject).a(FastWebActivity.a(this.a)).a();
+    return localBuilder.c(str1).d((String)localObject).a(FastWebActivity.e(this.a)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.4
  * JD-Core Version:    0.7.0.1
  */

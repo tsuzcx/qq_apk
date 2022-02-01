@@ -16,7 +16,7 @@ final class IMCoreProxyRegister$7
     {
       paramBaseQQAppInterface = (HotChatManager)paramBaseQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       if (paramBaseQQAppInterface != null) {
-        return paramBaseQQAppInterface.a(paramString);
+        return paramBaseQQAppInterface.c(paramString);
       }
     }
     return null;
@@ -24,7 +24,7 @@ final class IMCoreProxyRegister$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.IMCoreProxyRegister.7
  * JD-Core Version:    0.7.0.1
  */

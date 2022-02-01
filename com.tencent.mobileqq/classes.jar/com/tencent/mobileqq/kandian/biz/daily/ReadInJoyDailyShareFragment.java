@@ -43,13 +43,13 @@ import org.json.JSONObject;
 public class ReadInJoyDailyShareFragment
   extends PublicBaseFragment
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  ProteusItemView jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView;
-  private DynamicItemViewHelper jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private String b;
+  ProteusItemView a;
+  private JSONObject b;
+  private VafContext c;
+  private DynamicItemViewHelper d;
+  private String e;
+  private Bitmap f;
+  private String g;
   
   private Bitmap a(View paramView)
   {
@@ -72,7 +72,7 @@ public class ReadInJoyDailyShareFragment
   
   private void a()
   {
-    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject1 = this.b;
     if (localObject1 == null) {
       return;
     }
@@ -83,7 +83,7 @@ public class ReadInJoyDailyShareFragment
     }
     if (localObject1 != null)
     {
-      localObject2 = (ViewBase)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView.a().getViewIdMapping().get("id_kandian_share_qr_code");
+      localObject2 = (ViewBase)this.a.getContainer().getViewIdMapping().get("id_kandian_share_qr_code");
       if ((localObject2 instanceof ReadInjoyImageView)) {
         ((ImageView)((ViewBase)localObject2).getNativeView()).setImageBitmap((Bitmap)localObject1);
       }
@@ -109,7 +109,7 @@ public class ReadInJoyDailyShareFragment
   
   private void b()
   {
-    ViewBase localViewBase = (ViewBase)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView.a().getViewIdMapping().get("id_share_choice");
+    ViewBase localViewBase = (ViewBase)this.a.getContainer().getViewIdMapping().get("id_share_choice");
     if ((localViewBase instanceof ReadInJoyShareView)) {
       ((ReadInJoyShareView)localViewBase).a(new ReadInJoyDailyShareFragment.1(this, localViewBase));
     }
@@ -117,21 +117,21 @@ public class ReadInJoyDailyShareFragment
   
   private void c()
   {
-    if (TextUtils.isEmpty(this.b))
+    if (TextUtils.isEmpty(this.g))
     {
-      View localView = ((ViewBase)this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView.a().getViewIdMapping().get("id_check_container")).getNativeView();
+      View localView = ((ViewBase)this.a.getContainer().getViewIdMapping().get("id_check_container")).getNativeView();
       if (localView != null)
       {
-        this.jdField_a_of_type_JavaLangString = AppConstants.SDCARD_IMG_SAVE;
+        this.e = AppConstants.SDCARD_IMG_SAVE;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.e);
         localStringBuilder.append("kandiandaily-");
         localStringBuilder.append(a(Calendar.getInstance().getTime()));
         localStringBuilder.append(".png");
-        this.b = localStringBuilder.toString();
-        FileUtils.a(new File(this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_AndroidGraphicsBitmap = a(localView);
-        a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.b);
+        this.g = localStringBuilder.toString();
+        FileUtils.a(new File(this.e));
+        this.f = a(localView);
+        a(this.f, this.g);
       }
     }
   }
@@ -164,10 +164,10 @@ public class ReadInJoyDailyShareFragment
       paramBundle = paramBundle.getStringExtra("share_info_intent");
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramBundle);
+        this.b = new JSONObject(paramBundle);
         paramBundle = new StringBuilder();
         paramBundle.append("shareinfo is ");
-        paramBundle.append(this.jdField_a_of_type_OrgJsonJSONObject.toString());
+        paramBundle.append(this.b.toString());
         QLog.d("ReadInJoyDailyShareFragment", 1, paramBundle.toString());
       }
       catch (JSONException paramBundle)
@@ -175,29 +175,29 @@ public class ReadInJoyDailyShareFragment
         QLog.e("ReadInJoyDailyShareFragment", 1, paramBundle, new Object[0]);
       }
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new ReadInjoyContext();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(getBaseActivity());
-    ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(getBaseActivity());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper = new DynamicItemViewHelper();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext);
+    this.c = new ReadInjoyContext();
+    this.c.setContext(getBaseActivity());
+    ProteusSupportUtil.a(this.c, "default_feeds");
+    this.c.setCurActivity(getBaseActivity());
+    this.d = new DynamicItemViewHelper();
+    this.d.a(this.c);
     RIJDtReportHelper.a.a(getBaseActivity());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560169, paramViewGroup, false);
-    paramViewGroup = (ScrollView)paramLayoutInflater.findViewById(2131377386);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131626216, paramViewGroup, false);
+    paramViewGroup = (ScrollView)paramLayoutInflater.findViewById(2131445785);
     if (paramViewGroup != null)
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsUtilDynamicItemViewHelper;
+      paramBundle = this.d;
       if (paramBundle != null)
       {
-        JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+        JSONObject localJSONObject = this.b;
         if (localJSONObject != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView = paramBundle.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localJSONObject);
-          paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemProteusItemView;
+          this.a = paramBundle.a(this.c, localJSONObject);
+          paramBundle = this.a;
           if (paramBundle != null)
           {
             paramViewGroup.addView(paramBundle, -1, -1);
@@ -217,7 +217,7 @@ public class ReadInJoyDailyShareFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyShareFragment
  * JD-Core Version:    0.7.0.1
  */

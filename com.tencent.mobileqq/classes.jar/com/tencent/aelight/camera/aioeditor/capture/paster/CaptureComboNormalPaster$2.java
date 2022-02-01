@@ -17,7 +17,7 @@ final class CaptureComboNormalPaster$2
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    CaptureComboNormalPaster.a.remove(this.jdField_b_of_type_JavaLangString);
+    CaptureComboNormalPaster.h.remove(this.b);
     if (QLog.isColorLevel()) {
       QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
     }
@@ -30,13 +30,13 @@ final class CaptureComboNormalPaster$2
     if (QLog.isColorLevel()) {
       QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
     }
-    CaptureComboNormalPaster.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceNormalFacePackage, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureDataIFaceSelectedListener, this.jdField_c_of_type_Int);
-    CaptureComboNormalPaster.a.remove(this.jdField_b_of_type_JavaLangString);
+    CaptureComboNormalPaster.a(paramURLDrawable, this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k);
+    CaptureComboNormalPaster.h.remove(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.paster.CaptureComboNormalPaster.2
  * JD-Core Version:    0.7.0.1
  */

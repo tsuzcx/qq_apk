@@ -10,30 +10,30 @@ class CsTaskImpl$1
   
   public void onError(boolean paramBoolean, int paramInt, String paramString)
   {
-    ThreadCenter.clear(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl);
-    if (CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl) > 0)
+    ThreadCenter.clear(this.b);
+    if (CsTaskImpl.b(this.b) > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl.send(this.jdField_a_of_type_ArrayOfByte);
+      this.b.send(this.a);
       return;
     }
-    if (CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl) != null) {
-      CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl).onError(paramBoolean, paramInt, paramString);
+    if (CsTaskImpl.a(this.b) != null) {
+      CsTaskImpl.a(this.b).onError(paramBoolean, paramInt, paramString);
     }
-    CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl, null);
+    CsTaskImpl.a(this.b, null);
   }
   
   public void onRecv(byte[] paramArrayOfByte)
   {
-    ThreadCenter.clear(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl);
-    if (CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl) != null) {
-      CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl).onRecv(paramArrayOfByte);
+    ThreadCenter.clear(this.b);
+    if (CsTaskImpl.a(this.b) != null) {
+      CsTaskImpl.a(this.b).onRecv(paramArrayOfByte);
     }
-    CsTaskImpl.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesChannelCsTaskImpl, null);
+    CsTaskImpl.a(this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.channel.CsTaskImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,9 +20,9 @@ public class PokeReadConfirmCallback
   
   public void a(AIOContext paramAIOContext, List<ChatMessage> paramList, int paramInt)
   {
-    paramList = paramAIOContext.a().a().a();
+    paramList = paramAIOContext.e().b().d();
     ArrayList localArrayList = new ArrayList();
-    if (paramAIOContext.a().a == 0)
+    if (paramAIOContext.O().a == 0)
     {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
@@ -40,7 +40,7 @@ public class PokeReadConfirmCallback
       {
         paramList = (MessageForPoke)localArrayList.get(0);
         if (!paramList.isPlayed) {
-          paramAIOContext.a().getMsgCache().a.put(Long.valueOf(paramList.uniseq), paramList);
+          paramAIOContext.a().getMsgCache().h.put(Long.valueOf(paramList.uniseq), paramList);
         }
       }
     }
@@ -50,7 +50,7 @@ public class PokeReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.PokeReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

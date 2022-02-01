@@ -17,7 +17,7 @@ class MediaFocusController$1$1
     {
       boolean bool1 = paramEIPCResult.data.getBoolean("isProcessRunning");
       boolean bool2 = paramEIPCResult.data.getBoolean("isItemExist");
-      long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+      long l = System.currentTimeMillis() - this.a;
       if ((bool1) && (bool2))
       {
         if (QLog.isColorLevel()) {
@@ -26,18 +26,18 @@ class MediaFocusController$1$1
       }
       else
       {
-        MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).pop();
+        MediaFocusController.a(this.b.this$0).pop();
         if (QLog.isColorLevel()) {
-          QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0).size()), " ,cost:", Long.valueOf(l) });
+          QLog.d("MediaFocusController", 2, new Object[] { "notifyFocusChanged isProcessRun:", Boolean.valueOf(bool1), " ,isItmeExist:", Boolean.valueOf(bool2), " ,stack:", Integer.valueOf(MediaFocusController.a(this.b.this$0).size()), " ,cost:", Long.valueOf(l) });
         }
-        MediaFocusController.a(this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.this$0, this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$1.a);
+        MediaFocusController.a(this.b.this$0, this.b.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusController.1.1
  * JD-Core Version:    0.7.0.1
  */

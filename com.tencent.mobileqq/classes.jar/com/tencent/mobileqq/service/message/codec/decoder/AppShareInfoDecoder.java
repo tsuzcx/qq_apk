@@ -64,10 +64,10 @@ public class AppShareInfoDecoder
           ((StringBuilder)localObject2).append(((AppShareID)localObject1).toString());
           QLog.d("AppShareInfoDecoder", 2, ((StringBuilder)localObject2).toString());
         }
-        localObject2 = (AppShareID)paramBaseMessageHandler.a().find(AppShareID.class, "strPkgName=?", new String[] { ((AppShareID)localObject1).strPkgName });
+        localObject2 = (AppShareID)paramBaseMessageHandler.e().find(AppShareID.class, "strPkgName=?", new String[] { ((AppShareID)localObject1).strPkgName });
         if (localObject2 == null)
         {
-          paramBaseMessageHandler.a().persist((Entity)localObject1);
+          paramBaseMessageHandler.e().persist((Entity)localObject1);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -88,8 +88,8 @@ public class AppShareInfoDecoder
         }
         else
         {
-          paramBaseMessageHandler.a().remove((Entity)localObject2);
-          paramBaseMessageHandler.a().persist((Entity)localObject1);
+          paramBaseMessageHandler.e().remove((Entity)localObject2);
+          paramBaseMessageHandler.e().persist((Entity)localObject1);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -98,7 +98,7 @@ public class AppShareInfoDecoder
             QLog.d("AppShareInfoDecoder", 2, ((StringBuilder)localObject2).toString());
           }
         }
-        ((MessageCache)paramBaseMessageHandler.a().getMsgCache()).a(((AppShareID)localObject1).strPkgName, (AppShareID)localObject1);
+        ((MessageCache)paramBaseMessageHandler.b().getMsgCache()).a(((AppShareID)localObject1).strPkgName, (AppShareID)localObject1);
         i = 1;
       }
       else
@@ -108,7 +108,7 @@ public class AppShareInfoDecoder
       if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()))
       {
         paramMsg = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
-        localObject1 = BaseApplication.getContext().getString(2131718875);
+        localObject1 = BaseApplication.getContext().getString(2131916408);
         Iterator localIterator = paramMsg.iterator();
         bool1 = false;
         localObject2 = null;
@@ -270,7 +270,7 @@ public class AppShareInfoDecoder
             ((StringBuilder)localObject2).append("&time=");
             ((StringBuilder)localObject2).append(paramLong2);
             ((StringBuilder)localObject2).append("&msfid=");
-            ((StringBuilder)localObject2).append(paramBaseMessageHandler.a().getCurrentAccountUin());
+            ((StringBuilder)localObject2).append(paramBaseMessageHandler.b().getCurrentAccountUin());
             localObject1 = ((StringBuilder)localObject2).toString();
             localObject2 = new RichMsg.PicRec();
             ((RichMsg.PicRec)localObject2).localPath.set((String)localObject1);
@@ -314,7 +314,7 @@ public class AppShareInfoDecoder
             paramMsg.append(bool1);
             QLog.d(str1, 2, paramMsg.toString());
           }
-          GetOpenID.a(paramBaseMessageHandler, String.valueOf(AppShareIDUtil.b(l1)));
+          GetOpenID.a(paramBaseMessageHandler, String.valueOf(AppShareIDUtil.d(l1)));
           paramMsg = ActionMsgUtil.a(((msg_comm.AppShareInfo)localObject3).appshare_cookie.get().toByteArray());
           if (QLog.isColorLevel())
           {
@@ -325,7 +325,7 @@ public class AppShareInfoDecoder
             ((StringBuilder)localObject3).append(paramMsg.b);
             QLog.d(str1, 2, ((StringBuilder)localObject3).toString());
           }
-          localObject3 = paramMsg.a;
+          localObject3 = paramMsg.d;
           paramLong1 = l1;
           localObject2 = ActionMsgUtil.a((String)localObject1, (String)localObject2, paramLong1, (String)localObject3);
           if (QLog.isColorLevel())
@@ -358,12 +358,12 @@ public class AppShareInfoDecoder
     if (!paramMsg.appshare_info.has()) {
       return;
     }
-    a(paramMessageHandler, paramList, paramMsg, 0L, 0L, paramDecodeProtoPkgContext.d);
+    a(paramMessageHandler, paramList, paramMsg, 0L, 0L, paramDecodeProtoPkgContext.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.AppShareInfoDecoder
  * JD-Core Version:    0.7.0.1
  */

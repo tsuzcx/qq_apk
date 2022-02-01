@@ -20,18 +20,18 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class AVGameRoomListFragment
   extends QPublicBaseFragment
 {
-  private AVGameRoomListFragment.AVGameRoomListAdapter jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter;
-  private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   public String a;
+  private SwipListView b;
+  private AVGameRoomListFragment.AVGameRoomListAdapter c;
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)paramView.findViewById(2131363295));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter = new AVGameRoomListFragment.AVGameRoomListAdapter(getQBaseActivity(), (AppInterface)getQBaseActivity().getAppRuntime(), this.jdField_a_of_type_ComTencentWidgetSwipListView, null, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setAdapter(this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter);
-    ((ImageView)paramView.findViewById(2131363297)).setOnClickListener(new AVGameRoomListFragment.1(this));
-    ((Button)paramView.findViewById(2131363188)).setOnClickListener(new AVGameRoomListFragment.2(this));
+    this.b = ((SwipListView)paramView.findViewById(2131429169));
+    this.b.setDragEnable(true);
+    this.c = new AVGameRoomListFragment.AVGameRoomListAdapter(getQBaseActivity(), (AppInterface)getQBaseActivity().getAppRuntime(), this.b, null, this.a);
+    this.b.setAdapter(this.c);
+    ((ImageView)paramView.findViewById(2131429171)).setOnClickListener(new AVGameRoomListFragment.1(this));
+    ((Button)paramView.findViewById(2131429062)).setOnClickListener(new AVGameRoomListFragment.2(this));
   }
   
   public boolean needImmersive()
@@ -49,10 +49,10 @@ public class AVGameRoomListFragment
     super.onCreate(paramBundle);
     paramBundle = getQBaseActivity().getIntent().getSerializableExtra("troop_uin");
     if ((paramBundle instanceof String)) {
-      this.jdField_a_of_type_JavaLangString = ((String)paramBundle);
+      this.a = ((String)paramBundle);
     }
     AvGameManagerImpl.asyncPreloadAVGameProcess(getQBaseActivity().getAppRuntime());
-    paramBundle = this.jdField_a_of_type_JavaLangString;
+    paramBundle = this.a;
     if (paramBundle == null) {
       paramBundle = "";
     }
@@ -64,7 +64,7 @@ public class AVGameRoomListFragment
     if (QLog.isColorLevel()) {
       QLog.d("AVGameRoomListFragment", 2, "onCreateView");
     }
-    paramViewGroup = paramLayoutInflater.inflate(2131558699, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131624316, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
@@ -80,7 +80,7 @@ public class AVGameRoomListFragment
     if (QLog.isColorLevel()) {
       QLog.d("AVGameRoomListFragment", 2, "onDestroy");
     }
-    AVGameRoomListFragment.AVGameRoomListAdapter localAVGameRoomListAdapter = this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter;
+    AVGameRoomListFragment.AVGameRoomListAdapter localAVGameRoomListAdapter = this.c;
     if (localAVGameRoomListAdapter != null) {
       localAVGameRoomListAdapter.c();
     }
@@ -90,7 +90,7 @@ public class AVGameRoomListFragment
   public void onPause()
   {
     super.onPause();
-    AVGameRoomListFragment.AVGameRoomListAdapter localAVGameRoomListAdapter = this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter;
+    AVGameRoomListFragment.AVGameRoomListAdapter localAVGameRoomListAdapter = this.c;
     if (localAVGameRoomListAdapter != null) {
       localAVGameRoomListAdapter.b();
     }
@@ -99,11 +99,11 @@ public class AVGameRoomListFragment
   public void onResume()
   {
     super.onResume();
-    AVGameRoomListFragment.AVGameRoomListAdapter localAVGameRoomListAdapter = this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter;
+    AVGameRoomListFragment.AVGameRoomListAdapter localAVGameRoomListAdapter = this.c;
     if (localAVGameRoomListAdapter != null)
     {
       localAVGameRoomListAdapter.a();
-      this.jdField_a_of_type_ComTencentAvgameUiAVGameRoomListFragment$AVGameRoomListAdapter.d();
+      this.c.d();
     }
   }
 }

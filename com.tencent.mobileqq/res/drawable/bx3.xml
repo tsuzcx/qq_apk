@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="96.0dip" android:width="96.0dip" android:viewportWidth="96.0" android:viewportHeight="96.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/gny" />
-    <item android:drawable="@drawable/gnx" />
-</selector>
+    <path android:fillColor="#ffffffff" android:pathData="M4,0L92,0A4,4 0,0 1,96 4L96,92A4,4 0,0 1,92 96L4,96A4,4 0,0 1,0 92L0,4A4,4 0,0 1,4 0z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+    <path android:fillColor="#ff222222" android:pathData="M68.2794,45.4794l0,6l-16.8005,-0.0005l0.0005,16.8005l-6,0l0.0005,-16.8005l-16.8005,0.0005l0,-6l16.7997,-0.0003l0.0003,-16.7997l6,0l0.0003,16.7997z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="evenOdd" />
+</vector>

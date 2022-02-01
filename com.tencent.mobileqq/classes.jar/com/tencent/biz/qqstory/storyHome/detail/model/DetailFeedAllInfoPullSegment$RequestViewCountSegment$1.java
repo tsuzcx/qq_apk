@@ -19,7 +19,7 @@ class DetailFeedAllInfoPullSegment$RequestViewCountSegment$1
   
   public void a(@NonNull GetFeedFeatureRequest paramGetFeedFeatureRequest, @Nullable GetFeedFeatureResponse paramGetFeedFeatureResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    if (this.a.isJobCancelled())
     {
       SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
       return;
@@ -38,14 +38,14 @@ class DetailFeedAllInfoPullSegment$RequestViewCountSegment$1
             break;
           }
           paramGetFeedFeatureResponse = (FeedFeatureItem)paramGetFeedFeatureRequest.next();
-        } while (!paramGetFeedFeatureResponse.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
-        i = paramGetFeedFeatureResponse.c;
+        } while (!paramGetFeedFeatureResponse.a.equals(this.b));
+        i = paramGetFeedFeatureResponse.d;
       }
-      DetailFeedAllInfoPullSegment.RequestViewCountSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestViewCountSegment, Integer.valueOf(i));
+      DetailFeedAllInfoPullSegment.RequestViewCountSegment.a(this.c, Integer.valueOf(i));
       return;
     }
     SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
-    DetailFeedAllInfoPullSegment.RequestViewCountSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestViewCountSegment, paramErrorMessage);
+    DetailFeedAllInfoPullSegment.RequestViewCountSegment.a(this.c, paramErrorMessage);
   }
 }
 

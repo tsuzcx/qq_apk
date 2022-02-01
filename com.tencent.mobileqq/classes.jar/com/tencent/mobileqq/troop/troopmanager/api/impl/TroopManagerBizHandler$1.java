@@ -15,13 +15,13 @@ class TroopManagerBizHandler$1
   
   public void onGet0x88d_Result(boolean paramBoolean, String paramString1, String paramString2, oidb_0x88d.GroupInfo paramGroupInfo)
   {
-    if ((paramString1.equals(this.jdField_a_of_type_JavaLangString)) && (paramString2.equals("SUBCMD_GET_MAX_TROOP_ADMIN_NUM")))
+    if ((paramString1.equals(this.a)) && (paramString2.equals("SUBCMD_GET_MAX_TROOP_ADMIN_NUM")))
     {
       if ((paramBoolean) && (paramGroupInfo != null))
       {
         if (paramGroupInfo.uint32_group_admin_max_num.has())
         {
-          ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopManagerBizHandler.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiImplTroopManagerBizHandler).getRuntimeService(ITroopInfoService.class, "");
+          ITroopInfoService localITroopInfoService = (ITroopInfoService)TroopManagerBizHandler.a(this.b).getRuntimeService(ITroopInfoService.class, "");
           TroopInfo localTroopInfo = localITroopInfoService.findTroopInfo(paramString1);
           paramString2 = localTroopInfo;
           if (localTroopInfo == null)
@@ -31,19 +31,19 @@ class TroopManagerBizHandler$1
           }
           paramString2.maxAdminNum = paramGroupInfo.uint32_group_admin_max_num.get();
           localITroopInfoService.saveTroopInfo(paramString2);
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiImplTroopManagerBizHandler.notifyUI(TroopManagerBizObserver.TYPE_GET_MAX_TROOP_ADMIN_NUM, true, new Object[] { paramString1, Integer.valueOf(paramGroupInfo.uint32_group_admin_max_num.get()) });
+          this.b.notifyUI(TroopManagerBizObserver.TYPE_GET_MAX_TROOP_ADMIN_NUM, true, new Object[] { paramString1, Integer.valueOf(paramGroupInfo.uint32_group_admin_max_num.get()) });
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiImplTroopManagerBizHandler.notifyUI(TroopManagerBizObserver.TYPE_GET_MAX_TROOP_ADMIN_NUM, false, null);
+        this.b.notifyUI(TroopManagerBizObserver.TYPE_GET_MAX_TROOP_ADMIN_NUM, false, null);
       }
-      TroopManagerBizHandler.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopmanagerApiImplTroopManagerBizHandler).removeObserver(this);
+      TroopManagerBizHandler.b(this.b).removeObserver(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopmanager.api.impl.TroopManagerBizHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -42,20 +42,20 @@ public class DINewForCommonWebView
   extends BaseInterface
   implements IJsCallBack
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private LastDownloadAction jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  private String jdField_a_of_type_JavaLangString = "";
+  private String a = "";
+  private WebView b;
+  private Handler c;
+  private Activity d;
+  private LastDownloadAction e;
   
   public DINewForCommonWebView(Activity paramActivity, WebView paramWebView)
   {
     Object localObject = null;
-    this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction = null;
+    this.e = null;
     LogUtility.b("DINewForCommonWebView", "<DINewForCommonWebView>");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.d = paramActivity;
+    this.b = paramWebView;
+    this.c = new Handler(Looper.getMainLooper());
     if ((paramActivity instanceof PublicFragmentActivityForTool))
     {
       paramWebView = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
@@ -76,7 +76,7 @@ public class DINewForCommonWebView
     if (!((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).isServiceClientBinded())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131703487), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131901439), 0).show();
       }
     }
     else
@@ -92,7 +92,7 @@ public class DINewForCommonWebView
   
   private void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new DINewForCommonWebView.2(this, paramString));
+    this.c.post(new DINewForCommonWebView.2(this, paramString));
   }
   
   private void a(JSONArray paramJSONArray, String paramString)
@@ -108,9 +108,9 @@ public class DINewForCommonWebView
         DownloadInfo localDownloadInfo = new DownloadInfo();
         localDownloadInfo.d = localJSONObject.optString("url");
         localDownloadInfo.e = localJSONObject.optString("packageName");
-        localDownloadInfo.b = localJSONObject.optInt("versionCode");
+        localDownloadInfo.n = localJSONObject.optInt("versionCode");
         localDownloadInfo.c = localJSONObject.optString("appid");
-        localDownloadInfo.a();
+        localDownloadInfo.b();
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
@@ -136,26 +136,26 @@ public class DINewForCommonWebView
   public int batchDownloadByYYB(String paramString)
   {
     // Byte code:
-    //   0: ldc 19
+    //   0: ldc 23
     //   2: astore 7
-    //   4: new 225	java/lang/StringBuilder
+    //   4: new 226	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 227	java/lang/StringBuilder:<init>	()V
     //   11: astore 4
     //   13: aload 4
-    //   15: ldc 228
-    //   17: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: ldc 229
+    //   17: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: pop
     //   21: aload 4
     //   23: aload_1
-    //   24: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: pop
-    //   28: ldc 25
+    //   28: ldc 29
     //   30: aload 4
-    //   32: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 33	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokestatic 36	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   38: aload_0
-    //   39: invokevirtual 239	com/tencent/open/appstore/js/DINewForCommonWebView:hasRight	()Z
+    //   39: invokevirtual 240	com/tencent/open/appstore/js/DINewForCommonWebView:hasRight	()Z
     //   42: ifne +5 -> 47
     //   45: iconst_m1
     //   46: ireturn
@@ -163,32 +163,32 @@ public class DINewForCommonWebView
     //   48: astore 4
     //   50: aload 4
     //   52: astore 5
-    //   54: new 171	org/json/JSONObject
+    //   54: new 174	org/json/JSONObject
     //   57: dup
     //   58: aload_1
-    //   59: invokespecial 241	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   59: invokespecial 242	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   62: astore 6
     //   64: aload 4
     //   66: astore 5
     //   68: aload 6
-    //   70: ldc 243
-    //   72: invokevirtual 247	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   70: ldc 244
+    //   72: invokevirtual 248	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   75: astore_1
     //   76: aload_1
     //   77: astore 5
     //   79: aload 6
-    //   81: getstatic 252	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
-    //   84: invokevirtual 175	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   81: getstatic 253	com/tencent/open/downloadnew/DownloadConstants:i	Ljava/lang/String;
+    //   84: invokevirtual 178	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   87: astore 4
     //   89: aload 6
-    //   91: getstatic 255	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
-    //   94: invokevirtual 189	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   91: getstatic 256	com/tencent/open/downloadnew/DownloadConstants:k	Ljava/lang/String;
+    //   94: invokevirtual 190	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   97: istore_2
     //   98: aload 7
     //   100: astore 5
     //   102: aload 6
-    //   104: ldc_w 257
-    //   107: invokevirtual 175	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   104: ldc_w 258
+    //   107: invokevirtual 178	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   110: astore 9
     //   112: aload 9
     //   114: astore 5
@@ -201,13 +201,13 @@ public class DINewForCommonWebView
     //   125: aload 4
     //   127: astore 7
     //   129: aload 9
-    //   131: invokestatic 263	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   131: invokestatic 264	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   134: ifeq +76 -> 210
     //   137: aload 9
     //   139: astore 5
     //   141: aload_0
-    //   142: getfield 35	com/tencent/open/appstore/js/DINewForCommonWebView:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
-    //   145: invokestatic 269	com/tencent/open/appcommon/js/DownloadInterface:getSourceInfoFromActivity	(Landroid/app/Activity;)Ljava/lang/String;
+    //   142: getfield 38	com/tencent/open/appstore/js/DINewForCommonWebView:d	Landroid/app/Activity;
+    //   145: invokestatic 270	com/tencent/open/appcommon/js/DownloadInterface:getSourceInfoFromActivity	(Landroid/app/Activity;)Ljava/lang/String;
     //   148: astore 6
     //   150: aload_1
     //   151: astore 8
@@ -221,7 +221,7 @@ public class DINewForCommonWebView
     //   167: astore 6
     //   169: goto +12 -> 181
     //   172: astore 6
-    //   174: ldc 19
+    //   174: ldc 23
     //   176: astore 4
     //   178: aload 5
     //   180: astore_1
@@ -229,10 +229,10 @@ public class DINewForCommonWebView
     //   182: istore_2
     //   183: aload 7
     //   185: astore 5
-    //   187: ldc 25
-    //   189: ldc_w 271
+    //   187: ldc 29
+    //   189: ldc_w 272
     //   192: aload 6
-    //   194: invokestatic 221	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   194: invokestatic 222	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   197: aload 4
     //   199: astore 7
     //   201: iload_2
@@ -241,45 +241,45 @@ public class DINewForCommonWebView
     //   204: astore 8
     //   206: aload 5
     //   208: astore 6
-    //   210: new 225	java/lang/StringBuilder
+    //   210: new 226	java/lang/StringBuilder
     //   213: dup
-    //   214: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   214: invokespecial 227	java/lang/StringBuilder:<init>	()V
     //   217: astore_1
     //   218: aload_1
-    //   219: ldc_w 273
-    //   222: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: ldc_w 274
+    //   222: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: pop
     //   226: aload_1
     //   227: aload 8
-    //   229: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 277	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   232: pop
     //   233: aload_1
-    //   234: ldc_w 278
-    //   237: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: ldc_w 279
+    //   237: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   240: pop
     //   241: aload_1
     //   242: aload 7
-    //   244: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   244: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   247: pop
-    //   248: ldc 25
+    //   248: ldc 29
     //   250: aload_1
-    //   251: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   254: invokestatic 33	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   251: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   254: invokestatic 36	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   257: aload 8
     //   259: ifnull +32 -> 291
     //   262: aload 8
-    //   264: invokevirtual 157	org/json/JSONArray:length	()I
+    //   264: invokevirtual 160	org/json/JSONArray:length	()I
     //   267: ifne +5 -> 272
     //   270: iconst_m1
     //   271: ireturn
-    //   272: invokestatic 283	com/tencent/open/downloadnew/MyAppApi:a	()Lcom/tencent/open/downloadnew/MyAppApi;
+    //   272: invokestatic 285	com/tencent/open/downloadnew/MyAppApi:l	()Lcom/tencent/open/downloadnew/MyAppApi;
     //   275: aload_0
-    //   276: getfield 35	com/tencent/open/appstore/js/DINewForCommonWebView:jdField_a_of_type_AndroidAppActivity	Landroid/app/Activity;
+    //   276: getfield 38	com/tencent/open/appstore/js/DINewForCommonWebView:d	Landroid/app/Activity;
     //   279: aload 8
     //   281: iload_3
     //   282: aload 7
     //   284: aload 6
-    //   286: invokevirtual 286	com/tencent/open/downloadnew/MyAppApi:a	(Landroid/content/Context;Lorg/json/JSONArray;ILjava/lang/String;Ljava/lang/String;)V
+    //   286: invokevirtual 288	com/tencent/open/downloadnew/MyAppApi:a	(Landroid/content/Context;Lorg/json/JSONArray;ILjava/lang/String;Ljava/lang/String;)V
     //   289: iconst_0
     //   290: ireturn
     //   291: iconst_m1
@@ -327,7 +327,7 @@ public class DINewForCommonWebView
       return -1;
     }
     Bundle localBundle = new Bundle();
-    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.jdField_a_of_type_AndroidAppActivity) >= 6) {
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(this.d) >= 6) {
       localBundle.putLong("OuterCall_JS_DoDownloadAction", System.currentTimeMillis());
     }
     for (;;)
@@ -344,8 +344,8 @@ public class DINewForCommonWebView
           break label1447;
         }
         int i = localJSONObject.optInt("delayDownload", -1);
-        if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
-          localObject2 = (AppInterface)((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
+        if ((this.d instanceof BaseActivity)) {
+          localObject2 = (AppInterface)((BaseActivity)this.d).getAppRuntime();
         }
         if (1 == i)
         {
@@ -405,11 +405,11 @@ public class DINewForCommonWebView
         }
         paramString = localJSONObject.optString("via");
         i = localJSONObject.optInt("actionCode");
-        if (this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction == null)
+        if (this.e == null)
         {
-          this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction = new LastDownloadAction((String)localObject1, paramString, i);
+          this.e = new LastDownloadAction((String)localObject1, paramString, i);
         }
-        else if (this.jdField_a_of_type_ComTencentOpenAppcommonJsLastDownloadAction.a((String)localObject1, paramString, i))
+        else if (this.e.a((String)localObject1, paramString, i))
         {
           LogUtility.b("DINewForCommonWebView", "[doDownloadAction] repeat action,return");
           return 0;
@@ -489,14 +489,14 @@ public class DINewForCommonWebView
         localBundle.putString("apkId", localJSONObject.optString("apkId"));
         localBundle.putString("appId", (String)localObject1);
         localBundle.putInt("auto_start_yyb_download", localJSONObject.optInt("auto_start_yyb_download"));
-        localObject1 = DownloadInterface.parseSourceType(this.jdField_a_of_type_AndroidAppActivity, localJSONObject);
-        localBundle.putString("big_brother_ref_source_key", DownloadInterface.parseCurrentPageId(this.jdField_a_of_type_AndroidAppActivity));
+        localObject1 = DownloadInterface.parseSourceType(this.d, localJSONObject);
+        localBundle.putString("big_brother_ref_source_key", DownloadInterface.parseCurrentPageId(this.d));
         localBundle.putInt("hideInstallSuccessPage", localJSONObject.optInt("hideInstallSuccessPage"));
         localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("[doDownloadAction] object ");
         localStringBuilder1.append(localJSONObject.toString());
         LogUtility.b("DINewForCommonWebView", localStringBuilder1.toString());
-        DownloadProxy.a().a(this.jdField_a_of_type_AndroidAppActivity, localBundle, (String)localObject1, paramString, i);
+        DownloadProxy.a().a(this.d, localBundle, (String)localObject1, paramString, i);
         return 0;
       }
       catch (NumberFormatException paramString)
@@ -525,7 +525,7 @@ public class DINewForCommonWebView
   
   public String getJsCallbackMethod()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void getQueryDownloadAction(String paramString)
@@ -551,7 +551,7 @@ public class DINewForCommonWebView
   
   public WebView getWebview()
   {
-    return this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    return this.b;
   }
   
   public void isYYBSupportBatchDownload(String paramString)
@@ -565,7 +565,7 @@ public class DINewForCommonWebView
       try
       {
         paramString = new JSONObject(paramString).optString("callback");
-        int i = MyAppApi.c();
+        int i = MyAppApi.n();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(">isYYBSupportBatchDownload yybApiLevel=");
         localStringBuilder.append(i);
@@ -607,7 +607,7 @@ public class DINewForCommonWebView
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      DownloadProxy.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
+      DownloadProxy.a(this.d, localBundle);
     }
     catch (JSONException paramString)
     {
@@ -625,7 +625,7 @@ public class DINewForCommonWebView
     try
     {
       paramString = new JSONObject(paramString).optString("callback");
-      int i = MyAppApi.c();
+      int i = MyAppApi.n();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append(">queryYYBApiLevel yybApiLevel=");
       localStringBuilder.append(i);
@@ -658,10 +658,10 @@ public class DINewForCommonWebView
     LogUtility.b("DINewForCommonWebView", localStringBuilder.toString());
     try
     {
-      this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
+      this.a = new JSONObject(paramString).optString("callback");
       paramString = new StringBuilder();
       paramString.append("<registerDownloadCallBackListener>");
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a);
       LogUtility.b("DINewForCommonWebView", paramString.toString());
       return;
     }
@@ -681,7 +681,7 @@ public class DINewForCommonWebView
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      DownloadProxy.a(localBundle);
+      DownloadProxy.b(localBundle);
     }
     catch (JSONException paramString)
     {
@@ -700,7 +700,7 @@ public class DINewForCommonWebView
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      DownloadProxy.b(localBundle);
+      DownloadProxy.c(localBundle);
     }
     catch (JSONException paramString)
     {
@@ -711,7 +711,7 @@ public class DINewForCommonWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.js.DINewForCommonWebView
  * JD-Core Version:    0.7.0.1
  */

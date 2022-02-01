@@ -19,16 +19,16 @@ public class QQNotifySettingAction
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilHashMap.containsKey("scheme")) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("msgid")) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey("busiid")))
+      if ((this.f.containsKey("scheme")) && (this.f.containsKey("msgid")) && (this.f.containsKey("busiid")))
       {
-        localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("msgid");
-        String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("busiid");
-        String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("scheme");
+        localObject = (String)this.f.get("msgid");
+        String str2 = (String)this.f.get("busiid");
+        String str3 = (String)this.f.get("scheme");
         String str1 = "";
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("domain")) {
-          str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("domain");
+        if (this.f.containsKey("domain")) {
+          str1 = (String)this.f.get("domain");
         }
-        QQNotifySettingFragment.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, str2, str3, str1);
+        QQNotifySettingFragment.a(this.b, (String)localObject, str2, str3, str1);
       }
       return false;
     }
@@ -38,14 +38,14 @@ public class QQNotifySettingAction
       ((StringBuilder)localObject).append("doAction error: ");
       ((StringBuilder)localObject).append(localException.getMessage());
       QLog.e("QQNotifySettingAction", 1, ((StringBuilder)localObject).toString());
-      b_("QQNotifySettingAction");
+      h_("QQNotifySettingAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQNotifySettingAction
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.litelivesdk.framework.room;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,7 +17,11 @@ import com.tencent.mobileqq.litelivesdk.framework.login.LoginManager;
 import com.tencent.mobileqq.litelivesdk.utils.log.LogFactory;
 import com.tencent.mobileqq.litelivesdk.utils.log.LogInterface;
 import com.tencent.mobileqq.litelivesdk.utils.room.RoomUtil;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.QQLiveJumpUtil;
 import cooperation.ilive.lite.IliveLiteMonitorUtil;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -30,24 +35,6 @@ public class RoomManager
   static
   {
     UserAction.registerTunnel(new TunnelInfo("00000MEVUX3CBYO1"));
-  }
-  
-  private static long a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0L;
-    }
-    paramString = a(paramString);
-    try
-    {
-      long l = Long.parseLong((String)paramString.get("starttime"));
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0L;
   }
   
   private static String a(Map<String, String> paramMap)
@@ -165,22 +152,33 @@ public class RoomManager
   
   public static void a(Context paramContext, String paramString)
   {
-    IliveLiteMonitorUtil.a("live_enter_tick_time", a(paramString));
+    if (QQLiveJumpUtil.f())
+    {
+      if ((paramContext instanceof Activity))
+      {
+        DialogUtil.a(paramContext, 230, null, "你正在直播中，暂时无法进入其他直播间", null, "知道了", new RoomManager.1(), null).show();
+        return;
+      }
+      QQToast.makeText(paramContext, 4, "你正在直播中，暂时无法进入其他直播间", 0).show();
+      return;
+    }
+    IliveLiteMonitorUtil.a("live_enter_tick_time", b(paramString));
     IliveLiteMonitorUtil.a("live_enter_tick_time", "start_enter_room");
     LogFactory.a().e("RoomManager", "enterRoom-----start");
-    if (LoginManager.a.a() == null)
+    if (LoginManager.c.d() == null)
     {
       LogFactory.a().e("RoomManager", "getLoginRequest null");
       return;
     }
-    LiveSDK.initLoginData(LoginManager.a.a());
+    LiveSDK.initLoginData(LoginManager.c.d());
     LogFactory.a().e("RoomManager", "enterRoom-----initLoginData finish");
     EnterRoomConfig localEnterRoomConfig = new EnterRoomConfig();
     Map localMap = a(paramString);
     if (localMap.containsKey("fromid"))
     {
-      localEnterRoomConfig.source = ((String)localMap.get("fromid"));
-      BusinessManager.a.a((String)localMap.get("fromid"));
+      String str = (String)localMap.get("fromid");
+      localEnterRoomConfig.source = str;
+      BusinessManager.a.a(str);
     }
     if (localMap.containsKey("roomid")) {
       try
@@ -211,7 +209,7 @@ public class RoomManager
         try
         {
           if (!localMap.containsKey("pagetype")) {
-            break label289;
+            break label337;
           }
           j = Integer.parseInt((String)localMap.get("pagetype"));
         }
@@ -224,7 +222,7 @@ public class RoomManager
       }
       j = i;
     }
-    label289:
+    label337:
     if ((j != 2) && (j != 4)) {
       localEnterRoomConfig.videoFormat = 1;
     } else {
@@ -241,6 +239,11 @@ public class RoomManager
     localEnterRoomConfig.extData = new Bundle();
     localEnterRoomConfig.extData.putString("mqqschema", paramString);
     localEnterRoomConfig.extData.putInt("content_type", j);
+    if (localMap.containsKey("fromid"))
+    {
+      paramString = (String)localMap.get("fromid");
+      localEnterRoomConfig.extData.putString("source", paramString);
+    }
     if (localMap.containsKey("enter_record_if_finish")) {
       localEnterRoomConfig.extData.putString("enter_record_if_finish", (String)localMap.get("enter_record_if_finish"));
     } else {
@@ -271,6 +274,26 @@ public class RoomManager
       paramString = (String)localMap.get("toolProcessState");
       BusinessManager.a.b(paramString);
       localEnterRoomConfig.extData.putString("roomProcessState", paramString);
+    }
+    if (localMap.containsKey("starttime")) {
+      paramString = (String)localMap.get("starttime");
+    }
+    try
+    {
+      localEnterRoomConfig.extData.putLong("starttime", Long.parseLong(paramString));
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label955:
+      StringBuilder localStringBuilder;
+      break label955;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parse startTime failed: ");
+    localStringBuilder.append(paramString);
+    QLog.e("RoomManager", 1, localStringBuilder.toString());
+    if (localMap.containsKey("tool_state")) {
+      localEnterRoomConfig.extData.putString("tool_state", (String)localMap.get("tool_state"));
     }
     if (localMap.containsKey("startEnterTime")) {
       try
@@ -305,9 +328,91 @@ public class RoomManager
     if (localMap.containsKey("remove_last_room")) {
       localEnterRoomConfig.extData.putString("remove_last_room", (String)localMap.get("remove_last_room"));
     }
-    paramString = BusinessManager.a.a();
-    if ((BusinessManager.a.c()) && (paramString != null) && (paramString.a != null)) {
-      localEnterRoomConfig.extData.putString("enter_room", (String)paramString.a.get("enter_room"));
+    try
+    {
+      boolean bool = localMap.containsKey("room_type");
+      if (bool)
+      {
+        paramString = (String)localMap.get("room_type");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("enterRoom roomType:");
+          localStringBuilder.append(paramString);
+          QLog.d("RoomManager", 2, localStringBuilder.toString());
+        }
+        if (paramString == null) {
+          QLog.e("RoomManager", 1, "roomType is null");
+        } else {
+          localEnterRoomConfig.extData.putInt("ext_enter_room_room_type", Integer.parseInt(paramString));
+        }
+      }
+      if (localMap.containsKey("game_id"))
+      {
+        paramString = (String)localMap.get("game_id");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("enterRoom gameId:");
+          localStringBuilder.append(paramString);
+          QLog.d("RoomManager", 2, localStringBuilder.toString());
+        }
+        if (paramString == null) {
+          QLog.e("RoomManager", 1, "roomType is null");
+        } else {
+          localEnterRoomConfig.extData.putInt("ext_enter_room_game_id", Integer.parseInt(paramString));
+        }
+      }
+      if (localMap.containsKey("game_tag_id"))
+      {
+        paramString = (String)localMap.get("game_tag_id");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("enterRoom gameTagId:");
+          localStringBuilder.append(paramString);
+          QLog.d("RoomManager", 2, localStringBuilder.toString());
+        }
+        if (paramString == null) {
+          QLog.e("RoomManager", 1, "roomType is null");
+        } else {
+          localEnterRoomConfig.extData.putInt("ext_enter_room_game_tag_id", Integer.parseInt(paramString));
+        }
+      }
+      if (localMap.containsKey("video_source"))
+      {
+        paramString = (String)localMap.get("video_source");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("enterRoom gameTagId:");
+          localStringBuilder.append(paramString);
+          QLog.d("RoomManager", 2, localStringBuilder.toString());
+        }
+        if (paramString == null) {
+          QLog.e("RoomManager", 1, "roomType is null");
+        } else {
+          localEnterRoomConfig.extData.putLong("ext_enter_room_video_source_app_id", Long.parseLong(paramString));
+        }
+      }
+    }
+    catch (Throwable paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseInt error e:");
+      localStringBuilder.append(paramString.getMessage());
+      QLog.e("RoomManager", 1, localStringBuilder.toString());
+    }
+    catch (Exception paramString)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseInt error e:");
+      localStringBuilder.append(paramString.getMessage());
+      QLog.e("RoomManager", 1, localStringBuilder.toString());
+    }
+    paramString = BusinessManager.a.b();
+    if ((BusinessManager.a.e()) && (paramString != null) && (paramString.m != null)) {
+      localEnterRoomConfig.extData.putString("enter_room", (String)paramString.m.get("enter_room"));
     }
     LiveSDK.enterLive(paramContext, localEnterRoomConfig);
     a(localEnterRoomConfig);
@@ -318,35 +423,35 @@ public class RoomManager
   {
     IliveLiteMonitorUtil.a("live_enter_tick_time", "enter_live_finish");
     IliveLiteMonitorUtil.a();
-    boolean bool = BusinessManager.a.b();
+    boolean bool = BusinessManager.a.d();
     String str = "1";
     Object localObject;
     if (bool)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("appid", "1014");
-      if (BusinessManager.a.d()) {
+      if (BusinessManager.a.j()) {
         localObject = "1";
       } else {
         localObject = "0";
       }
       localHashMap.put("zt_int4", localObject);
-      localHashMap.put("zt_int5", BusinessManager.a.c());
+      localHashMap.put("zt_int5", BusinessManager.a.h());
       localHashMap.put("act_type", "qq_start_enter_live");
-      localHashMap.put("timelong", String.valueOf(System.currentTimeMillis() - BusinessManager.a.a()));
+      localHashMap.put("timelong", String.valueOf(System.currentTimeMillis() - BusinessManager.a.i()));
       if (TextUtils.isEmpty(paramEnterRoomConfig.source)) {
         paramEnterRoomConfig = "";
       } else {
         paramEnterRoomConfig = paramEnterRoomConfig.source;
       }
       localHashMap.put("fromid", paramEnterRoomConfig);
-      localHashMap.put("userid", BusinessManager.a.a());
+      localHashMap.put("userid", BusinessManager.a.f());
       UserAction.onUserActionToTunnel("00000MEVUX3CBYO1", "qq_start_enter_live#room_page#room", true, -1L, -1L, localHashMap, true, true);
     }
-    paramEnterRoomConfig = BusinessManager.a.a();
-    if ((BusinessManager.a.c()) && (paramEnterRoomConfig != null) && (paramEnterRoomConfig.a != null))
+    paramEnterRoomConfig = BusinessManager.a.b();
+    if ((BusinessManager.a.e()) && (paramEnterRoomConfig != null) && (paramEnterRoomConfig.m != null))
     {
-      localObject = paramEnterRoomConfig.a;
+      localObject = paramEnterRoomConfig.m;
       if (LiveFloatWindowManager.getInstance().appFloatIsShow("FloatWindowComponentImpl")) {
         paramEnterRoomConfig = str;
       } else {
@@ -354,6 +459,24 @@ public class RoomManager
       }
       ((HashMap)localObject).put("is_float_window_in", paramEnterRoomConfig);
     }
+  }
+  
+  private static long b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    paramString = a(paramString);
+    try
+    {
+      long l = Long.parseLong((String)paramString.get("starttime"));
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 0L;
   }
   
   private static String b(Map<String, String> paramMap)
@@ -376,7 +499,7 @@ public class RoomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.framework.room.RoomManager
  * JD-Core Version:    0.7.0.1
  */

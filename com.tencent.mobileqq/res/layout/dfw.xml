@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.RoundImageView android:id="@id/mkl" android:layout_width="fill_parent" android:layout_height="132.0dip" android:src="@drawable/jh8" android:scaleType="centerCrop" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ocg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginRight="13.0dip" android:layout_centerVertical="true">
+        <ImageView android:id="@id/ps7" android:layout_width="73.0dip" android:layout_height="73.0dip" />
+        <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="10.0dip" android:textColor="#ffc07228" android:id="@id/och" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n3h" android:layout_width="fill_parent" android:layout_height="86.0dip" android:layout_marginLeft="-6.0dip" android:layout_toRightOf="@id/ocg">
+        <include android:id="@id/nb2" layout="@layout/dfv" />
+        <include android:id="@id/q0_" layout="@layout/dfv" />
+        <include android:id="@id/qcz" layout="@layout/dfv" />
+    </LinearLayout>
+    <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="12.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/p0o" android:layout_width="wrap_content" android:layout_height="46.0dip" android:layout_marginRight="16.0dip" android:includeFontPadding="false" android:layout_below="@id/n3h" android:layout_alignParentRight="true" />
+    <TextView android:textSize="10.0dip" android:textColor="#66000000" android:gravity="center" android:id="@id/p0p" android:layout_width="wrap_content" android:layout_height="46.0dip" android:layout_marginLeft="30.0dip" android:layout_marginRight="4.0dip" android:text="@string/zfn" android:includeFontPadding="false" android:layout_toLeftOf="@id/p0o" android:layout_below="@id/n3h" />
+    <FrameLayout android:gravity="center_vertical" android:id="@id/pwt" android:layout_width="wrap_content" android:layout_height="46.0dip" android:layout_marginLeft="6.0dip" android:layout_toRightOf="@id/nvt" android:layout_below="@id/n3h">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/pwx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/black" android:gravity="center" android:id="@id/nvs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/zg0" android:includeFontPadding="false" />
+    </FrameLayout>
+    <TextView android:textSize="10.0dip" android:textColor="#66000000" android:gravity="center" android:id="@id/nvt" android:layout_width="wrap_content" android:layout_height="46.0dip" android:layout_marginLeft="11.0dip" android:text="@string/zfm" android:includeFontPadding="false" android:layout_toRightOf="@id/ocg" android:layout_below="@id/n3h" />
+</merge>

@@ -12,25 +12,25 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 class ReadInJoyPicWaterFallFragment$ActiveViewHolder
   extends ReadInJoyPicWaterFallFragment.BaseViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  ImageView a;
+  URLImageView b;
   
   ReadInJoyPicWaterFallFragment$ActiveViewHolder(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
     super(paramReadInJoyPicWaterFallFragment, paramView);
-    this.b = ((URLImageView)paramView.findViewById(2131365261));
-    this.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362663));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
+    this.e = ((URLImageView)paramView.findViewById(2131431432));
+    this.e.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.b = ((URLImageView)paramView.findViewById(2131428286));
+    this.b.setImageDrawable(new ColorDrawable(Color.parseColor("#7f000000")));
     AIOUtils.b(3.0F, paramReadInJoyPicWaterFallFragment.getResources());
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362023));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378784));
+    this.a = ((ImageView)paramView.findViewById(2131427601));
+    this.f = ((TextView)paramView.findViewById(2131447463));
     paramView.setOnClickListener(new ReadInJoyPicWaterFallFragment.ActiveViewHolder.1(this, paramReadInJoyPicWaterFallFragment));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment.ActiveViewHolder
  * JD-Core Version:    0.7.0.1
  */

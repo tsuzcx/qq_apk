@@ -17,51 +17,57 @@ import org.jetbrains.annotations.NotNull;
 public final class SelectCommunityView
   extends BaseSelectView<CommunityInfo, SelectCommunityView.CommunityViewHolder>
 {
+  private final SelectCommunityView.mAdapter.1 a;
   @NotNull
-  private final Activity jdField_a_of_type_AndroidAppActivity;
-  private final SelectCommunityView.mAdapter.1 jdField_a_of_type_ComTencentTkdTopicsdkSelectownerSelectCommunityView$mAdapter$1;
+  private final Activity b;
   @NotNull
-  private final String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  private final String c;
+  private HashMap d;
   
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.d == null) {
+      this.d = new HashMap();
     }
-    View localView2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    View localView2 = (View)this.d.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
       localView1 = findViewById(paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localView1);
+      this.d.put(Integer.valueOf(paramInt), localView1);
     }
     return localView1;
   }
   
   @NotNull
-  public CommonListAdapter<CommunityInfo, SelectCommunityView.CommunityViewHolder> a()
+  public CommonListAdapter<CommunityInfo, SelectCommunityView.CommunityViewHolder> getAdapter()
   {
-    return (CommonListAdapter)this.jdField_a_of_type_ComTencentTkdTopicsdkSelectownerSelectCommunityView$mAdapter$1;
+    return (CommonListAdapter)this.a;
   }
   
   @NotNull
-  public String a()
+  public final Activity getContext()
   {
-    String str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(R.string.S);
+    return this.b;
+  }
+  
+  @NotNull
+  public String getSelectTip()
+  {
+    String str = this.b.getResources().getString(R.string.I);
     Intrinsics.checkExpressionValueIsNotNull(str, "context.resources.getStr…publish_to_community_tip)");
     return str;
   }
   
   @NotNull
-  public final String c()
+  public final String getSelectedCommunityId()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.selectowner.SelectCommunityView
  * JD-Core Version:    0.7.0.1
  */

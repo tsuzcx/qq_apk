@@ -22,13 +22,13 @@ class ChatBackgroundManager$3
   {
     if (paramBoolean)
     {
-      paramVector = this.jdField_a_of_type_AndroidContentContext;
+      paramVector = this.a;
       if ((paramVector != null) && ((paramVector instanceof BaseActivity)))
       {
         paramVector = ((BaseActivity)paramVector).getChatFragment();
-        if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
+        if ((paramVector != null) && (paramVector.k() != null) && (paramVector.k().U != null))
         {
-          ChatXListView localChatXListView = paramVector.a().a;
+          ChatXListView localChatXListView = paramVector.k().U;
           int i = localChatXListView.getFirstVisiblePosition();
           int j = localChatXListView.getLastVisiblePosition();
           while (i <= j)
@@ -37,12 +37,12 @@ class ChatBackgroundManager$3
             if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof BaseBubbleBuilder.ViewHolder)))
             {
               localObject = (BaseBubbleBuilder.ViewHolder)((View)localObject).getTag();
-              if ((((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null) && (!((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a) && (((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.b))
+              if ((((BaseBubbleBuilder.ViewHolder)localObject).i != null) && (!((BaseBubbleBuilder.ViewHolder)localObject).i.o) && (((BaseBubbleBuilder.ViewHolder)localObject).i.p))
               {
                 if (QLog.isColorLevel()) {
                   QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
                 }
-                paramVector.a().a(((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
+                paramVector.k().a(((BaseBubbleBuilder.ViewHolder)localObject).q, 1);
               }
             }
             i += 1;
@@ -54,7 +54,7 @@ class ChatBackgroundManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.3
  * JD-Core Version:    0.7.0.1
  */

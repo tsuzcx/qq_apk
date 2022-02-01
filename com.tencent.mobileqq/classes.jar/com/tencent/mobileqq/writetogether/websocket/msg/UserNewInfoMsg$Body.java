@@ -6,7 +6,7 @@ public class UserNewInfoMsg$Body
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.msg.UserNewInfoMsg.Body
  * JD-Core Version:    0.7.0.1
  */

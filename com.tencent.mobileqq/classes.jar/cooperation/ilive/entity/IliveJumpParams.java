@@ -5,40 +5,38 @@ import java.util.ArrayList;
 
 public class IliveJumpParams
 {
-  public int a;
   public Context a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
   public String b;
-  public boolean b;
   public String c;
   public String d;
   public String e;
-  public String f;
-  public String g;
-  
-  public IliveJumpParams(Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    this(paramContext, paramString1, paramString2, "", false, null, "", paramInt);
-  }
+  public boolean f;
+  public ArrayList<String> g;
+  public String h;
+  public int i;
+  public String j;
+  public boolean k = false;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p;
   
   public IliveJumpParams(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, ArrayList<String> paramArrayList, String paramString4, int paramInt)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.e = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramContext;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.f = paramBoolean;
+    this.g = paramArrayList;
+    this.h = paramString4;
+    this.i = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.entity.IliveJumpParams
  * JD-Core Version:    0.7.0.1
  */

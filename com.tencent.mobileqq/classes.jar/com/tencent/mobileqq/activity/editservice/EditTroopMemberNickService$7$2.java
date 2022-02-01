@@ -11,18 +11,18 @@ class EditTroopMemberNickService$7$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard != null)
+    if (this.a != null)
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("result", this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopMemberCard.colorCard);
-      localIntent.putExtra("edit_action", this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService$7.a.d);
-      EditTroopMemberNickService.a(this.jdField_a_of_type_ComTencentMobileqqActivityEditserviceEditTroopMemberNickService$7.a).onFinishForResult(-1, localIntent);
+      localIntent.putExtra("result", this.a.colorCard);
+      localIntent.putExtra("edit_action", this.b.a.l);
+      EditTroopMemberNickService.d(this.b.a).onFinishForResult(-1, localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.7.2
  * JD-Core Version:    0.7.0.1
  */

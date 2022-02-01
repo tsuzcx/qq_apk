@@ -10,7 +10,7 @@ public abstract interface ISubAccountApi$SubAccountBindObserverInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.ISubAccountApi.SubAccountBindObserverInterface
  * JD-Core Version:    0.7.0.1
  */

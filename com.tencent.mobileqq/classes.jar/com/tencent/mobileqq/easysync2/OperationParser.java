@@ -5,16 +5,16 @@ import java.util.List;
 
 public class OperationParser
 {
-  int jdField_a_of_type_Int = 0;
-  char[] jdField_a_of_type_ArrayOfChar;
+  int a = 0;
+  char[] b;
   
   private int a()
   {
     int i = 0;
     for (;;)
     {
-      int j = this.jdField_a_of_type_Int;
-      char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+      int j = this.a;
+      char[] arrayOfChar = this.b;
       if (j + i >= arrayOfChar.length) {
         break;
       }
@@ -30,13 +30,13 @@ public class OperationParser
   List<Operation> a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    this.jdField_a_of_type_ArrayOfChar = paramString.toCharArray();
+    this.b = paramString.toCharArray();
     Object localObject = new Operation();
     StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
-      int i = this.jdField_a_of_type_Int;
-      char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+      int i = this.a;
+      char[] arrayOfChar = this.b;
       if (i >= arrayOfChar.length) {
         break;
       }
@@ -49,12 +49,12 @@ public class OperationParser
           {
             if (j != 124)
             {
-              this.jdField_a_of_type_Int = (i + 1);
+              this.a = (i + 1);
               ((Operation)localObject).a();
             }
             else
             {
-              this.jdField_a_of_type_Int = (i + 1);
+              this.a = (i + 1);
               i = a();
               if (i == 0)
               {
@@ -62,10 +62,10 @@ public class OperationParser
               }
               else
               {
-                j = this.jdField_a_of_type_Int;
-                ((Operation)localObject).b = Changeset.a(paramString.substring(j, j + i));
+                j = this.a;
+                ((Operation)localObject).c = Changeset.b(paramString.substring(j, j + i));
               }
-              this.jdField_a_of_type_Int += i;
+              this.a += i;
             }
           }
           else
@@ -78,10 +78,10 @@ public class OperationParser
         }
         else
         {
-          arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
-          i = this.jdField_a_of_type_Int;
-          ((Operation)localObject).jdField_a_of_type_Char = arrayOfChar[i];
-          this.jdField_a_of_type_Int = (i + 1);
+          arrayOfChar = this.b;
+          i = this.a;
+          ((Operation)localObject).a = arrayOfChar[i];
+          this.a = (i + 1);
           i = a();
           if (i == 0)
           {
@@ -89,19 +89,19 @@ public class OperationParser
           }
           else
           {
-            j = this.jdField_a_of_type_Int;
-            ((Operation)localObject).jdField_a_of_type_Int = Changeset.a(paramString.substring(j, j + i));
-            ((Operation)localObject).jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+            j = this.a;
+            ((Operation)localObject).b = Changeset.b(paramString.substring(j, j + i));
+            ((Operation)localObject).d = localStringBuilder.toString();
             localArrayList.add(localObject);
             localStringBuilder.delete(0, localStringBuilder.length());
             localObject = new Operation();
           }
-          this.jdField_a_of_type_Int += i;
+          this.a += i;
         }
       }
       else
       {
-        this.jdField_a_of_type_Int = (i + 1);
+        this.a = (i + 1);
         i = a();
         if (i == 0)
         {
@@ -109,10 +109,10 @@ public class OperationParser
         }
         else
         {
-          j = this.jdField_a_of_type_Int;
+          j = this.a;
           localStringBuilder.append(paramString.substring(j - 1, j + i));
         }
-        this.jdField_a_of_type_Int += i;
+        this.a += i;
       }
     }
     return localArrayList;
@@ -120,7 +120,7 @@ public class OperationParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.OperationParser
  * JD-Core Version:    0.7.0.1
  */

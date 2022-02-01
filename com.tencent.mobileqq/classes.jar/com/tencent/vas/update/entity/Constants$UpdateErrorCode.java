@@ -7,6 +7,7 @@ public class Constants$UpdateErrorCode
   public static final int UPDATE_CHECK_MD5_ERR = 17;
   public static final int UPDATE_DELAY_RETRY = 20;
   public static final int UPDATE_DELTA_MODE_ERR = 16;
+  public static final int UPDATE_DOWNLOAD_EMPTY_LIMIT = 24;
   public static final int UPDATE_DOWNLOAD_FILE_ERR = 23;
   public static final int UPDATE_DOWNLOAD_PARAM_ERROR = 6;
   public static final int UPDATE_FLOW_LIMIT = 10;
@@ -32,7 +33,7 @@ public class Constants$UpdateErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.entity.Constants.UpdateErrorCode
  * JD-Core Version:    0.7.0.1
  */

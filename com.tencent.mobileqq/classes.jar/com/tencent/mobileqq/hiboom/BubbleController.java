@@ -35,7 +35,7 @@ public class BubbleController
   
   public List<FontBubble> a(QQAppInterface paramQQAppInterface, BubbleRecommendRsp paramBubbleRecommendRsp)
   {
-    paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramQQAppInterface.getAccount());
+    paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(paramQQAppInterface.getAccount());
     int i = 0;
     int j;
     if (paramQQAppInterface == null)
@@ -76,12 +76,12 @@ public class BubbleController
   
   public void a(ISVIPHandler paramISVIPHandler)
   {
-    paramISVIPHandler.e();
+    paramISVIPHandler.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.BubbleController
  * JD-Core Version:    0.7.0.1
  */

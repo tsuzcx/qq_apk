@@ -23,53 +23,53 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class GatewayLoadingDrawable
   extends Drawable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private final ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private Path jdField_b_of_type_AndroidGraphicsPath;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private final ValueAnimator jdField_c_of_type_AndroidAnimationValueAnimator;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
+  private int a;
+  private int b;
+  private int c;
+  private Paint d;
   private float e;
+  private int f;
+  private Path g;
+  private Path h;
+  private float i;
+  private float j;
+  private ValueAnimator k;
+  private PathMeasure l;
+  private final ValueAnimator m;
+  private Bitmap n;
+  private Rect o;
+  private RectF p;
+  private float q;
+  private final ValueAnimator r;
+  private float s;
   
   public GatewayLoadingDrawable()
   {
     Resources localResources = BaseApplication.getContext().getResources();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(localResources.getColor(2131167089));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_Float = Utils.a(1.5F, BaseApplication.getContext().getResources());
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1400L).setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new GatewayLoadingDrawable.1(this));
-    this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 255 });
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new GatewayLoadingDrawable.2(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(500L).setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new GatewayLoadingDrawable.3(this));
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(localResources, 2130845084);
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    this.d = new Paint();
+    this.d.setColor(localResources.getColor(2131168041));
+    this.d.setAntiAlias(true);
+    this.d.setStyle(Paint.Style.STROKE);
+    this.d.setStrokeCap(Paint.Cap.ROUND);
+    this.e = Utils.a(1.5F, BaseApplication.getContext().getResources());
+    this.d.setStrokeWidth(this.e);
+    this.c = -1;
+    this.k = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.k.setDuration(1400L).setInterpolator(new LinearInterpolator());
+    this.k.setRepeatMode(1);
+    this.k.setRepeatCount(-1);
+    this.k.addUpdateListener(new GatewayLoadingDrawable.1(this));
+    this.r = ValueAnimator.ofInt(new int[] { 0, 255 });
+    this.r.setRepeatCount(0);
+    this.r.setInterpolator(new LinearInterpolator());
+    this.r.setDuration(400L);
+    this.r.addUpdateListener(new GatewayLoadingDrawable.2(this));
+    this.m = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.m.setDuration(500L).setInterpolator(new LinearInterpolator());
+    this.m.setRepeatCount(0);
+    this.m.addUpdateListener(new GatewayLoadingDrawable.3(this));
+    this.n = BitmapFactory.decodeResource(localResources, 2130846521);
+    this.o = new Rect(0, 0, this.n.getWidth(), this.n.getHeight());
   }
   
   private float a(float paramFloat)
@@ -95,38 +95,38 @@ public class GatewayLoadingDrawable
   
   public void a()
   {
-    this.jdField_d_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.start();
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
+    this.f = 2;
+    this.k.end();
+    this.r.start();
+    this.m.start();
   }
   
   public void b()
   {
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_c_of_type_Int = 255;
-    if (this.jdField_c_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.end();
+    this.f = 1;
+    this.c = 255;
+    if (this.r.isRunning()) {
+      this.r.end();
     }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.end();
+    if (this.m.isRunning()) {
+      this.m.end();
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
+    if (this.k.isRunning()) {
+      this.k.end();
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.k.start();
   }
   
   public void c()
   {
-    if (this.jdField_c_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_c_of_type_AndroidAnimationValueAnimator.end();
+    if (this.r.isRunning()) {
+      this.r.end();
     }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.end();
+    if (this.m.isRunning()) {
+      this.m.end();
     }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.end();
+    if (this.k.isRunning()) {
+      this.k.end();
     }
   }
   
@@ -136,53 +136,53 @@ public class GatewayLoadingDrawable
     float f1;
     float f2;
     float f3;
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
+    if ((this.a == 0) && (this.b == 0))
     {
       localObject = getBounds();
-      this.jdField_a_of_type_Int = ((Rect)localObject).width();
-      this.jdField_b_of_type_Int = ((Rect)localObject).height();
-      this.e = (Math.min(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int) / 2.0F - this.jdField_a_of_type_Float);
-      i = this.jdField_a_of_type_Int;
-      f1 = i / 2.0F;
-      f2 = this.e;
-      f3 = i / 2.0F;
-      i = this.jdField_b_of_type_Int;
-      float f4 = i / 2.0F;
-      float f5 = i / 2.0F;
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPath.addArc(new RectF(f1 - f2, f4 - f2, f3 + f2, f5 + f2), -90.0F, 360.0F);
-      this.jdField_b_of_type_AndroidGraphicsPath = new Path();
-      this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
-      this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-      f1 = this.e * 1.3F;
-      f2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * f1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      i = this.jdField_a_of_type_Int;
-      f3 = (i - f1) / 2.0F;
-      int j = this.jdField_b_of_type_Int;
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f3, (j - f2) * 0.57F, (i + f1) / 2.0F, (j - f2) * 0.57F + f2);
+      this.a = ((Rect)localObject).width();
+      this.b = ((Rect)localObject).height();
+      this.s = (Math.min(this.b, this.a) / 2.0F - this.e);
+      i1 = this.a;
+      f1 = i1 / 2.0F;
+      f2 = this.s;
+      f3 = i1 / 2.0F;
+      i1 = this.b;
+      float f4 = i1 / 2.0F;
+      float f5 = i1 / 2.0F;
+      this.g = new Path();
+      this.g.addArc(new RectF(f1 - f2, f4 - f2, f3 + f2, f5 + f2), -90.0F, 360.0F);
+      this.h = new Path();
+      this.l = new PathMeasure(this.g, false);
+      this.j = this.l.getLength();
+      f1 = this.s * 1.3F;
+      f2 = this.n.getHeight() * f1 / this.n.getWidth();
+      i1 = this.a;
+      f3 = (i1 - f1) / 2.0F;
+      int i2 = this.b;
+      this.p = new RectF(f3, (i2 - f2) * 0.57F, (i1 + f1) / 2.0F, (i2 - f2) * 0.57F + f2);
     }
-    int i = this.jdField_d_of_type_Int;
-    if (i == 1)
+    int i1 = this.f;
+    if (i1 == 1)
     {
-      this.jdField_b_of_type_AndroidGraphicsPath.reset();
-      f1 = b(this.jdField_b_of_type_Float);
-      f2 = a(this.jdField_b_of_type_Float);
-      localObject = this.jdField_a_of_type_AndroidGraphicsPathMeasure;
-      f3 = this.jdField_c_of_type_Float;
-      ((PathMeasure)localObject).getSegment(f1 * f3, f2 * f3, this.jdField_b_of_type_AndroidGraphicsPath, true);
-      paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.h.reset();
+      f1 = b(this.i);
+      f2 = a(this.i);
+      localObject = this.l;
+      f3 = this.j;
+      ((PathMeasure)localObject).getSegment(f1 * f3, f2 * f3, this.h, true);
+      paramCanvas.drawPath(this.h, this.d);
       return;
     }
-    if (i == 2)
+    if (i1 == 2)
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-      f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      f2 = this.jdField_d_of_type_Float;
+      localObject = this.o;
+      f1 = this.n.getWidth();
+      f2 = this.q;
       ((Rect)localObject).right = ((int)(f1 * f2));
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-      ((RectF)localObject).right = (this.e * 1.3F * f2 + ((RectF)localObject).left);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localObject = this.p;
+      ((RectF)localObject).right = (this.s * 1.3F * f2 + ((RectF)localObject).left);
+      paramCanvas.drawBitmap(this.n, this.o, this.p, this.d);
+      paramCanvas.drawPath(this.g, this.d);
     }
   }
   
@@ -197,7 +197,7 @@ public class GatewayLoadingDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GatewayLoadingDrawable
  * JD-Core Version:    0.7.0.1
  */

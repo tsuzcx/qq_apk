@@ -19,7 +19,7 @@ public class SubType0x104
     try
     {
       localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.getProxyManager().a().a(localMsgBody);
+      paramQQAppInterface.getProxyManager().j().a(localMsgBody);
       return;
     }
     catch (Exception paramQQAppInterface)
@@ -42,7 +42,7 @@ public class SubType0x104
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x104
  * JD-Core Version:    0.7.0.1
  */

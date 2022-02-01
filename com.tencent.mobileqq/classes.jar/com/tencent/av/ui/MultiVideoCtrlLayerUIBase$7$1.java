@@ -9,10 +9,10 @@ class MultiVideoCtrlLayerUIBase$7$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$7.this$0.h()) {
+    if (this.b.this$0.V()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$7.this$0.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase$7.a, this.jdField_a_of_type_JavaUtilArrayList);
+    this.b.this$0.a(this.b.b, this.a);
   }
 }
 

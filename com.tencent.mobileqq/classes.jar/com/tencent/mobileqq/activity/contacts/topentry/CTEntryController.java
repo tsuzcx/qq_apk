@@ -18,21 +18,20 @@ import com.tencent.widget.XListView;
 public class CTEntryController
   extends BaseViewController
 {
-  protected FrameLayout a;
-  protected ImageView a;
-  protected TextView a;
-  protected CTEntryController.OnCTEntryDataChangeListener a;
-  protected QQAppInterface a;
-  private StudyModeChangeListener a;
-  protected AlphaClickableRelativeLayout a;
-  protected XListView a;
+  protected QQAppInterface b;
+  protected FrameLayout c;
+  protected AlphaClickableRelativeLayout d;
+  protected TextView e;
+  protected ImageView f;
+  protected XListView g;
+  protected CTEntryController.OnCTEntryDataChangeListener h;
+  private StudyModeChangeListener i = new CTEntryController.1(this);
   
   public CTEntryController(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener = new CTEntryController.1(this);
     if ((paramActivity instanceof SplashActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((SplashActivity)paramActivity).app;
+      this.b = ((SplashActivity)paramActivity).app;
     }
     if (QLog.isColorLevel()) {
       QLog.i("CTEntryController", 2, "CTEntryController create");
@@ -42,52 +41,52 @@ public class CTEntryController
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131377653));
-    this.jdField_a_of_type_ComTencentWidgetAlphaClickableRelativeLayout = ((AlphaClickableRelativeLayout)paramView.findViewById(2131376253));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376258));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131370725));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362247));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setNeedCheckSpringback(false);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setCacheColorHint(0);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
-    this.jdField_a_of_type_ComTencentWidgetXListView.mForContacts = true;
+    this.c = ((FrameLayout)paramView.findViewById(2131446070));
+    this.d = ((AlphaClickableRelativeLayout)paramView.findViewById(2131444461));
+    this.e = ((TextView)paramView.findViewById(2131444466));
+    this.g = ((XListView)paramView.findViewById(2131438025));
+    this.f = ((ImageView)paramView.findViewById(2131427828));
+    this.g.setSelector(new ColorDrawable(0));
+    this.g.setNeedCheckSpringback(false);
+    this.g.setCacheColorHint(0);
+    this.g.setDivider(null);
+    this.g.setOverScrollMode(2);
+    this.g.mForContacts = true;
   }
   
   public void a(CTEntryController.OnCTEntryDataChangeListener paramOnCTEntryDataChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryController$OnCTEntryDataChangeListener = paramOnCTEntryDataChangeListener;
+    this.h = paramOnCTEntryDataChangeListener;
   }
   
-  protected boolean a()
+  protected boolean bV_()
   {
-    boolean bool = StudyModeManager.a();
+    boolean bool = StudyModeManager.h();
     if (QLog.isColorLevel()) {
       QLog.d("CTEntryController", 2, String.format("shouldShowRecommendEntry, isStudyMode: %s", new Object[] { Boolean.valueOf(bool) }));
     }
     return bool ^ true;
   }
   
-  public void b()
+  public void c()
   {
-    super.b();
-    StudyModeManager.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener);
+    super.c();
+    StudyModeManager.a(this.i);
   }
   
   public void c(boolean paramBoolean) {}
   
-  public void d()
-  {
-    super.d();
-    StudyModeManager.b(this.jdField_a_of_type_ComTencentMobileqqStudymodeStudyModeChangeListener);
-  }
-  
   public void d(boolean paramBoolean) {}
+  
+  public void e()
+  {
+    super.e();
+    StudyModeManager.b(this.i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryController
  * JD-Core Version:    0.7.0.1
  */

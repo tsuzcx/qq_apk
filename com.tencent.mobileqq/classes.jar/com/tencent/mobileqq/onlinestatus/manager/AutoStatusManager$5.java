@@ -19,14 +19,14 @@ class AutoStatusManager$5
       long l1 = OnLineStatusHelper.a().a(AutoStatusManager.a(this.a));
       if (l1 > 40000L)
       {
-        if (AutoStatusManager.a(this.a))
+        if (AutoStatusManager.f(this.a))
         {
           long l2 = paramBundle.getLong("autoStatusInterval");
           if (QLog.isColorLevel())
           {
             paramBundle = new StringBuilder();
             paramBundle.append("[status][autoMgr] onSetOnlineStatus status: ");
-            paramBundle.append(Constant.a((int)l1));
+            paramBundle.append(Constant.c((int)l1));
             paramBundle.append(" autoStatusInterval: ");
             paramBundle.append(l2);
             QLog.d("AutoStatusManager", 2, paramBundle.toString());
@@ -41,21 +41,21 @@ class AutoStatusManager$5
           {
             paramBundle = new StringBuilder();
             paramBundle.append("[status][autoMgr] onSetOnlineStatus status: ");
-            paramBundle.append(Constant.a((int)l1));
+            paramBundle.append(Constant.c((int)l1));
             paramBundle.append(" startDetector");
             QLog.d("AutoStatusManager", 2, paramBundle.toString());
           }
-          AutoStatusManager.a(this.a).a((int)l1);
+          AutoStatusManager.g(this.a).a((int)l1);
           this.a.a("statusChange");
         }
       }
-      else if (AutoStatusManager.a(this.a))
+      else if (AutoStatusManager.f(this.a))
       {
         if (QLog.isColorLevel())
         {
           paramBundle = new StringBuilder();
           paramBundle.append("[status][autoMgr] onSetOnlineStatus status: ");
-          paramBundle.append(Constant.a((int)l1));
+          paramBundle.append(Constant.c((int)l1));
           paramBundle.append(" stopDetector");
           QLog.d("AutoStatusManager", 2, paramBundle.toString());
         }
@@ -66,7 +66,7 @@ class AutoStatusManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager.5
  * JD-Core Version:    0.7.0.1
  */

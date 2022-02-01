@@ -16,45 +16,30 @@ import java.util.List;
 
 public class ApolloViewBinder
 {
-  private int jdField_a_of_type_Int;
-  public Context a;
-  public SessionInfo a;
-  protected ApolloPanelListAdapter a;
-  protected ApolloPanelListView a;
-  protected QQAppInterface a;
-  private EmotionPanelListView.PullAndFastScrollListener jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
-  public List<ApolloInfo> a;
-  public int b = 0;
-  public int c;
-  public int d;
-  protected int e = -1;
-  protected int f = 4;
+  private EmotionPanelListView.PullAndFastScrollListener a;
+  private int b;
+  private AbsListView.OnScrollListener c;
+  public Context i;
+  protected QQAppInterface j;
+  public int k = 0;
+  public int l;
+  public SessionInfo m;
+  public int n;
+  public List<ApolloInfo> o;
+  protected int p = -1;
+  protected int q = 4;
+  protected ApolloPanelListView r;
+  protected ApolloPanelListAdapter s;
   
   public ApolloViewBinder(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 0;
+    this.j = paramQQAppInterface;
+    this.i = paramContext;
   }
   
   public View a()
   {
     return null;
-  }
-  
-  public ApolloPanelListAdapter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter;
   }
   
   public ApolloInfo a(String paramString)
@@ -67,38 +52,43 @@ public class ApolloViewBinder
     return null;
   }
   
-  public void a(int paramInt)
-  {
-    this.b = paramInt;
-  }
-  
   public void a(View paramView, int paramInt) {}
   
   public void a(BaseChatPie paramBaseChatPie) {}
   
   public void a(EmotionPanelListView.PullAndFastScrollListener paramPullAndFastScrollListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener = paramPullAndFastScrollListener;
+    this.a = paramPullAndFastScrollListener;
   }
   
   public void a(List<ApolloInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.o = paramList;
   }
   
   public void b() {}
   
   public void b(int paramInt)
   {
+    this.k = paramInt;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public void c(int paramInt)
+  {
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] highlightItemIndex=", Integer.valueOf(paramInt) });
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.o;
     if ((localList != null) && (localList.size() != 0))
     {
-      if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
+      if ((paramInt >= 0) && (paramInt < this.o.size()))
       {
-        this.e = paramInt;
+        this.p = paramInt;
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]ApolloViewBinder", 2, new Object[] { "[setHighlightItemIndex] set success, highlightItemIndex=", Integer.valueOf(paramInt) });
         }
@@ -108,54 +98,69 @@ public class ApolloViewBinder
     QLog.e("[cmshow]ApolloViewBinder", 1, "[setHighlightItemIndex] no panel data, set failed");
   }
   
-  public View c()
+  protected void c(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (this.s == null) {
+      this.s = new ApolloPanelListAdapter(this.j, this.i);
+    }
+    if (this.c == null) {
+      this.c = new ApolloViewBinder.1(this);
+    }
+    this.s.a(this.m);
+    this.s.a(this.l);
+    this.s.b(this.q);
+    this.s.c(this.p);
+    this.s.a(this.o);
+    if ((paramView instanceof ApolloPanelListView))
+    {
+      paramView = (ApolloPanelListView)paramView;
+      paramView.setPullAndFastScrollListener(this.a);
+      paramView.setOnScrollListener(this.c);
+      paramView.setAdapter(this.s);
+      int i3 = this.p;
+      if (i3 != -1)
+      {
+        int i4 = this.q;
+        int i2 = i3 / i4;
+        int i1 = i2;
+        if (i3 % i4 != 0) {
+          i1 = i2 + 1;
+        }
+        if (i1 < this.s.getCount()) {
+          paramView.smoothScrollToPosition(i1);
+        }
+      }
+    }
+  }
+  
+  public int d(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View i()
   {
     View localView = a();
     a(localView, 0);
     return localView;
   }
   
-  protected void c(View paramView)
+  public List<ApolloInfo> j()
   {
-    if (paramView == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter = new ApolloPanelListAdapter(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext);
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener == null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new ApolloViewBinder.1(this);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.a(this.c);
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.b(this.f);
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.c(this.e);
-    this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    if ((paramView instanceof ApolloPanelListView))
-    {
-      paramView = (ApolloPanelListView)paramView;
-      paramView.setPullAndFastScrollListener(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener);
-      paramView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
-      paramView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter);
-      int k = this.e;
-      if (k != -1)
-      {
-        int m = this.f;
-        int j = k / m;
-        int i = j;
-        if (k % m != 0) {
-          i = j + 1;
-        }
-        if (i < this.jdField_a_of_type_ComTencentMobileqqApolloAioPanelApolloPanelListAdapter.getCount()) {
-          paramView.smoothScrollToPosition(i);
-        }
-      }
-    }
+    return this.o;
+  }
+  
+  public ApolloPanelListAdapter k()
+  {
+    return this.s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloViewBinder
  * JD-Core Version:    0.7.0.1
  */

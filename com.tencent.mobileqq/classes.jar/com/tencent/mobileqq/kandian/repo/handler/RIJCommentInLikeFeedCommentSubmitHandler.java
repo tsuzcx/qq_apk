@@ -77,7 +77,7 @@ public class RIJCommentInLikeFeedCommentSubmitHandler
       ((oidb_cmd0x83e.ReqBody)localObject2).uint64_feeds_id.set(paramAbsBaseArticleInfo.mFeedId);
       ((oidb_cmd0x83e.ReqBody)localObject2).bool_is_master.set(true);
       Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(String.valueOf(RIJQQAppInterfaceUtil.a()));
+      ((StringBuilder)localObject3).append(String.valueOf(RIJQQAppInterfaceUtil.d()));
       ((StringBuilder)localObject3).append(System.currentTimeMillis());
       localObject3 = ((StringBuilder)localObject3).toString();
       ((oidb_cmd0x83e.ReqBody)localObject2).bytes_req_seq.set(ByteStringMicro.copyFromUtf8((String)localObject3));
@@ -91,7 +91,7 @@ public class RIJCommentInLikeFeedCommentSubmitHandler
       ((ToServiceMsg)localObject1).addAttribute("submit_comment", Integer.valueOf(1));
       ((ToServiceMsg)localObject1).addAttribute("article_info", paramAbsBaseArticleInfo);
       ((ToServiceMsg)localObject1).addAttribute("comment_json_string", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry((ToServiceMsg)localObject1);
+      this.a.sendPbReqWithAutoRetry((ToServiceMsg)localObject1);
       return;
     }
     QLog.d("RIJCommentInLikeFeedCommentSubmitHandler", 2, "requestSubmitComment | commentJsonStr or articleinfo is null ");
@@ -106,7 +106,7 @@ public class RIJCommentInLikeFeedCommentSubmitHandler
     paramFromServiceMsg.append("handle0x83eSubmitComment | resp result code ： ");
     paramFromServiceMsg.append(i);
     QLog.d("RIJCommentInLikeFeedCommentSubmitHandler", 2, paramFromServiceMsg.toString());
-    paramFromServiceMsg = BaseApplication.getContext().getString(2131717821);
+    paramFromServiceMsg = BaseApplication.getContext().getString(2131915296);
     if (localRspBody.bytes_result_desc.has())
     {
       paramFromServiceMsg = localRspBody.bytes_result_desc.get().toStringUtf8();
@@ -117,12 +117,12 @@ public class RIJCommentInLikeFeedCommentSubmitHandler
     }
     paramObject = (AbsBaseArticleInfo)paramToServiceMsg.getAttribute("article_info");
     paramToServiceMsg = (String)paramToServiceMsg.getAttribute("comment_json_string");
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJCommentInLikeFeedCommentSubmitHandler.1(this, i, paramObject, paramToServiceMsg, paramFromServiceMsg));
+    this.b.post(new RIJCommentInLikeFeedCommentSubmitHandler.1(this, i, paramObject, paramToServiceMsg, paramFromServiceMsg));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedCommentSubmitHandler
  * JD-Core Version:    0.7.0.1
  */

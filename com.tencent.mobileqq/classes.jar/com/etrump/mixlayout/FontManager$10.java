@@ -11,21 +11,21 @@ class FontManager$10
   
   public void run()
   {
-    if (FontManager.a(this.this$0).containsKey(this.jdField_a_of_type_JavaLangString))
+    if (FontManager.d(this.this$0).containsKey(this.a))
     {
-      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)FontManager.a(this.this$0).get(this.jdField_a_of_type_JavaLangString);
-      if (localConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Int)))
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)FontManager.d(this.this$0).get(this.a);
+      if (localConcurrentHashMap.containsKey(Integer.valueOf(this.b)))
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("updateDiyConfig uin = ");
-          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(this.a);
           localStringBuilder.append(" fontId = ");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.b);
           QLog.d("VasFont", 2, localStringBuilder.toString());
         }
-        localConcurrentHashMap.remove(Integer.valueOf(this.jdField_a_of_type_Int));
+        localConcurrentHashMap.remove(Integer.valueOf(this.b));
         VasUtils.a(FontManager.a(this.this$0));
       }
     }

@@ -21,10 +21,10 @@ import com.google.android.material.R.styleable;
 public class FlowLayout
   extends ViewGroup
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a;
   private int b;
-  private int c;
+  private boolean c = false;
+  private int d;
   
   public FlowLayout(@NonNull Context paramContext)
   {
@@ -63,20 +63,10 @@ public class FlowLayout
   
   private void a(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.B, 0, 0);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.bX, 0);
-    this.b = paramContext.getDimensionPixelSize(R.styleable.bW, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.cX, 0, 0);
+    this.a = paramContext.getDimensionPixelSize(R.styleable.cZ, 0);
+    this.b = paramContext.getDimensionPixelSize(R.styleable.cY, 0);
     paramContext.recycle();
-  }
-  
-  protected int a()
-  {
-    return this.c;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   public int b(@NonNull View paramView)
@@ -88,24 +78,34 @@ public class FlowLayout
     return ((Integer)paramView).intValue();
   }
   
-  protected void b(int paramInt)
+  public boolean b()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return this.c;
   }
   
-  protected void c(int paramInt)
+  protected int getItemSpacing()
   {
-    this.b = paramInt;
+    return this.b;
+  }
+  
+  protected int getLineSpacing()
+  {
+    return this.a;
+  }
+  
+  protected int getRowCount()
+  {
+    return this.d;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (getChildCount() == 0)
     {
-      this.c = 0;
+      this.d = 0;
       return;
     }
-    this.c = 1;
+    this.d = 1;
     int i;
     if (ViewCompat.getLayoutDirection(this) == 1) {
       i = 1;
@@ -153,18 +153,18 @@ public class FlowLayout
         int i3 = localView.getMeasuredWidth();
         int i1 = paramInt3;
         paramInt4 = paramInt1;
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.c)
         {
           i1 = paramInt3;
           paramInt4 = paramInt1;
           if (paramInt3 + n + i3 > i2)
           {
-            paramInt4 = k + this.jdField_a_of_type_Int;
-            this.c += 1;
+            paramInt4 = k + this.a;
+            this.d += 1;
             i1 = paramInt2;
           }
         }
-        localView.setTag(R.id.Z, Integer.valueOf(this.c - 1));
+        localView.setTag(R.id.Z, Integer.valueOf(this.d - 1));
         paramInt1 = i1 + n;
         paramInt3 = localView.getMeasuredWidth() + paramInt1;
         k = localView.getMeasuredHeight() + paramInt4;
@@ -228,10 +228,10 @@ public class FlowLayout
         {
           m = j;
           i5 = i6;
-          if (!a())
+          if (!b())
           {
             i5 = getPaddingLeft();
-            m = this.jdField_a_of_type_Int + i4;
+            m = this.a + i4;
           }
         }
         k = i5 + i2 + localView.getMeasuredWidth();
@@ -257,14 +257,24 @@ public class FlowLayout
     setMeasuredDimension(a(i7, i8, i + paramInt1), a(i9, i10, i4 + paramInt2));
   }
   
+  protected void setItemSpacing(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  protected void setLineSpacing(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
   public void setSingleLine(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,38 @@
 package com.tencent.tavkit.component;
 
-import android.graphics.SurfaceTexture;
-import android.view.Surface;
-import android.view.TextureView.SurfaceTextureListener;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.tav.player.Player;
 
 class TAVPlayer$1
-  implements TextureView.SurfaceTextureListener
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  private final String TAG;
+  TAVPlayer$1(TAVPlayer paramTAVPlayer) {}
   
-  TAVPlayer$1(TAVPlayer paramTAVPlayer)
+  public void onAudioFocusChange(int paramInt)
   {
-    paramTAVPlayer = new StringBuilder();
-    paramTAVPlayer.append("GameTextureView@");
-    paramTAVPlayer.append(Integer.toHexString(hashCode()));
-    this.TAG = paramTAVPlayer.toString();
+    if ((paramInt != -2) && (paramInt != -1))
+    {
+      if (paramInt != 1) {
+        return;
+      }
+      if (TAVPlayer.access$100(this.this$0) != null) {
+        TAVPlayer.access$100(this.this$0).play();
+      }
+    }
+    else
+    {
+      if (!TAVPlayer.access$000(this.this$0)) {
+        return;
+      }
+      if (TAVPlayer.access$100(this.this$0) != null) {
+        TAVPlayer.access$100(this.this$0).pause();
+      }
+    }
   }
-  
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    paramSurfaceTexture = new Surface(paramSurfaceTexture);
-    this.this$0.onSurfaceCreate(paramSurfaceTexture, paramInt1, paramInt2);
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
-  {
-    this.this$0.onSurfaceDestory();
-    return false;
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    this.this$0.onSurfaceSizeChanged(paramInt1, paramInt2);
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer.1
  * JD-Core Version:    0.7.0.1
  */

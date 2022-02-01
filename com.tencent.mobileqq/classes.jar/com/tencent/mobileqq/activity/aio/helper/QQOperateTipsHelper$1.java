@@ -15,18 +15,18 @@ class QQOperateTipsHelper$1
   
   protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    if (((FullScreenInputHelper)QQOperateTipsHelper.a(this.a).a(24)).c()) {
+    if (((FullScreenInputHelper)QQOperateTipsHelper.a(this.a).a(24)).e()) {
       return;
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
     }
-    if ((QQOperateTipsHelper.a(this.a).a().jdField_a_of_type_JavaLangString.equals(paramString)) && (QQOperateTipsHelper.a(this.a).a().jdField_a_of_type_Int == paramInt))
+    if ((QQOperateTipsHelper.a(this.a).O().b.equals(paramString)) && (QQOperateTipsHelper.a(this.a).O().a == paramInt))
     {
       if ((paramArrayList != null) && (paramArrayList.size() != 0))
       {
-        if (QQOperateTipsHelper.a(this.a) != null) {
-          QQOperateTipsHelper.a(this.a).a(paramArrayList);
+        if (QQOperateTipsHelper.b(this.a) != null) {
+          QQOperateTipsHelper.b(this.a).a(paramArrayList);
         }
         return;
       }
@@ -42,7 +42,7 @@ class QQOperateTipsHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQOperateTipsHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ class CommentPresenter$13
   
   public void run()
   {
-    CommentPresenter.b(this.this$0);
-    if (this.this$0.a != null) {
-      this.this$0.a.setSelection(0);
+    CommentPresenter.U(this.this$0);
+    if (this.this$0.g != null) {
+      this.this$0.g.setSelection(0);
     }
   }
 }

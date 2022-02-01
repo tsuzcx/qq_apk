@@ -23,12 +23,12 @@ class AvGameLoadingActivity$5
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 2, "onResDownloadStart");
     }
-    AvGameLoadingActivity localAvGameLoadingActivity = this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity;
-    localAvGameLoadingActivity.jdField_a_of_type_Int = 0;
-    AvGameLoadingActivity.a(localAvGameLoadingActivity, localAvGameLoadingActivity.jdField_a_of_type_Int);
-    AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, true);
-    if (AvGameLoadingActivity.g(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity)) {
-      AVGameExceptionReporter.a().a(2, this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$ResInfo.a, null, null);
+    AvGameLoadingActivity localAvGameLoadingActivity = this.b;
+    localAvGameLoadingActivity.e = 0;
+    AvGameLoadingActivity.e(localAvGameLoadingActivity, localAvGameLoadingActivity.e);
+    AvGameLoadingActivity.c(this.b, true);
+    if (AvGameLoadingActivity.k(this.b)) {
+      AVGameExceptionReporter.a().a(2, this.a.a, null, null);
     }
   }
   
@@ -41,10 +41,10 @@ class AvGameLoadingActivity$5
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity;
-    ((AvGameLoadingActivity)localObject).jdField_a_of_type_Int = (paramInt / ((AvGameLoadingActivity)localObject).b);
-    localObject = this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity;
-    AvGameLoadingActivity.a((AvGameLoadingActivity)localObject, ((AvGameLoadingActivity)localObject).jdField_a_of_type_Int);
+    Object localObject = this.b;
+    ((AvGameLoadingActivity)localObject).e = (paramInt / ((AvGameLoadingActivity)localObject).f);
+    localObject = this.b;
+    AvGameLoadingActivity.e((AvGameLoadingActivity)localObject, ((AvGameLoadingActivity)localObject).e);
   }
   
   public void a(String paramString)
@@ -52,10 +52,10 @@ class AvGameLoadingActivity$5
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 2, "onResDownloadReady");
     }
-    if (AvGameLoadingActivity.h(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity))
+    if (AvGameLoadingActivity.l(this.b))
     {
-      AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
-      AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false);
+      AvGameLoadingActivity.m(this.b);
+      AvGameLoadingActivity.c(this.b, false);
     }
     else
     {
@@ -79,12 +79,12 @@ class AvGameLoadingActivity$5
     if (QLog.isColorLevel()) {
       QLog.i("AvGameLoadingActivity", 1, "onResDownloadFailed");
     }
-    this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.b.b.sendEmptyMessage(1);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramInt);
     ReportController.b(null, "dc00898", "", "", "0X800B044", "0X800B044", 0, 0, localStringBuilder.toString(), "", "", "");
-    CJPreloadMonitorReporter.a(1, this.jdField_a_of_type_ComTencentAvgameGamelogicGameresAvGameResDownloadManager$ResInfo.a, paramInt);
+    CJPreloadMonitorReporter.a(1, this.a.a, paramInt);
   }
 }
 

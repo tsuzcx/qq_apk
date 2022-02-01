@@ -17,28 +17,28 @@ import java.util.List;
 public class ShareActionSheetImplV2
   extends ShareActionSheetImpl
 {
-  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
-  private Validator jdField_a_of_type_ComTencentMobileqqWidgetShareValidator;
+  private ShareActionSheetV2 a;
+  private Validator b;
   
   public ShareActionSheetImplV2(ShareActionSheetV2 paramShareActionSheetV2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareValidator = new Validator(paramShareActionSheetV2);
+    this.a = paramShareActionSheetV2;
+    this.b = new Validator(paramShareActionSheetV2);
   }
   
   public void dismiss()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.dismiss();
+    this.a.dismiss();
   }
   
   public void dismissImmediately()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.dismissImmediately();
+    this.a.dismissImmediately();
   }
   
   public View findViewById(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.findViewById(paramInt);
+    return this.a.findViewById(paramInt);
   }
   
   public ActionSheet getActionSheet()
@@ -48,17 +48,17 @@ public class ShareActionSheetImplV2
   
   public int getActionSheetPanelViewHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getActionSheetPanelViewHeight();
+    return this.a.getActionSheetPanelViewHeight();
   }
   
   public Bundle getExtras()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getExtras();
+    return this.a.getExtras();
   }
   
   public int getIconWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getIconWidth();
+    return this.a.getIconWidth();
   }
   
   public String getOpenSource()
@@ -68,102 +68,102 @@ public class ShareActionSheetImplV2
   
   public Window getWindow()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.getWindow();
+    return this.a.getWindow();
   }
   
   public void hideTitle()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.hideTitle();
+    this.a.hideTitle();
   }
   
   public boolean isShowing()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.isShowing();
+    return this.a.isShowing();
   }
   
   public void onConfigurationChanged()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.onConfigurationChanged();
+    this.a.onConfigurationChanged();
   }
   
   public void refresh()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.refresh();
+    this.a.refresh();
   }
   
   public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem> paramList1, List<ShareActionSheetBuilder.ActionSheetItem> paramList2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setActionSheetItems(paramList1, paramList2);
+    this.a.setActionSheetItems(paramList1, paramList2);
   }
   
   public void setActionSheetItems(List<ShareActionSheetBuilder.ActionSheetItem>[] paramArrayOfList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setActionSheetItems(paramArrayOfList);
+    this.a.setActionSheetItems(paramArrayOfList);
   }
   
   public void setActionSheetTitle(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setActionSheetTitle(paramCharSequence);
+    this.a.setActionSheetTitle(paramCharSequence);
   }
   
   public void setAdvBgColor(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setAdvBgColor(paramInt);
+    this.a.setAdvBgColor(paramInt);
   }
   
   public void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setAdvView(paramView, paramLayoutParams);
+    this.a.setAdvView(paramView, paramLayoutParams);
   }
   
   public void setBottomBarInterface(ShareActionSheet.IShareActionSheetV2BottomBar paramIShareActionSheetV2BottomBar)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setBottomBarInterface(paramIShareActionSheetV2BottomBar);
+    this.a.setBottomBarInterface(paramIShareActionSheetV2BottomBar);
   }
   
   public void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setCancelListener(paramOnCancelListener);
+    this.a.setCancelListener(paramOnCancelListener);
   }
   
   public void setEnableNotTriggerVirtualNavigationBar(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
+    this.a.setEnableNotTriggerVirtualNavigationBar(paramBoolean);
   }
   
   public void setExtras(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setExtras(paramBundle);
+    this.a.setExtras(paramBundle);
   }
   
   public void setIconMarginLeftRight(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setIconMarginLeftRight(paramInt);
+    this.a.setIconMarginLeftRight(paramInt);
   }
   
   public void setIntentForStartForwardRecentActivity(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setIntentForStartForwardRecentActivity(paramIntent);
+    this.a.setIntentForStartForwardRecentActivity(paramIntent);
   }
   
   public void setItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setItemClickListener(paramOnItemClickListener);
+    this.a.setItemClickListener(paramOnItemClickListener);
   }
   
   public void setItemClickListenerV2(ShareActionSheet.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setItemClickListenerV2(paramOnItemClickListener);
+    this.a.setItemClickListenerV2(paramOnItemClickListener);
   }
   
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setOnDismissListener(paramOnDismissListener);
+    this.a.setOnDismissListener(paramOnDismissListener);
   }
   
   public void setOnShowListener(DialogInterface.OnShowListener paramOnShowListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setOnShowListener(paramOnShowListener);
+    this.a.setOnShowListener(paramOnShowListener);
   }
   
   public void setOpenSource(String paramString)
@@ -173,19 +173,19 @@ public class ShareActionSheetImplV2
   
   public void setRowMarginLeftRight(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setRowMarginLeftRight(paramInt);
+    this.a.setRowMarginLeftRight(paramInt);
   }
   
   public void setRowVisibility(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.setRowVisibility(paramInt1, paramInt2, paramInt3);
+    this.a.setRowVisibility(paramInt1, paramInt2, paramInt3);
   }
   
   public void show()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareValidator.a())
+    if (this.b.a())
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.show();
+      this.a.show();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -195,17 +195,17 @@ public class ShareActionSheetImplV2
   
   public void updateUI()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.refresh();
+    this.a.refresh();
   }
   
   public void updateUIIfShowing()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.refresh();
+    this.a.refresh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.ShareActionSheetImplV2
  * JD-Core Version:    0.7.0.1
  */

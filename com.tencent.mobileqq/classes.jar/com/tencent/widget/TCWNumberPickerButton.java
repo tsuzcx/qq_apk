@@ -28,12 +28,12 @@ public class TCWNumberPickerButton
   
   private void a()
   {
-    if (2131368754 == getId())
+    if (2131435671 == getId())
     {
       this.a.a();
       return;
     }
-    if (2131365457 == getId()) {
+    if (2131431670 == getId()) {
       this.a.b();
     }
   }
@@ -72,7 +72,7 @@ public class TCWNumberPickerButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TCWNumberPickerButton
  * JD-Core Version:    0.7.0.1
  */

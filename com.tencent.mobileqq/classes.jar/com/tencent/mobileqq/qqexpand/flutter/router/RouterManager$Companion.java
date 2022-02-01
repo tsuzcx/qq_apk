@@ -10,7 +10,7 @@ public final class RouterManager$Companion
 {
   private final RouterManager b()
   {
-    Lazy localLazy = RouterManager.a();
+    Lazy localLazy = RouterManager.c();
     Companion localCompanion = RouterManager.a;
     return (RouterManager)localLazy.getValue();
   }
@@ -24,7 +24,7 @@ public final class RouterManager$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.router.RouterManager.Companion
  * JD-Core Version:    0.7.0.1
  */

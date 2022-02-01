@@ -24,156 +24,126 @@ public class QfileFavFileRecordProvider
   extends Observable
   implements IQQFavProxy.QQFavProxyListener
 {
-  static String jdField_a_of_type_JavaLangString = "QfileFavFileRecordProvider<FileAssistant>";
-  static String jdField_b_of_type_JavaLangString = "FavFileS ";
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private QfileFavFileRecordProvider.FavFileRecords jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords = new QfileFavFileRecordProvider.FavFileRecords(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Runnable jdField_b_of_type_JavaLangRunnable;
-  private boolean jdField_b_of_type_Boolean = false;
-  private volatile boolean c = false;
-  private volatile boolean d = false;
+  static String a = "QfileFavFileRecordProvider<FileAssistant>";
+  static String b = "FavFileS ";
+  private BaseQQAppInterface c;
+  private long d = 0L;
+  private boolean e = false;
+  private QfileFavFileRecordProvider.FavFileRecords f = new QfileFavFileRecordProvider.FavFileRecords(this);
+  private boolean g = false;
+  private Handler h;
+  private volatile boolean i = false;
+  private Runnable j;
+  private volatile boolean k = false;
+  private Runnable l;
   
   public QfileFavFileRecordProvider(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = ((BaseQQAppInterface)paramAppRuntime);
+    this.c = ((BaseQQAppInterface)paramAppRuntime);
   }
   
   private void a(List<FavFileInfo> paramList, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords.a(paramList, paramInt);
+    this.f.a(paramList, paramInt);
   }
   
   private void b(Bundle paramBundle)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append(">>>syncLastFileRecord...");
     QLog.i(str, 1, localStringBuilder.toString());
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQQFileEngine.class)).favProxyGetFileList(0L, false, null, new QfileFavFileRecordProvider.4(this, paramBundle));
+    ((IQQFileEngine)this.c.getRuntimeService(IQQFileEngine.class)).favProxyGetFileList(0L, false, null, new QfileFavFileRecordProvider.4(this, paramBundle));
   }
   
-  private void d()
+  private void e()
   {
-    if (this.c) {
+    if (this.i) {
       return;
     }
-    this.c = true;
-    this.jdField_a_of_type_JavaLangRunnable = new QfileFavFileRecordProvider.2(this);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
-    String str = jdField_a_of_type_JavaLangString;
+    this.i = true;
+    this.j = new QfileFavFileRecordProvider.2(this);
+    this.h.postDelayed(this.j, 30000L);
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("setGettingFavList timeout:");
     localStringBuilder.append(30000L);
     QLog.i(str, 1, localStringBuilder.toString());
   }
   
-  private void e()
+  private void f()
   {
-    this.c = false;
-    Object localObject = this.jdField_a_of_type_JavaLangRunnable;
+    this.i = false;
+    Object localObject = this.j;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.h.removeCallbacks((Runnable)localObject);
+      this.j = null;
     }
-    localObject = jdField_a_of_type_JavaLangString;
+    localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("unsetGettingFavList");
     QLog.i((String)localObject, 1, localStringBuilder.toString());
   }
   
-  private void f()
+  private void g()
   {
-    if (this.d) {
+    if (this.k) {
       return;
     }
-    this.d = true;
-    this.jdField_b_of_type_JavaLangRunnable = new QfileFavFileRecordProvider.3(this);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_b_of_type_JavaLangRunnable, 30000L);
-    String str = jdField_a_of_type_JavaLangString;
+    this.k = true;
+    this.l = new QfileFavFileRecordProvider.3(this);
+    this.h.postDelayed(this.l, 30000L);
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("setRefreshingFavList timeout:");
     localStringBuilder.append(30000L);
     QLog.i(str, 1, localStringBuilder.toString());
   }
   
-  private void g()
+  private void h()
   {
-    this.d = false;
-    Object localObject = this.jdField_b_of_type_JavaLangRunnable;
+    this.k = false;
+    Object localObject = this.l;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks((Runnable)localObject);
-      this.jdField_b_of_type_JavaLangRunnable = null;
+      this.h.removeCallbacks((Runnable)localObject);
+      this.l = null;
     }
-    localObject = jdField_a_of_type_JavaLangString;
+    localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("unsetRefreshingFavList");
     QLog.i((String)localObject, 1, localStringBuilder.toString());
   }
   
-  private void h()
+  private void i()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("resetFileRecordInfo.");
     QLog.i(str, 1, localStringBuilder.toString());
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords.a();
+    this.d = 0L;
+    this.g = false;
+    this.e = false;
+    this.f.a();
   }
   
   public List<FavFileInfo> a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords.a(paramInt);
-  }
-  
-  public void a()
-  {
-    if (this.c)
-    {
-      str = jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_b_of_type_JavaLangString);
-      localStringBuilder.append("getMoreFileRecords. is getting...");
-      QLog.d(str, 1, localStringBuilder.toString());
-      return;
-    }
-    if (this.d)
-    {
-      str = jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_b_of_type_JavaLangString);
-      localStringBuilder.append("getMoreFileRecords. is refreshing...");
-      QLog.i(str, 1, localStringBuilder.toString());
-      return;
-    }
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(">>>getMoreFileRecords... lastTimestamp:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    QLog.i(str, 1, localStringBuilder.toString());
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQQFileEngine.class)).favProxyGetFileList(this.jdField_a_of_type_Long, this.jdField_b_of_type_Boolean, null, new QfileFavFileRecordProvider.1(this));
-    d();
+    return this.f.a(paramInt);
   }
   
   public void a(long paramLong, int paramInt, String paramString)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("onFileThumbUpdated. favid:");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" type:");
@@ -181,18 +151,18 @@ public class QfileFavFileRecordProvider
     localStringBuilder.append(" strSavePath:");
     localStringBuilder.append(paramString);
     QLog.i((String)localObject, 1, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords.a(paramLong);
+    localObject = this.f.a(paramLong);
     if (localObject != null) {
       if (paramInt == 0) {
-        ((FavFileInfo)localObject).g = paramString;
-      } else if (paramInt == 1) {
-        ((FavFileInfo)localObject).h = paramString;
-      } else if (paramInt == 2) {
-        ((FavFileInfo)localObject).i = paramString;
-      } else if (paramInt == 3) {
         ((FavFileInfo)localObject).j = paramString;
-      } else if (paramInt == 4) {
+      } else if (paramInt == 1) {
         ((FavFileInfo)localObject).k = paramString;
+      } else if (paramInt == 2) {
+        ((FavFileInfo)localObject).l = paramString;
+      } else if (paramInt == 3) {
+        ((FavFileInfo)localObject).m = paramString;
+      } else if (paramInt == 4) {
+        ((FavFileInfo)localObject).n = paramString;
       }
     }
     setChanged();
@@ -201,17 +171,17 @@ public class QfileFavFileRecordProvider
   
   public void a(long paramLong, String paramString)
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("onFileDownloaded. favid:");
     localStringBuilder.append(paramLong);
     localStringBuilder.append(" strSavePath:");
     localStringBuilder.append(paramString);
     QLog.i((String)localObject, 1, localStringBuilder.toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords.a(paramLong);
+    localObject = this.f.a(paramLong);
     if (localObject != null) {
-      ((FavFileInfo)localObject).e = paramString;
+      ((FavFileInfo)localObject).h = paramString;
     }
     setChanged();
     notifyObservers(new Object[] { Integer.valueOf(2), { new Bundle() } });
@@ -219,53 +189,53 @@ public class QfileFavFileRecordProvider
   
   public void a(Bundle paramBundle)
   {
-    if (this.d) {
+    if (this.k) {
       return;
     }
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("refreshFileRecords...");
     QLog.i(str, 1, localStringBuilder.toString());
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getApplication().getApplicationContext()))
+    if (!NetworkUtil.isNetworkAvailable(this.c.getApplication().getApplicationContext()))
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "refreshFileRecords no network");
-      int i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168);
-      int j = (int)DisplayUtils.a(BaseApplication.getContext(), 5.0F);
-      QQToast.a(BaseApplication.getContext(), 0, 2131698210, 0).b(i - j);
+      QLog.i(a, 2, "refreshFileRecords no network");
+      int m = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920);
+      int n = (int)DisplayUtils.a(BaseApplication.getContext(), 5.0F);
+      QQToast.makeText(BaseApplication.getContext(), 0, 2131896111, 0).show(m - n);
       setChanged();
       notifyObservers(new Object[] { Integer.valueOf(3), { Boolean.valueOf(false), new Bundle() } });
       return;
     }
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQQFileEngine.class)).favProxyRefreshList(paramBundle);
-    f();
+    ((IQQFileEngine)this.c.getRuntimeService(IQQFileEngine.class)).favProxyRefreshList(paramBundle);
+    g();
   }
   
   void a(QfileFavFileRecordProvider.FileRecordGroup paramFileRecordGroup)
   {
     if (paramFileRecordGroup == null)
     {
-      paramFileRecordGroup = jdField_a_of_type_JavaLangString;
+      paramFileRecordGroup = a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(b);
       localStringBuilder.append("addOrUpdateRecords parm err");
       QLog.e(paramFileRecordGroup, 1, localStringBuilder.toString());
       return;
     }
-    if (paramFileRecordGroup.a.size() > 0) {
-      a(paramFileRecordGroup.a, 1);
-    }
-    if (paramFileRecordGroup.b.size() > 0) {
-      a(paramFileRecordGroup.b, 2);
-    }
-    if (paramFileRecordGroup.c.size() > 0) {
-      a(paramFileRecordGroup.c, 3);
-    }
     if (paramFileRecordGroup.d.size() > 0) {
-      a(paramFileRecordGroup.d, 4);
+      a(paramFileRecordGroup.d, 1);
     }
     if (paramFileRecordGroup.e.size() > 0) {
-      a(paramFileRecordGroup.e, 5);
+      a(paramFileRecordGroup.e, 2);
+    }
+    if (paramFileRecordGroup.f.size() > 0) {
+      a(paramFileRecordGroup.f, 3);
+    }
+    if (paramFileRecordGroup.g.size() > 0) {
+      a(paramFileRecordGroup.g, 4);
+    }
+    if (paramFileRecordGroup.h.size() > 0) {
+      a(paramFileRecordGroup.h, 5);
     }
   }
   
@@ -278,28 +248,28 @@ public class QfileFavFileRecordProvider
       {
         localObject = (FavFileInfo)paramList.next();
         if (localObject != null) {
-          paramFileRecordGroup.a(((FavFileInfo)localObject).c).add(localObject);
+          paramFileRecordGroup.a(((FavFileInfo)localObject).d).add(localObject);
         }
       }
-      paramList = jdField_a_of_type_JavaLangString;
+      paramList = a;
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(b);
       ((StringBuilder)localObject).append("pickFavFileList. picSize:");
-      ((StringBuilder)localObject).append(paramFileRecordGroup.a.size());
-      ((StringBuilder)localObject).append(" docSize:");
-      ((StringBuilder)localObject).append(paramFileRecordGroup.b.size());
-      ((StringBuilder)localObject).append(" videoSize:");
-      ((StringBuilder)localObject).append(paramFileRecordGroup.c.size());
-      ((StringBuilder)localObject).append(" appSize:");
       ((StringBuilder)localObject).append(paramFileRecordGroup.d.size());
-      ((StringBuilder)localObject).append(" otherSize:");
+      ((StringBuilder)localObject).append(" docSize:");
       ((StringBuilder)localObject).append(paramFileRecordGroup.e.size());
+      ((StringBuilder)localObject).append(" videoSize:");
+      ((StringBuilder)localObject).append(paramFileRecordGroup.f.size());
+      ((StringBuilder)localObject).append(" appSize:");
+      ((StringBuilder)localObject).append(paramFileRecordGroup.g.size());
+      ((StringBuilder)localObject).append(" otherSize:");
+      ((StringBuilder)localObject).append(paramFileRecordGroup.h.size());
       QLog.i(paramList, 1, ((StringBuilder)localObject).toString());
       return;
     }
-    paramList = jdField_a_of_type_JavaLangString;
+    paramList = a;
     paramFileRecordGroup = new StringBuilder();
-    paramFileRecordGroup.append(jdField_b_of_type_JavaLangString);
+    paramFileRecordGroup.append(b);
     paramFileRecordGroup.append("pickFavFileList parm err");
     QLog.e(paramList, 1, paramFileRecordGroup.toString());
   }
@@ -311,50 +281,80 @@ public class QfileFavFileRecordProvider
       b(paramBundle);
       return;
     }
-    int i = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168);
-    int j = (int)DisplayUtils.a(BaseApplication.getContext(), 5.0F);
-    QQToast.a(BaseApplication.getContext(), 0, 2131698210, 0).b(i - j);
-    g();
+    int m = BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920);
+    int n = (int)DisplayUtils.a(BaseApplication.getContext(), 5.0F);
+    QQToast.makeText(BaseApplication.getContext(), 0, 2131896111, 0).show(m - n);
+    h();
     setChanged();
     notifyObservers(new Object[] { Integer.valueOf(3), { Boolean.valueOf(false), paramBundle } });
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public void b()
   {
-    String str = jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("init...");
-    QLog.i(str, 1, localStringBuilder.toString());
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQQFileEngine.class)).favProxyAddListener(this);
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    if (this.i)
+    {
+      str = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append("getMoreFileRecords. is getting...");
+      QLog.d(str, 1, localStringBuilder.toString());
+      return;
     }
+    if (this.k)
+    {
+      str = a;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append("getMoreFileRecords. is refreshing...");
+      QLog.i(str, 1, localStringBuilder.toString());
+      return;
+    }
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b);
+    localStringBuilder.append(">>>getMoreFileRecords... lastTimestamp:");
+    localStringBuilder.append(this.d);
+    QLog.i(str, 1, localStringBuilder.toString());
+    ((IQQFileEngine)this.c.getRuntimeService(IQQFileEngine.class)).favProxyGetFileList(this.d, this.g, null, new QfileFavFileRecordProvider.1(this));
+    e();
   }
   
   public void c()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
+    localStringBuilder.append("init...");
+    QLog.i(str, 1, localStringBuilder.toString());
+    ((IQQFileEngine)this.c.getRuntimeService(IQQFileEngine.class)).favProxyAddListener(this);
+    if (this.h == null) {
+      this.h = new Handler(Looper.getMainLooper());
+    }
+  }
+  
+  public void d()
+  {
+    String str = a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b);
     localStringBuilder.append("release...");
     QLog.i(str, 1, localStringBuilder.toString());
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQQFileEngine.class)).favProxyCancelGetFileList(this.jdField_a_of_type_Long);
-    ((IQQFileEngine)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IQQFileEngine.class)).favProxyDeleteListener(this);
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavFileRecordProvider$FavFileRecords.a();
-    e();
-    g();
+    ((IQQFileEngine)this.c.getRuntimeService(IQQFileEngine.class)).favProxyCancelGetFileList(this.d);
+    ((IQQFileEngine)this.c.getRuntimeService(IQQFileEngine.class)).favProxyDeleteListener(this);
+    this.c = null;
+    this.f.a();
+    f();
+    h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider
  * JD-Core Version:    0.7.0.1
  */

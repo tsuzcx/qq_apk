@@ -18,13 +18,13 @@ public abstract interface IHomeworkHelper
   
   public abstract void a(JSONObject paramJSONObject);
   
-  public abstract boolean a();
-  
   public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.logic.IHomeworkHelper
  * JD-Core Version:    0.7.0.1
  */

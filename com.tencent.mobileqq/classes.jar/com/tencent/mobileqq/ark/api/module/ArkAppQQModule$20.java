@@ -16,20 +16,20 @@ class ArkAppQQModule$20
   
   public void run()
   {
-    String str = ArkEnvironmentManager.getInstance().getAppResPath(ArkAppQQModule.n(this.this$0));
-    Activity localActivity = ArkAppQQModuleBase.a();
+    String str = ArkEnvironmentManager.getInstance().getAppResPath(ArkAppQQModule.o(this.this$0));
+    Activity localActivity = ArkAppQQModuleBase.f();
     if (localActivity != null)
     {
       Intent localIntent = new Intent(localActivity, NewPhotoListActivity.class);
-      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", this.jdField_a_of_type_Int);
+      localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", this.a);
       localIntent.putExtra("enter_from", 3);
-      localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationArk.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationArk.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationArk.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationArk.a);
+      localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationArk.j);
+      localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationArk.a);
       localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
       localIntent.putExtra("key_ark_app_res_path", str);
-      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-      localIntent.putExtra("key_ark_app_engine_res_dir", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_should_compress", this.b);
+      localIntent.putExtra("key_ark_app_engine_res_dir", this.c);
       localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
       localIntent.putExtra("FROM_WHERE", "FROM_PHOTO_LIST");
       localActivity.startActivity(localIntent);
@@ -40,7 +40,7 @@ class ArkAppQQModule$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppQQModule.20
  * JD-Core Version:    0.7.0.1
  */

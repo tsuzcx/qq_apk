@@ -1,7 +1,7 @@
 package cooperation.qqcircle.report;
 
 import android.os.Handler;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class QCircleLpReportDc05502
 {
@@ -35,6 +35,11 @@ public class QCircleLpReportDc05502
   public static final String KEY_TOUIN = "touin";
   private static final String TAG = "QCircleLpReportDc05502";
   
+  static void doReportInner(QCircleLpReportDc05502.DataBuilder paramDataBuilder)
+  {
+    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05502.1(paramDataBuilder));
+  }
+  
   private static int getDcId()
   {
     return 5502;
@@ -44,25 +49,24 @@ public class QCircleLpReportDc05502
   {
     if (paramDataBuilder == null)
     {
-      RFLog.e("QCircleReportBean_QCircleLpReportDc05502", RFLog.USR, "report invalid builder is null!");
+      QLog.e("QCircleReportBean_QCircleLpReportDc05502", 1, "report invalid builder is null!");
       return;
     }
     if (QCircleLpReportDc05502.DataBuilder.access$000(paramDataBuilder) <= 0)
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("report invalid pageId,");
       localStringBuilder.append(QCircleLpReportDc05502.DataBuilder.access$000(paramDataBuilder));
       localStringBuilder.append(",fpageId:");
       localStringBuilder.append(QCircleLpReportDc05502.DataBuilder.access$100(paramDataBuilder));
-      RFLog.e("QCircleReportBean_QCircleLpReportDc05502", i, localStringBuilder.toString());
+      QLog.e("QCircleReportBean_QCircleLpReportDc05502", 1, localStringBuilder.toString());
     }
-    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc05502.1(paramDataBuilder));
+    doReportInner(paramDataBuilder);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05502
  * JD-Core Version:    0.7.0.1
  */

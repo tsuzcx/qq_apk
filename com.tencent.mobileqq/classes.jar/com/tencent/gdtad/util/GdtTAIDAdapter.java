@@ -10,8 +10,8 @@ import com.tencent.gdtad.log.GdtLog;
 public final class GdtTAIDAdapter
   implements AdTAIDAdapter
 {
-  private static String jdField_a_of_type_JavaLangString = "GdtTAIDAdapter";
-  private volatile int jdField_a_of_type_Int = 0;
+  private static String a = "GdtTAIDAdapter";
+  private volatile int b = 0;
   
   private void a(long paramLong)
   {
@@ -21,7 +21,7 @@ public final class GdtTAIDAdapter
   private static int b(GdtAidHelper.TicketEntity paramTicketEntity)
   {
     int i = d(paramTicketEntity);
-    if ((i == 0) && (TextUtils.isEmpty(paramTicketEntity.jdField_a_of_type_JavaLangString))) {
+    if ((i == 0) && (TextUtils.isEmpty(paramTicketEntity.a))) {
       return 10;
     }
     return i;
@@ -41,39 +41,39 @@ public final class GdtTAIDAdapter
     if (paramTicketEntity == null) {
       return 1;
     }
-    if (paramTicketEntity.jdField_a_of_type_Int == 0) {
+    if (paramTicketEntity.c == 0) {
       return 0;
     }
-    if (paramTicketEntity.jdField_a_of_type_Int == -10001) {
+    if (paramTicketEntity.c == -10001) {
       return 6;
     }
-    if (paramTicketEntity.jdField_a_of_type_Int == -10008) {
+    if (paramTicketEntity.c == -10008) {
       return 8;
     }
-    if (paramTicketEntity.jdField_a_of_type_Int == -10009) {
+    if (paramTicketEntity.c == -10009) {
       return 7;
     }
-    if (paramTicketEntity.jdField_a_of_type_Int == 10010) {
+    if (paramTicketEntity.c == 10010) {
       return 5;
     }
-    if (paramTicketEntity.jdField_a_of_type_Int == -10011) {
+    if (paramTicketEntity.c == -10011) {
       return 2;
     }
-    if ((paramTicketEntity.jdField_a_of_type_Int != -10004) && (paramTicketEntity.jdField_a_of_type_Int != -10012) && (paramTicketEntity.jdField_a_of_type_Int != -21052) && (paramTicketEntity.jdField_a_of_type_Int != -22056))
+    if ((paramTicketEntity.c != -10004) && (paramTicketEntity.c != -10012) && (paramTicketEntity.c != -21052) && (paramTicketEntity.c != -22056))
     {
-      if (paramTicketEntity.jdField_a_of_type_Int == -30014) {
+      if (paramTicketEntity.c == -30014) {
         return 10;
       }
-      if (paramTicketEntity.jdField_a_of_type_Int == -2147483648) {
+      if (paramTicketEntity.c == -2147483648) {
         return 4;
       }
-      if (paramTicketEntity.jdField_a_of_type_Int == -2147483647) {
+      if (paramTicketEntity.c == -2147483647) {
         return 9;
       }
-      if (paramTicketEntity.jdField_a_of_type_Int == -2147483646) {
+      if (paramTicketEntity.c == -2147483646) {
         return 205;
       }
-      if (paramTicketEntity.jdField_a_of_type_Int == -2147483645) {
+      if (paramTicketEntity.c == -2147483645) {
         return 206;
       }
       return 1;
@@ -85,13 +85,13 @@ public final class GdtTAIDAdapter
   {
     paramContext = GdtAidHelper.a().a(paramString);
     if (paramContext != null) {
-      GdtLog.b(jdField_a_of_type_JavaLangString, String.format("getEntity businessId:%s errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d aidTicket:%s taidTicket:%s", new Object[] { paramString, Integer.valueOf(paramContext.jdField_a_of_type_Int), Long.valueOf(paramContext.jdField_a_of_type_Long), paramContext.jdField_a_of_type_JavaLangString, paramContext.b }));
+      GdtLog.b(a, String.format("getEntity businessId:%s errorCodeOfTicketEntity:%d expiredTimestampOfTicketEntity:%d aidTicket:%s taidTicket:%s", new Object[] { paramString, Integer.valueOf(paramContext.c), Long.valueOf(paramContext.d), paramContext.a, paramContext.b }));
     } else {
-      GdtLog.d(jdField_a_of_type_JavaLangString, String.format("getEntity return null, businessId:%s", new Object[] { paramString }));
+      GdtLog.d(a, String.format("getEntity return null, businessId:%s", new Object[] { paramString }));
     }
     paramString = new AdTAID.Entity();
-    if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString))) {
-      paramString.aidTicket = paramContext.jdField_a_of_type_JavaLangString;
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.a))) {
+      paramString.aidTicket = paramContext.a;
     }
     paramString.errorCodeForAidTicket = b(paramContext);
     if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.b))) {
@@ -100,20 +100,20 @@ public final class GdtTAIDAdapter
     paramString.errorCodeForTaidTicket = c(paramContext);
     long l;
     if (paramContext != null) {
-      l = paramContext.jdField_a_of_type_Long;
+      l = paramContext.d;
     } else {
       l = -2147483648L;
     }
     paramString.expiredTimeMillis = l;
     int i;
     if (paramContext != null) {
-      i = paramContext.jdField_a_of_type_Int;
+      i = paramContext.c;
     } else {
       i = -2147483648;
     }
     paramString.originErrorCode = i;
     if (paramContext != null) {
-      paramContext = paramContext.jdField_a_of_type_JavaLangThrowable;
+      paramContext = paramContext.e;
     } else {
       paramContext = null;
     }
@@ -128,7 +128,7 @@ public final class GdtTAIDAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtTAIDAdapter
  * JD-Core Version:    0.7.0.1
  */

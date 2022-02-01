@@ -82,7 +82,7 @@ class PublicAccountH5AbilityPluginImpl$16
               {
                 paramBundle.put("retCode", -1);
                 paramBundle.put("msg", "uuid for mediaid error");
-                if (this.jdField_a_of_type_Boolean) {
+                if (this.a) {
                   ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
                 } else {
                   ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
@@ -92,10 +92,10 @@ class PublicAccountH5AbilityPluginImpl$16
               {
                 paramBundle.put("retCode", 0);
                 localStringBuilder = new StringBuilder();
-                localStringBuilder.append(HardCodeUtil.a(2131708745));
+                localStringBuilder.append(HardCodeUtil.a(2131906525));
                 localStringBuilder.append((String)localObject);
                 paramBundle.put("msg", localStringBuilder.toString());
-                if (this.jdField_a_of_type_Boolean) {
+                if (this.a) {
                   ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, 0, "1", "", "", "", false);
                 } else {
                   ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, 0, "1", "", "", "");
@@ -107,7 +107,7 @@ class PublicAccountH5AbilityPluginImpl$16
             {
               localJSONException1.printStackTrace();
             }
-            this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+            this.c.callJs(this.b, new String[] { paramBundle.toString() });
             return;
           }
           if (QLog.isColorLevel())
@@ -127,8 +127,8 @@ class PublicAccountH5AbilityPluginImpl$16
           {
             localJSONException2.printStackTrace();
           }
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-          if (this.jdField_a_of_type_Boolean)
+          this.c.callJs(this.b, new String[] { paramBundle.toString() });
+          if (this.a)
           {
             ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
             return;
@@ -153,8 +153,8 @@ class PublicAccountH5AbilityPluginImpl$16
         {
           localJSONException3.printStackTrace();
         }
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        if (this.jdField_a_of_type_Boolean)
+        this.c.callJs(this.b, new String[] { paramBundle.toString() });
+        if (this.a)
         {
           ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
           return;
@@ -177,8 +177,8 @@ class PublicAccountH5AbilityPluginImpl$16
         paramBundle = new JSONObject();
         paramBundle.put("retCode", -1);
         paramBundle.put("msg", "uuid for mediaid error");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilApiImplPublicAccountH5AbilityPluginImpl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        if (this.jdField_a_of_type_Boolean)
+        this.c.callJs(this.b, new String[] { paramBundle.toString() });
+        if (this.a)
         {
           ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
           return;
@@ -197,7 +197,7 @@ class PublicAccountH5AbilityPluginImpl$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.16
  * JD-Core Version:    0.7.0.1
  */

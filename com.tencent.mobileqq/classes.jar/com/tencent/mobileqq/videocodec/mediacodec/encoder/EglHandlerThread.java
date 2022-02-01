@@ -11,19 +11,19 @@ import com.tencent.qphone.base.util.QLog;
 public class EglHandlerThread
   extends HandlerThread
 {
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private EglCore jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore;
-  private EglSurfaceBase jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase;
-  private boolean jdField_a_of_type_Boolean = false;
+  private EglCore a;
+  private EGLContext b;
+  private EglSurfaceBase c;
+  private Handler d;
+  private boolean e = false;
   
   public EglHandlerThread(String paramString, EGLContext paramEGLContext)
   {
     super(paramString);
-    this.jdField_a_of_type_AndroidOpenglEGLContext = paramEGLContext;
+    this.b = paramEGLContext;
   }
   
-  private void a()
+  private void c()
   {
     if (getLooper().getThread() != Thread.currentThread())
     {
@@ -33,31 +33,31 @@ public class EglHandlerThread
       QLog.e("EglHandlerThread", 2, ((StringBuilder)localObject).toString());
       return;
     }
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((EglSurfaceBase)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase = null;
+      this.c = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore;
+    localObject = this.a;
     if (localObject != null)
     {
       ((EglCore)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore = null;
+      this.a = null;
     }
-  }
-  
-  public Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
+  }
+  
+  public Handler b()
+  {
+    return this.d;
   }
   
   protected void onLooperPrepared()
@@ -65,17 +65,17 @@ public class EglHandlerThread
     try
     {
       super.onLooperPrepared();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore = new EglCore(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase = new EglSurfaceBase(this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglCore);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase.a(64, 64);
-      this.jdField_a_of_type_ComTencentMobileqqVideocodecMediacodecEncoderEglSurfaceBase.b();
-      this.jdField_a_of_type_Boolean = true;
+      this.d = new Handler(getLooper());
+      this.a = new EglCore(this.b, 1);
+      this.c = new EglSurfaceBase(this.a);
+      this.c.a(64, 64);
+      this.c.b();
+      this.e = true;
       return;
     }
     catch (Exception localException)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.e = false;
       QLog.e("EglHandlerThread", 2, localException, new Object[0]);
     }
   }
@@ -88,23 +88,23 @@ public class EglHandlerThread
       localStringBuilder.append("quit should be called in origin thread ");
       localStringBuilder.append(getThreadId());
       QLog.e("EglHandlerThread", 2, localStringBuilder.toString());
-      this.jdField_a_of_type_AndroidOsHandler.post(new EglHandlerThread.1(this));
+      this.d.post(new EglHandlerThread.1(this));
       return false;
     }
     boolean bool = super.quit();
-    a();
+    c();
     return bool;
   }
   
   public boolean quitSafely()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new EglHandlerThread.2(this));
+    this.d.post(new EglHandlerThread.2(this));
     return super.quitSafely();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.encoder.EglHandlerThread
  * JD-Core Version:    0.7.0.1
  */

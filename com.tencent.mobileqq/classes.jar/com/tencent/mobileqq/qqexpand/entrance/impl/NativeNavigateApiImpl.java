@@ -29,8 +29,8 @@ public class NativeNavigateApiImpl
   
   public void navigateWithoutSchema(String paramString, Map<Object, Object> paramMap1, Map<Object, Object> paramMap2)
   {
-    if (!RouterManager.a().a()) {
-      RouterManager.a().a();
+    if (!RouterManager.d().b()) {
+      RouterManager.d().a();
     }
     if (TextUtils.isEmpty(paramString)) {
       return;
@@ -41,7 +41,7 @@ public class NativeNavigateApiImpl
       if (!TextUtils.equals(paramString.getScheme(), "mqqapi")) {
         return;
       }
-      BaseRouter localBaseRouter = RouterManager.a().a(paramString.getAuthority());
+      BaseRouter localBaseRouter = RouterManager.d().a(paramString.getAuthority());
       if (localBaseRouter != null) {
         localBaseRouter.a(paramString, paramMap1, paramMap2);
       }
@@ -50,7 +50,7 @@ public class NativeNavigateApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.impl.NativeNavigateApiImpl
  * JD-Core Version:    0.7.0.1
  */

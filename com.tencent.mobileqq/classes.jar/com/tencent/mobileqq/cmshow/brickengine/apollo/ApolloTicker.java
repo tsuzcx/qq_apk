@@ -45,9 +45,9 @@ public class ApolloTicker
       localObject1 = getTimer();
       localObject2 = new ApolloTicker.NativeDrawTask(this, (View)localObject2, paramLong, 2L);
       ApolloTicker.ApolloTickerInfo localApolloTickerInfo = new ApolloTicker.ApolloTickerInfo();
-      localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer = ((Timer)localObject1);
-      localApolloTickerInfo.jdField_a_of_type_Int = 1;
-      localApolloTickerInfo.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask = ((ApolloTicker.NativeDrawTask)localObject2);
+      localApolloTickerInfo.a = ((Timer)localObject1);
+      localApolloTickerInfo.b = 1;
+      localApolloTickerInfo.c = ((ApolloTicker.NativeDrawTask)localObject2);
       ((Timer)localObject1).scheduleAtFixedRate((TimerTask)localObject2, 0L, 16L);
       this.tickerMap.put(Long.valueOf(paramLong), localApolloTickerInfo);
       return;
@@ -78,7 +78,7 @@ public class ApolloTicker
       QLog.e("[cmshow]sava_ApolloTicker", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    Timer localTimer = ((ApolloTicker.ApolloTickerInfo)localObject).jdField_a_of_type_JavaUtilTimer;
+    Timer localTimer = ((ApolloTicker.ApolloTickerInfo)localObject).a;
     if (!this.mTimerAlive)
     {
       if (localTimer != null)
@@ -87,10 +87,10 @@ public class ApolloTicker
         localTimer.purge();
       }
     }
-    else if (((ApolloTicker.ApolloTickerInfo)localObject).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask != null) {
-      ((ApolloTicker.ApolloTickerInfo)localObject).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask.cancel();
+    else if (((ApolloTicker.ApolloTickerInfo)localObject).c != null) {
+      ((ApolloTicker.ApolloTickerInfo)localObject).c.cancel();
     }
-    ((ApolloTicker.ApolloTickerInfo)localObject).jdField_a_of_type_JavaUtilTimer = null;
+    ((ApolloTicker.ApolloTickerInfo)localObject).a = null;
   }
   
   public void driveOffScreenFrame(long paramLong)
@@ -104,7 +104,7 @@ public class ApolloTicker
       ApolloTicker.ApolloTickerInfo localApolloTickerInfo = (ApolloTicker.ApolloTickerInfo)this.tickerMap.get(Long.valueOf(this.ticker));
       int j;
       if (localApolloTickerInfo != null) {
-        j = localApolloTickerInfo.jdField_a_of_type_Int;
+        j = localApolloTickerInfo.b;
       } else {
         j = 1;
       }
@@ -137,7 +137,7 @@ public class ApolloTicker
   {
     ApolloTicker.ApolloTickerInfo localApolloTickerInfo = (ApolloTicker.ApolloTickerInfo)this.tickerMap.get(Long.valueOf(paramLong));
     if (localApolloTickerInfo != null) {
-      return localApolloTickerInfo.jdField_a_of_type_Int / 60.0F;
+      return localApolloTickerInfo.b / 60.0F;
     }
     return 0.0F;
   }
@@ -146,7 +146,7 @@ public class ApolloTicker
   {
     ApolloTicker.ApolloTickerInfo localApolloTickerInfo = (ApolloTicker.ApolloTickerInfo)this.tickerMap.get(Long.valueOf(paramLong));
     if (localApolloTickerInfo != null) {
-      return localApolloTickerInfo.jdField_a_of_type_Int;
+      return localApolloTickerInfo.b;
     }
     return 1;
   }
@@ -171,27 +171,27 @@ public class ApolloTicker
         return;
       }
       Object localObject1 = "";
-      if (((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask != null) {
-        localObject1 = ((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask.a();
+      if (((ApolloTicker.ApolloTickerInfo)localObject2).c != null) {
+        localObject1 = ((ApolloTicker.ApolloTickerInfo)localObject2).c.a();
       }
       long l = Thread.currentThread().getId();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject1);
       localStringBuilder.append(", timer:");
-      localStringBuilder.append(((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_JavaUtilTimer);
+      localStringBuilder.append(((ApolloTicker.ApolloTickerInfo)localObject2).a);
       QLog.d("[cmshow]sava_ApolloTicker", 1, new Object[] { "pauseTicker ticker = ", Long.valueOf(paramLong), ",thread=", Long.valueOf(l), ",intervalFps:", localStringBuilder.toString() });
-      if (((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_JavaUtilTimer != null)
+      if (((ApolloTicker.ApolloTickerInfo)localObject2).a != null)
       {
         if (!this.mTimerAlive)
         {
-          ((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_JavaUtilTimer.cancel();
-          ((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_JavaUtilTimer.purge();
-          ((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_JavaUtilTimer = null;
+          ((ApolloTicker.ApolloTickerInfo)localObject2).a.cancel();
+          ((ApolloTicker.ApolloTickerInfo)localObject2).a.purge();
+          ((ApolloTicker.ApolloTickerInfo)localObject2).a = null;
           return;
         }
-        if (((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask != null)
+        if (((ApolloTicker.ApolloTickerInfo)localObject2).c != null)
         {
-          ((ApolloTicker.ApolloTickerInfo)localObject2).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask.cancel();
+          ((ApolloTicker.ApolloTickerInfo)localObject2).c.cancel();
           return;
         }
       }
@@ -223,24 +223,24 @@ public class ApolloTicker
         QLog.e("[cmshow]sava_ApolloTicker", 1, paramView.toString());
         return;
       }
-      int i = ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_Int;
+      int i = ((ApolloTicker.ApolloTickerInfo)localObject1).b;
       if (paramView == null)
       {
         QLog.e("[cmshow]sava_ApolloTicker", 1, "[resumeTicker], return, apolloView is null");
         return;
       }
-      if (((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_JavaUtilTimer != null)
+      if (((ApolloTicker.ApolloTickerInfo)localObject1).a != null)
       {
         if (!this.mTimerAlive)
         {
-          ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_JavaUtilTimer.cancel();
-          ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_JavaUtilTimer.purge();
+          ((ApolloTicker.ApolloTickerInfo)localObject1).a.cancel();
+          ((ApolloTicker.ApolloTickerInfo)localObject1).a.purge();
         }
-        else if (((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask != null)
+        else if (((ApolloTicker.ApolloTickerInfo)localObject1).c != null)
         {
-          ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask.cancel();
+          ((ApolloTicker.ApolloTickerInfo)localObject1).c.cancel();
         }
-        ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_JavaUtilTimer = null;
+        ((ApolloTicker.ApolloTickerInfo)localObject1).a = null;
       }
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("resumeTicker ticker = ");
@@ -251,8 +251,8 @@ public class ApolloTicker
       paramView = new ApolloTicker.NativeDrawTask(this, paramView, paramLong, i);
       localObject2 = getTimer();
       ((Timer)localObject2).scheduleAtFixedRate(paramView, 0L, i * 16);
-      ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_JavaUtilTimer = ((Timer)localObject2);
-      ((ApolloTicker.ApolloTickerInfo)localObject1).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask = paramView;
+      ((ApolloTicker.ApolloTickerInfo)localObject1).a = ((Timer)localObject2);
+      ((ApolloTicker.ApolloTickerInfo)localObject1).c = paramView;
       return;
     }
     catch (Throwable paramView)
@@ -286,21 +286,21 @@ public class ApolloTicker
     ((StringBuilder)localObject2).append(" thread=");
     ((StringBuilder)localObject2).append(Thread.currentThread().getId());
     QLog.d("[cmshow]sava_ApolloTicker", 1, ((StringBuilder)localObject2).toString());
-    localObject2 = localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer;
+    localObject2 = localApolloTickerInfo.a;
     if ((!this.mTimerAlive) && (localObject2 != null))
     {
       ((Timer)localObject2).cancel();
       ((Timer)localObject2).purge();
     }
-    if (localApolloTickerInfo.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask != null) {
-      localApolloTickerInfo.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask.cancel();
+    if (localApolloTickerInfo.c != null) {
+      localApolloTickerInfo.c.cancel();
     }
     localObject1 = new ApolloTicker.NativeDrawTask(this, (View)localObject1, paramLong, paramInt);
     localObject2 = getTimer();
     ((Timer)localObject2).scheduleAtFixedRate((TimerTask)localObject1, 0L, paramInt * 16);
-    localApolloTickerInfo.jdField_a_of_type_JavaUtilTimer = ((Timer)localObject2);
-    localApolloTickerInfo.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask = ((ApolloTicker.NativeDrawTask)localObject1);
-    localApolloTickerInfo.jdField_a_of_type_Int = paramInt;
+    localApolloTickerInfo.a = ((Timer)localObject2);
+    localApolloTickerInfo.c = ((ApolloTicker.NativeDrawTask)localObject1);
+    localApolloTickerInfo.b = paramInt;
   }
   
   public void setOffscreenFrameInterval(float paramFloat)
@@ -314,8 +314,8 @@ public class ApolloTicker
     while (localIterator.hasNext())
     {
       ApolloTicker.ApolloTickerInfo localApolloTickerInfo = (ApolloTicker.ApolloTickerInfo)localIterator.next();
-      if ((localApolloTickerInfo != null) && (localApolloTickerInfo.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask != null)) {
-        localApolloTickerInfo.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloTicker$NativeDrawTask.a(paramView);
+      if ((localApolloTickerInfo != null) && (localApolloTickerInfo.c != null)) {
+        localApolloTickerInfo.c.a(paramView);
       }
     }
     paramView = new StringBuilder();
@@ -326,7 +326,7 @@ public class ApolloTicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTicker
  * JD-Core Version:    0.7.0.1
  */

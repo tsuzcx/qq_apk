@@ -10,17 +10,17 @@ class VideoFeedsPlayManager$3
   
   public void run()
   {
-    if (VideoFeedsPlayManager.e(this.this$0))
+    if (VideoFeedsPlayManager.l(this.this$0))
     {
-      VideoFeedsPlayManager.a(this.this$0, (VideoPlayerWrapper)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam.a);
+      VideoFeedsPlayManager.b(this.this$0, (VideoPlayerWrapper)this.a.h);
       return;
     }
-    VideoFeedsPlayManager.c(this.this$0, this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoPlayParam, this.jdField_a_of_type_Boolean);
+    VideoFeedsPlayManager.c(this.this$0, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.3
  * JD-Core Version:    0.7.0.1
  */

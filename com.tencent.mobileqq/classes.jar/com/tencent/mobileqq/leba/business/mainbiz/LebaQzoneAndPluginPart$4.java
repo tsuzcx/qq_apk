@@ -17,9 +17,9 @@ class LebaQzoneAndPluginPart$4
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTianshuApiIRedTouchManager;
+    Object localObject1 = this.a;
     Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaViewItem.a.uiResId);
+    ((StringBuilder)localObject2).append(this.b.b.uiResId);
     ((StringBuilder)localObject2).append("");
     localObject1 = ((IRedTouchManager)localObject1).getAppInfoByPath(((StringBuilder)localObject2).toString());
     localObject2 = new HashMap();
@@ -34,7 +34,7 @@ class LebaQzoneAndPluginPart$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.4
  * JD-Core Version:    0.7.0.1
  */

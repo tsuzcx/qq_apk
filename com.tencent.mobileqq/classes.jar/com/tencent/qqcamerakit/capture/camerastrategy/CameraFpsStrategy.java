@@ -10,16 +10,16 @@ import java.util.List;
 
 public class CameraFpsStrategy
 {
-  public static CameraProxy.CustomFpsStrategy a;
   public static boolean a = false;
+  public static CameraProxy.CustomFpsStrategy b;
   
   private static List<int[]> a()
   {
     List localList;
-    if (CameraAPIStrategy.jdField_a_of_type_Boolean) {
-      localList = Camera2Control.a().a();
+    if (CameraAPIStrategy.a) {
+      localList = Camera2Control.a().e();
     } else {
-      localList = CameraAbility.a().a();
+      localList = CameraAbility.a().i();
     }
     a(localList);
     return localList;
@@ -68,7 +68,7 @@ public class CameraFpsStrategy
   public static int[] a(int paramInt)
   {
     Object localObject = a();
-    CameraProxy.CustomFpsStrategy localCustomFpsStrategy = jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy$CustomFpsStrategy;
+    CameraProxy.CustomFpsStrategy localCustomFpsStrategy = b;
     if (localCustomFpsStrategy != null) {
       localObject = localCustomFpsStrategy.a((List)localObject, paramInt);
     } else {
@@ -79,33 +79,12 @@ public class CameraFpsStrategy
       boolean bool = false;
       paramInt = localObject[0];
       int i = localObject[1];
-      if (jdField_a_of_type_ComTencentQqcamerakitCaptureCameraProxy$CustomFpsStrategy != null) {
+      if (b != null) {
         bool = true;
       }
       QLog.c("CameraFpsStrategy", 2, new Object[] { "getFpsRange, selectFps:", Integer.valueOf(paramInt), " ", Integer.valueOf(i), " customFpsStrategy:", Boolean.valueOf(bool) });
     }
     return localObject;
-  }
-  
-  private static int[] a(List<int[]> paramList)
-  {
-    int i;
-    if (CameraAPIStrategy.jdField_a_of_type_Boolean) {
-      i = 15;
-    } else {
-      i = 15000;
-    }
-    Iterator localIterator = paramList.iterator();
-    label25:
-    int[] arrayOfInt;
-    for (paramList = null; localIterator.hasNext(); paramList = arrayOfInt)
-    {
-      arrayOfInt = (int[])localIterator.next();
-      if ((paramList != null) && ((arrayOfInt[0] > i) || (arrayOfInt[1] - arrayOfInt[0] <= paramList[1] - paramList[0]))) {
-        break label25;
-      }
-    }
-    return paramList;
   }
   
   public static int[] a(List<int[]> paramList, int paramInt)
@@ -116,7 +95,7 @@ public class CameraFpsStrategy
     int[] tmp12_7 = tmp7_5;
     tmp12_7[1] = 2147483647;
     tmp12_7;
-    if (!CameraAPIStrategy.jdField_a_of_type_Boolean) {
+    if (!CameraAPIStrategy.a) {
       paramInt *= 1000;
     }
     if (paramList == null)
@@ -126,13 +105,13 @@ public class CameraFpsStrategy
       return arrayOfInt3;
     }
     boolean bool;
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       bool = CameraCompatible.b(CameraCompatibleConfig.KEY.g) ^ true;
     } else {
       bool = CameraCompatible.b(CameraCompatibleConfig.KEY.h);
     }
     if (QLog.a()) {
-      QLog.c("CameraFpsStrategy", 2, new Object[] { "selectFpsRange, fixFpsMode:", Boolean.valueOf(jdField_a_of_type_Boolean), " fixedFps:", Boolean.valueOf(bool) });
+      QLog.c("CameraFpsStrategy", 2, new Object[] { "selectFpsRange, fixFpsMode:", Boolean.valueOf(a), " fixedFps:", Boolean.valueOf(bool) });
     }
     int[] arrayOfInt2;
     int[] arrayOfInt1;
@@ -170,6 +149,27 @@ public class CameraFpsStrategy
       }
     }
     return arrayOfInt1;
+  }
+  
+  private static int[] b(List<int[]> paramList)
+  {
+    int i;
+    if (CameraAPIStrategy.a) {
+      i = 15;
+    } else {
+      i = 15000;
+    }
+    Iterator localIterator = paramList.iterator();
+    label25:
+    int[] arrayOfInt;
+    for (paramList = null; localIterator.hasNext(); paramList = arrayOfInt)
+    {
+      arrayOfInt = (int[])localIterator.next();
+      if ((paramList != null) && ((arrayOfInt[0] > i) || (arrayOfInt[1] - arrayOfInt[0] <= paramList[1] - paramList[0]))) {
+        break label25;
+      }
+    }
+    return paramList;
   }
   
   private static int[] b(List<int[]> paramList, int paramInt)
@@ -258,12 +258,12 @@ public class CameraFpsStrategy
     if (localObject1 != null) {
       return localObject1;
     }
-    return a(paramList);
+    return b(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqcamerakit.capture.camerastrategy.CameraFpsStrategy
  * JD-Core Version:    0.7.0.1
  */

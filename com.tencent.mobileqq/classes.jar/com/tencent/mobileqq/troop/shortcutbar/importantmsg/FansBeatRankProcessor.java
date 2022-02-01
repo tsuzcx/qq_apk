@@ -23,33 +23,33 @@ import java.util.ArrayList;
 public class FansBeatRankProcessor
   extends IShortcutBarProcessor
 {
-  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver;
-  TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver;
-  private IShortcutBarDataProvider jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
-  private String jdField_a_of_type_JavaLangString;
+  TroopPushObserver a;
+  TroopObserver b;
+  private QQAppInterface c;
+  private IShortcutBarDataProvider d;
+  private String e;
+  private AIOShortcutBarContext f;
   
   public FansBeatRankProcessor(AIOShortcutBarContext paramAIOShortcutBarContext, IShortcutBarDataProvider paramIShortcutBarDataProvider)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAIOShortcutBarContext.a());
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider = paramIShortcutBarDataProvider;
+    this.f = paramAIOShortcutBarContext;
+    this.c = ((QQAppInterface)paramAIOShortcutBarContext.c());
+    this.d = paramIShortcutBarDataProvider;
     try
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a().jdField_a_of_type_JavaLangString;
+      this.e = this.f.d().b;
     }
     catch (Exception paramAIOShortcutBarContext)
     {
       QLog.e("FansBeatRankProcessor", 2, "mTroopUin init error: ", paramAIOShortcutBarContext);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new FansBeatRankProcessor.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new FansBeatRankProcessor.2(this);
+    this.a = new FansBeatRankProcessor.1(this);
+    this.b = new FansBeatRankProcessor.2(this);
   }
   
   private void a(ArrayList<ShortcutBarInfo> paramArrayList)
   {
-    IShortcutBarDataProvider localIShortcutBarDataProvider = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
+    IShortcutBarDataProvider localIShortcutBarDataProvider = this.d;
     if (localIShortcutBarDataProvider != null) {
       localIShortcutBarDataProvider.a(4, paramArrayList);
     }
@@ -70,12 +70,12 @@ public class FansBeatRankProcessor
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localBeatRankShortcurBarInfo);
     a(localArrayList);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B584", "0X800B584", 0, 0, "", "", "", "");
+    ReportController.b(this.c, "dc00898", "", "", "0X800B584", "0X800B584", 0, 0, "", "", "", "");
   }
   
   private void e()
   {
-    TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+    TroopInfo localTroopInfo = ((TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.e);
     boolean bool = false;
     if ((localTroopInfo != null) && (localTroopInfo.isFansTroop()))
     {
@@ -90,8 +90,8 @@ public class FansBeatRankProcessor
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.c.removeObserver(this.a);
+    this.c.removeObserver(this.b);
   }
   
   public void a(Object paramObject)
@@ -101,16 +101,16 @@ public class FansBeatRankProcessor
       if (QLog.isColorLevel()) {
         QLog.i("FansBeatRankProcessor", 2, "onClick");
       }
-      if (StudyModeManager.a())
+      if (StudyModeManager.h())
       {
-        QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131699559), 0).a();
+        QQToast.makeText(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131897590), 0).show();
         return;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B585", "0X800B585", 0, 0, "", "", "", "");
-      paramObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+      ReportController.b(this.c, "dc00898", "", "", "0X800B585", "0X800B585", 0, 0, "", "", "", "");
+      paramObject = ((TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.e);
       if (paramObject != null)
       {
-        FansTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(), this.jdField_a_of_type_JavaLangString, paramObject.getFansTroopStarId());
+        FansTroopUtils.a(this.f.e(), this.e, paramObject.getFansTroopStarId());
         return;
       }
       if (QLog.isColorLevel()) {
@@ -121,8 +121,8 @@ public class FansBeatRankProcessor
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.c.addObserver(this.a);
+    this.c.addObserver(this.b);
   }
   
   public void b(Object paramObject) {}
@@ -136,7 +136,7 @@ public class FansBeatRankProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.FansBeatRankProcessor
  * JD-Core Version:    0.7.0.1
  */

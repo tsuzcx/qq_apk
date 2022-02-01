@@ -2,11 +2,14 @@ package com.tencent.mobileqq.webview;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPlugin;
 import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.gdtad.web.GdtWebReportQQ;
 import com.tencent.mobileqq.activity.springfestival.js.SpringHbUrlInterceptor;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.IWebViewWrapperInjector;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
@@ -22,8 +25,8 @@ public class WebViewWrapperInjector
     try
     {
       TroopMemberApiClient localTroopMemberApiClient = TroopMemberApiClient.a();
-      localTroopMemberApiClient.a();
-      Bundle localBundle = SwiftBrowserStatistics.a(paramString2);
+      localTroopMemberApiClient.e();
+      Bundle localBundle = SwiftBrowserStatistics.h(paramString2);
       localBundle.putString("uin", paramString4);
       if (!TextUtils.isEmpty(paramString3)) {
         localBundle.putString("title", paramString3);
@@ -42,7 +45,34 @@ public class WebViewWrapperInjector
     if (paramString1.startsWith("mqqpa://resourceid/")) {
       return (WebResourceResponse)((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).getWebResponse(paramString1);
     }
-    return SpringHbUrlInterceptor.a(paramString1);
+    if (GdtWebReportQQ.a(paramString1))
+    {
+      paramWebView = ((CustomWebView)paramWebView).getPluginEngine();
+      if (paramWebView == null) {
+        return null;
+      }
+      if (paramBoolean) {
+        paramWebView.a(paramString1, 8589934593L, null);
+      }
+      try
+      {
+        paramWebView = paramWebView.a(paramString1, 8L);
+        if ((paramWebView instanceof WebResourceResponse))
+        {
+          paramWebView = (WebResourceResponse)paramWebView;
+          return paramWebView;
+        }
+      }
+      catch (Exception paramWebView)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("shouldInterceptRequest error:");
+        paramString1.append(paramWebView.getMessage());
+        QLog.e("WebViewWrapperInjector", 1, paramString1.toString());
+      }
+      return null;
+    }
+    return SpringHbUrlInterceptor.b(paramString1);
   }
   
   public void a(Bundle paramBundle, WebView paramWebView, String paramString)
@@ -110,12 +140,12 @@ public class WebViewWrapperInjector
   
   public boolean a(String paramString)
   {
-    return (paramString.startsWith("mqqpa://resourceid/")) || (SpringHbUrlInterceptor.a(paramString));
+    return (paramString.startsWith("mqqpa://resourceid/")) || (SpringHbUrlInterceptor.a(paramString)) || (GdtWebReportQQ.a(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.WebViewWrapperInjector
  * JD-Core Version:    0.7.0.1
  */

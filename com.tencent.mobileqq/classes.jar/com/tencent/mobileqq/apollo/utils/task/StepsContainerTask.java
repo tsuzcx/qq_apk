@@ -10,14 +10,14 @@ public class StepsContainerTask
   @NotNull
   private final TaskSteps a;
   
-  protected void b()
+  protected void c()
   {
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.StepsContainerTask
  * JD-Core Version:    0.7.0.1
  */

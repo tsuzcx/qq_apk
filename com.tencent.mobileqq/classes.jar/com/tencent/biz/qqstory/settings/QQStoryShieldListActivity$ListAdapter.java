@@ -21,22 +21,22 @@ import java.util.List;
 class QQStoryShieldListActivity$ListAdapter
   extends BaseAdapter
 {
-  List<QQStoryUserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<QQStoryUserInfo> a = new ArrayList();
   
   public QQStoryShieldListActivity$ListAdapter(List<QQStoryUserInfo> paramList)
   {
     Collection localCollection;
     if (localCollection != null)
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(localCollection);
-      Collections.sort(this.jdField_a_of_type_JavaUtilList);
+      this.a = new ArrayList(localCollection);
+      Collections.sort(this.a);
     }
   }
   
   public void a(List<QQStoryUserInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
-    paramList = this.jdField_a_of_type_JavaUtilList;
+    this.a = new ArrayList(paramList);
+    paramList = this.a;
     if (paramList != null) {
       Collections.sort(paramList);
     }
@@ -45,12 +45,12 @@ class QQStoryShieldListActivity$ListAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -63,13 +63,13 @@ class QQStoryShieldListActivity$ListAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity).inflate(2131561772, null);
+      localView = LayoutInflater.from(this.b).inflate(2131628151, null);
       paramView = new QQStoryShieldListActivity.ListAdapter.ViewHolder(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366401));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371697));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a.widthPixels - AIOUtils.b(175.0F, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getResources()));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131365500));
-      paramView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
+      paramView.b = ((ImageView)localView.findViewById(2131432714));
+      paramView.c = ((TextView)localView.findViewById(2131439121));
+      paramView.c.setMaxWidth(this.b.l.widthPixels - AIOUtils.b(175.0F, this.b.getResources()));
+      paramView.d = ((Button)localView.findViewById(2131431715));
+      paramView.d.setOnClickListener(this.b);
       localView.setTag(paramView);
     }
     else
@@ -78,36 +78,36 @@ class QQStoryShieldListActivity$ListAdapter
       localView = paramView;
       paramView = (View)localObject;
     }
-    Object localObject = (QQStoryUserInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView.jdField_a_of_type_JavaLangString = ((QQStoryUserInfo)localObject).uin;
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((QQStoryUserInfo)localObject).nick);
-    paramView.jdField_a_of_type_AndroidWidgetButton.setTag(localObject);
-    if (this.jdField_a_of_type_JavaUtilList.size() > 2)
+    Object localObject = (QQStoryUserInfo)this.a.get(paramInt);
+    paramView.a = ((QQStoryUserInfo)localObject).uin;
+    paramView.c.setText(((QQStoryUserInfo)localObject).nick);
+    paramView.d.setTag(localObject);
+    if (this.a.size() > 2)
     {
       if (paramInt == 0) {
-        localView.setBackgroundResource(2130839449);
-      } else if (paramInt == this.jdField_a_of_type_JavaUtilList.size() - 1) {
-        localView.setBackgroundResource(2130839440);
+        localView.setBackgroundResource(2130839638);
+      } else if (paramInt == this.a.size() - 1) {
+        localView.setBackgroundResource(2130839629);
       } else {
-        localView.setBackgroundResource(2130839443);
+        localView.setBackgroundResource(2130839632);
       }
     }
-    else if (this.jdField_a_of_type_JavaUtilList.size() == 2)
+    else if (this.a.size() == 2)
     {
       if (paramInt == 0) {
-        localView.setBackgroundResource(2130839449);
+        localView.setBackgroundResource(2130839638);
       } else {
-        localView.setBackgroundResource(2130839440);
+        localView.setBackgroundResource(2130839629);
       }
     }
-    else if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      localView.setBackgroundResource(2130839440);
+    else if (this.a.size() == 1) {
+      localView.setBackgroundResource(2130839629);
     }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.app.getFaceBitmap(((QQStoryUserInfo)localObject).uin, true);
+    localObject = this.b.app.getFaceBitmap(((QQStoryUserInfo)localObject).uin, true);
     if (localObject != null) {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject);
+      paramView.b.setImageBitmap((Bitmap)localObject);
     } else {
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.f());
+      paramView.b.setImageBitmap(ImageUtil.k());
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;

@@ -25,15 +25,15 @@ class GMEAVEngineWalper$2
       localStringBuilder.append(paramString);
       QLog.e("AVEngineWalper", 1, localStringBuilder.toString());
     }
-    if (this.a.a != null) {
-      this.a.a.b(paramInt, paramString);
+    if (this.a.b != null) {
+      this.a.b.b(paramInt, paramString);
     }
     new Handler(Looper.getMainLooper()).postDelayed(new GMEAVEngineWalper.2.1(this), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.gmersdk_warper.GMEAVEngineWalper.2
  * JD-Core Version:    0.7.0.1
  */

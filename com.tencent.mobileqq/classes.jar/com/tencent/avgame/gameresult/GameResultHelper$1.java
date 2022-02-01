@@ -19,7 +19,7 @@ class GameResultHelper$1
   
   public void a(EngineData paramEngineData, int paramInt)
   {
-    String str = GameResultHelper.a();
+    String str = GameResultHelper.e();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onChangeUserStatusSuccess ");
     localStringBuilder.append(paramEngineData);
@@ -33,7 +33,7 @@ class GameResultHelper$1
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    String str = GameResultHelper.a();
+    String str = GameResultHelper.e();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onChangeUserStatusFailed ");
     ((StringBuilder)localObject).append(paramString);
@@ -47,9 +47,9 @@ class GameResultHelper$1
       {
         str = paramString;
         if (TextUtils.isEmpty(paramString)) {
-          str = ((Activity)localObject).getString(2131690438);
+          str = ((Activity)localObject).getString(2131887349);
         }
-        QQToast.a((Context)localObject, 1, str, 1).a();
+        QQToast.makeText((Context)localObject, 1, str, 1).show();
       }
     }
   }
@@ -58,13 +58,13 @@ class GameResultHelper$1
   {
     if (QLog.isColorLevel())
     {
-      paramEngineData = GameResultHelper.a();
+      paramEngineData = GameResultHelper.e();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("pushOnChangeUserStatus uin = ");
       localStringBuilder.append(paramString);
       QLog.d(paramEngineData, 2, localStringBuilder.toString());
     }
-    if ((paramString.equals(IGameEngine.a().getAccount())) && (paramInt == 1)) {
+    if ((paramString.equals(IGameEngine.K().getAccount())) && (paramInt == 1)) {
       this.a.a.showRoom();
     }
   }
@@ -72,7 +72,7 @@ class GameResultHelper$1
   public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
     if (QLog.isDebugVersion()) {
-      QLog.i(GameResultHelper.a(), 1, String.format(Locale.ENGLISH, "onGameResultUpload isSucc[%b],playId[%s],fileType[%d],fileUrl[%s]", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt), paramString2 }));
+      QLog.i(GameResultHelper.e(), 1, String.format(Locale.ENGLISH, "onGameResultUpload isSucc[%b],playId[%s],fileType[%d],fileUrl[%s]", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt), paramString2 }));
     }
   }
 }

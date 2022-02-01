@@ -17,7 +17,7 @@ class JumpControllerInject$2
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.i("JumpControllerInject", 1, "system share.doShare denied sd grant");
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, new JumpControllerInject.2.1(this));
+    DialogUtil.a(this.a, new JumpControllerInject.2.1(this));
     paramArrayOfString = new HashMap();
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareDeny", true, 0L, 0L, paramArrayOfString, "");
   }
@@ -25,14 +25,14 @@ class JumpControllerInject$2
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     QLog.i("JumpControllerInject", 1, "system share.doShare user grant");
-    JumpActivityHelper.c(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_Boolean);
+    JumpActivityHelper.d(this.a, this.b);
     paramArrayOfString = new HashMap();
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShareGrant", true, 0L, 0L, paramArrayOfString, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jumpcontroller.JumpControllerInject.2
  * JD-Core Version:    0.7.0.1
  */

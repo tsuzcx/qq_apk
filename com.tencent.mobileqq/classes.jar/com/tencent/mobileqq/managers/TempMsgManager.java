@@ -26,7 +26,6 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.TempMsgInfo;
-import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
@@ -52,40 +51,26 @@ import mqq.os.MqqHandler;
 public class TempMsgManager
   implements Manager
 {
-  private TempGameMsgSettingReceiver jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxReceiverTempGameMsgSettingReceiver;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TempMsgManager.OnTempMsgSettingChangeListener jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager$OnTempMsgSettingChangeListener;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private String jdField_a_of_type_JavaLangString;
-  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap(8);
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { "temp_msg_setting_consult_", "temp_msg_setting_contact_", "temp_msg_setting_troop_", "temp_msg_setting_circle_v2", "temp_msg_setting_company_" };
-  private Map<String, Boolean> b = new HashMap(8);
+  private final String[] a = { "temp_msg_setting_consult_", "temp_msg_setting_contact_", "temp_msg_setting_troop_", "temp_msg_setting_circle_v2", "temp_msg_setting_company_" };
+  private final List<String> b = new ArrayList();
+  private QQAppInterface c;
+  private String d;
+  private Map<String, Boolean> e = new HashMap(8);
+  private Map<String, Boolean> f = new HashMap(8);
+  private TempMsgManager.OnTempMsgSettingChangeListener g;
+  private EntityManager h;
+  private TempGameMsgSettingReceiver i;
   
   public TempMsgManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentUin();
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    this.b.clear();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxReceiverTempGameMsgSettingReceiver = new TempGameMsgSettingReceiver(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    a();
-    b();
-  }
-  
-  private int a(SessionInfo paramSessionInfo)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-    if ((1000 != paramSessionInfo.jdField_a_of_type_Int) && (1004 != paramSessionInfo.jdField_a_of_type_Int) && (1022 != paramSessionInfo.jdField_a_of_type_Int)) {
-      localObject = ChatActivityUtils.a((List)localObject, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    } else {
-      localObject = ChatActivityUtils.b((List)localObject, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    if (localObject == null) {
-      return paramSessionInfo.jdField_a_of_type_Int;
-    }
-    return ((MessageRecord)localObject).istroop;
+    this.c = paramQQAppInterface;
+    this.d = paramQQAppInterface.getCurrentUin();
+    this.e.clear();
+    this.f.clear();
+    this.h = this.c.getEntityManagerFactory().createEntityManager();
+    this.i = new TempGameMsgSettingReceiver(this.c);
+    c();
+    d();
   }
   
   private DialogInterface.OnClickListener a(BaseChatPie paramBaseChatPie, short paramShort)
@@ -93,7 +78,157 @@ public class TempMsgManager
     return new TempMsgManager.2(this, paramBaseChatPie, paramShort);
   }
   
-  private String a(short paramShort)
+  private short a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      return 2;
+    }
+    if (paramBoolean1) {
+      return 0;
+    }
+    if (paramBoolean2) {
+      return 3;
+    }
+    return 1;
+  }
+  
+  private void a(SessionInfo paramSessionInfo, short paramShort, String paramString, int paramInt, BaseChatPie paramBaseChatPie)
+  {
+    if (!a(f(paramShort)))
+    {
+      paramSessionInfo = String.format(this.c.getApplication().getResources().getString(2131917146), new Object[] { paramString, paramString });
+      paramSessionInfo = DialogUtil.a(paramBaseChatPie.e, 230, HardCodeUtil.a(2131912135), paramSessionInfo, 2131917144, 2131917145, a(paramBaseChatPie, paramShort), a(paramBaseChatPie, paramShort));
+      paramSessionInfo.setOnCancelListener(new TempMsgManager.1(this, paramBaseChatPie));
+      paramSessionInfo.setCanceledOnTouchOutside(false);
+      paramSessionInfo.show();
+      ReportController.b(this.c, "dc00898", "", "", "0X8009977", "0X8009977", d(paramShort), d(paramShort), "", "", "", "");
+      return;
+    }
+    if ((a(paramSessionInfo)) && (a(f(paramShort), paramSessionInfo))) {
+      a(paramSessionInfo, paramString, paramInt, paramShort);
+    }
+  }
+  
+  private boolean a(SessionInfo paramSessionInfo)
+  {
+    paramSessionInfo = this.c.getMessageFacade().o(paramSessionInfo.b, paramSessionInfo.a);
+    int j = paramSessionInfo.size();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (j > 0)
+    {
+      j = paramSessionInfo.size();
+      paramSessionInfo = paramSessionInfo.iterator();
+      while (paramSessionInfo.hasNext())
+      {
+        ChatMessage localChatMessage = (ChatMessage)paramSessionInfo.next();
+        if (localChatMessage.isSend()) {
+          return false;
+        }
+        if (localChatMessage.senderuin == null) {}
+        while ((localChatMessage.senderuin.compareTo(this.c.getCurrentUin()) == 0) || (localChatMessage.msgtype == -1034))
+        {
+          j -= 1;
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("TempMsgManager", 2, localChatMessage.toString());
+        }
+      }
+      bool1 = bool2;
+      if (j > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  private boolean a(String paramString, int paramInt)
+  {
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.c.getApplication());
+    boolean bool = e(paramString);
+    StringBuilder localStringBuilder;
+    if (paramInt == 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("_setting");
+      return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), bool);
+    }
+    if (paramInt == 1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("_show");
+      bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), bool);
+      if (bool)
+      {
+        localObject = ((SharedPreferences)localObject).edit();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(this.d);
+        localStringBuilder.append("_show");
+        ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), false).apply();
+      }
+      return bool;
+    }
+    return false;
+  }
+  
+  private int b(SessionInfo paramSessionInfo)
+  {
+    Object localObject = this.c.getMessageFacade().o(paramSessionInfo.b, paramSessionInfo.a);
+    if ((1000 != paramSessionInfo.a) && (1004 != paramSessionInfo.a) && (1022 != paramSessionInfo.a)) {
+      localObject = ChatActivityUtils.a((List)localObject, paramSessionInfo, this.c);
+    } else {
+      localObject = ChatActivityUtils.b((List)localObject, paramSessionInfo, this.c);
+    }
+    if (localObject == null) {
+      return paramSessionInfo.a;
+    }
+    return ((MessageRecord)localObject).istroop;
+  }
+  
+  private void c()
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("action_qgame_toggle_change");
+    BaseApplicationImpl.getApplication().registerReceiver(this.i, localIntentFilter);
+  }
+  
+  private boolean c(String paramString)
+  {
+    if (this.f.containsKey(paramString)) {
+      return ((Boolean)this.f.get(paramString)).booleanValue();
+    }
+    boolean bool = d(paramString);
+    this.f.put(paramString, Boolean.valueOf(bool));
+    return bool;
+  }
+  
+  private void d()
+  {
+    this.b.add("temp_msg_setting_circle_v2");
+  }
+  
+  private boolean d(String paramString)
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.c.getApplication());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("_in_box_setting");
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
+  }
+  
+  private boolean e(String paramString)
+  {
+    return this.b.contains(paramString) ^ true;
+  }
+  
+  private String f(short paramShort)
   {
     if (paramShort != -23312)
     {
@@ -138,7 +273,7 @@ public class TempMsgManager
     return "temp_msg_setting_nearby_";
   }
   
-  private short a(short paramShort)
+  private short g(short paramShort)
   {
     if (paramShort != -20457)
     {
@@ -159,143 +294,434 @@ public class TempMsgManager
     return -20455;
   }
   
-  private short a(boolean paramBoolean1, boolean paramBoolean2)
+  public String a(int paramInt)
   {
-    if ((paramBoolean1) && (paramBoolean2)) {
-      return 2;
-    }
-    if (paramBoolean1) {
-      return 0;
-    }
-    if (paramBoolean2) {
-      return 3;
-    }
-    return 1;
-  }
-  
-  private void a()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("action_qgame_toggle_change");
-    BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxReceiverTempGameMsgSettingReceiver, localIntentFilter);
-  }
-  
-  private void a(SessionInfo paramSessionInfo, short paramShort, String paramString, int paramInt, BaseChatPie paramBaseChatPie)
-  {
-    if (!a(a(paramShort)))
+    if (paramInt != 0)
     {
-      paramSessionInfo = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131719583), new Object[] { paramString, paramString });
-      paramSessionInfo = DialogUtil.a(paramBaseChatPie.a, 230, HardCodeUtil.a(2131714626), paramSessionInfo, 2131719581, 2131719582, a(paramBaseChatPie, paramShort), a(paramBaseChatPie, paramShort));
-      paramSessionInfo.setOnCancelListener(new TempMsgManager.1(this, paramBaseChatPie));
-      paramSessionInfo.setCanceledOnTouchOutside(false);
-      paramSessionInfo.show();
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009977", "0X8009977", a(paramShort), a(paramShort), "", "", "", "");
-      return;
-    }
-    if ((a(paramSessionInfo)) && (a(a(paramShort), paramSessionInfo))) {
-      a(paramSessionInfo, paramString, paramInt, paramShort);
-    }
-  }
-  
-  private boolean a(SessionInfo paramSessionInfo)
-  {
-    paramSessionInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
-    int i = paramSessionInfo.size();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (i > 0)
-    {
-      i = paramSessionInfo.size();
-      paramSessionInfo = paramSessionInfo.iterator();
-      while (paramSessionInfo.hasNext())
+      if (paramInt != 1)
       {
-        ChatMessage localChatMessage = (ChatMessage)paramSessionInfo.next();
-        if (localChatMessage.isSend()) {
-          return false;
+        if (paramInt != 2) {
+          return "";
         }
-        if (localChatMessage.senderuin == null) {}
-        while ((localChatMessage.senderuin.compareTo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()) == 0) || (localChatMessage.msgtype == -1034))
+        return "0X800BB8D";
+      }
+      return "0X800BB8C";
+    }
+    return "0X800BB8B";
+  }
+  
+  public Map<String, Boolean> a()
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.c.getApplication());
+    String[] arrayOfString = this.a;
+    int k = arrayOfString.length;
+    int j = 0;
+    while (j < k)
+    {
+      String str = arrayOfString[j];
+      if (!this.e.containsKey(str))
+      {
+        boolean bool = e(str);
+        Map localMap = this.e;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(this.d);
+        localStringBuilder.append("_setting");
+        localMap.put(str, Boolean.valueOf(localSharedPreferences.getBoolean(localStringBuilder.toString(), bool)));
+      }
+      j += 1;
+    }
+    return this.e;
+  }
+  
+  public void a(SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterChat");
+      localStringBuilder.append(paramSessionInfo.a);
+      QLog.d("TempMsgManager", 2, localStringBuilder.toString());
+    }
+    int k = paramSessionInfo.a;
+    int j = k;
+    if (k == 1000) {
+      j = b(paramSessionInfo);
+    }
+    if (j != 1000) {
+      if (j != 1001)
+      {
+        if ((j == 1009) || (j == 1010) || (j == 1020)) {
+          return;
+        }
+        if (j != 10002)
         {
-          i -= 1;
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("TempMsgManager", 2, localChatMessage.toString());
+          if (j == 10004) {
+            return;
+          }
+          if (j != 10008) {
+            if (j != 10010) {
+              if (j != 1024) {
+                if (j == 1025) {
+                  return;
+                }
+              }
+            }
+          }
         }
       }
-      bool1 = bool2;
-      if (i > 0) {
-        bool1 = true;
-      }
     }
-    return bool1;
-  }
-  
-  private boolean a(String paramString, int paramInt)
-  {
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-    boolean bool = d(paramString);
-    StringBuilder localStringBuilder;
-    if (paramInt == 0)
+    switch (j)
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("_setting");
-      return ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), bool);
-    }
-    if (paramInt == 1)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append("_show");
-      bool = ((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), bool);
-      if (bool)
+    default: 
+    case 1006: 
+      a(paramSessionInfo, (short)-23310, HardCodeUtil.a(2131912132), j, paramBaseChatPie);
+      return;
+    case 1005: 
+      a(paramSessionInfo, (short)-23309, "QQ咨询", j, paramBaseChatPie);
+      return;
+      if (((ITempMsgBoxManager)this.c.getRuntimeService(ITempMsgBoxManager.class, "")).configContains(1024))
       {
-        localObject = ((SharedPreferences)localObject).edit();
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString);
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        localStringBuilder.append("_show");
-        ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), false).apply();
+        a(paramSessionInfo, (short)-20457, HardCodeUtil.a(2131917141), j, paramBaseChatPie);
+        return;
+        a(paramSessionInfo, (short)-23161, HardCodeUtil.a(2131891942), j, paramBaseChatPie);
+        return;
+        a(paramSessionInfo, (short)-23168, HardCodeUtil.a(2131916998), j, paramBaseChatPie);
+        return;
+        a(paramSessionInfo, (short)-23166, HardCodeUtil.a(2131912133), j, paramBaseChatPie);
+        return;
       }
-      return bool;
+      break;
+    case 1003: 
+      a(paramSessionInfo, (short)-23312, HardCodeUtil.a(2131912131), j, paramBaseChatPie);
+      return;
+      a(paramSessionInfo, (short)-23308, HardCodeUtil.a(2131912134), j, paramBaseChatPie);
     }
-    return false;
   }
   
-  private void b()
+  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt, short paramShort)
   {
-    this.jdField_a_of_type_JavaUtilList.add("temp_msg_setting_circle_v2");
+    Object localObject2;
+    if (paramInt == 1000)
+    {
+      paramString = ContactUtils.i(this.c, paramSessionInfo.d);
+      localObject2 = ContactUtils.a(this.c, paramSessionInfo.d, true);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getTroopNickName:");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(" new From:");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        QLog.d("TempMsgManager", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = String.format(this.c.getApplication().getResources().getString(2131917158), new Object[] { localObject2 });
+      paramString = new UniteGrayTipParam(paramSessionInfo.b, this.c.getCurrentAccountUin(), (String)localObject1, paramSessionInfo.a, -5023, 655381, MessageCache.c());
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("key_action", 39);
+      localBundle.putString("textColor", "");
+      localBundle.putString("image_resource", null);
+      localBundle.putString("key_action_DATA", paramSessionInfo.d);
+      paramString.a(5, ((String)localObject2).length() + 5, localBundle);
+      paramSessionInfo = new Bundle();
+      paramSessionInfo.putInt("key_action", 38);
+      paramSessionInfo.putString("textColor", "");
+      paramSessionInfo.putString("image_resource", null);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(d(paramShort));
+      ((StringBuilder)localObject2).append("");
+      paramSessionInfo.putString("key_action_DATA", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(e(paramShort));
+      ((StringBuilder)localObject2).append("");
+      paramSessionInfo.putString("key_a_action_DATA", ((StringBuilder)localObject2).toString());
+      paramString.a(((String)localObject1).length() - 5, ((String)localObject1).length() - 1, paramSessionInfo);
+      paramSessionInfo = (SessionInfo)localObject1;
+    }
+    else
+    {
+      localObject1 = String.format(this.c.getApplication().getResources().getString(2131917157), new Object[] { paramString });
+      paramString = new UniteGrayTipParam(paramSessionInfo.b, this.c.getCurrentAccountUin(), (String)localObject1, paramSessionInfo.a, -5023, 655381, MessageCache.c());
+      paramSessionInfo = new Bundle();
+      paramSessionInfo.putInt("key_action", 38);
+      paramSessionInfo.putString("textColor", "");
+      paramSessionInfo.putString("image_resource", null);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(d(paramShort));
+      ((StringBuilder)localObject2).append("");
+      paramSessionInfo.putString("key_action_DATA", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(e(paramShort));
+      ((StringBuilder)localObject2).append("");
+      paramSessionInfo.putString("key_a_action_DATA", ((StringBuilder)localObject2).toString());
+      paramString.a(((String)localObject1).length() - 5, ((String)localObject1).length() - 1, paramSessionInfo);
+      paramSessionInfo = (SessionInfo)localObject1;
+    }
+    Object localObject1 = new MessageForUniteGrayTip();
+    ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.c, paramString);
+    UniteGrayTipMsgUtil.a(this.c, (MessageForUniteGrayTip)localObject1);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("add gray tip =");
+      paramString.append(paramSessionInfo);
+      QLog.d("TempMsgManager", 2, paramString.toString());
+    }
   }
   
-  private boolean b(String paramString)
+  public void a(TempMsgManager.OnTempMsgSettingChangeListener paramOnTempMsgSettingChangeListener)
   {
-    if (this.b.containsKey(paramString)) {
-      return ((Boolean)this.b.get(paramString)).booleanValue();
+    this.g = paramOnTempMsgSettingChangeListener;
+  }
+  
+  public void a(short paramShort, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeTempSetting type=");
+      ((StringBuilder)localObject).append(paramShort);
+      ((StringBuilder)localObject).append(" switchAfter=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" switchBefore");
+      ((StringBuilder)localObject).append(paramInt2);
+      ((StringBuilder)localObject).append("sync=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
     }
-    boolean bool = c(paramString);
-    this.b.put(paramString, Boolean.valueOf(bool));
+    Object localObject = a(paramShort, paramInt1);
+    boolean[] arrayOfBoolean = a(paramShort, paramInt2);
+    int j = arrayOfBoolean[0];
+    int k = arrayOfBoolean[1];
+    int m = localObject[0];
+    int n = localObject[1];
+    a(paramShort, m, false);
+    a(paramShort, n);
+    short s = a(m, n);
+    if (paramBoolean)
+    {
+      localObject = (CardHandler)this.c.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+      if (localObject != null) {
+        ((CardHandler)localObject).a(paramShort, g(paramShort), s, j, k);
+      }
+    }
+  }
+  
+  public void a(short paramShort, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeInBoxSetting t=");
+      ((StringBuilder)localObject).append(paramShort);
+      ((StringBuilder)localObject).append(" isInBox=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = f(paramShort);
+    this.f.put(localObject, Boolean.valueOf(paramBoolean));
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.c.getApplication()).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("_in_box_setting");
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
+  }
+  
+  public void a(short paramShort, boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetResult t=");
+      localStringBuilder.append(paramShort);
+      localStringBuilder.append(" result=");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(" fm=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" value=");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("TempMsgManager", 2, localStringBuilder.toString());
+    }
+    if (!paramBoolean1)
+    {
+      a(paramShort, paramBoolean2, false);
+      b(paramString);
+    }
+    ThreadManager.getUIHandler().post(new TempMsgManager.3(this, paramShort, paramBoolean1));
+  }
+  
+  public void a(short paramShort, boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetInBoxResult t=");
+      localStringBuilder.append(paramShort);
+      localStringBuilder.append(" result=");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(" fm=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" isAllowedToReceiveMessage=");
+      localStringBuilder.append(paramBoolean2);
+      localStringBuilder.append(" isInBox=");
+      localStringBuilder.append(paramBoolean3);
+      QLog.d("TempMsgManager", 2, localStringBuilder.toString());
+    }
+    boolean bool = b(paramShort);
+    if (!paramBoolean1)
+    {
+      a(paramShort, paramBoolean2, false);
+      a(paramShort, paramBoolean3);
+      b(paramString);
+    }
+    if (((paramBoolean1) || (TextUtils.isEmpty(paramString))) && ((bool ^ paramBoolean3)))
+    {
+      new RecentUserCacheHelper().a(this.c);
+      ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).removeMsgBoxIfNecessary(this.c, true);
+      ((ITempMsgBoxManager)this.c.getRuntimeService(ITempMsgBoxManager.class, "")).setMsgBoxRead(false);
+      this.c.notifyObservers(TempMsgBoxObserver.class, 1, true, new Bundle());
+    }
+    ThreadManager.getUIHandler().post(new TempMsgManager.4(this, paramShort, paramBoolean1));
+  }
+  
+  public void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeSetting t=");
+      ((StringBuilder)localObject).append(paramShort);
+      ((StringBuilder)localObject).append(" s=");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append("sync=");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = f(paramShort);
+    if (this.e.containsKey(localObject))
+    {
+      this.e.remove(localObject);
+      this.e.put(localObject, Boolean.valueOf(paramBoolean1));
+    }
+    else
+    {
+      this.e.put(localObject, Boolean.valueOf(paramBoolean1));
+    }
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.c.getApplication()).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("_setting");
+    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean1).apply();
+    if (paramBoolean2)
+    {
+      localObject = (CardHandler)this.c.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+      if (localObject != null) {
+        ((CardHandler)localObject).a(paramShort, paramBoolean1 ^ true);
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.e.containsKey(paramString)) {
+      return ((Boolean)this.e.get(paramString)).booleanValue();
+    }
+    boolean bool = a(paramString, 0);
+    this.e.put(paramString, Boolean.valueOf(bool));
     return bool;
   }
   
-  private boolean c(String paramString)
+  public boolean a(String paramString, SessionInfo paramSessionInfo)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_in_box_setting");
-    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
+    try
+    {
+      Object localObject = this.h;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(paramSessionInfo.b);
+      if ((((EntityManager)localObject).find(TempMsgInfo.class, localStringBuilder.toString()) instanceof TempMsgInfo)) {
+        return false;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("can't tempMsgInfo, insert a new tempMsgInfo! type=");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("curFriendUin=");
+        ((StringBuilder)localObject).append(paramSessionInfo.b);
+        QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = this.h;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(paramSessionInfo.b);
+      ((EntityManager)localObject).persist(new TempMsgInfo(localStringBuilder.toString(), System.currentTimeMillis()));
+      return true;
+    }
+    finally {}
   }
   
-  private boolean d(String paramString)
+  public boolean a(short paramShort)
   {
-    return this.jdField_a_of_type_JavaUtilList.contains(paramString) ^ true;
+    return a(f(paramShort));
   }
   
-  public int a(short paramShort)
+  public boolean[] a(short paramShort, int paramInt)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2) {
+        return new boolean[] { 1, 0 };
+      }
+      return new boolean[] { false, b(paramShort) };
+    }
+    return new boolean[] { 1, 1 };
+  }
+  
+  public Map<String, Boolean> b()
+  {
+    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.c.getApplication());
+    String[] arrayOfString = this.a;
+    int k = arrayOfString.length;
+    int j = 0;
+    while (j < k)
+    {
+      String str = arrayOfString[j];
+      if (!this.f.containsKey(str))
+      {
+        Map localMap = this.f;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(this.d);
+        localStringBuilder.append("_in_box_setting");
+        localMap.put(str, Boolean.valueOf(localSharedPreferences.getBoolean(localStringBuilder.toString(), false)));
+      }
+      j += 1;
+    }
+    return this.f;
+  }
+  
+  public void b(String paramString)
+  {
+    if (!StringUtil.isEmpty(paramString)) {
+      ThreadManager.getUIHandler().post(new TempMsgManager.5(this, paramString));
+    }
+  }
+  
+  public boolean b(short paramShort)
+  {
+    return c(f(paramShort));
+  }
+  
+  public boolean c(short paramShort)
+  {
+    String str = f(paramShort);
+    return this.b.contains(str);
+  }
+  
+  public int d(short paramShort)
   {
     if (paramShort != -23312)
     {
@@ -329,405 +755,7 @@ public class TempMsgManager
     return 2;
   }
   
-  public String a(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2) {
-          return "";
-        }
-        return "0X800BB8D";
-      }
-      return "0X800BB8C";
-    }
-    return "0X800BB8B";
-  }
-  
-  public Map<String, Boolean> a()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))
-      {
-        boolean bool = d(str);
-        Map localMap = this.jdField_a_of_type_JavaUtilMap;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        localStringBuilder.append("_setting");
-        localMap.put(str, Boolean.valueOf(localSharedPreferences.getBoolean(localStringBuilder.toString(), bool)));
-      }
-      i += 1;
-    }
-    return this.jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public void a(SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onEnterChat");
-      localStringBuilder.append(paramSessionInfo.jdField_a_of_type_Int);
-      QLog.d("TempMsgManager", 2, localStringBuilder.toString());
-    }
-    int j = paramSessionInfo.jdField_a_of_type_Int;
-    int i = j;
-    if (j == 1000) {
-      i = a(paramSessionInfo);
-    }
-    if (i != 1000) {
-      if (i != 1001)
-      {
-        if ((i == 1009) || (i == 1010) || (i == 1020)) {
-          return;
-        }
-        if (i != 10002)
-        {
-          if (i == 10004) {
-            return;
-          }
-          if (i != 1024) {
-            if (i == 1025) {
-              return;
-            }
-          }
-        }
-      }
-    }
-    switch (i)
-    {
-    default: 
-      switch (i)
-      {
-      default: 
-        return;
-      case 10010: 
-        a(paramSessionInfo, (short)-23161, HardCodeUtil.a(2131694304), i, paramBaseChatPie);
-        return;
-      case 10009: 
-        a(paramSessionInfo, (short)-23158, ((IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getGameBuddyAppName(), i, paramBaseChatPie);
-        return;
-      }
-      a(paramSessionInfo, (short)-23168, HardCodeUtil.a(2131719438), i, paramBaseChatPie);
-      return;
-    case 1006: 
-      a(paramSessionInfo, (short)-23310, HardCodeUtil.a(2131714623), i, paramBaseChatPie);
-      return;
-    case 1005: 
-      a(paramSessionInfo, (short)-23309, "QQ咨询", i, paramBaseChatPie);
-      return;
-      if (((ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).configContains(1024))
-      {
-        a(paramSessionInfo, (short)-20457, HardCodeUtil.a(2131719578), i, paramBaseChatPie);
-        return;
-        a(paramSessionInfo, (short)-23166, HardCodeUtil.a(2131714624), i, paramBaseChatPie);
-        return;
-      }
-      break;
-    case 1003: 
-      a(paramSessionInfo, (short)-23312, HardCodeUtil.a(2131714622), i, paramBaseChatPie);
-      return;
-      a(paramSessionInfo, (short)-23308, HardCodeUtil.a(2131714625), i, paramBaseChatPie);
-    }
-  }
-  
-  public void a(SessionInfo paramSessionInfo, String paramString, int paramInt, short paramShort)
-  {
-    Object localObject2;
-    if (paramInt == 1000)
-    {
-      paramString = ContactUtils.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo.c);
-      localObject2 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramSessionInfo.c, true);
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("getTroopNickName:");
-        ((StringBuilder)localObject1).append(paramString);
-        ((StringBuilder)localObject1).append(" new From:");
-        ((StringBuilder)localObject1).append((String)localObject2);
-        QLog.d("TempMsgManager", 2, ((StringBuilder)localObject1).toString());
-      }
-      localObject1 = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131719595), new Object[] { localObject2 });
-      paramString = new UniteGrayTipParam(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject1, paramSessionInfo.jdField_a_of_type_Int, -5023, 655381, MessageCache.a());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("key_action", 39);
-      localBundle.putString("textColor", "");
-      localBundle.putString("image_resource", null);
-      localBundle.putString("key_action_DATA", paramSessionInfo.c);
-      paramString.a(5, ((String)localObject2).length() + 5, localBundle);
-      paramSessionInfo = new Bundle();
-      paramSessionInfo.putInt("key_action", 38);
-      paramSessionInfo.putString("textColor", "");
-      paramSessionInfo.putString("image_resource", null);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(a(paramShort));
-      ((StringBuilder)localObject2).append("");
-      paramSessionInfo.putString("key_action_DATA", ((StringBuilder)localObject2).toString());
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(b(paramShort));
-      ((StringBuilder)localObject2).append("");
-      paramSessionInfo.putString("key_a_action_DATA", ((StringBuilder)localObject2).toString());
-      paramString.a(((String)localObject1).length() - 5, ((String)localObject1).length() - 1, paramSessionInfo);
-      paramSessionInfo = (SessionInfo)localObject1;
-    }
-    else
-    {
-      localObject1 = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131719594), new Object[] { paramString });
-      paramString = new UniteGrayTipParam(paramSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (String)localObject1, paramSessionInfo.jdField_a_of_type_Int, -5023, 655381, MessageCache.a());
-      paramSessionInfo = new Bundle();
-      paramSessionInfo.putInt("key_action", 38);
-      paramSessionInfo.putString("textColor", "");
-      paramSessionInfo.putString("image_resource", null);
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(a(paramShort));
-      ((StringBuilder)localObject2).append("");
-      paramSessionInfo.putString("key_action_DATA", ((StringBuilder)localObject2).toString());
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(b(paramShort));
-      ((StringBuilder)localObject2).append("");
-      paramSessionInfo.putString("key_a_action_DATA", ((StringBuilder)localObject2).toString());
-      paramString.a(((String)localObject1).length() - 5, ((String)localObject1).length() - 1, paramSessionInfo);
-      paramSessionInfo = (SessionInfo)localObject1;
-    }
-    Object localObject1 = new MessageForUniteGrayTip();
-    ((MessageForUniteGrayTip)localObject1).initGrayTipMsg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString);
-    UniteGrayTipMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForUniteGrayTip)localObject1);
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("add gray tip =");
-      paramString.append(paramSessionInfo);
-      QLog.d("TempMsgManager", 2, paramString.toString());
-    }
-  }
-  
-  public void a(TempMsgManager.OnTempMsgSettingChangeListener paramOnTempMsgSettingChangeListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager$OnTempMsgSettingChangeListener = paramOnTempMsgSettingChangeListener;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!StringUtil.a(paramString)) {
-      ThreadManager.getUIHandler().post(new TempMsgManager.5(this, paramString));
-    }
-  }
-  
-  public void a(short paramShort, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("changeTempSetting type=");
-      ((StringBuilder)localObject).append(paramShort);
-      ((StringBuilder)localObject).append(" switchAfter=");
-      ((StringBuilder)localObject).append(paramInt1);
-      ((StringBuilder)localObject).append(" switchBefore");
-      ((StringBuilder)localObject).append(paramInt2);
-      ((StringBuilder)localObject).append("sync=");
-      ((StringBuilder)localObject).append(paramBoolean);
-      QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = a(paramShort, paramInt1);
-    boolean[] arrayOfBoolean = a(paramShort, paramInt2);
-    int i = arrayOfBoolean[0];
-    int j = arrayOfBoolean[1];
-    int k = localObject[0];
-    int m = localObject[1];
-    a(paramShort, k, false);
-    a(paramShort, m);
-    short s = a(k, m);
-    if (paramBoolean)
-    {
-      localObject = (CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-      if (localObject != null) {
-        ((CardHandler)localObject).a(paramShort, a(paramShort), s, i, j);
-      }
-    }
-  }
-  
-  public void a(short paramShort, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("changeInBoxSetting t=");
-      ((StringBuilder)localObject).append(paramShort);
-      ((StringBuilder)localObject).append(" isInBox=");
-      ((StringBuilder)localObject).append(paramBoolean);
-      QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = a(paramShort);
-    this.b.put(localObject, Boolean.valueOf(paramBoolean));
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_in_box_setting");
-    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
-  }
-  
-  public void a(short paramShort, boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onSetResult t=");
-      localStringBuilder.append(paramShort);
-      localStringBuilder.append(" result=");
-      localStringBuilder.append(paramBoolean1);
-      localStringBuilder.append(" fm=");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" value=");
-      localStringBuilder.append(paramBoolean2);
-      QLog.d("TempMsgManager", 2, localStringBuilder.toString());
-    }
-    if (!paramBoolean1)
-    {
-      a(paramShort, paramBoolean2, false);
-      a(paramString);
-    }
-    ThreadManager.getUIHandler().post(new TempMsgManager.3(this, paramShort, paramBoolean1));
-  }
-  
-  public void a(short paramShort, boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onSetInBoxResult t=");
-      localStringBuilder.append(paramShort);
-      localStringBuilder.append(" result=");
-      localStringBuilder.append(paramBoolean1);
-      localStringBuilder.append(" fm=");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" isAllowedToReceiveMessage=");
-      localStringBuilder.append(paramBoolean2);
-      localStringBuilder.append(" isInBox=");
-      localStringBuilder.append(paramBoolean3);
-      QLog.d("TempMsgManager", 2, localStringBuilder.toString());
-    }
-    boolean bool = b(paramShort);
-    if (!paramBoolean1)
-    {
-      a(paramShort, paramBoolean2, false);
-      a(paramShort, paramBoolean3);
-      a(paramString);
-    }
-    if (((paramBoolean1) || (TextUtils.isEmpty(paramString))) && ((bool ^ paramBoolean3)))
-    {
-      new RecentUserCacheHelper().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).removeMsgBoxIfNecessary(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-      ((ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).setMsgBoxRead(false);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.notifyObservers(TempMsgBoxObserver.class, 1, true, new Bundle());
-    }
-    ThreadManager.getUIHandler().post(new TempMsgManager.4(this, paramShort, paramBoolean1));
-  }
-  
-  public void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("changeSetting t=");
-      ((StringBuilder)localObject).append(paramShort);
-      ((StringBuilder)localObject).append(" s=");
-      ((StringBuilder)localObject).append(paramBoolean1);
-      ((StringBuilder)localObject).append("sync=");
-      ((StringBuilder)localObject).append(paramBoolean2);
-      QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = a(paramShort);
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, Boolean.valueOf(paramBoolean1));
-    }
-    else
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(localObject, Boolean.valueOf(paramBoolean1));
-    }
-    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).edit();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((String)localObject);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("_setting");
-    localEditor.putBoolean(localStringBuilder.toString(), paramBoolean1).apply();
-    if (paramBoolean2)
-    {
-      localObject = (CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
-      if (localObject != null) {
-        ((CardHandler)localObject).a(paramShort, paramBoolean1 ^ true);
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString)).booleanValue();
-    }
-    boolean bool = a(paramString, 0);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(bool));
-    return bool;
-  }
-  
-  public boolean a(String paramString, SessionInfo paramSessionInfo)
-  {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      if ((((EntityManager)localObject).find(TempMsgInfo.class, localStringBuilder.toString()) instanceof TempMsgInfo)) {
-        return false;
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("can't tempMsgInfo, insert a new tempMsgInfo! type=");
-        ((StringBuilder)localObject).append(paramString);
-        ((StringBuilder)localObject).append("curFriendUin=");
-        ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
-        QLog.d("TempMsgManager", 2, ((StringBuilder)localObject).toString());
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      ((EntityManager)localObject).persist(new TempMsgInfo(localStringBuilder.toString(), System.currentTimeMillis()));
-      return true;
-    }
-    finally {}
-  }
-  
-  public boolean a(short paramShort)
-  {
-    return a(a(paramShort));
-  }
-  
-  public boolean[] a(short paramShort, int paramInt)
-  {
-    if (paramInt != 1)
-    {
-      if (paramInt != 2) {
-        return new boolean[] { 1, 0 };
-      }
-      return new boolean[] { false, b(paramShort) };
-    }
-    return new boolean[] { 1, 1 };
-  }
-  
-  public int b(short paramShort)
+  public int e(short paramShort)
   {
     if (paramShort != -20457)
     {
@@ -745,50 +773,16 @@ public class TempMsgManager
     return 4;
   }
   
-  public Map<String, Boolean> b()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-    String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = arrayOfString[i];
-      if (!this.b.containsKey(str))
-      {
-        Map localMap = this.b;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        localStringBuilder.append("_in_box_setting");
-        localMap.put(str, Boolean.valueOf(localSharedPreferences.getBoolean(localStringBuilder.toString(), false)));
-      }
-      i += 1;
-    }
-    return this.b;
-  }
-  
-  public boolean b(short paramShort)
-  {
-    return b(a(paramShort));
-  }
-  
-  public boolean c(short paramShort)
-  {
-    String str = a(paramShort);
-    return this.jdField_a_of_type_JavaUtilList.contains(str);
-  }
-  
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqManagersTempMsgManager$OnTempMsgSettingChangeListener = null;
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    this.c = null;
+    this.g = null;
+    EntityManager localEntityManager = this.h;
     if (localEntityManager != null) {
       localEntityManager.close();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxReceiverTempGameMsgSettingReceiver != null) {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxReceiverTempGameMsgSettingReceiver);
+    if (this.i != null) {
+      BaseApplicationImpl.getApplication().unregisterReceiver(this.i);
     }
   }
 }

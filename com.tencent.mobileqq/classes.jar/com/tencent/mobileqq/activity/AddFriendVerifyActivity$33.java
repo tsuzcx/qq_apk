@@ -13,12 +13,12 @@ class AddFriendVerifyActivity$33
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B992", "0X800B992", 0, 0, "", "", "", "");
-    this.a.a.dismiss();
+    this.a.j.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.33
  * JD-Core Version:    0.7.0.1
  */

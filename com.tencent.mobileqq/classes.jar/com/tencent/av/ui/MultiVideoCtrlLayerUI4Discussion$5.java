@@ -7,7 +7,7 @@ class MultiVideoCtrlLayerUI4Discussion$5
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString);
+    this.this$0.a(this.a, this.b);
   }
 }
 

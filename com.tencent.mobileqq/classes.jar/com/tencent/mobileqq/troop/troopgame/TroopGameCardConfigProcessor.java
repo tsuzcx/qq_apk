@@ -22,14 +22,14 @@ public class TroopGameCardConfigProcessor
   
   public static TroopGameCardConfig a()
   {
-    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.a().a(695);
+    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.b().b(695);
     if (localTroopGameCardConfig != null) {
       return localTroopGameCardConfig;
     }
     return new TroopGameCardConfig();
   }
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     if (QLog.isColorLevel())
     {
@@ -95,7 +95,7 @@ public class TroopGameCardConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = TroopGameCardConfig.a(paramArrayOfQConfItem[0].a);
+      paramArrayOfQConfItem = TroopGameCardConfig.a(paramArrayOfQConfItem[0].b);
       ThreadManager.getSubThreadHandler().post(new TroopGameCardConfigProcessor.1(this, paramArrayOfQConfItem));
       return paramArrayOfQConfItem;
     }
@@ -127,7 +127,7 @@ public class TroopGameCardConfigProcessor
         return;
       }
       this.a.add(paramOnGetConfigListener);
-      QConfigManager.a().a(new int[] { 695 });
+      QConfigManager.b().a(new int[] { 695 });
       ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
       ThreadManager.getSubThreadHandler().postAtTime(new TroopGameCardConfigProcessor.4(this), this, SystemClock.uptimeMillis() + 10000L);
       return;
@@ -174,7 +174,7 @@ public class TroopGameCardConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

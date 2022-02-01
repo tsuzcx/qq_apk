@@ -3,38 +3,33 @@ package com.tencent.mobileqq.structmsg;
 public class AbsStructMsgTextElement$RichText
 {
   public int a;
-  public String a;
-  public boolean a;
   public int b;
-  public String b;
-  public boolean b;
   public int c;
   public int d;
-  public int e;
+  public String e;
   public int f;
-  
-  public AbsStructMsgTextElement$RichText()
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public int g;
+  public boolean h;
+  public String i;
+  public boolean j = false;
   
   protected RichText a()
   {
     RichText localRichText = new RichText();
-    localRichText.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localRichText.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localRichText.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localRichText.d = this.d;
+    localRichText.a = this.a;
+    localRichText.b = this.b;
     localRichText.e = this.e;
+    localRichText.d = this.d;
     localRichText.f = this.f;
-    localRichText.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localRichText.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    localRichText.g = this.g;
+    localRichText.h = this.h;
+    localRichText.j = this.j;
     return localRichText;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgTextElement.RichText
  * JD-Core Version:    0.7.0.1
  */

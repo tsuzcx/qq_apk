@@ -62,7 +62,7 @@ public class ProfileFavorComponent
       localProfileCardFavorItemDetailView.setTitle(localProfileSummaryHobbiesItem.strTitle);
       localProfileCardFavorItemDetailView.setContent(localProfileSummaryHobbiesItem.strSubInfo);
       localProfileCardFavorItemDetailView.setDesc(localProfileSummaryHobbiesItem.strDesc);
-      Drawable localDrawable = paramResources.getDrawable(2131166392);
+      Drawable localDrawable = paramResources.getDrawable(2131167228);
       Object localObject = localDrawable;
       if (!TextUtils.isEmpty(localProfileSummaryHobbiesItem.strCoverUrl))
       {
@@ -96,7 +96,7 @@ public class ProfileFavorComponent
           }
         }
       }
-      localProfileCardFavorItemDetailView.setBackgroundResource(2130839435);
+      localProfileCardFavorItemDetailView.setBackgroundResource(2130839624);
       localProfileContentTitleView.addContentView(localProfileCardFavorItemDetailView);
       localProfileCardFavorItemDetailView.setTag(new DataTag(62, localObject));
       localProfileCardFavorItemDetailView.setOnClickListener(this);
@@ -203,9 +203,9 @@ public class ProfileFavorComponent
   
   private void handleHobbyClick(DataTag paramDataTag)
   {
-    if ((paramDataTag.jdField_a_of_type_JavaLangObject instanceof ProfileSummaryHobbiesEntry))
+    if ((paramDataTag.b instanceof ProfileSummaryHobbiesEntry))
     {
-      paramDataTag = (ProfileSummaryHobbiesEntry)paramDataTag.jdField_a_of_type_JavaLangObject;
+      paramDataTag = (ProfileSummaryHobbiesEntry)paramDataTag.b;
       Intent localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
       localIntent.putExtra("url", paramDataTag.strServiceUrl);
       if (paramDataTag.serviceType == 2) {
@@ -220,9 +220,9 @@ public class ProfileFavorComponent
   
   private void handleHobbyItemClick(DataTag paramDataTag)
   {
-    if ((paramDataTag.jdField_a_of_type_JavaLangObject instanceof ProfileSummaryHobbiesItem))
+    if ((paramDataTag.b instanceof ProfileSummaryHobbiesItem))
     {
-      paramDataTag = (ProfileSummaryHobbiesItem)paramDataTag.jdField_a_of_type_JavaLangObject;
+      paramDataTag = (ProfileSummaryHobbiesItem)paramDataTag.b;
       Intent localIntent = new Intent(this.mActivity, QQBrowserActivity.class);
       localIntent.putExtra("url", paramDataTag.strJmpUrl);
       if (paramDataTag.serviceType == 2) {
@@ -244,8 +244,8 @@ public class ProfileFavorComponent
       LinearLayout localLinearLayout;
       if (this.mViewContainer == null)
       {
-        localLinearLayout = (LinearLayout)LayoutInflater.from(this.mActivity).inflate(2131561310, null, false);
-        localLinearLayout.setTag(2131367357, Boolean.TRUE);
+        localLinearLayout = (LinearLayout)LayoutInflater.from(this.mActivity).inflate(2131627666, null, false);
+        localLinearLayout.setTag(2131433814, Boolean.TRUE);
         this.mViewContainer = localLinearLayout;
         paramBoolean = true;
       }
@@ -291,7 +291,7 @@ public class ProfileFavorComponent
     if ((paramView.getTag() instanceof DataTag))
     {
       DataTag localDataTag = (DataTag)paramView.getTag();
-      int i = localDataTag.jdField_a_of_type_Int;
+      int i = localDataTag.a;
       if (i != 61)
       {
         if (i == 62) {
@@ -312,7 +312,7 @@ public class ProfileFavorComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.favor.ProfileFavorComponent
  * JD-Core Version:    0.7.0.1
  */

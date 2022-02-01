@@ -2,8 +2,6 @@ package com.qwallet.temp;
 
 public abstract interface IGrammarNativeTemp
 {
-  public abstract float a();
-  
   public abstract int a();
   
   public abstract int a(byte[] paramArrayOfByte);
@@ -14,7 +12,9 @@ public abstract interface IGrammarNativeTemp
   
   public abstract int b();
   
-  public abstract int c();
+  public abstract float c();
+  
+  public abstract int d();
 }
 
 

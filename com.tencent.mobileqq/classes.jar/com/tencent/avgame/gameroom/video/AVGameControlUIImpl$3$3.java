@@ -7,7 +7,7 @@ class AVGameControlUIImpl$3$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$3.a.a(this.jdField_a_of_type_Long, "android.permission.CAMERA");
+    this.b.a.a(this.a, "android.permission.CAMERA");
   }
 }
 

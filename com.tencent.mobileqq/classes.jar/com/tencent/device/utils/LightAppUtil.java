@@ -40,77 +40,61 @@ import org.json.JSONObject;
 
 public class LightAppUtil
 {
-  protected static long a;
-  public static ArrayList<LightAppSettingInfo> a;
-  public static volatile ConcurrentHashMap<Integer, LightAppSettingInfo> a;
-  public Activity a;
-  protected Bundle a;
-  protected DeviceInfo a;
-  protected LightAppUtil.GetLightAppSettingListener a;
-  protected QQProgressDialog a;
-  protected String a;
-  protected AppRuntime a;
-  private BusinessObserver a;
-  protected boolean a;
-  protected ArrayList<Integer> b;
-  protected boolean b;
-  protected boolean c = false;
-  protected boolean d = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Long = 0L;
-  }
+  public static volatile ConcurrentHashMap<Integer, LightAppSettingInfo> a = new ConcurrentHashMap();
+  public static ArrayList<LightAppSettingInfo> b = new ArrayList();
+  protected static long o = 0L;
+  protected ArrayList<Integer> c;
+  public Activity d;
+  protected LightAppUtil.GetLightAppSettingListener e;
+  protected QQProgressDialog f = null;
+  protected AppRuntime g;
+  protected boolean h;
+  protected boolean i = false;
+  protected boolean j = false;
+  protected String k;
+  protected DeviceInfo l;
+  protected Bundle m;
+  protected boolean n = false;
+  private BusinessObserver p = new LightAppUtil.1(this);
   
   public LightAppUtil()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new LightAppUtil.1(this);
-    this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    this.c = false;
+    this.g = BaseApplicationImpl.getApplication().getRuntime();
+    this.j = false;
   }
   
   public LightAppUtil(Activity paramActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new LightAppUtil.1(this);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    paramActivity = this.jdField_a_of_type_AndroidAppActivity;
+    this.d = paramActivity;
+    paramActivity = this.d;
     if ((paramActivity instanceof AppActivity))
     {
-      this.jdField_a_of_type_MqqAppAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
-      this.c = true;
+      this.g = ((AppActivity)paramActivity).getAppRuntime();
+      this.j = true;
       return;
     }
     if ((paramActivity instanceof BaseActivity))
     {
-      this.jdField_a_of_type_MqqAppAppRuntime = ((BaseActivity)paramActivity).getAppRuntime();
-      this.c = false;
+      this.g = ((BaseActivity)paramActivity).getAppRuntime();
+      this.j = false;
     }
   }
   
   public LightAppUtil(Activity paramActivity, LightAppUtil.GetLightAppSettingListener paramGetLightAppSettingListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new LightAppUtil.1(this);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener = paramGetLightAppSettingListener;
-    paramActivity = this.jdField_a_of_type_AndroidAppActivity;
+    this.d = paramActivity;
+    this.e = paramGetLightAppSettingListener;
+    paramActivity = this.d;
     if ((paramActivity instanceof AppActivity))
     {
-      this.jdField_a_of_type_MqqAppAppRuntime = ((AppActivity)paramActivity).getAppRuntime();
-      this.c = true;
+      this.g = ((AppActivity)paramActivity).getAppRuntime();
+      this.j = true;
       return;
     }
     if ((paramActivity instanceof BaseActivity))
     {
-      this.jdField_a_of_type_MqqAppAppRuntime = ((BaseActivity)paramActivity).getAppRuntime();
-      this.c = false;
+      this.g = ((BaseActivity)paramActivity).getAppRuntime();
+      this.j = false;
     }
   }
   
@@ -124,19 +108,19 @@ public class LightAppUtil
     }
     else
     {
-      str = paramResources.getString(2131691540);
+      str = paramResources.getString(2131888502);
     }
-    if ((!TextUtils.isEmpty(paramLightAppSettingInfo.b)) && (!TextUtils.isEmpty(paramLightAppSettingInfo.jdField_a_of_type_JavaLangString)) && (AppUtil.a(paramLightAppSettingInfo.b))) {
-      return paramResources.getString(2131691542, new Object[] { str });
+    if ((!TextUtils.isEmpty(paramLightAppSettingInfo.g)) && (!TextUtils.isEmpty(paramLightAppSettingInfo.f)) && (AppUtil.a(paramLightAppSettingInfo.g))) {
+      return paramResources.getString(2131888504, new Object[] { str });
     }
-    return paramResources.getString(2131691541, new Object[] { str });
+    return paramResources.getString(2131888503, new Object[] { str });
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (AppUtil.a(paramString1)))
     {
-      AppUtil.a(paramActivity, paramString1);
+      AppUtil.c(paramActivity, paramString1);
       return;
     }
     Bundle localBundle = new Bundle();
@@ -148,9 +132,9 @@ public class LightAppUtil
   
   private void a(Intent paramIntent, LightAppSettingInfo paramLightAppSettingInfo)
   {
-    if (paramLightAppSettingInfo.jdField_d_of_type_Int == 2) {
+    if (paramLightAppSettingInfo.h == 2) {
       paramLightAppSettingInfo = "https://qzs.qq.com/open/mobile/iot_public_device_2/html/ipCamera.html";
-    } else if (paramLightAppSettingInfo.jdField_d_of_type_Int == 17) {
+    } else if (paramLightAppSettingInfo.h == 17) {
       paramLightAppSettingInfo = "https://qzs.qq.com/open/mobile/iot_public_device_2/html/print.html";
     } else {
       paramLightAppSettingInfo = null;
@@ -167,68 +151,68 @@ public class LightAppUtil
     while (paramArrayList.hasNext())
     {
       LightAppSettingInfo localLightAppSettingInfo = (LightAppSettingInfo)paramArrayList.next();
-      if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int)))
+      if (!a.containsKey(Integer.valueOf(localLightAppSettingInfo.c)))
       {
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int), localLightAppSettingInfo);
-        jdField_a_of_type_JavaUtilArrayList.add(localLightAppSettingInfo);
+        a.put(Integer.valueOf(localLightAppSettingInfo.c), localLightAppSettingInfo);
+        b.add(localLightAppSettingInfo);
       }
     }
   }
   
-  public static void c()
+  public static void d()
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    jdField_a_of_type_JavaUtilArrayList.clear();
+    a.clear();
+    b.clear();
   }
   
-  private void d()
+  private void e()
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("uin", this.k);
     Object localObject = new StringBuilder();
-    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    if (this.c != null)
     {
-      int i = 0;
-      while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+      int i1 = 0;
+      while (i1 < this.c.size())
       {
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilArrayList.get(i));
-        if (i != this.jdField_b_of_type_JavaUtilArrayList.size() - 1) {
+        ((StringBuilder)localObject).append(this.c.get(i1));
+        if (i1 != this.c.size() - 1) {
           ((StringBuilder)localObject).append(",");
         }
-        i += 1;
+        i1 += 1;
       }
     }
     localBundle.putString("pids", ((StringBuilder)localObject).toString());
-    if (this.d)
+    if (this.n)
     {
-      localObject = this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo;
+      localObject = this.l;
       if (localObject != null) {
         localBundle.putLong("din", ((DeviceInfo)localObject).din);
       }
     }
-    if (this.d) {
+    if (this.n) {
       localObject = "get_public_lightapp_info";
     } else {
       localObject = "get_lightapp_info";
     }
-    SmartDeviceUtil.a((String)localObject, localBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqObserverBusinessObserver);
+    SmartDeviceUtil.a((String)localObject, localBundle, this.g, this.p);
   }
   
   public LightAppSettingInfo a(DeviceInfo paramDeviceInfo)
   {
-    LightAppSettingInfo localLightAppSettingInfo2 = (LightAppSettingInfo)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramDeviceInfo.productId));
+    LightAppSettingInfo localLightAppSettingInfo2 = (LightAppSettingInfo)a.get(Integer.valueOf(paramDeviceInfo.productId));
     LightAppSettingInfo localLightAppSettingInfo1 = localLightAppSettingInfo2;
     if (localLightAppSettingInfo2 == null)
     {
       localLightAppSettingInfo1 = localLightAppSettingInfo2;
-      if (!this.c)
+      if (!this.j)
       {
         AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
         localLightAppSettingInfo1 = localLightAppSettingInfo2;
         if ((localAppRuntime instanceof QQAppInterface))
         {
-          a(((SmartDeviceProxyMgr)((QQAppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a());
-          localLightAppSettingInfo1 = (LightAppSettingInfo)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramDeviceInfo.productId));
+          a(((SmartDeviceProxyMgr)((QQAppInterface)localAppRuntime).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).d());
+          localLightAppSettingInfo1 = (LightAppSettingInfo)a.get(Integer.valueOf(paramDeviceInfo.productId));
         }
       }
     }
@@ -243,14 +227,14 @@ public class LightAppUtil
     {
       if (paramJSONArray.length() > 0)
       {
-        int i = 0;
-        while (i < paramJSONArray.length())
+        int i1 = 0;
+        while (i1 < paramJSONArray.length())
         {
-          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
+          JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i1);
           if (localJSONObject != null) {
             localHashMap.put(Integer.valueOf(localJSONObject.getInt("property_id")), localJSONObject.getString("property_val"));
           }
-          i += 1;
+          i1 += 1;
         }
       }
       return localHashMap;
@@ -259,41 +243,11 @@ public class LightAppUtil
     return localHashMap;
   }
   
-  public void a()
-  {
-    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject1 instanceof QQAppInterface))
-    {
-      localObject1 = ((SmartDeviceProxyMgr)((QQAppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a();
-      if ((localObject1 != null) && (localObject1.length > 0))
-      {
-        ArrayList localArrayList = new ArrayList();
-        if (SystemClock.elapsedRealtime() - jdField_a_of_type_Long > 15000L)
-        {
-          jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-          int j = localObject1.length;
-          int i = 0;
-          while (i < j)
-          {
-            Object localObject2 = localObject1[i];
-            if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localObject2.productId))) {
-              localArrayList.add(Integer.valueOf(localObject2.productId));
-            }
-            i += 1;
-          }
-          if (localArrayList.size() > 0) {
-            a(localArrayList, false);
-          }
-        }
-      }
-    }
-  }
-  
   public void a(DeviceInfo paramDeviceInfo, Bundle paramBundle, boolean paramBoolean)
   {
     if (paramDeviceInfo == null)
     {
-      paramDeviceInfo = this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener;
+      paramDeviceInfo = this.e;
       if (paramDeviceInfo != null) {
         paramDeviceInfo.a(false);
       }
@@ -305,31 +259,31 @@ public class LightAppUtil
     } else {
       bool = true;
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.d = paramBoolean;
+    this.i = true;
+    this.n = paramBoolean;
     Object localObject3 = a(paramDeviceInfo);
     if (localObject3 != null)
     {
-      if ((((LightAppSettingInfo)localObject3).e != 3) && (((LightAppSettingInfo)localObject3).e != 7) && (((LightAppSettingInfo)localObject3).e != 5) && (((LightAppSettingInfo)localObject3).e != 4) && (((LightAppSettingInfo)localObject3).e != 1) && (((LightAppSettingInfo)localObject3).e != 8) && (((LightAppSettingInfo)localObject3).e != 9))
+      if ((((LightAppSettingInfo)localObject3).n != 3) && (((LightAppSettingInfo)localObject3).n != 7) && (((LightAppSettingInfo)localObject3).n != 5) && (((LightAppSettingInfo)localObject3).n != 4) && (((LightAppSettingInfo)localObject3).n != 1) && (((LightAppSettingInfo)localObject3).n != 8) && (((LightAppSettingInfo)localObject3).n != 9))
       {
         if (QLog.isColorLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("bindType=");
-          ((StringBuilder)localObject1).append(((LightAppSettingInfo)localObject3).e);
+          ((StringBuilder)localObject1).append(((LightAppSettingInfo)localObject3).n);
           QLog.e("LightAppUtil", 2, ((StringBuilder)localObject1).toString());
         }
-        ToastUtil.a().a(2131691543);
+        ToastUtil.a().a(2131888505);
       }
       else
       {
-        if (((LightAppSettingInfo)localObject3).jdField_a_of_type_Int == 0)
+        if (((LightAppSettingInfo)localObject3).a == 0)
         {
-          int i = ((LightAppSettingInfo)localObject3).jdField_d_of_type_Int;
-          if (i != 2) {
-            if (i != 14) {
-              if (i != 16) {
-                if ((i != 17) && (TextUtils.isEmpty(((LightAppSettingInfo)localObject3).jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(((LightAppSettingInfo)localObject3).jdField_d_of_type_JavaLangString))) {
+          int i1 = ((LightAppSettingInfo)localObject3).h;
+          if (i1 != 2) {
+            if (i1 != 14) {
+              if (i1 != 16) {
+                if ((i1 != 17) && (TextUtils.isEmpty(((LightAppSettingInfo)localObject3).i)) && (TextUtils.isEmpty(((LightAppSettingInfo)localObject3).j))) {
                   break label368;
                 }
               }
@@ -346,18 +300,18 @@ public class LightAppUtil
             break;
             localObject1 = "com.tencent.device.qqwifi.WiFiStorageActivity";
             break;
-            if ((((LightAppSettingInfo)localObject3).jdField_a_of_type_JavaUtilArrayList != null) && (((LightAppSettingInfo)localObject3).jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(200031))))
+            if ((((LightAppSettingInfo)localObject3).e != null) && (((LightAppSettingInfo)localObject3).e.contains(Integer.valueOf(200031))))
             {
               localObject1 = "com.tencent.device.superav.ui.SuperVideoActivity";
               break;
             }
-          } while ((this.d) && (a()));
+          } while ((this.n) && (a()));
           localObject1 = "com.tencent.device.av.VideoActivity";
           break;
-          if (((LightAppSettingInfo)localObject3).jdField_a_of_type_Int != 1) {
+          if (((LightAppSettingInfo)localObject3).a != 1) {
             break label751;
           }
-        } while ((!TextUtils.isEmpty(((LightAppSettingInfo)localObject3).jdField_c_of_type_JavaLangString)) || (!TextUtils.isEmpty(((LightAppSettingInfo)localObject3).jdField_d_of_type_JavaLangString)));
+        } while ((!TextUtils.isEmpty(((LightAppSettingInfo)localObject3).i)) || (!TextUtils.isEmpty(((LightAppSettingInfo)localObject3).j)));
       }
       label368:
       Object localObject1 = null;
@@ -368,7 +322,7 @@ public class LightAppUtil
         paramDeviceInfo.setClassName("com.tencent.mobileqq", "com.tencent.biz.pubaccount.api.PublicAccountBrowser");
         paramDeviceInfo.putExtra("url", "https://qzs.qq.com/open/mobile/qq_download/index.html");
         paramDeviceInfo.putExtra("isPublicDevice", paramBoolean);
-        SmartDeviceReport.a(null, "Net_LiteApp_Setting", 0, 1, ((LightAppSettingInfo)localObject3).jdField_c_of_type_Int);
+        SmartDeviceReport.a(null, "Net_LiteApp_Setting", 0, 1, ((LightAppSettingInfo)localObject3).c);
       }
       else
       {
@@ -389,7 +343,7 @@ public class LightAppUtil
         ((Intent)localObject2).putExtra("pid", paramDeviceInfo.productId);
         ((Intent)localObject2).putExtra("device_info", paramDeviceInfo);
         ((Intent)localObject2).putExtra("isPublicDevice", paramBoolean);
-        if (this.d) {
+        if (this.n) {
           a((Intent)localObject2, (LightAppSettingInfo)localObject3);
         }
         if ((paramBundle != null) && (paramBundle.getBoolean("isFromBindSucc", false))) {
@@ -400,15 +354,15 @@ public class LightAppUtil
       }
       if (localObject1 == null)
       {
-        this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDeviceInfo);
+        this.d.startActivity(paramDeviceInfo);
       }
       else
       {
-        paramBundle = this.jdField_a_of_type_AndroidAppActivity;
+        paramBundle = this.d;
         if ((paramBundle instanceof PluginBaseActivity))
         {
           paramDeviceInfo.setClassName(paramBundle, (String)localObject1);
-          this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDeviceInfo);
+          this.d.startActivity(paramDeviceInfo);
         }
         else
         {
@@ -416,19 +370,19 @@ public class LightAppUtil
             paramDeviceInfo.putExtra("bFromChatActivity", true);
           }
           paramBundle = SmartDevicePluginLoader.a();
-          localObject2 = this.jdField_a_of_type_AndroidAppActivity;
-          localObject3 = this.jdField_a_of_type_MqqAppAppRuntime;
+          localObject2 = this.d;
+          localObject3 = this.g;
           paramBundle.a((Activity)localObject2, (AppRuntime)localObject3, ((AppRuntime)localObject3).getAccount(), paramDeviceInfo, (String)localObject1, -1, null, SmartDevicePluginProxyActivity.class);
         }
       }
-      paramDeviceInfo = this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener;
+      paramDeviceInfo = this.e;
       if (paramDeviceInfo != null)
       {
         paramDeviceInfo.a(true);
         return;
         label751:
-        ToastUtil.a().a(2131691547);
-        paramDeviceInfo = this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener;
+        ToastUtil.a().a(2131888509);
+        paramDeviceInfo = this.e;
         if (paramDeviceInfo != null) {
           paramDeviceInfo.a(false);
         }
@@ -436,29 +390,29 @@ public class LightAppUtil
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo == null)
+      if (this.l == null)
       {
-        if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidAppActivity))
+        if (!NetworkUtil.isNetworkAvailable(this.d))
         {
-          ToastUtil.a().a(2131691546);
-          paramDeviceInfo = this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener;
+          ToastUtil.a().a(2131888508);
+          paramDeviceInfo = this.e;
           if (paramDeviceInfo != null) {
             paramDeviceInfo.a(false);
           }
           return;
         }
-        this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo = paramDeviceInfo;
-        this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+        this.l = paramDeviceInfo;
+        this.m = paramBundle;
         paramBundle = new ArrayList();
         paramBundle.add(Integer.valueOf(paramDeviceInfo.productId));
         a(paramBundle, bool);
         return;
       }
-      ToastUtil.a().a(2131691545);
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      ToastUtil.a().a(2131888507);
+      if ((this.f != null) && (!this.d.isFinishing())) {
+        this.f.dismiss();
       }
-      paramDeviceInfo = this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener;
+      paramDeviceInfo = this.e;
       if (paramDeviceInfo != null) {
         paramDeviceInfo.a(false);
       }
@@ -467,14 +421,14 @@ public class LightAppUtil
   
   public void a(ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    b();
+    this.c = paramArrayList;
+    this.h = paramBoolean;
+    c();
   }
   
   public boolean a()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.d;
     boolean bool = false;
     if (localActivity == null) {
       return false;
@@ -500,43 +454,73 @@ public class LightAppUtil
     return bool;
   }
   
-  protected void b()
+  public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
     {
-      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      localObject1 = ((SmartDeviceProxyMgr)((QQAppInterface)localObject1).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).e();
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        ArrayList localArrayList = new ArrayList();
+        if (SystemClock.elapsedRealtime() - o > 15000L)
+        {
+          o = SystemClock.elapsedRealtime();
+          int i2 = localObject1.length;
+          int i1 = 0;
+          while (i1 < i2)
+          {
+            Object localObject2 = localObject1[i1];
+            if (!a.containsKey(Integer.valueOf(localObject2.productId))) {
+              localArrayList.add(Integer.valueOf(localObject2.productId));
+            }
+            i1 += 1;
+          }
+          if (localArrayList.size() > 0) {
+            a(localArrayList, false);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void c()
+  {
+    if (this.h)
+    {
+      localObject = this.d;
       if ((localObject != null) && (!((Activity)localObject).isFinishing()))
       {
-        localObject = this.jdField_a_of_type_AndroidAppActivity;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)localObject, ((Activity)localObject).getResources().getDimensionPixelSize(2131299168));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131691544);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        localObject = this.d;
+        this.f = new QQProgressDialog((Context)localObject, ((Activity)localObject).getResources().getDimensionPixelSize(2131299920));
+        this.f.c(2131888506);
+        this.f.show();
       }
       else
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.h = false;
       }
     }
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject = this.g;
     if (localObject == null)
     {
       LogUtility.d("LightAppUtil", "app == null when dologin");
-      localObject = this.jdField_a_of_type_ComTencentDeviceUtilsLightAppUtil$GetLightAppSettingListener;
+      localObject = this.e;
       if (localObject != null) {
         ((LightAppUtil.GetLightAppSettingListener)localObject).a(false);
       }
       return;
     }
-    this.jdField_a_of_type_JavaLangString = ((AppRuntime)localObject).getAccount();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ToastUtil.a().a(2131694648);
+    this.k = ((AppRuntime)localObject).getAccount();
+    if (TextUtils.isEmpty(this.k)) {
+      ToastUtil.a().a(2131892334);
     }
-    d();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.LightAppUtil
  * JD-Core Version:    0.7.0.1
  */

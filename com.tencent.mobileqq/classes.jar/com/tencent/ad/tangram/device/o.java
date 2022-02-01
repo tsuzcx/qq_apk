@@ -1,53 +1,28 @@
 package com.tencent.ad.tangram.device;
 
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.util.e;
 
 final class o
+  extends f
 {
-  private static final String TAG = "AdSIMCard";
-  private static String subscriberId;
-  
-  public static String getSubscriberId(Context paramContext, boolean paramBoolean)
+  protected int getEventId()
   {
-    if (!TextUtils.isEmpty(subscriberId)) {
-      return subscriberId;
-    }
-    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (paramContext != null))
-    {
-      paramContext = paramContext.getApplicationContext();
-      if (paramContext != null) {
-        try
-        {
-          paramContext = paramContext.getSystemService("phone");
-          if ((paramContext instanceof TelephonyManager))
-          {
-            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
-            if (paramContext != null)
-            {
-              paramContext = paramContext.getSubscriberId();
-              if (!TextUtils.isEmpty(paramContext)) {
-                subscriberId = paramContext;
-              }
-            }
-          }
-        }
-        catch (Throwable paramContext)
-        {
-          AdLog.i("AdSIMCard", "getSubscriberId", paramContext);
-        }
-      }
-    }
-    return subscriberId;
+    return 1119;
   }
   
-  public static String getSubscriberIdCache(Context paramContext)
+  protected String getId(Context paramContext, boolean paramBoolean)
   {
-    return subscriberId;
+    return c.getMeid(paramContext, paramBoolean);
+  }
+  
+  protected String getIdCache(Context paramContext)
+  {
+    return c.getMeidCache(paramContext);
+  }
+  
+  protected String getIdHash(String paramString)
+  {
+    return g.getDeviceIdMD5Digest(paramString);
   }
 }
 

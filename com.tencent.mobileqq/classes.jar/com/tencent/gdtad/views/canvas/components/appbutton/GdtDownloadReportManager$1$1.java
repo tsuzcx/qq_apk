@@ -12,11 +12,11 @@ class GdtDownloadReportManager$1$1
   
   public void run()
   {
-    Object localObject = GdtDownloadReportManager.a(GdtDownloadReportManager.a());
+    Object localObject = GdtDownloadReportManager.d(GdtDownloadReportManager.a());
     if (localObject == null)
     {
       GdtLog.d("GdtDownloadReportManager", "fetch sigh MD5 failed no appbtndata:");
-      GdtTraceReporter.a(GdtDownloadReportManager.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager$1.a), 284);
+      GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 284);
     }
     else
     {
@@ -24,25 +24,25 @@ class GdtDownloadReportManager$1$1
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
         GdtLog.b("GdtDownloadReportManager", "fetch appbtndata sigh MD5 failed");
-        GdtTraceReporter.a(GdtDownloadReportManager.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager$1.a), 284);
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 284);
       }
-      else if (((String)localObject).equals(this.jdField_a_of_type_JavaLangString))
+      else if (((String)localObject).equals(this.a))
       {
         GdtLog.b("GdtDownloadReportManager", "fetch sigh MD5 matched");
-        GdtTraceReporter.a(GdtDownloadReportManager.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager$1.a), 275);
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 275);
       }
       else
       {
         GdtLog.b("GdtDownloadReportManager", "fetch sigh MD5 not matched");
-        GdtTraceReporter.a(GdtDownloadReportManager.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager$1.a), 276);
+        GdtTraceReporter.a(GdtDownloadReportManager.c(this.c.a), 276);
       }
     }
-    GdtDownloadReportManager.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsAppbuttonGdtDownloadReportManager$1.a, this.b);
+    GdtDownloadReportManager.b(this.c.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtDownloadReportManager.1.1
  * JD-Core Version:    0.7.0.1
  */

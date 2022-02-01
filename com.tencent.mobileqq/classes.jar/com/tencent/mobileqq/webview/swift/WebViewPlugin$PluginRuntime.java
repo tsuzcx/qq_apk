@@ -24,11 +24,6 @@ public class WebViewPlugin$PluginRuntime
     }
   }
   
-  public Activity a()
-  {
-    return (Activity)this.c.get();
-  }
-  
   public CustomWebView a()
   {
     WeakReference localWeakReference = this.a;
@@ -38,12 +33,6 @@ public class WebViewPlugin$PluginRuntime
     return null;
   }
   
-  @Deprecated
-  public AppInterface a()
-  {
-    return (AppInterface)this.b.get();
-  }
-  
   public WebUiBaseInterface a(Activity paramActivity)
   {
     paramActivity = this.d;
@@ -51,29 +40,6 @@ public class WebViewPlugin$PluginRuntime
       return (WebUiBaseInterface)paramActivity.get();
     }
     return null;
-  }
-  
-  public WebViewProvider a()
-  {
-    WeakReference localWeakReference = this.e;
-    if (localWeakReference != null) {
-      return (WebViewProvider)localWeakReference.get();
-    }
-    return null;
-  }
-  
-  public WebUiUtils.WebViewProviderInterface a()
-  {
-    WeakReference localWeakReference = this.d;
-    if ((localWeakReference != null) && (localWeakReference.get() != null) && ((this.d.get() instanceof WebUiUtils.WebViewProviderInterface))) {
-      return (WebUiUtils.WebViewProviderInterface)this.d.get();
-    }
-    return null;
-  }
-  
-  public AppRuntime a()
-  {
-    return (AppRuntime)this.b.get();
   }
   
   public void a(WebUiBaseInterface paramWebUiBaseInterface)
@@ -91,10 +57,44 @@ public class WebViewPlugin$PluginRuntime
       this.d = new WeakReference(paramWebViewProvider);
     }
   }
+  
+  @Deprecated
+  public AppInterface b()
+  {
+    return (AppInterface)this.b.get();
+  }
+  
+  public AppRuntime c()
+  {
+    return (AppRuntime)this.b.get();
+  }
+  
+  public Activity d()
+  {
+    return (Activity)this.c.get();
+  }
+  
+  public WebUiUtils.WebViewProviderInterface e()
+  {
+    WeakReference localWeakReference = this.d;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && ((this.d.get() instanceof WebUiUtils.WebViewProviderInterface))) {
+      return (WebUiUtils.WebViewProviderInterface)this.d.get();
+    }
+    return null;
+  }
+  
+  public WebViewProvider f()
+  {
+    WeakReference localWeakReference = this.e;
+    if (localWeakReference != null) {
+      return (WebViewProvider)localWeakReference.get();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime
  * JD-Core Version:    0.7.0.1
  */

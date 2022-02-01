@@ -31,17 +31,17 @@ class ReceiptMessageDetailFragment$PttDownloadCallBack
       if (i != 0) {
         return;
       }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
+      ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.v(localReceiptMessageDetailFragment), null);
+      ReceiptMessageDetailFragment.r(localReceiptMessageDetailFragment).sendEmptyMessage(6);
       return;
     }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
+    ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment).getMultiMessageProxy().a(ReceiptMessageDetailFragment.v(localReceiptMessageDetailFragment), null);
+    ReceiptMessageDetailFragment.r(localReceiptMessageDetailFragment).sendEmptyMessage(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.PttDownloadCallBack
  * JD-Core Version:    0.7.0.1
  */

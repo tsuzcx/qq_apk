@@ -9,20 +9,20 @@ final class DanmuItemBean$1
   public DanmuItemBean a(Parcel paramParcel)
   {
     DanmuItemBean localDanmuItemBean = new DanmuItemBean();
-    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.d = paramParcel.readLong();
-    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
-    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localDanmuItemBean.a = paramParcel.readLong();
+    localDanmuItemBean.b = paramParcel.readLong();
+    localDanmuItemBean.f = paramParcel.readLong();
+    localDanmuItemBean.c = paramParcel.readLong();
+    localDanmuItemBean.d = paramParcel.readString();
+    localDanmuItemBean.e = paramParcel.readString();
     int i = paramParcel.readInt();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    localDanmuItemBean.jdField_a_of_type_Boolean = bool;
-    localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
+    localDanmuItemBean.g = bool;
+    localDanmuItemBean.h = paramParcel.readString();
+    localDanmuItemBean.i = paramParcel.readInt();
     return localDanmuItemBean;
   }
   
@@ -33,7 +33,7 @@ final class DanmuItemBean$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuItemBean.1
  * JD-Core Version:    0.7.0.1
  */

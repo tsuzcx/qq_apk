@@ -124,8 +124,8 @@ public class SonicClientImpl
       label153:
       if (localObject1 != null)
       {
-        if (!((SwiftBrowserStatistics)localObject1).t) {
-          if (SwiftBrowserStatistics.p) {
+        if (!((SwiftBrowserStatistics)localObject1).aH) {
+          if (SwiftBrowserStatistics.aD) {
             i = 1;
           } else {
             i = 0;
@@ -189,7 +189,7 @@ public class SonicClientImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicClientImpl
  * JD-Core Version:    0.7.0.1
  */

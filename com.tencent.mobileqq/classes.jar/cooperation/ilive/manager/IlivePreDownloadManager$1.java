@@ -10,9 +10,9 @@ class IlivePreDownloadManager$1
   
   public void run()
   {
-    IlivePluginDownloadManager.a().b();
+    IlivePluginDownloadManager.a().i();
     IlivePluginDownloadManager.a().a(this.this$0);
-    if (IlivePluginDownloadManager.a().b())
+    if (IlivePluginDownloadManager.a().k())
     {
       QLog.e("IlivePreDownloadManager", 1, "preloadPluginConfig plugin exist stop preload");
       return;
@@ -22,7 +22,7 @@ class IlivePreDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.manager.IlivePreDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

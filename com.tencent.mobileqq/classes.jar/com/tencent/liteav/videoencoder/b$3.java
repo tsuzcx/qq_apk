@@ -6,7 +6,7 @@ import java.util.LinkedList;
 class b$3
   implements Runnable
 {
-  b$3(b paramb, com.tencent.liteav.basic.c.b paramb1) {}
+  b$3(b paramb, com.tencent.liteav.basic.opengl.b paramb1) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ class b$3
       b.b(this.b).d();
       b.a(this.b, null);
     }
-    com.tencent.liteav.basic.c.b localb = this.a;
+    com.tencent.liteav.basic.opengl.b localb = this.a;
     if (localb != null) {
       localb.c();
     }
@@ -27,7 +27,7 @@ class b$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.b.3
  * JD-Core Version:    0.7.0.1
  */

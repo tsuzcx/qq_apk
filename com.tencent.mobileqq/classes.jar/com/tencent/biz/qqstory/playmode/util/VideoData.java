@@ -6,18 +6,18 @@ import java.util.List;
 public class VideoData
 {
   public int a;
-  public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
   public int b;
   public int c;
   public int d;
+  public List<StoryVideoItem> e;
+  public String f;
+  public boolean g;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mErrorCode:");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", mVideoTotalCount:");
@@ -25,17 +25,17 @@ public class VideoData
     localStringBuilder.append(", mFirstPlayIndex:");
     localStringBuilder.append(this.d);
     localStringBuilder.append(", mVideoList:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+    localStringBuilder.append(this.e.toString());
     localStringBuilder.append(", mFeedId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", mIsEnd:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.g);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.VideoData
  * JD-Core Version:    0.7.0.1
  */

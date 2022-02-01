@@ -12,8 +12,8 @@ class VideofeedsUserGuideController$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    paramAnimation = (ImageView)VideofeedsUserGuideController.a(this.a).findViewById(2131380312);
-    ImageView localImageView = (ImageView)VideofeedsUserGuideController.a(this.a).findViewById(2131380313);
+    paramAnimation = (ImageView)VideofeedsUserGuideController.c(this.a).findViewById(2131449242);
+    ImageView localImageView = (ImageView)VideofeedsUserGuideController.c(this.a).findViewById(2131449243);
     VideofeedsUserGuideController.a(this.a, localImageView, paramAnimation, 100L, 240L);
   }
   
@@ -23,7 +23,7 @@ class VideofeedsUserGuideController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideofeedsUserGuideController.3
  * JD-Core Version:    0.7.0.1
  */

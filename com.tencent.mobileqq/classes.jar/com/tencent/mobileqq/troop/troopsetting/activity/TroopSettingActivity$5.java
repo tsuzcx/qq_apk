@@ -16,13 +16,13 @@ class TroopSettingActivity$5
       QLog.w("Q.chatopttroop", 2, "-->preForward--fetch openid timeout");
     }
     TroopSettingActivity localTroopSettingActivity = this.this$0;
-    localTroopSettingActivity.n = true;
-    localTroopSettingActivity.n();
+    localTroopSettingActivity.aY = true;
+    localTroopSettingActivity.o();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.5
  * JD-Core Version:    0.7.0.1
  */

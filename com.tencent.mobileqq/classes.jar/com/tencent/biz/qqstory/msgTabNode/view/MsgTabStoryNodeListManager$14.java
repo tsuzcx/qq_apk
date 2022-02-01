@@ -13,14 +13,14 @@ class MsgTabStoryNodeListManager$14
   
   public void onClick(View paramView)
   {
-    this.a.a.dismiss();
+    this.a.v.dismiss();
     StoryReportor.a("msg_tab", "clk_tips", 0, 0, new String[] { "1", "", "", "" });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.14
  * JD-Core Version:    0.7.0.1
  */

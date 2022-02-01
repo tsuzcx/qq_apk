@@ -10,7 +10,7 @@ class WatchTogetherVideoDecodeHelper$4
   
   public void run()
   {
-    if (WatchTogetherVideoDecodeHelper.a(this.this$0) != null) {
+    if (WatchTogetherVideoDecodeHelper.d(this.this$0) != null) {
       QLog.d("WatchTogetherVideoDecodeHelper", 1, "should release lastest videoSink");
     }
     WatchTogetherVideoDecodeHelper.a(this.this$0, this.a);

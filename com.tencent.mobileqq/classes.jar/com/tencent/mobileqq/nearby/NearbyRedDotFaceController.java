@@ -11,40 +11,40 @@ import java.util.ArrayList;
 
 public class NearbyRedDotFaceController
 {
-  protected int a;
-  protected Drawable a;
   protected Handler a;
-  protected ImageView a;
-  protected ArrayList<String> a;
-  protected int b;
+  protected ImageView b;
+  protected ArrayList<String> c;
+  protected int d;
+  protected int e;
+  protected Drawable f;
   
   protected void a(String paramString)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.f;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
-    int i = this.b;
+    int i = this.e;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
     ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "nearby_reddot_face";
     paramString = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-    i = this.b;
+    i = this.e;
     paramString.setTag(URLDrawableDecodeHandler.a(i, i));
-    paramString.setDecodeHandler(URLDrawableDecodeHandler.a);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)
+    paramString.setDecodeHandler(URLDrawableDecodeHandler.b);
+    if (this.c.size() != 1)
     {
-      localObject = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetImageView, "alpha", new float[] { 1.0F, 0.1F });
+      localObject = ObjectAnimator.ofFloat(this.b, "alpha", new float[] { 1.0F, 0.1F });
       ((ObjectAnimator)localObject).addListener(new NearbyRedDotFaceController.1(this, paramString));
       ((ObjectAnimator)localObject).setDuration(1500L).start();
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    this.b.setImageDrawable(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyRedDotFaceController
  * JD-Core Version:    0.7.0.1
  */

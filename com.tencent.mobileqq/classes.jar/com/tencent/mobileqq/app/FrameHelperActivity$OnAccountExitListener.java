@@ -22,7 +22,7 @@ final class FrameHelperActivity$OnAccountExitListener
     if (localFrameHelperActivity == null) {
       return;
     }
-    QBaseActivity localQBaseActivity = localFrameHelperActivity.a();
+    QBaseActivity localQBaseActivity = localFrameHelperActivity.C();
     if (localQBaseActivity != null)
     {
       if (localQBaseActivity.getAppRuntime() == null) {
@@ -32,7 +32,7 @@ final class FrameHelperActivity$OnAccountExitListener
       if (PwdSetUtil.a(localQQAppInterface, localQBaseActivity)) {
         return;
       }
-      if ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())) {
+      if ((FrameHelperActivity.j(localFrameHelperActivity) != null) && (FrameHelperActivity.j(localFrameHelperActivity).isShowing())) {
         return;
       }
       FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localQBaseActivity);
@@ -42,7 +42,7 @@ final class FrameHelperActivity$OnAccountExitListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.OnAccountExitListener
  * JD-Core Version:    0.7.0.1
  */

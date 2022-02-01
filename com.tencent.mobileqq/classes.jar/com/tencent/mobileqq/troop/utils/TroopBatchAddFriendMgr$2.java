@@ -39,7 +39,7 @@ class TroopBatchAddFriendMgr$2
     if (!Scene.a(paramInt)) {
       return;
     }
-    Long localLong = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    Long localLong = (Long)this.a.b.remove(paramString);
     TroopBatchAddFriendMgr.a(this.a, paramString, false, paramLong, 0);
     if (QLog.isColorLevel())
     {
@@ -55,7 +55,7 @@ class TroopBatchAddFriendMgr$2
   
   protected void onTroopBatchGetMemberRemark(boolean paramBoolean1, String paramString, long paramLong, int paramInt, boolean paramBoolean2)
   {
-    Object localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    Object localObject = (Long)this.a.b.get(paramString);
     if (localObject != null)
     {
       if (((Long)localObject).longValue() == 0L) {
@@ -69,11 +69,11 @@ class TroopBatchAddFriendMgr$2
       }
       if (paramLong == ((Long)localObject).longValue())
       {
-        localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+        localObject = (Long)this.a.b.remove(paramString);
         if (paramBoolean1)
         {
-          localObject = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-          String str = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_remarks", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+          localObject = PreferenceManager.getDefaultSharedPreferences(this.a.a.getApp());
+          String str = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_remarks", this.a.a.getCurrentAccountUin(), paramString });
           ((SharedPreferences)localObject).edit().putLong(str, paramLong).apply();
         }
         TroopBatchAddFriendMgr.a(this.a, paramString, true, paramLong, 5);
@@ -83,7 +83,7 @@ class TroopBatchAddFriendMgr$2
   
   protected void onTroopBatchReqMemberCmnFrds(boolean paramBoolean1, String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean2, boolean paramBoolean3, HashMap<String, Integer> paramHashMap, List<String> paramList)
   {
-    paramString2 = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    paramString2 = (Long)this.a.b.get(paramString1);
     if (paramString2 != null)
     {
       if (paramString2.longValue() == 0L) {
@@ -98,7 +98,7 @@ class TroopBatchAddFriendMgr$2
       if (paramLong == paramString2.longValue())
       {
         if ((paramBoolean2) || (!paramBoolean1)) {
-          paramString2 = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+          paramString2 = (Long)this.a.b.remove(paramString1);
         }
         if (!paramBoolean1)
         {
@@ -107,8 +107,8 @@ class TroopBatchAddFriendMgr$2
         }
         if ((paramBoolean1) && (paramBoolean2))
         {
-          paramString2 = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-          paramHashMap = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_cmnfrds", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1 });
+          paramString2 = PreferenceManager.getDefaultSharedPreferences(this.a.a.getApp());
+          paramHashMap = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_cmnfrds", this.a.a.getCurrentAccountUin(), paramString1 });
           paramString2.edit().putLong(paramHashMap, paramLong).apply();
           TroopBatchAddFriendMgr.a(this.a, paramString1, true, paramLong, 3);
         }
@@ -123,7 +123,7 @@ class TroopBatchAddFriendMgr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr.2
  * JD-Core Version:    0.7.0.1
  */

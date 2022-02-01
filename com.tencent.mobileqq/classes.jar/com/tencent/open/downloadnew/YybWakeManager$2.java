@@ -16,13 +16,13 @@ class YybWakeManager$2
     if (paramIntent == null) {
       return;
     }
-    YybWakeManager.a(this.a).removeMessages(100);
+    YybWakeManager.b(this.a).removeMessages(100);
     LogUtility.c("YybWakeManager", "BROADCAST_YYB_ALIVE_CALLBACK received, stop wake yyb");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybWakeManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -52,8 +52,8 @@ public class DragLinearLayout
   
   private void initScreenConfig()
   {
-    this.screenWidth = ViewUtils.a();
-    this.screenHeight = ViewUtils.b();
+    this.screenWidth = ViewUtils.getScreenWidth();
+    this.screenHeight = ViewUtils.getScreenHeight();
   }
   
   public int getStatusBarHeight()
@@ -155,7 +155,7 @@ public class DragLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.widget.DragLinearLayout
  * JD-Core Version:    0.7.0.1
  */

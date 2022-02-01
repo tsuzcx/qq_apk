@@ -27,24 +27,14 @@ public final class NFBReportObj
     return "nfb";
   }
   
-  @Nullable
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    ReportExKt.a(localJSONObject, "nfbActionID", this.a);
-    ReportExKt.a(localJSONObject, "nfbActionTxt", this.b);
-    ReportExKt.a(localJSONObject, "nfbRemark", this.c);
-    return localJSONObject;
-  }
-  
   public void a(@NotNull AdReportData paramAdReportData)
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
     if (AdReportUtil.a(paramAdReportData) != ReportAction.NFB) {
       return;
     }
-    Object localObject1 = paramAdReportData.a();
-    Object localObject2 = paramAdReportData.a();
+    Object localObject1 = paramAdReportData.j();
+    Object localObject2 = paramAdReportData.o();
     if (localObject2 != null)
     {
       this.a = "101";
@@ -73,23 +63,33 @@ public final class NFBReportObj
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("");
-        ((StringBuilder)localObject1).append(paramAdReportData.a());
+        ((StringBuilder)localObject1).append(paramAdReportData.i());
         this.a = ((StringBuilder)localObject1).toString();
         return;
       }
-      this.a = paramAdReportData.a();
-      this.b = paramAdReportData.b();
+      this.a = paramAdReportData.j();
+      this.b = paramAdReportData.k();
     }
   }
   
-  public boolean a()
+  @Nullable
+  public JSONObject b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    ReportExKt.a(localJSONObject, "nfbActionID", this.a);
+    ReportExKt.a(localJSONObject, "nfbActionTxt", this.b);
+    ReportExKt.a(localJSONObject, "nfbRemark", this.c);
+    return localJSONObject;
+  }
+  
+  public boolean c()
   {
     return this.a != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.NFBReportObj
  * JD-Core Version:    0.7.0.1
  */

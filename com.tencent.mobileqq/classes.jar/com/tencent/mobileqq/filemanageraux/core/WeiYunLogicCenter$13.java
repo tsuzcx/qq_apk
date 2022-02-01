@@ -28,7 +28,7 @@ class WeiYunLogicCenter$13
       paramPwdVerifyMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramPwdVerifyMsgRsp.toString());
     }
-    WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
+    WeiYunLogicCenter.c(this.b).getFileManagerNotifyCenter().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
   }
   
   public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
@@ -36,16 +36,16 @@ class WeiYunLogicCenter$13
     if (QLog.isColorLevel()) {
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).savePwdMd5(WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getApplication().getApplicationContext(), this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.a)) {
+      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).savePwdMd5(WeiYunLogicCenter.c(this.b).getApplication().getApplicationContext(), this.a);
     }
-    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).setPwdVerified(WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getApplication().getApplicationContext(), true);
-    WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxCoreWeiYunLogicCenter).getFileManagerNotifyCenter().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).setPwdVerified(WeiYunLogicCenter.c(this.b).getApplication().getApplicationContext(), true);
+    WeiYunLogicCenter.c(this.b).getFileManagerNotifyCenter().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.13
  * JD-Core Version:    0.7.0.1
  */

@@ -179,7 +179,7 @@ public class MessageForTroopReward
   public String getSummaryMsg()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131706621));
+    localStringBuilder.append(HardCodeUtil.a(2131904472));
     localStringBuilder.append(this.rewardContent);
     return localStringBuilder.toString();
   }
@@ -362,7 +362,7 @@ public class MessageForTroopReward
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopReward
  * JD-Core Version:    0.7.0.1
  */

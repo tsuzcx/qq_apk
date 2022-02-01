@@ -14,69 +14,43 @@ public class SearchResultItem
   implements Parcelable
 {
   public static final Parcelable.Creator<SearchResultItem> CREATOR = new SearchResultItem.1();
-  public byte a;
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public byte b;
-  public String b;
-  public byte[] b;
-  public byte c = 0;
+  public long a = 0L;
+  public int b = 0;
+  public String c = "";
+  public String d = "";
+  public byte e = 0;
+  public byte f = 0;
+  public byte g = 0;
+  public byte[] h = null;
+  public byte[] i = null;
   
-  public SearchResultItem()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_b_of_type_Byte = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-  }
+  public SearchResultItem() {}
   
   public SearchResultItem(AccountSearchPb.record paramrecord)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_b_of_type_Byte = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
     if (paramrecord != null)
     {
-      this.jdField_a_of_type_Long = paramrecord.uin.get();
-      this.jdField_a_of_type_Int = paramrecord.source.get();
-      this.jdField_a_of_type_JavaLangString = paramrecord.name.get();
-      this.jdField_b_of_type_JavaLangString = paramrecord.mobile.get();
-      this.jdField_a_of_type_Byte = ((byte)(int)(paramrecord.relation.get() & 1L));
-      this.jdField_b_of_type_Byte = ((byte)(int)(paramrecord.relation.get() & 0x2));
-      this.jdField_b_of_type_ArrayOfByte = paramrecord.bytes_token.get().toByteArray();
+      this.a = paramrecord.uin.get();
+      this.b = paramrecord.source.get();
+      this.c = paramrecord.name.get();
+      this.d = paramrecord.mobile.get();
+      this.e = ((byte)(int)(paramrecord.relation.get() & 1L));
+      this.f = ((byte)(int)(paramrecord.relation.get() & 0x2));
+      this.i = paramrecord.bytes_token.get().toByteArray();
     }
   }
   
   protected SearchResultItem(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Byte = 0;
-    this.jdField_b_of_type_Byte = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Byte = paramParcel.readByte();
-    this.jdField_b_of_type_Byte = paramParcel.readByte();
-    this.c = paramParcel.readByte();
-    this.jdField_a_of_type_ArrayOfByte = paramParcel.createByteArray();
-    this.jdField_b_of_type_ArrayOfByte = paramParcel.createByteArray();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readByte();
+    this.f = paramParcel.readByte();
+    this.g = paramParcel.readByte();
+    this.h = paramParcel.createByteArray();
+    this.i = paramParcel.createByteArray();
   }
   
   public int describeContents()
@@ -86,20 +60,20 @@ public class SearchResultItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeByte(this.jdField_a_of_type_Byte);
-    paramParcel.writeByte(this.jdField_b_of_type_Byte);
-    paramParcel.writeByte(this.c);
-    paramParcel.writeByteArray(this.jdField_a_of_type_ArrayOfByte);
-    paramParcel.writeByteArray(this.jdField_b_of_type_ArrayOfByte);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeByte(this.e);
+    paramParcel.writeByte(this.f);
+    paramParcel.writeByte(this.g);
+    paramParcel.writeByteArray(this.h);
+    paramParcel.writeByteArray(this.i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.SearchResultItem
  * JD-Core Version:    0.7.0.1
  */

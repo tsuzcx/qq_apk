@@ -24,24 +24,24 @@ class TroopWithCommonFriendsFragment$8
           if (i != 1018) {
             return;
           }
-          QQToast.a(this.a.a, this.a.getString(2131718739), 0).b(this.a.a());
+          QQToast.makeText(this.a.d, this.a.getString(2131916242), 0).show(this.a.a());
           return;
         }
-        QQToast.a(this.a.a, this.a.getString(2131718752), 0).b(this.a.a());
+        QQToast.makeText(this.a.d, this.a.getString(2131916258), 0).show(this.a.a());
         return;
       }
-      paramMessage = this.a.a.getResources().getString(2131719418);
-      QQToast.a(this.a.a, 1, paramMessage, 0).b(this.a.a());
+      paramMessage = this.a.d.getResources().getString(2131916977);
+      QQToast.makeText(this.a.d, 1, paramMessage, 0).show(this.a.a());
       return;
     }
-    if (TroopWithCommonFriendsFragment.a(this.a) != null) {
-      TroopWithCommonFriendsFragment.a(this.a).notifyDataSetChanged();
+    if (TroopWithCommonFriendsFragment.c(this.a) != null) {
+      TroopWithCommonFriendsFragment.c(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.8
  * JD-Core Version:    0.7.0.1
  */

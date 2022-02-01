@@ -45,13 +45,13 @@ class EcshopCacheTool$2
         localObject = (qqshop.SQQSHPAccoutRelation)paramBundle.get(paramInt);
         String str = String.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).puin.get());
         long l = ((qqshop.SQQSHPAccoutRelation)localObject).binduin.get();
-        this.a.c.put(str, Integer.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).distance.get()));
-        this.a.d.put(str, String.valueOf(l));
+        this.a.d.put(str, Integer.valueOf(((qqshop.SQQSHPAccoutRelation)localObject).distance.get()));
+        this.a.e.put(str, String.valueOf(l));
         paramInt += 1;
       }
-      if ((this.a.a != null) && (this.a.a.a != null) && (this.a.a.b == 1))
+      if ((this.a.h != null) && (this.a.h.k != null) && (this.a.h.l == 1))
       {
-        this.a.a.a.notifyDataSetChanged();
+        this.a.h.k.notifyDataSetChanged();
         return;
         if ("SQQShopFolderSvc.GetFolderInfo".equals(localObject))
         {
@@ -64,17 +64,17 @@ class EcshopCacheTool$2
             if ((paramBundle.recmdflag.has()) && (paramBundle.recmdflag.get() == 1))
             {
               paramBundle = paramBundle.recmdurl.get();
-              if ((!TextUtils.isEmpty(paramBundle)) && (this.a.a != null))
+              if ((!TextUtils.isEmpty(paramBundle)) && (this.a.h != null))
               {
                 localObject = new StringBuilder();
                 ((StringBuilder)localObject).append("newusrrecmd url:");
                 ((StringBuilder)localObject).append(paramBundle);
                 QLog.i("EcshopCacheTool", 2, ((StringBuilder)localObject).toString());
-                localObject = new Intent(this.a.a.getQBaseActivity(), QQBrowserActivity.class);
+                localObject = new Intent(this.a.h.getQBaseActivity(), QQBrowserActivity.class);
                 ((Intent)localObject).putExtra("url", paramBundle);
                 ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-                this.a.a.startActivity((Intent)localObject);
-                this.a.a.getQBaseActivity().overridePendingTransition(2130771993, 0);
+                this.a.h.startActivity((Intent)localObject);
+                this.a.h.getQBaseActivity().overridePendingTransition(2130771996, 0);
                 ReportController.b(null, "CliOper", "", "", "Shop_newuser", "Pv_shopnewuserpage", 0, 0, "", "", "", "");
               }
             }
@@ -88,7 +88,7 @@ class EcshopCacheTool$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool.2
  * JD-Core Version:    0.7.0.1
  */

@@ -43,69 +43,69 @@ public class C2CShortcutBarStoreView
   extends DialogFromBottom
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  private float jdField_a_of_type_Float;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  C2CShortcutBarObserver jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarObserver = new C2CShortcutBarStoreView.3(this);
-  private C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView$C2CShortcutBarStoreAdapter;
-  private IC2CShortcutBarStoreUIEvent jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreIC2CShortcutBarStoreUIEvent;
-  private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private String jdField_a_of_type_JavaLangString;
-  private List<C2CShortcutAppInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c = true;
+  C2CShortcutBarObserver a = new C2CShortcutBarStoreView.3(this);
+  private QQAppInterface b;
+  private ViewGroup c;
+  private View d;
+  private ImageView e;
+  private LinearLayout f;
+  private RecyclerView g;
+  private FormSwitchItem h;
+  private C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter i;
+  private List<C2CShortcutAppInfo> j;
+  private IC2CShortcutBarStoreUIEvent k;
+  private String l;
+  private boolean m;
+  private boolean n;
+  private float o;
+  private float p;
+  private boolean q = true;
+  private List<String> r = new ArrayList();
   
   protected C2CShortcutBarStoreView(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean1, boolean paramBoolean2, List<C2CShortcutAppInfo> paramList, IC2CShortcutBarStoreUIEvent paramIC2CShortcutBarStoreUIEvent)
   {
-    super(paramContext, 2131755059);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreIC2CShortcutBarStoreUIEvent = paramIC2CShortcutBarStoreUIEvent;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramContext, 2131951677);
+    this.b = paramQQAppInterface;
+    this.k = paramIC2CShortcutBarStoreUIEvent;
+    this.j = new ArrayList();
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.j.addAll(paramList);
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.l = paramString;
+    this.m = paramBoolean1;
+    this.n = paramBoolean2;
   }
   
   private int a(int paramInt, LinearLayout paramLinearLayout, List<C2CShortcutAppInfo.Label> paramList)
   {
     paramLinearLayout.removeAllViews();
-    int m = ViewUtils.b(12.0F);
-    int n = ViewUtils.b(1.0F);
-    int i1 = ViewUtils.b(8.0F);
-    int i2 = ViewUtils.b(6.0F);
+    int i4 = ViewUtils.dpToPx(12.0F);
+    int i5 = ViewUtils.dpToPx(1.0F);
+    int i6 = ViewUtils.dpToPx(8.0F);
+    int i7 = ViewUtils.dpToPx(6.0F);
     Object localObject = new Paint();
-    float f = 12;
-    ((Paint)localObject).setTextSize(ViewUtils.b(f));
+    float f1 = 12;
+    ((Paint)localObject).setTextSize(ViewUtils.dpToPx(f1));
     ArrayList localArrayList = new ArrayList(paramList.size());
-    int i3 = paramList.size();
-    int k = 0;
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < i3)
+    int i8 = paramList.size();
+    int i3 = 0;
+    int i2 = 0;
+    int i1 = paramInt;
+    paramInt = i2;
+    while (paramInt < i8)
     {
       C2CShortcutAppInfo.Label localLabel = (C2CShortcutAppInfo.Label)paramList.get(paramInt);
-      j = i;
+      i2 = i1;
       if (localLabel != null)
       {
-        j = i;
-        if (!TextUtils.isEmpty(localLabel.jdField_a_of_type_JavaLangString))
+        i2 = i1;
+        if (!TextUtils.isEmpty(localLabel.a))
         {
-          j = (int)(((Paint)localObject).measureText(localLabel.jdField_a_of_type_JavaLangString) + i1 * 2);
-          if (i >= j + i2)
+          i2 = (int)(((Paint)localObject).measureText(localLabel.a) + i6 * 2);
+          if (i1 >= i2 + i7)
           {
             localArrayList.add(localLabel);
-            j = i - j - i2;
+            i2 = i1 - i2 - i7;
           }
           else
           {
@@ -118,21 +118,21 @@ public class C2CShortcutBarStoreView
         }
       }
       paramInt += 1;
-      i = j;
+      i1 = i2;
     }
-    i = localArrayList.size();
-    paramInt = k;
-    while (paramInt < i)
+    i1 = localArrayList.size();
+    paramInt = i3;
+    while (paramInt < i1)
     {
       localObject = (C2CShortcutAppInfo.Label)localArrayList.get(paramInt);
       paramList = new LabelTextView(getContext());
-      paramList.setParam(Color.parseColor(((C2CShortcutAppInfo.Label)localObject).b), Color.parseColor(((C2CShortcutAppInfo.Label)localObject).c), m);
-      paramList.setTextSize(f);
-      paramList.setText(((C2CShortcutAppInfo.Label)localObject).jdField_a_of_type_JavaLangString);
-      paramList.setPadding(i1, n, i1, n);
+      paramList.setParam(Color.parseColor(((C2CShortcutAppInfo.Label)localObject).b), Color.parseColor(((C2CShortcutAppInfo.Label)localObject).c), i4);
+      paramList.setTextSize(f1);
+      paramList.setText(((C2CShortcutAppInfo.Label)localObject).a);
+      paramList.setPadding(i6, i5, i6, i5);
       localObject = new LinearLayout.LayoutParams(-2, -2);
       if (paramInt != 0) {
-        ((LinearLayout.LayoutParams)localObject).leftMargin = i2;
+        ((LinearLayout.LayoutParams)localObject).leftMargin = i7;
       }
       paramLinearLayout.addView(paramList, (ViewGroup.LayoutParams)localObject);
       paramInt += 1;
@@ -150,7 +150,7 @@ public class C2CShortcutBarStoreView
     for (;;)
     {
       int[] arrayOfInt;
-      int i;
+      int i1;
       try
       {
         arrayOfInt = new int[2];
@@ -164,29 +164,29 @@ public class C2CShortcutBarStoreView
       }
       catch (Exception paramRecyclerView)
       {
-        int j;
+        int i2;
         StringBuilder localStringBuilder;
         paramRecyclerView.printStackTrace();
       }
-      if (i <= arrayOfInt[1])
+      if (i1 <= arrayOfInt[1])
       {
-        if ((this.jdField_a_of_type_JavaUtilList != null) && (i < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaUtilList.get(i) != null) && (!TextUtils.isEmpty(((C2CShortcutAppInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString)) && (!this.jdField_b_of_type_JavaUtilList.contains(((C2CShortcutAppInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString)))
+        if ((this.j != null) && (i1 < this.j.size()) && (this.j.get(i1) != null) && (!TextUtils.isEmpty(((C2CShortcutAppInfo)this.j.get(i1)).a)) && (!this.r.contains(((C2CShortcutAppInfo)this.j.get(i1)).a)))
         {
-          this.jdField_b_of_type_JavaUtilList.add(((C2CShortcutAppInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString);
-          j = C2CShortcutBarManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_JavaLangString);
-          paramRecyclerView = ((C2CShortcutAppInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString;
+          this.r.add(((C2CShortcutAppInfo)this.j.get(i1)).a);
+          i2 = C2CShortcutBarManager.a(this.b).a(this.l);
+          paramRecyclerView = ((C2CShortcutAppInfo)this.j.get(i1)).a;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(i);
+          localStringBuilder.append(i1);
           localStringBuilder.append("");
-          ReportController.b(null, "dc00898", "", "", "0X800B32C", "0X800B32C", j, 0, paramRecyclerView, localStringBuilder.toString(), "", "");
+          ReportController.b(null, "dc00898", "", "", "0X800B32C", "0X800B32C", i2, 0, paramRecyclerView, localStringBuilder.toString(), "", "");
         }
-        i += 1;
+        i1 += 1;
       }
       else
       {
         return;
         label282:
-        i = arrayOfInt[0];
+        i1 = arrayOfInt[0];
       }
     }
   }
@@ -194,36 +194,36 @@ public class C2CShortcutBarStoreView
   public void dismiss()
   {
     super.dismiss();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.b;
     if (localQQAppInterface != null)
     {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+      localQQAppInterface.removeObserver(this.a);
+      this.b = null;
     }
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-    if ((localObject != null) && (((FormSwitchItem)localObject).a() == paramCompoundButton))
+    Object localObject = this.h;
+    if ((localObject != null) && (((FormSwitchItem)localObject).getSwitch() == paramCompoundButton))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreIC2CShortcutBarStoreUIEvent;
+      localObject = this.k;
       if (localObject != null) {
-        ((IC2CShortcutBarStoreUIEvent)localObject).a(paramBoolean, this.jdField_a_of_type_JavaLangString);
+        ((IC2CShortcutBarStoreUIEvent)localObject).a(paramBoolean, this.l);
       }
-      ReportController.b(null, "dc00898", "", "", "0X800B32F", "0X800B32F", C2CShortcutBarManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_JavaLangString), 0, "", "", "", "");
+      ReportController.b(null, "dc00898", "", "", "0X800B32F", "0X800B32F", C2CShortcutBarManager.a(this.b).a(this.l), 0, "", "", "", "");
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i != 2131364216)
+    int i1 = paramView.getId();
+    if (i1 != 2131430219)
     {
-      if (i == 2131364224)
+      if (i1 == 2131430227)
       {
-        IC2CShortcutBarStoreUIEvent localIC2CShortcutBarStoreUIEvent = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreIC2CShortcutBarStoreUIEvent;
+        IC2CShortcutBarStoreUIEvent localIC2CShortcutBarStoreUIEvent = this.k;
         if (localIC2CShortcutBarStoreUIEvent != null) {
           localIC2CShortcutBarStoreUIEvent.c();
         }
@@ -241,87 +241,87 @@ public class C2CShortcutBarStoreView
     paramBundle = getWindow().getAttributes();
     paramBundle.height = -1;
     paramBundle.gravity = 81;
-    int i = DisplayHelper.getScreenWidth(getContext());
-    int j = DisplayHelper.getScreenHeight(getContext());
-    if (i >= j) {
-      i = j;
+    int i1 = DisplayHelper.getScreenWidth(getContext());
+    int i2 = DisplayHelper.getScreenHeight(getContext());
+    if (i1 >= i2) {
+      i1 = i2;
     }
-    paramBundle.width = i;
+    paramBundle.width = i1;
     getWindow().setAttributes(paramBundle);
     getWindow().setFlags(1024, 1024);
     getWindow().addFlags(67108864);
     boolean bool1 = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131558727, null));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364216);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364225));
-    paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    paramBundle.topMargin = (ImmersiveUtils.getStatusBarHeight(getContext()) + getContext().getResources().getDimensionPixelSize(2131299168));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramBundle);
+    this.c = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2131624347, null));
+    this.d = this.c.findViewById(2131430219);
+    this.d.setOnClickListener(this);
+    this.f = ((LinearLayout)this.c.findViewById(2131430228));
+    paramBundle = (RelativeLayout.LayoutParams)this.f.getLayoutParams();
+    paramBundle.topMargin = (ImmersiveUtils.getStatusBarHeight(getContext()) + getContext().getResources().getDimensionPixelSize(2131299920));
+    this.f.setLayoutParams(paramBundle);
     if (bool1) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(getContext().getResources().getDrawable(2130838930));
+      this.f.setBackgroundDrawable(getContext().getResources().getDrawable(2130839084));
     } else {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(getContext().getResources().getDrawable(2130838929));
+      this.f.setBackgroundDrawable(getContext().getResources().getDrawable(2130839083));
     }
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364224));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(new C2CShortcutBarStoreView.1(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364226));
+    this.e = ((ImageView)this.c.findViewById(2131430227));
+    this.e.setOnClickListener(this);
+    this.e.setOnTouchListener(new C2CShortcutBarStoreView.1(this));
+    this.g = ((RecyclerView)this.c.findViewById(2131430229));
     paramBundle = new LinearLayoutManager(getContext(), 1, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView$C2CShortcutBarStoreAdapter = new C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter(this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView$C2CShortcutBarStoreAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new C2CShortcutBarStoreView.2(this));
-    View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364217);
-    boolean bool2 = this.jdField_a_of_type_Boolean;
-    j = 8;
+    this.g.setLayoutManager(paramBundle);
+    this.i = new C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter(this);
+    this.g.setAdapter(this.i);
+    this.g.addOnScrollListener(new C2CShortcutBarStoreView.2(this));
+    View localView = this.c.findViewById(2131430220);
+    boolean bool2 = this.m;
+    i2 = 8;
     if (bool2) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 8;
+      i1 = 8;
     }
-    localView.setVisibility(i);
+    localView.setVisibility(i1);
     if (bool1) {
       paramBundle = "#3D3D41";
     } else {
       paramBundle = "#EBEDF5";
     }
     localView.setBackgroundColor(Color.parseColor(paramBundle));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364227));
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-    i = j;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 0;
+    this.h = ((FormSwitchItem)this.c.findViewById(2131430230));
+    paramBundle = this.h;
+    i1 = i2;
+    if (this.m) {
+      i1 = 0;
     }
-    paramBundle.setVisibility(i);
-    if (this.jdField_a_of_type_Boolean)
+    paramBundle.setVisibility(i1);
+    if (this.m)
     {
       if (bool1) {
         paramBundle = "#282828";
       } else {
         paramBundle = "#FFFFFF";
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setBackgroundColor(Color.parseColor(paramBundle));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnClickListener(this);
-      ReportController.b(null, "dc00898", "", "", "0X800B32E", "0X800B32E", C2CShortcutBarManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_JavaLangString), 0, "", "", "", "");
+      this.h.setBackgroundColor(Color.parseColor(paramBundle));
+      this.h.setChecked(this.n);
+      this.h.setOnCheckedChangeListener(this);
+      this.h.setOnClickListener(this);
+      ReportController.b(null, "dc00898", "", "", "0X800B32E", "0X800B32E", C2CShortcutBarManager.a(this.b).a(this.l), 0, "", "", "", "");
     }
-    setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
+    setContentView(this.c);
   }
   
   public void show()
   {
     super.show();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.b;
     if (localQQAppInterface != null) {
-      localQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarObserver);
+      localQQAppInterface.addObserver(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,33 +21,33 @@ import mqq.os.MqqHandler;
 
 public class DownloadInstContextMgr
 {
-  private UniformDownloaderListenerMgr jdField_a_of_type_ComTencentMobileqqUniformdownloadDataUniformDownloaderListenerMgr;
-  private Map<String, DownloadInstContextMgr.DownloadInstContext> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, DownloadInstContextMgr.DownloadInstContext> a = new HashMap();
+  private UniformDownloaderListenerMgr b;
   
   public DownloadInstContextMgr(UniformDownloaderListenerMgr paramUniformDownloaderListenerMgr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUniformdownloadDataUniformDownloaderListenerMgr = paramUniformDownloaderListenerMgr;
+    this.b = paramUniformDownloaderListenerMgr;
   }
   
   private void f()
   {
     ArrayList localArrayList = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+      if (this.a.size() > 0)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        Iterator localIterator = this.a.entrySet().iterator();
         while (localIterator.hasNext())
         {
           DownloadInstContextMgr.DownloadInstContext localDownloadInstContext = (DownloadInstContextMgr.DownloadInstContext)((Map.Entry)localIterator.next()).getValue();
-          if ((localDownloadInstContext != null) && (localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) && (localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.b()) && (2 == localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.a())) {
+          if ((localDownloadInstContext != null) && (localDownloadInstContext.e != null) && (localDownloadInstContext.e.j()) && (2 == localDownloadInstContext.e.b())) {
             localArrayList.add(localDownloadInstContext);
           }
         }
       }
       ??? = localArrayList.iterator();
       while (((Iterator)???).hasNext()) {
-        ((DownloadInstContextMgr.DownloadInstContext)((Iterator)???).next()).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.f();
+        ((DownloadInstContextMgr.DownloadInstContext)((Iterator)???).next()).e.h();
       }
       b();
       return;
@@ -55,30 +55,6 @@ public class DownloadInstContextMgr
     for (;;)
     {
       throw localObject2;
-    }
-  }
-  
-  public int a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      Object localObject = (DownloadInstContextMgr.DownloadInstContext)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      if (localObject != null)
-      {
-        IUniformDownloaderListener localIUniformDownloaderListener = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadDataUniformDownloaderListenerMgr.a(paramString);
-        if ((((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) && (localIUniformDownloaderListener != null)) {
-          ((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.a(localIUniformDownloaderListener);
-        }
-      }
-      int i = this.jdField_a_of_type_JavaUtilMap.size();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[UniformDL] delDownloadInst.. total[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilMap.size());
-      ((StringBuilder)localObject).append("] del it. url[");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("DownloadInstContextMgr", 1, ((StringBuilder)localObject).toString());
-      return i;
     }
   }
   
@@ -93,11 +69,11 @@ public class DownloadInstContextMgr
       localStringBuilder.append(" nofiyid:");
       localStringBuilder.append(i);
       QLog.i("DownloadInstContextMgr", 1, localStringBuilder.toString());
-      if (-1 == c(paramString))
+      if (-1 == d(paramString))
       {
         UniformDownloadUtil.a(paramString, new DownloadInstContextMgr.3(this));
         UniformDownloadNfn.a().a(i, (Bundle)paramBundle.clone());
-        e(null);
+        f(null);
       }
       return 0;
     }
@@ -107,9 +83,9 @@ public class DownloadInstContextMgr
   
   public DownloadInstContextMgr.DownloadInstContext a(String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      paramString = (DownloadInstContextMgr.DownloadInstContext)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      paramString = (DownloadInstContextMgr.DownloadInstContext)this.a.get(paramString);
       return paramString;
     }
   }
@@ -123,23 +99,23 @@ public class DownloadInstContextMgr
   public boolean a(String paramString, DownloadInstContextMgr.DownloadInstContext paramDownloadInstContext)
   {
     if ((paramString != null) && (paramDownloadInstContext != null)) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.a)
       {
-        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+        if (this.a.containsKey(paramString))
         {
           paramDownloadInstContext = new StringBuilder();
           paramDownloadInstContext.append("[UniformDL] url[");
           paramDownloadInstContext.append(paramString);
           paramDownloadInstContext.append("] exsited! total[");
-          paramDownloadInstContext.append(this.jdField_a_of_type_JavaUtilMap.size());
+          paramDownloadInstContext.append(this.a.size());
           paramDownloadInstContext.append("]");
           QLog.i("DownloadInstContextMgr", 1, paramDownloadInstContext.toString());
           return false;
         }
-        this.jdField_a_of_type_JavaUtilMap.put(paramString, paramDownloadInstContext);
+        this.a.put(paramString, paramDownloadInstContext);
         paramDownloadInstContext = new StringBuilder();
         paramDownloadInstContext.append("[UniformDL] addDownloadInst.. total[");
-        paramDownloadInstContext.append(this.jdField_a_of_type_JavaUtilMap.size());
+        paramDownloadInstContext.append(this.a.size());
         paramDownloadInstContext.append("] add it. url[");
         paramDownloadInstContext.append(paramString);
         paramDownloadInstContext.append("]");
@@ -153,6 +129,32 @@ public class DownloadInstContextMgr
   
   public int b(String paramString)
   {
+    synchronized (this.a)
+    {
+      Object localObject = (DownloadInstContextMgr.DownloadInstContext)this.a.remove(paramString);
+      if (localObject != null)
+      {
+        IUniformDownloaderListener localIUniformDownloaderListener = this.b.a(paramString);
+        if ((((DownloadInstContextMgr.DownloadInstContext)localObject).e != null) && (localIUniformDownloaderListener != null)) {
+          ((DownloadInstContextMgr.DownloadInstContext)localObject).e.a(localIUniformDownloaderListener);
+        }
+      }
+      int i = this.a.size();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL] delDownloadInst.. total[");
+      ((StringBuilder)localObject).append(this.a.size());
+      ((StringBuilder)localObject).append("] del it. url[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("DownloadInstContextMgr", 1, ((StringBuilder)localObject).toString());
+      return i;
+    }
+  }
+  
+  public void b() {}
+  
+  public int c(String paramString)
+  {
     Object localObject = a(paramString);
     if (localObject == null)
     {
@@ -162,62 +164,42 @@ public class DownloadInstContextMgr
       QLog.w("DownloadInstContextMgr", 1, ((StringBuilder)localObject).toString());
       return -1;
     }
-    if (((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null)
+    if (((DownloadInstContextMgr.DownloadInstContext)localObject).e != null)
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadDataUniformDownloaderListenerMgr.a(paramString);
+      paramString = this.b.a(paramString);
       if (paramString != null) {
-        ((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.a(paramString, false);
+        ((DownloadInstContextMgr.DownloadInstContext)localObject).e.a(paramString, false);
       }
-      ((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.d();
+      ((DownloadInstContextMgr.DownloadInstContext)localObject).e.f();
     }
-    e(null);
+    f(null);
     return 0;
-  }
-  
-  public void b() {}
-  
-  public int c(String paramString)
-  {
-    Object localObject = a(paramString);
-    if (localObject != null)
-    {
-      if (((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) {
-        ((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.c();
-      }
-      e(null);
-      return 0;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[UniformDL] inPPauseDownload.. inst not exsited. url:");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.e("DownloadInstContextMgr", 1, ((StringBuilder)localObject).toString());
-    return -1;
   }
   
   public void c()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
+      if (this.a.size() == 0) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      Iterator localIterator = this.a.entrySet().iterator();
       while (localIterator.hasNext())
       {
         DownloadInstContextMgr.DownloadInstContext localDownloadInstContext = (DownloadInstContextMgr.DownloadInstContext)((Map.Entry)localIterator.next()).getValue();
-        if ((localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) && (localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.b()))
+        if ((localDownloadInstContext.e != null) && (localDownloadInstContext.e.j()))
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("[UniformDL] >>>onQQProcessExit. stop download:url:");
-          ((StringBuilder)localObject2).append(localDownloadInstContext.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(localDownloadInstContext.d);
           QLog.i("DownloadInstContextMgr", 1, ((StringBuilder)localObject2).toString());
         }
         Object localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("_notify_param_Url", localDownloadInstContext.jdField_a_of_type_JavaLangString);
-        UniformDownloadNfn.a().c(localDownloadInstContext.b, (Bundle)localObject2);
+        ((Bundle)localObject2).putString("_notify_param_Url", localDownloadInstContext.d);
+        UniformDownloadNfn.a().c(localDownloadInstContext.f, (Bundle)localObject2);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[UniformDL] >>>onQQProcessExit. cancel notification:");
-        ((StringBuilder)localObject2).append(localDownloadInstContext.b);
+        ((StringBuilder)localObject2).append(localDownloadInstContext.f);
         QLog.i("DownloadInstContextMgr", 1, ((StringBuilder)localObject2).toString());
       }
       return;
@@ -233,13 +215,14 @@ public class DownloadInstContextMgr
     Object localObject = a(paramString);
     if (localObject != null)
     {
-      if (((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) {
-        ((DownloadInstContextMgr.DownloadInstContext)localObject).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.e();
+      if (((DownloadInstContextMgr.DownloadInstContext)localObject).e != null) {
+        ((DownloadInstContextMgr.DownloadInstContext)localObject).e.e();
       }
+      f(null);
       return 0;
     }
     localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[UniformDL] stopDownloaderByUrl.. inst not exsited. url:");
+    ((StringBuilder)localObject).append("[UniformDL] inPPauseDownload.. inst not exsited. url:");
     ((StringBuilder)localObject).append(paramString);
     QLog.e("DownloadInstContextMgr", 1, ((StringBuilder)localObject).toString());
     return -1;
@@ -248,16 +231,16 @@ public class DownloadInstContextMgr
   public void d()
   {
     Object localObject2 = new ArrayList();
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
       Object localObject4;
-      if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
+      if (this.a.size() > 0)
       {
-        localObject4 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        localObject4 = this.a.entrySet().iterator();
         while (((Iterator)localObject4).hasNext())
         {
           DownloadInstContextMgr.DownloadInstContext localDownloadInstContext = (DownloadInstContextMgr.DownloadInstContext)((Map.Entry)((Iterator)localObject4).next()).getValue();
-          if ((localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) && (8 == localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.g()) && (2 == localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.a())) {
+          if ((localDownloadInstContext.e != null) && (8 == localDownloadInstContext.e.i()) && (2 == localDownloadInstContext.e.b())) {
             ((List)localObject2).add(localDownloadInstContext);
           }
         }
@@ -268,10 +251,10 @@ public class DownloadInstContextMgr
         localObject2 = (DownloadInstContextMgr.DownloadInstContext)((Iterator)???).next();
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append("[UniformDL] >>> resumeRuningGenDownloadOfOldApp, url:[");
-        ((StringBuilder)localObject4).append(((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject4).append(((DownloadInstContextMgr.DownloadInstContext)localObject2).d);
         ((StringBuilder)localObject4).append("]");
         QLog.w("DownloadInstContextMgr", 1, ((StringBuilder)localObject4).toString());
-        ((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.b();
+        ((DownloadInstContextMgr.DownloadInstContext)localObject2).e.d();
       }
       return;
     }
@@ -283,8 +266,30 @@ public class DownloadInstContextMgr
   
   public int e(String paramString)
   {
+    Object localObject = a(paramString);
+    if (localObject != null)
+    {
+      if (((DownloadInstContextMgr.DownloadInstContext)localObject).e != null) {
+        ((DownloadInstContextMgr.DownloadInstContext)localObject).e.g();
+      }
+      return 0;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL] stopDownloaderByUrl.. inst not exsited. url:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.e("DownloadInstContextMgr", 1, ((StringBuilder)localObject).toString());
+    return -1;
+  }
+  
+  public void e()
+  {
+    ThreadManager.getSubThreadHandler().post(new DownloadInstContextMgr.2(this));
+  }
+  
+  public int f(String paramString)
+  {
     int n;
-    if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (!QQFileManagerUtil.a())) {
+    if ((NetworkUtil.isNetSupport(BaseApplication.getContext())) && (!QQFileManagerUtil.h())) {
       n = 2;
     } else {
       n = 1;
@@ -295,14 +300,14 @@ public class DownloadInstContextMgr
     QLog.i("DownloadInstContextMgr", 1, ((StringBuilder)???).toString());
     Object localObject2 = new ArrayList();
     int i;
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    synchronized (this.a)
     {
-      i = this.jdField_a_of_type_JavaUtilMap.size();
+      i = this.a.size();
       int m = 0;
       int k = 0;
       if (i > 0)
       {
-        Object localObject3 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+        Object localObject3 = this.a.entrySet().iterator();
         for (int j = 0;; j = m)
         {
           m = k;
@@ -313,11 +318,11 @@ public class DownloadInstContextMgr
           DownloadInstContextMgr.DownloadInstContext localDownloadInstContext = (DownloadInstContextMgr.DownloadInstContext)((Map.Entry)((Iterator)localObject3).next()).getValue();
           i = k;
           m = j;
-          if (localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null)
+          if (localDownloadInstContext.e != null)
           {
             i = k;
             m = j;
-            if (localDownloadInstContext.jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.b())
+            if (localDownloadInstContext.e.j())
             {
               k += 1;
               i = k;
@@ -326,7 +331,7 @@ public class DownloadInstContextMgr
               {
                 i = k;
                 m = j;
-                if (paramString.equalsIgnoreCase(localDownloadInstContext.jdField_a_of_type_JavaLangString))
+                if (paramString.equalsIgnoreCase(localDownloadInstContext.d))
                 {
                   StringBuilder localStringBuilder = new StringBuilder();
                   localStringBuilder.append("[UniformDL] startWaitingDownloaderForMaxCount.. download is runing. traceUrl:");
@@ -351,13 +356,13 @@ public class DownloadInstContextMgr
               break;
             }
             localObject2 = (DownloadInstContextMgr.DownloadInstContext)((Iterator)???).next();
-            if ((((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader != null) && (((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.c()))
+            if ((((DownloadInstContextMgr.DownloadInstContext)localObject2).e != null) && (((DownloadInstContextMgr.DownloadInstContext)localObject2).e.k()))
             {
               if (m == n)
               {
                 paramString = new StringBuilder();
                 paramString.append("[UniformDL] startWaitingDownloaderForMaxCount.. total[");
-                paramString.append(this.jdField_a_of_type_JavaUtilMap.size());
+                paramString.append(this.a.size());
                 paramString.append("] the task of downloading is overload,other need waiting... 1");
                 QLog.i("DownloadInstContextMgr", 1, paramString.toString());
                 j = i;
@@ -365,16 +370,16 @@ public class DownloadInstContextMgr
               }
               localObject3 = new StringBuilder();
               ((StringBuilder)localObject3).append("[UniformDL] >>> Happy. start a download task, url:[");
-              ((StringBuilder)localObject3).append(((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_JavaLangString);
+              ((StringBuilder)localObject3).append(((DownloadInstContextMgr.DownloadInstContext)localObject2).d);
               ((StringBuilder)localObject3).append("]");
               QLog.i("DownloadInstContextMgr", 1, ((StringBuilder)localObject3).toString());
               j = m + 1;
-              ((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_ComTencentMobileqqUniformdownloadDownloaderUniformDownloader.b();
+              ((DownloadInstContextMgr.DownloadInstContext)localObject2).e.d();
               m = j;
               if (paramString != null)
               {
                 m = j;
-                if (paramString.equalsIgnoreCase(((DownloadInstContextMgr.DownloadInstContext)localObject2).jdField_a_of_type_JavaLangString))
+                if (paramString.equalsIgnoreCase(((DownloadInstContextMgr.DownloadInstContext)localObject2).d))
                 {
                   localObject2 = new StringBuilder();
                   ((StringBuilder)localObject2).append("[UniformDL] startWaitingDownloaderForMaxCount.. download is started. traceUrl:");
@@ -389,7 +394,7 @@ public class DownloadInstContextMgr
         }
         paramString = new StringBuilder();
         paramString.append("[UniformDL] startWaitingDownloaderForMaxCount.. total[");
-        paramString.append(this.jdField_a_of_type_JavaUtilMap.size());
+        paramString.append(this.a.size());
         paramString.append("] the task of downloading is overload,other need waiting... 2");
         QLog.i("DownloadInstContextMgr", 1, paramString.toString());
         j = i;
@@ -398,15 +403,10 @@ public class DownloadInstContextMgr
       }
     }
   }
-  
-  public void e()
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadInstContextMgr.2(this));
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.data.DownloadInstContextMgr
  * JD-Core Version:    0.7.0.1
  */

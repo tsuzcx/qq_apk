@@ -23,20 +23,20 @@ import java.util.Map;
 public class WSVerticalItemBottomCollectionController
   extends AbsWsVerticalUIGroup
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  protected WSVerticalPageFragment a;
-  private String jdField_a_of_type_JavaLangString;
-  private View jdField_b_of_type_AndroidViewView;
-  private String jdField_b_of_type_JavaLangString;
-  private int d = -1;
-  private int e = -1;
+  protected WSVerticalPageFragment g;
+  private View h;
+  private TextView i;
+  private stSimpleMetaFeed j;
+  private String k;
+  private String l;
+  private int m = -1;
+  private int n = -1;
   
   public WSVerticalItemBottomCollectionController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
     if (paramWSVerticalVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      this.g = paramWSVerticalVideoHolder.d;
     }
   }
   
@@ -45,164 +45,164 @@ public class WSVerticalItemBottomCollectionController
     paramString = WeishiUtils.b(paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundColor(WSFeedUtils.b(2131165336));
+      this.h.setBackgroundColor(WSFeedUtils.g(2131165578));
       return;
     }
-    this.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor(paramString));
+    this.h.setBackgroundColor(Color.parseColor(paramString));
   }
   
-  private boolean b()
+  private void p()
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-    return (localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.feedBarInfo != null) && (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.switchOpen == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.text));
-  }
-  
-  private boolean c()
-  {
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    return (localView != null) && (localView.getVisibility() == 0) && (!a());
-  }
-  
-  private void g()
-  {
-    stFeedBarInfo localstFeedBarInfo = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo;
+    stFeedBarInfo localstFeedBarInfo = this.j.feedBarInfo;
     if (localstFeedBarInfo == null) {
       return;
     }
-    Map localMap = ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b();
+    Map localMap = ((WSVerticalPageContract.Presenter)this.g.aO_()).n();
     String str;
-    if (a()) {
+    if (m()) {
       str = "1";
     } else {
       str = "0";
     }
     localMap.put("bar_status", str);
-    WSCollectionJumpUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, localstFeedBarInfo.jump, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.c(), localMap);
+    WSCollectionJumpUtil.a(this.g, this.j, localstFeedBarInfo.jump, this.g.m(), localMap);
   }
   
-  private void h()
+  private void q()
   {
-    Map localMap = ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b();
+    Map localMap = ((WSVerticalPageContract.Presenter)this.g.aO_()).n();
     String str;
-    if (a()) {
+    if (m()) {
       str = "1";
     } else {
       str = "0";
     }
     localMap.put("bar_status", str);
-    WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, localMap);
+    WSVerticalBeaconReport.a(this.g.k(), this.g.l(), this.j, localMap);
+  }
+  
+  private boolean r()
+  {
+    stSimpleMetaFeed localstSimpleMetaFeed = this.j;
+    return (localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.feedBarInfo != null) && (this.j.feedBarInfo.switchOpen == 1) && (!TextUtils.isEmpty(this.j.feedBarInfo.text));
+  }
+  
+  private boolean s()
+  {
+    View localView = this.h;
+    return (localView != null) && (localView.getVisibility() == 0) && (!m());
   }
   
   protected void a()
   {
-    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
+    WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)c();
     if (localWSVerticalItemData != null) {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+      this.j = localWSVerticalItemData.b();
     }
-  }
-  
-  public boolean a()
-  {
-    return (a() != null) && (((WSVerticalItemData)a()).c());
-  }
-  
-  protected int b()
-  {
-    return 2131560033;
   }
   
   protected void b()
   {
-    if (b())
+    if (r())
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.text);
-      this.d = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.changeTime;
-      this.e = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.progressPercentage;
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.beginColor;
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.feedBarInfo.endColor;
-      if (a())
+      this.h.setVisibility(0);
+      this.i.setText(this.j.feedBarInfo.text);
+      this.m = this.j.feedBarInfo.changeTime;
+      this.n = this.j.feedBarInfo.progressPercentage;
+      this.k = this.j.feedBarInfo.beginColor;
+      this.l = this.j.feedBarInfo.endColor;
+      if (m())
       {
-        a(this.jdField_b_of_type_JavaLangString);
+        a(this.l);
         return;
       }
-      a(this.jdField_a_of_type_JavaLangString);
+      a(this.k);
       return;
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
-  public int c()
+  protected void d(int paramInt)
   {
-    int i = this.d;
-    if (i == -1) {
-      return 2000;
-    }
-    return i * 1000;
-  }
-  
-  protected void c() {}
-  
-  protected void c(int paramInt)
-  {
-    if (b()) {
-      h();
+    if (r()) {
+      q();
     }
   }
   
-  public int d()
+  protected void e(int paramInt) {}
+  
+  protected void f() {}
+  
+  protected int i()
   {
-    int j = this.e;
-    int i = j;
-    if (j == -1) {
-      i = 20;
-    }
-    return i;
+    return 2131626077;
   }
   
-  protected void d(int paramInt) {}
-  
-  protected void e()
+  protected void j()
   {
-    this.jdField_b_of_type_AndroidViewView = a(2131380447);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new WSVerticalItemBottomCollectionController.1(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380449));
+    this.h = c(2131449399);
+    this.h.setOnClickListener(new WSVerticalItemBottomCollectionController.1(this));
+    this.i = ((TextView)c(2131449401));
   }
   
-  public void f()
+  public void l()
   {
-    if (!c())
+    if (!s())
     {
       WSLog.d("AbsWsUIGroup", "fail to meet the requirement of playing collection animation");
       return;
     }
-    if (a() != null) {
-      ((WSVerticalItemData)a()).c(true);
+    if (c() != null) {
+      ((WSVerticalItemData)c()).c(true);
     }
-    Object localObject = WeishiUtils.b(this.jdField_a_of_type_JavaLangString);
-    String str = WeishiUtils.b(this.jdField_b_of_type_JavaLangString);
-    int i;
+    Object localObject = WeishiUtils.b(this.k);
+    String str = WeishiUtils.b(this.l);
+    int i1;
     if (WeishiUIUtil.a((String)localObject)) {
-      i = Color.parseColor((String)localObject);
+      i1 = Color.parseColor((String)localObject);
     } else {
-      i = -2147483648;
+      i1 = -2147483648;
     }
-    int j;
+    int i2;
     if (WeishiUIUtil.a(str)) {
-      j = Color.parseColor(str);
+      i2 = Color.parseColor(str);
     } else {
-      j = -2139470081;
+      i2 = -2139470081;
     }
-    localObject = ObjectAnimator.ofInt(this.jdField_b_of_type_AndroidViewView, "backgroundColor", new int[] { i, j });
+    localObject = ObjectAnimator.ofInt(this.h, "backgroundColor", new int[] { i1, i2 });
     ((ObjectAnimator)localObject).addListener(new WSVerticalItemBottomCollectionController.2(this));
     ((ObjectAnimator)localObject).setDuration(500L);
     ((ObjectAnimator)localObject).setEvaluator(new ArgbEvaluator());
     ((ObjectAnimator)localObject).start();
   }
+  
+  public boolean m()
+  {
+    return (c() != null) && (((WSVerticalItemData)c()).d());
+  }
+  
+  public int n()
+  {
+    int i1 = this.m;
+    if (i1 == -1) {
+      return 2000;
+    }
+    return i1 * 1000;
+  }
+  
+  public int o()
+  {
+    int i2 = this.n;
+    int i1 = i2;
+    if (i2 == -1) {
+      i1 = 20;
+    }
+    return i1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomCollectionController
  * JD-Core Version:    0.7.0.1
  */

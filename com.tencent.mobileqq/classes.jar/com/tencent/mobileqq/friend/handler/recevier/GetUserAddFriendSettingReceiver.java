@@ -50,7 +50,7 @@ public class GetUserAddFriendSettingReceiver
       paramToServiceMsg.putLong("query_friend_uin", paramGetUserAddFriendSettingResp.queryuin);
       paramToServiceMsg.putStringArrayList("user_question", paramGetUserAddFriendSettingResp.vecStrUserQuestion);
       paramToServiceMsg.putBoolean("contact_bothway", paramGetUserAddFriendSettingResp.contact_bothway_friend);
-      ((FriendHandler)a()).notifyUI(12, true, paramToServiceMsg);
+      ((FriendHandler)c()).notifyUI(12, true, paramToServiceMsg);
       return;
     }
     if (QLog.isColorLevel())
@@ -66,12 +66,12 @@ public class GetUserAddFriendSettingReceiver
       localStringBuilder.append(i);
       QLog.d("GetUserAddFriendSettingReceiver", 2, localStringBuilder.toString());
     }
-    ((FriendHandler)a()).notifyUI(12, false, paramToServiceMsg);
+    ((FriendHandler)c()).notifyUI(12, false, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.GetUserAddFriendSettingReceiver
  * JD-Core Version:    0.7.0.1
  */

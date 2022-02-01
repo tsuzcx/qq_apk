@@ -18,31 +18,50 @@ public class HookDexZipFile
   extends QZipFile
 {
   protected File a;
-  private HashMap<String, ZipEntry> a;
-  protected ZipFile a;
-  protected boolean a;
+  protected ZipFile b;
+  protected boolean c;
+  private HashMap<String, ZipEntry> d;
   
   public HookDexZipFile(File paramFile1, File paramFile2, ZipFile paramZipFile)
   {
     super(paramFile1);
-    this.jdField_a_of_type_JavaIoFile = paramFile2;
-    this.jdField_a_of_type_JavaUtilZipZipFile = paramZipFile;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.a = paramFile2;
+    this.b = paramZipFile;
+    this.d = new HashMap();
   }
   
-  public void a()
+  public boolean a()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.c;
+      if (bool) {
+        return false;
+      }
+      if (this.b != null)
+      {
+        this.b.close();
+        this.b = null;
+      }
+      this.c = true;
+      return true;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      boolean bool = this.c;
       if (bool) {
         return;
       }
       try
       {
-        Object localObject1 = this.jdField_a_of_type_JavaUtilZipZipFile.getClass().getDeclaredField("entries");
+        Object localObject1 = this.b.getClass().getDeclaredField("entries");
         ((Field)localObject1).setAccessible(true);
-        localObject1 = ((LinkedHashMap)((Field)localObject1).get(this.jdField_a_of_type_JavaUtilZipZipFile)).entrySet().iterator();
+        localObject1 = ((LinkedHashMap)((Field)localObject1).get(this.b)).entrySet().iterator();
         while (((Iterator)localObject1).hasNext()) {
           if (!((String)((Map.Entry)((Iterator)localObject1).next()).getKey()).endsWith(".so")) {
             ((Iterator)localObject1).remove();
@@ -66,52 +85,33 @@ public class HookDexZipFile
     }
   }
   
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      if (bool) {
-        return false;
-      }
-      if (this.jdField_a_of_type_JavaUtilZipZipFile != null)
-      {
-        this.jdField_a_of_type_JavaUtilZipZipFile.close();
-        this.jdField_a_of_type_JavaUtilZipZipFile = null;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return true;
-    }
-    finally {}
-  }
-  
   public void close()
   {
     super.close();
-    ZipFile localZipFile = this.jdField_a_of_type_JavaUtilZipZipFile;
+    ZipFile localZipFile = this.b;
     if (localZipFile != null) {
       localZipFile.close();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.d.clear();
   }
   
   public Enumeration<? extends ZipEntry> entries()
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.c;
       if (bool) {
         try
         {
-          this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
-          this.jdField_a_of_type_Boolean = false;
+          this.b = new QZipFile(this.a);
+          this.c = false;
         }
         catch (Exception localException)
         {
           localException.printStackTrace();
         }
       }
-      Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilZipZipFile.entries();
+      Enumeration localEnumeration = this.b.entries();
       return localEnumeration;
     }
     finally {}
@@ -122,27 +122,27 @@ public class HookDexZipFile
     label59:
     try
     {
-      localZipEntry = (ZipEntry)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      localZipEntry = (ZipEntry)this.d.get(paramString);
       if (localZipEntry != null) {
         return localZipEntry;
       }
-      if (this.jdField_a_of_type_Boolean) {
-        MemoryClearManager.a(paramString, MemoryClearManager.l);
+      if (this.c) {
+        MemoryClearManager.a(paramString, MemoryClearManager.u);
       }
     }
     finally {}
     try
     {
-      this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
-      this.jdField_a_of_type_Boolean = false;
+      this.b = new QZipFile(this.a);
+      this.c = false;
     }
     catch (IOException paramString)
     {
       break label59;
     }
     return null;
-    ZipEntry localZipEntry = this.jdField_a_of_type_JavaUtilZipZipFile.getEntry(paramString);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localZipEntry);
+    ZipEntry localZipEntry = this.b.getEntry(paramString);
+    this.d.put(paramString, localZipEntry);
     return localZipEntry;
   }
   
@@ -150,12 +150,12 @@ public class HookDexZipFile
   {
     try
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
-        this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
-        this.jdField_a_of_type_Boolean = false;
+        this.b = new QZipFile(this.a);
+        this.c = false;
       }
-      paramZipEntry = this.jdField_a_of_type_JavaUtilZipZipFile.getInputStream(paramZipEntry);
+      paramZipEntry = this.b.getInputStream(paramZipEntry);
       return paramZipEntry;
     }
     finally {}
@@ -163,11 +163,11 @@ public class HookDexZipFile
   
   public String getName()
   {
-    if (this.jdField_a_of_type_Boolean) {}
+    if (this.c) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
-      this.jdField_a_of_type_Boolean = false;
+      this.b = new QZipFile(this.a);
+      this.c = false;
     }
     catch (IOException localIOException)
     {
@@ -175,7 +175,7 @@ public class HookDexZipFile
       break label30;
     }
     return null;
-    return this.jdField_a_of_type_JavaUtilZipZipFile.getName();
+    return this.b.getName();
   }
   
   public int size()
@@ -183,27 +183,27 @@ public class HookDexZipFile
     label34:
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.c;
       if (!bool) {}
     }
     finally {}
     try
     {
-      this.jdField_a_of_type_JavaUtilZipZipFile = new QZipFile(this.jdField_a_of_type_JavaIoFile);
-      this.jdField_a_of_type_Boolean = false;
+      this.b = new QZipFile(this.a);
+      this.c = false;
     }
     catch (IOException localIOException)
     {
       break label34;
     }
     return 0;
-    int i = this.jdField_a_of_type_JavaUtilZipZipFile.size();
+    int i = this.b.size();
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.clearmemory.HookDexZipFile
  * JD-Core Version:    0.7.0.1
  */

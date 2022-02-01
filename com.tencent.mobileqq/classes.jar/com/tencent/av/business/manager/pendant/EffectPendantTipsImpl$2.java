@@ -12,7 +12,7 @@ class EffectPendantTipsImpl$2
   {
     try
     {
-      String str = this.this$0.a(EffectPendantTipsImpl.a(this.this$0), this.a);
+      String str = this.this$0.a(EffectPendantTipsImpl.b(this.this$0), this.a);
       if (!TextUtils.isEmpty(str))
       {
         TipsUtil.a(EffectPendantTipsImpl.a(this.this$0), 1016, str);

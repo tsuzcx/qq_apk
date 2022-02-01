@@ -33,7 +33,7 @@ class H264GiftView$4
     }
     paramString = paramBitmap;
     if (paramBitmap == null) {
-      paramString = BitmapFactory.decodeResource(this.this$0.getResources(), 2130840463);
+      paramString = BitmapFactory.decodeResource(this.this$0.getResources(), 2130841225);
     }
     H264GiftView.access$900(this.this$0, this.val$giftInfo, paramString);
   }
@@ -44,7 +44,7 @@ class H264GiftView$4
       return;
     }
     paramString1 = this.this$0;
-    H264GiftView.access$900(paramString1, this.val$giftInfo, BitmapFactory.decodeResource(paramString1.getResources(), 2130840463));
+    H264GiftView.access$900(paramString1, this.val$giftInfo, BitmapFactory.decodeResource(paramString1.getResources(), 2130841225));
     H264GiftView.access$100(this.this$0).getLogger().e("H264GiftShowView|GiftAnimation", "head fetch fail", new Object[0]);
   }
   
@@ -52,7 +52,7 @@ class H264GiftView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.datastruct.showview.H264GiftView.4
  * JD-Core Version:    0.7.0.1
  */

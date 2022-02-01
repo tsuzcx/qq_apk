@@ -6,8 +6,8 @@ import java.util.List;
 
 public abstract class ImageSource
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<Filter> jdField_a_of_type_JavaUtilList;
+  private String a;
+  private List<Filter> b;
   
   public ImageSource()
   {
@@ -15,9 +15,9 @@ public abstract class ImageSource
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append("-");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    Log.d(this.jdField_a_of_type_JavaLangString, "ImageSource: ");
+    this.a = localStringBuilder.toString();
+    this.b = new LinkedList();
+    Log.d(this.a, "ImageSource: ");
   }
 }
 

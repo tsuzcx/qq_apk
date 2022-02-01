@@ -12,16 +12,16 @@ class DataReportSettingFragment$1
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     if (paramBoolean) {
-      DataReportViewerFloatViewHelper.a().c();
-    } else {
       DataReportViewerFloatViewHelper.a().d();
+    } else {
+      DataReportViewerFloatViewHelper.a().e();
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

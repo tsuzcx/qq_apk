@@ -23,47 +23,39 @@ import java.util.concurrent.atomic.AtomicReference;
 public class AudioCapture
   extends Observable
 {
-  public static int a = 160768;
-  public static int b = 4;
-  public static boolean d = true;
-  long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  public AtomicReference<SVHwEncoder> a;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
-  long jdField_b_of_type_Long;
-  public AtomicReference<AudioDataCache> b;
-  boolean jdField_b_of_type_Boolean = false;
-  byte[] jdField_b_of_type_ArrayOfByte = null;
-  public int c;
-  boolean c;
-  public int d = 0;
-  int e;
-  public volatile boolean e;
-  int jdField_f_of_type_Int = 0;
-  private boolean jdField_f_of_type_Boolean = false;
-  int jdField_g_of_type_Int = 0;
-  private boolean jdField_g_of_type_Boolean = false;
-  int jdField_h_of_type_Int = 0;
-  private boolean jdField_h_of_type_Boolean = false;
-  public volatile int i;
-  private boolean i;
+  public static int b = 160768;
+  public static int c = 4;
+  public static boolean r = true;
+  private boolean A = false;
+  private boolean B = false;
+  Context d;
+  AudioRecord e;
+  public int f = 0;
+  public int g = 0;
+  byte[] h = null;
+  int i = 0;
+  int j = 0;
+  byte[] k = null;
+  int l = 0;
+  int m = 0;
+  Object n = new Object();
+  volatile boolean o = false;
+  boolean p = false;
+  boolean q = false;
+  public volatile boolean s = true;
+  public volatile int t = 0;
+  public AtomicReference<SVHwEncoder> u = new AtomicReference(null);
+  public AtomicReference<AudioDataCache> v = new AtomicReference(null);
+  long w;
+  long x;
+  private boolean y = false;
+  private boolean z = false;
   
   public AudioCapture(Context paramContext)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_i_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_c_of_type_Int = 0;
-    this.d = 0;
+    this.d = paramContext;
+    this.f = 0;
+    this.g = 0;
   }
   
   private int a(byte[] paramArrayOfByte, int paramInt)
@@ -73,8 +65,8 @@ public class AudioCapture
   
   public void a()
   {
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
+    this.l = 0;
+    this.m = 0;
   }
   
   public void a(AudioCapture.OnAudioRecordListener paramOnAudioRecordListener)
@@ -87,17 +79,17 @@ public class AudioCapture
     Object localObject = new AVIOStruct();
     if (paramBoolean)
     {
-      j = this.jdField_g_of_type_Int;
+      i1 = this.l;
     }
     else
     {
-      j = this.jdField_g_of_type_Int;
-      this.jdField_g_of_type_Int = (j + 1);
+      i1 = this.l;
+      this.l = (i1 + 1);
     }
-    ((AVIOStruct)localObject).pBlockIndex = j;
-    int j = this.jdField_h_of_type_Int;
-    this.jdField_h_of_type_Int = (j + 1);
-    ((AVIOStruct)localObject).pFrameIndex = j;
+    ((AVIOStruct)localObject).pBlockIndex = i1;
+    int i1 = this.m;
+    this.m = (i1 + 1);
+    ((AVIOStruct)localObject).pFrameIndex = i1;
     ((AVIOStruct)localObject).aBitrate = CodecParam.mDstAudioEncBitrate;
     ((AVIOStruct)localObject).pCodec = CodecParam.mCodecId;
     ((AVIOStruct)localObject).pControlFlag = ControlFlagEnum.WRITE_FRAME_DATA_AND_CLOSE_FILE.getValue();
@@ -108,43 +100,21 @@ public class AudioCapture
     {
       byte[] arrayOfByte = new byte[paramInt1];
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt1);
-      RecordManager.a().a().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
-      paramArrayOfByte = (SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+      RecordManager.a().b().handleAudio(arrayOfByte, (AVIOStruct)localObject, (int)paramLong);
+      paramArrayOfByte = (SVHwEncoder)this.u.get();
       if (paramArrayOfByte != null)
       {
         localObject = new SVHwEncoder.HwFrame();
-        ((SVHwEncoder.HwFrame)localObject).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-        ((SVHwEncoder.HwFrame)localObject).jdField_a_of_type_Int = 0;
-        ((SVHwEncoder.HwFrame)localObject).jdField_b_of_type_Int = arrayOfByte.length;
-        ((SVHwEncoder.HwFrame)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-        ((SVHwEncoder.HwFrame)localObject).jdField_a_of_type_Boolean = false;
-        ((SVHwEncoder.HwFrame)localObject).jdField_b_of_type_Boolean = false;
+        ((SVHwEncoder.HwFrame)localObject).a = arrayOfByte;
+        ((SVHwEncoder.HwFrame)localObject).b = 0;
+        ((SVHwEncoder.HwFrame)localObject).c = arrayOfByte.length;
+        ((SVHwEncoder.HwFrame)localObject).d = SystemClock.elapsedRealtime();
+        ((SVHwEncoder.HwFrame)localObject).e = false;
+        ((SVHwEncoder.HwFrame)localObject).f = false;
         paramArrayOfByte.a((SVHwEncoder.HwFrame)localObject, false);
       }
       a(paramInt2, new Object[] { Integer.valueOf(0) });
     }
-  }
-  
-  public boolean a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_g_of_type_Boolean = false;
-    this.jdField_h_of_type_Boolean = false;
-    this.jdField_i_of_type_Boolean = RMVideoStateMgr.a().h();
-    new AudioCapture.RecordThread2(this).start();
-    return true;
-  }
-  
-  public void b()
-  {
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.d = 0;
-    this.jdField_h_of_type_Boolean = false;
   }
   
   void b(int paramInt)
@@ -152,51 +122,51 @@ public class AudioCapture
     StringBuilder localStringBuilder;
     if (paramInt == -3)
     {
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_i_of_type_Int = -1;
+      this.s = false;
+      this.t = -1;
     }
     else
     {
-      int j;
+      int i1;
       if (paramInt == 0)
       {
-        j = this.jdField_c_of_type_Int;
-        if (j < 5)
+        i1 = this.f;
+        if (i1 < 5)
         {
-          this.jdField_c_of_type_Int = (j + 1);
+          this.f = (i1 + 1);
         }
         else
         {
-          this.jdField_e_of_type_Boolean = false;
-          this.jdField_i_of_type_Int = -2;
+          this.s = false;
+          this.t = -2;
         }
       }
       else
       {
-        this.jdField_c_of_type_Int = 0;
-        j = 128;
+        this.f = 0;
+        i1 = 128;
         if (paramInt <= 128) {
-          j = paramInt;
+          i1 = paramInt;
         }
-        if (!this.jdField_g_of_type_Boolean)
+        if (!this.z)
         {
           boolean bool1 = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeature(CameraCompatibleConstants.p);
-          if ((bool1) && (this.d < 5)) {
-            this.jdField_h_of_type_Boolean = PreviewContext.checkIsDisablePrivilage(this.jdField_a_of_type_ArrayOfByte, j);
+          if ((bool1) && (this.g < 5)) {
+            this.A = PreviewContext.checkIsDisablePrivilage(this.h, i1);
           } else {
-            this.jdField_h_of_type_Boolean = false;
+            this.A = false;
           }
-          this.d += 1;
-          boolean bool2 = this.jdField_h_of_type_Boolean;
+          this.g += 1;
+          boolean bool2 = this.A;
           if (!bool2)
           {
-            this.jdField_g_of_type_Boolean = true;
+            this.z = true;
           }
-          else if ((bool2) && (this.d >= 5))
+          else if ((bool2) && (this.g >= 5))
           {
-            this.jdField_g_of_type_Boolean = true;
-            this.jdField_e_of_type_Boolean = false;
-            this.jdField_i_of_type_Int = -3;
+            this.z = true;
+            this.s = false;
+            this.t = -3;
           }
           if (QLog.isColorLevel())
           {
@@ -204,11 +174,11 @@ public class AudioCapture
             localStringBuilder.append("checkAudioPrivilage[ERR_AUDIO_INVALID_DATA]: result=");
             localStringBuilder.append(paramInt);
             localStringBuilder.append(" mDisableAudioPrivilage=");
-            localStringBuilder.append(this.jdField_h_of_type_Boolean);
+            localStringBuilder.append(this.A);
             localStringBuilder.append(" blackPhone=");
             localStringBuilder.append(bool1);
             localStringBuilder.append(" mAudioInvalidData=");
-            localStringBuilder.append(this.d);
+            localStringBuilder.append(this.g);
             QLog.d("AudioCapture", 2, localStringBuilder.toString());
           }
         }
@@ -216,11 +186,11 @@ public class AudioCapture
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("checkAudioPrivilage: mDisableAudioPrivilage=");
-          localStringBuilder.append(this.jdField_h_of_type_Boolean);
+          localStringBuilder.append(this.A);
           localStringBuilder.append(" limit=");
-          localStringBuilder.append(j);
+          localStringBuilder.append(i1);
           localStringBuilder.append(" mAudioCanUsed=");
-          localStringBuilder.append(this.jdField_e_of_type_Boolean);
+          localStringBuilder.append(this.s);
           QLog.d("AudioCapture", 2, localStringBuilder.toString());
         }
       }
@@ -231,7 +201,7 @@ public class AudioCapture
       localStringBuilder.append("checkAudioPrivilage[end]: result=");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" mAudioCanUsed=");
-      localStringBuilder.append(this.jdField_e_of_type_Boolean);
+      localStringBuilder.append(this.s);
       QLog.d("AudioCapture", 2, localStringBuilder.toString());
     }
   }
@@ -245,8 +215,8 @@ public class AudioCapture
   {
     if ((paramArrayOfByte != null) && (paramInt1 > 0) && (paramInt1 <= paramArrayOfByte.length))
     {
-      if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null) {
-        ((AudioDataCache)this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(paramArrayOfByte, 0, paramInt1);
+      if (this.v.get() != null) {
+        ((AudioDataCache)this.v.get()).a(paramArrayOfByte, 0, paramInt1);
       } else if (QLog.isColorLevel()) {
         QLog.d("AudioCapture", 2, "AudioCapture[writeDataToAudioNewCache]: mAudioDataCache=null");
       }
@@ -256,85 +226,17 @@ public class AudioCapture
   
   public boolean b()
   {
-    try
-    {
-      if (this.jdField_f_of_type_Boolean)
-      {
-        boolean bool = this.jdField_f_of_type_Boolean;
-        return bool;
-      }
-      this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat);
-      if ((this.jdField_e_of_type_Int != -2) && (this.jdField_e_of_type_Int != -1))
-      {
-        this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_e_of_type_Int];
-        int j = jdField_a_of_type_Int / jdField_b_of_type_Int;
-        if (this.jdField_e_of_type_Int <= j) {
-          j = jdField_a_of_type_Int;
-        } else {
-          j = this.jdField_e_of_type_Int * jdField_b_of_type_Int;
-        }
-        this.jdField_f_of_type_Int = j;
-        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_f_of_type_Int];
-        this.jdField_f_of_type_Boolean = true;
-        a(3, new Object[] { Boolean.valueOf(true), Integer.valueOf(0) });
-        return true;
-      }
-      if (!RecordManager.a().a().a(this, 3, "init audio failed")) {
-        a(3, new Object[] { "init audio failed" });
-      }
-      return false;
-    }
-    finally {}
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("AudioCapture[openMic]: isCreate=");
-      localStringBuilder1.append(this.jdField_b_of_type_Boolean);
-      localStringBuilder1.append(" isStart=");
-      localStringBuilder1.append(this.jdField_c_of_type_Boolean);
-      localStringBuilder1.append(" mAudioRecord=");
-      localStringBuilder1.append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, localStringBuilder1.toString());
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      try
-      {
-        b();
-        this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat, this.jdField_e_of_type_Int);
-        if (this.jdField_a_of_type_AndroidMediaAudioRecord.getState() == 0)
-        {
-          a(5, new Object[] { HardCodeUtil.a(2131701009) });
-          return;
-        }
-        this.jdField_b_of_type_Boolean = true;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        a(5, new Object[] { HardCodeUtil.a(2131701012) });
-        return;
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("AudioCapture[openMic]: isCreate=");
-      localStringBuilder2.append(this.jdField_b_of_type_Boolean);
-      localStringBuilder2.append(" isStart=");
-      localStringBuilder2.append(this.jdField_c_of_type_Boolean);
-      localStringBuilder2.append(" mAudioRecord=");
-      localStringBuilder2.append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, localStringBuilder2.toString());
-    }
+    this.o = true;
+    this.z = false;
+    this.A = false;
+    this.B = RMVideoStateMgr.a().x();
+    new AudioCapture.RecordThread2(this).start();
+    return true;
   }
   
   void c(byte[] paramArrayOfByte, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
   {
-    if (this.jdField_i_of_type_Boolean)
+    if (this.B)
     {
       b(paramArrayOfByte, paramInt1, paramLong, paramBoolean, paramInt2);
       return;
@@ -342,86 +244,94 @@ public class AudioCapture
     a(paramArrayOfByte, paramInt1, paramLong, paramBoolean, paramInt2);
   }
   
+  public boolean c()
+  {
+    try
+    {
+      if (this.y)
+      {
+        boolean bool = this.y;
+        return bool;
+      }
+      this.i = AudioRecord.getMinBufferSize(CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat);
+      if ((this.i != -2) && (this.i != -1))
+      {
+        this.h = new byte[this.i];
+        int i1 = b / c;
+        if (this.i <= i1) {
+          i1 = b;
+        } else {
+          i1 = this.i * c;
+        }
+        this.j = i1;
+        this.k = new byte[this.j];
+        this.y = true;
+        a(3, new Object[] { Boolean.valueOf(true), Integer.valueOf(0) });
+        return true;
+      }
+      if (!RecordManager.a().c().a(this, 3, "init audio failed")) {
+        a(3, new Object[] { "init audio failed" });
+      }
+      return false;
+    }
+    finally {}
+  }
+  
   public void d()
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AudioCapture[startMic]: isCreate=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-      ((StringBuilder)localObject).append(" isStart=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
-      ((StringBuilder)localObject).append(" mAudioRecord=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_AndroidMediaAudioRecord;
-    if ((localObject != null) && (this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
-      try
-      {
-        ((AudioRecord)localObject).startRecording();
-        this.jdField_c_of_type_Boolean = true;
-        a(6, new Object[] { Boolean.valueOf(true) });
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        localIllegalStateException.printStackTrace();
-        try
-        {
-          this.jdField_a_of_type_AndroidMediaAudioRecord.release();
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        a(6, new Object[] { HardCodeUtil.a(2131701013) });
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("AudioCapture[startMic]: isCreate=");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
-      localStringBuilder.append(" isStart=");
-      localStringBuilder.append(this.jdField_c_of_type_Boolean);
-      localStringBuilder.append(" mAudioRecord=");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, localStringBuilder.toString());
-    }
+    this.i = 0;
+    this.h = null;
+    this.j = 0;
+    this.k = null;
+    this.y = false;
+    this.f = 0;
+    this.g = 0;
+    this.A = false;
   }
   
   public void e()
   {
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AudioCapture[stopMic]: isCreate=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-      ((StringBuilder)localObject).append(" isStart=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
-      ((StringBuilder)localObject).append(" mAudioRecord=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("AudioCapture[openMic]: isCreate=");
+      localStringBuilder1.append(this.p);
+      localStringBuilder1.append(" isStart=");
+      localStringBuilder1.append(this.q);
+      localStringBuilder1.append(" mAudioRecord=");
+      localStringBuilder1.append(this.e);
+      QLog.d("AudioCapture", 2, localStringBuilder1.toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidMediaAudioRecord;
-    if ((localObject != null) && (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
-    {
-      ((AudioRecord)localObject).stop();
-      this.jdField_c_of_type_Boolean = false;
+    if (!this.p) {
+      try
+      {
+        c();
+        this.e = new AudioRecord(1, CodecParam.mAudioSampleRate, CodecParam.mAudioChannel, CodecParam.mAudioFormat, this.i);
+        if (this.e.getState() == 0)
+        {
+          a(5, new Object[] { HardCodeUtil.a(2131899030) });
+          return;
+        }
+        this.p = true;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        a(5, new Object[] { HardCodeUtil.a(2131899033) });
+        return;
+      }
     }
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AudioCapture[stopMic]: isCreate=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-      ((StringBuilder)localObject).append(" isStart=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
-      ((StringBuilder)localObject).append(" mAudioRecord=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("AudioCapture[openMic]: isCreate=");
+      localStringBuilder2.append(this.p);
+      localStringBuilder2.append(" isStart=");
+      localStringBuilder2.append(this.q);
+      localStringBuilder2.append(" mAudioRecord=");
+      localStringBuilder2.append(this.e);
+      QLog.d("AudioCapture", 2, localStringBuilder2.toString());
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
   }
   
   public void f()
@@ -429,76 +339,158 @@ public class AudioCapture
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AudioCapture[releaseMic]: isCreate=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append("AudioCapture[startMic]: isCreate=");
+      ((StringBuilder)localObject).append(this.p);
       ((StringBuilder)localObject).append(" isStart=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.q);
       ((StringBuilder)localObject).append(" mAudioRecord=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaAudioRecord);
+      ((StringBuilder)localObject).append(this.e);
       QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidMediaAudioRecord;
-    if (localObject != null)
-    {
-      ((AudioRecord)localObject).release();
-      this.jdField_a_of_type_AndroidMediaAudioRecord = null;
-      this.jdField_b_of_type_Boolean = false;
+    Object localObject = this.e;
+    if ((localObject != null) && (this.p) && (!this.q)) {
+      try
+      {
+        ((AudioRecord)localObject).startRecording();
+        this.q = true;
+        a(6, new Object[] { Boolean.valueOf(true) });
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        this.q = false;
+        localIllegalStateException.printStackTrace();
+        try
+        {
+          this.e.release();
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+        a(6, new Object[] { HardCodeUtil.a(2131899034) });
+      }
     }
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("AudioCapture[releaseMic]: isCreate=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
-      ((StringBuilder)localObject).append(" isStart=");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Boolean);
-      ((StringBuilder)localObject).append(" mAudioRecord=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AudioCapture[startMic]: isCreate=");
+      localStringBuilder.append(this.p);
+      localStringBuilder.append(" isStart=");
+      localStringBuilder.append(this.q);
+      localStringBuilder.append(" mAudioRecord=");
+      localStringBuilder.append(this.e);
+      QLog.d("AudioCapture", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
   }
   
   public void g()
   {
     if (QLog.isColorLevel())
     {
-      ??? = new StringBuilder();
-      ((StringBuilder)???).append("AudioCapture[destory]: isCreate=");
-      ((StringBuilder)???).append(this.jdField_b_of_type_Boolean);
-      ((StringBuilder)???).append(" isStart=");
-      ((StringBuilder)???).append(this.jdField_c_of_type_Boolean);
-      ((StringBuilder)???).append(" mAudioRecord=");
-      ((StringBuilder)???).append(this.jdField_a_of_type_AndroidMediaAudioRecord);
-      QLog.d("AudioCapture", 2, ((StringBuilder)???).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AudioCapture[stopMic]: isCreate=");
+      ((StringBuilder)localObject).append(this.p);
+      ((StringBuilder)localObject).append(" isStart=");
+      ((StringBuilder)localObject).append(this.q);
+      ((StringBuilder)localObject).append(" mAudioRecord=");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_Boolean = false;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    Object localObject = this.e;
+    if ((localObject != null) && (this.p) && (this.q))
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
-      e();
-      f();
-      this.jdField_g_of_type_Int = 0;
-      this.jdField_h_of_type_Int = 0;
-      return;
+      ((AudioRecord)localObject).stop();
+      this.q = false;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AudioCapture[stopMic]: isCreate=");
+      ((StringBuilder)localObject).append(this.p);
+      ((StringBuilder)localObject).append(" isStart=");
+      ((StringBuilder)localObject).append(this.q);
+      ((StringBuilder)localObject).append(" mAudioRecord=");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
+    }
+    this.d = null;
   }
   
   public void h()
   {
-    if (!Lock.jdField_a_of_type_Boolean) {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AudioCapture[releaseMic]: isCreate=");
+      ((StringBuilder)localObject).append(this.p);
+      ((StringBuilder)localObject).append(" isStart=");
+      ((StringBuilder)localObject).append(this.q);
+      ((StringBuilder)localObject).append(" mAudioRecord=");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      ((AudioRecord)localObject).release();
+      this.e = null;
+      this.p = false;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("AudioCapture[releaseMic]: isCreate=");
+      ((StringBuilder)localObject).append(this.p);
+      ((StringBuilder)localObject).append(" isStart=");
+      ((StringBuilder)localObject).append(this.q);
+      ((StringBuilder)localObject).append(" mAudioRecord=");
+      ((StringBuilder)localObject).append(this.e);
+      QLog.d("AudioCapture", 2, ((StringBuilder)localObject).toString());
+    }
+    this.d = null;
+  }
+  
+  public void i()
+  {
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("AudioCapture[destory]: isCreate=");
+      ((StringBuilder)???).append(this.p);
+      ((StringBuilder)???).append(" isStart=");
+      ((StringBuilder)???).append(this.q);
+      ((StringBuilder)???).append(" mAudioRecord=");
+      ((StringBuilder)???).append(this.e);
+      QLog.d("AudioCapture", 2, ((StringBuilder)???).toString());
+    }
+    this.o = false;
+    synchronized (this.n)
+    {
+      this.n.notifyAll();
+      g();
+      h();
+      this.l = 0;
+      this.m = 0;
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+  }
+  
+  public void j()
+  {
+    if (!Lock.b) {
+      return;
+    }
+    synchronized (this.n)
     {
-      this.jdField_a_of_type_JavaLangObject.notifyAll();
+      this.n.notifyAll();
       a(1, new Object[] { Integer.valueOf(0) });
       return;
     }
   }
   
-  public void i()
+  public void k()
   {
-    if (Lock.jdField_a_of_type_Boolean) {
+    if (Lock.b) {
       return;
     }
     a(2, new Object[] { Integer.valueOf(0) });
@@ -506,7 +498,7 @@ public class AudioCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture
  * JD-Core Version:    0.7.0.1
  */

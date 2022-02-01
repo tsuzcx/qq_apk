@@ -19,116 +19,116 @@ import com.tencent.qphone.base.util.QLog;
 public class StickerBubbleReceiverAnimationRunnable
   implements StickerBubbleAnimationViewHolder.AnimationViewCallback, Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new StickerBubbleReceiverAnimationRunnable.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  private Context a;
+  private QQAppInterface b;
+  private Handler c;
+  private View d;
+  private int e;
+  private int f;
+  private String g;
+  private boolean h = false;
+  private int[] i;
+  private boolean j = false;
+  private boolean k;
+  private boolean l;
+  private boolean m;
+  private Runnable n = new StickerBubbleReceiverAnimationRunnable.1(this);
   
   public StickerBubbleReceiverAnimationRunnable(QQAppInterface paramQQAppInterface, int paramInt, @NonNull View paramView, @NonNull String paramString)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramQQAppInterface.getApp().getApplicationContext();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) ^ true);
-    StickerBubbleAnimationViewHolder.a().a(this);
+    this.a = paramQQAppInterface.getApp().getApplicationContext();
+    this.b = paramQQAppInterface;
+    this.e = paramInt;
+    this.c = new Handler(Looper.getMainLooper());
+    this.d = paramView;
+    this.g = paramString;
+    this.k = (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.b) ^ true);
+    StickerBubbleAnimationViewHolder.b().a(this);
   }
   
   @NonNull
-  private int[] a()
+  private int[] c()
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_Int * 80 < 5000) {
+    if (this.e * 80 < 5000) {
       return StickerBubbleAnimationHelper.a((QQAppInterface)localObject);
     }
     localObject = StickerBubbleAnimationHelper.a((QQAppInterface)localObject);
-    int n = localObject.length;
-    int m = 0;
-    int j = 0;
-    int k;
-    for (int i = 0; j < n; i = k)
+    int i5 = localObject.length;
+    int i4 = 0;
+    int i2 = 0;
+    int i3;
+    for (int i1 = 0; i2 < i5; i1 = i3)
     {
-      k = i;
-      if (localObject[j] <= this.jdField_a_of_type_Int) {
-        k = i + 1;
+      i3 = i1;
+      if (localObject[i2] <= this.e) {
+        i3 = i1 + 1;
       }
-      j += 1;
+      i2 += 1;
     }
-    localObject = new int[i];
-    n = 62 / i;
-    for (j = m; j < i; j = k)
+    localObject = new int[i1];
+    i5 = 62 / i1;
+    for (i2 = i4; i2 < i1; i2 = i3)
     {
-      k = j + 1;
-      localObject[j] = (n * k);
+      i3 = i2 + 1;
+      localObject[i2] = (i5 * i3);
     }
     return localObject;
   }
   
   public void a()
   {
-    if (AIOUtils.jdField_b_of_type_Int > 0) {
-      AIOUtils.jdField_b_of_type_Int -= 1;
+    if (AIOUtils.p > 0) {
+      AIOUtils.p -= 1;
     }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    StickerBubbleAnimationHelper.a(this, this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Boolean = true;
-    AIOUtils.jdField_b_of_type_Int = 0;
-    if (this.c)
+    this.c.removeCallbacksAndMessages(null);
+    StickerBubbleAnimationHelper.a(this, this.d);
+    this.h = true;
+    AIOUtils.p = 0;
+    if (this.k)
     {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "StickerBubble", false);
-      this.d = true;
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.b, "StickerBubble", false);
+      this.l = true;
     }
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       return;
     }
-    if ((this.c) && (!this.d))
+    if ((this.k) && (!this.l))
     {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "StickerBubble", true);
-      this.d = true;
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.b, "StickerBubble", true);
+      this.l = true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("StickerBubbleRunnable", 2, "showReceiveAnimationView from runnable");
     }
-    Object localObject = StickerBubbleAnimationViewHolder.a().b((ViewGroup)this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidContentContext);
-    if (!this.jdField_b_of_type_Boolean)
+    Object localObject = StickerBubbleAnimationViewHolder.b().b((ViewGroup)this.d, this.a);
+    if (!this.j)
     {
       ((StickerBubbleAnimationView)localObject).bringToFront();
-      this.jdField_b_of_type_Boolean = true;
+      this.j = true;
     }
-    if (this.jdField_a_of_type_ArrayOfInt == null) {
-      this.jdField_a_of_type_ArrayOfInt = a();
+    if (this.i == null) {
+      this.i = c();
     }
-    this.jdField_b_of_type_Int += 1;
-    int i = this.jdField_b_of_type_Int;
-    if ((i <= this.jdField_a_of_type_Int) && (i * 80 <= 5000))
+    this.f += 1;
+    int i1 = this.f;
+    if ((i1 <= this.e) && (i1 * 80 <= 5000))
     {
-      if (i == 2)
+      if (i1 == 2)
       {
-        StickerBubbleAnimationHelper.b(this, this.jdField_a_of_type_AndroidViewView);
-        this.e = false;
+        StickerBubbleAnimationHelper.b(this, this.d);
+        this.m = false;
       }
-      ((StickerBubbleAnimationView)localObject).a(StickerBubbleAnimationHelper.a(this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfInt));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 80L);
+      ((StickerBubbleAnimationView)localObject).a(StickerBubbleAnimationHelper.a(this.a.getResources().getDisplayMetrics().widthPixels, this.g, this.f, this.i));
+      this.c.postDelayed(this, 80L);
       return;
     }
     if (QLog.isColorLevel())
@@ -138,13 +138,13 @@ public class StickerBubbleReceiverAnimationRunnable
       ((StringBuilder)localObject).append(this);
       QLog.d("StickerBubbleRunnable", 2, ((StringBuilder)localObject).toString());
     }
-    this.e = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+    this.m = true;
+    this.c.postDelayed(this.n, 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable
  * JD-Core Version:    0.7.0.1
  */

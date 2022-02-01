@@ -3,7 +3,7 @@ package com.tencent.av.ui.virtual;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.effect.toolbar.BaseToolbar;
 
 class QavVirtualMenuView$1
   implements View.OnTouchListener
@@ -12,7 +12,7 @@ class QavVirtualMenuView$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EffectSettingUi.a(QavVirtualMenuView.a(this.a), -1051L);
+    BaseToolbar.keepInToolbar(QavVirtualMenuView.a(this.a), -1051L);
     return false;
   }
 }

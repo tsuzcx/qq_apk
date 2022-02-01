@@ -9,7 +9,7 @@ class KanDianViewController$4$1
   
   public void run()
   {
-    ListView localListView = this.jdField_a_of_type_ComTencentWidgetListView;
+    ListView localListView = this.a;
     if (localListView != null) {
       localListView.setInterpolator(null);
     }
@@ -17,7 +17,7 @@ class KanDianViewController$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.KanDianViewController.4.1
  * JD-Core Version:    0.7.0.1
  */

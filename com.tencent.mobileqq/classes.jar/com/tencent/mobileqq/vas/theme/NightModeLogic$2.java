@@ -25,7 +25,7 @@ class NightModeLogic$2
         return;
       }
       if (this.a.a != null) {
-        QQToast.a(this.a.a.getApplication(), HardCodeUtil.a(2131707603), 4000).a();
+        QQToast.makeText(this.a.a.getApplication(), HardCodeUtil.a(2131905418), 4000).show();
       }
     }
     else if ((paramMessage.obj != null) && ((paramMessage.obj instanceof Bundle)))
@@ -36,7 +36,7 @@ class NightModeLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.NightModeLogic.2
  * JD-Core Version:    0.7.0.1
  */

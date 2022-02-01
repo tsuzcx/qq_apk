@@ -16,10 +16,10 @@ class GameListView$1$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ReportController.b(null, "dc00898", "", "", "0X800B49B", "0X800B49B", 0, 0, "", "", "", "");
-    this.a.this$0.a.a(false, 1);
+    this.a.this$0.c.a(false, 1);
     ((Activity)this.a.this$0.getContext()).finish();
-    if (IGameEngine.a().a() != null) {
-      IGameEngine.a().a().b();
+    if (IGameEngine.I().L() != null) {
+      IGameEngine.I().L().c();
     }
   }
 }

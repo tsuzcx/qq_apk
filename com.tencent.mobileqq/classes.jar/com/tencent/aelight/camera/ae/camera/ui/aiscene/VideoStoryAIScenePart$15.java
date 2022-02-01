@@ -10,12 +10,12 @@ class VideoStoryAIScenePart$15
   
   public void run()
   {
-    Toast.makeText(VideoStoryAIScenePart.e(this.this$0), HardCodeUtil.a(2131716142), 0).show();
+    Toast.makeText(VideoStoryAIScenePart.q(this.this$0), HardCodeUtil.a(2131913591), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.aiscene.VideoStoryAIScenePart.15
  * JD-Core Version:    0.7.0.1
  */

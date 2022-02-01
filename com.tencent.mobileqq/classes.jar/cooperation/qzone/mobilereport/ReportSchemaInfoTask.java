@@ -26,12 +26,12 @@ public class ReportSchemaInfoTask
       localQQSchemaBuilder.setReportKey((ReportKey)localEntry.getKey());
       localArrayList.add(localQQSchemaBuilder.build());
     }
-    MobileReportServlet.a(6, localAppRuntime, new UserCommReportBuilder().setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(Tools.c()).build(), null, null, localArrayList);
+    MobileReportServlet.a(6, localAppRuntime, new UserCommReportBuilder().setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(Tools.d()).build(), null, null, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.mobilereport.ReportSchemaInfoTask
  * JD-Core Version:    0.7.0.1
  */

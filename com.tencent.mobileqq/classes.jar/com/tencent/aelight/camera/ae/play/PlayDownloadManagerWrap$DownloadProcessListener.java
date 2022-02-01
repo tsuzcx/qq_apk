@@ -12,20 +12,20 @@ class PlayDownloadManagerWrap$DownloadProcessListener
     if (paramAEMaterialMetaData == null) {
       return;
     }
-    paramAEMaterialMetaData.f = false;
+    paramAEMaterialMetaData.B = false;
     if (paramBoolean)
     {
-      paramAEMaterialMetaData.e = true;
+      paramAEMaterialMetaData.A = true;
     }
     else
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("download failed with id: ");
-      localStringBuilder.append(paramAEMaterialMetaData.k);
+      localStringBuilder.append(paramAEMaterialMetaData.m);
       QLog.e("PlayDownloadManagerWrap", 1, localStringBuilder.toString());
     }
     PlayDownloadManagerWrap.getInstance().notifyDownloadFinish(paramAEMaterialMetaData, paramBoolean);
-    PlayDownloadManagerWrap.access$300(PlayDownloadManagerWrap.getInstance(), paramAEMaterialMetaData.k);
+    PlayDownloadManagerWrap.access$300(PlayDownloadManagerWrap.getInstance(), paramAEMaterialMetaData.m);
   }
   
   public void onProgressUpdate(AEMaterialMetaData paramAEMaterialMetaData, int paramInt)
@@ -33,12 +33,12 @@ class PlayDownloadManagerWrap$DownloadProcessListener
     if (paramInt <= 1) {
       return;
     }
-    PlayDownloadManagerWrap.getInstance().notifyDownloadProgress(paramAEMaterialMetaData.k, paramInt);
+    PlayDownloadManagerWrap.getInstance().notifyDownloadProgress(paramAEMaterialMetaData.m, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.PlayDownloadManagerWrap.DownloadProcessListener
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class ReadInjoyGalleryTripleCell
     Object localObject1 = new JSONObject();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(paramAbsBaseArticleInfo.mGalleryPicNumber);
-    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131713062));
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131910623));
     ((JSONObject)localObject1).put("gallery_cn_text", ((StringBuilder)localObject2).toString());
     localJSONObject.put("id_gallery_cnt", localObject1);
     localObject1 = new JSONObject();
@@ -86,10 +86,10 @@ public class ReadInjoyGalleryTripleCell
     Util.a(paramAbsBaseArticleInfo, localJSONObject, true);
     Util.a(paramAbsBaseArticleInfo, localJSONObject);
     Util.d(paramAbsBaseArticleInfo, localJSONObject);
-    Util.n(paramAbsBaseArticleInfo, localJSONObject);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject);
     Util.g(paramAbsBaseArticleInfo, localJSONObject);
     Util.h(paramAbsBaseArticleInfo, localJSONObject);
-    Util.ab(paramAbsBaseArticleInfo, localJSONObject);
+    Util.ac(paramAbsBaseArticleInfo, localJSONObject);
     if (paramAbsBaseArticleInfo.articleStyle == 6) {
       localJSONObject.put("style_ID", "ReadInjoy_triple_img_big_cell");
     } else {
@@ -102,7 +102,7 @@ public class ReadInjoyGalleryTripleCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInjoyGalleryTripleCell
  * JD-Core Version:    0.7.0.1
  */

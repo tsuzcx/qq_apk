@@ -12,6 +12,7 @@ import mqq.app.AppRuntime;
 
 public class QZoneApiProxy
 {
+  public static final String CONCISE_FRIEND_FRAGMENT_CLASS_NAME = "com.qzone.feed.ui.activity.QConciseDynamicFragment";
   public static final String EXTEND_FRAGMENT_CLASS_NAME = "com.qzone.feed.ui.activity.QQLebaExtendFeedFragment";
   public static final String FRIEND_FRAGMENT_CLASS_NAME = "com.qzone.feed.ui.activity.QQLebaFriendFeedFragment";
   private static final String TAG = "QZoneApiProxy";
@@ -94,7 +95,7 @@ public class QZoneApiProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.api.QZoneApiProxy
  * JD-Core Version:    0.7.0.1
  */

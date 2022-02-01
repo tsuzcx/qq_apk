@@ -2,8 +2,10 @@ package com.tencent.mobileqq.config.business;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
+import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.emoticon.QQSysAndEmojiResMgr;
 import com.tencent.mobileqq.utils.abtest.ABTestController;
 import com.tencent.mobileqq.utils.abtest.ABTestUtil;
@@ -13,19 +15,61 @@ import com.tencent.qphone.base.util.QLog;
 public class QQSysAndEmojiConfProcessor
   extends IQConfigProcessor<QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean>
 {
-  public static int a()
+  public static QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean a()
   {
     ExpEntityInfo localExpEntityInfo = ABTestController.a().a(545);
-    Object localObject = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localExpEntityInfo.a();
-    localExpEntityInfo.a();
+    Object localObject2 = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localExpEntityInfo.b();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)QConfigManager.b().b(545);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getConfBean, exp is ");
+    localStringBuilder.append(localExpEntityInfo.d());
+    localStringBuilder.append(", conf bean exist: ");
+    boolean bool;
+    if (localObject1 != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", conf exp: ");
+    if (localObject1 == null) {
+      localObject2 = "null";
+    } else {
+      localObject2 = ((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject1).a;
+    }
+    localStringBuilder.append((String)localObject2);
+    QLog.i("QQSysAndEmojiConfProcessor", 1, localStringBuilder.toString());
+    return localObject1;
+  }
+  
+  public static void b()
+  {
+    ExpEntityInfo localExpEntityInfo = ABTestController.a().a(545);
+    if (!TextUtils.isEmpty(localExpEntityInfo.d()))
+    {
+      localExpEntityInfo.h();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reportABTestExposure, assignment=");
+        localStringBuilder.append(localExpEntityInfo.d());
+        QLog.i("QQSysAndEmojiConfProcessor", 2, localStringBuilder.toString());
+      }
+    }
+  }
+  
+  public static int c()
+  {
+    Object localObject = a();
     if (localObject != null)
     {
-      int i = ((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).a;
+      int i = ((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).p;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("expGrpLineCnt=");
       ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append("expInfo:");
-      ((StringBuilder)localObject).append(localExpEntityInfo.a());
       ABTestUtil.a("QQSysAndEmojiConfProcessor", ((StringBuilder)localObject).toString());
       return i;
     }
@@ -50,7 +94,7 @@ public class QQSysAndEmojiConfProcessor
   public void a(QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean paramSystemAndEmojiConfBean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "QQSysAndEmojiConfProcessor onUpdate");
+      QLog.i("QQSysAndEmojiConfProcessor", 2, "QQSysAndEmojiConfProcessor onUpdate");
     }
     if (paramSystemAndEmojiConfBean != null) {
       QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean.a(paramSystemAndEmojiConfBean);
@@ -92,7 +136,7 @@ public class QQSysAndEmojiConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor
  * JD-Core Version:    0.7.0.1
  */

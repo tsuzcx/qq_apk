@@ -15,14 +15,14 @@ import java.util.List;
 public class RecentTabHaloResponse
   extends BaseResponse
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<MsgTabNodeInfo> jdField_a_of_type_JavaUtilList;
+  private String a;
+  private List<MsgTabNodeInfo> b;
   
   public RecentTabHaloResponse(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
   {
     super(paramRspMsgListHeadNode.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
+    this.a = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
+    this.b = a(paramRspMsgListHeadNode.node_list.get());
   }
   
   private static List<MsgTabNodeInfo> a(List<qqstory_service.MsgTabNodeInfo> paramList)
@@ -41,26 +41,26 @@ public class RecentTabHaloResponse
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
-  public List<MsgTabNodeInfo> a()
+  public List<MsgTabNodeInfo> b()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RecentTabHaloResponse{mSeq='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mMsgTabNodeInfos=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append(", errorCode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", errorMsg='");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", errorCode=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", errorMsg='");
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -68,7 +68,7 @@ public class RecentTabHaloResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.RecentTabHaloResponse
  * JD-Core Version:    0.7.0.1
  */

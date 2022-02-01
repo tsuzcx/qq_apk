@@ -19,85 +19,75 @@ import java.util.List;
 public class SuperRichTextItem
   extends DynamicTextItem
 {
+  public static final int a;
   public static final int b;
   public static final int c;
-  public static final int d;
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  TextDrawImplement jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-  private boolean jdField_a_of_type_Boolean = true;
-  private float b;
-  private int e = 0;
+  TextDrawImplement d;
+  private RectF e = new RectF();
+  private int f = 0;
+  private boolean g = true;
+  private TextPaint h = new TextPaint();
+  private float i;
+  private float j;
   
   static
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    jdField_b_of_type_Int = AIOUtils.b(36.0F, localResources);
-    d = AIOUtils.b(6.0F, localResources);
-    int i = DisplayUtil.a();
-    c = localResources.getDisplayMetrics().widthPixels - TextLayer.a - i * 2;
+    a = AIOUtils.b(36.0F, localResources);
+    c = AIOUtils.b(6.0F, localResources);
+    int k = DisplayUtil.a();
+    b = localResources.getDisplayMetrics().widthPixels - TextLayer.b - k * 2;
   }
   
   public SuperRichTextItem(int paramInt, List<String> paramList, Typeface paramTypeface)
   {
     super(paramInt, paramList);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+    this.h.setTypeface(Typeface.DEFAULT);
+    this.h.setTextAlign(Paint.Align.CENTER);
     if (paramTypeface == null) {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+      this.h.setTypeface(Typeface.defaultFromStyle(1));
     } else {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.h.setTypeface(paramTypeface);
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+    this.h.setAntiAlias(true);
+    this.h.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.h.setTextSize(a);
+    this.h.setColor(-1);
+    this.h.setTextAlign(Paint.Align.LEFT);
     if (!paramList.isEmpty()) {
       a(0, (String)paramList.get(0));
     }
   }
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    String str = super.b(paramInt);
+    String str = super.c(paramInt);
     paramString = str;
     if (TextUtils.isEmpty(str)) {
       paramString = "　　";
     }
-    this.e = AIOUtils.b(18.0F, BaseApplicationImpl.getContext().getResources());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement = new TextDrawImplement(0);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.b(new PerLineBackgoundDrawer(-65536, d));
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(paramString, c, jdField_b_of_type_Int, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(new LineMarginCoverter(this.e));
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-    this.jdField_a_of_type_Float = paramString.a(1, paramString.a()).width();
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-    this.jdField_b_of_type_Float = paramString.a(1, paramString.a()).height();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(new CenterMarginCoverter(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float));
+    this.f = AIOUtils.b(18.0F, BaseApplicationImpl.getContext().getResources());
+    this.d = new TextDrawImplement(0);
+    this.d.b(new PerLineBackgoundDrawer(-65536, c));
+    this.d.a(paramString, b, a, this.h);
+    this.d.a(new LineMarginCoverter(this.f));
+    paramString = this.d;
+    this.i = paramString.a(1, paramString.c()).width();
+    paramString = this.d;
+    this.j = paramString.a(1, paramString.c()).height();
+    this.d.a(new CenterMarginCoverter(this.i, this.j));
   }
   
   protected void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement.a(paramCanvas, 0, 0);
-    if (super.b(0))
+    this.d.a(paramCanvas, 0, 0);
+    if (super.f(0))
     {
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      TextDrawImplement localTextDrawImplement = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextTextDrawImplement;
-      localRectF.set(localTextDrawImplement.a(1, localTextDrawImplement.a()));
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+      RectF localRectF = this.e;
+      TextDrawImplement localTextDrawImplement = this.d;
+      localRectF.set(localTextDrawImplement.a(1, localTextDrawImplement.c()));
+      paramCanvas.drawRoundRect(this.e, 6.0F, 6.0F, s());
     }
   }
   
@@ -106,14 +96,24 @@ public class SuperRichTextItem
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.jdField_b_of_type_Float;
+    return 1;
+  }
+  
+  public float c()
+  {
+    return this.i;
+  }
+  
+  public float d()
+  {
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.SuperRichTextItem
  * JD-Core Version:    0.7.0.1
  */

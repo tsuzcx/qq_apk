@@ -18,12 +18,12 @@ class ShortVideoPlayActivity$3
       paramDialogInterface = this.a;
       paramDialogInterface.play(paramDialogInterface.mCurrentPosition);
     }
-    com.tencent.mobileqq.shortvideo.SVBusiUtil.a = true;
+    com.tencent.mobileqq.shortvideo.SVBusiUtil.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.3
  * JD-Core Version:    0.7.0.1
  */

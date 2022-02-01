@@ -12,8 +12,8 @@ class AEARCakePanel$7
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    AEARCakePanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel, false);
-    paramAnimator = this.jdField_a_of_type_JavaLangRunnable;
+    AEARCakePanel.a(this.b, false);
+    paramAnimator = this.a;
     if (paramAnimator != null) {
       paramAnimator.run();
     }
@@ -23,12 +23,12 @@ class AEARCakePanel$7
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    AEARCakePanel.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiPanelAEARCakePanel, true);
+    AEARCakePanel.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEARCakePanel.7
  * JD-Core Version:    0.7.0.1
  */

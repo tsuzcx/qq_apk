@@ -17,7 +17,7 @@ class SpringFestivalRedpacketConfigManager$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CODE_SUCCESS[");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", ");
@@ -27,8 +27,8 @@ class SpringFestivalRedpacketConfigManager$2
     }
     if ((paramInt == 0) && (paramString == null))
     {
-      Utils.a(SpringFestivalRedpacketConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketConfigManager), SpringFestivalRedpacketConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketConfigManager).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int + 1);
-      Utils.a(SpringFestivalRedpacketConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketConfigManager), SpringFestivalRedpacketConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalConfigSpringFestivalRedpacketConfigManager).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, NetConnInfoCenter.getServerTimeMillis());
+      Utils.a(SpringFestivalRedpacketConfigManager.a(this.c), SpringFestivalRedpacketConfigManager.b(this.c).getCurrentAccountUin(), this.a, this.b + 1);
+      Utils.a(SpringFestivalRedpacketConfigManager.a(this.c), SpringFestivalRedpacketConfigManager.b(this.c).getCurrentAccountUin(), this.a, NetConnInfoCenter.getServerTimeMillis());
     }
   }
   
@@ -46,7 +46,7 @@ class SpringFestivalRedpacketConfigManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,20 +12,20 @@ import mqq.observer.WtloginObserver;
 class LHLoginMng$LHLoginCallbackForW
   extends WtloginObserver
 {
-  final Intent jdField_a_of_type_AndroidContentIntent;
-  final LHLoginMng.OnLockLHUinResult jdField_a_of_type_ComTencentMobileqqVipLianghaoLHLoginMng$OnLockLHUinResult;
-  final String jdField_a_of_type_JavaLangString;
+  final Intent a;
+  final String b;
+  final LHLoginMng.OnLockLHUinResult c;
   
   LHLoginMng$LHLoginCallbackForW(Intent paramIntent, String paramString, LHLoginMng.OnLockLHUinResult paramOnLockLHUinResult)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoLHLoginMng$OnLockLHUinResult = paramOnLockLHUinResult;
+    this.a = paramIntent;
+    this.b = paramString;
+    this.c = paramOnLockLHUinResult;
   }
   
   public void onRegGetSMSVerifyLoginAccountWithLhSig(int paramInt, long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
+    Intent localIntent = new Intent(this.a);
     if (paramArrayOfByte3 != null) {
       try
       {
@@ -44,9 +44,9 @@ class LHLoginMng$LHLoginCallbackForW
     if (paramInt == 0)
     {
       paramArrayOfByte3 = String.valueOf(paramLong);
-      if ((!TextUtils.isEmpty(paramArrayOfByte3)) && (paramArrayOfByte3.equals(this.jdField_a_of_type_JavaLangString)))
+      if ((!TextUtils.isEmpty(paramArrayOfByte3)) && (paramArrayOfByte3.equals(this.b)))
       {
-        localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
+        localIntent.putExtra("uin", this.b);
         bool = true;
       }
       else
@@ -62,7 +62,7 @@ class LHLoginMng$LHLoginCallbackForW
     boolean bool = false;
     label187:
     if (TextUtils.isEmpty(paramArrayOfByte1)) {
-      paramArrayOfByte1 = HardCodeUtil.a(2131716609);
+      paramArrayOfByte1 = HardCodeUtil.a(2131914072);
     }
     localIntent.putExtra("key_register_prompt_info", paramArrayOfByte1);
     if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0)) {
@@ -71,18 +71,18 @@ class LHLoginMng$LHLoginCallbackForW
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a("LHLoginMng -- OnRegGetSMSVerifyLoginAccountWithLhSig", localIntent);
     }
-    paramArrayOfByte2 = this.jdField_a_of_type_ComTencentMobileqqVipLianghaoLHLoginMng$OnLockLHUinResult;
+    paramArrayOfByte2 = this.c;
     if (paramArrayOfByte2 != null) {
-      paramArrayOfByte2.a(localIntent, bool, this.jdField_a_of_type_JavaLangString, paramArrayOfByte4, paramArrayOfByte1);
+      paramArrayOfByte2.a(localIntent, bool, this.b, paramArrayOfByte4, paramArrayOfByte1);
     }
     if (QLog.isColorLevel()) {
-      QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccountWithLhSig, lhUin: %s, isSuc: %s, error: %s, ret: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool), paramArrayOfByte1, Integer.valueOf(paramInt) }));
+      QLog.i("LHLoginMng", 2, String.format(Locale.getDefault(), "OnRegGetSMSVerifyLoginAccountWithLhSig, lhUin: %s, isSuc: %s, error: %s, ret: %s", new Object[] { this.b, Boolean.valueOf(bool), paramArrayOfByte1, Integer.valueOf(paramInt) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.LHLoginMng.LHLoginCallbackForW
  * JD-Core Version:    0.7.0.1
  */

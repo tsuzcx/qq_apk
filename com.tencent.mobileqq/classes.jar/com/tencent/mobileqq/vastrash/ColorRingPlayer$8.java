@@ -12,17 +12,17 @@ class ColorRingPlayer$8
   public void run()
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("subAction", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("subAction", this.a);
     localBundle.putString("actionName", this.b);
-    localBundle.putLong("id", this.jdField_a_of_type_Long);
-    localBundle.putInt("result", this.jdField_a_of_type_Int);
-    localBundle = DataFactory.a("reportColorRing", "", this.this$0.a.key, localBundle);
+    localBundle.putLong("id", this.c);
+    localBundle.putInt("result", this.d);
+    localBundle = DataFactory.a("reportColorRing", "", this.this$0.v.key, localBundle);
     this.this$0.a(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.ColorRingPlayer.8
  * JD-Core Version:    0.7.0.1
  */

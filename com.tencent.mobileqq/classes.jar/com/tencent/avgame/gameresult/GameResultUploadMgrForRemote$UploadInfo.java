@@ -2,17 +2,14 @@ package com.tencent.avgame.gameresult;
 
 class GameResultUploadMgrForRemote$UploadInfo
 {
-  GameResultUploadMgrForRemote.GameResultUploadCallback jdField_a_of_type_ComTencentAvgameGameresultGameResultUploadMgrForRemote$GameResultUploadCallback;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  String a;
+  String b;
   boolean c = false;
+  boolean d = false;
+  boolean e = false;
+  GameResultUploadMgrForRemote.GameResultUploadCallback f;
   
-  private GameResultUploadMgrForRemote$UploadInfo(GameResultUploadMgrForRemote paramGameResultUploadMgrForRemote)
-  {
-    this.b = false;
-  }
+  private GameResultUploadMgrForRemote$UploadInfo(GameResultUploadMgrForRemote paramGameResultUploadMgrForRemote) {}
 }
 
 

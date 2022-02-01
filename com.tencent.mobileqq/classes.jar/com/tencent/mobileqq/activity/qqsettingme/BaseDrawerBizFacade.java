@@ -12,9 +12,9 @@ import mqq.app.AppRuntime;
 public class BaseDrawerBizFacade
   implements IDrawerBizFacade
 {
-  protected QBaseActivity a;
-  protected LifeCycleAndViewModelStoreOwner a;
   protected AppRuntime a;
+  protected QBaseActivity b;
+  protected LifeCycleAndViewModelStoreOwner c;
   
   public void a() {}
   
@@ -41,9 +41,9 @@ public class BaseDrawerBizFacade
   
   public void a(AppRuntime paramAppRuntime, QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner = ((ILifeCycleFragmentInjectApi)QRoute.api(ILifeCycleFragmentInjectApi.class)).checkAndAddLifeCycleFragment(paramQBaseActivity);
+    this.a = paramAppRuntime;
+    this.b = paramQBaseActivity;
+    this.c = ((ILifeCycleFragmentInjectApi)QRoute.api(ILifeCycleFragmentInjectApi.class)).checkAndAddLifeCycleFragment(paramQBaseActivity);
   }
   
   public void a(boolean paramBoolean) {}
@@ -68,7 +68,7 @@ public class BaseDrawerBizFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.BaseDrawerBizFacade
  * JD-Core Version:    0.7.0.1
  */

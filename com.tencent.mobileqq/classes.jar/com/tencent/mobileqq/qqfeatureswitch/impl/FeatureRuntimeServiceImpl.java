@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.featuretoggle.Toggle;
 import com.tencent.featuretoggle.ToggleConfig;
+import com.tencent.featuretoggle.models.FeatureTriggered;
+import com.tencent.featuretoggle.models.FeatureTypedTriggered;
 import com.tencent.mobileqq.qqfeatureswitch.FeatureSDKReporter;
 import com.tencent.mobileqq.qqfeatureswitch.FeatureSwitch;
 import com.tencent.mobileqq.qqfeatureswitch.IFeatureRuntimeService;
@@ -19,6 +21,7 @@ import java.util.Map;
 import java.util.Stack;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 public class FeatureRuntimeServiceImpl
   implements IFeatureRuntimeService
@@ -50,7 +53,7 @@ public class FeatureRuntimeServiceImpl
       if (sUserIdStack.size() == 1)
       {
         QLog.d("FeatureRuntimeServiceImpl", 1, new Object[] { "set user id : ", MobileQQ.getShortUinStr(paramString) });
-        Toggle.a(paramString, true);
+        Toggle.b(paramString, true);
       }
       return;
     }
@@ -70,15 +73,26 @@ public class FeatureRuntimeServiceImpl
       QLog.e("FeatureRuntimeServiceImpl", 1, "getFeatureSwitch, name is empty");
       return null;
     }
-    FeatureSwitch localFeatureSwitch = this.mModel.a(paramString, true);
+    FeatureSwitch localFeatureSwitch = this.mModel.b(paramString, true);
     FeatureSDKReporter.a(paramString, localFeatureSwitch);
     return localFeatureSwitch;
+  }
+  
+  public JSONObject getJSONObject(String paramString1, String paramString2)
+  {
+    initSdkFirst();
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QLog.e("FeatureRuntimeServiceImpl", 1, "getFeatureSwitch, name is empty");
+      return null;
+    }
+    return (JSONObject)Toggle.b(paramString1, paramString2).a();
   }
   
   public Map<String, FeatureSwitch> getSwitchList()
   {
     initSdkFirst();
-    return this.mModel.a();
+    return this.mModel.b();
   }
   
   public void initSdk(Context paramContext)
@@ -117,6 +131,17 @@ public class FeatureRuntimeServiceImpl
     }
   }
   
+  public Map<String, String> isEnabledWithDataSet(String paramString1, String paramString2)
+  {
+    initSdkFirst();
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QLog.e("FeatureRuntimeServiceImpl", 1, "getFeatureSwitch, name is empty");
+      return null;
+    }
+    return Toggle.a(paramString1, paramString2).f();
+  }
+  
   public boolean isFeatureSwitchEnable(String paramString)
   {
     return isFeatureSwitchEnable(paramString, true);
@@ -126,7 +151,7 @@ public class FeatureRuntimeServiceImpl
   {
     initSdkFirst();
     FeatureSDKReporter.a(paramString, getFeatureSwitch(paramString));
-    return this.mModel.a(paramString, paramBoolean);
+    return this.mModel.c(paramString, paramBoolean);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -222,7 +247,7 @@ public class FeatureRuntimeServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfeatureswitch.impl.FeatureRuntimeServiceImpl
  * JD-Core Version:    0.7.0.1
  */

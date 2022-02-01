@@ -80,7 +80,7 @@ public class PreloadConfig
     {
       try
       {
-        paramString = (PreloadConfig)QWalletTools.a(paramAppRuntime);
+        paramString = (PreloadConfig)QWalletTools.e(paramAppRuntime);
       }
       catch (Exception paramString)
       {
@@ -103,7 +103,7 @@ public class PreloadConfig
     if (QLog.isColorLevel()) {
       QLog.d("PreloadService", 2, "preload config update should delete local config");
     }
-    QConfigManager.a().a(68, 0);
+    QConfigManager.b().a(68, 0);
     label97:
     paramString = null;
     if (paramString == null) {
@@ -445,7 +445,7 @@ public class PreloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadConfig
  * JD-Core Version:    0.7.0.1
  */

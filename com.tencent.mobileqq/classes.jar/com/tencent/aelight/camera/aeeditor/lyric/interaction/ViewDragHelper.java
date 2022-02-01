@@ -17,29 +17,29 @@ import java.util.Arrays;
 
 public class ViewDragHelper
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new ViewDragHelper.1();
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private ScrollerCompat jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private final ViewDragHelper.Callback jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new ViewDragHelper.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float[] jdField_b_of_type_ArrayOfFloat;
-  private int[] jdField_b_of_type_ArrayOfInt;
-  private int jdField_c_of_type_Int = -1;
-  private float[] jdField_c_of_type_ArrayOfFloat;
-  private int[] jdField_c_of_type_ArrayOfInt;
-  private int jdField_d_of_type_Int;
-  private float[] jdField_d_of_type_ArrayOfFloat;
-  private int e;
-  private int f;
+  private static final Interpolator v = new ViewDragHelper.1();
+  private int a;
+  private int b;
+  private int c = -1;
+  private float[] d;
+  private float[] e;
+  private float[] f;
+  private float[] g;
+  private int[] h;
+  private int[] i;
+  private int[] j;
+  private int k;
+  private VelocityTracker l;
+  private float m;
+  private float n;
+  private int o;
+  private int p;
+  private ScrollerCompat q;
+  private final ViewDragHelper.Callback r;
+  private View s;
+  private boolean t;
+  private final ViewGroup u;
+  private final Runnable w = new ViewDragHelper.2(this);
   
   private ViewDragHelper(Context paramContext, ViewGroup paramViewGroup, Interpolator paramInterpolator, ViewDragHelper.Callback paramCallback)
   {
@@ -47,29 +47,22 @@ public class ViewDragHelper
     {
       if (paramCallback != null)
       {
-        this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback = paramCallback;
+        this.u = paramViewGroup;
+        this.r = paramCallback;
         paramViewGroup = ViewConfiguration.get(paramContext);
-        this.e = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
-        this.jdField_b_of_type_Int = paramViewGroup.getScaledTouchSlop();
-        this.jdField_a_of_type_Float = paramViewGroup.getScaledMaximumFlingVelocity();
-        this.jdField_b_of_type_Float = paramViewGroup.getScaledMinimumFlingVelocity();
+        this.o = ((int)(paramContext.getResources().getDisplayMetrics().density * 20.0F + 0.5F));
+        this.b = paramViewGroup.getScaledTouchSlop();
+        this.m = paramViewGroup.getScaledMaximumFlingVelocity();
+        this.n = paramViewGroup.getScaledMinimumFlingVelocity();
         if (paramInterpolator == null) {
-          paramInterpolator = jdField_a_of_type_AndroidViewAnimationInterpolator;
+          paramInterpolator = v;
         }
-        this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat = ScrollerCompat.create(paramContext, paramInterpolator);
+        this.q = ScrollerCompat.create(paramContext, paramInterpolator);
         return;
       }
       throw new IllegalArgumentException("Callback may not be null");
     }
     throw new IllegalArgumentException("Parent view may not be null");
-  }
-  
-  private float a(float paramFloat)
-  {
-    double d1 = paramFloat - 0.5F;
-    Double.isNaN(d1);
-    return (float)Math.sin((float)(d1 * 0.47123891676382D));
   }
   
   private float a(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -88,38 +81,16 @@ public class ViewDragHelper
     return paramFloat1;
   }
   
-  private int a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.jdField_a_of_type_AndroidViewViewGroup.getLeft() + this.e) {
-      j = 1;
-    } else {
-      j = 0;
-    }
-    int i = j;
-    if (paramInt2 < this.jdField_a_of_type_AndroidViewViewGroup.getTop() + this.e) {
-      i = j | 0x4;
-    }
-    int j = i;
-    if (paramInt1 > this.jdField_a_of_type_AndroidViewViewGroup.getRight() - this.e) {
-      j = i | 0x2;
-    }
-    paramInt1 = j;
-    if (paramInt2 > this.jdField_a_of_type_AndroidViewViewGroup.getBottom() - this.e) {
-      paramInt1 = j | 0x8;
-    }
-    return paramInt1;
-  }
-  
   private int a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt1 == 0) {
       return 0;
     }
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
-    int j = i / 2;
-    float f2 = Math.min(1.0F, Math.abs(paramInt1) / i);
-    float f1 = j;
-    f2 = a(f2);
+    int i1 = this.u.getWidth();
+    int i2 = i1 / 2;
+    float f2 = Math.min(1.0F, Math.abs(paramInt1) / i1);
+    float f1 = i2;
+    f2 = b(f2);
     paramInt2 = Math.abs(paramInt2);
     if (paramInt2 > 0)
     {
@@ -139,47 +110,47 @@ public class ViewDragHelper
   
   private int a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt3 = b(paramInt3, (int)this.jdField_b_of_type_Float, (int)this.jdField_a_of_type_Float);
-    paramInt4 = b(paramInt4, (int)this.jdField_b_of_type_Float, (int)this.jdField_a_of_type_Float);
-    int i = Math.abs(paramInt1);
-    int j = Math.abs(paramInt2);
-    int k = Math.abs(paramInt3);
-    int m = Math.abs(paramInt4);
-    int n = k + m;
-    int i1 = i + j;
+    paramInt3 = b(paramInt3, (int)this.n, (int)this.m);
+    paramInt4 = b(paramInt4, (int)this.n, (int)this.m);
+    int i1 = Math.abs(paramInt1);
+    int i2 = Math.abs(paramInt2);
+    int i3 = Math.abs(paramInt3);
+    int i4 = Math.abs(paramInt4);
+    int i5 = i3 + i4;
+    int i6 = i1 + i2;
     float f1;
     float f2;
     if (paramInt3 != 0)
     {
-      f1 = k;
-      f2 = n;
+      f1 = i3;
+      f2 = i5;
     }
     else
     {
-      f1 = i;
-      f2 = i1;
+      f1 = i1;
+      f2 = i6;
     }
     float f3 = f1 / f2;
     if (paramInt4 != 0)
     {
-      f1 = m;
-      f2 = n;
+      f1 = i4;
+      f2 = i5;
     }
     else
     {
-      f1 = j;
-      f2 = i1;
+      f1 = i2;
+      f2 = i6;
     }
     f1 /= f2;
-    paramInt1 = a(paramInt1, paramInt3, this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.b(paramView));
-    paramInt2 = a(paramInt2, paramInt4, this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(paramView));
+    paramInt1 = a(paramInt1, paramInt3, this.r.b(paramView));
+    paramInt2 = a(paramInt2, paramInt4, this.r.a(paramView));
     return (int)(paramInt1 * f3 + paramInt2 * f1);
   }
   
   public static ViewDragHelper a(ViewGroup paramViewGroup, float paramFloat, Interpolator paramInterpolator, ViewDragHelper.Callback paramCallback)
   {
     paramViewGroup = a(paramViewGroup, paramInterpolator, paramCallback);
-    paramViewGroup.jdField_b_of_type_Int = ((int)(paramViewGroup.jdField_b_of_type_Int * (1.0F / paramFloat)));
+    paramViewGroup.b = ((int)(paramViewGroup.b * (1.0F / paramFloat)));
     return paramViewGroup;
   }
   
@@ -190,17 +161,17 @@ public class ViewDragHelper
   
   private void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Boolean = true;
-    ViewDragHelper.Callback localCallback = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback;
+    this.t = true;
+    ViewDragHelper.Callback localCallback = this.r;
     if (localCallback != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.s;
       if (localView != null) {
         localCallback.a(localView, paramFloat1, paramFloat2);
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Int == 1) {
+    this.t = false;
+    if (this.a == 1) {
       a(0);
     }
   }
@@ -208,70 +179,49 @@ public class ViewDragHelper
   private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
     c(paramInt);
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    this.jdField_c_of_type_ArrayOfFloat[paramInt] = paramFloat1;
+    float[] arrayOfFloat = this.d;
+    this.f[paramInt] = paramFloat1;
     arrayOfFloat[paramInt] = paramFloat1;
-    arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
-    this.jdField_d_of_type_ArrayOfFloat[paramInt] = paramFloat2;
+    arrayOfFloat = this.e;
+    this.g[paramInt] = paramFloat2;
     arrayOfFloat[paramInt] = paramFloat2;
-    this.jdField_a_of_type_ArrayOfInt[paramInt] = a((int)paramFloat1, (int)paramFloat2);
-    this.jdField_d_of_type_Int |= 1 << paramInt;
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    int j = this.jdField_a_of_type_AndroidViewView.getLeft();
-    int k = this.jdField_a_of_type_AndroidViewView.getTop();
-    int i = paramInt1;
-    if (paramInt3 != 0)
-    {
-      i = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.b(this.jdField_a_of_type_AndroidViewView, paramInt1, paramInt3);
-      this.jdField_a_of_type_AndroidViewView.offsetLeftAndRight(i - j);
-    }
-    paramInt1 = paramInt2;
-    if (paramInt4 != 0)
-    {
-      paramInt1 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(this.jdField_a_of_type_AndroidViewView, paramInt2, paramInt4);
-      this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(paramInt1 - k);
-    }
-    if ((paramInt3 != 0) || (paramInt4 != 0)) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(this.jdField_a_of_type_AndroidViewView, i, paramInt1, i - j, paramInt1 - k);
-    }
+    this.h[paramInt] = d((int)paramFloat1, (int)paramFloat2);
+    this.k |= 1 << paramInt;
   }
   
   private boolean a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
     paramFloat1 = Math.abs(paramFloat1);
     paramFloat2 = Math.abs(paramFloat2);
-    int i = this.jdField_a_of_type_ArrayOfInt[paramInt1];
+    int i1 = this.h[paramInt1];
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((i & paramInt2) == paramInt2)
+    if ((i1 & paramInt2) == paramInt2)
     {
       bool1 = bool2;
-      if ((this.f & paramInt2) != 0)
+      if ((this.p & paramInt2) != 0)
       {
         bool1 = bool2;
-        if ((this.jdField_c_of_type_ArrayOfInt[paramInt1] & paramInt2) != paramInt2)
+        if ((this.j[paramInt1] & paramInt2) != paramInt2)
         {
           bool1 = bool2;
-          if ((this.jdField_b_of_type_ArrayOfInt[paramInt1] & paramInt2) != paramInt2)
+          if ((this.i[paramInt1] & paramInt2) != paramInt2)
           {
-            i = this.jdField_b_of_type_Int;
-            if ((paramFloat1 <= i) && (paramFloat2 <= i)) {
+            i1 = this.b;
+            if ((paramFloat1 <= i1) && (paramFloat2 <= i1)) {
               return false;
             }
-            if ((paramFloat1 < paramFloat2 * 0.5F) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(paramInt2)))
+            if ((paramFloat1 < paramFloat2 * 0.5F) && (this.r.b(paramInt2)))
             {
-              int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+              int[] arrayOfInt = this.j;
               arrayOfInt[paramInt1] |= paramInt2;
               return false;
             }
             bool1 = bool2;
-            if ((this.jdField_b_of_type_ArrayOfInt[paramInt1] & paramInt2) == 0)
+            if ((this.i[paramInt1] & paramInt2) == 0)
             {
               bool1 = bool2;
-              if (paramFloat1 > this.jdField_b_of_type_Int) {
+              if (paramFloat1 > this.b) {
                 bool1 = true;
               }
             }
@@ -284,18 +234,18 @@ public class ViewDragHelper
   
   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getLeft();
-    int j = this.jdField_a_of_type_AndroidViewView.getTop();
-    paramInt1 -= i;
-    paramInt2 -= j;
+    int i1 = this.s.getLeft();
+    int i2 = this.s.getTop();
+    paramInt1 -= i1;
+    paramInt2 -= i2;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.abortAnimation();
+      this.q.abortAnimation();
       a(0);
       return false;
     }
-    paramInt3 = a(this.jdField_a_of_type_AndroidViewView, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.startScroll(i, j, paramInt1, paramInt2, paramInt3);
+    paramInt3 = a(this.s, paramInt1, paramInt2, paramInt3, paramInt4);
+    this.q.startScroll(i1, i2, paramInt1, paramInt2, paramInt3);
     a(2);
     return true;
   }
@@ -308,52 +258,59 @@ public class ViewDragHelper
     if (paramView == null) {
       return false;
     }
-    int i;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.b(paramView) > 0) {
-      i = 1;
+    int i1;
+    if (this.r.b(paramView) > 0) {
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    int j;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(paramView) > 0) {
-      j = 1;
+    int i2;
+    if (this.r.a(paramView) > 0) {
+      i2 = 1;
     } else {
-      j = 0;
+      i2 = 0;
     }
-    if ((i != 0) && (j != 0))
+    if ((i1 != 0) && (i2 != 0))
     {
-      i = this.jdField_b_of_type_Int;
-      if (paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 > i * i) {
+      i1 = this.b;
+      if (paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 > i1 * i1) {
         bool1 = true;
       }
       return bool1;
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       bool1 = bool3;
-      if (Math.abs(paramFloat1) > this.jdField_b_of_type_Int) {
+      if (Math.abs(paramFloat1) > this.b) {
         bool1 = true;
       }
       return bool1;
     }
     bool1 = bool2;
-    if (j != 0)
+    if (i2 != 0)
     {
       bool1 = bool2;
-      if (Math.abs(paramFloat2) > this.jdField_b_of_type_Int) {
+      if (Math.abs(paramFloat2) > this.b) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
+  private float b(float paramFloat)
+  {
+    double d1 = paramFloat - 0.5F;
+    Double.isNaN(d1);
+    return (float)Math.sin((float)(d1 * 0.47123891676382D));
+  }
+  
   private int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = Math.abs(paramInt1);
-    if (i < paramInt2) {
+    int i1 = Math.abs(paramInt1);
+    if (i1 < paramInt2) {
       return 0;
     }
-    if (i > paramInt3)
+    if (i1 > paramInt3)
     {
       if (paramInt1 > 0) {
         return paramInt3;
@@ -365,91 +322,73 @@ public class ViewDragHelper
   
   private void b(float paramFloat1, float paramFloat2, int paramInt)
   {
-    int j = 1;
+    int i2 = 1;
     if (!a(paramFloat1, paramFloat2, paramInt, 1)) {
-      j = 0;
+      i2 = 0;
     }
-    int i = j;
+    int i1 = i2;
     if (a(paramFloat2, paramFloat1, paramInt, 4)) {
-      i = j | 0x4;
+      i1 = i2 | 0x4;
     }
-    j = i;
+    i2 = i1;
     if (a(paramFloat1, paramFloat2, paramInt, 2)) {
-      j = i | 0x2;
+      i2 = i1 | 0x2;
     }
-    i = j;
+    i1 = i2;
     if (a(paramFloat2, paramFloat1, paramInt, 8)) {
-      i = j | 0x8;
+      i1 = i2 | 0x8;
     }
-    if (i != 0)
+    if (i1 != 0)
     {
-      int[] arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-      arrayOfInt[paramInt] |= i;
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.b(i, paramInt);
+      int[] arrayOfInt = this.i;
+      arrayOfInt[paramInt] |= i1;
+      this.r.b(i1, paramInt);
     }
   }
   
   private void b(int paramInt)
   {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.d;
     if (arrayOfFloat != null)
     {
       if (arrayOfFloat.length <= paramInt) {
         return;
       }
       arrayOfFloat[paramInt] = 0.0F;
-      this.jdField_b_of_type_ArrayOfFloat[paramInt] = 0.0F;
-      this.jdField_c_of_type_ArrayOfFloat[paramInt] = 0.0F;
-      this.jdField_d_of_type_ArrayOfFloat[paramInt] = 0.0F;
-      this.jdField_a_of_type_ArrayOfInt[paramInt] = 0;
-      this.jdField_b_of_type_ArrayOfInt[paramInt] = 0;
-      this.jdField_c_of_type_ArrayOfInt[paramInt] = 0;
-      this.jdField_d_of_type_Int = ((1 << paramInt ^ 0xFFFFFFFF) & this.jdField_d_of_type_Int);
+      this.e[paramInt] = 0.0F;
+      this.f[paramInt] = 0.0F;
+      this.g[paramInt] = 0.0F;
+      this.h[paramInt] = 0;
+      this.i[paramInt] = 0;
+      this.j[paramInt] = 0;
+      this.k = ((1 << paramInt ^ 0xFFFFFFFF) & this.k);
     }
   }
   
-  private void b(MotionEvent paramMotionEvent)
+  private void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int j = MotionEventCompat.getPointerCount(paramMotionEvent);
-    int i = 0;
-    while (i < j)
+    int i2 = this.s.getLeft();
+    int i3 = this.s.getTop();
+    int i1 = paramInt1;
+    if (paramInt3 != 0)
     {
-      int k = MotionEventCompat.getPointerId(paramMotionEvent, i);
-      float f1 = MotionEventCompat.getX(paramMotionEvent, i);
-      float f2 = MotionEventCompat.getY(paramMotionEvent, i);
-      float[] arrayOfFloat1 = this.jdField_c_of_type_ArrayOfFloat;
-      if (arrayOfFloat1 != null)
-      {
-        float[] arrayOfFloat2 = this.jdField_d_of_type_ArrayOfFloat;
-        if ((arrayOfFloat2 != null) && (arrayOfFloat1.length > k) && (arrayOfFloat2.length > k))
-        {
-          arrayOfFloat1[k] = f1;
-          arrayOfFloat2[k] = f2;
-        }
-      }
-      i += 1;
+      i1 = this.r.b(this.s, paramInt1, paramInt3);
+      this.s.offsetLeftAndRight(i1 - i2);
     }
-  }
-  
-  private void c()
-  {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    if (arrayOfFloat == null) {
-      return;
+    paramInt1 = paramInt2;
+    if (paramInt4 != 0)
+    {
+      paramInt1 = this.r.a(this.s, paramInt2, paramInt4);
+      this.s.offsetTopAndBottom(paramInt1 - i3);
     }
-    Arrays.fill(arrayOfFloat, 0.0F);
-    Arrays.fill(this.jdField_b_of_type_ArrayOfFloat, 0.0F);
-    Arrays.fill(this.jdField_c_of_type_ArrayOfFloat, 0.0F);
-    Arrays.fill(this.jdField_d_of_type_ArrayOfFloat, 0.0F);
-    Arrays.fill(this.jdField_a_of_type_ArrayOfInt, 0);
-    Arrays.fill(this.jdField_b_of_type_ArrayOfInt, 0);
-    Arrays.fill(this.jdField_c_of_type_ArrayOfInt, 0);
-    this.jdField_d_of_type_Int = 0;
+    if ((paramInt3 != 0) || (paramInt4 != 0)) {
+      this.r.a(this.s, i1, paramInt1, i1 - i2, paramInt1 - i3);
+    }
   }
   
   private void c(int paramInt)
   {
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    float[] arrayOfFloat1 = this.d;
     if ((arrayOfFloat1 == null) || (arrayOfFloat1.length <= paramInt))
     {
       paramInt += 1;
@@ -460,235 +399,125 @@ public class ViewDragHelper
       int[] arrayOfInt1 = new int[paramInt];
       int[] arrayOfInt2 = new int[paramInt];
       int[] arrayOfInt3 = new int[paramInt];
-      Object localObject = this.jdField_a_of_type_ArrayOfFloat;
+      Object localObject = this.d;
       if (localObject != null)
       {
         System.arraycopy(localObject, 0, arrayOfFloat1, 0, localObject.length);
-        localObject = this.jdField_b_of_type_ArrayOfFloat;
+        localObject = this.e;
         System.arraycopy(localObject, 0, arrayOfFloat2, 0, localObject.length);
-        localObject = this.jdField_c_of_type_ArrayOfFloat;
+        localObject = this.f;
         System.arraycopy(localObject, 0, arrayOfFloat3, 0, localObject.length);
-        localObject = this.jdField_d_of_type_ArrayOfFloat;
+        localObject = this.g;
         System.arraycopy(localObject, 0, arrayOfFloat4, 0, localObject.length);
-        localObject = this.jdField_a_of_type_ArrayOfInt;
+        localObject = this.h;
         System.arraycopy(localObject, 0, arrayOfInt1, 0, localObject.length);
-        localObject = this.jdField_b_of_type_ArrayOfInt;
+        localObject = this.i;
         System.arraycopy(localObject, 0, arrayOfInt2, 0, localObject.length);
-        localObject = this.jdField_c_of_type_ArrayOfInt;
+        localObject = this.j;
         System.arraycopy(localObject, 0, arrayOfInt3, 0, localObject.length);
       }
-      this.jdField_a_of_type_ArrayOfFloat = arrayOfFloat1;
-      this.jdField_b_of_type_ArrayOfFloat = arrayOfFloat2;
-      this.jdField_c_of_type_ArrayOfFloat = arrayOfFloat3;
-      this.jdField_d_of_type_ArrayOfFloat = arrayOfFloat4;
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt1;
-      this.jdField_b_of_type_ArrayOfInt = arrayOfInt2;
-      this.jdField_c_of_type_ArrayOfInt = arrayOfInt3;
+      this.d = arrayOfFloat1;
+      this.e = arrayOfFloat2;
+      this.f = arrayOfFloat3;
+      this.g = arrayOfFloat4;
+      this.h = arrayOfInt1;
+      this.i = arrayOfInt2;
+      this.j = arrayOfInt3;
     }
   }
   
-  private void d()
+  private void c(MotionEvent paramMotionEvent)
   {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    int i2 = MotionEventCompat.getPointerCount(paramMotionEvent);
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      int i3 = MotionEventCompat.getPointerId(paramMotionEvent, i1);
+      float f1 = MotionEventCompat.getX(paramMotionEvent, i1);
+      float f2 = MotionEventCompat.getY(paramMotionEvent, i1);
+      float[] arrayOfFloat1 = this.f;
+      if (arrayOfFloat1 != null)
+      {
+        float[] arrayOfFloat2 = this.g;
+        if ((arrayOfFloat2 != null) && (arrayOfFloat1.length > i3) && (arrayOfFloat2.length > i3))
+        {
+          arrayOfFloat1[i3] = f1;
+          arrayOfFloat2[i3] = f2;
+        }
+      }
+      i1 += 1;
+    }
+  }
+  
+  private int d(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < this.u.getLeft() + this.o) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    int i1 = i2;
+    if (paramInt2 < this.u.getTop() + this.o) {
+      i1 = i2 | 0x4;
+    }
+    int i2 = i1;
+    if (paramInt1 > this.u.getRight() - this.o) {
+      i2 = i1 | 0x2;
+    }
+    paramInt1 = i2;
+    if (paramInt2 > this.u.getBottom() - this.o) {
+      paramInt1 = i2 | 0x8;
+    }
+    return paramInt1;
+  }
+  
+  private void f()
+  {
+    float[] arrayOfFloat = this.d;
+    if (arrayOfFloat == null) {
+      return;
+    }
+    Arrays.fill(arrayOfFloat, 0.0F);
+    Arrays.fill(this.e, 0.0F);
+    Arrays.fill(this.f, 0.0F);
+    Arrays.fill(this.g, 0.0F);
+    Arrays.fill(this.h, 0);
+    Arrays.fill(this.i, 0);
+    Arrays.fill(this.j, 0);
+    this.k = 0;
+  }
+  
+  private void g()
+  {
+    VelocityTracker localVelocityTracker = this.l;
     if (localVelocityTracker != null)
     {
-      localVelocityTracker.computeCurrentVelocity(1000, this.jdField_a_of_type_Float);
-      a(a(VelocityTrackerCompat.getXVelocity(this.jdField_a_of_type_AndroidViewVelocityTracker, this.jdField_c_of_type_Int), this.jdField_b_of_type_Float, this.jdField_a_of_type_Float), a(VelocityTrackerCompat.getYVelocity(this.jdField_a_of_type_AndroidViewVelocityTracker, this.jdField_c_of_type_Int), this.jdField_b_of_type_Float, this.jdField_a_of_type_Float));
+      localVelocityTracker.computeCurrentVelocity(1000, this.m);
+      a(a(VelocityTrackerCompat.getXVelocity(this.l, this.c), this.n, this.m), a(VelocityTrackerCompat.getYVelocity(this.l, this.c), this.n, this.m));
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public View a(int paramInt1, int paramInt2)
-  {
-    int i = this.jdField_a_of_type_AndroidViewViewGroup.getChildCount() - 1;
-    while (i >= 0)
-    {
-      View localView = this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(i));
-      if ((paramInt1 >= localView.getLeft()) && (paramInt1 < localView.getRight()) && (paramInt2 >= localView.getTop()) && (paramInt2 < localView.getBottom())) {
-        return localView;
-      }
-      i -= 1;
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_c_of_type_Int = -1;
-    c();
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
-    if (localVelocityTracker != null)
-    {
-      localVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-    }
+    return this.a;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
+    this.n = paramFloat;
   }
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.a != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      ViewDragHelper.Callback localCallback = this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback;
+      this.a = paramInt;
+      ViewDragHelper.Callback localCallback = this.r;
       if (localCallback != null) {
         localCallback.a(paramInt);
       }
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_AndroidViewView = null;
-      }
-    }
-  }
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    int m = MotionEventCompat.getActionMasked(paramMotionEvent);
-    int k = MotionEventCompat.getActionIndex(paramMotionEvent);
-    if (m == 0) {
-      a();
-    }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    int j = 0;
-    int i = 0;
-    float f1;
-    float f2;
-    if (m != 0)
-    {
-      if (m != 1)
-      {
-        Object localObject;
-        if (m != 2)
-        {
-          if (m != 3)
-          {
-            if (m != 5)
-            {
-              if (m != 6) {
-                return;
-              }
-              j = MotionEventCompat.getPointerId(paramMotionEvent, k);
-              if ((this.jdField_a_of_type_Int == 1) && (j == this.jdField_c_of_type_Int))
-              {
-                k = MotionEventCompat.getPointerCount(paramMotionEvent);
-                while (i < k)
-                {
-                  m = MotionEventCompat.getPointerId(paramMotionEvent, i);
-                  if (m != this.jdField_c_of_type_Int)
-                  {
-                    f1 = MotionEventCompat.getX(paramMotionEvent, i);
-                    f2 = MotionEventCompat.getY(paramMotionEvent, i);
-                    localObject = this.jdField_a_of_type_AndroidViewView;
-                    if ((localObject != null) && (localObject.equals(a((int)f1, (int)f2))) && (a(this.jdField_a_of_type_AndroidViewView, m)))
-                    {
-                      i = this.jdField_c_of_type_Int;
-                      break label219;
-                    }
-                  }
-                  i += 1;
-                }
-                i = -1;
-                label219:
-                if (i == -1) {
-                  d();
-                }
-              }
-              b(j);
-              return;
-            }
-            i = MotionEventCompat.getPointerId(paramMotionEvent, k);
-            f1 = MotionEventCompat.getX(paramMotionEvent, k);
-            f2 = MotionEventCompat.getY(paramMotionEvent, k);
-            a(f1, f2, i);
-            if (this.jdField_a_of_type_Int == 0)
-            {
-              a(a((int)f1, (int)f2), i);
-              j = this.jdField_a_of_type_ArrayOfInt[i];
-              k = this.f;
-              if ((j & k) != 0) {
-                this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(j & k, i);
-              }
-            }
-            else if (b((int)f1, (int)f2))
-            {
-              a(this.jdField_a_of_type_AndroidViewView, i);
-            }
-          }
-          else
-          {
-            if (this.jdField_a_of_type_Int == 1) {
-              a(0.0F, 0.0F);
-            }
-            a();
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_Int == 1)
-          {
-            i = MotionEventCompat.findPointerIndex(paramMotionEvent, this.jdField_c_of_type_Int);
-            f1 = MotionEventCompat.getX(paramMotionEvent, i);
-            f2 = MotionEventCompat.getY(paramMotionEvent, i);
-            localObject = this.jdField_c_of_type_ArrayOfFloat;
-            j = this.jdField_c_of_type_Int;
-            i = (int)(f1 - localObject[j]);
-            j = (int)(f2 - this.jdField_d_of_type_ArrayOfFloat[j]);
-            a(this.jdField_a_of_type_AndroidViewView.getLeft() + i, this.jdField_a_of_type_AndroidViewView.getTop() + j, i, j);
-            b(paramMotionEvent);
-            return;
-          }
-          k = MotionEventCompat.getPointerCount(paramMotionEvent);
-          i = j;
-          while (i < k)
-          {
-            j = MotionEventCompat.getPointerId(paramMotionEvent, i);
-            f2 = MotionEventCompat.getX(paramMotionEvent, i);
-            f1 = MotionEventCompat.getY(paramMotionEvent, i);
-            f2 -= this.jdField_a_of_type_ArrayOfFloat[j];
-            f1 -= this.jdField_b_of_type_ArrayOfFloat[j];
-            b(f2, f1, j);
-            if (this.jdField_a_of_type_Int == 1) {
-              break;
-            }
-            localObject = a((int)this.jdField_a_of_type_ArrayOfFloat[j], (int)this.jdField_b_of_type_ArrayOfFloat[j]);
-            if ((a((View)localObject, f2, f1)) && (a((View)localObject, j))) {
-              break;
-            }
-            i += 1;
-          }
-          b(paramMotionEvent);
-        }
-      }
-      else
-      {
-        if (this.jdField_a_of_type_Int == 1) {
-          d();
-        }
-        a();
-      }
-    }
-    else
-    {
-      f1 = paramMotionEvent.getX();
-      f2 = paramMotionEvent.getY();
-      i = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-      paramMotionEvent = a((int)f1, (int)f2);
-      a(f1, f2, i);
-      a(paramMotionEvent, i);
-      j = this.jdField_a_of_type_ArrayOfInt[i];
-      k = this.f;
-      if ((j & k) != 0) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(j & k, i);
+      if (this.a == 0) {
+        this.s = null;
       }
     }
   }
@@ -701,215 +530,196 @@ public class ViewDragHelper
     } else {
       localViewParent = paramView.getParent();
     }
-    if ((localViewParent != null) && (!localViewParent.equals(this.jdField_a_of_type_AndroidViewViewGroup)))
+    if ((localViewParent != null) && (!localViewParent.equals(this.u)))
     {
       paramView = new StringBuilder();
       paramView.append("captureChildView: parameter must be a descendant of the ViewDragHelper's tracked parent view (");
-      paramView.append(this.jdField_a_of_type_AndroidViewViewGroup);
+      paramView.append(this.u);
       paramView.append(")");
       throw new IllegalArgumentException(paramView.toString());
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(paramView, paramInt);
+    this.s = paramView;
+    this.c = paramInt;
+    this.r.b(paramView, paramInt);
     a(1);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 1;
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return a(paramInt1, paramInt2, (int)VelocityTrackerCompat.getXVelocity(this.jdField_a_of_type_AndroidViewVelocityTracker, this.jdField_c_of_type_Int), (int)VelocityTrackerCompat.getYVelocity(this.jdField_a_of_type_AndroidViewVelocityTracker, this.jdField_c_of_type_Int));
+    if (this.t) {
+      return a(paramInt1, paramInt2, (int)VelocityTrackerCompat.getXVelocity(this.l, this.c), (int)VelocityTrackerCompat.getYVelocity(this.l, this.c));
     }
     throw new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    int i = MotionEventCompat.getActionMasked(paramMotionEvent);
-    int j = MotionEventCompat.getActionIndex(paramMotionEvent);
-    if (i == 0) {
-      a();
+    int i1 = MotionEventCompat.getActionMasked(paramMotionEvent);
+    int i2 = MotionEventCompat.getActionIndex(paramMotionEvent);
+    if (i1 == 0) {
+      c();
     }
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.l == null) {
+      this.l = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.l.addMovement(paramMotionEvent);
     boolean bool = false;
     float f1;
     float f2;
-    int k;
-    if (i != 0)
+    int i3;
+    if (i1 != 0)
     {
-      if (i != 1) {
-        if (i != 2)
+      if (i1 != 1) {
+        if (i1 != 2)
         {
-          if (i != 3)
+          if (i1 != 3)
           {
-            if (i != 5)
+            if (i1 != 5)
             {
-              if (i != 6) {
+              if (i1 != 6) {
                 break label512;
               }
-              b(MotionEventCompat.getPointerId(paramMotionEvent, j));
+              b(MotionEventCompat.getPointerId(paramMotionEvent, i2));
               break label512;
             }
-            i = MotionEventCompat.getPointerId(paramMotionEvent, j);
-            f1 = MotionEventCompat.getX(paramMotionEvent, j);
-            f2 = MotionEventCompat.getY(paramMotionEvent, j);
-            a(f1, f2, i);
-            j = this.jdField_a_of_type_Int;
-            if (j == 0)
+            i1 = MotionEventCompat.getPointerId(paramMotionEvent, i2);
+            f1 = MotionEventCompat.getX(paramMotionEvent, i2);
+            f2 = MotionEventCompat.getY(paramMotionEvent, i2);
+            a(f1, f2, i1);
+            i2 = this.a;
+            if (i2 == 0)
             {
-              j = this.jdField_a_of_type_ArrayOfInt[i];
-              k = this.f;
-              if ((j & k) == 0) {
+              i2 = this.h[i1];
+              i3 = this.p;
+              if ((i2 & i3) == 0) {
                 break label512;
               }
-              this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(j & k, i);
+              this.r.a(i2 & i3, i1);
               break label512;
             }
-            if (j != 2) {
+            if (i2 != 2) {
               break label512;
             }
-            paramMotionEvent = a((int)f1, (int)f2);
-            if ((paramMotionEvent == null) || (!paramMotionEvent.equals(this.jdField_a_of_type_AndroidViewView))) {
+            paramMotionEvent = c((int)f1, (int)f2);
+            if ((paramMotionEvent == null) || (!paramMotionEvent.equals(this.s))) {
               break label512;
             }
-            a(paramMotionEvent, i);
+            b(paramMotionEvent, i1);
             break label512;
           }
         }
         else
         {
-          j = MotionEventCompat.getPointerCount(paramMotionEvent);
-          i = 0;
-          while ((i < j) && (this.jdField_a_of_type_ArrayOfFloat != null) && (this.jdField_b_of_type_ArrayOfFloat != null))
+          i2 = MotionEventCompat.getPointerCount(paramMotionEvent);
+          i1 = 0;
+          while ((i1 < i2) && (this.d != null) && (this.e != null))
           {
-            k = MotionEventCompat.getPointerId(paramMotionEvent, i);
-            if ((k < this.jdField_a_of_type_ArrayOfFloat.length) && (k < this.jdField_b_of_type_ArrayOfFloat.length))
+            i3 = MotionEventCompat.getPointerId(paramMotionEvent, i1);
+            if ((i3 < this.d.length) && (i3 < this.e.length))
             {
-              f2 = MotionEventCompat.getX(paramMotionEvent, i);
-              f1 = MotionEventCompat.getY(paramMotionEvent, i);
-              f2 -= this.jdField_a_of_type_ArrayOfFloat[k];
-              f1 -= this.jdField_b_of_type_ArrayOfFloat[k];
-              b(f2, f1, k);
-              if (this.jdField_a_of_type_Int == 1) {
+              f2 = MotionEventCompat.getX(paramMotionEvent, i1);
+              f1 = MotionEventCompat.getY(paramMotionEvent, i1);
+              f2 -= this.d[i3];
+              f1 -= this.e[i3];
+              b(f2, f1, i3);
+              if (this.a == 1) {
                 break;
               }
-              View localView = a((int)this.jdField_a_of_type_ArrayOfFloat[k], (int)this.jdField_b_of_type_ArrayOfFloat[k]);
-              if ((localView != null) && (a(localView, f2, f1)) && (a(localView, k))) {
+              View localView = c((int)this.d[i3], (int)this.e[i3]);
+              if ((localView != null) && (a(localView, f2, f1)) && (b(localView, i3))) {
                 break;
               }
             }
-            i += 1;
+            i1 += 1;
           }
-          b(paramMotionEvent);
+          c(paramMotionEvent);
           break label512;
         }
       }
-      a();
+      c();
     }
     else
     {
       f1 = paramMotionEvent.getX();
       f2 = paramMotionEvent.getY();
-      i = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-      a(f1, f2, i);
-      paramMotionEvent = a((int)f1, (int)f2);
-      if ((paramMotionEvent != null) && (paramMotionEvent.equals(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_a_of_type_Int == 2)) {
-        a(paramMotionEvent, i);
+      i1 = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+      a(f1, f2, i1);
+      paramMotionEvent = c((int)f1, (int)f2);
+      if ((paramMotionEvent != null) && (paramMotionEvent.equals(this.s)) && (this.a == 2)) {
+        b(paramMotionEvent, i1);
       }
-      j = this.jdField_a_of_type_ArrayOfInt[i];
-      k = this.f;
-      if ((j & k) != 0) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(j & k, i);
+      i2 = this.h[i1];
+      i3 = this.p;
+      if ((i2 & i3) != 0) {
+        this.r.a(i2 & i3, i1);
       }
     }
     label512:
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.a == 1) {
       bool = true;
     }
     return bool;
   }
   
-  boolean a(View paramView, int paramInt)
-  {
-    if ((paramView != null) && (paramView.equals(this.jdField_a_of_type_AndroidViewView)) && (this.jdField_c_of_type_Int == paramInt)) {
-      return true;
-    }
-    if ((paramView != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(paramView, paramInt)))
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      a(paramView, paramInt);
-      return true;
-    }
-    return false;
-  }
-  
   public boolean a(View paramView, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_c_of_type_Int = -1;
+    this.s = paramView;
+    this.c = -1;
     return a(paramInt1, paramInt2, 0, 0);
   }
   
   public boolean a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.s;
     boolean bool2 = false;
     if (localView == null) {
       return false;
     }
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.a == 2)
     {
-      boolean bool3 = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.computeScrollOffset();
-      int i = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrX();
-      int j = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrY();
-      int k = i - this.jdField_a_of_type_AndroidViewView.getLeft();
-      int m = j - this.jdField_a_of_type_AndroidViewView.getTop();
-      if ((!bool3) && (m != 0))
+      boolean bool3 = this.q.computeScrollOffset();
+      int i1 = this.q.getCurrX();
+      int i2 = this.q.getCurrY();
+      int i3 = i1 - this.s.getLeft();
+      int i4 = i2 - this.s.getTop();
+      if ((!bool3) && (i4 != 0))
       {
-        this.jdField_a_of_type_AndroidViewView.setTop(0);
+        this.s.setTop(0);
         return true;
       }
-      if (k != 0) {
-        this.jdField_a_of_type_AndroidViewView.offsetLeftAndRight(k);
+      if (i3 != 0) {
+        this.s.offsetLeftAndRight(i3);
       }
-      if (m != 0) {
-        this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(m);
+      if (i4 != 0) {
+        this.s.offsetTopAndBottom(i4);
       }
-      if ((k != 0) || (m != 0)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(this.jdField_a_of_type_AndroidViewView, i, j, k, m);
+      if ((i3 != 0) || (i4 != 0)) {
+        this.r.a(this.s, i1, i2, i3, i4);
       }
       boolean bool1 = bool3;
       if (bool3)
       {
         bool1 = bool3;
-        if (i == this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getFinalX())
+        if (i1 == this.q.getFinalX())
         {
           bool1 = bool3;
-          if (j == this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getFinalY())
+          if (i2 == this.q.getFinalY())
           {
-            this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.abortAnimation();
-            bool1 = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.isFinished();
+            this.q.abortAnimation();
+            bool1 = this.q.isFinished();
           }
         }
       }
       if (!bool1) {
         if (paramBoolean) {
-          this.jdField_a_of_type_AndroidViewViewGroup.post(this.jdField_a_of_type_JavaLangRunnable);
+          this.u.post(this.w);
         } else {
           a(0);
         }
       }
     }
     paramBoolean = bool2;
-    if (this.jdField_a_of_type_Int == 2) {
+    if (this.a == 2) {
       paramBoolean = true;
     }
     return paramBoolean;
@@ -917,27 +727,171 @@ public class ViewDragHelper
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    return this.b;
   }
   
-  public void b()
+  public void b(MotionEvent paramMotionEvent)
   {
-    a();
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      int i = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrX();
-      int j = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrY();
-      this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.abortAnimation();
-      int k = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrX();
-      int m = this.jdField_a_of_type_AndroidSupportV4WidgetScrollerCompat.getCurrY();
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricInteractionViewDragHelper$Callback.a(this.jdField_a_of_type_AndroidViewView, k, m, k - i, m - j);
+    int i4 = MotionEventCompat.getActionMasked(paramMotionEvent);
+    int i3 = MotionEventCompat.getActionIndex(paramMotionEvent);
+    if (i4 == 0) {
+      c();
     }
-    a(0);
+    if (this.l == null) {
+      this.l = VelocityTracker.obtain();
+    }
+    this.l.addMovement(paramMotionEvent);
+    int i2 = 0;
+    int i1 = 0;
+    float f1;
+    float f2;
+    if (i4 != 0)
+    {
+      if (i4 != 1)
+      {
+        Object localObject;
+        if (i4 != 2)
+        {
+          if (i4 != 3)
+          {
+            if (i4 != 5)
+            {
+              if (i4 != 6) {
+                return;
+              }
+              i2 = MotionEventCompat.getPointerId(paramMotionEvent, i3);
+              if ((this.a == 1) && (i2 == this.c))
+              {
+                i3 = MotionEventCompat.getPointerCount(paramMotionEvent);
+                while (i1 < i3)
+                {
+                  i4 = MotionEventCompat.getPointerId(paramMotionEvent, i1);
+                  if (i4 != this.c)
+                  {
+                    f1 = MotionEventCompat.getX(paramMotionEvent, i1);
+                    f2 = MotionEventCompat.getY(paramMotionEvent, i1);
+                    localObject = this.s;
+                    if ((localObject != null) && (localObject.equals(c((int)f1, (int)f2))) && (b(this.s, i4)))
+                    {
+                      i1 = this.c;
+                      break label219;
+                    }
+                  }
+                  i1 += 1;
+                }
+                i1 = -1;
+                label219:
+                if (i1 == -1) {
+                  g();
+                }
+              }
+              b(i2);
+              return;
+            }
+            i1 = MotionEventCompat.getPointerId(paramMotionEvent, i3);
+            f1 = MotionEventCompat.getX(paramMotionEvent, i3);
+            f2 = MotionEventCompat.getY(paramMotionEvent, i3);
+            a(f1, f2, i1);
+            if (this.a == 0)
+            {
+              b(c((int)f1, (int)f2), i1);
+              i2 = this.h[i1];
+              i3 = this.p;
+              if ((i2 & i3) != 0) {
+                this.r.a(i2 & i3, i1);
+              }
+            }
+            else if (b((int)f1, (int)f2))
+            {
+              b(this.s, i1);
+            }
+          }
+          else
+          {
+            if (this.a == 1) {
+              a(0.0F, 0.0F);
+            }
+            c();
+          }
+        }
+        else
+        {
+          if (this.a == 1)
+          {
+            i1 = MotionEventCompat.findPointerIndex(paramMotionEvent, this.c);
+            f1 = MotionEventCompat.getX(paramMotionEvent, i1);
+            f2 = MotionEventCompat.getY(paramMotionEvent, i1);
+            localObject = this.f;
+            i2 = this.c;
+            i1 = (int)(f1 - localObject[i2]);
+            i2 = (int)(f2 - this.g[i2]);
+            b(this.s.getLeft() + i1, this.s.getTop() + i2, i1, i2);
+            c(paramMotionEvent);
+            return;
+          }
+          i3 = MotionEventCompat.getPointerCount(paramMotionEvent);
+          i1 = i2;
+          while (i1 < i3)
+          {
+            i2 = MotionEventCompat.getPointerId(paramMotionEvent, i1);
+            f2 = MotionEventCompat.getX(paramMotionEvent, i1);
+            f1 = MotionEventCompat.getY(paramMotionEvent, i1);
+            f2 -= this.d[i2];
+            f1 -= this.e[i2];
+            b(f2, f1, i2);
+            if (this.a == 1) {
+              break;
+            }
+            localObject = c((int)this.d[i2], (int)this.e[i2]);
+            if ((a((View)localObject, f2, f1)) && (b((View)localObject, i2))) {
+              break;
+            }
+            i1 += 1;
+          }
+          c(paramMotionEvent);
+        }
+      }
+      else
+      {
+        if (this.a == 1) {
+          g();
+        }
+        c();
+      }
+    }
+    else
+    {
+      f1 = paramMotionEvent.getX();
+      f2 = paramMotionEvent.getY();
+      i1 = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+      paramMotionEvent = c((int)f1, (int)f2);
+      a(f1, f2, i1);
+      b(paramMotionEvent, i1);
+      i2 = this.h[i1];
+      i3 = this.p;
+      if ((i2 & i3) != 0) {
+        this.r.a(i2 & i3, i1);
+      }
+    }
   }
   
   public boolean b(int paramInt1, int paramInt2)
   {
-    return b(this.jdField_a_of_type_AndroidViewView, paramInt1, paramInt2);
+    return b(this.s, paramInt1, paramInt2);
+  }
+  
+  boolean b(View paramView, int paramInt)
+  {
+    if ((paramView != null) && (paramView.equals(this.s)) && (this.c == paramInt)) {
+      return true;
+    }
+    if ((paramView != null) && (this.r.a(paramView, paramInt)))
+    {
+      this.c = paramInt;
+      a(paramView, paramInt);
+      return true;
+    }
+    return false;
   }
   
   public boolean b(View paramView, int paramInt1, int paramInt2)
@@ -964,10 +918,56 @@ public class ViewDragHelper
     }
     return bool1;
   }
+  
+  public View c(int paramInt1, int paramInt2)
+  {
+    int i1 = this.u.getChildCount() - 1;
+    while (i1 >= 0)
+    {
+      View localView = this.u.getChildAt(this.r.c(i1));
+      if ((paramInt1 >= localView.getLeft()) && (paramInt1 < localView.getRight()) && (paramInt2 >= localView.getTop()) && (paramInt2 < localView.getBottom())) {
+        return localView;
+      }
+      i1 -= 1;
+    }
+    return null;
+  }
+  
+  public void c()
+  {
+    this.c = -1;
+    f();
+    VelocityTracker localVelocityTracker = this.l;
+    if (localVelocityTracker != null)
+    {
+      localVelocityTracker.recycle();
+      this.l = null;
+    }
+  }
+  
+  public void d()
+  {
+    c();
+    if (this.a == 2)
+    {
+      int i1 = this.q.getCurrX();
+      int i2 = this.q.getCurrY();
+      this.q.abortAnimation();
+      int i3 = this.q.getCurrX();
+      int i4 = this.q.getCurrY();
+      this.r.a(this.s, i3, i4, i3 - i1, i4 - i2);
+    }
+    a(0);
+  }
+  
+  public boolean e()
+  {
+    return this.a == 1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.interaction.ViewDragHelper
  * JD-Core Version:    0.7.0.1
  */

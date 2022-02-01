@@ -27,22 +27,22 @@ import java.util.List;
 public class C2CShortcutBarAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private C2CShortcutBarAdapter.ItemExposeListener jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter$ItemExposeListener;
-  private List<C2CShortcutAppInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context a;
+  private List<C2CShortcutAppInfo> b = new ArrayList();
+  private C2CShortcutBarAdapter.ItemExposeListener c;
   
   public C2CShortcutBarAdapter(Context paramContext, List<C2CShortcutAppInfo> paramList, C2CShortcutBarAdapter.ItemExposeListener paramItemExposeListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter$ItemExposeListener = paramItemExposeListener;
+    this.a = paramContext;
+    this.c = paramItemExposeListener;
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.addAll(paramList);
     }
   }
   
   private void a(ImageView paramImageView, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838632);
+    Object localObject = this.a.getResources().getDrawable(2130838758);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
@@ -52,8 +52,8 @@ public class C2CShortcutBarAdapter
     try
     {
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-      paramString.setTag(URLDrawableDecodeHandler.b(((ViewGroup.LayoutParams)localObject).width, ((ViewGroup.LayoutParams)localObject).height, ViewUtils.a(2.0F)));
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.i);
+      paramString.setTag(URLDrawableDecodeHandler.b(((ViewGroup.LayoutParams)localObject).width, ((ViewGroup.LayoutParams)localObject).height, ViewUtils.dip2px(2.0F)));
+      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
       paramImageView.setImageDrawable(paramString);
       return;
     }
@@ -67,7 +67,7 @@ public class C2CShortcutBarAdapter
   
   public C2CShortcutAppInfo a(int paramInt)
   {
-    return (C2CShortcutAppInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (C2CShortcutAppInfo)this.b.get(paramInt);
   }
   
   public void a(List<C2CShortcutAppInfo> paramList)
@@ -75,14 +75,14 @@ public class C2CShortcutBarAdapter
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b.clear();
+    this.b.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public long getItemId(int paramInt)
@@ -95,12 +95,12 @@ public class C2CShortcutBarAdapter
     if (paramView == null)
     {
       localObject = new C2CShortcutBarAdapter.ViewHolder();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560931, paramViewGroup, false);
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377456));
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377458));
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131377457));
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381186);
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131377454));
+      paramView = LayoutInflater.from(this.a).inflate(2131627272, paramViewGroup, false);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).a = ((URLImageView)paramView.findViewById(2131445855));
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131445857));
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131445856));
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).d = paramView.findViewById(2131450235);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).e = ((TextView)paramView.findViewById(2131445853));
       paramView.setTag(localObject);
     }
     else
@@ -110,29 +110,29 @@ public class C2CShortcutBarAdapter
     C2CShortcutAppInfo localC2CShortcutAppInfo = a(paramInt);
     boolean bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
     if (bool) {
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#ffffff"));
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).b.setTextColor(Color.parseColor("#ffffff"));
     } else {
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#1C1D1E"));
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).b.setTextColor(Color.parseColor("#1C1D1E"));
     }
     if (bool) {
-      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838593));
+      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838710));
     } else {
-      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838592));
+      paramView.setBackgroundDrawable(paramView.getResources().getDrawable(2130838709));
     }
-    if (!TextUtils.isEmpty(localC2CShortcutAppInfo.g))
+    if (!TextUtils.isEmpty(localC2CShortcutAppInfo.l))
     {
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).c.setVisibility(0);
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).c.setText(localC2CShortcutAppInfo.g);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).d.setVisibility(0);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).e.setVisibility(0);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).e.setText(localC2CShortcutAppInfo.l);
     }
     else
     {
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((C2CShortcutBarAdapter.ViewHolder)localObject).c.setVisibility(8);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).d.setVisibility(8);
+      ((C2CShortcutBarAdapter.ViewHolder)localObject).e.setVisibility(8);
     }
-    a(((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView, localC2CShortcutAppInfo.c);
-    ((C2CShortcutBarAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(localC2CShortcutAppInfo.b);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarC2CShortcutBarAdapter$ItemExposeListener;
+    a(((C2CShortcutBarAdapter.ViewHolder)localObject).a, localC2CShortcutAppInfo.d);
+    ((C2CShortcutBarAdapter.ViewHolder)localObject).b.setText(localC2CShortcutAppInfo.c);
+    Object localObject = this.c;
     if (localObject != null) {
       ((C2CShortcutBarAdapter.ItemExposeListener)localObject).a(localC2CShortcutAppInfo, paramInt);
     }
@@ -142,7 +142,7 @@ public class C2CShortcutBarAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarAdapter
  * JD-Core Version:    0.7.0.1
  */

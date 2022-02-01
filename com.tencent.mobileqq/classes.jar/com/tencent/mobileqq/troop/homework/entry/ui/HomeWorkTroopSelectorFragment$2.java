@@ -9,14 +9,14 @@ class HomeWorkTroopSelectorFragment$2
   
   public void run()
   {
-    if (HomeWorkTroopSelectorFragment.a(this.this$0)) {
+    if (HomeWorkTroopSelectorFragment.c(this.this$0)) {
       HomeWorkTroopSelectorFragment.a(this.this$0, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -30,37 +30,17 @@ import mqq.manager.TicketManager;
 public class BaseHttpAdapter
   implements IHttpAdapter
 {
-  private static final BaseHttpAdapter.IEventReporterDelegate jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterBaseHttpAdapter$IEventReporterDelegate = new BaseHttpAdapter.NOPEventReportDelegate(null);
   public static String a = "BaseHttpAdapter";
   public static final String b;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
+  private static final BaseHttpAdapter.IEventReporterDelegate c = new BaseHttpAdapter.NOPEventReportDelegate(null);
+  private ExecutorService d;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("QQ/8.7.0 Android/0.17 Android/");
+    localStringBuilder.append("QQ/8.8.17 Android/0.17 Android/");
     localStringBuilder.append(Build.VERSION.RELEASE);
     b = localStringBuilder.toString();
-  }
-  
-  private String a(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
-  {
-    if (paramInputStream == null) {
-      return null;
-    }
-    paramOnHttpListener = new StringBuilder();
-    paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
-    char[] arrayOfChar = new char[2048];
-    for (;;)
-    {
-      int i = paramInputStream.read(arrayOfChar);
-      if (i == -1) {
-        break;
-      }
-      paramOnHttpListener.append(arrayOfChar, 0, i);
-    }
-    paramInputStream.close();
-    return paramOnHttpListener.toString();
   }
   
   private HttpURLConnection a(HttpRequset paramHttpRequset, IHttpAdapter.OnHttpListener paramOnHttpListener)
@@ -205,10 +185,10 @@ public class BaseHttpAdapter
       ViolaSDKManager.getInstance().postOnThreadPool(paramRunnable);
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(6);
+    if (this.d == null) {
+      this.d = Executors.newFixedThreadPool(6);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
+    this.d.execute(paramRunnable);
   }
   
   private byte[] a(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
@@ -230,10 +210,30 @@ public class BaseHttpAdapter
     return paramOnHttpListener.toByteArray();
   }
   
+  private String b(InputStream paramInputStream, IHttpAdapter.OnHttpListener paramOnHttpListener)
+  {
+    if (paramInputStream == null) {
+      return null;
+    }
+    paramOnHttpListener = new StringBuilder();
+    paramInputStream = new BufferedReader(new InputStreamReader(paramInputStream));
+    char[] arrayOfChar = new char[2048];
+    for (;;)
+    {
+      int i = paramInputStream.read(arrayOfChar);
+      if (i == -1) {
+        break;
+      }
+      paramOnHttpListener.append(arrayOfChar, 0, i);
+    }
+    paramInputStream.close();
+    return paramOnHttpListener.toString();
+  }
+  
   @NonNull
   public BaseHttpAdapter.IEventReporterDelegate a()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueViolaAdapterBaseHttpAdapter$IEventReporterDelegate;
+    return c;
   }
   
   protected HttpURLConnection a(URL paramURL)
@@ -248,7 +248,7 @@ public class BaseHttpAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.BaseHttpAdapter
  * JD-Core Version:    0.7.0.1
  */

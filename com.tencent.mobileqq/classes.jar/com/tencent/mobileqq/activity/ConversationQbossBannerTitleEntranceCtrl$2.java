@@ -7,7 +7,6 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
-import com.tencent.mobileqq.qcircle.api.helper.QCircleChatBoxHelper;
 import com.tencent.mobileqq.qcircle.api.utils.QCircleHostUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -24,9 +23,8 @@ class ConversationQbossBannerTitleEntranceCtrl$2
   
   public void run()
   {
-    int k = QCircleChatBoxHelper.getInstance().getUnReadChatNum();
     ArrayList localArrayList = new ArrayList();
-    Object localObject = QCircleUtils.a().getOuterEntranceRedPointInfoByAppid("circle_entrance");
+    Object localObject = QCircleUtils.b().getOuterEntranceRedPointInfoByAppid("circle_entrance");
     long l1;
     int i;
     boolean bool1;
@@ -72,19 +70,17 @@ class ConversationQbossBannerTitleEntranceCtrl$2
     ((StringBuilder)localObject).append(l1);
     ((StringBuilder)localObject).append("  pushUnReadNum = ");
     ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append(", chatUnReadNum = ");
-    ((StringBuilder)localObject).append(k);
     ((StringBuilder)localObject).append(", showActiveRedDot = ");
     ((StringBuilder)localObject).append(bool1);
     ((StringBuilder)localObject).append(", uinList = ");
     ((StringBuilder)localObject).append(localArrayList);
     QLog.d("QCircleEeveeRedPoint_ConversationQbossBannerTitleEntranceCtrl", 2, new Object[] { localObject });
-    ConversationQbossBannerTitleEntranceCtrl.a(this.this$0).runOnUiThread(new ConversationQbossBannerTitleEntranceCtrl.2.1(this, i + k, bool1));
+    ConversationQbossBannerTitleEntranceCtrl.c(this.this$0).runOnUiThread(new ConversationQbossBannerTitleEntranceCtrl.2.1(this, i, bool1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationQbossBannerTitleEntranceCtrl.2
  * JD-Core Version:    0.7.0.1
  */

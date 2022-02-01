@@ -3,44 +3,44 @@ package com.tencent.mobileqq.surfaceviewaction.action;
 public class FlowerAction
   extends Action
 {
-  private float d;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  private int m;
+  private int n;
+  private int o;
+  private int p;
+  private float q;
   
   public FlowerAction(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
   {
     super(paramInt1, 11, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-    this.h = paramInt4;
-    this.i = paramInt5;
-    this.d = paramFloat;
+    this.m = paramInt2;
+    this.n = paramInt3;
+    this.o = paramInt4;
+    this.p = paramInt5;
+    this.q = paramFloat;
   }
   
   protected void a(int paramInt, float paramFloat)
   {
-    float f1 = paramInt;
-    this.jdField_c_of_type_Float = (f1 * 0.8F / this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_Float > 0.8F) {
-      this.jdField_c_of_type_Float = 0.8F;
+    float f = paramInt;
+    this.c = (f * 0.8F / this.f);
+    if (this.c > 0.8F) {
+      this.c = 0.8F;
     }
-    this.jdField_b_of_type_Int = ((int)(360.0F * f1 * f1 / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
-    int j = this.f;
-    this.a = (j + (this.h - j) * paramInt / this.jdField_c_of_type_Int);
-    double d1 = this.g;
-    double d2 = this.i;
-    double d3 = Math.sin(this.d * this.a);
+    this.e = ((int)(360.0F * f * f / (this.f * this.f)));
+    int i = this.m;
+    this.a = (i + (this.o - i) * paramInt / this.f);
+    double d1 = this.n;
+    double d2 = this.p;
+    double d3 = Math.sin(this.q * this.a);
     Double.isNaN(d2);
     Double.isNaN(d1);
-    this.jdField_b_of_type_Float = ((int)(d1 + d2 * d3));
+    this.b = ((int)(d1 + d2 * d3));
     super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.FlowerAction
  * JD-Core Version:    0.7.0.1
  */

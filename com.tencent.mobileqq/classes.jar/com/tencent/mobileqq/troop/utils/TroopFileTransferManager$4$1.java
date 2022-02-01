@@ -7,13 +7,13 @@ class TroopFileTransferManager$4$1
   
   public void run()
   {
-    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$4.a.e, 3, 210);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$4.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
+    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.a.FileName, this.b.a.k, 3, 210);
+    this.b.a.a(this.a, 3, localSimpleErrorInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.4.1
  * JD-Core Version:    0.7.0.1
  */

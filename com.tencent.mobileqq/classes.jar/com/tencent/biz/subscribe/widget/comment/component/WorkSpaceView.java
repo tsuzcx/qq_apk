@@ -15,18 +15,18 @@ import android.widget.Scroller;
 public class WorkSpaceView
   extends FrameLayout
 {
-  private static final double jdField_a_of_type_Double = Math.tan(Math.toRadians(30.0D));
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = -1;
-  private int c = 0;
-  private int d = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+  private static final double k = Math.tan(Math.toRadians(30.0D));
+  private int a = 0;
+  private int b = -1;
+  private float c;
+  private float d;
+  private Scroller e = new Scroller(getContext());
+  private int f = 0;
+  private VelocityTracker g;
+  private WorkSpaceView.OnScreenChangeListener h;
+  private int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+  private boolean j;
+  private Handler l;
   
   public WorkSpaceView(Context paramContext)
   {
@@ -45,18 +45,13 @@ public class WorkSpaceView
   
   private void a()
   {
-    int i = getWidth();
-    a((getScrollX() + i / 2) / i);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    int m = getWidth();
+    a((getScrollX() + m / 2) / m);
   }
   
   public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
+    if (!this.e.isFinished()) {
       return;
     }
     b(paramInt);
@@ -64,39 +59,39 @@ public class WorkSpaceView
   
   public void b(int paramInt)
   {
-    int i = Math.min(paramInt, getChildCount() - 1);
+    int m = Math.min(paramInt, getChildCount() - 1);
     paramInt = 0;
-    i = Math.max(0, i);
-    if (i != this.jdField_a_of_type_Int) {
+    m = Math.max(0, m);
+    if (m != this.a) {
       paramInt = 1;
     }
-    this.jdField_b_of_type_Int = i;
+    this.b = m;
     Object localObject = getFocusedChild();
-    if ((localObject != null) && (paramInt != 0) && (localObject == getChildAt(this.jdField_a_of_type_Int))) {
+    if ((localObject != null) && (paramInt != 0) && (localObject == getChildAt(this.a))) {
       ((View)localObject).clearFocus();
     }
-    paramInt = getWidth() * i - getScrollX();
-    this.jdField_a_of_type_AndroidWidgetScroller.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
-    localObject = this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener;
+    paramInt = getWidth() * m - getScrollX();
+    this.e.startScroll(getScrollX(), 0, paramInt, 0, Math.abs(paramInt) * 2);
+    localObject = this.h;
     if (localObject != null) {
-      ((WorkSpaceView.OnScreenChangeListener)localObject).a(i);
+      ((WorkSpaceView.OnScreenChangeListener)localObject).a(m);
     }
     invalidate();
   }
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
+    if (this.e.computeScrollOffset())
     {
-      scrollTo(this.jdField_a_of_type_AndroidWidgetScroller.getCurrX(), this.jdField_a_of_type_AndroidWidgetScroller.getCurrY());
+      scrollTo(this.e.getCurrX(), this.e.getCurrY());
       postInvalidate();
       return;
     }
-    int i = this.jdField_b_of_type_Int;
-    if (i != -1)
+    int m = this.b;
+    if (m != -1)
     {
-      this.jdField_a_of_type_Int = Math.max(0, Math.min(i, getChildCount() - 1));
-      this.jdField_b_of_type_Int = -1;
+      this.a = Math.max(0, Math.min(m, getChildCount() - 1));
+      this.b = -1;
     }
   }
   
@@ -104,81 +99,86 @@ public class WorkSpaceView
   {
     if (paramInt == 17)
     {
-      if (a() > 0)
+      if (getCurrentScreen() > 0)
       {
-        a(a() - 1);
+        a(getCurrentScreen() - 1);
         return true;
       }
     }
-    else if ((paramInt == 66) && (a() < getChildCount() - 1))
+    else if ((paramInt == 66) && (getCurrentScreen() < getChildCount() - 1))
     {
-      a(a() + 1);
+      a(getCurrentScreen() + 1);
       return true;
     }
     return super.dispatchUnhandledMove(paramView, paramInt);
   }
   
+  public int getCurrentScreen()
+  {
+    return this.a;
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
+    int m = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
     boolean bool = false;
-    if (i != 0)
+    if (m != 0)
     {
-      if (i != 1) {
-        if (i != 2)
+      if (m != 1) {
+        if (m != 2)
         {
-          if (i != 3) {
+          if (m != 3) {
             break label233;
           }
         }
         else
         {
-          int k = (int)Math.abs(f1 - this.jdField_a_of_type_Float);
-          int m = (int)Math.abs(f2 - this.jdField_b_of_type_Float);
-          int j = this.d;
-          if (k > j) {
-            i = 1;
+          int i1 = (int)Math.abs(f1 - this.c);
+          int i2 = (int)Math.abs(f2 - this.d);
+          int n = this.i;
+          if (i1 > n) {
+            m = 1;
           } else {
-            i = 0;
+            m = 0;
           }
-          if (m > j) {
-            j = 1;
+          if (i2 > n) {
+            n = 1;
           } else {
-            j = 0;
+            n = 0;
           }
-          double d1 = m;
-          double d2 = k;
+          double d1 = i2;
+          double d2 = i1;
           Double.isNaN(d1);
           Double.isNaN(d2);
           d1 /= d2;
-          if (((i == 0) && (j == 0)) || (d1 >= jdField_a_of_type_Double)) {
+          if (((m == 0) && (n == 0)) || (d1 >= k)) {
             break label233;
           }
-          if (i != 0) {
-            this.c = 1;
+          if (m != 0) {
+            this.f = 1;
           }
-          if (!this.jdField_a_of_type_Boolean) {
+          if (!this.j) {
             break label233;
           }
-          this.jdField_a_of_type_Boolean = false;
-          getChildAt(this.jdField_a_of_type_Int).cancelLongPress();
+          this.j = false;
+          getChildAt(this.a).cancelLongPress();
           break label233;
         }
       }
-      this.c = 0;
-      this.jdField_a_of_type_Boolean = false;
+      this.f = 0;
+      this.j = false;
     }
     else
     {
-      this.jdField_a_of_type_Float = f1;
-      this.jdField_b_of_type_Float = f2;
-      this.jdField_a_of_type_Boolean = true;
-      this.c = (this.jdField_a_of_type_AndroidWidgetScroller.isFinished() ^ true);
+      this.c = f1;
+      this.d = f2;
+      this.j = true;
+      this.f = (this.e.isFinished() ^ true);
     }
     label233:
-    if (this.c != 0) {
+    if (this.f != 0) {
       bool = true;
     }
     return bool;
@@ -204,99 +204,99 @@ public class WorkSpaceView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int n = getChildCount();
+    int m = 0;
+    while (m < n)
     {
-      getChildAt(i).measure(paramInt1, paramInt2);
-      i += 1;
+      getChildAt(m).measure(paramInt1, paramInt2);
+      m += 1;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
+    if (this.g == null) {
+      this.g = VelocityTracker.obtain();
     }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    int i = paramMotionEvent.getAction();
-    float f = paramMotionEvent.getX();
-    if (i != 0)
+    this.g.addMovement(paramMotionEvent);
+    int m = paramMotionEvent.getAction();
+    float f1 = paramMotionEvent.getX();
+    if (m != 0)
     {
-      int j;
-      if (i != 1) {
-        if (i != 2)
+      int n;
+      if (m != 1) {
+        if (m != 2)
         {
-          if (i != 3) {
+          if (m != 3) {
             return true;
           }
         }
         else
         {
-          if (this.c != 1) {
+          if (this.f != 1) {
             break label310;
           }
-          i = (int)(this.jdField_a_of_type_Float - f);
-          this.jdField_a_of_type_Float = f;
-          j = getScrollX();
-          if (i < 0)
+          m = (int)(this.c - f1);
+          this.c = f1;
+          n = getScrollX();
+          if (m < 0)
           {
-            if (j <= 0) {
+            if (n <= 0) {
               break label310;
             }
-            scrollBy(Math.max(-j, i), 0);
+            scrollBy(Math.max(-n, m), 0);
             return true;
           }
-          if (i <= 0) {
+          if (m <= 0) {
             break label310;
           }
-          j = getChildAt(getChildCount() - 1).getRight() - j - getWidth();
-          if (j > 0) {
-            scrollBy(Math.min(j, i), 0);
+          n = getChildAt(getChildCount() - 1).getRight() - n - getWidth();
+          if (n > 0) {
+            scrollBy(Math.min(n, m), 0);
           }
           paramMotionEvent = Message.obtain();
           paramMotionEvent.what = 0;
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramMotionEvent);
+          this.l.sendMessage(paramMotionEvent);
           return true;
         }
       }
-      if (this.c == 1)
+      if (this.f == 1)
       {
-        paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        paramMotionEvent = this.g;
         paramMotionEvent.computeCurrentVelocity(1000);
-        i = (int)paramMotionEvent.getXVelocity();
-        if (i > 500)
+        m = (int)paramMotionEvent.getXVelocity();
+        if (m > 500)
         {
-          j = this.jdField_a_of_type_Int;
-          if (j > 0)
+          n = this.a;
+          if (n > 0)
           {
-            a(j - 1);
+            a(n - 1);
             break label258;
           }
         }
-        if ((i < -500) && (this.jdField_a_of_type_Int < getChildCount() - 1)) {
-          a(this.jdField_a_of_type_Int + 1);
+        if ((m < -500) && (this.a < getChildCount() - 1)) {
+          a(this.a + 1);
         } else {
           a();
         }
         label258:
-        paramMotionEvent = this.jdField_a_of_type_AndroidViewVelocityTracker;
+        paramMotionEvent = this.g;
         if (paramMotionEvent != null)
         {
           paramMotionEvent.recycle();
-          this.jdField_a_of_type_AndroidViewVelocityTracker = null;
+          this.g = null;
         }
       }
-      this.c = 0;
+      this.f = 0;
       return true;
     }
     else
     {
-      if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
-        this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
+      if (!this.e.isFinished()) {
+        this.e.abortAnimation();
       }
-      this.jdField_a_of_type_Float = f;
-      this.c = 1;
+      this.c = f1;
+      this.f = 1;
     }
     label310:
     return true;
@@ -312,27 +312,27 @@ public class WorkSpaceView
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
   {
-    return (indexOfChild(paramView) != this.jdField_a_of_type_Int) || (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished());
+    return (indexOfChild(paramView) != this.a) || (!this.e.isFinished());
   }
   
   public void setAllowLongPress(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public void setHandler(Handler paramHandler)
   {
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.l = paramHandler;
   }
   
   public void setOnScreenChangeListener(WorkSpaceView.OnScreenChangeListener paramOnScreenChangeListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommentComponentWorkSpaceView$OnScreenChangeListener = paramOnScreenChangeListener;
+    this.h = paramOnScreenChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.comment.component.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

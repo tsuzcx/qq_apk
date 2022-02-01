@@ -12,7 +12,7 @@ class QQDebugWebSocket$1
   
   public void onSocketClose(DebugWebSocket paramDebugWebSocket, int paramInt)
   {
-    paramDebugWebSocket = this.this$0.TAG;
+    paramDebugWebSocket = DebugWebSocket.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("qq onSocketClose:");
     localStringBuilder.append(paramInt);
@@ -22,7 +22,7 @@ class QQDebugWebSocket$1
   
   public void onSocketFailure(DebugWebSocket paramDebugWebSocket, int paramInt)
   {
-    paramDebugWebSocket = this.this$0.TAG;
+    paramDebugWebSocket = DebugWebSocket.TAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("qq onSocketFailure:");
     localStringBuilder.append(paramInt);
@@ -43,19 +43,19 @@ class QQDebugWebSocket$1
       }
       catch (JSONException paramDebugWebSocket)
       {
-        QMLog.e(this.this$0.TAG, "qq onSocketMessage:", paramDebugWebSocket);
+        QMLog.e(DebugWebSocket.TAG, "qq onSocketMessage:", paramDebugWebSocket);
       }
     }
   }
   
   public void onSocketOpened(DebugWebSocket paramDebugWebSocket)
   {
-    QMLog.i(this.this$0.TAG, "qq onSocketOpened");
+    QMLog.i(DebugWebSocket.TAG, "qq onSocketOpened");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.QQDebugWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

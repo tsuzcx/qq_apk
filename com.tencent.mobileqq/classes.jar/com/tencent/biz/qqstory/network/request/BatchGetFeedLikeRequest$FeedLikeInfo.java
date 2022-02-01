@@ -5,10 +5,10 @@ import java.util.List;
 
 public class BatchGetFeedLikeRequest$FeedLikeInfo
 {
-  public int a;
   public String a;
-  public List<LikeEntry> a;
   public int b;
+  public int c;
+  public List<LikeEntry> d;
   
   public boolean equals(Object paramObject)
   {
@@ -41,7 +41,7 @@ public class BatchGetFeedLikeRequest$FeedLikeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.BatchGetFeedLikeRequest.FeedLikeInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class AuthInfo
   extends MessageNano
 {
   public int a;
-  public long a;
-  public String a;
+  public String b;
+  public long c;
   
   public AuthInfo()
   {
@@ -19,9 +19,9 @@ public final class AuthInfo
   
   public AuthInfo a()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
+    this.a = 0;
+    this.b = "";
+    this.c = 0L;
     this.cachedSize = -1;
     return this;
   }
@@ -45,15 +45,15 @@ public final class AuthInfo
             }
           }
           else {
-            this.jdField_a_of_type_Long = paramCodedInputByteBufferNano.readUInt64();
+            this.c = paramCodedInputByteBufferNano.readUInt64();
           }
         }
         else {
-          this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+          this.b = paramCodedInputByteBufferNano.readString();
         }
       }
       else {
-        this.jdField_a_of_type_Int = paramCodedInputByteBufferNano.readUInt32();
+        this.a = paramCodedInputByteBufferNano.readUInt32();
       }
     }
     return this;
@@ -62,16 +62,16 @@ public final class AuthInfo
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    int k = this.jdField_a_of_type_Int;
+    int k = this.a;
     int i = j;
     if (k != 0) {
       i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
     j = i;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      j = i + CodedOutputByteBufferNano.computeStringSize(2, this.b);
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.c;
     i = j;
     if (l != 0L) {
       i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
@@ -81,14 +81,14 @@ public final class AuthInfo
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 0) {
       paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(2, this.jdField_a_of_type_JavaLangString);
+    if (!this.b.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(2, this.b);
     }
-    long l = this.jdField_a_of_type_Long;
+    long l = this.c;
     if (l != 0L) {
       paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
@@ -97,7 +97,7 @@ public final class AuthInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.AuthInfo
  * JD-Core Version:    0.7.0.1
  */

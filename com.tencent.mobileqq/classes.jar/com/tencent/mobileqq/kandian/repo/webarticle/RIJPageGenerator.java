@@ -50,7 +50,7 @@ public final class RIJPageGenerator
   
   private final void bindHeadResource(IndexInfo paramIndexInfo)
   {
-    String str = RIJWebResourceUtil.a.a("https://beaconcdn.qq.com/sdk/3.1.50/beacon_web.min.js");
+    String str = RIJWebResourceUtil.a.b("https://beaconcdn.qq.com/sdk/3.1.50/beacon_web.min.js");
     StringBuilder localStringBuilder;
     if (!TextUtils.isEmpty((CharSequence)str))
     {
@@ -64,7 +64,7 @@ public final class RIJPageGenerator
     {
       paramIndexInfo.setBeaconWebScript("<script src=\"https://beaconcdn.qq.com/sdk/3.1.50/beacon_web.min.js\"></script>");
     }
-    str = RIJWebResourceUtil.a.a("https://tkd-fe.cdn-go.cn/KdDetailPage/latest/themes/default/client/article/article.css");
+    str = RIJWebResourceUtil.a.b("https://tkd-fe.cdn-go.cn/KdDetailPage/latest/themes/default/client/article/article.css");
     if (!TextUtils.isEmpty((CharSequence)str))
     {
       localStringBuilder = new StringBuilder();
@@ -77,7 +77,7 @@ public final class RIJPageGenerator
     {
       paramIndexInfo.setArticleCss("<link rel=\"stylesheet\" href=\"https://tkd-fe.cdn-go.cn/KdDetailPage/latest/themes/default/client/article/article.css\" type=\"text/css\" />");
     }
-    str = RIJWebResourceUtil.a.a("https://watchspot.cdn-go.cn/article-new/latest/css/article_new.css");
+    str = RIJWebResourceUtil.a.b("https://watchspot.cdn-go.cn/article-new/latest/css/article_new.css");
     if (!TextUtils.isEmpty((CharSequence)str))
     {
       localStringBuilder = new StringBuilder();
@@ -92,32 +92,32 @@ public final class RIJPageGenerator
   
   private final void bindScriptData(IndexInfo paramIndexInfo)
   {
-    String str = RIJWebTemplateFactory.a.a("prefix_script");
+    String str = RIJWebTemplateFactory.a.b("prefix_script");
     if (str == null) {
       str = "";
     }
     paramIndexInfo.setPrefixScript(str);
-    str = RIJWebTemplateFactory.a.a("comment_bar_script");
+    str = RIJWebTemplateFactory.a.b("comment_bar_script");
     if (str == null) {
       str = "";
     }
     paramIndexInfo.setCommentBarScript(str);
-    str = RIJWebTemplateFactory.a.a("debug_script");
+    str = RIJWebTemplateFactory.a.b("debug_script");
     if (str == null) {
       str = "";
     }
     paramIndexInfo.setDebugScript(str);
-    str = RIJWebTemplateFactory.a.a("sea_script");
+    str = RIJWebTemplateFactory.a.b("sea_script");
     if (str == null) {
       str = "";
     }
     paramIndexInfo.setSeaScript(str);
-    str = RIJWebTemplateFactory.a.a("cookie_script");
+    str = RIJWebTemplateFactory.a.b("cookie_script");
     if (str == null) {
       str = "";
     }
     paramIndexInfo.setCookieScript(str);
-    str = RIJWebTemplateFactory.a.a("long_press_script");
+    str = RIJWebTemplateFactory.a.b("long_press_script");
     if (str == null) {
       str = "";
     }
@@ -362,7 +362,7 @@ public final class RIJPageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJPageGenerator
  * JD-Core Version:    0.7.0.1
  */

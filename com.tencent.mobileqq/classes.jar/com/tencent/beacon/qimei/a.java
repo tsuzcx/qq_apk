@@ -2,6 +2,7 @@ package com.tencent.beacon.qimei;
 
 import android.os.Build;
 import android.text.TextUtils;
+import com.tencent.beacon.a.c.f;
 import com.tencent.beacon.base.util.d;
 import com.tencent.beacon.pack.QimeiPackage;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class a
     try
     {
       this.c = new Qimei();
-      Object localObject1 = f.a(com.tencent.beacon.a.c.c.d().c());
+      Object localObject1 = e.a(com.tencent.beacon.a.c.c.d().c());
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         this.b = ((String)localObject1);
       }
@@ -44,13 +45,16 @@ public class a
       ((StringBuilder)localObject1).append("[qimei] final jceRequest qimeiJson: ");
       ((StringBuilder)localObject1).append(this.b);
       com.tencent.beacon.base.util.c.a(((StringBuilder)localObject1).toString(), new Object[0]);
-      localObject1 = f.a(this.b);
+      localObject1 = e.a(this.b);
       if (localObject1 != null)
       {
         this.c.b((String)((HashMap)localObject1).get("A3"));
         this.c.a((String)((HashMap)localObject1).get("A153"));
         this.c.a((Map)localObject1);
-        f.b(com.tencent.beacon.a.c.c.d().c(), this.c.toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[qimei] showQimei: ");
+        ((StringBuilder)localObject1).append(this.c.toString());
+        com.tencent.beacon.base.util.c.a(((StringBuilder)localObject1).toString(), new Object[0]);
       }
       return;
     }
@@ -78,7 +82,7 @@ public class a
   
   public QimeiPackage c()
   {
-    com.tencent.beacon.a.c.f localf = com.tencent.beacon.a.c.f.p();
+    f localf = f.p();
     QimeiPackage localQimeiPackage = new QimeiPackage();
     localQimeiPackage.imei = localf.m();
     localQimeiPackage.imsi = localf.o();

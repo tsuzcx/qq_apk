@@ -15,21 +15,21 @@ class PromotionRes$3
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.a();
+    Object localObject = this.b.a();
     if (localObject != null)
     {
-      if (!TextUtils.equals(paramString, ((PromotionConfigInfo.PromotionItem)localObject).jdField_a_of_type_JavaLangString)) {
+      if (!TextUtils.equals(paramString, ((PromotionConfigInfo.PromotionItem)localObject).e)) {
         return;
       }
-      if (paramInt1 < this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.jdField_a_of_type_ArrayOfInt.length) {
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes.jdField_a_of_type_ArrayOfInt[paramInt1] = paramInt2;
+      if (paramInt1 < this.b.b.length) {
+        this.b.b[paramInt1] = paramInt2;
       }
       if ((paramInt2 >= 0) && (paramInt2 <= 99))
       {
-        PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes, "onDownloadProgress", true);
+        PromotionRes.a(this.b, "onDownloadProgress", true);
         return;
       }
-      paramString = PromotionRes.jdField_a_of_type_JavaLangString;
+      paramString = PromotionRes.a;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDownloadProgress, index[");
       ((StringBuilder)localObject).append(paramInt1);
@@ -38,15 +38,15 @@ class PromotionRes$3
       ((StringBuilder)localObject).append("]");
       QLog.w(paramString, 1, ((StringBuilder)localObject).toString());
       if ((paramInt2 == 100) && (paramInt1 == 0)) {
-        PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes, "onDownloadProgress", this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        PromotionRes.a(this.b, "onDownloadProgress", this.a);
       }
-      PromotionRes.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityPromotionRes, "onDownloadProgress2", this.jdField_a_of_type_ComTencentCommonAppAppInterface, false);
+      PromotionRes.a(this.b, "onDownloadProgress2", this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionRes.3
  * JD-Core Version:    0.7.0.1
  */

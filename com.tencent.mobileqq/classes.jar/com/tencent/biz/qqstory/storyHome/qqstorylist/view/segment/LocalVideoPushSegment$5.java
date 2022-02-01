@@ -21,10 +21,10 @@ class LocalVideoPushSegment$5
   
   public void run()
   {
-    long l = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id;
+    long l = this.a._id;
     Object localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inMutable = true;
-    Bitmap localBitmap = MediaStore.Images.Thumbnails.getThumbnail(LocalVideoPushSegment.b(this.this$0).getContentResolver(), l, 1, (BitmapFactory.Options)localObject1);
+    Bitmap localBitmap = MediaStore.Images.Thumbnails.getThumbnail(LocalVideoPushSegment.g(this.this$0).getContentResolver(), l, 1, (BitmapFactory.Options)localObject1);
     localObject1 = null;
     Canvas localCanvas = null;
     Object localObject2;
@@ -49,11 +49,11 @@ class LocalVideoPushSegment$5
         localCanvas.save();
         localCanvas.restore();
         localBitmap.recycle();
-        localObject2 = new BitmapDrawable(LocalVideoPushSegment.c(this.this$0).getResources(), this.this$0.a.a((Bitmap)localObject2));
+        localObject2 = new BitmapDrawable(LocalVideoPushSegment.h(this.this$0).getResources(), this.this$0.b.a((Bitmap)localObject2));
       }
       else
       {
-        localObject2 = new BitmapDrawable(LocalVideoPushSegment.d(this.this$0).getResources(), localBitmap);
+        localObject2 = new BitmapDrawable(LocalVideoPushSegment.i(this.this$0).getResources(), localBitmap);
       }
     }
     ThreadManager.getUIHandler().post(new LocalVideoPushSegment.5.1(this, (BitmapDrawable)localObject2));

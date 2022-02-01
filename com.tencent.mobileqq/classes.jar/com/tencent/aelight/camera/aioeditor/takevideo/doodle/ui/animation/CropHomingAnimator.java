@@ -6,8 +6,8 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 public class CropHomingAnimator
   extends ValueAnimator
 {
-  private CropHomingEvaluator jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationCropHomingEvaluator;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
+  private CropHomingEvaluator b;
   
   public CropHomingAnimator()
   {
@@ -17,26 +17,26 @@ public class CropHomingAnimator
   public void a(CropHomeing paramCropHomeing1, CropHomeing paramCropHomeing2)
   {
     setObjectValues(new Object[] { paramCropHomeing1, paramCropHomeing2 });
-    this.jdField_a_of_type_Boolean = CropHomeing.a(paramCropHomeing1, paramCropHomeing2);
+    this.a = CropHomeing.a(paramCropHomeing1, paramCropHomeing2);
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public void setObjectValues(Object... paramVarArgs)
   {
     super.setObjectValues(paramVarArgs);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationCropHomingEvaluator == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationCropHomingEvaluator = new CropHomingEvaluator();
+    if (this.b == null) {
+      this.b = new CropHomingEvaluator();
     }
-    setEvaluator(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAnimationCropHomingEvaluator);
+    setEvaluator(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.animation.CropHomingAnimator
  * JD-Core Version:    0.7.0.1
  */

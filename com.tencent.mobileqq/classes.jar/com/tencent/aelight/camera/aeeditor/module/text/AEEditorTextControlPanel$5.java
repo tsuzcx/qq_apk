@@ -14,13 +14,13 @@ class AEEditorTextControlPanel$5
     if (paramList == null) {
       return;
     }
-    AEEditorTextControlPanel.a(this.a).a(paramList);
-    AEEditorTextControlPanel.a(this.a).notifyDataSetChanged();
+    AEEditorTextControlPanel.c(this.a).a(paramList);
+    AEEditorTextControlPanel.c(this.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextControlPanel.5
  * JD-Core Version:    0.7.0.1
  */

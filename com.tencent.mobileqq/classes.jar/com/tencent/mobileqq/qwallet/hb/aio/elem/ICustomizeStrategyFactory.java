@@ -6,8 +6,6 @@ public abstract interface ICustomizeStrategyFactory
 {
   public abstract RedPacketInfo a(BaseQQAppInterface paramBaseQQAppInterface, RedPacketInfo paramRedPacketInfo, ICustomizeStrategyFactory.OnCustomizeListener paramOnCustomizeListener);
   
-  public abstract void a();
-  
   public abstract void a(RedPacketInfo paramRedPacketInfo);
   
   public abstract void a(boolean paramBoolean);
@@ -17,10 +15,12 @@ public abstract interface ICustomizeStrategyFactory
   public abstract void b();
   
   public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.ICustomizeStrategyFactory
  * JD-Core Version:    0.7.0.1
  */

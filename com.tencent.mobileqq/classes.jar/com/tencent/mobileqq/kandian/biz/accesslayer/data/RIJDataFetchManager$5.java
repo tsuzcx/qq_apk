@@ -7,12 +7,12 @@ class RIJDataFetchManager$5
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
+    this.this$0.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager.5
  * JD-Core Version:    0.7.0.1
  */

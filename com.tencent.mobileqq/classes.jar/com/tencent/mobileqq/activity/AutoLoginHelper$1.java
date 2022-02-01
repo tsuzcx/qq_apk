@@ -31,11 +31,11 @@ class AutoLoginHelper$1
     if (paramInt2 == 0) {
       return;
     }
-    this.a.h();
+    this.a.j();
     if (AutoLoginHelper.a(this.a) != null)
     {
       paramString = new Intent(AutoLoginHelper.a(this.a), LoginActivity.class);
-      paramString.putExtra("uin", AutoLoginHelper.a(this.a));
+      paramString.putExtra("uin", AutoLoginHelper.b(this.a));
       paramString.putExtra("tab_index", 0);
       paramString.addFlags(131072);
       AutoLoginHelper.a(this.a).startActivity(paramString);
@@ -45,7 +45,7 @@ class AutoLoginHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoLoginHelper.1
  * JD-Core Version:    0.7.0.1
  */

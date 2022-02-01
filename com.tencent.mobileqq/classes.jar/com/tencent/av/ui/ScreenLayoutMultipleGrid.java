@@ -12,31 +12,26 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ScreenLayoutMultipleGrid
   extends ScreenLayout
 {
-  static final int[] jdField_a_of_type_ArrayOfInt;
-  static final int[][] jdField_a_of_type_Array2dOfInt;
-  public static final int b;
-  static final int[] b;
-  public static final int c = localObject[(localObject.length - 1)][0];
-  public static final int d = localObject[(localObject.length - 1)].length;
-  private volatile ConcurrentHashMap<Long, VideoMemberInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  static final int[][] e;
+  static final int[] f;
+  static final int[] g;
+  public static final int h;
+  public static final int i = localObject[(localObject.length - 1)][0];
+  public static final int j = localObject[(localObject.length - 1)].length;
+  private volatile ConcurrentHashMap<Long, VideoMemberInfo> k;
   
   static
   {
     Object localObject = { 1 };
     int[] arrayOfInt1 = { 1, 2 };
-    int[] arrayOfInt2 = { 2, 2 };
-    int[] arrayOfInt3 = { 2, 2, 1 };
-    int[] arrayOfInt4 = { 2, 2, 2 };
-    int[] arrayOfInt5 = { 2, 2, 3 };
-    int[] arrayOfInt6 = { 2, 3, 3 };
-    int[] arrayOfInt7 = { 3, 3, 3 };
-    int[] arrayOfInt8 = { 3, 3, 3, 3 };
-    int[] arrayOfInt9 = { 4, 4, 4, 4 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { localObject, { 1, 1 }, arrayOfInt1, arrayOfInt2, arrayOfInt3, arrayOfInt4, arrayOfInt5, arrayOfInt6, arrayOfInt7, { 3, 3, 2, 2 }, { 3, 3, 3, 2 }, arrayOfInt8, { 3, 3, 3, 4 }, { 3, 3, 4, 4 }, { 3, 4, 4, 4 }, arrayOfInt9 };
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 3, 4, 1, 6, 7, 8, 5, 2 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 0, 4, 5, 1, 8, 9, 12, 6, 2, 13, 10, 14, 15, 11, 7, 3 };
-    localObject = jdField_a_of_type_Array2dOfInt;
-    jdField_b_of_type_Int = localObject.length;
+    int[] arrayOfInt2 = { 2, 2, 2 };
+    int[] arrayOfInt3 = { 3, 4, 4, 4 };
+    int[] arrayOfInt4 = { 4, 4, 4, 4 };
+    e = new int[][] { localObject, { 1, 1 }, arrayOfInt1, { 2, 2 }, { 2, 2, 1 }, arrayOfInt2, { 2, 2, 3 }, { 2, 3, 3 }, { 3, 3, 3 }, { 3, 3, 2, 2 }, { 3, 3, 3, 2 }, { 3, 3, 3, 3 }, { 3, 3, 3, 4 }, { 3, 3, 4, 4 }, arrayOfInt3, arrayOfInt4 };
+    f = new int[] { 0, 3, 4, 1, 6, 7, 8, 5, 2 };
+    g = new int[] { 0, 4, 5, 1, 8, 9, 12, 6, 2, 13, 10, 14, 15, 11, 7, 3 };
+    localObject = e;
+    h = localObject.length;
   }
   
   protected ScreenLayoutMultipleGrid(Context paramContext, VideoAppInterface paramVideoAppInterface)
@@ -49,36 +44,36 @@ public class ScreenLayoutMultipleGrid
     if (paramInt1 <= 0) {
       return null;
     }
-    int[] arrayOfInt2 = jdField_a_of_type_Array2dOfInt[(paramInt1 - 1)];
-    int i2 = arrayOfInt2.length;
-    int i3 = (paramInt3 + 0) / i2 - 0;
+    int[] arrayOfInt2 = e[(paramInt1 - 1)];
+    int i5 = arrayOfInt2.length;
+    int i6 = (paramInt3 + 0) / i5 - 0;
     ArrayList localArrayList = new ArrayList();
-    int m;
+    int i2;
     if (paramInt1 <= 9) {
+      i2 = 1;
+    } else {
+      i2 = 0;
+    }
+    if (paramInt1 == 5) {
       m = 1;
     } else {
       m = 0;
     }
-    if (paramInt1 == 5) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j;
+    int n;
     Object localObject2;
-    if (i != 0)
+    if (m != 0)
     {
-      k = paramInt3 / 10;
+      i1 = paramInt3 / 10;
       localObject1 = new int[3];
-      j = k * 3;
-      localObject1[0] = j;
-      localObject1[1] = j;
-      k *= 6;
-      localObject1[2] = (paramInt3 - k);
+      n = i1 * 3;
+      localObject1[0] = n;
+      localObject1[1] = n;
+      i1 *= 6;
+      localObject1[2] = (paramInt3 - i1);
       localObject2 = new int[3];
       localObject2[0] = 0;
-      localObject2[1] = j;
-      localObject2[2] = k;
+      localObject2[1] = n;
+      localObject2[2] = i1;
     }
     else
     {
@@ -86,60 +81,60 @@ public class ScreenLayoutMultipleGrid
       localObject2 = localObject1;
     }
     int[] arrayOfInt1;
-    if (m != 0) {
-      arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
+    if (i2 != 0) {
+      arrayOfInt1 = f;
     } else {
-      arrayOfInt1 = jdField_b_of_type_ArrayOfInt;
+      arrayOfInt1 = g;
     }
-    int k = 4;
-    if (m != 0) {
-      j = 3;
+    int i1 = 4;
+    if (i2 != 0) {
+      n = 3;
     } else {
-      j = 4;
+      n = 4;
     }
-    if (m != 0) {
-      k = 3;
+    if (i2 != 0) {
+      i1 = 3;
     }
     paramInt3 = 0;
-    int i1 = i;
-    int i = paramInt3;
+    int i4 = m;
+    int m = paramInt3;
     for (;;)
     {
       paramInt3 = 0;
-      if (i >= j) {
+      if (m >= n) {
         break;
       }
-      if (i1 != 0) {
-        m = localObject2[i];
+      if (i4 != 0) {
+        i2 = localObject2[m];
       } else {
-        m = (i3 + 0) * i;
+        i2 = (i6 + 0) * m;
       }
-      int n;
-      if (i < i2)
+      int i3;
+      if (m < i5)
       {
-        paramInt3 = arrayOfInt2[i];
-        n = (paramInt2 + 0) / paramInt3 + 0;
+        paramInt3 = arrayOfInt2[m];
+        i3 = (paramInt2 + 0) / paramInt3 + 0;
       }
       else
       {
-        n = 0;
+        i3 = 0;
       }
-      int i5 = 0;
-      int i4 = paramInt3;
-      paramInt3 = i3;
-      i3 = i5;
-      while (i3 < k)
+      int i8 = 0;
+      int i7 = paramInt3;
+      paramInt3 = i6;
+      i6 = i8;
+      while (i6 < i1)
       {
         Rect localRect;
-        if ((i4 > 0) && (i3 < i4))
+        if ((i7 > 0) && (i6 < i7))
         {
-          int i6 = i3 * (n + 0);
-          if (i1 != 0) {
-            i5 = localObject1[i];
+          int i9 = i6 * (i3 + 0);
+          if (i4 != 0) {
+            i8 = localObject1[m];
           } else {
-            i5 = paramInt3;
+            i8 = paramInt3;
           }
-          localRect = new Rect(i6, m, i6 + n, m + i5);
+          localRect = new Rect(i9, i2, i9 + i3, i2 + i8);
         }
         else
         {
@@ -149,18 +144,18 @@ public class ScreenLayoutMultipleGrid
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("getViewRects, creat rect: [");
-          localStringBuilder.append(i);
+          localStringBuilder.append(m);
           localStringBuilder.append("|");
-          localStringBuilder.append(i3);
+          localStringBuilder.append(i6);
           localStringBuilder.append("] :");
           localStringBuilder.append(localRect);
           QLog.w("ScreenLayoutMultipleGrid", 1, localStringBuilder.toString());
         }
         localArrayList.add(localRect);
-        i3 += 1;
+        i6 += 1;
       }
-      i += 1;
-      i3 = paramInt3;
+      m += 1;
+      i6 = paramInt3;
     }
     Object localObject1 = new ArrayList();
     paramInt2 = 0;
@@ -186,14 +181,9 @@ public class ScreenLayoutMultipleGrid
     return localObject1;
   }
   
-  public int a()
-  {
-    return 3;
-  }
-  
   public void a(int paramInt, Rect paramRect1, Rect paramRect2, ConcurrentHashMap<Long, VideoMemberInfo> paramConcurrentHashMap)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramConcurrentHashMap;
+    this.k = paramConcurrentHashMap;
   }
   
   public void a(SessionInfo paramSessionInfo, GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
@@ -222,14 +212,19 @@ public class ScreenLayoutMultipleGrid
       QLog.w("ScreenLayoutMultipleGrid", 1, localStringBuilder.toString());
     }
     paramArrayOfGLVideoView[0].a(0, 0, 0, 0);
-    paramArrayOfGLVideoView[0].b(0, 0, paramInt1, paramInt2);
-    paramArrayOfGLVideoView[0].d(-15197410);
+    paramArrayOfGLVideoView[0].c(0, 0, paramInt1, paramInt2);
+    paramArrayOfGLVideoView[0].e(-15197410);
     paramArrayOfGLVideoView[1].a(3, 3, 3, 3);
-    paramArrayOfGLVideoView[1].d(-15197410);
+    paramArrayOfGLVideoView[1].e(-15197410);
     a(paramArrayOfGLVideoView, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
   }
   
-  public boolean b()
+  public int b()
+  {
+    return 3;
+  }
+  
+  public boolean d()
   {
     return false;
   }

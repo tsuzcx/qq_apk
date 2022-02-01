@@ -9,14 +9,13 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.apollo.api.IApolloManagerService;
-import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
-import com.tencent.mobileqq.apollo.model.ApolloActionPackage;
 import com.tencent.mobileqq.apollo.res.api.IApolloDownloader;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
-import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.cmshow.engine.resource.ApolloResManagerFacade;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.FileDownloadFailedException;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -56,7 +55,6 @@ public class ApolloDownloaderImpl
     } else {
       paramOutputStream = "";
     }
-    Object localObject;
     int i;
     try
     {
@@ -68,7 +66,7 @@ public class ApolloDownloaderImpl
     }
     catch (Throwable paramOutputStream)
     {
-      localObject = new StringBuilder();
+      Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("exception:");
       ((StringBuilder)localObject).append(paramOutputStream.getMessage());
       QLog.e("[cmshow]ApolloDownloader", 1, ((StringBuilder)localObject).toString());
@@ -95,53 +93,30 @@ public class ApolloDownloaderImpl
     }
     if (paramOutputStream != null)
     {
-      localObject = (ApolloManagerServiceImpl)paramOutputStream.getRuntimeService(IApolloManagerService.class, "all");
-      i = Integer.parseInt(paramURLDrawableHandler.getValue());
-      if (i == 0)
-      {
-        paramOutputStream = (ApolloActionPackage)paramDownloadParams.tag;
-        if (paramOutputStream == null) {
-          return null;
-        }
-        if (ApolloUtilImpl.isTabExist(paramOutputStream))
-        {
-          if (QLog.isColorLevel())
-          {
-            paramDownloadParams = new StringBuilder();
-            paramDownloadParams.append("packageTab is exist pid=");
-            paramDownloadParams.append(paramOutputStream.packageId);
-            QLog.d("[cmshow]ApolloDownloader", 2, paramDownloadParams.toString());
-          }
-          return ((ApolloManagerServiceImpl)localObject).getTabFile(paramOutputStream);
-        }
-        if (((ApolloManagerServiceImpl)localObject).downloadActionPackageTab(paramOutputStream)) {
-          return ((ApolloManagerServiceImpl)localObject).getTabFile(paramOutputStream);
-        }
-        throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
-      }
-      paramDownloadParams = (ApolloActionData)paramDownloadParams.tag;
-      if (paramDownloadParams == null) {
+      paramOutputStream = (ApolloActionData)paramDownloadParams.tag;
+      if (paramOutputStream == null) {
         return null;
       }
-      if ((((ApolloManagerServiceImpl)localObject).isPlayerAction(paramDownloadParams)) && (((ApolloManagerServiceImpl)localObject).isCMSPanelPicExists(paramDownloadParams)))
+      paramDownloadParams = ApolloResManagerFacade.a.a(Scene.AIO);
+      if ((ApolloActionHelperImpl.isPlayerAction(paramOutputStream)) && (paramDownloadParams.c(paramOutputStream)))
       {
         QLog.d("[cmshow]ApolloDownloader", 2, "[cmshow]ApolloDownloader isCMSPanelPicExists, return");
-        return new File(((ApolloManagerServiceImpl)localObject).getPanelPicPath(paramDownloadParams));
+        return new File(paramDownloadParams.b(paramOutputStream));
       }
-      paramOutputStream = (ApolloResManagerImpl)paramOutputStream.getRuntimeService(IApolloResManager.class, "all");
-      if (ApolloUtilImpl.isResExist(paramDownloadParams, i))
+      i = Integer.parseInt(paramURLDrawableHandler.getValue());
+      if (paramDownloadParams.c(paramOutputStream, i))
       {
         if (QLog.isColorLevel())
         {
-          paramOutputStream = new StringBuilder();
-          paramOutputStream.append("actionRes is exist aid=");
-          paramOutputStream.append(paramDownloadParams.actionId);
-          QLog.d("[cmshow]ApolloDownloader", 2, paramOutputStream.toString());
+          paramURLDrawableHandler = new StringBuilder();
+          paramURLDrawableHandler.append("actionRes is exist aid=");
+          paramURLDrawableHandler.append(paramOutputStream.actionId);
+          QLog.d("[cmshow]ApolloDownloader", 2, paramURLDrawableHandler.toString());
         }
-        return ((ApolloManagerServiceImpl)localObject).getResFile(paramDownloadParams, i);
+        return paramDownloadParams.b(paramOutputStream, i);
       }
-      if (paramOutputStream.downloadApolloRes(paramDownloadParams, i, null)) {
-        return ((ApolloManagerServiceImpl)localObject).getResFile(paramDownloadParams, i);
+      if (paramDownloadParams.a(paramOutputStream, i, null)) {
+        return paramDownloadParams.b(paramOutputStream, i);
       }
       throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
     }
@@ -151,7 +126,7 @@ public class ApolloDownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.res.api.impl.ApolloDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ public class PhotoView$END
   
   public float a()
   {
-    return PhotoView.a(this.a).bottom;
+    return PhotoView.o(this.a).bottom;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.bm.library.PhotoView.END
  * JD-Core Version:    0.7.0.1
  */

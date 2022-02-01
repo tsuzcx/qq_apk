@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsCompat;
 class MultiAIOBaseViewPager$4
   implements OnApplyWindowInsetsListener
 {
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private final Rect b = new Rect();
   
   MultiAIOBaseViewPager$4(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
   
@@ -19,16 +19,16 @@ class MultiAIOBaseViewPager$4
     if (paramView.isConsumed()) {
       return paramView;
     }
-    paramWindowInsetsCompat = this.jdField_a_of_type_AndroidGraphicsRect;
+    paramWindowInsetsCompat = this.b;
     paramWindowInsetsCompat.left = paramView.getSystemWindowInsetLeft();
     paramWindowInsetsCompat.top = paramView.getSystemWindowInsetTop();
     paramWindowInsetsCompat.right = paramView.getSystemWindowInsetRight();
     paramWindowInsetsCompat.bottom = paramView.getSystemWindowInsetBottom();
     int i = 0;
-    int j = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildCount();
+    int j = this.a.getChildCount();
     while (i < j)
     {
-      WindowInsetsCompat localWindowInsetsCompat = ViewCompat.dispatchApplyWindowInsets(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager.getChildAt(i), paramView);
+      WindowInsetsCompat localWindowInsetsCompat = ViewCompat.dispatchApplyWindowInsets(this.a.getChildAt(i), paramView);
       paramWindowInsetsCompat.left = Math.min(localWindowInsetsCompat.getSystemWindowInsetLeft(), paramWindowInsetsCompat.left);
       paramWindowInsetsCompat.top = Math.min(localWindowInsetsCompat.getSystemWindowInsetTop(), paramWindowInsetsCompat.top);
       paramWindowInsetsCompat.right = Math.min(localWindowInsetsCompat.getSystemWindowInsetRight(), paramWindowInsetsCompat.right);
@@ -40,7 +40,7 @@ class MultiAIOBaseViewPager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.4
  * JD-Core Version:    0.7.0.1
  */

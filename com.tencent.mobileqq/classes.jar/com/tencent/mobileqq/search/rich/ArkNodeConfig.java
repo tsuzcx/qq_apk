@@ -3,50 +3,50 @@ package com.tencent.mobileqq.search.rich;
 public class ArkNodeConfig
 {
   public int a;
-  public String a;
   public String b;
   public String c;
   public String d;
   public String e;
+  public String f;
   
   public ArkNodeConfig(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString3;
-    this.c = paramString2;
-    this.d = paramString4;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.e = paramString5;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramInt;
+    this.c = paramString3;
+    this.d = paramString2;
+    this.e = paramString4;
+    this.b = paramString1;
+    this.f = paramString5;
   }
   
   public String a()
   {
-    return this.e;
+    return this.f;
   }
   
-  public String b()
+  public int b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public String c()
   {
-    return this.c;
+    return this.b;
   }
   
   public String d()
   {
-    return this.b;
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeConfig
  * JD-Core Version:    0.7.0.1
  */

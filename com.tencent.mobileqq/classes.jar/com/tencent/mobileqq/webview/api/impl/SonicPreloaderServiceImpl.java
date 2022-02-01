@@ -51,7 +51,7 @@ public class SonicPreloaderServiceImpl
     if (paramSonicParserInfo == null) {
       return null;
     }
-    Object localObject1 = paramSonicParserInfo.jdField_a_of_type_JavaLangString;
+    Object localObject1 = paramSonicParserInfo.a;
     Object localObject2;
     long l1;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -63,10 +63,10 @@ public class SonicPreloaderServiceImpl
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("getSonicPreloadDataList : preloadBusinessId = ");
-        ((StringBuilder)localObject2).append(paramSonicParserInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(paramSonicParserInfo.c);
         QLog.d("SonicPreload", 2, ((StringBuilder)localObject2).toString());
       }
-      l1 = paramSonicParserInfo.jdField_a_of_type_Long;
+      l1 = paramSonicParserInfo.b;
     }
     label471:
     label474:
@@ -121,18 +121,18 @@ public class SonicPreloaderServiceImpl
           localObject2 = ((JSONArray)localObject3).getJSONObject(j);
           int m = ((JSONObject)localObject2).optInt("id");
           l2 = ((JSONObject)localObject2).optLong("templateChangeTime", -1L);
-          if ((l2 < l1) || ((paramSonicParserInfo.jdField_a_of_type_Int != 0) && (m != paramSonicParserInfo.jdField_a_of_type_Int))) {
+          if ((l2 < l1) || ((paramSonicParserInfo.c != 0) && (m != paramSonicParserInfo.c))) {
             break label474;
           }
           int n = localSparseArray.indexOfKey(m);
           if (n > 0)
           {
             SonicPreloadData localSonicPreloadData = (SonicPreloadData)localSparseArray.get(m);
-            if (localSonicPreloadData.jdField_a_of_type_Long >= l2) {
+            if (localSonicPreloadData.d >= l2) {
               break label474;
             }
-            localSonicPreloadData.jdField_a_of_type_Long = l2;
-            localSonicPreloadData.b = ((JSONObject)localObject2).optInt("preloadType", 0);
+            localSonicPreloadData.d = l2;
+            localSonicPreloadData.e = ((JSONObject)localObject2).optInt("preloadType", 0);
             break label474;
           }
           localSparseArray.put(m, new SonicPreloadData(m, "", true, l2, ((JSONObject)localObject2).optInt("preloadType", 0)));
@@ -177,7 +177,7 @@ public class SonicPreloaderServiceImpl
         Object localObject1 = (SonicPreloadData)localIterator.next();
         if (localObject1 != null)
         {
-          paramList = ((SonicPreloadData)localObject1).jdField_a_of_type_JavaLangString;
+          paramList = ((SonicPreloadData)localObject1).b;
           if (!TextUtils.isEmpty(paramList))
           {
             if (paramList.contains("?"))
@@ -199,7 +199,7 @@ public class SonicPreloaderServiceImpl
             SonicEngine localSonicEngine = WebAccelerateHelper.getSonicEngine();
             bool2 = bool1;
             if (localSonicEngine != null) {
-              bool2 = localSonicEngine.preCreateSession(paramList, ((SonicSessionConfig.Builder)localObject2).build(), ((SonicPreloadData)localObject1).jdField_a_of_type_Long, ((SonicPreloadData)localObject1).b);
+              bool2 = localSonicEngine.preCreateSession(paramList, ((SonicSessionConfig.Builder)localObject2).build(), ((SonicPreloadData)localObject1).d, ((SonicPreloadData)localObject1).e);
             }
             bool1 = bool2;
             if (QLog.isColorLevel())
@@ -221,7 +221,7 @@ public class SonicPreloaderServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.api.impl.SonicPreloaderServiceImpl
  * JD-Core Version:    0.7.0.1
  */

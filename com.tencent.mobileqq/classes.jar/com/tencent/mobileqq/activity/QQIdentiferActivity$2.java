@@ -17,7 +17,7 @@ class QQIdentiferActivity$2
     if (!paramBoolean)
     {
       paramString = this.a;
-      paramString = DialogUtil.a(paramString, 230, paramString.getString(2131698511), HardCodeUtil.a(2131710307), new QQIdentiferActivity.2.1(this), null);
+      paramString = DialogUtil.a(paramString, 230, paramString.getString(2131896453), HardCodeUtil.a(2131908002), new QQIdentiferActivity.2.1(this), null);
       paramString.setOnDismissListener(new QQIdentiferActivity.2.2(this));
       paramString.show();
       return;
@@ -28,7 +28,7 @@ class QQIdentiferActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.2
  * JD-Core Version:    0.7.0.1
  */

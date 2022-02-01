@@ -32,7 +32,7 @@ class PCPushProxy$WorkHandler
         PCPushProxy.PkgEntry localPkgEntry = null;
         if (str != null)
         {
-          localPkgEntry = (PCPushProxy.PkgEntry)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+          localPkgEntry = (PCPushProxy.PkgEntry)this.a.d.get(str);
           if (localPkgEntry == null)
           {
             paramMessage = new StringBuilder();
@@ -41,10 +41,10 @@ class PCPushProxy$WorkHandler
             LogUtility.e("PCPushProxy", paramMessage.toString());
             return;
           }
-          if (localPkgEntry.jdField_b_of_type_Int != 1) {
-            localObject = localPkgEntry.jdField_b_of_type_JavaLangString.substring(localPkgEntry.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+          if (localPkgEntry.j != 1) {
+            localObject = localPkgEntry.b.substring(localPkgEntry.b.indexOf("#") + 1);
           } else {
-            localObject = localPkgEntry.jdField_b_of_type_JavaLangString;
+            localObject = localPkgEntry.b;
           }
         }
         else
@@ -68,7 +68,7 @@ class PCPushProxy$WorkHandler
             }
             else
             {
-              this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(str);
+              this.a.e.a(str);
             }
           }
           else if (localPkgEntry != null)
@@ -84,11 +84,11 @@ class PCPushProxy$WorkHandler
               paramMessage.append(localPkgEntry.c);
               StaticAnalyz.a("100", paramMessage.toString(), (String)localObject);
             }
-            this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(localPkgEntry);
+            this.a.e.a(localPkgEntry);
           }
         }
         else {
-          this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+          this.a.e.a(this.a.d);
         }
         return;
       }
@@ -100,7 +100,7 @@ class PCPushProxy$WorkHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.pcpush.PCPushProxy.WorkHandler
  * JD-Core Version:    0.7.0.1
  */

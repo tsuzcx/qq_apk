@@ -24,6 +24,7 @@ import com.tencent.mobileqq.richstatus.comment.spannable.CommentMovementMethod;
 import com.tencent.mobileqq.richstatus.comment.utils.SimpleWeakObjectPool;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,15 +32,15 @@ public class CommentsView
   extends LinearLayout
   implements ViewGroup.OnHierarchyChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private SimpleWeakObjectPool<View> jdField_a_of_type_ComTencentMobileqqRichstatusCommentUtilsSimpleWeakObjectPool;
-  private CommentsView.OnItemClickListener jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView$OnItemClickListener;
-  private CommentsView.OnItemLongClickListener jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView$OnItemLongClickListener;
-  private CommentsView.OnSpanItemClick jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView$OnSpanItemClick;
-  private List<CommentItem> jdField_a_of_type_JavaUtilList;
+  private int a;
   private int b;
   private int c;
+  private LayoutInflater d;
+  private List<CommentItem> e;
+  private SimpleWeakObjectPool<View> f;
+  private CommentsView.OnSpanItemClick g;
+  private CommentsView.OnItemClickListener h;
+  private CommentsView.OnItemLongClickListener i;
   
   public CommentsView(Context paramContext)
   {
@@ -64,20 +65,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new CommentsView.3(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new CommentsView.3(this, this.a, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentUtilsSimpleWeakObjectPool.a();
+    View localView2 = (View)this.f.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
-      if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-        this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
+      if (this.d == null) {
+        this.d = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562043, null, false);
+      localView1 = this.d.inflate(2131628469, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -86,9 +87,9 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    int i = this.b;
-    CommentMovementMethod localCommentMovementMethod = new CommentMovementMethod(i, i);
-    CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int j = this.b;
+    CommentMovementMethod localCommentMovementMethod = new CommentMovementMethod(j, j);
+    CommentItem localCommentItem = (CommentItem)this.e.get(paramInt);
     if (localCommentItem != null)
     {
       if (localCommentItem.user == null) {
@@ -107,7 +108,7 @@ public class CommentsView
       if (!TextUtils.isEmpty(paramView))
       {
         localSpannableStringBuilder.append(" ");
-        localSpannableStringBuilder.append(getContext().getString(2131718207));
+        localSpannableStringBuilder.append(getContext().getString(2131915689));
         localSpannableStringBuilder.append(" ");
         if (localCommentItem.toReplyUser != null) {
           str1 = localCommentItem.toReplyUser.a;
@@ -129,40 +130,40 @@ public class CommentsView
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentUtilsSimpleWeakObjectPool = new SimpleWeakObjectPool();
+    this.f = new SimpleWeakObjectPool();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167266);
+    this.c = getResources().getColor(2131168264);
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.e;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
-      int i = 0;
+      int j = 0;
       setVisibility(0);
       localObject = new LinearLayout.LayoutParams(-1, -2);
       ((LinearLayout.LayoutParams)localObject).topMargin = AIOUtils.b(2.0F, getResources());
-      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      while (j < this.e.size())
       {
-        if (getChildCount() > i)
+        if (getChildCount() > j)
         {
-          a(getChildAt(i), i);
+          a(getChildAt(j), j);
         }
         else
         {
-          View localView = a(i);
+          View localView = a(j);
           if (localView == null)
           {
             QLog.e("CommentsView", 1, "listView item layout is null, please check getView()...");
             return;
           }
-          addView(localView, i, (ViewGroup.LayoutParams)localObject);
+          addView(localView, j, (ViewGroup.LayoutParams)localObject);
         }
-        i += 1;
+        j += 1;
       }
-      if (getChildCount() > this.jdField_a_of_type_JavaUtilList.size()) {
-        removeViews(this.jdField_a_of_type_JavaUtilList.size(), getChildCount() - this.jdField_a_of_type_JavaUtilList.size());
+      if (getChildCount() > this.e.size()) {
+        removeViews(this.e.size(), getChildCount() - this.e.size());
       }
       return;
     }
@@ -174,8 +175,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166496));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166976));
+      this.a = paramAttributeSet.getColor(0, getResources().getColor(2131167338));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131167910));
       return;
     }
     finally
@@ -190,20 +191,39 @@ public class CommentsView
     if (paramList == null) {
       localObject = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject);
+    this.e = ((List)localObject);
     a();
   }
   
-  public void onChildViewAdded(View paramView1, View paramView2) {}
+  public CommentsView.OnItemClickListener getOnItemClickListener()
+  {
+    return this.h;
+  }
+  
+  public CommentsView.OnItemLongClickListener getOnItemLongClickListener()
+  {
+    return this.i;
+  }
+  
+  public CommentsView.OnSpanItemClick getOnSpanItemClick()
+  {
+    return this.g;
+  }
+  
+  public void onChildViewAdded(View paramView1, View paramView2)
+  {
+    EventCollector.getInstance().onChildViewAdded(paramView1, paramView2);
+  }
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentUtilsSimpleWeakObjectPool.a(paramView2);
+    EventCollector.getInstance().onChildViewRemoved(paramView1, paramView2);
+    this.f.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void setNormalTextColor(int paramInt)
@@ -213,22 +233,22 @@ public class CommentsView
   
   public void setOnItemClickListener(CommentsView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView$OnItemClickListener = paramOnItemClickListener;
+    this.h = paramOnItemClickListener;
   }
   
   public void setOnItemLongClickListener(CommentsView.OnItemLongClickListener paramOnItemLongClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView$OnItemLongClickListener = paramOnItemLongClickListener;
+    this.i = paramOnItemLongClickListener;
   }
   
   public void setOnSpanItemClick(CommentsView.OnSpanItemClick paramOnSpanItemClick)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView$OnSpanItemClick = paramOnSpanItemClick;
+    this.g = paramOnSpanItemClick;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.CommentsView
  * JD-Core Version:    0.7.0.1
  */

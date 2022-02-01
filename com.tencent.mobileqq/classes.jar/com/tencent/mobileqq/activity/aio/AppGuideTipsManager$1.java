@@ -16,8 +16,8 @@ class AppGuideTipsManager$1
   {
     AppGuideTipsManager.a(this.this$0);
     this.this$0.c();
-    AppGuideTipsManager.a(this.this$0).clear();
-    Object localObject1 = (ArrayList)AppGuideTipsManager.a(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
+    AppGuideTipsManager.b(this.this$0).clear();
+    Object localObject1 = (ArrayList)AppGuideTipsManager.c(this.this$0).query(AppGuideTipsConfig.class, AppGuideTipsConfig.class.getSimpleName(), false, null, null, null, null, null, null);
     int i;
     if (localObject1 != null)
     {
@@ -54,7 +54,7 @@ class AppGuideTipsManager$1
         label174:
         j += 1;
         break label137;
-        AppGuideTipsManager.a(this.this$0).put(((AppGuideTipsConfig)localObject2).tipsType, localObject2);
+        AppGuideTipsManager.b(this.this$0).put(((AppGuideTipsConfig)localObject2).tipsType, localObject2);
         i += 1;
         continue;
         AppGuideTipsManager.a(this.this$0, true);
@@ -64,7 +64,7 @@ class AppGuideTipsManager$1
           localObject1 = AppGuideTipsManager.a;
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("loadConfig, mTipsMap size=");
-          ((StringBuilder)localObject2).append(AppGuideTipsManager.a(this.this$0).size());
+          ((StringBuilder)localObject2).append(AppGuideTipsManager.b(this.this$0).size());
           QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
         }
         return;
@@ -78,7 +78,7 @@ class AppGuideTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AppGuideTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

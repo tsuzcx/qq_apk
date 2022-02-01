@@ -22,8 +22,8 @@ class a
       str = "N";
     }
     localMap.put("A85", str);
-    c.a(this.a).put("A20", localf.J());
-    c.a(this.a).put("A69", localf.K());
+    c.a(this.a).put("A20", localf.I());
+    c.a(this.a).put("A69", localf.J());
     c.b(this.a).b(c.a(this.a));
   }
 }

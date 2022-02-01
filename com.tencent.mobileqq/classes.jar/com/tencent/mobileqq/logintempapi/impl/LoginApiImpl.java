@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.logintempapi.impl;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -7,6 +8,8 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import com.tencent.mobileqq.login.TicketChecker;
+import com.tencent.mobileqq.logincallback.TicketCheckDialogCallback;
 import com.tencent.mobileqq.logintempapi.ILoginApi;
 import com.tencent.mobileqq.vas.VasApngIPCModule;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
@@ -31,6 +34,11 @@ public class LoginApiImpl
     return null;
   }
   
+  public void checkA1Error(Activity paramActivity, AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, TicketCheckDialogCallback paramTicketCheckDialogCallback)
+  {
+    new TicketChecker().a(paramActivity, paramAppRuntime, paramString1, paramString2, paramString3, paramTicketCheckDialogCallback);
+  }
+  
   public int getDevLockStatus(AppRuntime paramAppRuntime, String paramString, WtloginObserver paramWtloginObserver)
   {
     return EquipmentLockImpl.a().a(paramAppRuntime, paramString, paramWtloginObserver);
@@ -49,7 +57,7 @@ public class LoginApiImpl
     ((StringBuilder)localObject1).append("LoginView getHead bitmap: ");
     ((StringBuilder)localObject1).append(paramAppRuntime);
     QLog.d("Q.qqhead.freq", 1, ((StringBuilder)localObject1).toString());
-    if ((paramBoolean2) && (paramAppRuntime != null) && (VasApngIPCModule.a().b()))
+    if ((paramBoolean2) && (paramAppRuntime != null) && (VasApngIPCModule.a().e()))
     {
       int i = BaseApplication.getContext().getSharedPreferences(paramString, 0).getInt("my_store_face_id", 0);
       if (i > 0)
@@ -66,7 +74,7 @@ public class LoginApiImpl
             localURLDrawableOptions.mUseMemoryCache = true;
             localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject1);
             localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
-            localURLDrawableOptions.mExtraInfo = VasFaceManager.a();
+            localURLDrawableOptions.mExtraInfo = VasFaceManager.c();
             localObject1 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
             return localObject1;
           }
@@ -90,7 +98,7 @@ public class LoginApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.logintempapi.impl.LoginApiImpl
  * JD-Core Version:    0.7.0.1
  */

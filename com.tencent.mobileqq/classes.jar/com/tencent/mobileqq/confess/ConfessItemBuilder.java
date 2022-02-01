@@ -34,13 +34,13 @@ public class ConfessItemBuilder
     }
     else
     {
-      paramView = LayoutInflater.from(paramContext).inflate(2131561020, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2131627361, null);
       paramRecentFaceDecoder = new ConfessItemBuilder.ViewHolder();
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369736));
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368343));
-      paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379994));
+      paramRecentFaceDecoder.a = ((ViewGroup)paramView.findViewById(2131436854));
+      paramRecentFaceDecoder.b = ((ImageView)paramView.findViewById(2131435219));
+      paramRecentFaceDecoder.c = ((TextView)paramView.findViewById(2131448897));
       paramView.setTag(paramRecentFaceDecoder);
-      this.a = (paramOnClickListener.getDimensionPixelSize(2131298215) + paramOnClickListener.getDimensionPixelSize(2131298217) + paramOnClickListener.getDimensionPixelSize(2131298216) * 2);
+      this.a = (paramOnClickListener.getDimensionPixelSize(2131298914) + paramOnClickListener.getDimensionPixelSize(2131298916) + paramOnClickListener.getDimensionPixelSize(2131298915) * 2);
     }
     paramInt = paramViewGroup.getMeasuredHeight();
     int j = this.a;
@@ -62,20 +62,20 @@ public class ConfessItemBuilder
       paramInt = ((Integer)paramObject).intValue();
       if (paramInt == 16)
       {
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839406);
-        if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-          ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+        paramRecentFaceDecoder.b.setImageResource(2130839590);
+        if ((paramRecentFaceDecoder.b.getDrawable() instanceof Animatable)) {
+          ((Animatable)paramRecentFaceDecoder.b.getDrawable()).start();
         }
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131698705);
+        paramRecentFaceDecoder.c.setText(2131896663);
         return paramView;
       }
       if (paramInt == 17)
       {
-        if ((paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-          ((Animatable)paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+        if ((paramRecentFaceDecoder.b.getDrawable() instanceof Animatable)) {
+          ((Animatable)paramRecentFaceDecoder.b.getDrawable()).stop();
         }
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-        paramRecentFaceDecoder.jdField_a_of_type_AndroidWidgetTextView.setText(2131698704);
+        paramRecentFaceDecoder.b.setImageDrawable(null);
+        paramRecentFaceDecoder.c.setText(2131896662);
       }
     }
     return paramView;
@@ -83,7 +83,7 @@ public class ConfessItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessItemBuilder
  * JD-Core Version:    0.7.0.1
  */

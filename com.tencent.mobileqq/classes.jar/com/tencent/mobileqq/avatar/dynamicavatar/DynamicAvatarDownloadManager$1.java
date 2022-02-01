@@ -71,9 +71,9 @@ class DynamicAvatarDownloadManager$1
           }
         }
       }
-      DynamicAvatarDownloadManager.a(this.a).remove(localObject1);
+      DynamicAvatarDownloadManager.b(this.a).remove(localObject1);
       if ((NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) && (!NetworkUtil.isWifiConnected(BaseApplicationImpl.getContext()))) {
-        DynamicAvatarDownloadManager.a(this.a);
+        DynamicAvatarDownloadManager.c(this.a);
       }
       return;
     }
@@ -108,7 +108,7 @@ class DynamicAvatarDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

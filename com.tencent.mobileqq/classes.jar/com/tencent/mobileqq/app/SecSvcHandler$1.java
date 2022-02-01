@@ -16,14 +16,14 @@ class SecSvcHandler$1
       Intent localIntent = new Intent();
       localIntent.putExtra("type", 11);
       Bundle localBundle = new Bundle();
-      localBundle.putString("dlg_title", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("dlg_content", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("dlg_lbutton", this.jdField_c_of_type_JavaLangString);
+      localBundle.putString("dlg_title", this.a);
+      localBundle.putString("dlg_content", this.b);
+      localBundle.putString("dlg_lbutton", this.c);
       localBundle.putString("dlg_rbutton", this.d);
       localBundle.putString("dlg_url", this.e);
-      localBundle.putInt("dlg_lbtnid", this.jdField_a_of_type_Int);
-      localBundle.putInt("dlg_rbtnid", this.jdField_b_of_type_Int);
-      localBundle.putInt("dlg_seccmd", this.jdField_c_of_type_Int);
+      localBundle.putInt("dlg_lbtnid", this.f);
+      localBundle.putInt("dlg_rbtnid", this.g);
+      localBundle.putInt("dlg_seccmd", this.h);
       localIntent.putExtras(localBundle);
       localIntent.setFlags(872415232);
       if (!SecSvcHandler.a(this.this$0).isBackgroundStop)
@@ -40,7 +40,7 @@ class SecSvcHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SecSvcHandler.1
  * JD-Core Version:    0.7.0.1
  */

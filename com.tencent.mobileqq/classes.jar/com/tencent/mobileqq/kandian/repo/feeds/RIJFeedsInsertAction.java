@@ -8,32 +8,27 @@ import org.jetbrains.annotations.NotNull;
 public final class RIJFeedsInsertAction
   implements Comparable<RIJFeedsInsertAction>
 {
-  private int jdField_a_of_type_Int;
   @NotNull
-  private ActionType jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType;
+  private ActionType a;
   private int b;
   private int c;
+  private int d;
   
   public RIJFeedsInsertAction(@NotNull ActionType paramActionType, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType = paramActionType;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramActionType;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
   public int a(@NotNull RIJFeedsInsertAction paramRIJFeedsInsertAction)
   {
     Intrinsics.checkParameterIsNotNull(paramRIJFeedsInsertAction, "other");
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType == paramRIJFeedsInsertAction.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType) {
+    if (this.a == paramRIJFeedsInsertAction.a) {
       return 0;
     }
-    if (this.b < paramRIJFeedsInsertAction.b) {
+    if (this.c < paramRIJFeedsInsertAction.c) {
       return -1;
     }
     return 1;
@@ -42,12 +37,17 @@ public final class RIJFeedsInsertAction
   @NotNull
   public final ActionType a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType;
+    return this.a;
   }
   
   public final int b()
   {
-    return this.c;
+    return this.b;
+  }
+  
+  public final int c()
+  {
+    return this.d;
   }
   
   @NotNull
@@ -55,20 +55,20 @@ public final class RIJFeedsInsertAction
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RIJFeedsInsertAction(actionType=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsActionType);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", progress=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", watchTime=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", priority=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", watchTime=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", priority=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(')');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJFeedsInsertAction
  * JD-Core Version:    0.7.0.1
  */

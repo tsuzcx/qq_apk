@@ -16,38 +16,37 @@ import java.util.List;
 public class GetShareGroupListResponse
   extends BaseResponse
 {
-  public long a;
-  public String a;
-  public ArrayList<ShareGroupCollectionItem> a;
-  public boolean a;
+  public ArrayList<ShareGroupCollectionItem> a = new ArrayList();
   public int b;
+  public String e;
+  public boolean f;
+  public long g;
   
   public GetShareGroupListResponse(String paramString, qqstory_service.RspShareVideoCollectionList paramRspShareVideoCollectionList)
   {
     super(paramRspShareVideoCollectionList.result);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
-    this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
-    this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
+    this.e = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
+    this.g = paramRspShareVideoCollectionList.seqno.get();
     int i = paramRspShareVideoCollectionList.is_end.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.f = bool;
     paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
     while (paramRspShareVideoCollectionList.hasNext())
     {
       qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
       ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
       localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
+      this.a.add(localShareGroupCollectionItem);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetShareGroupListResponse
  * JD-Core Version:    0.7.0.1
  */

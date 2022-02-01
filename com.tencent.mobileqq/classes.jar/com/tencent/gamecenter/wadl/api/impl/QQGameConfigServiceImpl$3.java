@@ -17,9 +17,9 @@ class QQGameConfigServiceImpl$3
     if (((File)localObject).exists()) {
       ((File)localObject).delete();
     }
-    if (FileUtils.writeFile(((File)localObject).getAbsolutePath(), this.jdField_a_of_type_JavaLangString, false))
+    if (FileUtils.writeFile(((File)localObject).getAbsolutePath(), this.a, false))
     {
-      GameCenterSpUtils.a("LAST_GET_CONF_VERSION", this.jdField_a_of_type_Long);
+      GameCenterSpUtils.a("LAST_GET_CONF_VERSION", this.b);
       GameCenterSpUtils.a("LAST_GET_CONF_TIME", QQGameConfigServiceImpl.access$200(this.this$0));
       localObject = new Intent("com.tencent.gamecenter.action");
       ((Intent)localObject).setPackage(MobileQQ.sMobileQQ.getPackageName());
@@ -30,7 +30,7 @@ class QQGameConfigServiceImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameConfigServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -26,20 +26,20 @@ public class ExpandSearchBarView
   extends FrameLayout
   implements View.OnClickListener, ExpandHorizontalTagsView.OnItemClickListener
 {
-  private int jdField_a_of_type_Int = -1;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private Animator.AnimatorListener jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = null;
-  private ValueAnimator jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = null;
-  private ExpandHorizontalTagsView jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView;
-  private ExpandSearchBarView.OnItemClickListener jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandSearchBarView$OnItemClickListener;
-  private InterceptHorizontalScrollView jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView;
-  private boolean jdField_a_of_type_Boolean = true;
-  private Animator.AnimatorListener jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = null;
-  private ValueAnimator jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = null;
-  private boolean jdField_b_of_type_Boolean = false;
+  private ExpandSearchBarView.OnItemClickListener a;
+  private ViewGroup b;
+  private InterceptHorizontalScrollView c;
+  private ExpandHorizontalTagsView d;
+  private ImageView e;
+  private TextView f;
+  private boolean g = true;
+  private int h = -1;
+  private final Interpolator i = new LinearInterpolator();
+  private ValueAnimator j = null;
+  private Animator.AnimatorListener k = null;
+  private ValueAnimator l = null;
+  private Animator.AnimatorListener m = null;
+  private boolean n = false;
   
   public ExpandSearchBarView(Context paramContext)
   {
@@ -54,92 +54,92 @@ public class ExpandSearchBarView
   public ExpandSearchBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131561060, this);
+    inflate(paramContext, 2131627403, this);
     d();
   }
   
   private void a(View paramView)
   {
-    this.jdField_a_of_type_Int = (((FrameLayout.LayoutParams)paramView.getLayoutParams()).topMargin + paramView.getHeight());
-    this.jdField_b_of_type_Boolean = true;
+    this.h = (((FrameLayout.LayoutParams)paramView.getLayoutParams()).topMargin + paramView.getHeight());
+    this.n = true;
   }
   
   private void b(View paramView)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.n) {
       a(paramView);
     }
-    if (this.jdField_a_of_type_Int <= 0) {
+    if (this.h <= 0) {
       return;
     }
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-    if (this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator == null)
+    if (this.j == null)
     {
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(200L);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new ExpandSearchBarView.1(this, localLayoutParams, paramView));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new ExpandSearchBarView.2(this);
+      this.j = ValueAnimator.ofInt(new int[] { 0, 1000 });
+      this.j.setDuration(200L);
+      this.j.setInterpolator(this.i);
+      this.j.addUpdateListener(new ExpandSearchBarView.1(this, localLayoutParams, paramView));
+      this.k = new ExpandSearchBarView.2(this);
     }
-    paramView = this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator;
+    paramView = this.l;
     if ((paramView != null) && (paramView.isRunning()))
     {
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
+      this.l.cancel();
+      this.l.removeAllListeners();
     }
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener);
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.start();
+    this.j.removeAllListeners();
+    this.j.cancel();
+    this.j.addListener(this.k);
+    this.j.start();
   }
   
   private void c(View paramView)
   {
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.n) {
       a(paramView);
     }
-    if (this.jdField_a_of_type_Int <= 0) {
+    if (this.h <= 0) {
       return;
     }
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramView.getLayoutParams();
-    if (this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator == null)
+    if (this.l == null)
     {
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(200L);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new ExpandSearchBarView.3(this, localLayoutParams, paramView));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new ExpandSearchBarView.4(this, paramView);
+      this.l = ValueAnimator.ofInt(new int[] { 0, 1000 });
+      this.l.setDuration(200L);
+      this.l.setInterpolator(this.i);
+      this.l.addUpdateListener(new ExpandSearchBarView.3(this, localLayoutParams, paramView));
+      this.m = new ExpandSearchBarView.4(this, paramView);
     }
-    paramView = this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
+    paramView = this.j;
     if ((paramView != null) && (paramView.isRunning()))
     {
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
+      this.j.cancel();
+      this.j.removeAllListeners();
     }
-    this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
-    this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
-    this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener);
-    this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.start();
+    this.l.removeAllListeners();
+    this.l.cancel();
+    this.l.addListener(this.m);
+    this.l.start();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131377020));
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView = ((InterceptHorizontalScrollView)findViewById(2131377083));
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView = ((ExpandHorizontalTagsView)findViewById(2131377080));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377043));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377021));
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView;
+    this.b = ((ViewGroup)findViewById(2131445384));
+    this.c = ((InterceptHorizontalScrollView)findViewById(2131445452));
+    this.d = ((ExpandHorizontalTagsView)findViewById(2131445449));
+    this.e = ((ImageView)findViewById(2131445409));
+    this.f = ((TextView)findViewById(2131445385));
+    Object localObject = this.d;
     if (localObject != null) {
       ((ExpandHorizontalTagsView)localObject).setOnItemClickListener(this);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+    localObject = this.e;
     if (localObject != null)
     {
       ((ImageView)localObject).setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(UITools.a);
+      this.e.setOnTouchListener(UITools.a);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject = this.f;
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener(this);
     }
@@ -147,10 +147,10 @@ public class ExpandSearchBarView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.g)
     {
-      ValueAnimator localValueAnimator = this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
-      if ((localValueAnimator != null) && (!localValueAnimator.isRunning()) && (((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams()).topMargin != 0))
+      ValueAnimator localValueAnimator = this.j;
+      if ((localValueAnimator != null) && (!localValueAnimator.isRunning()) && (((FrameLayout.LayoutParams)this.b.getLayoutParams()).topMargin != 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ExtendFriendSearchBarView", 2, "showSearchBar catch a display exception");
@@ -159,36 +159,36 @@ public class ExpandSearchBarView
       }
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    b(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.g = true;
+    b(this.b);
   }
   
   public void a(int paramInt)
   {
     int[] arrayOfInt = new int[2];
     getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[1];
-    int k = getHeight();
-    paramInt += i;
-    if ((paramInt > i) && (i > 0))
+    int i1 = arrayOfInt[1];
+    int i3 = getHeight();
+    paramInt += i1;
+    if ((paramInt > i1) && (i1 > 0))
     {
-      j = k;
-      if (k > 0) {}
+      i2 = i3;
+      if (i3 > 0) {}
     }
     else
     {
       paramInt = 1920;
-      i = 223;
-      j = 105;
+      i1 = 223;
+      i2 = 105;
     }
-    k = i * 36 / paramInt;
-    int m = j + i;
-    int j = m * 36 / paramInt;
-    i = i * -35 / paramInt;
-    paramInt = m * -35 / paramInt;
-    i = Color.argb(255, 79 - k, 127 - i, 255);
-    paramInt = Color.argb(255, 79 - j, 127 - paramInt, 255);
-    setBackgroundDrawable(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i, paramInt }));
+    i3 = i1 * 36 / paramInt;
+    int i4 = i2 + i1;
+    int i2 = i4 * 36 / paramInt;
+    i1 = i1 * -35 / paramInt;
+    paramInt = i4 * -35 / paramInt;
+    i1 = Color.argb(255, 79 - i3, 127 - i1, 255);
+    paramInt = Color.argb(255, 79 - i2, 127 - paramInt, 255);
+    setBackgroundDrawable(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { i1, paramInt }));
   }
   
   public void a(String paramString)
@@ -198,30 +198,30 @@ public class ExpandSearchBarView
     Object localObject2 = null;
     if (!bool)
     {
-      i = 0;
+      i1 = 0;
       localObject1 = localObject2;
-      while (i < this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView.getChildCount())
+      while (i1 < this.d.getChildCount())
       {
-        localObject1 = (TextView)this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView.getChildAt(i);
-        if (((((TextView)localObject1).getTag() instanceof ExpandHorizontalTagsView.TagInfo)) && (paramString.equals(((ExpandHorizontalTagsView.TagInfo)((TextView)localObject1).getTag()).a)))
+        localObject1 = (TextView)this.d.getChildAt(i1);
+        if (((((TextView)localObject1).getTag() instanceof ExpandHorizontalTagsView.TagInfo)) && (paramString.equals(((ExpandHorizontalTagsView.TagInfo)((TextView)localObject1).getTag()).b)))
         {
-          i = ((TextView)localObject1).getRight();
+          i1 = ((TextView)localObject1).getRight();
           break label94;
         }
-        i += 1;
+        i1 += 1;
       }
     }
-    int i = 0;
+    int i1 = 0;
     label94:
-    int j = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView.getWidth();
-    if ((i > j) && (j > 0) && (localObject1 != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView.scrollTo(i - j, 0);
+    int i2 = this.c.getWidth();
+    if ((i1 > i2) && (i2 > 0) && (localObject1 != null)) {
+      this.c.scrollTo(i1 - i2, 0);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    ExpandSearchBarView.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandSearchBarView$OnItemClickListener;
+    ExpandSearchBarView.OnItemClickListener localOnItemClickListener = this.a;
     if (localOnItemClickListener != null) {
       localOnItemClickListener.a(paramString, paramInt);
     }
@@ -229,23 +229,23 @@ public class ExpandSearchBarView
   
   public void b()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    c(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.g = false;
+    c(this.b);
   }
   
   public void c()
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.b.getLayoutParams();
     localLayoutParams.topMargin = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.b.setLayoutParams(localLayoutParams);
   }
   
   public void onClick(View paramView)
   {
-    ExpandSearchBarView.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandSearchBarView$OnItemClickListener;
+    ExpandSearchBarView.OnItemClickListener localOnItemClickListener = this.a;
     if (localOnItemClickListener != null) {
       localOnItemClickListener.a();
     }
@@ -254,27 +254,27 @@ public class ExpandSearchBarView
   
   public void setItemClickListener(ExpandSearchBarView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandSearchBarView$OnItemClickListener = paramOnItemClickListener;
+    this.a = paramOnItemClickListener;
   }
   
   public void setSearchButtonEnable(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.e;
     if (localImageView != null)
     {
-      int i;
+      int i1;
       if (paramBoolean) {
-        i = 0;
+        i1 = 0;
       } else {
-        i = 8;
+        i1 = 8;
       }
-      localImageView.setVisibility(i);
+      localImageView.setVisibility(i1);
     }
   }
   
   public void setSearchTags(ArrayList<String> paramArrayList, int paramInt)
   {
-    ExpandHorizontalTagsView localExpandHorizontalTagsView = this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchExpandHorizontalTagsView;
+    ExpandHorizontalTagsView localExpandHorizontalTagsView = this.d;
     if (localExpandHorizontalTagsView != null) {
       localExpandHorizontalTagsView.setSearchTags(paramArrayList, paramInt);
     }
@@ -282,9 +282,9 @@ public class ExpandSearchBarView
   
   public void setSearchTextShow(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView != null)
+    if (this.c != null)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.f;
       if (localTextView == null) {
         return;
       }
@@ -292,21 +292,21 @@ public class ExpandSearchBarView
       {
         if (localTextView.getVisibility() == 8)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView.setVisibility(4);
+          this.f.setVisibility(0);
+          this.c.setVisibility(4);
         }
       }
       else if (localTextView.getVisibility() == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqQqexpandWidgetSearchInterceptHorizontalScrollView.setVisibility(0);
+        this.f.setVisibility(8);
+        this.c.setVisibility(0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.search.ExpandSearchBarView
  * JD-Core Version:    0.7.0.1
  */

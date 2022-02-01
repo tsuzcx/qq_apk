@@ -8,7 +8,7 @@ import com.tencent.aelight.camera.log.AEQLog;
 class LyricWithBuoyView$2
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
+  float a = 0.0F;
   float b = 0.0F;
   
   LyricWithBuoyView$2(LyricWithBuoyView paramLyricWithBuoyView) {}
@@ -18,11 +18,11 @@ class LyricWithBuoyView$2
     int i = paramMotionEvent.getAction();
     if (i != 0)
     {
-      if ((i == 1) && (Math.abs(paramMotionEvent.getRawX() - this.jdField_a_of_type_Float) < 10.0F) && (Math.abs(paramMotionEvent.getRawY() - this.b) < 10.0F))
+      if ((i == 1) && (Math.abs(paramMotionEvent.getRawX() - this.a) < 10.0F) && (Math.abs(paramMotionEvent.getRawY() - this.b) < 10.0F))
       {
-        if (LyricWithBuoyView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView) != null)
+        if (LyricWithBuoyView.a(this.c) != null)
         {
-          LyricWithBuoyView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricWithBuoyView).a();
+          LyricWithBuoyView.a(this.c).a();
           return true;
         }
         AEQLog.a("LyricWithBuoyView", "onClick() mOnLyricWithBuoyViewOperationListener == null.");
@@ -31,7 +31,7 @@ class LyricWithBuoyView$2
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.a = paramMotionEvent.getRawX();
       this.b = paramMotionEvent.getRawY();
     }
     return false;
@@ -39,7 +39,7 @@ class LyricWithBuoyView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricWithBuoyView.2
  * JD-Core Version:    0.7.0.1
  */

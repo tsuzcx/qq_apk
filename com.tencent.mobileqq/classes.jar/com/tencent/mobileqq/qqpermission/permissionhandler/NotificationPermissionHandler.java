@@ -18,7 +18,15 @@ public class NotificationPermissionHandler
   
   private boolean a()
   {
-    return QQNotificationManager.getInstance().areNotificationsEnabled(this.a);
+    return QQNotificationManager.getInstance().areNotificationsEnabled(this.d);
+  }
+  
+  public int a(String paramString)
+  {
+    if (a()) {
+      return 0;
+    }
+    return -1;
   }
   
   public void a(List<String> paramList, int paramInt, QQPermission.BasePermissionsListener paramBasePermissionsListener)
@@ -31,29 +39,29 @@ public class NotificationPermissionHandler
     Object localObject;
     if (paramInt == 2)
     {
-      localObject = a(this.a.getString(2131699115), this.a.getString(2131699114));
+      localObject = a(this.d.getString(2131897131), this.d.getString(2131897130));
       paramBasePermissionsListener.a((PermissionRequestDialog)localObject, paramList);
       ((PermissionRequestDialog)localObject).show();
       return;
     }
     if (paramInt == 1)
     {
-      localObject = new PermissionRequestView(this.a);
-      ((PermissionRequestView)localObject).setTitle(2131699115);
-      ((PermissionRequestView)localObject).setContent(2131699114);
+      localObject = new PermissionRequestView(this.d);
+      ((PermissionRequestView)localObject).setTitle(2131897131);
+      ((PermissionRequestView)localObject).setContent(2131897130);
       ((PermissionRequestView)localObject).setOnSettingClickListener(new NotificationPermissionHandler.1(this, paramBasePermissionsListener));
       paramBasePermissionsListener.a((PermissionRequestView)localObject, paramList);
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
     return "qq.permission.notification".equals(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqpermission.permissionhandler.NotificationPermissionHandler
  * JD-Core Version:    0.7.0.1
  */

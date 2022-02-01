@@ -11,12 +11,12 @@ class TroopSettingActivity$41
   
   public void run()
   {
-    ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).deleteTroop(TroopSettingActivity.a(this.this$0), this.this$0.a.troopUin);
+    ((IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class)).deleteTroop(TroopSettingActivity.a(this.this$0), this.this$0.i.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.41
  * JD-Core Version:    0.7.0.1
  */

@@ -22,49 +22,49 @@ class VipComicMqqManagerServiceImpl$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()))
+    if ((paramDownloadTask.e() == 3) && (paramDownloadTask.c == 0) && (this.a.exists()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
-      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
-        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
+      this.b.emoPath = this.a.getAbsolutePath();
+      if ("needDownload".equals(this.b.RomaingType)) {
+        this.b.RomaingType = "isUpdate";
       }
-      if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
+      if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(this.b.emoPath)))
       {
-        paramDownloadTask = SecUtil.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
-        if (!this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5.equals(paramDownloadTask))
+        paramDownloadTask = SecUtil.getFileMd5(this.b.emoPath);
+        if (!this.b.md5.equals(paramDownloadTask))
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("init = ");
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5);
+          localStringBuilder.append(this.b.md5);
           localStringBuilder.append(" , compute = ");
           localStringBuilder.append(paramDownloadTask);
           QLog.i("VipComicMqqManager", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingDBManagerService.updateCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      VipComicMqqManagerServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplVipComicMqqManagerServiceImpl, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
+      this.c.updateCustomEmotion(this.b);
+      this.d.add(this.b);
+      VipComicMqqManagerServiceImpl.access$000(this.k, this.e, this.b, true);
     }
     else
     {
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmApiIFavroamingDBManagerService.deleteCustomEmotion(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(this.jdField_a_of_type_ComTencentMobileqqDataVipComicFavorEmoStructMsgInfo);
-      VipComicMqqManagerServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplVipComicMqqManagerServiceImpl, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
+      this.f.add(this.b);
+      this.c.deleteCustomEmotion(this.b);
+      this.g.remove(this.h);
+      VipComicMqqManagerServiceImpl.access$000(this.k, this.e, this.b, false);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get())
+    this.i.getAndIncrement();
+    if (this.i.get() == this.j.get())
     {
-      paramDownloadTask = this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener;
+      paramDownloadTask = this.e;
       if (paramDownloadTask != null) {
-        paramDownloadTask.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
+        paramDownloadTask.onDone(this.d, this.f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.VipComicMqqManagerServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,27 +22,27 @@ import org.jetbrains.annotations.Nullable;
 public final class OriginContentLayout
   extends RoundRelativeLayout
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView a;
   private TextView b;
   private TextView c;
+  private TextView d;
   
   public OriginContentLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.D, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.Q);
+    LayoutInflater.from(paramContext).inflate(R.layout.z, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.x);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.image)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext);
-    paramContext = findViewById(R.id.aX);
+    this.a = ((ImageView)paramContext);
+    paramContext = findViewById(R.id.ay);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_duration)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    paramContext = findViewById(R.id.bi);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_title)");
     this.b = ((TextView)paramContext);
-    paramContext = findViewById(R.id.bg);
-    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_summary)");
+    paramContext = findViewById(R.id.aH);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_title)");
     this.c = ((TextView)paramContext);
+    paramContext = findViewById(R.id.aF);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_summary)");
+    this.d = ((TextView)paramContext);
     setBackgroundColor(Color.parseColor("#F5F6FA"));
     setRoundLayoutRadius(16.0F);
   }
@@ -51,7 +51,7 @@ public final class OriginContentLayout
   {
     Intrinsics.checkParameterIsNotNull(paramOriginContentInfo, "info");
     ((View)this).setVisibility(0);
-    Object localObject1 = (View)this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject1 = (View)this.b;
     int i = paramOriginContentInfo.getType();
     int j = 1;
     if (i == 2) {
@@ -72,12 +72,12 @@ public final class OriginContentLayout
     }
     if (i != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramOriginContentInfo.getDurationString());
+      this.b.setVisibility(0);
+      this.b.setText((CharSequence)paramOriginContentInfo.getDurationString());
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.b.setVisibility(8);
     }
     localObject1 = (String)CollectionsKt.firstOrNull(paramOriginContentInfo.getImageUrlArray());
     if (localObject1 != null)
@@ -94,18 +94,18 @@ public final class OriginContentLayout
     Object localObject2 = com.tencent.tkd.topicsdk.framework.bridge.ImageLoader.a;
     Context localContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    ((com.tencent.tkd.topicsdk.framework.bridge.ImageLoader)localObject2).a(localContext).a(this.jdField_a_of_type_AndroidWidgetImageView).a((String)localObject1);
-    localObject1 = this.b;
+    ((com.tencent.tkd.topicsdk.framework.bridge.ImageLoader)localObject2).a(localContext).a(this.a).a((String)localObject1);
+    localObject1 = this.c;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("@ ");
     ((StringBuilder)localObject2).append(str);
     ((TextView)localObject1).setText((CharSequence)((StringBuilder)localObject2).toString());
-    this.c.setText((CharSequence)paramOriginContentInfo);
+    this.d.setText((CharSequence)paramOriginContentInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.OriginContentLayout
  * JD-Core Version:    0.7.0.1
  */

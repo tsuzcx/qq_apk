@@ -11,16 +11,16 @@ class ThemeHbFragment$2$1
   
   public void run()
   {
-    if (ThemeHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplThemeHbFragment$2.a) != null) {
-      ThemeHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplThemeHbFragment$2.a).setBackgroundDrawable(null);
+    if (ThemeHbFragment.e(this.b.a) != null) {
+      ThemeHbFragment.e(this.b.a).setBackgroundDrawable(null);
     }
-    ThemeHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplThemeHbFragment$2.a).setScaleType(ImageView.ScaleType.FIT_XY);
-    ThemeHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplThemeHbFragment$2.a).setImageDrawable(ThemeHbFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbSendImplThemeHbFragment$2.a, (Drawable)this.jdField_a_of_type_JavaLangObject));
+    ThemeHbFragment.e(this.b.a).setScaleType(ImageView.ScaleType.FIT_XY);
+    ThemeHbFragment.e(this.b.a).setImageDrawable(ThemeHbFragment.a(this.b.a, (Drawable)this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ThemeHbFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

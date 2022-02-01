@@ -12,12 +12,12 @@ class MessageSearchEngine$1$1
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    this.a.a.a(MessageSearchEngine.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
+    this.a.a.a(MessageSearchEngine.a(this.a.this$0, this.a.this$0.c, (FullMessageSearchResult)paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1.1
  * JD-Core Version:    0.7.0.1
  */

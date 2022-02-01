@@ -18,14 +18,14 @@ final class VasShieldFont$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("schedule: userfontid=");
-      localStringBuilder.append(VasShieldFont.c);
+      localStringBuilder.append(VasShieldFont.e);
       QLog.d("VasShieldFont", 2, localStringBuilder.toString());
     }
-    if ((VasShieldFont.c == 0) && (VasShieldFont.b()))
+    if ((VasShieldFont.e == 0) && (VasShieldFont.l()))
     {
       VasShieldFont.a(false);
-      VasShieldFont.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("keySysFontGrayTip", false).commit();
+      VasShieldFont.a(this.a, this.b.b, this.b.a);
+      this.a.getPreferences().edit().putBoolean("keySysFontGrayTip", false).commit();
     }
   }
 }

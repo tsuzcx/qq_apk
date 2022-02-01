@@ -15,12 +15,12 @@ public class DataReportSettingFragment$DataAdapter
   
   public BaseReportDataConfig a(int paramInt)
   {
-    return (BaseReportDataConfig)this.a.a.get(paramInt);
+    return (BaseReportDataConfig)this.a.d.get(paramInt);
   }
   
   public int getCount()
   {
-    return this.a.a.size();
+    return this.a.d.size();
   }
   
   public long getItemId(int paramInt)
@@ -33,12 +33,12 @@ public class DataReportSettingFragment$DataAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.a.getBaseActivity()).inflate(2131559595, paramViewGroup, false);
+      localView = LayoutInflater.from(this.a.getBaseActivity()).inflate(2131625624, paramViewGroup, false);
       paramView = new DataReportSettingFragment.ViewHolder(this.a);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)localView.findViewById(2131369160));
-      paramView.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment$ItemListener = new DataReportSettingFragment.ItemListener(this.a);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(paramView.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment$ItemListener);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnLongClickListener(paramView.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment$ItemListener);
+      paramView.a = ((FormSwitchItem)localView.findViewById(2131436133));
+      paramView.b = new DataReportSettingFragment.ItemListener(this.a);
+      paramView.a.setOnCheckedChangeListener(paramView.b);
+      paramView.a.setOnLongClickListener(paramView.b);
       localView.setTag(paramView);
     }
     else
@@ -48,28 +48,28 @@ public class DataReportSettingFragment$DataAdapter
       paramView = (View)localObject;
     }
     Object localObject = a(paramInt);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((BaseReportDataConfig)localObject).jdField_a_of_type_Boolean);
+    paramView.a.setChecked(((BaseReportDataConfig)localObject).b);
     if ((localObject instanceof ReportDataConfig))
     {
-      FormSwitchItem localFormSwitchItem = paramView.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      FormSwitchItem localFormSwitchItem = paramView.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((BaseReportDataConfig)localObject).jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(((BaseReportDataConfig)localObject).a);
       localStringBuilder.append(" - ");
-      localStringBuilder.append(((ReportDataConfig)localObject).b);
+      localStringBuilder.append(((ReportDataConfig)localObject).c);
       localFormSwitchItem.setText(localStringBuilder.toString());
     }
     else
     {
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(((BaseReportDataConfig)localObject).jdField_a_of_type_JavaLangString);
+      paramView.a.setText(((BaseReportDataConfig)localObject).a);
     }
-    paramView.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment$ItemListener.a = ((BaseReportDataConfig)localObject);
+    paramView.b.a = ((BaseReportDataConfig)localObject);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportSettingFragment.DataAdapter
  * JD-Core Version:    0.7.0.1
  */

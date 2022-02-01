@@ -16,7 +16,7 @@ class LebaQzoneAndPluginPart$1
     ((StringBuilder)localObject).append("callback handleMessage,what = ");
     ((StringBuilder)localObject).append(paramMessage.what);
     QLog.i("LebaBusinessPartImpl", 1, ((StringBuilder)localObject).toString());
-    localObject = this.a.a();
+    localObject = this.a.H();
     if ((localObject != null) && (!"0".equals(((QQAppInterface)localObject).getCurrentAccountUin())))
     {
       switch (paramMessage.what)
@@ -25,13 +25,13 @@ class LebaQzoneAndPluginPart$1
       default: 
         return true;
       case 1134010: 
-        this.a.r();
+        this.a.A();
         return true;
       case 1134008: 
         this.a.a(paramMessage);
         return true;
       }
-      this.a.q();
+      this.a.z();
       return true;
     }
     QLog.i("LebaBusinessPartImpl", 1, "handleMessage app == null");
@@ -40,7 +40,7 @@ class LebaQzoneAndPluginPart$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.1
  * JD-Core Version:    0.7.0.1
  */

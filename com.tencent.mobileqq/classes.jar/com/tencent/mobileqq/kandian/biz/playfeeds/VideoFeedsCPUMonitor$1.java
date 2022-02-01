@@ -17,11 +17,11 @@ final class VideoFeedsCPUMonitor$1
       if (QLog.isColorLevel()) {
         QLog.d(VideoFeedsCPUMonitor.a(), 2, "Intent.ACTION_SCREEN_OFF");
       }
-      if ((VideoFeedsCPUMonitor.a().get() == 0) && (VideoFeedsCPUMonitor.b().get() < VideoFeedsCPUMonitor.a()))
+      if ((VideoFeedsCPUMonitor.b().get() == 0) && (VideoFeedsCPUMonitor.c().get() < VideoFeedsCPUMonitor.d()))
       {
         VideoFeedsCPUMonitor.a(new Thread(new VideoFeedsCPUMonitor.1.1(this)));
-        VideoFeedsCPUMonitor.a().set(1);
-        VideoFeedsCPUMonitor.a().start();
+        VideoFeedsCPUMonitor.b().set(1);
+        VideoFeedsCPUMonitor.f().start();
       }
     }
     else if ("android.intent.action.SCREEN_ON".equals(paramContext))
@@ -29,19 +29,19 @@ final class VideoFeedsCPUMonitor$1
       if (QLog.isColorLevel()) {
         QLog.d(VideoFeedsCPUMonitor.a(), 2, "Intent.ACTION_SCREEN_ON");
       }
-      if (VideoFeedsCPUMonitor.a().get() == 1)
+      if (VideoFeedsCPUMonitor.b().get() == 1)
       {
-        if ((VideoFeedsCPUMonitor.a() != null) && (VideoFeedsCPUMonitor.a().isAlive())) {
-          VideoFeedsCPUMonitor.a().interrupt();
+        if ((VideoFeedsCPUMonitor.f() != null) && (VideoFeedsCPUMonitor.f().isAlive())) {
+          VideoFeedsCPUMonitor.f().interrupt();
         }
-        VideoFeedsCPUMonitor.a().set(3);
+        VideoFeedsCPUMonitor.b().set(3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsCPUMonitor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.kandian.biz.comment.data;
 
-import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-
 class ReadInJoyCommentDataManager$7
   implements Runnable
 {
@@ -9,12 +7,14 @@ class ReadInJoyCommentDataManager$7
   
   public void run()
   {
-    ReadInJoyCommentDataManager.a(this.this$0).a(ReadInJoyCommentDataManager.a(this.this$0).innerUniqueID, ReadInJoyCommentDataManager.a(this.this$0), 10, ReadInJoyCommentDataManager.a(this.this$0), this.a, this.this$0.a);
+    ReadInJoyCommentPBModule localReadInJoyCommentPBModule = ReadInJoyCommentDataManager.e(this.this$0);
+    ReadInJoyCommentDataManager localReadInJoyCommentDataManager = this.this$0;
+    localReadInJoyCommentPBModule.a(ReadInJoyCommentDataManager.a(localReadInJoyCommentDataManager, ReadInJoyCommentDataManager.d(localReadInJoyCommentDataManager), this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.7
  * JD-Core Version:    0.7.0.1
  */

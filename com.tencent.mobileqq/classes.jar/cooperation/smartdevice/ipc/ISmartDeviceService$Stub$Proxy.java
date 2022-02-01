@@ -48,7 +48,12 @@ class ISmartDeviceService$Stub$Proxy
     }
   }
   
-  public void a(String paramString, Bundle paramBundle)
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(String paramString, Bundle paramBundle)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -75,15 +80,10 @@ class ISmartDeviceService$Stub$Proxy
       localParcel1.recycle();
     }
   }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.smartdevice.ipc.ISmartDeviceService.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

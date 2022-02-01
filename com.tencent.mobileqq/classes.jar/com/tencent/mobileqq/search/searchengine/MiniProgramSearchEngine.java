@@ -19,14 +19,13 @@ import java.util.List;
 public class MiniProgramSearchEngine
   implements ISearchEngine<MiniProgramSearchResultModel>, Runnable
 {
-  protected int a;
   protected QQAppInterface a;
+  protected int b = -1;
   
   public MiniProgramSearchEngine(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramQQAppInterface;
+    this.b = paramInt;
   }
   
   public List<MiniProgramSearchResultModel> a(SearchRequest paramSearchRequest)
@@ -46,11 +45,11 @@ public class MiniProgramSearchEngine
           break;
         }
         MiniAppLocalSearchEntity localMiniAppLocalSearchEntity = (MiniAppLocalSearchEntity)((Iterator)localObject).next();
-        int[] arrayOfInt = SearchUtils.a(paramSearchRequest.a, localMiniAppLocalSearchEntity.appName, false);
+        int[] arrayOfInt = SearchUtils.b(paramSearchRequest.a, localMiniAppLocalSearchEntity.appName, false);
         if ((arrayOfInt != null) && (arrayOfInt.length >= 3) && (arrayOfInt[0] > -1))
         {
-          MiniProgramSearchResultModel localMiniProgramSearchResultModel = new MiniProgramSearchResultModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localMiniAppLocalSearchEntity, paramSearchRequest.a);
-          localMiniProgramSearchResultModel.a = arrayOfInt;
+          MiniProgramSearchResultModel localMiniProgramSearchResultModel = new MiniProgramSearchResultModel(this.a, this.b, localMiniAppLocalSearchEntity, paramSearchRequest.a);
+          localMiniProgramSearchResultModel.c = arrayOfInt;
           if (localMiniAppLocalSearchEntity.appName.equals(paramSearchRequest.a)) {
             localArrayList2.add(0, localMiniProgramSearchResultModel);
           } else {
@@ -87,7 +86,7 @@ public class MiniProgramSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MiniProgramSearchEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ final class LocationUtil$2
   
   public void a(int paramInt)
   {
-    LocationUtil.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
+    LocationUtil.a(this.a, this.b, this.c, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
   }
   
   public void a(int paramInt, String paramString)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    DoraemonAPIManager localDoraemonAPIManager = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
-    long l = this.jdField_a_of_type_Long;
+    View localView = this.a;
+    DoraemonAPIManager localDoraemonAPIManager = this.b;
+    long l = this.c;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("location failed,");
     localStringBuilder.append(paramString);
@@ -37,19 +37,19 @@ final class LocationUtil$2
     paramJSONObject.optDouble("verticalAccuracy", 0.0D);
     paramJSONObject.optDouble("accuracy", 0.0D);
     double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.d == 1)
     {
-      LocationUtil.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
+      LocationUtil.a(this.a, this.b, this.c, d4, d2, d3, d5, d1, 0.0D);
       return;
     }
-    LocationUtil.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+    LocationUtil.a(this.a, this.b, this.c, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
   }
   
   public void b(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.LocationUtil.2
  * JD-Core Version:    0.7.0.1
  */

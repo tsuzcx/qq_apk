@@ -5,7 +5,6 @@ import com.tencent.mobileqq.search.base.engine.ISearchEngine;
 import com.tencent.mobileqq.search.base.model.SearchRequest;
 import com.tencent.mobileqq.search.base.util.SearchStatisticsConstants;
 import com.tencent.mobileqq.search.business.group.model.GroupSearchModelMoreItem;
-import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import java.util.ArrayList;
@@ -26,22 +25,20 @@ class GroupSearchEngine$5
   
   public List<ISearchResultGroupModel> a(SearchRequest paramSearchRequest)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = -1;
-    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
-      paramSearchRequest.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.d = 0L;
+    this.e = -1;
+    if (paramSearchRequest.b == null) {
+      paramSearchRequest.b = new Bundle();
     }
     ArrayList localArrayList = new ArrayList();
-    paramSearchRequest = new GroupSearchModelMoreItem(paramSearchRequest.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new GroupSearchModeTitle(paramSearchRequest));
-    localArrayList.add(paramSearchRequest);
-    SearchStatisticsConstants.a(0);
+    a(new GroupSearchModelMoreItem(paramSearchRequest.a, GroupSearchEngine.d(this.a)), localArrayList);
+    SearchStatisticsConstants.b(0);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.5
  * JD-Core Version:    0.7.0.1
  */

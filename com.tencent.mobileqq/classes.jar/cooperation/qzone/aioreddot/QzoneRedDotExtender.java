@@ -22,13 +22,13 @@ public class QzoneRedDotExtender
   {
     if (this.mTroopQzoneView == null)
     {
-      int i = ViewUtils.b(15.0F);
+      int i = ViewUtils.dpToPx(15.0F);
       this.mTroopQzoneView = new URLImageView(this.mContext);
-      this.mTroopQzoneView.setId(2131364563);
+      this.mTroopQzoneView.setId(2131430622);
       this.mTroopQzoneView.setVisibility(8);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
-      localLayoutParams.leftMargin = ViewUtils.a(2.0F);
-      localLayoutParams.bottomMargin = ViewUtils.a(0.5F);
+      localLayoutParams.leftMargin = ViewUtils.dip2px(2.0F);
+      localLayoutParams.bottomMargin = ViewUtils.dip2px(0.5F);
       this.layoutParams = localLayoutParams;
     }
   }
@@ -49,7 +49,7 @@ public class QzoneRedDotExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.aioreddot.QzoneRedDotExtender
  * JD-Core Version:    0.7.0.1
  */

@@ -17,61 +17,85 @@ import com.tencent.xaction.log.QLog;
 public class NetworkReceiver
   extends BroadcastReceiver
 {
-  boolean a = true;
+  private long a = 0L;
+  private long b = 0L;
   
   @SuppressLint({"MissingPermission"})
   private void a(Context paramContext, TcSdkManager paramTcSdkManager)
   {
-    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    NetworkInfo localNetworkInfo = paramContext.getNetworkInfo(0);
-    boolean bool1 = paramContext.getNetworkInfo(1).isConnected();
-    boolean bool2 = localNetworkInfo.isConnected();
-    if ((this.a) && (bool1) && (!bool2))
+    Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    paramContext = ((ConnectivityManager)localObject).getNetworkInfo(0);
+    localObject = ((ConnectivityManager)localObject).getNetworkInfo(1);
+    if ((localObject != null) && (paramContext != null))
     {
-      paramContext = paramTcSdkManager.jdField_a_of_type_ComTencentTreasurecardManagerCacheManager.a();
-      if (paramContext == null) {
-        a(paramTcSdkManager);
-      } else {
-        paramTcSdkManager.a(0, paramContext.a);
+      boolean bool1 = ((NetworkInfo)localObject).isConnected();
+      boolean bool2 = paramContext.isConnected();
+      if ((bool1) && (!bool2) && (a()))
+      {
+        paramTcSdkManager.a(1001, paramTcSdkManager.c().a().a);
+        return;
       }
-      this.a = false;
+      if ((!bool1) && (bool2) && (b())) {
+        paramTcSdkManager.d().a(null);
+      }
       return;
     }
-    if ((!bool1) && (bool2)) {
-      a(paramTcSdkManager);
+    if (b()) {
+      paramTcSdkManager.d().a(null);
     }
-    this.a = true;
   }
   
-  private void a(TcSdkManager paramTcSdkManager)
+  public boolean a()
   {
-    paramTcSdkManager.jdField_a_of_type_ComTencentTreasurecardManagerNetManager.a();
-    if (paramTcSdkManager.jdField_a_of_type_ComTencentTreasurecardManagerNetManager.a()) {
-      return;
+    long l = System.currentTimeMillis();
+    if (l - this.a < 2000L) {
+      return false;
     }
-    paramTcSdkManager.jdField_a_of_type_ComTencentTreasurecardManagerNetManager.a(null);
+    this.a = l;
+    return true;
+  }
+  
+  public boolean b()
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.b < 2000L) {
+      return false;
+    }
+    this.b = l;
+    return true;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ITcSdkContext localITcSdkContext = TcSdkManager.a();
-    if (!(localITcSdkContext instanceof TcSdkManager)) {
-      return;
-    }
-    if (!paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
-      return;
-    }
-    if (ContextCompat.checkSelfPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE") == 0)
+    try
     {
-      a(paramContext, (TcSdkManager)localITcSdkContext);
-      return;
+      ITcSdkContext localITcSdkContext = TcSdkManager.b();
+      if (!(localITcSdkContext instanceof TcSdkManager)) {
+        return;
+      }
+      if (ContextCompat.checkSelfPermission(paramContext, "android.permission.ACCESS_NETWORK_STATE") != 0)
+      {
+        QLog.a("TcSdkManager", 1, "net permission denied", null);
+        return;
+      }
+      if (paramIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE"))
+      {
+        a(paramContext, (TcSdkManager)localITcSdkContext);
+        return;
+      }
     }
-    QLog.a("TcSdkManager", 1, "net permission denied", null);
+    catch (Exception paramContext)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("error:");
+      paramIntent.append(paramContext.getMessage());
+      QLog.a("TcSdkManager", 1, paramIntent.toString(), null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.treasurecard.common.NetworkReceiver
  * JD-Core Version:    0.7.0.1
  */

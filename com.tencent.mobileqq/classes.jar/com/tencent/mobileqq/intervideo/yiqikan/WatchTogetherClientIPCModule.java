@@ -11,8 +11,8 @@ import eipc.EIPCResult;
 public class WatchTogetherClientIPCModule
   extends QIPCModule
 {
-  private static volatile WatchTogetherClientIPCModule jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private static volatile WatchTogetherClientIPCModule a;
+  private Handler b = new Handler(Looper.getMainLooper());
   
   public WatchTogetherClientIPCModule(String paramString)
   {
@@ -24,44 +24,44 @@ public class WatchTogetherClientIPCModule
   
   public static WatchTogetherClientIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule == null) {
-          jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule = new WatchTogetherClientIPCModule("WatchTogetherClientIPCModule");
+        if (a == null) {
+          a = new WatchTogetherClientIPCModule("WatchTogetherClientIPCModule");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherClientIPCModule;
+    return a;
   }
   
-  private boolean a()
+  private boolean b()
   {
     return Thread.currentThread() == Looper.getMainLooper().getThread();
   }
   
   public void a(String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
-    if (a())
+    if (b())
     {
       if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
       {
-        WatchFloatingWindowController.a().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
+        WatchFloatingWindowController.c().a(BaseApplicationImpl.getContext(), paramWatchTogetherFloatingData);
         return;
       }
       if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(paramString))
       {
-        WatchFloatingWindowController.a().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
+        WatchFloatingWindowController.c().a(paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
         return;
       }
       if ("ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(paramString)) {
-        WatchFloatingWindowController.a().b();
+        WatchFloatingWindowController.c().b();
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
+      this.b.post(new WatchTogetherClientIPCModule.1(this, paramString, paramWatchTogetherFloatingData));
     }
   }
   
@@ -126,7 +126,7 @@ public class WatchTogetherClientIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherClientIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ public final class SvcReqRegister
   extends JceStruct
 {
   static byte[] cache_bytes_0x769_reqbody;
+  static VendorPushInfo cache_stVendorPushInfo = new VendorPushInfo();
   static ArrayList cache_vecBindUin;
   static byte[] cache_vecDevParam = (byte[])new byte[1];
   static byte[] cache_vecGuid;
@@ -24,10 +25,12 @@ public final class SvcReqRegister
   public byte bRegType = 0;
   public byte bSetMute = 0;
   public byte bSlientPush = 0;
+  public byte bTimActiveFlag = 1;
   public byte[] bytes_0x769_reqbody = null;
+  public byte cBindUinNotifySwitch = 1;
   public byte cConnType = 0;
   public byte cNetType = 0;
-  public byte cNotifySwitch = 0;
+  public byte cNotifySwitch = 1;
   public int iBatteryStatus = 0;
   public long iLargeSeq = 0L;
   public long iLastWatchStartTime = 0L;
@@ -37,6 +40,7 @@ public final class SvcReqRegister
   public long lBid = 0L;
   public long lCpId = 0L;
   public long lUin = 0L;
+  public long lVendorDevId = 0L;
   public String sBuildVer = "";
   public String sChannelNo = "";
   public String sOther = "";
@@ -72,7 +76,7 @@ public final class SvcReqRegister
   
   public SvcReqRegister() {}
   
-  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, long paramLong10, int paramInt3, VendorPushInfo paramVendorPushInfo, byte paramByte13)
+  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, byte paramByte13, long paramLong10, int paramInt3, byte paramByte14, byte paramByte15, VendorPushInfo paramVendorPushInfo, long paramLong11)
   {
     this.lUin = paramLong1;
     this.lBid = paramLong2;
@@ -111,10 +115,13 @@ public final class SvcReqRegister
     this.bIsSetStatus = paramByte11;
     this.vecServerBuf = paramArrayOfByte4;
     this.bSetMute = paramByte12;
+    this.cNotifySwitch = paramByte13;
     this.uExtOnlineStatus = paramLong10;
     this.iBatteryStatus = paramInt3;
+    this.bTimActiveFlag = paramByte14;
+    this.cBindUinNotifySwitch = paramByte15;
     this.stVendorPushInfo = paramVendorPushInfo;
-    this.cNotifySwitch = paramByte13;
+    this.lVendorDevId = paramLong11;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -156,10 +163,13 @@ public final class SvcReqRegister
     this.bIsSetStatus = paramJceInputStream.read(this.bIsSetStatus, 34, false);
     this.vecServerBuf = ((byte[])paramJceInputStream.read(cache_vecServerBuf, 35, false));
     this.bSetMute = paramJceInputStream.read(this.bSetMute, 36, false);
-    this.cNotifySwitch = paramJceInputStream.read(this.cNetType, 37, false);
+    this.cNotifySwitch = paramJceInputStream.read(this.cNotifySwitch, 37, false);
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 38, false);
     this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 39, false);
-    this.stVendorPushInfo = ((VendorPushInfo)paramJceInputStream.read(this.stVendorPushInfo, 42, false));
+    this.bTimActiveFlag = paramJceInputStream.read(this.bTimActiveFlag, 40, false);
+    this.cBindUinNotifySwitch = paramJceInputStream.read(this.cBindUinNotifySwitch, 41, false);
+    this.stVendorPushInfo = ((VendorPushInfo)paramJceInputStream.read(cache_stVendorPushInfo, 42, false));
+    this.lVendorDevId = paramJceInputStream.read(this.lVendorDevId, 43, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -243,15 +253,18 @@ public final class SvcReqRegister
     paramJceOutputStream.write(this.cNotifySwitch, 37);
     paramJceOutputStream.write(this.uExtOnlineStatus, 38);
     paramJceOutputStream.write(this.iBatteryStatus, 39);
+    paramJceOutputStream.write(this.bTimActiveFlag, 40);
+    paramJceOutputStream.write(this.cBindUinNotifySwitch, 41);
     localObject = this.stVendorPushInfo;
     if (localObject != null) {
       paramJceOutputStream.write((JceStruct)localObject, 42);
     }
+    paramJceOutputStream.write(this.lVendorDevId, 43);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.msf.service.protocol.push.SvcReqRegister
  * JD-Core Version:    0.7.0.1
  */

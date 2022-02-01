@@ -53,11 +53,11 @@ public class MiniAppEntrySettingFragment
   
   private void initUI(View paramView)
   {
-    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131371099));
+    this.mSettingLayout = ((BounceScrollView)paramView.findViewById(2131438440));
     if (MiniAppUtils.isNightMode()) {
       this.mSettingLayout.setBackgroundColor(-16777216);
     }
-    this.mSettingListView = ((ListView)paramView.findViewById(2131371368));
+    this.mSettingListView = ((ListView)paramView.findViewById(2131438712));
     this.mSettingListViewAdapter = new MiniAppEntrySettingFragment.SettingListViewAdapter(this, paramView.getContext());
     this.mSettingListView.setAdapter(this.mSettingListViewAdapter);
     paramView = this.activity;
@@ -218,7 +218,7 @@ public class MiniAppEntrySettingFragment
   
   protected int getContentLayoutId()
   {
-    return 2131562372;
+    return 2131628803;
   }
   
   public void onAttach(Activity paramActivity)
@@ -236,14 +236,14 @@ public class MiniAppEntrySettingFragment
   {
     super.onViewCreated(paramView, paramBundle);
     this.activity = getBaseActivity();
-    setTitle(HardCodeUtil.a(2131706839));
+    setTitle(HardCodeUtil.a(2131904687));
     initData();
     initUI(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntrySettingFragment
  * JD-Core Version:    0.7.0.1
  */

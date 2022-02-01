@@ -55,7 +55,6 @@ import com.tencent.mobileqq.kandian.repo.handler.RIJInviteFriendHandler;
 import com.tencent.mobileqq.kandian.repo.handler.RIJLimitFriendHandler;
 import com.tencent.mobileqq.kandian.repo.handler.RIJModifyBiuHandler;
 import com.tencent.mobileqq.kandian.repo.handler.RIJRefreshTopicInfoHandler;
-import com.tencent.mobileqq.kandian.repo.handler.TopicInfo;
 import com.tencent.mobileqq.kandian.repo.search.RIJSearchUGCTagsHandler;
 import com.tencent.mobileqq.kandian.repo.search.RIJSearchUGCTopicHandler;
 import com.tencent.mobileqq.kandian.repo.share.RIJShareConfigHandler;
@@ -79,60 +78,50 @@ import java.util.concurrent.ExecutorService;
 public class ArticleInfoModule
   extends ReadInJoyEngineModule
 {
-  private static volatile int jdField_a_of_type_Int = -1;
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
   private static volatile boolean b = false;
-  private RIJUpvoteAndCommentHandler jdField_a_of_type_ComTencentMobileqqKandianRepoCommentRIJUpvoteAndCommentHandler;
-  private IFindRemovedEntity<AbsBaseArticleInfo> jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity = new ArticleInfoModule.1(this);
-  private ArticleInfoModule.LoadMorePreDealListener jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule$LoadMorePreDealListener;
-  private RIJArticleInfoRepo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo;
-  private RIJCommentInLikeFeedBiuAtlasHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedBiuAtlasHandler;
-  private RIJCommentInLikeFeedCommentSubmitHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedCommentSubmitHandler;
-  private RIJCommentInLikeFeedMasterDeliverHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMasterDeliverHandler;
-  private RIJCommentInLikeFeedMultiBiuHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMultiBiuHandler;
-  private RIJCommentInLikeFeedUgcDeliverHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUgcDeliverHandler;
-  private RIJCommentInLikeFeedUpvoteActionHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteActionHandler;
-  private RIJCommentInLikeFeedUpvoteArticleHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteArticleHandler;
-  private RIJCreateUGCTopicHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCreateUGCTopicHandler;
-  private RIJDislikeArticleHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJDislikeArticleHandler;
-  private RIJGetArticleListHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler;
-  private RIJGetIndividualArticleHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetIndividualArticleHandler;
-  private RIJGetMoreBiuHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetMoreBiuHandler;
-  private RIJGetPrivacyListHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetPrivacyListHandler;
-  private RIJInteractiveCardsHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInteractiveCardsHandler;
-  private RIJInviteFriendHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInviteFriendHandler;
-  private RIJLimitFriendHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJLimitFriendHandler;
-  private RIJModifyBiuHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJModifyBiuHandler;
-  private RIJRefreshTopicInfoHandler jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJRefreshTopicInfoHandler;
-  private RIJSearchUGCTagsHandler jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTagsHandler;
-  private RIJSearchUGCTopicHandler jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTopicHandler;
-  private RIJShareConfigHandler jdField_a_of_type_ComTencentMobileqqKandianRepoShareRIJShareConfigHandler;
+  private static volatile int c = -1;
+  private RIJShareConfigHandler A;
+  private IFindRemovedEntity<AbsBaseArticleInfo> B = new ArticleInfoModule.1(this);
+  private ArticleInfoModule.LoadMorePreDealListener d;
+  private RIJArticleInfoRepo e;
+  private RIJModifyBiuHandler f;
+  private RIJInteractiveCardsHandler g;
+  private RIJRefreshTopicInfoHandler h;
+  private RIJGetPrivacyListHandler i;
+  private RIJCreateUGCTopicHandler j;
+  private RIJLimitFriendHandler k;
+  private RIJSearchUGCTopicHandler l;
+  private RIJInviteFriendHandler m;
+  private RIJGetMoreBiuHandler n;
+  private RIJSearchUGCTagsHandler o;
+  private RIJUpvoteAndCommentHandler p;
+  private RIJDislikeArticleHandler q;
+  private RIJGetIndividualArticleHandler r;
+  private RIJCommentInLikeFeedMultiBiuHandler s;
+  private RIJCommentInLikeFeedBiuAtlasHandler t;
+  private RIJCommentInLikeFeedUgcDeliverHandler u;
+  private RIJCommentInLikeFeedMasterDeliverHandler v;
+  private RIJCommentInLikeFeedCommentSubmitHandler w;
+  private RIJCommentInLikeFeedUpvoteArticleHandler x;
+  private RIJCommentInLikeFeedUpvoteActionHandler y;
+  private RIJGetArticleListHandler z;
   
   public ArticleInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    g();
-    registerEntityFinder(BaseArticleInfo.class, this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommonIFindRemovedEntity);
-  }
-  
-  public static int a()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static void a()
-  {
-    jdField_a_of_type_Int = -1;
+    k();
+    registerEntityFinder(BaseArticleInfo.class, this.B);
   }
   
   public static void a(int paramInt)
   {
-    jdField_a_of_type_Int = paramInt;
+    c = paramInt;
   }
   
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    a = paramBoolean;
   }
   
   private void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2, List<AbsBaseArticleInfo> paramList, long paramLong1, long paramLong2)
@@ -148,15 +137,15 @@ public class ArticleInfoModule
       ReadInJoyLogicEngineEventDispatcher.a().b(true, paramInt, null, true);
       return;
     }
-    List localList2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.b(Integer.valueOf(paramInt));
-    ArticleInfoModule.LoadMorePreDealListener localLoadMorePreDealListener = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule$LoadMorePreDealListener;
+    List localList2 = this.e.c(Integer.valueOf(paramInt));
+    ArticleInfoModule.LoadMorePreDealListener localLoadMorePreDealListener = this.d;
     if (localLoadMorePreDealListener != null) {
       localList1 = localLoadMorePreDealListener.a(paramInt, localList2, paramList);
     }
     if ((localList1 != null) && (!localList1.isEmpty())) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.a(Integer.valueOf(paramInt), localList1, true);
+      this.e.a(Integer.valueOf(paramInt), localList1, true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.a(Integer.valueOf(paramInt), paramList, true);
+    this.e.a(Integer.valueOf(paramInt), paramList, true);
     boolean bool = paramList.isEmpty();
     paramBoolean1 = bool;
     if (paramInt == 70) {
@@ -166,9 +155,9 @@ public class ArticleInfoModule
         paramBoolean1 = true;
       }
     }
-    localList1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.a(Integer.valueOf(paramInt));
+    localList1 = this.e.b(Integer.valueOf(paramInt));
     if ((paramInt == 70) && (this.mApp != null) && (paramBoolean1)) {
-      ((KandianMergeManager)this.mApp.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(localList1.size());
+      ((KandianMergeManager)this.mApp.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(localList1.size());
     }
     if (paramInt == 0) {
       ReadinjoyReportUtils.a(paramList, localList1, false);
@@ -180,7 +169,7 @@ public class ArticleInfoModule
   
   public static boolean a()
   {
-    return jdField_a_of_type_Boolean;
+    return a;
   }
   
   private void b(int paramInt)
@@ -195,18 +184,18 @@ public class ArticleInfoModule
       QLog.d("ArticleInfoModule", 2, "transformNormalToNewBiuCard | biuInfo is null!");
       return;
     }
-    if (paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null)
+    if (paramBiuInfo.e == null)
     {
       QLog.d("ArticleInfoModule", 2, "transformNormalToNewBiuCard | originArticleInfo is null!");
       return;
     }
-    long l1 = paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedId;
-    long l2 = paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedType;
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    localAbsBaseArticleInfo.mCardJumpUrl = paramBiuInfo.e;
-    localAbsBaseArticleInfo.commentBtnJumpUrl = paramBiuInfo.c;
-    localAbsBaseArticleInfo.commentShareUrl = paramBiuInfo.d;
-    localAbsBaseArticleInfo.isCardJumpUrlAvailable = paramBiuInfo.b;
+    long l1 = paramBiuInfo.e.mFeedId;
+    long l2 = paramBiuInfo.e.mFeedType;
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramBiuInfo.e;
+    localAbsBaseArticleInfo.mCardJumpUrl = paramBiuInfo.i;
+    localAbsBaseArticleInfo.commentBtnJumpUrl = paramBiuInfo.g;
+    localAbsBaseArticleInfo.commentShareUrl = paramBiuInfo.h;
+    localAbsBaseArticleInfo.isCardJumpUrlAvailable = paramBiuInfo.j;
     localAbsBaseArticleInfo.mProteusTemplateBean = null;
     localAbsBaseArticleInfo.mAbandonRepeatFlag = 1;
     localAbsBaseArticleInfo.mFeedType = 36;
@@ -214,55 +203,55 @@ public class ArticleInfoModule
     localAbsBaseArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
     if (localObject1 != null)
     {
-      localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Int;
-      localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo = ((SocializeFeedsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo;
-      localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo = ((SocializeFeedsInfo)localObject1).jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityUGCFeedsInfo;
+      localAbsBaseArticleInfo.mSocialFeedInfo.c.b = ((SocializeFeedsInfo)localObject1).c.b;
+      localAbsBaseArticleInfo.mSocialFeedInfo.t = ((SocializeFeedsInfo)localObject1).t;
+      localAbsBaseArticleInfo.mSocialFeedInfo.s = ((SocializeFeedsInfo)localObject1).s;
     }
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.jdField_a_of_type_Long = RIJQQAppInterfaceUtil.a();
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityFeedsInfoUser.c = 1;
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo = new com.tencent.mobileqq.kandian.repo.handler.BiuInfo();
-    localAbsBaseArticleInfo.mFeedId = paramBiuInfo.jdField_a_of_type_Long;
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Long = paramBiuInfo.jdField_a_of_type_Long;
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.b = Long.valueOf(l2);
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localAbsBaseArticleInfo.mSocialFeedInfo.c.a = RIJQQAppInterfaceUtil.c();
+    localAbsBaseArticleInfo.mSocialFeedInfo.c.e = 1;
+    localAbsBaseArticleInfo.mSocialFeedInfo.n = new com.tencent.mobileqq.kandian.repo.handler.BiuInfo();
+    localAbsBaseArticleInfo.mFeedId = paramBiuInfo.b;
+    localAbsBaseArticleInfo.mSocialFeedInfo.a = paramBiuInfo.b;
+    localAbsBaseArticleInfo.mSocialFeedInfo.n.c = Long.valueOf(l2);
+    localAbsBaseArticleInfo.mSocialFeedInfo.n.b = Long.valueOf(l1);
+    localAbsBaseArticleInfo.mSocialFeedInfo.n.a = new ArrayList();
     localObject1 = new BiuCommentInfo();
-    Object localObject2 = new String(Base64Util.decode(paramBiuInfo.jdField_a_of_type_JavaLangString, 0));
-    ((BiuCommentInfo)localObject1).mBiuComment = EmotionCodecUtils.b((String)localObject2);
-    ((BiuCommentInfo)localObject1).mUin = Long.valueOf(RIJQQAppInterfaceUtil.a());
-    ((BiuCommentInfo)localObject1).mFeedId = Long.valueOf(paramBiuInfo.jdField_a_of_type_Long);
+    Object localObject2 = new String(Base64Util.decode(paramBiuInfo.c, 0));
+    ((BiuCommentInfo)localObject1).mBiuComment = EmotionCodecUtils.c((String)localObject2);
+    ((BiuCommentInfo)localObject1).mUin = Long.valueOf(RIJQQAppInterfaceUtil.c());
+    ((BiuCommentInfo)localObject1).mFeedId = Long.valueOf(paramBiuInfo.b);
     ((BiuCommentInfo)localObject1).mBiuTime = 0;
     ((BiuCommentInfo)localObject1).mOrigBiuComment = ((String)localObject2);
     ((BiuCommentInfo)localObject1).mFeedsType = 36;
-    localAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.jdField_a_of_type_JavaUtilList.add(localObject1);
+    localAbsBaseArticleInfo.mSocialFeedInfo.n.a.add(localObject1);
     localAbsBaseArticleInfo.articleViewModel = ArticleViewModel.a(localAbsBaseArticleInfo);
     paramBiuInfo = new StringBuilder();
     paramBiuInfo.append("transformNormalToNewBiuCard | newArticleInfo:");
     paramBiuInfo.append(localAbsBaseArticleInfo);
     QLog.d("ArticleInfoModule", 2, paramBiuInfo.toString());
-    paramBiuInfo = a().c(0);
+    paramBiuInfo = i().d(0);
     localObject1 = new ArrayList();
     if (paramBiuInfo != null)
     {
-      int i;
+      int i1;
       if (paramBiuInfo.containsKey(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq)))
       {
         paramBiuInfo.put(Long.valueOf(localAbsBaseArticleInfo.mRecommendSeq), localAbsBaseArticleInfo);
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.b(0, paramBiuInfo);
-        i = 1;
+        this.e.b(0, paramBiuInfo);
+        i1 = 1;
       }
       else
       {
-        i = 0;
+        i1 = 0;
       }
       localObject2 = paramBiuInfo.values().iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((List)localObject1).add((AbsBaseArticleInfo)((Iterator)localObject2).next());
       }
-      if (i != 0)
+      if (i1 != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.a(Integer.valueOf(0), (List)localObject1, true);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.a(Integer.valueOf(0));
+        this.e.a(Integer.valueOf(0), (List)localObject1, true);
+        localObject1 = this.e.b(Integer.valueOf(0));
         ReadInJoyLogicEngineEventDispatcher.a().b(0, (List)localObject1);
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("transformNormalToNewBiuCard | update DB , cached biuCardArticleInfo: ");
@@ -300,6 +289,11 @@ public class ArticleInfoModule
     return b;
   }
   
+  public static int c()
+  {
+    return c;
+  }
+  
   private void c(List<AbsBaseArticleInfo> paramList)
   {
     ArrayList localArrayList = new ArrayList();
@@ -309,15 +303,15 @@ public class ArticleInfoModule
       while (paramList.hasNext())
       {
         Object localObject = (AbsBaseArticleInfo)paramList.next();
-        if ((((AbsBaseArticleInfo)localObject).mSocialFeedInfo != null) && (((AbsBaseArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo != null) && (((AbsBaseArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a != null) && (((AbsBaseArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.size() > 0))
+        if ((((AbsBaseArticleInfo)localObject).mSocialFeedInfo != null) && (((AbsBaseArticleInfo)localObject).mSocialFeedInfo.t != null) && (((AbsBaseArticleInfo)localObject).mSocialFeedInfo.t.a != null) && (((AbsBaseArticleInfo)localObject).mSocialFeedInfo.t.a.size() > 0))
         {
-          localObject = ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityPGCFeedsInfo.a.iterator();
+          localObject = ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.t.a.iterator();
           while (((Iterator)localObject).hasNext())
           {
-            PGCVideoInfo localPGCVideoInfo = ((PGCPicInfo)((Iterator)localObject).next()).a;
+            PGCVideoInfo localPGCVideoInfo = ((PGCPicInfo)((Iterator)localObject).next()).i;
             if ((localPGCVideoInfo != null) && (!TextUtils.isEmpty(localPGCVideoInfo.e)))
             {
-              VideoUrlInfo localVideoUrlInfo = ThirdVideoManager.a(localPGCVideoInfo.e);
+              VideoUrlInfo localVideoUrlInfo = ThirdVideoManager.b(localPGCVideoInfo.e);
               if ((localVideoUrlInfo == null) || (!localVideoUrlInfo.a(System.currentTimeMillis() / 1000L, 3600L))) {
                 localArrayList.add(localPGCVideoInfo.e);
               }
@@ -331,97 +325,96 @@ public class ArticleInfoModule
     }
   }
   
-  private void g()
+  public static void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo = new RIJArticleInfoRepo(this.mExecutorService, this.mEntityManager, this.mMainThreadHandler, this, this.mApp);
-    h();
+    c = -1;
   }
   
-  private void h()
+  private void k()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJModifyBiuHandler = new RIJModifyBiuHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInteractiveCardsHandler = new RIJInteractiveCardsHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJRefreshTopicInfoHandler = new RIJRefreshTopicInfoHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetPrivacyListHandler = new RIJGetPrivacyListHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCreateUGCTopicHandler = new RIJCreateUGCTopicHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJLimitFriendHandler = new RIJLimitFriendHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTopicHandler = new RIJSearchUGCTopicHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInviteFriendHandler = new RIJInviteFriendHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetMoreBiuHandler = new RIJGetMoreBiuHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTagsHandler = new RIJSearchUGCTagsHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentRIJUpvoteAndCommentHandler = new RIJUpvoteAndCommentHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJDislikeArticleHandler = new RIJDislikeArticleHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetIndividualArticleHandler = new RIJGetIndividualArticleHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMultiBiuHandler = new RIJCommentInLikeFeedMultiBiuHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedBiuAtlasHandler = new RIJCommentInLikeFeedBiuAtlasHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUgcDeliverHandler = new RIJCommentInLikeFeedUgcDeliverHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMasterDeliverHandler = new RIJCommentInLikeFeedMasterDeliverHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedCommentSubmitHandler = new RIJCommentInLikeFeedCommentSubmitHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteArticleHandler = new RIJCommentInLikeFeedUpvoteArticleHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteActionHandler = new RIJCommentInLikeFeedUpvoteActionHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler = new RIJGetArticleListHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoShareRIJShareConfigHandler = new RIJShareConfigHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.e = new RIJArticleInfoRepo(this.mExecutorService, this.mEntityManager, this.mMainThreadHandler, this, this.mApp);
+    l();
   }
   
-  @NonNull
-  public RIJArticleInfoRepo a()
+  private void l()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo;
+    this.f = new RIJModifyBiuHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.g = new RIJInteractiveCardsHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.h = new RIJRefreshTopicInfoHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.i = new RIJGetPrivacyListHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.j = new RIJCreateUGCTopicHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.k = new RIJLimitFriendHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.l = new RIJSearchUGCTopicHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.m = new RIJInviteFriendHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.n = new RIJGetMoreBiuHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.o = new RIJSearchUGCTagsHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.p = new RIJUpvoteAndCommentHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.q = new RIJDislikeArticleHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.r = new RIJGetIndividualArticleHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.s = new RIJCommentInLikeFeedMultiBiuHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.t = new RIJCommentInLikeFeedBiuAtlasHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.u = new RIJCommentInLikeFeedUgcDeliverHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.v = new RIJCommentInLikeFeedMasterDeliverHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.w = new RIJCommentInLikeFeedCommentSubmitHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.x = new RIJCommentInLikeFeedUpvoteArticleHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.y = new RIJCommentInLikeFeedUpvoteActionHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.z = new RIJGetArticleListHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
+    this.A = new RIJShareConfigHandler(this, this.mMainThreadHandler, this.mApp, this.mEntityManager, this.mMSFService, this.mExecutorService);
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTagsHandler.a(paramLong);
+    this.o.a(paramLong);
   }
   
   public void a(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetIndividualArticleHandler.a(paramLong, paramInt);
+    this.r.a(paramLong, paramInt);
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetPrivacyListHandler.a(paramLong, paramInt1, paramInt2);
+    this.i.a(paramLong, paramInt1, paramInt2);
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, HashMap<Long, Long> paramHashMap, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler.a(paramLong1, paramLong2, paramInt1, paramHashMap, paramInt2, paramString1, paramString2, paramString3);
+    this.z.a(paramLong1, paramLong2, paramInt1, paramHashMap, paramInt2, paramString1, paramString2, paramString3);
   }
   
   public void a(long paramLong1, long paramLong2, com.tencent.mobileqq.kandian.repo.handler.BiuInfo paramBiuInfo, long paramLong3, String paramString1, long paramLong4, long paramLong5, int paramInt1, String paramString2, int paramInt2, AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMultiBiuHandler.a(paramLong1, paramLong2, paramBiuInfo, paramLong3, paramString1, paramLong4, paramLong5, paramInt1, paramString2, paramInt2, paramAbsBaseArticleInfo, paramBoolean);
+    this.s.a(paramLong1, paramLong2, paramBiuInfo, paramLong3, paramString1, paramLong4, paramLong5, paramInt1, paramString2, paramInt2, paramAbsBaseArticleInfo, paramBoolean);
   }
   
   public void a(long paramLong1, long paramLong2, com.tencent.mobileqq.kandian.repo.handler.BiuInfo paramBiuInfo, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJModifyBiuHandler.a(paramLong1, paramLong2, paramBiuInfo, paramString);
+    this.f.a(paramLong1, paramLong2, paramBiuInfo, paramString);
   }
   
   public void a(long paramLong1, long paramLong2, boolean paramBoolean, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteActionHandler.a(paramLong1, paramLong2, paramBoolean, paramAbsBaseArticleInfo);
+    this.y.a(paramLong1, paramLong2, paramBoolean, paramAbsBaseArticleInfo);
   }
   
   public void a(long paramLong, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoShareRIJShareConfigHandler.a(paramLong, paramString);
+    this.A.a(paramLong, paramString);
   }
   
   public void a(long paramLong, String paramString1, int paramInt, String paramString2, ArrayList<BiuCommentInfo> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedBiuAtlasHandler.a(paramLong, paramString1, paramInt, paramString2, paramArrayList, paramBoolean);
+    this.t.a(paramLong, paramString1, paramInt, paramString2, paramArrayList, paramBoolean);
   }
   
   public void a(long paramLong, List<? extends DislikeParam> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJDislikeArticleHandler.a(paramLong, paramList);
+    this.q.a(paramLong, paramList);
   }
   
   public void a(long paramLong, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteArticleHandler.a(paramLong, paramBoolean, paramFastWebArticleInfo, paramInt);
+    this.x.a(paramLong, paramBoolean, paramFastWebArticleInfo, paramInt);
   }
   
   public void a(com.tencent.mobileqq.kandian.repo.biu.BiuInfo paramBiuInfo)
@@ -431,20 +424,20 @@ public class ArticleInfoModule
       QLog.d("ArticleInfoModule", 2, "transformNewBiuCard | biuInfo is null!");
       return;
     }
-    if (paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo == null)
+    if (paramBiuInfo.e == null)
     {
       QLog.d("ArticleInfoModule", 2, "transformNewBiuCard | originArticleInfo is null!");
       return;
     }
-    boolean bool2 = paramBiuInfo.jdField_a_of_type_Boolean;
+    boolean bool2 = paramBiuInfo.a;
     boolean bool1 = bool2;
-    if (!paramBiuInfo.jdField_a_of_type_Boolean)
+    if (!paramBiuInfo.a)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.c(0);
+      localObject = this.e.d(0);
       bool1 = bool2;
       if (localObject != null)
       {
-        if (((ConcurrentMap)localObject).containsKey(Long.valueOf(paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendSeq))) {
+        if (((ConcurrentMap)localObject).containsKey(Long.valueOf(paramBiuInfo.e.mRecommendSeq))) {
           bool2 = true;
         }
         bool1 = bool2;
@@ -459,16 +452,16 @@ public class ArticleInfoModule
               break;
             }
             localAbsBaseArticleInfo = (AbsBaseArticleInfo)((Iterator)localObject).next();
-          } while ((localAbsBaseArticleInfo == null) || ((localAbsBaseArticleInfo.mArticleID != paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID) && ((TextUtils.isEmpty(localAbsBaseArticleInfo.innerUniqueID)) || (!localAbsBaseArticleInfo.innerUniqueID.equalsIgnoreCase(paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID)))));
-          paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = localAbsBaseArticleInfo;
+          } while ((localAbsBaseArticleInfo == null) || ((localAbsBaseArticleInfo.mArticleID != paramBiuInfo.e.mArticleID) && ((TextUtils.isEmpty(localAbsBaseArticleInfo.innerUniqueID)) || (!localAbsBaseArticleInfo.innerUniqueID.equalsIgnoreCase(paramBiuInfo.e.innerUniqueID)))));
+          paramBiuInfo.e = localAbsBaseArticleInfo;
           bool1 = true;
         }
       }
     }
-    if ((paramBiuInfo != null) && (paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null))
+    if ((paramBiuInfo != null) && (paramBiuInfo.e != null))
     {
-      paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.invalidateProteusTemplateBean();
-      paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.showBreathAnimation = true;
+      paramBiuInfo.e.invalidateProteusTemplateBean();
+      paramBiuInfo.e.showBreathAnimation = true;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("transformNewBiuCard | fromRecommendFeeds:");
@@ -476,9 +469,9 @@ public class ArticleInfoModule
     QLog.d("ArticleInfoModule", 2, ((StringBuilder)localObject).toString());
     if (bool1)
     {
-      if ((paramBiuInfo != null) && (RIJNewBiuCardTransformManager.a(paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)))
+      if ((paramBiuInfo != null) && (RIJNewBiuCardTransformManager.a(paramBiuInfo.e)))
       {
-        paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.commentSrc = paramBiuInfo.jdField_a_of_type_Int;
+        paramBiuInfo.e.commentSrc = paramBiuInfo.f;
         b(paramBiuInfo);
       }
       else
@@ -487,40 +480,35 @@ public class ArticleInfoModule
       }
     }
     else {
-      ReadInJoyLogicEngine.a().a(paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mArticleID, paramBiuInfo.jdField_a_of_type_Long, paramBiuInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.innerUniqueID);
+      ReadInJoyLogicEngine.a().a(paramBiuInfo.e.mArticleID, paramBiuInfo.b, paramBiuInfo.e.innerUniqueID);
     }
-    RIJNewBiuCardTransformManager.a().c();
+    RIJNewBiuCardTransformManager.a().e();
     QLog.d("ArticleInfoModule", 2, "transformNewBiuCard | clearBiuInfo");
   }
   
   public void a(ArticleInfoModule.LoadMorePreDealListener paramLoadMorePreDealListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule$LoadMorePreDealListener = paramLoadMorePreDealListener;
+    this.d = paramLoadMorePreDealListener;
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedCommentSubmitHandler.a(paramAbsBaseArticleInfo, paramString);
+    this.w.a(paramAbsBaseArticleInfo, paramString);
   }
   
   public void a(ExtraBiuBriefInfo paramExtraBiuBriefInfo, AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetMoreBiuHandler.a(paramExtraBiuBriefInfo, paramAbsBaseArticleInfo);
+    this.n.a(paramExtraBiuBriefInfo, paramAbsBaseArticleInfo);
   }
   
   public void a(ReadInJoyRequestParams.Request0x68bParams paramRequest0x68bParams)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler.a(paramRequest0x68bParams);
-  }
-  
-  public void a(TopicInfo paramTopicInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCreateUGCTopicHandler.a(paramTopicInfo);
+    this.z.a(paramRequest0x68bParams);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInteractiveCardsHandler.a(paramString);
+    this.g.a(paramString);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -530,17 +518,17 @@ public class ArticleInfoModule
   
   public void a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentRIJUpvoteAndCommentHandler.a(paramString, paramInt1, paramInt2, paramBoolean);
+    this.p.a(paramString, paramInt1, paramInt2, paramBoolean);
   }
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, ArrayList<BiuCommentInfo> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, TroopBarPOI paramTroopBarPOI, VisibleSetParam paramVisibleSetParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMasterDeliverHandler.a(paramString1, paramString2, paramBundle, paramArrayList, paramBoolean1, paramBoolean2, paramTroopBarPOI, paramVisibleSetParam);
+    this.v.a(paramString1, paramString2, paramBundle, paramArrayList, paramBoolean1, paramBoolean2, paramTroopBarPOI, paramVisibleSetParam);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, List<Integer> paramList, String paramString4, String paramString5, String[] paramArrayOfString1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String[] paramArrayOfString2, ArrayList<BiuCommentInfo> paramArrayList, boolean paramBoolean, int paramInt1, int paramInt2, AccountProfileInfo paramAccountProfileInfo, TroopBarPOI paramTroopBarPOI, VisibleSetParam paramVisibleSetParam, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUgcDeliverHandler.a(paramString1, paramString2, paramString3, paramList, paramString4, paramString5, paramArrayOfString1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfString2, paramArrayList, paramBoolean, paramInt1, paramInt2, paramAccountProfileInfo, paramTroopBarPOI, paramVisibleSetParam, paramInt3);
+    this.u.a(paramString1, paramString2, paramString3, paramList, paramString4, paramString5, paramArrayOfString1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfString2, paramArrayList, paramBoolean, paramInt1, paramInt2, paramAccountProfileInfo, paramTroopBarPOI, paramVisibleSetParam, paramInt3);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, List<Integer> paramList, String paramString4, String[] paramArrayOfString1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String[] paramArrayOfString2, ArrayList<BiuCommentInfo> paramArrayList, boolean paramBoolean, int paramInt1, int paramInt2, AccountProfileInfo paramAccountProfileInfo, int paramInt3)
@@ -550,7 +538,7 @@ public class ArticleInfoModule
   
   public void a(ArrayList<ResultRecord> paramArrayList, int paramInt, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInviteFriendHandler.a(paramArrayList, paramInt, paramLong, paramString);
+    this.m.a(paramArrayList, paramInt, paramLong, paramString);
   }
   
   public void a(boolean paramBoolean, int paramInt, List<Long> paramList, List<AbsBaseArticleInfo> paramList1)
@@ -572,7 +560,7 @@ public class ArticleInfoModule
   
   public boolean a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler.a(paramInt1, paramInt2, paramLong, paramBoolean, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
+    return this.z.a(paramInt1, paramInt2, paramLong, paramBoolean, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
   }
   
   public boolean a(Long paramLong)
@@ -580,14 +568,19 @@ public class ArticleInfoModule
     return false;
   }
   
-  public void b() {}
-  
   public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTagsHandler.a(paramString);
+    this.o.a(paramString);
   }
   
-  public void c()
+  public void c(String paramString)
+  {
+    this.l.a(paramString);
+  }
+  
+  public void e() {}
+  
+  public void f()
   {
     if (this.mApp == null) {
       return;
@@ -595,12 +588,7 @@ public class ArticleInfoModule
     boolean bool = this.mApp instanceof QQAppInterface;
   }
   
-  public void c(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTopicHandler.a(paramString);
-  }
-  
-  public void d()
+  public void g()
   {
     if (this.mApp == null) {
       return;
@@ -610,9 +598,15 @@ public class ArticleInfoModule
     }
   }
   
-  public void e() {}
+  public void h() {}
   
-  public void f()
+  @NonNull
+  public RIJArticleInfoRepo i()
+  {
+    return this.e;
+  }
+  
+  public void j()
   {
     if (this.mApp == null) {
       return;
@@ -624,134 +618,134 @@ public class ArticleInfoModule
   {
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x68b"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.z.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbf7"))
     {
       QLog.d("ArticleInfoModule", 1, "onReceive 0xbf7");
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.z.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xcba"))
     {
       QLog.d("ArticleInfoModule", 1, "onReceive 0xcba");
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetArticleListHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.z.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x83e"))
     {
       if (paramToServiceMsg.getAttribute("biu_deliver", Integer.valueOf(0)).equals(Integer.valueOf(1)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMultiBiuHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.s.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (paramToServiceMsg.getAttribute("biu_deliver", Integer.valueOf(0)).equals(Integer.valueOf(2)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedBiuAtlasHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.t.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (paramToServiceMsg.getAttribute("ugc_deliver", Integer.valueOf(0)).equals(Integer.valueOf(1)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUgcDeliverHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.u.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (paramToServiceMsg.getAttribute("up_master_deliver", Integer.valueOf(0)).equals(Integer.valueOf(1)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedMasterDeliverHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.v.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (paramToServiceMsg.getAttribute("submit_comment", Integer.valueOf(0)).equals(Integer.valueOf(1)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedCommentSubmitHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.w.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
       if (paramToServiceMsg.getAttribute("0x83e_upvote_fast_web_article", Integer.valueOf(0)).equals(Integer.valueOf(1)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteArticleHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        this.x.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCommentInLikeFeedUpvoteActionHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.y.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x46f"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJDislikeArticleHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.q.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x75e"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetIndividualArticleHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.r.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x8c8"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoCommentRIJUpvoteAndCommentHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.p.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xb83"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTagsHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.o.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbbd"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetMoreBiuHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.n.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbd4_1"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInviteFriendHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.m.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbde"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoSearchRIJSearchUGCTopicHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.l.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xbd6_1"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJLimitFriendHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.k.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xc16"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJCreateUGCTopicHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.j.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xc32"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJGetPrivacyListHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.i.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xa6e"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJRefreshTopicInfoHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.h.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xc6d"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJInteractiveCardsHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.g.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xc5b_2"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerRIJModifyBiuHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.f.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
     }
     if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xf34")) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoShareRIJShareConfigHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      this.A.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
   }
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsRIJArticleInfoRepo.a();
+    this.e.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModule
  * JD-Core Version:    0.7.0.1
  */

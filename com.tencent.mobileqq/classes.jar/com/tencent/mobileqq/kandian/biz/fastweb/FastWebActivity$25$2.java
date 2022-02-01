@@ -10,18 +10,18 @@ class FastWebActivity$25$2
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      FastWebDataInsertUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a), FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a.jdField_a_of_type_AndroidUtilSparseArray);
+    if (this.a != null) {
+      FastWebDataInsertUtils.a(this.c.a.g, FastWebActivity.d(this.c.a), FastWebActivity.m(this.c.a), this.a, this.c.a.n);
     }
     if (this.b != null) {
-      FastWebDataInsertUtils.a(FastWebActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a), this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a), FastWebActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a), this.b, this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a.jdField_a_of_type_AndroidUtilSparseArray);
+      FastWebDataInsertUtils.a(FastWebActivity.K(this.c.a), this.c.a.g, FastWebActivity.d(this.c.a), FastWebActivity.m(this.c.a), this.b, this.c.a.n);
     }
-    FastWebActivity.e(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebFastWebActivity$25.a);
+    FastWebActivity.n(this.c.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.25.2
  * JD-Core Version:    0.7.0.1
  */

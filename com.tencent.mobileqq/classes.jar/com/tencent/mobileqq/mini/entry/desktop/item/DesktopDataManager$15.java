@@ -1,27 +1,39 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class DesktopDataManager$15
+final class DesktopDataManager$15
   implements Runnable
 {
-  DesktopDataManager$15(DesktopDataManager paramDesktopDataManager) {}
+  DesktopDataManager$15(MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject != null)
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null)
     {
-      localObject = DesktopDataManager.access$2600(this.this$0, (AppInterface)localObject);
-      this.this$0.runOnMainThread(new DesktopDataManager.15.1(this, (List)localObject));
+      DesktopDataManager localDesktopDataManager = (DesktopDataManager)localAppRuntime.getManager(QQManagerFactory.MINI_APP_DESKTOP_MANAGER);
+      if (localDesktopDataManager != null) {
+        DesktopDataManager.access$2800(localDesktopDataManager, this.val$appInfo);
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recordMiniAppStart, appInfo = ");
+      localStringBuilder.append(this.val$appInfo);
+      localStringBuilder.append(", appRuntime = ");
+      localStringBuilder.append(localAppRuntime);
+      localStringBuilder.append("， manager = ");
+      localStringBuilder.append(localDesktopDataManager);
+      QLog.d("DesktopDataManager", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.15
  * JD-Core Version:    0.7.0.1
  */

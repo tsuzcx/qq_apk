@@ -16,7 +16,7 @@ public class AECameraEntryManagerImpl
   
   public int getStoryMediaType(Intent paramIntent)
   {
-    return AECameraEntryManager.c(paramIntent);
+    return AECameraEntryManager.d(paramIntent);
   }
   
   public int getStoryShareType(Intent paramIntent)
@@ -36,32 +36,32 @@ public class AECameraEntryManagerImpl
   
   public boolean isFromCheckEntry(Intent paramIntent)
   {
-    return AECameraEntryManager.e(paramIntent);
+    return AECameraEntryManager.i(paramIntent);
   }
   
   public boolean isFromGuideCircle(Intent paramIntent)
   {
-    return AECameraEntryManager.m(paramIntent);
+    return AECameraEntryManager.r(paramIntent);
   }
   
   public boolean isFromMiniApp(Intent paramIntent)
   {
-    return AECameraEntryManager.f(paramIntent);
+    return AECameraEntryManager.j(paramIntent);
   }
   
   public boolean isQzoneTailEntry(Intent paramIntent)
   {
-    return AECameraEntryManager.d(paramIntent);
+    return AECameraEntryManager.g(paramIntent);
   }
   
   public boolean isSameStoryPhotoEntry(Intent paramIntent)
   {
-    return AECameraEntryManager.c(paramIntent);
+    return AECameraEntryManager.f(paramIntent);
   }
   
   public boolean isStoryDefaultShare(Intent paramIntent)
   {
-    return AECameraEntryManager.a(paramIntent);
+    return AECameraEntryManager.c(paramIntent);
   }
   
   public boolean isStoryPhoto(Intent paramIntent, int paramInt)
@@ -76,12 +76,12 @@ public class AECameraEntryManagerImpl
   
   public String switchTabToName(@Nullable String paramString)
   {
-    return AECameraEntryManager.a(paramString);
+    return AECameraEntryManager.b(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.entry.api.impl.AECameraEntryManagerImpl
  * JD-Core Version:    0.7.0.1
  */

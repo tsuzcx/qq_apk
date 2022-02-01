@@ -25,12 +25,12 @@ class SessionClearFragment$1
     if (QLog.isColorLevel()) {
       QLog.d("SessionClearFragment", 2, "onLoadFinish");
     }
-    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
+    SessionClearFragment.c(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.weather.SessionClearFragment.1
  * JD-Core Version:    0.7.0.1
  */

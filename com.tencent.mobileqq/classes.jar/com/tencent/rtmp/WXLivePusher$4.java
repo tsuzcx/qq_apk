@@ -139,9 +139,9 @@ class WXLivePusher$4
     super.onEnterRoom(paramLong);
     Object localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("result: ");
+    localStringBuilder.append("onEnterRoom result: ");
     localStringBuilder.append(paramLong);
-    ((WXLivePusher)localObject).apiLog("[API] onEnterRoom", localStringBuilder.toString());
+    ((WXLivePusher)localObject).apiOnlineLog(localStringBuilder.toString(), true);
     if (paramLong > 0L)
     {
       WXLivePusher.access$202(this.this$0, true);
@@ -180,9 +180,9 @@ class WXLivePusher$4
   {
     Object localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("reason: ");
+    localStringBuilder.append("onExitRoom reason: ");
     localStringBuilder.append(paramInt);
-    ((WXLivePusher)localObject).apiLog("[API] onExitRoom", localStringBuilder.toString());
+    ((WXLivePusher)localObject).apiOnlineLog(localStringBuilder.toString(), true);
     super.onExitRoom(paramInt);
     WXLivePusher.access$202(this.this$0, false);
     localObject = new StringBuilder();
@@ -202,9 +202,9 @@ class WXLivePusher$4
     super.onUserEnter(paramString);
     WXLivePusher localWXLivePusher = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userId: ");
+    localStringBuilder.append("onRemoteUserEnterRoom userId: ");
     localStringBuilder.append(paramString);
-    localWXLivePusher.apiLog("[API] onRemoteUserEnterRoom", localStringBuilder.toString());
+    localWXLivePusher.apiOnlineLog(localStringBuilder.toString(), true);
     sendEventNotify(1031, getUserEnterJSONObject(paramString));
   }
   
@@ -213,11 +213,11 @@ class WXLivePusher$4
     super.onUserExit(paramString, paramInt);
     WXLivePusher localWXLivePusher = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userId: ");
+    localStringBuilder.append("onRemoteUserLeaveRoom userId: ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", reason: ");
     localStringBuilder.append(paramInt);
-    localWXLivePusher.apiLog("[API] onRemoteUserLeaveRoom", localStringBuilder.toString());
+    localWXLivePusher.apiOnlineLog(localStringBuilder.toString(), true);
     sendEventNotify(1032, getUserExitJSONObject(paramString));
   }
   
@@ -231,11 +231,11 @@ class WXLivePusher$4
     super.onUserAudioAvailable(paramString, paramBoolean);
     Object localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userId: ");
+    localStringBuilder.append("onUserAudioAvailable userId: ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", available: ");
     localStringBuilder.append(paramBoolean);
-    ((WXLivePusher)localObject).apiLog("[API] onUserAudioAvailable", localStringBuilder.toString());
+    ((WXLivePusher)localObject).apiOnlineLog(localStringBuilder.toString(), true);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("room://cloud.tencent.com/rtc?userid=");
     ((StringBuilder)localObject).append(paramString);
@@ -248,11 +248,11 @@ class WXLivePusher$4
     super.onUserSubStreamAvailable(paramString, paramBoolean);
     Object localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userId: ");
+    localStringBuilder.append("onUserSubStreamAvailable userId: ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", available: ");
     localStringBuilder.append(paramBoolean);
-    ((WXLivePusher)localObject).apiLog("[API] onUserSubStreamAvailable", localStringBuilder.toString());
+    ((WXLivePusher)localObject).apiOnlineLog(localStringBuilder.toString(), true);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("room://cloud.tencent.com/rtc?userid=");
     ((StringBuilder)localObject).append(paramString);
@@ -271,11 +271,11 @@ class WXLivePusher$4
     super.onUserVideoAvailable(paramString, paramBoolean);
     Object localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("userId: ");
+    localStringBuilder.append("onUserVideoAvailable userId: ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(", available: ");
     localStringBuilder.append(paramBoolean);
-    ((WXLivePusher)localObject).apiLog("[API] onUserVideoAvailable", localStringBuilder.toString());
+    ((WXLivePusher)localObject).apiOnlineLog(localStringBuilder.toString(), true);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("room://cloud.tencent.com/rtc?userid=");
     ((StringBuilder)localObject).append(paramString);
@@ -315,7 +315,7 @@ class WXLivePusher$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.WXLivePusher.4
  * JD-Core Version:    0.7.0.1
  */

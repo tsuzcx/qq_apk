@@ -9,7 +9,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/image/api/impl/RIJImageOptConfigImpl;", "Lcom/tencent/mobileqq/kandian/base/image/api/IRIJImageOptConfig;", "()V", "isBitmapOpt", "", "()Z", "isDecodeHttpStream", "isLifoOn", "isRenderFirst", "isReportOn", "decodeSharpP", "Landroid/graphics/Bitmap;", "path", "", "dstWidth", "", "dstHeight", "config", "reuseBitmap", "decodeSharpPInBounds", "Landroid/graphics/BitmapFactory$Options;", "filePath", "getMonitorTime", "", "isSharpPAvailable", "useInnerDns", "useIpConnect", "useSharpP", "useWebp", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/image/api/impl/RIJImageOptConfigImpl;", "Lcom/tencent/mobileqq/kandian/base/image/api/IRIJImageOptConfig;", "()V", "isBitmapOpt", "", "()Z", "isDecodeHttpStream", "isLifoOn", "isRenderFirst", "isReportOn", "isRollbackToDomainConnect", "decodeSharpP", "Landroid/graphics/Bitmap;", "path", "", "dstWidth", "", "dstHeight", "config", "reuseBitmap", "decodeSharpPInBounds", "Landroid/graphics/BitmapFactory$Options;", "filePath", "getMonitorTime", "", "isSharpPAvailable", "useInnerDns", "useIpConnect", "useSharpP", "useWebp", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJImageOptConfigImpl
   implements IRIJImageOptConfig
 {
@@ -56,6 +56,11 @@ public final class RIJImageOptConfigImpl
     return this.$$delegate_0.isReportOn();
   }
   
+  public boolean isRollbackToDomainConnect()
+  {
+    return this.$$delegate_0.isRollbackToDomainConnect();
+  }
+  
   public boolean isSharpPAvailable()
   {
     return this.$$delegate_0.isSharpPAvailable();
@@ -83,7 +88,7 @@ public final class RIJImageOptConfigImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.api.impl.RIJImageOptConfigImpl
  * JD-Core Version:    0.7.0.1
  */

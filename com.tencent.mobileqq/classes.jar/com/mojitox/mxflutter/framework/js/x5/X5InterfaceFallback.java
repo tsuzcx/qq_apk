@@ -8,33 +8,24 @@ import com.mojitox.mxflutter.framework.utils.FileUtils;
 import com.mojitox.mxflutter.framework.utils.MxLog;
 
 public class X5InterfaceFallback
-  implements IX5Interface
+  extends X5BaseInterface
 {
-  @NonNull
-  private final X5Executor a;
-  
   public X5InterfaceFallback(@NonNull X5Executor paramX5Executor)
   {
-    this.a = paramX5Executor;
-    MxLog.a("X5InterfaceFallback", "init X5InterfaceFallback");
+    super(paramX5Executor);
   }
   
   @JavascriptInterface
   public void a(String paramString)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("require");
+    ((StringBuilder)localObject).append("#require: filePath=");
     ((StringBuilder)localObject).append(paramString);
     MxLog.a("X5InterfaceFallback", ((StringBuilder)localObject).toString());
     localObject = FileUtils.a(paramString);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      if (UiThread.a())
-      {
-        X5JsModule.a(paramString, (String)localObject, this.a.a());
-        return;
-      }
-      this.a.a(new X5InterfaceFallback.5(this, paramString, (String)localObject).a("require#"));
+      UiThread.c(new X5InterfaceFallback.5(this, paramString, (String)localObject).a("require#"));
       return;
     }
     localObject = new StringBuilder();
@@ -50,7 +41,7 @@ public class X5InterfaceFallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5InterfaceFallback
  * JD-Core Version:    0.7.0.1
  */

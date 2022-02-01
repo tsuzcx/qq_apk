@@ -12,7 +12,7 @@ class ComboProviderView$2
   
   public void run()
   {
-    Object localObject = (GridView)this.this$0.a.a.get(this.this$0.b());
+    Object localObject = (GridView)this.this$0.b.c.get(this.this$0.h());
     if (localObject != null)
     {
       ((GridView)localObject).setSelection(this.a);
@@ -33,7 +33,7 @@ class ComboProviderView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.ComboProviderView.2
  * JD-Core Version:    0.7.0.1
  */

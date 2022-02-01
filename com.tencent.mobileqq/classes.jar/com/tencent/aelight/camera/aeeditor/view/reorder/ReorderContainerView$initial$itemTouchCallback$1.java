@@ -69,7 +69,7 @@ public final class ReorderContainerView$initial$itemTouchCallback$1
         return;
       }
       ReorderContainerView.a(this.a, paramViewHolder);
-      paramViewHolder = ReorderContainerView.a(this.a);
+      paramViewHolder = ReorderContainerView.c(this.a);
       if (paramViewHolder != null)
       {
         paramViewHolder = paramViewHolder.itemView;
@@ -77,7 +77,7 @@ public final class ReorderContainerView$initial$itemTouchCallback$1
           paramViewHolder.setSelected(true);
         }
       }
-      paramViewHolder = ReorderContainerView.a(this.a);
+      paramViewHolder = ReorderContainerView.c(this.a);
       if (paramViewHolder != null)
       {
         paramViewHolder = paramViewHolder.itemView;
@@ -88,7 +88,7 @@ public final class ReorderContainerView$initial$itemTouchCallback$1
     }
     else
     {
-      paramViewHolder = ReorderContainerView.a(this.a);
+      paramViewHolder = ReorderContainerView.c(this.a);
       if (paramViewHolder != null)
       {
         paramViewHolder = paramViewHolder.itemView;
@@ -97,12 +97,12 @@ public final class ReorderContainerView$initial$itemTouchCallback$1
         }
       }
       ReorderContainerView.a(this.a, (RecyclerView.ViewHolder)null);
-      paramViewHolder = ReorderContainerView.a(this.a);
+      paramViewHolder = ReorderContainerView.d(this.a);
       if (paramViewHolder != null)
       {
-        ReorderListener localReorderListener = this.a.a();
+        ReorderListener localReorderListener = this.a.getReorderListener();
         if (localReorderListener != null) {
-          localReorderListener.a(paramViewHolder, ReorderContainerView.a(this.a));
+          localReorderListener.a(paramViewHolder, ReorderContainerView.b(this.a));
         }
       }
       ReorderContainerView.a(this.a, (String)null);
@@ -114,7 +114,7 @@ public final class ReorderContainerView$initial$itemTouchCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.ReorderContainerView.initial.itemTouchCallback.1
  * JD-Core Version:    0.7.0.1
  */

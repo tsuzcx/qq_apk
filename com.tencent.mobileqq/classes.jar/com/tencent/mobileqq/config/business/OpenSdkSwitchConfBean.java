@@ -2,34 +2,34 @@ package com.tencent.mobileqq.config.business;
 
 public class OpenSdkSwitchConfBean
 {
-  private OpenSdkSwitchConfBean.OpenSdkSwitchConfig jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkSwitchConfBean$OpenSdkSwitchConfig;
-  private String jdField_a_of_type_JavaLangString;
+  private OpenSdkSwitchConfBean.OpenSdkSwitchConfig a;
+  private String b;
   
   public OpenSdkSwitchConfBean()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkSwitchConfBean$OpenSdkSwitchConfig = new OpenSdkSwitchConfBean.OpenSdkSwitchConfig();
+    this.b = "";
+    this.a = new OpenSdkSwitchConfBean.OpenSdkSwitchConfig();
   }
   
   public OpenSdkSwitchConfBean(String paramString, OpenSdkSwitchConfBean.OpenSdkSwitchConfig paramOpenSdkSwitchConfig)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkSwitchConfBean$OpenSdkSwitchConfig = paramOpenSdkSwitchConfig;
-  }
-  
-  public OpenSdkSwitchConfBean.OpenSdkSwitchConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOpenSdkSwitchConfBean$OpenSdkSwitchConfig;
+    this.b = paramString;
+    this.a = paramOpenSdkSwitchConfig;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
+  }
+  
+  public OpenSdkSwitchConfBean.OpenSdkSwitchConfig b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkSwitchConfBean
  * JD-Core Version:    0.7.0.1
  */

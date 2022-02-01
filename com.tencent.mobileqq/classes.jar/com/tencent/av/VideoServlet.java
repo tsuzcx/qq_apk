@@ -72,12 +72,12 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class VideoServlet
   extends MSFServlet
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private final List<IVideoServant> jdField_a_of_type_JavaUtilList = new ArrayList(2);
+  private VideoAppInterface a;
+  private final List<IVideoServant> b = new ArrayList(2);
   
   public VideoServlet()
   {
-    this.jdField_a_of_type_JavaUtilList.add(new MultiVideoServant());
+    this.b.add(new MultiVideoServant());
   }
   
   private int a()
@@ -90,26 +90,6 @@ public class VideoServlet
       return 1;
     }
     return 0;
-  }
-  
-  private long a(String paramString)
-  {
-    long l = 0L;
-    if (paramString != null) {
-      if (paramString.length() <= 0) {
-        return 0L;
-      }
-    }
-    try
-    {
-      l = CharacterUtil.a(paramString);
-      if (l < 10000L) {
-        return 0L;
-      }
-      return l;
-    }
-    catch (NumberFormatException paramString) {}
-    return 0L;
   }
   
   private void a(MultiVideoMsg paramMultiVideoMsg)
@@ -129,7 +109,7 @@ public class VideoServlet
       ((StringBuilder)localObject).append(paramMultiVideoMsg.to_uin.size());
       QLog.d("VideoServlet", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
+    Object localObject = new NewIntent(this.a.getApplication(), VideoServlet.class);
     ((NewIntent)localObject).putExtra("reqType", 9);
     ((NewIntent)localObject).putExtra("ver", paramMultiVideoMsg.ver);
     ((NewIntent)localObject).putExtra("type", paramMultiVideoMsg.type);
@@ -158,7 +138,7 @@ public class VideoServlet
     if ((paramArrayOfByte != null) && (paramArrayOfByte.a()))
     {
       VideoNodeManager.a(34);
-      QAVNotificationUtil.a("VideoServlet", SessionMgr.a(3, String.valueOf(paramArrayOfByte.c), new int[0]), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramArrayOfByte);
+      QAVNotificationUtil.a("VideoServlet", SessionMgr.a(3, String.valueOf(paramArrayOfByte.h), new int[0]), this.a, paramArrayOfByte);
       return;
     }
     QLog.w("VideoServlet", 1, "showNotification() return ! videoPacket == null && videoPacket is not isRequestMsg");
@@ -401,6 +381,26 @@ public class VideoServlet
     return new long[] { l2, l1 };
   }
   
+  private long b(String paramString)
+  {
+    long l = 0L;
+    if (paramString != null) {
+      if (paramString.length() <= 0) {
+        return 0L;
+      }
+    }
+    try
+    {
+      l = CharacterUtil.b(paramString);
+      if (l < 10000L) {
+        return 0L;
+      }
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
+    return 0L;
+  }
+  
   private void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     AudioHelper.a("onRspGroupVideoInviteMemberMsgMsg", paramIntent.getExtras());
@@ -435,18 +435,18 @@ public class VideoServlet
             }
           }
           boolean bool = paramIntent.getBooleanExtra("requestInviteMemberMode", true);
-          if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface instanceof VideoAppInterface))
+          if ((this.a instanceof VideoAppInterface))
           {
-            paramIntent = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+            paramIntent = this.a;
             if (!bool) {
-              paramIntent.a().b(l1, l2, (ArrayList)localObject);
+              paramIntent.b().b(l1, l2, (ArrayList)localObject);
             } else {
-              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(709), Long.valueOf(l1), Long.valueOf(l2), localObject });
+              this.a.a(new Object[] { Integer.valueOf(709), Long.valueOf(l1), Long.valueOf(l2), localObject });
             }
           }
           else
           {
-            this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(708), Long.valueOf(l1), Long.valueOf(l2), localObject });
+            this.a.a(new Object[] { Integer.valueOf(708), Long.valueOf(l1), Long.valueOf(l2), localObject });
           }
           paramIntent = new StringBuilder();
           paramIntent.append("onRspGroupVideoInviteMemberMsgMsg, uint32_errcode[");
@@ -484,7 +484,7 @@ public class VideoServlet
     localMultiVideoMsg.ver = paramBundle.getByte("ver");
     localMultiVideoMsg.type = paramBundle.getByte("type");
     localMultiVideoMsg.csCmd = paramBundle.getShort("cscmd");
-    localMultiVideoMsg.from_uin = a(String.valueOf(paramBundle.getLong("from_uin")));
+    localMultiVideoMsg.from_uin = b(String.valueOf(paramBundle.getLong("from_uin")));
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Long.valueOf(paramBundle.getLong("toUin")));
     localMultiVideoMsg.to_uin = localArrayList;
@@ -513,7 +513,7 @@ public class VideoServlet
       ((StringBuilder)localObject).append(paramSharpVideoMsg.to_uin.size());
       QLog.d("VideoServlet", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = new NewIntent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), VideoServlet.class);
+    Object localObject = new NewIntent(this.a.getApplication(), VideoServlet.class);
     ((NewIntent)localObject).setWithouLogin(true);
     ((NewIntent)localObject).putExtra("reqType", 5);
     ((NewIntent)localObject).putExtra("ver", paramSharpVideoMsg.ver);
@@ -619,7 +619,7 @@ public class VideoServlet
     if (bool) {
       return null;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     Object localObject1;
     do
     {
@@ -690,7 +690,7 @@ public class VideoServlet
     localBundle.putLong("time", paramSharpVideoMsg.msg_time);
     localBundle.putString("name", str);
     localBundle.putBoolean("isFriend", bool);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveSharpVideoMsg(localBundle);
+    this.a.b().n.receiveSharpVideoMsg(localBundle);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -727,7 +727,7 @@ public class VideoServlet
           paramFromServiceMsg.append((String)localObject);
           QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
         }
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().d(paramIntent, 0);
+        this.a.b().d(paramIntent, 0);
       }
     }
     else if (MsfMsgUtil.getSetConnStatusMsg(null, 0).getServiceCmd().equalsIgnoreCase((String)localObject))
@@ -738,7 +738,7 @@ public class VideoServlet
       }
       if (paramIntent != null)
       {
-        paramFromServiceMsg = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+        paramFromServiceMsg = this.a.c();
         if (paramFromServiceMsg != null) {
           paramFromServiceMsg.a(paramIntent.intValue());
         }
@@ -837,7 +837,7 @@ public class VideoServlet
             }
             new ArrayList();
             paramIntent = PstnUtils.a(paramIntent);
-            this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramIntent);
+            this.a.b().b(paramIntent);
             return;
           }
           catch (Exception paramIntent)
@@ -864,7 +864,7 @@ public class VideoServlet
             paramIntent.append(bool);
             QLog.d("VideoServlet", 2, paramIntent.toString());
           }
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().n(bool);
+          this.a.b().u(bool);
           return;
         }
         if ("QQRTCSvc.group_video_terminate_msg".equalsIgnoreCase((String)localObject))
@@ -936,7 +936,7 @@ public class VideoServlet
     {
       arrayOfByte = null;
     }
-    ChatRoomMng localChatRoomMng = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    ChatRoomMng localChatRoomMng = this.a.A();
     if (localChatRoomMng != null) {
       localChatRoomMng.a(paramString, paramFromServiceMsg.isSuccess(), paramFromServiceMsg.getResultCode(), paramIntent, arrayOfByte);
     }
@@ -979,7 +979,7 @@ public class VideoServlet
     paramSharpVideoMsg = paramSharpVideoMsg.video_buff;
     Bundle localBundle = new Bundle();
     localBundle.putByteArray("buffer", paramSharpVideoMsg);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveSharpVideoAck(localBundle);
+    this.a.b().n.receiveSharpVideoAck(localBundle);
     if (QLog.isColorLevel()) {
       QLog.d("VideoServlet", 2, "handle Sharp Video c2s Ack Message OK");
     }
@@ -993,8 +993,8 @@ public class VideoServlet
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)getAppRuntime());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a = System.currentTimeMillis();
+    this.a = ((VideoAppInterface)getAppRuntime());
+    this.a.y = System.currentTimeMillis();
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -1061,31 +1061,31 @@ public class VideoServlet
       {
         VideoUtils.a("Video:Servlet", 5000L);
         a(paramIntent.video_buff);
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(209, String.valueOf(paramIntent.from_uin));
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(200, String.valueOf(paramIntent.from_uin));
-        if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == 0) {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(205, String.valueOf(paramIntent.from_uin));
+        this.a.b().a(209, String.valueOf(paramIntent.from_uin));
+        this.a.b().a(200, String.valueOf(paramIntent.from_uin));
+        if (this.a.b().o() == 0) {
+          this.a.b().a(205, String.valueOf(paramIntent.from_uin));
         } else {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(204, String.valueOf(paramIntent.from_uin));
+          this.a.b().a(204, String.valueOf(paramIntent.from_uin));
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramIntent.msg_seq);
         ((StringBuilder)localObject).append("-");
         ((StringBuilder)localObject).append(paramIntent.msg_uid);
         localObject = ((StringBuilder)localObject).toString();
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramIntent.from_uin, (String)localObject, MessageCache.a());
-        if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b) {
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b = false;
+        this.a.a(paramIntent.from_uin, (String)localObject, MessageCache.c());
+        if (this.a.i) {
+          this.a.i = false;
         } else {
           VideoNodeManager.a(l2);
         }
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c = true;
+        this.a.j = true;
         VideoNodeManager.a(l2, 35);
         localObject = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
         if (localObject != null)
         {
           l1 = ((Long)localObject).longValue();
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().b(String.valueOf(paramIntent.from_uin), l1);
+          this.a.b().b(String.valueOf(paramIntent.from_uin), l1);
         }
       }
       try
@@ -1097,7 +1097,7 @@ public class VideoServlet
         localStringBuilder.append(" , msg_type = ");
         localStringBuilder.append(paramIntent.msg_type);
         localStringBuilder.append(", bodyType = ");
-        localStringBuilder.append(((VideoPackageUtils.VideoPacket)localObject).jdField_a_of_type_Int);
+        localStringBuilder.append(((VideoPackageUtils.VideoPacket)localObject).d);
         QLog.w("tagSharpSvr", 1, localStringBuilder.toString());
       }
       catch (Exception localException)
@@ -1105,11 +1105,11 @@ public class VideoServlet
         localException.printStackTrace();
       }
       c(paramIntent);
-      if ((!AVReport.a().jdField_a_of_type_Boolean) && (AVReport.a().b != 1) && (paramFromServiceMsg.getAttributes() != null))
+      if ((!AVReport.a().d) && (AVReport.a().c != 1) && (paramFromServiceMsg.getAttributes() != null))
       {
         paramFromServiceMsg = paramFromServiceMsg.getAttributes().get("__timestamp_net2msf_boot");
         if (paramFromServiceMsg != null) {
-          AVReport.a().q = ((Long)paramFromServiceMsg).longValue();
+          AVReport.a().u = ((Long)paramFromServiceMsg).longValue();
         }
       }
       a(paramIntent);
@@ -1117,24 +1117,24 @@ public class VideoServlet
     }
     if ("SharpSvr.c2sack".equalsIgnoreCase(localException))
     {
-      if ((AVReport.a().jdField_a_of_type_Boolean) && (paramFromServiceMsg.getAttributes() != null)) {
-        if (AVReport.a().jdField_a_of_type_Int == 0)
+      if ((AVReport.a().d) && (paramFromServiceMsg.getAttributes() != null)) {
+        if (AVReport.a().b == 0)
         {
           paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_net2msf_boot");
           if (paramIntent != null) {
-            AVReport.a().d = ((Long)paramIntent).longValue();
+            AVReport.a().h = ((Long)paramIntent).longValue();
           }
-          paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
-          if (paramIntent != null) {
-            AVReport.a().c = ((Long)paramIntent).longValue();
-          }
-        }
-        else if (AVReport.a().jdField_a_of_type_Int == 2)
-        {
-          AVReport.a().jdField_a_of_type_Int = 4;
           paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
           if (paramIntent != null) {
             AVReport.a().g = ((Long)paramIntent).longValue();
+          }
+        }
+        else if (AVReport.a().b == 2)
+        {
+          AVReport.a().b = 4;
+          paramIntent = paramFromServiceMsg.getAttributes().get("__timestamp_msf2net_boot_sharp_c2s");
+          if (paramIntent != null) {
+            AVReport.a().k = ((Long)paramIntent).longValue();
           }
         }
       }
@@ -1163,10 +1163,10 @@ public class VideoServlet
       }
       if (paramIntent.msg_type == 2L)
       {
-        paramFromServiceMsg = SessionMgr.a().a();
+        paramFromServiceMsg = SessionMgr.a().b();
         if (paramFromServiceMsg != null)
         {
-          paramFromServiceMsg.c(l1);
+          paramFromServiceMsg.e(l1);
           if (QLog.isColorLevel())
           {
             paramFromServiceMsg = new StringBuilder();
@@ -1174,7 +1174,7 @@ public class VideoServlet
             paramFromServiceMsg.append(l1);
             QLog.d("VideoServlet", 2, paramFromServiceMsg.toString());
           }
-          ((VideoNodeReporter)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(4)).a(l1);
+          ((VideoNodeReporter)this.a.c(4)).a(l1);
         }
       }
       try
@@ -1186,7 +1186,7 @@ public class VideoServlet
         ((StringBuilder)localObject).append(" , msg_type = ");
         ((StringBuilder)localObject).append(paramIntent.msg_type);
         ((StringBuilder)localObject).append(", bodyType = ");
-        ((StringBuilder)localObject).append(paramFromServiceMsg.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramFromServiceMsg.d);
         QLog.w("tagSharpSvr", 1, ((StringBuilder)localObject).toString());
       }
       catch (Exception paramFromServiceMsg)
@@ -1205,7 +1205,7 @@ public class VideoServlet
       a(paramIntent);
       paramFromServiceMsg = new Bundle();
       paramFromServiceMsg.putByteArray("buffer", paramIntent.video_buff);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveMultiVideoMsg(paramFromServiceMsg);
+      this.a.b().n.receiveMultiVideoMsg(paramFromServiceMsg);
       return;
     }
     if ("MultiVideo.c2sack".equalsIgnoreCase(localException))
@@ -1216,7 +1216,7 @@ public class VideoServlet
       paramIntent = (MultiVideoMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "MultiVideoMsg", new MultiVideoMsg());
       paramFromServiceMsg = new Bundle();
       paramFromServiceMsg.putByteArray("buffer", paramIntent.video_buff);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a.receiveMultiVideoAck(paramFromServiceMsg);
+      this.a.b().n.receiveMultiVideoAck(paramFromServiceMsg);
       return;
     }
     if ("OidbSvc.0x625".equalsIgnoreCase(localException))
@@ -1334,7 +1334,7 @@ public class VideoServlet
     long l1 = l2;
     if (l2 == 0L)
     {
-      l1 = AudioHelper.b();
+      l1 = AudioHelper.c();
       SeqUtil.a(paramIntent, l1);
     }
     int i = ((Bundle)localObject1).getInt("reqType", -1);
@@ -1387,7 +1387,7 @@ public class VideoServlet
       }
       paramPacket = MsfMsgUtil.keepProcessAliveMsg(null, bool);
       paramPacket.setNeedRemindSlowNetwork(false);
-      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
+      paramPacket.setAppId(this.a.getAppid());
       sendToMSF(paramIntent, paramPacket);
       return;
     case 18: 
@@ -1402,7 +1402,7 @@ public class VideoServlet
       paramIntent = new SharpVideoMsg();
       paramIntent.ver = 1;
       paramIntent.type = -62;
-      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("selfuin")));
+      paramIntent.from_uin = b(String.valueOf(((Bundle)localObject1).getLong("selfuin")));
       localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(Long.valueOf(((Bundle)localObject1).getLong("toUin")));
       paramIntent.to_uin = ((ArrayList)localObject2);
@@ -1483,7 +1483,7 @@ public class VideoServlet
       paramPacket.setTimeout(30000L);
       paramPacket.setNeedCallback(true);
       paramPacket.setNeedRemindSlowNetwork(false);
-      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
+      paramPacket.setAppId(this.a.getAppid());
       sendToMSF(paramIntent, paramPacket);
       return;
     case 9: 
@@ -1495,7 +1495,7 @@ public class VideoServlet
       paramIntent.type = ((Bundle)localObject1).getByte("type");
       paramIntent.csCmd = ((Bundle)localObject1).getShort("cscmd");
       paramIntent.subCmd = ((Bundle)localObject1).getShort("subcmd");
-      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
+      paramIntent.from_uin = b(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
       localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(Long.valueOf(((Bundle)localObject1).getLong("to_uin")));
       paramIntent.to_uin = ((ArrayList)localObject2);
@@ -1514,7 +1514,7 @@ public class VideoServlet
       paramPacket.setTimeout(30000L);
       paramPacket.setNeedCallback(true);
       paramPacket.setNeedRemindSlowNetwork(false);
-      paramPacket.setAppId(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAppid());
+      paramPacket.setAppId(this.a.getAppid());
       sendToMSF(paramIntent, paramPacket);
       return;
     case 6: 
@@ -1544,13 +1544,13 @@ public class VideoServlet
       paramPacket.setNoResponse();
       return;
     case 5: 
-      paramPacket = new ToServiceMsg(null, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "SharpSvr.s2cack");
+      paramPacket = new ToServiceMsg(null, this.a.getCurrentAccountUin(), "SharpSvr.s2cack");
       paramPacket.setMsfCommand(MsfCommand.sendVideoAck);
       paramPacket.setNeedCallback(false);
       localObject2 = new SharpVideoMsg();
       ((SharpVideoMsg)localObject2).ver = ((Bundle)localObject1).getByte("ver");
       ((SharpVideoMsg)localObject2).type = ((Bundle)localObject1).getByte("type");
-      ((SharpVideoMsg)localObject2).from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
+      ((SharpVideoMsg)localObject2).from_uin = b(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
       Object localObject3 = new ArrayList();
       ((ArrayList)localObject3).add(Long.valueOf(((Bundle)localObject1).getLong("to_uin")));
       ((SharpVideoMsg)localObject2).to_uin = ((ArrayList)localObject3);
@@ -1583,7 +1583,7 @@ public class VideoServlet
         ((StringBuilder)localObject3).append("--> onSend() cmd = SharpSvr.s2cack , msg_type = ");
         ((StringBuilder)localObject3).append(((SharpVideoMsg)localObject2).msg_type);
         ((StringBuilder)localObject3).append(", bodyType = ");
-        ((StringBuilder)localObject3).append(((VideoPackageUtils.VideoPacket)localObject1).jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append(((VideoPackageUtils.VideoPacket)localObject1).d);
         QLog.w("tagSharpSvr", 1, ((StringBuilder)localObject3).toString());
       }
       catch (Exception localException)
@@ -1605,7 +1605,7 @@ public class VideoServlet
       paramIntent = new SharpVideoMsg();
       paramIntent.ver = 1;
       paramIntent.type = 1;
-      paramIntent.from_uin = a(String.valueOf(localException.getLong("selfuin")));
+      paramIntent.from_uin = b(String.valueOf(localException.getLong("selfuin")));
       localObject2 = new ArrayList();
       ((ArrayList)localObject2).add(Long.valueOf(localException.getLong("toUin")));
       paramIntent.to_uin = ((ArrayList)localObject2);
@@ -1622,7 +1622,7 @@ public class VideoServlet
         localStringBuilder.append("--> onSend() cmd = SharpSvr.c2s , msg_type = ");
         localStringBuilder.append(paramIntent.msg_type);
         localStringBuilder.append(", bodyType = ");
-        localStringBuilder.append(paramPacket.jdField_a_of_type_Int);
+        localStringBuilder.append(paramPacket.d);
         QLog.w("tagSharpSvr", 1, localStringBuilder.toString());
         return;
       }
@@ -1638,7 +1638,7 @@ public class VideoServlet
     paramIntent = new VideoCallMsg();
     paramIntent.ver = 1;
     paramIntent.type = 1;
-    paramIntent.lUin = a(localStringBuilder.getString("selfuin"));
+    paramIntent.lUin = b(localStringBuilder.getString("selfuin"));
     paramIntent.lPeerUin = localStringBuilder.getLong("toUin");
     paramIntent.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
     paramIntent.cVerifyType = 0;

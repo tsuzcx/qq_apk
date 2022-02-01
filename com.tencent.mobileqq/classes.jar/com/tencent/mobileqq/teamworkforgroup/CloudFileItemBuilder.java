@@ -10,24 +10,24 @@ import com.tencent.common.app.AppInterface;
 
 public abstract class CloudFileItemBuilder
 {
-  protected Context a;
-  protected BaseAdapter a;
-  protected AppInterface a;
-  protected int b;
+  protected AppInterface f;
+  protected Context g;
+  protected BaseAdapter h;
+  protected int i;
   
   public CloudFileItemBuilder(AppInterface paramAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    this.b = paramInt;
+    this.f = paramAppInterface;
+    this.g = paramContext;
+    this.h = paramBaseAdapter;
+    this.i = paramInt;
   }
   
   public abstract View a(int paramInt1, ICloudFile paramICloudFile, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.CloudFileItemBuilder
  * JD-Core Version:    0.7.0.1
  */

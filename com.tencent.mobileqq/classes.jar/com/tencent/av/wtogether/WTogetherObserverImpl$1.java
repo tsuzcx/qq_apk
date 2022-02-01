@@ -12,7 +12,7 @@ class WTogetherObserverImpl$1
   public void run()
   {
     String str = BaseApplicationImpl.getContext().getString(this.a);
-    TipsUtil.a(this.this$0.a, str, 3000L, false);
+    TipsUtil.a(this.this$0.b, str, 3000L, false);
   }
 }
 

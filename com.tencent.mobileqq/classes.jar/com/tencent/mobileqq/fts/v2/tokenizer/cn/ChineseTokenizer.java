@@ -7,42 +7,42 @@ import java.io.Reader;
 public final class ChineseTokenizer
   extends Tokenizer
 {
-  private int jdField_a_of_type_Int = 0;
-  private final char[] jdField_a_of_type_ArrayOfChar = new char['ÿ'];
-  private int jdField_b_of_type_Int = 0;
-  private final char[] jdField_b_of_type_ArrayOfChar = new char[1024];
+  private int b = 0;
   private int c = 0;
-  private int d;
-  private int e;
-  private int f = -1;
+  private int d = 0;
+  private final char[] e = new char['ÿ'];
+  private final char[] f = new char[1024];
+  private int g;
+  private int h;
+  private int i = -1;
   
   public ChineseTokenizer(Reader paramReader)
   {
-    this.jdField_a_of_type_JavaIoReader = paramReader;
+    this.a = paramReader;
   }
   
   private final void a(char paramChar)
   {
-    if (this.d == 0) {
-      this.e = (this.jdField_a_of_type_Int - 1);
+    if (this.g == 0) {
+      this.h = (this.b - 1);
     }
-    char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
-    int i = this.d;
-    this.d = (i + 1);
-    arrayOfChar[i] = Character.toLowerCase(paramChar);
+    char[] arrayOfChar = this.e;
+    int j = this.g;
+    this.g = (j + 1);
+    arrayOfChar[j] = Character.toLowerCase(paramChar);
   }
   
   private final Token b()
   {
-    if (this.d > 0)
+    if (this.g > 0)
     {
-      int i = Character.getType(this.jdField_a_of_type_ArrayOfChar[0]);
+      int j = Character.getType(this.e[0]);
       String str1;
-      if ((i != 1) && (i != 2))
+      if ((j != 1) && (j != 2))
       {
-        if (i != 5)
+        if (j != 5)
         {
-          if (i != 9) {
+          if (j != 9) {
             str1 = "other";
           } else {
             str1 = "num";
@@ -55,17 +55,17 @@ public final class ChineseTokenizer
       else {
         str1 = "en";
       }
-      String str2 = new String(this.jdField_a_of_type_ArrayOfChar, 0, this.d);
-      i = this.e;
-      return new Token(str2, i, this.d + i, str1);
+      String str2 = new String(this.e, 0, this.g);
+      j = this.h;
+      return new Token(str2, j, this.g + j, str1);
     }
     return null;
   }
   
   public final Token a()
   {
-    this.d = 0;
-    this.e = this.jdField_a_of_type_Int;
+    this.g = 0;
+    this.h = this.b;
     label210:
     do
     {
@@ -74,92 +74,92 @@ public final class ChineseTokenizer
       {
         do
         {
-          this.jdField_a_of_type_Int += 1;
-          if (this.jdField_b_of_type_Int >= this.c)
+          this.b += 1;
+          if (this.c >= this.d)
           {
-            this.c = this.jdField_a_of_type_JavaIoReader.read(this.jdField_b_of_type_ArrayOfChar);
-            this.jdField_b_of_type_Int = 0;
+            this.d = this.a.read(this.f);
+            this.c = 0;
           }
-          if (this.c == -1)
+          if (this.d == -1)
           {
-            this.f = -1;
+            this.i = -1;
             return b();
           }
-          char[] arrayOfChar = this.jdField_b_of_type_ArrayOfChar;
-          i = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int = (i + 1);
-          c1 = arrayOfChar[i];
-          i = Character.getType(c1);
-          if ((i == 1) || (i == 2)) {
+          char[] arrayOfChar = this.f;
+          j = this.c;
+          this.c = (j + 1);
+          c1 = arrayOfChar[j];
+          j = Character.getType(c1);
+          if ((j == 1) || (j == 2)) {
             break label280;
           }
-          if (i == 5) {
+          if (j == 5) {
             break label210;
           }
-          if (i == 9) {
+          if (j == 9) {
             break;
           }
-        } while (this.d <= 0);
+        } while (this.g <= 0);
         return b();
-        i = this.f;
-        if (i == -1)
+        j = this.i;
+        if (j == -1)
         {
-          this.f = 0;
+          this.i = 0;
         }
-        else if (i != 0)
+        else if (j != 0)
         {
-          this.f = 0;
-          if (this.d > 0)
+          this.i = 0;
+          if (this.g > 0)
           {
-            this.jdField_b_of_type_Int -= 1;
-            this.jdField_a_of_type_Int -= 1;
+            this.c -= 1;
+            this.b -= 1;
             return b();
           }
         }
         a(c1);
-      } while (this.d != 255);
+      } while (this.g != 255);
       return b();
-      int i = this.f;
-      if (i == -1)
+      int j = this.i;
+      if (j == -1)
       {
-        this.f = 2;
+        this.i = 2;
       }
-      else if (i != 2)
+      else if (j != 2)
       {
-        this.f = 2;
-        if (this.d > 0)
+        this.i = 2;
+        if (this.g > 0)
         {
-          this.jdField_b_of_type_Int -= 1;
-          this.jdField_a_of_type_Int -= 1;
+          this.c -= 1;
+          this.b -= 1;
           return b();
         }
       }
       a(c1);
       return b();
-      i = this.f;
-      if (i == -1)
+      j = this.i;
+      if (j == -1)
       {
-        this.f = 1;
+        this.i = 1;
       }
-      else if (i != 1)
+      else if (j != 1)
       {
-        this.f = 1;
-        if (this.d > 0)
+        this.i = 1;
+        if (this.g > 0)
         {
-          this.jdField_b_of_type_Int -= 1;
-          this.jdField_a_of_type_Int -= 1;
+          this.c -= 1;
+          this.b -= 1;
           return b();
         }
       }
       a(c1);
-    } while (this.d != 255);
+    } while (this.g != 255);
     label280:
     return b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.tokenizer.cn.ChineseTokenizer
  * JD-Core Version:    0.7.0.1
  */

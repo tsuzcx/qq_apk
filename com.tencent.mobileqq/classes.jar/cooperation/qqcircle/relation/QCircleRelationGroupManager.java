@@ -29,9 +29,9 @@ public class QCircleRelationGroupManager
 {
   private static final int BIT_FLAG = 1;
   private static final int DEF_GROUP_FLAG = 0;
-  private static final int FOLLOW_LOAD_SCENE = 1;
+  public static final int FOLLOW_LOAD_SCENE = 1;
   private static volatile QCircleRelationGroupManager INSTANCE;
-  private static final int INTERVAL_LOAD_SCENE = 0;
+  public static final int INTERVAL_LOAD_SCENE = 0;
   public static final String TAG = "RFL-QCircleAtGroupManager";
   private EntityManager mEntityManager;
   private final List<QCircleFriendEntity> mFriendEntityList = new ArrayList();
@@ -100,41 +100,6 @@ public class QCircleRelationGroupManager
     return null;
   }
   
-  private void deleteFriendEntity(String paramString)
-  {
-    long l;
-    try
-    {
-      l = Long.parseLong(paramString);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("delete friend uin: ");
-      localStringBuilder.append(paramString);
-      QLog.w("RFL-QCircleAtGroupManager", 1, localStringBuilder.toString(), localNumberFormatException);
-      l = 0L;
-    }
-    paramString = findFriendEntityList(l);
-    int i;
-    if (paramString == null) {
-      i = 0;
-    } else {
-      i = paramString.getGroupFlag();
-    }
-    if (hasRelationDBWrite(i))
-    {
-      QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[run] current not delete uin: ", Long.valueOf(l), " | hasGroupFlagType == false." });
-      return;
-    }
-    if (paramString != null)
-    {
-      this.mFriendEntityList.remove(paramString);
-      deleteFriendEntityToDB(paramString);
-      QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[deleteFriendEntity] delete uin: ", Long.valueOf(l) });
-    }
-  }
-  
   private void deleteFriendEntityToDB(QCircleFriendEntity paramQCircleFriendEntity)
   {
     ThreadManagerV2.excute(new QCircleRelationGroupManager.DeleteFriendDBTask(paramQCircleFriendEntity, getEntityManager()), 32, null, true);
@@ -185,13 +150,12 @@ public class QCircleRelationGroupManager
   private void handleFollowSceneLoadData(Map<String, List<NewRelationInfo>> paramMap)
   {
     paramMap = convertFriendList(paramMap);
-    int i;
-    if (paramMap == null) {
-      i = 0;
-    } else {
-      i = paramMap.size();
+    if (paramMap == null)
+    {
+      QLog.d("RFL-QCircleAtGroupManager", 1, "[handleFollowSceneLoadData] temp friend list should not be null.");
+      return;
     }
-    QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[handleFollowSceneLoadData] rsp new follow, page data count: ", Integer.valueOf(i) });
+    QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[handleFollowSceneLoadData] rsp new follow, page data count: ", Integer.valueOf(paramMap.size()) });
     saveFriendListToDB(false, updateCurrentFriendCache(paramMap));
   }
   
@@ -212,13 +176,6 @@ public class QCircleRelationGroupManager
       finally {}
     }
     return INSTANCE;
-  }
-  
-  private void loadRelationGroupData(int paramInt)
-  {
-    QCircleRelationModel localQCircleRelationModel = new QCircleRelationModel();
-    localQCircleRelationModel.setOnLoadAtRelationListener(new QCircleRelationGroupManager.1(this));
-    localQCircleRelationModel.loadRelationData(paramInt);
   }
   
   private String parseNickName(FeedCloudMeta.StRelationInfo paramStRelationInfo)
@@ -273,6 +230,11 @@ public class QCircleRelationGroupManager
   private List<QCircleFriendEntity> updateCurrentFriendCache(List<QCircleFriendEntity> paramList)
   {
     ArrayList localArrayList = new ArrayList();
+    if (paramList == null)
+    {
+      QLog.d("RFL-QCircleAtGroupManager", 1, "[updateCurrentFriendCache] list should not be null.");
+      return localArrayList;
+    }
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
@@ -284,11 +246,11 @@ public class QCircleRelationGroupManager
         if (localQCircleFriendEntity1.mUin == localQCircleFriendEntity2.mUin)
         {
           i = 1;
-          break label89;
+          break label104;
         }
       }
       int i = 0;
-      label89:
+      label104:
       if (i == 0)
       {
         QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[updateCurrentFriendCache] user uin: ", Long.valueOf(localQCircleFriendEntity1.mUin) });
@@ -308,6 +270,41 @@ public class QCircleRelationGroupManager
       return;
     }
     setCurrentFriendCache(localEntityManager.query(QCircleFriendEntity.class));
+  }
+  
+  public void deleteFriendEntity(String paramString)
+  {
+    long l;
+    try
+    {
+      l = Long.parseLong(paramString);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("delete friend uin: ");
+      localStringBuilder.append(paramString);
+      QLog.w("RFL-QCircleAtGroupManager", 1, localStringBuilder.toString(), localNumberFormatException);
+      l = 0L;
+    }
+    paramString = findFriendEntityList(l);
+    int i;
+    if (paramString == null) {
+      i = 0;
+    } else {
+      i = paramString.getGroupFlag();
+    }
+    if (hasRelationDBWrite(i))
+    {
+      QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[run] current not delete uin: ", Long.valueOf(l), " | hasGroupFlagType == false." });
+      return;
+    }
+    if (paramString != null)
+    {
+      this.mFriendEntityList.remove(paramString);
+      deleteFriendEntityToDB(paramString);
+      QLog.d("RFL-QCircleAtGroupManager", 1, new Object[] { "[deleteFriendEntity] delete uin: ", Long.valueOf(l) });
+    }
   }
   
   public Map<String, List<Entity>> getFriendGroupMap()
@@ -334,6 +331,13 @@ public class QCircleRelationGroupManager
     asyncInitFriendCache();
   }
   
+  public void loadRelationGroupData(int paramInt)
+  {
+    QCircleRelationModel localQCircleRelationModel = new QCircleRelationModel();
+    localQCircleRelationModel.setOnLoadAtRelationListener(new QCircleRelationGroupManager.1(this));
+    localQCircleRelationModel.loadRelationData(paramInt);
+  }
+  
   public void releaseCache()
   {
     this.mFriendEntityList.clear();
@@ -357,7 +361,7 @@ public class QCircleRelationGroupManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.relation.QCircleRelationGroupManager
  * JD-Core Version:    0.7.0.1
  */

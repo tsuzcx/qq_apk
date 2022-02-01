@@ -25,7 +25,7 @@ public class SubType0x118
   private static void a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
   {
     IQQReminderDataService localIQQReminderDataService = (IQQReminderDataService)paramQQAppInterface.getRuntimeService(IQQReminderDataService.class, "");
-    if (!((ActivateFriendsManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).a(paramMsgInfo.shMsgSeq))
+    if (!((ActivateFriendsManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS)).b(paramMsgInfo.shMsgSeq))
     {
       Object localObject = new submsgtype0x118.MsgBody();
       try
@@ -115,7 +115,7 @@ public class SubType0x118
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x118
  * JD-Core Version:    0.7.0.1
  */

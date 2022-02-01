@@ -15,15 +15,15 @@ class TroopConfessItemBuilder$1
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.items.isEmpty())) {
-      TroopConfessUtil.a(this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_ComTencentMobileqqConfessTroopConfessItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessTopicId(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.mTroopConfessMsg.confessorUin), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopConfess.getConfessToUin()));
+    if ((this.a.mTroopConfessMsg != null) && (this.a.mTroopConfessMsg.items != null) && (!this.a.mTroopConfessMsg.items.isEmpty())) {
+      TroopConfessUtil.a(this.b.d, this.b.e, 1, this.b.f.b, this.a.getConfessTopicId(), String.valueOf(this.a.mTroopConfessMsg.confessorUin), String.valueOf(this.a.getConfessToUin()));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TroopConfessItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

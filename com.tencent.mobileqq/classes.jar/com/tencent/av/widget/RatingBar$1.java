@@ -16,9 +16,9 @@ class RatingBar$1
       RatingBar localRatingBar = this.a;
       RatingBar.a(localRatingBar, localRatingBar.indexOfChild(paramView) + 1);
       localRatingBar = this.a;
-      localRatingBar.setStar(RatingBar.a(localRatingBar), true);
-      if (RatingBar.a(this.a) != null) {
-        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
+      localRatingBar.setStar(RatingBar.b(localRatingBar), true);
+      if (RatingBar.c(this.a) != null) {
+        RatingBar.c(this.a).a(RatingBar.d(this.a), RatingBar.b(this.a));
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

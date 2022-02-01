@@ -12,9 +12,9 @@ class MediaPreviewActivity$3
   
   public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.a != null)
+    if (this.a.e != null)
     {
-      paramAdapterView = this.a.a.a(paramInt);
+      paramAdapterView = this.a.e.a(paramInt);
       if ((paramAdapterView == null) || (paramAdapterView.a != 1)) {
         return false;
       }
@@ -25,7 +25,7 @@ class MediaPreviewActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.3
  * JD-Core Version:    0.7.0.1
  */

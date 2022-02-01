@@ -12,18 +12,18 @@ class UserActionCollector$1
   
   public void run()
   {
-    int i = this.this$0.i;
+    int i = this.this$0.s;
     try
     {
       int j;
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.a == 0)
       {
-        j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight() - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_ComTencentWidgetAbsListView.getContext()) - this.jdField_a_of_type_ComTencentWidgetAbsListView.getResources().getDimensionPixelOffset(2131298861);
+        j = this.b.getHeight() - ImmersiveUtils.getStatusBarHeight(this.b.getContext()) - this.b.getResources().getDimensionPixelOffset(2131299578);
         i = j;
       }
       else
       {
-        j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
+        j = this.b.getHeight();
         i = j;
       }
     }
@@ -32,14 +32,14 @@ class UserActionCollector$1
       AIOUtils.a("UserActionCollector", "calculte height error !", localException);
     }
     if (i > 0) {
-      this.this$0.i = i;
+      this.this$0.s = i;
     }
-    this.this$0.d();
+    this.this$0.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.UserActionCollector.1
  * JD-Core Version:    0.7.0.1
  */

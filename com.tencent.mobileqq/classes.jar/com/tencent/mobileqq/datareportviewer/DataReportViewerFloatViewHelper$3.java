@@ -13,17 +13,17 @@ class DataReportViewerFloatViewHelper$3
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
-    paramIntent = (ReportDataConfig)DataReportViewerFloatViewHelper.a(this.a).get(paramContext.actionName);
-    if ((paramIntent != null) && (paramIntent.b()))
+    paramIntent = (ReportDataConfig)DataReportViewerFloatViewHelper.c(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.c()))
     {
-      this.a.a();
+      this.a.b();
       DataReportViewerFloatViewHelper.a(this.a).a(paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewerFloatViewHelper.3
  * JD-Core Version:    0.7.0.1
  */

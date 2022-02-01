@@ -10,7 +10,7 @@ public class ADVideoAppUIPresenter
 {
   public boolean a;
   
-  private boolean a(DownloadInfo paramDownloadInfo, ADVideoAppDownloadData paramADVideoAppDownloadData)
+  private boolean c(DownloadInfo paramDownloadInfo, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
     if ((paramDownloadInfo != null) && (paramADVideoAppDownloadData != null) && (!TextUtils.isEmpty(paramDownloadInfo.e)) && (!TextUtils.isEmpty(paramDownloadInfo.c)) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.d)) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.d))) {
       return paramDownloadInfo.e.equals(paramADVideoAppDownloadData.d);
@@ -31,14 +31,14 @@ public class ADVideoAppUIPresenter
   
   public void a(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if (a(paramDownloadInfo, paramADVideoAppDownloadData)) {
-      paramADVideoAppDownloadData.a = 6;
+    if (c(paramDownloadInfo, paramADVideoAppDownloadData)) {
+      paramADVideoAppDownloadData.f = 6;
     }
   }
   
   void a(DownloadInfo paramDownloadInfo, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if (a(paramDownloadInfo, paramADVideoAppDownloadData)) {
+    if (c(paramDownloadInfo, paramADVideoAppDownloadData)) {
       c(paramADVideoAppDownloadData);
     }
   }
@@ -48,7 +48,7 @@ public class ADVideoAppUIPresenter
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.c = paramString1;
     localDownloadInfo.e = paramString2;
-    if (a(localDownloadInfo, paramADVideoAppDownloadData)) {
+    if (c(localDownloadInfo, paramADVideoAppDownloadData)) {
       a(paramADVideoAppDownloadData);
     }
   }
@@ -61,9 +61,9 @@ public class ADVideoAppUIPresenter
       while (paramList.hasNext())
       {
         DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        if (a(localDownloadInfo, paramADVideoAppDownloadData))
+        if (c(localDownloadInfo, paramADVideoAppDownloadData))
         {
-          paramADVideoAppDownloadData.a = 3;
+          paramADVideoAppDownloadData.f = 3;
           if ((TextUtils.isEmpty(paramADVideoAppDownloadData.c)) && (!TextUtils.isEmpty(localDownloadInfo.d))) {
             paramADVideoAppDownloadData.c = localDownloadInfo.d;
           }
@@ -72,7 +72,7 @@ public class ADVideoAppUIPresenter
             this.a = true;
             a();
           }
-          a(paramADVideoAppDownloadData, localDownloadInfo.f);
+          a(paramADVideoAppDownloadData, localDownloadInfo.t);
         }
       }
     }
@@ -82,7 +82,7 @@ public class ADVideoAppUIPresenter
   
   void b(DownloadInfo paramDownloadInfo, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if (a(paramDownloadInfo, paramADVideoAppDownloadData)) {
+    if (c(paramDownloadInfo, paramADVideoAppDownloadData)) {
       b(paramADVideoAppDownloadData);
     }
   }
@@ -92,7 +92,7 @@ public class ADVideoAppUIPresenter
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.c = paramString1;
     localDownloadInfo.e = paramString2;
-    if (a(localDownloadInfo, paramADVideoAppDownloadData)) {
+    if (c(localDownloadInfo, paramADVideoAppDownloadData)) {
       d(paramADVideoAppDownloadData);
     }
   }
@@ -103,7 +103,7 @@ public class ADVideoAppUIPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppUIPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public abstract class BaseJumpScheme
     localIntent.putExtra("tab_index", FrameControllerUtil.a);
     localIntent.putExtra("fragment_id", 1);
     localIntent.setFlags(335544320);
-    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
+    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.d, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "jumpPendingIntent");
     return paramPushComponent;
   }
@@ -49,16 +49,16 @@ public abstract class BaseJumpScheme
   public final PendingIntent c(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
-    if (Intrinsics.areEqual(paramPushComponent.jdField_d_of_type_JavaLangString, "")) {
+    if (Intrinsics.areEqual(paramPushComponent.h, "")) {
       return e(paramPushComponent);
     }
     Context localContext = (Context)BaseApplication.context;
     Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramPushComponent.jdField_d_of_type_JavaLangString);
+    localIntent.putExtra("url", paramPushComponent.h);
     localIntent.addFlags(268435456);
     PushUtil.a(localIntent, paramPushComponent);
-    localIntent.putExtra("param_notifyid", paramPushComponent.jdField_d_of_type_Int);
-    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
+    localIntent.putExtra("param_notifyid", paramPushComponent.d);
+    paramPushComponent = PendingIntent.getActivity(localContext, paramPushComponent.d, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "jumpPendingIntent");
     return paramPushComponent;
   }
@@ -67,16 +67,16 @@ public abstract class BaseJumpScheme
   public final PendingIntent d(@NotNull PushComponent paramPushComponent)
   {
     Intrinsics.checkParameterIsNotNull(paramPushComponent, "pushComponent");
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramPushComponent.jdField_d_of_type_JavaLangString));
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramPushComponent.h));
     localIntent.setFlags(268435456);
-    paramPushComponent = PendingIntent.getActivity((Context)BaseApplication.context, paramPushComponent.jdField_d_of_type_Int, localIntent, 134217728);
+    paramPushComponent = PendingIntent.getActivity((Context)BaseApplication.context, paramPushComponent.d, localIntent, 134217728);
     Intrinsics.checkExpressionValueIsNotNull(paramPushComponent, "PendingIntent.getActivit…tent.FLAG_UPDATE_CURRENT)");
     return paramPushComponent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.BaseJumpScheme
  * JD-Core Version:    0.7.0.1
  */

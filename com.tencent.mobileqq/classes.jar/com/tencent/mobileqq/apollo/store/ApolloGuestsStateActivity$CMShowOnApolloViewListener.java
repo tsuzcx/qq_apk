@@ -17,11 +17,7 @@ class ApolloGuestsStateActivity$CMShowOnApolloViewListener
     this.a = new SoftReference(paramApolloGuestsStateActivity);
   }
   
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloGuestsStateActivity", 2, "apollo view is Ready.");
@@ -46,10 +42,14 @@ class ApolloGuestsStateActivity$CMShowOnApolloViewListener
       localApolloGuestsStateActivity.mManWidth = paramInt1;
     }
   }
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public void a(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.CMShowOnApolloViewListener
  * JD-Core Version:    0.7.0.1
  */

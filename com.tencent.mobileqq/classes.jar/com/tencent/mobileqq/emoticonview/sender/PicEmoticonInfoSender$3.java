@@ -50,7 +50,7 @@ final class PicEmoticonInfoSender$3
         }
         return;
       }
-      EmotionUtils.a(this.val$context, 2131689916, 0);
+      EmotionUtils.a(this.val$context, 2131886557, 0);
       paramEmoticonPackage = ((IEmosmService)QRoute.api(IEmosmService.class)).getChatActivityHander(this.val$app);
       if (paramEmoticonPackage != null)
       {
@@ -59,13 +59,13 @@ final class PicEmoticonInfoSender$3
       }
       return;
     }
-    EmotionUtils.a(this.val$context, 2131689932);
+    EmotionUtils.a(this.val$context, 2131886573);
     ReportController.b(this.val$app, "CliOper", "", "", "ep_mall", "0X8005C16", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.sender.PicEmoticonInfoSender.3
  * JD-Core Version:    0.7.0.1
  */

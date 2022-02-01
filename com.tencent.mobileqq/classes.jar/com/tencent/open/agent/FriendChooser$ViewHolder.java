@@ -5,13 +5,13 @@ import android.widget.TextView;
 
 class FriendChooser$ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
   TextView b;
+  ImageView c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

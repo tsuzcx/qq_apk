@@ -13,14 +13,14 @@ final class ThemeBackground$6
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
-    localObject = ThemeBackground.a((AppRuntime)localObject, ((AppRuntime)localObject).getApplication().getApplicationContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    Object localObject = this.a;
+    localObject = ThemeBackground.a((AppRuntime)localObject, ((AppRuntime)localObject).getApplication().getApplicationContext(), this.b, this.c, this.d);
     ThreadManagerV2.getUIHandlerV2().post(new ThemeBackground.6.1(this, (ThemeBackground)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeBackground.6
  * JD-Core Version:    0.7.0.1
  */

@@ -18,19 +18,19 @@ class TroopRelevantHandler$TmiCallBackForTroopMemberNewLevel
   implements TroopManager.ITroopMemberInfoCallBack
 {
   public BaseChatItemLayout a;
-  public TroopInfo a;
-  public String a;
+  public String b;
+  public TroopInfo c;
   
   private TroopRelevantHandler$TmiCallBackForTroopMemberNewLevel(TroopRelevantHandler paramTroopRelevantHandler) {}
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.b)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo == null) {
+      if (this.c == null) {
         return;
       }
-      if (!this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)) {
+      if (!this.b.equals(paramTroopMemberInfo.memberuin)) {
         return;
       }
       int j = paramTroopMemberInfo.newRealLevel;
@@ -47,11 +47,11 @@ class TroopRelevantHandler$TmiCallBackForTroopMemberNewLevel
         ((StringBuilder)localObject).append(paramTroopMemberInfo.newRealLevel);
         QLog.d("TroopRelevantHandler", 2, ((StringBuilder)localObject).toString());
       }
-      paramTroopMemberInfo = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getTroopMemberRankItem(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, paramTroopMemberInfo.memberuin, i, paramTroopMemberInfo.level, paramTroopMemberInfo.mUniqueTitle, paramTroopMemberInfo.mHonorRichFlag);
+      paramTroopMemberInfo = ((ITroopMemberLevelUtilsApi)QRoute.api(ITroopMemberLevelUtilsApi.class)).getTroopMemberRankItem(this.c, paramTroopMemberInfo.memberuin, i, paramTroopMemberInfo.level, paramTroopMemberInfo.mUniqueTitle, paramTroopMemberInfo.mHonorRichFlag);
       if (paramTroopMemberInfo == null) {
         return;
       }
-      if ((TroopRelevantHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler).jdField_a_of_type_Int == 1) && (AnonymousChatHelper.a().a(TroopRelevantHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler).jdField_a_of_type_JavaLangString))) {
+      if ((TroopRelevantHandler.f(this.d).a == 1) && (AnonymousChatHelper.a().a(TroopRelevantHandler.g(this.d).b))) {
         i = 1;
       } else {
         i = 0;
@@ -59,21 +59,21 @@ class TroopRelevantHandler$TmiCallBackForTroopMemberNewLevel
       if (i != 0)
       {
         i = AnonymousChatHelper.e;
-        j = TroopRankConfig.a().jdField_a_of_type_Int;
-        paramTroopMemberInfo.a = new int[] { j, j };
-        paramTroopMemberInfo.b = new int[] { j, j };
-        paramTroopMemberInfo.d = i;
-        paramTroopMemberInfo.c = i;
+        j = TroopRankConfig.a().a;
+        paramTroopMemberInfo.d = new int[] { j, j };
+        paramTroopMemberInfo.e = new int[] { j, j };
+        paramTroopMemberInfo.i = i;
+        paramTroopMemberInfo.h = i;
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
+      Object localObject = this.a;
       if (localObject != null)
       {
         localObject = ((BaseChatItemLayout)localObject).a(NickNameChatItemLayoutProcessor.i);
         if ((localObject != null) && (((BaseChatItemLayoutViewBasicAbility)localObject).checkViewNonNull()))
         {
           ((BaseChatItemLayoutViewBasicAbility)localObject).setData(new Object[] { paramTroopMemberInfo });
-          ((BaseChatItemLayoutViewBasicAbility)localObject).setOnClickListener(TroopRelevantHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler));
-          ((BaseChatItemLayoutViewBasicAbility)localObject).setTag(Integer.valueOf(2131364561));
+          ((BaseChatItemLayoutViewBasicAbility)localObject).setOnClickListener(TroopRelevantHandler.h(this.d));
+          ((BaseChatItemLayoutViewBasicAbility)localObject).setTag(Integer.valueOf(2131430620));
         }
       }
     }
@@ -81,7 +81,7 @@ class TroopRelevantHandler$TmiCallBackForTroopMemberNewLevel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.TroopRelevantHandler.TmiCallBackForTroopMemberNewLevel
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ import java.util.List;
 class FeedCommentBackgroundSyncer$SyncAllCommentFragment
   extends JobSegment<FeedCommentSync, CommentListPageLoader.GetFeedCommentEvent>
 {
-  private int jdField_a_of_type_Int;
-  private CommentListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
-  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private int a;
+  private List<CommentEntry> b = new ArrayList();
+  private CommentListPageLoader c;
   
   protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader = new CommentListPageLoader(paramFeedCommentSync, new FeedCommentBackgroundSyncer.SyncAllCommentFragment.1(this, paramJobContext, paramFeedCommentSync));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
+    this.c = new CommentListPageLoader(paramFeedCommentSync, new FeedCommentBackgroundSyncer.SyncAllCommentFragment.1(this, paramJobContext, paramFeedCommentSync));
+    this.c.c();
   }
 }
 

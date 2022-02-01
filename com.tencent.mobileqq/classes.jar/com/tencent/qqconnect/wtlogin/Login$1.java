@@ -61,7 +61,7 @@ class Login$1
       if (localErrMsg != null) {
         localBundle.putString("OTHER_ERROR", localErrMsg.getMessage());
       } else {
-        localBundle.putString("OTHER_ERROR", this.a.getResources().getString(2131694647));
+        localBundle.putString("OTHER_ERROR", this.a.getResources().getString(2131892333));
       }
       if (this.a.autoFillInPasswd) {
         localBundle.putBoolean("pwdblank", true);
@@ -153,7 +153,7 @@ class Login$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.1
  * JD-Core Version:    0.7.0.1
  */

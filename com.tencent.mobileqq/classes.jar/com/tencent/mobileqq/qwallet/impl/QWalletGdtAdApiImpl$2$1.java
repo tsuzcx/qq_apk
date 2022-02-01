@@ -26,7 +26,7 @@ class QWalletGdtAdApiImpl$2$1
       ((StringBuilder)localObject).append(",bundle:");
       ((StringBuilder)localObject).append(paramBundle);
       ((StringBuilder)localObject).append(",cost:");
-      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.a.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getServerTimeMillis() - this.a.b);
       QLog.d("QWalletGdtAdApi", 2, ((StringBuilder)localObject).toString());
     }
     try
@@ -39,8 +39,8 @@ class QWalletGdtAdApiImpl$2$1
         paramInt = paramBundle.ret.get();
         if (paramInt == 0)
         {
-          QWalletGdtAdApiImpl.access$302(this.a.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl, paramBundle.pv_flag.get());
-          QWalletGdtAdApiImpl.access$800(this.a.jdField_a_of_type_ComTencentMobileqqQwalletImplQWalletGdtAdApiImpl, paramBundle);
+          QWalletGdtAdApiImpl.access$302(this.a.c, paramBundle.pv_flag.get());
+          QWalletGdtAdApiImpl.access$800(this.a.c, paramBundle);
           if (QLog.isColorLevel())
           {
             localObject = new StringBuilder();
@@ -73,7 +73,7 @@ class QWalletGdtAdApiImpl$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletGdtAdApiImpl.2.1
  * JD-Core Version:    0.7.0.1
  */

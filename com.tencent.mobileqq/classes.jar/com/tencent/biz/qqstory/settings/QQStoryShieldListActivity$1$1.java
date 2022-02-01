@@ -13,34 +13,34 @@ class QQStoryShieldListActivity$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager == null) {
+    if (this.b.a.f == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+    Object localObject = this.b.a.f;
     boolean bool;
-    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_Int == 2) {
+    if (this.b.a.a == 2) {
       bool = true;
     } else {
       bool = false;
     }
-    localObject = ((QQStoryManager)localObject).b(bool).iterator();
+    localObject = ((QQStoryManager)localObject).k(bool).iterator();
     QQStoryUserInfo localQQStoryUserInfo;
     while (((Iterator)localObject).hasNext())
     {
       localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.remove(localQQStoryUserInfo);
+      if (this.b.a.f.i != null) {
+        this.b.a.f.i.remove(localQQStoryUserInfo);
       }
     }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.a.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.persistOrReplace(localQQStoryUserInfo);
+      if (this.b.a.f.i != null) {
+        this.b.a.f.i.persistOrReplace(localQQStoryUserInfo);
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b != null) {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
+      if (this.b.a.f.A != null) {
+        this.b.a.f.A.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
       }
     }
   }

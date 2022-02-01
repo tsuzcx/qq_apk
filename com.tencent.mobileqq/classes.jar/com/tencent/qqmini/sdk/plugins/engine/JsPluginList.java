@@ -152,6 +152,45 @@ public class JsPluginList
     return null;
   }
   
+  public static MethodItem getMethodItem(Class paramClass, String paramString)
+  {
+    if (paramClass != null)
+    {
+      if (paramString == null) {
+        return null;
+      }
+      Object localObject = paramClass.getDeclaredMethods();
+      int k = localObject.length;
+      int i = 0;
+      while (i < k)
+      {
+        Method localMethod = localObject[i];
+        if (localMethod.isAnnotationPresent(JsEvent.class))
+        {
+          JsEvent localJsEvent = (JsEvent)localMethod.getAnnotation(JsEvent.class);
+          String[] arrayOfString = localJsEvent.value();
+          int m = arrayOfString.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (arrayOfString[j].equals(paramString)) {
+              return new MethodItem(localMethod, localJsEvent.isSync());
+            }
+            j += 1;
+          }
+        }
+        i += 1;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed to getMethod in JsPlugin ");
+      ((StringBuilder)localObject).append(paramClass);
+      ((StringBuilder)localObject).append(" for event ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.w("JsPluginList", ((StringBuilder)localObject).toString());
+    }
+    return null;
+  }
+  
   public static List<Class> getPreloadPlugins(boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
@@ -205,7 +244,7 @@ public class JsPluginList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.JsPluginList
  * JD-Core Version:    0.7.0.1
  */

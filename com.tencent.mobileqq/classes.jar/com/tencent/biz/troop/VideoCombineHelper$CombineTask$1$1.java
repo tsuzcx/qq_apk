@@ -20,23 +20,23 @@ class VideoCombineHelper$CombineTask$1$1
       QLog.d(".troop.VideoCombineHelper", 2, localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("combineMp4_M4aTime:");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.a);
       QLog.d(".troop.trace_video_combine", 2, localStringBuilder.toString());
     }
     paramString1 = new File(paramString1);
     if ((paramBoolean) && (paramString1.exists()))
     {
       long l = System.currentTimeMillis();
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.a.a(paramString1, this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.a.b, new VideoCombineHelper.CombineTask.1.1.1(this, l));
+      this.b.b.a(paramString1, this.b.b.c, new VideoCombineHelper.CombineTask.1.1.1(this, l));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.a.d = paramString2;
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.a.a.a(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineTask$1.a);
+    this.b.b.i = paramString2;
+    this.b.b.f.a(this.b.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.1.1
  * JD-Core Version:    0.7.0.1
  */

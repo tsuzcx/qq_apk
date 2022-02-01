@@ -18,12 +18,7 @@ import com.tencent.util.Pair;
 public class MsgProxyBannerProcessor
   extends BaseBannerProcessor
 {
-  public static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.K;
-  }
+  public static final int a = BannerTypeCollections.L;
   
   public MsgProxyBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -37,8 +32,8 @@ public class MsgProxyBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130841363));
+    paramBanner = new TipsBar(this.f);
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(2130842164));
     paramBanner.b(true);
     paramBanner.setOnClickListener(new MsgProxyBannerProcessor.1(this));
     paramBanner.setCloseListener(new MsgProxyBannerProcessor.2(this));
@@ -54,43 +49,43 @@ public class MsgProxyBannerProcessor
     Object localObject;
     if (paramMessage.what == 3000)
     {
-      paramBanner.a.setVisibility(0);
+      paramBanner.c.setVisibility(0);
       paramMessage = (Pair)paramMessage.obj;
-      localObject = (TipsBar)paramBanner.a;
+      localObject = (TipsBar)paramBanner.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)paramMessage.second);
-      localStringBuilder.append(HardCodeUtil.a(2131701141));
+      localStringBuilder.append(HardCodeUtil.a(2131899158));
       ((TipsBar)localObject).setTipsText(Html.fromHtml(localStringBuilder.toString()));
-      paramBanner.a.setTag(paramMessage);
+      paramBanner.c.setTag(paramMessage);
       return;
     }
     if (paramMessage.what == 3001) {
       if (paramMessage.obj != null)
       {
         paramMessage = (Long)paramMessage.obj;
-        localObject = (Pair)paramBanner.a.getTag();
+        localObject = (Pair)paramBanner.c.getTag();
         if ((localObject != null) && (((Long)((Pair)localObject).first).equals(paramMessage)))
         {
-          paramBanner.a.setVisibility(8);
-          BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+          paramBanner.c.setVisibility(8);
+          BannerManager.a().a(a, 0, null);
         }
       }
       else
       {
-        paramBanner.a.setVisibility(8);
-        BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+        paramBanner.c.setVisibility(8);
+        BannerManager.a().a(a, 0, null);
       }
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MsgProxyBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

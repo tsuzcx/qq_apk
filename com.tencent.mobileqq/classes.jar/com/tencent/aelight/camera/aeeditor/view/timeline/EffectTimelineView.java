@@ -20,24 +20,24 @@ public class EffectTimelineView
   implements IDragDropScrollListener, IDragView, TimelineListener
 {
   public static long a = 1000L;
-  private float jdField_a_of_type_Float = 0.0F;
-  protected int a;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  protected IStateChangeListener a;
-  protected IValueChangeListener a;
-  protected ScaleAdapter a;
-  protected TimeLineViewListener a;
-  private boolean jdField_a_of_type_Boolean = false;
-  protected long b;
-  private boolean b;
+  protected long b = 0L;
   protected long c = 0L;
   protected long d = 0L;
   protected long e = 0L;
   protected long f = 0L;
   protected long g = 0L;
-  private long h = -1L;
-  private long i = -1L;
-  private long j = 0L;
+  protected int h = 0;
+  protected ScaleAdapter i;
+  protected IValueChangeListener j;
+  protected IStateChangeListener k;
+  protected TimeLineViewListener l;
+  private PointF q;
+  private boolean r = false;
+  private boolean s = false;
+  private long t = -1L;
+  private long u = -1L;
+  private float v = 0.0F;
+  private long w = 0L;
   
   public EffectTimelineView(@NonNull Context paramContext)
   {
@@ -52,79 +52,66 @@ public class EffectTimelineView
   public EffectTimelineView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
     setTimelineListener(this);
-  }
-  
-  public int a()
-  {
-    return d();
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
   }
   
   public void a()
   {
     long l1 = this.c;
-    long l2 = this.j;
+    long l2 = this.w;
     this.e = (l1 - l2);
-    this.d = (this.jdField_b_of_type_Long - l2);
+    this.d = (this.b - l2);
   }
   
   protected void a(float paramFloat)
   {
     super.a(paramFloat);
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener != null)
+    this.s = true;
+    if (this.j != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter;
+      localObject = this.i;
       if (localObject != null)
       {
-        this.j = ((ScaleAdapter)localObject).a(paramFloat);
-        long l1 = this.d + this.j;
-        if ((paramFloat < this.jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a()))
+        this.w = ((ScaleAdapter)localObject).b(paramFloat);
+        long l1 = this.d + this.w;
+        if ((paramFloat < this.v) && (this.j.b()))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-          this.e = (this.c - this.j);
+          this.j.a();
+          this.e = (this.c - this.w);
         }
-        else if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b()))
+        else if ((paramFloat > this.v) && (this.j.c()))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-          this.e = (this.c - this.j);
+          this.j.a();
+          this.e = (this.c - this.w);
         }
         else
         {
-          long l2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a(this, l1);
+          long l2 = this.j.a(this, l1);
           if (l2 >= 0L)
           {
-            this.jdField_b_of_type_Long = l2;
-            this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a(this);
+            this.b = l2;
+            this.j.a(this);
           }
         }
-        this.jdField_a_of_type_Float = paramFloat;
+        this.v = paramFloat;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("handleLeftSliderMove. moveX:");
         ((StringBuilder)localObject).append(paramFloat);
         ((StringBuilder)localObject).append(". scrollValue:");
-        ((StringBuilder)localObject).append(this.j);
+        ((StringBuilder)localObject).append(this.w);
         ((StringBuilder)localObject).append(". raw startValue:");
         ((StringBuilder)localObject).append(l1);
         ((StringBuilder)localObject).append(". adjusted value:");
-        ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+        ((StringBuilder)localObject).append(this.b);
         Log.i("miles", ((StringBuilder)localObject).toString());
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener;
+    Object localObject = this.l;
     if (localObject != null)
     {
-      ScaleAdapter localScaleAdapter = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter;
+      ScaleAdapter localScaleAdapter = this.i;
       if (localScaleAdapter != null) {
-        ((TimeLineViewListener)localObject).a(this, this.jdField_b_of_type_Long, localScaleAdapter.a(paramFloat));
+        ((TimeLineViewListener)localObject).a(this, this.b, localScaleAdapter.b(paramFloat));
       }
     }
   }
@@ -135,94 +122,149 @@ public class EffectTimelineView
   
   public void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener;
+    Object localObject = this.j;
     if (localObject != null)
     {
       ((IValueChangeListener)localObject).a();
-      long l1 = this.jdField_b_of_type_Long;
-      long l2 = this.j;
+      long l1 = this.b;
+      long l2 = this.w;
       this.d = (l1 - l2);
       this.e = (this.c - l2);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener;
+    localObject = this.l;
     if (localObject != null) {
-      ((TimeLineViewListener)localObject).a(this, this.jdField_b_of_type_Long, this.c, this.jdField_a_of_type_Int, paramBoolean);
+      ((TimeLineViewListener)localObject).a(this, this.b, this.c, this.h, paramBoolean);
     }
-    if (a()) {
+    if (c()) {
       bringToFront();
     }
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return d();
-  }
-  
-  public long b()
-  {
-    return this.c;
+    this.s = false;
   }
   
   public void b()
   {
-    this.d = this.jdField_b_of_type_Long;
+    this.d = this.b;
     this.e = this.c;
   }
   
   protected void b(float paramFloat)
   {
     super.b(paramFloat);
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener != null)
+    this.s = true;
+    if (this.j != null)
     {
-      this.j = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramFloat);
-      long l1 = this.e + this.j;
-      if ((paramFloat < this.jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a()))
+      this.w = this.i.b(paramFloat);
+      long l1 = this.e + this.w;
+      if ((paramFloat < this.v) && (this.j.b()))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-        this.e = (this.c - this.j);
+        this.j.a();
+        this.e = (this.c - this.w);
       }
-      else if ((paramFloat > this.jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b()))
+      else if ((paramFloat > this.v) && (this.j.c()))
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a();
-        this.e = (this.c - this.j);
+        this.j.a();
+        this.e = (this.c - this.w);
       }
       else
       {
-        long l2 = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.b(this, l1);
+        long l2 = this.j.b(this, l1);
         if (l2 >= 0L)
         {
           this.c = l2;
-          this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener.a(this);
+          this.j.a(this);
         }
       }
-      this.jdField_a_of_type_Float = paramFloat;
+      this.v = paramFloat;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleRightSliderMove. moveX:");
       ((StringBuilder)localObject).append(paramFloat);
       ((StringBuilder)localObject).append(". scrollValue:");
-      ((StringBuilder)localObject).append(this.j);
+      ((StringBuilder)localObject).append(this.w);
       ((StringBuilder)localObject).append(". raw endValue:");
       ((StringBuilder)localObject).append(l1);
       ((StringBuilder)localObject).append(". adjusted value:");
       ((StringBuilder)localObject).append(this.c);
       Log.i("miles", ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener;
+    Object localObject = this.l;
     if (localObject != null) {
-      ((TimeLineViewListener)localObject).b(this, this.c, this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter.a(paramFloat));
+      ((TimeLineViewListener)localObject).b(this, this.c, this.i.b(paramFloat));
     }
   }
   
-  public long c()
+  protected boolean c()
   {
-    return jdField_a_of_type_Long;
+    return true;
+  }
+  
+  public int getBottomSpace()
+  {
+    return 0;
+  }
+  
+  public int getContentType()
+  {
+    return 0;
+  }
+  
+  public long getEndValue()
+  {
+    return this.c;
+  }
+  
+  public int getHorizontalScrollOffset()
+  {
+    return 0;
+  }
+  
+  public int getLeftSpace()
+  {
+    return getContentMargin();
+  }
+  
+  public long getLength()
+  {
+    return this.c - this.b;
+  }
+  
+  public long getMaxEndValue()
+  {
+    return this.u;
+  }
+  
+  public long getMinStartValue()
+  {
+    return this.t;
+  }
+  
+  public long getMinValue()
+  {
+    return a;
+  }
+  
+  public int getRightSpace()
+  {
+    return getContentMargin();
+  }
+  
+  public PointF getStartTouchPoint()
+  {
+    return this.q;
+  }
+  
+  public long getStartValue()
+  {
+    return this.b;
+  }
+  
+  public int getTopSpace()
+  {
+    return 0;
+  }
+  
+  public int getTrackIndex()
+  {
+    return this.h;
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
@@ -233,7 +275,7 @@ public class EffectTimelineView
     localStringBuilder.append(paramMotionEvent);
     Log.i("EffectTimelineView", localStringBuilder.toString());
     if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramMotionEvent.getX(), paramMotionEvent.getY());
+      this.q = new PointF(paramMotionEvent.getX(), paramMotionEvent.getY());
     }
     return super.onTouchEvent(paramMotionEvent);
   }
@@ -245,39 +287,39 @@ public class EffectTimelineView
   
   public void setMaxEndValue(long paramLong)
   {
-    this.i = paramLong;
+    this.u = paramLong;
   }
   
   public void setMinBlockDuration(long paramLong)
   {
-    jdField_a_of_type_Long = paramLong;
+    a = paramLong;
   }
   
   public void setMinStartValue(long paramLong)
   {
-    this.h = paramLong;
+    this.t = paramLong;
   }
   
   public void setScaleModel(ScaleAdapter paramScaleAdapter)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimebarScaleScaleAdapter = paramScaleAdapter;
+    this.i = paramScaleAdapter;
   }
   
   public void setSelected(boolean paramBoolean)
   {
     super.setSelected(paramBoolean);
-    if ((paramBoolean) && (a())) {
+    if ((paramBoolean) && (c())) {
       bringToFront();
     }
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (this.r == paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIStateChangeListener;
+    this.r = paramBoolean;
+    Object localObject = this.k;
     if (localObject != null) {
       ((IStateChangeListener)localObject).a(this, paramBoolean);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener;
+    localObject = this.l;
     if (localObject != null) {
       ((TimeLineViewListener)localObject).a(paramBoolean, this);
     }
@@ -285,32 +327,32 @@ public class EffectTimelineView
   
   public void setStartValue(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void setStateChangeListener(IStateChangeListener paramIStateChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIStateChangeListener = paramIStateChangeListener;
+    this.k = paramIStateChangeListener;
   }
   
   public void setTimeLineViewListener(TimeLineViewListener paramTimeLineViewListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewTimelineTimeLineViewListener = paramTimeLineViewListener;
+    this.l = paramTimeLineViewListener;
   }
   
   public void setTrackIndex(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void setValueChangeListener(IValueChangeListener paramIValueChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIValueChangeListener = paramIValueChangeListener;
+    this.j = paramIValueChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.timeline.EffectTimelineView
  * JD-Core Version:    0.7.0.1
  */

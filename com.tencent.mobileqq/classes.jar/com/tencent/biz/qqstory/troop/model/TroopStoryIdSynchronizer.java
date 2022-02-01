@@ -19,36 +19,36 @@ public class TroopStoryIdSynchronizer
   implements IEventReceiver
 {
   public int a;
-  public long a;
-  public GetTroopStoryListHandler a;
-  public String a;
-  public List<TroopStoryItemInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
+  public GetTroopStoryListHandler b;
   public int c;
-  public boolean c;
   public int d;
-  public boolean d;
+  public boolean e;
+  public boolean f;
+  public List<TroopStoryItemInfo> g;
+  public boolean h;
+  public String i;
+  public String j;
+  public int k;
+  public boolean l;
+  public long m;
   
   public TroopStoryIdSynchronizer.DayItem a(int paramInt)
   {
-    int j;
-    for (int i = 0; paramInt > 0; i = j)
+    int i2;
+    for (int i1 = 0; paramInt > 0; i1 = i2)
     {
-      TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.g.get(paramInt);
       if (localTroopStoryItemInfo.itemType == 1)
       {
         TroopStoryIdSynchronizer.DayItem localDayItem = new TroopStoryIdSynchronizer.DayItem();
-        localDayItem.jdField_a_of_type_Int = localTroopStoryItemInfo.publishCount;
-        localDayItem.jdField_a_of_type_JavaLangString = localTroopStoryItemInfo.feedId;
-        localDayItem.jdField_b_of_type_Int = (localDayItem.jdField_a_of_type_Int - i);
+        localDayItem.a = localTroopStoryItemInfo.publishCount;
+        localDayItem.c = localTroopStoryItemInfo.feedId;
+        localDayItem.b = (localDayItem.a - i1);
         return localDayItem;
       }
-      j = i;
+      i2 = i1;
       if (localTroopStoryItemInfo.itemType == 2) {
-        j = i + 1;
+        i2 = i1 + 1;
       }
       paramInt -= 1;
     }
@@ -57,46 +57,46 @@ public class TroopStoryIdSynchronizer
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return;
     }
-    this.jdField_a_of_type_Int = 1;
+    this.a = 1;
     Object localObject1;
     Object localObject2;
-    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilList.size() - 2)
+    if (this.c == this.g.size() - 2)
     {
-      if (!this.jdField_c_of_type_Boolean)
+      if (!this.h)
       {
-        this.jdField_c_of_type_Boolean = true;
-        if (this.jdField_d_of_type_Int == -2147483648)
+        this.h = true;
+        if (this.k == -2147483648)
         {
           localObject1 = (StoryConfigManager)SuperManager.a(10);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("TROOP_STORY_COOKIE");
-          ((StringBuilder)localObject2).append(String.valueOf(this.jdField_a_of_type_Long));
-          this.jdField_d_of_type_Int = ((Integer)((StoryConfigManager)localObject1).b(((StringBuilder)localObject2).toString(), Integer.valueOf(0))).intValue();
+          ((StringBuilder)localObject2).append(String.valueOf(this.m));
+          this.k = ((Integer)((StoryConfigManager)localObject1).c(((StringBuilder)localObject2).toString(), Integer.valueOf(0))).intValue();
         }
-        this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetTroopStoryListHandler.a(this.jdField_a_of_type_Long, this.jdField_d_of_type_Int);
+        this.b.a(this.m, this.k);
       }
     }
     else
     {
-      int j = this.jdField_b_of_type_Int + 1;
-      int i = j + 10;
-      if (i >= this.jdField_a_of_type_JavaUtilList.size() - 1) {
-        i = this.jdField_a_of_type_JavaUtilList.size() - 2;
+      int i2 = this.c + 1;
+      int i1 = i2 + 10;
+      if (i1 >= this.g.size() - 1) {
+        i1 = this.g.size() - 2;
       }
-      a(i, j);
+      a(i1, i2);
       ArrayList localArrayList = new ArrayList();
-      for (localObject2 = null; j <= i; localObject2 = localObject1)
+      for (localObject2 = null; i2 <= i1; localObject2 = localObject1)
       {
-        TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(j);
+        TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.g.get(i2);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject2 = a(j);
+          localObject2 = a(i2);
           localObject1 = localObject2;
-          if (!e) {
+          if (!n) {
             if (localObject2 != null) {
               localObject1 = localObject2;
             } else {
@@ -106,53 +106,53 @@ public class TroopStoryIdSynchronizer
         }
         if (localTroopStoryItemInfo.itemType == 2)
         {
-          localTroopStoryItemInfo.dayVideoCount = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int;
-          localTroopStoryItemInfo.feedId = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_JavaLangString;
-          int k = ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int;
-          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int = (k - 1);
-          localTroopStoryItemInfo.dayVideoIndex = k;
+          localTroopStoryItemInfo.dayVideoCount = ((TroopStoryIdSynchronizer.DayItem)localObject1).a;
+          localTroopStoryItemInfo.feedId = ((TroopStoryIdSynchronizer.DayItem)localObject1).c;
+          int i3 = ((TroopStoryIdSynchronizer.DayItem)localObject1).b;
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).b = (i3 - 1);
+          localTroopStoryItemInfo.dayVideoIndex = i3;
           localArrayList.add(0, localTroopStoryItemInfo);
         }
         else if (localTroopStoryItemInfo.itemType == 1)
         {
           localObject1 = new TroopStoryIdSynchronizer.DayItem();
-          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int = localTroopStoryItemInfo.publishCount;
-          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_JavaLangString = localTroopStoryItemInfo.feedId;
-          ((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_b_of_type_Int = (((TroopStoryIdSynchronizer.DayItem)localObject1).jdField_a_of_type_Int - 1);
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).a = localTroopStoryItemInfo.publishCount;
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).c = localTroopStoryItemInfo.feedId;
+          ((TroopStoryIdSynchronizer.DayItem)localObject1).b = (((TroopStoryIdSynchronizer.DayItem)localObject1).a - 1);
         }
-        j += 1;
+        i2 += 1;
       }
-      localObject1 = new GetTroopStoryListHandler.GetTroopStoryListEvent(this.jdField_a_of_type_JavaLangString, new ErrorMessage());
-      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).jdField_a_of_type_JavaUtilList = localArrayList;
-      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).f = this.jdField_a_of_type_Boolean;
-      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).g = this.jdField_b_of_type_Boolean;
+      localObject1 = new GetTroopStoryListHandler.GetTroopStoryListEvent(this.i, new ErrorMessage());
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).e = localArrayList;
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).i = this.a;
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).j = this.e;
+      ((GetTroopStoryListHandler.GetTroopStoryListEvent)localObject1).k = this.f;
       StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject1);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = this.e;
     boolean bool1 = true;
-    if ((!bool2) && (this.jdField_d_of_type_Boolean) && (paramInt1 == this.jdField_a_of_type_JavaUtilList.size() - 2)) {
-      this.jdField_a_of_type_Boolean = true;
+    if ((!bool2) && (this.l) && (paramInt1 == this.g.size() - 2)) {
+      this.e = true;
     }
-    if (!this.jdField_b_of_type_Boolean) {
+    if (!this.f) {
       if (paramInt2 <= 3)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.f = true;
       }
       else if (paramInt2 == 4)
       {
-        if (((TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilList.get(3)).itemType == 2) {
+        if (((TroopStoryItemInfo)this.g.get(3)).itemType == 2) {
           bool1 = false;
         }
-        this.jdField_b_of_type_Boolean = bool1;
+        this.f = bool1;
       }
     }
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.c = paramInt1;
   }
   
   public void a(List<TroopStoryItemInfo> paramList)

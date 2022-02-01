@@ -36,14 +36,14 @@ class ScannerView$DecodeHandler
       }
       if (paramMessage != null)
       {
-        this.a.jdField_b_of_type_AndroidOsHandler.obtainMessage(3, paramMessage.first).sendToTarget();
+        this.a.u.obtainMessage(3, paramMessage.first).sendToTarget();
         return;
       }
-      this.a.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(4);
+      this.a.u.sendEmptyMessage(4);
       return;
     }
     Object localObject1 = this.a;
-    ((ScannerView)localObject1).jdField_b_of_type_Long += 1L;
+    ((ScannerView)localObject1).r += 1L;
     Object localObject3;
     int k;
     int m;
@@ -54,7 +54,7 @@ class ScannerView$DecodeHandler
     if ((paramMessage.obj != null) && ((paramMessage.obj instanceof byte[])))
     {
       localObject3 = (byte[])paramMessage.obj;
-      i = this.a.h;
+      i = this.a.p;
       k = 0;
       m = 0;
       j = 0;
@@ -74,20 +74,20 @@ class ScannerView$DecodeHandler
         i = 0;
         if (i != 0)
         {
-          this.a.h = 3;
+          this.a.p = 3;
         }
         else
         {
           paramMessage = this.a;
-          i = paramMessage.h + 1;
-          paramMessage.h = i;
+          i = paramMessage.p + 1;
+          paramMessage.p = i;
           if (i == 3) {
-            this.a.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(9);
+            this.a.u.sendEmptyMessage(9);
           }
         }
       }
-      localObject2 = this.a.jdField_b_of_type_AndroidGraphicsRect;
-      localObject1 = this.a.jdField_a_of_type_AndroidGraphicsRect;
+      localObject2 = this.a.e;
+      localObject1 = this.a.d;
       paramMessage = (Message)localObject2;
       if (localObject2 == null)
       {
@@ -95,40 +95,40 @@ class ScannerView$DecodeHandler
         if (localObject1 == null)
         {
           localObject1 = this.a;
-          paramMessage = new Rect(0, 0, ((ScannerView)localObject1).e, this.a.f);
-          ((ScannerView)localObject1).jdField_a_of_type_AndroidGraphicsRect = paramMessage;
+          paramMessage = new Rect(0, 0, ((ScannerView)localObject1).k, this.a.l);
+          ((ScannerView)localObject1).d = paramMessage;
         }
         float f1;
         float f2;
-        if (this.a.g == 90)
+        if (this.a.m == 90)
         {
-          f1 = this.a.jdField_a_of_type_Int / this.a.f;
-          f2 = this.a.jdField_b_of_type_Int / this.a.e;
-          paramMessage = new Rect((int)(paramMessage.top * f1), (int)((this.a.e - paramMessage.right) * f2), (int)(paramMessage.bottom * f1), (int)((this.a.e - paramMessage.left) * f2));
+          f1 = this.a.g / this.a.l;
+          f2 = this.a.h / this.a.k;
+          paramMessage = new Rect((int)(paramMessage.top * f1), (int)((this.a.k - paramMessage.right) * f2), (int)(paramMessage.bottom * f1), (int)((this.a.k - paramMessage.left) * f2));
         }
         for (;;)
         {
           break;
-          if (this.a.g == 180)
+          if (this.a.m == 180)
           {
-            f1 = this.a.jdField_a_of_type_Int / this.a.e;
-            f2 = this.a.jdField_b_of_type_Int / this.a.f;
-            paramMessage = new Rect((int)((this.a.e - paramMessage.right) * f1), (int)((this.a.f - paramMessage.bottom) * f2), (int)((this.a.e - paramMessage.left) * f1), (int)((this.a.f - paramMessage.top) * f2));
+            f1 = this.a.g / this.a.k;
+            f2 = this.a.h / this.a.l;
+            paramMessage = new Rect((int)((this.a.k - paramMessage.right) * f1), (int)((this.a.l - paramMessage.bottom) * f2), (int)((this.a.k - paramMessage.left) * f1), (int)((this.a.l - paramMessage.top) * f2));
           }
-          else if (this.a.g == 270)
+          else if (this.a.m == 270)
           {
-            f1 = this.a.jdField_a_of_type_Int / this.a.f;
-            f2 = this.a.jdField_b_of_type_Int / this.a.e;
-            paramMessage = new Rect((int)((this.a.f - paramMessage.bottom) * f1), (int)(paramMessage.left * f2), (int)((this.a.f - paramMessage.top) * f1), (int)(paramMessage.right * f2));
+            f1 = this.a.g / this.a.l;
+            f2 = this.a.h / this.a.k;
+            paramMessage = new Rect((int)((this.a.l - paramMessage.bottom) * f1), (int)(paramMessage.left * f2), (int)((this.a.l - paramMessage.top) * f1), (int)(paramMessage.right * f2));
           }
           else
           {
-            f1 = this.a.jdField_a_of_type_Int / this.a.e;
-            f2 = this.a.jdField_b_of_type_Int / this.a.f;
+            f1 = this.a.g / this.a.k;
+            f2 = this.a.h / this.a.l;
             paramMessage = new Rect((int)(paramMessage.left * f1), (int)(paramMessage.top * f2), (int)(paramMessage.right * f1), (int)(paramMessage.bottom * f2));
           }
         }
-        this.a.jdField_b_of_type_AndroidGraphicsRect = paramMessage;
+        this.a.e = paramMessage;
       }
       try
       {
@@ -158,17 +158,17 @@ class ScannerView$DecodeHandler
         int i6;
         j = m;
       }
-      if ((localOutOfMemoryError == null) || (this.a.jdField_a_of_type_Int <= 0) || (this.a.jdField_b_of_type_Int <= 0) || (paramMessage.left < 0) || (paramMessage.top < 0) || (paramMessage.width() <= 0) || (paramMessage.height() <= 0) || (paramMessage.right > this.a.jdField_a_of_type_Int) || (paramMessage.bottom > this.a.jdField_b_of_type_Int) || (localObject3.length != this.a.jdField_a_of_type_Int * this.a.jdField_b_of_type_Int * 3 >> 1)) {
+      if ((localOutOfMemoryError == null) || (this.a.g <= 0) || (this.a.h <= 0) || (paramMessage.left < 0) || (paramMessage.top < 0) || (paramMessage.width() <= 0) || (paramMessage.height() <= 0) || (paramMessage.right > this.a.g) || (paramMessage.bottom > this.a.h) || (localObject3.length != this.a.g * this.a.h * 3 >> 1)) {
         break label1383;
       }
       localIImgProcessApi = (IImgProcessApi)QRoute.api(IImgProcessApi.class);
-      n = this.a.jdField_a_of_type_Int;
-      i1 = this.a.jdField_b_of_type_Int;
+      n = this.a.g;
+      i1 = this.a.h;
       i2 = paramMessage.left;
       i3 = paramMessage.top;
       i4 = paramMessage.width();
       i5 = paramMessage.height();
-      i6 = this.a.g;
+      i6 = this.a.m;
       i = j;
       j = k;
     }
@@ -213,20 +213,20 @@ class ScannerView$DecodeHandler
         ((IQRCodeApi)QRoute.api(IQRCodeApi.class)).getOneResultForCamera(paramMessage, localStringBuilder);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
-        ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+        ((StringBuilder)localObject2).append(System.currentTimeMillis() - this.a.q);
         localObject2 = ((StringBuilder)localObject2).toString();
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("");
-        ((StringBuilder)localObject3).append(this.a.jdField_b_of_type_Long);
+        ((StringBuilder)localObject3).append(this.a.r);
         ReportController.b(null, "P_CliOper", "BizTechReport", "", "qrdecode", "decodeSuccess", 0, 0, (String)localObject2, ((StringBuilder)localObject3).toString(), "", "");
         localObject2 = this.a;
-        ((ScannerView)localObject2).jdField_a_of_type_JavaLangStringBuilder = paramMessage;
-        ((ScannerView)localObject2).jdField_b_of_type_AndroidOsHandler.obtainMessage(1, localStringBuilder).sendToTarget();
+        ((ScannerView)localObject2).s = paramMessage;
+        ((ScannerView)localObject2).u.obtainMessage(1, localStringBuilder).sendToTarget();
         return;
       }
-      this.a.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.a.u.sendEmptyMessage(2);
       return;
-      this.a.jdField_b_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      this.a.u.sendEmptyMessage(2);
       return;
       label1377:
       StringBuilder localStringBuilder = null;
@@ -238,7 +238,7 @@ class ScannerView$DecodeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.ScannerView.DecodeHandler
  * JD-Core Version:    0.7.0.1
  */

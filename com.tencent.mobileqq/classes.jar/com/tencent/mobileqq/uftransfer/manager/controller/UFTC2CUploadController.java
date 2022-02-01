@@ -12,25 +12,25 @@ import mqq.app.AppRuntime;
 public class UFTC2CUploadController
   implements INetInfoHandler
 {
-  private final UFTUploadTaskQueue jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue;
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private final AppRuntime a;
+  private final UFTUploadTaskQueue b;
   
   public UFTC2CUploadController(AppRuntime paramAppRuntime, int paramInt)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue = new UFTUploadTaskQueue(paramInt);
+    this.a = paramAppRuntime;
+    this.b = new UFTUploadTaskQueue(paramInt);
   }
   
   public void a()
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("REASON", 3);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue.a(localBundle);
+    this.b.a(localBundle);
   }
   
   public void a(UFTTransferKey paramUFTTransferKey, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue.a(paramUFTTransferKey.a(), paramBundle);
+    this.b.a(paramUFTTransferKey.b(), paramBundle);
   }
   
   public void a(UFTTransferKey paramUFTTransferKey, UFTC2CUploadInfo paramUFTC2CUploadInfo, UFTTransferConfig paramUFTTransferConfig, IUFTUploadCallback paramIUFTUploadCallback)
@@ -42,7 +42,7 @@ public class UFTC2CUploadController
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("REASON", 2);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue.a(localBundle);
+    this.b.a(localBundle);
   }
   
   public void onNetMobile2Wifi(String paramString) {}
@@ -51,7 +51,7 @@ public class UFTC2CUploadController
   {
     paramString = new Bundle();
     paramString.putInt("REASON", 1);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue.a(paramString);
+    this.b.a(paramString);
   }
   
   public void onNetNone2Wifi(String paramString) {}
@@ -60,19 +60,19 @@ public class UFTC2CUploadController
   {
     paramString = new Bundle();
     paramString.putInt("REASON", 1);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue.a(paramString);
+    this.b.a(paramString);
   }
   
   public void onNetWifi2None()
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("REASON", 2);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskqueueUFTUploadTaskQueue.a(localBundle);
+    this.b.a(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.manager.controller.UFTC2CUploadController
  * JD-Core Version:    0.7.0.1
  */

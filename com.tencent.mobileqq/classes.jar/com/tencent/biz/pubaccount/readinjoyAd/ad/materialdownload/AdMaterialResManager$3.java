@@ -19,7 +19,7 @@ class AdMaterialResManager$3
   {
     if (TextUtils.isEmpty(this.a))
     {
-      AdMaterialResManager.a("preload receive json is empty!");
+      AdMaterialResManager.b("preload receive json is empty!");
       return;
     }
     for (;;)
@@ -51,7 +51,7 @@ class AdMaterialResManager$3
               StringBuilder localStringBuilder = new StringBuilder();
               localStringBuilder.append("preload ad_material went wrong id = ");
               localStringBuilder.append(localMaterialData.id);
-              AdMaterialResManager.a(localStringBuilder.toString());
+              AdMaterialResManager.b(localStringBuilder.toString());
             }
           }
           else
@@ -59,7 +59,7 @@ class AdMaterialResManager$3
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("preload ad_material result size");
             ((StringBuilder)localObject2).append(((List)localObject1).size());
-            AdMaterialResManager.a(((StringBuilder)localObject2).toString());
+            AdMaterialResManager.b(((StringBuilder)localObject2).toString());
             AdMaterialResManager.a(this.this$0, (List)localObject1);
           }
         }
@@ -73,7 +73,7 @@ class AdMaterialResManager$3
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("resolve json error");
         ((StringBuilder)localObject2).append(QLog.getStackTraceString(localThrowable));
-        AdMaterialResManager.a(((StringBuilder)localObject2).toString());
+        AdMaterialResManager.b(((StringBuilder)localObject2).toString());
         return;
       }
       i += 1;
@@ -82,7 +82,7 @@ class AdMaterialResManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.materialdownload.AdMaterialResManager.3
  * JD-Core Version:    0.7.0.1
  */

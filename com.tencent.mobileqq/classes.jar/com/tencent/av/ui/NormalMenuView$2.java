@@ -2,8 +2,10 @@ package com.tencent.av.ui;
 
 import android.animation.Animator;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class NormalMenuView$2
   extends D8SafeAnimatorListener
@@ -15,43 +17,46 @@ class NormalMenuView$2
   public void onAnimationEnd(Animator paramAnimator)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (this.c.c != null)
     {
-      i = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      if (!this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_Boolean)
+      i = this.c.c.getVisibility();
+      if (!this.c.e)
       {
-        this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        this.c.c.setVisibility(8);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent != null) {
-          this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_ComTencentAvUiNormalMenuView$ViewEvent.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+        this.c.c.setVisibility(0);
+        if (this.c.b != null) {
+          this.c.b.a(this.b, this.c.c, false);
         }
       }
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setTranslationY(0.0F);
+      this.c.c.setAlpha(1.0F);
+      this.c.c.setTranslationY(0.0F);
     }
     else
     {
       i = 4;
     }
-    String str = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_JavaLangString;
+    if (this.c.e) {
+      ThreadManager.getUIHandler().post(new NormalMenuView.2.1(this));
+    }
+    String str = this.c.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ShowMenuView, onAnimationEnd, isShow[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c.e);
     localStringBuilder.append("], visibility[");
     localStringBuilder.append(i);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("], \nlastObjectAnimator[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidAnimationObjectAnimator);
+    localStringBuilder.append(this.c.f);
     localStringBuilder.append("], \nanimation[");
     localStringBuilder.append(paramAnimator);
     localStringBuilder.append("]");
     QLog.w(str, 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidAnimationObjectAnimator == paramAnimator) {
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
+    if (this.c.f == paramAnimator) {
+      this.c.f = null;
     }
   }
   
@@ -60,25 +65,25 @@ class NormalMenuView$2
   public void onAnimationStart(Animator paramAnimator)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    if (this.c.c != null)
     {
-      i = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
-      this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      i = this.c.c.getVisibility();
+      this.c.c.setVisibility(0);
     }
     else
     {
       i = 4;
     }
-    paramAnimator = this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_JavaLangString;
+    paramAnimator = this.c.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ShowMenuView, onAnimationStart, height[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("], isShow[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiNormalMenuView.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c.e);
     localStringBuilder.append("], visibility[");
     localStringBuilder.append(i);
     localStringBuilder.append("], seq[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     QLog.w(paramAnimator, 1, localStringBuilder.toString());
   }

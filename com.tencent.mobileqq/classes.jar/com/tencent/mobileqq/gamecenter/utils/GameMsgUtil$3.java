@@ -1,59 +1,66 @@
 package com.tencent.mobileqq.gamecenter.utils;
 
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxRuntimeService;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
+import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.gamecenter.message.TinyInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 final class GameMsgUtil$3
   implements Runnable
 {
-  GameMsgUtil$3(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString) {}
+  GameMsgUtil$3(AppInterface paramAppInterface) {}
   
   public void run()
   {
-    try
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+      try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) {
+        Object localObject = ((IGameMsgBoxManager)this.a.getRuntimeService(IGameMsgBoxManager.class, "")).getGameMsgBoxRecentUsers();
+        if (((List)localObject).isEmpty())
+        {
+          QLog.e(GameMsgUtil.a, 1, "reportClickMsgBoxEntry883: msgBoxRecentUsers.isEmpty()");
           return;
         }
-        Object localObject = new TinyInfo();
-        ((TinyInfo)localObject).parseFromMessageRecord(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        IGameMsgManagerService localIGameMsgManagerService = (IGameMsgManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
-        if (localIGameMsgManagerService == null) {
+        localObject = (RecentUser)((List)localObject).get(0);
+        if (localObject != null)
+        {
+          if (((RecentUser)localObject).getType() != 10007) {
+            return;
+          }
+          MessageRecord localMessageRecord = GameMsgUtil.a(this.a, ((RecentUser)localObject).uin);
+          if (localMessageRecord == null) {
+            return;
+          }
+          if (((IGameMsgBoxRuntimeService)this.a.getRuntimeService(IGameMsgBoxRuntimeService.class, "")).getBoxUnReadCnt() > 0)
+          {
+            localObject = "0";
+            TinyInfo localTinyInfo = new TinyInfo();
+            localTinyInfo.parseFromMessageRecord(localMessageRecord);
+            GameMsgUtil.a(String.valueOf(localTinyInfo.gameAppId), "1", "145", "920", "92003", "209056", "", "", "20", (String)localObject);
+          }
+        }
+        else
+        {
           return;
         }
-        int i = localIGameMsgManagerService.getUnreadCnt();
-        if (!GameMsgUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString)) {
-          i = 0;
-        }
-        String str2 = Long.toString(((TinyInfo)localObject).gameAppId);
-        String str1 = "1";
-        if (i > 0) {
-          localObject = "1";
-        } else {
-          localObject = "0";
-        }
-        if (localIGameMsgManagerService.isShowInMsgBox()) {
-          str1 = "2";
-        }
-        GameMsgUtil.b(str2, "1", "145", "920", "92044", "207951", (String)localObject, "", "", "20", "", str1, "", localIGameMsgManagerService.getBoxMsgSwitchId());
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(GameMsgUtil.a, 1, localThrowable, new Object[0]);
         return;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e(GameMsgUtil.jdField_a_of_type_JavaLangString, 1, localThrowable.getMessage());
+      String str = "1";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.utils.GameMsgUtil.3
  * JD-Core Version:    0.7.0.1
  */

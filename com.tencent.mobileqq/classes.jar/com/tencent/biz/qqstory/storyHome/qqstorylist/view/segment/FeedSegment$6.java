@@ -9,7 +9,7 @@ class FeedSegment$6
   
   public void run()
   {
-    if (FeedSegment.b(this.this$0)) {
+    if (FeedSegment.i(this.this$0)) {
       this.a.smoothScrollBy(1, 0);
     }
   }

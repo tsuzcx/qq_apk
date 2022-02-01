@@ -14,17 +14,17 @@ class ShengpiziHbFragment$2
   
   public void run()
   {
-    if ((ShengpiziHbFragment.a(this.this$0) != null) && (ShengpiziHbFragment.a(this.this$0).size() > 0) && (ShengpiziHbFragment.a(this.this$0) != null))
+    if ((ShengpiziHbFragment.b(this.this$0) != null) && (ShengpiziHbFragment.b(this.this$0).size() > 0) && (ShengpiziHbFragment.c(this.this$0) != null))
     {
-      ShengpiziHbFragment.a(this.this$0).removeAllViews();
+      ShengpiziHbFragment.c(this.this$0).removeAllViews();
       int i = 0;
-      while (i < ShengpiziHbFragment.a(this.this$0).size())
+      while (i < ShengpiziHbFragment.b(this.this$0).size())
       {
-        TextView localTextView = new TextView(this.this$0.a);
+        TextView localTextView = new TextView(this.this$0.f);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-        localLayoutParams.rightMargin = DisplayUtil.a(this.this$0.a, 19.0F);
-        ShengpiziHbFragment.a(this.this$0).addView(localTextView, localLayoutParams);
-        localTextView.setText((CharSequence)ShengpiziHbFragment.a(this.this$0).get(i));
+        localLayoutParams.rightMargin = DisplayUtil.a(this.this$0.f, 19.0F);
+        ShengpiziHbFragment.c(this.this$0).addView(localTextView, localLayoutParams);
+        localTextView.setText((CharSequence)ShengpiziHbFragment.b(this.this$0).get(i));
         localTextView.setTextColor(Color.parseColor("#898D9B"));
         localTextView.setTextSize(15.0F);
         localTextView.setTag(Integer.valueOf(i));
@@ -32,7 +32,7 @@ class ShengpiziHbFragment$2
         if (i == 0)
         {
           ShengpiziHbFragment.a(this.this$0, localTextView);
-          ShengpiziHbFragment.a(this.this$0, localTextView);
+          ShengpiziHbFragment.b(this.this$0, localTextView);
         }
         i += 1;
       }
@@ -41,7 +41,7 @@ class ShengpiziHbFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ShengpiziHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

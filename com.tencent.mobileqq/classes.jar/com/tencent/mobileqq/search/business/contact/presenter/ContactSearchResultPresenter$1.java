@@ -17,8 +17,8 @@ class ContactSearchResultPresenter$1
   public boolean onLongClick(View paramView)
   {
     paramView = new AlertDialog.Builder(paramView.getContext());
-    paramView.setTitle(HardCodeUtil.a(2131702731));
-    long l = ((IContactSearchModel)this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel).b();
+    paramView.setTitle(HardCodeUtil.a(2131900721));
+    long l = ((IContactSearchModel)this.a).u();
     StringBuilder localStringBuilder = new StringBuilder();
     int i = SearchConfigManager.contactSearchPinyinBaseBit;
     int j = SearchConfigManager.contactSearchPinyinBaseBit;
@@ -56,7 +56,7 @@ class ContactSearchResultPresenter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultPresenter.1
  * JD-Core Version:    0.7.0.1
  */

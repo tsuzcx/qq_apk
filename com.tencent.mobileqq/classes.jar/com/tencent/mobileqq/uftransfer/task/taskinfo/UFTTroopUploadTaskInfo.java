@@ -10,20 +10,20 @@ import java.io.File;
 public class UFTTroopUploadTaskInfo
   extends UFTBaseTaskInfo
 {
-  private int jdField_a_of_type_Int;
-  private UFTTroopUploadInfo jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo;
-  private UFTUploadSrvBusiProp.TroopUploadSrvBusiProp jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$TroopUploadSrvBusiProp;
+  private int a;
+  private UFTTroopUploadInfo b;
+  private UFTUploadSrvBusiProp.TroopUploadSrvBusiProp c;
   
   private UFTTroopUploadTaskInfo(long paramLong, int paramInt, UFTTroopUploadInfo paramUFTTroopUploadInfo, UFTTransferConfig paramUFTTransferConfig)
   {
     super(paramLong, paramInt, paramUFTTransferConfig, true);
-    this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo = paramUFTTroopUploadInfo;
-    a(UFTDependFeatureApi.a(paramUFTTroopUploadInfo.a()));
+    this.b = paramUFTTroopUploadInfo;
+    a(UFTDependFeatureApi.e(paramUFTTroopUploadInfo.a()));
     paramUFTTransferConfig = new File(paramUFTTroopUploadInfo.a());
     if (paramUFTTransferConfig.exists()) {
       a(paramUFTTransferConfig.length());
     }
-    this.jdField_a_of_type_Int = paramUFTTroopUploadInfo.b();
+    this.a = paramUFTTroopUploadInfo.g();
   }
   
   public static UFTTroopUploadTaskInfo a(long paramLong, int paramInt, UFTTroopUploadInfo paramUFTTroopUploadInfo, UFTTransferConfig paramUFTTransferConfig)
@@ -43,91 +43,91 @@ public class UFTTroopUploadTaskInfo
     return new UFTTroopUploadTaskInfo(paramLong, paramInt, paramUFTTroopUploadInfo, paramUFTTransferConfig);
   }
   
-  public int a()
+  public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.a();
-  }
-  
-  public UFTUploadSrvBusiProp.TroopUploadSrvBusiProp a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$TroopUploadSrvBusiProp;
+    return this.b.b();
   }
   
   public void a(UFTUploadSrvBusiProp.TroopUploadSrvBusiProp paramTroopUploadSrvBusiProp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$TroopUploadSrvBusiProp = paramTroopUploadSrvBusiProp;
+    this.c = paramTroopUploadSrvBusiProp;
   }
   
-  public boolean a()
+  public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.a();
-  }
-  
-  public byte[] a()
-  {
-    UFTUploadSrvBusiProp.TroopUploadSrvBusiProp localTroopUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$TroopUploadSrvBusiProp;
-    if (localTroopUploadSrvBusiProp != null) {
-      return localTroopUploadSrvBusiProp.c();
-    }
-    return null;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    return this.b.a();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public int c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.c();
+    return this.b.c();
   }
   
-  public String c()
+  public int d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.b();
-  }
-  
-  public String d()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.a();
+    return this.a;
   }
   
   public String e()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.c();
+    return this.b.h();
   }
   
-  public String f()
+  public int f()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTroopUploadInfo.e();
+    return this.b.k();
   }
   
   public String g()
   {
-    UFTUploadSrvBusiProp.TroopUploadSrvBusiProp localTroopUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$TroopUploadSrvBusiProp;
+    return this.b.j();
+  }
+  
+  public boolean h()
+  {
+    return this.b.d();
+  }
+  
+  public String i()
+  {
+    UFTUploadSrvBusiProp.TroopUploadSrvBusiProp localTroopUploadSrvBusiProp = this.c;
     if (localTroopUploadSrvBusiProp != null) {
-      return localTroopUploadSrvBusiProp.f();
+      return localTroopUploadSrvBusiProp.o();
     }
     return "";
   }
   
-  public String h()
+  public String j()
   {
-    UFTUploadSrvBusiProp.TroopUploadSrvBusiProp localTroopUploadSrvBusiProp = this.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadSrvBusiProp$TroopUploadSrvBusiProp;
+    UFTUploadSrvBusiProp.TroopUploadSrvBusiProp localTroopUploadSrvBusiProp = this.c;
     if (localTroopUploadSrvBusiProp != null) {
-      return localTroopUploadSrvBusiProp.g();
+      return localTroopUploadSrvBusiProp.p();
     }
     return "";
+  }
+  
+  public byte[] k()
+  {
+    UFTUploadSrvBusiProp.TroopUploadSrvBusiProp localTroopUploadSrvBusiProp = this.c;
+    if (localTroopUploadSrvBusiProp != null) {
+      return localTroopUploadSrvBusiProp.q();
+    }
+    return null;
+  }
+  
+  public UFTUploadSrvBusiProp.TroopUploadSrvBusiProp l()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.taskinfo.UFTTroopUploadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class LyricParseHelper
         label42:
         if (paramString != null)
         {
-          int i = paramString.a.size();
+          int i = paramString.b.size();
           if (i > 0) {
             return paramString;
           }
@@ -35,7 +35,7 @@ public class LyricParseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.util.LyricParseHelper
  * JD-Core Version:    0.7.0.1
  */

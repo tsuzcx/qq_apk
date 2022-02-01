@@ -10,38 +10,38 @@ import java.util.Vector;
 class ChatBackgroundManager$BgColorExtractJob
   implements Runnable
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ChatBackgroundManager.BgThemeColorExtractListener jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private Bitmap a;
+  private boolean b;
+  private String c;
+  private ChatBackgroundManager.BgThemeColorExtractListener d;
   
   public ChatBackgroundManager$BgColorExtractJob(ChatBackgroundManager paramChatBackgroundManager, String paramString, Bitmap paramBitmap, boolean paramBoolean, ChatBackgroundManager.BgThemeColorExtractListener paramBgThemeColorExtractListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener = paramBgThemeColorExtractListener;
+    this.c = paramString;
+    this.a = paramBitmap;
+    this.b = paramBoolean;
+    this.d = paramBgThemeColorExtractListener;
   }
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = this.this$0.a((Bitmap)localObject);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      if (this.b) {
+        this.a.recycle();
       }
       if ((localObject != null) && (!((Vector)localObject).isEmpty()))
       {
-        if (this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString) != null) {
-          ((Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString)).addAll((Collection)localObject);
+        if (this.this$0.g.get(this.c) != null) {
+          ((Vector)this.this$0.g.get(this.c)).addAll((Collection)localObject);
         } else {
-          this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.jdField_a_of_type_JavaLangString, localObject);
+          this.this$0.g.put(this.c, localObject);
         }
       }
       else {
-        this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
+        this.this$0.g.remove(this.c);
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable success.");
@@ -49,27 +49,27 @@ class ChatBackgroundManager$BgColorExtractJob
     }
     else
     {
-      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
+      this.this$0.g.remove(this.c);
       if (QLog.isDevelopLevel()) {
         QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable failed.");
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener != null)
+    if (this.d != null)
     {
-      localObject = (Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString);
+      localObject = (Vector)this.this$0.g.get(this.c);
       boolean bool;
       if ((localObject != null) && (!((Vector)localObject).isEmpty())) {
         bool = true;
       } else {
         bool = false;
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ChatBackgroundManager.BgColorExtractJob.1(this, bool, (Vector)localObject));
+      this.this$0.a.runOnUiThread(new ChatBackgroundManager.BgColorExtractJob.1(this, bool, (Vector)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.BgColorExtractJob
  * JD-Core Version:    0.7.0.1
  */

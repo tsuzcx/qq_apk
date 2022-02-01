@@ -14,16 +14,16 @@ public class GetQZonePhotoGuideCheck
   protected int doStep()
   {
     a = true;
-    QzoneAlbumRedTouchManager localQzoneAlbumRedTouchManager = (QzoneAlbumRedTouchManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH);
+    QzoneAlbumRedTouchManager localQzoneAlbumRedTouchManager = (QzoneAlbumRedTouchManager)this.mAutomator.k.getManager(QQManagerFactory.QZONE_ALBUM_RED_TOUCH);
     if (localQzoneAlbumRedTouchManager != null) {
-      localQzoneAlbumRedTouchManager.c();
+      localQzoneAlbumRedTouchManager.f();
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZonePhotoGuideCheck
  * JD-Core Version:    0.7.0.1
  */

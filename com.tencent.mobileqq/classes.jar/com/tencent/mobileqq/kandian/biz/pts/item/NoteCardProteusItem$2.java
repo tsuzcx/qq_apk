@@ -15,18 +15,18 @@ class NoteCardProteusItem$2
   
   public void onClick(ViewBase paramViewBase)
   {
-    paramViewBase = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    paramViewBase = this.a.k();
     if (paramViewBase != null)
     {
-      RIJJumpUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
+      RIJJumpUtils.a(this.b.getContext(), paramViewBase.mArticleContentUrl, null);
       RIJFrameworkReportManager.b(paramViewBase, 0);
-      NoteCardProteusItem.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem, true);
+      NoteCardProteusItem.b(this.c, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NoteCardProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

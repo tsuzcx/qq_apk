@@ -11,7 +11,7 @@ class NearbyProfileEditPanel$14
   
   public void afterTextChanged(Editable paramEditable)
   {
-    NearbyUtils.a(this.a.e, 90);
+    NearbyUtils.a(this.a.t, 40);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -20,7 +20,7 @@ class NearbyProfileEditPanel$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.14
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class TroopSettingActivity$3$1
   
   public void run()
   {
-    if (TroopSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$3.a) != null) {
-      TroopSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$3.a).a(TroopSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingActivityTroopSettingActivity$3.a), this.jdField_a_of_type_JavaUtilArrayList);
+    if (TroopSettingActivity.b(this.b.a) != null) {
+      TroopSettingActivity.b(this.b.a).a(TroopSettingActivity.a(this.b.a), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

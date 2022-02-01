@@ -16,7 +16,7 @@ class AllMemberItemViewWrapper$2
   public void onClick(View paramView)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131700445));
+    localBundle.putString(VasH5PayUtil.e, HardCodeUtil.a(2131898478));
     localBundle.putString(VasH5PayUtil.f, "CJCLUBT");
     localBundle.putString(VasH5PayUtil.d, "1450000516");
     localBundle.putInt(VasH5PayUtil.b, 3);
@@ -26,14 +26,14 @@ class AllMemberItemViewWrapper$2
     localStringBuilder.append("mvip.pt.vipsite.tqtips_chengyuan");
     localBundle.putString(str, localStringBuilder.toString());
     localBundle.putString(VasH5PayUtil.g, "svip");
-    localBundle.putString(VasH5PayUtil.a, AllMemberItemViewWrapper.a(this.a).getCurrentAccountUin());
+    localBundle.putString(VasH5PayUtil.a, AllMemberItemViewWrapper.b(this.a).getCurrentAccountUin());
     VasH5PayUtil.a(AllMemberItemViewWrapper.a(this.a), localBundle);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AllMemberItemViewWrapper.2
  * JD-Core Version:    0.7.0.1
  */

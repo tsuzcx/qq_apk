@@ -21,7 +21,7 @@ class LoginMgr$1
     ((StringBuilder)localObject).append(", errMsg=");
     ((StringBuilder)localObject).append(paramString);
     Log.d("now_live_login_mgr", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener;
+    localObject = this.a;
     if (localObject != null) {
       ((LoginMgr.Listener)localObject).a(paramInt, paramString);
     }
@@ -29,7 +29,7 @@ class LoginMgr$1
   
   public void a(byte[] paramArrayOfByte)
   {
-    if (LoginMgr.a(this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr)) {
+    if (LoginMgr.a(this.b)) {
       return;
     }
     for (;;)
@@ -42,15 +42,15 @@ class LoginMgr$1
         UserInfoMgr.a().a(((LoginMergedProto.LoginRsp)localObject).account_base_info.uid.get());
         UserInfoMgr.a().b(((LoginMergedProto.LoginRsp)localObject).account_base_info.tinyid.get());
         UserInfoMgr.a().a(((LoginMergedProto.LoginRsp)localObject).tickets.auth_key.get());
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr;
+        paramArrayOfByte = this.b;
         if (((LoginMergedProto.LoginRsp)localObject).result.get() != 0) {
           break label193;
         }
         bool = true;
         LoginMgr.a(paramArrayOfByte, bool);
-        if (this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener.a(((LoginMergedProto.LoginRsp)localObject).result.get(), ((LoginMergedProto.LoginRsp)localObject).errMsg.get());
+          this.a.a(((LoginMergedProto.LoginRsp)localObject).result.get(), ((LoginMergedProto.LoginRsp)localObject).errMsg.get());
           return;
         }
       }
@@ -60,7 +60,7 @@ class LoginMgr$1
         ((StringBuilder)localObject).append("login parse exception, errMsg=");
         ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
         Log.d("now_live_login_mgr", ((StringBuilder)localObject).toString());
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqNowNetchannelWebssoLoginMgr$Listener;
+        paramArrayOfByte = this.a;
         if (paramArrayOfByte != null) {
           paramArrayOfByte.a(1000001, "login parse exception");
         }
@@ -73,7 +73,7 @@ class LoginMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.LoginMgr.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,27 @@
 package com.tencent.mobileqq.activity.home;
 
 import android.view.View;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 
 class Conversation$64
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  Conversation$64(Conversation paramConversation) {}
+  Conversation$64(Conversation paramConversation, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
+    View localView = Conversation.i(this.this$0).getChildAt(this.a - Conversation.i(this.this$0).getFirstVisiblePosition());
+    if (localView != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
-      }
-      ((FriendListHandler)this.a.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).reqHideConversationMayknowRecommend();
+      localView = localView.findViewById(2131444600);
+      this.this$0.al.a(this.this$0.s(), localView);
     }
-    this.a.a.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.64
  * JD-Core Version:    0.7.0.1
  */

@@ -29,80 +29,80 @@ public class PrivacyPermissionSettingFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new PrivacyPermissionSettingFragment.2(this);
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new PrivacyPermissionSettingFragment.1(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  View jdField_b_of_type_AndroidViewView;
-  FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131372454);
-    ReportController.b(null, "dc00898", "", "", "0X800B7FB", "0X800B7FB", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131372452));
-    ReportController.b(null, "dc00898", "", "", "0X800B7FC", "0X800B7FC", 0, 0, "", "", "", "");
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.jdField_b_of_type_AndroidViewView.findViewById(2131372443));
-    ReportController.b(null, "dc00898", "", "", "0X800B7FD", "0X800B7FD", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    Card localCard = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLocZanAllowedForPeople();
-    a(this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), bool);
-    a(this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), localCard.strangerInviteMeGroupOpen);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-    if (AppSetting.d)
-    {
-      this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131699220));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getResources().getString(2131694421));
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getResources().getString(2131689986));
-    }
-  }
+  QQAppInterface a;
+  FormSwitchItem b;
+  FormSwitchItem c;
+  View d;
+  View e;
+  CompoundButton.OnCheckedChangeListener f = new PrivacyPermissionSettingFragment.2(this);
+  private CardObserver g = new PrivacyPermissionSettingFragment.1(this);
   
   private void a(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     paramCompoundButton.setOnCheckedChangeListener(null);
     paramCompoundButton.setChecked(paramBoolean);
-    paramCompoundButton.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    paramCompoundButton.setOnCheckedChangeListener(this.f);
+  }
+  
+  private void b()
+  {
+    this.d = this.e.findViewById(2131439976);
+    ReportController.b(null, "dc00898", "", "", "0X800B7FB", "0X800B7FB", 0, 0, "", "", "", "");
+    this.b = ((FormSwitchItem)this.e.findViewById(2131439974));
+    ReportController.b(null, "dc00898", "", "", "0X800B7FC", "0X800B7FC", 0, 0, "", "", "", "");
+    this.c = ((FormSwitchItem)this.e.findViewById(2131439965));
+    ReportController.b(null, "dc00898", "", "", "0X800B7FD", "0X800B7FD", 0, 0, "", "", "", "");
+    this.d.setOnClickListener(this);
+    Card localCard = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).g(this.a.getCurrentAccountUin());
+    boolean bool = this.a.getLocZanAllowedForPeople();
+    a(this.b.getSwitch(), bool);
+    a(this.c.getSwitch(), localCard.strangerInviteMeGroupOpen);
+    this.b.setOnCheckedChangeListener(this.f);
+    this.c.setOnCheckedChangeListener(this.f);
+    if (AppSetting.e)
+    {
+      this.d.setContentDescription(getResources().getString(2131897236));
+      this.b.setContentDescription(getResources().getString(2131892101));
+      this.c.setContentDescription(getResources().getString(2131886628));
+    }
   }
   
   public int a()
   {
-    return getResources().getDimensionPixelSize(2131299168);
+    return getResources().getDimensionPixelSize(2131299920);
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).b(a());
+    QQToast.makeText(BaseApplication.getContext(), paramInt2, paramInt1, 0).show(a());
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView;
-    setTitle(getBaseActivity().getString(2131699259));
+    this.e = this.mContentView;
+    setTitle(getBaseActivity().getString(2131897275));
     if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
+      this.a = ((QQAppInterface)getBaseActivity().getAppRuntime());
     }
-    getBaseActivity().addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    a();
+    getBaseActivity().addObserver(this.g);
+    b();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561463;
+    return 2131627820;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131372454)
+    if (paramView.getId() == 2131439976)
     {
       QZoneHelper.UserInfo localUserInfo = QZoneHelper.UserInfo.getInstance();
-      localUserInfo.qzone_uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localUserInfo.nickname = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname();
+      localUserInfo.qzone_uin = this.a.getCurrentAccountUin();
+      localUserInfo.nickname = this.a.getCurrentNickname();
       QZoneHelper.forwardToPermissionSetting(getBaseActivity(), localUserInfo, -1);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Setting_tab", "0X8009C06", 0, 0, "", "", "", "");
+      ReportController.b(this.a, "CliOper", "", "", "Setting_tab", "0X8009C06", 0, 0, "", "", "", "");
       ReportController.b(null, "dc00898", "", "", "0X800B85F", "0X800B85F", 0, 0, "", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -110,21 +110,21 @@ public class PrivacyPermissionSettingFragment
   
   public View onCreateCenterView()
   {
-    setTitle(getBaseActivity().getString(2131699259));
-    return this.jdField_b_of_type_AndroidViewView;
+    setTitle(getBaseActivity().getString(2131897275));
+    return this.e;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppCardObserver != null) {
-      getBaseActivity().removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    if (this.g != null) {
+      getBaseActivity().removeObserver(this.g);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyPermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

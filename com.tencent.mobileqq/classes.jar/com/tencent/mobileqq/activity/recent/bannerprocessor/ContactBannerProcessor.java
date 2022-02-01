@@ -19,6 +19,7 @@ import com.tencent.mobileqq.phonecontact.listener.IPhoneContactListener;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.CustomHandler;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
@@ -28,20 +29,14 @@ public class ContactBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
-  public static final int a;
-  public IPhoneContactListener a;
-  public boolean a;
-  
-  static
-  {
-    jdField_a_of_type_Int = BannerTypeCollections.r;
-  }
+  public static final int a = BannerTypeCollections.r;
+  public boolean b = false;
+  public IPhoneContactListener c;
   
   public ContactBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+    this.g = new CustomHandler(Looper.getMainLooper(), this);
   }
   
   public int a()
@@ -51,55 +46,71 @@ public class ContactBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130845005));
-    paramBanner.setTipsText(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698714));
+    paramBanner = new TipsBar(this.f);
+    int i;
+    if (QQTheme.isNowSimpleUI()) {
+      i = 2130846442;
+    } else {
+      i = 2130846441;
+    }
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(i));
+    paramBanner.setTipsText(this.f.getString(2131896672));
     paramBanner.setOnClickListener(new ContactBannerProcessor.1(this));
     return paramBanner;
   }
   
-  public void a()
+  public void a(Banner paramBanner, Message paramMessage)
   {
-    a(false);
+    if (!(paramBanner.c instanceof TipsBar)) {
+      return;
+    }
+    paramBanner = (TipsBar)paramBanner.c;
+    int i;
+    if (QQTheme.isNowSimpleUI()) {
+      i = 2130846442;
+    } else {
+      i = 2130846441;
+    }
+    paramBanner.setTipsIcon(this.f.getResources().getDrawable(i));
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener != null) && (paramAppRuntime != null))
+    this.b = true;
+    if ((this.c != null) && (paramAppRuntime != null))
     {
-      ((IPhoneContactService)paramAppRuntime.getRuntimeService(IPhoneContactService.class, "")).removeListener(this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener = null;
+      ((IPhoneContactService)paramAppRuntime.getRuntimeService(IPhoneContactService.class, "")).removeListener(this.c);
+      this.c = null;
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.g.removeCallbacksAndMessages(null);
   }
   
   public void a(boolean paramBoolean)
   {
-    if (BannerManager.a().a(jdField_a_of_type_Int) != null) {
-      BannerManager.a().a(jdField_a_of_type_Int, 0);
+    if (BannerManager.a().a(a) != null) {
+      BannerManager.a().a(a, 0);
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
+    this.g.removeMessages(1000);
     if (paramBoolean)
     {
-      Object localObject = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getRuntimeService(IPhoneContactService.class, "");
+      Object localObject = (IPhoneContactService)this.f.getAppRuntime().getRuntimeService(IPhoneContactService.class, "");
       if (localObject != null)
       {
         int i = ((IPhoneContactService)localObject).getBannerState();
         if (i == 0)
         {
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, 1000L);
+          this.g.sendEmptyMessageDelayed(1000, 1000L);
           return;
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener == null) && (!this.jdField_a_of_type_Boolean))
+        if ((this.c == null) && (!this.b))
         {
-          this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener = new ContactBannerProcessor.2(this);
-          ((IPhoneContactService)localObject).addListener(this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener);
+          this.c = new ContactBannerProcessor.2(this);
+          ((IPhoneContactService)localObject).addListener(this.c);
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+        localObject = this.f;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("contact_bind_info");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount());
+        localStringBuilder.append(this.f.getAppRuntime().getAccount());
         paramBoolean = ((QBaseActivity)localObject).getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("key_show_contact_banner", true);
         if (QLog.isColorLevel())
         {
@@ -112,40 +123,45 @@ public class ContactBannerProcessor
         }
         if ((i == 1) && (paramBoolean))
         {
-          if ((BannerManager.a().a(jdField_a_of_type_Int) != null) && (BannerManager.a().a(jdField_a_of_type_Int).b != 2)) {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "CliOper", "", "", "0X80053D8", "0X80053D8", 0, 0, "", "", "", "");
+          if ((BannerManager.a().a(a) != null) && (BannerManager.a().a(a).b != 2)) {
+            ReportController.b(this.f.getAppRuntime(), "CliOper", "", "", "0X80053D8", "0X80053D8", 0, 0, "", "", "", "");
           }
-          BannerManager.a().a(jdField_a_of_type_Int, 2);
-          ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 13, 0, "", "", "", "");
+          BannerManager.a().a(a, 2);
+          ReportController.a(this.f.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 13, 0, "", "", "", "");
           return;
         }
-        BannerManager.a().a(jdField_a_of_type_Int, 0);
+        BannerManager.a().a(a, 0);
       }
     }
     else
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, 1000L);
+      this.g.removeMessages(1000);
+      this.g.sendEmptyMessageDelayed(1000, 1000L);
     }
   }
   
   public int b()
   {
-    return jdField_a_of_type_Int;
+    return a;
   }
-  
-  public void b() {}
   
   public void b(AppRuntime paramAppRuntime)
   {
-    BannerManager.a().a(jdField_a_of_type_Int, 0);
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-    if ((this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener != null) && (paramAppRuntime != null))
+    BannerManager.a().a(a, 0);
+    this.g.removeMessages(1000);
+    if ((this.c != null) && (paramAppRuntime != null))
     {
-      ((IPhoneContactService)paramAppRuntime.getRuntimeService(IPhoneContactService.class, "")).removeListener(this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactListenerIPhoneContactListener = null;
+      ((IPhoneContactService)paramAppRuntime.getRuntimeService(IPhoneContactService.class, "")).removeListener(this.c);
+      this.c = null;
     }
   }
+  
+  public void c()
+  {
+    a(false);
+  }
+  
+  public void d() {}
   
   public boolean handleMessage(Message paramMessage)
   {
@@ -162,7 +178,7 @@ public class ContactBannerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.ContactBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

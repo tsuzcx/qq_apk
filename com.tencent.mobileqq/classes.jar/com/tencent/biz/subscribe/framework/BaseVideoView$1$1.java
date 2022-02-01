@@ -8,8 +8,8 @@ class BaseVideoView$1$1
   public void run()
   {
     BaseVideoView.a(this.a.a);
-    if ((BaseVideoView.a(this.a.a) != null) && (!BaseVideoView.a(this.a.a))) {
-      this.a.a.i();
+    if ((BaseVideoView.b(this.a.a) != null) && (!BaseVideoView.c(this.a.a))) {
+      this.a.a.j();
     }
   }
 }

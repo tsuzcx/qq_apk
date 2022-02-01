@@ -18,18 +18,18 @@ public class ProgressPointer
   extends View
   implements Handler.Callback
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private boolean jdField_a_of_type_Boolean = false;
+  private float a = -1.0F;
   private int b;
   private int c;
   private int d;
-  private int e;
-  private int f;
+  private boolean e = false;
+  private Paint f;
   private int g;
+  private int h;
+  private Handler i = new Handler(Looper.getMainLooper(), this);
+  private int j;
+  private int k;
+  private long l;
   
   public ProgressPointer(Context paramContext)
   {
@@ -51,26 +51,26 @@ public class ProgressPointer
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.d = DisplayUtil.a(getContext(), ScrollFrameSelectBar.jdField_a_of_type_Int);
+    this.f = new Paint();
+    this.f.setColor(-1);
+    this.f.setStyle(Paint.Style.FILL);
+    this.g = DisplayUtil.a(getContext(), ScrollFrameSelectBar.a);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.l = System.currentTimeMillis();
+    this.a = 0.0F;
+    this.i.removeMessages(1);
+    this.i.sendEmptyMessage(1);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Float = 100.0F;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.l = System.currentTimeMillis();
+    this.a = 100.0F;
+    this.i.removeMessages(1);
+    this.i.sendEmptyMessage(1);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -78,15 +78,15 @@ public class ProgressPointer
     if (paramMessage.what == 1)
     {
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Long = l1;
-      float f1 = (float)(l1 - l2) * 100.0F / this.c;
-      this.jdField_a_of_type_Float += f1;
-      if (this.jdField_a_of_type_Float > 100.0F) {
-        this.jdField_a_of_type_Float = 100.0F;
+      long l2 = this.l;
+      this.l = l1;
+      float f1 = (float)(l1 - l2) * 100.0F / this.d;
+      this.a += f1;
+      if (this.a > 100.0F) {
+        this.a = 100.0F;
       }
       invalidate();
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+      this.i.sendEmptyMessageDelayed(1, 50L);
     }
     return false;
   }
@@ -94,39 +94,39 @@ public class ProgressPointer
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.i.removeCallbacksAndMessages(null);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    float f1 = this.jdField_a_of_type_Float;
+    float f1 = this.a;
     if (f1 >= 0.0F)
     {
-      int i = this.b;
-      int j = this.jdField_a_of_type_Int;
-      f1 = (i - j) * f1 / 100.0F + j;
-      paramCanvas.drawRect(f1 - 2.0F, 0.0F, f1 + 2.0F, this.f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      int m = this.c;
+      int n = this.b;
+      f1 = (m - n) * f1 / 100.0F + n;
+      paramCanvas.drawRect(f1 - 2.0F, 0.0F, f1 + 2.0F, this.j, this.f);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.e = View.MeasureSpec.getSize(paramInt2);
+    this.h = View.MeasureSpec.getSize(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
   }
   
   public void setFrameSize(int paramInt1, int paramInt2)
   {
-    this.f = paramInt1;
-    this.g = paramInt2;
+    this.j = paramInt1;
+    this.k = paramInt2;
   }
   
   public void setRange(int paramInt1, int paramInt2, int paramInt3)
   {
-    SLog.a("Q.qqstory.frameWidget.ProgressPointer", "++++++++setRange++++++start=%s,end=%s,duration=%s,mProgress=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Float.valueOf(this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    SLog.a("Q.qqstory.frameWidget.ProgressPointer", "++++++++setRange++++++start=%s,end=%s,duration=%s,mProgress=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Float.valueOf(this.a));
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
 }
 

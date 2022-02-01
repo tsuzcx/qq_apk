@@ -22,34 +22,34 @@ class AEEditorImageEditFragment$27
       paramAEEditorImageEditFragment = this.this$0.getArguments().getString("guajian_id");
     }
     put("guajianId", paramAEEditorImageEditFragment);
-    if (AEEditorImageEditFragment.a(this.this$0) == null) {
+    if (AEEditorImageEditFragment.F(this.this$0) == null) {
       paramAEEditorImageEditFragment = "none";
     } else {
-      paramAEEditorImageEditFragment = AEEditorImageEditFragment.a(this.this$0).toString();
+      paramAEEditorImageEditFragment = AEEditorImageEditFragment.F(this.this$0).toString();
     }
     put("filterId", paramAEEditorImageEditFragment);
-    if (AEEditorImageEditFragment.c(this.this$0) == null) {
+    if (AEEditorImageEditFragment.H(this.this$0) == null) {
       paramAEEditorImageEditFragment = "none";
     } else {
-      paramAEEditorImageEditFragment = AEEditorImageEditFragment.c(this.this$0).toString();
+      paramAEEditorImageEditFragment = AEEditorImageEditFragment.H(this.this$0).toString();
     }
     put("frameId", paramAEEditorImageEditFragment);
-    if (AEEditorImageEditFragment.b(this.this$0) == null) {
+    if (AEEditorImageEditFragment.G(this.this$0) == null) {
       paramAEEditorImageEditFragment = "none";
     } else {
-      paramAEEditorImageEditFragment = AEEditorImageEditFragment.b(this.this$0).toString();
+      paramAEEditorImageEditFragment = AEEditorImageEditFragment.G(this.this$0).toString();
     }
     put("stickerId", paramAEEditorImageEditFragment);
-    if (AEEditorImageEditFragment.d(this.this$0) == null) {
+    if (AEEditorImageEditFragment.I(this.this$0) == null) {
       paramAEEditorImageEditFragment = "none";
     } else {
-      paramAEEditorImageEditFragment = AEEditorImageEditFragment.d(this.this$0).toString();
+      paramAEEditorImageEditFragment = AEEditorImageEditFragment.I(this.this$0).toString();
     }
     put("ImageTemplateId", paramAEEditorImageEditFragment);
-    if (AEEditorImageEditFragment.e(this.this$0) == null) {
+    if (AEEditorImageEditFragment.J(this.this$0) == null) {
       paramAEEditorImageEditFragment = paramString;
     } else {
-      paramAEEditorImageEditFragment = AEEditorImageEditFragment.e(this.this$0).toString();
+      paramAEEditorImageEditFragment = AEEditorImageEditFragment.J(this.this$0).toString();
     }
     put("textId", paramAEEditorImageEditFragment);
     put("cropId", this.val$finalCropInfo);
@@ -57,7 +57,7 @@ class AEEditorImageEditFragment$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorImageEditFragment.27
  * JD-Core Version:    0.7.0.1
  */

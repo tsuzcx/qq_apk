@@ -32,22 +32,22 @@ public class MultiPicsOperator
   extends BaseForwardPicOperator
   implements IPicInfoBuilder.MixedPicMsgInfoBuilder, IPicInfoBuilder.MultiPicsInfoBuilder
 {
-  protected static int b = 20;
-  protected int a;
-  public ArrayList<PicResult> a;
-  protected ArrayList<PicFowardInfo> b;
+  protected static int l = 20;
+  public ArrayList<PicResult> h;
+  protected ArrayList<PicFowardInfo> j;
+  protected int k;
   
   public PicFowardInfo a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3)
   {
     Object localObject1 = null;
-    long l;
+    long l1;
     Object localObject2;
     if ((paramMessageForPic != null) && (paramInt >= 0) && (paramString1 != null) && (paramString2 != null))
     {
       if (paramString3 == null) {
         return null;
       }
-      l = System.currentTimeMillis();
+      l1 = System.currentTimeMillis();
       int i;
       if ((!ActionMsgUtil.a(paramMessageForPic.msgtype)) && (paramMessageForPic.msgtype != -3001) && (paramMessageForPic.msgtype != -30002) && (paramMessageForPic.msgtype != -30003)) {
         i = 0;
@@ -64,7 +64,7 @@ public class MultiPicsOperator
         localObject1 = ((URL)localObject2).toString();
       }
       localObject2 = new PicFowardInfo();
-      ((PicFowardInfo)localObject2).b = paramMessageForPic.isSendFromLocal();
+      ((PicFowardInfo)localObject2).d = paramMessageForPic.isSendFromLocal();
       PicUploadInfo.Builder localBuilder = new PicUploadInfo.Builder();
       localBuilder.d(1009);
       localBuilder.a(paramMessageForPic.path);
@@ -72,8 +72,8 @@ public class MultiPicsOperator
       localBuilder.c(10);
       localBuilder.g((int)paramMessageForPic.width);
       localBuilder.h((int)paramMessageForPic.height);
-      String str1 = this.jdField_b_of_type_JavaLangString;
-      String str2 = this.jdField_a_of_type_JavaLangString;
+      String str1 = this.b;
+      String str2 = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("picMsg.width = ");
       localStringBuilder.append(paramMessageForPic.width);
@@ -93,17 +93,17 @@ public class MultiPicsOperator
       localBuilder.e(paramString1);
       localBuilder.d(paramString2);
       localBuilder.f(paramMessageForPic.md5);
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo = localBuilder.a();
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_JavaLangString = paramMessageForPic.localUUID;
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_e_of_type_JavaLangString = "chatimg";
-      paramString1 = ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
-      if ((paramString1.h < 0) && (PicBusUtil.a(paramMessageForPic.path))) {
+      ((PicFowardInfo)localObject2).b = localBuilder.k();
+      ((PicFowardInfo)localObject2).b.a = paramMessageForPic.localUUID;
+      ((PicFowardInfo)localObject2).b.l = "chatimg";
+      paramString1 = ((PicFowardInfo)localObject2).b;
+      if ((paramString1.t < 0) && (PicBusUtil.a(paramMessageForPic.path))) {
         LogTag.a();
       }
     }
     try
     {
-      paramString1.jdField_a_of_type_JavaUtilArrayList = PicBusUtil.a(paramMessageForPic.path);
+      paramString1.r = PicBusUtil.b(paramMessageForPic.path);
     }
     catch (OutOfMemoryError paramString1)
     {
@@ -137,22 +137,22 @@ public class MultiPicsOperator
       paramString1.d(paramMessageForPic.md5);
       paramString1.c(paramMessageForPic.issend);
       paramString1.b(paramMessageForPic.time);
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo = paramString1.a();
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_e_of_type_JavaLangString = "chatimg";
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_e_of_type_Int = paramMessageForPic.fileSizeFlag;
-      ((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.b = paramMessageForPic.groupFileID;
+      ((PicFowardInfo)localObject2).c = paramString1.h();
+      ((PicFowardInfo)localObject2).c.l = "chatimg";
+      ((PicFowardInfo)localObject2).c.t = paramMessageForPic.fileSizeFlag;
+      ((PicFowardInfo)localObject2).c.o = paramMessageForPic.groupFileID;
     }
-    paramMessageForPic = this.jdField_b_of_type_JavaLangString;
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    paramMessageForPic = this.b;
+    paramString1 = this.a;
     paramString2 = new StringBuilder();
     paramString2.append("cost:");
-    paramString2.append(System.currentTimeMillis() - l);
+    paramString2.append(System.currentTimeMillis() - l1);
     Logger.a(paramMessageForPic, paramString1, "createForwardPicInfo", paramString2.toString());
-    paramMessageForPic = this.jdField_b_of_type_JavaLangString;
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    paramMessageForPic = this.b;
+    paramString1 = this.a;
     paramString2 = new StringBuilder();
     paramString2.append("retry:");
-    if (((PicFowardInfo)localObject2).jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo$RetryInfo != null) {
+    if (((PicFowardInfo)localObject2).b.ad != null) {
       bool = true;
     } else {
       bool = false;
@@ -174,7 +174,7 @@ public class MultiPicsOperator
       if (localObject == null) {
         return null;
       }
-      long l = System.currentTimeMillis();
+      long l1 = System.currentTimeMillis();
       paramMessageRecord = new ArrayList();
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
@@ -184,11 +184,11 @@ public class MultiPicsOperator
           paramMessageRecord.add(a((MessageForPic)localMessageRecord, paramInt, paramString1, paramString2, paramString3));
         }
       }
-      paramString1 = this.jdField_b_of_type_JavaLangString;
-      paramString2 = this.jdField_a_of_type_JavaLangString;
+      paramString1 = this.b;
+      paramString2 = this.a;
       paramString3 = new StringBuilder();
       paramString3.append("cost:");
-      paramString3.append(System.currentTimeMillis() - l);
+      paramString3.append(System.currentTimeMillis() - l1);
       Logger.a(paramString1, paramString2, "createForwardPicInfos", paramString3.toString());
       return paramMessageRecord;
     }
@@ -197,18 +197,18 @@ public class MultiPicsOperator
   
   public void a()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_JavaUtilArrayList);
+    a(this.c.j);
   }
   
   public void a(ArrayList<PicFowardInfo> paramArrayList)
   {
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      ((PicFowardInfo)paramArrayList.get(0)).jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = a((PicFowardInfo)paramArrayList.get(0));
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList.size());
-      this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
-      this.jdField_a_of_type_Int = 0;
+      ((PicFowardInfo)paramArrayList.get(0)).a = true;
+      this.i = a((PicFowardInfo)paramArrayList.get(0));
+      this.h = new ArrayList(paramArrayList.size());
+      this.j = paramArrayList;
+      this.k = 0;
       System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("MultiPicsOperator", 2, "[uploadForwardMultiMsgPics] start");
@@ -224,31 +224,31 @@ public class MultiPicsOperator
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_JavaUtilArrayList.size())
+    if (this.k >= this.j.size())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MultiPicsOperator", 2, String.format("createPicsUploadTask total:%d finished and notifyUI", new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
+        QLog.d("MultiPicsOperator", 2, String.format("createPicsUploadTask total:%d finished and notifyUI", new Object[] { Integer.valueOf(this.j.size()) }));
       }
-      a(5, 0, this.jdField_a_of_type_JavaUtilArrayList);
+      a(5, 0, this.h);
       return;
     }
     int i;
-    if (this.jdField_a_of_type_Int + jdField_b_of_type_Int < this.jdField_b_of_type_JavaUtilArrayList.size()) {
-      i = this.jdField_a_of_type_Int + jdField_b_of_type_Int;
+    if (this.k + l < this.j.size()) {
+      i = this.k + l;
     } else {
-      i = this.jdField_b_of_type_JavaUtilArrayList.size();
+      i = this.j.size();
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MultiPicsOperator", 2, String.format("createPicsUploadTask startIdx:%d, finishIdx:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(i) }));
+      QLog.d("MultiPicsOperator", 2, String.format("createPicsUploadTask startIdx:%d, finishIdx:%d", new Object[] { Integer.valueOf(this.k), Integer.valueOf(i) }));
     }
-    List localList = this.jdField_b_of_type_JavaUtilArrayList.subList(this.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Int = i;
-    new MultiPicsOperator.MultiPicsUploadTask(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localList).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+    List localList = this.j.subList(this.k, i);
+    this.k = i;
+    new MultiPicsOperator.MultiPicsUploadTask(this, this.e, localList).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.multipic.MultiPicsOperator
  * JD-Core Version:    0.7.0.1
  */

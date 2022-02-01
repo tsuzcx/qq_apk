@@ -5,9 +5,9 @@ import android.graphics.drawable.Drawable;
 public class NormalAvTipsItem
   extends AvTipsItemBase
 {
-  protected Drawable a;
-  protected String b = null;
-  protected int k = 0;
+  protected String m = null;
+  protected int n = 0;
+  protected Drawable o;
   
   public NormalAvTipsItem(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
@@ -17,8 +17,8 @@ public class NormalAvTipsItem
   public NormalAvTipsItem(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
-    this.b = paramString2;
-    this.k = paramInt5;
+    this.m = paramString2;
+    this.n = paramInt5;
   }
   
   public int a()
@@ -26,29 +26,29 @@ public class NormalAvTipsItem
     return 1;
   }
   
-  public Drawable a()
-  {
-    return this.a;
-  }
-  
   public void a(Drawable paramDrawable)
   {
-    this.a = paramDrawable;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    this.o = paramDrawable;
   }
   
   public void b(int paramInt)
   {
-    this.k = paramInt;
+    this.n = paramInt;
   }
   
-  public int k()
+  public Drawable n()
   {
-    return this.k;
+    return this.o;
+  }
+  
+  public String o()
+  {
+    return this.m;
+  }
+  
+  public int p()
+  {
+    return this.n;
   }
 }
 

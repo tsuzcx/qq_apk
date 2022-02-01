@@ -15,7 +15,7 @@ public class PublicAcntParser
 {
   ISearchResultGroupModel a(SearchResult paramSearchResult, List<ISearchResultModel> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    SearchStatisticsConstants.a(90);
+    SearchStatisticsConstants.b(90);
     return new GroupNetSearchModelPublicAcnt(paramSearchResult, paramList, paramString1);
   }
   
@@ -31,7 +31,7 @@ public class PublicAcntParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.PublicAcntParser
  * JD-Core Version:    0.7.0.1
  */

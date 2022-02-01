@@ -13,11 +13,11 @@ class MedalGuideView$9
   public void onDismiss()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.s) }));
     }
     MedalGuideView localMedalGuideView = this.a;
-    localMedalGuideView.d = true;
-    localMedalGuideView.a.performClick();
+    localMedalGuideView.s = true;
+    localMedalGuideView.h.performClick();
   }
 }
 

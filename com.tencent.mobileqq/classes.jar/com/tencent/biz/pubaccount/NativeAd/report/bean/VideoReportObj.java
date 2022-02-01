@@ -16,21 +16,21 @@ import org.json.JSONObject;
 public final class VideoReportObj
   extends IReportObj
 {
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private Integer jdField_a_of_type_JavaLangInteger;
-  private int jdField_b_of_type_Int;
-  @Nullable
-  private Integer jdField_b_of_type_JavaLangInteger;
-  private int jdField_c_of_type_Int = 1;
-  @Nullable
-  private Integer jdField_c_of_type_JavaLangInteger;
-  private int jdField_d_of_type_Int = 1;
-  @Nullable
-  private Integer jdField_d_of_type_JavaLangInteger;
+  private int a;
+  private int b;
+  private int c = 1;
+  private int d = 1;
   private int e;
   private int f = 1;
   private int g;
+  @Nullable
+  private Integer h;
+  @Nullable
+  private Integer i;
+  @Nullable
+  private Integer j;
+  @Nullable
+  private Integer k;
   
   private final int a(JSONObject paramJSONObject)
   {
@@ -59,39 +59,10 @@ public final class VideoReportObj
     return paramJSONObject.optInt("ps", 0);
   }
   
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public final Integer a()
-  {
-    return this.jdField_a_of_type_JavaLangInteger;
-  }
-  
   @NotNull
   public String a()
   {
     return "video";
-  }
-  
-  @Nullable
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    ReportExKt.a(localJSONObject, "videoBeginTime", Integer.valueOf(this.jdField_a_of_type_Int));
-    ReportExKt.a(localJSONObject, "videoEndTime", Integer.valueOf(this.jdField_b_of_type_Int));
-    ReportExKt.a(localJSONObject, "videoBeginFrame", Integer.valueOf(this.jdField_c_of_type_Int));
-    ReportExKt.a(localJSONObject, "videoEndFrame", Integer.valueOf(this.jdField_d_of_type_Int));
-    ReportExKt.a(localJSONObject, "videoPlayPosition", Integer.valueOf(this.e));
-    ReportExKt.a(localJSONObject, "videoEndType", Integer.valueOf(this.f));
-    ReportExKt.a(localJSONObject, "videoDuration", Integer.valueOf(this.g));
-    ReportExKt.a(localJSONObject, "videoPlayError", this.jdField_a_of_type_JavaLangInteger);
-    ReportExKt.a(localJSONObject, "videoPlayDuration", this.jdField_b_of_type_JavaLangInteger);
-    ReportExKt.a(localJSONObject, "videoPlayType", this.jdField_c_of_type_JavaLangInteger);
-    ReportExKt.a(localJSONObject, "videoReplayCount", this.jdField_d_of_type_JavaLangInteger);
-    return localJSONObject;
   }
   
   public void a(@NotNull AdReportData paramAdReportData)
@@ -100,67 +71,96 @@ public final class VideoReportObj
     if (AdReportUtil.a(paramAdReportData) != ReportAction.VIDEO_SEE_TIME) {
       return;
     }
-    JSONObject localJSONObject = paramAdReportData.a();
+    JSONObject localJSONObject = paramAdReportData.l();
     if (localJSONObject != null) {}
     try
     {
-      this.jdField_a_of_type_Int = localJSONObject.optInt("bt");
-      this.jdField_b_of_type_Int = localJSONObject.optInt("et");
-      this.jdField_c_of_type_Int = localJSONObject.optInt("bf");
-      this.jdField_d_of_type_Int = localJSONObject.optInt("ef");
-      paramAdReportData = paramAdReportData.a().scene;
+      this.a = localJSONObject.optInt("bt");
+      this.b = localJSONObject.optInt("et");
+      this.c = localJSONObject.optInt("bf");
+      this.d = localJSONObject.optInt("ef");
+      paramAdReportData = paramAdReportData.g().scene;
       this.e = 0;
-      this.jdField_c_of_type_JavaLangInteger = Integer.valueOf(a(localJSONObject));
+      this.j = Integer.valueOf(a(localJSONObject));
       this.f = b(localJSONObject);
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(c(localJSONObject));
+      this.h = Integer.valueOf(c(localJSONObject));
       this.g = localJSONObject.optInt("duration");
-      this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int);
-      this.jdField_d_of_type_JavaLangInteger = Integer.valueOf(localJSONObject.optInt("videoReplayCount"));
+      this.i = Integer.valueOf(this.b - this.a);
+      this.k = Integer.valueOf(localJSONObject.optInt("videoReplayCount"));
       return;
     }
     catch (Throwable paramAdReportData) {}
   }
   
-  public boolean a()
-  {
-    int i = this.jdField_a_of_type_Int;
-    return true;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
   @Nullable
-  public final Integer b()
+  public JSONObject b()
   {
-    return this.jdField_c_of_type_JavaLangInteger;
+    JSONObject localJSONObject = new JSONObject();
+    ReportExKt.a(localJSONObject, "videoBeginTime", Integer.valueOf(this.a));
+    ReportExKt.a(localJSONObject, "videoEndTime", Integer.valueOf(this.b));
+    ReportExKt.a(localJSONObject, "videoBeginFrame", Integer.valueOf(this.c));
+    ReportExKt.a(localJSONObject, "videoEndFrame", Integer.valueOf(this.d));
+    ReportExKt.a(localJSONObject, "videoPlayPosition", Integer.valueOf(this.e));
+    ReportExKt.a(localJSONObject, "videoEndType", Integer.valueOf(this.f));
+    ReportExKt.a(localJSONObject, "videoDuration", Integer.valueOf(this.g));
+    ReportExKt.a(localJSONObject, "videoPlayError", this.h);
+    ReportExKt.a(localJSONObject, "videoPlayDuration", this.i);
+    ReportExKt.a(localJSONObject, "videoPlayType", this.j);
+    ReportExKt.a(localJSONObject, "videoReplayCount", this.k);
+    return localJSONObject;
   }
   
-  public final int c()
+  public boolean c()
   {
-    return this.jdField_c_of_type_Int;
+    int m = this.a;
+    return true;
   }
   
   public final int d()
   {
-    return this.jdField_d_of_type_Int;
+    return this.a;
   }
   
   public final int e()
   {
-    return this.e;
+    return this.b;
   }
   
   public final int f()
   {
+    return this.c;
+  }
+  
+  public final int g()
+  {
+    return this.d;
+  }
+  
+  public final int h()
+  {
+    return this.e;
+  }
+  
+  public final int i()
+  {
     return this.f;
+  }
+  
+  @Nullable
+  public final Integer j()
+  {
+    return this.h;
+  }
+  
+  @Nullable
+  public final Integer k()
+  {
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.VideoReportObj
  * JD-Core Version:    0.7.0.1
  */

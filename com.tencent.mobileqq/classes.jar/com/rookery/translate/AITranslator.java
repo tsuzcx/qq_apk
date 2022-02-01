@@ -26,11 +26,11 @@ import java.util.Set;
 
 public class AITranslator
 {
-  private static AITranslator jdField_a_of_type_ComRookeryTranslateAITranslator;
-  private GoogleInfo jdField_a_of_type_ComRookeryTranslateGoogleGoogleInfo = new GoogleInfo();
-  private MicrosoftInfo jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo = new MicrosoftInfo();
-  private List<String> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private boolean jdField_a_of_type_Boolean = true;
+  private static AITranslator a;
+  private GoogleInfo b = new GoogleInfo();
+  private MicrosoftInfo c = new MicrosoftInfo();
+  private boolean d = true;
+  private List<String> e = Collections.synchronizedList(new ArrayList());
   
   private long a(long paramLong, AITranslator.TranslatorType paramTranslatorType)
   {
@@ -84,38 +84,14 @@ public class AITranslator
     return l;
   }
   
-  private AITranslator.TranslatorType a(Context paramContext)
-  {
-    long l1 = a(paramContext, AITranslator.TranslatorType.GOOGLE);
-    long l2 = a(paramContext, AITranslator.TranslatorType.MS);
-    if ((l1 == 9223372036854775807L) && (l2 == 9223372036854775807L))
-    {
-      a(paramContext, AITranslator.TranslatorType.MS, 0L);
-      a(paramContext, AITranslator.TranslatorType.GOOGLE, 0L);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder();
-      paramContext.append("google: ");
-      paramContext.append(l1);
-      paramContext.append("\t MS:");
-      paramContext.append(l2);
-      QLog.i("Translator", 2, paramContext.toString());
-    }
-    if (l2 <= l1) {
-      return AITranslator.TranslatorType.MS;
-    }
-    return AITranslator.TranslatorType.GOOGLE;
-  }
-  
   public static AITranslator a()
   {
     try
     {
-      if (jdField_a_of_type_ComRookeryTranslateAITranslator == null) {
-        jdField_a_of_type_ComRookeryTranslateAITranslator = new AITranslator();
+      if (a == null) {
+        a = new AITranslator();
       }
-      AITranslator localAITranslator = jdField_a_of_type_ComRookeryTranslateAITranslator;
+      AITranslator localAITranslator = a;
       return localAITranslator;
     }
     finally {}
@@ -277,9 +253,9 @@ public class AITranslator
     if (paramInt >= AITranslator.TranslatorType.values().length) {
       return;
     }
-    AITranslator.TranslatorType localTranslatorType = a(paramContext);
+    AITranslator.TranslatorType localTranslatorType = b(paramContext);
     Long localLong = Long.valueOf(System.currentTimeMillis());
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.e)
     {
       int i = AITranslator.4.a[localTranslatorType.ordinal()];
       Object localObject1;
@@ -295,12 +271,12 @@ public class AITranslator
           paramLong1.append(paramLanguage.toString());
           paramLong1.append("M");
           localObject1 = paramLong1.toString();
-          if (!this.jdField_a_of_type_JavaUtilList.contains(localObject1))
+          if (!this.e.contains(localObject1))
           {
-            this.jdField_a_of_type_JavaUtilList.add(localObject1);
+            this.e.add(localObject1);
             localObject2 = MicrosoftTranslator.a();
-            str1 = this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.a();
-            str2 = this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftInfo.b();
+            str1 = this.c.b();
+            str2 = this.c.c();
             paramLong1 = ???;
           }
         }
@@ -323,12 +299,12 @@ public class AITranslator
           paramLong1 = (Long)localObject1;
           localObject2 = ((StringBuilder)localObject2).toString();
           paramLong1 = (Long)localObject1;
-          if (!this.jdField_a_of_type_JavaUtilList.contains(localObject2))
+          if (!this.e.contains(localObject2))
           {
             paramLong1 = (Long)localObject1;
-            this.jdField_a_of_type_JavaUtilList.add(localObject2);
+            this.e.add(localObject2);
             paramLong1 = (Long)localObject1;
-            GoogleTranslator.a().a(paramContext, paramList1, paramLanguage, this.jdField_a_of_type_ComRookeryTranslateGoogleGoogleInfo.a(), localLong, new AITranslator.1(this, (String)localObject2, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList, paramList1, paramInt, localTranslatorType));
+            GoogleTranslator.a().a(paramContext, paramList1, paramLanguage, this.b.b(), localLong, new AITranslator.1(this, (String)localObject2, paramLong, paramContext, paramHolder, paramString, paramLanguage, paramTranslateCallback, paramList, paramList1, paramInt, localTranslatorType));
           }
           label358:
           paramLong1 = ???;
@@ -344,27 +320,6 @@ public class AITranslator
         paramLong1 = paramHolder;
         throw paramContext;
       }
-    }
-  }
-  
-  @TargetApi(9)
-  private void a(Context paramContext)
-  {
-    Long localLong = Long.valueOf(paramContext.getSharedPreferences("[Translate]pref", 0).getLong("pref_policy_update_time", 0L));
-    if ((localLong.longValue() != 0L) && (System.currentTimeMillis() - localLong.longValue() <= 86400000L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Translator", 2, "needn't update policy");
-      }
-    }
-    else
-    {
-      if (Build.VERSION.SDK_INT >= 9) {
-        paramContext.getSharedPreferences("[Translate]pref", 0).edit().putLong("pref_policy_update_time", System.currentTimeMillis()).apply();
-      } else {
-        paramContext.getSharedPreferences("[Translate]pref", 0).edit().putLong("pref_policy_update_time", System.currentTimeMillis()).commit();
-      }
-      PolicyClient.a(paramContext, new AITranslator.3(this, paramContext));
     }
   }
   
@@ -415,13 +370,58 @@ public class AITranslator
     }
   }
   
-  public static boolean a()
+  private AITranslator.TranslatorType b(Context paramContext)
+  {
+    long l1 = a(paramContext, AITranslator.TranslatorType.GOOGLE);
+    long l2 = a(paramContext, AITranslator.TranslatorType.MS);
+    if ((l1 == 9223372036854775807L) && (l2 == 9223372036854775807L))
+    {
+      a(paramContext, AITranslator.TranslatorType.MS, 0L);
+      a(paramContext, AITranslator.TranslatorType.GOOGLE, 0L);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("google: ");
+      paramContext.append(l1);
+      paramContext.append("\t MS:");
+      paramContext.append(l2);
+      QLog.i("Translator", 2, paramContext.toString());
+    }
+    if (l2 <= l1) {
+      return AITranslator.TranslatorType.MS;
+    }
+    return AITranslator.TranslatorType.GOOGLE;
+  }
+  
+  public static boolean b()
   {
     try
     {
-      return jdField_a_of_type_ComRookeryTranslateAITranslator != null;
+      return a != null;
     }
     finally {}
+  }
+  
+  @TargetApi(9)
+  private void c(Context paramContext)
+  {
+    Long localLong = Long.valueOf(paramContext.getSharedPreferences("[Translate]pref", 0).getLong("pref_policy_update_time", 0L));
+    if ((localLong.longValue() != 0L) && (System.currentTimeMillis() - localLong.longValue() <= 86400000L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Translator", 2, "needn't update policy");
+      }
+    }
+    else
+    {
+      if (Build.VERSION.SDK_INT >= 9) {
+        paramContext.getSharedPreferences("[Translate]pref", 0).edit().putLong("pref_policy_update_time", System.currentTimeMillis()).apply();
+      } else {
+        paramContext.getSharedPreferences("[Translate]pref", 0).edit().putLong("pref_policy_update_time", System.currentTimeMillis()).commit();
+      }
+      PolicyClient.a(paramContext, new AITranslator.3(this, paramContext));
+    }
   }
   
   public Boolean a(Context paramContext)
@@ -445,11 +445,11 @@ public class AITranslator
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append(" ");
     localObject = a(((StringBuilder)localObject).toString());
-    long l2 = paramHolder.b;
-    if (this.jdField_a_of_type_Boolean == true)
+    long l2 = paramHolder.c;
+    if (this.d == true)
     {
-      a(paramContext);
-      this.jdField_a_of_type_Boolean = false;
+      c(paramContext);
+      this.d = false;
     }
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = ((List)localObject).iterator();
@@ -472,10 +472,10 @@ public class AITranslator
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    if (TranslateClient.a()) {
+    if (TranslateClient.b()) {
       TranslateClient.a().a(paramContext, paramBoolean);
     }
-    paramContext = this.jdField_a_of_type_JavaUtilList;
+    paramContext = this.e;
     if (paramContext != null) {
       paramContext.clear();
     }

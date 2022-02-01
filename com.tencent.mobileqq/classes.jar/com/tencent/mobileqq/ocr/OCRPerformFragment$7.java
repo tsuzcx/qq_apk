@@ -13,16 +13,16 @@ class OCRPerformFragment$7
   {
     if ((paramOptionItem != null) && (!TextUtils.isEmpty(paramOptionItem.b)))
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.b.equalsIgnoreCase(paramOptionItem.b)) {
-        OCRPerformFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformFragment, paramOptionItem.b, this.jdField_a_of_type_ComTencentMobileqqOcrOCRPerformUtil$OCRLanHolder.b(paramOptionItem.b), false);
+      if (!this.a.d.equalsIgnoreCase(paramOptionItem.b)) {
+        OCRPerformFragment.a(this.b, paramOptionItem.b, this.a.f(paramOptionItem.b), false);
       }
-      OCRPerformUtil.a("0X800B559", OCRPerformUtil.a(paramOptionItem.b));
+      OCRPerformUtil.a("0X800B559", OCRPerformUtil.c(paramOptionItem.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.7
  * JD-Core Version:    0.7.0.1
  */

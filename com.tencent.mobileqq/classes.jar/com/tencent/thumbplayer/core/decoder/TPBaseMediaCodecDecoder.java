@@ -34,6 +34,7 @@ public abstract class TPBaseMediaCodecDecoder
   private static final int MSG_RELEASE = 1003;
   private static final int MSG_RELEASE_OUTPUT_BUFFER = 1000;
   private static final int MSG_SET_OUTPUT_SURFACE = 1001;
+  public static boolean forceRelease = false;
   private TMediaCodec mCodec = null;
   protected int mCodecId;
   private MediaCodec.CryptoInfo mCryptoInfo = null;
@@ -153,6 +154,106 @@ public abstract class TPBaseMediaCodecDecoder
     return waitingForHandleMessage(localMessage);
   }
   
+  /* Error */
+  private int forceHandleRelease()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnonnull +6 -> 12
+    //   9: bipush 101
+    //   11: ireturn
+    //   12: aload_0
+    //   13: iconst_0
+    //   14: putfield 73	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mStarted	Z
+    //   17: aload_1
+    //   18: invokevirtual 252	com/tencent/tmediacodec/TMediaCodec:stop	()V
+    //   21: goto +44 -> 65
+    //   24: astore_1
+    //   25: aload_0
+    //   26: invokevirtual 225	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getLogTag	()Ljava/lang/String;
+    //   29: astore_2
+    //   30: new 254	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 255	java/lang/StringBuilder:<init>	()V
+    //   37: astore_3
+    //   38: aload_3
+    //   39: ldc_w 257
+    //   42: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload_3
+    //   47: aload_0
+    //   48: aload_1
+    //   49: invokevirtual 265	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   52: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: iconst_4
+    //   57: aload_2
+    //   58: aload_3
+    //   59: invokevirtual 268	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokestatic 233	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   65: aload_0
+    //   66: getfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   69: invokevirtual 271	com/tencent/tmediacodec/TMediaCodec:release	()V
+    //   72: aload_0
+    //   73: aconst_null
+    //   74: putfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   77: iconst_0
+    //   78: ireturn
+    //   79: astore_1
+    //   80: goto +51 -> 131
+    //   83: astore_1
+    //   84: aload_0
+    //   85: invokevirtual 225	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getLogTag	()Ljava/lang/String;
+    //   88: astore_2
+    //   89: new 254	java/lang/StringBuilder
+    //   92: dup
+    //   93: invokespecial 255	java/lang/StringBuilder:<init>	()V
+    //   96: astore_3
+    //   97: aload_3
+    //   98: ldc_w 273
+    //   101: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: pop
+    //   105: aload_3
+    //   106: aload_0
+    //   107: aload_1
+    //   108: invokevirtual 265	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   111: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: pop
+    //   115: iconst_4
+    //   116: aload_2
+    //   117: aload_3
+    //   118: invokevirtual 268	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 233	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   124: aload_0
+    //   125: aconst_null
+    //   126: putfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   129: iconst_3
+    //   130: ireturn
+    //   131: aload_0
+    //   132: aconst_null
+    //   133: putfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   136: aload_1
+    //   137: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	138	0	this	TPBaseMediaCodecDecoder
+    //   4	14	1	localTMediaCodec	TMediaCodec
+    //   24	25	1	localException1	Exception
+    //   79	1	1	localObject	Object
+    //   83	54	1	localException2	Exception
+    //   29	88	2	str	String
+    //   37	81	3	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   17	21	24	java/lang/Exception
+    //   65	72	79	finally
+    //   84	124	79	finally
+    //   65	72	83	java/lang/Exception
+  }
+  
   private int handleFlush()
   {
     TPNativeLog.printLog(2, getLogTag(), "handleFlush: ");
@@ -177,78 +278,17 @@ public abstract class TPBaseMediaCodecDecoder
     this.mThreadLock.notify();
   }
   
-  /* Error */
   private int handleRelease()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 67	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
-    //   4: astore_1
-    //   5: aload_1
-    //   6: ifnonnull +6 -> 12
-    //   9: bipush 101
-    //   11: ireturn
-    //   12: aload_0
-    //   13: iconst_0
-    //   14: putfield 71	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mStarted	Z
-    //   17: aload_1
-    //   18: invokevirtual 258	com/tencent/tmediacodec/TMediaCodec:stop	()V
-    //   21: aload_0
-    //   22: getfield 67	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
-    //   25: invokevirtual 261	com/tencent/tmediacodec/TMediaCodec:release	()V
-    //   28: aload_0
-    //   29: aconst_null
-    //   30: putfield 67	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
-    //   33: iconst_0
-    //   34: ireturn
-    //   35: astore_1
-    //   36: goto +51 -> 87
-    //   39: astore_1
-    //   40: aload_0
-    //   41: invokevirtual 223	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getLogTag	()Ljava/lang/String;
-    //   44: astore_2
-    //   45: new 263	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 264	java/lang/StringBuilder:<init>	()V
-    //   52: astore_3
-    //   53: aload_3
-    //   54: ldc_w 266
-    //   57: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: pop
-    //   61: aload_3
-    //   62: aload_0
-    //   63: aload_1
-    //   64: invokevirtual 274	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   67: invokevirtual 270	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   70: pop
-    //   71: iconst_4
-    //   72: aload_2
-    //   73: aload_3
-    //   74: invokevirtual 277	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokestatic 231	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
-    //   80: aload_0
-    //   81: aconst_null
-    //   82: putfield 67	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
-    //   85: iconst_3
-    //   86: ireturn
-    //   87: aload_0
-    //   88: aconst_null
-    //   89: putfield 67	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
-    //   92: aload_1
-    //   93: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	94	0	this	TPBaseMediaCodecDecoder
-    //   4	14	1	localTMediaCodec	TMediaCodec
-    //   35	1	1	localObject	Object
-    //   39	54	1	localException	Exception
-    //   44	29	2	str	String
-    //   52	22	3	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   17	28	35	finally
-    //   40	80	35	finally
-    //   17	28	39	java/lang/Exception
+    String str = getLogTag();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleRelease:");
+    localStringBuilder.append(forceRelease);
+    TPNativeLog.printLog(4, str, localStringBuilder.toString());
+    if (forceRelease) {
+      return forceHandleRelease();
+    }
+    return originHandleRelease();
   }
   
   private int handleReleaseOutputBuffer(int paramInt, boolean paramBoolean)
@@ -500,6 +540,80 @@ public abstract class TPBaseMediaCodecDecoder
   private int onSetOutputSurface(Surface paramSurface)
   {
     return handleSetOutputSurface(paramSurface);
+  }
+  
+  /* Error */
+  private int originHandleRelease()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnonnull +6 -> 12
+    //   9: bipush 101
+    //   11: ireturn
+    //   12: aload_0
+    //   13: iconst_0
+    //   14: putfield 73	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mStarted	Z
+    //   17: aload_1
+    //   18: invokevirtual 252	com/tencent/tmediacodec/TMediaCodec:stop	()V
+    //   21: aload_0
+    //   22: getfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   25: invokevirtual 271	com/tencent/tmediacodec/TMediaCodec:release	()V
+    //   28: aload_0
+    //   29: aconst_null
+    //   30: putfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   33: iconst_0
+    //   34: ireturn
+    //   35: astore_1
+    //   36: goto +51 -> 87
+    //   39: astore_1
+    //   40: aload_0
+    //   41: invokevirtual 225	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getLogTag	()Ljava/lang/String;
+    //   44: astore_2
+    //   45: new 254	java/lang/StringBuilder
+    //   48: dup
+    //   49: invokespecial 255	java/lang/StringBuilder:<init>	()V
+    //   52: astore_3
+    //   53: aload_3
+    //   54: ldc_w 273
+    //   57: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload_3
+    //   62: aload_0
+    //   63: aload_1
+    //   64: invokevirtual 265	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:getStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   67: invokevirtual 261	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: pop
+    //   71: iconst_4
+    //   72: aload_2
+    //   73: aload_3
+    //   74: invokevirtual 268	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   77: invokestatic 233	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   80: aload_0
+    //   81: aconst_null
+    //   82: putfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   85: iconst_3
+    //   86: ireturn
+    //   87: aload_0
+    //   88: aconst_null
+    //   89: putfield 69	com/tencent/thumbplayer/core/decoder/TPBaseMediaCodecDecoder:mCodec	Lcom/tencent/tmediacodec/TMediaCodec;
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	TPBaseMediaCodecDecoder
+    //   4	14	1	localTMediaCodec	TMediaCodec
+    //   35	1	1	localObject	Object
+    //   39	54	1	localException	Exception
+    //   44	29	2	str	String
+    //   52	22	3	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   17	28	35	finally
+    //   40	80	35	finally
+    //   17	28	39	java/lang/Exception
   }
   
   private int queueInputBuffer(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
@@ -905,7 +1019,7 @@ public abstract class TPBaseMediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPBaseMediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

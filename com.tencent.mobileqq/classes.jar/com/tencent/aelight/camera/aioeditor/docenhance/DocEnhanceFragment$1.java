@@ -8,12 +8,12 @@ final class DocEnhanceFragment$1
 {
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 2131712393, 1).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 2131909988, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.docenhance.DocEnhanceFragment.1
  * JD-Core Version:    0.7.0.1
  */

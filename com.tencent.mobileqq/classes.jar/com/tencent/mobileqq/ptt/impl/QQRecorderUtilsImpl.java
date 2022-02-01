@@ -78,12 +78,12 @@ public class QQRecorderUtilsImpl
   {
     if (paramInt == 0)
     {
-      if (AmrInputStreamWrapper.a()) {
+      if (AmrInputStreamWrapper.b()) {
         return true;
       }
       return FileUtils.getAvailableInnernalMemorySize() > 327680.0F;
     }
-    if (SilkCodecWrapper.a()) {
+    if (SilkCodecWrapper.b()) {
       return true;
     }
     return FileUtils.getAvailableInnernalMemorySize() > 1310720.0F;
@@ -152,7 +152,7 @@ public class QQRecorderUtilsImpl
     //   71: aload 9
     //   73: astore 10
     //   75: aload 12
-    //   77: invokestatic 113	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	([B)Z
+    //   77: invokestatic 114	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	([B)Z
     //   80: ifeq +39 -> 119
     //   83: aload_1
     //   84: astore 8
@@ -162,16 +162,16 @@ public class QQRecorderUtilsImpl
     //   92: iconst_0
     //   93: baload
     //   94: aload 9
-    //   96: invokestatic 116	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(BLjava/io/InputStream;)I
+    //   96: invokestatic 117	com/tencent/mobileqq/qqaudio/QQAudioUtils:a	(BLjava/io/InputStream;)I
     //   99: istore 6
     //   101: iload 6
     //   103: i2d
     //   104: dstore_2
     //   105: dload_2
-    //   106: invokestatic 122	java/lang/Double:isNaN	(D)Z
+    //   106: invokestatic 123	java/lang/Double:isNaN	(D)Z
     //   109: pop
     //   110: dload_2
-    //   111: ldc2_w 123
+    //   111: ldc2_w 124
     //   114: ddiv
     //   115: dstore_2
     //   116: goto +65 -> 181
@@ -189,7 +189,7 @@ public class QQRecorderUtilsImpl
     //   135: i2d
     //   136: dstore_2
     //   137: dload_2
-    //   138: invokestatic 122	java/lang/Double:isNaN	(D)Z
+    //   138: invokestatic 123	java/lang/Double:isNaN	(D)Z
     //   141: pop
     //   142: aload_1
     //   143: astore 8
@@ -203,14 +203,14 @@ public class QQRecorderUtilsImpl
     //   159: i2d
     //   160: dstore 4
     //   162: dload 4
-    //   164: invokestatic 122	java/lang/Double:isNaN	(D)Z
+    //   164: invokestatic 123	java/lang/Double:isNaN	(D)Z
     //   167: pop
     //   168: dload_2
-    //   169: ldc2_w 125
+    //   169: ldc2_w 126
     //   172: dsub
     //   173: dload 4
     //   175: ddiv
-    //   176: ldc2_w 127
+    //   176: ldc2_w 128
     //   179: ddiv
     //   180: dstore_2
     //   181: aload_1
@@ -218,9 +218,9 @@ public class QQRecorderUtilsImpl
     //   184: aload 9
     //   186: astore 10
     //   188: aload 9
-    //   190: invokevirtual 131	java/io/DataInputStream:close	()V
+    //   190: invokevirtual 132	java/io/DataInputStream:close	()V
     //   193: aload_1
-    //   194: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   194: invokevirtual 133	java/io/FileInputStream:close	()V
     //   197: aconst_null
     //   198: astore 9
     //   200: aload 11
@@ -231,14 +231,14 @@ public class QQRecorderUtilsImpl
     //   208: aload_1
     //   209: ifnull +7 -> 216
     //   212: aload_1
-    //   213: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   213: invokevirtual 133	java/io/FileInputStream:close	()V
     //   216: aload 9
     //   218: ifnull +8 -> 226
     //   221: aload 9
-    //   223: invokevirtual 131	java/io/DataInputStream:close	()V
+    //   223: invokevirtual 132	java/io/DataInputStream:close	()V
     //   226: aload_0
     //   227: dload_2
-    //   228: invokevirtual 134	com/tencent/mobileqq/ptt/impl/QQRecorderUtilsImpl:dsToIs	(D)I
+    //   228: invokevirtual 135	com/tencent/mobileqq/ptt/impl/QQRecorderUtilsImpl:dsToIs	(D)I
     //   231: ireturn
     //   232: astore 11
     //   234: aload_1
@@ -274,15 +274,15 @@ public class QQRecorderUtilsImpl
     //   288: aload_1
     //   289: astore 10
     //   291: aload 11
-    //   293: invokevirtual 137	java/lang/Exception:printStackTrace	()V
+    //   293: invokevirtual 138	java/lang/Exception:printStackTrace	()V
     //   296: aload 12
     //   298: ifnull +8 -> 306
     //   301: aload 12
-    //   303: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   303: invokevirtual 133	java/io/FileInputStream:close	()V
     //   306: aload_1
     //   307: ifnull +7 -> 314
     //   310: aload_1
-    //   311: invokevirtual 131	java/io/DataInputStream:close	()V
+    //   311: invokevirtual 132	java/io/DataInputStream:close	()V
     //   314: iconst_0
     //   315: ireturn
     //   316: astore 9
@@ -293,11 +293,11 @@ public class QQRecorderUtilsImpl
     //   325: aload_1
     //   326: ifnull +7 -> 333
     //   329: aload_1
-    //   330: invokevirtual 132	java/io/FileInputStream:close	()V
+    //   330: invokevirtual 133	java/io/FileInputStream:close	()V
     //   333: aload 10
     //   335: ifnull +8 -> 343
     //   338: aload 10
-    //   340: invokevirtual 131	java/io/DataInputStream:close	()V
+    //   340: invokevirtual 132	java/io/DataInputStream:close	()V
     //   343: aload 8
     //   345: athrow
     //   346: astore_1
@@ -403,7 +403,7 @@ public class QQRecorderUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.impl.QQRecorderUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

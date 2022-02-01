@@ -12,7 +12,7 @@ public class LiveAudience
 {
   public static AudienceRoomViewPager createAudienceRoomPager(Context paramContext, EnterRoomConfig paramEnterRoomConfig)
   {
-    paramContext = (AudienceRoomViewPager)LayoutInflater.from(paramContext).inflate(2131559245, null).findViewById(2131363023);
+    paramContext = (AudienceRoomViewPager)LayoutInflater.from(paramContext).inflate(2131625165, null).findViewById(2131428833);
     paramContext.setIntent(getEnterRoomIntent(paramEnterRoomConfig));
     return paramContext;
   }
@@ -80,7 +80,7 @@ public class LiveAudience
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.LiveAudience
  * JD-Core Version:    0.7.0.1
  */

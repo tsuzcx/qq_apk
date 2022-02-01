@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.contact.addcontact.QzoneSearchResultView android:orientation="horizontal" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mobileqq.activity.contact.addcontact.QzoneSearchResultView android:orientation="horizontal" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/d3i" android:duplicateParentState="true" android:layout_width="@dimen/ajm" android:layout_height="@dimen/ajm" android:layout_marginLeft="@dimen/ajj" android:layout_marginTop="@dimen/ajl" android:layout_marginRight="@dimen/ajj" android:layout_marginBottom="@dimen/ajl" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <LinearLayout android:orientation="vertical" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ajl">

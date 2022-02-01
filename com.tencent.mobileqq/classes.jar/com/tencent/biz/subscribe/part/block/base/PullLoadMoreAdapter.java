@@ -29,332 +29,250 @@ public abstract class PullLoadMoreAdapter<E>
   extends BaseListViewAdapter<E>
   implements RefreshHeaderView.OnRefreshListener
 {
-  private static String jdField_g_of_type_JavaLangString = "PullLoadMoreAdapter";
-  protected final Handler a;
-  protected RecyclerView.LayoutManager a;
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  protected RecyclerView a;
-  private View jdField_a_of_type_AndroidViewView;
-  private RefreshHeaderView jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
-  protected String a;
-  private boolean jdField_a_of_type_Boolean = false;
-  protected String b;
-  private boolean b;
-  protected String c;
-  private boolean c;
-  protected String d;
-  private boolean d;
-  protected String e;
-  private boolean e;
-  protected String f;
-  private boolean f;
-  private boolean jdField_g_of_type_Boolean = true;
-  
-  public PullLoadMoreAdapter()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131702454);
-    this.jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131702528);
-    this.jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131702527);
-    this.jdField_d_of_type_JavaLangString = HardCodeUtil.a(2131697959);
-    this.jdField_e_of_type_JavaLangString = HardCodeUtil.a(2131708850);
-    this.jdField_f_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  protected int a(int paramInt)
-  {
-    int i = paramInt;
-    if (this.jdField_b_of_type_Boolean) {
-      i = paramInt - 1;
-    }
-    return i;
-  }
+  private static String k = "PullLoadMoreAdapter";
+  protected final Handler a = new Handler(Looper.getMainLooper());
+  protected String b = HardCodeUtil.a(2131900456);
+  protected String c = HardCodeUtil.a(2131900523);
+  protected String d = HardCodeUtil.a(2131900522);
+  protected String e = HardCodeUtil.a(2131895810);
+  protected String f = HardCodeUtil.a(2131906624);
+  protected String g = this.e;
+  protected RecyclerView h;
+  protected RecyclerView.LayoutManager i;
+  private boolean l = false;
+  private boolean m;
+  private boolean n = true;
+  private RecyclerView.ViewHolder o;
+  private RefreshHeaderView p;
+  private boolean q;
+  private boolean r;
+  private boolean s;
+  private View t;
+  private boolean u = true;
   
   protected abstract RecyclerView.ViewHolder a(ViewGroup paramViewGroup, int paramInt);
   
-  public RefreshHeaderView a()
-  {
-    return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
-  }
+  public void a() {}
   
   public void a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = paramLayoutManager;
+    this.i = paramLayoutManager;
   }
   
   protected abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.m = paramBoolean;
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (d())
+    if (p())
     {
-      this.jdField_e_of_type_Boolean = false;
-      this.jdField_a_of_type_Boolean = paramBoolean2;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
+      this.r = false;
+      this.l = paramBoolean2;
+      this.q = paramBoolean1;
       String str;
       if (paramBoolean2) {
-        str = this.jdField_d_of_type_JavaLangString;
+        str = this.e;
       } else {
         str = "";
       }
-      this.jdField_f_of_type_JavaLangString = str;
+      this.g = str;
       boolean bool;
-      if ((StringUtil.a(this.jdField_f_of_type_JavaLangString)) && ((!paramBoolean2) || (this.jdField_a_of_type_AndroidViewView == null))) {
+      if ((StringUtil.isEmpty(this.g)) && ((!paramBoolean2) || (this.t == null))) {
         bool = false;
       } else {
         bool = true;
       }
-      this.jdField_f_of_type_Boolean = bool;
+      this.s = bool;
       if (!paramBoolean1)
       {
         if ((NetworkUtils.isNetworkAvailable(BaseApplication.getContext()) ^ true)) {
-          str = this.jdField_c_of_type_JavaLangString;
+          str = this.d;
         } else {
-          str = this.jdField_b_of_type_JavaLangString;
+          str = this.c;
         }
-        this.jdField_f_of_type_JavaLangString = str;
-        this.jdField_f_of_type_Boolean = this.jdField_g_of_type_Boolean;
+        this.g = str;
+        this.s = this.u;
       }
       ThreadManager.getUIHandler().post(new PullLoadMoreAdapter.1(this));
-      QLog.i(jdField_g_of_type_JavaLangString, 1, String.format("onLoadMoreCompleted: hashCode:%d ,isSuccess:%b, isFinish:%b, isShow:%b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.jdField_f_of_type_Boolean) }));
+      QLog.i(k, 1, String.format("onLoadMoreCompleted: hashCode:%d ,isSuccess:%b, isFinish:%b, isShow:%b", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(this.s) }));
     }
-  }
-  
-  public int b()
-  {
-    int i;
-    if (this.jdField_b_of_type_Boolean) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j = i;
-    if (this.jdField_c_of_type_Boolean) {
-      j = i + 1;
-    }
-    return j;
   }
   
   protected RecyclerView.ViewHolder b(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView == null)
+    if (this.p == null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView = new RefreshHeaderView(paramViewGroup.getContext());
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.setMinimumHeight(1);
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.setOnRefreshListener(this);
+      this.p = new RefreshHeaderView(paramViewGroup.getContext());
+      this.p.setMinimumHeight(1);
+      this.p.setOnRefreshListener(this);
     }
-    return new PullLoadMoreAdapter.RefreshViewHolder(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView);
+    return new PullLoadMoreAdapter.RefreshViewHolder(this.p);
   }
-  
-  public void b() {}
   
   protected void b(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     if ((paramViewHolder instanceof PullLoadMoreAdapter.LoadMoreViewHolder))
     {
       paramViewHolder = (PullLoadMoreAdapter.LoadMoreViewHolder)paramViewHolder;
-      if (!this.jdField_f_of_type_Boolean)
+      if (!this.s)
       {
-        PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
-        if (this.jdField_a_of_type_AndroidViewView != null) {
+        PullLoadMoreAdapter.LoadMoreViewHolder.b(paramViewHolder).setVisibility(8);
+        if (this.t != null) {
           PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
         }
-        QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder hideLoadingFooter");
+        QLog.i(k, 1, "onBindProgressViewHolder hideLoadingFooter");
         return;
       }
       boolean bool;
-      if ((this.jdField_e_of_type_Boolean) && (getItemCount() > c())) {
+      if ((this.r) && (getItemCount() > l())) {
         bool = true;
       } else {
         bool = false;
       }
-      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setIndeterminate(bool);
-      Object localObject = PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder);
+      PullLoadMoreAdapter.LoadMoreViewHolder.c(paramViewHolder).setIndeterminate(bool);
+      Object localObject = PullLoadMoreAdapter.LoadMoreViewHolder.c(paramViewHolder);
       if (bool) {
         paramInt = 0;
       } else {
         paramInt = 8;
       }
       ((ProgressBar)localObject).setVisibility(paramInt);
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
+      if ((this.t != null) && (this.l))
       {
-        PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
+        PullLoadMoreAdapter.LoadMoreViewHolder.b(paramViewHolder).setVisibility(8);
         PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(0);
-        QLog.i(jdField_g_of_type_JavaLangString, 1, "onBindProgressViewHolder show CustomNoMoreDataView");
+        QLog.i(k, 1, "onBindProgressViewHolder show CustomNoMoreDataView");
         return;
       }
-      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(0);
-      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setText(this.jdField_f_of_type_JavaLangString);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
+      PullLoadMoreAdapter.LoadMoreViewHolder.b(paramViewHolder).setVisibility(0);
+      PullLoadMoreAdapter.LoadMoreViewHolder.d(paramViewHolder).setText(this.g);
+      if (this.t != null) {
         PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewHolder).setVisibility(8);
       }
-      paramViewHolder = jdField_g_of_type_JavaLangString;
+      paramViewHolder = k;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onBindProgressViewHolder show progress text:");
-      ((StringBuilder)localObject).append(this.jdField_f_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.g);
       QLog.i(paramViewHolder, 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView != null)
+    if (this.p != null)
     {
-      this.jdField_e_of_type_Boolean = c();
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView.setRefreshing(paramBoolean);
+      this.r = n();
+      this.p.setRefreshing(paramBoolean);
     }
   }
   
-  public boolean b()
+  protected int c(int paramInt)
   {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  protected int c()
-  {
-    return 1;
+    int j = paramInt;
+    if (this.m) {
+      j = paramInt - 1;
+    }
+    return j;
   }
   
   protected RecyclerView.ViewHolder c(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new PullLoadMoreAdapter.LoadMoreViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560717, paramViewGroup, false));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewGroup).addView(this.jdField_a_of_type_AndroidViewView);
+    paramViewGroup = new PullLoadMoreAdapter.LoadMoreViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131626849, paramViewGroup, false));
+    if (this.t != null) {
+      PullLoadMoreAdapter.LoadMoreViewHolder.a(paramViewGroup).addView(this.t);
     }
     return paramViewGroup;
   }
   
-  protected abstract void c();
-  
   public void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.n = paramBoolean;
   }
   
-  public boolean c()
-  {
-    RefreshHeaderView localRefreshHeaderView = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
-    if (localRefreshHeaderView != null) {
-      return localRefreshHeaderView.b();
-    }
-    return false;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected void f()
-  {
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_f_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
-    this.jdField_f_of_type_Boolean = true;
-    notifyItemChanged(getItemCount() - 1);
-  }
-  
-  protected void g()
-  {
-    label188:
-    label193:
-    for (;;)
-    {
-      int[] arrayOfInt;
-      try
-      {
-        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager == null) {
-          this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
-        }
-        if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof LinearLayoutManager))
-        {
-          if (((LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager).findLastVisibleItemPosition() >= this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager.getItemCount() - 3) {
-            c();
-          }
-        }
-        else if ((this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager instanceof StaggeredGridLayoutManager))
-        {
-          StaggeredGridLayoutManager localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager;
-          int j = localStaggeredGridLayoutManager.getColumnCountForAccessibility(null, null);
-          if (j == 1)
-          {
-            arrayOfInt = new int[1];
-            localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
-            if (arrayOfInt[0] >= localStaggeredGridLayoutManager.getItemCount() - 3) {
-              c();
-            }
-          }
-          else
-          {
-            arrayOfInt = new int[j];
-            localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
-            i = arrayOfInt[(j - 1)];
-            if (arrayOfInt.length == 2)
-            {
-              if (arrayOfInt[1] < arrayOfInt[0]) {
-                break label188;
-              }
-              i = arrayOfInt[1];
-              break label193;
-            }
-            if (i >= localStaggeredGridLayoutManager.getItemCount() - b() - j * 3)
-            {
-              c();
-              return;
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      return;
-      int i = arrayOfInt[0];
-    }
-  }
+  protected abstract void d();
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() + b();
+    return this.j.size() + k();
   }
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.jdField_b_of_type_Boolean) && (paramInt == 0)) {
+    if ((this.m) && (paramInt == 0)) {
       return -10000;
     }
-    if (a(paramInt) < this.jdField_a_of_type_JavaUtilArrayList.size()) {
+    if (c(paramInt) < this.j.size()) {
       return 0;
     }
     return -99999;
   }
   
+  protected void j()
+  {
+    this.r = true;
+    this.g = this.f;
+    this.s = true;
+    notifyItemChanged(getItemCount() - 1);
+  }
+  
+  public int k()
+  {
+    int j;
+    if (this.m) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    int i1 = j;
+    if (this.n) {
+      i1 = j + 1;
+    }
+    return i1;
+  }
+  
+  protected int l()
+  {
+    return 1;
+  }
+  
+  public boolean m()
+  {
+    return this.m;
+  }
+  
+  public boolean n()
+  {
+    RefreshHeaderView localRefreshHeaderView = this.p;
+    if (localRefreshHeaderView != null) {
+      return localRefreshHeaderView.f();
+    }
+    return false;
+  }
+  
+  public RefreshHeaderView o()
+  {
+    return this.p;
+  }
+  
   public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$LayoutManager = paramRecyclerView.getLayoutManager();
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new PullLoadMoreAdapter.2(this));
+    this.h = paramRecyclerView;
+    this.i = paramRecyclerView.getLayoutManager();
+    this.h.addOnScrollListener(new PullLoadMoreAdapter.2(this));
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if ((paramViewHolder != null) && (paramInt < getItemCount()) && ((!this.jdField_b_of_type_Boolean) || (paramInt != 0))) {
+    if ((paramViewHolder != null) && (paramInt < getItemCount()) && ((!this.m) || (paramInt != 0))) {
       if (-99999 == getItemViewType(paramInt)) {
         b(paramViewHolder, paramInt);
       } else {
-        a(paramViewHolder, a(paramInt));
+        a(paramViewHolder, c(paramInt));
       }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
@@ -367,8 +285,8 @@ public abstract class PullLoadMoreAdapter<E>
     }
     if (paramInt == -10000)
     {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = b(paramViewGroup, paramInt);
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+      this.o = b(paramViewGroup, paramInt);
+      return this.o;
     }
     return a(paramViewGroup, paramInt);
   }
@@ -376,11 +294,81 @@ public abstract class PullLoadMoreAdapter<E>
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    paramRecyclerView = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseRefreshHeaderView;
+    paramRecyclerView = this.p;
     if (paramRecyclerView != null) {
-      paramRecyclerView.d();
+      paramRecyclerView.h();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.a.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean p()
+  {
+    return this.n;
+  }
+  
+  public boolean q()
+  {
+    return this.l;
+  }
+  
+  protected void r()
+  {
+    label188:
+    label193:
+    for (;;)
+    {
+      int[] arrayOfInt;
+      try
+      {
+        if (this.i == null) {
+          this.i = this.h.getLayoutManager();
+        }
+        if ((this.i instanceof LinearLayoutManager))
+        {
+          if (((LinearLayoutManager)this.i).findLastVisibleItemPosition() >= this.i.getItemCount() - 3) {
+            d();
+          }
+        }
+        else if ((this.i instanceof StaggeredGridLayoutManager))
+        {
+          StaggeredGridLayoutManager localStaggeredGridLayoutManager = (StaggeredGridLayoutManager)this.i;
+          int i1 = localStaggeredGridLayoutManager.getColumnCountForAccessibility(null, null);
+          if (i1 == 1)
+          {
+            arrayOfInt = new int[1];
+            localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
+            if (arrayOfInt[0] >= localStaggeredGridLayoutManager.getItemCount() - 3) {
+              d();
+            }
+          }
+          else
+          {
+            arrayOfInt = new int[i1];
+            localStaggeredGridLayoutManager.findLastVisibleItemPositions(arrayOfInt);
+            j = arrayOfInt[(i1 - 1)];
+            if (arrayOfInt.length == 2)
+            {
+              if (arrayOfInt[1] < arrayOfInt[0]) {
+                break label188;
+              }
+              j = arrayOfInt[1];
+              break label193;
+            }
+            if (j >= localStaggeredGridLayoutManager.getItemCount() - k() - i1 * 3)
+            {
+              d();
+              return;
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      return;
+      int j = arrayOfInt[0];
+    }
   }
 }
 

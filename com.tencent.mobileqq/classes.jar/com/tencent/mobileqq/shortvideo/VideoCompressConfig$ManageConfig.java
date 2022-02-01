@@ -2,17 +2,17 @@ package com.tencent.mobileqq.shortvideo;
 
 public class VideoCompressConfig$ManageConfig
 {
-  double jdField_a_of_type_Double = 0.15D;
-  int jdField_a_of_type_Int = 1280;
-  long jdField_a_of_type_Long = 754974720L;
-  double jdField_b_of_type_Double = 0.067D;
-  int jdField_b_of_type_Int = 30;
-  long jdField_b_of_type_Long = 1048576L;
-  long c = 4194304L;
+  int a = 1280;
+  int b = 30;
+  double c = 0.15D;
+  double d = 0.067D;
+  long e = 754974720L;
+  long f = 1048576L;
+  long g = 4194304L;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.VideoCompressConfig.ManageConfig
  * JD-Core Version:    0.7.0.1
  */

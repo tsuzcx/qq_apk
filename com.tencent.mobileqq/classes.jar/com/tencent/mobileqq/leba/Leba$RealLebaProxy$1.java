@@ -9,14 +9,14 @@ class Leba$RealLebaProxy$1
   
   public void run()
   {
-    if (this.this$0.a.a != null) {
-      this.this$0.a.a.b();
+    if (this.this$0.a.e != null) {
+      this.this$0.a.e.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.RealLebaProxy.1
  * JD-Core Version:    0.7.0.1
  */

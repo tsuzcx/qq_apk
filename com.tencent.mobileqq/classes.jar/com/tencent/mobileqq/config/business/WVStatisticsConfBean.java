@@ -5,23 +5,13 @@ import org.json.JSONObject;
 
 public class WVStatisticsConfBean
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d = "";
-  
-  public WVStatisticsConfBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "0";
-    this.jdField_b_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_JavaLangString = "0";
-  }
+  public boolean a = false;
+  public boolean b = false;
+  public boolean c = true;
+  public String d = "0";
+  public String e = "0";
+  public String f = "0";
+  public String g = "";
   
   public static WVStatisticsConfBean a(String paramString)
   {
@@ -39,7 +29,7 @@ public class WVStatisticsConfBean
           if (paramString.optInt("wvShouldReportPerf") == 1)
           {
             bool = true;
-            localWVStatisticsConfBean.jdField_a_of_type_Boolean = bool;
+            localWVStatisticsConfBean.a = bool;
           }
         }
         else
@@ -50,7 +40,7 @@ public class WVStatisticsConfBean
               break label258;
             }
             bool = true;
-            localWVStatisticsConfBean.jdField_b_of_type_Boolean = bool;
+            localWVStatisticsConfBean.b = bool;
           }
           if (paramString.has("wvShouldReportOpenapiCall"))
           {
@@ -58,19 +48,19 @@ public class WVStatisticsConfBean
               break label263;
             }
             bool = true;
-            localWVStatisticsConfBean.jdField_c_of_type_Boolean = bool;
+            localWVStatisticsConfBean.c = bool;
           }
           if (paramString.has("wvPerformanceRate")) {
-            localWVStatisticsConfBean.jdField_a_of_type_JavaLangString = paramString.optString("wvPerformanceRate");
+            localWVStatisticsConfBean.d = paramString.optString("wvPerformanceRate");
           }
           if (paramString.has("wvJsapiCallRate")) {
-            localWVStatisticsConfBean.jdField_b_of_type_JavaLangString = paramString.optString("wvJsapiCallRate");
+            localWVStatisticsConfBean.e = paramString.optString("wvJsapiCallRate");
           }
           if (paramString.has("wvSchemeRate")) {
-            localWVStatisticsConfBean.jdField_c_of_type_JavaLangString = paramString.optString("wvSchemeRate");
+            localWVStatisticsConfBean.f = paramString.optString("wvSchemeRate");
           }
           if (paramString.has("recogniseText")) {
-            localWVStatisticsConfBean.d = paramString.optString("recogniseText");
+            localWVStatisticsConfBean.g = paramString.optString("recogniseText");
           }
           paramString = new StringBuilder();
           paramString.append("confBean = ");
@@ -100,25 +90,25 @@ public class WVStatisticsConfBean
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("reportPerformance:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" reportJsapi:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" reportOpenapi:");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" performanceRate:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" jsapiRate:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(" schemeRate:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(" recogniseText:");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(" jsapiRate:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" schemeRate:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" recogniseText:");
+    localStringBuilder.append(this.g);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WVStatisticsConfBean
  * JD-Core Version:    0.7.0.1
  */

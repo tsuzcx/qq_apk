@@ -9,9 +9,9 @@ public abstract interface CameraListener
   
   public abstract void a(long paramLong, boolean paramBoolean);
   
-  public abstract void d();
-  
   public abstract void e();
+  
+  public abstract void f();
 }
 
 

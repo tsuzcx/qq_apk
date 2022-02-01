@@ -58,7 +58,7 @@ public class PreloadFlowControlConfig
     finally {}
     try
     {
-      paramString = (PreloadFlowControlConfig)QWalletTools.a(str2);
+      paramString = (PreloadFlowControlConfig)QWalletTools.e(str2);
     }
     catch (Exception paramString)
     {
@@ -80,7 +80,7 @@ public class PreloadFlowControlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadFlowControlConfig
  * JD-Core Version:    0.7.0.1
  */

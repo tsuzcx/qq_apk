@@ -8,29 +8,29 @@ import com.tencent.avgame.gameroom.seat.SeatView;
 class GameRoomFragment$4
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private RectF b;
   
   GameRoomFragment$4(GameRoomFragment paramGameRoomFragment) {}
   
   public void onGlobalLayout()
   {
-    RectF localRectF1 = this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomSeatSeatView.a();
+    RectF localRectF1 = this.a.i.getAddMemberViewRectInRootView();
     if (localRectF1 == null) {
       return;
     }
-    if (!this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b)
+    if (!this.a.w)
     {
-      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().a(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690349), localRectF1, 146);
-      this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.b = true;
+      this.a.a.e().a(this.a.getString(2131887260), localRectF1, 146);
+      this.a.w = true;
     }
     else
     {
-      RectF localRectF2 = this.jdField_a_of_type_AndroidGraphicsRectF;
-      if ((localRectF2 != null) && ((localRectF2.left != localRectF1.left) || (this.jdField_a_of_type_AndroidGraphicsRectF.top != localRectF1.top))) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a().b(this.jdField_a_of_type_ComTencentAvgameGameroomGameRoomFragment.getString(2131690349), localRectF1, 146);
+      RectF localRectF2 = this.b;
+      if ((localRectF2 != null) && ((localRectF2.left != localRectF1.left) || (this.b.top != localRectF1.top))) {
+        this.a.a.e().b(this.a.getString(2131887260), localRectF1, 146);
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsRectF = localRectF1;
+    this.b = localRectF1;
   }
 }
 

@@ -23,11 +23,11 @@ final class CIOSubmitUtils$2
       CIOSubmitUtils.a((String)localObject2);
       localObject1 = "";
       if (MobileQQ.sProcessId == 1) {
-        localObject1 = CIOSubmitUtils.b();
+        localObject1 = CIOSubmitUtils.c();
       }
-      CIOSubmitUtils.a((String)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, (String)localObject1, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      CIOSubmitUtils.a((String)localObject2, this.a, this.b, this.c, (String)localObject1, this.d, this.e, this.f);
       localObject2 = (String)CIOSubmitUtils.a((String)localObject2, "com.tencent.mobileqq").second;
-      localObject1 = CIOSubmitUtils.a((String)localObject1, (String)localObject2, "8.7.0");
+      localObject1 = CIOSubmitUtils.a((String)localObject1, (String)localObject2, "8.8.17");
       Object localObject3 = new StringBuffer(1024);
       Object localObject4 = ((JSONObject)localObject1).keys();
       String str1 = (String)((Iterator)localObject4).next();
@@ -68,7 +68,7 @@ final class CIOSubmitUtils$2
         ((StringBuilder)localObject2).append((String)localObject1);
         QLog.d("CIOSubmitUtils", 2, ((StringBuilder)localObject2).toString());
       }
-      CIOSubmitUtils.a();
+      CIOSubmitUtils.b();
       return;
     }
     catch (Throwable localThrowable)
@@ -79,7 +79,7 @@ final class CIOSubmitUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.debug.CIOSubmitUtils.2
  * JD-Core Version:    0.7.0.1
  */

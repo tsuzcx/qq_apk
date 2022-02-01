@@ -5,9 +5,13 @@ import com.tencent.mobileqq.qroute.annotation.PluginInterface;
 @PluginInterface
 public abstract interface ShareActionSheetClickListener
 {
+  public abstract void cancelPushDisable();
+  
   public abstract void delete();
   
   public abstract void deleteHasPush();
+  
+  public abstract void feedback();
   
   public abstract void hideHim();
   
@@ -39,7 +43,7 @@ public abstract interface ShareActionSheetClickListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.share.api.ShareActionSheetClickListener
  * JD-Core Version:    0.7.0.1
  */

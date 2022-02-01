@@ -10,7 +10,7 @@ class VideoInviteActivity$5$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(this.a.jdField_a_of_type_Long, true);
+    this.a.c.a(this.a.a, true);
   }
 }
 

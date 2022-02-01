@@ -15,7 +15,7 @@ class FileAssistantSender$2
   
   protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (FileAssistantSender.a(this.a).nSessionId != paramLong2) {
+    if (FileAssistantSender.b(this.a).nSessionId != paramLong2) {
       return;
     }
     paramString1 = new StringBuilder();
@@ -30,7 +30,7 @@ class FileAssistantSender$2
     if (!paramBoolean)
     {
       paramBoolean = bool;
-      if (FileAssistantSender.a(this.a) == null)
+      if (FileAssistantSender.c(this.a) == null)
       {
         paramBoolean = bool;
         if (FileAssistantSender.a(this.a, paramInt2))
@@ -40,33 +40,33 @@ class FileAssistantSender$2
           paramString1.append(paramInt2);
           QLog.w("FileAssistantSender<FileAssistant>", 1, paramString1.toString());
           FileAssistantSender.b(this.a, true);
-          FileAssistantSender.a(this.a, true);
+          FileAssistantSender.c(this.a, true);
           paramBoolean = true;
         }
       }
-      if ((!paramBoolean) && (!FileAssistantSender.a(this.a)))
+      if ((!paramBoolean) && (!FileAssistantSender.d(this.a)))
       {
         paramString1 = new StringBuilder();
         paramString1.append("wlan and offline all failed : ");
-        paramString1.append(FileAssistantSender.a(this.a).nSessionId);
+        paramString1.append(FileAssistantSender.b(this.a).nSessionId);
         QLog.e("FileAssistantSender<FileAssistant>", 1, paramString1.toString());
       }
       else
       {
         paramString1 = new StringBuilder();
         paramString1.append("wlan workind[");
-        paramString1.append(FileAssistantSender.a(this.a));
+        paramString1.append(FileAssistantSender.d(this.a));
         paramString1.append("], isNeedStartLan[");
         paramString1.append(paramBoolean);
         paramString1.append("] : ");
-        paramString1.append(FileAssistantSender.a(this.a).nSessionId);
+        paramString1.append(FileAssistantSender.b(this.a).nSessionId);
         QLog.e("FileAssistantSender<FileAssistant>", 1, paramString1.toString());
-        FileAssistantSender.a(this.a).status = 2;
-        FileAssistantSender.a(this.a).getFileManagerNotifyCenter().a(FileAssistantSender.a(this.a).uniseq, FileAssistantSender.a(this.a).nSessionId, FileAssistantSender.a(this.a).peerUin, FileAssistantSender.a(this.a).peerType, 16, null, 0, null);
+        FileAssistantSender.b(this.a).status = 2;
+        FileAssistantSender.e(this.a).getFileManagerNotifyCenter().a(FileAssistantSender.b(this.a).uniseq, FileAssistantSender.b(this.a).nSessionId, FileAssistantSender.b(this.a).peerUin, FileAssistantSender.b(this.a).peerType, 16, null, 0, null);
         return;
       }
     }
-    paramString1 = (FileAssistantResultCallbak)FileAssistantSender.a(this.a).get();
+    paramString1 = (FileAssistantResultCallbak)FileAssistantSender.f(this.a).get();
     if (paramString1 != null) {
       paramString1.a(this.a);
     }
@@ -74,7 +74,7 @@ class FileAssistantSender$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.FileAssistantSender.2
  * JD-Core Version:    0.7.0.1
  */

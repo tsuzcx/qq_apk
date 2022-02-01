@@ -111,7 +111,7 @@ public class TroopAnnouncementHandler
     localToServiceMsg.extraData.putString("feedsId", paramString);
     localToServiceMsg.extraData.putInt("time", paramInt2);
     localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-    localToServiceMsg.extraData.putString("REQ_TAG", a());
+    localToServiceMsg.extraData.putString("REQ_TAG", dv_());
     this.appRuntime.sendToService(localToServiceMsg);
   }
   
@@ -176,7 +176,7 @@ public class TroopAnnouncementHandler
       ((ToServiceMsg)localObject1).extraData.putInt("feedType", paramShort2);
       ((ToServiceMsg)localObject1).extraData.putBoolean("aioRequest", paramBoolean);
       ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
-      ((ToServiceMsg)localObject1).extraData.putString("REQ_TAG", a());
+      ((ToServiceMsg)localObject1).extraData.putString("REQ_TAG", dv_());
       this.appRuntime.sendToService((ToServiceMsg)localObject1);
       return;
     }
@@ -276,7 +276,7 @@ public class TroopAnnouncementHandler
         group_feeds.GroupFeedsMessage localGroupFeedsMessage = (group_feeds.GroupFeedsMessage)paramGroupFeedsRecord.msg_feeds_content.get();
         paramGroupFeedsRecord = ((ITroopAnnouncementHelperApi)QRoute.api(ITroopAnnouncementHelperApi.class)).decodeToFeedItem(String.valueOf(paramGroupFeedsRecord.uint32_feeds_type.get()), localGroupFeedsMessage.toByteArray(), true);
         if (paramGroupFeedsRecord != null) {
-          paramTroopInfo.strLastAnnouncement = paramGroupFeedsRecord.jdField_c_of_type_JavaLangString;
+          paramTroopInfo.strLastAnnouncement = paramGroupFeedsRecord.d;
         } else {
           paramTroopInfo.strLastAnnouncement = "";
         }
@@ -489,19 +489,14 @@ public class TroopAnnouncementHandler
     if (paramDataInputStream != null)
     {
       if (m < 0) {
-        paramDataInputStream.a = (m & 0xFFFFFFFF);
+        paramDataInputStream.g = (m & 0xFFFFFFFF);
       } else {
-        paramDataInputStream.a = m;
+        paramDataInputStream.g = m;
       }
-      paramDataInputStream.jdField_c_of_type_Int = n;
-      paramDataInputStream.b = k;
+      paramDataInputStream.h = n;
+      paramDataInputStream.f = k;
     }
     return paramDataInputStream;
-  }
-  
-  protected String a()
-  {
-    return "TroopAnnouncementHandler";
   }
   
   public void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt2, short paramShort, boolean paramBoolean1, boolean paramBoolean2)
@@ -580,7 +575,12 @@ public class TroopAnnouncementHandler
     }
   }
   
-  public boolean a(String paramString)
+  public void b(int paramInt1, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt2, short paramShort, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramInt1, paramLong1, paramLong2, paramLong3, paramString, paramInt2, "OidbSvc.0x852_48", paramShort, paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean b(String paramString)
   {
     if (a.containsKey(paramString)) {
       return ((Boolean)a.get(paramString)).booleanValue();
@@ -588,9 +588,9 @@ public class TroopAnnouncementHandler
     return false;
   }
   
-  public void b(int paramInt1, long paramLong1, long paramLong2, long paramLong3, String paramString, int paramInt2, short paramShort, boolean paramBoolean1, boolean paramBoolean2)
+  protected String dv_()
   {
-    a(paramInt1, paramLong1, paramLong2, paramLong3, paramString, paramInt2, "OidbSvc.0x852_48", paramShort, paramBoolean1, paramBoolean2);
+    return "TroopAnnouncementHandler";
   }
   
   public Set<String> getCommandList()
@@ -626,7 +626,7 @@ public class TroopAnnouncementHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -659,7 +659,7 @@ public class TroopAnnouncementHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.announcement.api.impl.TroopAnnouncementHandler
  * JD-Core Version:    0.7.0.1
  */

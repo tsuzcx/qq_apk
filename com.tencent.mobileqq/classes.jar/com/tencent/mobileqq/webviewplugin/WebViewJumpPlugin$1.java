@@ -10,7 +10,7 @@ class WebViewJumpPlugin$1
   
   public void run()
   {
-    Activity localActivity = this.this$0.mRuntime.a();
+    Activity localActivity = this.this$0.mRuntime.d();
     if ((localActivity != null) && (!localActivity.isFinishing())) {
       localActivity.finish();
     }
@@ -18,7 +18,7 @@ class WebViewJumpPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin.1
  * JD-Core Version:    0.7.0.1
  */

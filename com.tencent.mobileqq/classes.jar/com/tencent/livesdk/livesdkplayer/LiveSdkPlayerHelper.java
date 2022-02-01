@@ -94,10 +94,10 @@ public class LiveSdkPlayerHelper
         this.mCatonReportParams.f(((LiveSdkPlayerHelper.PlayerStatusListener)localObject).onReportRoomId());
       }
     }
-    AVCatonReportManager.a().a().a(this.mCatonReportParams.a(), this.mCatonReportParams.b(), this.mCatonReportParams.c(), this.mCatonReportParams.d());
-    AVCatonReport4Player localAVCatonReport4Player = AVCatonReportManager.a().a();
-    String str1 = this.mCatonReportParams.a();
-    String str2 = this.mCatonReportParams.b();
+    AVCatonReportManager.a().b().a(this.mCatonReportParams.a(), this.mCatonReportParams.b(), this.mCatonReportParams.c(), this.mCatonReportParams.d());
+    AVCatonReport4Player localAVCatonReport4Player = AVCatonReportManager.a().b();
+    String str1 = this.mCatonReportParams.h();
+    String str2 = this.mCatonReportParams.i();
     long l = this.mCatonReportParams.g();
     Object localObject = this.mCurrentParams;
     if (localObject == null) {
@@ -106,8 +106,8 @@ public class LiveSdkPlayerHelper
       localObject = ((LiveSdkPlayerHelper.PlayerParams)localObject).userId;
     }
     localAVCatonReport4Player.a(str1, str2, String.valueOf(l), "thumbsdk", "2.5.1.98", (String)localObject);
-    AVCatonReportManager.a().a().a(this.mCatonReportParams.e() - this.mCatonReportParams.h(), this.mCatonReportParams.f());
-    AVCatonReportManager.a().a().a();
+    AVCatonReportManager.a().b().a(this.mCatonReportParams.e() - this.mCatonReportParams.j(), this.mCatonReportParams.f());
+    AVCatonReportManager.a().b().a();
   }
   
   public void destroyRenderBackground()
@@ -312,7 +312,7 @@ public class LiveSdkPlayerHelper
         localObject = new ViewGroup.LayoutParams(-1, -1);
         this.mBackgroundView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         this.mBackgroundView.setVisibility(0);
-        this.mBackgroundView.setId(2131378663);
+        this.mBackgroundView.setId(2131447320);
         this.mBackgroundView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       }
       if ((this.mBackgroundView.getParent() instanceof ViewGroup)) {
@@ -327,7 +327,7 @@ public class LiveSdkPlayerHelper
         ((ViewGroup.LayoutParams)localObject).width = getVideoWidth();
         this.mRenderBgView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         this.mRenderBgView.setVisibility(0);
-        this.mRenderBgView.setId(2131378665);
+        this.mRenderBgView.setId(2131447322);
       }
       if ((this.mRenderBgView.getParent() instanceof ViewGroup)) {
         ((ViewGroup)this.mRenderBgView.getParent()).removeView(this.mRenderBgView);
@@ -339,7 +339,7 @@ public class LiveSdkPlayerHelper
       localObject = (View)this.mVideoView;
       ((View)localObject).setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
       ((View)localObject).setVisibility(0);
-      ((View)localObject).setId(2131378664);
+      ((View)localObject).setId(2131447321);
       paramFrameLayout.addView((View)localObject);
       this.mMediaPlayer.adVideoView(this.mVideoView);
       if ((getVideoWidth() > 0) && (getVideoHeight() > 0))
@@ -540,7 +540,7 @@ public class LiveSdkPlayerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.LiveSdkPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

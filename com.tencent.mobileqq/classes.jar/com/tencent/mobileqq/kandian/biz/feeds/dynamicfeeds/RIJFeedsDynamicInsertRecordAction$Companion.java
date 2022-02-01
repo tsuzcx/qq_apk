@@ -10,14 +10,14 @@ public final class RIJFeedsDynamicInsertRecordAction$Companion
   @NotNull
   public final RIJFeedsDynamicInsertRecordAction a()
   {
-    Lazy localLazy = RIJFeedsDynamicInsertRecordAction.a();
+    Lazy localLazy = RIJFeedsDynamicInsertRecordAction.b();
     Companion localCompanion = RIJFeedsDynamicInsertRecordAction.a;
     return (RIJFeedsDynamicInsertRecordAction)localLazy.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsDynamicInsertRecordAction.Companion
  * JD-Core Version:    0.7.0.1
  */

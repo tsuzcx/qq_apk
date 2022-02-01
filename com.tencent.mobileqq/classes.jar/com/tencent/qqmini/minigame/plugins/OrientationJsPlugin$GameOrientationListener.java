@@ -33,9 +33,9 @@ public class OrientationJsPlugin$GameOrientationListener
     else {
       str = "portrait";
     }
-    if ((str != null) && (!str.equals(OrientationJsPlugin.access$000(this.this$0))))
+    if ((str != null) && (!str.equals(OrientationJsPlugin.access$300(this.this$0))))
     {
-      OrientationJsPlugin.access$002(this.this$0, str);
+      OrientationJsPlugin.access$302(this.this$0, str);
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -48,13 +48,13 @@ public class OrientationJsPlugin$GameOrientationListener
         localStringBuilder.append(localJSONException.toString());
         QMLog.e("OrientationJsPlugin", localStringBuilder.toString());
       }
-      OrientationJsPlugin.access$100(this.this$0, "onDeviceOrientationChange", localJSONObject.toString());
+      OrientationJsPlugin.access$400(this.this$0, "onDeviceOrientationChange", localJSONObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.OrientationJsPlugin.GameOrientationListener
  * JD-Core Version:    0.7.0.1
  */

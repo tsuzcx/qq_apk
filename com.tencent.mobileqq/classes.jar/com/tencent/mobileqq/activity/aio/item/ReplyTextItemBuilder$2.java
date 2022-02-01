@@ -26,13 +26,13 @@ final class ReplyTextItemBuilder$2
           paramView.setSourceMessageRecord(paramMessageRecord2);
         }
       }
-      ReplyTextItemBuilder.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramContext, paramQQAppInterface, paramString);
+      ReplyTextItemBuilder.a(paramMessageRecord2, this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, paramContext, paramQQAppInterface, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

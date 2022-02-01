@@ -9,14 +9,8 @@ import trpc.qq_vgame.game_list.AvGameList.QuestionClassInfoItem;
 
 public class QuestionClassInfo
 {
-  public int a;
-  public ArrayList<QuestionClassInfoItem> a;
-  
-  public QuestionClassInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public int a = 0;
+  public ArrayList<QuestionClassInfoItem> b = new ArrayList();
   
   public QuestionClassInfo a()
   {
@@ -30,10 +24,10 @@ public class QuestionClassInfo
     if (paramQuestionClassInfo == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramQuestionClassInfo.jdField_a_of_type_Int;
-    paramQuestionClassInfo = paramQuestionClassInfo.jdField_a_of_type_JavaUtilArrayList;
+    this.a = paramQuestionClassInfo.a;
+    paramQuestionClassInfo = paramQuestionClassInfo.b;
     if (paramQuestionClassInfo != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramQuestionClassInfo);
+      this.b.addAll(paramQuestionClassInfo);
     }
   }
   
@@ -50,7 +44,7 @@ public class QuestionClassInfo
     } else {
       i = 0;
     }
-    this.jdField_a_of_type_Int = i;
+    this.a = i;
     paramQuestionClassInfo = paramQuestionClassInfo.question_class_list.get();
     if (paramQuestionClassInfo != null)
     {
@@ -63,7 +57,7 @@ public class QuestionClassInfo
         AvGameList.QuestionClassInfoItem localQuestionClassInfoItem = (AvGameList.QuestionClassInfoItem)paramQuestionClassInfo.get(i);
         QuestionClassInfoItem localQuestionClassInfoItem1 = new QuestionClassInfoItem();
         localQuestionClassInfoItem1.a(localQuestionClassInfoItem);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localQuestionClassInfoItem1);
+        this.b.add(localQuestionClassInfoItem1);
         i += 1;
       }
     }
@@ -74,11 +68,11 @@ public class QuestionClassInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("typeSvr");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("questionClassListSize");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append(this.b.size());
     return localStringBuilder.toString();
   }
 }

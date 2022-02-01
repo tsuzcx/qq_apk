@@ -49,11 +49,6 @@ public class TkdCommentLinkView
     return Collections.unmodifiableList(localList);
   }
   
-  public TkdCommentLinkView.OnLinkDeleteLinstener getLinkDeleteLinstener()
-  {
-    return this.linkDeleteLinstener;
-  }
-  
   public void setLinkDeleteLinstener(TkdCommentLinkView.OnLinkDeleteLinstener paramOnLinkDeleteLinstener)
   {
     this.linkDeleteLinstener = paramOnLinkDeleteLinstener;
@@ -61,7 +56,7 @@ public class TkdCommentLinkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView
  * JD-Core Version:    0.7.0.1
  */

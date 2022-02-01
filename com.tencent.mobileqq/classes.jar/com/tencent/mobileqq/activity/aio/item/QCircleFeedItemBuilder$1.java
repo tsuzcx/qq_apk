@@ -19,10 +19,10 @@ class QCircleFeedItemBuilder$1
   
   public void onClick(View paramView)
   {
-    ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQCircleFeedItemBuilder.a.a, "0X800B27A", "0X800B27A", 0, 0, "", "", "", "");
-    MessageForQCircleFeed localMessageForQCircleFeed = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed;
+    ReportController.b(null, "dc00898", "", this.b.d.b, "0X800B27A", "0X800B27A", 0, 0, "", "", "", "");
+    MessageForQCircleFeed localMessageForQCircleFeed = this.a;
     if ((localMessageForQCircleFeed != null) && (!TextUtils.isEmpty(localMessageForQCircleFeed.contentJumpUrl))) {
-      QCircleUtils.a().enterByScheme(BaseApplication.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQCircleFeed.contentJumpUrl);
+      QCircleUtils.a().enterByScheme(BaseApplication.getContext(), this.a.contentJumpUrl);
     } else {
       QLog.e("QCircleFeedItemBuilder", 1, "getItemView onClick  circleFeed || contentJumpUrl == null");
     }
@@ -31,7 +31,7 @@ class QCircleFeedItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QCircleFeedItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

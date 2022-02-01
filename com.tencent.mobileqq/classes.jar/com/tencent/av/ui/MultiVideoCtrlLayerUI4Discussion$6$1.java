@@ -7,7 +7,7 @@ class MultiVideoCtrlLayerUI4Discussion$6$1
   
   public void run()
   {
-    this.a.a.b(-1018L, "onUpdatePstnInfo");
+    this.a.b.b(-1018L, "onUpdatePstnInfo");
   }
 }
 

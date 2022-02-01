@@ -9,17 +9,17 @@ public class AppSettingApiImpl
 {
   public String buildNum()
   {
-    return "5295";
+    return "5770";
   }
   
   public boolean enableTalkBack()
   {
-    return AppSetting.d;
+    return AppSetting.e;
   }
   
   public int getAppId()
   {
-    return AppSetting.a();
+    return AppSetting.d();
   }
   
   public String getPublishVersionString()
@@ -29,17 +29,17 @@ public class AppSettingApiImpl
   
   public String getReportVersionName()
   {
-    return "8.7.0.5295";
+    return "8.8.17.5770";
   }
   
   public String getSubVersion()
   {
-    return "8.7.0";
+    return "8.8.17";
   }
   
   public String getVersion()
   {
-    return AppSetting.f();
+    return AppSetting.h();
   }
   
   public boolean isDebugVersion()
@@ -59,12 +59,12 @@ public class AppSettingApiImpl
   
   public boolean isUITest()
   {
-    return AppSetting.c();
+    return AppSetting.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.api.impl.AppSettingApiImpl
  * JD-Core Version:    0.7.0.1
  */

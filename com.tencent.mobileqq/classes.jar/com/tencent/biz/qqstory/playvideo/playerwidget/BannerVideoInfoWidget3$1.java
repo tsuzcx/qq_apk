@@ -19,14 +19,14 @@ final class BannerVideoInfoWidget3$1
     paramURLDrawable.append("failed to parse the url drawable, error ");
     paramURLDrawable.append(paramThrowable);
     SLog.d("BannerVideoInfoWidget", paramURLDrawable.toString());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.setImageDrawable(this.b);
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    this.a.setImageDrawable(paramURLDrawable);
   }
 }
 

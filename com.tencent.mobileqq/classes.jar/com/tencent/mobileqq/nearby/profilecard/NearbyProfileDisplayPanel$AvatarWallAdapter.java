@@ -15,19 +15,19 @@ public class NearbyProfileDisplayPanel$AvatarWallAdapter
   
   public View a(int paramInt, PicInfo paramPicInfo)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a(paramInt, paramPicInfo);
+    return this.b.a(paramInt, paramPicInfo);
   }
   
   public View a(boolean paramBoolean, int paramInt)
   {
-    View localView = new View(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
+    View localView = new View(this.b.b);
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, 11.0F), UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, 1.0F));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, 2.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = UIUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_AndroidContentContext, 2.0F);
+      this.a = new LinearLayout.LayoutParams(UIUtils.a(this.b.b, 11.0F), UIUtils.a(this.b.b, 1.0F));
+      this.a.leftMargin = UIUtils.a(this.b.b, 2.0F);
+      this.a.rightMargin = UIUtils.a(this.b.b, 2.0F);
     }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+    localView.setLayoutParams(this.a);
     if (paramBoolean)
     {
       localView.setBackgroundColor(-1);
@@ -39,17 +39,17 @@ public class NearbyProfileDisplayPanel$AvatarWallAdapter
   
   public void a(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+    this.b.d.values().remove(paramView);
   }
   
   public boolean a(PicInfo paramPicInfo1, PicInfo paramPicInfo2)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.picInfoIsEqual(paramPicInfo1, paramPicInfo2);
+    return this.b.e.picInfoIsEqual(paramPicInfo1, paramPicInfo2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.AvatarWallAdapter
  * JD-Core Version:    0.7.0.1
  */

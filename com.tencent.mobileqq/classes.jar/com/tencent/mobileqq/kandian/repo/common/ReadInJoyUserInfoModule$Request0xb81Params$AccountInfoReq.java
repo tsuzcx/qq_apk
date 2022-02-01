@@ -12,8 +12,8 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
   private ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq(ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq.AccountInfoBuilder paramAccountInfoBuilder)
   {
     this.accountType = ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq.AccountInfoBuilder.a(paramAccountInfoBuilder);
-    this.uin = ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq.AccountInfoBuilder.a(paramAccountInfoBuilder);
-    this.friendStatus = ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq.AccountInfoBuilder.b(paramAccountInfoBuilder);
+    this.uin = ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq.AccountInfoBuilder.b(paramAccountInfoBuilder);
+    this.friendStatus = ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq.AccountInfoBuilder.c(paramAccountInfoBuilder);
   }
   
   public String toString()
@@ -32,7 +32,7 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq
  * JD-Core Version:    0.7.0.1
  */

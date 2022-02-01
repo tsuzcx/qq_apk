@@ -10,7 +10,7 @@ class SubscribeCommentInputPopupWindow$10
   
   public void run()
   {
-    SubscribeCommentInputPopupWindow.a(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+    SubscribeCommentInputPopupWindow.i(this.this$0).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
   }
 }
 

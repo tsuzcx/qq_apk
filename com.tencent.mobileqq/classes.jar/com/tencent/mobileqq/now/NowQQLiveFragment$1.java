@@ -33,7 +33,7 @@ class NowQQLiveFragment$1
       paramView.setComponent(new ComponentName(this.a.getBaseActivity(), ChatActivity.class));
       localBundle.putString("uin", NowQQLiveConstant.a);
       localBundle.putInt("uintype", 1008);
-      localBundle.putString("uinname", HardCodeUtil.a(2131694543));
+      localBundle.putString("uinname", HardCodeUtil.a(2131892227));
       paramView.putExtras(localBundle);
       paramView.setFlags(67108864);
       paramView.putExtra("isforceRequestDetail", false);
@@ -50,7 +50,7 @@ class NowQQLiveFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.NowQQLiveFragment.1
  * JD-Core Version:    0.7.0.1
  */

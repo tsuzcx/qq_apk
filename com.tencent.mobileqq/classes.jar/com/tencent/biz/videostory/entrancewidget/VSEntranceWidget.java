@@ -12,18 +12,18 @@ import com.tencent.qphone.base.util.QLog;
 
 public class VSEntranceWidget
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private ImageView b;
+  private View a;
+  private FrameLayout b;
+  private ImageView c;
+  private ImageView d;
+  private volatile boolean e = false;
   
   private Drawable a(String paramString, View paramView)
   {
     return ImageLoader.getInstance().loadImage(paramString, new VSEntranceWidget.1(this, paramView));
   }
   
-  private AnimationSet a()
+  private AnimationSet b()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     localAnimationSet.setFillAfter(true);
@@ -35,7 +35,7 @@ public class VSEntranceWidget
     return localAnimationSet;
   }
   
-  private AnimationSet b()
+  private AnimationSet c()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     localAnimationSet.setFillAfter(true);
@@ -48,9 +48,9 @@ public class VSEntranceWidget
     return localAnimationSet;
   }
   
-  private AnimationSet c()
+  private AnimationSet d()
   {
-    if (this.b != null)
+    if (this.d != null)
     {
       AnimationSet localAnimationSet = new AnimationSet(false);
       localAnimationSet.setFillAfter(true);
@@ -71,59 +71,59 @@ public class VSEntranceWidget
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
-      this.b.clearAnimation();
-      this.b.startAnimation(c());
+      this.b.setVisibility(0);
+      this.a.setAlpha(0.0F);
+      this.c.clearAnimation();
+      this.c.startAnimation(b());
+      this.d.clearAnimation();
+      this.d.startAnimation(d());
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+      this.b.setVisibility(8);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("playWidgetAnimationset resourceReady:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     QLog.d("Q.videostory.config.VSEntranceWidget", 1, localStringBuilder.toString());
   }
   
   public void a(FrameLayout paramFrameLayout, View paramView, String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramFrameLayout = VSEntranceWidgetHelper.a().a(paramString);
+    this.b = paramFrameLayout;
+    this.a = paramView;
+    paramFrameLayout = VSEntranceWidgetHelper.a().b(paramString);
     if ((paramFrameLayout != null) && (paramFrameLayout.a()))
     {
-      this.jdField_a_of_type_Boolean = true;
-      paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      this.e = true;
+      paramView = a(paramFrameLayout.c, this.b);
       if (paramView != null) {
-        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
-      }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131364252));
-      paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
-      if (paramView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381114));
-      paramFrameLayout = a(paramFrameLayout.f, this.b);
-      if (paramFrameLayout != null) {
-        this.b.setImageDrawable(paramFrameLayout);
+        this.b.setBackgroundDrawable(paramView);
       }
       this.b.setVisibility(4);
+      this.c = ((ImageView)this.b.findViewById(2131430265));
+      paramView = a(paramFrameLayout.d, this.c);
+      if (paramView != null) {
+        this.c.setImageDrawable(paramView);
+      }
+      this.c.setVisibility(0);
+      this.d = ((ImageView)this.b.findViewById(2131450133));
+      paramFrameLayout = a(paramFrameLayout.f, this.d);
+      if (paramFrameLayout != null) {
+        this.d.setImageDrawable(paramFrameLayout);
+      }
+      this.d.setVisibility(4);
       return;
     }
     QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
-    this.jdField_a_of_type_Boolean = false;
+    this.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget
  * JD-Core Version:    0.7.0.1
  */

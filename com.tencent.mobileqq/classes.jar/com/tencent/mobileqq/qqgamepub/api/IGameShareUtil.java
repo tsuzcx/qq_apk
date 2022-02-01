@@ -40,13 +40,13 @@ public abstract interface IGameShareUtil
   public static final int SOURCE_TYPE_AIO_LEFT = 0;
   public static final int SOURCE_TYPE_AIO_RIGHT = 1;
   public static final int SOURCE_TYPE_PIC = 2;
+  public static final Map<Object, Integer> S_MSG_TO_REPORT_SUB_TYPE = new HashMap();
   public static final int TYPE_INVALID = 0;
   public static final int VIEW_TAG_KEY_APPID = -4;
   public static final int VIEW_TAG_KEY_SOURCE_TYPE = -5;
   public static final int VIEW_TAG_KEY_SUBTYPE = -3;
   public static final int VIEW_TAG_KEY_TYPE = -2;
   public static final int VIEW_TAG_KEY_URL = -1;
-  public static final Map<Object, Integer> sMsgToReportSubType = new HashMap();
   
   public abstract void convertDataForGallery(Object paramObject1, Object paramObject2);
   
@@ -58,7 +58,11 @@ public abstract interface IGameShareUtil
   
   public abstract String getValueFromMsg(String paramString1, String paramString2, MessageRecord paramMessageRecord);
   
+  public abstract void handleBubbleViewForGameShare(int paramInt, Object paramObject, MessageRecord paramMessageRecord);
+  
   public abstract boolean isGameShare(Object paramObject);
+  
+  public abstract boolean isWhiteByAppid(String paramString);
   
   public abstract void releaseCache();
   
@@ -78,7 +82,7 @@ public abstract interface IGameShareUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.IGameShareUtil
  * JD-Core Version:    0.7.0.1
  */

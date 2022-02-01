@@ -27,7 +27,7 @@ public class EffectMaterialJCECoder
     localStringBuilder.append("ShadowBackendSvc.GetCatMatTree");
     localStringBuilder.append(localGetCatMatTreeReq.ServiceId);
     localGetCatMatTreeReq.ETag = EffectMaterialUtil.a(paramToServiceMsg, localStringBuilder.toString());
-    localGetCatMatTreeReq.SdkInfos = a();
+    localGetCatMatTreeReq.SdkInfos = b();
     paramUniPacket.setServantName("ShadowBackendSvc");
     paramUniPacket.setFuncName("ShadowBackendSvc.GetCatMatTree");
     paramUniPacket.put("ShadowBackendSvc.GetCatMatTree", localGetCatMatTreeReq);
@@ -59,16 +59,31 @@ public class EffectMaterialJCECoder
     return null;
   }
   
-  protected ArrayList<MetaSdkInfo> a()
+  public List<String> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("ShadowBackendSvc.GetCatMatTree");
+    return localArrayList;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    if ("ShadowBackendSvc.GetCatMatTree".equals(paramToServiceMsg.getServiceCmd())) {
+      return b(paramToServiceMsg, paramUniPacket);
+    }
+    return super.a(paramToServiceMsg, paramUniPacket);
+  }
+  
+  protected ArrayList<MetaSdkInfo> b()
   {
     ArrayList localArrayList = new ArrayList();
     MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
     localMetaSdkInfo.sdk = 0;
     localMetaSdkInfo.sdkVersion = "2.0.0";
-    Object localObject = "2.2.6.40";
-    if (!TextUtils.isEmpty("2.2.6.40"))
+    Object localObject = "2.6.0.23";
+    if (!TextUtils.isEmpty("2.6.0.23"))
     {
-      String[] arrayOfString = "2.2.6.40".split("\\.");
+      String[] arrayOfString = "2.6.0.23".split("\\.");
       if (arrayOfString.length > 3)
       {
         localObject = new StringBuilder();
@@ -83,21 +98,6 @@ public class EffectMaterialJCECoder
     }
     localArrayList.add(localMetaSdkInfo);
     return localArrayList;
-  }
-  
-  public List<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add("ShadowBackendSvc.GetCatMatTree");
-    return localArrayList;
-  }
-  
-  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
-  {
-    if ("ShadowBackendSvc.GetCatMatTree".equals(paramToServiceMsg.getServiceCmd())) {
-      return b(paramToServiceMsg, paramUniPacket);
-    }
-    return super.a(paramToServiceMsg, paramUniPacket);
   }
 }
 

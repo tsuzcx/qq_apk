@@ -10,19 +10,19 @@ class ReadInJoyFastWebBottomSocialViewNew$7
   
   public void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    int j = ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebReadInJoyFastWebBottomSocialViewNew);
+    int j = ReadInJoyFastWebBottomSocialViewNew.f(this.c);
     int i;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       i = 0;
     } else {
       i = -1;
     }
-    paramReadInJoyObserver.a(j, i, this.jdField_a_of_type_JavaLangString);
+    paramReadInJoyObserver.a(j, i, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.ReadInJoyFastWebBottomSocialViewNew.7
  * JD-Core Version:    0.7.0.1
  */

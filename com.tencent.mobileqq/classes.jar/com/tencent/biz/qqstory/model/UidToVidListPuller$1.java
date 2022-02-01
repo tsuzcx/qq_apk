@@ -8,9 +8,9 @@ class UidToVidListPuller$1
 {
   public void a(boolean paramBoolean)
   {
-    if (this.a.a != null)
+    if (this.a.c != null)
     {
-      this.a.a.a(paramBoolean);
+      this.a.c.a(paramBoolean);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Finish !");
       String str;
@@ -26,7 +26,7 @@ class UidToVidListPuller$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.UidToVidListPuller.1
  * JD-Core Version:    0.7.0.1
  */

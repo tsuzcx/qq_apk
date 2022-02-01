@@ -64,7 +64,7 @@ final class MiniAppInfo$1
           bool1 = true;
           localMiniAppInfo.isSupportBlueBar = bool1;
           if (paramParcel.readInt() != 1) {
-            break label864;
+            break label873;
           }
           bool1 = true;
           localMiniAppInfo.isSupportOffline = bool1;
@@ -109,6 +109,7 @@ final class MiniAppInfo$1
           localMiniAppInfo.gamePublicationCompany = paramParcel.readString();
           localMiniAppInfo.gameApprovalNumber = paramParcel.readString();
           localMiniAppInfo.gameOperatingCompany = paramParcel.readString();
+          localMiniAppInfo.miniAppType = paramParcel.readInt();
           return localMiniAppInfo;
         }
       }
@@ -119,7 +120,7 @@ final class MiniAppInfo$1
       }
       boolean bool1 = false;
       continue;
-      label864:
+      label873:
       bool1 = false;
     }
   }
@@ -131,7 +132,7 @@ final class MiniAppInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

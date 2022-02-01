@@ -18,7 +18,7 @@ public class GetEmoticonWhenNoFile
     long l = localSharedPreferences.getLong("last_pull_free_emosm_update_time", 0L);
     if (System.currentTimeMillis() - l > 43200000L)
     {
-      ((IEPRecommendTaskService)QRoute.api(IEPRecommendTaskService.class)).createEPRecommendTask(this.mAutomator.a).setParam("https://i.gtimg.cn/qqshow/admindata/comdata/vip_emoji_aio_android_config/xydata.json", "3").runTask();
+      ((IEPRecommendTaskService)QRoute.api(IEPRecommendTaskService.class)).createEPRecommendTask(this.mAutomator.k).setParam("https://i.gtimg.cn/qqshow/admindata/comdata/vip_emoji_aio_android_config/xydata.json", "3").runTask();
       localSharedPreferences.edit().putLong("last_pull_free_emosm_update_time", System.currentTimeMillis()).commit();
     }
     return 7;
@@ -26,7 +26,7 @@ public class GetEmoticonWhenNoFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetEmoticonWhenNoFile
  * JD-Core Version:    0.7.0.1
  */

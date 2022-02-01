@@ -17,20 +17,20 @@ public class AudioChangeEvent
 {
   public static final Parcelable.Creator<AudioChangeEvent> CREATOR = new AudioChangeEvent.1();
   public int a;
-  public List<String> a;
+  public List<String> b;
   
   public AudioChangeEvent() {}
   
   public AudioChangeEvent(int paramInt, List<String> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramInt;
+    this.b = paramList;
   }
   
   protected AudioChangeEvent(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilList = paramParcel.createStringArrayList();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.createStringArrayList();
   }
   
   public JSONObject a()
@@ -40,12 +40,12 @@ public class AudioChangeEvent
     Object localObject = new JSONArray();
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.b.iterator();
       while (localIterator.hasNext()) {
         ((JSONArray)localObject).put((String)localIterator.next());
       }
       localJSONObject2.put("identifiers", localObject);
-      localJSONObject1.put("type", this.jdField_a_of_type_Int);
+      localJSONObject1.put("type", this.a);
       localJSONObject1.put("data", localJSONObject2);
       return localJSONObject1;
     }
@@ -66,13 +66,13 @@ public class AudioChangeEvent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilList);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeStringList(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.event.AudioChangeEvent
  * JD-Core Version:    0.7.0.1
  */

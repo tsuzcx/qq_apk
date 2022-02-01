@@ -3,6 +3,7 @@ package com.tencent.liteav;
 import android.content.Context;
 import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.p;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioRawDataListener;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener;
@@ -13,7 +14,7 @@ public abstract class n
   protected h a = null;
   protected Context b = null;
   protected TXCloudVideoView c = null;
-  protected WeakReference<com.tencent.liteav.basic.b.b> d;
+  protected WeakReference<com.tencent.liteav.basic.c.b> d;
   
   public n(Context paramContext)
   {
@@ -47,12 +48,12 @@ public abstract class n
   
   public void a(Surface paramSurface) {}
   
-  public void a(com.tencent.liteav.basic.b.b paramb)
+  public void a(com.tencent.liteav.basic.c.b paramb)
   {
     this.d = new WeakReference(paramb);
   }
   
-  public abstract void a(com.tencent.liteav.basic.c.o paramo);
+  public abstract void a(p paramp);
   
   public void a(h paramh)
   {
@@ -62,7 +63,7 @@ public abstract class n
     }
   }
   
-  public void a(o paramo, com.tencent.liteav.basic.a.b paramb, Object paramObject) {}
+  public void a(o paramo, com.tencent.liteav.basic.b.b paramb, Object paramObject) {}
   
   public void a(TXLivePlayer.ITXAudioRawDataListener paramITXAudioRawDataListener) {}
   
@@ -72,8 +73,6 @@ public abstract class n
   }
   
   public void a(TXRecordCommon.ITXVideoRecordListener paramITXVideoRecordListener) {}
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
   
   public void b()
   {
@@ -120,7 +119,7 @@ public abstract class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.n
  * JD-Core Version:    0.7.0.1
  */

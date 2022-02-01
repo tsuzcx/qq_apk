@@ -81,7 +81,7 @@ class CreateFaceToFaceDiscussionActivity$8
         if ((i != 2) && (i != 1))
         {
           paramObject = this.a;
-          CreateFaceToFaceDiscussionActivity.access$100(paramObject, 1, paramObject.getString(2131692182));
+          CreateFaceToFaceDiscussionActivity.access$100(paramObject, 1, paramObject.getString(2131889168));
           return;
         }
         this.a.finish();
@@ -89,8 +89,8 @@ class CreateFaceToFaceDiscussionActivity$8
         ((Intent)localObject1).putExtra("uin", paramObject);
         ((Intent)localObject1).putExtra("uintype", 1);
         Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(ContactUtils.e(this.a.app, this.a.app.getCurrentAccountUin()));
-        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131702789));
+        ((StringBuilder)localObject2).append(ContactUtils.f(this.a.app, this.a.app.getCurrentAccountUin()));
+        ((StringBuilder)localObject2).append(HardCodeUtil.a(2131900779));
         ((Intent)localObject1).putExtra("uinname", ((StringBuilder)localObject2).toString());
         ((Intent)localObject1).putExtra("isBack2Root", true);
         this.a.startActivity((Intent)localObject1);
@@ -100,7 +100,7 @@ class CreateFaceToFaceDiscussionActivity$8
     else if (j == this.a.mSessionId)
     {
       paramObject = this.a;
-      CreateFaceToFaceDiscussionActivity.access$200(paramObject, 1, paramObject.getString(2131692182));
+      CreateFaceToFaceDiscussionActivity.access$200(paramObject, 1, paramObject.getString(2131889168));
     }
   }
   
@@ -126,7 +126,7 @@ class CreateFaceToFaceDiscussionActivity$8
         if (!this.a.isEnteredHall)
         {
           paramList = paramBusiRespHead.str_result.get();
-          QQToast.a(this.a.mContext, paramList, 0).a();
+          QQToast.makeText(this.a.mContext, paramList, 0).show();
           ((Animatable)this.a.mProgressDrawable).stop();
           this.a.progress.setVisibility(4);
           if (this.a.mHandler.hasMessages(1)) {
@@ -178,11 +178,11 @@ class CreateFaceToFaceDiscussionActivity$8
             paramBusiRespHead.isTroop = true;
             paramBusiRespHead.mCreateTroopBtn.setVisibility(0);
             this.a.mEnterWording.setVisibility(0);
-            this.a.mEnterWording.setText(this.a.getString(2131718699, new Object[] { localObject }));
-            this.a.mCreateTroopBtn.setText(this.a.getString(2131718697));
+            this.a.mEnterWording.setText(this.a.getString(2131916200, new Object[] { localObject }));
+            this.a.mCreateTroopBtn.setText(this.a.getString(2131916198));
             this.a.mCreateTroopBtn.setTextColor(-1);
-            this.a.mCreateTroopBtn.setContentDescription(this.a.getString(2131718697));
-            this.a.mCreateTroopBtn.setBackgroundResource(2130839280);
+            this.a.mCreateTroopBtn.setContentDescription(this.a.getString(2131916198));
+            this.a.mCreateTroopBtn.setBackgroundResource(2130839460);
           }
         }
         else
@@ -191,27 +191,27 @@ class CreateFaceToFaceDiscussionActivity$8
           paramBusiRespHead.isTroop = false;
           paramBusiRespHead.mCreateTroopBtn.setVisibility(0);
           this.a.mEnterWording.setVisibility(0);
-          this.a.mEnterWording.setText(this.a.getString(2131718700, new Object[] { localObject }));
-          this.a.mCreateTroopBtn.setText(this.a.getString(2131718696));
+          this.a.mEnterWording.setText(this.a.getString(2131916201, new Object[] { localObject }));
+          this.a.mCreateTroopBtn.setText(this.a.getString(2131916197));
           this.a.mCreateTroopBtn.setTextColor(-1);
-          this.a.mCreateTroopBtn.setContentDescription(this.a.getString(2131718696));
-          this.a.mCreateTroopBtn.setBackgroundResource(2130839280);
+          this.a.mCreateTroopBtn.setContentDescription(this.a.getString(2131916197));
+          this.a.mCreateTroopBtn.setBackgroundResource(2130839460);
         }
       }
       else
       {
-        CreateFaceToFaceDiscussionActivity.access$300(this.a).setText(this.a.getString(2131689682));
-        CreateFaceToFaceDiscussionActivity.access$300(this.a).setContentDescription(this.a.getString(2131689682));
-        this.a.mTextviewTip.setText(this.a.getString(2131718694));
-        this.a.mTextviewTip.setContentDescription(this.a.getString(2131718694));
-        this.a.mEnterTextviewTip.setText(this.a.getString(2131718695));
-        this.a.mEnterTextviewTip.setContentDescription(this.a.getString(2131718695));
-        this.a.mCreateTroopBtn.setTextColor(this.a.getResources().getColor(2131167089));
-        this.a.mCreateTroopBtn.setBackgroundResource(2130839280);
-        this.a.mCreateTroopBtn.setText(HardCodeUtil.a(2131702788));
-        this.a.mCreateTroopBtn.setContentDescription(HardCodeUtil.a(2131702788));
+        CreateFaceToFaceDiscussionActivity.access$300(this.a).setText(this.a.getString(2131886294));
+        CreateFaceToFaceDiscussionActivity.access$300(this.a).setContentDescription(this.a.getString(2131886294));
+        this.a.mTextviewTip.setText(this.a.getString(2131916195));
+        this.a.mTextviewTip.setContentDescription(this.a.getString(2131916195));
+        this.a.mEnterTextviewTip.setText(this.a.getString(2131916196));
+        this.a.mEnterTextviewTip.setContentDescription(this.a.getString(2131916196));
+        this.a.mCreateTroopBtn.setTextColor(this.a.getResources().getColor(2131168041));
+        this.a.mCreateTroopBtn.setBackgroundResource(2130839460);
+        this.a.mCreateTroopBtn.setText(HardCodeUtil.a(2131900778));
+        this.a.mCreateTroopBtn.setContentDescription(HardCodeUtil.a(2131900778));
         this.a.mEnterWording.setVisibility(0);
-        this.a.mEnterWording.setText(this.a.getString(2131718698));
+        this.a.mEnterWording.setText(this.a.getString(2131916199));
       }
       if (this.a.mMemberList == null) {
         this.a.mMemberList = new ArrayList();
@@ -241,7 +241,7 @@ class CreateFaceToFaceDiscussionActivity$8
     }
     else if (!this.a.isEnteredHall)
     {
-      QQToast.a(this.a.mContext, HardCodeUtil.a(2131702786), 1).a();
+      QQToast.makeText(this.a.mContext, HardCodeUtil.a(2131900776), 1).show();
       if (this.a.mHandler.hasMessages(1)) {
         this.a.mHandler.removeMessages(1);
       }
@@ -272,7 +272,7 @@ class CreateFaceToFaceDiscussionActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.8
  * JD-Core Version:    0.7.0.1
  */

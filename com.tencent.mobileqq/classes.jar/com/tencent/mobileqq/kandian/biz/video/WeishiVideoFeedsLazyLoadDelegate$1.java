@@ -9,14 +9,14 @@ class WeishiVideoFeedsLazyLoadDelegate$1
   
   public void run()
   {
-    WeishiVideoFeedsLazyLoadDelegate.a(this.this$0, RIJWeiShiLegacyUtils.a.a());
+    WeishiVideoFeedsLazyLoadDelegate.a(this.this$0, RIJWeiShiLegacyUtils.a.d());
     WeishiVideoFeedsLazyLoadDelegate localWeishiVideoFeedsLazyLoadDelegate = this.this$0;
-    WeishiVideoFeedsLazyLoadDelegate.a(localWeishiVideoFeedsLazyLoadDelegate, WeishiVideoFeedsLazyLoadDelegate.a(localWeishiVideoFeedsLazyLoadDelegate));
+    WeishiVideoFeedsLazyLoadDelegate.b(localWeishiVideoFeedsLazyLoadDelegate, WeishiVideoFeedsLazyLoadDelegate.a(localWeishiVideoFeedsLazyLoadDelegate));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.WeishiVideoFeedsLazyLoadDelegate.1
  * JD-Core Version:    0.7.0.1
  */

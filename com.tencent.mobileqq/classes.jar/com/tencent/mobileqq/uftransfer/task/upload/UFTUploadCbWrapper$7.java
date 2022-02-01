@@ -14,13 +14,13 @@ class UFTUploadCbWrapper$7
   {
     int i;
     if (this.this$0.a != null) {
-      i = this.this$0.a.a(this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTTransferKey, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadSendMsgCallback);
+      i = this.this$0.a.a(this.a, this.b, this.c);
     } else {
       i = -1;
     }
     if (i != 0)
     {
-      IUFTUploadSendMsgCallback localIUFTUploadSendMsgCallback = this.jdField_a_of_type_ComTencentMobileqqUftransferApiIUFTUploadSendMsgCallback;
+      IUFTUploadSendMsgCallback localIUFTUploadSendMsgCallback = this.c;
       if (localIUFTUploadSendMsgCallback != null) {
         localIUFTUploadSendMsgCallback.a(false, i, new Bundle());
       }
@@ -29,7 +29,7 @@ class UFTUploadCbWrapper$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTUploadCbWrapper.7
  * JD-Core Version:    0.7.0.1
  */

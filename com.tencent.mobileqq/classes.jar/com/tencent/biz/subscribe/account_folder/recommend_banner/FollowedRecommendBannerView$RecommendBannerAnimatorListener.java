@@ -8,18 +8,18 @@ import android.view.ViewGroup.LayoutParams;
 class FollowedRecommendBannerView$RecommendBannerAnimatorListener
   implements ValueAnimator.AnimatorUpdateListener
 {
-  private View jdField_a_of_type_AndroidViewView;
+  private View b;
   
   private FollowedRecommendBannerView$RecommendBannerAnimatorListener(FollowedRecommendBannerView paramFollowedRecommendBannerView, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
     localLayoutParams.height = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.b.setLayoutParams(localLayoutParams);
   }
 }
 

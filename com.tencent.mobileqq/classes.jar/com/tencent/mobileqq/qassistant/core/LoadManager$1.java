@@ -20,28 +20,28 @@ final class LoadManager$1
     {
       Object localObject = new HttpNetReq();
       ((HttpNetReq)localObject).mCallback = new LoadManager.1.1(this);
-      ((HttpNetReq)localObject).mReqUrl = this.c;
+      ((HttpNetReq)localObject).mReqUrl = this.f;
       ((HttpNetReq)localObject).mHttpMethod = 0;
-      ((HttpNetReq)localObject).mOutPath = this.jdField_a_of_type_JavaIoFile.getPath();
+      ((HttpNetReq)localObject).mOutPath = this.b.getPath();
       ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
-      ((IHttpEngineService)AssistantUtils.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
-      localObject = this.jdField_a_of_type_JavaLangString;
+      ((IHttpEngineService)AssistantUtils.c().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+      localObject = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("DownLoadZipFile startDownloadZipFile, url: ");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.f);
       AssistantUtils.a((String)localObject, localStringBuilder.toString());
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      this.d.set(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.core.LoadManager.1
  * JD-Core Version:    0.7.0.1
  */

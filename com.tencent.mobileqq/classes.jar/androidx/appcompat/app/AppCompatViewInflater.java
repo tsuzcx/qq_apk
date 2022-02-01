@@ -26,16 +26,15 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.appcompat.widget.TintContextWrapper;
-import androidx.collection.ArrayMap;
+import androidx.collection.SimpleArrayMap;
 import androidx.core.view.ViewCompat;
 import java.lang.reflect.Constructor;
-import java.util.Map;
 
 public class AppCompatViewInflater
 {
   private static final String LOG_TAG = "AppCompatViewInflater";
   private static final String[] sClassPrefixList = { "android.widget.", "android.view.", "android.webkit." };
-  private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap();
+  private static final SimpleArrayMap<String, Constructor<? extends View>> sConstructorMap = new SimpleArrayMap();
   private static final Class<?>[] sConstructorSignature = { Context.class, AttributeSet.class };
   private static final int[] sOnClickAttrs = { 16843375 };
   private final Object[] mConstructorArgs = new Object[2];
@@ -92,13 +91,13 @@ public class AppCompatViewInflater
     //   0: aload_2
     //   1: astore 5
     //   3: aload_2
-    //   4: ldc 153
-    //   6: invokevirtual 157	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   4: ldc 151
+    //   6: invokevirtual 155	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   9: ifeq +14 -> 23
     //   12: aload_3
     //   13: aconst_null
-    //   14: ldc 159
-    //   16: invokeinterface 163 3 0
+    //   14: ldc 157
+    //   16: invokeinterface 161 3 0
     //   21: astore 5
     //   23: aload_0
     //   24: getfield 54	androidx/appcompat/app/AppCompatViewInflater:mConstructorArgs	[Ljava/lang/Object;
@@ -113,7 +112,7 @@ public class AppCompatViewInflater
     //   37: iconst_m1
     //   38: aload 5
     //   40: bipush 46
-    //   42: invokevirtual 167	java/lang/String:indexOf	(I)I
+    //   42: invokevirtual 165	java/lang/String:indexOf	(I)I
     //   45: if_icmpne +72 -> 117
     //   48: iconst_0
     //   49: istore 4
@@ -127,7 +126,7 @@ public class AppCompatViewInflater
     //   64: getstatic 43	androidx/appcompat/app/AppCompatViewInflater:sClassPrefixList	[Ljava/lang/String;
     //   67: iload 4
     //   69: aaload
-    //   70: invokespecial 169	androidx/appcompat/app/AppCompatViewInflater:createViewByPrefix	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Landroid/view/View;
+    //   70: invokespecial 167	androidx/appcompat/app/AppCompatViewInflater:createViewByPrefix	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Landroid/view/View;
     //   73: astore_2
     //   74: aload_2
     //   75: ifnull +18 -> 93
@@ -166,7 +165,7 @@ public class AppCompatViewInflater
     //   118: aload_1
     //   119: aload 5
     //   121: aconst_null
-    //   122: invokespecial 169	androidx/appcompat/app/AppCompatViewInflater:createViewByPrefix	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Landroid/view/View;
+    //   122: invokespecial 167	androidx/appcompat/app/AppCompatViewInflater:createViewByPrefix	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Landroid/view/View;
     //   125: astore_1
     //   126: aload_0
     //   127: getfield 54	androidx/appcompat/app/AppCompatViewInflater:mConstructorArgs	[Ljava/lang/Object;

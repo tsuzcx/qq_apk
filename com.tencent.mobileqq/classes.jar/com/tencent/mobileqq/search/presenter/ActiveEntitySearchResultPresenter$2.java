@@ -16,13 +16,13 @@ class ActiveEntitySearchResultPresenter$2
       View localView = (View)paramVarArgs[0];
       paramVarArgs = (GroupBaseNetSearchModelItem)paramVarArgs[1];
       ActiveEntitySearchResultPresenter.a(this.a, localView.getContext(), paramVarArgs);
-      ActiveEntitySearchResultPresenter.a(this.a);
+      ActiveEntitySearchResultPresenter.f(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.2
  * JD-Core Version:    0.7.0.1
  */

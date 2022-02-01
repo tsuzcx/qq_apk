@@ -6,19 +6,19 @@ import com.tencent.mobileqq.ecshop.redpoint.RedPointInfo;
 
 public class EcshopMenuDialog$ViewTag
 {
-  @NonNull
-  public EcshopConfBean.MenuConfBean a;
   public RedPointInfo a;
+  @NonNull
+  public EcshopConfBean.MenuConfBean b;
   
   public EcshopMenuDialog$ViewTag(RedPointInfo paramRedPointInfo, @NonNull EcshopConfBean.MenuConfBean paramMenuConfBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEcshopRedpointRedPointInfo = paramRedPointInfo;
-    this.jdField_a_of_type_ComTencentMobileqqEcshopConfEcshopConfBean$MenuConfBean = paramMenuConfBean;
+    this.a = paramRedPointInfo;
+    this.b = paramMenuConfBean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.EcshopMenuDialog.ViewTag
  * JD-Core Version:    0.7.0.1
  */

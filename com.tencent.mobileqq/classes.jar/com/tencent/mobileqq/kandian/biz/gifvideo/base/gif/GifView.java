@@ -59,7 +59,7 @@ public class GifView
   private static Drawable getLoadingDrawable()
   {
     if (mLoadingDrawable == null) {
-      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841770);
+      mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130842687);
     }
     return mLoadingDrawable;
   }
@@ -126,7 +126,7 @@ public class GifView
     localURLDrawableOptions.mRequestHeight = this.mGifHeight;
     Context localContext = this.mContext;
     if ((localContext != null) && (localContext.getResources() != null)) {
-      localURLDrawableOptions.mLoadingDrawable = this.mContext.getResources().getDrawable(2130841770);
+      localURLDrawableOptions.mLoadingDrawable = this.mContext.getResources().getDrawable(2130842687);
     }
     paramString = URLDrawable.getDrawable(new URL(paramString), localURLDrawableOptions);
     this.mStaticZImageView.setImageDrawable(paramString);
@@ -276,7 +276,7 @@ public class GifView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.gif.GifView
  * JD-Core Version:    0.7.0.1
  */

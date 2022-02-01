@@ -11,12 +11,12 @@ class MultiVideoCtrlLayerUI4Discussion$AutoCheckVideoRunnable
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
+      QLog.d(this.this$0.X, 2, "AutoCheckVideoRunnable");
     }
-    if (this.this$0.a != null) {
-      this.this$0.a.a().ab = true;
+    if (this.this$0.am != null) {
+      this.this$0.am.k().bv = true;
     }
-    this.this$0.x();
+    this.this$0.J();
   }
 }
 

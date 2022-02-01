@@ -1,31 +1,29 @@
 package com.tencent.biz.pubaccount.weishi_new.comment;
 
-import android.widget.TextView;
+import UserGrowth.stSimpleMetaComment;
+import UserGrowth.stSimpleMetaReply;
 
 class WsCommentPresenter$7
-  implements WsCommentInputPopupWindow.OnDismissListener
+  implements Runnable
 {
-  WsCommentPresenter$7(WsCommentPresenter paramWsCommentPresenter, boolean paramBoolean) {}
+  WsCommentPresenter$7(WsCommentPresenter paramWsCommentPresenter, int paramInt1, int paramInt2) {}
   
-  public void a()
+  public void run()
   {
-    WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter, null);
-    if ((WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter) != null) && (WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter)) && (WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter) != null)) {
-      WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter).setText(WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter).a());
+    boolean bool;
+    if (this.a == 8) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    if ((WsCommentPresenter.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter)) && (WsCommentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter) != 0L))
-    {
-      WsCommentPresenter.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter);
-      WsCommentPresenter.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter, false);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      WsCommentPresenter.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentPresenter);
-    }
+    stSimpleMetaComment localstSimpleMetaComment = WSCommentRestoreManager.a().a(this.this$0.g());
+    stSimpleMetaReply localstSimpleMetaReply = WSCommentRestoreManager.a().b(this.this$0.g());
+    WsCommentPresenter.a(this.this$0, localstSimpleMetaComment, localstSimpleMetaReply, this.b, true, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentPresenter.7
  * JD-Core Version:    0.7.0.1
  */

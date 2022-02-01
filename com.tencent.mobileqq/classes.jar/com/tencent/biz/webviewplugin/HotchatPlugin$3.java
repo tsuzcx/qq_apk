@@ -14,8 +14,8 @@ class HotchatPlugin$3
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.a(this.jdField_a_of_type_JavaLangString);
-    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    this.c.a(this.a);
+    Object localObject = this.b;
     if ((localObject instanceof QBaseActivity))
     {
       localObject = ((QBaseActivity)localObject).getAppRuntime();
@@ -28,7 +28,7 @@ class HotchatPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.3
  * JD-Core Version:    0.7.0.1
  */

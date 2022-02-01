@@ -15,14 +15,14 @@ public class StartSmartDevice
     SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start device when device bind flag:");
-    localStringBuilder.append(localSmartDeviceProxyMgr.a());
+    localStringBuilder.append(localSmartDeviceProxyMgr.c());
     QLog.i("smartdevice", 1, localStringBuilder.toString());
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.StartSmartDevice
  * JD-Core Version:    0.7.0.1
  */

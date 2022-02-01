@@ -9,12 +9,12 @@ class HealthBusinessPlugin$8
   
   public void run()
   {
-    this.this$0.a.setVisibility(8);
+    this.this$0.v.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.8
  * JD-Core Version:    0.7.0.1
  */

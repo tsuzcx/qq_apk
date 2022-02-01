@@ -3,8 +3,7 @@ package com.tencent.mobileqq.kandian.biz.gifvideo.base.gif;
 import android.view.View;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -17,24 +16,24 @@ class GifView$2
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (GifView.access$000(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView))
+    if (GifView.access$000(this.h))
     {
-      if (GifView.access$100(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView)) {
-        GifView.access$200(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView);
+      if (GifView.access$100(this.h)) {
+        GifView.access$200(this.h);
       } else {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+        this.g.restartDownload();
       }
       paramView = new StringBuilder();
       paramView.append("onLoadFialed! mIsBigImg=");
-      paramView.append(GifView.access$100(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+      paramView.append(GifView.access$100(this.h));
       paramView.append(" w=");
-      paramView.append(GifView.access$300(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+      paramView.append(GifView.access$300(this.h));
       paramView.append(" h=");
-      paramView.append(GifView.access$400(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+      paramView.append(GifView.access$400(this.h));
       paramView.append(" progress: ");
-      paramView.append(this.jdField_a_of_type_JavaLangStringBuilder);
+      paramView.append(this.f);
       QLog.d("gifvideo.GifView", 1, paramView.toString());
-      paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView;
+      paramView = this.h;
       paramView.mTryCounts += 1;
     }
   }
@@ -43,7 +42,7 @@ class GifView$2
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    paramView = this.jdField_a_of_type_JavaLangStringBuilder;
+    paramView = this.f;
     paramURLDrawable = new StringBuilder();
     paramURLDrawable.append(System.currentTimeMillis());
     paramURLDrawable.append(" ");
@@ -55,14 +54,14 @@ class GifView$2
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
     long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != 0L) {
-      l1 -= this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+    long l2 = l1 - this.a;
+    if (this.b.get() != 0L) {
+      l1 -= this.b.get();
     } else {
       l1 = l2;
     }
     int i;
-    if (this.b.longValue() == 0L) {
+    if (this.c.longValue() == 0L) {
       i = 1;
     } else {
       i = 0;
@@ -71,9 +70,9 @@ class GifView$2
     paramView.append("gif status: ");
     paramView.append(i);
     paramView.append(" file size: ");
-    paramView.append(this.c);
+    paramView.append(this.d);
     paramView.append(" download time: ");
-    paramView.append(this.b);
+    paramView.append(this.c);
     paramView.append(" load time: ");
     paramView.append(l2);
     QLog.d("gifvideo.GifView", 2, paramView.toString());
@@ -81,46 +80,45 @@ class GifView$2
     paramView.append("gif status: ");
     paramView.append(i);
     paramView.append(" file size: ");
-    paramView.append(this.c);
-    paramView.append(" download time2: ");
     paramView.append(this.d);
+    paramView.append(" download time2: ");
+    paramView.append(this.e);
     paramView.append(" load time2: ");
     paramView.append(l1);
     QLog.d("gifvideo.GifView", 2, paramView.toString());
-    paramView = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    paramView = new StringBuilder();
+    paramView.append(this.d);
+    paramView.append("");
+    paramView = paramView.toString();
     paramURLDrawable = new StringBuilder();
-    paramURLDrawable.append(this.c);
+    paramURLDrawable.append(this.e);
     paramURLDrawable.append("");
     paramURLDrawable = paramURLDrawable.toString();
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.d);
-    ((StringBuilder)localObject1).append("");
-    localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(l1);
-    ((StringBuilder)localObject2).append("");
-    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(l1);
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" ");
     localStringBuilder.append(l2);
-    paramView.publicAccountReportClickEvent(null, "", "0X800A148", "0X800A148", 0, i, paramURLDrawable, (String)localObject1, (String)localObject2, localStringBuilder.toString(), false);
-    GifView.access$500(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView);
+    PublicAccountReportUtils.a(null, "", "0X800A148", "0X800A148", 0, i, paramView, paramURLDrawable, (String)localObject, localStringBuilder.toString(), false);
+    GifView.access$500(this.h);
     paramView = new StringBuilder();
     paramView.append("onLoadSuccess! mIsBigImg=");
-    paramView.append(GifView.access$100(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+    paramView.append(GifView.access$100(this.h));
     paramView.append(" w=");
-    paramView.append(GifView.access$300(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+    paramView.append(GifView.access$300(this.h));
     paramView.append(" h=");
-    paramView.append(GifView.access$400(this.jdField_a_of_type_ComTencentMobileqqKandianBizGifvideoBaseGifGifView));
+    paramView.append(GifView.access$400(this.h));
     paramView.append(" progress: ");
-    paramView.append(this.jdField_a_of_type_JavaLangStringBuilder);
+    paramView.append(this.f);
     QLog.d("gifvideo.GifView", 1, paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.gif.GifView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ class DefaultItemBuilder$1
   {
     try
     {
-      InputStream localInputStream = MobileQQ.getContext().getAssets().open(this.jdField_a_of_type_JavaLangString);
-      DefaultItemBuilder.a(this.this$0, LottieComposition.Factory.fromInputStream(this.jdField_a_of_type_AndroidContentContext, localInputStream, new DefaultItemBuilder.1.1(this)));
+      InputStream localInputStream = MobileQQ.getContext().getAssets().open(this.a);
+      DefaultItemBuilder.a(this.this$0, LottieComposition.Factory.fromInputStream(this.b, localInputStream, new DefaultItemBuilder.1.1(this)));
       return;
     }
     catch (Throwable localThrowable)
@@ -29,7 +29,7 @@ class DefaultItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class RIJInvokeHandler$19
   
   public void a(IBaseHandler paramIBaseHandler)
   {
-    paramIBaseHandler.g();
+    paramIBaseHandler.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.RIJInvokeHandler.19
  * JD-Core Version:    0.7.0.1
  */

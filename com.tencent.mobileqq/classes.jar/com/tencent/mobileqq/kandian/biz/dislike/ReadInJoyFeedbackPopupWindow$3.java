@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.kandian.base.utils.RIJLogUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
@@ -25,10 +26,10 @@ class ReadInJoyFeedbackPopupWindow$3
     if (!ReadInJoyFeedbackPopupWindow.a(this.this$0, "reportFeeds")) {
       return;
     }
-    Object localObject1 = RIJJumpUtils.a(ReadInJoyFeedbackPopupWindow.a(this.this$0));
-    String str1 = RIJQQAppInterfaceUtil.a();
-    String str2 = String.valueOf(ReadInJoyFeedbackPopupWindow.a(this.this$0).publishUin);
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "reportFeeds, shareUrl = ", localObject1, ", uin = ", str1, ", publicUin = ", str2 });
+    Object localObject1 = RIJJumpUtils.a(ReadInJoyFeedbackPopupWindow.c(this.this$0));
+    String str1 = RIJQQAppInterfaceUtil.d();
+    String str2 = String.valueOf(ReadInJoyFeedbackPopupWindow.c(this.this$0).publishUin);
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "reportFeeds, shareUrl = ", localObject1, ", uin = ", RIJLogUtil.a.a(str1), ", publicUin = ", str2 });
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
@@ -40,10 +41,10 @@ class ReadInJoyFeedbackPopupWindow$3
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      label117:
+      label123:
       String str3;
       Object localObject3;
-      break label117;
+      break label123;
     }
     localObject1 = localObject2;
     if (QLog.isColorLevel())
@@ -69,7 +70,7 @@ class ReadInJoyFeedbackPopupWindow$3
         }
       }
       localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("https://post.mp.qq.com/jubao/index?qq=");
+      ((StringBuilder)localObject3).append("https://web.kandian.qq.com/tpl/kdReport?pgyid=2021&qq=");
       ((StringBuilder)localObject3).append(str1);
       ((StringBuilder)localObject3).append("&mp_uin=");
       ((StringBuilder)localObject3).append(str2);
@@ -85,23 +86,23 @@ class ReadInJoyFeedbackPopupWindow$3
     else
     {
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("https://guanjia.qq.com/online_server/m_report.html?shareUrl=");
+      ((StringBuilder)localObject2).append("https://web.kandian.qq.com/tpl/kdReport?pgyid=2021&shareUrl=");
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append("&qq=");
       ((StringBuilder)localObject2).append(str1);
       ((StringBuilder)localObject2).append("&_wv=7");
       localObject1 = ((StringBuilder)localObject2).toString();
     }
-    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "reportFeeds, reportUrl = ", localObject1 });
-    localObject2 = new Intent(ReadInJoyFeedbackPopupWindow.g(this.this$0), QQBrowserActivity.class);
+    QLog.d("ReadInJoyBasePopupWindow", 2, new Object[] { "reportFeeds, reportUrl = ", RIJLogUtil.a.a((String)localObject1) });
+    localObject2 = new Intent(ReadInJoyFeedbackPopupWindow.m(this.this$0), QQBrowserActivity.class);
     ((Intent)localObject2).putExtra("url", (String)localObject1);
     ((Intent)localObject2).putExtra("hide_more_button", true);
-    ReadInJoyFeedbackPopupWindow.h(this.this$0).startActivity((Intent)localObject2);
+    ReadInJoyFeedbackPopupWindow.n(this.this$0).startActivity((Intent)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.ReadInJoyFeedbackPopupWindow.3
  * JD-Core Version:    0.7.0.1
  */

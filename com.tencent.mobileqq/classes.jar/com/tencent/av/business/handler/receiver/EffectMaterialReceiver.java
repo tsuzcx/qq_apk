@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.handler.EffectMaterialHandler;
 import com.tencent.av.business.manager.material.EffectMaterialManager;
+import com.tencent.av.business.processor.Avatar2dConfigFileProcessor;
 import com.tencent.av.business.processor.FaceConfigFileProcessor;
 import com.tencent.av.business.processor.PendantConfigFileProcessor;
 import com.tencent.av.utils.EffectMaterialUtil;
@@ -98,13 +99,18 @@ public class EffectMaterialReceiver
         paramObject.append(paramFromServiceMsg);
         QLog.i("EffectMaterialReceiver", 2, paramObject.toString());
       }
-      if (TextUtils.equals(paramString, "QQAVSinglePendant"))
+      if (TextUtils.equals(paramString, "QQAVSinglePendantV2"))
       {
-        a(paramFromServiceMsg);
+        b(paramFromServiceMsg);
         return;
       }
-      if (TextUtils.equals(paramString, "QQAVDoublePendant")) {
-        b(paramFromServiceMsg);
+      if (TextUtils.equals(paramString, "QQAVDoublePendantV2"))
+      {
+        c(paramFromServiceMsg);
+        return;
+      }
+      if (TextUtils.equals(paramString, "QQAVAvatar2d")) {
+        d(paramFromServiceMsg);
       }
     }
     else
@@ -129,14 +135,19 @@ public class EffectMaterialReceiver
     a(paramFromServiceMsg, paramObject, paramToServiceMsg);
   }
   
-  void a(String paramString)
-  {
-    ((PendantConfigFileProcessor)((EffectMaterialManager)((VideoAppInterface)this.a).a(15)).a(1)).a(paramString);
-  }
-  
   void b(String paramString)
   {
-    ((FaceConfigFileProcessor)((EffectMaterialManager)((VideoAppInterface)this.a).a(15)).a(2)).a(paramString);
+    ((PendantConfigFileProcessor)((EffectMaterialManager)((VideoAppInterface)this.a).c(15)).a(1)).a(paramString);
+  }
+  
+  void c(String paramString)
+  {
+    ((FaceConfigFileProcessor)((EffectMaterialManager)((VideoAppInterface)this.a).c(15)).a(2)).a(paramString);
+  }
+  
+  void d(String paramString)
+  {
+    ((Avatar2dConfigFileProcessor)((EffectMaterialManager)((VideoAppInterface)this.a).c(15)).a(3)).a(paramString);
   }
 }
 

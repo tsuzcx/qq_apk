@@ -60,6 +60,11 @@ public abstract class BaseJsPluginEngine
 {
   public static final String APP_IN_BACKGROUND_HINT = "Cannot show subscribe message UI";
   public static final String APP_IS_BANNED_HINT = "This mini program was banned from subscribing messages";
+  private static final String CM_AVATAR_TYPE_2D = "2D";
+  private static final String CM_AVATAR_TYPE_3D = "3D";
+  private static final String CM_KEY_AVATAR_TYPE = "avatarType";
+  private static final String CM_SCOPE_PERMISSION_2D = "scope.cmshowInfo2d";
+  private static final String CM_SCOPE_PERMISSION_3D = "scope.cmshowInfo3d";
   public static final String EMPTY_PARAM_LIST_HINT = "msgTypeList can't be empty";
   public static final int ERROR_APP_IN_BACKGROUND = 10005;
   public static final int ERROR_APP_IS_BANNED = 20005;
@@ -85,6 +90,8 @@ public abstract class BaseJsPluginEngine
   public static final String MAIN_SWITCH_OFF_HINT = "The main switch is switched off";
   public static final String REQUEST_LIST_FAIL_HINT = "Request list fail";
   public static final String REQUEST_SUBSCRIBE_FAIL_HINT = "Request subscribe fail";
+  private static final String SCOPE_EXPAND_USER_INFO = "scope.expandUserInfo";
+  private static final String SCOPE_USER_INFO = "scope.userInfo";
   public static final String SETTING_APP_MSG_SUBSCRIBED = "setting.appMsgSubscribed";
   public static final String SETTING_APP_ONCE_MSG_SUBSCRIBED = "setting.onceMsgSubscribed";
   public static final String SETTING_SYS_MSG_SUBSCRIBED = "setting.sysMsgSubscribed";
@@ -149,41 +156,40 @@ public abstract class BaseJsPluginEngine
   
   private void doShowAuthDialog(String paramString1, String paramString2)
   {
-    Object localObject4 = PermissionManager.g().getScopePermission(paramString2);
+    Object localObject3 = PermissionManager.g().getScopePermission(paramString2);
+    Object localObject4 = "";
     Object localObject1;
+    String str1;
     Object localObject2;
-    Object localObject3;
-    if (localObject4 != null)
+    if (localObject3 != null)
     {
-      localObject1 = ((PermissionInfo)localObject4).name;
-      localObject2 = ((PermissionInfo)localObject4).description;
-      localObject3 = ((PermissionInfo)localObject4).rejectDescription;
-      localObject4 = ((PermissionInfo)localObject4).reportSubAction;
+      localObject1 = ((PermissionInfo)localObject3).name;
+      str1 = ((PermissionInfo)localObject3).description;
+      localObject2 = ((PermissionInfo)localObject3).rejectDescription;
+      localObject3 = ((PermissionInfo)localObject3).reportSubAction;
     }
     else
     {
-      localObject5 = "";
-      localObject1 = localObject5;
+      str1 = "";
+      localObject1 = str1;
+      localObject3 = localObject1;
       localObject2 = localObject1;
-      localObject4 = localObject2;
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject5;
+      localObject1 = localObject4;
     }
-    Object localObject5 = this.mMiniAppContext.getContext();
+    localObject4 = this.mMiniAppContext.getContext();
     ApkgInfo localApkgInfo = getApkgInfo();
     ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     if (localApkgInfo != null)
     {
-      String str1 = localApkgInfo.iconUrl;
-      String str2 = localApkgInfo.apkgName;
-      if ("scope.userInfo".equals(paramString2))
+      String str2 = localApkgInfo.iconUrl;
+      String str3 = localApkgInfo.apkgName;
+      if ((!"scope.userInfo".equals(paramString2)) && (!"scope.expandUserInfo".equals(paramString2)))
       {
-        showScopeUserInfoAuthDialog((String)localObject1, (String)localObject2, (String)localObject4, (Context)localObject5, localApkgInfo, localChannelProxy, localMiniAppProxy, str1, str2);
+        showDefaultAuthDialog(paramString1, (String)localObject1, str1, (String)localObject2, (String)localObject3, (Context)localObject4, localMiniAppProxy, str2, str3);
         return;
       }
-      showDefaultAuthDialog(paramString1, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject4, (Context)localObject5, localMiniAppProxy, str1, str2);
+      showScopeUserInfoAuthDialog((String)localObject1, str1, (String)localObject2, (String)localObject3, (Context)localObject4, localApkgInfo, localChannelProxy, localMiniAppProxy, str2, str3);
     }
   }
   
@@ -230,37 +236,68 @@ public abstract class BaseJsPluginEngine
     return str2;
   }
   
-  private int getAuthDialogType(String paramString)
+  private int getAuthDialogType(String paramString1, String paramString2)
   {
-    if ("getPhoneNumber".equals(paramString)) {
+    if ("getPhoneNumber".equals(paramString1)) {
       return 2;
     }
-    if ("subscribeOnceAppMsg".equals(paramString)) {
+    if ("subscribeOnceAppMsg".equals(paramString1)) {
       return 3;
     }
-    if ("requestSubscribeSystemMessage".equals(paramString)) {
+    if ("requestSubscribeSystemMessage".equals(paramString1)) {
       return 4;
     }
-    return 1;
+    if ((!"scope.userInfo".equals(paramString2)) && (!"scope.expandUserInfo".equals(paramString2))) {
+      return 1;
+    }
+    return 5;
   }
   
   private static String getCMShowInfoScopeName(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject = null;
+    String str2 = null;
+    String str1;
+    if (!bool)
+    {
       try
       {
-        paramString = new JSONObject(paramString).optString("scope");
-        boolean bool = TextUtils.isEmpty(paramString);
-        if (!bool) {
-          return paramString;
+        localObject = new JSONObject(paramString);
+        paramString = ((JSONObject)localObject).optString("scope");
+        bool = TextUtils.isEmpty(paramString);
+        if (bool) {
+          paramString = null;
         }
+        try
+        {
+          str2 = ((JSONObject)localObject).optString("avatarType");
+          if ("2D".equals(str2))
+          {
+            localObject = "scope.cmshowInfo2d";
+          }
+          else
+          {
+            localObject = paramString;
+            if ("3D".equals(str2)) {
+              localObject = "scope.cmshowInfo3d";
+            }
+          }
+        }
+        catch (Exception localException1) {}
+        localException2.printStackTrace();
       }
-      catch (Exception paramString)
+      catch (Exception localException2)
       {
-        paramString.printStackTrace();
+        paramString = str2;
       }
+      str1 = paramString;
     }
-    return null;
+    else
+    {
+      return str1;
+    }
+    return str1;
   }
   
   private static String getRequestScopePermission(String paramString1, String paramString2)
@@ -668,7 +705,7 @@ public abstract class BaseJsPluginEngine
     AuthDialog localAuthDialog = this.authDialog;
     if ((localAuthDialog == null) || (localAuthDialog.getAuthDialogType() != paramInt))
     {
-      this.authDialog = new AuthDialog(paramActivity, paramInt);
+      this.authDialog = new AuthDialog(paramActivity, this.mMiniAppContext, paramInt);
       if ((paramInt != 3) && (paramInt != 4)) {
         this.authDialog.setOnDismissListener(this.dismissListener);
       } else {
@@ -810,40 +847,54 @@ public abstract class BaseJsPluginEngine
   
   private boolean needShowAuthDialog(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
+    boolean bool2;
     if ((paramBoolean) && (!shouldAskEveryTime(paramString1))) {
-      paramBoolean = false;
+      bool2 = false;
     } else {
-      paramBoolean = true;
+      bool2 = true;
     }
+    boolean bool1 = bool2;
     try
     {
       if ("operateWXData".equals(paramString2))
       {
-        paramString1 = new JSONObject(paramString3).optJSONObject("data");
-        paramString2 = paramString1.optString("api_name");
-        if ((!"webapi_getuserinfo".equals(paramString2)) && (!"getSubjectalterInfo".equals(paramString2)) && (!"webapi_wxa_subscribe_biz".endsWith(paramString2)))
+        paramString2 = new JSONObject(paramString3).optJSONObject("data");
+        paramString3 = paramString2.optString("api_name");
+        if ((!"webapi_getuserinfo".equals(paramString3)) && (!"getSubjectalterInfo".equals(paramString3)) && (!"webapi_wxa_subscribe_biz".endsWith(paramString3)))
         {
-          if (("webapi_plugin_login".equals(paramString2)) || ("webapi_plugin_getuserinfo".equals(paramString2))) {
-            break label148;
+          if (("webapi_plugin_login".equals(paramString3)) || ("webapi_plugin_getuserinfo".equals(paramString3))) {
+            break label190;
           }
-          if ("webapi_plugin_setauth".equals(paramString2)) {
-            break label148;
+          bool1 = bool2;
+          if ("webapi_plugin_setauth".equals(paramString3)) {
+            break label190;
           }
         }
         else
         {
-          boolean bool = paramString1.optBoolean("from_component");
-          return bool;
+          bool1 = paramString2.optBoolean("from_component");
         }
       }
     }
-    catch (Throwable paramString1)
+    catch (Throwable paramString2)
     {
-      QMLog.e("JsPluginEngine[AuthGuard]", Log.getStackTraceString(paramString1));
+      QMLog.e("JsPluginEngine[AuthGuard]", Log.getStackTraceString(paramString2));
+      bool1 = bool2;
     }
-    return paramBoolean;
-    label148:
-    return false;
+    for (;;)
+    {
+      bool2 = bool1;
+      if (paramBoolean)
+      {
+        if ((!bool1) && (!shouldAskEveryTimeWhenRejected(paramString1))) {
+          return false;
+        }
+        bool2 = true;
+      }
+      return bool2;
+      label190:
+      bool1 = false;
+    }
   }
   
   private void notifyScopePermissionQueue(Message paramMessage)
@@ -1109,23 +1160,29 @@ public abstract class BaseJsPluginEngine
     return MiniAppEnv.g().getAuthSate(str).shouldAskEveryTime(paramString);
   }
   
+  private boolean shouldAskEveryTimeWhenRejected(String paramString)
+  {
+    String str = getAppId();
+    return MiniAppEnv.g().getAuthSate(str).shouldAskEveryTimeWhenRejected(paramString);
+  }
+  
   private void showAuthDialog(Bundle paramBundle)
   {
     Activity localActivity = this.mMiniAppContext.getAttachedActivity();
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      String str2 = paramBundle.getString("key_event_name", "");
-      String str1 = paramBundle.getString("key_params", "");
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("showAuthDialog, event: ");
-      localStringBuilder.append(str2);
-      localStringBuilder.append(";params : ");
-      localStringBuilder.append(str1);
-      QMLog.d("JsPluginEngine[AuthGuard]", localStringBuilder.toString());
-      initAuthDialog(paramBundle, localActivity, getAuthDialogType(str2));
-      paramBundle = paramBundle.getString("key_scope_name", "");
-      if (paramBundle != null) {
-        doShowAuthDialog(str1, paramBundle);
+      String str1 = paramBundle.getString("key_event_name", "");
+      String str2 = paramBundle.getString("key_params", "");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showAuthDialog, event: ");
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append(";params : ");
+      ((StringBuilder)localObject).append(str2);
+      QMLog.d("JsPluginEngine[AuthGuard]", ((StringBuilder)localObject).toString());
+      localObject = paramBundle.getString("key_scope_name", "");
+      initAuthDialog(paramBundle, localActivity, getAuthDialogType(str1, (String)localObject));
+      if (localObject != null) {
+        doShowAuthDialog(str2, (String)localObject);
       }
       return;
     }
@@ -1210,9 +1267,9 @@ public abstract class BaseJsPluginEngine
     this.mHandler.obtainMessage(1).sendToTarget();
   }
   
-  private void showScopeUserInfoAuthDialog(String paramString1, String paramString2, String paramString3, Context paramContext, ApkgInfo paramApkgInfo, ChannelProxy paramChannelProxy, MiniAppProxy paramMiniAppProxy, String paramString4, String paramString5)
+  private void showScopeUserInfoAuthDialog(String paramString1, String paramString2, String paramString3, String paramString4, Context paramContext, ApkgInfo paramApkgInfo, ChannelProxy paramChannelProxy, MiniAppProxy paramMiniAppProxy, String paramString5, String paramString6)
   {
-    paramChannelProxy.getUserInfo(paramApkgInfo.appId, false, "en", new BaseJsPluginEngine.13(this, paramMiniAppProxy, paramContext, paramString4, paramString5, paramString1, paramString2, paramString3));
+    paramChannelProxy.getUserInfo(paramApkgInfo.appId, false, "en", new BaseJsPluginEngine.13(this, paramMiniAppProxy, paramContext, paramString5, paramString6, paramString1, paramString2, paramString4, paramString3));
   }
   
   private void updateOnceMsgSubscribedItem(RequestEvent paramRequestEvent, String paramString, List<INTERFACE.StSubscribeMessage> paramList1, List<INTERFACE.StSubscribeMessage> paramList2, AuthState paramAuthState)
@@ -1277,7 +1334,7 @@ public abstract class BaseJsPluginEngine
     return checkRequestScopePermission(paramRequestEvent);
   }
   
-  abstract String dispatchRequestEvent(RequestEvent paramRequestEvent);
+  protected abstract String dispatchRequestEvent(RequestEvent paramRequestEvent);
   
   protected ApkgInfo getApkgInfo()
   {
@@ -1521,7 +1578,7 @@ public abstract class BaseJsPluginEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

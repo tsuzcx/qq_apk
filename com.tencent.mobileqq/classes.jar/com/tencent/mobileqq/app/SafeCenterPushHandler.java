@@ -22,11 +22,11 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x4a.MsgBody;
 public class SafeCenterPushHandler
 {
   public static int a;
-  private QQAppInterface a;
+  private QQAppInterface b;
   
   public SafeCenterPushHandler(QQAppInterface paramQQAppInterface)
   {
-    this.a = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -62,12 +62,12 @@ public class SafeCenterPushHandler
                 return;
               }
               if (((MsgBody)localObject1).bytes_data.get() != null) {
-                QSecFramework.a().a(((MsgBody)localObject1).bytes_data.get().toByteArray());
+                QSecFramework.c().a(((MsgBody)localObject1).bytes_data.get().toByteArray());
               }
             }
             else
             {
-              new QPTxVerifyApkTimerTask(this.a, true).a();
+              new QPTxVerifyApkTimerTask(this.b, true).b();
             }
           }
           else
@@ -87,35 +87,35 @@ public class SafeCenterPushHandler
             paramArrayOfByte = new Intent();
             paramArrayOfByte.putExtra("wording", (String)localObject2);
             paramArrayOfByte.putExtra("timetowait", i);
-            this.a.setSecDetBannerIntent(paramArrayOfByte);
+            this.b.setSecDetBannerIntent(paramArrayOfByte);
           }
         }
         else
         {
-          paramArrayOfByte = (MSFNetTransportProvider)this.a.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
-          paramArrayOfByte = (MQPIntChkService)new MQPSecServiceManager(this.a.getApp().getApplicationContext(), paramArrayOfByte).a("intchk");
+          paramArrayOfByte = (MSFNetTransportProvider)this.b.getBusinessHandler(BusinessHandlerFactory.MSF_NET_TRANSPORT_PROVIDER_HANDLER);
+          paramArrayOfByte = (MQPIntChkService)new MQPSecServiceManager(this.b.getApp().getApplicationContext(), paramArrayOfByte).a("intchk");
           if (paramArrayOfByte != null)
           {
-            paramArrayOfByte.a(1, new MSFIntChkStrike(this.a, 1));
-            paramArrayOfByte.a(2, new MSFIntChkStrike(this.a, 2));
-            paramArrayOfByte.a(3, new MSFIntChkStrike(this.a, 3));
+            paramArrayOfByte.a(1, new MSFIntChkStrike(this.b, 1));
+            paramArrayOfByte.a(2, new MSFIntChkStrike(this.b, 2));
+            paramArrayOfByte.a(3, new MSFIntChkStrike(this.b, 3));
             localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("8.7.0.");
-            ((StringBuilder)localObject2).append(AppSetting.g());
+            ((StringBuilder)localObject2).append("8.8.17.");
+            ((StringBuilder)localObject2).append(AppSetting.i());
             paramArrayOfByte.b(((StringBuilder)localObject2).toString());
           }
         }
       }
       else
       {
-        new m(this.a).a();
+        new m(this.b).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SafeCenterPushHandler
  * JD-Core Version:    0.7.0.1
  */

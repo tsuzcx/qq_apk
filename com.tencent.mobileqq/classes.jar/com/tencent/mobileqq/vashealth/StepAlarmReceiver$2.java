@@ -15,19 +15,19 @@ class StepAlarmReceiver$2
   public void run()
   {
     String str = String.valueOf(SSOHttpUtils.a());
-    if ((!TextUtils.isEmpty(StepAlarmReceiver.jdField_a_of_type_JavaLangString)) && (!str.equals(StepAlarmReceiver.jdField_a_of_type_JavaLangString))) {
-      SSOHttpUtils.jdField_a_of_type_Float = 0.0F;
+    if ((!TextUtils.isEmpty(StepAlarmReceiver.c)) && (!str.equals(StepAlarmReceiver.c))) {
+      SSOHttpUtils.a = 0.0F;
     }
     Object localObject = HealthTimerConfigProcessor.a();
-    if (((HealthTimerConfigBean)localObject).a())
+    if (((HealthTimerConfigBean)localObject).n())
     {
-      this.this$0.jdField_a_of_type_Long = ((HealthTimerConfigBean)localObject).a();
-      this.this$0.jdField_a_of_type_Int = ((HealthTimerConfigBean)localObject).b();
+      this.this$0.a = ((HealthTimerConfigBean)localObject).a();
+      this.this$0.b = ((HealthTimerConfigBean)localObject).b();
     }
-    StepAlarmReceiver.jdField_a_of_type_JavaLangString = str;
+    StepAlarmReceiver.c = str;
     try
     {
-      localObject = SSOHttpUtils.a();
+      localObject = SSOHttpUtils.d();
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         return;
       }
@@ -44,19 +44,19 @@ class StepAlarmReceiver$2
       localStringBuilder.append(str);
       localStringBuilder.append("_offset");
       float f1 = i - j + ((JSONObject)localObject).getInt(localStringBuilder.toString());
-      float f2 = SSOHttpUtils.jdField_a_of_type_Float;
+      float f2 = SSOHttpUtils.a;
       long l1 = NetConnInfoCenter.getServerTimeMillis();
-      long l2 = SSOHttpUtils.jdField_a_of_type_Long;
+      long l2 = SSOHttpUtils.c;
       str = ((JSONObject)localObject).toString();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("receiver long time report max report steps:");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.this$0.b);
       ((StringBuilder)localObject).append(",report interval:");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.this$0.a);
       QLog.i("StepAlarmReceiver", 1, ((StringBuilder)localObject).toString());
-      if ((f1 - f2 > this.this$0.jdField_a_of_type_Int) || (l1 - l2 > this.this$0.jdField_a_of_type_Long))
+      if ((f1 - f2 > this.this$0.b) || (l1 - l2 > this.this$0.a))
       {
-        SSOHttpUtils.a(this.this$0.jdField_a_of_type_MqqAppAppRuntime, str);
+        SSOHttpUtils.a(this.this$0.d, str);
         return;
       }
     }
@@ -74,7 +74,7 @@ class StepAlarmReceiver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.StepAlarmReceiver.2
  * JD-Core Version:    0.7.0.1
  */

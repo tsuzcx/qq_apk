@@ -11,19 +11,18 @@ import java.io.File;
 public class EmojiGifHelper$CompositeTask
   implements Runnable
 {
-  public ConvertParam a;
-  public EmojiGifHelper.EmojiInfo a;
-  public EmojiGifHelper.OnConvertListener a;
-  public boolean a;
+  public boolean a = false;
+  public ConvertParam b;
+  public EmojiGifHelper.OnConvertListener c;
+  public EmojiGifHelper.EmojiInfo d;
   
   EmojiGifHelper$CompositeTask(EmojiGifHelper paramEmojiGifHelper, ConvertParam paramConvertParam, EmojiGifHelper.OnConvertListener paramOnConvertListener)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiConvertParam = paramConvertParam;
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$OnConvertListener = paramOnConvertListener;
+    this.b = paramConvertParam;
+    this.c = paramOnConvertListener;
   }
   
-  private String a()
+  private String b()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(QWalletTools.a());
@@ -50,16 +49,16 @@ public class EmojiGifHelper$CompositeTask
   
   public void a()
   {
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$EmojiInfo.jdField_a_of_type_ArrayOfByte)
+    synchronized (this.d.e)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
   }
   
   public void a(boolean paramBoolean, String paramString, EmojiGifHelper.OnConvertListener arg3, ConvertParam paramConvertParam)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     if (??? != null) {
@@ -71,15 +70,15 @@ public class EmojiGifHelper$CompositeTask
     }
     if (paramBoolean)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$EmojiInfo;
+      ??? = this.d;
       if (??? != null) {
-        synchronized (???.jdField_a_of_type_ArrayOfByte)
+        synchronized (???.e)
         {
-          if (!this.jdField_a_of_type_Boolean)
+          if (!this.a)
           {
-            this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$EmojiInfo.jdField_a_of_type_JavaLangString = paramString;
-            if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$EmojiInfo.jdField_a_of_type_Boolean) {
-              EmojiGifHelper.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$EmojiInfo);
+            this.d.d = paramString;
+            if (this.d.f) {
+              EmojiGifHelper.a(this.this$0, this.d);
             }
           }
           return;
@@ -118,22 +117,22 @@ public class EmojiGifHelper$CompositeTask
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("begin convert gif, publishParam=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiConvertParam);
+      ((StringBuilder)localObject).append(this.b);
       QLog.i("EmojiGifHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a();
+    Object localObject = b();
     long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.a) {
       return;
     }
-    if (a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiConvertParam, (String)localObject))
+    if (a(this.b, (String)localObject))
     {
       if (QLog.isColorLevel())
       {
@@ -142,15 +141,15 @@ public class EmojiGifHelper$CompositeTask
         localStringBuilder.append(System.currentTimeMillis() - l);
         QLog.i("EmojiGifHelper", 2, localStringBuilder.toString());
       }
-      a(true, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$OnConvertListener, this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiConvertParam);
+      a(true, (String)localObject, this.c, this.b);
       return;
     }
-    a(false, null, this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiImplEmojiGifHelper$OnConvertListener, this.jdField_a_of_type_ComTencentMobileqqQwalletHbEmojiConvertParam);
+    a(false, null, this.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.emoji.impl.EmojiGifHelper.CompositeTask
  * JD-Core Version:    0.7.0.1
  */

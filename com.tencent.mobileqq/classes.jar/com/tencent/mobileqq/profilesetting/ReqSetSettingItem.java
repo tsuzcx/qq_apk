@@ -15,21 +15,16 @@ public final class ReqSetSettingItem
   @JvmField
   @NotNull
   public static final Parcelable.Creator<ReqSetSettingItem> CREATOR = (Parcelable.Creator)new ReqSetSettingItem.Companion.CREATOR.1();
-  public static final ReqSetSettingItem.Companion a;
-  private int a;
+  public static final ReqSetSettingItem.Companion a = new ReqSetSettingItem.Companion(null);
   private int b;
   private int c;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqProfilesettingReqSetSettingItem$Companion = new ReqSetSettingItem.Companion(null);
-  }
+  private int d;
   
   public ReqSetSettingItem(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
   }
   
   public ReqSetSettingItem(@NotNull Parcel paramParcel)
@@ -39,17 +34,17 @@ public final class ReqSetSettingItem
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
   public final int b()
   {
-    return this.b;
+    return this.c;
   }
   
   public final int c()
   {
-    return this.c;
+    return this.d;
   }
   
   public int describeContents()
@@ -62,11 +57,11 @@ public final class ReqSetSettingItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('[');
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", from=");
     localStringBuilder.append(this.b);
-    localStringBuilder.append(", to=");
+    localStringBuilder.append(", from=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", to=");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(']');
     return localStringBuilder.toString();
   }
@@ -74,14 +69,14 @@ public final class ReqSetSettingItem
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
   {
     Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ReqSetSettingItem
  * JD-Core Version:    0.7.0.1
  */

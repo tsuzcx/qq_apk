@@ -4,19 +4,11 @@ import androidx.annotation.NonNull;
 
 public class MiniCard$BaseProfile
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c = -1;
-  
-  public MiniCard$BaseProfile()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public int a = -1;
+  public int b = -1;
+  public String c = "";
+  public String d = "";
+  public int e = -1;
   
   @NonNull
   public String toString()
@@ -24,30 +16,30 @@ public class MiniCard$BaseProfile
     StringBuilder localStringBuilder = new StringBuilder(1024);
     localStringBuilder.append("age");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("|");
     localStringBuilder.append("gender");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("|");
     localStringBuilder.append("place");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append("|");
     localStringBuilder.append("addSrc");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("|");
     localStringBuilder.append("commFrdCnt");
     localStringBuilder.append("=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.bean.MiniCard.BaseProfile
  * JD-Core Version:    0.7.0.1
  */

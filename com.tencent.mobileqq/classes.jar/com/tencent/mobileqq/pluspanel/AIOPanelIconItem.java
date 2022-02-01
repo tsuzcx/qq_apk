@@ -11,48 +11,48 @@ public class AIOPanelIconItem
   implements Comparable<AIOPanelIconItem>
 {
   public int a;
-  public Drawable a;
-  public String a;
-  public int[] a;
   public int b;
-  public Drawable b;
-  public String b;
-  public int c;
   public String c;
-  public int d;
   public String d;
-  public int e;
   public String e;
-  public String f;
-  public String g;
+  public int f;
+  public int g;
   public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public Drawable m;
+  public Drawable n;
+  public int o;
+  public int[] p;
   
   public AIOPanelIconItem() {}
   
   public AIOPanelIconItem(AIOPanelIconItem paramAIOPanelIconItem)
   {
-    this.jdField_a_of_type_Int = paramAIOPanelIconItem.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramAIOPanelIconItem.jdField_b_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramAIOPanelIconItem.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramAIOPanelIconItem.jdField_b_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramAIOPanelIconItem.jdField_c_of_type_JavaLangString;
-    this.jdField_c_of_type_Int = paramAIOPanelIconItem.jdField_c_of_type_Int;
-    this.jdField_d_of_type_Int = paramAIOPanelIconItem.jdField_d_of_type_Int;
-    this.jdField_d_of_type_JavaLangString = paramAIOPanelIconItem.jdField_d_of_type_JavaLangString;
-    this.jdField_e_of_type_JavaLangString = paramAIOPanelIconItem.jdField_e_of_type_JavaLangString;
+    this.a = paramAIOPanelIconItem.a;
+    this.b = paramAIOPanelIconItem.b;
+    this.c = paramAIOPanelIconItem.c;
+    this.d = paramAIOPanelIconItem.d;
+    this.e = paramAIOPanelIconItem.e;
     this.f = paramAIOPanelIconItem.f;
     this.g = paramAIOPanelIconItem.g;
     this.h = paramAIOPanelIconItem.h;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramAIOPanelIconItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramAIOPanelIconItem.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_e_of_type_Int = paramAIOPanelIconItem.jdField_e_of_type_Int;
-    this.jdField_a_of_type_ArrayOfInt = paramAIOPanelIconItem.jdField_a_of_type_ArrayOfInt;
+    this.i = paramAIOPanelIconItem.i;
+    this.j = paramAIOPanelIconItem.j;
+    this.k = paramAIOPanelIconItem.k;
+    this.l = paramAIOPanelIconItem.l;
+    this.m = paramAIOPanelIconItem.m;
+    this.n = paramAIOPanelIconItem.n;
+    this.o = paramAIOPanelIconItem.o;
+    this.p = paramAIOPanelIconItem.p;
   }
   
   public int a(AIOPanelIconItem paramAIOPanelIconItem)
   {
     if (paramAIOPanelIconItem != null) {
-      return this.jdField_c_of_type_Int - paramAIOPanelIconItem.jdField_c_of_type_Int;
+      return this.f - paramAIOPanelIconItem.f;
     }
     return 0;
   }
@@ -61,49 +61,49 @@ public class AIOPanelIconItem
   {
     try
     {
-      if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.f)))
+      if ((this.m == null) && (!TextUtils.isEmpty(this.i)) && (!TextUtils.isEmpty(this.j)))
       {
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.jdField_e_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-        localObject = URLDrawable.getDrawable(this.f, (URLDrawable.URLDrawableOptions)localObject);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.i, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.j, (URLDrawable.URLDrawableOptions)localObject);
         StateListDrawable localStateListDrawable = new StateListDrawable();
         localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
         localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+        this.m = localStateListDrawable;
       }
     }
     catch (Throwable localThrowable)
     {
       QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
     }
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.m;
   }
   
   public Drawable b()
   {
     try
     {
-      if ((this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null) && (!TextUtils.isEmpty(this.g)) && (!TextUtils.isEmpty(this.h)))
+      if ((this.n == null) && (!TextUtils.isEmpty(this.k)) && (!TextUtils.isEmpty(this.l)))
       {
         Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.g, (URLDrawable.URLDrawableOptions)localObject);
-        localObject = URLDrawable.getDrawable(this.h, (URLDrawable.URLDrawableOptions)localObject);
+        URLDrawable localURLDrawable = URLDrawable.getDrawable(this.k, (URLDrawable.URLDrawableOptions)localObject);
+        localObject = URLDrawable.getDrawable(this.l, (URLDrawable.URLDrawableOptions)localObject);
         StateListDrawable localStateListDrawable = new StateListDrawable();
         localStateListDrawable.addState(new int[] { -16842908, -16842913, -16842919 }, localURLDrawable);
         localStateListDrawable.addState(new int[] { -16842908, 16842913, -16842919 }, (Drawable)localObject);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+        this.n = localStateListDrawable;
       }
     }
     catch (Throwable localThrowable)
     {
       QLog.e("AIOPanelIconItem", 1, localThrowable, new Object[0]);
     }
-    return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    return this.n;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.AIOPanelIconItem
  * JD-Core Version:    0.7.0.1
  */

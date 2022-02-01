@@ -9,18 +9,17 @@ import java.util.ArrayList;
 public final class StoryVideoUploadManager$StoryVideoPublishStatusEvent
   extends BaseEvent
 {
-  public StoryVideoItem a;
-  public GeneralFeedItem a;
-  public ArrayList<StoryVideoUploadManager.ShareGroupFakeItem> a;
   public final boolean a;
-  public StoryVideoItem b;
-  public boolean b;
-  public boolean c = false;
+  public boolean b = true;
+  public StoryVideoItem c;
+  public StoryVideoItem d;
+  public GeneralFeedItem e;
+  public ArrayList<StoryVideoUploadManager.ShareGroupFakeItem> f;
+  public boolean h = false;
   
   public StoryVideoUploadManager$StoryVideoPublishStatusEvent(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public static boolean a(int paramInt)
@@ -33,23 +32,23 @@ public final class StoryVideoUploadManager$StoryVideoPublishStatusEvent
     return (paramInt == 941001) || (paramInt == 941002);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+    StoryVideoItem localStoryVideoItem = this.c;
     if (localStoryVideoItem == null) {
       return false;
     }
     return localStoryVideoItem.isTroopLocalVideoOnly();
   }
   
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
   public boolean c()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    return this.b;
+  }
+  
+  public boolean d()
+  {
+    ArrayList localArrayList = this.f;
     return (localArrayList != null) && (localArrayList.size() > 0);
   }
   
@@ -57,20 +56,20 @@ public final class StoryVideoUploadManager$StoryVideoPublishStatusEvent
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("StoryVideoPublishStatusEvent{mFakeStoryVideoItem=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mSucStoryVideoItem=");
-    localStringBuilder.append(this.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mCommentLikeFeedItem=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", mShareGroupFakeItems=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent
  * JD-Core Version:    0.7.0.1
  */

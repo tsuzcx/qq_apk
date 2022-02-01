@@ -24,78 +24,21 @@ import mqq.app.NewIntent;
 
 public abstract class PeakJceServiceBase
 {
-  public static volatile int a;
-  public static HashMap<String, UniPacket> a;
-  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-  private ConcurrentHashMap<String, BaseProtocolCoder> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public UniPacket a(ToServiceMsg paramToServiceMsg)
-  {
-    if ("StreamSvr.UploadStreamMsg".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))
-    {
-      String str = paramToServiceMsg.extraData.getString("filepath");
-      Object localObject2 = (UniPacket)jdField_a_of_type_JavaUtilHashMap.get(str);
-      Object localObject1;
-      if (localObject2 == null)
-      {
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("no saved packet, new one ");
-          ((StringBuilder)localObject1).append(str);
-          QLog.d("PeakJceServiceBase", 2, ((StringBuilder)localObject1).toString());
-        }
-        localObject1 = new PttUniPacket(true);
-        jdField_a_of_type_JavaUtilHashMap.clear();
-        jdField_a_of_type_JavaUtilHashMap.put(str, localObject1);
-      }
-      else
-      {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("got last packet, reuse it ");
-          ((StringBuilder)localObject1).append(str);
-          QLog.d("PeakJceServiceBase", 2, ((StringBuilder)localObject1).toString());
-          localObject1 = localObject2;
-        }
-      }
-      paramToServiceMsg = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
-      int i = StreamDataManager.b(str);
-      if (paramToServiceMsg.shortValue() <= i)
-      {
-        jdField_a_of_type_JavaUtilHashMap.remove(str);
-        if (QLog.isColorLevel())
-        {
-          localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append("last stream, remove ");
-          ((StringBuilder)localObject2).append(i);
-          ((StringBuilder)localObject2).append(", ");
-          ((StringBuilder)localObject2).append(paramToServiceMsg);
-          QLog.d("PeakJceServiceBase", 2, ((StringBuilder)localObject2).toString());
-        }
-      }
-      return localObject1;
-    }
-    return new UniPacket(true);
-  }
+  public static volatile int b;
+  public static HashMap<String, UniPacket> c = new HashMap();
+  private DecimalFormat a = new DecimalFormat("0.00");
+  private ConcurrentHashMap<String, BaseProtocolCoder> d;
+  private volatile boolean e = false;
   
   public abstract AppInterface a();
   
   public BaseProtocolCoder a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       try
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          a();
+        if (!this.e) {
+          b();
         }
       }
       finally {}
@@ -105,23 +48,7 @@ public abstract class PeakJceServiceBase
       return null;
     }
     paramString = paramString.substring(0, i);
-    return (BaseProtocolCoder)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return (BaseProtocolCoder)this.d.get(paramString);
   }
   
   protected void a(FromServiceMsg paramFromServiceMsg) {}
@@ -161,7 +88,7 @@ public abstract class PeakJceServiceBase
         paramException.append(" app seq:");
         paramException.append(paramFromServiceMsg.getAppSeq());
         paramException.append(" during ");
-        paramException.append(this.jdField_a_of_type_JavaTextDecimalFormat.format(f));
+        paramException.append(this.a.format(f));
         paramException.append("sec.");
         QLog.d("PeakJceServiceBase", 2, paramException.toString());
       }
@@ -189,7 +116,7 @@ public abstract class PeakJceServiceBase
       paramException.append(",CODE=");
       paramException.append(paramFromServiceMsg.getResultCode());
       paramException.append(" during ");
-      paramException.append(this.jdField_a_of_type_JavaTextDecimalFormat.format(f));
+      paramException.append(this.a.format(f));
       paramException.append("sec.");
       QLog.w("PeakJceServiceBase", 2, paramException.toString());
     }
@@ -209,7 +136,7 @@ public abstract class PeakJceServiceBase
         localException1.printStackTrace();
         paramException = (Exception)localObject1;
         if (!QLog.isColorLevel()) {
-          break label434;
+          break label431;
         }
         QLog.d("PeakJceServiceBase", 2, "", localException1);
         paramException = (Exception)localObject1;
@@ -221,7 +148,7 @@ public abstract class PeakJceServiceBase
         paramException = (Exception)localObject1;
       }
     }
-    label434:
+    label431:
     a(paramFromServiceMsg);
     if (localObject2 != null)
     {
@@ -267,7 +194,7 @@ public abstract class PeakJceServiceBase
       }
       while (i < arrayOfString.length)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(arrayOfString[i], paramBaseProtocolCoder);
+        this.d.put(arrayOfString[i], paramBaseProtocolCoder);
         i += 1;
       }
       return true;
@@ -275,11 +202,65 @@ public abstract class PeakJceServiceBase
     return false;
   }
   
+  public UniPacket b(ToServiceMsg paramToServiceMsg)
+  {
+    if ("StreamSvr.UploadStreamMsg".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))
+    {
+      String str = paramToServiceMsg.extraData.getString("filepath");
+      Object localObject2 = (UniPacket)c.get(str);
+      Object localObject1;
+      if (localObject2 == null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("no saved packet, new one ");
+          ((StringBuilder)localObject1).append(str);
+          QLog.d("PeakJceServiceBase", 2, ((StringBuilder)localObject1).toString());
+        }
+        localObject1 = new PttUniPacket(true);
+        c.clear();
+        c.put(str, localObject1);
+      }
+      else
+      {
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("got last packet, reuse it ");
+          ((StringBuilder)localObject1).append(str);
+          QLog.d("PeakJceServiceBase", 2, ((StringBuilder)localObject1).toString());
+          localObject1 = localObject2;
+        }
+      }
+      paramToServiceMsg = Short.valueOf(paramToServiceMsg.extraData.getShort("PackSeq"));
+      int i = StreamDataManager.g(str);
+      if (paramToServiceMsg.shortValue() <= i)
+      {
+        c.remove(str);
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("last stream, remove ");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(", ");
+          ((StringBuilder)localObject2).append(paramToServiceMsg);
+          QLog.d("PeakJceServiceBase", 2, ((StringBuilder)localObject2).toString());
+        }
+      }
+      return localObject1;
+    }
+    return new UniPacket(true);
+  }
+  
   protected void b()
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
+      if (this.d == null) {
+        this.d = new ConcurrentHashMap();
+      }
       return;
     }
     finally
@@ -299,10 +280,10 @@ public abstract class PeakJceServiceBase
     int k;
     if (localObject2 != null)
     {
-      Object localObject3 = a(paramToServiceMsg);
+      Object localObject3 = b(paramToServiceMsg);
       ((UniPacket)localObject3).setEncodeName("utf-8");
-      k = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = k + 1;
+      k = b;
+      b = k + 1;
       ((UniPacket)localObject3).setRequestId(k);
       if (((BaseProtocolCoder)localObject2).enableBinaryProtocol())
       {
@@ -363,10 +344,24 @@ public abstract class PeakJceServiceBase
       }
     }
   }
+  
+  protected void c()
+  {
+    try
+    {
+      this.e = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.PeakJceServiceBase
  * JD-Core Version:    0.7.0.1
  */

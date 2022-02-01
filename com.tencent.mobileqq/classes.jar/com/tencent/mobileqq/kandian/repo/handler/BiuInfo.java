@@ -21,16 +21,15 @@ import tencent.im.oidb.articlesummary.feeds_info.UGCVoiceInfo;
 public class BiuInfo
   implements Cloneable
 {
-  public Long a;
-  public List<BiuCommentInfo> a;
+  public List<BiuCommentInfo> a = new ArrayList();
   public Long b;
+  public Long c;
   
   public BiuInfo()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
     Long localLong = Long.valueOf(0L);
-    this.jdField_a_of_type_JavaLangLong = localLong;
     this.b = localLong;
+    this.c = localLong;
   }
   
   public BiuInfo a()
@@ -48,13 +47,13 @@ public class BiuInfo
       {
         try
         {
-          localBiuInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
-          localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+          localBiuInfo.a = new ArrayList();
+          localIterator = this.a.iterator();
           localObject = localBiuInfo;
           if (localIterator.hasNext())
           {
             localObject = (BiuCommentInfo)localIterator.next();
-            localBiuInfo.jdField_a_of_type_JavaUtilList.add(((BiuCommentInfo)localObject).clone());
+            localBiuInfo.a.add(((BiuCommentInfo)localObject).clone());
             continue;
             localObject = null;
           }
@@ -66,20 +65,20 @@ public class BiuInfo
     }
   }
   
-  public articlesummary.BiuMultiLevel a()
+  public articlesummary.BiuMultiLevel b()
   {
     articlesummary.BiuMultiLevel localBiuMultiLevel = new articlesummary.BiuMultiLevel();
-    if (this.jdField_a_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_id.set(this.jdField_a_of_type_JavaLangLong.longValue());
-    }
     if (this.b != null) {
-      localBiuMultiLevel.uint64_origin_feeds_type.set(this.b.longValue());
+      localBiuMultiLevel.uint64_origin_feeds_id.set(this.b.longValue());
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (this.c != null) {
+      localBiuMultiLevel.uint64_origin_feeds_type.set(this.c.longValue());
+    }
+    Object localObject = this.a;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
       localObject = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         BiuCommentInfo localBiuCommentInfo = (BiuCommentInfo)localIterator.next();
@@ -108,20 +107,20 @@ public class BiuInfo
     return localBiuMultiLevel;
   }
   
-  public feeds_info.BiuMultiLevel a()
+  public feeds_info.BiuMultiLevel c()
   {
     feeds_info.BiuMultiLevel localBiuMultiLevel = new feeds_info.BiuMultiLevel();
-    if (this.jdField_a_of_type_JavaLangLong != null) {
-      localBiuMultiLevel.uint64_origin_feeds_id.set(this.jdField_a_of_type_JavaLangLong.longValue());
-    }
     if (this.b != null) {
-      localBiuMultiLevel.uint64_origin_feeds_type.set(this.b.longValue());
+      localBiuMultiLevel.uint64_origin_feeds_id.set(this.b.longValue());
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (this.c != null) {
+      localBiuMultiLevel.uint64_origin_feeds_type.set(this.c.longValue());
+    }
+    Object localObject = this.a;
     if ((localObject != null) && (((List)localObject).size() != 0))
     {
       localObject = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         BiuCommentInfo localBiuCommentInfo = (BiuCommentInfo)localIterator.next();
@@ -161,17 +160,17 @@ public class BiuInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BiuInfo{oriFeedId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
-    localStringBuilder.append("BiuCommentList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append("oriFeedType");
     localStringBuilder.append(this.b);
+    localStringBuilder.append("BiuCommentList=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("oriFeedType");
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.BiuInfo
  * JD-Core Version:    0.7.0.1
  */

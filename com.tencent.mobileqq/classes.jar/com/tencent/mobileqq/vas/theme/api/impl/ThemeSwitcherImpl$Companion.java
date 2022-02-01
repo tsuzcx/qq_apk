@@ -73,24 +73,24 @@ public final class ThemeSwitcherImpl$Companion
           VasMonitorDT.a("individual_v2_theme_setup_err", "unzip_fail");
           localObject1 = localObject2;
         }
-        else if (!QQTheme.a(ThemeUtil.getIDFromSCID(paramString)))
+        else if (!QQTheme.isCustomTheme(ThemeUtil.getIDFromSCID(paramString)))
         {
           localObject1 = localObject2;
           if (!Intrinsics.areEqual("999", ThemeUtil.getIDFromSCID(paramString))) {}
         }
         else
         {
-          ((Companion)this).a(paramString, ThemeSwitcher.a());
+          ((Companion)this).a(paramString, ThemeSwitcher.b());
           localObject1 = localObject2;
         }
       }
     }
-    if (ThemeSwitcher.a())
+    if (ThemeSwitcher.b())
     {
-      localObject2 = ThemeSwitcher.jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher;
+      localObject2 = ThemeSwitcher.b;
       if (localObject2 != null)
       {
-        localObject2 = ((ThemeSwitcher)localObject2).jdField_a_of_type_ComTencentMobileqqVasThemeThemeSwitcher$DownloadListenser;
+        localObject2 = ((ThemeSwitcher)localObject2).c;
         if (localObject2 != null) {
           ((ThemeSwitcher.DownloadListenser)localObject2).a(paramString, (String)localObject1, paramInt);
         }
@@ -163,14 +163,14 @@ public final class ThemeSwitcherImpl$Companion
     Object localObject2 = (Context)localObject1;
     localThemeLocator = localThemeLocator.a((Context)localObject2, paramString, "");
     Intrinsics.checkExpressionValueIsNotNull(localThemeLocator, "locator");
-    Object localObject3 = FileUtils.encryptFile(localThemeLocator.c(), "MD5");
+    Object localObject3 = FileUtils.encryptFile(localThemeLocator.f(), "MD5");
     if (TextUtils.isEmpty((CharSequence)localObject3))
     {
       QLog.e("ThemeSwitcher", 1, "downloadExtraTabIcon: fail to get md5");
       return false;
     }
     localThemeLocator.a((Context)localObject2, paramString, (String)localObject3);
-    paramString = localThemeLocator.d();
+    paramString = localThemeLocator.g();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("downloadExtraTabIcon to ");
     ((StringBuilder)localObject2).append(paramString);
@@ -215,7 +215,7 @@ public final class ThemeSwitcherImpl$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.impl.ThemeSwitcherImpl.Companion
  * JD-Core Version:    0.7.0.1
  */

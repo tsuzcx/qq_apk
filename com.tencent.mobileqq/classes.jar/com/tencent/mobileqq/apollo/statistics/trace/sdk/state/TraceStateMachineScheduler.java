@@ -10,59 +10,59 @@ import com.tencent.util.WeakReferenceHandler;
 public class TraceStateMachineScheduler
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final TraceStateMachineScheduler.StateMachine jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$StateMachine;
-  private TraceStateMachineScheduler.TimeOutState jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState = null;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
+  private int a;
+  private final TraceStateMachineScheduler.StateMachine b;
+  private final Handler c;
+  private boolean d = true;
+  private TraceStateMachineScheduler.TimeOutState e = null;
+  private boolean f = false;
   
   public TraceStateMachineScheduler(TraceStateMachineScheduler.StateMachine paramStateMachine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$StateMachine = paramStateMachine;
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.b = paramStateMachine;
+    this.c = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
   public void a(int paramInt, TraceStateMachineScheduler.TimeOutState paramTimeOutState)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState = paramTimeOutState;
+    this.a = paramInt;
+    this.e = paramTimeOutState;
   }
   
   public void a(Bundle paramBundle)
   {
-    this.b = false;
-    while (!this.b)
+    this.f = false;
+    while (!this.f)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$StateMachine.a(paramBundle);
+      int i = this.b.e(paramBundle);
       if (i != -1)
       {
-        if ((i != 0) && (i == 1) && (this.jdField_a_of_type_Boolean))
+        if ((i != 0) && (i == 1) && (this.d))
         {
-          Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+          Message localMessage = this.c.obtainMessage(2);
           localMessage.setData(paramBundle);
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+          this.c.sendMessage(localMessage);
         }
       }
-      else if ((this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState != null) && (this.jdField_a_of_type_Int > 0))
+      else if ((this.e != null) && (this.a > 0))
       {
-        paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
+        paramBundle = this.c.obtainMessage(3);
+        this.c.sendMessageDelayed(paramBundle, this.a);
       }
     }
   }
   
   public void b()
   {
-    this.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState = null;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.f = true;
+    this.e = null;
+    this.c.removeMessages(2);
+    this.c.removeMessages(3);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -72,16 +72,16 @@ public class TraceStateMachineScheduler
     {
       if (i == 3)
       {
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState;
+        paramMessage = this.e;
         if (paramMessage != null)
         {
           paramMessage.b();
-          this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState = null;
+          this.e = null;
         }
       }
       return false;
     }
-    if (!this.b) {
+    if (!this.f) {
       a(paramMessage.getData());
     }
     return true;
@@ -89,7 +89,7 @@ public class TraceStateMachineScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.state.TraceStateMachineScheduler
  * JD-Core Version:    0.7.0.1
  */

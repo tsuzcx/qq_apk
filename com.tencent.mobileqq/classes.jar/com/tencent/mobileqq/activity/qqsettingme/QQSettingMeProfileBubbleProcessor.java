@@ -22,64 +22,59 @@ import tencent.im.oidb.redInfo.RedInfo;
 public class QQSettingMeProfileBubbleProcessor
   extends QQSettingMeBaseProcessor
 {
-  public MutableLiveData<QQSettingMeProfileBubbleBean> a;
+  public MutableLiveData<QQSettingMeProfileBubbleBean> a = new MutableLiveData(new QQSettingMeProfileBubbleBean());
   private boolean b;
-  private boolean c;
-  
-  public QQSettingMeProfileBubbleProcessor()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData(new QQSettingMeProfileBubbleBean());
-  }
+  private boolean i;
   
   @NonNull
   private QQSettingMeProfileBubbleBean a()
   {
-    if (this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue() == null) {
+    if (this.a.getValue() == null) {
       return new QQSettingMeProfileBubbleBean();
     }
-    return (QQSettingMeProfileBubbleBean)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue();
-  }
-  
-  public String a()
-  {
-    return "d_profile_bubble";
+    return (QQSettingMeProfileBubbleBean)this.a.getValue();
   }
   
   public void a(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeProfileBubbleProcessor.1(this, paramQQSettingMe));
+    this.a.observe(this.e, new QQSettingMeProfileBubbleProcessor.1(this, paramQQSettingMe));
   }
   
   public void a(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.c = paramAppRuntime;
     if (this.b) {
-      g();
+      i();
     }
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    g();
+    return "d_profile_bubble";
+  }
+  
+  public void d()
+  {
+    super.d();
+    i();
     this.b = true;
   }
   
-  public void c()
+  public void e()
   {
-    super.c();
-    this.c = false;
+    super.e();
+    this.i = false;
   }
   
-  public void f()
+  public void h()
   {
-    g();
+    i();
   }
   
-  public void g()
+  public void i()
   {
     QQSettingMeProfileBubbleBean localQQSettingMeProfileBubbleBean = new QQSettingMeProfileBubbleBean();
-    Object localObject1 = (LocalRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
+    Object localObject1 = (LocalRedTouchManager)this.c.getManager(QQManagerFactory.LOCAL_REDTOUCH_MANAGER);
     RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject1).a(-4);
     boolean bool;
     if ((((LocalRedTouchManager)localObject1).a(localRedTouchItem, true)) && (localRedTouchItem.count > 0)) {
@@ -87,12 +82,12 @@ public class QQSettingMeProfileBubbleProcessor
     } else {
       bool = false;
     }
-    localQQSettingMeProfileBubbleBean.jdField_a_of_type_Boolean = bool;
-    if (localQQSettingMeProfileBubbleBean.jdField_a_of_type_Boolean)
+    localQQSettingMeProfileBubbleBean.a = bool;
+    if (localQQSettingMeProfileBubbleBean.a)
     {
-      localQQSettingMeProfileBubbleBean.jdField_a_of_type_Int = localRedTouchItem.count;
-      localQQSettingMeProfileBubbleBean.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedTouchItem = ((LocalRedTouchManager)localObject1).a(10028);
-      ProfileCardUtil.b((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+      localQQSettingMeProfileBubbleBean.b = localRedTouchItem.count;
+      localQQSettingMeProfileBubbleBean.d = ((LocalRedTouchManager)localObject1).a(10028);
+      ProfileCardUtil.c((QQAppInterface)this.c);
       redInfo.RedInfo localRedInfo = new redInfo.RedInfo();
       Object localObject2;
       if ((((LocalRedTouchManager)localObject1).a(localRedTouchItem, true)) && (localRedTouchItem.count > 0))
@@ -124,41 +119,41 @@ public class QQSettingMeProfileBubbleProcessor
       {
         localObject2 = null;
       }
-      localQQSettingMeProfileBubbleBean.jdField_a_of_type_TencentImOidbRedInfo$RedInfo = ((redInfo.RedInfo)localObject2);
-      localQQSettingMeProfileBubbleBean.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ImageUtil.a(true);
+      localQQSettingMeProfileBubbleBean.c = ((redInfo.RedInfo)localObject2);
+      localQQSettingMeProfileBubbleBean.e = ImageUtil.a(true);
     }
-    if ((localQQSettingMeProfileBubbleBean.jdField_a_of_type_Boolean) && (localQQSettingMeProfileBubbleBean.jdField_a_of_type_TencentImOidbRedInfo$RedInfo != null) && (!this.c))
+    if ((localQQSettingMeProfileBubbleBean.a) && (localQQSettingMeProfileBubbleBean.c != null) && (!this.i))
     {
-      if ((localQQSettingMeProfileBubbleBean.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedTouchItem != null) && (localQQSettingMeProfileBubbleBean.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedTouchItem.count > 0) && (localQQSettingMeProfileBubbleBean.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedTouchItem.unReadFlag))
+      if ((localQQSettingMeProfileBubbleBean.d != null) && (localQQSettingMeProfileBubbleBean.d.count > 0) && (localQQSettingMeProfileBubbleBean.d.unReadFlag))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQSettingRedesign", 2, "checkAndReportAnonymousAnswerMsgExpose");
         }
-        ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800B47F", "0X800B47F", 0, 0, "", "", "", "");
+        ReportController.b(this.c, "dc00898", "", "", "0X800B47F", "0X800B47F", 0, 0, "", "", "", "");
       }
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800A97E", "0X800A97E", 0, 0, "0", "0", "", "");
-      this.c = true;
+      ReportController.b(this.c, "dc00898", "", "", "0X800A97E", "0X800A97E", 0, 0, "0", "0", "", "");
+      this.i = true;
     }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.setValue(localQQSettingMeProfileBubbleBean);
+    this.a.setValue(localQQSettingMeProfileBubbleBean);
   }
   
   public void onClick(View paramView)
   {
-    paramView = a().jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedTouchItem;
+    paramView = a().d;
     if ((paramView != null) && (paramView.count > 0) && (paramView.unReadFlag))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingRedesign", 2, "checkAndReportAnonymousAnswerMsgClick");
       }
-      ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800B480", "0X800B480", 0, 0, "", "", "", "");
+      ReportController.b(this.c, "dc00898", "", "", "0X800B480", "0X800B480", 0, 0, "", "", "", "");
     }
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800A97F", "0X800A97F", 0, 0, "0", "0", "", "");
+    ProfileCardUtil.c(this.d);
+    ReportController.b(this.c, "dc00898", "", "", "0X800A97F", "0X800A97F", 0, 0, "0", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeProfileBubbleProcessor
  * JD-Core Version:    0.7.0.1
  */

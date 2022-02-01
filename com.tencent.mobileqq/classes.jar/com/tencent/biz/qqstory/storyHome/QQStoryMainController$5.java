@@ -31,22 +31,22 @@ class QQStoryMainController$5
   protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     ((PreloadDownloaderManager)SuperManager.a(6)).c();
-    VideoViewFactory.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
-    PngQuantUtils.a(QQStoryContext.a());
+    VideoViewFactory.a(this.a.a).b(this.a.a);
+    PngQuantUtils.a(QQStoryContext.k());
     ((VideoServerInfoManager)SuperManager.a(4)).c();
     StoryUploadProcessor.checkUploadSessionKey();
     ((StoryConfigManager)SuperManager.a(10)).c();
-    SLog.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.a()) });
-    StoryMsgNotification.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
+    SLog.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.c()) });
+    StoryMsgNotification.a().a(this.a.a, 3);
     SLog.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
-    ShortVideoUtils.loadShortVideoSo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ShortVideoUtils.loadShortVideoSo(this.a.d);
     SLog.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
     SLog.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
     paramJobContext = this.a;
-    paramJobContext.b = PtvFilterSoLoad.a(paramJobContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+    paramJobContext.n = PtvFilterSoLoad.a(paramJobContext.d, BaseApplicationImpl.getContext());
     SLog.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
     SLog.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
-    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    QQStoryLoadingView.a(this.a.a);
     SLog.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
     return null;
   }

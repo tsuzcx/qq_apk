@@ -10,14 +10,14 @@ class StickyNoteShopLayout$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131379649).setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout.findViewById(2131368536).setVisibility(8);
-    StickyNoteShopLayout.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout).a(this.jdField_a_of_type_QCGetSuixintieSigFontRsp.vItems, this.jdField_a_of_type_ComTencentMobileqqProfileStickynoteVasStickyNoteShopLayout$1.jdField_a_of_type_Boolean);
+    this.b.b.findViewById(2131448421).setVisibility(8);
+    this.b.b.findViewById(2131435441).setVisibility(8);
+    StickyNoteShopLayout.b(this.b.b).a(this.a.vItems, this.b.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.1.1
  * JD-Core Version:    0.7.0.1
  */

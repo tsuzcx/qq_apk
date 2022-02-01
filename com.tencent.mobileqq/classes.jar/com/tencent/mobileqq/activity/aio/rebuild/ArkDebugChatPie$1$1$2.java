@@ -13,21 +13,21 @@ class ArkDebugChatPie$1$1$2
   
   public void run()
   {
-    ArkDebugChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildArkDebugChatPie$1$1.a.this$0);
+    ArkDebugChatPie.a(this.b.a.this$0);
     String str;
-    if (this.jdField_a_of_type_Int == 1) {
-      str = HardCodeUtil.a(2131700890);
+    if (this.a == 1) {
+      str = HardCodeUtil.a(2131898914);
     } else {
       str = "";
     }
     ArkAppMgr.getInstance().clearDebugAppPathCache();
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildArkDebugChatPie$1$1.a.this$0.a, String.format(HardCodeUtil.a(2131700898), new Object[] { str }), 0).a();
+    QQToast.makeText(this.b.a.this$0.e, String.format(HardCodeUtil.a(2131898922), new Object[] { str }), 0).show();
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThreadDelay(new ArkDebugChatPie.1.1.2.1(this), 60);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1.1.2
  * JD-Core Version:    0.7.0.1
  */

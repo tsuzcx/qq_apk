@@ -21,15 +21,15 @@ import java.util.Random;
 public class ComicCancelRedPointPopItemView
   extends FrameLayout
 {
-  private static int[] jdField_a_of_type_ArrayOfInt = { 1996685314, 1996685315, 1996685316, 1996685317, 1996685318, 1996685319 };
-  public int a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  public ComicCancelRedPointPopItemData a;
-  private ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = new ImageView[3];
-  private TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView = new TextView[3];
-  private TextView b = null;
+  private static int[] c = { 1996685314, 1996685315, 1996685316, 1996685317, 1996685318, 1996685319 };
+  public ComicCancelRedPointPopItemData a = null;
+  public int b = 0;
+  private ImageView d = null;
+  private ImageView[] e = new ImageView[3];
+  private LinearLayout f = null;
+  private TextView g = null;
+  private TextView h = null;
+  private TextView[] i = new TextView[3];
   
   public ComicCancelRedPointPopItemView(@NonNull Context paramContext)
   {
@@ -44,8 +44,6 @@ public class ComicCancelRedPointPopItemView
   public ComicCancelRedPointPopItemView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData = null;
-    this.jdField_a_of_type_Int = 0;
     a(paramContext);
   }
   
@@ -68,28 +66,28 @@ public class ComicCancelRedPointPopItemView
   private void a(@NonNull Context paramContext)
   {
     LayoutInflater.from(paramContext).inflate(1996816385, this, true);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(1996750869));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(1996750870));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(1996750868));
-    this.b = ((TextView)findViewById(1996750876));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0] = ((ImageView)findViewById(1996750864));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1] = ((ImageView)findViewById(1996750865));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2] = ((ImageView)findViewById(1996750866));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[0] = ((TextView)findViewById(1996750873));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[1] = ((TextView)findViewById(1996750874));
-    this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[2] = ((TextView)findViewById(1996750875));
+    this.d = ((ImageView)findViewById(1996750869));
+    this.f = ((LinearLayout)findViewById(1996750870));
+    this.g = ((TextView)findViewById(1996750868));
+    this.h = ((TextView)findViewById(1996750876));
+    this.e[0] = ((ImageView)findViewById(1996750864));
+    this.e[1] = ((ImageView)findViewById(1996750865));
+    this.e[2] = ((ImageView)findViewById(1996750866));
+    this.i[0] = ((TextView)findViewById(1996750873));
+    this.i[1] = ((TextView)findViewById(1996750874));
+    this.i[2] = ((TextView)findViewById(1996750875));
     paramContext = new Random();
-    int i = paramContext.nextInt(jdField_a_of_type_ArrayOfInt.length);
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[0].setImageResource(jdField_a_of_type_ArrayOfInt[i]);
-    int j = paramContext.nextInt(2);
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int k = arrayOfInt.length;
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[1].setImageResource(arrayOfInt[((j + 1 + i) % k)]);
-    j = paramContext.nextInt(2);
-    paramContext = jdField_a_of_type_ArrayOfInt;
-    k = paramContext.length;
-    int m = paramContext.length;
-    this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[2].setImageResource(paramContext[((i - (j + 1) + k) % m)]);
+    int j = paramContext.nextInt(c.length);
+    this.e[0].setImageResource(c[j]);
+    int k = paramContext.nextInt(2);
+    int[] arrayOfInt = c;
+    int m = arrayOfInt.length;
+    this.e[1].setImageResource(arrayOfInt[((k + 1 + j) % m)]);
+    k = paramContext.nextInt(2);
+    paramContext = c;
+    m = paramContext.length;
+    int n = paramContext.length;
+    this.e[2].setImageResource(paramContext[((j - (k + 1) + m) % n)]);
   }
   
   private void a(Context paramContext, String paramString)
@@ -97,7 +95,7 @@ public class ComicCancelRedPointPopItemView
     Drawable localDrawable = paramContext.getResources().getDrawable(1996685323);
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localDrawable);
+      this.d.setBackgroundDrawable(localDrawable);
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -106,45 +104,45 @@ public class ComicCancelRedPointPopItemView
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramString.setDecodeHandler(new ComicCancelRedPointPopItemView.1(this, paramContext));
     paramString.startDownload();
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramString);
+    this.d.setBackgroundDrawable(paramString);
   }
   
   public void setData(ComicCancelRedPointPopItemData paramComicCancelRedPointPopItemData)
   {
-    this.jdField_a_of_type_ComTencentComicDataComicCancelRedPointPopItemData = paramComicCancelRedPointPopItemData;
+    this.a = paramComicCancelRedPointPopItemData;
     if (paramComicCancelRedPointPopItemData == null) {
       return;
     }
     a(getContext(), paramComicCancelRedPointPopItemData.coverImg);
-    this.b.setText(paramComicCancelRedPointPopItemData.title);
+    this.h.setText(paramComicCancelRedPointPopItemData.title);
     if (paramComicCancelRedPointPopItemData.friendNum <= 0L)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.f.setVisibility(8);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      i = 0;
+      this.f.setVisibility(0);
+      j = 0;
       Object localObject;
       for (;;)
       {
-        localObject = this.jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-        if (i >= localObject.length) {
+        localObject = this.e;
+        if (j >= localObject.length) {
           break;
         }
-        localObject = localObject[i];
-        int j;
-        if (i < paramComicCancelRedPointPopItemData.friendNum) {
-          j = 0;
+        localObject = localObject[j];
+        int k;
+        if (j < paramComicCancelRedPointPopItemData.friendNum) {
+          k = 0;
         } else {
-          j = 8;
+          k = 8;
         }
-        ((ImageView)localObject).setVisibility(j);
-        i += 1;
+        ((ImageView)localObject).setVisibility(k);
+        j += 1;
       }
       if (TextUtils.isEmpty(paramComicCancelRedPointPopItemData.text))
       {
-        TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+        TextView localTextView = this.g;
         StringBuilder localStringBuilder = new StringBuilder();
         if (paramComicCancelRedPointPopItemData.friendNum > 1L)
         {
@@ -163,28 +161,28 @@ public class ComicCancelRedPointPopItemView
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramComicCancelRedPointPopItemData.text);
+        this.g.setText(paramComicCancelRedPointPopItemData.text);
       }
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAndroidWidgetTextView.length)
+    int j = 0;
+    while (j < this.i.length)
     {
-      if (i >= paramComicCancelRedPointPopItemData.tags.size())
+      if (j >= paramComicCancelRedPointPopItemData.tags.size())
       {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(8);
+        this.i[j].setVisibility(8);
       }
       else
       {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setVisibility(0);
-        this.jdField_a_of_type_ArrayOfAndroidWidgetTextView[i].setText((CharSequence)paramComicCancelRedPointPopItemData.tags.get(i));
+        this.i[j].setVisibility(0);
+        this.i[j].setText((CharSequence)paramComicCancelRedPointPopItemData.tags.get(j));
       }
-      i += 1;
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.ComicCancelRedPointPopItemView
  * JD-Core Version:    0.7.0.1
  */

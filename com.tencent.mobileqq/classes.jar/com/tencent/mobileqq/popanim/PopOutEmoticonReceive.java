@@ -19,71 +19,71 @@ import mqq.app.MobileQQ;
 public class PopOutEmoticonReceive
   implements StickerBubbleAnimationView.StickerBubbleAnimationCallback, Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = ThreadManager.getUIHandlerV2();
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private PopOutAnimConfig jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new PopOutEmoticonReceive.1(this);
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  private boolean e;
+  private Handler a = ThreadManager.getUIHandlerV2();
+  private ViewGroup b;
+  private PopOutAnimConfig c;
+  private int d;
+  private int e;
+  private AppRuntime f = MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private boolean g;
+  private boolean h;
+  private int[] i;
+  private int j;
+  private boolean k;
+  private boolean l;
+  private boolean m;
+  private Runnable n = new PopOutEmoticonReceive.1(this);
   
   public PopOutEmoticonReceive(ViewGroup paramViewGroup, PopOutAnimConfig paramPopOutAnimConfig, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig = paramPopOutAnimConfig;
-    this.jdField_a_of_type_Int = QQSysFaceUtil.convertToLocal(paramInt1);
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.jdField_a_of_type_MqqAppAppRuntime) ^ true);
+    this.b = paramViewGroup;
+    this.c = paramPopOutAnimConfig;
+    this.d = QQSysFaceUtil.convertToLocal(paramInt1);
+    this.e = paramInt2;
+    this.l = (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.f) ^ true);
     PopOutAnimViewHolder.a().a(this, false);
-  }
-  
-  @NonNull
-  private int[] a()
-  {
-    int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig.itemCountRecShowAppear;
-    if (this.jdField_b_of_type_Int * 80 < 5000) {
-      return arrayOfInt;
-    }
-    int n = arrayOfInt.length;
-    int m = 0;
-    int j = 0;
-    int k;
-    for (int i = 0; j < n; i = k)
-    {
-      k = i;
-      if (arrayOfInt[j] <= this.jdField_b_of_type_Int) {
-        k = i + 1;
-      }
-      j += 1;
-    }
-    arrayOfInt = new int[i];
-    n = 62 / i;
-    for (j = m; j < i; j = k)
-    {
-      k = j + 1;
-      arrayOfInt[j] = (n * k);
-    }
-    return arrayOfInt;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig.stopShakeAnimation();
+    this.g = true;
+    this.a.removeCallbacksAndMessages(null);
+    this.c.stopShakeAnimation();
     PopOutAnimViewHolder.a().b(this, false);
-    if (this.d)
+    if (this.l)
     {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_MqqAppAppRuntime, "StickerBubble", false);
-      this.e = true;
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.f, "StickerBubble", false);
+      this.m = true;
     }
+  }
+  
+  @NonNull
+  private int[] c()
+  {
+    int[] arrayOfInt = this.c.itemCountRecShowAppear;
+    if (this.e * 80 < 5000) {
+      return arrayOfInt;
+    }
+    int i5 = arrayOfInt.length;
+    int i4 = 0;
+    int i2 = 0;
+    int i3;
+    for (int i1 = 0; i2 < i5; i1 = i3)
+    {
+      i3 = i1;
+      if (arrayOfInt[i2] <= this.e) {
+        i3 = i1 + 1;
+      }
+      i2 += 1;
+    }
+    arrayOfInt = new int[i1];
+    i5 = 62 / i1;
+    for (i2 = i4; i2 < i1; i2 = i3)
+    {
+      i3 = i2 + 1;
+      arrayOfInt[i2] = (i5 * i3);
+    }
+    return arrayOfInt;
   }
   
   public void a()
@@ -101,50 +101,50 @@ public class PopOutEmoticonReceive
     if (QLog.isColorLevel()) {
       QLog.d("PopOutEmoticonReceive", 2, "showReceiveAnimationView from runnable");
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       return;
     }
-    if ((this.d) && (!this.e))
+    if ((this.l) && (!this.m))
     {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.jdField_a_of_type_MqqAppAppRuntime, "StickerBubble", true);
-      this.e = true;
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.f, "StickerBubble", true);
+      this.m = true;
     }
-    StickerBubbleAnimationView localStickerBubbleAnimationView = PopOutAnimViewHolder.a().b(this.jdField_a_of_type_AndroidViewViewGroup, this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig.typeface);
-    if (!this.jdField_b_of_type_Boolean)
+    StickerBubbleAnimationView localStickerBubbleAnimationView = PopOutAnimViewHolder.a().b(this.b, this.c.typeface);
+    if (!this.h)
     {
       localStickerBubbleAnimationView.bringToFront();
-      this.jdField_b_of_type_Boolean = true;
+      this.h = true;
     }
-    this.jdField_c_of_type_Int += 1;
-    int i = this.jdField_c_of_type_Int;
-    if ((i <= this.jdField_b_of_type_Int) && (i * 80 <= 5000))
+    this.j += 1;
+    int i1 = this.j;
+    if ((i1 <= this.e) && (i1 * 80 <= 5000))
     {
-      if (i == 2)
+      if (i1 == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig.startShakeAnimation();
-        this.jdField_c_of_type_Boolean = false;
+        this.c.startShakeAnimation();
+        this.k = false;
       }
-      if (this.jdField_a_of_type_ArrayOfInt == null) {
-        this.jdField_a_of_type_ArrayOfInt = a();
+      if (this.i == null) {
+        this.i = c();
       }
-      i = this.jdField_a_of_type_AndroidViewViewGroup.getResources().getDisplayMetrics().widthPixels;
-      boolean bool = PopOutEmoticonUtil.a(this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfInt);
-      String str = PopOutEmoticonUtil.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqPopanimPopOutAnimConfig.apngSoLoaded);
+      i1 = this.b.getResources().getDisplayMetrics().widthPixels;
+      boolean bool = PopOutEmoticonUtil.a(this.j, this.i);
+      String str = PopOutEmoticonUtil.a(this.d, this.c.apngSoLoaded);
       PopOutAnimViewHolder.a();
-      localStickerBubbleAnimationView.a(PopOutAnimViewHolder.a(i, str, bool));
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 80L);
+      localStickerBubbleAnimationView.a(PopOutAnimViewHolder.a(i1, str, bool));
+      this.a.postDelayed(this, 80L);
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("PopOutEmoticonReceive", 2, "receiver animation sending finished ");
     }
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+    this.k = true;
+    this.a.postDelayed(this.n, 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.PopOutEmoticonReceive
  * JD-Core Version:    0.7.0.1
  */

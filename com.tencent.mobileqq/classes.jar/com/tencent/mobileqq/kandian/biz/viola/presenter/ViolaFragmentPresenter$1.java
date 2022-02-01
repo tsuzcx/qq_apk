@@ -13,13 +13,13 @@ class ViolaFragmentPresenter$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaPresenterViolaFragmentPresenter.a.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizViolaPresenterViolaFragmentPresenter.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidViewViewGroup);
+    this.c.b.a();
+    this.c.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.presenter.ViolaFragmentPresenter.1
  * JD-Core Version:    0.7.0.1
  */

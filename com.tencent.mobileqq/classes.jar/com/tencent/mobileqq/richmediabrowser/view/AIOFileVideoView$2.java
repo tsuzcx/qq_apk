@@ -12,12 +12,12 @@ class AIOFileVideoView$2
   public void run()
   {
     AIOFileVideoView localAIOFileVideoView = this.this$0;
-    AIOFileVideoView.a(localAIOFileVideoView, localAIOFileVideoView.a.a.getCurrentPosition(), this.a.i);
+    AIOFileVideoView.a(localAIOFileVideoView, localAIOFileVideoView.k.c.getCurrentPosition(), this.a.z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFileVideoView.2
  * JD-Core Version:    0.7.0.1
  */

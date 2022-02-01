@@ -15,7 +15,7 @@ public final class TopicListAdapter$TitleViewHolder
   
   public TopicListAdapter$TitleViewHolder(@NotNull ViewGroup paramViewGroup)
   {
-    paramViewGroup = paramViewGroup.findViewById(R.id.q);
+    paramViewGroup = paramViewGroup.findViewById(R.id.m);
     Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "layout.findViewById(R.id.tv_title)");
     this.a = ((TextView)paramViewGroup);
   }
@@ -28,7 +28,7 @@ public final class TopicListAdapter$TitleViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.tweetTopic.TopicListAdapter.TitleViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,28 +14,15 @@ import java.util.List;
 public class PlayerInvitePanel
   extends AdapterView<BaseAdapter>
 {
-  private int jdField_a_of_type_Int = 5;
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new PlayerInvitePanel.2(this);
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private List<View> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private BaseAdapter a;
+  private List<View> b = new LinkedList();
+  private AdapterView.OnItemClickListener c;
+  private int d = 5;
+  private DataSetObserver e = new PlayerInvitePanel.2(this);
   
   public PlayerInvitePanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-  }
-  
-  protected View a()
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      return (View)this.jdField_a_of_type_JavaUtilList.remove(0);
-    }
-    return null;
-  }
-  
-  public BaseAdapter a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetBaseAdapter;
   }
   
   protected void a()
@@ -43,9 +30,9 @@ public class PlayerInvitePanel
     b();
     detachAllViewsFromParent();
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount())
+    while (i < this.a.getCount())
     {
-      View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, a(), this);
+      View localView = this.a.getView(i, c(), this);
       localView.setOnClickListener(new PlayerInvitePanel.1(this, i));
       addViewInLayout(localView, i, new ViewGroup.LayoutParams(-2, -2));
       i += 1;
@@ -55,13 +42,26 @@ public class PlayerInvitePanel
   
   protected void b()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     int i = 0;
     while (i < getChildCount())
     {
-      this.jdField_a_of_type_JavaUtilList.add(getChildAt(i));
+      this.b.add(getChildAt(i));
       i += 1;
     }
+  }
+  
+  protected View c()
+  {
+    if (!this.b.isEmpty()) {
+      return (View)this.b.remove(0);
+    }
+    return null;
+  }
+  
+  public BaseAdapter getAdapter()
+  {
+    return this.a;
   }
   
   public View getSelectedView()
@@ -72,7 +72,7 @@ public class PlayerInvitePanel
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int k = super.getChildCount();
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (k <= i) {
       i = k;
     }
@@ -83,7 +83,7 @@ public class PlayerInvitePanel
       View localView = super.getChildAt(j);
       int n = localView.getMeasuredWidth();
       int i1 = localView.getMeasuredHeight();
-      int i3 = this.jdField_a_of_type_Int;
+      int i3 = this.d;
       int i4 = (m - i3 * n) / (i3 + 1);
       int i2 = (m - i * n - (i - 1) * i4) / 2 + (n + i4) * (j % i3);
       i3 = (i4 + i1) * (j / i3);
@@ -107,29 +107,29 @@ public class PlayerInvitePanel
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
   {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-    paramBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    this.a = paramBaseAdapter;
+    paramBaseAdapter = this.a;
     if (paramBaseAdapter != null) {
-      paramBaseAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      paramBaseAdapter.registerDataSetObserver(this.e);
     }
     a();
   }
   
   public void setColumnCount(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.c = paramOnItemClickListener;
   }
   
   public void setSelection(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel
  * JD-Core Version:    0.7.0.1
  */

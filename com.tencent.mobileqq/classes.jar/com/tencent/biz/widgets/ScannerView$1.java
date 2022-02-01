@@ -16,7 +16,7 @@ class ScannerView$1
     boolean bool2 = false;
     if (i == 9)
     {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131690724), 1);
+      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131887644), 1);
       paramMessage.setGravity(17, 0, 0);
       paramMessage.show();
       return;
@@ -40,7 +40,7 @@ class ScannerView$1
           }
         }
         else {
-          ((ScannerView.ScannerListener)localObject).c();
+          ((ScannerView.ScannerListener)localObject).d();
         }
       }
       else
@@ -49,7 +49,7 @@ class ScannerView$1
         return;
       }
     }
-    localObject = ScannerView.a(this.a);
+    localObject = ScannerView.b(this.a);
     if (localObject != null)
     {
       i = paramMessage.what;
@@ -65,7 +65,7 @@ class ScannerView$1
         return;
       }
     }
-    localObject = ScannerView.a(this.a);
+    localObject = ScannerView.c(this.a);
     if (localObject != null)
     {
       if (paramMessage.what != 10) {
@@ -85,7 +85,7 @@ class ScannerView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.ScannerView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,10 @@ import java.util.Map;
 public class BroadCastPlugin
   extends WebViewPlugin
 {
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private WebView a;
+  private String b = null;
+  private boolean c = false;
+  private Bundle d;
   
   public BroadCastPlugin()
   {
@@ -28,12 +28,12 @@ public class BroadCastPlugin
   private boolean a(String[] paramArrayOfString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(this.TAG, 2, "onAddTag");
+      QLog.i(this.mTAG, 2, "onAddTag");
     }
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    if (this.d == null) {
+      this.d = new Bundle();
     }
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("onTagChanged", true);
+    this.d.putBoolean("onTagChanged", true);
     return true;
   }
   
@@ -48,29 +48,29 @@ public class BroadCastPlugin
     {
       if (QLog.isColorLevel())
       {
-        paramString = this.TAG;
+        paramString = this.mTAG;
         paramMap = new StringBuilder();
         paramMap.append("handleEvent finish or destroy. fromProfile:");
-        paramMap.append(this.jdField_a_of_type_Boolean);
+        paramMap.append(this.c);
         QLog.i(paramString, 2, paramMap.toString());
       }
-      paramString = this.jdField_a_of_type_JavaLangString;
-      if ((paramString != null) && (!"".equals(paramString)) && (this.jdField_a_of_type_AndroidOsBundle != null))
+      paramString = this.b;
+      if ((paramString != null) && (!"".equals(paramString)) && (this.d != null))
       {
         paramString = new Intent();
-        paramString.setAction(this.jdField_a_of_type_JavaLangString);
-        paramMap = this.jdField_a_of_type_AndroidOsBundle;
+        paramString.setAction(this.b);
+        paramMap = this.d;
         if (paramMap != null) {
           paramString.putExtra("key_bundle_data", paramMap);
         }
-        this.mRuntime.a().sendBroadcast(paramString);
-        this.jdField_a_of_type_AndroidOsBundle = null;
-        if (this.jdField_a_of_type_Boolean)
+        this.mRuntime.d().sendBroadcast(paramString);
+        this.d = null;
+        if (this.c)
         {
-          paramString = new Intent(this.mRuntime.a(), PersonalityLabelGalleryActivity.class);
+          paramString = new Intent(this.mRuntime.d(), PersonalityLabelGalleryActivity.class);
           paramString.putExtra("fromType", 3);
-          paramString.putExtra("uin", this.mRuntime.a().getCurrentAccountUin());
-          this.mRuntime.a().startActivity(paramString);
+          paramString.putExtra("uin", this.mRuntime.b().getCurrentAccountUin());
+          this.mRuntime.d().startActivity(paramString);
         }
       }
     }
@@ -92,7 +92,7 @@ public class BroadCastPlugin
         bool1 = bool2;
         if (this.mRuntime != null)
         {
-          if (this.mRuntime.a() == null) {
+          if (this.mRuntime.d() == null) {
             return false;
           }
           if (paramString3.equals("onAddTag")) {
@@ -108,17 +108,17 @@ public class BroadCastPlugin
   protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
-    if (this.mRuntime.a().getIntent() != null)
+    this.a = this.mRuntime.a();
+    if (this.mRuntime.d().getIntent() != null)
     {
-      this.jdField_a_of_type_JavaLangString = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
-      this.jdField_a_of_type_Boolean = this.mRuntime.a().getIntent().getBooleanExtra("fromProfile", this.jdField_a_of_type_Boolean);
+      this.b = this.mRuntime.d().getIntent().getStringExtra("broadcastAction");
+      this.c = this.mRuntime.d().getIntent().getBooleanExtra("fromProfile", this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.BroadCastPlugin
  * JD-Core Version:    0.7.0.1
  */

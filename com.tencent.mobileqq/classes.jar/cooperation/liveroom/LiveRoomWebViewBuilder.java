@@ -87,8 +87,8 @@ public class LiveRoomWebViewBuilder
   @TargetApi(14)
   public View buildLayoutOnly()
   {
-    View localView = LayoutInflater.from(this.mContext).inflate(2131563048, null);
-    this.mViewRoot = localView.findViewById(2131381061);
+    View localView = LayoutInflater.from(this.mContext).inflate(2131629664, null);
+    this.mViewRoot = localView.findViewById(2131450072);
     if (this.mViewRoot == null) {
       return localView;
     }
@@ -97,23 +97,23 @@ public class LiveRoomWebViewBuilder
     if ((bool2) && (ImmersiveUtils.isSupporImmersive() == 1) && (Build.VERSION.SDK_INT >= 14)) {
       this.mViewRoot.setFitsSystemWindows(this.bFitSystemWindow);
     }
-    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131378823));
-    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131363733));
-    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131381078));
-    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131376345));
-    this.maskView = this.mViewRoot.findViewById(2131381081);
-    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131365179));
+    this.titleContainer = ((FrameLayout)this.mViewRoot.findViewById(2131447506));
+    this.bottomContainer = ((FrameLayout)this.mViewRoot.findViewById(2131429656));
+    this.webviewContainer = ((RelativeLayout)this.mViewRoot.findViewById(2131450091));
+    this.mLoadProgress = ((ProgressBar)this.mViewRoot.findViewById(2131444560));
+    this.maskView = this.mViewRoot.findViewById(2131450095);
+    this.contentContainer = ((LinearLayout)this.mViewRoot.findViewById(2131431340));
     if ((this.mIntent != null) && (!this.mIntent.getBooleanExtra("webview_hide_progress", false)))
     {
-      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131373133));
+      this.mLoadingProgressBar = ((WebViewProgressBar)this.mViewRoot.findViewById(2131440738));
       this.mProgressBarController = new WebViewProgressBarController();
       this.mLoadingProgressBar.setController(this.mProgressBarController);
-      if ((isIsFirstOnPageStart()) && (this.mProgressBarController != null) && (this.mProgressBarController.b() != 0)) {
+      if ((isIsFirstOnPageStart()) && (this.mProgressBarController != null) && (this.mProgressBarController.d() != 0)) {
         this.mProgressBarController.a((byte)0);
       }
     }
     this.mWebview = new TouchWebView(this.mContext);
-    this.mWebview.setId(2131381075);
+    this.mWebview.setId(2131450088);
     WebSettings localWebSettings = this.mWebview.getSettings();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" gflive/");
@@ -195,7 +195,7 @@ public class LiveRoomWebViewBuilder
         this.mSystemBarComp.setgetStatusBarVisible(true, 0);
       }
       if (paramImmersiveParam.b != null) {
-        paramImmersiveParam.b.setBackgroundResource(2130850433);
+        paramImmersiveParam.b.setBackgroundResource(2130852228);
       }
       if (this.mTitleBar != null) {
         this.mTitleBar.a(255, 0);
@@ -243,7 +243,7 @@ public class LiveRoomWebViewBuilder
   {
     Object localObject1 = Uri.parse(paramString);
     Object localObject2 = ((Uri)localObject1).getScheme();
-    if ((this.mInActivity != null) && (!this.mInActivity.isFinishing()) && (this.authConfig.a(paramWebView.getUrl(), (String)localObject2).booleanValue()))
+    if ((this.mInActivity != null) && (!this.mInActivity.isFinishing()) && (this.authConfig.d(paramWebView.getUrl(), (String)localObject2).booleanValue()))
     {
       localObject2 = new Intent("android.intent.action.VIEW", (Uri)localObject1);
       ((Intent)localObject2).addFlags(268435456);
@@ -282,7 +282,7 @@ public class LiveRoomWebViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -40,7 +40,7 @@ class BaseMsgBoxActivity$5
         return false;
       }
     }
-    else if ((!this.a.isListViewScrolling()) && (this.a.mDragHost.a() == -1) && (paramMessage.obj != null))
+    else if ((!this.a.isListViewScrolling()) && (this.a.mDragHost.getMode() == -1) && (paramMessage.obj != null))
     {
       paramMessage = (List)paramMessage.obj;
       this.a.mRecentAdapter.a(paramMessage);
@@ -68,7 +68,7 @@ class BaseMsgBoxActivity$5
         ((StringBuilder)localObject).append(this.a.mIsNeedShowRedDot);
         QLog.d("nearby.msgbox.tab", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.a.isFromNearby)
+      if ((this.a.isFromNearby) || (this.a.isFromQQNearby))
       {
         localObject = this.a.mUIHandler.obtainMessage(1);
         this.a.mUIHandler.removeMessages(1);
@@ -108,7 +108,7 @@ class BaseMsgBoxActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.BaseMsgBoxActivity.5
  * JD-Core Version:    0.7.0.1
  */

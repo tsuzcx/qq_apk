@@ -20,35 +20,35 @@ class FileManagerRSWorker$12
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("running OfflineFileHitReq:");
-      ((StringBuilder)localObject).append(MessageCache.a());
+      ((StringBuilder)localObject).append(MessageCache.c());
       QLog.i("FileManagerRSWorker<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
     Object localObject = new OfflineFileUploadPara();
-    ((OfflineFileUploadPara)localObject).jdField_a_of_type_JavaLangString = this.this$0.e;
-    ((OfflineFileUploadPara)localObject).jdField_a_of_type_Long = this.this$0.d;
+    ((OfflineFileUploadPara)localObject).a = this.this$0.f;
+    ((OfflineFileUploadPara)localObject).b = this.this$0.s;
     FileManagerRSWorker localFileManagerRSWorker = this.this$0;
-    localFileManagerRSWorker.jdField_a_of_type_ArrayOfByte = FileManagerUtil.d(localFileManagerRSWorker.jdField_b_of_type_JavaLangString);
+    localFileManagerRSWorker.l = FileManagerUtil.g(localFileManagerRSWorker.c);
     localFileManagerRSWorker = this.this$0;
-    localFileManagerRSWorker.jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(localFileManagerRSWorker.jdField_b_of_type_JavaLangString);
+    localFileManagerRSWorker.G = FileManagerUtil.d(localFileManagerRSWorker.c);
     localFileManagerRSWorker = this.this$0;
-    localFileManagerRSWorker.c = FileManagerUtil.c(localFileManagerRSWorker.jdField_b_of_type_JavaLangString);
-    if ((this.this$0.jdField_a_of_type_ArrayOfByte != null) && (this.this$0.jdField_b_of_type_ArrayOfByte != null) && (this.this$0.c != null))
+    localFileManagerRSWorker.H = FileManagerUtil.f(localFileManagerRSWorker.c);
+    if ((this.this$0.l != null) && (this.this$0.G != null) && (this.this$0.H != null))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSha3 = HexUtil.bytes2HexStr(this.this$0.c);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.str10Md5 = HexUtil.bytes2HexStr(this.this$0.jdField_a_of_type_ArrayOfByte);
-      ((OfflineFileUploadPara)localObject).c = this.this$0.jdField_a_of_type_ArrayOfByte;
-      ((OfflineFileUploadPara)localObject).e = this.this$0.jdField_b_of_type_ArrayOfByte;
-      ((OfflineFileUploadPara)localObject).f = this.this$0.c;
+      this.this$0.B.strFileSha3 = HexUtil.bytes2HexStr(this.this$0.H);
+      this.this$0.B.str10Md5 = HexUtil.bytes2HexStr(this.this$0.l);
+      ((OfflineFileUploadPara)localObject).g = this.this$0.l;
+      ((OfflineFileUploadPara)localObject).i = this.this$0.G;
+      ((OfflineFileUploadPara)localObject).j = this.this$0.H;
       try
       {
-        ((OfflineFileUploadPara)localObject).jdField_b_of_type_ArrayOfByte = FileManagerUtil.a(this.this$0.jdField_b_of_type_JavaLangString).getBytes("utf-8");
-        ((OfflineFileUploadPara)localObject).jdField_a_of_type_ArrayOfByte = this.this$0.jdField_b_of_type_JavaLangString.getBytes("utf-8");
+        ((OfflineFileUploadPara)localObject).f = FileManagerUtil.a(this.this$0.c).getBytes("utf-8");
+        ((OfflineFileUploadPara)localObject).e = this.this$0.c.getBytes("utf-8");
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         localUnsupportedEncodingException.printStackTrace();
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().b((OfflineFileUploadPara)localObject, FileManagerRSWorker.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.this$0.a.getFileTransferHandler().b((OfflineFileUploadPara)localObject, FileManagerRSWorker.e(this.this$0), this.this$0.B);
       return;
     }
     this.this$0.a(null, 0);
@@ -56,7 +56,7 @@ class FileManagerRSWorker$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.12
  * JD-Core Version:    0.7.0.1
  */

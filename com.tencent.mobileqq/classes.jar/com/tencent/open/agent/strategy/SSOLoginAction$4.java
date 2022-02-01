@@ -12,20 +12,20 @@ class SSOLoginAction$4
   public void a()
   {
     SSOLog.a("SSOLoginAction", new Object[] { "preAuth onSuccess" });
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, true);
+    SSOLoginAction.a(this.d);
+    SSOLoginAction.a(this.d, this.a, this.b, true);
   }
   
   public void a(int paramInt, String paramString)
   {
     SSOLog.a("SSOLoginAction", new Object[] { "preAuth onFail errorCode=", Integer.valueOf(paramInt), ", msg=", paramString });
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction);
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, paramInt, paramString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    SSOLoginAction.a(this.d);
+    SSOLoginAction.a(this.d, paramInt, paramString, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.4
  * JD-Core Version:    0.7.0.1
  */

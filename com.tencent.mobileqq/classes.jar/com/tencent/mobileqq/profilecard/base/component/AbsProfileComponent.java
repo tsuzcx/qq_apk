@@ -34,7 +34,7 @@ public abstract class AbsProfileComponent<VIEW>
   private void applyDIYTemplateItemTheme(View paramView1, TextView paramTextView, View paramView2, ImageView paramImageView, View paramView3, View paramView4, View paramView5)
   {
     if (paramView1 != null) {
-      paramView1.setBackgroundResource(2130839435);
+      paramView1.setBackgroundResource(2130839624);
     }
     ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter).updateItemThemeForDIYTemplate(paramTextView, paramView2, paramImageView, paramView3, paramView4, paramView5);
   }
@@ -69,19 +69,19 @@ public abstract class AbsProfileComponent<VIEW>
   {
     Resources localResources = this.mActivity.getResources();
     if (paramView1 != null) {
-      paramView1.setBackgroundResource(2130839435);
+      paramView1.setBackgroundResource(2130839624);
     }
     if (paramTextView != null) {
-      paramTextView.setTextColor(localResources.getColorStateList(2131167056));
+      paramTextView.setTextColor(localResources.getColorStateList(2131167993));
     }
     if ((paramView2 instanceof TextView)) {
-      ((TextView)paramView2).setTextColor(localResources.getColorStateList(2131167138));
+      ((TextView)paramView2).setTextColor(localResources.getColorStateList(2131168118));
     } else if ((paramView2 instanceof SingleLineTextView)) {
-      ((SingleLineTextView)paramView2).setTextColor(localResources.getColorStateList(2131167138));
+      ((SingleLineTextView)paramView2).setTextColor(localResources.getColorStateList(2131168118));
     }
     if (paramImageView != null)
     {
-      paramImageView.setImageResource(2130839270);
+      paramImageView.setImageResource(2130839446);
       paramView1 = paramImageView.getLayoutParams();
       paramView1.width = -2;
       paramView1.height = -2;
@@ -166,7 +166,7 @@ public abstract class AbsProfileComponent<VIEW>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.AbsProfileComponent
  * JD-Core Version:    0.7.0.1
  */

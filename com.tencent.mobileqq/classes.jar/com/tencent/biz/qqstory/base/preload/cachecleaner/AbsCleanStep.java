@@ -9,14 +9,14 @@ import java.io.File;
 public abstract class AbsCleanStep
 {
   protected AbsCleanStep a;
-  protected String[] a;
+  protected String[] b;
   
   public AbsCleanStep(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.b = paramArrayOfString;
   }
   
-  public static double a(File paramFile)
+  public static double b(File paramFile)
   {
     double d1;
     if (paramFile.isDirectory())
@@ -34,7 +34,7 @@ public abstract class AbsCleanStep
           if (i >= j) {
             break;
           }
-          d2 += a(paramFile[i]);
+          d2 += b(paramFile[i]);
           i += 1;
         }
       }
@@ -50,14 +50,14 @@ public abstract class AbsCleanStep
   
   public AbsCleanStep a(AbsCleanStep paramAbsCleanStep)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadCachecleanerAbsCleanStep = paramAbsCleanStep;
-    return this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadCachecleanerAbsCleanStep;
+    this.a = paramAbsCleanStep;
+    return this.a;
   }
   
   public void a(AbsCleanStep.CleanContext paramCleanContext)
   {
-    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramCleanContext);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadCachecleanerAbsCleanStep != null) {}
+    a(this.b, paramCleanContext);
+    if (this.a != null) {}
     try
     {
       Thread.sleep(100L);
@@ -69,15 +69,15 @@ public abstract class AbsCleanStep
       break label25;
     }
     SLog.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadCachecleanerAbsCleanStep.a(paramCleanContext);
+    this.a.a(paramCleanContext);
     return;
-    l = FileUtils.a() / 1024L;
-    SLog.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramCleanContext.jdField_a_of_type_Long), Long.valueOf(l) });
-    if (paramCleanContext.jdField_a_of_type_Int != 0) {
-      StoryReportor.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramCleanContext.jdField_a_of_type_Int), String.valueOf(paramCleanContext.jdField_a_of_type_Double), String.valueOf(l) });
+    l = FileUtils.b() / 1024L;
+    SLog.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramCleanContext.b), Long.valueOf(l) });
+    if (paramCleanContext.c != 0) {
+      StoryReportor.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramCleanContext.c), String.valueOf(paramCleanContext.d), String.valueOf(l) });
     }
-    if (paramCleanContext.jdField_b_of_type_Int != 0) {
-      StoryReportor.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramCleanContext.jdField_b_of_type_Int), String.valueOf(paramCleanContext.jdField_b_of_type_Double), String.valueOf(l) });
+    if (paramCleanContext.e != 0) {
+      StoryReportor.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramCleanContext.e), String.valueOf(paramCleanContext.f), String.valueOf(l) });
     }
   }
   
@@ -85,7 +85,7 @@ public abstract class AbsCleanStep
   {
     try
     {
-      FileUtils.d(paramFile.getPath());
+      FileUtils.e(paramFile.getPath());
       return;
     }
     catch (Exception paramFile)
@@ -101,7 +101,7 @@ public abstract class AbsCleanStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep
  * JD-Core Version:    0.7.0.1
  */

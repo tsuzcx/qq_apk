@@ -12,18 +12,18 @@ import com.tencent.widget.VerticalGallery.LayoutParams;
 class IphonePickerView$InnerAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  private int b = 25;
+  private int c;
   
   public IphonePickerView$InnerAdapter(IphonePickerView paramIphonePickerView, int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
+    this.c = paramInt1;
+    this.b = ((int)TypedValue.applyDimension(1, paramInt2, paramIphonePickerView.getResources().getDisplayMetrics()));
   }
   
   public int getCount()
   {
-    return IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).getRowCount(this.b);
+    return IphonePickerView.b(this.a).getRowCount(this.c);
   }
   
   public Object getItem(int paramInt)
@@ -41,15 +41,15 @@ class IphonePickerView$InnerAdapter
     Object localObject = paramView;
     if (paramView == null)
     {
-      localObject = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.getContext());
-      ((View)localObject).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localObject = new WheelTextView(this.a.getContext());
+      ((View)localObject).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.b));
       ((View)localObject).setFocusable(true);
       ((View)localObject).setFocusableInTouchMode(true);
     }
-    paramView = IphonePickerView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView).getText(this.b, paramInt);
+    paramView = IphonePickerView.b(this.a).getText(this.c, paramInt);
     WheelTextView localWheelTextView = (WheelTextView)localObject;
     localWheelTextView.setTextSize(20.0F);
-    localWheelTextView.setTextColor(IphonePickerView.jdField_a_of_type_Int);
+    localWheelTextView.setTextColor(IphonePickerView.a);
     localWheelTextView.setGravity(17);
     localWheelTextView.setText(paramView);
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
@@ -58,7 +58,7 @@ class IphonePickerView$InnerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.InnerAdapter
  * JD-Core Version:    0.7.0.1
  */

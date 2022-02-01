@@ -15,27 +15,27 @@ class AlphabetFriendAdapter$6
 {
   AlphabetFriendAdapter$6(AlphabetFriendAdapter paramAlphabetFriendAdapter, boolean paramBoolean, Friends paramFriends, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(AlphabetFriendAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetAlphabetFriendAdapter)))
+    if (!NetworkUtil.isNetworkAvailable(AlphabetFriendAdapter.d(this.d)))
     {
-      QQToast.a(AlphabetFriendAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetAlphabetFriendAdapter), 1, 2131692183, 0).a();
+      QQToast.makeText(AlphabetFriendAdapter.d(this.d), 1, 2131889169, 0).show();
     }
     else
     {
-      paramView = (FriendListHandler)AlphabetFriendAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsAlphabetAlphabetFriendAdapter).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
-      if (this.jdField_a_of_type_Boolean) {
-        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      paramView = (FriendListHandler)AlphabetFriendAdapter.e(this.d).getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
+      if (this.a) {
+        paramView.setSpecialCareSwitch(1, new String[] { this.b.uin }, new boolean[] { false });
       } else {
-        paramView.setSpecialCareSwitch(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+        paramView.setSpecialCareSwitch(1, new String[] { this.b.uin }, new boolean[] { true });
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
+    this.c.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendAdapter.6
  * JD-Core Version:    0.7.0.1
  */

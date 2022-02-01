@@ -19,29 +19,29 @@ import java.util.List;
 public class CommentsAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private CommentsAdapter.CommentsItemClickListener jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter$CommentsItemClickListener;
-  private List<CommentInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<CommentInfo> a = new ArrayList();
+  private CommentsAdapter.CommentsItemClickListener b;
+  private int c;
   
   public void a(CommentsAdapter.CommentsItemClickListener paramCommentsItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter$CommentsItemClickListener = paramCommentsItemClickListener;
+    this.b = paramCommentsItemClickListener;
   }
   
   public void a(List<CommentInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -53,9 +53,9 @@ public class CommentsAdapter
   {
     paramView = LayoutInflater.from(paramViewGroup.getContext());
     int j = 0;
-    TextView localTextView = (TextView)paramView.inflate(2131561223, paramViewGroup, false);
-    CommentInfo localCommentInfo = (CommentInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = localCommentInfo.a;
+    TextView localTextView = (TextView)paramView.inflate(2131627577, paramViewGroup, false);
+    CommentInfo localCommentInfo = (CommentInfo)this.a.get(paramInt);
+    Object localObject = localCommentInfo.b;
     paramView = (View)localObject;
     if (localObject != null)
     {
@@ -70,7 +70,7 @@ public class CommentsAdapter
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramView);
     localSpannableStringBuilder.setSpan(new StyleSpan(1), 0, localSpannableStringBuilder.length(), 33);
-    localObject = localCommentInfo.b;
+    localObject = localCommentInfo.c;
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       localSpannableStringBuilder.append(" 回复 ");
@@ -85,18 +85,18 @@ public class CommentsAdapter
       localSpannableStringBuilder.append(paramView);
       localSpannableStringBuilder.setSpan(new StyleSpan(1), localSpannableStringBuilder.length() - paramView.length(), localSpannableStringBuilder.length(), 33);
     }
-    localSpannableStringBuilder.append("：").append(localCommentInfo.c);
+    localSpannableStringBuilder.append("：").append(localCommentInfo.d);
     paramView = localTextView.getPaint();
     localObject = new ArrayList();
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = (UIUtils.a(localTextView.getContext()) - UIUtils.a(localTextView.getContext(), 85.0F));
+    if (this.c == 0) {
+      this.c = (UIUtils.b(localTextView.getContext()) - UIUtils.a(localTextView.getContext(), 85.0F));
     }
     int i = 0;
     paramInt = j;
     while (paramInt < localSpannableStringBuilder.length())
     {
       j = i;
-      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.jdField_a_of_type_Int)
+      if (paramView.measureText(localSpannableStringBuilder.subSequence(i, paramInt).toString()) > this.c)
       {
         ((List)localObject).add(Integer.valueOf(paramInt - 1));
         j = paramInt;
@@ -120,7 +120,7 @@ public class CommentsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter
  * JD-Core Version:    0.7.0.1
  */

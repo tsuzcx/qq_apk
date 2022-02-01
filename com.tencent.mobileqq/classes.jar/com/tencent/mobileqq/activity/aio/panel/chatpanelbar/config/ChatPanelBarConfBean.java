@@ -7,6 +7,7 @@ import org.json.JSONObject;
 public class ChatPanelBarConfBean
 {
   public int a = 0;
+  public int b = 0;
   
   public static ChatPanelBarConfBean a(String paramString)
   {
@@ -14,7 +15,9 @@ public class ChatPanelBarConfBean
     if (!TextUtils.isEmpty(paramString)) {
       try
       {
-        localChatPanelBarConfBean.a = new JSONObject(paramString).optInt("cmgame");
+        JSONObject localJSONObject = new JSONObject(paramString);
+        localChatPanelBarConfBean.a = localJSONObject.optInt("cmgame");
+        localChatPanelBarConfBean.b = localJSONObject.optInt("cmgameStyle");
       }
       catch (Throwable localThrowable)
       {
@@ -40,7 +43,7 @@ public class ChatPanelBarConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.ChatPanelBarConfBean
  * JD-Core Version:    0.7.0.1
  */

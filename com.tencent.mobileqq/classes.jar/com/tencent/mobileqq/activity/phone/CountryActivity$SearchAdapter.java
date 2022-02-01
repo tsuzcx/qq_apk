@@ -12,41 +12,41 @@ import java.util.Iterator;
 class CountryActivity$SearchAdapter
   extends BaseAdapter
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<PhoneCodeUtils.CountryCode> jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<PhoneCodeUtils.CountryCode> b = this.a.b;
+  private String c = "";
   
   private CountryActivity$SearchAdapter(CountryActivity paramCountryActivity) {}
   
   private int a(PhoneCodeUtils.CountryCode paramCountryCode)
   {
-    if (paramCountryCode.a) {
+    if (paramCountryCode.b) {
       return 0;
     }
-    String str1 = this.jdField_a_of_type_JavaLangString;
+    String str1 = this.c;
     if (str1 != null)
     {
       if (str1.equals("")) {
         return 0;
       }
-      String str2 = paramCountryCode.c;
-      String str3 = paramCountryCode.b;
-      str1 = paramCountryCode.d;
+      String str2 = paramCountryCode.d;
+      String str3 = paramCountryCode.c;
+      str1 = paramCountryCode.e;
       paramCountryCode = str1;
       if (str1 != null) {
         paramCountryCode = str1.toLowerCase();
       }
-      str1 = ChnToSpell.a(str3, 1);
-      String str4 = ChnToSpell.a(str3, 2);
-      if ((!str2.equals(this.jdField_a_of_type_JavaLangString)) && (!str3.equals(this.jdField_a_of_type_JavaLangString)) && (!str1.equals(this.jdField_a_of_type_JavaLangString)) && (!str4.equals(this.jdField_a_of_type_JavaLangString)) && ((paramCountryCode == null) || (!paramCountryCode.equals(this.jdField_a_of_type_JavaLangString))))
+      str1 = ChnToSpell.b(str3, 1);
+      String str4 = ChnToSpell.b(str3, 2);
+      if ((!str2.equals(this.c)) && (!str3.equals(this.c)) && (!str1.equals(this.c)) && (!str4.equals(this.c)) && ((paramCountryCode == null) || (!paramCountryCode.equals(this.c))))
       {
-        if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) != 0) && (str3.indexOf(this.jdField_a_of_type_JavaLangString) != 0) && (str1.indexOf(this.jdField_a_of_type_JavaLangString) != 0) && (str4.indexOf(this.jdField_a_of_type_JavaLangString) != 0))
+        if ((str2.indexOf(this.c) != 0) && (str3.indexOf(this.c) != 0) && (str1.indexOf(this.c) != 0) && (str4.indexOf(this.c) != 0))
         {
-          if ((paramCountryCode != null) && (paramCountryCode.indexOf(this.jdField_a_of_type_JavaLangString) == 0)) {
+          if ((paramCountryCode != null) && (paramCountryCode.indexOf(this.c) == 0)) {
             return 2;
           }
-          if ((str2.indexOf(this.jdField_a_of_type_JavaLangString) <= 0) && (str3.indexOf(this.jdField_a_of_type_JavaLangString) <= 0) && (str1.indexOf(this.jdField_a_of_type_JavaLangString) <= 0))
+          if ((str2.indexOf(this.c) <= 0) && (str3.indexOf(this.c) <= 0) && (str1.indexOf(this.c) <= 0))
           {
-            if (str4.indexOf(this.jdField_a_of_type_JavaLangString) > 0) {
+            if (str4.indexOf(this.c) > 0) {
               return 1;
             }
             return 0;
@@ -71,12 +71,12 @@ class CountryActivity$SearchAdapter
     if (paramString.equals("uk")) {
       localObject = "united kingdom";
     }
-    if (((String)localObject).startsWith(this.jdField_a_of_type_JavaLangString)) {
-      paramString = this.jdField_a_of_type_JavaUtilArrayList;
+    if (((String)localObject).startsWith(this.c)) {
+      paramString = this.b;
     } else {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_JavaUtilArrayList;
+      paramString = this.a.b;
     }
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    this.c = ((String)localObject);
     localObject = new ArrayList(8);
     paramString = paramString.iterator();
     int j = 0;
@@ -100,13 +100,13 @@ class CountryActivity$SearchAdapter
         ((ArrayList)localObject).add(localCountryCode);
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    this.b = ((ArrayList)localObject);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
@@ -124,17 +124,17 @@ class CountryActivity$SearchAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = CountryActivity.a(paramViewGroup, this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.getLayoutInflater(), true);
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity);
+      localView = CountryActivity.a(paramViewGroup, this.a.getLayoutInflater(), true);
+      localView.setOnClickListener(this.a);
     }
-    CountryActivity.a(localView, (PhoneCodeUtils.CountryCode)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    CountryActivity.a(localView, (PhoneCodeUtils.CountryCode)this.b.get(paramInt));
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.CountryActivity.SearchAdapter
  * JD-Core Version:    0.7.0.1
  */

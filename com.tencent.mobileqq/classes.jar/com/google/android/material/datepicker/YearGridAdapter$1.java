@@ -2,6 +2,7 @@ package com.google.android.material.datepicker;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class YearGridAdapter$1
   implements View.OnClickListener
@@ -10,15 +11,16 @@ class YearGridAdapter$1
   
   public void onClick(View paramView)
   {
-    paramView = Month.a(this.jdField_a_of_type_Int, YearGridAdapter.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerYearGridAdapter).a().jdField_a_of_type_Int);
-    paramView = YearGridAdapter.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerYearGridAdapter).a().a(paramView);
-    YearGridAdapter.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerYearGridAdapter).a(paramView);
-    YearGridAdapter.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerYearGridAdapter).a(MaterialCalendar.CalendarSelector.DAY);
+    Month localMonth = Month.a(this.a, YearGridAdapter.a(this.b).a().a);
+    localMonth = YearGridAdapter.a(this.b).b().a(localMonth);
+    YearGridAdapter.a(this.b).a(localMonth);
+    YearGridAdapter.a(this.b).a(MaterialCalendar.CalendarSelector.DAY);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.YearGridAdapter.1
  * JD-Core Version:    0.7.0.1
  */

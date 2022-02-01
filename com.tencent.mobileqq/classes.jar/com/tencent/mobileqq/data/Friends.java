@@ -76,6 +76,7 @@ public class Friends
   public String constellationLuckyNumber;
   public String constellationTodayTrend;
   public String constellationTomorrowTrend;
+  public long curOlympicRank = -1L;
   public String customModel = "";
   @notColumn
   public String customOnlineStatus;
@@ -88,6 +89,7 @@ public class Friends
   @Deprecated
   public short faceid;
   public int friendType = 0;
+  public int gameCardId = 0;
   public byte gathtertype = 0;
   public byte gender;
   public int grayNameplateFlag = 0;
@@ -236,6 +238,7 @@ public class Friends
     this.superVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("superVipTemplateId"));
     this.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
     this.bigClubExtTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubExtTemplateId"));
+    this.gameCardId = paramCursor.getInt(paramCursor.getColumnIndex("gameCardId"));
     this.diyFontId = paramCursor.getInt(paramCursor.getColumnIndex("diyFontId"));
     this.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
     this.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
@@ -265,6 +268,7 @@ public class Friends
     this.weatherFlag = paramCursor.getInt(paramCursor.getColumnIndex("weatherFlag"));
     this.weatherDecs = paramCursor.getString(paramCursor.getColumnIndex("weatherDecs"));
     this.autoStatusUpdateSecond = paramCursor.getLong(paramCursor.getColumnIndex("autoStatusUpdateSecond"));
+    this.curOlympicRank = paramCursor.getLong(paramCursor.getColumnIndex("curOlympicRank"));
     if (QLog.isColorLevel())
     {
       paramCursor = new StringBuilder();
@@ -479,7 +483,7 @@ public class Friends
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Friends
  * JD-Core Version:    0.7.0.1
  */

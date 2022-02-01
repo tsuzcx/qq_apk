@@ -19,35 +19,35 @@ class DownloadManager$18
   {
     try
     {
-      if (!CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
+      if (!CommonDataAdapter.a().b().getSharedPreferences("opensdk_config", 0).getBoolean("download_clear_unuse", false))
       {
-        Iterator localIterator = this.this$0.a.values().iterator();
+        Iterator localIterator = this.this$0.g.values().iterator();
         Object localObject;
         while (localIterator.hasNext())
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-          if (localDownloadInfo.jdField_c_of_type_Int == 0)
+          if (localDownloadInfo.o == 0)
           {
-            if (localDownloadInfo.a == 0) {
+            if (localDownloadInfo.j == 0) {
               localObject = localDownloadInfo.d;
             } else {
-              localObject = localDownloadInfo.i;
+              localObject = localDownloadInfo.k;
             }
-            if (this.this$0.a((String)localObject) == null)
+            if (this.this$0.h((String)localObject) == null)
             {
-              this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-              DownloadDBHelper.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+              this.this$0.g.remove(localDownloadInfo.c);
+              DownloadDBHelper.a().b(localDownloadInfo.c);
             }
           }
-          else if (this.this$0.a(localDownloadInfo) == null)
+          else if (this.this$0.c(localDownloadInfo) == null)
           {
-            this.this$0.a.remove(localDownloadInfo.jdField_c_of_type_JavaLangString);
-            DownloadDBHelper.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString);
+            this.this$0.g.remove(localDownloadInfo.c);
+            DownloadDBHelper.a().b(localDownloadInfo.c);
           }
         }
-        if (this.this$0.a.size() > 200)
+        if (this.this$0.g.size() > 200)
         {
-          localObject = CommonDataAdapter.a().a().getSharedPreferences("opensdk_config", 0).edit();
+          localObject = CommonDataAdapter.a().b().getSharedPreferences("opensdk_config", 0).edit();
           ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
           ((SharedPreferences.Editor)localObject).commit();
           return;
@@ -62,7 +62,7 @@ class DownloadManager$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.18
  * JD-Core Version:    0.7.0.1
  */

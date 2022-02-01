@@ -8,11 +8,11 @@ import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 public class OnArkViewTouchListener
   implements OnLongClickAndTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
+  private float a;
   private float b;
   private float c;
   private float d;
+  private long e;
   
   public boolean onClick(View paramView)
   {
@@ -33,23 +33,23 @@ public class OnArkViewTouchListener
       {
         if (i == 2)
         {
-          this.c += Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
+          this.c += Math.abs(paramMotionEvent.getX() - this.a);
           this.d += Math.abs(paramMotionEvent.getY() - this.b);
-          this.jdField_a_of_type_Float = paramMotionEvent.getX();
+          this.a = paramMotionEvent.getX();
           this.b = paramMotionEvent.getY();
         }
       }
-      else if (((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
+      else if (((System.currentTimeMillis() - this.e <= 200L) || ((this.c <= 20.0F) && (this.d <= 20.0F))) && (onClick(paramView))) {
         return true;
       }
     }
     else
     {
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.a = paramMotionEvent.getX();
       this.b = paramMotionEvent.getY();
       this.c = 0.0F;
       this.d = 0.0F;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.e = System.currentTimeMillis();
     }
     if ((paramView instanceof ArkAppView)) {
       return ((ArkAppView)paramView).onTouch(paramView, paramMotionEvent);
@@ -59,7 +59,7 @@ public class OnArkViewTouchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.message.OnArkViewTouchListener
  * JD-Core Version:    0.7.0.1
  */

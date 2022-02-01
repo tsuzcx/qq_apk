@@ -31,22 +31,22 @@ class PublicView$UiHandler
           if (i != 4) {
             return;
           }
-          PublicView.b(localPublicView);
+          PublicView.e(localPublicView);
           return;
         }
-        PublicView.a(localPublicView, true);
+        PublicView.b(localPublicView, true);
         return;
       }
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      PublicView.a(localPublicView, 1, 2131719247);
+      PublicView.c(localPublicView).springBackOverScrollHeaderView();
+      PublicView.a(localPublicView, 1, 2131916799);
       return;
     }
-    PublicView.a(localPublicView).springBackOverScrollHeaderView();
+    PublicView.c(localPublicView).springBackOverScrollHeaderView();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView.UiHandler
  * JD-Core Version:    0.7.0.1
  */

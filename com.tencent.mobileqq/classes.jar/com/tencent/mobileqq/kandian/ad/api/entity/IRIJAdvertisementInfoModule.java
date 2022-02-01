@@ -16,10 +16,6 @@ import tencent.im.oidb.cmd0xf30.oidb_cmd0xf30.InsertArticle;
 public abstract interface IRIJAdvertisementInfoModule
   extends FixPosArticleInterface
 {
-  public abstract Pair<Integer, Integer> a(int paramInt);
-  
-  public abstract Pair<Integer, Integer> a(int paramInt1, int paramInt2);
-  
   public abstract AdvertisementInfo a(int paramInt1, int paramInt2);
   
   public abstract Object a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4, AdRequestData paramAdRequestData);
@@ -27,8 +23,6 @@ public abstract interface IRIJAdvertisementInfoModule
   public abstract List<AbsBaseArticleInfo> a(oidb_cmd0xf30.InsertArticle paramInsertArticle);
   
   public abstract void a();
-  
-  public abstract void a(int paramInt);
   
   public abstract void a(int paramInt1, int paramInt2, int paramInt3);
   
@@ -42,15 +36,21 @@ public abstract interface IRIJAdvertisementInfoModule
   
   public abstract void a(ToServiceMsg paramToServiceMsg, Object paramObject1, int paramInt1, int paramInt2, boolean paramBoolean, Object paramObject2);
   
-  public abstract boolean a(int paramInt);
-  
   public abstract AdvertisementInfo b(int paramInt1, int paramInt2);
   
   public abstract void b();
+  
+  public abstract Pair<Integer, Integer> c(int paramInt1, int paramInt2);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract Pair<Integer, Integer> e(int paramInt);
+  
+  public abstract boolean f(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.entity.IRIJAdvertisementInfoModule
  * JD-Core Version:    0.7.0.1
  */

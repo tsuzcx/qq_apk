@@ -16,37 +16,37 @@ class TraeHelper$4
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.d == null) {
       return;
     }
-    if (this.this$0.b != null)
+    if (this.this$0.g != null)
     {
-      localObject = (Button)this.this$0.b.get();
+      localObject = (Button)this.this$0.g.get();
       if (localObject != null)
       {
         ((Button)localObject).setClickable(true);
-        if ((TraeHelper.a(this.this$0)) && (QAVConfigUtils.a()))
+        if ((TraeHelper.b(this.this$0)) && (QAVConfigUtils.a()))
         {
           ((Button)localObject).setSelected(true);
-          UITools.a((View)localObject, ((Button)localObject).getResources().getString(2131690215));
+          UITools.a((View)localObject, ((Button)localObject).getResources().getString(2131887115));
         }
         else
         {
-          ((Button)localObject).setSelected(TraeHelper.a(this.this$0).E);
+          ((Button)localObject).setSelected(TraeHelper.c(this.this$0).aG);
           Resources localResources = ((Button)localObject).getResources();
           int i;
-          if (TraeHelper.a(this.this$0).E) {
-            i = 2131690216;
+          if (TraeHelper.c(this.this$0).aG) {
+            i = 2131887116;
           } else {
-            i = 2131690217;
+            i = 2131887117;
           }
           UITools.a((View)localObject, localResources.getString(i));
         }
       }
     }
-    this.this$0.a.a().b("handFreeJob", TraeHelper.a(this.this$0).E);
-    TraeHelper.a(this.this$0);
-    Object localObject = this.this$0.a.a.a();
+    this.this$0.d.k().b("handFreeJob", TraeHelper.c(this.this$0).aG);
+    TraeHelper.d(this.this$0);
+    Object localObject = this.this$0.d.e.d();
     if (localObject != null) {
       ((VideoRecoveryMonitor)localObject).b();
     }

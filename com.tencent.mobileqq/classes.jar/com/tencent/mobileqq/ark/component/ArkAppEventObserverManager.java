@@ -16,54 +16,49 @@ import mqq.app.MobileQQ;
 
 public class ArkAppEventObserverManager
 {
-  private double jdField_a_of_type_Double = 0.0D;
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Sensor jdField_a_of_type_AndroidHardwareSensor = null;
-  private SensorEventListener jdField_a_of_type_AndroidHardwareSensorEventListener = null;
-  private ArkAppEventObserverManager.ArkConnectionHandler jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ArkConnectionHandler = null;
-  private ArkAppEventObserverManager.ConnectionCallback jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ConnectionCallback = null;
-  private ArkAppEventObserverManager.GetCurrentPositionCallback jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$GetCurrentPositionCallback = null;
-  private ArkAppEventObserverManager.MotionCallback jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$MotionCallback = null;
-  private ArkAppEventObserverManager.OrientationCallback jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$OrientationCallback = null;
-  private ArkAppEventObserverManager.PositionCallback jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback = null;
-  private SosoInterfaceOnLocationListener jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener;
-  private String jdField_a_of_type_JavaLangString;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  private double jdField_b_of_type_Double = 0.0D;
-  private float jdField_b_of_type_Float;
-  private long jdField_b_of_type_Long = 0L;
-  private Sensor jdField_b_of_type_AndroidHardwareSensor = null;
-  private String jdField_b_of_type_JavaLangString = null;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[3];
-  private float jdField_c_of_type_Float;
-  private long jdField_c_of_type_Long = 0L;
-  private long d = 0L;
-  private long e = 0L;
+  private String a;
+  private SosoInterfaceOnLocationListener b;
+  private SensorEventListener c = null;
+  private ArkAppEventObserverManager.ArkConnectionHandler d = null;
+  private Sensor e = null;
+  private float[] f = new float[3];
+  private float[] g = new float[3];
+  private Sensor h = null;
+  private float i;
+  private float j;
+  private float k;
+  private double l = 0.0D;
+  private double m = 0.0D;
+  private String n = null;
+  private final int o = 0;
+  private ArkAppEventObserverManager.MotionCallback p = null;
+  private long q = 0L;
+  private ArkAppEventObserverManager.OrientationCallback r = null;
+  private long s = 0L;
+  private ArkAppEventObserverManager.PositionCallback t = null;
+  private long u = 0L;
+  private ArkAppEventObserverManager.ConnectionCallback v = null;
+  private long w = 0L;
+  private ArkAppEventObserverManager.GetCurrentPositionCallback x = null;
+  private long y = 0L;
   
   public ArkAppEventObserverManager(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidHardwareSensorEventListener = new ArkAppEventObserverManager.ArkSensorEventListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener = new ArkAppEventObserverManager.1(this, 3, true, true, 0L, true, true, "ArkAppEventObserverManager");
+    this.a = paramString;
+    this.c = new ArkAppEventObserverManager.ArkSensorEventListener(this);
+    this.b = new ArkAppEventObserverManager.1(this, 3, true, true, 0L, true, true, "ArkAppEventObserverManager");
   }
   
   private void a(SensorEvent paramSensorEvent)
   {
-    long l = System.currentTimeMillis();
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.jdField_a_of_type_JavaLangString, new ArkAppEventObserverManager.2(this, paramSensorEvent, l));
+    long l1 = System.currentTimeMillis();
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.a, new ArkAppEventObserverManager.2(this, paramSensorEvent, l1));
   }
   
   private void b(SensorEvent paramSensorEvent)
   {
-    long l = System.currentTimeMillis();
-    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.jdField_a_of_type_JavaLangString, new ArkAppEventObserverManager.3(this, l, paramSensorEvent));
-  }
-  
-  AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+    long l1 = System.currentTimeMillis();
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.a, new ArkAppEventObserverManager.3(this, l1, paramSensorEvent));
   }
   
   public void a()
@@ -76,37 +71,37 @@ public class ArkAppEventObserverManager
   
   public void a(ArkAppEventObserverManager.ObserverCallback paramObserverCallback, long paramLong)
   {
-    long l;
+    long l1;
     Object localObject;
     if ((paramObserverCallback instanceof ArkAppEventObserverManager.MotionCallback))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArkAppEventObserverManager", 2, "attachEvent MotionCallback");
       }
-      l = this.jdField_a_of_type_Long;
-      if (l != 0L)
+      l1 = this.q;
+      if (l1 != 0L)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$MotionCallback;
+        localObject = this.p;
         if (localObject != null) {
-          ((ArkAppEventObserverManager.MotionCallback)localObject).a(l);
+          ((ArkAppEventObserverManager.MotionCallback)localObject).a(l1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$MotionCallback = ((ArkAppEventObserverManager.MotionCallback)paramObserverCallback);
-      this.jdField_a_of_type_Long = paramLong;
-      if (this.jdField_a_of_type_AndroidHardwareSensor == null)
+      this.p = ((ArkAppEventObserverManager.MotionCallback)paramObserverCallback);
+      this.q = paramLong;
+      if (this.e == null)
       {
-        paramObserverCallback = (SensorManager)a().getApp().getSystemService("sensor");
-        this.jdField_a_of_type_AndroidHardwareSensor = paramObserverCallback.getDefaultSensor(1);
-        localObject = this.jdField_a_of_type_AndroidHardwareSensor;
+        paramObserverCallback = (SensorManager)b().getApp().getSystemService("sensor");
+        this.e = paramObserverCallback.getDefaultSensor(1);
+        localObject = this.e;
         if (localObject != null)
         {
-          paramObserverCallback.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, (Sensor)localObject, 1);
+          paramObserverCallback.registerListener(this.c, (Sensor)localObject, 1);
           return;
         }
         if (QLog.isColorLevel()) {
           QLog.d("ArkAppEventObserverManager", 2, "mMotionSensor is NULL");
         }
-        this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$MotionCallback.a(false, 0.0F, 0.0F, 0.0F);
+        this.p.a(false, 0.0F, 0.0F, 0.0F);
       }
     }
     else if ((paramObserverCallback instanceof ArkAppEventObserverManager.OrientationCallback))
@@ -114,21 +109,21 @@ public class ArkAppEventObserverManager
       if (QLog.isColorLevel()) {
         QLog.d("ArkAppEventObserverManager", 2, "attachEvent OrientationCallback");
       }
-      l = this.jdField_b_of_type_Long;
-      if (l != 0L)
+      l1 = this.s;
+      if (l1 != 0L)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$OrientationCallback;
+        localObject = this.r;
         if (localObject != null) {
-          ((ArkAppEventObserverManager.OrientationCallback)localObject).a(l);
+          ((ArkAppEventObserverManager.OrientationCallback)localObject).a(l1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$OrientationCallback = ((ArkAppEventObserverManager.OrientationCallback)paramObserverCallback);
-      this.jdField_b_of_type_Long = paramLong;
-      if (this.jdField_b_of_type_AndroidHardwareSensor == null)
+      this.r = ((ArkAppEventObserverManager.OrientationCallback)paramObserverCallback);
+      this.s = paramLong;
+      if (this.h == null)
       {
-        paramObserverCallback = (SensorManager)a().getApp().getSystemService("sensor");
-        this.jdField_b_of_type_AndroidHardwareSensor = paramObserverCallback.getDefaultSensor(3);
-        paramObserverCallback.registerListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_b_of_type_AndroidHardwareSensor, 1);
+        paramObserverCallback = (SensorManager)b().getApp().getSystemService("sensor");
+        this.h = paramObserverCallback.getDefaultSensor(3);
+        paramObserverCallback.registerListener(this.c, this.h, 1);
       }
     }
     else
@@ -142,22 +137,22 @@ public class ArkAppEventObserverManager
           ((StringBuilder)localObject).append(", cbId=");
           ((StringBuilder)localObject).append(paramLong);
           ((StringBuilder)localObject).append(", mPositionCallback=");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback);
+          ((StringBuilder)localObject).append(this.t);
           ((StringBuilder)localObject).append(", mPositionCallbackId=");
-          ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
+          ((StringBuilder)localObject).append(this.u);
           QLog.d("ArkAppEventObserverManager", 2, ((StringBuilder)localObject).toString());
         }
-        l = this.jdField_c_of_type_Long;
-        if (l != 0L)
+        l1 = this.u;
+        if (l1 != 0L)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback;
+          localObject = this.t;
           if (localObject != null) {
-            ((ArkAppEventObserverManager.PositionCallback)localObject).a(l);
+            ((ArkAppEventObserverManager.PositionCallback)localObject).a(l1);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback = ((ArkAppEventObserverManager.PositionCallback)paramObserverCallback);
-        this.jdField_c_of_type_Long = paramLong;
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+        this.t = ((ArkAppEventObserverManager.PositionCallback)paramObserverCallback);
+        this.u = paramLong;
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.b);
         return;
       }
       if ((paramObserverCallback instanceof ArkAppEventObserverManager.ConnectionCallback))
@@ -165,20 +160,20 @@ public class ArkAppEventObserverManager
         if (QLog.isColorLevel()) {
           QLog.d("ArkAppEventObserverManager", 2, "attachEvent ConnectionCallback");
         }
-        l = this.d;
-        if (l != 0L)
+        l1 = this.w;
+        if (l1 != 0L)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ConnectionCallback;
+          localObject = this.v;
           if (localObject != null) {
-            ((ArkAppEventObserverManager.ConnectionCallback)localObject).a(l);
+            ((ArkAppEventObserverManager.ConnectionCallback)localObject).a(l1);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ConnectionCallback = ((ArkAppEventObserverManager.ConnectionCallback)paramObserverCallback);
-        this.d = paramLong;
-        if (this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ArkConnectionHandler == null)
+        this.v = ((ArkAppEventObserverManager.ConnectionCallback)paramObserverCallback);
+        this.w = paramLong;
+        if (this.d == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ArkConnectionHandler = new ArkAppEventObserverManager.ArkConnectionHandler(this);
-          AppNetConnInfo.registerConnectionChangeReceiver(a().getApp(), this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ArkConnectionHandler);
+          this.d = new ArkAppEventObserverManager.ArkConnectionHandler(this);
+          AppNetConnInfo.registerConnectionChangeReceiver(b().getApp(), this.d);
         }
       }
       else if ((paramObserverCallback instanceof ArkAppEventObserverManager.GetCurrentPositionCallback))
@@ -186,17 +181,17 @@ public class ArkAppEventObserverManager
         if (QLog.isColorLevel()) {
           QLog.d("ArkAppEventObserverManager", 2, "attachEvent GetCurrentPositionCallback");
         }
-        l = this.e;
-        if (l != 0L)
+        l1 = this.y;
+        if (l1 != 0L)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$GetCurrentPositionCallback;
+          localObject = this.x;
           if (localObject != null) {
-            ((ArkAppEventObserverManager.GetCurrentPositionCallback)localObject).a(l);
+            ((ArkAppEventObserverManager.GetCurrentPositionCallback)localObject).a(l1);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$GetCurrentPositionCallback = ((ArkAppEventObserverManager.GetCurrentPositionCallback)paramObserverCallback);
-        this.e = paramLong;
-        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+        this.x = ((ArkAppEventObserverManager.GetCurrentPositionCallback)paramObserverCallback);
+        this.y = paramLong;
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(this.b);
       }
     }
   }
@@ -210,95 +205,100 @@ public class ArkAppEventObserverManager
       localStringBuilder.append(paramString);
       QLog.d("ArkAppEventObserverManager", 2, localStringBuilder.toString());
     }
-    long l;
+    long l1;
     if ("Motion".equals(paramString))
     {
-      if (this.jdField_a_of_type_AndroidHardwareSensor != null)
+      if (this.e != null)
       {
-        ((SensorManager)a().getApp().getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_a_of_type_AndroidHardwareSensor);
-        this.jdField_a_of_type_AndroidHardwareSensor = null;
+        ((SensorManager)b().getApp().getSystemService("sensor")).unregisterListener(this.c, this.e);
+        this.e = null;
       }
-      l = this.jdField_a_of_type_Long;
-      if (l != 0L)
+      l1 = this.q;
+      if (l1 != 0L)
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$MotionCallback;
+        paramString = this.p;
         if (paramString != null) {
-          paramString.a(l);
+          paramString.a(l1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$MotionCallback = null;
-      this.jdField_a_of_type_Long = 0L;
+      this.p = null;
+      this.q = 0L;
       return;
     }
     if ("Orientation".equals(paramString))
     {
-      if (this.jdField_b_of_type_AndroidHardwareSensor != null)
+      if (this.h != null)
       {
-        ((SensorManager)a().getApp().getSystemService("sensor")).unregisterListener(this.jdField_a_of_type_AndroidHardwareSensorEventListener, this.jdField_b_of_type_AndroidHardwareSensor);
-        this.jdField_b_of_type_AndroidHardwareSensor = null;
+        ((SensorManager)b().getApp().getSystemService("sensor")).unregisterListener(this.c, this.h);
+        this.h = null;
       }
-      l = this.jdField_b_of_type_Long;
-      if (l != 0L)
+      l1 = this.s;
+      if (l1 != 0L)
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$OrientationCallback;
+        paramString = this.r;
         if (paramString != null) {
-          paramString.a(l);
+          paramString.a(l1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$OrientationCallback = null;
-      this.jdField_b_of_type_Long = 0L;
+      this.r = null;
+      this.s = 0L;
       return;
     }
     if ("Position".equals(paramString))
     {
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(this.b);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder("detachEvent PositionCallback mPositionCallback=");
-        paramString.append(this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback);
+        paramString.append(this.t);
         paramString.append(", mPositionCallbackId=");
-        paramString.append(this.jdField_c_of_type_Long);
+        paramString.append(this.u);
         QLog.d("ArkAppEventObserverManager", 2, paramString.toString());
       }
-      l = this.jdField_c_of_type_Long;
-      if (l != 0L)
+      l1 = this.u;
+      if (l1 != 0L)
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback;
+        paramString = this.t;
         if (paramString != null) {
-          paramString.a(l);
+          paramString.a(l1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$PositionCallback = null;
-      this.jdField_c_of_type_Long = 0L;
-      this.jdField_a_of_type_Double = 0.0D;
-      this.jdField_b_of_type_Double = 0.0D;
+      this.t = null;
+      this.u = 0L;
+      this.l = 0.0D;
+      this.m = 0.0D;
       return;
     }
     if ("ConnectionTypeChange".equals(paramString))
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ArkConnectionHandler;
+      paramString = this.d;
       if (paramString != null)
       {
         AppNetConnInfo.unregisterNetInfoHandler(paramString);
-        this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ArkConnectionHandler = null;
+        this.d = null;
       }
-      l = this.d;
-      if (l != 0L)
+      l1 = this.w;
+      if (l1 != 0L)
       {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ConnectionCallback;
+        paramString = this.v;
         if (paramString != null) {
-          paramString.a(l);
+          paramString.a(l1);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqArkComponentArkAppEventObserverManager$ConnectionCallback = null;
-      this.d = 0L;
-      this.jdField_b_of_type_JavaLangString = null;
+      this.v = null;
+      this.w = 0L;
+      this.n = null;
     }
+  }
+  
+  AppRuntime b()
+  {
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.component.ArkAppEventObserverManager
  * JD-Core Version:    0.7.0.1
  */

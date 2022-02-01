@@ -33,25 +33,25 @@ public class PublishHomeWorkFragment$UIHandler
     PublishHomeWorkFragment localPublishHomeWorkFragment = (PublishHomeWorkFragment)this.a.get();
     if (localPublishHomeWorkFragment != null)
     {
-      if ((!localPublishHomeWorkFragment.isAdded()) && (localPublishHomeWorkFragment.jdField_a_of_type_AndroidWidgetEditText == null)) {
+      if ((!localPublishHomeWorkFragment.isAdded()) && (localPublishHomeWorkFragment.f == null)) {
         return;
       }
-      if (localPublishHomeWorkFragment.jdField_a_of_type_JavaLangString == null) {
-        localPublishHomeWorkFragment.jdField_a_of_type_JavaLangString = "";
+      if (localPublishHomeWorkFragment.N == null) {
+        localPublishHomeWorkFragment.N = "";
       }
-      if (localPublishHomeWorkFragment.jdField_a_of_type_Int == 1)
+      if (localPublishHomeWorkFragment.b == 1)
       {
         Object localObject = Calendar.getInstance();
         int i = ((Calendar)localObject).get(2) + 1;
         int j = ((Calendar)localObject).get(5);
-        localObject = localPublishHomeWorkFragment.getString(2131697454, new Object[] { Integer.valueOf(i), Integer.valueOf(j), localPublishHomeWorkFragment.jdField_a_of_type_JavaLangString }).trim();
-        String str1 = localPublishHomeWorkFragment.getString(2131697454, new Object[] { Integer.valueOf(i), Integer.valueOf(j), "" }).trim();
-        String str2 = localPublishHomeWorkFragment.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+        localObject = localPublishHomeWorkFragment.getString(2131895227, new Object[] { Integer.valueOf(i), Integer.valueOf(j), localPublishHomeWorkFragment.N }).trim();
+        String str1 = localPublishHomeWorkFragment.getString(2131895227, new Object[] { Integer.valueOf(i), Integer.valueOf(j), "" }).trim();
+        String str2 = localPublishHomeWorkFragment.f.getText().toString();
         if ((TextUtils.isEmpty(str2)) || (str1.equals(str2))) {
-          localPublishHomeWorkFragment.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)localObject);
+          localPublishHomeWorkFragment.f.setText((CharSequence)localObject);
         }
-        localPublishHomeWorkFragment.i();
-        localPublishHomeWorkFragment.h();
+        localPublishHomeWorkFragment.s();
+        localPublishHomeWorkFragment.r();
       }
     }
   }
@@ -82,21 +82,21 @@ public class PublishHomeWorkFragment$UIHandler
               return;
             case 515: 
               QLog.d("PublishHomeWorkFragment", 1, "init data time out");
-              ((PublishHomeWorkFragment)localObject).j = true;
+              ((PublishHomeWorkFragment)localObject).af = true;
               a();
               return;
             case 514: 
-              ((PublishHomeWorkFragment)localObject).h();
+              ((PublishHomeWorkFragment)localObject).r();
               return;
             }
             a();
             return;
           }
-          i = (int)((PublishHomeWorkFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
+          i = (int)((PublishHomeWorkFragment)localObject).K.getRecordTime();
           if (i < 1000)
           {
-            QQToast.a(((PublishHomeWorkFragment)localObject).getActivity(), HardCodeUtil.a(2131708825), 0).a();
-            ((PublishHomeWorkFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a();
+            QQToast.makeText(((PublishHomeWorkFragment)localObject).getActivity(), HardCodeUtil.a(2131906599), 0).show();
+            ((PublishHomeWorkFragment)localObject).K.e();
             return;
           }
           if (!NetworkUtil.isNetSupport(((PublishHomeWorkFragment)localObject).getActivity()))
@@ -104,9 +104,9 @@ public class PublishHomeWorkFragment$UIHandler
             if (QLog.isColorLevel()) {
               QLog.d("PublishHomeWorkFragment", 2, "no network toast");
             }
-            QQToast.a(((PublishHomeWorkFragment)localObject).getActivity(), 2131697226, 0).a();
-            ((PublishHomeWorkFragment)localObject).g = false;
-            ((PublishHomeWorkFragment)localObject).n();
+            QQToast.makeText(((PublishHomeWorkFragment)localObject).getActivity(), 2131894999, 0).show();
+            ((PublishHomeWorkFragment)localObject).T = false;
+            ((PublishHomeWorkFragment)localObject).x();
             return;
           }
           paramMessage = paramMessage.obj.toString();
@@ -117,18 +117,18 @@ public class PublishHomeWorkFragment$UIHandler
           } else {
             l = 0L;
           }
-          paramMessage = new AudioInfo(paramMessage, null, i / 1000, (int)l, ((PublishHomeWorkFragment)localObject).b);
-          ((PublishHomeWorkFragment)localObject).jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(paramMessage);
-          ((PublishHomeWorkFragment)localObject).g = false;
-          ((PublishHomeWorkFragment)localObject).n();
+          paramMessage = new AudioInfo(paramMessage, null, i / 1000, (int)l, ((PublishHomeWorkFragment)localObject).O);
+          ((PublishHomeWorkFragment)localObject).g.a(paramMessage);
+          ((PublishHomeWorkFragment)localObject).T = false;
+          ((PublishHomeWorkFragment)localObject).x();
           return;
         }
-        ((PublishHomeWorkFragment)localObject).g = false;
-        ((PublishHomeWorkFragment)localObject).n();
+        ((PublishHomeWorkFragment)localObject).T = false;
+        ((PublishHomeWorkFragment)localObject).x();
         return;
       }
-      ((PublishHomeWorkFragment)localObject).g = true;
-      ((PublishHomeWorkFragment)localObject).jdField_a_of_type_ComTencentWidgetActionSheet.setOutsideDismissEnableCompat(false);
+      ((PublishHomeWorkFragment)localObject).T = true;
+      ((PublishHomeWorkFragment)localObject).J.setOutsideDismissEnableCompat(false);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -138,7 +138,7 @@ public class PublishHomeWorkFragment$UIHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.UIHandler
  * JD-Core Version:    0.7.0.1
  */

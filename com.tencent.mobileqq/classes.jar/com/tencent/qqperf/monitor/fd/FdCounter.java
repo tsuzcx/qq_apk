@@ -12,14 +12,14 @@ import java.util.TreeMap;
 
 public class FdCounter
 {
-  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  private TreeMap<FdNode, String> jdField_a_of_type_JavaUtilTreeMap;
+  private TreeMap<FdNode, String> a;
+  private Map<String, Integer> b;
   
   private String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nBusiness\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    Iterator localIterator = this.a.entrySet().iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
@@ -32,10 +32,10 @@ public class FdCounter
         localStringBuilder.append(" ");
         localStringBuilder.append("(");
         localStringBuilder.append("count: ");
-        localStringBuilder.append(((FdNode)((Map.Entry)localObject).getKey()).jdField_a_of_type_Int);
+        localStringBuilder.append(((FdNode)((Map.Entry)localObject).getKey()).c);
         localStringBuilder.append(")");
         localStringBuilder.append("\n");
-        localObject = new ArrayList(((FdNode)((Map.Entry)localObject).getKey()).jdField_a_of_type_JavaUtilHashMap.values());
+        localObject = new ArrayList(((FdNode)((Map.Entry)localObject).getKey()).a.values());
         Collections.sort((List)localObject);
         localObject = ((List)localObject).iterator();
         int j = 0;
@@ -56,10 +56,10 @@ public class FdCounter
           }
           j += 1;
           localStringBuilder.append("\t\t");
-          localStringBuilder.append(localFdNode.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localFdNode.b);
           localStringBuilder.append("(");
           localStringBuilder.append("count: ");
-          localStringBuilder.append(localFdNode.jdField_a_of_type_Int);
+          localStringBuilder.append(localFdNode.c);
           localStringBuilder.append(")");
           localStringBuilder.append("\n");
         }
@@ -68,18 +68,11 @@ public class FdCounter
     return localStringBuilder.toString();
   }
   
-  private void a(FdTrie paramFdTrie)
-  {
-    paramFdTrie.a();
-    c(paramFdTrie);
-    b(paramFdTrie);
-  }
-  
   private String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nSystem\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Iterator localIterator = this.b.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -97,6 +90,13 @@ public class FdCounter
   
   private void b(FdTrie paramFdTrie)
   {
+    paramFdTrie.b();
+    d(paramFdTrie);
+    c(paramFdTrie);
+  }
+  
+  private void c(FdTrie paramFdTrie)
+  {
     Object localObject = paramFdTrie.a();
     paramFdTrie = new HashMap(20);
     localObject = ((HashMap)localObject).entrySet().iterator();
@@ -108,33 +108,33 @@ public class FdCounter
         paramFdTrie.put(localEntry.getKey(), str);
       }
     }
-    this.jdField_a_of_type_JavaUtilTreeMap = new TreeMap(paramFdTrie);
+    this.a = new TreeMap(paramFdTrie);
   }
   
-  private void c(FdTrie paramFdTrie)
+  private void d(FdTrie paramFdTrie)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap(10);
-    paramFdTrie = paramFdTrie.b().entrySet().iterator();
+    this.b = new HashMap(10);
+    paramFdTrie = paramFdTrie.c().entrySet().iterator();
     while (paramFdTrie.hasNext())
     {
       Object localObject = (Map.Entry)paramFdTrie.next();
       FdNode localFdNode = (FdNode)((Map.Entry)localObject).getKey();
       localObject = (String)((Map.Entry)localObject).getValue();
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+      if (!this.b.containsKey(localObject))
       {
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localFdNode.jdField_a_of_type_Int));
+        this.b.put(localObject, Integer.valueOf(localFdNode.c));
       }
       else
       {
-        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, Integer.valueOf(localInteger.intValue() + localFdNode.jdField_a_of_type_Int));
+        Integer localInteger = (Integer)this.b.get(localObject);
+        this.b.put(localObject, Integer.valueOf(localInteger.intValue() + localFdNode.c));
       }
     }
   }
   
   public String a(FdTrie paramFdTrie)
   {
-    a(paramFdTrie);
+    b(paramFdTrie);
     paramFdTrie = new StringBuilder();
     paramFdTrie.append(a());
     paramFdTrie.append(b());
@@ -143,7 +143,7 @@ public class FdCounter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fd.FdCounter
  * JD-Core Version:    0.7.0.1
  */

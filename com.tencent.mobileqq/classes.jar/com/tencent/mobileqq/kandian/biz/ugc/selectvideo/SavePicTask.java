@@ -9,19 +9,19 @@ import com.tencent.mobileqq.app.ThreadManagerExecutor;
 public class SavePicTask
   extends AsyncTask<Void, Void, Boolean>
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener;
-  private String jdField_a_of_type_JavaLangString;
+  private URLDrawable.DownloadListener a;
+  private Bitmap b;
+  private String c;
   
   public SavePicTask(Bitmap paramBitmap, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramBitmap;
+    this.c = paramString;
   }
   
   protected Boolean a(Void... paramVarArgs)
   {
-    return Boolean.valueOf(BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+    return Boolean.valueOf(BitmapUtils.a(this.b, this.c));
   }
   
   public void a()
@@ -31,27 +31,27 @@ public class SavePicTask
   
   public void a(URLDrawable.DownloadListener paramDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = paramDownloadListener;
+    this.a = paramDownloadListener;
   }
   
   protected void a(Boolean paramBoolean)
   {
     super.onPostExecute(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener == null) {
+    if (this.a == null) {
       return;
     }
     if (paramBoolean.booleanValue())
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadSucceed(0L);
+      this.a.onFileDownloadSucceed(0L);
       return;
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadFailed(0);
+    this.a.onFileDownloadFailed(0);
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    URLDrawable.DownloadListener localDownloadListener = this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener;
+    URLDrawable.DownloadListener localDownloadListener = this.a;
     if (localDownloadListener != null) {
       localDownloadListener.onFileDownloadStarted();
     }
@@ -59,7 +59,7 @@ public class SavePicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectvideo.SavePicTask
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class WatermarkEditListAdapter$4
   {
     if (paramBoolean)
     {
-      WatermarkEditListAdapter.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_OrgLightBeanWMElement);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2064056412);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      WatermarkEditListAdapter.a(this.c, this.a.a, this.b);
+      this.a.c.setBackgroundResource(2063925381);
+      this.a.c.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkEditListAdapter$EditTextViewHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a.c.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkEditListAdapter.4
  * JD-Core Version:    0.7.0.1
  */

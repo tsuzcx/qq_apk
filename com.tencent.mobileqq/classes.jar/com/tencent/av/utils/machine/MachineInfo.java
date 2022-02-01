@@ -7,18 +7,18 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class MachineInfo
 {
-  public float a;
   public int a;
-  public float b;
   public int b;
+  public float c;
+  public float d;
   
   public static MachineInfo a()
   {
     MachineInfo localMachineInfo = new MachineInfo();
-    localMachineInfo.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
-    localMachineInfo.jdField_b_of_type_Float = ((float)DeviceInfoUtil.a() / 1.073742E+009F);
-    localMachineInfo.jdField_b_of_type_Int = DeviceInfoUtil.b();
-    localMachineInfo.jdField_a_of_type_Float = ((float)VcSystemInfo.getMaxCpuFreq() / 1048576.0F);
+    localMachineInfo.a = Build.VERSION.SDK_INT;
+    localMachineInfo.d = ((float)DeviceInfoUtil.a() / 1.073742E+009F);
+    localMachineInfo.b = DeviceInfoUtil.h();
+    localMachineInfo.c = ((float)VcSystemInfo.getMaxCpuFreq() / 1048576.0F);
     return localMachineInfo;
   }
   
@@ -27,13 +27,13 @@ public class MachineInfo
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("[apiLevel: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", cpuNum: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", maxFreqGHZ: ");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", ramSizeGB:");
-    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

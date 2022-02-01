@@ -9,8 +9,8 @@ class TempMsgManager$3
   
   public void run()
   {
-    if (TempMsgManager.a(this.this$0) != null) {
-      TempMsgManager.a(this.this$0).a(this.jdField_a_of_type_Short, this.jdField_a_of_type_Boolean, ((Boolean)TempMsgManager.a(this.this$0).get(TempMsgManager.a(this.this$0, this.jdField_a_of_type_Short))).booleanValue(), ((Boolean)TempMsgManager.b(this.this$0).get(TempMsgManager.a(this.this$0, this.jdField_a_of_type_Short))).booleanValue());
+    if (TempMsgManager.b(this.this$0) != null) {
+      TempMsgManager.b(this.this$0).a(this.a, this.b, ((Boolean)TempMsgManager.c(this.this$0).get(TempMsgManager.a(this.this$0, this.a))).booleanValue(), ((Boolean)TempMsgManager.d(this.this$0).get(TempMsgManager.a(this.this$0, this.a))).booleanValue());
     }
   }
 }

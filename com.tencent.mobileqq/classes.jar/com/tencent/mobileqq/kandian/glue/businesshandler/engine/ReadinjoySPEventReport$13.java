@@ -14,17 +14,17 @@ final class ReadinjoySPEventReport$13
   
   public void run()
   {
-    if (ReadinjoySPEventReport.b(7))
+    if (ReadinjoySPEventReport.j(7))
     {
       oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
       localAttributeList1.att_id.set(1);
       localAttributeList1.att_name.set("tab");
-      localAttributeList1.att_value.set(String.valueOf(this.jdField_a_of_type_Int));
+      localAttributeList1.att_value.set(String.valueOf(this.a));
       oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
       localAttributeList2.att_id.set(4);
       localAttributeList2.att_name.set("redStatus");
       PBStringField localPBStringField = localAttributeList2.att_value;
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
         localObject = "1";
       } else {
         localObject = "0";
@@ -39,7 +39,7 @@ final class ReadinjoySPEventReport$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.13
  * JD-Core Version:    0.7.0.1
  */

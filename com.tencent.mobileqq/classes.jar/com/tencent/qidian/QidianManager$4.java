@@ -12,12 +12,12 @@ class QidianManager$4
   public void run()
   {
     QidianManager localQidianManager = this.this$0;
-    localQidianManager.b(localQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.a, 1));
+    localQidianManager.b(localQidianManager.i.getApp().getBaseContext(), new BmqqAccountType(this.a, 1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.4
  * JD-Core Version:    0.7.0.1
  */

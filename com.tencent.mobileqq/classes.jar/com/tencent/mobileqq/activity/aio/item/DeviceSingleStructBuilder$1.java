@@ -37,7 +37,7 @@ class DeviceSingleStructBuilder$1
         ((StringBuilder)localObject1).append(localMessageForDeviceSingleStruct.strMediaKey.substring(localMessageForDeviceSingleStruct.strMediaKey.lastIndexOf(".")));
         localMessageForDeviceSingleStruct.strMediaFileName = ((StringBuilder)localObject1).toString();
       }
-      DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(Long.parseLong(localMessageForDeviceSingleStruct.senderuin));
+      DeviceInfo localDeviceInfo = ((SmartDeviceProxyMgr)this.a.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).g(Long.parseLong(localMessageForDeviceSingleStruct.senderuin));
       if (localDeviceInfo != null)
       {
         int i;
@@ -123,7 +123,7 @@ class DeviceSingleStructBuilder$1
           localIntent.putExtra("filepath", (String)localObject2);
           localIntent.putExtra("rect", localMessageForDeviceSingleStruct.faceRect);
           localIntent.putExtra("from", 0);
-          SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), localIntent, "com.tencent.device.face.FaceRegisterActivity", -1, null, SmartDevicePluginProxyActivity.class);
+          SmartDevicePluginLoader.a().a((Activity)this.a.c, this.a.a, this.a.a.getAccount(), localIntent, "com.tencent.device.face.FaceRegisterActivity", -1, null, SmartDevicePluginProxyActivity.class);
         }
         else
         {
@@ -136,7 +136,7 @@ class DeviceSingleStructBuilder$1
         }
         long l = Long.parseLong(localMessageForDeviceSingleStruct.senderuin);
         int j = localDeviceInfo.productId;
-        SmartDeviceReport.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l, "Usr_AIO_ReceiveMsg_Click", i, 0, j);
+        SmartDeviceReport.a(this.a.a, l, "Usr_AIO_ReceiveMsg_Click", i, 0, j);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -144,7 +144,7 @@ class DeviceSingleStructBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DeviceSingleStructBuilder.1
  * JD-Core Version:    0.7.0.1
  */

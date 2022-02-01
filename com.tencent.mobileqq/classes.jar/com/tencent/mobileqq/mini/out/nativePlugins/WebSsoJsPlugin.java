@@ -125,7 +125,7 @@ public class WebSsoJsPlugin
         ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).requestWebSso(paramJSONObject, localJSONObject, (Bundle)localObject);
         return;
       }
-      paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716369));
+      paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131913809));
       return;
     }
     catch (Throwable paramJSONObject)
@@ -133,7 +133,7 @@ public class WebSsoJsPlugin
       label159:
       break label159;
     }
-    paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131716368));
+    paramJSContext.evaluateCallback(false, new JSONObject(), HardCodeUtil.a(2131913808));
     if (QLog.isColorLevel()) {
       QLog.w("WebSsoJsPlugin", 2, "requestWebSSO,decode param error");
     }
@@ -141,7 +141,7 @@ public class WebSsoJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.WebSsoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

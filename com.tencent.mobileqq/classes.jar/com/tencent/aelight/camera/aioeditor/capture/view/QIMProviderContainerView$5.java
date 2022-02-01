@@ -9,13 +9,13 @@ class QIMProviderContainerView$5
 {
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QIMProviderContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView) != null)
+    if (QIMProviderContainerView.e(this.b) != null)
     {
-      QIMProviderContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView).setAlpha(1.0F);
-      QIMProviderContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView).setVisibility(8);
+      QIMProviderContainerView.e(this.b).setAlpha(1.0F);
+      QIMProviderContainerView.e(this.b).setVisibility(8);
     }
-    if ((!this.jdField_a_of_type_Boolean) && (QIMProviderContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView) != null)) {
-      QIMProviderContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMProviderContainerView).a(false, 150);
+    if ((!this.a) && (QIMProviderContainerView.b(this.b) != null)) {
+      QIMProviderContainerView.b(this.b).a(false, 150);
     }
   }
   
@@ -25,7 +25,7 @@ class QIMProviderContainerView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.QIMProviderContainerView.5
  * JD-Core Version:    0.7.0.1
  */

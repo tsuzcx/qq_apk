@@ -16,24 +16,16 @@ import java.lang.ref.WeakReference;
 public class WebFastProteusAdInnerCreator
   extends WebFastBaseProteusAdCreator
 {
-  public int a(BaseData paramBaseData)
-  {
-    if ((paramBaseData instanceof ProteusInnerData)) {
-      return FastWeqAdUtils.a((ProteusInnerData)paramBaseData);
-    }
-    return 20;
-  }
-  
   protected BaseItemViewHolder a(View paramView, BaseData paramBaseData)
   {
-    return new WebFastProteusAdInnerCreator.ProteusItemHolder(this, paramView, paramBaseData, this.a);
+    return new WebFastProteusAdInnerCreator.ProteusItemHolder(this, paramView, paramBaseData, this.b);
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
   {
     Object localObject;
-    if (this.a != null) {
-      localObject = (Context)this.a.get();
+    if (this.b != null) {
+      localObject = (Context)this.b.get();
     } else {
       localObject = null;
     }
@@ -51,12 +43,20 @@ public class WebFastProteusAdInnerCreator
   
   public boolean a(BaseData paramBaseData)
   {
-    return (paramBaseData != null) && (paramBaseData.u == 22);
+    return (paramBaseData != null) && (paramBaseData.aP == 22);
+  }
+  
+  public int b(BaseData paramBaseData)
+  {
+    if ((paramBaseData instanceof ProteusInnerData)) {
+      return FastWeqAdUtils.a((ProteusInnerData)paramBaseData);
+    }
+    return 20;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusAdInnerCreator
  * JD-Core Version:    0.7.0.1
  */

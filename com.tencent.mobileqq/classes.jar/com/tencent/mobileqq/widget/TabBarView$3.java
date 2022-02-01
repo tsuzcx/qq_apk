@@ -13,7 +13,7 @@ class TabBarView$3
   {
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
     boolean bool;
-    if (this.a.a(paramView) == this.a.o) {
+    if (this.a.a(paramView) == this.a.t) {
       bool = true;
     } else {
       bool = false;
@@ -28,7 +28,7 @@ class TabBarView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabBarView.3
  * JD-Core Version:    0.7.0.1
  */

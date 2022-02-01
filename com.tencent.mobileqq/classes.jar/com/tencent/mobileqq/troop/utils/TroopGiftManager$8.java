@@ -20,7 +20,7 @@ class TroopGiftManager$8
       try
       {
         paramBundle.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramBundle.int64_total_point.get() / 100L);
+        this.b.a(paramBundle.int64_total_point.get() / 100L);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -44,7 +44,7 @@ class TroopGiftManager$8
       paramBundle.append(paramArrayOfByte);
       QLog.i(".troop.send_gift", 2, paramBundle.toString());
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback;
+    paramArrayOfByte = this.b;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(paramInt, "sso request error or callback is null.");
     }
@@ -52,7 +52,7 @@ class TroopGiftManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.8
  * JD-Core Version:    0.7.0.1
  */

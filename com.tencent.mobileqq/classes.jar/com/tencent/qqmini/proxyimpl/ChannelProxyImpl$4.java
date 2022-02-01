@@ -26,13 +26,13 @@ class ChannelProxyImpl$4
     QLog.e("ChannelProxyImpl", 1, ((StringBuilder)localObject).toString());
     try
     {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
+      if (this.a != null)
       {
         localObject = new JSONObject();
         ((JSONObject)localObject).put("message", paramString2);
         ((JSONObject)localObject).put("code", paramInt);
         ((JSONObject)localObject).put("cmd", paramString1);
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, (JSONObject)localObject);
+        this.a.onReceiveResult(false, (JSONObject)localObject);
         return;
       }
     }
@@ -50,25 +50,25 @@ class ChannelProxyImpl$4
     try
     {
       int i = paramRspBody.uint32_resend_interval.get();
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult == null) {
+      if (this.a == null) {
         return;
       }
       paramRspBody = new JSONObject();
       if (i > 0) {
         paramRspBody.put("intervalTime", i);
       }
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramRspBody);
+      this.a.onReceiveResult(true, paramRspBody);
       return;
     }
     catch (Throwable paramRspBody)
     {
       QLog.e("ChannelProxyImpl", 1, "sendSmsCodeSuccess error,", paramRspBody);
     }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult != null)
+    if (this.a != null)
     {
       paramRspBody = new JSONObject();
       paramRspBody.put("message", "请求回包异常");
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, paramRspBody);
+      this.a.onReceiveResult(false, paramRspBody);
       return;
     }
   }
@@ -80,7 +80,7 @@ class ChannelProxyImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

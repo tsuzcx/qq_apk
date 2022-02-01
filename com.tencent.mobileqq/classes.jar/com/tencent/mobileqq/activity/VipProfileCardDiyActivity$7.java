@@ -19,32 +19,32 @@ class VipProfileCardDiyActivity$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.l();
-    if (VasUtil.a(this.a.app).getVipStatus().isSVip())
+    this.a.m();
+    if (VasUtil.b(this.a.app).getVipStatus().isSVip())
     {
       VipProfileCardDiyActivity localVipProfileCardDiyActivity;
-      if (this.a.jdField_a_of_type_Long == 0L)
+      if (this.a.T == 0L)
       {
-        paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
+        paramDialogInterface = (String)this.a.aE.get(this.a.W);
         if (!TextUtils.isEmpty(paramDialogInterface))
         {
           localVipProfileCardDiyActivity = this.a;
-          localVipProfileCardDiyActivity.a(localVipProfileCardDiyActivity.d, paramDialogInterface, false);
+          localVipProfileCardDiyActivity.a(localVipProfileCardDiyActivity.W, paramDialogInterface, false);
         }
         else
         {
           paramDialogInterface = this.a;
-          paramDialogInterface.a(paramDialogInterface.d, false);
+          paramDialogInterface.a(paramDialogInterface.W, false);
         }
       }
-      else if (((this.a.jdField_a_of_type_Long == 160L) || (this.a.jdField_a_of_type_Long == 1600L)) && (!TextUtils.isEmpty(this.a.b)))
+      else if (((this.a.T == 160L) || (this.a.T == 1600L)) && (!TextUtils.isEmpty(this.a.U)))
       {
-        paramDialogInterface = ProfileCardManager.a(this.a, ProfileCardTemplate.PROFILE_CARD_STYLE_DIY, this.a.jdField_a_of_type_Long);
+        paramDialogInterface = ProfileCardManager.a(this.a, ProfileCardTemplate.PROFILE_CARD_STYLE_DIY, this.a.T);
         localVipProfileCardDiyActivity = this.a;
-        localVipProfileCardDiyActivity.a(paramDialogInterface, localVipProfileCardDiyActivity.b, false);
+        localVipProfileCardDiyActivity.a(paramDialogInterface, localVipProfileCardDiyActivity.U, false);
       }
     }
-    if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
+    if ((this.a.T != 0L) && (this.a.T != 160L)) {
       paramDialogInterface = "4";
     } else {
       paramDialogInterface = "3";
@@ -54,7 +54,7 @@ class VipProfileCardDiyActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.7
  * JD-Core Version:    0.7.0.1
  */

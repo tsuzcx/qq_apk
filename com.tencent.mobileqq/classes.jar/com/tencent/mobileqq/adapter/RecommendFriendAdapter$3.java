@@ -23,8 +23,8 @@ class RecommendFriendAdapter$3
     }
     if (paramBoolean)
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAdapterMayKnowAdapter$OnRecommendsCanceledListener != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqAdapterMayKnowAdapter$OnRecommendsCanceledListener instanceof MayKnowAdapter.OnRecommendsUpdateListener))) {
-        ((MayKnowAdapter.OnRecommendsUpdateListener)this.a.jdField_a_of_type_ComTencentMobileqqAdapterMayKnowAdapter$OnRecommendsCanceledListener).a(paramString);
+      if ((this.a.a != null) && ((this.a.a instanceof MayKnowAdapter.OnRecommendsUpdateListener))) {
+        ((MayKnowAdapter.OnRecommendsUpdateListener)this.a.a).a(paramString);
       }
       RecommendFriendAdapter.a(this.a);
     }
@@ -79,17 +79,17 @@ class RecommendFriendAdapter$3
     if (paramBoolean)
     {
       this.a.notifyDataSetChanged();
-      if (RecommendFriendAdapter.a(this.a) != null)
+      if (RecommendFriendAdapter.b(this.a) != null)
       {
-        RecommendFriendAdapter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        RecommendFriendAdapter.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+        RecommendFriendAdapter.b(this.a).removeCallbacks(this.a.d);
+        RecommendFriendAdapter.b(this.a).postDelayed(this.a.d, 1600L);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RecommendFriendAdapter.3
  * JD-Core Version:    0.7.0.1
  */

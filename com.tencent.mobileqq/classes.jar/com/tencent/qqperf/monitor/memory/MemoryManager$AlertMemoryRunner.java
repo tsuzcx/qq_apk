@@ -9,37 +9,37 @@ import java.util.regex.Pattern;
 class MemoryManager$AlertMemoryRunner
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  Class jdField_a_of_type_JavaLangClass;
-  private int b;
+  Class a;
+  int b;
+  private Context c;
+  private int d;
   
   public MemoryManager$AlertMemoryRunner(Context paramContext, int paramInt1, Class paramClass, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt1;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_Int = paramInt2;
-    if (MemoryManager.a() == null)
+    this.c = paramContext;
+    this.d = paramInt1;
+    this.a = paramClass;
+    this.b = paramInt2;
+    if (MemoryManager.j() == null)
     {
       MemoryManager.a(new ArrayList());
-      MemoryManager.a().add("com.android.browser");
-      MemoryManager.a().add("com.android.email");
-      MemoryManager.a().add("com.sec.android.app.readershub");
+      MemoryManager.j().add("com.android.browser");
+      MemoryManager.j().add("com.android.email");
+      MemoryManager.j().add("com.sec.android.app.readershub");
     }
-    if (MemoryManager.b() == null)
+    if (MemoryManager.k() == null)
     {
       MemoryManager.b(new ArrayList());
       paramContext = Pattern.compile("^com.*.android.*");
-      MemoryManager.b().add(paramContext);
+      MemoryManager.k().add(paramContext);
     }
-    if (MemoryManager.c() == null)
+    if (MemoryManager.l() == null)
     {
       MemoryManager.c(new ArrayList());
-      MemoryManager.c().add("system");
-      MemoryManager.c().add("com.android.");
-      MemoryManager.c().add("com.google.process.");
-      MemoryManager.c().add("android.process.");
+      MemoryManager.l().add("system");
+      MemoryManager.l().add("com.android.");
+      MemoryManager.l().add("com.google.process.");
+      MemoryManager.l().add("android.process.");
     }
   }
   
@@ -49,25 +49,25 @@ class MemoryManager$AlertMemoryRunner
       return true;
     }
     int i = 0;
-    while (i < MemoryManager.a().size())
+    while (i < MemoryManager.j().size())
     {
-      if (paramString.equals(MemoryManager.a().get(i))) {
+      if (paramString.equals(MemoryManager.j().get(i))) {
         return false;
       }
       i += 1;
     }
     i = 0;
-    while (i < MemoryManager.b().size())
+    while (i < MemoryManager.k().size())
     {
-      if (((Pattern)MemoryManager.b().get(i)).matcher(paramString).find()) {
+      if (((Pattern)MemoryManager.k().get(i)).matcher(paramString).find()) {
         return true;
       }
       i += 1;
     }
     i = 0;
-    while (i < MemoryManager.c().size())
+    while (i < MemoryManager.l().size())
     {
-      if (paramString.startsWith((String)MemoryManager.c().get(i))) {
+      if (paramString.startsWith((String)MemoryManager.l().get(i))) {
         return true;
       }
       i += 1;
@@ -80,12 +80,12 @@ class MemoryManager$AlertMemoryRunner
   public void run()
   {
     // Byte code:
-    //   0: ldc 110
+    //   0: ldc 114
     //   2: astore 12
     //   4: aload 12
     //   6: astore 13
     //   8: aload_0
-    //   9: getfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:b	I
+    //   9: getfield 22	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:d	I
     //   12: istore_1
     //   13: iload_1
     //   14: iconst_1
@@ -96,72 +96,72 @@ class MemoryManager$AlertMemoryRunner
     //   23: goto +1003 -> 1026
     //   26: aload 12
     //   28: astore 13
-    //   30: invokestatic 116	com/tencent/mobileqq/utils/DeviceInfoUtil:e	()J
+    //   30: invokestatic 120	com/tencent/mobileqq/utils/DeviceInfoUtil:r	()J
     //   33: lstore 4
     //   35: aload 12
     //   37: astore 13
-    //   39: invokestatic 118	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
+    //   39: invokestatic 122	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
     //   42: lstore 6
     //   44: aload 12
     //   46: astore 13
-    //   48: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   48: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   51: ifeq +99 -> 150
     //   54: aload 12
     //   56: astore 13
-    //   58: new 125	java/lang/StringBuilder
+    //   58: new 129	java/lang/StringBuilder
     //   61: dup
-    //   62: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   62: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   65: astore 14
     //   67: aload 12
     //   69: astore 13
     //   71: aload 14
-    //   73: ldc 128
-    //   75: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: ldc 132
+    //   75: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: pop
     //   79: aload 12
     //   81: astore 13
     //   83: aload 14
     //   85: lload 4
-    //   87: ldc2_w 133
+    //   87: ldc2_w 137
     //   90: ldiv
-    //   91: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   91: invokevirtual 141	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   94: pop
     //   95: aload 12
     //   97: astore 13
     //   99: aload 14
-    //   101: ldc 139
-    //   103: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   101: ldc 143
+    //   103: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: pop
     //   107: aload 12
     //   109: astore 13
     //   111: aload 14
     //   113: lload 6
-    //   115: ldc2_w 133
+    //   115: ldc2_w 137
     //   118: ldiv
-    //   119: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 141	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   122: pop
     //   123: aload 12
     //   125: astore 13
     //   127: aload 14
-    //   129: ldc 141
-    //   131: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: ldc 145
+    //   131: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   134: pop
     //   135: aload 12
     //   137: astore 13
-    //   139: ldc 110
+    //   139: ldc 114
     //   141: iconst_2
     //   142: aload 14
-    //   144: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   147: invokestatic 149	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   144: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   150: aload 12
     //   152: astore 13
-    //   154: invokestatic 154	com/tencent/qqperf/MagnifierSDK:a	()Lcom/tencent/qqperf/MagnifierSDK;
-    //   157: invokevirtual 157	com/tencent/qqperf/MagnifierSDK:a	()Lcom/tencent/qqperf/opt/clearmemory/MemoryConfigs;
-    //   160: getfield 160	com/tencent/qqperf/opt/clearmemory/MemoryConfigs:jdField_a_of_type_Int	I
+    //   154: invokestatic 157	com/tencent/qqperf/MagnifierSDK:b	()Lcom/tencent/qqperf/MagnifierSDK;
+    //   157: invokevirtual 160	com/tencent/qqperf/MagnifierSDK:j	()Lcom/tencent/qqperf/opt/clearmemory/MemoryConfigs;
+    //   160: getfield 163	com/tencent/qqperf/opt/clearmemory/MemoryConfigs:d	I
     //   163: i2l
     //   164: lload 6
     //   166: lmul
-    //   167: ldc2_w 161
+    //   167: ldc2_w 164
     //   170: ldiv
     //   171: lstore 8
     //   173: lload 4
@@ -170,25 +170,25 @@ class MemoryManager$AlertMemoryRunner
     //   178: iflt +9 -> 187
     //   181: aload_0
     //   182: aconst_null
-    //   183: putfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   183: putfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   186: return
     //   187: aload 12
     //   189: astore 13
-    //   191: invokestatic 168	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   194: ldc 170
+    //   191: invokestatic 171	mqq/app/MobileQQ:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   194: ldc 173
     //   196: iconst_0
-    //   197: invokevirtual 176	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   197: invokevirtual 179	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   200: astore 15
     //   202: aload 12
     //   204: astore 13
     //   206: aload 15
-    //   208: ldc 178
+    //   208: ldc 181
     //   210: lconst_0
-    //   211: invokeinterface 184 4 0
+    //   211: invokeinterface 187 4 0
     //   216: lstore_2
     //   217: aload 12
     //   219: astore 13
-    //   221: invokestatic 189	java/lang/System:currentTimeMillis	()J
+    //   221: invokestatic 192	java/lang/System:currentTimeMillis	()J
     //   224: lstore 10
     //   226: lload 10
     //   228: lload_2
@@ -197,39 +197,39 @@ class MemoryManager$AlertMemoryRunner
     //   233: aload 12
     //   235: astore 13
     //   237: aload 15
-    //   239: invokeinterface 193 1 0
+    //   239: invokeinterface 196 1 0
     //   244: astore 14
     //   246: aload 12
     //   248: astore 13
     //   250: aload 14
-    //   252: ldc 178
+    //   252: ldc 181
     //   254: lload 10
-    //   256: invokeinterface 199 4 0
+    //   256: invokeinterface 202 4 0
     //   261: pop
     //   262: aload 12
     //   264: astore 13
     //   266: aload 14
-    //   268: invokeinterface 202 1 0
+    //   268: invokeinterface 205 1 0
     //   273: pop
     //   274: aload_0
     //   275: aconst_null
-    //   276: putfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   276: putfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   279: return
     //   280: aload 12
     //   282: astore 13
-    //   284: invokestatic 205	com/tencent/qqperf/monitor/memory/MemoryManager:a	()Lcom/tencent/qqperf/monitor/memory/MemoryManager;
+    //   284: invokestatic 208	com/tencent/qqperf/monitor/memory/MemoryManager:a	()Lcom/tencent/qqperf/monitor/memory/MemoryManager;
     //   287: lload 8
     //   289: lload 4
-    //   291: invokevirtual 208	com/tencent/qqperf/monitor/memory/MemoryManager:a	(JJ)V
+    //   291: invokevirtual 211	com/tencent/qqperf/monitor/memory/MemoryManager:a	(JJ)V
     //   294: lload 10
     //   296: lload_2
     //   297: lsub
     //   298: lstore_2
     //   299: aload 12
     //   301: astore 13
-    //   303: invokestatic 154	com/tencent/qqperf/MagnifierSDK:a	()Lcom/tencent/qqperf/MagnifierSDK;
-    //   306: invokevirtual 157	com/tencent/qqperf/MagnifierSDK:a	()Lcom/tencent/qqperf/opt/clearmemory/MemoryConfigs;
-    //   309: getfield 211	com/tencent/qqperf/opt/clearmemory/MemoryConfigs:jdField_a_of_type_Long	J
+    //   303: invokestatic 157	com/tencent/qqperf/MagnifierSDK:b	()Lcom/tencent/qqperf/MagnifierSDK;
+    //   306: invokevirtual 160	com/tencent/qqperf/MagnifierSDK:j	()Lcom/tencent/qqperf/opt/clearmemory/MemoryConfigs;
+    //   309: getfield 215	com/tencent/qqperf/opt/clearmemory/MemoryConfigs:e	J
     //   312: lstore 10
     //   314: lload_2
     //   315: lload 10
@@ -237,87 +237,87 @@ class MemoryManager$AlertMemoryRunner
     //   318: ifge +9 -> 327
     //   321: aload_0
     //   322: aconst_null
-    //   323: putfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   323: putfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   326: return
     //   327: aload 12
     //   329: astore 13
-    //   331: invokestatic 205	com/tencent/qqperf/monitor/memory/MemoryManager:a	()Lcom/tencent/qqperf/monitor/memory/MemoryManager;
+    //   331: invokestatic 208	com/tencent/qqperf/monitor/memory/MemoryManager:a	()Lcom/tencent/qqperf/monitor/memory/MemoryManager;
     //   334: lload 8
     //   336: lload 4
-    //   338: invokevirtual 213	com/tencent/qqperf/monitor/memory/MemoryManager:b	(JJ)V
+    //   338: invokevirtual 217	com/tencent/qqperf/monitor/memory/MemoryManager:b	(JJ)V
     //   341: aload 12
     //   343: astore 13
-    //   345: new 31	java/util/ArrayList
+    //   345: new 34	java/util/ArrayList
     //   348: dup
-    //   349: invokespecial 32	java/util/ArrayList:<init>	()V
+    //   349: invokespecial 35	java/util/ArrayList:<init>	()V
     //   352: astore 16
     //   354: aload 12
     //   356: astore 13
     //   358: aload_0
-    //   359: getfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   362: ldc 215
-    //   364: invokevirtual 221	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   367: checkcast 223	android/app/ActivityManager
-    //   370: invokevirtual 226	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
-    //   373: invokeinterface 230 1 0
+    //   359: getfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
+    //   362: ldc 219
+    //   364: invokevirtual 225	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   367: checkcast 227	android/app/ActivityManager
+    //   370: invokevirtual 230	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   373: invokeinterface 234 1 0
     //   378: astore 14
     //   380: aload 12
     //   382: astore 13
     //   384: aload 14
-    //   386: invokeinterface 235 1 0
+    //   386: invokeinterface 239 1 0
     //   391: ifeq +132 -> 523
     //   394: aload 12
     //   396: astore 13
     //   398: aload 14
-    //   400: invokeinterface 239 1 0
-    //   405: checkcast 241	android/app/ActivityManager$RunningAppProcessInfo
+    //   400: invokeinterface 243 1 0
+    //   405: checkcast 245	android/app/ActivityManager$RunningAppProcessInfo
     //   408: astore 17
     //   410: aload 12
     //   412: astore 13
     //   414: aload 17
-    //   416: getfield 245	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   416: getfield 249	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   419: astore 18
     //   421: aload 12
     //   423: astore 13
     //   425: aload 13
     //   427: astore 12
     //   429: aload 17
-    //   431: getfield 248	android/app/ActivityManager$RunningAppProcessInfo:importance	I
+    //   431: getfield 252	android/app/ActivityManager$RunningAppProcessInfo:importance	I
     //   434: bipush 100
     //   436: if_icmpeq +694 -> 1130
     //   439: aload 13
     //   441: astore 12
     //   443: aload 17
-    //   445: getfield 248	android/app/ActivityManager$RunningAppProcessInfo:importance	I
+    //   445: getfield 252	android/app/ActivityManager$RunningAppProcessInfo:importance	I
     //   448: sipush 200
     //   451: if_icmpne +30 -> 481
     //   454: aload 13
     //   456: astore 12
     //   458: aload 17
-    //   460: getfield 248	android/app/ActivityManager$RunningAppProcessInfo:importance	I
+    //   460: getfield 252	android/app/ActivityManager$RunningAppProcessInfo:importance	I
     //   463: sipush 200
     //   466: if_icmpne +664 -> 1130
     //   469: aload 13
     //   471: astore 12
     //   473: aload 17
-    //   475: getfield 251	android/app/ActivityManager$RunningAppProcessInfo:importanceReasonCode	I
+    //   475: getfield 255	android/app/ActivityManager$RunningAppProcessInfo:importanceReasonCode	I
     //   478: ifeq +652 -> 1130
     //   481: aload 13
     //   483: astore 12
     //   485: aload_0
     //   486: aload 18
-    //   488: invokespecial 253	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:a	(Ljava/lang/String;)Z
+    //   488: invokespecial 257	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:a	(Ljava/lang/String;)Z
     //   491: ifne +639 -> 1130
     //   494: aload 13
     //   496: astore 12
     //   498: aload 16
     //   500: aload 18
     //   502: aload 17
-    //   504: getfield 256	android/app/ActivityManager$RunningAppProcessInfo:pid	I
-    //   507: invokestatic 259	com/tencent/mobileqq/utils/DeviceInfoUtil:a	(I)J
-    //   510: invokestatic 265	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   513: invokestatic 271	android/util/Pair:create	(Ljava/lang/Object;Ljava/lang/Object;)Landroid/util/Pair;
-    //   516: invokevirtual 272	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   504: getfield 260	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   507: invokestatic 263	com/tencent/mobileqq/utils/DeviceInfoUtil:a	(I)J
+    //   510: invokestatic 269	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   513: invokestatic 275	android/util/Pair:create	(Ljava/lang/Object;Ljava/lang/Object;)Landroid/util/Pair;
+    //   516: invokevirtual 276	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   519: pop
     //   520: goto +610 -> 1130
     //   523: aload 12
@@ -325,200 +325,200 @@ class MemoryManager$AlertMemoryRunner
     //   527: aload 13
     //   529: astore 12
     //   531: aload 16
-    //   533: invokestatic 277	com/tencent/mobileqq/util/SortUtils:a	(Ljava/util/ArrayList;)Ljava/util/ArrayList;
+    //   533: invokestatic 281	com/tencent/mobileqq/util/SortUtils:a	(Ljava/util/ArrayList;)Ljava/util/ArrayList;
     //   536: pop
     //   537: aload 13
     //   539: astore 12
     //   541: aload_0
-    //   542: getfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   545: ldc 215
-    //   547: invokevirtual 221	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   550: checkcast 223	android/app/ActivityManager
+    //   542: getfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
+    //   545: ldc 219
+    //   547: invokevirtual 225	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   550: checkcast 227	android/app/ActivityManager
     //   553: astore 14
     //   555: aload 13
     //   557: astore 12
     //   559: aload 15
-    //   561: invokeinterface 193 1 0
+    //   561: invokeinterface 196 1 0
     //   566: astore 14
     //   568: aload 13
     //   570: astore 12
     //   572: aload 14
-    //   574: ldc 178
-    //   576: invokestatic 189	java/lang/System:currentTimeMillis	()J
-    //   579: invokeinterface 199 4 0
+    //   574: ldc 181
+    //   576: invokestatic 192	java/lang/System:currentTimeMillis	()J
+    //   579: invokeinterface 202 4 0
     //   584: pop
     //   585: aload 13
     //   587: astore 12
     //   589: aload 14
-    //   591: invokeinterface 202 1 0
+    //   591: invokeinterface 205 1 0
     //   596: pop
     //   597: aload 13
     //   599: astore 12
-    //   601: invokestatic 278	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   604: invokestatic 284	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   601: invokestatic 282	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   604: invokestatic 288	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   607: astore 14
     //   609: aload 13
     //   611: astore 12
-    //   613: new 286	java/util/HashMap
+    //   613: new 290	java/util/HashMap
     //   616: dup
-    //   617: invokespecial 287	java/util/HashMap:<init>	()V
+    //   617: invokespecial 291	java/util/HashMap:<init>	()V
     //   620: astore 15
     //   622: aload 13
     //   624: astore 12
     //   626: aload 15
-    //   628: ldc_w 289
-    //   631: getstatic 294	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
-    //   634: invokevirtual 298	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   628: ldc_w 293
+    //   631: getstatic 298	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
+    //   634: invokevirtual 302	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   637: pop
     //   638: aload 13
     //   640: astore 12
-    //   642: new 125	java/lang/StringBuilder
+    //   642: new 129	java/lang/StringBuilder
     //   645: dup
-    //   646: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   646: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   649: astore 16
     //   651: aload 13
     //   653: astore 12
     //   655: aload 16
-    //   657: getstatic 303	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   660: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   657: getstatic 307	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   660: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   663: pop
     //   664: aload 13
     //   666: astore 12
     //   668: aload 16
-    //   670: ldc_w 305
-    //   673: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   670: ldc_w 309
+    //   673: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   676: pop
     //   677: aload 13
     //   679: astore 12
     //   681: aload 16
-    //   683: getstatic 308	android/os/Build:MODEL	Ljava/lang/String;
-    //   686: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   683: getstatic 312	android/os/Build:MODEL	Ljava/lang/String;
+    //   686: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   689: pop
     //   690: aload 13
     //   692: astore 12
     //   694: aload 15
-    //   696: ldc_w 310
+    //   696: ldc_w 314
     //   699: aload 16
-    //   701: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   704: invokevirtual 298	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   701: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   704: invokevirtual 302	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   707: pop
     //   708: aload 13
     //   710: astore 12
     //   712: aload 15
-    //   714: ldc_w 312
+    //   714: ldc_w 316
     //   717: lload 4
-    //   719: invokestatic 315	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   722: invokevirtual 298	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   719: invokestatic 319	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   722: invokevirtual 302	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   725: pop
     //   726: aload 13
     //   728: astore 12
     //   730: aload 15
-    //   732: ldc_w 317
+    //   732: ldc_w 321
     //   735: lload 6
-    //   737: invokestatic 315	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   740: invokevirtual 298	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   737: invokestatic 319	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   740: invokevirtual 302	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   743: pop
     //   744: aload 13
     //   746: astore 12
     //   748: aload 15
-    //   750: ldc_w 319
+    //   750: ldc_w 323
     //   753: lload 8
-    //   755: invokestatic 315	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   758: invokevirtual 298	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   755: invokestatic 319	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   758: invokevirtual 302	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   761: pop
     //   762: aload 13
     //   764: astore 12
     //   766: aload 15
-    //   768: ldc_w 321
+    //   768: ldc_w 325
     //   771: lload_2
-    //   772: ldc2_w 322
+    //   772: ldc2_w 326
     //   775: ldiv
-    //   776: invokestatic 315	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   779: invokevirtual 298	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   776: invokestatic 319	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   779: invokevirtual 302	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   782: pop
     //   783: aload 13
     //   785: astore 12
     //   787: aload 14
-    //   789: ldc_w 325
-    //   792: ldc_w 327
+    //   789: ldc_w 329
+    //   792: ldc_w 331
     //   795: iconst_1
     //   796: lconst_0
     //   797: lconst_0
     //   798: aload 15
-    //   800: ldc_w 325
-    //   803: invokevirtual 331	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   800: ldc_w 329
+    //   803: invokevirtual 335	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   806: goto -783 -> 23
-    //   809: ldc 110
+    //   809: ldc 114
     //   811: astore 13
     //   813: aload 13
     //   815: astore 12
-    //   817: invokestatic 116	com/tencent/mobileqq/utils/DeviceInfoUtil:e	()J
+    //   817: invokestatic 120	com/tencent/mobileqq/utils/DeviceInfoUtil:r	()J
     //   820: lstore_2
     //   821: aload 13
     //   823: astore 12
-    //   825: invokestatic 118	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
+    //   825: invokestatic 122	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()J
     //   828: lstore 4
     //   830: aload 13
     //   832: astore 12
-    //   834: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   834: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   837: ifeq +300 -> 1137
     //   840: aload 13
     //   842: astore 12
-    //   844: new 125	java/lang/StringBuilder
+    //   844: new 129	java/lang/StringBuilder
     //   847: dup
-    //   848: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   848: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   851: astore 14
     //   853: aload 13
     //   855: astore 12
     //   857: aload 14
-    //   859: ldc_w 333
-    //   862: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   859: ldc_w 337
+    //   862: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   865: pop
     //   866: aload 13
     //   868: astore 12
     //   870: aload 14
     //   872: lload_2
-    //   873: ldc2_w 133
+    //   873: ldc2_w 137
     //   876: ldiv
-    //   877: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   877: invokevirtual 141	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   880: pop
     //   881: aload 13
     //   883: astore 12
     //   885: aload 14
-    //   887: ldc 139
-    //   889: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   887: ldc 143
+    //   889: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   892: pop
     //   893: aload 13
     //   895: astore 12
     //   897: aload 14
     //   899: lload 4
-    //   901: ldc2_w 133
+    //   901: ldc2_w 137
     //   904: ldiv
-    //   905: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   905: invokevirtual 141	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   908: pop
     //   909: aload 13
     //   911: astore 12
     //   913: aload 14
-    //   915: ldc 141
-    //   917: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   915: ldc 145
+    //   917: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   920: pop
     //   921: aload 13
     //   923: astore 12
     //   925: aload 14
-    //   927: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   927: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   930: astore 14
     //   932: aload 13
     //   934: iconst_2
     //   935: aload 14
-    //   937: invokestatic 149	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   937: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   940: goto +3 -> 943
     //   943: lload 4
-    //   945: invokestatic 154	com/tencent/qqperf/MagnifierSDK:a	()Lcom/tencent/qqperf/MagnifierSDK;
-    //   948: invokevirtual 157	com/tencent/qqperf/MagnifierSDK:a	()Lcom/tencent/qqperf/opt/clearmemory/MemoryConfigs;
-    //   951: getfield 160	com/tencent/qqperf/opt/clearmemory/MemoryConfigs:jdField_a_of_type_Int	I
+    //   945: invokestatic 157	com/tencent/qqperf/MagnifierSDK:b	()Lcom/tencent/qqperf/MagnifierSDK;
+    //   948: invokevirtual 160	com/tencent/qqperf/MagnifierSDK:j	()Lcom/tencent/qqperf/opt/clearmemory/MemoryConfigs;
+    //   951: getfield 163	com/tencent/qqperf/opt/clearmemory/MemoryConfigs:d	I
     //   954: i2l
     //   955: lmul
-    //   956: ldc2_w 161
+    //   956: ldc2_w 164
     //   959: ldiv
     //   960: lstore 4
     //   962: lload_2
@@ -527,36 +527,36 @@ class MemoryManager$AlertMemoryRunner
     //   966: iflt +9 -> 975
     //   969: aload_0
     //   970: aconst_null
-    //   971: putfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   971: putfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   974: return
-    //   975: new 335	android/content/Intent
+    //   975: new 339	android/content/Intent
     //   978: dup
     //   979: aload_0
-    //   980: getfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   980: getfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   983: aload_0
-    //   984: getfield 22	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_JavaLangClass	Ljava/lang/Class;
-    //   987: invokespecial 338	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   984: getfield 24	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:a	Ljava/lang/Class;
+    //   987: invokespecial 342	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   990: astore 12
     //   992: aload 12
-    //   994: ldc_w 340
+    //   994: ldc_w 344
     //   997: aload_0
-    //   998: getfield 24	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_Int	I
-    //   1001: invokevirtual 344	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   998: getfield 26	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:b	I
+    //   1001: invokevirtual 348	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   1004: pop
     //   1005: aload 12
-    //   1007: ldc_w 345
-    //   1010: invokevirtual 349	android/content/Intent:setFlags	(I)Landroid/content/Intent;
+    //   1007: ldc_w 349
+    //   1010: invokevirtual 353	android/content/Intent:setFlags	(I)Landroid/content/Intent;
     //   1013: pop
     //   1014: aload_0
-    //   1015: getfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   1015: getfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   1018: aload 12
-    //   1020: invokevirtual 353	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   1020: invokevirtual 357	android/content/Context:startActivity	(Landroid/content/Intent;)V
     //   1023: goto -1000 -> 23
     //   1026: aload_0
     //   1027: aconst_null
-    //   1028: putfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   1028: putfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   1031: return
-    //   1032: ldc 110
+    //   1032: ldc 114
     //   1034: astore 13
     //   1036: astore 12
     //   1038: goto +23 -> 1061
@@ -569,33 +569,33 @@ class MemoryManager$AlertMemoryRunner
     //   1054: astore 12
     //   1056: goto +60 -> 1116
     //   1059: astore 12
-    //   1061: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1061: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1064: ifeq -1041 -> 23
-    //   1067: new 125	java/lang/StringBuilder
+    //   1067: new 129	java/lang/StringBuilder
     //   1070: dup
-    //   1071: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   1071: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   1074: astore 14
     //   1076: aload 14
-    //   1078: ldc_w 355
-    //   1081: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1078: ldc_w 359
+    //   1081: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1084: pop
     //   1085: aload 14
     //   1087: aload_0
-    //   1088: getfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:b	I
-    //   1091: invokevirtual 358	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1088: getfield 22	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:d	I
+    //   1091: invokevirtual 362	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1094: pop
     //   1095: aload 13
     //   1097: iconst_2
     //   1098: aload 14
-    //   1100: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1100: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1103: aload 12
-    //   1105: invokestatic 361	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1105: invokestatic 365	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   1108: aload 12
-    //   1110: invokevirtual 364	java/lang/Throwable:printStackTrace	()V
+    //   1110: invokevirtual 368	java/lang/Throwable:printStackTrace	()V
     //   1113: goto -1090 -> 23
     //   1116: aload_0
     //   1117: aconst_null
-    //   1118: putfield 18	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   1118: putfield 20	com/tencent/qqperf/monitor/memory/MemoryManager$AlertMemoryRunner:c	Landroid/content/Context;
     //   1121: goto +6 -> 1127
     //   1124: aload 12
     //   1126: athrow
@@ -760,7 +760,7 @@ class MemoryManager$AlertMemoryRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.MemoryManager.AlertMemoryRunner
  * JD-Core Version:    0.7.0.1
  */

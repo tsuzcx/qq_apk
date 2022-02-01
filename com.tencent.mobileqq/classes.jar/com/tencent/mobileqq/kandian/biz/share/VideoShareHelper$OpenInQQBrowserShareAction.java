@@ -12,10 +12,10 @@ class VideoShareHelper$OpenInQQBrowserShareAction
   {
     if ((paramAbsBaseArticleInfo.qzoneShareUrl != null) && (paramAbsBaseArticleInfo.qzoneShareUrl.contains("kandianshare.html5.qq.com")))
     {
-      VideoShareHelper.a(this.a).a(paramAbsBaseArticleInfo.qzoneShareUrl);
+      VideoShareHelper.j(this.a).a(paramAbsBaseArticleInfo.qzoneShareUrl);
       return;
     }
-    paramAbsBaseArticleInfo = VideoShareHelper.a(this.a);
+    paramAbsBaseArticleInfo = VideoShareHelper.j(this.a);
     paramActionSheetItem = new StringBuilder();
     paramActionSheetItem.append(paramString);
     paramActionSheetItem.append("&sourcefrom=6");
@@ -29,7 +29,7 @@ class VideoShareHelper$OpenInQQBrowserShareAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.VideoShareHelper.OpenInQQBrowserShareAction
  * JD-Core Version:    0.7.0.1
  */

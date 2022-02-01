@@ -13,19 +13,19 @@ class SwiftIphoneTitleBarUI$4
   
   public void a(ValueAnimation<Integer> paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.x) {
+    if (!this.c.b.G) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.d = paramInteger.intValue();
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.d == this.jdField_a_of_type_Int) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.x = false;
+    this.a.getBackground().mutate().setAlpha(paramInteger.intValue());
+    this.c.b.H = paramInteger.intValue();
+    if (this.c.b.H == this.b) {
+      this.c.b.G = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI.4
  * JD-Core Version:    0.7.0.1
  */

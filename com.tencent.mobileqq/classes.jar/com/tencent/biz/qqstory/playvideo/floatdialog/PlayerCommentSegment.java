@@ -35,32 +35,32 @@ public class PlayerCommentSegment
   extends SegmentView
 {
   public static final String KEY = "PlayerCommentSegment";
-  private int jdField_a_of_type_Int;
-  private CommentFloatDialogController jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
-  private PlayerCommentSegment.ClickNickCallback jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$ClickNickCallback = new PlayerCommentSegment.ClickNickCallback(this);
-  private PlayerCommentSegment.CommentTextOnTouchListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$CommentTextOnTouchListener = new PlayerCommentSegment.CommentTextOnTouchListener();
-  private PlayerCommentSegment.OnChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$OnChildViewClickListener = new PlayerCommentSegment.OnChildViewClickListener(this);
-  private StoryPlayerCommentListView.CommentListViewStateChangeListener jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener;
   public DetailFeedItem a;
+  private CommentFloatDialogController b;
+  private StoryPlayerCommentListView.CommentListViewStateChangeListener c;
+  private int d;
+  private PlayerCommentSegment.ClickNickCallback e = new PlayerCommentSegment.ClickNickCallback(this);
+  private PlayerCommentSegment.CommentTextOnTouchListener f = new PlayerCommentSegment.CommentTextOnTouchListener();
+  private PlayerCommentSegment.OnChildViewClickListener g = new PlayerCommentSegment.OnChildViewClickListener(this);
   
   public PlayerCommentSegment(Context paramContext)
   {
     super(paramContext);
   }
   
-  private boolean b()
+  private boolean j()
   {
-    CommentFloatDialogController localCommentFloatDialogController = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController;
-    return (localCommentFloatDialogController == null) || (localCommentFloatDialogController.a());
+    CommentFloatDialogController localCommentFloatDialogController = this.b;
+    return (localCommentFloatDialogController == null) || (localCommentFloatDialogController.e());
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.m)
     {
-      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+      DetailFeedItem localDetailFeedItem = this.a;
       if (localDetailFeedItem != null) {
-        return localDetailFeedItem.a(b()).size();
+        return localDetailFeedItem.a(j()).size();
       }
     }
     return 0;
@@ -68,22 +68,22 @@ public class PlayerCommentSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-    if ((paramViewGroup != null) && (paramInt <= paramViewGroup.a(b()).size()))
+    paramViewGroup = this.a;
+    if ((paramViewGroup != null) && (paramInt <= paramViewGroup.a(j()).size()))
     {
-      CommentEntry localCommentEntry = (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(b()).get(paramInt);
+      CommentEntry localCommentEntry = (CommentEntry)this.a.a(j()).get(paramInt);
       if (localCommentEntry == null)
       {
         SLog.e("Q.qqstory.detail.DetailCommentSegment", "bind view failed. data is null.");
         return paramBaseViewHolder.a();
       }
-      ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131363135);
-      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371862);
-      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131364942);
-      paramViewGroup = (LinearLayout)paramBaseViewHolder.a(2131364936);
-      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131370353);
-      ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131364953);
-      ProgressBar localProgressBar = (ProgressBar)paramBaseViewHolder.a(2131364974);
+      ImageView localImageView2 = (ImageView)paramBaseViewHolder.a(2131428988);
+      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131439303);
+      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131431067);
+      paramViewGroup = (LinearLayout)paramBaseViewHolder.a(2131431059);
+      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131437615);
+      ImageView localImageView1 = (ImageView)paramBaseViewHolder.a(2131431079);
+      ProgressBar localProgressBar = (ProgressBar)paramBaseViewHolder.a(2131431101);
       if (localCommentEntry.type == 1)
       {
         localImageView2.setVisibility(8);
@@ -100,7 +100,7 @@ public class PlayerCommentSegment
         paramViewGroup.append(localCommentEntry.commentId);
         paramViewGroup.append(localCommentEntry.feedId);
         paramViewGroup.append(localCommentEntry.status);
-        paramViewGroup.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$ClickNickCallback.hashCode());
+        paramViewGroup.append(this.e.hashCode());
         paramViewGroup.append("bubble_style");
         paramViewGroup = paramViewGroup.toString();
         Object localObject1 = StoryQQTextCacher.a().a(paramViewGroup);
@@ -110,7 +110,7 @@ public class PlayerCommentSegment
         }
         else
         {
-          localObject1 = SpannableStringUtils.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, localCommentEntry, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$ClickNickCallback);
+          localObject1 = SpannableStringUtils.b(this.l, this.a.a, localCommentEntry, this.e);
           localTextView2.setText((CharSequence)localObject1);
           if (localCommentEntry.isReply())
           {
@@ -125,7 +125,7 @@ public class PlayerCommentSegment
           }
         }
         paramViewGroup = ((UserManager)SuperManager.a(2)).c(localCommentEntry.authorUnionId);
-        Drawable localDrawable = ImageUtil.e();
+        Drawable localDrawable = ImageUtil.j();
         Object localObject2 = "";
         if (paramViewGroup == null) {
           localObject1 = "";
@@ -145,7 +145,7 @@ public class PlayerCommentSegment
           if ((!paramViewGroup.isVipButNoFriend()) && (!paramViewGroup.isNotDovUser()))
           {
             if (!TextUtils.isEmpty(paramViewGroup.qq)) {
-              localImageView2.setImageDrawable(FaceDrawable.getFaceDrawable(PlayModeUtils.a(), 1, paramViewGroup.qq, 3, localDrawable, localDrawable));
+              localImageView2.setImageDrawable(FaceDrawable.getFaceDrawable(PlayModeUtils.b(), 1, paramViewGroup.qq, 3, localDrawable, localDrawable));
             } else if (HttpUtil.isValidUrl(paramViewGroup.headUrl)) {
               UIUtils.b(localImageView2, paramViewGroup.headUrl, 60, 60, localDrawable, "QQStory_player");
             } else {
@@ -188,16 +188,16 @@ public class PlayerCommentSegment
             localProgressBar.setVisibility(8);
           }
         }
-        localTextView2.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$CommentTextOnTouchListener);
+        localTextView2.setOnTouchListener(this.f);
         localTextView2.setSpannableFactory(QQText.SPANNABLE_FACTORY);
         localTextView2.setTextColor(-16777216);
       }
-      if (QQStoryContext.a())
+      if (QQStoryContext.e())
       {
-        localTextView2.setBackgroundResource(2130846688);
-        localTextView1.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166528));
-        localTextView2.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166528));
-        localTextView3.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166526));
+        localTextView2.setBackgroundResource(2130848240);
+        localTextView1.setTextColor(this.l.getResources().getColor(2131167385));
+        localTextView2.setTextColor(this.l.getResources().getColor(2131167385));
+        localTextView3.setBackgroundColor(this.l.getResources().getColor(2131167383));
       }
       return paramBaseViewHolder.a();
     }
@@ -207,46 +207,46 @@ public class PlayerCommentSegment
   
   public CommentEntry a(int paramInt)
   {
-    DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
-    if ((localDetailFeedItem != null) && (paramInt < localDetailFeedItem.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a()).size())) {
-      return (CommentEntry)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController.a()).get(paramInt);
+    DetailFeedItem localDetailFeedItem = this.a;
+    if ((localDetailFeedItem != null) && (paramInt < localDetailFeedItem.a(this.b.e()).size())) {
+      return (CommentEntry)this.a.a(this.b.e()).get(paramInt);
     }
     return null;
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561659, paramViewGroup, false));
-    paramViewGroup.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogPlayerCommentSegment$OnChildViewClickListener);
-    paramViewGroup.a(2131363135).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131371862).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131364943).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131364943).setOnLongClickListener(paramViewGroup);
-    paramViewGroup.a(2131370353).setOnClickListener(paramViewGroup);
-    paramViewGroup.a(2131370353).setOnLongClickListener(paramViewGroup);
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628038, paramViewGroup, false));
+    paramViewGroup.a(this.g);
+    paramViewGroup.a(2131428988).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131439303).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131431068).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131431068).setOnLongClickListener(paramViewGroup);
+    paramViewGroup.a(2131437615).setOnClickListener(paramViewGroup);
+    paramViewGroup.a(2131437615).setOnLongClickListener(paramViewGroup);
     return paramViewGroup;
-  }
-  
-  public String a()
-  {
-    return "PlayerCommentSegment";
   }
   
   public void a(CommentFloatDialogController paramCommentFloatDialogController, StoryPlayerCommentListView.CommentListViewStateChangeListener paramCommentListViewStateChangeListener, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogCommentFloatDialogController = paramCommentFloatDialogController;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView$CommentListViewStateChangeListener = paramCommentListViewStateChangeListener;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramCommentFloatDialogController;
+    this.c = paramCommentListViewStateChangeListener;
+    this.d = paramInt;
   }
   
   public void a(DetailFeedItem paramDetailFeedItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = paramDetailFeedItem;
+    this.a = paramDetailFeedItem;
+  }
+  
+  public String b()
+  {
+    return "PlayerCommentSegment";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentSegment
  * JD-Core Version:    0.7.0.1
  */

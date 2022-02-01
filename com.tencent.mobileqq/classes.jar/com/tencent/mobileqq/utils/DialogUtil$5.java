@@ -13,30 +13,30 @@ final class DialogUtil$5
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365667) {}
+    if (paramView.getId() == 2131431900) {}
     try
     {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 0);
+      if (this.a != null) {
+        this.a.onClick(this.b, 0);
       }
-      if (!this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      if (!this.b.isShowing()) {
         break label96;
       }
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.b.dismiss();
     }
     catch (Exception localException)
     {
       DialogInterface.OnClickListener localOnClickListener;
       break label96;
     }
-    if (paramView.getId() == 2131365673)
+    if (paramView.getId() == 2131431907)
     {
-      localOnClickListener = this.b;
+      localOnClickListener = this.c;
       if (localOnClickListener != null) {
-        localOnClickListener.onClick(this.jdField_a_of_type_AndroidAppDialog, 1);
+        localOnClickListener.onClick(this.b, 1);
       }
-      if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
     }
     label96:
@@ -45,7 +45,7 @@ final class DialogUtil$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.DialogUtil.5
  * JD-Core Version:    0.7.0.1
  */

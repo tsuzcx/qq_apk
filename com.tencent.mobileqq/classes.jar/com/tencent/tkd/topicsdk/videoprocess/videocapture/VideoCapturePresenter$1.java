@@ -21,20 +21,20 @@ public final class VideoCapturePresenter$1
     Intrinsics.checkParameterIsNotNull(paramCaptureTask, "captureTask");
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onCaptureSuccess: position: ");
-    ((StringBuilder)localObject).append(paramCaptureTask.a());
+    ((StringBuilder)localObject).append(paramCaptureTask.c());
     Log.d("VideoCapturePresenter", ((StringBuilder)localObject).toString());
     localObject = VideoCapturePresenter.a(this.a);
     if (localObject != null) {
       ((VideoCaptureContract.IVideoCaptureView)localObject).a(paramBitmap);
     }
     this.a.a(paramBitmap);
-    this.a.a(paramCaptureTask.a());
-    VideoCapturePresenter.a(this.a, paramBitmap, paramCaptureTask.a());
+    this.a.a(paramCaptureTask.c());
+    VideoCapturePresenter.a(this.a, paramBitmap, paramCaptureTask.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter.1
  * JD-Core Version:    0.7.0.1
  */

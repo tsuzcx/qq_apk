@@ -16,67 +16,34 @@ import java.util.List;
 public class PanelManager
   implements XPanelContainer.PanelCallback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArrayCompat<PanelProvider<? extends View>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
-  private XPanelContainer jdField_a_of_type_ComTencentWidgetXPanelContainer;
-  private List<PanelListener> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Context a;
+  private XPanelContainer b;
+  private SparseArrayCompat<PanelProvider<? extends View>> c = new SparseArrayCompat();
+  private List<PanelListener> d = new ArrayList();
   
   public PanelManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a()
-  {
-    XPanelContainer localXPanelContainer = this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
-    if (localXPanelContainer != null) {
-      return localXPanelContainer.a();
-    }
-    return 0;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
-  }
-  
-  public View a(int paramInt)
-  {
-    PanelProvider localPanelProvider = (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-    if (localPanelProvider != null) {
-      return localPanelProvider.createPanel(this.jdField_a_of_type_AndroidContentContext);
-    }
-    return null;
-  }
-  
-  public <T extends PanelProvider<? extends View>> T a(int paramInt)
-  {
-    return (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
-  }
-  
-  public XPanelContainer a()
-  {
-    return this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+    this.a = paramContext;
   }
   
   public void a()
   {
-    XPanelContainer localXPanelContainer = this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+    XPanelContainer localXPanelContainer = this.b;
     if (localXPanelContainer != null) {
-      localXPanelContainer.d();
+      localXPanelContainer.f();
     }
   }
   
   public void a(int paramInt)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    while (i < this.c.size())
     {
-      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      localObject = this.c;
       ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).onPanelIconClickBeforeCreate(paramInt);
       i += 1;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((PanelListener)((Iterator)localObject).next()).onPanelIconClickBeforeCreate(paramInt);
     }
@@ -85,13 +52,13 @@ public class PanelManager
   public void a(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    while (i < this.c.size())
     {
-      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      localObject = this.c;
       ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).onPanelChanged(paramInt1, paramInt2);
       i += 1;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((PanelListener)((Iterator)localObject).next()).onPanelChanged(paramInt1, paramInt2);
     }
@@ -99,32 +66,32 @@ public class PanelManager
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(paramInt, paramBoolean);
+    this.b.a(paramInt, paramBoolean);
   }
   
   public void a(PanelListener paramPanelListener)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramPanelListener);
+    this.d.add(paramPanelListener);
   }
   
   public void a(PanelProvider<? extends View> paramPanelProvider)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.put(paramPanelProvider.getPanelId(), paramPanelProvider);
+    this.c.put(paramPanelProvider.getPanelId(), paramPanelProvider);
   }
   
   public void a(IKeyboardHiddenCallback paramIKeyboardHiddenCallback)
   {
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(paramIKeyboardHiddenCallback);
+    this.b.a(paramIKeyboardHiddenCallback);
   }
   
   public void a(XPanelContainer paramXPanelContainer)
   {
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = paramXPanelContainer;
+    this.b = paramXPanelContainer;
   }
   
   public void a(boolean paramBoolean)
   {
-    XPanelContainer localXPanelContainer = this.jdField_a_of_type_ComTencentWidgetXPanelContainer;
+    XPanelContainer localXPanelContainer = this.b;
     if (localXPanelContainer != null) {
       localXPanelContainer.a(paramBoolean);
     }
@@ -132,97 +99,130 @@ public class PanelManager
   
   public void a(boolean paramBoolean, Context paramContext, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 1)
+    if (this.b.getCurrentPanel() == 1)
     {
       paramContext = (InputMethodManager)paramContext.getSystemService("input_method");
       if (paramContext.isActive(paramView)) {
         if (paramBoolean) {
-          this.jdField_a_of_type_ComTencentWidgetXPanelContainer.b();
+          this.b.c();
         } else {
-          this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+          this.b.b();
         }
       }
-      if (((this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() instanceof BaseVoicetoTextView)) && (paramContext.isActive()))
+      if (((this.b.getCurrentPanelView() instanceof BaseVoicetoTextView)) && (paramContext.isActive()))
       {
         if (paramBoolean)
         {
-          this.jdField_a_of_type_ComTencentWidgetXPanelContainer.b();
+          this.b.c();
           return;
         }
-        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+        this.b.b();
       }
       return;
     }
-    paramContext = this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+    paramContext = this.b.getCurrentPanelView();
     if ((paramContext != null) && (paramContext.getVisibility() == 0))
     {
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("hideAllPanels  curPanel = ");
-        paramContext.append(this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a());
+        paramContext.append(this.b.getCurrentPanel());
         QLog.d("PanelManager", 2, paramContext.toString());
       }
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentWidgetXPanelContainer.b();
+        this.b.c();
         return;
       }
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
+      this.b.b();
     }
   }
   
-  public boolean a(int paramInt)
+  public int b()
   {
-    PanelProvider localPanelProvider = (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
+    XPanelContainer localXPanelContainer = this.b;
+    if (localXPanelContainer != null) {
+      return localXPanelContainer.getCurrentPanel();
+    }
+    return 0;
+  }
+  
+  public View b(int paramInt)
+  {
+    PanelProvider localPanelProvider = (PanelProvider)this.c.get(paramInt);
+    if (localPanelProvider != null) {
+      return localPanelProvider.createPanel(this.a);
+    }
+    return null;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    while (i < this.c.size())
+    {
+      localObject = this.c;
+      ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).postOnPanelChanged(paramInt1, paramInt2);
+      i += 1;
+    }
+    Object localObject = this.d.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((PanelListener)((Iterator)localObject).next()).postOnPanelChanged(paramInt1, paramInt2);
+    }
+  }
+  
+  public View c()
+  {
+    return this.b.getCurrentPanelView();
+  }
+  
+  public boolean c(int paramInt)
+  {
+    PanelProvider localPanelProvider = (PanelProvider)this.c.get(paramInt);
     if (localPanelProvider != null) {
       return localPanelProvider.isNeedRecreatePanel();
     }
     return false;
   }
   
-  public <T extends View> T b(int paramInt)
+  public <T extends View> T d(int paramInt)
   {
-    PanelProvider localPanelProvider = (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
+    PanelProvider localPanelProvider = (PanelProvider)this.c.get(paramInt);
     if (localPanelProvider != null) {
       return localPanelProvider.getPanel();
     }
     return null;
   }
   
-  public void b(int paramInt)
+  public XPanelContainer d()
   {
-    PanelProvider localPanelProvider = (PanelProvider)this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.get(paramInt);
+    return this.b;
+  }
+  
+  public void e(int paramInt)
+  {
+    PanelProvider localPanelProvider = (PanelProvider)this.c.get(paramInt);
     if (localPanelProvider != null) {
-      localPanelProvider.onPanelIconClick(this.jdField_a_of_type_ComTencentWidgetXPanelContainer);
+      localPanelProvider.onPanelIconClick(this.b);
     }
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public <T extends PanelProvider<? extends View>> T f(int paramInt)
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
-    {
-      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
-      ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).postOnPanelChanged(paramInt1, paramInt2);
-      i += 1;
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((PanelListener)((Iterator)localObject).next()).postOnPanelChanged(paramInt1, paramInt2);
-    }
+    return (PanelProvider)this.c.get(paramInt);
   }
   
-  public void s()
+  public void v()
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size())
+    while (i < this.c.size())
     {
-      localObject = this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat;
+      localObject = this.c;
       ((PanelProvider)((SparseArrayCompat)localObject).get(((SparseArrayCompat)localObject).keyAt(i))).onHideAllPanel();
       i += 1;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((PanelListener)((Iterator)localObject).next()).onHideAllPanel();
     }
@@ -230,7 +230,7 @@ public class PanelManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PanelManager
  * JD-Core Version:    0.7.0.1
  */

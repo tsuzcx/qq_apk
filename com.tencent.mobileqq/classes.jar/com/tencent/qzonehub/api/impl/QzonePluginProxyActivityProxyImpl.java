@@ -75,8 +75,8 @@ public class QzonePluginProxyActivityProxyImpl
       i = LocalMultiProcConfig.getInt("qzone_app_start_fail_count", 0) + 1;
       if (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_startup_failed_toast_show_limit", 1) < i)
       {
-        localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_startup_fail_msg", HardCodeUtil.a(2131712141));
-        QQToast.a(BaseApplicationImpl.sApplication, 4, (CharSequence)localObject1, 1).a();
+        localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_startup_fail_msg", HardCodeUtil.a(2131909757));
+        QQToast.makeText(BaseApplicationImpl.sApplication, 4, (CharSequence)localObject1, 1).show();
         LocalMultiProcConfig.putInt("qzone_app_start_fail_count", 0);
         QLog.w("QzonePluginProxyActivityProxyImpl", 1, "qzone进程可能启动失败弹出toast提示用户卸载重新安装");
         bool1 = true;
@@ -166,7 +166,7 @@ public class QzonePluginProxyActivityProxyImpl
       paramInt = LocalMultiProcConfig.getInt("qzapp_vercode", 84);
       if (!LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false))
       {
-        paramContext = DialogUtil.a(paramContext, 230, 2080636952, HardCodeUtil.a(2131712128), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", HardCodeUtil.a(2131712140), HardCodeUtil.a(2131712124), new QzonePluginProxyActivityProxyImpl.1(paramContext, paramInt, paramString, paramIntent), new QzonePluginProxyActivityProxyImpl.2());
+        paramContext = DialogUtil.a(paramContext, 230, 2080636952, HardCodeUtil.a(2131909746), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", HardCodeUtil.a(2131898212), HardCodeUtil.a(2131899883), new QzonePluginProxyActivityProxyImpl.1(paramContext, paramInt, paramString, paramIntent), new QzonePluginProxyActivityProxyImpl.2());
         ((CheckBox)paramContext.findViewById(2080571438)).setOnCheckedChangeListener(new QzonePluginProxyActivityProxyImpl.3());
         paramContext.show();
         return;
@@ -257,7 +257,7 @@ public class QzonePluginProxyActivityProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzonePluginProxyActivityProxyImpl
  * JD-Core Version:    0.7.0.1
  */

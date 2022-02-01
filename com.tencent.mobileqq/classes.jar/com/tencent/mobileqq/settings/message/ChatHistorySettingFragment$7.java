@@ -10,13 +10,13 @@ class ChatHistorySettingFragment$7
   protected void onSetMessageRaoam(boolean paramBoolean)
   {
     if (paramBoolean) {
-      ChatHistorySettingFragment.a(this.a);
+      ChatHistorySettingFragment.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.ChatHistorySettingFragment.7
  * JD-Core Version:    0.7.0.1
  */

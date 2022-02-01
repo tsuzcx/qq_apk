@@ -15,31 +15,31 @@ class BaseActivity2$2
   public void run()
   {
     Object localObject1 = this.this$0;
-    Object localObject2 = ((BaseActivity2)localObject1).getString(2131694975);
+    Object localObject2 = ((BaseActivity2)localObject1).getString(2131892702);
     int i = 0;
     boolean bool = SettingCloneUtil.readValue((Context)localObject1, null, (String)localObject2, "qqsetting_screenshot_key", false);
-    if ((bool) && (BaseActivity2.a() == null))
+    if ((bool) && (BaseActivity2.q() == null))
     {
       localObject1 = new BaseActivity2.MyShakeListener(null);
       localObject2 = (SensorManager)this.this$0.getSystemService("sensor");
       Sensor localSensor = ((SensorManager)localObject2).getDefaultSensor(1);
-      if (BackgroundCpuMonitor.a().a()) {
+      if (BackgroundCpuMonitor.a().b()) {
         i = 2;
       }
       ((SensorManager)localObject2).registerListener((SensorEventListener)localObject1, localSensor, i);
       BaseActivity2.a((ShakeListener)localObject1);
       return;
     }
-    if ((!bool) && (BaseActivity2.a() != null))
+    if ((!bool) && (BaseActivity2.q() != null))
     {
-      ((SensorManager)this.this$0.getSystemService("sensor")).unregisterListener(BaseActivity2.a());
+      ((SensorManager)this.this$0.getSystemService("sensor")).unregisterListener(BaseActivity2.q());
       BaseActivity2.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BaseActivity2.2
  * JD-Core Version:    0.7.0.1
  */

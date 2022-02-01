@@ -11,22 +11,16 @@ import java.util.List;
 public abstract class DefaultVideoPreDownloadController<T>
   implements VideoPreDownloadMgr.PreDownloadController
 {
-  protected abstract VideoPlayerWrapper a();
-  
   protected abstract VideoPreDownloadMgr.VideoPreDownloadParam a(T paramT);
-  
-  protected abstract String a();
-  
-  protected abstract List<T> a();
   
   public List<VideoPreDownloadMgr.VideoPreDownloadParam> a(int paramInt, boolean paramBoolean)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramInt >= 0)
     {
-      List localList = a();
+      List localList = d();
       int i = paramInt;
-      if (b()) {
+      if (e()) {
         i = paramInt - 1;
       }
       a(i, paramBoolean, localList, localArrayList);
@@ -44,7 +38,7 @@ public abstract class DefaultVideoPreDownloadController<T>
     int k = 0;
     if (j < m)
     {
-      m = Math.min(paramInt + VideoPreloadStrategyConoller.a().a(a(), paramInt), paramList.size() - 1);
+      m = Math.min(paramInt + VideoPreloadStrategyConoller.a().a(c(), paramInt), paramList.size() - 1);
       paramInt = k;
       for (;;)
       {
@@ -70,8 +64,10 @@ public abstract class DefaultVideoPreDownloadController<T>
   
   public boolean a()
   {
-    return VideoPreloadStrategyConoller.a().a(a());
+    return VideoPreloadStrategyConoller.a().a(b());
   }
+  
+  protected abstract VideoPlayerWrapper b();
   
   protected void b(int paramInt, boolean paramBoolean, List<T> paramList, List<VideoPreDownloadMgr.VideoPreDownloadParam> paramList1)
   {
@@ -85,7 +81,7 @@ public abstract class DefaultVideoPreDownloadController<T>
       i = m;
       if (j < paramList.size())
       {
-        m = Math.max(paramInt - VideoPreloadStrategyConoller.a().a(), 0);
+        m = Math.max(paramInt - VideoPreloadStrategyConoller.a().b(), 0);
         paramInt = k;
         for (;;)
         {
@@ -110,14 +106,18 @@ public abstract class DefaultVideoPreDownloadController<T>
     }
   }
   
-  public boolean b()
+  protected abstract String c();
+  
+  protected abstract List<T> d();
+  
+  public boolean e()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.DefaultVideoPreDownloadController
  * JD-Core Version:    0.7.0.1
  */

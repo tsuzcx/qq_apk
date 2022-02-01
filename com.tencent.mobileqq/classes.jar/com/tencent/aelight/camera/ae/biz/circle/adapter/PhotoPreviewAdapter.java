@@ -23,49 +23,47 @@ import mqq.os.MqqHandler;
 public class PhotoPreviewAdapter
   extends RecyclerView.Adapter<PhotoPreviewAdapter.PhotoPreviewVH>
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  public ColorDrawable a;
-  private AECirclePhotoListLogic jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic;
-  private URLDrawableDownListener jdField_a_of_type_ComTencentImageURLDrawableDownListener;
-  public ArrayList<LocalMediaInfo> a;
+  public ArrayList<LocalMediaInfo> a = new ArrayList();
+  public ColorDrawable b = new ColorDrawable(570425344);
+  private final Context c;
+  private AECirclePhotoListLogic d;
+  private URLDrawableDownListener e;
   
   public PhotoPreviewAdapter(Context paramContext, AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic = paramAECirclePhotoListLogic;
+    this.c = paramContext;
+    this.d = paramAECirclePhotoListLogic;
   }
   
   private View a()
   {
-    AECircleVideoPreviewItemView localAECircleVideoPreviewItemView = new AECircleVideoPreviewItemView(this.jdField_a_of_type_AndroidContentContext);
+    AECircleVideoPreviewItemView localAECircleVideoPreviewItemView = new AECircleVideoPreviewItemView(this.c);
     localAECircleVideoPreviewItemView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     return localAECircleVideoPreviewItemView;
   }
   
-  private URLDrawable.URLDrawableOptions a()
+  private View b()
+  {
+    View localView = LayoutInflater.from(this.c).inflate(2064056336, null);
+    localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    return localView;
+  }
+  
+  private URLDrawable.URLDrawableOptions c()
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+    ColorDrawable localColorDrawable = this.b;
     localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
     localURLDrawableOptions.mFailedDrawable = localColorDrawable;
     return localURLDrawableOptions;
   }
   
-  private URLDrawableDownListener a()
+  private URLDrawableDownListener d()
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawableDownListener == null) {
-      this.jdField_a_of_type_ComTencentImageURLDrawableDownListener = new PhotoPreviewAdapter.1(this);
+    if (this.e == null) {
+      this.e = new PhotoPreviewAdapter.1(this);
     }
-    return this.jdField_a_of_type_ComTencentImageURLDrawableDownListener;
-  }
-  
-  private View b()
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2064318476, null);
-    localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    return localView;
+    return this.e;
   }
   
   public PhotoPreviewAdapter.PhotoPreviewVH a(ViewGroup paramViewGroup, int paramInt)
@@ -82,9 +80,9 @@ public class PhotoPreviewAdapter
   
   public void a(int paramInt, PhotoPreviewAdapter.PhotoPreviewVH paramPhotoPreviewVH)
   {
-    LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramPhotoPreviewVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetMultiTouchImageView.setURLDrawableDownListener(a());
-    paramPhotoPreviewVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetMultiTouchImageView.setImageDrawable(URLDrawable.getFileDrawable(localLocalMediaInfo.path, a()));
+    LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.a.get(paramInt);
+    paramPhotoPreviewVH.a.setURLDrawableDownListener(d());
+    paramPhotoPreviewVH.a.setImageDrawable(URLDrawable.getFileDrawable(localLocalMediaInfo.path, c()));
   }
   
   public void a(PhotoPreviewAdapter.PhotoPreviewVH paramPhotoPreviewVH, int paramInt)
@@ -103,36 +101,36 @@ public class PhotoPreviewAdapter
   
   public void a(List<LocalMediaInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     if (paramList != null)
     {
       if (paramList.size() == 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.a.addAll(paramList);
       ThreadManager.getUIHandler().post(new PhotoPreviewAdapter.2(this));
     }
   }
   
   public void b(int paramInt, PhotoPreviewAdapter.PhotoPreviewVH paramPhotoPreviewVH)
   {
-    LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramPhotoPreviewVH.jdField_a_of_type_ComTencentAelightCameraAeBizCircleWidgetAECircleVideoPreviewItemView.a(localLocalMediaInfo);
+    LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.a.get(paramInt);
+    paramPhotoPreviewVH.b.a(localLocalMediaInfo);
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public int getItemViewType(int paramInt)
   {
-    return QAlbumUtil.getMediaType((LocalMediaInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+    return QAlbumUtil.getMediaType((LocalMediaInfo)this.a.get(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.adapter.PhotoPreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

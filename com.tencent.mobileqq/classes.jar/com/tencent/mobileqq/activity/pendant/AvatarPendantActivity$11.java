@@ -22,7 +22,7 @@ class AvatarPendantActivity$11
   
   public void run()
   {
-    boolean bool = FaceUtil.a();
+    boolean bool = FaceUtil.b();
     Object localObject1 = null;
     Object localObject4 = null;
     Object localObject3;
@@ -30,12 +30,12 @@ class AvatarPendantActivity$11
     if (bool) {
       try
       {
-        localObject1 = FaceUtil.b();
+        localObject1 = FaceUtil.c();
         Object localObject5 = new File((String)localObject1);
         localObject3 = new BitmapFactory.Options();
         localObject5 = new BufferedInputStream(new FileInputStream((File)localObject5));
-        if (this.this$0.b.get()) {
-          ((BitmapFactory.Options)localObject3).inSampleSize = ((int)ImageUtil.a((InputStream)localObject5, this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.getHeight()));
+        if (this.this$0.ai.get()) {
+          ((BitmapFactory.Options)localObject3).inSampleSize = ((int)ImageUtil.a((InputStream)localObject5, this.this$0.D.getWidth(), this.this$0.D.getHeight()));
         } else {
           ((BitmapFactory.Options)localObject3).inSampleSize = ((int)ImageUtil.a((InputStream)localObject5, 120, 120));
         }
@@ -70,7 +70,7 @@ class AvatarPendantActivity$11
     else
     {
       localObject3 = this.this$0;
-      AvatarPendantActivity.a((AvatarPendantActivity)localObject3, ((AvatarPendantActivity)localObject3).jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.uin);
+      AvatarPendantActivity.a((AvatarPendantActivity)localObject3, ((AvatarPendantActivity)localObject3).L.uin);
     }
     if (QLog.isColorLevel())
     {
@@ -88,7 +88,7 @@ class AvatarPendantActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.11
  * JD-Core Version:    0.7.0.1
  */

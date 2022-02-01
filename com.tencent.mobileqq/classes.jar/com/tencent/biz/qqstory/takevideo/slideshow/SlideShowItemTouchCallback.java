@@ -21,7 +21,7 @@ public class SlideShowItemTouchCallback
     super.clearView(paramRecyclerView, paramViewHolder);
     if ((paramViewHolder instanceof SlideShowAdapter.SlideShowViewHolder))
     {
-      ((SlideShowAdapter.SlideShowViewHolder)paramViewHolder).a = false;
+      ((SlideShowAdapter.SlideShowViewHolder)paramViewHolder).g = false;
       if ((paramRecyclerView.getScrollState() == 0) && (!paramRecyclerView.isComputingLayout())) {
         paramRecyclerView.getAdapter().notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));
       }
@@ -65,7 +65,7 @@ public class SlideShowItemTouchCallback
     if ((paramInt == 2) && ((paramViewHolder instanceof SlideShowAdapter.SlideShowViewHolder)))
     {
       paramViewHolder = (SlideShowAdapter.SlideShowViewHolder)paramViewHolder;
-      paramViewHolder.a = true;
+      paramViewHolder.g = true;
       ItemTouchHelperAction localItemTouchHelperAction = this.a;
       if ((localItemTouchHelperAction instanceof SlideShowAdapter)) {
         ((SlideShowAdapter)localItemTouchHelperAction).notifyItemChanged(paramViewHolder.getAdapterPosition(), Integer.valueOf(0));

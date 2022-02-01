@@ -2,10 +2,11 @@ package com.tencent.mobileqq.dinifly.model.layer;
 
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.annotation.FloatRange;
-import android.support.annotation.Nullable;
-import android.util.LongSparseArray;
+import androidx.annotation.FloatRange;
+import androidx.annotation.Nullable;
+import androidx.collection.LongSparseArray;
 import com.tencent.mobileqq.dinifly.L;
 import com.tencent.mobileqq.dinifly.LayerInfo;
 import com.tencent.mobileqq.dinifly.LottieComposition;
@@ -15,6 +16,7 @@ import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.ValueCallbackKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
+import com.tencent.mobileqq.dinifly.utils.Utils;
 import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class CompositionLayer
   @Nullable
   private Boolean hasMatte;
   private BaseLayer layer;
+  private Paint layerPaint = new Paint();
   private final List<BaseLayer> layers = new ArrayList();
   private final RectF newClipRect = new RectF();
   private final RectF rect = new RectF();
@@ -117,15 +120,20 @@ public class CompositionLayer
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
     super.addValueCallback(paramT, paramLottieValueCallback);
-    if (paramT == LottieProperty.TIME_REMAP)
-    {
+    if (paramT == LottieProperty.TIME_REMAP) {
       if (paramLottieValueCallback == null)
       {
-        this.timeRemapping = null;
-        return;
+        paramT = this.timeRemapping;
+        if (paramT != null) {
+          paramT.setValueCallback(null);
+        }
       }
-      this.timeRemapping = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-      addAnimation(this.timeRemapping);
+      else
+      {
+        this.timeRemapping = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+        this.timeRemapping.addUpdateListener(this);
+        addAnimation(this.timeRemapping);
+      }
     }
   }
   
@@ -150,9 +158,25 @@ public class CompositionLayer
   void drawLayer(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
   {
     L.beginSection("CompositionLayer#draw");
-    paramCanvas.save();
     this.newClipRect.set(0.0F, 0.0F, this.layerModel.getPreCompWidth(), this.layerModel.getPreCompHeight());
     paramMatrix.mapRect(this.newClipRect);
+    if ((this.lottieDrawable.isApplyingOpacityToLayersEnabled()) && (this.layers.size() > 1) && (paramInt != 255)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      this.layerPaint.setAlpha(paramInt);
+      Utils.saveLayerCompat(paramCanvas, this.newClipRect, this.layerPaint);
+    }
+    else
+    {
+      paramCanvas.save();
+    }
+    if (i != 0) {
+      paramInt = 255;
+    }
     int i = this.layers.size() - 1;
     while (i >= 0)
     {
@@ -251,23 +275,37 @@ public class CompositionLayer
     }
   }
   
+  public void setOutlineMasksAndMattes(boolean paramBoolean)
+  {
+    super.setOutlineMasksAndMattes(paramBoolean);
+    Iterator localIterator = this.layers.iterator();
+    while (localIterator.hasNext()) {
+      ((BaseLayer)localIterator.next()).setOutlineMasksAndMattes(paramBoolean);
+    }
+  }
+  
   public void setProgress(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
     super.setProgress(paramFloat);
+    float f = paramFloat;
     if (this.timeRemapping != null)
     {
-      paramFloat = (float)this.lottieDrawable.getComposition().getDuration();
-      paramFloat = (float)(((Float)this.timeRemapping.getValue()).floatValue() * 1000.0F) / paramFloat;
+      paramFloat = this.lottieDrawable.getComposition().getDurationFrames();
+      f = this.layerModel.getComposition().getStartFrame();
+      f = (((Float)this.timeRemapping.getValue()).floatValue() * this.layerModel.getComposition().getFrameRate() - f) / (paramFloat + 0.01F);
     }
-    float f = paramFloat;
+    paramFloat = f;
+    if (this.timeRemapping == null) {
+      paramFloat = f - this.layerModel.getStartProgress();
+    }
+    f = paramFloat;
     if (this.layerModel.getTimeStretch() != 0.0F) {
       f = paramFloat / this.layerModel.getTimeStretch();
     }
-    paramFloat = this.layerModel.getStartProgress();
     int i = this.layers.size() - 1;
     while (i >= 0)
     {
-      ((BaseLayer)this.layers.get(i)).setProgress(f - paramFloat);
+      ((BaseLayer)this.layers.get(i)).setProgress(f);
       i -= 1;
     }
   }
@@ -285,7 +323,7 @@ public class CompositionLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.layer.CompositionLayer
  * JD-Core Version:    0.7.0.1
  */

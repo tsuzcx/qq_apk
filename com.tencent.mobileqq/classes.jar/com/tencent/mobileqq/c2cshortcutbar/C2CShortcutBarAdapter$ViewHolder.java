@@ -6,15 +6,15 @@ import com.tencent.image.URLImageView;
 
 class C2CShortcutBarAdapter$ViewHolder
 {
-  public View a;
-  public TextView a;
   public URLImageView a;
   public TextView b;
   public TextView c;
+  public View d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

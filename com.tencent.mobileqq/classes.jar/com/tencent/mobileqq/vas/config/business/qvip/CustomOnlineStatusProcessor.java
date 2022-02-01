@@ -24,9 +24,9 @@ public class CustomOnlineStatusProcessor
     boolean bool = false;
     try
     {
-      if (paramArrayOfQConfItem[0].a != null)
+      if (paramArrayOfQConfItem[0].b != null)
       {
-        if (new JSONObject(paramArrayOfQConfItem[0].a).optInt("show_custom_online_state", 1) == 1) {
+        if (new JSONObject(paramArrayOfQConfItem[0].b).optInt("show_custom_online_state", 1) == 1) {
           bool = true;
         }
         localCustomOnlineStatusConfig.a = bool;
@@ -68,7 +68,7 @@ public class CustomOnlineStatusProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.CustomOnlineStatusProcessor
  * JD-Core Version:    0.7.0.1
  */

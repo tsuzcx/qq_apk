@@ -28,22 +28,22 @@ class JoinTroopPreVerificationFragment$1
     {
       paramString2 = TroopInfoUIUtil.a(String.valueOf(paramString2), 32);
       paramString2.putString("authSig", paramString1);
-      paramString2.putString("appid", this.a.c);
+      paramString2.putString("appid", this.a.h);
       paramString2.putBoolean("fromThirdAppByOpenSDK", true);
       paramString2.putInt("action", 3);
-      paramString2.putString("pkg_name", this.a.d);
-      paramString2.putString("app_name", this.a.jdField_a_of_type_JavaLangString);
-      TroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString2, 2);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+      paramString2.putString("pkg_name", this.a.i);
+      paramString2.putString("app_name", this.a.f);
+      TroopUtils.a(this.a.b, paramString2, 2);
+      this.a.b.finish();
       return;
     }
-    this.a.a(HardCodeUtil.a(2131705955));
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    this.a.a(HardCodeUtil.a(2131903835));
+    this.a.b.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.JoinTroopPreVerificationFragment.1
  * JD-Core Version:    0.7.0.1
  */

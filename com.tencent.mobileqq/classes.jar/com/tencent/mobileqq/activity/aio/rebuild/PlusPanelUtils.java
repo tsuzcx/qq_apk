@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.os.Process;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
@@ -54,6 +55,8 @@ import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCAccountNames;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
 import com.tencent.mobileqq.filemanager.api.IQQFileSelector;
+import com.tencent.mobileqq.guild.api.ILaunchGuildChatPieApi;
+import com.tencent.mobileqq.guild.api.LaunchGuildChatPieParam;
 import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
 import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.pic.IPresendPicMgr;
@@ -111,12 +114,12 @@ public class PlusPanelUtils
   public static int a(BaseSessionInfo paramBaseSessionInfo)
   {
     int i;
-    if (AlbumUtil.a(paramBaseSessionInfo.jdField_a_of_type_Int)) {
+    if (AlbumUtil.a(paramBaseSessionInfo.a)) {
       i = 5;
     } else {
       i = 6;
     }
-    if (AnonymousChatHelper.a().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString)) {
+    if (AnonymousChatHelper.a().a(paramBaseSessionInfo.b)) {
       i = 1;
     }
     return i;
@@ -128,7 +131,7 @@ public class PlusPanelUtils
     if ((paramIntent == null) || (!paramIntent.hasExtra("showFlashPic")))
     {
       localObject = (HotChatManager)paramQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-      paramActivityURIRequest.extra().putBoolean("showFlashPic", ((IPicFlash)QRoute.api(IPicFlash.class)).showFlashPicOption(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.b));
+      paramActivityURIRequest.extra().putBoolean("showFlashPic", ((IPicFlash)QRoute.api(IPicFlash.class)).showFlashPicOption(paramSessionInfo.a, paramSessionInfo.c));
     }
     paramActivityURIRequest.extra().putInt("PhotoConst.SEND_BUSINESS_TYPE", 1052);
     boolean bool3 = paramActivity instanceof SplashActivity;
@@ -144,7 +147,7 @@ public class PlusPanelUtils
       }
       paramActivityURIRequest.extra().putString("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
       paramActivityURIRequest.extra().putString("key_activity_code", ChatActivityUtils.a(paramActivity));
-      if (paramSessionInfo.jdField_a_of_type_Int == 9501)
+      if (paramSessionInfo.a == 9501)
       {
         paramActivityURIRequest.extra().putString("PhotoConst.DEST_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
         paramActivityURIRequest.extra().putInt(AlbumConstants.h, 80);
@@ -153,21 +156,22 @@ public class PlusPanelUtils
         paramActivityURIRequest.extra().putBoolean("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
         paramActivityURIRequest.extra().putBoolean("PhotoConst.SHOW_MAGIC_USE_PASTER", false);
         localObject = (SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-        if ((localObject != null) && (((SmartDeviceProxyMgr)localObject).a()))
+        if ((localObject != null) && (((SmartDeviceProxyMgr)localObject).c()))
         {
           long l1 = 0L;
           try
           {
-            long l2 = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+            long l2 = Long.parseLong(paramSessionInfo.b);
             l1 = l2;
           }
           catch (Exception localException)
           {
             localException.printStackTrace();
           }
-          if (((SmartDeviceProxyMgr)localObject).a(l1, 1)) {
-            paramActivityURIRequest.extra().putBoolean("PhotoConst.IS_SEND_FILESIZE_LIMIT", true);
+          if (!((SmartDeviceProxyMgr)localObject).a(l1, 1)) {
+            break label390;
           }
+          paramActivityURIRequest.extra().putBoolean("PhotoConst.IS_SEND_FILESIZE_LIMIT", true);
         }
       }
       else
@@ -175,14 +179,15 @@ public class PlusPanelUtils
         paramActivityURIRequest.extra().putString("PhotoConst.DEST_ACTIVITY_CLASS_NAME", SendPhotoActivity.class.getName());
         paramActivityURIRequest.extra().putString("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
         paramActivityURIRequest.extra().putBoolean("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
-        paramActivityURIRequest.extra().putInt("key_confess_topicid", paramSessionInfo.jdField_e_of_type_Int);
+        paramActivityURIRequest.extra().putInt("key_confess_topicid", paramSessionInfo.v);
       }
+      label390:
       paramActivityURIRequest.extra().putString("PhotoConst.DEST_VIDEO_ACTIVITY_CLASS_NAME", SendVideoActivity.class.getName());
       paramActivityURIRequest.extra().putString("PhotoConst.DEST_VIDEO_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     }
     paramActivityURIRequest.extra().putBoolean("PhotoConst.HANDLE_DEST_RESULT", true);
     int i = 20;
-    int j = -1;
+    int j;
     boolean bool1;
     boolean bool2;
     if (paramIntent != null)
@@ -215,12 +220,22 @@ public class PlusPanelUtils
     {
       bool1 = false;
       bool2 = false;
+      j = -1;
     }
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) && (((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).m(paramSessionInfo.jdField_a_of_type_JavaLangString))) {
+    if ((paramSessionInfo.a == 1) && (((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).Z(paramSessionInfo.b))) {
       paramActivityURIRequest.extra().putBoolean("PhotoConst.DISABLE_UPLOAD_TO_TROOP_ALBUM", true);
     }
-    if (paramSessionInfo.jdField_a_of_type_Int == 9501) {
+    if (paramSessionInfo.a == 9501) {
       paramActivityURIRequest.extra().putBoolean("isdevicesupportmultiupload", true);
+    }
+    if (paramSessionInfo.a == 10014)
+    {
+      if ((!TextUtils.isEmpty(paramSessionInfo.c)) && (!TextUtils.isEmpty(paramSessionInfo.b))) {
+        localObject = a(paramActivity, paramSessionInfo);
+      } else {
+        localObject = null;
+      }
+      paramActivityURIRequest.extra().putParcelable("key_guild_open_aio_intent", (Parcelable)localObject);
     }
     paramActivityURIRequest.extra().putBoolean("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", bool1);
     paramActivityURIRequest.extra().putBoolean("filter_photolist_troopalbum_toolbar", bool2);
@@ -231,20 +246,20 @@ public class PlusPanelUtils
     paramActivityURIRequest.extra().putString("ALBUM_ID", AlbumUtil.a(paramActivity));
     paramActivityURIRequest.extra().putString("ALBUM_NAME", AlbumUtil.b(paramActivity));
     paramActivityURIRequest.extra().putBoolean("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
-    paramActivityURIRequest.extra().putString("uin", paramSessionInfo.jdField_a_of_type_JavaLangString);
-    paramActivityURIRequest.extra().putInt("uintype", paramSessionInfo.jdField_a_of_type_Int);
-    paramActivityURIRequest.extra().putString("troop_uin", paramSessionInfo.b);
-    paramActivityURIRequest.extra().putString("uinname", paramSessionInfo.d);
-    paramActivityURIRequest.extra().putInt("entrance", paramSessionInfo.jdField_c_of_type_Int);
+    paramActivityURIRequest.extra().putString("uin", paramSessionInfo.b);
+    paramActivityURIRequest.extra().putInt("uintype", paramSessionInfo.a);
+    paramActivityURIRequest.extra().putString("troop_uin", paramSessionInfo.c);
+    paramActivityURIRequest.extra().putString("uinname", paramSessionInfo.e);
+    paramActivityURIRequest.extra().putInt("entrance", paramSessionInfo.s);
     paramActivityURIRequest.extra().putBoolean("PhotoConst.IS_SHOW_CAMERA", false);
     if ((bool3) || ((paramActivity instanceof ChatActivity)))
     {
       paramActivity = (BaseActivity)paramActivity;
       if (paramActivity.getChatFragment() != null) {
-        paramActivityURIRequest.extra().putBoolean("isBack2Root", paramActivity.getChatFragment().a().f);
+        paramActivityURIRequest.extra().putBoolean("isBack2Root", paramActivity.getChatFragment().k().aj);
       }
     }
-    paramActivityURIRequest.extra().putBoolean("is_anonymous", AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString));
+    paramActivityURIRequest.extra().putBoolean("is_anonymous", AnonymousChatHelper.a().a(paramSessionInfo.b));
     paramActivityURIRequest.extra().putInt("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", a(paramSessionInfo));
     paramActivityURIRequest.extra().remove("forward_type");
     if ((paramIntent != null) && (paramIntent.getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false)))
@@ -271,6 +286,12 @@ public class PlusPanelUtils
       QLog.d("PlusPanelUtils", 2, paramQQAppInterface.toString());
     }
     return j;
+  }
+  
+  private static Intent a(Context paramContext, SessionInfo paramSessionInfo)
+  {
+    paramSessionInfo = new LaunchGuildChatPieParam().a(paramSessionInfo.c).b(paramSessionInfo.b).a(null).b(true).c(false).d(true).b();
+    return ((ILaunchGuildChatPieApi)QRoute.api(ILaunchGuildChatPieApi.class)).getGuildChatPieIntent(paramContext, paramSessionInfo);
   }
   
   public static String a()
@@ -393,9 +414,9 @@ public class PlusPanelUtils
     localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1052);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
     localIntent.putExtra("enter_from", 1);
-    localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationAIO.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationAIO.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationAIO.a);
+    localIntent.putExtra("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.j);
+    localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationAIO.a);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
     localIntent = AIOUtils.a(localIntent, null);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
@@ -419,9 +440,9 @@ public class PlusPanelUtils
     if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).isVideoChatting())) {
       return;
     }
-    if (!Utils.a())
+    if (!Utils.b())
     {
-      QQToast.a(paramActivity, paramActivity.getResources().getString(2131718574), 0).a();
+      QQToast.makeText(paramActivity, paramActivity.getResources().getString(2131916075), 0).show();
       return;
     }
     paramAppInterface = AppConstants.SDCARD_IMG_CAMERA;
@@ -458,7 +479,7 @@ public class PlusPanelUtils
     catch (Exception paramAppInterface)
     {
       paramAppInterface.printStackTrace();
-      QQToast.a(paramActivity, 2131690725, 0).a();
+      QQToast.makeText(paramActivity, 2131887645, 0).show();
     }
     if (QLog.isColorLevel()) {
       QLog.i("PlusPanelUtils", 2, "enter sys camera");
@@ -474,13 +495,13 @@ public class PlusPanelUtils
   {
     try
     {
-      BaseChatPie localBaseChatPie = ((BaseActivity)paramActivity).getChatFragment().a();
-      localBaseChatPie.ae();
+      BaseChatPie localBaseChatPie = ((BaseActivity)paramActivity).getChatFragment().k();
+      localBaseChatPie.aS();
       Intent localIntent = new Intent(paramActivity, PoiMapActivity.class).putExtra("uin", paramQQAppInterface.getAccount());
       localIntent.putExtra("is_need_destroy_broadcast", false);
-      localIntent.putExtra("sessionType", localBaseChatPie.a.jdField_a_of_type_Int);
+      localIntent.putExtra("sessionType", localBaseChatPie.ah.a);
       boolean bool = ThemeUtil.isNowThemeIsDefault(paramQQAppInterface, true, null);
-      localIntent.putExtra("int_unread_msgs_num", paramQQAppInterface.getMessageFacade().b());
+      localIntent.putExtra("int_unread_msgs_num", paramQQAppInterface.getMessageFacade().w());
       localIntent.putExtra("boolean_is_default_theme", bool);
       paramActivity.startActivityForResult(localIntent, 18);
       return;
@@ -501,7 +522,7 @@ public class PlusPanelUtils
     long l1;
     try
     {
-      l1 = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      l1 = Long.parseLong(paramSessionInfo.b);
     }
     catch (Exception localException)
     {
@@ -509,52 +530,54 @@ public class PlusPanelUtils
       l1 = 0L;
     }
     int i;
-    if ((paramSessionInfo.jdField_a_of_type_Int == 9501) && (paramQQAppInterface != null) && (paramQQAppInterface.a()))
+    if ((paramSessionInfo.a == 9501) && (paramQQAppInterface != null) && (paramQQAppInterface.c()))
     {
-      i = paramQQAppInterface.a(l1);
+      i = paramQQAppInterface.d(l1);
       if (paramQQAppInterface.a(l1, 1)) {
         l2 = 52428800L;
       }
-      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByDeviceMsg(paramActivity, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, i, l2);
+      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByDeviceMsg(paramActivity, paramSessionInfo.a, paramSessionInfo.b, i, l2);
     }
     else
     {
-      if (paramSessionInfo.jdField_a_of_type_Int == 1000) {
-        paramQQAppInterface = paramSessionInfo.b;
+      if (paramSessionInfo.a == 1000) {
+        paramQQAppInterface = paramSessionInfo.c;
       }
       for (;;)
       {
         break;
-        if (paramSessionInfo.jdField_a_of_type_Int == 1006) {
-          paramQQAppInterface = paramSessionInfo.jdField_e_of_type_JavaLangString;
+        if (paramSessionInfo.a == 10014) {
+          paramQQAppInterface = paramSessionInfo.c;
+        } else if (paramSessionInfo.a == 1006) {
+          paramQQAppInterface = paramSessionInfo.f;
         } else {
-          paramQQAppInterface = paramSessionInfo.jdField_c_of_type_JavaLangString;
+          paramQQAppInterface = paramSessionInfo.d;
         }
       }
-      if (paramSessionInfo.jdField_a_of_type_Int == 0) {
+      if (paramSessionInfo.a == 0) {
         i = 1;
-      } else if (paramSessionInfo.jdField_a_of_type_Int == 3000) {
+      } else if (paramSessionInfo.a == 3000) {
         i = 5;
-      } else if (paramSessionInfo.jdField_a_of_type_Int == 1) {
+      } else if (paramSessionInfo.a == 1) {
         i = 3;
       } else {
         i = -1;
       }
-      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByAIO(paramActivity, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramQQAppInterface, i);
+      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByAIO(paramActivity, paramSessionInfo.a, paramSessionInfo.b, paramQQAppInterface, i);
     }
-    paramActivity.overridePendingTransition(2130771993, 2130771994);
+    paramActivity.overridePendingTransition(2130771996, 2130771997);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, int paramInt, boolean paramBoolean)
   {
     paramQQAppInterface = (SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    if ((paramQQAppInterface != null) && (paramQQAppInterface.a()))
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.c()))
     {
       long l2 = 0L;
       long l1;
       try
       {
-        l1 = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
+        l1 = Long.parseLong(paramSessionInfo.b);
       }
       catch (Exception localException)
       {
@@ -565,28 +588,28 @@ public class PlusPanelUtils
       if (paramBoolean) {
         i = 2;
       } else {
-        i = paramQQAppInterface.a(l1);
+        i = paramQQAppInterface.d(l1);
       }
       if (paramQQAppInterface.a(l1, 1)) {
         l2 = 52428800L;
       }
-      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByPulsPanel(paramActivity, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, i, paramInt, l2);
-      paramActivity.overridePendingTransition(2130771993, 2130771994);
+      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByPulsPanel(paramActivity, paramSessionInfo.b, paramSessionInfo.a, i, paramInt, l2);
+      paramActivity.overridePendingTransition(2130771996, 2130771997);
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, String paramString)
   {
-    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "Music_gene", "Music_gene_AIO", 0, 0, String.valueOf(a(paramSessionInfo.jdField_a_of_type_Int)), "", "", "");
+    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.b, "Music_gene", "Music_gene_AIO", 0, 0, String.valueOf(a(paramSessionInfo.a)), "", "", "");
     paramQQAppInterface = new Intent(paramActivity, QQBrowserActivity.class);
     if (TextUtils.isEmpty(paramString))
     {
       paramString = new StringBuilder();
       paramString.append("https://y.qq.com/m/qzonemusic/mqzsearch.html");
       paramString.append("?touin=");
-      paramString.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      paramString.append(paramSessionInfo.b);
       paramString.append("&uintype=");
-      paramString.append(paramSessionInfo.jdField_a_of_type_Int);
+      paramString.append(paramSessionInfo.a);
       paramString.append("&_wv=1&entry=aio&_bid=203");
       paramQQAppInterface.putExtra("url", paramString.toString());
       if (QLog.isColorLevel()) {
@@ -595,7 +618,7 @@ public class PlusPanelUtils
     }
     else
     {
-      paramQQAppInterface.putExtra("url", paramString.replace("$FriendUin$", paramSessionInfo.jdField_a_of_type_JavaLangString).replace("$CurType$", String.valueOf(paramSessionInfo.jdField_a_of_type_Int)));
+      paramQQAppInterface.putExtra("url", paramString.replace("$FriendUin$", paramSessionInfo.b).replace("$CurType$", String.valueOf(paramSessionInfo.a)));
       if (QLog.isColorLevel()) {
         QLog.d("PlusPanelUtils", 2, "enterQQMusic url is get from file");
       }
@@ -604,7 +627,7 @@ public class PlusPanelUtils
     paramQQAppInterface.putExtra("show_right_close_button", true);
     paramQQAppInterface.putExtra("finish_animation_up_down", true);
     paramActivity.startActivity(paramQQAppInterface);
-    paramActivity.overridePendingTransition(2130771993, 0);
+    paramActivity.overridePendingTransition(2130771996, 0);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, ArrayList<String> paramArrayList, Intent paramIntent)
@@ -621,14 +644,16 @@ public class PlusPanelUtils
     }
     localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1052);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-    localIntent.putExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", true);
-    localIntent.putExtra("PhotoConst.MY_UIN", paramSessionInfo.h);
+    if (paramSessionInfo.a != 10014) {
+      localIntent.putExtra("PhotoConst.IS_SHOW_QZONE_ALBUM", true);
+    }
+    localIntent.putExtra("PhotoConst.MY_UIN", paramSessionInfo.w);
     localIntent.putExtra("PhotoConst.QZONE_ALBUM_FROM_AIO", true);
-    localIntent.putExtra("KEY_IS_ANONYMOUS", AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString));
+    localIntent.putExtra("KEY_IS_ANONYMOUS", AnonymousChatHelper.a().a(paramSessionInfo.b));
     localActivityURIRequest.extra().putInt("enter_from", 1);
-    localActivityURIRequest.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationAIO.jdField_a_of_type_JavaLangString);
-    localActivityURIRequest.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.jdField_a_of_type_JavaLangString);
-    localActivityURIRequest.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationAIO.jdField_a_of_type_JavaLangString);
+    localActivityURIRequest.extra().putString("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationAIO.a);
+    localActivityURIRequest.extra().putString("KEY_ALBUM_LIST_CLASS_NAME", AlbumListCustomizationAIO.j);
+    localActivityURIRequest.extra().putString("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationAIO.a);
     int i = a(paramQQAppInterface, paramActivity, paramSessionInfo, paramArrayList, localIntent, localActivityURIRequest);
     if (i != -1)
     {
@@ -661,28 +686,27 @@ public class PlusPanelUtils
     VideoActionSheet localVideoActionSheet = VideoActionSheet.a(paramContext);
     int[] arrayOfInt = new int[5];
     int j = 0;
-    localVideoActionSheet.setMainTitle(2131689542);
     int i;
-    if ((paramSessionInfo.jdField_a_of_type_Int != 1025) && (paramSessionInfo.jdField_a_of_type_Int != 0) && (paramSessionInfo.jdField_a_of_type_Int != 1000))
+    if ((paramSessionInfo.a != 1025) && (paramSessionInfo.a != 0) && (paramSessionInfo.a != 1000))
     {
       i = j;
-      if (paramSessionInfo.jdField_a_of_type_Int != 1004) {}
+      if (paramSessionInfo.a != 1004) {}
     }
     else
     {
       i = j;
-      if (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).d(paramSessionInfo.jdField_a_of_type_JavaLangString))
+      if (((QidianManager)paramQQAppInterface.getManager(QQManagerFactory.QIDIAN_MANAGER)).i(paramSessionInfo.b))
       {
         arrayOfInt[0] = 5;
-        localVideoActionSheet.addButton(2131698326);
+        localVideoActionSheet.addButton(2131896250);
         i = 1;
       }
     }
     arrayOfInt[i] = 1;
-    localVideoActionSheet.addButton(2131719732);
+    localVideoActionSheet.addButton(2131917335);
     arrayOfInt[(i + 1)] = 2;
-    localVideoActionSheet.addButton(2131719746);
-    localVideoActionSheet.addCancelButton(2131690728);
+    localVideoActionSheet.addButton(2131917349);
+    localVideoActionSheet.addCancelButton(2131887648);
     localVideoActionSheet.setOnDismissListener(new PlusPanelUtils.1(paramQQAppInterface));
     localVideoActionSheet.setOnButtonClickListener(new PlusPanelUtils.2(localVideoActionSheet, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramBaseChatPie, paramContext, paramString));
     localVideoActionSheet.show();
@@ -704,14 +728,14 @@ public class PlusPanelUtils
       if (paramSessionInfo == null) {
         localObject = null;
       } else {
-        localObject = Integer.valueOf(paramSessionInfo.jdField_a_of_type_Int);
+        localObject = Integer.valueOf(paramSessionInfo.a);
       }
       localStringBuilder.append(localObject);
       localStringBuilder.append("], uin[");
       if (paramSessionInfo == null) {
         localObject = str;
       } else {
-        localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;
+        localObject = paramSessionInfo.b;
       }
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("], from[");
@@ -722,7 +746,7 @@ public class PlusPanelUtils
     if (paramBoolean) {
       i = 1;
     }
-    if ((paramSessionInfo != null) && (paramQQAppInterface.getAVNotifyCenter().a(paramContext, i, paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString))) {
+    if ((paramSessionInfo != null) && (paramQQAppInterface.getAVNotifyCenter().a(paramContext, i, paramSessionInfo.a, paramSessionInfo.b))) {
       return;
     }
     if (paramBoolean) {
@@ -733,7 +757,7 @@ public class PlusPanelUtils
     if (paramSessionInfo == null) {
       return;
     }
-    i = paramSessionInfo.jdField_a_of_type_Int;
+    i = paramSessionInfo.a;
     if (i != 0)
     {
       if (i == 1004) {
@@ -802,19 +826,19 @@ public class PlusPanelUtils
     if (QLog.isColorLevel()) {
       QLog.i("PlusPanelUtils", 2, "enter Camera");
     }
-    if (AudioUtil.a(0))
+    if (AudioUtil.b(0))
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131698511), paramContext.getString(2131698512), new PlusPanelUtils.7(), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131896453), paramContext.getString(2131896454), new PlusPanelUtils.7(), null).show();
       return;
     }
     if (QQAudioHelper.a(0))
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131698511), paramContext.getString(2131698513), new PlusPanelUtils.8(), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131896453), paramContext.getString(2131896455), new PlusPanelUtils.8(), null).show();
       return;
     }
     if (paramQQAppInterface.getApp().checkPermission("android.permission.CAMERA", Process.myPid(), Process.myUid()) != 0)
     {
-      DialogUtil.a(paramContext, 230, paramContext.getString(2131698511), HardCodeUtil.a(2131708300), new PlusPanelUtils.9(), null).show();
+      DialogUtil.a(paramContext, 230, paramContext.getString(2131896453), HardCodeUtil.a(2131906090), new PlusPanelUtils.9(), null).show();
       return;
     }
     int i;
@@ -826,19 +850,19 @@ public class PlusPanelUtils
     a(paramQQAppInterface, paramBaseActivity, i, paramInt2);
     NewFlowCameraReporter.c();
     paramBaseActivity.setCanLock(false);
-    if (paramBaseSessionInfo.jdField_a_of_type_Int == 9501) {
-      SmartDeviceReport.a(paramQQAppInterface, Long.parseLong(paramBaseSessionInfo.jdField_a_of_type_JavaLangString), "Usr_AIO_SendMsg", 2, 0, paramInt1);
+    if (paramBaseSessionInfo.a == 9501) {
+      SmartDeviceReport.a(paramQQAppInterface, Long.parseLong(paramBaseSessionInfo.b), "Usr_AIO_SendMsg", 2, 0, paramInt1);
     }
   }
   
   public static void a(ActivityURIRequest paramActivityURIRequest, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (a(paramSessionInfo, paramQQAppInterface.isLBSFriendNewClient(paramSessionInfo.jdField_a_of_type_JavaLangString)))
+    if (a(paramSessionInfo, paramQQAppInterface.isLBSFriendNewClient(paramSessionInfo.b)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PEAK", 2, "prepareForPicPresend add binder!");
       }
-      paramSessionInfo = new BinderWarpper(new PresendPicMgrService(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.b, paramQQAppInterface.getAccount(), paramSessionInfo.jdField_e_of_type_Int).asBinder());
+      paramSessionInfo = new BinderWarpper(new PresendPicMgrService(paramSessionInfo.a, paramSessionInfo.b, paramSessionInfo.c, paramQQAppInterface.getAccount(), paramSessionInfo.v).asBinder());
       paramActivityURIRequest.extra().putParcelable("binder_presendService", paramSessionInfo);
     }
   }
@@ -877,10 +901,10 @@ public class PlusPanelUtils
       }
       bool1 = false;
     }
-    if (paramSessionInfo.jdField_a_of_type_Int != 1001)
+    if (paramSessionInfo.a != 1001)
     {
       bool2 = bool1;
-      if (paramSessionInfo.jdField_a_of_type_Int != 10002) {}
+      if (paramSessionInfo.a != 10002) {}
     }
     else
     {
@@ -893,10 +917,10 @@ public class PlusPanelUtils
         bool2 = true;
       }
     }
-    if (paramSessionInfo.jdField_a_of_type_Int != 9500)
+    if (paramSessionInfo.a != 9500)
     {
       paramBoolean = bool2;
-      if (paramSessionInfo.jdField_a_of_type_Int != 9501) {}
+      if (paramSessionInfo.a != 9501) {}
     }
     else
     {
@@ -996,40 +1020,40 @@ public class PlusPanelUtils
     localIntent.putExtra("bEnterToSelect", true);
     localIntent.putExtra("paSessionInfo", paramSessionInfo);
     QfavHelper.a(paramActivity, paramQQAppInterface.getAccount(), localIntent, -1, false);
-    QfavReport.b(paramQQAppInterface, 3, paramSessionInfo.jdField_a_of_type_Int);
+    QfavReport.b(paramQQAppInterface, 3, paramSessionInfo.a);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, String paramString, Map<String, String> paramMap)
   {
     Object localObject = (IPhoneContactService)paramQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
     String str;
-    if (paramSessionInfo.jdField_a_of_type_Int == 1006)
+    if (paramSessionInfo.a == 1006)
     {
-      str = ((IPhoneContactService)localObject).getUinByPhoneNum(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      str = ((IPhoneContactService)localObject).getUinByPhoneNum(paramSessionInfo.b);
+      localObject = paramSessionInfo.b;
     }
     else
     {
-      str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      str = paramSessionInfo.b;
       localObject = ((IPhoneContactService)localObject).getPhoneNumByUin(str);
     }
     if (paramString == null)
     {
-      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, str, paramSessionInfo.d, (String)localObject, paramBoolean, paramSessionInfo.b, true, true, null, "from_internal", paramMap);
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.a, str, paramSessionInfo.e, (String)localObject, paramBoolean, paramSessionInfo.c, true, true, null, "from_internal", paramMap);
       return;
     }
-    ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, str, paramSessionInfo.d, (String)localObject, paramBoolean, paramSessionInfo.b, true, true, null, paramString, paramMap);
+    ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.a, str, paramSessionInfo.e, (String)localObject, paramBoolean, paramSessionInfo.c, true, true, null, paramString, paramMap);
   }
   
   public static void c(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo)
   {
-    ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).enterLocalFileBrowserByDevice(paramActivity, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int);
+    ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).enterLocalFileBrowserByDevice(paramActivity, paramSessionInfo.b, paramSessionInfo.a);
     AlbumUtil.anim(paramActivity, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils
  * JD-Core Version:    0.7.0.1
  */

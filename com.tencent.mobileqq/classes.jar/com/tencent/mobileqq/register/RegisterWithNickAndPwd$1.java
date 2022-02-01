@@ -28,13 +28,13 @@ class RegisterWithNickAndPwd$1
       localStringBuilder.append(";phoneNum=");
       localStringBuilder.append(paramString2);
       localStringBuilder.append(";mIsfromLH=");
-      localStringBuilder.append(this.a.d);
+      localStringBuilder.append(this.a.e);
       QLog.d("Login_Optimize_RegisterWithNickAndPwd", 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
+    if (this.a.h.isFinishing()) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+    this.a.h.closeDialog();
     if (!paramBoolean)
     {
       paramString1 = null;
@@ -49,40 +49,40 @@ class RegisterWithNickAndPwd$1
       }
       paramString2 = paramString1;
       if (TextUtils.isEmpty(paramString1)) {
-        paramString2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(2131716609);
+        paramString2 = this.a.h.getString(2131914072);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(paramString2, 1);
+      this.a.h.notifyToast(paramString2, 1);
       return;
     }
     if (paramInt == 0)
     {
       RegisterWithNickAndPwd.a(this.a, paramString1);
       RegisterWithNickAndPwd.b(this.a, paramString2);
-      if ((!TextUtils.isEmpty(RegisterWithNickAndPwd.a(this.a))) && (!TextUtils.isEmpty(RegisterWithNickAndPwd.b(this.a))))
+      if ((!TextUtils.isEmpty(RegisterWithNickAndPwd.a(this.a))) && (!TextUtils.isEmpty(RegisterWithNickAndPwd.c(this.a))))
       {
-        paramString1 = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, RegisterQQNumberActivity.class);
+        paramString1 = new Intent(this.a.h, RegisterQQNumberActivity.class);
         paramString1.putExtra("key_register_secret_phone", paramString2);
         paramString1.putExtra("uin", RegisterWithNickAndPwd.a(this.a));
-        paramString1.putExtra("key_register_password", RegisterWithNickAndPwd.c(this.a));
+        paramString1.putExtra("key_register_password", RegisterWithNickAndPwd.d(this.a));
         paramString1.putExtra("key_register_unbind", true);
-        paramString1.putExtra("key_register_from_quick_register", this.a.jdField_a_of_type_Boolean);
-        paramString1.putExtra("key_register_is_phone_num_registered", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mIsPhoneNumRegistered);
-        paramString1.putExtra("key_register_has_pwd", this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.mHasPwd);
-        paramString1.putExtra("key_register_from_send_sms", this.a.b);
+        paramString1.putExtra("key_register_from_quick_register", this.a.a);
+        paramString1.putExtra("key_register_is_phone_num_registered", this.a.h.mIsPhoneNumRegistered);
+        paramString1.putExtra("key_register_has_pwd", this.a.h.mHasPwd);
+        paramString1.putExtra("key_register_from_send_sms", this.a.c);
         paramString1.putExtra("key_register_chose_bind_phone", false);
-        if ((this.a.c) && (!this.a.d))
+        if ((this.a.d) && (!this.a.e))
         {
           RegisterWithNickAndPwd.a(this.a, paramString1, false);
           return;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.startActivity(paramString1);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
+        this.a.h.startActivity(paramString1);
+        this.a.h.finish();
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716609, 1);
+      this.a.h.notifyToast(2131914072, 1);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716609, 1);
+    this.a.h.notifyToast(2131914072, 1);
   }
   
   public void onRegisterCommitPassResp(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
@@ -90,10 +90,11 @@ class RegisterWithNickAndPwd$1
     if (QLog.isColorLevel()) {
       QLog.d("RegisterWithNickAndPwd", 2, "RegisterByNicknameAndPwdActivity onRegisterCommitPassResp ");
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.isFinishing()) {
+    Object localObject1 = this.a.h;
+    ReportController.a(null, "dc00898", "", paramString, "0X800B533", "0X800B533", RegisterNewBaseActivity.sEntrance, 0, "", "", this.a.h.phoneNum, "");
+    if (this.a.h.isFinishing()) {
       return;
     }
-    Object localObject1;
     try
     {
       localObject1 = new String(paramArrayOfByte2, "utf-8");
@@ -105,9 +106,9 @@ class RegisterWithNickAndPwd$1
     }
     paramArrayOfByte2 = (byte[])localObject1;
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      paramArrayOfByte2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getString(2131716609);
+      paramArrayOfByte2 = this.a.h.getString(2131914072);
     }
-    AppRuntime localAppRuntime = this.a.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.a.g;
     if (paramBoolean) {
       localObject1 = Integer.toString(paramInt);
     } else {
@@ -120,10 +121,10 @@ class RegisterWithNickAndPwd$1
       localObject2 = paramArrayOfByte2;
     }
     ReportController.a(localAppRuntime, "new_reg", "setting_page_yes", "result", "", 1, "", (String)localObject1, "", (String)localObject2, "", "", "", "", "");
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
+    this.a.h.closeDialog();
     if (!paramBoolean)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(paramArrayOfByte2, 1);
+      this.a.h.notifyToast(paramArrayOfByte2, 1);
       return;
     }
     if (QLog.isColorLevel())
@@ -149,31 +150,31 @@ class RegisterWithNickAndPwd$1
       RegisterWithNickAndPwd.b(this.a, paramArrayOfByte3);
       if (TextUtils.isEmpty(RegisterWithNickAndPwd.a(this.a)))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(paramArrayOfByte2, 1);
+        this.a.h.notifyToast(paramArrayOfByte2, 1);
         return;
       }
-      if ((RegisterWithNickAndPwd.a(this.a) != null) && (RegisterWithNickAndPwd.a(this.a).length != 0))
+      if ((RegisterWithNickAndPwd.b(this.a) != null) && (RegisterWithNickAndPwd.b(this.a).length != 0))
       {
-        RegisterManager.a().b();
+        RegisterManager.b().d();
         this.a.e();
-        if (!"CN".equals(RegisterOverseaHelper.a().a())) {
-          ReportController.a(null, "dc00898", "", "", "0X800B8DD", "0X800B8DD", 0, 0, "", "", RegisterOverseaHelper.a().a(), "");
+        if (!"CN".equals(RegisterOverseaHelper.a().b())) {
+          ReportController.a(null, "dc00898", "", "", "0X800B8DD", "0X800B8DD", 0, 0, "", "", RegisterOverseaHelper.a().b(), "");
         }
       }
       else
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(paramArrayOfByte2, 1);
+        this.a.h.notifyToast(paramArrayOfByte2, 1);
       }
     }
     else
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(paramArrayOfByte2, 1);
+      this.a.h.notifyToast(paramArrayOfByte2, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.RegisterWithNickAndPwd.1
  * JD-Core Version:    0.7.0.1
  */

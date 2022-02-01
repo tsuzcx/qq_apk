@@ -11,24 +11,24 @@ class BusinessBrowser$BusinessBrowserFragment$1
   
   public void onFollowPublicAccount(boolean paramBoolean, String paramString)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.a.a != null)
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+      if ((paramBoolean) && (this.a.f != null) && (this.a.f.equals(paramString)))
       {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701486));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+        this.a.a.setText(HardCodeUtil.a(2131899509));
+        this.a.a.setEnabled(false);
+        this.a.a.setBackgroundResource(0);
         return;
       }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131701465));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130847326);
+      this.a.a.setText(HardCodeUtil.a(2131899712));
+      this.a.a.setEnabled(true);
+      this.a.a.setBackgroundResource(2130848977);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,26 +18,26 @@ public class InputBarLayoutChangeCallback
   
   private void a(AIOContext paramAIOContext, int paramInt)
   {
-    ListUI localListUI = paramAIOContext.a().a();
-    paramAIOContext = paramAIOContext.a().a().a();
-    if ((localListUI != null) && (paramAIOContext != null) && (paramAIOContext.c() == 0) && (localListUI.f() != paramInt))
+    ListUI localListUI = paramAIOContext.e().b();
+    paramAIOContext = paramAIOContext.p().d().e();
+    if ((localListUI != null) && (paramAIOContext != null) && (paramAIOContext.e() == 0) && (localListUI.n() != paramInt))
     {
       if (QLog.isColorLevel())
       {
         paramAIOContext = new StringBuilder();
         paramAIOContext.append("onLayoutChange() update list.paddingBottom from ");
-        paramAIOContext.append(localListUI.f());
+        paramAIOContext.append(localListUI.n());
         paramAIOContext.append(" to ");
         paramAIOContext.append(paramInt);
         QLog.d("InputBarLayoutChangeCallback", 2, paramAIOContext.toString());
       }
-      localListUI.a(localListUI.i(), localListUI.g(), localListUI.h(), paramInt);
+      localListUI.a(localListUI.q(), localListUI.o(), localListUI.p(), paramInt);
     }
   }
   
   private void a(AIOContext paramAIOContext, int paramInt1, int paramInt2)
   {
-    paramAIOContext = paramAIOContext.a().a();
+    paramAIOContext = paramAIOContext.e().b();
     if (paramAIOContext != null)
     {
       paramAIOContext.a(null);
@@ -48,11 +48,11 @@ public class InputBarLayoutChangeCallback
   private boolean a(AIOContext paramAIOContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)paramAIOContext.a(52);
-    int i = paramAIOContext.a();
+    int i = paramAIOContext.k();
     boolean bool = true;
     if ((i != 1) || (paramInt2 - paramInt1 == paramInt4 - paramInt3))
     {
-      if ((localAIOShortcutBarHelper != null) && (localAIOShortcutBarHelper.f())) {
+      if ((localAIOShortcutBarHelper != null) && (localAIOShortcutBarHelper.z())) {
         return true;
       }
       bool = false;
@@ -62,39 +62,39 @@ public class InputBarLayoutChangeCallback
   
   public void a(AIOContext paramAIOContext, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramView = paramAIOContext.a().a();
+    paramView = paramAIOContext.e().b();
     if (paramView == null) {
       return;
     }
-    paramInt3 = paramView.e() - paramAIOContext.a().a().a().b();
+    paramInt3 = paramView.m() - paramAIOContext.p().d().e().d();
     Object localObject = (AIOShortcutBarHelper)paramAIOContext.a(52);
     paramInt1 = paramInt3;
     if (localObject != null) {
-      paramInt1 = ((AIOShortcutBarHelper)localObject).a(paramInt3);
+      paramInt1 = ((AIOShortcutBarHelper)localObject).e(paramInt3);
     }
     if ((paramInt6 - paramInt2 != 0) && (localObject != null)) {
-      ((AIOShortcutBarHelper)localObject).c(8);
+      ((AIOShortcutBarHelper)localObject).d(8);
     }
     a(paramAIOContext, paramInt1);
     if (!a(paramAIOContext, paramInt2, paramInt4, paramInt6, paramInt8)) {
       return;
     }
-    if (paramView.c() <= 0) {
+    if (paramView.k() <= 0) {
       return;
     }
-    if ((localObject != null) && (((AIOShortcutBarHelper)localObject).c() == 0)) {
-      paramInt1 = ((AIOShortcutBarHelper)localObject).b();
+    if ((localObject != null) && (((AIOShortcutBarHelper)localObject).v() == 0)) {
+      paramInt1 = ((AIOShortcutBarHelper)localObject).u();
     } else {
       paramInt1 = 0;
     }
     paramInt3 = paramInt2 - paramInt1;
-    paramInt2 = paramView.c() - 1;
+    paramInt2 = paramView.k() - 1;
     while (paramInt2 >= 0)
     {
       localObject = paramView.a(paramInt2);
       if ((paramInt3 > ((View)localObject).getTop()) && (paramInt3 <= ((View)localObject).getBottom()))
       {
-        paramInt2 = paramView.l() + paramInt2;
+        paramInt2 = paramView.u() + paramInt2;
         paramInt3 -= ((View)localObject).getBottom();
         break label219;
       }
@@ -111,7 +111,7 @@ public class InputBarLayoutChangeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.inputbarlayout.InputBarLayoutChangeCallback
  * JD-Core Version:    0.7.0.1
  */

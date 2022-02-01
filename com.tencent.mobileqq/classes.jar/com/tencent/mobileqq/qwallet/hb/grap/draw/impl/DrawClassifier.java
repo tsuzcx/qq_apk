@@ -19,42 +19,37 @@ import org.json.JSONObject;
 
 public class DrawClassifier
 {
-  private static volatile DrawClassifier jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier;
-  private static boolean jdField_b_of_type_Boolean = false;
-  public float a;
-  private int jdField_a_of_type_Int = 5;
-  private LiteClassifier jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLiteClassifier;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 1.75F;
-  private String jdField_b_of_type_JavaLangString = "https://i.gtimg.cn/channel/imglib/201907/upload_e119bb8768152fcb2476c5c41b896cf2.zip";
-  private String c = "https://i.gtimg.cn/drawrp/aModel_";
-  private String d;
-  
-  private DrawClassifier()
-  {
-    this.jdField_a_of_type_Float = 0.2F;
-  }
+  private static volatile DrawClassifier b;
+  private static boolean k = false;
+  public float a = 0.2F;
+  private LiteClassifier c;
+  private boolean d = false;
+  private String e;
+  private String f = "https://i.gtimg.cn/channel/imglib/201907/upload_e119bb8768152fcb2476c5c41b896cf2.zip";
+  private int g = 5;
+  private float h = 1.75F;
+  private String i = "https://i.gtimg.cn/drawrp/aModel_";
+  private String j;
   
   public static DrawClassifier a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier = new DrawClassifier();
+        if (b == null) {
+          b = new DrawClassifier();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDrawClassifier;
+    return b;
   }
   
   public static void a(MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
     if ((paramMessageForQQWalletMsg != null) && (paramMessageForQQWalletMsg.messageType == 26))
     {
-      if (jdField_b_of_type_Boolean) {
+      if (k) {
         return;
       }
       ThreadManager.executeOnFileThread(new DrawClassifier.1(paramMessageForQQWalletMsg));
@@ -70,7 +65,7 @@ public class DrawClassifier
       ((StringBuilder)localObject).append(paramString1);
       QLog.i("DrawClassifier", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = QWalletTools.a();
+    Object localObject = QWalletTools.b();
     if (localObject == null)
     {
       paramOnClassifierInitListener.a(false);
@@ -94,14 +89,14 @@ public class DrawClassifier
     paramJSONObject = paramJSONObject.optJSONArray("modelList");
     if (paramJSONObject != null)
     {
-      int i = 0;
-      while (i < paramJSONObject.length())
+      int m = 0;
+      while (m < paramJSONObject.length())
       {
-        JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+        JSONObject localJSONObject = paramJSONObject.optJSONObject(m);
         if ((localJSONObject != null) && (TextUtils.equals(localJSONObject.optString("id"), paramString))) {
           return localJSONObject;
         }
-        i += 1;
+        m += 1;
       }
     }
     return null;
@@ -112,7 +107,7 @@ public class DrawClassifier
     if (QLog.isColorLevel()) {
       QLog.d("DrawClassifier", 2, "recognize called");
     }
-    if ((!this.jdField_a_of_type_Boolean) || (paramDoodleItem == null))
+    if ((!this.d) || (paramDoodleItem == null))
     {
       if (paramOnRecogListener != null) {
         paramOnRecogListener.a(false);
@@ -124,53 +119,20 @@ public class DrawClassifier
     ThreadManager.excute(new DrawClassifier.4(this, paramOnRecogListener, paramDoodleItem), 16, null, true);
   }
   
-  public String a()
-  {
-    LiteClassifier localLiteClassifier = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLiteClassifier;
-    if (localLiteClassifier == null) {
-      return null;
-    }
-    return localLiteClassifier.a();
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("close - mIsInit");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
-        QLog.d("DrawClassifier", 2, localStringBuilder.toString());
-      }
-      boolean bool = this.jdField_a_of_type_Boolean;
-      if (!bool) {
-        return;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLiteClassifier != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplLiteClassifier.a();
-      }
-      return;
-    }
-    finally {}
-  }
-  
   public void a(Context paramContext, String paramString1, String paramString2, DrawClassifier.OnClassifierInitListener paramOnClassifierInitListener)
   {
     try
     {
       if (!TextUtils.isEmpty(paramString2)) {
-        this.jdField_a_of_type_JavaLangString = paramString2;
+        this.e = paramString2;
       }
       if (QLog.isColorLevel())
       {
         paramContext = new StringBuilder();
         paramContext.append("init recogtitle:");
-        paramContext.append(this.jdField_a_of_type_JavaLangString);
+        paramContext.append(this.e);
         paramContext.append(",mIsInit");
-        paramContext.append(this.jdField_a_of_type_Boolean);
+        paramContext.append(this.d);
         paramContext.append(",modelId:");
         paramContext.append(paramString1);
         QLog.d("DrawClassifier", 2, paramContext.toString());
@@ -178,9 +140,9 @@ public class DrawClassifier
       try
       {
         if (!TextUtils.isEmpty(paramString1)) {
-          this.jdField_b_of_type_Float = 1.0F;
+          this.h = 1.0F;
         } else {
-          this.jdField_b_of_type_Float = 1.75F;
+          this.h = 1.75F;
         }
         paramContext = RedPacketManagerImpl.getHbPannelConfig(10);
         if (QLog.isColorLevel())
@@ -193,36 +155,36 @@ public class DrawClassifier
         if (paramContext != null) {
           if (!TextUtils.isEmpty(paramString1))
           {
-            this.c = paramContext.optString("aModelPrefix", "https://i.gtimg.cn/drawrp/aModel_");
+            this.i = paramContext.optString("aModelPrefix", "https://i.gtimg.cn/drawrp/aModel_");
             paramContext = b(paramContext, paramString1);
             if (paramContext != null)
             {
-              this.jdField_a_of_type_Float = ((float)paramContext.optDouble("aThreshold", 0.2000000029802322D));
-              this.jdField_a_of_type_Int = paramContext.optInt("topN", 5);
-              this.jdField_b_of_type_Float = ((float)paramContext.optDouble("lineWidth", 1.0D));
-              this.d = paramContext.optString("aMd5");
+              this.a = ((float)paramContext.optDouble("aThreshold", 0.2000000029802322D));
+              this.g = paramContext.optInt("topN", 5);
+              this.h = ((float)paramContext.optDouble("lineWidth", 1.0D));
+              this.j = paramContext.optString("aMd5");
             }
-            if (this.jdField_b_of_type_Float <= 0.0F) {
-              this.jdField_b_of_type_Float = 1.0F;
+            if (this.h <= 0.0F) {
+              this.h = 1.0F;
             }
           }
           else
           {
-            this.jdField_b_of_type_JavaLangString = paramContext.optString("aModel", "https://i.gtimg.cn/channel/imglib/201907/upload_e119bb8768152fcb2476c5c41b896cf2.zip");
-            this.jdField_a_of_type_Float = ((float)paramContext.optDouble("aThreshold", 0.2000000029802322D));
-            this.jdField_a_of_type_Int = paramContext.optInt("topN", 5);
+            this.f = paramContext.optString("aModel", "https://i.gtimg.cn/channel/imglib/201907/upload_e119bb8768152fcb2476c5c41b896cf2.zip");
+            this.a = ((float)paramContext.optDouble("aThreshold", 0.2000000029802322D));
+            this.g = paramContext.optInt("topN", 5);
           }
         }
         if (!TextUtils.isEmpty(paramString1))
         {
-          if (TextUtils.isEmpty(this.c.trim())) {
-            this.c = "https://i.gtimg.cn/drawrp/aModel_";
+          if (TextUtils.isEmpty(this.i.trim())) {
+            this.i = "https://i.gtimg.cn/drawrp/aModel_";
           }
           paramContext = new StringBuilder();
-          paramContext.append(this.c);
+          paramContext.append(this.i);
           paramContext.append(paramString1);
           paramContext.append(".zip");
-          this.jdField_b_of_type_JavaLangString = paramContext.toString();
+          this.f = paramContext.toString();
         }
       }
       catch (Throwable paramContext)
@@ -233,16 +195,16 @@ public class DrawClassifier
       {
         paramContext = new StringBuilder();
         paramContext.append("init modelUrl=");
-        paramContext.append(this.jdField_b_of_type_JavaLangString);
+        paramContext.append(this.f);
         paramContext.append(",threshold=");
-        paramContext.append(this.jdField_a_of_type_Float);
+        paramContext.append(this.a);
         paramContext.append(",topN=");
-        paramContext.append(this.jdField_a_of_type_Int);
+        paramContext.append(this.g);
         paramContext.append(",lineWidth=");
-        paramContext.append(this.jdField_b_of_type_Float);
+        paramContext.append(this.h);
         QLog.d("DrawClassifier", 2, paramContext.toString());
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
         if (paramOnClassifierInitListener != null) {
           paramOnClassifierInitListener.a(true);
@@ -259,10 +221,43 @@ public class DrawClassifier
   {
     b(paramDoodleItem, paramOnRecogListener);
   }
+  
+  public void b()
+  {
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("close - mIsInit");
+        localStringBuilder.append(this.d);
+        QLog.d("DrawClassifier", 2, localStringBuilder.toString());
+      }
+      boolean bool = this.d;
+      if (!bool) {
+        return;
+      }
+      this.d = false;
+      if (this.c != null) {
+        this.c.b();
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public String c()
+  {
+    LiteClassifier localLiteClassifier = this.c;
+    if (localLiteClassifier == null) {
+      return null;
+    }
+    return localLiteClassifier.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DrawClassifier
  * JD-Core Version:    0.7.0.1
  */

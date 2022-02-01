@@ -14,25 +14,25 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class QQStoryCommentItemBuilder$1
   implements View.OnClickListener
 {
-  long jdField_a_of_type_Long = 0L;
+  long a = 0L;
   
   QQStoryCommentItemBuilder$1(QQStoryCommentItemBuilder paramQQStoryCommentItemBuilder) {}
   
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long >= 50L)
+    if (l - this.a >= 50L)
     {
-      this.jdField_a_of_type_Long = l;
-      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView)).a;
+      this.a = l;
+      MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((BaseBubbleBuilder.ViewHolder)AIOUtils.b(paramView)).q;
       if (TroopStoryUtil.a(localMessageForQQStoryComment.vid))
       {
-        StoryPlayerLauncher.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
+        StoryPlayerLauncher.a(this.b.e, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id", 1004);
         StoryReportor.a("story_grp", "aio_obj", 0, 0, new String[] { "", "", "", "" });
       }
       else
       {
-        StoryPlayerLauncher.b((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
+        StoryPlayerLauncher.b((Activity)this.b.e, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -40,7 +40,7 @@ class QQStoryCommentItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

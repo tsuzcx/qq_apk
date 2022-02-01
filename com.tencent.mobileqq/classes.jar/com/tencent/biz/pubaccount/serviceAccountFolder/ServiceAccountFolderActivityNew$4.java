@@ -14,17 +14,17 @@ class ServiceAccountFolderActivityNew$4
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
     ServiceAccountFolderActivityNew.a(this.a, true);
-    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
-      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
-    } else if (ServiceAccountFolderActivityNew.b(this.a).getId() == paramInt) {
-      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
+    if (ServiceAccountFolderActivityNew.f(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.g(this.a).setCurrentItem(0);
+    } else if (ServiceAccountFolderActivityNew.h(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.g(this.a).setCurrentItem(1);
     }
     EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.4
  * JD-Core Version:    0.7.0.1
  */

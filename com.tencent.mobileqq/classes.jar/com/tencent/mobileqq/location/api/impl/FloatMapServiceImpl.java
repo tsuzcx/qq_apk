@@ -61,7 +61,7 @@ public class FloatMapServiceImpl
       localObject = null;
     }
     localObject = CameraPosition.fromLatLngZoom((LatLng)localObject, 15.0F);
-    this.floatMapWidget = ((FloatMapWidget)LayoutInflater.from(BaseApplication.getContext()).inflate(2131559290, null).findViewById(2131370428));
+    this.floatMapWidget = ((FloatMapWidget)LayoutInflater.from(BaseApplication.getContext()).inflate(2131625216, null).findViewById(2131437696));
     this.floatWindowController.a(paramRoomKey, (CameraPosition)localObject, this.floatMapWidget);
   }
   
@@ -123,14 +123,14 @@ public class FloatMapServiceImpl
   
   public LocationRoom.RoomKey currentFloatWindowVisibleRoomKey()
   {
-    return this.eventProvider.a();
+    return this.eventProvider.b();
   }
   
   public boolean enterFloat(QBaseActivity paramQBaseActivity, LocationRoom.RoomKey paramRoomKey)
   {
     if (!AppNetConnInfo.isNetSupport())
     {
-      QQToast.a(BaseApplication.getContext(), 2131694424, 0).a();
+      QQToast.makeText(BaseApplication.getContext(), 2131892104, 0).show();
       return false;
     }
     createMapWidget(paramRoomKey);
@@ -142,7 +142,7 @@ public class FloatMapServiceImpl
       }
     }
     this.eventProvider.a(paramRoomKey);
-    LocationHandler.a().a(paramRoomKey.a(), paramRoomKey.a());
+    LocationHandler.a().a(paramRoomKey.a(), paramRoomKey.b());
     int i = LocationReportUtil.a(paramRoomKey);
     if (i != 0) {
       ReportController.b(null, "CliOper", "", "", "0X800A974", "0X800A974", i, 0, "0", "0", "0", "");
@@ -230,9 +230,9 @@ public class FloatMapServiceImpl
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     GlobalFloatDialog localGlobalFloatDialog = new GlobalFloatDialog();
-    localGlobalFloatDialog.a(localBaseApplication.getString(2131719122));
-    localGlobalFloatDialog.b(localBaseApplication.getString(2131690874));
-    localGlobalFloatDialog.c(localBaseApplication.getString(2131691248));
+    localGlobalFloatDialog.a(localBaseApplication.getString(2131916658));
+    localGlobalFloatDialog.b(localBaseApplication.getString(2131887812));
+    localGlobalFloatDialog.c(localBaseApplication.getString(2131888194));
     localGlobalFloatDialog.a(new FloatMapServiceImpl.1(this, paramRoomKey));
     localGlobalFloatDialog.b(new FloatMapServiceImpl.2(this));
     localGlobalFloatDialog.c(new FloatMapServiceImpl.3(this, localGlobalFloatDialog));
@@ -241,7 +241,7 @@ public class FloatMapServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.api.impl.FloatMapServiceImpl
  * JD-Core Version:    0.7.0.1
  */

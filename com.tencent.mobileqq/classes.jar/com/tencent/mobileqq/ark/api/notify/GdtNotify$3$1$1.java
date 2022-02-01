@@ -17,7 +17,7 @@ class GdtNotify$3$1$1
   
   public void run()
   {
-    Object localObject2 = GdtJsonPbUtil.a(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader.a().a);
+    Object localObject2 = GdtJsonPbUtil.a(this.a.a().b);
     Object localObject1 = new JSONObject();
     try
     {
@@ -27,18 +27,18 @@ class GdtNotify$3$1$1
     {
       localJSONException.printStackTrace();
     }
-    ark.arkNotify(this.jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$3$1.a.jdField_a_of_type_JavaLangString, "ad_req_callback", ((JSONObject)localObject1).toString(), "json");
-    if (this.jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$3$1.a.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localObject1 = (Context)this.jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$3$1.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ark.arkNotify(this.b.a.a, "ad_req_callback", ((JSONObject)localObject1).toString(), "json");
+    if (this.b.a.b != null) {
+      localObject1 = (Context)this.b.a.b.get();
     } else {
       localObject1 = null;
     }
-    AdAnalysisHelperForUtil.reportForARKSendNotification((Context)localObject1, this.jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$3$1.a.jdField_a_of_type_Boolean, "ad_req_callback", this.jdField_a_of_type_ComTencentMobileqqArkApiNotifyGdtNotify$3$1.a.jdField_a_of_type_JavaLangString, null);
+    AdAnalysisHelperForUtil.reportForARKSendNotification((Context)localObject1, this.b.a.c, "ad_req_callback", this.b.a.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.notify.GdtNotify.3.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class VideoCombineHelper$CombineTask$2
 {
   VideoCombineHelper$CombineTask$2(VideoCombineHelper.CombineTask paramCombineTask, long paramLong, VideoCombineHelper.Callback paramCallback, File paramFile)
   {
-    super(paramCombineTask.a);
+    super(paramCombineTask.e);
   }
   
   public void a(boolean paramBoolean)
@@ -17,15 +17,15 @@ class VideoCombineHelper$CombineTask$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("combineVideos total = ");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.a);
       QLog.d(".troop.trace_video_combine", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
+    this.b.a(this.c.getAbsolutePath(), paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.2
  * JD-Core Version:    0.7.0.1
  */

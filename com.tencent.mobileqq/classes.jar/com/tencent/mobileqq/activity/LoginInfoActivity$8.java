@@ -24,11 +24,11 @@ class LoginInfoActivity$8
         if (i != 0)
         {
           if (i == 1) {
-            LoginInfoActivity.access$2200(this.this$0).c(2131694668);
+            LoginInfoActivity.access$2200(this.this$0).c(2131892360);
           }
         }
         else {
-          LoginInfoActivity.access$2200(this.this$0).c(2131718170);
+          LoginInfoActivity.access$2200(this.this$0).c(2131915649);
         }
       }
     }
@@ -43,7 +43,7 @@ class LoginInfoActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.8
  * JD-Core Version:    0.7.0.1
  */

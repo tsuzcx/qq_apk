@@ -32,6 +32,8 @@ public class FileManagerEntity
   public boolean bUseMediaPlatform;
   public byte[] bombData;
   public int busId;
+  public String channelId;
+  public String channelName;
   public int cloudType;
   @notColumn
   public long datalineEntitySessionId;
@@ -47,6 +49,8 @@ public class FileManagerEntity
   public String fileName;
   public long fileSize;
   public int forwardTroopFileEntrance;
+  public String guildId;
+  public String guildName;
   public String httpsDomain;
   public int imgHeight;
   public int imgWidth;
@@ -100,7 +104,7 @@ public class FileManagerEntity
   @notColumn
   public FileManagerEntity relatedEntity;
   public String selfUin;
-  public long srvTime = MessageCache.a() * 1000L;
+  public long srvTime = MessageCache.c() * 1000L;
   public int status;
   public String str10Md5;
   public String strApkPackageName;
@@ -270,6 +274,10 @@ public class FileManagerEntity
       this.apkSafeMsg = paramFileManagerEntity.apkSafeMsg;
       this.apkSafeDetailUrl = paramFileManagerEntity.apkSafeDetailUrl;
       this.svrPathIpType = paramFileManagerEntity.svrPathIpType;
+      this.guildId = paramFileManagerEntity.guildId;
+      this.channelId = paramFileManagerEntity.channelId;
+      this.guildName = paramFileManagerEntity.guildName;
+      this.channelName = paramFileManagerEntity.channelName;
       return;
     }
     finally {}
@@ -339,7 +347,7 @@ public class FileManagerEntity
   public boolean isSend()
   {
     int i = this.nOpType;
-    return (i == 0) || (i == 3) || (i == 4) || (i == 6) || (i == 7) || (i == 20) || (i == 21) || (i == 22) || (i == 24) || (i == 25) || (i == 26) || (i == 27) || (i == 28) || (i == 29) || (i == 31) || (i == 51) || (i == 32);
+    return (i == 0) || (i == 3) || (i == 4) || (i == 6) || (i == 7) || (i == 20) || (i == 21) || (i == 22) || (i == 24) || (i == 25) || (i == 26) || (i == 27) || (i == 28) || (i == 29) || (i == 31) || (i == 51) || (i == 32) || (i == 52);
   }
   
   public boolean sendCloudUnsuccessful()
@@ -383,7 +391,7 @@ public class FileManagerEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerEntity
  * JD-Core Version:    0.7.0.1
  */

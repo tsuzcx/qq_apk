@@ -16,15 +16,17 @@ import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.friend.data.ExtRspData;
 import com.tencent.mobileqq.friend.processor.BaseFriendProcessor;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.vas.VasExtensionManager;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.mobileqq.vas.font.api.FontManagerConstants;
 import com.tencent.mobileqq.vas.font.api.IFontManagerService;
-import com.tencent.mobileqq.vas.qid.QidCardManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import friendlist.FriendInfo;
+import gxh_message.Dialogue;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -98,7 +100,7 @@ public class VASProcessor
         ((StringBuilder)localObject4).append(this.mApp.getCurrentUin());
         ((SharedPreferences.Editor)localObject3).putBoolean(((StringBuilder)localObject4).toString(), localFriends.namePlateOfKingDanDisplatSwitch).apply();
       }
-      Object localObject3 = ((IFriendDataService)localObject1).getFriend(localFriends.uin, true, true);
+      Object localObject3 = ((IFriendDataService)localObject1).getFriend(localFriends.uin);
       Object localObject4 = ((FriendInfo)localObject2).oVipInfo;
       int k = EVIPSPEC.E_SP_QQVIP.value();
       if (localObject3 != null) {
@@ -143,7 +145,12 @@ public class VASProcessor
         }
         localFriends.nameplateVipType = ((FriendInfo)localObject2).oVipInfo.iNameplateVipType;
         localFriends.grayNameplateFlag = ((FriendInfo)localObject2).oVipInfo.iGrayNameplateFlag;
-        localFriends.bigClubExtTemplateId = QidCardManager.a(((FriendInfo)localObject2).oVipInfo.strExtendNameplateId);
+        localObject2 = VipUtils.b(((FriendInfo)localObject2).oVipInfo.strExtendNameplateId);
+        if (localObject2 != null)
+        {
+          localFriends.bigClubExtTemplateId = ((Dialogue)localObject2).nameplate_pendant_itemid.get();
+          localFriends.gameCardId = ((Dialogue)localObject2).game_nameplate.get();
+        }
       }
       if (localObject3 != null)
       {
@@ -220,17 +227,29 @@ public class VASProcessor
         paramFriends.superVipTemplateId = ((int)((VipOpenInfo)localObject2).lNameplateId);
       }
       localObject2 = (VipOpenInfo)paramFriendInfo.oVipInfo.mOpenInfo.get(Integer.valueOf(EVIPSPEC.E_SP_BIGCLUB.value()));
-      i = QidCardManager.a(paramFriendInfo.oVipInfo.strExtendNameplateId);
+      Dialogue localDialogue = VipUtils.b(paramFriendInfo.oVipInfo.strExtendNameplateId);
+      if (localDialogue != null)
+      {
+        j = localDialogue.nameplate_pendant_itemid.get();
+        i = localDialogue.game_nameplate.get();
+      }
+      else
+      {
+        i = 0;
+        j = 0;
+      }
       if (localObject2 != null)
       {
         paramFriends.bigClubTemplateId = ((int)((VipOpenInfo)localObject2).lNameplateId);
-        paramFriends.bigClubExtTemplateId = i;
+        paramFriends.bigClubExtTemplateId = j;
+        paramFriends.gameCardId = i;
       }
       if (localObject1 != null)
       {
         ((Friends)localObject1).nameplateVipType = paramFriendInfo.oVipInfo.iNameplateVipType;
         ((Friends)localObject1).grayNameplateFlag = paramFriendInfo.oVipInfo.iGrayNameplateFlag;
-        ((Friends)localObject1).bigClubExtTemplateId = i;
+        ((Friends)localObject1).bigClubExtTemplateId = j;
+        ((Friends)localObject1).gameCardId = i;
       }
     }
     paramFriends.namePlateOfKingGameId = paramFriendInfo.uGameAppid;
@@ -257,7 +276,9 @@ public class VASProcessor
     paramFriends.superVipInfo = FriendListHandlerUtil.a(paramFriendInfo.oVipInfo, EVIPSPEC.E_SP_SUPERVIP.value(), paramFriends.superVipInfo);
     paramFriends.bigClubInfo = FriendListHandlerUtil.a(paramFriendInfo.oVipInfo, EVIPSPEC.E_SP_BIGCLUB.value(), paramFriends.bigClubInfo);
     paramFriends.cNewLoverDiamondFlag = paramFriendInfo.cNewLoverDiamondFlag;
-    if ((paramFriendInfo.oVipInfo != null) && (paramFriendInfo.oVipInfo.mOpenInfo != null))
+    Object localObject = paramFriendInfo.oVipInfo;
+    boolean bool = true;
+    if ((localObject != null) && (paramFriendInfo.oVipInfo.mOpenInfo != null))
     {
       localObject = (VipOpenInfo)paramFriendInfo.oVipInfo.mOpenInfo.get(Integer.valueOf(EVIPSPEC.E_SP_SUPERVIP.value()));
       if (localObject != null) {
@@ -269,20 +290,27 @@ public class VASProcessor
       }
       paramFriends.nameplateVipType = paramFriendInfo.oVipInfo.iNameplateVipType;
       paramFriends.grayNameplateFlag = paramFriendInfo.oVipInfo.iGrayNameplateFlag;
-      paramFriends.bigClubExtTemplateId = QidCardManager.a(paramFriendInfo.oVipInfo.strExtendNameplateId);
+      localObject = VipUtils.b(paramFriendInfo.oVipInfo.strExtendNameplateId);
+      if (localObject != null)
+      {
+        paramFriends.bigClubExtTemplateId = ((Dialogue)localObject).nameplate_pendant_itemid.get();
+        paramFriends.gameCardId = ((Dialogue)localObject).game_nameplate.get();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdateSelfInfo: nameplateVipType = ");
+      ((StringBuilder)localObject).append(paramFriends.nameplateVipType);
+      QLog.i("IMCore.friend.VASFriendProcessor", 1, ((StringBuilder)localObject).toString());
     }
     paramFriends.namePlateOfKingGameId = paramFriendInfo.uGameAppid;
     paramFriends.namePlateOfKingLoginTime = paramFriendInfo.uGameLastLoginTime;
     paramFriends.namePlateOfKingDan = ((int)paramFriendInfo.ulKingOfGloryRank);
-    int i = paramFriendInfo.cKingOfGloryFlag;
-    boolean bool = true;
-    if (i != 1) {
+    if (paramFriendInfo.cKingOfGloryFlag != 1) {
       bool = false;
     }
     paramFriends.namePlateOfKingDanDisplatSwitch = bool;
-    ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.b(paramFriends.uin, (int)paramFriendInfo.uFaceStoreId);
+    ((VasExtensionManager)this.mApp.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).c.b(paramFriends.uin, (int)paramFriendInfo.uFaceStoreId);
     ((IFontManagerService)this.mApp.getRuntimeService(IFontManagerService.class, "")).updateSelfFontEffectId(paramFriends.uin, (int)paramFriendInfo.uFontEffect);
-    Object localObject = this.mApp.getApp().getSharedPreferences("sp_plate_of_king", 0).edit();
+    localObject = this.mApp.getApp().getSharedPreferences("sp_plate_of_king", 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("plate_of_king_display_switch_");
     localStringBuilder.append(this.mApp.getCurrentUin());
@@ -298,7 +326,7 @@ public class VASProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.VASProcessor
  * JD-Core Version:    0.7.0.1
  */

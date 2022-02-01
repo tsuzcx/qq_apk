@@ -45,7 +45,8 @@ public final class ExpandFlutterUtils$initReporter$1
       paramInteger2.element = paramBoolean2.booleanValue();
     }
     ThreadManager.getSubThreadHandler().post((Runnable)new ExpandFlutterUtils.initReporter.1.doReport.5(this, paramString1, paramString3, paramString2, paramBoolean1, paramInteger1, paramMap, paramInteger2));
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {}
+    try
     {
       paramBoolean2 = new StringBuilder();
       paramBoolean2.append("[doReport] appkey=");
@@ -64,12 +65,14 @@ public final class ExpandFlutterUtils$initReporter$1
       paramBoolean2.append(" immediat=");
       paramBoolean2.append(paramInteger2.element);
       QLog.d("ExpandFlutterUtils", 2, paramBoolean2.toString());
+      return;
     }
+    catch (Exception paramString1) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.ExpandFlutterUtils.initReporter.1
  * JD-Core Version:    0.7.0.1
  */

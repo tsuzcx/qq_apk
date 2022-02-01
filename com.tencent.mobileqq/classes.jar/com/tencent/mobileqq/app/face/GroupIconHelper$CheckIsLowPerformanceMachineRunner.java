@@ -9,8 +9,8 @@ class GroupIconHelper$CheckIsLowPerformanceMachineRunner
   
   public void run()
   {
-    long l = DeviceInfoUtil.b();
-    int i = DeviceInfoUtil.b();
+    long l = DeviceInfoUtil.k();
+    int i = DeviceInfoUtil.h();
     if ((l != 0L) && (l < 1024L) && (i <= 1)) {
       GroupIconHelper.a(true);
     }
@@ -18,7 +18,7 @@ class GroupIconHelper$CheckIsLowPerformanceMachineRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.GroupIconHelper.CheckIsLowPerformanceMachineRunner
  * JD-Core Version:    0.7.0.1
  */

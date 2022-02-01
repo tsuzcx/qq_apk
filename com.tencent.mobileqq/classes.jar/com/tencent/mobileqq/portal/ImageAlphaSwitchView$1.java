@@ -11,25 +11,25 @@ class ImageAlphaSwitchView$1
   
   public void a(ValueAnimation<Float> paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
   {
-    this.a.jdField_a_of_type_Float = paramFloat1.floatValue();
+    this.a.c = paramFloat1.floatValue();
     if (paramFloat1.floatValue() >= 255.0F)
     {
       paramValueAnimation = this.a;
-      paramValueAnimation.jdField_a_of_type_AndroidGraphicsBitmap = paramValueAnimation.b;
+      paramValueAnimation.f = paramValueAnimation.g;
       paramValueAnimation = this.a;
-      paramValueAnimation.b = null;
-      paramValueAnimation.jdField_a_of_type_Float = 0.0F;
-      if (paramValueAnimation.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null)
+      paramValueAnimation.g = null;
+      paramValueAnimation.c = 0.0F;
+      if (paramValueAnimation.b != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = null;
+        this.a.b.cancel();
+        this.a.b = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageAlphaSwitchView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,20 +44,38 @@ public class v
   
   private int c()
   {
+    if (e()) {
+      return 0;
+    }
     return this.a.getResources().getDisplayMetrics().widthPixels;
   }
   
   private int d()
   {
+    if (e()) {
+      return 0;
+    }
     return this.a.getResources().getDisplayMetrics().heightPixels;
   }
   
-  private int e()
+  private boolean e()
+  {
+    Context localContext = this.a;
+    if (localContext == null) {
+      return true;
+    }
+    if (localContext.getResources() == null) {
+      return true;
+    }
+    return this.a.getResources().getDisplayMetrics() == null;
+  }
+  
+  private int f()
   {
     return 0;
   }
   
-  private String f()
+  private String g()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(a(Build.BRAND));
@@ -66,7 +84,7 @@ public class v
     return localStringBuffer.toString();
   }
   
-  private String g()
+  private String h()
   {
     StringBuffer localStringBuffer = new StringBuffer();
     String str = Build.VERSION.RELEASE;
@@ -86,18 +104,18 @@ public class v
     localu.c = b();
     localu.d = "";
     localu.e = b;
-    localu.f = g();
+    localu.f = h();
     localu.h = d();
     localu.g = c();
-    localu.i = e();
-    localu.a = f();
+    localu.i = f();
+    localu.a = g();
     localu.b = "1002";
     return localu.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.v
  * JD-Core Version:    0.7.0.1
  */

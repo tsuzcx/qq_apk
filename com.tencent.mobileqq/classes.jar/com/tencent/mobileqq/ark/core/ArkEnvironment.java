@@ -26,40 +26,11 @@ import java.io.File;
 
 public class ArkEnvironment
 {
-  static final ArkEnvironmentManager.ILog jdField_a_of_type_ComTencentArkArkEnvironmentManager$ILog = new ArkEnvironment.1();
-  static IArkEnvDelegate jdField_a_of_type_ComTencentMobileqqArkApiIArkEnvDelegate;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static volatile boolean a = false;
   public static volatile boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqArkApiIArkEnvDelegate = null;
-  }
-  
-  private static ArkEnvironmentManager.IDataReport a()
-  {
-    return new ArkEnvironment.4();
-  }
-  
-  private static ArkEnvironmentManager.LibraryLoader a()
-  {
-    return new ArkEnvironment.3();
-  }
-  
-  private static ArkEnvironmentManager.ThreadCreater a()
-  {
-    return new ArkEnvironment.2();
-  }
-  
-  protected static String a()
-  {
-    IArkEnvDelegate localIArkEnvDelegate = jdField_a_of_type_ComTencentMobileqqArkApiIArkEnvDelegate;
-    if (localIArkEnvDelegate != null) {
-      return localIArkEnvDelegate.getLibJSCPath();
-    }
-    return null;
-  }
+  static IArkEnvDelegate c = null;
+  static final ArkEnvironmentManager.ILog d = new ArkEnvironment.1();
+  private static final Object e = new Object();
   
   public static void a()
   {
@@ -83,7 +54,7 @@ public class ArkEnvironment
       }
       if (b)
       {
-        a();
+        b();
         return;
       }
       ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
@@ -93,12 +64,12 @@ public class ArkEnvironment
   private static void a(ArkEnvironmentManager paramArkEnvironmentManager)
   {
     ArkAIKeyWordConfBean localArkAIKeyWordConfBean = (ArkAIKeyWordConfBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkAIKeyWordConfBean.class);
-    boolean bool1 = localArkAIKeyWordConfBean.a().c;
+    boolean bool1 = localArkAIKeyWordConfBean.c().c;
     paramArkEnvironmentManager.setEnableAndroid9EmojiSupport(bool1);
     paramArkEnvironmentManager.loadLibrary();
     if (b)
     {
-      boolean bool2 = localArkAIKeyWordConfBean.a().b;
+      boolean bool2 = localArkAIKeyWordConfBean.c().b;
       ark.SetUseAndroidHTTP(bool2);
       paramArkEnvironmentManager = ((IDisplayConfig)QRoute.api(IDisplayConfig.class)).getDisplayMetrics();
       float f1 = paramArkEnvironmentManager.widthPixels / paramArkEnvironmentManager.density;
@@ -114,19 +85,19 @@ public class ArkEnvironment
   static void a(boolean paramBoolean)
   {
     ArkEnvironmentManager localArkEnvironmentManager = ArkEnvironmentManager.getInstance();
-    if (!jdField_a_of_type_Boolean) {
+    if (!a) {
       try
       {
-        if (!jdField_a_of_type_Boolean)
+        if (!a)
         {
           b(localArkEnvironmentManager);
-          jdField_a_of_type_Boolean = true;
+          a = true;
         }
       }
       finally {}
     }
     if (!b) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (e)
       {
         if ((!b) && (paramBoolean) && (!b)) {
           a(localArkEnvironmentManager);
@@ -134,38 +105,6 @@ public class ArkEnvironment
         return;
       }
     }
-  }
-  
-  public static boolean a()
-  {
-    if (!b)
-    {
-      QLog.i("ArkApp.Environment", 1, "InitJSCLibPath: ark library not load");
-      return false;
-    }
-    String str = JSDebuggerSoLoader.a();
-    if (a(str, "libjsc_ark.so"))
-    {
-      ark.arkSetLibraryPath(str, "libjsc_ark.so");
-      QLog.i("ArkApp.Environment", 1, "InitJSCLibPath: debug libjsc_ark.so");
-      return true;
-    }
-    str = a();
-    if (str == null)
-    {
-      QLog.i("ArkApp.Environment", 1, "InitJSCLibPath: folder path is null.");
-      return false;
-    }
-    ark.arkSetLibraryPath(str, "libjsc.so");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("InitJSCLibPath: folder=");
-    localStringBuilder.append(str);
-    localStringBuilder.append(", name=");
-    localStringBuilder.append("libjsc.so");
-    localStringBuilder.append(", exist=");
-    localStringBuilder.append(b());
-    QLog.i("ArkApp.Environment", 1, localStringBuilder.toString());
-    return true;
   }
   
   public static boolean a(String paramString1, String paramString2)
@@ -191,19 +130,53 @@ public class ArkEnvironment
   private static void b(ArkEnvironmentManager paramArkEnvironmentManager)
   {
     paramArkEnvironmentManager.setProfilingLogFlag(true);
-    paramArkEnvironmentManager.setThreadCreator(a());
-    paramArkEnvironmentManager.setLogCallback(jdField_a_of_type_ComTencentArkArkEnvironmentManager$ILog);
-    paramArkEnvironmentManager.setLibraryLoader(a());
+    paramArkEnvironmentManager.setThreadCreator(e());
+    paramArkEnvironmentManager.setLogCallback(d);
+    paramArkEnvironmentManager.setLibraryLoader(f());
     paramArkEnvironmentManager.setDebugFlag(false);
-    paramArkEnvironmentManager.setDataReport(a());
+    paramArkEnvironmentManager.setDataReport(g());
   }
   
   public static boolean b()
   {
+    if (!b)
+    {
+      QLog.i("ArkApp.Environment", 1, "InitJSCLibPath: ark library not load");
+      return false;
+    }
+    String str = c();
+    if (str == null)
+    {
+      QLog.i("ArkApp.Environment", 1, "InitJSCLibPath: folder path is null.");
+      return false;
+    }
+    ark.arkSetLibraryPath(str, "libjsc.so");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("InitJSCLibPath: folder=");
+    localStringBuilder.append(str);
+    localStringBuilder.append(", name=");
+    localStringBuilder.append("libjsc.so");
+    localStringBuilder.append(", exist=");
+    localStringBuilder.append(d());
+    QLog.i("ArkApp.Environment", 1, localStringBuilder.toString());
+    return true;
+  }
+  
+  protected static String c()
+  {
+    IArkEnvDelegate localIArkEnvDelegate = c;
+    if (localIArkEnvDelegate != null) {
+      return localIArkEnvDelegate.getLibJSCPath();
+    }
+    return null;
+  }
+  
+  public static boolean d()
+  {
     if (a(JSDebuggerSoLoader.a(), "libjsc_ark.so")) {
       return true;
     }
-    String str = a();
+    String str = c();
     if (str == null)
     {
       QLog.d("ArkApp.Environment", 1, "isJSCLibExist folder path is null.");
@@ -211,10 +184,25 @@ public class ArkEnvironment
     }
     return a(str, "libjsc.so");
   }
+  
+  private static ArkEnvironmentManager.ThreadCreater e()
+  {
+    return new ArkEnvironment.2();
+  }
+  
+  private static ArkEnvironmentManager.LibraryLoader f()
+  {
+    return new ArkEnvironment.3();
+  }
+  
+  private static ArkEnvironmentManager.IDataReport g()
+  {
+    return new ArkEnvironment.4();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkEnvironment
  * JD-Core Version:    0.7.0.1
  */

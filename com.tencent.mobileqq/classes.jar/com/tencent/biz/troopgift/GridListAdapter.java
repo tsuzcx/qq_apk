@@ -37,26 +37,23 @@ import java.util.ArrayList;
 public class GridListAdapter
   extends BaseAdapter
 {
-  protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected LayoutInflater a;
-  protected TroopGiftPanel a;
-  protected String a;
   protected ArrayList<Object> a;
-  protected int b;
+  protected Context b;
+  protected LayoutInflater c;
+  protected int d = -1;
+  protected Drawable e = null;
+  protected String f = null;
+  protected int g;
+  protected TroopGiftPanel h;
   
   public GridListAdapter(Context paramContext, TroopGiftPanel paramTroopGiftPanel)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130849575);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = AIOUtils.b(9.0F, paramContext.getResources());
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel = paramTroopGiftPanel;
+    this.b = paramContext;
+    this.c = LayoutInflater.from(paramContext);
+    this.e = paramContext.getResources().getDrawable(2130851259);
+    this.d = -1;
+    this.g = AIOUtils.b(9.0F, paramContext.getResources());
+    this.h = paramTroopGiftPanel;
   }
   
   public static Bitmap a(int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, int paramInt4)
@@ -70,17 +67,17 @@ public class GridListAdapter
       ((Paint)localObject2).setStyle(Paint.Style.STROKE);
       ((Paint)localObject2).setStrokeWidth(paramFloat2);
       ((Paint)localObject2).setAntiAlias(true);
-      float f = paramFloat2 / 2.0F;
+      float f1 = paramFloat2 / 2.0F;
       paramFloat2 = paramInt1;
-      Object localObject3 = new RectF(f, f, paramFloat2 - f, paramInt2 - f);
-      f = paramInt3;
-      ((Canvas)localObject1).drawRoundRect((RectF)localObject3, f, f, (Paint)localObject2);
+      Object localObject3 = new RectF(f1, f1, paramFloat2 - f1, paramInt2 - f1);
+      f1 = paramInt3;
+      ((Canvas)localObject1).drawRoundRect((RectF)localObject3, f1, f1, (Paint)localObject2);
       localObject1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       localObject2 = new Canvas((Bitmap)localObject1);
       localObject3 = new Paint();
       ((Canvas)localObject2).drawARGB(0, 0, 0, 0);
       paramFloat1 = (paramFloat2 - paramFloat1) / 2.0F;
-      ((Canvas)localObject2).drawRect(paramFloat1, 0.0F, paramFloat2 - paramFloat1, f, (Paint)localObject3);
+      ((Canvas)localObject2).drawRect(paramFloat1, 0.0F, paramFloat2 - paramFloat1, f1, (Paint)localObject3);
       ((Paint)localObject3).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
       ((Canvas)localObject2).drawBitmap(localBitmap, 0.0F, 0.0F, (Paint)localObject3);
       localBitmap.recycle();
@@ -97,7 +94,7 @@ public class GridListAdapter
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.f = paramString;
     }
   }
   
@@ -116,13 +113,13 @@ public class GridListAdapter
       localStringBuilder.append(localObject);
       QLog.d("zivonchen", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.d = -1;
+    this.a = paramArrayList;
   }
   
   public int getCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.a;
     if (localArrayList == null) {
       return 0;
     }
@@ -131,7 +128,7 @@ public class GridListAdapter
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -145,9 +142,9 @@ public class GridListAdapter
     if (paramView == null)
     {
       localHolder = new GridListAdapter.Holder();
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20)
+      if (this.h.getComeFrom() == 20)
       {
-        localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559942, null);
+        localView = this.c.inflate(2131625985, null);
         paramView = localView;
         if (getCount() >= 5)
         {
@@ -159,240 +156,240 @@ public class GridListAdapter
       }
       else
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560655, null);
+        paramView = this.c.inflate(2131626700, null);
       }
-      localHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367223));
-      localHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367702));
-      localHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367708));
-      localHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367714));
-      localHolder.g = ((TextView)paramView.findViewById(2131367224));
-      localHolder.f = ((TextView)paramView.findViewById(2131378695));
-      localHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367715));
-      localHolder.d = ((TextView)paramView.findViewById(2131367705));
-      localHolder.e = ((TextView)paramView.findViewById(2131367707));
-      localHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363441);
-      localHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367703));
-      localHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367718));
+      localHolder.b = ((ImageView)paramView.findViewById(2131433680));
+      localHolder.a = ((ImageView)paramView.findViewById(2131434254));
+      localHolder.c = ((TextView)paramView.findViewById(2131434263));
+      localHolder.d = ((TextView)paramView.findViewById(2131434279));
+      localHolder.k = ((TextView)paramView.findViewById(2131433681));
+      localHolder.i = ((TextView)paramView.findViewById(2131447353));
+      localHolder.e = ((TextView)paramView.findViewById(2131434280));
+      localHolder.f = ((TextView)paramView.findViewById(2131434258));
+      localHolder.g = ((TextView)paramView.findViewById(2131434262));
+      localHolder.h = paramView.findViewById(2131429339);
+      localHolder.j = ((LinearLayout)paramView.findViewById(2131434255));
+      localHolder.m = ((ImageView)paramView.findViewById(2131434283));
       paramView.setTag(localHolder);
       localView = paramView;
     }
     GridListAdapter.Holder localHolder = (GridListAdapter.Holder)localView.getTag();
-    TroopGiftAioItemData localTroopGiftAioItemData = (TroopGiftAioItemData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    localHolder.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioItemData = localTroopGiftAioItemData;
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b())
+    TroopGiftAioItemData localTroopGiftAioItemData = (TroopGiftAioItemData)this.a.get(paramInt);
+    localHolder.l = localTroopGiftAioItemData;
+    if (this.h.h())
     {
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopGiftAioItemData.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20) {
-        localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      localHolder.c.setVisibility(0);
+      localHolder.c.setText(localTroopGiftAioItemData.a);
+      if (this.h.getComeFrom() == 20) {
+        localHolder.c.setTextColor(-1);
       }
     }
     else
     {
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      localHolder.c.setVisibility(8);
     }
-    if (localHolder.jdField_c_of_type_AndroidWidgetImageView != null) {
-      if ((localTroopGiftAioItemData.j == 1) && (!TextUtils.isEmpty(localTroopGiftAioItemData.jdField_e_of_type_JavaLangString)))
+    if (localHolder.m != null) {
+      if ((localTroopGiftAioItemData.r == 1) && (!TextUtils.isEmpty(localTroopGiftAioItemData.t)))
       {
-        localHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+        localHolder.m.setVisibility(0);
         paramView = URLDrawable.URLDrawableOptions.obtain();
         paramView.mPlayGifImage = false;
-        paramView.mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.jdField_e_of_type_JavaLangString, paramView);
-        localHolder.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+        paramView.mLoadingDrawable = URLDrawableHelperConstants.a;
+        paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.t, paramView);
+        localHolder.m.setImageDrawable(paramView);
       }
       else
       {
-        localHolder.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+        localHolder.m.setVisibility(8);
       }
     }
     Object localObject;
     int i;
     StringBuilder localStringBuilder;
-    if ((localTroopGiftAioItemData.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c() > 0))
+    if ((localTroopGiftAioItemData.n) && (this.h.getRewardGiftCnt() > 0))
     {
-      localHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      localHolder.g.setVisibility(0);
-      paramView = localHolder.g;
+      localHolder.d.setVisibility(8);
+      localHolder.k.setVisibility(0);
+      paramView = localHolder.k;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("免费x");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c());
+      ((StringBuilder)localObject).append(this.h.getRewardGiftCnt());
       paramView.setText(((StringBuilder)localObject).toString());
     }
-    else if (localTroopGiftAioItemData.jdField_d_of_type_Boolean)
+    else if (localTroopGiftAioItemData.q)
     {
-      if (localHolder.g != null) {
-        localHolder.g.setVisibility(8);
+      if (localHolder.k != null) {
+        localHolder.k.setVisibility(8);
       }
-      localHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#bbbbbb"));
-      paramView = (TroopGiftManager.PackGift)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b.get(localTroopGiftAioItemData.jdField_a_of_type_Int);
+      localHolder.d.setVisibility(0);
+      localHolder.d.setTextColor(Color.parseColor("#bbbbbb"));
+      paramView = (TroopGiftManager.PackGift)this.h.B.w.get(localTroopGiftAioItemData.d);
       if (paramView == null)
       {
-        paramView = HardCodeUtil.a(2131705434);
-        localHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramView);
+        paramView = HardCodeUtil.a(2131903322);
+        localHolder.d.setText(paramView);
       }
       else
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("×");
-        ((StringBuilder)localObject).append(paramView.jdField_b_of_type_Int);
+        ((StringBuilder)localObject).append(paramView.b);
         paramView = ((StringBuilder)localObject).toString();
-        localHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramView);
+        localHolder.d.setText(paramView);
       }
     }
     else
     {
-      if (localHolder.g != null) {
-        localHolder.g.setVisibility(8);
+      if (localHolder.k != null) {
+        localHolder.k.setVisibility(8);
       }
-      localHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramView = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.jdField_a_of_type_AndroidUtilSparseArray;
-      if (localTroopGiftAioItemData.jdField_e_of_type_Int != 0) {
-        i = localTroopGiftAioItemData.jdField_e_of_type_Int;
+      localHolder.d.setVisibility(0);
+      paramView = this.h.B.s;
+      if (localTroopGiftAioItemData.i != 0) {
+        i = localTroopGiftAioItemData.i;
       } else {
-        i = localTroopGiftAioItemData.jdField_a_of_type_Int;
+        i = localTroopGiftAioItemData.d;
       }
       paramView = (TroopGiftManager.GiveGift)paramView.get(i);
-      if ((paramView != null) && (paramView.jdField_b_of_type_Int + paramView.c != 0))
+      if ((paramView != null) && (paramView.b + paramView.c != 0))
       {
-        localHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#fe6387"));
+        localHolder.d.setTextColor(Color.parseColor("#fe6387"));
         if (paramView.c > 0)
         {
-          localObject = localHolder.jdField_b_of_type_AndroidWidgetTextView;
+          localObject = localHolder.d;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(2131705436));
+          localStringBuilder.append(HardCodeUtil.a(2131903324));
           localStringBuilder.append(paramView.c);
-          localStringBuilder.append(HardCodeUtil.a(2131705432));
+          localStringBuilder.append(HardCodeUtil.a(2131903320));
           ((TextView)localObject).setText(localStringBuilder.toString());
         }
-        else if (paramView.jdField_b_of_type_Int > 0)
+        else if (paramView.b > 0)
         {
-          localObject = localHolder.jdField_b_of_type_AndroidWidgetTextView;
+          localObject = localHolder.d;
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(2131705435));
-          localStringBuilder.append(paramView.jdField_b_of_type_Int);
+          localStringBuilder.append(HardCodeUtil.a(2131903323));
+          localStringBuilder.append(paramView.b);
           ((TextView)localObject).setText(localStringBuilder.toString());
         }
       }
       else
       {
-        localHolder.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(localTroopGiftAioItemData.f));
-        if ((localTroopGiftAioItemData.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$CoinInfo.jdField_d_of_type_JavaLangString))) {
-          paramView = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData$CoinInfo.jdField_d_of_type_JavaLangString;
+        localHolder.d.setText(String.valueOf(localTroopGiftAioItemData.j));
+        if ((localTroopGiftAioItemData.n) && (!TextUtils.isEmpty(this.h.B.m.d))) {
+          paramView = this.h.B.m.d;
         } else {
-          paramView = this.jdField_a_of_type_JavaLangString;
+          paramView = this.f;
         }
         if (!TextUtils.isEmpty(paramView)) {
           paramView = URLDrawable.getDrawable(paramView, URLDrawable.URLDrawableOptions.obtain());
         } else {
-          paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+          paramView = this.e;
         }
-        i = this.jdField_b_of_type_Int;
+        i = this.g;
         paramView.setBounds(0, 0, i, i);
-        localHolder.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(paramView, null, null, null);
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20) {
-          localHolder.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(8);
+        localHolder.d.setCompoundDrawables(paramView, null, null, null);
+        if (this.h.getComeFrom() == 20) {
+          localHolder.d.setCompoundDrawablePadding(8);
         }
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20)
+        if (this.h.getComeFrom() == 20)
         {
-          if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b()) {
-            localHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#c3c3c3"));
+          if (this.h.h()) {
+            localHolder.d.setTextColor(Color.parseColor("#c3c3c3"));
           } else {
-            localHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
+            localHolder.d.setTextColor(-1);
           }
         }
         else {
-          localHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#bbbbbb"));
+          localHolder.d.setTextColor(Color.parseColor("#bbbbbb"));
         }
       }
     }
-    if (localTroopGiftAioItemData.jdField_b_of_type_Int == 0) {
-      localHolder.e.setVisibility(0);
+    if (localTroopGiftAioItemData.e == 0) {
+      localHolder.g.setVisibility(0);
     } else {
-      localHolder.e.setVisibility(8);
+      localHolder.g.setVisibility(8);
     }
     paramView = URLDrawable.URLDrawableOptions.obtain();
-    if (localTroopGiftAioItemData.jdField_a_of_type_Boolean)
+    if (localTroopGiftAioItemData.k)
     {
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20)
+      if (this.h.getComeFrom() == 20)
       {
-        localHolder.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        localHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-        localHolder.jdField_a_of_type_AndroidWidgetLinearLayout.post(new GridListAdapter.1(this, localHolder));
+        localHolder.h.setVisibility(4);
+        localHolder.e.setVisibility(4);
+        localHolder.j.post(new GridListAdapter.1(this, localHolder));
       }
       else
       {
-        if (localTroopGiftAioItemData.jdField_d_of_type_Int < 0)
+        if (localTroopGiftAioItemData.g < 0)
         {
-          i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166259);
-          localHolder.jdField_c_of_type_AndroidWidgetTextView.setText(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString);
-          localHolder.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i);
+          i = this.b.getResources().getColor(2131166992);
+          localHolder.e.setText(localTroopGiftAioItemData.h);
+          localHolder.e.setTextColor(i);
         }
         else
         {
-          i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166258);
-          localHolder.jdField_c_of_type_AndroidWidgetTextView.setText(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString);
-          localHolder.jdField_c_of_type_AndroidWidgetTextView.setTextColor(i);
+          i = this.b.getResources().getColor(2131166991);
+          localHolder.e.setText(localTroopGiftAioItemData.h);
+          localHolder.e.setTextColor(i);
         }
-        localHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        localHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        localHolder.jdField_a_of_type_AndroidViewView.post(new GridListAdapter.2(this, localHolder, localTroopGiftAioItemData, i));
+        localHolder.e.setVisibility(0);
+        localHolder.h.setVisibility(0);
+        localHolder.h.post(new GridListAdapter.2(this, localHolder, localTroopGiftAioItemData, i));
       }
       paramView.mPlayGifImage = true;
-      paramView.mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.jdField_b_of_type_JavaLangString, paramView);
+      paramView.mLoadingDrawable = URLDrawableHelperConstants.a;
+      paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.b, paramView);
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20)
+      if (this.h.getComeFrom() == 20)
       {
-        localHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(null);
+        localHolder.j.setBackgroundDrawable(null);
       }
       else
       {
-        localHolder.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        localHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
+        localHolder.h.setVisibility(4);
+        localHolder.e.setVisibility(4);
       }
       paramView.mPlayGifImage = false;
-      paramView.mLoadingDrawable = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.jdField_c_of_type_JavaLangString, paramView);
+      paramView.mLoadingDrawable = URLDrawableHelperConstants.a;
+      paramView = URLDrawable.getDrawable(localTroopGiftAioItemData.c, paramView);
     }
-    if (localTroopGiftAioItemData.jdField_c_of_type_Boolean)
+    if (localTroopGiftAioItemData.n)
     {
-      if (localTroopGiftAioItemData.jdField_a_of_type_Boolean)
+      if (localTroopGiftAioItemData.k)
       {
-        localHolder.d.setVisibility(0);
-        localObject = localHolder.d;
+        localHolder.f.setVisibility(0);
+        localObject = localHolder.f;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131705431));
-        localStringBuilder.append(localTroopGiftAioItemData.i);
-        localStringBuilder.append(HardCodeUtil.a(2131705433));
+        localStringBuilder.append(HardCodeUtil.a(2131903319));
+        localStringBuilder.append(localTroopGiftAioItemData.p);
+        localStringBuilder.append(HardCodeUtil.a(2131903321));
         ((TextView)localObject).setText(localStringBuilder.toString());
       }
       else
       {
-        localHolder.d.setVisibility(8);
+        localHolder.f.setVisibility(8);
       }
-      if (!this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c()) {
-        localHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (!this.h.i()) {
+        localHolder.b.setVisibility(0);
       } else {
-        localHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+        localHolder.b.setVisibility(8);
       }
-    }
-    else
-    {
-      localHolder.d.setVisibility(8);
-    }
-    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-    if ((!this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b()) && (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a() == 20) && (!TextUtils.isEmpty(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString)))
-    {
-      localHolder.f.setVisibility(0);
-      localHolder.f.setText(localTroopGiftAioItemData.jdField_d_of_type_JavaLangString);
     }
     else
     {
       localHolder.f.setVisibility(8);
+    }
+    localHolder.a.setImageDrawable(paramView);
+    if ((!this.h.h()) && (this.h.getComeFrom() == 20) && (!TextUtils.isEmpty(localTroopGiftAioItemData.h)))
+    {
+      localHolder.i.setVisibility(0);
+      localHolder.i.setText(localTroopGiftAioItemData.h);
+    }
+    else
+    {
+      localHolder.i.setVisibility(8);
     }
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
@@ -400,7 +397,7 @@ public class GridListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListAdapter
  * JD-Core Version:    0.7.0.1
  */

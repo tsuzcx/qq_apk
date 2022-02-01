@@ -30,14 +30,14 @@ class ListenChangeVoicePanel$3
       }
       paramString1 = (IVasQuickUpdateService)((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getRuntimeService(IVasQuickUpdateService.class, "");
       if (paramString1 != null) {
-        paramString1.removeCallBacker(this.a.a);
+        paramString1.removeCallBacker(this.a.m);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel.3
  * JD-Core Version:    0.7.0.1
  */

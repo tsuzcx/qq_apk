@@ -24,14 +24,14 @@ public class PtvPanelBizReporter
   public void a(IChatPanelBarData paramIChatPanelBarData, View paramView)
   {
     if ((ShortVideoUtils.supportShortVideoMergePhoto()) && (CameraUtils.a())) {
-      ReportController.b(paramIChatPanelBarData.a(), "dc00898", "", "", "0X80072C0", "0X80072C0", 0, 0, "", "", "", "");
+      ReportController.b(paramIChatPanelBarData.e(), "dc00898", "", "", "0X80072C0", "0X80072C0", 0, 0, "", "", "", "");
     }
-    if (paramIChatPanelBarData.a().a())
+    if (paramIChatPanelBarData.f().a())
     {
       this.a.a(6, false);
-      ShortVideoUtils.setPtvRedDotStatus(paramIChatPanelBarData.a().getCurrentUin(), false);
-      ReportController.b(paramIChatPanelBarData.a(), "dc00898", "", "", "0X8009367", "0X8009367", 1, 0, "", "", "", "");
-      paramIChatPanelBarData.a().a(false);
+      ShortVideoUtils.setPtvRedDotStatus(paramIChatPanelBarData.e().getCurrentUin(), false);
+      ReportController.b(paramIChatPanelBarData.e(), "dc00898", "", "", "0X8009367", "0X8009367", 1, 0, "", "", "", "");
+      paramIChatPanelBarData.f().a(false);
       return;
     }
   }
@@ -40,7 +40,7 @@ public class PtvPanelBizReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.reporter.PtvPanelBizReporter
  * JD-Core Version:    0.7.0.1
  */

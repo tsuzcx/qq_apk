@@ -12,6 +12,7 @@ import com.tencent.mobileqq.kandian.biz.share.api.IWxShareHelperFromReadInjoy;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qwallet.jump.IWXMiniProgramHelper;
+import com.tencent.mobileqq.wxmini.api.IWxMiniManager;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -53,7 +54,15 @@ public class WXEntryActivity
       ((StringBuilder)localObject).append(bool);
       QLog.i("WXEntryActivity", 1, ((StringBuilder)localObject).toString());
     }
-    super.onCreate(paramBundle);
+    try
+    {
+      super.onCreate(paramBundle);
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("WXEntryActivity", 1, "onCreate : ", paramBundle);
+    }
+    QLog.d("WXEntryActivity", 1, "onCreate : ");
     requestWindowFeature(1);
     paramBundle = new Intent("com.tencent.mobileqq.action.ACTION_WECHAT_RESPONSE");
     try
@@ -107,12 +116,31 @@ public class WXEntryActivity
       localStringBuilder.append(paramBundle);
       QLog.e("WXEntryActivity", 2, localStringBuilder.toString());
     }
-    finish();
+    try
+    {
+      ((IWxMiniManager)QRoute.api(IWxMiniManager.class)).handleWXEntryActivityIntent(this, getIntent());
+    }
+    catch (Throwable paramBundle)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("IWxMiniManager.handleWXEntryActivityIntent error = ");
+      localStringBuilder.append(paramBundle);
+      QLog.e("WXEntryActivity", 2, localStringBuilder.toString());
+    }
+    try
+    {
+      finish();
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("WXEntryActivity", 1, "finish : ", paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXEntryActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -19,17 +19,17 @@ class NotifyPushSettingFragment$5
     if (QLog.isColorLevel()) {
       QLog.d("IphoneTitleBarFragment", 2, new Object[] { "avCallOnCheckedChangeListener::onCheckedChanged: invoked. ", " isChecked: ", Boolean.valueOf(paramBoolean) });
     }
-    if (!NotifyPushSettingFragment.a(this.a).c())
+    if (!NotifyPushSettingFragment.h(this.a).c())
     {
-      NotifyPushSettingFragment.a(this.a).a(this.a.getBaseActivity());
-      NotifyPushSettingFragment.a(this.a).setOnCheckedChangeListener(null);
-      NotifyPushSettingFragment.a(this.a).setChecked(true ^ NotifyPushSettingFragment.a(this.a).a());
-      NotifyPushSettingFragment.a(this.a).setOnCheckedChangeListener(this.a.a);
+      NotifyPushSettingFragment.h(this.a).a(this.a.getBaseActivity());
+      NotifyPushSettingFragment.i(this.a).setOnCheckedChangeListener(null);
+      NotifyPushSettingFragment.i(this.a).setChecked(true ^ NotifyPushSettingFragment.i(this.a).a());
+      NotifyPushSettingFragment.i(this.a).setOnCheckedChangeListener(this.a.b);
     }
     else
     {
-      AVUtil.a(NotifyPushSettingFragment.a(this.a).getCurrentAccountUin(), paramBoolean);
-      ReportClickEventHelper.a(NotifyPushSettingFragment.a(this.a), "0X800B846", paramBoolean);
+      AVUtil.a(NotifyPushSettingFragment.c(this.a).getCurrentAccountUin(), paramBoolean);
+      ReportClickEventHelper.a(NotifyPushSettingFragment.c(this.a), "0X800B846", paramBoolean);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -44,7 +44,7 @@ class NotifyPushSettingFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

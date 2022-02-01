@@ -25,37 +25,37 @@ public class DoubleCommentSegment
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (SlideTabViewPager)paramBaseViewHolder.a(2131374489);
+    paramViewGroup = (SlideTabViewPager)paramBaseViewHolder.a(2131442659);
     TextView localTextView1;
     TextView localTextView2;
-    if (paramViewGroup.a() == 0)
+    if (paramViewGroup.getTabCount() == 0)
     {
-      localTextView1 = new TextView(this.a);
-      localTextView2 = new TextView(this.a);
-      localTextView1.setText(HardCodeUtil.a(2131703591));
-      localTextView2.setText(HardCodeUtil.a(2131703590));
-      paramViewGroup.a(0, HardCodeUtil.a(2131703588), localTextView1);
-      paramViewGroup.a(1, HardCodeUtil.a(2131703593), localTextView2);
+      localTextView1 = new TextView(this.l);
+      localTextView2 = new TextView(this.l);
+      localTextView1.setText(HardCodeUtil.a(2131901542));
+      localTextView2.setText(HardCodeUtil.a(2131901541));
+      paramViewGroup.a(0, HardCodeUtil.a(2131901539), localTextView1);
+      paramViewGroup.a(1, HardCodeUtil.a(2131901544), localTextView2);
       paramViewGroup.a(0);
     }
     else
     {
-      localTextView1 = new TextView(this.a);
-      localTextView2 = new TextView(this.a);
-      localTextView1.setText(HardCodeUtil.a(2131703595));
-      localTextView2.setText(HardCodeUtil.a(2131703589));
-      paramViewGroup.a(0, HardCodeUtil.a(2131703592), localTextView1);
-      paramViewGroup.a(1, HardCodeUtil.a(2131703594), localTextView2);
+      localTextView1 = new TextView(this.l);
+      localTextView2 = new TextView(this.l);
+      localTextView1.setText(HardCodeUtil.a(2131901546));
+      localTextView2.setText(HardCodeUtil.a(2131901540));
+      paramViewGroup.b(0, HardCodeUtil.a(2131901543), localTextView1);
+      paramViewGroup.b(1, HardCodeUtil.a(2131901545), localTextView2);
     }
     return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131561639, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.l).inflate(2131628018, paramViewGroup, false));
   }
   
-  public String a()
+  public String b()
   {
     return null;
   }

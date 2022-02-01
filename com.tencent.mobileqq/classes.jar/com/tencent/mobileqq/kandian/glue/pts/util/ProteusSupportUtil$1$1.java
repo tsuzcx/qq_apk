@@ -12,16 +12,16 @@ class ProteusSupportUtil$1$1
   
   public void onClick(ViewBase paramViewBase)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity() != null)
+    if (this.a.a.getCurActivity() != null)
     {
-      ProteusSupportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getCurActivity().finish();
+      ProteusSupportUtil.a(this.a.b, paramViewBase);
+      this.a.a.getCurActivity().finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.pts.util.ProteusSupportUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

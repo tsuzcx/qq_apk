@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class AddFrdTokenHelper
 {
-  static final String jdField_a_of_type_JavaLangString = "AddFrdTokenHelper";
-  private final ConcurrentHashMap<String, byte[]> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+  static final String a = "AddFrdTokenHelper";
+  private final ConcurrentHashMap<String, byte[]> b = new ConcurrentHashMap(5);
   
   public void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
@@ -22,10 +22,10 @@ public class AddFrdTokenHelper
       try
       {
         paramString = String.format("%s_%s_%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramArrayOfByte);
+        this.b.put(paramString, paramArrayOfByte);
         if (QLog.isColorLevel())
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, String.format("cacheToken key: %s, token_len: %s", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.length) }));
+          QLog.i(a, 2, String.format("cacheToken key: %s, token_len: %s", new Object[] { paramString, Integer.valueOf(paramArrayOfByte.length) }));
           return;
         }
       }
@@ -42,14 +42,14 @@ public class AddFrdTokenHelper
     try
     {
       String str3 = String.format("%s_%s_%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramString = (byte[])this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str3);
+      paramString = (byte[])this.b.get(str3);
       String str1 = paramString;
       try
       {
         if (!QLog.isColorLevel()) {
           break label118;
         }
-        str1 = jdField_a_of_type_JavaLangString;
+        str1 = a;
         if (paramString == null) {
           paramInt1 = i;
         } else {
@@ -72,7 +72,7 @@ public class AddFrdTokenHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.helper.AddFrdTokenHelper
  * JD-Core Version:    0.7.0.1
  */

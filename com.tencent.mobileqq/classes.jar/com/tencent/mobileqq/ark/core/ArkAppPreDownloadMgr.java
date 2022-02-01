@@ -30,24 +30,16 @@ import mqq.app.AppRuntime;
 
 public class ArkAppPreDownloadMgr
 {
-  private final ArkAppPreloader.PreloadAppCallback jdField_a_of_type_ComTencentArkArkAppPreloader$PreloadAppCallback = new ArkAppPreDownloadMgr.3(this);
-  private WeakReference<AppRuntime> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private ConcurrentHashMap<String, PreloadItem> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(8);
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private boolean b = false;
+  private ConcurrentHashMap<String, PreloadItem> c = new ConcurrentHashMap(8);
+  private WeakReference<AppRuntime> d = null;
+  private final ArkAppPreloader.PreloadAppCallback e = new ArkAppPreDownloadMgr.3(this);
   
   public ArkAppPreDownloadMgr(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
-    }
+    this.d = new WeakReference(paramAppRuntime);
+    this.a = false;
   }
   
   private void a(String paramString1, String paramString2, ArkAppPreloader.PreloadAppCallback paramPreloadAppCallback, int paramInt)
@@ -55,7 +47,7 @@ public class ArkAppPreDownloadMgr
     String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
     String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
     String str3 = ArkEnvironmentManager.getInstance().getAppResPath(paramString1);
-    a(str3);
+    b(str3);
     ArkAppPreloader.preloadApp(paramString1, paramString2, str2, str3, str1, paramPreloadAppCallback, paramInt);
   }
   
@@ -70,12 +62,20 @@ public class ArkAppPreDownloadMgr
     return true;
   }
   
+  private static void b(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+  }
+  
   public static void e()
   {
     String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
     String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-    a(str1);
-    a(str2);
+    b(str1);
+    b(str2);
     ArkAppPreloader.preloadCommon(((IDisplayConfig)QRoute.api(IDisplayConfig.class)).getDisplayDensity(), str2, str1);
   }
   
@@ -85,7 +85,7 @@ public class ArkAppPreDownloadMgr
     if ((localArkPlatformConfigBean == null) && (QLog.isColorLevel())) {
       QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling get preload config from default");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.c.clear();
     a(localArkPlatformConfigBean);
     e();
     b();
@@ -103,9 +103,9 @@ public class ArkAppPreDownloadMgr
   
   public void a(ArkPlatformConfigBean paramArkPlatformConfigBean)
   {
-    if ((paramArkPlatformConfigBean != null) && (paramArkPlatformConfigBean.a() != null))
+    if ((paramArkPlatformConfigBean != null) && (paramArkPlatformConfigBean.b() != null))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = paramArkPlatformConfigBean.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      this.c = paramArkPlatformConfigBean.b().i;
       return;
     }
     if (QLog.isColorLevel()) {
@@ -119,7 +119,7 @@ public class ArkAppPreDownloadMgr
     {
       if (!TextUtils.isEmpty(paramString))
       {
-        boolean bool = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+        boolean bool = this.c.containsKey(paramString);
         if (bool)
         {
           try
@@ -128,7 +128,7 @@ public class ArkAppPreDownloadMgr
             if (bool) {
               return;
             }
-            String str = ((AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getAccount();
+            String str = ((AppRuntime)this.d.get()).getAccount();
             HashMap localHashMap = new HashMap();
             localHashMap.put("app_name", paramString);
             StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(str, "ark_app_predownload_first_hit", paramBoolean, 0L, 0L, localHashMap, "", false);
@@ -151,21 +151,21 @@ public class ArkAppPreDownloadMgr
     if (QLog.isColorLevel()) {
       QLog.e("ArkApp.ArkAppPreDownloadMgr", 2, "profiling startPredownload");
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
+    if (this.c.size() > 0)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         return;
       }
-      this.jdField_a_of_type_Boolean = true;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      this.a = true;
+      Iterator localIterator = this.c.entrySet().iterator();
       while (localIterator.hasNext())
       {
         PreloadItem localPreloadItem = (PreloadItem)((Map.Entry)localIterator.next()).getValue();
-        if (!TextUtils.isEmpty(localPreloadItem.jdField_a_of_type_JavaLangString)) {
-          if (ArkAppMgr.getInstance().getAppPathFromLocal(localPreloadItem.jdField_a_of_type_JavaLangString) == null) {
+        if (!TextUtils.isEmpty(localPreloadItem.a)) {
+          if (ArkAppMgr.getInstance().getAppPathFromLocal(localPreloadItem.a) == null) {
             a(localPreloadItem);
           } else {
-            QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling ark app predowloaded,app=", localPreloadItem.jdField_a_of_type_JavaLangString });
+            QLog.d("ArkApp.ArkAppPreDownloadMgr", 1, new Object[] { "profiling ark app predowloaded,app=", localPreloadItem.a });
           }
         }
       }
@@ -180,35 +180,35 @@ public class ArkAppPreDownloadMgr
   
   void d()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() != 0)
+    if (this.c.size() != 0)
     {
       if (this.b) {
         return;
       }
       this.b = true;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
+      Iterator localIterator = this.c.entrySet().iterator();
       while (localIterator.hasNext())
       {
         PreloadItem localPreloadItem = (PreloadItem)((Map.Entry)localIterator.next()).getValue();
-        if ((!TextUtils.isEmpty(localPreloadItem.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathFromLocal(localPreloadItem.jdField_a_of_type_JavaLangString))))
+        if ((!TextUtils.isEmpty(localPreloadItem.a)) && (!TextUtils.isEmpty(ArkAppMgr.getInstance().getAppPathFromLocal(localPreloadItem.a))))
         {
           Object localObject;
-          if (ArkAppCrashProtect.c(localPreloadItem.jdField_a_of_type_JavaLangString))
+          if (ArkAppCrashProtect.c(localPreloadItem.a))
           {
-            localPreloadItem.jdField_a_of_type_Int = 0;
+            localPreloadItem.b = 0;
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("profiling disable to preload ArkApp name = ");
-            ((StringBuilder)localObject).append(localPreloadItem.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(localPreloadItem.a);
             QLog.w("ArkApp.ArkAppPreDownloadMgr", 1, ((StringBuilder)localObject).toString());
           }
-          if (localPreloadItem.jdField_a_of_type_Int == 1)
+          if (localPreloadItem.b == 1)
           {
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("profiling need to preload ArkApp name = ");
-            ((StringBuilder)localObject).append(localPreloadItem.jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject).append(localPreloadItem.a);
             QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, ((StringBuilder)localObject).toString());
-            localObject = ArkAppMgr.getInstance().getAppPathFromLocal(localPreloadItem.jdField_a_of_type_JavaLangString, "");
-            a(localPreloadItem.jdField_a_of_type_JavaLangString, (String)localObject, this.jdField_a_of_type_ComTencentArkArkAppPreloader$PreloadAppCallback, 1);
+            localObject = ArkAppMgr.getInstance().getAppPathFromLocal(localPreloadItem.a, "");
+            a(localPreloadItem.a, (String)localObject, this.e, 1);
           }
         }
       }
@@ -217,7 +217,7 @@ public class ArkAppPreDownloadMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppPreDownloadMgr
  * JD-Core Version:    0.7.0.1
  */

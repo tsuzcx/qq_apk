@@ -70,7 +70,7 @@ public class OrderMediaMsgServiceImpl
   public void addOrderMsg(MessageRecord paramMessageRecord, String paramString)
   {
     Object localObject = getOrderMediaMsgSession(paramMessageRecord.frienduin);
-    if (((OrderMediaMsgSessionQueue)localObject).a(paramMessageRecord.uniseq, paramString))
+    if (((OrderMediaMsgSessionQueue)localObject).b(paramMessageRecord.uniseq, paramString))
     {
       ((OrderMediaMsgSessionQueue)localObject).a(paramMessageRecord, paramMessageRecord.uniseq, paramString, true);
       return;
@@ -84,13 +84,13 @@ public class OrderMediaMsgServiceImpl
       ((StringBuilder)localObject).append(paramString);
       QLog.d("OrderMediaMsgService", 2, ((StringBuilder)localObject).toString());
     }
-    getMsgController().a(paramMessageRecord);
+    getMsgController().d(paramMessageRecord);
   }
   
   public void addOrderMsgStatus(String paramString1, MessageRecord paramMessageRecord, String paramString2)
   {
     OrderMediaMsgSessionQueue localOrderMediaMsgSessionQueue = getOrderMediaMsgSession(paramMessageRecord.frienduin);
-    if (!localOrderMediaMsgSessionQueue.a(paramMessageRecord.uniseq, paramString2)) {
+    if (!localOrderMediaMsgSessionQueue.b(paramMessageRecord.uniseq, paramString2)) {
       enqueueMediaMsgByUniseq(paramString1, paramMessageRecord.uniseq);
     }
     localOrderMediaMsgSessionQueue.a(paramMessageRecord, paramMessageRecord.uniseq, paramString2, false);
@@ -111,7 +111,7 @@ public class OrderMediaMsgServiceImpl
         if (getMsgController().b(localChatMessage.msgtype))
         {
           j += 1;
-          getOrderMediaMsgSession(paramString).a(localChatMessage.uniseq, "", getMsgController().a(localChatMessage));
+          getOrderMediaMsgSession(paramString).a(localChatMessage.uniseq, "", getMsgController().c(localChatMessage));
           i = k;
         }
       }
@@ -186,7 +186,7 @@ public class OrderMediaMsgServiceImpl
   public boolean isSessionOrderSending(String paramString)
   {
     if ((!TextUtils.isEmpty(paramString)) && (this.mOrderMediaMsgSessionMap.containsKey(paramString))) {
-      return getOrderMediaMsgSession(paramString).a() ^ true;
+      return getOrderMediaMsgSession(paramString).b() ^ true;
     }
     return false;
   }
@@ -228,7 +228,7 @@ public class OrderMediaMsgServiceImpl
     {
       localObject = ((HashMap)localObject).values().iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((OrderMediaMsgSessionQueue)((Iterator)localObject).next()).a();
+        ((OrderMediaMsgSessionQueue)((Iterator)localObject).next()).c();
       }
       this.mOrderMediaMsgSessionMap.clear();
     }
@@ -248,8 +248,8 @@ public class OrderMediaMsgServiceImpl
   public void sendOrderMsg(MessageRecord paramMessageRecord, MediaMessageObserver paramMediaMessageObserver, IOrderMediaMsgService.IMsgSendingListener paramIMsgSendingListener)
   {
     Object localObject = getOrderMediaMsgSession(paramMessageRecord.frienduin);
-    String str = getMsgController().a(paramMessageRecord);
-    if (((OrderMediaMsgSessionQueue)localObject).a(paramMessageRecord.uniseq, str))
+    String str = getMsgController().b(paramMessageRecord);
+    if (((OrderMediaMsgSessionQueue)localObject).b(paramMessageRecord.uniseq, str))
     {
       ((OrderMediaMsgSessionQueue)localObject).a(paramMessageRecord, paramMediaMessageObserver, paramIMsgSendingListener);
       return;
@@ -271,7 +271,7 @@ public class OrderMediaMsgServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ordersend.impl.OrderMediaMsgServiceImpl
  * JD-Core Version:    0.7.0.1
  */

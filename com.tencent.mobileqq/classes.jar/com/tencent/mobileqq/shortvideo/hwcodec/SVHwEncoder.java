@@ -14,132 +14,113 @@ import java.util.concurrent.atomic.AtomicInteger;
 @TargetApi(18)
 public class SVHwEncoder
 {
-  private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static boolean jdField_e_of_type_Boolean = false;
-  private double jdField_a_of_type_Double = 0.0D;
-  private volatile float jdField_a_of_type_Float = 30.0F;
-  public int a;
-  private SVHwEncoder.HwEncode jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode = null;
-  private SVHwOutputNotify jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<SVHwEncoder.HwFrame> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[4];
-  private double jdField_b_of_type_Double = 0.0D;
-  private int jdField_b_of_type_Int;
-  private ArrayList<SVHwEncoder.HwFrame> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private ArrayList<SVHwEncoder.HwFrame> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_c_of_type_Boolean = false;
-  private volatile int jdField_d_of_type_Int = 480000;
-  private volatile boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = 44100;
-  private int f = 1;
-  private int g = 128000;
-  private int h = 2;
-  private int i = -1;
-  private int j = -1;
-  private int k = 0;
-  private int l = 0;
-  private int m = 0;
-  
-  public SVHwEncoder()
-  {
-    this.jdField_a_of_type_Int = 21;
-  }
+  private static boolean D = false;
+  private static AtomicInteger b = new AtomicInteger(0);
+  private int A = 0;
+  private SVHwOutputNotify B;
+  private int[] C = new int[4];
+  public int a = 21;
+  private int c;
+  private int d;
+  private String e;
+  private volatile float f = 30.0F;
+  private volatile int g = 480000;
+  private int h = 44100;
+  private int i = 1;
+  private int j = 128000;
+  private int k = 2;
+  private boolean l = false;
+  private int m = -1;
+  private int n = -1;
+  private int o = 0;
+  private Object p = new Object();
+  private ArrayList<SVHwEncoder.HwFrame> q = new ArrayList();
+  private ArrayList<SVHwEncoder.HwFrame> r = new ArrayList();
+  private ArrayList<SVHwEncoder.HwFrame> s = new ArrayList();
+  private volatile boolean t = false;
+  private volatile boolean u = false;
+  private volatile boolean v = false;
+  private SVHwEncoder.HwEncode w = null;
+  private double x = 0.0D;
+  private double y = 0.0D;
+  private int z = 0;
   
   private native boolean adjustDstresolution(int[] paramArrayOfInt);
-  
-  int a(ArrayList<SVHwEncoder.HwFrame> paramArrayList)
-  {
-    try
-    {
-      int n = paramArrayList.size();
-      return n;
-    }
-    finally
-    {
-      paramArrayList = finally;
-      throw paramArrayList;
-    }
-  }
   
   int a(List<MediaCodecInfo> paramList, String paramString)
   {
     if (paramList.size() <= 0) {
       return -1;
     }
-    int n = 0;
-    int i2;
-    for (int i1 = -1; n < paramList.size(); i1 = i2)
+    int i1 = 0;
+    int i3;
+    for (int i2 = -1; i1 < paramList.size(); i2 = i3)
     {
-      MediaCodecInfo.CodecCapabilities localCodecCapabilities = SVHwCodec.a((MediaCodecInfo)paramList.get(n), paramString);
+      MediaCodecInfo.CodecCapabilities localCodecCapabilities = SVHwCodec.a((MediaCodecInfo)paramList.get(i1), paramString);
       if (localCodecCapabilities == null) {
-        return i1;
+        return i2;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("name=");
-      localStringBuilder.append(((MediaCodecInfo)paramList.get(n)).getName());
+      localStringBuilder.append(((MediaCodecInfo)paramList.get(i1)).getName());
       a("selectAudioCodec", localStringBuilder.toString());
-      i2 = i1;
+      i3 = i2;
       if (localCodecCapabilities.profileLevels != null) {
         if (localCodecCapabilities.profileLevels.length <= 0)
         {
-          i2 = i1;
+          i3 = i2;
         }
         else
         {
-          int i3 = 0;
+          int i4 = 0;
           for (;;)
           {
-            i2 = i1;
-            if (i3 >= localCodecCapabilities.profileLevels.length) {
+            i3 = i2;
+            if (i4 >= localCodecCapabilities.profileLevels.length) {
               break;
             }
-            if (localCodecCapabilities.profileLevels[i3].profile == 2)
+            if (localCodecCapabilities.profileLevels[i4].profile == 2)
             {
-              i2 = n;
+              i3 = i1;
               break;
             }
-            i3 += 1;
+            i4 += 1;
           }
         }
       }
-      n += 1;
+      i1 += 1;
     }
-    return i1;
+    return i2;
   }
   
   public SVHwEncoder.HwFrame a()
   {
-    boolean bool = this.jdField_b_of_type_Boolean;
+    boolean bool = this.t;
     Object localObject1 = null;
     Object localObject4 = null;
     byte[] arrayOfByte = null;
     Object localObject3 = localObject4;
     if (!bool)
     {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      ArrayList localArrayList = this.q;
       localObject3 = localObject4;
       if (localArrayList != null)
       {
         if (localArrayList.size() > 0)
         {
-          localObject3 = this.jdField_a_of_type_JavaLangObject;
+          localObject3 = this.p;
           localObject1 = arrayOfByte;
           try
           {
-            if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+            if (this.q.size() > 0)
             {
-              localObject1 = (SVHwEncoder.HwFrame)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-              this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+              localObject1 = (SVHwEncoder.HwFrame)this.q.get(0);
+              this.q.remove(0);
             }
           }
           finally {}
         }
-        if ((localHwFrame != null) && (localHwFrame.jdField_a_of_type_ArrayOfByte != null))
+        if ((localHwFrame != null) && (localHwFrame.a != null))
         {
           localObject3 = localHwFrame;
           if (QLog.isColorLevel())
@@ -153,13 +134,13 @@ public class SVHwEncoder
           Object localObject2;
           try
           {
-            arrayOfByte = new byte[this.jdField_b_of_type_Int * this.jdField_c_of_type_Int * 3 / 2];
+            arrayOfByte = new byte[this.c * this.d * 3 / 2];
             localObject3 = new SVHwEncoder.HwFrame();
             try
             {
-              ((SVHwEncoder.HwFrame)localObject3).jdField_a_of_type_ArrayOfByte = arrayOfByte;
-              ((SVHwEncoder.HwFrame)localObject3).jdField_a_of_type_Float = -1.0F;
-              ((SVHwEncoder.HwFrame)localObject3).jdField_c_of_type_Int = -1;
+              ((SVHwEncoder.HwFrame)localObject3).a = arrayOfByte;
+              ((SVHwEncoder.HwFrame)localObject3).g = -1.0F;
+              ((SVHwEncoder.HwFrame)localObject3).h = -1;
               localObject2 = localObject3;
             }
             catch (OutOfMemoryError localOutOfMemoryError1)
@@ -173,11 +154,11 @@ public class SVHwEncoder
           catch (OutOfMemoryError localOutOfMemoryError2) {}
           QLog.e("SVHwEncoder", 2, "getRecycleFrame allocate frame OOM erro ", localOutOfMemoryError2);
           label197:
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify;
+          localObject3 = this.B;
           if (localObject3 != null) {
             ((SVHwOutputNotify)localObject3).b(-27, 0);
           }
-          b();
+          c();
           localObject3 = localObject2;
           if (QLog.isColorLevel())
           {
@@ -207,50 +188,19 @@ public class SVHwEncoder
     }
   }
   
-  void a()
-  {
-    int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-    int n = this.jdField_b_of_type_Int;
-    int i1 = 0;
-    arrayOfInt1[0] = n;
-    arrayOfInt1[1] = this.jdField_c_of_type_Int;
-    arrayOfInt1[2] = 0;
-    arrayOfInt1[3] = 0;
-    try
-    {
-      boolean bool = adjustDstresolution(arrayOfInt1);
-      i1 = bool;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-    }
-    if (i1 == 0)
-    {
-      n = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (n - n % 16);
-      n = this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = (n - n % 16);
-      return;
-    }
-    int[] arrayOfInt2 = this.jdField_a_of_type_ArrayOfInt;
-    this.jdField_b_of_type_Int = arrayOfInt2[2];
-    this.jdField_c_of_type_Int = arrayOfInt2[3];
-  }
-  
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt1 == 8000) || (paramInt1 == 16000) || (paramInt1 == 44100)) {
-      this.jdField_e_of_type_Int = paramInt1;
+      this.h = paramInt1;
     }
     if ((paramInt2 == 1) || (paramInt2 == 2)) {
-      this.f = paramInt2;
+      this.i = paramInt2;
     }
     if ((paramInt3 == 64000) || (paramInt3 == 128000)) {
-      this.g = paramInt3;
+      this.j = paramInt3;
     }
     if ((paramInt4 == 1) || (paramInt4 == 2)) {
-      this.h = paramInt4;
+      this.k = paramInt4;
     }
   }
   
@@ -258,27 +208,27 @@ public class SVHwEncoder
   {
     try
     {
-      if (!this.jdField_b_of_type_Boolean)
+      if (!this.t)
       {
         StringBuilder localStringBuilder;
-        if ((paramBoolean) && (this.jdField_b_of_type_JavaUtilArrayList != null))
+        if ((paramBoolean) && (this.r != null))
         {
-          this.jdField_b_of_type_JavaUtilArrayList.add(paramHwFrame);
+          this.r.add(paramHwFrame);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("finish=");
-          localStringBuilder.append(paramHwFrame.jdField_a_of_type_Boolean);
+          localStringBuilder.append(paramHwFrame.e);
           localStringBuilder.append(" size=");
-          localStringBuilder.append(paramHwFrame.jdField_b_of_type_Int);
+          localStringBuilder.append(paramHwFrame.c);
           a("hw_video_write_frame", localStringBuilder.toString());
         }
-        else if (this.jdField_c_of_type_JavaUtilArrayList != null)
+        else if (this.s != null)
         {
-          this.jdField_c_of_type_JavaUtilArrayList.add(paramHwFrame);
+          this.s.add(paramHwFrame);
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("finish=");
-          localStringBuilder.append(paramHwFrame.jdField_a_of_type_Boolean);
+          localStringBuilder.append(paramHwFrame.e);
           localStringBuilder.append(" size=");
-          localStringBuilder.append(paramHwFrame.jdField_b_of_type_Int);
+          localStringBuilder.append(paramHwFrame.c);
           a("hw_audio_write_frame", localStringBuilder.toString());
         }
       }
@@ -289,22 +239,22 @@ public class SVHwEncoder
   
   public void a(SVHwOutputNotify paramSVHwOutputNotify, SVHwDataSource paramSVHwDataSource, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwOutputNotify = paramSVHwOutputNotify;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode = new SVHwEncoder.HwEncode(this, this.jdField_a_of_type_JavaLangString, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder$HwEncode.run();
+    this.B = paramSVHwOutputNotify;
+    this.w = new SVHwEncoder.HwEncode(this, this.e, paramSVHwOutputNotify, paramSVHwDataSource, paramBoolean, 0);
+    this.w.run();
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    a();
+    this.e = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    b();
   }
   
   void a(String paramString1, String paramString2)
   {
-    if ((!jdField_e_of_type_Boolean) && (QLog.isColorLevel()))
+    if ((!D) && (QLog.isColorLevel()))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramString1);
@@ -347,27 +297,11 @@ public class SVHwEncoder
     }
   }
   
-  void a(ArrayList<SVHwEncoder.HwFrame> paramArrayList)
-  {
-    try
-    {
-      if (paramArrayList.size() > 0) {
-        paramArrayList.remove(0);
-      }
-      return;
-    }
-    finally
-    {
-      paramArrayList = finally;
-      throw paramArrayList;
-    }
-  }
-  
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.i = paramInt1;
-    this.j = paramInt2;
+    this.l = true;
+    this.m = paramInt1;
+    this.n = paramInt2;
     paramInt1 = paramInt3;
     if (paramInt3 != 0)
     {
@@ -384,15 +318,15 @@ public class SVHwEncoder
         }
       }
     }
-    this.k = paramInt1;
-    if (this.j <= 0)
+    this.o = paramInt1;
+    if (this.n <= 0)
     {
-      this.j = 1000;
+      this.n = 1000;
       return false;
     }
-    if (this.i <= 0)
+    if (this.m <= 0)
     {
-      this.i = 1;
+      this.m = 1;
       return false;
     }
     return true;
@@ -400,14 +334,14 @@ public class SVHwEncoder
   
   boolean a(SVHwEncoder.HwFrame paramHwFrame)
   {
-    int n = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i1 = this.q.size();
     boolean bool = false;
-    if (n < 3) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (i1 < 3) {
+      synchronized (this.p)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3)
+        if (this.q.size() < 3)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramHwFrame);
+          this.q.add(paramHwFrame);
           bool = true;
         }
         return bool;
@@ -416,13 +350,99 @@ public class SVHwEncoder
     return false;
   }
   
-  public void b()
+  void b()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
+    int[] arrayOfInt1 = this.C;
+    int i1 = this.c;
+    int i2 = 0;
+    arrayOfInt1[0] = i1;
+    arrayOfInt1[1] = this.d;
+    arrayOfInt1[2] = 0;
+    arrayOfInt1[3] = 0;
+    try
+    {
+      boolean bool = adjustDstresolution(arrayOfInt1);
+      i2 = bool;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+    }
+    if (i2 == 0)
+    {
+      i1 = this.c;
+      this.c = (i1 - i1 % 16);
+      i1 = this.d;
+      this.d = (i1 - i1 % 16);
+      return;
+    }
+    int[] arrayOfInt2 = this.C;
+    this.c = arrayOfInt2[2];
+    this.d = arrayOfInt2[3];
   }
   
   void b(ArrayList<SVHwEncoder.HwFrame> paramArrayList)
+  {
+    try
+    {
+      if (paramArrayList.size() > 0) {
+        paramArrayList.remove(0);
+      }
+      return;
+    }
+    finally
+    {
+      paramArrayList = finally;
+      throw paramArrayList;
+    }
+  }
+  
+  int c(ArrayList<SVHwEncoder.HwFrame> paramArrayList)
+  {
+    try
+    {
+      int i1 = paramArrayList.size();
+      return i1;
+    }
+    finally
+    {
+      paramArrayList = finally;
+      throw paramArrayList;
+    }
+  }
+  
+  public void c()
+  {
+    this.t = true;
+    this.u = true;
+  }
+  
+  void d()
+  {
+    try
+    {
+      SVHwEncoder.HwFrame localHwFrame = new SVHwEncoder.HwFrame();
+      localHwFrame.e = true;
+      localHwFrame.f = true;
+      localHwFrame.g = 30.0F;
+      localHwFrame.h = 480000;
+      this.r.add(localHwFrame);
+      localHwFrame = new SVHwEncoder.HwFrame();
+      localHwFrame.e = true;
+      localHwFrame.f = false;
+      this.s.add(localHwFrame);
+      a("hw_video_write_frame", "addMediaEndFrame finish...");
+      a("hw_audio_write_frame", "addMediaEndFrame finish...");
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  void d(ArrayList<SVHwEncoder.HwFrame> paramArrayList)
   {
     try
     {
@@ -435,35 +455,10 @@ public class SVHwEncoder
       throw paramArrayList;
     }
   }
-  
-  void c()
-  {
-    try
-    {
-      SVHwEncoder.HwFrame localHwFrame = new SVHwEncoder.HwFrame();
-      localHwFrame.jdField_a_of_type_Boolean = true;
-      localHwFrame.jdField_b_of_type_Boolean = true;
-      localHwFrame.jdField_a_of_type_Float = 30.0F;
-      localHwFrame.jdField_c_of_type_Int = 480000;
-      this.jdField_b_of_type_JavaUtilArrayList.add(localHwFrame);
-      localHwFrame = new SVHwEncoder.HwFrame();
-      localHwFrame.jdField_a_of_type_Boolean = true;
-      localHwFrame.jdField_b_of_type_Boolean = false;
-      this.jdField_c_of_type_JavaUtilArrayList.add(localHwFrame);
-      a("hw_video_write_frame", "addMediaEndFrame finish...");
-      a("hw_audio_write_frame", "addMediaEndFrame finish...");
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder
  * JD-Core Version:    0.7.0.1
  */

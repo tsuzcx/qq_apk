@@ -1,28 +1,21 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.trtc.TRTCCloudListener;
+import com.tencent.liteav.audio.TXCLiveBGMPlayer;
 
 class TRTCCloudImpl$96
   implements Runnable
 {
-  TRTCCloudImpl$96(TRTCCloudImpl paramTRTCCloudImpl, int paramInt) {}
+  TRTCCloudImpl$96(TRTCCloudImpl paramTRTCCloudImpl) {}
   
   public void run()
   {
-    Object localObject = this.this$0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onEffectPlayFinish -> effectId = ");
-    localStringBuilder.append(this.val$effectId);
-    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
-    localObject = this.this$0.mTRTCListener;
-    if (localObject != null) {
-      ((TRTCCloudListener)localObject).onAudioEffectFinished(this.val$effectId, 0);
-    }
+    this.this$0.apiLog("pauseBGM");
+    TXCLiveBGMPlayer.getInstance().pause();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.96
  * JD-Core Version:    0.7.0.1
  */

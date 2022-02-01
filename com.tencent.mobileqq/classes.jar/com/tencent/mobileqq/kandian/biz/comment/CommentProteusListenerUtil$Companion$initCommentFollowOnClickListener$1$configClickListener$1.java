@@ -3,9 +3,9 @@ package com.tencent.mobileqq.kandian.biz.comment;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.mobileqq.kandian.biz.comment.data.CommentViewItem;
+import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.repo.feeds.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.follow.FollowListInfoModule;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
@@ -19,41 +19,38 @@ final class CommentProteusListenerUtil$Companion$initCommentFollowOnClickListene
   
   public final void onClick(ViewBase paramViewBase)
   {
-    this.a.b();
-    if (this.a.a != null)
+    this.a.c();
+    if ((this.a.c != null) && (this.a.c.uin != null))
     {
-      paramViewBase = this.a.a;
-      Intrinsics.checkExpressionValueIsNotNull(paramViewBase, "commentViewItem.articleInfo");
-      if (paramViewBase.getSubscribeUin() != null)
+      paramViewBase = (Long)null;
+      try
       {
-        paramViewBase = (Long)null;
-        try
-        {
-          Object localObject = this.a.a;
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "commentViewItem.articleInfo");
-          localObject = ((AbsBaseArticleInfo)localObject).getSubscribeUin();
-          Intrinsics.checkExpressionValueIsNotNull(localObject, "(commentViewItem.articleInfo.subscribeUin)");
-          localObject = Long.valueOf(Long.parseLong((String)localObject));
-          paramViewBase = (ViewBase)localObject;
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.w("CommentProteusUtil", 2, "initCommentFollowOnClickListener: ", localThrowable);
-        }
-        if (paramViewBase != null)
-        {
-          ReadInJoyLogicEngine localReadInJoyLogicEngine = ReadInJoyLogicEngine.a();
-          Intrinsics.checkExpressionValueIsNotNull(localReadInJoyLogicEngine, "ReadInJoyLogicEngine.getInstance()");
-          localReadInJoyLogicEngine.a().a(paramViewBase.longValue(), 2);
-        }
+        Object localObject = this.a.c.uin;
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "(commentViewItem.commentData.uin)");
+        localObject = Long.valueOf(Long.parseLong((String)localObject));
+        paramViewBase = (ViewBase)localObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.w("CommentProteusUtil", 2, "initCommentFollowOnClickListener: ", localThrowable);
+      }
+      if (paramViewBase != null)
+      {
+        ReadInJoyLogicEngine localReadInJoyLogicEngine = ReadInJoyLogicEngine.a();
+        Intrinsics.checkExpressionValueIsNotNull(localReadInJoyLogicEngine, "ReadInJoyLogicEngine.getInstance()");
+        localReadInJoyLogicEngine.W().a(paramViewBase.longValue(), 2);
+      }
+      if (paramViewBase != null)
+      {
+        long l = ((Number)paramViewBase).longValue();
+        ReadInJoyLogicEngineEventDispatcher.a().a(l, 2);
       }
     }
-    ReadInJoyLogicEngineEventDispatcher.a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusListenerUtil.Companion.initCommentFollowOnClickListener.1.configClickListener.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,37 +11,42 @@ import com.tencent.widget.AbsListView.LayoutParams;
 class DragSortListView$AdapterWrapper
   extends BaseAdapter
 {
-  private ListAdapter jdField_a_of_type_AndroidWidgetListAdapter;
+  private ListAdapter b;
   
   public DragSortListView$AdapterWrapper(DragSortListView paramDragSortListView, ListAdapter paramListAdapter)
   {
-    this.jdField_a_of_type_AndroidWidgetListAdapter = paramListAdapter;
-    this.jdField_a_of_type_AndroidWidgetListAdapter.registerDataSetObserver(new DragSortListView.AdapterWrapper.1(this, paramDragSortListView));
+    this.b = paramListAdapter;
+    this.b.registerDataSetObserver(new DragSortListView.AdapterWrapper.1(this, paramDragSortListView));
+  }
+  
+  public ListAdapter a()
+  {
+    return this.b;
   }
   
   public boolean areAllItemsEnabled()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.areAllItemsEnabled();
+    return this.b.areAllItemsEnabled();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getCount();
+    return this.b.getCount();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItem(paramInt);
+    return this.b.getItem(paramInt);
   }
   
   public long getItemId(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemId(paramInt);
+    return this.b.getItemId(paramInt);
   }
   
   public int getItemViewType(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
+    return this.b.getItemViewType(paramInt);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -51,7 +56,7 @@ class DragSortListView$AdapterWrapper
     {
       localObject2 = (DragSortItemView)paramView;
       View localView1 = ((DragSortItemView)localObject2).getChildAt(0);
-      View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      View localView2 = this.b.getView(paramInt, localView1, this.a);
       localObject1 = localObject2;
       if (localView2 != localView1)
       {
@@ -64,16 +69,16 @@ class DragSortListView$AdapterWrapper
     }
     else
     {
-      localObject2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, null, this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView);
+      localObject2 = this.b.getView(paramInt, null, this.a);
       if ((localObject2 instanceof Checkable)) {
-        localObject1 = new DragSortItemViewCheckable(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());
+        localObject1 = new DragSortItemViewCheckable(this.a.getContext());
       } else {
-        localObject1 = new DragSortItemView(this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.getContext());
+        localObject1 = new DragSortItemView(this.a.getContext());
       }
       ((DragSortItemView)localObject1).setLayoutParams(new AbsListView.LayoutParams(-1, -2));
       ((DragSortItemView)localObject1).addView((View)localObject2);
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView;
+    Object localObject2 = this.a;
     DragSortListView.a((DragSortListView)localObject2, ((DragSortListView)localObject2).getHeaderViewsCount() + paramInt, (View)localObject1, true);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return localObject1;
@@ -81,27 +86,27 @@ class DragSortListView$AdapterWrapper
   
   public int getViewTypeCount()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.getViewTypeCount();
+    return this.b.getViewTypeCount();
   }
   
   public boolean hasStableIds()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.hasStableIds();
+    return this.b.hasStableIds();
   }
   
   public boolean isEmpty()
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEmpty();
+    return this.b.isEmpty();
   }
   
   public boolean isEnabled(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(paramInt);
+    return this.b.isEnabled(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.DragSortListView.AdapterWrapper
  * JD-Core Version:    0.7.0.1
  */

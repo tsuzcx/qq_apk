@@ -13,7 +13,7 @@ class QQStoryShareGroupProfileActivity$1
   public void run()
   {
     Object localObject = (QQStoryActivityManager)SuperManager.a(18);
-    ArrayList localArrayList = ((QQStoryActivityManager)localObject).a(this.this$0);
+    ArrayList localArrayList = ((QQStoryActivityManager)localObject).c(this.this$0);
     int i = localArrayList.size();
     if (i >= 4)
     {

@@ -15,13 +15,13 @@ import mqq.manager.Manager;
 public class EqqDetailDataManager
   implements Manager
 {
-  private EqqConfig jdField_a_of_type_ComTencentMobileqqDataEqqConfig = null;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private ConcurrentHashMap<String, EqqDetail> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private EntityManager a;
+  private ConcurrentHashMap<String, EqqDetail> b;
+  private EqqConfig c = null;
   
   public EqqDetailDataManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
   }
   
   public EqqDetail a(String paramString)
@@ -31,27 +31,11 @@ public class EqqDetailDataManager
     if (bool) {
       return null;
     }
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.b;
     if (localConcurrentHashMap != null) {
       localEqqDetail = (EqqDetail)localConcurrentHashMap.get(paramString);
     }
     return localEqqDetail;
-  }
-  
-  public String a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig;
-    if (localObject == null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(EqqConfig.class);
-      if ((localObject != null) && (((List)localObject).size() >= 1))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig = ((EqqConfig)((List)localObject).get(0));
-        return this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig.getData();
-      }
-      return "";
-    }
-    return ((EqqConfig)localObject).getData();
   }
   
   public void a()
@@ -59,28 +43,28 @@ public class EqqDetailDataManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.contacttab.eqq", 2, "initEqqDetailCache() begin");
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    Object localObject = this.a;
     int i = 0;
     localObject = ((EntityManager)localObject).query(EqqDetail.class, false, "followType=?", new String[] { "0" }, null, null, null, null);
     if (localObject != null) {
       i = ((List)localObject).size();
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(i);
+    this.b = new ConcurrentHashMap(i);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         EqqDetail localEqqDetail = (EqqDetail)((Iterator)localObject).next();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localEqqDetail.uin, localEqqDetail);
+        this.b.put(localEqqDetail.uin, localEqqDetail);
       }
     }
-    a();
+    b();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("initEqqDetailCache() end: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
+      ((StringBuilder)localObject).append(this.b.size());
       QLog.d("Q.contacttab.eqq", 2, ((StringBuilder)localObject).toString());
     }
   }
@@ -91,20 +75,12 @@ public class EqqDetailDataManager
       return;
     }
     a(paramEqqDetail);
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    if (this.b == null) {
+      this.b = new ConcurrentHashMap();
     }
     if (paramEqqDetail.followType == 0) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramEqqDetail.uin, paramEqqDetail);
+      this.b.put(paramEqqDetail.uin, paramEqqDetail);
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig == null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig = new EqqConfig(paramString);
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqDataEqqConfig);
   }
   
   protected boolean a(Entity paramEntity)
@@ -113,7 +89,7 @@ public class EqqDetailDataManager
     boolean bool = false;
     if (i == 1000)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+      this.a.persistOrReplace(paramEntity);
       if (paramEntity.getStatus() == 1001) {
         bool = true;
       }
@@ -122,7 +98,23 @@ public class EqqDetailDataManager
     if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
       return false;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+    return this.a.update(paramEntity);
+  }
+  
+  public String b()
+  {
+    Object localObject = this.c;
+    if (localObject == null)
+    {
+      localObject = this.a.query(EqqConfig.class);
+      if ((localObject != null) && (((List)localObject).size() >= 1))
+      {
+        this.c = ((EqqConfig)((List)localObject).get(0));
+        return this.c.getData();
+      }
+      return "";
+    }
+    return ((EqqConfig)localObject).getData();
   }
   
   public void b(EqqDetail paramEqqDetail)
@@ -130,17 +122,25 @@ public class EqqDetailDataManager
     if (paramEqqDetail == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(paramEqqDetail);
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    this.a.remove(paramEqqDetail);
+    this.a.close();
+    ConcurrentHashMap localConcurrentHashMap = this.b;
     if (localConcurrentHashMap != null) {
       localConcurrentHashMap.remove(paramEqqDetail.uin);
     }
   }
   
+  public void b(String paramString)
+  {
+    if (this.c == null) {
+      this.c = new EqqConfig(paramString);
+    }
+    a(this.c);
+  }
+  
   public void onDestroy()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    EntityManager localEntityManager = this.a;
     if (localEntityManager != null) {
       localEntityManager.close();
     }
@@ -148,7 +148,7 @@ public class EqqDetailDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.EqqDetailDataManager
  * JD-Core Version:    0.7.0.1
  */

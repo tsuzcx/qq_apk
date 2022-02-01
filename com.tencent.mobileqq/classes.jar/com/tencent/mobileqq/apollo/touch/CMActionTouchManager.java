@@ -16,40 +16,317 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jetbrains.annotations.Nullable;
 
 public class CMActionTouchManager
   implements ICMTouchManager
 {
-  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d+#?_pet");
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = 350L;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private View jdField_a_of_type_AndroidViewView;
-  private OnApolloViewListener jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener;
-  private CMActionTouchManager.CheckForLongPress jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress = new CMActionTouchManager.CheckForLongPress(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<ApolloSkeletonBounding> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private boolean jdField_c_of_type_Boolean = false;
-  private float jdField_d_of_type_Float;
-  private boolean jdField_d_of_type_Boolean;
+  private static final Pattern a = Pattern.compile("\\d+#?_pet");
+  private String b;
+  private boolean c;
+  private boolean d;
+  private float e;
+  private float f;
+  private CMActionTouchManager.CheckForLongPress g = new CMActionTouchManager.CheckForLongPress(this);
+  private int h = -1;
+  private float i;
+  private float j;
+  private View k;
+  private Context l;
+  private long m = 350L;
+  private OnApolloViewListener n;
+  private boolean o = false;
+  private boolean p;
+  private RectF q;
+  private List<ApolloSkeletonBounding> r = new CopyOnWriteArrayList();
   
   public CMActionTouchManager(View paramView, OnApolloViewListener paramOnApolloViewListener)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidViewView.getContext();
-    this.jdField_a_of_type_Long = ViewConfiguration.getLongPressTimeout();
-    this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener = paramOnApolloViewListener;
+    this.k = paramView;
+    this.l = this.k.getContext();
+    this.m = ViewConfiguration.getLongPressTimeout();
+    this.n = paramOnApolloViewListener;
   }
   
-  private int a()
+  public static ClickInfo a(float paramFloat1, float paramFloat2, List<ApolloSkeletonBounding> paramList)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    ClickInfo localClickInfo1 = new ClickInfo();
+    localClickInfo1.a = -1;
+    localClickInfo1.b = "";
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][CMActionTouchManager]", 2, new Object[] { "all bounding:", paramList });
+    }
+    ClickInfo localClickInfo2 = d(paramFloat1, paramFloat2, paramList, localClickInfo1);
+    if (localClickInfo2 != null) {
+      return localClickInfo2;
+    }
+    localClickInfo2 = c(paramFloat1, paramFloat2, paramList, localClickInfo1);
+    if (localClickInfo2 != null) {
+      return localClickInfo2;
+    }
+    localClickInfo2 = b(paramFloat1, paramFloat2, paramList, localClickInfo1);
+    if (localClickInfo2 != null) {
+      return localClickInfo2;
+    }
+    paramList = a(paramFloat1, paramFloat2, paramList, localClickInfo1);
+    if (paramList != null) {
+      return paramList;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("not cmshow area, mNode:");
+      paramList.append(localClickInfo1.a);
+      paramList.append(",mApolloId=");
+      paramList.append(localClickInfo1.b);
+      QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
+    }
+    return localClickInfo1;
+  }
+  
+  @Nullable
+  private static ClickInfo a(float paramFloat1, float paramFloat2, List<ApolloSkeletonBounding> paramList, ClickInfo paramClickInfo)
+  {
+    int i1 = paramList.size() - 1;
+    while (i1 >= 0)
+    {
+      ApolloSkeletonBounding localApolloSkeletonBounding = (ApolloSkeletonBounding)paramList.get(i1);
+      if ((paramFloat1 >= localApolloSkeletonBounding.x) && (paramFloat1 <= localApolloSkeletonBounding.x + localApolloSkeletonBounding.width) && (paramFloat2 >= localApolloSkeletonBounding.y) && (paramFloat2 <= localApolloSkeletonBounding.y + localApolloSkeletonBounding.height))
+      {
+        paramClickInfo.a = 1;
+        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
+          paramList = localApolloSkeletonBounding.name;
+        } else {
+          paramList = localApolloSkeletonBounding.extendString;
+        }
+        paramClickInfo.b = paramList;
+        if (!TextUtils.isEmpty(paramClickInfo.b))
+        {
+          paramList = a.matcher(paramClickInfo.b);
+          if ((paramList != null) && (paramList.matches())) {
+            paramClickInfo.a = 5;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          paramList = new StringBuilder();
+          paramList.append("other cmshow area, mNode:");
+          paramList.append(paramClickInfo.a);
+          paramList.append(",mApolloId=");
+          paramList.append(paramClickInfo.b);
+          QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
+        }
+        return paramClickInfo;
+      }
+      i1 -= 1;
+    }
+    return null;
+  }
+  
+  private boolean a(float paramFloat1, float paramFloat2)
+  {
+    if (this.o)
+    {
+      float f1 = this.k.getWidth();
+      float f2 = this.k.getHeight();
+      if ((f1 > 0.0F) && (f2 > 0.0F))
+      {
+        if ((paramFloat1 < f1 / 2.0F) && (paramFloat2 < f2) && (this.h != 1000)) {
+          return true;
+        }
+        if (paramFloat2 > f2) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  @Nullable
+  private static ClickInfo b(float paramFloat1, float paramFloat2, List<ApolloSkeletonBounding> paramList, ClickInfo paramClickInfo)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ApolloSkeletonBounding localApolloSkeletonBounding = (ApolloSkeletonBounding)paramList.next();
+      if ((localApolloSkeletonBounding.bubbleWidth > 0.0F) && (localApolloSkeletonBounding.bubbleHeight > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.bubbleX) && (paramFloat1 <= localApolloSkeletonBounding.bubbleX + localApolloSkeletonBounding.bubbleWidth) && (paramFloat2 >= localApolloSkeletonBounding.bubbleY) && (paramFloat2 <= localApolloSkeletonBounding.bubbleY + localApolloSkeletonBounding.bubbleHeight))
+      {
+        paramClickInfo.a = 1000;
+        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
+          paramList = localApolloSkeletonBounding.name;
+        } else {
+          paramList = localApolloSkeletonBounding.extendString;
+        }
+        paramClickInfo.b = paramList;
+        if (QLog.isColorLevel())
+        {
+          paramList = new StringBuilder();
+          paramList.append("bubble, mNode:");
+          paramList.append(paramClickInfo.a);
+          paramList.append(",mApolloId=");
+          paramList.append(paramClickInfo.b);
+          QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
+        }
+        return paramClickInfo;
+      }
+    }
+    return null;
+  }
+  
+  private void b(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = this.g;
+    if (paramMotionEvent != null) {
+      this.k.removeCallbacks(paramMotionEvent);
+    }
+    if (c())
+    {
+      int i1 = 8;
+      int i2 = this.h;
+      if (i2 != 2)
+      {
+        if (i2 != 3)
+        {
+          if (i2 != 4)
+          {
+            if (i2 != 5)
+            {
+              if (i2 == 1000) {
+                i1 = 7;
+              }
+            }
+            else {
+              i1 = 12;
+            }
+          }
+          else {
+            i1 = 11;
+          }
+        }
+        else {
+          i1 = 10;
+        }
+      }
+      else {
+        i1 = 9;
+      }
+      this.n.a(i1, this.b);
+      this.b = null;
+    }
+  }
+  
+  @Nullable
+  private static ClickInfo c(float paramFloat1, float paramFloat2, List<ApolloSkeletonBounding> paramList, ClickInfo paramClickInfo)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      ApolloSkeletonBounding localApolloSkeletonBounding = (ApolloSkeletonBounding)paramList.next();
+      if ((localApolloSkeletonBounding.brand1Width > 0.0F) && (localApolloSkeletonBounding.brand1Height > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.brand1X) && (paramFloat1 <= localApolloSkeletonBounding.brand1X + localApolloSkeletonBounding.brand1Width) && (paramFloat2 >= localApolloSkeletonBounding.brand1Y) && (paramFloat2 <= localApolloSkeletonBounding.brand1Y + localApolloSkeletonBounding.brand1Height))
+      {
+        paramClickInfo.a = 3;
+        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
+          paramList = localApolloSkeletonBounding.name;
+        } else {
+          paramList = localApolloSkeletonBounding.extendString;
+        }
+        paramClickInfo.b = paramList;
+        if (QLog.isColorLevel())
+        {
+          paramList = new StringBuilder();
+          paramList.append("sprite brand, mNode:");
+          paramList.append(paramClickInfo.a);
+          paramList.append(",mApolloId=");
+          paramList.append(paramClickInfo.b);
+          QLog.d("ApolloSkeletonBounding", 2, paramList.toString());
+        }
+        return paramClickInfo;
+      }
+      if ((localApolloSkeletonBounding.brand2Width > 0.0F) && (localApolloSkeletonBounding.brand2Height > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.brand2X) && (paramFloat1 <= localApolloSkeletonBounding.brand2X + localApolloSkeletonBounding.brand2Width) && (paramFloat2 >= localApolloSkeletonBounding.brand2Y) && (paramFloat2 <= localApolloSkeletonBounding.brand2Y + localApolloSkeletonBounding.brand2Height))
+      {
+        paramClickInfo.a = 4;
+        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
+          paramList = localApolloSkeletonBounding.name;
+        } else {
+          paramList = localApolloSkeletonBounding.extendString;
+        }
+        paramClickInfo.b = paramList;
+        if (QLog.isColorLevel())
+        {
+          paramList = new StringBuilder();
+          paramList.append("pet brand, mNode:");
+          paramList.append(paramClickInfo.a);
+          paramList.append(",mApolloId=");
+          paramList.append(paramClickInfo.b);
+          QLog.d("ApolloSkeletonBounding", 2, paramList.toString());
+        }
+        return paramClickInfo;
+      }
+    }
+    return null;
+  }
+  
+  private boolean c()
+  {
+    return (this.n != null) && (!this.d) && (!this.c) && ((this.h >= 0) || (!TextUtils.isEmpty(this.b)));
+  }
+  
+  private boolean c(MotionEvent paramMotionEvent)
+  {
+    boolean bool = false;
+    this.c = false;
+    this.d = false;
+    if (this.g == null) {
+      this.g = new CMActionTouchManager.CheckForLongPress(this);
+    }
+    this.g.a();
+    this.k.postDelayed(this.g, this.m);
+    this.i = paramMotionEvent.getY();
+    this.j = paramMotionEvent.getX();
+    float f1 = this.j;
+    this.e = f1;
+    float f2 = this.i;
+    this.f = f2;
+    f2 = this.k.getBottom() - this.k.getTop() - f2;
+    this.h = -1;
+    this.b = "";
+    if (this.n == null) {
+      return false;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramMotionEvent = new StringBuilder();
+      paramMotionEvent.append("list length:");
+      paramMotionEvent.append(this.r.size());
+      paramMotionEvent.append("mPY = ");
+      paramMotionEvent.append(this.i);
+      paramMotionEvent.append(", pty = ");
+      paramMotionEvent.append(f2);
+      paramMotionEvent.append(",mPX = ");
+      paramMotionEvent.append(this.j);
+      paramMotionEvent.append(", xInView = ");
+      paramMotionEvent.append(f1);
+      paramMotionEvent.append("super.getBottom() = ");
+      paramMotionEvent.append(this.k.getBottom());
+      paramMotionEvent.append("super.getTop()");
+      paramMotionEvent.append(this.k.getTop());
+      QLog.d("[cmshow][CMActionTouchManager]", 2, paramMotionEvent.toString());
+    }
+    paramMotionEvent = a(f1, f2, this.r);
+    this.h = paramMotionEvent.a;
+    this.b = paramMotionEvent.b;
+    if (a(f1, f2)) {
+      return false;
+    }
+    if ((this.h >= 0) || (!TextUtils.isEmpty(this.b))) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private int d()
+  {
+    View localView = this.k;
     if ((localView instanceof ApolloTextureView)) {
       return ((ApolloTextureView)localView).getWindowAttachCount();
     }
@@ -59,153 +336,55 @@ public class CMActionTouchManager
     return 0;
   }
   
-  public static ClickInfo a(float paramFloat1, float paramFloat2, List<ApolloSkeletonBounding> paramList)
+  @Nullable
+  private static ClickInfo d(float paramFloat1, float paramFloat2, List<ApolloSkeletonBounding> paramList, ClickInfo paramClickInfo)
   {
-    ClickInfo localClickInfo = new ClickInfo();
-    localClickInfo.jdField_a_of_type_Int = -1;
-    localClickInfo.jdField_a_of_type_JavaLangString = "";
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][CMActionTouchManager]", 2, new Object[] { "all bounding:", paramList });
-    }
-    Object localObject = paramList.iterator();
-    ApolloSkeletonBounding localApolloSkeletonBounding;
-    while (((Iterator)localObject).hasNext())
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localApolloSkeletonBounding = (ApolloSkeletonBounding)((Iterator)localObject).next();
+      ApolloSkeletonBounding localApolloSkeletonBounding = (ApolloSkeletonBounding)paramList.next();
       if ((localApolloSkeletonBounding.giftHeight > 0.0F) && (localApolloSkeletonBounding.giftWidth > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.giftX) && (paramFloat1 <= localApolloSkeletonBounding.giftX + localApolloSkeletonBounding.giftWidth) && (paramFloat2 >= localApolloSkeletonBounding.giftY) && (paramFloat2 <= localApolloSkeletonBounding.giftY + localApolloSkeletonBounding.giftHeight))
       {
-        localClickInfo.jdField_a_of_type_Int = 2;
+        paramClickInfo.a = 2;
         if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
           paramList = localApolloSkeletonBounding.name;
         } else {
           paramList = localApolloSkeletonBounding.extendString;
         }
-        localClickInfo.jdField_a_of_type_JavaLangString = paramList;
+        paramClickInfo.b = paramList;
         if (QLog.isColorLevel())
         {
           paramList = new StringBuilder();
           paramList.append("gift mNode:");
-          paramList.append(localClickInfo.jdField_a_of_type_Int);
+          paramList.append(paramClickInfo.a);
           paramList.append(",mApolloId=");
-          paramList.append(localClickInfo.jdField_a_of_type_JavaLangString);
+          paramList.append(paramClickInfo.b);
           QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
         }
-        return localClickInfo;
+        return paramClickInfo;
       }
     }
-    localObject = paramList.iterator();
-    while (((Iterator)localObject).hasNext())
+    return null;
+  }
+  
+  private void d(MotionEvent paramMotionEvent)
+  {
+    this.j = paramMotionEvent.getX();
+    this.i = paramMotionEvent.getY();
+    if ((Math.abs(this.j - this.e) > ViewConfiguration.get(this.l).getScaledTouchSlop()) || (Math.abs(this.i - this.f) > ViewConfiguration.get(this.l).getScaledTouchSlop()))
     {
-      localApolloSkeletonBounding = (ApolloSkeletonBounding)((Iterator)localObject).next();
-      if ((localApolloSkeletonBounding.brand1Width > 0.0F) && (localApolloSkeletonBounding.brand1Height > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.brand1X) && (paramFloat1 <= localApolloSkeletonBounding.brand1X + localApolloSkeletonBounding.brand1Width) && (paramFloat2 >= localApolloSkeletonBounding.brand1Y) && (paramFloat2 <= localApolloSkeletonBounding.brand1Y + localApolloSkeletonBounding.brand1Height))
-      {
-        localClickInfo.jdField_a_of_type_Int = 3;
-        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
-          paramList = localApolloSkeletonBounding.name;
-        } else {
-          paramList = localApolloSkeletonBounding.extendString;
-        }
-        localClickInfo.jdField_a_of_type_JavaLangString = paramList;
-        if (QLog.isColorLevel())
-        {
-          paramList = new StringBuilder();
-          paramList.append("sprite brand, mNode:");
-          paramList.append(localClickInfo.jdField_a_of_type_Int);
-          paramList.append(",mApolloId=");
-          paramList.append(localClickInfo.jdField_a_of_type_JavaLangString);
-          QLog.d("ApolloSkeletonBounding", 2, paramList.toString());
-        }
-        return localClickInfo;
-      }
-      if ((localApolloSkeletonBounding.brand2Width > 0.0F) && (localApolloSkeletonBounding.brand2Height > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.brand2X) && (paramFloat1 <= localApolloSkeletonBounding.brand2X + localApolloSkeletonBounding.brand2Width) && (paramFloat2 >= localApolloSkeletonBounding.brand2Y) && (paramFloat2 <= localApolloSkeletonBounding.brand2Y + localApolloSkeletonBounding.brand2Height))
-      {
-        localClickInfo.jdField_a_of_type_Int = 4;
-        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
-          paramList = localApolloSkeletonBounding.name;
-        } else {
-          paramList = localApolloSkeletonBounding.extendString;
-        }
-        localClickInfo.jdField_a_of_type_JavaLangString = paramList;
-        if (QLog.isColorLevel())
-        {
-          paramList = new StringBuilder();
-          paramList.append("pet brand, mNode:");
-          paramList.append(localClickInfo.jdField_a_of_type_Int);
-          paramList.append(",mApolloId=");
-          paramList.append(localClickInfo.jdField_a_of_type_JavaLangString);
-          QLog.d("ApolloSkeletonBounding", 2, paramList.toString());
-        }
-        return localClickInfo;
-      }
+      this.k.removeCallbacks(this.g);
+      this.d = false;
+      this.c = true;
     }
-    localObject = paramList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localApolloSkeletonBounding = (ApolloSkeletonBounding)((Iterator)localObject).next();
-      if ((localApolloSkeletonBounding.bubbleWidth > 0.0F) && (localApolloSkeletonBounding.bubbleHeight > 0.0F) && (paramFloat1 >= localApolloSkeletonBounding.bubbleX) && (paramFloat1 <= localApolloSkeletonBounding.bubbleX + localApolloSkeletonBounding.bubbleWidth) && (paramFloat2 >= localApolloSkeletonBounding.bubbleY) && (paramFloat2 <= localApolloSkeletonBounding.bubbleY + localApolloSkeletonBounding.bubbleHeight))
-      {
-        localClickInfo.jdField_a_of_type_Int = 1000;
-        if (TextUtils.isEmpty(localApolloSkeletonBounding.extendString)) {
-          paramList = localApolloSkeletonBounding.name;
-        } else {
-          paramList = localApolloSkeletonBounding.extendString;
-        }
-        localClickInfo.jdField_a_of_type_JavaLangString = paramList;
-        if (QLog.isColorLevel())
-        {
-          paramList = new StringBuilder();
-          paramList.append("bubble, mNode:");
-          paramList.append(localClickInfo.jdField_a_of_type_Int);
-          paramList.append(",mApolloId=");
-          paramList.append(localClickInfo.jdField_a_of_type_JavaLangString);
-          QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
-        }
-        return localClickInfo;
-      }
+  }
+  
+  private void e(MotionEvent paramMotionEvent)
+  {
+    paramMotionEvent = this.g;
+    if (paramMotionEvent != null) {
+      this.k.removeCallbacks(paramMotionEvent);
     }
-    int i = paramList.size() - 1;
-    while (i >= 0)
-    {
-      localObject = (ApolloSkeletonBounding)paramList.get(i);
-      if ((paramFloat1 >= ((ApolloSkeletonBounding)localObject).x) && (paramFloat1 <= ((ApolloSkeletonBounding)localObject).x + ((ApolloSkeletonBounding)localObject).width) && (paramFloat2 >= ((ApolloSkeletonBounding)localObject).y) && (paramFloat2 <= ((ApolloSkeletonBounding)localObject).y + ((ApolloSkeletonBounding)localObject).height))
-      {
-        localClickInfo.jdField_a_of_type_Int = 1;
-        if (TextUtils.isEmpty(((ApolloSkeletonBounding)localObject).extendString)) {
-          paramList = ((ApolloSkeletonBounding)localObject).name;
-        } else {
-          paramList = ((ApolloSkeletonBounding)localObject).extendString;
-        }
-        localClickInfo.jdField_a_of_type_JavaLangString = paramList;
-        if (!TextUtils.isEmpty(localClickInfo.jdField_a_of_type_JavaLangString))
-        {
-          paramList = jdField_a_of_type_JavaUtilRegexPattern.matcher(localClickInfo.jdField_a_of_type_JavaLangString);
-          if ((paramList != null) && (paramList.matches())) {
-            localClickInfo.jdField_a_of_type_Int = 5;
-          }
-        }
-        if (QLog.isColorLevel())
-        {
-          paramList = new StringBuilder();
-          paramList.append("other cmshow area, mNode:");
-          paramList.append(localClickInfo.jdField_a_of_type_Int);
-          paramList.append(",mApolloId=");
-          paramList.append(localClickInfo.jdField_a_of_type_JavaLangString);
-          QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
-        }
-        return localClickInfo;
-      }
-      i -= 1;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramList = new StringBuilder();
-      paramList.append("not cmshow area, mNode:");
-      paramList.append(localClickInfo.jdField_a_of_type_Int);
-      paramList.append(",mApolloId=");
-      paramList.append(localClickInfo.jdField_a_of_type_JavaLangString);
-      QLog.d("[cmshow][CMActionTouchManager]", 2, paramList.toString());
-    }
-    return localClickInfo;
   }
   
   public float a()
@@ -213,36 +392,36 @@ public class CMActionTouchManager
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][CMActionTouchManager]", 2, "[getManRectMaxHeight]");
     }
-    float f = 0.0F;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    float f1 = 0.0F;
+    Iterator localIterator = this.r.iterator();
     while (localIterator.hasNext()) {
-      f = Math.max(f, ((ApolloSkeletonBounding)localIterator.next()).height);
+      f1 = Math.max(f1, ((ApolloSkeletonBounding)localIterator.next()).height);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][CMActionTouchManager]", 2, new Object[] { "[getManRectMaxHeight] height:", Float.valueOf(f) });
+      QLog.d("[cmshow][CMActionTouchManager]", 2, new Object[] { "[getManRectMaxHeight] height:", Float.valueOf(f1) });
     }
-    return f;
+    return f1;
   }
   
   public void a(RectF paramRectF)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
+    this.q = paramRectF;
   }
   
   public void a(ApolloSkeletonBounding paramApolloSkeletonBounding, int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i = localList.size();
-    int k = 1;
-    i -= 1;
-    int j;
+    List localList = this.r;
+    int i1 = localList.size();
+    int i3 = 1;
+    i1 -= 1;
+    int i2;
     for (;;)
     {
-      j = k;
-      if (i < 0) {
+      i2 = i3;
+      if (i1 < 0) {
         break;
       }
-      ApolloSkeletonBounding localApolloSkeletonBounding = (ApolloSkeletonBounding)localList.get(i);
+      ApolloSkeletonBounding localApolloSkeletonBounding = (ApolloSkeletonBounding)localList.get(i1);
       if (localApolloSkeletonBounding.name.equals(paramApolloSkeletonBounding.name))
       {
         if (paramInt == 0) {
@@ -250,32 +429,30 @@ public class CMActionTouchManager
         } else {
           localList.remove(localApolloSkeletonBounding);
         }
-        j = 0;
+        i2 = 0;
         break;
       }
-      i -= 1;
+      i1 -= 1;
     }
-    if (j != 0) {
+    if (i2 != 0) {
       localList.add(paramApolloSkeletonBounding);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.p = paramBoolean;
   }
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = this.jdField_d_of_type_Boolean;
-    boolean bool1 = false;
-    if (bool2) {
+    if (this.p) {
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener == null) {
+    if (this.n == null) {
       return false;
     }
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    RectF localRectF = this.q;
     if (localRectF != null)
     {
       if (!localRectF.contains(paramMotionEvent.getX(), paramMotionEvent.getY()))
@@ -285,151 +462,41 @@ public class CMActionTouchManager
       }
       QLog.d("[cmshow][CMActionTouchManager]", 2, "touch in mTouchableRect!");
     }
-    int i = paramMotionEvent.getAction() & 0xFF;
-    if (i != 0)
+    int i1 = paramMotionEvent.getAction() & 0xFF;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i != 3) {
+          if (i1 != 3) {
             return false;
           }
-          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress;
-          if (paramMotionEvent != null)
-          {
-            this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramMotionEvent);
-            return false;
-          }
-        }
-        else
-        {
-          this.jdField_d_of_type_Float = paramMotionEvent.getX();
-          this.jdField_c_of_type_Float = paramMotionEvent.getY();
-          if ((Math.abs(this.jdField_d_of_type_Float - this.jdField_a_of_type_Float) > ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop()) || (Math.abs(this.jdField_c_of_type_Float - this.jdField_b_of_type_Float) > ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop()))
-          {
-            this.jdField_a_of_type_AndroidViewView.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress);
-            this.jdField_b_of_type_Boolean = false;
-            this.jdField_a_of_type_Boolean = true;
-          }
-          return true;
-        }
-      }
-      else
-      {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress;
-        if (paramMotionEvent != null) {
-          this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramMotionEvent);
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener != null) && (!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Int >= 0) || (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))))
-        {
-          i = 8;
-          int j = this.jdField_a_of_type_Int;
-          if (j != 2)
-          {
-            if (j != 3)
-            {
-              if (j != 4)
-              {
-                if (j != 5)
-                {
-                  if (j == 1000) {
-                    i = 7;
-                  }
-                }
-                else {
-                  i = 12;
-                }
-              }
-              else {
-                i = 11;
-              }
-            }
-            else {
-              i = 10;
-            }
-          }
-          else {
-            i = 9;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener.onNotifyStatusChanged(i, this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaLangString = null;
-        }
-      }
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress == null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress = new CMActionTouchManager.CheckForLongPress(this);
-    }
-    if (!this.jdField_c_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress.a();
-      this.jdField_a_of_type_AndroidViewView.postDelayed(this.jdField_a_of_type_ComTencentMobileqqApolloTouchCMActionTouchManager$CheckForLongPress, this.jdField_a_of_type_Long);
-    }
-    this.jdField_c_of_type_Float = paramMotionEvent.getY();
-    this.jdField_d_of_type_Float = paramMotionEvent.getX();
-    float f1 = this.jdField_d_of_type_Float;
-    this.jdField_a_of_type_Float = f1;
-    float f2 = this.jdField_c_of_type_Float;
-    this.jdField_b_of_type_Float = f2;
-    f2 = this.jdField_a_of_type_AndroidViewView.getBottom() - this.jdField_a_of_type_AndroidViewView.getTop() - f2;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloListenerOnApolloViewListener == null) {
-      return false;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramMotionEvent = new StringBuilder();
-      paramMotionEvent.append("list length:");
-      paramMotionEvent.append(this.jdField_a_of_type_JavaUtilList.size());
-      paramMotionEvent.append("mPY = ");
-      paramMotionEvent.append(this.jdField_c_of_type_Float);
-      paramMotionEvent.append(", pty = ");
-      paramMotionEvent.append(f2);
-      paramMotionEvent.append(",mPX = ");
-      paramMotionEvent.append(this.jdField_d_of_type_Float);
-      paramMotionEvent.append(", xInView = ");
-      paramMotionEvent.append(f1);
-      paramMotionEvent.append("super.getBottom() = ");
-      paramMotionEvent.append(this.jdField_a_of_type_AndroidViewView.getBottom());
-      paramMotionEvent.append("super.getTop()");
-      paramMotionEvent.append(this.jdField_a_of_type_AndroidViewView.getTop());
-      QLog.d("[cmshow][CMActionTouchManager]", 2, paramMotionEvent.toString());
-    }
-    paramMotionEvent = a(f1, f2, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Int = paramMotionEvent.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramMotionEvent.jdField_a_of_type_JavaLangString;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      float f3 = this.jdField_a_of_type_AndroidViewView.getWidth();
-      float f4 = this.jdField_a_of_type_AndroidViewView.getHeight();
-      if ((f3 > 0.0F) && (f4 > 0.0F))
-      {
-        if ((f1 < f3 / 2.0F) && (f2 < f4) && (this.jdField_a_of_type_Int != 1000)) {
+          e(paramMotionEvent);
           return false;
         }
-        if (f2 > f4) {
-          return false;
-        }
+        d(paramMotionEvent);
+        return true;
       }
+      b(paramMotionEvent);
+      return false;
     }
-    if ((this.jdField_a_of_type_Int >= 0) || (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      bool1 = true;
-    }
-    return bool1;
+    return c(paramMotionEvent);
+  }
+  
+  public List<ApolloSkeletonBounding> b()
+  {
+    return this.r;
   }
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.o = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.touch.CMActionTouchManager
  * JD-Core Version:    0.7.0.1
  */

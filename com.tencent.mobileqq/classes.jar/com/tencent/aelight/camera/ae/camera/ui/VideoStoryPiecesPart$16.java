@@ -1,53 +1,29 @@
 package com.tencent.aelight.camera.ae.camera.ui;
 
-import android.app.Activity;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.aelight.camera.ae.mode.AECaptureMode;
-import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 class VideoStoryPiecesPart$16
-  implements Runnable
+  implements Observer<Boolean>
 {
   VideoStoryPiecesPart$16(VideoStoryPiecesPart paramVideoStoryPiecesPart) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    Object localObject2 = (RelativeLayout)VideoStoryPiecesPart.e(this.this$0).findViewById(2064122567);
-    if (localObject2 != null)
-    {
-      Object localObject1 = VideoStoryPiecesPart.a(this.this$0).getLayoutParams();
-      if ((localObject1 instanceof RelativeLayout.LayoutParams))
-      {
-        ArrayList localArrayList = new ArrayList();
-        ((RelativeLayout)localObject2).findViewsWithText(localArrayList, VideoStoryPiecesPart.i(this.this$0).getText(AECaptureMode.GIF.textId), 1);
-        if (localArrayList.size() == 1)
-        {
-          localObject2 = new Rect();
-          ((View)localArrayList.get(0)).getGlobalVisibleRect((Rect)localObject2);
-          int i = VideoStoryPiecesPart.a(this.this$0).getMeasuredWidth();
-          ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((((Rect)localObject2).left + ((Rect)localObject2).right) / 2 - i / 2);
-          VideoStoryPiecesPart.a(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-          VideoStoryPiecesPart.a(this.this$0).setVisibility(0);
-          localObject1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -15.0F);
-          ((TranslateAnimation)localObject1).setDuration(300L);
-          ((TranslateAnimation)localObject1).setRepeatCount(-1);
-          ((TranslateAnimation)localObject1).setRepeatMode(2);
-          VideoStoryPiecesPart.a(this.this$0).startAnimation((Animation)localObject1);
-        }
-      }
+    VideoStoryPiecesPart.G(this.a);
+    VideoStoryPiecesPart.I(this.a);
+    if ((paramBoolean != null) && (paramBoolean.booleanValue())) {
+      VideoStoryPiecesPart.W(this.a);
+    }
+    VideoStoryPiecesPart.J(this.a);
+    if (paramBoolean != null) {
+      VideoStoryPiecesPart.b(this.a, paramBoolean.booleanValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.VideoStoryPiecesPart.16
  * JD-Core Version:    0.7.0.1
  */

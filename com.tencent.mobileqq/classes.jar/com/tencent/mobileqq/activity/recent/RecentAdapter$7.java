@@ -11,12 +11,12 @@ class RecentAdapter$7
   
   public void run()
   {
-    ((MessageHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, false);
+    ((MessageHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a(this.a, this.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.7
  * JD-Core Version:    0.7.0.1
  */

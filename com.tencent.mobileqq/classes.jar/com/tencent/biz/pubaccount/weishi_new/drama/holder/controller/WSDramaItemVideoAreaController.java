@@ -20,49 +20,39 @@ public class WSDramaItemVideoAreaController
   extends AbsWSDramaUIGroup
   implements View.OnClickListener
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private View b;
+  private ViewGroup j;
+  private KandianUrlImageView k;
+  private TextView l;
+  private View m;
   
   public WSDramaItemVideoAreaController(Context paramContext)
   {
     super(paramContext);
   }
   
-  private String a()
+  private void o()
   {
-    if ((this.jdField_a_of_type_UserGrowthStDrama != null) && (this.jdField_a_of_type_UserGrowthStDrama.dramaInfo != null)) {
-      return this.jdField_a_of_type_UserGrowthStDrama.dramaInfo.coverImg;
+    if (q())
+    {
+      this.k.setVisibility(8);
+      return;
+    }
+    this.k.setVisibility(0);
+    Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130842687);
+    WSPicLoader.a().a(this.k, p(), localDrawable);
+  }
+  
+  private String p()
+  {
+    if ((this.g != null) && (this.g.dramaInfo != null)) {
+      return this.g.dramaInfo.coverImg;
     }
     return "";
   }
   
-  private boolean a()
+  private boolean q()
   {
     return false;
-  }
-  
-  private void g()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
-    Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841770);
-    WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, a(), localDrawable);
-  }
-  
-  public ViewGroup a()
-  {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
-  }
-  
-  public ImageView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
   }
   
   protected void a()
@@ -72,63 +62,73 @@ public class WSDramaItemVideoAreaController
   
   public void a(int paramInt1, int paramInt2)
   {
-    KandianUrlImageView localKandianUrlImageView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
+    KandianUrlImageView localKandianUrlImageView = this.k;
     if (localKandianUrlImageView == null) {
       return;
     }
     if (paramInt1 == localKandianUrlImageView.getVisibility()) {
       return;
     }
-    WeishiUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, paramInt1, paramInt2);
+    WeishiUtils.a(this.k, paramInt1, paramInt2);
   }
   
   public void a(String paramString)
   {
-    this.b.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  protected int b()
-  {
-    return 2131560005;
+    this.m.setVisibility(0);
+    this.l.setVisibility(0);
+    this.l.setText(paramString);
   }
   
   protected void b()
   {
-    g();
-    f();
+    o();
+    n();
   }
   
-  protected void c() {}
+  public void d(int paramInt) {}
   
-  public void c(int paramInt) {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((FrameLayout)a(2131380462));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131380463));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380465));
-    this.b = a(2131380464);
-    this.b.setOnClickListener(this);
+    return 2131626048;
   }
   
-  public void f()
+  protected void j()
   {
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.j = ((FrameLayout)c(2131449415));
+    this.k = ((KandianUrlImageView)c(2131449416));
+    this.l = ((TextView)c(2131449418));
+    this.m = c(2131449417);
+    this.m.setOnClickListener(this);
+  }
+  
+  public ViewGroup l()
+  {
+    return this.j;
+  }
+  
+  public ImageView m()
+  {
+    return this.k;
+  }
+  
+  public void n()
+  {
+    this.m.setVisibility(8);
+    this.l.setVisibility(8);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380464) {
-      f();
+    if (paramView.getId() == 2131449417) {
+      n();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.holder.controller.WSDramaItemVideoAreaController
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class ArkAppSSO$1
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkIQueryPackageNameByAppIDCallback.a(paramBoolean, paramString1, paramString2, paramObject);
+    this.a.a(paramBoolean, paramString1, paramString2, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.core.ArkAppSSO.1
  * JD-Core Version:    0.7.0.1
  */

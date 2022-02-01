@@ -8,18 +8,19 @@ import android.os.Build.VERSION;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.util.QQDeviceInfo;
 
 public class PhoneUtil
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static String jdField_a_of_type_JavaLangString = "";
+  private static int a = -1;
+  private static String b = "";
   
   public static String a(Application paramApplication, Activity paramActivity)
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(b)) {
+      return b;
     }
     Object localObject2 = "";
     Context localContext = paramApplication.getApplicationContext();
@@ -27,7 +28,7 @@ public class PhoneUtil
     if (a(paramApplication))
     {
       localObject1 = (TelephonyManager)localContext.getSystemService("phone");
-      String str = ((TelephonyManager)localObject1).getDeviceId();
+      String str = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject1);
       paramApplication = (Application)localObject2;
       if (!TextUtils.isEmpty(str))
       {
@@ -36,7 +37,7 @@ public class PhoneUtil
         paramApplication.append(str);
         paramApplication = paramApplication.toString();
       }
-      localObject2 = ((TelephonyManager)localObject1).getSubscriberId();
+      localObject2 = PhoneInfoMonitor.getSubscriberId((TelephonyManager)localObject1);
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
         localObject1 = new StringBuilder();
@@ -74,22 +75,22 @@ public class PhoneUtil
     {
       paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
     }
-    jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
-    return jdField_a_of_type_JavaLangString;
+    b = MD5.toMD5(paramApplication);
+    return b;
   }
   
   private static boolean a(Application paramApplication)
   {
-    int i = jdField_a_of_type_Int;
+    int i = a;
     if (i == -1)
     {
       boolean bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
       if (bool)
       {
-        jdField_a_of_type_Int = 1;
+        a = 1;
         return bool;
       }
-      jdField_a_of_type_Int = 0;
+      a = 0;
       return bool;
     }
     return i > 0;
@@ -113,7 +114,7 @@ public class PhoneUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mfsdk.tools.PhoneUtil
  * JD-Core Version:    0.7.0.1
  */

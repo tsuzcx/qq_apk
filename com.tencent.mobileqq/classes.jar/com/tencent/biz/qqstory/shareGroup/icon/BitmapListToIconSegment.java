@@ -12,20 +12,20 @@ import java.util.List;
 public class BitmapListToIconSegment
   extends JobSegment<List<Bitmap>, Bitmap>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
+  private String a = "story.icon.BitmapListToIconSegment";
+  private Context b;
+  private int c;
   
   public BitmapListToIconSegment(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     paramContext = new StringBuilder();
-    paramContext.append(this.jdField_a_of_type_JavaLangString);
+    paramContext.append(this.a);
     paramContext.append("[");
     paramContext.append(paramString);
     paramContext.append("]");
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramContext.toString();
+    this.c = paramInt;
   }
   
   protected void a(JobContext paramJobContext, List<Bitmap> paramList)
@@ -33,8 +33,8 @@ public class BitmapListToIconSegment
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
-      paramList = PuzzleAvatarUtil.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
-      IconLog.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
+      paramList = PuzzleAvatarUtil.a(this.c, Bitmap.Config.ARGB_8888, paramJobContext);
+      IconLog.b(this.a, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
       notifyResult(paramList);
       return;
     }

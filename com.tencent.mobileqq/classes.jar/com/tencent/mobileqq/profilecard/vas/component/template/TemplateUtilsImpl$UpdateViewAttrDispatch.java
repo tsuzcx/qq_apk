@@ -29,7 +29,7 @@ class TemplateUtilsImpl$UpdateViewAttrDispatch
     int i1 = ((Rect)localObject).right;
     int i2 = paramView.getPaddingBottom();
     int i3 = ((Rect)localObject).bottom;
-    localObject = paramView.findViewById(2131374296);
+    localObject = paramView.findViewById(2131442459);
     if (Build.VERSION.SDK_INT >= 16)
     {
       paramView.setBackground(paramDrawable);
@@ -188,7 +188,7 @@ class TemplateUtilsImpl$UpdateViewAttrDispatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.template.TemplateUtilsImpl.UpdateViewAttrDispatch
  * JD-Core Version:    0.7.0.1
  */

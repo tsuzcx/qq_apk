@@ -7,9 +7,9 @@ class MultiIncomingCallUICtr$1$1
   
   public void run()
   {
-    this.a.a.e();
-    if (this.a.a.a != null) {
-      this.a.a.a.a();
+    this.a.a.f();
+    if (this.a.a.o != null) {
+      this.a.a.o.a();
     }
   }
 }

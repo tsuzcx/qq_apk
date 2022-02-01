@@ -21,12 +21,12 @@ public class AECameraCategoryMaterialServiceImpl
   
   private long getLastEntryTime()
   {
-    return AECameraPrefsUtil.a().a("lasttime", 0L, 0);
+    return AECameraPrefsUtil.a().b("lasttime", 0L, 0);
   }
   
   private String getLastEntryVersion()
   {
-    return AECameraPrefsUtil.a().a("last_entry_version", "", 4);
+    return AECameraPrefsUtil.a().b("last_entry_version", "", 4);
   }
   
   private void setLastEntryTime(long paramLong)
@@ -51,26 +51,25 @@ public class AECameraCategoryMaterialServiceImpl
       if (System.currentTimeMillis() - getLastEntryTime() > 86400000L)
       {
         setLastEntryTime(System.currentTimeMillis());
-        setLastVersion(AppSetting.a());
+        setLastVersion(AppSetting.b());
         this.mHandler.a("MqStoryCamera");
         this.mHandler.a("MqEmoCamera");
+        this.mHandler.a("MqKuaishanCamera");
         this.mHandler.a("MqCircleWatermark");
-        this.mHandler.c();
+        this.mHandler.d();
         this.mHandler.b();
         ((IAEResDownload)QRoute.api(IAEResDownload.class)).preDownloadAERes();
-        return;
       }
-      if (!AppSetting.a().equals(getLastEntryVersion()))
+      else if (!AppSetting.b().equals(getLastEntryVersion()))
       {
-        setLastVersion(AppSetting.a());
+        setLastVersion(AppSetting.b());
         this.mHandler.b();
         ((IAEResDownload)QRoute.api(IAEResDownload.class)).preDownloadAERes();
       }
+      this.mHandler.c();
+      return;
     }
-    else
-    {
-      AEQLog.d("CameraCategoryMaterialService", "[CameraCategoryMaterialStep] Build.VERSION.SDK_INT < 5.0");
-    }
+    AEQLog.d("CameraCategoryMaterialService", "[CameraCategoryMaterialStep] Build.VERSION.SDK_INT < 5.0");
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -102,7 +101,7 @@ public class AECameraCategoryMaterialServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.control.api.impl.AECameraCategoryMaterialServiceImpl
  * JD-Core Version:    0.7.0.1
  */

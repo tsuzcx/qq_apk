@@ -3,29 +3,29 @@ package com.tencent.av.ui.avatar;
 public class AvatarParam
 {
   public final int a;
-  public final String a;
-  public final boolean a;
   public final String b;
+  public final String c;
+  public final boolean d;
   
   public AvatarParam(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramInt;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramBoolean;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{uinType: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", uin: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", extraUin: ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", extraUin: ");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", isRound: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

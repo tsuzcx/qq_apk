@@ -36,11 +36,11 @@ class ProfileCardCheckUpdate$2
         ((StringBuilder)localObject2).append(".tmp");
         localObject1 = new File(((StringBuilder)localObject2).toString());
         localObject2 = new DownloadTask(this.a, (File)localObject1);
-        ((DownloadTask)localObject2).f = "profileCardDownload";
-        ((DownloadTask)localObject2).e = "VIP_profilecard";
+        ((DownloadTask)localObject2).L = "profileCardDownload";
+        ((DownloadTask)localObject2).K = "VIP_profilecard";
         i = 1;
-        ((DownloadTask)localObject2).a = 1;
-        ((DownloadTask)localObject2).n = true;
+        ((DownloadTask)localObject2).O = 1;
+        ((DownloadTask)localObject2).J = true;
         int j = DownloaderFactory.a((DownloadTask)localObject2, this.this$0.a);
         if (j != 0) {
           break label305;
@@ -78,7 +78,7 @@ class ProfileCardCheckUpdate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardCheckUpdate.2
  * JD-Core Version:    0.7.0.1
  */

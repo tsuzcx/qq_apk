@@ -2,7 +2,7 @@ package com.tencent.mobileqq.kandian.biz.xtab;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
+import android.view.View;
 import kotlin.Metadata;
 import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
@@ -11,21 +11,21 @@ import kotlin.jvm.internal.Intrinsics;
 final class RIJXTabLayout$animateSelectedTab$$inlined$apply$lambda$1
   implements ValueAnimator.AnimatorUpdateListener
 {
-  RIJXTabLayout$animateSelectedTab$$inlined$apply$lambda$1(TextView paramTextView) {}
+  RIJXTabLayout$animateSelectedTab$$inlined$apply$lambda$1(View paramView) {}
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    TextView localTextView = this.a;
+    View localView = this.a;
     Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
     Object localObject = paramValueAnimator.getAnimatedValue();
     if (localObject != null)
     {
-      localTextView.setScaleX(((Float)localObject).floatValue());
-      localTextView = this.a;
+      localView.setScaleX(((Float)localObject).floatValue());
+      localView = this.a;
       paramValueAnimator = paramValueAnimator.getAnimatedValue();
       if (paramValueAnimator != null)
       {
-        localTextView.setScaleY(((Float)paramValueAnimator).floatValue());
+        localView.setScaleY(((Float)paramValueAnimator).floatValue());
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
@@ -35,7 +35,7 @@ final class RIJXTabLayout$animateSelectedTab$$inlined$apply$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabLayout.animateSelectedTab..inlined.apply.lambda.1
  * JD-Core Version:    0.7.0.1
  */

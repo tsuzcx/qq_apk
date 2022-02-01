@@ -20,19 +20,6 @@ public class SpringFestivalRedpacketPreloadConfProcessor
     return new SpringFestivalRedpacketPreloadConfBean();
   }
   
-  protected SpringFestivalRedpacketPreloadConfBean a(QConfItem[] paramArrayOfQConfItem)
-  {
-    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
-    {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021_SpringFestivalRedpacketPreloadConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
-      }
-      return SpringFestivalRedpacketPreloadConfBean.a(paramArrayOfQConfItem);
-    }
-    return null;
-  }
-  
   public void a(SpringFestivalRedpacketPreloadConfBean paramSpringFestivalRedpacketPreloadConfBean)
   {
     try
@@ -53,7 +40,7 @@ public class SpringFestivalRedpacketPreloadConfProcessor
         SpringHbMonitorReporter.a();
         if ((paramSpringFestivalRedpacketPreloadConfBean.a != null) && (paramSpringFestivalRedpacketPreloadConfBean.a.length() > 0))
         {
-          SpringHbMonitorReporter.a(localQQAppInterface, 1, 0, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), true, SpringHbMonitorReporter.a(type()));
+          SpringHbMonitorReporter.a(localQQAppInterface, 1, 0, type(), SpringHbMonitorReporter.a(type()), QConfigManager.b().a(type(), localQQAppInterface.getCurrentAccountUin()), true, SpringHbMonitorReporter.b(type()));
           return;
         }
       }
@@ -64,8 +51,21 @@ public class SpringFestivalRedpacketPreloadConfProcessor
     }
   }
   
+  protected SpringFestivalRedpacketPreloadConfBean b(QConfItem[] paramArrayOfQConfItem)
+  {
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
+    {
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021_SpringFestivalRedpacketPreloadConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
+      }
+      return SpringFestivalRedpacketPreloadConfBean.a(paramArrayOfQConfItem);
+    }
+    return null;
+  }
+  
   @Nullable
-  public SpringFestivalRedpacketPreloadConfBean b(QConfItem[] paramArrayOfQConfItem)
+  public SpringFestivalRedpacketPreloadConfBean c(QConfItem[] paramArrayOfQConfItem)
   {
     return (SpringFestivalRedpacketPreloadConfBean)super.onParsed(paramArrayOfQConfItem);
   }
@@ -106,7 +106,7 @@ public class SpringFestivalRedpacketPreloadConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPreloadConfProcessor
  * JD-Core Version:    0.7.0.1
  */

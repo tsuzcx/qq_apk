@@ -10,8 +10,6 @@ public abstract interface IVideoCaptureView
 {
   public abstract int a();
   
-  public abstract ViewGroup a();
-  
   public abstract void a(float paramFloat, boolean paramBoolean);
   
   public abstract void a(int paramInt);
@@ -27,10 +25,12 @@ public abstract interface IVideoCaptureView
   public abstract void b(long paramLong);
   
   public abstract void b(List<CaptureTask> paramList);
+  
+  public abstract ViewGroup c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.coverselect.IVideoCaptureView
  * JD-Core Version:    0.7.0.1
  */

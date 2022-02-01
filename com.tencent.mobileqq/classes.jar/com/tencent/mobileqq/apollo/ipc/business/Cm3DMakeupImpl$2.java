@@ -38,46 +38,46 @@ class Cm3DMakeupImpl$2
         paramMessage = new StringBuilder();
         paramMessage.append("[mTransProcessorHandler] upload cmshow3D face data error:");
         paramMessage.append(localFileMsg.serverPath);
-        QLog.e("[cmshow][apollo]Cm3DMakeupImpl", 1, paramMessage.toString());
-        this.jdField_a_of_type_ComTencentMobileqqApolloIpcBusinessICm3DMakeup$Save3DFaceListener.a();
+        QLog.e("[cmshow]Cm3DMakeupImpl", 1, paramMessage.toString());
+        this.a.a();
         return;
       case 1004: 
         paramMessage = new StringBuilder();
         paramMessage.append("upload cmshow cmshow3D face data cancel:");
         paramMessage.append(localFileMsg.serverPath);
-        QLog.i("[cmshow][apollo]Cm3DMakeupImpl", 1, paramMessage.toString());
+        QLog.i("[cmshow]Cm3DMakeupImpl", 1, paramMessage.toString());
         return;
       case 1003: 
         paramMessage = new StringBuilder();
         paramMessage.append("finish upload cmshow3D face data");
         paramMessage.append(localFileMsg.serverPath);
-        QLog.d("[cmshow][apollo]Cm3DMakeupImpl", 2, paramMessage.toString());
+        QLog.d("[cmshow]Cm3DMakeupImpl", 2, paramMessage.toString());
         paramMessage = new Bdh_extinfo.UploadPicExtInfo();
         try
         {
           paramMessage.mergeFrom(localFileMsg.bdhExtendInfo);
           paramMessage = paramMessage.bytes_download_url.get().toStringUtf8();
-          this.jdField_a_of_type_ComTencentMobileqqApolloIpcBusinessICm3DMakeup$Save3DFaceListener.a(paramMessage);
-          if (this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController != null)
+          this.a.a(paramMessage);
+          if (this.b != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqTransfileApiITransFileController.removeHandle(this);
+            this.b.removeHandle(this);
             return;
           }
         }
         catch (InvalidProtocolBufferMicroException paramMessage)
         {
-          QLog.e("[cmshow][apollo]Cm3DMakeupImpl", 1, new Object[] { "send cmshow3D face data error!", paramMessage.getMessage() });
+          QLog.e("[cmshow]Cm3DMakeupImpl", 1, new Object[] { "send cmshow3D face data error!", paramMessage.getMessage() });
           return;
         }
       case 1001: 
-        QLog.d("[cmshow][apollo]Cm3DMakeupImpl", 0, "start upload cmshow3D face data");
+        QLog.d("[cmshow]Cm3DMakeupImpl", 0, "start upload cmshow3D face data");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ipc.business.Cm3DMakeupImpl.2
  * JD-Core Version:    0.7.0.1
  */

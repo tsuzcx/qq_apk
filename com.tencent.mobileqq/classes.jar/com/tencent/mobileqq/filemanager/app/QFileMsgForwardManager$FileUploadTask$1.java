@@ -16,18 +16,18 @@ class QFileMsgForwardManager$FileUploadTask$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("FileUploadTask success, multiUniseq[ ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.c.a);
       localStringBuilder.append("] uuid[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("] fileMrUniseq[");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+      localStringBuilder.append(this.b.uniseq);
       localStringBuilder.append("]");
       QLog.i("FileMultiMsgManager<FileAssistant>", 1, localStringBuilder.toString());
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask;
-    paramString.b = 2;
-    QFileMsgForwardManager.a(paramString.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
-    QFileMsgForwardManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.jdField_a_of_type_JavaLangString);
+    paramString = this.c;
+    paramString.g = 2;
+    QFileMsgForwardManager.a(paramString.h, this.b, paramBundle);
+    QFileMsgForwardManager.b(this.c.h, this.c.a);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -37,9 +37,9 @@ class QFileMsgForwardManager$FileUploadTask$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("FileUploadTask fail, multiUniseq[ ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c.a);
       ((StringBuilder)localObject).append("] fileMrUniseq[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+      ((StringBuilder)localObject).append(this.b.uniseq);
       ((StringBuilder)localObject).append("] canResume[");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append("] retMsg[");
@@ -49,29 +49,29 @@ class QFileMsgForwardManager$FileUploadTask$1
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.b = 4;
+      this.c.g = 4;
     }
     else
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(HardCodeUtil.a(2131709665));
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131907391));
+      ((StringBuilder)localObject).append(this.b.getExtInfoFromExtStr("_m_ForwardFileName"));
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("\n");
       localStringBuilder.append(paramString);
       paramString = localStringBuilder.toString();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.b = 3;
+      this.b.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
+      this.b.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
+      this.c.g = 3;
     }
-    QFileMsgForwardManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager, this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$FileUploadTask.jdField_a_of_type_JavaLangString);
+    QFileMsgForwardManager.b(this.c.h, this.c.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.FileUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

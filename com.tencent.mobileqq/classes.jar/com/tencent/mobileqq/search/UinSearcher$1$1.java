@@ -34,28 +34,28 @@ class UinSearcher$1$1
 {
   UinSearcher$1$1(UinSearcher.1 param1, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, GroupBaseNetSearchModelItem[] paramArrayOfGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem[] paramArrayOfGroupBaseNetSearchModelItem2, GroupBaseNetSearchModelItem[] paramArrayOfGroupBaseNetSearchModelItem3, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     switch (paramView.getId())
     {
     default: 
       break;
-    case 2131362327: 
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(this.jdField_a_of_type_AndroidContentContext, "1110436437", this.c[0].o, null, null, null, 2111, null);
-      if (this.c[0].m.equals("#808080")) {
+    case 2131427927: 
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).launchMiniAppById(this.a, "1110436437", this.f[0].F, null, null, null, 2111, null);
+      if (this.f[0].D.equals("#808080")) {
         paramView = "0X800B0C1";
       } else {
         paramView = "0X800B0C2";
       }
       String str1;
-      if (this.c[0].m.equals("#808080")) {
-        str1 = this.c[0].k;
+      if (this.f[0].D.equals("#808080")) {
+        str1 = this.f[0].A;
       } else {
         str1 = "";
       }
       String str2;
-      if (this.c[0].m.equals("#808080")) {
-        str2 = this.c[0].jdField_l_of_type_JavaLangString;
+      if (this.f[0].D.equals("#808080")) {
+        str2 = this.f[0].B;
       } else {
         str2 = "";
       }
@@ -70,98 +70,98 @@ class UinSearcher$1$1
         localStringBuilder.append(str2);
         QLog.d("UinSearcher", 2, localStringBuilder.toString());
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", paramView, paramView, UinSearcher.a(UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a)), 0, "", "", str1, str2);
+      ReportController.b(this.c, "dc00898", "", "", paramView, paramView, UinSearcher.a(UinSearcher.f(this.h.a)), 0, "", "", str1, str2);
       break;
-    case 2131362326: 
+    case 2131427926: 
       paramView = new Intent();
-      paramView.putExtra("troop_code", ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString).troopcode);
-      paramView.putExtra("troop_uin", this.jdField_a_of_type_JavaLangString);
-      TroopUtils.a(this.jdField_a_of_type_AndroidContentContext, paramView.getExtras(), 1);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0] == null) {
+      paramView.putExtra("troop_code", ((TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER)).f(this.b).troopcode);
+      paramView.putExtra("troop_uin", this.b);
+      TroopUtils.a(this.a, paramView.getExtras(), 1);
+      paramView = this.c;
+      if (this.d[0] == null) {
         paramInt = 1;
       } else {
         paramInt = 3;
       }
       ReportController.b(paramView, "dc00898", "", "", "0X800AA6A", "0X800AA6A", paramInt, 0, "", "", "", "");
       break;
-    case 2131362325: 
-      paramView = new AllInOne(this.jdField_a_of_type_JavaLangString, 1);
+    case 2131427925: 
+      paramView = new AllInOne(this.b, 1);
       paramView.profileEntryType = 124;
-      ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).openProfileCard(this.jdField_a_of_type_AndroidContentContext, paramView);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.b[0] == null) {
+      ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).openProfileCard(this.a, paramView);
+      paramView = this.c;
+      if (this.e[0] == null) {
         paramInt = 1;
       } else {
         paramInt = 3;
       }
       ReportController.b(paramView, "dc00898", "", "", "0X800AA69", "0X800AA69", paramInt, 0, "", "", "", "");
       break;
-    case 2131362324: 
-      if (this.b[0].jdField_p_of_type_Int == 3)
+    case 2131427924: 
+      if (this.e[0].Z == 3)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131693510, 0).a();
+        QQToast.makeText(this.a, 0, 2131891064, 0).show();
       }
-      else if (this.b[0].jdField_q_of_type_Int == 1)
+      else if (this.e[0].aa == 1)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131693509, 0).a();
+        QQToast.makeText(this.a, 0, 2131891063, 0).show();
       }
       else
       {
-        paramView = TroopInfoUIUtil.a(this.b[0].b, this.b[0].jdField_q_of_type_JavaLangString, 105);
-        TroopUtils.a(this.jdField_a_of_type_AndroidContentContext, paramView, 2);
+        paramView = TroopInfoUIUtil.a(this.e[0].b, this.e[0].T, 105);
+        TroopUtils.a(this.a, paramView, 2);
       }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0] == null) {
+      paramView = this.c;
+      if (this.d[0] == null) {
         paramInt = 1;
       } else {
         paramInt = 3;
       }
       ReportController.b(paramView, "dc00898", "", "", "0X800A929", "0X800A929", paramInt, 0, "", "", "", "");
       break;
-    case 2131362323: 
-      TextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a));
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A927", "0X800A927", UinSearcher.b(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), 0, "", "", "", "");
+    case 2131427923: 
+      TextItemBuilder.a(this.c, (Activity)this.a, UinSearcher.j(this.h.a), UinSearcher.e(this.h.a));
+      ReportController.b(this.c, "dc00898", "", "", "0X800A927", "0X800A927", UinSearcher.i(this.h.a), 0, "", "", "", "");
       break;
-    case 2131362322: 
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A926", "0X800A926", UinSearcher.b(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), 0, "", "", "", "");
+    case 2131427922: 
+      ((ClipboardManager)this.a.getSystemService("clipboard")).setText(this.b);
+      ReportController.b(this.c, "dc00898", "", "", "0X800A926", "0X800A926", UinSearcher.i(this.h.a), 0, "", "", "", "");
       break;
-    case 2131362321: 
+    case 2131427921: 
       paramView = new StringBuilder();
       paramView.append("tel:");
-      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView.append(this.b);
       paramView = new Intent("android.intent.action.DIAL", Uri.parse(paramView.toString()));
-      paramView.putExtra("big_brother_source_key", UinSearcher.c(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92A", "0X800A92A", UinSearcher.b(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), 0, "", "", "", "");
+      paramView.putExtra("big_brother_source_key", UinSearcher.k(this.h.a));
+      this.a.startActivity(paramView);
+      ReportController.b(this.c, "dc00898", "", "", "0X800A92A", "0X800A92A", UinSearcher.i(this.h.a), 0, "", "", "", "");
       break;
-    case 2131362320: 
-      ProfileCardUtil.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), UinSearcher.d(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), UinSearcher.a(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), this.jdField_a_of_type_JavaLangString);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92C", "0X800A92C", UinSearcher.b(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), 0, "", "", "", "");
+    case 2131427920: 
+      ProfileCardUtil.a((Activity)this.a, this.c.getCurrentUin(), UinSearcher.l(this.h.a), UinSearcher.f(this.h.a), this.b);
+      ReportController.b(this.c, "dc00898", "", "", "0X800A92C", "0X800A92C", UinSearcher.i(this.h.a), 0, "", "", "", "");
       break;
-    case 2131362319: 
-      LinkSpan.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A92B", "0X800A92B", UinSearcher.b(this.jdField_a_of_type_ComTencentMobileqqSearchUinSearcher$1.a), 0, "", "", "", "");
+    case 2131427919: 
+      LinkSpan.a(this.a, this.b);
+      ReportController.b(this.c, "dc00898", "", "", "0X800A92B", "0X800A92B", UinSearcher.i(this.h.a), 0, "", "", "", "");
       break;
-    case 2131362318: 
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0].jdField_p_of_type_Int == 2)
+    case 2131427918: 
+      if (this.d[0].Z == 2)
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, 2131689610, 0).a();
+        QQToast.makeText(this.a, 0, 2131886221, 0).show();
       }
       else
       {
         paramView = new SearchResultItem();
-        paramView.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0].b);
+        paramView.a = Long.parseLong(this.d[0].b);
       }
       break;
     }
     try
     {
-      if ((!QidianManager.b(this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0].jdField_l_of_type_Int)) && (!QidianManager.c(this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0].jdField_l_of_type_Int))) {
+      if ((!QidianManager.b(this.d[0].O)) && (!QidianManager.c(this.d[0].O))) {
         break label1132;
       }
-      paramView.jdField_a_of_type_Long = Long.parseLong(this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0].jdField_p_of_type_JavaLangString);
+      paramView.a = Long.parseLong(this.d[0].P);
     }
     catch (Exception localException)
     {
@@ -170,21 +170,21 @@ class UinSearcher$1$1
       break label1123;
     }
     QLog.i("UinSearcher", 1, "qidian corp jump error");
-    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfComTencentMobileqqSearchModelGroupBaseNetSearchModelItem[0].c;
-    AddFriendActivity.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, 1);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.b[0] == null) {
+    paramView.c = this.d[0].c;
+    AddFriendActivity.startProfileCardActivity((Activity)this.a, paramView, this.c, false, 1);
+    paramView = this.c;
+    if (this.e[0] == null) {
       paramInt = 1;
     } else {
       paramInt = 3;
     }
     ReportController.b(paramView, "dc00898", "", "", "0X800A928", "0X800A928", paramInt, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.g.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.UinSearcher.1.1
  * JD-Core Version:    0.7.0.1
  */

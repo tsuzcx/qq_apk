@@ -10,7 +10,7 @@ class HeadsPanelAnimationView$1$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.e();
+    this.a.a.f();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +19,7 @@ class HeadsPanelAnimationView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class RobotAdapter$4
   protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
     Object localObject = String.valueOf(paramLong1);
-    if ((localObject != null) && (((String)localObject).equals(RobotAdapter.a(this.a))))
+    if ((localObject != null) && (((String)localObject).equals(RobotAdapter.b(this.a))))
     {
       RobotAdapter.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
       localObject = new StringBuilder();
@@ -26,13 +26,13 @@ class RobotAdapter$4
     ((StringBuilder)localObject).append("onAddRobot  troop");
     ((StringBuilder)localObject).append(paramLong1);
     ((StringBuilder)localObject).append(" cur ");
-    ((StringBuilder)localObject).append(RobotAdapter.a(this.a));
+    ((StringBuilder)localObject).append(RobotAdapter.b(this.a));
     QLog.i("RobotAdapter", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RobotAdapter.4
  * JD-Core Version:    0.7.0.1
  */

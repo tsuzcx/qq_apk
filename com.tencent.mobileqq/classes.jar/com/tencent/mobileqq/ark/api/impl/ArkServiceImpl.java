@@ -24,7 +24,7 @@ public class ArkServiceImpl
       QLog.i("ArkApp.ArkService", 1, "doURLReport: arkAppCenter is null");
       return;
     }
-    localArkAppCenter.a().a(paramString);
+    localArkAppCenter.j().a(paramString);
   }
   
   public IArkAppSSO getSSO()
@@ -35,7 +35,7 @@ public class ArkServiceImpl
       QLog.i("ArkApp.ArkService", 1, "getSSO: arkAppCenter is null");
       return null;
     }
-    return localArkAppCenter.a();
+    return localArkAppCenter.k();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -46,7 +46,7 @@ public class ArkServiceImpl
   public void onDestroy()
   {
     QLog.i("ArkApp.ArkService", 1, "onDestroy");
-    this.arkAppCenter.d();
+    this.arkAppCenter.e();
     this.arkAppCenter = null;
   }
   
@@ -58,7 +58,7 @@ public class ArkServiceImpl
       QLog.i("ArkApp.ArkService", 1, "reportPredownloadFirstHit: arkAppCenter is null");
       return;
     }
-    localArkAppCenter.a().a(paramString, paramBoolean);
+    localArkAppCenter.l().a(paramString, paramBoolean);
   }
   
   public void sendAppMsg(String paramString1, String paramString2, int paramInt1, int paramInt2, BusinessObserver paramBusinessObserver)
@@ -72,7 +72,7 @@ public class ArkServiceImpl
       }
       return;
     }
-    localArkAppCenter.a().a(paramString1, paramString2, paramInt1, paramInt2, paramBusinessObserver);
+    localArkAppCenter.k().a(paramString1, paramString2, paramInt1, paramInt2, paramBusinessObserver);
   }
   
   public void startPreloadApp()
@@ -81,12 +81,12 @@ public class ArkServiceImpl
     if (localArkAppCenter == null) {
       return;
     }
-    localArkAppCenter.a().c();
+    localArkAppCenter.l().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.impl.ArkServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,13 @@ import com.tencent.mobileqq.widget.presseffect.PressEffectHelper;
 public class RoundRectUrlImageView
   extends URLImageView
 {
-  private int jdField_a_of_type_Int;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a;
   private int b;
   private int c;
   private int d;
   private int e;
+  private Path f;
+  private boolean g = false;
   
   public RoundRectUrlImageView(Context paramContext)
   {
@@ -41,18 +41,18 @@ public class RoundRectUrlImageView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    int i = this.jdField_a_of_type_Int;
+    this.f = new Path();
+    int i = this.a;
     if (i == 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.addRect(0.0F, 0.0F, this.b, this.c, Path.Direction.CCW);
+      this.f.addRect(0.0F, 0.0F, this.b, this.c, Path.Direction.CCW);
       return;
     }
     i = Math.min(i * 2, Math.min(this.b, this.c)) / 2;
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    Path localPath = this.f;
     RectF localRectF = new RectF(0.0F, 0.0F, this.b, this.c);
-    float f = i;
-    localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
+    float f1 = i;
+    localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CCW);
   }
   
   private void b()
@@ -75,24 +75,24 @@ public class RoundRectUrlImageView
     j = this.c;
     int k = this.b;
     int m = this.e;
-    float f;
+    float f1;
     if (i * j > k * m) {
-      f = j / m;
+      f1 = j / m;
     } else {
-      f = k / i;
+      f1 = k / i;
     }
     localObject = new Matrix();
-    ((Matrix)localObject).setScale(f, f);
+    ((Matrix)localObject).setScale(f1, f1);
     setImageMatrix((Matrix)localObject);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     Integer localInteger;
-    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+    if (this.f != null)
     {
       localInteger = Integer.valueOf(paramCanvas.save());
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.f);
     }
     else
     {
@@ -108,10 +108,10 @@ public class RoundRectUrlImageView
   {
     b();
     Integer localInteger;
-    if (this.jdField_a_of_type_AndroidGraphicsPath != null)
+    if (this.f != null)
     {
       localInteger = Integer.valueOf(paramCanvas.save());
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.f);
     }
     else
     {
@@ -140,7 +140,7 @@ public class RoundRectUrlImageView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((isClickable()) && (isEnabled()) && (this.jdField_a_of_type_Boolean))
+    if ((isClickable()) && (isEnabled()) && (this.g))
     {
       int i = paramMotionEvent.getAction();
       if (i != 0)
@@ -163,22 +163,22 @@ public class RoundRectUrlImageView
     if (paramInt < 0) {
       i = 0;
     }
-    if (this.jdField_a_of_type_Int == i) {
+    if (this.a == i) {
       return;
     }
-    this.jdField_a_of_type_Int = i;
+    this.a = i;
     a();
     invalidate();
   }
   
   public void setEnableEffect(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RoundRectUrlImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ class VideoFeedsRecommendFragment$ScrollEventListenerImpl
   extends RecyclerView.OnScrollListener
   implements RecyclerView.OnItemTouchListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = false;
   private boolean b = false;
+  private boolean c = false;
+  private int d = 0;
   
   private VideoFeedsRecommendFragment$ScrollEventListenerImpl(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
@@ -27,10 +27,10 @@ class VideoFeedsRecommendFragment$ScrollEventListenerImpl
       if (i != 1) {
         return false;
       }
-      this.jdField_a_of_type_Boolean = false;
+      this.b = false;
       return false;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     return false;
   }
   
@@ -39,43 +39,43 @@ class VideoFeedsRecommendFragment$ScrollEventListenerImpl
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     if (paramInt == 0) {
-      DropFrameMonitor.a().a("list_video_feeds", false);
+      DropFrameMonitor.b().a("list_video_feeds", false);
     } else {
-      DropFrameMonitor.a().a("list_video_feeds");
+      DropFrameMonitor.b().a("list_video_feeds");
     }
     int i;
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0) && (paramInt == 1)) {
+    if ((this.b) && (this.d == 0) && (paramInt == 1)) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0)
     {
-      this.b = true;
-      VideoFeedsRecommendFragment.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment);
+      this.c = true;
+      VideoFeedsRecommendFragment.j(this.a);
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0) && (paramInt == 2)) {
-      this.b = false;
+    if ((!this.b) && (this.d == 0) && (paramInt == 2)) {
+      this.c = false;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    paramRecyclerView = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).a();
+    paramRecyclerView = VideoFeedsRecommendFragment.c(this.a).f();
     if (paramRecyclerView != null)
     {
-      paramRecyclerView = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).getChildViewHolder(paramRecyclerView);
-      RecyclerView.ViewHolder localViewHolder1 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() - 1);
-      RecyclerView.ViewHolder localViewHolder2 = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() + 1);
+      paramRecyclerView = VideoFeedsRecommendFragment.c(this.a).getChildViewHolder(paramRecyclerView);
+      RecyclerView.ViewHolder localViewHolder1 = VideoFeedsRecommendFragment.c(this.a).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() - 1);
+      RecyclerView.ViewHolder localViewHolder2 = VideoFeedsRecommendFragment.c(this.a).findViewHolderForLayoutPosition(paramRecyclerView.getLayoutPosition() + 1);
       if ((paramRecyclerView instanceof BaseItemHolder)) {
-        ((BaseItemHolder)paramRecyclerView).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), true);
+        ((BaseItemHolder)paramRecyclerView).a(VideoFeedsRecommendFragment.d(this.a), VideoFeedsRecommendFragment.i(this.a), true);
       }
       if ((localViewHolder1 instanceof BaseItemHolder)) {
-        ((BaseItemHolder)localViewHolder1).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), false);
+        ((BaseItemHolder)localViewHolder1).a(VideoFeedsRecommendFragment.d(this.a), VideoFeedsRecommendFragment.i(this.a), false);
       }
       if ((localViewHolder2 instanceof BaseItemHolder)) {
-        ((BaseItemHolder)localViewHolder2).a(VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsRecommendFragment), false);
+        ((BaseItemHolder)localViewHolder2).a(VideoFeedsRecommendFragment.d(this.a), VideoFeedsRecommendFragment.i(this.a), false);
       }
     }
   }
@@ -84,7 +84,7 @@ class VideoFeedsRecommendFragment$ScrollEventListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendFragment.ScrollEventListenerImpl
  * JD-Core Version:    0.7.0.1
  */

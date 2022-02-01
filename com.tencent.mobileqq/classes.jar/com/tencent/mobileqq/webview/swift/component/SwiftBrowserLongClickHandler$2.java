@@ -20,90 +20,90 @@ class SwiftBrowserLongClickHandler$2
   {
     if (paramString != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.a.d == null)
       {
         paramView = this.a;
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramView.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131693895);
+        paramView.d = new QQProgressDialog(paramView.f, this.a.g);
+        this.a.d.c(2131891516);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-      if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690701)))
+      this.a.d.show();
+      if (paramString.equals(this.a.f.getString(2131887620)))
       {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+        if (TextUtils.isEmpty(this.a.h))
         {
-          this.a.jdField_b_of_type_Int = 0;
+          this.a.i = 0;
         }
         else
         {
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+          if ((this.a.d != null) && (this.a.d.isShowing())) {
+            this.a.d.dismiss();
           }
           paramView = this.a;
-          paramView.b(paramView.jdField_b_of_type_JavaLangString);
+          paramView.b(paramView.h);
         }
       }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690700)))
+      else if (paramString.equals(this.a.f.getString(2131887619)))
       {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+        if (TextUtils.isEmpty(this.a.h))
         {
-          this.a.jdField_b_of_type_Int = 1;
+          this.a.i = 1;
         }
         else
         {
           paramView = this.a;
-          paramView.a(paramView.jdField_b_of_type_JavaLangString);
+          paramView.a(paramView.h);
         }
       }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693260)))
+      else if (paramString.equals(this.a.f.getString(2131890808)))
       {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        }
-        paramView = this.a;
-        paramView.a(paramView.jdField_b_of_type_JavaLangString, 1);
-      }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693259)))
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        if ((this.a.d != null) && (this.a.d.isShowing())) {
+          this.a.d.dismiss();
         }
         paramView = this.a;
-        paramView.a(paramView.jdField_b_of_type_JavaLangString, 2);
+        paramView.a(paramView.h, 1);
       }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131690702)))
+      else if (paramString.equals(this.a.f.getString(2131890807)))
       {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+        if ((this.a.d != null) && (this.a.d.isShowing())) {
+          this.a.d.dismiss();
+        }
+        paramView = this.a;
+        paramView.a(paramView.h, 2);
+      }
+      else if (paramString.equals(this.a.f.getString(2131887621)))
+      {
+        if (TextUtils.isEmpty(this.a.h))
         {
-          this.a.jdField_b_of_type_Int = 2;
+          this.a.i = 2;
         }
         else
         {
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+          if ((this.a.d != null) && (this.a.d.isShowing())) {
+            this.a.d.dismiss();
           }
           paramView = this.a;
-          paramView.c(paramView.jdField_b_of_type_JavaLangString);
+          paramView.c(paramView.h);
         }
       }
-      else if (paramString.equals(this.a.jdField_a_of_type_AndroidAppActivity.getString(2131693254)))
+      else if (paramString.equals(this.a.f.getString(2131890802)))
       {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+        if ((this.a.d != null) && (this.a.d.isShowing())) {
+          this.a.d.dismiss();
         }
-        if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(this.a.h))
         {
-          paramView = new File(this.a.jdField_b_of_type_JavaLangString);
-          paramString = ((TeamWorkDocEditBrowserActivity)this.a.jdField_a_of_type_AndroidAppActivity).a.getCurrentAccountUin();
-          QfavBuilder.b(paramView.getAbsolutePath()).a(this.a.jdField_a_of_type_AndroidAppActivity, paramString);
+          paramView = new File(this.a.h);
+          paramString = ((TeamWorkDocEditBrowserActivity)this.a.f).a.getCurrentAccountUin();
+          QfavBuilder.b(paramView.getAbsolutePath()).a(this.a.f, paramString);
         }
       }
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.a.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.2
  * JD-Core Version:    0.7.0.1
  */

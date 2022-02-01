@@ -18,12 +18,12 @@ class QQLSActivity$10
       paramObject.append(Thread.currentThread().getId());
       QLog.d("QQLSActivity", 2, paramObject.toString());
     }
-    QQLSActivity.a(this.a);
+    QQLSActivity.k(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.10
  * JD-Core Version:    0.7.0.1
  */

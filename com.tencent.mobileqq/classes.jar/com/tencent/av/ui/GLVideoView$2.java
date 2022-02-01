@@ -9,11 +9,11 @@ class GLVideoView$2
   
   public void run()
   {
-    GLRootView localGLRootView = this.this$0.a();
+    GLRootView localGLRootView = this.this$0.i();
     if (localGLRootView != null)
     {
-      GLVideoView.e(this.this$0);
-      localGLRootView.postDelayed(this.this$0.a, 80L);
+      GLVideoView.g(this.this$0);
+      localGLRootView.postDelayed(this.this$0.aJ, 80L);
     }
   }
 }

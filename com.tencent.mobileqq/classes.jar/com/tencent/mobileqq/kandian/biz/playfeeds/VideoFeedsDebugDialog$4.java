@@ -13,7 +13,7 @@ class VideoFeedsDebugDialog$4
   public void onClick(View paramView)
   {
     boolean bool = ReadInJoyHelper.b();
-    Aladdin.getConfig(260).update(VideoFeedsDebugDialog.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsDebugDialog, bool ^ true));
+    Aladdin.getConfig(260).update(VideoFeedsDebugDialog.a(this.b, bool ^ true));
     Button localButton = (Button)paramView;
     String str;
     if (!bool) {
@@ -22,12 +22,12 @@ class VideoFeedsDebugDialog$4
       str = "开Tittok(需退出一拖三)";
     }
     localButton.setText(str);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.a.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsDebugDialog.4
  * JD-Core Version:    0.7.0.1
  */

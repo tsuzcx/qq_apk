@@ -16,36 +16,36 @@ class UrlFetcher$1
   {
     if (paramDownloadFile != null)
     {
-      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramDownloadFile.jdField_a_of_type_JavaLangString)) {
+      if (!TextUtils.equals(this.a, paramDownloadFile.b)) {
         return;
       }
       if (paramBoolean)
       {
-        if (paramDownloadFile.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile$DownloadServerInfo == null)
+        if (paramDownloadFile.k == null)
         {
-          UrlFetcher.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher).a(this.jdField_a_of_type_Long, 1810024, "");
+          UrlFetcher.a(this.e).a(this.b, 1810024, "");
           return;
         }
-        UrlFetcher.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher).a(this.jdField_a_of_type_Long, paramDownloadFile.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile$DownloadServerInfo);
+        UrlFetcher.a(this.e).a(this.b, paramDownloadFile.k);
         return;
       }
-      if ((paramInt == 1002) && (!this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadJobContext.a()))
+      if ((paramInt == 1002) && (!this.c.a()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadJobContext.d(true);
+        this.c.d(true);
         paramDownloadFile = Message.obtain();
         paramDownloadFile.what = 21;
-        paramDownloadFile.obj = this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadJobContext;
-        paramDownloadFile.arg1 = this.jdField_a_of_type_Int;
-        UrlFetcher.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher).sendMessageDelayed(paramDownloadFile, 1000L);
+        paramDownloadFile.obj = this.c;
+        paramDownloadFile.arg1 = this.d;
+        UrlFetcher.b(this.e).sendMessageDelayed(paramDownloadFile, 1000L);
         return;
       }
-      UrlFetcher.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher).a(this.jdField_a_of_type_Long, paramInt, paramString);
+      UrlFetcher.a(this.e).a(this.b, paramInt, paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.processor.UrlFetcher.1
  * JD-Core Version:    0.7.0.1
  */

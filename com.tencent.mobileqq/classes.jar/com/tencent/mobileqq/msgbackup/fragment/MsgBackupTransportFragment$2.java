@@ -12,11 +12,11 @@ class MsgBackupTransportFragment$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramInt = MsgBackupTransportProcessor.a().e();
+    paramInt = MsgBackupTransportProcessor.a().i();
     if (1 == paramInt)
     {
-      this.a.m();
-      if (this.a.a)
+      this.a.u();
+      if (this.a.T)
       {
         MsgBackupReporter.a("0X800A253", 3);
         return;
@@ -26,18 +26,18 @@ class MsgBackupTransportFragment$2
     }
     if (2 == paramInt)
     {
-      if (this.a.e) {
+      if (this.a.X) {
         MsgBackupReporter.a("0X800A244", 2);
       } else {
         MsgBackupReporter.a("0X800A244", 1);
       }
-      this.a.m();
+      this.a.u();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment.2
  * JD-Core Version:    0.7.0.1
  */

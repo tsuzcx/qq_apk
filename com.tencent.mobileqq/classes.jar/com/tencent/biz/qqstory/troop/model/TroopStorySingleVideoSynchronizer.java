@@ -32,19 +32,19 @@ public class TroopStorySingleVideoSynchronizer
   extends DefaultPlayerVideoListSynchronizer
   implements CmdTaskManger.CommandCallback<GetVideoFullInfoListRequest, GetVideoFullInfoListResponse>, DefaultPlayerVideoListSynchronizer.RetryableSynchronizer
 {
-  IVidToVideoInfoPuller.OnFinishCallBack jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
-  String jdField_a_of_type_JavaLangString;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
+  String b;
+  AtomicBoolean c;
+  String d;
+  boolean e;
+  IVidToVideoInfoPuller.OnFinishCallBack f;
   
   protected void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
+    if (!this.c.compareAndSet(false, true)) {
       return;
     }
-    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.jdField_b_of_type_JavaLangString);
-    a(this.jdField_b_of_type_JavaLangString, localStoryVideoItem);
+    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.d);
+    a(this.d, localStoryVideoItem);
   }
   
   public void a(@NonNull GetVideoFullInfoListRequest paramGetVideoFullInfoListRequest, @Nullable GetVideoFullInfoListResponse paramGetVideoFullInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
@@ -57,15 +57,15 @@ public class TroopStorySingleVideoSynchronizer
       QLog.d("Q.qqstory.troopstory.singleSync", 2, paramGetVideoFullInfoListRequest.toString());
     }
     paramGetVideoFullInfoListRequest = new StoryVideoItem();
-    paramGetVideoFullInfoListRequest.mVid = this.jdField_b_of_type_JavaLangString;
+    paramGetVideoFullInfoListRequest.mVid = this.d;
     paramGetVideoFullInfoListRequest.mStoryType = 2;
     if ((paramGetVideoFullInfoListResponse != null) && (paramErrorMessage.isSuccess()))
     {
-      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList.iterator();
+      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.a.iterator();
       while (paramGetVideoFullInfoListRequest.hasNext())
       {
         paramErrorMessage = (StoryVideoItem)paramGetVideoFullInfoListRequest.next();
-        if (this.jdField_b_of_type_JavaLangString.equals(paramErrorMessage.mVid)) {
+        if (this.d.equals(paramErrorMessage.mVid)) {
           if (paramErrorMessage.mErrorCode == 0)
           {
             i = 1;
@@ -79,14 +79,14 @@ public class TroopStorySingleVideoSynchronizer
     if (i != 0)
     {
       ((DownloadUrlManager)SuperManager.a(28)).a(paramGetVideoFullInfoListResponse.b);
-      a(paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList, false);
+      a(paramGetVideoFullInfoListResponse.a, false);
       return;
     }
-    this.jdField_b_of_type_Boolean = true;
+    this.e = true;
     if (paramGetVideoFullInfoListResponse == null) {
       paramGetVideoFullInfoListRequest = new ArrayList();
     } else {
-      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.jdField_a_of_type_JavaUtilList;
+      paramGetVideoFullInfoListRequest = paramGetVideoFullInfoListResponse.a;
     }
     a(paramGetVideoFullInfoListRequest, false);
   }
@@ -117,26 +117,26 @@ public class TroopStorySingleVideoSynchronizer
       QLog.d("Q.qqstory.troopstory.singleSync", 2, paramStoryVideoItem.toString());
     }
     paramStoryVideoItem = new GetVideoFullInfoListRequest();
-    paramStoryVideoItem.jdField_a_of_type_JavaUtilList.add(paramString);
+    paramStoryVideoItem.e.add(paramString);
     CmdTaskManger.a().a(paramStoryVideoItem, this);
   }
   
   void a(List<StoryVideoItem> paramList, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack;
+    Object localObject = this.f;
     if (localObject == null)
     {
       localObject = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Boolean = paramBoolean;
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_b_of_type_Boolean = true;
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_JavaUtilList.addAll(paramList);
-      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).jdField_a_of_type_Int = paramList.size();
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).a = this.b;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).i = paramBoolean;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).j = true;
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).e.addAll(paramList);
+      ((DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent)localObject).h = paramList.size();
       StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
       return;
     }
-    ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList, this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelIVidToVideoInfoPuller$OnFinishCallBack = null;
+    ((IVidToVideoInfoPuller.OnFinishCallBack)localObject).a(paramList, this.e);
+    this.f = null;
   }
   
   public boolean isValidate()

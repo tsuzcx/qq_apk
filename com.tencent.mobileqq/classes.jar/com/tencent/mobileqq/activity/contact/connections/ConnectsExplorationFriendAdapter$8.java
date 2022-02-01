@@ -20,18 +20,18 @@ class ConnectsExplorationFriendAdapter$8
     if (paramInt != 0) {
       return;
     }
-    if (ConnectsExplorationFriendAdapter.b(this.a) >= this.a.getCount() - 2)
+    if (ConnectsExplorationFriendAdapter.k(this.a) >= this.a.getCount() - 2)
     {
       paramAbsListView = new Bundle();
       paramAbsListView.putString("from", "4");
-      ConnectsExplorationFriendAdapter.a(this.a).b(4, ConnectsExplorationFriendAdapter.a(this.a), paramAbsListView);
+      ConnectsExplorationFriendAdapter.d(this.a).b(4, ConnectsExplorationFriendAdapter.a(this.a), paramAbsListView);
     }
     this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationFriendAdapter.8
  * JD-Core Version:    0.7.0.1
  */

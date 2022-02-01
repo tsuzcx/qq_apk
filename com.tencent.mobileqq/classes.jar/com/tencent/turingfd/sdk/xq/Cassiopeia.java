@@ -1,14 +1,21 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.view.View;
+import android.content.Context;
+import java.util.Map;
 
-public abstract interface Cassiopeia
+public class Cassiopeia
+  implements Runnable
 {
-  public abstract void a(String paramString, View paramView);
+  public Cassiopeia(Centaurus paramCentaurus, Context paramContext, Map paramMap) {}
+  
+  public void run()
+  {
+    this.c.a(this.a, this.b);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Cassiopeia
  * JD-Core Version:    0.7.0.1
  */

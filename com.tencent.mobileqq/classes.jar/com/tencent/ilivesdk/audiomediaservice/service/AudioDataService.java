@@ -24,16 +24,16 @@ public class AudioDataService
 {
   public static void a(IAudioMediaServiceAdapter paramIAudioMediaServiceAdapter, long paramLong, String paramString, byte[] paramArrayOfByte, RequestMediaChannelCallback paramRequestMediaChannelCallback)
   {
-    Object localObject1 = paramIAudioMediaServiceAdapter.a();
+    Object localObject1 = paramIAudioMediaServiceAdapter.c();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("request cmd: ");
     ((StringBuilder)localObject2).append(paramString);
     ((StringBuilder)localObject2).append(" appid:");
-    ((StringBuilder)localObject2).append(paramIAudioMediaServiceAdapter.a().getOpenSdkAppid());
+    ((StringBuilder)localObject2).append(paramIAudioMediaServiceAdapter.d().getOpenSdkAppid());
     ((LogInterface)localObject1).i("AudioDataService", ((StringBuilder)localObject2).toString(), new Object[0]);
     localObject2 = new ILiveChannel.AuthMsgInfo();
-    ((ILiveChannel.AuthMsgInfo)localObject2).auth_key.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.a().getLoginInfo().a2));
-    ((ILiveChannel.AuthMsgInfo)localObject2).auth_tinyid.set(paramIAudioMediaServiceAdapter.a().getLoginInfo().tinyid);
+    ((ILiveChannel.AuthMsgInfo)localObject2).auth_key.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.b().getLoginInfo().a2));
+    ((ILiveChannel.AuthMsgInfo)localObject2).auth_tinyid.set(paramIAudioMediaServiceAdapter.b().getLoginInfo().tinyid);
     ((ILiveChannel.AuthMsgInfo)localObject2).auth_type.set(35);
     localObject1 = new ILiveChannel.RelayCmdReq();
     ((ILiveChannel.RelayCmdReq)localObject1).tinyid.set(paramLong);
@@ -42,14 +42,14 @@ public class AudioDataService
     ((ILiveChannel.RelayCmdReq)localObject1).auth_info.set((MessageMicro)localObject2);
     try
     {
-      ((ILiveChannel.RelayCmdReq)localObject1).sdkappid.set(paramIAudioMediaServiceAdapter.a().getOpenSdkAppid());
+      ((ILiveChannel.RelayCmdReq)localObject1).sdkappid.set(paramIAudioMediaServiceAdapter.d().getOpenSdkAppid());
     }
     catch (Exception paramArrayOfByte)
     {
       label213:
       break label213;
     }
-    paramIAudioMediaServiceAdapter.a().e("AudioDataService", "ERROR APPID", new Object[0]);
+    paramIAudioMediaServiceAdapter.c().e("AudioDataService", "ERROR APPID", new Object[0]);
     paramArrayOfByte = ((ILiveChannel.RelayCmdReq)localObject1).toByteArray();
     paramIAudioMediaServiceAdapter.a().send(29464, 1, paramArrayOfByte, new AudioDataService.2(paramIAudioMediaServiceAdapter, paramString, paramRequestMediaChannelCallback));
   }
@@ -60,17 +60,17 @@ public class AudioDataService
     localUserId2TinyIdReq.target_uid.set(paramArrayList);
     try
     {
-      localUserId2TinyIdReq.sdkappid.set(paramIAudioMediaServiceAdapter.a().getOpenSdkAppid());
+      localUserId2TinyIdReq.sdkappid.set(paramIAudioMediaServiceAdapter.d().getOpenSdkAppid());
     }
     catch (Exception paramArrayList)
     {
       label37:
       break label37;
     }
-    paramIAudioMediaServiceAdapter.a().e("AudioDataService", "ERROR APPID", new Object[0]);
+    paramIAudioMediaServiceAdapter.c().e("AudioDataService", "ERROR APPID", new Object[0]);
     paramArrayList = new ILiveChannel.AuthMsgInfo();
-    paramArrayList.auth_key.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.a().getLoginInfo().a2));
-    paramArrayList.auth_tinyid.set(paramIAudioMediaServiceAdapter.a().getLoginInfo().tinyid);
+    paramArrayList.auth_key.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.b().getLoginInfo().a2));
+    paramArrayList.auth_tinyid.set(paramIAudioMediaServiceAdapter.b().getLoginInfo().tinyid);
     paramArrayList.auth_type.set(35);
     localUserId2TinyIdReq.auth_info.set(paramArrayList);
     paramArrayList = localUserId2TinyIdReq.toByteArray();
@@ -82,8 +82,8 @@ public class AudioDataService
     Object localObject = new ILiveChannel.AppCmdReqBody();
     ((ILiveChannel.AppCmdReqBody)localObject).reqbody.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     ((ILiveChannel.AppCmdReqBody)localObject).msg_sdk_data = new ILiveChannel.SdkData();
-    ((ILiveChannel.AppCmdReqBody)localObject).msg_sdk_data.sdk_app_id.set(paramIAudioMediaServiceAdapter.a().getOpenSdkAppid());
-    ((ILiveChannel.AppCmdReqBody)localObject).msg_sdk_data.sdk_app_token.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.a().getLoginInfo().a2));
+    ((ILiveChannel.AppCmdReqBody)localObject).msg_sdk_data.sdk_app_id.set(paramIAudioMediaServiceAdapter.d().getOpenSdkAppid());
+    ((ILiveChannel.AppCmdReqBody)localObject).msg_sdk_data.sdk_app_token.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.b().getLoginInfo().a2));
     localObject = ((ILiveChannel.AppCmdReqBody)localObject).toByteArray();
     paramArrayOfByte = new ILiveChannel.RelayCmdReq();
     paramArrayOfByte.tinyid.set(paramLong);
@@ -91,17 +91,17 @@ public class AudioDataService
     paramArrayOfByte.request.set(ByteStringMicro.copyFrom((byte[])localObject));
     try
     {
-      paramArrayOfByte.sdkappid.set(paramIAudioMediaServiceAdapter.a().getOpenSdkAppid());
+      paramArrayOfByte.sdkappid.set(paramIAudioMediaServiceAdapter.d().getOpenSdkAppid());
     }
     catch (Exception localException)
     {
       label153:
       break label153;
     }
-    paramIAudioMediaServiceAdapter.a().e("AudioDataService", "ERROR APPID", new Object[0]);
+    paramIAudioMediaServiceAdapter.c().e("AudioDataService", "ERROR APPID", new Object[0]);
     localObject = new ILiveChannel.AuthMsgInfo();
-    ((ILiveChannel.AuthMsgInfo)localObject).auth_key.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.a().getLoginInfo().a2));
-    ((ILiveChannel.AuthMsgInfo)localObject).auth_tinyid.set(paramIAudioMediaServiceAdapter.a().getLoginInfo().tinyid);
+    ((ILiveChannel.AuthMsgInfo)localObject).auth_key.set(ByteStringMicro.copyFrom(paramIAudioMediaServiceAdapter.b().getLoginInfo().a2));
+    ((ILiveChannel.AuthMsgInfo)localObject).auth_tinyid.set(paramIAudioMediaServiceAdapter.b().getLoginInfo().tinyid);
     ((ILiveChannel.AuthMsgInfo)localObject).auth_type.set(35);
     paramArrayOfByte.auth_info.set((MessageMicro)localObject);
     paramArrayOfByte = paramArrayOfByte.toByteArray();
@@ -110,7 +110,7 @@ public class AudioDataService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.service.AudioDataService
  * JD-Core Version:    0.7.0.1
  */

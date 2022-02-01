@@ -21,21 +21,14 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 public final class GdtC2SReportInterface
   implements GdtC2SReporter.IGdtC2SReportInterface
 {
-  public int a;
-  public long a;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList;
-  public qq_ad_get.QQAdGetRsp.AdInfo a;
-  public int b;
-  private List<String> b;
-  private List<String> c;
-  
-  public GdtC2SReportInterface()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -2147483648L;
-  }
+  public int a = -1;
+  public int b = -1;
+  public qq_ad_get.QQAdGetRsp.AdInfo c;
+  public long d = -2147483648L;
+  private List<String> e;
+  private List<String> f;
+  private List<String> g;
+  private String h;
   
   private int a(String paramString, int paramInt)
   {
@@ -55,7 +48,7 @@ public final class GdtC2SReportInterface
         i = j;
         ((StringBuilder)localObject).append(" mOpeType ");
         i = j;
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.a);
         i = j;
         GdtLog.a("GdtC2SReporter", ((StringBuilder)localObject).toString());
         i = j;
@@ -87,7 +80,7 @@ public final class GdtC2SReportInterface
         i = j;
         ((StringBuilder)localObject).append(" mOpeType ");
         i = j;
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.a);
         i = j;
         ((StringBuilder)localObject).append(" reportUrl =");
         i = j;
@@ -95,13 +88,13 @@ public final class GdtC2SReportInterface
         i = j;
         GdtLog.a("GdtC2SReporter", ((StringBuilder)localObject).toString());
         i = j;
-        int k = this.jdField_a_of_type_Int;
+        int k = this.a;
         if (j != 200) {
           break label400;
         }
         paramInt = 0;
         i = j;
-        ReportController.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.jdField_a_of_type_JavaLangString, paramString);
+        ReportController.a(null, "dc00898", "", "", "0X8009B97", "0X8009B97", k, paramInt, "", "", this.h, paramString);
         i = j;
       }
       catch (Throwable localThrowable)
@@ -136,43 +129,43 @@ public final class GdtC2SReportInterface
       GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), this, str, j);
       i = k;
     }
-    ReportController.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.jdField_a_of_type_Int, j, "", "", this.jdField_a_of_type_JavaLangString, "");
+    ReportController.a(null, "dc00898", "", "", "0X8009EBF", "0X8009EBF", this.a, j, "", "", this.h, "");
   }
   
   public void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramAdInfo;
+    this.b = paramInt2;
+    this.c = paramAdInfo;
     if (paramAdInfo != null)
     {
-      this.jdField_a_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
-      this.jdField_b_of_type_JavaUtilList = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
-      this.c = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
-      this.jdField_a_of_type_JavaLangString = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
-      if (this.jdField_a_of_type_JavaLangString != null)
+      this.e = paramAdInfo.report_info.thirdparty_monitor_urls.api_exposure_monitor_url.get();
+      this.f = paramAdInfo.report_info.thirdparty_monitor_urls.api_click_monitor_url.get();
+      this.g = paramAdInfo.report_info.thirdparty_monitor_urls.video_play_monitor_url.get();
+      this.h = Long.toString(paramAdInfo.report_info.trace_info.aid.get());
+      if (this.h != null)
       {
         if (paramInt1 == 0)
         {
-          localObject = this.jdField_a_of_type_JavaUtilList;
+          localObject = this.e;
           if ((localObject != null) && (((List)localObject).size() > 0)) {
-            this.jdField_a_of_type_Int = paramInt1;
+            this.a = paramInt1;
           }
         }
         if (paramInt1 == 1)
         {
-          localObject = this.jdField_b_of_type_JavaUtilList;
+          localObject = this.f;
           if ((localObject != null) && (((List)localObject).size() > 0)) {
-            this.jdField_a_of_type_Int = paramInt1;
+            this.a = paramInt1;
           }
         }
         if (paramInt1 == 2)
         {
-          localObject = this.c;
+          localObject = this.g;
           if ((localObject != null) && (((List)localObject).size() > 0)) {
-            this.jdField_a_of_type_Int = paramInt1;
+            this.a = paramInt1;
           }
         }
-        if (this.jdField_a_of_type_Int != -1) {
+        if (this.a != -1) {
           break label216;
         }
       }
@@ -182,19 +175,19 @@ public final class GdtC2SReportInterface
     label216:
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("reportAsync for ADID: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.h);
     ((StringBuilder)localObject).append(", operationType: ");
     ((StringBuilder)localObject).append(paramInt1);
     GdtLog.a("GdtC2SReporter", ((StringBuilder)localObject).toString());
     GdtReporterForAnalysis.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, true);
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = System.currentTimeMillis();
     ThreadManager.executeOnNetWorkThread(new GdtC2SReportInterface.1(this));
-    ReportController.a(null, "dc00898", "", "", "0X8009EBC", "0X8009EBC", this.jdField_a_of_type_Int, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
+    ReportController.a(null, "dc00898", "", "", "0X8009EBC", "0X8009EBC", this.a, 0, "", "", this.h, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface
  * JD-Core Version:    0.7.0.1
  */

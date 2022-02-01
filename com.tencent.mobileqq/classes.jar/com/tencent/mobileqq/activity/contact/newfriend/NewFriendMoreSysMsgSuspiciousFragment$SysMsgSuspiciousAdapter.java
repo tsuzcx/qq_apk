@@ -54,52 +54,54 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   extends FacePreloadBaseAdapter
   implements View.OnClickListener, AbsListView.OnScrollListener, SwipListView.RightIconMenuListener, SwipListView.SwipListListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131691479 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130839507 };
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 2131370801 };
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<byte[]> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(20);
-  private View jdField_a_of_type_AndroidViewView;
-  private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.1(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private INewFriendService jdField_a_of_type_ComTencentMobileqqNewfriendApiINewFriendService;
-  private SwipRightMenuBuilder jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
-  private List<SysSuspiciousMsg> jdField_a_of_type_JavaUtilList = new ArrayList(0);
-  private int jdField_b_of_type_Int = -1;
-  private int jdField_c_of_type_Int = -1;
-  private int d = -1;
+  private static final int[] a = { 2131888438 };
+  private static final int[] b = { 2130839698 };
+  private static final int[] c = { 2131438111 };
+  private final Object d;
+  private QQAppInterface e;
+  private INewFriendService f;
+  private Context g;
+  private View h;
+  private SwipRightMenuBuilder j;
+  private List<SysSuspiciousMsg> k = new ArrayList(0);
+  private TopGestureLayout l;
+  private FriendListHandler m;
+  private SparseArray<byte[]> n = new SparseArray(20);
+  private int o;
+  private int p = -1;
+  private int q = -1;
+  private FriendListObserver r = new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.1(this);
+  private int s = -1;
   
   public NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter(Context paramContext, QQAppInterface paramQQAppInterface, SwipListView paramSwipListView, View paramView)
   {
     super(paramContext, paramQQAppInterface, paramSwipListView, 1, true);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.e = paramQQAppInterface;
+    this.g = paramContext;
+    this.j = a(this.g);
+    this.h = paramView;
+    this.d = new Object();
     paramSwipListView.setRightIconMenuListener(this);
     a(this);
-    this.jdField_a_of_type_ComTencentMobileqqNewfriendApiINewFriendService = ((INewFriendService)paramQQAppInterface.getRuntimeService(INewFriendService.class));
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler = ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
+    this.f = ((INewFriendService)paramQQAppInterface.getRuntimeService(INewFriendService.class));
+    this.m = ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER));
     e();
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.sendReadReportSuspicious();
+    this.m.sendReadReportSuspicious();
   }
   
   private SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298886);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298887);
-    paramContext = jdField_c_of_type_ArrayOfInt;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = jdField_b_of_type_ArrayOfInt;
-    return new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.3(this, 1, 1, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    int i = paramContext.getResources().getDimensionPixelSize(2131299607);
+    int i1 = paramContext.getResources().getDimensionPixelSize(2131299608);
+    paramContext = c;
+    int[] arrayOfInt1 = a;
+    int[] arrayOfInt2 = b;
+    return new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.3(this, 1, 1, new int[] { i, i1 }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   private void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.k.iterator();
     while (((Iterator)localObject).hasNext())
     {
       localSysSuspiciousMsg = (SysSuspiciousMsg)((Iterator)localObject).next();
@@ -116,7 +118,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
       ((Bundle)localObject).putString("base_nick", localSysSuspiciousMsg.nick);
       ((Bundle)localObject).putInt("verfy_type", 0);
       ((Bundle)localObject).putString("verfy_msg", localSysSuspiciousMsg.msg);
-      Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
+      Activity localActivity = (Activity)this.g;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(localSysSuspiciousMsg.uin);
       localStringBuilder.append("");
@@ -126,17 +128,17 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   
   private void a(Context paramContext, View paramView, int paramInt, Object paramObject, SwipRightMenuBuilder.SwipItemBaseHolder paramSwipItemBaseHolder, View.OnClickListener paramOnClickListener)
   {
-    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.j;
     int i;
     if (localSwipRightMenuBuilder != null) {
       i = localSwipRightMenuBuilder.updateRightMenuView(paramContext, paramView, paramInt, paramObject, paramSwipItemBaseHolder, paramOnClickListener);
     } else {
       i = 0;
     }
-    int j = this.d;
-    if (j != -1)
+    int i1 = this.s;
+    if (i1 != -1)
     {
-      if (paramInt != j)
+      if (paramInt != i1)
       {
         paramView.scrollTo(0, 0);
         return;
@@ -149,23 +151,23 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   {
     if (paramSysSuspiciousMsg == null)
     {
-      paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramSuspiciousSysMsgHolder.a.setVisibility(8);
       paramSuspiciousSysMsgHolder.b.setVisibility(8);
-      paramSuspiciousSysMsgHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramSuspiciousSysMsgHolder.c.setVisibility(8);
       paramSuspiciousSysMsgHolder.d.setVisibility(8);
-      paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      paramSuspiciousSysMsgHolder.e.setVisibility(8);
       return;
     }
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_ComTencentMobileqqDataSysSuspiciousMsg = paramSysSuspiciousMsg;
+    paramSuspiciousSysMsgHolder.g = paramSysSuspiciousMsg;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramSysSuspiciousMsg.uin);
     String str = "";
     ((StringBuilder)localObject).append("");
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    paramSuspiciousSysMsgHolder.y = ((StringBuilder)localObject).toString();
     paramSuspiciousSysMsgHolder.leftView.setOnClickListener(this);
-    paramSuspiciousSysMsgHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(paramSuspiciousSysMsgHolder.jdField_c_of_type_Int, paramSuspiciousSysMsgHolder.jdField_a_of_type_JavaLangString));
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    localObject = paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetTextView;
+    paramSuspiciousSysMsgHolder.A.setImageBitmap(a(paramSuspiciousSysMsgHolder.z, paramSuspiciousSysMsgHolder.y));
+    paramSuspiciousSysMsgHolder.a.setVisibility(0);
+    localObject = paramSuspiciousSysMsgHolder.a;
     if (paramSysSuspiciousMsg.nick != null) {
       str = paramSysSuspiciousMsg.nick;
     }
@@ -173,12 +175,12 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     b(paramSuspiciousSysMsgHolder, paramSysSuspiciousMsg);
     if (paramSysSuspiciousMsg.msg == null)
     {
-      paramSuspiciousSysMsgHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramSuspiciousSysMsgHolder.c.setVisibility(8);
     }
     else
     {
-      paramSuspiciousSysMsgHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramSuspiciousSysMsgHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramSysSuspiciousMsg.msg);
+      paramSuspiciousSysMsgHolder.c.setVisibility(0);
+      paramSuspiciousSysMsgHolder.c.setText(paramSysSuspiciousMsg.msg);
     }
     if (paramSysSuspiciousMsg.reason == null)
     {
@@ -188,22 +190,22 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     {
       paramSuspiciousSysMsgHolder.d.setVisibility(0);
       paramSuspiciousSysMsgHolder.d.setText(paramSysSuspiciousMsg.reason);
-      paramSysSuspiciousMsg = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848043);
-      paramSysSuspiciousMsg.setBounds(0, 0, ViewUtils.a(16.0F), ViewUtils.a(16.0F));
-      paramSuspiciousSysMsgHolder.d.setCompoundDrawablePadding(ViewUtils.a(5.0F));
+      paramSysSuspiciousMsg = this.g.getResources().getDrawable(2130849705);
+      paramSysSuspiciousMsg.setBounds(0, 0, ViewUtils.dip2px(16.0F), ViewUtils.dip2px(16.0F));
+      paramSuspiciousSysMsgHolder.d.setCompoundDrawablePadding(ViewUtils.dip2px(5.0F));
       paramSuspiciousSysMsgHolder.d.setCompoundDrawables(paramSysSuspiciousMsg, null, null, null);
     }
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131707527));
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    paramSuspiciousSysMsgHolder.jdField_a_of_type_AndroidWidgetButton.setTag(paramSuspiciousSysMsgHolder);
+    paramSuspiciousSysMsgHolder.e.setVisibility(0);
+    paramSuspiciousSysMsgHolder.e.setText(HardCodeUtil.a(2131905342));
+    paramSuspiciousSysMsgHolder.e.setOnClickListener(this);
+    paramSuspiciousSysMsgHolder.e.setTag(paramSuspiciousSysMsgHolder);
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout == null)
+    if (this.l == null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView();
+      ViewGroup localViewGroup = (ViewGroup)((Activity)this.g).getWindow().getDecorView();
       View localView = localViewGroup.getChildAt(0);
       localObject = localViewGroup;
       if (localView != null)
@@ -215,10 +217,10 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
       }
       localObject = ((ViewGroup)localObject).getChildAt(0);
       if ((localObject instanceof TopGestureLayout)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = ((TopGestureLayout)localObject);
+        this.l = ((TopGestureLayout)localObject);
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
+    Object localObject = this.l;
     if (localObject != null) {
       ((TopGestureLayout)localObject).setInterceptTouchFlag(paramBoolean);
     }
@@ -227,25 +229,25 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   private void b(NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder paramSuspiciousSysMsgHolder, SysSuspiciousMsg paramSysSuspiciousMsg)
   {
     int i = paramSysSuspiciousMsg.sex;
-    int j = 1;
+    int i1 = 1;
     if (i != 1)
     {
       if (i != 2)
       {
-        paramSuspiciousSysMsgHolder.b.setBackgroundResource(2130846056);
+        paramSuspiciousSysMsgHolder.b.setBackgroundResource(2130847526);
         i = 0;
-        j = 0;
+        i1 = 0;
       }
       else
       {
-        i = 2130846053;
-        paramSuspiciousSysMsgHolder.b.setBackgroundResource(2130846054);
+        i = 2130847523;
+        paramSuspiciousSysMsgHolder.b.setBackgroundResource(2130847524);
       }
     }
     else
     {
-      i = 2130846055;
-      paramSuspiciousSysMsgHolder.b.setBackgroundResource(2130846056);
+      i = 2130847525;
+      paramSuspiciousSysMsgHolder.b.setBackgroundResource(2130847526);
     }
     TextView localTextView = paramSuspiciousSysMsgHolder.b;
     StringBuilder localStringBuilder = new StringBuilder();
@@ -253,7 +255,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     localStringBuilder.append("");
     localTextView.setText(localStringBuilder.toString());
     paramSuspiciousSysMsgHolder.b.setCompoundDrawablesWithIntrinsicBounds(i, 0, 0, 0);
-    if (j != 0)
+    if (i1 != 0)
     {
       paramSuspiciousSysMsgHolder.b.setVisibility(0);
       return;
@@ -267,22 +269,22 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("requestSuspiciousMsgNextPage ");
-      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append(this.q);
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, ((StringBuilder)localObject).toString());
     }
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext)) {
+    if (!NetworkUtil.isNetworkAvailable(this.g)) {
       return;
     }
-    Object localObject = (byte[])this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_c_of_type_Int);
-    if ((this.jdField_c_of_type_Int >= 0) && (localObject == null))
+    Object localObject = (byte[])this.n.get(this.q);
+    if ((this.q >= 0) && (localObject == null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "requestSuspiciousMsgNextPage no cookie");
       }
       return;
     }
-    this.jdField_c_of_type_Int += 1;
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getSuspiciousMsgList(50, (byte[])localObject, Integer.valueOf(this.jdField_c_of_type_Int));
+    this.q += 1;
+    this.m.getSuspiciousMsgList(50, (byte[])localObject, Integer.valueOf(this.q));
   }
   
   public void a()
@@ -290,7 +292,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "adapter onResume");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.e.addObserver(this.r);
   }
   
   public void b()
@@ -298,12 +300,12 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     if (QLog.isColorLevel()) {
       QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "adapter onPause");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.e.removeObserver(this.r);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.e.removeObserver(this.r);
     super.c();
   }
   
@@ -314,7 +316,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.k;
     if (localList != null) {
       return localList.size();
     }
@@ -323,9 +325,9 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.k;
     if ((localList != null) && (paramInt < localList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.k.get(paramInt);
     }
     return null;
   }
@@ -337,23 +339,23 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     if (paramView == null)
     {
       paramView = new NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder();
-      localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561509, null);
-      localView = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.createView(this.jdField_a_of_type_AndroidContentContext, (View)localObject, paramView, -1);
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361799));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131371877));
-      paramView.b = ((TextView)localView.findViewById(2131362299));
-      paramView.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376487));
-      paramView.d = ((TextView)localView.findViewById(2131377726));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131376477));
-      paramView.e = ((TextView)localView.findViewById(2131376485));
-      if ((paramView.jdField_c_of_type_AndroidWidgetImageView instanceof ThemeImageView)) {
-        ((ThemeImageView)paramView.jdField_c_of_type_AndroidWidgetImageView).setSupportMaskView(true);
+      localObject = LayoutInflater.from(this.g).inflate(2131627870, null);
+      localView = this.j.createView(this.g, (View)localObject, paramView, -1);
+      paramView.A = ((ImageView)localView.findViewById(2131427337));
+      paramView.a = ((TextView)localView.findViewById(2131439320));
+      paramView.b = ((TextView)localView.findViewById(2131427898));
+      paramView.c = ((TextView)localView.findViewById(2131444728));
+      paramView.d = ((TextView)localView.findViewById(2131446184));
+      paramView.e = ((Button)localView.findViewById(2131444718));
+      paramView.f = ((TextView)localView.findViewById(2131444726));
+      if ((paramView.A instanceof ThemeImageView)) {
+        ((ThemeImageView)paramView.A).setSupportMaskView(true);
       }
       localView.setTag(paramView);
       if (ThemeUtil.isDefaultTheme()) {
-        ((View)localObject).setBackgroundResource(2130839393);
+        ((View)localObject).setBackgroundResource(2130839577);
       } else {
-        ((View)localObject).setBackgroundResource(2130839390);
+        ((View)localObject).setBackgroundResource(2130839574);
       }
     }
     else
@@ -362,7 +364,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
       localView = paramView;
       paramView = (View)localObject;
     }
-    a(this.jdField_a_of_type_AndroidContentContext, localView, paramInt, null, paramView, this);
+    a(this.g, localView, paramInt, this.d, paramView, this);
     Object localObject = getItem(paramInt);
     if ((localObject instanceof SysSuspiciousMsg)) {
       localSysSuspiciousMsg = (SysSuspiciousMsg)localObject;
@@ -370,7 +372,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     a(paramView, localSysSuspiciousMsg);
     paramView.leftView.setTag(paramView);
     if (paramInt == 0) {
-      localView.setPadding(0, ViewUtils.a(12.0F), 0, 0);
+      localView.setPadding(0, ViewUtils.dip2px(12.0F), 0, 0);
     } else {
       localView.setPadding(0, 0, 0, 0);
     }
@@ -387,36 +389,36 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
     Object localObject1 = paramView.getTag();
     int i = paramView.getId();
     Object localObject2;
-    if (i != 2131370801)
+    if (i != 2131438111)
     {
-      if (i != 2131376477)
+      if (i != 2131444718)
       {
-        if ((i == 2131376644) && ((localObject1 instanceof NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)))
+        if ((i == 2131444905) && ((localObject1 instanceof NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)))
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A32E", "0X800A32E", 0, 0, "", "", "", "");
+          ReportController.b(this.e, "dc00898", "", "", "0X800A32E", "0X800A32E", 0, 0, "", "", "", "");
           localObject1 = (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1;
           localObject2 = new Intent();
-          ((Intent)localObject2).putExtra("msg_extra", ((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataSysSuspiciousMsg);
-          PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, AddRequestSuspiciousMsgFragment.class);
+          ((Intent)localObject2).putExtra("msg_extra", ((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1).g);
+          PublicFragmentActivity.a(this.g, (Intent)localObject2, AddRequestSuspiciousMsgFragment.class);
         }
       }
       else if ((localObject1 instanceof NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A32C", "0X800A32C", 1, 0, "", "", "", "");
+        ReportController.b(this.e, "dc00898", "", "", "0X800A32C", "0X800A32C", 1, 0, "", "", "", "");
         localObject1 = (NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1;
-        if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+        if (!NetworkUtil.isNetworkAvailable(this.g))
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131694433, 0).a();
+          QQToast.makeText(this.g, 2131892113, 0).show();
         }
-        else if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1).jdField_a_of_type_JavaLangString))
+        else if (((FriendsManager)this.e.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1).y))
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131707524), 0).a();
+          QQToast.makeText(this.g, HardCodeUtil.a(2131905339), 0).show();
         }
         else
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+          localObject2 = this.m;
           if (localObject2 != null) {
-            ((FriendListHandler)localObject2).agreeSuspiciousMsg(((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataSysSuspiciousMsg.uin);
+            ((FriendListHandler)localObject2).agreeSuspiciousMsg(((NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter.SuspiciousSysMsgHolder)localObject1).g.uin);
           }
         }
       }
@@ -426,11 +428,11 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
       localObject1 = paramView.getTag(-1);
       if ((localObject1 instanceof Integer))
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A32D", "0X800A32D", 0, 0, "", "", "", "");
+        ReportController.b(this.e, "dc00898", "", "", "0X800A32D", "0X800A32D", 0, 0, "", "", "", "");
         i = ((Integer)localObject1).intValue();
-        if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+        if (!NetworkUtil.isNetworkAvailable(this.g))
         {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131694433, 0).a();
+          QQToast.makeText(this.g, 2131892113, 0).show();
         }
         else
         {
@@ -438,7 +440,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
           if ((localObject1 instanceof SysSuspiciousMsg))
           {
             localObject1 = (SysSuspiciousMsg)localObject1;
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
+            localObject2 = this.m;
             if (localObject2 != null) {
               ((FriendListHandler)localObject2).deleteSuspiciousMsg(((SysSuspiciousMsg)localObject1).uin);
             }
@@ -461,7 +463,7 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    this.o = (paramInt1 + paramInt2 - 1);
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -472,12 +474,12 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
       {
         paramAbsListView = new StringBuilder();
         paramAbsListView.append("onScrollStateChanged ");
-        paramAbsListView.append(this.jdField_a_of_type_Int);
+        paramAbsListView.append(this.o);
         paramAbsListView.append(" ");
-        paramAbsListView.append(this.jdField_b_of_type_Int);
+        paramAbsListView.append(this.p);
         QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, paramAbsListView.toString());
       }
-      if ((this.jdField_a_of_type_Int == getCount() - 1) || (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int)) {
+      if ((this.o == getCount() - 1) || (this.o >= this.p)) {
         e();
       }
     }
@@ -485,22 +487,22 @@ public class NewFriendMoreSysMsgSuspiciousFragment$SysMsgSuspiciousAdapter
   
   public void updateCurShowRightView(View paramView)
   {
-    int j = -1;
-    int i = j;
+    int i1 = -1;
+    int i = i1;
     if (paramView != null)
     {
       paramView = paramView.getTag(-1);
-      i = j;
+      i = i1;
       if ((paramView instanceof Integer)) {
         i = ((Integer)paramView).intValue();
       }
     }
-    this.d = i;
+    this.s = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgSuspiciousFragment.SysMsgSuspiciousAdapter
  * JD-Core Version:    0.7.0.1
  */

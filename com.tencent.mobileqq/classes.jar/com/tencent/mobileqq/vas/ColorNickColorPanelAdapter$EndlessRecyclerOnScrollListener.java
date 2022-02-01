@@ -18,7 +18,7 @@ public abstract class ColorNickColorPanelAdapter$EndlessRecyclerOnScrollListener
     if (paramInt == 0)
     {
       paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
-      if ((((ColorNickColorPanelAdapter)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
+      if ((((ColorNickColorPanelAdapter)paramRecyclerView.getAdapter()).b(paramInt).a == 4) && (this.a)) {
         a();
       }
     }
@@ -38,7 +38,7 @@ public abstract class ColorNickColorPanelAdapter$EndlessRecyclerOnScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.EndlessRecyclerOnScrollListener
  * JD-Core Version:    0.7.0.1
  */

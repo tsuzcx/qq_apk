@@ -289,11 +289,11 @@ public class LiteTransferWrapper
   
   public void SetProxyToJni()
   {
-    HttpUtil.NetworkProxy localNetworkProxy = HttpUtil.a();
+    HttpUtil.NetworkProxy localNetworkProxy = HttpUtil.b();
     if (localNetworkProxy != null) {
       try
       {
-        setGlobalProxyInfo(1, localNetworkProxy.jdField_a_of_type_JavaLangString, (short)localNetworkProxy.jdField_a_of_type_Int, "", "");
+        setGlobalProxyInfo(1, localNetworkProxy.a, (short)localNetworkProxy.b, "", "");
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
@@ -568,7 +568,7 @@ public class LiteTransferWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper
  * JD-Core Version:    0.7.0.1
  */

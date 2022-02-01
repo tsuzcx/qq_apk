@@ -24,11 +24,12 @@ public class CaptureQmcfSoDownloadActivity
   implements ICaptureSoDownloadListener
 {
   public static final String a = "CaptureQmcfSoDownloadActivity";
-  private int jdField_a_of_type_Int;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private BaseFragment jdField_a_of_type_ComTencentMobileqqAppBaseFragment;
-  private boolean jdField_a_of_type_Boolean;
   private String b;
+  private int c;
+  private boolean d;
+  private BaseFragment e;
+  private Bundle f;
+  private int g = AECameraEntry.a.a();
   
   public static void a(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
   {
@@ -92,7 +93,7 @@ public class CaptureQmcfSoDownloadActivity
       ThreadManager.getUIHandler().postDelayed(new CaptureQmcfSoDownloadActivity.1(this), 5L);
       return;
     }
-    AEQLog.d(jdField_a_of_type_JavaLangString, "[onFinish] getBooleanExtra(KEY_JUST_WAIT_DOWNLOAD_RESULT");
+    AEQLog.d(a, "[onFinish] getBooleanExtra(KEY_JUST_WAIT_DOWNLOAD_RESULT");
     setResult(-1, null);
     finish();
   }
@@ -100,7 +101,7 @@ public class CaptureQmcfSoDownloadActivity
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
       setResult(paramInt2, paramIntent);
       finish();
@@ -116,33 +117,37 @@ public class CaptureQmcfSoDownloadActivity
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561003);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseFragment = new CaptureQmcfSoDownloadFragment();
+    super.setContentView(2131627344);
+    this.e = new CaptureQmcfSoDownloadFragment();
     this.b = getIntent().getStringExtra("pendingIntentClass");
     if (getIntent().getBooleanExtra("pendingIntentAllWait", false)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseFragment = new CaptureQmcfSoDownloadFragmentAllWaite();
+      this.e = new CaptureQmcfSoDownloadFragmentAllWaite();
     }
     paramBundle = super.getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131362027, this.jdField_a_of_type_ComTencentMobileqqAppBaseFragment);
+    paramBundle.replace(2131427605, this.e);
     paramBundle.commit();
-    this.jdField_a_of_type_Boolean = getIntent().hasExtra("pendingIntentRequest");
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Int = getIntent().getIntExtra("pendingIntentRequest", 0);
+    this.d = getIntent().hasExtra("pendingIntentRequest");
+    if (this.d) {
+      this.c = getIntent().getIntExtra("pendingIntentRequest", 0);
     }
-    this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
-    AEQLog.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
+    this.f = getIntent().getExtras();
+    paramBundle = this.f;
+    if (paramBundle != null) {
+      this.g = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", this.g);
+    }
+    AEQLog.b(a, "【Activity doOnCreate】");
     return false;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    AEQLog.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
+    AEQLog.b(a, "【Activity doOnDestroy】");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aebase.activity.CaptureQmcfSoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

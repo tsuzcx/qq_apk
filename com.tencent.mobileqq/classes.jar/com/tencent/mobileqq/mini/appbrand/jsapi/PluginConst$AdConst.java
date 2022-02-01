@@ -25,7 +25,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = HardCodeUtil.a(2131708252);
+  public static final String ERROR_MSG_SERVICE_FAIL = HardCodeUtil.a(2131906046);
   public static final int KErrAdBlocked = -100100009;
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
@@ -38,15 +38,15 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = HardCodeUtil.a(2131708258);
-    ERROR_MSG_INVALID_ADUNITID = HardCodeUtil.a(2131708256);
-    ERROR_MSG_INNER_ERROR = HardCodeUtil.a(2131708259);
-    ERROR_MSG_NO_AD = HardCodeUtil.a(2131708255);
-    ERROR_MSG_IN_REVIEW = HardCodeUtil.a(2131708253);
-    ERROR_MSG_REJECTED = HardCodeUtil.a(2131708254);
-    ERROR_MSG_BANNED = HardCodeUtil.a(2131708257);
-    ERROR_MSG_CLOSED = HardCodeUtil.a(2131708251);
-    ERROR_MSG_INVALID_POSITION = HardCodeUtil.a(2131694112);
+    ERROR_MSG_PARAM_ERROR = HardCodeUtil.a(2131906052);
+    ERROR_MSG_INVALID_ADUNITID = HardCodeUtil.a(2131906050);
+    ERROR_MSG_INNER_ERROR = HardCodeUtil.a(2131906053);
+    ERROR_MSG_NO_AD = HardCodeUtil.a(2131906049);
+    ERROR_MSG_IN_REVIEW = HardCodeUtil.a(2131906047);
+    ERROR_MSG_REJECTED = HardCodeUtil.a(2131906048);
+    ERROR_MSG_BANNED = HardCodeUtil.a(2131906051);
+    ERROR_MSG_CLOSED = HardCodeUtil.a(2131906045);
+    ERROR_MSG_INVALID_POSITION = HardCodeUtil.a(2131891740);
   }
   
   public static int getRetCodeByServerResult(int paramInt)
@@ -76,7 +76,7 @@ public class PluginConst$AdConst
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst
  * JD-Core Version:    0.7.0.1
  */

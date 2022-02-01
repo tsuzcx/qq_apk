@@ -7,26 +7,26 @@ import java.util.Queue;
 class MessageSubtitleView$TextAnimationListener
   extends D8SafeAnimatorListener
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  int b;
   
   public MessageSubtitleView$TextAnimationListener(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramBoolean;
+    this.b = paramInt;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
-      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
+      if (this.b == MessageSubtitleView.e) {
+        this.c.b();
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
-        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
+      if (!this.c.c.isEmpty()) {
+        MessageSubtitleView.a(this.c);
       }
     }
   }
@@ -37,7 +37,7 @@ class MessageSubtitleView$TextAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MessageSubtitleView.TextAnimationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -62,13 +62,13 @@ public class MiniAIOEntryView
   
   public void initAppBrandRuntime()
   {
-    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559399, null));
-    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131371243));
-    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131371244));
+    this.miniAIOEntryView = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131625365, null));
+    this.miniAIOIcon = ((ImageView)this.miniAIOEntryView.findViewById(2131438587));
+    this.miniAIOUnReadView = ((TextView)this.miniAIOEntryView.findViewById(2131438588));
     if ("black".equals(this.style)) {
-      this.miniAIOIcon.setBackgroundResource(2130841090);
+      this.miniAIOIcon.setBackgroundResource(2130841881);
     } else {
-      this.miniAIOIcon.setBackgroundResource(2130841091);
+      this.miniAIOIcon.setBackgroundResource(2130841882);
     }
     initMiniMsgUser();
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 36.0F), DisplayUtil.dip2px(getContext(), 36.0F));
@@ -140,10 +140,10 @@ public class MiniAIOEntryView
     }
     if ("black".equals(paramString))
     {
-      this.miniAIOIcon.setBackgroundResource(2130841090);
+      this.miniAIOIcon.setBackgroundResource(2130841881);
       return;
     }
-    this.miniAIOIcon.setBackgroundResource(2130841091);
+    this.miniAIOIcon.setBackgroundResource(2130841882);
   }
   
   public boolean show(int paramInt)
@@ -183,7 +183,7 @@ public class MiniAIOEntryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.MiniAIOEntryView
  * JD-Core Version:    0.7.0.1
  */

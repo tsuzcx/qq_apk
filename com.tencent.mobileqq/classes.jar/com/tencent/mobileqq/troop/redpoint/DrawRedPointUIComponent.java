@@ -11,35 +11,35 @@ import mqq.app.AppRuntime;
 
 public class DrawRedPointUIComponent
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private RedPointListener jdField_a_of_type_ComTencentMobileqqTroopRedpointRedPointListener = new DrawRedPointUIComponent.1(this);
-  private String jdField_a_of_type_JavaLangString;
-  private List<Integer> jdField_a_of_type_JavaUtilList;
   public AppRuntime a;
   private String b;
+  private String c;
+  private View d;
+  private List<Integer> e;
+  private RedPointListener f = new DrawRedPointUIComponent.1(this);
   
   public DrawRedPointUIComponent(RedPointUIData paramRedPointUIData)
   {
     if (paramRedPointUIData != null)
     {
-      this.jdField_a_of_type_MqqAppAppRuntime = paramRedPointUIData.jdField_a_of_type_MqqAppAppRuntime;
-      this.jdField_a_of_type_JavaLangString = paramRedPointUIData.jdField_a_of_type_JavaLangString;
-      this.b = paramRedPointUIData.b;
-      this.jdField_a_of_type_JavaUtilList = paramRedPointUIData.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_AndroidViewView = paramRedPointUIData.jdField_a_of_type_AndroidViewView;
+      this.a = paramRedPointUIData.g;
+      this.b = paramRedPointUIData.a;
+      this.c = paramRedPointUIData.b;
+      this.e = paramRedPointUIData.e;
+      this.d = paramRedPointUIData.c;
     }
-    b();
-    d();
+    c();
+    e();
   }
   
   private void a(RedPointInfo paramRedPointInfo)
   {
     if (paramRedPointInfo != null)
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.e;
       if (localObject != null)
       {
-        if (this.jdField_a_of_type_AndroidViewView == null) {
+        if (this.d == null) {
           return;
         }
         localObject = ((List)localObject).iterator();
@@ -58,31 +58,31 @@ public class DrawRedPointUIComponent
         {
           paramRedPointInfo = new StringBuilder();
           paramRedPointInfo.append("updateRedPointUI mUin = ");
-          paramRedPointInfo.append(this.jdField_a_of_type_JavaLangString);
-          paramRedPointInfo.append(",mUinType = ");
           paramRedPointInfo.append(this.b);
+          paramRedPointInfo.append(",mUinType = ");
+          paramRedPointInfo.append(this.c);
           paramRedPointInfo.append(", isShowRedPoint = ");
           paramRedPointInfo.append(bool);
           QLog.d("DrawRedPointUIComponent", 2, paramRedPointInfo.toString());
         }
         if (bool)
         {
-          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.d.setVisibility(0);
           return;
         }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        this.d.setVisibility(8);
       }
     }
   }
   
   private void a(RedPointInfo paramRedPointInfo, HashSet<Integer> paramHashSet)
   {
-    if ((paramRedPointInfo != null) && (a() != null))
+    if ((paramRedPointInfo != null) && (b() != null))
     {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
+      if (this.d == null) {
         return;
       }
-      paramHashSet = a().iterator();
+      paramHashSet = b().iterator();
       while (paramHashSet.hasNext())
       {
         RedPointItem localRedPointItem = paramRedPointInfo.a(((Integer)paramHashSet.next()).intValue());
@@ -100,38 +100,38 @@ public class DrawRedPointUIComponent
         paramRedPointInfo.append("UpdateUI: isShowRedPoint = ");
         paramRedPointInfo.append(bool);
         paramRedPointInfo.append(",mUin = ");
-        paramRedPointInfo.append(this.jdField_a_of_type_JavaLangString);
-        paramRedPointInfo.append(", mUinType = ");
         paramRedPointInfo.append(this.b);
+        paramRedPointInfo.append(", mUinType = ");
+        paramRedPointInfo.append(this.c);
         QLog.d("DrawRedPointUIComponent", 2, paramRedPointInfo.toString());
       }
       if (bool)
       {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.d.setVisibility(0);
         return;
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.d.setVisibility(8);
     }
   }
   
   private boolean a(String paramString1, String paramString2, RedPointInfo paramRedPointInfo, HashSet<Integer> paramHashSet)
   {
-    boolean bool4 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    boolean bool4 = TextUtils.isEmpty(this.b);
     boolean bool1 = false;
     boolean bool3 = false;
     boolean bool2 = bool1;
     if (!bool4)
     {
       bool2 = bool1;
-      if (!TextUtils.isEmpty(this.b))
+      if (!TextUtils.isEmpty(this.c))
       {
         bool2 = bool1;
-        if (this.jdField_a_of_type_JavaLangString.equals(paramString1))
+        if (this.b.equals(paramString1))
         {
-          if (!this.b.equals(paramString2)) {
+          if (!this.c.equals(paramString2)) {
             return false;
           }
-          paramString1 = a();
+          paramString1 = b();
           bool2 = bool1;
           if (paramRedPointInfo != null)
           {
@@ -155,9 +155,9 @@ public class DrawRedPointUIComponent
               {
                 paramString1 = new StringBuilder();
                 paramString1.append("mUin = ");
-                paramString1.append(this.jdField_a_of_type_JavaLangString);
-                paramString1.append(", mUinType = ");
                 paramString1.append(this.b);
+                paramString1.append(", mUinType = ");
+                paramString1.append(this.c);
                 paramString1.append(", needUpdate = ");
                 paramString1.append(bool1);
                 QLog.d("DrawRedPointUIComponent", 2, paramString1.toString());
@@ -171,27 +171,27 @@ public class DrawRedPointUIComponent
     return bool2;
   }
   
-  private void b()
-  {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
-    if (localAppRuntime != null) {
-      ((IRedPointInfoService)localAppRuntime.getRuntimeService(IRedPointInfoService.class, "")).addRedPointListener(this.jdField_a_of_type_ComTencentMobileqqTroopRedpointRedPointListener);
-    }
-  }
-  
   private void c()
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.a;
     if (localAppRuntime != null) {
-      ((IRedPointInfoService)localAppRuntime.getRuntimeService(IRedPointInfoService.class, "")).removeRedPointListener(this.jdField_a_of_type_ComTencentMobileqqTroopRedpointRedPointListener);
+      ((IRedPointInfoService)localAppRuntime.getRuntimeService(IRedPointInfoService.class, "")).addRedPointListener(this.f);
     }
   }
   
   private void d()
   {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
+    AppRuntime localAppRuntime = this.a;
+    if (localAppRuntime != null) {
+      ((IRedPointInfoService)localAppRuntime.getRuntimeService(IRedPointInfoService.class, "")).removeRedPointListener(this.f);
+    }
+  }
+  
+  private void e()
+  {
+    if ((this.a != null) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c)))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.e;
       if (localObject != null)
       {
         if (((List)localObject).isEmpty()) {
@@ -201,33 +201,33 @@ public class DrawRedPointUIComponent
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("initRedPointUI mUin = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject).append(",mUinType = ");
           ((StringBuilder)localObject).append(this.b);
+          ((StringBuilder)localObject).append(",mUinType = ");
+          ((StringBuilder)localObject).append(this.c);
           QLog.d("DrawRedPointUIComponent", 2, ((StringBuilder)localObject).toString());
         }
-        a(((IRedPointInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedPointInfoService.class, "")).getRedPointInfo(this.jdField_a_of_type_JavaLangString, this.b));
+        a(((IRedPointInfoService)this.a.getRuntimeService(IRedPointInfoService.class, "")).getRedPointInfo(this.b, this.c));
       }
     }
   }
   
-  public List<Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    c();
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    d();
+    List localList = this.e;
     if (localList != null) {
       localList.clear();
     }
   }
+  
+  public List<Integer> b()
+  {
+    return this.e;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.DrawRedPointUIComponent
  * JD-Core Version:    0.7.0.1
  */

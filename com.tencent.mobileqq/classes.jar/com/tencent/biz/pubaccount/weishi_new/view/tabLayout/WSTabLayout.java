@@ -1,12 +1,20 @@
 package com.tencent.biz.pubaccount.weishi_new.view.tabLayout;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import androidx.core.view.ViewCompat;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ValueAnimator;
+import com.tencent.biz.pubaccount.weishi_new.impl.R.styleable;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUIUtil;
 import com.tencent.mobileqq.widget.TabLayoutCompat;
@@ -18,11 +26,19 @@ import org.jetbrains.annotations.NotNull;
 public class WSTabLayout
   extends TabLayoutCompat
 {
-  private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
-  private ValueAnimator jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = null;
-  private final ArrayList<WSTabInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private ValueAnimator b = null;
+  private final Interpolator n = new LinearInterpolator();
+  private ValueAnimator o = null;
+  private ValueAnimator p = null;
+  private final ArrayList<WSTabInfo> q = new ArrayList();
+  private boolean r = true;
+  private LinearLayout s;
+  private int t;
+  private int u;
+  private Paint v;
+  private int w;
+  private int x;
+  private int y;
+  private int z;
   
   public WSTabLayout(Context paramContext)
   {
@@ -37,7 +53,7 @@ public class WSTabLayout
   public WSTabLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    c();
+    a(paramAttributeSet);
   }
   
   private float a(Integer paramInteger)
@@ -47,23 +63,59 @@ public class WSTabLayout
   
   private long a(int paramInt)
   {
-    return (Math.abs(paramInt) / WeishiUIUtil.n * 200.0F);
+    return (Math.abs(paramInt) / WeishiUIUtil.p * 200.0F);
   }
   
-  @NotNull
-  private Animator.AnimatorListener a()
+  private void a(int paramInt1, int paramInt2)
   {
-    return new WSTabLayout.2(this);
+    if ((paramInt1 != this.t) || (paramInt2 != this.u))
+    {
+      this.t = paramInt1;
+      this.u = paramInt2;
+      ViewCompat.postInvalidateOnAnimation(this);
+    }
+  }
+  
+  private void a(Canvas paramCanvas)
+  {
+    int i = this.t;
+    if (i >= 0)
+    {
+      int j = this.u;
+      if (j <= i) {
+        return;
+      }
+      int k = (int)((j - i - this.w) / 2.0F);
+      i += k;
+      j = getHeight() - this.x - this.y;
+      k = this.u - k;
+      int m = getHeight() - this.y;
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        float f = this.x / 2.0F;
+        paramCanvas.drawRoundRect(i, j, k, m, f, f, this.v);
+        return;
+      }
+      paramCanvas.drawRect(i, j, k, m, this.v);
+    }
+  }
+  
+  private void a(AttributeSet paramAttributeSet)
+  {
+    b(paramAttributeSet);
+    this.s = ((LinearLayout)getChildAt(0));
+    setSelectedTabIndicatorHeight(0);
+    d();
   }
   
   private void a(LinearLayout.LayoutParams paramLayoutParams, int paramInt)
   {
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 10000 });
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new WSTabLayout.1(this, paramInt, paramLayoutParams));
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addListener(a());
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(a(paramInt));
-    this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.start();
+    this.o = ValueAnimator.ofInt(new int[] { 0, 10000 });
+    this.o.setInterpolator(this.n);
+    this.o.addUpdateListener(new WSTabLayout.1(this, paramInt, paramLayoutParams));
+    this.o.addListener(getShowTabAnimListener());
+    this.o.setDuration(a(paramInt));
+    this.o.start();
   }
   
   private void a(ValueAnimator paramValueAnimator, int paramInt, LinearLayout.LayoutParams paramLayoutParams)
@@ -89,7 +141,7 @@ public class WSTabLayout
   private void a(WSTabLayout.TabContentClickListener paramTabContentClickListener)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.q.size())
     {
       TabLayoutCompat.Tab localTab = a();
       if (localTab == null)
@@ -97,36 +149,38 @@ public class WSTabLayout
         WSLog.d("WSTabLayoutLog", "[WSTabLayout.java][initData] createTab newTab: null!");
         return;
       }
-      localTab.a(2131560029);
-      WSTabItemViewHolder localWSTabItemViewHolder = new WSTabItemViewHolder(localTab.a());
+      localTab.a(2131626072);
+      WSTabItemViewHolder localWSTabItemViewHolder = new WSTabItemViewHolder(localTab.b());
       localWSTabItemViewHolder.a(localTab);
       localTab.a(localWSTabItemViewHolder);
-      localWSTabItemViewHolder.a((WSTabInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      localWSTabItemViewHolder.a((WSTabInfo)this.q.get(i));
       localWSTabItemViewHolder.a(paramTabContentClickListener);
       d(localTab);
       i += 1;
     }
   }
   
-  private long b(int paramInt)
+  private void b(AttributeSet paramAttributeSet)
   {
-    return (Math.abs(WeishiUIUtil.n + paramInt) / WeishiUIUtil.n * 200.0F);
-  }
-  
-  @NotNull
-  private Animator.AnimatorListener b()
-  {
-    return new WSTabLayout.4(this);
+    if (paramAttributeSet == null) {
+      return;
+    }
+    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.a);
+    this.w = ((int)paramAttributeSet.getDimension(3, 0.0F));
+    this.x = ((int)paramAttributeSet.getDimension(2, 0.0F));
+    this.y = ((int)paramAttributeSet.getDimension(1, 0.0F));
+    this.z = paramAttributeSet.getColor(0, 0);
+    paramAttributeSet.recycle();
   }
   
   private void b(LinearLayout.LayoutParams paramLayoutParams, int paramInt)
   {
-    this.b = ValueAnimator.ofInt(new int[] { 0, 10000 });
-    this.b.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-    this.b.addUpdateListener(new WSTabLayout.3(this, paramInt, paramLayoutParams));
-    this.b.addListener(b());
-    this.b.setDuration(b(paramInt));
-    this.b.start();
+    this.p = ValueAnimator.ofInt(new int[] { 0, 10000 });
+    this.p.setInterpolator(this.n);
+    this.p.addUpdateListener(new WSTabLayout.3(this, paramInt, paramLayoutParams));
+    this.p.addListener(getHideTabAnimListener());
+    this.p.setDuration(d(paramInt));
+    this.p.start();
   }
   
   private void b(ValueAnimator paramValueAnimator, int paramInt, LinearLayout.LayoutParams paramLayoutParams)
@@ -135,7 +189,7 @@ public class WSTabLayout
     if (paramValueAnimator != null)
     {
       float f = a((Integer)paramValueAnimator);
-      int i = (int)(paramInt - (WeishiUIUtil.n + paramInt) * f);
+      int i = (int)(paramInt - (WeishiUIUtil.p + paramInt) * f);
       paramLayoutParams.topMargin = i;
       setLayoutParams(paramLayoutParams);
       paramValueAnimator = new StringBuilder();
@@ -149,14 +203,21 @@ public class WSTabLayout
     }
   }
   
-  private void c()
+  private long d(int paramInt)
   {
-    setSelectedTabIndicatorHeight(0);
+    return (Math.abs(WeishiUIUtil.p + paramInt) / WeishiUIUtil.p * 200.0F);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 5)
+    this.v = new Paint();
+    this.v.setColor(this.z);
+    this.v.setAntiAlias(true);
+  }
+  
+  private void e()
+  {
+    if (this.q.size() <= 5)
     {
       setTabMode(1);
       setTabGravity(0);
@@ -166,13 +227,13 @@ public class WSTabLayout
     setTabGravity(1);
   }
   
-  private void e()
+  private void f()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.r = true;
     setTabLayoutParams(0);
   }
   
-  private void f()
+  private void g()
   {
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)getLayoutParams();
     int i = localLayoutParams.topMargin;
@@ -181,31 +242,43 @@ public class WSTabLayout
       WSLog.d("WSTabLayoutLog", "[WSTabLayout.java][doShowTabLayoutAnim] currentTopMargin:0, doNothing!!");
       return;
     }
-    g();
+    h();
     a(localLayoutParams, i);
   }
   
-  private void g()
+  @NotNull
+  private Animator.AnimatorListener getHideTabAnimListener()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator;
-    if ((localValueAnimator != null) && (localValueAnimator.isRunning()))
-    {
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
-    }
+    return new WSTabLayout.4(this);
+  }
+  
+  @NotNull
+  private Animator.AnimatorListener getShowTabAnimListener()
+  {
+    return new WSTabLayout.2(this);
   }
   
   private void h()
   {
-    this.jdField_a_of_type_Boolean = false;
-    setTabLayoutParams(-WeishiUIUtil.n);
+    ValueAnimator localValueAnimator = this.o;
+    if ((localValueAnimator != null) && (localValueAnimator.isRunning()))
+    {
+      this.o.cancel();
+      this.o.removeAllListeners();
+    }
   }
   
   private void i()
   {
+    this.r = false;
+    setTabLayoutParams(-WeishiUIUtil.p);
+  }
+  
+  private void j()
+  {
     Object localObject = (LinearLayout.LayoutParams)getLayoutParams();
     int i = ((LinearLayout.LayoutParams)localObject).topMargin;
-    if (i == -WeishiUIUtil.n)
+    if (i == -WeishiUIUtil.p)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[WSTabLayout.java][doHideTabLayoutAnim] currentTopMargin:");
@@ -214,28 +287,61 @@ public class WSTabLayout
       WSLog.d("WSTabLayoutLog", ((StringBuilder)localObject).toString());
       return;
     }
-    j();
+    k();
     b((LinearLayout.LayoutParams)localObject, i);
   }
   
-  private void j()
+  private void k()
   {
-    ValueAnimator localValueAnimator = this.b;
+    ValueAnimator localValueAnimator = this.p;
     if ((localValueAnimator != null) && (localValueAnimator.isRunning()))
     {
-      this.b.removeAllListeners();
-      this.b.cancel();
+      this.p.removeAllListeners();
+      this.p.cancel();
     }
+  }
+  
+  public void a(int paramInt, float paramFloat)
+  {
+    View localView = this.s.getChildAt(paramInt);
+    int i;
+    int j;
+    if ((localView != null) && (localView.getWidth() > 0))
+    {
+      int m = localView.getLeft();
+      int k = localView.getRight();
+      i = k;
+      j = m;
+      if (paramFloat > 0.0F)
+      {
+        i = k;
+        j = m;
+        if (paramInt < this.s.getChildCount() - 1)
+        {
+          localView = this.s.getChildAt(paramInt + 1);
+          float f1 = localView.getLeft();
+          float f2 = 1.0F - paramFloat;
+          j = (int)(f1 * paramFloat + m * f2);
+          i = (int)(paramFloat * localView.getRight() + f2 * k);
+        }
+      }
+    }
+    else
+    {
+      j = -1;
+      i = -1;
+    }
+    a(j, i);
   }
   
   public void a(List<WSTabInfo> paramList, WSTabLayout.TabContentClickListener paramTabContentClickListener)
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      a();
-      d();
+      this.q.clear();
+      this.q.addAll(paramList);
+      b();
+      e();
       a(paramTabContentClickListener);
       return;
     }
@@ -250,10 +356,10 @@ public class WSTabLayout
     WSLog.e("WSTabLayoutLog", localStringBuilder.toString());
     if (paramBoolean)
     {
-      f();
+      g();
       return;
     }
-    e();
+    f();
   }
   
   public void b(boolean paramBoolean)
@@ -264,18 +370,24 @@ public class WSTabLayout
     WSLog.e("WSTabLayoutLog", localStringBuilder.toString());
     if (paramBoolean)
     {
-      i();
+      j();
       return;
     }
-    h();
+    i();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+    a(paramCanvas);
   }
   
   public void setTabItemSelect(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.q.size())
     {
-      Object localObject = a(i);
+      Object localObject = b(i);
       if (localObject != null)
       {
         localObject = (WSTabItemViewHolder)((TabLayoutCompat.Tab)localObject).a();
@@ -300,7 +412,7 @@ public class WSTabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabLayout
  * JD-Core Version:    0.7.0.1
  */

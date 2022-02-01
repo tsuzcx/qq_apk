@@ -12,13 +12,13 @@ class FloatingScreenContainer$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowImplFloatingScreenContainer.a(this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+    this.a.alpha = (paramValueAnimator.floatValue() * 1.0F + 0.0F);
+    this.b.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenContainer.3
  * JD-Core Version:    0.7.0.1
  */

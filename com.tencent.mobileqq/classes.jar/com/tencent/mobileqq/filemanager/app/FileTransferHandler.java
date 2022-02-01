@@ -178,108 +178,34 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader
 
 public class FileTransferHandler
 {
-  private static int jdField_a_of_type_Int;
-  private static Handler jdField_a_of_type_AndroidOsHandler;
-  private static final String jdField_a_of_type_JavaLangString = FileTransferObserver.class.getName();
-  public static final byte[] a;
-  private long jdField_a_of_type_Long;
+  public static final byte[] c = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101 };
+  private static final String d = FileTransferObserver.class.getName();
+  private static int e = 0;
+  private static Handler i = new FileTransferHandler.1(Looper.getMainLooper());
   public final QQAppInterface a;
-  private MessageFactoryReceiver jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactoryReceiver = new MessageFactoryReceiver();
-  private MessageFactorySender jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender = new MessageFactorySender();
-  AIOMessageSpreadManager jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager = null;
-  private DecimalFormat jdField_a_of_type_JavaTextDecimalFormat = new DecimalFormat("0.00");
-  private Map<Long, FileTransferObserver> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_AndroidOsHandler = new FileTransferHandler.1(Looper.getMainLooper());
-    jdField_a_of_type_ArrayOfByte = new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 101 };
-  }
+  AIOMessageSpreadManager b = null;
+  private long f;
+  private Map<Long, FileTransferObserver> g = new HashMap();
+  private DecimalFormat h = new DecimalFormat("0.00");
+  private MessageFactorySender j = new MessageFactorySender();
+  private MessageFactoryReceiver k = new MessageFactoryReceiver();
   
   public FileTransferHandler(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   private int a(long paramLong, im_msg_body.NotOnlineFile paramNotOnlineFile, int paramInt)
   {
     if (paramNotOnlineFile.uint32_reserved.has())
     {
-      int i = paramNotOnlineFile.uint32_reserved.get();
-      paramInt = i;
-      if (i == paramLong) {
+      int m = paramNotOnlineFile.uint32_reserved.get();
+      paramInt = m;
+      if (m == paramLong) {
         paramInt = 0;
       }
     }
     return paramInt;
-  }
-  
-  private FileTransferHandler.OlFileInfo a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte != null)
-    {
-      if (paramArrayOfByte.length == 0) {
-        return null;
-      }
-      int i = paramArrayOfByte.length;
-      FileTransferHandler.OlFileInfo localOlFileInfo = new FileTransferHandler.OlFileInfo(null);
-      if (i >= 16)
-      {
-        int k = PkgTools.getShortData(paramArrayOfByte, 0);
-        byte[] arrayOfByte1 = new byte[k];
-        int j = 2 + k;
-        if (i >= j)
-        {
-          PkgTools.getBytesData(paramArrayOfByte, 2, arrayOfByte1, k);
-          try
-          {
-            localOlFileInfo.jdField_a_of_type_JavaLangString = new String(arrayOfByte1, "UTF-16LE");
-          }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("decodeOnlineFileInfo: Exception is ");
-            localStringBuilder.append(localUnsupportedEncodingException.toString());
-            QLog.e("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-          }
-          k = j + 4;
-          if (i >= k)
-          {
-            long l = PkgTools.getLongData(paramArrayOfByte, j);
-            j = k + 2;
-            if (i >= j)
-            {
-              k = PkgTools.getShortData(paramArrayOfByte, k);
-              byte[] arrayOfByte2 = new byte[k];
-              int m = j + k;
-              if (i >= m)
-              {
-                PkgTools.getBytesData(paramArrayOfByte, j, arrayOfByte2, k);
-                if (i >= m + 4)
-                {
-                  localOlFileInfo.jdField_a_of_type_Long = ((PkgTools.getLongData(paramArrayOfByte, m) << 32) + l);
-                  return localOlFileInfo;
-                }
-                QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filelenhi");
-                return null;
-              }
-              QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- bufotherinfo");
-              return null;
-            }
-            QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- otherlen");
-            return null;
-          }
-          QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filelenlo");
-          return null;
-        }
-        QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filenamebuf");
-        return null;
-      }
-      QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filenamelen");
-    }
-    return null;
   }
   
   private FileManagerEntity a(MessageHandler paramMessageHandler, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString3, String paramString4, String paramString5, long paramLong2, int paramInt2, long paramLong3, long paramLong4)
@@ -287,11 +213,11 @@ public class FileTransferHandler
     long l = paramInt2;
     if (0L != l)
     {
-      paramMessageHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, l);
+      paramMessageHandler = this.a.getFileManagerDataCenter().a(paramString1, l);
       if (paramMessageHandler != null)
       {
         paramLong3 = paramMessageHandler.nSessionId;
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, l))
+        if (!this.a.getFileManagerDataCenter().b(paramString1, l))
         {
           paramMessageHandler.Uuid = paramString3;
           if (!paramString4.isEmpty())
@@ -302,8 +228,8 @@ public class FileTransferHandler
             paramString2.append(paramString4);
             QLog.i("FileTransferHandler<FileAssistant>", 1, paramString2.toString());
           }
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageHandler);
-          FileManagerUtil.a(paramMessageHandler, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
+          FileManagerUtil.a(this.a, paramMessageHandler);
+          FileManagerUtil.a(paramMessageHandler, this.a, null);
           if ((paramBoolean2) && (paramBoolean1))
           {
             paramString2 = new StringBuilder();
@@ -317,7 +243,7 @@ public class FileTransferHandler
           {
             a(paramString1, l, paramInt1, paramString3, paramLong1);
           }
-          paramMessageHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString1, 0, paramMessageHandler.uniseq);
+          paramMessageHandler = this.a.getMessageFacade().b(paramString1, 0, paramMessageHandler.uniseq);
           if (paramMessageHandler != null)
           {
             if ((paramMessageHandler instanceof MessageForFile))
@@ -330,11 +256,11 @@ public class FileTransferHandler
             paramMessageHandler.shmsgseq = paramShort;
             paramMessageHandler.time = paramLong1;
             paramMessageHandler.msgUid = paramLong4;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramInt1).a(paramString1, paramInt1, paramMessageHandler, 3);
+            this.a.getMessageFacade().a(paramInt1).a(paramString1, paramInt1, paramMessageHandler, 3);
           }
           return null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().d(paramLong3);
+        this.a.getOnlineFileSessionCenter().f(paramLong3);
         paramMessageHandler = new StringBuilder();
         paramMessageHandler.append("Recv a online changto offline file. name: ");
         paramMessageHandler.append(paramString5);
@@ -343,7 +269,7 @@ public class FileTransferHandler
         paramBoolean1 = true;
         bool = true;
         paramLong1 = paramLong3;
-        break label377;
+        break label376;
       }
       paramBoolean1 = false;
     }
@@ -353,13 +279,13 @@ public class FileTransferHandler
     }
     paramLong1 = 0L;
     boolean bool = false;
-    label377:
-    TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString5, 0, null), paramLong2, 0, false, null);
+    label376:
+    TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.a.getAccount(), paramString5, 0, null), paramLong2, 0, false, null);
     paramLong2 = MessageRecordFactory.a(-2005).uniseq;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    this.a.getCurrentAccountUin();
     if (0L != l)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().d(paramLong1);
+      this.a.getOnlineFileSessionCenter().f(paramLong1);
       if (QLog.isColorLevel())
       {
         paramMessageHandler = new StringBuilder();
@@ -382,12 +308,12 @@ public class FileTransferHandler
         paramMessageHandler.append(paramBoolean1);
         QLog.i("FileTransferHandler<FileAssistant>", 1, paramMessageHandler.toString());
       }
-      if ((0L != paramLong1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1))) {
-        return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1, paramLong2, paramString1, 0);
+      if ((0L != paramLong1) && (!this.a.getFileManagerDataCenter().d(paramLong1))) {
+        return this.a.getFileManagerDataCenter().a(paramLong1, paramLong2, paramString1, 0);
       }
-      return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramLong2, paramString1, 0);
+      return this.a.getFileManagerDataCenter().b(paramLong2, paramString1, 0);
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramLong2, paramString1, 0);
+    return this.a.getFileManagerDataCenter().b(paramLong2, paramString1, 0);
   }
   
   private FileManagerEntity a(hummer_resv_21.ResvAttr paramResvAttr)
@@ -408,13 +334,13 @@ public class FileTransferHandler
           if (paramResvAttr.device_type.has())
           {
             l1 = l2;
-            if (QFileAssistantUtils.b(paramResvAttr.device_type.get()) == 2) {
+            if (QFileAssistantUtils.c(paramResvAttr.device_type.get()) == 2) {
               l1 = l2 | 0x0;
             }
           }
         }
         localFileManagerEntity.nSessionId = l1;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l1);
+        localObject = this.a.getFileManagerDataCenter().a(l1);
         paramResvAttr = localFileManagerEntity;
         if (localObject != null) {
           paramResvAttr = (hummer_resv_21.ResvAttr)localObject;
@@ -455,14 +381,9 @@ public class FileTransferHandler
     return null;
   }
   
-  private ToServiceMsg a(String paramString)
-  {
-    return new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
-  }
-  
   private ToServiceMsg a(boolean paramBoolean, int paramInt, long paramLong, msg_svc.PbSendMsgReq paramPbSendMsgReq)
   {
-    ToServiceMsg localToServiceMsg = a("MessageSvc.PbSendMsg");
+    ToServiceMsg localToServiceMsg = b("MessageSvc.PbSendMsg");
     localToServiceMsg.extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
     localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 13);
     localToServiceMsg.extraData.putBoolean("ISFROM_DATALINE", true);
@@ -472,7 +393,7 @@ public class FileTransferHandler
     localToServiceMsg.extraData.putInt("DATALINE_TRYINDEX", 0);
     localToServiceMsg.putWupBuffer(paramPbSendMsgReq.toByteArray());
     localToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService(localToServiceMsg);
+    this.a.sendToService(localToServiceMsg);
     return localToServiceMsg;
   }
   
@@ -486,49 +407,25 @@ public class FileTransferHandler
     {
       byte[] arrayOfByte1 = new byte[32];
       byte[] arrayOfByte2 = new byte[paramString.length - 32];
-      int i = 0;
-      while (i < paramString.length)
+      int m = 0;
+      while (m < paramString.length)
       {
-        if (i < 32) {
-          arrayOfByte1[i] = paramString[i];
+        if (m < 32) {
+          arrayOfByte1[m] = paramString[m];
         } else {
-          arrayOfByte2[(i - 32)] = paramString[i];
+          arrayOfByte2[(m - 32)] = paramString[m];
         }
-        i += 1;
+        m += 1;
       }
       return new Pair(new String(arrayOfByte1), new String(arrayOfByte2));
     }
     return null;
   }
   
-  private Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramFromServiceMsg.isSuccess()) {
-      try
-      {
-        paramToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactoryReceiver.a(paramToServiceMsg, paramFromServiceMsg);
-        return paramToServiceMsg;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-        if (QLog.isColorLevel())
-        {
-          paramFromServiceMsg = new StringBuilder();
-          paramFromServiceMsg.append(this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactoryReceiver.getClass().getSimpleName());
-          paramFromServiceMsg.append(" decode error,");
-          paramFromServiceMsg.append(paramToServiceMsg.toString());
-          QLog.d("FileTransferHandler<FileAssistant>", 2, paramFromServiceMsg.toString());
-        }
-      }
-    }
-    return null;
-  }
-  
   private String a(String paramString, TempSessionInfo paramTempSessionInfo)
   {
-    if ((paramTempSessionInfo.jdField_a_of_type_Int == 1000) || (paramTempSessionInfo.jdField_a_of_type_Int == 1020) || (paramTempSessionInfo.jdField_a_of_type_Int == 1004)) {
-      paramString = String.valueOf(paramTempSessionInfo.jdField_b_of_type_Long);
+    if ((paramTempSessionInfo.a == 1000) || (paramTempSessionInfo.a == 1020) || (paramTempSessionInfo.a == 1004)) {
+      paramString = String.valueOf(paramTempSessionInfo.c);
     }
     return paramString;
   }
@@ -536,47 +433,47 @@ public class FileTransferHandler
   private List<String> a(FileUploadInfo paramFileUploadInfo, List<String> paramList, cmd0x346.ApplyUploadRspV2 paramApplyUploadRspV2)
   {
     if (paramApplyUploadRspV2.int32_ret_code.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Int = paramApplyUploadRspV2.int32_ret_code.get();
+      paramFileUploadInfo.a = paramApplyUploadRspV2.int32_ret_code.get();
     }
     if (paramApplyUploadRspV2.str_ret_msg.has()) {
-      paramFileUploadInfo.jdField_a_of_type_JavaLangString = paramApplyUploadRspV2.str_ret_msg.get();
+      paramFileUploadInfo.b = paramApplyUploadRspV2.str_ret_msg.get();
     }
     if (paramApplyUploadRspV2.uint64_total_space.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Long = paramApplyUploadRspV2.uint64_total_space.get();
+      paramFileUploadInfo.c = paramApplyUploadRspV2.uint64_total_space.get();
     }
     if (paramApplyUploadRspV2.uint64_used_space.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Long = paramApplyUploadRspV2.uint64_used_space.get();
+      paramFileUploadInfo.d = paramApplyUploadRspV2.uint64_used_space.get();
     }
     if (paramApplyUploadRspV2.uint64_uploaded_size.has()) {
-      paramFileUploadInfo.jdField_c_of_type_Long = paramApplyUploadRspV2.uint64_uploaded_size.get();
+      paramFileUploadInfo.e = paramApplyUploadRspV2.uint64_uploaded_size.get();
     }
     if (paramApplyUploadRspV2.str_upload_ip.has()) {
-      paramFileUploadInfo.jdField_b_of_type_JavaLangString = paramApplyUploadRspV2.str_upload_ip.get();
+      paramFileUploadInfo.f = paramApplyUploadRspV2.str_upload_ip.get();
     } else if (paramApplyUploadRspV2.str_upload_domain.has()) {
-      paramFileUploadInfo.jdField_b_of_type_JavaLangString = paramApplyUploadRspV2.str_upload_domain.get();
+      paramFileUploadInfo.f = paramApplyUploadRspV2.str_upload_domain.get();
     } else {
       QLog.i("FileTransferHandler<FileAssistant>", 1, "=_= ^! [CS Replay]handleUploadResponse has neither ip nor domain");
     }
     if (paramApplyUploadRspV2.uint32_upload_port.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Short = ((short)paramApplyUploadRspV2.uint32_upload_port.get());
+      paramFileUploadInfo.g = ((short)paramApplyUploadRspV2.uint32_upload_port.get());
     }
     if (paramApplyUploadRspV2.bytes_uuid.has()) {
-      paramFileUploadInfo.jdField_a_of_type_ArrayOfByte = paramApplyUploadRspV2.bytes_uuid.get().toByteArray();
+      paramFileUploadInfo.h = paramApplyUploadRspV2.bytes_uuid.get().toByteArray();
     }
     if (paramApplyUploadRspV2.bytes_upload_key.has()) {
-      paramFileUploadInfo.jdField_b_of_type_ArrayOfByte = paramApplyUploadRspV2.bytes_upload_key.get().toByteArray();
+      paramFileUploadInfo.i = paramApplyUploadRspV2.bytes_upload_key.get().toByteArray();
     }
     if (paramApplyUploadRspV2.bool_file_exist.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Boolean = paramApplyUploadRspV2.bool_file_exist.get();
+      paramFileUploadInfo.j = paramApplyUploadRspV2.bool_file_exist.get();
     }
     if (paramApplyUploadRspV2.uint32_upload_port.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Int = paramApplyUploadRspV2.uint32_pack_size.get();
+      paramFileUploadInfo.k = paramApplyUploadRspV2.uint32_pack_size.get();
     }
     if (paramApplyUploadRspV2.uint32_httpsvr_api_ver.has()) {
-      paramFileUploadInfo.jdField_d_of_type_Int = paramApplyUploadRspV2.uint32_httpsvr_api_ver.get();
+      paramFileUploadInfo.o = paramApplyUploadRspV2.uint32_httpsvr_api_ver.get();
     }
     if (paramApplyUploadRspV2.bytes_sha.has()) {
-      paramFileUploadInfo.jdField_c_of_type_ArrayOfByte = paramApplyUploadRspV2.bytes_sha.get().toByteArray();
+      paramFileUploadInfo.m = paramApplyUploadRspV2.bytes_sha.get().toByteArray();
     }
     Object localObject = paramList;
     if (paramApplyUploadRspV2.rpt_str_uploadip_list.has())
@@ -587,16 +484,16 @@ public class FileTransferHandler
       }
     }
     if (paramApplyUploadRspV2.str_upload_https_domain.has()) {
-      paramFileUploadInfo.jdField_c_of_type_JavaLangString = paramApplyUploadRspV2.str_upload_https_domain.get();
+      paramFileUploadInfo.p = paramApplyUploadRspV2.str_upload_https_domain.get();
     }
     if (paramApplyUploadRspV2.uint32_upload_https_port.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Short = ((short)paramApplyUploadRspV2.uint32_upload_https_port.get());
+      paramFileUploadInfo.q = ((short)paramApplyUploadRspV2.uint32_upload_https_port.get());
     }
     if (paramApplyUploadRspV2.str_upload_dns.has()) {
-      paramFileUploadInfo.jdField_d_of_type_JavaLangString = paramApplyUploadRspV2.str_upload_dns.get();
+      paramFileUploadInfo.r = paramApplyUploadRspV2.str_upload_dns.get();
     }
     if (paramApplyUploadRspV2.str_upload_lanip.has()) {
-      paramFileUploadInfo.jdField_e_of_type_JavaLangString = paramApplyUploadRspV2.str_upload_lanip.get();
+      paramFileUploadInfo.s = paramApplyUploadRspV2.str_upload_lanip.get();
     }
     return localObject;
   }
@@ -604,54 +501,54 @@ public class FileTransferHandler
   private List<String> a(FileUploadInfo paramFileUploadInfo, List<String> paramList, cmd0x346.ApplyUploadRspV3 paramApplyUploadRspV3)
   {
     if (paramApplyUploadRspV3.int32_ret_code.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Int = paramApplyUploadRspV3.int32_ret_code.get();
+      paramFileUploadInfo.a = paramApplyUploadRspV3.int32_ret_code.get();
     }
     if (paramApplyUploadRspV3.str_ret_msg.has()) {
-      paramFileUploadInfo.jdField_a_of_type_JavaLangString = paramApplyUploadRspV3.str_ret_msg.get();
+      paramFileUploadInfo.b = paramApplyUploadRspV3.str_ret_msg.get();
     }
     if (paramApplyUploadRspV3.uint64_total_space.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Long = paramApplyUploadRspV3.uint64_total_space.get();
+      paramFileUploadInfo.c = paramApplyUploadRspV3.uint64_total_space.get();
     }
     if (paramApplyUploadRspV3.uint64_used_space.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Long = paramApplyUploadRspV3.uint64_used_space.get();
+      paramFileUploadInfo.d = paramApplyUploadRspV3.uint64_used_space.get();
     }
     if (paramApplyUploadRspV3.uint64_uploaded_size.has()) {
-      paramFileUploadInfo.jdField_c_of_type_Long = paramApplyUploadRspV3.uint64_uploaded_size.get();
+      paramFileUploadInfo.e = paramApplyUploadRspV3.uint64_uploaded_size.get();
     }
     if (paramApplyUploadRspV3.str_upload_ip.has()) {
-      paramFileUploadInfo.jdField_b_of_type_JavaLangString = paramApplyUploadRspV3.str_upload_ip.get();
+      paramFileUploadInfo.f = paramApplyUploadRspV3.str_upload_ip.get();
     } else if (paramApplyUploadRspV3.str_upload_domain.has()) {
-      paramFileUploadInfo.jdField_b_of_type_JavaLangString = paramApplyUploadRspV3.str_upload_domain.get();
+      paramFileUploadInfo.f = paramApplyUploadRspV3.str_upload_domain.get();
     } else {
       QLog.i("FileTransferHandler<FileAssistant>", 1, "=_= ^! [CS Replay]handleUploadResponse has neither ip nor domain");
     }
     if (paramApplyUploadRspV3.uint32_upload_port.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Short = ((short)paramApplyUploadRspV3.uint32_upload_port.get());
+      paramFileUploadInfo.g = ((short)paramApplyUploadRspV3.uint32_upload_port.get());
     }
     if (paramApplyUploadRspV3.bytes_uuid.has()) {
-      paramFileUploadInfo.jdField_a_of_type_ArrayOfByte = paramApplyUploadRspV3.bytes_uuid.get().toByteArray();
+      paramFileUploadInfo.h = paramApplyUploadRspV3.bytes_uuid.get().toByteArray();
     }
     if (paramApplyUploadRspV3.bytes_upload_key.has()) {
-      paramFileUploadInfo.jdField_b_of_type_ArrayOfByte = paramApplyUploadRspV3.bytes_upload_key.get().toByteArray();
+      paramFileUploadInfo.i = paramApplyUploadRspV3.bytes_upload_key.get().toByteArray();
     }
     if (paramApplyUploadRspV3.bool_file_exist.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Boolean = paramApplyUploadRspV3.bool_file_exist.get();
+      paramFileUploadInfo.j = paramApplyUploadRspV3.bool_file_exist.get();
     }
-    if (paramFileUploadInfo.jdField_b_of_type_Boolean) {
-      if (paramFileUploadInfo.jdField_a_of_type_Boolean)
+    if (paramFileUploadInfo.u) {
+      if (paramFileUploadInfo.j)
       {
         if (paramApplyUploadRspV3.str_fileidcrc.has()) {
-          paramFileUploadInfo.jdField_f_of_type_JavaLangString = paramApplyUploadRspV3.str_fileidcrc.get();
+          paramFileUploadInfo.w = paramApplyUploadRspV3.str_fileidcrc.get();
         }
       }
       else if (paramApplyUploadRspV3.bytes_media_plateform_upload_key.has()) {
-        paramFileUploadInfo.jdField_f_of_type_ArrayOfByte = paramApplyUploadRspV3.bytes_media_plateform_upload_key.get().toByteArray();
+        paramFileUploadInfo.v = paramApplyUploadRspV3.bytes_media_plateform_upload_key.get().toByteArray();
       } else {
         QLog.i("FileTransferHandler<FileAssistant>", 1, "handleUploadResponseV3: bUseMediaPlatform but has not bytes_media_plateform_upload_key");
       }
     }
     if (paramApplyUploadRspV3.uint32_upload_port.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Int = paramApplyUploadRspV3.uint32_pack_size.get();
+      paramFileUploadInfo.k = paramApplyUploadRspV3.uint32_pack_size.get();
     }
     Object localObject = paramList;
     if (paramApplyUploadRspV3.rpt_str_uploadip_list.has())
@@ -662,16 +559,16 @@ public class FileTransferHandler
       }
     }
     if (paramApplyUploadRspV3.str_upload_https_domain.has()) {
-      paramFileUploadInfo.jdField_c_of_type_JavaLangString = paramApplyUploadRspV3.str_upload_https_domain.get();
+      paramFileUploadInfo.p = paramApplyUploadRspV3.str_upload_https_domain.get();
     }
     if (paramApplyUploadRspV3.uint32_upload_https_port.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Short = ((short)paramApplyUploadRspV3.uint32_upload_https_port.get());
+      paramFileUploadInfo.q = ((short)paramApplyUploadRspV3.uint32_upload_https_port.get());
     }
     if (paramApplyUploadRspV3.str_upload_dns.has()) {
-      paramFileUploadInfo.jdField_d_of_type_JavaLangString = paramApplyUploadRspV3.str_upload_dns.get();
+      paramFileUploadInfo.r = paramApplyUploadRspV3.str_upload_dns.get();
     }
     if (paramApplyUploadRspV3.str_upload_lanip.has()) {
-      paramFileUploadInfo.jdField_e_of_type_JavaLangString = paramApplyUploadRspV3.str_upload_lanip.get();
+      paramFileUploadInfo.s = paramApplyUploadRspV3.str_upload_lanip.get();
     }
     return localObject;
   }
@@ -680,41 +577,41 @@ public class FileTransferHandler
   {
     cmd0x346.ApplyUploadRsp localApplyUploadRsp = (cmd0x346.ApplyUploadRsp)paramRspBody.msg_apply_upload_rsp.get();
     if (localApplyUploadRsp.int32_ret_code.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Int = localApplyUploadRsp.int32_ret_code.get();
+      paramFileUploadInfo.a = localApplyUploadRsp.int32_ret_code.get();
     }
     if (localApplyUploadRsp.str_ret_msg.has()) {
-      paramFileUploadInfo.jdField_a_of_type_JavaLangString = localApplyUploadRsp.str_ret_msg.get();
+      paramFileUploadInfo.b = localApplyUploadRsp.str_ret_msg.get();
     }
     if (localApplyUploadRsp.uint64_total_space.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Long = localApplyUploadRsp.uint64_total_space.get();
+      paramFileUploadInfo.c = localApplyUploadRsp.uint64_total_space.get();
     }
     if (localApplyUploadRsp.uint64_used_space.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Long = localApplyUploadRsp.uint64_used_space.get();
+      paramFileUploadInfo.d = localApplyUploadRsp.uint64_used_space.get();
     }
     if (localApplyUploadRsp.uint64_uploaded_size.has()) {
-      paramFileUploadInfo.jdField_c_of_type_Long = localApplyUploadRsp.uint64_uploaded_size.get();
+      paramFileUploadInfo.e = localApplyUploadRsp.uint64_uploaded_size.get();
     }
     if (localApplyUploadRsp.str_upload_ip.has()) {
-      paramFileUploadInfo.jdField_b_of_type_JavaLangString = localApplyUploadRsp.str_upload_ip.get();
+      paramFileUploadInfo.f = localApplyUploadRsp.str_upload_ip.get();
     } else if (localApplyUploadRsp.str_upload_domain.has()) {
-      paramFileUploadInfo.jdField_b_of_type_JavaLangString = localApplyUploadRsp.str_upload_domain.get();
+      paramFileUploadInfo.f = localApplyUploadRsp.str_upload_domain.get();
     } else {
       QLog.i("FileTransferHandler<FileAssistant>", 1, "handleUploadResponse has neither ip nor domain");
     }
     if (localApplyUploadRsp.uint32_upload_port.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Short = ((short)localApplyUploadRsp.uint32_upload_port.get());
+      paramFileUploadInfo.g = ((short)localApplyUploadRsp.uint32_upload_port.get());
     }
     if (localApplyUploadRsp.bytes_uuid.has()) {
-      paramFileUploadInfo.jdField_a_of_type_ArrayOfByte = localApplyUploadRsp.bytes_uuid.get().toByteArray();
+      paramFileUploadInfo.h = localApplyUploadRsp.bytes_uuid.get().toByteArray();
     }
     if (localApplyUploadRsp.bytes_upload_key.has()) {
-      paramFileUploadInfo.jdField_b_of_type_ArrayOfByte = localApplyUploadRsp.bytes_upload_key.get().toByteArray();
+      paramFileUploadInfo.i = localApplyUploadRsp.bytes_upload_key.get().toByteArray();
     }
     if (localApplyUploadRsp.bool_file_exist.has()) {
-      paramFileUploadInfo.jdField_a_of_type_Boolean = localApplyUploadRsp.bool_file_exist.get();
+      paramFileUploadInfo.j = localApplyUploadRsp.bool_file_exist.get();
     }
     if (localApplyUploadRsp.uint32_upload_port.has()) {
-      paramFileUploadInfo.jdField_b_of_type_Int = localApplyUploadRsp.uint32_pack_size.get();
+      paramFileUploadInfo.k = localApplyUploadRsp.uint32_pack_size.get();
     }
     paramRspBody = paramList;
     if (localApplyUploadRsp.rpt_str_uploadip_list.has())
@@ -725,19 +622,19 @@ public class FileTransferHandler
       }
     }
     if (localApplyUploadRsp.str_upload_dns.has()) {
-      paramFileUploadInfo.jdField_d_of_type_JavaLangString = localApplyUploadRsp.str_upload_dns.get();
+      paramFileUploadInfo.r = localApplyUploadRsp.str_upload_dns.get();
     }
     return paramRspBody;
   }
   
   private msg_svc.PbSendMsgReq a(String paramString, int paramInt1, byte[] paramArrayOfByte, long paramLong, int paramInt2)
   {
-    paramLong = FileManagerUtil.b();
-    long l = FileManagerUtil.a();
+    paramLong = FileManagerUtil.g();
+    long l = FileManagerUtil.f();
     TransMsgContext localTransMsgContext = new TransMsgContext();
-    localTransMsgContext.jdField_a_of_type_Int = paramInt1;
-    localTransMsgContext.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    paramString = MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 13, paramString, localTransMsgContext, l, MessageUtils.b(paramLong));
+    localTransMsgContext.a = paramInt1;
+    localTransMsgContext.b = paramArrayOfByte;
+    paramString = MessageProtoCodec.a(this.a, 13, paramString, localTransMsgContext, l, MessageUtils.b(paramLong));
     paramArrayOfByte = new im_msg_head.InstInfo();
     if (paramInt2 == 3) {
       paramInt1 = 1001;
@@ -751,7 +648,7 @@ public class FileTransferHandler
     paramString.routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add(paramArrayOfByte);
     paramArrayOfByte = new im_msg_head.InstInfo();
     paramArrayOfByte.uint32_apppid.set(1001);
-    paramArrayOfByte.uint32_instid.set(AppSetting.a());
+    paramArrayOfByte.uint32_instid.set(AppSetting.d());
     paramArrayOfByte.enum_device_type.set(2);
     paramArrayOfByte.setHasFlag(true);
     paramString.routing_head.trans_0x211.inst_ctrl.msg_from_inst = paramArrayOfByte;
@@ -764,7 +661,7 @@ public class FileTransferHandler
     if ((paramLong != -5L) && (paramLong != -6L)) {
       return;
     }
-    MessageHandler localMessageHandler = (MessageHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER);
+    MessageHandler localMessageHandler = (MessageHandler)this.a.getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER);
     if (localMessageHandler == null) {
       return;
     }
@@ -773,13 +670,13 @@ public class FileTransferHandler
   
   private void a(long paramLong, boolean paramBoolean, int paramInt, String paramString1, String paramString2, FileManagerEntity paramFileManagerEntity)
   {
-    int i = paramFileManagerEntity.nOpType;
-    if (i != 4)
+    int m = paramFileManagerEntity.nOpType;
+    if (m != 4)
     {
-      if (i != 7)
+      if (m != 7)
       {
-        if (i != 32) {}
-        switch (i)
+        if (m != 32) {}
+        switch (m)
         {
         default: 
           return;
@@ -885,32 +782,32 @@ public class FileTransferHandler
     if (a(paramList, paramString1, paramString2, paramShort, paramBoolean1, paramBoolean2, paramString3, paramString5, paramInt2, paramLong4)) {
       return;
     }
-    localObject = TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString5, 0, null), paramLong2, 0, false, null);
+    localObject = TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.a.getAccount(), paramString5, 0, null), paramLong2, 0, false, null);
     if (paramTempSessionInfo != null)
     {
-      if (paramTempSessionInfo.jdField_a_of_type_Int == -1)
+      if (paramTempSessionInfo.a == -1)
       {
-        i = 0;
+        m = 0;
       }
       else
       {
         paramString2 = a(paramString2, paramTempSessionInfo);
-        i = 1;
+        m = 1;
       }
-      if (i != 0)
+      if (m != 0)
       {
-        i = paramTempSessionInfo.jdField_a_of_type_Int;
+        m = paramTempSessionInfo.a;
         break label519;
       }
     }
-    int i = 0;
+    int m = 0;
     label519:
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.a.getCurrentAccountUin();
     paramMessageHandler.setCloudType(1);
     paramMessageHandler.fileName = paramString5;
     paramMessageHandler.fileSize = paramLong2;
-    paramMessageHandler.peerNick = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, null, 0);
-    paramMessageHandler.peerType = i;
+    paramMessageHandler.peerNick = FileManagerUtil.a(this.a, paramString1, null, 0);
+    paramMessageHandler.peerType = m;
     paramMessageHandler.peerUin = paramString1;
     paramMessageHandler.srvTime = (paramLong1 * 1000L);
     paramMessageHandler.status = -1;
@@ -922,7 +819,7 @@ public class FileTransferHandler
     paramMessageHandler.msgSeq = l;
     paramMessageHandler.msgUid = paramLong4;
     paramMessageHandler.strFileMd5 = paramString6;
-    paramMessageHandler.nFileType = FileManagerUtil.a(paramString5);
+    paramMessageHandler.nFileType = FileManagerUtil.c(paramString5);
     a(paramString1, paramString2, paramString3, paramTempSessionInfo, paramArrayOfByte, paramString7, paramMessageHandler);
     if ((paramResvAttr != null) && (paramResvAttr.file_image_info != null) && (paramResvAttr.file_image_info.has()))
     {
@@ -942,7 +839,7 @@ public class FileTransferHandler
     paramString4.append(paramMessageHandler.strFileMd5);
     paramString4.append("]");
     QLog.i("FileTransferHandler<FileAssistant>", 1, paramString4.toString());
-    FileManagerUtil.a(paramString5);
+    FileManagerUtil.c(paramString5);
     if (TextUtils.isEmpty(paramMessageHandler.Uuid))
     {
       paramMessageHandler.nWeiYunSrcType = -2;
@@ -974,13 +871,13 @@ public class FileTransferHandler
       paramString4.append("vipBubbleDiyTextID:");
       paramString4.append(String.valueOf(paramInt3));
       paramString4 = paramString4.toString();
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageHandler.nSessionId, "actFileDownDetail", 0L, "", paramMessageHandler.selfUin, paramMessageHandler.Uuid, paramMessageHandler.strFileMd5, 9081L, paramString4, 0L, 0L, paramLong2, "", "", 0, "uuid null", null);
+      FileManagerUtil.a(this.a, paramMessageHandler.nSessionId, "actFileDownDetail", 0L, "", paramMessageHandler.selfUin, paramMessageHandler.Uuid, paramMessageHandler.strFileMd5, 9081L, paramString4, 0L, 0L, paramLong2, "", "", 0, "uuid null", null);
     }
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageHandler);
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, "", paramMessageHandler);
+    FileManagerUtil.a(this.a, paramMessageHandler);
+    FileManagerUtil.a(this.a, paramString2, "", paramMessageHandler);
     if (str.equals(paramString2))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString1, 0, paramMessageHandler.uniseq);
+      this.a.getFileManagerDataCenter().a(paramString1, 0, paramMessageHandler.uniseq);
       paramMessageHandler.nOpType = 0;
       paramMessageHandler.status = 1;
       paramMessageHandler.bSend = true;
@@ -989,9 +886,9 @@ public class FileTransferHandler
       paramMessageHandler.bOnceSuccess = true;
     }
     paramMessageHandler.bDelInFM = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramMessageHandler);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramMessageHandler);
-    FileManagerUtil.a(paramMessageHandler, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
+    this.a.getFileManagerDataCenter().a(paramMessageHandler);
+    this.a.getFileManagerDataCenter().c(paramMessageHandler);
+    FileManagerUtil.a(paramMessageHandler, this.a, null);
     if (QLog.isDevelopLevel())
     {
       paramString4 = new StringBuilder();
@@ -1002,40 +899,40 @@ public class FileTransferHandler
       paramString4.append("] insert To AIO");
       QLog.w("FileTransferHandler<FileAssistant>", 2, paramString4.toString());
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramMessageHandler.nSessionId))
+    if (!this.a.getFileManagerDataCenter().f(paramMessageHandler.nSessionId))
     {
       paramString4 = new StringBuilder();
       paramString4.append("MsgRecord is not exsited, addAIOMsg uniseq:");
       paramString4.append(paramMessageHandler.uniseq);
       QLog.i("FileTransferHandler<FileAssistant>", 1, paramString4.toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramMessageHandler.nSessionId);
-      paramLong1 = a(paramList, paramString1, paramString2, paramString5, paramLong2, paramBoolean1, i, (String)localObject, l, l, paramString3, paramInt1, paramMessageHandler.uniseq, paramLong4, paramLong3, paramLong1, -2005, paramInt3, paramResvAttr);
+      this.a.getFileManagerDataCenter().e(paramMessageHandler.nSessionId);
+      paramLong1 = a(paramList, paramString1, paramString2, paramString5, paramLong2, paramBoolean1, m, (String)localObject, l, l, paramString3, paramInt1, paramMessageHandler.uniseq, paramLong4, paramLong3, paramLong1, -2005, paramInt3, paramResvAttr);
       paramList = paramMessageHandler;
       paramList.uniseq = paramLong1;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramList);
+      this.a.getFileManagerDataCenter().c(paramList);
     }
     paramList = paramMessageHandler;
     paramMessageHandler = this;
-    if ((QFileAssistantUtils.a(paramList.peerUin)) && (paramList.status != 16) && (QFileAssistantUtils.a(paramString2)) && (QFileAssistantUtils.a(paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList.fileSize))) {
-      paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(paramList);
+    if ((QFileAssistantUtils.a(paramList.peerUin)) && (paramList.status != 16) && (QFileAssistantUtils.a(paramString2)) && (QFileAssistantUtils.a(paramMessageHandler.a, paramList.fileSize))) {
+      paramMessageHandler.a.getFileManagerEngine().h(paramList);
     }
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
       paramString2.append("File Coming:");
-      paramString2.append(FileManagerUtil.a(paramList));
+      paramString2.append(FileManagerUtil.c(paramList));
       QLog.i("FileTransferHandler<FileAssistant>", 2, paramString2.toString());
     }
-    paramMessageHandler.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramList.uniseq, paramList.nSessionId, paramString1, i, 17, null, 0, null);
+    paramMessageHandler.a.getFileManagerNotifyCenter().a(paramList.uniseq, paramList.nSessionId, paramString1, m, 17, null, 0, null);
   }
   
   private void a(FileManagerEntity paramFileManagerEntity, String paramString)
   {
-    DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     MsgCSBody0x346 localMsgCSBody0x346 = new MsgCSBody0x346();
     localMsgCSBody0x346.uMsgSubType = 1400;
     localMsgCSBody0x346.fileQueryReq = new FileQueryReq();
-    localMsgCSBody0x346.fileQueryReq.uint64_uin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+    localMsgCSBody0x346.fileQueryReq.uint64_uin = this.a.getLongAccountUin();
     localMsgCSBody0x346.fileQueryReq.bytes_uuid = paramFileManagerEntity.Uuid.getBytes();
     localMsgCSBody0x346.uint32_business_id = 3;
     Bundle localBundle = new Bundle();
@@ -1048,10 +945,10 @@ public class FileTransferHandler
   {
     UniPacket localUniPacket = new UniPacket(true);
     localUniPacket.setEncodeName("utf-8");
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    localUniPacket.setRequestId(i);
-    this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageFactorySender.a(paramToServiceMsg, localUniPacket);
+    int m = e;
+    e = m + 1;
+    localUniPacket.setRequestId(m);
+    this.j.a(paramToServiceMsg, localUniPacket);
     paramToServiceMsg.putWupBuffer(localUniPacket.encode());
   }
   
@@ -1083,10 +980,10 @@ public class FileTransferHandler
       }
       if (paramTempSessionInfo != null)
       {
-        if (paramTempSessionInfo.jdField_a_of_type_Int != -1) {
+        if (paramTempSessionInfo.a != -1) {
           paramFileManagerEntity.peerType = 1;
         }
-        paramFileManagerEntity.TroopUin = paramTempSessionInfo.jdField_b_of_type_Long;
+        paramFileManagerEntity.TroopUin = paramTempSessionInfo.c;
       }
       paramFileManagerEntity.bDelInFM = false;
     }
@@ -1106,7 +1003,7 @@ public class FileTransferHandler
         paramString4.append("]. insert tips into aio");
         QLog.d("FileTransferHandler<FileAssistant>", 2, paramString4.toString());
       }
-      paramString4 = TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString2, 0, null), paramLong4, 0, false, null);
+      paramString4 = TransfileUtile.makeTransFileProtocolData(TransFileUtil.getTransferFilePath(this.a.getAccount(), paramString2, 0, null), paramLong4, 0, false, null);
       long l1 = MessageRecordFactory.a(-2005).uniseq;
       long l2 = paramShort;
       a(paramList, paramString1, paramString3, paramString2, paramLong4, paramBoolean1, 0, paramString4, l2, l2, "", paramInt2, l1, paramLong2, paramLong1, paramLong3, -3008, paramInt1, paramResvAttr);
@@ -1135,13 +1032,13 @@ public class FileTransferHandler
       localStringBuilder.append("");
       if ((QFileAssistantUtils.a(localStringBuilder.toString())) && (paramResvAttr != null) && (paramResvAttr.device_type.has()))
       {
-        int i = paramResvAttr.device_type.get();
+        int m = paramResvAttr.device_type.get();
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           paramResvAttr = (MessageRecord)paramList.next();
           if (TextUtils.isEmpty(paramResvAttr.getExtInfoFromExtStr("dataline_msg_device_type"))) {
-            QFileAssistantUtils.a(paramResvAttr, i);
+            QFileAssistantUtils.a(paramResvAttr, m);
           }
         }
       }
@@ -1161,25 +1058,25 @@ public class FileTransferHandler
   private void a(boolean paramBoolean, FileManagerEntity paramFileManagerEntity, String paramString1, int paramInt, String paramString2, long paramLong)
   {
     Object localObject = Long.valueOf(0L);
-    int i;
+    int m;
     if (paramBoolean)
     {
       paramFileManagerEntity.status = 1;
-      i = paramFileManagerEntity.nOpType;
-      if (i != 20)
+      m = paramFileManagerEntity.nOpType;
+      if (m != 20)
       {
-        if (i != 21)
+        if (m != 21)
         {
-          if (i != 27)
+          if (m != 27)
           {
             if (!QLog.isDevelopLevel()) {
               return;
             }
-            throw new NullPointerException(HardCodeUtil.a(2131704677));
+            throw new NullPointerException(HardCodeUtil.a(2131902581));
           }
           if ((paramFileManagerEntity.mContext instanceof IForwardCallBack))
           {
-            ForwardOrderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.uniseq);
+            ForwardOrderManager.a().a(this.a, paramFileManagerEntity.uniseq);
             ((IForwardCallBack)paramFileManagerEntity.mContext).a(paramBoolean, paramFileManagerEntity.strTroopFileUuid, paramFileManagerEntity.nSessionId, paramInt, paramString2, String.valueOf(paramFileManagerEntity.peerUin), paramString1);
           }
         }
@@ -1188,9 +1085,9 @@ public class FileTransferHandler
           paramFileManagerEntity.Uuid = paramString1;
           paramFileManagerEntity.peerType = 0;
           paramFileManagerEntity.setCloudType(1);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 19, new Object[] { Integer.valueOf(paramInt), paramString2, localObject, localObject, paramString1, Long.valueOf(paramLong) });
+          this.a.getFileManagerNotifyCenter().a(paramBoolean, 19, new Object[] { Integer.valueOf(paramInt), paramString2, localObject, localObject, paramString1, Long.valueOf(paramLong) });
           a(paramFileManagerEntity.peerUin, paramFileManagerEntity, null);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramFileManagerEntity, 6, null);
+          this.a.getFileManagerNotifyCenter().a(paramFileManagerEntity, 6, null);
         }
       }
       else
@@ -1206,22 +1103,22 @@ public class FileTransferHandler
           paramFileManagerEntity.WeiYunFileId = paramString1;
         }
         paramFileManagerEntity.setCloudType(2);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 34, new Object[] { Integer.valueOf(paramInt), paramString2, paramString1, Long.valueOf(paramLong) });
+        this.a.getFileManagerNotifyCenter().a(paramBoolean, 34, new Object[] { Integer.valueOf(paramInt), paramString2, paramString1, Long.valueOf(paramLong) });
       }
     }
     else
     {
-      i = paramFileManagerEntity.nOpType;
-      if (i != 20)
+      m = paramFileManagerEntity.nOpType;
+      if (m != 20)
       {
-        if (i != 21)
+        if (m != 21)
         {
-          if (i != 27)
+          if (m != 27)
           {
             if (!QLog.isDevelopLevel()) {
               return;
             }
-            throw new NullPointerException(HardCodeUtil.a(2131704678));
+            throw new NullPointerException(HardCodeUtil.a(2131902582));
           }
           if ((paramInt == -6101) || (paramInt == -7003))
           {
@@ -1230,10 +1127,10 @@ public class FileTransferHandler
             {
               localObject = (FileManagerEntity)paramFileManagerEntity.mContext;
               ((FileManagerEntity)localObject).status = 16;
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject);
+              this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject);
               paramFileManagerEntity.mContext = null;
             }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+            this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
           }
           if ((paramFileManagerEntity.mContext instanceof IForwardCallBack)) {
             ((IForwardCallBack)paramFileManagerEntity.mContext).a(paramBoolean, paramFileManagerEntity.strTroopFileUuid, paramFileManagerEntity.nSessionId, paramInt, paramString2, String.valueOf(paramFileManagerEntity.peerUin), paramString1);
@@ -1248,12 +1145,12 @@ public class FileTransferHandler
             {
               FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramFileManagerEntity.mContext;
               localFileManagerEntity.status = 16;
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity);
+              this.a.getFileManagerDataCenter().c(localFileManagerEntity);
               paramFileManagerEntity.mContext = null;
             }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+            this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 19, new Object[] { Integer.valueOf(paramInt), paramString2, localObject, localObject, paramString1, Long.valueOf(paramLong) });
+          this.a.getFileManagerNotifyCenter().a(paramBoolean, 19, new Object[] { Integer.valueOf(paramInt), paramString2, localObject, localObject, paramString1, Long.valueOf(paramLong) });
         }
       }
       else
@@ -1265,12 +1162,12 @@ public class FileTransferHandler
           {
             localObject = (FileManagerEntity)paramFileManagerEntity.mContext;
             ((FileManagerEntity)localObject).status = 16;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject);
+            this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject);
             paramFileManagerEntity.mContext = null;
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+          this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 34, new Object[] { Integer.valueOf(paramInt), paramString2, paramString1, Long.valueOf(paramLong) });
+        this.a.getFileManagerNotifyCenter().a(paramBoolean, 34, new Object[] { Integer.valueOf(paramInt), paramString2, paramString1, Long.valueOf(paramLong) });
       }
     }
   }
@@ -1307,28 +1204,28 @@ public class FileTransferHandler
       long l1 = paramMsgHead.from_uin.get();
       long l2 = paramMsgHead.msg_time.get();
       long l3 = paramMsgHead.msg_uid.get();
-      int i = paramMsgHead.msg_type.get();
-      int j = ((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.get();
-      if ((!MessageUtils.c(i)) || (!paramMsgHead.c2c_cmd.has()) || (j != 169))
+      int m = paramMsgHead.msg_type.get();
+      int n = ((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.get();
+      if ((!MessageUtils.d(m)) || (!paramMsgHead.c2c_cmd.has()) || (n != 169))
       {
         bool1 = bool2;
-        if (i != 529) {
+        if (m != 529) {
           break label345;
         }
-        if (j != 4) {
+        if (n != 4) {
           return false;
         }
       }
-      paramMsg = new FileTransferHandler.ParseFileInfoForMsg(this, paramMsg, paramMsgHead, i, j).a();
+      paramMsg = new FileTransferHandler.ParseFileInfoForMsg(this, paramMsg, paramMsgHead, m, n).c();
       if (!paramMsg.a())
       {
-        paramMsg = paramMsg.a();
+        paramMsg = paramMsg.b();
         if (!a(paramMsg))
         {
-          i = paramMsg.uint32_file_type.get();
+          m = paramMsg.uint32_file_type.get();
           paramMsg.uint64_file_size.get();
           paramMsg.uint32_subcmd.get();
-          if (!a(paramBoolean, i))
+          if (!a(paramBoolean, m))
           {
             long l4 = paramInt;
             paramMsgHead = a(0, String.valueOf(paramLong), String.valueOf(l1), l2, l4, l3);
@@ -1358,7 +1255,7 @@ public class FileTransferHandler
   
   private boolean a(MessageHandler paramMessageHandler, boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if ((paramMessageHandler.a().a(paramString2)) && (!paramBoolean))
+    if ((paramMessageHandler.D().a(paramString2)) && (!paramBoolean))
     {
       if (QLog.isColorLevel())
       {
@@ -1396,7 +1293,7 @@ public class FileTransferHandler
   {
     if (a(paramProtoResp))
     {
-      paramFileUploadInfo.jdField_a_of_type_Int = -100001;
+      paramFileUploadInfo.a = -100001;
       paramFileUploadInfo = new StringBuilder();
       paramFileUploadInfo.append("handleUploadResponse: resp is timeout[");
       paramFileUploadInfo.append(paramProtoResp.resp.getResultCode());
@@ -1406,28 +1303,13 @@ public class FileTransferHandler
     }
     if (paramProtoResp.resp.getResultCode() != 1000)
     {
-      paramFileUploadInfo.jdField_a_of_type_Int = -100002;
+      paramFileUploadInfo.a = -100002;
       paramFileUploadInfo = new StringBuilder();
       paramFileUploadInfo.append("handleUploadResponse: resp is failed[");
       paramFileUploadInfo.append(paramProtoResp.resp.getResultCode());
       paramFileUploadInfo.append("]");
       QLog.i("FileTransferHandler<FileAssistant>", 1, paramFileUploadInfo.toString());
       return true;
-    }
-    return false;
-  }
-  
-  private boolean a(String paramString)
-  {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().b().iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if ((localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.replace("/offline", "").equalsIgnoreCase(paramString.replace("/offline", ""))))
-      {
-        QLog.i("FileTransferHandler<FileAssistant>", 1, "uuid is compare memory!");
-        return true;
-      }
     }
     return false;
   }
@@ -1439,12 +1321,12 @@ public class FileTransferHandler
     String str1 = "FileTransferHandler<FileAssistant>";
     if (paramLong1 != 0L)
     {
-      localObject2 = ((FileTransferHandler)localObject5).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(String.valueOf(paramString1), paramLong1);
+      localObject2 = ((FileTransferHandler)localObject5).a.getFileManagerDataCenter().a(String.valueOf(paramString1), paramLong1);
       if (localObject2 != null)
       {
         if (!((FileManagerEntity)localObject2).bDelInAio)
         {
-          paramString1 = ((FileTransferHandler)localObject5).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(String.valueOf(paramString1), ((FileManagerEntity)localObject2).peerType, ((FileManagerEntity)localObject2).uniseq);
+          paramString1 = ((FileTransferHandler)localObject5).a.getMessageFacade().b(String.valueOf(paramString1), ((FileManagerEntity)localObject2).peerType, ((FileManagerEntity)localObject2).uniseq);
           if (paramString1 != null) {
             ((List)localObject1).add(paramString1);
           }
@@ -1453,7 +1335,7 @@ public class FileTransferHandler
         {
           paramString1 = new StringBuilder();
           paramString1.append("ol2offline duplicate msg, entity info");
-          paramString1.append(FileManagerUtil.a((FileManagerEntity)localObject2));
+          paramString1.append(FileManagerUtil.c((FileManagerEntity)localObject2));
           QLog.d("FileTransferHandler<FileAssistant>", 2, paramString1.toString());
         }
         return true;
@@ -1461,7 +1343,7 @@ public class FileTransferHandler
     }
     Object localObject3 = new StringBuilder();
     ((StringBuilder)localObject3).append("msgFilterByFMDB,friendUin[");
-    ((StringBuilder)localObject3).append(FileManagerUtil.d(paramString1));
+    ((StringBuilder)localObject3).append(FileManagerUtil.k(paramString1));
     ((StringBuilder)localObject3).append("],uuid[");
     ((StringBuilder)localObject3).append(paramString2);
     ((StringBuilder)localObject3).append("],olSessionId[");
@@ -1471,34 +1353,34 @@ public class FileTransferHandler
     ((StringBuilder)localObject3).append("],msgUid[");
     ((StringBuilder)localObject3).append(paramLong3);
     ((StringBuilder)localObject3).append("],senderuin[");
-    ((StringBuilder)localObject3).append(FileManagerUtil.d(paramString3));
+    ((StringBuilder)localObject3).append(FileManagerUtil.k(paramString3));
     Object localObject2 = "]";
     ((StringBuilder)localObject3).append("]");
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject3).toString());
     localObject3 = "/offline";
     Object localObject4 = "";
     String str2 = paramString2.replace("/offline", "");
-    localObject5 = ((FileTransferHandler)localObject5).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerProxy().c();
-    int i = 0;
+    localObject5 = ((FileTransferHandler)localObject5).a.getFileManagerProxy().c();
+    int m = 0;
     paramString2 = (String)localObject1;
     localObject1 = localObject4;
     localObject4 = localObject5;
-    while (i < ((List)localObject4).size())
+    while (m < ((List)localObject4).size())
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((List)localObject4).get(i);
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)((List)localObject4).get(m);
       String str3 = str2.replace((CharSequence)localObject3, (CharSequence)localObject1);
       if (localFileManagerEntity.Uuid != null) {
         localObject5 = localFileManagerEntity.Uuid.replace((CharSequence)localObject3, (CharSequence)localObject1);
       } else {
         localObject5 = localObject1;
       }
-      int j = localFileManagerEntity.nOpType;
-      if ((j == 0) || (j == 1) || (j == 3) || (j == 7) || (j == 21)) {
+      int n = localFileManagerEntity.nOpType;
+      if ((n == 0) || (n == 1) || (n == 3) || (n == 7) || (n == 21)) {
         for (;;)
         {
           if ((paramLong2 == localFileManagerEntity.msgSeq) && (paramLong3 == localFileManagerEntity.msgUid))
           {
-            localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString1, localFileManagerEntity.peerType, localFileManagerEntity.uniseq);
+            localObject5 = this.a.getMessageFacade().b(paramString1, localFileManagerEntity.peerType, localFileManagerEntity.uniseq);
             if (localObject5 != null)
             {
               paramString2.add(localObject5);
@@ -1506,7 +1388,7 @@ public class FileTransferHandler
               {
                 paramString1 = new StringBuilder();
                 paramString1.append("msgSeq and msguid are all equal, duplicate msg, entity info");
-                paramString1.append(FileManagerUtil.a(localFileManagerEntity));
+                paramString1.append(FileManagerUtil.c(localFileManagerEntity));
                 QLog.d(str1, 2, paramString1.toString());
               }
               return true;
@@ -1525,7 +1407,7 @@ public class FileTransferHandler
               {
                 paramString1 = new StringBuilder();
                 paramString1.append("msgSeq and msguid are all equal, duplicate msg, entity info");
-                paramString1.append(FileManagerUtil.a(localFileManagerEntity));
+                paramString1.append(FileManagerUtil.c(localFileManagerEntity));
                 QLog.d(str1, 2, paramString1.toString());
               }
               return true;
@@ -1534,7 +1416,7 @@ public class FileTransferHandler
           }
           else if (((String)localObject5).equalsIgnoreCase(str3))
           {
-            localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString1, localFileManagerEntity.peerType, localFileManagerEntity.uniseq);
+            localObject5 = this.a.getMessageFacade().b(paramString1, localFileManagerEntity.peerType, localFileManagerEntity.uniseq);
             if (localObject5 != null)
             {
               paramString2.add(localObject5);
@@ -1542,7 +1424,7 @@ public class FileTransferHandler
               {
                 paramString1 = new StringBuilder();
                 paramString1.append("duplicate msg, entity info");
-                paramString1.append(FileManagerUtil.a(localFileManagerEntity));
+                paramString1.append(FileManagerUtil.c(localFileManagerEntity));
                 QLog.d(str1, 2, paramString1.toString());
               }
               return true;
@@ -1556,7 +1438,7 @@ public class FileTransferHandler
               {
                 paramString1 = new StringBuilder();
                 paramString1.append("Uuid are all equal, duplicate msg, entity info");
-                paramString1.append(FileManagerUtil.a(localFileManagerEntity));
+                paramString1.append(FileManagerUtil.c(localFileManagerEntity));
                 QLog.d(str1, 2, paramString1.toString());
               }
               return true;
@@ -1569,11 +1451,11 @@ public class FileTransferHandler
       {
         localObject5 = new StringBuilder();
         ((StringBuilder)localObject5).append("Entity [");
-        ((StringBuilder)localObject5).append(FileManagerUtil.a(localFileManagerEntity));
+        ((StringBuilder)localObject5).append(FileManagerUtil.c(localFileManagerEntity));
         ((StringBuilder)localObject5).append((String)localObject2);
         QLog.w(str1, 1, ((StringBuilder)localObject5).toString());
       }
-      i += 1;
+      m += 1;
     }
     return false;
   }
@@ -1589,15 +1471,15 @@ public class FileTransferHandler
         {
           paramString3 = (MessageRecord)localArrayList.get(0);
           paramList.add(localArrayList.get(0));
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString2, paramString1, paramString3.istroop);
-          if (this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager == null) {
-            this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager = ((AIOMessageSpreadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER));
+          FileManagerUtil.b(this.a, paramString2, paramString1, paramString3.istroop);
+          if (this.b == null) {
+            this.b = ((AIOMessageSpreadManager)this.a.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER));
           }
           if ((paramString3 instanceof MessageForFile))
           {
             paramList = (MessageForFile)paramString3;
             paramList.fileName = paramString4;
-            this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager.a(paramList);
+            this.b.a(paramList);
           }
         }
         return true;
@@ -1703,10 +1585,10 @@ public class FileTransferHandler
     if (paramGroupFile.bytes_mark.has()) {
       paramGroupFile.bytes_mark.get().toByteArray();
     }
-    paramLong5 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(3000, paramLong4, paramLong6, paramLong2, paramLong5);
+    paramLong5 = this.a.getFileManagerDataCenter().a(3000, paramLong4, paramLong6, paramLong2, paramLong5);
     if (paramLong5 > 0L)
     {
-      paramGroupFile = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong5, String.valueOf(paramLong2), 3000);
+      paramGroupFile = this.a.getFileManagerDataCenter().a(paramLong5, String.valueOf(paramLong2), 3000);
       if (paramGroupFile != null)
       {
         paramGroupFile.status = 1;
@@ -1714,13 +1596,13 @@ public class FileTransferHandler
       }
       return paramLong5;
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    paramGroupFile = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramLong1, str2, 3000);
+    Object localObject3 = this.a.getCurrentAccountUin();
+    paramGroupFile = this.a.getFileManagerDataCenter().b(paramLong1, str2, 3000);
     paramGroupFile.setCloudType(1);
     paramGroupFile.fileName = ((String)localObject1);
     paramGroupFile.fileSize = l;
     paramGroupFile.nOpType = 1;
-    paramGroupFile.peerNick = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2, str3, 3000);
+    paramGroupFile.peerNick = FileManagerUtil.a(this.a, str2, str3, 3000);
     paramGroupFile.peerType = 3000;
     paramGroupFile.peerUin = str2;
     paramGroupFile.selfUin = str3;
@@ -1742,49 +1624,54 @@ public class FileTransferHandler
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append("]");
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
-    FileManagerUtil.a((String)localObject1);
+    FileManagerUtil.c((String)localObject1);
     if ((paramGroupFile.Uuid == null) || (paramGroupFile.Uuid.length() == 0)) {
       paramGroupFile.nWeiYunSrcType = -2;
     }
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramGroupFile);
+    FileManagerUtil.a(this.a, paramGroupFile);
     if (((String)localObject3).equals(String.valueOf(paramLong3)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(str3, 3000, paramLong1);
+      this.a.getFileManagerDataCenter().a(str3, 3000, paramLong1);
       paramGroupFile.nOpType = 7;
-      paramGroupFile.peerNick = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131692541);
+      paramGroupFile.peerNick = this.a.getApplication().getString(2131889564);
       paramGroupFile.bSend = true;
       paramGroupFile.isReaded = true;
       paramGroupFile.bOnceSuccess = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramGroupFile);
-    FileManagerUtil.a(paramGroupFile, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null);
+    this.a.getFileManagerDataCenter().a(paramGroupFile);
+    FileManagerUtil.a(paramGroupFile, this.a, null);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("File Coming:");
-      ((StringBuilder)localObject1).append(FileManagerUtil.a(paramGroupFile));
+      ((StringBuilder)localObject1).append(FileManagerUtil.c(paramGroupFile));
       QLog.i("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
     }
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong3), str2, 3000);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramLong1, paramGroupFile.nSessionId, str2, 3000, 17, null, 0, null);
+    FileManagerUtil.b(this.a, String.valueOf(paramLong3), str2, 3000);
+    this.a.getFileManagerNotifyCenter().a(paramLong1, paramGroupFile.nSessionId, str2, 3000, 17, null, 0, null);
     return paramLong1;
   }
   
   private Cmd0x346CSBody b(OfflineFileUploadPara paramOfflineFileUploadPara)
   {
     Cmd0x346CSBody localCmd0x346CSBody = new Cmd0x346CSBody();
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2 = new ApplyUploadHitReqV2();
-    paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString = paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString.replace("+", "");
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_a_of_type_Long = l;
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_b_of_type_Long = Long.parseLong(paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString);
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_c_of_type_Long = paramOfflineFileUploadPara.jdField_a_of_type_Long;
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_a_of_type_JavaLangString = new String(paramOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte);
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_b_of_type_JavaLangString = new String(paramOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte);
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_a_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_c_of_type_ArrayOfByte;
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_c_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_e_of_type_ArrayOfByte;
-    localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_b_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_f_of_type_ArrayOfByte;
+    localCmd0x346CSBody.c = new ApplyUploadHitReqV2();
+    paramOfflineFileUploadPara.a = paramOfflineFileUploadPara.a.replace("+", "");
+    long l = Long.parseLong(this.a.getCurrentAccountUin());
+    localCmd0x346CSBody.c.a = l;
+    localCmd0x346CSBody.c.b = Long.parseLong(paramOfflineFileUploadPara.a);
+    localCmd0x346CSBody.c.c = paramOfflineFileUploadPara.b;
+    localCmd0x346CSBody.c.d = new String(paramOfflineFileUploadPara.f);
+    localCmd0x346CSBody.c.h = new String(paramOfflineFileUploadPara.e);
+    localCmd0x346CSBody.c.e = paramOfflineFileUploadPara.g;
+    localCmd0x346CSBody.c.g = paramOfflineFileUploadPara.i;
+    localCmd0x346CSBody.c.f = paramOfflineFileUploadPara.j;
     return localCmd0x346CSBody;
+  }
+  
+  private ToServiceMsg b(String paramString)
+  {
+    return new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), paramString);
   }
   
   private void b(long paramLong, boolean paramBoolean, int paramInt, String paramString1, String paramString2, FileManagerEntity paramFileManagerEntity)
@@ -1815,10 +1702,10 @@ public class FileTransferHandler
       {
         localObject = (FileManagerEntity)paramFileManagerEntity.mContext;
         ((FileManagerEntity)localObject).status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject);
+        this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject);
         paramFileManagerEntity.mContext = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
+      this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
     }
     Object localObject = a(paramString2);
     if (localObject != null)
@@ -1830,30 +1717,199 @@ public class FileTransferHandler
     {
       paramFileManagerEntity.WeiYunFileId = paramString2;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 34, new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, Long.valueOf(paramLong) });
+    this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
+    this.a.getFileManagerNotifyCenter().a(paramBoolean, 34, new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, Long.valueOf(paramLong) });
   }
   
   private void b(ToServiceMsg paramToServiceMsg)
   {
     a(paramToServiceMsg);
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), FileTransferServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), FileTransferServlet.class);
     localNewIntent.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    this.a.startServlet(localNewIntent);
     long l = System.currentTimeMillis();
     paramToServiceMsg.extraData.putLong("sendtimekey", l);
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo)
   {
-    int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+    int m = paramToServiceMsg.extraData.getInt("retryIndex", 0);
     StatictisInfo localStatictisInfo = new StatictisInfo();
-    localStatictisInfo.jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-    localStatictisInfo.jdField_c_of_type_Int = i;
-    a(paramToServiceMsg, 5003, true, new Object[] { paramOffLineFileInfo.jdField_a_of_type_ArrayOfByte, localStatictisInfo });
+    localStatictisInfo.b = paramFromServiceMsg.getResultCode();
+    localStatictisInfo.c = m;
+    a(paramToServiceMsg, 5003, true, new Object[] { paramOffLineFileInfo.m, localStatictisInfo });
   }
   
-  private boolean b(SubMsgType0x4.WlanRecvNotify paramWlanRecvNotify)
+  private FileTransferHandler.OlFileInfo c(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      int m = paramArrayOfByte.length;
+      FileTransferHandler.OlFileInfo localOlFileInfo = new FileTransferHandler.OlFileInfo(null);
+      if (m >= 16)
+      {
+        int i1 = PkgTools.getShortData(paramArrayOfByte, 0);
+        byte[] arrayOfByte1 = new byte[i1];
+        int n = 2 + i1;
+        if (m >= n)
+        {
+          PkgTools.getBytesData(paramArrayOfByte, 2, arrayOfByte1, i1);
+          try
+          {
+            localOlFileInfo.a = new String(arrayOfByte1, "UTF-16LE");
+          }
+          catch (UnsupportedEncodingException localUnsupportedEncodingException)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("decodeOnlineFileInfo: Exception is ");
+            localStringBuilder.append(localUnsupportedEncodingException.toString());
+            QLog.e("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
+          }
+          i1 = n + 4;
+          if (m >= i1)
+          {
+            long l = PkgTools.getLongData(paramArrayOfByte, n);
+            n = i1 + 2;
+            if (m >= n)
+            {
+              i1 = PkgTools.getShortData(paramArrayOfByte, i1);
+              byte[] arrayOfByte2 = new byte[i1];
+              int i2 = n + i1;
+              if (m >= i2)
+              {
+                PkgTools.getBytesData(paramArrayOfByte, n, arrayOfByte2, i1);
+                if (m >= i2 + 4)
+                {
+                  localOlFileInfo.b = ((PkgTools.getLongData(paramArrayOfByte, i2) << 32) + l);
+                  return localOlFileInfo;
+                }
+                QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filelenhi");
+                return null;
+              }
+              QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- bufotherinfo");
+              return null;
+            }
+            QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- otherlen");
+            return null;
+          }
+          QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filelenlo");
+          return null;
+        }
+        QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filenamebuf");
+        return null;
+      }
+      QLog.e("FileTransferHandler<FileAssistant>", 1, "decodeOnlineFileInfo failed- filenamelen");
+    }
+    return null;
+  }
+  
+  private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg.isSuccess()) {
+      try
+      {
+        paramToServiceMsg = this.k.a(paramToServiceMsg, paramFromServiceMsg);
+        return paramToServiceMsg;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append(this.k.getClass().getSimpleName());
+          paramFromServiceMsg.append(" decode error,");
+          paramFromServiceMsg.append(paramToServiceMsg.toString());
+          QLog.d("FileTransferHandler<FileAssistant>", 2, paramFromServiceMsg.toString());
+        }
+      }
+    }
+    return null;
+  }
+  
+  private void c(long paramLong, boolean paramBoolean, int paramInt, String paramString1, String paramString2, FileManagerEntity paramFileManagerEntity)
+  {
+    Object localObject;
+    if ((TextUtils.isEmpty(paramString2)) && (QLog.isColorLevel()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("forward offline to weiyun ,but weiyun fileid is null! retCode[");
+      ((StringBuilder)localObject).append(String.valueOf(paramInt));
+      ((StringBuilder)localObject).append("retMsg[");
+      ((StringBuilder)localObject).append(String.valueOf(paramString1));
+      ((StringBuilder)localObject).append("]");
+      QLog.w("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBoolean) {
+      paramFileManagerEntity.status = 1;
+    } else {
+      paramFileManagerEntity.status = 0;
+    }
+    if (paramBoolean)
+    {
+      paramFileManagerEntity.Uuid = paramString2;
+      paramFileManagerEntity.setCloudType(1);
+      paramFileManagerEntity.peerType = 3000;
+      a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, this.a.getCurrentAccountUin(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramString2, paramFileManagerEntity.uniseq, paramFileManagerEntity.msgUid, null);
+    }
+    int m = paramInt;
+    if ((m != -6101) && (m != -7003)) {
+      break label276;
+    }
+    paramFileManagerEntity.status = 16;
+    if ((paramFileManagerEntity.mContext != null) && ((paramFileManagerEntity.mContext instanceof FileManagerEntity)))
+    {
+      localObject = (FileManagerEntity)paramFileManagerEntity.mContext;
+      ((FileManagerEntity)localObject).status = 16;
+      this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject);
+      paramFileManagerEntity.mContext = null;
+    }
+    this.a.getFileManagerDataCenter().c(paramFileManagerEntity);
+    label276:
+    this.a.getFileManagerNotifyCenter().a(paramBoolean, 19, new Object[] { Integer.valueOf(paramInt), paramString1, Long.valueOf(0L), Long.valueOf(0L), paramString2, Long.valueOf(paramLong) });
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo)
+  {
+    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.b == 0L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FileTransferHandler<FileAssistant>", 2, "handleSendOfflineFileResp-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
+      }
+      int m = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+      StatictisInfo localStatictisInfo = new StatictisInfo();
+      localStatictisInfo.b = paramFromServiceMsg.getResultCode();
+      localStatictisInfo.c = m;
+      localStatictisInfo.a = paramFromServiceMsg.getAppSeq();
+      a(paramToServiceMsg, 5004, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferHandler<FileAssistant>", 2, "handleSendOfflineFileResp-->handleError");
+    }
+    d(paramToServiceMsg, paramFromServiceMsg);
+  }
+  
+  private boolean c(String paramString)
+  {
+    Iterator localIterator = this.a.getFileManagerProxy().b().iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if ((localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.replace("/offline", "").equalsIgnoreCase(paramString.replace("/offline", ""))))
+      {
+        QLog.i("FileTransferHandler<FileAssistant>", 1, "uuid is compare memory!");
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private boolean c(SubMsgType0x4.WlanRecvNotify paramWlanRecvNotify)
   {
     if (!paramWlanRecvNotify.uint64_session_id.has())
     {
@@ -1888,82 +1944,40 @@ public class FileTransferHandler
     return true;
   }
   
-  private void c(long paramLong, boolean paramBoolean, int paramInt, String paramString1, String paramString2, FileManagerEntity paramFileManagerEntity)
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject;
-    if ((TextUtils.isEmpty(paramString2)) && (QLog.isColorLevel()))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("forward offline to weiyun ,but weiyun fileid is null! retCode[");
-      ((StringBuilder)localObject).append(String.valueOf(paramInt));
-      ((StringBuilder)localObject).append("retMsg[");
-      ((StringBuilder)localObject).append(String.valueOf(paramString1));
-      ((StringBuilder)localObject).append("]");
-      QLog.w("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
-    }
-    if (paramBoolean) {
-      paramFileManagerEntity.status = 1;
-    } else {
-      paramFileManagerEntity.status = 0;
-    }
-    if (paramBoolean)
-    {
-      paramFileManagerEntity.Uuid = paramString2;
-      paramFileManagerEntity.setCloudType(1);
-      paramFileManagerEntity.peerType = 3000;
-      a(paramFileManagerEntity.nSessionId, paramFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, paramString2, paramFileManagerEntity.uniseq, paramFileManagerEntity.msgUid, null);
-    }
-    int i = paramInt;
-    if ((i != -6101) && (i != -7003)) {
-      break label276;
-    }
-    paramFileManagerEntity.status = 16;
-    if ((paramFileManagerEntity.mContext != null) && ((paramFileManagerEntity.mContext instanceof FileManagerEntity)))
-    {
-      localObject = (FileManagerEntity)paramFileManagerEntity.mContext;
-      ((FileManagerEntity)localObject).status = 16;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject);
-      paramFileManagerEntity.mContext = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramFileManagerEntity);
-    label276:
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 19, new Object[] { Integer.valueOf(paramInt), paramString1, Long.valueOf(0L), Long.valueOf(0L), paramString2, Long.valueOf(paramLong) });
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-  {
-    int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+    int m = paramToServiceMsg.extraData.getInt("retryIndex", 0);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleReqOffFilePackError, count: ");
-      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(m);
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
-    if (i < 3)
+    if (m < 3)
     {
-      paramToServiceMsg.extraData.putInt("retryIndex", i + 1);
+      paramToServiceMsg.extraData.putInt("retryIndex", m + 1);
       b(paramToServiceMsg);
       return;
     }
     Object localObject = new StatictisInfo();
-    ((StatictisInfo)localObject).jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-    ((StatictisInfo)localObject).jdField_c_of_type_Int = i;
+    ((StatictisInfo)localObject).b = paramFromServiceMsg.getResultCode();
+    ((StatictisInfo)localObject).c = m;
     if (paramFromServiceMsg.getResultCode() == 1000)
     {
-      ((StatictisInfo)localObject).jdField_b_of_type_Int = 2900;
-      ((StatictisInfo)localObject).jdField_a_of_type_Long = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 2139062142L);
+      ((StatictisInfo)localObject).b = 2900;
+      ((StatictisInfo)localObject).d = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 2139062142L);
     }
-    ((StatictisInfo)localObject).jdField_a_of_type_JavaLangString = BaseMessageHandler.a(paramFromServiceMsg);
+    ((StatictisInfo)localObject).e = BaseMessageHandler.a(paramFromServiceMsg);
     paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
-    i = paramToServiceMsg.extraData.getInt("offfile_type");
-    if (i != 0)
+    m = paramToServiceMsg.extraData.getInt("offfile_type");
+    if (m != 0)
     {
-      if (i != 1)
+      if (m != 1)
       {
-        if (i != 2)
+        if (m != 2)
         {
-          if (i != 3) {
+          if (m != 3) {
             return;
           }
           a(paramToServiceMsg, 5004, false, new Object[] { paramFromServiceMsg, localObject });
@@ -1976,45 +1990,24 @@ public class FileTransferHandler
     }
   }
   
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo)
-  {
-    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.jdField_a_of_type_Long == 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FileTransferHandler<FileAssistant>", 2, "handleSendOfflineFileResp-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
-      }
-      int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-      StatictisInfo localStatictisInfo = new StatictisInfo();
-      localStatictisInfo.jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-      localStatictisInfo.jdField_c_of_type_Int = i;
-      localStatictisInfo.jdField_a_of_type_Int = paramFromServiceMsg.getAppSeq();
-      a(paramToServiceMsg, 5004, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferHandler<FileAssistant>", 2, "handleSendOfflineFileResp-->handleError");
-    }
-    c(paramToServiceMsg, paramFromServiceMsg);
-  }
-  
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, MessageFactoryReceiver.OffLineFileInfo paramOffLineFileInfo)
   {
-    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.jdField_a_of_type_Long == 0L))
+    if ((paramOffLineFileInfo != null) && (paramOffLineFileInfo.b == 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("FileTransferHandler<FileAssistant>", 2, "handleSetOfflineFileState-->notify NOTIFY_TYPE_SEND_OFFLINE_FILE");
       }
-      int i = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+      int m = paramToServiceMsg.extraData.getInt("retryIndex", 0);
       StatictisInfo localStatictisInfo = new StatictisInfo();
-      localStatictisInfo.jdField_b_of_type_Int = paramFromServiceMsg.getResultCode();
-      localStatictisInfo.jdField_c_of_type_Int = i;
+      localStatictisInfo.b = paramFromServiceMsg.getResultCode();
+      localStatictisInfo.c = m;
       a(paramToServiceMsg, 5005, true, new Object[] { paramOffLineFileInfo, localStatictisInfo });
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("FileTransferHandler<FileAssistant>", 2, "handleSetOfflineFileState-->handleError");
     }
-    c(paramToServiceMsg, paramFromServiceMsg);
+    d(paramToServiceMsg, paramFromServiceMsg);
   }
   
   private void h(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -2054,12 +2047,12 @@ public class FileTransferHandler
           localObject2 = (cmd0x346.RecvListQueryRsp)paramProtoResp.msg_recv_list_query_rsp.get();
           if (((cmd0x346.RecvListQueryRsp)localObject2).int32_ret_code.has())
           {
-            int i = ((cmd0x346.RecvListQueryRsp)localObject2).int32_ret_code.get();
-            if (i != 0)
+            int m = ((cmd0x346.RecvListQueryRsp)localObject2).int32_ret_code.get();
+            if (m != 0)
             {
               paramProtoResp = new StringBuilder();
               paramProtoResp.append("handleQueryRecvListResponse: failed retCode[");
-              paramProtoResp.append(i);
+              paramProtoResp.append(m);
               paramProtoResp.append("]");
               QLog.i("FileTransferHandler<FileAssistant>", 1, paramProtoResp.toString());
               break label661;
@@ -2088,18 +2081,18 @@ public class FileTransferHandler
           {
             Object localObject3 = (cmd0x346.FileInfo)localIterator.next();
             localObject1 = new OfflineFileInfo();
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_Boolean = false;
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_Int = ((cmd0x346.FileInfo)localObject3).uint32_danger_evel.get();
-            ((OfflineFileInfo)localObject1).jdField_b_of_type_Long = ((cmd0x346.FileInfo)localObject3).uint64_file_size.get();
-            ((OfflineFileInfo)localObject1).jdField_c_of_type_Long = (MessageCache.a() * 1000L + ((cmd0x346.FileInfo)localObject3).uint32_life_time.get() * 1000L);
-            ((OfflineFileInfo)localObject1).jdField_d_of_type_Long = (((cmd0x346.FileInfo)localObject3).uint32_upload_time.get() * 1000L);
-            ((OfflineFileInfo)localObject1).jdField_c_of_type_JavaLangString = ((cmd0x346.FileInfo)localObject3).str_file_name.get();
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_JavaLangString = new String(((cmd0x346.FileInfo)localObject3).bytes_uuid.get().toByteArray());
+            ((OfflineFileInfo)localObject1).a = false;
+            ((OfflineFileInfo)localObject1).e = ((cmd0x346.FileInfo)localObject3).uint32_danger_evel.get();
+            ((OfflineFileInfo)localObject1).g = ((cmd0x346.FileInfo)localObject3).uint64_file_size.get();
+            ((OfflineFileInfo)localObject1).h = (MessageCache.c() * 1000L + ((cmd0x346.FileInfo)localObject3).uint32_life_time.get() * 1000L);
+            ((OfflineFileInfo)localObject1).i = (((cmd0x346.FileInfo)localObject3).uint32_upload_time.get() * 1000L);
+            ((OfflineFileInfo)localObject1).f = ((cmd0x346.FileInfo)localObject3).str_file_name.get();
+            ((OfflineFileInfo)localObject1).b = new String(((cmd0x346.FileInfo)localObject3).bytes_uuid.get().toByteArray());
             if (bool1) {
-              ((OfflineFileInfo)localObject1).jdField_b_of_type_JavaLangString = ((cmd0x346.FileInfo)localObject3).str_fileidcrc.get();
+              ((OfflineFileInfo)localObject1).c = ((cmd0x346.FileInfo)localObject3).str_fileidcrc.get();
             }
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_Long = ((cmd0x346.FileInfo)localObject3).uint64_uin.get();
-            ((OfflineFileInfo)localObject1).jdField_d_of_type_JavaLangString = HexUtil.bytes2HexStr(((cmd0x346.FileInfo)localObject3).bytes_md5.get().toByteArray());
+            ((OfflineFileInfo)localObject1).d = ((cmd0x346.FileInfo)localObject3).uint64_uin.get();
+            ((OfflineFileInfo)localObject1).j = HexUtil.bytes2HexStr(((cmd0x346.FileInfo)localObject3).bytes_md5.get().toByteArray());
             localArrayList.add(localObject1);
             if (QLog.isColorLevel())
             {
@@ -2126,7 +2119,7 @@ public class FileTransferHandler
     label661:
     boolean bool2 = false;
     bool1 = true;
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5021, bool2, new Object[] { Boolean.valueOf(bool1), localArrayList });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5021, bool2, new Object[] { Boolean.valueOf(bool1), localArrayList });
   }
   
   private void i(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -2166,12 +2159,12 @@ public class FileTransferHandler
           localObject2 = (cmd0x346.SendListQueryRsp)paramProtoResp.msg_send_list_query_rsp.get();
           if (((cmd0x346.SendListQueryRsp)localObject2).int32_ret_code.has())
           {
-            int i = ((cmd0x346.SendListQueryRsp)localObject2).int32_ret_code.get();
-            if (i != 0)
+            int m = ((cmd0x346.SendListQueryRsp)localObject2).int32_ret_code.get();
+            if (m != 0)
             {
               paramProtoResp = new StringBuilder();
               paramProtoResp.append("handleQuerySendListResponse: failed retCode[");
-              paramProtoResp.append(i);
+              paramProtoResp.append(m);
               paramProtoResp.append("]");
               QLog.i("FileTransferHandler<FileAssistant>", 1, paramProtoResp.toString());
               break label661;
@@ -2200,18 +2193,18 @@ public class FileTransferHandler
           {
             Object localObject3 = (cmd0x346.FileInfo)localIterator.next();
             localObject1 = new OfflineFileInfo();
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_Boolean = true;
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_Int = ((cmd0x346.FileInfo)localObject3).uint32_danger_evel.get();
-            ((OfflineFileInfo)localObject1).jdField_b_of_type_Long = ((cmd0x346.FileInfo)localObject3).uint64_file_size.get();
-            ((OfflineFileInfo)localObject1).jdField_c_of_type_Long = (MessageCache.a() * 1000L + ((cmd0x346.FileInfo)localObject3).uint32_life_time.get() * 1000L);
-            ((OfflineFileInfo)localObject1).jdField_d_of_type_Long = (((cmd0x346.FileInfo)localObject3).uint32_upload_time.get() * 1000L);
-            ((OfflineFileInfo)localObject1).jdField_c_of_type_JavaLangString = ((cmd0x346.FileInfo)localObject3).str_file_name.get();
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_JavaLangString = new String(((cmd0x346.FileInfo)localObject3).bytes_uuid.get().toByteArray());
+            ((OfflineFileInfo)localObject1).a = true;
+            ((OfflineFileInfo)localObject1).e = ((cmd0x346.FileInfo)localObject3).uint32_danger_evel.get();
+            ((OfflineFileInfo)localObject1).g = ((cmd0x346.FileInfo)localObject3).uint64_file_size.get();
+            ((OfflineFileInfo)localObject1).h = (MessageCache.c() * 1000L + ((cmd0x346.FileInfo)localObject3).uint32_life_time.get() * 1000L);
+            ((OfflineFileInfo)localObject1).i = (((cmd0x346.FileInfo)localObject3).uint32_upload_time.get() * 1000L);
+            ((OfflineFileInfo)localObject1).f = ((cmd0x346.FileInfo)localObject3).str_file_name.get();
+            ((OfflineFileInfo)localObject1).b = new String(((cmd0x346.FileInfo)localObject3).bytes_uuid.get().toByteArray());
             if (bool1) {
-              ((OfflineFileInfo)localObject1).jdField_b_of_type_JavaLangString = ((cmd0x346.FileInfo)localObject3).str_fileidcrc.get();
+              ((OfflineFileInfo)localObject1).c = ((cmd0x346.FileInfo)localObject3).str_fileidcrc.get();
             }
-            ((OfflineFileInfo)localObject1).jdField_a_of_type_Long = ((cmd0x346.FileInfo)localObject3).uint64_uin.get();
-            ((OfflineFileInfo)localObject1).jdField_d_of_type_JavaLangString = HexUtil.bytes2HexStr(((cmd0x346.FileInfo)localObject3).bytes_md5.get().toByteArray());
+            ((OfflineFileInfo)localObject1).d = ((cmd0x346.FileInfo)localObject3).uint64_uin.get();
+            ((OfflineFileInfo)localObject1).j = HexUtil.bytes2HexStr(((cmd0x346.FileInfo)localObject3).bytes_md5.get().toByteArray());
             localArrayList.add(localObject1);
             if (QLog.isColorLevel())
             {
@@ -2238,7 +2231,7 @@ public class FileTransferHandler
     label661:
     boolean bool2 = false;
     bool1 = true;
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5022, bool2, new Object[] { Boolean.valueOf(bool1), localArrayList });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5022, bool2, new Object[] { Boolean.valueOf(bool1), localArrayList });
   }
   
   private void j(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -2249,14 +2242,14 @@ public class FileTransferHandler
     if (!a(paramProtoResp, localFileUploadInfo))
     {
       Object localObject1 = paramProtoResp.resp.getWupBuffer();
-      localFileUploadInfo.jdField_e_of_type_ArrayOfByte = ((byte[])localObject1);
+      localFileUploadInfo.t = ((byte[])localObject1);
       localObject3 = new cmd0x346.RspBody();
       try
       {
         ((cmd0x346.RspBody)localObject3).mergeFrom((byte[])localObject1);
         if (!((cmd0x346.RspBody)localObject3).msg_apply_upload_rsp.has())
         {
-          localFileUploadInfo.jdField_a_of_type_Int = -100003;
+          localFileUploadInfo.a = -100003;
           QLog.i("FileTransferHandler<FileAssistant>", 1, "handleUploadResponse: rspBody has not hasMsgApplyUploadRsp");
         }
         else
@@ -2268,7 +2261,7 @@ public class FileTransferHandler
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
-        localFileUploadInfo.jdField_a_of_type_Int = -100003;
+        localFileUploadInfo.a = -100003;
       }
     }
     else
@@ -2276,39 +2269,39 @@ public class FileTransferHandler
       localObject2 = null;
       bool1 = false;
     }
-    if ((localFileUploadInfo.jdField_a_of_type_Int == 0) && ((localFileUploadInfo.jdField_b_of_type_JavaLangString == null) || (localFileUploadInfo.jdField_b_of_type_JavaLangString.length() == 0))) {
+    if ((localFileUploadInfo.a == 0) && ((localFileUploadInfo.f == null) || (localFileUploadInfo.f.length() == 0))) {
       bool2 = true;
     } else {
       bool2 = false;
     }
     boolean bool3;
-    if ((localFileUploadInfo.jdField_b_of_type_JavaLangString != null) && (localFileUploadInfo.jdField_b_of_type_JavaLangString.length() > 0)) {
+    if ((localFileUploadInfo.f != null) && (localFileUploadInfo.f.length() > 0)) {
       bool3 = true;
     } else {
       bool3 = false;
     }
     boolean bool4;
-    if ((localFileUploadInfo.jdField_a_of_type_Int != -91245) && (localFileUploadInfo.jdField_a_of_type_Int != -7010)) {
+    if ((localFileUploadInfo.a != -91245) && (localFileUploadInfo.a != -7010)) {
       bool4 = false;
     } else {
       bool4 = true;
     }
     boolean bool5;
-    if ((localFileUploadInfo.jdField_a_of_type_ArrayOfByte != null) && (localFileUploadInfo.jdField_a_of_type_ArrayOfByte.length != 0)) {
+    if ((localFileUploadInfo.h != null) && (localFileUploadInfo.h.length != 0)) {
       bool5 = false;
     } else {
       bool5 = true;
     }
     Object localObject3 = (FileTransferHandler.PreviewBusiData)paramProtoReq.busiData;
-    if (a(bool2, bool3, bool4, bool5, ((FileTransferHandler.PreviewBusiData)localObject3).b()))
+    if (a(bool2, bool3, bool4, bool5, ((FileTransferHandler.PreviewBusiData)localObject3).g()))
     {
-      ((FileTransferHandler.PreviewBusiData)localObject3).a();
+      ((FileTransferHandler.PreviewBusiData)localObject3).h();
       a(paramProtoReq.ssoCmd, paramProtoReq.reqBody, (FileTransferHandler.PreviewBusiData)localObject3);
       return;
     }
     paramProtoReq = new StatictisInfo();
-    paramProtoReq.jdField_b_of_type_Int = localFileUploadInfo.jdField_a_of_type_Int;
-    paramProtoReq.jdField_c_of_type_Int = paramProtoResp.freeRunnalbleIndex;
+    paramProtoReq.b = localFileUploadInfo.a;
+    paramProtoReq.c = paramProtoResp.freeRunnalbleIndex;
     boolean bool2 = bool1;
     if (bool5)
     {
@@ -2319,7 +2312,7 @@ public class FileTransferHandler
         paramProtoResp.append("uuid_null[");
         paramProtoResp.append(localFileUploadInfo.toString());
         paramProtoResp.append("]");
-        localFileUploadInfo.jdField_a_of_type_JavaLangString = paramProtoResp.toString();
+        localFileUploadInfo.b = paramProtoResp.toString();
         bool2 = false;
       }
     }
@@ -2329,20 +2322,20 @@ public class FileTransferHandler
       paramProtoResp.append("decodeOffFilePBResponse:return ");
       paramProtoResp.append(bool2);
       paramProtoResp.append(", retCode=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.a);
       paramProtoResp.append(", retMsg=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.b);
       paramProtoResp.append(", totalSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.c);
       paramProtoResp.append(", usedSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.d);
       paramProtoResp.append(", ip=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.f);
       paramProtoResp.append(", port=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Short);
+      paramProtoResp.append(localFileUploadInfo.g);
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramProtoResp.toString());
     }
-    a(((FileTransferHandler.PreviewBusiData)localObject3).a(), 5004, bool2, new Object[] { localFileUploadInfo, paramProtoReq, localObject2 });
+    a(((FileTransferHandler.PreviewBusiData)localObject3).e(), 5004, bool2, new Object[] { localFileUploadInfo, paramProtoReq, localObject2 });
   }
   
   private void k(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -2351,7 +2344,7 @@ public class FileTransferHandler
     Object localObject;
     if (a(paramProtoResp))
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100001;
+      localFileUploadInfo.a = -100001;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleUploadSuccResponse: resp is timeout[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -2360,7 +2353,7 @@ public class FileTransferHandler
     }
     else if (paramProtoResp.resp.getResultCode() != 1000)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100002;
+      localFileUploadInfo.a = -100002;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleUploadSuccResponse: resp is failed[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -2377,16 +2370,16 @@ public class FileTransferHandler
         if (!localRspBody.msg_upload_succ_rsp.has())
         {
           QLog.i("FileTransferHandler<FileAssistant>", 1, "handleUploadSuccResponse: rspBody has not hasMsgUploadSuccRsp");
-          localFileUploadInfo.jdField_a_of_type_Int = -100003;
+          localFileUploadInfo.a = -100003;
         }
         else
         {
           localObject = (cmd0x346.UploadSuccRsp)localRspBody.msg_upload_succ_rsp.get();
           if (((cmd0x346.UploadSuccRsp)localObject).int32_ret_code.has()) {
-            localFileUploadInfo.jdField_a_of_type_Int = ((cmd0x346.UploadSuccRsp)localObject).int32_ret_code.get();
+            localFileUploadInfo.a = ((cmd0x346.UploadSuccRsp)localObject).int32_ret_code.get();
           }
           if (((cmd0x346.UploadSuccRsp)localObject).str_ret_msg.has()) {
-            localFileUploadInfo.jdField_a_of_type_JavaLangString = ((cmd0x346.UploadSuccRsp)localObject).str_ret_msg.get();
+            localFileUploadInfo.b = ((cmd0x346.UploadSuccRsp)localObject).str_ret_msg.get();
           }
           bool = true;
         }
@@ -2394,34 +2387,34 @@ public class FileTransferHandler
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
-        localFileUploadInfo.jdField_a_of_type_Int = -100003;
+        localFileUploadInfo.a = -100003;
       }
     }
     boolean bool = false;
-    if (localFileUploadInfo.jdField_a_of_type_Int != 0) {
+    if (localFileUploadInfo.a != 0) {
       bool = false;
     }
     StatictisInfo localStatictisInfo = new StatictisInfo();
-    localStatictisInfo.jdField_b_of_type_Int = localFileUploadInfo.jdField_a_of_type_Int;
-    localStatictisInfo.jdField_c_of_type_Int = paramProtoResp.freeRunnalbleIndex;
+    localStatictisInfo.b = localFileUploadInfo.a;
+    localStatictisInfo.c = paramProtoResp.freeRunnalbleIndex;
     if (QLog.isColorLevel())
     {
       paramProtoResp = new StringBuilder();
       paramProtoResp.append("handleUploadSuccResponse: return ");
       paramProtoResp.append(bool);
       paramProtoResp.append(", retCode=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.a);
       paramProtoResp.append(", retMsg=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.b);
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramProtoResp.toString());
     }
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5005, bool, new Object[] { localFileUploadInfo, localStatictisInfo });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5005, bool, new Object[] { localFileUploadInfo, localStatictisInfo });
   }
   
   private void l(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     paramProtoReq = new face2face_file.msg();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("QlinkResistTerrorist", 0);
+    Object localObject = this.a.getApplication().getSharedPreferences("QlinkResistTerrorist", 0);
     StringBuilder localStringBuilder;
     long l1;
     if (a(paramProtoResp))
@@ -2467,8 +2460,8 @@ public class FileTransferHandler
         QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
       }
       paramProtoResp.putInt("QlinkResistTerrorist_res", paramProtoReq.result.get());
-      paramProtoResp.putLong("SettingQlinkResistTerroristLastTime", MessageCache.a());
-      paramProtoResp.putString("SettingQlinkResistTerroristLastAccount", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramProtoResp.putLong("SettingQlinkResistTerroristLastTime", MessageCache.c());
+      paramProtoResp.putString("SettingQlinkResistTerroristLastAccount", this.a.getCurrentAccountUin());
     }
     paramProtoResp.commit();
     long l2;
@@ -2497,12 +2490,12 @@ public class FileTransferHandler
   private void m(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     boolean bool = a(paramProtoResp);
-    int i = -100003;
+    int m = -100003;
     Object localObject = null;
     StringBuilder localStringBuilder = null;
     if (bool)
     {
-      i = -100001;
+      m = -100001;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleRemoveResponse: resp is timeout[");
       localStringBuilder.append(paramProtoResp.resp.getResultCode());
@@ -2516,7 +2509,7 @@ public class FileTransferHandler
       break;
       if (paramProtoResp.resp.getResultCode() != 1000)
       {
-        i = -100002;
+        m = -100002;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("handleRemoveResponse: resp is failed[");
         localStringBuilder.append(paramProtoResp.resp.getResultCode());
@@ -2538,9 +2531,9 @@ public class FileTransferHandler
           {
             localObject = (cmd0x346.DeleteFileRsp)localRspBody.msg_delete_file_rsp.get();
             if (((cmd0x346.DeleteFileRsp)localObject).int32_ret_code.has()) {
-              i = ((cmd0x346.DeleteFileRsp)localObject).int32_ret_code.get();
+              m = ((cmd0x346.DeleteFileRsp)localObject).int32_ret_code.get();
             } else {
-              i = 0;
+              m = 0;
             }
             paramProtoResp = localStringBuilder;
             if (((cmd0x346.DeleteFileRsp)localObject).str_ret_msg.has()) {
@@ -2555,10 +2548,10 @@ public class FileTransferHandler
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool = false;
     }
-    paramProtoReq = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
+    paramProtoReq = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).f();
     localObject = ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).removeDeletedCloudFile(paramProtoReq);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleRemoveResponse, bSuccess[");
@@ -2566,20 +2559,20 @@ public class FileTransferHandler
     localStringBuilder.append("]");
     QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 20, new Object[] { Integer.valueOf(i), paramProtoResp, paramProtoReq, ((WeiYunFileInfo)localObject).jdField_c_of_type_JavaLangString, Boolean.valueOf(true) });
+      this.a.getFileManagerNotifyCenter().a(bool, 20, new Object[] { Integer.valueOf(m), paramProtoResp, paramProtoReq, ((WeiYunFileInfo)localObject).c, Boolean.valueOf(true) });
     }
   }
   
   private void n(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     FileTransferHandler.PreviewBusiData localPreviewBusiData = (FileTransferHandler.PreviewBusiData)paramProtoReq.busiData;
-    switch (localPreviewBusiData.a())
+    switch (localPreviewBusiData.d())
     {
     case 9: 
     default: 
       paramProtoReq = new StringBuilder();
       paramProtoReq.append("handleDiscGetFileInfo: subcmd[");
-      paramProtoReq.append(localPreviewBusiData.a());
+      paramProtoReq.append(localPreviewBusiData.d());
       paramProtoReq.append("] is not implemented");
       QLog.e("FileTransferHandler<FileAssistant>", 1, paramProtoReq.toString());
       return;
@@ -2609,13 +2602,13 @@ public class FileTransferHandler
   private void o(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     boolean bool = a(paramProtoResp);
-    int j = -100003;
+    int n = -100003;
     Object localObject1 = "";
-    int i;
+    int m;
     Object localObject2;
     if (bool)
     {
-      i = -100001;
+      m = -100001;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("internalForwardDisc2Disc: resp is timeout[");
       ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -2631,7 +2624,7 @@ public class FileTransferHandler
       break;
       if (paramProtoResp.resp.getResultCode() != 1000)
       {
-        i = -100002;
+        m = -100002;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("internalForwardDisc2Disc: resp is failed[");
         ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -2646,14 +2639,14 @@ public class FileTransferHandler
         {
           ((cmd0x345.RspBody)localObject2).mergeFrom(paramProtoResp);
           if (((cmd0x345.RspBody)localObject2).uint32_return_code.has()) {
-            i = ((cmd0x345.RspBody)localObject2).uint32_return_code.get();
+            m = ((cmd0x345.RspBody)localObject2).uint32_return_code.get();
           } else {
-            i = 0;
+            m = 0;
           }
           if (!((cmd0x345.RspBody)localObject2).msg_subcmd_0x5_rsp_body.has())
           {
             QLog.i("FileTransferHandler<FileAssistant>", 1, "internalForwardDisc2Disc: rspBody has not hasMsgApplyDownloadRsp");
-            i = j;
+            m = n;
           }
           else
           {
@@ -2673,18 +2666,18 @@ public class FileTransferHandler
         catch (InvalidProtocolBufferMicroException paramProtoResp)
         {
           paramProtoResp.printStackTrace();
-          i = j;
+          m = n;
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool = false;
     }
     if (localObject1 == null) {
       bool = false;
     }
-    long l = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
-    paramProtoReq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
+    long l = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).c();
+    paramProtoReq = this.a.getFileManagerDataCenter().a(l);
     if (paramProtoReq == null)
     {
       QLog.e("FileTransferHandler<FileAssistant>", 1, "forward disc file, but entity is null!!!");
@@ -2694,9 +2687,9 @@ public class FileTransferHandler
     {
       paramProtoReq.Uuid = ((String)localObject1);
       paramProtoReq.setCloudType(1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 19, new Object[] { Integer.valueOf(i), paramProtoResp, Long.valueOf(0L), Long.valueOf(0L), localObject1, Long.valueOf(l) });
-      a(l, paramProtoReq.peerUin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramProtoReq.fileName, paramProtoReq.fileSize, (String)localObject1, paramProtoReq.uniseq, paramProtoReq.msgUid, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramProtoReq, 6, null);
+      this.a.getFileManagerNotifyCenter().a(bool, 19, new Object[] { Integer.valueOf(m), paramProtoResp, Long.valueOf(0L), Long.valueOf(0L), localObject1, Long.valueOf(l) });
+      a(l, paramProtoReq.peerUin, this.a.getCurrentAccountUin(), paramProtoReq.fileName, paramProtoReq.fileSize, (String)localObject1, paramProtoReq.uniseq, paramProtoReq.msgUid, null);
+      this.a.getFileManagerNotifyCenter().a(paramProtoReq, 6, null);
     }
     else
     {
@@ -2706,38 +2699,38 @@ public class FileTransferHandler
       ((StringBuilder)localObject3).append("nId[");
       ((StringBuilder)localObject3).append(l);
       ((StringBuilder)localObject3).append("],forward disc2disc faild, retCode[");
-      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append(m);
       ((StringBuilder)localObject3).append("], retMsg[");
       ((StringBuilder)localObject3).append(paramProtoResp);
       ((StringBuilder)localObject3).append("]");
       QLog.e("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject3).toString());
-      if ((i == -6101) || (i == -7003))
+      if ((m == -6101) || (m == -7003))
       {
         ((FileManagerEntity)localObject2).status = 16;
         if ((((FileManagerEntity)localObject2).mContext != null) && ((((FileManagerEntity)localObject2).mContext instanceof FileManagerEntity)))
         {
           localObject3 = (FileManagerEntity)((FileManagerEntity)localObject2).mContext;
           ((FileManagerEntity)localObject3).status = 16;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject3);
+          this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject3);
           ((FileManagerEntity)localObject2).mContext = null;
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject2);
+        this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject2);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 19, new Object[] { Integer.valueOf(i), paramProtoResp, Long.valueOf(0L), Long.valueOf(0L), localObject1, Long.valueOf(l) });
+      this.a.getFileManagerNotifyCenter().a(bool, 19, new Object[] { Integer.valueOf(m), paramProtoResp, Long.valueOf(0L), Long.valueOf(0L), localObject1, Long.valueOf(l) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramProtoReq);
+    this.a.getFileManagerDataCenter().c(paramProtoReq);
   }
   
   private void p(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     boolean bool = a(paramProtoResp);
-    int j = -100003;
+    int n = -100003;
     Object localObject2 = "";
-    int i;
+    int m;
     Object localObject1;
     if (bool)
     {
-      i = -100001;
+      m = -100001;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("internalPreviewDiscFile: resp is timeout[");
       ((StringBuilder)localObject1).append(paramProtoResp.resp.getResultCode());
@@ -2757,7 +2750,7 @@ public class FileTransferHandler
       paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject1;
       localObject4 = paramProtoResp;
       bool = false;
-      j = 0;
+      n = 0;
       localObject5 = null;
       s = 0;
       localObject3 = paramProtoResp;
@@ -2765,7 +2758,7 @@ public class FileTransferHandler
       break;
       if (paramProtoResp.resp.getResultCode() != 1000)
       {
-        i = -100002;
+        m = -100002;
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("internalPreviewDiscFile: resp is failed[");
         ((StringBuilder)localObject1).append(paramProtoResp.resp.getResultCode());
@@ -2780,21 +2773,21 @@ public class FileTransferHandler
         {
           ((cmd0x345.RspBody)localObject1).mergeFrom(paramProtoResp);
           if (((cmd0x345.RspBody)localObject1).uint32_return_code.has()) {
-            i = ((cmd0x345.RspBody)localObject1).uint32_return_code.get();
+            m = ((cmd0x345.RspBody)localObject1).uint32_return_code.get();
           } else {
-            i = 0;
+            m = 0;
           }
           if (!((cmd0x345.RspBody)localObject1).msg_subcmd_0x7_rsp_body.has())
           {
             QLog.i("FileTransferHandler<FileAssistant>", 1, "internalPreviewDiscFile: rspBody has not hasMsgApplyDownloadRsp");
-            i = j;
+            m = n;
           }
           else
           {
             cmd0x345.RspBody.SubCmd0x7RspBody localSubCmd0x7RspBody = (cmd0x345.RspBody.SubCmd0x7RspBody)((cmd0x345.RspBody)localObject1).msg_subcmd_0x7_rsp_body.get();
             str2 = localSubCmd0x7RspBody.str_server_ip.get();
             str1 = localSubCmd0x7RspBody.str_dns.get();
-            j = localSubCmd0x7RspBody.uint32_server_port.get();
+            n = localSubCmd0x7RspBody.uint32_server_port.get();
             localObject5 = localSubCmd0x7RspBody.str_url.get();
             localObject3 = localSubCmd0x7RspBody.str_ret_msg.get();
             paramProtoResp = new StringBuilder();
@@ -2823,11 +2816,11 @@ public class FileTransferHandler
         catch (InvalidProtocolBufferMicroException paramProtoResp)
         {
           paramProtoResp.printStackTrace();
-          i = j;
+          m = n;
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool = false;
     }
     Object localObject5 = new Bundle();
@@ -2839,11 +2832,11 @@ public class FileTransferHandler
     paramProtoReq = (FileTransferHandler.PreviewBusiData)paramProtoReq.busiData;
     if (paramProtoReq.a())
     {
-      long l = paramProtoReq.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 192, new Object[] { Integer.valueOf(i), localObject3, localObject4, localObject1, str2, str1, Integer.valueOf(j), null, Long.valueOf(l), localObject5 });
+      long l = paramProtoReq.c();
+      this.a.getFileManagerNotifyCenter().a(bool, 192, new Object[] { Integer.valueOf(m), localObject3, localObject4, localObject1, str2, str1, Integer.valueOf(n), null, Long.valueOf(l), localObject5 });
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 21, new Object[] { Integer.valueOf(i), localObject3, localObject4, localObject1, str2, str1, Integer.valueOf(j), localObject5 });
+    this.a.getFileManagerNotifyCenter().a(bool, 21, new Object[] { Integer.valueOf(m), localObject3, localObject4, localObject1, str2, str1, Integer.valueOf(n), localObject5 });
   }
   
   private void q(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -2852,7 +2845,7 @@ public class FileTransferHandler
     Object localObject = "";
     cmd0x345.RspBody.SubCmd0x6RspBody localSubCmd0x6RspBody = null;
     StringBuilder localStringBuilder = null;
-    int i;
+    int m;
     if (bool)
     {
       localStringBuilder = new StringBuilder();
@@ -2860,7 +2853,7 @@ public class FileTransferHandler
       localStringBuilder.append(paramProtoResp.resp.getResultCode());
       localStringBuilder.append("]");
       QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-      i = -100001;
+      m = -100001;
     }
     for (;;)
     {
@@ -2875,7 +2868,7 @@ public class FileTransferHandler
         localStringBuilder.append(paramProtoResp.resp.getResultCode());
         localStringBuilder.append("]");
         QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-        i = -100002;
+        m = -100002;
       }
       else
       {
@@ -2885,9 +2878,9 @@ public class FileTransferHandler
         {
           localRspBody.mergeFrom(paramProtoResp);
           if (localRspBody.uint32_return_code.has()) {
-            i = localRspBody.uint32_return_code.get();
+            m = localRspBody.uint32_return_code.get();
           } else {
-            i = 0;
+            m = 0;
           }
           if (!localRspBody.msg_subcmd_0x6_rsp_body.has())
           {
@@ -2910,26 +2903,26 @@ public class FileTransferHandler
         catch (InvalidProtocolBufferMicroException paramProtoResp)
         {
           paramProtoResp.printStackTrace();
-          i = -100003;
+          m = -100003;
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool = false;
     }
     if (localObject == null) {
       bool = false;
     }
-    long l = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
-    paramProtoReq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
+    long l = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).c();
+    paramProtoReq = this.a.getFileManagerDataCenter().a(l);
     if (paramProtoReq == null)
     {
       QLog.e("FileTransferHandler<FileAssistant>", 1, "forward disc file, but entity is null!!!");
       return;
     }
     paramProtoReq.status = 0;
-    a(bool, paramProtoReq, (String)localObject, i, paramProtoResp, l);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramProtoReq);
+    a(bool, paramProtoReq, (String)localObject, m, paramProtoResp, l);
+    this.a.getFileManagerDataCenter().c(paramProtoReq);
   }
   
   private void r(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -2937,7 +2930,7 @@ public class FileTransferHandler
     Bundle localBundle = new Bundle();
     boolean bool = a(paramProtoResp.resp.getResultCode());
     String str2 = "";
-    int i = 80;
+    int m = 80;
     String str1 = "";
     String str3 = "";
     String str4 = "";
@@ -2986,16 +2979,16 @@ public class FileTransferHandler
           }
           else
           {
-            localObject1 = new FileTransferHandler.DiscDownloadInfo(this, l1, "", 80, "", "", "", "", (short)0, "", localBundle, (cmd0x345.RspBody.SubCmd0x3RspBody)((cmd0x345.RspBody)localObject2).msg_subcmd_0x3_rsp_body.get()).a();
+            localObject1 = new FileTransferHandler.DiscDownloadInfo(this, l1, "", 80, "", "", "", "", (short)0, "", localBundle, (cmd0x345.RspBody.SubCmd0x3RspBody)((cmd0x345.RspBody)localObject2).msg_subcmd_0x3_rsp_body.get()).j();
             l1 = ((FileTransferHandler.DiscDownloadInfo)localObject1).a();
-            str2 = ((FileTransferHandler.DiscDownloadInfo)localObject1).a();
-            i = ((FileTransferHandler.DiscDownloadInfo)localObject1).a();
-            str1 = ((FileTransferHandler.DiscDownloadInfo)localObject1).b();
-            str3 = ((FileTransferHandler.DiscDownloadInfo)localObject1).c();
-            str4 = ((FileTransferHandler.DiscDownloadInfo)localObject1).d();
-            str5 = ((FileTransferHandler.DiscDownloadInfo)localObject1).e();
-            s = ((FileTransferHandler.DiscDownloadInfo)localObject1).a();
-            localObject1 = ((FileTransferHandler.DiscDownloadInfo)localObject1).f();
+            str2 = ((FileTransferHandler.DiscDownloadInfo)localObject1).b();
+            m = ((FileTransferHandler.DiscDownloadInfo)localObject1).c();
+            str1 = ((FileTransferHandler.DiscDownloadInfo)localObject1).d();
+            str3 = ((FileTransferHandler.DiscDownloadInfo)localObject1).e();
+            str4 = ((FileTransferHandler.DiscDownloadInfo)localObject1).f();
+            str5 = ((FileTransferHandler.DiscDownloadInfo)localObject1).g();
+            s = ((FileTransferHandler.DiscDownloadInfo)localObject1).h();
+            localObject1 = ((FileTransferHandler.DiscDownloadInfo)localObject1).i();
           }
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
@@ -3019,20 +3012,20 @@ public class FileTransferHandler
       }
       else
       {
-        int j;
+        int n;
         if ((l1 == 0L) && (str2 == null)) {
-          j = 1;
+          n = 1;
         } else {
-          j = 0;
+          n = 0;
         }
-        int k = ((FileTransferHandler.PreviewBusiData)localObject2).b();
+        int i1 = ((FileTransferHandler.PreviewBusiData)localObject2).g();
         l2 = l1;
-        if (j != 0)
+        if (n != 0)
         {
           l2 = l1;
-          if (k < 3)
+          if (i1 < 3)
           {
-            ((FileTransferHandler.PreviewBusiData)localObject2).a();
+            ((FileTransferHandler.PreviewBusiData)localObject2).h();
             a(paramProtoReq.ssoCmd, paramProtoReq.reqBody, (FileTransferHandler.PreviewBusiData)localObject2);
             return;
           }
@@ -3063,12 +3056,12 @@ public class FileTransferHandler
       localStringBuilder.append(", strCookie=");
       localStringBuilder.append(str3);
       localStringBuilder.append(", port=");
-      localStringBuilder.append(i);
+      localStringBuilder.append(m);
       QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
     }
     localBundle.putShort("httpsPort", s);
     localBundle.putString("IPv6Dns", localInvalidProtocolBufferMicroException);
-    a(((FileTransferHandler.PreviewBusiData)localObject2).a(), 5013, bool, new Object[] { Long.valueOf(l2), str4, str5, str2, Integer.valueOf(i), str1, str3, Integer.valueOf(paramProtoResp.resp.getAppSeq()), Long.valueOf(((FileTransferHandler.PreviewBusiData)localObject2).a()), localBundle });
+    a(((FileTransferHandler.PreviewBusiData)localObject2).e(), 5013, bool, new Object[] { Long.valueOf(l2), str4, str5, str2, Integer.valueOf(m), str1, str3, Integer.valueOf(paramProtoResp.resp.getAppSeq()), Long.valueOf(((FileTransferHandler.PreviewBusiData)localObject2).c()), localBundle });
   }
   
   private void s(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -3094,7 +3087,7 @@ public class FileTransferHandler
       l = -100001L;
     }
     Object localObject7;
-    int i;
+    int m;
     boolean bool;
     String str;
     short s;
@@ -3102,7 +3095,7 @@ public class FileTransferHandler
     for (;;)
     {
       localObject7 = "";
-      i = 0;
+      m = 0;
       bool = false;
       str = null;
       s = 0;
@@ -3165,9 +3158,9 @@ public class FileTransferHandler
               localObject3 = "";
             }
             if (((cmd0x345.RspBody.SubCmd0x1RspBody)localObject7).uint32_port.has()) {
-              i = ((cmd0x345.RspBody.SubCmd0x1RspBody)localObject7).uint32_port.get();
+              m = ((cmd0x345.RspBody.SubCmd0x1RspBody)localObject7).uint32_port.get();
             } else {
-              i = 0;
+              m = 0;
             }
             if (((cmd0x345.RspBody.SubCmd0x1RspBody)localObject7).str_file_name.has()) {
               localObject2 = ((cmd0x345.RspBody.SubCmd0x1RspBody)localObject7).str_file_name.get();
@@ -3226,16 +3219,16 @@ public class FileTransferHandler
     }
     else
     {
-      int j;
+      int n;
       if ((localObject7 != null) && (((String)localObject7).length() != 0)) {
-        j = 0;
+        n = 0;
       } else {
-        j = 1;
+        n = 1;
       }
-      int k = ((FileTransferHandler.PreviewBusiData)localObject2).b();
-      if ((j != 0) && (k < 3))
+      int i1 = ((FileTransferHandler.PreviewBusiData)localObject2).g();
+      if ((n != 0) && (i1 < 3))
       {
-        ((FileTransferHandler.PreviewBusiData)localObject2).a();
+        ((FileTransferHandler.PreviewBusiData)localObject2).h();
         a(paramProtoReq.ssoCmd, paramProtoReq.reqBody, (FileTransferHandler.PreviewBusiData)localObject2);
         return;
       }
@@ -3246,13 +3239,13 @@ public class FileTransferHandler
     }
     paramProtoReq.putShort("httpsPort", s);
     paramProtoReq.putString("IPv6Dns", (String)localObject6);
-    a(((FileTransferHandler.PreviewBusiData)localObject2).a(), 5015, bool, new Object[] { Long.valueOf(l), localObject4, paramProtoResp, localObject3, localObject7, Integer.valueOf(i), localObject1, localObject5, paramProtoReq });
+    a(((FileTransferHandler.PreviewBusiData)localObject2).e(), 5015, bool, new Object[] { Long.valueOf(l), localObject4, paramProtoResp, localObject3, localObject7, Integer.valueOf(m), localObject1, localObject5, paramProtoReq });
   }
   
   private void t(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     paramProtoReq = (FileTransferHandler.PreviewBusiData)paramProtoReq.busiData;
-    long l2 = paramProtoReq.a();
+    long l2 = paramProtoReq.c();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("=_= ^ [Feed Replay] Id[");
     ((StringBuilder)localObject).append(l2);
@@ -3326,13 +3319,13 @@ public class FileTransferHandler
     }
     else
     {
-      paramProtoResp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l2);
+      paramProtoResp = this.a.getFileManagerDataCenter().a(l2);
       if (paramProtoResp != null)
       {
         if (bool)
         {
           paramProtoResp.status = 1;
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramProtoResp, 6, "");
+          this.a.getFileManagerNotifyCenter().a(paramProtoResp, 6, "");
         }
         else
         {
@@ -3346,13 +3339,13 @@ public class FileTransferHandler
           paramProtoResp.status = 0;
           a(l1, paramProtoResp);
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramProtoResp);
+        this.a.getFileManagerDataCenter().c(paramProtoResp);
       }
     }
     if ((bool) && (l2 > 0L)) {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l2);
+      FileManagerUtil.a(this.a, l2);
     }
-    a(paramProtoReq.a(), 5016, bool, new Object[] { Long.valueOf(l1) });
+    a(paramProtoReq.e(), 5016, bool, new Object[] { Long.valueOf(l1) });
   }
   
   private void u(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -3362,7 +3355,7 @@ public class FileTransferHandler
     Object localObject;
     if (a(paramProtoResp))
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100001;
+      localFileUploadInfo.a = -100001;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_= ^! [CS Replay]handleUploadResponse: resp is timeout[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -3371,7 +3364,7 @@ public class FileTransferHandler
     }
     else if (paramProtoResp.resp.getResultCode() != 1000)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100002;
+      localFileUploadInfo.a = -100002;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_= ^! [CS Replay]handleUploadResponse: resp is failed[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -3387,48 +3380,48 @@ public class FileTransferHandler
         localRspBody.mergeFrom((byte[])localObject);
         if (!localRspBody.msg_apply_upload_hit_rsp_v2.has())
         {
-          localFileUploadInfo.jdField_a_of_type_Int = -100003;
+          localFileUploadInfo.a = -100003;
           QLog.i("FileTransferHandler<FileAssistant>", 1, "=_= ^! [CS Replay]handleUploadResponse: rspBody has not hasMsgApplyUploadRsp");
         }
         else
         {
           localObject = (cmd0x346.ApplyUploadHitRspV2)localRspBody.msg_apply_upload_hit_rsp_v2.get();
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).int32_ret_code.has()) {
-            localFileUploadInfo.jdField_a_of_type_Int = ((cmd0x346.ApplyUploadHitRspV2)localObject).int32_ret_code.get();
+            localFileUploadInfo.a = ((cmd0x346.ApplyUploadHitRspV2)localObject).int32_ret_code.get();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).str_ret_msg.has()) {
-            localFileUploadInfo.jdField_a_of_type_JavaLangString = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_ret_msg.get();
+            localFileUploadInfo.b = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_ret_msg.get();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).uint64_total_space.has()) {
-            localFileUploadInfo.jdField_a_of_type_Long = ((cmd0x346.ApplyUploadHitRspV2)localObject).uint64_total_space.get();
+            localFileUploadInfo.c = ((cmd0x346.ApplyUploadHitRspV2)localObject).uint64_total_space.get();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).uint64_used_space.has()) {
-            localFileUploadInfo.jdField_b_of_type_Long = ((cmd0x346.ApplyUploadHitRspV2)localObject).uint64_used_space.get();
+            localFileUploadInfo.d = ((cmd0x346.ApplyUploadHitRspV2)localObject).uint64_used_space.get();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_ip.has()) {
-            localFileUploadInfo.jdField_b_of_type_JavaLangString = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_ip.get();
+            localFileUploadInfo.f = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_ip.get();
           } else if (((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_domain.has()) {
-            localFileUploadInfo.jdField_b_of_type_JavaLangString = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_domain.get();
+            localFileUploadInfo.f = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_domain.get();
           } else {
             QLog.i("FileTransferHandler<FileAssistant>", 1, "=_= ^! [CS Replay]handleUploadResponse has neither ip nor domain");
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).uint32_upload_port.has()) {
-            localFileUploadInfo.jdField_a_of_type_Short = ((short)((cmd0x346.ApplyUploadHitRspV2)localObject).uint32_upload_port.get());
+            localFileUploadInfo.g = ((short)((cmd0x346.ApplyUploadHitRspV2)localObject).uint32_upload_port.get());
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).bytes_uuid.has()) {
-            localFileUploadInfo.jdField_a_of_type_ArrayOfByte = ((cmd0x346.ApplyUploadHitRspV2)localObject).bytes_uuid.get().toByteArray();
+            localFileUploadInfo.h = ((cmd0x346.ApplyUploadHitRspV2)localObject).bytes_uuid.get().toByteArray();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).bytes_upload_key.has()) {
-            localFileUploadInfo.jdField_b_of_type_ArrayOfByte = ((cmd0x346.ApplyUploadHitRspV2)localObject).bytes_upload_key.get().toByteArray();
+            localFileUploadInfo.i = ((cmd0x346.ApplyUploadHitRspV2)localObject).bytes_upload_key.get().toByteArray();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_https_domain.has()) {
-            localFileUploadInfo.jdField_c_of_type_JavaLangString = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_https_domain.get();
+            localFileUploadInfo.p = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_https_domain.get();
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).uint32_upload_https_port.has()) {
-            localFileUploadInfo.jdField_b_of_type_Short = ((short)((cmd0x346.ApplyUploadHitRspV2)localObject).uint32_upload_https_port.get());
+            localFileUploadInfo.q = ((short)((cmd0x346.ApplyUploadHitRspV2)localObject).uint32_upload_https_port.get());
           }
           if (((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_dns.has()) {
-            localFileUploadInfo.jdField_d_of_type_JavaLangString = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_dns.get();
+            localFileUploadInfo.r = ((cmd0x346.ApplyUploadHitRspV2)localObject).str_upload_dns.get();
           }
           bool1 = true;
         }
@@ -3436,36 +3429,36 @@ public class FileTransferHandler
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
-        localFileUploadInfo.jdField_a_of_type_Int = -100003;
+        localFileUploadInfo.a = -100003;
       }
     }
     boolean bool1 = false;
-    int i;
-    if ((localFileUploadInfo.jdField_b_of_type_JavaLangString != null) && (localFileUploadInfo.jdField_b_of_type_JavaLangString.length() > 0)) {
-      i = 1;
+    int m;
+    if ((localFileUploadInfo.f != null) && (localFileUploadInfo.f.length() > 0)) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j;
-    if ((localFileUploadInfo.jdField_a_of_type_ArrayOfByte != null) && (localFileUploadInfo.jdField_a_of_type_ArrayOfByte.length != 0)) {
-      j = 0;
+    int n;
+    if ((localFileUploadInfo.h != null) && (localFileUploadInfo.h.length != 0)) {
+      n = 0;
     } else {
-      j = 1;
+      n = 1;
     }
     StatictisInfo localStatictisInfo = new StatictisInfo();
-    localStatictisInfo.jdField_b_of_type_Int = localFileUploadInfo.jdField_a_of_type_Int;
-    localStatictisInfo.jdField_c_of_type_Int = paramProtoResp.freeRunnalbleIndex;
+    localStatictisInfo.b = localFileUploadInfo.a;
+    localStatictisInfo.c = paramProtoResp.freeRunnalbleIndex;
     boolean bool2 = bool1;
-    if (j != 0)
+    if (n != 0)
     {
       bool2 = bool1;
-      if (i != 0)
+      if (m != 0)
       {
         paramProtoResp = new StringBuilder();
         paramProtoResp.append("uuid_null[");
         paramProtoResp.append(localFileUploadInfo.toString());
         paramProtoResp.append("]");
-        localFileUploadInfo.jdField_a_of_type_JavaLangString = paramProtoResp.toString();
+        localFileUploadInfo.b = paramProtoResp.toString();
         bool2 = false;
       }
     }
@@ -3475,20 +3468,20 @@ public class FileTransferHandler
       paramProtoResp.append("decodeOffFilePBResponse:return ");
       paramProtoResp.append(bool2);
       paramProtoResp.append(", retCode=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.a);
       paramProtoResp.append(", retMsg=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.b);
       paramProtoResp.append(", totalSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.c);
       paramProtoResp.append(", usedSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.d);
       paramProtoResp.append(", ip=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.f);
       paramProtoResp.append(", port=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Short);
+      paramProtoResp.append(localFileUploadInfo.g);
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramProtoResp.toString());
     }
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5020, bool2, new Object[] { localFileUploadInfo, localStatictisInfo, null });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5020, bool2, new Object[] { localFileUploadInfo, localStatictisInfo, null });
   }
   
   private void v(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -3497,30 +3490,30 @@ public class FileTransferHandler
       QLog.i("FileTransferHandler<FileAssistant>", 2, "handleRecallResponse ");
     }
     boolean bool1 = a(paramProtoResp);
-    int i = -100003;
+    int m = -100003;
     boolean bool2 = false;
     boolean bool3 = true;
     StringBuilder localStringBuilder = null;
     Object localObject;
     if (bool1)
     {
-      i = -100001;
+      m = -100001;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleRemoveResponse: resp is timeout[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
       ((StringBuilder)localObject).append("]");
       QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
-    int j;
+    int n;
     for (;;)
     {
       bool1 = false;
-      j = i;
+      n = m;
       paramProtoResp = localStringBuilder;
       break;
       if (paramProtoResp.resp.getResultCode() != 1000)
       {
-        i = -100002;
+        m = -100002;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("handleRemoveResponse: resp is failed[");
         ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -3542,18 +3535,18 @@ public class FileTransferHandler
           {
             localObject = (cmd0x346.RecallFileRsp)((cmd0x346.RspBody)localObject).msg_recall_file_rsp.get();
             if (((cmd0x346.RecallFileRsp)localObject).int32_ret_code.has()) {
-              i = ((cmd0x346.RecallFileRsp)localObject).int32_ret_code.get();
+              m = ((cmd0x346.RecallFileRsp)localObject).int32_ret_code.get();
             } else {
-              i = 0;
+              m = 0;
             }
-            j = i;
+            n = m;
             bool1 = bool3;
             paramProtoResp = localStringBuilder;
             if (!((cmd0x346.RecallFileRsp)localObject).str_ret_msg.has()) {
               break;
             }
             paramProtoResp = ((cmd0x346.RecallFileRsp)localObject).str_ret_msg.get();
-            j = i;
+            n = m;
             bool1 = bool3;
           }
         }
@@ -3563,17 +3556,17 @@ public class FileTransferHandler
         }
       }
     }
-    if (j != 0) {
+    if (n != 0) {
       bool1 = bool2;
     }
-    paramProtoReq = (FMConstants.RevertMsgCallback)((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
+    paramProtoReq = (FMConstants.RevertMsgCallback)((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).b();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleRecallResponse [");
       localStringBuilder.append(bool1);
       localStringBuilder.append("],retCode[");
-      localStringBuilder.append(j);
+      localStringBuilder.append(n);
       localStringBuilder.append("], retMsg[");
       localStringBuilder.append(paramProtoResp);
       localStringBuilder.append("]");
@@ -3584,19 +3577,19 @@ public class FileTransferHandler
       paramProtoReq.a();
       return;
     }
-    paramProtoReq.a(j, paramProtoResp);
+    paramProtoReq.a(n, paramProtoResp);
   }
   
   private void w(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     boolean bool = a(paramProtoResp);
-    int j = -100003;
+    int n = -100003;
     Object localObject1 = "";
-    int i;
+    int m;
     Object localObject2;
     if (bool)
     {
-      i = -100001;
+      m = -100001;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("internalForwardDisc2Disc: resp is timeout[");
       ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -3610,7 +3603,7 @@ public class FileTransferHandler
       break;
       if (paramProtoResp.resp.getResultCode() != 1000)
       {
-        i = -100002;
+        m = -100002;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("internalForwardDisc2Disc: resp is failed[");
         ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -3625,14 +3618,14 @@ public class FileTransferHandler
         {
           ((cmd0x345.RspBody)localObject2).mergeFrom(paramProtoResp);
           if (((cmd0x345.RspBody)localObject2).uint32_return_code.has()) {
-            i = ((cmd0x345.RspBody)localObject2).uint32_return_code.get();
+            m = ((cmd0x345.RspBody)localObject2).uint32_return_code.get();
           } else {
-            i = 0;
+            m = 0;
           }
           if (!((cmd0x345.RspBody)localObject2).msg_subcmd_0xa_rsp_body.has())
           {
             QLog.i("FileTransferHandler<FileAssistant>", 1, "internalForwardDisc2Disc: rspBody has not hasMsgApplyDownloadRsp");
-            i = j;
+            m = n;
           }
           else
           {
@@ -3647,21 +3640,21 @@ public class FileTransferHandler
         catch (InvalidProtocolBufferMicroException paramProtoResp)
         {
           paramProtoResp.printStackTrace();
-          i = j;
+          m = n;
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool = false;
     }
-    paramProtoReq = (FMConstants.RevertMsgCallback)((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
+    paramProtoReq = (FMConstants.RevertMsgCallback)((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).b();
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("internalDeleteDiscFile [");
       ((StringBuilder)localObject1).append(bool);
       ((StringBuilder)localObject1).append("],retCode[");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(m);
       ((StringBuilder)localObject1).append("], retMsg[");
       ((StringBuilder)localObject1).append(paramProtoResp);
       ((StringBuilder)localObject1).append("]");
@@ -3677,7 +3670,7 @@ public class FileTransferHandler
       paramProtoReq.a();
       return;
     }
-    paramProtoReq.a(i, paramProtoResp);
+    paramProtoReq.a(m, paramProtoResp);
   }
   
   public long a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, im_msg_body.GroupFile paramGroupFile, int paramInt1, int paramInt2)
@@ -3714,7 +3707,7 @@ public class FileTransferHandler
   
   public MessageRecord a(int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramString1, paramInt);
+    Object localObject = this.a.getMessageFacade().h(paramString1, paramInt);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -3763,47 +3756,47 @@ public class FileTransferHandler
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int i = paramArrayOfByte.length;
+      int m = paramArrayOfByte.length;
       OnlineFileSessionInfo localOnlineFileSessionInfo = new OnlineFileSessionInfo();
-      if (i >= 16)
+      if (m >= 16)
       {
-        PkgTools.getBytesData(paramArrayOfByte, 0, localOnlineFileSessionInfo.jdField_a_of_type_ArrayOfByte, 16);
-        if (i >= 28)
+        PkgTools.getBytesData(paramArrayOfByte, 0, localOnlineFileSessionInfo.f, 16);
+        if (m >= 28)
         {
-          localOnlineFileSessionInfo.jdField_b_of_type_Long = PkgTools.getLongData(paramArrayOfByte, 24);
-          if (i >= 51)
+          localOnlineFileSessionInfo.c = PkgTools.getLongData(paramArrayOfByte, 24);
+          if (m >= 51)
           {
-            int j = PkgTools.getShortData(paramArrayOfByte, 49);
-            if (j < 4)
+            int n = PkgTools.getShortData(paramArrayOfByte, 49);
+            if (n < 4)
             {
-              localOnlineFileSessionInfo.jdField_b_of_type_Boolean = false;
+              localOnlineFileSessionInfo.i = false;
               return localOnlineFileSessionInfo;
             }
-            byte[] arrayOfByte = new byte[j];
-            if (i >= 51 + j)
+            byte[] arrayOfByte = new byte[n];
+            if (m >= 51 + n)
             {
-              PkgTools.getBytesData(paramArrayOfByte, 51, arrayOfByte, j);
-              i = 0;
-              while (i < j)
+              PkgTools.getBytesData(paramArrayOfByte, 51, arrayOfByte, n);
+              m = 0;
+              while (m < n)
               {
-                int k = arrayOfByte[i];
-                int m = i + 1;
-                i = m + 2;
-                if (j >= i)
+                int i1 = arrayOfByte[m];
+                int i2 = m + 1;
+                m = i2 + 2;
+                if (n >= m)
                 {
-                  m = PkgTools.getShortData(arrayOfByte, m);
-                  if ((k != 1) && (k != 2) && (k != 3)) {
-                    if (k == 4)
+                  i2 = PkgTools.getShortData(arrayOfByte, i2);
+                  if ((i1 != 1) && (i1 != 2) && (i1 != 3)) {
+                    if (i1 == 4)
                     {
-                      paramArrayOfByte = new byte[m];
-                      if (j >= i + m)
+                      paramArrayOfByte = new byte[i2];
+                      if (n >= m + i2)
                       {
-                        PkgTools.getBytesData(arrayOfByte, i, paramArrayOfByte, m);
-                        paramArrayOfByte = a(paramArrayOfByte);
+                        PkgTools.getBytesData(arrayOfByte, m, paramArrayOfByte, i2);
+                        paramArrayOfByte = c(paramArrayOfByte);
                         if (paramArrayOfByte != null)
                         {
-                          localOnlineFileSessionInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte.jdField_a_of_type_JavaLangString;
-                          localOnlineFileSessionInfo.jdField_a_of_type_Long = paramArrayOfByte.jdField_a_of_type_Long;
+                          localOnlineFileSessionInfo.a = paramArrayOfByte.a;
+                          localOnlineFileSessionInfo.b = paramArrayOfByte.b;
                         }
                         else
                         {
@@ -3817,47 +3810,47 @@ public class FileTransferHandler
                         return localOnlineFileSessionInfo;
                       }
                     }
-                    else if (k != 12)
+                    else if (i1 != 12)
                     {
                       boolean bool;
-                      if (k == 15)
+                      if (i1 == 15)
                       {
-                        if (m < 1)
+                        if (i2 < 1)
                         {
-                          localOnlineFileSessionInfo.jdField_b_of_type_Boolean = false;
+                          localOnlineFileSessionInfo.i = false;
                         }
-                        else if (j >= i + m)
+                        else if (n >= m + i2)
                         {
-                          paramArrayOfByte = new byte[m];
-                          PkgTools.getBytesData(arrayOfByte, i, paramArrayOfByte, m);
+                          paramArrayOfByte = new byte[i2];
+                          PkgTools.getBytesData(arrayOfByte, m, paramArrayOfByte, i2);
                           if (paramArrayOfByte[0] == 1) {
                             bool = true;
                           } else {
                             bool = false;
                           }
-                          localOnlineFileSessionInfo.jdField_b_of_type_Boolean = bool;
+                          localOnlineFileSessionInfo.i = bool;
                         }
                       }
-                      else if (k == 17) {
-                        if (m < 1)
+                      else if (i1 == 17) {
+                        if (i2 < 1)
                         {
-                          localOnlineFileSessionInfo.c = false;
+                          localOnlineFileSessionInfo.l = false;
                         }
-                        else if (j >= i + m)
+                        else if (n >= m + i2)
                         {
-                          paramArrayOfByte = new byte[m];
-                          PkgTools.getBytesData(arrayOfByte, i, paramArrayOfByte, m);
+                          paramArrayOfByte = new byte[i2];
+                          PkgTools.getBytesData(arrayOfByte, m, paramArrayOfByte, i2);
                           if (paramArrayOfByte[0] == 1) {
                             bool = true;
                           } else {
                             bool = false;
                           }
-                          localOnlineFileSessionInfo.c = bool;
+                          localOnlineFileSessionInfo.l = bool;
                         }
                       }
                     }
                   }
-                  i = m + i;
+                  m = i2 + m;
                 }
                 else
                 {
@@ -3885,33 +3878,33 @@ public class FileTransferHandler
   public Cmd0x346CSBody a(OfflineFileUploadPara paramOfflineFileUploadPara)
   {
     Cmd0x346CSBody localCmd0x346CSBody = new Cmd0x346CSBody();
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (paramOfflineFileUploadPara.jdField_a_of_type_Int == 1700)
+    long l = Long.parseLong(this.a.getCurrentAccountUin());
+    if (paramOfflineFileUploadPara.c == 1700)
     {
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3 = new ApplyUploadReqV3();
-      paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString = paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString.replace("+", "");
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_a_of_type_Long = l;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_b_of_type_Long = Long.parseLong(paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString);
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_c_of_type_Long = paramOfflineFileUploadPara.jdField_a_of_type_Long;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_a_of_type_JavaLangString = new String(paramOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte);
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_b_of_type_JavaLangString = new String(paramOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte);
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_a_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_c_of_type_ArrayOfByte;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_c_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_e_of_type_ArrayOfByte;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_b_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_d_of_type_ArrayOfByte;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_d_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_f_of_type_ArrayOfByte;
+      localCmd0x346CSBody.b = new ApplyUploadReqV3();
+      paramOfflineFileUploadPara.a = paramOfflineFileUploadPara.a.replace("+", "");
+      localCmd0x346CSBody.b.a = l;
+      localCmd0x346CSBody.b.b = Long.parseLong(paramOfflineFileUploadPara.a);
+      localCmd0x346CSBody.b.c = paramOfflineFileUploadPara.b;
+      localCmd0x346CSBody.b.d = new String(paramOfflineFileUploadPara.f);
+      localCmd0x346CSBody.b.i = new String(paramOfflineFileUploadPara.e);
+      localCmd0x346CSBody.b.e = paramOfflineFileUploadPara.g;
+      localCmd0x346CSBody.b.g = paramOfflineFileUploadPara.i;
+      localCmd0x346CSBody.b.f = paramOfflineFileUploadPara.h;
+      localCmd0x346CSBody.b.h = paramOfflineFileUploadPara.j;
       return localCmd0x346CSBody;
     }
-    if (paramOfflineFileUploadPara.jdField_a_of_type_Int == 1600)
+    if (paramOfflineFileUploadPara.c == 1600)
     {
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2 = new ApplyUploadReqV2();
-      paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString = paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString.replace("+", "");
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_a_of_type_Long = l;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_b_of_type_Long = Long.parseLong(paramOfflineFileUploadPara.jdField_a_of_type_JavaLangString);
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_c_of_type_Long = paramOfflineFileUploadPara.jdField_a_of_type_Long;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_a_of_type_JavaLangString = new String(paramOfflineFileUploadPara.jdField_b_of_type_ArrayOfByte);
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_b_of_type_JavaLangString = new String(paramOfflineFileUploadPara.jdField_a_of_type_ArrayOfByte);
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_a_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_c_of_type_ArrayOfByte;
-      localCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_b_of_type_ArrayOfByte = paramOfflineFileUploadPara.jdField_f_of_type_ArrayOfByte;
+      localCmd0x346CSBody.a = new ApplyUploadReqV2();
+      paramOfflineFileUploadPara.a = paramOfflineFileUploadPara.a.replace("+", "");
+      localCmd0x346CSBody.a.a = l;
+      localCmd0x346CSBody.a.b = Long.parseLong(paramOfflineFileUploadPara.a);
+      localCmd0x346CSBody.a.c = paramOfflineFileUploadPara.b;
+      localCmd0x346CSBody.a.d = new String(paramOfflineFileUploadPara.f);
+      localCmd0x346CSBody.a.g = new String(paramOfflineFileUploadPara.e);
+      localCmd0x346CSBody.a.e = paramOfflineFileUploadPara.g;
+      localCmd0x346CSBody.a.f = paramOfflineFileUploadPara.j;
     }
     return localCmd0x346CSBody;
   }
@@ -3921,86 +3914,38 @@ public class FileTransferHandler
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     localArrayList2.addAll(paramList);
-    int i = 0;
-    while (i < localArrayList2.size())
+    int m = 0;
+    while (m < localArrayList2.size())
     {
-      msg_comm.Msg localMsg = (msg_comm.Msg)localArrayList2.get(i);
-      if (a(paramLong, paramBoolean, localArrayList1, i, localMsg, (msg_comm.MsgHead)localMsg.msg_head.get())) {
+      msg_comm.Msg localMsg = (msg_comm.Msg)localArrayList2.get(m);
+      if (a(paramLong, paramBoolean, localArrayList1, m, localMsg, (msg_comm.MsgHead)localMsg.msg_head.get())) {
         paramList.remove(localMsg);
       }
-      i += 1;
+      m += 1;
     }
     return localArrayList1;
-  }
-  
-  public cmd0x346.ApplyUploadHitReqV2 a(Cmd0x346CSBody paramCmd0x346CSBody)
-  {
-    cmd0x346.ApplyUploadHitReqV2 localApplyUploadHitReqV2 = new cmd0x346.ApplyUploadHitReqV2();
-    paramCmd0x346CSBody = paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2;
-    localApplyUploadHitReqV2.uint64_sender_uin.set(paramCmd0x346CSBody.jdField_a_of_type_Long);
-    localApplyUploadHitReqV2.uint64_recver_uin.set(paramCmd0x346CSBody.jdField_b_of_type_Long);
-    localApplyUploadHitReqV2.uint64_file_size.set(paramCmd0x346CSBody.jdField_c_of_type_Long);
-    localApplyUploadHitReqV2.str_file_name.set(paramCmd0x346CSBody.jdField_a_of_type_JavaLangString);
-    localApplyUploadHitReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_a_of_type_ArrayOfByte));
-    localApplyUploadHitReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_b_of_type_ArrayOfByte));
-    localApplyUploadHitReqV2.bytes_sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_c_of_type_ArrayOfByte));
-    localApplyUploadHitReqV2.str_local_filepath.set(paramCmd0x346CSBody.jdField_b_of_type_JavaLangString);
-    localApplyUploadHitReqV2.uint32_danger_level.set(paramCmd0x346CSBody.jdField_a_of_type_Int);
-    localApplyUploadHitReqV2.uint64_total_space.set(paramCmd0x346CSBody.jdField_d_of_type_Long);
-    return localApplyUploadHitReqV2;
   }
   
   public cmd0x346.ApplyUploadReqV2 a(Cmd0x346CSBody paramCmd0x346CSBody)
   {
     cmd0x346.ApplyUploadReqV2 localApplyUploadReqV2 = new cmd0x346.ApplyUploadReqV2();
-    paramCmd0x346CSBody = paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2;
-    localApplyUploadReqV2.uint64_sender_uin.set(paramCmd0x346CSBody.jdField_a_of_type_Long);
-    localApplyUploadReqV2.uint64_recver_uin.set(paramCmd0x346CSBody.jdField_b_of_type_Long);
-    localApplyUploadReqV2.uint64_file_size.set(paramCmd0x346CSBody.jdField_c_of_type_Long);
-    localApplyUploadReqV2.str_file_name.set(paramCmd0x346CSBody.jdField_a_of_type_JavaLangString);
-    localApplyUploadReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_a_of_type_ArrayOfByte));
-    localApplyUploadReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_b_of_type_ArrayOfByte));
-    localApplyUploadReqV2.str_local_filepath.set(paramCmd0x346CSBody.jdField_b_of_type_JavaLangString);
-    localApplyUploadReqV2.uint32_danger_level.set(paramCmd0x346CSBody.jdField_a_of_type_Int);
-    localApplyUploadReqV2.uint64_total_space.set(paramCmd0x346CSBody.jdField_d_of_type_Long);
+    paramCmd0x346CSBody = paramCmd0x346CSBody.a;
+    localApplyUploadReqV2.uint64_sender_uin.set(paramCmd0x346CSBody.a);
+    localApplyUploadReqV2.uint64_recver_uin.set(paramCmd0x346CSBody.b);
+    localApplyUploadReqV2.uint64_file_size.set(paramCmd0x346CSBody.c);
+    localApplyUploadReqV2.str_file_name.set(paramCmd0x346CSBody.d);
+    localApplyUploadReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.e));
+    localApplyUploadReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.f));
+    localApplyUploadReqV2.str_local_filepath.set(paramCmd0x346CSBody.g);
+    localApplyUploadReqV2.uint32_danger_level.set(paramCmd0x346CSBody.h);
+    localApplyUploadReqV2.uint64_total_space.set(paramCmd0x346CSBody.i);
     return localApplyUploadReqV2;
-  }
-  
-  public cmd0x346.ApplyUploadReqV3 a(Cmd0x346CSBody paramCmd0x346CSBody)
-  {
-    cmd0x346.ApplyUploadReqV3 localApplyUploadReqV3 = new cmd0x346.ApplyUploadReqV3();
-    paramCmd0x346CSBody = paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3;
-    localApplyUploadReqV3.uint64_sender_uin.set(paramCmd0x346CSBody.jdField_a_of_type_Long);
-    localApplyUploadReqV3.uint64_recver_uin.set(paramCmd0x346CSBody.jdField_b_of_type_Long);
-    localApplyUploadReqV3.uint64_file_size.set(paramCmd0x346CSBody.jdField_c_of_type_Long);
-    localApplyUploadReqV3.str_file_name.set(paramCmd0x346CSBody.jdField_a_of_type_JavaLangString);
-    localApplyUploadReqV3.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_a_of_type_ArrayOfByte));
-    if (paramCmd0x346CSBody.jdField_b_of_type_ArrayOfByte != null) {
-      localApplyUploadReqV3.bytes_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_b_of_type_ArrayOfByte));
-    }
-    localApplyUploadReqV3.bytes_sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_c_of_type_ArrayOfByte));
-    if (paramCmd0x346CSBody.jdField_d_of_type_ArrayOfByte != null) {
-      localApplyUploadReqV3.bytes_3sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.jdField_d_of_type_ArrayOfByte));
-    }
-    localApplyUploadReqV3.uint32_contenttype.set(0);
-    localApplyUploadReqV3.str_local_filepath.set(paramCmd0x346CSBody.jdField_b_of_type_JavaLangString);
-    localApplyUploadReqV3.uint32_danger_level.set(paramCmd0x346CSBody.jdField_a_of_type_Int);
-    localApplyUploadReqV3.uint64_total_space.set(paramCmd0x346CSBody.jdField_d_of_type_Long);
-    return localApplyUploadReqV3;
-  }
-  
-  public void a()
-  {
-    face2face_file.msg localmsg = new face2face_file.msg();
-    localmsg.version.set(1);
-    localmsg.result.set(0);
-    a("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ", localmsg.toByteArray(), null);
   }
   
   public void a(int paramInt1, int paramInt2, FileTransferObserver paramFileTransferObserver, int paramInt3)
   {
     Object localObject = new cmd0x346.RecvListQueryReq();
-    ((cmd0x346.RecvListQueryReq)localObject).uint64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    ((cmd0x346.RecvListQueryReq)localObject).uint64_uin.set(this.a.getLongAccountUin());
     ((cmd0x346.RecvListQueryReq)localObject).uint32_begin_index.set(paramInt1);
     ((cmd0x346.RecvListQueryReq)localObject).uint32_req_count.set(paramInt2);
     ((cmd0x346.RecvListQueryReq)localObject).uint32_filter_filetype.set(paramInt3);
@@ -4008,8 +3953,8 @@ public class FileTransferHandler
     localReqBody.msg_recv_list_query_req.set((MessageMicro)localObject);
     localReqBody.uint32_cmd.set(100);
     localObject = localReqBody.uint32_seq;
-    paramInt1 = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = paramInt1 + 1;
+    paramInt1 = e;
+    e = paramInt1 + 1;
     ((PBUInt32Field)localObject).set(paramInt1);
     localReqBody.uint32_business_id.set(3);
     localReqBody.uint32_client_type.set(104);
@@ -4047,10 +3992,10 @@ public class FileTransferHandler
       ((StringBuilder)localObject1).append("]");
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((paramFileManagerEntity.Uuid != null) && (paramFileManagerEntity.Uuid.length() >= 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() != null))
+    if ((paramFileManagerEntity.Uuid != null) && (paramFileManagerEntity.Uuid.length() >= 1) && (this.a.getAccount() != null))
     {
       Object localObject2 = new cmd0x346.ApplyCopyToReq();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().replace("+", "");
+      localObject1 = this.a.getAccount().replace("+", "");
       ((cmd0x346.ApplyCopyToReq)localObject2).uint64_dst_id.set(Long.parseLong((String)localObject1));
       if ((paramInt1 == 106) || (paramInt1 == 102) || (paramInt1 == 104)) {
         ((cmd0x346.ApplyCopyToReq)localObject2).uint64_dst_id.set(Long.parseLong(paramFileManagerEntity.peerUin));
@@ -4064,8 +4009,8 @@ public class FileTransferHandler
       ((cmd0x346.ReqBody)localObject1).msg_apply_copy_to_req.set((MessageMicro)localObject2);
       ((cmd0x346.ReqBody)localObject1).uint32_cmd.set(60100);
       localObject2 = ((cmd0x346.ReqBody)localObject1).uint32_seq;
-      paramInt1 = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = paramInt1 + 1;
+      paramInt1 = e;
+      e = paramInt1 + 1;
       ((PBUInt32Field)localObject2).set(paramInt1);
       ((cmd0x346.ReqBody)localObject1).uint32_business_id.set(paramInt2);
       ((cmd0x346.ReqBody)localObject1).uint32_client_type.set(104);
@@ -4085,7 +4030,7 @@ public class FileTransferHandler
   
   public void a(int paramInt1, String paramString1, String paramString2, long paramLong1, short paramShort, boolean paramBoolean, int paramInt2, String paramString3, OnlineFileSessionInfo paramOnlineFileSessionInfo, long paramLong2, int paramInt3)
   {
-    if (!a(paramOnlineFileSessionInfo)) {
+    if (!b(paramOnlineFileSessionInfo)) {
       return;
     }
     if (paramInt1 != 129)
@@ -4096,7 +4041,7 @@ public class FileTransferHandler
         {
           paramString1 = new StringBuilder();
           paramString1.append("OLfilesession[");
-          paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+          paramString1.append(paramOnlineFileSessionInfo.c);
           paramString1.append("] handleOnLineFilePushMsg. error cmd:");
           paramString1.append(paramInt1);
           QLog.e("FileTransferHandler<FileAssistant>", 1, paramString1.toString());
@@ -4104,79 +4049,79 @@ public class FileTransferHandler
         }
         paramString2 = new StringBuilder();
         paramString2.append("OLfilesession[");
-        paramString2.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+        paramString2.append(paramOnlineFileSessionInfo.c);
         paramString2.append("] handle cmd 0x85. cancel.type:");
-        paramString2.append(paramOnlineFileSessionInfo.jdField_a_of_type_Short);
+        paramString2.append(paramOnlineFileSessionInfo.j);
         paramString2.append(" reason:");
-        paramString2.append(paramOnlineFileSessionInfo.jdField_b_of_type_Short);
+        paramString2.append(paramOnlineFileSessionInfo.k);
         QLog.i("FileTransferHandler<FileAssistant>", 1, paramString2.toString());
-        if (2 == paramOnlineFileSessionInfo.jdField_a_of_type_Short)
+        if (2 == paramOnlineFileSessionInfo.j)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long, 2);
+          this.a.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.c, 2);
           return;
         }
-        if (1 == paramOnlineFileSessionInfo.jdField_a_of_type_Short)
+        if (1 == paramOnlineFileSessionInfo.j)
         {
-          if (57 == paramOnlineFileSessionInfo.jdField_b_of_type_Short)
+          if (57 == paramOnlineFileSessionInfo.k)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long, 5);
+            this.a.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.c, 5);
             return;
           }
-          if (70 == paramOnlineFileSessionInfo.jdField_b_of_type_Short)
+          if (70 == paramOnlineFileSessionInfo.k)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().b(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+            this.a.getOnlineFileSessionCenter().c(paramString1, paramOnlineFileSessionInfo.c);
             return;
           }
-          if (71 == paramOnlineFileSessionInfo.jdField_b_of_type_Short)
+          if (71 == paramOnlineFileSessionInfo.k)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long, 4);
+            this.a.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.c, 4);
             return;
           }
-          if (5 == paramOnlineFileSessionInfo.jdField_b_of_type_Short)
+          if (5 == paramOnlineFileSessionInfo.k)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long, 2);
+            this.a.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.c, 2);
             return;
           }
-          if (paramOnlineFileSessionInfo.jdField_b_of_type_Short == 0)
+          if (paramOnlineFileSessionInfo.k == 0)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long, 3);
+            this.a.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.c, 3);
             return;
           }
-          if (58 == paramOnlineFileSessionInfo.jdField_b_of_type_Short)
+          if (58 == paramOnlineFileSessionInfo.k)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().b(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+            this.a.getOnlineFileSessionCenter().c(paramString1, paramOnlineFileSessionInfo.c);
             return;
           }
           paramString1 = new StringBuilder();
           paramString1.append("OLfilesession[");
-          paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+          paramString1.append(paramOnlineFileSessionInfo.c);
           paramString1.append("] canceltype:1.unkonw reason:");
-          paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Short);
+          paramString1.append(paramOnlineFileSessionInfo.k);
           QLog.e("FileTransferHandler<FileAssistant>", 1, paramString1.toString());
           return;
         }
         paramString1 = new StringBuilder();
         paramString1.append("OLfilesession[");
-        paramString1.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+        paramString1.append(paramOnlineFileSessionInfo.c);
         paramString1.append("] unknow canceltype:");
-        paramString1.append(paramOnlineFileSessionInfo.jdField_a_of_type_Short);
+        paramString1.append(paramOnlineFileSessionInfo.j);
         QLog.e("FileTransferHandler<FileAssistant>", 1, paramString1.toString());
         return;
       }
       paramString2 = new StringBuilder();
       paramString2.append("OLfilesession[");
-      paramString2.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+      paramString2.append(paramOnlineFileSessionInfo.c);
       paramString2.append("] handle cmd 0x83. accept");
       QLog.i("FileTransferHandler<FileAssistant>", 1, paramString2.toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.jdField_b_of_type_Long, 1);
+      this.a.getOnlineFileSessionCenter().a(paramString1, paramOnlineFileSessionInfo.c, 1);
       return;
     }
     paramString3 = new StringBuilder();
     paramString3.append("OLfilesession[");
-    paramString3.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
+    paramString3.append(paramOnlineFileSessionInfo.c);
     paramString3.append("] handle cmd 0x81. request");
     QLog.i("FileTransferHandler<FileAssistant>", 1, paramString3.toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramString2, paramLong1, paramShort, paramBoolean, paramOnlineFileSessionInfo, paramLong2, paramInt3);
+    this.a.getOnlineFileSessionCenter().a(paramString1, paramString2, paramLong1, paramShort, paramBoolean, paramOnlineFileSessionInfo, paramLong2, paramInt3);
   }
   
   public void a(long paramLong, int paramInt, boolean paramBoolean, Cmd0x346CSBody paramCmd0x346CSBody, FileTransferObserver paramFileTransferObserver, FileManagerEntity paramFileManagerEntity)
@@ -4186,9 +4131,9 @@ public class FileTransferHandler
     localReqBody.uint32_business_id.set(3);
     localReqBody.uint32_client_type.set(104);
     Object localObject = localReqBody.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    ((PBUInt32Field)localObject).set(i);
+    int m = e;
+    e = m + 1;
+    ((PBUInt32Field)localObject).set(m);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("=_= ^> [CS Step], SessionId[");
     ((StringBuilder)localObject).append(paramFileManagerEntity.nSessionId);
@@ -4210,16 +4155,16 @@ public class FileTransferHandler
           QLog.e("FileTransferHandler<FileAssistant>", 2, paramCmd0x346CSBody.toString());
           return;
         }
-        localObject = a(paramCmd0x346CSBody);
+        localObject = c(paramCmd0x346CSBody);
         localReqBody.msg_apply_upload_hit_req_v2.set((MessageMicro)localObject);
-        paramFileTransferObserver = new FileTransferHandler.PreviewBusiData(this, paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_a_of_type_ArrayOfByte, paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadHitReqV2.jdField_c_of_type_ArrayOfByte, null, paramFileTransferObserver);
+        paramFileTransferObserver = new FileTransferHandler.PreviewBusiData(this, paramCmd0x346CSBody.c.e, paramCmd0x346CSBody.c.g, null, paramFileTransferObserver);
         paramCmd0x346CSBody = "OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800";
       }
       else
       {
-        localObject = a(paramCmd0x346CSBody);
+        localObject = b(paramCmd0x346CSBody);
         localReqBody.msg_apply_upload_req_v3.set((MessageMicro)localObject);
-        paramFileTransferObserver = new FileTransferHandler.PreviewBusiData(this, paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_a_of_type_ArrayOfByte, paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV3.jdField_c_of_type_ArrayOfByte, null, paramFileTransferObserver);
+        paramFileTransferObserver = new FileTransferHandler.PreviewBusiData(this, paramCmd0x346CSBody.b.e, paramCmd0x346CSBody.b.g, null, paramFileTransferObserver);
         paramCmd0x346CSBody = "OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700";
       }
     }
@@ -4227,7 +4172,7 @@ public class FileTransferHandler
     {
       localObject = a(paramCmd0x346CSBody);
       localReqBody.msg_apply_upload_req_v2.set((MessageMicro)localObject);
-      paramFileTransferObserver = new FileTransferHandler.PreviewBusiData(this, paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_a_of_type_ArrayOfByte, null, paramCmd0x346CSBody.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileCSCProtocalApplyUploadReqV2.jdField_b_of_type_ArrayOfByte, paramFileTransferObserver);
+      paramFileTransferObserver = new FileTransferHandler.PreviewBusiData(this, paramCmd0x346CSBody.a.e, null, paramCmd0x346CSBody.a.f, paramFileTransferObserver);
       paramCmd0x346CSBody = "OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V2-1600";
     }
     if (paramFileManagerEntity.tmpSessionType > 0L)
@@ -4268,7 +4213,7 @@ public class FileTransferHandler
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramString1.toString());
     }
     paramString1 = new cmd0x345.ReqBody.SubCmd0x3ReqBody();
-    paramString1.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    paramString1.uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     paramString1.str_file_id.set(paramString2);
     paramString1.uint64_disscus_uin.set(paramLong2);
     paramString1.uint32_costom_id.set(0);
@@ -4302,10 +4247,10 @@ public class FileTransferHandler
   public void a(long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2, String paramString4, long paramLong3, long paramLong4, FileTransferObserver paramFileTransferObserver)
   {
     cmd0x345.ReqBody.SubCmd0x2ReqBody localSubCmd0x2ReqBody = new cmd0x345.ReqBody.SubCmd0x2ReqBody();
-    int i = (int)Long.parseLong(paramString1);
-    localSubCmd0x2ReqBody.uint32_disscus_uin.set(i);
-    i = (int)Long.parseLong(paramString2);
-    localSubCmd0x2ReqBody.uint32_sender_uin.set(i);
+    int m = (int)Long.parseLong(paramString1);
+    localSubCmd0x2ReqBody.uint32_disscus_uin.set(m);
+    m = (int)Long.parseLong(paramString2);
+    localSubCmd0x2ReqBody.uint32_sender_uin.set(m);
     localSubCmd0x2ReqBody.str_file_name.set(paramString3);
     localSubCmd0x2ReqBody.uint64_file_size.set(paramLong2);
     localSubCmd0x2ReqBody.str_file_id.set(paramString4);
@@ -4313,34 +4258,34 @@ public class FileTransferHandler
     localSubCmd0x2ReqBody.str_batch_id.set(paramString1);
     paramString1 = UUID.randomUUID().toString().replaceAll("-", "");
     localSubCmd0x2ReqBody.str_batch_item_id.set(paramString1);
-    localSubCmd0x2ReqBody.uint64_time.set(MessageCache.a());
+    localSubCmd0x2ReqBody.uint64_time.set(MessageCache.c());
     localSubCmd0x2ReqBody.uint32_busid.set(106);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong1);
+    paramString1 = this.a.getFileManagerDataCenter().a(paramLong1);
     if (paramString1 != null)
     {
-      int j = 0;
+      int n = 0;
       paramString2 = new hummer_resv_21.ResvAttr();
-      i = j;
-      if (FileManagerUtil.a(paramString1.fileName) == 5)
+      m = n;
+      if (FileManagerUtil.c(paramString1.fileName) == 5)
       {
-        i = j;
+        m = n;
         if (!TextUtils.isEmpty(paramString1.strApkPackageName))
         {
           paramString3 = new hummer_resv_21.FileApkInfo();
           paramString3.str_package_name.set(paramString1.strApkPackageName);
           paramString3.str_version.set("");
           paramString2.file_apk_info.set(paramString3);
-          i = 1;
+          m = 1;
         }
       }
       if (paramString1.nFileType != 0)
       {
-        j = i;
+        n = m;
         if (paramString1.nFileType != 2) {}
       }
       else
       {
-        FileManagerUtil.d(paramString1);
+        FileManagerUtil.n(paramString1);
         if ((paramString1.imgHeight > 0) && (paramString1.imgWidth > 0))
         {
           paramString3 = new hummer_resv_21.FileImgInfo();
@@ -4354,34 +4299,34 @@ public class FileTransferHandler
           paramString3.append(paramString1.imgWidth);
           paramString3.append("]");
           QLog.i("FileTransferHandler<FileAssistant>", 1, paramString3.toString());
-          j = 1;
+          n = 1;
         }
         else
         {
-          j = i;
-          if (!FileManagerUtil.a(paramString1)) {
+          n = m;
+          if (!FileManagerUtil.b(paramString1)) {
             if (paramString1.nFileType != 0)
             {
-              j = i;
+              n = m;
               if (paramString1.nFileType != 2) {}
             }
             else
             {
               new Handler(Looper.getMainLooper()).postDelayed(new FileTransferHandler.12(this, paramString1), 1000L);
-              j = i;
+              n = m;
             }
           }
         }
       }
-      if (j != 0) {
+      if (n != 0) {
         localSubCmd0x2ReqBody.bytes_pb_bytes_reserve.set(ByteStringMicro.copyFrom(paramString2.toByteArray()));
       }
     }
     if ((paramLong4 == 0L) && (QLog.isDevelopLevel())) {
       throw new NullPointerException();
     }
-    i = MessageUtils.a(paramLong4);
-    localSubCmd0x2ReqBody.uint32_random.set(i);
+    m = MessageUtils.a(paramLong4);
+    localSubCmd0x2ReqBody.uint32_random.set(m);
     paramString1 = new cmd0x345.ReqBody();
     paramString1.msg_subcmd_0x2_req_body.set(localSubCmd0x2ReqBody);
     paramString1.uint32_sub_cmd.set(2);
@@ -4397,21 +4342,21 @@ public class FileTransferHandler
   public void a(long paramLong, String paramString1, String paramString2, boolean paramBoolean, FileTransferObserver paramFileTransferObserver)
   {
     cmd0x346.ApplyDownloadReq localApplyDownloadReq = new cmd0x346.ApplyDownloadReq();
-    localApplyDownloadReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    localApplyDownloadReq.uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     localApplyDownloadReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
     if (paramBoolean) {
-      i = 1;
+      m = 1;
     } else {
-      i = 2;
+      m = 2;
     }
-    localApplyDownloadReq.uint32_owner_type.set(i);
+    localApplyDownloadReq.uint32_owner_type.set(m);
     paramString1 = new cmd0x346.ReqBody();
     paramString1.msg_apply_download_req.set(localApplyDownloadReq);
     paramString1.uint32_cmd.set(1200);
     Object localObject = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    ((PBUInt32Field)localObject).set(i);
+    int m = e;
+    e = m + 1;
+    ((PBUInt32Field)localObject).set(m);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
     localObject = new cmd0x346.ExtensionReq();
@@ -4440,11 +4385,11 @@ public class FileTransferHandler
   
   public void a(long paramLong, byte[] paramArrayOfByte, String paramString)
   {
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong);
+    FileManagerEntity localFileManagerEntity = this.a.getFileManagerDataCenter().a(paramLong);
     localFileManagerEntity.strFileMd5 = HexUtil.bytes2HexStr(paramArrayOfByte);
     paramArrayOfByte = new SubMsgType0x7.MsgBody();
     paramArrayOfByte.uint32_sub_cmd.set(1);
-    paramLong = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
+    paramLong = this.a.getLongAccountUin();
     ProtocolHelper.fillMsgHeader(paramArrayOfByte.msg_header, paramLong, paramLong, 0);
     Object localObject = new SubMsgType0x7.MsgBody.FTNNotify();
     ((SubMsgType0x7.MsgBody.FTNNotify)localObject).uint64_sessionid.set(localFileManagerEntity.nSessionId);
@@ -4454,24 +4399,24 @@ public class FileTransferHandler
     ((SubMsgType0x7.MsgBody.FTNNotify)localObject).bytes_file_md5.set(ByteStringMicro.copyFrom(paramString));
     ((SubMsgType0x7.MsgBody.FTNNotify)localObject).uint64_file_len.set(localFileManagerEntity.fileSize);
     ((SubMsgType0x7.MsgBody.FTNNotify)localObject).bytes_originfile_md5.set(ByteStringMicro.copyFrom(paramString));
-    int i = localFileManagerEntity.nFileType;
-    if (i != 0)
+    int m = localFileManagerEntity.nFileType;
+    if (m != 0)
     {
-      if (i != 2) {
-        i = 0;
+      if (m != 2) {
+        m = 0;
       } else {
-        i = 2;
+        m = 2;
       }
     }
     else {
-      i = 1;
+      m = 1;
     }
-    ((SubMsgType0x7.MsgBody.FTNNotify)localObject).uint32_originfiletype.set(i);
+    ((SubMsgType0x7.MsgBody.FTNNotify)localObject).uint32_originfiletype.set(m);
     ((SubMsgType0x7.MsgBody.FTNNotify)localObject).setHasFlag(true);
     paramArrayOfByte.rpt_msg_subcmd_0x1_ftn_notify.add((MessageMicro)localObject);
     paramArrayOfByte.setHasFlag(true);
-    i = paramArrayOfByte.msg_header.uint32_dst_ter_type.get();
-    paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    m = paramArrayOfByte.msg_header.uint32_dst_ter_type.get();
+    paramString = this.a.getCurrentAccountUin();
     localObject = paramArrayOfByte.toByteArray();
     if (QLog.isColorLevel())
     {
@@ -4480,7 +4425,7 @@ public class FileTransferHandler
       localStringBuilder.append(localFileManagerEntity.nSessionId);
       QLog.d("FileTransferHandler<FileAssistant>", 2, localStringBuilder.toString());
     }
-    paramString = a(paramString, 7, (byte[])localObject, localFileManagerEntity.nSessionId, i);
+    paramString = a(paramString, 7, (byte[])localObject, localFileManagerEntity.nSessionId, m);
     DataLineHandler.a(paramArrayOfByte, paramString);
     a(false, 1004, localFileManagerEntity.nSessionId, paramString);
   }
@@ -4491,7 +4436,7 @@ public class FileTransferHandler
     String str1 = null;
     TempSessionInfo localTempSessionInfo;
     if (bool) {
-      localTempSessionInfo = TempSessionDecoder.a(paramMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localTempSessionInfo = TempSessionDecoder.a(paramMsg, this.a);
     } else {
       localTempSessionInfo = null;
     }
@@ -4507,11 +4452,11 @@ public class FileTransferHandler
       return;
     }
     String str2 = FileManagerUtil.a(paramNotOnlineFile.bytes_file_name.get().toStringUtf8());
-    int i = paramNotOnlineFile.uint32_file_type.get();
+    int m = paramNotOnlineFile.uint32_file_type.get();
     long l5 = paramNotOnlineFile.uint64_file_size.get();
-    int j = paramNotOnlineFile.uint32_subcmd.get();
+    int n = paramNotOnlineFile.uint32_subcmd.get();
     String str3 = FileHttpUtils.a(paramNotOnlineFile.bytes_file_md5.get().toByteArray());
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject1 = this.a.getCurrentAccountUin();
     if (paramNotOnlineFile.bytes_file_uuid.has())
     {
       str4 = paramNotOnlineFile.bytes_file_uuid.get().toStringUtf8();
@@ -4529,9 +4474,9 @@ public class FileTransferHandler
         ((StringBuilder)localObject2).append("] uuid[");
         ((StringBuilder)localObject2).append(str4);
         ((StringBuilder)localObject2).append("] fileType[");
-        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(m);
         ((StringBuilder)localObject2).append("] subCmd[");
-        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(n);
         ((StringBuilder)localObject2).append("] strMd5[");
         ((StringBuilder)localObject2).append(str3);
         ((StringBuilder)localObject2).append("]");
@@ -4539,9 +4484,9 @@ public class FileTransferHandler
       }
     }
     long l2 = l1;
-    if (i == 1)
+    if (m == 1)
     {
-      a(paramList, paramString, paramBoolean1, paramBoolean2, paramLong, paramInt, paramResvAttr, l3, l4, s, str2, i, l5, String.valueOf(l1), (String)localObject1);
+      a(paramList, paramString, paramBoolean1, paramBoolean2, paramLong, paramInt, paramResvAttr, l3, l4, s, str2, m, l5, String.valueOf(l1), (String)localObject1);
       return;
     }
     if (!paramNotOnlineFile.bytes_file_uuid.has())
@@ -4568,22 +4513,22 @@ public class FileTransferHandler
       a(paramResvAttr);
     }
     localObject1 = this;
-    if (a(paramMessageHandler, paramBoolean2, str2, i, j, (String)localObject2, str4)) {
+    if (a(paramMessageHandler, paramBoolean2, str2, m, n, (String)localObject2, str4)) {
       return;
     }
-    j = ((FileTransferHandler)localObject1).a(l2, paramNotOnlineFile, 0);
-    a(paramString, l3, l4, s, j);
+    n = ((FileTransferHandler)localObject1).a(l2, paramNotOnlineFile, 0);
+    a(paramString, l3, l4, s, n);
     if (a(paramList, paramString, paramBoolean1, paramBoolean2, l3, l4, l2, s)) {
       return;
     }
-    if (((FileTransferHandler)localObject1).a(str4)) {
+    if (((FileTransferHandler)localObject1).c(str4)) {
       return;
     }
     if (l5 == 0L)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("<---decodeC2CMsgPkg_MsgType0x211:fileType[");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(m);
       ((StringBuilder)localObject1).append("], UUID[");
       ((StringBuilder)localObject1).append(str4);
       ((StringBuilder)localObject1).append("], filename[");
@@ -4612,10 +4557,10 @@ public class FileTransferHandler
     if ((localObject1 != null) && (((hummer_resv_21.ResvAttr)localObject1).file_apk_info.has())) {
       localObject1 = (hummer_resv_21.FileApkInfo)((hummer_resv_21.ResvAttr)localObject1).file_apk_info.get();
     }
-    a(paramMessageHandler, paramList, paramString, String.valueOf(l2), l4, s, paramBoolean1, paramBoolean2, i, str4, str1, str2, l5, j, paramLong, l3, str3, localTempSessionInfo, paramInt, paramResvAttr, paramNotOnlineFile.bytes_pb_reserve.get().toByteArray(), paramNotOnlineFile.bytes_note.get().toStringUtf8());
+    a(paramMessageHandler, paramList, paramString, String.valueOf(l2), l4, s, paramBoolean1, paramBoolean2, m, str4, str1, str2, l5, n, paramLong, l3, str3, localTempSessionInfo, paramInt, paramResvAttr, paramNotOnlineFile.bytes_pb_reserve.get().toByteArray(), paramNotOnlineFile.bytes_note.get().toStringUtf8());
     a(paramList, paramResvAttr, l2);
-    if (((localTempSessionInfo != null) && (localTempSessionInfo.jdField_a_of_type_Int == 1024)) || (BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(l2)))) {
-      QidianUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList, paramNotOnlineFile, paramMsg, localTempSessionInfo);
+    if (((localTempSessionInfo != null) && (localTempSessionInfo.a == 1024)) || (BmqqSegmentUtil.a(BaseApplicationImpl.getContext(), String.valueOf(l2)))) {
+      QidianUtils.a(this.a, paramList, paramNotOnlineFile, paramMsg, localTempSessionInfo);
     }
   }
   
@@ -4623,7 +4568,7 @@ public class FileTransferHandler
   {
     if (paramFileTransferObserver != null)
     {
-      Message localMessage = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      Message localMessage = i.obtainMessage();
       localMessage.what = paramInt;
       localMessage.obj = new Object[] { paramFileTransferObserver, Boolean.valueOf(paramBoolean), paramObject };
       localMessage.sendToTarget();
@@ -4647,7 +4592,7 @@ public class FileTransferHandler
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("ForwardOfflineFile : PeerUin[");
-      ((StringBuilder)localObject1).append(FileManagerUtil.d(paramFileManagerEntity.peerUin));
+      ((StringBuilder)localObject1).append(FileManagerUtil.k(paramFileManagerEntity.peerUin));
       ((StringBuilder)localObject1).append("], FileUUID[");
       ((StringBuilder)localObject1).append(paramFileManagerEntity.Uuid);
       ((StringBuilder)localObject1).append("]");
@@ -4656,7 +4601,7 @@ public class FileTransferHandler
     if ((paramFileManagerEntity != null) && (!TextUtils.isEmpty(paramFileManagerEntity.Uuid)))
     {
       cmd0x346.ApplyForwardFileReq localApplyForwardFileReq = new cmd0x346.ApplyForwardFileReq();
-      localApplyForwardFileReq.uint64_sender_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+      localApplyForwardFileReq.uint64_sender_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
       String str = paramFileManagerEntity.peerUin.replace("+", "");
       localApplyForwardFileReq.uint64_recver_uin.set(Long.parseLong(str));
       localApplyForwardFileReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramFileManagerEntity.Uuid.getBytes()));
@@ -4664,9 +4609,9 @@ public class FileTransferHandler
       ((cmd0x346.ReqBody)localObject1).msg_apply_forward_file_req.set(localApplyForwardFileReq);
       ((cmd0x346.ReqBody)localObject1).uint32_cmd.set(700);
       Object localObject2 = ((cmd0x346.ReqBody)localObject1).uint32_seq;
-      int i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
-      ((PBUInt32Field)localObject2).set(i);
+      int m = e;
+      e = m + 1;
+      ((PBUInt32Field)localObject2).set(m);
       ((cmd0x346.ReqBody)localObject1).uint32_business_id.set(3);
       ((cmd0x346.ReqBody)localObject1).uint32_client_type.set(104);
       if (paramFileManagerEntity.tmpSessionType > 0L)
@@ -4715,7 +4660,7 @@ public class FileTransferHandler
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("entity info error:");
-    ((StringBuilder)localObject1).append(FileManagerUtil.a(paramFileManagerEntity));
+    ((StringBuilder)localObject1).append(FileManagerUtil.c(paramFileManagerEntity));
     QLog.e("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject1).toString());
   }
   
@@ -4769,15 +4714,15 @@ public class FileTransferHandler
       QLog.i("FileTransferHandler<FileAssistant>", 2, "revertC2CFile ");
     }
     cmd0x346.RecallFileReq localRecallFileReq = new cmd0x346.RecallFileReq();
-    localRecallFileReq.uint64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    localRecallFileReq.uint64_uin.set(this.a.getLongAccountUin());
     localRecallFileReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramFileManagerEntity.Uuid.getBytes()));
     cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
     localReqBody.msg_recall_file_req.set(localRecallFileReq);
     localReqBody.uint32_cmd.set(400);
     PBUInt32Field localPBUInt32Field = localReqBody.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    localPBUInt32Field.set(i);
+    int m = e;
+    e = m + 1;
+    localPBUInt32Field.set(m);
     localReqBody.uint32_business_id.set(3);
     localReqBody.uint32_client_type.set(104);
     if (a())
@@ -4813,9 +4758,9 @@ public class FileTransferHandler
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setUploadSuccState : selfUin[");
-      ((StringBuilder)localObject).append(FileManagerUtil.d(paramString1));
+      ((StringBuilder)localObject).append(FileManagerUtil.k(paramString1));
       ((StringBuilder)localObject).append("], toUin[");
-      ((StringBuilder)localObject).append(FileManagerUtil.d(paramString2));
+      ((StringBuilder)localObject).append(FileManagerUtil.k(paramString2));
       ((StringBuilder)localObject).append("], filePath[");
       ((StringBuilder)localObject).append(paramString3);
       ((StringBuilder)localObject).append("]");
@@ -4847,9 +4792,9 @@ public class FileTransferHandler
     paramString1.msg_upload_succ_req.set((MessageMicro)localObject);
     paramString1.uint32_cmd.set(800);
     paramString2 = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    paramString2.set(i);
+    int m = e;
+    e = m + 1;
+    paramString2.set(m);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
     if (paramFileManagerEntity.tmpSessionType > 0L)
@@ -4882,14 +4827,14 @@ public class FileTransferHandler
   public void a(OfflineFileUploadPara paramOfflineFileUploadPara, FileTransferObserver paramFileTransferObserver, FileManagerEntity paramFileManagerEntity)
   {
     Cmd0x346CSBody localCmd0x346CSBody = a(paramOfflineFileUploadPara);
-    paramFileManagerEntity.strFileSha3 = FileHttpUtils.a(paramOfflineFileUploadPara.jdField_f_of_type_ArrayOfByte);
-    a(1L, paramOfflineFileUploadPara.jdField_a_of_type_Int, paramOfflineFileUploadPara.jdField_a_of_type_Boolean, localCmd0x346CSBody, paramFileTransferObserver, paramFileManagerEntity);
+    paramFileManagerEntity.strFileSha3 = FileHttpUtils.a(paramOfflineFileUploadPara.j);
+    a(1L, paramOfflineFileUploadPara.c, paramOfflineFileUploadPara.d, localCmd0x346CSBody, paramFileTransferObserver, paramFileManagerEntity);
   }
   
   public void a(ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     paramProtoReq.callback = new FileTransferHandler.2(this);
-    ((IProtoReqManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IProtoReqManager.class, "")).sendProtoReq(paramProtoReq);
+    ((IProtoReqManager)this.a.getRuntimeService(IProtoReqManager.class, "")).sendProtoReq(paramProtoReq);
   }
   
   public void a(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -4953,8 +4898,8 @@ public class FileTransferHandler
               QLog.i("FileTransferHandler<FileAssistant>", 1, "handleDownloadResp: bUseMediaPlatform false uint32_flag_use_media_platform not set");
               bool1 = false;
             }
-            DownloadRespInfo.a(localDownloadRespInfo, (cmd0x346.ApplyDownloadRsp)((cmd0x346.RspBody)localObject1).msg_apply_download_rsp.get(), bool1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-            l = localDownloadRespInfo.jdField_a_of_type_Long;
+            DownloadRespInfo.a(localDownloadRespInfo, (cmd0x346.ApplyDownloadRsp)((cmd0x346.RspBody)localObject1).msg_apply_download_rsp.get(), bool1, this.a.getAccount());
+            l = localDownloadRespInfo.a;
             bool2 = bool1;
             bool1 = true;
           }
@@ -4965,23 +4910,23 @@ public class FileTransferHandler
         }
       }
     }
-    int i;
-    if ((l == 0L) && (localDownloadRespInfo.jdField_c_of_type_JavaLangString == null) && (localDownloadRespInfo.jdField_b_of_type_JavaLangString == null)) {
-      i = 1;
+    int m;
+    if ((l == 0L) && (localDownloadRespInfo.f == null) && (localDownloadRespInfo.d == null)) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j;
+    int n;
     if ((l != -91245L) && (l != -7010L)) {
-      j = 0;
+      n = 0;
     } else {
-      j = 1;
+      n = 1;
     }
     FileTransferHandler.PreviewBusiData localPreviewBusiData = (FileTransferHandler.PreviewBusiData)paramProtoReq.busiData;
-    int k = localPreviewBusiData.b();
-    if (((j != 0) || (i != 0)) && (k < 3))
+    int i1 = localPreviewBusiData.g();
+    if (((n != 0) || (m != 0)) && (i1 < 3))
     {
-      localPreviewBusiData.a();
+      localPreviewBusiData.h();
       a(paramProtoReq.ssoCmd, paramProtoReq.reqBody, localPreviewBusiData);
       return;
     }
@@ -4993,54 +4938,54 @@ public class FileTransferHandler
       ((StringBuilder)localObject2).append(", retCode=");
       ((StringBuilder)localObject2).append(l);
       ((StringBuilder)localObject2).append(", retMsg=");
-      ((StringBuilder)localObject2).append(localDownloadRespInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(localDownloadRespInfo.b);
       ((StringBuilder)localObject2).append(", key=");
-      if (localDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro != null) {
-        paramProtoReq = localDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toStringUtf8();
+      if (localDownloadRespInfo.c != null) {
+        paramProtoReq = localDownloadRespInfo.c.toStringUtf8();
       } else {
         paramProtoReq = "";
       }
       ((StringBuilder)localObject2).append(paramProtoReq);
       ((StringBuilder)localObject2).append(", strIP=");
-      ((StringBuilder)localObject2).append(localDownloadRespInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(localDownloadRespInfo.d);
       ((StringBuilder)localObject2).append(", port=");
-      ((StringBuilder)localObject2).append(localDownloadRespInfo.jdField_a_of_type_Short);
+      ((StringBuilder)localObject2).append(localDownloadRespInfo.e);
       ((StringBuilder)localObject2).append(", strUrl=");
-      ((StringBuilder)localObject2).append(localDownloadRespInfo.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(localDownloadRespInfo.f);
       ((StringBuilder)localObject2).append(", strHttpsDomain=");
-      ((StringBuilder)localObject2).append(localDownloadRespInfo.h);
+      ((StringBuilder)localObject2).append(localDownloadRespInfo.l);
       ((StringBuilder)localObject2).append(", httpsPort=");
-      ((StringBuilder)localObject2).append(localDownloadRespInfo.jdField_b_of_type_Short);
+      ((StringBuilder)localObject2).append(localDownloadRespInfo.n);
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
     }
     paramProtoReq = new Bundle();
-    if (localDownloadRespInfo.h != null) {
-      paramProtoReq.putString("strHttpsDomain", localDownloadRespInfo.h);
+    if (localDownloadRespInfo.l != null) {
+      paramProtoReq.putString("strHttpsDomain", localDownloadRespInfo.l);
     }
-    if (localDownloadRespInfo.i != null) {
-      paramProtoReq.putString("IPv6Dns", localDownloadRespInfo.i);
+    if (localDownloadRespInfo.m != null) {
+      paramProtoReq.putString("IPv6Dns", localDownloadRespInfo.m);
     }
-    paramProtoReq.putShort("httpsPort", localDownloadRespInfo.jdField_b_of_type_Short);
-    if ((localDownloadRespInfo.jdField_b_of_type_JavaUtilList != null) && (localDownloadRespInfo.jdField_b_of_type_JavaUtilList.size() > 0))
+    paramProtoReq.putShort("httpsPort", localDownloadRespInfo.n);
+    if ((localDownloadRespInfo.o != null) && (localDownloadRespInfo.o.size() > 0))
     {
       localObject2 = new ArrayList();
-      ((ArrayList)localObject2).addAll(localDownloadRespInfo.jdField_b_of_type_JavaUtilList);
+      ((ArrayList)localObject2).addAll(localDownloadRespInfo.o);
       paramProtoReq.putStringArrayList("ipv6list", (ArrayList)localObject2);
     }
-    a(localPreviewBusiData.a(), 5006, bool1, new Object[] { Long.valueOf(l), localDownloadRespInfo.jdField_a_of_type_JavaLangString, localDownloadRespInfo.jdField_d_of_type_JavaLangString, localDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro, Boolean.valueOf(bool2), localDownloadRespInfo.jdField_b_of_type_JavaLangString, Short.valueOf(localDownloadRespInfo.jdField_a_of_type_Short), localDownloadRespInfo.jdField_c_of_type_JavaLangString, localDownloadRespInfo.jdField_a_of_type_JavaUtilList, Integer.valueOf(paramProtoResp.resp.getAppSeq()), localDownloadRespInfo.jdField_e_of_type_JavaLangString, localDownloadRespInfo.jdField_f_of_type_JavaLangString, localDownloadRespInfo.g, Long.valueOf(localPreviewBusiData.a()), paramProtoReq });
+    a(localPreviewBusiData.e(), 5006, bool1, new Object[] { Long.valueOf(l), localDownloadRespInfo.b, localDownloadRespInfo.g, localDownloadRespInfo.c, Boolean.valueOf(bool2), localDownloadRespInfo.d, Short.valueOf(localDownloadRespInfo.e), localDownloadRespInfo.f, localDownloadRespInfo.i, Integer.valueOf(paramProtoResp.resp.getAppSeq()), localDownloadRespInfo.h, localDownloadRespInfo.j, localDownloadRespInfo.k, Long.valueOf(localPreviewBusiData.c()), paramProtoReq });
   }
   
   public final void a(ToServiceMsg arg1, int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (???.extraData.containsKey(jdField_a_of_type_JavaLangString))
+    if (???.extraData.containsKey(d))
     {
-      long l = ???.extraData.getLong(jdField_a_of_type_JavaLangString);
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      long l = ???.extraData.getLong(d);
+      synchronized (this.g)
       {
-        FileTransferObserver localFileTransferObserver = (FileTransferObserver)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(l));
+        FileTransferObserver localFileTransferObserver = (FileTransferObserver)this.g.remove(Long.valueOf(l));
         if (localFileTransferObserver != null)
         {
-          ??? = jdField_a_of_type_AndroidOsHandler.obtainMessage();
+          ??? = i.obtainMessage();
           ???.what = paramInt;
           ???.obj = new Object[] { localFileTransferObserver, Boolean.valueOf(paramBoolean), paramObject };
           ???.sendToTarget();
@@ -5078,7 +5023,7 @@ public class FileTransferHandler
     }
     if (paramFromServiceMsg.isSuccess())
     {
-      float f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+      float f1 = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -5087,14 +5032,14 @@ public class FileTransferHandler
         localStringBuilder.append(" app seq:");
         localStringBuilder.append(paramFromServiceMsg.getAppSeq());
         localStringBuilder.append(" during ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaTextDecimalFormat.format(f));
+        localStringBuilder.append(this.h.format(f1));
         localStringBuilder.append("sec.");
         QLog.d("FileTransferHandler<FileAssistant>", 2, localStringBuilder.toString());
       }
     }
     if (paramToServiceMsg.getServiceCmd().equals("TransService.ReqOffFilePack"))
     {
-      a(paramToServiceMsg, paramFromServiceMsg, (MessageFactoryReceiver.OffLineFileInfo)a(paramToServiceMsg, paramFromServiceMsg));
+      a(paramToServiceMsg, paramFromServiceMsg, (MessageFactoryReceiver.OffLineFileInfo)c(paramToServiceMsg, paramFromServiceMsg));
       return;
     }
     paramFromServiceMsg = new StringBuilder();
@@ -5135,16 +5080,16 @@ public class FileTransferHandler
     }
     boolean bool = true;
     label150:
-    int i;
+    int m;
     if (l1 == -100001L) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-    if ((i != 0) && (j < 3))
+    int n = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+    if ((m != 0) && (n < 3))
     {
-      paramToServiceMsg.extraData.putInt("retryIndex", j + 1);
+      paramToServiceMsg.extraData.putInt("retryIndex", n + 1);
       return;
     }
     l2 = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 0L);
@@ -5155,15 +5100,15 @@ public class FileTransferHandler
     }
     if ((bool) && (paramLong > 0L))
     {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramLong);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(paramLong);
+      FileManagerUtil.a(this.a, paramLong);
+      localObject = this.a.getFileManagerDataCenter().b(paramLong);
       if (localObject != null)
       {
-        l2 = FileManagerUtil.b(((FileManagerEntity)localObject).fileName);
+        l2 = FileManagerUtil.v(((FileManagerEntity)localObject).fileName);
         if (((FileManagerEntity)localObject).fileSize <= l2)
         {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageProxy(((FileManagerEntity)localObject).peerType).a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).uniseq);
-          ((AIOMessageSpreadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a((MessageRecord)localObject);
+          localObject = this.a.getMessageProxy(((FileManagerEntity)localObject).peerType).b(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).uniseq);
+          ((AIOMessageSpreadManager)this.a.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a((MessageRecord)localObject);
         }
         else if (QLog.isColorLevel())
         {
@@ -5176,14 +5121,14 @@ public class FileTransferHandler
     }
     l2 = paramToServiceMsg.extraData.getLong("uniseq");
     a(paramToServiceMsg, 5014, bool, new Object[] { Boolean.valueOf(bool), Long.valueOf(l1), Integer.valueOf(paramFromServiceMsg.getAppSeq()), Long.valueOf(paramLong), Long.valueOf(l2) });
-    ForwardOrderManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l2);
+    ForwardOrderManager.a().a(this.a, l2);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (paramObject == null)
     {
-      c(paramToServiceMsg, paramFromServiceMsg);
+      d(paramToServiceMsg, paramFromServiceMsg);
       return;
     }
     paramObject = (MessageFactoryReceiver.OffLineFileInfo)paramObject;
@@ -5191,17 +5136,17 @@ public class FileTransferHandler
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceive, MessageConstants.CMD_TRANSSERVICE_REQOFFFILEPACK: ");
-      localStringBuilder.append(paramObject.b);
+      localStringBuilder.append(paramObject.k);
       QLog.d("FileTransferHandler<FileAssistant>", 2, localStringBuilder.toString());
     }
-    int i = paramObject.b;
-    if (i != 1)
+    int m = paramObject.k;
+    if (m != 1)
     {
-      if (i != 2)
+      if (m != 2)
       {
-        if (i != 3)
+        if (m != 3)
         {
-          if (i != 6) {
+          if (m != 6) {
             return;
           }
           b(paramToServiceMsg, paramFromServiceMsg, paramObject);
@@ -5233,7 +5178,7 @@ public class FileTransferHandler
     ((StringBuilder)localObject).append(" progress =");
     ((StringBuilder)localObject).append(paramInt2);
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString, paramInt1, paramInt3, paramInt2);
+    this.a.getOnlineFileSessionCenter().a(paramString, paramInt1, paramInt3, paramInt2);
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -5255,20 +5200,20 @@ public class FileTransferHandler
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     if (1 == paramInt2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramInt1);
+      this.a.getOnlineFileSessionCenter().b(paramString1, paramInt1);
       return;
     }
     if (2 == paramInt2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramInt1);
+      this.a.getOnlineFileSessionCenter().b(paramString1, paramInt1);
       return;
     }
     if (3 == paramInt2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().c(paramString1, paramInt1);
+      this.a.getOnlineFileSessionCenter().d(paramString1, paramInt1);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramInt1);
+    this.a.getOnlineFileSessionCenter().b(paramString1, paramInt1);
   }
   
   public void a(String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
@@ -5284,7 +5229,7 @@ public class FileTransferHandler
     ((StringBuilder)localObject).append(paramLong1);
     ((StringBuilder)localObject).append("] upload competed:");
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString1, paramLong1, paramInt, paramString2, paramLong2);
+    this.a.getOnlineFileSessionCenter().a(paramString1, paramLong1, paramInt, paramString2, paramLong2);
   }
   
   public void a(String paramString, long paramLong, boolean paramBoolean)
@@ -5301,7 +5246,7 @@ public class FileTransferHandler
     ((StringBuilder)localObject).append("]  handle recv onlinefile resp. sucess =");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().a(paramString, paramLong, paramBoolean);
+    this.a.getOnlineFileSessionCenter().a(paramString, paramLong, paramBoolean);
   }
   
   public void a(String paramString1, String paramString2)
@@ -5315,15 +5260,15 @@ public class FileTransferHandler
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new cmd0x346.ApplyDownloadAbsReq();
-    ((cmd0x346.ApplyDownloadAbsReq)localObject).uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((cmd0x346.ApplyDownloadAbsReq)localObject).uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     ((cmd0x346.ApplyDownloadAbsReq)localObject).bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
     paramString1 = new cmd0x346.ReqBody();
     paramString1.msg_apply_download_abs_req.set((MessageMicro)localObject);
     paramString1.uint32_cmd.set(1100);
     PBUInt32Field localPBUInt32Field = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    localPBUInt32Field.set(i);
+    int m = e;
+    e = m + 1;
+    localPBUInt32Field.set(m);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
     if (a())
@@ -5358,15 +5303,15 @@ public class FileTransferHandler
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = new cmd0x346.ApplyDownloadAbsReq();
-    ((cmd0x346.ApplyDownloadAbsReq)localObject).uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((cmd0x346.ApplyDownloadAbsReq)localObject).uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     ((cmd0x346.ApplyDownloadAbsReq)localObject).bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
     paramString1 = new cmd0x346.ReqBody();
     paramString1.msg_apply_download_abs_req.set((MessageMicro)localObject);
     paramString1.uint32_cmd.set(1100);
     PBUInt32Field localPBUInt32Field = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    localPBUInt32Field.set(i);
+    int m = e;
+    e = m + 1;
+    localPBUInt32Field.set(m);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
     if (a())
@@ -5403,8 +5348,8 @@ public class FileTransferHandler
       ((StringBuilder)localObject).append(paramLong2);
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a("TransService.ReqOffFilePack");
-    ((ToServiceMsg)localObject).extraData.putString("selfuin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    Object localObject = b("TransService.ReqOffFilePack");
+    ((ToServiceMsg)localObject).extraData.putString("selfuin", this.a.getCurrentAccountUin());
     ((ToServiceMsg)localObject).extraData.putString("uin", paramString2);
     ((ToServiceMsg)localObject).extraData.putByteArray("filepath", paramA9Message.serverPath.getBytes());
     ((ToServiceMsg)localObject).extraData.putInt("offfile_type", 0);
@@ -5444,12 +5389,12 @@ public class FileTransferHandler
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
     boolean bool = QLog.isColorLevel();
-    int i = 2;
+    int m = 2;
     if (bool)
     {
       paramString4 = new StringBuilder();
       paramString4.append("RemoveOfflineFile : PeerUin[");
-      paramString4.append(FileManagerUtil.d(paramString1));
+      paramString4.append(FileManagerUtil.k(paramString1));
       paramString4.append("], FileUUID[");
       paramString4.append(paramString2);
       paramString4.append("], bSend[");
@@ -5458,25 +5403,25 @@ public class FileTransferHandler
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramString4.toString());
     }
     if (paramBoolean) {
-      i = 1;
+      m = 1;
     }
     paramString4 = new cmd0x346.DeleteFileReq();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    this.a.getCurrentAccountUin();
     try
     {
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      long l1 = Long.parseLong(this.a.getCurrentAccountUin());
       long l2 = Long.parseLong(paramString1);
       paramString4.uint64_uin.set(l1);
       paramString4.uint64_peer_uin.set(l2);
-      paramString4.uint32_delete_type.set(i);
+      paramString4.uint32_delete_type.set(m);
       paramString4.bytes_uuid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
       paramString1 = new cmd0x346.ReqBody();
       paramString1.msg_delete_file_req.set(paramString4);
       paramString1.uint32_cmd.set(900);
       PBUInt32Field localPBUInt32Field = paramString1.uint32_seq;
-      i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
-      localPBUInt32Field.set(i);
+      m = e;
+      e = m + 1;
+      localPBUInt32Field.set(m);
       paramString1.uint32_business_id.set(3);
       paramString1.uint32_client_type.set(104);
       if (a())
@@ -5509,7 +5454,7 @@ public class FileTransferHandler
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setDownloadSuccState : selfUin[");
-      ((StringBuilder)localObject).append(FileManagerUtil.d(paramString1));
+      ((StringBuilder)localObject).append(FileManagerUtil.k(paramString1));
       ((StringBuilder)localObject).append("], filePath[");
       ((StringBuilder)localObject).append(paramString2);
       ((StringBuilder)localObject).append("]");
@@ -5522,9 +5467,9 @@ public class FileTransferHandler
     paramString1.msg_download_succ_req.set((MessageMicro)localObject);
     paramString1.uint32_cmd.set(1000);
     paramString2 = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    paramString2.set(i);
+    int m = e;
+    e = m + 1;
+    paramString2.set(m);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
     if (paramBoolean)
@@ -5551,14 +5496,14 @@ public class FileTransferHandler
   public void a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, FileTransferObserver paramFileTransferObserver)
   {
     cmd0x346.ApplyDownloadReq localApplyDownloadReq = new cmd0x346.ApplyDownloadReq();
-    localApplyDownloadReq.uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    localApplyDownloadReq.uint64_uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
     localApplyDownloadReq.bytes_uuid.set(ByteStringMicro.copyFrom(paramString1.getBytes()));
     if (paramBoolean1) {
-      i = 1;
+      m = 1;
     } else {
-      i = 2;
+      m = 2;
     }
-    localApplyDownloadReq.uint32_owner_type.set(i);
+    localApplyDownloadReq.uint32_owner_type.set(m);
     if (paramBoolean2) {
       localApplyDownloadReq.uint32_need_https_url.set(1);
     }
@@ -5583,9 +5528,9 @@ public class FileTransferHandler
     paramString1.msg_apply_download_req.set(localApplyDownloadReq);
     paramString1.uint32_cmd.set(1200);
     paramString2 = paramString1.uint32_seq;
-    int i = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = i + 1;
-    paramString2.set(i);
+    int m = e;
+    e = m + 1;
+    paramString2.set(m);
     paramString1.uint32_business_id.set(3);
     paramString1.uint32_client_type.set(104);
     paramString2 = new cmd0x346.ExtensionReq();
@@ -5616,119 +5561,20 @@ public class FileTransferHandler
     a(localProtoReq);
   }
   
-  public void a(SubMsgType0x4.WlanRecvNotify paramWlanRecvNotify)
-  {
-    if (!b(paramWlanRecvNotify))
-    {
-      QLog.e("FileTransferHandler<FileAssistant>", 1, "handleWlanNotify param failed");
-      return;
-    }
-    long l2 = paramWlanRecvNotify.uint64_session_id.get();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(l2))
-    {
-      paramWlanRecvNotify = new StringBuilder();
-      paramWlanRecvNotify.append(l2);
-      paramWlanRecvNotify.append(" is exsited, igone!");
-      QLog.i("FileTransferHandler<FileAssistant>", 1, paramWlanRecvNotify.toString());
-      return;
-    }
-    int i = paramWlanRecvNotify.uint32_send_client_type.get();
-    int j = paramWlanRecvNotify.uint32_target_client_type.get();
-    int k = QFileAssistantUtils.a();
-    int m = QFileAssistantUtils.b(i);
-    int n = QFileAssistantUtils.b(j);
-    int i1 = QFileAssistantUtils.b(k);
-    long l1 = l2;
-    if (m == 2) {
-      l1 = l2 | 0x0;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l1) != null)
-    {
-      paramWlanRecvNotify = new StringBuilder();
-      paramWlanRecvNotify.append(l1);
-      paramWlanRecvNotify.append(" is exsited, igone!");
-      QLog.i("FileTransferHandler<FileAssistant>", 1, paramWlanRecvNotify.toString());
-      return;
-    }
-    Object localObject = paramWlanRecvNotify.str_file_name.get();
-    l2 = paramWlanRecvNotify.uint64_file_size.get();
-    int i2 = paramWlanRecvNotify.uint32_time.get();
-    paramWlanRecvNotify = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-    localFileManagerEntity.nSessionId = l1;
-    localFileManagerEntity.uniseq = FileManagerUtil.a().longValue();
-    localFileManagerEntity.peerUin = paramWlanRecvNotify;
-    localFileManagerEntity.fileName = ((String)localObject);
-    localFileManagerEntity.fileSize = l2;
-    localFileManagerEntity.msgTime = i2;
-    localFileManagerEntity.bDelInFM = true;
-    boolean bool = false;
-    localFileManagerEntity.cloudType = 0;
-    localFileManagerEntity.bOnceSuccess = true;
-    if (m == i1) {
-      bool = true;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("sendType:");
-    ((StringBuilder)localObject).append(i);
-    ((StringBuilder)localObject).append(",recvType:");
-    ((StringBuilder)localObject).append(j);
-    ((StringBuilder)localObject).append(",currentType:");
-    ((StringBuilder)localObject).append(k);
-    ((StringBuilder)localObject).append(",parentSendType:");
-    ((StringBuilder)localObject).append(m);
-    ((StringBuilder)localObject).append(",parentCurrentType:");
-    ((StringBuilder)localObject).append(i1);
-    QLog.i("FileTransferHandler<FileAssistant>.NFRV", 1, ((StringBuilder)localObject).toString());
-    if ((i1 != m) && (i1 != n))
-    {
-      localFileManagerEntity.status = 5;
-      localFileManagerEntity.nOpType = 11;
-    }
-    else
-    {
-      localFileManagerEntity.status = 16;
-      localFileManagerEntity.cloudType = 1;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramWlanRecvNotify, (String)localObject, bool, i, localFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().b(l1);
-  }
-  
   protected boolean a()
   {
-    return ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).isMediaPlatformEnabled();
-  }
-  
-  public boolean a(OnlineFileSessionInfo paramOnlineFileSessionInfo)
-  {
-    if (paramOnlineFileSessionInfo != null)
-    {
-      jdField_a_of_type_ArrayOfByte.equals(paramOnlineFileSessionInfo.jdField_a_of_type_ArrayOfByte);
-      if (!paramOnlineFileSessionInfo.jdField_b_of_type_Boolean)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("OLfilesession[");
-        localStringBuilder.append(paramOnlineFileSessionInfo.jdField_b_of_type_Long);
-        localStringBuilder.append("]  is not surpport mulitendpoint");
-        QLog.e("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-        return false;
-      }
-      return true;
-    }
-    return false;
+    return ((IQFileConfigManager)this.a.getRuntimeService(IQFileConfigManager.class, "")).isMediaPlatformEnabled();
   }
   
   public boolean a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo)
   {
     paramFMTransC2CMsgInfo.subCmd = paramInt2;
     if (paramFMTransC2CMsgInfo.fileTransferObserver != null) {
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      synchronized (this.g)
       {
-        paramFMTransC2CMsgInfo.observerSeq = this.jdField_a_of_type_Long;
-        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(this.jdField_a_of_type_Long), paramFMTransC2CMsgInfo.fileTransferObserver);
-        this.jdField_a_of_type_Long += 1L;
+        paramFMTransC2CMsgInfo.observerSeq = this.f;
+        this.g.put(Long.valueOf(this.f), paramFMTransC2CMsgInfo.fileTransferObserver);
+        this.f += 1L;
       }
     }
     if (QLog.isColorLevel())
@@ -5738,31 +5584,31 @@ public class FileTransferHandler
       ((StringBuilder)???).append(paramFMTransC2CMsgInfo.toString());
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)???).toString());
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a(paramString, paramInt1, paramArrayOfByte, paramFMTransC2CMsgInfo);
+    return this.a.getMsgHandler().D().a(paramString, paramInt1, paramArrayOfByte, paramFMTransC2CMsgInfo);
   }
   
   public boolean a(String paramString, long paramLong)
   {
     OnlineFileSessionInfo localOnlineFileSessionInfo = new OnlineFileSessionInfo();
-    localOnlineFileSessionInfo.jdField_a_of_type_ArrayOfByte = ((byte[])jdField_a_of_type_ArrayOfByte.clone());
-    localOnlineFileSessionInfo.jdField_a_of_type_Short = 4;
-    localOnlineFileSessionInfo.jdField_b_of_type_Long = paramLong;
-    byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(localOnlineFileSessionInfo);
+    localOnlineFileSessionInfo.f = ((byte[])c.clone());
+    localOnlineFileSessionInfo.j = 4;
+    localOnlineFileSessionInfo.c = paramLong;
+    byte[] arrayOfByte = this.a.getFileTransferHandler().a(localOnlineFileSessionInfo);
     if (arrayOfByte == null)
     {
       paramString = new StringBuilder();
       paramString.append("OLfilesession[");
-      paramString.append(localOnlineFileSessionInfo.jdField_b_of_type_Long);
+      paramString.append(localOnlineFileSessionInfo.c);
       paramString.append("]. recvOnLineFile failed:");
       QLog.e("FileTransferHandler<FileAssistant>", 1, paramString.toString());
       return false;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a(paramString, paramLong, 133, arrayOfByte);
+    return this.a.getMsgHandler().D().a(paramString, paramLong, 133, arrayOfByte);
   }
   
   public boolean a(String paramString, FileManagerEntity paramFileManagerEntity, FileTransferObserver paramFileTransferObserver)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(paramString, 0, paramFileManagerEntity.uniseq);
+    Object localObject1 = this.a.getMessageFacade().b(paramString, 0, paramFileManagerEntity.uniseq);
     if (localObject1 != null)
     {
       paramFileManagerEntity.msgSeq = ((MessageRecord)localObject1).msgseq;
@@ -5824,7 +5670,7 @@ public class FileTransferHandler
       ((hummer_resv_21.FileAssitInfo)localObject2).uint32_group_count.set(paramFileManagerEntity.dlGroupCount);
       ((hummer_resv_21.FileAssitInfo)localObject2).uint32_group_idx.set(paramFileManagerEntity.dlGourpIndex);
       ((hummer_resv_21.ResvAttr)localObject1).file_assist_info.set((MessageMicro)localObject2);
-      ((hummer_resv_21.ResvAttr)localObject1).device_type.set(QFileAssistantUtils.a());
+      ((hummer_resv_21.ResvAttr)localObject1).device_type.set(QFileAssistantUtils.c());
       localMsgBody.resv_attr.set((MessageMicro)localObject1);
     }
     ThreadManager.executeOnSubThread(new FileTransferHandler.7(this, paramFileManagerEntity, new hummer_resv_21.FileImgInfo(), localMsgBody, paramFileTransferObserver, new Handler(Looper.getMainLooper()), paramString));
@@ -5845,8 +5691,8 @@ public class FileTransferHandler
     localObject = new FMTransC2CMsgInfo();
     ((FMTransC2CMsgInfo)localObject).busiType = 1029;
     ((FMTransC2CMsgInfo)localObject).uuid = paramString3;
-    ((FMTransC2CMsgInfo)localObject).msgSeq = FileManagerUtil.a();
-    ((FMTransC2CMsgInfo)localObject).msgUid = FileManagerUtil.b();
+    ((FMTransC2CMsgInfo)localObject).msgSeq = FileManagerUtil.f();
+    ((FMTransC2CMsgInfo)localObject).msgUid = FileManagerUtil.g();
     return a(paramString1, 529, 4, paramString2, (FMTransC2CMsgInfo)localObject);
   }
   
@@ -5857,9 +5703,9 @@ public class FileTransferHandler
     paramWlanRecvNotify = ((SubMsgType0x4.MsgBody)localObject).toByteArray();
     localObject = new FMTransC2CMsgInfo();
     ((FMTransC2CMsgInfo)localObject).busiType = 1055;
-    ((FMTransC2CMsgInfo)localObject).msgSeq = FileManagerUtil.a();
-    ((FMTransC2CMsgInfo)localObject).msgUid = FileManagerUtil.b();
-    return a(QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 529, 4, paramWlanRecvNotify, (FMTransC2CMsgInfo)localObject);
+    ((FMTransC2CMsgInfo)localObject).msgSeq = FileManagerUtil.f();
+    ((FMTransC2CMsgInfo)localObject).msgUid = FileManagerUtil.g();
+    return a(QFileAssistantUtils.b(this.a), 529, 4, paramWlanRecvNotify, (FMTransC2CMsgInfo)localObject);
   }
   
   public byte[] a(OnlineFileSessionInfo paramOnlineFileSessionInfo)
@@ -5868,9 +5714,9 @@ public class FileTransferHandler
       return null;
     }
     byte[] arrayOfByte = new byte[1024];
-    PkgTools.copyData(arrayOfByte, 0, paramOnlineFileSessionInfo.jdField_a_of_type_ArrayOfByte, 16);
-    PkgTools.dWord2Byte(arrayOfByte, 22, paramOnlineFileSessionInfo.jdField_b_of_type_Long);
-    PkgTools.word2Byte(arrayOfByte, 28, paramOnlineFileSessionInfo.jdField_a_of_type_Short);
+    PkgTools.copyData(arrayOfByte, 0, paramOnlineFileSessionInfo.f, 16);
+    PkgTools.dWord2Byte(arrayOfByte, 22, paramOnlineFileSessionInfo.c);
+    PkgTools.word2Byte(arrayOfByte, 28, paramOnlineFileSessionInfo.j);
     PkgTools.word2Byte(arrayOfByte, 30, (short)1);
     arrayOfByte[32] = 1;
     PkgTools.word2Byte(arrayOfByte, 35, (short)11);
@@ -5879,7 +5725,7 @@ public class FileTransferHandler
     arrayOfByte[40] = 1;
     arrayOfByte[41] = 16;
     PkgTools.word2Byte(arrayOfByte, 42, (short)4);
-    PkgTools.dWord2Byte(arrayOfByte, 44, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAppid());
+    PkgTools.dWord2Byte(arrayOfByte, 44, this.a.getAppid());
     paramOnlineFileSessionInfo = new byte[48];
     PkgTools.copyData(paramOnlineFileSessionInfo, 0, arrayOfByte, 48);
     return paramOnlineFileSessionInfo;
@@ -5889,24 +5735,24 @@ public class FileTransferHandler
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      int i = paramArrayOfByte.length;
+      int m = paramArrayOfByte.length;
       OnlineFileSessionInfo localOnlineFileSessionInfo = new OnlineFileSessionInfo();
-      if (i >= 16)
+      if (m >= 16)
       {
-        PkgTools.getBytesData(paramArrayOfByte, 0, localOnlineFileSessionInfo.jdField_a_of_type_ArrayOfByte, 16);
-        if (i >= 26)
+        PkgTools.getBytesData(paramArrayOfByte, 0, localOnlineFileSessionInfo.f, 16);
+        if (m >= 26)
         {
-          localOnlineFileSessionInfo.jdField_b_of_type_Long = PkgTools.getLongData(paramArrayOfByte, 22);
-          if (i >= 30)
+          localOnlineFileSessionInfo.c = PkgTools.getLongData(paramArrayOfByte, 22);
+          if (m >= 30)
           {
-            localOnlineFileSessionInfo.jdField_a_of_type_Short = PkgTools.getShortData(paramArrayOfByte, 28);
-            if (i >= 32)
+            localOnlineFileSessionInfo.j = PkgTools.getShortData(paramArrayOfByte, 28);
+            if (m >= 32)
             {
-              int j = PkgTools.getShortData(paramArrayOfByte, 30);
-              if (j < 2) {
-                if (i >= 34)
+              int n = PkgTools.getShortData(paramArrayOfByte, 30);
+              if (n < 2) {
+                if (m >= 34)
                 {
-                  localOnlineFileSessionInfo.jdField_b_of_type_Short = PkgTools.getShortData(paramArrayOfByte, 32);
+                  localOnlineFileSessionInfo.k = PkgTools.getShortData(paramArrayOfByte, 32);
                 }
                 else
                 {
@@ -5914,57 +5760,57 @@ public class FileTransferHandler
                   return null;
                 }
               }
-              j = 32 + j + 2;
-              int k = j + 2;
-              if (i >= k)
+              n = 32 + n + 2;
+              int i1 = n + 2;
+              if (m >= i1)
               {
-                j = PkgTools.getShortData(paramArrayOfByte, j);
-                if (j < 4)
+                n = PkgTools.getShortData(paramArrayOfByte, n);
+                if (n < 4)
                 {
-                  localOnlineFileSessionInfo.jdField_b_of_type_Boolean = false;
+                  localOnlineFileSessionInfo.i = false;
                   return localOnlineFileSessionInfo;
                 }
-                byte[] arrayOfByte = new byte[j];
-                PkgTools.getBytesData(paramArrayOfByte, k, arrayOfByte, j);
-                i = 0;
-                while (i < j)
+                byte[] arrayOfByte = new byte[n];
+                PkgTools.getBytesData(paramArrayOfByte, i1, arrayOfByte, n);
+                m = 0;
+                while (m < n)
                 {
-                  k = arrayOfByte[i];
-                  int m = i + 1;
-                  i = m + 2;
-                  if (j > i)
+                  i1 = arrayOfByte[m];
+                  int i2 = m + 1;
+                  m = i2 + 2;
+                  if (n > m)
                   {
-                    m = PkgTools.getShortData(arrayOfByte, m);
-                    if (k == 15)
+                    i2 = PkgTools.getShortData(arrayOfByte, i2);
+                    if (i1 == 15)
                     {
-                      if (m != 1)
+                      if (i2 != 1)
                       {
-                        localOnlineFileSessionInfo.jdField_b_of_type_Boolean = false;
+                        localOnlineFileSessionInfo.i = false;
                       }
-                      else if (j >= i + m)
+                      else if (n >= m + i2)
                       {
-                        paramArrayOfByte = new byte[m];
-                        PkgTools.getBytesData(arrayOfByte, i, paramArrayOfByte, m);
+                        paramArrayOfByte = new byte[i2];
+                        PkgTools.getBytesData(arrayOfByte, m, paramArrayOfByte, i2);
                         boolean bool;
                         if (paramArrayOfByte[0] == 1) {
                           bool = true;
                         } else {
                           bool = false;
                         }
-                        localOnlineFileSessionInfo.jdField_b_of_type_Boolean = bool;
+                        localOnlineFileSessionInfo.i = bool;
                       }
                     }
-                    else if (k == 4)
+                    else if (i1 == 4)
                     {
-                      paramArrayOfByte = new byte[m];
-                      if (j >= i + m)
+                      paramArrayOfByte = new byte[i2];
+                      if (n >= m + i2)
                       {
-                        PkgTools.getBytesData(arrayOfByte, i, paramArrayOfByte, m);
-                        paramArrayOfByte = a(paramArrayOfByte);
+                        PkgTools.getBytesData(arrayOfByte, m, paramArrayOfByte, i2);
+                        paramArrayOfByte = c(paramArrayOfByte);
                         if (paramArrayOfByte != null)
                         {
-                          localOnlineFileSessionInfo.jdField_a_of_type_JavaLangString = paramArrayOfByte.jdField_a_of_type_JavaLangString;
-                          localOnlineFileSessionInfo.jdField_a_of_type_Long = paramArrayOfByte.jdField_a_of_type_Long;
+                          localOnlineFileSessionInfo.a = paramArrayOfByte.a;
+                          localOnlineFileSessionInfo.b = paramArrayOfByte.b;
                         }
                         else
                         {
@@ -5978,7 +5824,7 @@ public class FileTransferHandler
                         return localOnlineFileSessionInfo;
                       }
                     }
-                    i = m + i;
+                    m = i2 + m;
                   }
                   else
                   {
@@ -6006,100 +5852,41 @@ public class FileTransferHandler
     return null;
   }
   
+  public cmd0x346.ApplyUploadReqV3 b(Cmd0x346CSBody paramCmd0x346CSBody)
+  {
+    cmd0x346.ApplyUploadReqV3 localApplyUploadReqV3 = new cmd0x346.ApplyUploadReqV3();
+    paramCmd0x346CSBody = paramCmd0x346CSBody.b;
+    localApplyUploadReqV3.uint64_sender_uin.set(paramCmd0x346CSBody.a);
+    localApplyUploadReqV3.uint64_recver_uin.set(paramCmd0x346CSBody.b);
+    localApplyUploadReqV3.uint64_file_size.set(paramCmd0x346CSBody.c);
+    localApplyUploadReqV3.str_file_name.set(paramCmd0x346CSBody.d);
+    localApplyUploadReqV3.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.e));
+    if (paramCmd0x346CSBody.f != null) {
+      localApplyUploadReqV3.bytes_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.f));
+    }
+    localApplyUploadReqV3.bytes_sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.g));
+    if (paramCmd0x346CSBody.h != null) {
+      localApplyUploadReqV3.bytes_3sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.h));
+    }
+    localApplyUploadReqV3.uint32_contenttype.set(0);
+    localApplyUploadReqV3.str_local_filepath.set(paramCmd0x346CSBody.i);
+    localApplyUploadReqV3.uint32_danger_level.set(paramCmd0x346CSBody.j);
+    localApplyUploadReqV3.uint64_total_space.set(paramCmd0x346CSBody.k);
+    return localApplyUploadReqV3;
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() != null)
-    {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("wifiphoto_smart_reminder", 0);
-      long l1 = ((SharedPreferences)localObject1).getLong("wifiphoto_smart_reminder_last_time", 0L);
-      long l2 = MessageCache.a();
-      if (l2 - l1 > 86400L)
-      {
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject1).putLong("wifiphoto_smart_reminder_last_time", l2);
-        ((SharedPreferences.Editor)localObject1).commit();
-        boolean bool = SystemUtil.a();
-        l1 = SystemUtil.a();
-        l2 = SystemUtil.b();
-        if ((bool) && (l1 != 0L)) {
-          l1 = Math.min(l1, l2) * 1024L;
-        } else {
-          l1 = l2 * 1024L;
-        }
-        l2 = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getPicCount(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-        if ((l1 <= 1073741824L) && (l2 >= 50L))
-        {
-          localObject1 = new JSONObject();
-          try
-          {
-            ((JSONObject)localObject1).put("freeSize", l1);
-            ((JSONObject)localObject1).put("deviceType", 2);
-            ((JSONObject)localObject1).put("subtype", "8");
-            ((JSONObject)localObject1).put("photoCount", l2);
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-          }
-          Object localObject2 = new SubMsgType0x7.MsgBody.GenericSubCmd();
-          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint64_sessionid.set(1L);
-          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_size.set(1);
-          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_index.set(0);
-          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_type.set(5);
-          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).bytes_buf.set(ByteStringMicro.copyFrom(((JSONObject)localObject1).toString().getBytes()));
-          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).setHasFlag(true);
-          localObject1 = new SubMsgType0x7.MsgBody();
-          ((SubMsgType0x7.MsgBody)localObject1).uint32_sub_cmd.set(4);
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_src_app_id.set(1001);
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_src_inst_id.set(AppSetting.a());
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_dst_app_id.set(1);
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_dst_inst_id.set(1);
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint64_dst_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint64_src_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).longValue());
-          ((SubMsgType0x7.MsgBody)localObject1).msg_header.setHasFlag(true);
-          ((SubMsgType0x7.MsgBody)localObject1).msg_subcmd_0x4_generic.set((MessageMicro)localObject2);
-          ((SubMsgType0x7.MsgBody)localObject1).setHasFlag(true);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-          Object localObject3 = ((SubMsgType0x7.MsgBody)localObject1).toByteArray();
-          localObject1 = a("MessageSvc.PbSendMsg");
-          ((ToServiceMsg)localObject1).extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
-          ((ToServiceMsg)localObject1).extraData.putInt("ROUNTING_TYPE", 13);
-          ((ToServiceMsg)localObject1).extraData.putBoolean("ISFROM_DATALINE", true);
-          ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_CMD", 1002);
-          ((ToServiceMsg)localObject1).addAttribute("cookie", Integer.valueOf(1));
-          ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_TRYINDEX", 0);
-          l1 = FileManagerUtil.b();
-          l2 = FileManagerUtil.a();
-          TransMsgContext localTransMsgContext = new TransMsgContext();
-          localTransMsgContext.jdField_a_of_type_Int = 7;
-          localTransMsgContext.jdField_a_of_type_ArrayOfByte = ((byte[])localObject3);
-          localObject2 = MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 13, (String)localObject2, localTransMsgContext, l2, MessageUtils.b(l1));
-          localObject3 = new im_msg_head.InstInfo();
-          ((im_msg_head.InstInfo)localObject3).uint32_apppid.set(1);
-          ((im_msg_head.InstInfo)localObject3).uint32_instid.set(1);
-          ((im_msg_head.InstInfo)localObject3).setHasFlag(true);
-          ((msg_svc.PbSendMsgReq)localObject2).routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add((MessageMicro)localObject3);
-          localObject3 = new im_msg_head.InstInfo();
-          ((im_msg_head.InstInfo)localObject3).uint32_apppid.set(1001);
-          ((im_msg_head.InstInfo)localObject3).uint32_instid.set(AppSetting.a());
-          ((im_msg_head.InstInfo)localObject3).setHasFlag(true);
-          ((msg_svc.PbSendMsgReq)localObject2).routing_head.trans_0x211.inst_ctrl.msg_from_inst = ((im_msg_head.InstInfo)localObject3);
-          ((msg_svc.PbSendMsgReq)localObject2).routing_head.trans_0x211.inst_ctrl.setHasFlag(true);
-          ((ToServiceMsg)localObject1).putWupBuffer(((msg_svc.PbSendMsgReq)localObject2).toByteArray());
-          if (localObject1 != null)
-          {
-            ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendToService((ToServiceMsg)localObject1);
-          }
-        }
-      }
-    }
+    face2face_file.msg localmsg = new face2face_file.msg();
+    localmsg.version.set(1);
+    localmsg.result.set(0);
+    a("SafeCenterSvr.CMD_FACE2FACE_FLAG_REQ", localmsg.toByteArray(), null);
   }
   
   public void b(int paramInt1, int paramInt2, FileTransferObserver paramFileTransferObserver, int paramInt3)
   {
     Object localObject = new cmd0x346.SendListQueryReq();
-    ((cmd0x346.SendListQueryReq)localObject).uint64_uin.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    ((cmd0x346.SendListQueryReq)localObject).uint64_uin.set(this.a.getLongAccountUin());
     ((cmd0x346.SendListQueryReq)localObject).uint32_begin_index.set(paramInt1);
     ((cmd0x346.SendListQueryReq)localObject).uint32_req_count.set(paramInt2);
     ((cmd0x346.SendListQueryReq)localObject).uint32_filter_filetype.set(paramInt3);
@@ -6107,8 +5894,8 @@ public class FileTransferHandler
     localReqBody.msg_send_list_query_req.set((MessageMicro)localObject);
     localReqBody.uint32_cmd.set(200);
     localObject = localReqBody.uint32_seq;
-    paramInt1 = jdField_a_of_type_Int;
-    jdField_a_of_type_Int = paramInt1 + 1;
+    paramInt1 = e;
+    e = paramInt1 + 1;
     ((PBUInt32Field)localObject).set(paramInt1);
     localReqBody.uint32_business_id.set(3);
     localReqBody.uint32_client_type.set(104);
@@ -6153,7 +5940,7 @@ public class FileTransferHandler
     Object localObject;
     if (a(paramProtoResp))
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100001;
+      localFileUploadInfo.a = -100001;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleDownloadSuccResponse: resp is timeout[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -6162,7 +5949,7 @@ public class FileTransferHandler
     }
     else if (paramProtoResp.resp.getResultCode() != 1000)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100002;
+      localFileUploadInfo.a = -100002;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("handleDownloadSuccResponse: resp is failed[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -6179,19 +5966,19 @@ public class FileTransferHandler
         if (!localRspBody.msg_download_succ_rsp.has())
         {
           QLog.i("FileTransferHandler<FileAssistant>", 1, "handleDownloadSuccResponse: rspBody has not hasMsgUploadSuccRsp");
-          localFileUploadInfo.jdField_a_of_type_Int = -100003;
+          localFileUploadInfo.a = -100003;
         }
         else
         {
           localObject = (cmd0x346.DownloadSuccRsp)localRspBody.msg_download_succ_rsp.get();
           if (((cmd0x346.DownloadSuccRsp)localObject).int32_ret_code.has()) {
-            localFileUploadInfo.jdField_a_of_type_Int = ((cmd0x346.DownloadSuccRsp)localObject).int32_ret_code.get();
+            localFileUploadInfo.a = ((cmd0x346.DownloadSuccRsp)localObject).int32_ret_code.get();
           }
           if (((cmd0x346.DownloadSuccRsp)localObject).str_ret_msg.has()) {
-            localFileUploadInfo.jdField_a_of_type_JavaLangString = ((cmd0x346.DownloadSuccRsp)localObject).str_ret_msg.get();
+            localFileUploadInfo.b = ((cmd0x346.DownloadSuccRsp)localObject).str_ret_msg.get();
           }
           if (((cmd0x346.DownloadSuccRsp)localObject).int32_down_stat.has()) {
-            localFileUploadInfo.jdField_c_of_type_Int = ((cmd0x346.DownloadSuccRsp)localObject).int32_down_stat.get();
+            localFileUploadInfo.l = ((cmd0x346.DownloadSuccRsp)localObject).int32_down_stat.get();
           }
           bool = true;
         }
@@ -6199,27 +5986,27 @@ public class FileTransferHandler
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
-        localFileUploadInfo.jdField_a_of_type_Int = -100003;
+        localFileUploadInfo.a = -100003;
       }
     }
     boolean bool = false;
     StatictisInfo localStatictisInfo = new StatictisInfo();
-    localStatictisInfo.jdField_b_of_type_Int = localFileUploadInfo.jdField_a_of_type_Int;
-    localStatictisInfo.jdField_c_of_type_Int = paramProtoResp.freeRunnalbleIndex;
+    localStatictisInfo.b = localFileUploadInfo.a;
+    localStatictisInfo.c = paramProtoResp.freeRunnalbleIndex;
     if (QLog.isColorLevel())
     {
       paramProtoResp = new StringBuilder();
       paramProtoResp.append("handleDownloadSuccResponse: return ");
       paramProtoResp.append(bool);
       paramProtoResp.append(", retCode=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.a);
       paramProtoResp.append(", retMsg=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.b);
       paramProtoResp.append(", retStat");
-      paramProtoResp.append(localFileUploadInfo.jdField_c_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.l);
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramProtoResp.toString());
     }
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5007, bool, new Object[] { localFileUploadInfo, localStatictisInfo });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5007, bool, new Object[] { localFileUploadInfo, localStatictisInfo });
   }
   
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -6253,16 +6040,16 @@ public class FileTransferHandler
     }
     boolean bool = true;
     label150:
-    int i;
+    int m;
     if (l1 == -100001L) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j = paramToServiceMsg.extraData.getInt("retryIndex", 0);
-    if ((i != 0) && (j < 3))
+    int n = paramToServiceMsg.extraData.getInt("retryIndex", 0);
+    if ((m != 0) && (n < 3))
     {
-      paramToServiceMsg.extraData.putInt("retryIndex", j + 1);
+      paramToServiceMsg.extraData.putInt("retryIndex", n + 1);
       return;
     }
     l2 = paramFromServiceMsg.extraData.getLong("ServerReplyCode", 0L);
@@ -6293,7 +6080,7 @@ public class FileTransferHandler
     ((StringBuilder)localObject).append("]  handle query onlinefile upload progress resp. sucess =");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineFileSessionCenter().b(paramString, paramLong, paramBoolean);
+    this.a.getOnlineFileSessionCenter().b(paramString, paramLong, paramBoolean);
   }
   
   public void b(String paramString1, String paramString2)
@@ -6336,6 +6123,105 @@ public class FileTransferHandler
     a("GTalkFileAppSvr.CMD_DISCUSS_FILE", paramString1.toByteArray(), paramString2, 30000, 3, 1);
   }
   
+  public void b(SubMsgType0x4.WlanRecvNotify paramWlanRecvNotify)
+  {
+    if (!c(paramWlanRecvNotify))
+    {
+      QLog.e("FileTransferHandler<FileAssistant>", 1, "handleWlanNotify param failed");
+      return;
+    }
+    long l2 = paramWlanRecvNotify.uint64_session_id.get();
+    if (this.a.getFileManagerDataCenter().f(l2))
+    {
+      paramWlanRecvNotify = new StringBuilder();
+      paramWlanRecvNotify.append(l2);
+      paramWlanRecvNotify.append(" is exsited, igone!");
+      QLog.i("FileTransferHandler<FileAssistant>", 1, paramWlanRecvNotify.toString());
+      return;
+    }
+    int m = paramWlanRecvNotify.uint32_send_client_type.get();
+    int n = paramWlanRecvNotify.uint32_target_client_type.get();
+    int i1 = QFileAssistantUtils.c();
+    int i2 = QFileAssistantUtils.c(m);
+    int i3 = QFileAssistantUtils.c(n);
+    int i4 = QFileAssistantUtils.c(i1);
+    long l1 = l2;
+    if (i2 == 2) {
+      l1 = l2 | 0x0;
+    }
+    if (this.a.getFileManagerDataCenter().a(l1) != null)
+    {
+      paramWlanRecvNotify = new StringBuilder();
+      paramWlanRecvNotify.append(l1);
+      paramWlanRecvNotify.append(" is exsited, igone!");
+      QLog.i("FileTransferHandler<FileAssistant>", 1, paramWlanRecvNotify.toString());
+      return;
+    }
+    Object localObject = paramWlanRecvNotify.str_file_name.get();
+    l2 = paramWlanRecvNotify.uint64_file_size.get();
+    int i5 = paramWlanRecvNotify.uint32_time.get();
+    paramWlanRecvNotify = QFileAssistantUtils.b(this.a);
+    FileManagerEntity localFileManagerEntity = new FileManagerEntity();
+    localFileManagerEntity.nSessionId = l1;
+    localFileManagerEntity.uniseq = FileManagerUtil.a().longValue();
+    localFileManagerEntity.peerUin = paramWlanRecvNotify;
+    localFileManagerEntity.fileName = ((String)localObject);
+    localFileManagerEntity.fileSize = l2;
+    localFileManagerEntity.msgTime = i5;
+    localFileManagerEntity.bDelInFM = true;
+    boolean bool = false;
+    localFileManagerEntity.cloudType = 0;
+    localFileManagerEntity.bOnceSuccess = true;
+    if (i2 == i4) {
+      bool = true;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendType:");
+    ((StringBuilder)localObject).append(m);
+    ((StringBuilder)localObject).append(",recvType:");
+    ((StringBuilder)localObject).append(n);
+    ((StringBuilder)localObject).append(",currentType:");
+    ((StringBuilder)localObject).append(i1);
+    ((StringBuilder)localObject).append(",parentSendType:");
+    ((StringBuilder)localObject).append(i2);
+    ((StringBuilder)localObject).append(",parentCurrentType:");
+    ((StringBuilder)localObject).append(i4);
+    QLog.i("FileTransferHandler<FileAssistant>.NFRV", 1, ((StringBuilder)localObject).toString());
+    if ((i4 != i2) && (i4 != i3))
+    {
+      localFileManagerEntity.status = 5;
+      localFileManagerEntity.nOpType = 11;
+    }
+    else
+    {
+      localFileManagerEntity.status = 16;
+      localFileManagerEntity.cloudType = 1;
+    }
+    localObject = this.a.getCurrentUin();
+    this.a.getFileManagerDataCenter().a(localFileManagerEntity);
+    this.a.getFileManagerDataCenter().a(paramWlanRecvNotify, (String)localObject, bool, m, localFileManagerEntity);
+    this.a.getFileManagerDataCenter().e(l1);
+  }
+  
+  public boolean b(OnlineFileSessionInfo paramOnlineFileSessionInfo)
+  {
+    if (paramOnlineFileSessionInfo != null)
+    {
+      c.equals(paramOnlineFileSessionInfo.f);
+      if (!paramOnlineFileSessionInfo.i)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("OLfilesession[");
+        localStringBuilder.append(paramOnlineFileSessionInfo.c);
+        localStringBuilder.append("]  is not surpport mulitendpoint");
+        QLog.e("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
+        return false;
+      }
+      return true;
+    }
+    return false;
+  }
+  
   public boolean b(String paramString, long paramLong)
   {
     Object localObject = new SubMsgType0x5.MsgBody();
@@ -6344,10 +6230,117 @@ public class FileTransferHandler
     FMTransC2CMsgInfo localFMTransC2CMsgInfo = new FMTransC2CMsgInfo();
     localFMTransC2CMsgInfo.sessionId = paramLong;
     localFMTransC2CMsgInfo.busiType = 1025;
-    localFMTransC2CMsgInfo.msgSeq = FileManagerUtil.a();
-    localFMTransC2CMsgInfo.msgUid = FileManagerUtil.b();
-    localFMTransC2CMsgInfo.entity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong);
+    localFMTransC2CMsgInfo.msgSeq = FileManagerUtil.f();
+    localFMTransC2CMsgInfo.msgUid = FileManagerUtil.g();
+    localFMTransC2CMsgInfo.entity = this.a.getFileManagerDataCenter().a(paramLong);
     return a(paramString, 529, 5, (byte[])localObject, localFMTransC2CMsgInfo);
+  }
+  
+  public cmd0x346.ApplyUploadHitReqV2 c(Cmd0x346CSBody paramCmd0x346CSBody)
+  {
+    cmd0x346.ApplyUploadHitReqV2 localApplyUploadHitReqV2 = new cmd0x346.ApplyUploadHitReqV2();
+    paramCmd0x346CSBody = paramCmd0x346CSBody.c;
+    localApplyUploadHitReqV2.uint64_sender_uin.set(paramCmd0x346CSBody.a);
+    localApplyUploadHitReqV2.uint64_recver_uin.set(paramCmd0x346CSBody.b);
+    localApplyUploadHitReqV2.uint64_file_size.set(paramCmd0x346CSBody.c);
+    localApplyUploadHitReqV2.str_file_name.set(paramCmd0x346CSBody.d);
+    localApplyUploadHitReqV2.bytes_10m_md5.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.e));
+    localApplyUploadHitReqV2.bytes_3sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.f));
+    localApplyUploadHitReqV2.bytes_sha.set(ByteStringMicro.copyFrom(paramCmd0x346CSBody.g));
+    localApplyUploadHitReqV2.str_local_filepath.set(paramCmd0x346CSBody.h);
+    localApplyUploadHitReqV2.uint32_danger_level.set(paramCmd0x346CSBody.i);
+    localApplyUploadHitReqV2.uint64_total_space.set(paramCmd0x346CSBody.j);
+    return localApplyUploadHitReqV2;
+  }
+  
+  public void c()
+  {
+    if (this.a.getCurrentAccountUin() != null)
+    {
+      Object localObject1 = this.a.getApplication().getSharedPreferences("wifiphoto_smart_reminder", 0);
+      long l1 = ((SharedPreferences)localObject1).getLong("wifiphoto_smart_reminder_last_time", 0L);
+      long l2 = MessageCache.c();
+      if (l2 - l1 > 86400L)
+      {
+        localObject1 = ((SharedPreferences)localObject1).edit();
+        ((SharedPreferences.Editor)localObject1).putLong("wifiphoto_smart_reminder_last_time", l2);
+        ((SharedPreferences.Editor)localObject1).commit();
+        boolean bool = SystemUtil.a();
+        l1 = SystemUtil.b();
+        l2 = SystemUtil.c();
+        if ((bool) && (l1 != 0L)) {
+          l1 = Math.min(l1, l2) * 1024L;
+        } else {
+          l1 = l2 * 1024L;
+        }
+        l2 = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getPicCount(this.a.getApplication());
+        if ((l1 <= 1073741824L) && (l2 >= 50L))
+        {
+          localObject1 = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject1).put("freeSize", l1);
+            ((JSONObject)localObject1).put("deviceType", 2);
+            ((JSONObject)localObject1).put("subtype", "8");
+            ((JSONObject)localObject1).put("photoCount", l2);
+          }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
+          }
+          Object localObject2 = new SubMsgType0x7.MsgBody.GenericSubCmd();
+          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint64_sessionid.set(1L);
+          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_size.set(1);
+          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_index.set(0);
+          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).uint32_type.set(5);
+          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).bytes_buf.set(ByteStringMicro.copyFrom(((JSONObject)localObject1).toString().getBytes()));
+          ((SubMsgType0x7.MsgBody.GenericSubCmd)localObject2).setHasFlag(true);
+          localObject1 = new SubMsgType0x7.MsgBody();
+          ((SubMsgType0x7.MsgBody)localObject1).uint32_sub_cmd.set(4);
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_src_app_id.set(1001);
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_src_inst_id.set(AppSetting.d());
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_dst_app_id.set(1);
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint32_dst_inst_id.set(1);
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint64_dst_uin.set(Long.valueOf(this.a.getCurrentAccountUin()).longValue());
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.uint64_src_uin.set(Long.valueOf(this.a.getCurrentAccountUin()).longValue());
+          ((SubMsgType0x7.MsgBody)localObject1).msg_header.setHasFlag(true);
+          ((SubMsgType0x7.MsgBody)localObject1).msg_subcmd_0x4_generic.set((MessageMicro)localObject2);
+          ((SubMsgType0x7.MsgBody)localObject1).setHasFlag(true);
+          localObject2 = this.a.getCurrentAccountUin();
+          Object localObject3 = ((SubMsgType0x7.MsgBody)localObject1).toByteArray();
+          localObject1 = b("MessageSvc.PbSendMsg");
+          ((ToServiceMsg)localObject1).extraData.putInt("SEND_MSG_CMD_MSG_TYPE", 1);
+          ((ToServiceMsg)localObject1).extraData.putInt("ROUNTING_TYPE", 13);
+          ((ToServiceMsg)localObject1).extraData.putBoolean("ISFROM_DATALINE", true);
+          ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_CMD", 1002);
+          ((ToServiceMsg)localObject1).addAttribute("cookie", Integer.valueOf(1));
+          ((ToServiceMsg)localObject1).extraData.putInt("DATALINE_TRYINDEX", 0);
+          l1 = FileManagerUtil.g();
+          l2 = FileManagerUtil.f();
+          TransMsgContext localTransMsgContext = new TransMsgContext();
+          localTransMsgContext.a = 7;
+          localTransMsgContext.b = ((byte[])localObject3);
+          localObject2 = MessageProtoCodec.a(this.a, 13, (String)localObject2, localTransMsgContext, l2, MessageUtils.b(l1));
+          localObject3 = new im_msg_head.InstInfo();
+          ((im_msg_head.InstInfo)localObject3).uint32_apppid.set(1);
+          ((im_msg_head.InstInfo)localObject3).uint32_instid.set(1);
+          ((im_msg_head.InstInfo)localObject3).setHasFlag(true);
+          ((msg_svc.PbSendMsgReq)localObject2).routing_head.trans_0x211.inst_ctrl.rpt_msg_send_to_inst.add((MessageMicro)localObject3);
+          localObject3 = new im_msg_head.InstInfo();
+          ((im_msg_head.InstInfo)localObject3).uint32_apppid.set(1001);
+          ((im_msg_head.InstInfo)localObject3).uint32_instid.set(AppSetting.d());
+          ((im_msg_head.InstInfo)localObject3).setHasFlag(true);
+          ((msg_svc.PbSendMsgReq)localObject2).routing_head.trans_0x211.inst_ctrl.msg_from_inst = ((im_msg_head.InstInfo)localObject3);
+          ((msg_svc.PbSendMsgReq)localObject2).routing_head.trans_0x211.inst_ctrl.setHasFlag(true);
+          ((ToServiceMsg)localObject1).putWupBuffer(((msg_svc.PbSendMsgReq)localObject2).toByteArray());
+          if (localObject1 != null)
+          {
+            ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
+            this.a.sendToService((ToServiceMsg)localObject1);
+          }
+        }
+      }
+    }
   }
   
   protected void c(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -6355,7 +6348,7 @@ public class FileTransferHandler
     boolean bool = a(paramProtoResp);
     String str1 = "";
     Object localObject1;
-    int i;
+    int m;
     if (bool)
     {
       localObject1 = new StringBuilder();
@@ -6363,13 +6356,13 @@ public class FileTransferHandler
       ((StringBuilder)localObject1).append(paramProtoResp.resp.getResultCode());
       ((StringBuilder)localObject1).append("]");
       QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      i = -100001;
+      m = -100001;
     }
     short s;
     Object localObject2;
     String str2;
     String str3;
-    int k;
+    int i1;
     String str4;
     Object localObject3;
     for (;;)
@@ -6383,7 +6376,7 @@ public class FileTransferHandler
         bool = false;
         str2 = null;
         str3 = null;
-        k = 0;
+        i1 = 0;
         str4 = null;
         localObject3 = null;
         break label657;
@@ -6394,7 +6387,7 @@ public class FileTransferHandler
           ((StringBuilder)localObject1).append(paramProtoResp.resp.getResultCode());
           ((StringBuilder)localObject1).append("]");
           QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-          i = -100002;
+          m = -100002;
           break;
         }
         paramProtoResp = paramProtoResp.resp.getWupBuffer();
@@ -6410,25 +6403,25 @@ public class FileTransferHandler
           {
             localObject1 = (cmd0x346.ApplyDownloadAbsRsp)((cmd0x346.RspBody)localObject2).msg_apply_download_abs_rsp.get();
             if (((cmd0x346.ApplyDownloadAbsRsp)localObject1).int32_ret_code.has()) {
-              i = ((cmd0x346.ApplyDownloadAbsRsp)localObject1).int32_ret_code.get();
+              m = ((cmd0x346.ApplyDownloadAbsRsp)localObject1).int32_ret_code.get();
             } else {
-              i = 0;
+              m = 0;
             }
             if (((cmd0x346.ApplyDownloadAbsRsp)localObject1).str_ret_msg.has()) {
               paramProtoResp = ((cmd0x346.ApplyDownloadAbsRsp)localObject1).str_ret_msg.get();
             } else {
               paramProtoResp = null;
             }
-            if ((i == 0) && (!((cmd0x346.ApplyDownloadAbsRsp)localObject1).msg_download_info.has()))
+            if ((m == 0) && (!((cmd0x346.ApplyDownloadAbsRsp)localObject1).msg_download_info.has()))
             {
               QLog.i("FileTransferHandler<FileAssistant>", 1, "handlePreviewResponse: rspBody has not MsgDownloadSuccRsp");
-              i = -100003;
+              m = -100003;
               continue;
             }
             localObject3 = (cmd0x346.DownloadInfo)((cmd0x346.ApplyDownloadAbsRsp)localObject1).msg_download_info.get();
             str2 = ((cmd0x346.DownloadInfo)localObject3).str_download_ip.get();
             str3 = ((cmd0x346.DownloadInfo)localObject3).str_download_domain.get();
-            k = ((cmd0x346.DownloadInfo)localObject3).uint32_port.get();
+            i1 = ((cmd0x346.DownloadInfo)localObject3).uint32_port.get();
             str4 = ((cmd0x346.DownloadInfo)localObject3).str_download_url.get();
             if (((cmd0x346.DownloadInfo)localObject3).str_cookie.has())
             {
@@ -6486,7 +6479,7 @@ public class FileTransferHandler
         catch (InvalidProtocolBufferMicroException paramProtoResp)
         {
           paramProtoResp.printStackTrace();
-          i = -100003;
+          m = -100003;
         }
       }
     }
@@ -6497,7 +6490,7 @@ public class FileTransferHandler
       ((StringBuilder)localObject4).append("handlePreviewResponse: return ");
       ((StringBuilder)localObject4).append(bool);
       ((StringBuilder)localObject4).append(", retCode=");
-      ((StringBuilder)localObject4).append(i);
+      ((StringBuilder)localObject4).append(m);
       ((StringBuilder)localObject4).append(", retMsg=");
       ((StringBuilder)localObject4).append(paramProtoResp);
       ((StringBuilder)localObject4).append(", Key=");
@@ -6507,7 +6500,7 @@ public class FileTransferHandler
       ((StringBuilder)localObject4).append(", Domain=");
       ((StringBuilder)localObject4).append(str3);
       ((StringBuilder)localObject4).append(", port=");
-      ((StringBuilder)localObject4).append(k);
+      ((StringBuilder)localObject4).append(i1);
       ((StringBuilder)localObject4).append(", strHttpsDomain=");
       ((StringBuilder)localObject4).append((String)localObject1);
       ((StringBuilder)localObject4).append(", httpsPort=");
@@ -6516,19 +6509,19 @@ public class FileTransferHandler
       ((StringBuilder)localObject4).append(str1);
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject4).toString());
     }
-    int j;
-    if (i == -100001)
+    int n;
+    if (m == -100001)
     {
-      j = 9043;
+      n = 9043;
     }
     else
     {
-      j = i;
-      if (i == -100003) {
-        j = 9045;
+      n = m;
+      if (m == -100003) {
+        n = 9045;
       }
     }
-    if (j != 0) {
+    if (n != 0) {
       bool = false;
     }
     paramProtoReq = (FileTransferHandler.PreviewBusiData)paramProtoReq.busiData;
@@ -6542,23 +6535,23 @@ public class FileTransferHandler
     }
     if (paramProtoReq.a())
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 191, new Object[] { Integer.valueOf(j), paramProtoResp, localObject3, localObject2, str2, str3, Integer.valueOf(k), str4, Long.valueOf(paramProtoReq.a()), localObject4 });
+      this.a.getFileManagerNotifyCenter().a(bool, 191, new Object[] { Integer.valueOf(n), paramProtoResp, localObject3, localObject2, str2, str3, Integer.valueOf(i1), str4, Long.valueOf(paramProtoReq.c()), localObject4 });
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool, 18, new Object[] { Integer.valueOf(j), paramProtoResp, localObject3, localObject2, str2, str3, Integer.valueOf(k), localObject4 });
+    this.a.getFileManagerNotifyCenter().a(bool, 18, new Object[] { Integer.valueOf(n), paramProtoResp, localObject3, localObject2, str2, str3, Integer.valueOf(i1), localObject4 });
   }
   
   protected void d(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
   {
     boolean bool1 = a(paramProtoResp);
-    int i = -100003;
+    int m = -100003;
     long l2 = 0L;
     Object localObject1 = null;
     Object localObject3 = null;
     Object localObject2;
     if (bool1)
     {
-      i = -100001;
+      m = -100001;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("handleForwardResponse: resp is timeout[");
       ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -6577,7 +6570,7 @@ public class FileTransferHandler
       break;
       if (paramProtoResp.resp.getResultCode() != 1000)
       {
-        i = -100002;
+        m = -100002;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("handleForwardResponse: resp is failed[");
         ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -6616,9 +6609,9 @@ public class FileTransferHandler
             }
             cmd0x346.ApplyForwardFileRsp localApplyForwardFileRsp = (cmd0x346.ApplyForwardFileRsp)paramProtoResp.msg_apply_forward_file_rsp.get();
             if (localApplyForwardFileRsp.int32_ret_code.has()) {
-              i = localApplyForwardFileRsp.int32_ret_code.get();
+              m = localApplyForwardFileRsp.int32_ret_code.get();
             } else {
-              i = 0;
+              m = 0;
             }
             if (localApplyForwardFileRsp.str_ret_msg.has()) {
               paramProtoResp = localApplyForwardFileRsp.str_ret_msg.get();
@@ -6661,7 +6654,7 @@ public class FileTransferHandler
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool1 = false;
     }
     if (QLog.isColorLevel())
@@ -6670,7 +6663,7 @@ public class FileTransferHandler
       ((StringBuilder)localObject3).append("handleForwardResponse: return ");
       ((StringBuilder)localObject3).append(bool1);
       ((StringBuilder)localObject3).append(", retCode=");
-      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append(m);
       ((StringBuilder)localObject3).append(", retMsg=");
       ((StringBuilder)localObject3).append((String)localObject1);
       ((StringBuilder)localObject3).append(", totalSpace=");
@@ -6679,24 +6672,24 @@ public class FileTransferHandler
       ((StringBuilder)localObject3).append(l3);
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject3).toString());
     }
-    long l1 = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
+    long l1 = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).c();
     if (bool1)
     {
       paramProtoReq = new FileManagerReporter.FileAssistantReportData();
-      paramProtoReq.jdField_b_of_type_JavaLangString = "send_file_suc";
-      paramProtoReq.jdField_a_of_type_Int = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramProtoReq);
+      paramProtoReq.b = "send_file_suc";
+      paramProtoReq.c = 1;
+      FileManagerReporter.a(this.a.getCurrentAccountUin(), paramProtoReq);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(bool1, i, (String)localObject1, paramProtoResp, bool2, (String)localObject2, l1);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(bool1, 19, new Object[] { Integer.valueOf(i), localObject1, Long.valueOf(l2), Long.valueOf(l3), paramProtoResp, Long.valueOf(l1) });
-    paramProtoReq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l1);
+    this.a.getFileManagerDataCenter().a(bool1, m, (String)localObject1, paramProtoResp, bool2, (String)localObject2, l1);
+    this.a.getFileManagerNotifyCenter().a(bool1, 19, new Object[] { Integer.valueOf(m), localObject1, Long.valueOf(l2), Long.valueOf(l3), paramProtoResp, Long.valueOf(l1) });
+    paramProtoReq = this.a.getFileManagerDataCenter().a(l1);
     if (paramProtoReq != null)
     {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramProtoReq);
+      FileManagerUtil.a(this.a, paramProtoReq);
       if ((paramProtoReq.nOpType == 26) || (paramProtoReq.nOpType == 27)) {
         try
         {
-          ((IForwardCallBack)paramProtoReq.mContext).a(bool1, paramProtoReq.strTroopFileUuid, paramProtoReq.nSessionId, i, (String)localObject1, String.valueOf(paramProtoReq.peerUin), paramProtoResp);
+          ((IForwardCallBack)paramProtoReq.mContext).a(bool1, paramProtoReq.strTroopFileUuid, paramProtoReq.nSessionId, m, (String)localObject1, String.valueOf(paramProtoReq.peerUin), paramProtoResp);
           return;
         }
         catch (Exception paramProtoReq)
@@ -6716,7 +6709,7 @@ public class FileTransferHandler
     boolean bool1 = a(paramProtoResp);
     boolean bool2 = false;
     Object localObject1;
-    int i;
+    int m;
     if (bool1)
     {
       localObject1 = new StringBuilder();
@@ -6724,7 +6717,7 @@ public class FileTransferHandler
       ((StringBuilder)localObject1).append(paramProtoResp.resp.getResultCode());
       ((StringBuilder)localObject1).append("]");
       QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      i = -100001;
+      m = -100001;
     }
     for (;;)
     {
@@ -6739,7 +6732,7 @@ public class FileTransferHandler
         ((StringBuilder)localObject1).append(paramProtoResp.resp.getResultCode());
         ((StringBuilder)localObject1).append("]");
         QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-        i = -100002;
+        m = -100002;
       }
       else
       {
@@ -6756,9 +6749,9 @@ public class FileTransferHandler
           {
             localObject1 = (cmd0x346.ApplyCopyToRsp)((cmd0x346.RspBody)localObject1).msg_apply_copy_to_rsp.get();
             if (((cmd0x346.ApplyCopyToRsp)localObject1).int32_ret_code.has()) {
-              i = ((cmd0x346.ApplyCopyToRsp)localObject1).int32_ret_code.get();
+              m = ((cmd0x346.ApplyCopyToRsp)localObject1).int32_ret_code.get();
             } else {
-              i = 0;
+              m = 0;
             }
             if (((cmd0x346.ApplyCopyToRsp)localObject1).str_ret_msg.has()) {
               paramProtoResp = ((cmd0x346.ApplyCopyToRsp)localObject1).str_ret_msg.get();
@@ -6776,11 +6769,11 @@ public class FileTransferHandler
         catch (InvalidProtocolBufferMicroException paramProtoResp)
         {
           paramProtoResp.printStackTrace();
-          i = -100003;
+          m = -100003;
         }
       }
     }
-    if (i != 0) {
+    if (m != 0) {
       bool1 = bool2;
     }
     Object localObject2;
@@ -6790,13 +6783,13 @@ public class FileTransferHandler
       ((StringBuilder)localObject2).append("handleForwardFromOfflineResponse: return ");
       ((StringBuilder)localObject2).append(bool1);
       ((StringBuilder)localObject2).append(", retCode=");
-      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(m);
       ((StringBuilder)localObject2).append(", retMsg=");
       ((StringBuilder)localObject2).append(paramProtoResp);
       QLog.d("FileTransferHandler<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
     }
-    long l = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a();
-    paramProtoReq = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(l);
+    long l = ((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).c();
+    paramProtoReq = this.a.getFileManagerDataCenter().a(l);
     if (paramProtoReq == null)
     {
       QLog.e("FileTransferHandler<FileAssistant>", 1, "forward offline file, but entity is null!!!");
@@ -6805,11 +6798,11 @@ public class FileTransferHandler
     if (bool1)
     {
       localObject2 = new FileManagerReporter.FileAssistantReportData();
-      ((FileManagerReporter.FileAssistantReportData)localObject2).jdField_b_of_type_JavaLangString = "send_file_suc";
-      ((FileManagerReporter.FileAssistantReportData)localObject2).jdField_a_of_type_Int = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject2);
+      ((FileManagerReporter.FileAssistantReportData)localObject2).b = "send_file_suc";
+      ((FileManagerReporter.FileAssistantReportData)localObject2).c = 1;
+      FileManagerReporter.a(this.a.getCurrentAccountUin(), (FileManagerReporter.FileAssistantReportData)localObject2);
     }
-    if ((QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (QFileAssistantUtils.a(paramProtoReq.peerUin)))
+    if ((QFileAssistantUtils.a(this.a)) && (QFileAssistantUtils.a(paramProtoReq.peerUin)))
     {
       if (bool1) {
         a(paramProtoReq, (String)localObject1);
@@ -6822,19 +6815,19 @@ public class FileTransferHandler
       QLog.i("FileTransferHandler<FileAssistant>", 1, paramProtoResp.toString());
       return;
     }
-    if ((i == -6101) || (i == -7003))
+    if ((m == -6101) || (m == -7003))
     {
       paramProtoReq.status = 16;
       if ((paramProtoReq.mContext != null) && ((paramProtoReq.mContext instanceof FileManagerEntity)))
       {
         localObject2 = (FileManagerEntity)paramProtoReq.mContext;
         ((FileManagerEntity)localObject2).status = 16;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject2);
+        this.a.getFileManagerDataCenter().c((FileManagerEntity)localObject2);
         paramProtoReq.mContext = null;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(paramProtoReq);
+      this.a.getFileManagerDataCenter().c(paramProtoReq);
     }
-    a(l, bool1, i, paramProtoResp, (String)localObject1, paramProtoReq);
+    a(l, bool1, m, paramProtoResp, (String)localObject1, paramProtoReq);
   }
   
   public void f(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -6846,7 +6839,7 @@ public class FileTransferHandler
     Object localObject2;
     if (bool1)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100001;
+      localFileUploadInfo.a = -100001;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("=_= ^! [CS Replay]handleUploadResponse: resp is timeout[");
       ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -6855,7 +6848,7 @@ public class FileTransferHandler
     }
     else if (paramProtoResp.resp.getResultCode() != 1000)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100002;
+      localFileUploadInfo.a = -100002;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("=_= ^! [CS Replay]handleUploadResponse: resp is failed[");
       ((StringBuilder)localObject2).append(paramProtoResp.resp.getResultCode());
@@ -6865,14 +6858,14 @@ public class FileTransferHandler
     else
     {
       byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
-      localFileUploadInfo.jdField_e_of_type_ArrayOfByte = arrayOfByte;
+      localFileUploadInfo.t = arrayOfByte;
       localObject2 = new cmd0x346.RspBody();
       try
       {
         ((cmd0x346.RspBody)localObject2).mergeFrom(arrayOfByte);
         if (!((cmd0x346.RspBody)localObject2).msg_apply_upload_rsp_v3.has())
         {
-          localFileUploadInfo.jdField_a_of_type_Int = -100003;
+          localFileUploadInfo.a = -100003;
           QLog.i("FileTransferHandler<FileAssistant>", 1, "=_= ^! [CS Replay]handleUploadResponse: rspBody has not hasMsgApplyUploadRsp");
         }
         else
@@ -6884,10 +6877,10 @@ public class FileTransferHandler
             } else {
               bool1 = false;
             }
-            localFileUploadInfo.jdField_b_of_type_Boolean = bool1;
+            localFileUploadInfo.u = bool1;
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("handleUploadResponseV3: bUseMediaPlatform ");
-            ((StringBuilder)localObject1).append(localFileUploadInfo.jdField_b_of_type_Boolean);
+            ((StringBuilder)localObject1).append(localFileUploadInfo.u);
             QLog.i("FileTransferHandler<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
           }
           else
@@ -6896,7 +6889,7 @@ public class FileTransferHandler
           }
           localObject2 = a(localFileUploadInfo, null, (cmd0x346.ApplyUploadRspV3)((cmd0x346.RspBody)localObject2).msg_apply_upload_rsp_v3.get());
           localObject1 = localObject2;
-          if (localFileUploadInfo.jdField_a_of_type_Int == 0)
+          if (localFileUploadInfo.a == 0)
           {
             bool1 = true;
             localObject1 = localObject2;
@@ -6906,37 +6899,37 @@ public class FileTransferHandler
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
-        localFileUploadInfo.jdField_a_of_type_Int = -100003;
+        localFileUploadInfo.a = -100003;
       }
     }
     bool1 = false;
-    localFileUploadInfo.jdField_d_of_type_Int = 2;
-    int i;
-    if ((localFileUploadInfo.jdField_b_of_type_JavaLangString != null) && (localFileUploadInfo.jdField_b_of_type_JavaLangString.length() > 0)) {
-      i = 1;
+    localFileUploadInfo.o = 2;
+    int m;
+    if ((localFileUploadInfo.f != null) && (localFileUploadInfo.f.length() > 0)) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j;
-    if ((localFileUploadInfo.jdField_a_of_type_ArrayOfByte != null) && (localFileUploadInfo.jdField_a_of_type_ArrayOfByte.length != 0)) {
-      j = 0;
+    int n;
+    if ((localFileUploadInfo.h != null) && (localFileUploadInfo.h.length != 0)) {
+      n = 0;
     } else {
-      j = 1;
+      n = 1;
     }
     StatictisInfo localStatictisInfo = new StatictisInfo();
-    localStatictisInfo.jdField_b_of_type_Int = localFileUploadInfo.jdField_a_of_type_Int;
-    localStatictisInfo.jdField_c_of_type_Int = paramProtoResp.freeRunnalbleIndex;
+    localStatictisInfo.b = localFileUploadInfo.a;
+    localStatictisInfo.c = paramProtoResp.freeRunnalbleIndex;
     boolean bool2 = bool1;
-    if (j != 0)
+    if (n != 0)
     {
       bool2 = bool1;
-      if (i != 0)
+      if (m != 0)
       {
         paramProtoResp = new StringBuilder();
         paramProtoResp.append("uuid_null[");
         paramProtoResp.append(localFileUploadInfo.toString());
         paramProtoResp.append("]");
-        localFileUploadInfo.jdField_a_of_type_JavaLangString = paramProtoResp.toString();
+        localFileUploadInfo.b = paramProtoResp.toString();
         bool2 = false;
       }
     }
@@ -6946,20 +6939,20 @@ public class FileTransferHandler
       paramProtoResp.append("decodeOffFilePBResponse:return ");
       paramProtoResp.append(bool2);
       paramProtoResp.append(", retCode=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.a);
       paramProtoResp.append(", retMsg=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.b);
       paramProtoResp.append(", totalSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.c);
       paramProtoResp.append(", usedSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.d);
       paramProtoResp.append(", ip=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.f);
       paramProtoResp.append(", port=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Short);
+      paramProtoResp.append(localFileUploadInfo.g);
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramProtoResp.toString());
     }
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5004, bool2, new Object[] { localFileUploadInfo, localStatictisInfo, localObject1 });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5004, bool2, new Object[] { localFileUploadInfo, localStatictisInfo, localObject1 });
   }
   
   public void g(ProtoReqManagerImpl.ProtoReq paramProtoReq, ProtoReqManagerImpl.ProtoResp paramProtoResp)
@@ -6971,7 +6964,7 @@ public class FileTransferHandler
     Object localObject;
     if (bool1)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100001;
+      localFileUploadInfo.a = -100001;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_= ^! [CS Replay]handleUploadResponse: resp is timeout[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -6980,7 +6973,7 @@ public class FileTransferHandler
     }
     else if (paramProtoResp.resp.getResultCode() != 1000)
     {
-      localFileUploadInfo.jdField_a_of_type_Int = -100002;
+      localFileUploadInfo.a = -100002;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("=_= ^! [CS Replay]handleUploadResponse: resp is failed[");
       ((StringBuilder)localObject).append(paramProtoResp.resp.getResultCode());
@@ -6990,14 +6983,14 @@ public class FileTransferHandler
     else
     {
       localObject = paramProtoResp.resp.getWupBuffer();
-      localFileUploadInfo.jdField_e_of_type_ArrayOfByte = ((byte[])localObject);
+      localFileUploadInfo.t = ((byte[])localObject);
       cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
       try
       {
         localRspBody.mergeFrom((byte[])localObject);
         if (!localRspBody.msg_apply_upload_rsp_v2.has())
         {
-          localFileUploadInfo.jdField_a_of_type_Int = -100003;
+          localFileUploadInfo.a = -100003;
           QLog.i("FileTransferHandler<FileAssistant>", 1, "=_= ^! [CS Replay]handleUploadResponse: rspBody has not hasMsgApplyUploadRsp");
         }
         else
@@ -7009,36 +7002,36 @@ public class FileTransferHandler
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
         localInvalidProtocolBufferMicroException.printStackTrace();
-        localFileUploadInfo.jdField_a_of_type_Int = -100003;
+        localFileUploadInfo.a = -100003;
       }
     }
     bool1 = false;
-    int i;
-    if ((localFileUploadInfo.jdField_b_of_type_JavaLangString != null) && (localFileUploadInfo.jdField_b_of_type_JavaLangString.length() > 0)) {
-      i = 1;
+    int m;
+    if ((localFileUploadInfo.f != null) && (localFileUploadInfo.f.length() > 0)) {
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j;
-    if ((localFileUploadInfo.jdField_a_of_type_ArrayOfByte != null) && (localFileUploadInfo.jdField_a_of_type_ArrayOfByte.length != 0)) {
-      j = 0;
+    int n;
+    if ((localFileUploadInfo.h != null) && (localFileUploadInfo.h.length != 0)) {
+      n = 0;
     } else {
-      j = 1;
+      n = 1;
     }
     StatictisInfo localStatictisInfo = new StatictisInfo();
-    localStatictisInfo.jdField_b_of_type_Int = localFileUploadInfo.jdField_a_of_type_Int;
-    localStatictisInfo.jdField_c_of_type_Int = paramProtoResp.freeRunnalbleIndex;
+    localStatictisInfo.b = localFileUploadInfo.a;
+    localStatictisInfo.c = paramProtoResp.freeRunnalbleIndex;
     boolean bool2 = bool1;
-    if (j != 0)
+    if (n != 0)
     {
       bool2 = bool1;
-      if (i != 0)
+      if (m != 0)
       {
         paramProtoResp = new StringBuilder();
         paramProtoResp.append("uuid_null[");
         paramProtoResp.append(localFileUploadInfo.toString());
         paramProtoResp.append("]");
-        localFileUploadInfo.jdField_a_of_type_JavaLangString = paramProtoResp.toString();
+        localFileUploadInfo.b = paramProtoResp.toString();
         bool2 = false;
       }
     }
@@ -7048,25 +7041,25 @@ public class FileTransferHandler
       paramProtoResp.append("decodeOffFilePBResponse:return ");
       paramProtoResp.append(bool2);
       paramProtoResp.append(", retCode=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Int);
+      paramProtoResp.append(localFileUploadInfo.a);
       paramProtoResp.append(", retMsg=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.b);
       paramProtoResp.append(", totalSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.c);
       paramProtoResp.append(", usedSpace=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_Long);
+      paramProtoResp.append(localFileUploadInfo.d);
       paramProtoResp.append(", ip=");
-      paramProtoResp.append(localFileUploadInfo.jdField_b_of_type_JavaLangString);
+      paramProtoResp.append(localFileUploadInfo.f);
       paramProtoResp.append(", port=");
-      paramProtoResp.append(localFileUploadInfo.jdField_a_of_type_Short);
+      paramProtoResp.append(localFileUploadInfo.g);
       QLog.d("FileTransferHandler<FileAssistant>", 2, paramProtoResp.toString());
     }
-    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).a(), 5004, bool2, new Object[] { localFileUploadInfo, localStatictisInfo, localList });
+    a(((FileTransferHandler.PreviewBusiData)paramProtoReq.busiData).e(), 5004, bool2, new Object[] { localFileUploadInfo, localStatictisInfo, localList });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler
  * JD-Core Version:    0.7.0.1
  */

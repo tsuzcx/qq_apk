@@ -1,10 +1,10 @@
 package com.tencent.liteav.qos;
 
 import android.os.Handler;
-import com.tencent.liteav.basic.a.c;
-import com.tencent.liteav.basic.b.b;
+import com.tencent.liteav.basic.b.c;
+import com.tencent.liteav.basic.c.b;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -55,7 +55,7 @@ public class TXCQoS
     localHashMap.put(Integer.valueOf(18), c.t);
     localHashMap.put(Integer.valueOf(19), c.u);
     RESOLUTION_MAP = Collections.unmodifiableMap(localHashMap);
-    f.f();
+    h.f();
   }
   
   public TXCQoS(boolean paramBoolean)
@@ -223,7 +223,7 @@ public class TXCQoS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.qos.TXCQoS
  * JD-Core Version:    0.7.0.1
  */

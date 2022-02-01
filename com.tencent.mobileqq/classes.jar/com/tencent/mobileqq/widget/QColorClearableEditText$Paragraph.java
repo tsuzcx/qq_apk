@@ -5,23 +5,23 @@ import android.text.style.CharacterStyle;
 public class QColorClearableEditText$Paragraph
 {
   public int a;
-  public CharacterStyle a;
-  public String a;
   public int b;
-  public int c;
+  public String c;
+  public CharacterStyle d;
+  public int e;
   
   public QColorClearableEditText$Paragraph(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.e = paramInt1;
+    this.a = paramInt2;
     this.b = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
+    this.c = paramString;
+    this.d = paramCharacterStyle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QColorClearableEditText.Paragraph
  * JD-Core Version:    0.7.0.1
  */

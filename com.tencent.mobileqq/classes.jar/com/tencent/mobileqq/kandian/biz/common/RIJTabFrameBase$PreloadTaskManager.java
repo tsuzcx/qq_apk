@@ -6,6 +6,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.ad.api.IRIJSuperMaskService;
 import com.tencent.mobileqq.kandian.biz.comment.emotion.cache.RIJEmotionCacheManager;
 import com.tencent.mobileqq.kandian.biz.flutter.RIJFlutterUtils;
+import com.tencent.mobileqq.kandian.biz.hippy.tuwen.util.TKDTuWenCommentUtil;
+import com.tencent.mobileqq.kandian.biz.hippy.tuwen.util.TKDTuWenHippyEngineManager;
 import com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.InitWebProcessRunnable;
 import com.tencent.mobileqq.kandian.biz.video.ReadInJoyWebDataManager;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
@@ -20,7 +22,7 @@ import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/common/RIJTabFrameBase$PreloadTaskManager;", "", "()V", "preLoadUnreadMsgBoxTime", "", "loadWebRenderSo", "", "preDownloadAdMaskRes", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "preDownloadEmotion", "preLoadMsgBoxIfNecessary", "preRequestUserLevelInfo", "preStartAchilles", "preloadAll", "tabFrameBase", "Lcom/tencent/mobileqq/kandian/biz/common/RIJTabFrameBase;", "preloadWebviewProcess", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/common/RIJTabFrameBase$PreloadTaskManager;", "", "()V", "preLoadUnreadMsgBoxTime", "", "loadWebRenderSo", "", "preDownloadAdMaskRes", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "preDownloadEmotion", "preLoadMsgBoxIfNecessary", "preRequestUserLevelInfo", "preStartAchilles", "preloadAll", "tabFrameBase", "Lcom/tencent/mobileqq/kandian/biz/common/RIJTabFrameBase;", "preloadTKDTuWenHippyEngine", "preloadWebviewProcess", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJTabFrameBase$PreloadTaskManager
 {
   private long a;
@@ -35,7 +37,7 @@ public final class RIJTabFrameBase$PreloadTaskManager
     Manager localManager = paramQQAppInterface.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
     if (localManager != null)
     {
-      if ((((KandianMergeManager)localManager).i()) && (System.currentTimeMillis() - this.a > 180000L))
+      if ((((KandianMergeManager)localManager).P()) && (System.currentTimeMillis() - this.a > 180000L))
       {
         ReadInJoyWebDataManager.a().a(paramQQAppInterface.getCurrentAccountUin(), 1);
         this.a = System.currentTimeMillis();
@@ -62,6 +64,13 @@ public final class RIJTabFrameBase$PreloadTaskManager
   
   private final void d() {}
   
+  private final void e()
+  {
+    if (TKDTuWenCommentUtil.isTuWenHippyEngineReuseSwitchOn()) {
+      TKDTuWenHippyEngineManager.preloadUseTopActivity();
+    }
+  }
+  
   public final void a(@NotNull RIJTabFrameBase paramRIJTabFrameBase)
   {
     Intrinsics.checkParameterIsNotNull(paramRIJTabFrameBase, "tabFrameBase");
@@ -86,11 +95,12 @@ public final class RIJTabFrameBase$PreloadTaskManager
     b(paramQQAppInterface);
     RIJFlutterUtils.a.a();
     d();
+    e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.RIJTabFrameBase.PreloadTaskManager
  * JD-Core Version:    0.7.0.1
  */

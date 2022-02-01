@@ -1,43 +1,47 @@
 package com.tencent.mobileqq.kandian.biz.video;
 
-import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.biz.video.feeds.entity.BaseVideoPlayParam;
-import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
-import com.tencent.mobileqq.kandian.glue.video.VideoFullPlayController.RecommendDataAdapter;
-import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
 
 class VideoUIManager$2
-  implements VideoFullPlayController.RecommendDataAdapter
+  extends Handler
 {
   VideoUIManager$2(VideoUIManager paramVideoUIManager) {}
   
-  public List<BaseVideoPlayParam> a(List<VideoInfo> paramList)
+  public void handleMessage(Message paramMessage)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
+    switch (paramMessage.what)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    default: 
+    case 105: 
+      VideoUIManager.g(this.a);
+      return;
+    case 104: 
+      VideoUIManager.f(this.a);
+      return;
+    case 103: 
+      VideoUIManager.a(this.a, 3);
+      return;
+    case 102: 
+      VideoUIManager.c(this.a);
+      sendEmptyMessageDelayed(102, 1000L);
+      if (VideoUIManager.d(this.a) == 1)
       {
-        Object localObject = (VideoInfo)paramList.next();
-        if (localObject != null)
-        {
-          localObject = FeedsChannelDataHelper.a((VideoInfo)localObject);
-          if (localObject != null) {
-            localArrayList.add(ReadInJoyBaseAdapter.a((AbsBaseArticleInfo)localObject, true));
-          }
-        }
+        VideoUIManager.e(this.a);
+        return;
       }
+      break;
+    case 101: 
+      this.a.t();
+      return;
+    case 100: 
+      VideoUIManager.b(this.a);
     }
-    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.VideoUIManager.2
  * JD-Core Version:    0.7.0.1
  */

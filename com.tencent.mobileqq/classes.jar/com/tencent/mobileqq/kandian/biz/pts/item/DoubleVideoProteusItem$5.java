@@ -20,28 +20,28 @@ class DoubleVideoProteusItem$5
   public void onClick(ViewBase paramViewBase)
   {
     EventCollector.getInstance().onViewClicked(paramViewBase.getNativeView());
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mProteusTemplateBean;
+    Object localObject2 = this.a.k().mProteusTemplateBean;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = ProteusSupportUtil.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a());
+      localObject1 = ProteusSupportUtil.c(this.a.t(), this.b, this.a.k());
     }
     if (localObject1 != null)
     {
-      paramViewBase = DoubleVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDoubleVideoProteusItem, (TemplateBean)localObject1, paramViewBase);
-      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideoSingle(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo))
+      paramViewBase = DoubleVideoProteusItem.a(this.d, (TemplateBean)localObject1, paramViewBase);
+      if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideoSingle(this.c))
       {
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).jumpToMiniGame(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.g());
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).jumpToMiniGame(this.c, this.a.t().getContext(), this.a.r());
         return;
       }
-      localObject1 = (ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+      localObject1 = (ReadInJoyBaseAdapter)this.a.u();
+      localObject2 = this.c;
       ((ReadInJoyBaseAdapter)localObject1).a(true, (AbsBaseArticleInfo)localObject2, (AbsBaseArticleInfo)localObject2, ((AbsBaseArticleInfo)localObject2).innerUniqueID, paramViewBase);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.DoubleVideoProteusItem.5
  * JD-Core Version:    0.7.0.1
  */

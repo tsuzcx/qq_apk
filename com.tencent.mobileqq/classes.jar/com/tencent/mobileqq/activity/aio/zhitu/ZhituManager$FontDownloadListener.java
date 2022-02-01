@@ -30,7 +30,7 @@ class ZhituManager$FontDownloadListener
     }
     if (paramNetResp.mResult == 0)
     {
-      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ZhituManager.a(paramNetResp.mReq.mOutPath)))
+      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(ZhituManager.c(paramNetResp.mReq.mOutPath)))
       {
         this.a.sendEmptyMessage(100);
         return;
@@ -48,7 +48,7 @@ class ZhituManager$FontDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.FontDownloadListener
  * JD-Core Version:    0.7.0.1
  */

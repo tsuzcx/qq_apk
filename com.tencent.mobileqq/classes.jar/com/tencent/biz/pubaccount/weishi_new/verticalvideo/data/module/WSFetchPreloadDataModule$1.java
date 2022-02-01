@@ -24,7 +24,7 @@ class WSFetchPreloadDataModule$1
         return;
       }
       paramJceStruct = paramJceStruct.feeds;
-      IFetchDataRspListener localIFetchDataRspListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener;
+      IFetchDataRspListener localIFetchDataRspListener = this.a;
       if (localIFetchDataRspListener != null) {
         localIFetchDataRspListener.a(WSVerticalDataUtil.a(paramJceStruct), false, true, null);
       }
@@ -33,7 +33,7 @@ class WSFetchPreloadDataModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.module.WSFetchPreloadDataModule.1
  * JD-Core Version:    0.7.0.1
  */

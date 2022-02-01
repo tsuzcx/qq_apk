@@ -25,23 +25,18 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class GaInviteDialogActivity
   extends GaInviteActivity
 {
-  View jdField_a_of_type_AndroidViewView = null;
-  Button jdField_a_of_type_AndroidWidgetButton = null;
-  Button b;
-  int g = 0;
-  int jdField_h_of_type_Int = 0;
-  boolean jdField_h_of_type_Boolean = true;
-  
-  public GaInviteDialogActivity()
-  {
-    this.jdField_b_of_type_AndroidWidgetButton = null;
-  }
+  Button I = null;
+  Button J = null;
+  View K = null;
+  boolean L = true;
+  int M = 0;
+  int N = 0;
   
   private void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_b_of_type_JavaLangString;
+      String str = this.l;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("sendIsResumeBroadcast isResume = ");
       localStringBuilder.append(paramBoolean);
@@ -50,58 +45,58 @@ public class GaInviteDialogActivity
     SmallScreenUtils.a(BaseApplicationImpl.getContext(), paramBoolean);
   }
   
-  private void h()
+  private void k()
   {
-    if (this.jdField_b_of_type_Int == 2)
+    if (this.d == 2)
     {
-      String str = String.valueOf(this.jdField_a_of_type_Long);
-      if (QAVHrMeeting.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(str)))
+      String str = String.valueOf(this.b);
+      if (QAVHrMeeting.a(this.e.f(str)))
       {
-        ChatActivityUtils.ConfIdownloadTask.a(this.jdField_b_of_type_JavaLangString, str, new GaInviteDialogActivity.1(this));
+        ChatActivityUtils.ConfIdownloadTask.a(this.l, str, new GaInviteDialogActivity.1(this));
         return;
       }
-      i();
+      l();
       return;
     }
-    i();
+    l();
   }
   
-  private void i()
+  private void l()
   {
     if (isFinishing()) {
       return;
     }
-    d();
+    g();
   }
   
   public void BtnOnClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131373416)
+    if (i != 2131441090)
     {
-      if (i != 2131373423) {
+      if (i != 2131441097) {
         return;
       }
       QAVGroupConfig.Report.a(true);
-      if (this.jdField_a_of_type_ComTencentAvVideoController.d)
+      if (this.f.j)
       {
-        e();
+        h();
       }
       else
       {
-        long l = AudioHelper.b();
+        long l = AudioHelper.c();
         sendBroadcast(new Intent("com.gvideo.com.tencent.av.EXIT_GROUP_VIDEO"));
         sendBroadcast(new Intent("tencent.video.v2g.exitAVGame"));
-        paramView = this.jdField_b_of_type_JavaLangString;
+        paramView = this.l;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("BtnOnClick[qav_gaudio_join], relationId[");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvAppSessionInfo.f);
+        localStringBuilder.append(this.v.aN);
         localStringBuilder.append("], seq[");
         localStringBuilder.append(l);
         localStringBuilder.append("]");
         QLog.w(paramView, 1, localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(308), Long.valueOf(this.jdField_a_of_type_ComTencentAvAppSessionInfo.f) });
-        h();
+        this.e.a(new Object[] { Integer.valueOf(308), Long.valueOf(this.v.aN) });
+        k();
       }
       ReportController.b(null, "CliOper", "", "", "Multi_call", "Multi_call_join", 0, 0, "", "", "", "");
       return;
@@ -110,29 +105,10 @@ public class GaInviteDialogActivity
     super.a(-1036L);
   }
   
-  void b(Intent paramIntent)
+  void c(Intent paramIntent)
   {
-    paramIntent.putExtra("ConfAppID", this.g);
-    paramIntent.putExtra("MeetingConfID", this.jdField_h_of_type_Int);
-  }
-  
-  protected void c()
-  {
-    if ((!NetworkUtil.isWifiConnected(super.getApplicationContext())) && ((NetworkUtil.is3Gor4G(super.getApplicationContext())) || (NetworkUtil.isMobileNetWork(super.getApplicationContext())))) {
-      this.jdField_h_of_type_Boolean = false;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373420));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131373401));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131373414));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373416));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131373423));
-    a(null, 3);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131365624);
-    if (!this.jdField_h_of_type_Boolean) {
-      ((TextView)super.findViewById(2131373426)).setVisibility(0);
-    }
-    super.c();
+    paramIntent.putExtra("ConfAppID", this.M);
+    paramIntent.putExtra("MeetingConfID", this.N);
   }
   
   @Override
@@ -142,6 +118,25 @@ public class GaInviteDialogActivity
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
+  }
+  
+  protected void f()
+  {
+    if ((!NetworkUtil.isWifiConnected(super.getApplicationContext())) && ((NetworkUtil.is3Gor4G(super.getApplicationContext())) || (NetworkUtil.isMobileNetWork(super.getApplicationContext())))) {
+      this.L = false;
+    }
+    this.h = ((TextView)super.findViewById(2131441094));
+    this.k = ((TextView)super.findViewById(2131441075));
+    this.j = ((ImageView)super.findViewById(2131441088));
+    this.J = ((Button)super.findViewById(2131441090));
+    this.I = ((Button)super.findViewById(2131441097));
+    a(null, 3);
+    this.k.setSingleLine();
+    this.K = super.findViewById(2131431855);
+    if (!this.L) {
+      ((TextView)super.findViewById(2131441100)).setVisibility(0);
+    }
+    super.f();
   }
   
   @Override
@@ -154,10 +149,10 @@ public class GaInviteDialogActivity
   public void onCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "onCreate");
+      QLog.d(this.l, 2, "onCreate");
     }
-    super.setTheme(2131755416);
-    super.setContentView(2131559695);
+    super.setTheme(2131952187);
+    super.setContentView(2131625736);
     super.onCreate(paramBundle);
   }
   

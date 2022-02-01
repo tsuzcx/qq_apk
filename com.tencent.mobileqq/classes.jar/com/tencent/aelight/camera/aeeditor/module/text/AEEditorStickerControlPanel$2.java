@@ -20,17 +20,17 @@ class AEEditorStickerControlPanel$2
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (!AEEditorStickerControlPanel.b(this.a))
+    if (!AEEditorStickerControlPanel.f(this.a))
     {
-      paramInt1 = AEEditorStickerControlPanel.a(this.a).findFirstVisibleItemPosition();
-      paramInt1 = MetaMaterialKt.a(AEEditorStickerControlPanel.a(this.a), AEEditorStickerControlPanel.b(this.a), paramInt1);
-      AEEditorStickerControlPanel.a(this.a).a(paramInt1);
+      paramInt1 = AEEditorStickerControlPanel.g(this.a).findFirstVisibleItemPosition();
+      paramInt1 = MetaMaterialKt.a(AEEditorStickerControlPanel.b(this.a), AEEditorStickerControlPanel.c(this.a), paramInt1);
+      AEEditorStickerControlPanel.h(this.a).a(paramInt1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorStickerControlPanel.2
  * JD-Core Version:    0.7.0.1
  */

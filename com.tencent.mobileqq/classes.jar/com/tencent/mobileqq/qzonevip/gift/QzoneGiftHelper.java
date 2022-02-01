@@ -12,7 +12,7 @@ public class QzoneGiftHelper
   
   public QzoneGiftHelper(BaseChatPie paramBaseChatPie)
   {
-    this.a = paramBaseChatPie.a;
+    this.a = paramBaseChatPie.d;
   }
   
   public String getTag()
@@ -38,7 +38,7 @@ public class QzoneGiftHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.QzoneGiftHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,14 @@ import java.util.Iterator;
 
 public abstract class AbstractPredictor
 {
-  private ArrayList<AbstractPredictor> childPredictors = new ArrayList();
+  private static final float DEFAULT_PREDICTION_SHAKE = 0.2F;
+  private final ArrayList<AbstractPredictor> childPredictors = new ArrayList();
   protected long currentPredition;
   protected long prediction;
   
   protected void addChildPredictor(AbstractPredictor paramAbstractPredictor)
   {
-    if (this.childPredictors.indexOf(paramAbstractPredictor) < 0) {
+    if (!this.childPredictors.contains(paramAbstractPredictor)) {
       this.childPredictors.add(paramAbstractPredictor);
     }
   }
@@ -58,7 +59,7 @@ public abstract class AbstractPredictor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.AbstractPredictor
  * JD-Core Version:    0.7.0.1
  */

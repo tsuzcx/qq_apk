@@ -11,14 +11,14 @@ class NotificationActivity$39
   
   public void run()
   {
-    boolean bool = NotificationActivity.access$1500(this.this$0).a();
+    boolean bool = NotificationActivity.access$1500(this.this$0).d();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("receiveLhCard result = ");
     localStringBuilder.append(bool);
     QLog.e("LhHelper", 1, localStringBuilder.toString());
     if (bool)
     {
-      if (NotificationActivity.access$1500(this.this$0).b())
+      if (NotificationActivity.access$1500(this.this$0).e())
       {
         NotificationActivity.access$1600(this.this$0).sendEmptyMessage(5);
         return;
@@ -31,7 +31,7 @@ class NotificationActivity$39
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.39
  * JD-Core Version:    0.7.0.1
  */

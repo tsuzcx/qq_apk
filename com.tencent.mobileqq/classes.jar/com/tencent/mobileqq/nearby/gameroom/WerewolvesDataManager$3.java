@@ -11,15 +11,15 @@ class WerewolvesDataManager$3
   {
     if (this.a.getStatus() == 1000)
     {
-      this.this$0.a.persistOrReplace(this.a);
+      this.this$0.b.persistOrReplace(this.a);
       return;
     }
-    this.this$0.a.update(this.a);
+    this.this$0.b.update(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.3
  * JD-Core Version:    0.7.0.1
  */

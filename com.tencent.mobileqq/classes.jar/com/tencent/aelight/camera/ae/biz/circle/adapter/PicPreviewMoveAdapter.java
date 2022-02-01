@@ -1,14 +1,17 @@
 package com.tencent.aelight.camera.ae.biz.circle.adapter;
 
 import android.content.Context;
+import android.provider.MediaStore.Images.Thumbnails;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic;
+import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
@@ -22,23 +25,36 @@ import java.util.List;
 public class PicPreviewMoveAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private int jdField_a_of_type_Int = 9;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private AECirclePhotoListLogic jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic;
-  private PicPreviewMoveAdapter.PicOperationListener jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter$PicOperationListener;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  public String a = "";
+  private ArrayList<String> b;
+  private LayoutInflater c;
+  private Context d;
+  private int e = 9;
+  private PicPreviewMoveAdapter.PicOperationListener f;
+  private AECirclePhotoListLogic g;
+  private HashMap<String, LocalMediaInfo> h;
   
   public PicPreviewMoveAdapter(@NonNull Context paramContext, AECirclePhotoListLogic paramAECirclePhotoListLogic)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic = paramAECirclePhotoListLogic;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.d = paramContext;
+    this.g = paramAECirclePhotoListLogic;
+    this.c = LayoutInflater.from(paramContext);
+    paramContext = this.g;
+    if ((paramContext != null) && (paramContext.c != null) && (this.g.c.selectedPhotoList != null)) {
+      this.h = this.g.e().selectedMediaInfoHashMap;
+    }
+  }
+  
+  public PicPreviewMoveAdapter(@NonNull Context paramContext, HashMap<String, LocalMediaInfo> paramHashMap)
+  {
+    this.d = paramContext;
+    this.h = paramHashMap;
+    this.c = LayoutInflater.from(paramContext);
   }
   
   private void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.b;
     if (localObject == null) {
       return;
     }
@@ -47,21 +63,21 @@ public class PicPreviewMoveAdapter
       if (paramInt > ((ArrayList)localObject).size()) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic;
-      if ((localObject != null) && (((AECirclePhotoListLogic)localObject).a != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.selectedPhotoList != null))
+      localObject = this.h;
+      if (localObject != null)
       {
-        localObject = (LocalMediaInfo)this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedMediaInfoHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+        localObject = (LocalMediaInfo)((HashMap)localObject).get(this.b.get(paramInt));
         if ((localObject != null) && (localObject != null)) {
           ((LocalMediaInfo)localObject).selectStatus = 2;
         }
         if (localObject != null) {
-          this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedMediaInfoHashMap.remove(((LocalMediaInfo)localObject).path);
+          this.h.remove(((LocalMediaInfo)localObject).path);
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
+      this.b.remove(paramInt);
       notifyItemRemoved(paramInt);
       notifyItemRangeChanged(paramInt, getItemCount() - paramInt);
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter$PicOperationListener;
+      localObject = this.f;
       if (localObject != null) {
         ((PicPreviewMoveAdapter.PicOperationListener)localObject).a(paramInt);
       }
@@ -70,7 +86,7 @@ public class PicPreviewMoveAdapter
   
   public ArrayList<String> a()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList != null) {
       return localArrayList;
     }
@@ -79,7 +95,7 @@ public class PicPreviewMoveAdapter
   
   public void a(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return;
     }
@@ -88,7 +104,7 @@ public class PicPreviewMoveAdapter
       if (paramInt > localArrayList.size()) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
+      this.b.remove(paramInt);
       notifyItemRemoved(paramInt);
       notifyItemRangeChanged(paramInt, getItemCount() - paramInt, "payload");
     }
@@ -96,21 +112,21 @@ public class PicPreviewMoveAdapter
   
   public void a(PicPreviewMoveAdapter.PicOperationListener paramPicOperationListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter$PicOperationListener = paramPicOperationListener;
+    this.f = paramPicOperationListener;
   }
   
   public void a(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.b = paramArrayList;
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList == null) {
       return 0;
     }
@@ -126,21 +142,28 @@ public class PicPreviewMoveAdapter
   {
     if (paramViewHolder.getItemViewType() == 101)
     {
-      Object localObject = (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      Object localObject = (String)this.b.get(paramInt);
       localObject = (PicPreviewMoveAdapter.PicViewHolder)paramViewHolder;
       ((PicPreviewMoveAdapter.PicViewHolder)localObject).itemView.setVisibility(0);
       ((PicPreviewMoveAdapter.PicViewHolder)localObject).a.setVisibility(8);
-      paramViewHolder = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic;
-      if ((paramViewHolder != null) && (paramViewHolder.a != null) && (this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a.selectedPhotoList != null))
+      if (this.a.equals("AutoTemplateMidPage"))
       {
-        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoListLogic.a().selectedMediaInfoHashMap.get(this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+        paramViewHolder = this.b;
+        if ((paramViewHolder != null) && (paramViewHolder.size() == 1)) {
+          PicPreviewMoveAdapter.PicViewHolder.a((PicPreviewMoveAdapter.PicViewHolder)localObject).setVisibility(8);
+        }
+      }
+      paramViewHolder = this.h;
+      if (paramViewHolder != null)
+      {
+        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)paramViewHolder.get(this.b.get(paramInt));
         if (localLocalMediaInfo != null)
         {
           paramInt = QAlbumUtil.getMediaType(localLocalMediaInfo);
           if (paramInt == 0)
           {
-            paramViewHolder = URLDrawableHelper.getDrawable(QAlbumUtil.generateAlbumThumbURL(localLocalMediaInfo));
-            PicPreviewMoveAdapter.PicViewHolder.a((PicPreviewMoveAdapter.PicViewHolder)localObject).setImageDrawable(paramViewHolder);
+            paramViewHolder = MediaStore.Images.Thumbnails.getThumbnail(this.d.getContentResolver(), localLocalMediaInfo._id, 3, null);
+            PicPreviewMoveAdapter.PicViewHolder.b((PicPreviewMoveAdapter.PicViewHolder)localObject).setImageBitmap(paramViewHolder);
             return;
           }
           if (paramInt == 1)
@@ -154,7 +177,7 @@ public class PicPreviewMoveAdapter
             localLocalMediaInfo.thumbHeight = paramInt;
             localLocalMediaInfo.thumbWidth = paramInt;
             paramViewHolder = URLDrawableHelper.getDrawable(paramViewHolder);
-            PicPreviewMoveAdapter.PicViewHolder.a((PicPreviewMoveAdapter.PicViewHolder)localObject).setImageDrawable(paramViewHolder);
+            PicPreviewMoveAdapter.PicViewHolder.b((PicPreviewMoveAdapter.PicViewHolder)localObject).setImageDrawable(paramViewHolder);
             paramViewHolder = ((PicPreviewMoveAdapter.PicViewHolder)localObject).a;
             if ((!localLocalMediaInfo.isSystemMeidaStore) && (localLocalMediaInfo.mDuration <= 0L))
             {
@@ -165,6 +188,14 @@ public class PicPreviewMoveAdapter
             paramViewHolder.setText(QAlbumUtil.formatTimeToString(localLocalMediaInfo.mDuration));
           }
         }
+        else
+        {
+          AEQLog.d("QCirclePicPreviewMoveAdapter", "localMediaInfo == null");
+        }
+      }
+      else
+      {
+        AEQLog.d("QCirclePicPreviewMoveAdapter", "mMediaInfoHashMap == null");
       }
     }
   }
@@ -184,14 +215,14 @@ public class PicPreviewMoveAdapter
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
     if (paramInt == 101) {
-      return new PicPreviewMoveAdapter.PicViewHolder(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2064318513, paramViewGroup, false));
+      return new PicPreviewMoveAdapter.PicViewHolder(this, this.c.inflate(2064056382, paramViewGroup, false));
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.adapter.PicPreviewMoveAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,7 @@ import org.json.JSONObject;
 
 public class SuspiciousTroopConfBean
 {
-  private int a;
-  
-  public SuspiciousTroopConfBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  private int a = 0;
   
   public static SuspiciousTroopConfBean a(QConfItem paramQConfItem)
   {
@@ -24,19 +19,19 @@ public class SuspiciousTroopConfBean
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("parse taskid->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(paramQConfItem.a);
         localStringBuilder.append(" content->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramQConfItem.b);
         QLog.d("SuspiciousTroopConfBean", 2, localStringBuilder.toString());
       }
       try
       {
-        if (paramQConfItem.jdField_a_of_type_JavaLangString == null) {
+        if (paramQConfItem.b == null) {
           paramQConfItem = "";
         } else {
-          paramQConfItem = paramQConfItem.jdField_a_of_type_JavaLangString;
+          paramQConfItem = paramQConfItem.b;
         }
-        localSuspiciousTroopConfBean.jdField_a_of_type_Int = new JSONObject(paramQConfItem).optInt("suspiciousSwitch", 0);
+        localSuspiciousTroopConfBean.a = new JSONObject(paramQConfItem).optInt("suspiciousSwitch", 0);
         return localSuspiciousTroopConfBean;
       }
       catch (JSONException paramQConfItem)
@@ -55,7 +50,7 @@ public class SuspiciousTroopConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.troop.SuspiciousTroopConfBean
  * JD-Core Version:    0.7.0.1
  */

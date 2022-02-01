@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.glue.businesshandler.engine;
 
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 class KandianMergeManager$5
   implements Runnable
@@ -10,13 +9,13 @@ class KandianMergeManager$5
   
   public void run()
   {
-    BaseApplicationImpl.getApplication().registerReceiver(this.this$0.a, new IntentFilter("com.tencent.readinjoy.kandianreport"));
-    KandianMergeManager.b(this.this$0);
+    KandianMergeManager.a(this.this$0);
+    QLog.d("KandianMergeManager", 1, "do method[someInitInSubThread] after syncMsg!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class VoiceChangeData$1
     paramURLDrawable = VoiceChangeData.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getDrawable|urldrawable load failed. url = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
+    localStringBuilder.append(this.c.b);
     AVLog.printErrorLog(paramURLDrawable, localStringBuilder.toString());
   }
   
@@ -21,7 +21,7 @@ class VoiceChangeData$1
     paramURLDrawable = VoiceChangeData.a;
     paramThrowable = new StringBuilder();
     paramThrowable.append("getDrawable|urldrawable load failed. url = ");
-    paramThrowable.append(this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
+    paramThrowable.append(this.c.b);
     AVLog.printErrorLog(paramURLDrawable, paramThrowable.toString());
   }
   
@@ -29,9 +29,9 @@ class VoiceChangeData$1
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    paramURLDrawable = this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack;
+    paramURLDrawable = this.a;
     if (paramURLDrawable != null) {
-      paramURLDrawable.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramURLDrawable.a(this.b);
     }
   }
 }

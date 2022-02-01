@@ -11,12 +11,12 @@ import java.util.List;
 
 public class Validator
 {
-  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
-  private boolean jdField_a_of_type_Boolean = false;
+  private ShareActionSheetV2 a;
+  private boolean b = false;
   
   public Validator(ShareActionSheetV2 paramShareActionSheetV2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
+    this.a = paramShareActionSheetV2;
   }
   
   private void a(String paramString)
@@ -26,7 +26,7 @@ public class Validator
   
   private boolean b()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    List[] arrayOfList = this.a.b();
     int i = 0;
     while (i < arrayOfList.length)
     {
@@ -43,7 +43,7 @@ public class Validator
   
   private boolean c()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    List[] arrayOfList = this.a.b();
     int i = 0;
     while (i < arrayOfList.length)
     {
@@ -60,7 +60,7 @@ public class Validator
   
   private boolean d()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    List[] arrayOfList = this.a.b();
     int i = 0;
     while (i < arrayOfList.length)
     {
@@ -77,7 +77,7 @@ public class Validator
   
   private boolean e()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a;
+    Object localObject = this.a.a;
     if ((localObject instanceof Activity))
     {
       localObject = ((Activity)localObject).getIntent();
@@ -91,7 +91,7 @@ public class Validator
   
   public boolean a()
   {
-    boolean bool2 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = this.b;
     boolean bool1 = true;
     if (!bool2) {
       return true;
@@ -121,7 +121,7 @@ public class Validator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.Validator
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ class OnlineStatusDataManager$2
       if (localIOnlineStatusService.getOnlineStatus() != AppRuntime.Status.online) {
         return;
       }
-      if (!OnLineStatusHelper.a().a(AppRuntime.Status.online, localIOnlineStatusService.getExtOnlineStatus(), false).a) {
+      if (!OnLineStatusHelper.a().a(AppRuntime.Status.online, localIOnlineStatusService.getExtOnlineStatus(), false).j) {
         localIOnlineStatusService.updateOnlineStatus(AppRuntime.Status.online, 0L);
       }
     }
@@ -28,7 +28,7 @@ class OnlineStatusDataManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.manager.OnlineStatusDataManager.2
  * JD-Core Version:    0.7.0.1
  */

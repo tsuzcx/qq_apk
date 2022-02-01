@@ -25,29 +25,6 @@ public class RecentItemRouterDataLine
     super(paramRecentUser);
   }
   
-  private Message a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
-    if (paramQQAppInterface != null)
-    {
-      Message localMessage = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
-      if (localMessage != null)
-      {
-        paramQQAppInterface = localMessage;
-        if (localMessage.msgtype != 0) {}
-      }
-      else
-      {
-        return null;
-      }
-    }
-    else
-    {
-      paramQQAppInterface = null;
-    }
-    return paramQQAppInterface;
-  }
-  
   private CharSequence a(String paramString, boolean paramBoolean1, boolean paramBoolean2, CharSequence paramCharSequence, MsgSummary paramMsgSummary)
   {
     if (paramCharSequence == null)
@@ -124,6 +101,29 @@ public class RecentItemRouterDataLine
     }
   }
   
+  private Message b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
+    if (paramQQAppInterface != null)
+    {
+      Message localMessage = paramQQAppInterface.getLastMessage(this.mUser.uin, this.mUser.getType());
+      if (localMessage != null)
+      {
+        paramQQAppInterface = localMessage;
+        if (localMessage.msgtype != 0) {}
+      }
+      else
+      {
+        return null;
+      }
+    }
+    else
+    {
+      paramQQAppInterface = null;
+    }
+    return paramQQAppInterface;
+  }
+  
   protected void a(Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     if (paramMessage != null)
@@ -144,13 +144,13 @@ public class RecentItemRouterDataLine
       if (paramMessage.msgtype == -1000) {
         a(paramMessage, paramMsgSummary, bool1, bool2);
       } else if (paramMessage.msgtype == -2000) {
-        paramMsgSummary.strContent = a(paramContext.getString(2131718406), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(paramContext.getString(2131915898), bool1, bool2, null, paramMsgSummary);
       } else if (paramMessage.msgtype == -2005) {
-        paramMsgSummary.strContent = a(paramContext.getString(2131692262), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(paramContext.getString(2131889249), bool1, bool2, null, paramMsgSummary);
       } else if (paramMessage.msgtype == -2009) {
-        paramMsgSummary.strContent = a(paramContext.getString(2131720194), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(paramContext.getString(2131917824), bool1, bool2, null, paramMsgSummary);
       } else if (paramMessage.msgtype == -2335) {
-        paramMsgSummary.strContent = a(paramContext.getString(2131692262), bool1, bool2, null, paramMsgSummary);
+        paramMsgSummary.strContent = a(paramContext.getString(2131889249), bool1, bool2, null, paramMsgSummary);
       } else if (paramMessage.msgtype == -2015) {
         paramMsgSummary.strContent = "";
       } else if ((paramMessage.msgtype == -2060) || (paramMessage.msgtype == -2062) || (paramMessage.msgtype == -2066) || (paramMessage.msgtype == -4023) || (paramMessage.msgtype == -4024) || (paramMessage.msgtype == -4025) || (paramMessage.msgtype == -4026) || (paramMessage.msgtype == -4027) || (paramMessage.msgtype == -7010) || (paramMessage.msgtype == -7009) || (paramMessage.msgtype == -7011) || (paramMessage.msgtype == -7012) || (paramMessage.msgtype == -7013) || (paramMessage.msgtype == -7015)) {
@@ -180,17 +180,17 @@ public class RecentItemRouterDataLine
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
       RouterHandler localRouterHandler = (RouterHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.ROUTER_HANDLER);
-      Object localObject1 = a(paramQQAppInterface);
+      Object localObject1 = b(paramQQAppInterface);
       if (localObject1 == null)
       {
         QQMessageFacade localQQMessageFacade = paramQQAppInterface.getMessageFacade();
         String str = UinTypeUtil.a(this.mUser.uin, 6002);
-        localObject2 = localRouterHandler.a(this.mUser.uin);
+        localObject2 = localRouterHandler.b(this.mUser.uin);
         if (localObject2 == null)
         {
           localObject1 = new Message();
           ((Message)localObject1).extInt = 0;
-          ((Message)localObject1).time = MessageCache.a();
+          ((Message)localObject1).time = MessageCache.c();
           ((Message)localObject1).msgtype = 0;
         }
         else
@@ -207,18 +207,18 @@ public class RecentItemRouterDataLine
         }
         localQQMessageFacade.a.put(str, localObject1);
       }
-      this.mTitleName = localRouterHandler.a(Long.parseLong(this.mUser.uin));
+      this.mTitleName = localRouterHandler.c(Long.parseLong(this.mUser.uin));
       this.mDisplayTime = ((Message)localObject1).time;
       Object localObject2 = getMsgSummaryTemp();
       a((Message)localObject1, this.mUser.getType(), paramQQAppInterface, paramContext, (MsgSummary)localObject2);
       a(paramQQAppInterface);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(HardCodeUtil.a(2131713098));
+        paramQQAppInterface.append(HardCodeUtil.a(2131910657));
         paramQQAppInterface.append(this.mUnreadNum);
-        paramQQAppInterface.append(HardCodeUtil.a(2131713101));
+        paramQQAppInterface.append(HardCodeUtil.a(2131910660));
         paramQQAppInterface.append(" ");
         paramQQAppInterface.append(((MsgSummary)localObject2).strContent);
         paramQQAppInterface.append(this.mShowTime);
@@ -229,7 +229,7 @@ public class RecentItemRouterDataLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemRouterDataLine
  * JD-Core Version:    0.7.0.1
  */

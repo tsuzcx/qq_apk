@@ -59,16 +59,19 @@ class ApkgMainProcessManager$6
     {
       if (paramMiniGamePkg.hasNext())
       {
-        paramString = (MiniCmdCallback)paramMiniGamePkg.next();
-        if (paramString == null) {}
+        paramInfo = (MiniCmdCallback)paramMiniGamePkg.next();
+        if (paramInfo == null) {}
       }
       else
       {
         try
         {
-          paramString.onCmdResult(true, new Bundle());
+          Bundle localBundle = new Bundle();
+          localBundle.putInt("retCode", paramInt);
+          localBundle.putString("errMsg", paramString);
+          paramInfo.onCmdResult(true, localBundle);
         }
-        catch (RemoteException paramString) {}
+        catch (RemoteException paramInfo) {}
         return;
       }
     }
@@ -76,7 +79,7 @@ class ApkgMainProcessManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager.6
  * JD-Core Version:    0.7.0.1
  */

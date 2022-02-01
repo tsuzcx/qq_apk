@@ -14,80 +14,43 @@ import androidx.annotation.UiThread;
 
 public class ShapeAppearancePathProvider
 {
-  private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  private final ShapePath jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath = new ShapePath();
-  private boolean jdField_a_of_type_Boolean = true;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[2];
-  private final Matrix[] jdField_a_of_type_ArrayOfAndroidGraphicsMatrix = new Matrix[4];
-  private final ShapePath[] jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath = new ShapePath[4];
-  private final Path jdField_b_of_type_AndroidGraphicsPath = new Path();
-  private final float[] jdField_b_of_type_ArrayOfFloat = new float[2];
-  private final Matrix[] jdField_b_of_type_ArrayOfAndroidGraphicsMatrix = new Matrix[4];
-  private final Path c = new Path();
-  private final Path d = new Path();
+  private final ShapePath[] a = new ShapePath[4];
+  private final Matrix[] b = new Matrix[4];
+  private final Matrix[] c = new Matrix[4];
+  private final PointF d = new PointF();
+  private final Path e = new Path();
+  private final Path f = new Path();
+  private final ShapePath g = new ShapePath();
+  private final float[] h = new float[2];
+  private final float[] i = new float[2];
+  private final Path j = new Path();
+  private final Path k = new Path();
+  private boolean l = true;
   
   public ShapeAppearancePathProvider()
   {
-    int i = 0;
-    while (i < 4)
+    int m = 0;
+    while (m < 4)
     {
-      this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[i] = new ShapePath();
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[i] = new Matrix();
-      this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[i] = new Matrix();
-      i += 1;
+      this.a[m] = new ShapePath();
+      this.b[m] = new Matrix();
+      this.c[m] = new Matrix();
+      m += 1;
     }
-  }
-  
-  private float a(int paramInt)
-  {
-    return (paramInt + 1) * 90;
   }
   
   private float a(@NonNull RectF paramRectF, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].c;
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].d;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].mapPoints(this.jdField_a_of_type_ArrayOfFloat);
+    this.h[0] = this.a[paramInt].c;
+    this.h[1] = this.a[paramInt].d;
+    this.b[paramInt].mapPoints(this.h);
     if ((paramInt != 1) && (paramInt != 3)) {
-      return Math.abs(paramRectF.centerY() - this.jdField_a_of_type_ArrayOfFloat[1]);
+      return Math.abs(paramRectF.centerY() - this.h[1]);
     }
-    return Math.abs(paramRectF.centerX() - this.jdField_a_of_type_ArrayOfFloat[0]);
-  }
-  
-  private CornerSize a(int paramInt, @NonNull ShapeAppearanceModel paramShapeAppearanceModel)
-  {
-    if (paramInt != 1)
-    {
-      if (paramInt != 2)
-      {
-        if (paramInt != 3) {
-          return paramShapeAppearanceModel.b();
-        }
-        return paramShapeAppearanceModel.a();
-      }
-      return paramShapeAppearanceModel.d();
-    }
-    return paramShapeAppearanceModel.c();
+    return Math.abs(paramRectF.centerX() - this.h[0]);
   }
   
   private CornerTreatment a(int paramInt, @NonNull ShapeAppearanceModel paramShapeAppearanceModel)
-  {
-    if (paramInt != 1)
-    {
-      if (paramInt != 2)
-      {
-        if (paramInt != 3) {
-          return paramShapeAppearanceModel.b();
-        }
-        return paramShapeAppearanceModel.a();
-      }
-      return paramShapeAppearanceModel.d();
-    }
-    return paramShapeAppearanceModel.c();
-  }
-  
-  private EdgeTreatment a(int paramInt, @NonNull ShapeAppearanceModel paramShapeAppearanceModel)
   {
     if (paramInt != 1)
     {
@@ -98,7 +61,7 @@ public class ShapeAppearancePathProvider
         }
         return paramShapeAppearanceModel.b();
       }
-      return paramShapeAppearanceModel.a();
+      return paramShapeAppearanceModel.e();
     }
     return paramShapeAppearanceModel.d();
   }
@@ -113,15 +76,15 @@ public class ShapeAppearancePathProvider
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].c();
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].d();
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].mapPoints(this.jdField_a_of_type_ArrayOfFloat);
-    float f = a(paramInt);
-    this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].reset();
-    Matrix localMatrix = this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt];
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    this.h[0] = this.a[paramInt].d();
+    this.h[1] = this.a[paramInt].e();
+    this.b[paramInt].mapPoints(this.h);
+    float f1 = b(paramInt);
+    this.c[paramInt].reset();
+    Matrix localMatrix = this.c[paramInt];
+    float[] arrayOfFloat = this.h;
     localMatrix.setTranslate(arrayOfFloat[0], arrayOfFloat[1]);
-    this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].preRotate(f);
+    this.c[paramInt].preRotate(f1);
   }
   
   private void a(int paramInt, @NonNull RectF paramRectF, @NonNull PointF paramPointF)
@@ -146,25 +109,25 @@ public class ShapeAppearancePathProvider
   
   private void a(@NonNull ShapeAppearancePathProvider.ShapeAppearancePathSpec paramShapeAppearancePathSpec, int paramInt)
   {
-    CornerSize localCornerSize = a(paramInt, paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
-    a(paramInt, paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel).a(this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt], 90.0F, paramShapeAppearancePathSpec.jdField_a_of_type_Float, paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsRectF, localCornerSize);
-    float f = a(paramInt);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].reset();
-    a(paramInt, paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPointF);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].setTranslate(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].preRotate(f);
+    CornerSize localCornerSize = b(paramInt, paramShapeAppearancePathSpec.a);
+    a(paramInt, paramShapeAppearancePathSpec.a).a(this.a[paramInt], 90.0F, paramShapeAppearancePathSpec.e, paramShapeAppearancePathSpec.c, localCornerSize);
+    float f1 = b(paramInt);
+    this.b[paramInt].reset();
+    a(paramInt, paramShapeAppearancePathSpec.c, this.d);
+    this.b[paramInt].setTranslate(this.d.x, this.d.y);
+    this.b[paramInt].preRotate(f1);
   }
   
   @RequiresApi(19)
   private boolean a(Path paramPath, int paramInt)
   {
-    this.d.reset();
-    this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].a(this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], this.d);
+    this.k.reset();
+    this.a[paramInt].a(this.b[paramInt], this.k);
     RectF localRectF = new RectF();
     boolean bool = true;
     paramPath.computeBounds(localRectF, true);
-    this.d.computeBounds(localRectF, true);
-    paramPath.op(this.d, Path.Op.INTERSECT);
+    this.k.computeBounds(localRectF, true);
+    paramPath.op(this.k, Path.Op.INTERSECT);
     paramPath.computeBounds(localRectF, true);
     if (localRectF.isEmpty())
     {
@@ -176,68 +139,105 @@ public class ShapeAppearancePathProvider
     return bool;
   }
   
+  private float b(int paramInt)
+  {
+    return (paramInt + 1) * 90;
+  }
+  
+  private CornerSize b(int paramInt, @NonNull ShapeAppearanceModel paramShapeAppearanceModel)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return paramShapeAppearanceModel.g();
+        }
+        return paramShapeAppearanceModel.f();
+      }
+      return paramShapeAppearanceModel.i();
+    }
+    return paramShapeAppearanceModel.h();
+  }
+  
   private void b(@NonNull ShapeAppearancePathProvider.ShapeAppearancePathSpec paramShapeAppearancePathSpec, int paramInt)
   {
-    this.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].a();
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].b();
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].mapPoints(this.jdField_a_of_type_ArrayOfFloat);
+    this.h[0] = this.a[paramInt].b();
+    this.h[1] = this.a[paramInt].c();
+    this.b[paramInt].mapPoints(this.h);
     Path localPath;
     float[] arrayOfFloat;
     if (paramInt == 0)
     {
-      localPath = paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsPath;
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      localPath = paramShapeAppearancePathSpec.b;
+      arrayOfFloat = this.h;
       localPath.moveTo(arrayOfFloat[0], arrayOfFloat[1]);
     }
     else
     {
-      localPath = paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsPath;
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      localPath = paramShapeAppearancePathSpec.b;
+      arrayOfFloat = this.h;
       localPath.lineTo(arrayOfFloat[0], arrayOfFloat[1]);
     }
-    this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].a(this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsPath);
-    if (paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider$PathListener != null) {
-      paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider$PathListener.a(this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt], this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], paramInt);
+    this.a[paramInt].a(this.b[paramInt], paramShapeAppearancePathSpec.b);
+    if (paramShapeAppearancePathSpec.d != null) {
+      paramShapeAppearancePathSpec.d.a(this.a[paramInt], this.b[paramInt], paramInt);
     }
+  }
+  
+  private EdgeTreatment c(int paramInt, @NonNull ShapeAppearanceModel paramShapeAppearanceModel)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return paramShapeAppearanceModel.l();
+        }
+        return paramShapeAppearanceModel.k();
+      }
+      return paramShapeAppearanceModel.j();
+    }
+    return paramShapeAppearanceModel.m();
   }
   
   private void c(@NonNull ShapeAppearancePathProvider.ShapeAppearancePathSpec paramShapeAppearancePathSpec, int paramInt)
   {
-    int i = (paramInt + 1) % 4;
-    this.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].c();
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[paramInt].d();
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].mapPoints(this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_b_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[i].a();
-    this.jdField_b_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ArrayOfComGoogleAndroidMaterialShapeShapePath[i].b();
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsMatrix[i].mapPoints(this.jdField_b_of_type_ArrayOfFloat);
-    Object localObject = this.jdField_a_of_type_ArrayOfFloat;
+    int m = (paramInt + 1) % 4;
+    this.h[0] = this.a[paramInt].d();
+    this.h[1] = this.a[paramInt].e();
+    this.b[paramInt].mapPoints(this.h);
+    this.i[0] = this.a[m].b();
+    this.i[1] = this.a[m].c();
+    this.b[m].mapPoints(this.i);
+    Object localObject = this.h;
     float f1 = localObject[0];
-    float[] arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
+    float[] arrayOfFloat = this.i;
     f1 = Math.max((float)Math.hypot(f1 - arrayOfFloat[0], localObject[1] - arrayOfFloat[1]) - 0.001F, 0.0F);
-    float f2 = a(paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsRectF, paramInt);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath.a(0.0F, 0.0F);
-    localObject = a(paramInt, paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearanceModel);
-    ((EdgeTreatment)localObject).a(f1, f2, paramShapeAppearancePathSpec.jdField_a_of_type_Float, this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath);
-    this.c.reset();
-    this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath.a(this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], this.c);
-    if ((this.jdField_a_of_type_Boolean) && (Build.VERSION.SDK_INT >= 19) && ((((EdgeTreatment)localObject).a()) || (a(this.c, paramInt)) || (a(this.c, i))))
+    float f2 = a(paramShapeAppearancePathSpec.c, paramInt);
+    this.g.a(0.0F, 0.0F);
+    localObject = c(paramInt, paramShapeAppearancePathSpec.a);
+    ((EdgeTreatment)localObject).a(f1, f2, paramShapeAppearancePathSpec.e, this.g);
+    this.j.reset();
+    this.g.a(this.c[paramInt], this.j);
+    if ((this.l) && (Build.VERSION.SDK_INT >= 19) && ((((EdgeTreatment)localObject).f()) || (a(this.j, paramInt)) || (a(this.j, m))))
     {
-      localObject = this.c;
-      ((Path)localObject).op((Path)localObject, this.jdField_b_of_type_AndroidGraphicsPath, Path.Op.DIFFERENCE);
-      this.jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath.a();
-      this.jdField_a_of_type_ArrayOfFloat[1] = this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath.b();
-      this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt].mapPoints(this.jdField_a_of_type_ArrayOfFloat);
-      localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-      arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      localObject = this.j;
+      ((Path)localObject).op((Path)localObject, this.f, Path.Op.DIFFERENCE);
+      this.h[0] = this.g.b();
+      this.h[1] = this.g.c();
+      this.c[paramInt].mapPoints(this.h);
+      localObject = this.e;
+      arrayOfFloat = this.h;
       ((Path)localObject).moveTo(arrayOfFloat[0], arrayOfFloat[1]);
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath.a(this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], this.jdField_a_of_type_AndroidGraphicsPath);
+      this.g.a(this.c[paramInt], this.e);
     }
     else
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath.a(this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], paramShapeAppearancePathSpec.jdField_a_of_type_AndroidGraphicsPath);
+      this.g.a(this.c[paramInt], paramShapeAppearancePathSpec.b);
     }
-    if (paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider$PathListener != null) {
-      paramShapeAppearancePathSpec.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapeAppearancePathProvider$PathListener.b(this.jdField_a_of_type_ComGoogleAndroidMaterialShapeShapePath, this.jdField_b_of_type_ArrayOfAndroidGraphicsMatrix[paramInt], paramInt);
+    if (paramShapeAppearancePathSpec.d != null) {
+      paramShapeAppearancePathSpec.d.b(this.g, this.c[paramInt], paramInt);
     }
   }
   
@@ -250,39 +250,39 @@ public class ShapeAppearancePathProvider
   public void a(ShapeAppearanceModel paramShapeAppearanceModel, float paramFloat, RectF paramRectF, ShapeAppearancePathProvider.PathListener paramPathListener, @NonNull Path paramPath)
   {
     paramPath.rewind();
-    this.jdField_a_of_type_AndroidGraphicsPath.rewind();
-    this.jdField_b_of_type_AndroidGraphicsPath.rewind();
-    this.jdField_b_of_type_AndroidGraphicsPath.addRect(paramRectF, Path.Direction.CW);
+    this.e.rewind();
+    this.f.rewind();
+    this.f.addRect(paramRectF, Path.Direction.CW);
     paramShapeAppearanceModel = new ShapeAppearancePathProvider.ShapeAppearancePathSpec(paramShapeAppearanceModel, paramFloat, paramRectF, paramPathListener, paramPath);
-    int k = 0;
-    int i = 0;
-    int j;
+    int i1 = 0;
+    int m = 0;
+    int n;
     for (;;)
     {
-      j = k;
-      if (i >= 4) {
+      n = i1;
+      if (m >= 4) {
         break;
       }
-      a(paramShapeAppearanceModel, i);
-      a(i);
-      i += 1;
+      a(paramShapeAppearanceModel, m);
+      a(m);
+      m += 1;
     }
-    while (j < 4)
+    while (n < 4)
     {
-      b(paramShapeAppearanceModel, j);
-      c(paramShapeAppearanceModel, j);
-      j += 1;
+      b(paramShapeAppearanceModel, n);
+      c(paramShapeAppearanceModel, n);
+      n += 1;
     }
     paramPath.close();
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-    if ((Build.VERSION.SDK_INT >= 19) && (!this.jdField_a_of_type_AndroidGraphicsPath.isEmpty())) {
-      paramPath.op(this.jdField_a_of_type_AndroidGraphicsPath, Path.Op.UNION);
+    this.e.close();
+    if ((Build.VERSION.SDK_INT >= 19) && (!this.e.isEmpty())) {
+      paramPath.op(this.e, Path.Op.UNION);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.ShapeAppearancePathProvider
  * JD-Core Version:    0.7.0.1
  */

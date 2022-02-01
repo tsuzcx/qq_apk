@@ -7,9 +7,9 @@ public abstract interface IAVGameAppInterface
 {
   public abstract AVGameClientQIPCModule a();
   
-  public abstract IAVGameBusinessCtrl a();
-  
   public abstract void b(int paramInt);
+  
+  public abstract IAVGameBusinessCtrl c();
 }
 
 

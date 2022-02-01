@@ -21,10 +21,10 @@ class RobotAdapter$1
     if ((localObject != null) && ((localObject instanceof RobotAdapter.ViewHolder)))
     {
       localObject = (RobotAdapter.ViewHolder)localObject;
-      ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).openRobotProfileCard(RobotAdapter.a(this.a), RobotAdapter.a(this.a), ((RobotAdapter.ViewHolder)localObject).a);
-      ITroopRobotService localITroopRobotService = (ITroopRobotService)RobotAdapter.a(this.a).getRuntimeService(ITroopRobotService.class, "all");
-      if ((localITroopRobotService != null) && (localITroopRobotService.isRobotUinNeedShowRed(RobotAdapter.a(this.a), ((RobotAdapter.ViewHolder)localObject).a, RobotAdapter.a(this.a)))) {
-        localITroopRobotService.removeRobotUinInRed(RobotAdapter.a(this.a), ((RobotAdapter.ViewHolder)localObject).a);
+      ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).openRobotProfileCard(RobotAdapter.a(this.a), RobotAdapter.b(this.a), ((RobotAdapter.ViewHolder)localObject).a);
+      ITroopRobotService localITroopRobotService = (ITroopRobotService)RobotAdapter.c(this.a).getRuntimeService(ITroopRobotService.class, "all");
+      if ((localITroopRobotService != null) && (localITroopRobotService.isRobotUinNeedShowRed(RobotAdapter.c(this.a), ((RobotAdapter.ViewHolder)localObject).a, RobotAdapter.b(this.a)))) {
+        localITroopRobotService.removeRobotUinInRed(RobotAdapter.c(this.a), ((RobotAdapter.ViewHolder)localObject).a);
       }
       if (RobotAdapter.a(this.a) != null) {
         ReportController.b(RobotAdapter.a(this.a).app, "dc00898", "", "", "", "0X8009F9F", 0, 0, ((RobotAdapter.ViewHolder)localObject).a, "", "", "");
@@ -35,7 +35,7 @@ class RobotAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RobotAdapter.1
  * JD-Core Version:    0.7.0.1
  */

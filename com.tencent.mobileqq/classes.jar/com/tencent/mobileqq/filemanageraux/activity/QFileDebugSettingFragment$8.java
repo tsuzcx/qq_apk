@@ -24,10 +24,10 @@ class QFileDebugSettingFragment$8
     default: 
       i = j;
       break;
-    case 2131365390: 
+    case 2131431590: 
       i = 65793;
       break;
-    case 2131365389: 
+    case 2131431589: 
       i = 68361;
     }
     Object localObject = this.a.getBaseActivity().app;
@@ -44,7 +44,7 @@ class QFileDebugSettingFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment.8
  * JD-Core Version:    0.7.0.1
  */

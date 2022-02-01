@@ -15,18 +15,18 @@ class ReadinjoyCommentListBaseAdapter$4$1
   {
     if (NetworkState.isNetSupport())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter$4.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$ReportCommentDialogClickListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter$4.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentUtils$ReportCommentDialogClickListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+      if (this.c.d != null) {
+        this.c.d.a(this.a, this.b, paramInt);
       }
     }
     else {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter$4.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter.a, 1, HardCodeUtil.a(2131699853), 0).a();
+      QQToast.makeText(this.c.e.c, 1, HardCodeUtil.a(2131897902), 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadinjoyCommentListBaseAdapter.4.1
  * JD-Core Version:    0.7.0.1
  */

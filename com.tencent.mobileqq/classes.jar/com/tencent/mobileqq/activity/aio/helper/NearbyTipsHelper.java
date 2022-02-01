@@ -15,18 +15,18 @@ public class NearbyTipsHelper
   
   protected void a()
   {
-    if (((NearbyContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).k()) {
+    if (((NearbyContext)this.c).P()) {
       return;
     }
     super.a();
-    NearbyMarketGrayTips localNearbyMarketGrayTips = new NearbyMarketGrayTips(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager);
-    localNearbyMarketGrayTips.a(((NearbyContext)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext).f());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(localNearbyMarketGrayTips);
+    NearbyMarketGrayTips localNearbyMarketGrayTips = new NearbyMarketGrayTips(this.d, this.g, this.f);
+    localNearbyMarketGrayTips.a(((NearbyContext)this.c).Q());
+    this.f.b(localNearbyMarketGrayTips);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.NearbyTipsHelper
  * JD-Core Version:    0.7.0.1
  */

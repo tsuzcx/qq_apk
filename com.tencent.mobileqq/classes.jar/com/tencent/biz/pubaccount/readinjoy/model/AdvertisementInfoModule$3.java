@@ -67,15 +67,15 @@ class AdvertisementInfoModule$3
               paramBundle = paramBundle.optJSONArray("data");
               if ((paramBundle != null) && (paramBundle.length() > 0))
               {
-                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson = paramBundle.getJSONObject(0).toString();
+                this.a.mAdAppJson = paramBundle.getJSONObject(0).toString();
                 if (QLog.isColorLevel())
                 {
                   paramBundle = new StringBuilder();
                   paramBundle.append("back  data json ");
-                  paramBundle.append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson);
+                  paramBundle.append(this.a.mAdAppJson);
                   QLog.d("AdvertisementInfoModule", 2, paramBundle.toString());
                 }
-                ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+                ((IReadInJoyLogicEngineFactory)QRoute.api(IReadInJoyLogicEngineFactory.class)).createReadInJoyLogicEngine().N().a(this.a);
                 return;
               }
             }
@@ -94,7 +94,7 @@ class AdvertisementInfoModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule.3
  * JD-Core Version:    0.7.0.1
  */

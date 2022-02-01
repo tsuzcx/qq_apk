@@ -9,14 +9,14 @@ class MagicfaceBaseDecoder$1
   {
     int i = Thread.currentThread().getPriority();
     Thread.currentThread().setPriority(10);
-    String str = this.this$0.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.b();
+    String str = this.this$0.a.i();
     MagicfaceBaseDecoder localMagicfaceBaseDecoder = this.this$0;
-    localMagicfaceBaseDecoder.jdField_a_of_type_Boolean = true;
+    localMagicfaceBaseDecoder.d = true;
     localMagicfaceBaseDecoder.b(str);
-    int j = this.this$0.a();
+    int j = this.this$0.e();
     localMagicfaceBaseDecoder = this.this$0;
-    localMagicfaceBaseDecoder.jdField_a_of_type_Boolean = false;
-    localMagicfaceBaseDecoder.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.b();
+    localMagicfaceBaseDecoder.d = false;
+    localMagicfaceBaseDecoder.a.b();
     this.this$0.a(str, j);
     Thread.currentThread().setPriority(i);
   }

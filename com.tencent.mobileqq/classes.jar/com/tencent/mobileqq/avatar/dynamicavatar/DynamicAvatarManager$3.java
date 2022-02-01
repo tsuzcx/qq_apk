@@ -16,32 +16,32 @@ class DynamicAvatarManager$3
   
   public void run()
   {
-    synchronized (this.this$0.c)
+    synchronized (this.this$0.i)
     {
-      boolean bool1 = this.this$0.c.contains(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+      boolean bool1 = this.this$0.i.contains(this.a.x);
       if (bool1)
       {
-        if (DynamicFaceDrawable.jdField_b_of_type_Boolean) {
-          synchronized (this.this$0.c)
+        if (DynamicFaceDrawable.f) {
+          synchronized (this.this$0.i)
           {
-            this.this$0.c.remove(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
-            synchronized (this.this$0.d)
+            this.this$0.i.remove(this.a.x);
+            synchronized (this.this$0.j)
             {
-              if (!this.this$0.d.contains(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference)) {
-                this.this$0.d.add(this.this$0.d.size(), this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+              if (!this.this$0.j.contains(this.a.x)) {
+                this.this$0.j.add(this.this$0.j.size(), this.a.x);
               }
             }
           }
         }
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.g))
+        if ((!TextUtils.isEmpty(this.a.n)) && (!this.a.r))
         {
-          DynamicAvatarManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_c_of_type_JavaLangString);
+          DynamicAvatarManager.a(this.this$0, this.b, this.a.n, this.a.o);
           return;
         }
         Object localObject4 = null;
         try
         {
-          ??? = this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_a_of_type_JavaLangString);
+          ??? = this.this$0.a(this.a.l, this.a.j);
         }
         catch (NullPointerException localNullPointerException)
         {
@@ -54,11 +54,11 @@ class DynamicAvatarManager$3
         }
         if (??? != null)
         {
-          int i = this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.e;
+          int i = this.a.s;
           boolean bool2 = true;
-          if ((i == 1) || (this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.e == 0))
+          if ((i == 1) || (this.a.s == 0))
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.e == 0 ? !DynamicAvatarManager.a(this.this$0).i : !DynamicAvatarManager.a(this.this$0).j) {
+            if (this.a.s == 0 ? !DynamicAvatarManager.b(this.this$0).n : !DynamicAvatarManager.b(this.this$0).o) {
               bool1 = true;
             } else {
               bool1 = false;
@@ -76,19 +76,19 @@ class DynamicAvatarManager$3
                 ((StringBuilder)???).append(" playedSameDay:");
                 ((StringBuilder)???).append(bool2);
                 ((StringBuilder)???).append(" uin:");
-                ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+                ((StringBuilder)???).append(this.b);
                 QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)???).toString());
               }
-              synchronized (this.this$0.c)
+              synchronized (this.this$0.i)
               {
-                this.this$0.c.remove(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+                this.this$0.i.remove(this.a.x);
                 return;
               }
             }
           }
         }
-        Object localObject6 = DynamicAvatarManager.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_a_of_type_JavaLangString);
-        bool1 = DynamicAvatarManager.a(this.this$0, (DynamicAvatar)???, (Setting)localObject6, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_Int);
+        Object localObject6 = DynamicAvatarManager.a(this.this$0, this.a.l, this.a.j);
+        bool1 = DynamicAvatarManager.a(this.this$0, (DynamicAvatar)???, (Setting)localObject6, this.a.k);
         if (QLog.isColorLevel())
         {
           localObject6 = new StringBuilder();
@@ -96,10 +96,10 @@ class DynamicAvatarManager$3
           ((StringBuilder)localObject6).append(bool1);
           QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject6).toString());
         }
-        if ((!bool1) && (!this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.g))
+        if ((!bool1) && (!this.a.r))
         {
-          localObject6 = DynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.d, (DynamicAvatar)???);
-          ??? = DynamicAvatarManager.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_Int, 640, (DynamicAvatar)???);
+          localObject6 = DynamicAvatarManager.a(this.a.k, this.a.m, (DynamicAvatar)???);
+          ??? = DynamicAvatarManager.a(this.a.k, 640, (DynamicAvatar)???);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
@@ -107,23 +107,23 @@ class DynamicAvatarManager$3
             localStringBuilder.append((String)localObject6);
             QLog.i("Q.dynamicAvatar", 2, localStringBuilder.toString());
           }
-          DynamicAvatarManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, (String)localObject6, (String)???);
+          DynamicAvatarManager.a(this.this$0, this.b, (String)localObject6, (String)???);
           return;
         }
         for (;;)
         {
           try
           {
-            ((DynamicAvatarInfoHandler)DynamicAvatarManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.DYNAMIC_AVATAR_HANDLER)).a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.d, this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_c_of_type_Boolean);
+            ((DynamicAvatarInfoHandler)DynamicAvatarManager.a(this.this$0).getBusinessHandler(BusinessHandlerFactory.DYNAMIC_AVATAR_HANDLER)).a(Long.valueOf(this.a.j), this.a.l, this.a.k, this.a.m, this.a.g);
             return;
           }
           catch (Exception localException)
           {
             continue;
           }
-          synchronized (this.this$0.c)
+          synchronized (this.this$0.i)
           {
-            this.this$0.c.remove(this.jdField_a_of_type_ComTencentMobileqqAppFaceDynamicFaceDrawable.jdField_b_of_type_MqqUtilWeakReference);
+            this.this$0.i.remove(this.a.x);
             return;
           }
         }
@@ -134,7 +134,7 @@ class DynamicAvatarManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.3
  * JD-Core Version:    0.7.0.1
  */

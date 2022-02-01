@@ -12,58 +12,47 @@ import com.google.android.material.badge.BadgeUtils;
 
 public class TabLayout$Tab
 {
-  private int jdField_a_of_type_Int = -1;
-  @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  @Nullable
-  private View jdField_a_of_type_AndroidViewView;
-  @NonNull
-  public TabLayout.TabView a;
   @Nullable
   public TabLayout a;
+  @NonNull
+  public TabLayout.TabView b;
   @Nullable
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private Object c;
   @Nullable
-  private Object jdField_a_of_type_JavaLangObject;
+  private Drawable d;
+  @Nullable
+  private CharSequence e;
+  @Nullable
+  private CharSequence f;
+  private int g = -1;
+  @Nullable
+  private View h;
   @TabLayout.LabelVisibility
-  private int jdField_b_of_type_Int = 1;
-  @Nullable
-  private CharSequence jdField_b_of_type_JavaLangCharSequence;
-  private int c = -1;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
+  private int i = 1;
+  private int j = -1;
   
   @Nullable
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.h;
   }
   
   @NonNull
   public Tab a(@LayoutRes int paramInt)
   {
-    return a(LayoutInflater.from(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView.getContext()).inflate(paramInt, this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView, false));
+    return a(LayoutInflater.from(this.b.getContext()).inflate(paramInt, this.b, false));
   }
   
   @NonNull
   public Tab a(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    if ((this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.h == 1) || (this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.k == 2)) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout.a(true);
+    this.d = paramDrawable;
+    if ((this.a.p == 1) || (this.a.s == 2)) {
+      this.a.a(true);
     }
-    b();
-    if ((BadgeUtils.a) && (TabLayout.TabView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView)) && (TabLayout.TabView.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView).isVisible())) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView.invalidate();
+    h();
+    if ((BadgeUtils.a) && (TabLayout.TabView.a(this.b)) && (TabLayout.TabView.b(this.b).isVisible())) {
+      this.b.invalidate();
     }
     return this;
   }
@@ -71,91 +60,102 @@ public class TabLayout$Tab
   @NonNull
   public Tab a(@Nullable View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    b();
+    this.h = paramView;
+    h();
     return this;
   }
   
   @NonNull
   public Tab a(@Nullable CharSequence paramCharSequence)
   {
-    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangCharSequence)) && (!TextUtils.isEmpty(paramCharSequence))) {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView.setContentDescription(paramCharSequence);
+    if ((TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(paramCharSequence))) {
+      this.b.setContentDescription(paramCharSequence);
     }
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    b();
+    this.e = paramCharSequence;
+    h();
     return this;
   }
   
   @Nullable
-  public CharSequence a()
+  public Drawable b()
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
-  }
-  
-  public void a()
-  {
-    TabLayout localTabLayout = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-    if (localTabLayout != null)
-    {
-      localTabLayout.b(this);
-      return;
-    }
-    throw new IllegalArgumentException("Tab not attached to a TabLayout");
-  }
-  
-  void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    TabLayout localTabLayout = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout;
-    if (localTabLayout != null) {
-      return localTabLayout.b() == this.jdField_a_of_type_Int;
-    }
-    throw new IllegalArgumentException("Tab not attached to a TabLayout");
-  }
-  
-  @TabLayout.LabelVisibility
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
+    return this.d;
   }
   
   @NonNull
   public Tab b(@Nullable CharSequence paramCharSequence)
   {
-    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
-    b();
+    this.f = paramCharSequence;
+    h();
     return this;
   }
   
-  void b()
+  void b(int paramInt)
   {
-    TabLayout.TabView localTabView = this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView;
+    this.g = paramInt;
+  }
+  
+  public int c()
+  {
+    return this.g;
+  }
+  
+  @Nullable
+  public CharSequence d()
+  {
+    return this.e;
+  }
+  
+  @TabLayout.LabelVisibility
+  public int e()
+  {
+    return this.i;
+  }
+  
+  public void f()
+  {
+    TabLayout localTabLayout = this.a;
+    if (localTabLayout != null)
+    {
+      localTabLayout.c(this);
+      return;
+    }
+    throw new IllegalArgumentException("Tab not attached to a TabLayout");
+  }
+  
+  public boolean g()
+  {
+    TabLayout localTabLayout = this.a;
+    if (localTabLayout != null) {
+      return localTabLayout.getSelectedTabPosition() == this.g;
+    }
+    throw new IllegalArgumentException("Tab not attached to a TabLayout");
+  }
+  
+  void h()
+  {
+    TabLayout.TabView localTabView = this.b;
     if (localTabView != null) {
       localTabView.b();
     }
   }
   
-  void c()
+  void i()
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout = null;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$TabView = null;
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.c = -1;
-    this.jdField_a_of_type_JavaLangCharSequence = null;
-    this.jdField_b_of_type_JavaLangCharSequence = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.j = -1;
+    this.e = null;
+    this.f = null;
+    this.g = -1;
+    this.h = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.Tab
  * JD-Core Version:    0.7.0.1
  */

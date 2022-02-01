@@ -43,7 +43,7 @@ public class QIMDoodleConfigProcessor
     if (!((IPtvTemplateManager)QRoute.api(IPtvTemplateManager.class)).isDoodleConfigFileExist()) {
       return 0;
     }
-    return SharedPreUtils.l(BaseApplicationImpl.getContext());
+    return SharedPreUtils.q(BaseApplicationImpl.getContext());
   }
   
   @Nullable
@@ -51,7 +51,7 @@ public class QIMDoodleConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0))
     {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -90,7 +90,7 @@ public class QIMDoodleConfigProcessor
     if (!((IPtvTemplateManager)QRoute.api(IPtvTemplateManager.class)).isDoodleConfigFileExist())
     {
       QLog.i("QIMDoodleConfigProcessor", 1, "config file not exist");
-      QConfigManager.a().a(310, 0);
+      QConfigManager.b().a(310, 0);
       return 0;
     }
     return super.onSend(paramInt);
@@ -110,7 +110,7 @@ public class QIMDoodleConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.config.QIMDoodleConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

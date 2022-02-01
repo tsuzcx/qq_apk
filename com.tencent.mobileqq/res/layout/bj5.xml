@@ -22,6 +22,6 @@
             <View android:background="@drawable/hx8" android:layout_width="14.0dip" android:layout_height="14.0dip" />
             <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="#ffb0b3bf" android:id="@id/dav" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="大事件大事件" />
         </LinearLayout>
-        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/daw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yv" android:layout_marginRight="@dimen/yv" android:layout_marginBottom="@dimen/ap2" android:text="图片描述" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="@color/black" android:id="@id/daw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yv" android:layout_marginRight="@dimen/yv" android:layout_marginBottom="@dimen/ap2" android:text="图片描述" />
     </LinearLayout>
 </merge>

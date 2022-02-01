@@ -74,7 +74,7 @@ public class DataLineDownloader
         int i = 0;
         localOptions.inJustDecodeBounds = false;
         localOptions.inSampleSize = calculateInSampleSize(localOptions, k, m);
-        Object localObject = FilePicURLDrawlableHelper.a(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
+        Object localObject1 = FilePicURLDrawlableHelper.a(paramDatalineDownLoadInfo.photoInfo.path, localOptions);
         k = AIOUtils.b(135.0F, BaseApplicationImpl.getContext().getResources());
         if (localOptions.outHeight > localOptions.outWidth * 2.0F)
         {
@@ -85,26 +85,27 @@ public class DataLineDownloader
         {
           i = j;
           if (localOptions.outWidth <= localOptions.outHeight * 2.0F) {
-            break label365;
+            break label370;
           }
           i = (int)((localOptions.outWidth - localOptions.outHeight * 2.0F) / 2.0F);
           localOptions.outWidth = ((int)(localOptions.outHeight * 2.0F));
-          break label365;
+          break label370;
         }
-        Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject, i, j, localOptions.outWidth, localOptions.outHeight);
+        Object localObject2 = Bitmap.createBitmap((Bitmap)localObject1, i, j, localOptions.outWidth, localOptions.outHeight);
         if (localOptions.outWidth <= k)
         {
-          localObject = localBitmap;
+          localObject1 = localObject2;
           if (localOptions.outHeight <= k) {}
         }
         else
         {
-          localObject = ImageUtil.a(localBitmap, k);
+          localObject1 = ImageUtil.a((Bitmap)localObject2, k);
         }
-        if (localObject != null) {
-          ((IPicUtil)QRoute.api(IPicUtil.class)).getExifBitmap(paramDatalineDownLoadInfo.photoInfo.path, (Bitmap)localObject);
+        localObject2 = localObject1;
+        if (localObject1 != null) {
+          localObject2 = ((IPicUtil)QRoute.api(IPicUtil.class)).getExifBitmap(paramDatalineDownLoadInfo.photoInfo.path, (Bitmap)localObject1);
         }
-        return localObject;
+        return localObject2;
       }
       catch (OutOfMemoryError paramDatalineDownLoadInfo)
       {
@@ -121,7 +122,7 @@ public class DataLineDownloader
         }
       }
       return null;
-      label365:
+      label370:
       int j = 0;
     }
   }
@@ -172,8 +173,8 @@ public class DataLineDownloader
     if (localObject == null)
     {
       paramURLDrawableHandler = BaseApplicationImpl.getContext();
-      int i = FileManagerUtil.a(paramFile.getPath());
-      paramURLDrawableHandler = drawableToBitmap(paramURLDrawableHandler.getResources().getDrawable(FileManagerUtil.a(i)));
+      int i = FileManagerUtil.c(paramFile.getPath());
+      paramURLDrawableHandler = drawableToBitmap(paramURLDrawableHandler.getResources().getDrawable(FileManagerUtil.c(i)));
     }
     paramFile = parseUrl(paramDownloadParams.url);
     if ((paramFile != null) && (paramFile.isDrawRound))
@@ -223,7 +224,7 @@ public class DataLineDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DataLineDownloader
  * JD-Core Version:    0.7.0.1
  */

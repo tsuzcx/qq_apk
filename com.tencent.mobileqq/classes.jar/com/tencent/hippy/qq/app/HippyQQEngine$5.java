@@ -14,33 +14,27 @@ class HippyQQEngine$5
   
   public void handleJsException(HippyJsException paramHippyJsException)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Hippy: handleJsException:");
-      localStringBuilder.append(paramHippyJsException);
-      QLog.d("Hippy", 2, localStringBuilder.toString());
-    }
-    HippyReporter.getInstance().reportException(HippyQQEngine.access$300(this.this$0), this.this$0.mModuleVersion, 1, paramHippyJsException);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleJsException exception:");
+    localStringBuilder.append(paramHippyJsException);
+    QLog.e("Hippy", 1, localStringBuilder.toString());
+    HippyReporter.getInstance().reportException(HippyQQEngine.access$300(this.this$0), this.this$0.mModuleVersion, 1, paramHippyJsException, this.this$0.generateReportExtraParams());
   }
   
   public void handleNativeException(Exception paramException, boolean paramBoolean)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Hippy: handleNativeException haveCaught:");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append(" exception:");
-      localStringBuilder.append(paramException);
-      QLog.d("Hippy", 2, localStringBuilder.toString());
-    }
-    HippyReporter.getInstance().reportException(HippyQQEngine.access$300(this.this$0), this.this$0.mModuleVersion, 2, paramException);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleNativeExceptionhaveCaught:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" exception:");
+    localStringBuilder.append(paramException);
+    QLog.e("Hippy", 1, localStringBuilder.toString());
+    HippyReporter.getInstance().reportException(HippyQQEngine.access$300(this.this$0), this.this$0.mModuleVersion, 2, paramException, this.this$0.generateReportExtraParams());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQEngine.5
  * JD-Core Version:    0.7.0.1
  */

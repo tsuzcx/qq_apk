@@ -60,14 +60,14 @@ public class ProfileAccountInfoHeaderComponent
     ArrayList localArrayList = new ArrayList();
     int i = ProfileAccountInfoUtils.getGenderWithPrivacy(paramProfileCardInfo);
     if (i == 0) {
-      localArrayList.add(new SpannableString(paramContext.getString(2131693879)));
+      localArrayList.add(new SpannableString(paramContext.getString(2131891484)));
     } else if (i == 1) {
-      localArrayList.add(new SpannableString(paramContext.getString(2131692259)));
+      localArrayList.add(new SpannableString(paramContext.getString(2131889246)));
     }
     String str = ProfileAccountInfoUtils.getSchoolWithPrivacy(paramProfileCardInfo);
     if (!TextUtils.isEmpty(str)) {
       if (paramProfileCardInfo.card.schoolVerifiedFlag) {
-        localArrayList.add(((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).makeSchoolAuthenticationIcon(str, true, 2130845178, 2131298260, 2131298259, paramContext, paramAppInterface));
+        localArrayList.add(((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).makeSchoolAuthenticationIcon(str, true, 2130846620, 2131298961, 2131298960, paramContext, paramAppInterface));
       } else {
         localArrayList.add(new SpannableString(str));
       }
@@ -80,7 +80,7 @@ public class ProfileAccountInfoHeaderComponent
     paramContext = ProfileAccountInfoUtils.getLocationProvinceWithPrivacy(paramProfileCardInfo);
     str = ProfileAccountInfoUtils.getLocationCityWithPrivacy(paramProfileCardInfo);
     StringBuilder localStringBuilder = new StringBuilder();
-    if ((!TextUtils.isEmpty(paramAppInterface)) && (!HardCodeUtil.a(2131708444).equals(paramAppInterface))) {
+    if ((!TextUtils.isEmpty(paramAppInterface)) && (!HardCodeUtil.a(2131906230).equals(paramAppInterface))) {
       localStringBuilder.append(paramAppInterface);
     }
     if (!TextUtils.isEmpty(paramContext))
@@ -114,7 +114,7 @@ public class ProfileAccountInfoHeaderComponent
   private void initAccountInfo()
   {
     if (this.mViewContainer != null) {
-      this.mActivity.getLayoutInflater().inflate(2131561320, (ViewGroup)this.mViewContainer);
+      this.mActivity.getLayoutInflater().inflate(2131627676, (ViewGroup)this.mViewContainer);
     }
   }
   
@@ -132,7 +132,7 @@ public class ProfileAccountInfoHeaderComponent
         i = 0;
       }
       if ((paramBoolean) && (i != 0)) {
-        paramCard.add(new SpannableString(this.mActivity.getString(2131699164)));
+        paramCard.add(new SpannableString(this.mActivity.getString(2131897180)));
       }
       boolean bool1 = paramCard.isEmpty() ^ true;
       boolean bool2 = this.mConfigHelper.isSwitchEnable(12);
@@ -142,7 +142,7 @@ public class ProfileAccountInfoHeaderComponent
       if ((bool1) && (!bool2))
       {
         ((View)this.mViewContainer).setVisibility(0);
-        TextView localTextView = (TextView)((View)this.mViewContainer).findViewById(2131378460);
+        TextView localTextView = (TextView)((View)this.mViewContainer).findViewById(2131447062);
         if (localTextView != null)
         {
           localTextView.setText(combineAccountInfo(paramCard));
@@ -172,7 +172,7 @@ public class ProfileAccountInfoHeaderComponent
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378460)
+    if (paramView.getId() == 2131447062)
     {
       ((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).jumpProfileOpenDetails((ProfileCardInfo)this.mData, this.mApp, this.mActivity);
       if (((IProfileCardBusinessApi)QRoute.api(IProfileCardBusinessApi.class)).isDefaultProfile((ProfileCardInfo)this.mData))
@@ -210,7 +210,7 @@ public class ProfileAccountInfoHeaderComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoHeaderComponent
  * JD-Core Version:    0.7.0.1
  */

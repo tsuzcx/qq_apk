@@ -27,17 +27,17 @@ public class RIJAdJumpServiceImpl
   
   public Integer openAppFromGdtApi(Context paramContext, AdvertisementInfo paramAdvertisementInfo, int paramInt, boolean paramBoolean, AdJumpParams paramAdJumpParams)
   {
-    return ReadinJoyActionUtil.d(paramContext, paramAdvertisementInfo, null, paramInt, paramBoolean, paramAdJumpParams);
+    return ReadinJoyActionUtil.e(paramContext, paramAdvertisementInfo, null, paramInt, paramBoolean, paramAdJumpParams);
   }
   
   public boolean openAppFromGdtApi(Context paramContext, AdvertisementInfo paramAdvertisementInfo, int paramInt, boolean paramBoolean)
   {
-    return ReadinJoyActionUtil.a(paramContext, paramAdvertisementInfo, null, paramInt, paramBoolean);
+    return ReadinJoyActionUtil.b(paramContext, paramAdvertisementInfo, null, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.ad.api.impl.RIJAdJumpServiceImpl
  * JD-Core Version:    0.7.0.1
  */

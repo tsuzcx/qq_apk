@@ -24,7 +24,15 @@ public class AIOUnreadQIPCClient
     return AIOUnreadQIPCClient.AIOClientClass.a();
   }
   
-  public static void a()
+  private void a(int paramInt1, String paramString, int paramInt2)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((AIOUnreadListener)localIterator.next()).a(paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public static void b()
   {
     try
     {
@@ -38,14 +46,6 @@ public class AIOUnreadQIPCClient
     catch (Exception localException)
     {
       QLog.e("AIOUnreadQIPCClient", 1, "register ipc module error.", localException);
-    }
-  }
-  
-  private void a(int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((AIOUnreadListener)localIterator.next()).a(paramInt1, paramString, paramInt2);
     }
   }
   
@@ -81,7 +81,7 @@ public class AIOUnreadQIPCClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOUnreadQIPCClient
  * JD-Core Version:    0.7.0.1
  */

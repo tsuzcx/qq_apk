@@ -13,11 +13,11 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 public class QIdentityCircleLayout
   extends FrameLayout
 {
-  private final float jdField_a_of_type_Float = 0.75F;
-  private int jdField_a_of_type_Int;
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private final float jdField_b_of_type_Float = 0.55F;
-  private int jdField_b_of_type_Int;
+  private Path a = new Path();
+  private final float b = 0.75F;
+  private final float c = 0.55F;
+  private int d;
+  private int e;
   
   public QIdentityCircleLayout(Context paramContext)
   {
@@ -41,14 +41,14 @@ public class QIdentityCircleLayout
   {
     float f = ScreenUtil.getInstantScreenWidth(getContext());
     int i = (int)(f / 0.75F);
-    this.jdField_a_of_type_Int = ((int)(f * 0.55F));
-    this.jdField_b_of_type_Int = ((int)(i * 0.55F));
+    this.d = ((int)(f * 0.55F));
+    this.e = ((int)(i * 0.55F));
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
     int i = paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.clipPath(this.a);
     super.dispatchDraw(paramCanvas);
     paramCanvas.restoreToCount(i);
   }
@@ -56,32 +56,32 @@ public class QIdentityCircleLayout
   public void draw(Canvas paramCanvas)
   {
     int i = paramCanvas.save();
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.clipPath(this.a);
     super.draw(paramCanvas);
     paramCanvas.restoreToCount(i);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, -2147483648), View.MeasureSpec.makeMeasureSpec(this.jdField_b_of_type_Int, -2147483648));
+    setMeasuredDimension(this.d, this.e);
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(this.d, -2147483648), View.MeasureSpec.makeMeasureSpec(this.e, -2147483648));
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt3 = Math.min(paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.a.reset();
     RectF localRectF = new RectF((paramInt1 - paramInt3) / 2.0F, (paramInt2 - paramInt3) / 2.0F, (paramInt1 + paramInt3) / 2.0F, (paramInt2 + paramInt3) / 2.0F);
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    Path localPath = this.a;
     float f = paramInt3 / 2.0F;
     localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    this.a.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QIdentityCircleLayout
  * JD-Core Version:    0.7.0.1
  */

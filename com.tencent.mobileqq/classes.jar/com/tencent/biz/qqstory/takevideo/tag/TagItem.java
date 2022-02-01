@@ -9,22 +9,22 @@ import org.json.JSONObject;
 
 public class TagItem
 {
-  public final int a;
   public final TagItem.TagInfoBase a;
-  public final String a;
+  public final int b;
+  public final String c;
   
   public TagItem(qqstory_struct.TagItem paramTagItem)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase = new TagItem.TagInfoBase((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
-    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
-    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
+    this.a = new TagItem.TagInfoBase((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.b = paramTagItem.join_count.get();
+    this.c = paramTagItem.wording.get();
   }
   
   public TagItem(TagItem.TagInfoBase paramTagInfoBase, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase = paramTagInfoBase;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramTagInfoBase;
+    this.b = paramInt;
+    this.c = paramString;
   }
   
   public String a()
@@ -32,15 +32,15 @@ public class TagItem
     Object localObject = new JSONObject();
     try
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase == null) {
+      if (this.a == null) {
         return null;
       }
-      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.b);
-      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_id", this.a.a);
+      ((JSONObject)localObject).put("tag_name", this.a.b);
+      ((JSONObject)localObject).put("tag_desc", this.a.c);
+      ((JSONObject)localObject).put("tag_type", this.a.d);
+      ((JSONObject)localObject).put("join_count", this.b);
+      ((JSONObject)localObject).put("wording", this.c);
       ((JSONObject)localObject).put("one_page", 1);
       ((JSONObject)localObject).put("src_type", "web");
       ((JSONObject)localObject).put("version", 1);
@@ -62,18 +62,18 @@ public class TagItem
         return false;
       }
       paramObject = (TagItem)paramObject;
-      TagItem.TagInfoBase localTagInfoBase = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;
+      TagItem.TagInfoBase localTagInfoBase = this.a;
       if (localTagInfoBase != null) {
-        return localTagInfoBase.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+        return localTagInfoBase.equals(paramObject.a);
       }
-      return paramObject.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase == null;
+      return paramObject.a == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    TagItem.TagInfoBase localTagInfoBase = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;
+    TagItem.TagInfoBase localTagInfoBase = this.a;
     if (localTagInfoBase != null) {
       return localTagInfoBase.hashCode();
     }
@@ -84,11 +84,11 @@ public class TagItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TagItem{tagInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", joinCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", wording='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

@@ -1,22 +1,22 @@
 package com.tencent.aelight.camera.ae.gif.giftext.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import com.tencent.aelight.camera.ae.gif.RecognizedEmotionBean;
-import com.tencent.aelight.camera.aebase.lifecycle.GlobalViewModel;
 
 public class AEGIFRecommandTextViewModel
-  extends GlobalViewModel
+  extends ViewModel
 {
-  private MutableLiveData<RecognizedEmotionBean> a = new MutableLiveData();
+  private static MutableLiveData<RecognizedEmotionBean> a = new MutableLiveData();
   
-  public MutableLiveData<RecognizedEmotionBean> a()
+  public static MutableLiveData<RecognizedEmotionBean> a()
   {
-    return this.a;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.viewmodel.AEGIFRecommandTextViewModel
  * JD-Core Version:    0.7.0.1
  */

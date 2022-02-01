@@ -12,14 +12,14 @@ class FileModelAdapter$6
   @TargetApi(5)
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction())) && (FileModelAdapter.a(this.a) != null)) {
-      FileModelAdapter.a(this.a).g();
+    if (("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction())) && (FileModelAdapter.b(this.a) != null)) {
+      FileModelAdapter.b(this.a).h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.openbrowser.FileModelAdapter.6
  * JD-Core Version:    0.7.0.1
  */

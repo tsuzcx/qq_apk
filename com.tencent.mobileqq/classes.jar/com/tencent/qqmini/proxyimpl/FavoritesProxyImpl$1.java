@@ -14,12 +14,12 @@ class FavoritesProxyImpl$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
+    Object localObject = this.a;
     String str1 = this.b;
     String str2 = this.c;
     String str3 = this.d;
     String str4 = this.e;
-    boolean bool = QfavBuilder.a(8, (String)localObject, str1, str2, str3, str4, str4, null, true, 0L).b("sBizDataList", this.jdField_a_of_type_JavaUtilArrayList).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).a(this.jdField_a_of_type_AndroidContentContext);
+    boolean bool = QfavBuilder.a(8, (String)localObject, str1, str2, str3, str4, str4, null, true, 0L).b("sBizDataList", this.f).b(this.g, this.h).a(this.i);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("addToQQFavorites done, res = ");
     ((StringBuilder)localObject).append(bool);
@@ -28,7 +28,7 @@ class FavoritesProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.FavoritesProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

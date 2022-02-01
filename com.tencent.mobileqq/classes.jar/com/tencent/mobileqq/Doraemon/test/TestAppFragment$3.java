@@ -18,27 +18,27 @@ class TestAppFragment$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    paramDialogInterface = this.a.getText().toString();
     Object localObject1 = this.b.getText().toString();
     if ((!TextUtils.isEmpty(paramDialogInterface)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment;
-      ((TestAppFragment)localObject2).c = paramDialogInterface;
-      ((TestAppFragment)localObject2).jdField_a_of_type_Int = Integer.parseInt((String)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getQBaseActivity(), this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Int, paramDialogInterface);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getActivity();
+      Object localObject2 = this.c;
+      ((TestAppFragment)localObject2).e = paramDialogInterface;
+      ((TestAppFragment)localObject2).f = Integer.parseInt((String)localObject1);
+      this.c.c = ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(this.c.getQBaseActivity(), this.c.f, paramDialogInterface);
+      localObject1 = this.c.getActivity();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("appid切换为:");
       ((StringBuilder)localObject2).append(paramDialogInterface);
-      QQToast.a((Context)localObject1, ((StringBuilder)localObject2).toString(), 1).a();
+      QQToast.makeText((Context)localObject1, ((StringBuilder)localObject2).toString(), 1).show();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.getQBaseActivity(), HardCodeUtil.a(2131714658), 1).a();
+    QQToast.makeText(this.c.getQBaseActivity(), HardCodeUtil.a(2131912167), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.3
  * JD-Core Version:    0.7.0.1
  */

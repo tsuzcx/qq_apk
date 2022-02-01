@@ -7,46 +7,46 @@ import mqq.os.MqqHandler;
 public class HeartBeat
   implements Runnable
 {
-  private WriteTogetherWebSocketSender jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketSender;
-  private HeartBeatMsg jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private WriteTogetherWebSocketSender b;
+  private HeartBeatMsg c;
   
   HeartBeat(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketSender = paramWriteTogetherWebSocketSender;
+    this.b = paramWriteTogetherWebSocketSender;
   }
   
   HeartBeatMsg a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg;
+    return this.c;
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg = new HeartBeatMsg(paramString1, paramString2);
+    this.c = new HeartBeatMsg(paramString1, paramString2);
   }
   
   void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      HeartBeatMsg localHeartBeatMsg = this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketMsgHeartBeatMsg;
+      HeartBeatMsg localHeartBeatMsg = this.c;
       if (localHeartBeatMsg == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetherWebsocketWriteTogetherWebSocketSender.a(localHeartBeatMsg);
+      this.b.a(localHeartBeatMsg);
       ThreadManager.getSubThreadHandler().postDelayed(this, 30000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.websocket.HeartBeat
  * JD-Core Version:    0.7.0.1
  */

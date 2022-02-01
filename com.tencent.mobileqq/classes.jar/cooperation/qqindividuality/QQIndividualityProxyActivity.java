@@ -18,20 +18,20 @@ public class QQIndividualityProxyActivity
 {
   public static boolean a(Activity paramActivity, Intent paramIntent, String paramString1, String paramString2, Class<? extends Activity> paramClass, Dialog paramDialog, int paramInt)
   {
-    QQIndividualityPluginProxyService.a();
+    QQIndividualityPluginProxyService.d();
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
-    localPluginParams.e = PluginInfo.m;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString1;
-    localPluginParams.f = paramString2;
-    localPluginParams.jdField_a_of_type_JavaLangClass = paramClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = paramInt;
-    localPluginParams.d = 30000;
-    localPluginParams.g = null;
-    localPluginParams.jdField_b_of_type_Boolean = false;
+    localPluginParams.d = "qqindividuality_plugin.apk";
+    localPluginParams.g = PluginInfo.m;
+    localPluginParams.c = paramString1;
+    localPluginParams.h = paramString2;
+    localPluginParams.i = paramClass;
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = paramInt;
+    localPluginParams.r = 30000;
+    localPluginParams.q = null;
+    localPluginParams.p = false;
     IPluginManager.a(paramActivity, localPluginParams);
     if ((paramString2.equals("com.qqindividuality.activity.QQIndividualitySignatureActivity")) && ((paramActivity instanceof QQIndividualityBridgeActivity)) && (paramDialog != null)) {
       paramActivity.finish();
@@ -66,7 +66,7 @@ public class QQIndividualityProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityProxyActivity
  * JD-Core Version:    0.7.0.1
  */

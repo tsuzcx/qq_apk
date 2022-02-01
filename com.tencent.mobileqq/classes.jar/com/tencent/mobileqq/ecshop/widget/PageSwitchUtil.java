@@ -32,7 +32,7 @@ public final class PageSwitchUtil
     HashMap localHashMap = new HashMap();
     localHashMap.put("_source", "tab");
     localIntent.putExtra("jump_url", EcshopUtils.a(paramString, (Map)localHashMap, false));
-    localIntent.putExtra("req_qgg_title", EcshopUtils.a());
+    localIntent.putExtra("req_qgg_title", EcshopUtils.c());
     localIntent.putExtra("tab_id", paramInt);
     localIntent.putExtra("req_qgg_hide_tab", false);
     localIntent.putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId("3046055438"));
@@ -55,9 +55,9 @@ public final class PageSwitchUtil
     localObject = new Intent(paramContext, ((IChatActivityApi)localObject).getChatActivityClass());
     ((Intent)localObject).putExtra("uin", "3046055438");
     ((Intent)localObject).putExtra("uintype", 1008);
-    ((Intent)localObject).putExtra("uinname", paramContext.getResources().getString(2131691856));
+    ((Intent)localObject).putExtra("uinname", paramContext.getResources().getString(2131888821));
     ((Intent)localObject).putExtra("req_qgg_hide_tab", false);
-    ((Intent)localObject).putExtra("leftViewText", paramContext.getString(2131690706));
+    ((Intent)localObject).putExtra("leftViewText", paramContext.getString(2131887625));
     ((Intent)localObject).setFlags(4194304);
     paramContext.startActivity((Intent)localObject);
     if ((paramContext instanceof Activity))
@@ -82,9 +82,10 @@ public final class PageSwitchUtil
     localBundle.putSerializable("qqshopParams", (Serializable)localSerializableMap);
     localBundle.putString("errorUrl", EcshopUtils.a(paramString, localMap, false));
     localBundle.putString("bundleName", "qqshop");
+    localBundle.putString("domain", "qianbao.qq.com");
     localIntent.putExtra("params", localBundle);
     localIntent.putExtra("tab_id", paramInt);
-    localIntent.putExtra("req_qgg_title", EcshopUtils.a());
+    localIntent.putExtra("req_qgg_title", EcshopUtils.c());
     localIntent.putExtra("req_qgg_hide_tab", false);
     localIntent.putExtra("big_brother_source_key", ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId("3046055438"));
     localIntent.putExtra("public_fragment_window_feature", 1);
@@ -100,7 +101,7 @@ public final class PageSwitchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.widget.PageSwitchUtil
  * JD-Core Version:    0.7.0.1
  */

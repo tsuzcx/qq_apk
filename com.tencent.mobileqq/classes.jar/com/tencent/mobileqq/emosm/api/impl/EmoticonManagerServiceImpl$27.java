@@ -16,14 +16,14 @@ class EmoticonManagerServiceImpl$27
     File localFile = this.this$0.app.getApplication().getFilesDir();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("recommemd_emotion_file__");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(this.this$0.app.getCurrentUin());
-    FileUtils.pushData2File(new File(localFile, localStringBuilder.toString()).getAbsolutePath(), this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.toByteArray(), false);
+    FileUtils.pushData2File(new File(localFile, localStringBuilder.toString()).getAbsolutePath(), this.b.toByteArray(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.EmoticonManagerServiceImpl.27
  * JD-Core Version:    0.7.0.1
  */

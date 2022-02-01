@@ -5,19 +5,19 @@ import java.util.HashSet;
 
 public class MsgBackupRequest
 {
-  public int a;
-  public long a;
-  public IMsgBackupRequestCallback a;
-  public String a;
   public HashSet<RecentBaseData> a;
-  public boolean a;
   public int b;
-  public long b;
-  public int c;
+  public long c;
+  public long d;
+  public boolean e;
+  public int f;
+  public int g;
+  public IMsgBackupRequestCallback h;
+  public String i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupRequest
  * JD-Core Version:    0.7.0.1
  */

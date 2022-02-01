@@ -11,17 +11,17 @@ class FileAppInfo$1
   
   public void a()
   {
-    FileAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoFileAppInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    FileAppInfo.access$000(this.c, this.a, this.b);
   }
   
   public void b()
   {
-    FileAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoFileAppInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    FileAppInfo.access$000(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.FileAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,32 +6,27 @@ import android.graphics.Matrix;
 class TransitionAnimHelper$MatrixEvaluator
   implements TypeEvaluator<Matrix>
 {
-  public static TypeEvaluator<Matrix> a;
-  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  float[] jdField_a_of_type_ArrayOfFloat = new float[9];
+  public static TypeEvaluator<Matrix> a = new TransitionAnimHelper.MatrixEvaluator.1();
   float[] b = new float[9];
-  
-  static
-  {
-    jdField_a_of_type_AndroidAnimationTypeEvaluator = new TransitionAnimHelper.MatrixEvaluator.1();
-  }
+  float[] c = new float[9];
+  Matrix d = new Matrix();
   
   public Matrix a(float paramFloat, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    paramMatrix1.getValues(this.jdField_a_of_type_ArrayOfFloat);
-    paramMatrix2.getValues(this.b);
+    paramMatrix1.getValues(this.b);
+    paramMatrix2.getValues(this.c);
     int i = 0;
     while (i < 9)
     {
-      paramMatrix1 = this.b;
+      paramMatrix1 = this.c;
       float f1 = paramMatrix1[i];
-      paramMatrix2 = this.jdField_a_of_type_ArrayOfFloat;
+      paramMatrix2 = this.b;
       float f2 = paramMatrix2[i];
       paramMatrix2[i] += (f1 - f2) * paramFloat;
       i += 1;
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setValues(this.b);
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    this.d.setValues(this.c);
+    return this.d;
   }
 }
 

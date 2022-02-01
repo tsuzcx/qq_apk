@@ -20,19 +20,19 @@ class NotificationActivity$3
   {
     paramDialogInterface = new StringBuilder();
     paramDialogInterface.append("setPositiveButton.onClick: invoked.  isDialogShow: ");
-    paramDialogInterface.append(NotificationActivity.access$000(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+    paramDialogInterface.append(NotificationActivity.access$000(this.b));
     QLog.i("NotificationActivity", 1, paramDialogInterface.toString());
     paramDialogInterface = new Bundle();
     paramDialogInterface.putString("password", null);
     paramDialogInterface = new Intent().putExtras(paramDialogInterface).addFlags(67108864);
-    RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, paramDialogInterface, "/base/login");
+    RouteUtils.a(this.b, paramDialogInterface, "/base/login");
     try
     {
-      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_ComTencentImsSignature$SignatureKickData.str_url.get()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity(paramDialogInterface);
+      paramDialogInterface = new Intent("android.intent.action.VIEW", Uri.parse(this.a.str_url.get()));
+      this.b.startActivity(paramDialogInterface);
       label110:
-      NotificationActivity.access$100().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, false, false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+      NotificationActivity.access$100().a(this.b, false, false);
+      this.b.finish();
       return;
     }
     catch (Exception paramDialogInterface)
@@ -43,7 +43,7 @@ class NotificationActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.3
  * JD-Core Version:    0.7.0.1
  */

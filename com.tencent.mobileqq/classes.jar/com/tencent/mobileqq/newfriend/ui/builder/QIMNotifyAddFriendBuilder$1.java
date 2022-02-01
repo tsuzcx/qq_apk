@@ -12,13 +12,13 @@ class QIMNotifyAddFriendBuilder$1
   
   public void run()
   {
-    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).deleteQIMNotifyAddFriendData(((QIMNotifyAddFriendMsg)this.this$0.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a, this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(new QIMNotifyAddFriendBuilder.1.1(this));
+    ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).deleteQIMNotifyAddFriendData(((QIMNotifyAddFriendMsg)this.this$0.g).a, this.this$0.d);
+    this.this$0.d.runOnUiThread(new QIMNotifyAddFriendBuilder.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.QIMNotifyAddFriendBuilder.1
  * JD-Core Version:    0.7.0.1
  */

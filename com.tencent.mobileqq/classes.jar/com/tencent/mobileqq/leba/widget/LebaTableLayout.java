@@ -15,9 +15,8 @@ public class LebaTableLayout
   public int d;
   public int e;
   public int f;
-  public int g;
-  public int h = 3;
-  private int i;
+  public int g = 3;
+  private int h;
   
   public LebaTableLayout(Context paramContext)
   {
@@ -36,27 +35,27 @@ public class LebaTableLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int j = getChildCount();
-    if (j > 0)
+    int i = getChildCount();
+    if (i > 0)
     {
-      if (this.h == 0) {
+      if (this.g == 0) {
         return;
       }
-      paramInt1 = this.f;
-      paramInt2 = this.d;
+      paramInt1 = this.e;
+      paramInt2 = this.c;
       paramInt3 = 0;
-      while (paramInt3 < j)
+      while (paramInt3 < i)
       {
         View localView = getChildAt(paramInt3);
-        int k = this.i;
-        localView.layout(paramInt1, paramInt2, paramInt1 + k, paramInt2 + k);
-        paramInt1 += this.b + k;
+        int j = this.h;
+        localView.layout(paramInt1, paramInt2, paramInt1 + j, paramInt2 + j);
+        paramInt1 += this.a + j;
         paramInt4 = paramInt3 + 1;
         paramInt3 = paramInt4;
-        if (paramInt4 % this.h == 0)
+        if (paramInt4 % this.g == 0)
         {
-          paramInt1 = this.f;
-          paramInt2 += k + this.c;
+          paramInt1 = this.e;
+          paramInt2 += j + this.b;
           paramInt3 = paramInt4;
         }
       }
@@ -66,30 +65,30 @@ public class LebaTableLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int j = getChildCount();
+    int i = getChildCount();
     paramInt2 = 0;
-    if ((j > 0) && (this.h != 0))
+    if ((i > 0) && (this.g != 0))
     {
-      int k = View.MeasureSpec.getSize(paramInt1);
-      paramInt1 = this.f;
-      int m = this.g;
-      int n = this.b;
-      int i1 = this.h;
-      this.i = ((k - paramInt1 - m - n * (i1 - 1)) / i1);
-      m = this.i;
+      int j = View.MeasureSpec.getSize(paramInt1);
+      paramInt1 = this.e;
+      int k = this.f;
+      int m = this.a;
+      int n = this.g;
+      this.h = ((j - paramInt1 - k - m * (n - 1)) / n);
+      k = this.h;
       paramInt1 = paramInt2;
-      while (paramInt1 < j)
+      while (paramInt1 < i)
       {
-        measureChild(getChildAt(paramInt1), View.MeasureSpec.makeMeasureSpec(this.i, 1073741824), View.MeasureSpec.makeMeasureSpec(m, 1073741824));
+        measureChild(getChildAt(paramInt1), View.MeasureSpec.makeMeasureSpec(this.h, 1073741824), View.MeasureSpec.makeMeasureSpec(k, 1073741824));
         paramInt1 += 1;
       }
-      paramInt1 = this.h;
-      if (j % paramInt1 == 0) {
-        paramInt1 = j / paramInt1;
+      paramInt1 = this.g;
+      if (i % paramInt1 == 0) {
+        paramInt1 = i / paramInt1;
       } else {
-        paramInt1 = j / paramInt1 + 1;
+        paramInt1 = i / paramInt1 + 1;
       }
-      setMeasuredDimension(k, m * paramInt1 + this.c * ((j - 1) / this.h) + this.d + this.e);
+      setMeasuredDimension(j, k * paramInt1 + this.b * ((i - 1) / this.g) + this.c + this.d);
       return;
     }
     setMeasuredDimension(0, 0);
@@ -97,7 +96,7 @@ public class LebaTableLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.widget.LebaTableLayout
  * JD-Core Version:    0.7.0.1
  */

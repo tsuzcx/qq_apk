@@ -64,7 +64,7 @@ public class QZoneSharePictureJsPlugin
   private static final String ARG_SUPPORT_MULTI_PIECES_CALLBACK = "supportMultiPiecesCallback";
   private static final String ARG_USE_ORIGIN = "useSample";
   private static final String ARG_USE_PATH = "usePath";
-  private static final String DISK_FULL_MSG = HardCodeUtil.a(2131712276);
+  private static final String DISK_FULL_MSG = HardCodeUtil.a(2131909876);
   private static final String NAMESPACE = "Qzone";
   private static final int RESULT_CANCEL = 1;
   private static final int RESULT_FAILURE = -1;
@@ -230,13 +230,13 @@ public class QZoneSharePictureJsPlugin
     {
       QLog.e("QZoneSharePictureJsPlugin", 1, "callJS OutOfMemoryError 内存不足", paramString2);
       if (QZLog.isDevelopLevel()) {
-        ToastUtil.a().a(HardCodeUtil.a(2131712266));
+        ToastUtil.a().a(HardCodeUtil.a(2131909867));
       }
       try
       {
         paramString2 = new JSONObject();
         paramString2.put("retCode", -1);
-        paramString2.put("msg", HardCodeUtil.a(2131712278));
+        paramString2.put("msg", HardCodeUtil.a(2131909878));
         paramString2 = paramString2.toString();
         if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null))
         {
@@ -525,12 +525,12 @@ public class QZoneSharePictureJsPlugin
       localObject2 = new File(str2);
       if (!((File)localObject2).exists())
       {
-        callJS(paramString, -1, HardCodeUtil.a(2131712272));
+        callJS(paramString, -1, HardCodeUtil.a(2131909873));
         return;
       }
       if (!((File)localObject2).canWrite())
       {
-        callJS(paramString, -1, HardCodeUtil.a(2131712275));
+        callJS(paramString, -1, HardCodeUtil.a(2131909875));
         return;
       }
       if (appendFileContent(str2, (String)localObject1)) {
@@ -549,7 +549,7 @@ public class QZoneSharePictureJsPlugin
           return;
         }
       }
-      callJS(paramString, -1, HardCodeUtil.a(2131712281));
+      callJS(paramString, -1, HardCodeUtil.a(2131909881));
       return;
     }
     catch (JSONException paramString)
@@ -594,13 +594,13 @@ public class QZoneSharePictureJsPlugin
       paramString = CacheManager.getWebviewOfflineFileCacheService().getDir();
       if (TextUtils.isEmpty(paramString))
       {
-        callJS((String)localObject2, -1, HardCodeUtil.a(2131712274));
+        callJS((String)localObject2, -1, HardCodeUtil.a(2131909874));
         return;
       }
       try
       {
         localObject1 = new File(paramString);
-        if ((!FileUtil.b(paramString)) && (!((File)localObject1).mkdirs()))
+        if ((!FileUtil.d(paramString)) && (!((File)localObject1).mkdirs()))
         {
           QLog.e("QZoneSharePictureJsPlugin", 1, DISK_FULL_MSG);
           callJS((String)localObject2, -1, DISK_FULL_MSG);
@@ -644,7 +644,7 @@ public class QZoneSharePictureJsPlugin
           callJS((String)localObject2, 0, "", (JSONObject)localObject1);
           return;
         }
-        callJS((String)localObject2, -1, HardCodeUtil.a(2131712295));
+        callJS((String)localObject2, -1, HardCodeUtil.a(2131909895));
         return;
       }
       catch (Exception paramString)
@@ -691,7 +691,7 @@ public class QZoneSharePictureJsPlugin
               break label303;
             }
             Object localObject3 = CacheManager.getWebviewOfflineFileCacheService().getPath((String)localObject2);
-            boolean bool = FileUtil.c((String)localObject3);
+            boolean bool = FileUtil.e((String)localObject3);
             localJSONObject.put((String)localObject2, bool);
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("delete file ");
@@ -892,7 +892,7 @@ public class QZoneSharePictureJsPlugin
         }
         callJS(this.callback, i, paramVarArgs, (JSONObject)localObject3);
         paramVarArgs = QZoneHelper.UserInfo.getInstance();
-        QZoneHelper.forwardToPublishMood(paramPluginRuntime.a(), paramVarArgs, (String)localObject2, HardCodeUtil.a(2131712289), localInterruptedException, -1);
+        QZoneHelper.forwardToPublishMood(paramPluginRuntime.d(), paramVarArgs, (String)localObject2, HardCodeUtil.a(2131909889), localInterruptedException, -1);
         return;
       }
       catch (Throwable paramPluginRuntime)
@@ -937,7 +937,7 @@ public class QZoneSharePictureJsPlugin
           if (TextUtils.isEmpty((CharSequence)localObject2))
           {
             QLog.i("QZoneSharePictureJsPlugin", 1, "saveByteBufferToLocalFile catch exception");
-            makeText(HardCodeUtil.a(2131712287));
+            makeText(HardCodeUtil.a(2131909887));
             return;
           }
           Object localObject3;
@@ -948,7 +948,7 @@ public class QZoneSharePictureJsPlugin
             ((StringBuilder)localObject3).append((String)localObject2);
             QLog.d("QZoneSharePictureJsPlugin", 1, ((StringBuilder)localObject3).toString());
           }
-          if ((!TextUtils.isEmpty(str)) && (paramPluginRuntime != null) && (paramPluginRuntime.a() != null))
+          if ((!TextUtils.isEmpty(str)) && (paramPluginRuntime != null) && (paramPluginRuntime.d() != null))
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("share type is ");
@@ -1050,13 +1050,13 @@ public class QZoneSharePictureJsPlugin
                   paramVarArgs = (String[])localObject1;
                 }
               }
-              ForwardBaseOption.a(paramPluginRuntime.a(), localIntent, paramVarArgs, i, -1, "");
+              ForwardBaseOption.a(paramPluginRuntime.d(), localIntent, paramVarArgs, i, -1, "");
             }
           }
-          paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.a());
+          paramPluginRuntime = paramPluginRuntime.a(paramPluginRuntime.d());
           if ((paramPluginRuntime != null) && ((paramPluginRuntime instanceof WebUiUtils.WebShareInterface)))
           {
-            paramPluginRuntime = ((Share)((WebUiUtils.WebShareInterface)paramPluginRuntime).getShare()).a();
+            paramPluginRuntime = ((Share)((WebUiUtils.WebShareInterface)paramPluginRuntime).getShare()).u();
             if ((paramPluginRuntime != null) && (paramPluginRuntime.isShowing())) {
               paramPluginRuntime.dismiss();
             }
@@ -1070,7 +1070,7 @@ public class QZoneSharePictureJsPlugin
           paramVarArgs.append("Base64.decode Exception: ");
           paramVarArgs.append(paramPluginRuntime.toString());
           QLog.w("QZoneSharePictureJsPlugin", 1, paramVarArgs.toString());
-          makeText(HardCodeUtil.a(2131712265));
+          makeText(HardCodeUtil.a(2131909866));
           return;
         }
         if (paramPluginRuntime != null) {
@@ -1102,7 +1102,7 @@ public class QZoneSharePictureJsPlugin
   private void makeText(String paramString)
   {
     if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null)) {
-      QQToast.a(this.parentPlugin.mRuntime.a().getContext(), paramString, 0).a();
+      QQToast.makeText(this.parentPlugin.mRuntime.a().getContext(), paramString, 0).show();
     }
   }
   
@@ -1112,18 +1112,18 @@ public class QZoneSharePictureJsPlugin
     if (i == 0)
     {
       i = 0;
-      paramBaseResp = HardCodeUtil.a(2131712297);
+      paramBaseResp = HardCodeUtil.a(2131909897);
       makeText(paramBaseResp);
     }
     else if (i == -2)
     {
-      paramBaseResp = HardCodeUtil.a(2131712288);
+      paramBaseResp = HardCodeUtil.a(2131909888);
       makeText(paramBaseResp);
       i = 1;
     }
     else
     {
-      paramBaseResp = HardCodeUtil.a(2131712285);
+      paramBaseResp = HardCodeUtil.a(2131909885);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("wx share fail:");
       localStringBuilder.append(i);
@@ -1145,7 +1145,7 @@ public class QZoneSharePictureJsPlugin
     //   12: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: pop
     //   16: aload_3
-    //   17: invokestatic 535	java/lang/System:currentTimeMillis	()J
+    //   17: invokestatic 534	java/lang/System:currentTimeMillis	()J
     //   20: invokestatic 978	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   23: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: pop
@@ -1171,7 +1171,7 @@ public class QZoneSharePictureJsPlugin
     //   62: invokevirtual 453	java/io/File:exists	()Z
     //   65: ifne +9 -> 74
     //   68: aload 5
-    //   70: invokevirtual 491	java/io/File:mkdirs	()Z
+    //   70: invokevirtual 490	java/io/File:mkdirs	()Z
     //   73: pop
     //   74: new 449	java/io/File
     //   77: dup
@@ -1182,7 +1182,7 @@ public class QZoneSharePictureJsPlugin
     //   84: invokevirtual 453	java/io/File:exists	()Z
     //   87: ifne +8 -> 95
     //   90: aload_3
-    //   91: invokevirtual 540	java/io/File:createNewFile	()Z
+    //   91: invokevirtual 539	java/io/File:createNewFile	()Z
     //   94: pop
     //   95: new 141	java/io/FileOutputStream
     //   98: dup
@@ -1600,12 +1600,12 @@ public class QZoneSharePictureJsPlugin
     if (paramInt == -1)
     {
       paramInt = 0;
-      paramIntent = HardCodeUtil.a(2131712303);
+      paramIntent = HardCodeUtil.a(2131909902);
     }
     else
     {
       paramInt = 1;
-      paramIntent = HardCodeUtil.a(2131712269);
+      paramIntent = HardCodeUtil.a(2131909870);
     }
     callJS(this.callback, paramInt, paramIntent);
   }
@@ -1620,7 +1620,7 @@ public class QZoneSharePictureJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin
  * JD-Core Version:    0.7.0.1
  */

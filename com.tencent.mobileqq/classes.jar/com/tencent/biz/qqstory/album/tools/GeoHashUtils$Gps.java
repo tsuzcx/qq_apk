@@ -19,18 +19,18 @@ public class GeoHashUtils$Gps
     return this.a;
   }
   
-  public qqstory_struct.GpsMsg a()
+  public double b()
+  {
+    return this.b;
+  }
+  
+  public qqstory_struct.GpsMsg c()
   {
     qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
     localGpsMsg.setHasFlag(true);
     localGpsMsg.lat.set((int)(a() * 1000000.0D));
     localGpsMsg.lng.set((int)(b() * 1000000.0D));
     return localGpsMsg;
-  }
-  
-  public double b()
-  {
-    return this.b;
   }
   
   public boolean equals(Object paramObject)
@@ -63,7 +63,7 @@ public class GeoHashUtils$Gps
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.GeoHashUtils.Gps
  * JD-Core Version:    0.7.0.1
  */

@@ -30,292 +30,97 @@ import mqq.util.WeakReference;
 public class BidDownloader
   implements Handler.Callback
 {
-  public static Context a;
-  public static BidDownloader.WifiListener a;
-  public static IOfflineDownloader a;
-  public static IThreadManager a;
-  public static ArrayList<BidDownloader> a;
-  public static HashMap<String, Integer> a;
-  public static String d;
-  public static boolean g = false;
-  public int a;
-  public Handler a;
-  public AsyncBack a;
-  public String a;
+  public static IThreadManager q = new QQThreadManager();
+  public static IOfflineDownloader r = new OfflineDownloader();
+  public static String s = "BidDownloader";
+  public static HashMap<String, Integer> t;
+  public static ArrayList<BidDownloader> u;
+  public static Context v;
+  public static BidDownloader.WifiListener w;
+  public static boolean x = false;
   public WeakReference<AsyncBack> a;
-  public boolean a;
-  public int b;
   public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  public int c = 0;
+  public boolean d = true;
   public boolean e = false;
   public boolean f = false;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager = new QQThreadManager();
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIOfflineDownloader = new OfflineDownloader();
-    jdField_d_of_type_JavaLangString = "BidDownloader";
-  }
+  public boolean g = false;
+  public boolean h = false;
+  public boolean i = false;
+  public int j = 0;
+  public String k = null;
+  public AsyncBack l;
+  public String m;
+  public int n = 0;
+  public Handler o;
+  public int p;
   
   public BidDownloader(String paramString, AppRuntime paramAppRuntime, AsyncBack paramAsyncBack, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (jdField_a_of_type_JavaUtilArrayList == null)
+    if (u == null)
     {
-      jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader$WifiListener = new BidDownloader.WifiListener();
+      u = new ArrayList();
+      t = new HashMap();
+      w = new BidDownloader.WifiListener();
     }
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAsyncBack);
-    jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication().getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramAsyncBack);
+    v = paramAppRuntime.getApplication().getApplicationContext();
+    this.b = paramString;
+    this.d = paramBoolean;
     if (paramInt == 1) {
-      this.jdField_b_of_type_Boolean = true;
-    } else if (paramInt == 3) {
-      this.jdField_d_of_type_Boolean = true;
-    } else if (paramInt == 4) {
       this.e = true;
+    } else if (paramInt == 3) {
+      this.g = true;
+    } else if (paramInt == 4) {
+      this.h = true;
     } else if (paramInt == 2) {
-      this.jdField_c_of_type_Boolean = true;
+      this.f = true;
     }
-    paramString = OfflineEnvHelper.b(this.jdField_a_of_type_JavaLangString);
+    paramString = OfflineEnvHelper.c(this.b);
     if (!TextUtils.isEmpty(paramString)) {
-      if (this.e)
+      if (this.h)
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append(paramString);
-        paramAppRuntime.append(this.jdField_a_of_type_JavaLangString);
+        paramAppRuntime.append(this.b);
         paramAppRuntime.append(".7z");
-        this.jdField_b_of_type_JavaLangString = paramAppRuntime.toString();
+        this.k = paramAppRuntime.toString();
       }
-      else if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
+      else if ((!this.g) && (!this.f))
       {
-        QLog.e(jdField_d_of_type_JavaLangString, 1, "do not know what format, use default zip name!");
+        QLog.e(s, 1, "do not know what format, use default zip name!");
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append(paramString);
-        paramAppRuntime.append(this.jdField_a_of_type_JavaLangString);
+        paramAppRuntime.append(this.b);
         paramAppRuntime.append(".zip");
-        this.jdField_b_of_type_JavaLangString = paramAppRuntime.toString();
+        this.k = paramAppRuntime.toString();
       }
       else
       {
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append(paramString);
-        paramAppRuntime.append(this.jdField_a_of_type_JavaLangString);
+        paramAppRuntime.append(this.b);
         paramAppRuntime.append(".zip");
-        this.jdField_b_of_type_JavaLangString = paramAppRuntime.toString();
+        this.k = paramAppRuntime.toString();
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  /* Error */
-  public static String a(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 77	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: istore_1
-    //   5: ldc 159
-    //   7: astore 6
-    //   9: iload_1
-    //   10: ifeq +6 -> 16
-    //   13: ldc 159
-    //   15: areturn
-    //   16: new 161	java/io/File
-    //   19: dup
-    //   20: aload_0
-    //   21: invokespecial 164	java/io/File:<init>	(Ljava/lang/String;)V
-    //   24: astore 5
-    //   26: aload 5
-    //   28: invokevirtual 168	java/io/File:exists	()Z
-    //   31: ifne +52 -> 83
-    //   34: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   37: ifeq +43 -> 80
-    //   40: getstatic 46	com/tencent/biz/common/offline/BidDownloader:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   43: astore 4
-    //   45: new 122	java/lang/StringBuilder
-    //   48: dup
-    //   49: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   52: astore 5
-    //   54: aload 5
-    //   56: ldc 173
-    //   58: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: pop
-    //   62: aload 5
-    //   64: aload_0
-    //   65: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   68: pop
-    //   69: aload 4
-    //   71: iconst_2
-    //   72: aload 5
-    //   74: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   77: invokestatic 176	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   80: ldc 159
-    //   82: areturn
-    //   83: aconst_null
-    //   84: astore 7
-    //   86: aconst_null
-    //   87: astore 4
-    //   89: new 178	java/io/RandomAccessFile
-    //   92: dup
-    //   93: aload 5
-    //   95: ldc 180
-    //   97: invokespecial 183	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   100: astore 5
-    //   102: aload 5
-    //   104: lconst_0
-    //   105: invokevirtual 187	java/io/RandomAccessFile:seek	(J)V
-    //   108: aload 5
-    //   110: invokevirtual 191	java/io/RandomAccessFile:readInt	()I
-    //   113: invokestatic 197	java/lang/Integer:reverseBytes	(I)I
-    //   116: i2l
-    //   117: lstore_2
-    //   118: lload_2
-    //   119: ldc2_w 198
-    //   122: lcmp
-    //   123: ifne +9 -> 132
-    //   126: ldc 201
-    //   128: astore_0
-    //   129: goto +17 -> 146
-    //   132: aload 6
-    //   134: astore_0
-    //   135: lload_2
-    //   136: ldc2_w 202
-    //   139: lcmp
-    //   140: ifne +6 -> 146
-    //   143: ldc 205
-    //   145: astore_0
-    //   146: aload_0
-    //   147: astore 6
-    //   149: aload 5
-    //   151: invokevirtual 208	java/io/RandomAccessFile:close	()V
-    //   154: aload_0
-    //   155: areturn
-    //   156: astore_0
-    //   157: aload 5
-    //   159: astore 4
-    //   161: goto +107 -> 268
-    //   164: astore 7
-    //   166: goto +17 -> 183
-    //   169: astore_0
-    //   170: goto +98 -> 268
-    //   173: astore 4
-    //   175: aload 7
-    //   177: astore 5
-    //   179: aload 4
-    //   181: astore 7
-    //   183: aload 5
-    //   185: astore 4
-    //   187: invokestatic 171	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   190: ifeq +65 -> 255
-    //   193: aload 5
-    //   195: astore 4
-    //   197: getstatic 46	com/tencent/biz/common/offline/BidDownloader:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   200: astore 8
-    //   202: aload 5
-    //   204: astore 4
-    //   206: new 122	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 123	java/lang/StringBuilder:<init>	()V
-    //   213: astore 9
-    //   215: aload 5
-    //   217: astore 4
-    //   219: aload 9
-    //   221: ldc 210
-    //   223: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   226: pop
-    //   227: aload 5
-    //   229: astore 4
-    //   231: aload 9
-    //   233: aload_0
-    //   234: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: pop
-    //   238: aload 5
-    //   240: astore 4
-    //   242: aload 8
-    //   244: iconst_2
-    //   245: aload 9
-    //   247: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   250: aload 7
-    //   252: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   255: aload 5
-    //   257: ifnull +8 -> 265
-    //   260: aload 5
-    //   262: invokevirtual 208	java/io/RandomAccessFile:close	()V
-    //   265: ldc 159
-    //   267: areturn
-    //   268: aload 4
-    //   270: ifnull +8 -> 278
-    //   273: aload 4
-    //   275: invokevirtual 208	java/io/RandomAccessFile:close	()V
-    //   278: aload_0
-    //   279: athrow
-    //   280: astore_0
-    //   281: aload 6
-    //   283: areturn
-    //   284: astore 4
-    //   286: goto -8 -> 278
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	289	0	paramString	String
-    //   4	6	1	bool	boolean
-    //   117	19	2	l	long
-    //   43	117	4	localObject1	Object
-    //   173	7	4	localException1	java.lang.Exception
-    //   185	89	4	localObject2	Object
-    //   284	1	4	localException2	java.lang.Exception
-    //   24	237	5	localObject3	Object
-    //   7	275	6	str1	String
-    //   84	1	7	localObject4	Object
-    //   164	12	7	localException3	java.lang.Exception
-    //   181	70	7	localException4	java.lang.Exception
-    //   200	43	8	str2	String
-    //   213	33	9	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   102	118	156	finally
-    //   102	118	164	java/lang/Exception
-    //   89	102	169	finally
-    //   187	193	169	finally
-    //   197	202	169	finally
-    //   206	215	169	finally
-    //   219	227	169	finally
-    //   231	238	169	finally
-    //   242	255	169	finally
-    //   89	102	173	java/lang/Exception
-    //   149	154	280	java/lang/Exception
-    //   260	265	280	java/lang/Exception
-    //   273	278	284	java/lang/Exception
+    this.o = new Handler(Looper.getMainLooper(), this);
+    this.c = 0;
   }
   
   protected static void a()
   {
-    if (jdField_a_of_type_JavaUtilHashMap.size() == 0)
+    if (t.size() == 0)
     {
-      Object localObject = jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = u;
       if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
       {
-        localObject = (BidDownloader)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (jdField_a_of_type_AndroidContentContext != null) {
-          ((BidDownloader)localObject).c();
+        localObject = (BidDownloader)u.remove(0);
+        if (v != null) {
+          ((BidDownloader)localObject).d();
         }
       }
     }
@@ -323,8 +128,8 @@ public class BidDownloader
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) {
-      ((AsyncBack)this.jdField_a_of_type_MqqUtilWeakReference.get()).loaded(null, paramInt1);
+    if (this.a.get() != null) {
+      ((AsyncBack)this.a.get()).loaded(null, paramInt1);
     }
   }
   
@@ -344,10 +149,10 @@ public class BidDownloader
     }
     catch (Throwable paramString1)
     {
-      label115:
-      break label115;
+      label110:
+      break label110;
     }
-    QLog.e(jdField_d_of_type_JavaLangString, 1, "getAccount faild ！！！");
+    QLog.e(s, 1, "getAccount faild ！！！");
     paramString1 = "";
     localHashMap.put("qq_num", paramString1);
     StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, "offline_report", true, 0L, 0L, localHashMap, null);
@@ -355,15 +160,15 @@ public class BidDownloader
   
   protected static void a(String paramString)
   {
-    if (jdField_a_of_type_JavaUtilHashMap == null) {
-      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (t == null) {
+      t = new HashMap();
     }
-    if (jdField_a_of_type_JavaUtilHashMap.get(paramString) == null)
+    if (t.get(paramString) == null)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(1));
+      t.put(paramString, Integer.valueOf(1));
       if (QLog.isColorLevel())
       {
-        String str = jdField_d_of_type_JavaLangString;
+        String str = s;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("addDownloadingState:");
         localStringBuilder.append(paramString);
@@ -377,78 +182,258 @@ public class BidDownloader
     return (paramInt == 0) || (paramInt == -1);
   }
   
-  protected static boolean a(String paramString)
-  {
-    HashMap localHashMap = jdField_a_of_type_JavaUtilHashMap;
-    if (localHashMap == null) {
-      return false;
-    }
-    return localHashMap.get(paramString) != null;
-  }
-  
   protected static void b(String paramString)
   {
-    Object localObject = jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = t;
     if (localObject == null) {
       return;
     }
     StringBuilder localStringBuilder;
     if (((HashMap)localObject).get(paramString) != null)
     {
-      jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+      t.remove(paramString);
       if (QLog.isColorLevel())
       {
-        localObject = jdField_d_of_type_JavaLangString;
+        localObject = s;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("removeDownloadingState:");
         localStringBuilder.append(paramString);
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
     }
-    paramString = jdField_a_of_type_JavaUtilArrayList;
+    paramString = u;
     if ((paramString != null) && (!paramString.isEmpty()))
     {
-      paramString = (BidDownloader)jdField_a_of_type_JavaUtilArrayList.get(0);
-      if (jdField_a_of_type_AndroidContentContext != null)
+      paramString = (BidDownloader)u.get(0);
+      if (v != null)
       {
-        if ((paramString.f) && (NetworkUtil.getNetWorkType() != 1) && (!g))
+        if ((paramString.i) && (NetworkUtil.getNetWorkType() != 1) && (!x))
         {
           paramString = new IntentFilter();
           paramString.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-          jdField_a_of_type_AndroidContentContext.registerReceiver(jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader$WifiListener, paramString);
-          g = true;
+          v.registerReceiver(w, paramString);
+          x = true;
           return;
         }
         if (QLog.isColorLevel())
         {
-          localObject = jdField_d_of_type_JavaLangString;
+          localObject = s;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("start download from queue:");
-          localStringBuilder.append(paramString.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(paramString.b);
           QLog.i((String)localObject, 2, localStringBuilder.toString());
         }
-        paramString.c();
-        jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if ((g) && (jdField_a_of_type_JavaUtilArrayList.size() == 0))
+        paramString.d();
+        u.remove(0);
+        if ((x) && (u.size() == 0))
         {
-          jdField_a_of_type_AndroidContentContext.unregisterReceiver(jdField_a_of_type_ComTencentBizCommonOfflineBidDownloader$WifiListener);
-          g = false;
+          v.unregisterReceiver(w);
+          x = false;
         }
       }
     }
   }
   
-  private void d()
+  protected static boolean c(String paramString)
+  {
+    HashMap localHashMap = t;
+    if (localHashMap == null) {
+      return false;
+    }
+    return localHashMap.get(paramString) != null;
+  }
+  
+  /* Error */
+  public static String d(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokestatic 94	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: istore_1
+    //   5: ldc 249
+    //   7: astore 6
+    //   9: iload_1
+    //   10: ifeq +6 -> 16
+    //   13: ldc 249
+    //   15: areturn
+    //   16: new 318	java/io/File
+    //   19: dup
+    //   20: aload_0
+    //   21: invokespecial 320	java/io/File:<init>	(Ljava/lang/String;)V
+    //   24: astore 5
+    //   26: aload 5
+    //   28: invokevirtual 323	java/io/File:exists	()Z
+    //   31: ifne +53 -> 84
+    //   34: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   37: ifeq +44 -> 81
+    //   40: getstatic 63	com/tencent/biz/common/offline/BidDownloader:s	Ljava/lang/String;
+    //   43: astore 4
+    //   45: new 139	java/lang/StringBuilder
+    //   48: dup
+    //   49: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   52: astore 5
+    //   54: aload 5
+    //   56: ldc_w 325
+    //   59: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: aload 5
+    //   65: aload_0
+    //   66: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: aload 4
+    //   72: iconst_2
+    //   73: aload 5
+    //   75: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 283	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: ldc 249
+    //   83: areturn
+    //   84: aconst_null
+    //   85: astore 7
+    //   87: aconst_null
+    //   88: astore 4
+    //   90: new 327	java/io/RandomAccessFile
+    //   93: dup
+    //   94: aload 5
+    //   96: ldc_w 328
+    //   99: invokespecial 331	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   102: astore 5
+    //   104: aload 5
+    //   106: lconst_0
+    //   107: invokevirtual 335	java/io/RandomAccessFile:seek	(J)V
+    //   110: aload 5
+    //   112: invokevirtual 338	java/io/RandomAccessFile:readInt	()I
+    //   115: invokestatic 342	java/lang/Integer:reverseBytes	(I)I
+    //   118: i2l
+    //   119: lstore_2
+    //   120: lload_2
+    //   121: ldc2_w 343
+    //   124: lcmp
+    //   125: ifne +10 -> 135
+    //   128: ldc_w 346
+    //   131: astore_0
+    //   132: goto +18 -> 150
+    //   135: aload 6
+    //   137: astore_0
+    //   138: lload_2
+    //   139: ldc2_w 347
+    //   142: lcmp
+    //   143: ifne +7 -> 150
+    //   146: ldc_w 350
+    //   149: astore_0
+    //   150: aload_0
+    //   151: astore 6
+    //   153: aload 5
+    //   155: invokevirtual 353	java/io/RandomAccessFile:close	()V
+    //   158: aload_0
+    //   159: areturn
+    //   160: astore_0
+    //   161: aload 5
+    //   163: astore 4
+    //   165: goto +108 -> 273
+    //   168: astore 7
+    //   170: goto +17 -> 187
+    //   173: astore_0
+    //   174: goto +99 -> 273
+    //   177: astore 4
+    //   179: aload 7
+    //   181: astore 5
+    //   183: aload 4
+    //   185: astore 7
+    //   187: aload 5
+    //   189: astore 4
+    //   191: invokestatic 279	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   194: ifeq +66 -> 260
+    //   197: aload 5
+    //   199: astore 4
+    //   201: getstatic 63	com/tencent/biz/common/offline/BidDownloader:s	Ljava/lang/String;
+    //   204: astore 8
+    //   206: aload 5
+    //   208: astore 4
+    //   210: new 139	java/lang/StringBuilder
+    //   213: dup
+    //   214: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   217: astore 9
+    //   219: aload 5
+    //   221: astore 4
+    //   223: aload 9
+    //   225: ldc_w 355
+    //   228: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload 5
+    //   234: astore 4
+    //   236: aload 9
+    //   238: aload_0
+    //   239: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: pop
+    //   243: aload 5
+    //   245: astore 4
+    //   247: aload 8
+    //   249: iconst_2
+    //   250: aload 9
+    //   252: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   255: aload 7
+    //   257: invokestatic 358	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   260: aload 5
+    //   262: ifnull +8 -> 270
+    //   265: aload 5
+    //   267: invokevirtual 353	java/io/RandomAccessFile:close	()V
+    //   270: ldc 249
+    //   272: areturn
+    //   273: aload 4
+    //   275: ifnull +8 -> 283
+    //   278: aload 4
+    //   280: invokevirtual 353	java/io/RandomAccessFile:close	()V
+    //   283: aload_0
+    //   284: athrow
+    //   285: astore_0
+    //   286: aload 6
+    //   288: areturn
+    //   289: astore 4
+    //   291: goto -8 -> 283
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	294	0	paramString	String
+    //   4	6	1	bool	boolean
+    //   119	20	2	l1	long
+    //   43	121	4	localObject1	Object
+    //   177	7	4	localException1	java.lang.Exception
+    //   189	90	4	localObject2	Object
+    //   289	1	4	localException2	java.lang.Exception
+    //   24	242	5	localObject3	Object
+    //   7	280	6	str1	String
+    //   85	1	7	localObject4	Object
+    //   168	12	7	localException3	java.lang.Exception
+    //   185	71	7	localException4	java.lang.Exception
+    //   204	44	8	str2	String
+    //   217	34	9	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   104	120	160	finally
+    //   104	120	168	java/lang/Exception
+    //   90	104	173	finally
+    //   191	197	173	finally
+    //   201	206	173	finally
+    //   210	219	173	finally
+    //   223	232	173	finally
+    //   236	243	173	finally
+    //   247	260	173	finally
+    //   90	104	177	java/lang/Exception
+    //   153	158	285	java/lang/Exception
+    //   265	270	285	java/lang/Exception
+    //   278	283	289	java/lang/Exception
+  }
+  
+  private void f()
   {
     String str;
     StringBuilder localStringBuilder;
-    if (a(this.jdField_a_of_type_JavaLangString))
+    if (c(this.b))
     {
       if (QLog.isColorLevel())
       {
-        str = jdField_d_of_type_JavaLangString;
+        str = s;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(" is downloading");
         QLog.i(str, 2, localStringBuilder.toString());
       }
@@ -456,87 +441,104 @@ public class BidDownloader
     }
     if (QLog.isColorLevel())
     {
-      str = jdField_d_of_type_JavaLangString;
+      str = s;
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("download");
       QLog.i(str, 2, localStringBuilder.toString());
     }
-    if (jdField_a_of_type_JavaUtilHashMap.size() >= 1)
+    if (t.size() >= 1)
     {
       a(this);
       if (QLog.isColorLevel())
       {
-        str = jdField_d_of_type_JavaLangString;
+        str = s;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(jdField_a_of_type_JavaUtilHashMap);
+        localStringBuilder.append(t);
         localStringBuilder.append(",");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append("add to queue");
         QLog.i(str, 2, localStringBuilder.toString());
       }
     }
     else
     {
-      HtmlOffline.a(jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
-      b();
+      HtmlOffline.d(v.getApplicationContext(), this.b);
+      c();
       if (QLog.isColorLevel())
       {
-        str = jdField_d_of_type_JavaLangString;
+        str = s;
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack);
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(this.m);
+        localStringBuilder.append(this.l);
         QLog.i(str, 2, localStringBuilder.toString());
       }
-      a(this.jdField_a_of_type_JavaLangString);
+      a(this.b);
     }
   }
   
   protected void a(BidDownloader paramBidDownloader)
   {
-    int j = jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
+    int i2 = u.size();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      BidDownloader localBidDownloader = (BidDownloader)jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramBidDownloader.jdField_a_of_type_JavaLangString.equals(localBidDownloader.jdField_a_of_type_JavaLangString)) {
+      BidDownloader localBidDownloader = (BidDownloader)u.get(i1);
+      if (paramBidDownloader.b.equals(localBidDownloader.b)) {
         return;
       }
-      i += 1;
+      i1 += 1;
     }
-    jdField_a_of_type_JavaUtilArrayList.add(paramBidDownloader);
+    u.add(paramBidDownloader);
   }
   
   @TargetApi(11)
-  boolean a()
+  boolean b()
   {
-    long l = System.currentTimeMillis();
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+    long l1 = System.currentTimeMillis();
+    if (TextUtils.isEmpty(this.k)) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack = new BidDownloader.1(this, l);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.l = new BidDownloader.1(this, l1);
+    this.o.sendEmptyMessage(1);
     return true;
   }
   
-  public void b()
+  public void c()
   {
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new BidDownloader.2(this));
+    q.c(new BidDownloader.2(this));
   }
   
-  public boolean b()
+  public void d()
+  {
+    if (c(this.b))
+    {
+      if (QLog.isColorLevel())
+      {
+        String str = s;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.b);
+        localStringBuilder.append(" is downloading");
+        QLog.i(str, 2, localStringBuilder.toString());
+      }
+      return;
+    }
+    q.c(new BidDownloader.4(this));
+  }
+  
+  public boolean e()
   {
     try
     {
-      str = this.jdField_a_of_type_JavaLangString;
-      localObject4 = this.jdField_b_of_type_JavaLangString;
+      str = this.b;
+      localObject4 = this.k;
       bool1 = TextUtils.isEmpty(str);
       bool2 = false;
       if (bool1) {
         return false;
       }
-      bool1 = TextUtils.isEmpty(OfflineEnvHelper.b(str));
+      bool1 = TextUtils.isEmpty(OfflineEnvHelper.c(str));
       if (bool1) {
         return false;
       }
@@ -545,7 +547,7 @@ public class BidDownloader
       {
         if (QLog.isColorLevel())
         {
-          localObject2 = jdField_d_of_type_JavaLangString;
+          localObject2 = s;
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("doUnzipZip: no zip ! : businessId:");
           ((StringBuilder)localObject3).append(str);
@@ -553,16 +555,16 @@ public class BidDownloader
         }
         return false;
       }
-      l = System.currentTimeMillis();
+      l1 = System.currentTimeMillis();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(((File)localObject3).getParent());
       ((StringBuilder)localObject2).append(File.separator);
       ((StringBuilder)localObject2).append(str);
       localObject2 = ((StringBuilder)localObject2).toString();
-      localObject5 = a((String)localObject4);
+      localObject5 = d((String)localObject4);
       if (QLog.isColorLevel())
       {
-        localObject6 = jdField_d_of_type_JavaLangString;
+        localObject6 = s;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("fileFormat: ");
         localStringBuilder.append((String)localObject5);
@@ -574,33 +576,33 @@ public class BidDownloader
       {
         if (((String)localObject5).equals("zip"))
         {
-          i = ZipUtils.unZipFolder((String)localObject4, (String)localObject2);
+          i1 = ZipUtils.unZipFolder((String)localObject4, (String)localObject2);
         }
         else
         {
           if (!((String)localObject5).equals("7z")) {
-            break label884;
+            break label886;
           }
-          i = LzmaUtils.a(BaseApplication.getContext().getApplicationContext(), (String)localObject4, (String)localObject2);
+          i1 = LzmaUtils.a(BaseApplication.getContext().getApplicationContext(), (String)localObject4, (String)localObject2);
         }
       }
       else
       {
-        localObject5 = jdField_d_of_type_JavaLangString;
+        localObject5 = s;
         localObject6 = new StringBuilder();
         ((StringBuilder)localObject6).append("can not recognize download compress file format, ");
-        ((StringBuilder)localObject6).append(this.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject6).append(this.k);
         QLog.w((String)localObject5, 1, ((StringBuilder)localObject6).toString());
-        if (this.jdField_d_of_type_Boolean)
+        if (this.g)
         {
-          i = ZipUtils.unZipFolder((String)localObject4, (String)localObject2);
+          i1 = ZipUtils.unZipFolder((String)localObject4, (String)localObject2);
         }
         else
         {
-          if (!this.e) {
-            break label884;
+          if (!this.h) {
+            break label886;
           }
-          i = LzmaUtils.a(BaseApplication.getContext().getApplicationContext(), (String)localObject4, (String)localObject2);
+          i1 = LzmaUtils.a(BaseApplication.getContext().getApplicationContext(), (String)localObject4, (String)localObject2);
         }
       }
     }
@@ -614,7 +616,7 @@ public class BidDownloader
         boolean bool2;
         Object localObject3;
         Object localObject2;
-        long l;
+        long l1;
         Object localObject5;
         Object localObject6;
         StringBuilder localStringBuilder;
@@ -624,27 +626,27 @@ public class BidDownloader
           throw localObject1;
         }
         continue;
-        label884:
-        int i = 1;
+        label886:
+        int i1 = 1;
       }
     }
     if (QLog.isColorLevel())
     {
-      localObject5 = jdField_d_of_type_JavaLangString;
+      localObject5 = s;
       localObject6 = new StringBuilder();
       ((StringBuilder)localObject6).append("now delete original download offline zip, path: ");
       ((StringBuilder)localObject6).append((String)localObject4);
       QLog.i((String)localObject5, 2, ((StringBuilder)localObject6).toString());
     }
     Util.b((String)localObject4);
-    if (i > 0)
+    if (i1 > 0)
     {
-      HtmlOffline.a(str, 13, 0L, i, "lixian_update", "0");
-      a(0, str, 13, 0, "lixian_update", i);
+      HtmlOffline.a(str, 13, 0L, i1, "lixian_update", "0");
+      a(0, str, 13, 0, "lixian_update", i1);
       bool1 = bool2;
       if (QLog.isColorLevel())
       {
-        QLog.i(jdField_d_of_type_JavaLangString, 2, "unZipFolder fail!");
+        QLog.i(s, 2, "unZipFolder fail!");
         bool1 = bool2;
       }
     }
@@ -665,7 +667,7 @@ public class BidDownloader
       localObject3 = ((StringBuilder)localObject6).toString();
       if (QLog.isColorLevel())
       {
-        localObject6 = jdField_d_of_type_JavaLangString;
+        localObject6 = s;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("now move zip file to location: ");
         localStringBuilder.append((String)localObject3);
@@ -680,31 +682,31 @@ public class BidDownloader
         }
         if (!bool1)
         {
-          HtmlOffline.a(str, 13, 0L, i, "lixian_update", "0");
-          a(0, str, 13, 0, "lixian_update", i);
+          HtmlOffline.a(str, 13, 0L, i1, "lixian_update", "0");
+          a(0, str, 13, 0, "lixian_update", i1);
           bool1 = bool2;
         }
         else
         {
-          HtmlOffline.a(str, 13, 0L, i, "lixian_time", "0");
-          a(0, str, 13, 0, "lixian_time", i);
+          HtmlOffline.a(str, 13, 0L, i1, "lixian_time", "0");
+          a(0, str, 13, 0, "lixian_time", i1);
           bool1 = true;
         }
       }
       else
       {
-        HtmlOffline.a(str, 13, 0L, i, "lixian_update", "0");
-        a(0, str, 13, 0, "lixian_update", i);
+        HtmlOffline.a(str, 13, 0L, i1, "lixian_update", "0");
+        a(0, str, 13, 0, "lixian_update", i1);
         bool1 = bool2;
       }
     }
     Util.a((String)localObject2);
     if (QLog.isColorLevel())
     {
-      str = jdField_d_of_type_JavaLangString;
+      str = s;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("time of unzip zip：");
-      ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - l1);
       ((StringBuilder)localObject2).append(", isSuccess: ");
       ((StringBuilder)localObject2).append(bool1);
       QLog.i(str, 2, ((StringBuilder)localObject2).toString());
@@ -712,34 +714,17 @@ public class BidDownloader
     return bool1;
   }
   
-  public void c()
-  {
-    if (a(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel())
-      {
-        String str = jdField_d_of_type_JavaLangString;
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-        localStringBuilder.append(" is downloading");
-        QLog.i(str, 2, localStringBuilder.toString());
-      }
-      return;
-    }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new BidDownloader.4(this));
-  }
-  
   public boolean handleMessage(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 0)
+    int i1 = paramMessage.what;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i == 3) {
-            d();
+          if (i1 == 3) {
+            f();
           }
         }
         else {
@@ -747,18 +732,18 @@ public class BidDownloader
         }
       }
       else {
-        c();
+        d();
       }
     }
     else {
-      b(this.jdField_a_of_type_JavaLangString);
+      b(this.b);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader
  * JD-Core Version:    0.7.0.1
  */

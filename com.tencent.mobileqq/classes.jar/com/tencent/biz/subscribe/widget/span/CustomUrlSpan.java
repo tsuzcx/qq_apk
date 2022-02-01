@@ -7,22 +7,22 @@ import android.view.View;
 public class CustomUrlSpan
   extends ClickableSpan
 {
-  private int jdField_a_of_type_Int;
-  private CustomUrlSpan.OnCustomUrlClickListener jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private CustomUrlSpan.OnCustomUrlClickListener c;
+  private int d;
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetSpanCustomUrlSpan$OnCustomUrlClickListener;
+    paramView = this.c;
     if (paramView != null) {
-      paramView.a(this.jdField_a_of_type_JavaLangString, this.b);
+      paramView.a(this.a, this.b);
     }
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.d;
     if (i != -2147483648)
     {
       paramTextPaint.setColor(i);
@@ -33,7 +33,7 @@ public class CustomUrlSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.span.CustomUrlSpan
  * JD-Core Version:    0.7.0.1
  */

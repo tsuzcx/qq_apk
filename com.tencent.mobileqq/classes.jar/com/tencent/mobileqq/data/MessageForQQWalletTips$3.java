@@ -16,15 +16,15 @@ class MessageForQQWalletTips$3
   
   public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return;
     }
-    paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    paramView = (Context)this.b.get();
     if (paramView == null) {
       return;
     }
     Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("url", this.a);
     localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
     paramView.startActivity(localIntent);
   }
@@ -32,14 +32,14 @@ class MessageForQQWalletTips$3
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setColor(this.c);
     paramTextPaint.setUnderlineText(false);
     paramTextPaint.clearShadowLayer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.3
  * JD-Core Version:    0.7.0.1
  */

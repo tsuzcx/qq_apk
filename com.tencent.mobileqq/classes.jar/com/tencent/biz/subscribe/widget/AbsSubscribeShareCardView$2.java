@@ -17,17 +17,17 @@ class AbsSubscribeShareCardView$2
   {
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.mCallback = new AbsSubscribeShareCardView.2.1(this);
-    localHttpNetReq.mReqUrl = ((String)this.b.get(this.jdField_a_of_type_Int));
+    localHttpNetReq.mReqUrl = ((String)this.d.get(this.b));
     localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = this.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mOutPath = this.c;
     localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     QQStoryContext.a();
-    ((IHttpEngineService)QQStoryContext.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
+    ((IHttpEngineService)QQStoryContext.k().getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.AbsSubscribeShareCardView.2
  * JD-Core Version:    0.7.0.1
  */

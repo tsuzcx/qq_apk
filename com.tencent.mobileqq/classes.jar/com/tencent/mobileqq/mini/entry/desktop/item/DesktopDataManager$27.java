@@ -1,21 +1,18 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import java.util.Iterator;
 import java.util.List;
 
 class DesktopDataManager$27
   implements Runnable
 {
-  DesktopDataManager$27(DesktopDataManager paramDesktopDataManager, String paramString) {}
+  DesktopDataManager$27(DesktopDataManager paramDesktopDataManager, int paramInt) {}
   
   public void run()
   {
     Iterator localIterator = DesktopDataManager.access$1600(this.this$0).iterator();
-    while (localIterator.hasNext())
-    {
-      DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-      if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId.equals(this.val$appId))) {
+    while (localIterator.hasNext()) {
+      if (((DesktopItemInfo)localIterator.next()).getModuleType() == this.val$type) {
         localIterator.remove();
       }
     }
@@ -27,7 +24,7 @@ class DesktopDataManager$27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.27
  * JD-Core Version:    0.7.0.1
  */

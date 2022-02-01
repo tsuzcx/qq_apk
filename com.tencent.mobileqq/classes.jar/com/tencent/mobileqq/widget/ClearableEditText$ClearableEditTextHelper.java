@@ -49,7 +49,7 @@ class ClearableEditText$ClearableEditTextHelper
   protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
   {
     if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(QQUIDelegate.a(2131702137));
+      paramAccessibilityEvent.setContentDescription(QQUIDelegate.a(2131900145));
     }
   }
   
@@ -57,7 +57,7 @@ class ClearableEditText$ClearableEditTextHelper
   {
     if (paramInt == 0)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(HardCodeUtil.a(2131702137));
+      paramAccessibilityNodeInfoCompat.setContentDescription(HardCodeUtil.a(2131900145));
       paramAccessibilityNodeInfoCompat.addAction(16);
       paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
     }
@@ -65,7 +65,7 @@ class ClearableEditText$ClearableEditTextHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClearableEditText.ClearableEditTextHelper
  * JD-Core Version:    0.7.0.1
  */

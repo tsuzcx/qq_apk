@@ -6,34 +6,32 @@ import com.tencent.biz.qqstory.utils.JsonORM.Column;
 
 public class StoryEditVideoConfig$Device
 {
-  public static Device a;
-  public static Device b;
+  public static Device a = new Device();
+  public static Device b = new Device();
   @JsonORM.Column(a="manufacturer")
-  public String a;
+  public String c;
   @JsonORM.Column(a="model")
-  public String b;
+  public String d;
   
   static
   {
-    jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device = new Device();
-    jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device = new Device();
-    jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_a_of_type_JavaLangString = Build.MANUFACTURER;
-    jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_b_of_type_JavaLangString = Build.MODEL;
-    Device localDevice = jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device;
-    localDevice.jdField_a_of_type_JavaLangString = "all";
-    localDevice.jdField_b_of_type_JavaLangString = "all";
+    b.c = Build.MANUFACTURER;
+    b.d = Build.MODEL;
+    Device localDevice = a;
+    localDevice.c = "all";
+    localDevice.d = "all";
   }
   
   public boolean a()
   {
-    boolean bool2 = jdField_a_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.equals(this);
+    boolean bool2 = a.equals(this);
     boolean bool1 = true;
     if (bool2) {
       return true;
     }
-    if (!jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.equals(this))
+    if (!b.equals(this))
     {
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.equals(this.jdField_b_of_type_JavaLangString, jdField_b_of_type_ComTencentBizQqstoryModelStoryEditVideoConfig$Device.jdField_b_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty(this.c)) && (TextUtils.equals(this.d, b.d))) {
         return true;
       }
       bool1 = false;
@@ -52,28 +50,28 @@ public class StoryEditVideoConfig$Device
         return false;
       }
       paramObject = (Device)paramObject;
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.c;
       if (str != null)
       {
-        if (!str.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+        if (!str.equals(paramObject.c)) {
           return false;
         }
       }
-      else if (paramObject.jdField_a_of_type_JavaLangString != null) {
+      else if (paramObject.c != null) {
         return false;
       }
-      str = this.jdField_b_of_type_JavaLangString;
+      str = this.d;
       if (str != null) {
-        return str.equals(paramObject.jdField_b_of_type_JavaLangString);
+        return str.equals(paramObject.d);
       }
-      return paramObject.jdField_b_of_type_JavaLangString == null;
+      return paramObject.d == null;
     }
     return false;
   }
   
   public int hashCode()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.c;
     int j = 0;
     int i;
     if (str != null) {
@@ -81,7 +79,7 @@ public class StoryEditVideoConfig$Device
     } else {
       i = 0;
     }
-    str = this.jdField_b_of_type_JavaLangString;
+    str = this.d;
     if (str != null) {
       j = str.hashCode();
     }
@@ -90,7 +88,7 @@ public class StoryEditVideoConfig$Device
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryEditVideoConfig.Device
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set android:ordering="together"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <objectAnimator android:duration="340" android:valueFrom="0.0f" android:valueTo="1.0f" android:propertyName="alpha" />
-    <objectAnimator android:duration="340" android:valueFrom="0.0f" android:valueTo="0.965f" android:propertyName="scaleX" />
-    <objectAnimator android:duration="340" android:valueFrom="0.0f" android:valueTo="0.965f" android:propertyName="scaleY" />
-    <objectAnimator android:duration="200" android:startOffset="340" android:valueFrom="0.965f" android:valueTo="0.908" android:propertyName="scaleX" />
-    <objectAnimator android:duration="200" android:startOffset="340" android:valueFrom="0.965f" android:valueTo="0.908f" android:propertyName="scaleY" />
-    <objectAnimator android:duration="150" android:startOffset="540" android:valueFrom="0.908f" android:valueTo="0.93f" android:propertyName="scaleX" />
-    <objectAnimator android:duration="150" android:startOffset="540" android:valueFrom="0.908f" android:valueTo="0.93f" android:propertyName="scaleY" />
-</set>
+    <item android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="50" android:valueTo="0.93" android:valueType="floatType" android:propertyName="scaleX" />
+            <objectAnimator android:duration="50" android:valueTo="0.93" android:valueType="floatType" android:propertyName="scaleY" />
+        </set>
+    </item>
+    <item>
+        <set>
+            <objectAnimator android:duration="50" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleX" />
+            <objectAnimator android:duration="50" android:valueTo="1.0" android:valueType="floatType" android:propertyName="scaleY" />
+        </set>
+    </item>
+</selector>

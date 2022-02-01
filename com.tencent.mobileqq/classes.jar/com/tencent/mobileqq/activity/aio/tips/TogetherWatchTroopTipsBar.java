@@ -28,54 +28,54 @@ import mqq.app.AppRuntime;
 public class TogetherWatchTroopTipsBar
   implements View.OnClickListener, TipsBarTask
 {
-  private float jdField_a_of_type_Float;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
+  private QQAppInterface b;
+  private BaseSessionInfo c;
+  private TipsManager d;
+  private Context e;
+  private View f;
+  private float g;
   
   public TogetherWatchTroopTipsBar(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, TipsManager paramTipsManager, Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TogetherWatchTroopTipsBar.");
-    localStringBuilder.append(paramBaseSessionInfo.jdField_a_of_type_Int);
+    localStringBuilder.append(paramBaseSessionInfo.a);
     localStringBuilder.append(".");
-    localStringBuilder.append(paramBaseSessionInfo.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    localStringBuilder.append(paramBaseSessionInfo.b);
+    this.a = localStringBuilder.toString();
+    this.b = paramQQAppInterface;
+    this.c = paramBaseSessionInfo;
+    this.d = paramTipsManager;
+    this.e = paramContext;
+    this.g = paramContext.getResources().getDisplayMetrics().density;
   }
   
-  private void a()
+  private void d()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.f == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131558593, null);
-      this.jdField_a_of_type_AndroidViewView.setId(2131378968);
-      Object localObject = this.jdField_a_of_type_AndroidViewView;
-      float f = this.jdField_a_of_type_Float;
-      ((View)localObject).setPadding(0, (int)(f * 2.0F), 0, (int)(f * 2.0F));
-      this.jdField_a_of_type_AndroidViewView.setClickable(true);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      localObject = (ThemeImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368352);
-      localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379926);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368351);
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null))
+      this.f = ((LayoutInflater)this.e.getSystemService("layout_inflater")).inflate(2131624152, null);
+      this.f.setId(2131447677);
+      Object localObject = this.f;
+      float f1 = this.g;
+      ((View)localObject).setPadding(0, (int)(f1 * 2.0F), 0, (int)(f1 * 2.0F));
+      this.f.setClickable(true);
+      this.f.setOnClickListener(this);
+      localObject = (ThemeImageView)this.f.findViewById(2131435229);
+      localObject = (TextView)this.f.findViewById(2131448810);
+      ImageView localImageView = (ImageView)this.f.findViewById(2131435228);
+      if (!ThemeUtil.isNowThemeIsNight(this.b, false, null))
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839468);
+        this.f.setBackgroundResource(2130839657);
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(2130839462);
+        this.f.setBackgroundColor(2130839651);
         ((TextView)localObject).setTextColor(-1);
-        localImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839461));
+        localImageView.setImageDrawable(this.e.getResources().getDrawable(2130839650));
       }
-      ((TextView)localObject).setText(HardCodeUtil.a(2131714810));
+      ((TextView)localObject).setText(HardCodeUtil.a(2131912311));
     }
   }
   
@@ -86,36 +86,31 @@ public class TogetherWatchTroopTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.f;
   }
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if ((paramInt == 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1))
+    if ((paramInt == 1000) && (this.c.a == 1))
     {
-      paramVarArgs = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-      if ((paramVarArgs != null) && (paramVarArgs.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())))
+      paramVarArgs = ((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).e(this.c.b);
+      if ((paramVarArgs != null) && (paramVarArgs.isTroopOwner(this.b.getCurrentUin())))
       {
-        paramVarArgs = TogetherControlManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
+        paramVarArgs = TogetherControlManager.a(this.b).a(this.c.b);
         if (paramVarArgs != null)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "troop ", paramVarArgs.jdField_a_of_type_JavaLangString, " newNum=", Integer.valueOf(paramVarArgs.b), " unreadNum=", Integer.valueOf(paramVarArgs.jdField_a_of_type_Int) });
+            QLog.d(this.a, 2, new Object[] { "troop ", paramVarArgs.b, " newNum=", Integer.valueOf(paramVarArgs.d), " unreadNum=", Integer.valueOf(paramVarArgs.c) });
           }
-          a();
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]);
+          d();
+          this.d.a(this, new Object[0]);
           return;
         }
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "Admin but Not message");
+          QLog.d(this.a, 2, "Admin but Not message");
         }
       }
     }
-  }
-  
-  public int[] a()
-  {
-    return new int[2];
   }
   
   public int b()
@@ -123,21 +118,26 @@ public class TogetherWatchTroopTipsBar
     return 24;
   }
   
+  public int[] c()
+  {
+    return new int[2];
+  }
+  
   public void onClick(View paramView)
   {
-    Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    Object localObject = new Intent(this.e, QQBrowserActivity.class);
     ((Intent)localObject).putExtra("url", "https://qvideo.qq.com/qq/together-signing/index.html");
-    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
-    TogetherControlManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.e.startActivity((Intent)localObject);
+    this.d.c();
+    TogetherControlManager.a(this.b).b(this.c.b);
+    localObject = this.b;
     ReportController.b((AppRuntime)localObject, "dc00899", "Grp_AIO", "", "video_tab", "clk_whitebar", 0, 1, ((QQAppInterface)localObject).getCurrentUin(), "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.TogetherWatchTroopTipsBar
  * JD-Core Version:    0.7.0.1
  */

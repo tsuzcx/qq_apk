@@ -8,20 +8,20 @@ import android.widget.TextView;
 class ReceiptMessageReadMemberListFragment$MemberViewHolder
   extends RecyclerView.ViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
+  private TextView a;
+  private ImageView b;
+  private String c;
   
   private ReceiptMessageReadMemberListFragment$MemberViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369373));
+    this.a = ((TextView)paramView.findViewById(2131448598));
+    this.b = ((ImageView)paramView.findViewById(2131436404));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberViewHolder
  * JD-Core Version:    0.7.0.1
  */

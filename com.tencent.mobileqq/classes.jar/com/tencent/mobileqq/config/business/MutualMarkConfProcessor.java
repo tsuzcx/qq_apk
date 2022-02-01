@@ -14,7 +14,7 @@ public class MutualMarkConfProcessor
   
   public static MutualMarkConfBean a()
   {
-    MutualMarkConfBean localMutualMarkConfBean2 = (MutualMarkConfBean)QConfigManager.a().a(524);
+    MutualMarkConfBean localMutualMarkConfBean2 = (MutualMarkConfBean)QConfigManager.b().b(524);
     MutualMarkConfBean localMutualMarkConfBean1 = localMutualMarkConfBean2;
     if (localMutualMarkConfBean2 == null) {
       localMutualMarkConfBean1 = MutualMarkConfBean.a();
@@ -45,7 +45,7 @@ public class MutualMarkConfProcessor
       localStringBuilder.append("MutualMarkConfProcessor#onParsed: success，confFiles:");
       localStringBuilder.append(paramArrayOfQConfItem);
       QLog.d("MutualMarkConfProcessor", 1, localStringBuilder.toString());
-      paramArrayOfQConfItem = MutualMarkConfBean.a(paramArrayOfQConfItem[0].a);
+      paramArrayOfQConfItem = MutualMarkConfBean.a(paramArrayOfQConfItem[0].b);
       a = null;
       return paramArrayOfQConfItem;
     }
@@ -102,7 +102,7 @@ public class MutualMarkConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MutualMarkConfProcessor
  * JD-Core Version:    0.7.0.1
  */

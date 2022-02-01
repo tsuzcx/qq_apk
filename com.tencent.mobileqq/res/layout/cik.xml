@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/al3" android:paddingLeft="18.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.ark.open.ArkView android:layout_gravity="center|top" android:id="@id/cvu" android:layout_width="350.0dip" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="10.0dip">
+        <com.tencent.mobileqq.widget.RoundImageView android:id="@id/nqb" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="fitCenter" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/nu3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/nu2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/aqb" android:ellipsize="end" android:id="@id/nu1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:maxLines="2" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/ns2" android:layout_width="110.0dip" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:background="@color/aou" android:layout_width="fill_parent" android:layout_height="@dimen/mo" />
 </LinearLayout>

@@ -6,19 +6,19 @@ import org.json.JSONObject;
 public class QvipSpecialSoundConfig$SpecialSound
 {
   public int a;
-  public String a;
-  public int b;
   public String b;
   public int c;
-  public String c;
-  public int d;
   public String d;
-  public int e;
   public String e;
   public String f;
-  public String g;
+  public int g;
   public String h;
   public String i;
+  public int j;
+  public int k;
+  public String l;
+  public String m;
+  public String n;
   
   static SpecialSound a(JSONObject paramJSONObject)
   {
@@ -28,20 +28,20 @@ public class QvipSpecialSoundConfig$SpecialSound
     SpecialSound localSpecialSound = new SpecialSound();
     try
     {
-      localSpecialSound.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localSpecialSound.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localSpecialSound.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localSpecialSound.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localSpecialSound.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localSpecialSound.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localSpecialSound.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localSpecialSound.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localSpecialSound.g = paramJSONObject.getString("classifyName");
-      localSpecialSound.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localSpecialSound.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localSpecialSound.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localSpecialSound.h = paramJSONObject.getString("trialstartday");
-      localSpecialSound.i = paramJSONObject.getString("trialendday");
+      localSpecialSound.a = paramJSONObject.getInt("id");
+      localSpecialSound.b = paramJSONObject.getString("name");
+      localSpecialSound.c = paramJSONObject.getInt("type");
+      localSpecialSound.d = paramJSONObject.optString("soundVersion", "0");
+      localSpecialSound.e = paramJSONObject.getString("soundUrl");
+      localSpecialSound.f = paramJSONObject.getString("whiteList");
+      localSpecialSound.g = paramJSONObject.getInt("isShow");
+      localSpecialSound.k = paramJSONObject.getInt("classify");
+      localSpecialSound.l = paramJSONObject.getString("classifyName");
+      localSpecialSound.h = paramJSONObject.getString("backgroundUrl");
+      localSpecialSound.i = String.valueOf(paramJSONObject.getInt("vip_type"));
+      localSpecialSound.j = paramJSONObject.getInt("useNum");
+      localSpecialSound.m = paramJSONObject.getString("trialstartday");
+      localSpecialSound.n = paramJSONObject.getString("trialendday");
       return localSpecialSound;
     }
     catch (JSONException paramJSONObject)
@@ -53,7 +53,7 @@ public class QvipSpecialSoundConfig$SpecialSound
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundConfig.SpecialSound
  * JD-Core Version:    0.7.0.1
  */

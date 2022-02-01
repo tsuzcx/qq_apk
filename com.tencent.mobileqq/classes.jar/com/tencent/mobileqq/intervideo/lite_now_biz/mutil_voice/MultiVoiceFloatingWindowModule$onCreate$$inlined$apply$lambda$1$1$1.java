@@ -13,20 +13,20 @@ final class MultiVoiceFloatingWindowModule$onCreate$$inlined$apply$lambda$1$1$1
   
   public final void run()
   {
-    if (MultiVoiceFloatingWindowModule.b(this.this$0.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule))
+    if (MultiVoiceFloatingWindowModule.e(this.this$0.a.b))
     {
-      if (!FloatWindowModule.canBackgroundStart(this.this$0.a.jdField_a_of_type_AndroidContentContext)) {
-        ThreadCenter.postUITask((ThreadCenter.HandlerKeyable)this.this$0.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule, MultiVoiceFloatingWindowModule.a(this.this$0.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule));
+      if (!FloatWindowModule.canBackgroundStart(this.this$0.a.c)) {
+        ThreadCenter.postUITask((ThreadCenter.HandlerKeyable)this.this$0.a.b, MultiVoiceFloatingWindowModule.f(this.this$0.a.b));
       }
     }
     else {
-      ThreadCenter.postDelayedUITask((ThreadCenter.HandlerKeyable)this.this$0.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule, MultiVoiceFloatingWindowModule.b(this.this$0.a.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizMutil_voiceMultiVoiceFloatingWindowModule), 5000L);
+      ThreadCenter.postDelayedUITask((ThreadCenter.HandlerKeyable)this.this$0.a.b, MultiVoiceFloatingWindowModule.g(this.this$0.a.b), 5000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceFloatingWindowModule.onCreate..inlined.apply.lambda.1.1.1
  * JD-Core Version:    0.7.0.1
  */

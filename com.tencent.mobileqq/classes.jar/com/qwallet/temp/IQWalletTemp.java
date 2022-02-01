@@ -56,8 +56,6 @@ public abstract interface IQWalletTemp
   
   public abstract HashMap<String, String> BridgeHelper$mConfigContents(Context paramContext, String paramString);
   
-  public abstract String BusinessHandlerFactory$QWALLET_HANDLER();
-  
   public abstract void ChatActivityFacade$sendMessage(AppRuntime paramAppRuntime, Context paramContext, Object paramObject, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList);
   
   public abstract boolean ChatActivityUtil$isTempConv(BaseSessionInfo paramBaseSessionInfo);
@@ -145,6 +143,8 @@ public abstract interface IQWalletTemp
   public abstract void SpringHbMonitorReporter$reportResRealTimeDownload(int paramInt1, String paramString, int paramInt2);
   
   public abstract long StorageManager$getFreeSpace(String paramString);
+  
+  public abstract void StructMsgItemLayoutBirthdayReminder$startBirthdayHbSuccessFragment(Context paramContext, Intent paramIntent);
   
   public abstract TroopMemberInfo TroopManager$getTroopMember(AppInterface paramAppInterface, String paramString1, String paramString2);
   

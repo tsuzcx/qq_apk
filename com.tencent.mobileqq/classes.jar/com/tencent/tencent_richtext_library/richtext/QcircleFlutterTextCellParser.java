@@ -12,71 +12,64 @@ import java.util.regex.Pattern;
 
 public class QcircleFlutterTextCellParser
 {
-  public static final int a;
-  public static String a = "QcircleFlutterTextCellParser";
   public static final Pattern a;
-  public static int b;
   public static final Pattern b;
-  public static int c;
   public static final Pattern c;
-  public static int d;
   public static final Pattern d;
-  public static int e;
   public static final Pattern e;
-  public static int f;
-  public static final Pattern f;
-  public static int g;
+  public static final int f = ViewUtils.a(17.0F);
   public static final Pattern g;
-  public static int h;
   public static final Pattern h;
-  public static int i;
   public static final Pattern i;
-  public static int j;
-  public static int k;
-  public boolean a;
-  public int l = jdField_a_of_type_Int;
-  public int m = -14392957;
-  public int n = -14392957;
+  public static String j = "QcircleFlutterTextCellParser";
+  public static final Pattern k;
+  public static int l;
+  public static int m;
+  public static int n;
+  public static int o;
+  public static int p;
+  public static int q;
+  public static int r = 9;
+  public static int s;
+  public static int t;
+  public static int u;
+  public int v = f;
+  public int w = -14392957;
+  public boolean x = true;
+  public int y = -14392957;
   
   static
   {
-    jdField_a_of_type_Int = ViewUtils.a(17.0F);
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
-    jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("\\{url:(.*?),text:(.*?),color:(.*?)\\}");
-    jdField_e_of_type_JavaUtilRegexPattern = Pattern.compile("\\{url:.*?,text:.*?\\}");
-    jdField_f_of_type_JavaUtilRegexPattern = Pattern.compile("\\<uin:.*?,nick(name)?:.*?\\>");
-    jdField_h_of_type_JavaUtilRegexPattern = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]");
-    jdField_c_of_type_JavaUtilRegexPattern = Pattern.compile("\\{text:.*?,color:.*?\\}");
-    jdField_g_of_type_JavaUtilRegexPattern = Pattern.compile("\\{img:.*?,w:\\d+,h:\\d+\\}");
-    jdField_d_of_type_JavaUtilRegexPattern = Pattern.compile("\\{img:.*?,w:\\d+,h:.+?\\}");
-    jdField_i_of_type_JavaUtilRegexPattern = Pattern.compile("#?\\{tagName=.*?\\}");
-    jdField_g_of_type_Int = 0;
-    k = 1;
-    jdField_b_of_type_Int = 2;
-    jdField_d_of_type_Int = 3;
-    j = 4;
-    jdField_f_of_type_Int = 5;
-    jdField_e_of_type_Int = 6;
-    jdField_c_of_type_Int = 7;
-    jdField_i_of_type_Int = 8;
-    jdField_h_of_type_Int = 9;
-  }
-  
-  public QcircleFlutterTextCellParser()
-  {
-    this.jdField_a_of_type_Boolean = true;
+    a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
+    b = Pattern.compile("\\{url:(.*?),text:(.*?),color:(.*?)\\}");
+    e = Pattern.compile("\\{url:.*?,text:.*?\\}");
+    g = Pattern.compile("\\<uin:.*?,nick(name)?:.*?\\>");
+    i = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]");
+    c = Pattern.compile("\\{text:.*?,color:.*?\\}");
+    h = Pattern.compile("\\{img:.*?,w:\\d+,h:\\d+\\}");
+    d = Pattern.compile("\\{img:.*?,w:\\d+,h:.+?\\}");
+    k = Pattern.compile("#?\\{tagName=.*?\\}");
+    q = 0;
+    u = 1;
+    l = 2;
+    n = 3;
+    t = 4;
+    p = 5;
+    o = 6;
+    m = 7;
+    s = 8;
   }
   
   public static ArrayList<HashMap<String, Object>> a(CharSequence paramCharSequence)
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList(5);
-    localArrayList2.add(new AtUserMatcher(jdField_a_of_type_JavaUtilRegexPattern));
-    localArrayList2.add(new EmoMatcher(jdField_h_of_type_JavaUtilRegexPattern));
-    localArrayList2.add(new TagMatcher(jdField_i_of_type_JavaUtilRegexPattern));
+    localArrayList2.add(new AtUserMatcher(a));
+    localArrayList2.add(new EmoMatcher(i));
+    localArrayList2.add(new TagMatcher(k));
     Object localObject1 = localArrayList2.iterator();
     while (((Iterator)localObject1).hasNext()) {
-      ((TextMatcher)((Iterator)localObject1).next()).a(paramCharSequence.toString());
+      ((TextMatcher)((Iterator)localObject1).next()).b(paramCharSequence.toString());
     }
     int i3 = paramCharSequence.length();
     localObject1 = new StringBuilder(i3);
@@ -97,7 +90,7 @@ public class QcircleFlutterTextCellParser
       if (((StringBuilder)localObject1).length() > 0)
       {
         localObject2 = new HashMap();
-        ((HashMap)localObject2).put("nodeType", Integer.valueOf(jdField_g_of_type_Int));
+        ((HashMap)localObject2).put("nodeType", Integer.valueOf(q));
         ((HashMap)localObject2).put("text", ((StringBuilder)localObject1).toString());
         localArrayList1.add(localObject2);
         ((StringBuilder)localObject1).delete(0, ((StringBuilder)localObject1).length());
@@ -115,17 +108,17 @@ public class QcircleFlutterTextCellParser
     if (((StringBuilder)localObject1).length() > 0)
     {
       paramCharSequence = new HashMap();
-      paramCharSequence.put("nodeType", Integer.valueOf(jdField_g_of_type_Int));
+      paramCharSequence.put("nodeType", Integer.valueOf(q));
       paramCharSequence.put("text", ((StringBuilder)localObject1).toString());
       localArrayList1.add(paramCharSequence);
     }
-    Log.d(jdField_a_of_type_JavaLangString, localArrayList1.toString());
+    Log.d(j, localArrayList1.toString());
     return localArrayList1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.QcircleFlutterTextCellParser
  * JD-Core Version:    0.7.0.1
  */

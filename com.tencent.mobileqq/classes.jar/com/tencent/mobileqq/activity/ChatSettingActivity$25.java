@@ -1,26 +1,20 @@
 package com.tencent.mobileqq.activity;
 
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.richstatus.IIconListener;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.utils.QQUtils;
 
 class ChatSettingActivity$25
-  implements IIconListener
+  implements Runnable
 {
   ChatSettingActivity$25(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onGetIcon(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((this.a.h != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200))
-    {
-      paramBitmap = this.a;
-      ChatSettingActivity.a(paramBitmap, paramBitmap.a, this.a.h);
-    }
+    QQUtils.a(this.this$0.app, ChatSettingActivity.a(this.this$0), ChatSettingActivity.c(this.this$0), this.this$0.getTitleBarHeight(), this.this$0.G, 500, "0", ChatSettingActivity.n(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.25
  * JD-Core Version:    0.7.0.1
  */

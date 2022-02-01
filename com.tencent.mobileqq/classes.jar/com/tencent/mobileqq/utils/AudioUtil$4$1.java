@@ -9,12 +9,12 @@ class AudioUtil$4$1
   
   public void run()
   {
-    this.this$0.a.onCompletion(AudioUtil.a);
+    this.this$0.a.onCompletion(AudioUtil.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AudioUtil.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class PreferenceUtil$1
   
   public void loadLibrary(String paramString)
   {
-    ReLinker.a(this.jdField_a_of_type_AndroidContentContext, paramString);
+    ReLinker.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.utils.PreferenceUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.avgame.ui.AVGameSplitNumberView android:id="@id/nd7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
-        <ImageView android:id="@id/nd6" android:layout_width="125.0dip" android:layout_height="30.0dip" android:layout_marginTop="-4.0dip" android:layout_below="@id/nd7" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/oi8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="33.0dip" android:text="" android:maxLines="2" android:shadowColor="#33000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/oi9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:shadowColor="#33000000" android:shadowDx="0.0" android:shadowDy="2.0" android:shadowRadius="1.0" android:layout_above="@id/oi8" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ProgressBar android:layout_gravity="bottom|center" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminateDrawable="@drawable/cf9" android:indeterminateBehavior="repeat" />
+</FrameLayout>

@@ -13,9 +13,9 @@ class TroopSettingActivity$37
   
   protected void onModifyMemberGameCardSwitch(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
   {
-    Object localObject2 = this.a.a.troopUin;
+    Object localObject2 = this.a.i.troopUin;
     Object localObject1 = "";
-    if ((localObject2 != null) && (this.a.a.troopUin.equals(String.valueOf(paramLong1))))
+    if ((localObject2 != null) && (this.a.i.troopUin.equals(String.valueOf(paramLong1))))
     {
       if (!paramBoolean)
       {
@@ -28,9 +28,9 @@ class TroopSettingActivity$37
           paramString = "";
         }
         QLog.e("Q.chatopttroop", 2, paramString);
-        QQToast.a(this.a, 1, HardCodeUtil.a(2131697421), 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 1, HardCodeUtil.a(2131895194), 0).show(this.a.getTitleBarHeight());
       }
-      TroopSettingActivity.s(this.a);
+      TroopSettingActivity.v(this.a);
       return;
     }
     localObject2 = new StringBuilder();
@@ -55,9 +55,9 @@ class TroopSettingActivity$37
   
   protected void onModifyTroopGameCardSwitch(boolean paramBoolean, long paramLong1, long paramLong2, String paramString)
   {
-    if (this.a.a.troopUin != null)
+    if (this.a.i.troopUin != null)
     {
-      if (!this.a.a.troopUin.equals(String.valueOf(paramLong1))) {
+      if (!this.a.i.troopUin.equals(String.valueOf(paramLong1))) {
         return;
       }
       if (!paramBoolean)
@@ -71,15 +71,15 @@ class TroopSettingActivity$37
           paramString = "";
         }
         QLog.e("Q.chatopttroop", 2, paramString);
-        QQToast.a(this.a, 1, HardCodeUtil.a(2131697421), 0).b(this.a.getTitleBarHeight());
+        QQToast.makeText(this.a, 1, HardCodeUtil.a(2131895194), 0).show(this.a.getTitleBarHeight());
       }
-      TroopSettingActivity.t(this.a);
+      TroopSettingActivity.w(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.37
  * JD-Core Version:    0.7.0.1
  */

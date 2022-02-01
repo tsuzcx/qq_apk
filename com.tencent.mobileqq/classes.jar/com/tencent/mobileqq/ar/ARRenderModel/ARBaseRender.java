@@ -6,27 +6,27 @@ public abstract interface ARBaseRender
   
   public abstract void a(ARRenerArumentManager.DrawFrameParements paramDrawFrameParements);
   
-  public abstract int b();
+  public abstract void i();
   
-  public abstract int c();
+  public abstract void j();
   
-  public abstract String c();
+  public abstract void k();
   
-  public abstract void c();
+  public abstract void l();
   
-  public abstract void d();
+  public abstract int m();
   
-  public abstract boolean d();
+  public abstract String n();
   
-  public abstract void e();
+  public abstract boolean o();
   
-  public abstract boolean e();
+  public abstract boolean p();
   
-  public abstract void f();
+  public abstract int q();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender
  * JD-Core Version:    0.7.0.1
  */

@@ -50,29 +50,29 @@ public class PersonalityLabelShareActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener, ShareHelper.OnUseResListener, TagCloudView.OnUpdateDrawingListener
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int = 0;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(7);
-  View jdField_a_of_type_AndroidViewView;
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ProfilePersonalityLabelInfo jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelProfilePersonalityLabelInfo;
-  ShareHelper jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper;
-  TagCloudView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView;
-  boolean jdField_a_of_type_Boolean = true;
-  Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  View jdField_b_of_type_AndroidViewView;
-  Button jdField_b_of_type_AndroidWidgetButton;
-  boolean jdField_b_of_type_Boolean = false;
-  Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
-  View jdField_c_of_type_AndroidViewView;
+  TagCloudView a;
+  ImageView b;
+  TextView c;
   View d;
+  View e;
+  View f;
+  View g;
+  Button h;
+  Button i;
+  Bitmap j;
+  Bitmap k;
+  Bitmap l;
+  int m = 0;
+  float n;
+  boolean o = true;
+  ShareHelper p;
+  ProfilePersonalityLabelInfo q;
+  Drawable r;
+  Drawable s;
+  TextPaint t = new TextPaint(7);
+  boolean u = false;
   
-  private void c()
+  private void e()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
@@ -81,25 +81,25 @@ public class PersonalityLabelShareActivity
         requestPermissions(new PersonalityLabelShareActivity.1(this), 1, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE" });
         return;
       }
-      d();
+      f();
       return;
     }
-    d();
+    f();
   }
   
-  private void d()
+  private void f()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.o = false;
     ThreadManager.postImmediately(new PersonalityLabelShareActivity.2(this), null, true);
   }
   
-  private void e()
+  private void g()
   {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelProfilePersonalityLabelInfo.getSize());
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2131165426);
+    ArrayList localArrayList = new ArrayList(this.q.getSize());
+    if (this.r == null) {
+      this.r = getResources().getDrawable(2131165733);
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelProfilePersonalityLabelInfo.getLatestThumbLocalUrl();
+    Object localObject1 = this.q.getLatestThumbLocalUrl();
     boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
     Object localObject3 = null;
     Object localObject2;
@@ -111,7 +111,7 @@ public class PersonalityLabelShareActivity
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("file:///");
         localStringBuilder.append(((File)localObject1).getAbsolutePath());
-        localObject1 = URLDrawable.getDrawable(new URL(localStringBuilder.toString()), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        localObject1 = URLDrawable.getDrawable(new URL(localStringBuilder.toString()), this.r, this.r);
       }
       catch (Exception localException1)
       {
@@ -134,10 +134,10 @@ public class PersonalityLabelShareActivity
     }
     else
     {
-      Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelProfilePersonalityLabelInfo.getLatestThumbUrl();
+      Object localObject4 = this.q.getLatestThumbUrl();
       if ((!TextUtils.isEmpty((CharSequence)localObject4)) && ((((String)localObject4).startsWith("http")) || (((String)localObject4).startsWith("https"))))
       {
-        localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = this.r;
         localObject1 = URLDrawable.getDrawable((String)localObject4, (Drawable)localObject1, (Drawable)localObject1);
       }
       else
@@ -151,7 +151,7 @@ public class PersonalityLabelShareActivity
             localObject4 = new StringBuilder();
             ((StringBuilder)localObject4).append("file:///");
             ((StringBuilder)localObject4).append(((File)localObject1).getAbsolutePath());
-            localObject1 = URLDrawable.getDrawable(new URL(((StringBuilder)localObject4).toString()), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            localObject1 = URLDrawable.getDrawable(new URL(((StringBuilder)localObject4).toString()), this.r, this.r);
           }
           catch (Exception localException2)
           {
@@ -171,58 +171,151 @@ public class PersonalityLabelShareActivity
       }
     }
     label336:
-    TagUtil.a(localArrayList, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelProfilePersonalityLabelInfo, this.jdField_a_of_type_Float);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTags(localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setTagIcon(localObject2);
+    TagUtil.a(localArrayList, this.q, this.n);
+    this.a.setTags(localArrayList);
+    this.a.setTagIcon(localObject2);
   }
   
-  Bitmap a()
+  public Point a(View paramView)
+  {
+    Rect localRect = new Rect();
+    paramView.getDrawingRect(localRect);
+    ((ViewGroup)paramView.getParent()).offsetDescendantRectToMyCoords(paramView, localRect);
+    int i1 = localRect.top;
+    return new Point(localRect.left, i1);
+  }
+  
+  void a()
+  {
+    this.n = getResources().getDisplayMetrics().density;
+    Object localObject1 = (BounceScrollView)findViewById(2131429717);
+    ((BounceScrollView)localObject1).setVerticalScrollBarEnabled(false);
+    ((BounceScrollView)localObject1).mScrollFlag = 1;
+    this.a = ((TagCloudView)findViewById(2131446836));
+    this.a.setOnUpdateDrawingListener(this);
+    this.a.setMinHeight((int)(this.n * 150.0F));
+    this.a.setThreshold((int)(this.n * 7.5F));
+    this.d = findViewById(2131439800);
+    this.e = findViewById(2131435773);
+    this.f = findViewById(2131447193);
+    this.g = findViewById(2131437736);
+    this.d.setOnClickListener(this);
+    this.b = ((ImageView)findViewById(2131442819));
+    this.c = ((TextView)findViewById(2131447062));
+    this.m = getResources().getDimensionPixelSize(2131299131);
+    localObject1 = ContactUtils.a(this.app, this.app.getCurrentAccountUin());
+    String str1 = HardCodeUtil.a(2131905765);
+    String str2 = HardCodeUtil.a(2131905786);
+    int i1 = getResources().getDisplayMetrics().widthPixels;
+    int i2 = AIOUtils.b(20.0F, getResources());
+    int i3 = AIOUtils.b(1.0F, getResources());
+    int i4 = this.m;
+    int i5 = AIOUtils.b(10.0F, getResources());
+    TextPaint localTextPaint = new TextPaint();
+    localTextPaint.setTextSize(this.c.getTextSize());
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str1);
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(str2);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    float f1 = i1 - i2 * 5 - i3 - i4 - i5;
+    String str3 = (String)TextUtils.ellipsize((CharSequence)localObject2, localTextPaint, f1, TextUtils.TruncateAt.END);
+    if (TextUtils.equals((CharSequence)localObject2, str3))
+    {
+      this.c.setText(str3);
+    }
+    else
+    {
+      do
+      {
+        localObject1 = (String)((String)localObject1).subSequence(0, ((String)localObject1).length() - 1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(str1);
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("...");
+        ((StringBuilder)localObject2).append(str2);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        str3 = (String)TextUtils.ellipsize((CharSequence)localObject2, localTextPaint, f1, TextUtils.TruncateAt.END);
+      } while (!TextUtils.equals((CharSequence)localObject2, str3));
+      this.c.setText(str3);
+    }
+    this.h = ((Button)findViewById(2131430004));
+    this.i = ((Button)findViewById(2131430026));
+    this.h.setOnClickListener(this);
+    this.i.setOnClickListener(this);
+    this.j = b();
+    if (this.j == null)
+    {
+      QQToast.makeText(this, 1, HardCodeUtil.a(2131905764), 0).show();
+      finish();
+    }
+    this.b.setImageBitmap(this.j);
+    g();
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.k = paramBitmap;
+    paramBitmap = this.l;
+    if (paramBitmap != null)
+    {
+      paramBitmap.recycle();
+      this.l = null;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.o = (paramBoolean ^ true);
+  }
+  
+  Bitmap b()
   {
     if (QLog.isColorLevel()) {
       QLog.i("PersonalityLabelDeleteActivity", 2, "getQRBitmap start");
     }
     Object localObject2;
-    int m;
+    int i4;
     Object localObject1;
-    int i;
-    int j;
-    int k;
+    int i1;
+    int i2;
+    int i3;
     try
     {
       localObject2 = QRUtils.a(String.format(ShareHelper.a, new Object[] { this.app.getCurrentAccountUin() }), 29);
-      m = ((BitMatrix)localObject2).a();
-      localObject1 = new int[m * m];
-      i = 0;
+      i4 = ((BitMatrix)localObject2).a();
+      localObject1 = new int[i4 * i4];
+      i1 = 0;
     }
     catch (Exception localException2)
     {
       localObject2 = null;
       localObject1 = localObject2;
       if (!QLog.isColorLevel()) {
-        break label250;
+        break label252;
       }
       QLog.i("PersonalityLabelDeleteActivity", 2, localException2.getMessage());
       localObject1 = localObject2;
-      break label250;
+      break label252;
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
       localObject2 = null;
     }
-    if (j < m) {
-      if (((BitMatrix)localObject2).a(j, i)) {
-        k = -16777216;
+    if (i2 < i4) {
+      if (((BitMatrix)localObject2).a(i2, i1)) {
+        i3 = -16777216;
       }
     }
-    label303:
+    label305:
     for (;;)
     {
-      localObject2 = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
-      ((Bitmap)localObject2).setPixels((int[])localObject1, 0, m, 0, 0, m, m);
-      localObject1 = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888);
+      localObject2 = Bitmap.createBitmap(i4, i4, Bitmap.Config.ARGB_8888);
+      ((Bitmap)localObject2).setPixels((int[])localObject1, 0, i4, 0, 0, i4, i4);
+      localObject1 = Bitmap.createBitmap(this.m, this.m, Bitmap.Config.ARGB_8888);
       try
       {
-        new Canvas((Bitmap)localObject1).drawBitmap((Bitmap)localObject2, null, new Rect(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int), null);
+        new Canvas((Bitmap)localObject1).drawBitmap((Bitmap)localObject2, null, new Rect(0, 0, this.m, this.m), null);
         ((Bitmap)localObject2).recycle();
       }
       catch (Exception localException1)
@@ -239,160 +332,67 @@ public class PersonalityLabelShareActivity
         QLog.i("PersonalityLabelDeleteActivity", 2, localOutOfMemoryError2.getMessage());
         localObject1 = localObject2;
       }
-      label250:
+      label252:
       if (QLog.isColorLevel()) {
         QLog.i("PersonalityLabelDeleteActivity", 2, "getQRBitmap end");
       }
       return localObject1;
       for (;;)
       {
-        if (i >= m) {
-          break label303;
+        if (i1 >= i4) {
+          break label305;
         }
-        j = 0;
+        i2 = 0;
         break;
-        k = -1;
-        localObject1[(i * m + j)] = k;
-        j += 1;
+        i3 = -1;
+        localObject1[(i1 * i4 + i2)] = i3;
+        i2 += 1;
         break;
-        i += 1;
+        i1 += 1;
       }
     }
   }
   
-  public Point a(View paramView)
+  Bitmap c()
   {
-    Rect localRect = new Rect();
-    paramView.getDrawingRect(localRect);
-    ((ViewGroup)paramView.getParent()).offsetDescendantRectToMyCoords(paramView, localRect);
-    int i = localRect.top;
-    return new Point(localRect.left, i);
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    Object localObject1 = (BounceScrollView)findViewById(2131363784);
-    ((BounceScrollView)localObject1).setVerticalScrollBarEnabled(false);
-    ((BounceScrollView)localObject1).mScrollFlag = 1;
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView = ((TagCloudView)findViewById(2131378316));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setOnUpdateDrawingListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setMinHeight((int)(this.jdField_a_of_type_Float * 150.0F));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView.setThreshold((int)(this.jdField_a_of_type_Float * 7.5F));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372289);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131368842);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131378568);
-    this.d = findViewById(2131370464);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374642));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378460));
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131298417);
-    localObject1 = ContactUtils.a(this.app, this.app.getCurrentAccountUin());
-    String str1 = HardCodeUtil.a(2131707954);
-    String str2 = HardCodeUtil.a(2131707976);
-    int i = getResources().getDisplayMetrics().widthPixels;
-    int j = AIOUtils.b(20.0F, getResources());
-    int k = AIOUtils.b(1.0F, getResources());
-    int m = this.jdField_a_of_type_Int;
-    int n = AIOUtils.b(10.0F, getResources());
-    TextPaint localTextPaint = new TextPaint();
-    localTextPaint.setTextSize(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(str1);
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append(str2);
-    localObject2 = ((StringBuilder)localObject2).toString();
-    float f = i - j * 5 - k - m - n;
-    String str3 = (String)TextUtils.ellipsize((CharSequence)localObject2, localTextPaint, f, TextUtils.TruncateAt.END);
-    if (TextUtils.equals((CharSequence)localObject2, str3))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str3);
-    }
-    else
-    {
-      do
-      {
-        localObject1 = (String)((String)localObject1).subSequence(0, ((String)localObject1).length() - 1);
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(str1);
-        ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append("...");
-        ((StringBuilder)localObject2).append(str2);
-        localObject2 = ((StringBuilder)localObject2).toString();
-        str3 = (String)TextUtils.ellipsize((CharSequence)localObject2, localTextPaint, f, TextUtils.TruncateAt.END);
-      } while (!TextUtils.equals((CharSequence)localObject2, str3));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(str3);
-    }
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364046));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364068));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a();
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      QQToast.a(this, 1, HardCodeUtil.a(2131707953), 0).a();
-      finish();
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    e();
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap;
-    paramBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
-    if (paramBitmap != null)
-    {
-      paramBitmap.recycle();
-      this.jdField_c_of_type_AndroidGraphicsBitmap = null;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = (paramBoolean ^ true);
-  }
-  
-  Bitmap b()
-  {
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+    int i1 = this.d.getWidth();
+    int i2 = this.d.getHeight();
     Bitmap localBitmap;
     Object localObject;
     try
     {
-      localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      localBitmap = Bitmap.createBitmap(i1, i2, Bitmap.Config.ARGB_8888);
       try
       {
         localObject = new Canvas(localBitmap);
         ((Canvas)localObject).drawColor(-1);
-        Point localPoint1 = a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelTagCloudTagCloudView);
+        Point localPoint1 = a(this.a);
         ((Canvas)localObject).save();
         ((Canvas)localObject).translate(localPoint1.x, localPoint1.y);
-        if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-          ((Canvas)localObject).drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
+        if (this.k != null) {
+          ((Canvas)localObject).drawBitmap(this.k, 0.0F, 0.0F, this.t);
         }
         ((Canvas)localObject).restore();
-        Point localPoint2 = a(this.jdField_c_of_type_AndroidViewView);
-        localPoint1 = a(this.jdField_b_of_type_AndroidViewView);
-        Point localPoint3 = a(this.d);
+        Point localPoint2 = a(this.f);
+        localPoint1 = a(this.e);
+        Point localPoint3 = a(this.g);
         ((Canvas)localObject).save();
-        i = AIOUtils.b(40.0F, getResources());
-        j = AIOUtils.b(18.0F, getResources());
+        i1 = AIOUtils.b(40.0F, getResources());
+        i2 = AIOUtils.b(18.0F, getResources());
         ((Canvas)localObject).translate(localPoint3.x + localPoint2.x + localPoint1.x, localPoint3.y + localPoint2.y + localPoint1.y);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, i, j);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw((Canvas)localObject);
+        this.s.setBounds(0, 0, i1, i2);
+        this.s.draw((Canvas)localObject);
         ((Canvas)localObject).restore();
-        localPoint3 = a(this.jdField_a_of_type_AndroidWidgetTextView);
+        localPoint3 = a(this.c);
         ((Canvas)localObject).save();
-        Layout localLayout = this.jdField_a_of_type_AndroidWidgetTextView.getLayout();
+        Layout localLayout = this.c.getLayout();
         ((Canvas)localObject).translate(localPoint3.x + localPoint2.x + localPoint1.x, localPoint3.y + localPoint2.y + localPoint1.y);
         localLayout.draw((Canvas)localObject);
         ((Canvas)localObject).restore();
         ((Canvas)localObject).save();
-        localPoint2 = a(this.jdField_a_of_type_AndroidWidgetImageView);
+        localPoint2 = a(this.b);
         ((Canvas)localObject).translate(localPoint1.x + localPoint2.x, localPoint1.y + localPoint2.y);
-        ((Canvas)localObject).drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, new Rect(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int), null);
+        ((Canvas)localObject).drawBitmap(this.j, null, new Rect(0, 0, this.m, this.m), null);
         ((Canvas)localObject).restore();
         return localBitmap;
       }
@@ -422,9 +422,9 @@ public class PersonalityLabelShareActivity
     return localObject;
   }
   
-  void b()
+  void d()
   {
-    setLeftViewName(2131690529);
+    setLeftViewName(2131887440);
     this.rightViewText.setVisibility(8);
     if (this.mSystemBarComp != null)
     {
@@ -449,7 +449,7 @@ public class PersonalityLabelShareActivity
     if (paramInt2 == -1) {
       if (paramInt1 == 1)
       {
-        QRUtils.a(2, 2131716664);
+        QRUtils.a(2, 2131914127);
       }
       else if (paramInt1 == 21)
       {
@@ -465,72 +465,72 @@ public class PersonalityLabelShareActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561274);
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelProfilePersonalityLabelInfo = ((ProfilePersonalityLabelInfo)getIntent().getParcelableExtra("data"));
+    setContentView(2131627630);
+    this.q = ((ProfilePersonalityLabelInfo)getIntent().getParcelableExtra("data"));
     a();
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845842);
+    this.s = getResources().getDrawable(2130847312);
     return true;
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    b();
+    d();
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131364068)
+    if (paramView.getId() == 2131430026)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.o)
       {
-        QQToast.a(this, 2131699132, 0).a();
+        QQToast.makeText(this, 2131897148, 0).show();
       }
       else
       {
-        if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {
-          this.jdField_c_of_type_AndroidGraphicsBitmap = b();
+        if (this.l == null) {
+          this.l = c();
         }
-        if (this.jdField_c_of_type_AndroidGraphicsBitmap == null)
+        if (this.l == null)
         {
-          QQToast.a(this, 1, 2131699133, 0).a();
+          QQToast.makeText(this, 1, 2131897149, 0).show();
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper == null) {
-            this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper = new ShareHelper(this, this.app, this, this);
+          if (this.p == null) {
+            this.p = new ShareHelper(this, this.app, this, this);
           }
-          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper.a(this.jdField_c_of_type_AndroidGraphicsBitmap);
-          this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper.a(null);
+          this.p.a(this.l);
+          this.p.a(null);
         }
       }
     }
-    else if (paramView.getId() == 2131364046)
+    else if (paramView.getId() == 2131430004)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.o)
       {
-        if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {
-          this.jdField_c_of_type_AndroidGraphicsBitmap = b();
+        if (this.l == null) {
+          this.l = c();
         }
-        if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {
-          QQToast.a(this, 1, 2131699133, 0).a();
-        } else if (!this.jdField_b_of_type_Boolean) {
-          c();
+        if (this.l == null) {
+          QQToast.makeText(this, 1, 2131897149, 0).show();
+        } else if (!this.u) {
+          e();
         } else {
-          QQToast.a(this, 0, HardCodeUtil.a(2131707960), 0).a();
+          QQToast.makeText(this, 0, HardCodeUtil.a(2131905770), 0).show();
         }
       }
     }
-    else if (paramView.getId() == 2131372289)
+    else if (paramView.getId() == 2131439800)
     {
-      this.jdField_b_of_type_Boolean = false;
-      Bitmap localBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
+      this.u = false;
+      Bitmap localBitmap = this.l;
       if (localBitmap != null)
       {
         localBitmap.recycle();
-        this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+        this.l = null;
       }
-      e();
+      g();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -544,7 +544,7 @@ public class PersonalityLabelShareActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity
  * JD-Core Version:    0.7.0.1
  */

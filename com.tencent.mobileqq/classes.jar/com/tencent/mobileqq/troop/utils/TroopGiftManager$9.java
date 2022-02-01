@@ -45,7 +45,7 @@ class TroopGiftManager$9
           arrayOfLong2[i] = ((oidb_0xa48.SendItem)paramBundle.msg_send_list_rsp.rpt_recv_gift.get(i)).uint64_uin.get();
           i += 1;
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramArrayOfByte, arrayOfLong1, arrayOfLong2);
+        this.b.a(paramArrayOfByte, arrayOfLong1, arrayOfLong2);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -57,7 +57,7 @@ class TroopGiftManager$9
           paramBundle.append(QLog.getStackTraceString(paramArrayOfByte));
           QLog.i(".troop.send_gift", 2, paramBundle.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, "InvalidProtocolBufferMicroException");
+        this.b.a(paramInt, "InvalidProtocolBufferMicroException");
         return;
       }
     }
@@ -70,12 +70,12 @@ class TroopGiftManager$9
       paramBundle.append(paramArrayOfByte);
       QLog.i(".troop.send_gift", 2, paramBundle.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftCallback.a(paramInt, "");
+    this.b.a(paramInt, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager.9
  * JD-Core Version:    0.7.0.1
  */

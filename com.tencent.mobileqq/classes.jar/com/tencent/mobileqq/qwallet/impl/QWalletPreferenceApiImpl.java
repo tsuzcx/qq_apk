@@ -44,6 +44,7 @@ public class QWalletPreferenceApiImpl
   public static final String PREF_KEY_SKIN_MD5 = "skin_md5";
   public static final String PREF_KEY_SKIN_RES_NUM = "skin_res_num";
   public static final String PREF_KEY_ZIP_URL = "zip_url";
+  public static final String PREF_NAME_FOR_BIRTHDAY_REMINDER = "birthday_reminder_setting";
   public static final String PREF_NAME_QWALLET_SKIN = "qwallet_skin";
   public static final String PREF_NAME_SETTING = "qwallet_setting";
   
@@ -53,6 +54,25 @@ public class QWalletPreferenceApiImpl
       return MobileQQ.getContext().getSharedPreferences(paramString, 4);
     }
     return null;
+  }
+  
+  public boolean getBoolean(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    if (MobileQQ.getContext() != null)
+    {
+      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("birthday_reminder_setting", 4);
+      if (localSharedPreferences != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString3);
+        return localSharedPreferences.getBoolean(localStringBuilder.toString(), paramBoolean);
+      }
+    }
+    return paramBoolean;
   }
   
   public boolean getBoolean(String paramString1, String paramString2, boolean paramBoolean)
@@ -66,6 +86,22 @@ public class QWalletPreferenceApiImpl
       return localSharedPreferences.getBoolean(localStringBuilder.toString(), paramBoolean);
     }
     return paramBoolean;
+  }
+  
+  public int getInt(String paramString, int paramInt)
+  {
+    if (MobileQQ.getContext() != null)
+    {
+      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("birthday_reminder_setting", 4);
+      if (localSharedPreferences != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("_pack_count");
+        return localSharedPreferences.getInt(localStringBuilder.toString(), paramInt);
+      }
+    }
+    return paramInt;
   }
   
   public int getInt(String paramString1, String paramString2, int paramInt)
@@ -128,6 +164,25 @@ public class QWalletPreferenceApiImpl
     return false;
   }
   
+  public void putBoolean(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    if (MobileQQ.getContext() != null)
+    {
+      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("birthday_reminder_setting", 4);
+      if (localSharedPreferences != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString3);
+        paramString1 = localStringBuilder.toString();
+        localSharedPreferences.edit().putBoolean(paramString1, paramBoolean).commit();
+      }
+    }
+  }
+  
   public void putBoolean(String paramString1, String paramString2, boolean paramBoolean)
   {
     Object localObject = getPreference("qwallet_setting");
@@ -138,6 +193,22 @@ public class QWalletPreferenceApiImpl
       localStringBuilder.append(paramString2);
       localStringBuilder.append(paramString1);
       ((SharedPreferences.Editor)localObject).putBoolean(localStringBuilder.toString(), paramBoolean).commit();
+    }
+  }
+  
+  public void putInt(String paramString, int paramInt)
+  {
+    if (MobileQQ.getContext() != null)
+    {
+      SharedPreferences localSharedPreferences = MobileQQ.getContext().getSharedPreferences("birthday_reminder_setting", 4);
+      if (localSharedPreferences != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("_pack_count");
+        paramString = localStringBuilder.toString();
+        localSharedPreferences.edit().putInt(paramString, paramInt).commit();
+      }
     }
   }
   
@@ -195,7 +266,7 @@ public class QWalletPreferenceApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletPreferenceApiImpl
  * JD-Core Version:    0.7.0.1
  */

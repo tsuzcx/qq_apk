@@ -8,13 +8,8 @@ import org.json.JSONObject;
 
 public class limitChatOnPlusConfBean
 {
-  private int a;
+  private int a = 0;
   private int b = 0;
-  
-  public limitChatOnPlusConfBean()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
   
   public static limitChatOnPlusConfBean a(QConfItem paramQConfItem)
   {
@@ -26,14 +21,14 @@ public class limitChatOnPlusConfBean
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("parse taskid->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(paramQConfItem.a);
         localStringBuilder.append(" content->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramQConfItem.b);
         QLog.d("limitChatOnPlusConfBean", 2, localStringBuilder.toString());
       }
       try
       {
-        paramQConfItem = paramQConfItem.jdField_a_of_type_JavaLangString;
+        paramQConfItem = paramQConfItem.b;
         if (!TextUtils.isEmpty(paramQConfItem))
         {
           paramQConfItem = new JSONObject(paramQConfItem);
@@ -63,12 +58,12 @@ public class limitChatOnPlusConfBean
   
   void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
   
   void b(int paramInt)
@@ -83,12 +78,12 @@ public class limitChatOnPlusConfBean
   
   public String toString()
   {
-    return String.format("mBusinessSwitch:%d mShowInRecent:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b) });
+    return String.format("mBusinessSwitch:%d mShowInRecent:%d", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.manager.config.limitChatOnPlusConfBean
  * JD-Core Version:    0.7.0.1
  */

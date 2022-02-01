@@ -20,7 +20,7 @@ final class GeneralEventPlugin$handleGetDressPath$1
   {
     if (QLog.isColorLevel())
     {
-      GeneralEventPlugin.a();
+      GeneralEventPlugin.b();
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append("[getRoleDressPath], uin:");
       paramQQAppInterface.append(paramString1);
@@ -47,7 +47,7 @@ final class GeneralEventPlugin$handleGetDressPath$1
         paramQQAppInterface = ApolloGameBasicEventUtil.a(paramInt1, paramArrayOfInt);
         if (paramQQAppInterface == null)
         {
-          GeneralEventPlugin.a();
+          GeneralEventPlugin.b();
           QLog.e("[cmshow][GeneralEventPlugin]", 1, "getRoleDressPath errInfo-> jsonObject is NULL");
           return;
         }
@@ -64,7 +64,7 @@ final class GeneralEventPlugin$handleGetDressPath$1
       }
       catch (Exception paramQQAppInterface)
       {
-        GeneralEventPlugin.a();
+        GeneralEventPlugin.b();
         QLog.e("[cmshow][GeneralEventPlugin]", 1, "[notifyRoleDress], errInfo->", (Throwable)paramQQAppInterface);
       }
     }
@@ -72,7 +72,7 @@ final class GeneralEventPlugin$handleGetDressPath$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.GeneralEventPlugin.handleGetDressPath.1
  * JD-Core Version:    0.7.0.1
  */

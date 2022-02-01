@@ -76,13 +76,13 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class SignatureHandler
   extends BusinessHandler
 {
-  private int jdField_a_of_type_Int = 0;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int a = 0;
+  private QQAppInterface b;
   
   protected SignatureHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private boolean a(String[] paramArrayOfString, byte[] paramArrayOfByte)
@@ -106,14 +106,14 @@ public class SignatureHandler
       ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1945);
       ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
       ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfString.toByteArray()));
-      paramArrayOfString = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+      paramArrayOfString = new NewIntent(this.b.getApp(), SignatureServlet.class);
       if (paramArrayOfByte != null) {
         paramArrayOfString.putExtra("reqData", paramArrayOfByte);
       }
       paramArrayOfString.putExtra("cmd", "OidbSvc.0x799_0");
       paramArrayOfString.putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject).toByteArray());
       paramArrayOfString.putExtra("timeout", 10000L);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramArrayOfString);
+      this.b.startServlet(paramArrayOfString);
       return true;
     }
     return false;
@@ -142,11 +142,11 @@ public class SignatureHandler
       {
         String str1 = paramIntent.getStringExtra("uin");
         String str2 = paramIntent.getStringExtra("feedsid");
-        paramOIDBSSOPkg = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str1);
+        paramOIDBSSOPkg = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(str1);
         paramIntent = null;
         if (paramOIDBSSOPkg != null)
         {
-          paramOIDBSSOPkg = ExtensionRichStatus.a(paramOIDBSSOPkg);
+          paramOIDBSSOPkg = ExtensionRichStatus.c(paramOIDBSSOPkg);
           paramIntent = paramOIDBSSOPkg;
           if (paramOIDBSSOPkg == null) {
             return;
@@ -161,26 +161,26 @@ public class SignatureHandler
         {
           RichStatus.SigZanInfo localSigZanInfo = new RichStatus.SigZanInfo();
           oidb_0x798.Info localInfo = (oidb_0x798.Info)paramOIDBSSOPkg.get(i);
-          localSigZanInfo.jdField_a_of_type_JavaLangString = str2;
-          localSigZanInfo.b = localInfo.uint32_count.get();
-          localSigZanInfo.jdField_a_of_type_Int = localInfo.uint32_type.get();
-          localSigZanInfo.c = localInfo.uint32_flag.get();
+          localSigZanInfo.a = str2;
+          localSigZanInfo.c = localInfo.uint32_count.get();
+          localSigZanInfo.b = localInfo.uint32_type.get();
+          localSigZanInfo.d = localInfo.uint32_flag.get();
           if (paramIntent != null) {
-            paramIntent.sigZanInfo.put(Integer.valueOf(localSigZanInfo.jdField_a_of_type_Int), localSigZanInfo);
+            paramIntent.sigZanInfo.put(Integer.valueOf(localSigZanInfo.b), localSigZanInfo);
           }
           i += 1;
         }
         long l1 = ((oidb_0x798.RspBody)localObject).uint64_sleeptime.get();
         long l2 = System.currentTimeMillis();
-        paramOIDBSSOPkg = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+        paramOIDBSSOPkg = this.b.getPreferences().edit();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("sigCommentUpdateTimeStamp_");
         ((StringBuilder)localObject).append(str1);
         paramOIDBSSOPkg.putLong(((StringBuilder)localObject).toString(), l1 * 1000L + l2).commit();
         if ((paramIntent != null) && (paramIntent.sigZanInfo.get(Integer.valueOf(255)) != null))
         {
-          this.jdField_a_of_type_Int = 92;
-          notifyUI(this.jdField_a_of_type_Int, true, paramIntent.sigZanInfo.get(Integer.valueOf(255)));
+          this.a = 92;
+          notifyUI(this.a, true, paramIntent.sigZanInfo.get(Integer.valueOf(255)));
         }
       }
     }
@@ -202,9 +202,9 @@ public class SignatureHandler
     boolean bool = false;
     int j = paramIntent.getIntExtra("action", 0);
     int k = paramIntent.getIntExtra("type", 0);
-    paramIntent = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(str2);
-    this.jdField_a_of_type_Int = 92;
-    paramOIDBSSOPkg = ExtensionRichStatus.a(paramIntent);
+    paramIntent = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(str2);
+    this.a = 92;
+    paramOIDBSSOPkg = ExtensionRichStatus.c(paramIntent);
     if ((paramIntent != null) && (str1.equals(paramOIDBSSOPkg.feedsId)) && (paramOIDBSSOPkg.sigZanInfo != null))
     {
       paramOIDBSSOPkg = (RichStatus.SigZanInfo)paramOIDBSSOPkg.sigZanInfo.get(Integer.valueOf(255));
@@ -212,21 +212,21 @@ public class SignatureHandler
       if (localRspBody.uint32_result.get() == 0) {
         if (1 == j)
         {
-          paramOIDBSSOPkg.b += 1;
-          paramOIDBSSOPkg.c = 1;
+          paramOIDBSSOPkg.c += 1;
+          paramOIDBSSOPkg.d = 1;
           paramIntent = paramOIDBSSOPkg;
         }
         else
         {
-          i = paramOIDBSSOPkg.b - 1;
-          paramOIDBSSOPkg.b = i;
+          i = paramOIDBSSOPkg.c - 1;
+          paramOIDBSSOPkg.c = i;
           if (i > 0) {
-            i = paramOIDBSSOPkg.b;
+            i = paramOIDBSSOPkg.c;
           } else {
             i = 0;
           }
-          paramOIDBSSOPkg.b = i;
-          paramOIDBSSOPkg.c = 0;
+          paramOIDBSSOPkg.c = i;
+          paramOIDBSSOPkg.d = 0;
           paramIntent = paramOIDBSSOPkg;
         }
       }
@@ -236,9 +236,9 @@ public class SignatureHandler
       paramIntent = null;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("SignatureHandler", 2, String.format("handleInteractiveSigature[%s %s %d %d]", new Object[] { StringUtil.e(str2), str1, Integer.valueOf(k), Integer.valueOf(j) }));
+      QLog.i("SignatureHandler", 2, String.format("handleInteractiveSigature[%s %s %d %d]", new Object[] { StringUtil.getSimpleUinForPrint(str2), str1, Integer.valueOf(k), Integer.valueOf(j) }));
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (localRspBody.uint32_result.get() == 0) {
       bool = true;
     }
@@ -265,7 +265,7 @@ public class SignatureHandler
       StringBuilder localStringBuilder;
       if (!bool1)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+        localObject2 = this.b.getPreferences().edit();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("sigCommentDetailUin_");
         localStringBuilder.append(paramOIDBSSOPkg);
@@ -329,7 +329,7 @@ public class SignatureHandler
         int i = paramIntent.uint32_newnum.get();
         int j = paramIntent.uint32_sleeptime.get();
         long l = paramIntent.uint64_lastuin.get();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("sigNewCommentLastFetchTime", System.currentTimeMillis() + j * 1000);
+        this.b.getPreferences().edit().putLong("sigNewCommentLastFetchTime", System.currentTimeMillis() + j * 1000);
         if ((i != 0) && (0L != l))
         {
           paramIntent = new Bundle();
@@ -364,7 +364,7 @@ public class SignatureHandler
       {
         if (localRspBody.uint32_result.get() == 0)
         {
-          SignatureManager localSignatureManager = (SignatureManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SIGNATURE_MANAGER);
+          SignatureManager localSignatureManager = (SignatureManager)this.b.getManager(QQManagerFactory.SIGNATURE_MANAGER);
           paramIntent = null;
           ArrayList localArrayList = new ArrayList();
           paramOIDBSSOPkg = new ArrayList();
@@ -392,7 +392,7 @@ public class SignatureHandler
           }
           int i = localRspBody.uint32_flag.get();
           if ((i == 0) && (paramIntent != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("sigNewCommentLastUin_", paramIntent.uin).putLong("sigNewCommentLastFetchTime", paramIntent.time).putString("sigNewCommentLastFeedsId_", paramIntent.feedsid).commit();
+            this.b.getPreferences().edit().putLong("sigNewCommentLastUin_", paramIntent.uin).putLong("sigNewCommentLastFetchTime", paramIntent.time).putString("sigNewCommentLastFeedsId_", paramIntent.feedsid).commit();
           }
           if (localArrayList.size() > 0)
           {
@@ -473,7 +473,7 @@ public class SignatureHandler
           ((RichStatus)localObject2).feedsId = ((String)localObject3);
           ((List)localObject1).add(localObject2);
         }
-        paramOIDBSSOPkg = (SignatureManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SIGNATURE_MANAGER);
+        paramOIDBSSOPkg = (SignatureManager)this.b.getManager(QQManagerFactory.SIGNATURE_MANAGER);
         if (paramOIDBSSOPkg != null) {
           paramOIDBSSOPkg.a((List)localObject1);
         }
@@ -603,15 +603,6 @@ public class SignatureHandler
     notifyUI(13, false, null);
   }
   
-  public String a(long paramLong)
-  {
-    Friends localFriends = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(paramLong));
-    if (localFriends != null) {
-      return localFriends.getFriendNickWithAlias();
-    }
-    return String.valueOf(paramLong);
-  }
-  
   public List<HistorySignItem> a(List<oidb_0xde8.NickInfo> paramList)
   {
     if ((paramList != null) && (paramList.size() > 0))
@@ -660,11 +651,11 @@ public class SignatureHandler
         localCommentItem1.timeStamp = localCommentItem.uint64_time.get();
         localCommentItem1.content = localCommentItem.str_comment.get();
         long l = localCommentItem.uint64_comment_uin.get();
-        localCommentItem1.user = new User(String.valueOf(l), a(l));
+        localCommentItem1.user = new User(String.valueOf(l), b(l));
         if (localCommentItem1.targetId != 0L)
         {
           l = localCommentItem.uint64_target_uin.get();
-          localCommentItem1.toReplyUser = new User(String.valueOf(l), a(l));
+          localCommentItem1.toReplyUser = new User(String.valueOf(l), b(l));
         }
         else
         {
@@ -679,7 +670,7 @@ public class SignatureHandler
   
   public void a()
   {
-    long l = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("sigNewCommentLastFetchTime", 0L);
+    long l = this.b.getPreferences().getLong("sigNewCommentLastFetchTime", 0L);
     if (System.currentTimeMillis() < Long.valueOf(l).longValue())
     {
       if (QLog.isColorLevel()) {
@@ -688,16 +679,16 @@ public class SignatureHandler
       return;
     }
     Object localObject = new oidb_0x792.ReqBody();
-    ((oidb_0x792.ReqBody)localObject).uint64_uin.set(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).longValue());
+    ((oidb_0x792.ReqBody)localObject).uint64_uin.set(Long.valueOf(this.b.getAccount()).longValue());
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
     localOIDBSSOPkg.uint32_command.set(1938);
     localOIDBSSOPkg.uint32_service_type.set(0);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x792.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x792_0");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 30000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    this.b.startServlet((NewIntent)localObject);
   }
   
   public void a(long paramLong)
@@ -710,11 +701,11 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3542);
     localOIDBSSOPkg.uint32_service_type.set(1);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xdd6.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xdd6_1");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    this.b.startServlet((NewIntent)localObject);
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2)
@@ -732,11 +723,11 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3560);
     localOIDBSSOPkg.uint32_service_type.set(1);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xde8.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xde8_1");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    this.b.startServlet((NewIntent)localObject);
   }
   
   public void a(long paramLong1, String paramString, long paramLong2, long paramLong3)
@@ -750,11 +741,11 @@ public class SignatureHandler
     paramString.uint32_command.set(3559);
     paramString.uint32_service_type.set(1);
     paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xde7.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xde7_1");
     ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    this.b.startServlet((NewIntent)localObject);
   }
   
   public void a(long paramLong1, String paramString1, long paramLong2, long paramLong3, String paramString2)
@@ -769,11 +760,11 @@ public class SignatureHandler
     paramString1.uint32_command.set(3557);
     paramString1.uint32_service_type.set(1);
     paramString1.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    paramString2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    paramString2 = new NewIntent(this.b.getApp(), SignatureServlet.class);
     paramString2.putExtra("cmd", "OidbSvc.0xde5_1");
     paramString2.putExtra("data", paramString1.toByteArray());
     paramString2.putExtra("timeout", 10000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString2);
+    this.b.startServlet(paramString2);
   }
   
   public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
@@ -781,7 +772,7 @@ public class SignatureHandler
     String str = paramIntent.getStringExtra("cmd");
     try
     {
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
       if ("Signature.act".equals(str))
       {
         b(paramIntent, paramFromServiceMsg, paramArrayOfByte);
@@ -950,7 +941,7 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3494);
     localOIDBSSOPkg.uint32_service_type.set(4);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xda6.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xda6_4");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
@@ -958,7 +949,7 @@ public class SignatureHandler
     ((NewIntent)localObject).putExtra("param_atKeyLen", paramInt2);
     ((NewIntent)localObject).putExtra("param_atKey", paramString);
     ((NewIntent)localObject).putExtra("param_reqTs", paramLong);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    this.b.startServlet((NewIntent)localObject);
   }
   
   public void a(String paramString1, String paramString2)
@@ -968,7 +959,7 @@ public class SignatureHandler
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      Object localObject1 = this.b.getPreferences();
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("sigCommentUpdateTimeStamp_");
       ((StringBuilder)localObject2).append(paramString1);
@@ -989,31 +980,31 @@ public class SignatureHandler
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1944);
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
       ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x798.ReqBody)localObject2).toByteArray()));
-      localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+      localObject2 = new NewIntent(this.b.getApp(), SignatureServlet.class);
       ((NewIntent)localObject2).putExtra("uin", paramString1);
       ((NewIntent)localObject2).putExtra("feedsid", paramString2);
       ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x798_0");
       ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
       ((NewIntent)localObject2).putExtra("timeout", 10000L);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
+      this.b.startServlet((NewIntent)localObject2);
     }
   }
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("SignatureHandler", 2, String.format("InteractiveSignature[%s %s %d %d]", new Object[] { StringUtil.e(paramString1), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      QLog.i("SignatureHandler", 2, String.format("InteractiveSignature[%s %s %d %d]", new Object[] { StringUtil.getSimpleUinForPrint(paramString1), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
     if (!TextUtils.isEmpty(paramString2))
     {
       if (TextUtils.isEmpty(paramString1)) {
         return;
       }
-      Object localObject1 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString1);
+      Object localObject1 = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(paramString1);
       if (localObject1 == null) {
         return;
       }
-      Object localObject2 = ExtensionRichStatus.a((ExtensionInfo)localObject1);
+      Object localObject2 = ExtensionRichStatus.c((ExtensionInfo)localObject1);
       localObject1 = new oidb_0x795.ReqBody();
       ((oidb_0x795.ReqBody)localObject1).feedsid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
       ((oidb_0x795.ReqBody)localObject1).uint64_time.set(((RichStatus)localObject2).time);
@@ -1024,7 +1015,7 @@ public class SignatureHandler
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1941);
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
       ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x795.ReqBody)localObject1).toByteArray()));
-      localObject1 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+      localObject1 = new NewIntent(this.b.getApp(), SignatureServlet.class);
       ((NewIntent)localObject1).putExtra("uin", paramString1);
       ((NewIntent)localObject1).putExtra("feedid", paramString2);
       ((NewIntent)localObject1).putExtra("type", paramInt1);
@@ -1032,7 +1023,7 @@ public class SignatureHandler
       ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x795_0");
       ((NewIntent)localObject1).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
       ((NewIntent)localObject1).putExtra("timeout", 10000L);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject1);
+      this.b.startServlet((NewIntent)localObject1);
     }
   }
   
@@ -1043,11 +1034,11 @@ public class SignatureHandler
       if (TextUtils.isEmpty(paramString2)) {
         return;
       }
-      Object localObject1 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramString1);
+      Object localObject1 = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(paramString1);
       if (localObject1 == null) {
         return;
       }
-      localObject1 = ExtensionRichStatus.a((ExtensionInfo)localObject1);
+      localObject1 = ExtensionRichStatus.c((ExtensionInfo)localObject1);
       oidb_0x796.ReqBody localReqBody = new oidb_0x796.ReqBody();
       localReqBody.feedsid.set(ByteStringMicro.copyFrom(paramString2.getBytes()));
       localReqBody.uint64_time.set(((RichStatus)localObject1).time);
@@ -1055,7 +1046,7 @@ public class SignatureHandler
       localReqBody.uint32_type.set(paramInt);
       if (!paramBoolean)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+        localObject2 = this.b.getPreferences();
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("sigCommentDetailUin_");
         ((StringBuilder)localObject1).append(paramString2);
@@ -1079,14 +1070,14 @@ public class SignatureHandler
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1942);
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
       ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-      Object localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+      Object localObject2 = new NewIntent(this.b.getApp(), SignatureServlet.class);
       ((NewIntent)localObject2).putExtra("uin", paramString1);
       ((NewIntent)localObject2).putExtra("feedid", paramString2);
       ((NewIntent)localObject2).putExtra("firstFlag", paramBoolean);
       ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x796_0");
       ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
       ((NewIntent)localObject2).putExtra("timeout", 10000L);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
+      this.b.startServlet((NewIntent)localObject2);
     }
   }
   
@@ -1096,7 +1087,7 @@ public class SignatureHandler
     Object localObject3 = "0";
     if (!paramBoolean)
     {
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+      localObject3 = this.b.getPreferences();
       localObject2 = Long.valueOf(((SharedPreferences)localObject3).getLong("sigNewCommentLastUin_", 0L));
       localObject1 = Long.valueOf(((SharedPreferences)localObject3).getLong("sigNewCommentLastFetchTime", 0L));
       localObject3 = ((SharedPreferences)localObject3).getString("sigNewCommentLastFeedsId_", "0");
@@ -1114,12 +1105,21 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1939);
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject2 = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject2).putExtra("feedsId", "OidbSvc.0x793_0");
     ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x793_0");
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
     ((NewIntent)localObject2).putExtra("timeout", 10000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
+    this.b.startServlet((NewIntent)localObject2);
+  }
+  
+  public String b(long paramLong)
+  {
+    Friends localFriends = ((FriendsManager)this.b.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(String.valueOf(paramLong));
+    if (localFriends != null) {
+      return localFriends.getFriendNickWithAlias();
+    }
+    return String.valueOf(paramLong);
   }
   
   public List<LikeItem> b(List<oidb_0xde8.lightCommentItem> paramList)
@@ -1132,9 +1132,9 @@ public class SignatureHandler
       {
         oidb_0xde8.lightCommentItem locallightCommentItem = (oidb_0xde8.lightCommentItem)paramList.next();
         LikeItem localLikeItem = new LikeItem();
-        localLikeItem.jdField_a_of_type_Long = locallightCommentItem.uint64_time.get();
+        localLikeItem.a = locallightCommentItem.uint64_time.get();
         long l = locallightCommentItem.uint64_uin.get();
-        localLikeItem.jdField_a_of_type_ComTencentMobileqqRichstatusCommentBeanUser = new User(String.valueOf(l), a(l));
+        localLikeItem.b = new User(String.valueOf(l), b(l));
         localArrayList.add(localLikeItem);
       }
       return localArrayList;
@@ -1149,11 +1149,11 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(3486);
     localOIDBSSOPkg.uint32_service_type.set(3);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xd9e.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xd9e_3");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+    this.b.startServlet((NewIntent)localObject);
   }
   
   public void b(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
@@ -1170,7 +1170,7 @@ public class SignatureHandler
   
   protected Class<? extends BusinessObserver> observerClass()
   {
-    if (this.jdField_a_of_type_Int == 92) {
+    if (this.a == 92) {
       return FriendListObserver.class;
     }
     return SignatureObserver.class;
@@ -1180,7 +1180,7 @@ public class SignatureHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignatureHandler
  * JD-Core Version:    0.7.0.1
  */

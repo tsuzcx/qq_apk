@@ -13,22 +13,22 @@ class ExpandChatApiChannel$3
   
   public void error(@NotNull String paramString1, @Nullable String paramString2, @Nullable Object paramObject)
   {
-    ExpandChatApiChannel.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatApiChannel).post(new ExpandChatApiChannel.3.2(this, paramString1, paramString2, paramObject));
+    ExpandChatApiChannel.a(this.b).post(new ExpandChatApiChannel.3.2(this, paramString1, paramString2, paramObject));
   }
   
   public void notImplemented()
   {
-    ExpandChatApiChannel.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatApiChannel).post(new ExpandChatApiChannel.3.1(this));
+    ExpandChatApiChannel.a(this.b).post(new ExpandChatApiChannel.3.1(this));
   }
   
   public void success(@Nullable Object paramObject)
   {
-    ExpandChatApiChannel.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatApiChannel, this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelExpandBaseChannel$MethodChannelResultWrapper, paramObject);
+    ExpandChatApiChannel.a(this.b, this.a, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatApiChannel.3
  * JD-Core Version:    0.7.0.1
  */

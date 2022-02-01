@@ -13,12 +13,12 @@ class OCRResultFragmentNew$2
   {
     if (paramEditable.toString().trim().length() == 0)
     {
-      this.a.b.setEnabled(false);
-      this.a.a.setEnabled(false);
+      this.a.d.setEnabled(false);
+      this.a.c.setEnabled(false);
       return;
     }
-    this.a.b.setEnabled(true);
-    this.a.a.setEnabled(true);
+    this.a.d.setEnabled(true);
+    this.a.c.setEnabled(true);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -27,7 +27,7 @@ class OCRResultFragmentNew$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.2
  * JD-Core Version:    0.7.0.1
  */

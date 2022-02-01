@@ -8,7 +8,7 @@ import java.util.List;
 @Deprecated
 public abstract class HippyEngineHost
 {
-  private Application mApplication;
+  private final Application mApplication;
   
   public HippyEngineHost(Application paramApplication)
   {
@@ -20,18 +20,6 @@ public abstract class HippyEngineHost
   {
     HippyEngineManager.Builder localBuilder = new HippyEngineManager.Builder();
     localBuilder.setHippyGlobalConfigs(getHippyGlobalConfigs()).setCoreBundleLoader(null).setPackages(getPackages()).setSupportDev(true).setDebugJs(paramString).setGroupId(getGroupId());
-    return localBuilder.build();
-  }
-  
-  public HippyEngineManager createHippyEngineManager()
-  {
-    return createHippyEngineManager(null);
-  }
-  
-  public HippyEngineManager createHippyEngineManager(HippyBundleLoader paramHippyBundleLoader)
-  {
-    HippyEngineManager.Builder localBuilder = new HippyEngineManager.Builder();
-    localBuilder.setHippyGlobalConfigs(getHippyGlobalConfigs()).setCoreBundleLoader(getCoreBundleLoader()).setPreloadBundleLoader(paramHippyBundleLoader).setPackages(getPackages()).setSupportDev(false).setDebugJs("").setEnableHippyBuffer(enableHippyBufferBridge()).setGroupId(getGroupId());
     return localBuilder.build();
   }
   
@@ -59,7 +47,7 @@ public abstract class HippyEngineHost
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineHost
  * JD-Core Version:    0.7.0.1
  */

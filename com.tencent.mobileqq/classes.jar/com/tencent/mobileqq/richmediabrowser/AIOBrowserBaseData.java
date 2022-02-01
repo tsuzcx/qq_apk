@@ -6,51 +6,44 @@ import com.tencent.richmediabrowser.model.RichMediaBaseData;
 public abstract class AIOBrowserBaseData
   extends RichMediaBaseData
 {
-  public int a;
   public long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
+  public int b = 0;
   public long c;
-  public boolean c;
   public long d;
-  
-  public AIOBrowserBaseData()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public long e;
+  public int f = 0;
+  public boolean g = false;
+  public boolean h;
+  public boolean i;
   
   public void readFromParcel(Parcel paramParcel)
   {
     super.readFromParcel(paramParcel);
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
-    this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readLong();
     this.d = paramParcel.readLong();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    int i = paramParcel.readInt();
+    this.e = paramParcel.readLong();
+    this.f = paramParcel.readInt();
+    int j = paramParcel.readInt();
     boolean bool2 = false;
-    if (i == 1) {
+    if (j == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
+    this.g = bool1;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
+    this.h = bool1;
     boolean bool1 = bool2;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
     }
-    this.jdField_c_of_type_Boolean = bool1;
+    this.i = bool1;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -60,7 +53,7 @@ public abstract class AIOBrowserBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData
  * JD-Core Version:    0.7.0.1
  */

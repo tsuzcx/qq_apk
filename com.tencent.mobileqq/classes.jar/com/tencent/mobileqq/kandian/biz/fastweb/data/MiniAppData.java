@@ -6,11 +6,11 @@ import org.json.JSONObject;
 public class MiniAppData
   extends ProteusItemData
 {
-  public int a;
   public String a;
-  public boolean a;
   public String b;
   public String c;
+  public boolean d;
+  public int e;
   
   public MiniAppData(int paramInt)
   {
@@ -20,13 +20,13 @@ public class MiniAppData
   protected void a(JSONObject paramJSONObject)
   {
     String str1;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       str1 = "已添加";
     } else {
       str1 = "稍后看";
     }
     String str2;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       str2 = "1";
     } else {
       str2 = "0";
@@ -39,7 +39,7 @@ public class MiniAppData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MiniAppData{miniProgramName='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", miniAppMovieName='");
     localStringBuilder.append(this.b);
@@ -48,16 +48,16 @@ public class MiniAppData
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isWatchLater=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", totalTime=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.data.MiniAppData
  * JD-Core Version:    0.7.0.1
  */

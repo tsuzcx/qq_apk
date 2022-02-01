@@ -7,12 +7,12 @@ class TroopFileTransferMgr$4
   
   public void run()
   {
-    TroopFileTransferMgr.a(this.this$0);
+    TroopFileTransferMgr.g(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.4
  * JD-Core Version:    0.7.0.1
  */

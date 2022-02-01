@@ -9,6 +9,7 @@ import com.tencent.mobileqq.kandian.base.video.player.LitePlayer;
 import com.tencent.mobileqq.kandian.base.video.player.PlayerStatusListener;
 import com.tencent.mobileqq.kandian.base.video.player.data.ReadInJoyVideoReportData;
 import com.tencent.mobileqq.kandian.base.video.player.videourl.ThirdVideoManager;
+import com.tencent.mobileqq.kandian.base.video.player.videourl.VideoUrlInfo;
 import com.tencent.mobileqq.kandian.biz.video.api.IReadInJoyPlayer;
 import com.tencent.mobileqq.kandian.biz.video.api.IVideoPreDownloadMgr;
 import com.tencent.qphone.base.util.QLog;
@@ -18,14 +19,14 @@ public class ReadInJoyPlayer
   extends LitePlayer
   implements PlayerStatusListener, IReadInJoyPlayer, ReadinjoyPlayerReporter.ReportDelegate
 {
-  private int jdField_a_of_type_Int;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public ReadinjoyPlayerReporter a;
-  private final String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
-  private String d;
+  public ReadinjoyPlayerReporter e;
+  private final String f;
+  private String g;
+  private String h;
+  private int i;
+  private int j;
+  private TextView k;
+  private String l;
   
   public ReadInJoyPlayer(int paramInt)
   {
@@ -39,10 +40,15 @@ public class ReadInJoyPlayer
     paramString.append("ReadInjoyPlayer<");
     paramString.append(Integer.toHexString(hashCode()));
     paramString.append(">");
-    this.jdField_a_of_type_JavaLangString = paramString.toString();
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoPlayerReadinjoyPlayerReporter = new ReadinjoyPlayerReporter(paramInt, this);
-    a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoPlayerReadinjoyPlayerReporter);
-    a(this);
+    this.f = paramString.toString();
+    this.e = new ReadinjoyPlayerReporter(paramInt, this);
+  }
+  
+  private void G() {}
+  
+  private void a(VideoUrlInfo paramVideoUrlInfo, String paramString, long paramLong, int paramInt)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void a(String paramString, long paramLong)
@@ -61,50 +67,50 @@ public class ReadInJoyPlayer
     a(paramString, 101, paramLong, paramInt);
   }
   
-  private boolean a(String paramString1, String paramString2)
-  {
-    boolean bool1 = TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString);
-    boolean bool3 = TextUtils.isEmpty(this.c);
-    boolean bool2 = false;
-    int i;
-    if ((bool1) && (bool3)) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    int j;
-    if ((!bool1) && (!this.jdField_b_of_type_JavaLangString.equals(paramString1))) {
-      j = 0;
-    } else {
-      j = 1;
-    }
-    int k;
-    if ((!bool3) && (!this.c.equals(paramString2))) {
-      k = 0;
-    } else {
-      k = 1;
-    }
-    bool1 = bool2;
-    if (i != 0)
-    {
-      bool1 = bool2;
-      if (j != 0)
-      {
-        bool1 = bool2;
-        if (k != 0) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
   private void b(String paramString, long paramLong, int paramInt)
   {
     if (paramString == null) {
       return;
     }
     ThirdVideoManager.a().a(paramString, new ReadInJoyPlayer.1(this, paramString, paramLong, paramInt));
+  }
+  
+  private boolean b(String paramString1, String paramString2)
+  {
+    boolean bool1 = TextUtils.isEmpty(this.g);
+    boolean bool3 = TextUtils.isEmpty(this.h);
+    boolean bool2 = false;
+    int m;
+    if ((bool1) && (bool3)) {
+      m = 0;
+    } else {
+      m = 1;
+    }
+    int n;
+    if ((!bool1) && (!this.g.equals(paramString1))) {
+      n = 0;
+    } else {
+      n = 1;
+    }
+    int i1;
+    if ((!bool3) && (!this.h.equals(paramString2))) {
+      i1 = 0;
+    } else {
+      i1 = 1;
+    }
+    bool1 = bool2;
+    if (m != 0)
+    {
+      bool1 = bool2;
+      if (n != 0)
+      {
+        bool1 = bool2;
+        if (i1 != 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private void c(String paramString, long paramLong, int paramInt)
@@ -115,17 +121,15 @@ public class ReadInJoyPlayer
     a(paramString, paramString, 101, paramLong, paramInt);
   }
   
-  private void n() {}
-  
   public void a(int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.g = paramString1;
+    this.h = paramString2;
+    this.i = paramInt1;
+    this.j = paramInt2;
     if (QLog.isColorLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("openByBusiType: vid=");
       localStringBuilder.append(paramString1);
@@ -135,6 +139,9 @@ public class ReadInJoyPlayer
       localStringBuilder.append(paramInt1);
       QLog.d(str, 2, localStringBuilder.toString());
     }
+    this.d = false;
+    a(this.e);
+    a(this);
     if (BusiType.a(paramInt1))
     {
       a(paramString1, paramLong);
@@ -144,6 +151,7 @@ public class ReadInJoyPlayer
     {
       if (paramInt1 == 5)
       {
+        this.d = true;
         c(paramString1, paramLong, paramInt2);
         return;
       }
@@ -155,20 +163,20 @@ public class ReadInJoyPlayer
   
   public void a(ReadInJoyVideoReportData paramReadInJoyVideoReportData)
   {
-    paramReadInJoyVideoReportData.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    paramReadInJoyVideoReportData.l = b();
-    paramReadInJoyVideoReportData.m = c();
+    paramReadInJoyVideoReportData.g = this.i;
+    paramReadInJoyVideoReportData.O = w();
+    paramReadInJoyVideoReportData.P = x();
   }
   
   public void a(@Nullable IVideoPreDownloadMgr paramIVideoPreDownloadMgr)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueVideoPlayerReadinjoyPlayerReporter.a(paramIVideoPreDownloadMgr);
+    this.e.a(paramIVideoPreDownloadMgr);
   }
   
   public void b(String paramString)
   {
-    this.d = paramString;
-    if (h()) {
+    this.l = paramString;
+    if (u()) {
       ThreadUtil.a(new ReadInJoyPlayer.2(this));
     }
   }
@@ -206,7 +214,7 @@ public class ReadInJoyPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.player.ReadInJoyPlayer
  * JD-Core Version:    0.7.0.1
  */

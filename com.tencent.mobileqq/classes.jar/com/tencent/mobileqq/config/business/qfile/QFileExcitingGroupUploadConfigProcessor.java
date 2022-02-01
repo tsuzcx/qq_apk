@@ -28,7 +28,7 @@ public class QFileExcitingGroupUploadConfigProcessor
   {
     QLog.i("QFileExcitingGroupUploadConfigProcessor<FileAssistant>", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileExcitingGroupUploadConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileExcitingGroupUploadConfigBean.class);
+      return (QFileExcitingGroupUploadConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileExcitingGroupUploadConfigBean.class);
     }
     return null;
   }
@@ -37,7 +37,7 @@ public class QFileExcitingGroupUploadConfigProcessor
   {
     if (paramQFileExcitingGroupUploadConfigBean != null)
     {
-      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
       if (localBaseQQAppInterface != null)
       {
         if (TextUtils.isEmpty(paramQFileExcitingGroupUploadConfigBean.a)) {
@@ -96,7 +96,7 @@ public class QFileExcitingGroupUploadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingGroupUploadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

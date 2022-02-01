@@ -139,9 +139,9 @@ public class ParticipleHandler
       paramAppInterface = ((Oidb_0xd79.ReqBody)localObject).bytes_qua;
       paramString1 = new StringBuilder();
       paramString1.append("and_");
-      paramString1.append(AppSetting.a());
+      paramString1.append(AppSetting.d());
       paramString1.append("_");
-      paramString1.append("8.7.0");
+      paramString1.append("8.8.17");
       paramAppInterface.set(ByteStringMicro.copyFrom(paramString1.toString().getBytes()));
       sendPbReq(makeOIDBPkg("OidbSvc.0xd79", 3449, 1, ((Oidb_0xd79.ReqBody)localObject).toByteArray()));
       return;
@@ -166,7 +166,7 @@ public class ParticipleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.participle.ParticipleHandler
  * JD-Core Version:    0.7.0.1
  */

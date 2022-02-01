@@ -9,23 +9,23 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/wrapper/PlayerVideoInfo;", "", "playType", "", "vid", "", "(ILjava/lang/String;)V", "urls", "", "(ILjava/lang/String;[Ljava/lang/String;)V", "pid", "isPreload", "", "duration", "", "playMode", "keepLastframe", "coverFrame", "hwCodec", "hwBackupUrls", "preloadDuration", "(ILjava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZJLjava/lang/String;ZZZLjava/lang/String;I)V", "getCoverFrame", "()Z", "setCoverFrame", "(Z)V", "getDuration", "()J", "setDuration", "(J)V", "getHwBackupUrls", "()Ljava/lang/String;", "setHwBackupUrls", "(Ljava/lang/String;)V", "getHwCodec", "setHwCodec", "setPreload", "getKeepLastframe", "setKeepLastframe", "getPid", "getPlayMode", "setPlayMode", "getPlayType", "()I", "getPreloadDuration", "setPreloadDuration", "(I)V", "getUrls", "()[Ljava/lang/String;", "[Ljava/lang/String;", "getVid", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(ILjava/lang/String;[Ljava/lang/String;Ljava/lang/String;ZJLjava/lang/String;ZZZLjava/lang/String;I)Lcom/tencent/mobileqq/kandian/base/video/player/wrapper/PlayerVideoInfo;", "equals", "other", "hashCode", "toString", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public final class PlayerVideoInfo
 {
-  private final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private final int a;
   @Nullable
-  private final String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private final String b;
   @Nullable
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private int jdField_b_of_type_Int;
+  private final String[] c;
   @Nullable
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  private final String d;
+  private boolean e;
+  private long f;
   @Nullable
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
+  private String g;
+  private boolean h;
+  private boolean i;
+  private boolean j;
   @Nullable
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
+  private String k;
+  private int l;
   
   public PlayerVideoInfo(int paramInt, @Nullable String paramString)
   {
@@ -39,86 +39,86 @@ public final class PlayerVideoInfo
   
   public PlayerVideoInfo(int paramInt1, @Nullable String paramString1, @Nullable String[] paramArrayOfString, @Nullable String paramString2, boolean paramBoolean1, long paramLong, @Nullable String paramString3, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, @Nullable String paramString4, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_d_of_type_Boolean = paramBoolean4;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramString1;
+    this.c = paramArrayOfString;
+    this.d = paramString2;
+    this.e = paramBoolean1;
+    this.f = paramLong;
+    this.g = paramString3;
+    this.h = paramBoolean2;
+    this.i = paramBoolean3;
+    this.j = paramBoolean4;
+    this.k = paramString4;
+    this.l = paramInt2;
   }
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.f = paramLong;
   }
   
   public final void a(@Nullable String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  @Nullable
-  public final String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    this.e = paramBoolean;
   }
   
   @Nullable
   public final String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.b;
   }
   
   public final void b(@Nullable String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = paramString;
+    this.k = paramString;
   }
   
   public final void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public final void c(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
+  }
+  
+  @Nullable
+  public final String[] c()
+  {
+    return this.c;
+  }
+  
+  @Nullable
+  public final String d()
+  {
+    return this.d;
   }
   
   public final void d(boolean paramBoolean)
   {
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
+  }
+  
+  public final long e()
+  {
+    return this.f;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -127,7 +127,7 @@ public final class PlayerVideoInfo
       if ((paramObject instanceof PlayerVideoInfo))
       {
         paramObject = (PlayerVideoInfo)paramObject;
-        if ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.jdField_a_of_type_ArrayOfJavaLangString, paramObject.jdField_a_of_type_ArrayOfJavaLangString)) && (Intrinsics.areEqual(this.jdField_b_of_type_JavaLangString, paramObject.jdField_b_of_type_JavaLangString)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (Intrinsics.areEqual(this.jdField_c_of_type_JavaLangString, paramObject.jdField_c_of_type_JavaLangString)) && (this.jdField_b_of_type_Boolean == paramObject.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean == paramObject.jdField_c_of_type_Boolean) && (this.jdField_d_of_type_Boolean == paramObject.jdField_d_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_d_of_type_JavaLangString, paramObject.jdField_d_of_type_JavaLangString)) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int)) {}
+        if ((this.a == paramObject.a) && (Intrinsics.areEqual(this.b, paramObject.b)) && (Intrinsics.areEqual(this.c, paramObject.c)) && (Intrinsics.areEqual(this.d, paramObject.d)) && (this.e == paramObject.e) && (this.f == paramObject.f) && (Intrinsics.areEqual(this.g, paramObject.g)) && (this.h == paramObject.h) && (this.i == paramObject.i) && (this.j == paramObject.j) && (Intrinsics.areEqual(this.k, paramObject.k)) && (this.l == paramObject.l)) {}
       }
       else
       {
@@ -147,36 +147,36 @@ public final class PlayerVideoInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PlayerVideoInfo(playType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", vid=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", urls=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString));
+    localStringBuilder.append(Arrays.toString(this.c));
     localStringBuilder.append(", pid=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", isPreload=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", duration=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", playMode=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", keepLastframe=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", coverFrame=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", hwCodec=");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", hwBackupUrls=");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(", preloadDuration=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.wrapper.PlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

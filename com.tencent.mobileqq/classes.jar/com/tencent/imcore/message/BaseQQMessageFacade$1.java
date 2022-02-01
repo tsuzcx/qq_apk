@@ -13,7 +13,7 @@ class BaseQQMessageFacade$1
   {
     try
     {
-      this.this$0.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Boolean);
+      this.this$0.c(this.a, this.b, this.c);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -25,7 +25,7 @@ class BaseQQMessageFacade$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseQQMessageFacade.1
  * JD-Core Version:    0.7.0.1
  */

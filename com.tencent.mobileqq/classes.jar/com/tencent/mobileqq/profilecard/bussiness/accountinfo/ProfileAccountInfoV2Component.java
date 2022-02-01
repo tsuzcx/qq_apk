@@ -63,9 +63,9 @@ public class ProfileAccountInfoV2Component
       {
         paramProfileCardInfo = new StringBuilder();
         paramProfileCardInfo.append(i);
-        paramProfileCardInfo.append(paramResources.getString(2131694201));
+        paramProfileCardInfo.append(paramResources.getString(2131891839));
         paramProfileCardInfo.append(j);
-        paramProfileCardInfo.append(paramResources.getString(2131691450));
+        paramProfileCardInfo.append(paramResources.getString(2131888405));
         paramProfileCardInfo = paramProfileCardInfo.toString();
         break label104;
       }
@@ -113,9 +113,9 @@ public class ProfileAccountInfoV2Component
     Object localObject = null;
     String str;
     if (i == 0) {
-      str = paramResources.getString(2131693879);
+      str = paramResources.getString(2131891484);
     } else if (i == 1) {
-      str = paramResources.getString(2131692259);
+      str = paramResources.getString(2131889246);
     } else {
       str = null;
     }
@@ -125,7 +125,7 @@ public class ProfileAccountInfoV2Component
     {
       paramProfileCardInfo = new StringBuilder();
       paramProfileCardInfo.append(i);
-      paramProfileCardInfo.append(paramResources.getString(2131719391));
+      paramProfileCardInfo.append(paramResources.getString(2131916946));
       paramProfileCardInfo = paramProfileCardInfo.toString();
     }
     if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramProfileCardInfo)))
@@ -154,7 +154,7 @@ public class ProfileAccountInfoV2Component
     if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramProfileCardInfo)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramResources.getString(2131699150));
+      localStringBuilder.append(paramResources.getString(2131897166));
       if (!TextUtils.isEmpty(str)) {
         localStringBuilder.append(str);
       }
@@ -172,7 +172,7 @@ public class ProfileAccountInfoV2Component
     if ((!TextUtils.isEmpty(str)) || (!TextUtils.isEmpty(paramProfileCardInfo)))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramResources.getString(2131699151));
+      localStringBuilder.append(paramResources.getString(2131897167));
       if (!TextUtils.isEmpty(str)) {
         localStringBuilder.append(str);
       }
@@ -300,7 +300,7 @@ public class ProfileAccountInfoV2Component
   
   private ImageSpan genSplitImageSpan(Context paramContext)
   {
-    return new ProfileAccountInfoV2Component.CustomImageSpan(paramContext, 2130845895, 2);
+    return new ProfileAccountInfoV2Component.CustomImageSpan(paramContext, 2130847365, 2);
   }
   
   private List<String> makeAccountInfo(Card paramCard)
@@ -351,16 +351,16 @@ public class ProfileAccountInfoV2Component
       paramBoolean = bool2;
       if (this.mViewContainer == null)
       {
-        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131561341, null);
+        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131627697, null);
         ((View)this.mViewContainer).setOnClickListener(this);
         paramBoolean = true;
       }
-      paramCard = (TextView)((View)this.mViewContainer).findViewById(2131378460);
-      ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131362975);
+      paramCard = (TextView)((View)this.mViewContainer).findViewById(2131447062);
+      ImageView localImageView = (ImageView)((View)this.mViewContainer).findViewById(2131428774);
       if (paramCard != null) {
         if ((i != 0) && (!bool1))
         {
-          paramCard.setText(2131699152);
+          paramCard.setText(2131897168);
           localObject = new DataTag(81, null);
           ((View)this.mViewContainer).setTag(localObject);
         }
@@ -442,7 +442,7 @@ public class ProfileAccountInfoV2Component
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoV2Component
  * JD-Core Version:    0.7.0.1
  */

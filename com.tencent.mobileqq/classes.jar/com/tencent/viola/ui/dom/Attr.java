@@ -3,11 +3,11 @@ package com.tencent.viola.ui.dom;
 import android.support.annotation.NonNull;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ public class Attr
 {
   public static String TAG = "Attr";
   @NonNull
-  private final Map<String, Object> attr = new HashMap();
+  private final Map<String, Object> attr = new ConcurrentHashMap();
   
   public Attr() {}
   
@@ -140,7 +140,7 @@ public class Attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.Attr
  * JD-Core Version:    0.7.0.1
  */

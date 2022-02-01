@@ -10,16 +10,16 @@ import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
 public class UrlFetcher
   implements Handler.Callback
 {
-  private IFetchListener jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener;
-  private final UrlFetcher.UrlFetcherCallback jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher$UrlFetcherCallback;
-  private final ReleaseLooperHandler jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler;
+  private final UrlFetcher.UrlFetcherCallback a;
+  private final ReleaseLooperHandler b;
+  private IFetchListener c;
   
   public UrlFetcher(UrlFetcher.UrlFetcherCallback paramUrlFetcherCallback, IFetchListener paramIFetchListener, ReleaseLooperHandler paramReleaseLooperHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkDownloadProcessorUrlFetcher$UrlFetcherCallback = paramUrlFetcherCallback;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler = paramReleaseLooperHandler;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.addCallback(this);
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener = paramIFetchListener;
+    this.a = paramUrlFetcherCallback;
+    this.b = paramReleaseLooperHandler;
+    this.b.addCallback(this);
+    this.c = paramIFetchListener;
   }
   
   private void b(DownloadJobContext paramDownloadJobContext, int paramInt)
@@ -27,12 +27,12 @@ public class UrlFetcher
     if (paramDownloadJobContext == null) {
       return;
     }
-    long l = paramDownloadJobContext.a();
-    String str = paramDownloadJobContext.a().a;
-    if (paramDownloadJobContext.d()) {
+    long l = paramDownloadJobContext.h();
+    String str = paramDownloadJobContext.c().b;
+    if (paramDownloadJobContext.g()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIFetchListener.a(paramDownloadJobContext.a().a(), paramInt, new UrlFetcher.1(this, str, l, paramDownloadJobContext, paramInt));
+    this.c.a(paramDownloadJobContext.c().a(), paramInt, new UrlFetcher.1(this, str, l, paramDownloadJobContext, paramInt));
   }
   
   public void a(DownloadJobContext paramDownloadJobContext, int paramInt)
@@ -40,7 +40,7 @@ public class UrlFetcher
     if (paramDownloadJobContext == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUtilsHandlerReleaseLooperHandler.sendMessage(Message.obtain(null, 21, paramInt, 0, paramDownloadJobContext));
+    this.b.sendMessage(Message.obtain(null, 21, paramInt, 0, paramDownloadJobContext));
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -55,7 +55,7 @@ public class UrlFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.download.processor.UrlFetcher
  * JD-Core Version:    0.7.0.1
  */

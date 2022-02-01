@@ -40,31 +40,27 @@ import mqq.app.MobileQQ;
 public class FloatWindowController
   implements CommonGameFloatWindowLayout.OnFloatWindowClickListener, FloatPositionChangeCallback, IGameFloatWindow.GameFloatWindowState, GameRoomStatusListener, GameStatusListener
 {
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new FloatWindowController.7(this);
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new FloatWindowController.8(this);
-  private CommonGameFloatWindowLayout jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout;
-  private FloatWindowParams jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams = new FloatWindowParams();
-  Runnable jdField_a_of_type_JavaLangRunnable = new FloatWindowController.1(this);
-  protected AppRuntime a;
-  boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new FloatWindowController.6(this);
-  boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean = false;
-  private int f;
-  private int g = 0;
-  
-  public static FloatWindowController a()
-  {
-    return FloatWindowController.INNER.a;
-  }
+  boolean a = true;
+  boolean b = false;
+  protected AppRuntime c;
+  QQCustomDialog d;
+  Runnable e = new FloatWindowController.1(this);
+  boolean f = false;
+  Application.ActivityLifecycleCallbacks g = new FloatWindowController.7(this);
+  private int h;
+  private int i;
+  private int j;
+  private int k;
+  private int l;
+  private int m;
+  private boolean n = false;
+  private int o = 0;
+  private FloatWindowParams p = new FloatWindowParams();
+  private CommonGameFloatWindowLayout q;
+  private ValueAnimator r;
+  private Runnable s = new FloatWindowController.6(this);
+  private boolean t = false;
+  private BroadcastReceiver u = new FloatWindowController.8(this);
   
   private void a(int paramInt)
   {
@@ -74,16 +70,16 @@ public class FloatWindowController
       localStringBuilder.append("updateCommonGameState and state:  ");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" mCommonGameFloatWindowLayout ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout);
+      localStringBuilder.append(this.q);
       localStringBuilder.append(" mIsFloatWindowShowing ");
-      localStringBuilder.append(this.jdField_d_of_type_Boolean);
+      localStringBuilder.append(this.n);
       localStringBuilder.append(" mFloatParams.isForeground ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.p.a);
       QLog.i("FloatWindowController", 1, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout != null) && (this.jdField_d_of_type_Boolean))
+    if ((this.q != null) && (this.n))
     {
-      if (!this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Boolean) {
+      if (!this.p.a) {
         return;
       }
       if (paramInt != 0)
@@ -91,17 +87,17 @@ public class FloatWindowController
         if (paramInt != 1)
         {
           if (paramInt == 2) {
-            this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.c();
+            this.q.c();
           }
         }
         else {
-          this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b();
+          this.q.b();
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a();
+        this.q.a();
       }
-      this.g = paramInt;
+      this.o = paramInt;
     }
   }
   
@@ -112,7 +108,7 @@ public class FloatWindowController
     Intent localIntent = new Intent();
     localIntent.addFlags(268435456);
     localIntent.putExtra("key_start_time", SystemClock.elapsedRealtime());
-    localIntent.putExtra("enter_game_result", this.jdField_b_of_type_Boolean);
+    localIntent.putExtra("enter_game_result", this.b);
     if (!TextUtils.isEmpty(paramString))
     {
       if (QLog.isColorLevel())
@@ -140,32 +136,15 @@ public class FloatWindowController
       if (paramGameRecordInfo != null) {
         localIntent.putExtra("key_game_record_info", paramGameRecordInfo);
       }
-      localIntent.putExtra("key_from_survival", IGameEngine.a().f());
+      localIntent.putExtra("key_from_survival", IGameEngine.I().A());
       RouteUtils.a((Context)localObject, localIntent, "/business/avgame/avgameactivity");
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.e("FloatWindowController", 2, "returnBackAvGameActivity roomId empty");
     }
-    QQToast.a((Context)localObject, 2131690457, 0).a();
-    c();
-  }
-  
-  private boolean a()
-  {
-    Object localObject = MobileQQ.sMobileQQ;
-    localObject = MobileQQ.getContext();
-    if (this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout == null)
-    {
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout = new CommonGameFloatWindowLayout((Context)localObject);
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.setFloatPositionChangeCallback(this);
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.setOnFloatWindowClickListener(this);
-    }
-    this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Int = (this.jdField_e_of_type_Int + this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b() / 2);
-    this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_b_of_type_Int = (this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.c() / 2 + ViewUtils.a(115.0F));
-    localObject = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout;
-    ((CommonGameFloatWindowLayout)localObject).a(((CommonGameFloatWindowLayout)localObject).a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams), this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams));
-    return this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a();
+    QQToast.makeText((Context)localObject, 2131887368, 0).show();
+    d();
   }
   
   private void b(Activity paramActivity)
@@ -176,10 +155,10 @@ public class FloatWindowController
     if (QLog.isColorLevel()) {
       QLog.i("FloatWindowController", 2, "showPermissionDialog in");
     }
-    paramActivity = DialogUtil.a(paramActivity, 230).setMessage(2131690336).setNegativeButton(2131690499, new FloatWindowController.3(this, paramActivity)).setPositiveButton(2131690498, new FloatWindowController.2(this), false);
-    paramActivity.setTitle(null);
-    paramActivity.setCancelable(false);
-    paramActivity.show();
+    this.d = DialogUtil.a(paramActivity, 230).setMessage(2131887247).setNegativeButton(2131887410, new FloatWindowController.3(this, paramActivity)).setPositiveButton(2131887409, new FloatWindowController.2(this), false);
+    this.d.setTitle(null);
+    this.d.setCancelable(false);
+    this.d.show();
     ReportController.b(null, "dc00898", "", "", "0X800B037", "0X800B037", 0, 0, "", "", "", "");
   }
   
@@ -188,29 +167,65 @@ public class FloatWindowController
     if (QLog.isColorLevel()) {
       QLog.d("FloatWindowController", 2, "init()");
     }
-    this.jdField_a_of_type_Int = ViewUtils.a();
-    this.jdField_b_of_type_Int = ViewUtils.b();
-    int i = ViewUtils.a(10.0F);
-    this.jdField_e_of_type_Int = i;
-    this.jdField_c_of_type_Int = i;
-    i = ViewUtils.a(16.0F);
-    this.f = i;
-    this.jdField_d_of_type_Int = i;
-    FloatWindowParams localFloatWindowParams = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams;
-    localFloatWindowParams.jdField_a_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    localFloatWindowParams.jdField_a_of_type_Int = -1000;
-    localFloatWindowParams.jdField_b_of_type_Int = -1000;
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    n();
+    this.h = ViewUtils.getScreenWidth();
+    this.i = ViewUtils.getScreenHeight();
+    int i1 = ViewUtils.dip2px(10.0F);
+    this.l = i1;
+    this.j = i1;
+    i1 = ViewUtils.dip2px(16.0F);
+    this.m = i1;
+    this.k = i1;
+    FloatWindowParams localFloatWindowParams = this.p;
+    localFloatWindowParams.a = true;
+    this.n = false;
+    localFloatWindowParams.b = -1000;
+    localFloatWindowParams.c = -1000;
+    this.c = paramAppRuntime;
+    q();
   }
   
-  private boolean b()
+  public static FloatWindowController c()
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    return FloatWindowController.INNER.a;
+  }
+  
+  private boolean m()
+  {
+    Object localObject = MobileQQ.sMobileQQ;
+    localObject = MobileQQ.getContext();
+    if (this.q == null)
+    {
+      this.q = new CommonGameFloatWindowLayout((Context)localObject);
+      this.q.setFloatPositionChangeCallback(this);
+      this.q.setOnFloatWindowClickListener(this);
+    }
+    this.p.b = (this.l + this.q.getFloatWidth() / 2);
+    this.p.c = (this.q.getFloatHeight() / 2 + ViewUtils.dip2px(115.0F));
+    localObject = this.q;
+    ((CommonGameFloatWindowLayout)localObject).a(((CommonGameFloatWindowLayout)localObject).a(this.p), this.q.b(this.p));
+    return this.q.d();
+  }
+  
+  private void n()
+  {
+    Object localObject = this.q;
+    if (localObject != null) {
+      ((CommonGameFloatWindowLayout)localObject).f();
+    }
+    localObject = this.r;
+    if (localObject != null)
+    {
+      ((ValueAnimator)localObject).cancel();
+      this.r = null;
+    }
+  }
+  
+  private boolean o()
+  {
+    Object localObject = this.c;
     if ((localObject != null) && (((AppRuntime)localObject).getApp() != null))
     {
-      boolean bool = ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(this.jdField_a_of_type_MqqAppAppRuntime.getApp());
+      boolean bool = ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(this.c.getApp());
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -223,91 +238,77 @@ public class FloatWindowController
     return false;
   }
   
-  private void l()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout;
-    if (localObject != null) {
-      ((CommonGameFloatWindowLayout)localObject).b();
-    }
-    localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if (localObject != null)
-    {
-      ((ValueAnimator)localObject).cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    }
-  }
-  
-  private void m()
+  private void p()
   {
     Object localObject = MobileQQ.sMobileQQ;
     localObject = MobileQQ.getContext();
-    int i;
-    int j;
+    int i1;
+    int i2;
     if (localObject != null)
     {
-      i = ((Context)localObject).getResources().getDisplayMetrics().widthPixels;
-      j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
-      if (i != this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Int = i;
+      i1 = ((Context)localObject).getResources().getDisplayMetrics().widthPixels;
+      i2 = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
+      if (i1 != this.h) {
+        this.h = i1;
       }
-      if (j != this.jdField_b_of_type_Int) {
-        this.jdField_b_of_type_Int = j;
+      if (i2 != this.i) {
+        this.i = i2;
       }
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("updateCommonGameFloatWindow mScreenWidth: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.h);
       ((StringBuilder)localObject).append("  mScreenHeight: ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(" mIsFloatWindowShowing: ");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.n);
       QLog.d("FloatWindowController", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_d_of_type_Boolean)
+    if (this.n)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("updateCommonGameFloatWindow isForeground: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Boolean);
+        ((StringBuilder)localObject).append(this.p.a);
         QLog.d("FloatWindowController", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Boolean)
+      if (this.p.a)
       {
-        int k = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_b_of_type_Int;
-        if (this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a() < this.jdField_a_of_type_Int / 2) {
-          i = 1;
+        int i3 = this.p.c;
+        if (this.q.getFloatCenterX() < this.h / 2) {
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
-        if (i != 0) {
-          j = this.jdField_e_of_type_Int + this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b() / 2;
+        if (i1 != 0) {
+          i2 = this.l + this.q.getFloatWidth() / 2;
         } else {
-          j = this.jdField_a_of_type_Int - this.jdField_c_of_type_Int - this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b() / 2;
+          i2 = this.h - this.j - this.q.getFloatWidth() / 2;
         }
-        if (k < this.f + this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.c() / 2)
+        if (i3 < this.m + this.q.getFloatHeight() / 2)
         {
-          i = this.f + this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.c() / 2;
+          i1 = this.m + this.q.getFloatHeight() / 2;
         }
         else
         {
-          i = k;
-          if (k > this.jdField_b_of_type_Int - this.jdField_d_of_type_Int - this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.c() / 2) {
-            i = this.jdField_b_of_type_Int - this.jdField_d_of_type_Int - this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.c() / 2;
+          i1 = i3;
+          if (i3 > this.i - this.k - this.q.getFloatHeight() / 2) {
+            i1 = this.i - this.k - this.q.getFloatHeight() / 2;
           }
         }
-        localObject = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams;
-        ((FloatWindowParams)localObject).jdField_a_of_type_Int = j;
-        ((FloatWindowParams)localObject).jdField_b_of_type_Int = i;
-        d();
+        localObject = this.p;
+        ((FloatWindowParams)localObject).b = i2;
+        ((FloatWindowParams)localObject).c = i1;
+        e();
       }
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams);
+      this.q.c(this.p);
     }
   }
   
-  private void n()
+  private void q()
   {
     try
     {
@@ -315,7 +316,7 @@ public class FloatWindowController
       localIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
       localIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
       MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
-      MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      MobileQQ.getContext().registerReceiver(this.u, localIntentFilter);
       return;
     }
     catch (Exception localException)
@@ -324,25 +325,25 @@ public class FloatWindowController
     }
   }
   
-  private void o()
+  private void r()
   {
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.f)
     {
-      MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
-      this.jdField_c_of_type_Boolean = true;
+      MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(this.g);
+      this.f = true;
     }
   }
   
-  private void p()
+  private void s()
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.f)
     {
-      MobileQQ.sMobileQQ.unregisterActivityLifecycleCallbacks(this.jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks);
-      this.jdField_c_of_type_Boolean = false;
+      MobileQQ.sMobileQQ.unregisterActivityLifecycleCallbacks(this.g);
+      this.f = false;
     }
   }
   
-  private void q()
+  private void t()
   {
     Object localObject = MobileQQ.sMobileQQ;
     localObject = MobileQQ.getContext();
@@ -358,13 +359,13 @@ public class FloatWindowController
     if (paramPlayer == null) {
       return 0;
     }
-    if (!IGameEngine.k())
+    if (!IGameEngine.J())
     {
-      EngineData localEngineData = IGameEngine.a().a();
+      EngineData localEngineData = IGameEngine.I().s();
       if (paramPlayer.status != 2) {
         return 0;
       }
-      if (localEngineData.a(paramPlayer.uin)) {
+      if (localEngineData.c(paramPlayer.uin)) {
         return 2;
       }
       return 1;
@@ -377,59 +378,59 @@ public class FloatWindowController
     if (QLog.isColorLevel()) {
       QLog.d("FloatWindowController", 2, "onFloatWindowClick()");
     }
-    if (!IGameEngine.k())
+    if (!IGameEngine.J())
     {
-      EngineData localEngineData = IGameEngine.a().a();
-      long l = localEngineData.a();
-      if ((localEngineData.f()) && (l == 0L))
+      EngineData localEngineData = IGameEngine.I().s();
+      long l1 = localEngineData.i();
+      if ((localEngineData.M()) && (l1 == 0L))
       {
-        q();
+        t();
         return;
       }
-      if (l == 0L)
+      if (l1 == 0L)
       {
         if (QLog.isColorLevel()) {
           QLog.d("FloatWindowController", 2, "onFloatWindowClick() roomId == 0, can not return AVGameActivity");
         }
         return;
       }
-      a(String.valueOf(l), localEngineData.a(), localEngineData.a());
-      ReportController.b(null, "dc00898", "", "", "0X800B036", "0X800B036", a(localEngineData.a()) + 1, 0, "", "", "", "");
+      a(String.valueOf(l1), localEngineData.e(), localEngineData.v());
+      ReportController.b(null, "dc00898", "", "", "0X800B036", "0X800B036", a(localEngineData.q()) + 1, 0, "", "", "", "");
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.n)
     {
-      int i = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Int;
-      int k = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_b_of_type_Int;
-      paramInt1 = i - paramInt1;
-      int j = this.jdField_a_of_type_Int;
-      i = 0;
+      int i1 = this.p.b;
+      int i3 = this.p.c;
+      paramInt1 = i1 - paramInt1;
+      int i2 = this.h;
+      i1 = 0;
       if (paramInt1 < 0) {
         paramInt1 = 0;
-      } else if (paramInt1 > j) {
-        paramInt1 = j;
+      } else if (paramInt1 > i2) {
+        paramInt1 = i2;
       }
-      paramInt2 = k - paramInt2;
+      paramInt2 = i3 - paramInt2;
       if (paramInt2 < 0)
       {
-        paramInt2 = i;
+        paramInt2 = i1;
       }
       else
       {
-        i = this.jdField_b_of_type_Int;
-        if (paramInt2 > i) {
-          paramInt2 = i;
+        i1 = this.i;
+        if (paramInt2 > i1) {
+          paramInt2 = i1;
         }
       }
-      FloatWindowParams localFloatWindowParams = this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams;
-      localFloatWindowParams.jdField_a_of_type_Int = paramInt1;
-      localFloatWindowParams.jdField_b_of_type_Int = paramInt2;
-      CommonGameFloatWindowLayout localCommonGameFloatWindowLayout = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout;
-      localCommonGameFloatWindowLayout.a(localCommonGameFloatWindowLayout.a(localFloatWindowParams), this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams));
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a();
+      FloatWindowParams localFloatWindowParams = this.p;
+      localFloatWindowParams.b = paramInt1;
+      localFloatWindowParams.c = paramInt2;
+      CommonGameFloatWindowLayout localCommonGameFloatWindowLayout = this.q;
+      localCommonGameFloatWindowLayout.a(localCommonGameFloatWindowLayout.a(localFloatWindowParams), this.q.b(this.p));
+      this.q.d();
     }
   }
   
@@ -458,9 +459,9 @@ public class FloatWindowController
   
   public void a(Activity paramActivity)
   {
-    if (!b())
+    if (!o())
     {
-      o();
+      r();
       b(paramActivity);
     }
   }
@@ -471,30 +472,30 @@ public class FloatWindowController
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showFloatWindow called mIsFloatWindowShowing: ");
-      localStringBuilder.append(this.jdField_d_of_type_Boolean);
+      localStringBuilder.append(this.n);
       QLog.i("FloatWindowController", 2, localStringBuilder.toString());
     }
-    if (this.jdField_d_of_type_Boolean) {
+    if (this.n) {
       return;
     }
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    if (!b())
+    this.b = paramBoolean2;
+    if (!o())
     {
       if (!paramBoolean1) {
         a(paramActivity);
       }
       return;
     }
-    o();
-    if (a())
+    r();
+    if (m())
     {
-      this.jdField_d_of_type_Boolean = true;
-      e();
+      this.n = true;
+      f();
       if ((paramActivity != null) && (!paramActivity.isFinishing()) && (!paramBoolean1)) {
         paramActivity.finish();
       }
-      IGameEngine.a().a(this);
-      IGameEngine.a().a(this);
+      IGameEngine.I().a(this);
+      IGameEngine.I().a(this);
       return;
     }
     QLog.e("FloatWindowController", 1, "showFloatWindowInner failed");
@@ -516,7 +517,7 @@ public class FloatWindowController
     if (QLog.isColorLevel()) {
       QLog.i("FloatWindowController", 2, "receive onGameOverPush");
     }
-    e();
+    f();
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -562,15 +563,15 @@ public class FloatWindowController
       localStringBuilder.append(paramBoolean);
       QLog.d("FloatWindowController", 2, localStringBuilder.toString());
     }
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.s);
     if (paramBoolean)
     {
-      ThreadManager.getUIHandlerV2().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 500L);
+      ThreadManager.getUIHandlerV2().postDelayed(this.s, 500L);
       return;
     }
-    this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_d_of_type_Boolean) {
-      m();
+    this.p.a = paramBoolean;
+    if (this.n) {
+      p();
     }
   }
   
@@ -599,13 +600,13 @@ public class FloatWindowController
       paramEngineData.append(paramString);
       QLog.i("FloatWindowController", 2, paramEngineData.toString());
     }
-    c();
+    d();
     return false;
   }
   
   public void b()
   {
-    m();
+    p();
   }
   
   public void b(long paramLong, String paramString1, String paramString2) {}
@@ -632,19 +633,6 @@ public class FloatWindowController
   
   public void b(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, String paramString) {}
   
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FloatWindowController", 2, "hideFloatWindow called");
-    }
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    l();
-    this.jdField_d_of_type_Boolean = false;
-    p();
-    IGameEngine.a().b(this);
-    IGameEngine.a().b(this);
-  }
-  
   public void c(EngineData paramEngineData)
   {
     if (QLog.isColorLevel())
@@ -654,7 +642,7 @@ public class FloatWindowController
       localStringBuilder.append(paramEngineData);
       QLog.i("FloatWindowController", 2, localStringBuilder.toString());
     }
-    e();
+    f();
   }
   
   public void c(EngineData paramEngineData, int paramInt) {}
@@ -663,27 +651,21 @@ public class FloatWindowController
   
   public void d()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if (localValueAnimator != null)
-    {
-      localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("FloatWindowController", 2, "hideFloatWindow called");
     }
-    int i = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams);
-    int j = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.b(this.jdField_a_of_type_ComTencentAvgameFloatwindowFloatWindowParams);
-    int k = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.d();
-    int m = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.e();
-    if ((Math.abs(k - i) < 10) && (Math.abs(m - j) < 10))
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.e);
+    n();
+    this.n = false;
+    s();
+    IGameEngine.I().b(this);
+    IGameEngine.I().b(this);
+    QQCustomDialog localQQCustomDialog = this.d;
+    if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout.a(i, j);
-      return;
+      this.d.dismiss();
+      this.d = null;
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(250L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new FloatWindowController.4(this, k, i, m, j));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new FloatWindowController.5(this, i, j));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
   public void d(EngineData paramEngineData) {}
@@ -692,9 +674,38 @@ public class FloatWindowController
   
   public void e()
   {
+    ValueAnimator localValueAnimator = this.r;
+    if (localValueAnimator != null)
+    {
+      localValueAnimator.cancel();
+      this.r = null;
+    }
+    int i1 = this.q.a(this.p);
+    int i2 = this.q.b(this.p);
+    int i3 = this.q.getCurrentX();
+    int i4 = this.q.getCurrentY();
+    if ((Math.abs(i3 - i1) < 10) && (Math.abs(i4 - i2) < 10))
+    {
+      this.q.a(i1, i2);
+      return;
+    }
+    this.r = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.r.setInterpolator(new LinearInterpolator());
+    this.r.setDuration(250L);
+    this.r.addUpdateListener(new FloatWindowController.4(this, i3, i1, i4, i2));
+    this.r.addListener(new FloatWindowController.5(this, i1, i2));
+    this.r.start();
+  }
+  
+  public void e(EngineData paramEngineData) {}
+  
+  public void e(String paramString, EngineData paramEngineData) {}
+  
+  public void f()
+  {
     Player localPlayer;
-    if (!IGameEngine.k()) {
-      localPlayer = IGameEngine.a().a().a();
+    if (!IGameEngine.J()) {
+      localPlayer = IGameEngine.I().s().q();
     } else {
       localPlayer = null;
     }
@@ -704,38 +715,32 @@ public class FloatWindowController
     a(a(localPlayer));
   }
   
-  public void e(EngineData paramEngineData) {}
-  
-  public void e(String paramString, EngineData paramEngineData) {}
-  
-  public void f()
-  {
-    c();
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameFloatwindowCommonGameFloatWindowLayout;
-    if (localObject != null) {
-      ((CommonGameFloatWindowLayout)localObject).e();
-    }
-    localObject = MobileQQ.sMobileQQ;
-    MobileQQ.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    p();
-  }
-  
   public void f(EngineData paramEngineData)
   {
     if (QLog.isColorLevel()) {
       QLog.i("FloatWindowController", 2, "receive onGameStartPush");
     }
-    e();
+    f();
   }
   
-  public void g() {}
+  public void g()
+  {
+    d();
+    Object localObject = this.q;
+    if (localObject != null) {
+      ((CommonGameFloatWindowLayout)localObject).g();
+    }
+    localObject = MobileQQ.sMobileQQ;
+    MobileQQ.getContext().unregisterReceiver(this.u);
+    s();
+  }
   
   public void g(EngineData paramEngineData)
   {
     if (QLog.isColorLevel()) {
       QLog.i("FloatWindowController", 2, "receive onPlayerChangePush");
     }
-    e();
+    f();
   }
   
   public void h() {}
@@ -747,6 +752,8 @@ public class FloatWindowController
   public void j() {}
   
   public void k() {}
+  
+  public void l() {}
 }
 
 

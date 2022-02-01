@@ -12,14 +12,14 @@ class ViewAnimator$3
   
   public boolean onPreDraw()
   {
-    ViewAnimator.a(this.a).start();
-    ViewAnimator.a(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+    ViewAnimator.f(this.a).start();
+    ViewAnimator.g(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.ViewAnimator.3
  * JD-Core Version:    0.7.0.1
  */

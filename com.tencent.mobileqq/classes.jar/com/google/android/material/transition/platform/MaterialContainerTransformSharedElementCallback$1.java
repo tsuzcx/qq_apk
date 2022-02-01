@@ -10,17 +10,17 @@ class MaterialContainerTransformSharedElementCallback$1
   
   public void onTransitionEnd(Transition paramTransition)
   {
-    MaterialContainerTransformSharedElementCallback.b(this.jdField_a_of_type_AndroidViewWindow);
+    MaterialContainerTransformSharedElementCallback.b(this.a);
   }
   
   public void onTransitionStart(Transition paramTransition)
   {
-    MaterialContainerTransformSharedElementCallback.a(this.jdField_a_of_type_AndroidViewWindow);
+    MaterialContainerTransformSharedElementCallback.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback.1
  * JD-Core Version:    0.7.0.1
  */

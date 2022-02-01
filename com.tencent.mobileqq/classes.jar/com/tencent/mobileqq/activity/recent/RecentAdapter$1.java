@@ -26,13 +26,13 @@ class RecentAdapter$1
     add(Integer.valueOf(1010));
     add(Integer.valueOf(7220));
     add(Integer.valueOf(10008));
-    add(Integer.valueOf(10009));
     add(Integer.valueOf(10010));
+    add(Integer.valueOf(10013));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.1
  * JD-Core Version:    0.7.0.1
  */

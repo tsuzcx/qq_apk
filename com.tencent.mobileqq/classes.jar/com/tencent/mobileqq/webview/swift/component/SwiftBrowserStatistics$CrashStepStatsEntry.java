@@ -6,30 +6,19 @@ import java.util.List;
 
 public class SwiftBrowserStatistics$CrashStepStatsEntry
 {
-  public static HashMap<String, Integer> a;
-  public static List<String> a;
-  public static int d = -1;
-  public int a;
-  public long a;
+  public static HashMap<String, Integer> e = new HashMap(10);
+  public static int h = -1;
+  public static List<String> i;
   public SharedPreferences a;
-  public boolean a;
-  public int b;
-  public int c = 6;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap(10);
-  }
-  
-  public SwiftBrowserStatistics$CrashStepStatsEntry()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public int b = 1;
+  public boolean c = false;
+  public int d;
+  public int f = 6;
+  public long g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.CrashStepStatsEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -168,16 +168,16 @@ public class WatchTogetherHandler
         {
           TroopFileSearchItemData localTroopFileSearchItemData = new TroopFileSearchItemData(this.a, (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
           Object localObject;
-          if (localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null)
+          if (localTroopFileSearchItemData.i != null)
           {
-            localObject = TroopFileManager.a(this.a, localTroopFileSearchItemData.jdField_a_of_type_Long);
-            TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+            localObject = TroopFileManager.a(this.a, localTroopFileSearchItemData.a);
+            TroopFileInfo localTroopFileInfo = ((TroopFileManager)localObject).a(localTroopFileSearchItemData.i.c);
             if (localTroopFileInfo != null) {
-              localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = localTroopFileInfo.a;
+              localTroopFileSearchItemData.i.b = localTroopFileInfo.b;
             } else {
-              localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a = UUID.randomUUID();
+              localTroopFileSearchItemData.i.b = UUID.randomUUID();
             }
-            ((TroopFileManager)localObject).a(localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b, localTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
+            ((TroopFileManager)localObject).a(localTroopFileSearchItemData.i.c, localTroopFileSearchItemData.i);
           }
           if (QLog.isColorLevel())
           {

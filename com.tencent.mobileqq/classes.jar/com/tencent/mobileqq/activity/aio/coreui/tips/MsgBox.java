@@ -2,9 +2,11 @@ package com.tencent.mobileqq.activity.aio.coreui.tips;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
 import android.os.Handler.Callback;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.ChatActivity;
@@ -17,7 +19,9 @@ import com.tencent.mobileqq.activity.aio.core.tips.TipsController;
 import com.tencent.mobileqq.activity.aio.rebuild.tips.TipsRegister;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Iterator;
@@ -26,36 +30,36 @@ import java.util.List;
 public class MsgBox
   implements Handler.Callback, View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
   protected RelativeLayout a;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private final MessageTips jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips;
-  Runnable jdField_a_of_type_JavaLangRunnable = new MsgBox.2(this);
+  Runnable b = new MsgBox.2(this);
+  private final AIOContext c;
+  private final MessageTips d;
+  private TextView e;
+  private View f;
   
   public MsgBox(AIOContext paramAIOContext, MessageTips paramMessageTips)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips = paramMessageTips;
-    paramAIOContext.a().a(this);
+    this.c = paramAIOContext;
+    this.d = paramMessageTips;
+    paramAIOContext.d().a(this);
   }
   
   private void a(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().b().iterator();
+    Object localObject = this.c.z().a().b().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((IMsgTipsListener)((Iterator)localObject).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext);
+      ((IMsgTipsListener)((Iterator)localObject).next()).a(this.c);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
+    localObject = this.c.b();
     Intent localIntent = (Intent)paramView.getTag();
     localIntent.putExtra("message_box_click", true);
-    MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a()).a(false);
+    MediaPlayerManager.a(this.c.a()).a(false);
     paramView.setVisibility(8);
-    paramView = this.jdField_a_of_type_AndroidViewView;
+    paramView = this.f;
     if (paramView != null) {
       paramView.setVisibility(8);
     }
-    int i = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), (BaseActivity)localObject, localIntent);
+    int i = AIOUtils.a(this.c.a(), (BaseActivity)localObject, localIntent);
     if (i == 0)
     {
       if (QLog.isColorLevel()) {
@@ -76,30 +80,19 @@ public class MsgBox
     }
   }
   
-  public void a()
-  {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    if (localRelativeLayout != null)
-    {
-      localRelativeLayout.removeAllViews();
-      this.jdField_a_of_type_AndroidWidgetTextView = null;
-      this.jdField_a_of_type_AndroidViewView = null;
-    }
-  }
-  
   public void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131364587));
+    this.a = ((RelativeLayout)this.c.s().findViewById(2131430649));
   }
   
   public final void a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, com.tencent.imcore.message.Message paramMessage)
   {
-    if (paramAIOContext.b()) {
+    if (paramAIOContext.l()) {
       return;
     }
     QQAppInterface localQQAppInterface = paramAIOContext.a();
-    BaseActivity localBaseActivity = paramAIOContext.a();
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsMessageTips.a(paramMessageRecord, localQQAppInterface, paramMessage)) {
+    BaseActivity localBaseActivity = paramAIOContext.b();
+    if (!this.d.a(paramMessageRecord, localQQAppInterface, paramMessage)) {
       return;
     }
     Intent localIntent = localQQAppInterface.getIntentByMessage(localBaseActivity, paramMessage, false);
@@ -111,7 +104,7 @@ public class MsgBox
   
   public boolean a()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.e;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localTextView != null)
@@ -126,7 +119,18 @@ public class MsgBox
   
   public void b()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    RelativeLayout localRelativeLayout = this.a;
+    if (localRelativeLayout != null)
+    {
+      localRelativeLayout.removeAllViews();
+      this.e = null;
+      this.f = null;
+    }
+  }
+  
+  public void c()
+  {
+    TextView localTextView = this.e;
     if (localTextView != null) {
       AIOUtils.a(localTextView.getBackground());
     }
@@ -136,11 +140,11 @@ public class MsgBox
   {
     if (paramMessage.what == 95)
     {
-      if (((paramMessage.obj instanceof CharSequence)) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
+      if (((paramMessage.obj instanceof CharSequence)) && (this.e != null))
       {
         paramMessage = (CharSequence)paramMessage.obj;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMessage);
-        this.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
+        this.e.setText(paramMessage);
+        this.e.requestLayout();
       }
       return true;
     }
@@ -149,15 +153,17 @@ public class MsgBox
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131371574) {
-      a(paramView);
+    if (paramView.getId() == 2131438955)
+    {
+      SimpleModeHelper.a(this.c);
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new MsgBox.3(this, paramView), 200L);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.tips.MsgBox
  * JD-Core Version:    0.7.0.1
  */

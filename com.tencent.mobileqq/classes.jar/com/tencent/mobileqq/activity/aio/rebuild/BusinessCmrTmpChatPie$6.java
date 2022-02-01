@@ -13,10 +13,10 @@ class BusinessCmrTmpChatPie$6
   
   protected void a(boolean paramBoolean, List<Long> paramList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (this.a.ah == null) {
       return;
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    String str = this.a.ah.b;
     int i;
     if (paramList == null) {
       i = 0;
@@ -34,19 +34,19 @@ class BusinessCmrTmpChatPie$6
     }
     if (k != 0)
     {
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBoolean, false);
+      ChatActivityUtils.a(this.a.f, paramBoolean, false);
       if (paramBoolean) {
-        this.a.aq();
+        this.a.bC();
       }
     }
   }
   
   protected void b(boolean paramBoolean, List<Long> paramList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+    if (this.a.ah == null) {
       return;
     }
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    String str = this.a.ah.b;
     int k = 0;
     int i;
     if (paramList == null) {
@@ -64,16 +64,16 @@ class BusinessCmrTmpChatPie$6
     }
     if (k != 0)
     {
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBoolean, true);
+      ChatActivityUtils.a(this.a.f, paramBoolean, true);
       if (paramBoolean) {
-        this.a.aq();
+        this.a.bC();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.6
  * JD-Core Version:    0.7.0.1
  */

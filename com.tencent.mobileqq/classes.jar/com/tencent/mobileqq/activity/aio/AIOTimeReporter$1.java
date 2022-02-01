@@ -16,14 +16,14 @@ class AIOTimeReporter$1
   public void run()
   {
     Object localObject = AIOReporterGetDeviceInfo.a();
-    AIOTimeReporter.a(this.this$0, ((AIOReporterGetDeviceInfo)localObject).a());
-    if (StartupTracker.a <= 0L)
+    AIOTimeReporter.a(this.this$0, ((AIOReporterGetDeviceInfo)localObject).b());
+    if (StartupTracker.b <= 0L)
     {
       AIOTimeReporter.a(this.this$0);
       return;
     }
     String str = "";
-    int i = AIOTimeReporter.a(this.this$0);
+    int i = AIOTimeReporter.b(this.this$0);
     if (i != 1)
     {
       if (i != 2)
@@ -35,17 +35,17 @@ class AIOTimeReporter$1
         if (i != 0)
         {
           if (i == 1) {
-            if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-              str = AIOTimeReporter.k();
-            } else {
+            if (!AIOTimeReporter.c(this.this$0).equalsIgnoreCase("0")) {
               str = AIOTimeReporter.l();
+            } else {
+              str = AIOTimeReporter.m();
             }
           }
         }
-        else if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-          str = AIOTimeReporter.i();
-        } else {
+        else if (!AIOTimeReporter.c(this.this$0).equalsIgnoreCase("0")) {
           str = AIOTimeReporter.j();
+        } else {
+          str = AIOTimeReporter.k();
         }
       }
       else
@@ -54,17 +54,17 @@ class AIOTimeReporter$1
         if (i != 0)
         {
           if (i == 1) {
-            if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-              str = AIOTimeReporter.g();
-            } else {
+            if (!AIOTimeReporter.c(this.this$0).equalsIgnoreCase("0")) {
               str = AIOTimeReporter.h();
+            } else {
+              str = AIOTimeReporter.i();
             }
           }
         }
-        else if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-          str = AIOTimeReporter.e();
-        } else {
+        else if (!AIOTimeReporter.c(this.this$0).equalsIgnoreCase("0")) {
           str = AIOTimeReporter.f();
+        } else {
+          str = AIOTimeReporter.g();
         }
       }
     }
@@ -74,34 +74,34 @@ class AIOTimeReporter$1
       if (i != 0)
       {
         if (i == 1) {
-          if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.c();
-          } else {
+          if (!AIOTimeReporter.c(this.this$0).equalsIgnoreCase("0")) {
             str = AIOTimeReporter.d();
+          } else {
+            str = AIOTimeReporter.e();
           }
         }
       }
-      else if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-        str = AIOTimeReporter.a();
-      } else {
+      else if (!AIOTimeReporter.c(this.this$0).equalsIgnoreCase("0")) {
         str = AIOTimeReporter.b();
+      } else {
+        str = AIOTimeReporter.c();
       }
     }
     localObject = null;
-    if (HardCoderManager.a().a())
+    if (HardCoderManager.getInstance().isSupported())
     {
       localObject = new HashMap();
-      ((HashMap)localObject).put("hcState", String.valueOf(HardCoderManager.a().a()));
+      ((HashMap)localObject).put("hcState", String.valueOf(HardCoderManager.getInstance().getState()));
       ((HashMap)localObject).put("model", Build.MODEL);
     }
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, StartupTracker.a, 0L, (HashMap)localObject, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, StartupTracker.b, 0L, (HashMap)localObject, "");
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reportAIOTime: ");
       ((StringBuilder)localObject).append(str);
       ((StringBuilder)localObject).append(" cost : ");
-      ((StringBuilder)localObject).append(StartupTracker.a);
+      ((StringBuilder)localObject).append(StartupTracker.b);
       QLog.d("Q.aio.AIOTimeReporter", 4, ((StringBuilder)localObject).toString());
     }
     AIOTimeReporter.a(this.this$0);
@@ -109,7 +109,7 @@ class AIOTimeReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTimeReporter.1
  * JD-Core Version:    0.7.0.1
  */

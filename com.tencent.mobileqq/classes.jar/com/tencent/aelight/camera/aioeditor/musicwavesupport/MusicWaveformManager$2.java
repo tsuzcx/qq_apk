@@ -14,7 +14,7 @@ class MusicWaveformManager$2
     try
     {
       long l = SystemClock.elapsedRealtimeNanos();
-      boolean bool = MusicWaveformManager.a(this.this$0).a(MusicWaveformManager.a(this.this$0), MusicWaveformManager.a(this.this$0), MusicWaveformManager.a(this.this$0));
+      boolean bool = MusicWaveformManager.e(this.this$0).a(MusicWaveformManager.b(this.this$0), MusicWaveformManager.c(this.this$0), MusicWaveformManager.d(this.this$0));
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -45,7 +45,7 @@ class MusicWaveformManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.musicwavesupport.MusicWaveformManager.2
  * JD-Core Version:    0.7.0.1
  */

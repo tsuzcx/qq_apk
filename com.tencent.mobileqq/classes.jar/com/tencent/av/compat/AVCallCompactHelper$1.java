@@ -21,9 +21,9 @@ class AVCallCompactHelper$1
     SessionInfo localSessionInfo1;
     if ((bool) && (localIntent != null))
     {
-      int j = SessionMgr.a().a();
-      localObject2 = AVCallCompactHelper.a(AVCallCompactHelper.a(), localIntent);
-      SessionInfo localSessionInfo2 = SessionMgr.a().c((String)localObject2);
+      int j = SessionMgr.a().c();
+      localObject2 = AVCallCompactHelper.b(AVCallCompactHelper.a(), localIntent);
+      SessionInfo localSessionInfo2 = SessionMgr.a().d((String)localObject2);
       i = j;
       localObject1 = localObject2;
       localSessionInfo1 = localSessionInfo2;

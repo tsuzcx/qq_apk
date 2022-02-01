@@ -22,18 +22,18 @@ class StartupDirector$3
       bool = false;
     }
     ThreadManager.initDPC(localSharedPreferences, bool);
-    ThreadOptimizer.a().a();
-    if (StartupDirector.c != 0)
+    ThreadOptimizer.a().b();
+    if (StartupDirector.m != 0)
     {
-      HardCoderManager.a().a(StartupDirector.c);
-      StartupDirector.c = 0;
+      HardCoderManager.getInstance().stop(StartupDirector.m);
+      StartupDirector.m = 0;
     }
-    Step.AmStepFactory.b(29, this.this$0, null).step();
+    Step.AmStepFactory.b(30, this.this$0, null).step();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.director.StartupDirector.3
  * JD-Core Version:    0.7.0.1
  */

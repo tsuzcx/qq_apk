@@ -31,16 +31,16 @@ public class ShareUtils
     if (paramContext.length != 2) {
       return null;
     }
-    paramJumpAction.a = paramString;
-    paramJumpAction.b = "mqqavshare://";
-    paramJumpAction.c = paramContext[1];
+    paramJumpAction.c = paramString;
+    paramJumpAction.d = "mqqavshare://";
+    paramJumpAction.e = paramContext[1];
     paramContext = new StringBuilder();
     paramContext.append("parser, jumpStr[");
     paramContext.append(paramString);
     paramContext.append("], server_name[");
-    paramContext.append(paramJumpAction.b);
+    paramContext.append(paramJumpAction.d);
     paramContext.append("], action_name[");
-    paramContext.append(paramJumpAction.c);
+    paramContext.append(paramJumpAction.e);
     paramContext.append("]");
     paramContext = paramContext.toString();
     localObject = ((String)localObject).split("&");

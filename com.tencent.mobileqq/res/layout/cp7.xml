@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/oku" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:paddingTop="14.5dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/okd" android:visibility="gone" android:layout_width="175.0dip" android:layout_height="40.0dip" />
-    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/okt" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_alignRight="@id/okv" android:layout_alignParentLeft="true" />
-    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:layout_gravity="center_vertical" android:id="@id/okw" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/dtu" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/okv" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="打开看看" android:singleLine="true" android:layout_toRightOf="@id/okw" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <FrameLayout android:layout_gravity="left" android:id="@id/oeg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.now.widget.CircleImageView android:layout_gravity="start|center" android:id="@id/a35" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/account_panel_add_icon" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/ave" android:id="@id/tv_name" android:paddingLeft="45.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="right" android:id="@id/oec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip">
+        <ImageView android:layout_gravity="end|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/igd" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/avc" android:gravity="center" android:layout_gravity="end|center" android:id="@id/ql_" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginRight="12.0dip" android:text="@string/xjh" />
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/nfb" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.0dip" android:layout_below="@id/oeh" />
+</FrameLayout>

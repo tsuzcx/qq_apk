@@ -7,16 +7,11 @@ import org.json.JSONObject;
 
 public class RIJBarrageConfigSp
 {
-  public static String a()
-  {
-    return (String)RIJSPUtils.a("BARRAGE_CONFIG_KEY", "");
-  }
-  
   public static JSONObject a()
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(a());
+      JSONObject localJSONObject = new JSONObject(b());
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -40,21 +35,7 @@ public class RIJBarrageConfigSp
   
   public static String b()
   {
-    return (String)RIJSPUtils.a("VIDEO_BARRAGE_CONFIG_KEY", "");
-  }
-  
-  public static JSONObject b()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(b());
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
-    return new JSONObject();
+    return (String)RIJSPUtils.b("BARRAGE_CONFIG_KEY", "");
   }
   
   public static void b(String paramString)
@@ -68,10 +49,29 @@ public class RIJBarrageConfigSp
     }
     RIJSPUtils.a("VIDEO_BARRAGE_CONFIG_KEY", paramString);
   }
+  
+  public static JSONObject c()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(d());
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return new JSONObject();
+  }
+  
+  public static String d()
+  {
+    return (String)RIJSPUtils.b("VIDEO_BARRAGE_CONFIG_KEY", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJBarrageConfigSp
  * JD-Core Version:    0.7.0.1
  */

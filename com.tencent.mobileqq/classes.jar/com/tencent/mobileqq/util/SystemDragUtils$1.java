@@ -25,12 +25,12 @@ final class SystemDragUtils$1
       UiThreadUtil.a(new SystemDragUtils.1.1(this, paramDragEvent));
       return true;
     }
-    return SystemDragUtils.a(paramDragEvent, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidViewViewGroup, this.b, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    return SystemDragUtils.a(paramDragEvent, this.a, this.b, this.c, this.d, this.e, this.f, this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.1
  * JD-Core Version:    0.7.0.1
  */

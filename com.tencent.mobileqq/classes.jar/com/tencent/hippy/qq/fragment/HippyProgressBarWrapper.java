@@ -15,7 +15,7 @@ public class HippyProgressBarWrapper
   public void hideProgressBar()
   {
     WebViewProgressBarController localWebViewProgressBarController = this.mProgressBarController;
-    if ((localWebViewProgressBarController != null) && (localWebViewProgressBarController.b() != 2)) {
+    if ((localWebViewProgressBarController != null) && (localWebViewProgressBarController.d() != 2)) {
       this.mProgressBarController.a((byte)2);
     }
   }
@@ -26,7 +26,7 @@ public class HippyProgressBarWrapper
       return;
     }
     this.mProgressBar = new WebViewProgressBar(paramViewGroup.getContext());
-    this.mProgressBar.setId(2131373133);
+    this.mProgressBar.setId(2131440738);
     this.mProgressBarController = new WebViewProgressBarController();
     this.mProgressBarController.a(this.mProgressBar);
     this.mProgressBar.setController(this.mProgressBarController);
@@ -37,14 +37,14 @@ public class HippyProgressBarWrapper
   public void startProgressBar()
   {
     WebViewProgressBarController localWebViewProgressBarController = this.mProgressBarController;
-    if ((localWebViewProgressBarController != null) && (localWebViewProgressBarController.b() != 0)) {
+    if ((localWebViewProgressBarController != null) && (localWebViewProgressBarController.d() != 0)) {
       this.mProgressBarController.a((byte)0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.HippyProgressBarWrapper
  * JD-Core Version:    0.7.0.1
  */

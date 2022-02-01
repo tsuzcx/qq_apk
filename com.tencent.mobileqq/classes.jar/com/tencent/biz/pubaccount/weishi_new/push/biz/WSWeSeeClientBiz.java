@@ -17,31 +17,31 @@ import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 public class WSWeSeeClientBiz
   extends WSBasePushBiz<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
+  private int b;
+  private Intent c;
   
   public WSWeSeeClientBiz(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
     super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.b = paramInt;
+    this.c = paramIntent;
   }
   
-  private String a(String paramString)
+  private void a(String paramString)
+  {
+    if ((this.b == 2) && (TextUtils.equals(b(paramString), "2020020163")))
+    {
+      WSReportDc00898.c();
+      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+    }
+  }
+  
+  private String b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       return Uri.parse(paramString).getQueryParameter("logsour");
     }
     return null;
-  }
-  
-  private void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
-    {
-      WSReportDc00898.a();
-      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
-    }
   }
   
   public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
@@ -54,7 +54,7 @@ public class WSWeSeeClientBiz
     localStringBuilder.append(bool3);
     WSLog.d("WSPushLog", localStringBuilder.toString());
     boolean bool1;
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.b == 2)
     {
       WSHomeFragment.a(new WSHomeLaunchParams(paramContext, 1, "from_home_page"));
       bool1 = true;
@@ -78,7 +78,7 @@ public class WSWeSeeClientBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz
  * JD-Core Version:    0.7.0.1
  */

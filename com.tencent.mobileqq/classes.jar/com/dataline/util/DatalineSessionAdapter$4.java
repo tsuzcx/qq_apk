@@ -14,7 +14,7 @@ class DatalineSessionAdapter$4
   
   public void onClick(View paramView)
   {
-    ((DataLineMessageSpreadManager)this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER_DATALINE)).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, this.jdField_a_of_type_ComDatalineUtilDatalineSessionAdapter.jdField_a_of_type_AndroidContentContext);
+    ((DataLineMessageSpreadManager)this.b.d.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER_DATALINE)).a(this.a, this.b.b);
   }
 }
 

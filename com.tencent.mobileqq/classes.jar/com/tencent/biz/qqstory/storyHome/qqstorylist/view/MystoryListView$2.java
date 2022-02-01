@@ -7,7 +7,7 @@ class MystoryListView$2
   
   public void run()
   {
-    this.this$0.h();
+    this.this$0.i();
   }
 }
 

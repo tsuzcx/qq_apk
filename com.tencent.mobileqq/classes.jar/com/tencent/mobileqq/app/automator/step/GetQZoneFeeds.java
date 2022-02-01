@@ -17,7 +17,7 @@ public class GetQZoneFeeds
   protected int doStep()
   {
     a = true;
-    ((QzoneContactsFeedManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
+    ((QzoneContactsFeedManager)this.mAutomator.k.getManager(QQManagerFactory.QZONE_CONTACTS_FEED_MANAGER)).a();
     ((IQzonePatchApi)QRoute.api(IQzonePatchApi.class)).getPatchList();
     InstallPlugins.a(1);
     InstallPlugins.a();
@@ -26,7 +26,7 @@ public class GetQZoneFeeds
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetQZoneFeeds
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class SegmentList$3
   
   public void onRightIconMenuHide(View paramView)
   {
-    this.a.a.c(paramView);
+    this.a.h.c(paramView);
   }
   
   public void onRightIconMenuShow(View paramView)
   {
-    this.a.a.b(paramView);
+    this.a.h.b(paramView);
   }
 }
 

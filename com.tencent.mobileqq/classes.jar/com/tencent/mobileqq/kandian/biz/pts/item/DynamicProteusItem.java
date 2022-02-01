@@ -46,7 +46,7 @@ public class DynamicProteusItem
     }
     BindViewHelper.f(paramContainer, paramIReadInJoyModel);
     BindViewHelper.e(paramContainer, paramIReadInJoyModel);
-    BindViewHelper.a(paramContainer, paramIReadInJoyModel.a());
+    BindViewHelper.a(paramContainer, paramIReadInJoyModel.k());
   }
   
   public boolean a(int paramInt, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
@@ -56,7 +56,7 @@ public class DynamicProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.DynamicProteusItem
  * JD-Core Version:    0.7.0.1
  */

@@ -16,21 +16,21 @@ class BiuUgcProteusItem$1
   public void onClick(View paramView)
   {
     int i;
-    if (RIJItemViewTypeUtils.c(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo)) {
+    if (RIJItemViewTypeUtils.c(this.a)) {
       i = 3;
     } else {
       i = 2;
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-    RIJJumpUtils.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramView;
-    RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, paramView, i, false, 2, false);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    paramView = this.a;
+    RIJJumpUtils.a = paramView;
+    RIJJumpUtils.a(this.b, paramView, i, false, 2, false);
+    paramView = this.a;
     RIJFrameworkReportManager.b(paramView, (int)paramView.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.BiuUgcProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

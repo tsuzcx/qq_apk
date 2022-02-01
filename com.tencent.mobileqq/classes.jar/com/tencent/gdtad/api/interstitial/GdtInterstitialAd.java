@@ -19,41 +19,21 @@ import org.json.JSONObject;
 public final class GdtInterstitialAd
   implements IGdtInterstitialAd
 {
-  private AdIPCManager.Callback jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback = new GdtInterstitialAd.1(this);
-  private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
-  private boolean jdField_a_of_type_Boolean = false;
+  private GdtInterstitialParams a;
   private boolean b = false;
+  private boolean c = false;
+  private AdIPCManager.Callback d = new GdtInterstitialAd.1(this);
   
   public GdtInterstitialAd(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
   {
-    this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = paramGdtInterstitialParams;
+    this.a = paramGdtInterstitialParams;
     ((IGdtAdAPI)QRoute.api(IGdtAdAPI.class)).initGdtContext(paramContext, new InitGdtContextParams());
     GdtInterstitialPreDownloader.a().b(paramContext);
   }
   
-  private GdtInterstitialParams a()
+  private GdtInterstitialParams b()
   {
-    return this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    boolean bool;
-    if ((Looper.myLooper() == Looper.getMainLooper()) && (this.jdField_a_of_type_Boolean) && (!this.b) && (a() != null))
-    {
-      this.b = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("IPC_ACTION", "ipc_interstitial_close");
-      localBundle.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getWebProcessName());
-      localBundle.putString("TRACE_ID", a().a());
-      AdIPCManager.INSTANCE.send(paramActivity, new AdIPCManager.Params(localBundle), new WeakReference(this.jdField_a_of_type_ComTencentAdTangramIpcAdIPCManager$Callback));
-      bool = true;
-    }
-    else
-    {
-      bool = false;
-    }
-    GdtLog.b("GdtInterstitialAd", String.format("close %b", new Object[] { Boolean.valueOf(bool) }));
+    return this.a;
   }
   
   public void a(Activity paramActivity, int paramInt, Intent paramIntent)
@@ -67,16 +47,16 @@ public final class GdtInterstitialAd
   
   public void a(JSONObject paramJSONObject)
   {
-    GdtInterstitialParams localGdtInterstitialParams = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+    GdtInterstitialParams localGdtInterstitialParams = this.a;
     if (localGdtInterstitialParams != null) {
-      localGdtInterstitialParams.a = paramJSONObject;
+      localGdtInterstitialParams.c = paramJSONObject;
     }
   }
   
   public boolean a()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (a() != null)) {
-      return a().b();
+    if ((!this.b) && (b() != null)) {
+      return b().b();
     }
     return false;
   }
@@ -93,24 +73,44 @@ public final class GdtInterstitialAd
     }
     else
     {
-      i = GdtInterstitialFragment.a(paramActivity, a());
+      i = GdtInterstitialFragment.a(paramActivity, b());
       if (i == 0)
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         i = 0;
       }
     }
     GdtLog.b("GdtInterstitialAd", String.format("show %d", new Object[] { Integer.valueOf(i) }));
-    GdtAnalysisHelperForInterstitial.a(paramActivity, a(), i);
+    GdtAnalysisHelperForInterstitial.a(paramActivity, b(), i);
     if (i == 0) {
       bool = true;
     }
     return bool;
   }
+  
+  public void b(Activity paramActivity)
+  {
+    boolean bool;
+    if ((Looper.myLooper() == Looper.getMainLooper()) && (this.b) && (!this.c) && (b() != null))
+    {
+      this.c = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("IPC_ACTION", "ipc_interstitial_close");
+      localBundle.putString("IPC_TO_PROCESS_NAME", AdProcessManager.INSTANCE.getWebProcessName());
+      localBundle.putString("TRACE_ID", b().c());
+      AdIPCManager.INSTANCE.send(paramActivity, new AdIPCManager.Params(localBundle), new WeakReference(this.d));
+      bool = true;
+    }
+    else
+    {
+      bool = false;
+    }
+    GdtLog.b("GdtInterstitialAd", String.format("close %b", new Object[] { Boolean.valueOf(bool) }));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialAd
  * JD-Core Version:    0.7.0.1
  */

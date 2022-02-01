@@ -13,14 +13,14 @@ class ExploreAnimalView$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
-    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    paramAnimation = (ImageView)this.a.findViewById(2131365810);
-    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365811);
-    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362975);
+    this.a.f = new AlphaAnimation(0.5F, 1.0F);
+    this.a.f.setDuration(600L);
+    this.a.f.setRepeatCount(-1);
+    this.a.f.setRepeatMode(2);
+    this.a.b.startAnimation(this.a.f);
+    paramAnimation = (ImageView)this.a.findViewById(2131432067);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131432068);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131428774);
     this.a.a(paramAnimation, 100L);
     this.a.a(localImageView1, 240L);
     this.a.a(localImageView2, 360L);
@@ -32,7 +32,7 @@ class ExploreAnimalView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView.2
  * JD-Core Version:    0.7.0.1
  */

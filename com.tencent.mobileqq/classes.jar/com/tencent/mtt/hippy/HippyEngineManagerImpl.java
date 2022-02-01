@@ -8,7 +8,6 @@ import com.tencent.mtt.hippy.a.g;
 import com.tencent.mtt.hippy.a.n;
 import com.tencent.mtt.hippy.adapter.exception.HippyExceptionHandlerAdapter;
 import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter;
-import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorEvent;
 import com.tencent.mtt.hippy.adapter.thirdparty.HippyThirdPartyAdapter;
 import com.tencent.mtt.hippy.bridge.a;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyAssetBundleLoader;
@@ -26,7 +25,6 @@ import com.tencent.mtt.hippy.modules.nativemodules.deviceevent.DeviceEventModule
 import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.utils.TimeMonitor;
 import com.tencent.mtt.hippy.utils.UIThreadUtils;
-import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -39,22 +37,22 @@ public abstract class HippyEngineManagerImpl
 {
   static final int MSG_ENGINE_INIT_TIMEOUT = 100;
   static final String TAG = "HippyEngineManagerImpl";
-  List<HippyAPIProvider> mAPIProviders;
+  final List<HippyAPIProvider> mAPIProviders;
   HippyBundleLoader mCoreBundleLoader;
-  boolean mDebugMode;
+  final boolean mDebugMode;
   boolean mDevManagerInited = false;
   n mDevSupportManager;
-  boolean mEnableHippyBuffer = false;
+  boolean mEnableHippyBuffer;
   HippyEngineManagerImpl.HippyEngineContextImpl mEngineContext;
-  HippyGlobalConfigs mGlobalConfigs;
-  Handler mHandler = new HippyEngineManagerImpl.1(this, Looper.getMainLooper());
+  final HippyGlobalConfigs mGlobalConfigs;
+  final Handler mHandler = new HippyEngineManagerImpl.1(this, Looper.getMainLooper());
   boolean mHasReportEngineLoadResult = false;
   final CopyOnWriteArrayList<HippyRootView> mInstances = new CopyOnWriteArrayList();
-  HippyBundleLoader mPreloadBundleLoader;
-  String mServerBundleName;
-  private String mServerHost;
-  TimeMonitor mStartTimeMonitor;
-  private HippyThirdPartyAdapter mThirdPartyAdapter;
+  final HippyBundleLoader mPreloadBundleLoader;
+  final String mServerBundleName;
+  private final String mServerHost;
+  final TimeMonitor mStartTimeMonitor;
+  private final HippyThirdPartyAdapter mThirdPartyAdapter;
   
   HippyEngineManagerImpl(HippyEngine.EngineInitParams paramEngineInitParams, HippyBundleLoader paramHippyBundleLoader)
   {
@@ -71,9 +69,13 @@ public abstract class HippyEngineManagerImpl
     this.mPreloadBundleLoader = paramHippyBundleLoader;
     this.mAPIProviders = paramEngineInitParams.providers;
     this.mDebugMode = paramEngineInitParams.debugMode;
-    if (paramEngineInitParams.debugMode) {
-      paramHippyBundleLoader = paramEngineInitParams.debugBundleName;
-    } else {
+    if (paramEngineInitParams.debugMode)
+    {
+      paramEngineInitParams.getClass();
+      paramHippyBundleLoader = "index.bundle";
+    }
+    else
+    {
       paramHippyBundleLoader = "";
     }
     this.mServerBundleName = paramHippyBundleLoader;
@@ -103,7 +105,7 @@ public abstract class HippyEngineManagerImpl
       if ((!this.mDebugMode) && (localObject2 != null)) {
         if (localObject2 != null)
         {
-          paramHippyRootView.getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_WAIT_LOAD_BUNDLE);
+          paramHippyRootView.getTimeMonitor().startEvent("waitLoadBundle");
           this.mEngineContext.getBridgeManager().a(paramHippyRootView.getId(), (HippyBundleLoader)localObject2, this.mModuleListener, paramHippyRootView);
         }
         else
@@ -181,7 +183,7 @@ public abstract class HippyEngineManagerImpl
         return;
       }
       this.mStartTimeMonitor.begine();
-      this.mStartTimeMonitor.startEvent(HippyEngineMonitorEvent.ENGINE_LOAD_EVENT_INIT_INSTANCE);
+      this.mStartTimeMonitor.startEvent("initInstance");
       if (this.mCurrentState != HippyEngine.EngineState.INITING) {
         this.mCurrentState = HippyEngine.EngineState.ONRESTART;
       }
@@ -282,7 +284,6 @@ public abstract class HippyEngineManagerImpl
       this.mDevSupportManager.a(this);
       if (this.mDebugMode)
       {
-        this.mDevSupportManager.a(null);
         this.mCoreBundleLoader = new HippyRemoteBundleLoader(this.mDevSupportManager.a(this.mServerBundleName));
         ((HippyRemoteBundleLoader)this.mCoreBundleLoader).setIsDebugMode(true);
       }
@@ -383,7 +384,7 @@ public abstract class HippyEngineManagerImpl
         }
         paramModuleLoadParams.setTimeMonitor(new TimeMonitor(this.mDebugMode ^ true));
         paramModuleLoadParams.getTimeMonitor().begine();
-        paramModuleLoadParams.getTimeMonitor().startEvent(HippyEngineMonitorEvent.MODULE_LOAD_EVENT_WAIT_ENGINE);
+        paramModuleLoadParams.getTimeMonitor().startEvent("waitEngine");
         paramModuleLoadParams.setOnResumeAndPauseListener(this);
         paramModuleLoadParams.setOnSizeChangedListener(this);
         paramModuleLoadParams.attachEngineManager(this);
@@ -474,13 +475,6 @@ public abstract class HippyEngineManagerImpl
       ((HippyGlobalConfigs)localObject).destroyIfNeed();
     }
     this.mExtendDatas.clear();
-  }
-  
-  public void onDevBundleLoadReady(File paramFile)
-  {
-    this.mCoreBundleLoader = new HippyFileBundleLoader(paramFile.getAbsolutePath());
-    ((HippyFileBundleLoader)this.mCoreBundleLoader).setIsDebugMode(true);
-    restartEngineInBackground();
   }
   
   public void onDevBundleLoadReady(InputStream paramInputStream) {}
@@ -609,7 +603,7 @@ public abstract class HippyEngineManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl
  * JD-Core Version:    0.7.0.1
  */

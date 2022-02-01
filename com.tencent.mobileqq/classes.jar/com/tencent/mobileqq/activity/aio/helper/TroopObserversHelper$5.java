@@ -39,33 +39,33 @@ class TroopObserversHelper$5
   
   private void a(TroopInfo paramTroopInfo)
   {
-    if ((paramTroopInfo != null) && (TroopObserversHelper.a(this.a).jdField_a_of_type_Int == 1) && (TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString.equals(paramTroopInfo.troopuin)))
+    if ((paramTroopInfo != null) && (TroopObserversHelper.b(this.a).a == 1) && (TroopObserversHelper.b(this.a).b.equals(paramTroopInfo.troopuin)))
     {
-      TroopObserversHelper.a(this.a).d = paramTroopInfo.getTroopDisplayName();
-      TroopObserversHelper.a(this.a).e.setText(TroopObserversHelper.a(this.a).d);
-      if (AppSetting.d)
+      TroopObserversHelper.b(this.a).e = paramTroopInfo.getTroopDisplayName();
+      TroopObserversHelper.d(this.a).C.setText(TroopObserversHelper.b(this.a).e);
+      if (AppSetting.e)
       {
-        paramTroopInfo = TroopObserversHelper.a(this.a).e.getText().toString();
-        TroopObserversHelper.a(this.a).e.setContentDescription(paramTroopInfo);
-        TroopObserversHelper.a(this.a).setTitle(TroopObserversHelper.a(this.a).e.getText());
+        paramTroopInfo = TroopObserversHelper.d(this.a).C.getText().toString();
+        TroopObserversHelper.d(this.a).C.setContentDescription(paramTroopInfo);
+        TroopObserversHelper.g(this.a).setTitle(TroopObserversHelper.d(this.a).C.getText());
       }
     }
   }
   
   protected void onBatchTroopCardDefaultNick(boolean paramBoolean, Object paramObject)
   {
-    TroopObserversHelper.a(this.a).a().removeMessages(24);
-    Object localObject = TroopObserversHelper.a(this.a).c;
+    TroopObserversHelper.d(this.a).j().removeMessages(24);
+    Object localObject = TroopObserversHelper.d(this.a).ao;
     int i = 1;
-    if ((localObject != null) && (TroopObserversHelper.a(this.a).c.isShowing()))
+    if ((localObject != null) && (TroopObserversHelper.d(this.a).ao.isShowing()))
     {
-      if ((TroopObserversHelper.a(this.a).c != null) && (MultiMsgManager.a().jdField_a_of_type_Int != 2)) {
-        TroopObserversHelper.a(this.a).c.dismiss();
+      if ((TroopObserversHelper.d(this.a).ao != null) && (MultiMsgManager.a().e != 2)) {
+        TroopObserversHelper.d(this.a).ao.dismiss();
       }
-      MultiMsgManager.a().b.clear();
+      MultiMsgManager.a().d.clear();
       if ((paramBoolean) && (paramObject != null))
       {
-        MultiMsgManager.a().b.putAll((Map)paramObject);
+        MultiMsgManager.a().d.putAll((Map)paramObject);
         if (QLog.isDevelopLevel())
         {
           localObject = new StringBuilder();
@@ -78,19 +78,19 @@ class TroopObserversHelper$5
       {
         QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick failed");
       }
-      if (MultiMsgManager.a().b.size() == 0)
+      if (MultiMsgManager.a().d.size() == 0)
       {
-        QQToast.a(TroopObserversHelper.a(this.a), 2131698526, 0).b(TroopObserversHelper.a(this.a).getTitleBarHeight());
+        QQToast.makeText(TroopObserversHelper.g(this.a), 2131896472, 0).show(TroopObserversHelper.g(this.a).getTitleBarHeight());
         return;
       }
       if (paramObject != null)
       {
-        if (MultiMsgManager.a().jdField_a_of_type_Int == 6)
+        if (MultiMsgManager.a().e == 6)
         {
-          ((MultiFavoriteHelper)TroopObserversHelper.a(this.a).a(11)).a((Map)paramObject, MultiMsgManager.a().jdField_a_of_type_JavaUtilArrayList, MultiMsgManager.a().jdField_a_of_type_Int);
+          ((MultiFavoriteHelper)TroopObserversHelper.d(this.a).q(11)).a((Map)paramObject, MultiMsgManager.a().c, MultiMsgManager.a().e);
           return;
         }
-        ((MultiForwardHelper)TroopObserversHelper.a(this.a).a(1)).a((Map)paramObject, MultiMsgManager.a().jdField_a_of_type_JavaUtilArrayList, MultiMsgManager.a().jdField_a_of_type_Int);
+        ((MultiForwardHelper)TroopObserversHelper.d(this.a).q(1)).a((Map)paramObject, MultiMsgManager.a().c, MultiMsgManager.a().e);
       }
       return;
     }
@@ -113,14 +113,14 @@ class TroopObserversHelper$5
   
   protected void onGenNewTroopName(String paramString1, String paramString2)
   {
-    if ((TroopObserversHelper.a(this.a).jdField_a_of_type_Int == 1) && (TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString.equals(paramString1)))
+    if ((TroopObserversHelper.b(this.a).a == 1) && (TroopObserversHelper.b(this.a).b.equals(paramString1)))
     {
-      TroopObserversHelper.a(this.a).d = paramString2;
-      TroopObserversHelper.a(this.a).e.setText(paramString2);
-      if (AppSetting.d)
+      TroopObserversHelper.b(this.a).e = paramString2;
+      TroopObserversHelper.d(this.a).C.setText(paramString2);
+      if (AppSetting.e)
       {
-        TroopObserversHelper.a(this.a).e.setContentDescription(paramString2);
-        TroopObserversHelper.a(this.a).a().setTitle(paramString2);
+        TroopObserversHelper.d(this.a).C.setContentDescription(paramString2);
+        TroopObserversHelper.d(this.a).aX().setTitle(paramString2);
       }
     }
   }
@@ -128,7 +128,7 @@ class TroopObserversHelper$5
   protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
-      a(((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString));
+      a(((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString));
     }
   }
   
@@ -144,13 +144,13 @@ class TroopObserversHelper$5
       if (paramArrayList.size() == 0) {
         return;
       }
-      if ((TroopObserversHelper.a(this.a).jdField_a_of_type_Int == 1000) || (TroopObserversHelper.a(this.a).jdField_a_of_type_Int == 1020))
+      if ((TroopObserversHelper.b(this.a).a == 1000) || (TroopObserversHelper.b(this.a).a == 1020))
       {
         int i = 0;
         while (i < paramArrayList.size())
         {
           TroopMemberCardInfo localTroopMemberCardInfo = (TroopMemberCardInfo)paramArrayList.get(i);
-          if ((localTroopMemberCardInfo != null) && (TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString.equals(localTroopMemberCardInfo.memberuin)))
+          if ((localTroopMemberCardInfo != null) && (TroopObserversHelper.b(this.a).b.equals(localTroopMemberCardInfo.memberuin)))
           {
             String str = localTroopMemberCardInfo.name;
             if (str != null)
@@ -165,14 +165,14 @@ class TroopObserversHelper$5
             if ((paramArrayList == null) || ("".equals(paramArrayList))) {
               break;
             }
-            TroopObserversHelper.a(this.a).d = paramArrayList;
-            TroopObserversHelper.a(this.a).e.setText(TroopObserversHelper.a(this.a).d);
-            if (!AppSetting.d) {
+            TroopObserversHelper.b(this.a).e = paramArrayList;
+            TroopObserversHelper.d(this.a).C.setText(TroopObserversHelper.b(this.a).e);
+            if (!AppSetting.e) {
               break;
             }
-            paramArrayList = TroopObserversHelper.a(this.a).e.getText().toString();
-            TroopObserversHelper.a(this.a).e.setContentDescription(paramArrayList);
-            TroopObserversHelper.a(this.a).setTitle(TroopObserversHelper.a(this.a).e.getText());
+            paramArrayList = TroopObserversHelper.d(this.a).C.getText().toString();
+            TroopObserversHelper.d(this.a).C.setContentDescription(paramArrayList);
+            TroopObserversHelper.g(this.a).setTitle(TroopObserversHelper.d(this.a).C.getText());
             return;
           }
           i += 1;
@@ -183,7 +183,7 @@ class TroopObserversHelper$5
   
   protected void onOIDB0X899_0_Ret(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    if (!Utils.a(String.valueOf(paramLong1), TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString)) {
+    if (!Utils.a(String.valueOf(paramLong1), TroopObserversHelper.b(this.a).b)) {
       return;
     }
     if (QLog.isColorLevel())
@@ -207,7 +207,7 @@ class TroopObserversHelper$5
   
   protected void onTroopBatchAddFrdsReadyForTip(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
   {
-    Object localObject = TroopObserversHelper.a(this.a).getIntent().getStringExtra("uin");
+    Object localObject = TroopObserversHelper.g(this.a).getIntent().getStringExtra("uin");
     boolean bool = false;
     QLog.i("TroopObserversHelper", 1, String.format("troopBatchAddFrd.onTroopBatchAddFrdsReadyForTip suc_troopUin_type_intentUIn=%b_%s_%d_%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt), localObject }));
     if ((paramBoolean) && (Scene.a(paramInt)) && (paramString.equalsIgnoreCase((String)localObject))) {
@@ -215,11 +215,11 @@ class TroopObserversHelper$5
       {
         if ((paramInt == 4) && (paramList != null) && (paramList.size() > 0))
         {
-          if (!TroopObserversHelper.a(this.a).S)
+          if (!TroopObserversHelper.d(this.a).ck)
           {
             localObject = (String)paramList.get(0);
-            bool = TroopObserversHelper.a(this.a).a((String)localObject);
-            localObject = (TroopAddFriendTipsHelper)TroopObserversHelper.a(this.a).a(28);
+            bool = TroopObserversHelper.d(this.a).e((String)localObject);
+            localObject = (TroopAddFriendTipsHelper)TroopObserversHelper.d(this.a).q(28);
             paramBoolean = bool;
             if (localObject != null)
             {
@@ -229,14 +229,14 @@ class TroopObserversHelper$5
           }
           else
           {
-            TroopObserversHelper.a(this.a).e((String)paramList.get(0));
+            TroopObserversHelper.d(this.a).g((String)paramList.get(0));
             paramBoolean = bool;
           }
           if (QLog.isColorLevel())
           {
             paramString = new StringBuilder();
             paramString.append("onTroopBatchAddFrdsReadyForTip  isScrolling = ");
-            paramString.append(TroopObserversHelper.a(this.a).S);
+            paramString.append(TroopObserversHelper.d(this.a).ck);
             paramString.append(",visible = ");
             paramString.append(paramBoolean);
             paramString.append(",targetUins = ");
@@ -247,7 +247,7 @@ class TroopObserversHelper$5
       }
       else
       {
-        paramList = (TroopAddFriendTipsHelper)TroopObserversHelper.a(this.a).a(28);
+        paramList = (TroopAddFriendTipsHelper)TroopObserversHelper.d(this.a).q(28);
         if (paramList != null) {
           paramList.a(true, paramString);
         }
@@ -257,35 +257,35 @@ class TroopObserversHelper$5
   
   protected void onTroopInfoUpdate(String paramString)
   {
-    if ((paramString != null) && (paramString.equals(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString)))
+    if ((paramString != null) && (paramString.equals(TroopObserversHelper.b(this.a).b)))
     {
-      paramString = ((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+      paramString = ((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
       if (paramString != null)
       {
-        TroopObserversHelper.a(this.a).d = paramString.getTroopDisplayName();
-        Object localObject = TroopObserversHelper.a(this.a).getIntent();
+        TroopObserversHelper.b(this.a).e = paramString.getTroopDisplayName();
+        Object localObject = TroopObserversHelper.g(this.a).getIntent();
         ((Intent)localObject).putExtra("uinname", paramString.getTroopDisplayName());
-        TroopObserversHelper.a(this.a).b((Intent)localObject);
-        TroopObserversHelper.a(this.a).aE();
-        localObject = TroopObserversHelper.a(this.a);
+        TroopObserversHelper.d(this.a).c((Intent)localObject);
+        TroopObserversHelper.d(this.a).bW();
+        localObject = TroopObserversHelper.f(this.a);
         if (localObject != null) {
-          ((TroopClassControllerManager)localObject).a(paramString.dwGroupClassExt, true, TroopObserversHelper.a(this.a), TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString);
+          ((TroopClassControllerManager)localObject).a(paramString.dwGroupClassExt, true, TroopObserversHelper.d(this.a), TroopObserversHelper.b(this.a).b);
         }
-        TroopObserversHelper.a(this.a);
-        TroopObserversHelper.a(this.a).au();
-        ((StudyRoomManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(TroopObserversHelper.a(this.a).jdField_a_of_type_JavaLangString);
+        TroopObserversHelper.h(this.a);
+        TroopObserversHelper.d(this.a).bI();
+        ((StudyRoomManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.STUDY_ROOM_MANAGER)).a(TroopObserversHelper.b(this.a).b);
       }
     }
   }
   
   protected void onUpdateRecentList()
   {
-    TroopObserversHelper.a(this.a).au();
+    TroopObserversHelper.d(this.a).bI();
   }
   
   protected void onUpdateTroopList(boolean paramBoolean)
   {
-    TroopBlockDialogHelper localTroopBlockDialogHelper = (TroopBlockDialogHelper)TroopObserversHelper.a(this.a).a(76);
+    TroopBlockDialogHelper localTroopBlockDialogHelper = (TroopBlockDialogHelper)TroopObserversHelper.d(this.a).q(76);
     if (localTroopBlockDialogHelper != null) {
       localTroopBlockDialogHelper.b();
     }
@@ -293,7 +293,7 @@ class TroopObserversHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.5
  * JD-Core Version:    0.7.0.1
  */

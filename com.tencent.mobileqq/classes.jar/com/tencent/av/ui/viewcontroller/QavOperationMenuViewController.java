@@ -5,18 +5,36 @@ import java.util.Iterator;
 
 public class QavOperationMenuViewController
 {
-  public int a;
-  ArrayList<OperationBtnItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
+  ArrayList<OperationBtnItem> a = new ArrayList();
+  boolean b = false;
+  public int c = -1;
   
-  public QavOperationMenuViewController()
+  public ArrayList<OperationBtnItem> a()
   {
-    this.jdField_a_of_type_Int = -1;
+    return this.a;
   }
   
-  public OperationBtnItem a(int paramInt)
+  public void a(int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    b(b(paramInt));
+  }
+  
+  public void a(OperationBtnItem paramOperationBtnItem)
+  {
+    if (paramOperationBtnItem == null) {
+      return;
+    }
+    this.a.add(paramOperationBtnItem);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public OperationBtnItem b(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       OperationBtnItem localOperationBtnItem = (OperationBtnItem)localIterator.next();
@@ -27,42 +45,14 @@ public class QavOperationMenuViewController
     return null;
   }
   
-  public ArrayList<OperationBtnItem> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(int paramInt)
-  {
-    b(a(paramInt));
-  }
-  
-  public void a(OperationBtnItem paramOperationBtnItem)
-  {
-    if (paramOperationBtnItem == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramOperationBtnItem);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
   public ArrayList<OperationBtnItem> b()
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.a.size())
     {
-      if (((OperationBtnItem)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
-        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      if (((OperationBtnItem)this.a.get(i)).h()) {
+        localArrayList.add(this.a.get(i));
       }
       i += 1;
     }
@@ -74,7 +64,12 @@ public class QavOperationMenuViewController
     if (paramOperationBtnItem == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramOperationBtnItem);
+    this.a.remove(paramOperationBtnItem);
+  }
+  
+  public boolean c()
+  {
+    return this.b;
   }
 }
 

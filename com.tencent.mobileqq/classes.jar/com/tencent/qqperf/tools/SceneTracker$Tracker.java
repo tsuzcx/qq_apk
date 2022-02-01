@@ -5,15 +5,9 @@ import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 public class SceneTracker$Tracker
   extends RecyclablePool.Recyclable
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
   public long b;
-  public String b;
-  public boolean b;
   public long c;
-  public String c;
   public long d;
   public long e;
   public long f;
@@ -25,45 +19,44 @@ public class SceneTracker$Tracker
   public long l;
   public long m;
   public long n;
-  public long o;
+  public int o = 0;
   public long p;
-  
-  public SceneTracker$Tracker()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public long q;
+  public long r;
+  public String s;
+  public String t;
+  public boolean u = true;
+  public boolean v = false;
   
   public void recycle()
   {
     super.recycle();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.e = 0L;
-    this.d = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
+    this.a = null;
     this.f = 0L;
-    this.jdField_c_of_type_Long = 0L;
+    this.e = 0L;
+    this.c = 0L;
+    this.b = 0L;
+    this.g = 0L;
+    this.d = 0L;
+    this.k = 0L;
     this.j = 0L;
     this.i = 0L;
     this.h = 0L;
-    this.g = 0L;
+    this.n = 0L;
     this.m = 0L;
     this.l = 0L;
-    this.k = 0L;
-    this.jdField_a_of_type_Int = 0;
+    this.o = 0;
+    this.r = 0L;
+    this.q = 0L;
     this.p = 0L;
-    this.o = 0L;
-    this.n = 0L;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Boolean = false;
+    this.t = null;
+    this.s = null;
+    this.v = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.SceneTracker.Tracker
  * JD-Core Version:    0.7.0.1
  */

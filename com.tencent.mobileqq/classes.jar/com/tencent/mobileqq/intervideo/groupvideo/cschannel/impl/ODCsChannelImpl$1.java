@@ -39,13 +39,13 @@ class ODCsChannelImpl$1
     if (localStringBuilder1 == null)
     {
       QLog.i("ODCsChannel", 2, "getAccessToken: get access token fail，bundle = null");
-      i = this.jdField_a_of_type_Int;
+      i = this.a;
       if (i > 0)
       {
-        ODCsChannelImpl.access$000(this.this$0, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, i - 1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+        ODCsChannelImpl.access$000(this.this$0, this.b, this.c, this.d, i - 1, this.e);
         return;
       }
-      ODCsChannelImpl.access$100(this.this$0, -1, null, null, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+      ODCsChannelImpl.access$100(this.this$0, -1, null, null, this.e);
       return;
     }
     int i = localStringBuilder1.getInt("code");
@@ -60,7 +60,7 @@ class ODCsChannelImpl$1
         QLog.d("ODCsChannel", 2, localStringBuilder1.toString());
       }
       ODCsChannelImpl.access$202(this.this$0, (Bundle)localObject2);
-      this.this$0.sendRequest(this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+      this.this$0.sendRequest(this.b, this.c, this.d, this.a, this.e);
       return;
     }
     StringBuilder localStringBuilder2 = new StringBuilder();
@@ -74,18 +74,18 @@ class ODCsChannelImpl$1
     }
     localStringBuilder2.append((String)localObject2);
     QLog.i("ODCsChannel", 2, localStringBuilder2.toString());
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     if (j > 0)
     {
-      ODCsChannelImpl.access$000(this.this$0, this.b, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Boolean, j - 1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+      ODCsChannelImpl.access$000(this.this$0, this.b, this.c, this.d, j - 1, this.e);
       return;
     }
-    ODCsChannelImpl.access$100(this.this$0, i, null, localStringBuilder1, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoCschannelIODCsChannel$CsChannelObserver);
+    ODCsChannelImpl.access$100(this.this$0, i, null, localStringBuilder1, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.cschannel.impl.ODCsChannelImpl.1
  * JD-Core Version:    0.7.0.1
  */

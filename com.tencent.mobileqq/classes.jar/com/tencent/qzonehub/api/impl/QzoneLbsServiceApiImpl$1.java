@@ -28,47 +28,47 @@ class QzoneLbsServiceApiImpl$1
     if (QLog.isColorLevel()) {
       QLog.i("QcircleLbsService", 1, "getBatchPoiFromServer");
     }
-    if ((this.jdField_a_of_type_Int == 2) && (paramSosoLbsInfo == null))
+    if ((this.a == 2) && (paramSosoLbsInfo == null))
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject1 = this.b;
       if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0))
       {
         QLog.e("QcircleLbsService", 1, "getBatchPoiFromServer error, info == null && (gpsList == null || gpsList.size() == 0)");
         return;
       }
     }
-    Object localObject1 = QzoneLbsServiceApiImpl.access$000(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl);
+    Object localObject1 = QzoneLbsServiceApiImpl.access$000(this.g);
     if (localObject1 == null)
     {
       QLog.e("QcircleLbsService", 1, "getBatchPoiFromServer app == null");
       return;
     }
     System.currentTimeMillis();
-    long l = this.jdField_a_of_type_Long;
+    long l = this.c;
     Object localObject2 = new ArrayList();
     if (paramSosoLbsInfo != null) {
       ((ArrayList)localObject2).add(((ISosoUtils)QRoute.api(ISosoUtils.class)).convertFromSoso(paramSosoLbsInfo.mLocation));
     }
-    paramSosoLbsInfo = this.jdField_a_of_type_JavaUtilArrayList;
+    paramSosoLbsInfo = this.b;
     if (paramSosoLbsInfo != null)
     {
-      paramInt = this.b;
+      paramInt = this.d;
       if (paramInt == 1) {
         ((ArrayList)localObject2).add(LbsUtils.a((GpsInfo4LocalImage)paramSosoLbsInfo.get(0)));
       } else if (paramInt == 2) {
         ((ArrayList)localObject2).addAll(LbsUtils.a(paramSosoLbsInfo));
       }
     }
-    paramSosoLbsInfo = new GetBatchPoiRequest((ArrayList)localObject2, this.c, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Int);
+    paramSosoLbsInfo = new GetBatchPoiRequest((ArrayList)localObject2, this.e, this.f, this.a);
     localObject2 = new QzoneCommonIntent(((QQAppInterface)localObject1).getApplication(), QZoneCommonServlet.class);
     ((QzoneCommonIntent)localObject2).setRequest(paramSosoLbsInfo);
-    ((QzoneCommonIntent)localObject2).setObserver(this.jdField_a_of_type_ComTencentQzonehubApiImplQzoneLbsServiceApiImpl);
+    ((QzoneCommonIntent)localObject2).setObserver(this.g);
     ((QQAppInterface)localObject1).startServlet((NewIntent)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QzoneLbsServiceApiImpl.1
  * JD-Core Version:    0.7.0.1
  */

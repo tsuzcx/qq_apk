@@ -7,12 +7,12 @@ class AVBizPriorityManager$1
 {
   AVBizPriorityManager$1(AVBizPriorityManager paramAVBizPriorityManager) {}
   
-  public int a(AVBusiness paramAVBusiness1, AVBusiness paramAVBusiness2)
+  public int compare(AVBusiness paramAVBusiness1, AVBusiness paramAVBusiness2)
   {
     if (paramAVBusiness1.equals(paramAVBusiness2)) {
       return 0;
     }
-    if (paramAVBusiness1.a(paramAVBusiness2)) {
+    if (paramAVBusiness1.comparePriority(paramAVBusiness2)) {
       return -1;
     }
     return 1;

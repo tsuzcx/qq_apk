@@ -27,8 +27,8 @@ public class TranslucentTRansferFragment
       return;
     }
     QQCustomDialog localQQCustomDialog = DialogUtil.a(getBaseActivity(), 0, null, "你是否要去注册QQ？", null, null, null, null);
-    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131714859), new TranslucentTRansferFragment.1(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131714857), new TranslucentTRansferFragment.2(this, localQQCustomDialog));
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131912358), new TranslucentTRansferFragment.1(this, localQQCustomDialog));
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131898212), new TranslucentTRansferFragment.2(this, localQQCustomDialog));
     localQQCustomDialog.setOnDismissListener(new TranslucentTRansferFragment.3(this));
     if (!getBaseActivity().isFinishing()) {
       localQQCustomDialog.show();
@@ -74,7 +74,7 @@ public class TranslucentTRansferFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TranslucentTRansferFragment
  * JD-Core Version:    0.7.0.1
  */

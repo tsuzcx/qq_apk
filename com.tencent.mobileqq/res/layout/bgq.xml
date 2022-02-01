@@ -9,7 +9,7 @@
     <ViewStub android:id="@id/hig" android:layout="@layout/bl5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
     <RelativeLayout android:id="@id/bwc" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g74" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/bwj" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" android:layout_below="@id/bwf" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/black" android:id="@id/bwj" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" android:layout_below="@id/bwf" android:layout_centerHorizontal="true" />
         <TextView android:textSize="14.0dip" android:textColor="#ff666666" android:id="@id/bwd" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" android:layout_below="@id/bwj" android:layout_centerHorizontal="true" />
     </RelativeLayout>
     <RelativeLayout android:id="@id/iio" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />

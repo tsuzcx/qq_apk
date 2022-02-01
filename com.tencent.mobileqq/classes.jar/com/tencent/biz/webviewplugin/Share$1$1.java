@@ -16,15 +16,15 @@ class Share$1$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("WebView screenshot START. shareUrl=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizWebviewpluginShare$1.a);
+      localStringBuilder.append(this.b.a);
       QLog.e("shareWebPage", 2, localStringBuilder.toString());
     }
-    ((SwiftBrowserMiscHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentProviderSupporter.getComponentProvider().a(32)).a(270, 270, new Share.1.1.1(this));
+    ((SwiftBrowserMiscHandler)this.a.getComponentProvider().a(32)).a(270, 270, new Share.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.Share.1.1
  * JD-Core Version:    0.7.0.1
  */

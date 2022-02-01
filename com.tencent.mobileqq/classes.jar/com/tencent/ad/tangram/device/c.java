@@ -7,6 +7,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.util.e;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -62,7 +63,7 @@ public final class c
             paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
             if (paramContext != null)
             {
-              paramContext = paramContext.getDeviceId(paramInt);
+              paramContext = PhoneInfoMonitor.getDeviceId(paramContext, paramInt);
               if (!TextUtils.isEmpty(paramContext)) {
                 deviceIdList.put(Integer.valueOf(paramInt), paramContext);
               }
@@ -95,7 +96,7 @@ public final class c
             paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
             if (paramContext != null)
             {
-              paramContext = paramContext.getDeviceId();
+              paramContext = PhoneInfoMonitor.getDeviceId(paramContext);
               if (!TextUtils.isEmpty(paramContext)) {
                 deviceId = paramContext;
               }
@@ -143,7 +144,7 @@ public final class c
             paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
             if (paramContext != null)
             {
-              paramContext = paramContext.getImei(paramInt);
+              paramContext = PhoneInfoMonitor.getImei(paramContext, paramInt);
               if (!TextUtils.isEmpty(paramContext)) {
                 imeiList.put(Integer.valueOf(paramInt), paramContext);
               }
@@ -176,7 +177,7 @@ public final class c
             paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
             if (paramContext != null)
             {
-              paramContext = paramContext.getImei();
+              paramContext = PhoneInfoMonitor.getImei(paramContext);
               if (!TextUtils.isEmpty(paramContext)) {
                 imei = paramContext;
               }

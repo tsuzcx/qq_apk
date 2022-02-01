@@ -78,17 +78,17 @@ class TeamWorkFileImportForH5$1
     paramInt = i;
     try
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+      if (this.a.a != null)
       {
         if (paramShort == 0) {
-          paramByteStringMicro.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+          paramByteStringMicro.put("filename", this.a.b.c);
         }
         paramByteStringMicro.put("filetype", 1);
-        paramByteStringMicro.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-        paramByteStringMicro.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-        paramByteStringMicro.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
-        paramByteStringMicro.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-        paramBoolean1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend;
+        paramByteStringMicro.put("fileid", this.a.a.Uuid);
+        paramByteStringMicro.put("md5", this.a.a.strFileMd5);
+        paramByteStringMicro.put("sha", this.a.a.strFileSHA);
+        paramByteStringMicro.put("filesize", this.a.a.fileSize);
+        paramBoolean1 = this.a.a.bSend;
         if (paramBoolean1) {
           paramByteStringMicro.put("ownertype", 1);
         } else {
@@ -110,12 +110,12 @@ class TeamWorkFileImportForH5$1
       this.a.a(true);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromUrlForH5(paramByteStringMicro, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, this.a.hashCode());
+    this.a.c.fileImportFromUrlForH5(paramByteStringMicro, this.a.b, this.a.hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportForH5.1
  * JD-Core Version:    0.7.0.1
  */

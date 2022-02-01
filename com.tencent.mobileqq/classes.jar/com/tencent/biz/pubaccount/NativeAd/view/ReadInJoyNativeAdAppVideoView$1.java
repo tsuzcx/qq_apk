@@ -12,14 +12,14 @@ class ReadInJoyNativeAdAppVideoView$1
   {
     if ((ReadInJoyNativeAdAppVideoView.a(this.this$0) == 5) || (ReadInJoyNativeAdAppVideoView.a(this.this$0) == 4))
     {
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setVisibility(8);
-      ReadInJoyNativeAdAppVideoView.a(this.this$0).setVisibility(8);
+      ReadInJoyNativeAdAppVideoView.b(this.this$0).setVisibility(8);
+      ReadInJoyNativeAdAppVideoView.c(this.this$0).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,17 +13,17 @@ final class AEEditorCheckGroupView$1$onPreDraw$1
   public final void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - AEEditorCheckGroupView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$1.a) > 500) {
-      AEEditorCheckGroupView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$1.a, false, this.jdField_a_of_type_Int, false, false, 12, null);
+    if (l - AEEditorCheckGroupView.a(this.a.a) > 500) {
+      AEEditorCheckGroupView.a(this.a.a, false, this.b, false, false, 12, null);
     } else {
-      AEEditorCheckGroupView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$1.a, false, this.jdField_a_of_type_Int, true, false, 8, null);
+      AEEditorCheckGroupView.a(this.a.a, false, this.b, true, false, 8, null);
     }
-    AEEditorCheckGroupView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleEditWidgetsAEEditorCheckGroupView$1.a, l);
+    AEEditorCheckGroupView.a(this.a.a, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.widgets.AEEditorCheckGroupView.1.onPreDraw.1
  * JD-Core Version:    0.7.0.1
  */

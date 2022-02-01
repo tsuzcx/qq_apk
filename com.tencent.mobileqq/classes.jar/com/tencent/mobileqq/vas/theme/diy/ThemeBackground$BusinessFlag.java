@@ -2,23 +2,22 @@ package com.tencent.mobileqq.vas.theme.diy;
 
 public class ThemeBackground$BusinessFlag
 {
-  private final String a;
-  public boolean a;
+  public boolean a = false;
   public boolean b = false;
   public boolean c = false;
   public boolean d = false;
   public boolean e = false;
   public boolean f = false;
+  private final String g;
   
   public ThemeBackground$BusinessFlag(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.g = paramString;
   }
   
   private void g()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
     this.b = false;
     this.c = false;
     this.d = false;
@@ -31,7 +30,7 @@ public class ThemeBackground$BusinessFlag
   public void a()
   {
     g();
-    this.jdField_a_of_type_Boolean = true;
+    this.a = true;
     h();
   }
   
@@ -72,7 +71,7 @@ public class ThemeBackground$BusinessFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeBackground.BusinessFlag
  * JD-Core Version:    0.7.0.1
  */

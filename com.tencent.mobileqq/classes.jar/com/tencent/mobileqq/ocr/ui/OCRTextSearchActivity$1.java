@@ -22,16 +22,16 @@ class OCRTextSearchActivity$1
       localStringBuilder.append(", sessionID=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", mSessionId=");
-      localStringBuilder.append(this.a.c);
+      localStringBuilder.append(this.a.n);
       QLog.d("Q.ocr.OCRTextSearchActivity", 2, localStringBuilder.toString());
     }
-    if ((paramString != null) && (this.a.c != null) && (this.a.c.equals(paramString)))
+    if ((paramString != null) && (this.a.n != null) && (this.a.n.equals(paramString)))
     {
       this.a.a(false);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
+      if (this.a.k == null) {
         this.a.b(1);
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramSearchResult);
+      this.a.k.a(this.a.c.getText().toString(), paramInt, paramSearchResult);
       this.a.a(1);
       if ((paramInt == 0) && (paramSearchResult.a != null) && (paramSearchResult.a.size() > 0))
       {
@@ -48,7 +48,7 @@ class OCRTextSearchActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity.1
  * JD-Core Version:    0.7.0.1
  */

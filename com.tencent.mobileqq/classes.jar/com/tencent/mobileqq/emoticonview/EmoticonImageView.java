@@ -63,7 +63,7 @@ public class EmoticonImageView
     }
     try
     {
-      sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130850889);
+      sNewIcon = BitmapFactory.decodeResource(super.getResources(), 2130852741);
     }
     catch (Exception localException)
     {
@@ -103,7 +103,7 @@ public class EmoticonImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonImageView
  * JD-Core Version:    0.7.0.1
  */

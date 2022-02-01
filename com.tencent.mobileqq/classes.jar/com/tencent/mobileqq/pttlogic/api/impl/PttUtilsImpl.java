@@ -50,14 +50,14 @@ public class PttUtilsImpl
   
   public void showDialogAboutMeizuRecordPermission(Context paramContext)
   {
-    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131699174));
-    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131165601), paramContext.getResources().getColor(2131165606)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    DialogUtil.a(paramContext, paramContext.getString(2131699173), localSpannableString, 0, 2131694583, null, null, new PttUtilsImpl.1(this, paramContext)).show();
+    SpannableString localSpannableString = new SpannableString(paramContext.getString(2131897190));
+    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(paramContext.getResources().getColor(2131165990), paramContext.getResources().getColor(2131165998)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
+    DialogUtil.a(paramContext, paramContext.getString(2131897189), localSpannableString, 0, 2131892267, null, null, new PttUtilsImpl.1(this, paramContext)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.pttlogic.api.impl.PttUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,13 @@ import android.provider.ContactsContract.Data;
 
 class ContactSyncServiceImpl$DataQuery
 {
-  public static final Uri a;
-  public static final String[] a;
-  public static final String[] b = { "raw_contact_id", "data1" };
-  
-  static
-  {
-    jdField_a_of_type_AndroidNetUri = ContactsContract.Data.CONTENT_URI;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "_id", "mimetype", "data1" };
-  }
+  public static final Uri a = ContactsContract.Data.CONTENT_URI;
+  public static final String[] b = { "_id", "mimetype", "data1" };
+  public static final String[] c = { "raw_contact_id", "data1" };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.ContactSyncServiceImpl.DataQuery
  * JD-Core Version:    0.7.0.1
  */

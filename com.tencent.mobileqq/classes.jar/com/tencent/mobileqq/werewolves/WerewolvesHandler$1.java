@@ -15,21 +15,21 @@ class WerewolvesHandler$1
   
   public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback;
+    Object localObject = this.a;
     if (localObject != null) {
       ((WerewolvesHandler.Callback)localObject).a(paramInt, paramRspBody);
     }
-    paramRspBody = (HotChatManager)WerewolvesHandler.a(this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler).getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-    localObject = paramRspBody.a();
+    paramRspBody = (HotChatManager)WerewolvesHandler.a(this.c).getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+    localObject = paramRspBody.c();
     if (localObject != null) {
-      ((List)localObject).remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+      ((List)localObject).remove(this.b);
     }
-    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
+    paramRspBody.a(this.b, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class MultiVideoBarHelper
     paramQQAppInterface = FaceDrawable.getUserFaceDrawable(paramQQAppInterface, paramString, (byte)2).getLoadedBitmap();
     paramString = paramQQAppInterface;
     if (paramQQAppInterface == null) {
-      paramString = ImageUtil.f();
+      paramString = ImageUtil.k();
     }
     return paramString;
   }
@@ -35,23 +35,23 @@ public class MultiVideoBarHelper
     if (paramQQAppInterface == null) {
       return;
     }
-    View localView = paramView.findViewById(2131371605);
-    TextView localTextView = (TextView)paramView.findViewById(2131371585);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131371584);
+    View localView = paramView.findViewById(2131439017);
+    TextView localTextView = (TextView)paramView.findViewById(2131438966);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131438965);
     Object localObject;
     if ((paramMessage != null) && (paramMessage.obj != null))
     {
       l = ((Long)paramMessage.obj).longValue();
-      i = paramQQAppInterface.getAVNotifyCenter().b(l);
-      localObject = (LinearLayout)paramView.findViewById(2131371581);
+      i = paramQQAppInterface.getAVNotifyCenter().e(l);
+      localObject = (LinearLayout)paramView.findViewById(2131438962);
       if (i == 2)
       {
-        paramMessage = paramQQAppInterface.getAVNotifyCenter().a(l);
+        paramMessage = paramQQAppInterface.getAVNotifyCenter().h(l);
         ((LinearLayout)localObject).setVisibility(0);
         localObject = new ImageView[3];
-        localObject[0] = ((ImageView)paramView.findViewById(2131363137));
-        localObject[1] = ((ImageView)paramView.findViewById(2131363139));
-        localObject[2] = ((ImageView)paramView.findViewById(2131363141));
+        localObject[0] = ((ImageView)paramView.findViewById(2131428990));
+        localObject[1] = ((ImageView)paramView.findViewById(2131428992));
+        localObject[2] = ((ImageView)paramView.findViewById(2131428994));
         if ((paramMessage != null) && (paramMessage.size() != 0))
         {
           if (paramMessage.size() == 1)
@@ -96,11 +96,11 @@ public class MultiVideoBarHelper
         ((LinearLayout)localObject).setVisibility(0);
       }
     }
-    int i = paramQQAppInterface.getAVNotifyCenter().e();
-    int j = paramQQAppInterface.getAVNotifyCenter().b();
-    long l = paramQQAppInterface.getAVNotifyCenter().c();
+    int i = paramQQAppInterface.getAVNotifyCenter().t();
+    int j = paramQQAppInterface.getAVNotifyCenter().j();
+    long l = paramQQAppInterface.getAVNotifyCenter().l();
     boolean bool;
-    if (paramQQAppInterface.getAVNotifyCenter().g() == 2) {
+    if (paramQQAppInterface.getAVNotifyCenter().B() == 2) {
       bool = true;
     } else {
       bool = false;
@@ -115,32 +115,32 @@ public class MultiVideoBarHelper
       paramView.append("], guildGroupId[");
       paramView.append(l);
       paramView.append("], getSmallScreenState[");
-      paramView.append(paramQQAppInterface.getAVNotifyCenter().g());
+      paramView.append(paramQQAppInterface.getAVNotifyCenter().B());
       paramView.append("]");
       QLog.w("MultiVideoBarHelper", 1, paramView.toString());
     }
     if (l > 0L)
     {
-      j = paramQQAppInterface.getAVNotifyCenter().d();
+      j = paramQQAppInterface.getAVNotifyCenter().m();
       if (j < 2)
       {
-        localTextView.setText(2131689913);
+        localTextView.setText(2131886554);
       }
       else
       {
-        paramView = paramQQAppInterface.getAVNotifyCenter().b();
+        paramView = paramQQAppInterface.getAVNotifyCenter().n();
         if ((paramView != null) && (paramView.equals("1"))) {
           i = 1;
         } else {
           i = 0;
         }
         if (i != 0) {
-          i = 2131695695;
+          i = 2131893454;
         } else {
-          i = 2131695694;
+          i = 2131893453;
         }
         paramMessage = paramQQAppInterface.getApp().getString(i);
-        paramView = paramQQAppInterface.getAVNotifyCenter().e();
+        paramView = paramQQAppInterface.getAVNotifyCenter().z();
         paramMessage = String.format(paramMessage, new Object[] { Integer.valueOf(j) });
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramMessage);
@@ -152,65 +152,65 @@ public class MultiVideoBarHelper
     }
     else if (j == 6)
     {
-      localTextView.setText(paramQQAppInterface.getApp().getString(2131695696));
+      localTextView.setText(paramQQAppInterface.getApp().getString(2131893455));
       SmallScreenUtils.a(localView, bool, paramBoolean);
     }
     else if (j >= 5)
     {
-      paramView = paramQQAppInterface.getApp().getString(2131695694);
+      paramView = paramQQAppInterface.getApp().getString(2131893453);
       paramMessage = new StringBuilder();
       paramMessage.append(paramView);
       paramMessage.append(" ");
       paramView = paramMessage.toString();
       paramMessage = new StringBuilder();
       paramMessage.append(paramView);
-      paramMessage.append(paramQQAppInterface.getAVNotifyCenter().e());
+      paramMessage.append(paramQQAppInterface.getAVNotifyCenter().z());
       localTextView.setText(paramMessage.toString());
       SmallScreenUtils.a(localView, bool, paramBoolean);
     }
     else if ((j >= 1) && (j < 5))
     {
-      localTextView.setText(paramQQAppInterface.getApp().getString(2131695380));
+      localTextView.setText(paramQQAppInterface.getApp().getString(2131893126));
       SmallScreenUtils.a(localView, bool, paramBoolean);
     }
     else if ((i != 3) && (i != 4))
     {
       if (i == 1)
       {
-        if (paramQQAppInterface.getAVNotifyCenter().f())
+        if (paramQQAppInterface.getAVNotifyCenter().p())
         {
-          localTextView.setText(2131695981);
+          localTextView.setText(2131893743);
         }
         else
         {
-          paramView = paramQQAppInterface.getAVNotifyCenter().e();
-          paramMessage = paramQQAppInterface.getApp().getString(2131695371);
+          paramView = paramQQAppInterface.getAVNotifyCenter().z();
+          paramMessage = paramQQAppInterface.getApp().getString(2131893112);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramMessage);
           ((StringBuilder)localObject).append(" ");
           ((StringBuilder)localObject).append(paramView);
           localTextView.setText(((StringBuilder)localObject).toString());
         }
-        UITools.a(localView, paramQQAppInterface.getApp().getString(2131690209));
+        UITools.a(localView, paramQQAppInterface.getApp().getString(2131887109));
         SmallScreenUtils.a(localView, bool, paramBoolean);
       }
-      else if ((i == 2) && (!paramQQAppInterface.getAVNotifyCenter().k()))
+      else if ((i == 2) && (!paramQQAppInterface.getAVNotifyCenter().D()))
       {
-        if (paramQQAppInterface.getAVNotifyCenter().f())
+        if (paramQQAppInterface.getAVNotifyCenter().p())
         {
-          localTextView.setText(2131695981);
+          localTextView.setText(2131893743);
         }
         else
         {
-          paramView = paramQQAppInterface.getAVNotifyCenter().e();
-          paramMessage = paramQQAppInterface.getApp().getString(2131695954);
+          paramView = paramQQAppInterface.getAVNotifyCenter().z();
+          paramMessage = paramQQAppInterface.getApp().getString(2131893716);
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append(paramMessage);
           ((StringBuilder)localObject).append(" ");
           ((StringBuilder)localObject).append(paramView);
           localTextView.setText(((StringBuilder)localObject).toString());
         }
-        UITools.a(localView, paramQQAppInterface.getApp().getString(2131690209));
+        UITools.a(localView, paramQQAppInterface.getApp().getString(2131887109));
         SmallScreenUtils.a(localView, bool, paramBoolean);
       }
       else
@@ -220,12 +220,12 @@ public class MultiVideoBarHelper
     }
     else
     {
-      l = paramQQAppInterface.getAVNotifyCenter().b();
-      i = paramQQAppInterface.getAVNotifyCenter().b(l);
-      j = paramQQAppInterface.getAVNotifyCenter().f();
-      if (paramQQAppInterface.getAVNotifyCenter().f())
+      l = paramQQAppInterface.getAVNotifyCenter().g();
+      i = paramQQAppInterface.getAVNotifyCenter().e(l);
+      j = paramQQAppInterface.getAVNotifyCenter().u();
+      if (paramQQAppInterface.getAVNotifyCenter().p())
       {
-        localTextView.setText(2131689913);
+        localTextView.setText(2131886554);
         if ((i == 2) && (!paramQQAppInterface.getAVNotifyCenter().a(String.valueOf(l)))) {
           localImageView.setImageDrawable(null);
         }
@@ -233,32 +233,32 @@ public class MultiVideoBarHelper
       for (;;)
       {
         break;
-        l = paramQQAppInterface.getAVNotifyCenter().b();
-        int k = paramQQAppInterface.getAVNotifyCenter().a();
-        localObject = paramQQAppInterface.getAVNotifyCenter().e();
+        l = paramQQAppInterface.getAVNotifyCenter().g();
+        int k = paramQQAppInterface.getAVNotifyCenter().h();
+        localObject = paramQQAppInterface.getAVNotifyCenter().z();
         if (j == 3000)
         {
-          paramMessage = paramQQAppInterface.getApp().getString(2131689905);
+          paramMessage = paramQQAppInterface.getApp().getString(2131886546);
           paramView = paramMessage;
           if (i == 2) {
-            paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131719735), paramQQAppInterface.getApp().getString(2131719736));
+            paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131917338), paramQQAppInterface.getApp().getString(2131917339));
           }
         }
         for (;;)
         {
           break;
           if (j != 1) {
-            break label1591;
+            break label1594;
           }
-          paramMessage = paramQQAppInterface.getApp().getString(2131689898);
+          paramMessage = paramQQAppInterface.getApp().getString(2131886539);
           paramView = paramMessage;
           if (i == 2)
           {
-            paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131719735), paramQQAppInterface.getApp().getString(2131719736));
+            paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131917338), paramQQAppInterface.getApp().getString(2131917339));
             localImageView.setImageDrawable(null);
           }
         }
-        l = paramQQAppInterface.getAVNotifyCenter().a(k, l);
+        l = paramQQAppInterface.getAVNotifyCenter().c(k, l);
         if ((localView != null) && (l == 0L))
         {
           SmallScreenUtils.a(localView, false, paramBoolean);
@@ -280,19 +280,19 @@ public class MultiVideoBarHelper
       }
       if (j == 1)
       {
-        paramMessage = paramQQAppInterface.getApp().getString(2131692839);
+        paramMessage = paramQQAppInterface.getApp().getString(2131889947);
         paramView = paramMessage;
         if (i == 2) {
-          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131719735), paramQQAppInterface.getApp().getString(2131719736));
+          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131917338), paramQQAppInterface.getApp().getString(2131917339));
         }
         UITools.a(localView, paramView);
       }
       else if (j == 3000)
       {
-        paramMessage = paramQQAppInterface.getApp().getString(2131692838);
+        paramMessage = paramQQAppInterface.getApp().getString(2131889946);
         paramView = paramMessage;
         if (i == 2) {
-          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131719735), paramQQAppInterface.getApp().getString(2131719736));
+          paramView = paramMessage.replace(paramQQAppInterface.getApp().getString(2131917338), paramQQAppInterface.getApp().getString(2131917339));
         }
         UITools.a(localView, paramView);
       }
@@ -300,7 +300,7 @@ public class MultiVideoBarHelper
     }
     ReportController.a(paramQQAppInterface, "dc00898", "", "", "0X8009EE1", "0X8009EE1", 1, 0, "", "", "", "");
     return;
-    label1591:
+    label1594:
     if (QLog.isColorLevel())
     {
       paramQQAppInterface = new StringBuilder();

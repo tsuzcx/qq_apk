@@ -19,14 +19,14 @@ class QQIdentiferLegacy$4
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("title", this.a.getString(2131693597));
-    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131690706));
+    localIntent.putExtra("title", this.a.getString(2131891172));
+    localIntent.putExtra("selfSet_leftViewText", this.a.getString(2131887625));
     paramView = getURL();
-    AppConf localAppConf = QQIdentiferLegacy.a(this.a).getAppConf();
-    if ((!"identify".equals(QQIdentiferLegacy.a(this.a))) || (TextUtils.isEmpty(paramView)) || (!paramView.contains("?appname=")))
+    AppConf localAppConf = QQIdentiferLegacy.c(this.a).getAppConf();
+    if ((!"identify".equals(QQIdentiferLegacy.d(this.a))) || (TextUtils.isEmpty(paramView)) || (!paramView.contains("?appname=")))
     {
       StringBuilder localStringBuilder;
-      if ("setFaceData".equals(QQIdentiferLegacy.a(this.a)))
+      if ("setFaceData".equals(QQIdentiferLegacy.d(this.a)))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramView);
@@ -59,7 +59,7 @@ class QQIdentiferLegacy$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.4
  * JD-Core Version:    0.7.0.1
  */

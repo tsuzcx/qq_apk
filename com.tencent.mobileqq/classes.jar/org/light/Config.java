@@ -16,6 +16,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.light.bean.LightAIDataWrapper;
 import org.light.bean.LightFaceData;
 import org.light.bean.LightFaceFeature;
 import org.light.callback.ExternalRenderCallback;
@@ -27,8 +28,8 @@ import org.light.utils.LightLogUtil;
 
 public class Config
 {
-  private static final String ML_AND_SMALL = "and-small";
-  private static final String ML_AND_SMALLEST = "and-smallest";
+  private static final String ML_AND_MIDDLE = "middle";
+  private static final String ML_AND_SMALL = "low";
   private static final String ML_HIGH = "high";
   private static final String ML_LOW = "low";
   private static final String ML_VERY_HIGH = "veryhigh";
@@ -51,7 +52,7 @@ public class Config
     if (!Build.BRAND.toLowerCase().startsWith("huawei"))
     {
       if (Build.BRAND.toLowerCase().startsWith("honor")) {
-        return "and-smallest";
+        return "low";
       }
       int i = getPhonePrefLevel();
       if ((i != 1) && (i != 2))
@@ -59,14 +60,14 @@ public class Config
         if (i != 3)
         {
           if ((i != 4) && (i != 5)) {
-            return "and-small";
+            return "middle";
           }
           return "high";
         }
-        return "and-small";
+        return "middle";
       }
     }
-    return "and-smallest";
+    return "low";
   }
   
   private int getPhonePrefLevel()
@@ -147,6 +148,8 @@ public class Config
   
   public native void nativeFinalize();
   
+  public native LightAIDataWrapper nativeGetAIData(String[] paramArrayOfString, int paramInt);
+  
   public native LightFaceData nativeGetFaceData();
   
   public native LightFaceFeature[] nativeGetFaceFeature();
@@ -156,6 +159,8 @@ public class Config
   public native String nativeGetHandInfo();
   
   public native int[] nativeGetViewPoint();
+  
+  public native void nativeSetAIData(LightAIDataWrapper paramLightAIDataWrapper);
   
   public native void nativeSetFaceData(LightFaceData paramLightFaceData);
   
@@ -170,44 +175,61 @@ public class Config
     LightEngine.RegisterFont(new FontAsset(paramString1, paramString2), paramString3);
   }
   
+  public void setAIDataWrapper(LightAIDataWrapper paramLightAIDataWrapper)
+  {
+    nativeSetAIData(paramLightAIDataWrapper);
+  }
+  
   public void setConfigData(Map<String, String> paramMap)
   {
     long l1 = System.currentTimeMillis();
     JSONObject localJSONObject = new JSONObject();
     long l2 = System.currentTimeMillis();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
+    try
     {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      try
+      Iterator localIterator = paramMap.entrySet().iterator();
+      while (localIterator.hasNext())
       {
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        try
+        {
+          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
       }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
+      long l3 = System.currentTimeMillis();
+      paramMap = localJSONObject.toString();
+      long l4 = System.currentTimeMillis();
+      Log.e("setConfigData", paramMap);
+      nativeSetConfigData(paramMap);
+      long l5 = System.currentTimeMillis();
+      paramMap = new StringBuilder();
+      paramMap.append("setConfigData cost time:");
+      paramMap.append(l5 - l1);
+      paramMap.append("\n[performance]setConfigData new JSONObject cost time:");
+      paramMap.append(l2 - l1);
+      paramMap.append("\n[performance]setConfigData entryset cost time:");
+      paramMap.append(l3 - l2);
+      paramMap.append("\n[performance]setConfigData json2string cost time:");
+      paramMap.append(l4 - l3);
+      paramMap.append("\n[performance]setConfigData  nativeSetConfigData cost time:");
+      paramMap.append(l5 - l4);
+      Log.i("[performance]", paramMap.toString());
+      return;
     }
-    long l3 = System.currentTimeMillis();
-    paramMap = localJSONObject.toString();
-    long l4 = System.currentTimeMillis();
-    nativeSetConfigData(paramMap);
-    long l5 = System.currentTimeMillis();
-    paramMap = new StringBuilder();
-    paramMap.append("setConfigData cost time:");
-    paramMap.append(l5 - l1);
-    paramMap.append("\n[performance]setConfigData new JSONObject cost time:");
-    paramMap.append(l2 - l1);
-    paramMap.append("\n[performance]setConfigData entryset cost time:");
-    paramMap.append(l3 - l2);
-    paramMap.append("\n[performance]setConfigData json2string cost time:");
-    paramMap.append(l4 - l3);
-    paramMap.append("\n[performance]setConfigData  nativeSetConfigData cost time:");
-    paramMap.append(l5 - l4);
-    Log.i("[performance]", paramMap.toString());
+    finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public native void setDetectShorterEdgeLength(int paramInt, String paramString);
+  
+  public native void setDowngradeStrategy(String paramString, int paramInt);
   
   public native void setExternalRenderCallback(ExternalRenderCallback paramExternalRenderCallback);
   
@@ -245,13 +267,9 @@ public class Config
   
   public native void setLightBenchEnableWithValue(boolean paramBoolean, float paramFloat);
   
-  public native void setLightPerformanceGenerateEnable(boolean paramBoolean);
-  
   public native void setOnClickWatermarkListener(IOnClickWatermarkListener paramIOnClickWatermarkListener);
   
   public void setOnGetQQNumberEventListener(OnGetQQNumberEventListener paramOnGetQQNumberEventListener) {}
-  
-  public native void setPerfEnable(boolean paramBoolean1, boolean paramBoolean2);
   
   public native void setRenderSize(int paramInt1, int paramInt2);
   
@@ -263,7 +281,7 @@ public class Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.Config
  * JD-Core Version:    0.7.0.1
  */

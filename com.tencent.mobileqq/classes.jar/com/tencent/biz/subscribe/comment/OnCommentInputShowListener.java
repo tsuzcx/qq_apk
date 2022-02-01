@@ -6,7 +6,7 @@ public abstract interface OnCommentInputShowListener
 {
   public abstract void a(DialogInterface paramDialogInterface);
   
-  public abstract void j();
+  public abstract void q();
 }
 
 

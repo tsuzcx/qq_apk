@@ -19,7 +19,7 @@ class ShowAndGuessGameVideoRecordCtrl$2
   public void a(long paramLong)
   {
     AVLog.c(this.a.a, "onBeforeCloseCamera ");
-    if (this.a.d()) {
+    if (this.a.k()) {
       this.a.a(true);
     }
   }
@@ -35,7 +35,7 @@ class ShowAndGuessGameVideoRecordCtrl$2
   {
     AVLog.c(this.a.a, "onAfterOpenCamera ");
     ShowAndGuessGameVideoRecordCtrl.a(this.a, true);
-    if (this.a.d()) {
+    if (this.a.k()) {
       ShowAndGuessGameVideoRecordCtrl.a(this.a).sendEmptyMessageDelayed(6, 200L);
     }
   }
@@ -44,9 +44,9 @@ class ShowAndGuessGameVideoRecordCtrl$2
   {
     AVLog.c(this.a.a, "onAfterCloseCamera ");
     ShowAndGuessGameVideoRecordCtrl.a(this.a, false);
-    if ((this.a.d()) && (ShowAndGuessGameVideoRecordCtrl.a(this.a) != null) && (ShowAndGuessGameVideoRecordCtrl.a(this.a).a() != null))
+    if ((this.a.k()) && (ShowAndGuessGameVideoRecordCtrl.b(this.a) != null) && (ShowAndGuessGameVideoRecordCtrl.b(this.a).i() != null))
     {
-      ShowAndGuessGameVideoRecordCtrl.a(this.a).a().requestRender();
+      ShowAndGuessGameVideoRecordCtrl.b(this.a).i().requestRender();
       ShowAndGuessGameVideoRecordCtrl.a(this.a).sendEmptyMessageDelayed(3, 50L);
     }
   }

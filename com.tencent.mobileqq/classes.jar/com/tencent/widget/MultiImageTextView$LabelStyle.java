@@ -7,8 +7,8 @@ class MultiImageTextView$LabelStyle
   extends SpanAdapter
 {
   public int a;
-  private MultiImageTextView.RoundBackgroundSpan a;
   public int b;
+  private MultiImageTextView.RoundBackgroundSpan c;
   
   public void getSpan(SpannableString paramSpannableString)
   {
@@ -20,17 +20,17 @@ class MultiImageTextView$LabelStyle
       localStringBuilder.append(" end:");
       localStringBuilder.append(this.end);
       localStringBuilder.append(" labelColor:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" labelIcon:");
       localStringBuilder.append(this.b);
       QLog.d("spanStyle", 2, localStringBuilder.toString());
     }
-    paramSpannableString.setSpan(this.jdField_a_of_type_ComTencentWidgetMultiImageTextView$RoundBackgroundSpan, this.start, this.end, 17);
+    paramSpannableString.setSpan(this.c, this.start, this.end, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.MultiImageTextView.LabelStyle
  * JD-Core Version:    0.7.0.1
  */

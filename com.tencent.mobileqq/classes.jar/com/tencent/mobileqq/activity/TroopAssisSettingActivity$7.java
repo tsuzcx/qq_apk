@@ -22,7 +22,7 @@ class TroopAssisSettingActivity$7
       if (!paramString.startsWith("message.group.policy.")) {
         return;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter == null) {
+      if (this.a.b == null) {
         return;
       }
       if ((paramBoolean) && (paramMap != null))
@@ -33,40 +33,40 @@ class TroopAssisSettingActivity$7
           String str = (String)paramString.next();
           Integer localInteger = (Integer)paramMap.get(str);
           if (localInteger != null) {
-            this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
+            this.a.c.put(str, localInteger);
           }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+        this.a.b.a(this.a.c);
+        this.a.b.notifyDataSetChanged();
         this.a.b();
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+      this.a.b.notifyDataSetChanged();
       this.a.b();
-      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131719975), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.app.getApp(), 1, this.a.getString(2131917580), 0).show(this.a.getTitleBarHeight());
     }
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter == null) {
+    if (this.a.b == null) {
       return;
     }
     if (paramBoolean1)
     {
-      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-      if (this.a.jdField_a_of_type_JavaUtilMap == null) {
+      this.a.c = TroopAssistantManager.a().a(this.a.app, this.a.d);
+      if (this.a.c == null) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
+      this.a.b.a(this.a.c);
+      this.a.b.notifyDataSetChanged();
       this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssisSettingActivity.7
  * JD-Core Version:    0.7.0.1
  */

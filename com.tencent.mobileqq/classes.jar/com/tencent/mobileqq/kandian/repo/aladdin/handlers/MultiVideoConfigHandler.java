@@ -5,10 +5,9 @@ import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.aladdin.AladdinParseUtils;
 import com.tencent.mobileqq.kandian.repo.aladdin.sp.RIJMultiVideoConfigSp;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.utils.HardwareUtil;
@@ -17,42 +16,9 @@ import java.util.Map;
 public class MultiVideoConfigHandler
   extends SimpleConfigHandler
 {
-  public static float a()
-  {
-    return ((Float)RIJSPUtils.a("seriestype_feeds_covered_light", Float.valueOf(0.8F))).floatValue();
-  }
-  
   public static final int a()
   {
-    return ((Integer)RIJSPUtils.a("seriestype_feeds_press", Integer.valueOf(0))).intValue();
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    float f = ((Float)RIJSPUtils.a("small_video_max_width_height_ratio", Float.valueOf(0.75F))).floatValue();
-    int i = ((Integer)RIJSPUtils.a("small_video_max_duration", Integer.valueOf(60))).intValue();
-    if ((paramInt1 / paramInt2 <= f) && (paramInt3 <= i)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public static String a()
-  {
-    return (String)RIJSPUtils.a("seriestype_top_bar_title", "推荐视频");
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = ((Boolean)RIJSPUtils.a("viola_enable", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isViolaEnable: ");
-      localStringBuilder.append(bool);
-      QLog.d("MultiVideoConfigHandler", 2, localStringBuilder.toString());
-    }
-    return bool;
+    return ((Integer)RIJSPUtils.b("seriestype_feeds_press", Integer.valueOf(0))).intValue();
   }
   
   public static final boolean a(int paramInt)
@@ -64,12 +30,12 @@ public class MultiVideoConfigHandler
       localStringBuilder.append("isEnterMultiMode() videoFrom=");
       localStringBuilder.append(paramInt);
       localStringBuilder.append("seriestype_video_from=");
-      localStringBuilder.append((String)RIJSPUtils.a("seriestype_video_from", "null"));
+      localStringBuilder.append((String)RIJSPUtils.b("seriestype_video_from", "null"));
       localStringBuilder.append("seriestype_video_type=");
-      localStringBuilder.append(RIJSPUtils.a("seriestype_video_type", Integer.valueOf(-1)));
+      localStringBuilder.append(RIJSPUtils.b("seriestype_video_type", Integer.valueOf(-1)));
       QLog.d("MultiVideoConfigHandler", 2, localStringBuilder.toString());
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B3A0", "0X800B3A0", 0, 0, null, null, null, "", false);
+    PublicAccountReportUtils.a(null, null, "0X800B3A0", "0X800B3A0", 0, 0, null, null, null, "", false);
     if (ViolaVideoFeedsConfigHandler.a(paramInt))
     {
       paramInt = HardwareUtil.judgeDeviceLevel(BaseApplication.getContext());
@@ -79,10 +45,10 @@ public class MultiVideoConfigHandler
         localStringBuilder.append("isEnterMultiMode jumptoNative deviceLevel:");
         localStringBuilder.append(paramInt);
         QLog.d("MultiVideoConfigHandler", 2, localStringBuilder.toString());
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B38C", "0X800B38C", 0, 0, null, null, null, "", false);
+        PublicAccountReportUtils.a(null, null, "0X800B38C", "0X800B38C", 0, 0, null, null, null, "", false);
         return false;
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B38C", "0X800B38D", 0, 0, null, null, null, "", false);
+      PublicAccountReportUtils.a(null, null, "0X800B38C", "0X800B38D", 0, 0, null, null, null, "", false);
       return true;
     }
     return RIJMultiVideoConfigSp.b(paramInt, "\\|", "seriestype_video_from");
@@ -123,16 +89,16 @@ public class MultiVideoConfigHandler
       localStringBuilder.append(", duration=");
       localStringBuilder.append(paramInt4);
       localStringBuilder.append("seriestype_video_from=");
-      localStringBuilder.append((String)RIJSPUtils.a("seriestype_video_from", "null"));
+      localStringBuilder.append((String)RIJSPUtils.b("seriestype_video_from", "null"));
       localStringBuilder.append("seriestype_video_type=");
-      localStringBuilder.append(RIJSPUtils.a("seriestype_video_type", Integer.valueOf(-1)));
+      localStringBuilder.append(RIJSPUtils.b("seriestype_video_type", Integer.valueOf(-1)));
       localStringBuilder.append("small_video_max_width_height_ratio=");
-      localStringBuilder.append(RIJSPUtils.a("small_video_max_width_height_ratio", Float.valueOf(0.0F)));
+      localStringBuilder.append(RIJSPUtils.b("small_video_max_width_height_ratio", Float.valueOf(0.0F)));
       localStringBuilder.append("small_video_max_duration=");
-      localStringBuilder.append(RIJSPUtils.a("small_video_max_duration", localInteger));
+      localStringBuilder.append(RIJSPUtils.b("small_video_max_duration", localInteger));
       QLog.d("MultiVideoConfigHandler", 2, localStringBuilder.toString());
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B3A0", "0X800B3A0", 0, 0, null, null, null, "", false);
+    PublicAccountReportUtils.a(null, null, "0X800B3A0", "0X800B3A0", 0, 0, null, null, null, "", false);
     boolean bool2 = a(paramInt1, paramInt2, paramInt3);
     bool1 = true;
     if (bool2) {
@@ -147,16 +113,16 @@ public class MultiVideoConfigHandler
         paramBundle.append("isEnterMultiMode jumptoNative deviceLevel:");
         paramBundle.append(paramInt1);
         QLog.d("MultiVideoConfigHandler", 2, paramBundle.toString());
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B38C", "0X800B38C", 0, 0, null, null, null, "", false);
+        PublicAccountReportUtils.a(null, null, "0X800B38C", "0X800B38C", 0, 0, null, null, null, "", false);
         return false;
       }
       if ((paramBundle != null) && (paramBundle.getString("video_feeds_force_native", "0").equals("1")))
       {
         QLog.d("MultiVideoConfigHandler", 2, "isEnterMultiMode jumptoNative because video_feeds_force_native");
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B38C", "0X800B38C", 0, 0, null, null, null, "", false);
+        PublicAccountReportUtils.a(null, null, "0X800B38C", "0X800B38C", 0, 0, null, null, null, "", false);
         return false;
       }
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800B38D", "0X800B38D", 0, 0, null, null, null, "", false);
+      PublicAccountReportUtils.a(null, null, "0X800B38D", "0X800B38D", 0, 0, null, null, null, "", false);
       return true;
     }
     if ((paramInt2 > 0) && (paramInt3 > 0))
@@ -164,21 +130,54 @@ public class MultiVideoConfigHandler
       if (paramInt4 <= 0) {
         return false;
       }
-      int i = ((Integer)RIJSPUtils.a("seriestype_video_type", localInteger)).intValue();
+      int i = ((Integer)RIJSPUtils.b("seriestype_video_type", localInteger)).intValue();
       if (RIJMultiVideoConfigSp.b(paramInt1, "\\|", "seriestype_video_from"))
       {
         if (i == 2) {
-          break label471;
+          break label431;
         }
-        if (i == a(paramInt2, paramInt3, paramInt4)) {
+        if (i == b(paramInt2, paramInt3, paramInt4)) {
           return true;
         }
       }
       bool1 = false;
-      label471:
+      label431:
       return bool1;
     }
     return false;
+  }
+  
+  public static int b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    float f = ((Float)RIJSPUtils.b("small_video_max_width_height_ratio", Float.valueOf(0.75F))).floatValue();
+    int i = ((Integer)RIJSPUtils.b("small_video_max_duration", Integer.valueOf(60))).intValue();
+    if ((paramInt1 / paramInt2 <= f) && (paramInt3 <= i)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public static String b()
+  {
+    return (String)RIJSPUtils.b("seriestype_top_bar_title", "推荐视频");
+  }
+  
+  public static float c()
+  {
+    return ((Float)RIJSPUtils.b("seriestype_feeds_covered_light", Float.valueOf(0.8F))).floatValue();
+  }
+  
+  public static boolean d()
+  {
+    boolean bool = ((Boolean)RIJSPUtils.b("viola_enable", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isViolaEnable: ");
+      localStringBuilder.append(bool);
+      QLog.d("MultiVideoConfigHandler", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -335,7 +334,7 @@ public class MultiVideoConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.MultiVideoConfigHandler
  * JD-Core Version:    0.7.0.1
  */

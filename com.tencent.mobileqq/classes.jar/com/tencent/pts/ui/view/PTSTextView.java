@@ -1,11 +1,11 @@
 package com.tencent.pts.ui.view;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.text.TextPaint;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
 import com.tencent.pts.ui.PTSNodeInfo;
-import com.tencent.pts.ui.vnode.PTSNodeText;
 import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 
 public class PTSTextView
@@ -14,9 +14,9 @@ public class PTSTextView
 {
   private PTSViewDecorationUtil.RoundedCorner mRoundedCorner = new PTSViewDecorationUtil.RoundedCorner(this);
   
-  public PTSTextView(PTSNodeText paramPTSNodeText)
+  public PTSTextView(Context paramContext)
   {
-    super(paramPTSNodeText.getContext());
+    super(paramContext);
     setTextSize(16.0F);
     setTextColor(-16777216);
     setIncludeFontPadding(false);
@@ -40,7 +40,7 @@ public class PTSTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSTextView
  * JD-Core Version:    0.7.0.1
  */

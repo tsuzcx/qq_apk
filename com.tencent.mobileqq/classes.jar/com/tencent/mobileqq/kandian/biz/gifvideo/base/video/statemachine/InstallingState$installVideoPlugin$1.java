@@ -10,14 +10,14 @@ public final class InstallingState$installVideoPlugin$1
 {
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a.a().get() < 2)) {
+    if ((paramBoolean) && (this.a.b().get() < 2)) {
       this.a.a(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.statemachine.InstallingState.installVideoPlugin.1
  * JD-Core Version:    0.7.0.1
  */

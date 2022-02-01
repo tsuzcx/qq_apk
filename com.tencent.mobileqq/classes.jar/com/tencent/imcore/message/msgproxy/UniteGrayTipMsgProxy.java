@@ -19,7 +19,7 @@ public class UniteGrayTipMsgProxy
   protected int a(MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord.extraflag == 32772) {
-      paramMessageRecord = a(paramMessageRecord, false);
+      paramMessageRecord = b(paramMessageRecord, false);
     } else {
       paramMessageRecord = a(paramMessageRecord, -2006);
     }
@@ -34,7 +34,7 @@ public class UniteGrayTipMsgProxy
   
   public int a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    if (UniteGrayTipMsgUtil.a(paramMessageRecord)) {
+    if (UniteGrayTipMsgUtil.b(paramMessageRecord)) {
       return a(paramMessageRecord);
     }
     return super.a(paramMessageRecord, paramBoolean);

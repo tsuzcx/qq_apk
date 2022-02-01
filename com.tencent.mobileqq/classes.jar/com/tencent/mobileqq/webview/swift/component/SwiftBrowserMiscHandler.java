@@ -24,24 +24,19 @@ public class SwiftBrowserMiscHandler
   extends SwiftBrowserComponentsProvider.SwiftBrowserComponent
   implements Handler.Callback
 {
-  public Handler a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup = null;
-  private QQBrowserActivity jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = null;
-  private ColorRingPlayer jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer = null;
-  private WebViewProvider jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider = null;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public SwiftBrowserMiscHandler()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  }
+  boolean a = false;
+  public Handler c = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private ViewGroup d = null;
+  private ColorRingPlayer e = null;
+  private QQBrowserActivity f = null;
+  private WebViewProvider g = null;
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() instanceof QQBrowserActivity))
+    if ((this.b.b() instanceof QQBrowserActivity))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = ((QQBrowserActivity)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+      this.f = ((QQBrowserActivity)this.b.b());
+      this.g = this.b.c();
     }
   }
   
@@ -49,7 +44,7 @@ public class SwiftBrowserMiscHandler
   {
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+      Object localObject = this.g;
       if (localObject == null) {
         return;
       }
@@ -74,19 +69,19 @@ public class SwiftBrowserMiscHandler
         if (paramInt != 3) {
           return;
         }
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer;
+        paramBundle = this.e;
         if (paramBundle != null) {
           paramBundle.e();
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.a)
         {
           ThreadManager.executeOnFileThread(new SwiftBrowserMiscHandler.2(this));
-          this.jdField_a_of_type_Boolean = false;
+          this.a = false;
         }
       }
       else
       {
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer;
+        paramBundle = this.e;
         if (paramBundle != null) {
           paramBundle.g();
         }
@@ -94,7 +89,7 @@ public class SwiftBrowserMiscHandler
     }
     else
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer;
+      paramBundle = this.e;
       if (paramBundle != null) {
         paramBundle.f();
       }
@@ -114,17 +109,17 @@ public class SwiftBrowserMiscHandler
           if (i != 5) {
             return false;
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer != null)
+          if (this.e != null)
           {
             paramMessage = (Bundle)paramMessage.obj;
-            this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.a(paramMessage.getString("callbackId"));
+            this.e.a(paramMessage.getString("callbackId"));
             return true;
           }
         }
         else
         {
           paramMessage = (Bundle)paramMessage.obj;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer;
+          localObject = this.e;
           if (localObject != null)
           {
             ((ColorRingPlayer)localObject).a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getInt("status"), paramMessage.getString("callbackId"));
@@ -134,30 +129,30 @@ public class SwiftBrowserMiscHandler
       }
       else
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider;
+        localObject = this.g;
         if (localObject != null)
         {
           if (((WebViewProvider)localObject).getComponentProvider() == null) {
             return false;
           }
-          localObject = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getComponentProvider().a(2);
-          if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).d != null))
+          localObject = (SwiftBrowserUIStyleHandler)this.g.getComponentProvider().a(2);
+          if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).x != null))
           {
-            if (this.jdField_a_of_type_AndroidViewViewGroup == null)
+            if (this.d == null)
             {
-              localObject = (RelativeLayout)((SwiftBrowserUIStyleHandler)localObject).d.findViewById(2131363807);
-              this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131561883, null));
+              localObject = (RelativeLayout)((SwiftBrowserUIStyleHandler)localObject).x.findViewById(2131429740);
+              this.d = ((ViewGroup)LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131628301, null));
               RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
               localLayoutParams.addRule(12);
-              ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewViewGroup, localLayoutParams);
-              this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new SwiftBrowserMiscHandler.1(this));
+              ((RelativeLayout)localObject).addView(this.d, localLayoutParams);
+              this.d.setOnTouchListener(new SwiftBrowserMiscHandler.1(this));
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer == null) {
-              this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer = new ColorRingPlayer(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, this.jdField_a_of_type_AndroidViewViewGroup);
+            if (this.e == null) {
+              this.e = new ColorRingPlayer(this.f, this.d);
             }
-            this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.h();
+            this.e.h();
             paramMessage = (Bundle)paramMessage.obj;
-            this.jdField_a_of_type_ComTencentMobileqqVastrashColorRingPlayer.a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getString("callbackId"));
+            this.e.a(paramMessage.getLong("id"), paramMessage.getString("type"), paramMessage.getString("callbackId"));
             return true;
           }
         }
@@ -167,7 +162,7 @@ public class SwiftBrowserMiscHandler
         }
       }
     }
-    else if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider != null)
+    else if (this.g != null)
     {
       i = paramMessage.arg1;
       if ((i & 0x2) == 0) {
@@ -175,20 +170,20 @@ public class SwiftBrowserMiscHandler
       } else {
         i = 0;
       }
-      paramMessage = (SwiftBrowserUIStyleHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getComponentProvider().a(2);
+      paramMessage = (SwiftBrowserUIStyleHandler)this.g.getComponentProvider().a(2);
       if (i != 0)
       {
-        paramMessage.a.a.setVisibility(0);
+        paramMessage.g.h.setVisibility(0);
         return true;
       }
-      paramMessage.a.a.setVisibility(8);
+      paramMessage.g.h.setVisibility(8);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler
  * JD-Core Version:    0.7.0.1
  */

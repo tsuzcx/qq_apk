@@ -12,15 +12,15 @@ class WatchTogetherAdminControlView$9
   public void onClick(View paramView)
   {
     WatchTogetherAdminControlView.a(this.a, 1, 2);
-    WatchTogetherAdminControlView.c(this.a);
-    if (WatchTogetherAdminControlView.a(this.a) != null) {
-      WatchTogetherAdminControlView.a(this.a).b();
+    WatchTogetherAdminControlView.i(this.a);
+    if (WatchTogetherAdminControlView.l(this.a) != null) {
+      WatchTogetherAdminControlView.l(this.a).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherAdminControlView.9
  * JD-Core Version:    0.7.0.1
  */

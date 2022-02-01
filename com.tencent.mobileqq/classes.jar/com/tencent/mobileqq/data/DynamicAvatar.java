@@ -59,23 +59,23 @@ public class DynamicAvatar
       return null;
     }
     DynamicAvatar localDynamicAvatar = new DynamicAvatar();
-    localDynamicAvatar.tinyId = paramOneUinHeadInfo.b;
-    localDynamicAvatar.uin = paramOneUinHeadInfo.jdField_a_of_type_Long;
-    localDynamicAvatar.getTimeStamp = paramOneUinHeadInfo.jdField_a_of_type_Int;
-    if ((paramOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList != null) && (!paramOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    localDynamicAvatar.tinyId = paramOneUinHeadInfo.c;
+    localDynamicAvatar.uin = paramOneUinHeadInfo.a;
+    localDynamicAvatar.getTimeStamp = paramOneUinHeadInfo.b;
+    if ((paramOneUinHeadInfo.d != null) && (!paramOneUinHeadInfo.d.isEmpty()))
     {
-      paramOneUinHeadInfo = paramOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramOneUinHeadInfo = paramOneUinHeadInfo.d.iterator();
       while (paramOneUinHeadInfo.hasNext())
       {
         Object localObject1 = (DynamicAvatarInfo.UinHeadInfo)paramOneUinHeadInfo.next();
         if (localObject1 != null)
         {
-          Object localObject2 = ((DynamicAvatarInfo.UinHeadInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
-          if (((DynamicAvatarInfo.UinHeadInfo)localObject1).d == 17)
+          Object localObject2 = ((DynamicAvatarInfo.UinHeadInfo)localObject1).f;
+          if (((DynamicAvatarInfo.UinHeadInfo)localObject1).e == 17)
           {
-            localDynamicAvatar.basicSetTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).c;
+            localDynamicAvatar.basicSetTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).d;
             localDynamicAvatar.basicOverdueTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).b;
-            localDynamicAvatar.basicStaticUrl = ((DynamicAvatarInfo.UinHeadInfo)localObject1).jdField_a_of_type_JavaLangString;
+            localDynamicAvatar.basicStaticUrl = ((DynamicAvatarInfo.UinHeadInfo)localObject1).c;
             if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
             {
               localObject1 = ((ArrayList)localObject2).iterator();
@@ -83,26 +83,26 @@ public class DynamicAvatar
               {
                 localObject2 = (DynamicAvatarInfo.VideoHeadInfo)((Iterator)localObject1).next();
                 if (localObject2 != null) {
-                  if ((((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int != 80) && (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int != 100))
+                  if ((((DynamicAvatarInfo.VideoHeadInfo)localObject2).b != 80) && (((DynamicAvatarInfo.VideoHeadInfo)localObject2).b != 100))
                   {
-                    if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 200) {
-                      localDynamicAvatar.basicMiddleUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
-                    } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 640) {
-                      localDynamicAvatar.basicBigUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
+                    if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).b == 200) {
+                      localDynamicAvatar.basicMiddleUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).a;
+                    } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).b == 640) {
+                      localDynamicAvatar.basicBigUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).a;
                     }
                   }
                   else {
-                    localDynamicAvatar.basicSmallUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
+                    localDynamicAvatar.basicSmallUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).a;
                   }
                 }
               }
             }
           }
-          else if (((DynamicAvatarInfo.UinHeadInfo)localObject1).d == 18)
+          else if (((DynamicAvatarInfo.UinHeadInfo)localObject1).e == 18)
           {
-            localDynamicAvatar.nearbySetTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).c;
+            localDynamicAvatar.nearbySetTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).d;
             localDynamicAvatar.nearbyOverdueTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).b;
-            localDynamicAvatar.nearbyStaticUrl = ((DynamicAvatarInfo.UinHeadInfo)localObject1).jdField_a_of_type_JavaLangString;
+            localDynamicAvatar.nearbyStaticUrl = ((DynamicAvatarInfo.UinHeadInfo)localObject1).c;
             if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
             {
               localObject1 = ((ArrayList)localObject2).iterator();
@@ -110,16 +110,16 @@ public class DynamicAvatar
               {
                 localObject2 = (DynamicAvatarInfo.VideoHeadInfo)((Iterator)localObject1).next();
                 if (localObject2 != null) {
-                  if ((((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int != 80) && (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int != 100))
+                  if ((((DynamicAvatarInfo.VideoHeadInfo)localObject2).b != 80) && (((DynamicAvatarInfo.VideoHeadInfo)localObject2).b != 100))
                   {
-                    if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 200) {
-                      localDynamicAvatar.nearbyMiddleUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
-                    } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 640) {
-                      localDynamicAvatar.nearbyBigUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
+                    if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).b == 200) {
+                      localDynamicAvatar.nearbyMiddleUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).a;
+                    } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).b == 640) {
+                      localDynamicAvatar.nearbyBigUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).a;
                     }
                   }
                   else {
-                    localDynamicAvatar.nearbySmallUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
+                    localDynamicAvatar.nearbySmallUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).a;
                   }
                 }
               }
@@ -196,7 +196,7 @@ public class DynamicAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.DynamicAvatar
  * JD-Core Version:    0.7.0.1
  */

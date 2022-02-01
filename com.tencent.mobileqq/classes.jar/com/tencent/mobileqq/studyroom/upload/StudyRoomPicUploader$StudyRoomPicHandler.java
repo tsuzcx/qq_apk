@@ -17,10 +17,10 @@ import java.util.concurrent.ConcurrentHashMap;
 class StudyRoomPicUploader$StudyRoomPicHandler
   extends TransProcessorHandler
 {
-  private static volatile StudyRoomPicHandler jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler;
-  private static volatile boolean jdField_a_of_type_Boolean = false;
-  private TransFileControllerImpl jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl;
-  private ConcurrentHashMap<Long, IStudyRoomPicUploadListener> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static volatile StudyRoomPicHandler a;
+  private static volatile boolean b = false;
+  private TransFileControllerImpl c;
+  private ConcurrentHashMap<Long, IStudyRoomPicUploadListener> d = new ConcurrentHashMap();
   
   private StudyRoomPicUploader$StudyRoomPicHandler()
   {
@@ -29,24 +29,24 @@ class StudyRoomPicUploader$StudyRoomPicHandler
   
   private void a(long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) {
+    this.d.remove(Long.valueOf(paramLong));
+    if (this.d.isEmpty()) {
       a();
     }
   }
   
-  private static StudyRoomPicHandler b()
+  private static StudyRoomPicHandler c()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler == null) {
-          jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler = new StudyRoomPicHandler();
+        if (a == null) {
+          a = new StudyRoomPicHandler();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqStudyroomUploadStudyRoomPicUploader$StudyRoomPicHandler;
+    return a;
   }
   
   public void a()
@@ -55,13 +55,13 @@ class StudyRoomPicUploader$StudyRoomPicHandler
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StudyRoomPicHandler release sHandlerInit=");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(b);
       QLog.d("StudyRoomPicUploader", 2, localStringBuilder.toString());
-      if ((this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl != null) && (jdField_a_of_type_Boolean))
+      if ((this.c != null) && (b))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl.removeHandle(this);
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl = null;
-        jdField_a_of_type_Boolean = false;
+        this.c.removeHandle(this);
+        this.c = null;
+        b = false;
       }
       return;
     }
@@ -70,7 +70,7 @@ class StudyRoomPicUploader$StudyRoomPicHandler
   
   public void a(long paramLong, IStudyRoomPicUploadListener paramIStudyRoomPicUploadListener)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong), paramIStudyRoomPicUploadListener);
+    this.d.put(Long.valueOf(paramLong), paramIStudyRoomPicUploadListener);
   }
   
   public void a(ITransFileController paramITransFileController)
@@ -79,13 +79,13 @@ class StudyRoomPicUploader$StudyRoomPicHandler
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StudyRoomPicHandler init sHandlerInit=");
-      localStringBuilder.append(jdField_a_of_type_Boolean);
+      localStringBuilder.append(b);
       QLog.d("StudyRoomPicUploader", 2, localStringBuilder.toString());
-      if (!jdField_a_of_type_Boolean)
+      if (!b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl = ((TransFileControllerImpl)paramITransFileController);
-        this.jdField_a_of_type_ComTencentMobileqqTransfileApiImplTransFileControllerImpl.addHandle(this);
-        jdField_a_of_type_Boolean = true;
+        this.c = ((TransFileControllerImpl)paramITransFileController);
+        this.c.addHandle(this);
+        b = true;
       }
       return;
     }
@@ -103,7 +103,7 @@ class StudyRoomPicUploader$StudyRoomPicHandler
       if (localFileMsg.commandId != 80) {
         return;
       }
-      localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      localObject1 = this.d;
       if (localObject1 == null) {
         return;
       }
@@ -111,7 +111,7 @@ class StudyRoomPicUploader$StudyRoomPicHandler
       if (localObject1 == null)
       {
         QLog.d("StudyRoomPicUploader", 2, "uploadListener == null");
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(localFileMsg.uniseq));
+        this.d.remove(Long.valueOf(localFileMsg.uniseq));
         return;
       }
       int i = paramMessage.what;
@@ -157,7 +157,7 @@ class StudyRoomPicUploader$StudyRoomPicHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.upload.StudyRoomPicUploader.StudyRoomPicHandler
  * JD-Core Version:    0.7.0.1
  */

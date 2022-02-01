@@ -12,13 +12,13 @@ import java.io.IOException;
 public class AuthCodeWriter
   implements ApkWriteCodeListener
 {
-  private AuthCodeWriter.ICheckCodeListener jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener;
-  private String jdField_a_of_type_JavaLangString;
+  private AuthCodeWriter.ICheckCodeListener a;
+  private String b;
   
   public AuthCodeWriter(String paramString, AuthCodeWriter.ICheckCodeListener paramICheckCodeListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener = paramICheckCodeListener;
+    this.b = paramString;
+    this.a = paramICheckCodeListener;
   }
   
   public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
@@ -28,7 +28,7 @@ public class AuthCodeWriter
     int i = paramInt;
     if (bool)
     {
-      paramBundle = this.jdField_a_of_type_JavaLangString;
+      paramBundle = this.b;
       i = -20;
       paramString1 = null;
       if (paramBundle != null)
@@ -49,7 +49,7 @@ public class AuthCodeWriter
               ((File)localObject).delete();
             }
             paramBundle.renameTo((File)localObject);
-            ApkExternalInfoTool.a((File)localObject, this.jdField_a_of_type_JavaLangString);
+            ApkExternalInfoTool.a((File)localObject, this.b);
             ((File)localObject).renameTo(paramBundle);
           }
           catch (Exception paramString1)
@@ -73,13 +73,13 @@ public class AuthCodeWriter
           }
         }
       }
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener;
+      paramBundle = this.a;
       if (paramBundle != null) {
-        paramBundle.a(paramInt);
+        paramBundle.b(paramInt);
       }
       paramBundle = new StringBuilder();
       paramBundle.append("writeCodeToApk:");
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.b);
       paramBundle.append(", forFile:");
       paramBundle.append(paramString2);
       paramBundle.append(" result: ");
@@ -103,16 +103,16 @@ public class AuthCodeWriter
         paramBundle.append(paramInt);
         QLog.d("UpgradeController", 4, paramBundle.toString());
       }
-      paramString = this.jdField_a_of_type_ComTencentMobileqqUpgradeAuthCodeWriter$ICheckCodeListener;
+      paramString = this.a;
       if ((paramString != null) && (!paramString.a(paramInt))) {
-        this.jdField_a_of_type_JavaLangString = null;
+        this.b = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.AuthCodeWriter
  * JD-Core Version:    0.7.0.1
  */

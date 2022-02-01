@@ -14,7 +14,7 @@ public class RIJNewReportChannelConfigHandler
 {
   public static boolean a()
   {
-    return ((Boolean)RIJSPUtils.a("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)RIJSPUtils.b("use_new_report_channel_for_1160", Boolean.valueOf(false))).booleanValue();
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -51,7 +51,7 @@ public class RIJNewReportChannelConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.RIJNewReportChannelConfigHandler
  * JD-Core Version:    0.7.0.1
  */

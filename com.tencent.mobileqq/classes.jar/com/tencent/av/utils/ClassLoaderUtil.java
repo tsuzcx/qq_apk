@@ -31,7 +31,7 @@ public class ClassLoaderUtil
     if (paramContext == null) {
       return null;
     }
-    paramString = a(paramContext, paramString);
+    paramString = b(paramContext, paramString);
     File localFile = paramContext.getDir("temp", 0);
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -93,90 +93,102 @@ public class ClassLoaderUtil
     return null;
   }
   
+  public static boolean a(DexClassLoader paramDexClassLoader, Object paramObject, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  {
+    if ((paramDexClassLoader != null) && (!TextUtils.isEmpty(paramString)) && (paramObject != null))
+    {
+      paramDexClassLoader = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
+      paramDexClassLoader.setAccessible(true);
+      paramArrayOfObject2[0] = paramDexClassLoader.invoke(paramObject, paramArrayOfObject1);
+      return true;
+    }
+    return false;
+  }
+  
   /* Error */
-  public static String a(Context paramContext, String paramString)
+  public static String b(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 97	java/lang/StringBuilder
+    //   6: new 98	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   13: astore_3
     //   14: aload_3
     //   15: aload_0
-    //   16: invokevirtual 127	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   19: invokevirtual 130	java/io/File:getParent	()Ljava/lang/String;
-    //   22: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: invokevirtual 129	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   19: invokevirtual 132	java/io/File:getParent	()Ljava/lang/String;
+    //   22: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload_3
-    //   27: ldc 132
-    //   29: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 134
+    //   29: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
     //   33: aload_3
     //   34: aload_1
-    //   35: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: pop
     //   39: aload_3
-    //   40: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   43: astore_3
     //   44: aload_0
-    //   45: invokevirtual 127	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   48: invokevirtual 53	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   45: invokevirtual 129	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   48: invokevirtual 54	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   51: astore_0
-    //   52: new 97	java/lang/StringBuilder
+    //   52: new 98	java/lang/StringBuilder
     //   55: dup
-    //   56: invokespecial 98	java/lang/StringBuilder:<init>	()V
+    //   56: invokespecial 99	java/lang/StringBuilder:<init>	()V
     //   59: astore 6
     //   61: aload 6
     //   63: aload_0
-    //   64: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: pop
     //   68: aload 6
-    //   70: getstatic 136	java/io/File:separator	Ljava/lang/String;
-    //   73: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   70: getstatic 138	java/io/File:separator	Ljava/lang/String;
+    //   73: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: pop
     //   77: aload 6
     //   79: aload_1
-    //   80: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: pop
     //   84: aload 6
-    //   86: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   89: astore_1
-    //   90: new 49	java/io/File
+    //   90: new 50	java/io/File
     //   93: dup
     //   94: aload_1
-    //   95: invokespecial 139	java/io/File:<init>	(Ljava/lang/String;)V
+    //   95: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
     //   98: astore_0
     //   99: aload_0
-    //   100: invokevirtual 142	java/io/File:exists	()Z
+    //   100: invokevirtual 144	java/io/File:exists	()Z
     //   103: ifeq +8 -> 111
     //   106: aload_0
-    //   107: invokevirtual 145	java/io/File:delete	()Z
+    //   107: invokevirtual 147	java/io/File:delete	()Z
     //   110: pop
-    //   111: new 147	java/io/BufferedInputStream
+    //   111: new 149	java/io/BufferedInputStream
     //   114: dup
-    //   115: new 149	java/io/FileInputStream
+    //   115: new 151	java/io/FileInputStream
     //   118: dup
-    //   119: new 49	java/io/File
+    //   119: new 50	java/io/File
     //   122: dup
     //   123: aload_3
-    //   124: invokespecial 139	java/io/File:<init>	(Ljava/lang/String;)V
-    //   127: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   130: invokespecial 155	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   124: invokespecial 141	java/io/File:<init>	(Ljava/lang/String;)V
+    //   127: invokespecial 154	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   130: invokespecial 157	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   133: astore_3
     //   134: aload_0
-    //   135: invokevirtual 158	java/io/File:createNewFile	()Z
+    //   135: invokevirtual 160	java/io/File:createNewFile	()Z
     //   138: pop
-    //   139: new 160	java/io/BufferedOutputStream
+    //   139: new 162	java/io/BufferedOutputStream
     //   142: dup
-    //   143: new 162	java/io/FileOutputStream
+    //   143: new 164	java/io/FileOutputStream
     //   146: dup
     //   147: aload_0
-    //   148: invokespecial 163	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   151: invokespecial 166	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   148: invokespecial 165	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   151: invokespecial 168	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   154: astore_0
     //   155: sipush 1024
     //   158: newarray byte
@@ -186,7 +198,7 @@ public class ClassLoaderUtil
     //   165: iconst_0
     //   166: aload 4
     //   168: arraylength
-    //   169: invokevirtual 170	java/io/BufferedInputStream:read	([BII)I
+    //   169: invokevirtual 172	java/io/BufferedInputStream:read	([BII)I
     //   172: istore_2
     //   173: iload_2
     //   174: iconst_m1
@@ -195,33 +207,33 @@ public class ClassLoaderUtil
     //   179: aload 4
     //   181: iconst_0
     //   182: iload_2
-    //   183: invokevirtual 174	java/io/BufferedOutputStream:write	([BII)V
+    //   183: invokevirtual 176	java/io/BufferedOutputStream:write	([BII)V
     //   186: goto -24 -> 162
     //   189: aload_3
-    //   190: invokevirtual 177	java/io/BufferedInputStream:close	()V
+    //   190: invokevirtual 179	java/io/BufferedInputStream:close	()V
     //   193: goto +19 -> 212
     //   196: astore_3
-    //   197: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   197: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   200: ifeq +12 -> 212
-    //   203: ldc 68
+    //   203: ldc 69
     //   205: iconst_2
-    //   206: ldc 70
+    //   206: ldc 71
     //   208: aload_3
-    //   209: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   209: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   212: aload_0
-    //   213: invokevirtual 178	java/io/BufferedOutputStream:close	()V
+    //   213: invokevirtual 180	java/io/BufferedOutputStream:close	()V
     //   216: aload_1
     //   217: areturn
     //   218: astore_0
     //   219: aload_1
     //   220: astore_3
-    //   221: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   221: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   224: ifeq +143 -> 367
-    //   227: ldc 68
+    //   227: ldc 69
     //   229: iconst_2
-    //   230: ldc 70
+    //   230: ldc 71
     //   232: aload_0
-    //   233: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   233: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   236: aload_1
     //   237: areturn
     //   238: astore 4
@@ -263,38 +275,38 @@ public class ClassLoaderUtil
     //   296: astore_0
     //   297: aload 5
     //   299: astore_3
-    //   300: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   300: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   303: ifeq +13 -> 316
-    //   306: ldc 68
+    //   306: ldc 69
     //   308: iconst_2
-    //   309: ldc 70
+    //   309: ldc 71
     //   311: aload 4
-    //   313: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   313: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   316: aload_3
     //   317: ifnull +26 -> 343
     //   320: aload_3
-    //   321: invokevirtual 177	java/io/BufferedInputStream:close	()V
+    //   321: invokevirtual 179	java/io/BufferedInputStream:close	()V
     //   324: goto +19 -> 343
     //   327: astore_3
-    //   328: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   328: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   331: ifeq +12 -> 343
-    //   334: ldc 68
+    //   334: ldc 69
     //   336: iconst_2
-    //   337: ldc 70
+    //   337: ldc 71
     //   339: aload_3
-    //   340: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   340: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   343: aload_1
     //   344: astore_3
     //   345: aload_0
     //   346: ifnull +21 -> 367
     //   349: aload_0
-    //   350: invokevirtual 178	java/io/BufferedOutputStream:close	()V
+    //   350: invokevirtual 180	java/io/BufferedOutputStream:close	()V
     //   353: aload_1
     //   354: areturn
     //   355: astore_0
     //   356: aload_1
     //   357: astore_3
-    //   358: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   358: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   361: ifeq +6 -> 367
     //   364: goto -137 -> 227
     //   367: aload_3
@@ -305,29 +317,29 @@ public class ClassLoaderUtil
     //   373: aload_3
     //   374: ifnull +26 -> 400
     //   377: aload_3
-    //   378: invokevirtual 177	java/io/BufferedInputStream:close	()V
+    //   378: invokevirtual 179	java/io/BufferedInputStream:close	()V
     //   381: goto +19 -> 400
     //   384: astore_0
-    //   385: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   385: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   388: ifeq +12 -> 400
-    //   391: ldc 68
+    //   391: ldc 69
     //   393: iconst_2
-    //   394: ldc 70
+    //   394: ldc 71
     //   396: aload_0
-    //   397: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   397: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   400: aload_1
     //   401: ifnull +26 -> 427
     //   404: aload_1
-    //   405: invokevirtual 178	java/io/BufferedOutputStream:close	()V
+    //   405: invokevirtual 180	java/io/BufferedOutputStream:close	()V
     //   408: goto +19 -> 427
     //   411: astore_0
-    //   412: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   412: invokestatic 67	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   415: ifeq +12 -> 427
-    //   418: ldc 68
+    //   418: ldc 69
     //   420: iconst_2
-    //   421: ldc 70
+    //   421: ldc 71
     //   423: aload_0
-    //   424: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   424: invokestatic 75	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   427: goto +6 -> 433
     //   430: aload 4
     //   432: athrow
@@ -376,18 +388,6 @@ public class ClassLoaderUtil
     //   300	316	369	finally
     //   377	381	384	java/io/IOException
     //   404	408	411	java/io/IOException
-  }
-  
-  public static boolean a(DexClassLoader paramDexClassLoader, Object paramObject, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
-  {
-    if ((paramDexClassLoader != null) && (!TextUtils.isEmpty(paramString)) && (paramObject != null))
-    {
-      paramDexClassLoader = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
-      paramDexClassLoader.setAccessible(true);
-      paramArrayOfObject2[0] = paramDexClassLoader.invoke(paramObject, paramArrayOfObject1);
-      return true;
-    }
-    return false;
   }
 }
 

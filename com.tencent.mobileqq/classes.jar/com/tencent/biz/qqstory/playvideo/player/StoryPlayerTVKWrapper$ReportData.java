@@ -6,123 +6,119 @@ import java.util.Collections;
 public class StoryPlayerTVKWrapper$ReportData
   implements Cloneable
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public boolean a;
-  public int b;
-  public long b;
+  public ArrayList<Integer> a = new ArrayList();
   public String b;
-  public long c;
-  public String c;
+  public boolean c;
   public long d;
-  public String d;
-  public long e;
+  public String e;
+  public int f;
+  public int g;
+  public long h;
+  public String i;
+  public long j;
+  public long k;
+  public long l;
+  public String m;
   
-  public StoryPlayerTVKWrapper$ReportData()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public StoryPlayerTVKWrapper$ReportData() {}
   
   public StoryPlayerTVKWrapper$ReportData(ReportData paramReportData)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramReportData.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaLangString = paramReportData.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramReportData.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Long = paramReportData.jdField_a_of_type_Long;
-    this.jdField_b_of_type_JavaLangString = paramReportData.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramReportData.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramReportData.jdField_b_of_type_Int;
-    this.jdField_b_of_type_Long = paramReportData.jdField_b_of_type_Long;
-    this.jdField_c_of_type_JavaLangString = paramReportData.jdField_c_of_type_JavaLangString;
-    this.jdField_c_of_type_Long = paramReportData.jdField_c_of_type_Long;
+    this.a.addAll(paramReportData.a);
+    this.b = paramReportData.b;
+    this.c = paramReportData.c;
     this.d = paramReportData.d;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
-      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
-    }
-    return -1L;
+    this.e = paramReportData.e;
+    this.f = paramReportData.f;
+    this.g = paramReportData.g;
+    this.h = paramReportData.h;
+    this.i = paramReportData.i;
+    this.j = paramReportData.j;
+    this.m = paramReportData.m;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Long = 0L;
-    this.d = null;
+    this.a.clear();
+    this.b = null;
+    this.c = false;
+    this.d = 0L;
+    this.e = null;
+    this.f = 0;
+    this.g = 0;
+    this.h = 0L;
+    this.i = null;
+    this.j = 0L;
+    this.m = null;
   }
   
   public long b()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
-      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
+    if (this.a.size() >= 3) {
+      return ((Integer)Collections.max(this.a)).intValue();
     }
     return -1L;
   }
   
   public long c()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
+    if (this.a.size() >= 3) {
+      return ((Integer)Collections.min(this.a)).intValue();
+    }
+    return -1L;
+  }
+  
+  public long d()
+  {
+    if (this.a.size() < 3) {
       return -1L;
     }
-    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    int i2 = Math.min(this.a.size(), 10);
+    int n = 0;
+    int i1 = 0;
+    while (n < i2)
     {
-      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      i += 1;
+      i1 += ((Integer)this.a.get(n)).intValue();
+      n += 1;
     }
-    return j / k;
+    return i1 / i2;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(d());
     localStringBuilder.append(" ");
     localStringBuilder.append(c());
     localStringBuilder.append(" ");
     localStringBuilder.append(b());
     localStringBuilder.append(" ");
-    localStringBuilder.append(a());
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(" ");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.m);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.ReportData
  * JD-Core Version:    0.7.0.1
  */

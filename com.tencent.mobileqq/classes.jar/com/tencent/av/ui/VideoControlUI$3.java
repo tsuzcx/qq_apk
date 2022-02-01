@@ -11,7 +11,7 @@ class VideoControlUI$3
   
   public void a()
   {
-    this.a.m();
+    this.a.n();
   }
   
   public void b() {}
@@ -20,17 +20,17 @@ class VideoControlUI$3
   
   public void d()
   {
-    if (!this.a.h) {
-      this.a.e(0);
+    if (!this.a.af) {
+      this.a.f(0);
     }
     if ("GT-I9100G".equals(Build.MODEL))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.a.d, 2, "Model is 9100G, don't do animation");
+        QLog.d(this.a.X, 2, "Model is 9100G, don't do animation");
       }
     }
     else {
-      this.a.I();
+      this.a.Z();
     }
   }
 }

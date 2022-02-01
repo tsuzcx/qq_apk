@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.flashshow.personal.widget.viewindicator.ViewIndicator android:id="@id/oig" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:paddingStart="20.0dip" app:pointer_height="3.0dip" app:pointer_padding="3.0dip" app:pointer_width="20.0dip" app:tab_space="32.0dip" app:text_color_normal="#99ffffff" app:text_color_selected="#e6ffffff" app:text_gravity="as_" app:text_size="14.0sp" app:text_style="mmr" />
+    <LinearLayout android:gravity="center" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/ofe" android:background="@drawable/7u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+        <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/i_a" android:layout_marginStart="12.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/akh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wtn" android:textAlignment="center" android:layout_marginStart="4.0dip" android:layout_marginEnd="8.0dip" />
+    </LinearLayout>
+    <androidx.viewpager2.widget.ViewPager2 android:id="@id/qzf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="44.0dip" />
+</FrameLayout>

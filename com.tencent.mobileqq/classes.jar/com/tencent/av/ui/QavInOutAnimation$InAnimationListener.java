@@ -16,9 +16,9 @@ class QavInOutAnimation$InAnimationListener
     }
     try
     {
-      if (this.a.a != null)
+      if (this.a.y != null)
       {
-        this.a.a.b();
+        this.a.y.b();
         return;
       }
     }
@@ -43,9 +43,9 @@ class QavInOutAnimation$InAnimationListener
     }
     try
     {
-      if (this.a.a != null)
+      if (this.a.y != null)
       {
-        this.a.a.a();
+        this.a.y.a();
         return;
       }
     }

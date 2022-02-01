@@ -5,18 +5,18 @@ import java.util.LinkedHashSet;
 
 class FoldMessageManager$RedBagFoldContext
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 9223372036854775807L;
-  MessageForFoldMsg jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-  LinkedHashSet<String> jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = 0L;
-  MessageForFoldMsg jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-  boolean jdField_b_of_type_Boolean = true;
+  int a = 0;
+  LinkedHashSet<String> b = new LinkedHashSet();
+  long c = 9223372036854775807L;
+  MessageForFoldMsg d = null;
+  boolean e = false;
+  long f = 0L;
+  MessageForFoldMsg g = null;
+  boolean h = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.FoldMessageManager.RedBagFoldContext
  * JD-Core Version:    0.7.0.1
  */

@@ -5,70 +5,63 @@ import org.json.JSONObject;
 
 public class ReadInJoyMedalInfo
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  public long a = -1L;
   public String b;
-  public int c;
   public String c;
-  public int d;
-  public String d;
-  public String e;
+  public int d = -1;
+  public int e = 0;
   public String f;
-  public String g;
-  public String h;
-  
-  public ReadInJoyMedalInfo()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-  }
+  public int g;
+  public int h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
   public String a()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      if (this.jdField_a_of_type_Long > 0L) {
-        localJSONObject.put("medalid", this.jdField_a_of_type_Long);
+      if (this.a > 0L) {
+        localJSONObject.put("medalid", this.a);
       }
-      if (this.jdField_a_of_type_Int > 0) {
-        localJSONObject.put("mMedalType", this.jdField_a_of_type_Int);
+      if (this.d > 0) {
+        localJSONObject.put("mMedalType", this.d);
       }
-      if (this.jdField_b_of_type_Int > 0) {
-        localJSONObject.put("mIsJump", this.jdField_b_of_type_Int);
+      if (this.e > 0) {
+        localJSONObject.put("mIsJump", this.e);
       }
-      if (this.jdField_c_of_type_Int > 0) {
-        localJSONObject.put("GRID_FEED_ITEM_SIZE", this.jdField_c_of_type_Int);
+      if (this.g > 0) {
+        localJSONObject.put("GRID_FEED_ITEM_SIZE", this.g);
       }
-      if (this.jdField_d_of_type_Int > 0) {
-        localJSONObject.put("mPicHeight", this.jdField_d_of_type_Int);
+      if (this.h > 0) {
+        localJSONObject.put("mPicHeight", this.h);
       }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localJSONObject.put("medal_name", this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(this.b)) {
+        localJSONObject.put("medal_name", this.b);
       }
       if (!TextUtils.isEmpty("medal_url")) {
-        localJSONObject.put("medal_url", this.jdField_b_of_type_JavaLangString);
+        localJSONObject.put("medal_url", this.c);
       }
       if (!TextUtils.isEmpty("mJumpUrl")) {
-        localJSONObject.put("mJumpUrl", this.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("mJumpUrl", this.f);
       }
       if (!TextUtils.isEmpty("medal_scene")) {
-        localJSONObject.put("medal_scene", this.e);
+        localJSONObject.put("medal_scene", this.j);
       }
       if (!TextUtils.isEmpty("medal_pos")) {
-        localJSONObject.put("medal_pos", this.f);
+        localJSONObject.put("medal_pos", this.k);
       }
       if (!TextUtils.isEmpty("channelid")) {
-        localJSONObject.put("channelid", this.jdField_d_of_type_JavaLangString);
+        localJSONObject.put("channelid", this.i);
       }
       if (!TextUtils.isEmpty("feedsid")) {
-        localJSONObject.put("feedsid", this.g);
+        localJSONObject.put("feedsid", this.l);
       }
       if (!TextUtils.isEmpty("medal_uin")) {
-        localJSONObject.put("medal_uin", this.h);
+        localJSONObject.put("medal_uin", this.m);
       }
     }
     catch (Exception localException)
@@ -81,7 +74,7 @@ public class ReadInJoyMedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyMedalInfo
  * JD-Core Version:    0.7.0.1
  */

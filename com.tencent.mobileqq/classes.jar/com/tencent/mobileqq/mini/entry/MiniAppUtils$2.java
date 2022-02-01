@@ -18,11 +18,11 @@ final class MiniAppUtils$2
     //   4: aload_0
     //   5: getfield 16	com/tencent/mobileqq/mini/entry/MiniAppUtils$2:val$context	Landroid/content/Context;
     //   8: invokestatic 35	com/tencent/open/adapter/CommonDataAdapter:a	()Lcom/tencent/open/adapter/CommonDataAdapter;
-    //   11: invokevirtual 38	com/tencent/open/adapter/CommonDataAdapter:a	()J
-    //   14: invokestatic 44	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   11: invokevirtual 39	com/tencent/open/adapter/CommonDataAdapter:c	()J
+    //   14: invokestatic 45	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   17: aload_0
     //   18: getfield 18	com/tencent/mobileqq/mini/entry/MiniAppUtils$2:val$appId	Ljava/lang/String;
-    //   21: invokestatic 50	com/tencent/mobileqq/mini/cache/Storage:open	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/mini/cache/Storage;
+    //   21: invokestatic 51	com/tencent/mobileqq/mini/cache/Storage:open	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mobileqq/mini/cache/Storage;
     //   24: astore_3
     //   25: aload_3
     //   26: astore_2
@@ -31,10 +31,10 @@ final class MiniAppUtils$2
     //   29: aload_3
     //   30: aload_0
     //   31: getfield 20	com/tencent/mobileqq/mini/entry/MiniAppUtils$2:val$key	Ljava/lang/String;
-    //   34: ldc 52
+    //   34: ldc 53
     //   36: aload_0
     //   37: getfield 22	com/tencent/mobileqq/mini/entry/MiniAppUtils$2:val$data	Ljava/lang/String;
-    //   40: invokevirtual 56	com/tencent/mobileqq/mini/cache/Storage:writeSync	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   40: invokevirtual 57	com/tencent/mobileqq/mini/cache/Storage:writeSync	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     //   43: pop
     //   44: aload_3
     //   45: ifnull +32 -> 77
@@ -46,20 +46,20 @@ final class MiniAppUtils$2
     //   57: astore_3
     //   58: aload_1
     //   59: astore_2
-    //   60: ldc 58
+    //   60: ldc 59
     //   62: iconst_1
-    //   63: ldc 60
+    //   63: ldc 61
     //   65: aload_3
-    //   66: invokestatic 66	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   66: invokestatic 67	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   69: aload_1
     //   70: ifnull +7 -> 77
     //   73: aload_1
-    //   74: invokevirtual 69	com/tencent/mobileqq/mini/cache/Storage:close	()V
+    //   74: invokevirtual 70	com/tencent/mobileqq/mini/cache/Storage:close	()V
     //   77: return
     //   78: aload_2
     //   79: ifnull +7 -> 86
     //   82: aload_2
-    //   83: invokevirtual 69	com/tencent/mobileqq/mini/cache/Storage:close	()V
+    //   83: invokevirtual 70	com/tencent/mobileqq/mini/cache/Storage:close	()V
     //   86: aload_1
     //   87: athrow
     // Local variable table:
@@ -81,7 +81,7 @@ final class MiniAppUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.2
  * JD-Core Version:    0.7.0.1
  */

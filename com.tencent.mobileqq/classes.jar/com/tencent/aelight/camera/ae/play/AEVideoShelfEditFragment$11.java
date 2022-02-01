@@ -11,12 +11,12 @@ class AEVideoShelfEditFragment$11
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2064515244), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2064187591), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoShelfEditFragment.11
  * JD-Core Version:    0.7.0.1
  */

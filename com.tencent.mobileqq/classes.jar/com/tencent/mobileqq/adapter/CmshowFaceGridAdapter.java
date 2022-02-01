@@ -16,14 +16,14 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.apollo.meme.ApolloPlayerParams;
+import com.tencent.mobileqq.apollo.meme.IGetGifFrameCallback;
+import com.tencent.mobileqq.apollo.meme.action.MODE;
+import com.tencent.mobileqq.apollo.meme.action.MemeAction;
+import com.tencent.mobileqq.apollo.meme.action.MemeCommonAction;
+import com.tencent.mobileqq.apollo.meme.api.IApolloBrickPlayer;
+import com.tencent.mobileqq.apollo.meme.model.BusinessConfig;
 import com.tencent.mobileqq.apollo.model.CmAvatarFaceInfo;
-import com.tencent.mobileqq.apollo.player.ApolloPlayerParams;
-import com.tencent.mobileqq.apollo.player.IGetGifFrameCallback;
-import com.tencent.mobileqq.apollo.player.action.CMSAction;
-import com.tencent.mobileqq.apollo.player.action.CMSCommonAction;
-import com.tencent.mobileqq.apollo.player.action.MODE;
-import com.tencent.mobileqq.apollo.player.api.IApolloBrickPlayer;
-import com.tencent.mobileqq.apollo.player.model.BusinessConfig;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.apollo.utils.api.IApolloAvatarFileManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -41,20 +41,20 @@ import mqq.app.MobileQQ;
 public class CmshowFaceGridAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<CmAvatarFaceInfo> jdField_a_of_type_JavaUtilList;
-  private int b;
+  private Context a;
+  private List<CmAvatarFaceInfo> b;
   private int c;
   private int d;
+  private int e;
+  private int f;
   
   public CmshowFaceGridAdapter(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.a = paramContext;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+    this.f = paramInt4;
   }
   
   private URLDrawable a(String paramString, int paramInt)
@@ -69,17 +69,17 @@ public class CmshowFaceGridAdapter
   
   public void a(List<CmAvatarFaceInfo> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.b == null) {
+      this.b = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b.clear();
+    this.b.addAll(paramList);
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -88,7 +88,7 @@ public class CmshowFaceGridAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -104,29 +104,29 @@ public class CmshowFaceGridAdapter
   {
     Object localObject2;
     Object localObject1;
-    if (this.jdField_a_of_type_JavaUtilList == null)
+    if (this.b == null)
     {
       localObject2 = paramView;
     }
     else if (paramView == null)
     {
       localObject1 = new CmshowFaceGridAdapter.CmshowFaceItemHolder(this);
-      localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561867, paramViewGroup, false);
-      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject2).findViewById(2131364789));
-      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar = ((VasAvatar)((View)localObject2).findViewById(2131364795));
-      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131364796));
-      paramView = ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      localObject2 = LayoutInflater.from(this.a).inflate(2131628285, paramViewGroup, false);
+      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).c = ((RelativeLayout)((View)localObject2).findViewById(2131430897));
+      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).a = ((VasAvatar)((View)localObject2).findViewById(2131430903));
+      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).b = ((ImageView)((View)localObject2).findViewById(2131430904));
+      paramView = ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).c.getLayoutParams();
       if (paramView != null)
       {
-        paramView.width = this.jdField_a_of_type_Int;
-        paramView.height = this.b;
+        paramView.width = this.c;
+        paramView.height = this.d;
       }
       else
       {
         QLog.d("AvatarPendantAdapter", 2, "getLayoutParams null, it's sad");
-        paramView = new ViewGroup.LayoutParams(this.jdField_a_of_type_Int, this.b);
+        paramView = new ViewGroup.LayoutParams(this.c, this.d);
       }
-      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).c.setLayoutParams(paramView);
       ((View)localObject2).setTag(localObject1);
       paramView = (View)localObject2;
     }
@@ -143,35 +143,35 @@ public class CmshowFaceGridAdapter
         if (localCmAvatarFaceInfo != null)
         {
           localObject2 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = (this.jdField_a_of_type_Int - ViewUtils.a(10.0F));
-          ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = (this.b - ViewUtils.a(10.0F));
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = (this.c - ViewUtils.dip2px(10.0F));
+          ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = (this.d - ViewUtils.dip2px(10.0F));
           if (TextUtils.isEmpty(localCmAvatarFaceInfo.getIcon())) {
             localObject2 = URLDrawableHelper.getLoadingDrawable();
           } else {
             localObject2 = URLDrawable.getDrawable(localCmAvatarFaceInfo.getIcon(), (URLDrawable.URLDrawableOptions)localObject2);
           }
-          ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setImageDrawable((Drawable)localObject2);
-          ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localCmAvatarFaceInfo);
-          ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setVisibility(8);
-          if (((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidViewView != null) {
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidViewView);
+          ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).a.setImageDrawable((Drawable)localObject2);
+          ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).c.setTag(localCmAvatarFaceInfo);
+          ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).a.setVisibility(8);
+          if (((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).e != null) {
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).c.removeView(((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).e);
           }
-          int i = this.jdField_a_of_type_Int - ViewUtils.a(10.0F);
-          int j = this.b - ViewUtils.a(10.0F);
+          int i = this.c - ViewUtils.dip2px(10.0F);
+          int j = this.d - ViewUtils.dip2px(10.0F);
           int k = localCmAvatarFaceInfo.getActionId();
           int m = localCmAvatarFaceInfo.getActionType();
           Object localObject3 = "";
-          if (!(this.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+          if (!(this.a instanceof AvatarPendantActivity)) {
             break label846;
           }
-          localObject3 = ((AvatarPendantActivity)this.jdField_a_of_type_AndroidContentContext).app.getCurrentUin();
-          localIGetGifFrameCallback = ((AvatarPendantActivity)this.jdField_a_of_type_AndroidContentContext).a;
+          localObject3 = ((AvatarPendantActivity)this.a).app.getCurrentUin();
+          localIGetGifFrameCallback = ((AvatarPendantActivity)this.a).au;
           Object localObject4 = (IApolloAvatarFileManager)QRoute.api(IApolloAvatarFileManager.class);
           if (((IApolloAvatarFileManager)localObject4).isHasGif(k, m, (String)localObject3))
           {
             localObject2 = ((IApolloAvatarFileManager)localObject4).getGifFilePath(k, m, (String)localObject3);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setImageDrawable(a((String)localObject2, i));
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar.setVisibility(0);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).a.setImageDrawable(a((String)localObject2, i));
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).a.setVisibility(0);
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("isHasGif,actionId:");
             ((StringBuilder)localObject1).append(k);
@@ -181,29 +181,29 @@ public class CmshowFaceGridAdapter
           }
           else
           {
-            localObject4 = new ApolloPlayerParams(this.jdField_a_of_type_AndroidContentContext, i, j, i);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer = ((IApolloBrickPlayer)QRoute.api(IApolloBrickPlayer.class));
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer.setParams((ApolloPlayerParams)localObject4);
-            localObject4 = ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer.getView();
+            localObject4 = new ApolloPlayerParams(this.a, i, j, i);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d = ((IApolloBrickPlayer)QRoute.api(IApolloBrickPlayer.class));
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d.setParams((ApolloPlayerParams)localObject4);
+            localObject4 = ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d.getView();
             RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, j);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject4, localLayoutParams);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidViewView = ((View)localObject4);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_AndroidViewView.setVisibility(0);
-            localObject3 = new CMSCommonAction(k, m, (String)localObject3, "", "");
-            ((CMSAction)localObject3).a(MODE.ACTION_MODE_RECORD_GIF);
-            ((CMSAction)localObject3).a().b(ApolloConstant.b);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer.setAction((CMSAction)localObject3);
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer.setGetGifFrameCallback(localIGetGifFrameCallback);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).c.addView((View)localObject4, localLayoutParams);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).e = ((View)localObject4);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).e.setVisibility(0);
+            localObject3 = new MemeCommonAction(k, m, (String)localObject3, "", "");
+            ((MemeAction)localObject3).a(MODE.ACTION_MODE_RECORD_GIF);
+            ((MemeAction)localObject3).j().b(ApolloConstant.l);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d.setAction((MemeAction)localObject3);
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d.setGetGifFrameCallback(localIGetGifFrameCallback);
             if (localObject2 != null) {
-              ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer.setLoadingView((Drawable)localObject2);
+              ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d.setLoadingView((Drawable)localObject2);
             }
-            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).jdField_a_of_type_ComTencentMobileqqApolloPlayerApiIApolloBrickPlayer.start();
+            ((CmshowFaceGridAdapter.CmshowFaceItemHolder)localObject1).d.start();
             QLog.i("CmshowFaceGridAdapter", 1, "notHasGif,mApolloBrickPlayer new");
           }
-          this.d = MobileQQ.getContext().getSharedPreferences("facechoosedata", 0).getInt("ChooseFaceId", 0);
-          if (this.d == localCmAvatarFaceInfo.getActionId())
+          this.f = MobileQQ.getContext().getSharedPreferences("facechoosedata", 0).getInt("ChooseFaceId", 0);
+          if (this.f == localCmAvatarFaceInfo.getActionId())
           {
-            paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847635));
+            paramView.setBackgroundDrawable(this.a.getResources().getDrawable(2130849295));
             localObject2 = paramView;
           }
           else
@@ -230,7 +230,7 @@ public class CmshowFaceGridAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.CmshowFaceGridAdapter
  * JD-Core Version:    0.7.0.1
  */

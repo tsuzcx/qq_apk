@@ -11,7 +11,7 @@ class QidianPubAccountBigDataHandler$2
   public void run()
   {
     this.this$0.a(this.a);
-    PubAccountNavigationMenu localPubAccountNavigationMenu2 = (PubAccountNavigationMenu)this.this$0.a.get(Long.valueOf(this.a));
+    PubAccountNavigationMenu localPubAccountNavigationMenu2 = (PubAccountNavigationMenu)this.this$0.c.get(Long.valueOf(this.a));
     PubAccountNavigationMenu localPubAccountNavigationMenu1 = localPubAccountNavigationMenu2;
     if (localPubAccountNavigationMenu2 == null)
     {
@@ -25,7 +25,7 @@ class QidianPubAccountBigDataHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianPubAccountBigDataHandler.2
  * JD-Core Version:    0.7.0.1
  */

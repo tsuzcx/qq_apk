@@ -14,7 +14,7 @@ import java.util.Set;
 public class DefaultClassifier
   extends LiteClassifier
 {
-  private StringBuilder a;
+  private StringBuilder c;
   
   public DefaultClassifier(String paramString1, String paramString2)
   {
@@ -23,7 +23,7 @@ public class DefaultClassifier
   
   public String a()
   {
-    StringBuilder localStringBuilder = this.jdField_a_of_type_JavaLangStringBuilder;
+    StringBuilder localStringBuilder = this.c;
     if (localStringBuilder == null) {
       return "";
     }
@@ -50,13 +50,13 @@ public class DefaultClassifier
       if (localObject2 != null)
       {
         paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_JavaUtilList.size())
+        while (paramInt < this.b.size())
         {
           if ((localObject2.length > paramInt) && (localObject2[paramInt] > paramFloat2))
           {
-            ((List)localObject1).add(new DefaultClassifier.ClassItem((String)this.jdField_a_of_type_JavaUtilList.get(paramInt), localObject2[paramInt]));
-            if ((localObject2[paramInt] > paramFloat1) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-              paramDoodleItem.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+            ((List)localObject1).add(new DefaultClassifier.ClassItem((String)this.b.get(paramInt), localObject2[paramInt]));
+            if ((localObject2[paramInt] > paramFloat1) && (this.b.size() > paramInt)) {
+              paramDoodleItem.add(this.b.get(paramInt));
             }
           }
           paramInt += 1;
@@ -69,14 +69,14 @@ public class DefaultClassifier
       {
         DefaultClassifier.ClassItem localClassItem = (DefaultClassifier.ClassItem)((List)localObject1).get(paramInt);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(localClassItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(localClassItem.a);
         localStringBuilder.append(":");
-        localStringBuilder.append(localClassItem.jdField_a_of_type_Float);
+        localStringBuilder.append(localClassItem.b);
         localStringBuilder.append("\n");
         ((StringBuilder)localObject2).append(localStringBuilder.toString());
         paramInt += 1;
       }
-      this.jdField_a_of_type_JavaLangStringBuilder = ((StringBuilder)localObject2);
+      this.c = ((StringBuilder)localObject2);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -164,7 +164,7 @@ public class DefaultClassifier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.DefaultClassifier
  * JD-Core Version:    0.7.0.1
  */

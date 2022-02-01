@@ -28,15 +28,15 @@ public class TogglePageStrategy
     if ((paramActivity != null) && ((paramActivity.getChangingConfigurations() & 0x80) == 128)) {
       return;
     }
-    if ((ToggleSetting.b() == 2) && (ToggleSetting.e())) {
+    if ((ToggleSetting.A() == 2) && (ToggleSetting.B())) {
       ReportController.a().a(2007);
     }
     ToggleSetting.a(0);
-    HeaderThreadUtil.a().b(2);
+    HeaderThreadUtil.a().c(2);
     paramActivity = new StringBuilder();
     paramActivity.append("[Strategy] onResume ");
     paramActivity.append(paramString);
-    LogUtils.c(paramActivity.toString(), new Object[0]);
+    LogUtils.e(paramActivity.toString(), new Object[0]);
   }
   
   public void b(Activity paramActivity, String paramString)
@@ -45,20 +45,20 @@ public class TogglePageStrategy
       return;
     }
     ToggleSetting.a(1);
-    HeaderThreadUtil.a().b(2);
+    HeaderThreadUtil.a().c(2);
     paramActivity = HeaderThreadUtil.a().a(2, new Object());
     HeaderThreadUtil.a().a(paramActivity, 1000L);
     paramActivity = HeaderThreadUtil.a().a(2, null);
-    HeaderThreadUtil.a().a(paramActivity, ToggleSetting.d());
+    HeaderThreadUtil.a().a(paramActivity, ToggleSetting.v());
     paramActivity = new StringBuilder();
     paramActivity.append("[Strategy] onPause ");
     paramActivity.append(paramString);
-    LogUtils.c(paramActivity.toString(), new Object[0]);
+    LogUtils.e(paramActivity.toString(), new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.strategy.TogglePageStrategy
  * JD-Core Version:    0.7.0.1
  */

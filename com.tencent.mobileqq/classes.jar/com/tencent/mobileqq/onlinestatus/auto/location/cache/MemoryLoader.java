@@ -9,13 +9,13 @@ import java.util.Set;
 class MemoryLoader
   extends Loader
 {
-  private LRULinkedHashMap<LatLng, PoiBean> a;
+  private LRULinkedHashMap<LatLng, PoiBean> c;
   
   MemoryLoader(String paramString, int paramInt)
   {
     super(paramString);
     Loader.a = "MemoryLoader";
-    this.a = new LRULinkedHashMap(paramInt);
+    this.c = new LRULinkedHashMap(paramInt);
   }
   
   public void a(LatLng paramLatLng, int paramInt, PoiBean paramPoiBean)
@@ -50,19 +50,19 @@ class MemoryLoader
       QLog.d(paramLatLng, 2, ((StringBuilder)localObject).toString());
     }
     a("memPut", paramPoiBean);
-    this.a.put(paramPoiBean.latLng, paramPoiBean);
+    this.c.put(paramPoiBean.latLng, paramPoiBean);
   }
   
   public boolean a(LatLng paramLatLng, int paramInt, PoiLoader.OnPoiLoadListener paramOnPoiLoadListener)
   {
-    Object localObject1 = this.a.keySet().iterator();
+    Object localObject1 = this.c.keySet().iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (LatLng)((Iterator)localObject1).next();
       if (a((LatLng)localObject2, paramLatLng, paramInt))
       {
-        localObject1 = (PoiBean)this.a.get(localObject2);
+        localObject1 = (PoiBean)this.c.get(localObject2);
         break label67;
       }
     }
@@ -89,7 +89,7 @@ class MemoryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.cache.MemoryLoader
  * JD-Core Version:    0.7.0.1
  */

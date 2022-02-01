@@ -5,6 +5,8 @@ import com.tencent.mobileqq.app.BusinessObserver;
 public class SimpleUIObserver
   implements BusinessObserver
 {
+  protected void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2) {}
+  
   protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
@@ -21,8 +23,12 @@ public class SimpleUIObserver
       {
         if (paramInt != 3)
         {
-          if (paramInt != 4) {
-            return;
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            throw new NullPointerException();
           }
           paramObject = (Object[])paramObject;
           if ((paramObject != null) && (paramObject.length == 3)) {
@@ -56,7 +62,7 @@ public class SimpleUIObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleUIObserver
  * JD-Core Version:    0.7.0.1
  */

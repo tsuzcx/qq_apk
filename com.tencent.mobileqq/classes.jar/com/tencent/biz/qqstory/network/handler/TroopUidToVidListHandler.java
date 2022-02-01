@@ -21,50 +21,50 @@ public class TroopUidToVidListHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetGroupVidListRequest, GetGroupVidListResponse>
 {
-  protected String a;
-  protected int b;
+  protected String c;
+  protected int d;
   
   public TroopUidToVidListHandler(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt;
+    this.c = paramString;
+    this.d = paramInt;
   }
   
   public void a()
   {
     GetGroupVidListRequest localGetGroupVidListRequest = new GetGroupVidListRequest();
-    localGetGroupVidListRequest.c = this.b;
-    localGetGroupVidListRequest.b = this.jdField_a_of_type_JavaLangString;
+    localGetGroupVidListRequest.g = this.d;
+    localGetGroupVidListRequest.f = this.c;
     CmdTaskManger.a().a(localGetGroupVidListRequest, this);
   }
   
   public void a(@NonNull GetGroupVidListRequest paramGetGroupVidListRequest, @Nullable GetGroupVidListResponse paramGetGroupVidListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     TroopUidToVidListHandler.GetTroopVidListEvent localGetTroopVidListEvent = new TroopUidToVidListHandler.GetTroopVidListEvent();
-    localGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    localGetTroopVidListEvent.jdField_a_of_type_JavaLangString = paramGetGroupVidListRequest.b;
-    localGetTroopVidListEvent.jdField_a_of_type_Int = paramGetGroupVidListRequest.c;
+    localGetTroopVidListEvent.g = paramErrorMessage;
+    localGetTroopVidListEvent.b = paramGetGroupVidListRequest.f;
+    localGetTroopVidListEvent.a = paramGetGroupVidListRequest.g;
     if ((paramGetGroupVidListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      b();
+      c();
       paramGetGroupVidListRequest = (StoryManager)SuperManager.a(5);
-      if (this.b == 3)
+      if (this.d == 3)
       {
-        paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1, paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaUtilList, true);
-        paramErrorMessage = paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1);
+        paramGetGroupVidListRequest.b(paramGetGroupVidListResponse.a.a, 1, paramGetGroupVidListResponse.a.b, true);
+        paramErrorMessage = paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.a.a, 1);
         if (paramErrorMessage != null)
         {
-          int i = paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaUtilList.size();
-          SLog.a("Q.qqstory.net:TroopUidToVidListHandler", "update %s unread count , old : %d , new : %d", paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, Integer.valueOf(paramErrorMessage.unReadCount), Integer.valueOf(i));
+          int i = paramGetGroupVidListResponse.a.b.size();
+          SLog.a("Q.qqstory.net:TroopUidToVidListHandler", "update %s unread count , old : %d , new : %d", paramGetGroupVidListResponse.a.a, Integer.valueOf(paramErrorMessage.unReadCount), Integer.valueOf(i));
           paramErrorMessage.unReadCount = i;
-          paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1, paramErrorMessage);
+          paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.a.a, 1, paramErrorMessage);
         }
       }
-      localGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList = paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList;
+      localGetTroopVidListEvent.c = paramGetGroupVidListResponse.a;
       StoryDispatcher.a().dispatch(localGetTroopVidListEvent);
       return;
     }
-    c();
+    d();
     StoryDispatcher.a().dispatch(localGetTroopVidListEvent);
   }
   
@@ -72,16 +72,16 @@ public class TroopUidToVidListHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TroopUnionIdToVidHandler{mUin=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mPullType=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.TroopUidToVidListHandler
  * JD-Core Version:    0.7.0.1
  */

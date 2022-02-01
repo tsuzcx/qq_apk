@@ -15,11 +15,11 @@ import com.tencent.mobileqq.R.styleable;
 public class ViewPagerTapBlockView
   extends View
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private int a;
   private int b;
   private int c;
   private int d;
+  private Paint e = new Paint();
   
   public ViewPagerTapBlockView(Context paramContext)
   {
@@ -50,7 +50,7 @@ public class ViewPagerTapBlockView
           if (i != 2)
           {
             if (i == 3) {
-              this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 56.0F, getResources().getDisplayMetrics()));
+              this.a = paramContext.getDimensionPixelSize(i, (int)TypedValue.applyDimension(1, 56.0F, getResources().getDisplayMetrics()));
             }
           }
           else {
@@ -71,10 +71,10 @@ public class ViewPagerTapBlockView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+    this.e.setStyle(Paint.Style.FILL);
+    this.e.setColor(this.c);
     int i = this.d;
-    paramCanvas.drawRect(i, 0.0F, this.jdField_a_of_type_Int + i, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawRect(i, 0.0F, this.a + i, this.b, this.e);
   }
   
   public void setBlockColor(int paramInt)
@@ -84,7 +84,7 @@ public class ViewPagerTapBlockView
   
   public void setBlockWidth(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void setOffset(int paramInt)
@@ -97,7 +97,7 @@ public class ViewPagerTapBlockView
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ViewPagerTapBlockView width:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" | offset:");
     localStringBuilder.append(this.d);
     return localStringBuilder.toString();

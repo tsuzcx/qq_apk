@@ -47,43 +47,35 @@ public class EditVideoSpeedFilter
   extends EditVideoPart
   implements EditFilterExport, PickerContainer.PickerContainerListener
 {
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public static final String d = HardCodeUtil.a(2131703887);
-  public static final String e = HardCodeUtil.a(2131704010);
-  public static final String f = HardCodeUtil.a(2131704031);
-  public int a;
-  protected SparseArray<FilterData> a;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  protected EditVideoSpeedFilter.FilterPagerAdapter a;
-  public PickerContainer a;
-  protected UnHandleTouchEventViewPager a;
-  boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 1;
-  public long b;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131703989);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131704014);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131703918);
-  }
+  public static final String a = HardCodeUtil.a(2131901919);
+  public static final String b = HardCodeUtil.a(2131901940);
+  public static final String c = HardCodeUtil.a(2131901854);
+  public static final String d = HardCodeUtil.a(2131901828);
+  public static final String e = HardCodeUtil.a(2131901936);
+  public static final String f = HardCodeUtil.a(2131901956);
+  boolean g = false;
+  public long h;
+  public int i;
+  protected UnHandleTouchEventViewPager j;
+  protected EditVideoSpeedFilter.FilterPagerAdapter k;
+  protected SparseArray<FilterData> l = new SparseArray();
+  public PickerContainer m;
+  private SparseIntArray n = new SparseIntArray();
+  private ViewStub o;
+  private boolean p;
+  private boolean q;
+  private int r = 1;
   
   public EditVideoSpeedFilter(@NonNull EditVideoPartManager paramEditVideoPartManager, boolean paramBoolean)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_c_of_type_Boolean = b();
+    this.q = paramBoolean;
+    if (this.q) {
+      this.q = l();
     }
     paramEditVideoPartManager = new StringBuilder();
     paramEditVideoPartManager.append("EditVideoSpeedFilter : enable: ");
-    paramEditVideoPartManager.append(this.jdField_c_of_type_Boolean);
+    paramEditVideoPartManager.append(this.q);
     SLog.b("EditVideoSpeedFilter", paramEditVideoPartManager.toString());
   }
   
@@ -91,20 +83,20 @@ public class EditVideoSpeedFilter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getSpecialSaveMode : mVideoPlayMode = ");
-    localStringBuilder.append(paramFilterData.jdField_a_of_type_Int);
+    localStringBuilder.append(paramFilterData.a);
     SLog.b("EditVideoSpeedFilter", localStringBuilder.toString());
-    int i = paramFilterData.jdField_a_of_type_Int;
-    if (i != 0)
+    int i1 = paramFilterData.a;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2)
+        if (i1 != 2)
         {
-          if (i != 3)
+          if (i1 != 3)
           {
-            if (i != 8)
+            if (i1 != 8)
             {
-              if (i != 9) {
+              if (i1 != 9) {
                 return 0;
               }
               return 4;
@@ -120,16 +112,6 @@ public class EditVideoSpeedFilter
     return 0;
   }
   
-  private void a(int paramInt)
-  {
-    if ((paramInt != 0) && (paramInt != 4) && (paramInt != 8)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getVisibility() != paramInt) {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setVisibility(paramInt);
-    }
-  }
-  
   protected static void a(FilterData.FilterPageItem paramFilterPageItem)
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
@@ -141,30 +123,78 @@ public class EditVideoSpeedFilter
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Int == 2) {
+    if (this.r == 2) {
       return;
     }
-    PickerContainer localPickerContainer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer;
+    PickerContainer localPickerContainer = this.m;
     if (localPickerContainer != null) {
       if (paramBoolean)
       {
         if (localPickerContainer.getVisibility() != 0) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer.setVisibility(0);
+          this.m.setVisibility(0);
         }
       }
-      else if ((localPickerContainer.getVisibility() != 4) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer.getVisibility() != 8)) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer.setVisibility(4);
+      else if ((localPickerContainer.getVisibility() != 4) && (this.m.getVisibility() != 8)) {
+        this.m.setVisibility(4);
       }
     }
   }
   
-  private int b(int paramInt)
+  private void c(int paramInt)
+  {
+    if ((paramInt != 0) && (paramInt != 4) && (paramInt != 8)) {
+      return;
+    }
+    if (this.j.getVisibility() != paramInt) {
+      this.j.setVisibility(paramInt);
+    }
+  }
+  
+  private void e(int paramInt, String paramString)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onPlayModeChanged:");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append("  ");
+    ((StringBuilder)localObject1).append(paramString);
+    SLog.b("EditVideoSpeedFilter", ((StringBuilder)localObject1).toString());
+    localObject1 = this.k.a;
+    int i3 = 0;
+    int i1 = 0;
+    int i2;
+    Object localObject2;
+    for (;;)
+    {
+      i2 = i3;
+      if (i1 >= ((List)localObject1).size()) {
+        break;
+      }
+      localObject2 = (FilterData)((List)localObject1).get(i1);
+      if ((!TextUtils.isEmpty(((FilterData)localObject2).b)) && (((FilterData)localObject2).a == paramInt))
+      {
+        this.j.setCurrentItem(i1, false);
+        i2 = 1;
+        break;
+      }
+      i1 += 1;
+    }
+    if (i2 == 0)
+    {
+      localObject1 = u();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131901886));
+      ((StringBuilder)localObject2).append(paramString);
+      QQToast.makeText((Context)localObject1, ((StringBuilder)localObject2).toString(), 1000).show();
+    }
+  }
+  
+  private int f(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("transSpecialPlayMode : nSpeedIndex = ");
     localStringBuilder.append(paramInt);
     SLog.b("EditVideoSpeedFilter", localStringBuilder.toString());
-    if (SlideShowPhotoListManager.a().b() == 22) {
+    if (SlideShowPhotoListManager.a().e() == 22) {
       LpReportInfo_pf00064.allReport(680, 2, 13);
     }
     if (paramInt != 0)
@@ -180,67 +210,38 @@ public class EditVideoSpeedFilter
               if (paramInt != 5) {
                 return 1;
               }
-              if (SlideShowPhotoListManager.a().b() == 22) {
+              if (SlideShowPhotoListManager.a().e() == 22) {
                 LpReportInfo_pf00064.allReport(680, 10, 6);
               }
               return 1;
             }
-            if (SlideShowPhotoListManager.a().b() == 22) {
+            if (SlideShowPhotoListManager.a().e() == 22) {
               LpReportInfo_pf00064.allReport(680, 10, 5);
             }
             return 9;
           }
-          if (SlideShowPhotoListManager.a().b() == 22) {
+          if (SlideShowPhotoListManager.a().e() == 22) {
             LpReportInfo_pf00064.allReport(680, 10, 4);
           }
           return 3;
         }
-        if (SlideShowPhotoListManager.a().b() == 22) {
+        if (SlideShowPhotoListManager.a().e() == 22) {
           LpReportInfo_pf00064.allReport(680, 10, 1);
         }
         return 0;
       }
-      if (SlideShowPhotoListManager.a().b() == 22) {
+      if (SlideShowPhotoListManager.a().e() == 22) {
         LpReportInfo_pf00064.allReport(680, 10, 2);
       }
       return 8;
     }
-    if (SlideShowPhotoListManager.a().b() == 22) {
+    if (SlideShowPhotoListManager.a().e() == 22) {
       LpReportInfo_pf00064.allReport(680, 10, 3);
     }
     return 2;
   }
   
-  private boolean b()
-  {
-    boolean bool = "Meizu".equalsIgnoreCase(Build.MANUFACTURER);
-    Boolean localBoolean = Boolean.valueOf(true);
-    if ((bool) && ("MX4 Pro".equalsIgnoreCase(Build.MODEL))) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    if (!bool) {
-      SLog.d("EditVideoSpeedFilter", "Meizu MX4 Pro, in blacklist");
-    }
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    if (localStoryConfigManager == null)
-    {
-      SLog.d("EditVideoSpeedFilter", "storyConfigManager == null !!!");
-      return bool;
-    }
-    if ((bool) && (((Boolean)localStoryConfigManager.b("boolean_enable_fast_play_mode", localBoolean)).booleanValue()) && (((Boolean)localStoryConfigManager.b("boolean_enable_revert_play_mode", localBoolean)).booleanValue()) && (((Boolean)localStoryConfigManager.b("boolean_enable_slow_play_mode", localBoolean)).booleanValue())) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    if (!bool) {
-      SLog.d("EditVideoSpeedFilter", "black model, manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
-    }
-    return bool;
-  }
-  
-  private int c(int paramInt)
+  private int g(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("transSpecialPlayMode : nPlayMode = ");
@@ -272,145 +273,111 @@ public class EditVideoSpeedFilter
     return 2;
   }
   
-  private void e(int paramInt, String paramString)
+  private boolean l()
   {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("onPlayModeChanged:");
-    ((StringBuilder)localObject1).append(paramInt);
-    ((StringBuilder)localObject1).append("  ");
-    ((StringBuilder)localObject1).append(paramString);
-    SLog.b("EditVideoSpeedFilter", ((StringBuilder)localObject1).toString());
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.a;
-    int k = 0;
-    int i = 0;
-    int j;
-    Object localObject2;
-    for (;;)
-    {
-      j = k;
-      if (i >= ((List)localObject1).size()) {
-        break;
-      }
-      localObject2 = (FilterData)((List)localObject1).get(i);
-      if ((!TextUtils.isEmpty(((FilterData)localObject2).jdField_a_of_type_JavaLangString)) && (((FilterData)localObject2).jdField_a_of_type_Int == paramInt))
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setCurrentItem(i, false);
-        j = 1;
-        break;
-      }
-      i += 1;
+    boolean bool = "Meizu".equalsIgnoreCase(Build.MANUFACTURER);
+    Boolean localBoolean = Boolean.valueOf(true);
+    if ((bool) && ("MX4 Pro".equalsIgnoreCase(Build.MODEL))) {
+      bool = false;
+    } else {
+      bool = true;
     }
-    if (j == 0)
-    {
-      localObject1 = a();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131703954));
-      ((StringBuilder)localObject2).append(paramString);
-      QQToast.a((Context)localObject1, ((StringBuilder)localObject2).toString(), 1000).a();
+    if (!bool) {
+      SLog.d("EditVideoSpeedFilter", "Meizu MX4 Pro, in blacklist");
     }
+    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
+    if (localStoryConfigManager == null)
+    {
+      SLog.d("EditVideoSpeedFilter", "storyConfigManager == null !!!");
+      return bool;
+    }
+    if ((bool) && (((Boolean)localStoryConfigManager.c("boolean_enable_fast_play_mode", localBoolean)).booleanValue()) && (((Boolean)localStoryConfigManager.c("boolean_enable_revert_play_mode", localBoolean)).booleanValue()) && (((Boolean)localStoryConfigManager.c("boolean_enable_slow_play_mode", localBoolean)).booleanValue())) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (!bool) {
+      SLog.d("EditVideoSpeedFilter", "black model, manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
+    }
+    return bool;
   }
   
-  private void g()
+  private void m()
   {
     ThreadManager.getUIHandler().postDelayed(new EditVideoSpeedFilter.1(this), 500L);
-  }
-  
-  public int a()
-  {
-    return a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a());
-  }
-  
-  public int a(int paramInt)
-  {
-    FilterData localFilterData = (FilterData)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localFilterData == null) {
-      return 0;
-    }
-    return a(localFilterData);
-  }
-  
-  @Nullable
-  public View a()
-  {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getCurrentItem();
-    FilterData.FilterPageItem localFilterPageItem = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.a(i);
-    if ((localFilterPageItem != null) && (localFilterPageItem.a())) {
-      return localFilterPageItem.a;
-    }
-    return null;
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter = new EditVideoSpeedFilter.FilterPagerAdapter(a());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager = ((UnHandleTouchEventViewPager)a(2064122066));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setOnPageChangeListener(new EditVideoSpeedFilter.FilterPageChangeListener(this, null));
-    b();
+    this.k = new EditVideoSpeedFilter.FilterPagerAdapter(u());
+    this.j = ((UnHandleTouchEventViewPager)d(2063990983));
+    this.j.setAdapter(this.k);
+    this.j.setOnPageChangeListener(new EditVideoSpeedFilter.FilterPageChangeListener(this, null));
+    d();
     a(EditFilterExport.class, this);
-    g();
+    m();
   }
   
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
   {
     super.a(paramInt, paramGenerateContext);
-    Object localObject = (FilterData)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.d()) {
-      paramGenerateContext.a.localCreateCity = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a("extra_local_address_city_name");
+    Object localObject = (FilterData)this.l.get(paramInt);
+    if (this.t.I.e()) {
+      paramGenerateContext.d.localCreateCity = this.t.I.a("extra_local_address_city_name");
     }
-    paramGenerateContext.a(a());
-    paramGenerateContext.a.saveMode = a(paramInt);
+    paramGenerateContext.a(i());
+    paramGenerateContext.d.saveMode = b(paramInt);
     boolean bool = false;
     String str;
-    int j;
+    int i2;
     if (localObject != null)
     {
-      str = ((FilterData)localObject).jdField_a_of_type_JavaLangString;
-      j = ((FilterData)localObject).jdField_b_of_type_Int;
-      int k = ((FilterData)localObject).jdField_a_of_type_Int;
+      str = ((FilterData)localObject).b;
+      i2 = ((FilterData)localObject).c;
+      int i3 = ((FilterData)localObject).a;
       paramGenerateContext = str;
-      i = j;
-      paramInt = k;
-      if (((FilterData)localObject).jdField_b_of_type_Int != -1)
+      i1 = i2;
+      paramInt = i3;
+      if (((FilterData)localObject).c != -1)
       {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a().setFilterId(((FilterData)localObject).jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a().setFilterType(2);
+        this.t.X().setFilterId(((FilterData)localObject).b);
+        this.t.X().setFilterType(2);
         paramGenerateContext = str;
-        i = j;
-        paramInt = k;
+        i1 = i2;
+        paramInt = i3;
       }
     }
     else
     {
       paramGenerateContext = "";
-      i = -1;
+      i1 = -1;
       paramInt = 0;
     }
     localObject = "2";
-    if (i != -1)
+    if (i1 != -1)
     {
-      EditVideoPartManager localEditVideoPartManager = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager;
-      j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b();
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c()) {
+      EditVideoPartManager localEditVideoPartManager = this.t;
+      i2 = this.t.n();
+      if (this.t.j()) {
         str = "2";
       } else {
         str = "1";
       }
-      localEditVideoPartManager.a("pub_filter_menu", j, 0, new String[] { String.valueOf(i), paramGenerateContext, str });
+      localEditVideoPartManager.a("pub_filter_menu", i2, 0, new String[] { String.valueOf(i1), paramGenerateContext, str });
     }
-    if (i != -1) {
-      VideoEditReport.a("0X80076E9", String.valueOf(VideoEditReport.jdField_b_of_type_Int), String.valueOf(paramInt), paramGenerateContext, String.valueOf(i));
+    if (i1 != -1) {
+      VideoEditReport.a("0X80076E9", String.valueOf(VideoEditReport.d), String.valueOf(paramInt), paramGenerateContext, String.valueOf(i1));
     }
-    long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-    int i = this.jdField_a_of_type_Int;
-    SLog.a("EditVideoSpeedFilter", "intervalTime : %s , videoMode : %s. ", Long.valueOf(l), Integer.valueOf(i));
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c()) {
+    long l1 = System.currentTimeMillis() - this.h;
+    int i1 = this.i;
+    SLog.a("EditVideoSpeedFilter", "intervalTime : %s , videoMode : %s. ", Long.valueOf(l1), Integer.valueOf(i1));
+    if (this.t.j()) {
       paramGenerateContext = (GenerateContext)localObject;
     } else {
       paramGenerateContext = "1";
     }
-    StoryReportor.b("video_edit", "pub_filter_interval_time", 0, 0, new String[] { String.valueOf(l), String.valueOf(i), paramGenerateContext });
+    StoryReportor.b("video_edit", "pub_filter_interval_time", 0, 0, new String[] { String.valueOf(l1), String.valueOf(i1), paramGenerateContext });
     paramGenerateContext = (IAEBaseReportParam)QRoute.api(IAEBaseReportParam.class);
     if (paramInt != 0) {
       bool = true;
@@ -420,7 +387,7 @@ public class EditVideoSpeedFilter
   
   public void a(int paramInt, Object paramObject)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.q) {
       return;
     }
     if ((paramInt != 0) && (paramInt != 1) && (paramInt != 4)) {
@@ -431,27 +398,27 @@ public class EditVideoSpeedFilter
           if (paramInt != 12)
           {
             a(true);
-            a(4);
+            c(4);
             return;
           }
-          paramInt = c(this.jdField_a_of_type_Int);
-          paramObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer;
+          paramInt = g(this.i);
+          paramObject = this.m;
           if (paramObject != null) {
             paramObject.a(paramInt, false);
           }
           a(true);
-          a(0);
+          c(0);
         }
       }
       else
       {
         a(false);
-        a(0);
+        c(0);
         return;
       }
     }
     a(true);
-    a(0);
+    c(0);
   }
   
   public void a(int paramInt, String paramString)
@@ -462,25 +429,25 @@ public class EditVideoSpeedFilter
     localStringBuilder.append("  ");
     localStringBuilder.append(paramString);
     SLog.b("EditVideoSpeedFilter", localStringBuilder.toString());
-    this.jdField_b_of_type_Boolean = true;
+    this.p = true;
   }
   
   public boolean a(int paramInt)
   {
-    FilterData localFilterData = (FilterData)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    FilterData localFilterData = (FilterData)this.l.get(paramInt);
     return (localFilterData != null) && (localFilterData.a());
   }
   
   public boolean a(int paramInt1, Canvas paramCanvas, int paramInt2, int paramInt3)
   {
-    paramInt1 = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1);
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.a(paramInt1);
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getWidth();
-    int j = this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getHeight();
+    paramInt1 = this.n.get(paramInt1);
+    Object localObject1 = this.k.c(paramInt1);
+    int i1 = this.j.getWidth();
+    int i2 = this.j.getHeight();
     Object localObject2 = null;
     if (localObject1 != null)
     {
-      if (((FilterData.FilterPageItem)localObject1).a())
+      if (((FilterData.FilterPageItem)localObject1).b())
       {
         localObject2 = ((FilterData.FilterPageItem)localObject1).a;
         localObject1 = null;
@@ -492,20 +459,20 @@ public class EditVideoSpeedFilter
     }
     else
     {
-      localObject2 = new FrameLayout(a());
-      ((View)localObject2).setLayoutParams(new ViewGroup.LayoutParams(this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getLayoutParams()));
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.instantiateItem((ViewGroup)localObject2, paramInt1);
-      ((View)localObject2).measure(View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getMeasuredHeight(), 1073741824));
-      ((View)localObject2).layout(0, 0, this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getHeight());
+      localObject2 = new FrameLayout(u());
+      ((View)localObject2).setLayoutParams(new ViewGroup.LayoutParams(this.j.getLayoutParams()));
+      localObject1 = this.k.instantiateItem((ViewGroup)localObject2, paramInt1);
+      ((View)localObject2).measure(View.MeasureSpec.makeMeasureSpec(this.j.getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.j.getMeasuredHeight(), 1073741824));
+      ((View)localObject2).layout(0, 0, this.j.getWidth(), this.j.getHeight());
     }
     if (localObject2 != null)
     {
       paramCanvas.save();
-      paramCanvas.scale(paramInt2 / i, paramInt3 / j);
+      paramCanvas.scale(paramInt2 / i1, paramInt3 / i2);
       ((View)localObject2).draw(paramCanvas);
       paramCanvas.restore();
       if (localObject1 != null) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.destroyItem((ViewGroup)localObject2, paramInt1, localObject1);
+        this.k.destroyItem((ViewGroup)localObject2, paramInt1, localObject1);
       }
       return true;
     }
@@ -514,15 +481,15 @@ public class EditVideoSpeedFilter
   
   protected boolean a(Message paramMessage)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.q)
     {
-      int i = paramMessage.what;
+      int i1 = paramMessage.what;
       boolean bool = false;
-      if (i != 12)
+      if (i1 != 12)
       {
-        if (i != 21)
+        if (i1 != 21)
         {
-          if (i == 22) {
+          if (i1 == 22) {
             a(true);
           }
         }
@@ -532,15 +499,15 @@ public class EditVideoSpeedFilter
       }
       else
       {
-        this.jdField_b_of_type_Int = paramMessage.arg1;
-        paramMessage = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer;
+        this.r = paramMessage.arg1;
+        paramMessage = this.m;
         if (paramMessage != null)
         {
-          i = this.jdField_b_of_type_Int;
-          if ((i == 1) || (i == 3)) {
+          i1 = this.r;
+          if ((i1 == 1) || (i1 == 3)) {
             bool = true;
           }
-          paramMessage.a(bool, this.jdField_a_of_type_Long);
+          paramMessage.a(bool, this.v);
         }
         return true;
       }
@@ -548,88 +515,13 @@ public class EditVideoSpeedFilter
     return super.a(paramMessage);
   }
   
-  public int b()
+  public int b(int paramInt)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.getCurrentItem();
-    FilterData localFilterData = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.a(i);
-    if (localFilterData != null) {
-      return localFilterData.jdField_b_of_type_Int;
+    FilterData localFilterData = (FilterData)this.l.get(paramInt);
+    if (localFilterData == null) {
+      return 0;
     }
-    return -1;
-  }
-  
-  public void b()
-  {
-    SLog.a("EditVideoSpeedFilter", "updateFilterMode : %s", this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource);
-    ArrayList localArrayList = new ArrayList();
-    boolean bool = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditTakeVideoSource;
-    int i = 0;
-    if ((bool) || ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditLocalVideoSource)))
-    {
-      Object localObject = (StoryConfigManager)SuperManager.a(10);
-      localArrayList.add(new VideoEffectsFilterData(jdField_a_of_type_JavaLangString, -1, 0, 0));
-      if (!((Boolean)((StoryConfigManager)localObject).b("boolean_enable_fast_play_mode", Boolean.valueOf(true))).booleanValue())
-      {
-        SLog.d("EditVideoSpeedFilter", "it's fast black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
-      }
-      else
-      {
-        localArrayList.add(new VideoEffectsFilterData(jdField_b_of_type_JavaLangString, 1, 0, 2));
-        localArrayList.add(new VideoEffectsFilterData(e, 9, 0, 8));
-      }
-      if ((!"Meizu".equalsIgnoreCase(Build.MANUFACTURER)) || (!"MX4 Pro".equalsIgnoreCase(Build.MODEL))) {
-        if (!((Boolean)((StoryConfigManager)localObject).b("boolean_enable_slow_play_mode", Boolean.valueOf(true))).booleanValue())
-        {
-          SLog.d("EditVideoSpeedFilter", "it's slow black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
-        }
-        else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 11) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.f()))
-        {
-          SLog.d("EditVideoSpeedFilter", "it's tribe slow black model, disable slow!");
-        }
-        else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 12) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.f()))
-        {
-          SLog.d("EditVideoSpeedFilter", "it's readinjoy slow black model, disable slow!");
-        }
-        else
-        {
-          localArrayList.add(new VideoEffectsFilterData(jdField_c_of_type_JavaLangString, 2, 0, 3));
-          localArrayList.add(new VideoEffectsFilterData(f, 10, 0, 9));
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
-      if (!(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams$EditSource instanceof EditLocalVideoSource)) {
-        if (!((Boolean)((StoryConfigManager)localObject).b("boolean_enable_revert_play_mode", Boolean.valueOf(true))).booleanValue())
-        {
-          SLog.d("EditVideoSpeedFilter", "it's revert black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
-        }
-        else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 11) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.e()))
-        {
-          SLog.d("EditVideoSpeedFilter", "it's tribe revert black model, disable revert!");
-        }
-        else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 12) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.e()))
-        {
-          SLog.d("EditVideoSpeedFilter", "it's tribe readinjoy black model, disable revert!");
-        }
-        else
-        {
-          VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData(d, 3, 0, 1);
-          if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.g()) {
-            localObject = HardCodeUtil.a(2131704005);
-          } else {
-            localObject = null;
-          }
-          localVideoEffectsFilterData.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localArrayList.add(localVideoEffectsFilterData);
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.a(localArrayList);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewUnHandleTouchEventViewPager.setCurrentItem(localArrayList.size() * 50, false);
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    if (!localArrayList.isEmpty()) {
-      i = ((FilterData)localArrayList.get(0)).jdField_a_of_type_Int;
-    }
-    this.jdField_a_of_type_Int = i;
+    return a(localFilterData);
   }
   
   public void b(int paramInt, String paramString)
@@ -640,17 +532,22 @@ public class EditVideoSpeedFilter
     localStringBuilder.append("  ");
     localStringBuilder.append(paramString);
     localStringBuilder.append(" moving:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.p);
     SLog.b("EditVideoSpeedFilter", localStringBuilder.toString());
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.p) {
       return;
     }
-    e(b(paramInt), paramString);
-    paramString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(EditProviderExport.class);
+    e(f(paramInt), paramString);
+    paramString = this.t.a(EditProviderExport.class);
     if ((paramString instanceof EditProviderExport)) {
-      ((EditProviderExport)paramString).g();
+      ((EditProviderExport)paramString).h();
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a(Message.obtain(null, 9, 12, paramInt));
+    this.t.a(Message.obtain(null, 9, 12, paramInt));
+  }
+  
+  public int c()
+  {
+    return b(this.t.m());
   }
   
   public void c(int paramInt, String paramString)
@@ -661,31 +558,126 @@ public class EditVideoSpeedFilter
     localStringBuilder.append("  ");
     localStringBuilder.append(paramString);
     SLog.b("EditVideoSpeedFilter", localStringBuilder.toString());
-    e(b(paramInt), paramString);
-    this.jdField_b_of_type_Boolean = false;
+    e(f(paramInt), paramString);
+    this.p = false;
+  }
+  
+  public void d()
+  {
+    SLog.a("EditVideoSpeedFilter", "updateFilterMode : %s", this.t.I.e);
+    ArrayList localArrayList = new ArrayList();
+    boolean bool = this.t.I.e instanceof EditTakeVideoSource;
+    int i1 = 0;
+    if ((bool) || ((this.t.I.e instanceof EditLocalVideoSource)))
+    {
+      Object localObject = (StoryConfigManager)SuperManager.a(10);
+      localArrayList.add(new VideoEffectsFilterData(a, -1, 0, 0));
+      if (!((Boolean)((StoryConfigManager)localObject).c("boolean_enable_fast_play_mode", Boolean.valueOf(true))).booleanValue())
+      {
+        SLog.d("EditVideoSpeedFilter", "it's fast black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
+      }
+      else
+      {
+        localArrayList.add(new VideoEffectsFilterData(b, 1, 0, 2));
+        localArrayList.add(new VideoEffectsFilterData(e, 9, 0, 8));
+      }
+      if ((!"Meizu".equalsIgnoreCase(Build.MANUFACTURER)) || (!"MX4 Pro".equalsIgnoreCase(Build.MODEL))) {
+        if (!((Boolean)((StoryConfigManager)localObject).c("boolean_enable_slow_play_mode", Boolean.valueOf(true))).booleanValue())
+        {
+          SLog.d("EditVideoSpeedFilter", "it's slow black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
+        }
+        else if ((this.t.I.a == 11) && (!this.t.I.g()))
+        {
+          SLog.d("EditVideoSpeedFilter", "it's tribe slow black model, disable slow!");
+        }
+        else if ((this.t.I.a == 12) && (!this.t.I.g()))
+        {
+          SLog.d("EditVideoSpeedFilter", "it's readinjoy slow black model, disable slow!");
+        }
+        else
+        {
+          localArrayList.add(new VideoEffectsFilterData(c, 2, 0, 3));
+          localArrayList.add(new VideoEffectsFilterData(f, 10, 0, 9));
+          this.g = true;
+        }
+      }
+      if (!(this.t.I.e instanceof EditLocalVideoSource)) {
+        if (!((Boolean)((StoryConfigManager)localObject).c("boolean_enable_revert_play_mode", Boolean.valueOf(true))).booleanValue())
+        {
+          SLog.d("EditVideoSpeedFilter", "it's revert black model ! manufacturer=%s, model=%s", new Object[] { Build.MANUFACTURER, Build.MODEL });
+        }
+        else if ((this.t.I.a == 11) && (!this.t.I.f()))
+        {
+          SLog.d("EditVideoSpeedFilter", "it's tribe revert black model, disable revert!");
+        }
+        else if ((this.t.I.a == 12) && (!this.t.I.f()))
+        {
+          SLog.d("EditVideoSpeedFilter", "it's tribe readinjoy black model, disable revert!");
+        }
+        else
+        {
+          VideoEffectsFilterData localVideoEffectsFilterData = new VideoEffectsFilterData(d, 3, 0, 1);
+          if (this.t.I.k()) {
+            localObject = HardCodeUtil.a(2131901933);
+          } else {
+            localObject = null;
+          }
+          localVideoEffectsFilterData.d = ((String)localObject);
+          localArrayList.add(localVideoEffectsFilterData);
+        }
+      }
+    }
+    this.k.a(localArrayList);
+    this.j.setCurrentItem(localArrayList.size() * 50, false);
+    this.h = System.currentTimeMillis();
+    if (!localArrayList.isEmpty()) {
+      i1 = ((FilterData)localArrayList.get(0)).a;
+    }
+    this.i = i1;
   }
   
   public void d(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.a(paramInt, paramString);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoSpeedFilter$FilterPagerAdapter.notifyDataSetChanged();
+    this.k.a(paramInt, paramString);
+    this.k.notifyDataSetChanged();
   }
   
-  public void e()
+  public void g()
   {
-    super.e();
-    this.jdField_a_of_type_AndroidViewViewStub = null;
-    PickerContainer localPickerContainer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer;
+    super.g();
+    this.o = null;
+    PickerContainer localPickerContainer = this.m;
     if (localPickerContainer != null)
     {
       localPickerContainer.a();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer = null;
+      this.m = null;
     }
+  }
+  
+  @Nullable
+  public View i()
+  {
+    int i1 = this.j.getCurrentItem();
+    FilterData.FilterPageItem localFilterPageItem = this.k.c(i1);
+    if ((localFilterPageItem != null) && (localFilterPageItem.b())) {
+      return localFilterPageItem.a;
+    }
+    return null;
+  }
+  
+  public int k()
+  {
+    int i1 = this.j.getCurrentItem();
+    FilterData localFilterData = this.k.a(i1);
+    if (localFilterData != null) {
+      return localFilterData.c;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoSpeedFilter
  * JD-Core Version:    0.7.0.1
  */

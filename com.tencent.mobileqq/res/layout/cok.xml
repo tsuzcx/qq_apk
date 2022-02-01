@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom" android:id="@id/o4l" android:background="@color/apn" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="end" android:orientation="horizontal" android:id="@id/n2l" android:paddingRight="@dimen/bi7" android:layout_width="fill_parent" android:layout_height="@dimen/bi6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout android:orientation="vertical" android:id="@id/mvf" android:layout_width="fill_parent" android:layout_height="612.0dip">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/mb7" android:background="@drawable/e7l" android:paddingBottom="@dimen/n4" android:layout_width="fill_parent" android:layout_height="84.0dip">
-            <ImageView android:id="@id/nda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ije" />
-            <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yqs" />
-        </LinearLayout>
-        <FrameLayout android:background="#ff2f2f2f" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.biz.pubaccount.weishi_new.view.WSXRecyclerView android:id="@id/o5e" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </FrameLayout>
-    </com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout>
-</RelativeLayout>
+    <Button android:layout_gravity="center_vertical" android:id="@id/ms8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xhm" style="?4e" />
+    <Button android:layout_gravity="center_vertical" android:id="@id/mz5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/bi5" android:text="@string/xhn" style="?4g" />
+</LinearLayout>

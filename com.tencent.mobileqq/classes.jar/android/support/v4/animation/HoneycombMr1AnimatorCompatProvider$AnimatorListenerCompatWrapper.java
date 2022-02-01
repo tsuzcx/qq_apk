@@ -25,6 +25,11 @@ class HoneycombMr1AnimatorCompatProvider$AnimatorListenerCompatWrapper
     this.mWrapped.onAnimationEnd(this.mValueAnimatorCompat);
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator)
   {
     this.mWrapped.onAnimationRepeat(this.mValueAnimatorCompat);
@@ -33,6 +38,11 @@ class HoneycombMr1AnimatorCompatProvider$AnimatorListenerCompatWrapper
   public void onAnimationStart(Animator paramAnimator)
   {
     this.mWrapped.onAnimationStart(this.mValueAnimatorCompat);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
   }
 }
 

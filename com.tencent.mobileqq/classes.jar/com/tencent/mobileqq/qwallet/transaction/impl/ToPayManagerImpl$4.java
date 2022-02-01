@@ -24,16 +24,16 @@ class ToPayManagerImpl$4
       if (paramInt != 1) {
         return;
       }
-      ToPayManagerImpl.sendTopay((AppActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (QQCustomDialog)paramDialogInterface);
+      ToPayManagerImpl.sendTopay((AppActivity)this.a.get(), this.b, (QQCustomDialog)paramDialogInterface);
       if ((ToPayManagerImpl.mData != null) && (ToPayManagerImpl.mData.vecRec != null) && (ToPayManagerImpl.mData.vecRec.size() > 0))
       {
         paramInt = 0;
-        while (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+        while (paramInt < this.b.size())
         {
           int i = 0;
           while (i < ToPayManagerImpl.mData.vecRec.size())
           {
-            if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).uin.equals(((PfaFriend)ToPayManagerImpl.mData.vecRec.get(i)).uin))
+            if (((ResultRecord)this.b.get(paramInt)).uin.equals(((PfaFriend)ToPayManagerImpl.mData.vecRec.get(i)).uin))
             {
               paramDialogInterface = "friendpay.selectpage.recommendfriclick";
               break label141;
@@ -42,7 +42,7 @@ class ToPayManagerImpl$4
           }
           paramDialogInterface = "friendpay.selectpage.unrecomchoosefriclick";
           label141:
-          ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+          ReportController.b(QWalletTools.b(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
           paramInt += 1;
         }
       }
@@ -51,7 +51,7 @@ class ToPayManagerImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.ToPayManagerImpl.4
  * JD-Core Version:    0.7.0.1
  */

@@ -46,37 +46,37 @@ import org.w3c.dom.NodeList;
 public class MQPIntChkService
   implements INetTransportProvider.INetTransportEventListener, IIntChkStrikeResultListener
 {
-  private static int jdField_a_of_type_Int = 1;
-  private MQPSecServiceManager jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager = null;
-  private String jdField_a_of_type_JavaLangString = null;
-  private Map<Integer, MQPIntChkService.IIntChkStrike> jdField_a_of_type_JavaUtilMap = null;
-  private int b = 0;
-  private int c = 65535;
-  private int d = 0;
+  private static int a = 1;
+  private MQPSecServiceManager b = null;
+  private String c = null;
+  private Map<Integer, MQPIntChkService.IIntChkStrike> d = null;
+  private int e = 0;
+  private int f = 65535;
+  private int g = 0;
   
   public MQPIntChkService(MQPSecServiceManager paramMQPSecServiceManager)
   {
-    INetTransportProvider localINetTransportProvider = paramMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+    INetTransportProvider localINetTransportProvider = paramMQPSecServiceManager.b;
     if (localINetTransportProvider != null) {
       localINetTransportProvider.setNetTransportEventListener("intchk", this);
     }
-    this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager = paramMQPSecServiceManager;
+    this.b = paramMQPSecServiceManager;
   }
   
   private intchk.AppInfo a()
   {
     intchk.AppInfo localAppInfo = new intchk.AppInfo();
     localAppInfo.uint32_platform_type.set(1);
-    String str = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext.getPackageName();
+    String str = this.b.a.getPackageName();
     localAppInfo.bytes_package_name.set(ByteStringMicro.copyFromUtf8(str));
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.c)) {
       str = "1.0";
     } else {
-      str = this.jdField_a_of_type_JavaLangString;
+      str = this.c;
     }
     localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8(str));
-    localAppInfo.uint32_intchk_module_version.set(jdField_a_of_type_Int);
-    int i = NetUtil.a(this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext);
+    localAppInfo.uint32_intchk_module_version.set(a);
+    int i = NetUtil.a(this.b.a);
     if (i != 1)
     {
       if (i != 2)
@@ -101,7 +101,7 @@ public class MQPIntChkService
       i = 3;
     }
     label135:
-    str = NetUtil.a(this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext);
+    str = NetUtil.b(this.b.a);
     int j = i;
     if (str != null)
     {
@@ -170,7 +170,7 @@ public class MQPIntChkService
       {
         if (k == 2)
         {
-          localObject1 = HexUtil.bytes2HexStr(a(paramRspBody));
+          localObject1 = HexUtil.bytes2HexStr(b(paramRspBody));
           paramRspBody = (intchk.RspBody)localObject1;
           if (localObject1 == null) {
             paramRspBody = "";
@@ -194,7 +194,7 @@ public class MQPIntChkService
     paramRspBody.uint32_subcmd.set(2);
     paramRspBody.msg_app_info.set(a());
     paramRspBody.msg_report_check_result_req.set((MessageMicro)localObject2);
-    localObject2 = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+    localObject2 = this.b.b;
     if (localObject2 == null) {
       return;
     }
@@ -253,7 +253,39 @@ public class MQPIntChkService
     return false;
   }
   
-  private byte[] a(intchk.CheckItem paramCheckItem)
+  private void b(intchk.RspBody paramRspBody)
+  {
+    boolean bool = paramRspBody.uint32_result.has();
+    int j = 2;
+    if (bool) {
+      i = paramRspBody.uint32_result.get();
+    } else {
+      i = 2;
+    }
+    if (i != 1) {
+      return;
+    }
+    if (!paramRspBody.msg_report_check_result_rsp.has()) {
+      return;
+    }
+    paramRspBody = (intchk.ReportCheckResultRsp)paramRspBody.msg_report_check_result_rsp.get();
+    int i = j;
+    if (paramRspBody.uint32_need_strike.has()) {
+      i = paramRspBody.uint32_need_strike.get();
+    }
+    if (i != 1) {
+      return;
+    }
+    if (!paramRspBody.bytes_strike_config.has()) {
+      return;
+    }
+    if (paramRspBody.uint32_intchk_id.has()) {
+      this.e = paramRspBody.uint32_intchk_id.get();
+    }
+    c(paramRspBody.bytes_strike_config.get().toStringUtf8());
+  }
+  
+  private byte[] b(intchk.CheckItem paramCheckItem)
   {
     boolean bool = paramCheckItem.uint32_start_offset.has();
     int j = 0;
@@ -289,38 +321,6 @@ public class MQPIntChkService
     return null;
   }
   
-  private void b(intchk.RspBody paramRspBody)
-  {
-    boolean bool = paramRspBody.uint32_result.has();
-    int j = 2;
-    if (bool) {
-      i = paramRspBody.uint32_result.get();
-    } else {
-      i = 2;
-    }
-    if (i != 1) {
-      return;
-    }
-    if (!paramRspBody.msg_report_check_result_rsp.has()) {
-      return;
-    }
-    paramRspBody = (intchk.ReportCheckResultRsp)paramRspBody.msg_report_check_result_rsp.get();
-    int i = j;
-    if (paramRspBody.uint32_need_strike.has()) {
-      i = paramRspBody.uint32_need_strike.get();
-    }
-    if (i != 1) {
-      return;
-    }
-    if (!paramRspBody.bytes_strike_config.has()) {
-      return;
-    }
-    if (paramRspBody.uint32_intchk_id.has()) {
-      this.b = paramRspBody.uint32_intchk_id.get();
-    }
-    c(paramRspBody.bytes_strike_config.get().toStringUtf8());
-  }
-  
   private void c(String paramString)
   {
     if (TextUtils.isEmpty(paramString.trim())) {
@@ -332,12 +332,12 @@ public class MQPIntChkService
       try
       {
         Object localObject2 = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
-        this.c = 0;
+        this.f = 0;
         paramString = ((Element)localObject2).getAttribute("type");
         if (paramString.trim().length() > 0) {
-          this.c = Integer.parseInt(paramString);
+          this.f = Integer.parseInt(paramString);
         }
-        int i = this.c;
+        int i = this.f;
         localObject1 = null;
         paramString = null;
         if (i != 1)
@@ -347,10 +347,10 @@ public class MQPIntChkService
             if (i != 3) {
               return;
             }
-            if (this.jdField_a_of_type_JavaUtilMap != null)
+            if (this.d != null)
             {
-              if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(3))) {
-                paramString = (MQPIntChkService.IIntChkStrike)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(3));
+              if (this.d.containsKey(Integer.valueOf(3))) {
+                paramString = (MQPIntChkService.IIntChkStrike)this.d.get(Integer.valueOf(3));
               }
               if (paramString != null)
               {
@@ -372,22 +372,22 @@ public class MQPIntChkService
               }
             }
           }
-          else if (this.jdField_a_of_type_JavaUtilMap != null)
+          else if (this.d != null)
           {
-            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(2))) {
+            if (!this.d.containsKey(Integer.valueOf(2))) {
               break label423;
             }
-            paramString = (MQPIntChkService.IIntChkStrike)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(2));
+            paramString = (MQPIntChkService.IIntChkStrike)this.d.get(Integer.valueOf(2));
             if (paramString != null) {
               paramString.exec(null, this);
             }
           }
         }
-        else if (this.jdField_a_of_type_JavaUtilMap != null)
+        else if (this.d != null)
         {
           paramString = (String)localObject1;
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(1))) {
-            paramString = (MQPIntChkService.IIntChkStrike)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
+          if (this.d.containsKey(Integer.valueOf(1))) {
+            paramString = (MQPIntChkService.IIntChkStrike)this.d.get(Integer.valueOf(1));
           }
           if (paramString != null) {
             try
@@ -431,18 +431,18 @@ public class MQPIntChkService
     if (paramIIntChkStrike == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
+    if (this.d == null) {
+      this.d = new LinkedHashMap();
     }
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramIIntChkStrike);
+    this.d.put(Integer.valueOf(paramInt), paramIIntChkStrike);
   }
   
   public void a(Object paramObject1, Object paramObject2)
   {
-    paramObject1 = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager;
+    paramObject1 = this.b;
     if (paramObject1 != null)
     {
-      Object localObject = paramObject1.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+      Object localObject = paramObject1.b;
       if (localObject != null)
       {
         paramObject1 = null;
@@ -494,19 +494,19 @@ public class MQPIntChkService
       paramString = new JSONObject(paramString);
       if (paramString.has("strike_result"))
       {
-        this.d = paramString.getInt("strike_result");
+        this.g = paramString.getInt("strike_result");
         Object localObject = new intchk.ReportStrikeResultReq();
-        ((intchk.ReportStrikeResultReq)localObject).uint32_intchk_id.set(this.b);
-        ((intchk.ReportStrikeResultReq)localObject).uint32_strike_type.set(this.c);
-        ((intchk.ReportStrikeResultReq)localObject).uint32_strike_result.set(this.d);
+        ((intchk.ReportStrikeResultReq)localObject).uint32_intchk_id.set(this.e);
+        ((intchk.ReportStrikeResultReq)localObject).uint32_strike_type.set(this.f);
+        ((intchk.ReportStrikeResultReq)localObject).uint32_strike_result.set(this.g);
         paramString = new intchk.ReqBody();
         paramString.uint32_subcmd.set(3);
         paramString.msg_app_info.set(a());
         paramString.msg_report_strike_result_req.set((MessageMicro)localObject);
-        if (this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager == null) {
+        if (this.b == null) {
           return;
         }
-        INetTransportProvider localINetTransportProvider = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+        INetTransportProvider localINetTransportProvider = this.b.b;
         if (localINetTransportProvider == null) {
           return;
         }
@@ -528,14 +528,14 @@ public class MQPIntChkService
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     Object localObject = new intchk.FetchCheckConfigReq();
     ((intchk.FetchCheckConfigReq)localObject).uint32_reserved.set(0);
     paramString = new intchk.ReqBody();
     paramString.uint32_subcmd.set(1);
     paramString.msg_app_info.set(a());
     paramString.msg_check_config_req.set((MessageMicro)localObject);
-    INetTransportProvider localINetTransportProvider = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+    INetTransportProvider localINetTransportProvider = this.b.b;
     if (localINetTransportProvider == null) {
       return;
     }
@@ -550,7 +550,7 @@ public class MQPIntChkService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mqpsdk.secsrv.MQPIntChkService
  * JD-Core Version:    0.7.0.1
  */

@@ -2,24 +2,24 @@ package com.tencent.mobileqq.activity.aio.item;
 
 class ArkSSODataRequest$Request
 {
-  long jdField_a_of_type_Long = System.currentTimeMillis();
-  String jdField_a_of_type_JavaLangString;
+  String a;
   String b;
+  long c = System.currentTimeMillis();
   
   ArkSSODataRequest$Request(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
   }
   
   int a()
   {
-    return (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    return (int)(System.currentTimeMillis() - this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkSSODataRequest.Request
  * JD-Core Version:    0.7.0.1
  */

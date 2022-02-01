@@ -27,11 +27,11 @@ class QIMPtvTemplateManager$4$1
       localStringBuilder.append(paramNetResp.mHttpCode);
       QLog.i("QIMPtvTemplateManager", 2, localStringBuilder.toString());
     }
-    this.a.a.b = this.a.this$0.a(this.a.a);
-    if (this.a.a.b) {
+    this.a.a.g = this.a.this$0.a(this.a.a);
+    if (this.a.a.g) {
       try
       {
-        ZipUtils.unZipFile(new File(QIMPtvTemplateManager.a(), this.a.a.e), QIMPtvTemplateManager.a);
+        ZipUtils.unZipFile(new File(QIMPtvTemplateManager.l(), this.a.a.e), QIMPtvTemplateManager.b);
       }
       catch (IOException paramNetResp)
       {
@@ -40,8 +40,8 @@ class QIMPtvTemplateManager$4$1
         }
       }
     }
-    if (this.a.this$0.a() != null) {
-      this.a.this$0.a().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
+    if (this.a.this$0.g() != null) {
+      this.a.this$0.g().notifyObservers(CaptureConfigUpdateObserver.class, 3, true, null);
     }
   }
   
@@ -49,7 +49,7 @@ class QIMPtvTemplateManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager.4.1
  * JD-Core Version:    0.7.0.1
  */

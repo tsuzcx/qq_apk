@@ -15,9 +15,9 @@ class TroopAioKeywordTipManager$2
   public void run()
   {
     int i;
-    synchronized (this.this$0.b)
+    synchronized (this.this$0.e)
     {
-      synchronized (this.this$0.jdField_a_of_type_AndroidUtilSparseArray)
+      synchronized (this.this$0.d)
       {
         Iterator localIterator = this.a.iterator();
         Object localObject6 = null;
@@ -26,9 +26,9 @@ class TroopAioKeywordTipManager$2
         while (localIterator.hasNext())
         {
           localInteger = (Integer)localIterator.next();
-          if (this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue()) != null)
+          if (this.this$0.d.get(localInteger.intValue()) != null)
           {
-            ??? = (TroopAioKeywordTipInfo)this.this$0.b.get(localInteger.intValue());
+            ??? = (TroopAioKeywordTipInfo)this.this$0.e.get(localInteger.intValue());
             if (??? == null)
             {
               ??? = localObject6;
@@ -38,7 +38,7 @@ class TroopAioKeywordTipManager$2
               ((List)???).add(localInteger);
               localObject6 = ???;
             }
-            else if (((TroopAioKeywordTipInfo)???).version != ((TroopAioKeywordRuleInfo)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue())).e)
+            else if (((TroopAioKeywordTipInfo)???).version != ((TroopAioKeywordRuleInfo)this.this$0.d.get(localInteger.intValue())).f)
             {
               ??? = localObject1;
               if (localObject1 == null) {
@@ -67,10 +67,10 @@ class TroopAioKeywordTipManager$2
               ???[i] = String.valueOf(((List)localObject6).get(i));
               i += 1;
             }
-            ??? = TroopAioKeywordHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String[])???);
-            synchronized (this.this$0.b)
+            ??? = TroopAioKeywordHelper.a(this.this$0.a, (String[])???);
+            synchronized (this.this$0.e)
             {
-              synchronized (this.this$0.jdField_a_of_type_AndroidUtilSparseArray)
+              synchronized (this.this$0.d)
               {
                 localIterator = ((List)localObject6).iterator();
                 while (localIterator.hasNext())
@@ -84,8 +84,8 @@ class TroopAioKeywordTipManager$2
                       break;
                     }
                     localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)((Iterator)localObject6).next();
-                  } while ((localTroopAioKeywordTipInfo.ruleId != localInteger.intValue()) || (((TroopAioKeywordRuleInfo)this.this$0.jdField_a_of_type_AndroidUtilSparseArray.get(localInteger.intValue())).e != localTroopAioKeywordTipInfo.version));
-                  this.this$0.b.put(localInteger.intValue(), localTroopAioKeywordTipInfo);
+                  } while ((localTroopAioKeywordTipInfo.ruleId != localInteger.intValue()) || (((TroopAioKeywordRuleInfo)this.this$0.d.get(localInteger.intValue())).f != localTroopAioKeywordTipInfo.version));
+                  this.this$0.e.put(localInteger.intValue(), localTroopAioKeywordTipInfo);
                   i = 1;
                   if (i == 0)
                   {
@@ -107,7 +107,7 @@ class TroopAioKeywordTipManager$2
           }
         }
         if ((??? != null) && (((List)???).size() > 0)) {
-          ((ITroopAioKeywordService)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITroopAioKeywordService.class, "")).getTroopAioKeywordTipInfo((List)???, new TroopAioKeywordTipManager.2.1(this));
+          ((ITroopAioKeywordService)this.this$0.a.getRuntimeService(ITroopAioKeywordService.class, "")).getTroopAioKeywordTipInfo((List)???, new TroopAioKeywordTipManager.2.1(this));
         }
         return;
       }
@@ -116,7 +116,7 @@ class TroopAioKeywordTipManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2
  * JD-Core Version:    0.7.0.1
  */

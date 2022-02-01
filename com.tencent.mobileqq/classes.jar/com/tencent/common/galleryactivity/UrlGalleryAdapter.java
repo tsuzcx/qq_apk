@@ -16,25 +16,6 @@ import java.net.URL;
 public class UrlGalleryAdapter
   extends AbstractImageAdapter
 {
-  public View a(URL paramURL, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    while (i < paramViewGroup.getChildCount())
-    {
-      URLImageView localURLImageView = (URLImageView)paramViewGroup.getChildAt(i);
-      Object localObject = localURLImageView.getDrawable();
-      if ((localObject != null) && ((localObject instanceof URLDrawable)))
-      {
-        localObject = (URLDrawable)localObject;
-        if ((((URLDrawable)localObject).getURL() != null) && (((URLDrawable)localObject).getURL().equals(paramURL))) {
-          return localURLImageView;
-        }
-      }
-      i += 1;
-    }
-    return null;
-  }
-  
   public URLDrawable a(URL paramURL, ViewGroup paramViewGroup)
   {
     if (paramURL == null) {
@@ -94,9 +75,28 @@ public class UrlGalleryAdapter
     {
       paramURLDrawable = AbsDownloader.getFile(str);
       if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {
-        paramView.setTag(2131296389, Integer.valueOf(ImageUtil.e(paramURLDrawable.getAbsolutePath())));
+        paramView.setTag(2131296389, Integer.valueOf(ImageUtil.j(paramURLDrawable.getAbsolutePath())));
       }
     }
+  }
+  
+  public View b(URL paramURL, ViewGroup paramViewGroup)
+  {
+    int i = 0;
+    while (i < paramViewGroup.getChildCount())
+    {
+      URLImageView localURLImageView = (URLImageView)paramViewGroup.getChildAt(i);
+      Object localObject = localURLImageView.getDrawable();
+      if ((localObject != null) && ((localObject instanceof URLDrawable)))
+      {
+        localObject = (URLDrawable)localObject;
+        if ((((URLDrawable)localObject).getURL() != null) && (((URLDrawable)localObject).getURL().equals(paramURL))) {
+          return localURLImageView;
+        }
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -115,10 +115,10 @@ public class UrlGalleryAdapter
       localObject = localURLImageView;
       if (localURLGalleryImage != null)
       {
-        localObject = a(localURLGalleryImage.a(), paramViewGroup);
+        localObject = a(localURLGalleryImage.b(), paramViewGroup);
         paramView = (View)localObject;
         if (localObject == null) {
-          paramView = (URLDrawable)localURLGalleryImage.b();
+          paramView = (URLDrawable)localURLGalleryImage.e();
         }
         localURLImageView.setImageDrawable(paramView);
         if ((paramView != null) && (paramView.getStatus() != 1) && (paramView.getStatus() != 4) && (paramView.getStatus() != 2))
@@ -149,7 +149,7 @@ public class UrlGalleryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.UrlGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

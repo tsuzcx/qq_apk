@@ -30,15 +30,43 @@ public class EditVideoTransfer
   extends EditVideoPart
   implements EditTransferExport, IEventReceiver
 {
-  private int jdField_a_of_type_Int = 0;
-  private TransferData jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData = new TransferData();
+  private int a = 0;
+  private TransferData b = new TransferData();
   
   public EditVideoTransfer(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
   }
   
-  public static int a(int paramInt)
+  private void a(long paramLong)
+  {
+    Object localObject = this.b.getPositions();
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
+    {
+      long l = 0L;
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Long localLong = (Long)((Iterator)localObject).next();
+        if (localLong.longValue() - l < 2000L)
+        {
+          this.a = 2;
+          return;
+        }
+        l = localLong.longValue();
+      }
+      if (paramLong - l < 2000L)
+      {
+        this.a = 2;
+        return;
+      }
+      this.a = 0;
+      return;
+    }
+    this.a = 1;
+  }
+  
+  public static int b(int paramInt)
   {
     if (paramInt == 1) {
       return 0;
@@ -49,98 +77,65 @@ public class EditVideoTransfer
     return -1;
   }
   
-  public static long a()
+  public static long d()
   {
     return -200L;
   }
   
-  private void a(long paramLong)
+  private boolean k()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions();
-    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
-    {
-      long l = 0L;
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Long localLong = (Long)((Iterator)localObject).next();
-        if (localLong.longValue() - l < 2000L)
-        {
-          this.jdField_a_of_type_Int = 2;
-          return;
-        }
-        l = localLong.longValue();
-      }
-      if (paramLong - l < 2000L)
-      {
-        this.jdField_a_of_type_Int = 2;
-        return;
-      }
-      this.jdField_a_of_type_Int = 0;
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  private boolean c()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.mConfigData.mID != -1) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.getPositions().size() > 0);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    return (this.b.mConfigData.mID != -1) && (this.b.getPositions().size() > 0);
   }
   
   public void a()
   {
     a(EditTransferExport.class, this);
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a instanceof EditLocalPhotoSource))
+    if ((this.t.I.e instanceof EditLocalPhotoSource))
     {
-      this.jdField_a_of_type_Int = 3;
+      this.a = 3;
     }
-    else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a instanceof EditLocalVideoSource))
+    else if ((this.t.I.e instanceof EditLocalVideoSource))
     {
-      this.jdField_a_of_type_Int = 3;
+      this.a = 3;
     }
-    else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a instanceof EditTakeVideoSource))
+    else if ((this.t.I.e instanceof EditTakeVideoSource))
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setPositions(((EditTakeVideoSource)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a).a.mTransferPosList);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a("extra_transiton_src_from", -1) == 1) {
-        this.jdField_a_of_type_Int = 0;
+      this.b.setPositions(((EditTakeVideoSource)this.t.I.e).b.mTransferPosList);
+      if (this.t.I.a("extra_transiton_src_from", -1) == 1) {
+        this.a = 0;
       } else {
-        a(((EditTakeVideoSource)this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a).a.mDuration);
+        a(((EditTakeVideoSource)this.t.I.e).b.mDuration);
       }
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.a == 0)
     {
-      localObject = ((CaptureComboManager)QIMManager.a(5)).a;
+      localObject = ((CaptureComboManager)QIMManager.a(5)).l;
       if (localObject != null)
       {
-        localObject = ((VideoFilterTools.ComboFilterData)localObject).a();
+        localObject = ((VideoFilterTools.ComboFilterData)localObject).e();
         a(Integer.parseInt(((TransitionCategoryItem)localObject).a));
         VideoFilterTools.a().a((TransitionCategoryItem)localObject);
-        localObject = (EditProviderExport)a(EditProviderExport.class);
-        if ((localObject != null) && (!(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager instanceof QzEditVideoPartManager))) {
-          ((EditProviderExport)localObject).v_();
+        localObject = (EditProviderExport)b(EditProviderExport.class);
+        if ((localObject != null) && (!(this.t instanceof QzEditVideoPartManager))) {
+          ((EditProviderExport)localObject).d();
         }
       }
-      if (QQAudioHelper.d()) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setReverseShift(a());
+      if (QQAudioHelper.g()) {
+        this.b.setReverseShift(d());
       }
     }
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onCreate, state:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (EditButtonExport)a(EditButtonExport.class);
-    if (this.jdField_a_of_type_Int != 0) {
+    Object localObject = (EditButtonExport)b(EditButtonExport.class);
+    if (this.a != 0) {
       ((EditButtonExport)localObject).b();
     }
-    StoryReportor.a("video_edit_transition", "exp_transition", a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a("extra_transiton_src_from", -1)), 0, new String[0]);
+    StoryReportor.a("video_edit_transition", "exp_transition", b(this.t.I.a("extra_transiton_src_from", -1)), 0, new String[0]);
   }
   
   public void a(int paramInt)
@@ -153,12 +148,12 @@ public class EditVideoTransfer
       ((TransferConfig.ConfigData)localObject).mCommonFloat3 = null;
       ((TransferConfig.ConfigData)localObject).mCommonFloat4 = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.setConfigData((TransferConfig.ConfigData)localObject);
-    if (c())
+    this.b.setConfigData((TransferConfig.ConfigData)localObject);
+    if (k())
     {
-      localObject = (EditVideoPlayerExport)a(EditVideoPlayerExport.class);
+      localObject = (EditVideoPlayerExport)b(EditVideoPlayerExport.class);
       if (localObject != null) {
-        ((EditVideoPlayerExport)localObject).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData);
+        ((EditVideoPlayerExport)localObject).a(this.b);
       }
     }
   }
@@ -166,45 +161,50 @@ public class EditVideoTransfer
   public void a(int paramInt, @NonNull GenerateContext paramGenerateContext)
   {
     super.a(paramInt, paramGenerateContext);
-    if (!b()) {
+    if (!i()) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferData.toJSONObject();
+    String str = this.b.toJSONObject();
     if (TextUtils.isEmpty(str)) {
       return;
     }
-    paramGenerateContext.a.putExtra("transfer_effect_data", str);
+    paramGenerateContext.d.putExtra("transfer_effect_data", str);
   }
   
-  public void b()
+  public int b()
   {
-    int i = this.jdField_a_of_type_Int;
+    return this.a;
+  }
+  
+  public void c()
+  {
+    int i = this.a;
     if (i == 1)
     {
-      QQToast.a(a(), 2131719749, 0).a();
+      QQToast.makeText(u(), 2131917352, 0).show();
       return;
     }
     if (i == 2) {
-      QQToast.a(a(), 2131719748, 0).a();
+      QQToast.makeText(u(), 2131917351, 0).show();
     }
   }
   
-  public boolean b()
+  public void g()
   {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public void e()
-  {
-    super.e();
+    super.g();
     if (QLog.isColorLevel()) {
       QLog.d("Q.qqstory.publish.edit.EditVideoTransfer", 2, "onDestroy");
     }
   }
+  
+  public boolean i()
+  {
+    return this.a == 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoTransfer
  * JD-Core Version:    0.7.0.1
  */

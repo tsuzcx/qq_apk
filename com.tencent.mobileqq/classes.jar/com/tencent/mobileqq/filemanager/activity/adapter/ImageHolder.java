@@ -7,20 +7,20 @@ import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ImageHolder
 {
-  public int a;
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
   public AsyncImageView a;
-  public Object a;
-  public boolean a;
-  public int b;
   public ImageView b;
   public ImageView c;
+  public TextView d;
+  public ProgressBar e;
+  public ImageView f;
+  public int g;
+  public int h;
+  public Object i;
+  public boolean j;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder
  * JD-Core Version:    0.7.0.1
  */

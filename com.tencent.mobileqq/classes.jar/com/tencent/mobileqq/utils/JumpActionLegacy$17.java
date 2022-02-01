@@ -34,20 +34,20 @@ class JumpActionLegacy$17
       bool1 = false;
     }
     ForwardStatisticsReporter.a("KEY_STAGE_2_GO_TO_CHAT_D55", bool1);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.h)
+    this.d.D();
+    if (this.d.D)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext.getString(2131699406), "");
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext, 1, 2131699406, 1).a();
-      paramArrayOfByte = new Intent(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+      ReportController.b(this.d.H, "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.d.b.getString(2131897437), "");
+      QQToast.makeText(this.d.b, 1, 2131897437, 1).show();
+      paramArrayOfByte = new Intent(this.d.b, SplashActivity.class);
       paramArrayOfByte.addFlags(67108864);
       paramArrayOfByte.addFlags(268435456);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte);
-      JumpActionLegacy.c(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy);
+      this.d.b.startActivity(paramArrayOfByte);
+      JumpActionLegacy.l(this.d);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    if (this.d.C != null) {
+      this.d.C.removeCallbacksAndMessages(null);
     }
     if (paramInt == 0) {
       paramInt = 0;
@@ -58,18 +58,18 @@ class JumpActionLegacy$17
     }
     if (paramInt <= 1)
     {
-      paramBundle = (String)this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_JavaUtilHashMap.get("uin");
-      if ((paramBundle != null) && (paramBundle.length() >= 5) && (!SearchBaseActivity.b.matcher(paramBundle).matches()))
+      paramBundle = (String)this.d.f.get("uin");
+      if ((paramBundle != null) && (paramBundle.length() >= 5) && (!SearchBaseActivity.D.matcher(paramBundle).matches()))
       {
-        boolean bool2 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramBundle);
-        paramArrayOfByte = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+        boolean bool2 = ((FriendsManager)this.d.H.getManager(QQManagerFactory.FRIENDS_MANAGER)).n(paramBundle);
+        paramArrayOfByte = ContactUtils.a(this.d.H, paramBundle);
         Object localObject;
         if ((bool2) && (paramInt == 0))
         {
-          localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+          localObject = new Intent(this.d.b, SplashActivity.class);
           ((Intent)localObject).putExtra("uin", paramBundle);
           ((Intent)localObject).putExtra("uintype", 0);
-          ((Intent)localObject).putExtra("openid", this.jdField_a_of_type_JavaLangString);
+          ((Intent)localObject).putExtra("openid", this.a);
           ((Intent)localObject).putExtra("appid", this.b);
           ((Intent)localObject).putExtra("thridparty_pull_aio", true);
           paramBundle = AIOUtils.a((Intent)localObject, new int[] { 2 });
@@ -78,7 +78,7 @@ class JumpActionLegacy$17
           if (paramArrayOfByte != null) {
             paramBundle.putExtra("uinname", paramArrayOfByte);
           }
-          this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext.startActivity(paramBundle);
+          this.d.b.startActivity(paramBundle);
         }
         else
         {
@@ -94,9 +94,9 @@ class JumpActionLegacy$17
           if (paramArrayOfByte != null) {
             ((Bundle)localObject).putString("uinname", paramArrayOfByte);
           }
-          ((Bundle)localObject).putString("openid", this.jdField_a_of_type_JavaLangString);
+          ((Bundle)localObject).putString("openid", this.a);
           ((Bundle)localObject).putString("appid", this.b);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40F", "0X800A40F", 0, 0, "", "", "", "");
+          ReportController.b(this.d.H, "dc01160", "", "", "0X800A40F", "0X800A40F", 0, 0, "", "", "", "");
           if (bool2)
           {
             ((Bundle)localObject).putBoolean("thridparty_pull_aio", true);
@@ -108,32 +108,32 @@ class JumpActionLegacy$17
             ((Bundle)localObject).putInt("fragment_id", 1);
             ((Bundle)localObject).putBoolean("pull_add_friend_tip", true);
           }
-          JumpActionLegacy.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy, (Bundle)localObject);
-          JumpActionLegacy.c(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy);
+          JumpActionLegacy.a(this.d, (Bundle)localObject);
+          JumpActionLegacy.l(this.d);
         }
       }
       else
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131699405, 1).a();
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_AndroidContentContext.getString(2131699407), "");
-        JumpActionLegacy.c(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy);
+        QQToast.makeText(BaseApplicationImpl.getApplication(), 1, 2131897436, 1).show();
+        ReportController.b(this.d.H, "dc01160", "", "", "0X800A40E", "0X800A40E", 0, 0, "", "", this.d.b.getString(2131897438), "");
+        JumpActionLegacy.l(this.d);
       }
     }
     else
     {
       paramArrayOfByte = ForwardMiniAppThirdPartyHelper.a(paramArrayOfByte);
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "inter", "skip", "inter_fail", "", 1, "", paramArrayOfByte, "", "", "", "", "", "", "");
+      ReportController.a(this.d.H, "inter", "skip", "inter_fail", "", 1, "", paramArrayOfByte, "", "", "", "", "", "", "");
       paramBundle = new Bundle();
       paramBundle.putBoolean("pull_app_not_privilege", true);
       paramBundle.putString("pull_app_not_privilege_string", paramArrayOfByte);
-      JumpActionLegacy.a(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy, paramBundle);
+      JumpActionLegacy.a(this.d, paramBundle);
     }
-    JumpActionLegacy.c(this.jdField_a_of_type_ComTencentMobileqqUtilsJumpActionLegacy);
+    JumpActionLegacy.l(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.17
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class ReadinjoyTabFrame$19$1
   
   public void run()
   {
-    ReadinjoyTabFrame.d(this.a.a);
+    ReadinjoyTabFrame.n(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame.19.1
  * JD-Core Version:    0.7.0.1
  */

@@ -73,9 +73,9 @@ public class C2CMessageManagerCallback
   
   public void a(C2CMessageManager paramC2CMessageManager, MessageRecord paramMessageRecord)
   {
-    if ((!paramMessageRecord.isSend()) && (paramMessageRecord.istroop == 0) && (Utils.b(paramMessageRecord.frienduin)) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
+    if ((!paramMessageRecord.isSend()) && (paramMessageRecord.istroop == 0) && (Utils.c(paramMessageRecord.frienduin)) && (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
     {
-      boolean bool = QQUtils.a(paramC2CMessageManager.jdField_a_of_type_MqqAppAppRuntime.getApp());
+      boolean bool = QQUtils.a(paramC2CMessageManager.a.getApp());
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -83,9 +83,9 @@ public class C2CMessageManagerCallback
         localStringBuilder.append(bool);
         QLog.i("BabyQReportCookie", 2, localStringBuilder.toString());
       }
-      if ((paramC2CMessageManager.a().containsKey(UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop))) && (!bool))
+      if ((paramC2CMessageManager.c().containsKey(UinTypeUtil.a(paramMessageRecord.frienduin, paramMessageRecord.istroop))) && (!bool))
       {
-        paramC2CMessageManager.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.sendSpecialMessage(paramMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
+        paramC2CMessageManager.b.sendSpecialMessage(paramMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
         if (QLog.isColorLevel()) {
           QLog.i("BabyQReportCookie", 2, "now in the aio!!!");
         }
@@ -251,7 +251,7 @@ public class C2CMessageManagerCallback
   
   public boolean b(MessageRecord paramMessageRecord)
   {
-    return ConfessMsgUtil.b(paramMessageRecord);
+    return ConfessMsgUtil.c(paramMessageRecord);
   }
   
   public boolean b(AppRuntime paramAppRuntime, String paramString)
@@ -266,7 +266,7 @@ public class C2CMessageManagerCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManagerCallback
  * JD-Core Version:    0.7.0.1
  */

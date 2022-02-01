@@ -11,35 +11,35 @@ class ScanOcrActivity$6$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.a != 0)
     {
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).setVisibility(0);
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).setText(2131689868);
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
+      ScanOcrActivity.i(this.b.a).setVisibility(0);
+      ScanOcrActivity.i(this.b.a).setText(2131886509);
+      if (this.b.a.k == 1) {
+        this.b.a.j.setVisibility(0);
       }
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a.jdField_a_of_type_Int != 1)
+      if (this.b.a.k != 1)
       {
-        if (!ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).a())
+        if (!ScanOcrActivity.b(this.b.a).b())
         {
-          ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).setVisibility(0);
-          ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).postDelayed(new ScanOcrActivity.6.1.1(this), 500L);
+          ScanOcrActivity.b(this.b.a).setVisibility(0);
+          ScanOcrActivity.b(this.b.a).postDelayed(new ScanOcrActivity.6.1.1(this), 500L);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
+        this.b.a.j.setVisibility(0);
       }
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).setVisibility(0);
-      ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a).setText(ScanOcrActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrActivityScanOcrActivity$6.a));
+      ScanOcrActivity.i(this.b.a).setVisibility(0);
+      ScanOcrActivity.i(this.b.a).setText(ScanOcrActivity.j(this.b.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ class FloorJumper$1
   
   public void onClick(View paramView)
   {
-    Context localContext = FloorJumper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumper).getContext();
+    Context localContext = FloorJumper.a(this.c).getContext();
     Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a);
+    localIntent.putExtra("url", this.a.l);
     localContext.startActivity(localIntent);
-    FloorJumper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFloorJumper, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    FloorJumper.a(this.c, this.a, this.b);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FloorJumper.1
  * JD-Core Version:    0.7.0.1
  */

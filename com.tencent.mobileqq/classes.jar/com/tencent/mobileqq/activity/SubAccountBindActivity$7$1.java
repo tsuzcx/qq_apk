@@ -12,12 +12,12 @@ class SubAccountBindActivity$7$1
   
   public void run()
   {
-    ((ImageView)SubAccountBindActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$7.this$0).getChildAt(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$7.a).findViewById(2131368343)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)SubAccountBindActivity.access$100(this.b.this$0).getChildAt(this.b.b).findViewById(2131435219)).setImageDrawable(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

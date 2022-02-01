@@ -41,7 +41,7 @@ public class MultiMsgProxyImpl
     {
       paramBaseQQAppInterface = ((QQAppInterface)paramBaseQQAppInterface).getMultiMessageProxy();
       if (paramBaseQQAppInterface != null) {
-        return paramBaseQQAppInterface.a(paramMessageRecord);
+        return paramBaseQQAppInterface.c(paramMessageRecord);
       }
     }
     return null;
@@ -53,7 +53,7 @@ public class MultiMsgProxyImpl
     {
       paramBaseQQAppInterface = ((QQAppInterface)paramBaseQQAppInterface).getMultiMessageProxy();
       if (paramBaseQQAppInterface != null) {
-        paramBaseQQAppInterface.a(paramArrayOfByte, paramHashMap, paramMessageRecord, paramMessageInfo);
+        paramBaseQQAppInterface.b(paramArrayOfByte, paramHashMap, paramMessageRecord, paramMessageInfo);
       }
     }
     return null;
@@ -72,7 +72,7 @@ public class MultiMsgProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.impl.MultiMsgProxyImpl
  * JD-Core Version:    0.7.0.1
  */

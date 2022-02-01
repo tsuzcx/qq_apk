@@ -57,91 +57,63 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public final class FriendHandler
   extends BusinessHandler
 {
-  public static final FriendHandler.Companion a;
-  private long jdField_a_of_type_Long;
+  public static final FriendHandler.Companion a = new FriendHandler.Companion(null);
   @NotNull
-  private final FriendConfig jdField_a_of_type_ComTencentMobileqqFriendConfigFriendConfig;
+  private final FriendService b;
   @NotNull
-  private final AddFrdTokenHelper jdField_a_of_type_ComTencentMobileqqFriendHelperAddFrdTokenHelper;
-  private final FriendBusinessProcessorFactory jdField_a_of_type_ComTencentMobileqqFriendProcessorFriendBusinessProcessorFactory;
+  private final FriendConfig c;
   @NotNull
-  private final FriendService jdField_a_of_type_ComTencentMobileqqFriendServletFriendService;
+  private final AddFrdTokenHelper d;
+  private final FriendBusinessProcessorFactory e;
   @NotNull
-  private ArrayList<BaseFriendProcessor> jdField_a_of_type_JavaUtilArrayList;
-  private final ArrayList<BaseProtocolReceiver<FriendHandler>> b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqFriendHandlerFriendHandler$Companion = new FriendHandler.Companion(null);
-  }
+  private ArrayList<BaseFriendProcessor> f;
+  private final ArrayList<BaseProtocolReceiver<FriendHandler>> g;
+  private long h;
   
   public FriendHandler(@NotNull AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService = new FriendService(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFriendConfigFriendConfig = new FriendConfig((AppRuntime)paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFriendHelperAddFrdTokenHelper = new AddFrdTokenHelper();
-    this.jdField_a_of_type_ComTencentMobileqqFriendProcessorFriendBusinessProcessorFactory = new FriendBusinessProcessorFactory();
-    this.b = new ArrayList();
-    paramAppInterface = this.jdField_a_of_type_ComTencentMobileqqFriendProcessorFriendBusinessProcessorFactory.a((AppRuntime)this.appRuntime);
+    this.b = new FriendService(paramAppInterface);
+    this.c = new FriendConfig((AppRuntime)paramAppInterface);
+    this.d = new AddFrdTokenHelper();
+    this.e = new FriendBusinessProcessorFactory();
+    this.g = new ArrayList();
+    paramAppInterface = this.e.a((AppRuntime)this.appRuntime);
     Intrinsics.checkExpressionValueIsNotNull(paramAppInterface, "mBusinessProcessorFactor…getProcessors(appRuntime)");
-    this.jdField_a_of_type_JavaUtilArrayList = paramAppInterface;
-    a();
+    this.f = paramAppInterface;
+    g();
   }
   
-  private final void a()
+  private final void g()
   {
-    ArrayList localArrayList = this.b;
+    ArrayList localArrayList = this.g;
     AppInterface localAppInterface = this.appRuntime;
     Intrinsics.checkExpressionValueIsNotNull(localAppInterface, "appRuntime");
     localArrayList.add(new FriendListReceiver(localAppInterface, this));
-    localArrayList = this.b;
+    localArrayList = this.g;
     localAppInterface = this.appRuntime;
     Intrinsics.checkExpressionValueIsNotNull(localAppInterface, "appRuntime");
     localArrayList.add(new SetGroupReceiver(localAppInterface, this));
-    localArrayList = this.b;
+    localArrayList = this.g;
     localAppInterface = this.appRuntime;
     Intrinsics.checkExpressionValueIsNotNull(localAppInterface, "appRuntime");
     localArrayList.add(new FriendAddReceiver(localAppInterface, this));
-    this.b.add(new QueryUinFlagReceiver(this.appRuntime, this));
-    this.b.add(new GetUserAddFriendSettingReceiver(this.appRuntime, this));
-    this.b.add(new GetAutoInfoReceiver(this.appRuntime, this));
-    this.b.add(new GetInfoWithOpenIdReceiver(this.appRuntime, this));
-    this.b.add(new AddBatchPhoneFriendReceiver(this.appRuntime, this));
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @NotNull
-  public final FriendConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendConfigFriendConfig;
-  }
-  
-  @NotNull
-  public final AddFrdTokenHelper a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendHelperAddFrdTokenHelper;
+    this.g.add(new QueryUinFlagReceiver(this.appRuntime, this));
+    this.g.add(new GetUserAddFriendSettingReceiver(this.appRuntime, this));
+    this.g.add(new GetAutoInfoReceiver(this.appRuntime, this));
+    this.g.add(new GetInfoWithOpenIdReceiver(this.appRuntime, this));
+    this.g.add(new AddBatchPhoneFriendReceiver(this.appRuntime, this));
   }
   
   @NotNull
   public final FriendService a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService;
-  }
-  
-  @NotNull
-  public final ArrayList<BaseFriendProcessor> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.b;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.h = paramLong;
   }
   
   public final void a(@NotNull FriendListRequestData paramFriendListRequestData, boolean paramBoolean)
@@ -159,18 +131,18 @@ public final class FriendHandler
     long l = System.currentTimeMillis();
     if (!paramFriendListRequestData.isRequestSingle())
     {
-      if ((paramBoolean) && (a()) && (l - this.jdField_a_of_type_Long < 300000L))
+      if ((paramBoolean) && (f()) && (l - this.h < 300000L))
       {
         QLog.d("IMCore.friend.FriendHandler", 1, "requestFriendList| request too busy");
         return;
       }
-      this.jdField_a_of_type_Long = l;
+      this.h = l;
     }
     Object localObject = createToServiceMsg("friendlist.getFriendGroupList");
     Intrinsics.checkExpressionValueIsNotNull(localObject, "createToServiceMsg(Frien…MD.GET_FRIEND_GROUP_LIST)");
     ((ToServiceMsg)localObject).setEnableFastResend(true);
     ((ToServiceMsg)localObject).extraData.putSerializable(Reflection.getOrCreateKotlinClass(FriendListRequestData.class).getSimpleName(), (Serializable)paramFriendListRequestData);
-    this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService.a((ToServiceMsg)localObject);
+    this.b.a((ToServiceMsg)localObject);
   }
   
   public final void a(@NotNull GroupRequestData paramGroupRequestData)
@@ -185,7 +157,7 @@ public final class FriendHandler
     }
     Object localObject = createToServiceMsg("friendlist.SetGroupReq");
     ((ToServiceMsg)localObject).extraData.putSerializable(Reflection.getOrCreateKotlinClass(GroupRequestData.class).getSimpleName(), (Serializable)paramGroupRequestData);
-    paramGroupRequestData = this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService;
+    paramGroupRequestData = this.b;
     Intrinsics.checkExpressionValueIsNotNull(localObject, "request");
     paramGroupRequestData.a((ToServiceMsg)localObject);
   }
@@ -197,7 +169,7 @@ public final class FriendHandler
     localToServiceMsg.extraData.putByte("cType", (byte)1);
     localToServiceMsg.extraData.putInt("source_id", paramInt1);
     localToServiceMsg.extraData.putInt("sub_source_id", paramInt2);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService;
+    paramString = this.b;
     Intrinsics.checkExpressionValueIsNotNull(localToServiceMsg, "request");
     paramString.a(localToServiceMsg);
   }
@@ -240,7 +212,7 @@ public final class FriendHandler
         ((ToServiceMsg)localObject).extraData.putString("extra", paramString2);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService.a((ToServiceMsg)localObject);
+    this.b.a((ToServiceMsg)localObject);
   }
   
   public final void a(@NotNull String paramString1, @NotNull String paramString2)
@@ -355,7 +327,7 @@ public final class FriendHandler
         ((Bundle)localObject2).putByteArray("friend_src_desc", paramString2);
       }
     }
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqFriendHelperAddFrdTokenHelper.a(paramString1, paramInt2, paramInt3);
+    paramString1 = this.d.a(paramString1, paramInt2, paramInt3);
     if (paramString1 != null)
     {
       if (paramString1.length == 0) {
@@ -369,7 +341,7 @@ public final class FriendHandler
     }
     ((Bundle)localObject2).putString("security_ticket", paramString6);
     ((Bundle)localObject2).putBoolean("security_ticket_support", paramBoolean3);
-    this.jdField_a_of_type_ComTencentMobileqqFriendServletFriendService.a((ToServiceMsg)localObject1);
+    this.b.a((ToServiceMsg)localObject1);
   }
   
   public final void a(@NotNull ArrayList<PhoneContact> paramArrayList, @NotNull String paramString, int paramInt1, int paramInt2, @Nullable ArrayList<AddBatchPhoneFriendResult> paramArrayList1)
@@ -459,16 +431,10 @@ public final class FriendHandler
     sendPbReq((ToServiceMsg)localObject2);
   }
   
-  public final boolean a()
+  @NotNull
+  public final FriendConfig b()
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isRequestingFriendList, timestamp: ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      QLog.d("IMCore.friend.FriendHandler", 2, localStringBuilder.toString());
-    }
-    return this.jdField_a_of_type_Long > 0L;
+    return this.c;
   }
   
   public final void b(long paramLong)
@@ -494,6 +460,35 @@ public final class FriendHandler
     ((ToServiceMsg)localObject2).putWupBuffer(((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
     ((ToServiceMsg)localObject2).extraData.putLong("uin", paramLong);
     sendPbReq((ToServiceMsg)localObject2);
+  }
+  
+  @NotNull
+  public final AddFrdTokenHelper c()
+  {
+    return this.d;
+  }
+  
+  @NotNull
+  public final ArrayList<BaseFriendProcessor> d()
+  {
+    return this.f;
+  }
+  
+  public final long e()
+  {
+    return this.h;
+  }
+  
+  public final boolean f()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isRequestingFriendList, timestamp: ");
+      localStringBuilder.append(this.h);
+      QLog.d("IMCore.friend.FriendHandler", 2, localStringBuilder.toString());
+    }
+    return this.h > 0L;
   }
   
   @NotNull
@@ -531,7 +526,7 @@ public final class FriendHandler
         ((StringBuilder)localObject).append(paramToServiceMsg.getServiceCmd());
         QLog.d("IMCore.friend.FriendHandler", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.b.iterator();
+      Object localObject = this.g.iterator();
       while (((Iterator)localObject).hasNext())
       {
         BaseProtocolReceiver localBaseProtocolReceiver = (BaseProtocolReceiver)((Iterator)localObject).next();
@@ -548,7 +543,7 @@ public final class FriendHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.FriendHandler
  * JD-Core Version:    0.7.0.1
  */

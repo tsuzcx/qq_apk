@@ -28,8 +28,8 @@ import java.util.List;
 public class IntimateContentItemOldDnaView
   extends IntimateContentItemBaseView
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private LinearLayout i;
+  private View j;
   
   public IntimateContentItemOldDnaView(Context paramContext)
   {
@@ -46,43 +46,34 @@ public class IntimateContentItemOldDnaView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void a()
-  {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559260, this, true);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131366070);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131367304));
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-  }
-  
   protected void a(View paramView)
   {
-    if (paramView.getId() != 2131366070) {
+    if (paramView.getId() != 2131432346) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() != null)
+    if (this.h.l() != null)
     {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a(), FriendProfileMoreInfoActivity.class);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().startActivity(paramView);
+      paramView = new Intent(this.h.l(), FriendProfileMoreInfoActivity.class);
+      this.h.l().startActivity(paramView);
     }
   }
   
   protected void a(IntimateInfo paramIntimateInfo, int paramInt)
   {
-    int i;
+    int k;
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() == null)
+    if (this.h.m() == null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      this.i.removeAllViews();
     }
     else
     {
-      i = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      k = this.i.getChildCount();
       paramInt = 0;
-      while (paramInt < i)
+      while (paramInt < k)
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().a(this.jdField_a_of_type_AndroidWidgetLinearLayout, (View)localObject);
+        localObject = this.i.getChildAt(0);
+        this.h.m().a(this.i, (View)localObject);
         paramInt += 1;
       }
     }
@@ -93,25 +84,25 @@ public class IntimateContentItemOldDnaView
       {
         IntimateInfo.DNAInfo localDNAInfo = (IntimateInfo.DNAInfo)localIterator.next();
         paramIntimateInfo = null;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a() != null) {
-          paramIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateBaseIntimateView.a().a();
+        if (this.h.m() != null) {
+          paramIntimateInfo = this.h.m().r();
         }
         localObject = paramIntimateInfo;
         if (paramIntimateInfo == null) {
-          localObject = IntimateUtil.a(this.jdField_a_of_type_AndroidContentContext);
+          localObject = IntimateUtil.a(this.a);
         }
-        paramIntimateInfo = (TextView)((View)localObject).findViewById(2131378884);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131378768);
+        paramIntimateInfo = (TextView)((View)localObject).findViewById(2131447585);
+        TextView localTextView = (TextView)((View)localObject).findViewById(2131447443);
         paramIntimateInfo.setText(localDNAInfo.wording);
         if (localDNAInfo.viceTitle != null)
         {
           paramIntimateInfo = new SpannableString(localDNAInfo.viceTitle);
           if (!TextUtils.isEmpty(localDNAInfo.linkWording))
           {
-            int j = localDNAInfo.viceTitle.indexOf(localDNAInfo.linkWording);
-            i = localDNAInfo.linkWording.length() + j;
-            paramInt = j;
-            if (j < 0)
+            int m = localDNAInfo.viceTitle.indexOf(localDNAInfo.linkWording);
+            k = localDNAInfo.linkWording.length() + m;
+            paramInt = m;
+            if (m < 0)
             {
               paramIntimateInfo = new StringBuilder();
               paramIntimateInfo.append(localDNAInfo.viceTitle);
@@ -119,9 +110,9 @@ public class IntimateContentItemOldDnaView
               String str = paramIntimateInfo.toString();
               paramIntimateInfo = new SpannableString(str);
               paramInt = localDNAInfo.viceTitle.length();
-              i = str.length();
+              k = str.length();
             }
-            paramIntimateInfo.setSpan(new IntimateContentItemOldDnaView.1(this, localDNAInfo), paramInt, i, 33);
+            paramIntimateInfo.setSpan(new IntimateContentItemOldDnaView.1(this, localDNAInfo), paramInt, k, 33);
             localTextView.setText(paramIntimateInfo);
             localTextView.setMovementMethod(LinkMovementMethod.getInstance());
           }
@@ -135,20 +126,29 @@ public class IntimateContentItemOldDnaView
           localTextView.setVisibility(8);
         }
         paramIntimateInfo = new LinearLayout.LayoutParams(-1, -1);
-        paramIntimateInfo.topMargin = ViewUtils.a(16.0F);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject, paramIntimateInfo);
+        paramIntimateInfo.topMargin = ViewUtils.dip2px(16.0F);
+        this.i.addView((View)localObject, paramIntimateInfo);
       }
     }
   }
   
   protected boolean a()
   {
-    return (FriendIntimateRelationshipConfProcessor.a().c) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.dnaInfoList != null) && (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.dnaInfoList.size() > 0);
+    return (FriendIntimateRelationshipConfProcessor.a().Y) && (this.d.dnaInfoList != null) && (this.d.dnaInfoList.size() > 0);
+  }
+  
+  protected void b()
+  {
+    View localView = LayoutInflater.from(this.a).inflate(2131625181, this, true);
+    this.j = localView.findViewById(2131432346);
+    this.i = ((LinearLayout)localView.findViewById(2131433761));
+    this.j.setOnTouchListener(this);
+    this.j.setOnClickListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemOldDnaView
  * JD-Core Version:    0.7.0.1
  */

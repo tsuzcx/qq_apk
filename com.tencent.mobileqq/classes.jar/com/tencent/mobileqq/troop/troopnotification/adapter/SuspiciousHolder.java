@@ -15,25 +15,25 @@ public class SuspiciousHolder
   extends ViewHolder
 {
   public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public NotifyAndRecAdapter.ApplicantHolder a;
-  public ShaderAnimLayout a;
-  public SwipRightMenuBuilder.SwipItemBaseHolder a;
-  public String a;
-  public structmsg.StructMsg a;
-  public int b;
   public long b;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
   public long c;
-  public TextView c;
-  public TextView d;
+  public String d;
+  public String e;
+  public int f;
+  public structmsg.StructMsg g;
+  public long h;
+  public LinearLayout i;
+  public ImageView j;
+  public LinearLayout k;
+  public TextView l;
+  public ImageView m;
+  public TextView n;
+  public TextView o;
+  public TextView p;
+  public Button q;
+  public ShaderAnimLayout r;
+  public SwipRightMenuBuilder.SwipItemBaseHolder s;
+  public NotifyAndRecAdapter.ApplicantHolder t;
   
   public SuspiciousHolder(Context paramContext, View paramView)
   {
@@ -42,7 +42,7 @@ public class SuspiciousHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.adapter.SuspiciousHolder
  * JD-Core Version:    0.7.0.1
  */

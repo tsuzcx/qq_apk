@@ -10,7 +10,7 @@ class ARTransferPromotionRenderable$19
   
   public void run()
   {
-    ARTransferPromotionRenderable.b(this.this$0, 0);
+    ARTransferPromotionRenderable.c(this.this$0, 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("setRecogRes. mInsertedSparkTotalCnt = 0, sparkShaderVertFileName = , circleR = ");
     localStringBuilder.append(this.a);
@@ -21,16 +21,16 @@ class ARTransferPromotionRenderable$19
     localStringBuilder.append(", clockwise = ");
     localStringBuilder.append(this.d);
     localStringBuilder.append(", hasDrawedFrame = ");
-    localStringBuilder.append(ARTransferPromotionRenderable.e(this.this$0));
+    localStringBuilder.append(ARTransferPromotionRenderable.C(this.this$0));
     QLog.i("ARTransferPromotionRenderable", 1, localStringBuilder.toString());
-    if ((ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.e(this.this$0))) {
-      ARTransferPromotionRenderable.a(this.this$0).native_setRecogRes("", "", "", "", "", this.a, this.b, this.c, this.d);
+    if ((ARTransferPromotionRenderable.c(this.this$0) != null) && (ARTransferPromotionRenderable.C(this.this$0))) {
+      ARTransferPromotionRenderable.c(this.this$0).native_setRecogRes("", "", "", "", "", this.a, this.b, this.c, this.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.19
  * JD-Core Version:    0.7.0.1
  */

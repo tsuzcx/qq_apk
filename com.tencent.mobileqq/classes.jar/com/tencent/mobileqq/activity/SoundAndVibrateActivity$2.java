@@ -20,9 +20,9 @@ class SoundAndVibrateActivity$2
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity;
-    SettingCloneUtil.writeValue((Context)localObject1, this.jdField_a_of_type_JavaLangString, ((SoundAndVibrateActivity)localObject1).getString(2131718135), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
+    Object localObject1 = this.b;
+    SettingCloneUtil.writeValue((Context)localObject1, this.a, ((SoundAndVibrateActivity)localObject1).getString(2131915612), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    Object localObject2 = this.b.app;
     if (paramBoolean) {
       localObject1 = "1";
     } else {
@@ -41,13 +41,13 @@ class SoundAndVibrateActivity$2
     ((StringBuilder)localObject2).append(paramBoolean);
     ((StringBuilder)localObject2).append("");
     ((HashMap)localObject1).put("param_ls_setting", ((StringBuilder)localObject2).toString());
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject1, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.b.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject1, "");
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SoundAndVibrateActivity.2
  * JD-Core Version:    0.7.0.1
  */

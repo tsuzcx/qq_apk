@@ -13,33 +13,33 @@ class ShortVideoItemBuilder$3
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+      localStringBuilder.append(this.b.q.frienduin);
+      localStringBuilder.append(this.b.q.uniseq);
       if (str.equals(localStringBuilder.toString())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
+        this.b.c.setVisibility(8);
       }
     }
   }
   
   public void a(FileSaveResult paramFileSaveResult)
   {
-    ShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder, paramFileSaveResult, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, this);
+    ShortVideoItemBuilder.a(this.c, paramFileSaveResult, this.a, this.b, this);
   }
   
   public void a(FileSaveResult paramFileSaveResult, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, paramInt, false);
+    this.c.a(this.b, paramInt, false);
   }
   
   public void b(FileSaveResult paramFileSaveResult) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

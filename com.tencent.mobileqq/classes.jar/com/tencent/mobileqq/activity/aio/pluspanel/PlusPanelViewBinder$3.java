@@ -11,12 +11,12 @@ class PlusPanelViewBinder$3
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiPluspanelPanelAdapter, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup);
+    this.this$0.a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewBinder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,29 +11,29 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class TroopSurveyHandlerProcessorConfig
 {
-  private static TroopSurveyHandlerProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopSurveyHandlerProcessorConfig;
-  private static ArrayList<AbsTroopSurveyHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopSurveyHandlerProcessor> a = new ArrayList();
+  private static TroopSurveyHandlerProcessorConfig b;
   
   private TroopSurveyHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopSurveyHandlerProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopSurveyHandlerProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopSurveyHandlerProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopSurveyHandlerProcessorConfig = new TroopSurveyHandlerProcessorConfig();
+        if (b == null) {
+          b = new TroopSurveyHandlerProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopSurveyHandlerProcessorConfig;
+    return b;
   }
   
-  private static void a()
+  private static void b()
   {
     if (BizTroopCustomizedProcessorRegister.c != null)
     {
@@ -44,7 +44,7 @@ public class TroopSurveyHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopSurveyHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -56,7 +56,7 @@ public class TroopSurveyHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, @NonNull ToServiceMsg paramToServiceMsg, String paramString, @NonNull oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopSurveyHandlerProcessor)localIterator.next()).a(paramAppInterface, paramToServiceMsg, paramString, paramOIDBSSOPkg);
     }
@@ -64,7 +64,7 @@ public class TroopSurveyHandlerProcessorConfig
   
   public void a(@NonNull String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopSurveyHandlerProcessor)localIterator.next()).a(paramString);
     }
@@ -72,7 +72,7 @@ public class TroopSurveyHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopSurveyHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

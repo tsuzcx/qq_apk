@@ -14,28 +14,28 @@ class AIOGalleryScene$7
   
   public boolean queueIdle()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a();
+    Object localObject = this.a.c.c();
     if ((localObject != null) && (AIOImageData.class.isInstance(((AIORichMediaInfo)localObject).a)))
     {
       AIOImageData localAIOImageData = (AIOImageData)((AIORichMediaInfo)localObject).a;
-      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.a(4) == null))
+      if ((localAIOImageData != null) && (localAIOImageData.a(4)) && (localAIOImageData.c(4) == null))
       {
         this.a.d(true);
-        this.a.u();
+        this.a.E();
       }
     }
     if ((localObject != null) && (AIOFilePicData.class.isInstance(((AIORichMediaInfo)localObject).a)))
     {
       localObject = (AIOFilePicData)((AIORichMediaInfo)localObject).a;
-      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).a(20) == null))
+      if ((localObject != null) && (((AIOFilePicData)localObject).a(20)) && (((AIOFilePicData)localObject).c(20) == null))
       {
-        if ((((AIOFilePicData)localObject).d) && (MessageRecordInfo.a(((AIOFilePicData)localObject).b)))
+        if ((((AIOFilePicData)localObject).k) && (MessageRecordInfo.b(((AIOFilePicData)localObject).p)))
         {
           this.a.d(true);
           this.a.c(false);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress = null;
+          this.a.J = null;
         }
-        else if (((AIOFilePicData)localObject).e)
+        else if (((AIOFilePicData)localObject).n)
         {
           this.a.d(false);
         }
@@ -43,8 +43,8 @@ class AIOGalleryScene$7
         {
           this.a.d(true);
         }
-        if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.d(this.a).getString(2131694999), new Object[] { FileUtil.a(((AIOFilePicData)localObject).a) }));
+        if (this.a.f != null) {
+          this.a.f.setText(String.format(Locale.CHINA, AIOGalleryScene.i(this.a).getString(2131892727), new Object[] { FileUtil.a(((AIOFilePicData)localObject).l) }));
         }
       }
     }
@@ -53,7 +53,7 @@ class AIOGalleryScene$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.7
  * JD-Core Version:    0.7.0.1
  */

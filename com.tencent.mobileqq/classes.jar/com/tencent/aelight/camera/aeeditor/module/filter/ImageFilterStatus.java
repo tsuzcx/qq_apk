@@ -5,102 +5,102 @@ import com.tencent.aelight.camera.aeeditor.module.aifilter.ComicsFilterResult;
 
 public class ImageFilterStatus
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = -1;
-  private AIFilterResult jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterResult;
-  private ComicsFilterResult jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterComicsFilterResult;
-  private AEEditorFilterBean.FilterID jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID = AEEditorFilterBean.FilterID.NON;
-  private String jdField_a_of_type_JavaLangString = null;
+  private int a = -1;
   private int b = -1;
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public AIFilterResult a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterResult;
-  }
-  
-  public ComicsFilterResult a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterComicsFilterResult;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  private String c = null;
+  private float d = 1.0F;
+  private AIFilterResult e;
+  private ComicsFilterResult f;
+  private AEEditorFilterBean.FilterID g = AEEditorFilterBean.FilterID.NON;
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = this.b;
+    this.c = null;
+    this.d = 1.0F;
+    this.a = this.b;
     this.b = -1;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID = AEEditorFilterBean.FilterID.NON;
+    this.g = AEEditorFilterBean.FilterID.NON;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.d = paramFloat;
   }
   
   public void a(AIFilterResult paramAIFilterResult)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterAIFilterResult = paramAIFilterResult;
-    this.jdField_a_of_type_Int = this.b;
-    this.b = AEEditorFilterControlPanel.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID = AEEditorFilterBean.FilterID.AIFilter;
+    this.c = null;
+    this.e = paramAIFilterResult;
+    this.a = this.b;
+    this.b = AEEditorFilterControlPanel.a;
+    this.g = AEEditorFilterBean.FilterID.AIFilter;
   }
   
   public void a(ComicsFilterResult paramComicsFilterResult, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleAifilterComicsFilterResult = paramComicsFilterResult;
-    this.jdField_a_of_type_Int = this.b;
+    this.f = paramComicsFilterResult;
+    this.a = this.b;
     this.b = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID = AEEditorFilterBean.FilterID.NETWORK;
+    this.g = AEEditorFilterBean.FilterID.NETWORK;
   }
   
   public void a(String paramString, float paramFloat, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Int = this.b;
+    this.c = paramString;
+    this.d = paramFloat;
+    this.a = this.b;
     this.b = paramInt;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID = AEEditorFilterBean.FilterID.CLIENT;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID == AEEditorFilterBean.FilterID.NON;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
+    this.g = AEEditorFilterBean.FilterID.CLIENT;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID == AEEditorFilterBean.FilterID.AIFilter;
+    return this.g == AEEditorFilterBean.FilterID.NON;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleFilterAEEditorFilterBean$FilterID == AEEditorFilterBean.FilterID.NETWORK;
+    return this.g == AEEditorFilterBean.FilterID.AIFilter;
+  }
+  
+  public boolean d()
+  {
+    return this.g == AEEditorFilterBean.FilterID.NETWORK;
+  }
+  
+  public int e()
+  {
+    return this.b;
+  }
+  
+  public int f()
+  {
+    return this.a;
+  }
+  
+  public String g()
+  {
+    return this.c;
+  }
+  
+  public float h()
+  {
+    return this.d;
+  }
+  
+  public AIFilterResult i()
+  {
+    return this.e;
+  }
+  
+  public ComicsFilterResult j()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.ImageFilterStatus
  * JD-Core Version:    0.7.0.1
  */

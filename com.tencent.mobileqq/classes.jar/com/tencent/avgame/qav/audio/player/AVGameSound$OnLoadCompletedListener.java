@@ -16,7 +16,7 @@ public class AVGameSound$OnLoadCompletedListener
       paramSoundPool = (AVGameSound.SoundInfoForLoadedCompleted)AVGameSound.a(this.a).get(Integer.valueOf(paramInt1));
       if (paramSoundPool != null)
       {
-        paramSoundPool.jdField_a_of_type_Int = AVGameSound.a(this.a, paramSoundPool.jdField_a_of_type_JavaLangString, paramInt1, paramSoundPool.jdField_a_of_type_Boolean, paramSoundPool.jdField_a_of_type_Float, paramSoundPool.b, paramSoundPool.c);
+        paramSoundPool.f = AVGameSound.a(this.a, paramSoundPool.e, paramInt1, paramSoundPool.a, paramSoundPool.b, paramSoundPool.c, paramSoundPool.d);
         try
         {
           paramSoundPool.notifyAll();

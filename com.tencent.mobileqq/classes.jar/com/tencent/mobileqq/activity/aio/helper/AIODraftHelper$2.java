@@ -25,31 +25,31 @@ class AIODraftHelper$2
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368874)
+    if (paramView.getId() == 2131435808)
     {
-      Object localObject1 = AIODraftHelper.a(this.a).jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373876);
+      Object localObject1 = this.a.c.Y.getTag(2131441550);
       if ((localObject1 instanceof ReplyedMessageSpan))
       {
         localObject1 = (ReplyedMessageSpan)localObject1;
-        if ((localObject1 != null) && (AIODraftHelper.a(this.a).a() != null))
+        if ((localObject1 != null) && (this.a.b.O() != null))
         {
           Object localObject2;
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = ");
-            ((StringBuilder)localObject2).append(((ReplyedMessageSpan)localObject1).a);
+            ((StringBuilder)localObject2).append(((ReplyedMessageSpan)localObject1).c);
             QLog.w("AIODraftHelper", 2, ((StringBuilder)localObject2).toString());
           }
-          if ((AIODraftHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && ((AIODraftHelper.a(this.a) instanceof FriendChatPie)))
+          if ((this.a.c.ah.a == 0) && ((this.a.c instanceof FriendChatPie)))
           {
-            ((FriendScroller)AIODraftHelper.a(this.a).b().a().a()).a(22, ((ReplyedMessageSpan)localObject1).d, ((ReplyedMessageSpan)localObject1).c);
+            ((FriendScroller)this.a.c.bv().e().d()).a(22, ((ReplyedMessageSpan)localObject1).i, ((ReplyedMessageSpan)localObject1).f);
           }
-          else if (AIODraftHelper.a(this.a).e())
+          else if (this.a.c.ab())
           {
-            localObject2 = AIODraftHelper.a(this.a).getMessageFacade().getLastMessage(AIODraftHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, AIODraftHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-            AIODraftHelper.a(this.a).a().a().a(22, ((ReplyedMessageSpan)localObject1).a, (int)(((MessageRecord)localObject2).shmsgseq - ((ReplyedMessageSpan)localObject1).a));
-            MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", AIODraftHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+            localObject2 = this.a.a.getMessageFacade().getLastMessage(this.a.c.ah.b, this.a.c.ah.a);
+            this.a.b.e().d().a(22, ((ReplyedMessageSpan)localObject1).c, (int)(((MessageRecord)localObject2).shmsgseq - ((ReplyedMessageSpan)localObject1).c));
+            MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.c.ah.b, null);
           }
         }
       }
@@ -59,7 +59,7 @@ class AIODraftHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIODraftHelper.2
  * JD-Core Version:    0.7.0.1
  */

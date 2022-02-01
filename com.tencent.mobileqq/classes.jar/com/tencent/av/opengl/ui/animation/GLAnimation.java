@@ -5,138 +5,128 @@ import java.util.List;
 
 public class GLAnimation
 {
-  private float A = 0.0F;
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private GLView jdField_a_of_type_ComTencentAvOpenglUiGLView;
-  private GLAnimation.AnimationListenerGL jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 0.0F;
-  private int jdField_b_of_type_Int = 1000;
-  private boolean jdField_b_of_type_Boolean = false;
-  private float jdField_c_of_type_Float = 0.0F;
-  private boolean jdField_c_of_type_Boolean = false;
-  private float jdField_d_of_type_Float = 0.0F;
-  private boolean jdField_d_of_type_Boolean = false;
-  private float jdField_e_of_type_Float = 0.0F;
-  private boolean jdField_e_of_type_Boolean = false;
-  private float f = 0.0F;
+  private boolean A = false;
+  private float B = 0.0F;
+  private float C = 0.0F;
+  private float D = 0.0F;
+  private float E = 0.0F;
+  private float F = 0.0F;
+  private float G = 0.0F;
+  private float H = 0.0F;
+  private float I = 0.0F;
+  private float J = 0.0F;
+  private GLAnimation.AnimationListenerGL K;
+  private int a = 0;
+  private boolean b = false;
+  private int c = 1000;
+  private long d = 0L;
+  private GLView e;
+  private boolean f = false;
   private float g = 0.0F;
   private float h = 0.0F;
   private float i = 0.0F;
-  private float j = 1.0F;
-  private float k = 1.0F;
+  private float j = 0.0F;
+  private float k = 0.0F;
   private float l = 0.0F;
-  private float m = 1.0F;
-  private float n = 1.0F;
-  private float o = 1.0F;
-  private float p = 1.0F;
-  private float q = 0.0F;
-  private float r = 0.0F;
+  private float m = 0.0F;
+  private float n = 0.0F;
+  private float o = 0.0F;
+  private boolean p = false;
+  private float q = 1.0F;
+  private float r = 1.0F;
   private float s = 0.0F;
-  private float t = 0.0F;
-  private float u = 0.0F;
-  private float v = 0.0F;
-  private float w = 0.0F;
-  private float x = 0.0F;
+  private boolean t = false;
+  private float u = 1.0F;
+  private float v = 1.0F;
+  private float w = 1.0F;
+  private float x = 1.0F;
   private float y = 0.0F;
   private float z = 0.0F;
   
-  public float a()
-  {
-    return this.jdField_c_of_type_Float;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_d_of_type_Boolean = true;
-    this.m = paramFloat1;
-    this.q = paramFloat1;
-    this.n = paramFloat2;
-    this.r = paramFloat2;
-    this.o = paramFloat3;
-    this.p = paramFloat4;
+    this.t = true;
+    this.u = paramFloat1;
+    this.y = paramFloat1;
+    this.v = paramFloat2;
+    this.z = paramFloat2;
+    this.w = paramFloat3;
+    this.x = paramFloat4;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_c_of_type_Float = paramFloat1;
-    this.jdField_d_of_type_Float = paramFloat2;
-    this.f = paramFloat2;
-    this.g = paramFloat3;
-    this.i = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_e_of_type_Float = paramFloat5;
-    this.h = paramFloat6;
+    this.f = true;
+    this.g = paramFloat1;
+    this.i = paramFloat1;
+    this.j = paramFloat2;
+    this.l = paramFloat2;
+    this.m = paramFloat3;
+    this.o = paramFloat3;
+    this.h = paramFloat4;
+    this.k = paramFloat5;
+    this.n = paramFloat6;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(GLView paramGLView)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiGLView = paramGLView;
+    this.e = paramGLView;
   }
   
   public void a(GLAnimation.AnimationListenerGL paramAnimationListenerGL)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL = paramAnimationListenerGL;
+    this.K = paramAnimationListenerGL;
   }
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.f;
   }
   
   public boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
-      b();
+      m();
     }
     else
     {
-      if (this.jdField_a_of_type_Long == -1L) {
-        this.jdField_a_of_type_Long = paramLong;
+      if (this.d == -1L) {
+        this.d = paramLong;
       }
-      long l1 = paramLong - this.jdField_a_of_type_Long;
+      long l1 = paramLong - this.d;
       if (l1 == 0L) {
         return false;
       }
-      int i1 = this.jdField_b_of_type_Int;
+      int i1 = this.c;
       paramLong = l1;
       if (l1 >= i1)
       {
         paramLong = i1;
-        this.jdField_a_of_type_Boolean = true;
-        b();
+        this.b = true;
+        m();
       }
-      i1 = this.jdField_a_of_type_Int;
+      i1 = this.a;
       float f1 = 1.0F;
       float f2;
       if (i1 == 0)
       {
-        f1 = (float)paramLong * 1.0F / this.jdField_b_of_type_Int;
+        f1 = (float)paramLong * 1.0F / this.c;
       }
       else if (i1 == 1)
       {
         f1 = (float)paramLong;
-        i1 = this.jdField_b_of_type_Int;
+        i1 = this.c;
         f1 = 1.0F * f1 * f1 / i1 / i1;
       }
       else if (i1 == 2)
       {
-        l1 = this.jdField_b_of_type_Int;
+        l1 = this.c;
         if (paramLong == 0L)
         {
           f1 = 0.0F;
@@ -148,107 +138,80 @@ public class GLAnimation
           f1 = f1 * 1.0F * f1 / f2 / f2 * (f2 * 2.0F / f1 - 1.0F);
         }
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.f)
       {
-        f2 = this.jdField_a_of_type_Float;
-        this.jdField_c_of_type_Float = (f2 + (this.jdField_b_of_type_Float - f2) * f1);
-        f2 = this.jdField_d_of_type_Float;
-        this.f = (f2 + (this.jdField_e_of_type_Float - f2) * f1);
         f2 = this.g;
         this.i = (f2 + (this.h - f2) * f1);
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        f2 = this.m;
-        this.q = (f2 + (this.o - f2) * f1);
-        f2 = this.n;
-        this.r = (f2 + (this.p - f2) * f1);
-      }
-      if (this.jdField_e_of_type_Boolean)
-      {
-        f2 = this.s;
-        this.y = (f2 + (this.t - f2) * f1);
-        f2 = this.u;
-        this.z = (f2 + (this.v - f2) * f1);
-        f2 = this.w;
-        this.A = (f2 + (this.x - f2) * f1);
-      }
-      if (this.jdField_c_of_type_Boolean)
-      {
         f2 = this.j;
-        this.l = (f2 + f1 * (this.k - f2));
+        this.l = (f2 + (this.k - f2) * f1);
+        f2 = this.m;
+        this.o = (f2 + (this.n - f2) * f1);
+      }
+      if (this.t)
+      {
+        f2 = this.u;
+        this.y = (f2 + (this.w - f2) * f1);
+        f2 = this.v;
+        this.z = (f2 + (this.x - f2) * f1);
+      }
+      if (this.A)
+      {
+        f2 = this.B;
+        this.H = (f2 + (this.C - f2) * f1);
+        f2 = this.D;
+        this.I = (f2 + (this.E - f2) * f1);
+        f2 = this.F;
+        this.J = (f2 + (this.G - f2) * f1);
+      }
+      if (this.p)
+      {
+        f2 = this.q;
+        this.s = (f2 + f1 * (this.r - f2));
       }
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public float b()
   {
-    return this.f;
-  }
-  
-  public void b()
-  {
-    ??? = this.jdField_a_of_type_ComTencentAvOpenglUiGLView;
-    if (??? != null) {
-      synchronized (((GLView)???).a())
-      {
-        this.jdField_a_of_type_ComTencentAvOpenglUiGLView.a().remove(this);
-      }
-    }
-    ??? = this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL;
-    if (??? != null)
-    {
-      ((GLAnimation.AnimationListenerGL)???).a();
-      this.jdField_a_of_type_ComTencentAvOpenglUiAnimationGLAnimation$AnimationListenerGL = null;
-    }
+    return this.i;
   }
   
   public void b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    this.jdField_e_of_type_Boolean = true;
-    this.s = paramFloat1;
-    this.y = paramFloat1;
-    this.t = paramFloat2;
-    this.u = paramFloat3;
-    this.z = paramFloat3;
-    this.v = paramFloat4;
-    this.w = paramFloat5;
-    this.A = paramFloat5;
-    this.x = paramFloat6;
+    this.A = true;
+    this.B = paramFloat1;
+    this.H = paramFloat1;
+    this.C = paramFloat2;
+    this.D = paramFloat3;
+    this.I = paramFloat3;
+    this.E = paramFloat4;
+    this.F = paramFloat5;
+    this.J = paramFloat5;
+    this.G = paramFloat6;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = Math.abs(paramInt);
-    if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_Int = 1;
+    this.c = Math.abs(paramInt);
+    if (this.c == 0) {
+      this.c = 1;
     }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_d_of_type_Boolean;
   }
   
   public float c()
   {
-    return this.i;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_e_of_type_Boolean;
+    return this.l;
   }
   
   public float d()
   {
-    return this.q;
+    return this.o;
   }
   
-  public float e()
+  public boolean e()
   {
-    return this.r;
+    return this.t;
   }
   
   public float f()
@@ -261,9 +224,46 @@ public class GLAnimation
     return this.z;
   }
   
-  public float h()
+  public boolean h()
   {
     return this.A;
+  }
+  
+  public float i()
+  {
+    return this.H;
+  }
+  
+  public float j()
+  {
+    return this.I;
+  }
+  
+  public float k()
+  {
+    return this.J;
+  }
+  
+  public void l()
+  {
+    this.d = -1L;
+  }
+  
+  public void m()
+  {
+    ??? = this.e;
+    if (??? != null) {
+      synchronized (((GLView)???).a())
+      {
+        this.e.a().remove(this);
+      }
+    }
+    ??? = this.K;
+    if (??? != null)
+    {
+      ((GLAnimation.AnimationListenerGL)???).a();
+      this.K = null;
+    }
   }
 }
 

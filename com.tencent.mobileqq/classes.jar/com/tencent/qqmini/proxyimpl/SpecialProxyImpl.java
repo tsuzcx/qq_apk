@@ -3,6 +3,7 @@ package com.tencent.qqmini.proxyimpl;
 import android.os.Bundle;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.network.http.MiniOkHttpClientFactory;
+import com.tencent.mobileqq.minigame.publicaccount.utils.AuthDialogPAUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.annotation.ProxyService;
 import com.tencent.qqmini.sdk.launcher.core.proxy.SpecialProxy;
@@ -24,7 +25,7 @@ public class SpecialProxyImpl
       return;
     }
     paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
-    paramBundle = MiniSdkUtil.a((MiniAppInfo)paramBundle.getParcelable("mini_appinfo"));
+    paramBundle = MiniSdkUtil.b((MiniAppInfo)paramBundle.getParcelable("mini_appinfo"));
     if (paramBundle == null)
     {
       if (paramEventCallback != null) {
@@ -36,6 +37,30 @@ public class SpecialProxyImpl
     if (paramEventCallback != null) {
       paramEventCallback.onResult(true, null);
     }
+  }
+  
+  private boolean a(int paramInt, Bundle paramBundle, SpecialProxy.EventCallback paramEventCallback)
+  {
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return false;
+          }
+          AuthDialogPAUtil.followMiniGamePA(paramEventCallback);
+          return true;
+        }
+        AuthDialogPAUtil.getMiniGamePASubMsg(paramEventCallback);
+        return true;
+      }
+      b(paramBundle, paramEventCallback);
+      return true;
+    }
+    a(paramBundle, paramEventCallback);
+    return true;
   }
   
   private void b(Bundle paramBundle, SpecialProxy.EventCallback paramEventCallback)
@@ -69,21 +94,13 @@ public class SpecialProxyImpl
     localStringBuilder.append("receive event from minisdk, event:");
     localStringBuilder.append(paramInt);
     QLog.i("SpecialProxyImpl", 1, localStringBuilder.toString());
-    if (1 == paramInt) {}
     try
     {
-      a(paramBundle, paramEventCallback);
-      return true;
+      boolean bool = a(paramInt, paramBundle, paramEventCallback);
+      return bool;
     }
     catch (Throwable paramBundle)
     {
-      label61:
-      break label61;
-    }
-    if (2 == paramInt)
-    {
-      b(paramBundle, paramEventCallback);
-      return true;
       QLog.e("SpecialProxyImpl", 1, "exception when receive event from minisdk", paramBundle);
     }
     return false;
@@ -91,7 +108,7 @@ public class SpecialProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.SpecialProxyImpl
  * JD-Core Version:    0.7.0.1
  */

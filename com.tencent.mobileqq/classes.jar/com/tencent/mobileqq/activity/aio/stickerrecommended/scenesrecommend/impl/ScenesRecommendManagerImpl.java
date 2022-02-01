@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
 
 public class ScenesRecommendManagerImpl
   extends BroadcastReceiver
@@ -29,11 +30,11 @@ public class ScenesRecommendManagerImpl
   public static final String TAG = "ScenesRecommendManager";
   AppInterface mApp = null;
   List<ScenesRecommendItem> scencesItemList = null;
-  ScenesRecommendManagerImpl.IScenesRecEmoUIHelper uiHelper;
+  WeakReference<ScenesRecommendManagerImpl.IScenesRecEmoUIHelper> uiHelperWeakReference;
   
   private boolean checkNotifyUinIsCurrentSession(String paramString)
   {
-    ScenesRecommendManagerImpl.IScenesRecEmoUIHelper localIScenesRecEmoUIHelper = this.uiHelper;
+    ScenesRecommendManagerImpl.IScenesRecEmoUIHelper localIScenesRecEmoUIHelper = tryGetUIHelper();
     if (localIScenesRecEmoUIHelper == null)
     {
       QLog.d("ScenesRecommendManager", 1, "helper is null");
@@ -48,7 +49,7 @@ public class ScenesRecommendManagerImpl
     ((StringBuilder)localObject).append("doScenesEmotionRecommend ScenesRecommendItem is ");
     ((StringBuilder)localObject).append(paramScenesRecommendItem.a());
     QLog.i("ScenesRecommendManager", 2, ((StringBuilder)localObject).toString());
-    localObject = this.uiHelper;
+    localObject = tryGetUIHelper();
     if (localObject == null) {
       return;
     }
@@ -86,7 +87,7 @@ public class ScenesRecommendManagerImpl
   
   protected boolean checkUinisCurrent(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return false;
     }
     return paramString.equalsIgnoreCase(this.mApp.getCurrentUin());
@@ -182,7 +183,7 @@ public class ScenesRecommendManagerImpl
   
   public void parseDataByJson(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return;
     }
     List localList = this.scencesItemList;
@@ -228,12 +229,26 @@ public class ScenesRecommendManagerImpl
   
   public void setUiHelper(ScenesRecommendManagerImpl.IScenesRecEmoUIHelper paramIScenesRecEmoUIHelper)
   {
-    this.uiHelper = paramIScenesRecEmoUIHelper;
+    if (paramIScenesRecEmoUIHelper == null)
+    {
+      this.uiHelperWeakReference = null;
+      return;
+    }
+    this.uiHelperWeakReference = new WeakReference(paramIScenesRecEmoUIHelper);
+  }
+  
+  ScenesRecommendManagerImpl.IScenesRecEmoUIHelper tryGetUIHelper()
+  {
+    WeakReference localWeakReference = this.uiHelperWeakReference;
+    if ((localWeakReference != null) && (!localWeakReference.isEnqueued())) {
+      return (ScenesRecommendManagerImpl.IScenesRecEmoUIHelper)this.uiHelperWeakReference.get();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.scenesrecommend.impl.ScenesRecommendManagerImpl
  * JD-Core Version:    0.7.0.1
  */

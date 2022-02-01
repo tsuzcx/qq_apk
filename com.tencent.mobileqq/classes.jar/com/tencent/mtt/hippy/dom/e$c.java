@@ -8,7 +8,7 @@ final class e$c
   private boolean b;
   private long c;
   private int d;
-  private Handler e;
+  private final Handler e;
   
   public void a()
   {
@@ -23,7 +23,7 @@ final class e$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class TroopFileModel$15
   
   public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    paramString1 = this.a.a.a();
+    paramString1 = this.a.c.r();
     paramString2 = FileManagerUtil.a(paramByteStringMicro1);
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString2)))
     {
@@ -33,7 +33,7 @@ class TroopFileModel$15
       paramByteStringMicro1.append("&filetype=");
       paramByteStringMicro1.append(paramInt1);
       paramByteStringMicro1.append("&path=");
-      paramByteStringMicro1.append(URLUtil.a(paramString1.zipInnerPath));
+      paramByteStringMicro1.append(URLUtil.c(paramString1.zipInnerPath));
       paramByteStringMicro1.append("&");
       paramString1 = paramByteStringMicro1.toString();
     }
@@ -52,16 +52,16 @@ class TroopFileModel$15
         paramString2.append(paramString4);
         QLog.e("TroopFileModel<FileAssistant>", 1, paramString2.toString());
       }
-      if (TroopFileModel.a(this.a) != null) {
-        TroopFileModel.a(this.a).a(paramString1, paramString4);
+      if (TroopFileModel.e(this.a) != null) {
+        TroopFileModel.e(this.a).a(paramString1, paramString4);
       }
-      if (this.a.a.a() != null) {
-        paramString1 = String.valueOf(this.a.a.a().TroopUin);
+      if (this.a.c.r() != null) {
+        paramString1 = String.valueOf(this.a.c.r().TroopUin);
       } else {
         paramString1 = "";
       }
-      if (this.a.a.a() != null) {
-        paramString2 = FileManagerUtil.b(this.a.a.a().nFileType);
+      if (this.a.c.r() != null) {
+        paramString2 = FileManagerUtil.b(this.a.c.r().nFileType);
       } else {
         paramString2 = "unknow";
       }
@@ -69,14 +69,14 @@ class TroopFileModel$15
       return;
     }
     QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl_onGetFilePreviewResult error, url is null.");
-    if (TroopFileModel.a(this.a) != null) {
-      TroopFileModel.a(this.a).c();
+    if (TroopFileModel.e(this.a) != null) {
+      TroopFileModel.e(this.a).cq_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.15
  * JD-Core Version:    0.7.0.1
  */

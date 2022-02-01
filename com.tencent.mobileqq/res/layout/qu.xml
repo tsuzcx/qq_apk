@@ -9,6 +9,6 @@
         <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:gravity="center_horizontal" android:id="@id/fa0" android:background="@drawable/bg_texture" android:paddingTop="100.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cju" android:drawableTop="@drawable/bqt" />
     </RelativeLayout>
     <FrameLayout android:id="@id/ijh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="16.0sp" android:textColor="@color/a3v" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ijg" android:background="@drawable/jj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="@dimen/atz" android:text="@string/h_f" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/a3v" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ijg" android:background="@drawable/common_list_item_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="@dimen/atz" android:text="@string/h_f" />
     </FrameLayout>
 </RelativeLayout>

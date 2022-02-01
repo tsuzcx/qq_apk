@@ -11,15 +11,15 @@ import java.util.ArrayList;
 public class RemoteProxy$QIPCHandler
   implements InvocationHandler
 {
-  private Class a;
   public Object a;
+  private Class b;
   
   public RemoteProxy$QIPCHandler(Class paramClass)
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.b = paramClass;
     try
     {
-      this.jdField_a_of_type_JavaLangObject = paramClass.newInstance();
+      this.a = paramClass.newInstance();
       return;
     }
     catch (InstantiationException paramClass)
@@ -36,7 +36,7 @@ public class RemoteProxy$QIPCHandler
   Object a(String paramString, Bundle paramBundle)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangClass.getName());
+    localStringBuilder.append(this.b.getName());
     localStringBuilder.append("$");
     localStringBuilder.append(paramString);
     paramString = RemoteProxy.a(localStringBuilder.toString(), paramBundle);
@@ -54,7 +54,7 @@ public class RemoteProxy$QIPCHandler
   void a(String paramString, Bundle paramBundle, EIPCResultCallback paramEIPCResultCallback)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangClass.getName());
+    localStringBuilder.append(this.b.getName());
     localStringBuilder.append("$");
     localStringBuilder.append(paramString);
     RemoteProxy.a(localStringBuilder.toString(), paramBundle, paramEIPCResultCallback);
@@ -102,7 +102,7 @@ public class RemoteProxy$QIPCHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.RemoteProxy.QIPCHandler
  * JD-Core Version:    0.7.0.1
  */

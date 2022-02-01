@@ -34,9 +34,9 @@ import java.util.ArrayList;
 public class GuessSongClickStageView
   extends BaseGuessSongStageView
 {
-  private ImageView c;
-  public Runnable e = new GuessSongClickStageView.1(this);
-  public Runnable f = new GuessSongClickStageView.2(this);
+  public Runnable x = new GuessSongClickStageView.1(this);
+  public Runnable y = new GuessSongClickStageView.2(this);
+  private ImageView z;
   
   public GuessSongClickStageView(Context paramContext)
   {
@@ -64,18 +64,18 @@ public class GuessSongClickStageView
     }
     if (paramTopicSongGuess == null)
     {
-      ThreadManager.getUIHandlerV2().removeCallbacks(this.e);
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.x);
       return;
     }
-    if ((!TextUtils.isEmpty(paramTopicSongGuess.c())) && (paramTopicSongGuess.c().startsWith("http")))
+    if ((!TextUtils.isEmpty(paramTopicSongGuess.e())) && (paramTopicSongGuess.e().startsWith("http")))
     {
-      this.jdField_a_of_type_JavaUtilArrayList = paramTopicSongGuess.jdField_a_of_type_JavaUtilArrayList;
-      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      this.r = paramTopicSongGuess.k;
+      if ((this.r != null) && (this.r.size() > 0))
       {
-        this.jdField_a_of_type_Int = 0;
-        ThreadManager.getUIHandlerV2().postDelayed(this.e, ((Integer)((Pair)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).first).intValue() * 1000);
+        this.s = 0;
+        ThreadManager.getUIHandlerV2().postDelayed(this.x, ((Integer)((Pair)this.r.get(this.s)).first).intValue() * 1000);
       }
-      paramTopicSongGuess = paramTopicSongGuess.c;
+      paramTopicSongGuess = paramTopicSongGuess.r;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -84,96 +84,96 @@ public class GuessSongClickStageView
         QLog.i("GuessSongClickStageView", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty(paramTopicSongGuess)) {
-        this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a().a().a(paramTopicSongGuess);
+        this.c.a().a().b(paramTopicSongGuess);
       }
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onSongStart() illegal url:");
-    localStringBuilder.append(paramTopicSongGuess.c());
+    localStringBuilder.append(paramTopicSongGuess.e());
     QLog.i("GuessSongClickStageView", 1, localStringBuilder.toString());
   }
   
   public void a(String paramString)
   {
-    TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.e;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getResources().getText(2131690340));
+    localStringBuilder.append(getResources().getText(2131887251));
     localStringBuilder.append(paramString);
     localTextView.setText(localStringBuilder.toString());
-    ThreadManager.getUIHandlerV2().postDelayed(this.f, 3000L);
+    ThreadManager.getUIHandlerV2().postDelayed(this.y, 3000L);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean2)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.f.setVisibility(4);
+      this.g.setVisibility(8);
       setBackgroundDrawable(null);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isRunning())) {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
+      if ((this.p != null) && (this.p.isRunning())) {
+        this.p.stop();
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+      this.p = null;
+      this.o.setVisibility(4);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.jdField_b_of_type_AndroidWidgetImageView.getVisibility() != 0)
+    this.f.setVisibility(0);
+    this.g.setVisibility(8);
+    if (this.o.getVisibility() != 0)
     {
-      String str = this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter.a().a().b();
+      String str = this.c.a().a().s();
       if (!TextUtils.isEmpty(str)) {
         setBackgroundDrawable(URLDrawable.getDrawable(str));
       } else {
         setBackgroundDrawable(AvGameResDownloadUtil.a("avgame_float_act_guess_place_holder@2x.png"));
       }
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      c();
+      this.o.setVisibility(0);
+      d();
     }
   }
   
-  protected void b()
+  protected void c()
   {
-    LayoutInflater.from(getContext()).inflate(2131558668, this, true);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379927));
-    this.jdField_a_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379550));
-    this.jdField_b_of_type_ComTencentAvgameUiAVGameText = ((AVGameText)findViewById(2131379551));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370232);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378839));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370328);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131367771);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIGameStagePresenter = new GuessSongClickStagePresenter(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377702));
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377703));
-    super.b();
+    LayoutInflater.from(getContext()).inflate(2131624285, this, true);
+    this.e = ((TextView)findViewById(2131448811));
+    this.h = ((AVGameText)findViewById(2131448302));
+    this.i = ((AVGameText)findViewById(2131448303));
+    this.j = findViewById(2131437420);
+    this.f = ((ImageView)findViewById(2131447536));
+    this.g = findViewById(2131437582);
+    this.k = findViewById(2131434340);
+    this.k.setVisibility(8);
+    this.c = new GuessSongClickStagePresenter(this);
+    this.f.setVisibility(4);
+    this.g.setVisibility(4);
+    this.o = ((ImageView)findViewById(2131446158));
+    this.o.setVisibility(4);
+    this.z = ((ImageView)findViewById(2131446159));
+    super.c();
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
+    if (this.p == null)
     {
       AVGameLottieHelper.a(getContext(), "avgame_guess_song_playing/data.json", "avgame_guess_song_playing/images/", 140, 140, new GuessSongClickStageView.3(this));
       return;
     }
-    d();
+    e();
   }
   
-  protected void e()
+  protected void f()
   {
-    Object localObject = GameEngine.a().a();
-    if (!((EngineData)localObject).g())
+    Object localObject = GameEngine.a().s();
+    if (!((EngineData)localObject).N())
     {
-      super.e();
+      super.f();
       return;
     }
-    localObject = ((EngineData)localObject).a();
-    if ((localObject != null) && (!TextUtils.isEmpty(((GameItem)localObject).o))) {
-      localObject = ((GameItem)localObject).o;
+    localObject = ((EngineData)localObject).f();
+    if ((localObject != null) && (!TextUtils.isEmpty(((GameItem)localObject).u))) {
+      localObject = ((GameItem)localObject).u;
     } else {
       localObject = null;
     }
@@ -186,20 +186,20 @@ public class GuessSongClickStageView
     }
     if (localObject == null)
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      this.z.setImageDrawable(null);
       return;
     }
     localObject = URLDrawable.getDrawable((String)localObject);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    this.z.setImageDrawable((Drawable)localObject);
   }
   
   public void setFontStyle(FontStyleConfig paramFontStyleConfig)
   {
     super.setFontStyle(paramFontStyleConfig);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(paramFontStyleConfig.jdField_d_of_type_Int);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(paramFontStyleConfig.jdField_d_of_type_JavaLangString));
-    paramFontStyleConfig = new QuestionOptionItemConfig(paramFontStyleConfig.e, Color.parseColor(paramFontStyleConfig.jdField_h_of_type_JavaLangString), Color.parseColor(paramFontStyleConfig.jdField_g_of_type_JavaLangString), paramFontStyleConfig.jdField_g_of_type_Int, Color.parseColor(paramFontStyleConfig.u), paramFontStyleConfig.jdField_h_of_type_Int, Color.parseColor(paramFontStyleConfig.v));
-    this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsView.setConfig(paramFontStyleConfig);
+    this.e.setTextSize(paramFontStyleConfig.h);
+    this.e.setTextColor(Color.parseColor(paramFontStyleConfig.g));
+    paramFontStyleConfig = new QuestionOptionItemConfig(paramFontStyleConfig.l, Color.parseColor(paramFontStyleConfig.m), Color.parseColor(paramFontStyleConfig.k), paramFontStyleConfig.B, Color.parseColor(paramFontStyleConfig.A), paramFontStyleConfig.D, Color.parseColor(paramFontStyleConfig.C));
+    this.a.setConfig(paramFontStyleConfig);
   }
 }
 

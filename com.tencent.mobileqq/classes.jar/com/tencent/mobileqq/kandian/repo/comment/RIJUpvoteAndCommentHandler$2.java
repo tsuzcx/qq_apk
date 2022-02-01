@@ -20,9 +20,9 @@ class RIJUpvoteAndCommentHandler$2
   
   public void run()
   {
-    EntityTransaction localEntityTransaction = RIJUpvoteAndCommentHandler.b(this.this$0).getTransaction();
+    EntityTransaction localEntityTransaction = RIJUpvoteAndCommentHandler.c(this.this$0).getTransaction();
     localEntityTransaction.begin();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     int i = 0;
     Object localObject1;
     if (localIterator.hasNext()) {
@@ -57,7 +57,7 @@ class RIJUpvoteAndCommentHandler$2
         ((StringBuilder)localObject1).append(j);
         localObject1 = ((StringBuilder)localObject1).toString();
         QLog.d("RIJUpvoteAndCommentHandler", 1, new Object[] { "handle 8c8, feedsId = ", Long.valueOf(l), ", feedsType = ", Integer.valueOf(j) });
-        Object localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        Object localObject2 = this.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append(0);
@@ -65,7 +65,7 @@ class RIJUpvoteAndCommentHandler$2
         if (localObject2 != null) {
           RIJUpvoteAndCommentHandler.a(this.this$0, (AbsBaseArticleInfo)localObject2, localSocializeFeedsInfo, 0);
         }
-        localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject2 = this.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append(70);
@@ -73,7 +73,7 @@ class RIJUpvoteAndCommentHandler$2
         if (localObject2 != null) {
           RIJUpvoteAndCommentHandler.a(this.this$0, (AbsBaseArticleInfo)localObject2, localSocializeFeedsInfo, 70);
         }
-        localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject2 = this.b;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append(41403);
@@ -81,7 +81,7 @@ class RIJUpvoteAndCommentHandler$2
         if (localObject1 != null) {
           RIJUpvoteAndCommentHandler.a(this.this$0, (AbsBaseArticleInfo)localObject1, localSocializeFeedsInfo, 41403);
         }
-        if ((this.jdField_a_of_type_Boolean) && (localObject1 != null) && (((AbsBaseArticleInfo)localObject1).mSocialFeedInfo != null))
+        if ((this.c) && (localObject1 != null) && (((AbsBaseArticleInfo)localObject1).mSocialFeedInfo != null))
         {
           boolean bool = RIJUpvoteAndCommentHandler.a(this.this$0, (AbsBaseArticleInfo)localObject1);
           if (!bool) {
@@ -95,8 +95,8 @@ class RIJUpvoteAndCommentHandler$2
         QLog.d("RIJUpvoteAndCommentHandler", 1, "handle0x8c8UpdateUpvoteAndComment merge failed ", localException);
       }
       break;
-      if ((i != 0) && (RIJUpvoteAndCommentHandler.a(this.this$0) != null)) {
-        RIJUpvoteAndCommentHandler.b(this.this$0).post(new RIJUpvoteAndCommentHandler.2.1(this));
+      if ((i != 0) && (RIJUpvoteAndCommentHandler.d(this.this$0) != null)) {
+        RIJUpvoteAndCommentHandler.e(this.this$0).post(new RIJUpvoteAndCommentHandler.2.1(this));
       }
       localEntityTransaction.commit();
       localEntityTransaction.end();
@@ -108,7 +108,7 @@ class RIJUpvoteAndCommentHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.comment.RIJUpvoteAndCommentHandler.2
  * JD-Core Version:    0.7.0.1
  */

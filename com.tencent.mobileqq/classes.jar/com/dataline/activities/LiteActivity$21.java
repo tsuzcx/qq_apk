@@ -15,10 +15,10 @@ class LiteActivity$21
   
   public void onClick(View paramView)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
+    com.tencent.mobileqq.activity.aio.AIOUtils.q = true;
     StatisticAssist.a(this.a.app.getApplication().getApplicationContext(), this.a.app.getCurrentAccountUin(), "dl_ckadv");
     Intent localIntent = new Intent(this.a, LiteAdvanceActivity.class);
-    localIntent.putExtra("targetUin", this.a.b);
+    localIntent.putExtra("targetUin", this.a.k);
     this.a.startActivityForResult(localIntent, 7);
     EventCollector.getInstance().onViewClicked(paramView);
   }

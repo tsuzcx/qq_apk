@@ -19,27 +19,16 @@ import org.jetbrains.annotations.Nullable;
 public final class RIJChannelBannerView
   extends FrameLayout
 {
-  public static final RIJChannelBannerView.Companion a;
+  public static final RIJChannelBannerView.Companion a = new RIJChannelBannerView.Companion(null);
   @NotNull
-  private PTSItemView a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerView$Companion = new RIJChannelBannerView.Companion(null);
-  }
+  private PTSItemView b;
   
   public RIJChannelBannerView(@NotNull Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView = new PTSItemView(paramContext);
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
-    addView((View)this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView);
-  }
-  
-  @NotNull
-  public final PTSItemView a()
-  {
-    return this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView;
+    this.b = new PTSItemView(paramContext);
+    this.b.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
+    addView((View)this.b);
   }
   
   public final void a(@NotNull PTSComposer paramPTSComposer, @Nullable IPTSLiteEventListener paramIPTSLiteEventListener)
@@ -50,23 +39,29 @@ public final class RIJChannelBannerView
       QLog.i("RIJChannelBannerView", 1, "[refresh] failed, newPageName is null");
       return;
     }
-    removeView((View)this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView);
+    removeView((View)this.b);
     PTSItemView localPTSItemView = new PTSItemView(getContext());
     localPTSItemView.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
     addView((View)localPTSItemView);
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView = localPTSItemView;
-    paramPTSComposer.layoutToView(this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView, paramIPTSLiteEventListener);
+    this.b = localPTSItemView;
+    paramPTSComposer.layoutToView(this.b, paramIPTSLiteEventListener);
+  }
+  
+  @NotNull
+  public final PTSItemView getPtsItemView()
+  {
+    return this.b;
   }
   
   public final void setPtsItemView(@NotNull PTSItemView paramPTSItemView)
   {
     Intrinsics.checkParameterIsNotNull(paramPTSItemView, "<set-?>");
-    this.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemView = paramPTSItemView;
+    this.b = paramPTSItemView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelBannerView
  * JD-Core Version:    0.7.0.1
  */

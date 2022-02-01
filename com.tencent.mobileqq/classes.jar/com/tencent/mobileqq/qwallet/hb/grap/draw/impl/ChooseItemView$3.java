@@ -12,19 +12,19 @@ class ChooseItemView$3
   
   public void onClick(View paramView)
   {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
+    if ((ChooseItemView.b(this.a) != null) && (ChooseItemView.b(this.a).size() > 1))
     {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a.a(ChooseItemView.b(this.a));
+      Collections.shuffle(ChooseItemView.b(this.a));
+      this.a.a.a(ChooseItemView.c(this.a));
     }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
+    if (ChooseItemView.d(this.a) != null) {
+      ChooseItemView.d(this.a).onClick(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.ChooseItemView.3
  * JD-Core Version:    0.7.0.1
  */

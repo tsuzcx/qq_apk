@@ -8,7 +8,7 @@ public final class MaterialFadeThrough
 {
   public MaterialFadeThrough()
   {
-    super(a(), a());
+    super(a(), b());
   }
   
   private static FadeThroughProvider a()
@@ -16,7 +16,7 @@ public final class MaterialFadeThrough
     return new FadeThroughProvider();
   }
   
-  private static VisibilityAnimatorProvider a()
+  private static VisibilityAnimatorProvider b()
   {
     ScaleProvider localScaleProvider = new ScaleProvider();
     localScaleProvider.a(false);
@@ -26,7 +26,7 @@ public final class MaterialFadeThrough
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.MaterialFadeThrough
  * JD-Core Version:    0.7.0.1
  */

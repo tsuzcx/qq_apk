@@ -2,11 +2,10 @@ package com.tencent.mobileqq.kandian.biz.ugc.publishvideotask;
 
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.video.compress.VideoMediaInfo;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils;
 import com.tencent.mobileqq.kandian.biz.ugc.entity.UgcVideo;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 
 class CompressVideoTaskStep$1$1$1
   implements Runnable
@@ -16,66 +15,65 @@ class CompressVideoTaskStep$1$1$1
   public void run()
   {
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_Int != 1)) {
+    if ((this.b.a != 0) && (this.b.a != 1)) {
       bool = false;
     } else {
       bool = true;
     }
-    Object localObject;
+    UgcVideo localUgcVideo;
     if (bool)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressPath = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.fileMd5 = this.jdField_a_of_type_JavaLangString;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
-      VideoMediaInfo localVideoMediaInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoMediaInfo;
+      this.b.d.a.compressPath = this.b.b;
+      this.b.d.a.fileMd5 = this.a;
+      localUgcVideo = this.b.d.a;
+      VideoMediaInfo localVideoMediaInfo = this.b.c;
       long l2 = 0L;
       if (localVideoMediaInfo != null) {
-        l1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoMediaInfo.d;
+        l1 = this.b.c.g;
       } else {
         l1 = 0L;
       }
-      ((UgcVideo)localObject).fileSize = l1;
-      if (!CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressProgress = 100;
+      localUgcVideo.fileSize = l1;
+      if (!CompressVideoTaskStep.a(this.b.d.b)) {
+        this.b.d.a.compressProgress = 100;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressTime = 0L;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressTime = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.startCompressTime);
+      this.b.d.a.compressTime = 0L;
+      if (this.b.a == 0) {
+        this.b.d.a.compressTime = (System.currentTimeMillis() - this.b.d.a.startCompressTime);
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+      localUgcVideo = this.b.d.a;
       long l1 = l2;
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoMediaInfo != null) {
-        l1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoCompressVideoMediaInfo.b;
+      if (this.b.c != null) {
+        l1 = this.b.c.d;
       }
-      ((UgcVideo)localObject).bitrate = l1;
+      localUgcVideo.bitrate = l1;
     }
     else
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_Int == 6)
+      if (this.b.a == 6)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.status = UgcVideo.STATUS_PAUSE;
+        this.b.d.a.status = UgcVideo.STATUS_PAUSE;
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.status = UgcVideo.STATUS_FAILED;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
-        ((UgcVideo)localObject).retryTime += 1;
+        this.b.d.a.status = UgcVideo.STATUS_FAILED;
+        localUgcVideo = this.b.d.a;
+        localUgcVideo.retryTime += 1;
       }
-      CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep, false);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressProgress = 0;
-      localObject = RIJUgcUtils.a(RIJQQAppInterfaceUtil.a(), this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo).addValueSafe("compress_time", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo.compressTime)).addValueSafe("error_code", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_Int)).build();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountSimpleReportWithR5("0X800AC65", (String)localObject);
+      CompressVideoTaskStep.a(this.b.d.b, false);
+      this.b.d.a.compressProgress = 0;
+      PublicAccountReportUtils.a("0X800AC65", RIJUgcUtils.a(RIJQQAppInterfaceUtil.a(), this.b.d.a).addValueSafe("compress_time", Long.valueOf(this.b.d.a.compressTime)).addValueSafe("error_code", Integer.valueOf(this.b.a)).build());
     }
-    CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep).d(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo);
-    if (CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep) != null) {
-      CompressVideoTaskStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep).a(1, bool, true, null);
+    CompressVideoTaskStep.b(this.b.d.b).d(this.b.d.a);
+    if (CompressVideoTaskStep.c(this.b.d.b) != null) {
+      CompressVideoTaskStep.c(this.b.d.b).a(1, bool, true, null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep$1.jdField_a_of_type_ComTencentMobileqqKandianBizUgcPublishvideotaskCompressVideoTaskStep.d();
+    this.b.d.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.publishvideotask.CompressVideoTaskStep.1.1.1
  * JD-Core Version:    0.7.0.1
  */

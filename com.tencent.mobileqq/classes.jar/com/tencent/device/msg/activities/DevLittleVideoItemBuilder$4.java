@@ -17,54 +17,54 @@ class DevLittleVideoItemBuilder$4
 {
   DevLittleVideoItemBuilder$4(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder, MessageForDevLittleVideo paramMessageForDevLittleVideo, ShortVideoRealItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i = 1;
     if (paramInt == 0)
     {
-      boolean bool = NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.getApplication().getApplicationContext());
-      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+      boolean bool = NetworkUtil.isNetworkAvailable(this.d.d.getApplication().getApplicationContext());
+      paramView = this.a;
       if (bool) {
         paramInt = 2002;
       } else {
         paramInt = 2005;
       }
       paramView.videoFileStatus = paramInt;
-      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+      paramView = this.a;
       paramView.videoFileProgress = 0;
       paramView.serial();
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.getMessageFacade().a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
+      this.d.d.getMessageFacade().a(this.a.frienduin, this.a.istroop, this.a.uniseq, this.a.msgData);
       if (bool)
       {
-        if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mThumbFilePath))
+        if (!FileUtils.fileExistsAndNotEmpty(this.a.mThumbFilePath))
         {
-          this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.c(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+          this.d.c(this.a);
           paramInt = 1;
         }
         else
         {
           paramInt = 0;
         }
-        if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileName))
+        if (!FileUtils.fileExistsAndNotEmpty(this.a.videoFileName))
         {
-          this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+          this.d.b(this.a);
           paramInt = i;
         }
         if (paramInt != 0)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.a.setFailedIconVisable(false, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder);
-          paramView = this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder;
-          MessageForDevLittleVideo localMessageForDevLittleVideo = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
-          DevLittleVideoItemBuilder.b(paramView, localMessageForDevLittleVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder, localMessageForDevLittleVideo.videoFileProgress, false);
+          this.b.j.setFailedIconVisable(false, this.d);
+          paramView = this.d;
+          MessageForDevLittleVideo localMessageForDevLittleVideo = this.a;
+          DevLittleVideoItemBuilder.b(paramView, localMessageForDevLittleVideo, this.b, localMessageForDevLittleVideo.videoFileProgress, false);
         }
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

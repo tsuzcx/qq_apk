@@ -26,16 +26,16 @@ class EmojiManagerServiceImpl$3
       try
       {
         super.onDone(paramDownloadTask);
-        Bundle localBundle = paramDownloadTask.a();
+        Bundle localBundle = paramDownloadTask.b();
         EmoticonPackage localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
         this.a.statusMap.remove(localEmoticonPackage.epId);
         int i = localBundle.getInt("businessType");
-        if (paramDownloadTask.a() != 3)
+        if (paramDownloadTask.e() != 3)
         {
           bool = true;
-          long l1 = paramDownloadTask.h;
-          long l2 = paramDownloadTask.g;
-          this.a.handleEmoticonPackageDownloaded(localBundle, paramDownloadTask, bool, paramDownloadTask.jdField_a_of_type_Int, paramDownloadTask.d, l1 - l2, i);
+          long l1 = paramDownloadTask.B;
+          long l2 = paramDownloadTask.A;
+          this.a.handleEmoticonPackageDownloaded(localBundle, paramDownloadTask, bool, paramDownloadTask.c, paramDownloadTask.r, l1 - l2, i);
           return;
         }
       }
@@ -52,8 +52,8 @@ class EmojiManagerServiceImpl$3
   {
     try
     {
-      Object localObject2 = paramDownloadTask.a();
-      int i = ((Bundle)localObject2).getInt(paramDownloadTask.c);
+      Object localObject2 = paramDownloadTask.b();
+      int i = ((Bundle)localObject2).getInt(paramDownloadTask.h);
       Object localObject1 = (EmoticonPackage)((Bundle)localObject2).getSerializable("emoticonPackage");
       if (localObject1 == null) {
         return;
@@ -69,30 +69,30 @@ class EmojiManagerServiceImpl$3
         localStringBuilder.append(paramDownloadTask);
         QLog.d((String)localObject3, 2, localStringBuilder.toString());
       }
-      EmojiManagerServiceImpl.listenerManager.notifyPackageProgress((EmoticonPackage)localObject1, (int)paramDownloadTask.jdField_a_of_type_Long, (int)paramDownloadTask.b);
+      EmojiManagerServiceImpl.listenerManager.notifyPackageProgress((EmoticonPackage)localObject1, (int)paramDownloadTask.j, (int)paramDownloadTask.k);
       if (i == 9)
       {
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(paramDownloadTask.c);
+        ((StringBuilder)localObject3).append(paramDownloadTask.h);
         ((StringBuilder)localObject3).append("emoticonId");
         localObject2 = ((Bundle)localObject2).getString(((StringBuilder)localObject3).toString());
         if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          EmojiManagerServiceImpl.access$100(this.a, ((EmoticonPackage)localObject1).epId, (String)localObject2, paramDownloadTask.jdField_a_of_type_Int);
+          EmojiManagerServiceImpl.access$100(this.a, ((EmoticonPackage)localObject1).epId, (String)localObject2, paramDownloadTask.c);
         }
       }
-      if (paramDownloadTask.jdField_a_of_type_Int != 0)
+      if (paramDownloadTask.c != 0)
       {
         localObject2 = EmojiManagerServiceImpl.access$000();
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("onDoneFile : ondone error , reportCode = ");
-        ((StringBuilder)localObject3).append(paramDownloadTask.jdField_a_of_type_Int);
+        ((StringBuilder)localObject3).append(paramDownloadTask.c);
         QLog.e((String)localObject2, 1, ((StringBuilder)localObject3).toString());
         if (EmojiManagerServiceConstant.isCover(i)) {
-          EmojiManagerServiceImpl.listenerManager.notifyEmoticonCoverListener((EmoticonPackage)localObject1, i, -1, paramDownloadTask.jdField_a_of_type_Int);
+          EmojiManagerServiceImpl.listenerManager.notifyEmoticonCoverListener((EmoticonPackage)localObject1, i, -1, paramDownloadTask.c);
         }
         localObject1 = ((EmoticonPackage)localObject1).epId;
         localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(paramDownloadTask.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(paramDownloadTask.c);
         ((StringBuilder)localObject2).append("");
         VasReportUtils.a("emotionType", "emotionActionDownload", "10", (String)localObject1, "", "", ((StringBuilder)localObject2).toString(), "", "", "");
         return;
@@ -116,7 +116,7 @@ class EmojiManagerServiceImpl$3
   
   public boolean onStart(DownloadTask paramDownloadTask)
   {
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramDownloadTask.a().getSerializable("emoticonPackage");
+    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramDownloadTask.b().getSerializable("emoticonPackage");
     EmojiManagerServiceImpl.listenerManager.notifyPackageStart(localEmoticonPackage);
     super.onStart(paramDownloadTask);
     return true;
@@ -124,7 +124,7 @@ class EmojiManagerServiceImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.api.impl.EmojiManagerServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -49,7 +49,7 @@ public class MusicGeneQQBrowserActivity
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong)
   {
-    paramString6 = new AbsShareMsg.Builder(StructMsgForAudioShare.class).c(2).a(HardCodeUtil.a(2131707060)).a();
+    paramString6 = new AbsShareMsg.Builder(StructMsgForAudioShare.class).c(2).a(HardCodeUtil.a(2131904900)).a();
     paramString6.mContentSrc = paramString3;
     paramString6.mContentTitle = paramString5;
     paramString6.mContentCover = paramString1;
@@ -68,7 +68,7 @@ public class MusicGeneQQBrowserActivity
     } else {
       paramString1.putInt("req_type", 1);
     }
-    paramString1.putString("app_name", HardCodeUtil.a(2131707059));
+    paramString1.putString("app_name", HardCodeUtil.a(2131904899));
     paramString1.putString("detail_url", paramString6.mMsgUrl);
     paramString1.putString("audio_url", paramString6.mContentSrc);
     paramString1.putString("image_url_remote", paramString6.mContentCover);
@@ -154,7 +154,7 @@ public class MusicGeneQQBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

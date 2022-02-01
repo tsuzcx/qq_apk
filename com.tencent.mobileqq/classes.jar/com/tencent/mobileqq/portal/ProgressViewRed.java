@@ -15,16 +15,16 @@ import android.util.AttributeSet;
 public class ProgressViewRed
   extends TimeDownTextView
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 10000L;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130845384, 2130845385, 2130845386, 2130845387, 2130845388, 2130845389, 2130845390, 2130845391, 2130845392, 2130845393, 2130845394, 2130845395, 2130845396, 2130845397, 2130845398, 2130845399, 2130845400, 2130845401, 2130845402, 2130845403 };
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = null;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = 0L;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private Drawable c;
+  private Drawable d;
+  private int e;
+  private long f = 10000L;
+  private long g = 0L;
+  private int[] h = { 2130846840, 2130846841, 2130846842, 2130846843, 2130846844, 2130846845, 2130846846, 2130846847, 2130846848, 2130846849, 2130846850, 2130846851, 2130846852, 2130846853, 2130846854, 2130846855, 2130846856, 2130846857, 2130846858, 2130846859 };
+  private Bitmap[] i = null;
+  private Rect j;
+  private RectF k;
+  private int l = 0;
   
   public ProgressViewRed(Context paramContext)
   {
@@ -40,102 +40,102 @@ public class ProgressViewRed
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#FF9F89"));
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#F34112"));
+    this.a.setColor(-1);
+    this.c = new ColorDrawable(Color.parseColor("#FF9F89"));
+    this.d = new ColorDrawable(Color.parseColor("#F34112"));
     try
     {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfInt.length];
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      this.i = new Bitmap[this.h.length];
+      int m = 0;
+      while (m < this.h.length)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_ArrayOfInt[i]);
-        i += 1;
+        this.i[m] = BitmapFactory.decodeResource(getResources(), this.h[m]);
+        m += 1;
       }
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       localOutOfMemoryError.printStackTrace();
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+      this.j = new Rect();
+      this.k = new RectF();
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public void a(long paramLong1, long paramLong2, CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Long = (paramLong2 - paramLong1);
+    this.f = paramLong2;
+    this.g = (paramLong2 - paramLong1);
     setText(paramCharSequence);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.e == 0) {
       return;
     }
-    int k = getWidth();
-    int m = getHeight();
-    long l1 = k;
-    long l2 = this.jdField_b_of_type_Long;
-    int n = (int)(l1 * l2 / this.jdField_a_of_type_Long);
+    int i1 = getWidth();
+    int i2 = getHeight();
+    long l1 = i1;
+    long l2 = this.g;
+    int i3 = (int)(l1 * l2 / this.f);
     if (l2 > 0L)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, n, m);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.c.setBounds(0, 0, i3, i2);
+      this.c.draw(paramCanvas);
     }
-    if (this.jdField_b_of_type_Long < this.jdField_a_of_type_Long)
+    if (this.g < this.f)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setBounds(n, 0, k, m);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      int j = this.jdField_b_of_type_Int;
-      Object localObject = this.jdField_a_of_type_ArrayOfInt;
-      int i = j;
-      if (j >= localObject.length) {
-        i = j % localObject.length;
+      this.d.setBounds(i3, 0, i1, i2);
+      this.d.draw(paramCanvas);
+      int n = this.l;
+      Object localObject = this.h;
+      int m = n;
+      if (n >= localObject.length) {
+        m = n % localObject.length;
       }
-      j = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getWidth();
-      int i1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i].getHeight();
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, j, i1);
-      int i2 = k - n;
-      if (j <= i2)
+      n = this.i[m].getWidth();
+      int i4 = this.i[m].getHeight();
+      this.j.set(0, 0, n, i4);
+      int i5 = i1 - i3;
+      if (n <= i5)
       {
-        localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i];
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, n + j, m);
+        localObject = this.i[m];
+        this.k.set(i3, 0.0F, i3 + n, i2);
       }
-      else if (i2 > 0)
+      else if (i5 > 0)
       {
-        localObject = Bitmap.createBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i], 0, 0, i2, i1, null, false);
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(n, 0.0F, k, m);
+        localObject = Bitmap.createBitmap(this.i[m], 0, 0, i5, i4, null, false);
+        this.k.set(i3, 0.0F, i1, i2);
       }
       else
       {
         localObject = null;
       }
       if (localObject != null) {
-        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRectF, null);
+        paramCanvas.drawBitmap((Bitmap)localObject, null, this.k, null);
       }
-      this.jdField_b_of_type_Int += 1;
+      this.l += 1;
     }
     super.draw(paramCanvas);
   }
   
+  public int getProgressViewAlpha()
+  {
+    return this.e;
+  }
+  
   public void setAlpha(int paramInt)
   {
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInt);
+    this.d.setAlpha(paramInt);
+    this.c.setAlpha(paramInt);
     setTextColor(Color.argb(paramInt, 255, 255, 255));
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ProgressViewRed
  * JD-Core Version:    0.7.0.1
  */

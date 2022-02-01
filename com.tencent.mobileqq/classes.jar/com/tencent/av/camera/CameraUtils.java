@@ -7,6 +7,9 @@ import com.tencent.mobileqq.qroute.QRoute;
 
 public class CameraUtils
 {
+  public static final Integer a = Integer.valueOf(2);
+  public static final Integer b = Integer.valueOf(3);
+  
   public static ICameraManagerApi a(Context paramContext)
   {
     return ((ICameraUtilsStaticApi)QRoute.api(ICameraUtilsStaticApi.class)).getInstance(paramContext);

@@ -16,19 +16,19 @@ import java.util.Iterator;
 public class AnimationManager
   extends AbstractAnimationManager
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  protected View a;
-  AbstractImageListModel jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel;
-  protected AnimationView a;
-  View b;
-  View c;
+  Activity f;
+  protected View g;
+  protected AnimationView h;
+  View i;
+  View j;
+  AbstractImageListModel k;
+  int l;
   
   public AnimationManager(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = paramAbstractImageListModel;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().densityDpi;
+    this.f = paramActivity;
+    this.k = paramAbstractImageListModel;
+    this.l = paramActivity.getResources().getDisplayMetrics().densityDpi;
   }
   
   private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, GalleryImage paramGalleryImage, boolean paramBoolean)
@@ -44,11 +44,11 @@ public class AnimationManager
       if (!paramGalleryImage.needAnimation(paramBoolean)) {
         return null;
       }
-      int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-      int k = localDrawable.getIntrinsicWidth();
-      int m = localDrawable.getIntrinsicHeight();
-      paramRect2.set(0, 0, k, m);
+      int m = this.g.getWidth();
+      int n = this.g.getHeight();
+      int i1 = localDrawable.getIntrinsicWidth();
+      int i2 = localDrawable.getIntrinsicHeight();
+      paramRect2.set(0, 0, i1, i2);
       paramRect3.set(paramRect1);
       if ((paramGalleryImage instanceof AIORichMediaInfo)) {
         paramRect2 = ((AIORichMediaInfo)paramGalleryImage).a;
@@ -63,26 +63,18 @@ public class AnimationManager
         {
           paramRect1 = localObject;
           if ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable)) {
-            paramRect1 = AnimationUtils.a(k, m, i, j, false, paramRect2);
+            paramRect1 = AnimationUtils.a(i1, i2, m, n, false, paramRect2);
           }
         }
       }
       paramRect3 = paramRect1;
       if (paramRect1 == null) {
-        paramRect3 = AnimationUtils.a(k, m, i, j, paramRect2);
+        paramRect3 = AnimationUtils.a(i1, i2, m, n, paramRect2);
       }
       paramRect4.set(paramRect3);
       return localDrawable;
     }
     return null;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367431);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362696));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131376809);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131363349);
   }
   
   public boolean b()
@@ -92,39 +84,39 @@ public class AnimationManager
     if (bool2) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      b();
+    if (this.g == null) {
+      f();
     }
     Rect localRect1 = new Rect();
     Rect localRect2 = new Rect();
-    GalleryImage localGalleryImage = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    GalleryImage localGalleryImage = this.k.d();
     if (localGalleryImage == null) {
       return false;
     }
     Rect localRect3 = localGalleryImage.getStartSrcRect();
     Rect localRect4 = new Rect();
     Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localGalleryImage, true);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     if (localDrawable == null) {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    if (!this.jdField_b_of_type_Boolean)
+    this.d = bool1;
+    if (!this.d)
     {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+      this.h.setVisibility(4);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localGalleryImage.isImgCenterCropMode;
+      this.h.setVisibility(0);
+      this.h.setAnimationListener(this);
+      this.h.a = localGalleryImage.isImgCenterCropMode;
       if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect1, localRect2, localGalleryImage.getCutValue(), this.jdField_a_of_type_Long);
+        this.h.a(localDrawable, localRect1, localRect2, localGalleryImage.getCutValue(), this.c);
       } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
+        this.h.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.c);
       }
     }
-    return this.jdField_b_of_type_Boolean;
+    return this.d;
   }
   
   public boolean c()
@@ -134,64 +126,64 @@ public class AnimationManager
     if (bool2) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      b();
+    if (this.g == null) {
+      f();
     }
     Rect localRect2 = new Rect();
     Rect localRect3 = new Rect();
-    GalleryImage localGalleryImage = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    GalleryImage localGalleryImage = this.k.d();
     Rect localRect1 = null;
     if (localGalleryImage != null) {
       localRect1 = localGalleryImage.getStartSrcRect();
     }
     Rect localRect4 = new Rect();
     Drawable localDrawable = a(localRect1, localRect4, localRect2, localRect3, localGalleryImage, false);
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     if (localDrawable == null) {
       bool1 = false;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    if (!this.jdField_b_of_type_Boolean)
+    this.d = bool1;
+    if (!this.d)
     {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+      this.h.setVisibility(4);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localGalleryImage.isImgCenterCropMode;
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.jdField_a_of_type_Long);
+      this.h.setVisibility(0);
+      this.h.setAnimationListener(this);
+      this.h.a = localGalleryImage.isImgCenterCropMode;
+      this.h.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.c);
       if (localRect1 == null) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.jdField_a_of_type_Long);
+        this.h.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.c);
       } else {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
+        this.h.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.c);
       }
     }
-    return this.jdField_b_of_type_Boolean;
+    return this.d;
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AnimationLister)localIterator.next()).f();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.g = this.f.findViewById(2131433934);
+    this.h = ((AnimationView)this.f.findViewById(2131428368));
+    this.i = this.f.findViewById(2131445137);
+    this.j = this.f.findViewById(2131429234);
   }
   
   public void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.b = false;
+    this.h.setVisibility(4);
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((AnimationLister)localIterator.next()).g();
     }
+    this.a.clear();
   }
   
   public void h()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((AnimationLister)localIterator.next()).h();
     }
@@ -199,18 +191,26 @@ public class AnimationManager
   
   public void i()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext()) {
       ((AnimationLister)localIterator.next()).i();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  public void j()
+  {
+    this.b = false;
+    this.h.setVisibility(4);
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((AnimationLister)localIterator.next()).j();
+    }
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.AnimationManager
  * JD-Core Version:    0.7.0.1
  */

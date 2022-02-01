@@ -11,14 +11,14 @@ class FastWebActivity$31
   
   public void run()
   {
-    if ((FastWebActivity.a(this.this$0) != null) && (FastWebActivity.a(this.this$0) != null))
+    if ((FastWebActivity.O(this.this$0) != null) && (FastWebActivity.o(this.this$0) != null))
     {
-      if (FastWebActivity.a(this.this$0).b)
+      if (FastWebActivity.O(this.this$0).d)
       {
-        FastWebActivity.a(this.this$0).f();
+        FastWebActivity.o(this.this$0).j();
         return;
       }
-      FastWebActivity.a(this.this$0).e();
+      FastWebActivity.o(this.this$0).i();
       return;
     }
     QLog.d("FastWebActivity", 1, "error! scrollToHotNewComment");
@@ -26,7 +26,7 @@ class FastWebActivity$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.31
  * JD-Core Version:    0.7.0.1
  */

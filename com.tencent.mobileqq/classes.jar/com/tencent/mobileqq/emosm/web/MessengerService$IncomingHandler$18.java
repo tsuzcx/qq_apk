@@ -23,8 +23,8 @@ class MessengerService$IncomingHandler$18
           localJSONObject.put("msg", paramBundle.getString("errMsg"));
         }
         localBundle.putString("result", localJSONObject.toString());
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+        this.a.putBundle("response", localBundle);
+        this.b.a(this.a);
         return;
       }
       catch (Throwable paramBundle)
@@ -36,7 +36,7 @@ class MessengerService$IncomingHandler$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.18
  * JD-Core Version:    0.7.0.1
  */

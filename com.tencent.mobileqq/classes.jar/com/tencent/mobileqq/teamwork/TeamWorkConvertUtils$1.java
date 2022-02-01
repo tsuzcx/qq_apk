@@ -16,7 +16,7 @@ final class TeamWorkConvertUtils$1
 {
   TeamWorkConvertUtils$1(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, ActionSheet paramActionSheet, AppInterface paramAppInterface, Context paramContext, String paramString, TeamWorkConvertUtils.TencentDocGetProgressDialogCallback paramTencentDocGetProgressDialogCallback) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     Object localObject;
     Context localContext;
@@ -25,42 +25,42 @@ final class TeamWorkConvertUtils$1
       if (paramInt != 1) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g = 0;
-      ((ITeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getImportHandlerName())).removeFromConvertedMap(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      paramView = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-      localContext = this.jdField_a_of_type_AndroidContentContext;
-      paramView = TeamWorkConvertUtils.a(paramView, (TeamWorkFileImportInfo)localObject, localContext, this.jdField_a_of_type_JavaLangString, localContext.getString(2131719542), true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkConvertUtils$TencentDocGetProgressDialogCallback;
+      this.a.B = 0;
+      ((ITeamWorkFileImportHandler)this.c.getBusinessHandler(((ITeamWorkFacadeCreator)QRoute.api(ITeamWorkFacadeCreator.class)).getImportHandlerName())).removeFromConvertedMap(this.a);
+      this.b.dismiss();
+      paramView = this.c;
+      localObject = this.a;
+      localContext = this.d;
+      paramView = TeamWorkConvertUtils.a(paramView, (TeamWorkFileImportInfo)localObject, localContext, this.e, localContext.getString(2131917105), true);
+      localObject = this.f;
       if (localObject != null) {
         ((TeamWorkConvertUtils.TencentDocGetProgressDialogCallback)localObject).a(paramView);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d()) {
-        TenDocLogReportHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0X8009ED2");
+      if (this.a.d()) {
+        TenDocLogReportHelper.a(this.c, "0X8009ED2");
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g = 2;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      paramView = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-      localContext = this.jdField_a_of_type_AndroidContentContext;
-      paramView = TeamWorkConvertUtils.a(paramView, (TeamWorkFileImportInfo)localObject, localContext, this.jdField_a_of_type_JavaLangString, localContext.getString(2131719542), true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkConvertUtils$TencentDocGetProgressDialogCallback;
+      this.a.B = 2;
+      this.b.dismiss();
+      paramView = this.c;
+      localObject = this.a;
+      localContext = this.d;
+      paramView = TeamWorkConvertUtils.a(paramView, (TeamWorkFileImportInfo)localObject, localContext, this.e, localContext.getString(2131917105), true);
+      localObject = this.f;
       if (localObject != null) {
         ((TeamWorkConvertUtils.TencentDocGetProgressDialogCallback)localObject).a(paramView);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d()) {
-        TenDocLogReportHelper.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0X8009ED1");
+      if (this.a.d()) {
+        TenDocLogReportHelper.a(this.c, "0X8009ED1");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkConvertUtils.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,24 +21,24 @@ class GroupTeamWorkListActivity$12
   {
     if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131692183), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131889169), 0).show(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131299920));
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler != null)
+    if (this.b.i != null)
     {
-      paramDialogInterface = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getDocId(this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.domainId, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.padId);
-      if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCheckBoxState()) {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler.reqDeleteGroupTeamWorkFile(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, true);
+      paramDialogInterface = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getDocId(this.a.domainId, this.a.padId);
+      if (GroupTeamWorkListActivity.d(this.b).getCheckBoxState()) {
+        this.b.i.reqDeleteGroupTeamWorkFile(this.b.m, paramDialogInterface, this.a.pad_url, true);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler.reqDeleteGroupTeamWorkFile(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.jdField_a_of_type_Long, paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqTeamworkPadInfo.pad_url, false);
+        this.b.i.reqDeleteGroupTeamWorkFile(this.b.m, paramDialogInterface, this.a.pad_url, false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(1);
+      this.b.a(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.12
  * JD-Core Version:    0.7.0.1
  */

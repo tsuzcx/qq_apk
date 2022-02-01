@@ -14,15 +14,15 @@ class QZoneManagerImp$3
   
   public void run()
   {
-    if (QZoneManagerImp.a(this.this$0) == null) {
+    if (QZoneManagerImp.d(this.this$0) == null) {
       return;
     }
-    ContentValues localContentValues = this.jdField_a_of_type_CooperationQzoneUndealCountQZoneCountInfo.convertToContentValues();
-    localContentValues.put("own_uin", QZoneManagerImp.a(this.this$0).getAccount());
-    localContentValues.put("type", Integer.valueOf(this.jdField_a_of_type_Int));
+    ContentValues localContentValues = this.a.convertToContentValues();
+    localContentValues.put("own_uin", QZoneManagerImp.d(this.this$0).getAccount());
+    localContentValues.put("type", Integer.valueOf(this.b));
     try
     {
-      QZoneManagerImp.a(this.this$0).getApplication().getContentResolver().insert(QZoneConfigConst.h, localContentValues);
+      QZoneManagerImp.d(this.this$0).getApplication().getContentResolver().insert(QZoneConfigConst.i, localContentValues);
       return;
     }
     catch (Exception localException)
@@ -33,7 +33,7 @@ class QZoneManagerImp$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.3
  * JD-Core Version:    0.7.0.1
  */

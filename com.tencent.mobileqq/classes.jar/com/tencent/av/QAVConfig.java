@@ -166,14 +166,14 @@ public class QAVConfig
     {
       if ((paramInt == 180) || (paramInt == 218))
       {
-        paramInt = QAVConfigUtils.a(paramInt, QAVConfigUtils.b);
+        paramInt = QAVConfigUtils.c(paramInt, QAVConfigUtils.b);
         paramConfigSeq.version.set(paramInt);
         paramConfigSeq.compress.set(1);
       }
     }
     else
     {
-      paramInt = SharedPreUtils.a(BaseApplicationImpl.getContext());
+      paramInt = SharedPreUtils.c(BaseApplicationImpl.getContext());
       paramConfigSeq.version.set(paramInt);
       paramConfigSeq.compress.set(1);
     }
@@ -228,12 +228,12 @@ public class QAVConfig
       {
         if (paramInt != 218)
         {
-          paramString = HardCodeUtil.a(2131708892);
+          paramString = HardCodeUtil.a(2131906663);
           paramInt = -1;
         }
         else
         {
-          i = QAVConfigUtils.a(paramInt, QAVConfigUtils.b);
+          i = QAVConfigUtils.c(paramInt, QAVConfigUtils.b);
           paramString = a(paramConfig, i, paramInt);
           if (paramString != null) {
             QAVConfigUtils.a(paramInt, QAVConfigUtils.b, j, paramString);
@@ -243,7 +243,7 @@ public class QAVConfig
       }
       else
       {
-        i = QAVConfigUtils.a(paramInt, QAVConfigUtils.b);
+        i = QAVConfigUtils.c(paramInt, QAVConfigUtils.b);
         paramConfig = a(paramConfig, i, paramInt);
         paramInt = i;
         paramString = paramConfig;
@@ -257,7 +257,7 @@ public class QAVConfig
     }
     else
     {
-      i = SharedPreUtils.a(((QQAppInterface)localObject).getApplication());
+      i = SharedPreUtils.c(((QQAppInterface)localObject).getApplication());
       paramConfig = a(paramConfig, i, paramInt);
       paramInt = i;
       paramString = paramConfig;

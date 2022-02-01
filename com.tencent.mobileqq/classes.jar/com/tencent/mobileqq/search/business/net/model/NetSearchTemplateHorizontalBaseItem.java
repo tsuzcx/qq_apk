@@ -23,24 +23,24 @@ public class NetSearchTemplateHorizontalBaseItem
   implements View.OnClickListener
 {
   public static final String a = "NetSearchTemplateHorizontalBaseItem";
-  public int a;
-  public JSONObject a;
-  public String b;
-  public String j;
+  public JSONObject b;
+  public int c;
+  public String d;
+  public String e;
   
   protected NetSearchTemplateHorizontalBaseItem(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt1);
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramJSONObject;
+    this.c = paramInt2;
     b(paramJSONObject);
   }
   
   protected NetSearchTemplateHorizontalBaseItem(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
   {
     super(paramString, paramLong, paramList, paramResultItem, paramInt1);
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramJSONObject;
+    this.c = paramInt2;
     b(paramJSONObject);
   }
   
@@ -57,23 +57,23 @@ public class NetSearchTemplateHorizontalBaseItem
   
   public void a(View paramView)
   {
-    if (SearchUtils.b.containsKey(this))
+    if (SearchUtils.l.containsKey(this))
     {
-      SearchUtils.ObjectItemInfo localObjectItemInfo = (SearchUtils.ObjectItemInfo)SearchUtils.b.get(this);
+      SearchUtils.ObjectItemInfo localObjectItemInfo = (SearchUtils.ObjectItemInfo)SearchUtils.l.get(this);
       paramView = (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
       Object localObject1 = new JSONObject();
       try
       {
         ((JSONObject)localObject1).put("project", UniteSearchReportController.a());
         ((JSONObject)localObject1).put("event_src", "client");
-        ((JSONObject)localObject1).put("obj_lct", localObjectItemInfo.jdField_a_of_type_Int);
+        ((JSONObject)localObject1).put("obj_lct", localObjectItemInfo.c);
         ((JSONObject)localObject1).put("get_src", "web");
-        ((JSONObject)localObject1).put("extra_info", this.b);
-        ((JSONObject)localObject1).put("tepl", this.f);
+        ((JSONObject)localObject1).put("extra_info", this.d);
+        ((JSONObject)localObject1).put("tepl", this.l);
       }
       catch (JSONException localJSONException)
       {
-        localObject3 = jdField_a_of_type_JavaLangString;
+        localObject3 = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("e = ");
         localStringBuilder.append(localJSONException);
@@ -81,12 +81,12 @@ public class NetSearchTemplateHorizontalBaseItem
       }
       Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_item");
       Object localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject3).append(this.i);
       ((StringBuilder)localObject3).append("");
-      localObject1 = ((ReportModelDC02528)localObject2).obj1(((StringBuilder)localObject3).toString()).obj2(this.j).ver1(this.g).ver2(UniteSearchReportController.a(this.c)).ver7(((JSONObject)localObject1).toString());
+      localObject1 = ((ReportModelDC02528)localObject2).obj1(((StringBuilder)localObject3).toString()).obj2(this.e).ver1(this.m).ver2(UniteSearchReportController.a(this.p)).ver7(((JSONObject)localObject1).toString());
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(paramView.getCurrentAccountUin());
-      ((StringBuilder)localObject2).append(SearchUtils.d);
+      ((StringBuilder)localObject2).append(SearchUtils.j);
       UniteSearchReportController.a(null, ((ReportModelDC02528)localObject1).session_id(((StringBuilder)localObject2).toString()));
     }
   }
@@ -103,7 +103,7 @@ public class NetSearchTemplateHorizontalBaseItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateHorizontalBaseItem
  * JD-Core Version:    0.7.0.1
  */

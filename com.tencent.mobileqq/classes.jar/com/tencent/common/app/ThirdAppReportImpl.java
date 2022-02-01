@@ -40,7 +40,7 @@ public class ThirdAppReportImpl
   public static void a()
   {
     Object localObject = AIOConfigManager.a;
-    if ((localObject != null) && (((AIOConfigData)localObject).d == 1) && (!ProcessUtil.a(BaseApplicationImpl.getContext())))
+    if ((localObject != null) && (((AIOConfigData)localObject).e == 1) && (!ProcessUtil.a(BaseApplicationImpl.getContext())))
     {
       localObject = new Throwable("background_start_activity");
       StackTraceElement[] arrayOfStackTraceElement = ((Throwable)localObject).getStackTrace();
@@ -61,7 +61,7 @@ public class ThirdAppReportImpl
   
   public static void a(Intent paramIntent, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (!PrivacyPolicyHelper.a()) {
+    if (!PrivacyPolicyHelper.d()) {
       return;
     }
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
@@ -354,7 +354,7 @@ public class ThirdAppReportImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.app.ThirdAppReportImpl
  * JD-Core Version:    0.7.0.1
  */

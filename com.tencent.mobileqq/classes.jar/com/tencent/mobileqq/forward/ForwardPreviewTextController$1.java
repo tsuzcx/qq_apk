@@ -21,17 +21,17 @@ class ForwardPreviewTextController$1
       if (Build.VERSION.SDK_INT >= 16) {
         ForwardPreviewTextController.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
-      if ((ForwardPreviewTextController.a(this.a) != null) && (this.a.a != null))
+      if ((ForwardPreviewTextController.b(this.a) != null) && (this.a.c != null))
       {
-        if (ForwardPreviewTextController.a(this.a).getLineCount() > 1) {
-          ForwardPreviewTextController.a(this.a).setGravity(19);
+        if (ForwardPreviewTextController.b(this.a).getLineCount() > 1) {
+          ForwardPreviewTextController.b(this.a).setGravity(19);
         } else {
-          ForwardPreviewTextController.a(this.a).setGravity(17);
+          ForwardPreviewTextController.b(this.a).setGravity(17);
         }
-        if (ForwardPreviewTextController.a(this.a).getHeight() >= ViewUtils.a(ForwardPreviewTextController.a(this.a) + 2))
+        if (ForwardPreviewTextController.b(this.a).getHeight() >= ViewUtils.dip2px(ForwardPreviewTextController.c(this.a) + 2))
         {
-          this.a.a.setMaxHeight(ViewUtils.a(450.0F));
-          this.a.a.requestLayout();
+          this.a.c.setMaxHeight(ViewUtils.dip2px(450.0F));
+          this.a.c.requestLayout();
           if (QLog.isColorLevel()) {
             QLog.d("ForwardPreviewTextController", 2, " reset height ");
           }
@@ -42,7 +42,7 @@ class ForwardPreviewTextController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTextController.1
  * JD-Core Version:    0.7.0.1
  */

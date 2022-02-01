@@ -19,7 +19,44 @@ public final class ProcessUtils
   public static final ProcessUtils a = new ProcessUtils();
   
   @JvmStatic
-  public static final int a(@Nullable String paramString)
+  public static final boolean a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return false;
+    }
+    Object localObject = MobileQQ.getContext().getSystemService("activity");
+    if (localObject != null)
+    {
+      localObject = ((ActivityManager)localObject).getRunningAppProcesses();
+      if (localObject != null)
+      {
+        if (((List)localObject).size() <= 0) {
+          return false;
+        }
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          if (paramInt == ((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).pid) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    localObject = new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
+    }
+  }
+  
+  @JvmStatic
+  public static final boolean a(@Nullable String paramString)
+  {
+    return b(paramString) != 0;
+  }
+  
+  @JvmStatic
+  public static final int b(@Nullable String paramString)
   {
     Object localObject = (CharSequence)paramString;
     int j = 0;
@@ -64,47 +101,10 @@ public final class ProcessUtils
       throw paramString;
     }
   }
-  
-  @JvmStatic
-  public static final boolean a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return false;
-    }
-    Object localObject = MobileQQ.getContext().getSystemService("activity");
-    if (localObject != null)
-    {
-      localObject = ((ActivityManager)localObject).getRunningAppProcesses();
-      if (localObject != null)
-      {
-        if (((List)localObject).size() <= 0) {
-          return false;
-        }
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          if (paramInt == ((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).pid) {
-            return true;
-          }
-        }
-      }
-      return false;
-    }
-    localObject = new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
-    for (;;)
-    {
-      throw ((Throwable)localObject);
-    }
-  }
-  
-  @JvmStatic
-  public static final boolean a(@Nullable String paramString)
-  {
-    return a(paramString) != 0;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ProcessUtils
  * JD-Core Version:    0.7.0.1
  */

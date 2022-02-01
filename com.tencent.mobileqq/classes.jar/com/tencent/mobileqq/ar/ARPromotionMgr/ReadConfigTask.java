@@ -11,39 +11,39 @@ import java.lang.ref.WeakReference;
 class ReadConfigTask
   extends SyncLoadTask
 {
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  PromotionConfigInfo a;
+  final String b;
+  WeakReference<AppInterface> c;
   
   ReadConfigTask(String paramString1, String paramString2, AppInterface paramAppInterface)
   {
     super(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    this.b = paramString2;
+    this.c = new WeakReference(paramAppInterface);
   }
   
   public void innerClean()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    this.a = null;
   }
   
   public boolean runOnSubThread(Resources paramResources)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = ARPromotionConfigSP.a(this.jdField_a_of_type_JavaLangString, null);
-    paramResources = this.TAG;
+    this.a = ARPromotionConfigSP.b(this.b, null);
+    paramResources = this.mTAG;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ReadConfigTask,ConfigInfo[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     QLog.w(paramResources, 1, localStringBuilder.toString());
     PromotionDevice.c();
-    QQAudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    QQAudioHelper.b((AppInterface)this.c.get());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.ReadConfigTask
  * JD-Core Version:    0.7.0.1
  */

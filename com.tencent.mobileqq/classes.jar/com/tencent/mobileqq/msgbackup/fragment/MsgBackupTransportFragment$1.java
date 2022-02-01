@@ -18,19 +18,19 @@ class MsgBackupTransportFragment$1
       if (paramInt != 8) {
         return;
       }
-      MsgBackupManager.jdField_a_of_type_Boolean = true;
+      MsgBackupManager.a = true;
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= ");
-        paramView.append(MsgBackupManager.jdField_a_of_type_Boolean);
+        paramView.append(MsgBackupManager.a);
         paramView.append(", curSpeed = ");
-        paramView.append(this.a.jdField_a_of_type_Long);
+        paramView.append(this.a.Q);
         paramView.append(", hasFinishedCount = ");
-        paramView.append(this.a.d);
+        paramView.append(this.a.S);
         QLog.d("MsgBackup.MsgBackupTransportFragment", 2, paramView.toString());
       }
-      MsgBackupManager.a().a(this.a.jdField_a_of_type_Long, this.a.d, 3, this.a.getQBaseActivity());
+      MsgBackupManager.a().a(this.a.Q, this.a.S, 3, this.a.getQBaseActivity());
       MsgBackupReporter.a("0X800A249");
       return;
     }
@@ -39,24 +39,24 @@ class MsgBackupTransportFragment$1
     {
       paramView = new StringBuilder();
       paramView.append("transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= ");
-      paramView.append(MsgBackupManager.jdField_a_of_type_Boolean);
+      paramView.append(MsgBackupManager.a);
       paramView.append(", isStart = ");
-      paramView.append(this.a.jdField_a_of_type_Boolean);
+      paramView.append(this.a.T);
       QLog.d("MsgBackup.MsgBackupTransportFragment", 2, paramView.toString());
     }
-    if (MsgBackupTransportFragment.a(this.a) == 2) {
-      if (this.a.e) {
+    if (MsgBackupTransportFragment.b(this.a) == 2) {
+      if (this.a.X) {
         MsgBackupReporter.a("0X800A243", 2);
       } else {
         MsgBackupReporter.a("0X800A243", 1);
       }
     }
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.T)
     {
-      this.a.l();
+      this.a.t();
       return;
     }
-    if (MsgBackupTransportFragment.a(this.a) == 1)
+    if (MsgBackupTransportFragment.b(this.a) == 1)
     {
       this.a.onBackEvent();
       return;
@@ -67,7 +67,7 @@ class MsgBackupTransportFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment.1
  * JD-Core Version:    0.7.0.1
  */

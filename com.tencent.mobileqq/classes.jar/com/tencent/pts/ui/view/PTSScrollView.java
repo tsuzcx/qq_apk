@@ -11,7 +11,6 @@ import com.tencent.pts.core.PTSThreadUtil;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.vnode.PTSNodeScrollView;
 import com.tencent.pts.utils.PTSLog;
-import com.tencent.pts.utils.PTSTimeCostUtil;
 import com.tencent.pts.utils.PTSViewDecorationUtil.RoundedCorner;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,13 +61,11 @@ public class PTSScrollView
   
   public void draw(Canvas paramCanvas)
   {
-    PTSTimeCostUtil.start("PTSScrollView-draw");
     int i = this.mRoundedCorner.getSaveCount(paramCanvas);
     super.draw(paramCanvas);
     this.mRoundedCorner.drawCorner(paramCanvas, i);
     this.mRoundedCorner.drawBorder(paramCanvas);
     triggerItemViewExposureImp();
-    PTSTimeCostUtil.end("PTSScrollView-draw");
   }
   
   public void onBindNodeInfo(PTSNodeInfo paramPTSNodeInfo)
@@ -115,7 +112,7 @@ public class PTSScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSScrollView
  * JD-Core Version:    0.7.0.1
  */

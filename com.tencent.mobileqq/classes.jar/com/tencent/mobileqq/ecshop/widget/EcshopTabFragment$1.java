@@ -20,7 +20,7 @@ class EcshopTabFragment$1
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    EcshopTabFragment.a(this.a).setVisibility(0);
+    EcshopTabFragment.b(this.a).setVisibility(0);
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
@@ -35,7 +35,7 @@ class EcshopTabFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.widget.EcshopTabFragment.1
  * JD-Core Version:    0.7.0.1
  */

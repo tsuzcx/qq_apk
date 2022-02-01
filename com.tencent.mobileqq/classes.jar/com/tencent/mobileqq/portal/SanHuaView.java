@@ -13,34 +13,34 @@ import java.util.ArrayList;
 public class SanHuaView
   extends View
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  Resources jdField_a_of_type_AndroidContentResResources;
-  Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  ArrayList<SanHua> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = { 2130845319, 2130845320, 2130845321, 2130845322, 2130845323, 2130845324, 2130845325, 2130845326 };
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfInt.length];
-  float jdField_b_of_type_Float;
-  int jdField_b_of_type_Int;
-  int c;
+  int a;
+  ArrayList<SanHua> b = new ArrayList();
+  Resources c;
+  boolean d;
+  long e;
+  Matrix f;
+  float g;
+  float h;
+  int i;
+  int j;
+  private int[] k = { 2130846775, 2130846776, 2130846777, 2130846778, 2130846779, 2130846780, 2130846781, 2130846782 };
+  private Bitmap[] l = new Bitmap[this.k.length];
   
   public SanHuaView(Context paramContext, int paramInt1, int paramInt2)
   {
     super(paramContext);
-    int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_AndroidContentResResources = getResources();
-    this.jdField_a_of_type_Float = paramInt1;
-    this.jdField_b_of_type_Float = paramInt2;
-    paramInt1 = i;
+    int m = 0;
+    this.d = false;
+    this.f = new Matrix();
+    this.c = getResources();
+    this.g = paramInt1;
+    this.h = paramInt2;
+    paramInt1 = m;
     try
     {
-      while (paramInt1 < this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length)
+      while (paramInt1 < this.l.length)
       {
-        this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[paramInt1] = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_ArrayOfInt[paramInt1]);
+        this.l[paramInt1] = BitmapFactory.decodeResource(this.c, this.k[paramInt1]);
         paramInt1 += 1;
       }
       return;
@@ -53,124 +53,124 @@ public class SanHuaView
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.d = true;
+    this.e = System.currentTimeMillis();
     invalidate();
   }
   
   public void a(int paramInt)
   {
-    int i = 0;
-    while (i < paramInt)
+    int m = 0;
+    while (m < paramInt)
     {
-      double d1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
+      double d1 = this.l.length;
       double d2 = Math.random();
       Double.isNaN(d1);
-      int j = (int)(d1 * d2);
-      Bitmap[] arrayOfBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-      if (arrayOfBitmap[j] != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(SanHua.a(arrayOfBitmap[j], this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_a_of_type_AndroidContentResResources));
+      int n = (int)(d1 * d2);
+      Bitmap[] arrayOfBitmap = this.l;
+      if (arrayOfBitmap[n] != null) {
+        this.b.add(SanHua.a(arrayOfBitmap[n], this.g, this.h, this.c));
       }
-      i += 1;
+      m += 1;
     }
-    this.jdField_a_of_type_Int += paramInt;
+    this.a += paramInt;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Int = 0;
+    this.d = false;
+    this.b.clear();
+    this.a = 0;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
     super.onDraw(paramCanvas);
-    float f1 = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
-    int i = 0;
+    float f1 = (float)(System.currentTimeMillis() - this.e) / 1000.0F;
+    int m = 0;
     SanHua localSanHua;
-    while (i < this.jdField_a_of_type_Int)
+    while (m < this.a)
     {
-      localSanHua = (SanHua)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localSanHua = (SanHua)this.b.get(m);
       if (localSanHua != null)
       {
         float f2;
         float f3;
         float f4;
-        if (localSanHua.jdField_a_of_type_Double < 0.0D)
+        if (localSanHua.f < 0.0D)
         {
-          f2 = localSanHua.c;
-          f3 = localSanHua.d;
-          f4 = AIOUtils.b(270.0F, this.jdField_a_of_type_AndroidContentResResources);
-          localSanHua.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_Float - f2 * f1);
-          localSanHua.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float + (f3 * f1 + f4 * 0.5F * f1 * f1));
+          f2 = localSanHua.h;
+          f3 = localSanHua.i;
+          f4 = AIOUtils.b(270.0F, this.c);
+          localSanHua.c[0] = (this.g - f2 * f1);
+          localSanHua.c[1] = (this.h + (f3 * f1 + f4 * 0.5F * f1 * f1));
         }
         else
         {
-          f2 = localSanHua.c;
-          f3 = localSanHua.d;
-          f4 = AIOUtils.b(270.0F, this.jdField_a_of_type_AndroidContentResResources);
-          localSanHua.jdField_a_of_type_ArrayOfFloat[0] = (this.jdField_a_of_type_Float + f2 * f1);
-          localSanHua.jdField_a_of_type_ArrayOfFloat[1] = (this.jdField_b_of_type_Float - (f3 * f1 - f4 * 0.5F * f1 * f1));
+          f2 = localSanHua.h;
+          f3 = localSanHua.i;
+          f4 = AIOUtils.b(270.0F, this.c);
+          localSanHua.c[0] = (this.g + f2 * f1);
+          localSanHua.c[1] = (this.h - (f3 * f1 - f4 * 0.5F * f1 * f1));
         }
       }
-      i += 1;
+      m += 1;
     }
-    i = 0;
-    int k;
-    for (int j = 0; i < this.jdField_a_of_type_Int; j = k)
+    m = 0;
+    int i1;
+    for (int n = 0; m < this.a; n = i1)
     {
-      localSanHua = (SanHua)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localSanHua = (SanHua)this.b.get(m);
       if (localSanHua == null)
       {
-        k = j;
+        i1 = n;
       }
       else
       {
-        k = j;
-        if (localSanHua.jdField_a_of_type_ArrayOfFloat[0] < this.jdField_b_of_type_Int)
+        i1 = n;
+        if (localSanHua.c[0] < this.i)
         {
-          k = j;
-          if (localSanHua.jdField_a_of_type_ArrayOfFloat[0] > 0.0F)
+          i1 = n;
+          if (localSanHua.c[0] > 0.0F)
           {
-            k = j;
-            if (localSanHua.jdField_a_of_type_ArrayOfFloat[1] < this.c)
+            i1 = n;
+            if (localSanHua.c[1] < this.j)
             {
-              k = j;
-              if (localSanHua.jdField_a_of_type_ArrayOfFloat[1] > 0.0F)
+              i1 = n;
+              if (localSanHua.c[1] > 0.0F)
               {
-                this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate(-localSanHua.jdField_a_of_type_Int / 2, -localSanHua.jdField_b_of_type_Int / 2);
-                this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(localSanHua.jdField_a_of_type_Float);
-                this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localSanHua.jdField_a_of_type_Int / 2 + localSanHua.jdField_a_of_type_ArrayOfFloat[0], localSanHua.jdField_b_of_type_Int / 2 + localSanHua.jdField_a_of_type_ArrayOfFloat[1]);
-                paramCanvas.drawBitmap(localSanHua.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-                k = j + 1;
+                this.f.setTranslate(-localSanHua.a / 2, -localSanHua.b / 2);
+                this.f.postRotate(localSanHua.d);
+                this.f.postTranslate(localSanHua.a / 2 + localSanHua.c[0], localSanHua.b / 2 + localSanHua.c[1]);
+                paramCanvas.drawBitmap(localSanHua.e, this.f, null);
+                i1 = n + 1;
               }
             }
           }
         }
       }
-      i += 1;
+      m += 1;
     }
-    if (j == 0) {
+    if (n == 0) {
       b();
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       invalidate();
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    this.i = paramInt1;
+    this.j = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.SanHuaView
  * JD-Core Version:    0.7.0.1
  */

@@ -51,7 +51,7 @@ public class SmallEmotionUpdateAdapter
             paramViewHolder.append(";view from infalter");
             QLog.d("SmallEmotionUpdateAdapter", 2, paramViewHolder.toString());
           }
-          paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131561589, null);
+          paramViewHolder = LayoutInflater.from(this.mContext).inflate(2131627952, null);
         }
         else
         {
@@ -71,9 +71,9 @@ public class SmallEmotionUpdateAdapter
         paramViewHolder.setLayoutParams((ViewGroup.LayoutParams)localObject);
         paramViewHolder.setPadding(0, (int)(this.density * 10.0F), 0, 0);
         recycleView(7, paramViewHolder);
-        paramViewGroup.cover = ((URLImageView)paramViewHolder.findViewById(2131365284));
-        paramViewGroup.name = ((TextView)paramViewHolder.findViewById(2131365367));
-        paramViewGroup.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131365365));
+        paramViewGroup.cover = ((URLImageView)paramViewHolder.findViewById(2131431458));
+        paramViewGroup.name = ((TextView)paramViewHolder.findViewById(2131431560));
+        paramViewGroup.downloadBtn = ((ProgressButton)paramViewHolder.findViewById(2131431558));
         paramViewHolder.setTag(paramViewGroup);
       }
       else
@@ -187,7 +187,7 @@ public class SmallEmotionUpdateAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SmallEmotionUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

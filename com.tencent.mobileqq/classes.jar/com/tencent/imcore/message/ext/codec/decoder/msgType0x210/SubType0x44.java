@@ -70,7 +70,7 @@ public class SubType0x44
       return;
     }
     a(paramArrayOfByte);
-    a(paramOnLinePushMessageProcessor, b(paramOnLinePushMessageProcessor, paramArrayOfByte), a(paramOnLinePushMessageProcessor, paramArrayOfByte));
+    a(paramOnLinePushMessageProcessor, e(paramOnLinePushMessageProcessor, paramArrayOfByte), d(paramOnLinePushMessageProcessor, paramArrayOfByte));
     c(paramOnLinePushMessageProcessor, paramArrayOfByte);
     b(paramOnLinePushMessageProcessor, paramArrayOfByte);
     a(paramOnLinePushMessageProcessor, paramArrayOfByte);
@@ -79,7 +79,7 @@ public class SubType0x44
   private static void a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
   {
     if ((paramMsgBody.msg_waiting_msg_sync.has()) && (paramMsgBody.msg_waiting_msg_sync.get() != null)) {
-      d(paramOnLinePushMessageProcessor, paramMsgBody);
+      f(paramOnLinePushMessageProcessor, paramMsgBody);
     }
   }
   
@@ -127,29 +127,10 @@ public class SubType0x44
     }
   }
   
-  private static boolean a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
-  {
-    boolean bool1;
-    if ((paramMsgBody.msg_group_msg_sync.has()) && (paramMsgBody.msg_group_msg_sync.get() != null)) {
-      bool1 = c(paramOnLinePushMessageProcessor, paramMsgBody);
-    } else {
-      bool1 = false;
-    }
-    boolean bool2 = bool1;
-    if (paramMsgBody.msg_general_notify.has())
-    {
-      bool2 = bool1;
-      if (paramMsgBody.msg_general_notify.get() != null) {
-        bool2 = true;
-      }
-    }
-    return bool2;
-  }
-  
   private static void b(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
   {
     if ((paramMsgBody.msg_modify_msg_sync.has()) && (paramMsgBody.msg_modify_msg_sync.get() != null)) {
-      e(paramOnLinePushMessageProcessor, paramMsgBody);
+      g(paramOnLinePushMessageProcessor, paramMsgBody);
     }
   }
   
@@ -171,32 +152,102 @@ public class SubType0x44
     }
   }
   
-  private static boolean b(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  private static void c(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  {
+    if ((paramMsgBody.msg_clean_count_msg.has()) && (paramMsgBody.msg_clean_count_msg.get() != null)) {
+      h(paramOnLinePushMessageProcessor, paramMsgBody);
+    }
+  }
+  
+  private static boolean d(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  {
+    boolean bool1;
+    if ((paramMsgBody.msg_group_msg_sync.has()) && (paramMsgBody.msg_group_msg_sync.get() != null)) {
+      bool1 = i(paramOnLinePushMessageProcessor, paramMsgBody);
+    } else {
+      bool1 = false;
+    }
+    boolean bool2 = bool1;
+    if (paramMsgBody.msg_general_notify.has())
+    {
+      bool2 = bool1;
+      if (paramMsgBody.msg_general_notify.get() != null) {
+        bool2 = true;
+      }
+    }
+    return bool2;
+  }
+  
+  private static boolean e(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
   {
     if ((paramMsgBody.msg_friend_msg_sync.has()) && (paramMsgBody.msg_friend_msg_sync.get() != null)) {
-      return d(paramOnLinePushMessageProcessor, paramMsgBody);
+      return j(paramOnLinePushMessageProcessor, paramMsgBody);
     }
     return false;
   }
   
-  private static void c(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  private static void f(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
   {
-    if ((paramMsgBody.msg_clean_count_msg.has()) && (paramMsgBody.msg_clean_count_msg.get() != null)) {
-      f(paramOnLinePushMessageProcessor, paramMsgBody);
+    ((SystemMessageProcessor)((BaseMessageHandler)paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a("system_processor")).a(2);
+    if (QLog.isColorLevel())
+    {
+      paramOnLinePushMessageProcessor = new StringBuilder();
+      paramOnLinePushMessageProcessor.append("decodeC2CMsgPkgSubMsgType0x44 msg_waiting_msg_sync =");
+      paramOnLinePushMessageProcessor.append(paramMsgBody.msg_waiting_msg_sync.get());
+      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
     }
   }
   
-  private static boolean c(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  private static void g(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
   {
-    boolean bool = paramOnLinePushMessageProcessor.a(paramMsgBody.msg_group_msg_sync.uint32_processflag.get());
-    if (paramOnLinePushMessageProcessor.b(paramMsgBody.msg_group_msg_sync.uint32_msg_type.get()))
+    ((SystemMessageProcessor)((BaseMessageHandler)paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a("system_processor")).b(2);
+    if (QLog.isColorLevel())
+    {
+      paramOnLinePushMessageProcessor = new StringBuilder();
+      paramOnLinePushMessageProcessor.append("decodeC2CMsgPkgSubMsgType0x44 msg_modify_msg_sync =");
+      paramOnLinePushMessageProcessor.append(paramMsgBody.msg_modify_msg_sync.get());
+      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
+    }
+  }
+  
+  private static void h(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramOnLinePushMessageProcessor.a();
+    if (paramOnLinePushMessageProcessor.b(paramMsgBody.msg_clean_count_msg.uint32_processflag.get()))
+    {
+      localQQAppInterface.getConversationFacade().e(AppConstants.TROOP_NOTIFICATION_UIN, 9000, 0 - GroupSystemMsgController.a().b(localQQAppInterface));
+      GroupSystemMsgController.a().a(localQQAppInterface, 0);
+      ((INewFriendApi)QRoute.api(INewFriendApi.class)).setUnReadFriendSystemMsgNum(localQQAppInterface, 0);
+      paramOnLinePushMessageProcessor = (INewFriendService)localQQAppInterface.getRuntimeService(INewFriendService.class);
+      localQQAppInterface.getMessageFacade().a(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, true, true);
+      paramOnLinePushMessageProcessor.reloadNewFriendMsg();
+    }
+    int i = ((submsgtype0x44.ClearCountMsg)paramMsgBody.msg_clean_count_msg.get()).uint32_updateflag.get();
+    if (i > 0) {
+      localQQAppInterface.getMsgHandler().B().a(2);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramOnLinePushMessageProcessor = new StringBuilder();
+      paramOnLinePushMessageProcessor.append("decodeC2CMsgPkgSubMsgType0x44 msg_clean_count_msg uint32_processflag=");
+      paramOnLinePushMessageProcessor.append(paramMsgBody.msg_clean_count_msg.uint32_processflag.get());
+      paramOnLinePushMessageProcessor.append(" updateFlag=");
+      paramOnLinePushMessageProcessor.append(i);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
+    }
+  }
+  
+  private static boolean i(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  {
+    boolean bool = paramOnLinePushMessageProcessor.b(paramMsgBody.msg_group_msg_sync.uint32_processflag.get());
+    if (paramOnLinePushMessageProcessor.c(paramMsgBody.msg_group_msg_sync.uint32_msg_type.get()))
     {
       String str = String.valueOf(paramMsgBody.msg_group_msg_sync.uint64_grp_code.get());
       Object localObject1 = SystemMsgUtils.a(paramMsgBody.msg_group_msg_sync.uint64_grp_code.get());
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (StringUtil.c(str)))
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (StringUtil.isValideUin(str)))
       {
         Object localObject2 = (TroopManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.TROOP_MANAGER);
-        if (((TroopManager)localObject2).b(str) == null)
+        if (((TroopManager)localObject2).f(str) == null)
         {
           TroopInfo localTroopInfo = new TroopInfo();
           localTroopInfo.troopuin = str;
@@ -208,8 +259,8 @@ public class SubType0x44
           ((ITroopInfoHandler)localObject2).a(localTroopInfo.troopuin, false, "SubType0x44.source_apply_for_join_troop", true, true, true, false);
           localITroopMemberListHandler.a(1, TroopFileHandler.a(localTroopInfo.troopuin), 0L, 2, 0, 0, true);
           ((ITroopMemberLevelHandler)paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LEVEL_HANDLER)).a(str);
-          ((ITroopMngHandler)localObject1).a(TroopMngObserver.c, true, new Object[] { Integer.valueOf(6), Byte.valueOf(0), str });
-          ((ITroopMngHandler)localObject1).a(TroopMngObserver.h, true, new Object[] { str });
+          ((ITroopMngHandler)localObject1).a(TroopMngObserver.d, true, new Object[] { Integer.valueOf(6), Byte.valueOf(0), str });
+          ((ITroopMngHandler)localObject1).a(TroopMngObserver.i, true, new Object[] { str });
         }
         paramOnLinePushMessageProcessor.a(2001, true, null);
       }
@@ -226,25 +277,13 @@ public class SubType0x44
     return bool;
   }
   
-  private static void d(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
+  private static boolean j(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
   {
-    ((SystemMessageProcessor)((BaseMessageHandler)paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a("system_processor")).a(2);
-    if (QLog.isColorLevel())
-    {
-      paramOnLinePushMessageProcessor = new StringBuilder();
-      paramOnLinePushMessageProcessor.append("decodeC2CMsgPkgSubMsgType0x44 msg_waiting_msg_sync =");
-      paramOnLinePushMessageProcessor.append(paramMsgBody.msg_waiting_msg_sync.get());
-      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
-    }
-  }
-  
-  private static boolean d(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
-  {
-    boolean bool = paramOnLinePushMessageProcessor.a(paramMsgBody.msg_friend_msg_sync.uint32_processflag.get());
-    if (paramOnLinePushMessageProcessor.c(paramMsgBody.msg_friend_msg_sync.uint32_processtype.get()))
+    boolean bool = paramOnLinePushMessageProcessor.b(paramMsgBody.msg_friend_msg_sync.uint32_processflag.get());
+    if (paramOnLinePushMessageProcessor.d(paramMsgBody.msg_friend_msg_sync.uint32_processtype.get()))
     {
       String str = String.valueOf(paramMsgBody.msg_friend_msg_sync.uint64_fuin.get());
-      if ((!TextUtils.isEmpty(str)) && (StringUtil.c(str)))
+      if ((!TextUtils.isEmpty(str)) && (StringUtil.isValideUin(str)))
       {
         paramOnLinePushMessageProcessor = (FriendListHandler)paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER);
         int i = paramMsgBody.msg_friend_msg_sync.uint32_sourceid.get();
@@ -266,45 +305,6 @@ public class SubType0x44
     return bool;
   }
   
-  private static void e(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
-  {
-    ((SystemMessageProcessor)((BaseMessageHandler)paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).a("system_processor")).b(2);
-    if (QLog.isColorLevel())
-    {
-      paramOnLinePushMessageProcessor = new StringBuilder();
-      paramOnLinePushMessageProcessor.append("decodeC2CMsgPkgSubMsgType0x44 msg_modify_msg_sync =");
-      paramOnLinePushMessageProcessor.append(paramMsgBody.msg_modify_msg_sync.get());
-      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
-    }
-  }
-  
-  private static void f(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, submsgtype0x44.MsgBody paramMsgBody)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)paramOnLinePushMessageProcessor.a();
-    if (paramOnLinePushMessageProcessor.a(paramMsgBody.msg_clean_count_msg.uint32_processflag.get()))
-    {
-      localQQAppInterface.getConversationFacade().d(AppConstants.TROOP_NOTIFICATION_UIN, 9000, 0 - GroupSystemMsgController.a().a(localQQAppInterface));
-      GroupSystemMsgController.a().a(localQQAppInterface, 0);
-      ((INewFriendApi)QRoute.api(INewFriendApi.class)).setUnReadFriendSystemMsgNum(localQQAppInterface, 0);
-      paramOnLinePushMessageProcessor = (INewFriendService)localQQAppInterface.getRuntimeService(INewFriendService.class);
-      localQQAppInterface.getMessageFacade().a(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0, true, true);
-      paramOnLinePushMessageProcessor.reloadNewFriendMsg();
-    }
-    int i = ((submsgtype0x44.ClearCountMsg)paramMsgBody.msg_clean_count_msg.get()).uint32_updateflag.get();
-    if (i > 0) {
-      localQQAppInterface.getMsgHandler().a().a(2);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramOnLinePushMessageProcessor = new StringBuilder();
-      paramOnLinePushMessageProcessor.append("decodeC2CMsgPkgSubMsgType0x44 msg_clean_count_msg uint32_processflag=");
-      paramOnLinePushMessageProcessor.append(paramMsgBody.msg_clean_count_msg.uint32_processflag.get());
-      paramOnLinePushMessageProcessor.append(" updateFlag=");
-      paramOnLinePushMessageProcessor.append(i);
-      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
-    }
-  }
-  
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
     a(paramOnLinePushMessageProcessor, paramLong, paramMsgType0x210.vProtobuf);
@@ -313,7 +313,7 @@ public class SubType0x44
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x44
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,19 @@ public class ComboSet
     return super.a(paramActivity, paramInt);
   }
   
-  public void a(Activity paramActivity, int paramInt)
+  public void b(Activity paramActivity, int paramInt)
   {
-    super.a(paramActivity, paramInt);
+    super.b(paramActivity, paramInt);
     VideoFilterTools localVideoFilterTools = VideoFilterTools.a();
-    ComboSet localComboSet = localVideoFilterTools.a[paramInt];
-    if ((localComboSet != null) && (localComboSet.b().equals(b()))) {
+    ComboSet localComboSet = localVideoFilterTools.e[paramInt];
+    if ((localComboSet != null) && (localComboSet.h().equals(h()))) {
       localVideoFilterTools.a(null, paramActivity, paramInt);
     }
   }
   
-  public void b(Activity paramActivity, int paramInt)
+  public void c(Activity paramActivity, int paramInt)
   {
-    super.b(paramActivity, paramInt);
+    super.c(paramActivity, paramInt);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -37,9 +37,9 @@ public class ComboSet
       ((StringBuilder)localObject).append(toString());
       QLog.i("QCombo", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (QIMFilterCategoryItem)this.a;
+    Object localObject = (QIMFilterCategoryItem)this.e;
     VideoFilterTools.a().a((QIMFilterCategoryItem)localObject, paramActivity, paramInt);
-    ((CaptureComboManager)com.tencent.aelight.camera.aioeditor.capture.QIMManager.a(5)).a[paramInt].a(this);
+    ((CaptureComboManager)com.tencent.aelight.camera.aioeditor.capture.QIMManager.a(5)).o[paramInt].a(this);
   }
   
   public boolean equals(Object paramObject)
@@ -49,23 +49,23 @@ public class ComboSet
   
   public int hashCode()
   {
-    return ((QIMFilterCategoryItem)this.a).a.hashCode();
+    return ((QIMFilterCategoryItem)this.e).a.hashCode();
   }
   
   public String toString()
   {
-    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.a;
+    QIMFilterCategoryItem localQIMFilterCategoryItem = (QIMFilterCategoryItem)this.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(localQIMFilterCategoryItem.a);
     localStringBuilder.append(localQIMFilterCategoryItem.hashCode());
-    localStringBuilder.append(localQIMFilterCategoryItem.g);
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(localQIMFilterCategoryItem.i);
+    localStringBuilder.append(this.e);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.data.ComboSet
  * JD-Core Version:    0.7.0.1
  */

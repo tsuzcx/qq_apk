@@ -18,44 +18,38 @@ import java.util.ArrayList;
 public class FilterProviderPagerAdapter
   extends PagerAdapter
 {
-  public static final int a;
+  public static final int a = AIOUtils.b(7.0F, BaseApplication.getContext().getResources());
   public static final int b = AIOUtils.b(0.0F, BaseApplication.getContext().getResources());
-  private Context jdField_a_of_type_AndroidContentContext;
-  public SparseArray<GridView> a;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener;
-  private ArrayList<FilterCategory> jdField_a_of_type_JavaUtilArrayList;
-  public int c;
-  
-  static
-  {
-    jdField_a_of_type_Int = AIOUtils.b(7.0F, BaseApplication.getContext().getResources());
-  }
+  public SparseArray<GridView> c = new SparseArray();
+  public int d;
+  private Context e;
+  private ArrayList<FilterCategory> f;
+  private AdapterView.OnItemClickListener g;
   
   public FilterProviderPagerAdapter(Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.c = paramInt;
+    this.e = paramContext;
+    this.d = paramInt;
   }
   
   public void a(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = paramOnItemClickListener;
+    this.g = paramOnItemClickListener;
   }
   
   public void a(ArrayList<FilterCategory> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.f = paramArrayList;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    paramViewGroup.removeView((View)this.c.get(paramInt));
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.f.size();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -67,24 +61,24 @@ public class FilterProviderPagerAdapter
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("FilterProviderView", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject2 = (GridView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject2 = (GridView)this.c.get(paramInt);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new GridView(this.jdField_a_of_type_AndroidContentContext);
+      localObject1 = new GridView(this.e);
       ((GridView)localObject1).setNumColumns(4);
       ((GridView)localObject1).setSelector(new ColorDrawable(0));
       ((GridView)localObject1).setVerticalSpacing(b);
       ((GridView)localObject1).setHorizontalSpacing(b);
       ((GridView)localObject1).setClipToPadding(false);
-      int i = jdField_a_of_type_Int;
-      ((GridView)localObject1).setPadding(i, i, i, i + i + AIOUtils.b(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      int i = a;
+      ((GridView)localObject1).setPadding(i, i, i, i + i + AIOUtils.b(36.0F, this.e.getResources()));
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new FilterProviderGridAdapter(this.jdField_a_of_type_AndroidContentContext, this.c);
-      ((FilterProviderGridAdapter)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a);
+      localObject2 = new FilterProviderGridAdapter(this.e, this.d);
+      ((FilterProviderGridAdapter)localObject2).a(((FilterCategory)this.f.get(paramInt)).c);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
+      ((GridView)localObject1).setOnItemClickListener(this.g);
+      this.c.put(paramInt, localObject1);
     }
     paramViewGroup.addView((View)localObject1, -1, -1);
     return localObject1;
@@ -97,7 +91,7 @@ public class FilterProviderPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.adapter.FilterProviderPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class TabLayout$SlidingTabIndicator$1
   
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
-    TabLayout.SlidingTabIndicator.a(this.jdField_a_of_type_ComGoogleAndroidMaterialTabsTabLayout$SlidingTabIndicator, this.jdField_a_of_type_AndroidViewView, this.b, paramValueAnimator.getAnimatedFraction());
+    TabLayout.SlidingTabIndicator.a(this.c, this.a, this.b, paramValueAnimator.getAnimatedFraction());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.tabs.TabLayout.SlidingTabIndicator.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,12 +19,12 @@ final class ColdPalaceHelper$sp$2
   
   public final SharedPreferences invoke()
   {
-    return SharedPreUtils.a(this.this$0.a().getCurrentAccountUin(), "file_extend_cold_palace_");
+    return SharedPreUtils.a(this.this$0.i().getCurrentAccountUin(), "file_extend_cold_palace_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ColdPalaceHelper.sp.2
  * JD-Core Version:    0.7.0.1
  */

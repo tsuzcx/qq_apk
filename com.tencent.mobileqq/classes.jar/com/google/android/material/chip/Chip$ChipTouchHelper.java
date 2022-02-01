@@ -22,7 +22,7 @@ class Chip$ChipTouchHelper
   
   protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    if ((Chip.a(this.a)) && (Chip.a(this.a).contains(paramFloat1, paramFloat2))) {
+    if ((Chip.b(this.a)) && (Chip.c(this.a).contains(paramFloat1, paramFloat2))) {
       return 1;
     }
     return 0;
@@ -31,7 +31,7 @@ class Chip$ChipTouchHelper
   protected void getVisibleVirtualViews(@NonNull List<Integer> paramList)
   {
     paramList.add(Integer.valueOf(0));
-    if ((Chip.a(this.a)) && (this.a.b()) && (Chip.a(this.a) != null)) {
+    if ((Chip.b(this.a)) && (this.a.c()) && (Chip.d(this.a) != null)) {
       paramList.add(Integer.valueOf(1));
     }
   }
@@ -44,7 +44,7 @@ class Chip$ChipTouchHelper
         return this.a.performClick();
       }
       if (paramInt1 == 1) {
-        return this.a.a();
+        return this.a.b();
       }
     }
     return false;
@@ -52,15 +52,15 @@ class Chip$ChipTouchHelper
   
   protected void onPopulateNodeForHost(@NonNull AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    paramAccessibilityNodeInfoCompat.setCheckable(this.a.c());
+    paramAccessibilityNodeInfoCompat.setCheckable(this.a.d());
     paramAccessibilityNodeInfoCompat.setClickable(this.a.isClickable());
-    if ((!this.a.c()) && (!this.a.isClickable()))
+    if ((!this.a.d()) && (!this.a.isClickable()))
     {
       paramAccessibilityNodeInfoCompat.setClassName("android.view.View");
     }
     else
     {
-      if (this.a.c()) {
+      if (this.a.d()) {
         localObject = "android.widget.CompoundButton";
       } else {
         localObject = "android.widget.Button";
@@ -80,7 +80,7 @@ class Chip$ChipTouchHelper
   {
     if (paramInt == 1)
     {
-      Object localObject = this.a.a();
+      Object localObject = this.a.getCloseIconContentDescription();
       if (localObject != null)
       {
         paramAccessibilityNodeInfoCompat.setContentDescription((CharSequence)localObject);
@@ -95,13 +95,13 @@ class Chip$ChipTouchHelper
         }
         paramAccessibilityNodeInfoCompat.setContentDescription(localContext.getString(paramInt, new Object[] { localObject }).trim());
       }
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(Chip.a(this.a));
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(Chip.e(this.a));
       paramAccessibilityNodeInfoCompat.addAction(AccessibilityNodeInfoCompat.AccessibilityActionCompat.ACTION_CLICK);
       paramAccessibilityNodeInfoCompat.setEnabled(this.a.isEnabled());
       return;
     }
     paramAccessibilityNodeInfoCompat.setContentDescription("");
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(Chip.a());
+    paramAccessibilityNodeInfoCompat.setBoundsInParent(Chip.f());
   }
   
   protected void onVirtualViewKeyboardFocusChanged(int paramInt, boolean paramBoolean)
@@ -115,7 +115,7 @@ class Chip$ChipTouchHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.chip.Chip.ChipTouchHelper
  * JD-Core Version:    0.7.0.1
  */

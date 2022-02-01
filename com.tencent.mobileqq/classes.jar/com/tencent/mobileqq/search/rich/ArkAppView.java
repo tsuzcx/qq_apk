@@ -3,6 +3,8 @@ package com.tencent.mobileqq.search.rich;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.ark.ArkTextureView;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
@@ -11,13 +13,15 @@ import com.tencent.mobileqq.ark.ArkAppDataReport;
 import com.tencent.mobileqq.ark.api.IArkEnvironment;
 import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.search.presenter.RichSearchResultPresenter.OnActionListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppView
   extends ArkTextureView
   implements ArkViewImplement.LoadCallback
 {
-  private ArkAppView.ArkAppViewEvent a;
+  protected RichSearchResultPresenter.OnActionListener a;
+  private ArkAppView.ArkAppViewEvent b;
   
   public ArkAppView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +32,7 @@ public class ArkAppView
   
   public void a()
   {
-    this.a = null;
+    this.b = null;
   }
   
   public void a(ArkNodeContainer paramArkNodeContainer, ArkAppView.ArkAppViewEvent paramArkAppViewEvent)
@@ -39,7 +43,7 @@ public class ArkAppView
     if (paramArkNodeContainer == null) {
       return;
     }
-    this.a = paramArkAppViewEvent;
+    this.b = paramArkAppViewEvent;
     super.initArkView(paramArkNodeContainer);
     setOnTouchListener(this);
     setLoadCallback(this);
@@ -47,9 +51,9 @@ public class ArkAppView
   
   public void onFirstPaint()
   {
-    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.a;
+    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.b;
     if (localArkAppViewEvent != null) {
-      localArkAppViewEvent.c();
+      localArkAppViewEvent.do_();
     }
   }
   
@@ -72,7 +76,7 @@ public class ArkAppView
       return;
     }
     setVisibility(8);
-    localObject = this.a;
+    localObject = this.b;
     if (localObject != null) {
       ((ArkAppView.ArkAppViewEvent)localObject).a(paramString, paramInt, paramBoolean);
     }
@@ -97,7 +101,7 @@ public class ArkAppView
       QLog.d(TAG, 2, "onLoadSuccess");
     }
     super.onLoadSuccess();
-    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.a;
+    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.b;
     if (localArkAppViewEvent != null) {
       localArkAppViewEvent.a();
     }
@@ -109,15 +113,32 @@ public class ArkAppView
       QLog.d(TAG, 2, "onLoading");
     }
     setVisibility(8);
-    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.a;
+    ArkAppView.ArkAppViewEvent localArkAppViewEvent = this.b;
     if (localArkAppViewEvent != null) {
-      localArkAppViewEvent.b();
+      localArkAppViewEvent.dn_();
     }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1)
+    {
+      RichSearchResultPresenter.OnActionListener localOnActionListener = this.a;
+      if (localOnActionListener != null) {
+        localOnActionListener.a();
+      }
+    }
+    return super.onTouch(paramView, paramMotionEvent);
+  }
+  
+  public void setOnActionListener(RichSearchResultPresenter.OnActionListener paramOnActionListener)
+  {
+    this.a = paramOnActionListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppView
  * JD-Core Version:    0.7.0.1
  */

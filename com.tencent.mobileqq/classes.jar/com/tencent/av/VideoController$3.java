@@ -10,9 +10,9 @@ class VideoController$3
   public void run()
   {
     VideoController localVideoController = this.this$0;
-    localVideoController.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener = new VideoController.QQPhoneStatusListener(localVideoController);
+    localVideoController.O = new VideoController.QQPhoneStatusListener(localVideoController);
     localVideoController = this.this$0;
-    localVideoController.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(localVideoController.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor$PhoneStatusListener);
+    localVideoController.N = new PhoneStatusMonitor(localVideoController.f, this.this$0.O);
   }
 }
 

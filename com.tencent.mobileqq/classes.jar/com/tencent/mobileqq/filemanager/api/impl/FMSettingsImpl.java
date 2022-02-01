@@ -13,32 +13,32 @@ public class FMSettingsImpl
   
   public void free()
   {
-    this.fmSettings.b();
+    this.fmSettings.j();
   }
   
   public long getDefalutStorgeFreeSpace()
   {
-    return this.fmSettings.a();
+    return this.fmSettings.f();
   }
   
   public String getDefaultRecvPath()
   {
-    return this.fmSettings.b();
+    return this.fmSettings.c();
   }
   
   public String getDefaultThumbPath()
   {
-    return this.fmSettings.d();
+    return this.fmSettings.e();
   }
   
   public String getDefaultTmpPath()
   {
-    return this.fmSettings.c();
+    return this.fmSettings.d();
   }
   
   public String getOtherRecvPath()
   {
-    return this.fmSettings.a();
+    return this.fmSettings.b();
   }
   
   public void justDoIt(long paramLong, List<String> paramList, Activity paramActivity, FMSettingInterface.MoveFileCallback paramMoveFileCallback)
@@ -58,7 +58,7 @@ public class FMSettingsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FMSettingsImpl
  * JD-Core Version:    0.7.0.1
  */

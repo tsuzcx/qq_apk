@@ -13,7 +13,7 @@ class AddFriendVerifyActivity$15
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4)
+    if (AddFriendVerifyActivity.k(this.a) != 4)
     {
       int i = paramEditable.length();
       if (i > 30)
@@ -35,8 +35,8 @@ class AddFriendVerifyActivity$15
           label79:
           i = paramEditable.length();
         }
-        this.a.a.setText(paramEditable);
-        this.a.a.setSelection(paramEditable.length());
+        this.a.b.setText(paramEditable);
+        this.a.b.setSelection(paramEditable.length());
       }
     }
   }
@@ -45,7 +45,7 @@ class AddFriendVerifyActivity$15
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (AddFriendVerifyActivity.a(this.a) != 4) {
+    if (AddFriendVerifyActivity.k(this.a) != 4) {
       return;
     }
     try
@@ -74,17 +74,17 @@ class AddFriendVerifyActivity$15
           paramInt2 = paramCharSequence.getBytes("utf-8").length;
           paramInt1 = 90 - paramInt2;
         }
-        AddFriendVerifyActivity.a(this.a).setText(paramCharSequence);
-        AddFriendVerifyActivity.a(this.a).setSelection(paramCharSequence.length());
+        AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
+        AddFriendVerifyActivity.b(this.a).setSelection(paramCharSequence.length());
         paramInt2 = paramInt1;
       }
-      if (AddFriendVerifyActivity.b(this.a).getVisibility() == 0)
+      if (AddFriendVerifyActivity.l(this.a).getVisibility() == 0)
       {
         paramCharSequence = new StringBuilder();
         paramCharSequence.append(paramInt2);
         paramCharSequence.append("");
         paramCharSequence = paramCharSequence.toString();
-        AddFriendVerifyActivity.b(this.a).setText(paramCharSequence);
+        AddFriendVerifyActivity.l(this.a).setText(paramCharSequence);
         return;
       }
     }
@@ -96,7 +96,7 @@ class AddFriendVerifyActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.15
  * JD-Core Version:    0.7.0.1
  */

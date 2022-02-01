@@ -22,14 +22,14 @@ public class RecommendEmotionServiceImpl
   
   public String getSpecKeyWord(BaseAIOContext paramBaseAIOContext)
   {
-    return ((SpecWordEmotionThinkHelper)paramBaseAIOContext.a(41)).a();
+    return ((SpecWordEmotionThinkHelper)paramBaseAIOContext.a(41)).d();
   }
   
   public void onEmotionKeywordDimiss(BaseAIOContext paramBaseAIOContext)
   {
     paramBaseAIOContext = (StickerRecHelper)paramBaseAIOContext.a(14);
     if (paramBaseAIOContext != null) {
-      paramBaseAIOContext.c();
+      paramBaseAIOContext.d();
     }
   }
   
@@ -70,7 +70,7 @@ public class RecommendEmotionServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.api.impl.RecommendEmotionServiceImpl
  * JD-Core Version:    0.7.0.1
  */

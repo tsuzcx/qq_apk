@@ -18,7 +18,7 @@ abstract class DTAbstractEventMapHandler
     return paramMap.remove("is_interactive_flag");
   }
   
-  private String removeContentId(Map paramMap)
+  private String getOrRemoveContentId(Map paramMap)
   {
     if (!isValidMap(paramMap)) {
       return null;
@@ -30,7 +30,7 @@ abstract class DTAbstractEventMapHandler
     return paramMap.toString();
   }
   
-  private String removePageId(Map<?, ?> paramMap)
+  private String getOrRemovePageId(Map<?, ?> paramMap)
   {
     if (!isValidMap(paramMap)) {
       return null;
@@ -42,7 +42,7 @@ abstract class DTAbstractEventMapHandler
     return paramMap.toString();
   }
   
-  private String removePageStp(Map<?, ?> paramMap)
+  private String getOrRemovePageStp(Map<?, ?> paramMap)
   {
     boolean bool = isValidMap(paramMap);
     Object localObject2 = null;
@@ -62,7 +62,7 @@ abstract class DTAbstractEventMapHandler
     return localObject1;
   }
   
-  private String removeRefPageParams(Map<?, ?> paramMap, String paramString)
+  private String getOrRemoveRefPageParams(Map<?, ?> paramMap, String paramString)
   {
     boolean bool = isValidMap(paramMap);
     Object localObject2 = null;
@@ -92,6 +92,17 @@ abstract class DTAbstractEventMapHandler
     return localObject1;
   }
   
+  private void putToMap(Map<String, Object> paramMap, String paramString, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if (((paramObject instanceof String)) && (TextUtils.isEmpty((String)paramObject))) {
+      return;
+    }
+    paramMap.put(paramString, paramObject);
+  }
+  
   void formatLvTime(Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
     if (!isValidMap(paramMap2)) {
@@ -110,30 +121,19 @@ abstract class DTAbstractEventMapHandler
   {
     if ((isValidMap(paramMap1)) && (isValidMap(paramMap)))
     {
-      Object localObject = getAndRemoveInteractiveFlag(paramMap1);
-      String str1 = removePageId(paramMap1);
-      String str2 = removeContentId(paramMap1);
-      String str3 = removeRefPageParams(paramMap1, "pgid");
-      String str4 = removeRefPageParams(paramMap1, "pg_contentid");
-      String str5 = removePageStp(paramMap1);
-      if (!TextUtils.isEmpty(str1)) {
-        paramMap.put("dt_pgid", str1);
-      }
-      if (!TextUtils.isEmpty(str2)) {
-        paramMap.put("dt_pg_contentid", str2);
-      }
-      if (!TextUtils.isEmpty(str3)) {
-        paramMap.put("dt_ref_pgid", str3);
-      }
-      if (!TextUtils.isEmpty(str4)) {
-        paramMap.put("dt_refpg_contentid", str4);
-      }
-      if (!TextUtils.isEmpty(str5)) {
-        paramMap.put("dt_pgstp", str5);
-      }
-      if (localObject != null) {
-        paramMap1.put("dt_is_interactive_flag", localObject);
-      }
+      Object localObject = getOrRemovePageId(paramMap1);
+      String str1 = getOrRemoveContentId(paramMap1);
+      String str2 = getOrRemoveRefPageParams(paramMap1, "pgid");
+      String str3 = getOrRemoveRefPageParams(paramMap1, "pg_contentid");
+      String str4 = getOrRemovePageStp(paramMap1);
+      putToMap(paramMap, "dt_pgid", localObject);
+      putToMap(paramMap, "dt_pg_contentid", str1);
+      putToMap(paramMap, "dt_ref_pgid", str2);
+      putToMap(paramMap, "dt_refpg_contentid", str3);
+      putToMap(paramMap, "dt_pgstp", str4);
+      localObject = getAndRemoveInteractiveFlag(paramMap1);
+      putToMap(paramMap1, "dt_is_interactive_flag", localObject);
+      putToMap(paramMap, "dt_is_interactive_flag", localObject);
     }
   }
   
@@ -142,17 +142,16 @@ abstract class DTAbstractEventMapHandler
     if (!isValidMap(paramMap)) {
       return;
     }
-    if (paramMap.containsKey("usid")) {
-      paramMap.put("dt_usid", paramMap.remove("usid"));
-    }
-    if (paramMap.containsKey("us_stmp")) {
-      paramMap.put("dt_usstmp", paramMap.remove("us_stmp"));
-    }
-    if (paramMap.containsKey("ussn")) {
-      paramMap.put("dt_ussn", paramMap.remove("ussn"));
-    }
-    if (paramMap.containsKey("coldstart")) {
-      paramMap.put("dt_coldstart", paramMap.remove("coldstart"));
+    formatSinglePublicParams(paramMap, "usid", "dt_usid");
+    formatSinglePublicParams(paramMap, "us_stmp", "dt_usstmp");
+    formatSinglePublicParams(paramMap, "ussn", "dt_ussn");
+    formatSinglePublicParams(paramMap, "coldstart", "dt_coldstart");
+  }
+  
+  void formatSinglePublicParams(Map<String, Object> paramMap, String paramString1, String paramString2)
+  {
+    if (paramMap.containsKey(paramString1)) {
+      paramMap.put(paramString2, paramMap.remove(paramString1));
     }
   }
   
@@ -175,7 +174,7 @@ abstract class DTAbstractEventMapHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.formatter.maphandler.DTAbstractEventMapHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -65,7 +65,7 @@ public class TroopSender
     return 0L;
   }
   
-  private static String a(String paramString)
+  private static String b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return "";
@@ -248,7 +248,7 @@ public class TroopSender
     localModifyGroupInfoReq.dwValidMask = paramToServiceMsg.extraData.getLong("dwValidMask");
     String str = paramToServiceMsg.extraData.getString("strFingerMemo");
     localModifyGroupInfoReq.strFingerMemo = paramToServiceMsg.extraData.getString("textEmoji");
-    localModifyGroupInfoReq.strRichFingerMemo = a(str);
+    localModifyGroupInfoReq.strRichFingerMemo = b(str);
     localModifyGroupInfoReq.wVersion = 1;
     paramUniPacket.setServantName("mqq.IMService.FriendListServiceServantObj");
     paramUniPacket.setFuncName("ModifyGroupInfoReq");
@@ -305,7 +305,7 @@ public class TroopSender
       ((oidb_0x88d.ReqGroupInfo)localObject2).uint32_last_get_group_name_time.set(0);
       ((oidb_0x88d.ReqGroupInfo)localObject2).stgroupinfo.set((MessageMicro)localObject3);
       localObject3 = new oidb_0x88d.ReqBody();
-      ((oidb_0x88d.ReqBody)localObject3).uint32_appid.set(AppSetting.a());
+      ((oidb_0x88d.ReqBody)localObject3).uint32_appid.set(AppSetting.d());
       ((oidb_0x88d.ReqBody)localObject3).stzreqgroupinfo.add((MessageMicro)localObject2);
       localObject2 = new oidb_sso.OIDBSSOPkg();
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2189);
@@ -334,7 +334,7 @@ public class TroopSender
         ((oidb_0x88d.ReqGroupInfo)localObject3).uint32_last_get_group_name_time.set(0);
         ((oidb_0x88d.ReqGroupInfo)localObject3).stgroupinfo.set((MessageMicro)localObject2);
         localObject2 = new oidb_0x88d.ReqBody();
-        ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(AppSetting.a());
+        ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(AppSetting.d());
         ((oidb_0x88d.ReqBody)localObject2).stzreqgroupinfo.add((MessageMicro)localObject3);
         localObject3 = new oidb_sso.OIDBSSOPkg();
         ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(2189);
@@ -518,7 +518,7 @@ public class TroopSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.troop.TroopSender
  * JD-Core Version:    0.7.0.1
  */

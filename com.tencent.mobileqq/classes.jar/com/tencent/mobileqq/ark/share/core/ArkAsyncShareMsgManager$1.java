@@ -31,12 +31,12 @@ class ArkAsyncShareMsgManager$1
       long l = ((Bundle)localObject3).getLong("key_process_message_uniseq");
       paramObject = ((Bundle)localObject3).getString("key_process_message_friend_uin");
       int i = ((Bundle)localObject3).getInt("key_process_message_uin_type");
-      synchronized (ArkAsyncShareMsgManager.a(this.a))
+      synchronized (ArkAsyncShareMsgManager.b(this.a))
       {
-        if ((Bundle)ArkAsyncShareMsgManager.a(this.a).get(Long.valueOf(l)) != null)
+        if ((Bundle)ArkAsyncShareMsgManager.c(this.a).get(Long.valueOf(l)) != null)
         {
-          ArkAsyncShareMsgManager.a(this.a).remove(Long.valueOf(l));
-          ArkAsyncShareMsgManager.a(this.a).removeMessages(1, localObject3);
+          ArkAsyncShareMsgManager.c(this.a).remove(Long.valueOf(l));
+          ArkAsyncShareMsgManager.d(this.a).removeMessages(1, localObject3);
           if (!(localObject1 instanceof QQAppInterface))
           {
             QLog.e("ArkApp.ArkAsyncShareMsgManager", 1, new Object[] { "AAShare.sArkMsgPrepCallback.failed should in main process, uniseq=", Long.valueOf(l) });
@@ -77,7 +77,7 @@ class ArkAsyncShareMsgManager$1
           ((MessageForArkApp)???).updateProcessStateAndExtraFlag(1003);
           ((MessageForArkApp)???).saveMsgData((QQAppInterface)localObject1);
           ((MessageForArkApp)???).saveMsgExtStrAndFlag((QQAppInterface)localObject1);
-          ((QQAppInterface)localObject1).getMsgCache().a(((MessageForArkApp)???).frienduin, ((MessageForArkApp)???).istroop, ((MessageForArkApp)???).uniseq);
+          ((QQAppInterface)localObject1).getMsgCache().b(((MessageForArkApp)???).frienduin, ((MessageForArkApp)???).istroop, ((MessageForArkApp)???).uniseq);
           ArkAsyncShareMsgManager.a(this.a, (QQAppInterface)localObject1, (MessageForArkApp)???);
           return;
         }
@@ -90,7 +90,7 @@ class ArkAsyncShareMsgManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.share.core.ArkAsyncShareMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

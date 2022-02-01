@@ -52,7 +52,7 @@ final class StructMsgForImageShare$1
 {
   public void onClick(View paramView)
   {
-    Object localObject3 = paramView.findViewById(2131377989);
+    Object localObject3 = paramView.findViewById(2131446476);
     Object localObject1;
     StructMsgForImageShare localStructMsgForImageShare;
     Context localContext;
@@ -60,7 +60,7 @@ final class StructMsgForImageShare$1
     {
       do
       {
-        localObject1 = ((View)localObject3).getTag(2131377989);
+        localObject1 = ((View)localObject3).getTag(2131446476);
       } while (!(localObject1 instanceof StructMsgForImageShare));
       localStructMsgForImageShare = (StructMsgForImageShare)localObject1;
       localContext = ((View)localObject3).getContext();
@@ -84,7 +84,7 @@ final class StructMsgForImageShare$1
         try
         {
           ((MqqHandler)localObject4).postDelayed(new StructMsgForImageShare.1.1(this, localStructMsgForImageShare, (QQAppInterface)localObject1), 0L);
-          if ((localStructMsgForImageShare.getFirstImageElement() == null) || (!localStructMsgForImageShare.getFirstImageElement().a())) {
+          if ((localStructMsgForImageShare.getFirstImageElement() == null) || (!localStructMsgForImageShare.getFirstImageElement().c())) {
             break label198;
           }
           SdkShareReporter.b(localStructMsgForImageShare.uinType, localStructMsgForImageShare.mSourceAppid, localStructMsgForImageShare.getTitleFromBrief());
@@ -106,9 +106,9 @@ final class StructMsgForImageShare$1
       MessageForPic localMessageForPic;
       if (localObject4 != null)
       {
-        if ((!MessageRecordInfo.b(localStructMsgForImageShare.mIsSend)) && (((StructMsgItemImage)localObject4).a != null))
+        if ((!MessageRecordInfo.c(localStructMsgForImageShare.mIsSend)) && (((StructMsgItemImage)localObject4).aF != null))
         {
-          localObject2 = PicItemBuilder.a(localContext, ((StructMsgItemImage)localObject4).a);
+          localObject2 = PicItemBuilder.a(localContext, ((StructMsgItemImage)localObject4).aF);
           if (localObject2 != null)
           {
             if (((URLDrawable)localObject2).getStatus() == 2)
@@ -127,16 +127,16 @@ final class StructMsgForImageShare$1
         ((Intent)localObject5).putExtra("curType", localStructMsgForImageShare.uinType);
         ((Intent)localObject5).putExtra("_id", localStructMsgForImageShare.uniseq);
         ((Intent)localObject5).putExtra("appid", localStructMsgForImageShare.mSourceAppid);
-        ((Intent)localObject5).putExtra("image_share_by_server", ((StructMsgItemImage)localObject4).a());
-        ((Intent)localObject5).putExtra("urlAtServer", ((StructMsgItemImage)localObject4).ad);
-        ((Intent)localObject5).putExtra("KEY_FILE_ID", ((StructMsgItemImage)localObject4).c);
-        ((Intent)localObject5).putExtra("picMD5", ((StructMsgItemImage)localObject4).ae);
-        ((Intent)localObject5).putExtra("url", ((StructMsgItemImage)localObject4).ac);
+        ((Intent)localObject5).putExtra("image_share_by_server", ((StructMsgItemImage)localObject4).c());
+        ((Intent)localObject5).putExtra("urlAtServer", ((StructMsgItemImage)localObject4).av);
+        ((Intent)localObject5).putExtra("KEY_FILE_ID", ((StructMsgItemImage)localObject4).aB);
+        ((Intent)localObject5).putExtra("picMD5", ((StructMsgItemImage)localObject4).aw);
+        ((Intent)localObject5).putExtra("url", ((StructMsgItemImage)localObject4).au);
         ((Intent)localObject5).putExtra("friendUin", localStructMsgForImageShare.uin);
         ((Intent)localObject5).putExtra("KEY_MSG_VERSION_CODE", localStructMsgForImageShare.messageVersion);
         ((Intent)localObject5).putExtra("isSend", localStructMsgForImageShare.mIsSend);
         ((Intent)localObject5).putExtra("KEY_BUSI_TYPE", 1030);
-        ((Intent)localObject5).putExtra("IS_FROMOTHER_TERMINAL_KEY", MessageRecordInfo.c(localStructMsgForImageShare.mIsSend));
+        ((Intent)localObject5).putExtra("IS_FROMOTHER_TERMINAL_KEY", MessageRecordInfo.d(localStructMsgForImageShare.mIsSend));
         ((Intent)localObject5).putExtra("uin", localStructMsgForImageShare.uin);
         if (localStructMsgForImageShare.mIsSend == 1) {
           localObject2 = localStructMsgForImageShare.currentAccountUin;
@@ -144,14 +144,14 @@ final class StructMsgForImageShare$1
           localObject2 = localStructMsgForImageShare.uin;
         }
         ((Intent)localObject5).putExtra("KEY_TROOP_CODE", (String)localObject2);
-        ((Intent)localObject5).putExtra("fileSize", ((StructMsgItemImage)localObject4).d);
-        ((Intent)localObject5).putExtra("KEY_TIME", ((StructMsgItemImage)localObject4).e);
+        ((Intent)localObject5).putExtra("fileSize", ((StructMsgItemImage)localObject4).aC);
+        ((Intent)localObject5).putExtra("KEY_TIME", ((StructMsgItemImage)localObject4).aD);
         ((Intent)localObject5).putExtra("KEY_SUB_VERSION", 5);
         ((Intent)localObject5).putExtra("KEY_FILE_SIZE_FLAG", 0);
         ((Intent)localObject5).putExtra("uniSeq", localStructMsgForImageShare.uniseq);
         ((Intent)localObject5).putExtra("KEY_THUMBNAL_BOUND", AnimationUtils.a((View)localObject3));
         ((Intent)localObject5).putExtra("title", localStructMsgForImageShare.getTitleFromBrief());
-        localMessageForPic = ((StructMsgItemImage)localObject4).a;
+        localMessageForPic = ((StructMsgItemImage)localObject4).aF;
         if (localMessageForPic != null)
         {
           ((Intent)localObject5).addFlags(603979776);
@@ -181,15 +181,15 @@ final class StructMsgForImageShare$1
       localObject2 = AIOGalleryUtils.a(localMessageForPic);
       if (localStructMsgForImageShare.message != null)
       {
-        ((AIOImageData)localObject2).g = localStructMsgForImageShare.message.time;
-        ((AIOImageData)localObject2).i = localStructMsgForImageShare.message.shmsgseq;
+        ((AIOImageData)localObject2).N = localStructMsgForImageShare.message.time;
+        ((AIOImageData)localObject2).P = localStructMsgForImageShare.message.shmsgseq;
       }
       if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
       {
-        ((AIOImageData)localObject2).jdField_b_of_type_Int = 1;
-        ((AIOImageData)localObject2).a = localStructMsgForImageShare.getBytes();
-        localObject6 = AIOGallerySceneWithBusiness.a(localStructMsgForImageShare);
-        ((AIOImageData)localObject2).d = AIOGallerySceneWithBusiness.a((String[])localObject6);
+        ((AIOImageData)localObject2).r = 1;
+        ((AIOImageData)localObject2).s = localStructMsgForImageShare.getBytes();
+        localObject6 = AIOGallerySceneWithBusiness.b(localStructMsgForImageShare);
+        ((AIOImageData)localObject2).y = AIOGallerySceneWithBusiness.a((String[])localObject6);
         if ((localObject6 != null) && (localObject6.length >= 8))
         {
           if (localObject6[7].equals("link")) {
@@ -209,11 +209,11 @@ final class StructMsgForImageShare$1
         if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare")))
         {
           localObject4 = localObject2;
-          ((AIOImageData)localObject4).jdField_b_of_type_Int = 2;
-          ((AIOImageData)localObject4).a = localStructMsgForImageShare.getBytes();
+          ((AIOImageData)localObject4).r = 2;
+          ((AIOImageData)localObject4).s = localStructMsgForImageShare.getBytes();
           localObject3 = localObject6;
           localObject2 = localObject4;
-          if (MessageRecordInfo.b(localMessageForPic.issend))
+          if (MessageRecordInfo.c(localMessageForPic.issend))
           {
             localObject3 = localObject6;
             localObject2 = localObject4;
@@ -223,7 +223,7 @@ final class StructMsgForImageShare$1
               localObject2 = localObject4;
               if (new File(localMessageForPic.path).exists())
               {
-                ((AIOImageData)localObject4).jdField_b_of_type_JavaLangString = localMessageForPic.path;
+                ((AIOImageData)localObject4).b = localMessageForPic.path;
                 localObject3 = localObject6;
                 localObject2 = localObject4;
               }
@@ -235,10 +235,10 @@ final class StructMsgForImageShare$1
           localObject4 = localObject2;
           if (localStructMsgForImageShare.mImageBizType == 2)
           {
-            if ((MessageRecordInfo.b(localMessageForPic.issend)) && (!TextUtils.isEmpty(localMessageForPic.path)) && (TextUtils.isEmpty(localMessageForPic.md5)) && (new File(localMessageForPic.path).exists())) {
-              ((AIOImageData)localObject4).jdField_b_of_type_JavaLangString = localMessageForPic.path;
+            if ((MessageRecordInfo.c(localMessageForPic.issend)) && (!TextUtils.isEmpty(localMessageForPic.path)) && (TextUtils.isEmpty(localMessageForPic.md5)) && (new File(localMessageForPic.path).exists())) {
+              ((AIOImageData)localObject4).b = localMessageForPic.path;
             }
-            ((AIOImageData)localObject4).jdField_b_of_type_Int = 4;
+            ((AIOImageData)localObject4).r = 4;
             localObject3 = localObject6;
             localObject2 = localObject4;
           }
@@ -248,7 +248,7 @@ final class StructMsgForImageShare$1
             localObject2 = localObject4;
             if (((IGameShareUtil)QRoute.api(IGameShareUtil.class)).isGameShare(localStructMsgForImageShare))
             {
-              ((AIOImageData)localObject4).jdField_b_of_type_Int = 5;
+              ((AIOImageData)localObject4).r = 5;
               ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).convertDataForGallery(localObject4, localStructMsgForImageShare);
               localObject2 = localObject4;
               localObject3 = localObject6;
@@ -271,7 +271,7 @@ final class StructMsgForImageShare$1
         {
           ((Bundle)localObject5).putBoolean("extra.FROM_AIO", true);
           ((Bundle)localObject5).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-          ((Bundle)localObject5).putString((String)localObject3, ((MultiForwardActivity)localContext).getChatFragment().a().a().a);
+          ((Bundle)localObject5).putString((String)localObject3, ((MultiForwardActivity)localContext).getChatFragment().k().aE().b);
           localObject3 = ((Bundle)localObject5).getString("extra.GROUP_UIN");
           if ((localObject3 == null) || (((QQAppInterface)localObject2).getTroopMask((String)localObject3) != 2)) {
             break label1521;
@@ -314,7 +314,7 @@ final class StructMsgForImageShare$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForImageShare.1
  * JD-Core Version:    0.7.0.1
  */

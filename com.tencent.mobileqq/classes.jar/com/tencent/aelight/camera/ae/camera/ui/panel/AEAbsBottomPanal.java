@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 public abstract class AEAbsBottomPanal
   extends FrameLayout
 {
-  protected boolean c = false;
+  protected boolean f = false;
   
   public AEAbsBottomPanal(Context paramContext)
   {
@@ -26,21 +26,21 @@ public abstract class AEAbsBottomPanal
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract boolean a();
+  public abstract boolean e();
   
-  public void d()
+  public void h()
   {
     a(true);
   }
   
   public void setClosedByTouch(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.f = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEAbsBottomPanal
  * JD-Core Version:    0.7.0.1
  */

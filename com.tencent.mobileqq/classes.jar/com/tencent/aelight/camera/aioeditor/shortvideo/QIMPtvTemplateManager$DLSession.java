@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 public class QIMPtvTemplateManager$DLSession
 {
-  public int a;
-  public PtvTemplateManager.IPtvTemplateDownloadListener a;
-  public PtvTemplateInfo a;
   public ArrayList<QIMPtvTemplateManager.DLItem> a = new ArrayList();
+  public PtvTemplateInfo b;
+  public PtvTemplateManager.IPtvTemplateDownloadListener c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.QIMPtvTemplateManager.DLSession
  * JD-Core Version:    0.7.0.1
  */

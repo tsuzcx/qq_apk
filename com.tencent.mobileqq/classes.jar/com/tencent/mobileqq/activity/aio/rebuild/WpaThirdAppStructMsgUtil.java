@@ -39,8 +39,8 @@ public class WpaThirdAppStructMsgUtil
         paramActivity = StructMsgFactory.a(paramActivity);
         if (paramActivity != null)
         {
-          ShareMsgHelper.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramActivity, null);
-          ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B51", "0X8004B51", 0, 0, "", "", "", "");
+          ShareMsgHelper.a(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.a, paramActivity, null);
+          ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.b, "0X8004B51", "0X8004B51", 0, 0, "", "", "", "");
         }
       }
     }
@@ -49,7 +49,7 @@ public class WpaThirdAppStructMsgUtil
   public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, AbsShareMsg paramAbsShareMsg, String paramString)
   {
     ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramBaseActivity);
-    String str = paramBaseActivity.getString(2131718866);
+    String str = paramBaseActivity.getString(2131916399);
     Object localObject = str;
     if (paramString != null)
     {
@@ -60,11 +60,11 @@ public class WpaThirdAppStructMsgUtil
     }
     paramAbsShareMsg = new WpaThirdAppStructMsgUtil.1(paramAbsShareMsg, paramBaseActivity, paramBaseActivity, paramQQAppInterface, paramSessionInfo);
     localShareAioResultDialog.a((String)localObject, paramAbsShareMsg);
-    localShareAioResultDialog.a(paramBaseActivity.getResources().getString(2131718873));
+    localShareAioResultDialog.a(paramBaseActivity.getResources().getString(2131916406));
     localShareAioResultDialog.a(paramAbsShareMsg);
     localShareAioResultDialog.a(false);
     localShareAioResultDialog.show();
-    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B54", "0X8004B54", 0, 0, "", "", "", "");
+    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.b, "0X8004B54", "0X8004B54", 0, 0, "", "", "", "");
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
@@ -76,7 +76,7 @@ public class WpaThirdAppStructMsgUtil
       {
         paramIntent = StructMsgFactory.a(paramIntent);
         long l = MobileQQService.seq;
-        paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, l, paramIntent);
+        paramSessionInfo = MessageRecordFactory.c(paramQQAppInterface, paramSessionInfo.b, paramSessionInfo.b, paramSessionInfo.b, paramSessionInfo.a, l, paramIntent);
         paramIntent = new ArrayList();
         paramIntent.add(paramSessionInfo);
         paramQQAppInterface.getMessageFacade().b(paramIntent, paramQQAppInterface.getCurrentAccountUin());
@@ -88,7 +88,7 @@ public class WpaThirdAppStructMsgUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo)
   {
-    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B53", "0X8004B53", 0, 0, "", "", "", "");
+    ReportController.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.b, "0X8004B53", "0X8004B53", 0, 0, "", "", "", "");
     Object localObject = paramBaseActivity.getIntent().getByteArrayExtra("stuctmsg_bytes");
     String str = paramBaseActivity.getIntent().getStringExtra("thirdAppDisplayName");
     localObject = StructMsgFactory.a((byte[])localObject);
@@ -99,7 +99,7 @@ public class WpaThirdAppStructMsgUtil
     }
     if ("webview".equals(paramBaseActivity.getIntent().getStringExtra("from")))
     {
-      JumpAction.jdField_a_of_type_Int -= 1;
+      JumpAction.l -= 1;
       if (!(paramBaseActivity instanceof SplashActivity))
       {
         paramBaseActivity.finish();
@@ -113,7 +113,7 @@ public class WpaThirdAppStructMsgUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.WpaThirdAppStructMsgUtil
  * JD-Core Version:    0.7.0.1
  */

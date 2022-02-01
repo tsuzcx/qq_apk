@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.qqsettingme;
 
 import MQQ.MenumItem;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import com.tencent.mobileqq.activity.qqsettingme.bean.QQSettingMeDynamicItemBean
 import com.tencent.mobileqq.activity.qqsettingme.bean.QQSettingMeLoveZoneBean;
 import com.tencent.mobileqq.app.LoveZoneDynamicRedPointPathInterface;
 import com.tencent.mobileqq.app.LoveZoneInfoObserver;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.loverzone.LoverZoneUtils;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -23,6 +23,7 @@ import com.tencent.mobileqq.tianshu.data.BusinessInfoCheckUpdateItem.DynamicRedP
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.utils.VasUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.mobileqq.vip.QQSettingConfigManager;
 import common.config.service.QzoneConfig;
@@ -36,36 +37,30 @@ import mqq.app.AppRuntime;
 public class QQSettingMeLoveZoneProcessor
   extends QQSettingMeBaseMenuProcessor
 {
-  private final LoveZoneInfoObserver a;
-  public MutableLiveData<String> b;
-  private boolean b;
-  public MutableLiveData<QQSettingMeDynamicItemBean> c = new MutableLiveData();
-  
-  public QQSettingMeLoveZoneProcessor()
-  {
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-    this.jdField_a_of_type_ComTencentMobileqqAppLoveZoneInfoObserver = new QQSettingMeLoveZoneProcessor.1(this);
-  }
+  public MutableLiveData<String> b = new MutableLiveData();
+  public MutableLiveData<QQSettingMeDynamicItemBean> i = new MutableLiveData();
+  private boolean j;
+  private final LoveZoneInfoObserver k = new QQSettingMeLoveZoneProcessor.1(this);
   
   private int a()
   {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
-    int i = 0;
+    Object localObject = this.c;
+    int m = 0;
     if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getPreferences();
+      localObject = this.c.getPreferences();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("love_state_for_current_uin");
-      localStringBuilder.append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin());
-      i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
+      localStringBuilder.append(this.c.getCurrentUin());
+      m = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
     }
-    return i;
+    return m;
   }
   
   private String a(String paramString, int paramInt)
   {
     String str = paramString;
-    if (StudyModeManager.a())
+    if (StudyModeManager.h())
     {
       str = paramString;
       if (paramInt == 0) {
@@ -75,31 +70,47 @@ public class QQSettingMeLoveZoneProcessor
     return str;
   }
   
-  private void j()
+  private void a(int paramInt)
   {
-    Object localObject1 = QQSettingConfigManager.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+    if ((!VasUtils.b()) && (this.d != null))
+    {
+      if (this.c == null) {
+        return;
+      }
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.c;
+      QBaseActivity localQBaseActivity = this.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      LoverZoneUtils.a(localQQAppInterface, localQBaseActivity, 2066, "10", localStringBuilder.toString());
+    }
+  }
+  
+  private void l()
+  {
+    Object localObject1 = QQSettingConfigManager.a().a((QQAppInterface)this.c);
     Object localObject2 = Integer.valueOf(4);
     Object localObject3 = (MenumItem)((Map)localObject1).get(localObject2);
     if (localObject3 == null) {
       return;
     }
     localObject1 = new QQSettingMeDynamicItemBean();
-    ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_JavaLangString = QQSettingConfigManager.a().a((Integer)localObject2);
+    ((QQSettingMeDynamicItemBean)localObject1).a = QQSettingConfigManager.a().b((Integer)localObject2);
     if (!TextUtils.isEmpty(((MenumItem)localObject3).title)) {
-      ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_ComTencentMobileqqTextQQText = ChatRoomUtil.a(((MenumItem)localObject3).title, 16);
+      ((QQSettingMeDynamicItemBean)localObject1).b = ChatRoomUtil.a(((MenumItem)localObject3).title, 16);
     }
     if (!TextUtils.isEmpty(((MenumItem)localObject3).icon))
     {
       localObject2 = ((MenumItem)localObject3).icon;
       localObject3 = URLDrawableHelperConstants.a;
-      ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_ComTencentImageURLDrawable = VasApngUtil.getApngURLDrawable((String)localObject2, new int[] { 1 }, (Drawable)localObject3, null, null);
+      ((QQSettingMeDynamicItemBean)localObject1).c = VasApngUtil.getApngURLDrawable((String)localObject2, new int[] { 1 }, (Drawable)localObject3, null, null);
     }
-    this.c.postValue(localObject1);
+    this.i.postValue(localObject1);
   }
   
-  private void k()
+  private void m()
   {
-    Iterator localIterator = ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getRegisterInterfaces().iterator();
+    Iterator localIterator = ((IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "")).getRegisterInterfaces().iterator();
     while (localIterator.hasNext())
     {
       BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface localDynamicRedPointPathInterface = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localIterator.next();
@@ -109,12 +120,12 @@ public class QQSettingMeLoveZoneProcessor
     }
   }
   
-  private void l()
+  private void n()
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null) {
+    if (this.c == null) {
       return;
     }
-    Iterator localIterator = ((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getRegisterInterfaces().iterator();
+    Iterator localIterator = ((IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "")).getRegisterInterfaces().iterator();
     while (localIterator.hasNext())
     {
       BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface localDynamicRedPointPathInterface = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localIterator.next();
@@ -124,26 +135,16 @@ public class QQSettingMeLoveZoneProcessor
     }
   }
   
-  public String a()
-  {
-    return "d_lovespace";
-  }
-  
-  public void a()
-  {
-    j();
-  }
-  
   public void a(View paramView)
   {
-    int i = LoverZoneUtils.a(LoverZoneUtils.a((BusinessInfoCheckUpdate.AppInfo)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()));
-    paramView = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
+    int m = LoverZoneUtils.a(LoverZoneUtils.a((BusinessInfoCheckUpdate.AppInfo)this.a.getValue()));
+    paramView = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
     Object localObject1 = paramView.getAppInfoByPath(String.valueOf(100066));
     if ((localObject1 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() != 0)) {
       paramView.reportLevelOneRedInfo(100066, 31);
     }
-    boolean bool = QQSettingMe.a("d_lovespace").c();
-    Object localObject2 = this.jdField_a_of_type_MqqAppAppRuntime;
+    boolean bool = QQSettingMe.c("d_lovespace").h();
+    Object localObject2 = this.c;
     localObject1 = "1";
     if (bool) {
       paramView = "1";
@@ -151,12 +152,7 @@ public class QQSettingMeLoveZoneProcessor
       paramView = "2";
     }
     ReportController.b((AppRuntime)localObject2, "dc00898", "", "", "0x800AAFB", "0x800AAFB", 0, 0, paramView, "", "", "");
-    paramView = (QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime;
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
-    localStringBuilder.append("");
-    LoverZoneUtils.a(paramView, (Context)localObject2, 2066, "10", localStringBuilder.toString());
+    a(m);
     localObject2 = MobileReportManager.getInstance();
     long l = System.currentTimeMillis();
     paramView = (View)localObject1;
@@ -169,36 +165,29 @@ public class QQSettingMeLoveZoneProcessor
   public void a(QQSettingMe paramQQSettingMe)
   {
     super.a(paramQQSettingMe);
-    this.jdField_b_of_type_AndroidxLifecycleMutableLiveData.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeLoveZoneProcessor.2(this, paramQQSettingMe));
-    this.c.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeLoveZoneProcessor.3(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeLoveZoneProcessor.2(this, paramQQSettingMe));
+    this.i.observe(this.e, new QQSettingMeLoveZoneProcessor.3(this, paramQQSettingMe));
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).addObserver(this.jdField_a_of_type_ComTencentMobileqqAppLoveZoneInfoObserver, true);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    j();
-    g();
+    return "d_lovespace";
   }
   
   protected void b(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
   {
-    if (QQSettingMe.a("d_lovespace").getVisibility() == 0)
+    if (QQSettingMe.b("d_lovespace").getVisibility() == 0)
     {
       paramAppInfo = LoverZoneUtils.a(paramAppInfo);
-      int i = LoverZoneUtils.a(paramAppInfo);
+      int m = LoverZoneUtils.a(paramAppInfo);
       Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(m);
       ((StringBuilder)localObject1).append("");
       Object localObject2 = ((StringBuilder)localObject1).toString();
-      String str = LpReportInfo_dc03950.getReportUserType((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+      String str = LpReportInfo_dc03950.getReportUserType((QQAppInterface)this.c);
       localObject1 = "1";
       LoverZoneUtils.a("10", (String)localObject2, "1", str);
-      localObject2 = this.jdField_a_of_type_MqqAppAppRuntime;
+      localObject2 = this.c;
       if (!TextUtils.isEmpty(paramAppInfo)) {
         paramAppInfo = "1";
       } else {
@@ -215,42 +204,59 @@ public class QQSettingMeLoveZoneProcessor
     }
   }
   
+  public void c()
+  {
+    l();
+  }
+  
   public void d()
   {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_MqqAppAppRuntime != null)) {
-      ((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppLoveZoneInfoObserver);
+    super.d();
+    if (!this.j)
+    {
+      ((QQAppInterface)this.c).addObserver(this.k, true);
+      this.j = true;
     }
+    l();
+    i();
   }
   
   public void f()
   {
-    j();
+    if ((this.j) && (this.c != null)) {
+      ((QQAppInterface)this.c).removeObserver(this.k);
+    }
   }
   
-  public void g()
+  public void h()
+  {
+    l();
+  }
+  
+  public void i()
   {
     QQSettingMeLoveZoneBean localQQSettingMeLoveZoneBean = new QQSettingMeLoveZoneBean();
-    localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("sweet_miniapp", "entrance", "0");
-    localQQSettingMeLoveZoneBean.jdField_a_of_type_Int = a();
-    if ((!TextUtils.isEmpty(localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString)) && (!"0".equals(localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString))) {
-      localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString = a(localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString, localQQSettingMeLoveZoneBean.jdField_a_of_type_Int);
+    localQQSettingMeLoveZoneBean.a = QzoneConfig.getInstance().getConfig("sweet_miniapp", "entrance", "0");
+    localQQSettingMeLoveZoneBean.b = a();
+    if ((!TextUtils.isEmpty(localQQSettingMeLoveZoneBean.a)) && (!"0".equals(localQQSettingMeLoveZoneBean.a))) {
+      localQQSettingMeLoveZoneBean.a = a(localQQSettingMeLoveZoneBean.a, localQQSettingMeLoveZoneBean.b);
     }
-    if ((this.jdField_a_of_type_MqqAppAppRuntime != null) && (!TextUtils.isEmpty(localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString)) && (!"0".equals(localQQSettingMeLoveZoneBean.jdField_a_of_type_JavaLangString)))
+    if ((this.c != null) && (!TextUtils.isEmpty(localQQSettingMeLoveZoneBean.a)) && (!"0".equals(localQQSettingMeLoveZoneBean.a)))
     {
-      if (localQQSettingMeLoveZoneBean.jdField_a_of_type_Int == 1)
+      if (localQQSettingMeLoveZoneBean.b == 1)
       {
-        k();
+        m();
         return;
       }
-      l();
+      n();
       return;
     }
-    l();
+    n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeLoveZoneProcessor
  * JD-Core Version:    0.7.0.1
  */

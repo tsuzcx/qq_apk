@@ -9,12 +9,12 @@ class HotChatPie$14
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    this.this$0.bQ.a(this.this$0.bR);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.14
  * JD-Core Version:    0.7.0.1
  */

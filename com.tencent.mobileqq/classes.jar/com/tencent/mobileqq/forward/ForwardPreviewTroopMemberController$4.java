@@ -18,19 +18,19 @@ class ForwardPreviewTroopMemberController$4
     QLog.i("Forward.Preview.Dialog", 1, paramRecyclerView.toString());
     if (paramInt != 0)
     {
-      ForwardPreviewTroopMemberController.a(this.a).pause();
+      ForwardPreviewTroopMemberController.e(this.a).pause();
       return;
     }
-    if (ForwardPreviewTroopMemberController.a(this.a).isPausing())
+    if (ForwardPreviewTroopMemberController.e(this.a).isPausing())
     {
-      ForwardPreviewTroopMemberController.a(this.a).resume();
-      ForwardPreviewTroopMemberController.a(this.a).notifyDataSetChanged();
+      ForwardPreviewTroopMemberController.e(this.a).resume();
+      ForwardPreviewTroopMemberController.b(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.4
  * JD-Core Version:    0.7.0.1
  */

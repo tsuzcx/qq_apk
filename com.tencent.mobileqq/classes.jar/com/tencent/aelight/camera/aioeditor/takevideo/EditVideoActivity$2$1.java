@@ -14,13 +14,13 @@ class EditVideoActivity$2$1
     if (((Build.VERSION.SDK_INT > 16) && (this.a.this$0.isDestroyed())) || (this.a.this$0.isFinishing())) {
       return;
     }
-    QQToast.a(this.a.this$0, HardCodeUtil.a(2131703908), 0).a();
+    QQToast.makeText(this.a.this$0, HardCodeUtil.a(2131901845), 0).show();
     this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

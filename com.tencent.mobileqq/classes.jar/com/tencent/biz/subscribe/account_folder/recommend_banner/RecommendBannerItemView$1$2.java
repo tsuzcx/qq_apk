@@ -24,10 +24,10 @@ class RecommendBannerItemView$1$2
     localStringBuilder.append(str1);
     String str1 = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(RecommendBannerItemView.a(this.a.a));
+    localStringBuilder.append(RecommendBannerItemView.b(this.a.a));
     localStringBuilder.append("");
     VSReporter.a(str3, "auth_page", str1, 0, 0, new String[] { "", localStringBuilder.toString(), RecommendBannerItemView.a(this.a.a).nick.get() });
-    if (RecommendBannerItemView.a(this.a.a))
+    if (RecommendBannerItemView.c(this.a.a))
     {
       str3 = RecommendBannerItemView.a(this.a.a).id.get();
       localStringBuilder = new StringBuilder();
@@ -38,7 +38,7 @@ class RecommendBannerItemView$1$2
         str1 = "dislike";
       }
       localStringBuilder.append(str1);
-      VSReporter.a(str3, "auth_discover", localStringBuilder.toString(), 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
+      VSReporter.a(str3, "auth_discover", localStringBuilder.toString(), 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.b(this.a.a)), RecommendBannerItemView.a(this.a.a).nick.get(), RecommendBannerItemView.a(this.a.a).desc.get() });
     }
   }
 }

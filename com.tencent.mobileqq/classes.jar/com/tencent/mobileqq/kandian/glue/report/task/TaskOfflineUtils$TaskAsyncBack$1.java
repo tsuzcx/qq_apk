@@ -14,11 +14,11 @@ class TaskOfflineUtils$TaskAsyncBack$1
     ((StringBuilder)localObject2).append("loaded: bid : ");
     ((StringBuilder)localObject2).append(TaskOfflineUtils.TaskAsyncBack.a(this.this$0));
     ((StringBuilder)localObject2).append(" param ");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.a);
     ((StringBuilder)localObject2).append(" code : ");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject2).append(this.b);
     QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    int m = this.jdField_a_of_type_Int;
+    int m = this.b;
     int j = -1;
     int i = m;
     int k = j;
@@ -28,14 +28,14 @@ class TaskOfflineUtils$TaskAsyncBack$1
       i = j;
       try
       {
-        if (this.jdField_a_of_type_JavaLangString == null)
+        if (this.a == null)
         {
           k = j;
-          localObject1 = TaskOfflineUtils.a(TaskOfflineUtils.TaskAsyncBack.a(this.this$0), TaskOfflineUtils.TaskAsyncBack.a(this.this$0));
+          localObject1 = TaskOfflineUtils.a(TaskOfflineUtils.TaskAsyncBack.a(this.this$0), TaskOfflineUtils.TaskAsyncBack.b(this.this$0));
           k = j;
-          j = ((TaskOfflineUtils.ConfigData)localObject1).jdField_a_of_type_Int;
+          j = ((TaskOfflineUtils.ConfigData)localObject1).b;
           k = j;
-          boolean bool = ((TaskOfflineUtils.ConfigData)localObject1).jdField_a_of_type_Boolean;
+          boolean bool = ((TaskOfflineUtils.ConfigData)localObject1).a;
           i = j;
           if (bool)
           {
@@ -63,14 +63,14 @@ class TaskOfflineUtils$TaskAsyncBack$1
         i = j;
       }
     }
-    if (TaskOfflineUtils.TaskAsyncBack.a(this.this$0) != null) {
-      TaskOfflineUtils.TaskAsyncBack.a(this.this$0).a(i, k);
+    if (TaskOfflineUtils.TaskAsyncBack.c(this.this$0) != null) {
+      TaskOfflineUtils.TaskAsyncBack.c(this.this$0).a(i, k);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskOfflineUtils.TaskAsyncBack.1
  * JD-Core Version:    0.7.0.1
  */

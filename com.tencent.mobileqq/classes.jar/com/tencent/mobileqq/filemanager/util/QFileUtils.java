@@ -15,9 +15,12 @@ import android.os.Process;
 import android.provider.MediaStore.Images.Media;
 import android.provider.MediaStore.Video.Media;
 import android.text.TextUtils;
+import android.util.Pair;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
 import com.dataline.core.DirectForwarder;
 import com.dataline.core.DirectForwarder.CallBack;
 import com.dataline.util.file.MediaStoreUtil;
@@ -64,7 +67,8 @@ import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileassistant.forward.QFileAssistantForwardManager;
 import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
 import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IQRMenuItemController;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IQRResultCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.data.FileQRScanResult;
 import com.tencent.mobileqq.filemanager.fileviewer.open.CommonFileBrowserParams;
 import com.tencent.mobileqq.filemanager.fileviewer.open.FileBrowserCreator;
 import com.tencent.mobileqq.filemanager.fileviewer.open.TroopFileBrowserParams;
@@ -82,6 +86,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qrscan.api.IScanUtilApi;
+import com.tencent.mobileqq.qrscan.utils.QRUtils;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.BaseDownloadProcessor;
@@ -115,14 +120,11 @@ import java.util.UUID;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class QFileUtils
 {
-  public static int a()
-  {
-    return QQFileUtils.a();
-  }
-  
   public static int a(int paramInt)
   {
     if (paramInt != 13) {
@@ -168,7 +170,7 @@ public class QFileUtils
         return 101;
       }
     } while (paramInt != 1);
-    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramString);
     paramInt = i;
     if (paramQQAppInterface != null)
     {
@@ -196,37 +198,6 @@ public class QFileUtils
     return -1;
   }
   
-  public static Intent a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity)
-  {
-    int i = ForwardFileOption.a(paramFileManagerEntity);
-    paramActivity = ForwardFileOption.a(paramFileManagerEntity);
-    paramActivity.b(i);
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt("forward_type", 0);
-    paramQQAppInterface.putParcelable("fileinfo", paramActivity);
-    paramQQAppInterface.putBoolean("not_forward", true);
-    paramActivity = new Intent();
-    paramActivity.putExtras(paramQQAppInterface);
-    paramActivity.putExtra("destroy_last_activity", true);
-    paramActivity.putExtra("forward_type", 0);
-    paramActivity.putExtra("forward_filepath", paramFileManagerEntity.getFilePath());
-    paramQQAppInterface = new StringBuilder();
-    paramQQAppInterface.append(HardCodeUtil.a(2131709679));
-    paramQQAppInterface.append(FileManagerUtil.c(paramFileManagerEntity.fileName));
-    paramQQAppInterface.append(HardCodeUtil.a(2131709691));
-    paramQQAppInterface.append(FileUtil.a(paramFileManagerEntity.fileSize));
-    paramQQAppInterface.append("。");
-    paramActivity.putExtra("forward_text", paramQQAppInterface.toString());
-    paramActivity.putExtra("k_favorites", FileManagerUtil.d(paramFileManagerEntity));
-    if ((!FileUtil.a(paramFileManagerEntity.getFilePath())) && ((paramFileManagerEntity.getCloudType() == 6) || (paramFileManagerEntity.getCloudType() == 7)) && (paramFileManagerEntity.nFileType == 0)) {
-      paramActivity.putExtra("forward_type", 0);
-    }
-    if ((paramFileManagerEntity.getCloudType() == 8) && (paramFileManagerEntity.nFileType == 0)) {
-      paramActivity.putExtra("forward_type", 1);
-    }
-    return paramActivity;
-  }
-  
   public static Intent a(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
@@ -238,15 +209,15 @@ public class QFileUtils
     ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
     localForwardFileInfo.b(localFileManagerEntity.nSessionId);
     if (!TextUtils.isEmpty(localFileManagerEntity.getFilePath())) {
-      localForwardFileInfo.a(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
+      localForwardFileInfo.a(localTroopFileStatusInfo.k);
     }
-    localForwardFileInfo.d(localTroopFileStatusInfo.g);
-    localForwardFileInfo.d(localTroopFileStatusInfo.jdField_c_of_type_Long);
+    localForwardFileInfo.d(localTroopFileStatusInfo.t);
+    localForwardFileInfo.d(localTroopFileStatusInfo.i);
     localForwardFileInfo.a(localFileManagerEntity.TroopUin);
-    paramFileManagerEntity = localTroopFileStatusInfo.d;
+    paramFileManagerEntity = localTroopFileStatusInfo.n;
     paramQQAppInterface = paramFileManagerEntity;
     if (TextUtils.isEmpty(paramFileManagerEntity)) {
-      paramQQAppInterface = localTroopFileStatusInfo.jdField_c_of_type_JavaLangString;
+      paramQQAppInterface = localTroopFileStatusInfo.m;
     }
     localForwardFileInfo.f(paramQQAppInterface);
     if (localFileManagerEntity.isZipInnerFile)
@@ -256,8 +227,8 @@ public class QFileUtils
     }
     else
     {
-      if (localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID != null) {
-        localForwardFileInfo.e(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString());
+      if (localTroopFileStatusInfo.a != null) {
+        localForwardFileInfo.e(localTroopFileStatusInfo.a.toString());
       }
       localForwardFileInfo.b(10006);
       localForwardFileInfo.d(4);
@@ -269,7 +240,7 @@ public class QFileUtils
     paramQQAppInterface.putBoolean("not_forward", true);
     paramFileManagerEntity = new Intent();
     paramFileManagerEntity.putExtras(paramQQAppInterface);
-    paramFileManagerEntity.putExtra("forward_text", localTroopFileStatusInfo.g);
+    paramFileManagerEntity.putExtra("forward_text", localTroopFileStatusInfo.t);
     paramFileManagerEntity.putExtra("forward_from_troop_file", true);
     return paramFileManagerEntity;
   }
@@ -278,7 +249,7 @@ public class QFileUtils
   {
     if ((paramView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      int i = FileManagerUtil.a(paramString);
+      int i = FileManagerUtil.c(paramString);
       if ((i == 2) || (i == 0)) {
         return AnimationUtils.a(paramView);
       }
@@ -291,21 +262,16 @@ public class QFileUtils
     return (DataLineHandler)paramQQAppInterface.getBusinessHandler(paramString);
   }
   
-  static IOCRService a()
-  {
-    return (IOCRService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOCRService.class, "");
-  }
-  
   public static TroopFileStatusInfo a(QQAppInterface paramQQAppInterface, long paramLong, TroopFileInfo paramTroopFileInfo)
   {
-    TroopFileStatusInfo localTroopFileStatusInfo2 = TroopFileTransferManager.a(paramQQAppInterface, paramLong).a(paramTroopFileInfo.b);
+    TroopFileStatusInfo localTroopFileStatusInfo2 = TroopFileTransferManager.a(paramQQAppInterface, paramLong).a(paramTroopFileInfo.c);
     TroopFileStatusInfo localTroopFileStatusInfo1 = localTroopFileStatusInfo2;
     if (localTroopFileStatusInfo2 == null)
     {
-      localTroopFileStatusInfo1 = TroopFileUtils.a(paramQQAppInterface, paramLong, paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramTroopFileInfo.b, paramTroopFileInfo.jdField_c_of_type_JavaLangString, paramTroopFileInfo.jdField_a_of_type_Long, paramTroopFileInfo.jdField_a_of_type_Int);
-      localTroopFileStatusInfo1.jdField_c_of_type_JavaLangString = paramTroopFileInfo.k;
-      localTroopFileStatusInfo1.d = paramTroopFileInfo.l;
-      localTroopFileStatusInfo1.b = paramTroopFileInfo.j;
+      localTroopFileStatusInfo1 = TroopFileUtils.a(paramQQAppInterface, paramLong, paramTroopFileInfo.b.toString(), paramTroopFileInfo.c, paramTroopFileInfo.d, paramTroopFileInfo.e, paramTroopFileInfo.f);
+      localTroopFileStatusInfo1.m = paramTroopFileInfo.x;
+      localTroopFileStatusInfo1.n = paramTroopFileInfo.y;
+      localTroopFileStatusInfo1.l = paramTroopFileInfo.w;
     }
     return localTroopFileStatusInfo1;
   }
@@ -442,7 +408,7 @@ public class QFileUtils
     localObject = new File((String)localObject, localStringBuilder.toString());
     try
     {
-      ImageUtil.a(paramBitmap, (File)localObject);
+      ImageUtil.b(paramBitmap, (File)localObject);
       paramBitmap = ((File)localObject).getAbsolutePath();
       return paramBitmap;
     }
@@ -471,7 +437,7 @@ public class QFileUtils
     }
     localObject1 = (FileManagerEntity)paramAppInterface.get(0);
     paramAppInterface = ((FileManagerEntity)localObject1).getFilePath();
-    if (FileManagerUtil.a(paramAppInterface))
+    if (FileManagerUtil.n(paramAppInterface))
     {
       if (QLog.isDebugVersion())
       {
@@ -492,7 +458,7 @@ public class QFileUtils
       localStringBuilder.append((String)localObject2);
       localStringBuilder.append((String)localObject3);
       localObject3 = localStringBuilder.toString();
-      if (FileManagerUtil.a((String)localObject3))
+      if (FileManagerUtil.n((String)localObject3))
       {
         if (QLog.isDebugVersion())
         {
@@ -510,7 +476,7 @@ public class QFileUtils
       ((StringBuilder)localObject3).append("dsc-");
       ((StringBuilder)localObject3).append(String.valueOf(((FileManagerEntity)localObject1).Uuid.replace("/", "")));
       localObject1 = ((StringBuilder)localObject3).toString();
-      if (FileManagerUtil.a((String)localObject1))
+      if (FileManagerUtil.n((String)localObject1))
       {
         if (QLog.isDebugVersion())
         {
@@ -567,7 +533,7 @@ public class QFileUtils
     localObject1 = null;
     paramAppInterface = (AppInterface)localObject1;
     label243:
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (FileManagerUtil.a((String)localObject1)))
+    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (FileManagerUtil.n((String)localObject1)))
     {
       if (QLog.isDebugVersion())
       {
@@ -601,10 +567,10 @@ public class QFileUtils
     ((StringBuilder)localObject2).append(HexUtil.bytes2HexStr(paramAppInterface.getBytes()));
     ((StringBuilder)localObject2).append(".tmp");
     str = ((StringBuilder)localObject2).toString();
-    if (FileUtil.a(str) > 0L) {
+    if (FileUtil.f(str) > 0L) {
       localObject1 = str;
     }
-    if (FileManagerUtil.a((String)localObject1))
+    if (FileManagerUtil.n((String)localObject1))
     {
       if (QLog.isDebugVersion())
       {
@@ -619,9 +585,9 @@ public class QFileUtils
     }
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(FMSettings.a().getDefaultTmpPath());
-    ((StringBuilder)localObject1).append(com.tencent.securitysdk.utils.MD5.a(paramAppInterface));
+    ((StringBuilder)localObject1).append(com.tencent.securitysdk.utils.MD5.b(paramAppInterface));
     paramAppInterface = ((StringBuilder)localObject1).toString();
-    if (FileManagerUtil.a(paramAppInterface))
+    if (FileManagerUtil.n(paramAppInterface))
     {
       if (QLog.isDebugVersion())
       {
@@ -676,20 +642,20 @@ public class QFileUtils
     if (localObject != null)
     {
       if (((TroopGagMgr)localObject).a(String.valueOf(paramLong1), String.valueOf(paramLong2))) {
-        return HardCodeUtil.a(2131709680);
+        return HardCodeUtil.a(2131907406);
       }
-      localObject = ((TroopGagMgr)localObject).a(String.valueOf(paramLong1));
+      localObject = ((TroopGagMgr)localObject).b(String.valueOf(paramLong1));
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if ((localObject != null) && (((TroopGagInfo)localObject).jdField_a_of_type_Long != 0L))
+      if ((localObject != null) && (((TroopGagInfo)localObject).b != 0L))
       {
         if (paramQQAppInterface != null)
         {
-          paramQQAppInterface = paramQQAppInterface.b(String.valueOf(paramLong1));
+          paramQQAppInterface = paramQQAppInterface.f(String.valueOf(paramLong1));
           if ((paramQQAppInterface != null) && ((paramQQAppInterface.isTroopOwner(String.valueOf(paramLong2))) || (paramQQAppInterface.isTroopAdmin(String.valueOf(paramLong2))))) {
             return "";
           }
         }
-        return HardCodeUtil.a(2131709692);
+        return HardCodeUtil.a(2131907418);
       }
     }
     return "";
@@ -738,10 +704,10 @@ public class QFileUtils
         if (paramQQAppInterface != null)
         {
           localStringBuilder.append("troopFileName[");
-          localStringBuilder.append(paramQQAppInterface.g);
+          localStringBuilder.append(paramQQAppInterface.t);
           localStringBuilder.append("] ");
           localStringBuilder.append("troopFileId");
-          localStringBuilder.append(paramQQAppInterface.e);
+          localStringBuilder.append(paramQQAppInterface.r);
           localStringBuilder.append("] ");
         }
       }
@@ -749,31 +715,88 @@ public class QFileUtils
     return localStringBuilder.toString();
   }
   
-  public static String a(String paramString)
+  public static ArrayList<ShareActionSheetBuilder.ActionSheetItem> a(@NonNull FileQRScanResult paramFileQRScanResult)
   {
-    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
-      return "";
+    ArrayList localArrayList = new ArrayList();
+    boolean bool = QRUtils.a(paramFileQRScanResult.a());
+    String str2 = "";
+    Object localObject4 = null;
+    Object localObject3 = null;
+    Object localObject1;
+    Object localObject2;
+    if (bool)
+    {
+      localObject1 = paramFileQRScanResult.b().get(1);
+      if ((localObject1 instanceof Pair))
+      {
+        localObject1 = (Pair)localObject1;
+        String str1 = String.valueOf(((Pair)localObject1).second).trim();
+        String str3 = String.valueOf(((Pair)localObject1).first).trim();
+        try
+        {
+          localObject1 = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject1).put("scannerType", str1);
+            ((JSONObject)localObject1).put("scannerResult", str3);
+          }
+          catch (JSONException localJSONException3) {}
+          localJSONException4.printStackTrace();
+        }
+        catch (JSONException localJSONException4)
+        {
+          localObject1 = null;
+        }
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      if (localObject1 == null) {
+        localObject1 = "";
+      } else {
+        localObject1 = ((JSONObject)localObject1).toString();
+      }
+      localObject2 = ShareActionSheetBuilder.ActionSheetItem.build(55);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).argus = ((String)localObject1);
+      localArrayList.add(localObject2);
     }
-    if (FileManagerUtil.a(paramString) > 3145728L) {
-      QLog.i("<QFile>", 1, "copyFileToQFileFolder: source file is too big. copy failed");
+    if (QRUtils.b(paramFileQRScanResult.a()))
+    {
+      localObject2 = paramFileQRScanResult.b().get(2);
+      localObject1 = paramFileQRScanResult.b().get(1001);
+      paramFileQRScanResult = localObject4;
+      if ((localObject2 instanceof String))
+      {
+        localObject2 = (String)localObject2;
+        try
+        {
+          paramFileQRScanResult = new JSONObject();
+          try
+          {
+            paramFileQRScanResult.put("strMini", localObject2);
+            if ((localObject1 instanceof String)) {
+              paramFileQRScanResult.put("type", localObject1);
+            }
+          }
+          catch (JSONException localJSONException1) {}
+          localJSONException2.printStackTrace();
+        }
+        catch (JSONException localJSONException2)
+        {
+          paramFileQRScanResult = localObject3;
+        }
+      }
+      if (paramFileQRScanResult == null) {
+        paramFileQRScanResult = str2;
+      } else {
+        paramFileQRScanResult = paramFileQRScanResult.toString();
+      }
+      ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = ShareActionSheetBuilder.ActionSheetItem.build(56);
+      localActionSheetItem.argus = paramFileQRScanResult;
+      localArrayList.add(localActionSheetItem);
     }
-    String str = FMSettings.a().getDefaultRecvPath();
-    Object localObject = new File(str);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdir();
-    }
-    localObject = FileManagerUtil.a(paramString);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("/");
-    localStringBuilder.append(System.currentTimeMillis());
-    localStringBuilder.append("_");
-    localStringBuilder.append((String)localObject);
-    str = localStringBuilder.toString();
-    if (FileUtils.copyFile(paramString, str)) {
-      return str;
-    }
-    return "";
+    return localArrayList;
   }
   
   public static void a(int paramInt1, int paramInt2, FileBrowserCreator paramFileBrowserCreator)
@@ -799,17 +822,17 @@ public class QFileUtils
     }
     localBundle.putBoolean("muate_play", paramBoolean1);
     localBundle.putBoolean("is_one_item", paramBoolean2);
-    localBundle.putBoolean(PeakUtils.jdField_a_of_type_JavaLangString, paramBoolean3);
-    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    localBundle.putBoolean(PeakUtils.b, paramBoolean3);
+    if (paramSessionInfo.a == 1)
     {
       localBundle.putBoolean("extra.CAN_FORWARD_TO_GROUP_ALBUM", true);
-      localBundle.putString("extra.GROUP_UIN", paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localBundle.putString("extra.GROUP_CODE", paramSessionInfo.b);
+      localBundle.putString("extra.GROUP_UIN", paramSessionInfo.b);
+      localBundle.putString("extra.GROUP_CODE", paramSessionInfo.c);
     }
     localBundle.putInt("extra.EXTRA_FORWARD_TO_QZONE_SRC", 1);
-    i = paramSessionInfo.jdField_a_of_type_Int;
+    i = paramSessionInfo.a;
     int j = 2;
-    if ((i == 1) || (paramSessionInfo.jdField_a_of_type_Int == 3000)) {
+    if ((i == 1) || (paramSessionInfo.a == 3000)) {
       localBundle.putInt("extra.EXTRA_FORWARD_TO_QZONE_SRC", 2);
     }
     localBundle.putBoolean("extra.IS_FROM_MULTI_MSG", paramChatMessage.isMultiMsg);
@@ -844,7 +867,7 @@ public class QFileUtils
         i = -1;
       }
     }
-    paramMessageForReplyText = a();
+    paramMessageForReplyText = c();
     paramBoolean1 = paramMessageForReplyText.isSupportOcr(BaseApplicationImpl.sApplication.getRuntime().getAccount(), 1);
     localBundle.putBoolean("extra.OCR", paramBoolean1);
     if (paramBoolean1)
@@ -854,7 +877,7 @@ public class QFileUtils
         localBundle.putString("extra.OCR_TEXT", paramMessageForReplyText);
       }
     }
-    localBundle.putInt("forward_source_uin_type", paramSessionInfo.jdField_a_of_type_Int);
+    localBundle.putInt("forward_source_uin_type", paramSessionInfo.a);
     localBundle.putString("uin", paramChatMessage.frienduin);
     try
     {
@@ -896,7 +919,7 @@ public class QFileUtils
       else
       {
         localBundle.putBoolean("extra.ENTER_NEW_GALLERY", true);
-        PeakUtils.a(paramContext, localBundle, new AIOImageProviderService(paramRect, paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage), AIOGalleryUtils.a(paramChatMessage, paramMessageForReplyText), -1, paramSessionInfo.c);
+        PeakUtils.a(paramContext, localBundle, new AIOImageProviderService(paramRect, paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage), AIOGalleryUtils.a(paramChatMessage, paramMessageForReplyText), -1, paramSessionInfo.s);
         return;
       }
     }
@@ -1061,12 +1084,12 @@ public class QFileUtils
     }
   }
   
-  public static void a(Context paramContext, String paramString, IQRMenuItemController paramIQRMenuItemController)
+  public static void a(@NonNull Context paramContext, String paramString, @NonNull IQRResultCallback paramIQRResultCallback)
   {
     if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
       return;
     }
-    ThreadManagerV2.executeOnSubThread(new QFileUtils.3(paramContext, paramString, paramIQRMenuItemController));
+    ThreadManagerV2.executeOnSubThread(new QFileUtils.3(paramContext, paramString, paramIQRResultCallback));
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
@@ -1088,7 +1111,7 @@ public class QFileUtils
   {
     if (NetworkUtil.getSystemNetwork(paramActivity) == 0)
     {
-      TroopFileError.a(paramActivity, paramActivity.getString(2131697616));
+      TroopFileError.a(paramActivity, paramActivity.getString(2131895389));
       return;
     }
     if (paramFileManagerEntity == null) {
@@ -1124,28 +1147,28 @@ public class QFileUtils
     }
     paramString1 = new Bundle();
     paramString1.putInt("dataline_forward_type", 100);
-    if (FileUtils.fileExistsAndNotEmpty(paramString2.jdField_a_of_type_JavaLangString))
+    if (FileUtils.fileExistsAndNotEmpty(paramString2.k))
     {
-      paramString1.putString("dataline_forward_path", paramString2.jdField_a_of_type_JavaLangString);
+      paramString1.putString("dataline_forward_path", paramString2.k);
     }
     else
     {
       paramString3 = FileManagerUtil.a(paramString2);
       paramString3.status = 2;
       paramString3.nOpType = 24;
-      paramString3 = ForwardFileOption.a(paramString3);
+      paramString3 = ForwardFileOption.b(paramString3);
       paramString3.d(1);
       paramString3.b(10006);
       paramString3.a(1);
       paramString3.a(paramLong1);
-      if (paramString2.jdField_a_of_type_JavaUtilUUID != null) {
-        paramString3.e(paramString2.jdField_a_of_type_JavaUtilUUID.toString());
+      if (paramString2.a != null) {
+        paramString3.e(paramString2.a.toString());
       }
       paramString1.putParcelable("fileinfo", paramString3);
     }
     paramQQAppInterface = (DataLineHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     paramString2 = new QFileUtils.6(paramContext);
-    paramInt = paramQQAppInterface.a().b(AppConstants.DATALINE_PC_UIN, paramString1, paramString2);
+    paramInt = paramQQAppInterface.n().b(AppConstants.DATALINE_PC_UIN, paramString1, paramString2);
     if ((!paramString2.a) || (paramInt == 0)) {
       DirectForwarder.b(paramContext, paramInt);
     }
@@ -1181,7 +1204,7 @@ public class QFileUtils
       }
       paramInt1 = a(paramContext, bool, localBundle, paramInt2);
     }
-    if (paramTroopFileStatusInfo.a() == null) {
+    if (paramTroopFileStatusInfo.n() == null) {
       return;
     }
     paramTroopFileStatusInfo.a(localBundle);
@@ -1271,7 +1294,7 @@ public class QFileUtils
     localBundle.putBoolean("not_forward", true);
     localBundle.putInt("dataline_forward_type", 100);
     localBundle.putString("dataline_forward_path", paramFileManagerEntity.getFilePath());
-    localBundle.putParcelable("fileinfo", ForwardFileOption.a(paramFileManagerEntity));
+    localBundle.putParcelable("fileinfo", ForwardFileOption.b(paramFileManagerEntity));
     a(paramQQAppInterface, localBundle, paramContext);
   }
   
@@ -1279,7 +1302,7 @@ public class QFileUtils
   {
     DataLineHandler localDataLineHandler = a(paramQQAppInterface, BusinessHandlerFactory.DATALINE_HANDLER);
     QFileUtils.5 local5 = new QFileUtils.5(paramContext);
-    int i = localDataLineHandler.a().b(AppConstants.DATALINE_PC_UIN, paramBundle, local5);
+    int i = localDataLineHandler.n().b(AppConstants.DATALINE_PC_UIN, paramBundle, local5);
     if ((!local5.a) || (i == 0))
     {
       DirectForwarder.b(paramContext, i);
@@ -1340,27 +1363,27 @@ public class QFileUtils
         localForwardFileInfo.b(localFileManagerEntity.nSessionId);
         localForwardFileInfo.b(10006);
         if (!TextUtils.isEmpty(localFileManagerEntity.getFilePath())) {
-          localForwardFileInfo.a(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString);
+          localForwardFileInfo.a(localTroopFileStatusInfo.k);
         }
-        localForwardFileInfo.d(localTroopFileStatusInfo.g);
-        localForwardFileInfo.d(localTroopFileStatusInfo.jdField_c_of_type_Long);
+        localForwardFileInfo.d(localTroopFileStatusInfo.t);
+        localForwardFileInfo.d(localTroopFileStatusInfo.i);
         localForwardFileInfo.a(paramLong);
-        if (localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID != null) {
-          localForwardFileInfo.e(localTroopFileStatusInfo.jdField_a_of_type_JavaUtilUUID.toString());
+        if (localTroopFileStatusInfo.a != null) {
+          localForwardFileInfo.e(localTroopFileStatusInfo.a.toString());
         }
-        if (!TextUtils.isEmpty(localTroopFileStatusInfo.jdField_c_of_type_JavaLangString)) {
-          localForwardFileInfo.f(localTroopFileStatusInfo.jdField_c_of_type_JavaLangString);
-        } else if (!TextUtils.isEmpty(localTroopFileStatusInfo.d)) {
-          localForwardFileInfo.f(localTroopFileStatusInfo.d);
+        if (!TextUtils.isEmpty(localTroopFileStatusInfo.m)) {
+          localForwardFileInfo.f(localTroopFileStatusInfo.m);
+        } else if (!TextUtils.isEmpty(localTroopFileStatusInfo.n)) {
+          localForwardFileInfo.f(localTroopFileStatusInfo.n);
         }
         localForwardFileInfo.d(1);
         localForwardFileInfo.a(3);
-        if (FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString)) {
-          localArrayList2.add(Uri.parse(localTroopFileStatusInfo.jdField_a_of_type_JavaLangString));
+        if (FileUtils.fileExistsAndNotEmpty(localTroopFileStatusInfo.k)) {
+          localArrayList2.add(Uri.parse(localTroopFileStatusInfo.k));
         } else {
           localArrayList2.add(Uri.parse(""));
         }
-        l += localTroopFileStatusInfo.jdField_c_of_type_Long;
+        l += localTroopFileStatusInfo.i;
         localArrayList1.add(localForwardFileInfo);
       }
       paramQQAppInterface = new Bundle();
@@ -1374,25 +1397,25 @@ public class QFileUtils
       paramList.putExtras(paramQQAppInterface);
       paramList.putExtra("foward_editbar", true);
       paramList.putExtra("forward_type", 0);
-      paramQQAppInterface = HardCodeUtil.a(2131709681);
+      paramQQAppInterface = HardCodeUtil.a(2131907407);
       if (localArrayList1.size() == 1)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(HardCodeUtil.a(2131709689));
-        paramQQAppInterface.append(FileManagerUtil.c(((ForwardFileInfo)localArrayList1.get(0)).d()));
-        paramQQAppInterface.append(HardCodeUtil.a(2131709690));
-        paramQQAppInterface.append(FileUtil.a(((ForwardFileInfo)localArrayList1.get(0)).d()));
+        paramQQAppInterface.append(HardCodeUtil.a(2131907415));
+        paramQQAppInterface.append(FileManagerUtil.j(((ForwardFileInfo)localArrayList1.get(0)).i()));
+        paramQQAppInterface.append(HardCodeUtil.a(2131907416));
+        paramQQAppInterface.append(FileUtil.a(((ForwardFileInfo)localArrayList1.get(0)).j()));
         paramQQAppInterface.append("。");
         paramQQAppInterface = paramQQAppInterface.toString();
       }
       else if (localArrayList1.size() > 1)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(HardCodeUtil.a(2131709685));
-        paramQQAppInterface.append(FileManagerUtil.c(((ForwardFileInfo)localArrayList1.get(0)).d()));
-        paramQQAppInterface.append(HardCodeUtil.a(2131709684));
+        paramQQAppInterface.append(HardCodeUtil.a(2131907411));
+        paramQQAppInterface.append(FileManagerUtil.j(((ForwardFileInfo)localArrayList1.get(0)).i()));
+        paramQQAppInterface.append(HardCodeUtil.a(2131907410));
         paramQQAppInterface.append(localArrayList1.size());
-        paramQQAppInterface.append(HardCodeUtil.a(2131709687));
+        paramQQAppInterface.append(HardCodeUtil.a(2131907413));
         paramQQAppInterface.append(FileUtil.a(l));
         paramQQAppInterface.append("。");
         paramQQAppInterface = paramQQAppInterface.toString();
@@ -1405,7 +1428,7 @@ public class QFileUtils
   
   public static void a(boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, TroopFileBrowserParams paramTroopFileBrowserParams, Context paramContext, int paramInt1, Rect paramRect, int paramInt2, ChatMessage paramChatMessage)
   {
-    if ((paramBoolean) && ((ChatMessage)paramQQAppInterface.getMessageFacade().c(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramChatMessage.shmsgseq) == null)) {
+    if ((paramBoolean) && ((ChatMessage)paramQQAppInterface.getMessageFacade().c(paramSessionInfo.b, paramSessionInfo.a, paramChatMessage.shmsgseq) == null)) {
       paramTroopFileBrowserParams.c(false);
     }
     paramSessionInfo = new FileBrowserCreator(paramContext, paramTroopFileBrowserParams);
@@ -1475,7 +1498,7 @@ public class QFileUtils
   {
     if (!NetworkUtil.isNetSupportHw(BaseApplicationImpl.getContext()))
     {
-      FMToastUtil.a(2131693191);
+      FMToastUtil.a(2131890731);
       return false;
     }
     paramContext = (Activity)paramContext;
@@ -1502,7 +1525,7 @@ public class QFileUtils
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    int i = VipUtils.a(paramQQAppInterface, null);
+    int i = VipUtils.b(paramQQAppInterface, null);
     paramQQAppInterface = (IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "");
     if (i >> 8 == 2)
     {
@@ -1516,14 +1539,6 @@ public class QFileUtils
     else if (paramQQAppInterface.getTroopVideoFileSwitch())
     {
       return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return paramString.equals(((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin());
     }
     return false;
   }
@@ -1563,32 +1578,32 @@ public class QFileUtils
     //   3: aconst_null
     //   4: astore 6
     //   6: aload_0
-    //   7: invokevirtual 1375	java/io/File:isFile	()Z
+    //   7: invokevirtual 1397	java/io/File:isFile	()Z
     //   10: ifeq +127 -> 137
     //   13: aload_0
-    //   14: invokevirtual 412	java/io/File:exists	()Z
+    //   14: invokevirtual 347	java/io/File:exists	()Z
     //   17: ifne +5 -> 22
     //   20: iconst_0
     //   21: ireturn
-    //   22: new 1377	java/io/FileOutputStream
+    //   22: new 1399	java/io/FileOutputStream
     //   25: dup
     //   26: aload_1
-    //   27: invokespecial 1380	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   27: invokespecial 1402	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   30: astore_1
     //   31: aload_1
     //   32: astore_3
-    //   33: new 1382	java/io/FileInputStream
+    //   33: new 1404	java/io/FileInputStream
     //   36: dup
     //   37: aload_0
-    //   38: invokespecial 1383	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   38: invokespecial 1405	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   41: astore 5
-    //   43: invokestatic 1389	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   43: invokestatic 1411	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   46: sipush 4096
-    //   49: invokevirtual 1393	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
+    //   49: invokevirtual 1415	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
     //   52: astore_0
     //   53: aload 5
     //   55: aload_0
-    //   56: invokevirtual 1397	java/io/FileInputStream:read	([B)I
+    //   56: invokevirtual 1419	java/io/FileInputStream:read	([B)I
     //   59: istore_2
     //   60: iload_2
     //   61: iconst_m1
@@ -1597,27 +1612,27 @@ public class QFileUtils
     //   66: aload_0
     //   67: iconst_0
     //   68: iload_2
-    //   69: invokevirtual 1401	java/io/FileOutputStream:write	([BII)V
+    //   69: invokevirtual 1423	java/io/FileOutputStream:write	([BII)V
     //   72: goto -19 -> 53
-    //   75: invokestatic 1389	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
+    //   75: invokestatic 1411	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
     //   78: aload_0
-    //   79: invokevirtual 1405	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
+    //   79: invokevirtual 1427	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
     //   82: aload_1
-    //   83: invokevirtual 1408	java/io/FileOutputStream:flush	()V
+    //   83: invokevirtual 1430	java/io/FileOutputStream:flush	()V
     //   86: aload 5
-    //   88: invokevirtual 1411	java/io/FileInputStream:close	()V
+    //   88: invokevirtual 1433	java/io/FileInputStream:close	()V
     //   91: aload_1
-    //   92: invokevirtual 1412	java/io/FileOutputStream:close	()V
+    //   92: invokevirtual 1434	java/io/FileOutputStream:close	()V
     //   95: iconst_1
     //   96: ireturn
     //   97: astore_0
     //   98: aload_0
-    //   99: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   99: invokevirtual 378	java/io/IOException:printStackTrace	()V
     //   102: iconst_0
     //   103: ireturn
     //   104: astore_0
     //   105: aload_0
-    //   106: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   106: invokevirtual 378	java/io/IOException:printStackTrace	()V
     //   109: iconst_0
     //   110: ireturn
     //   111: astore_0
@@ -1652,26 +1667,26 @@ public class QFileUtils
     //   159: aload_1
     //   160: astore_3
     //   161: aload 5
-    //   163: invokevirtual 1413	java/lang/Exception:printStackTrace	()V
+    //   163: invokevirtual 1435	java/lang/Exception:printStackTrace	()V
     //   166: aload_0
     //   167: ifnull +17 -> 184
     //   170: aload_0
-    //   171: invokevirtual 1411	java/io/FileInputStream:close	()V
+    //   171: invokevirtual 1433	java/io/FileInputStream:close	()V
     //   174: goto +10 -> 184
     //   177: astore_0
     //   178: aload_0
-    //   179: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   179: invokevirtual 378	java/io/IOException:printStackTrace	()V
     //   182: iconst_0
     //   183: ireturn
     //   184: aload_1
     //   185: ifnull +14 -> 199
     //   188: aload_1
-    //   189: invokevirtual 1412	java/io/FileOutputStream:close	()V
+    //   189: invokevirtual 1434	java/io/FileOutputStream:close	()V
     //   192: iconst_0
     //   193: ireturn
     //   194: astore_0
     //   195: aload_0
-    //   196: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   196: invokevirtual 378	java/io/IOException:printStackTrace	()V
     //   199: iconst_0
     //   200: ireturn
     //   201: astore_0
@@ -1680,21 +1695,21 @@ public class QFileUtils
     //   204: aload 4
     //   206: ifnull +18 -> 224
     //   209: aload 4
-    //   211: invokevirtual 1411	java/io/FileInputStream:close	()V
+    //   211: invokevirtual 1433	java/io/FileInputStream:close	()V
     //   214: goto +10 -> 224
     //   217: astore_0
     //   218: aload_0
-    //   219: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   219: invokevirtual 378	java/io/IOException:printStackTrace	()V
     //   222: iconst_0
     //   223: ireturn
     //   224: aload_1
     //   225: ifnull +17 -> 242
     //   228: aload_1
-    //   229: invokevirtual 1412	java/io/FileOutputStream:close	()V
+    //   229: invokevirtual 1434	java/io/FileOutputStream:close	()V
     //   232: goto +10 -> 242
     //   235: astore_0
     //   236: aload_0
-    //   237: invokevirtual 443	java/io/IOException:printStackTrace	()V
+    //   237: invokevirtual 378	java/io/IOException:printStackTrace	()V
     //   240: iconst_0
     //   241: ireturn
     //   242: goto +5 -> 247
@@ -1744,7 +1759,7 @@ public class QFileUtils
     if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext())) {
       return false;
     }
-    if (!QQFileManagerUtil.a())
+    if (!QQFileManagerUtil.h())
     {
       QLog.i("QFileUtils", 1, "checkShowFlowDialog. do not show with Wi-Fi.");
       return false;
@@ -1777,7 +1792,7 @@ public class QFileUtils
   
   public static int b()
   {
-    return QQFileUtils.b();
+    return QQFileUtils.a();
   }
   
   public static int b(int paramInt)
@@ -1833,6 +1848,37 @@ public class QFileUtils
     return QQFileUtils.b(paramString);
   }
   
+  public static Intent b(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity)
+  {
+    int i = ForwardFileOption.a(paramFileManagerEntity);
+    paramActivity = ForwardFileOption.b(paramFileManagerEntity);
+    paramActivity.b(i);
+    paramQQAppInterface = new Bundle();
+    paramQQAppInterface.putInt("forward_type", 0);
+    paramQQAppInterface.putParcelable("fileinfo", paramActivity);
+    paramQQAppInterface.putBoolean("not_forward", true);
+    paramActivity = new Intent();
+    paramActivity.putExtras(paramQQAppInterface);
+    paramActivity.putExtra("destroy_last_activity", true);
+    paramActivity.putExtra("forward_type", 0);
+    paramActivity.putExtra("forward_filepath", paramFileManagerEntity.getFilePath());
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append(HardCodeUtil.a(2131907405));
+    paramQQAppInterface.append(FileManagerUtil.j(paramFileManagerEntity.fileName));
+    paramQQAppInterface.append(HardCodeUtil.a(2131907417));
+    paramQQAppInterface.append(FileUtil.a(paramFileManagerEntity.fileSize));
+    paramQQAppInterface.append("。");
+    paramActivity.putExtra("forward_text", paramQQAppInterface.toString());
+    paramActivity.putExtra("k_favorites", FileManagerUtil.i(paramFileManagerEntity));
+    if ((!FileUtil.b(paramFileManagerEntity.getFilePath())) && ((paramFileManagerEntity.getCloudType() == 6) || (paramFileManagerEntity.getCloudType() == 7)) && (paramFileManagerEntity.nFileType == 0)) {
+      paramActivity.putExtra("forward_type", 0);
+    }
+    if ((paramFileManagerEntity.getCloudType() == 8) && (paramFileManagerEntity.nFileType == 0)) {
+      paramActivity.putExtra("forward_type", 1);
+    }
+    return paramActivity;
+  }
+  
   public static String b(long paramLong)
   {
     float f;
@@ -1842,7 +1888,7 @@ public class QFileUtils
       f = (float)paramLong / 1048576.0F;
       localObject = new DecimalFormat("0.00").format(f);
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131709683));
+      localStringBuilder.append(HardCodeUtil.a(2131907409));
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("MB/s");
       return localStringBuilder.toString();
@@ -1852,21 +1898,16 @@ public class QFileUtils
       f = (float)paramLong / 1024.0F;
       localObject = new DecimalFormat("0.00").format(f);
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131709682));
+      localStringBuilder.append(HardCodeUtil.a(2131907408));
       localStringBuilder.append((String)localObject);
       localStringBuilder.append("KB/s");
       return localStringBuilder.toString();
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131709688));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131907414));
     ((StringBuilder)localObject).append(paramLong);
     ((StringBuilder)localObject).append("KB/s");
     return ((StringBuilder)localObject).toString();
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity)
-  {
-    b(paramQQAppInterface, paramActivity, paramFileManagerEntity, false, null, -1);
   }
   
   public static void b(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString, int paramInt)
@@ -1883,7 +1924,7 @@ public class QFileUtils
       localFileManagerEntity.copyFrom(paramFileManagerEntity);
       localFileManagerEntity.nSessionId = FileManagerUtil.a().longValue();
       paramQQAppInterface.getFileManagerDataCenter().d(localFileManagerEntity);
-      paramQQAppInterface = a(paramQQAppInterface, paramActivity, paramFileManagerEntity);
+      paramQQAppInterface = b(paramQQAppInterface, paramActivity, paramFileManagerEntity);
       if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramInt != -1))
       {
         paramQQAppInterface.putExtra("key_req", 1);
@@ -1892,12 +1933,12 @@ public class QFileUtils
       }
       if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        FMToastUtil.a(2131692554);
+        FMToastUtil.a(2131889577);
         return;
       }
       if (FileModel.a(localFileManagerEntity).a(false))
       {
-        FMDialogUtil.a(paramActivity, 2131692561, 2131692566, new QFileUtils.4(paramActivity, paramQQAppInterface));
+        FMDialogUtil.a(paramActivity, 2131889584, 2131889589, new QFileUtils.4(paramActivity, paramQQAppInterface));
         return;
       }
       ForwardBaseOption.a(paramActivity, paramQQAppInterface, ForwardRecentTranslucentActivity.class, 103);
@@ -1916,7 +1957,7 @@ public class QFileUtils
         if (!FileManagerUtil.a(paramMessageRecord2)) {
           return;
         }
-        paramQQAppInterface.getFileManagerEngine().a().a(paramMessageRecord1, paramMessageRecord2);
+        paramQQAppInterface.getFileManagerEngine().e().a(paramMessageRecord1, paramMessageRecord2);
       }
     }
   }
@@ -1929,8 +1970,8 @@ public class QFileUtils
       QLog.e("QFileUtils", 1, "copyFileToMediaStore4LessArd10 file not exist.");
       return false;
     }
-    String str1 = QQFileManagerUtil.e(paramString);
-    int i = QQFileManagerUtil.b(str1);
+    String str1 = QQFileManagerUtil.n(paramString);
+    int i = QQFileManagerUtil.k(str1);
     if (i == 0)
     {
       paramString = AppConstants.SDCARD_IMG_SAVE;
@@ -1980,13 +2021,21 @@ public class QFileUtils
       paramString = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
     }
     paramContext.getContentResolver().insert(paramString, localContentValues);
-    ImageUtil.a(paramContext, (String)localObject);
+    ImageUtil.b(paramContext, (String)localObject);
     return true;
     label353:
     paramContext = new StringBuilder();
     paramContext.append("copyFileToMediaStore4LessArd10 file not media file. filePath:");
     paramContext.append(paramString);
     QLog.e("QFileUtils", 1, paramContext.toString());
+    return false;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return paramString.equals(((IQFileConfigManager)paramQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin());
+    }
     return false;
   }
   
@@ -1998,12 +2047,7 @@ public class QFileUtils
     if (6 != paramFileManagerEntity.getCloudType()) {
       return false;
     }
-    return !FileUtil.a(paramFileManagerEntity.getFilePath());
-  }
-  
-  public static int c()
-  {
-    return QQFileUtils.c();
+    return !FileUtil.b(paramFileManagerEntity.getFilePath());
   }
   
   public static int c(int paramInt)
@@ -2063,10 +2107,57 @@ public class QFileUtils
   {
     return QQFileUtils.a(paramString);
   }
+  
+  static IOCRService c()
+  {
+    return (IOCRService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IOCRService.class, "");
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity)
+  {
+    b(paramQQAppInterface, paramActivity, paramFileManagerEntity, false, null, -1);
+  }
+  
+  public static int d()
+  {
+    return QQFileUtils.b();
+  }
+  
+  public static String d(String paramString)
+  {
+    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
+      return "";
+    }
+    if (FileManagerUtil.h(paramString) > 3145728L) {
+      QLog.i("<QFile>", 1, "copyFileToQFileFolder: source file is too big. copy failed");
+    }
+    String str = FMSettings.a().getDefaultRecvPath();
+    Object localObject = new File(str);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
+    }
+    localObject = FileManagerUtil.a(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("/");
+    localStringBuilder.append(System.currentTimeMillis());
+    localStringBuilder.append("_");
+    localStringBuilder.append((String)localObject);
+    str = localStringBuilder.toString();
+    if (FileUtils.copyFile(paramString, str)) {
+      return str;
+    }
+    return "";
+  }
+  
+  public static int e()
+  {
+    return QQFileUtils.c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils
  * JD-Core Version:    0.7.0.1
  */

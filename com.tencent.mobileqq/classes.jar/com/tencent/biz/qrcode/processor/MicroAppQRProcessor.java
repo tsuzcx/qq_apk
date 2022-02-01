@@ -21,14 +21,9 @@ public class MicroAppQRProcessor
     return "MicroAppQRProcessor";
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public boolean a(int paramInt, String paramString1, String paramString2, ScannerParams paramScannerParams)
   {
-    return (a(paramInt)) && ("micro_app".equals(paramScannerParams.a));
+    return (a(paramInt)) && ("micro_app".equals(paramScannerParams.b));
   }
   
   public boolean a(String paramString1, String paramString2, ScannerParams paramScannerParams)
@@ -42,8 +37,13 @@ public class MicroAppQRProcessor
       }
     }
     paramScannerParams.putExtra("com.tencent.mobileqq.microapp.out.plugins.scanResultData", paramString1);
-    this.a.a().sendBroadcast(paramScannerParams, "com.tencent.msg.permission.pushnotify");
-    this.a.b();
+    this.b.d().sendBroadcast(paramScannerParams, "com.tencent.msg.permission.pushnotify");
+    this.b.b();
+    return true;
+  }
+  
+  public boolean b()
+  {
     return true;
   }
 }

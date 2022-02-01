@@ -42,8 +42,8 @@ import com.tencent.widget.XPanelContainer;
 public class DatalineSessionAdapterUseNewFileBubble
   extends DatalineSessionAdapter
 {
-  private View.OnClickListener b = new DatalineSessionAdapterUseNewFileBubble.1(this);
-  private View.OnClickListener c = new DatalineSessionAdapterUseNewFileBubble.2(this);
+  private View.OnClickListener f = new DatalineSessionAdapterUseNewFileBubble.1(this);
+  private View.OnClickListener h = new DatalineSessionAdapterUseNewFileBubble.2(this);
   
   public DatalineSessionAdapterUseNewFileBubble(Context paramContext, DataLineMsgSetList paramDataLineMsgSetList, LiteActivity paramLiteActivity, QQAppInterface paramQQAppInterface)
   {
@@ -52,25 +52,25 @@ public class DatalineSessionAdapterUseNewFileBubble
   
   private void a(View paramView, ItemHolder paramItemHolder)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131372366);
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(2130838222);
-    localImageView.setId(2131364540);
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetImageView = localImageView;
+    paramView = (RelativeLayout)paramView.findViewById(2131439884);
+    ImageView localImageView = new ImageView(this.b);
+    localImageView.setImageResource(2130838287);
+    localImageView.setId(2131430598);
+    paramItemHolder.i().j = localImageView;
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(13);
     paramView.addView(localImageView, localLayoutParams);
     localImageView.setVisibility(8);
-    localImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131692263));
-    localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(2130838217);
-    localImageView.setId(2131364527);
-    paramItemHolder.a().jdField_b_of_type_AndroidWidgetImageView = localImageView;
+    localImageView.setContentDescription(this.b.getString(2131889250));
+    localImageView = new ImageView(this.b);
+    localImageView.setImageResource(2130838271);
+    localImageView.setId(2131430584);
+    paramItemHolder.i().k = localImageView;
     paramItemHolder = new RelativeLayout.LayoutParams(-2, -2);
     paramItemHolder.addRule(13);
     paramView.addView(localImageView, paramItemHolder);
     localImageView.setVisibility(8);
-    localImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131692734));
+    localImageView.setContentDescription(this.b.getString(2131889805));
   }
   
   private void a(DataLineMsgRecord paramDataLineMsgRecord, ItemHolder paramItemHolder)
@@ -83,14 +83,14 @@ public class DatalineSessionAdapterUseNewFileBubble
       {
         paramDataLineMsgRecord = new StringBuilder();
         paramDataLineMsgRecord.append(" / ");
-        paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692357));
+        paramDataLineMsgRecord.append(this.b.getString(2131889345));
         str = paramDataLineMsgRecord.toString();
       }
       else if (paramDataLineMsgRecord.fileMsgStatus == 2L)
       {
         paramDataLineMsgRecord = new StringBuilder();
         paramDataLineMsgRecord.append(" / ");
-        paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131693753));
+        paramDataLineMsgRecord.append(this.b.getString(2131891328));
         str = paramDataLineMsgRecord.toString();
       }
       else if ((!paramDataLineMsgRecord.bIsTransfering) && (!paramDataLineMsgRecord.issuc))
@@ -99,14 +99,14 @@ public class DatalineSessionAdapterUseNewFileBubble
         {
           paramDataLineMsgRecord = new StringBuilder();
           paramDataLineMsgRecord.append(" / ");
-          paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692356));
+          paramDataLineMsgRecord.append(this.b.getString(2131889344));
           str = paramDataLineMsgRecord.toString();
         }
         else
         {
           paramDataLineMsgRecord = new StringBuilder();
           paramDataLineMsgRecord.append(" / ");
-          paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692355));
+          paramDataLineMsgRecord.append(this.b.getString(2131889343));
           str = paramDataLineMsgRecord.toString();
         }
       }
@@ -115,69 +115,70 @@ public class DatalineSessionAdapterUseNewFileBubble
     {
       paramDataLineMsgRecord = new StringBuilder();
       paramDataLineMsgRecord.append(" / ");
-      paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692349));
+      paramDataLineMsgRecord.append(this.b.getString(2131889337));
       str = paramDataLineMsgRecord.toString();
     }
     else if (paramDataLineMsgRecord.fileMsgStatus == 2L)
     {
       paramDataLineMsgRecord = new StringBuilder();
       paramDataLineMsgRecord.append(" / ");
-      paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131693753));
+      paramDataLineMsgRecord.append(this.b.getString(2131891328));
       str = paramDataLineMsgRecord.toString();
     }
     else if ((!paramDataLineMsgRecord.bIsTransfering) && (!paramDataLineMsgRecord.issuc))
     {
       paramDataLineMsgRecord = new StringBuilder();
       paramDataLineMsgRecord.append(" / ");
-      paramDataLineMsgRecord.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692355));
+      paramDataLineMsgRecord.append(this.b.getString(2131889343));
       str = paramDataLineMsgRecord.toString();
     }
     if (!TextUtils.isEmpty(str))
     {
-      paramItemHolder.a().c.setVisibility(0);
-      paramItemHolder.a().c.setText(str);
+      paramItemHolder.i().f.setVisibility(0);
+      paramItemHolder.i().f.setText(str);
       return;
     }
-    paramItemHolder.a().c.setVisibility(8);
+    paramItemHolder.i().f.setVisibility(8);
   }
   
   private void a(DataLineMsgSet paramDataLineMsgSet, ItemHolder paramItemHolder)
   {
-    if (paramDataLineMsgSet.isSendFromLocal())
-    {
-      paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850341);
-      return;
+    int i;
+    if (paramDataLineMsgSet.isSendFromLocal()) {
+      i = 2130852132;
+    } else {
+      i = 2130851950;
     }
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130850165);
+    paramItemHolder.b.setBackgroundResource(i);
   }
   
   private boolean a(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    return (!TextUtils.isEmpty(paramDataLineMsgRecord.path)) && (FileUtil.b(paramDataLineMsgRecord.path));
+    return (!TextUtils.isEmpty(paramDataLineMsgRecord.path)) && (FileUtil.d(paramDataLineMsgRecord.path));
   }
   
   private void b(View paramView, ItemHolder paramItemHolder)
   {
-    paramView = (RelativeLayout)paramView.findViewById(2131372366);
-    CircleFileStateView localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-    localCircleFileStateView.setId(2131364525);
+    paramView = (RelativeLayout)paramView.findViewById(2131439884);
+    CircleFileStateView localCircleFileStateView = new CircleFileStateView(this.b);
+    localCircleFileStateView.setId(2131430582);
     localCircleFileStateView.setProgressRingWidth(0.0F);
     localCircleFileStateView.setCenterBgColor(-1);
     localCircleFileStateView.setState(2);
-    paramItemHolder.a().jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = localCircleFileStateView;
-    int i = AIOUtils.b(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramItemHolder.i().b = localCircleFileStateView;
+    int i = AIOUtils.b(24.0F, this.b.getResources());
     paramView.addView(localCircleFileStateView, new RelativeLayout.LayoutParams(i, i));
     localCircleFileStateView.setVisibility(4);
-    localCircleFileStateView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131692350));
-    localCircleFileStateView = new CircleFileStateView(this.jdField_a_of_type_AndroidContentContext);
-    localCircleFileStateView.setId(2131364526);
+    localCircleFileStateView.setContentDescription(this.b.getString(2131889338));
+    localCircleFileStateView = new CircleFileStateView(this.b);
+    localCircleFileStateView.setId(2131430583);
     localCircleFileStateView.setProgressRingWidth(0.0F);
     localCircleFileStateView.setCenterBgColor(-1);
     localCircleFileStateView.setState(1);
-    paramItemHolder.a().jdField_b_of_type_ComTencentMobileqqWidgetCircleFileStateView = localCircleFileStateView;
+    paramItemHolder.i().c = localCircleFileStateView;
     paramView.addView(localCircleFileStateView, new RelativeLayout.LayoutParams(i, i));
     localCircleFileStateView.setVisibility(4);
-    localCircleFileStateView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131692573));
+    localCircleFileStateView.setContentDescription(this.b.getString(2131889596));
   }
   
   private void b(DataLineMsgRecord paramDataLineMsgRecord, ItemHolder paramItemHolder)
@@ -185,32 +186,32 @@ public class DatalineSessionAdapterUseNewFileBubble
     if ((paramDataLineMsgRecord.progress != 1.0F) && (paramDataLineMsgRecord.issuc) && (paramDataLineMsgRecord.fileMsgStatus != 1L) && (paramDataLineMsgRecord.fileMsgStatus != 2L))
     {
       i = (int)(paramDataLineMsgRecord.progress * 100.0F);
-      paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-      ProgressBar localProgressBar = paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar;
+      paramItemHolder.i().g.setVisibility(0);
+      paramItemHolder.i().g.setProgress(i);
+      ProgressBar localProgressBar = paramItemHolder.i().g;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692400));
+      localStringBuilder.append(this.b.getString(2131889388));
       localStringBuilder.append(i);
       localProgressBar.setContentDescription(localStringBuilder.toString());
-      i = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      j = AIOUtils.b(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      i = AIOUtils.b(14.0F, this.b.getResources());
+      j = AIOUtils.b(18.0F, this.b.getResources());
       if (paramDataLineMsgRecord.isSendFromLocal())
       {
-        paramItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, i, j, 0);
+        paramItemHolder.i().h.setPadding(i, i, j, 0);
         return;
       }
-      paramItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(j, i, i, 0);
+      paramItemHolder.i().h.setPadding(j, i, i, 0);
       return;
     }
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    int i = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.b(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramItemHolder.i().g.setVisibility(8);
+    int i = AIOUtils.b(14.0F, this.b.getResources());
+    int j = AIOUtils.b(18.0F, this.b.getResources());
     if (paramDataLineMsgRecord.isSendFromLocal())
     {
-      paramItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, i, j, i);
+      paramItemHolder.i().h.setPadding(i, i, j, i);
       return;
     }
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(j, i, i, i);
+    paramItemHolder.i().h.setPadding(j, i, i, i);
   }
   
   private void c(ItemHolder paramItemHolder, DataLineMsgSet paramDataLineMsgSet)
@@ -227,26 +228,26 @@ public class DatalineSessionAdapterUseNewFileBubble
     }
     Object localObject = paramDataLineMsgSet.filename;
     long l = paramDataLineMsgSet.filesize;
-    a(paramItemHolder.a().jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, paramDataLineMsgSet);
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-    paramItemHolder.a().jdField_b_of_type_AndroidWidgetTextView.setText(FileUtil.a(l, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().densityDpi));
+    a(paramItemHolder.i().i, paramDataLineMsgSet);
+    paramItemHolder.i().d.setText((CharSequence)localObject);
+    paramItemHolder.i().e.setText(FileUtil.a(l, this.b.getResources().getDisplayMetrics().densityDpi));
     b(paramDataLineMsgSet, paramItemHolder);
     a(paramDataLineMsgSet, paramItemHolder);
     if (paramDataLineMsgSet.isSendFromLocal())
     {
-      localObject = paramItemHolder.a().jdField_a_of_type_AndroidWidgetImageView;
+      localObject = paramItemHolder.i().j;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(8);
       }
-      localObject = paramItemHolder.a().jdField_b_of_type_AndroidWidgetImageView;
+      localObject = paramItemHolder.i().k;
       if (localObject != null) {
         ((ImageView)localObject).setVisibility(8);
       }
-      localObject = paramItemHolder.a().jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView;
+      localObject = paramItemHolder.i().b;
       if (localObject != null) {
         ((CircleFileStateView)localObject).setVisibility(8);
       }
-      localObject = paramItemHolder.a().jdField_b_of_type_ComTencentMobileqqWidgetCircleFileStateView;
+      localObject = paramItemHolder.i().c;
       if (localObject != null) {
         ((CircleFileStateView)localObject).setVisibility(8);
       }
@@ -265,8 +266,8 @@ public class DatalineSessionAdapterUseNewFileBubble
   
   private void c(DataLineMsgRecord paramDataLineMsgRecord, ItemHolder paramItemHolder)
   {
-    ImageView localImageView1 = paramItemHolder.a().jdField_a_of_type_AndroidWidgetImageView;
-    ImageView localImageView2 = paramItemHolder.a().jdField_b_of_type_AndroidWidgetImageView;
+    ImageView localImageView1 = paramItemHolder.i().j;
+    ImageView localImageView2 = paramItemHolder.i().k;
     if (localImageView1 != null)
     {
       if (localImageView2 == null) {
@@ -299,15 +300,15 @@ public class DatalineSessionAdapterUseNewFileBubble
       }
       localImageView1.setTag(paramItemHolder);
       localImageView2.setTag(paramItemHolder);
-      localImageView1.setOnClickListener(this.b);
-      localImageView2.setOnClickListener(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localImageView1.setOnClickListener(this.f);
+      localImageView2.setOnClickListener(this.c.N);
     }
   }
   
   private void d(DataLineMsgRecord paramDataLineMsgRecord, ItemHolder paramItemHolder)
   {
-    CircleFileStateView localCircleFileStateView1 = paramItemHolder.a().jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView;
-    CircleFileStateView localCircleFileStateView2 = paramItemHolder.a().jdField_b_of_type_ComTencentMobileqqWidgetCircleFileStateView;
+    CircleFileStateView localCircleFileStateView1 = paramItemHolder.i().b;
+    CircleFileStateView localCircleFileStateView2 = paramItemHolder.i().c;
     if (localCircleFileStateView1 != null)
     {
       if (localCircleFileStateView2 == null) {
@@ -348,8 +349,8 @@ public class DatalineSessionAdapterUseNewFileBubble
       }
       localCircleFileStateView1.setTag(paramItemHolder);
       localCircleFileStateView2.setTag(paramItemHolder);
-      localCircleFileStateView1.setOnClickListener(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b);
-      localCircleFileStateView2.setOnClickListener(this.c);
+      localCircleFileStateView1.setOnClickListener(this.c.O);
+      localCircleFileStateView2.setOnClickListener(this.h);
     }
   }
   
@@ -357,18 +358,18 @@ public class DatalineSessionAdapterUseNewFileBubble
   {
     if ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && (!a(paramDataLineMsgRecord)))
     {
-      CircleFileStateView localCircleFileStateView1 = paramItemHolder.a().jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView;
-      CircleFileStateView localCircleFileStateView2 = paramItemHolder.a().jdField_b_of_type_ComTencentMobileqqWidgetCircleFileStateView;
+      CircleFileStateView localCircleFileStateView1 = paramItemHolder.i().b;
+      CircleFileStateView localCircleFileStateView2 = paramItemHolder.i().c;
       localCircleFileStateView1.setVisibility(0);
       localCircleFileStateView1.setState(2);
       localCircleFileStateView2.setVisibility(8);
       if (!paramDataLineMsgRecord.isSendFromLocal()) {
-        paramItemHolder.a().c.setVisibility(8);
+        paramItemHolder.i().f.setVisibility(8);
       }
       localCircleFileStateView1.setTag(paramItemHolder);
       localCircleFileStateView2.setTag(paramItemHolder);
-      localCircleFileStateView1.setOnClickListener(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.b);
-      localCircleFileStateView2.setOnClickListener(this.c);
+      localCircleFileStateView1.setOnClickListener(this.c.O);
+      localCircleFileStateView2.setOnClickListener(this.h);
     }
   }
   
@@ -376,19 +377,19 @@ public class DatalineSessionAdapterUseNewFileBubble
   {
     if (paramInt == 17)
     {
-      localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559016, null);
-      localObject3 = (ImageView)((View)localObject1).findViewById(2131368343);
-      localObject2 = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130844282);
+      localObject1 = this.a.inflate(2131624650, null);
+      localObject3 = (ImageView)((View)localObject1).findViewById(2131435219);
+      localObject2 = this.c.getResources().getDrawable(2130845599);
       i = DataLineMsgRecord.getDevTypeBySet(paramDataLineMsgSet);
       if (i == 0)
       {
-        paramDataLineMsgSet = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130844282);
+        paramDataLineMsgSet = this.c.getResources().getDrawable(2130845599);
       }
       else
       {
         paramDataLineMsgSet = (DataLineMsgSet)localObject2;
         if (i == 1) {
-          paramDataLineMsgSet = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getResources().getDrawable(2130844277);
+          paramDataLineMsgSet = this.c.getResources().getDrawable(2130845594);
         }
       }
       ((ImageView)localObject3).setImageDrawable(paramDataLineMsgSet);
@@ -396,54 +397,54 @@ public class DatalineSessionAdapterUseNewFileBubble
     }
     else
     {
-      paramDataLineMsgSet = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559017, null);
+      paramDataLineMsgSet = this.a.inflate(2131624651, null);
     }
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramDataLineMsgSet.findViewById(2131371546));
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(paramItemHolder);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLongClickable(true);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_AndroidViewView$OnTouchListener);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setAddStatesFromChildren(true);
-    paramItemHolder.a((TextView)paramDataLineMsgSet.findViewById(2131365421));
-    int i = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int j = AIOUtils.b(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Object localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    ((RelativeLayout)localObject1).setId(2131364521);
-    Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources();
-    ((RelativeLayout)localObject1).setPadding(((Resources)localObject2).getDimensionPixelSize(2131296380), ((Resources)localObject2).getDimensionPixelSize(2131296382), ((Resources)localObject2).getDimensionPixelSize(2131296379), ((Resources)localObject2).getDimensionPixelSize(2131296381));
+    paramItemHolder.b = ((RelativeLayout)paramDataLineMsgSet.findViewById(2131438925));
+    paramItemHolder.b.setTag(paramItemHolder);
+    paramItemHolder.b.setClickable(true);
+    paramItemHolder.b.setLongClickable(true);
+    paramItemHolder.b.setOnClickListener(this.e);
+    paramItemHolder.b.setOnLongClickListener(this.c.R);
+    paramItemHolder.b.setOnTouchListener(this.c.S);
+    paramItemHolder.b.setAddStatesFromChildren(true);
+    paramItemHolder.a((TextView)paramDataLineMsgSet.findViewById(2131431625));
+    int i = AIOUtils.b(14.0F, this.b.getResources());
+    int j = AIOUtils.b(6.0F, this.b.getResources());
+    Object localObject1 = new RelativeLayout(this.b);
+    ((RelativeLayout)localObject1).setId(2131430578);
+    Object localObject2 = this.b.getResources();
+    ((RelativeLayout)localObject1).setPadding(((Resources)localObject2).getDimensionPixelSize(2131296611), ((Resources)localObject2).getDimensionPixelSize(2131296614), ((Resources)localObject2).getDimensionPixelSize(2131296609), ((Resources)localObject2).getDimensionPixelSize(2131296613));
     Object localObject3 = new RelativeLayout.LayoutParams(BaseChatItemLayout.z, -2);
-    int k = ((Resources)localObject2).getDimensionPixelSize(2131299072);
+    int k = ((Resources)localObject2).getDimensionPixelSize(2131299800);
     ((RelativeLayout.LayoutParams)localObject3).setMargins(k, 0, k, 0);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131368343);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(1, 2131435219);
     ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-    localObject2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    ((LinearLayout)localObject2).setMinimumHeight(AIOUtils.b(76.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    localObject2 = new LinearLayout(this.b);
+    ((LinearLayout)localObject2).setMinimumHeight(AIOUtils.b(76.0F, this.b.getResources()));
     ((LinearLayout)localObject2).setOrientation(1);
     localObject3 = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject3).addRule(10, 2131364521);
+    ((RelativeLayout.LayoutParams)localObject3).addRule(10, 2131430578);
     ((RelativeLayout)localObject1).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
-    localObject3 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    ((RelativeLayout)localObject3).setId(2131366806);
+    localObject3 = new RelativeLayout(this.b);
+    ((RelativeLayout)localObject3).setId(2131433128);
     Object localObject4 = new LinearLayout.LayoutParams(-1, -2);
     ((RelativeLayout)localObject3).setPadding(i, i, i, 0);
     ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localObject3);
-    k = AIOUtils.b(48.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    localObject4 = new AsyncImageView(this.jdField_a_of_type_AndroidContentContext);
+    paramItemHolder.i().h = ((RelativeLayout)localObject3);
+    k = AIOUtils.b(48.0F, this.b.getResources());
+    localObject4 = new AsyncImageView(this.b);
     ((AsyncImageView)localObject4).setWidth(k);
     ((AsyncImageView)localObject4).setHeight(k);
-    ((AsyncImageView)localObject4).setId(2131364488);
+    ((AsyncImageView)localObject4).setId(2131430545);
     ((AsyncImageView)localObject4).setScaleType(ImageView.ScaleType.CENTER_CROP);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, k);
     localLayoutParams.addRule(11);
     localLayoutParams.addRule(10);
     localLayoutParams.setMargins(i, 0, 0, 0);
     ((RelativeLayout)localObject3).addView((View)localObject4, localLayoutParams);
-    paramItemHolder.a().jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)localObject4);
-    localObject4 = new EllipsizingTextView(this.jdField_a_of_type_AndroidContentContext, null);
-    ((TextView)localObject4).setId(2131364490);
+    paramItemHolder.i().i = ((AsyncImageView)localObject4);
+    localObject4 = new EllipsizingTextView(this.b, null);
+    ((TextView)localObject4).setId(2131430547);
     ((TextView)localObject4).setGravity(48);
     ((TextView)localObject4).setIncludeFontPadding(false);
     ((TextView)localObject4).setLineSpacing(0.0F, 1.0F);
@@ -452,13 +453,13 @@ public class DatalineSessionAdapterUseNewFileBubble
     ((TextView)localObject4).setMaxLines(2);
     ((TextView)localObject4).setTextColor(Color.parseColor("#03081a"));
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(0, 2131364488);
+    localLayoutParams.addRule(0, 2131430545);
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(10);
     ((RelativeLayout)localObject3).addView((View)localObject4, localLayoutParams);
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject4);
-    localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject4).setId(2131364487);
+    paramItemHolder.i().d = ((TextView)localObject4);
+    localObject4 = new TextView(this.b);
+    ((TextView)localObject4).setId(2131430544);
     ((TextView)localObject4).setSingleLine();
     if (VersionUtils.e()) {
       ((TextView)localObject4).setAlpha(0.75F);
@@ -468,12 +469,12 @@ public class DatalineSessionAdapterUseNewFileBubble
     ((TextView)localObject4).setTextSize(1, 12.0F);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(9);
-    localLayoutParams.addRule(3, 2131364490);
+    localLayoutParams.addRule(3, 2131430547);
     localLayoutParams.setMargins(0, j, 0, 0);
     ((RelativeLayout)localObject3).addView((View)localObject4, localLayoutParams);
-    paramItemHolder.a().jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject4);
-    localObject4 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject4).setId(2131364492);
+    paramItemHolder.i().e = ((TextView)localObject4);
+    localObject4 = new TextView(this.b);
+    ((TextView)localObject4).setId(2131430549);
     ((TextView)localObject4).setSingleLine();
     if (VersionUtils.e()) {
       ((TextView)localObject4).setAlpha(0.75F);
@@ -482,21 +483,21 @@ public class DatalineSessionAdapterUseNewFileBubble
     ((TextView)localObject4).setTextColor(Color.parseColor("#777777"));
     ((TextView)localObject4).setTextSize(1, 12.0F);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(1, 2131364487);
-    localLayoutParams.addRule(8, 2131364487);
+    localLayoutParams.addRule(1, 2131430544);
+    localLayoutParams.addRule(8, 2131430544);
     localLayoutParams.setMargins(0, j, 0, 0);
     ((RelativeLayout)localObject3).addView((View)localObject4, localLayoutParams);
-    paramItemHolder.a().c = ((TextView)localObject4);
-    localObject3 = new ProgressBar(this.jdField_a_of_type_AndroidContentContext, null, 16842872);
-    ((ProgressBar)localObject3).setId(2131364491);
+    paramItemHolder.i().f = ((TextView)localObject4);
+    localObject3 = new ProgressBar(this.b, null, 16842872);
+    ((ProgressBar)localObject3).setId(2131430548);
     ((ProgressBar)localObject3).setMax(100);
-    ((ProgressBar)localObject3).setProgressDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837987));
-    localObject4 = new LinearLayout.LayoutParams(-1, AIOUtils.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    ((ProgressBar)localObject3).setProgressDrawable(this.b.getResources().getDrawable(2130838011));
+    localObject4 = new LinearLayout.LayoutParams(-1, AIOUtils.b(2.0F, this.b.getResources()));
     ((LinearLayout.LayoutParams)localObject4).setMargins(i, j, i, j);
     ((LinearLayout)localObject2).addView((View)localObject3, (ViewGroup.LayoutParams)localObject4);
-    paramItemHolder.a().jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localObject3);
-    paramItemHolder.a().jdField_a_of_type_AndroidViewView = ((View)localObject1);
-    paramItemHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1);
+    paramItemHolder.i().g = ((ProgressBar)localObject3);
+    paramItemHolder.i().a = ((View)localObject1);
+    paramItemHolder.b.addView((View)localObject1);
     if (paramInt == 18)
     {
       a(paramDataLineMsgSet, paramItemHolder);
@@ -507,33 +508,6 @@ public class DatalineSessionAdapterUseNewFileBubble
     return paramDataLineMsgSet;
   }
   
-  protected void a(int paramInt, ItemHolder paramItemHolder, DataLineMsgSet paramDataLineMsgSet)
-  {
-    c(paramItemHolder, paramDataLineMsgSet);
-    a(paramDataLineMsgSet, paramItemHolder);
-    if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-    {
-      Object localObject = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.jdField_a_of_type_ComTencentWidgetXPanelContainer.getTag(2131361812);
-      if ((localObject != null) && ((localObject instanceof ChatBackgroundDrawable)))
-      {
-        localObject = (ChatBackgroundDrawable)localObject;
-        if (localObject != null)
-        {
-          paramInt = ChatBackground.a(((ChatBackgroundDrawable)localObject).getBitmap());
-          paramItemHolder.a().setTextColor(ColorStateList.valueOf(paramInt));
-        }
-      }
-    }
-    if (a(paramDataLineMsgSet.getMsgId()))
-    {
-      paramDataLineMsgSet = TimeFormatterUtils.a(this.jdField_a_of_type_AndroidContentContext, 3, paramDataLineMsgSet.getTime() * 1000L);
-      paramItemHolder.a().setVisibility(0);
-      paramItemHolder.a().setText(paramDataLineMsgSet);
-      return;
-    }
-    paramItemHolder.a().setVisibility(8);
-  }
-  
   protected void a(DataLineMsgRecord paramDataLineMsgRecord, View paramView, float paramFloat)
   {
     super.a(paramDataLineMsgRecord, paramView, paramFloat);
@@ -542,21 +516,21 @@ public class DatalineSessionAdapterUseNewFileBubble
       if (paramView == null) {
         return;
       }
-      float f = paramFloat;
+      float f1 = paramFloat;
       if (paramFloat < paramDataLineMsgRecord.progress) {
-        f = paramDataLineMsgRecord.progress;
+        f1 = paramDataLineMsgRecord.progress;
       }
-      ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131364491);
+      ProgressBar localProgressBar = (ProgressBar)paramView.findViewById(2131430548);
       if (localProgressBar != null)
       {
         localProgressBar.setVisibility(0);
-        localProgressBar.setProgress((int)(f * 100.0F));
+        localProgressBar.setProgress((int)(f1 * 100.0F));
       }
-      paramView = (RelativeLayout)paramView.findViewById(2131366806);
+      paramView = (RelativeLayout)paramView.findViewById(2131433128);
       if (paramView != null)
       {
-        int i = AIOUtils.b(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        int j = AIOUtils.b(18.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        int i = AIOUtils.b(14.0F, this.b.getResources());
+        int j = AIOUtils.b(18.0F, this.b.getResources());
         if (paramDataLineMsgRecord.isSendFromLocal())
         {
           paramView.setPadding(i, i, j, 0);
@@ -572,11 +546,11 @@ public class DatalineSessionAdapterUseNewFileBubble
     String str = FileUtil.a(paramDataLineMsgRecord.filename);
     if (TextUtils.isEmpty(str))
     {
-      paramAsyncImageView.setImageResource(2130844437);
+      paramAsyncImageView.setImageResource(2130845755);
       return;
     }
-    paramAsyncImageView.setDefaultImage(FileManagerUtil.b(str));
-    if (FileManagerUtil.a(str) == 0)
+    paramAsyncImageView.setDefaultImage(FileManagerUtil.i(str));
+    if (FileManagerUtil.c(str) == 0)
     {
       str = paramDataLineMsgRecord.filename;
       if (FileUtils.fileExistsAndNotEmpty(paramDataLineMsgRecord.thumbPath)) {
@@ -587,7 +561,7 @@ public class DatalineSessionAdapterUseNewFileBubble
       paramAsyncImageView.setAsyncImage(str);
       return;
     }
-    int i = FileManagerUtil.b(str);
+    int i = FileManagerUtil.i(str);
     if (i != 0) {
       paramAsyncImageView.setImageResource(i);
     }
@@ -596,6 +570,33 @@ public class DatalineSessionAdapterUseNewFileBubble
   protected boolean a(int paramInt)
   {
     return (paramInt == 17) || (paramInt == 18);
+  }
+  
+  protected void b(int paramInt, ItemHolder paramItemHolder, DataLineMsgSet paramDataLineMsgSet)
+  {
+    c(paramItemHolder, paramDataLineMsgSet);
+    a(paramDataLineMsgSet, paramItemHolder);
+    if (ThemeUtil.isInNightMode(this.d))
+    {
+      Object localObject = this.c.b.getTag(2131427358);
+      if ((localObject != null) && ((localObject instanceof ChatBackgroundDrawable)))
+      {
+        localObject = (ChatBackgroundDrawable)localObject;
+        if (localObject != null)
+        {
+          paramInt = ChatBackground.a(((ChatBackgroundDrawable)localObject).getBitmap());
+          paramItemHolder.j().setTextColor(ColorStateList.valueOf(paramInt));
+        }
+      }
+    }
+    if (a(paramDataLineMsgSet.getMsgId()))
+    {
+      paramDataLineMsgSet = TimeFormatterUtils.a(this.b, 3, paramDataLineMsgSet.getTime() * 1000L);
+      paramItemHolder.j().setVisibility(0);
+      paramItemHolder.j().setText(paramDataLineMsgSet);
+      return;
+    }
+    paramItemHolder.j().setVisibility(8);
   }
   
   public int getItemViewType(int paramInt)

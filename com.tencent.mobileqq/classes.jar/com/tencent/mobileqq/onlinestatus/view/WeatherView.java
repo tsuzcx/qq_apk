@@ -66,80 +66,80 @@ public final class WeatherView
   extends BaseStatusCardView
   implements OnLineStatusBlurBg.OnLineStatusBlurBgListener, OnlineStatusPermissionManager.ReceiveDataListener
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private BaseApplication A;
+  private int B;
+  private int C;
+  private float D;
+  @NotNull
+  private final Drawable E;
+  @NotNull
+  private QBaseActivity F;
+  @NotNull
+  private OnLineStatusBlurBg G;
+  private ImageView a;
+  private ImageView b;
   @Nullable
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  @NotNull
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  @NotNull
-  private OnLineStatusBlurBg jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg;
-  private OnlineStatusPermissionChecker.OnlineStatusPermissionItem jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
-  private WeatherObserver jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver;
-  private BaseApplication jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
-  private final AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  @NotNull
-  private final Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private float jdField_c_of_type_Float;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private final View jdField_d_of_type_AndroidViewView;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private final View jdField_e_of_type_AndroidViewView;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  private Button c;
+  private TextView d;
+  private TextView e;
   private TextView f;
   private TextView g;
   private TextView h;
-  private TextView i;
+  private View o;
+  private TextView p;
+  private TextView q;
+  private WeatherObserver r;
+  private final View s;
+  private final View t;
+  private TextView u;
+  private TextView v;
+  private OnlineStatusPermissionChecker.OnlineStatusPermissionItem w;
+  private final AppRuntime x;
+  private Drawable y;
+  private boolean z;
   
   public WeatherView(@NotNull QBaseActivity paramQBaseActivity, @NotNull OnLineStatusBlurBg paramOnLineStatusBlurBg, @NotNull BaseStatusCardView.OnDismissCallback paramOnDismissCallback)
   {
     super((Context)paramQBaseActivity, paramOnDismissCallback);
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg = paramOnLineStatusBlurBg;
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
+    this.F = paramQBaseActivity;
+    this.G = paramOnLineStatusBlurBg;
+    paramQBaseActivity = this.F.getAppRuntime();
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "activity.appRuntime");
-    this.jdField_a_of_type_MqqAppAppRuntime = paramQBaseActivity;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication = BaseApplication.context;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)new ColorDrawable(0));
-    this.jdField_d_of_type_AndroidViewView = a();
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new WeatherView.1(this));
-    paramQBaseActivity = this.jdField_d_of_type_AndroidViewView.findViewById(2131381053);
+    this.x = paramQBaseActivity;
+    this.z = true;
+    this.A = BaseApplication.context;
+    this.E = ((Drawable)new ColorDrawable(0));
+    this.s = a();
+    this.s.setOnClickListener((View.OnClickListener)new WeatherView.1(this));
+    paramQBaseActivity = this.s.findViewById(2131450063);
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "contentView.findViewById(R.id.weather_root)");
-    this.jdField_e_of_type_AndroidViewView = paramQBaseActivity;
-    this.jdField_e_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)WeatherView.2.a);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_d_of_type_AndroidViewView;
-    this.jdField_b_of_type_AndroidViewView = this.jdField_e_of_type_AndroidViewView;
-    b();
-    setContentView(this.jdField_d_of_type_AndroidViewView);
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    this.t = paramQBaseActivity;
+    this.t.setOnClickListener((View.OnClickListener)WeatherView.2.a);
+    this.i = this.s;
+    this.j = this.t;
+    d();
+    setContentView(this.s);
+    paramQBaseActivity = this.A;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
     paramQBaseActivity = paramQBaseActivity.getResources();
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext.resources");
-    int j = paramQBaseActivity.getDisplayMetrics().widthPixels;
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    int i = paramQBaseActivity.getDisplayMetrics().widthPixels;
+    paramQBaseActivity = this.A;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
-    this.jdField_a_of_type_Int = (j - Utils.a(80.0F, paramQBaseActivity.getResources()));
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    this.B = (i - Utils.a(80.0F, paramQBaseActivity.getResources()));
+    paramQBaseActivity = this.A;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
-    this.jdField_b_of_type_Int = Utils.a(211.0F, paramQBaseActivity.getResources());
-    this.jdField_c_of_type_Float = (12 * DeviceInfoUtil.a());
-    paramQBaseActivity = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    this.C = Utils.a(211.0F, paramQBaseActivity.getResources());
+    this.D = (12 * DeviceInfoUtil.A());
+    paramQBaseActivity = this.A;
     Intrinsics.checkExpressionValueIsNotNull(paramQBaseActivity, "appContext");
-    paramQBaseActivity = BitmapManager.a(paramQBaseActivity.getResources(), 2130841533, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    paramQBaseActivity = BitmapManager.a(paramQBaseActivity.getResources(), 2130842376, this.B, this.C);
     if (paramQBaseActivity != null)
     {
-      paramQBaseActivity = BaseImageUtil.d(paramQBaseActivity, this.jdField_c_of_type_Float, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      paramOnLineStatusBlurBg = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+      paramQBaseActivity = BaseImageUtil.d(paramQBaseActivity, this.D, this.B, this.C);
+      paramOnLineStatusBlurBg = this.A;
       Intrinsics.checkExpressionValueIsNotNull(paramOnLineStatusBlurBg, "appContext");
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Drawable)new BitmapDrawable(paramOnLineStatusBlurBg.getResources(), paramQBaseActivity));
+      this.y = ((Drawable)new BitmapDrawable(paramOnLineStatusBlurBg.getResources(), paramQBaseActivity));
     }
   }
   
@@ -168,7 +168,7 @@ public final class WeatherView
     {
       Intrinsics.checkExpressionValueIsNotNull(paramString, "drawable");
       paramString.setTag(URLDrawableHelper.a(localURLDrawableOptions.mRequestWidth, localURLDrawableOptions.mRequestHeight, paramInt1));
-      paramString.setDecodeHandler(URLDrawableHelper.a);
+      paramString.setDecodeHandler(URLDrawableHelper.b);
     }
     if (paramImageView != null) {
       paramImageView.setImageDrawable((Drawable)paramString);
@@ -177,18 +177,18 @@ public final class WeatherView
   
   private final void a(boolean paramBoolean)
   {
-    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+    Button localButton = this.c;
     if (localButton != null)
     {
-      Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IOnlineStatusService.class, "");
+      Object localObject = this.x.getRuntimeService(IOnlineStatusService.class, "");
       Intrinsics.checkExpressionValueIsNotNull(localObject, "app.getRuntimeService(IO…va, ProcessConstant.MAIN)");
       if (((IOnlineStatusService)localObject).getExtOnlineStatus() == 1030)
       {
-        int j;
+        int i;
         if (paramBoolean) {
-          j = 2131691333;
+          i = 2131888288;
         } else {
-          j = 2131693121;
+          i = 2131890660;
         }
         if (QLog.isColorLevel())
         {
@@ -197,44 +197,79 @@ public final class WeatherView
           ((StringBuilder)localObject).append(paramBoolean);
           QLog.d("WeatherView", 2, new Object[] { "updateButtonText: called. ", ((StringBuilder)localObject).toString() });
         }
-        this.jdField_a_of_type_Boolean = (paramBoolean ^ true);
-        localButton.setText(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getText(j));
+        this.z = (paramBoolean ^ true);
+        localButton.setText(this.x.getApp().getText(i));
         localButton.setEnabled(paramBoolean);
         return;
       }
-      localButton.setText(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getText(2131694929));
+      localButton.setText(this.x.getApp().getText(2131892656));
       localButton.setEnabled(true);
     }
   }
   
-  private final void b()
+  private final void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver = ((WeatherObserver)new WeatherView.initData.1(this));
+    Object localObject1 = this.A;
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "appContext");
+    Object localObject2 = ((BaseApplication)localObject1).getResources();
+    Intrinsics.checkExpressionValueIsNotNull(localObject2, "appContext.resources");
+    localObject1 = ((Resources)localObject2).getString(2131888286);
+    if (paramBoolean) {
+      localObject1 = ((Resources)localObject2).getString(2131888292);
+    }
+    Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
+    localObjectRef.element = ((Resources)localObject2).getString(2131888291);
+    localObject2 = this.p;
+    if (localObject2 != null)
+    {
+      localObject1 = (CharSequence)localObject1;
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
+    }
+    localObject1 = this.q;
+    if (localObject1 != null)
+    {
+      ((TextView)localObject1).setText((CharSequence)localObjectRef.element);
+      ((TextView)localObject1).setClickable(true);
+      ((TextView)localObject1).setOnClickListener((View.OnClickListener)new WeatherView.bindTextView..inlined.apply.lambda.1(this, localObjectRef, paramBoolean));
+      ((TextView)localObject1).setOnTouchListener((View.OnTouchListener)new AutoStatusSelectView.MyViewAlphaOnTouchListener());
+      if (ThemeImageWrapper.isNightMode())
+      {
+        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837602, 0);
+        return;
+      }
+      ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837601, 0);
+    }
   }
   
-  private final void c()
+  private final void d()
+  {
+    this.r = ((WeatherObserver)new WeatherView.initData.1(this));
+  }
+  
+  private final void e()
   {
     Object localObject;
-    if (QQTheme.a())
+    if (QQTheme.isNowThemeIsNight())
     {
-      this.jdField_e_of_type_AndroidViewView.setBackgroundResource(2130846335);
+      this.t.setBackgroundResource(2130847806);
       a(false, null, Color.parseColor("#FF010101"));
-      localObject = this.jdField_c_of_type_AndroidViewView;
+      localObject = this.o;
       if (localObject != null) {
         ((View)localObject).setVisibility(0);
       }
     }
     else
     {
-      this.jdField_e_of_type_AndroidViewView.setBackgroundResource(2130846334);
+      this.t.setBackgroundResource(2130847805);
       localObject = new OnLineStatusBlurBg.BlurBgItem();
-      QBaseActivity localQBaseActivity = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
+      QBaseActivity localQBaseActivity = this.F;
       if (localQBaseActivity == null) {
         break label103;
       }
-      ((OnLineStatusBlurBg.BlurBgItem)localObject).jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = localQBaseActivity;
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnLineStatusBlurBg.a((OnLineStatusBlurBg.BlurBgItem)localObject, (OnLineStatusBlurBg.OnLineStatusBlurBgListener)this);
-      localObject = this.jdField_c_of_type_AndroidViewView;
+      ((OnLineStatusBlurBg.BlurBgItem)localObject).a = localQBaseActivity;
+      this.G.a((OnLineStatusBlurBg.BlurBgItem)localObject, (OnLineStatusBlurBg.OnLineStatusBlurBgListener)this);
+      localObject = this.o;
       if (localObject != null) {
         ((View)localObject).setVisibility(8);
       }
@@ -244,54 +279,19 @@ public final class WeatherView
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QBaseActivity");
   }
   
-  private final void c(boolean paramBoolean)
+  private final void f()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
-    Intrinsics.checkExpressionValueIsNotNull(localObject1, "appContext");
-    Object localObject2 = ((BaseApplication)localObject1).getResources();
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "appContext.resources");
-    localObject1 = ((Resources)localObject2).getString(2131691331);
-    if (paramBoolean) {
-      localObject1 = ((Resources)localObject2).getString(2131691337);
-    }
-    Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
-    localObjectRef.element = ((Resources)localObject2).getString(2131691336);
-    localObject2 = this.f;
-    if (localObject2 != null)
-    {
-      localObject1 = (CharSequence)localObject1;
-      ((TextView)localObject2).setText((CharSequence)localObject1);
-      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
-    }
-    localObject1 = this.g;
-    if (localObject1 != null)
-    {
-      ((TextView)localObject1).setText((CharSequence)localObjectRef.element);
-      ((TextView)localObject1).setClickable(true);
-      ((TextView)localObject1).setOnClickListener((View.OnClickListener)new WeatherView.bindTextView..inlined.apply.lambda.1(this, localObjectRef, paramBoolean));
-      ((TextView)localObject1).setOnTouchListener((View.OnTouchListener)new AutoStatusSelectView.MyViewAlphaOnTouchListener());
-      if (ThemeImageWrapper.isNightMode())
-      {
-        ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837596, 0);
-        return;
-      }
-      ((TextView)localObject1).setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130837595, 0);
-    }
-  }
-  
-  private final void g()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem;
+    Object localObject = this.w;
     boolean bool2 = false;
     boolean bool1;
     if (localObject != null)
     {
       bool2 = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)localObject).isAllHasPermission() ^ true;
-      localObject = this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "");
+      localObject = this.x.getRuntimeService(IOnlineStatusManagerService.class, "");
       Intrinsics.checkExpressionValueIsNotNull(localObject, "app.getRuntimeService(IO…va, ProcessConstant.MAIN)");
       localObject = ((IOnlineStatusManagerService)localObject).getManager(IOnlineStatusPermissionManager.class);
       if (localObject != null) {
-        bool1 = ((OnlineStatusPermissionManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, (OnlineStatusPermissionManager.ReceiveDataListener)this);
+        bool1 = ((OnlineStatusPermissionManager)localObject).a(this.w, (OnlineStatusPermissionManager.ReceiveDataListener)this);
       } else {
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager");
       }
@@ -307,46 +307,111 @@ public final class WeatherView
   @NotNull
   public final View a()
   {
-    View localView = View.inflate((Context)BaseApplication.context, 2131561501, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131381051));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370632));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378377));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131381052));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131377160));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131381050));
-    this.f = ((TextView)localView.findViewById(2131377146));
-    this.g = ((TextView)localView.findViewById(2131377139));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362254));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131365401));
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131371889);
-    this.h = ((TextView)localView.findViewById(2131370648));
-    this.i = ((TextView)localView.findViewById(2131378039));
+    View localView = View.inflate((Context)BaseApplication.context, 2131627859, null);
+    this.a = ((ImageView)localView.findViewById(2131450061));
+    this.b = ((ImageView)localView.findViewById(2131437907));
+    this.d = ((TextView)localView.findViewById(2131446976));
+    this.e = ((TextView)localView.findViewById(2131450062));
+    this.c = ((Button)localView.findViewById(2131445538));
+    this.f = ((TextView)localView.findViewById(2131450060));
+    this.p = ((TextView)localView.findViewById(2131445523));
+    this.q = ((TextView)localView.findViewById(2131445514));
+    this.g = ((TextView)localView.findViewById(2131427835));
+    this.h = ((TextView)localView.findViewById(2131431602));
+    this.o = localView.findViewById(2131439332);
+    this.u = ((TextView)localView.findViewById(2131437924));
+    this.v = ((TextView)localView.findViewById(2131446539));
     Intrinsics.checkExpressionValueIsNotNull(localView, "view");
     return localView;
-  }
-  
-  @NotNull
-  public final QBaseActivity a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
   }
   
   @NotNull
   public final String a(long paramLong)
   {
     Object localObject = new Date(paramLong);
-    localObject = ConstellationUtilKt.a().format((Date)localObject);
+    localObject = ConstellationUtilKt.e().format((Date)localObject);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "defaultDateFormat.format(date)");
     return localObject;
   }
   
-  @SuppressLint({"SetTextI18n"})
-  public final void a()
+  public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
-    Object localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFriendDataService.class, "");
+    if ((paramInt1 == 1030) && (paramInt2 == -1) && (paramIntent != null) && (paramIntent.getSerializableExtra("online_status_permission_item") != null))
+    {
+      paramIntent = paramIntent.getSerializableExtra("online_status_permission_item");
+      if (paramIntent != null)
+      {
+        this.w = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)paramIntent);
+        f();
+        return;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem");
+    }
+  }
+  
+  public void a(@NotNull OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem, @NotNull List<Integer> paramList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramOnlineStatusFriendsPermissionItem, "item");
+    Intrinsics.checkParameterIsNotNull(paramList, "smartSelectedList");
+    if (this.w == null)
+    {
+      this.w = OnlineStatusPermissionChecker.OnlineStatusPermissionItem.create(40001, paramOnlineStatusFriendsPermissionItem.allHasPermission, paramOnlineStatusFriendsPermissionItem.permissionUins);
+      f();
+    }
+  }
+  
+  public void a(boolean paramBoolean, @Nullable Bitmap paramBitmap, int paramInt)
+  {
+    if ((paramBoolean) && (paramBitmap != null))
+    {
+      View localView = this.s;
+      if (localView != null)
+      {
+        localView.setBackgroundDrawable((Drawable)new BitmapDrawable(paramBitmap));
+        return;
+      }
+    }
+    paramBitmap = this.s;
+    if (paramBitmap != null) {
+      paramBitmap.setBackgroundColor(paramInt);
+    }
+  }
+  
+  protected void a(@Nullable int[] paramArrayOfInt)
+  {
+    if (paramArrayOfInt != null)
+    {
+      View localView = this.j;
+      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+      if (localView.getWidth() != 0)
+      {
+        localView = this.j;
+        Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+        if (localView.getHeight() != 0)
+        {
+          localView = this.j;
+          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+          paramArrayOfInt[0] = localView.getWidth();
+          localView = this.j;
+          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+          paramArrayOfInt[1] = localView.getHeight();
+          return;
+        }
+      }
+      paramArrayOfInt[0] = this.B;
+      localView = this.j;
+      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
+      paramArrayOfInt[1] = Utils.a(430.0F, localView.getResources());
+    }
+  }
+  
+  @SuppressLint({"SetTextI18n"})
+  public final void b()
+  {
+    Object localObject1 = this.x.getRuntimeService(IFriendDataService.class, "");
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "app.getRuntimeService(IF…va, ProcessConstant.MAIN)");
-    Friends localFriends = ((IFriendDataService)localObject1).getFriend(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), true, true, true);
-    Object localObject2 = this.jdField_c_of_type_AndroidWidgetTextView;
+    Friends localFriends = ((IFriendDataService)localObject1).getFriend(this.x.getCurrentUin(), true, true, true);
+    Object localObject2 = this.f;
     if (localObject2 != null)
     {
       localObject1 = localFriends.weatherTip;
@@ -357,7 +422,7 @@ public final class WeatherView
       }
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject2 = this.jdField_b_of_type_AndroidWidgetTextView;
+    localObject2 = this.e;
     if (localObject2 != null)
     {
       localObject1 = localFriends.weatherType;
@@ -368,7 +433,7 @@ public final class WeatherView
       }
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject2 = this.jdField_d_of_type_AndroidWidgetTextView;
+    localObject2 = this.g;
     if (localObject2 != null)
     {
       localStringBuilder = new StringBuilder();
@@ -384,7 +449,7 @@ public final class WeatherView
       localStringBuilder.append(localObject1);
       ((TextView)localObject2).setText((CharSequence)localStringBuilder.toString());
     }
-    localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    localObject2 = this.d;
     if (localObject2 != null)
     {
       localObject1 = localFriends.temper;
@@ -395,75 +460,75 @@ public final class WeatherView
       }
       ((TextView)localObject2).setText((CharSequence)localObject1);
     }
-    localObject1 = this.jdField_a_of_type_AndroidWidgetButton;
+    localObject1 = this.c;
     if (localObject1 != null) {
       ((Button)localObject1).setOnClickListener((View.OnClickListener)new WeatherView.bindView.1(this));
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.z = true;
     boolean bool2 = false;
     a(false);
-    Object localObject3 = (OnlineAutoStatusBean)QConfigManager.a().a(652);
-    localObject1 = this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication;
+    Object localObject3 = (OnlineAutoStatusBean)QConfigManager.b().b(652);
+    localObject1 = this.A;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "appContext");
-    int j = Utils.a(26.0F, ((BaseApplication)localObject1).getResources());
+    int i = Utils.a(26.0F, ((BaseApplication)localObject1).getResources());
     StringBuilder localStringBuilder = null;
     if (localObject3 != null)
     {
-      localObject1 = ((OnlineAutoStatusBean)localObject3).a(localFriends.weatherTypeId);
+      localObject1 = ((OnlineAutoStatusBean)localObject3).b(localFriends.weatherTypeId);
       if (localObject1 != null)
       {
         localObject1 = ((WeatherUrl)localObject1).b;
-        break label394;
+        break label395;
       }
     }
     localObject1 = null;
-    label394:
-    a((String)localObject1, this.jdField_a_of_type_AndroidWidgetImageView, 0, j, j, URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    label395:
+    a((String)localObject1, this.a, 0, i, i, URLDrawableHelperConstants.a);
+    localObject2 = this.y;
     localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = URLDrawableHelperConstants.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject1 = URLDrawableHelperConstants.a;
     }
     localObject2 = localStringBuilder;
     if (localObject3 != null)
     {
-      localObject3 = ((OnlineAutoStatusBean)localObject3).a(localFriends.weatherTypeId);
+      localObject3 = ((OnlineAutoStatusBean)localObject3).b(localFriends.weatherTypeId);
       localObject2 = localStringBuilder;
       if (localObject3 != null) {
         localObject2 = ((WeatherUrl)localObject3).c;
       }
     }
-    a((String)localObject2, this.jdField_b_of_type_AndroidWidgetImageView, (int)this.jdField_c_of_type_Float, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, (Drawable)localObject1);
+    a((String)localObject2, this.b, (int)this.D, this.B, this.C, (Drawable)localObject1);
     if (localFriends.weatherUpdateTime <= 0L)
     {
-      localObject1 = this.jdField_e_of_type_AndroidWidgetTextView;
+      localObject1 = this.h;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)"");
       }
     }
     else
     {
-      localObject1 = this.jdField_e_of_type_AndroidWidgetTextView;
+      localObject1 = this.h;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)a(localFriends.weatherUpdateTime * 1000));
       }
     }
     localObject1 = (CharSequence)localFriends.temper;
     if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-      j = 0;
+      i = 0;
     } else {
-      j = 1;
+      i = 1;
     }
-    if (j != 0)
+    if (i != 0)
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.d;
       if (localObject1 != null) {
         ((TextView)localObject1).setText((CharSequence)"");
       }
     }
     else
     {
-      localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject1 = this.d;
       if (localObject1 != null)
       {
         localObject2 = new StringBuilder();
@@ -472,7 +537,7 @@ public final class WeatherView
         ((TextView)localObject1).setText((CharSequence)((StringBuilder)localObject2).toString());
       }
     }
-    localObject1 = this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "");
+    localObject1 = this.x.getRuntimeService(IOnlineStatusManagerService.class, "");
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "app.getRuntimeService(IO…va, ProcessConstant.MAIN)");
     localObject1 = ((IOnlineStatusManagerService)localObject1).getManager(IOnlineStatusPermissionManager.class);
     if (localObject1 != null)
@@ -492,117 +557,52 @@ public final class WeatherView
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.manager.OnlineStatusPermissionManager");
   }
   
-  public void a(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
+  @NotNull
+  public final QBaseActivity c()
   {
-    if ((paramInt1 == 1030) && (paramInt2 == -1) && (paramIntent != null) && (paramIntent.getSerializableExtra("online_status_permission_item") != null))
-    {
-      paramIntent = paramIntent.getSerializableExtra("online_status_permission_item");
-      if (paramIntent != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)paramIntent);
-        g();
-        return;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.OnlineStatusPermissionChecker.OnlineStatusPermissionItem");
-    }
+    return this.F;
   }
   
-  public void a(@NotNull OnlineStatusFriendsPermissionItem paramOnlineStatusFriendsPermissionItem, @NotNull List<Integer> paramList)
-  {
-    Intrinsics.checkParameterIsNotNull(paramOnlineStatusFriendsPermissionItem, "item");
-    Intrinsics.checkParameterIsNotNull(paramList, "smartSelectedList");
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = OnlineStatusPermissionChecker.OnlineStatusPermissionItem.create(40001, paramOnlineStatusFriendsPermissionItem.allHasPermission, paramOnlineStatusFriendsPermissionItem.permissionUins);
-      g();
-    }
-  }
-  
-  public void a(boolean paramBoolean, @Nullable Bitmap paramBitmap, int paramInt)
-  {
-    if ((paramBoolean) && (paramBitmap != null))
-    {
-      View localView = this.jdField_d_of_type_AndroidViewView;
-      if (localView != null)
-      {
-        localView.setBackgroundDrawable((Drawable)new BitmapDrawable(paramBitmap));
-        return;
-      }
-    }
-    paramBitmap = this.jdField_d_of_type_AndroidViewView;
-    if (paramBitmap != null) {
-      paramBitmap.setBackgroundColor(paramInt);
-    }
-  }
-  
-  protected void a(@Nullable int[] paramArrayOfInt)
-  {
-    if (paramArrayOfInt != null)
-    {
-      View localView = this.jdField_b_of_type_AndroidViewView;
-      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-      if (localView.getWidth() != 0)
-      {
-        localView = this.jdField_b_of_type_AndroidViewView;
-        Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-        if (localView.getHeight() != 0)
-        {
-          localView = this.jdField_b_of_type_AndroidViewView;
-          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-          paramArrayOfInt[0] = localView.getWidth();
-          localView = this.jdField_b_of_type_AndroidViewView;
-          Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-          paramArrayOfInt[1] = localView.getHeight();
-          return;
-        }
-      }
-      paramArrayOfInt[0] = this.jdField_a_of_type_Int;
-      localView = this.jdField_b_of_type_AndroidViewView;
-      Intrinsics.checkExpressionValueIsNotNull(localView, "cardView");
-      paramArrayOfInt[1] = Utils.a(430.0F, localView.getResources());
-    }
-  }
-  
-  public void aL_()
+  public void dg_()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.requestPermissions(new WeatherView.showCard.1(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      this.F.requestPermissions(new WeatherView.showCard.1(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IOnlineStatusManagerService.class, "");
+    Object localObject = this.x.getRuntimeService(IOnlineStatusManagerService.class, "");
     Intrinsics.checkExpressionValueIsNotNull(localObject, "app.getRuntimeService(IO…va, ProcessConstant.MAIN)");
     localObject = ((IOnlineStatusManagerService)localObject).getManager(IOnlineStatusDataManager.class);
     if (localObject != null)
     {
-      ((OnlineStatusDataManager)localObject).a(9);
+      ((OnlineStatusDataManager)localObject).b(9);
       show();
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.onlinestatus.manager.OnlineStatusDataManager");
   }
   
-  protected void f()
+  protected void k()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver);
+    this.x.unRegistObserver((BusinessObserver)this.r);
   }
   
   public void onBackPressed()
   {
     super.onBackPressed();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewBaseStatusCardView$OnDismissCallback.a(1030);
+    this.n.a(1030);
   }
   
   public void show()
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.registObserver((BusinessObserver)this.jdField_a_of_type_ComTencentMobileqqOnlinestatusWeatherWeatherObserver);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)null);
-    a();
-    c();
+    this.x.registObserver((BusinessObserver)this.r);
+    this.w = ((OnlineStatusPermissionChecker.OnlineStatusPermissionItem)null);
+    b();
+    e();
     try
     {
-      a(this.h);
-      a(this.i);
+      a(this.u);
+      a(this.v);
       super.show();
     }
     catch (Exception localException)
@@ -611,12 +611,12 @@ public final class WeatherView
         QLog.e("WeatherView", 2, new Object[] { "show: called. ", "", localException });
       }
     }
-    b(true);
+    e(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView
  * JD-Core Version:    0.7.0.1
  */

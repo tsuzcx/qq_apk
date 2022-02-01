@@ -13,13 +13,13 @@ class CaptureOperateTouchLayout$IndicatorTouchListener$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setX(f);
-    CaptureOperateTouchLayout.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetCaptureOperateTouchLayout$IndicatorTouchListener.a).setX(f + this.jdField_a_of_type_AndroidViewView.getWidth() * 0.32F);
+    this.a.setX(f);
+    CaptureOperateTouchLayout.i(this.b.a).setX(f + this.a.getWidth() * 0.32F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.CaptureOperateTouchLayout.IndicatorTouchListener.3
  * JD-Core Version:    0.7.0.1
  */

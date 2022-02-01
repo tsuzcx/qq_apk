@@ -15,24 +15,24 @@ import java.io.File;
 public abstract class DefaultCustomHostProxyService
   implements HostProxyInterface
 {
-  protected String a;
   protected String b;
+  protected String c;
   
   public DefaultCustomHostProxyService()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
     localStringBuilder.append("/testEnv/");
-    this.a = localStringBuilder.toString();
-    this.b = "testserver";
-  }
-  
-  public String a()
-  {
-    return BusinessManager.a.a();
+    this.b = localStringBuilder.toString();
+    this.c = "testserver";
   }
   
   public abstract boolean a();
+  
+  public String b()
+  {
+    return BusinessManager.a.f();
+  }
   
   public void clearEventOutput() {}
   
@@ -77,7 +77,7 @@ public abstract class DefaultCustomHostProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService
  * JD-Core Version:    0.7.0.1
  */

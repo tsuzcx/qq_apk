@@ -31,67 +31,67 @@ import mqq.manager.TicketManager;
 
 public class ProfileQiqiLiveController
 {
-  AsyncTask<Integer, Void, Bundle> jdField_a_of_type_AndroidOsAsyncTask;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<NearbyPeopleProfileActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  NewIntent jdField_a_of_type_MqqAppNewIntent;
-  public String b;
-  public String c;
-  public String d;
+  WeakReference<NearbyPeopleProfileActivity> a;
+  String b;
+  NewIntent c;
+  Handler d;
+  public String e;
+  public String f;
+  public String g;
+  AsyncTask<Integer, Void, Bundle> h;
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((WeakReference)localObject).get() == null) {
         return;
       }
-      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (Activity)this.a.get();
       if (localObject != null)
       {
-        NewIntent localNewIntent = this.jdField_a_of_type_MqqAppNewIntent;
+        NewIntent localNewIntent = this.c;
         if (localNewIntent != null)
         {
           localNewIntent.setObserver(null);
-          this.jdField_a_of_type_MqqAppNewIntent = null;
+          this.c = null;
         }
         if (QLog.isColorLevel()) {
           QLog.d(getClass().getSimpleName(), 2, "lauchApp time out");
         }
-        AppUtil.a((Context)localObject, "com.guagua.qiqi", AppLaucherHelper.a("pt=$PT$&at=$AT$&openid=$OPID$&pf=$PF$"), 335544320);
+        AppUtil.a((Context)localObject, "com.guagua.qiqi", AppLaucherHelper.b("pt=$PT$&at=$AT$&openid=$OPID$&pf=$PF$"), 335544320);
       }
     }
   }
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((WeakReference)localObject).get() == null) {
         return;
       }
-      localObject = (NearbyPeopleProfileActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (NearbyPeopleProfileActivity)this.a.get();
       if (localObject != null)
       {
         if (paramInt == 2) {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+          this.d.sendEmptyMessage(1);
         }
-        if (TextUtils.isEmpty(this.d))
+        if (TextUtils.isEmpty(this.g))
         {
-          if (this.jdField_a_of_type_AndroidOsAsyncTask == null)
+          if (this.h == null)
           {
-            this.jdField_a_of_type_AndroidOsAsyncTask = new ProfileQiqiLiveController.1(this);
-            this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(paramInt) });
+            this.h = new ProfileQiqiLiveController.1(this);
+            this.h.execute(new Integer[] { Integer.valueOf(paramInt) });
           }
           return;
         }
         Bundle localBundle = new Bundle();
-        localBundle.putString(DownloadConstants.b, this.c);
-        localBundle.putString(DownloadConstants.j, this.d);
-        localBundle.putString(DownloadConstants.f, this.b);
+        localBundle.putString(DownloadConstants.b, this.f);
+        localBundle.putString(DownloadConstants.j, this.g);
+        localBundle.putString(DownloadConstants.f, this.e);
         localBundle.putInt(DownloadConstants.k, paramInt);
         localBundle.putString(DownloadConstants.i, "ANDROIDQQ.MSG.QIQI");
         localBundle.putString(DownloadConstants.l, "");
@@ -105,13 +105,13 @@ public class ProfileQiqiLiveController
   
   public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
       if (paramLong == 0L) {
         return;
       }
-      localObject = (NearbyPeopleProfileActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (NearbyPeopleProfileActivity)this.a.get();
       if (localObject != null)
       {
         QQAppInterface localQQAppInterface = ((NearbyPeopleProfileActivity)localObject).app;
@@ -119,7 +119,7 @@ public class ProfileQiqiLiveController
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("pt=$PT$&at=$AT$&openid=$OPID$&pf=$PF$&roomid=");
         localStringBuilder.append(paramLong);
-        this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        this.b = localStringBuilder.toString();
         a(localQQAppInterface, (Context)localObject, "1101674847", "com.guagua.qiqi", str, 335544320);
       }
     }
@@ -128,8 +128,8 @@ public class ProfileQiqiLiveController
   public void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     local2 = new ProfileQiqiLiveController.2(this, paramString2, paramContext, paramInt);
-    if (this.jdField_a_of_type_MqqAppNewIntent == null) {
-      this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(paramContext, ProtoServlet.class);
+    if (this.c == null) {
+      this.c = new NewIntent(paramContext, ProtoServlet.class);
     }
     localAuthorizeRequest = new FastAuthorize.AuthorizeRequest();
     l2 = 0L;
@@ -159,11 +159,11 @@ public class ProfileQiqiLiveController
         break label174;
         paramString1 = "";
         localAuthorizeRequest.vkey.set(paramString1);
-        int i = AppLaucherHelper.a(this.jdField_a_of_type_JavaLangString);
+        int i = AppLaucherHelper.a(this.b);
         if (i != 0) {
           break label214;
         }
-        AppUtil.a(paramContext, paramString2, AppLaucherHelper.a(this.jdField_a_of_type_JavaLangString), paramInt);
+        AppUtil.a(paramContext, paramString2, AppLaucherHelper.b(this.b), paramInt);
         return;
         localAuthorizeRequest.flags.set(i);
         paramString1 = str;
@@ -211,16 +211,16 @@ public class ProfileQiqiLiveController
           break label374;
         }
         QLog.d(getClass().getSimpleName(), 2, "no sign");
-        AppUtil.a(paramContext, paramString2, AppLaucherHelper.a(this.jdField_a_of_type_JavaLangString), paramInt);
+        AppUtil.a(paramContext, paramString2, AppLaucherHelper.b(this.b), paramInt);
         return;
         localAuthorizeRequest.apk_sign.set(paramString1);
-        this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
+        this.c.putExtra("cmd", "ConnAuthSvr.fast_qq_login");
         try
         {
-          this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localAuthorizeRequest.toByteArray());
-          this.jdField_a_of_type_MqqAppNewIntent.setObserver(local2);
-          paramAppInterface.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 3000L);
+          this.c.putExtra("data", localAuthorizeRequest.toByteArray());
+          this.c.setObserver(local2);
+          paramAppInterface.startServlet(this.c);
+          this.d.sendEmptyMessageDelayed(6, 3000L);
           return;
         }
         catch (Exception paramAppInterface)
@@ -246,7 +246,7 @@ public class ProfileQiqiLiveController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController
  * JD-Core Version:    0.7.0.1
  */

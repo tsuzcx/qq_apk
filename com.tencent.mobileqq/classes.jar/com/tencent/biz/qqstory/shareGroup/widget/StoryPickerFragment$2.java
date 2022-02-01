@@ -10,8 +10,8 @@ class StoryPickerFragment$2
   
   public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.d();
+    if (this.a.e != null) {
+      this.a.e.f();
     }
   }
 }

@@ -17,14 +17,14 @@ import mqq.app.MobileQQ;
 
 public class AuthMemoryCache
 {
-  private Set<String> jdField_a_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-  private ConcurrentHashMap<String, GetVirtualListResult> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, AccountInfo> b = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, List<Permission>> c = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, AppInfoResponse> d = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, preAuth.PreAuthResponse> e = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Long> f = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, Bundle> g = new ConcurrentHashMap();
+  private Set<String> a = new CopyOnWriteArraySet();
+  private ConcurrentHashMap<String, GetVirtualListResult> b = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, AccountInfo> c = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, List<Permission>> d = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, AppInfoResponse> e = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, preAuth.PreAuthResponse> f = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Long> g = new ConcurrentHashMap();
+  private ConcurrentHashMap<String, Bundle> h = new ConcurrentHashMap();
   
   public static AuthMemoryCache a()
   {
@@ -35,122 +35,62 @@ public class AuthMemoryCache
     return new AuthMemoryCache();
   }
   
-  public long a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return 0L;
-    }
-    paramString = (Long)this.f.get(paramString);
-    if (paramString == null) {
-      return 0L;
-    }
-    return paramString.longValue();
-  }
-  
-  public Bundle a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (Bundle)this.g.get(paramString);
-  }
-  
-  public AppInfoResponse a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (AppInfoResponse)this.d.get(paramString);
-  }
-  
-  public AccountInfo a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (AccountInfo)this.b.get(paramString);
-  }
-  
-  public GetVirtualListResult a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (GetVirtualListResult)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-  }
-  
-  public preAuth.PreAuthResponse a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (preAuth.PreAuthResponse)this.e.get(paramString);
-  }
-  
-  public List<Permission> a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    return (List)this.c.get(paramString);
-  }
-  
   public void a(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("addForce540Account uin=");
     localStringBuilder.append(AuthorityUtil.a(paramString));
     SSOLog.a("AuthMemoryCache", new Object[] { localStringBuilder.toString() });
-    this.jdField_a_of_type_JavaUtilSet.add(paramString);
+    this.a.add(paramString);
   }
   
   public void a(String paramString, long paramLong)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      this.f.put(paramString, Long.valueOf(paramLong));
+      this.g.put(paramString, Long.valueOf(paramLong));
     }
   }
   
   public void a(String paramString, Bundle paramBundle)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null)) {
-      this.g.put(paramString, paramBundle);
+      this.h.put(paramString, paramBundle);
     }
   }
   
   public void a(String paramString, AppInfoResponse paramAppInfoResponse)
   {
     SSOLog.a("AuthMemoryCache", new Object[] { "putPreAuthAppInfo=", paramAppInfoResponse });
-    this.d.put(paramString, paramAppInfoResponse);
+    this.e.put(paramString, paramAppInfoResponse);
   }
   
   public void a(String paramString, AccountInfo paramAccountInfo)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramAccountInfo != null)) {
-      this.b.put(paramString, paramAccountInfo);
+      this.c.put(paramString, paramAccountInfo);
     }
   }
   
   public void a(String paramString, GetVirtualListResult paramGetVirtualListResult)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramGetVirtualListResult != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramGetVirtualListResult);
+      this.b.put(paramString, paramGetVirtualListResult);
     }
   }
   
   public void a(String paramString, preAuth.PreAuthResponse paramPreAuthResponse)
   {
-    this.e.put(paramString, paramPreAuthResponse);
+    this.f.put(paramString, paramPreAuthResponse);
   }
   
   public void a(String paramString, List<Permission> paramList)
   {
-    this.c.put(paramString, paramList);
+    this.d.put(paramString, paramList);
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilSet.contains(paramString);
+    boolean bool = this.a.contains(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isForceTo540 uin=");
     localStringBuilder.append(AuthorityUtil.a(paramString));
@@ -159,10 +99,70 @@ public class AuthMemoryCache
     SSOLog.a("AuthMemoryCache", new Object[] { localStringBuilder.toString() });
     return bool;
   }
+  
+  public GetVirtualListResult c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (GetVirtualListResult)this.b.get(paramString);
+  }
+  
+  public AccountInfo d(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (AccountInfo)this.c.get(paramString);
+  }
+  
+  public List<Permission> e(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (List)this.d.get(paramString);
+  }
+  
+  public AppInfoResponse f(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (AppInfoResponse)this.e.get(paramString);
+  }
+  
+  public preAuth.PreAuthResponse g(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (preAuth.PreAuthResponse)this.f.get(paramString);
+  }
+  
+  public long h(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0L;
+    }
+    paramString = (Long)this.g.get(paramString);
+    if (paramString == null) {
+      return 0L;
+    }
+    return paramString.longValue();
+  }
+  
+  public Bundle i(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return (Bundle)this.h.get(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.entity.AuthMemoryCache
  * JD-Core Version:    0.7.0.1
  */

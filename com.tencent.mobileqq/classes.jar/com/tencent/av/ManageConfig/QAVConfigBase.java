@@ -14,18 +14,18 @@ import org.json.JSONObject;
 public abstract class QAVConfigBase<T>
   extends IQConfigProcessor<T>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  String a;
+  int b;
   
   public QAVConfigBase() {}
   
   public QAVConfigBase(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QAVConfig_");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(this.b);
+    this.a = localStringBuilder.toString();
   }
   
   private static int a(String paramString)
@@ -58,7 +58,7 @@ public abstract class QAVConfigBase<T>
         i = 1;
       }
       Object localObject2 = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-      paramInt = QConfigManager.a().a(paramInt, ((AppInterface)localObject2).getCurrentAccountUin());
+      paramInt = QConfigManager.b().a(paramInt, ((AppInterface)localObject2).getCurrentAccountUin());
       if (i != 0)
       {
         localObject1 = new StringBuilder();
@@ -85,7 +85,7 @@ public abstract class QAVConfigBase<T>
             break;
           }
           localObject4 = paramArrayOfQConfItem[paramInt];
-          k = a(((QConfItem)localObject4).jdField_a_of_type_JavaLangString);
+          k = a(((QConfItem)localObject4).b);
           localObject3 = localObject1;
           if (i != 0)
           {
@@ -94,13 +94,13 @@ public abstract class QAVConfigBase<T>
             ((StringBuilder)localObject3).append(", \nindex[");
             ((StringBuilder)localObject3).append(j);
             ((StringBuilder)localObject3).append("], taskId[");
-            ((StringBuilder)localObject3).append(((QConfItem)localObject4).jdField_a_of_type_Int);
+            ((StringBuilder)localObject3).append(((QConfItem)localObject4).a);
             ((StringBuilder)localObject3).append("], task_id[");
             ((StringBuilder)localObject3).append(k);
             ((StringBuilder)localObject3).append("]");
             localObject3 = ((StringBuilder)localObject3).toString();
           }
-          if (k == ((QConfItem)localObject4).jdField_a_of_type_Int) {
+          if (k == ((QConfItem)localObject4).a) {
             localObject2 = localObject4;
           }
           j += 1;
@@ -113,12 +113,12 @@ public abstract class QAVConfigBase<T>
         paramArrayOfQConfItem = new StringBuilder();
         paramArrayOfQConfItem.append((String)localObject4);
         paramArrayOfQConfItem.append(", \nselect taskId[");
-        paramArrayOfQConfItem.append(((QConfItem)localObject3).jdField_a_of_type_Int);
+        paramArrayOfQConfItem.append(((QConfItem)localObject3).a);
         paramArrayOfQConfItem = paramArrayOfQConfItem.toString();
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(paramArrayOfQConfItem);
         ((StringBuilder)localObject1).append("], content\n");
-        ((StringBuilder)localObject1).append(((QConfItem)localObject3).jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(((QConfItem)localObject3).b);
         QLog.w(paramString, 1, ((StringBuilder)localObject1).toString());
       }
       return localObject3;
@@ -137,11 +137,11 @@ public abstract class QAVConfigBase<T>
     } else {
       str = "";
     }
-    return QConfigManager.a().a(this.jdField_a_of_type_Int, str);
+    return QConfigManager.b().a(this.b, str);
   }
   
   @NonNull
-  protected abstract T a(QConfItem[] paramArrayOfQConfItem);
+  protected abstract T b(QConfItem[] paramArrayOfQConfItem);
   
   public boolean isAccountRelated()
   {
@@ -173,21 +173,21 @@ public abstract class QAVConfigBase<T>
   {
     try
     {
-      Object localObject = a(paramArrayOfQConfItem);
+      Object localObject = b(paramArrayOfQConfItem);
       return localObject;
     }
     catch (Exception localException)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onParsed, 配置解析异常, [\n");
-      localStringBuilder.append(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       localStringBuilder.append("\n]");
       QLog.w(str, 1, localStringBuilder.toString(), localException);
       paramArrayOfQConfItem = new StringBuilder();
-      paramArrayOfQConfItem.append(this.jdField_a_of_type_JavaLangString);
+      paramArrayOfQConfItem.append(this.a);
       paramArrayOfQConfItem.append("配置解析异常");
-      AudioHelper.c(paramArrayOfQConfItem.toString());
+      AudioHelper.d(paramArrayOfQConfItem.toString());
     }
     return migrateOldOrDefaultContent(type());
   }
@@ -197,7 +197,7 @@ public abstract class QAVConfigBase<T>
     if (QLog.isDevelopLevel())
     {
       int i = a();
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReqFailed, failCode[");
       localStringBuilder.append(paramInt);
@@ -213,7 +213,7 @@ public abstract class QAVConfigBase<T>
     if (QLog.isDevelopLevel())
     {
       int i = a();
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReqNoReceive, version[");
       localStringBuilder.append(i);
@@ -226,7 +226,7 @@ public abstract class QAVConfigBase<T>
   {
     if (QLog.isDevelopLevel())
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdate, ");
       localStringBuilder.append(paramT);
@@ -236,7 +236,7 @@ public abstract class QAVConfigBase<T>
   
   public int type()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
 }
 

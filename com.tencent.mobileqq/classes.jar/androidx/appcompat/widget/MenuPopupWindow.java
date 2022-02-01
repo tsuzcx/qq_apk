@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.view.menu.MenuBuilder;
 import java.lang.reflect.Method;
@@ -40,11 +41,12 @@ public class MenuPopupWindow
     Log.i("MenuPopupWindow", "Could not find method setTouchModal() on PopupWindow. Oh well.");
   }
   
-  public MenuPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  public MenuPopupWindow(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
+  @NonNull
   DropDownListView createDropDownListView(Context paramContext, boolean paramBoolean)
   {
     paramContext = new MenuPopupWindow.MenuDropDownListView(paramContext, paramBoolean);

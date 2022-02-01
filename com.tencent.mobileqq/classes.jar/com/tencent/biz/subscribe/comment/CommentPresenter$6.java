@@ -20,39 +20,39 @@ class CommentPresenter$6
   
   public void a()
   {
-    QLog.d(CommentPresenter.a(), 1, "onCommentSend()");
-    if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) == null)
+    QLog.d(CommentPresenter.t(), 1, "onCommentSend()");
+    if (CommentPresenter.B(this.c) == null)
     {
-      QLog.d(CommentPresenter.a(), 1, "onCommentSend(): mCommentInputPopupWindow null");
+      QLog.d(CommentPresenter.t(), 1, "onCommentSend(): mCommentInputPopupWindow null");
       return;
     }
-    Object localObject1 = CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a();
+    Object localObject1 = CommentPresenter.B(this.c).d();
     if (TextUtils.isEmpty(((String)localObject1).trim()))
     {
-      QQToast.a(CommentPresenter.m(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), CommentPresenter.n(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).getString(2131692246), 0).a();
+      QQToast.makeText(CommentPresenter.C(this.c), CommentPresenter.D(this.c).getString(2131889233), 0).show();
       return;
     }
-    if (!NetworkUtils.isNetworkAvailable(CommentPresenter.o(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)))
+    if (!NetworkUtils.isNetworkAvailable(CommentPresenter.E(this.c)))
     {
-      QQToast.a(CommentPresenter.p(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), 1, CommentPresenter.q(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).getString(2131694433), 0).a();
+      QQToast.makeText(CommentPresenter.F(this.c), 1, CommentPresenter.G(this.c).getString(2131892113), 0).show();
       return;
     }
-    Object localObject2 = CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter);
+    Object localObject2 = CommentPresenter.k(this.c);
     if (localObject2 == null)
     {
-      QLog.e(CommentPresenter.a(), 1, "feed is null");
+      QLog.e(CommentPresenter.t(), 1, "feed is null");
       return;
     }
     Object localObject3;
     Object localObject4;
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null)
+    if (this.a != null)
     {
-      if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) == null)
+      if (CommentPresenter.H(this.c) == null)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-        CommentPresenter.a((CommentPresenter)localObject3, CommentPresenter.a((CommentPresenter)localObject3, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply));
+        localObject3 = this.c;
+        CommentPresenter.a((CommentPresenter)localObject3, CommentPresenter.b((CommentPresenter)localObject3, this.a, this.b));
       }
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).content.set((String)localObject1);
+      CommentPresenter.H(this.c).content.set((String)localObject1);
       localObject3 = new CertifiedAccountMeta.StReply();
       localObject4 = ((CertifiedAccountMeta.StReply)localObject3).id;
       StringBuilder localStringBuilder = new StringBuilder();
@@ -61,43 +61,43 @@ class CommentPresenter$6
       ((PBStringField)localObject4).set(localStringBuilder.toString());
       ((CertifiedAccountMeta.StReply)localObject3).content.set((String)localObject1);
       ((CertifiedAccountMeta.StReply)localObject3).createTime.set((int)(System.currentTimeMillis() / 1000L));
-      ((CertifiedAccountMeta.StReply)localObject3).postUser.set(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter));
-      localObject1 = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply;
+      ((CertifiedAccountMeta.StReply)localObject3).postUser.set(CommentPresenter.I(this.c));
+      localObject1 = this.b;
       if (localObject1 != null) {
         ((CertifiedAccountMeta.StReply)localObject3).targetUser = ((CertifiedAccountMeta.StUser)((CertifiedAccountMeta.StReply)localObject1).postUser.get());
       } else {
-        ((CertifiedAccountMeta.StReply)localObject3).targetUser = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.postUser;
+        ((CertifiedAccountMeta.StReply)localObject3).targetUser = this.a.postUser;
       }
       if (localObject2 == null)
       {
-        QLog.e(CommentPresenter.a(), 1, "feed is null");
+        QLog.e(CommentPresenter.t(), 1, "feed is null");
         return;
       }
-      if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).targetUser != null) {
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).put(Long.valueOf(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)), CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).targetUser);
+      if (CommentPresenter.H(this.c).targetUser != null) {
+        CommentPresenter.K(this.c).put(Long.valueOf(CommentPresenter.J(this.c)), CommentPresenter.H(this.c).targetUser);
       }
-      localObject1 = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-      CommentPresenter.b((CommentPresenter)localObject1, CommentPresenter.a((CommentPresenter)localObject1).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, (CertifiedAccountMeta.StReply)localObject3));
-      CommentPresenter.c(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, true);
-      CommentPresenter.d(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, true);
-      if (CommentPresenter.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null) {
-        CommentPresenter.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).put(Long.valueOf(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)), CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter));
+      localObject1 = this.c;
+      CommentPresenter.b((CommentPresenter)localObject1, CommentPresenter.i((CommentPresenter)localObject1).a(CommentPresenter.k(this.c), this.a, (CertifiedAccountMeta.StReply)localObject3));
+      CommentPresenter.c(this.c, true);
+      CommentPresenter.d(this.c, true);
+      if (CommentPresenter.L(this.c) != null) {
+        CommentPresenter.L(this.c).put(Long.valueOf(CommentPresenter.J(this.c)), CommentPresenter.H(this.c));
       }
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, null);
-      if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null)
+      CommentPresenter.a(this.c, null);
+      if (CommentPresenter.a(this.c) != null)
       {
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), (CertifiedAccountMeta.StReply)localObject3);
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).notifyDataSetChanged();
+        CommentPresenter.a(this.c).a(this.a.id.get(), (CertifiedAccountMeta.StReply)localObject3);
+        CommentPresenter.a(this.c).notifyDataSetChanged();
       }
     }
     else
     {
-      if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) == null)
+      if (CommentPresenter.M(this.c) == null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter;
-        CommentPresenter.a((CommentPresenter)localObject2, CommentPresenter.b((CommentPresenter)localObject2, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment));
+        localObject2 = this.c;
+        CommentPresenter.a((CommentPresenter)localObject2, CommentPresenter.b((CommentPresenter)localObject2, this.a));
       }
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).content.set((String)localObject1);
+      CommentPresenter.M(this.c).content.set((String)localObject1);
       localObject2 = new CertifiedAccountMeta.StComment();
       localObject3 = ((CertifiedAccountMeta.StComment)localObject2).id;
       localObject4 = new StringBuilder();
@@ -106,25 +106,25 @@ class CommentPresenter$6
       ((PBStringField)localObject3).set(((StringBuilder)localObject4).toString());
       ((CertifiedAccountMeta.StComment)localObject2).content.set((String)localObject1);
       ((CertifiedAccountMeta.StComment)localObject2).createTime.set((int)(System.currentTimeMillis() / 1000L));
-      ((CertifiedAccountMeta.StComment)localObject2).postUser.set(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter));
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), (CertifiedAccountMeta.StComment)localObject2);
-      CommentPresenter.c(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, true);
-      CommentPresenter.d(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, true);
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, null);
-      if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null)
+      ((CertifiedAccountMeta.StComment)localObject2).postUser.set(CommentPresenter.I(this.c));
+      CommentPresenter.i(this.c).a(CommentPresenter.k(this.c), (CertifiedAccountMeta.StComment)localObject2);
+      CommentPresenter.c(this.c, true);
+      CommentPresenter.d(this.c, true);
+      CommentPresenter.a(this.c, null);
+      if (CommentPresenter.a(this.c) != null)
       {
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a(0, (CertifiedAccountMeta.StComment)localObject2);
-        CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).notifyDataSetChanged();
+        CommentPresenter.a(this.c).a(0, (CertifiedAccountMeta.StComment)localObject2);
+        CommentPresenter.a(this.c).notifyDataSetChanged();
       }
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter.a != null)
+      if (this.c.g != null)
       {
-        QLog.d(CommentPresenter.a(), 1, "mNeedShowCommentList1");
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter.a.setSelection(0);
+        QLog.d(CommentPresenter.t(), 1, "mNeedShowCommentList1");
+        this.c.g.setSelection(0);
       }
     }
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a("");
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).b(null);
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).dismiss();
+    CommentPresenter.B(this.c).a("");
+    CommentPresenter.B(this.c).b(null);
+    CommentPresenter.B(this.c).dismiss();
   }
 }
 

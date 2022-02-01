@@ -4,17 +4,11 @@ import android.graphics.Bitmap;
 
 public abstract interface AVPreloadTaskInterface
 {
-  public abstract int a();
+  public abstract void A();
   
-  public abstract long a();
-  
-  public abstract Bitmap a();
+  public abstract boolean B();
   
   public abstract AVPreloadTaskInterface.TaskReportInfo a();
-  
-  public abstract String a();
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -28,21 +22,13 @@ public abstract interface AVPreloadTaskInterface
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract int b();
-  
   public abstract long b();
-  
-  public abstract String b();
   
   public abstract void b(int paramInt);
   
   public abstract void b(long paramLong);
   
   public abstract void b(boolean paramBoolean);
-  
-  public abstract boolean b();
-  
-  public abstract int c();
   
   public abstract long c();
   
@@ -51,10 +37,6 @@ public abstract interface AVPreloadTaskInterface
   public abstract void c(String paramString);
   
   public abstract void c(boolean paramBoolean);
-  
-  public abstract boolean c();
-  
-  public abstract int d();
   
   public abstract long d();
   
@@ -66,15 +48,11 @@ public abstract interface AVPreloadTaskInterface
   
   public abstract void e(long paramLong);
   
-  public abstract int f();
-  
   public abstract long f();
   
   public abstract void f(int paramInt);
   
   public abstract void f(long paramLong);
-  
-  public abstract int g();
   
   public abstract long g();
   
@@ -91,10 +69,32 @@ public abstract interface AVPreloadTaskInterface
   public abstract long j();
   
   public abstract void j(long paramLong);
+  
+  public abstract int k();
+  
+  public abstract int l();
+  
+  public abstract int m();
+  
+  public abstract int n();
+  
+  public abstract String q();
+  
+  public abstract long r();
+  
+  public abstract String s();
+  
+  public abstract int u();
+  
+  public abstract Bitmap x();
+  
+  public abstract boolean y();
+  
+  public abstract int z();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadTaskInterface
  * JD-Core Version:    0.7.0.1
  */

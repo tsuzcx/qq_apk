@@ -54,8 +54,8 @@ class EmosmActivity$6
         paramInt = 0;
       }
       paramAdapterView = this.a;
-      paramAdapterView.setTitle(String.format(paramAdapterView.getResources().getString(2131692128), new Object[] { Integer.valueOf(paramInt) }));
-      if (this.a.mAdapter.a(i))
+      paramAdapterView.setTitle(String.format(paramAdapterView.getResources().getString(2131889109), new Object[] { Integer.valueOf(paramInt) }));
+      if (this.a.mAdapter.b(i))
       {
         if (this.a.mLaunchMode == 1)
         {
@@ -109,7 +109,7 @@ class EmosmActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.6
  * JD-Core Version:    0.7.0.1
  */

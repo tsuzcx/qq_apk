@@ -17,40 +17,40 @@ class VideoPlayerView$18
   public void run()
   {
     VideoPlayerView.a(this.this$0, 10);
-    if (this.this$0.a() != null)
+    if (this.this$0.getSuperPlayer() != null)
     {
-      VideoPlayerView.k(this.this$0);
-      VideoPlayerView.e(this.this$0);
+      VideoPlayerView.I(this.this$0);
+      VideoPlayerView.i(this.this$0);
       VideoPlayerView.a(this.this$0, true);
     }
-    if (!VideoPlayerView.d(this.this$0))
+    if (!VideoPlayerView.s(this.this$0))
     {
-      if (VideoPlayerView.a(this.this$0) != null) {
-        if (this.this$0.d())
+      if (VideoPlayerView.l(this.this$0) != null) {
+        if (this.this$0.q())
         {
-          VideoPlayerView.a(this.this$0).a();
+          VideoPlayerView.l(this.this$0).b();
         }
-        else if ((VideoPlayerView.a(this.this$0).a()) && (this.this$0.b != null))
+        else if ((VideoPlayerView.l(this.this$0).a()) && (this.this$0.s != null))
         {
-          this.this$0.b.setBackgroundResource(2131165336);
-          this.this$0.b.setImageDrawable(null);
-          this.this$0.b.setVisibility(0);
-          if (VideoPlayerView.a(this.this$0) != null) {
-            VSReporter.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
+          this.this$0.s.setBackgroundResource(2131165578);
+          this.this$0.s.setImageDrawable(null);
+          this.this$0.s.setVisibility(0);
+          if (VideoPlayerView.c(this.this$0) != null) {
+            VSReporter.b(VideoPlayerView.c(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.c(this.this$0).poster.nick.get(), VideoPlayerView.c(this.this$0).title.get() });
           }
         }
       }
     }
     else
     {
-      VideoPlayerView.f(this.this$0);
-      this.this$0.i();
+      VideoPlayerView.q(this.this$0);
+      this.this$0.j();
     }
-    if (VideoPlayerView.e(this.this$0) != null) {
-      VideoPlayerView.e(this.this$0).setVisibility(8);
+    if (VideoPlayerView.A(this.this$0) != null) {
+      VideoPlayerView.A(this.this$0).setVisibility(8);
     }
-    if (VideoPlayerView.a(this.this$0) != null) {
-      VideoPlayerView.a(this.this$0).onVideoComplete(false);
+    if (VideoPlayerView.m(this.this$0) != null) {
+      VideoPlayerView.m(this.this$0).onVideoComplete(false);
     }
   }
 }

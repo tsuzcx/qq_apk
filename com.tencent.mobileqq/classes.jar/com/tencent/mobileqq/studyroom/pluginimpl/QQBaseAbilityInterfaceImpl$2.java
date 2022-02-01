@@ -14,13 +14,13 @@ class QQBaseAbilityInterfaceImpl$2
   {
     QQConfigAbilityInterface.Callback localCallback = this.val$callback;
     if (localCallback != null) {
-      localCallback.onResult(StudyRoomPicUploadUtil.a(paramBundle));
+      localCallback.onResult(StudyRoomPicUploadUtil.b(paramBundle));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl.2
  * JD-Core Version:    0.7.0.1
  */

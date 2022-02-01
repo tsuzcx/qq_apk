@@ -3,11 +3,13 @@ package com.tencent.biz.richframework.util;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import com.tencent.biz.richframework.download.RFWDownloader.RFWDownloadListener;
-import java.util.Hashtable;
+import java.util.concurrent.ConcurrentHashMap;
 
 final class RFWTypefaceUtil$2
   implements RFWDownloader.RFWDownloadListener
 {
+  RFWTypefaceUtil$2(String paramString, Paint paramPaint) {}
+  
   public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2) {}
   
   public void onRspCallback(boolean paramBoolean, String paramString)
@@ -20,8 +22,8 @@ final class RFWTypefaceUtil$2
         try
         {
           Typeface localTypeface = Typeface.createFromFile(paramString);
-          RFWTypefaceUtil.a().put(this.jdField_a_of_type_JavaLangString, localTypeface);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(localTypeface);
+          RFWTypefaceUtil.a().put(this.a, localTypeface);
+          this.b.setTypeface(localTypeface);
           return;
         }
         catch (Throwable localThrowable)

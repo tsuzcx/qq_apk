@@ -15,25 +15,25 @@ import org.jetbrains.annotations.NotNull;
 public final class EmptyBadgeDisplay
   implements IRIJXTabBadgeDisplay<Object>
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private View a;
+  private final RelativeLayout b;
   
   public EmptyBadgeDisplay(@NotNull RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.b = paramRelativeLayout;
   }
   
   private final ImageView a()
   {
-    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext());
-    localImageView.setImageResource(2130850766);
+    ImageView localImageView = new ImageView(this.b.getContext());
+    localImageView.setImageResource(2130852588);
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     localImageView.setTranslationX(LayoutAttrsKt.getDp(15));
     localImageView.setTranslationY(LayoutAttrsKt.getDp(-8));
     return localImageView;
   }
   
-  private final RelativeLayout.LayoutParams a()
+  private final RelativeLayout.LayoutParams b()
   {
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(LayoutAttrsKt.getDp(6), LayoutAttrsKt.getDp(6));
     localLayoutParams.topMargin = LayoutAttrsKt.getDp(4);
@@ -45,22 +45,22 @@ public final class EmptyBadgeDisplay
   public void a(@NotNull Object paramObject, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramObject, "badgeData");
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_AndroidViewView = ((View)a());
-      paramObject = a();
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)paramObject);
+      this.a = ((View)a());
+      paramObject = b();
+      this.b.addView(this.a, (ViewGroup.LayoutParams)paramObject);
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+    this.b.removeView(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.badge.EmptyBadgeDisplay
  * JD-Core Version:    0.7.0.1
  */

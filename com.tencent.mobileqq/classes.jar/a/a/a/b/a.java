@@ -166,18 +166,29 @@ public class a
   
   public boolean a(byte[] paramArrayOfByte, String paramString)
   {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramArrayOfByte != null)
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return false;
-      }
-      boolean bool1 = h.a(paramArrayOfByte, null);
-      boolean bool2 = paramString.equalsIgnoreCase(c.b(paramArrayOfByte));
-      if ((bool1) && (bool2)) {
-        return true;
+      bool1 = bool2;
+      if (paramArrayOfByte.length > 0)
+      {
+        if (TextUtils.isEmpty(paramString)) {
+          return false;
+        }
+        boolean bool3 = h.a(paramArrayOfByte, null);
+        boolean bool4 = paramString.equalsIgnoreCase(c.b(paramArrayOfByte));
+        bool1 = bool2;
+        if (bool3)
+        {
+          bool1 = bool2;
+          if (bool4) {
+            bool1 = true;
+          }
+        }
       }
     }
-    return false;
+    return bool1;
   }
   
   public final void b()

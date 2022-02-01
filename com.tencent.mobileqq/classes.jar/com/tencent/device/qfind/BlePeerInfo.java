@@ -8,30 +8,28 @@ import java.util.List;
 
 public class BlePeerInfo
 {
-  private static int g = 1000000000;
-  public int a;
-  public long a;
-  public SosoLbsInfo a;
+  private static int q = 1000000000;
   public String a;
-  public List<String> a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
-  public byte[] b;
-  public int c;
-  public int d;
-  public int e = 0;
-  public int f = 0;
+  public List<String> c;
+  public byte[] d;
+  public int e;
+  public int f;
+  public long g;
+  public long h;
+  public int i;
+  public SosoLbsInfo j;
+  public byte[] k;
+  public int l;
+  public boolean m = false;
+  public boolean n = false;
+  public int o = 0;
+  public int p = 0;
   
   public BlePeerInfo()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    g += 1;
-    this.c = g;
+    q += 1;
+    this.i = q;
   }
   
   public static void a(byte[] paramArrayOfByte, BlePeerInfo paramBlePeerInfo)
@@ -40,44 +38,44 @@ public class BlePeerInfo
     {
       try
       {
-        paramBlePeerInfo.jdField_a_of_type_JavaUtilList = new ArrayList();
+        paramBlePeerInfo.c = new ArrayList();
         paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.LITTLE_ENDIAN);
         if (paramArrayOfByte.remaining() > 2)
         {
-          j = paramArrayOfByte.get();
-          if (j == 0) {
+          i2 = paramArrayOfByte.get();
+          if (i2 == 0) {
             return;
           }
-          int k = paramArrayOfByte.get();
-          if (k != -1)
+          int i3 = paramArrayOfByte.get();
+          if (i3 != -1)
           {
-            if (k != 22)
+            if (i3 != 22)
             {
-              int i = j;
-              if (k != 2)
+              int i1 = i2;
+              if (i3 != 2)
               {
-                i = j;
-                if (k != 3)
+                i1 = i2;
+                if (i3 != 3)
                 {
-                  paramArrayOfByte.position(paramArrayOfByte.position() + j - 1);
+                  paramArrayOfByte.position(paramArrayOfByte.position() + i2 - 1);
                   continue;
                 }
               }
-              if (i >= 2)
+              if (i1 >= 2)
               {
-                paramBlePeerInfo.jdField_a_of_type_JavaUtilList.add(String.format("%08x-0000-1000-8000-00805f9b34fb", new Object[] { Short.valueOf(paramArrayOfByte.getShort()) }));
-                i = (byte)(i - 2);
+                paramBlePeerInfo.c.add(String.format("%08x-0000-1000-8000-00805f9b34fb", new Object[] { Short.valueOf(paramArrayOfByte.getShort()) }));
+                i1 = (byte)(i1 - 2);
                 continue;
               }
               continue;
             }
-            if (j <= 2) {}
+            if (i2 <= 2) {}
           }
         }
       }
       catch (Throwable paramArrayOfByte)
       {
-        int j;
+        int i2;
         return;
       }
       try
@@ -85,24 +83,24 @@ public class BlePeerInfo
         if (paramArrayOfByte.getShort() != 513) {
           continue;
         }
-        paramBlePeerInfo.f = paramArrayOfByte.getShort();
-        paramBlePeerInfo.e = paramArrayOfByte.getShort();
+        paramBlePeerInfo.p = paramArrayOfByte.getShort();
+        paramBlePeerInfo.o = paramArrayOfByte.getShort();
       }
       catch (Exception localException) {}
-      paramArrayOfByte.position(paramArrayOfByte.position() + j - 1);
+      paramArrayOfByte.position(paramArrayOfByte.position() + i2 - 1);
       continue;
-      if (j > 10)
+      if (i2 > 10)
       {
-        if (j > 11) {
-          paramArrayOfByte.get(new byte[j - 1 - 10]);
+        if (i2 > 11) {
+          paramArrayOfByte.get(new byte[i2 - 1 - 10]);
         }
-        paramBlePeerInfo.jdField_a_of_type_Int = paramArrayOfByte.getInt();
-        paramBlePeerInfo.jdField_a_of_type_ArrayOfByte = new byte[6];
-        paramArrayOfByte.get(paramBlePeerInfo.jdField_a_of_type_ArrayOfByte);
+        paramBlePeerInfo.e = paramArrayOfByte.getInt();
+        paramBlePeerInfo.d = new byte[6];
+        paramArrayOfByte.get(paramBlePeerInfo.d);
       }
       else
       {
-        paramArrayOfByte.position(paramArrayOfByte.position() + j - 1);
+        paramArrayOfByte.position(paramArrayOfByte.position() + i2 - 1);
         continue;
         return;
       }
@@ -112,14 +110,14 @@ public class BlePeerInfo
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString.replaceAll(":", ""));
+    localStringBuilder.append(this.b.replaceAll(":", ""));
     localStringBuilder.append("0000");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.BlePeerInfo
  * JD-Core Version:    0.7.0.1
  */

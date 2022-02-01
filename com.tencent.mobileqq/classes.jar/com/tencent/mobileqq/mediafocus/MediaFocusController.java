@@ -15,18 +15,18 @@ import java.util.Stack;
 public class MediaFocusController
   extends BroadcastReceiver
 {
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-  private MediaFocusController.IMediaFocusStatusCallback jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback;
-  private final Stack<MediaFocusStackItem> jdField_a_of_type_JavaUtilStack = new Stack();
+  private final Stack<MediaFocusStackItem> a = new Stack();
+  private MediaFocusController.IMediaFocusStatusCallback b;
+  private Context c = BaseApplication.getContext();
   
   MediaFocusController(MediaFocusController.IMediaFocusStatusCallback paramIMediaFocusStatusCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback = paramIMediaFocusStatusCallback;
+    this.b = paramIMediaFocusStatusCallback;
     paramIMediaFocusStatusCallback = new IntentFilter();
     paramIMediaFocusStatusCallback.addAction("tencent.mobileqq.mediafocus.request");
     paramIMediaFocusStatusCallback.addAction("tencent.mobileqq.mediafocus.abandon");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this, paramIMediaFocusStatusCallback);
-    MediaFocusIpcClient.a();
+    this.c.registerReceiver(this, paramIMediaFocusStatusCallback);
+    MediaFocusIpcClient.b();
   }
   
   private int a(MediaFocusStackItem paramMediaFocusStackItem)
@@ -35,38 +35,78 @@ public class MediaFocusController
       return 1;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusController", 2, new Object[] { "handleRequestMediaFocus size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilStack.size()), " ,from:", paramMediaFocusStackItem.a() });
+      QLog.d("MediaFocusController", 2, new Object[] { "handleRequestMediaFocus size:", Integer.valueOf(this.a.size()), " ,from:", paramMediaFocusStackItem.b() });
     }
     try
     {
-      if ((!this.jdField_a_of_type_JavaUtilStack.empty()) && (this.jdField_a_of_type_JavaUtilStack.peek() != null) && (((MediaFocusStackItem)this.jdField_a_of_type_JavaUtilStack.peek()).a().equals(paramMediaFocusStackItem.a())) && (((MediaFocusStackItem)this.jdField_a_of_type_JavaUtilStack.peek()).b().equals(paramMediaFocusStackItem.b())))
+      if ((!this.a.empty()) && (this.a.peek() != null) && (((MediaFocusStackItem)this.a.peek()).b().equals(paramMediaFocusStackItem.b())) && (((MediaFocusStackItem)this.a.peek()).c().equals(paramMediaFocusStackItem.c())))
       {
-        if (((MediaFocusStackItem)this.jdField_a_of_type_JavaUtilStack.peek()).a() == paramMediaFocusStackItem.a()) {
+        if (((MediaFocusStackItem)this.a.peek()).a() == paramMediaFocusStackItem.a()) {
           return 0;
         }
-        this.jdField_a_of_type_JavaUtilStack.pop();
+        this.a.pop();
       }
       a(paramMediaFocusStackItem.a() * -1);
-      a(paramMediaFocusStackItem.a(), paramMediaFocusStackItem.b());
-      this.jdField_a_of_type_JavaUtilStack.push(paramMediaFocusStackItem);
+      b(paramMediaFocusStackItem.b(), paramMediaFocusStackItem.c());
+      this.a.push(paramMediaFocusStackItem);
       return 0;
     }
     finally {}
   }
   
-  private int a(String paramString1, String paramString2)
+  private void a(int paramInt)
+  {
+    if ((!this.a.empty()) && (this.a.peek() != null))
+    {
+      MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)this.a.peek();
+      if (b(localMediaFocusStackItem.c()))
+      {
+        MediaFocusController.IMediaFocusStatusCallback localIMediaFocusStatusCallback = this.b;
+        if (localIMediaFocusStatusCallback != null) {
+          localIMediaFocusStatusCallback.a(paramInt, localMediaFocusStackItem.b());
+        }
+      }
+      else
+      {
+        ThreadManager.executeOnSubThread(new MediaFocusController.1(this, localMediaFocusStackItem, paramInt));
+      }
+    }
+  }
+  
+  private void b(String paramString1, String paramString2)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)localIterator.next();
+      if ((paramString2.equals(localMediaFocusStackItem.c())) && (paramString1.equals(localMediaFocusStackItem.b())))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MediaFocusController", 2, new Object[] { "removeFocusStackEntry : ", localMediaFocusStackItem.toString() });
+        }
+        localIterator.remove();
+      }
+    }
+  }
+  
+  private boolean b(String paramString)
+  {
+    return BaseApplication.processName.equals(paramString);
+  }
+  
+  private int c(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusController", 2, new Object[] { "handleAbandonMediaFocus size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilStack.size()), " ,from:", paramString1, " ,pname:", paramString2 });
+      QLog.d("MediaFocusController", 2, new Object[] { "handleAbandonMediaFocus size:", Integer.valueOf(this.a.size()), " ,from:", paramString1, " ,pname:", paramString2 });
     }
     try
     {
       try
       {
-        a(paramString1, paramString2);
+        b(paramString1, paramString2);
         a(1);
-        if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback.a();
+        if (this.b != null) {
+          this.b.a();
         }
         return 0;
       }
@@ -81,58 +121,18 @@ public class MediaFocusController
     }
   }
   
-  private void a(int paramInt)
-  {
-    if ((!this.jdField_a_of_type_JavaUtilStack.empty()) && (this.jdField_a_of_type_JavaUtilStack.peek() != null))
-    {
-      MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)this.jdField_a_of_type_JavaUtilStack.peek();
-      if (a(localMediaFocusStackItem.b()))
-      {
-        MediaFocusController.IMediaFocusStatusCallback localIMediaFocusStatusCallback = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback;
-        if (localIMediaFocusStatusCallback != null) {
-          localIMediaFocusStatusCallback.a(paramInt, localMediaFocusStackItem.a());
-        }
-      }
-      else
-      {
-        ThreadManager.executeOnSubThread(new MediaFocusController.1(this, localMediaFocusStackItem, paramInt));
-      }
-    }
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilStack.iterator();
-    while (localIterator.hasNext())
-    {
-      MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)localIterator.next();
-      if ((paramString2.equals(localMediaFocusStackItem.b())) && (paramString1.equals(localMediaFocusStackItem.a())))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MediaFocusController", 2, new Object[] { "removeFocusStackEntry : ", localMediaFocusStackItem.toString() });
-        }
-        localIterator.remove();
-      }
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    return BaseApplication.processName.equals(paramString);
-  }
-  
   public int a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
+    if (this.c == null) {
       return 1;
     }
     Intent localIntent = new Intent("tencent.mobileqq.mediafocus.request");
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
+    localIntent.setPackage(this.c.getPackageName());
     paramString = new MediaFocusStackItem(paramInt, System.currentTimeMillis(), paramString, BaseApplication.processName);
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("focusItem", paramString);
     localIntent.putExtras(localBundle);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+    this.c.sendBroadcast(localIntent);
     return 2;
   }
   
@@ -143,8 +143,8 @@ public class MediaFocusController
     localIntent.putExtra("processName", BaseApplication.processName);
     try
     {
-      localIntent.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-      this.jdField_a_of_type_AndroidContentContext.sendBroadcast(localIntent);
+      localIntent.setPackage(this.c.getPackageName());
+      this.c.sendBroadcast(localIntent);
       return 0;
     }
     catch (NullPointerException paramString)
@@ -158,19 +158,19 @@ public class MediaFocusController
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this);
-    this.jdField_a_of_type_JavaUtilStack.clear();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback = null;
+    this.c.unregisterReceiver(this);
+    this.a.clear();
+    this.c = null;
+    this.b = null;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilStack.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)localIterator.next();
-      if ((paramString2.equals(localMediaFocusStackItem.b())) && (paramString1.equals(localMediaFocusStackItem.a())))
+      if ((paramString2.equals(localMediaFocusStackItem.c())) && (paramString1.equals(localMediaFocusStackItem.b())))
       {
         if (QLog.isColorLevel()) {
           QLog.d("MediaFocusController", 2, new Object[] { "checkMediaFocusItemExisted yes : ", localMediaFocusStackItem.toString() });
@@ -196,24 +196,24 @@ public class MediaFocusController
       {
         paramContext = (MediaFocusStackItem)paramIntent.getExtras().getParcelable("focusItem");
         int i = a(paramContext);
-        if ((paramContext != null) && (a(paramContext.b())) && (i == 0))
+        if ((paramContext != null) && (b(paramContext.c())) && (i == 0))
         {
-          paramIntent = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback;
+          paramIntent = this.b;
           if (paramIntent != null) {
-            paramIntent.a(1, paramContext.a());
+            paramIntent.a(1, paramContext.b());
           }
         }
       }
       else if (paramContext.equals("tencent.mobileqq.mediafocus.abandon"))
       {
-        a(paramIntent.getStringExtra("cliendID"), paramIntent.getStringExtra("processName"));
+        c(paramIntent.getStringExtra("cliendID"), paramIntent.getStringExtra("processName"));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusController
  * JD-Core Version:    0.7.0.1
  */

@@ -21,21 +21,21 @@ final class MultiAIOStarter$2
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+      if (this.a != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
+        if (this.a.isFinishing()) {
           return;
         }
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a();
-        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.a(null);
-        Bitmap localBitmap = MultiAIOHelper.a((Bitmap)localObject1, this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(), this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+        Object localObject1 = this.b.d();
+        this.b.a(null);
+        Bitmap localBitmap = MultiAIOHelper.a((Bitmap)localObject1, this.b.e(), this.a);
         if (localBitmap == null)
         {
           QLog.e("MultiAIOStarter", 1, "run: decorViewBitmap == null");
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.b(localBitmap);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+        this.b.b(localBitmap);
+        localObject1 = this.a.app;
         if (localObject1 == null) {
           return;
         }
@@ -66,7 +66,7 @@ final class MultiAIOStarter$2
           localCanvas.drawColor(Color.parseColor("#4DEBEDF5"));
         }
         localCanvas.setBitmap(null);
-        this.jdField_a_of_type_ComTencentMobileqqMultiaioPresenterMultiAioContext.c(localBitmap);
+        this.b.c(localBitmap);
         localObject2 = new Bundle();
         ((Bundle)localObject2).putParcelable("KEY_AIO_BITMAP_BLURED", localBitmap);
         ((QQAppInterface)localObject1).notifyObservers(MultiAIOFragment.class, 1, true, (Bundle)localObject2);
@@ -83,7 +83,7 @@ final class MultiAIOStarter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOStarter.2
  * JD-Core Version:    0.7.0.1
  */

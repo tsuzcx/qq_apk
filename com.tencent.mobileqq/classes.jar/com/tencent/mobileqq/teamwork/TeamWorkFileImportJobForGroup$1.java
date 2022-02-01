@@ -52,13 +52,13 @@ class TeamWorkFileImportJobForGroup$1
         localStringBuilder.append("/ftn_handler/");
         localStringBuilder.append(paramDownloadFileRspBody);
         localStringBuilder.append("/?fname=");
-        localStringBuilder.append(HexUtil.String2HexString(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString));
+        localStringBuilder.append(HexUtil.string2HexString(this.a.b.g));
         try
         {
           paramDownloadFileRspBody = new JSONArray();
           paramDownloadFileRspBody.put(0, localStringBuilder.toString());
           localJSONObject.put("urls", paramDownloadFileRspBody);
-          localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+          localJSONObject.put("filename", this.a.b.c);
           paramDownloadFileRspBody = new StringBuilder();
           paramDownloadFileRspBody.append("FTN5K=");
           paramDownloadFileRspBody.append(paramBundle);
@@ -92,20 +92,20 @@ class TeamWorkFileImportJobForGroup$1
     if (paramInt == 0) {}
     try
     {
-      localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("filename", this.a.b.c);
       localJSONObject.put("filetype", 3);
-      localJSONObject.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("businesstype", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_b_of_type_Int);
-      localJSONObject.put("groupuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.a));
-      localJSONObject.put("importoption", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+      localJSONObject.put("fileid", this.a.b.g);
+      localJSONObject.put("businesstype", this.a.b.h);
+      localJSONObject.put("groupuin", Long.valueOf(this.a.b.b));
+      localJSONObject.put("importoption", this.a.b.B);
+      if (this.a.a != null)
       {
-        localJSONObject.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-        localJSONObject.put("sha", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA);
+        localJSONObject.put("md5", this.a.a.strFileMd5);
+        localJSONObject.put("sha", this.a.a.strFileSHA);
       }
-      localJSONObject.put("filesize", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_Long);
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.l = this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.i = 3;
+      localJSONObject.put("filesize", this.a.b.K);
+      this.a.b.D = this.a.b.g;
+      this.a.b.E = 3;
       i = 1;
     }
     catch (Exception paramDownloadFileRspBody)
@@ -117,7 +117,7 @@ class TeamWorkFileImportJobForGroup$1
     }
     if (((i != 0) || (paramInt != 0)) && (TeamWorkConvertUtils.a(localJSONObject)) && (TeamWorkFileImportJobForGroup.a(this.a, localJSONObject)))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkFileImportHandler.fileImportFromUrl(localJSONObject, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, this.a.hashCode());
+      this.a.c.fileImportFromUrl(localJSONObject, this.a.b, this.a.hashCode());
       return;
     }
     this.a.a(true);
@@ -125,7 +125,7 @@ class TeamWorkFileImportJobForGroup$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForGroup.1
  * JD-Core Version:    0.7.0.1
  */

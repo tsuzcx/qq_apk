@@ -26,7 +26,7 @@ public final class oidb_cmd0xf8b$Picture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xf8b.oidb_cmd0xf8b.Picture
  * JD-Core Version:    0.7.0.1
  */

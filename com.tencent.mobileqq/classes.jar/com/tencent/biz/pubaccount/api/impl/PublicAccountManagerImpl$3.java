@@ -17,7 +17,7 @@ class PublicAccountManagerImpl$3
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    this.a.setObserver(null);
     if (!paramBoolean) {
       return;
     }
@@ -36,9 +36,9 @@ class PublicAccountManagerImpl$3
     try
     {
       localSendMenuEventResponse.mergeFrom(paramBundle);
-      localSharedPreferences = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("menuEventSharePre", 0);
+      localSharedPreferences = this.b.getSharedPreferences("menuEventSharePre", 0);
       paramBundle = localSendMenuEventResponse;
-      if (!localSharedPreferences.contains(this.jdField_a_of_type_JavaLangString)) {
+      if (!localSharedPreferences.contains(this.c)) {
         break label179;
       }
       paramBundle = localSendMenuEventResponse;
@@ -46,14 +46,14 @@ class PublicAccountManagerImpl$3
         break label179;
       }
       paramBundle = localSendMenuEventResponse;
-      if (localSendMenuEventResponse.seqno.get() == localSharedPreferences.getInt(this.jdField_a_of_type_JavaLangString, 0)) {
+      if (localSendMenuEventResponse.seqno.get() == localSharedPreferences.getInt(this.c, 0)) {
         break label179;
       }
-      if (this.jdField_a_of_type_MqqObserverBusinessObserver != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountManagerImpl.getMenuSetting(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverBusinessObserver, true);
+      if (this.d != null) {
+        this.f.getMenuSetting(this.b, this.e, this.c, this.d, true);
       }
       paramBundle = localSharedPreferences.edit();
-      paramBundle.putInt(this.jdField_a_of_type_JavaLangString, localSendMenuEventResponse.seqno.get());
+      paramBundle.putInt(this.c, localSendMenuEventResponse.seqno.get());
       paramBundle.commit();
       paramBundle = localSendMenuEventResponse;
     }
@@ -68,7 +68,7 @@ class PublicAccountManagerImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountManagerImpl.3
  * JD-Core Version:    0.7.0.1
  */

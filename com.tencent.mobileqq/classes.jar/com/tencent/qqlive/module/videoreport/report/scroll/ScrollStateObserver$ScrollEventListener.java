@@ -2,6 +2,7 @@ package com.tencent.qqlive.module.videoreport.report.scroll;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.AbsListView;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.DefaultEventListener;
@@ -11,6 +12,16 @@ class ScrollStateObserver$ScrollEventListener
   extends DefaultEventListener
 {
   private ScrollStateObserver$ScrollEventListener(ScrollStateObserver paramScrollStateObserver) {}
+  
+  public void onChildViewAdded(View paramView1, View paramView2)
+  {
+    this.this$0.onChildViewAdded(paramView1, paramView2);
+  }
+  
+  public void onChildViewRemoved(View paramView1, View paramView2)
+  {
+    this.this$0.onChildViewRemoved(paramView1, paramView2);
+  }
   
   public void onListScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
@@ -36,7 +47,7 @@ class ScrollStateObserver$ScrollEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollStateObserver.ScrollEventListener
  * JD-Core Version:    0.7.0.1
  */

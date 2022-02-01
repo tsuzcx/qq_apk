@@ -16,20 +16,20 @@ class BaseCardContainer$6
     BaseCardContainer.a(this.this$0, Drawable.createFromPath(QQLiteStatusUtil.b((String)localObject)));
     if (BaseCardContainer.a(this.this$0) != null)
     {
-      Message.obtain(this.this$0.a, 10001).sendToTarget();
+      Message.obtain(this.this$0.i, 10001).sendToTarget();
       return;
     }
     localObject = BaseCardContainer.a(this.this$0, (String)localObject);
     if ((localObject != null) && (((URLDrawable)localObject).getStatus() == 1))
     {
       BaseCardContainer.a(this.this$0, (Drawable)localObject);
-      Message.obtain(this.this$0.a, 10001).sendToTarget();
+      Message.obtain(this.this$0.i, 10001).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.BaseCardContainer.6
  * JD-Core Version:    0.7.0.1
  */

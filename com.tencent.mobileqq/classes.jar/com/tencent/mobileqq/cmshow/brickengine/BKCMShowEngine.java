@@ -4,9 +4,11 @@ import android.content.Context;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRenderInterfaceImpl;
 import com.tencent.mobileqq.cmshow.engine.EngineContext;
 import com.tencent.mobileqq.cmshow.engine.EngineState;
+import com.tencent.mobileqq.cmshow.engine.EngineType;
 import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
 import com.tencent.mobileqq.cmshow.engine.model.BusinessConfig;
 import com.tencent.mobileqq.cmshow.engine.scene.Scene;
+import com.tencent.mobileqq.cmshow.engine.statistic.StatisticService;
 import java.util.concurrent.locks.Lock;
 import kotlin.Lazy;
 import kotlin.LazyKt;
@@ -15,86 +17,90 @@ import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/brickengine/BKCMShowEngine;", "Lcom/tencent/mobileqq/cmshow/engine/ICMShowEngine;", "context", "Landroid/content/Context;", "scene", "Lcom/tencent/mobileqq/cmshow/engine/scene/Scene;", "(Landroid/content/Context;Lcom/tencent/mobileqq/cmshow/engine/scene/Scene;)V", "TAG", "", "businessConfig", "Lcom/tencent/mobileqq/cmshow/engine/model/BusinessConfig;", "getBusinessConfig", "()Lcom/tencent/mobileqq/cmshow/engine/model/BusinessConfig;", "businessConfig$delegate", "Lkotlin/Lazy;", "engineContext", "Lcom/tencent/mobileqq/cmshow/engine/EngineContext;", "renderService", "Lcom/tencent/mobileqq/cmshow/brickengine/BKRenderService;", "getRenderService", "()Lcom/tencent/mobileqq/cmshow/brickengine/BKRenderService;", "resourceService", "Lcom/tencent/mobileqq/cmshow/brickengine/BKResourceService;", "getResourceService", "()Lcom/tencent/mobileqq/cmshow/brickengine/BKResourceService;", "scriptService", "Lcom/tencent/mobileqq/cmshow/brickengine/BKScriptService;", "getScriptService", "()Lcom/tencent/mobileqq/cmshow/brickengine/BKScriptService;", "state", "Lcom/tencent/mobileqq/cmshow/engine/EngineState;", "getState", "()Lcom/tencent/mobileqq/cmshow/engine/EngineState;", "destroy", "", "start", "stop", "CONSTANT", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/cmshow/brickengine/BKCMShowEngine;", "Lcom/tencent/mobileqq/cmshow/engine/ICMShowEngine;", "context", "Landroid/content/Context;", "scene", "Lcom/tencent/mobileqq/cmshow/engine/scene/Scene;", "(Landroid/content/Context;Lcom/tencent/mobileqq/cmshow/engine/scene/Scene;)V", "TAG", "", "businessConfig", "Lcom/tencent/mobileqq/cmshow/engine/model/BusinessConfig;", "getBusinessConfig", "()Lcom/tencent/mobileqq/cmshow/engine/model/BusinessConfig;", "businessConfig$delegate", "Lkotlin/Lazy;", "engineContext", "Lcom/tencent/mobileqq/cmshow/engine/EngineContext;", "renderService", "Lcom/tencent/mobileqq/cmshow/brickengine/BKRenderService;", "getRenderService", "()Lcom/tencent/mobileqq/cmshow/brickengine/BKRenderService;", "resourceService", "Lcom/tencent/mobileqq/cmshow/brickengine/BKResourceService;", "getResourceService", "()Lcom/tencent/mobileqq/cmshow/brickengine/BKResourceService;", "scriptService", "Lcom/tencent/mobileqq/cmshow/brickengine/BKScriptService;", "getScriptService", "()Lcom/tencent/mobileqq/cmshow/brickengine/BKScriptService;", "state", "Lcom/tencent/mobileqq/cmshow/engine/EngineState;", "getState", "()Lcom/tencent/mobileqq/cmshow/engine/EngineState;", "statisticService", "Lcom/tencent/mobileqq/cmshow/engine/statistic/StatisticService;", "getStatisticService", "()Lcom/tencent/mobileqq/cmshow/engine/statistic/StatisticService;", "destroy", "", "start", "stop", "CONSTANT", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class BKCMShowEngine
   implements ICMShowEngine
 {
-  public static final BKCMShowEngine.CONSTANT a;
-  private final Context jdField_a_of_type_AndroidContentContext;
+  public static final BKCMShowEngine.CONSTANT a = new BKCMShowEngine.CONSTANT(null);
+  private final String b;
+  private final EngineContext c;
   @NotNull
-  private final BKRenderService jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService;
+  private final BKRenderService d;
   @NotNull
-  private final BKResourceService jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKResourceService;
+  private final BKScriptService e;
   @NotNull
-  private final BKScriptService jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService;
-  private final EngineContext jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext;
-  private final String jdField_a_of_type_JavaLangString;
+  private final BKResourceService f;
   @NotNull
-  private final Lazy jdField_a_of_type_KotlinLazy;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKCMShowEngine$CONSTANT = new BKCMShowEngine.CONSTANT(null);
-  }
+  private final StatisticService g;
+  @NotNull
+  private final Lazy h;
+  private final Context i;
   
   public BKCMShowEngine(@NotNull Context paramContext, @NotNull Scene paramScene)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.i = paramContext;
     paramContext = new StringBuilder();
     paramContext.append("[cmshow][BKCMShowEngine][");
     paramContext.append(paramScene);
     paramContext.append(']');
-    this.jdField_a_of_type_JavaLangString = paramContext.toString();
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext = new EngineContext(this.jdField_a_of_type_AndroidContentContext, paramScene);
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService = new BKRenderService(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext);
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService = new BKScriptService(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext);
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKResourceService = new BKResourceService(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext);
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new BKCMShowEngine.businessConfig.2(this));
-  }
-  
-  @NotNull
-  public BKRenderService a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKRenderService;
-  }
-  
-  @NotNull
-  public BKResourceService a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKResourceService;
-  }
-  
-  @NotNull
-  public BKScriptService a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService;
+    this.b = paramContext.toString();
+    this.c = new EngineContext(this.i, paramScene, EngineType.BK);
+    this.d = new BKRenderService(this.c);
+    this.e = new BKScriptService(this.c);
+    this.f = new BKResourceService(this.c);
+    this.g = new StatisticService(this.c);
+    this.h = LazyKt.lazy((Function0)new BKCMShowEngine.businessConfig.2(this));
   }
   
   @NotNull
   public EngineState a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a();
+    return this.c.e();
   }
   
   @NotNull
-  public BusinessConfig a()
+  public BKRenderService b()
   {
-    return (BusinessConfig)this.jdField_a_of_type_KotlinLazy.getValue();
+    return this.d;
   }
   
-  public void a()
+  @NotNull
+  public BKScriptService d()
   {
-    Lock localLock = (Lock)this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a();
+    return this.e;
+  }
+  
+  @NotNull
+  public BKResourceService f()
+  {
+    return this.f;
+  }
+  
+  @NotNull
+  public StatisticService h()
+  {
+    return this.g;
+  }
+  
+  @NotNull
+  public BusinessConfig j()
+  {
+    return (BusinessConfig)this.h.getValue();
+  }
+  
+  public void k()
+  {
+    Lock localLock = (Lock)this.c.d();
     localLock.lock();
     try
     {
       if ((a() == EngineState.INITIALIZED) || (a() == EngineState.STOPPED))
       {
-        localObject1 = a().a(a().a());
+        localObject1 = b().a(b().a());
         if (localObject1 != null) {
           ((ApolloRenderInterfaceImpl)localObject1).b();
         }
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a(EngineState.STARTED);
+        this.c.a(EngineState.STARTED);
       }
       Object localObject1 = Unit.INSTANCE;
       return;
@@ -105,19 +111,19 @@ public final class BKCMShowEngine
     }
   }
   
-  public void b()
+  public void l()
   {
-    Lock localLock = (Lock)this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a();
+    Lock localLock = (Lock)this.c.d();
     localLock.lock();
     try
     {
       if (a() == EngineState.STARTED)
       {
-        localObject1 = a().a(a().a());
+        localObject1 = b().a(b().a());
         if (localObject1 != null) {
           ((ApolloRenderInterfaceImpl)localObject1).a(0L);
         }
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a(EngineState.STOPPED);
+        this.c.a(EngineState.STOPPED);
       }
       Object localObject1 = Unit.INSTANCE;
       return;
@@ -128,18 +134,18 @@ public final class BKCMShowEngine
     }
   }
   
-  public void c()
+  public void m()
   {
-    Lock localLock = (Lock)this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a();
+    Lock localLock = (Lock)this.c.d();
     localLock.lock();
     try
     {
       if (a() != EngineState.DESTROYED)
       {
-        a().a();
-        a().a();
-        a().a();
-        this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a(EngineState.DESTROYED);
+        b().c();
+        d().c();
+        f().b();
+        this.c.a(EngineState.DESTROYED);
       }
       Unit localUnit = Unit.INSTANCE;
       return;
@@ -152,7 +158,7 @@ public final class BKCMShowEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKCMShowEngine
  * JD-Core Version:    0.7.0.1
  */

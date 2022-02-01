@@ -47,18 +47,18 @@ public class ReportLoginInfo
   {
     try
     {
-      Object localObject2 = this.mAutomator.a.getCurrentAccountUin();
+      Object localObject2 = this.mAutomator.k.getCurrentAccountUin();
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
       localObject2 = a((String)localObject1);
-      MobileQQ localMobileQQ = this.mAutomator.a.getApplication();
+      MobileQQ localMobileQQ = this.mAutomator.k.getApplication();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(this.a);
       localStringBuilder.append((String)localObject2);
       long l = localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).getLong(this.b, 0L);
-      ReportController.a(this.mAutomator.a, "dc00899", "TSTViewTime", (String)localObject1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
+      ReportController.a(this.mAutomator.k, "dc00899", "TSTViewTime", (String)localObject1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -86,7 +86,7 @@ public class ReportLoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.ReportLoginInfo
  * JD-Core Version:    0.7.0.1
  */

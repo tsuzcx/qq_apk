@@ -23,6 +23,25 @@ class ITPPreLoadListenerAidl$Stub$Proxy
     return "com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl";
   }
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl");
+      localParcel1.writeString(paramString);
+      this.mRemote.transact(4, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
   public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -87,7 +106,7 @@ class ITPPreLoadListenerAidl$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPPreLoadListenerAidl.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

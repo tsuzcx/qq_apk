@@ -15,64 +15,52 @@ import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
 public class TopBannerInfo$BaseItem
 {
   public final int a;
-  public long a;
-  public String a;
-  public List<TopBannerInfo.AdReport> a;
-  public boolean a;
-  public String b;
-  public List<TopBannerInfo.AdReport> b;
+  public long b;
   public String c;
   public String d;
   public String e;
+  public String f;
+  public String g;
+  public boolean h;
+  public List<TopBannerInfo.AdReport> i;
+  public List<TopBannerInfo.AdReport> j;
   
   public TopBannerInfo$BaseItem(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static BaseItem a(oidb_cmd0xbc9.BannerItem paramBannerItem)
-  {
-    if (paramBannerItem.uint32_banner_type.has())
-    {
-      if (paramBannerItem.uint32_banner_type.get() == 2) {
-        return TopBannerInfo.VideoItem.b(paramBannerItem);
-      }
-      return TopBannerInfo.ImgItem.b(paramBannerItem);
-    }
-    return null;
+    this.a = paramInt;
   }
   
   protected static void a(BaseItem paramBaseItem, oidb_cmd0xbc9.BannerItem paramBannerItem)
   {
     if (paramBaseItem != null)
     {
-      int i = paramBannerItem.uint32_is_ad.get();
+      int k = paramBannerItem.uint32_is_ad.get();
       boolean bool = true;
-      if (i != 1) {
+      if (k != 1) {
         bool = false;
       }
-      paramBaseItem.jdField_a_of_type_Boolean = bool;
-      paramBaseItem.jdField_a_of_type_Long = paramBannerItem.uint64_banner_id.get();
+      paramBaseItem.h = bool;
+      paramBaseItem.b = paramBannerItem.uint64_banner_id.get();
       Object localObject = paramBannerItem.msg_ad_click_report.get();
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        paramBaseItem.jdField_a_of_type_JavaUtilList = new ArrayList();
+        paramBaseItem.i = new ArrayList();
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           oidb_cmd0xbc9.AdReport localAdReport = (oidb_cmd0xbc9.AdReport)((Iterator)localObject).next();
-          paramBaseItem.jdField_a_of_type_JavaUtilList.add(TopBannerInfo.AdReport.a(localAdReport));
+          paramBaseItem.i.add(TopBannerInfo.AdReport.a(localAdReport));
         }
       }
       paramBannerItem = paramBannerItem.msg_ad_exposure_report.get();
       if ((paramBannerItem != null) && (paramBannerItem.size() > 0))
       {
-        paramBaseItem.jdField_b_of_type_JavaUtilList = new ArrayList();
+        paramBaseItem.j = new ArrayList();
         paramBannerItem = paramBannerItem.iterator();
         while (paramBannerItem.hasNext())
         {
           localObject = (oidb_cmd0xbc9.AdReport)paramBannerItem.next();
-          paramBaseItem.jdField_b_of_type_JavaUtilList.add(TopBannerInfo.AdReport.a((oidb_cmd0xbc9.AdReport)localObject));
+          paramBaseItem.j.add(TopBannerInfo.AdReport.a((oidb_cmd0xbc9.AdReport)localObject));
         }
       }
     }
@@ -81,14 +69,26 @@ public class TopBannerInfo$BaseItem
   public static void a(oidb_cmd0xbc9.BannerItem paramBannerItem, BaseItem paramBaseItem)
   {
     if (paramBannerItem.bytes_superscript_color.has()) {
-      paramBaseItem.jdField_a_of_type_JavaLangString = paramBannerItem.bytes_superscript_color.get().toStringUtf8();
+      paramBaseItem.c = paramBannerItem.bytes_superscript_color.get().toStringUtf8();
     }
     if (paramBannerItem.bytes_superscript_text.has()) {
-      paramBaseItem.jdField_b_of_type_JavaLangString = paramBannerItem.bytes_superscript_text.get().toStringUtf8();
+      paramBaseItem.d = paramBannerItem.bytes_superscript_text.get().toStringUtf8();
     }
     if (paramBannerItem.bytes_banner_title.has()) {
-      paramBaseItem.d = paramBannerItem.bytes_banner_title.get().toStringUtf8();
+      paramBaseItem.f = paramBannerItem.bytes_banner_title.get().toStringUtf8();
     }
+  }
+  
+  public static BaseItem b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  {
+    if (paramBannerItem.uint32_banner_type.has())
+    {
+      if (paramBannerItem.uint32_banner_type.get() == 2) {
+        return TopBannerInfo.VideoItem.c(paramBannerItem);
+      }
+      return TopBannerInfo.ImgItem.c(paramBannerItem);
+    }
+    return null;
   }
   
   public List<String> a(List<TopBannerInfo.AdReport> paramList)
@@ -98,7 +98,7 @@ public class TopBannerInfo$BaseItem
       ArrayList localArrayList = new ArrayList(paramList.size());
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        localArrayList.add(((TopBannerInfo.AdReport)paramList.next()).jdField_a_of_type_JavaLangString);
+        localArrayList.add(((TopBannerInfo.AdReport)paramList.next()).a);
       }
       return localArrayList;
     }
@@ -108,16 +108,16 @@ public class TopBannerInfo$BaseItem
   public oidb_cmd0xbc9.BannerItem a()
   {
     oidb_cmd0xbc9.BannerItem localBannerItem = new oidb_cmd0xbc9.BannerItem();
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      localBannerItem.bytes_superscript_text.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localBannerItem.bytes_superscript_color.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    }
     if (!TextUtils.isEmpty(this.d)) {
-      localBannerItem.bytes_banner_title.set(ByteStringMicro.copyFromUtf8(this.d));
+      localBannerItem.bytes_superscript_text.set(ByteStringMicro.copyFromUtf8(this.d));
     }
-    localBannerItem.uint32_banner_type.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.c)) {
+      localBannerItem.bytes_superscript_color.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.f)) {
+      localBannerItem.bytes_banner_title.set(ByteStringMicro.copyFromUtf8(this.f));
+    }
+    localBannerItem.uint32_banner_type.set(this.a);
     a(localBannerItem);
     return localBannerItem;
   }
@@ -131,19 +131,19 @@ public class TopBannerInfo$BaseItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("rowkey:");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" title:");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("tagText:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("tagColor:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TopBannerInfo.BaseItem
  * JD-Core Version:    0.7.0.1
  */

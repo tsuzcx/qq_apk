@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.kandian.biz.video.danmaku.render;
 
 import android.graphics.Point;
-import com.tencent.mobileqq.danmaku.core.CacheDrawManager;
-import com.tencent.mobileqq.danmaku.core.R2LWindow;
-import com.tencent.mobileqq.danmaku.data.BaseDanmaku;
-import com.tencent.mobileqq.danmaku.inject.DanmakuContext;
-import com.tencent.mobileqq.danmaku.inject.IDanmakuUIConfig;
-import com.tencent.mobileqq.danmaku.tool.DanmakuDrawTimer;
-import com.tencent.mobileqq.danmaku.tool.PlayerTimer;
-import com.tencent.mobileqq.danmaku.tool.TouchPoint;
+import com.tencent.common.danmaku.core.CacheDrawManager;
+import com.tencent.common.danmaku.core.R2LWindow;
+import com.tencent.common.danmaku.data.BaseDanmaku;
+import com.tencent.common.danmaku.inject.DanmakuContext;
+import com.tencent.common.danmaku.inject.IDanmakuUIConfig;
+import com.tencent.common.danmaku.tool.DanmakuDrawTimer;
+import com.tencent.common.danmaku.tool.PlayerTimer;
+import com.tencent.common.danmaku.tool.TouchPoint;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -19,11 +20,11 @@ import kotlin.collections.CollectionsKt;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJDanmakuWindow;", "Lcom/tencent/mobileqq/danmaku/core/R2LWindow;", "danmakuContext", "Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;", "cacheDrawManager", "Lcom/tencent/mobileqq/danmaku/core/CacheDrawManager;", "comparator", "Ljava/util/Comparator;", "Lcom/tencent/mobileqq/danmaku/data/BaseDanmaku;", "", "Lcom/tencent/mobileqq/danmaku/inject/IDanmakuUIConfig;", "playerTimer", "Lcom/tencent/mobileqq/danmaku/tool/PlayerTimer;", "drawTimer", "Lcom/tencent/mobileqq/danmaku/tool/DanmakuDrawTimer;", "(Lcom/tencent/mobileqq/danmaku/inject/DanmakuContext;Lcom/tencent/mobileqq/danmaku/core/CacheDrawManager;Ljava/util/Comparator;Lcom/tencent/mobileqq/danmaku/tool/PlayerTimer;Lcom/tencent/mobileqq/danmaku/tool/DanmakuDrawTimer;)V", "layout", "", "onClick", "touchPoint", "Lcom/tencent/mobileqq/danmaku/tool/TouchPoint;", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/video/danmaku/render/RIJDanmakuWindow;", "Lcom/tencent/common/danmaku/core/R2LWindow;", "danmakuContext", "Lcom/tencent/common/danmaku/inject/DanmakuContext;", "cacheDrawManager", "Lcom/tencent/common/danmaku/core/CacheDrawManager;", "comparator", "Ljava/util/Comparator;", "Lcom/tencent/common/danmaku/data/BaseDanmaku;", "", "Lcom/tencent/common/danmaku/inject/IDanmakuUIConfig;", "playerTimer", "Lcom/tencent/common/danmaku/tool/PlayerTimer;", "drawTimer", "Lcom/tencent/common/danmaku/tool/DanmakuDrawTimer;", "(Lcom/tencent/common/danmaku/inject/DanmakuContext;Lcom/tencent/common/danmaku/core/CacheDrawManager;Ljava/util/Comparator;Lcom/tencent/common/danmaku/tool/PlayerTimer;Lcom/tencent/common/danmaku/tool/DanmakuDrawTimer;)V", "layout", "", "onClick", "touchPoint", "Lcom/tencent/common/danmaku/tool/TouchPoint;", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJDanmakuWindow
   extends R2LWindow
 {
-  public static final RIJDanmakuWindow.Companion a = new RIJDanmakuWindow.Companion(null);
+  public static final RIJDanmakuWindow.Companion k = new RIJDanmakuWindow.Companion(null);
   
   public RIJDanmakuWindow(@Nullable DanmakuContext paramDanmakuContext, @Nullable CacheDrawManager paramCacheDrawManager, @Nullable Comparator<BaseDanmaku<Object, IDanmakuUIConfig>> paramComparator, @Nullable PlayerTimer paramPlayerTimer, @Nullable DanmakuDrawTimer paramDanmakuDrawTimer)
   {
@@ -36,7 +37,7 @@ public final class RIJDanmakuWindow
     if (paramTouchPoint == null) {
       return null;
     }
-    Iterator localIterator = this.b.iterator();
+    Iterator localIterator = new ArrayList((Collection)this.j).iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (List)localIterator.next();
@@ -46,10 +47,10 @@ public final class RIJDanmakuWindow
       {
         localBaseDanmaku = (BaseDanmaku)CollectionsKt.last((List)localObject);
         Intrinsics.checkExpressionValueIsNotNull(localBaseDanmaku, "lastDanamku");
-        if ((localBaseDanmaku.d()) && (localBaseDanmaku.a(paramTouchPoint.jdField_a_of_type_AndroidGraphicsPoint.x, paramTouchPoint.jdField_a_of_type_AndroidGraphicsPoint.y, paramTouchPoint.jdField_a_of_type_Int, paramTouchPoint.jdField_a_of_type_Long)))
+        if ((localBaseDanmaku.E()) && (localBaseDanmaku.a(paramTouchPoint.b.x, paramTouchPoint.b.y, paramTouchPoint.c, paramTouchPoint.a)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("RIJDanmakuWindow", 2, new Object[] { "onClick:", localBaseDanmaku, "[left:", Float.valueOf(localBaseDanmaku.d()), ",top:", Float.valueOf(localBaseDanmaku.e()), "]" });
+            QLog.d("RIJDanmakuWindow", 2, new Object[] { "onClick:", localBaseDanmaku, "[left:", Float.valueOf(localBaseDanmaku.s()), ",top:", Float.valueOf(localBaseDanmaku.t()), "]" });
           }
           return localBaseDanmaku;
         }
@@ -59,10 +60,10 @@ public final class RIJDanmakuWindow
       {
         localBaseDanmaku = (BaseDanmaku)((Iterator)localObject).next();
         Intrinsics.checkExpressionValueIsNotNull(localBaseDanmaku, "danmaku");
-        if ((localBaseDanmaku.d()) && (localBaseDanmaku.a(paramTouchPoint.jdField_a_of_type_AndroidGraphicsPoint.x, paramTouchPoint.jdField_a_of_type_AndroidGraphicsPoint.y, paramTouchPoint.jdField_a_of_type_Int, paramTouchPoint.jdField_a_of_type_Long)))
+        if ((localBaseDanmaku.E()) && (localBaseDanmaku.a(paramTouchPoint.b.x, paramTouchPoint.b.y, paramTouchPoint.c, paramTouchPoint.a)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("RIJDanmakuWindow", 2, new Object[] { "onClick:", localBaseDanmaku, "[left:", Float.valueOf(localBaseDanmaku.d()), ",top:", Float.valueOf(localBaseDanmaku.e()), "]" });
+            QLog.d("RIJDanmakuWindow", 2, new Object[] { "onClick:", localBaseDanmaku, "[left:", Float.valueOf(localBaseDanmaku.s()), ",top:", Float.valueOf(localBaseDanmaku.t()), "]" });
           }
           return localBaseDanmaku;
         }
@@ -74,7 +75,7 @@ public final class RIJDanmakuWindow
   public void b()
   {
     super.b();
-    Iterator localIterator1 = this.b.iterator();
+    Iterator localIterator1 = this.j.iterator();
     while (localIterator1.hasNext())
     {
       List localList = (List)localIterator1.next();
@@ -92,7 +93,7 @@ public final class RIJDanmakuWindow
           localObject = (BaseDanmaku)localIterator2.next();
         } while (!(localObject instanceof RIJBaseDanmaku));
         localObject = (RIJBaseDanmaku)localObject;
-      } while (!((RIJBaseDanmaku)localObject).i());
+      } while (!((RIJBaseDanmaku)localObject).U());
       if (localObject != null)
       {
         localList.remove(localObject);
@@ -103,7 +104,7 @@ public final class RIJDanmakuWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.render.RIJDanmakuWindow
  * JD-Core Version:    0.7.0.1
  */

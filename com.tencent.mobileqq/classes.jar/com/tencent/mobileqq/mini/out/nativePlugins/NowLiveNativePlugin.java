@@ -26,8 +26,8 @@ public class NowLiveNativePlugin
     if (this.mApiClient == null)
     {
       this.mApiClient = TroopMemberApiClient.a();
-      this.mApiClient.a();
-      this.mApiClient.g(this.mCallback);
+      this.mApiClient.e();
+      this.mApiClient.i(this.mCallback);
     }
     this.mApiClient.a(null);
   }
@@ -39,7 +39,7 @@ public class NowLiveNativePlugin
     }
     TroopMemberApiClient localTroopMemberApiClient = this.mApiClient;
     if (localTroopMemberApiClient != null) {
-      localTroopMemberApiClient.g();
+      localTroopMemberApiClient.k();
     }
   }
   
@@ -92,7 +92,7 @@ public class NowLiveNativePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.NowLiveNativePlugin
  * JD-Core Version:    0.7.0.1
  */

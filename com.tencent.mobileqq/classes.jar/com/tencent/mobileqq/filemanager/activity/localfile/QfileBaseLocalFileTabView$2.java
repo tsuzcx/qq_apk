@@ -22,7 +22,7 @@ class QfileBaseLocalFileTabView$2
     if (paramView == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+        QLog.e(QfileBaseLocalFileTabView.o, 2, "qfilebaserecenttabview del error, tag is null");
       }
     }
     else
@@ -30,32 +30,32 @@ class QfileBaseLocalFileTabView$2
       FileInfo localFileInfo = (FileInfo)paramView.getTag();
       if (localFileInfo != null)
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
+        if (this.a.w != null) {
+          this.a.w.a(null);
         }
-        if (((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(localFileInfo.c()))
+        if (((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(localFileInfo.d()))
         {
-          this.a.a(localFileInfo);
+          this.a.c(localFileInfo);
         }
         else
         {
-          String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692276);
+          String str = QfileBaseLocalFileTabView.a(this.a).getString(2131889264);
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(QQFileManagerUtil.b(localFileInfo.d()));
+          localStringBuilder.append(QQFileManagerUtil.b(localFileInfo.e()));
           localStringBuilder.append(str);
           FMToastUtil.a(localStringBuilder.toString());
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
+      this.a.w.a(Integer.valueOf(-1));
       paramView.setVisibility(4);
-      this.a.f();
+      this.a.e();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

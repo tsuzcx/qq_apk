@@ -11,33 +11,32 @@ import mqq.manager.Manager;
 public class ApolloRecentManager
   implements Manager
 {
-  public QQAppInterface a;
-  public List<ApolloActionRecentData> a;
+  public List<ApolloActionRecentData> a = Collections.synchronizedList(new ArrayList());
   public List<ApolloActionRecentData> b = Collections.synchronizedList(new ArrayList());
+  private QQAppInterface c;
   
   public ApolloRecentManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
     a(paramQQAppInterface);
   }
   
   private void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = ApolloDaoManagerServiceImpl.getRecentData(paramQQAppInterface, "recent_c2c");
+    this.a = ApolloDaoManagerServiceImpl.getRecentData(paramQQAppInterface, "recent_c2c");
     this.b = ApolloDaoManagerServiceImpl.getRecentData(paramQQAppInterface, "recent_troop");
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+    if (this.a == null) {
+      this.a = Collections.synchronizedList(new ArrayList());
     }
     if (this.b == null) {
       this.b = Collections.synchronizedList(new ArrayList());
     }
     int i;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 8)
+    if (this.a.size() > 8)
     {
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      paramQQAppInterface = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_JavaUtilList = paramQQAppInterface.subList(i - 8, paramQQAppInterface.size());
+      i = this.a.size();
+      paramQQAppInterface = this.a;
+      this.a = paramQQAppInterface.subList(i - 8, paramQQAppInterface.size());
     }
     if (this.b.size() > 8)
     {
@@ -49,12 +48,12 @@ public class ApolloRecentManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloRecentManager
  * JD-Core Version:    0.7.0.1
  */

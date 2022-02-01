@@ -12,13 +12,11 @@ import java.util.List;
 
 public abstract interface IApolloExtensionHandler
 {
-  public abstract AppInterface a();
-  
-  public abstract void a(int paramInt);
-  
   public abstract void a(int paramInt1, int paramInt2, long paramLong);
   
   public abstract void a(int paramInt, Bundle paramBundle, OnPraiseSetCallback paramOnPraiseSetCallback);
+  
+  public abstract void a(int paramInt, String paramString);
   
   public abstract void a(int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3);
   
@@ -54,17 +52,19 @@ public abstract interface IApolloExtensionHandler
   
   public abstract void a(String[] paramArrayOfString, int[] paramArrayOfInt, int paramInt);
   
-  public abstract boolean a(String paramString1, String paramString2);
+  public abstract void b(int paramInt);
   
   public abstract void b(String paramString);
   
-  public abstract void c();
-  
-  public abstract void c(int paramInt);
+  public abstract boolean b(String paramString1, String paramString2);
   
   public abstract void c(String paramString);
   
+  public abstract void d();
+  
   public abstract void d(String paramString);
+  
+  public abstract AppInterface e();
   
   public abstract void e(String paramString);
   
@@ -72,7 +72,7 @@ public abstract interface IApolloExtensionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler
  * JD-Core Version:    0.7.0.1
  */

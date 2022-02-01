@@ -38,60 +38,47 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class TroopRemarkEditFragment
   extends IphoneTitleBarFragment
 {
-  public static int a = 60;
   public static String a = "param_troopuin";
   public static String b = "param_troopcode";
   public static String c = "param_troopname";
   public static String d = "param_old_troopremark";
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new TroopRemarkEditFragment.1(this);
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private final TroopSettingObserver jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver = new TroopRemarkEditFragment.3(this);
-  private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new TroopRemarkEditFragment.2(this);
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private String e;
-  private String f;
-  private String g;
-  private String h;
-  private String i;
-  
-  private Drawable a()
-  {
-    Bitmap localBitmap2 = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(4, this.e);
-    if ((localBitmap2 == null) && (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(this.e, 4, true);
-    }
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null) {
-      localBitmap1 = ImageUtil.f();
-    }
-    return new BitmapDrawable(localBitmap1);
-  }
+  public static int e = 60;
+  private ClearableEditText f;
+  private IFaceDecoder g;
+  private Button h;
+  private Button i;
+  private QQAppInterface j;
+  private String k;
+  private String l;
+  private String m;
+  private String n;
+  private String o;
+  private final View.OnClickListener p = new TroopRemarkEditFragment.1(this);
+  private final View.OnClickListener q = new TroopRemarkEditFragment.2(this);
+  private final TroopSettingObserver r = new TroopRemarkEditFragment.3(this);
   
   private void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getBaseActivity().app;
-    this.e = paramIntent.getStringExtra(jdField_a_of_type_JavaLangString);
-    this.f = paramIntent.getStringExtra(c);
-    this.h = paramIntent.getStringExtra(d);
-    this.g = paramIntent.getStringExtra(jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)a(2131379350));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131374367));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)a(2131374368));
+    this.j = getBaseActivity().app;
+    this.k = paramIntent.getStringExtra(a);
+    this.l = paramIntent.getStringExtra(c);
+    this.n = paramIntent.getStringExtra(d);
+    this.m = paramIntent.getStringExtra(b);
+    this.g = ((IQQAvatarService)this.j.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.j);
+    this.f = ((ClearableEditText)a(2131448087));
+    this.h = ((Button)a(2131442529));
+    this.i = ((Button)a(2131442530));
   }
   
   private void b()
   {
-    Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+    Button localButton = this.h;
     if (localButton != null) {
-      localButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localButton.setOnClickListener(this.p);
     }
-    localButton = this.jdField_b_of_type_AndroidWidgetButton;
+    localButton = this.i;
     if (localButton != null) {
-      localButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      localButton.setOnClickListener(this.q);
     }
   }
   
@@ -109,35 +96,35 @@ public class TroopRemarkEditFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setInputType(131072);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setCanMultiLine(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setClearButtonStyle(1);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSingleLine(false);
+    this.f.setInputType(131072);
+    this.f.setCanMultiLine(true);
+    this.f.setClearButtonStyle(1);
+    this.f.setSingleLine(false);
     TroopRemarkEditFragment.5 local5 = new TroopRemarkEditFragment.5(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { local5 });
-    if (!TextUtils.isEmpty(this.h))
+    this.f.setFilters(new InputFilter[] { local5 });
+    if (!TextUtils.isEmpty(this.n))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(this.h);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setSelection(this.h.length());
+      this.f.setText(this.n);
+      this.f.setSelection(this.n.length());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(new TroopRemarkEditFragment.6(this));
+    this.f.addTextChangedListener(new TroopRemarkEditFragment.6(this));
   }
   
   private void d()
   {
     hideTitleBar();
     if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      j = 2131167053;
+      i1 = 2131167990;
     } else {
-      j = 2131167056;
+      i1 = 2131167993;
     }
-    int j = getResources().getColor(j);
-    Drawable localDrawable = getResources().getDrawable(2130851066);
-    localDrawable.setColorFilter(j, PorterDuff.Mode.SRC_ATOP);
-    TextView localTextView = (TextView)a(2131369202);
-    localTextView.setTextColor(j);
+    int i1 = getResources().getColor(i1);
+    Drawable localDrawable = getResources().getDrawable(2130853297);
+    localDrawable.setColorFilter(i1, PorterDuff.Mode.SRC_ATOP);
+    TextView localTextView = (TextView)a(2131436180);
+    localTextView.setTextColor(i1);
     localTextView.setBackgroundDrawable(localDrawable);
-    localTextView.setContentDescription(getString(2131697708));
+    localTextView.setContentDescription(getString(2131895481));
     localTextView.setOnClickListener(new TroopRemarkEditFragment.7(this));
   }
   
@@ -146,6 +133,19 @@ public class TroopRemarkEditFragment
     if ((ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null) ^ true)) {
       ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
     }
+  }
+  
+  private Drawable f()
+  {
+    Bitmap localBitmap2 = this.g.getBitmapFromCache(4, this.k);
+    if ((localBitmap2 == null) && (!this.g.isPausing())) {
+      this.g.requestDecodeFace(this.k, 4, true);
+    }
+    Bitmap localBitmap1 = localBitmap2;
+    if (localBitmap2 == null) {
+      localBitmap1 = ImageUtil.k();
+    }
+    return new BitmapDrawable(localBitmap1);
   }
   
   protected final <T extends View> T a(int paramInt)
@@ -162,13 +162,13 @@ public class TroopRemarkEditFragment
     }
     d();
     c();
-    Object localObject = (ImageView)a(2131379351);
+    Object localObject = (ImageView)a(2131448088);
     if (localObject != null) {
-      ((ImageView)localObject).setImageDrawable(a());
+      ((ImageView)localObject).setImageDrawable(f());
     }
-    localObject = (TextView)a(2131374366);
+    localObject = (TextView)a(2131442528);
     if (localObject != null) {
-      ((TextView)localObject).setText(String.format("%s %s ", new Object[] { getString(2131699515), this.f }));
+      ((TextView)localObject).setText(String.format("%s %s ", new Object[] { getString(2131897546), this.l }));
     }
   }
   
@@ -201,17 +201,17 @@ public class TroopRemarkEditFragment
       a(getActivity().getIntent());
       a();
       b();
-      paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver;
+      paramLayoutInflater = this.r;
       if (paramLayoutInflater != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(paramLayoutInflater);
+        this.j.addObserver(paramLayoutInflater);
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_set_new", "", "groupnameRemarks", "exp", 0, 0, this.e, "", "", "");
+      ReportController.b(this.j, "dc00899", "Grp_set_new", "", "groupnameRemarks", "exp", 0, 0, this.k, "", "", "");
     }
   }
   
   protected int getContentLayoutId()
   {
-    return 2131562997;
+    return 2131629605;
   }
   
   public boolean needImmersive()
@@ -222,9 +222,9 @@ public class TroopRemarkEditFragment
   public void onDestroy()
   {
     super.onDestroy();
-    b(this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopTroopsettingApiTroopSettingObserver);
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    b(this.f);
+    this.j.removeObserver(this.r);
+    IFaceDecoder localIFaceDecoder = this.g;
     if (localIFaceDecoder != null) {
       localIFaceDecoder.destory();
     }
@@ -234,7 +234,7 @@ public class TroopRemarkEditFragment
   {
     super.onResume();
     e();
-    ClearableEditText localClearableEditText = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
+    ClearableEditText localClearableEditText = this.f;
     if (localClearableEditText != null) {
       localClearableEditText.postDelayed(new TroopRemarkEditFragment.4(this), 100L);
     }
@@ -242,7 +242,7 @@ public class TroopRemarkEditFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.fragment.TroopRemarkEditFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -19,17 +19,17 @@ class ShopWebViewFragment$5
   {
     if (this.a.getAppRuntime() != null)
     {
-      if (this.a.jdField_a_of_type_JavaUtilList == null) {
+      if (this.a.f == null) {
         return;
       }
       if ((paramInt == 0) && (paramSosoLbsInfo != null))
       {
         ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.a.f.iterator();
         while (localIterator.hasNext())
         {
           RecentShopParcel localRecentShopParcel = (RecentShopParcel)localIterator.next();
-          if (localRecentShopParcel.c != 1) {}
+          if (localRecentShopParcel.h != 1) {}
           try
           {
             localArrayList.add(Long.valueOf(Long.valueOf(localRecentShopParcel.a).longValue()));
@@ -44,8 +44,8 @@ class ShopWebViewFragment$5
         }
         d1 = paramSosoLbsInfo.mLocation.mLat02;
         d2 = paramSosoLbsInfo.mLocation.mLon02;
-        if (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) {
-          this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a(this.a.getAppRuntime(), localArrayList, d2, d1);
+        if (this.a.g != null) {
+          this.a.g.a(this.a.getAppRuntime(), localArrayList, d2, d1);
         }
       }
     }
@@ -53,7 +53,7 @@ class ShopWebViewFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment.5
  * JD-Core Version:    0.7.0.1
  */

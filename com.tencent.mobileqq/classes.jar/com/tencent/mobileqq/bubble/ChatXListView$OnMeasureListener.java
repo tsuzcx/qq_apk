@@ -6,7 +6,7 @@ public abstract interface ChatXListView$OnMeasureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.ChatXListView.OnMeasureListener
  * JD-Core Version:    0.7.0.1
  */

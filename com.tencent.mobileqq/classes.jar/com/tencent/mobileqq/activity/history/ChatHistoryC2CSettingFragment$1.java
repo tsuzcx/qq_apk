@@ -14,7 +14,7 @@ class ChatHistoryC2CSettingFragment$1
   
   public void a(Activity paramActivity)
   {
-    QQToast.a(paramActivity, 2, 2131691483, 0).b(this.a.getBaseActivity().getTitleBarHeight());
+    QQToast.makeText(paramActivity, 2, 2131888442, 0).show(this.a.getBaseActivity().getTitleBarHeight());
     paramActivity.setResult(-1);
     paramActivity.finish();
   }
@@ -45,7 +45,7 @@ class ChatHistoryC2CSettingFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

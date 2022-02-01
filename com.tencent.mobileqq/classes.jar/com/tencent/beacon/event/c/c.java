@@ -141,8 +141,8 @@ public final class c
     localHashMap.put("A4", localf.o());
     localHashMap.put("A6", localf.s());
     localHashMap.put("A7", localf.e());
-    localHashMap.put("A20", localf.J());
-    localHashMap.put("A69", localf.K());
+    localHashMap.put("A20", localf.I());
+    localHashMap.put("A69", localf.J());
     localHashMap.put("A60", localf.I());
     localHashMap.put("A9", Build.BRAND);
     return localHashMap;

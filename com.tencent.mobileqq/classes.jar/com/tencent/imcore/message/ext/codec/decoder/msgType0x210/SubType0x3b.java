@@ -74,7 +74,7 @@ public class SubType0x3b
         i = localMsgBody.uint32_user_show_flag.get();
         paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_code.get());
         localObject2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        localObject1 = ((TroopManager)localObject2).b(paramMsgType0x210);
+        localObject1 = ((TroopManager)localObject2).f(paramMsgType0x210);
         ((TroopInfo)localObject1).cGroupRankUserFlag = ((byte)i);
         ((TroopManager)localObject2).b((TroopInfo)localObject1);
         localObject2 = paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_ONLINE_PUSH_HANDLER);
@@ -113,7 +113,7 @@ public class SubType0x3b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x3b
  * JD-Core Version:    0.7.0.1
  */

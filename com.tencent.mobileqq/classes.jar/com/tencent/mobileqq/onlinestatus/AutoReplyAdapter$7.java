@@ -14,15 +14,15 @@ class AutoReplyAdapter$7
     super.applyTransformation(paramFloat, paramTransformation);
     if (paramFloat == 1.0F)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.a.setVisibility(8);
       return;
     }
-    paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramTransformation = this.a.getLayoutParams();
     if (paramTransformation != null)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       paramTransformation.height = (i - (int)(i * paramFloat));
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+      this.a.setLayoutParams(paramTransformation);
     }
   }
   
@@ -33,7 +33,7 @@ class AutoReplyAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyAdapter.7
  * JD-Core Version:    0.7.0.1
  */

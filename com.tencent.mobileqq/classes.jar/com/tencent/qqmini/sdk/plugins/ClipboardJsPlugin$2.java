@@ -26,7 +26,7 @@ class ClipboardJsPlugin$2
     }
     try
     {
-      ClipboardManager localClipboardManager = (ClipboardManager)ClipboardJsPlugin.access$100(this.this$0).getSystemService("clipboard");
+      ClipboardManager localClipboardManager = (ClipboardManager)ClipboardJsPlugin.access$200(this.this$0).getSystemService("clipboard");
       localObject = ClipData.newPlainText(null, ((JSONObject)localObject).optString("data"));
       ClipboardMonitor.setPrimaryClip(localClipboardManager, (ClipData)localObject);
       localClipboardManager.setPrimaryClip((ClipData)localObject);
@@ -41,7 +41,7 @@ class ClipboardJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.ClipboardJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

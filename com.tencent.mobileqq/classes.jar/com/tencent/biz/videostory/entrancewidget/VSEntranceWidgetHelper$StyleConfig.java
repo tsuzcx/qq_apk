@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class VSEntranceWidgetHelper$StyleConfig
 {
-  public String a;
+  public String a = "";
   public String b = "";
   public String c = "";
   public String d = "";
@@ -18,8 +18,7 @@ public class VSEntranceWidgetHelper$StyleConfig
   
   public VSEntranceWidgetHelper$StyleConfig(VSEntranceWidgetHelper paramVSEntranceWidgetHelper, String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     try
     {
       this.b = paramJSONObject.getString("title");
@@ -39,7 +38,7 @@ public class VSEntranceWidgetHelper$StyleConfig
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(paramString);
     ((StringBuilder)localObject1).append("/");
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(this.a);
     paramString = ((StringBuilder)localObject1).toString();
     localObject1 = new File(paramString);
     if (((File)localObject1).exists())
@@ -72,7 +71,7 @@ public class VSEntranceWidgetHelper$StyleConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper.StyleConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -19,25 +19,25 @@ import org.json.JSONArray;
 public class PhotoWallViewForAccountDetail$PhotoAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext = null;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater = null;
-  List<IPublicAccountConfigAttr.PaConfigInfo> jdField_a_of_type_JavaUtilList;
+  List<IPublicAccountConfigAttr.PaConfigInfo> a;
+  private Context c = null;
+  private LayoutInflater d = null;
   
   public PhotoWallViewForAccountDetail$PhotoAdapter(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.c = paramContext;
+    this.d = LayoutInflater.from(this.c);
   }
   
   public void a(List<IPublicAccountConfigAttr.PaConfigInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.size();
     }
@@ -46,7 +46,7 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.a;
     if (localList != null) {
       return localList.get(paramInt);
     }
@@ -63,7 +63,7 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
   {
     try
     {
-      paramViewGroup = new JSONArray(((IPublicAccountConfigAttr.PaConfigInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).e);
+      paramViewGroup = new JSONArray(((IPublicAccountConfigAttr.PaConfigInfo)this.a.get(paramInt)).k);
       if (paramViewGroup.length() > 0) {
         paramViewGroup = paramViewGroup.optString(0);
       }
@@ -80,9 +80,9 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
     if (paramView == null)
     {
       paramView = new PhotoWallViewForAccountDetail.PhotoAdapter.ViewHolder(this);
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559564, null);
-      localView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.a, this.jdField_a_of_type_ComTencentBizPubaccountPhotoWallViewForAccountDetail.b));
-      paramView.a = ((URLImageView)localView.findViewById(2131372672));
+      localView = this.d.inflate(2131625588, null);
+      localView.setLayoutParams(new AbsListView.LayoutParams(this.b.e, this.b.f));
+      paramView.a = ((URLImageView)localView.findViewById(2131440218));
       localView.setTag(paramView);
     }
     else
@@ -94,7 +94,7 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
     paramView.a.setTag(new DataTag(25, Integer.valueOf(paramInt)));
     if (TextUtils.isEmpty(paramViewGroup))
     {
-      paramView.a.setImageResource(2130839553);
+      paramView.a.setImageResource(2130839760);
       return localView;
     }
     paramViewGroup = URLDrawable.getDrawable(paramViewGroup);
@@ -104,7 +104,7 @@ public class PhotoWallViewForAccountDetail$PhotoAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail.PhotoAdapter
  * JD-Core Version:    0.7.0.1
  */

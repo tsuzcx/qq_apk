@@ -6,64 +6,54 @@ import java.util.TimerTask;
 
 public class ActionGlobalData
 {
-  public float a;
-  public int a;
-  ActionGlobalData.ActionCountdownOver jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver;
-  public MagicfacebackText a;
-  public String a;
-  TimerTask jdField_a_of_type_JavaUtilTimerTask = new ActionGlobalData.1(this);
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public int d;
-  public String d;
+  public int A;
+  public boolean B;
+  public int C;
+  public int D;
+  public int E;
+  public String F;
+  TimerTask G = new ActionGlobalData.1(this);
+  ActionGlobalData.ActionCountdownOver a;
+  public boolean b = true;
+  public String c = "send";
   public boolean d = false;
-  public int e;
-  public String e;
   public boolean e = true;
-  public int f = 50;
-  public String f;
-  public boolean f;
-  public int g = 30;
-  public String g;
-  public boolean g;
-  int h = 0;
+  public String f = "non-ver";
+  public int g = 0;
   public String h;
   public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  
-  public ActionGlobalData()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = "send";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_JavaLangString = "non-ver";
-    this.jdField_a_of_type_Int = 0;
-  }
+  public String j;
+  public String k;
+  public String l;
+  public MagicfacebackText m;
+  public boolean n = false;
+  public int o;
+  public float p;
+  public int q;
+  public int r;
+  public int s = 50;
+  public int t = 30;
+  public boolean u = true;
+  public String v;
+  int w = 0;
+  public int x;
+  public int y;
+  public boolean z;
   
   public void a()
   {
-    this.jdField_a_of_type_Float = this.jdField_c_of_type_Int;
-    ThreadManager.getTimer().schedule(this.jdField_a_of_type_JavaUtilTimerTask, 0L, 100L);
+    this.p = this.o;
+    ThreadManager.getTimer().schedule(this.G, 0L, 100L);
   }
   
   public void a(ActionGlobalData.ActionCountdownOver paramActionCountdownOver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData$ActionCountdownOver = paramActionCountdownOver;
+    this.a = paramActionCountdownOver;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData
  * JD-Core Version:    0.7.0.1
  */

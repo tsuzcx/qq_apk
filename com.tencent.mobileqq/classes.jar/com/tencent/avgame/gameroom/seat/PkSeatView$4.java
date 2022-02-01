@@ -20,18 +20,18 @@ class PkSeatView$4
       if (i != 1) {
         return true;
       }
-      PkSeatView.b(this.a).c();
-      PkSeatView.a(this.a).c();
-      PkSeatView.b(this.a).setVisibility(8);
-      PkSeatView.c(this.a).setVisibility(8);
-      PkSeatView.b(this.a).d();
+      PkSeatView.c(this.a).d();
       PkSeatView.a(this.a).d();
+      PkSeatView.g(this.a).setVisibility(8);
+      PkSeatView.h(this.a).setVisibility(8);
+      PkSeatView.c(this.a).e();
+      PkSeatView.a(this.a).e();
       QLog.d("PkSeatView", 1, "STOP_CHEER_MSG to resetToLoadingView");
-      PkSeatView.b(this.a).a(this.a.a, false);
+      PkSeatView.c(this.a).a(this.a.a, false);
       return true;
     }
     ApngImage.pauseAll();
-    PkSeatView.a(this.a).setImageBitmap(AVGameUtil.a("avgame_pk_logo_static@2x.png"));
+    PkSeatView.f(this.a).setImageBitmap(AVGameUtil.c("avgame_pk_logo_static@2x.png"));
     return true;
   }
 }

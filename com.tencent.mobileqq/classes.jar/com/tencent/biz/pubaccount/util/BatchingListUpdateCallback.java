@@ -3,20 +3,20 @@ package com.tencent.biz.pubaccount.util;
 public class BatchingListUpdateCallback
   implements ListUpdateCallback
 {
-  int jdField_a_of_type_Int = 0;
-  final ListUpdateCallback jdField_a_of_type_ComTencentBizPubaccountUtilListUpdateCallback;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int b = -1;
+  final ListUpdateCallback a;
+  int b = 0;
   int c = -1;
+  int d = -1;
+  Object e = null;
   
   public BatchingListUpdateCallback(ListUpdateCallback paramListUpdateCallback)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilListUpdateCallback = paramListUpdateCallback;
+    this.a = paramListUpdateCallback;
   }
   
   public void a()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 0) {
       return;
     }
@@ -25,93 +25,93 @@ public class BatchingListUpdateCallback
       if (i != 2)
       {
         if (i == 3) {
-          this.jdField_a_of_type_ComTencentBizPubaccountUtilListUpdateCallback.a(this.b, this.c, this.jdField_a_of_type_JavaLangObject);
+          this.a.a(this.c, this.d, this.e);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilListUpdateCallback.b(this.b, this.c);
+        this.a.b(this.c, this.d);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilListUpdateCallback.a(this.b, this.c);
+      this.a.a(this.c, this.d);
     }
-    this.jdField_a_of_type_JavaLangObject = null;
-    this.jdField_a_of_type_Int = 0;
+    this.e = null;
+    this.b = 0;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.b == 1)
     {
-      int i = this.b;
+      int i = this.c;
       if (paramInt1 >= i)
       {
-        int j = this.c;
+        int j = this.d;
         if (paramInt1 <= i + j)
         {
-          this.c = (j + paramInt2);
-          this.b = Math.min(paramInt1, i);
+          this.d = (j + paramInt2);
+          this.c = Math.min(paramInt1, i);
           return;
         }
       }
     }
     a();
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = 1;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.b = 1;
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_Int == 3)
+    if (this.b == 3)
     {
-      int i = this.b;
-      int j = this.c;
+      int i = this.c;
+      int j = this.d;
       if (paramInt1 <= i + j)
       {
         int k = paramInt1 + paramInt2;
-        if ((k >= i) && (this.jdField_a_of_type_JavaLangObject == paramObject))
+        if ((k >= i) && (this.e == paramObject))
         {
-          this.b = Math.min(paramInt1, i);
-          this.c = (Math.max(j + i, k) - this.b);
+          this.c = Math.min(paramInt1, i);
+          this.d = (Math.max(j + i, k) - this.c);
           return;
         }
       }
     }
     a();
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Int = 3;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramObject;
+    this.b = 3;
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.b == 2)
     {
-      int i = this.b;
+      int i = this.c;
       if ((i >= paramInt1) && (i <= paramInt1 + paramInt2))
       {
-        this.c += paramInt2;
-        this.b = paramInt1;
+        this.d += paramInt2;
+        this.c = paramInt1;
         return;
       }
     }
     a();
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_Int = 2;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.b = 2;
   }
   
   public void c(int paramInt1, int paramInt2)
   {
     a();
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilListUpdateCallback.c(paramInt1, paramInt2);
+    this.a.c(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.BatchingListUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

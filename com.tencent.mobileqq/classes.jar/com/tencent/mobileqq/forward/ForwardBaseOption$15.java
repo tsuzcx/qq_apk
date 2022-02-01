@@ -26,7 +26,7 @@ class ForwardBaseOption$15
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("ForwardOption.ForwardBaseOption", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
+    Object localObject = this.a.t.getString("uin");
     paramObject = (ArrayList)paramObject;
     int i = paramObject.indexOf(localObject);
     if (i != -1)
@@ -34,13 +34,13 @@ class ForwardBaseOption$15
       paramObject = (Boolean)paramObject.get(i + 1);
       if ((paramBoolean) && (paramObject.booleanValue()))
       {
-        paramObject = ((DiscussionManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a((String)localObject);
-        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null))
+        paramObject = ((DiscussionManager)this.a.q.getManager(QQManagerFactory.DISCUSSION_MANAGER)).d((String)localObject);
+        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.A != null))
         {
-          localObject = this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+          localObject = this.a.A;
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(2131704835));
-          localStringBuilder.append(ForwardConstants.g);
+          localStringBuilder.append(HardCodeUtil.a(2131902736));
+          localStringBuilder.append(ForwardConstants.d_);
           localStringBuilder.append(paramObject.discussionName);
           ((QQCustomDialog)localObject).setTitle(localStringBuilder.toString());
         }
@@ -50,7 +50,7 @@ class ForwardBaseOption$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardBaseOption.15
  * JD-Core Version:    0.7.0.1
  */

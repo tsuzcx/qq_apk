@@ -16,51 +16,51 @@ class GiftPackageDialog$4$1
   
   public void run()
   {
-    String str = HardCodeUtil.a(2131705363);
-    if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)) {
-      str = (String)this.jdField_a_of_type_ComTencentUtilPair.second;
+    String str = HardCodeUtil.a(2131903245);
+    if (!TextUtils.isEmpty((CharSequence)this.a.second)) {
+      str = (String)this.a.second;
     }
-    boolean bool = ((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue();
+    boolean bool = ((Boolean)this.a.first).booleanValue();
     int j = 2;
     int i;
-    if ((bool) && (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_ComTencentUtilPair.second)))
+    if ((bool) && (TextUtils.isEmpty((CharSequence)this.a.second)))
     {
-      str = HardCodeUtil.a(2131705364);
+      str = HardCodeUtil.a(2131903246);
       i = 0;
     }
     else
     {
       i = 2;
     }
-    if (!((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue()) {
+    if (!((Boolean)this.a.first).booleanValue()) {
       j = 1;
     }
-    QQToast.a(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getApplication(), j, str, 0).a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0.isShowing()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0.dismiss();
+    QQToast.makeText(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getApplication(), j, str, 0).show();
+    if (this.b.this$0.isShowing()) {
+      this.b.this$0.dismiss();
     }
-    if (((Boolean)this.jdField_a_of_type_ComTencentUtilPair.first).booleanValue())
+    if (((Boolean)this.a.first).booleanValue())
     {
       str = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount();
       if (!TextUtils.isEmpty(str))
       {
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addGameGift(str, GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
-        if (GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0) != null) {
-          GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0).a(GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addGameGift(str, GiftPackageDialog.n(this.b.this$0));
+        if (GiftPackageDialog.o(this.b.this$0) != null) {
+          GiftPackageDialog.o(this.b.this$0).a(GiftPackageDialog.n(this.b.this$0));
         }
       }
-      if (!GiftPackageDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0)) {
-        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportGetPackage(11, GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), GiftPackageDialog.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), 30103, 3010305, 301);
+      if (!GiftPackageDialog.p(this.b.this$0)) {
+        ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportGetPackage(11, GiftPackageDialog.k(this.b.this$0), GiftPackageDialog.q(this.b.this$0), 30103, 3010305, 301);
       }
     }
-    if ((GiftPackageDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0)) && (GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0) != null)) {
-      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportGameGiftClick(GiftPackageDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0), i, GiftPackageDialog.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewGiftPackageDialog$4.this$0));
+    if ((GiftPackageDialog.p(this.b.this$0)) && (GiftPackageDialog.r(this.b.this$0) != null)) {
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).reportGameGiftClick(GiftPackageDialog.r(this.b.this$0), i, GiftPackageDialog.s(this.b.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.4.1
  * JD-Core Version:    0.7.0.1
  */

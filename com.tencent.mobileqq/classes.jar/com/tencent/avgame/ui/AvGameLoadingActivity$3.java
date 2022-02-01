@@ -18,22 +18,22 @@ class AvGameLoadingActivity$3
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mExitBtn ");
-    localStringBuilder.append(AvGameLoadingActivity.a(this.a));
+    localStringBuilder.append(AvGameLoadingActivity.h(this.a));
     localStringBuilder.append(" bExitEnable ");
-    localStringBuilder.append(AvGameLoadingActivity.f(this.a));
+    localStringBuilder.append(AvGameLoadingActivity.i(this.a));
     localStringBuilder.append("mExit");
-    localStringBuilder.append(AvGameLoadingActivity.b(this.a));
+    localStringBuilder.append(AvGameLoadingActivity.j(this.a));
     QLog.e("AvGameLoadingActivity", 2, localStringBuilder.toString());
-    if (AvGameLoadingActivity.b(this.a) != null)
+    if (AvGameLoadingActivity.j(this.a) != null)
     {
-      long l = AvGameEntranceUtil.a(AvGameLoadingActivity.b(this.a));
+      long l = AvGameEntranceUtil.a(AvGameLoadingActivity.j(this.a));
       AvGameLoadingActivity.a(this.a, l);
     }
     ReportController.b(null, "dc00898", "", "", "0X800B042", "0X800B042", 0, 0, "", "", "", "");
-    if ((AvGameLoadingActivity.a(this.a) == 9) || (AvGameLoadingActivity.a(this.a) == 11) || (AvGameLoadingActivity.a(this.a) == 13)) {
+    if ((AvGameLoadingActivity.d(this.a) == 9) || (AvGameLoadingActivity.d(this.a) == 11) || (AvGameLoadingActivity.d(this.a) == 13)) {
       ReportController.b(null, "dc00898", "", "", "0X800B4A0", "0X800B4A0", AVGameUtil.e(), 0, "", "", "", "");
     }
-    if (AvGameLoadingActivity.f(this.a))
+    if (AvGameLoadingActivity.i(this.a))
     {
       AVGameNodeReportUtil.b(1);
       this.a.a();

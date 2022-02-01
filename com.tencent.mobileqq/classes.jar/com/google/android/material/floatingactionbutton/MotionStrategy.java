@@ -10,30 +10,33 @@ import java.util.List;
 
 abstract interface MotionStrategy
 {
-  @AnimatorRes
-  public abstract int a();
-  
-  public abstract AnimatorSet a();
-  
-  public abstract List<Animator.AnimatorListener> a();
-  
-  public abstract void a();
-  
   public abstract void a(Animator paramAnimator);
   
   public abstract void a(@Nullable MotionSpec paramMotionSpec);
   
   public abstract void a(@Nullable ExtendedFloatingActionButton.OnChangedCallback paramOnChangedCallback);
   
-  public abstract boolean a();
+  public abstract List<Animator.AnimatorListener> b();
   
-  public abstract void b();
+  @Nullable
+  public abstract MotionSpec c();
   
-  public abstract void c();
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract AnimatorSet f();
+  
+  public abstract void g();
+  
+  @AnimatorRes
+  public abstract int h();
+  
+  public abstract boolean i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.floatingactionbutton.MotionStrategy
  * JD-Core Version:    0.7.0.1
  */

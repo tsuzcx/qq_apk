@@ -14,7 +14,6 @@ public class GrowByteBuffer
   private static final byte[] TRUE_BYTES = { 116, 114, 117, 101 };
   private static final byte[] digits = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122 };
   private int count;
-  private int length;
   private StringBuilder stringBuilder;
   private byte[] value;
   
@@ -29,7 +28,6 @@ public class GrowByteBuffer
   public GrowByteBuffer(int paramInt)
   {
     this.value = new byte[paramInt];
-    this.length = paramInt;
     this.count = 0;
   }
   
@@ -142,12 +140,8 @@ public class GrowByteBuffer
   
   private int hugeCapacity(int paramInt)
   {
-    if (2147483647 - paramInt >= 0)
-    {
-      if (paramInt > 2147483639) {
-        return paramInt;
-      }
-      return 2147483639;
+    if (2147483647 - paramInt >= 0) {
+      return Math.max(paramInt, 2147483639);
     }
     throw new OutOfMemoryError();
   }
@@ -326,7 +320,7 @@ public class GrowByteBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.GrowByteBuffer
  * JD-Core Version:    0.7.0.1
  */

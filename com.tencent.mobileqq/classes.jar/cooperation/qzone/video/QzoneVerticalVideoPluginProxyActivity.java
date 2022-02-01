@@ -49,16 +49,16 @@ public class QzoneVerticalVideoPluginProxyActivity
     paramIntent.putExtra("useSkinEngine", false);
     paramIntent.putExtra("param_plugin_gesturelock", false);
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-    localPluginParams.f = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.c = paramInt;
-    localPluginParams.d = 15000;
-    localPluginParams.g = null;
-    localPluginParams.jdField_b_of_type_Boolean = false;
-    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-    localPluginParams.e = "QZoneVerticalVideo";
+    localPluginParams.c = paramString;
+    localPluginParams.h = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+    localPluginParams.i = localClass;
+    localPluginParams.j = paramIntent;
+    localPluginParams.k = paramInt;
+    localPluginParams.r = 15000;
+    localPluginParams.q = null;
+    localPluginParams.p = false;
+    localPluginParams.d = "qzone_vertical_video_plugin.apk";
+    localPluginParams.g = "QZoneVerticalVideo";
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "加载原始插件");
     }
@@ -113,7 +113,7 @@ public class QzoneVerticalVideoPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class RemoteArConfigManager$3
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (RemoteArConfigManager.a(this.a) == null)
+    if (RemoteArConfigManager.c(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
       return;
@@ -27,7 +27,7 @@ class RemoteArConfigManager$3
     Object localObject = Message.obtain();
     ((Message)localObject).what = 6;
     ((Message)localObject).arg1 = paramInt;
-    RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
+    RemoteArConfigManager.c(this.a).sendMessage((Message)localObject);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -41,14 +41,14 @@ class RemoteArConfigManager$3
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (RemoteArConfigManager.a(this.a) == null) {
+    if (RemoteArConfigManager.c(this.a) == null) {
       return;
     }
     Object localObject = Message.obtain();
     ((Message)localObject).what = 7;
     ((Message)localObject).arg1 = paramInt1;
     ((Message)localObject).arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
+    RemoteArConfigManager.c(this.a).sendMessage((Message)localObject);
   }
   
   public void b(int paramInt1, int paramInt2)
@@ -62,7 +62,7 @@ class RemoteArConfigManager$3
       ((StringBuilder)localObject).append(paramInt2);
       QLog.d("ArConfig_RemoteArConfigManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (RemoteArConfigManager.a(this.a) == null)
+    if (RemoteArConfigManager.c(this.a) == null)
     {
       QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
       return;
@@ -71,12 +71,12 @@ class RemoteArConfigManager$3
     ((Message)localObject).what = 8;
     ((Message)localObject).arg1 = paramInt1;
     ((Message)localObject).arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage((Message)localObject);
+    RemoteArConfigManager.c(this.a).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.RemoteArConfigManager.3
  * JD-Core Version:    0.7.0.1
  */

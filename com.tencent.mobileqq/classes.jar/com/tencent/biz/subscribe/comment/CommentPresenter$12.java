@@ -9,7 +9,7 @@ class CommentPresenter$12
   
   public void run()
   {
-    QQToast.a(CommentPresenter.s(this.this$0), "评论已被删除", 0).a();
+    QQToast.makeText(CommentPresenter.T(this.this$0), "评论已被删除", 0).show();
   }
 }
 

@@ -340,10 +340,10 @@ public abstract class BaseInterface
                 localArrayList.add(paramString.getString(j));
                 j += 1;
               }
-              if (AsyncMethodMap.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
+              if (AsyncMethodMap.a.contains(str1)) {
                 localArrayList.add(str2);
               }
-              paramString = (Class)AsyncMethodMap.jdField_a_of_type_JavaUtilHashMap.get(localObject2);
+              paramString = (Class)AsyncMethodMap.b.get(localObject2);
               if (paramString != null)
               {
                 paramString = paramString.getMethods();
@@ -492,7 +492,7 @@ public abstract class BaseInterface
     this.currentUrl = paramString.toLowerCase();
     try
     {
-      if ((!StringAddition.a(this.currentUrl)) && (!this.currentUrl.startsWith("file://")))
+      if ((!StringAddition.d(this.currentUrl)) && (!this.currentUrl.startsWith("file://")))
       {
         if (qqPattern.matcher(this.currentUrl).find())
         {
@@ -520,7 +520,7 @@ public abstract class BaseInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.BaseInterface
  * JD-Core Version:    0.7.0.1
  */

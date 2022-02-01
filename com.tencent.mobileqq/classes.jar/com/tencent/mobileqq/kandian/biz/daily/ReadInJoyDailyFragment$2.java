@@ -6,7 +6,7 @@ import android.view.View.OnClickListener;
 class ReadInJoyDailyFragment$2
   implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 0L;
+  private long b = 0L;
   
   ReadInJoyDailyFragment$2(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
@@ -14,7 +14,7 @@ class ReadInJoyDailyFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.ReadInJoyDailyFragment.2
  * JD-Core Version:    0.7.0.1
  */

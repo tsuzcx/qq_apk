@@ -3,13 +3,13 @@ package com.tencent.biz.richframework.network.servlet;
 import NS_COMM.COMM.StCommonExt;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.request.QzoneAioStoryFeedRequest;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -55,8 +55,8 @@ public class QzoneAioStoryFeedServlet
           notifyObserver(paramIntent, 1010, true, localBundle, QZoneObserver.class);
           return;
         }
-        if (RFLog.isColorLevel()) {
-          RFLog.d("QzoneAioStoryFeedServlet", RFLog.CLR, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneAioStoryFeedServlet", 2, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
         }
         notifyObserver(paramIntent, 1010, false, localBundle, QZoneObserver.class);
         return;
@@ -64,11 +64,10 @@ public class QzoneAioStoryFeedServlet
     }
     catch (Throwable paramIntent)
     {
-      int i = RFLog.USR;
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append(paramIntent);
       paramFromServiceMsg.append("onReceive error");
-      RFLog.e("QzoneAioStoryFeedServlet", i, paramFromServiceMsg.toString());
+      QLog.e("QzoneAioStoryFeedServlet", 1, paramFromServiceMsg.toString());
       notifyObserver(null, 1010, false, null, QZoneObserver.class);
     }
   }
@@ -87,8 +86,8 @@ public class QzoneAioStoryFeedServlet
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        if (RFLog.isColorLevel()) {
-          RFLog.e("QzoneAioStoryFeedServlet", RFLog.CLR, "onSend. mergeFrom exception!");
+        if (QLog.isColorLevel()) {
+          QLog.e("QzoneAioStoryFeedServlet", 2, "onSend. mergeFrom exception!");
         }
         localInvalidProtocolBufferMicroException.printStackTrace();
       }

@@ -21,47 +21,47 @@ class ReadinjoySubscriptManagerActivity$SubscribeAdapter
   extends BaseAdapter
   implements AdapterView.OnItemClickListener
 {
-  private List<ReadinjoySubscriptManagerActivity.SubscribeFeedData> jdField_a_of_type_JavaUtilList;
+  private List<ReadinjoySubscriptManagerActivity.SubscribeFeedData> b;
   
   private ReadinjoySubscriptManagerActivity$SubscribeAdapter(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
   private void a(ReadinjoySubscriptManagerActivity.SubscribeHolder paramSubscribeHolder, int paramInt, View paramView)
   {
-    ReadinjoySubscriptManagerActivity.SubscribeFeedData localSubscribeFeedData = (ReadinjoySubscriptManagerActivity.SubscribeFeedData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder).setText(ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder).getLayoutParams();
+    ReadinjoySubscriptManagerActivity.SubscribeFeedData localSubscribeFeedData = (ReadinjoySubscriptManagerActivity.SubscribeFeedData)this.b.get(paramInt);
+    ReadinjoySubscriptManagerActivity.SubscribeHolder.c(paramSubscribeHolder).setText(ReadinjoySubscriptManagerActivity.SubscribeFeedData.b(localSubscribeFeedData));
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ReadinjoySubscriptManagerActivity.SubscribeHolder.b(paramSubscribeHolder).getLayoutParams();
     Object localObject = localLayoutParams;
     if (localLayoutParams == null) {
       localObject = new RelativeLayout.LayoutParams(-2, -2);
     }
-    ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder).setImageDrawable(ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity).a(1008, ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(localSubscribeFeedData)));
-    if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity)) {
+    ReadinjoySubscriptManagerActivity.SubscribeHolder.b(paramSubscribeHolder).setImageDrawable(ReadinjoySubscriptManagerActivity.c(this.a).a(1008, ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(localSubscribeFeedData)));
+    if (ReadinjoySubscriptManagerActivity.d(this.a)) {
       ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
     } else {
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131298858);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = this.a.getResources().getDimensionPixelSize(2131299575);
     }
-    localObject = ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder);
+    localObject = ReadinjoySubscriptManagerActivity.SubscribeHolder.d(paramSubscribeHolder);
     int i;
-    if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity)) {
+    if (ReadinjoySubscriptManagerActivity.d(this.a)) {
       i = 0;
     } else {
       i = 8;
     }
     ((View)localObject).setVisibility(i);
-    ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder).setOnClickListener(new ReadinjoySubscriptManagerActivity.SubscribeAdapter.1(this, paramView));
+    ReadinjoySubscriptManagerActivity.SubscribeHolder.d(paramSubscribeHolder).setOnClickListener(new ReadinjoySubscriptManagerActivity.SubscribeAdapter.1(this, paramView));
     if (paramInt == getCount() - 1) {
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.b(paramSubscribeHolder).setVisibility(8);
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.e(paramSubscribeHolder).setVisibility(8);
     } else {
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.b(paramSubscribeHolder).setVisibility(0);
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.e(paramSubscribeHolder).setVisibility(0);
     }
-    ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder).setOnClickListener(new ReadinjoySubscriptManagerActivity.SubscribeAdapter.2(this, localSubscribeFeedData));
+    ReadinjoySubscriptManagerActivity.SubscribeHolder.f(paramSubscribeHolder).setOnClickListener(new ReadinjoySubscriptManagerActivity.SubscribeAdapter.2(this, localSubscribeFeedData));
     ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramSubscribeHolder, ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(localSubscribeFeedData));
-    if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity)) {
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.c(paramSubscribeHolder).setBackgroundResource(2131166928);
+    if (ReadinjoySubscriptManagerActivity.d(this.a)) {
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.g(paramSubscribeHolder).setBackgroundResource(2131167849);
     } else {
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.c(paramSubscribeHolder).setBackgroundResource(2130841773);
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.g(paramSubscribeHolder).setBackgroundResource(2130842690);
     }
-    ReadinjoySubscriptManagerActivity.SubscribeHolder.c(paramSubscribeHolder).setPressed(false);
+    ReadinjoySubscriptManagerActivity.SubscribeHolder.g(paramSubscribeHolder).setPressed(false);
   }
   
   public void a(List<ReadinjoySubscriptManagerActivity.SubscribeFeedData> paramList)
@@ -69,13 +69,13 @@ class ReadinjoySubscriptManagerActivity$SubscribeAdapter
     if (paramList == null) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList != null) {
       return localList.size();
     }
@@ -84,9 +84,9 @@ class ReadinjoySubscriptManagerActivity$SubscribeAdapter
   
   public Object getItem(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (paramInt < localList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.b.get(paramInt);
     }
     return null;
   }
@@ -100,16 +100,16 @@ class ReadinjoySubscriptManagerActivity$SubscribeAdapter
   {
     if (paramView == null)
     {
-      paramView = new ReadinjoySubscriptManagerActivity.SubscribeHolder(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity, null);
-      View localView = this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity.getLayoutInflater().inflate(2131560291, paramViewGroup, false);
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, localView.findViewById(2131365132));
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.b(paramView, localView.findViewById(2131365474));
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, (ImageView)localView.findViewById(2131378072));
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, (TextView)localView.findViewById(2131378078));
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, (Button)localView.findViewById(2131380169));
-      ReadinjoySubscriptManagerActivity.SubscribeHolder.c(paramView, localView.findViewById(2131365759));
+      paramView = new ReadinjoySubscriptManagerActivity.SubscribeHolder(this.a, null);
+      View localView = this.a.getLayoutInflater().inflate(2131626337, paramViewGroup, false);
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, localView.findViewById(2131431280));
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.b(paramView, localView.findViewById(2131431689));
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, (ImageView)localView.findViewById(2131446572));
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, (TextView)localView.findViewById(2131446583));
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.a(paramView, (Button)localView.findViewById(2131449084));
+      ReadinjoySubscriptManagerActivity.SubscribeHolder.c(paramView, localView.findViewById(2131432003));
       localView.setTag(paramView);
-      localView.setTag(-3, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity.getResources().getDimensionPixelSize(2131298859)));
+      localView.setTag(-3, Integer.valueOf(this.a.getResources().getDimensionPixelSize(2131299576)));
       paramViewGroup = paramView;
       paramView = localView;
     }
@@ -126,10 +126,10 @@ class ReadinjoySubscriptManagerActivity$SubscribeAdapter
     paramAdapterView = (ReadinjoySubscriptManagerActivity.SubscribeFeedData)getItem((int)paramLong);
     if (paramAdapterView != null)
     {
-      if (ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity)) {
+      if (ReadinjoySubscriptManagerActivity.d(this.a)) {
         return;
       }
-      paramView = new ActivityURIRequest(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageActivityReadinjoySubscriptManagerActivity, "/pubaccount/detail");
+      paramView = new ActivityURIRequest(this.a, "/pubaccount/detail");
       paramView.extra().putString("uin", ReadinjoySubscriptManagerActivity.SubscribeFeedData.c(paramAdapterView));
       paramView.extra().putString("report_src_param_type", "");
       paramView.extra().putString("report_src_param_name", "");
@@ -139,7 +139,7 @@ class ReadinjoySubscriptManagerActivity$SubscribeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.activity.ReadinjoySubscriptManagerActivity.SubscribeAdapter
  * JD-Core Version:    0.7.0.1
  */

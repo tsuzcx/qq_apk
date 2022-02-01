@@ -22,40 +22,36 @@ import org.apache.http.impl.client.DefaultHttpClient;
 public class UploadTransfer
   implements Transfer
 {
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private final Transfer.ProcessInfo jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo;
-  protected final WyUploadJob a;
   protected final UploadRequest a;
-  public ArrayList<SoftReference<UploadTransfer.ByteArrayBuffer>> a;
-  protected DefaultHttpClient a;
-  protected final byte[] a;
-  protected int b;
-  private long b;
-  protected final byte[] b;
-  protected int c = 0;
-  protected int d = 4;
+  protected final WyUploadJob b;
+  protected final byte[] c;
+  protected final byte[] d;
+  protected DefaultHttpClient e = null;
+  protected int f = 0;
+  protected int g = 0;
+  protected int h = 0;
+  protected int i = 4;
+  public ArrayList<SoftReference<UploadTransfer.ByteArrayBuffer>> j = new ArrayList();
+  private long k;
+  private long l;
+  private final Transfer.ProcessInfo m;
   
   public UploadTransfer(UploadRequest paramUploadRequest, WyUploadJob paramWyUploadJob)
   {
-    this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest = paramUploadRequest;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadWyUploadJob = paramWyUploadJob;
-    this.jdField_a_of_type_ArrayOfByte = StringUtils.a(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.checkKey());
-    this.jdField_b_of_type_ArrayOfByte = StringUtils.a(this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.sha());
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.size();
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo = new Transfer.ProcessInfo();
+    this.a = paramUploadRequest;
+    this.b = paramWyUploadJob;
+    this.c = StringUtils.b(this.a.checkKey());
+    this.d = StringUtils.b(this.a.sha());
+    this.k = 0L;
+    this.l = this.a.size();
+    this.m = new Transfer.ProcessInfo();
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo.jdField_a_of_type_JavaLangString = a().toString();
+      this.m.d = e().toString();
       label119:
-      paramUploadRequest = this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo;
-      paramUploadRequest.jdField_a_of_type_Int = a(new Object[] { paramUploadRequest.jdField_a_of_type_JavaLangString, this });
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      paramUploadRequest = this.m;
+      paramUploadRequest.a = a(new Object[] { paramUploadRequest.d, this });
+      this.m.b = SystemClock.uptimeMillis();
       return;
     }
     catch (MalformedURLException paramUploadRequest)
@@ -66,14 +62,14 @@ public class UploadTransfer
   
   public static int a(Context paramContext)
   {
-    int i = NetworkUtils.getNetworkType(paramContext);
-    if (i == 2) {
+    int n = NetworkUtils.getNetworkType(paramContext);
+    if (n == 2) {
       return 32768;
     }
-    if (i == 1) {
+    if (n == 1) {
       return 16384;
     }
-    if (i == 3) {
+    if (n == 3) {
       return 65536;
     }
     return -1;
@@ -81,39 +77,31 @@ public class UploadTransfer
   
   public static int a(Object... paramVarArgs)
   {
-    int i = 17;
-    int k = i;
+    int n = 17;
+    int i2 = n;
     if (paramVarArgs != null)
     {
-      int m = paramVarArgs.length;
-      int j = 0;
+      int i3 = paramVarArgs.length;
+      int i1 = 0;
       for (;;)
       {
-        k = i;
-        if (j >= m) {
+        i2 = n;
+        if (i1 >= i3) {
           break;
         }
-        Object localObject = paramVarArgs[j];
+        Object localObject = paramVarArgs[i1];
         if (localObject != null) {
-          i = i * 31 + localObject.hashCode();
+          n = n * 31 + localObject.hashCode();
         }
-        j += 1;
+        i1 += 1;
       }
     }
-    return k * 31 + new Random().nextInt();
+    return i2 * 31 + new Random().nextInt();
   }
   
   private static String a(int paramInt)
   {
     return String.format("/ftn_handler/?cn=%d&cv=%d", new Object[] { Integer.valueOf(NetworkUtils.getNetworkType(MobileQQ.sMobileQQ)), Integer.valueOf(paramInt) });
-  }
-  
-  private URL a()
-  {
-    if (NetConnInfoCenter.getActiveNetIpFamily(true) == 2) {
-      return new URL("https", "upload.weiyun.com", a(31532));
-    }
-    return new URL("http", this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.serverIp(), this.jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest.serverPort(), a(31532));
   }
   
   private HttpPost a(URL paramURL)
@@ -127,21 +115,29 @@ public class UploadTransfer
     paramURL.addHeader("Proxy-Connection", "Keep-Alive");
     paramURL.addHeader("Pragma", "no-cache");
     paramURL.addHeader("Content-type", "text/octet");
-    if (this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient == null) {
-      this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = HttpChannel.a();
+    if (this.e == null) {
+      this.e = HttpChannel.a();
     }
-    HttpChannel.a(this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient, this.jdField_a_of_type_Int);
+    HttpChannel.a(this.e, this.f);
     return paramURL;
   }
   
-  private void a()
+  private void d()
   {
-    DefaultHttpClient localDefaultHttpClient = this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient;
+    DefaultHttpClient localDefaultHttpClient = this.e;
     if (localDefaultHttpClient != null)
     {
       localDefaultHttpClient.getConnectionManager().shutdown();
-      this.jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient = null;
+      this.e = null;
     }
+  }
+  
+  private URL e()
+  {
+    if (NetConnInfoCenter.getActiveNetIpFamily(true) == 2) {
+      return new URL("https", "upload.weiyun.com", a(31532));
+    }
+    return new URL("http", this.a.serverIp(), this.a.serverPort(), a(31532));
   }
   
   public int a()
@@ -154,13 +150,13 @@ public class UploadTransfer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 238	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()Lcom/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer;
+    //   1: invokevirtual 249	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	()Lcom/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer;
     //   4: astore 23
     //   6: iconst_0
     //   7: istore 16
     //   9: aload_0
     //   10: iconst_0
-    //   11: putfield 30	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Int	I
+    //   11: putfield 39	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:f	I
     //   14: aconst_null
     //   15: astore 19
     //   17: iconst_0
@@ -184,10 +180,10 @@ public class UploadTransfer
     //   50: iconst_3
     //   51: if_icmpge +1207 -> 1258
     //   54: aload_0
-    //   55: getfield 45	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadWyUploadJob	Lcom/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob;
-    //   58: invokevirtual 243	com/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob:a	()Z
+    //   55: getfield 54	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:b	Lcom/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob;
+    //   58: invokevirtual 254	com/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob:b	()Z
     //   61: ifne +10 -> 71
-    //   64: ldc 244
+    //   64: ldc 255
     //   66: istore 8
     //   68: goto +1190 -> 1258
     //   71: iload 5
@@ -199,44 +195,44 @@ public class UploadTransfer
     //   84: aload 19
     //   86: astore 20
     //   88: iload 5
-    //   90: ldc2_w 245
+    //   90: ldc2_w 256
     //   93: dload 6
-    //   95: invokestatic 252	java/lang/Math:pow	(DD)D
+    //   95: invokestatic 263	java/lang/Math:pow	(DD)D
     //   98: d2i
     //   99: idiv
     //   100: sipush 8192
-    //   103: invokestatic 256	java/lang/Math:max	(II)I
+    //   103: invokestatic 267	java/lang/Math:max	(II)I
     //   106: istore 8
     //   108: goto +3 -> 111
     //   111: aload 19
     //   113: astore 20
     //   115: aload_1
     //   116: aload_0
-    //   117: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   117: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   120: iload 8
     //   122: aload_3
     //   123: iconst_0
     //   124: iload 4
-    //   126: invokevirtual 261	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto:a	(JI[BII)I
+    //   126: invokevirtual 272	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto:a	(JI[BII)I
     //   129: istore 11
     //   131: aload 19
     //   133: astore 20
     //   135: aload_0
     //   136: aload_2
-    //   137: invokespecial 263	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/net/URL;)Lorg/apache/http/client/methods/HttpPost;
+    //   137: invokespecial 274	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/net/URL;)Lorg/apache/http/client/methods/HttpPost;
     //   140: astore 24
     //   142: aload 19
     //   144: astore 20
     //   146: aload 24
-    //   148: new 265	com/tencent/mobileqq/weiyun/sdk/upload/SppByteArrayEntity
+    //   148: new 276	com/tencent/mobileqq/weiyun/sdk/upload/SppByteArrayEntity
     //   151: dup
     //   152: aload_3
     //   153: iconst_0
     //   154: iload 11
     //   156: iload 8
     //   158: iadd
-    //   159: invokespecial 268	com/tencent/mobileqq/weiyun/sdk/upload/SppByteArrayEntity:<init>	([BII)V
-    //   162: invokevirtual 272	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
+    //   159: invokespecial 279	com/tencent/mobileqq/weiyun/sdk/upload/SppByteArrayEntity:<init>	([BII)V
+    //   162: invokevirtual 283	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
     //   165: aload 19
     //   167: astore 21
     //   169: aload 19
@@ -244,9 +240,9 @@ public class UploadTransfer
     //   173: aload 19
     //   175: astore 20
     //   177: aload_0
-    //   178: getfield 28	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_OrgApacheHttpImplClientDefaultHttpClient	Lorg/apache/http/impl/client/DefaultHttpClient;
+    //   178: getfield 37	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:e	Lorg/apache/http/impl/client/DefaultHttpClient;
     //   181: aload 24
-    //   183: invokevirtual 276	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
+    //   183: invokevirtual 287	org/apache/http/impl/client/DefaultHttpClient:execute	(Lorg/apache/http/client/methods/HttpUriRequest;)Lorg/apache/http/HttpResponse;
     //   186: astore 19
     //   188: aload 19
     //   190: ifnonnull +72 -> 262
@@ -257,7 +253,7 @@ public class UploadTransfer
     //   201: aload 19
     //   203: astore 20
     //   205: aload_0
-    //   206: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
+    //   206: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
     //   209: iload 9
     //   211: istore 8
     //   213: aload 19
@@ -265,13 +261,13 @@ public class UploadTransfer
     //   218: iload 9
     //   220: istore 8
     //   222: aload 19
-    //   224: invokeinterface 284 1 0
+    //   224: invokeinterface 295 1 0
     //   229: ifnull +19 -> 248
     //   232: iload 9
     //   234: istore 8
     //   236: aload 19
-    //   238: invokeinterface 284 1 0
-    //   243: invokeinterface 289 1 0
+    //   238: invokeinterface 295 1 0
+    //   243: invokeinterface 300 1 0
     //   248: iconst_0
     //   249: istore 10
     //   251: iload 8
@@ -286,14 +282,14 @@ public class UploadTransfer
     //   270: aload 19
     //   272: astore 20
     //   274: aload 19
-    //   276: invokeinterface 293 1 0
-    //   281: invokeinterface 298 1 0
+    //   276: invokeinterface 304 1 0
+    //   281: invokeinterface 309 1 0
     //   286: istore 9
     //   288: iload 9
     //   290: sipush 200
     //   293: if_icmpeq +138 -> 431
     //   296: iload 9
-    //   298: ldc_w 299
+    //   298: ldc_w 310
     //   301: iadd
     //   302: istore 8
     //   304: aload 19
@@ -303,8 +299,8 @@ public class UploadTransfer
     //   312: aload 19
     //   314: astore 20
     //   316: aload 19
-    //   318: ldc_w 301
-    //   321: invokeinterface 305 2 0
+    //   318: ldc_w 312
+    //   321: invokeinterface 316 2 0
     //   326: astore 24
     //   328: iload 8
     //   330: istore 9
@@ -330,8 +326,8 @@ public class UploadTransfer
     //   371: aload 24
     //   373: iconst_0
     //   374: aaload
-    //   375: invokeinterface 310 1 0
-    //   380: invokestatic 314	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   375: invokeinterface 321 1 0
+    //   380: invokestatic 325	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   383: istore 9
     //   385: aload 19
     //   387: astore 21
@@ -340,7 +336,7 @@ public class UploadTransfer
     //   393: aload 19
     //   395: astore 20
     //   397: aload_0
-    //   398: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
+    //   398: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
     //   401: iload 9
     //   403: istore 8
     //   405: aload 19
@@ -348,7 +344,7 @@ public class UploadTransfer
     //   410: iload 9
     //   412: istore 8
     //   414: aload 19
-    //   416: invokeinterface 284 1 0
+    //   416: invokeinterface 295 1 0
     //   421: ifnull -173 -> 248
     //   424: iload 9
     //   426: istore 8
@@ -359,19 +355,19 @@ public class UploadTransfer
     //   437: astore 22
     //   439: aload 19
     //   441: astore 20
-    //   443: new 316	java/io/BufferedInputStream
+    //   443: new 327	java/io/BufferedInputStream
     //   446: dup
     //   447: aload 19
-    //   449: invokeinterface 284 1 0
-    //   454: invokeinterface 320 1 0
-    //   459: invokespecial 323	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   449: invokeinterface 295 1 0
+    //   454: invokeinterface 331 1 0
+    //   459: invokespecial 334	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   462: aload 23
-    //   464: getfield 326	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer:jdField_a_of_type_ArrayOfByte	[B
-    //   467: invokevirtual 332	java/io/InputStream:read	([B)I
+    //   464: getfield 338	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer:a	[B
+    //   467: invokevirtual 344	java/io/InputStream:read	([B)I
     //   470: istore 10
     //   472: iload 10
     //   474: ifgt +38 -> 512
-    //   477: ldc_w 333
+    //   477: ldc_w 345
     //   480: istore 9
     //   482: iload 9
     //   484: istore 8
@@ -380,7 +376,7 @@ public class UploadTransfer
     //   491: iload 9
     //   493: istore 8
     //   495: aload 19
-    //   497: invokeinterface 284 1 0
+    //   497: invokeinterface 295 1 0
     //   502: ifnull -254 -> 248
     //   505: iload 9
     //   507: istore 8
@@ -400,7 +396,7 @@ public class UploadTransfer
     //   537: aload 19
     //   539: astore 20
     //   541: aload 23
-    //   543: getfield 326	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer:jdField_a_of_type_ArrayOfByte	[B
+    //   543: getfield 338	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer:a	[B
     //   546: astore 24
     //   548: aload 19
     //   550: astore 20
@@ -408,7 +404,7 @@ public class UploadTransfer
     //   553: iload 15
     //   555: aload 24
     //   557: iload 10
-    //   559: invokevirtual 336	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto:a	(Z[BI)I
+    //   559: invokevirtual 348	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto:a	(Z[BI)I
     //   562: istore 9
     //   564: iload 9
     //   566: ifne +165 -> 731
@@ -416,77 +412,77 @@ public class UploadTransfer
     //   571: astore 20
     //   573: aload_0
     //   574: iconst_0
-    //   575: putfield 30	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Int	I
+    //   575: putfield 39	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:f	I
     //   578: aload 19
     //   580: astore 20
     //   582: aload_0
     //   583: iload 8
-    //   585: putfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   585: putfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   588: iload 12
     //   590: ifne +57 -> 647
     //   593: aload 19
     //   595: astore 20
     //   597: aload_0
     //   598: aload_0
-    //   599: getfield 34	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	I
+    //   599: getfield 43	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:h	I
     //   602: iconst_1
     //   603: iadd
-    //   604: putfield 34	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	I
+    //   604: putfield 43	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:h	I
     //   607: aload 19
     //   609: astore 20
     //   611: aload_0
-    //   612: getfield 34	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	I
+    //   612: getfield 43	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:h	I
     //   615: aload_0
-    //   616: getfield 36	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	I
+    //   616: getfield 45	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:i	I
     //   619: if_icmplt +28 -> 647
     //   622: aload 19
     //   624: astore 20
     //   626: aload_0
     //   627: aload_0
-    //   628: getfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   628: getfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   631: sipush 8192
     //   634: iadd
-    //   635: putfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   635: putfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   638: aload 19
     //   640: astore 20
     //   642: aload_0
     //   643: iconst_0
-    //   644: putfield 34	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	I
+    //   644: putfield 43	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:h	I
     //   647: aload 19
     //   649: astore 20
     //   651: aload_0
-    //   652: getfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   652: getfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   655: sipush 8192
     //   658: if_icmpge +17 -> 675
     //   661: aload 19
     //   663: astore 20
     //   665: aload_0
     //   666: sipush 8192
-    //   669: putfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   669: putfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   672: goto +26 -> 698
     //   675: aload 19
     //   677: astore 20
     //   679: aload_0
-    //   680: getfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
-    //   683: ldc 106
+    //   680: getfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
+    //   683: ldc 117
     //   685: if_icmple +13 -> 698
     //   688: aload 19
     //   690: astore 20
     //   692: aload_0
-    //   693: ldc 106
-    //   695: putfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   693: ldc 117
+    //   695: putfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   698: aload 19
     //   700: ifnull +25 -> 725
     //   703: aload 19
-    //   705: invokeinterface 284 1 0
+    //   705: invokeinterface 295 1 0
     //   710: ifnull +15 -> 725
     //   713: aload 19
-    //   715: invokeinterface 284 1 0
-    //   720: invokeinterface 289 1 0
+    //   715: invokeinterface 295 1 0
+    //   720: invokeinterface 300 1 0
     //   725: iconst_0
     //   726: istore 8
     //   728: goto +530 -> 1258
-    //   731: ldc_w 337
+    //   731: ldc_w 349
     //   734: iload 9
     //   736: if_icmpne +45 -> 781
     //   739: iload 9
@@ -496,11 +492,11 @@ public class UploadTransfer
     //   748: iload 9
     //   750: istore 8
     //   752: aload 19
-    //   754: invokeinterface 284 1 0
+    //   754: invokeinterface 295 1 0
     //   759: ifnull -511 -> 248
     //   762: aload 19
-    //   764: invokeinterface 284 1 0
-    //   769: invokeinterface 289 1 0
+    //   764: invokeinterface 295 1 0
+    //   769: invokeinterface 300 1 0
     //   774: iload 9
     //   776: istore 8
     //   778: goto -530 -> 248
@@ -511,11 +507,11 @@ public class UploadTransfer
     //   790: iload 9
     //   792: istore 8
     //   794: aload 19
-    //   796: invokeinterface 284 1 0
+    //   796: invokeinterface 295 1 0
     //   801: ifnull +457 -> 1258
     //   804: aload 19
-    //   806: invokeinterface 284 1 0
-    //   811: invokeinterface 289 1 0
+    //   806: invokeinterface 295 1 0
+    //   811: invokeinterface 300 1 0
     //   816: iload 9
     //   818: istore 8
     //   820: goto +438 -> 1258
@@ -551,10 +547,10 @@ public class UploadTransfer
     //   887: aload 19
     //   889: astore 20
     //   891: aload_0
-    //   892: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   892: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   895: aload 21
-    //   897: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
-    //   900: ldc_w 341
+    //   897: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
+    //   900: ldc_w 353
     //   903: istore 11
     //   905: iload 11
     //   907: istore 8
@@ -571,15 +567,15 @@ public class UploadTransfer
     //   930: aload 19
     //   932: astore 20
     //   934: aload 19
-    //   936: invokeinterface 284 1 0
+    //   936: invokeinterface 295 1 0
     //   941: ifnull +106 -> 1047
     //   944: iload 10
     //   946: istore 9
     //   948: iload 11
     //   950: istore 8
     //   952: aload 19
-    //   954: invokeinterface 284 1 0
-    //   959: invokeinterface 289 1 0
+    //   954: invokeinterface 295 1 0
+    //   959: invokeinterface 300 1 0
     //   964: aload 19
     //   966: astore 20
     //   968: goto +79 -> 1047
@@ -587,13 +583,13 @@ public class UploadTransfer
     //   973: aload 19
     //   975: astore 20
     //   977: aload_0
-    //   978: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   978: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   981: aload 21
-    //   983: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
+    //   983: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
     //   986: aload 19
     //   988: astore 20
     //   990: aload 21
-    //   992: invokestatic 347	com/tencent/weiyun/transmission/utils/ErrorCodeUtil:getErrorCode4IOException	(Ljava/io/IOException;)I
+    //   992: invokestatic 359	com/tencent/weiyun/transmission/utils/ErrorCodeUtil:getErrorCode4IOException	(Ljava/io/IOException;)I
     //   995: istore 11
     //   997: iload 11
     //   999: istore 8
@@ -610,7 +606,7 @@ public class UploadTransfer
     //   1022: aload 19
     //   1024: astore 20
     //   1026: aload 19
-    //   1028: invokeinterface 284 1 0
+    //   1028: invokeinterface 295 1 0
     //   1033: ifnull +14 -> 1047
     //   1036: iload 11
     //   1038: istore 8
@@ -619,53 +615,53 @@ public class UploadTransfer
     //   1044: goto -92 -> 952
     //   1047: aload_0
     //   1048: iconst_0
-    //   1049: putfield 34	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	I
+    //   1049: putfield 43	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:h	I
     //   1052: aload_0
-    //   1053: getfield 36	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	I
+    //   1053: getfield 45	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:i	I
     //   1056: i2d
     //   1057: dstore 6
     //   1059: dload 6
-    //   1061: invokestatic 353	java/lang/Double:isNaN	(D)Z
+    //   1061: invokestatic 365	java/lang/Double:isNaN	(D)Z
     //   1064: pop
     //   1065: aload_0
     //   1066: dload 6
-    //   1068: ldc2_w 354
+    //   1068: ldc2_w 366
     //   1071: dmul
     //   1072: d2i
-    //   1073: putfield 36	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	I
+    //   1073: putfield 45	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:i	I
     //   1076: iload 8
-    //   1078: ldc_w 356
+    //   1078: ldc_w 368
     //   1081: if_icmpne +16 -> 1097
     //   1084: aload_0
     //   1085: aload_0
-    //   1086: getfield 30	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Int	I
+    //   1086: getfield 39	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:f	I
     //   1089: iconst_1
     //   1090: iadd
-    //   1091: putfield 30	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Int	I
+    //   1091: putfield 39	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:f	I
     //   1094: goto +8 -> 1102
     //   1097: aload_0
     //   1098: iconst_0
-    //   1099: putfield 30	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Int	I
+    //   1099: putfield 39	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:f	I
     //   1102: iload 8
-    //   1104: ldc_w 357
+    //   1104: ldc_w 369
     //   1107: if_icmpeq +75 -> 1182
     //   1110: iload 8
-    //   1112: ldc_w 356
+    //   1112: ldc_w 368
     //   1115: if_icmpeq +67 -> 1182
     //   1118: iload 8
-    //   1120: ldc_w 358
+    //   1120: ldc_w 370
     //   1123: if_icmpeq +59 -> 1182
     //   1126: iload 8
-    //   1128: ldc_w 359
+    //   1128: ldc_w 371
     //   1131: if_icmpeq +51 -> 1182
     //   1134: iload 8
-    //   1136: ldc_w 360
+    //   1136: ldc_w 372
     //   1139: if_icmpeq +43 -> 1182
     //   1142: iload 8
-    //   1144: ldc_w 361
+    //   1144: ldc_w 373
     //   1147: if_icmpeq +35 -> 1182
     //   1150: iload 8
-    //   1152: ldc_w 362
+    //   1152: ldc_w 374
     //   1155: if_icmpeq +27 -> 1182
     //   1158: iload 8
     //   1160: istore 11
@@ -676,26 +672,26 @@ public class UploadTransfer
     //   1170: aload 20
     //   1172: astore 19
     //   1174: iload 8
-    //   1176: ldc_w 363
+    //   1176: ldc_w 375
     //   1179: if_icmpne +62 -> 1241
-    //   1182: getstatic 125	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   1185: invokestatic 367	com/tencent/weiyun/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   1182: getstatic 136	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   1185: invokestatic 379	com/tencent/weiyun/utils/NetworkUtils:isNetworkAvailable	(Landroid/content/Context;)Z
     //   1188: ifne +11 -> 1199
-    //   1191: ldc_w 368
+    //   1191: ldc_w 380
     //   1194: istore 8
     //   1196: goto +62 -> 1258
     //   1199: iload 12
     //   1201: i2d
-    //   1202: ldc2_w 369
-    //   1205: invokestatic 252	java/lang/Math:pow	(DD)D
-    //   1208: ldc2_w 245
+    //   1202: ldc2_w 381
+    //   1205: invokestatic 263	java/lang/Math:pow	(DD)D
+    //   1208: ldc2_w 256
     //   1211: dadd
-    //   1212: ldc2_w 371
+    //   1212: ldc2_w 383
     //   1215: dmul
     //   1216: d2l
     //   1217: lstore 17
     //   1219: lload 17
-    //   1221: invokestatic 378	java/lang/Thread:sleep	(J)V
+    //   1221: invokestatic 390	java/lang/Thread:sleep	(J)V
     //   1224: iload 13
     //   1226: iconst_1
     //   1227: iadd
@@ -724,17 +720,17 @@ public class UploadTransfer
     //   1270: aload_0
     //   1271: aload 23
     //   1273: iload 15
-    //   1275: invokevirtual 381	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Lcom/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer;Z)V
+    //   1275: invokevirtual 393	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Lcom/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer$ByteArrayBuffer;Z)V
     //   1278: iload 8
     //   1280: ireturn
     //   1281: aload 20
     //   1283: ifnull +25 -> 1308
     //   1286: aload 20
-    //   1288: invokeinterface 284 1 0
+    //   1288: invokeinterface 295 1 0
     //   1293: ifnull +15 -> 1308
     //   1296: aload 20
-    //   1298: invokeinterface 284 1 0
-    //   1303: invokeinterface 289 1 0
+    //   1298: invokeinterface 295 1 0
+    //   1303: invokeinterface 300 1 0
     //   1308: goto +5 -> 1313
     //   1311: aload_1
     //   1312: athrow
@@ -757,16 +753,16 @@ public class UploadTransfer
     //   0	1336	4	paramInt1	int
     //   0	1336	5	paramInt2	int
     //   82	985	6	d1	double
-    //   37	1295	8	i	int
-    //   18	1303	9	j	int
-    //   24	1208	10	k	int
-    //   129	1119	11	m	int
-    //   21	1225	12	n	int
-    //   27	1227	13	i1	int
-    //   257	995	14	i2	int
+    //   37	1295	8	n	int
+    //   18	1303	9	i1	int
+    //   24	1208	10	i2	int
+    //   129	1119	11	i3	int
+    //   21	1225	12	i4	int
+    //   27	1227	13	i5	int
+    //   257	995	14	i6	int
     //   521	753	15	bool1	boolean
     //   7	1252	16	bool2	boolean
-    //   1217	3	17	l	long
+    //   1217	3	17	l1	long
     //   15	1221	19	localObject1	Object
     //   86	605	20	localObject2	Object
     //   833	7	20	localException1	java.lang.Exception
@@ -869,79 +865,44 @@ public class UploadTransfer
     //   1219	1224	1325	java/lang/InterruptedException
   }
   
-  public UploadTransfer.ByteArrayBuffer a()
-  {
-    Object localObject3 = null;
-    try
-    {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      Object localObject1 = localObject3;
-      if (i > 0)
-      {
-        localObject1 = (UploadTransfer.ByteArrayBuffer)((SoftReference)this.jdField_a_of_type_JavaUtilArrayList.remove(i - 1)).get();
-        if (localObject1 == null) {
-          break label79;
-        }
-      }
-      localObject3 = localObject1;
-      if (localObject1 == null) {
-        localObject3 = new UploadTransfer.ByteArrayBuffer(new byte[40960]);
-      }
-      return localObject3;
-    }
-    finally
-    {
-      for (;;)
-      {
-        int i;
-        for (;;)
-        {
-          throw localObject2;
-        }
-        label79:
-        i -= 1;
-      }
-    }
-  }
-  
   void a(StoragePlatomProto paramStoragePlatomProto, int paramInt)
   {
-    int i = paramStoragePlatomProto.a();
-    if (i != 0) {
-      if (i != 1)
+    int n = paramStoragePlatomProto.b();
+    if (n != 0) {
+      if (n != 1)
       {
-        if (i == 2) {}
+        if (n == 2) {}
       }
       else
       {
-        long l = this.jdField_b_of_type_Long;
-        this.jdField_a_of_type_Long = l;
-        this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadWyUploadJob.a(this.jdField_a_of_type_Long, l);
+        long l1 = this.l;
+        this.k = l1;
+        this.b.a(this.k, l1);
         return;
       }
     }
-    a(paramStoragePlatomProto, this.jdField_a_of_type_Long + paramInt);
+    a(paramStoragePlatomProto, this.k + paramInt);
   }
   
   void a(StoragePlatomProto paramStoragePlatomProto, long paramLong)
   {
-    if (paramLong != paramStoragePlatomProto.a()) {
-      this.jdField_a_of_type_Long = paramStoragePlatomProto.a();
+    if (paramLong != paramStoragePlatomProto.c()) {
+      this.k = paramStoragePlatomProto.c();
     } else {
-      this.jdField_a_of_type_Long = paramLong;
+      this.k = paramLong;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadWyUploadJob.a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
+    this.b.a(this.k, this.l);
   }
   
   public void a(UploadTransfer.ByteArrayBuffer paramByteArrayBuffer, boolean paramBoolean)
   {
     try
     {
-      int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-      if (i > 10) {
+      int n = this.j.size();
+      if (n > 10) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.add(new SoftReference(paramByteArrayBuffer));
+      this.j.add(new SoftReference(paramByteArrayBuffer));
       return;
     }
     finally {}
@@ -963,44 +924,44 @@ public class UploadTransfer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 79	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()Ljava/net/URL;
+    //   1: invokespecial 88	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:e	()Ljava/net/URL;
     //   4: astore 15
     //   6: new 419	java/io/RandomAccessFile
     //   9: dup
     //   10: aload_0
-    //   11: getfield 43	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentWeiyunUploaderUploadRequest	Lcom/tencent/weiyun/uploader/UploadRequest;
+    //   11: getfield 52	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	Lcom/tencent/weiyun/uploader/UploadRequest;
     //   14: invokevirtual 429	com/tencent/weiyun/uploader/UploadRequest:path	()Ljava/lang/String;
     //   17: ldc_w 431
     //   20: invokespecial 433	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: astore 14
     //   25: aload_0
-    //   26: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   26: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   29: ldc2_w 434
     //   32: lcmp
     //   33: ifle +32 -> 65
-    //   36: new 258	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto
+    //   36: new 269	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto
     //   39: dup
     //   40: sipush 1007
     //   43: aload_0
-    //   44: getfield 63	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_ArrayOfByte	[B
+    //   44: getfield 72	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	[B
     //   47: aload_0
-    //   48: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   48: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   51: aload_0
-    //   52: getfield 58	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ArrayOfByte	[B
+    //   52: getfield 67	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	[B
     //   55: iconst_0
     //   56: i2l
     //   57: invokespecial 438	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto:<init>	(I[BJ[BJ)V
     //   60: astore 13
     //   62: goto +29 -> 91
-    //   65: new 258	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto
+    //   65: new 269	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto
     //   68: dup
     //   69: sipush 1000
     //   72: aload_0
-    //   73: getfield 63	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_ArrayOfByte	[B
+    //   73: getfield 72	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	[B
     //   76: aload_0
-    //   77: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   77: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   80: aload_0
-    //   81: getfield 58	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ArrayOfByte	[B
+    //   81: getfield 67	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:c	[B
     //   84: iconst_0
     //   85: i2l
     //   86: invokespecial 438	com/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto:<init>	(I[BJ[BJ)V
@@ -1011,8 +972,8 @@ public class UploadTransfer
     //   98: iconst_0
     //   99: istore_1
     //   100: aload_0
-    //   101: getfield 45	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadWyUploadJob	Lcom/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob;
-    //   104: invokevirtual 243	com/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob:a	()Z
+    //   101: getfield 54	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:b	Lcom/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob;
+    //   104: invokevirtual 254	com/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob:b	()Z
     //   107: istore 4
     //   109: iload 4
     //   111: ifne +16 -> 127
@@ -1020,13 +981,13 @@ public class UploadTransfer
     //   115: aload 14
     //   117: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   120: aload_0
-    //   121: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
-    //   124: ldc 244
+    //   121: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
+    //   124: ldc 255
     //   126: ireturn
     //   127: aload_0
-    //   128: getfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   128: getfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   131: ifgt +33 -> 164
-    //   134: getstatic 125	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   134: getstatic 136	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
     //   137: invokestatic 443	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Landroid/content/Context;)I
     //   140: istore_2
     //   141: iload_2
@@ -1035,16 +996,16 @@ public class UploadTransfer
     //   146: aload 14
     //   148: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   151: aload_0
-    //   152: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
-    //   155: ldc_w 368
+    //   152: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
+    //   155: ldc_w 380
     //   158: ireturn
     //   159: aload_0
     //   160: iload_2
-    //   161: putfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
-    //   164: invokestatic 96	android/os/SystemClock:uptimeMillis	()J
+    //   161: putfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
+    //   164: invokestatic 106	android/os/SystemClock:uptimeMillis	()J
     //   167: lstore 5
     //   169: aload_0
-    //   170: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   170: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   173: lstore 7
     //   175: aload 14
     //   177: lload 7
@@ -1056,16 +1017,16 @@ public class UploadTransfer
     //   190: aload 16
     //   192: iload_3
     //   193: aload_0
-    //   194: getfield 32	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Int	I
+    //   194: getfield 41	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:g	I
     //   197: invokevirtual 451	java/io/RandomAccessFile:read	([BII)I
     //   200: istore_2
     //   201: iload_2
     //   202: ifgt +37 -> 239
     //   205: aload_0
-    //   206: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   206: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   209: lstore 9
     //   211: aload_0
-    //   212: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   212: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   215: lstore 11
     //   217: lload 9
     //   219: lload 11
@@ -1075,15 +1036,15 @@ public class UploadTransfer
     //   226: aload 14
     //   228: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   231: aload_0
-    //   232: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
+    //   232: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
     //   235: ldc_w 452
     //   238: ireturn
     //   239: iload_2
     //   240: ifgt +18 -> 258
     //   243: aload_0
-    //   244: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   244: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   247: aload_0
-    //   248: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   248: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   251: lcmp
     //   252: ifne +6 -> 258
     //   255: goto +144 -> 399
@@ -1109,12 +1070,12 @@ public class UploadTransfer
     //   287: aload 14
     //   289: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   292: aload_0
-    //   293: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
+    //   293: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
     //   296: iload_3
     //   297: ireturn
     //   298: aload_0
-    //   299: getfield 45	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadWyUploadJob	Lcom/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob;
-    //   302: invokevirtual 243	com/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob:a	()Z
+    //   299: getfield 54	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:b	Lcom/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob;
+    //   302: invokevirtual 254	com/tencent/mobileqq/weiyun/sdk/upload/WyUploadJob:b	()Z
     //   305: istore 4
     //   307: iload 4
     //   309: ifne +16 -> 325
@@ -1122,41 +1083,41 @@ public class UploadTransfer
     //   313: aload 14
     //   315: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   318: aload_0
-    //   319: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
-    //   322: ldc 244
+    //   319: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
+    //   322: ldc 255
     //   324: ireturn
     //   325: aload_0
     //   326: aload 13
     //   328: iload_2
     //   329: invokevirtual 458	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Lcom/tencent/mobileqq/weiyun/sdk/upload/StoragePlatomProto;I)V
     //   332: aload_0
-    //   333: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   333: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   336: astore 17
     //   338: aload 17
     //   340: aload 17
-    //   342: getfield 459	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_b_of_type_Long	J
-    //   345: invokestatic 96	android/os/SystemClock:uptimeMillis	()J
+    //   342: getfield 460	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:e	J
+    //   345: invokestatic 106	android/os/SystemClock:uptimeMillis	()J
     //   348: lload 5
     //   350: lsub
     //   351: ladd
-    //   352: putfield 459	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_b_of_type_Long	J
+    //   352: putfield 460	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:e	J
     //   355: aload_0
-    //   356: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   356: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   359: astore 17
     //   361: aload 17
     //   363: aload 17
-    //   365: getfield 461	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	J
+    //   365: getfield 462	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:f	J
     //   368: aload_0
-    //   369: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   369: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   372: lload 7
     //   374: lsub
     //   375: ladd
-    //   376: putfield 461	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	J
+    //   376: putfield 462	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:f	J
     //   379: aload_0
-    //   380: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   380: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   383: lstore 5
     //   385: aload_0
-    //   386: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   386: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   389: lstore 7
     //   391: lload 5
     //   393: lload 7
@@ -1166,14 +1127,14 @@ public class UploadTransfer
     //   400: aload 14
     //   402: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   405: aload_0
-    //   406: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
+    //   406: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
     //   409: iconst_0
     //   410: ireturn
     //   411: aload_0
-    //   412: getfield 65	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_Long	J
+    //   412: getfield 74	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:k	J
     //   415: lstore 5
     //   417: aload_0
-    //   418: getfield 71	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_b_of_type_Long	J
+    //   418: getfield 80	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:l	J
     //   421: lstore 7
     //   423: lload 5
     //   425: lload 7
@@ -1183,70 +1144,70 @@ public class UploadTransfer
     //   432: aload 14
     //   434: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   437: aload_0
-    //   438: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
-    //   441: ldc_w 462
+    //   438: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
+    //   441: ldc_w 463
     //   444: ireturn
     //   445: goto -345 -> 100
     //   448: astore 13
     //   450: goto +53 -> 503
     //   453: astore 13
     //   455: aload_0
-    //   456: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   456: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   459: aload 13
-    //   461: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
+    //   461: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
     //   464: aload_0
     //   465: aload 14
     //   467: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   470: aload_0
-    //   471: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
-    //   474: ldc_w 341
+    //   471: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
+    //   474: ldc_w 353
     //   477: ireturn
     //   478: astore 13
     //   480: aload_0
-    //   481: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   481: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   484: aload 13
-    //   486: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
+    //   486: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
     //   489: aload_0
     //   490: aload 14
     //   492: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   495: aload_0
-    //   496: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
-    //   499: ldc_w 463
+    //   496: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
+    //   499: ldc_w 464
     //   502: ireturn
     //   503: aload_0
     //   504: aload 14
     //   506: invokevirtual 441	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	(Ljava/io/RandomAccessFile;)V
     //   509: aload_0
-    //   510: invokespecial 278	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:a	()V
+    //   510: invokespecial 289	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:d	()V
     //   513: aload 13
     //   515: athrow
     //   516: astore 13
     //   518: aload_0
-    //   519: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   519: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   522: aload 13
-    //   524: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
-    //   527: ldc_w 464
+    //   524: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
+    //   527: ldc_w 465
     //   530: ireturn
     //   531: astore 13
     //   533: aload_0
-    //   534: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   534: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   537: aload 13
-    //   539: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
-    //   542: ldc_w 465
+    //   539: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
+    //   542: ldc_w 466
     //   545: ireturn
     //   546: astore 13
     //   548: aload_0
-    //   549: getfield 76	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:jdField_a_of_type_ComTencentMobileqqWeiyunSdkUploadTransfer$ProcessInfo	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
+    //   549: getfield 85	com/tencent/mobileqq/weiyun/sdk/upload/UploadTransfer:m	Lcom/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo;
     //   552: aload 13
-    //   554: putfield 340	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:jdField_a_of_type_JavaLangThrowable	Ljava/lang/Throwable;
-    //   557: ldc_w 466
+    //   554: putfield 352	com/tencent/mobileqq/weiyun/sdk/upload/Transfer$ProcessInfo:c	Ljava/lang/Throwable;
+    //   557: ldc_w 467
     //   560: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	561	0	this	UploadTransfer
-    //   99	166	1	i	int
-    //   140	189	2	j	int
-    //   187	110	3	k	int
+    //   99	166	1	n	int
+    //   140	189	2	i1	int
+    //   187	110	3	i2	int
     //   107	201	4	bool	boolean
     //   167	257	5	l1	long
     //   173	253	7	l2	long
@@ -1302,10 +1263,45 @@ public class UploadTransfer
     //   0	25	531	java/net/MalformedURLException
     //   0	25	546	java/io/FileNotFoundException
   }
+  
+  public UploadTransfer.ByteArrayBuffer c()
+  {
+    Object localObject3 = null;
+    try
+    {
+      n = this.j.size();
+      Object localObject1 = localObject3;
+      if (n > 0)
+      {
+        localObject1 = (UploadTransfer.ByteArrayBuffer)((SoftReference)this.j.remove(n - 1)).get();
+        if (localObject1 == null) {
+          break label79;
+        }
+      }
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = new UploadTransfer.ByteArrayBuffer(new byte[40960]);
+      }
+      return localObject3;
+    }
+    finally
+    {
+      for (;;)
+      {
+        int n;
+        for (;;)
+        {
+          throw localObject2;
+        }
+        label79:
+        n -= 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.sdk.upload.UploadTransfer
  * JD-Core Version:    0.7.0.1
  */

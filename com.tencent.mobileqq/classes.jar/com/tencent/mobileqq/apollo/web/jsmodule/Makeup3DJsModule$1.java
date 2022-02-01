@@ -2,7 +2,8 @@ package com.tencent.mobileqq.apollo.web.jsmodule;
 
 import com.tencent.aelight.camera.cmsshow.api.CmShowAssetsData;
 import com.tencent.mobileqq.apollo.ipc.ApolloIPCModule;
-import com.tencent.mobileqq.apollo.res.api.IApolloResManager.ApolloDressInfoListener;
+import com.tencent.mobileqq.apollo.ipc.business.ICMResManager;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager.ApolloDressInfoListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,19 +27,19 @@ class Makeup3DJsModule$1
     paramString = new CmShowAssetsData();
     if (paramHashMap != null)
     {
-      localObject = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      localObject = this.a.entrySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        paramString.a.put(localEntry.getValue(), paramHashMap.get(localEntry.getKey()));
+        paramString.b.put(localEntry.getValue(), paramHashMap.get(localEntry.getKey()));
       }
     }
-    ApolloIPCModule.a(this.jdField_a_of_type_JavaLangString, new Makeup3DJsModule.1.1(this, paramString));
+    ((ICMResManager)ApolloIPCModule.a(ICMResManager.class)).a(this.b, 1, new Makeup3DJsModule.1.1(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.web.jsmodule.Makeup3DJsModule.1
  * JD-Core Version:    0.7.0.1
  */

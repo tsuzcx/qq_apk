@@ -9,8 +9,8 @@ class FollowedRecommendBannerModel$1$1
   
   public void run()
   {
-    if (FollowedRecommendBannerModel.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel$1.a) != null) {
-      FollowedRecommendBannerModel.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel$1.a).a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
+    if (FollowedRecommendBannerModel.a(this.c.a) != null) {
+      FollowedRecommendBannerModel.a(this.c.a).a(this.a, this.b);
     }
   }
 }

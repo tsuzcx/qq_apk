@@ -3,47 +3,47 @@ package com.tencent.mobileqq.troop.troopnotification.generalgroupnotifyparser;
 public class AllianceGeneralGroupNotifyParser$AllianceGeneralGroupNotifyInfo
   extends IGeneralGroupNotifyParser.GeneralGroupNotifyInfo
 {
-  public int a;
-  public long a;
   public String a;
   public long b;
-  public String b;
-  public long c;
   public String c;
   public long d;
-  public String d;
-  public long e;
-  public String e;
+  public int e;
+  public long f;
+  public String g;
+  public long h;
+  public String i;
+  public long j;
+  public String k;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AllianceGeneralGroupNotifyInfo{troopAssociationName='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", troopAssociationID=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", troopAssociationOwnerNickName='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", troopAssociationLeaderTroopUin=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", troopAssociationResult=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", reqTroopCode=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", reqTroopName='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", reqTroopOwnerUin=");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", reqTroopOwnerNickName='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append(", reqSourceTroopUin=");
-    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(", reqSourceTroopName='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -51,7 +51,7 @@ public class AllianceGeneralGroupNotifyParser$AllianceGeneralGroupNotifyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.generalgroupnotifyparser.AllianceGeneralGroupNotifyParser.AllianceGeneralGroupNotifyInfo
  * JD-Core Version:    0.7.0.1
  */

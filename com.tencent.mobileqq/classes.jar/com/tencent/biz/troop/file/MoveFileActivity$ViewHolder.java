@@ -7,13 +7,13 @@ import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 class MoveFileActivity$ViewHolder
   extends FacePreloadHolder.ViewHolder
 {
-  public ImageView a;
   public TextView a;
-  public TextView b;
+  public ImageView b;
+  public TextView c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.file.MoveFileActivity.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

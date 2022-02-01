@@ -1,11 +1,11 @@
 package cooperation.qqcircle.whitelist;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.QCircleConfig;
 import cooperation.qqcircle.report.QCircleAlphaUserReporter;
 import cooperation.qzone.LocalMultiProcConfig;
@@ -19,13 +19,13 @@ class QCirclePreLoadManager$1
   
   public void onReceive(BaseRequest paramBaseRequest, boolean paramBoolean, long paramLong, String paramString, QQCircleConfig.GetMooncakeRsp paramGetMooncakeRsp)
   {
-    RFLog.d("[QcirclePublish]QCirclePreLoadManager", RFLog.USR, new Object[] { "requestWhiteList... onReceive... isSuccess:", Boolean.valueOf(paramBoolean), " retCode:", Long.valueOf(paramLong) });
+    QLog.d("[QcirclePublish]QCirclePreLoadManager", 1, new Object[] { "requestWhiteList... onReceive... isSuccess:", Boolean.valueOf(paramBoolean), " retCode:", Long.valueOf(paramLong) });
     if ((paramBoolean) && (paramGetMooncakeRsp != null))
     {
       if (paramLong != 0L) {
         return;
       }
-      RFLog.d("[QcirclePublish]QCirclePreLoadManager", RFLog.USR, new Object[] { "requestWhiteList... onReceive... mAllowLongVideoSwitch:", Integer.valueOf(paramGetMooncakeRsp.allowLongVideo.get()), " mMaxLimitVideo:", Integer.valueOf(paramGetMooncakeRsp.videoLength.get()), " nextRequestTime:", Long.valueOf(System.currentTimeMillis() + paramGetMooncakeRsp.nextTimeInterval.get() * 1000) });
+      QLog.d("[QcirclePublish]QCirclePreLoadManager", 1, new Object[] { "requestWhiteList... onReceive... mAllowLongVideoSwitch:", Integer.valueOf(paramGetMooncakeRsp.allowLongVideo.get()), " mMaxLimitVideo:", Integer.valueOf(paramGetMooncakeRsp.videoLength.get()), " nextRequestTime:", Long.valueOf(System.currentTimeMillis() + paramGetMooncakeRsp.nextTimeInterval.get() * 1000) });
       LocalMultiProcConfig.putInt4Uin("sp_key_allow_long_video_switch", paramGetMooncakeRsp.allowLongVideo.get(), this.val$uin);
       LocalMultiProcConfig.putInt4Uin("sp_key_max_limit_video_length", paramGetMooncakeRsp.videoLength.get(), this.val$uin);
       LocalMultiProcConfig.putLong4Uin("sp_key_last_request_time", System.currentTimeMillis() + paramGetMooncakeRsp.nextTimeInterval.get() * 1000, this.val$uin);
@@ -39,11 +39,10 @@ class QCirclePreLoadManager$1
         }
         catch (Throwable paramBaseRequest)
         {
-          int i = RFLog.USR;
           paramString = new StringBuilder();
           paramString.append("requestWhiteList... ");
           paramString.append(paramBaseRequest.toString());
-          RFLog.e("[QcirclePublish]QCirclePreLoadManager", i, paramString.toString());
+          QLog.e("[QcirclePublish]QCirclePreLoadManager", 1, paramString.toString());
         }
       }
       paramLong = paramGetMooncakeRsp.featureMask.get();
@@ -53,7 +52,7 @@ class QCirclePreLoadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.whitelist.QCirclePreLoadManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,36 +7,25 @@ import com.tencent.qphone.base.util.QLog;
 
 public class LocationShareRoomManager
 {
-  private static volatile LocationShareRoomManager jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareRoomManager;
+  private static volatile LocationShareRoomManager d;
   public LocationRoom.RoomKey a;
-  public RoomOperateHandler a;
-  public RoomQueryHandler a;
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private LocationRoom.RoomKey b;
-  
-  private LocationShareRoomManager()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler = new RoomOperateHandler();
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler = new RoomQueryHandler();
-  }
+  public RoomOperateHandler b = new RoomOperateHandler();
+  public RoomQueryHandler c = new RoomQueryHandler();
+  private volatile boolean e = false;
+  private LocationRoom.RoomKey f;
   
   public static LocationShareRoomManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareRoomManager == null) {
+    if (d == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareRoomManager == null) {
-          jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareRoomManager = new LocationShareRoomManager();
+        if (d == null) {
+          d = new LocationShareRoomManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareRoomManager;
-  }
-  
-  public LocationRoom.RoomKey a()
-  {
-    return this.b;
+    return d;
   }
   
   public void a(int paramInt, String paramString)
@@ -65,7 +54,7 @@ public class LocationShareRoomManager
       i = 0;
     }
     label95:
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetRoomOperateHandler.a(i, paramInt, paramString);
+    this.b.a(i, paramInt, paramString);
   }
   
   public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
@@ -84,7 +73,7 @@ public class LocationShareRoomManager
   
   public void a(LocationRoom.RoomKey paramRoomKey)
   {
-    this.b = paramRoomKey;
+    this.f = paramRoomKey;
   }
   
   public void a(boolean paramBoolean)
@@ -92,20 +81,25 @@ public class LocationShareRoomManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.LocationShare", 2, new Object[] { "setJoinOrCreateRoomNotReEntry: invoked. ", " joinOrCreateRoomNotReEntry: ", Boolean.valueOf(paramBoolean) });
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public boolean a()
+  public boolean b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.LocationShare", 2, new Object[] { "joinOrCreateRoomNotReEntry: invoked. ", " isJoinOrCreateRoomNotReEntry: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+      QLog.d("Q.LocationShare", 2, new Object[] { "joinOrCreateRoomNotReEntry: invoked. ", " isJoinOrCreateRoomNotReEntry: ", Boolean.valueOf(this.e) });
     }
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
+  }
+  
+  public LocationRoom.RoomKey c()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareRoomManager
  * JD-Core Version:    0.7.0.1
  */

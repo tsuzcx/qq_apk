@@ -62,20 +62,18 @@ public class TroopRedTouchHandler
   extends BusinessHandler
 {
   protected int a;
-  protected TroopRedTouchHandler.NetInfoHandler a;
-  protected BusinessObserver a;
-  private QQAppInterface a;
-  protected boolean a;
+  protected TroopRedTouchHandler.NetInfoHandler b;
+  protected boolean c = false;
+  protected BusinessObserver d = new TroopRedTouchHandler.5(this);
+  private QQAppInterface e;
   
   public TroopRedTouchHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new TroopRedTouchHandler.5(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$NetInfoHandler = new TroopRedTouchHandler.NetInfoHandler(this);
-    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$NetInfoHandler);
-    this.jdField_a_of_type_Int = 0;
+    this.e = paramQQAppInterface;
+    this.b = new TroopRedTouchHandler.NetInfoHandler(this);
+    AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.b);
+    this.a = 0;
   }
   
   public static oidb_0x791.RedDotInfo a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte)
@@ -94,9 +92,9 @@ public class TroopRedTouchHandler
         Object localObject3 = new Submsgtype0x69();
         ((Submsgtype0x69)localObject3).mergeFrom(paramArrayOfByte);
         boolean bool = ((Submsgtype0x69)localObject3).bool_test_env.get();
-        if (bool != PushServlet.jdField_a_of_type_Boolean)
+        if (bool != PushServlet.a)
         {
-          SLog.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, sIsTestEnv = %b", Boolean.valueOf(bool), Boolean.valueOf(PushServlet.jdField_a_of_type_Boolean));
+          SLog.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, sIsTestEnv = %b", Boolean.valueOf(bool), Boolean.valueOf(PushServlet.a));
           if (bool != QQStoryNetReqUtils.a())
           {
             SLog.a("TroopRedTouchHandler", "parsePushRedPointInfo env not match!! isTestEnvFromPush = %b, QQStoryNetReqUtils.isDevEnv() = %b", Boolean.valueOf(bool), Boolean.valueOf(QQStoryNetReqUtils.a()));
@@ -120,7 +118,7 @@ public class TroopRedTouchHandler
         {
           paramArrayOfByte = new StringBuilder();
           paramArrayOfByte.append("parsePushRedPointInfo:");
-          paramArrayOfByte.append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject1));
+          paramArrayOfByte.append(TroopRedTouchManager.b((oidb_0x791.RedDotInfo)localObject1));
           QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, paramArrayOfByte.toString());
         }
         i = ((oidb_0x791.RedDotInfo)localObject1).uint32_appid.get();
@@ -129,7 +127,7 @@ public class TroopRedTouchHandler
           {
             paramArrayOfByte = new JSONObject(((oidb_0x791.RedDotInfo)localObject1).str_custom_buffer.get().toStringUtf8());
             if (paramArrayOfByte.optInt("official_topic") != 1) {
-              break label1151;
+              break label1152;
             }
             i = 1;
             int j = paramArrayOfByte.optInt("red_content_type");
@@ -158,63 +156,63 @@ public class TroopRedTouchHandler
           {
             paramQQAppInterface = (StoryConfigManager)SuperManager.a(10);
             long l1 = NetConnInfoCenter.getServerTimeMillis();
-            long l2 = paramQQAppInterface.a();
+            long l2 = paramQQAppInterface.j();
             if (l1 < l2)
             {
               if (!QLog.isColorLevel()) {
-                break label1156;
+                break label1157;
               }
               paramQQAppInterface = new StringBuilder();
               paramQQAppInterface.append("故事红点下发到达时间：");
               paramQQAppInterface.append(l1);
               paramQQAppInterface.append("小于最近更新刷新时间：");
               paramQQAppInterface.append(l2);
-              paramQQAppInterface.append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject1));
+              paramQQAppInterface.append(TroopRedTouchManager.b((oidb_0x791.RedDotInfo)localObject1));
               QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, paramQQAppInterface.toString());
               return null;
             }
-            paramQQAppInterface = paramArrayOfByte.a();
+            paramQQAppInterface = paramArrayOfByte.q();
             i = TroopRedTouchConfigure.a((oidb_0x791.RedDotInfo)localObject1, paramQQAppInterface);
             if (i < 0)
             {
               if (!QLog.isColorLevel()) {
-                break label1158;
+                break label1159;
               }
               paramArrayOfByte = new StringBuilder();
               paramArrayOfByte.append("comparePriority:比上一个红点优先级低，current：");
-              paramArrayOfByte.append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject1));
+              paramArrayOfByte.append(TroopRedTouchManager.b((oidb_0x791.RedDotInfo)localObject1));
               paramArrayOfByte.append("|lastRedPoint:");
-              paramArrayOfByte.append(TroopRedTouchManager.a(paramQQAppInterface));
+              paramArrayOfByte.append(TroopRedTouchManager.b(paramQQAppInterface));
               QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, paramArrayOfByte.toString());
               return null;
             }
             if ((i == 0) && (((oidb_0x791.RedDotInfo)localObject1).uint32_last_time.get() < paramQQAppInterface.uint32_last_time.get()))
             {
               if (!QLog.isColorLevel()) {
-                break label1160;
+                break label1161;
               }
               paramArrayOfByte = new StringBuilder();
               paramArrayOfByte.append("当前红点比上一个红点旧，current：");
-              paramArrayOfByte.append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject1));
+              paramArrayOfByte.append(TroopRedTouchManager.b((oidb_0x791.RedDotInfo)localObject1));
               paramArrayOfByte.append("|lastRedPoint:");
-              paramArrayOfByte.append(TroopRedTouchManager.a(paramQQAppInterface));
+              paramArrayOfByte.append(TroopRedTouchManager.b(paramQQAppInterface));
               QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, paramArrayOfByte.toString());
               return null;
             }
           }
           else
           {
-            paramQQAppInterface = paramArrayOfByte.a();
+            paramQQAppInterface = paramArrayOfByte.q();
             if ((paramQQAppInterface == null) || (paramQQAppInterface.uint64_cmd_uin.get() != ((oidb_0x791.RedDotInfo)localObject1).uint64_cmd_uin.get()) || (paramQQAppInterface.uint32_cmd_uin_type.get() != ((oidb_0x791.RedDotInfo)localObject1).uint32_cmd_uin_type.get()) || (paramQQAppInterface.uint32_last_time.get() != ((oidb_0x791.RedDotInfo)localObject1).uint32_last_time.get()))
             {
               if (!QLog.isColorLevel()) {
-                break label1162;
+                break label1163;
               }
               paramArrayOfByte = new StringBuilder();
               paramArrayOfByte.append("故事的撤回红点需要判断uin和lasttime，强校验，和上一个不一致的话直接返回，不处理，current：");
-              paramArrayOfByte.append(TroopRedTouchManager.a((oidb_0x791.RedDotInfo)localObject1));
+              paramArrayOfByte.append(TroopRedTouchManager.b((oidb_0x791.RedDotInfo)localObject1));
               paramArrayOfByte.append("|lastRedPoint:");
-              paramArrayOfByte.append(TroopRedTouchManager.a(paramQQAppInterface));
+              paramArrayOfByte.append(TroopRedTouchManager.b(paramQQAppInterface));
               QLog.d("TroopRedTouchHandlerQ.qqstory.redPoint", 2, paramArrayOfByte.toString());
               return null;
             }
@@ -227,7 +225,7 @@ public class TroopRedTouchHandler
           }
           localObject3 = paramArrayOfByte.a(46, false);
           if ((localObject3 == null) || (!((oidb_0x791.RedDotInfo)localObject3).uint32_last_time.has())) {
-            break label1164;
+            break label1165;
           }
           i = ((oidb_0x791.RedDotInfo)localObject3).uint32_last_time.get();
           if (QLog.isColorLevel())
@@ -254,18 +252,18 @@ public class TroopRedTouchHandler
       }
       SLog.a("TroopRedTouchHandler", "parsePushRedPointInfo() return %s", localObject1);
       return localObject1;
-      label1151:
+      label1152:
       int i = 0;
       continue;
-      label1156:
+      label1157:
       return null;
-      label1158:
+      label1159:
       return null;
-      label1160:
+      label1161:
       return null;
-      label1162:
+      label1163:
       return null;
-      label1164:
+      label1165:
       i = 0;
     }
     return null;
@@ -323,8 +321,8 @@ public class TroopRedTouchHandler
         } else {
           paramInt = 0;
         }
-        RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().a();
-        if (localRecentUserProxy.b(AppConstants.TENCENT_DOCS_ASSISTANT_UIN, 6004) == null) {
+        RecentUserProxy localRecentUserProxy = paramQQAppInterface.getProxyManager().g();
+        if (localRecentUserProxy.c(AppConstants.TENCENT_DOCS_ASSISTANT_UIN, 6004) == null) {
           bool1 = false;
         }
         if (QLog.isColorLevel())
@@ -341,7 +339,7 @@ public class TroopRedTouchHandler
         if ((!bool1) && (!paramRedDotInfo.bool_display_reddot.get()) && (!paramBoolean)) {
           return;
         }
-        Object localObject = localRecentUserProxy.a(AppConstants.TENCENT_DOCS_ASSISTANT_UIN, 6004);
+        Object localObject = localRecentUserProxy.b(AppConstants.TENCENT_DOCS_ASSISTANT_UIN, 6004);
         if ((i > 0) && ((paramRedDotInfo.bool_display_reddot.get()) || (paramBoolean)))
         {
           long l;
@@ -353,7 +351,7 @@ public class TroopRedTouchHandler
           ((RecentUser)localObject).lastmsgtime = l;
         }
         ((RecentUser)localObject).msgType = 0;
-        ((RecentUser)localObject).displayName = paramQQAppInterface.getApp().getString(2131719599);
+        ((RecentUser)localObject).displayName = paramQQAppInterface.getApp().getString(2131917162);
         if (paramInt != 0) {
           localRecentUserProxy.b((RecentUser)localObject);
         }
@@ -408,13 +406,13 @@ public class TroopRedTouchHandler
     return false;
   }
   
-  private void c()
+  private void d()
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.a != 0)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+      localObject1 = this.e.getApplication();
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.e.getCurrentAccountUin());
       ((StringBuilder)localObject2).append("RedTouchExManager_GetTime");
       localObject1 = ((MobileQQ)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
       long l1 = ((SharedPreferences)localObject1).getLong("last_get_time", 0L);
@@ -446,11 +444,11 @@ public class TroopRedTouchHandler
     ((List)localObject1).add(Integer.valueOf(35));
     ((List)localObject1).add(Integer.valueOf(37));
     ((List)localObject1).add(Integer.valueOf(65));
-    if (((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).isTencentDocsAssistantEnable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+    if (((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).isTencentDocsAssistantEnable(this.e)) {
       ((List)localObject1).add(Integer.valueOf(46));
     }
     Object localObject3 = new oidb_0x791.GetRedDotOpt();
-    ((oidb_0x791.GetRedDotOpt)localObject3).uint64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((oidb_0x791.GetRedDotOpt)localObject3).uint64_uin.set(Long.parseLong(this.e.getCurrentAccountUin()));
     ((oidb_0x791.GetRedDotOpt)localObject3).rpt_uint32_appid.addAll((Collection)localObject1);
     Object localObject2 = new oidb_0x791.ReqBody();
     ((oidb_0x791.ReqBody)localObject2).msg_get_reddot.set((MessageMicro)localObject3);
@@ -459,17 +457,12 @@ public class TroopRedTouchHandler
     ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-    localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ProtoServlet.class);
+    localObject2 = new NewIntent(this.e.getApplication(), ProtoServlet.class);
     ((NewIntent)localObject2).setWithouLogin(true);
     ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_0");
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
     ((NewIntent)localObject2).setObserver(new TroopRedTouchHandler.2(this, (List)localObject1));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    this.e.startServlet((NewIntent)localObject2);
   }
   
   public void a(int paramInt)
@@ -523,7 +516,7 @@ public class TroopRedTouchHandler
     if (((String)localObject1).length() <= 0) {
       return;
     }
-    localObject2 = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    localObject2 = (IRedTouchManager)this.e.getRuntimeService(IRedTouchManager.class, "");
     ((IRedTouchManager)localObject2).onRedTouchItemClick((String)localObject1);
     if (((IRedTouchManager)localObject2).getNumRedPathListByAppId(7719) == null) {
       return;
@@ -540,16 +533,16 @@ public class TroopRedTouchHandler
     localReqClearMessage.start_time.set(paramInt1);
     localReqClearMessage.source.set(paramInt2);
     localReqClearMessage.version_ctrl.set(775);
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ProtoServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.e.getApplication(), ProtoServlet.class);
     localNewIntent.putExtra("cmd", StoryApi.a("StorySvc.clr_710_message_list"));
     localNewIntent.putExtra("data", localReqClearMessage.toByteArray());
     localNewIntent.setObserver(new TroopRedTouchHandler.6(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
+    this.e.startServlet(localNewIntent);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    Object localObject = (TroopRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
+    Object localObject = (TroopRedTouchManager)this.e.getManager(QQManagerFactory.MGR_RED_TOUCH_EX);
     if (localObject != null)
     {
       oidb_0x791.RedDotInfo localRedDotInfo = ((TroopRedTouchManager)localObject).a(paramInt, false);
@@ -570,9 +563,9 @@ public class TroopRedTouchHandler
   public void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, oidb_0x791.RedDotInfo paramRedDotInfo, boolean paramBoolean3, boolean paramBoolean4)
   {
     Object localObject1 = new oidb_0x791.SetRedDotOpt();
-    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.e.getCurrentAccountUin()));
     Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())));
+    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.e.getCurrentAccountUin())));
     ((oidb_0x791.SetRedDotOpt)localObject1).rpt_uint64_uin.set((List)localObject2);
     ((oidb_0x791.SetRedDotOpt)localObject1).bool_clear.set(paramBoolean1);
     if (paramInt2 >= 0) {
@@ -620,20 +613,20 @@ public class TroopRedTouchHandler
     paramRedDotInfo.uint32_result.set(0);
     paramRedDotInfo.uint32_service_type.set(paramInt1);
     paramRedDotInfo.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-    localObject1 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ProtoServlet.class);
+    localObject1 = new NewIntent(this.e.getApplication(), ProtoServlet.class);
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("OidbSvc.0x791_");
     ((StringBuilder)localObject2).append(String.valueOf(paramInt1));
     ((NewIntent)localObject1).putExtra("cmd", ((StringBuilder)localObject2).toString());
     ((NewIntent)localObject1).putExtra("data", paramRedDotInfo.toByteArray());
     ((NewIntent)localObject1).setObserver(new TroopRedTouchHandler.7(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject1);
+    this.e.startServlet((NewIntent)localObject1);
   }
   
   public void a(TroopRedTouchManager paramTroopRedTouchManager, int paramInt)
   {
-    paramTroopRedTouchManager = paramTroopRedTouchManager.a(paramInt);
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramTroopRedTouchManager);
+    paramTroopRedTouchManager = paramTroopRedTouchManager.e(paramInt);
+    a(this.e, paramTroopRedTouchManager);
   }
   
   public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
@@ -642,9 +635,9 @@ public class TroopRedTouchHandler
       return;
     }
     Object localObject1 = new oidb_0x791.SetRedDotOpt();
-    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    ((oidb_0x791.SetRedDotOpt)localObject1).uint64_cmd_uin.set(Long.parseLong(this.e.getCurrentAccountUin()));
     Object localObject2 = new ArrayList();
-    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())));
+    ((ArrayList)localObject2).add(Long.valueOf(Long.parseLong(this.e.getCurrentAccountUin())));
     ((oidb_0x791.SetRedDotOpt)localObject1).rpt_uint64_uin.set((List)localObject2);
     ((oidb_0x791.SetRedDotOpt)localObject1).bool_clear.set(true);
     if (paramRedDotInfo.uint32_appid.get() == 46) {
@@ -659,28 +652,28 @@ public class TroopRedTouchHandler
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(paramRedDotInfo.uint32_appid.get());
     ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x791.ReqBody)localObject2).toByteArray()));
-    localObject2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ProtoServlet.class);
+    localObject2 = new NewIntent(this.e.getApplication(), ProtoServlet.class);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OidbSvc.0x791_");
     localStringBuilder.append(String.valueOf(paramRedDotInfo.uint32_appid.get()));
     ((NewIntent)localObject2).putExtra("cmd", localStringBuilder.toString());
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
     ((NewIntent)localObject2).setObserver(new TroopRedTouchHandler.3(this));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject2);
+    this.e.startServlet((NewIntent)localObject2);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public boolean a()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("getRedPointInfo<requestedRedPoint:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     QLog.d("TroopRedTouchHandler", 2, localStringBuilder.toString());
-    if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Boolean))
+    if ((this.a != 1) && (this.c))
     {
       ThreadManager.post(new TroopRedTouchHandler.1(this), 5, null, true);
       return true;
@@ -690,12 +683,17 @@ public class TroopRedTouchHandler
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver);
+    this.e.addObserver(this.d);
   }
   
   public void b(int paramInt)
   {
     a(paramInt, true);
+  }
+  
+  public void c()
+  {
+    this.e.removeObserver(this.d);
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -705,11 +703,11 @@ public class TroopRedTouchHandler
   
   public void onDestroy()
   {
-    TroopRedTouchHandler.NetInfoHandler localNetInfoHandler = this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$NetInfoHandler;
+    TroopRedTouchHandler.NetInfoHandler localNetInfoHandler = this.b;
     if (localNetInfoHandler != null) {
       AppNetConnInfo.unregisterNetInfoHandler(localNetInfoHandler);
     }
-    this.jdField_a_of_type_Int = 0;
+    this.a = 0;
     super.onDestroy();
   }
   

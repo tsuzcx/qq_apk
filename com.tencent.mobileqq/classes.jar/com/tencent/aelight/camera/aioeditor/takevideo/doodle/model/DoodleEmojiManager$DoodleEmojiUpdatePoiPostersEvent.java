@@ -11,17 +11,17 @@ public class DoodleEmojiManager$DoodleEmojiUpdatePoiPostersEvent
 {
   public final int a;
   @NonNull
-  public final List<POIPosterItem> a;
+  public final List<POIPosterItem> b;
   
   public DoodleEmojiManager$DoodleEmojiUpdatePoiPostersEvent(int paramInt, @NonNull List<POIPosterItem> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+    this.a = paramInt;
+    this.b = new ArrayList(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent
  * JD-Core Version:    0.7.0.1
  */

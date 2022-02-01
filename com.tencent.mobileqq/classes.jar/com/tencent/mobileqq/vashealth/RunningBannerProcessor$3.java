@@ -13,13 +13,13 @@ class RunningBannerProcessor$3
   
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("icon", paramBitmap);
-    BannerManager.a().a(RunningBannerProcessor.a, 2, this.jdField_a_of_type_AndroidOsMessage);
+    this.a.putParcelable("icon", paramBitmap);
+    BannerManager.a().a(RunningBannerProcessor.a, 2, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.RunningBannerProcessor.3
  * JD-Core Version:    0.7.0.1
  */

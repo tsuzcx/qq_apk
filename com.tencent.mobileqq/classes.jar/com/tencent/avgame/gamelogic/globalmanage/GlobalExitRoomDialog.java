@@ -12,40 +12,29 @@ import mqq.app.MobileQQ;
 
 public class GlobalExitRoomDialog
 {
-  private BroadcastReceiver a;
-  public boolean a;
+  public boolean a = false;
   private boolean b = true;
-  
-  private GlobalExitRoomDialog()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new GlobalExitRoomDialog.1(this);
-  }
+  private BroadcastReceiver c = new GlobalExitRoomDialog.1(this);
   
   public static GlobalExitRoomDialog a()
   {
     return GlobalExitRoomDialog.INNER.a;
   }
   
-  private void c()
+  private void d()
   {
     try
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
       localIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
-      MobileQQ.sMobileQQ.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      MobileQQ.sMobileQQ.registerReceiver(this.c, localIntentFilter);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-  }
-  
-  public void a()
-  {
-    c();
   }
   
   public boolean a(int paramInt, String paramString, EngineData paramEngineData)
@@ -81,7 +70,7 @@ public class GlobalExitRoomDialog
     }
     boolean bool = false;
     paramInt = i;
-    if ((paramInt != 0) && (!this.jdField_a_of_type_Boolean) && (this.b))
+    if ((paramInt != 0) && (!this.a) && (this.b))
     {
       paramEngineData = new Intent();
       paramEngineData.putExtra("type", 1);
@@ -95,7 +84,12 @@ public class GlobalExitRoomDialog
   
   public void b()
   {
-    MobileQQ.sMobileQQ.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    d();
+  }
+  
+  public void c()
+  {
+    MobileQQ.sMobileQQ.unregisterReceiver(this.c);
   }
 }
 

@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public class QZoneManagerImp$QZoneGroupEntranceConfig
   extends CommonConfigBase
 {
-  public ArrayList<Long> a;
-  public boolean a;
+  public ArrayList<Long> d;
+  public boolean e;
   
   public String a()
   {
@@ -20,8 +20,8 @@ public class QZoneManagerImp$QZoneGroupEntranceConfig
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Boolean = false;
+    this.d = new ArrayList();
+    this.e = false;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
@@ -34,11 +34,11 @@ public class QZoneManagerImp$QZoneGroupEntranceConfig
         int i = 0;
         while (i < localJSONArray.length())
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(localJSONArray.optLong(i)));
+          this.d.add(Long.valueOf(localJSONArray.optLong(i)));
           i += 1;
         }
       }
-      this.jdField_a_of_type_Boolean = paramString.optBoolean("is_show_reddot", false);
+      this.e = paramString.optBoolean("is_show_reddot", false);
       return;
     }
     catch (Exception paramString)
@@ -54,7 +54,7 @@ public class QZoneManagerImp$QZoneGroupEntranceConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.QZoneGroupEntranceConfig
  * JD-Core Version:    0.7.0.1
  */

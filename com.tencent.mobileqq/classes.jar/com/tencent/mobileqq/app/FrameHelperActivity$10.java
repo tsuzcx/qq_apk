@@ -18,42 +18,43 @@ class FrameHelperActivity$10
   
   public boolean onLongClick(View paramView)
   {
-    if (this.a.a() != null)
+    if (this.a.C() != null)
     {
-      if (this.a.a().isFinishing()) {
+      if (this.a.C().isFinishing()) {
         return true;
       }
-      if (!((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).isHeadIconLongClickFunc((QQAppInterface)this.a.a().getAppRuntime(), false)) {
+      if (!((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).isHeadIconLongClickFunc((QQAppInterface)this.a.C().getAppRuntime(), false)) {
         return true;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
+      if ((this.a.ah != null) && (this.a.ah.j())) {
         return true;
       }
-      if ((paramView == this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusIAccountPanel != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusIAccountPanel.isShowing()))
+      if ((paramView == this.a.ae) && (this.a.aj != null) && (!this.a.aj.isShowing()))
       {
-        if ((this.a.a().getAppRuntime() != null) && (this.a.a().getAppRuntime().getApp() != null))
+        if ((this.a.C().getAppRuntime() != null) && (this.a.C().getAppRuntime().getApp() != null))
         {
-          paramView = (Vibrator)this.a.a().getAppRuntime().getApp().getSystemService("vibrator");
+          paramView = (Vibrator)this.a.C().getAppRuntime().getApp().getSystemService("vibrator");
           if (paramView != null) {
             paramView.vibrate(new long[] { 0L, 1L, 20L, 21L }, -1);
           }
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqOnlinestatusIAccountPanel.show();
-        ReportController.b(this.a.a().getAppRuntime(), "dc00898", "", "", "0X800A999", "0X800A999", 1, 0, "", "", "", "");
-        ReportController.b(this.a.a().getAppRuntime(), "dc00898", "", "", "0X8009E84", "0X8009E84", 0, 0, "", "", "", "");
+        this.a.aj.show();
+        ReportController.b(this.a.C().getAppRuntime(), "dc00898", "", "", "0X800A999", "0X800A999", 1, 0, "", "", "", "");
+        ReportController.b(this.a.C().getAppRuntime(), "dc00898", "", "", "0X8009E84", "0X8009E84", 0, 0, "", "", "", "");
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$HeadViewLongClick != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity$HeadViewLongClick.a();
+      if (this.a.al != null) {
+        this.a.al.a();
       }
-      this.a.m();
-      ReportController.b(this.a.a().getAppRuntime(), "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
+      this.a.q();
+      FrameHelperActivity.g(this.a);
+      ReportController.b(this.a.C().getAppRuntime(), "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.10
  * JD-Core Version:    0.7.0.1
  */

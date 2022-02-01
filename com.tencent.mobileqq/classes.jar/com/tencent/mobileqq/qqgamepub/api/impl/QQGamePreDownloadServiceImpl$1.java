@@ -15,12 +15,12 @@ class QQGamePreDownloadServiceImpl$1
   public void onDoneFile(DownloadTask paramDownloadTask)
   {
     super.onDoneFile(paramDownloadTask);
-    QQGamePreDownloadServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQqgamepubApiImplQQGamePreDownloadServiceImpl, paramDownloadTask, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam);
+    QQGamePreDownloadServiceImpl.access$000(this.b, paramDownloadTask, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.1
  * JD-Core Version:    0.7.0.1
  */

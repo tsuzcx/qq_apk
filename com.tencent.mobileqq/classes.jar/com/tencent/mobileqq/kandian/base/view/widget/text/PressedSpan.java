@@ -9,29 +9,29 @@ public class PressedSpan
   extends ClickableSpan
   implements ClickableSpanPressed, ISpan
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
   private int b = -1;
   private int c = -1;
+  private int d = -1;
+  private TextPaint e;
+  private View.OnClickListener f;
   
   public PressedSpan(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    this.d = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.f = paramOnClickListener;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.a = paramBoolean;
+    TextPaint localTextPaint = this.e;
     if (localTextPaint != null) {
       updateDrawState(localTextPaint);
     }
@@ -39,7 +39,7 @@ public class PressedSpan
   
   public void onClick(View paramView)
   {
-    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    View.OnClickListener localOnClickListener = this.f;
     if (localOnClickListener != null)
     {
       localOnClickListener.onClick(paramView);
@@ -51,22 +51,22 @@ public class PressedSpan
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.c);
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
+    this.e = paramTextPaint;
+    this.e.setColor(this.d);
+    paramTextPaint = this.e;
     int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.b;
+    if (this.a) {
+      i = this.c;
     } else {
-      i = this.jdField_a_of_type_Int;
+      i = this.b;
     }
     paramTextPaint.bgColor = i;
-    this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
+    this.e.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.text.PressedSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class TroopSuspiciousMsgBoxAppender
     if (AppConstants.TROOP_SUSPICIOUS_MSG_UIN.equals(paramMessageRecord.frienduin))
     {
       paramIMessageManager = (C2CMessageManager)paramIMessageManager;
-      TroopSusSystemMsgHelper.a(paramIMessageManager, paramMessageRecord, paramIMessageManager.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade, (QQAppInterface)paramIMessageManager.jdField_a_of_type_MqqAppAppRuntime);
+      TroopSusSystemMsgHelper.a(paramIMessageManager, paramMessageRecord, paramIMessageManager.b, (QQAppInterface)paramIMessageManager.a);
       return new Object[] { Boolean.valueOf(true), paramString, Integer.valueOf(paramInt), Long.valueOf(paramMessageRecord.time) };
     }
     return new Object[] { Boolean.valueOf(false), paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) };
@@ -28,7 +28,7 @@ public class TroopSuspiciousMsgBoxAppender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgboxappender.TroopSuspiciousMsgBoxAppender
  * JD-Core Version:    0.7.0.1
  */

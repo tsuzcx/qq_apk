@@ -15,15 +15,15 @@ class PublicAccountAdvertisementActivity$13
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(",music system is thread ");
-      localStringBuilder.append(PublicAccountAdvertisementActivity.a(this.this$0).a);
+      localStringBuilder.append(PublicAccountAdvertisementActivity.l(this.this$0).e);
       QLog.d("volumeTrace", 2, localStringBuilder.toString());
     }
-    PublicAccountAdvertisementActivity.a(this.this$0).setStreamVolume(3, PublicAccountAdvertisementActivity.a(this.this$0).a, 0);
+    PublicAccountAdvertisementActivity.y(this.this$0).setStreamVolume(3, PublicAccountAdvertisementActivity.l(this.this$0).e, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.13
  * JD-Core Version:    0.7.0.1
  */

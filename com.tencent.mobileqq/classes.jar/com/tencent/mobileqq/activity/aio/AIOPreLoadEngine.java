@@ -26,23 +26,23 @@ import com.tencent.util.WeakReferenceHandler;
 public class AIOPreLoadEngine
   implements Handler.Callback
 {
-  public static int a = 0;
-  public static long a = -1L;
-  private static AIOPreLoadEngine jdField_a_of_type_ComTencentMobileqqActivityAioAIOPreLoadEngine = new AIOPreLoadEngine();
   public static boolean a = true;
-  private static boolean b = false;
-  private Handler jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  public static int b = 0;
+  public static long c = -1L;
+  private static boolean d = false;
+  private static AIOPreLoadEngine f = new AIOPreLoadEngine();
+  private Handler e = new WeakReferenceHandler(Looper.getMainLooper(), this);
   
   static
   {
-    a();
+    b();
   }
   
   public static AIOPreLoadEngine a()
   {
     try
     {
-      AIOPreLoadEngine localAIOPreLoadEngine = jdField_a_of_type_ComTencentMobileqqActivityAioAIOPreLoadEngine;
+      AIOPreLoadEngine localAIOPreLoadEngine = f;
       return localAIOPreLoadEngine;
     }
     finally
@@ -52,13 +52,82 @@ public class AIOPreLoadEngine
     }
   }
   
-  public static void a()
+  @TargetApi(17)
+  private void a(Activity paramActivity)
+  {
+    if ((paramActivity != null) && ((paramActivity instanceof SplashActivity)))
+    {
+      if ((b != 1) && (!ChatFragment.a))
+      {
+        SplashActivity localSplashActivity = (SplashActivity)paramActivity;
+        if ((localSplashActivity.app != null) && (localSplashActivity.app.isRunning()) && (localSplashActivity.app.isLogin()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.aio.AIOPreLoadEngine", 2, "doRealPreLoadAIO");
+          }
+          FragmentManager localFragmentManager = localSplashActivity.getSupportFragmentManager();
+          Fragment localFragment = localFragmentManager.findFragmentByTag(ChatFragment.class.getName());
+          boolean bool;
+          if (((Build.VERSION.SDK_INT > 16) && (paramActivity.isDestroyed())) || (paramActivity.isFinishing())) {
+            bool = false;
+          } else {
+            bool = true;
+          }
+          if ((localFragment == null) && (bool))
+          {
+            c = SystemClock.uptimeMillis();
+            StartupTracker.a(null, "AIO_preLoad_Cost");
+            try
+            {
+              paramActivity = localFragmentManager.beginTransaction();
+              paramActivity.add(16908290, ChatFragment.a(), ChatFragment.class.getName());
+              localSplashActivity.setIntent(new Intent());
+              paramActivity.commitAllowingStateLoss();
+              b = 1;
+              com.tencent.qqperf.tools.PerformanceReportUtils.b = 1;
+              return;
+            }
+            catch (Exception paramActivity)
+            {
+              QLog.e("Q.aio.AIOPreLoadEngine", 1, "AIO preLoad:", paramActivity);
+              return;
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            paramActivity = new StringBuilder();
+            paramActivity.append("AIO cannot peload:");
+            paramActivity.append(bool);
+            QLog.i("Q.aio.AIOPreLoadEngine", 2, paramActivity.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.e("Q.aio.AIOPreLoadEngine", 2, "app is not valid");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("sPreloadedAIOType:");
+        paramActivity.append(b);
+        paramActivity.append("|AIO_HAD_OPEN:");
+        paramActivity.append(ChatFragment.a);
+        QLog.e("Q.aio.AIOPreLoadEngine", 2, paramActivity.toString());
+      }
+    }
+    else if (QLog.isColorLevel()) {
+      QLog.i("Q.aio.AIOPreLoadEngine", 2, "activity is not splashActivity");
+    }
+  }
+  
+  public static void b()
   {
     Object localObject1;
     label103:
     try
     {
-      bool = b;
+      bool = d;
       if (bool) {
         return;
       }
@@ -89,100 +158,31 @@ public class AIOPreLoadEngine
       bool = false;
       break label103;
     }
-    jdField_a_of_type_Boolean = bool;
+    a = bool;
     break label153;
     label110:
-    jdField_a_of_type_Boolean = false;
+    a = false;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("initAIOPreloadFlagByDpc error|");
-      ((StringBuilder)localObject1).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(a);
       QLog.d("Q.aio.AIOPreLoadEngine", 2, ((StringBuilder)localObject1).toString());
     }
     label153:
-    b = true;
+    d = true;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("initAIOPreloadFlagByDpc|");
-      ((StringBuilder)localObject1).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject1).append(a);
       QLog.i("Q.aio.AIOPreLoadEngine", 2, ((StringBuilder)localObject1).toString());
-    }
-  }
-  
-  @TargetApi(17)
-  private void a(Activity paramActivity)
-  {
-    if ((paramActivity != null) && ((paramActivity instanceof SplashActivity)))
-    {
-      if ((jdField_a_of_type_Int != 1) && (!ChatFragment.jdField_a_of_type_Boolean))
-      {
-        SplashActivity localSplashActivity = (SplashActivity)paramActivity;
-        if ((localSplashActivity.app != null) && (localSplashActivity.app.isRunning()) && (localSplashActivity.app.isLogin()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.AIOPreLoadEngine", 2, "doRealPreLoadAIO");
-          }
-          FragmentManager localFragmentManager = localSplashActivity.getSupportFragmentManager();
-          Fragment localFragment = localFragmentManager.findFragmentByTag(ChatFragment.class.getName());
-          boolean bool;
-          if (((Build.VERSION.SDK_INT > 16) && (paramActivity.isDestroyed())) || (paramActivity.isFinishing())) {
-            bool = false;
-          } else {
-            bool = true;
-          }
-          if ((localFragment == null) && (bool))
-          {
-            jdField_a_of_type_Long = SystemClock.uptimeMillis();
-            StartupTracker.a(null, "AIO_preLoad_Cost");
-            try
-            {
-              paramActivity = localFragmentManager.beginTransaction();
-              paramActivity.add(16908290, ChatFragment.a(), ChatFragment.class.getName());
-              localSplashActivity.setIntent(new Intent());
-              paramActivity.commitAllowingStateLoss();
-              jdField_a_of_type_Int = 1;
-              com.tencent.qqperf.tools.PerformanceReportUtils.jdField_a_of_type_Int = 1;
-              return;
-            }
-            catch (Exception paramActivity)
-            {
-              QLog.e("Q.aio.AIOPreLoadEngine", 1, "AIO preLoad:", paramActivity);
-              return;
-            }
-          }
-          if (QLog.isColorLevel())
-          {
-            paramActivity = new StringBuilder();
-            paramActivity.append("AIO cannot peload:");
-            paramActivity.append(bool);
-            QLog.i("Q.aio.AIOPreLoadEngine", 2, paramActivity.toString());
-          }
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.e("Q.aio.AIOPreLoadEngine", 2, "app is not valid");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        paramActivity = new StringBuilder();
-        paramActivity.append("sPreloadedAIOType:");
-        paramActivity.append(jdField_a_of_type_Int);
-        paramActivity.append("|AIO_HAD_OPEN:");
-        paramActivity.append(ChatFragment.jdField_a_of_type_Boolean);
-        QLog.e("Q.aio.AIOPreLoadEngine", 2, paramActivity.toString());
-      }
-    }
-    else if (QLog.isColorLevel()) {
-      QLog.i("Q.aio.AIOPreLoadEngine", 2, "activity is not splashActivity");
     }
   }
   
   public void a(BaseActivity paramBaseActivity)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       if (QLog.isColorLevel()) {
         QLog.i("Q.aio.AIOPreLoadEngine", 2, "startPreLoadAIO return");
@@ -194,17 +194,17 @@ public class AIOPreLoadEngine
     }
     if (paramBaseActivity != null)
     {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      Message localMessage = this.e.obtainMessage();
       localMessage.what = 1;
       localMessage.obj = paramBaseActivity;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      this.e.sendMessage(localMessage);
     }
   }
   
-  public void b()
+  public void c()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if (this.e.hasMessages(1)) {
+      this.e.removeMessages(1);
     }
   }
   
@@ -218,7 +218,7 @@ public class AIOPreLoadEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOPreLoadEngine
  * JD-Core Version:    0.7.0.1
  */

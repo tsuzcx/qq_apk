@@ -94,7 +94,7 @@ public final class FriendAddReceiver
     boolean bool2 = false;
     if (paramAddFriendResp == null)
     {
-      ((FriendHandler)a()).notifyUI(11, false, localBundle);
+      ((FriendHandler)c()).notifyUI(11, false, localBundle);
       QLog.d("IMCore.friend.FriendAddReceiver", 1, "handleAddFriend, resp or req is null");
       return;
     }
@@ -133,7 +133,7 @@ public final class FriendAddReceiver
         {
           localBundle.putString("security_check_url", str);
           localBundle.putString("security_check_buffer", ((AddContactVerifyInfo.AddFriendVerifyInfo)localObject).str_verify_info.get());
-          ((FriendHandler)a()).notifyUI(117, true, localBundle);
+          ((FriendHandler)c()).notifyUI(117, true, localBundle);
           if (QLog.isColorLevel()) {
             QLog.d("IMCore.friend.FriendAddReceiver", 2, "handleAddFriend, needSecCheck");
           }
@@ -179,11 +179,11 @@ public final class FriendAddReceiver
         ((StringBuilder)localObject).append(AddFriendUtil.a(paramAddFriendResp.adduinsetting, j, bool4));
         QLog.d("IMCore.friend.FriendAddReceiver", 2, ((StringBuilder)localObject).toString());
       }
-      localObject = ((FriendHandler)a()).a().iterator();
+      localObject = ((FriendHandler)c()).d().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((BaseFriendProcessor)((Iterator)localObject).next()).onAddFriendSuccess(paramAddFriendResp, paramToServiceMsg);
       }
-      ((FriendHandler)a()).notifyUI(11, true, localBundle);
+      ((FriendHandler)c()).notifyUI(11, true, localBundle);
       return;
     }
     if (QLog.isColorLevel())
@@ -197,12 +197,12 @@ public final class FriendAddReceiver
       paramToServiceMsg.append(paramAddFriendResp.errorCode);
       QLog.d("IMCore.friend.FriendAddReceiver", 2, paramToServiceMsg.toString());
     }
-    ((FriendHandler)a()).notifyUI(11, true, localBundle);
+    ((FriendHandler)c()).notifyUI(11, true, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.FriendAddReceiver
  * JD-Core Version:    0.7.0.1
  */

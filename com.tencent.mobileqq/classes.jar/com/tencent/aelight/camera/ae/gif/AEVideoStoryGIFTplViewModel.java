@@ -16,32 +16,22 @@ import java.util.Map;
 public class AEVideoStoryGIFTplViewModel
   extends ViewModel
 {
-  private MutableLiveData<AEDownloadStateWrapper> jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  private Map<String, AEGifMaterialManager.DownloadCallback> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private MutableLiveData<AEDownloadStateWrapper> a = new MutableLiveData();
   private MutableLiveData<AEMaterialWrapper> b = new MutableLiveData();
   private MutableLiveData<String> c = new MutableLiveData();
   private MutableLiveData<String> d = new MutableLiveData();
+  private Map<String, AEGifMaterialManager.DownloadCallback> e = new HashMap();
   
   public MutableLiveData<AEDownloadStateWrapper> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
-  }
-  
-  public void a()
-  {
-    AEMaterialWrapper localAEMaterialWrapper = (AEMaterialWrapper)this.b.getValue();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[applyGIFTplAgain], lastMaterial=");
-    localStringBuilder.append(localAEMaterialWrapper);
-    AEQLog.b("AEVideoStoryGIFTplViewModel", localStringBuilder.toString());
-    this.b.postValue(localAEMaterialWrapper);
+    return this.a;
   }
   
   public void a(AEMaterialWrapper paramAEMaterialWrapper)
   {
     AEVideoStoryGIFTplViewModel.1 local1 = new AEVideoStoryGIFTplViewModel.1(this);
-    this.jdField_a_of_type_JavaUtilMap.put(paramAEMaterialWrapper.jdField_a_of_type_JavaLangString, local1);
-    AEGifMaterialManager.a().a(AECaptureContext.a(), paramAEMaterialWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, local1);
+    this.e.put(paramAEMaterialWrapper.a, local1);
+    AEGifMaterialManager.a().a(AECaptureContext.a(), paramAEMaterialWrapper.b, local1);
   }
   
   public MutableLiveData<AEMaterialWrapper> b()
@@ -71,7 +61,7 @@ public class AEVideoStoryGIFTplViewModel
   {
     if (paramAEMaterialWrapper != null)
     {
-      paramAEMaterialWrapper = (String)paramAEMaterialWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename");
+      paramAEMaterialWrapper = (String)paramAEMaterialWrapper.b.additionalFields.get("savename");
       this.c.postValue(paramAEMaterialWrapper);
       return;
     }
@@ -83,15 +73,25 @@ public class AEVideoStoryGIFTplViewModel
     return this.d;
   }
   
+  public void e()
+  {
+    AEMaterialWrapper localAEMaterialWrapper = (AEMaterialWrapper)this.b.getValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[applyGIFTplAgain], lastMaterial=");
+    localStringBuilder.append(localAEMaterialWrapper);
+    AEQLog.b("AEVideoStoryGIFTplViewModel", localStringBuilder.toString());
+    this.b.postValue(localAEMaterialWrapper);
+  }
+  
   protected void onCleared()
   {
     super.onCleared();
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.e.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEVideoStoryGIFTplViewModel
  * JD-Core Version:    0.7.0.1
  */

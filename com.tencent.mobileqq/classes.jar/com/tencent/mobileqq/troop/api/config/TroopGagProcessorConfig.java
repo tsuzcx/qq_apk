@@ -8,29 +8,45 @@ import java.util.Iterator;
 
 public class TroopGagProcessorConfig
 {
-  private static TroopGagProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopGagProcessorConfig;
-  private static ArrayList<AbsTroopGagProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopGagProcessor> a = new ArrayList();
+  private static TroopGagProcessorConfig b;
   
   private TroopGagProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopGagProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopGagProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopGagProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopGagProcessorConfig = new TroopGagProcessorConfig();
+        if (b == null) {
+          b = new TroopGagProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopGagProcessorConfig;
+    return b;
   }
   
-  void a()
+  public void a(AppInterface paramAppInterface, long paramLong)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      ((AbsTroopGagProcessor)localIterator.next()).a(paramAppInterface, paramLong);
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Iterator localIterator = a.iterator();
+    while (localIterator.hasNext()) {
+      ((AbsTroopGagProcessor)localIterator.next()).a(paramAppInterface, paramLong, paramBoolean1, paramBoolean2);
+    }
+  }
+  
+  void b()
   {
     if (BizTroopCustomizedProcessorRegister.d != null)
     {
@@ -41,7 +57,7 @@ public class TroopGagProcessorConfig
         try
         {
           localObject = (AbsTroopGagProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -50,26 +66,10 @@ public class TroopGagProcessorConfig
       }
     }
   }
-  
-  public void a(AppInterface paramAppInterface, long paramLong)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AbsTroopGagProcessor)localIterator.next()).a(paramAppInterface, paramLong);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((AbsTroopGagProcessor)localIterator.next()).a(paramAppInterface, paramLong, paramBoolean1, paramBoolean2);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopGagProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,11 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.smtt.export.external.DexLoader;
-import com.tencent.smtt.sdk.a.g;
-import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.m;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -16,170 +15,240 @@ import java.util.Set;
 
 public class c
 {
-  private static String a = "EmergencyManager";
-  private static int b = 0;
-  private static int c = 1;
-  private static int d = 2;
-  private static int e = 3;
-  private static int f = 4;
-  private static int g = 5;
-  private static c h;
-  private long i = 60000L;
-  private long j = 86400000L;
-  private boolean k = false;
+  private static c e;
+  private static boolean g = false;
+  private String a = "EmergenceMsgPublisher";
+  private String b = "tbs_emergence";
+  private String c = "emergence_executed_ids";
+  private String d = "emergence_ids";
+  private final Map<Integer, c.a> f = new LinkedHashMap();
   
   public static c a()
   {
-    try
-    {
-      if (h == null) {
-        h = new c();
-      }
-      c localc = h;
-      return localc;
+    if (e == null) {
+      e = new c();
     }
-    finally {}
+    return e;
   }
   
-  private void a(Context paramContext, int paramInt, List<com.tencent.smtt.sdk.a.b> paramList)
+  private void a(Context paramContext, c.b paramb, c.a parama)
   {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    g localg = g.a();
-    Object localObject = localg.a(paramContext, "emergence_ids");
-    HashSet localHashSet = new HashSet();
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    if (parama != null)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Executed command: ");
+      ((StringBuilder)localObject).append(paramb.b);
+      ((StringBuilder)localObject).append(", extra: ");
+      ((StringBuilder)localObject).append(paramb.c);
+      a(((StringBuilder)localObject).toString());
+      parama.a(paramb.c);
+      paramContext = paramContext.getSharedPreferences(this.b, 4);
+      localObject = paramContext.getString(this.c, "");
+      parama = new HashSet();
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        String[] arrayOfString = g.a((String)((Iterator)localObject).next());
-        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
-          localHashSet.add(Integer.valueOf(Integer.parseInt(arrayOfString[0])));
-        }
-      }
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      localObject = (com.tencent.smtt.sdk.a.b)paramList.next();
-      int m = ((com.tencent.smtt.sdk.a.b)localObject).b();
-      int n = ((com.tencent.smtt.sdk.a.b)localObject).a();
-      if ((!localHashSet.contains(Integer.valueOf(n))) && (!((com.tencent.smtt.sdk.a.b)localObject).e()))
-      {
-        localLinkedHashMap.put(Integer.valueOf(m), ((com.tencent.smtt.sdk.a.b)localObject).c());
-        localg.a(paramContext, "emergence_ids", g.a(new String[] { String.valueOf(n), String.valueOf(((com.tencent.smtt.sdk.a.b)localObject).d()) }));
-      }
-    }
-    e.a().a(paramInt, localLinkedHashMap);
-    a(paramContext, Integer.valueOf(paramInt), localLinkedHashMap);
-  }
-  
-  private void b(Context paramContext)
-  {
-    com.tencent.smtt.sdk.a.c localc = new com.tencent.smtt.sdk.a.c();
-    localc.a(com.tencent.smtt.utils.b.a(paramContext));
-    localc.b(com.tencent.smtt.utils.b.c(paramContext));
-    localc.a(Integer.valueOf(com.tencent.smtt.utils.b.b(paramContext)));
-    localc.c(com.tencent.smtt.utils.b.a());
-    Iterator localIterator = g.a().a(paramContext, "emergence_ids").iterator();
-    ArrayList localArrayList = new ArrayList();
-    while (localIterator.hasNext()) {
-      try
-      {
-        Object localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = g.a((String)localObject);
-          if ((localObject != null) && (localObject.length == 2))
+        localObject = ((String)localObject).split(",");
+        if ((localObject != null) && (localObject.length > 0)) {
+          try
           {
-            int m = Integer.parseInt(localObject[0]);
-            long l = Long.parseLong(localObject[1]);
-            if (System.currentTimeMillis() < l) {
-              localArrayList.add(Integer.valueOf(m));
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
+            {
+              parama.add(Integer.valueOf(Integer.parseInt(localObject[i])));
+              i += 1;
             }
+            parama.add(Integer.valueOf(paramb.a));
+          }
+          catch (Throwable localThrowable)
+          {
+            localThrowable.printStackTrace();
           }
         }
       }
-      catch (Exception localException)
+      paramb = new StringBuilder();
+      parama = parama.iterator();
+      while (parama.hasNext())
       {
-        localException.printStackTrace();
+        paramb.append((Integer)parama.next());
+        paramb.append(",");
       }
+      paramContext = paramContext.edit();
+      paramContext.putString(this.c, paramb.toString());
+      paramContext.commit();
     }
-    localc.a(localArrayList);
-    new com.tencent.smtt.sdk.a.e(paramContext, m.a(paramContext).g(), localc.a()).a(new c.1(this, paramContext));
   }
   
-  public void a(Context paramContext)
-  {
-    if (!this.k)
-    {
-      this.k = true;
-      g localg = g.a();
-      if (!localg.b()) {
-        localg.a(paramContext);
-      }
-    }
-    try
-    {
-      try
-      {
-        long l1 = g.a().b(paramContext, "emergence_timestamp");
-        long l2 = g.a().b(paramContext, "emergence_req_interval");
-        long l3 = System.currentTimeMillis();
-        if (l3 - l1 > Math.min(Math.max(this.i, l2), this.j))
-        {
-          g.a().a(paramContext, "emergence_timestamp", l3);
-          b(paramContext);
-        }
-        else
-        {
-          a(paramContext, c, new ArrayList());
-        }
-      }
-      finally
-      {
-        break label144;
-      }
-    }
-    catch (Exception localException)
-    {
-      label122:
-      break label122;
-    }
-    a(paramContext, g, new ArrayList());
-    g.a().c();
-    return;
-    label144:
-    g.a().c();
-    throw paramContext;
-    a(paramContext, f, new ArrayList());
-  }
+  private void a(String paramString) {}
   
-  public void a(Context paramContext, Integer paramInteger, Map<Integer, String> paramMap)
+  public Map<Integer, c.b> a(Context paramContext)
   {
-    TbsLog.e(a, "Dispatch emergency commands on tbs extension");
-    QbSdk.a(paramContext, paramInteger, paramMap);
-    paramContext = f.a(true);
-    if (paramContext == null) {
-      return;
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = this.b;
+    int k = 0;
+    localObject1 = paramContext.getSharedPreferences((String)localObject1, 0);
+    if (paramContext == null) {}
+    for (paramContext = "Unexpected null context!";; paramContext = "Empty local emergence ids!")
+    {
+      a(paramContext);
+      return localHashMap;
+      paramContext = ((SharedPreferences)localObject1).getString(this.d, "");
+      if (!TextUtils.isEmpty(paramContext)) {
+        break;
+      }
     }
-    paramContext = paramContext.a();
-    if (paramContext == null) {
-      return;
-    }
-    paramContext = paramContext.b();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Local emergence ids: ");
+    ((StringBuilder)localObject2).append(paramContext);
+    a(((StringBuilder)localObject2).toString());
+    paramContext = paramContext.split(";");
+    int j;
+    int i;
     if (paramContext != null)
     {
-      TbsLog.e(a, "Dispatch emergency commands on tbs shell");
-      paramContext.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "dispatchEmergencyCommand", new Class[] { Integer.class, Map.class }, new Object[] { paramInteger, paramMap });
-      return;
+      j = paramContext.length;
+      i = 0;
     }
-    TbsLog.e(a, "Dex loader is null, cancel commands dispatching of tbs shell");
+    for (;;)
+    {
+      String[] arrayOfString;
+      if (i < j)
+      {
+        localObject2 = paramContext[i];
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          arrayOfString = ((String)localObject2).split(",");
+          if ((arrayOfString != null) && (arrayOfString.length == 4)) {
+            localObject2 = new c.b();
+          }
+        }
+      }
+      try
+      {
+        ((c.b)localObject2).a = Integer.parseInt(arrayOfString[0]);
+        ((c.b)localObject2).b = Integer.parseInt(arrayOfString[1]);
+        ((c.b)localObject2).c = String.valueOf(arrayOfString[2]);
+        ((c.b)localObject2).d = Long.parseLong(arrayOfString[3]);
+        label220:
+        if (System.currentTimeMillis() < ((c.b)localObject2).d) {
+          localHashMap.put(Integer.valueOf(((c.b)localObject2).a), localObject2);
+        }
+        i += 1;
+        continue;
+        paramContext = ((SharedPreferences)localObject1).getString(this.c, "");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Executed ids: ");
+        ((StringBuilder)localObject1).append(paramContext);
+        a(((StringBuilder)localObject1).toString());
+        paramContext = paramContext.split(",");
+        if (paramContext != null)
+        {
+          localObject1 = new ArrayList();
+          int n = paramContext.length;
+          i = 0;
+          for (;;)
+          {
+            j = k;
+            if (i >= n) {
+              break;
+            }
+            localObject2 = paramContext[i];
+            if (!TextUtils.isEmpty((CharSequence)localObject2))
+            {
+              j = -1;
+              try
+              {
+                int m = Integer.parseInt((String)localObject2);
+                j = m;
+              }
+              catch (Throwable localThrowable1)
+              {
+                localThrowable1.printStackTrace();
+              }
+              if (j > 0) {
+                ((List)localObject1).add(Integer.valueOf(j));
+              }
+            }
+            i += 1;
+          }
+          while (j < ((List)localObject1).size())
+          {
+            localHashMap.remove(((List)localObject1).get(j));
+            j += 1;
+          }
+        }
+        return localHashMap;
+      }
+      catch (Throwable localThrowable2)
+      {
+        break label220;
+      }
+    }
+  }
+  
+  public void a(Context paramContext, Integer paramInteger, c.a parama)
+  {
+    Map localMap = a(paramContext);
+    Iterator localIterator = localMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      c.b localb = (c.b)localMap.get((Integer)localIterator.next());
+      if (localb == null)
+      {
+        a("Unexpected null command!");
+      }
+      else if (localb.b == paramInteger.intValue())
+      {
+        a(paramContext, localb, parama);
+        return;
+      }
+    }
+    if (!g)
+    {
+      this.f.put(paramInteger, parama);
+      paramContext = new StringBuilder();
+      paramContext.append("Emergence config did not arrived yet, code[");
+      paramContext.append(paramInteger);
+      paramContext.append("] has been suspended");
+      a(paramContext.toString());
+    }
+  }
+  
+  public void b(Context paramContext)
+  {
+    Map localMap = a(paramContext);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("On notify emergence, validate commands: ");
+    ((StringBuilder)localObject).append(localMap);
+    a(((StringBuilder)localObject).toString());
+    g = true;
+    localObject = this.f.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Integer localInteger1 = (Integer)((Iterator)localObject).next();
+      Iterator localIterator = localMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Integer localInteger2 = (Integer)localIterator.next();
+        if (((c.b)localMap.get(localInteger2)).b == localInteger1.intValue()) {
+          a(paramContext, (c.b)localMap.get(localInteger2), (c.a)this.f.get(localInteger1));
+        }
+      }
+    }
+    if (!this.f.isEmpty())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("Emergency code[");
+      paramContext.append(this.f.keySet());
+      paramContext.append("] did not happen, clear suspended queries");
+      a(paramContext.toString());
+      this.f.clear();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.c
  * JD-Core Version:    0.7.0.1
  */

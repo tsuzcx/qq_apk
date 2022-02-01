@@ -14,6 +14,7 @@ public class GpuScopeAttrs
   private static final String TAG = "GpuScopeAttrs";
   private GpuScopeAttrs.GpuBean.DeviceModel thisDeviceModel;
   private GpuScopeAttrs.GpuBean.GpuModel thisGpuModel;
+  private GpuScopeAttrs.GpuBean.SysVersionModel thisSysVersionModel;
   
   public static GpuScopeAttrs getInstance()
   {
@@ -30,17 +31,22 @@ public class GpuScopeAttrs
     return this.thisGpuModel;
   }
   
-  public void init(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public GpuScopeAttrs.GpuBean.SysVersionModel getSysVersionModel()
+  {
+    return this.thisSysVersionModel;
+  }
+  
+  public void init(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(paramString3));
+    ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(paramString4));
     ((StringBuilder)localObject).append("device_config.json");
     localObject = ((StringBuilder)localObject).toString();
-    paramString3 = (String)localObject;
+    paramString4 = (String)localObject;
     if (!FileUtils.isFileExist((String)localObject)) {
-      paramString3 = "assets://device_config.json";
+      paramString4 = "assets://device_config.json";
     }
-    paramContext = FileUtils.load(paramContext, paramString3);
+    paramContext = FileUtils.load(paramContext, paramString4);
     try
     {
       paramContext = (GpuScopeAttrs.GpuBean)new Gson().fromJson(paramContext, GpuScopeAttrs.GpuBean.class);
@@ -55,10 +61,10 @@ public class GpuScopeAttrs
       this.thisGpuModel = null;
       if (paramContext.gpuModels != null)
       {
-        paramString3 = paramContext.gpuModels.iterator();
-        while (paramString3.hasNext())
+        paramString4 = paramContext.gpuModels.iterator();
+        while (paramString4.hasNext())
         {
-          localObject = (GpuScopeAttrs.GpuBean.GpuModel)paramString3.next();
+          localObject = (GpuScopeAttrs.GpuBean.GpuModel)paramString4.next();
           if ((paramString2 != null) && (((GpuScopeAttrs.GpuBean.GpuModel)localObject).gpu != null) && (paramString2.contains(((GpuScopeAttrs.GpuBean.GpuModel)localObject).gpu))) {
             this.thisGpuModel = ((GpuScopeAttrs.GpuBean.GpuModel)localObject);
           }
@@ -67,20 +73,32 @@ public class GpuScopeAttrs
       this.thisDeviceModel = null;
       if (paramContext.deviceModels != null)
       {
-        paramString2 = paramContext.deviceModels.iterator();
-        while (paramString2.hasNext())
+        localObject = paramContext.deviceModels.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          paramContext = (GpuScopeAttrs.GpuBean.DeviceModel)paramString2.next();
-          if (paramString1.contains(paramContext.device))
+          paramString4 = (GpuScopeAttrs.GpuBean.DeviceModel)((Iterator)localObject).next();
+          if (paramString1.contains(paramString4.device))
           {
-            paramString2 = new StringBuilder();
-            paramString2.append(paramString1);
-            paramString2.append("->>deviceModels:");
-            paramString2.append(paramContext.device);
-            paramString2.append(",shareGLContextError:");
-            paramString2.append(paramContext.shareGLContextError);
-            LightLogUtil.i("GpuScopeAttrs", paramString2.toString());
-            this.thisDeviceModel = paramContext;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString1);
+            ((StringBuilder)localObject).append("->>deviceModels:");
+            ((StringBuilder)localObject).append(paramString4.device);
+            ((StringBuilder)localObject).append(",shareGLContextError:");
+            ((StringBuilder)localObject).append(paramString4.shareGLContextError);
+            LightLogUtil.i("GpuScopeAttrs", ((StringBuilder)localObject).toString());
+            this.thisDeviceModel = paramString4;
+          }
+        }
+      }
+      this.thisSysVersionModel = null;
+      if (paramContext.sysVersionModels != null)
+      {
+        paramContext = paramContext.sysVersionModels.iterator();
+        while (paramContext.hasNext())
+        {
+          paramString1 = (GpuScopeAttrs.GpuBean.SysVersionModel)paramContext.next();
+          if ((paramString2 != null) && (paramString1.version != null) && (paramString3.contains(paramString1.version))) {
+            this.thisSysVersionModel = paramString1;
           }
         }
       }
@@ -89,7 +107,7 @@ public class GpuScopeAttrs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.device.GpuScopeAttrs
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ import java.util.regex.Pattern;
 public class CrmIvrText
   extends QQText
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  String jdField_a_of_type_JavaLangString = "";
+  String a = "";
   String b = "";
+  QQAppInterface c = null;
   
   public CrmIvrText(CharSequence paramCharSequence, int paramInt1, int paramInt2, MessageRecord paramMessageRecord, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
   {
     super(paramCharSequence, paramInt1, paramInt2, paramMessageRecord);
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   static void a(View paramView, String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
@@ -32,7 +32,7 @@ public class CrmIvrText
   {
     super.parseLinkSpan();
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(QQTextParseLinkUtil.b);
+    ((StringBuilder)localObject).append(QQTextParseLinkUtil.h);
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append("QQ语音");
     localObject = Pattern.compile(((StringBuilder)localObject).toString()).matcher(this.mText);
@@ -46,7 +46,7 @@ public class CrmIvrText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.eqq.CrmIvrText
  * JD-Core Version:    0.7.0.1
  */

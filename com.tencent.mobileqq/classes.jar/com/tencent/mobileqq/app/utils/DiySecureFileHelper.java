@@ -90,7 +90,19 @@ public class DiySecureFileHelper
     }
   }
   
-  private static void b(String paramString1, String paramString2)
+  private static File[] b(File paramFile)
+  {
+    File[] arrayOfFile = paramFile.listFiles();
+    paramFile = arrayOfFile;
+    if (arrayOfFile == null)
+    {
+      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
+      paramFile = new File[0];
+    }
+    return paramFile;
+  }
+  
+  private static void c(String paramString1, String paramString2)
   {
     Object localObject1 = new File(paramString1);
     if (((File)localObject1).exists())
@@ -117,29 +129,17 @@ public class DiySecureFileHelper
         while (i < j)
         {
           Object localObject2 = localObject1[i];
-          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
+          c(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
           i += 1;
         }
       }
       FileUtils.deleteDirectory(paramString1);
     }
   }
-  
-  private static File[] b(File paramFile)
-  {
-    File[] arrayOfFile = paramFile.listFiles();
-    paramFile = arrayOfFile;
-    if (arrayOfFile == null)
-    {
-      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
-      paramFile = new File[0];
-    }
-    return paramFile;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.DiySecureFileHelper
  * JD-Core Version:    0.7.0.1
  */

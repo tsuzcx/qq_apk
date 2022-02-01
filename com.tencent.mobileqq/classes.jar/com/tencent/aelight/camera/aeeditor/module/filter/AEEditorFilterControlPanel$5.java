@@ -13,23 +13,23 @@ class AEEditorFilterControlPanel$5
   
   public void run()
   {
-    File localFile = new File(AEEditorResourceManager.a().c(this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial));
+    File localFile = new File(AEEditorResourceManager.a().d(this.a));
     if (localFile.exists())
     {
-      if (AEEditorFilterControlPanel.a(this.this$0, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, FileUtils.readFileContent(localFile)))
+      if (AEEditorFilterControlPanel.a(this.this$0, this.a, FileUtils.readFileContent(localFile)))
       {
-        AEEditorFilterControlPanel.a(this.this$0, this.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial, this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask$MaterialStatusCallback);
+        AEEditorFilterControlPanel.a(this.this$0, this.a, this.b);
         return;
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask$MaterialStatusCallback.a(ApplyMaterialTask.Status.FAILED, -1);
+      this.b.a(ApplyMaterialTask.Status.FAILED, -1);
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierApplyMaterialTask$MaterialStatusCallback.a(ApplyMaterialTask.Status.FAILED, -1);
+    this.b.a(ApplyMaterialTask.Status.FAILED, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorFilterControlPanel.5
  * JD-Core Version:    0.7.0.1
  */

@@ -121,7 +121,7 @@ public class ColorNoteControllerImpl
           return;
         }
         this.hasPendingExitAnim = true;
-        this.translucentConvertor.a();
+        this.translucentConvertor.b();
         localObject = this.mSwipePostTableLayout;
         if (localObject != null) {
           ((View)localObject).postDelayed(this.forceCloseRunnable, 500L);
@@ -193,12 +193,12 @@ public class ColorNoteControllerImpl
     if (localILauncher != null)
     {
       localILauncher.onCreate(paramContext, paramColorNote, paramBundle);
-      if (!ColorNoteUtils.b(paramColorNote)) {
+      if (!ColorNoteUtils.d(paramColorNote)) {
         ReportController.b(null, "dc00898", "", "", "0X800A749", "0X800A749", ColorNoteConstants.a(paramColorNote.getServiceType()), 0, "", "", "", "");
       }
       paramBundle = paramColorNote;
-      if (ColorNoteUtils.b(paramColorNote)) {
-        paramBundle = ColorNoteUtils.b(paramColorNote);
+      if (ColorNoteUtils.d(paramColorNote)) {
+        paramBundle = ColorNoteUtils.e(paramColorNote);
       }
       localILauncher.launch(paramContext, paramBundle);
       return true;
@@ -210,7 +210,7 @@ public class ColorNoteControllerImpl
   {
     ShareEntrance localShareEntrance = this.mShareEntrance;
     if (localShareEntrance != null) {
-      ColorNoteHistoryManager.a(localShareEntrance.a());
+      ColorNoteHistoryManager.a(localShareEntrance.g());
     }
   }
   
@@ -258,7 +258,7 @@ public class ColorNoteControllerImpl
   {
     ShareEntrance localShareEntrance = this.mShareEntrance;
     if (localShareEntrance != null) {
-      return localShareEntrance.a();
+      return localShareEntrance.d();
     }
     return false;
   }
@@ -268,7 +268,7 @@ public class ColorNoteControllerImpl
     Object localObject1 = this.mShareEntrance;
     if (localObject1 != null)
     {
-      ((ShareEntrance)localObject1).b();
+      ((ShareEntrance)localObject1).c();
       localObject1 = this.mShareEntrance.a().getColorNote();
       if (localObject1 != null)
       {
@@ -277,7 +277,7 @@ public class ColorNoteControllerImpl
         if (this.mShowToast)
         {
           localObject2 = MobileQQ.getContext();
-          QQToast.a((Context)localObject2, 2, ((Context)localObject2).getString(2131690896), 2000).a();
+          QQToast.makeText((Context)localObject2, 2, ((Context)localObject2).getString(2131887835), 2000).show();
         }
         if (QLog.isColorLevel())
         {
@@ -296,7 +296,7 @@ public class ColorNoteControllerImpl
   
   public boolean detectCacheFull(AppRuntime paramAppRuntime, int paramInt)
   {
-    return ColorNoteHistoryManager.a(paramAppRuntime, paramInt);
+    return ColorNoteHistoryManager.d(paramAppRuntime, paramInt);
   }
   
   public void disableAutoRecentNote()
@@ -327,13 +327,13 @@ public class ColorNoteControllerImpl
   
   public void doSetPropertiesFromWebView(String paramString)
   {
-    int i = ColorNoteUtils.a(paramString);
-    if (ColorNoteUtils.b(i)) {
+    int i = ColorNoteUtils.g(paramString);
+    if (ColorNoteUtils.c(i)) {
       setShareEntr(false);
     } else {
       setShareEntr(true);
     }
-    if (ColorNoteUtils.a(i))
+    if (ColorNoteUtils.b(i))
     {
       disablePostTable();
       return;
@@ -384,7 +384,7 @@ public class ColorNoteControllerImpl
   
   public void init(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, IColorNoteSwipeLayout paramIColorNoteSwipeLayout)
   {
-    init(paramContext, paramBoolean1, paramBoolean2, paramIColorNoteSwipeLayout, false, false, 2131165504);
+    init(paramContext, paramBoolean1, paramBoolean2, paramIColorNoteSwipeLayout, false, false, 2131165829);
   }
   
   public void init(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, IColorNoteSwipeLayout paramIColorNoteSwipeLayout, boolean paramBoolean3, boolean paramBoolean4, int paramInt)
@@ -441,7 +441,7 @@ public class ColorNoteControllerImpl
     Object localObject = this.mShareEntrance;
     if (localObject != null)
     {
-      ((ShareEntrance)localObject).a();
+      ((ShareEntrance)localObject).b();
       localObject = this.mShareEntrance.a().getColorNote();
       if (localObject != null)
       {
@@ -465,7 +465,7 @@ public class ColorNoteControllerImpl
   {
     ShareEntrance localShareEntrance = this.mShareEntrance;
     if (localShareEntrance != null) {
-      return localShareEntrance.b();
+      return localShareEntrance.e();
     }
     return false;
   }
@@ -500,7 +500,7 @@ public class ColorNoteControllerImpl
   {
     ShareEntrance localShareEntrance = this.mShareEntrance;
     if (localShareEntrance != null) {
-      localShareEntrance.c();
+      localShareEntrance.f();
     }
   }
   
@@ -553,7 +553,7 @@ public class ColorNoteControllerImpl
     {
       TranslucentConvertor localTranslucentConvertor = this.translucentConvertor;
       if (localTranslucentConvertor != null) {
-        localTranslucentConvertor.a();
+        localTranslucentConvertor.b();
       }
     }
   }
@@ -589,7 +589,7 @@ public class ColorNoteControllerImpl
   
   public void setFirstCloseRecentNote(AppRuntime paramAppRuntime)
   {
-    ColorNoteRecentView.a(paramAppRuntime);
+    ColorNoteRecentView.b(paramAppRuntime);
   }
   
   public void setLeftSwipeScope(int paramInt)
@@ -703,7 +703,7 @@ public class ColorNoteControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.api.impl.ColorNoteControllerImpl
  * JD-Core Version:    0.7.0.1
  */

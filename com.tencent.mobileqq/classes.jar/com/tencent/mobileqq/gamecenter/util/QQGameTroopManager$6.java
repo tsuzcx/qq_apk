@@ -11,10 +11,10 @@ class QQGameTroopManager$6
   
   public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo2 != null) && (paramTroopMemberInfo1.memberuin != null) && (paramTroopMemberInfo2.memberuin != null) && (QQGameTroopManager.a != null))
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo2 != null) && (paramTroopMemberInfo1.memberuin != null) && (paramTroopMemberInfo2.memberuin != null) && (QQGameTroopManager.b != null))
     {
-      boolean bool1 = QQGameTroopManager.a.contains(paramTroopMemberInfo1.memberuin);
-      boolean bool2 = QQGameTroopManager.a.contains(paramTroopMemberInfo2.memberuin);
+      boolean bool1 = QQGameTroopManager.b.contains(paramTroopMemberInfo1.memberuin);
+      boolean bool2 = QQGameTroopManager.b.contains(paramTroopMemberInfo2.memberuin);
       if ((bool1) && (!bool2)) {
         return -1;
       }
@@ -27,7 +27,7 @@ class QQGameTroopManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.util.QQGameTroopManager.6
  * JD-Core Version:    0.7.0.1
  */

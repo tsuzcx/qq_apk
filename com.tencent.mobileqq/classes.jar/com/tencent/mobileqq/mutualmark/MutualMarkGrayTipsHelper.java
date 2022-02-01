@@ -44,26 +44,26 @@ public class MutualMarkGrayTipsHelper
   public static int a(long paramLong1, long paramLong2)
   {
     if ((paramLong1 > 0L) && (paramLong2 >= 0L)) {
-      return MutualMarkUtils.a(paramLong1, paramLong2);
+      return MutualMarkUtils.b(paramLong1, paramLong2);
     }
     return 0;
   }
   
   public static int a(ExtSnsRelationChainChangePushInfo paramExtSnsRelationChainChangePushInfo)
   {
-    long l1 = paramExtSnsRelationChainChangePushInfo.a();
-    long l2 = paramExtSnsRelationChainChangePushInfo.b();
+    long l1 = paramExtSnsRelationChainChangePushInfo.b();
+    long l2 = paramExtSnsRelationChainChangePushInfo.c();
     if (l1 == 17L)
     {
-      if (paramExtSnsRelationChainChangePushInfo.a()) {
+      if (paramExtSnsRelationChainChangePushInfo.h()) {
         return 999;
       }
       return 0;
     }
-    if (paramExtSnsRelationChainChangePushInfo.a()) {
+    if (paramExtSnsRelationChainChangePushInfo.h()) {
       return 999;
     }
-    if (paramExtSnsRelationChainChangePushInfo.b()) {
+    if (paramExtSnsRelationChainChangePushInfo.i()) {
       return 998;
     }
     return a(l1, l2);
@@ -83,46 +83,46 @@ public class MutualMarkGrayTipsHelper
         break;
       }
       localGrayTipHighlightItemInfo = new MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo();
-      localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localGrayTipHighlightItemInfo.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
+      localGrayTipHighlightItemInfo.b = ((Matcher)localObject).group();
+      localGrayTipHighlightItemInfo.c = ((Matcher)localObject).start();
+      localGrayTipHighlightItemInfo.d = ((Matcher)localObject).group(2);
       if (!localGrayTipHighlightItemInfo.a()) {
         i = 1;
       }
-      localGrayTipHighlightItemInfo.jdField_a_of_type_Int = i;
+      localGrayTipHighlightItemInfo.a = i;
       localArrayList.add(localGrayTipHighlightItemInfo);
     }
     localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[\\]").matcher(paramStringBuilder);
     while (((Matcher)localObject).find())
     {
       localGrayTipHighlightItemInfo = new MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo();
-      localGrayTipHighlightItemInfo.jdField_a_of_type_Int = 5;
-      localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localGrayTipHighlightItemInfo.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
+      localGrayTipHighlightItemInfo.a = 5;
+      localGrayTipHighlightItemInfo.b = ((Matcher)localObject).group();
+      localGrayTipHighlightItemInfo.c = ((Matcher)localObject).start();
+      localGrayTipHighlightItemInfo.g = ((Matcher)localObject).group(1);
       localArrayList.add(localGrayTipHighlightItemInfo);
     }
     localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[([^\\)]+?)\\]").matcher(paramStringBuilder);
     while (((Matcher)localObject).find())
     {
       localGrayTipHighlightItemInfo = new MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo();
-      localGrayTipHighlightItemInfo.jdField_a_of_type_Int = 3;
-      localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localGrayTipHighlightItemInfo.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString = MutualMarkUtils.b(((Matcher)localObject).group(2));
+      localGrayTipHighlightItemInfo.a = 3;
+      localGrayTipHighlightItemInfo.b = ((Matcher)localObject).group();
+      localGrayTipHighlightItemInfo.c = ((Matcher)localObject).start();
+      localGrayTipHighlightItemInfo.g = ((Matcher)localObject).group(1);
+      localGrayTipHighlightItemInfo.h = MutualMarkUtils.g(((Matcher)localObject).group(2));
       localArrayList.add(localGrayTipHighlightItemInfo);
     }
     localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramStringBuilder);
     while (((Matcher)localObject).find())
     {
       localGrayTipHighlightItemInfo = new MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo();
-      localGrayTipHighlightItemInfo.jdField_a_of_type_Int = 4;
-      localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localGrayTipHighlightItemInfo.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString = MutualMarkUtils.b(((Matcher)localObject).group(1));
-      localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString = MutualMarkAlienationHelper.a(paramAppInterface, paramString, localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
-      localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString.replace(((Matcher)localObject).group(1), localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
+      localGrayTipHighlightItemInfo.a = 4;
+      localGrayTipHighlightItemInfo.b = ((Matcher)localObject).group();
+      localGrayTipHighlightItemInfo.c = ((Matcher)localObject).start();
+      localGrayTipHighlightItemInfo.h = MutualMarkUtils.g(((Matcher)localObject).group(1));
+      localGrayTipHighlightItemInfo.h = MutualMarkAlienationHelper.a(paramAppInterface, paramString, localGrayTipHighlightItemInfo.h);
+      localGrayTipHighlightItemInfo.g = localGrayTipHighlightItemInfo.b.replace(((Matcher)localObject).group(1), localGrayTipHighlightItemInfo.h);
       localArrayList.add(localGrayTipHighlightItemInfo);
     }
     Collections.sort(localArrayList, new MutualMarkGrayTipsHelper.1());
@@ -130,28 +130,28 @@ public class MutualMarkGrayTipsHelper
     while (((Iterator)localObject).hasNext())
     {
       localGrayTipHighlightItemInfo = (MutualMarkGrayTipsHelper.GrayTipHighlightItemInfo)((Iterator)localObject).next();
-      if (!TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localGrayTipHighlightItemInfo.b))
       {
-        i = paramStringBuilder.indexOf(localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString);
-        int j = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString.length() + i;
+        i = paramStringBuilder.indexOf(localGrayTipHighlightItemInfo.b);
+        int j = localGrayTipHighlightItemInfo.b.length() + i;
         if ((i >= 0) && (j <= paramStringBuilder.length()))
         {
-          int k = localGrayTipHighlightItemInfo.jdField_a_of_type_Int;
+          int k = localGrayTipHighlightItemInfo.a;
           if (k != 1)
           {
             if (k == 2) {
-              localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = MutualMarkConfigHelper.a(paramAppInterface, paramString, localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString);
+              localGrayTipHighlightItemInfo.g = MutualMarkConfigHelper.a(paramAppInterface, paramString, localGrayTipHighlightItemInfo.d);
             }
           }
           else {
-            localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = MutualMarkConfigHelper.a(paramAppInterface, localGrayTipHighlightItemInfo.jdField_b_of_type_JavaLangString);
+            localGrayTipHighlightItemInfo.g = MutualMarkConfigHelper.a(paramAppInterface, localGrayTipHighlightItemInfo.d);
           }
-          if (localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString == null) {
-            localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString = localGrayTipHighlightItemInfo.jdField_a_of_type_JavaLangString;
+          if (localGrayTipHighlightItemInfo.g == null) {
+            localGrayTipHighlightItemInfo.g = localGrayTipHighlightItemInfo.b;
           }
-          localGrayTipHighlightItemInfo.jdField_c_of_type_Int = i;
-          localGrayTipHighlightItemInfo.jdField_d_of_type_Int = (localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString.length() + i);
-          paramStringBuilder.replace(i, j, localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
+          localGrayTipHighlightItemInfo.e = i;
+          localGrayTipHighlightItemInfo.f = (localGrayTipHighlightItemInfo.g.length() + i);
+          paramStringBuilder.replace(i, j, localGrayTipHighlightItemInfo.g);
         }
       }
     }
@@ -168,28 +168,28 @@ public class MutualMarkGrayTipsHelper
       localStringBuilder.append("checkAndInsertGrayTips grayInfo:");
       localStringBuilder.append(localMutualMarkPushGrayTipInfo);
       localStringBuilder.append(" onlinePush:");
-      localStringBuilder.append(paramPushMsg0x210C7Info.a);
+      localStringBuilder.append(paramPushMsg0x210C7Info.f);
       QLog.i("MutualMarkGrayTipsHelper", 2, localStringBuilder.toString());
     }
     if ((localMutualMarkPushGrayTipInfo != null) && (localMutualMarkPushGrayTipInfo.a()))
     {
-      if (!TextUtils.isEmpty(localMutualMarkPushGrayTipInfo.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localMutualMarkPushGrayTipInfo.c))
       {
-        paramPushMsg0x210C7Info = localMutualMarkPushGrayTipInfo.jdField_b_of_type_JavaLangString;
+        paramPushMsg0x210C7Info = localMutualMarkPushGrayTipInfo.c;
       }
       else
       {
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append(paramExtSnsRelationChainChangePushInfo.b);
         localStringBuilder.append("_");
-        localStringBuilder.append(paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int);
+        localStringBuilder.append(paramExtSnsRelationChainChangePushInfo.c);
         localStringBuilder.append("_");
         localStringBuilder.append(paramPushMsg0x210C7Info.b);
         localStringBuilder.append("_");
-        localStringBuilder.append(localMutualMarkPushGrayTipInfo.jdField_a_of_type_Long);
+        localStringBuilder.append(localMutualMarkPushGrayTipInfo.b);
         paramPushMsg0x210C7Info = localStringBuilder.toString();
       }
-      int i = paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int;
+      int i = paramExtSnsRelationChainChangePushInfo.c;
       if (i != 1)
       {
         if (i != 2) {
@@ -207,12 +207,12 @@ public class MutualMarkGrayTipsHelper
         {
         default: 
           break;
-          if ((paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null) && (paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null))
+          if ((paramExtSnsRelationChainChangePushInfo.e != null) && (paramExtSnsRelationChainChangePushInfo.f != null))
           {
-            if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a() > paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) {
+            if (paramExtSnsRelationChainChangePushInfo.e.a() > paramExtSnsRelationChainChangePushInfo.f.a()) {
               break label325;
             }
-            if (paramExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a() < paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) {
+            if (paramExtSnsRelationChainChangePushInfo.e.a() < paramExtSnsRelationChainChangePushInfo.f.a()) {
               i = a(paramExtSnsRelationChainChangePushInfo);
             }
           }
@@ -231,8 +231,8 @@ public class MutualMarkGrayTipsHelper
       int k = 2097153;
       int j = i;
       i = k;
-      k = a(localMutualMarkPushGrayTipInfo.jdField_a_of_type_Int);
-      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, localMutualMarkPushGrayTipInfo.jdField_a_of_type_JavaLangString, k, i, j, paramPushMsg0x210C7Info);
+      k = a(localMutualMarkPushGrayTipInfo.d);
+      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, localMutualMarkPushGrayTipInfo.a, k, i, j, paramPushMsg0x210C7Info);
     }
   }
   
@@ -243,7 +243,7 @@ public class MutualMarkGrayTipsHelper
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("insertGrayTips friendUin:");
-      ((StringBuilder)localObject2).append(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(paramExtSnsRelationChainChangePushInfo.b);
       ((StringBuilder)localObject2).append(" grayType:");
       ((StringBuilder)localObject2).append(paramInt1);
       ((StringBuilder)localObject2).append(" grayID:");
@@ -261,39 +261,39 @@ public class MutualMarkGrayTipsHelper
     }
     paramString1 = (String)localObject1;
     if (((String)localObject1).contains("#nick")) {
-      paramString1 = ((String)localObject1).replaceAll("#nick", ContactUtils.f(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString));
+      paramString1 = ((String)localObject1).replaceAll("#nick", ContactUtils.g(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b));
     }
     localObject1 = new StringBuilder(paramString1);
     MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, (StringBuilder)localObject1);
-    paramString1 = a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (StringBuilder)localObject1);
+    paramString1 = a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b, (StringBuilder)localObject1);
     localObject1 = ((StringBuilder)localObject1).toString();
-    Object localObject2 = new UniteGrayTipParam(paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject1, 0, paramInt1, paramInt2, MessageCache.a());
+    Object localObject2 = new UniteGrayTipParam(paramExtSnsRelationChainChangePushInfo.b, paramExtSnsRelationChainChangePushInfo.b, (String)localObject1, 0, paramInt1, paramInt2, MessageCache.c());
     MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
     localMessageForUniteGrayTip.hasRead = 0;
     localMessageForUniteGrayTip.subType = paramInt3;
     localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject2);
-    localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
+    localMessageForUniteGrayTip.tipParam.p = paramString2;
     if (paramInt3 == 998)
     {
-      localMessageForUniteGrayTip.caidanAnimUrl = paramExtSnsRelationChainChangePushInfo.a();
-      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.b(localMessageForUniteGrayTip.caidanAnimUrl);
-      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkAlienationHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, localMessageForUniteGrayTip.caidanAnimUrl);
+      localMessageForUniteGrayTip.caidanAnimUrl = paramExtSnsRelationChainChangePushInfo.e();
+      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.g(localMessageForUniteGrayTip.caidanAnimUrl);
+      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkAlienationHelper.a(paramQQAppInterface, paramExtSnsRelationChainChangePushInfo.b, localMessageForUniteGrayTip.caidanAnimUrl);
     }
     else if (paramInt3 == 999)
     {
-      localMessageForUniteGrayTip.caidanAnimUrl = paramExtSnsRelationChainChangePushInfo.b();
-      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.b(localMessageForUniteGrayTip.caidanAnimUrl);
-      localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramExtSnsRelationChainChangePushInfo.c();
+      localMessageForUniteGrayTip.caidanAnimUrl = paramExtSnsRelationChainChangePushInfo.f();
+      localMessageForUniteGrayTip.caidanAnimUrl = MutualMarkUtils.g(localMessageForUniteGrayTip.caidanAnimUrl);
+      localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramExtSnsRelationChainChangePushInfo.g();
     }
     a((UniteGrayTipParam)localObject2, paramString1);
-    localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", MutualMarkUtils.a(paramExtSnsRelationChainChangePushInfo.a(), paramExtSnsRelationChainChangePushInfo.b()));
-    paramInt1 = paramExtSnsRelationChainChangePushInfo.c();
+    localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", MutualMarkUtils.a(paramExtSnsRelationChainChangePushInfo.b(), paramExtSnsRelationChainChangePushInfo.c()));
+    paramInt1 = paramExtSnsRelationChainChangePushInfo.d();
     if (paramInt1 > 0) {
       localMessageForUniteGrayTip.saveExtInfoToExtStr("sub_level", String.valueOf(paramInt1));
     }
     MutualMarkAlienationHelper.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramExtSnsRelationChainChangePushInfo, (String)localObject1, (UniteGrayTipParam)localObject2, paramString1);
     UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
-    MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
+    MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.i);
     MutualMarkBusinessLogicHelper.a(paramQQAppInterface, localMessageForUniteGrayTip.frienduin, localMessageForUniteGrayTip.istroop);
   }
   
@@ -316,7 +316,7 @@ public class MutualMarkGrayTipsHelper
           ((StringBuilder)localObject).append(localGrayTipHighlightItemInfo);
           QLog.d("MutualMarkGrayTipsHelper", 2, ((StringBuilder)localObject).toString());
         }
-        int i = localGrayTipHighlightItemInfo.jdField_a_of_type_Int;
+        int i = localGrayTipHighlightItemInfo.a;
         if (i != 1)
         {
           if (i != 2) {
@@ -330,31 +330,31 @@ public class MutualMarkGrayTipsHelper
             }
             else
             {
-              if ((TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString)) || (TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString))) {
+              if ((TextUtils.isEmpty(localGrayTipHighlightItemInfo.g)) || (TextUtils.isEmpty(localGrayTipHighlightItemInfo.h))) {
                 continue;
               }
               localObject = new Bundle();
               ((Bundle)localObject).putInt("key_action", 1);
-              ((Bundle)localObject).putString("key_action_DATA", localGrayTipHighlightItemInfo.jdField_d_of_type_JavaLangString);
-              paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.jdField_c_of_type_Int, localGrayTipHighlightItemInfo.jdField_d_of_type_Int, (Bundle)localObject);
+              ((Bundle)localObject).putString("key_action_DATA", localGrayTipHighlightItemInfo.h);
+              paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.e, localGrayTipHighlightItemInfo.f, (Bundle)localObject);
               continue;
             }
           }
-          if (TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString)) {
+          if (TextUtils.isEmpty(localGrayTipHighlightItemInfo.g)) {
             continue;
           }
           localObject = new Bundle();
-          ((Bundle)localObject).putString("image_resource", localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
-          paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.jdField_c_of_type_Int, localGrayTipHighlightItemInfo.jdField_d_of_type_Int, (Bundle)localObject);
+          ((Bundle)localObject).putString("image_resource", localGrayTipHighlightItemInfo.g);
+          paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.e, localGrayTipHighlightItemInfo.f, (Bundle)localObject);
           continue;
         }
         label226:
-        if (!TextUtils.isEmpty(localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString))
+        if (!TextUtils.isEmpty(localGrayTipHighlightItemInfo.g))
         {
           localObject = new Bundle();
           ((Bundle)localObject).putInt("key_action", 11);
-          ((Bundle)localObject).putString("key_action_DATA", localGrayTipHighlightItemInfo.jdField_c_of_type_JavaLangString);
-          paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.jdField_c_of_type_Int, localGrayTipHighlightItemInfo.jdField_d_of_type_Int, (Bundle)localObject);
+          ((Bundle)localObject).putString("key_action_DATA", localGrayTipHighlightItemInfo.g);
+          paramUniteGrayTipParam.a(localGrayTipHighlightItemInfo.e, localGrayTipHighlightItemInfo.f, (Bundle)localObject);
         }
       }
     }
@@ -362,7 +362,7 @@ public class MutualMarkGrayTipsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkGrayTipsHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 public class QQStoryVideoPlayerErrorView
   extends RelativeLayout
 {
-  protected ImageView a;
   protected TextView a;
+  protected ImageView b;
   
   public QQStoryVideoPlayerErrorView(Context paramContext)
   {
@@ -36,35 +36,35 @@ public class QQStoryVideoPlayerErrorView
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(StoryApi.a(2131699931));
-      setTipsIcon(2130846644);
+      this.a.setVisibility(0);
+      setTipsText(StoryApi.b(2131897984));
+      setTipsIcon(2130848196);
       setTipsTextSize(16.0F);
       return;
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      setTipsText(HardCodeUtil.a(2131711041));
-      setTipsIcon(2130846800);
+      this.a.setVisibility(0);
+      setTipsText(HardCodeUtil.a(2131908706));
+      setTipsIcon(2130848352);
       setTipsTextSize(14.0F);
       return;
     }
     if (paramInt == 2) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.a.setVisibility(8);
     }
   }
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561826, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378745));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369319));
+    paramContext = LayoutInflater.from(paramContext).inflate(2131628205, this, true);
+    this.a = ((TextView)paramContext.findViewById(2131447419));
+    this.b = ((ImageView)paramContext.findViewById(2131436318));
   }
   
   public void setCloseViewVisibility(boolean paramBoolean)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.b;
     int i;
     if (paramBoolean) {
       i = 0;
@@ -76,12 +76,12 @@ public class QQStoryVideoPlayerErrorView
   
   public void setOnCloseClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.b.setOnClickListener(paramOnClickListener);
   }
   
   public void setOnTipsClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.a.setOnClickListener(paramOnClickListener);
   }
   
   public void setTipsIcon(int paramInt)
@@ -89,7 +89,7 @@ public class QQStoryVideoPlayerErrorView
     try
     {
       Drawable localDrawable = getResources().getDrawable(paramInt);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
+      this.a.setCompoundDrawablesWithIntrinsicBounds(null, localDrawable, null, null);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -102,17 +102,17 @@ public class QQStoryVideoPlayerErrorView
   
   public void setTipsText(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.a.setText(paramString);
   }
   
   public void setTipsTextSize(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, paramFloat);
+    this.a.setTextSize(1, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public class BaseBubbleBuilderMenuUpcomingEventProcessor
     paramContext = (BaseActivity)paramContext;
     if ((paramContext != null) && (paramContext.getChatFragment() != null))
     {
-      ((AIOUpComingMsgHelper)paramContext.getChatFragment().a().a(59)).a(paramChatMessage);
+      ((AIOUpComingMsgHelper)paramContext.getChatFragment().k().q(59)).a(paramChatMessage);
       return;
     }
     paramChatMessage = new StringBuilder();
@@ -57,13 +57,13 @@ public class BaseBubbleBuilderMenuUpcomingEventProcessor
   
   protected void a(QQCustomMenu paramQQCustomMenu, Context paramContext, ChatMessage paramChatMessage, boolean paramBoolean)
   {
-    if ((paramChatMessage != null) && (paramQQCustomMenu != null) && (paramContext != null) && (UpComingMsgUtil.a(this.a.a)))
+    if ((paramChatMessage != null) && (paramQQCustomMenu != null) && (paramContext != null) && (UpComingMsgUtil.a(this.b.a)))
     {
-      int k = paramQQCustomMenu.a();
+      int k = paramQQCustomMenu.b();
       int j = k;
       if (paramBoolean)
       {
-        paramChatMessage = paramQQCustomMenu.a();
+        paramChatMessage = paramQQCustomMenu.d();
         j = k;
         if (paramChatMessage != null)
         {
@@ -74,7 +74,7 @@ public class BaseBubbleBuilderMenuUpcomingEventProcessor
             if (i >= paramChatMessage.length) {
               break;
             }
-            if (paramChatMessage[i].a() == 2131366494)
+            if (paramChatMessage[i].b() == 2131432813)
             {
               j = i + 1;
               break;
@@ -83,18 +83,18 @@ public class BaseBubbleBuilderMenuUpcomingEventProcessor
           }
         }
       }
-      paramQQCustomMenu.a(2131380215, paramContext.getString(2131690921), 0, j);
+      paramQQCustomMenu.a(2131449133, paramContext.getString(2131887860), 0, j);
     }
   }
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131380215;
+    return paramInt == 2131449133;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuUpcomingEventProcessor
  * JD-Core Version:    0.7.0.1
  */

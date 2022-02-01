@@ -35,14 +35,14 @@ class ChannelCoverInfoModule$11
       }
       try
       {
-        localJSONObject.put("startTimestamp", localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long);
-        localJSONObject.put("endTimestamp", localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long);
-        localJSONObject.put("animationTimestamp", localTabChannelCoverInfo.redPoint.jdField_c_of_type_Long);
-        localJSONObject.put("isShow", localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean);
-        localJSONObject.put("type", localTabChannelCoverInfo.redPoint.jdField_a_of_type_Int);
-        localJSONObject.put("titleText", localTabChannelCoverInfo.redPoint.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("titleColor", localTabChannelCoverInfo.redPoint.jdField_b_of_type_Int);
-        localJSONObject.put("titleBgColor", localTabChannelCoverInfo.redPoint.jdField_c_of_type_Int);
+        localJSONObject.put("startTimestamp", localTabChannelCoverInfo.redPoint.b);
+        localJSONObject.put("endTimestamp", localTabChannelCoverInfo.redPoint.c);
+        localJSONObject.put("animationTimestamp", localTabChannelCoverInfo.redPoint.d);
+        localJSONObject.put("isShow", localTabChannelCoverInfo.redPoint.a);
+        localJSONObject.put("type", localTabChannelCoverInfo.redPoint.e);
+        localJSONObject.put("titleText", localTabChannelCoverInfo.redPoint.f);
+        localJSONObject.put("titleColor", localTabChannelCoverInfo.redPoint.g);
+        localJSONObject.put("titleBgColor", localTabChannelCoverInfo.redPoint.h);
         localTabChannelCoverInfo.redPointJson = localJSONObject.toString();
       }
       catch (JSONException localJSONException)
@@ -51,11 +51,11 @@ class ChannelCoverInfoModule$11
         break label214;
       }
       if ((localTabChannelCoverInfo.mChannelCoverId == 70) && (!TextUtils.isEmpty(localTabChannelCoverInfo.mChannelJumpUrl))) {
-        ViolaAccessHelper.a(localTabChannelCoverInfo.mChannelJumpUrl);
+        ViolaAccessHelper.i(localTabChannelCoverInfo.mChannelJumpUrl);
       }
       this.this$0.updateEntity(localTabChannelCoverInfo);
     }
-    localObject = ChannelCoverInfoModule.a(this.this$0);
+    localObject = ChannelCoverInfoModule.b(this.this$0);
     if (localObject != null)
     {
       QLog.i("ChannelCoverInfoModule", 1, "now channels in db are:\n");
@@ -69,7 +69,7 @@ class ChannelCoverInfoModule$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule.11
  * JD-Core Version:    0.7.0.1
  */

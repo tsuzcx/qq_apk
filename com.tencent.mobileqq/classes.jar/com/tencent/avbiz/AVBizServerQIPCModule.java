@@ -12,90 +12,74 @@ import java.util.HashSet;
 public class AVBizServerQIPCModule
   extends QIPCModule
 {
-  private static volatile AVBizServerQIPCModule a;
+  public static final String NAME = "AVBizServerQIPCModule";
+  private static final String TAG = "AVBizServerQIPCModule";
+  private static volatile AVBizServerQIPCModule sInstance;
   
   private AVBizServerQIPCModule(String paramString)
   {
     super(paramString);
-    a();
+    initBinderListener();
   }
   
-  private Bundle a()
+  public static AVBizServerQIPCModule getInstance()
   {
-    HashMap localHashMap = AVBizPriorityManager.a().a();
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("get_focus_biz_result", localHashMap);
-    return localBundle;
-  }
-  
-  private Bundle a(Bundle paramBundle)
-  {
-    Object localObject = paramBundle.getString("module_name");
-    paramBundle = paramBundle.getString("process_name");
-    paramBundle = AVBizPriorityManager.a().a((String)localObject, paramBundle);
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("request_focus_result", paramBundle);
-    return localObject;
-  }
-  
-  public static AVBizServerQIPCModule a()
-  {
-    if (a == null) {
+    if (sInstance == null) {
       try
       {
-        if (a == null) {
-          a = new AVBizServerQIPCModule("AVBizServerQIPCModule");
+        if (sInstance == null) {
+          sInstance = new AVBizServerQIPCModule("AVBizServerQIPCModule");
         }
       }
       finally {}
     }
-    return a;
+    return sInstance;
   }
   
-  private void a()
-  {
-    QIPCServerHelper.getInstance().getServer().addListener(new AVBizServerQIPCModule.1(this));
-  }
-  
-  private void a(Bundle paramBundle)
+  private void handleAbandonAVFocus(Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("module_name");
-    AVBizPriorityManager.a().a(paramBundle);
+    AVBizPriorityManager.getInstance().abandonAVFocus(paramBundle);
   }
   
-  private Bundle b()
-  {
-    HashSet localHashSet = AVBizPriorityManager.a().a();
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("get_in_queue_biz_result", localHashSet);
-    return localBundle;
-  }
-  
-  private Bundle b(Bundle paramBundle)
+  private Bundle handleCheckAVFocus(Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("module_name");
-    paramBundle = AVBizPriorityManager.a().a(paramBundle);
+    paramBundle = AVBizPriorityManager.getInstance().checkAVFocus(paramBundle);
     Bundle localBundle = new Bundle();
     localBundle.putString("check_focus_result", paramBundle);
     return localBundle;
   }
   
-  public void a(boolean paramBoolean)
+  private Bundle handleGetFocusBusiness()
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onPhoneStatusChange, isCalling[");
-      localStringBuilder.append(paramBoolean);
-      localStringBuilder.append("]");
-      QLog.i("AVBizServerQIPCModule", 2, localStringBuilder.toString());
-    }
-    if (paramBoolean)
-    {
-      AVBizPriorityManager.a().a("系统通话", "");
-      return;
-    }
-    AVBizPriorityManager.a().a("系统通话");
+    HashMap localHashMap = AVBizPriorityManager.getInstance().getFocusBusiness();
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("get_focus_biz_result", localHashMap);
+    return localBundle;
+  }
+  
+  private Bundle handleGetInQueueBusiness()
+  {
+    HashSet localHashSet = AVBizPriorityManager.getInstance().getInQueueBusiness();
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("get_in_queue_biz_result", localHashSet);
+    return localBundle;
+  }
+  
+  private Bundle handleRequestAVFocus(Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("module_name");
+    paramBundle = paramBundle.getString("process_name");
+    paramBundle = AVBizPriorityManager.getInstance().requestAVFocus((String)localObject, paramBundle);
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("request_focus_result", paramBundle);
+    return localObject;
+  }
+  
+  private void initBinderListener()
+  {
+    QIPCServerHelper.getInstance().getServer().addListener(new AVBizServerQIPCModule.1(this));
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -109,25 +93,43 @@ public class AVBizServerQIPCModule
       QLog.i("AVBizServerQIPCModule", 4, localStringBuilder.toString());
     }
     if ("request_av_focus".equals(paramString)) {
-      return EIPCResult.createSuccessResult(a(paramBundle));
+      return EIPCResult.createSuccessResult(handleRequestAVFocus(paramBundle));
     }
     if ("check_av_focus".equals(paramString)) {
-      return EIPCResult.createSuccessResult(b(paramBundle));
+      return EIPCResult.createSuccessResult(handleCheckAVFocus(paramBundle));
     }
     if ("abandon_av_focus".equals(paramString))
     {
-      a(paramBundle);
+      handleAbandonAVFocus(paramBundle);
     }
     else
     {
       if ("get_focus_business".equals(paramString)) {
-        return EIPCResult.createSuccessResult(a());
+        return EIPCResult.createSuccessResult(handleGetFocusBusiness());
       }
       if ("get_in_queue_business".equals(paramString)) {
-        return EIPCResult.createSuccessResult(b());
+        return EIPCResult.createSuccessResult(handleGetInQueueBusiness());
       }
     }
     return EIPCResult.UNKNOW_RESULT;
+  }
+  
+  public void onSystemPhoneStatusChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPhoneStatusChange, isCalling[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("]");
+      QLog.i("AVBizServerQIPCModule", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean)
+    {
+      AVBizPriorityManager.getInstance().requestAVFocus("系统通话", "");
+      return;
+    }
+    AVBizPriorityManager.getInstance().abandonAVFocus("系统通话");
   }
 }
 

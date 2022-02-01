@@ -16,34 +16,39 @@ import java.util.Locale;
 
 public class SwiftBrowserIdleTaskHelper
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  private static SwiftBrowserIdleTaskHelper jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftBrowserIdleTaskHelper;
-  static WeakReference<ITbsDownloader> jdField_a_of_type_JavaLangRefWeakReference;
-  private static final ArrayList<SwiftBrowserIdleTaskHelper.IdleTask> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
-  final MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new SwiftBrowserIdleTaskHelper.1(this);
-  boolean jdField_a_of_type_Boolean = false;
+  static WeakReference<ITbsDownloader> a;
+  private static long d;
+  private static int e;
+  private static SwiftBrowserIdleTaskHelper f;
+  private static final ArrayList<SwiftBrowserIdleTaskHelper.IdleTask> g = new ArrayList(5);
+  boolean b = false;
+  final MessageQueue.IdleHandler c = new SwiftBrowserIdleTaskHelper.1(this);
   
   public static SwiftBrowserIdleTaskHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftBrowserIdleTaskHelper == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftBrowserIdleTaskHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftBrowserIdleTaskHelper = new SwiftBrowserIdleTaskHelper();
+        if (f == null) {
+          f = new SwiftBrowserIdleTaskHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftBrowserIdleTaskHelper;
+    return f;
   }
   
-  static void a()
+  public static void a(ITbsDownloader paramITbsDownloader)
+  {
+    a = new WeakReference(paramITbsDownloader);
+  }
+  
+  static void b()
   {
     try
     {
-      Util.a("downloadX5KernelIfNeeded");
-      ITbsDownloader localITbsDownloader = (ITbsDownloader)jdField_a_of_type_JavaLangRefWeakReference.get();
+      Util.f("downloadX5KernelIfNeeded");
+      ITbsDownloader localITbsDownloader = (ITbsDownloader)a.get();
       if (localITbsDownloader != null)
       {
         localObject = WebAccelerateHelper.getInstance().getTBSDpcParam();
@@ -57,11 +62,11 @@ public class SwiftBrowserIdleTaskHelper
         }
         else
         {
-          jdField_a_of_type_Int = 5;
+          e = 5;
           QLog.i("SwiftBrowserIdleTaskHelper", 1, "call downloadX5Kernel on idle: no need download tbs.");
         }
       }
-      Util.b("downloadX5KernelIfNeeded");
+      Util.g("downloadX5KernelIfNeeded");
       return;
     }
     catch (Throwable localThrowable)
@@ -70,43 +75,38 @@ public class SwiftBrowserIdleTaskHelper
       ((StringBuilder)localObject).append("downloadX5Kernel error:");
       ((StringBuilder)localObject).append(localThrowable.getMessage());
       QLog.e("SwiftBrowserIdleTaskHelper", 1, ((StringBuilder)localObject).toString());
-      Util.b("downloadX5KernelIfNeeded");
+      Util.g("downloadX5KernelIfNeeded");
     }
-  }
-  
-  public static void a(ITbsDownloader paramITbsDownloader)
-  {
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramITbsDownloader);
   }
   
   public void a(SwiftBrowserIdleTaskHelper.IdleTask paramIdleTask)
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = g.iterator();
       while (localIterator.hasNext()) {
-        if (((SwiftBrowserIdleTaskHelper.IdleTask)localIterator.next()).jdField_a_of_type_Int == paramIdleTask.jdField_a_of_type_Int) {
+        if (((SwiftBrowserIdleTaskHelper.IdleTask)localIterator.next()).b == paramIdleTask.b) {
           return;
         }
       }
-      jdField_a_of_type_JavaUtilArrayList.add(paramIdleTask);
-      if ((!jdField_a_of_type_JavaUtilArrayList.isEmpty()) && (!this.jdField_a_of_type_Boolean))
+      g.add(paramIdleTask);
+      if ((!g.isEmpty()) && (!this.b))
       {
-        this.jdField_a_of_type_Boolean = true;
-        Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
+        this.b = true;
+        Looper.myQueue().addIdleHandler(this.c);
       }
     }
   }
   
   public boolean a(int paramInt)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = g.iterator();
     while (localIterator.hasNext())
     {
       SwiftBrowserIdleTaskHelper.IdleTask localIdleTask = (SwiftBrowserIdleTaskHelper.IdleTask)localIterator.next();
-      if (localIdleTask.jdField_a_of_type_Int == paramInt)
+      if (localIdleTask.b == paramInt)
       {
-        jdField_a_of_type_JavaUtilArrayList.remove(localIdleTask);
+        g.remove(localIdleTask);
         return true;
       }
     }
@@ -115,7 +115,7 @@ public class SwiftBrowserIdleTaskHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper
  * JD-Core Version:    0.7.0.1
  */

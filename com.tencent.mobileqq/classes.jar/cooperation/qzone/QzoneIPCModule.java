@@ -169,7 +169,7 @@ public class QzoneIPCModule
           try
           {
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("url", ((StickerRecData)localObject2).a()).put("thumbUrl", ((StickerRecData)localObject2).b()).put("md5", ((StickerRecData)localObject2).c());
+            localJSONObject.put("url", ((StickerRecData)localObject2).e()).put("thumbUrl", ((StickerRecData)localObject2).f()).put("md5", ((StickerRecData)localObject2).l());
             localJSONArray.put(localJSONObject);
           }
           catch (JSONException localJSONException)
@@ -239,7 +239,7 @@ public class QzoneIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QzoneIPCModule
  * JD-Core Version:    0.7.0.1
  */

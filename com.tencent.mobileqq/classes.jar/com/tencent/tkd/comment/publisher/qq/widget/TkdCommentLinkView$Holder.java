@@ -23,9 +23,9 @@ class TkdCommentLinkView$Holder
     this.linkData = paramTkdCommentLinkData;
     this.vRoot = View.inflate(paramTkdCommentLinkView.getContext(), R.layout.a, null);
     paramTkdCommentLinkView.addView(this.vRoot, paramTkdCommentLinkView.getChildCount());
-    this.vDelete = this.vRoot.findViewById(R.id.m);
-    this.vIcon = ((TkdQQUrlImageView)this.vRoot.findViewById(R.id.s));
-    this.vDescription = ((TextView)this.vRoot.findViewById(R.id.o));
+    this.vDelete = this.vRoot.findViewById(R.id.d);
+    this.vIcon = ((TkdQQUrlImageView)this.vRoot.findViewById(R.id.j));
+    this.vDescription = ((TextView)this.vRoot.findViewById(R.id.f));
     this.vDelete.setOnClickListener(this);
     this.vDescription.setText(paramTkdCommentLinkData.wording);
     int i = paramTkdCommentLinkData.type;
@@ -40,23 +40,23 @@ class TkdCommentLinkView$Holder
             if (i != 5) {
               i = 0;
             } else {
-              i = R.drawable.j;
+              i = R.drawable.h;
             }
           }
           else {
-            i = R.drawable.i;
+            i = R.drawable.g;
           }
         }
         else {
-          i = R.drawable.g;
+          i = R.drawable.e;
         }
       }
       else {
-        i = R.drawable.f;
+        i = R.drawable.d;
       }
     }
     else {
-      i = R.drawable.h;
+      i = R.drawable.f;
     }
     this.vIcon.urlImageBridge = paramTkdCommentLinkView.urlImageBridge;
     this.vIcon.setImageResource(i);
@@ -74,7 +74,7 @@ class TkdCommentLinkView$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView.Holder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.core;
 
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.Toast;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.DiscussionManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.troop.data.TroopMessageManager;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.TroopReportor;
+import com.tencent.mobileqq.troop.troopapps.api.ITroopAppService;
+import com.tencent.mobileqq.troop.utils.TroopRemindSettingManager;
+import java.util.Set;
 
 class TroopChatPie$27
   implements Runnable
@@ -21,26 +21,33 @@ class TroopChatPie$27
   
   public void run()
   {
-    this.this$0.ay();
-    Object localObject1 = ((TroopGagMgr)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, true);
-    Object localObject2 = this.this$0.b.obtainMessage(2);
-    ((Message)localObject2).obj = localObject1;
-    this.this$0.b.sendMessage((Message)localObject2);
-    localObject1 = ((TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a();
-    int j = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getContext());
-    if (((i == 1) || (i == 4) || ((i == -1) && (((TroopMessageManager)localObject2).d > 0))) && (((TroopMessageManager)localObject2).jdField_a_of_type_Boolean) && (localObject1 != null) && (((TroopInfo)localObject1).wMemberNum < ((TroopMessageManager)localObject2).c) && ((j == 4) || (j == 1))) {
-      ((TroopMessageManager)localObject2).c(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, Math.min(this.this$0.j, ((TroopMessageManager)localObject2).jdField_a_of_type_Int));
+    if (TroopRemindSettingManager.a().a(this.this$0.ah.b, this.this$0.d))
+    {
+      localObject = this.this$0;
+      ((TroopChatPie)localObject).cg = ChatActivityUtils.a(((TroopChatPie)localObject).f, this.this$0.f.getString(2131886518));
+      this.this$0.cg.show();
+      TroopRemindSettingManager.a().b(this.this$0.ah.b, this.this$0.d);
     }
-    if ((localObject1 != null) && (((TroopInfo)localObject1).isGameBind())) {
-      TroopReportor.a("Grp_game", "Grp_AIO", "aio_exp", 0, 0, new String[] { this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
+    Object localObject = (DiscussionManager)this.this$0.d.getManager(QQManagerFactory.DISCUSSION_MANAGER);
+    if ((localObject != null) && (((DiscussionManager)localObject).b.contains(this.this$0.ah.b)))
+    {
+      this.this$0.d.getMessageFacade().c(this.this$0.ah.b);
+      ((DiscussionManager)localObject).b.remove(this.this$0.ah.b);
     }
+    localObject = (ITroopAppService)this.this$0.d.getRuntimeService(ITroopAppService.class, "all");
+    TroopManager localTroopManager = (TroopManager)this.this$0.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    if (this.this$0.bE != ((ITroopAppService)localObject).getAppListTimestamp(0))
+    {
+      this.this$0.bE = ((ITroopAppService)localObject).getAppListTimestamp(0);
+      this.this$0.bX.sendEmptyMessage(4);
+    }
+    localTroopManager.g(this.this$0.ah.b);
+    ((ITroopAppService)localObject).clickReport();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.27
  * JD-Core Version:    0.7.0.1
  */

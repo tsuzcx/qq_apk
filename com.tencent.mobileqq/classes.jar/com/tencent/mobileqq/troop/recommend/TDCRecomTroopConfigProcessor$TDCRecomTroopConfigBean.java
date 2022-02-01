@@ -5,13 +5,8 @@ import org.json.JSONObject;
 
 public class TDCRecomTroopConfigProcessor$TDCRecomTroopConfigBean
 {
-  public String a;
   public boolean a;
-  
-  public TDCRecomTroopConfigProcessor$TDCRecomTroopConfigBean()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public String b = "";
   
   public static TDCRecomTroopConfigBean a(String paramString)
   {
@@ -28,8 +23,8 @@ public class TDCRecomTroopConfigProcessor$TDCRecomTroopConfigBean
             break label127;
           }
           bool = true;
-          localTDCRecomTroopConfigBean.jdField_a_of_type_Boolean = bool;
-          localTDCRecomTroopConfigBean.jdField_a_of_type_JavaLangString = localJSONObject.optString("tipText");
+          localTDCRecomTroopConfigBean.a = bool;
+          localTDCRecomTroopConfigBean.b = localJSONObject.optString("tipText");
         }
         catch (Exception localException1) {}
         QLog.d("TDCRecomTroopConfigProcessor", 1, "convertFromJSONObject exception ", localException2);
@@ -60,16 +55,16 @@ public class TDCRecomTroopConfigProcessor$TDCRecomTroopConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[displayOrNot:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",title:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.TDCRecomTroopConfigProcessor.TDCRecomTroopConfigBean
  * JD-Core Version:    0.7.0.1
  */

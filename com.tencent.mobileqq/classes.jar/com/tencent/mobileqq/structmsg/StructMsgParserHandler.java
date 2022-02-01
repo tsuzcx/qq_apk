@@ -12,29 +12,29 @@ public class StructMsgParserHandler
   extends DefaultHandler
   implements StructMsgConstants
 {
-  StructMsgNode jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode;
-  private String jdField_a_of_type_JavaLangString;
-  Stack<StructMsgNode> jdField_a_of_type_JavaUtilStack = new Stack();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b;
+  Stack<StructMsgNode> a = new Stack();
+  StructMsgNode b;
+  private boolean c = false;
+  private String d;
+  private boolean e;
   
   public AbsStructMsg a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode;
+    Object localObject = this.b;
     if (localObject == null) {
       return null;
     }
     if (((StructMsgNode)localObject).a() > 0) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a(0);
+      localObject = this.b.a(0);
     } else {
       localObject = null;
     }
     if (localObject == null) {
       return null;
     }
-    int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode.a("serviceID"));
+    int i = Integer.parseInt(this.b.a("serviceID"));
     if (i == 2) {
-      return new StructMsgForAudioShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
+      return new StructMsgForAudioShare(this.b);
     }
     if ((i != 3) && (i != 82) && (i != 120))
     {
@@ -42,42 +42,42 @@ public class StructMsgParserHandler
       {
         if (i == 150)
         {
-          localObject = new StructMsgSubImageVideo(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
+          localObject = new StructMsgSubImageVideo(this.b);
           if (((StructMsgSubImageVideo)localObject).isValid()) {
             return localObject;
           }
         }
-        return new StructMsgForGeneralShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
+        return new StructMsgForGeneralShare(this.b);
       }
-      return new StructMsgForImageShare(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode);
+      return new StructMsgForImageShare(this.b);
     }
-    return new StructMsgForHypertext(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode, i);
+    return new StructMsgForHypertext(this.b, i);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
     super.characters(paramArrayOfChar, paramInt1, paramInt2);
     paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    if (!this.a.isEmpty())
     {
-      StructMsgNode localStructMsgNode = (StructMsgNode)this.jdField_a_of_type_JavaUtilStack.peek();
+      StructMsgNode localStructMsgNode = (StructMsgNode)this.a.peek();
       if (localStructMsgNode != null)
       {
-        if (localStructMsgNode.jdField_a_of_type_JavaLangString != null) {
-          paramArrayOfChar = localStructMsgNode.jdField_a_of_type_JavaLangString.concat(paramArrayOfChar);
+        if (localStructMsgNode.a != null) {
+          paramArrayOfChar = localStructMsgNode.a.concat(paramArrayOfChar);
         }
-        localStructMsgNode.jdField_a_of_type_JavaLangString = paramArrayOfChar;
-        localStructMsgNode.jdField_a_of_type_JavaLangString = EmotcationConstants.afterXml(localStructMsgNode.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b);
+        localStructMsgNode.a = paramArrayOfChar;
+        localStructMsgNode.a = EmotcationConstants.afterXml(localStructMsgNode.a, this.d, this.e);
       }
     }
   }
@@ -85,25 +85,25 @@ public class StructMsgParserHandler
   public void endDocument()
   {
     super.endDocument();
-    this.jdField_a_of_type_JavaUtilStack.clear();
-    this.jdField_a_of_type_JavaUtilStack = null;
+    this.a.clear();
+    this.a = null;
   }
   
   public void endElement(String paramString1, String paramString2, String paramString3)
   {
     super.endElement(paramString1, paramString2, paramString3);
-    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    if (!this.a.isEmpty())
     {
-      paramString1 = (StructMsgNode)this.jdField_a_of_type_JavaUtilStack.pop();
-      if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode = paramString1;
+      paramString1 = (StructMsgNode)this.a.pop();
+      if (this.a.isEmpty()) {
+        this.b = paramString1;
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
-        if ((paramString1 != null) && (!"".equals(paramString1.jdField_a_of_type_JavaLangString))) {
-          paramString1.jdField_a_of_type_Int = 3;
+        if ((paramString1 != null) && (!"".equals(paramString1.a))) {
+          paramString1.f = 3;
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.c = false;
       }
     }
   }
@@ -115,7 +115,7 @@ public class StructMsgParserHandler
     int i = 0;
     while (i < paramAttributes.getLength())
     {
-      localHashMap.put(paramAttributes.getLocalName(i), EmotcationConstants.afterXml(paramAttributes.getValue(i), this.jdField_a_of_type_JavaLangString, this.b));
+      localHashMap.put(paramAttributes.getLocalName(i), EmotcationConstants.afterXml(paramAttributes.getValue(i), this.d, this.e));
       i += 1;
     }
     if (QLog.isColorLevel())
@@ -132,22 +132,22 @@ public class StructMsgParserHandler
       QLog.e("StructMsg", 2, paramAttributes.toString());
     }
     paramString1 = new StructMsgNode(paramString2, localHashMap);
-    if (!this.jdField_a_of_type_JavaUtilStack.isEmpty())
+    if (!this.a.isEmpty())
     {
-      paramString2 = (StructMsgNode)this.jdField_a_of_type_JavaUtilStack.peek();
+      paramString2 = (StructMsgNode)this.a.peek();
       if (paramString2 != null)
       {
-        paramString1.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgNode = paramString2;
+        paramString1.e = paramString2;
         paramString2.a(paramString1);
       }
     }
-    this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-    this.jdField_a_of_type_Boolean = true;
+    this.a.push(paramString1);
+    this.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgParserHandler
  * JD-Core Version:    0.7.0.1
  */

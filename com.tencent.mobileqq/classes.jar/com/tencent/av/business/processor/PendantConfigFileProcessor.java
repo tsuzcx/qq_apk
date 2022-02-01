@@ -6,8 +6,10 @@ import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.google.gson.Gson;
 import com.tencent.av.AVPathUtil;
+import com.tencent.av.abtest.QavEffectUIABTestUtils;
 import com.tencent.av.business.manager.pendant.PendantItem;
 import com.tencent.av.utils.EffectMaterialUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -19,24 +21,9 @@ import java.util.Map;
 public class PendantConfigFileProcessor
   extends BaseConfigFileProcessor<PendantItem>
 {
-  public int a(MetaMaterial paramMetaMaterial)
+  public PendantConfigFileProcessor(AppInterface paramAppInterface)
   {
-    if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("kind"))) {
-      return 0;
-    }
-    try
-    {
-      int i = Integer.parseInt((String)paramMetaMaterial.additionalFields.get("kind"));
-      return i;
-    }
-    catch (Exception paramMetaMaterial)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getKind exception: ");
-      localStringBuilder.append(paramMetaMaterial.getMessage());
-      QLog.e("PendantConfigFileProcessor", 1, localStringBuilder.toString());
-    }
-    return 0;
+    super(paramAppInterface);
   }
   
   public PendantItem a(MetaMaterial paramMetaMaterial)
@@ -52,9 +39,9 @@ public class PendantConfigFileProcessor
     localPendantItem.setMd5(paramMetaMaterial.packageMd5);
     localPendantItem.setPredownload(TextUtils.equals("true", (CharSequence)paramMetaMaterial.additionalFields.get("predownload")));
     localPendantItem.setIsshow(TextUtils.equals("false", (CharSequence)paramMetaMaterial.additionalFields.get("isshow")) ^ true);
-    localPendantItem.setKind(a(paramMetaMaterial));
-    localPendantItem.setType(b(paramMetaMaterial));
-    localPendantItem.setCategory(c(paramMetaMaterial));
+    localPendantItem.setKind(b(paramMetaMaterial));
+    localPendantItem.setType(c(paramMetaMaterial));
+    localPendantItem.setCategory(d(paramMetaMaterial));
     boolean bool = TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("version"));
     String str = "";
     Object localObject;
@@ -71,11 +58,23 @@ public class PendantConfigFileProcessor
     }
     localPendantItem.setGestureType((String)localObject);
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("gestureWording"))) {
-      localObject = str;
+      localObject = "";
     } else {
       localObject = (String)paramMetaMaterial.additionalFields.get("gestureWording");
     }
     localPendantItem.setGestureWording((String)localObject);
+    if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("key_local_use_category_id"))) {
+      localObject = "";
+    } else {
+      localObject = (String)paramMetaMaterial.additionalFields.get("key_local_use_category_id");
+    }
+    localPendantItem.setCategoryId((String)localObject);
+    if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("key_local_use_category_name"))) {
+      localObject = str;
+    } else {
+      localObject = (String)paramMetaMaterial.additionalFields.get("key_local_use_category_name");
+    }
+    localPendantItem.setCategoryName((String)localObject);
     paramMetaMaterial = (String)paramMetaMaterial.additionalFields.get("originName");
     if (!TextUtils.isEmpty(paramMetaMaterial))
     {
@@ -94,13 +93,13 @@ public class PendantConfigFileProcessor
   
   public String a()
   {
-    return AVPathUtil.h();
+    return AVPathUtil.j();
   }
   
   public List<PendantItem> a(File paramFile)
   {
     ArrayList localArrayList = new ArrayList();
-    paramFile = a(paramFile);
+    paramFile = b(paramFile);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -141,8 +140,12 @@ public class PendantConfigFileProcessor
       while (paramFile.hasNext())
       {
         localObject1 = (MetaMaterial)paramFile.next();
-        if (localObject1 != null) {
-          localArrayList.add(a((MetaMaterial)localObject1));
+        if (localObject1 != null)
+        {
+          localObject1 = a((MetaMaterial)localObject1);
+          if ((QavEffectUIABTestUtils.b(this.a.getCurrentAccountUin())) || (!a(localArrayList, (PendantItem)localObject1))) {
+            localArrayList.add(localObject1);
+          }
         }
       }
       if (QLog.isColorLevel())
@@ -164,12 +167,52 @@ public class PendantConfigFileProcessor
     return localArrayList;
   }
   
-  public void a()
+  public boolean a(List<PendantItem> paramList, PendantItem paramPendantItem)
   {
-    EffectMaterialUtil.a(BaseApplication.getContext(), "ShadowBackendSvc.GetCatMatTreeQQAVSinglePendant");
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return false;
+      }
+      if (paramPendantItem == null) {
+        return true;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        if (((PendantItem)paramList.next()).getId().equals(paramPendantItem.getId())) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   public int b(MetaMaterial paramMetaMaterial)
+  {
+    if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("kind"))) {
+      return 0;
+    }
+    try
+    {
+      int i = Integer.parseInt((String)paramMetaMaterial.additionalFields.get("kind"));
+      return i;
+    }
+    catch (Exception paramMetaMaterial)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getKind exception: ");
+      localStringBuilder.append(paramMetaMaterial.getMessage());
+      QLog.e("PendantConfigFileProcessor", 1, localStringBuilder.toString());
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    EffectMaterialUtil.b(BaseApplication.getContext(), "ShadowBackendSvc.GetCatMatTreeQQAVSinglePendantV2");
+  }
+  
+  public int c(MetaMaterial paramMetaMaterial)
   {
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("type"))) {
       return 0;
@@ -189,7 +232,7 @@ public class PendantConfigFileProcessor
     return 0;
   }
   
-  public int c(MetaMaterial paramMetaMaterial)
+  public int d(MetaMaterial paramMetaMaterial)
   {
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("category"))) {
       return 0;

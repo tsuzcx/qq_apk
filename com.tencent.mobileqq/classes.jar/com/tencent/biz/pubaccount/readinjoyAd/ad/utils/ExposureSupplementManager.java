@@ -35,38 +35,27 @@ import org.json.JSONObject;
 public class ExposureSupplementManager
   implements IExposureSupplementManager
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static HashMap<String, Long> jdField_c_of_type_JavaUtilHashMap = new HashMap();
-  private static HashMap<String, VideoAdInfo> jdField_d_of_type_JavaUtilHashMap = new HashMap();
+  private static HashMap<String, Long> e = new HashMap();
   private static HashMap<String, VideoAdInfo> f = new HashMap();
-  private static HashMap<String, Long> g = new HashMap();
-  private int jdField_a_of_type_Int;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private HashMap<String, AdvertisementInfo> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  private HashSet<String> jdField_b_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_b_of_type_Boolean = false;
-  private HashSet<String> jdField_c_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_c_of_type_Boolean = true;
-  private boolean jdField_d_of_type_Boolean = false;
-  private HashMap<String, AdvertisementInfo> jdField_e_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_e_of_type_Boolean = false;
+  private static HashMap<String, VideoAdInfo> j = new HashMap();
+  private static HashMap<String, Long> k = new HashMap();
+  private static boolean l = false;
+  private HashMap<String, Long> a = new HashMap();
+  private HashSet<String> b = new HashSet();
+  private HashSet<String> c = new HashSet();
+  private HashMap<String, AdvertisementInfo> d = new HashMap();
+  private ArrayList<String> g = new ArrayList();
+  private HashSet<String> h = new HashSet();
+  private HashMap<String, AdvertisementInfo> i = new HashMap();
+  private int m;
+  private boolean n = false;
+  private boolean o = true;
+  private boolean p = false;
+  private boolean q = false;
   
   public ExposureSupplementManager(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static int a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if (paramAdvertisementInfo.mChannelID == 56L) {
-      return 4;
-    }
-    if (((IRIJFeedsType)QRoute.api(IRIJFeedsType.class)).isVideoArticle(paramAdvertisementInfo)) {
-      return 11;
-    }
-    return 3;
+    this.m = paramInt;
   }
   
   private static JSONObject a(Context paramContext, AdvertisementInfo paramAdvertisementInfo, int paramInt1, int paramInt2)
@@ -92,7 +81,7 @@ public class ExposureSupplementManager
   
   public static void a(Activity paramActivity, float paramFloat, RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if ((!paramBoolean) && (paramFloat < 1.0D)) {
@@ -112,7 +101,7 @@ public class ExposureSupplementManager
   
   private static void a(Activity paramActivity, int paramInt, VideoAdInfo paramVideoAdInfo)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo(paramVideoAdInfo);
@@ -120,10 +109,10 @@ public class ExposureSupplementManager
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportVideoFeeds1px ,traceid =");
-      localStringBuilder.append(paramVideoAdInfo.h);
+      localStringBuilder.append(paramVideoAdInfo.m);
       QLog.d("ExposureSupplementUtil", 2, localStringBuilder.toString());
     }
-    if (paramVideoAdInfo.jdField_c_of_type_Boolean)
+    if (paramVideoAdInfo.al)
     {
       a(paramActivity, paramVideoAdInfo, localAdvertisementInfo, 10, 0, paramInt);
       return;
@@ -133,10 +122,10 @@ public class ExposureSupplementManager
   
   public static void a(Activity paramActivity, int paramInt, boolean paramBoolean)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
-    Iterator localIterator = jdField_c_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = e.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
@@ -144,8 +133,8 @@ public class ExposureSupplementManager
       localObject = (Long)((Map.Entry)localObject).getValue();
       if ((localObject != null) && (((Long)localObject).longValue() != 0L))
       {
-        jdField_c_of_type_JavaUtilHashMap.put(str, Long.valueOf(0L));
-        VideoAdInfo localVideoAdInfo = (VideoAdInfo)jdField_d_of_type_JavaUtilHashMap.get(str);
+        e.put(str, Long.valueOf(0L));
+        VideoAdInfo localVideoAdInfo = (VideoAdInfo)f.get(str);
         if (localVideoAdInfo == null) {
           return;
         }
@@ -154,58 +143,58 @@ public class ExposureSupplementManager
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("reportVideoFeeds size =");
-          localStringBuilder.append(jdField_c_of_type_JavaUtilHashMap.size());
+          localStringBuilder.append(e.size());
           localStringBuilder.append(",traceid =");
           localStringBuilder.append(str);
           QLog.d("ExposureSupplementUtil", 2, localStringBuilder.toString());
         }
-        int i;
-        if (localVideoAdInfo.jdField_c_of_type_Boolean)
+        int i1;
+        if (localVideoAdInfo.al)
         {
           if (paramBoolean) {
-            i = (int)(System.currentTimeMillis() - ((Long)localObject).longValue());
+            i1 = (int)(System.currentTimeMillis() - ((Long)localObject).longValue());
           } else {
-            i = 0;
+            i1 = 0;
           }
-          a(paramActivity, localVideoAdInfo, localAdvertisementInfo, 10, i, paramInt);
+          a(paramActivity, localVideoAdInfo, localAdvertisementInfo, 10, i1, paramInt);
         }
         else
         {
           if (paramBoolean) {
-            i = (int)(System.currentTimeMillis() - ((Long)localObject).longValue());
+            i1 = (int)(System.currentTimeMillis() - ((Long)localObject).longValue());
           } else {
-            i = 0;
+            i1 = 0;
           }
-          a(paramActivity, localVideoAdInfo, localAdvertisementInfo, 5, i, paramInt);
+          a(paramActivity, localVideoAdInfo, localAdvertisementInfo, 5, i1, paramInt);
         }
       }
     }
-    jdField_d_of_type_JavaUtilHashMap.clear();
+    f.clear();
   }
   
   public static void a(Activity paramActivity, RecyclerView.ViewHolder paramViewHolder)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if ((paramViewHolder instanceof VideoItemHolder))
     {
       paramViewHolder = (VideoItemHolder)paramViewHolder;
-      if ((paramViewHolder.a != null) && (paramViewHolder.a.a != null) && (paramViewHolder.a.a.r) && (paramViewHolder.a.a.a != null) && (!jdField_c_of_type_JavaUtilHashMap.containsKey(paramViewHolder.a.a.a.h)))
+      if ((paramViewHolder.az != null) && (paramViewHolder.az.c != null) && (paramViewHolder.az.c.aq) && (paramViewHolder.az.c.as != null) && (!e.containsKey(paramViewHolder.az.c.as.m)))
       {
-        String str = paramViewHolder.a.a.a.h;
-        paramViewHolder.a.a.a.jdField_c_of_type_Boolean = paramViewHolder.a.a.b(paramActivity);
-        if (!jdField_c_of_type_JavaUtilHashMap.containsKey(str))
+        String str = paramViewHolder.az.c.as.m;
+        paramViewHolder.az.c.as.al = paramViewHolder.az.c.e(paramActivity);
+        if (!e.containsKey(str))
         {
           if (QLog.isColorLevel())
           {
             paramActivity = new StringBuilder();
             paramActivity.append("reportVideoFeeds add to collections , size=");
-            paramActivity.append(jdField_c_of_type_JavaUtilHashMap.size());
+            paramActivity.append(e.size());
             QLog.d("ExposureSupplementUtil", 2, paramActivity.toString());
           }
-          jdField_c_of_type_JavaUtilHashMap.put(str, Long.valueOf(System.currentTimeMillis()));
-          jdField_d_of_type_JavaUtilHashMap.put(str, paramViewHolder.a.a.a);
+          e.put(str, Long.valueOf(System.currentTimeMillis()));
+          f.put(str, paramViewHolder.az.c.as);
         }
       }
     }
@@ -213,7 +202,7 @@ public class ExposureSupplementManager
   
   private void a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramActivity).a(25).b(paramInt1).a(paramAdvertisementInfo).e(a(paramActivity, paramAdvertisementInfo, paramInt2, paramInt3)));
@@ -221,7 +210,7 @@ public class ExposureSupplementManager
   
   private static void a(Activity paramActivity, VideoAdInfo paramVideoAdInfo, AdvertisementInfo paramAdvertisementInfo, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramActivity).a(25).b(paramInt1).a(paramAdvertisementInfo).a(paramVideoAdInfo).e(a(paramActivity, paramAdvertisementInfo, paramInt2, paramInt3)));
@@ -229,12 +218,12 @@ public class ExposureSupplementManager
   
   private void a(Activity paramActivity, String paramString)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (this.a.containsKey(paramString))
     {
-      Long localLong = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      Long localLong = (Long)this.a.get(paramString);
       if (localLong != null)
       {
         if (localLong.longValue() == 0L) {
@@ -244,36 +233,36 @@ public class ExposureSupplementManager
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("reportFeeds,channelID=");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.m);
           localStringBuilder.append(",traceId");
           localStringBuilder.append(paramString);
           QLog.d("ExposureSupplementUtil", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Long.valueOf(0L));
-        paramString = (AdvertisementInfo)this.jdField_b_of_type_JavaUtilHashMap.get(paramString);
+        this.a.put(paramString, Long.valueOf(0L));
+        paramString = (AdvertisementInfo)this.d.get(paramString);
         if (paramString == null) {
           return;
         }
         long l1 = System.currentTimeMillis();
         long l2 = localLong.longValue();
-        a(paramActivity, paramString, a(paramString), (int)(l1 - l2), 50);
+        a(paramActivity, paramString, c(paramString), (int)(l1 - l2), 50);
       }
     }
   }
   
   public static void a(RecyclerView.ViewHolder paramViewHolder)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if ((paramViewHolder instanceof VideoItemHolder))
     {
       paramViewHolder = (VideoItemHolder)paramViewHolder;
-      if ((paramViewHolder.a != null) && (paramViewHolder.a.a != null) && (paramViewHolder.a.a.r) && (paramViewHolder.a.a.a != null) && (g.containsKey(paramViewHolder.a.a.a.h)))
+      if ((paramViewHolder.az != null) && (paramViewHolder.az.c != null) && (paramViewHolder.az.c.aq) && (paramViewHolder.az.c.as != null) && (k.containsKey(paramViewHolder.az.c.as.m)))
       {
-        paramViewHolder = paramViewHolder.a.a.a.h;
-        g.put(paramViewHolder, Long.valueOf(0L));
-        f.remove(paramViewHolder);
+        paramViewHolder = paramViewHolder.az.c.as.m;
+        k.put(paramViewHolder, Long.valueOf(0L));
+        j.remove(paramViewHolder);
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -285,32 +274,19 @@ public class ExposureSupplementManager
     }
   }
   
-  public static boolean a()
-  {
-    boolean bool = "1".equals(((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getProteusOfflineBid("readinjjoy_ad_supplement_config"));
-    if ((QLog.isColorLevel()) && (!bool) && (!jdField_a_of_type_Boolean))
-    {
-      jdField_a_of_type_Boolean = true;
-      QLog.d("ExposureSupplementUtil", 2, "supplement report is close!");
-      return bool;
-    }
-    jdField_a_of_type_Boolean = false;
-    return bool;
-  }
-  
   public static void b(Activity paramActivity, RecyclerView.ViewHolder paramViewHolder)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if ((paramViewHolder instanceof VideoItemHolder))
     {
       paramViewHolder = (VideoItemHolder)paramViewHolder;
-      if ((paramViewHolder.a != null) && (paramViewHolder.a.a != null) && (paramViewHolder.a.a.r) && (paramViewHolder.a.a.a != null) && (!g.containsKey(paramViewHolder.a.a.a.h)))
+      if ((paramViewHolder.az != null) && (paramViewHolder.az.c != null) && (paramViewHolder.az.c.aq) && (paramViewHolder.az.c.as != null) && (!k.containsKey(paramViewHolder.az.c.as.m)))
       {
-        String str = paramViewHolder.a.a.a.h;
-        paramViewHolder.a.a.a.jdField_c_of_type_Boolean = paramViewHolder.a.a.b(paramActivity);
-        if (!g.containsKey(str))
+        String str = paramViewHolder.az.c.as.m;
+        paramViewHolder.az.c.as.al = paramViewHolder.az.c.e(paramActivity);
+        if (!k.containsKey(str))
         {
           if (QLog.isColorLevel())
           {
@@ -319,27 +295,38 @@ public class ExposureSupplementManager
             localStringBuilder.append(str);
             QLog.d("ExposureSupplementUtil", 2, localStringBuilder.toString());
           }
-          f.put(str, paramViewHolder.a.a.a);
-          g.put(str, Long.valueOf(System.currentTimeMillis()));
-          a(paramActivity, 1, paramViewHolder.a.a.a);
+          j.put(str, paramViewHolder.az.c.as);
+          k.put(str, Long.valueOf(System.currentTimeMillis()));
+          a(paramActivity, 1, paramViewHolder.az.c.as);
         }
       }
     }
   }
   
+  private static int c(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if (paramAdvertisementInfo.mChannelID == 56L) {
+      return 4;
+    }
+    if (((IRIJFeedsType)QRoute.api(IRIJFeedsType.class)).isVideoArticle(paramAdvertisementInfo)) {
+      return 11;
+    }
+    return 3;
+  }
+  
   public static void c(Activity paramActivity)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("doOnVideoPause reportVideoFeeds size =");
-      ((StringBuilder)localObject1).append(jdField_c_of_type_JavaUtilHashMap.size());
+      ((StringBuilder)localObject1).append(e.size());
       QLog.d("ExposureSupplementUtil", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = jdField_c_of_type_JavaUtilHashMap.entrySet().iterator();
+    Object localObject1 = e.entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -347,13 +334,13 @@ public class ExposureSupplementManager
       localObject2 = (Long)((Map.Entry)localObject2).getValue();
       if ((localObject2 != null) && (((Long)localObject2).longValue() != 0L))
       {
-        jdField_c_of_type_JavaUtilHashMap.put(localObject3, Long.valueOf(0L));
-        localObject3 = (VideoAdInfo)jdField_d_of_type_JavaUtilHashMap.get(localObject3);
+        e.put(localObject3, Long.valueOf(0L));
+        localObject3 = (VideoAdInfo)f.get(localObject3);
         if (localObject3 == null) {
           return;
         }
         AdvertisementInfo localAdvertisementInfo = ((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertVideoAd2AdsInfo((VideoAdInfo)localObject3);
-        if (((VideoAdInfo)localObject3).jdField_c_of_type_Boolean) {
+        if (((VideoAdInfo)localObject3).al) {
           a(paramActivity, (VideoAdInfo)localObject3, localAdvertisementInfo, 10, (int)(System.currentTimeMillis() - ((Long)localObject2).longValue()), 50);
         } else {
           a(paramActivity, (VideoAdInfo)localObject3, localAdvertisementInfo, 5, (int)(System.currentTimeMillis() - ((Long)localObject2).longValue()), 50);
@@ -364,66 +351,79 @@ public class ExposureSupplementManager
   
   public static void d()
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("doOnVideoResume reportVideoFeeds size =");
-      localStringBuilder.append(jdField_c_of_type_JavaUtilHashMap.size());
+      localStringBuilder.append(e.size());
       QLog.d("ExposureSupplementUtil", 2, localStringBuilder.toString());
     }
   }
   
   public static void e()
   {
-    jdField_c_of_type_JavaUtilHashMap.clear();
-    jdField_d_of_type_JavaUtilHashMap.clear();
+    e.clear();
     f.clear();
-    g.clear();
+    j.clear();
+    k.clear();
+  }
+  
+  public static boolean f()
+  {
+    boolean bool = "1".equals(((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getProteusOfflineBid("readinjjoy_ad_supplement_config"));
+    if ((QLog.isColorLevel()) && (!bool) && (!l))
+    {
+      l = true;
+      QLog.d("ExposureSupplementUtil", 2, "supplement report is close!");
+      return bool;
+    }
+    l = false;
+    return bool;
   }
   
   public void a()
   {
-    if (a())
+    if (f())
     {
-      if (!this.jdField_c_of_type_Boolean) {
+      if (!this.o) {
         return;
       }
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
+      this.o = false;
+      this.n = false;
       Object localObject;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("doOnFeedsResume , channelID=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.m);
         ((StringBuilder)localObject).append(" , size = ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+        ((StringBuilder)localObject).append(this.a.size());
         ((StringBuilder)localObject).append(",this = ");
         ((StringBuilder)localObject).append(this);
         QLog.d("ExposureSupplementUtil", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_e_of_type_Boolean)
+      if (this.q)
       {
-        this.jdField_e_of_type_Boolean = false;
+        this.q = false;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("doOnFeedsResume , isDestroyFromFeeds channelID=");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.m);
           ((StringBuilder)localObject).append(" , size = ");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+          ((StringBuilder)localObject).append(this.a.size());
           ((StringBuilder)localObject).append(",this = ");
           ((StringBuilder)localObject).append(this);
           QLog.d("ExposureSupplementUtil", 2, ((StringBuilder)localObject).toString());
         }
-        localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+        localObject = this.b.iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+          Iterator localIterator = this.a.entrySet().iterator();
           while (localIterator.hasNext())
           {
             Map.Entry localEntry = (Map.Entry)localIterator.next();
@@ -440,48 +440,48 @@ public class ExposureSupplementManager
             }
           }
         }
-        this.jdField_a_of_type_JavaUtilHashSet.clear();
+        this.b.clear();
       }
     }
   }
   
   public void a(Activity paramActivity)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+    if (this.a.isEmpty()) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    this.g.clear();
+    Object localObject1 = this.a.entrySet().iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      if (!this.jdField_c_of_type_JavaUtilHashSet.contains(((Map.Entry)localObject2).getKey())) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(((Map.Entry)localObject2).getKey());
+      if (!this.h.contains(((Map.Entry)localObject2).getKey())) {
+        this.g.add(((Map.Entry)localObject2).getKey());
       }
     }
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    int i1 = 0;
+    while (i1 < this.g.size())
     {
-      localObject1 = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1))
+      localObject1 = (String)this.g.get(i1);
+      if (this.a.containsKey(localObject1))
       {
-        localObject2 = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+        localObject2 = (Long)this.a.get(localObject1);
         if ((localObject2 != null) && (((Long)localObject2).longValue() != 0L))
         {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, Long.valueOf(0L));
-          AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)this.jdField_b_of_type_JavaUtilHashMap.get(localObject1);
+          this.a.put(localObject1, Long.valueOf(0L));
+          AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)this.d.get(localObject1);
           if (localAdvertisementInfo == null) {
             return;
           }
           long l1 = System.currentTimeMillis();
           long l2 = ((Long)localObject2).longValue();
-          int j = a(localAdvertisementInfo);
-          this.jdField_b_of_type_JavaUtilHashSet.add(localObject1);
-          a(paramActivity, localAdvertisementInfo, j, (int)(l1 - l2), 50);
+          int i2 = c(localAdvertisementInfo);
+          this.c.add(localObject1);
+          a(paramActivity, localAdvertisementInfo, i2, (int)(l1 - l2), 50);
           if (QLog.isColorLevel())
           {
             localObject2 = new StringBuilder();
@@ -491,7 +491,7 @@ public class ExposureSupplementManager
           }
         }
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
@@ -499,24 +499,24 @@ public class ExposureSupplementManager
   {
     if (paramAdvertisementInfo != null)
     {
-      if (!a()) {
+      if (!f()) {
         return;
       }
       String str = paramAdvertisementInfo.mAdTraceId;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+      if (this.a.containsKey(str))
       {
-        this.jdField_b_of_type_JavaUtilHashSet.remove(str);
+        this.c.remove(str);
         return;
       }
-      this.jdField_b_of_type_JavaUtilHashMap.put(str, paramAdvertisementInfo);
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, Long.valueOf(System.currentTimeMillis()));
+      this.d.put(str, paramAdvertisementInfo);
+      this.a.put(str, Long.valueOf(System.currentTimeMillis()));
       if (QLog.isColorLevel())
       {
         paramAdvertisementInfo = new StringBuilder();
         paramAdvertisementInfo.append("add traceId=");
         paramAdvertisementInfo.append(str);
         paramAdvertisementInfo.append(" , channelID=");
-        paramAdvertisementInfo.append(this.jdField_a_of_type_Int);
+        paramAdvertisementInfo.append(this.m);
         QLog.d("ExposureSupplementUtil", 2, paramAdvertisementInfo.toString());
       }
     }
@@ -524,10 +524,10 @@ public class ExposureSupplementManager
   
   public void a(AdvertisementInfo paramAdvertisementInfo, Activity paramActivity)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
-    if (!this.jdField_e_of_type_JavaUtilHashMap.containsKey(paramAdvertisementInfo.mAdTraceId))
+    if (!this.i.containsKey(paramAdvertisementInfo.mAdTraceId))
     {
       if (QLog.isColorLevel())
       {
@@ -536,8 +536,8 @@ public class ExposureSupplementManager
         localStringBuilder.append(paramAdvertisementInfo.mAdTraceId);
         QLog.d("ExposureSupplementUtil", 2, localStringBuilder.toString());
       }
-      this.jdField_e_of_type_JavaUtilHashMap.put(paramAdvertisementInfo.mAdTraceId, paramAdvertisementInfo);
-      a(paramActivity, paramAdvertisementInfo, a(paramAdvertisementInfo), 0, 1);
+      this.i.put(paramAdvertisementInfo.mAdTraceId, paramAdvertisementInfo);
+      a(paramActivity, paramAdvertisementInfo, c(paramAdvertisementInfo), 0, 1);
     }
   }
   
@@ -545,38 +545,38 @@ public class ExposureSupplementManager
   {
     if ((paramIReadInJoyBaseAdapter != null) && (paramActivity != null))
     {
-      if (this.jdField_c_of_type_Boolean) {
+      if (this.o) {
         return;
       }
-      ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.a();
-      List localList = paramIReadInJoyBaseAdapter.a();
-      int i = paramIReadInJoyBaseAdapter.a();
+      ReadInJoyXListView localReadInJoyXListView = (ReadInJoyXListView)paramIReadInJoyBaseAdapter.d();
+      List localList = paramIReadInJoyBaseAdapter.b();
+      int i1 = paramIReadInJoyBaseAdapter.c();
       if (localReadInJoyXListView != null)
       {
         if (localList == null) {
           return;
         }
-        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i))
+        if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isChannelCanRequstAd(i1))
         {
           c();
-          int k = localReadInJoyXListView.getHeaderViewsCount();
-          int j = localReadInJoyXListView.getFirstVisiblePosition();
-          int m = localReadInJoyXListView.getLastVisiblePosition();
-          i = j;
-          while (i <= m)
+          int i3 = localReadInJoyXListView.getHeaderViewsCount();
+          int i2 = localReadInJoyXListView.getFirstVisiblePosition();
+          int i4 = localReadInJoyXListView.getLastVisiblePosition();
+          i1 = i2;
+          while (i1 <= i4)
           {
-            if (i >= k)
+            if (i1 >= i3)
             {
-              int n = i - k;
-              if (n < localList.size())
+              int i5 = i1 - i3;
+              if (i5 < localList.size())
               {
-                paramIReadInJoyBaseAdapter = (AbsBaseArticleInfo)localList.get(n);
+                paramIReadInJoyBaseAdapter = (AbsBaseArticleInfo)localList.get(i5);
                 if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isAdvertisementInfo(paramIReadInJoyBaseAdapter)) {
-                  a(localReadInJoyXListView, j, m, i, (AdvertisementInfo)paramIReadInJoyBaseAdapter, paramActivity);
+                  a(localReadInJoyXListView, i2, i4, i1, (AdvertisementInfo)paramIReadInJoyBaseAdapter, paramActivity);
                 }
               }
             }
-            i += 1;
+            i1 += 1;
           }
           a(paramActivity);
         }
@@ -586,14 +586,14 @@ public class ExposureSupplementManager
   
   public void a(ReadInJoyXListView paramReadInJoyXListView, int paramInt1, int paramInt2, int paramInt3, AdvertisementInfo paramAdvertisementInfo, Activity paramActivity)
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
     b(paramAdvertisementInfo);
-    int i = 1;
+    int i1 = 1;
     if ((paramInt3 > paramInt1) && (paramInt3 < paramInt2))
     {
-      paramInt1 = i;
+      paramInt1 = i1;
     }
     else
     {
@@ -602,7 +602,7 @@ public class ExposureSupplementManager
       paramActivity = new Rect();
       paramReadInJoyXListView.getGlobalVisibleRect(paramActivity);
       if (paramActivity.height() > paramInt1 >> 1) {
-        paramInt1 = i;
+        paramInt1 = i1;
       } else {
         paramInt1 = 0;
       }
@@ -623,50 +623,50 @@ public class ExposureSupplementManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("destroyDataFromFeeds , channelID=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.m);
       ((StringBuilder)localObject).append(", size =");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+      ((StringBuilder)localObject).append(this.a.size());
       ((StringBuilder)localObject).append(",this = ");
       ((StringBuilder)localObject).append(this);
       QLog.d("ExposureSupplementUtil", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_c_of_type_JavaUtilHashSet.clear();
-    this.jdField_e_of_type_JavaUtilHashMap.clear();
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    this.q = true;
+    this.g.clear();
+    this.h.clear();
+    this.i.clear();
+    Object localObject = this.a.entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      if (!this.jdField_b_of_type_JavaUtilHashSet.contains(localEntry.getKey())) {
-        this.jdField_a_of_type_JavaUtilHashSet.add(localEntry.getKey());
+      if (!this.c.contains(localEntry.getKey())) {
+        this.b.add(localEntry.getKey());
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_b_of_type_JavaUtilHashSet.clear();
+    this.a.clear();
+    this.c.clear();
   }
   
   public void b(Activity paramActivity)
   {
-    if (a())
+    if (f())
     {
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.n) {
         return;
       }
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = true;
+      this.n = true;
+      this.o = true;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("doOnFeedsPause , channelID=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.m);
         ((StringBuilder)localObject).append(", size =");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+        ((StringBuilder)localObject).append(this.a.size());
         ((StringBuilder)localObject).append(",this = ");
         ((StringBuilder)localObject).append(this);
         QLog.d("ExposureSupplementUtil", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      Object localObject = this.a.entrySet().iterator();
       while (((Iterator)localObject).hasNext()) {
         a(paramActivity, (String)((Map.Entry)((Iterator)localObject).next()).getKey());
       }
@@ -675,25 +675,25 @@ public class ExposureSupplementManager
   
   public void b(AdvertisementInfo paramAdvertisementInfo)
   {
-    this.jdField_c_of_type_JavaUtilHashSet.add(paramAdvertisementInfo.mAdTraceId);
+    this.h.add(paramAdvertisementInfo.mAdTraceId);
   }
   
   public void c()
   {
-    if (!a()) {
+    if (!f()) {
       return;
     }
-    this.jdField_c_of_type_JavaUtilHashSet.clear();
+    this.h.clear();
   }
   
-  public void f()
+  public void g()
   {
-    this.jdField_d_of_type_Boolean = true;
+    this.p = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ExposureSupplementManager
  * JD-Core Version:    0.7.0.1
  */

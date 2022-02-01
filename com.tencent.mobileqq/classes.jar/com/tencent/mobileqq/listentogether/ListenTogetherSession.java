@@ -14,123 +14,102 @@ public class ListenTogetherSession
   implements Parcelable
 {
   public static final Parcelable.Creator<ListenTogetherSession> CREATOR = new ListenTogetherSession.1();
-  public int a;
-  public String a;
   public List<MusicInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
   public boolean b;
-  public int c;
-  public boolean c;
+  public String c;
   public int d;
-  public boolean d;
+  public String e;
+  public int f;
+  public boolean g;
+  public boolean h;
+  public boolean i;
+  public int j;
+  public int k;
   
   public ListenTogetherSession(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 1;
-    this.jdField_f_of_type_Int = paramInt;
-    this.jdField_e_of_type_JavaLangString = paramString;
+    this.b = false;
+    this.h = false;
+    this.i = false;
+    this.j = 1;
+    this.k = 0;
+    this.l = 1;
+    this.m = paramInt;
+    this.n = paramString;
   }
   
   private ListenTogetherSession(Parcel paramParcel)
   {
     boolean bool2 = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = paramParcel.readInt();
-    this.jdField_f_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.h = paramParcel.readInt();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, MusicInfo.CREATOR);
-    this.jdField_c_of_type_Long = paramParcel.readLong();
+    this.b = false;
+    this.h = false;
+    this.i = false;
+    this.j = 1;
+    this.k = 0;
+    this.l = paramParcel.readInt();
+    this.m = paramParcel.readInt();
+    this.n = paramParcel.readString();
+    this.p = paramParcel.readInt();
+    this.a = new ArrayList();
+    paramParcel.readTypedList(this.a, MusicInfo.CREATOR);
+    this.t = paramParcel.readLong();
     if (paramParcel.readByte() == 1) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    this.jdField_a_of_type_Boolean = bool1;
-    this.i = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.b = bool1;
+    this.q = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.r = paramParcel.readString();
+    this.d = paramParcel.readInt();
+    this.e = paramParcel.readString();
     boolean bool1 = bool2;
     if (paramParcel.readByte() == 1) {
       bool1 = true;
     }
-    this.jdField_b_of_type_Boolean = bool1;
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Long = paramParcel.readLong();
-    this.g = paramParcel.readString();
-  }
-  
-  public MusicInfo a()
-  {
-    if (this.h == 3) {
-      return null;
-    }
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (localList.size() > 0)) {
-      return (MusicInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    }
-    return null;
+    this.g = bool1;
+    this.j = paramParcel.readInt();
+    this.x = paramParcel.readLong();
+    this.s = paramParcel.readString();
   }
   
   public String a(int paramInt1, int paramInt2)
   {
-    return ListenTogetherUtils.a(this.jdField_f_of_type_Int, paramInt1, paramInt2);
+    return ListenTogetherUtils.a(this.m, paramInt1, paramInt2);
   }
   
   public void a(ListenTogetherSession paramListenTogetherSession)
   {
+    this.p = paramListenTogetherSession.p;
+    this.q = paramListenTogetherSession.q;
+    this.c = paramListenTogetherSession.c;
+    this.r = paramListenTogetherSession.r;
+    this.s = paramListenTogetherSession.s;
+    this.d = paramListenTogetherSession.d;
+    this.e = paramListenTogetherSession.e;
+    this.g = paramListenTogetherSession.g;
+    this.t = paramListenTogetherSession.t;
+    this.a = paramListenTogetherSession.a;
+    this.f = paramListenTogetherSession.f;
     this.h = paramListenTogetherSession.h;
     this.i = paramListenTogetherSession.i;
-    this.jdField_a_of_type_JavaLangString = paramListenTogetherSession.jdField_a_of_type_JavaLangString;
-    this.jdField_f_of_type_JavaLangString = paramListenTogetherSession.jdField_f_of_type_JavaLangString;
-    this.g = paramListenTogetherSession.g;
-    this.jdField_a_of_type_Int = paramListenTogetherSession.jdField_a_of_type_Int;
-    this.jdField_b_of_type_JavaLangString = paramListenTogetherSession.jdField_b_of_type_JavaLangString;
-    this.jdField_b_of_type_Boolean = paramListenTogetherSession.jdField_b_of_type_Boolean;
-    this.jdField_c_of_type_Long = paramListenTogetherSession.jdField_c_of_type_Long;
-    this.jdField_a_of_type_JavaUtilList = paramListenTogetherSession.jdField_a_of_type_JavaUtilList;
-    this.jdField_b_of_type_Int = paramListenTogetherSession.jdField_b_of_type_Int;
-    this.jdField_c_of_type_Boolean = paramListenTogetherSession.jdField_c_of_type_Boolean;
-    this.jdField_d_of_type_Boolean = paramListenTogetherSession.jdField_d_of_type_Boolean;
-    this.jdField_c_of_type_Int = paramListenTogetherSession.jdField_c_of_type_Int;
-    this.jdField_d_of_type_Long = paramListenTogetherSession.jdField_d_of_type_Long;
+    this.j = paramListenTogetherSession.j;
+    this.x = paramListenTogetherSession.x;
   }
   
-  public String b()
+  public int d()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("_");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    return localStringBuilder.toString();
-  }
-  
-  public int c()
-  {
-    if (this.jdField_f_of_type_Int == 1) {
+    if (this.m == 1) {
       return -1;
     }
-    if (HardCodeUtil.a(2131693643).equals(this.jdField_a_of_type_JavaLangString)) {
+    if (HardCodeUtil.a(2131891218).equals(this.c)) {
       return 3;
     }
-    if (HardCodeUtil.a(2131693654).equals(this.jdField_a_of_type_JavaLangString)) {
+    if (HardCodeUtil.a(2131891229).equals(this.c)) {
       return 2;
     }
-    if (HardCodeUtil.a(2131693670).equals(this.jdField_a_of_type_JavaLangString)) {
+    if (HardCodeUtil.a(2131891245).equals(this.c)) {
       return 1;
     }
     return 4;
@@ -141,83 +120,104 @@ public class ListenTogetherSession
     return 0;
   }
   
+  public MusicInfo e()
+  {
+    if (this.p == 3) {
+      return null;
+    }
+    List localList = this.a;
+    if ((localList != null) && (localList.size() > 0)) {
+      return (MusicInfo)this.a.get(0);
+    }
+    return null;
+  }
+  
+  public String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.n);
+    return localStringBuilder.toString();
+  }
+  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ListenTogetherSession{type=");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(", uin='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.n);
     localStringBuilder.append('\'');
     localStringBuilder.append(", status=");
-    localStringBuilder.append(this.h);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(", musicList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", timeStamp=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(", fold=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", userState=");
-    localStringBuilder.append(this.i);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(", joinedNum=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", creator='");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.r);
     localStringBuilder.append('\'');
     localStringBuilder.append(", creatorNick='");
     String str;
-    if (this.g == null) {
+    if (this.s == null) {
       str = "null";
     } else {
-      str = this.g;
+      str = this.s;
     }
     localStringBuilder.append(str);
     localStringBuilder.append('\'');
     localStringBuilder.append(", playMode='");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('\'');
     localStringBuilder.append(", joinedType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", joinedUin='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", joinedIsCreator=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", themeId=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", bAlowMemberStart=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", bAlowMemberAddSong=");
-    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", identifyId=");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.x);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
-    paramParcel.writeInt(this.jdField_f_of_type_Int);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeInt(this.h);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
-    paramParcel.writeLong(this.jdField_c_of_type_Long);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
-    paramParcel.writeInt(this.i);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeLong(this.jdField_d_of_type_Long);
-    paramParcel.writeString(this.g);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeInt(this.m);
+    paramParcel.writeString(this.n);
+    paramParcel.writeInt(this.p);
+    paramParcel.writeTypedList(this.a);
+    paramParcel.writeLong(this.t);
+    paramParcel.writeByte((byte)this.b);
+    paramParcel.writeInt(this.q);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.r);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeString(this.e);
+    paramParcel.writeByte((byte)this.g);
+    paramParcel.writeInt(this.j);
+    paramParcel.writeLong(this.x);
+    paramParcel.writeString(this.s);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherSession
  * JD-Core Version:    0.7.0.1
  */

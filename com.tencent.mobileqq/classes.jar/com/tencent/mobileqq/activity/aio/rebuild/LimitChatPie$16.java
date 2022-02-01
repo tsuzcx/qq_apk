@@ -25,6 +25,11 @@ class LimitChatPie$16
     LimitChatPie.a(this.a, paramBoolean, paramObject);
   }
   
+  protected void a(boolean paramBoolean, Object paramObject, int paramInt)
+  {
+    LimitChatPie.a(this.a, paramBoolean, paramObject, paramInt);
+  }
+  
   protected void a(boolean paramBoolean, List<Long> paramList1, int paramInt, List<Long> paramList2)
   {
     LimitChatPie.a(this.a, paramBoolean, paramList1, paramInt, paramList2);
@@ -37,7 +42,7 @@ class LimitChatPie$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.16
  * JD-Core Version:    0.7.0.1
  */

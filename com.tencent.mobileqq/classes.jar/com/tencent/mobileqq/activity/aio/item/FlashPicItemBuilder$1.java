@@ -25,15 +25,15 @@ class FlashPicItemBuilder$1
     if (l - FlashPicItemBuilder.a(this.a) >= 800L)
     {
       FlashPicItemBuilder.a(this.a, l);
-      FlashPicItemBuilder.FlashPicHolder localFlashPicHolder = (FlashPicItemBuilder.FlashPicHolder)AIOUtils.a(paramView);
+      FlashPicItemBuilder.FlashPicHolder localFlashPicHolder = (FlashPicItemBuilder.FlashPicHolder)AIOUtils.b(paramView);
       if (localFlashPicHolder != null)
       {
-        Object localObject3 = localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject3 = localFlashPicHolder.q;
         Object localObject2 = null;
         Object localObject1 = localObject2;
         if (localObject3 != null)
         {
-          localObject3 = this.a.a.getMessageFacade().a(((MessageRecord)localObject3).frienduin, ((MessageRecord)localObject3).istroop, ((MessageRecord)localObject3).uniseq);
+          localObject3 = this.a.d.getMessageFacade().a(((MessageRecord)localObject3).frienduin, ((MessageRecord)localObject3).istroop, ((MessageRecord)localObject3).uniseq);
           localObject1 = localObject2;
           if ((localObject3 instanceof MessageForPic)) {
             localObject1 = (MessageForPic)localObject3;
@@ -48,16 +48,16 @@ class FlashPicItemBuilder$1
             bool = ((IPicFlash)QRoute.api(IPicFlash.class)).isFlashPicMsgReaded((MessageRecord)localObject1);
           }
           if (!bool) {
-            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 0)
+            if (localFlashPicHolder.e.getStatus() == 0)
             {
-              if (!localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
-                localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+              if (!localFlashPicHolder.e.isDownloadStarted()) {
+                localFlashPicHolder.e.startDownload();
               }
             }
-            else if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2) {
-              localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+            else if (localFlashPicHolder.e.getStatus() == 2) {
+              localFlashPicHolder.e.startDownload();
             } else {
-              FlashPicItemBuilder.a(this.a, (MessageForPic)localObject1, localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
+              FlashPicItemBuilder.a(this.a, (MessageForPic)localObject1, localFlashPicHolder.a);
             }
           }
         }
@@ -68,7 +68,7 @@ class FlashPicItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

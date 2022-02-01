@@ -14,28 +14,28 @@ class SignatureHistoryFragment$15
   public void onClick(View paramView)
   {
     String str = (String)paramView.getTag();
-    if (SignatureHistoryFragment.b(this.a).contains(str))
+    if (SignatureHistoryFragment.o(this.a).contains(str))
     {
-      SignatureHistoryFragment.b(this.a).remove(str);
+      SignatureHistoryFragment.o(this.a).remove(str);
       ((CheckBox)paramView).setChecked(false);
     }
-    else if (SignatureHistoryFragment.b(this.a).size() >= 200)
+    else if (SignatureHistoryFragment.o(this.a).size() >= 200)
     {
-      this.a.a(1, 2131719147);
+      this.a.a(1, 2131916683);
       ((CheckBox)paramView).setChecked(false);
     }
     else
     {
-      SignatureHistoryFragment.b(this.a).add(str);
+      SignatureHistoryFragment.o(this.a).add(str);
       ((CheckBox)paramView).setChecked(true);
     }
-    SignatureHistoryFragment.b(this.a, false);
+    SignatureHistoryFragment.c(this.a, false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.15
  * JD-Core Version:    0.7.0.1
  */

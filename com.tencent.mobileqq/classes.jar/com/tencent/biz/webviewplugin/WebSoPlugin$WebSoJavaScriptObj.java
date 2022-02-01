@@ -11,14 +11,13 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WebSoPlugin$WebSoJavaScriptObj
 {
-  private CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
   public volatile String a;
-  public volatile boolean a;
+  public volatile boolean b = false;
+  private CustomWebView d;
   
   public WebSoPlugin$WebSoJavaScriptObj(WebSoPlugin paramWebSoPlugin, CustomWebView paramCustomWebView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = paramCustomWebView;
+    this.d = paramCustomWebView;
   }
   
   private void a()
@@ -27,23 +26,23 @@ public class WebSoPlugin$WebSoJavaScriptObj
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("WebSoJavaScriptObj doCallback body: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.i("WebSoPlugin", 2, ((StringBuilder)localObject).toString());
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.a)) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+    Object localObject = this.d;
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("window._websoPageData=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("; if(window.silentCallback) {window.silentCallback(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" );}");
       ((CustomWebView)localObject).callJs(localStringBuilder.toString());
-      this.jdField_a_of_type_JavaLangString = null;
+      this.a = null;
     }
   }
   
@@ -56,7 +55,7 @@ public class WebSoPlugin$WebSoJavaScriptObj
       localStringBuilder.append(paramString);
       QLog.i("WebSoPlugin", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     if (!TextUtils.isEmpty(paramString)) {
       a();
     }
@@ -65,15 +64,15 @@ public class WebSoPlugin$WebSoJavaScriptObj
   @JavascriptInterface
   public void catchHtml(String paramString)
   {
-    paramString = WebSoUtils.g(paramString);
-    WebSoUtils.a("catchHtml");
-    WebSoService.WebSoState.WebSo3 localWebSo3 = WebSoPlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin).a();
+    paramString = WebSoUtils.l(paramString);
+    WebSoUtils.m("catchHtml");
+    WebSoService.WebSoState.WebSo3 localWebSo3 = WebSoPlugin.a(this.c).b();
     if (localWebSo3 != null)
     {
-      WebSoService.a(paramString, localWebSo3.jdField_a_of_type_JavaLangString, localWebSo3.b, Uri.parse(localWebSo3.d));
+      WebSoService.a(paramString, localWebSo3.b, localWebSo3.c, Uri.parse(localWebSo3.e));
       return;
     }
-    WebSoUtils.a("return webSo3 == null");
+    WebSoUtils.m("return webSo3 == null");
   }
   
   @JavascriptInterface
@@ -82,7 +81,7 @@ public class WebSoPlugin$WebSoJavaScriptObj
     if (QLog.isColorLevel()) {
       QLog.i("WebSoPlugin", 2, "WebSoJavaScriptObj didDOMContentLoaded.");
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     a();
   }
   
@@ -102,7 +101,7 @@ public class WebSoPlugin$WebSoJavaScriptObj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WebSoPlugin.WebSoJavaScriptObj
  * JD-Core Version:    0.7.0.1
  */

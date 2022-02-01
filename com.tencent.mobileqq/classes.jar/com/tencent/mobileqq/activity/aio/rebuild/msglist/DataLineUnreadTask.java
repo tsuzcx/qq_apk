@@ -14,15 +14,15 @@ public class DataLineUnreadTask
     super(paramAIOContext);
   }
   
-  public void b()
+  public void c()
   {
-    super.b();
-    ((DataLineHandler)this.a.a().getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).g();
+    super.c();
+    ((DataLineHandler)this.a.a().getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.DataLineUnreadTask
  * JD-Core Version:    0.7.0.1
  */

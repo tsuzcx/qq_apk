@@ -26,7 +26,12 @@ public class QVipMedalView$Adapter
     return 0;
   }
   
-  public String a(int paramInt)
+  public void a(MedalList paramMedalList)
+  {
+    this.a = paramMedalList;
+  }
+  
+  public String b(int paramInt)
   {
     MedalList localMedalList = this.a;
     if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
@@ -35,12 +40,7 @@ public class QVipMedalView$Adapter
     return null;
   }
   
-  public void a(MedalList paramMedalList)
-  {
-    this.a = paramMedalList;
-  }
-  
-  public int b(int paramInt)
+  public int c(int paramInt)
   {
     MedalList localMedalList = this.a;
     if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
@@ -49,7 +49,7 @@ public class QVipMedalView$Adapter
     return 0;
   }
   
-  public int c(int paramInt)
+  public int d(int paramInt)
   {
     MedalList localMedalList = this.a;
     if ((localMedalList != null) && (localMedalList.infoList.size() > paramInt)) {
@@ -60,7 +60,7 @@ public class QVipMedalView$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QVipMedalView.Adapter
  * JD-Core Version:    0.7.0.1
  */

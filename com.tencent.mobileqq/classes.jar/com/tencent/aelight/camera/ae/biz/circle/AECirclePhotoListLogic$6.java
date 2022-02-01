@@ -14,12 +14,12 @@ class AECirclePhotoListLogic$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = AEEditorRecordDataManager.a().a();
+    paramDialogInterface = AEEditorRecordDataManager.a().f();
     if (paramDialogInterface != null)
     {
-      this.a.a.selectedPhotoList.addAll(paramDialogInterface);
+      this.a.c.selectedPhotoList.addAll(paramDialogInterface);
       paramDialogInterface = this.a;
-      long l = AEEditorRecordDataManager.a().a();
+      long l = AEEditorRecordDataManager.a().c();
       paramInt = 1;
       boolean bool;
       if (l == 2L) {
@@ -27,19 +27,19 @@ class AECirclePhotoListLogic$6
       } else {
         bool = false;
       }
-      paramDialogInterface.b(bool);
-      AEEditorRecordDataManager.a().d();
+      paramDialogInterface.c(bool);
+      AEEditorRecordDataManager.a().i();
       AEEditorRecordDataManager.a().a(2);
-      if (AEEditorRecordDataManager.a().a() == 2L) {
+      if (AEEditorRecordDataManager.a().c() == 2L) {
         paramInt = 2;
       }
-      AEReportUtils.d(paramInt);
+      AEReportUtils.d(paramInt, this.a.i());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.6
  * JD-Core Version:    0.7.0.1
  */

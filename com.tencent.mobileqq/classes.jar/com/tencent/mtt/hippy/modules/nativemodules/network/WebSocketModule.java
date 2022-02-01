@@ -22,8 +22,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class WebSocketModule
   extends HippyNativeModuleBase
 {
-  private static AtomicInteger a = new AtomicInteger(0);
-  private SparseArray<d> b = new SparseArray();
+  private static final AtomicInteger a = new AtomicInteger(0);
+  private final SparseArray<d> b = new SparseArray();
   
   public WebSocketModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -224,7 +224,7 @@ public class WebSocketModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.network.WebSocketModule
  * JD-Core Version:    0.7.0.1
  */

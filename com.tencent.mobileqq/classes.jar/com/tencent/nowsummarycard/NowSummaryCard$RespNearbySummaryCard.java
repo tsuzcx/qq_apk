@@ -20,6 +20,7 @@ public final class NowSummaryCard$RespNearbySummaryCard
   public final PBUInt64Field chat_id = PBField.initUInt64(0L);
   public final PBStringField city = PBField.initString("");
   public final PBBytesField common_label = PBField.initBytes(ByteStringMicro.EMPTY);
+  public NowSummaryCard.CommonTag common_tag = new NowSummaryCard.CommonTag();
   public final PBStringField company = PBField.initString("");
   public final PBInt32Field constellation = PBField.initInt32(0);
   public final PBBytesField date_face = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,6 +28,7 @@ public final class NowSummaryCard$RespNearbySummaryCard
   public final PBStringField elapse = PBField.initString("");
   public final PBUInt64Field gender = PBField.initUInt64(0L);
   public NowSummaryCard.GiftInfo gift_info = new NowSummaryCard.GiftInfo();
+  public NowSummaryCard.GroupInfo group_info = new NowSummaryCard.GroupInfo();
   public final PBUInt32Field home_city = PBField.initUInt32(0);
   public final PBUInt32Field home_country = PBField.initUInt32(0);
   public final PBUInt32Field home_province = PBField.initUInt32(0);
@@ -34,8 +36,10 @@ public final class NowSummaryCard$RespNearbySummaryCard
   public final PBInt32Field iFace = PBField.initInt32(0);
   public NowSummaryCard.InterestTagInfo interest_tag = new NowSummaryCard.InterestTagInfo();
   public final PBUInt32Field is_friend = PBField.initUInt32(0);
+  public final PBUInt32Field is_verified = PBField.initUInt32(0);
   public final PBInt32Field marriage = PBField.initInt32(0);
   public final PBBytesField nearby_info = PBField.initBytes(ByteStringMicro.EMPTY);
+  public NowSummaryCard.NearbyTag nearby_tag = new NowSummaryCard.NearbyTag();
   public final PBBytesField nearby_task_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBStringField nick = PBField.initString("");
   public final PBBytesField now_info = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -62,12 +66,12 @@ public final class NowSummaryCard$RespNearbySummaryCard
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 80, 90, 98, 104, 112, 120, 130, 138, 144, 152, 160, 168, 178, 186, 194, 202, 210, 216, 226, 234, 240, 250, 258, 266, 272, 280 }, new String[] { "iFace", "uin", "age", "nick", "remark", "province", "city", "sign", "constellation", "profession", "company", "school", "home_country", "home_province", "home_city", "distance", "elapse", "marriage", "home_zone", "tiny_id", "school_id", "nearby_task_info", "now_info", "common_label", "nearby_info", "date_face", "birthday", "rich_sign", "temp_chat_sig", "gender", "interest_tag", "gift_info", "vote_info", "is_friend", "chat_id" }, new Object[] { localInteger, localLong, localInteger, "", "", "", "", "", localInteger, localInteger, "", "", localInteger, localInteger, localInteger, "", "", localInteger, localInteger, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localByteStringMicro6, localByteStringMicro7, localLong, null, null, null, localInteger, localLong }, RespNearbySummaryCard.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 72, 80, 90, 98, 104, 112, 120, 130, 138, 144, 152, 160, 168, 178, 186, 194, 202, 210, 216, 226, 234, 240, 250, 258, 266, 272, 280, 288, 298, 306, 314 }, new String[] { "iFace", "uin", "age", "nick", "remark", "province", "city", "sign", "constellation", "profession", "company", "school", "home_country", "home_province", "home_city", "distance", "elapse", "marriage", "home_zone", "tiny_id", "school_id", "nearby_task_info", "now_info", "common_label", "nearby_info", "date_face", "birthday", "rich_sign", "temp_chat_sig", "gender", "interest_tag", "gift_info", "vote_info", "is_friend", "chat_id", "is_verified", "common_tag", "nearby_tag", "group_info" }, new Object[] { localInteger, localLong, localInteger, "", "", "", "", "", localInteger, localInteger, "", "", localInteger, localInteger, localInteger, "", "", localInteger, localInteger, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localLong, localByteStringMicro6, localByteStringMicro7, localLong, null, null, null, localInteger, localLong, localInteger, null, null, null }, RespNearbySummaryCard.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.nowsummarycard.NowSummaryCard.RespNearbySummaryCard
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.os.Build.VERSION;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 import com.tencent.av.business.manager.pendant.ItemBase;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -12,12 +13,19 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public abstract class BaseConfigFileProcessor<T extends ItemBase>
 {
-  private final Object a = new Object();
+  protected AppInterface a;
+  private final Object b = new Object();
   
-  public static String a(File paramFile)
+  public BaseConfigFileProcessor(AppInterface paramAppInterface)
+  {
+    this.a = paramAppInterface;
+  }
+  
+  public static String b(File paramFile)
   {
     paramFile = FileUtils.fileToBytes(paramFile);
     if (paramFile != null)
@@ -55,7 +63,14 @@ public abstract class BaseConfigFileProcessor<T extends ItemBase>
       while (paramArrayList.hasNext())
       {
         MetaCategory localMetaCategory = (MetaCategory)paramArrayList.next();
-        localArrayList.addAll(localMetaCategory.materials);
+        Iterator localIterator = localMetaCategory.materials.iterator();
+        while (localIterator.hasNext())
+        {
+          MetaMaterial localMetaMaterial = (MetaMaterial)localIterator.next();
+          localMetaMaterial.additionalFields.put("key_local_use_category_id", localMetaCategory.id);
+          localMetaMaterial.additionalFields.put("key_local_use_category_name", localMetaCategory.name);
+          localArrayList.add(localMetaMaterial);
+        }
         localArrayList.addAll(a(localMetaCategory.subCategories));
       }
     }
@@ -78,7 +93,7 @@ public abstract class BaseConfigFileProcessor<T extends ItemBase>
       ((StringBuilder)localObject1).append(paramString3);
       QLog.i("BaseFileProcessor", 2, ((StringBuilder)localObject1).toString());
     }
-    synchronized (this.a)
+    synchronized (this.b)
     {
       localObject1 = new ArrayList();
       File localFile = new File(paramString1, paramString2);
@@ -88,6 +103,7 @@ public abstract class BaseConfigFileProcessor<T extends ItemBase>
         if (!paramString3.exists())
         {
           QLog.e("BaseFileProcessor", 1, "readAndParseConfigFile -> old json not exist, new json not exist too");
+          b();
           paramString1 = (String)localObject1;
         }
         else
@@ -99,7 +115,7 @@ public abstract class BaseConfigFileProcessor<T extends ItemBase>
           catch (Exception paramString1)
           {
             FileUtils.deleteFile(paramString3.getPath());
-            a();
+            b();
             paramString2 = new StringBuilder();
             paramString2.append("readAndParseConfigFile -> load oldJson exception ");
             paramString2.append(paramString1.getMessage());
@@ -125,19 +141,19 @@ public abstract class BaseConfigFileProcessor<T extends ItemBase>
           paramString3.append(paramString2.getMessage());
           QLog.e("BaseFileProcessor", 1, paramString3.toString());
           FileUtils.deleteFile(localFile.getPath());
-          a();
+          b();
         }
       }
       return paramString1;
     }
   }
   
-  public abstract void a();
-  
   public void a(String paramString)
   {
     ThreadManagerV2.excute(new BaseConfigFileProcessor.1(this, paramString), 64, null, false);
   }
+  
+  public abstract void b();
 }
 
 

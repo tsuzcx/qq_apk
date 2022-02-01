@@ -8,24 +8,24 @@ import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListVi
 class QfileFavPicFileTabView$4
   implements QfilePinnedHeaderExpandableListView.OnSelectListener
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private boolean b;
+  private int c;
+  private int d;
   
   QfileFavPicFileTabView$4(QfileFavPicFileTabView paramQfileFavPicFileTabView) {}
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    FavFileInfo localFavFileInfo = (FavFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2);
+    this.b = false;
+    this.c = -2147483648;
+    this.d = 2147483647;
+    FavFileInfo localFavFileInfo = (FavFileInfo)this.a.e.getChild(paramInt1, paramInt2);
     if (localFavFileInfo == null) {
       return;
     }
-    this.jdField_a_of_type_Boolean = (FMDataCache.a(localFavFileInfo) ^ true);
-    if (QfileFavPicFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView, localFavFileInfo, this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.r();
+    this.b = (FMDataCache.c(localFavFileInfo) ^ true);
+    if (QfileFavPicFileTabView.a(this.a, localFavFileInfo, this.b)) {
+      this.a.s();
     }
   }
   
@@ -37,39 +37,39 @@ class QfileFavPicFileTabView$4
     int i = Math.min(paramInt2, paramInt4);
     int j = Math.max(paramInt2, paramInt4);
     if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
+      this.d = Math.min(paramInt4, this.d);
     } else {
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
+      this.c = Math.max(paramInt4, this.c);
     }
     paramInt2 = i;
     QfileFavPicFileTabView localQfileFavPicFileTabView;
     while (paramInt2 <= j)
     {
-      localQfileFavPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView;
-      QfileFavPicFileTabView.a(localQfileFavPicFileTabView, (FavFileInfo)localQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+      localQfileFavPicFileTabView = this.a;
+      QfileFavPicFileTabView.a(localQfileFavPicFileTabView, (FavFileInfo)localQfileFavPicFileTabView.e.getChild(paramInt1, paramInt2), this.b);
       paramInt2 += 1;
     }
-    paramInt2 = this.b;
+    paramInt2 = this.d;
     for (;;)
     {
       paramInt3 = j;
       if (paramInt2 >= i) {
         break;
       }
-      localQfileFavPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView;
-      QfileFavPicFileTabView.a(localQfileFavPicFileTabView, (FavFileInfo)localQfileFavPicFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean ^ true);
+      localQfileFavPicFileTabView = this.a;
+      QfileFavPicFileTabView.a(localQfileFavPicFileTabView, (FavFileInfo)localQfileFavPicFileTabView.e.getChild(paramInt1, paramInt2), this.b ^ true);
       paramInt2 += 1;
     }
     for (;;)
     {
       paramInt3 += 1;
-      if (paramInt3 > this.jdField_a_of_type_Int) {
+      if (paramInt3 > this.c) {
         break;
       }
-      localQfileFavPicFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView;
-      QfileFavPicFileTabView.a(localQfileFavPicFileTabView, (FavFileInfo)localQfileFavPicFileTabView.a.getChild(paramInt1, paramInt3), this.jdField_a_of_type_Boolean ^ true);
+      localQfileFavPicFileTabView = this.a;
+      QfileFavPicFileTabView.a(localQfileFavPicFileTabView, (FavFileInfo)localQfileFavPicFileTabView.e.getChild(paramInt1, paramInt3), this.b ^ true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFavfileQfileFavPicFileTabView.r();
+    this.a.s();
   }
   
   public void a(boolean paramBoolean) {}
@@ -78,7 +78,7 @@ class QfileFavPicFileTabView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavPicFileTabView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.qcircle.api.IQCircleCommonUtil;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.utils.QCircleCommonUtil;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
@@ -12,15 +14,7 @@ import org.json.JSONObject;
 public class QCircleCommonUtilImpl
   implements IQCircleCommonUtil
 {
-  public String KEY_GPS_INFO()
-  {
-    return "key_gps_info";
-  }
-  
-  public String KEY_PARSE_DATA_ERROR_MSG()
-  {
-    return "key_parse_data_error_msg";
-  }
+  public static final String TAG = "QCircleCommonUtilImpl";
   
   public int getColorFromJSON(JSONObject paramJSONObject, String paramString)
   {
@@ -41,12 +35,21 @@ public class QCircleCommonUtilImpl
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQCirclePluginInfo:");
+        localStringBuilder.append((String)localObject);
+        QLog.d("QCircleCommonUtilImpl", 1, localStringBuilder.toString());
+        localStringBuilder = new StringBuilder();
         localStringBuilder.append(" ");
         localStringBuilder.append((String)localObject);
         return localStringBuilder.toString();
       }
     }
     return "";
+  }
+  
+  public long getSystemTotalMemory()
+  {
+    return DeviceInfoUtil.a();
   }
   
   public boolean isInNightMode()
@@ -57,6 +60,16 @@ public class QCircleCommonUtilImpl
   public Bundle jsonToLabel(Bundle paramBundle, String paramString)
   {
     return QCircleCommonUtil.jsonToLabel(paramBundle, paramString);
+  }
+  
+  public String keyGpsInfo()
+  {
+    return "key_gps_info";
+  }
+  
+  public String keyParseDataErrorMsg()
+  {
+    return "key_parse_data_error_msg";
   }
   
   public String labelToJson(Bundle paramBundle)
@@ -71,7 +84,7 @@ public class QCircleCommonUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleCommonUtilImpl
  * JD-Core Version:    0.7.0.1
  */

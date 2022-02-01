@@ -16,8 +16,8 @@ class QVipTroopFileConfig$2
   
   public void onClick(View paramView)
   {
-    ((IVasH5PayUtil)QRoute.api(IVasH5PayUtil.class)).openH5Page(QVipTroopFileConfig.a(this.jdField_a_of_type_ComTencentMobileqqVasConfigBusinessQvipQVipTroopFileConfig), MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount(), paramView.getContext());
-    QVipTroopFileConfig.a("0X800AE6D", this.jdField_a_of_type_JavaLangString, "");
+    ((IVasH5PayUtil)QRoute.api(IVasH5PayUtil.class)).openH5Page(QVipTroopFileConfig.a(this.b), MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount(), paramView.getContext());
+    QVipTroopFileConfig.a("0X800AE6D", this.a, "");
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -29,7 +29,7 @@ class QVipTroopFileConfig$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipTroopFileConfig.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ class AssociateSearchWordsFragment$2
   {
     paramView = this.a.getBaseActivity();
     if ((paramView instanceof ActiveEntitySearchActivity)) {
-      ((ActiveEntitySearchActivity)paramView).c();
+      ((ActiveEntitySearchActivity)paramView).f();
     } else if ((paramView instanceof UniteSearchActivity)) {
-      ((UniteSearchActivity)paramView).b();
+      ((UniteSearchActivity)paramView).e();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.2
  * JD-Core Version:    0.7.0.1
  */

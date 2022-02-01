@@ -34,6 +34,22 @@ public class CompositionUtils
     return localTAVEmptyResource;
   }
   
+  private static CMTime getTransitionDuration(List<? extends TAVCompositionTimeRange> paramList, CompositionUtils.TransitionTimeCalculator paramTransitionTimeCalculator, int paramInt, CMTime paramCMTime)
+  {
+    CMTime localCMTime = CMTime.CMTimeZero;
+    if (paramTransitionTimeCalculator != null) {
+      localCMTime = paramTransitionTimeCalculator.transition(paramInt);
+    }
+    if ((!paramCMTime.smallThan(localCMTime)) && (paramInt < paramList.size() - 1))
+    {
+      if (((TAVCompositionTimeRange)paramList.get(paramInt + 1)).getTimeRange().getDuration().smallThan(localCMTime)) {
+        return CMTime.CMTimeZero;
+      }
+      return localCMTime;
+    }
+    return CMTime.CMTimeZero;
+  }
+  
   public static void insertTimeRangeToTrack(TrackInfo paramTrackInfo, MutableCompositionTrack paramMutableCompositionTrack, CMTimeRange paramCMTimeRange)
   {
     try
@@ -80,38 +96,19 @@ public class CompositionUtils
   
   private static void reloadStartTimeWithTransitionable(List<? extends TAVCompositionTimeRange> paramList, CompositionUtils.TransitionTimeCalculator paramTransitionTimeCalculator)
   {
-    CMTime localCMTime3 = CMTime.CMTimeZero;
+    CMTime localCMTime1 = CMTime.CMTimeZero;
     Object localObject = CMTime.CMTimeZero;
     int i = 0;
     while (i < paramList.size())
     {
       TAVCompositionTimeRange localTAVCompositionTimeRange = (TAVCompositionTimeRange)paramList.get(i);
-      CMTime localCMTime2 = CMTime.CMTimeZero;
-      if (paramTransitionTimeCalculator != null) {
-        localCMTime2 = paramTransitionTimeCalculator.transition(i);
-      }
-      CMTime localCMTime4 = localTAVCompositionTimeRange.getTimeRange().getDuration();
-      CMTime localCMTime1;
-      if (localCMTime4.smallThan(localCMTime2))
-      {
-        localCMTime1 = CMTime.CMTimeZero;
-      }
-      else if (i < paramList.size() - 1)
-      {
-        localCMTime1 = localCMTime2;
-        if (((TAVCompositionTimeRange)paramList.get(i + 1)).getTimeRange().getDuration().smallThan(localCMTime2)) {
-          localCMTime1 = CMTime.CMTimeZero;
-        }
-      }
-      else
-      {
-        localCMTime1 = CMTime.CMTimeZero;
-      }
-      localCMTime2 = localCMTime3.sub((CMTime)localObject);
-      localTAVCompositionTimeRange.setStartTime(localCMTime2);
-      localCMTime3 = localCMTime2.add(localCMTime4);
+      CMTime localCMTime3 = localTAVCompositionTimeRange.getTimeRange().getDuration();
+      CMTime localCMTime2 = getTransitionDuration(paramList, paramTransitionTimeCalculator, i, localCMTime3);
+      localCMTime1 = localCMTime1.sub((CMTime)localObject);
+      localTAVCompositionTimeRange.setStartTime(localCMTime1);
+      localCMTime1 = localCMTime1.add(localCMTime3);
       i += 1;
-      localObject = localCMTime1;
+      localObject = localCMTime2;
     }
   }
   
@@ -122,7 +119,7 @@ public class CompositionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tavkit.utils.CompositionUtils
  * JD-Core Version:    0.7.0.1
  */

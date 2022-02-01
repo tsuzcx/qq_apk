@@ -9,32 +9,32 @@ public class ImageButton
   extends Sprite
   implements IImageButton
 {
-  protected String b;
+  protected String s;
   
   public ImageButton(SpriteNativeView paramSpriteNativeView, String paramString)
   {
     super(paramSpriteNativeView);
-    this.b = paramString;
-  }
-  
-  protected ImageView a()
-  {
-    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+    this.s = paramString;
   }
   
   public String a()
   {
-    return this.b;
+    return this.s;
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    this.v.setOnClickListener(paramOnClickListener);
+  }
+  
+  protected ImageView dt_()
+  {
+    return new PressEffectImageView(this.t.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.nv.ImageButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package cooperation.qqcircle.report.outbox;
 
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.qcircle.api.db.util.Singleton;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qqcircle.report.QCircleQualityReporter;
 import cooperation.qqcircle.report.QCircleReportHelper;
 import feedcloud.FeedCloudCommon.Entry;
@@ -26,7 +26,7 @@ public class QCircleReportOutboxTaskManager
   
   private QCircleReportOutboxTaskManager()
   {
-    RFLog.d("QCircleReportOutboxTaskManager", RFLog.USR, "new instance");
+    QLog.d("QCircleReportOutboxTaskManager", 1, "new instance");
     this.mCacheManager = new QCircleReportOutboxTaskCacheManager("QCircleSendTaskManager_outbox_queue");
   }
   
@@ -65,16 +65,15 @@ public class QCircleReportOutboxTaskManager
   {
     if ((paramQCircleReportOutboxTask != null) && (!this.mTaskList.contains(paramQCircleReportOutboxTask)))
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("addTask id:");
       localStringBuilder.append(paramQCircleReportOutboxTask.getTaskId());
-      RFLog.i("QCircleReportOutboxTaskManager", i, localStringBuilder.toString());
+      QLog.i("QCircleReportOutboxTaskManager", 1, localStringBuilder.toString());
       this.mTaskList.add(paramQCircleReportOutboxTask);
       this.mCacheManager.saveTask(paramQCircleReportOutboxTask);
       return true;
     }
-    RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "addTask error");
+    QLog.w("QCircleReportOutboxTaskManager", 1, "addTask error");
     return false;
   }
   
@@ -94,7 +93,6 @@ public class QCircleReportOutboxTaskManager
         paramQCircleReportOutboxTask.setState(2);
         this.mCacheManager.updateTask(paramQCircleReportOutboxTask);
       }
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("completeTask id:");
       localStringBuilder.append(paramQCircleReportOutboxTask.getTaskId());
@@ -104,10 +102,10 @@ public class QCircleReportOutboxTaskManager
       localStringBuilder.append(paramQCircleReportOutboxTask.getResultCode());
       localStringBuilder.append(", resultMsg:");
       localStringBuilder.append(paramQCircleReportOutboxTask.getResultMsg());
-      RFLog.i("QCircleReportOutboxTaskManager", i, localStringBuilder.toString());
+      QLog.i("QCircleReportOutboxTaskManager", 1, localStringBuilder.toString());
       return true;
     }
-    RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "completeTask error");
+    QLog.w("QCircleReportOutboxTaskManager", 1, "completeTask error");
     return false;
   }
   
@@ -187,17 +185,16 @@ public class QCircleReportOutboxTaskManager
       this.mCacheManager.removeTask(paramQCircleReportOutboxTask);
       return true;
     }
-    RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "removeTask error");
+    QLog.w("QCircleReportOutboxTaskManager", 1, "removeTask error");
     return false;
   }
   
   public void reset()
   {
-    int i = RFLog.USR;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("reset total size:");
     ((StringBuilder)localObject).append(this.mTaskList.size());
-    RFLog.i("QCircleReportOutboxTaskManager", i, ((StringBuilder)localObject).toString());
+    QLog.i("QCircleReportOutboxTaskManager", 1, ((StringBuilder)localObject).toString());
     if (this.mTaskList.size() > 0)
     {
       localObject = this.mTaskList.iterator();
@@ -236,11 +233,10 @@ public class QCircleReportOutboxTaskManager
       this.mTaskList.clear();
       this.mTaskList.addAll((Collection)localObject);
     }
-    int i = RFLog.USR;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("restore total size:");
     ((StringBuilder)localObject).append(this.mTaskList.size());
-    RFLog.i("QCircleReportOutboxTaskManager", i, ((StringBuilder)localObject).toString());
+    QLog.i("QCircleReportOutboxTaskManager", 1, ((StringBuilder)localObject).toString());
     if (this.mTaskList.size() > 0) {
       bool1 = true;
     }
@@ -251,17 +247,16 @@ public class QCircleReportOutboxTaskManager
   {
     if ((paramQCircleReportOutboxTask != null) && (this.mTaskList.contains(paramQCircleReportOutboxTask)))
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("resumeTask id:");
       localStringBuilder.append(paramQCircleReportOutboxTask.getTaskId());
       localStringBuilder.append(", current state:");
       localStringBuilder.append(paramQCircleReportOutboxTask.getState());
-      RFLog.i("QCircleReportOutboxTaskManager", i, localStringBuilder.toString());
+      QLog.i("QCircleReportOutboxTaskManager", 1, localStringBuilder.toString());
       paramQCircleReportOutboxTask.onResume();
       return true;
     }
-    RFLog.w("QCircleReportOutboxTaskManager", RFLog.USR, "resumeTask error");
+    QLog.w("QCircleReportOutboxTaskManager", 1, "resumeTask error");
     return false;
   }
   
@@ -301,11 +296,10 @@ public class QCircleReportOutboxTaskManager
         bool1 = bool2;
         if (localQCircleReportOutboxTask.getState() == 2)
         {
-          j = RFLog.USR;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("runTask id:");
           localStringBuilder.append(localQCircleReportOutboxTask.getTaskId());
-          RFLog.i("QCircleReportOutboxTaskManager", j, localStringBuilder.toString());
+          QLog.i("QCircleReportOutboxTaskManager", 1, localStringBuilder.toString());
           j = i + 1;
           localQCircleReportOutboxTask.setState(1);
           localQCircleReportOutboxTask.resend();
@@ -330,7 +324,7 @@ public class QCircleReportOutboxTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskManager
  * JD-Core Version:    0.7.0.1
  */

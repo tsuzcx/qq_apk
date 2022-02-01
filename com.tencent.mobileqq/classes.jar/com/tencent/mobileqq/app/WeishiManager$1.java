@@ -15,15 +15,15 @@ class WeishiManager$1
       return;
     }
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.WEISHI_UIN;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
+    localSessionInfo.b = AppConstants.WEISHI_UIN;
+    localSessionInfo.a = 1008;
     ChatActivityFacade.a(WeishiManager.a(this.this$0), localSessionInfo);
     WeishiManager.a(this.this$0).getMessageFacade().a(AppConstants.WEISHI_UIN, 1008, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.WeishiManager.1
  * JD-Core Version:    0.7.0.1
  */

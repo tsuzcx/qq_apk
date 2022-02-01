@@ -10,7 +10,7 @@ class PollWidgetUtils$WidgetWrapper$1
     int i = 0;
     if (paramBoolean)
     {
-      PollWidgetUtils.WidgetElement[] arrayOfWidgetElement = this.a.a();
+      PollWidgetUtils.WidgetElement[] arrayOfWidgetElement = this.a.d();
       j = arrayOfWidgetElement.length;
       i = 0;
       while (i < j)
@@ -22,11 +22,11 @@ class PollWidgetUtils$WidgetWrapper$1
         i += 1;
       }
     }
-    paramWidgetElement = this.a.a();
+    paramWidgetElement = this.a.d();
     int j = paramWidgetElement.length;
     while (i < j)
     {
-      if (paramWidgetElement[i].a()) {
+      if (paramWidgetElement[i].b()) {
         return;
       }
       i += 1;

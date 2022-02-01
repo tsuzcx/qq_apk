@@ -8,10 +8,16 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/kandian/biz/publisher/impls/component/UIDataTransferImpl$observer$1", "Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "onTopicInfoListFetched", "", "keywordList", "", "", "topicInfoList", "Lcom/tencent/mobileqq/kandian/repo/handler/TopicInfo;", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/kandian/biz/publisher/impls/component/UIDataTransferImpl$observer$1", "Lcom/tencent/mobileqq/kandian/repo/feeds/ReadInJoyObserver;", "onRecentTopicInfoListFetched", "", "recentTopicInfoList", "", "Lcom/tencent/mobileqq/kandian/repo/handler/TopicInfo;", "onTopicInfoListFetched", "keywordList", "", "topicInfoList", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class UIDataTransferImpl$observer$1
   extends ReadInJoyObserver
 {
+  public void b(@Nullable List<TopicInfo> paramList)
+  {
+    UIDataTransferImpl localUIDataTransferImpl = this.a;
+    UIDataTransferImpl.a(localUIDataTransferImpl, UIDataTransferImpl.c(localUIDataTransferImpl), paramList);
+  }
+  
   public void b(@NotNull List<String> paramList, @Nullable List<TopicInfo> paramList1)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "keywordList");
@@ -27,7 +33,7 @@ public final class UIDataTransferImpl$observer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.component.UIDataTransferImpl.observer.1
  * JD-Core Version:    0.7.0.1
  */

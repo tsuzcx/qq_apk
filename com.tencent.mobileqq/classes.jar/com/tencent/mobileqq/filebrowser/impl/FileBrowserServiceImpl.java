@@ -26,8 +26,8 @@ public class FileBrowserServiceImpl
       return localBundle;
     }
     localBundle.putInt("browser_params_entrance", paramIFileBrowserParam.a());
-    if (paramIFileBrowserParam.a() != null) {
-      localBundle.putString("file_browser_extra_params_uin", paramIFileBrowserParam.a());
+    if (paramIFileBrowserParam.b() != null) {
+      localBundle.putString("file_browser_extra_params_uin", paramIFileBrowserParam.b());
     }
     return localBundle;
   }
@@ -70,7 +70,7 @@ public class FileBrowserServiceImpl
   
   public boolean initTbsReaderEngine(boolean paramBoolean)
   {
-    return LocalTbsViewManager.a().a(paramBoolean);
+    return LocalTbsViewManager.a().c(paramBoolean);
   }
   
   public void onDestroy(int paramInt)
@@ -90,7 +90,7 @@ public class FileBrowserServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.impl.FileBrowserServiceImpl
  * JD-Core Version:    0.7.0.1
  */

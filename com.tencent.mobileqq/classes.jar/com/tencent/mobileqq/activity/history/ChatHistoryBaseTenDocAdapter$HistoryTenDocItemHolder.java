@@ -9,14 +9,14 @@ public class ChatHistoryBaseTenDocAdapter$HistoryTenDocItemHolder
   implements Cloneable
 {
   public CheckBox a;
-  public TextView a;
-  public TencentDocItem a;
-  public AsyncImageView a;
-  public TextView b;
+  public AsyncImageView b;
+  public TextView c;
+  public TextView d;
+  public TencentDocItem e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder
  * JD-Core Version:    0.7.0.1
  */

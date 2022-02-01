@@ -22,12 +22,12 @@ public final class ThemeSwitcherImpl$Companion$downloadIcon$1
   public void onDone(@NotNull DownloadTask paramDownloadTask)
   {
     Intrinsics.checkParameterIsNotNull(paramDownloadTask, "task");
-    if (paramDownloadTask.a() != 3) {
+    if (paramDownloadTask.e() != 3) {
       QLog.d("ThemeSwitcher", 1, "downloadExtraTabIcon Failed zip not Exist!");
     }
-    FileUtils.uncompressZip(this.jdField_a_of_type_JavaLangString, this.b, false);
+    FileUtils.uncompressZip(this.a, this.b, false);
     paramDownloadTask = ThemeUtil.getCreateAppRuntime();
-    if ((this.jdField_a_of_type_JavaIoFile.exists()) && (paramDownloadTask != null) && (this.jdField_a_of_type_Boolean))
+    if ((this.d.exists()) && (paramDownloadTask != null) && (this.c))
     {
       Intent localIntent = new Intent("com.tencent.qplus.THEME_UPDATE");
       paramDownloadTask.getApplicationContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
@@ -37,7 +37,7 @@ public final class ThemeSwitcherImpl$Companion$downloadIcon$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.impl.ThemeSwitcherImpl.Companion.downloadIcon.1
  * JD-Core Version:    0.7.0.1
  */

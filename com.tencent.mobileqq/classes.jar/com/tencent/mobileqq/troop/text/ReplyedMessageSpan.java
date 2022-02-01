@@ -19,6 +19,7 @@ import com.tencent.mobileqq.activity.ChatTextSizeSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.mobileqq.vas.ColorNickManager;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
@@ -28,33 +29,31 @@ import org.json.JSONObject;
 public class ReplyedMessageSpan
   extends DynamicDrawableSpan
 {
-  private static String c = "startPos";
-  public int a;
-  public long a;
+  private static String l = "startPos";
   protected Context a;
-  public Drawable a;
-  protected View.OnClickListener a;
-  public String a;
-  protected int b;
-  public long b;
-  public String b;
+  public Drawable b;
   public long c;
   public long d;
+  public String e;
+  public long f;
+  public int g;
+  protected int h = 0;
+  public long i;
+  public String j;
+  protected View.OnClickListener k = null;
   
   private ReplyedMessageSpan(Context paramContext, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, int paramInt, Paint paramPaint, View.OnClickListener paramOnClickListener)
   {
     super(0);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
-    this.jdField_a_of_type_Long = paramSourceMsgInfo.mSourceMsgSeq;
-    this.jdField_a_of_type_JavaLangString = paramSourceMsgInfo.mSourceMsgText;
-    this.jdField_b_of_type_Long = paramSourceMsgInfo.mSourceMsgSenderUin;
-    this.jdField_c_of_type_Long = paramSourceMsgInfo.mSourceMsgTime;
-    this.jdField_a_of_type_Int = paramSourceMsgInfo.mSourceSummaryFlag;
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.d = paramSourceMsgInfo.origUid;
-    this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_Long, paramSourceMsgInfo.mAtInfoStr);
+    this.c = paramSourceMsgInfo.mSourceMsgSeq;
+    this.e = paramSourceMsgInfo.mSourceMsgText;
+    this.d = paramSourceMsgInfo.mSourceMsgSenderUin;
+    this.f = paramSourceMsgInfo.mSourceMsgTime;
+    this.g = paramSourceMsgInfo.mSourceSummaryFlag;
+    this.h = paramInt;
+    this.a = paramContext;
+    this.i = paramSourceMsgInfo.origUid;
+    this.j = a(this.d, paramSourceMsgInfo.mAtInfoStr);
     a(paramOnClickListener);
     a(paramPaint);
   }
@@ -83,29 +82,29 @@ public class ReplyedMessageSpan
     }
     for (;;)
     {
-      int i;
+      int m;
       try
       {
         Object localObject = new JSONArray(paramString);
         JSONArray localJSONArray = new JSONArray();
-        i = 0;
-        int j = 0;
-        if (i < ((JSONArray)localObject).length())
+        m = 0;
+        int n = 0;
+        if (m < ((JSONArray)localObject).length())
         {
-          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-          if (i == 0)
+          JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(m);
+          if (m == 0)
           {
             if (localJSONObject.optLong("uin") == paramLong) {
-              j = localJSONObject.optInt(jdField_c_of_type_JavaLangString);
+              n = localJSONObject.optInt(l);
             } else {
               localJSONArray.put(localJSONObject);
             }
           }
           else
           {
-            int k = localJSONObject.optInt(jdField_c_of_type_JavaLangString, 0);
-            if (k > j) {
-              localJSONObject.put(jdField_c_of_type_JavaLangString, k - j);
+            int i1 = localJSONObject.optInt(l, 0);
+            if (i1 > n) {
+              localJSONObject.put(l, i1 - n);
             }
             localJSONArray.put(localJSONObject);
           }
@@ -123,62 +122,62 @@ public class ReplyedMessageSpan
       {
         return paramString;
       }
-      i += 1;
+      m += 1;
     }
   }
   
   private void a(Paint paramPaint)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+    if (this.b != null) {
       return;
     }
     paramPaint = new SpannableStringBuilder();
-    paramPaint.append(ColorNickManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, ChatTextSizeSettingActivity.a(), null, 7));
-    Object localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    paramPaint.append(ColorNickManager.a(this.e, this.j, ChatTextSizeSettingActivity.a(), null, 7));
+    Object localObject = new TextView(this.a);
     ((TextView)localObject).setSingleLine();
     ((TextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
-    ((TextView)localObject).setBackgroundDrawable(((TextView)localObject).getResources().getDrawable(2130838206));
+    ((TextView)localObject).setBackgroundDrawable(SimpleModeHelper.c(((TextView)localObject).getResources()));
     ((TextView)localObject).setGravity(16);
-    int i = ((TextView)localObject).getResources().getColor(2131167158);
-    ((TextView)localObject).setTextColor(Color.argb(230, (0xFF0000 & i) >> 16, (0xFF00 & i) >> 8, i & 0xFF));
+    int m = ((TextView)localObject).getResources().getColor(2131168141);
+    ((TextView)localObject).setTextColor(Color.argb(230, (0xFF0000 & m) >> 16, (0xFF00 & m) >> 8, m & 0xFF));
     ((TextView)localObject).setText(paramPaint);
     ((TextView)localObject).setTextSize(1, 13.0F);
-    i = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    int j = (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 23.0F);
-    ((TextView)localObject).setPadding(i, 0, i, 0);
-    ((TextView)localObject).setMaxWidth(this.jdField_b_of_type_Int);
-    ((TextView)localObject).setWidth(this.jdField_b_of_type_Int);
-    ((TextView)localObject).setHeight(j);
-    ((TextView)localObject).setTypeface(VasShieldFont.a(Long.toString(this.jdField_b_of_type_Long)));
-    ((TextView)localObject).measure(this.jdField_b_of_type_Int, View.MeasureSpec.makeMeasureSpec(0, 0));
+    m = (int)DisplayUtils.a(this.a, 6.0F);
+    int n = (int)DisplayUtils.a(this.a, 23.0F);
+    ((TextView)localObject).setPadding(m, 0, m, 0);
+    ((TextView)localObject).setMaxWidth(this.h);
+    ((TextView)localObject).setWidth(this.h);
+    ((TextView)localObject).setHeight(n);
+    ((TextView)localObject).setTypeface(VasShieldFont.a(Long.toString(this.d)));
+    ((TextView)localObject).measure(this.h, View.MeasureSpec.makeMeasureSpec(0, 0));
     ((TextView)localObject).layout(0, 0, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getMeasuredHeight());
     ((TextView)localObject).setDrawingCacheEnabled(true);
     paramPaint = ((TextView)localObject).getDrawingCache();
     if (paramPaint != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramPaint);
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      this.b = new BitmapDrawable(this.a.getResources(), paramPaint);
+      localObject = this.b;
       if (localObject != null)
       {
-        i = ((Drawable)localObject).getIntrinsicHeight();
-        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        j = paramPaint.getWidth();
-        if (i <= 0) {
-          i = 0;
+        m = ((Drawable)localObject).getIntrinsicHeight();
+        localObject = this.b;
+        n = paramPaint.getWidth();
+        if (m <= 0) {
+          m = 0;
         }
-        ((Drawable)localObject).setBounds(0, 0, j, i);
+        ((Drawable)localObject).setBounds(0, 0, n, m);
       }
     }
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.k = paramOnClickListener;
   }
   
   public void a(TextView paramTextView)
   {
-    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    View.OnClickListener localOnClickListener = this.k;
     if (localOnClickListener != null) {
       localOnClickListener.onClick(paramTextView);
     }
@@ -186,12 +185,12 @@ public class ReplyedMessageSpan
   
   public Drawable getDrawable()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.text.ReplyedMessageSpan
  * JD-Core Version:    0.7.0.1
  */

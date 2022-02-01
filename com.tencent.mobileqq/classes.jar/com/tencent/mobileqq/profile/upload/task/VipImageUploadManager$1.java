@@ -16,7 +16,7 @@ class VipImageUploadManager$1
   
   public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
   {
-    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
+    paramUploadImageSize = VipUploadUtils.b(paramAbstractUploadTask.uploadFilePath);
     if (paramUploadImageSize != null)
     {
       paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
@@ -28,7 +28,7 @@ class VipImageUploadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.upload.task.VipImageUploadManager.1
  * JD-Core Version:    0.7.0.1
  */

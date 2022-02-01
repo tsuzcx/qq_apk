@@ -16,30 +16,26 @@ import java.io.File;
 public class AIORichMediaInfo
   extends GalleryImage
 {
-  public int a;
-  public Rect a;
   public AIORichMediaData a;
-  AIORichMediaInfo.DataState a;
-  public boolean a;
-  public int b;
-  Rect jdField_b_of_type_AndroidGraphicsRect;
-  boolean jdField_b_of_type_Boolean = true;
-  public int c;
-  boolean c;
+  public int b = 0;
+  public int c = -2;
+  AIORichMediaInfo.DataState d = new AIORichMediaInfo.DataState();
+  public boolean e = false;
+  public int f;
+  public Rect g;
+  boolean h = true;
+  boolean i;
+  Rect j;
   
   public AIORichMediaInfo(AIORichMediaData paramAIORichMediaData)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaInfo$DataState = new AIORichMediaInfo.DataState();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData = paramAIORichMediaData;
+    this.a = paramAIORichMediaData;
     this.isImgCenterCropMode = true;
   }
   
   private Drawable a()
   {
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+    Object localObject3 = this.a;
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (localObject3 != null)
@@ -47,28 +43,28 @@ public class AIORichMediaInfo
       if (!AIOFilePicData.class.isInstance(localObject3)) {
         return null;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(18);
-      File localFile = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(20);
+      localObject1 = this.a.c(18);
+      File localFile = this.a.c(20);
       localObject3 = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelperConstants.a;
       ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = URLDrawableHelperConstants.a;
-      if ((localObject1 != null) && (GlobalImageCache.a.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(18)) != null))
+      if ((localObject1 != null) && (GlobalImageCache.a.get(this.a.b(18)) != null))
       {
         if (URLDrawableHelper.getExifRotation(((File)localObject1).getAbsolutePath()) != 0) {
           return null;
         }
-        return URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(18), (URLDrawable.URLDrawableOptions)localObject3);
+        return URLDrawable.getDrawable(this.a.b(18), (URLDrawable.URLDrawableOptions)localObject3);
       }
-      if ((localFile != null) && (GlobalImageCache.a.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(20)) != null))
+      if ((localFile != null) && (GlobalImageCache.a.get(this.a.b(20)) != null))
       {
         if (URLDrawableHelper.getExifRotation(localFile.getAbsolutePath()) != 0) {
           return null;
         }
-        return URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(20), (URLDrawable.URLDrawableOptions)localObject3);
+        return URLDrawable.getDrawable(this.a.b(20), (URLDrawable.URLDrawableOptions)localObject3);
       }
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(16) != null) {
-        localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(16), (URLDrawable.URLDrawableOptions)localObject3);
+      if (this.a.c(16) != null) {
+        localObject1 = URLDrawable.getDrawable(this.a.b(16), (URLDrawable.URLDrawableOptions)localObject3);
       }
     }
     return localObject1;
@@ -82,7 +78,7 @@ public class AIORichMediaInfo
   
   private Drawable b()
   {
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
+    Object localObject3 = this.a;
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (localObject3 != null)
@@ -90,18 +86,18 @@ public class AIORichMediaInfo
       if (!AIOFileVideoData.class.isInstance(localObject3)) {
         return null;
       }
-      localObject1 = (AIOFileVideoData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-      localObject3 = ((AIOFileVideoData)localObject1).a(0);
+      localObject1 = (AIOFileVideoData)this.a;
+      localObject3 = ((AIOFileVideoData)localObject1).c(0);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
       localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-      if ((localObject3 != null) && (GlobalImageCache.a.get(((AIOFileVideoData)localObject1).a(0)) != null)) {
-        return URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(0), localURLDrawableOptions);
+      if ((localObject3 != null) && (GlobalImageCache.a.get(((AIOFileVideoData)localObject1).b(0)) != null)) {
+        return URLDrawable.getDrawable(this.a.b(0), localURLDrawableOptions);
       }
       localObject1 = localObject2;
       if (localObject3 != null)
       {
-        localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(0), localURLDrawableOptions);
+        localObject1 = URLDrawable.getDrawable(this.a.b(0), localURLDrawableOptions);
         ((URLDrawable)localObject1).downloadImediatly();
       }
     }
@@ -116,57 +112,57 @@ public class AIORichMediaInfo
       {
         Object localObject1;
         URLDrawable.URLDrawableOptions localURLDrawableOptions;
-        if (AIOImageData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+        if (AIOImageData.class.isInstance(this.a))
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(2);
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(4);
+          localObject1 = this.a.c(2);
+          localObject3 = this.a.c(4);
           localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
           localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-          if ((localObject1 != null) && (GlobalImageCache.a.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(2)) != null))
+          if ((localObject1 != null) && (GlobalImageCache.a.get(this.a.b(2)) != null))
           {
-            localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(2), localURLDrawableOptions);
+            localObject1 = URLDrawable.getDrawable(this.a.b(2), localURLDrawableOptions);
           }
-          else if ((localObject3 != null) && (GlobalImageCache.a.get(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(4)) != null))
+          else if ((localObject3 != null) && (GlobalImageCache.a.get(this.a.b(4)) != null))
           {
-            localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(4), localURLDrawableOptions);
+            localObject1 = URLDrawable.getDrawable(this.a.b(4), localURLDrawableOptions);
           }
           else
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(1) == null) {
+            if (this.a.c(1) == null) {
               break label405;
             }
-            localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(1), localURLDrawableOptions);
+            localObject1 = URLDrawable.getDrawable(this.a.b(1), localURLDrawableOptions);
             ((URLDrawable)localObject1).downloadImediatly();
           }
         }
-        else if (AIOShortVideoData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+        else if (AIOShortVideoData.class.isInstance(this.a))
         {
-          localObject1 = (AIOShortVideoData)this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData;
-          localObject3 = ((AIOShortVideoData)localObject1).a(0);
+          localObject1 = (AIOShortVideoData)this.a;
+          localObject3 = ((AIOShortVideoData)localObject1).c(0);
           localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
           localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-          if ((localObject3 != null) && (GlobalImageCache.a.get(((AIOShortVideoData)localObject1).a(0)) != null))
+          if ((localObject3 != null) && (GlobalImageCache.a.get(((AIOShortVideoData)localObject1).b(0)) != null))
           {
-            localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(0), localURLDrawableOptions);
+            localObject1 = URLDrawable.getDrawable(this.a.b(0), localURLDrawableOptions);
           }
           else
           {
             if (localObject3 == null) {
               break label405;
             }
-            localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.a(0), localURLDrawableOptions);
+            localObject1 = URLDrawable.getDrawable(this.a.b(0), localURLDrawableOptions);
             ((URLDrawable)localObject1).downloadImediatly();
           }
         }
-        else if (AIOFilePicData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData))
+        else if (AIOFilePicData.class.isInstance(this.a))
         {
           localObject1 = a();
         }
         else
         {
-          if (!AIOFileVideoData.class.isInstance(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData)) {
+          if (!AIOFileVideoData.class.isInstance(this.a)) {
             break label405;
           }
           localObject1 = b();
@@ -177,11 +173,11 @@ public class AIORichMediaInfo
         }
         if ((localObject1 != null) && (localObject3 != null))
         {
-          this.jdField_c_of_type_Int = getCutValue((Rect)localObject3, (Drawable)localObject1);
+          this.f = getCutValue((Rect)localObject3, (Drawable)localObject1);
           if (((Drawable)localObject1).getIntrinsicHeight() != -1)
           {
-            int i = ((Drawable)localObject1).getIntrinsicWidth();
-            if (i == -1) {
+            int k = ((Drawable)localObject1).getIntrinsicWidth();
+            if (k == -1) {
               return null;
             }
             return localObject1;
@@ -203,12 +199,12 @@ public class AIORichMediaInfo
   
   public int getCutValue()
   {
-    return this.jdField_c_of_type_Int;
+    return this.f;
   }
   
   public Rect getStartSrcRect()
   {
-    return this.jdField_b_of_type_AndroidGraphicsRect;
+    return this.j;
   }
   
   public int getStartX()
@@ -223,15 +219,15 @@ public class AIORichMediaInfo
   
   public Rect getThumbRect()
   {
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_b_of_type_Boolean)) {
-      return this.jdField_a_of_type_AndroidGraphicsRect;
+    if ((this.i) && (this.h)) {
+      return this.g;
     }
     return super.getThumbRect();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo
  * JD-Core Version:    0.7.0.1
  */

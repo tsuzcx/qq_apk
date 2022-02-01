@@ -6,34 +6,29 @@ import org.jetbrains.annotations.NotNull;
 
 public class EmoJiEmotionPanelManager
 {
-  private IEmoJiEmotionBridge jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIEmoJiEmotionBridge;
   @NotNull
-  private EmoJiEmotionDataSource jdField_a_of_type_ComTencentTkdCommentPanelEmojiDataEmoJiEmotionDataSource = new EmoJiEmotionDataSource();
+  private EmoJiEmotionDataSource a = new EmoJiEmotionDataSource();
+  private IEmoJiEmotionBridge b;
   
   public static EmoJiEmotionPanelManager a()
   {
     return EmoJiEmotionPanelManager.InstanceHolder.a();
   }
   
-  public IEmoJiEmotionBridge a()
+  public void a(@NotNull IEmoJiEmotionBridge paramIEmoJiEmotionBridge)
   {
-    return this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIEmoJiEmotionBridge;
+    this.b = paramIEmoJiEmotionBridge;
   }
   
   @NotNull
-  public EmoJiEmotionDataSource a()
+  public EmoJiEmotionDataSource b()
   {
-    return this.jdField_a_of_type_ComTencentTkdCommentPanelEmojiDataEmoJiEmotionDataSource;
-  }
-  
-  public void a(@NotNull IEmoJiEmotionBridge paramIEmoJiEmotionBridge)
-  {
-    this.jdField_a_of_type_ComTencentTkdCommentPanelBridgeEmojiIEmoJiEmotionBridge = paramIEmoJiEmotionBridge;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.emoji.EmoJiEmotionPanelManager
  * JD-Core Version:    0.7.0.1
  */

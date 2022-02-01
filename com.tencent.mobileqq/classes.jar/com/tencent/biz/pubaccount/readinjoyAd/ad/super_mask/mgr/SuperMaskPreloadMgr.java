@@ -12,13 +12,13 @@ public final class SuperMaskPreloadMgr
 {
   public static final SuperMaskPreloadMgr a = new SuperMaskPreloadMgr();
   
-  private final boolean a()
+  private final boolean b()
   {
     SuperMaskStepUtil localSuperMaskStepUtil = SuperMaskStepUtil.a;
     SuperMaskStep localSuperMaskStep = (SuperMaskStep)new AladdinCheckStep();
     boolean bool1 = false;
     boolean bool2 = localSuperMaskStepUtil.a("[PRELOAD]", new SuperMaskStep[] { localSuperMaskStep, (SuperMaskStep)new PreloadIntervalCheckStep() });
-    if ((SuperMaskConfigMgr.a.a() == 1) || (bool2)) {
+    if ((SuperMaskConfigMgr.a.c() == 1) || (bool2)) {
       bool1 = true;
     }
     return bool1;
@@ -26,7 +26,7 @@ public final class SuperMaskPreloadMgr
   
   public final void a()
   {
-    if (!a()) {
+    if (!b()) {
       return;
     }
     ThreadManagerV2.excute((Runnable)SuperMaskPreloadMgr.preloadSuperMaskRes.1.a, 128, null, true);
@@ -34,7 +34,7 @@ public final class SuperMaskPreloadMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskPreloadMgr
  * JD-Core Version:    0.7.0.1
  */

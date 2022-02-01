@@ -9,39 +9,39 @@ import java.util.List;
 public class TroopEssenceMsgObserver
   implements BusinessObserver
 {
-  public static final int a;
+  private static int a;
   public static final int b;
   public static final int c;
   public static final int d;
   public static final int e;
   public static final int f;
-  private static int g;
+  public static final int g;
   
   static
   {
-    int i = g;
-    g = i + 1;
-    a = i;
-    i = g;
-    g = i + 1;
+    int i = a;
+    a = i + 1;
     b = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     c = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     d = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     e = i;
-    i = g;
-    g = i + 1;
+    i = a;
+    a = i + 1;
     f = i;
+    i = a;
+    a = i + 1;
+    g = i;
   }
   
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != a) {
+    if (paramInt != b) {
       return;
     }
     if ((paramObject != null) && ((paramObject instanceof Object[])))
@@ -60,7 +60,7 @@ public class TroopEssenceMsgObserver
   
   private void b(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != b) {
+    if (paramInt != c) {
       return;
     }
     if ((paramObject instanceof Object[]))
@@ -79,7 +79,7 @@ public class TroopEssenceMsgObserver
   
   private void c(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != c) {
+    if (paramInt != d) {
       return;
     }
     if (paramObject != null)
@@ -117,7 +117,7 @@ public class TroopEssenceMsgObserver
   
   private void d(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != d) {
+    if (paramInt != e) {
       return;
     }
     Object localObject = null;
@@ -145,7 +145,7 @@ public class TroopEssenceMsgObserver
   
   private void e(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != e) {
+    if (paramInt != f) {
       return;
     }
     TroopInfo localTroopInfo = null;
@@ -173,7 +173,7 @@ public class TroopEssenceMsgObserver
   
   private void f(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt != f) {
+    if (paramInt != g) {
       return;
     }
     if ((paramObject instanceof Long)) {
@@ -205,7 +205,7 @@ public class TroopEssenceMsgObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.observer.TroopEssenceMsgObserver
  * JD-Core Version:    0.7.0.1
  */

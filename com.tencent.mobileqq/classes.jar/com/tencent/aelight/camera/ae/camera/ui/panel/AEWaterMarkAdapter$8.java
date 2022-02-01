@@ -9,12 +9,12 @@ class AEWaterMarkAdapter$8
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object[] arrayOfObject;
     if (i == 114)
     {
       AEQLog.a("AEWaterMarkAdapter", "water mark notify SHOW_WATERMARK_EDITPICTURE");
-      arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+      arrayOfObject = this.b;
       if ((arrayOfObject != null) && (arrayOfObject.length == 1)) {
         AEWaterMarkAdapter.a(this.this$0, true, arrayOfObject[0]);
       }
@@ -22,7 +22,7 @@ class AEWaterMarkAdapter$8
     else if (i == 115)
     {
       AEQLog.a("AEWaterMarkAdapter", "water mark notify SHOW_WATERMARK_EDITPICTURE");
-      arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
+      arrayOfObject = this.b;
       if ((arrayOfObject != null) && (arrayOfObject.length == 1)) {
         AEWaterMarkAdapter.a(this.this$0, false, arrayOfObject[0]);
       }
@@ -42,7 +42,7 @@ class AEWaterMarkAdapter$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEWaterMarkAdapter.8
  * JD-Core Version:    0.7.0.1
  */

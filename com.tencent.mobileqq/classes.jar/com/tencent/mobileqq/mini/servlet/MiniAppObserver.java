@@ -10,6 +10,7 @@ public class MiniAppObserver
 {
   public static final int MINI_APP_ADD_PHONE_NUMBER = 1073;
   public static final int MINI_APP_BATCH_GET_CONTACT = 1039;
+  public static final int MINI_APP_BATCH_GET_GAME_FOLLOW_COUNT = 1091;
   public static final int MINI_APP_BATCH_GET_USER_INFO = 1028;
   public static final int MINI_APP_BATCH_QUERY_APP_INFO = 1013;
   public static final int MINI_APP_BOOKSHIEF_INSERT = 1080;
@@ -43,6 +44,7 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_HOT_SEARCH_APPS = 1071;
   public static final int MINI_APP_GET_KUOLIE_APPLIST = 1044;
   public static final int MINI_APP_GET_LOGIN_CODE = 1000;
+  public static final int MINI_APP_GET_MATERIAL_RELEVANT_APP = 1031;
   public static final int MINI_APP_GET_NATIVE_APPINFO = 1030;
   public static final int MINI_APP_GET_NEW_BASELIB = 1004;
   public static final int MINI_APP_GET_NEW_BASELIB_FOR_SDK = 1057;
@@ -66,6 +68,7 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_USER_INFO_EXTRA = 1032;
   public static final int MINI_APP_GET_USER_INTERACTIVE_STORAGE_SERVLET = 1059;
   public static final int MINI_APP_GET_USER_SETTING = 1051;
+  public static final int MINI_APP_GET_WEIXIN_SDK_APPINFO = 1092;
   public static final int MINI_APP_LOCAL_SEARCH_DATA = 1011;
   public static final int MINI_APP_MIDAS_CONSUME_RESULT = 1025;
   public static final int MINI_APP_MIDAS_QUERY_RESULT = 1026;
@@ -322,6 +325,12 @@ public class MiniAppObserver
     }
     if (1090 == paramInt) {
       return "MINI_APP_DO_GAME_RAFFLE";
+    }
+    if (1091 == paramInt) {
+      return "MINI_APP_BATCH_GET_GAME_FOLLOW_COUNT";
+    }
+    if (1092 == paramInt) {
+      return "MINI_APP_GET_WEIXIN_SDK_APPINFO";
     }
     return "default cmd";
   }
@@ -752,14 +761,26 @@ public class MiniAppObserver
       onGetGameRaffleMaterial(i, paramBoolean, paramBundle);
       return;
     }
-    if (paramInt == 1090) {
+    if (paramInt == 1090)
+    {
       onDoGameRaffle(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1091)
+    {
+      onBatchGetFollowingCount(i, paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1092) {
+      onGetWeixinSDKAppInfoFin(i, paramBoolean, paramBundle);
     }
   }
   
   protected void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onBatchGetContact(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onBatchGetFollowingCount(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onBatchGetUserInfoResult(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -873,6 +894,8 @@ public class MiniAppObserver
   
   protected void onGetUserSetting(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGetWeixinSDKAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetuserCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGuessYouLike(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -930,7 +953,7 @@ public class MiniAppObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class DeviceTextItemBuilder$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceTextItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
+    ((DeviceMsgHandle)this.b.d.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a(this.b.d, this.b.e, this.b.f, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

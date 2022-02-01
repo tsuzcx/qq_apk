@@ -16,21 +16,21 @@ class SubscribeFollowInfoView$1
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a() != null) || (!this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()))
+    if ((this.b.getData() != null) || (!this.b.a()))
     {
-      String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      String str = this.a.poster.id.get();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("auth_");
-      localStringBuilder.append(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()));
+      localStringBuilder.append(SubscribeShareHelper.a(this.b.getExtraTypeInfo()));
       VSReporter.a(str, localStringBuilder.toString(), "clk_name", 0, 0, new String[0]);
-      SubscribeLaucher.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a(), ((CertifiedAccountMeta.StFeed)this.jdField_a_of_type_ComTencentBizSubscribeWidgetSubscribeFollowInfoView.a()).poster);
+      SubscribeLaucher.a(this.b.getHostActivity(), ((CertifiedAccountMeta.StFeed)this.b.getData()).poster);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeFollowInfoView.1
  * JD-Core Version:    0.7.0.1
  */

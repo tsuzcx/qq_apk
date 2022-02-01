@@ -18,7 +18,7 @@ class FastColorFontHelper$FontLruCache
     paramString2.append(paramString1);
     FastColorFontLog.a("FastColorFontHelper", paramString2.toString());
     this.a.a(paramInteger.intValue());
-    FastColorFontCache.a(paramInteger.intValue());
+    FastColorFontCache.h(paramInteger.intValue());
     paramInteger = new StringBuilder();
     paramInteger.append("release end   font ");
     paramInteger.append(paramString1);

@@ -5,53 +5,53 @@ import com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.MediaMuxerWrapp
 
 public class EncodeConfig
 {
-  public int a;
-  private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
-  MuxerDataListener jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener;
-  public MediaMuxerWrapper a;
   public String a;
-  boolean jdField_a_of_type_Boolean;
   public int b;
   public int c;
   public int d;
-  int e;
-  int f;
+  public int e;
+  public MediaMuxerWrapper f;
   int g;
+  int h;
+  int i;
+  boolean j;
+  MuxerDataListener k;
+  private EGLContext l;
   
   public EGLContext a()
   {
-    return this.jdField_a_of_type_AndroidOpenglEGLContext;
+    return this.l;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("EncodeConfig{sharedContext=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidOpenglEGLContext);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(", outputFilePath='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", width='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", height='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
+    localStringBuilder.append(", height='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
     localStringBuilder.append(", bitRate='");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", frameRate='");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", iFrameInterval='");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.EncodeConfig
  * JD-Core Version:    0.7.0.1
  */

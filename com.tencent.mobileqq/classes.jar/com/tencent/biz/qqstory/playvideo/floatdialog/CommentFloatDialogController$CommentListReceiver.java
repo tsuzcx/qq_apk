@@ -17,23 +17,23 @@ class CommentFloatDialogController$CommentListReceiver
   
   public void a(@NonNull CommentFloatDialogController paramCommentFloatDialogController, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    if ((paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString.equals(CommentFloatDialogController.a(paramCommentFloatDialogController))) && (!paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (CommentFloatDialogController.a(paramCommentFloatDialogController) != null))
+    if ((paramGetFeedCommentEvent.e.equals(CommentFloatDialogController.d(paramCommentFloatDialogController))) && (!paramGetFeedCommentEvent.g.isFail()) && (CommentFloatDialogController.a(paramCommentFloatDialogController) != null))
     {
       SLog.a("Q.qqstory.player.CommentFloatDialogController", "receive comment list event. %s.", paramGetFeedCommentEvent.toString());
-      boolean bool2 = paramCommentFloatDialogController.a();
+      boolean bool2 = paramCommentFloatDialogController.e();
       boolean bool1 = true;
-      if (paramGetFeedCommentEvent.jdField_a_of_type_Int == 0) {
+      if (paramGetFeedCommentEvent.f == 0) {
         bool1 = false;
       }
-      CommentFloatDialogController.a(paramCommentFloatDialogController).a(bool1);
-      CommentFloatDialogController.a(paramCommentFloatDialogController).a(bool1, paramGetFeedCommentEvent.b);
-      CommentFloatDialogController.a(paramCommentFloatDialogController).a(bool1, paramGetFeedCommentEvent.jdField_a_of_type_Boolean);
-      CommentFloatDialogController.a(paramCommentFloatDialogController).a(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList, paramGetFeedCommentEvent.c, bool1);
+      CommentFloatDialogController.a(paramCommentFloatDialogController).g(bool1);
+      CommentFloatDialogController.a(paramCommentFloatDialogController).a(bool1, paramGetFeedCommentEvent.i);
+      CommentFloatDialogController.a(paramCommentFloatDialogController).a(bool1, paramGetFeedCommentEvent.a);
+      CommentFloatDialogController.a(paramCommentFloatDialogController).a(paramGetFeedCommentEvent.k, paramGetFeedCommentEvent.c, bool1);
       if (bool2 == bool1)
       {
-        CommentFloatDialogController.OnDataChangeListener localOnDataChangeListener = paramCommentFloatDialogController.a();
+        CommentFloatDialogController.OnDataChangeListener localOnDataChangeListener = paramCommentFloatDialogController.c();
         if (localOnDataChangeListener != null) {
-          localOnDataChangeListener.a(CommentFloatDialogController.a(paramCommentFloatDialogController), paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+          localOnDataChangeListener.a(CommentFloatDialogController.a(paramCommentFloatDialogController), paramGetFeedCommentEvent.g.isSuccess());
         }
       }
       return;
@@ -48,16 +48,16 @@ class CommentFloatDialogController$CommentListReceiver
   
   public void b(@NonNull CommentFloatDialogController paramCommentFloatDialogController, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    boolean bool2 = paramCommentFloatDialogController.a();
+    boolean bool2 = paramCommentFloatDialogController.e();
     boolean bool1;
-    if (paramGetFeedCommentEvent.jdField_a_of_type_Int == 0) {
+    if (paramGetFeedCommentEvent.f == 0) {
       bool1 = false;
     } else {
       bool1 = true;
     }
     if (bool2 == bool1)
     {
-      paramGetFeedCommentEvent = paramCommentFloatDialogController.a();
+      paramGetFeedCommentEvent = paramCommentFloatDialogController.c();
       if (paramGetFeedCommentEvent != null) {
         paramGetFeedCommentEvent.a(CommentFloatDialogController.a(paramCommentFloatDialogController), false);
       }
@@ -66,7 +66,7 @@ class CommentFloatDialogController$CommentListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.CommentListReceiver
  * JD-Core Version:    0.7.0.1
  */

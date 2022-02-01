@@ -2,27 +2,27 @@ package com.tencent.mobileqq.ark.test;
 
 public class LocationSimulator
 {
-  private static double jdField_a_of_type_Double = 0.0D;
-  private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static double b;
+  private static String a;
+  private static boolean b = false;
+  private static double c;
+  private static double d;
   
   public static String a()
   {
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
-  public static double[] a()
+  public static double[] b()
   {
-    if (!jdField_a_of_type_Boolean) {
+    if (!b) {
       return null;
     }
-    return new double[] { jdField_a_of_type_Double, b };
+    return new double[] { c, d };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.test.LocationSimulator
  * JD-Core Version:    0.7.0.1
  */

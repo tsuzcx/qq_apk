@@ -16,7 +16,7 @@ class AccountManage$3
   
   private void a(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    Manager localManager = AccountManage.a(this.jdField_a_of_type_ComTencentOpenModelAccountManage).getManager(1);
+    Manager localManager = AccountManage.a(this.b).getManager(1);
     if (localManager != null)
     {
       long l = System.currentTimeMillis();
@@ -28,12 +28,12 @@ class AccountManage$3
   
   public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver.onFailed(paramString, paramInt1, paramInt2, paramBundle);
+    this.a.onFailed(paramString, paramInt1, paramInt2, paramBundle);
   }
   
   public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver.onGetA1WithA1(paramString, paramInt1, paramArrayOfByte, paramInt2, paramBundle);
+    this.a.onGetA1WithA1(paramString, paramInt1, paramArrayOfByte, paramInt2, paramBundle);
   }
   
   public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
@@ -43,17 +43,17 @@ class AccountManage$3
   
   public void onLoginSuccess(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver.onLoginSuccess(paramString, paramArrayOfByte, paramInt, paramBundle);
+    this.a.onLoginSuccess(paramString, paramArrayOfByte, paramInt, paramBundle);
   }
   
   public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver.onUserCancel(paramString, paramInt, paramBundle);
+    this.a.onUserCancel(paramString, paramInt, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.model.AccountManage.3
  * JD-Core Version:    0.7.0.1
  */

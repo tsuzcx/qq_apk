@@ -25,17 +25,17 @@ public abstract class DownloadListener
     if (QLog.isColorLevel()) {
       QLog.e("DownloadListener", 2, "-->report MM");
     }
-    if (paramDownloadTask.a() != 3)
+    if (paramDownloadTask.e() != 3)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("-->report MM:command=");
-        localStringBuilder.append(paramDownloadTask.c);
+        localStringBuilder.append(paramDownloadTask.h);
         localStringBuilder.append(",error code=");
-        localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+        localStringBuilder.append(paramDownloadTask.c);
         localStringBuilder.append(",uin=");
-        localStringBuilder.append(paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a);
+        localStringBuilder.append(paramDownloadTask.S.b);
         QLog.e("DownloadListener", 2, localStringBuilder.toString());
       }
       vipReportCgi(paramDownloadTask);
@@ -51,7 +51,7 @@ public abstract class DownloadListener
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask.h = System.currentTimeMillis();
+    paramDownloadTask.B = System.currentTimeMillis();
     if (paramDownloadTask.a((byte)1)) {
       reportErrorToMM(paramDownloadTask);
     }
@@ -86,7 +86,7 @@ public abstract class DownloadListener
   
   public boolean onStart(DownloadTask paramDownloadTask)
   {
-    paramDownloadTask.g = System.currentTimeMillis();
+    paramDownloadTask.A = System.currentTimeMillis();
     return true;
   }
   
@@ -129,7 +129,7 @@ public abstract class DownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloadListener
  * JD-Core Version:    0.7.0.1
  */

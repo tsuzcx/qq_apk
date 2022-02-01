@@ -10,26 +10,26 @@ public class QConReqExtraInfo
 {
   public static final Parcelable.Creator<QConReqExtraInfo> CREATOR = new QConReqExtraInfo.1();
   public int a;
-  public boolean a;
+  public boolean b;
   
   public QConReqExtraInfo(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = 0;
+    this.b = false;
+    this.a = paramInt;
+    this.b = paramBoolean;
   }
   
   protected QConReqExtraInfo(Parcel paramParcel)
   {
     boolean bool = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = 0;
+    this.b = false;
+    this.a = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.b = bool;
   }
   
   public int describeContents()
@@ -42,22 +42,22 @@ public class QConReqExtraInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[id:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", reset:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeByte((byte)this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.QConReqExtraInfo
  * JD-Core Version:    0.7.0.1
  */

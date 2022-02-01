@@ -20,38 +20,38 @@ public class CameraProxy
   implements Camera.PreviewCallback, ARCamera.AutoFocusListener
 {
   public static HandlerThread a;
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = null;
-  private ARCamera jdField_a_of_type_ComTencentMobileqqArArengineARCamera = null;
-  private WeakReference<CameraProxy.OnCameraPreviewCallback> jdField_a_of_type_JavaLangRefWeakReference;
-  private ArrayList<WeakReference<ARCamera.AutoFocusListener>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private volatile byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int = 1;
-  private ArrayList<WeakReference<CameraProxy.CameraOperationStatusCallBack>> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private int jdField_c_of_type_Int = 0;
-  private ArrayList<WeakReference<CameraProxy.OnCameraPreviewCallback>> jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  private int d = 0;
-  private int e = 17;
-  private int f = 10;
-  private int g;
+  private volatile int b = 0;
+  private int c = 1;
+  private Handler d = null;
+  private ARCamera e = null;
+  private int f = 0;
+  private int g = 0;
+  private int h = 17;
+  private int i = 10;
+  private long j = 0L;
+  private boolean k = false;
+  private ArrayList<WeakReference<ARCamera.AutoFocusListener>> l = new ArrayList();
+  private ArrayList<WeakReference<CameraProxy.CameraOperationStatusCallBack>> m = new ArrayList();
+  private WeakReference<CameraProxy.OnCameraPreviewCallback> n;
+  private ArrayList<WeakReference<CameraProxy.OnCameraPreviewCallback>> o = new ArrayList();
+  private volatile byte[] p;
+  private int q;
   
   private CameraProxy()
   {
-    if (jdField_a_of_type_AndroidOsHandlerThread == null)
+    if (a == null)
     {
-      jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("Camera2 Handler Thread", 0);
-      jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      a = ThreadManager.newFreeHandlerThread("Camera2 Handler Thread", 0);
+      a.start();
+      this.d = new Handler(a.getLooper());
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera = new ARCamera();
+    this.e = new ARCamera();
     if (Build.MODEL.equalsIgnoreCase("Redmi Note 3")) {
-      this.jdField_a_of_type_Long = 500L;
+      this.j = 500L;
     } else {
-      this.jdField_a_of_type_Long = 300L;
+      this.j = 300L;
     }
-    this.f = 0;
+    this.i = 0;
   }
   
   public static CameraProxy a()
@@ -61,13 +61,13 @@ public class CameraProxy
   
   private void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    int i;
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    int i1;
+    synchronized (this.m)
     {
-      i = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-      if (i >= 0)
+      i1 = this.m.size() - 1;
+      if (i1 >= 0)
       {
-        WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i);
+        WeakReference localWeakReference = (WeakReference)this.m.get(i1);
         if ((localWeakReference != null) && (localWeakReference.get() != null)) {
           if (paramBoolean) {
             ((CameraProxy.CameraOperationStatusCallBack)localWeakReference.get()).b();
@@ -83,55 +83,24 @@ public class CameraProxy
     }
   }
   
-  public int a()
-  {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public String a()
-  {
-    int i = this.g;
-    if (Build.MODEL.equalsIgnoreCase("M1 E")) {
-      i = 90;
-    }
-    String str;
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      str = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(this.jdField_a_of_type_ArrayOfByte, this.jdField_c_of_type_Int, this.d, this.e, i);
-    } else {
-      str = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraProxy", 2, String.format("getLastPreviewFrame, path: %s, rotation: %s", new Object[] { str, Integer.valueOf(i) }));
-    }
-    return str;
-  }
-  
-  public void a()
-  {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
-    if (localARCamera != null) {
-      localARCamera.c();
-    }
-  }
-  
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.b == 2)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("openCamera mCurCameraState = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.i("CameraProxy", 2, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_Int = 1;
-    this.f = 0;
+    this.b = 1;
+    this.i = 0;
     a(new CameraProxy.1(this, paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    ARCamera localARCamera = this.e;
     if (localARCamera != null) {
       localARCamera.a(paramInt1, paramInt2);
     }
@@ -139,7 +108,7 @@ public class CameraProxy
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    ARCamera localARCamera = this.e;
     if (localARCamera != null) {
       localARCamera.a(paramInt1, paramInt2, paramInt3, paramInt4);
     }
@@ -147,7 +116,7 @@ public class CameraProxy
   
   public void a(SurfaceTexture paramSurfaceTexture)
   {
-    if ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean))
+    if ((this.b == 2) && (this.k))
     {
       QLog.i("CameraProxy", 2, "startCameraPreview return now");
       return;
@@ -157,26 +126,26 @@ public class CameraProxy
   
   public void a(ARCamera.AutoFocusListener paramAutoFocusListener)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.l.iterator();
     while (localIterator.hasNext()) {
       if (((WeakReference)localIterator.next()).get() == paramAutoFocusListener) {
         return;
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramAutoFocusListener));
+    this.l.add(new WeakReference(paramAutoFocusListener));
   }
   
   public void a(CameraProxy.CameraOperationStatusCallBack paramCameraOperationStatusCallBack)
   {
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    synchronized (this.m)
     {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.m.iterator();
       while (localIterator.hasNext()) {
         if (((WeakReference)localIterator.next()).get() == paramCameraOperationStatusCallBack) {
           return;
         }
       }
-      this.jdField_b_of_type_JavaUtilArrayList.add(new WeakReference(paramCameraOperationStatusCallBack));
+      this.m.add(new WeakReference(paramCameraOperationStatusCallBack));
       return;
     }
     for (;;)
@@ -189,18 +158,18 @@ public class CameraProxy
   {
     if (paramOnCameraPreviewCallback == null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.n = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnCameraPreviewCallback);
+    this.n = new WeakReference(paramOnCameraPreviewCallback);
   }
   
   public void a(Runnable paramRunnable)
   {
-    synchronized (jdField_a_of_type_AndroidOsHandlerThread)
+    synchronized (a)
     {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+      if (this.d != null) {
+        this.d.post(paramRunnable);
       }
       return;
     }
@@ -208,7 +177,7 @@ public class CameraProxy
   
   public void a(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.l.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -218,68 +187,53 @@ public class CameraProxy
     }
   }
   
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 2;
-  }
-  
   public boolean a(float paramFloat, boolean paramBoolean)
   {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    ARCamera localARCamera = this.e;
     if (localARCamera != null) {
       return localARCamera.a(paramFloat, paramBoolean);
     }
     return false;
   }
   
-  public boolean a(boolean paramBoolean)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera.a(paramBoolean);
-  }
-  
-  public int b()
-  {
-    return this.d;
-  }
-  
   public void b()
   {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    ARCamera localARCamera = this.e;
     if (localARCamera != null) {
-      localARCamera.d();
+      localARCamera.i();
     }
   }
   
   public void b(ARCamera.AutoFocusListener paramAutoFocusListener)
   {
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
+    int i2 = this.l.size();
+    int i1 = 0;
+    while (i1 < i2)
     {
-      if (((WeakReference)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get() == paramAutoFocusListener) {
+      if (((WeakReference)this.l.get(i1)).get() == paramAutoFocusListener) {
         break label45;
       }
-      i += 1;
+      i1 += 1;
     }
-    i = -1;
+    i1 = -1;
     label45:
-    if (i != -1) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+    if (i1 != -1) {
+      this.l.remove(i1);
     }
   }
   
   public void b(CameraProxy.CameraOperationStatusCallBack paramCameraOperationStatusCallBack)
   {
-    int i;
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    int i1;
+    synchronized (this.m)
     {
-      int j = this.jdField_b_of_type_JavaUtilArrayList.size();
-      i = 0;
-      if (i < j) {
-        if (((WeakReference)this.jdField_b_of_type_JavaUtilArrayList.get(i)).get() == paramCameraOperationStatusCallBack)
+      int i2 = this.m.size();
+      i1 = 0;
+      if (i1 < i2) {
+        if (((WeakReference)this.m.get(i1)).get() == paramCameraOperationStatusCallBack)
         {
-          if (i != -1) {
-            this.jdField_b_of_type_JavaUtilArrayList.remove(i);
+          if (i1 != -1) {
+            this.m.remove(i1);
           }
           return;
         }
@@ -289,15 +243,15 @@ public class CameraProxy
   
   public void b(CameraProxy.OnCameraPreviewCallback paramOnCameraPreviewCallback)
   {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+    synchronized (this.o)
     {
-      Iterator localIterator = this.jdField_c_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.o.iterator();
       while (localIterator.hasNext()) {
         if (((WeakReference)localIterator.next()).get() == paramOnCameraPreviewCallback) {
           return;
         }
       }
-      this.jdField_c_of_type_JavaUtilArrayList.add(new WeakReference(paramOnCameraPreviewCallback));
+      this.o.add(new WeakReference(paramOnCameraPreviewCallback));
       return;
     }
     for (;;)
@@ -306,36 +260,31 @@ public class CameraProxy
     }
   }
   
-  public boolean b()
+  public boolean b(boolean paramBoolean)
   {
-    return (this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Boolean);
-  }
-  
-  public int c()
-  {
-    return this.e;
+    return this.e.a(paramBoolean);
   }
   
   public void c()
   {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    ARCamera localARCamera = this.e;
     if (localARCamera != null) {
-      localARCamera.b();
+      localARCamera.j();
     }
   }
   
   public void c(CameraProxy.OnCameraPreviewCallback paramOnCameraPreviewCallback)
   {
-    int i;
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+    int i1;
+    synchronized (this.o)
     {
-      int j = this.jdField_c_of_type_JavaUtilArrayList.size();
-      i = 0;
-      if (i < j) {
-        if (((WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i)).get() == paramOnCameraPreviewCallback)
+      int i2 = this.o.size();
+      i1 = 0;
+      if (i1 < i2) {
+        if (((WeakReference)this.o.get(i1)).get() == paramOnCameraPreviewCallback)
         {
-          if (i != -1) {
-            this.jdField_c_of_type_JavaUtilArrayList.remove(i);
+          if (i1 != -1) {
+            this.o.remove(i1);
           }
           return;
         }
@@ -345,51 +294,102 @@ public class CameraProxy
   
   public void d()
   {
-    ARCamera localARCamera = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+    ARCamera localARCamera = this.e;
     if (localARCamera != null) {
-      localARCamera.e();
+      localARCamera.h();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Int == 0)
+    ARCamera localARCamera = this.e;
+    if (localARCamera != null) {
+      localARCamera.k();
+    }
+  }
+  
+  public boolean f()
+  {
+    return this.b == 2;
+  }
+  
+  public boolean g()
+  {
+    return (this.b == 2) && (this.k);
+  }
+  
+  public int h()
+  {
+    return this.f;
+  }
+  
+  public int i()
+  {
+    return this.g;
+  }
+  
+  public int j()
+  {
+    return this.h;
+  }
+  
+  public void k()
+  {
+    if (this.b == 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("closeCamera mCurCameraState = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.i("CameraProxy", 2, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_Int = 3;
+    this.b = 3;
     a(new CameraProxy.3(this));
   }
   
-  public void f()
+  public void l()
   {
-    synchronized (this.jdField_c_of_type_JavaUtilArrayList)
+    synchronized (this.o)
     {
-      this.jdField_c_of_type_JavaUtilArrayList.clear();
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      this.o.clear();
+      synchronized (this.m)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.m.clear();
+        this.l.clear();
         return;
       }
     }
   }
   
+  public String m()
+  {
+    int i1 = this.q;
+    if (Build.MODEL.equalsIgnoreCase("M1 E")) {
+      i1 = 90;
+    }
+    String str;
+    if (this.p != null) {
+      str = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(this.p, this.f, this.g, this.h, i1);
+    } else {
+      str = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraProxy", 2, String.format("getLastPreviewFrame, path: %s, rotation: %s", new Object[] { str, Integer.valueOf(i1) }));
+    }
+    return str;
+  }
+  
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    Object localObject = this.jdField_c_of_type_JavaUtilArrayList;
+    Object localObject = this.o;
     boolean bool1 = false;
     try
     {
-      i = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
+      i1 = this.o.size() - 1;
       bool2 = bool1;
-      if (i >= 0)
+      if (i1 >= 0)
       {
-        WeakReference localWeakReference = (WeakReference)this.jdField_c_of_type_JavaUtilArrayList.get(i);
+        WeakReference localWeakReference = (WeakReference)this.o.get(i1);
         bool2 = bool1;
         if (localWeakReference.get() == null) {
           break label188;
@@ -401,17 +401,17 @@ public class CameraProxy
         }
         bool2 = bool1;
       }
-      if ((!bool2) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-        ((CameraProxy.OnCameraPreviewCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramArrayOfByte);
+      if ((!bool2) && (this.n != null) && (this.n.get() != null)) {
+        ((CameraProxy.OnCameraPreviewCallback)this.n.get()).a(paramArrayOfByte);
       }
-      if (this.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if (this.b == 2) {
+        this.p = paramArrayOfByte;
       } else {
-        this.jdField_a_of_type_ArrayOfByte = null;
+        this.p = null;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera;
+      localObject = this.e;
       if (localObject != null) {
-        this.g = ((ARCamera)localObject).d();
+        this.q = ((ARCamera)localObject).d();
       }
       paramCamera.addCallbackBuffer(paramArrayOfByte);
       return;
@@ -420,14 +420,14 @@ public class CameraProxy
     {
       for (;;)
       {
-        int i;
+        int i1;
         boolean bool2;
         for (;;)
         {
           throw paramArrayOfByte;
         }
         label188:
-        i -= 1;
+        i1 -= 1;
         bool1 = bool2;
       }
     }
@@ -435,7 +435,7 @@ public class CameraProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy
  * JD-Core Version:    0.7.0.1
  */

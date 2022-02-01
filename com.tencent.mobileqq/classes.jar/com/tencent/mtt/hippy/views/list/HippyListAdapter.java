@@ -33,7 +33,7 @@ public class HippyListAdapter
   implements IRecycleItemTypeChange
 {
   private static final String TAG = "HippyListAdapter";
-  protected HippyEngineContext mHippyContext;
+  protected final HippyEngineContext mHippyContext;
   ArrayList<RecyclerViewBase.ViewHolder> mListViewHolder;
   private HippyListAdapter.OnEndReachedEvent mOnEndReachedEvent;
   private int mPreloadItemNum = 0;
@@ -220,7 +220,7 @@ public class HippyListAdapter
     if ((localRenderNode != null) && (localRenderNode.getChildCount() > 0))
     {
       localRenderNode = localRenderNode.getChildAt(localRenderNode.getChildCount() - 1);
-      if ((localRenderNode != null) && ((localRenderNode instanceof h))) {
+      if ((localRenderNode instanceof h)) {
         return localRenderNode.getHeight();
       }
     }
@@ -233,7 +233,7 @@ public class HippyListAdapter
     if ((localRenderNode != null) && (localRenderNode.getChildCount() > 0))
     {
       localRenderNode = localRenderNode.getChildAt(localRenderNode.getChildCount() - 1);
-      if ((localRenderNode != null) && ((localRenderNode instanceof h))) {
+      if ((localRenderNode instanceof h)) {
         return localRenderNode.getWidth();
       }
     }
@@ -246,7 +246,7 @@ public class HippyListAdapter
     if ((localRenderNode != null) && (localRenderNode.getChildCount() > 0))
     {
       localRenderNode = localRenderNode.getChildAt(0);
-      if ((localRenderNode != null) && ((localRenderNode instanceof i))) {
+      if ((localRenderNode instanceof i)) {
         return localRenderNode.getHeight();
       }
     }
@@ -259,7 +259,7 @@ public class HippyListAdapter
     if ((localRenderNode != null) && (localRenderNode.getChildCount() > 0))
     {
       localRenderNode = localRenderNode.getChildAt(0);
-      if ((localRenderNode != null) && ((localRenderNode instanceof i))) {
+      if ((localRenderNode instanceof i)) {
         return localRenderNode.getWidth();
       }
     }
@@ -474,7 +474,7 @@ public class HippyListAdapter
       ArrayList localArrayList = DiffUtils.diff(localNodeHolder.mBindNode, paramContentHolder);
       DiffUtils.deleteViews(this.mHippyContext.getRenderManager().getControllerManager(), localArrayList);
       DiffUtils.replaceIds(this.mHippyContext.getRenderManager().getControllerManager(), localArrayList);
-      DiffUtils.createView(this.mHippyContext.getRenderManager().getControllerManager(), localArrayList);
+      DiffUtils.createView(localArrayList);
       DiffUtils.doPatch(this.mHippyContext.getRenderManager().getControllerManager(), localArrayList);
       localNodeHolder.mBindNode = paramContentHolder;
     }
@@ -490,10 +490,10 @@ public class HippyListAdapter
     localRenderNode.setLazy(false);
     View localView = localRenderNode.createViewRecursive();
     paramViewGroup.mContentView = localView;
-    if ((localView != null) && ((localView instanceof HippyPullHeaderView))) {
+    if ((localView instanceof HippyPullHeaderView)) {
       ((HippyPullHeaderView)localView).setParentView(this.mParentRecyclerView);
     }
-    if ((localView != null) && ((localView instanceof HippyPullFooterView))) {
+    if ((localView instanceof HippyPullFooterView)) {
       ((HippyPullFooterView)localView).setParentView(this.mParentRecyclerView);
     }
     paramViewGroup.mBindNode = localRenderNode;
@@ -540,7 +540,7 @@ public class HippyListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.list.HippyListAdapter
  * JD-Core Version:    0.7.0.1
  */

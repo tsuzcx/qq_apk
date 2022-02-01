@@ -14,16 +14,16 @@ class FileAssistantMgr$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("remove recver:");
-      localStringBuilder.append(this.a.a());
+      localStringBuilder.append(this.a.f());
       QLog.i("FileAssistantMgrNDL", 1, localStringBuilder.toString());
       this.a.b();
-      this.this$0.b.remove(this.a);
+      this.this$0.c.remove(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.transfer.FileAssistantMgr.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ class TroopAssistantManager$3
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData);
+    this.a.remove(this.b);
   }
 }
 

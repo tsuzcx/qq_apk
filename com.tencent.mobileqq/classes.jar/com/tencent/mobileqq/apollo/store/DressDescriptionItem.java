@@ -4,9 +4,7 @@ public class DressDescriptionItem
   implements Comparable
 {
   public int a;
-  public String a;
-  public boolean a;
-  public int b;
+  public String b;
   public int c;
   public int d;
   public int e;
@@ -15,16 +13,18 @@ public class DressDescriptionItem
   public int h;
   public int i;
   public int j;
+  public int k;
+  public boolean l;
   
   public int compareTo(Object paramObject)
   {
     paramObject = (DressDescriptionItem)paramObject;
-    int k = this.d;
-    int m = paramObject.d;
-    if (k < m) {
+    int m = this.e;
+    int n = paramObject.e;
+    if (m < n) {
       return 1;
     }
-    if (k > m) {
+    if (m > n) {
       return -1;
     }
     return 0;
@@ -32,7 +32,7 @@ public class DressDescriptionItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.DressDescriptionItem
  * JD-Core Version:    0.7.0.1
  */

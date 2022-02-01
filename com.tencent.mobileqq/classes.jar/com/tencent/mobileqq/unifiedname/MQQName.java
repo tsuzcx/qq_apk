@@ -5,28 +5,28 @@ import com.tencent.mobileqq.util.Utils;
 public class MQQName
 {
   public int a;
-  public String a;
+  public String b;
   
   public MQQName() {}
   
   public MQQName(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public void a(MQQName paramMQQName)
   {
     if (paramMQQName != null)
     {
-      this.jdField_a_of_type_Int = paramMQQName.jdField_a_of_type_Int;
-      this.jdField_a_of_type_JavaLangString = paramMQQName.jdField_a_of_type_JavaLangString;
+      this.a = paramMQQName.a;
+      this.b = paramMQQName.b;
     }
   }
   
   public Object clone()
   {
-    return new MQQName(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    return new MQQName(this.a, this.b);
   }
   
   public boolean equals(Object paramObject)
@@ -34,7 +34,7 @@ public class MQQName
     if ((paramObject instanceof MQQName))
     {
       paramObject = (MQQName)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (Utils.a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString))) {
+      if ((paramObject.a == this.a) && (Utils.a(paramObject.b, this.b))) {
         return true;
       }
     }
@@ -43,7 +43,7 @@ public class MQQName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedname.MQQName
  * JD-Core Version:    0.7.0.1
  */

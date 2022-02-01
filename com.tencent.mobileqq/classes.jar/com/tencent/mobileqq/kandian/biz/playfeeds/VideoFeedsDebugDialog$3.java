@@ -11,8 +11,8 @@ class VideoFeedsDebugDialog$3
 {
   public void onClick(View paramView)
   {
-    boolean bool = ReadInJoyHelper.j(ReadInJoyUtils.a());
-    ReadInJoyHelper.i(ReadInJoyUtils.a(), bool ^ true);
+    boolean bool = ReadInJoyHelper.o(ReadInJoyUtils.b());
+    ReadInJoyHelper.i(ReadInJoyUtils.b(), bool ^ true);
     Button localButton = (Button)paramView;
     String str;
     if (!bool) {
@@ -26,7 +26,7 @@ class VideoFeedsDebugDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsDebugDialog.3
  * JD-Core Version:    0.7.0.1
  */

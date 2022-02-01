@@ -44,7 +44,6 @@ public class TXCFLVDownloader
   private long mDownloadedSize = 0L;
   private long mFLVParser = 0L;
   private Handler mFlvHandler = null;
-  private HandlerThread mFlvThread = null;
   private boolean mHandleDataInJava = false;
   private boolean mHasReceivedFirstAudio = false;
   private boolean mHasReceivedFirstVideo = false;
@@ -67,7 +66,7 @@ public class TXCFLVDownloader
     paramContext = new StringBuilder();
     paramContext.append("new flv download ");
     paramContext.append(this);
-    TXCLog.i("network.TXCFLVDownloader", paramContext.toString());
+    apiLog(paramContext.toString());
   }
   
   public TXCFLVDownloader(Context paramContext, TXCFLVDownloader paramTXCFLVDownloader)
@@ -81,7 +80,49 @@ public class TXCFLVDownloader
     paramContext = new StringBuilder();
     paramContext.append("new multi flv download ");
     paramContext.append(this);
-    TXCLog.i("network.TXCFLVDownloader", paramContext.toString());
+    apiLog(paramContext.toString());
+  }
+  
+  private void apiError(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCFLVDownloader(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.e("network.TXCFLVDownloader", paramString.toString());
+  }
+  
+  private void apiError(String paramString, Throwable paramThrowable)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCFLVDownloader(");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.e("network.TXCFLVDownloader", paramString.toString(), paramThrowable);
+  }
+  
+  private void apiLog(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    paramString = new StringBuilder();
+    paramString.append("TXCFLVDownloader (");
+    paramString.append(hashCode());
+    paramString.append(") ");
+    paramString.append(str);
+    TXCLog.i("network.TXCFLVDownloader", paramString.toString());
   }
   
   private void connect()
@@ -97,7 +138,7 @@ public class TXCFLVDownloader
     ((StringBuilder)localObject1).append(hashCode());
     ((StringBuilder)localObject1).append(" url:");
     ((StringBuilder)localObject1).append(this.mPlayUrl);
-    TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject1).toString());
+    apiLog(((StringBuilder)localObject1).toString());
     long l1 = System.currentTimeMillis();
     this.mConnection = ((HttpURLConnection)new URL(this.mPlayUrl).openConnection());
     this.mStats.dnsTS = TXCTimeUtil.getTimeTick();
@@ -105,7 +146,6 @@ public class TXCFLVDownloader
     this.mConnection.setReadTimeout(8000);
     this.mConnection.setRequestProperty("Accept-Encoding", "identity");
     this.mConnection.setInstanceFollowRedirects(true);
-    Object localObject2;
     if (this.mHeaders != null)
     {
       localObject1 = this.mHeaders.entrySet().iterator();
@@ -127,18 +167,23 @@ public class TXCFLVDownloader
     this.mContentLength = this.mConnection.getContentLength();
     this.mDownloadedSize = 0L;
     this.mStats.serverIP = InetAddress.getByName(this.mConnection.getURL().getHost()).getHostAddress();
-    long l2 = System.currentTimeMillis();
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[FirstFramePath][Network] TXCFLVDownloader: connect server success. instance:");
-    ((StringBuilder)localObject1).append(hashCode());
-    ((StringBuilder)localObject1).append(" ip:");
+    ((StringBuilder)localObject1).append("connect server success,ServerIp:");
     ((StringBuilder)localObject1).append(this.mStats.serverIP);
-    ((StringBuilder)localObject1).append(" cost:");
-    ((StringBuilder)localObject1).append(l2 - l1);
-    ((StringBuilder)localObject1).append(" rspCode:");
-    ((StringBuilder)localObject1).append(this.mStats.errorCode);
-    TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject1).toString());
-    sendNotifyEvent(2001);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    apiLog((String)localObject1);
+    long l2 = System.currentTimeMillis();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[FirstFramePath][Network] TXCFLVDownloader: connect server success. instance:");
+    ((StringBuilder)localObject2).append(hashCode());
+    ((StringBuilder)localObject2).append(" ip:");
+    ((StringBuilder)localObject2).append(this.mStats.serverIP);
+    ((StringBuilder)localObject2).append(" cost:");
+    ((StringBuilder)localObject2).append(l2 - l1);
+    ((StringBuilder)localObject2).append(" rspCode:");
+    ((StringBuilder)localObject2).append(this.mStats.errorCode);
+    apiLog(((StringBuilder)localObject2).toString());
+    sendNotifyEvent(2001, (String)localObject1);
     localObject1 = this.mConnection.getHeaderField("X-Tlive-SpanId");
     this.mStats.flvSessionKey = ((String)localObject1);
     if (!TextUtils.isEmpty(this.mFlvSessionKey))
@@ -149,7 +194,7 @@ public class TXCFLVDownloader
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("receive flvSessionKey ");
         ((StringBuilder)localObject2).append((String)localObject1);
-        TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject2).toString());
+        apiLog(((StringBuilder)localObject2).toString());
         sendNotifyEvent(2031, (String)localObject1);
       }
     }
@@ -157,7 +202,7 @@ public class TXCFLVDownloader
   
   private void disconnect()
   {
-    TXCLog.i("network.TXCFLVDownloader", "[Network]FLVDownloader disconnect.");
+    apiLog("[Network]FLVDownloader disconnect.");
     Object localObject = this.mConnection;
     if (localObject != null)
     {
@@ -197,7 +242,7 @@ public class TXCFLVDownloader
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[FirstFramePath][Network][Audio] TXCFlvDownloader: recv first audio frame. instance:");
       localStringBuilder.append(hashCode());
-      TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
+      apiLog(localStringBuilder.toString());
     }
   }
   
@@ -210,7 +255,7 @@ public class TXCFLVDownloader
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[FirstFramePath][Network][Video] TXCFlvDownloader: recv first video frame. instance:");
       localStringBuilder.append(hashCode());
-      TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
+      apiLog(localStringBuilder.toString());
     }
   }
   
@@ -255,34 +300,32 @@ public class TXCFLVDownloader
       connect();
       if (this.mFLVParser == 0L)
       {
-        localObject = this.mRefFLVDownloader;
+        localObject1 = this.mRefFLVDownloader;
         long l;
-        if (localObject != null)
+        if (localObject1 != null)
         {
-          localObject = (TXCFLVDownloader)((WeakReference)localObject).get();
-          if (localObject != null)
+          localObject1 = (TXCFLVDownloader)((WeakReference)localObject1).get();
+          if (localObject1 != null)
           {
-            StringBuilder localStringBuilder;
-            if (((TXCFLVDownloader)localObject).mIsRunning)
+            if (((TXCFLVDownloader)localObject1).mIsRunning)
             {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[Network]init flv parser with old downloader:");
-              localStringBuilder.append(localObject.hashCode());
-              TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
-              ((TXCFLVDownloader)localObject).mStopJitter = false;
-              l = ((TXCFLVDownloader)localObject).mFLVParser;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[Network]init flv parser with old downloader:");
+              ((StringBuilder)localObject2).append(localObject1.hashCode());
+              apiLog(((StringBuilder)localObject2).toString());
+              ((TXCFLVDownloader)localObject1).mStopJitter = false;
+              l = ((TXCFLVDownloader)localObject1).mFLVParser;
             }
             else
             {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("[Network]old downloader:");
-              localStringBuilder.append(localObject.hashCode());
-              localStringBuilder.append(" isn't running now. just create new parser.");
-              TXCLog.e("network.TXCFLVDownloader", localStringBuilder.toString());
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[Network]old downloader:");
+              ((StringBuilder)localObject2).append(localObject1.hashCode());
+              ((StringBuilder)localObject2).append(" isn't running now. just create new parser.");
+              apiError(((StringBuilder)localObject2).toString());
             }
           }
-          else
-          {
+          else {
             l = 0L;
           }
           this.mRefFLVDownloader = null;
@@ -293,52 +336,61 @@ public class TXCFLVDownloader
         }
         if (l != 0L)
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[Network]init flv parser with reference parse:");
-          ((StringBuilder)localObject).append(l);
-          TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject).toString());
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[Network]init flv parser with reference parse:");
+          ((StringBuilder)localObject1).append(l);
+          apiLog(((StringBuilder)localObject1).toString());
           this.mFLVParser = nativeInitFlvHanderByRef(l);
         }
         else
         {
-          TXCLog.i("network.TXCFLVDownloader", "[Network]init flv parser.");
+          apiLog("[Network]init flv parser.");
           this.mFLVParser = nativeInitFlvHander(this.mUserID, 0, this.mEnableMessage, this.mEnableMetaData);
         }
       }
-      Object localObject = this.mFlvHandler;
-      if (localObject != null) {
-        ((Handler)localObject).sendEmptyMessage(101);
+      Object localObject1 = this.mFlvHandler;
+      if (localObject1 != null) {
+        ((Handler)localObject1).sendEmptyMessage(101);
       }
       return;
     }
     catch (Error localError)
     {
-      TXCLog.e("network.TXCFLVDownloader", "[Network]error, reconnect");
+      apiError("[Network]error, reconnect");
+      localObject2 = this.mStats;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localError.toString();
       localError.printStackTrace();
       postReconnectMsg();
       return;
     }
     catch (Exception localException)
     {
-      TXCLog.e("network.TXCFLVDownloader", "[Network]exception, reconnect");
+      apiError("[Network]exception, reconnect");
+      localObject2 = this.mStats;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localException.toString();
       localException.printStackTrace();
       postReconnectMsg();
       return;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      TXCLog.e("network.TXCFLVDownloader", "[Network]file not found, reconnect");
+      apiError("[Network]file not found, reconnect");
+      localObject2 = this.mStats;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localFileNotFoundException.toString();
       localFileNotFoundException.printStackTrace();
-      postReconnectMsg();
-      return;
-      TXCLog.e("network.TXCFLVDownloader", "[Network]socket timeout, reconnect");
       postReconnectMsg();
       return;
     }
     catch (SocketTimeoutException localSocketTimeoutException)
     {
-      label300:
-      break label300;
+      apiError("[Network]socket timeout, reconnect");
+      Object localObject2 = this.mStats;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+      ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localSocketTimeoutException.toString();
+      postReconnectMsg();
     }
   }
   
@@ -350,7 +402,7 @@ public class TXCFLVDownloader
     }
     catch (Exception localException)
     {
-      TXCLog.e("network.TXCFLVDownloader", "disconnect failed.", localException);
+      apiError("disconnect failed.", localException);
     }
     long l = this.mFLVParser;
     if (l != 0L)
@@ -370,7 +422,7 @@ public class TXCFLVDownloader
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ignore processMsgReconnect when start multi stream switch");
     localStringBuilder.append(this);
-    TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
+    apiLog(localStringBuilder.toString());
     if (this.mRestartListener != null) {
       this.mRestartListener.onOldStreamStop();
     }
@@ -378,116 +430,138 @@ public class TXCFLVDownloader
   
   private void processMsgRecvData()
   {
-    Object localObject = this.mInputStream;
-    if (localObject != null) {}
-    try
-    {
-      byte[] arrayOfByte = this.mPacketBytes;
-      int i = 0;
-      int j = ((InputStream)localObject).read(arrayOfByte, 0, 1388);
-      if (j > 0)
+    Object localObject1 = this.mInputStream;
+    if (localObject1 != null) {
+      try
       {
-        long l1 = this.mDownloadedSize;
-        long l2 = j;
-        this.mDownloadedSize = (l1 + l2);
-        if (!this.mRecvData)
+        localObject2 = this.mPacketBytes;
+        int i = 0;
+        int j = ((InputStream)localObject1).read((byte[])localObject2, 0, 1388);
+        if (j > 0)
         {
-          this.mRecvData = true;
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[FirstFramePath][Network] TXCFLVDownloader: recv first data packet. instance:");
-          ((StringBuilder)localObject).append(hashCode());
-          TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject).toString());
+          long l1 = this.mDownloadedSize;
+          long l2 = j;
+          this.mDownloadedSize = (l1 + l2);
+          if (!this.mRecvData)
+          {
+            this.mRecvData = true;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[FirstFramePath][Network] TXCFLVDownloader: recv first data packet. instance:");
+            ((StringBuilder)localObject1).append(hashCode());
+            apiLog(((StringBuilder)localObject1).toString());
+          }
+          if (this.mFLVParser != 0L)
+          {
+            localObject1 = this.mStats;
+            ((TXCStreamDownloader.DownloadStats)localObject1).beforeParseVideoBytes += l2;
+            i = nativeParseData(this.mFLVParser, this.mPacketBytes, j);
+            this.mStats.afterParseVideoBytes = nativeGetVideoBytes(this.mFLVParser);
+            this.mStats.afterParseAudioBytes = nativeGetAudioBytes(this.mFLVParser);
+            this.mStats.videoGop = nativeGetVideoGop(this.mFLVParser);
+          }
+          if (i > 1048576)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[Network]flv play parse frame: ");
+            ((StringBuilder)localObject1).append(i);
+            ((StringBuilder)localObject1).append(" > ");
+            ((StringBuilder)localObject1).append(1048576);
+            ((StringBuilder)localObject1).append(",start reconnect");
+            apiError(((StringBuilder)localObject1).toString());
+            postReconnectMsg();
+          }
         }
-        if (this.mFLVParser != 0L)
+        else if (j < 0)
         {
-          localObject = this.mStats;
-          ((TXCStreamDownloader.DownloadStats)localObject).beforeParseVideoBytes += l2;
-          i = nativeParseData(this.mFLVParser, this.mPacketBytes, j);
-          this.mStats.afterParseVideoBytes = nativeGetVideoBytes(this.mFLVParser);
-          this.mStats.afterParseAudioBytes = nativeGetAudioBytes(this.mFLVParser);
-          this.mStats.videoGop = nativeGetVideoGop(this.mFLVParser);
-        }
-        if (i > 1048576)
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("[Network]flv play parse frame: ");
-          ((StringBuilder)localObject).append(i);
-          ((StringBuilder)localObject).append(" > ");
-          ((StringBuilder)localObject).append(1048576);
-          ((StringBuilder)localObject).append(",start reconnect");
-          TXCLog.e("network.TXCFLVDownloader", ((StringBuilder)localObject).toString());
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("[Network]http read: ");
+          ((StringBuilder)localObject1).append(j);
+          ((StringBuilder)localObject1).append(" < 0, start reconnect");
+          apiError(((StringBuilder)localObject1).toString());
           postReconnectMsg();
+          return;
+        }
+        if (this.mFlvHandler != null)
+        {
+          this.mFlvHandler.sendEmptyMessage(101);
+          return;
         }
       }
-      else if (j < 0)
+      catch (Error localError)
       {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("[Network]http read: ");
-        ((StringBuilder)localObject).append(j);
-        ((StringBuilder)localObject).append(" < 0, start reconnect");
-        TXCLog.e("network.TXCFLVDownloader", ((StringBuilder)localObject).toString());
+        apiError("[Network]error");
+        localObject2 = this.mStats;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localError.toString();
+        localError.printStackTrace();
+        this.mInputStream = null;
+        this.mConnection = null;
+        return;
+      }
+      catch (Exception localException)
+      {
+        apiError("[Network]exception");
+        localObject2 = this.mStats;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localException.toString();
+        localException.printStackTrace();
+        this.mInputStream = null;
+        this.mConnection = null;
+        return;
+      }
+      catch (EOFException localEOFException)
+      {
+        apiError("[Network]eof exception start reconnect");
+        localObject2 = this.mStats;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localEOFException.toString();
         postReconnectMsg();
         return;
       }
-      if (this.mFlvHandler != null)
+      catch (SSLException localSSLException)
       {
-        this.mFlvHandler.sendEmptyMessage(101);
+        apiError("[Network]ssl exception start reconnect");
+        localObject2 = this.mStats;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localSSLException.toString();
+        postReconnectMsg();
         return;
       }
-    }
-    catch (Error localError)
-    {
-      TXCLog.e("network.TXCFLVDownloader", "[Network]error");
-      localError.printStackTrace();
-      this.mInputStream = null;
-      this.mConnection = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      TXCLog.e("network.TXCFLVDownloader", "[Network]exception");
-      localException.printStackTrace();
-      this.mInputStream = null;
-      this.mConnection = null;
-      return;
-      TXCLog.e("network.TXCFLVDownloader", "[Network]eof exception start reconnect");
-      postReconnectMsg();
-      return;
-      TXCLog.e("network.TXCFLVDownloader", "[Network]ssl exception start reconnect");
-      postReconnectMsg();
-      return;
-      TXCLog.e("network.TXCFLVDownloader", "[Network]socket exception start reconnect");
-      postReconnectMsg();
-      return;
-      TXCLog.e("network.TXCFLVDownloader", "[Network]socket timeout start reconnect");
-      postReconnectMsg();
-      return;
-    }
-    catch (SocketTimeoutException localSocketTimeoutException)
-    {
-      break label426;
-    }
-    catch (SocketException localSocketException)
-    {
-      break label413;
-    }
-    catch (SSLException localSSLException)
-    {
-      break label400;
-    }
-    catch (EOFException localEOFException)
-    {
-      label387:
-      label400:
-      label413:
-      label426:
-      break label387;
+      catch (SocketException localSocketException)
+      {
+        apiError("[Network]socket exception start reconnect");
+        localObject2 = this.mStats;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localSocketException.toString();
+        postReconnectMsg();
+        return;
+      }
+      catch (SocketTimeoutException localSocketTimeoutException)
+      {
+        apiError("[Network]socket timeout start reconnect");
+        Object localObject2 = this.mStats;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorCode = -1;
+        ((TXCStreamDownloader.DownloadStats)localObject2).errorInfo = localSocketTimeoutException.toString();
+        postReconnectMsg();
+      }
     }
   }
   
   private void reconnect()
   {
     processMsgDisConnect();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ServerIp:");
+    ((StringBuilder)localObject).append(this.mStats.serverIP);
+    ((StringBuilder)localObject).append(",errCode:");
+    ((StringBuilder)localObject).append(this.mStats.errorCode);
+    ((StringBuilder)localObject).append(",errInfo:");
+    ((StringBuilder)localObject).append(this.mStats.errorInfo);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reconnect:");
+    localStringBuilder.append((String)localObject);
+    apiLog(localStringBuilder.toString());
     if (this.connectRetryTimes < this.connectRetryLimit)
     {
       this.connectRetryTimes += 1;
@@ -496,33 +570,31 @@ public class TXCFLVDownloader
       localStringBuilder.append(this.connectRetryTimes);
       localStringBuilder.append(" limit:");
       localStringBuilder.append(this.connectRetryLimit);
-      TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
+      apiLog(localStringBuilder.toString());
       processMsgConnect();
-      sendNotifyEvent(2103);
+      sendNotifyEvent(2103, (String)localObject);
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder = new StringBuilder();
     localStringBuilder.append("[Network] reconnect fail. all times retried. limit:");
     localStringBuilder.append(this.connectRetryLimit);
-    TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
-    sendNotifyEvent(-2301);
+    apiLog(localStringBuilder.toString());
+    sendNotifyEvent(-2301, (String)localObject);
   }
   
   private void startInternal()
   {
-    if (this.mFlvThread == null)
+    if (this.mFlvHandler == null)
     {
-      this.mFlvThread = new HandlerThread("FlvThread");
-      this.mFlvThread.start();
+      HandlerThread localHandlerThread = new HandlerThread("FlvThread");
+      localHandlerThread.start();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[Network] flv downloader thread id:");
-      localStringBuilder.append(this.mFlvThread.getId());
+      localStringBuilder.append(localHandlerThread.getId());
       localStringBuilder.append(" instance:");
       localStringBuilder.append(hashCode());
-      TXCLog.i("network.TXCFLVDownloader", localStringBuilder.toString());
-    }
-    if (this.mFlvHandler == null) {
-      this.mFlvHandler = new TXCFLVDownloader.1(this, this.mFlvThread.getLooper());
+      apiLog(localStringBuilder.toString());
+      this.mFlvHandler = new TXCFLVDownloader.1(this, localHandlerThread.getLooper());
     }
     postConnectMsg();
   }
@@ -576,6 +648,11 @@ public class TXCFLVDownloader
     return null;
   }
   
+  public boolean hasRecvAVData()
+  {
+    return (this.mHasReceivedFirstAudio) || (this.mHasReceivedFirstVideo);
+  }
+  
   public native void nativePushAudioFrame(long paramLong1, byte[] paramArrayOfByte, int paramInt1, long paramLong2, int paramInt2);
   
   public native void nativePushVideoFrame(long paramLong1, byte[] paramArrayOfByte, int paramInt1, long paramLong2, long paramLong3, int paramInt2);
@@ -589,7 +666,7 @@ public class TXCFLVDownloader
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[FirstFramePath][Network][Audio] TXCFlvDownloader: recv first audio frame. instance:");
       ((StringBuilder)localObject).append(hashCode());
-      TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject).toString());
+      apiLog(((StringBuilder)localObject).toString());
     }
     Object localObject = this.mStats;
     ((TXCStreamDownloader.DownloadStats)localObject).afterParseAudioBytes += paramArrayOfByte.length;
@@ -605,7 +682,7 @@ public class TXCFLVDownloader
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[FirstFramePath][Network][Video] TXCFlvDownloader: recv first video frame. instance:");
       ((StringBuilder)localObject).append(hashCode());
-      TXCLog.i("network.TXCFLVDownloader", ((StringBuilder)localObject).toString());
+      apiLog(((StringBuilder)localObject).toString());
     }
     Object localObject = this.mStats;
     ((TXCStreamDownloader.DownloadStats)localObject).afterParseVideoBytes += paramArrayOfByte.length;
@@ -634,7 +711,7 @@ public class TXCFLVDownloader
       paramVector = new StringBuilder();
       paramVector.append("start pull with url ");
       paramVector.append(this.mPlayUrl);
-      TXCLog.i("network.TXCFLVDownloader", paramVector.toString());
+      apiLog(paramVector.toString());
       startInternal();
     }
   }
@@ -645,7 +722,7 @@ public class TXCFLVDownloader
       return;
     }
     this.mIsRunning = false;
-    TXCLog.i("network.TXCFLVDownloader", "stop pull");
+    apiLog("stop pull");
     try
     {
       if (this.mFlvHandler != null)
@@ -659,13 +736,13 @@ public class TXCFLVDownloader
     }
     catch (Exception localException)
     {
-      TXCLog.e("network.TXCFLVDownloader", "stop download failed.", localException);
+      apiError("stop download failed.", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXCFLVDownloader
  * JD-Core Version:    0.7.0.1
  */

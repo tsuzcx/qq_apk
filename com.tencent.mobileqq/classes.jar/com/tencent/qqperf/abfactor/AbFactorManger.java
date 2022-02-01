@@ -13,7 +13,50 @@ public class AbFactorManger
 {
   public static Class<? extends AbType>[] a = { AbFactorAIODynamicBg.class, AbFactorProfileCardBg.class };
   
-  public static int a(String paramString, HashMap<String, String> paramHashMap)
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {
+      return;
+    }
+    paramHashMap.put("deviceLv", String.valueOf(DeviceInfoUtils.getPerfLevel()));
+    paramString = AbProxy.getAbFactorByQapmPlugin(b(paramString, paramHashMap));
+    if ((paramString != null) && (paramString.length() > 0)) {
+      paramHashMap.put("abfactor", paramString);
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject)
+  {
+    String str = "newplugin";
+    if (paramJSONObject == null) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (!paramJSONObject.has("newplugin")) {
+          break label62;
+        }
+        int i = paramJSONObject.getInt(str);
+        str = AbProxy.getAbFactorByQapmPlugin(i);
+        if ((str != null) && (str.length() > 0))
+        {
+          paramJSONObject.put("abfactor", str);
+          return;
+        }
+      }
+      catch (Exception paramJSONObject)
+      {
+        QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
+      }
+      return;
+      label62:
+      str = "plugin";
+    }
+  }
+  
+  public static int b(String paramString, HashMap<String, String> paramHashMap)
   {
     if (paramString != null)
     {
@@ -50,53 +93,10 @@ public class AbFactorManger
     }
     return -1;
   }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    if (paramHashMap == null) {
-      return;
-    }
-    paramHashMap.put("deviceLv", String.valueOf(DeviceInfoUtils.a()));
-    paramString = AbProxy.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
-    if ((paramString != null) && (paramString.length() > 0)) {
-      paramHashMap.put("abfactor", paramString);
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    String str = "newplugin";
-    if (paramJSONObject == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (!paramJSONObject.has("newplugin")) {
-          break label62;
-        }
-        int i = paramJSONObject.getInt(str);
-        str = AbProxy.getAbFactorByQapmPlugin(i);
-        if ((str != null) && (str.length() > 0))
-        {
-          paramJSONObject.put("abfactor", str);
-          return;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
-      }
-      return;
-      label62:
-      str = "plugin";
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.abfactor.AbFactorManger
  * JD-Core Version:    0.7.0.1
  */

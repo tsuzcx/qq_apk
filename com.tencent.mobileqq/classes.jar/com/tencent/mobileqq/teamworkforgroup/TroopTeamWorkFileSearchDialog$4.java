@@ -23,13 +23,13 @@ class TroopTeamWorkFileSearchDialog$4
     localBundle.putString("key_team_work_rul", localPadInfo.pad_url);
     localBundle.putInt("key_team_work_pad_list_type", localPadInfo.type_list);
     localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    ((ITeamWorkDocEditBrowserProxy)QRoute.api(ITeamWorkDocEditBrowserProxy.class)).openTeamWorkDocEditBrowserActivity(this.a.a, localBundle, true);
+    ((ITeamWorkDocEditBrowserProxy)QRoute.api(ITeamWorkDocEditBrowserProxy.class)).openTeamWorkDocEditBrowserActivity(this.a.l, localBundle, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TroopTeamWorkFileSearchDialog.4
  * JD-Core Version:    0.7.0.1
  */

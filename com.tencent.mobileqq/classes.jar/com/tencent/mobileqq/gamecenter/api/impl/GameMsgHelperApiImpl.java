@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.gamecenter.api.impl;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,10 +13,12 @@ import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.ITempApi;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameCenterSessionInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.ui.ProfileGuideDialog;
 import com.tencent.mobileqq.gamecenter.utils.GameMsgUtil;
 import com.tencent.mobileqq.qroute.QRoute;
+import mqq.app.AppRuntime;
 
 public class GameMsgHelperApiImpl
   implements IGameMsgHelperApi
@@ -25,14 +28,22 @@ public class GameMsgHelperApiImpl
     return GameMsgUtil.a(paramMessageRecord);
   }
   
-  public void delGameSession(String paramString)
+  public Dialog createProfileGuideDailg(Context paramContext, String paramString)
   {
-    GameMsgUtil.a(paramString);
+    if (paramContext == null) {
+      return null;
+    }
+    return new ProfileGuideDialog(paramContext).a(paramString);
   }
   
-  public void enterGameMsgChatPie(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public void delGameSession(String paramString)
   {
-    GameMsgUtil.a(paramContext, paramString1, paramString2, paramString3);
+    GameMsgUtil.d(paramString);
+  }
+  
+  public void enterGameMsgChatPie(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    GameMsgUtil.a(paramContext, paramString1, paramString2, paramString3, paramInt);
   }
   
   public void enterGameMsgChatPie(AppInterface paramAppInterface, Context paramContext, String paramString)
@@ -40,9 +51,19 @@ public class GameMsgHelperApiImpl
     GameMsgUtil.a(paramAppInterface, paramContext, paramString);
   }
   
+  public void enterGameMsgChatPie(AppInterface paramAppInterface, Context paramContext, String paramString, int paramInt)
+  {
+    GameMsgUtil.a(paramAppInterface, paramContext, paramString, paramInt);
+  }
+  
   public boolean getAIOGameEntryShown(String paramString)
   {
-    return GameMsgUtil.b(paramString);
+    return GameMsgUtil.c(paramString);
+  }
+  
+  public Drawable getGameMsgAvatarDrawable(AppInterface paramAppInterface, String paramString)
+  {
+    return GameMsgUtil.b(paramAppInterface, paramString);
   }
   
   public Bitmap getGameRoleBitmap(Message paramMessage, AppInterface paramAppInterface)
@@ -75,19 +96,19 @@ public class GameMsgHelperApiImpl
     return ((ITempApi)QRoute.api(ITempApi.class)).getIntentFromMsg(paramContext, paramMessage, paramAppInterface);
   }
   
-  public MessageRecord getLastGameMsg(AppInterface paramAppInterface, String paramString)
+  public MessageRecord getLastGameMsg(AppRuntime paramAppRuntime, String paramString)
   {
-    return GameMsgUtil.a(paramAppInterface, paramString);
+    return GameMsgUtil.a(paramAppRuntime, paramString);
   }
   
   public long getLastGameSessionClicked(String paramString)
   {
-    return GameMsgUtil.a(paramString);
+    return GameMsgUtil.b(paramString);
   }
   
   public long getLastTopReqMsgTime(AppInterface paramAppInterface)
   {
-    return GameMsgUtil.a(paramAppInterface);
+    return GameMsgUtil.c(paramAppInterface);
   }
   
   public CharSequence getMsgDescp(AppInterface paramAppInterface, RecentBaseData paramRecentBaseData, CharSequence paramCharSequence)
@@ -107,7 +128,7 @@ public class GameMsgHelperApiImpl
   
   public String getTimeString(long paramLong)
   {
-    return GameMsgUtil.a(paramLong);
+    return GameMsgUtil.b(paramLong);
   }
   
   public String getUnreadStr(int paramInt)
@@ -132,7 +153,7 @@ public class GameMsgHelperApiImpl
   
   public boolean isShowMsg(AppInterface paramAppInterface, String paramString)
   {
-    return GameMsgUtil.a(paramAppInterface, paramString);
+    return GameMsgUtil.c(paramAppInterface, paramString);
   }
   
   public boolean isToday(long paramLong)
@@ -165,14 +186,14 @@ public class GameMsgHelperApiImpl
     GameMsgUtil.a(paramAppInterface, paramString, paramInt1, paramInt2);
   }
   
-  public void reportClickItemInMsgBox(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString)
+  public void reportClickItemInGameMsgBox883(AppInterface paramAppInterface, String paramString)
   {
-    GameMsgUtil.a(paramAppInterface, paramMessageRecord, paramString);
+    GameMsgUtil.d(paramAppInterface, paramString);
   }
   
-  public void reportClickMsgBox(AppInterface paramAppInterface)
+  public void reportClickMsgBoxEntry883(AppInterface paramAppInterface)
   {
-    GameMsgUtil.a(paramAppInterface);
+    GameMsgUtil.d(paramAppInterface);
   }
   
   public void reportForGameMsg(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
@@ -187,7 +208,7 @@ public class GameMsgHelperApiImpl
   
   public void reportForGameMsg(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    GameMsgUtil.b(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
+    GameMsgUtil.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
   }
   
   public void reportForGameMsg(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13, String paramString14)
@@ -207,17 +228,12 @@ public class GameMsgHelperApiImpl
   
   public void reportForGameMsg865WithTianJi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    GameMsgUtil.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
+    GameMsgUtil.b(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12, paramString13);
   }
   
-  public void reportGameMsgExplosureInBox(AppInterface paramAppInterface, int paramInt, String paramString)
+  public void reportGameMsgBoxExplosure883(AppInterface paramAppInterface, int paramInt, Message paramMessage)
   {
-    GameMsgUtil.a(paramAppInterface, paramInt, paramString);
-  }
-  
-  public void reportMsgBoxExposure(AppInterface paramAppInterface, Object paramObject)
-  {
-    GameMsgUtil.a(paramAppInterface, paramObject);
+    GameMsgUtil.a(paramAppInterface, paramInt, paramMessage);
   }
   
   public void setAIOGameEntryShown(String paramString, boolean paramBoolean)
@@ -247,7 +263,7 @@ public class GameMsgHelperApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.api.impl.GameMsgHelperApiImpl
  * JD-Core Version:    0.7.0.1
  */

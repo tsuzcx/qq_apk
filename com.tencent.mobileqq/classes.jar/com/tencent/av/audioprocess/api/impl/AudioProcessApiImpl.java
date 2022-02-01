@@ -72,78 +72,78 @@ public class AudioProcessApiImpl
     int i;
     int j;
     int k;
-    if ((paramArrayOfByte != null) && (paramFileInfo != null) && (paramFileInfo.jdField_a_of_type_AndroidMediaMediaExtractor != null))
+    if ((paramArrayOfByte != null) && (paramFileInfo != null) && (paramFileInfo.j != null))
     {
-      if (paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec == null) {
+      if (paramFileInfo.a == null) {
         return 1;
       }
       int m;
-      if (paramFileInfo.jdField_a_of_type_ArrayOfByte != null)
+      if (paramFileInfo.m != null)
       {
-        if (paramFileInfo.e + paramArrayOfByte.length * paramFileInfo.jdField_a_of_type_Int <= paramFileInfo.jdField_a_of_type_ArrayOfByte.length)
+        if (paramFileInfo.l + paramArrayOfByte.length * paramFileInfo.b <= paramFileInfo.m.length)
         {
-          if (paramFileInfo.jdField_a_of_type_Int == 1)
+          if (paramFileInfo.b == 1)
           {
-            System.arraycopy(paramFileInfo.jdField_a_of_type_ArrayOfByte, paramFileInfo.e, paramArrayOfByte, 0, paramArrayOfByte.length);
+            System.arraycopy(paramFileInfo.m, paramFileInfo.l, paramArrayOfByte, 0, paramArrayOfByte.length);
           }
           else
           {
             i = 0;
             while (i < paramArrayOfByte.length)
             {
-              localObject = paramFileInfo.jdField_a_of_type_ArrayOfByte;
-              j = paramFileInfo.e;
+              localObject = paramFileInfo.m;
+              j = paramFileInfo.l;
               k = i * 2;
               paramArrayOfByte[i] = localObject[(j + k)];
-              paramArrayOfByte[(i + 1)] = paramFileInfo.jdField_a_of_type_ArrayOfByte[(paramFileInfo.e + k + 1)];
+              paramArrayOfByte[(i + 1)] = paramFileInfo.m[(paramFileInfo.l + k + 1)];
               i += 2;
             }
           }
-          paramFileInfo.e += paramArrayOfByte.length * paramFileInfo.jdField_a_of_type_Int;
+          paramFileInfo.l += paramArrayOfByte.length * paramFileInfo.b;
           return 0;
         }
-        if (paramFileInfo.e < paramFileInfo.jdField_a_of_type_ArrayOfByte.length)
+        if (paramFileInfo.l < paramFileInfo.m.length)
         {
-          j = (paramFileInfo.jdField_a_of_type_ArrayOfByte.length - paramFileInfo.e) / paramFileInfo.jdField_a_of_type_Int;
-          if (paramFileInfo.jdField_a_of_type_Int == 1)
+          j = (paramFileInfo.m.length - paramFileInfo.l) / paramFileInfo.b;
+          if (paramFileInfo.b == 1)
           {
-            System.arraycopy(paramFileInfo.jdField_a_of_type_ArrayOfByte, paramFileInfo.e, paramArrayOfByte, 0, j);
+            System.arraycopy(paramFileInfo.m, paramFileInfo.l, paramArrayOfByte, 0, j);
           }
           else
           {
             i = 0;
             while (i < j)
             {
-              localObject = paramFileInfo.jdField_a_of_type_ArrayOfByte;
-              k = paramFileInfo.e;
+              localObject = paramFileInfo.m;
+              k = paramFileInfo.l;
               m = i * 2;
               paramArrayOfByte[i] = localObject[(k + m)];
-              paramArrayOfByte[(i + 1)] = paramFileInfo.jdField_a_of_type_ArrayOfByte[(paramFileInfo.e + m + 1)];
+              paramArrayOfByte[(i + 1)] = paramFileInfo.m[(paramFileInfo.l + m + 1)];
               i += 2;
             }
           }
-          paramFileInfo.e += paramFileInfo.jdField_a_of_type_Int * j;
+          paramFileInfo.l += paramFileInfo.b * j;
           i = j;
           break label291;
         }
       }
       i = 0;
       label291:
-      Object localObject = paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-      j = paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+      Object localObject = paramFileInfo.a.getInputBuffers();
+      j = paramFileInfo.a.dequeueInputBuffer(10000L);
       if (j >= 0)
       {
         localObject = localObject[j];
         ((ByteBuffer)localObject).clear();
-        k = paramFileInfo.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
+        k = paramFileInfo.j.readSampleData((ByteBuffer)localObject, 0);
         if (k > 0)
         {
-          paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(j, 0, k, 0L, 0);
-          paramFileInfo.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+          paramFileInfo.a.queueInputBuffer(j, 0, k, 0L, 0);
+          paramFileInfo.j.advance();
         }
         else
         {
-          paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(j, 0, 0, 0L, 0);
+          paramFileInfo.a.queueInputBuffer(j, 0, 0, 0L, 0);
           return 2;
         }
       }
@@ -151,19 +151,19 @@ public class AudioProcessApiImpl
       {
         return 3;
       }
-      localObject = paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-      k = paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-      if ((k >= 0) && (paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size > (paramArrayOfByte.length - i) * paramFileInfo.jdField_a_of_type_Int))
+      localObject = paramFileInfo.a.getOutputBuffers();
+      k = paramFileInfo.a.dequeueOutputBuffer(paramFileInfo.k, 10000L);
+      if ((k >= 0) && (paramFileInfo.k.size > (paramArrayOfByte.length - i) * paramFileInfo.b))
       {
         localObject = localObject[k];
-        if ((paramFileInfo.jdField_a_of_type_ArrayOfByte == null) || (paramFileInfo.jdField_a_of_type_ArrayOfByte.length != paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size)) {
-          paramFileInfo.jdField_a_of_type_ArrayOfByte = new byte[paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size];
+        if ((paramFileInfo.m == null) || (paramFileInfo.m.length != paramFileInfo.k.size)) {
+          paramFileInfo.m = new byte[paramFileInfo.k.size];
         }
-        ((ByteBuffer)localObject).get(paramFileInfo.jdField_a_of_type_ArrayOfByte);
+        ((ByteBuffer)localObject).get(paramFileInfo.m);
         ((ByteBuffer)localObject).clear();
-        if (paramFileInfo.jdField_a_of_type_Int == 1)
+        if (paramFileInfo.b == 1)
         {
-          System.arraycopy(paramFileInfo.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, i, paramArrayOfByte.length - i);
+          System.arraycopy(paramFileInfo.m, 0, paramArrayOfByte, i, paramArrayOfByte.length - i);
         }
         else
         {
@@ -171,20 +171,20 @@ public class AudioProcessApiImpl
           while (j < paramArrayOfByte.length - i)
           {
             m = i + j;
-            localObject = paramFileInfo.jdField_a_of_type_ArrayOfByte;
+            localObject = paramFileInfo.m;
             int n = j * 2;
             paramArrayOfByte[m] = localObject[n];
-            paramArrayOfByte[(m + 1)] = paramFileInfo.jdField_a_of_type_ArrayOfByte[(n + 1)];
+            paramArrayOfByte[(m + 1)] = paramFileInfo.m[(n + 1)];
             j += 2;
           }
         }
-        paramFileInfo.e = ((paramArrayOfByte.length - i) * paramFileInfo.jdField_a_of_type_Int);
-        paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(k, false);
+        paramFileInfo.l = ((paramArrayOfByte.length - i) * paramFileInfo.b);
+        paramFileInfo.a.releaseOutputBuffer(k, false);
         return 0;
       }
       if (k == -2)
       {
-        paramArrayOfByte = paramFileInfo.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+        paramArrayOfByte = paramFileInfo.a.getOutputFormat();
         if (paramArrayOfByte == null) {}
       }
     }
@@ -205,12 +205,12 @@ public class AudioProcessApiImpl
     }
     catch (NullPointerException paramArrayOfByte)
     {
-      break label712;
+      break label713;
     }
     catch (ClassCastException paramArrayOfByte)
     {
       label703:
-      label712:
+      label713:
       break label703;
     }
     AVLog.a("AudioProcessApiImpl", "decodeMP3Frame failed. INFO_OUTPUT_FORMAT_CHANGED. ClassCastException.");
@@ -226,13 +226,13 @@ public class AudioProcessApiImpl
     int i = 0;
     while (i < paramList.size())
     {
-      if ((((FileInfo)paramList.get(i)).b == 1) && (((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaExtractor != null) && (((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaCodec != null))
+      if ((((FileInfo)paramList.get(i)).d == 1) && (((FileInfo)paramList.get(i)).j != null) && (((FileInfo)paramList.get(i)).a != null))
       {
         Object localObject1 = new byte[paramInt];
         int j = decodeMP3Frame((byte[])localObject1, (FileInfo)paramList.get(i));
         if (j == 0)
         {
-          scaleVolume((byte[])localObject1, ((FileInfo)paramList.get(i)).jdField_a_of_type_Float);
+          scaleVolume((byte[])localObject1, ((FileInfo)paramList.get(i)).f);
           localArrayList.add(localObject1);
         }
         else if ((j == 1) || (j == 2))
@@ -241,36 +241,36 @@ public class AudioProcessApiImpl
           ((StringBuilder)localObject1).append("getPCMDataFromMP3File failed. ret = ");
           ((StringBuilder)localObject1).append(j);
           AVLog.a("AudioProcessApiImpl", ((StringBuilder)localObject1).toString());
-          if (((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaCodec != null)
+          if (((FileInfo)paramList.get(i)).a != null)
           {
             try
             {
-              ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaCodec.stop();
-              ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaCodec.release();
+              ((FileInfo)paramList.get(i)).a.stop();
+              ((FileInfo)paramList.get(i)).a.release();
             }
             catch (IllegalStateException localIllegalStateException)
             {
               AVLog.b("AudioProcessApiImpl", "mp3Decoder stop failed.", localIllegalStateException);
             }
-            ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaCodec = null;
+            ((FileInfo)paramList.get(i)).a = null;
           }
-          if (((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaExtractor != null)
+          if (((FileInfo)paramList.get(i)).j != null)
           {
-            ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaExtractor.release();
-            ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaExtractor = null;
+            ((FileInfo)paramList.get(i)).j.release();
+            ((FileInfo)paramList.get(i)).j = null;
           }
-          if ((j != 1) && (((FileInfo)paramList.get(i)).c > 1))
+          if ((j != 1) && (((FileInfo)paramList.get(i)).e > 1))
           {
-            if (((FileInfo)paramList.get(i)).c > 1)
+            if (((FileInfo)paramList.get(i)).e > 1)
             {
               Object localObject2 = (FileInfo)paramList.get(i);
-              ((FileInfo)localObject2).c -= 1;
+              ((FileInfo)localObject2).e -= 1;
               localObject2 = new MediaExtractor();
-              DecodeInfo localDecodeInfo = startDecodeMP3((MediaExtractor)localObject2, ((FileInfo)paramList.get(i)).jdField_a_of_type_JavaLangString);
-              if ((localDecodeInfo != null) && (localDecodeInfo.jdField_a_of_type_AndroidMediaMediaCodec != null))
+              DecodeInfo localDecodeInfo = startDecodeMP3((MediaExtractor)localObject2, ((FileInfo)paramList.get(i)).c);
+              if ((localDecodeInfo != null) && (localDecodeInfo.a != null))
               {
-                ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaExtractor = ((MediaExtractor)localObject2);
-                ((FileInfo)paramList.get(i)).jdField_a_of_type_AndroidMediaMediaCodec = localDecodeInfo.jdField_a_of_type_AndroidMediaMediaCodec;
+                ((FileInfo)paramList.get(i)).j = ((MediaExtractor)localObject2);
+                ((FileInfo)paramList.get(i)).a = localDecodeInfo.a;
               }
               else
               {
@@ -301,92 +301,92 @@ public class AudioProcessApiImpl
     //   9: istore_2
     //   10: iload_2
     //   11: aload_0
-    //   12: invokeinterface 266 1 0
+    //   12: invokeinterface 269 1 0
     //   17: if_icmpge +568 -> 585
     //   20: aload_0
     //   21: iload_2
-    //   22: invokeinterface 269 2 0
+    //   22: invokeinterface 272 2 0
     //   27: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   30: getfield 271	com/tencent/av/audioprocess/FileInfo:b	I
+    //   30: getfield 275	com/tencent/av/audioprocess/FileInfo:d	I
     //   33: ifeq +6 -> 39
     //   36: goto +542 -> 578
     //   39: aload_0
     //   40: iload_2
-    //   41: invokeinterface 269 2 0
+    //   41: invokeinterface 272 2 0
     //   46: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   49: getfield 324	com/tencent/av/audioprocess/FileInfo:d	I
+    //   49: getfield 330	com/tencent/av/audioprocess/FileInfo:g	I
     //   52: iload_1
     //   53: iadd
     //   54: i2l
     //   55: aload_0
     //   56: iload_2
-    //   57: invokeinterface 269 2 0
+    //   57: invokeinterface 272 2 0
     //   62: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   65: getfield 326	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_Long	J
+    //   65: getfield 333	com/tencent/av/audioprocess/FileInfo:i	J
     //   68: lcmp
     //   69: ifle +153 -> 222
     //   72: aload_0
     //   73: iload_2
-    //   74: invokeinterface 269 2 0
+    //   74: invokeinterface 272 2 0
     //   79: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   82: getfield 301	com/tencent/av/audioprocess/FileInfo:c	I
+    //   82: getfield 306	com/tencent/av/audioprocess/FileInfo:e	I
     //   85: iconst_1
     //   86: if_icmple +6 -> 92
     //   89: goto +133 -> 222
-    //   92: new 227	java/lang/StringBuilder
+    //   92: new 231	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   96: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   99: astore 4
     //   101: aload 4
-    //   103: ldc_w 328
-    //   106: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 335
+    //   106: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: pop
     //   110: aload 4
     //   112: iload_2
-    //   113: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   116: pop
     //   117: aload 4
-    //   119: ldc_w 330
-    //   122: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: ldc_w 337
+    //   122: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: pop
     //   126: aload 4
     //   128: aload_0
     //   129: iload_2
-    //   130: invokeinterface 269 2 0
+    //   130: invokeinterface 272 2 0
     //   135: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   138: getfield 301	com/tencent/av/audioprocess/FileInfo:c	I
-    //   141: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: getfield 306	com/tencent/av/audioprocess/FileInfo:e	I
+    //   141: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   144: pop
     //   145: ldc 20
     //   147: aload 4
-    //   149: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokestatic 255	com/tencent/qav/log/AVLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   149: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: invokestatic 258	com/tencent/qav/log/AVLog:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   155: aload_0
     //   156: iload_2
-    //   157: invokeinterface 269 2 0
+    //   157: invokeinterface 272 2 0
     //   162: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   165: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   165: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   168: ifnull +410 -> 578
     //   171: aload_0
     //   172: iload_2
-    //   173: invokeinterface 269 2 0
+    //   173: invokeinterface 272 2 0
     //   178: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   181: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   184: invokevirtual 338	java/io/RandomAccessFile:close	()V
+    //   181: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   184: invokevirtual 346	java/io/RandomAccessFile:close	()V
     //   187: goto +14 -> 201
     //   190: astore_3
     //   191: goto +21 -> 212
     //   194: astore 4
     //   196: aload 4
-    //   198: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   198: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   201: aload_0
     //   202: iload_2
-    //   203: invokeinterface 316 2 0
+    //   203: invokeinterface 322 2 0
     //   208: pop
     //   209: goto +369 -> 578
     //   212: aload_0
     //   213: iload_2
-    //   214: invokeinterface 316 2 0
+    //   214: invokeinterface 322 2 0
     //   219: pop
     //   220: aload_3
     //   221: athrow
@@ -395,156 +395,156 @@ public class AudioProcessApiImpl
     //   225: astore 4
     //   227: aload 4
     //   229: iconst_0
-    //   230: invokestatic 347	java/util/Arrays:fill	([BB)V
+    //   230: invokestatic 355	java/util/Arrays:fill	([BB)V
     //   233: aload_0
     //   234: iload_2
-    //   235: invokeinterface 269 2 0
+    //   235: invokeinterface 272 2 0
     //   240: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   243: getfield 324	com/tencent/av/audioprocess/FileInfo:d	I
+    //   243: getfield 330	com/tencent/av/audioprocess/FileInfo:g	I
     //   246: iload_1
     //   247: iadd
     //   248: i2l
     //   249: aload_0
     //   250: iload_2
-    //   251: invokeinterface 269 2 0
+    //   251: invokeinterface 272 2 0
     //   256: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   259: getfield 326	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_Long	J
+    //   259: getfield 333	com/tencent/av/audioprocess/FileInfo:i	J
     //   262: lcmp
     //   263: ifle +179 -> 442
     //   266: aload_0
     //   267: iload_2
-    //   268: invokeinterface 269 2 0
+    //   268: invokeinterface 272 2 0
     //   273: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   276: astore 5
     //   278: aload 5
     //   280: aload 5
-    //   282: getfield 301	com/tencent/av/audioprocess/FileInfo:c	I
+    //   282: getfield 306	com/tencent/av/audioprocess/FileInfo:e	I
     //   285: iconst_1
     //   286: isub
-    //   287: putfield 301	com/tencent/av/audioprocess/FileInfo:c	I
+    //   287: putfield 306	com/tencent/av/audioprocess/FileInfo:e	I
     //   290: aload_0
     //   291: iload_2
-    //   292: invokeinterface 269 2 0
+    //   292: invokeinterface 272 2 0
     //   297: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   300: getfield 301	com/tencent/av/audioprocess/FileInfo:c	I
+    //   300: getfield 306	com/tencent/av/audioprocess/FileInfo:e	I
     //   303: ifgt +70 -> 373
     //   306: aload_0
     //   307: iload_2
-    //   308: invokeinterface 269 2 0
+    //   308: invokeinterface 272 2 0
     //   313: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   316: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   316: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   319: ifnull +54 -> 373
     //   322: aload_0
     //   323: iload_2
-    //   324: invokeinterface 269 2 0
+    //   324: invokeinterface 272 2 0
     //   329: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   332: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   335: invokevirtual 338	java/io/RandomAccessFile:close	()V
+    //   332: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   335: invokevirtual 346	java/io/RandomAccessFile:close	()V
     //   338: goto +14 -> 352
     //   341: astore_3
     //   342: goto +21 -> 363
     //   345: astore 4
     //   347: aload 4
-    //   349: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   349: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   352: aload_0
     //   353: iload_2
-    //   354: invokeinterface 316 2 0
+    //   354: invokeinterface 322 2 0
     //   359: pop
     //   360: goto +218 -> 578
     //   363: aload_0
     //   364: iload_2
-    //   365: invokeinterface 316 2 0
+    //   365: invokeinterface 322 2 0
     //   370: pop
     //   371: aload_3
     //   372: athrow
     //   373: aload_0
     //   374: iload_2
-    //   375: invokeinterface 269 2 0
+    //   375: invokeinterface 272 2 0
     //   380: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   383: iconst_0
-    //   384: putfield 324	com/tencent/av/audioprocess/FileInfo:d	I
+    //   384: putfield 330	com/tencent/av/audioprocess/FileInfo:g	I
     //   387: aload_0
     //   388: iload_2
-    //   389: invokeinterface 269 2 0
+    //   389: invokeinterface 272 2 0
     //   394: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   397: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   397: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   400: lconst_0
-    //   401: invokevirtual 351	java/io/RandomAccessFile:seek	(J)V
+    //   401: invokevirtual 359	java/io/RandomAccessFile:seek	(J)V
     //   404: goto +38 -> 442
-    //   407: new 227	java/lang/StringBuilder
+    //   407: new 231	java/lang/StringBuilder
     //   410: dup
-    //   411: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   411: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   414: astore 5
     //   416: aload 5
-    //   418: ldc_w 353
-    //   421: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   418: ldc_w 361
+    //   421: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   424: pop
     //   425: aload 5
     //   427: iload_2
-    //   428: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   428: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   431: pop
     //   432: ldc 20
     //   434: aload 5
-    //   436: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   439: invokestatic 255	com/tencent/qav/log/AVLog:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   436: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   439: invokestatic 258	com/tencent/qav/log/AVLog:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   442: aload 4
     //   444: aload_0
     //   445: iload_2
-    //   446: invokeinterface 269 2 0
+    //   446: invokeinterface 272 2 0
     //   451: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   454: getfield 324	com/tencent/av/audioprocess/FileInfo:d	I
+    //   454: getfield 330	com/tencent/av/audioprocess/FileInfo:g	I
     //   457: aload_0
     //   458: iload_2
-    //   459: invokeinterface 269 2 0
+    //   459: invokeinterface 272 2 0
     //   464: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   467: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   470: invokestatic 357	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:readFile	([BILjava/io/RandomAccessFile;)Z
+    //   467: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   470: invokestatic 365	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:readFile	([BILjava/io/RandomAccessFile;)Z
     //   473: ifne +54 -> 527
     //   476: aload_0
     //   477: iload_2
-    //   478: invokeinterface 269 2 0
+    //   478: invokeinterface 272 2 0
     //   483: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   486: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   489: invokevirtual 338	java/io/RandomAccessFile:close	()V
+    //   486: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   489: invokevirtual 346	java/io/RandomAccessFile:close	()V
     //   492: goto +14 -> 506
     //   495: astore_3
     //   496: goto +21 -> 517
     //   499: astore 4
     //   501: aload 4
-    //   503: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   503: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   506: aload_0
     //   507: iload_2
-    //   508: invokeinterface 316 2 0
+    //   508: invokeinterface 322 2 0
     //   513: pop
     //   514: goto +64 -> 578
     //   517: aload_0
     //   518: iload_2
-    //   519: invokeinterface 316 2 0
+    //   519: invokeinterface 322 2 0
     //   524: pop
     //   525: aload_3
     //   526: athrow
     //   527: aload 4
     //   529: aload_0
     //   530: iload_2
-    //   531: invokeinterface 269 2 0
+    //   531: invokeinterface 272 2 0
     //   536: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   539: getfield 276	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_Float	F
-    //   542: invokestatic 280	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:scaleVolume	([BF)V
+    //   539: getfield 281	com/tencent/av/audioprocess/FileInfo:f	F
+    //   542: invokestatic 285	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:scaleVolume	([BF)V
     //   545: aload_3
     //   546: aload 4
-    //   548: invokeinterface 284 2 0
+    //   548: invokeinterface 289 2 0
     //   553: pop
     //   554: aload_0
     //   555: iload_2
-    //   556: invokeinterface 269 2 0
+    //   556: invokeinterface 272 2 0
     //   561: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   564: astore 4
     //   566: aload 4
     //   568: aload 4
-    //   570: getfield 324	com/tencent/av/audioprocess/FileInfo:d	I
+    //   570: getfield 330	com/tencent/av/audioprocess/FileInfo:g	I
     //   573: iload_1
     //   574: iadd
-    //   575: putfield 324	com/tencent/av/audioprocess/FileInfo:d	I
+    //   575: putfield 330	com/tencent/av/audioprocess/FileInfo:g	I
     //   578: iload_2
     //   579: iconst_1
     //   580: iadd
@@ -835,50 +835,50 @@ public class AudioProcessApiImpl
   private static void saveData(String paramString1, String paramString2, byte[] paramArrayOfByte, int paramInt)
   {
     // Byte code:
-    //   0: new 456	java/io/File
+    //   0: new 464	java/io/File
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 459	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 467	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore 4
-    //   10: new 227	java/lang/StringBuilder
+    //   10: new 231	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   14: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   17: astore 5
     //   19: aload 5
     //   21: aload_0
-    //   22: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload 5
     //   28: aload_1
-    //   29: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: pop
-    //   33: new 456	java/io/File
+    //   33: new 464	java/io/File
     //   36: dup
     //   37: aload 5
-    //   39: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokespecial 459	java/io/File:<init>	(Ljava/lang/String;)V
+    //   39: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokespecial 467	java/io/File:<init>	(Ljava/lang/String;)V
     //   45: astore_0
     //   46: aload 4
-    //   48: invokevirtual 462	java/io/File:exists	()Z
+    //   48: invokevirtual 470	java/io/File:exists	()Z
     //   51: ifne +9 -> 60
     //   54: aload 4
-    //   56: invokevirtual 465	java/io/File:mkdirs	()Z
+    //   56: invokevirtual 473	java/io/File:mkdirs	()Z
     //   59: pop
     //   60: aload_0
-    //   61: invokevirtual 462	java/io/File:exists	()Z
+    //   61: invokevirtual 470	java/io/File:exists	()Z
     //   64: ifne +16 -> 80
     //   67: aload_0
-    //   68: invokevirtual 468	java/io/File:createNewFile	()Z
+    //   68: invokevirtual 476	java/io/File:createNewFile	()Z
     //   71: pop
     //   72: goto +8 -> 80
     //   75: astore_1
     //   76: aload_1
-    //   77: invokevirtual 341	java/io/IOException:printStackTrace	()V
-    //   80: new 470	java/io/FileOutputStream
+    //   77: invokevirtual 349	java/io/IOException:printStackTrace	()V
+    //   80: new 478	java/io/FileOutputStream
     //   83: dup
     //   84: aload_0
     //   85: iconst_1
-    //   86: invokespecial 473	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   86: invokespecial 481	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   89: astore_1
     //   90: aload_2
     //   91: ifnull +12 -> 103
@@ -888,13 +888,13 @@ public class AudioProcessApiImpl
     //   97: aload_2
     //   98: iconst_0
     //   99: iload_3
-    //   100: invokevirtual 477	java/io/FileOutputStream:write	([BII)V
+    //   100: invokevirtual 485	java/io/FileOutputStream:write	([BII)V
     //   103: aload_1
     //   104: astore_0
     //   105: aload_1
-    //   106: invokevirtual 480	java/io/FileOutputStream:flush	()V
+    //   106: invokevirtual 488	java/io/FileOutputStream:flush	()V
     //   109: aload_1
-    //   110: invokevirtual 481	java/io/FileOutputStream:close	()V
+    //   110: invokevirtual 489	java/io/FileOutputStream:close	()V
     //   113: return
     //   114: astore_2
     //   115: goto +16 -> 131
@@ -910,11 +910,11 @@ public class AudioProcessApiImpl
     //   131: aload_1
     //   132: astore_0
     //   133: aload_2
-    //   134: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   134: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   137: aload_1
     //   138: ifnull +31 -> 169
     //   141: aload_1
-    //   142: invokevirtual 481	java/io/FileOutputStream:close	()V
+    //   142: invokevirtual 489	java/io/FileOutputStream:close	()V
     //   145: return
     //   146: astore_2
     //   147: aconst_null
@@ -922,15 +922,15 @@ public class AudioProcessApiImpl
     //   149: aload_1
     //   150: astore_0
     //   151: aload_2
-    //   152: invokevirtual 482	java/io/FileNotFoundException:printStackTrace	()V
+    //   152: invokevirtual 490	java/io/FileNotFoundException:printStackTrace	()V
     //   155: aload_1
     //   156: ifnull +13 -> 169
     //   159: aload_1
-    //   160: invokevirtual 481	java/io/FileOutputStream:close	()V
+    //   160: invokevirtual 489	java/io/FileOutputStream:close	()V
     //   163: return
     //   164: astore_0
     //   165: aload_0
-    //   166: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   166: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   169: return
     //   170: astore_2
     //   171: aload_0
@@ -940,11 +940,11 @@ public class AudioProcessApiImpl
     //   175: aload_1
     //   176: ifnull +15 -> 191
     //   179: aload_1
-    //   180: invokevirtual 481	java/io/FileOutputStream:close	()V
+    //   180: invokevirtual 489	java/io/FileOutputStream:close	()V
     //   183: goto +8 -> 191
     //   186: astore_1
     //   187: aload_1
-    //   188: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   188: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   191: aload_0
     //   192: athrow
     // Local variable table:
@@ -984,7 +984,7 @@ public class AudioProcessApiImpl
     int m = ((Calendar)localObject).get(11);
     ((Calendar)localObject).get(12);
     ((Calendar)localObject).get(13);
-    String str = AVPathUtil.o();
+    String str = AVPathUtil.s();
     if (paramBoolean) {
       localObject = "识别成功";
     } else {
@@ -1062,19 +1062,19 @@ public class AudioProcessApiImpl
               AVLog.a("AudioProcessApiImpl", "startDecodeMP3 failed. channelNum > 2.");
               return null;
             }
-            ((DecodeInfo)localObject).jdField_a_of_type_Int = j;
+            ((DecodeInfo)localObject).b = j;
             paramMediaExtractor.selectTrack(i);
-            ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+            ((DecodeInfo)localObject).a = MediaCodec.createDecoderByType(str);
             try
             {
-              ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, null, null, 0);
+              ((DecodeInfo)localObject).a.configure(localMediaFormat, null, null, 0);
               i = m;
             }
             catch (Throwable paramMediaExtractor)
             {
               AVLog.a("AudioProcessApiImpl", "startDecodeMP3 failed. configure exception: ", paramMediaExtractor);
-              ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec.release();
-              ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec = null;
+              ((DecodeInfo)localObject).a.release();
+              ((DecodeInfo)localObject).a = null;
               return null;
             }
           }
@@ -1083,14 +1083,14 @@ public class AudioProcessApiImpl
         int j = 0;
         int k = 0;
         i = m;
-        if (((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec == null)
+        if (((DecodeInfo)localObject).a == null)
         {
           AVLog.a("AudioProcessApiImpl", "startDecodeMP3 failed. mAudioCodec == null.");
           return null;
         }
         try
         {
-          ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec.start();
+          ((DecodeInfo)localObject).a.start();
           paramMediaExtractor = new StringBuilder();
           paramMediaExtractor.append("startDecodeMP3 successfully. mp3FilePath = ");
           paramMediaExtractor.append(paramString);
@@ -1108,8 +1108,8 @@ public class AudioProcessApiImpl
         catch (Exception paramMediaExtractor)
         {
           AVLog.a("AudioProcessApiImpl", "startDecodeMP3 failed. AudioCodec.start failed.", paramMediaExtractor);
-          ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec.release();
-          ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec = null;
+          ((DecodeInfo)localObject).a.release();
+          ((DecodeInfo)localObject).a = null;
           return null;
         }
         AVLog.a("AudioProcessApiImpl", "startDecodeMP3 failed. !mp3File.exists().");
@@ -1117,10 +1117,10 @@ public class AudioProcessApiImpl
       catch (IOException paramMediaExtractor)
       {
         AVLog.a("AudioProcessApiImpl", "startDecodeMP3 failed. exception: ", paramMediaExtractor);
-        if (((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec != null)
+        if (((DecodeInfo)localObject).a != null)
         {
-          ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec.release();
-          ((DecodeInfo)localObject).jdField_a_of_type_AndroidMediaMediaCodec = null;
+          ((DecodeInfo)localObject).a.release();
+          ((DecodeInfo)localObject).a = null;
         }
         return null;
       }
@@ -1144,15 +1144,15 @@ public class AudioProcessApiImpl
       {
         if (i < this.mFileInfoList.size())
         {
-          if (!((FileInfo)this.mFileInfoList.get(i)).jdField_a_of_type_JavaLangString.equalsIgnoreCase(???)) {
+          if (!((FileInfo)this.mFileInfoList.get(i)).c.equalsIgnoreCase(???)) {
             break label407;
           }
           return;
         }
         localObject1 = new FileInfo();
-        ((FileInfo)localObject1).jdField_a_of_type_JavaLangString = ???;
-        ((FileInfo)localObject1).b = paramInt1;
-        ((FileInfo)localObject1).c = paramInt2;
+        ((FileInfo)localObject1).c = ???;
+        ((FileInfo)localObject1).d = paramInt1;
+        ((FileInfo)localObject1).e = paramInt2;
         float f;
         if (paramFloat < 0.1F)
         {
@@ -1165,17 +1165,17 @@ public class AudioProcessApiImpl
             f = 10.0F;
           }
         }
-        ((FileInfo)localObject1).jdField_a_of_type_Float = f;
+        ((FileInfo)localObject1).f = f;
         MediaExtractor localMediaExtractor;
         if (paramInt1 == 0)
         {
           ??? = openFile(???);
           if (??? != null)
           {
-            ((FileInfo)localObject1).jdField_a_of_type_JavaIoRandomAccessFile = ???;
+            ((FileInfo)localObject1).h = ???;
             try
             {
-              ((FileInfo)localObject1).jdField_a_of_type_Long = ???.length();
+              ((FileInfo)localObject1).i = ???.length();
             }
             catch (IOException localIOException)
             {
@@ -1201,13 +1201,13 @@ public class AudioProcessApiImpl
           }
           localMediaExtractor = new MediaExtractor();
           ??? = startDecodeMP3(localMediaExtractor, ???);
-          if ((??? == null) || (???.jdField_a_of_type_AndroidMediaMediaCodec == null)) {
+          if ((??? == null) || (???.a == null)) {
             continue;
           }
-          localIOException.jdField_a_of_type_AndroidMediaMediaExtractor = localMediaExtractor;
-          localIOException.jdField_a_of_type_AndroidMediaMediaCodec = ???.jdField_a_of_type_AndroidMediaMediaCodec;
-          localIOException.jdField_a_of_type_Int = ???.jdField_a_of_type_Int;
-          localIOException.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+          localIOException.j = localMediaExtractor;
+          localIOException.a = ???.a;
+          localIOException.b = ???.b;
+          localIOException.k = new MediaCodec.BufferInfo();
         }
         synchronized (this.mLock)
         {
@@ -1524,130 +1524,130 @@ public class AudioProcessApiImpl
     //   9: iload_1
     //   10: aload_0
     //   11: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
-    //   14: invokeinterface 266 1 0
+    //   14: invokeinterface 269 1 0
     //   19: if_icmpge +295 -> 314
     //   22: aload_0
     //   23: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   26: iload_1
-    //   27: invokeinterface 269 2 0
+    //   27: invokeinterface 272 2 0
     //   32: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   35: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   35: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   38: astore_2
     //   39: aload_2
     //   40: ifnull +89 -> 129
     //   43: aload_0
     //   44: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   47: iload_1
-    //   48: invokeinterface 269 2 0
+    //   48: invokeinterface 272 2 0
     //   53: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   56: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   59: invokevirtual 338	java/io/RandomAccessFile:close	()V
+    //   56: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   59: invokevirtual 346	java/io/RandomAccessFile:close	()V
     //   62: aload_0
     //   63: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   66: iload_1
-    //   67: invokeinterface 269 2 0
+    //   67: invokeinterface 272 2 0
     //   72: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   75: astore_2
     //   76: aload_2
     //   77: aconst_null
-    //   78: putfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   78: putfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   81: goto +256 -> 337
     //   84: astore_2
     //   85: goto +25 -> 110
     //   88: astore_2
     //   89: aload_2
-    //   90: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   90: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   93: aload_0
     //   94: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   97: iload_1
-    //   98: invokeinterface 269 2 0
+    //   98: invokeinterface 272 2 0
     //   103: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   106: astore_2
     //   107: goto -31 -> 76
     //   110: aload_0
     //   111: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   114: iload_1
-    //   115: invokeinterface 269 2 0
+    //   115: invokeinterface 272 2 0
     //   120: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   123: aconst_null
-    //   124: putfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   124: putfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   127: aload_2
     //   128: athrow
     //   129: aload_0
     //   130: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   133: iload_1
-    //   134: invokeinterface 269 2 0
+    //   134: invokeinterface 272 2 0
     //   139: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   142: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   142: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   145: ifnonnull +22 -> 167
     //   148: aload_0
     //   149: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   152: iload_1
-    //   153: invokeinterface 269 2 0
+    //   153: invokeinterface 272 2 0
     //   158: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   161: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   161: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   164: ifnull +173 -> 337
     //   167: aload_0
     //   168: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   171: iload_1
-    //   172: invokeinterface 269 2 0
+    //   172: invokeinterface 272 2 0
     //   177: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   180: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   180: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   183: astore_2
     //   184: aload_2
     //   185: ifnull +71 -> 256
     //   188: aload_0
     //   189: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   192: iload_1
-    //   193: invokeinterface 269 2 0
+    //   193: invokeinterface 272 2 0
     //   198: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   201: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   204: invokevirtual 289	android/media/MediaCodec:stop	()V
+    //   201: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
+    //   204: invokevirtual 294	android/media/MediaCodec:stop	()V
     //   207: aload_0
     //   208: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   211: iload_1
-    //   212: invokeinterface 269 2 0
+    //   212: invokeinterface 272 2 0
     //   217: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   220: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   223: invokevirtual 292	android/media/MediaCodec:release	()V
+    //   220: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
+    //   223: invokevirtual 297	android/media/MediaCodec:release	()V
     //   226: goto +13 -> 239
     //   229: astore_2
     //   230: ldc 20
-    //   232: ldc_w 294
+    //   232: ldc_w 299
     //   235: aload_2
-    //   236: invokestatic 297	com/tencent/qav/log/AVLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   236: invokestatic 302	com/tencent/qav/log/AVLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   239: aload_0
     //   240: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   243: iload_1
-    //   244: invokeinterface 269 2 0
+    //   244: invokeinterface 272 2 0
     //   249: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   252: aconst_null
-    //   253: putfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   253: putfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   256: aload_0
     //   257: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   260: iload_1
-    //   261: invokeinterface 269 2 0
+    //   261: invokeinterface 272 2 0
     //   266: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   269: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   269: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   272: ifnull +65 -> 337
     //   275: aload_0
     //   276: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   279: iload_1
-    //   280: invokeinterface 269 2 0
+    //   280: invokeinterface 272 2 0
     //   285: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   288: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   291: invokevirtual 298	android/media/MediaExtractor:release	()V
+    //   288: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
+    //   291: invokevirtual 303	android/media/MediaExtractor:release	()V
     //   294: aload_0
     //   295: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   298: iload_1
-    //   299: invokeinterface 269 2 0
+    //   299: invokeinterface 272 2 0
     //   304: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   307: aconst_null
-    //   308: putfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   308: putfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   311: goto +26 -> 337
     //   314: aload_0
     //   315: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
-    //   318: invokeinterface 753 1 0
+    //   318: invokeinterface 761 1 0
     //   323: aload_3
     //   324: monitorexit
     //   325: return
@@ -1709,46 +1709,46 @@ public class AudioProcessApiImpl
     //   9: iload_2
     //   10: aload_0
     //   11: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
-    //   14: invokeinterface 266 1 0
+    //   14: invokeinterface 269 1 0
     //   19: if_icmpge +328 -> 347
     //   22: aload_0
     //   23: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   26: iload_2
-    //   27: invokeinterface 269 2 0
+    //   27: invokeinterface 272 2 0
     //   32: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   35: getfield 304	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   35: getfield 310	com/tencent/av/audioprocess/FileInfo:c	Ljava/lang/String;
     //   38: aload_1
-    //   39: invokevirtual 620	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   39: invokevirtual 628	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   42: ifeq +319 -> 361
     //   45: aload_0
     //   46: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   49: iload_2
-    //   50: invokeinterface 269 2 0
+    //   50: invokeinterface 272 2 0
     //   55: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   58: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   58: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   61: astore_1
     //   62: aload_1
     //   63: ifnull +71 -> 134
     //   66: aload_0
     //   67: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   70: iload_2
-    //   71: invokeinterface 269 2 0
+    //   71: invokeinterface 272 2 0
     //   76: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   79: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   82: invokevirtual 338	java/io/RandomAccessFile:close	()V
+    //   79: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   82: invokevirtual 346	java/io/RandomAccessFile:close	()V
     //   85: aload_0
     //   86: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   89: astore_1
     //   90: aload_1
     //   91: iload_2
-    //   92: invokeinterface 316 2 0
+    //   92: invokeinterface 322 2 0
     //   97: pop
     //   98: goto +20 -> 118
     //   101: astore_1
     //   102: goto +19 -> 121
     //   105: astore_1
     //   106: aload_1
-    //   107: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   107: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   110: aload_0
     //   111: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   114: astore_1
@@ -1759,29 +1759,29 @@ public class AudioProcessApiImpl
     //   121: aload_0
     //   122: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   125: iload_2
-    //   126: invokeinterface 316 2 0
+    //   126: invokeinterface 322 2 0
     //   131: pop
     //   132: aload_1
     //   133: athrow
     //   134: aload_0
     //   135: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   138: iload_2
-    //   139: invokeinterface 269 2 0
+    //   139: invokeinterface 272 2 0
     //   144: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   147: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   147: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   150: ifnonnull +39 -> 189
     //   153: aload_0
     //   154: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   157: iload_2
-    //   158: invokeinterface 269 2 0
+    //   158: invokeinterface 272 2 0
     //   163: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   166: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   166: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   169: ifnull +6 -> 175
     //   172: goto +17 -> 189
     //   175: aload_0
     //   176: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   179: iload_2
-    //   180: invokeinterface 316 2 0
+    //   180: invokeinterface 322 2 0
     //   185: pop
     //   186: aload_3
     //   187: monitorexit
@@ -1789,64 +1789,64 @@ public class AudioProcessApiImpl
     //   189: aload_0
     //   190: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   193: iload_2
-    //   194: invokeinterface 269 2 0
+    //   194: invokeinterface 272 2 0
     //   199: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   202: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   202: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   205: astore_1
     //   206: aload_1
     //   207: ifnull +71 -> 278
     //   210: aload_0
     //   211: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   214: iload_2
-    //   215: invokeinterface 269 2 0
+    //   215: invokeinterface 272 2 0
     //   220: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   223: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   226: invokevirtual 289	android/media/MediaCodec:stop	()V
+    //   223: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
+    //   226: invokevirtual 294	android/media/MediaCodec:stop	()V
     //   229: aload_0
     //   230: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   233: iload_2
-    //   234: invokeinterface 269 2 0
+    //   234: invokeinterface 272 2 0
     //   239: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   242: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   245: invokevirtual 292	android/media/MediaCodec:release	()V
+    //   242: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
+    //   245: invokevirtual 297	android/media/MediaCodec:release	()V
     //   248: goto +13 -> 261
     //   251: astore_1
     //   252: ldc 20
-    //   254: ldc_w 294
+    //   254: ldc_w 299
     //   257: aload_1
-    //   258: invokestatic 297	com/tencent/qav/log/AVLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   258: invokestatic 302	com/tencent/qav/log/AVLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   261: aload_0
     //   262: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   265: iload_2
-    //   266: invokeinterface 269 2 0
+    //   266: invokeinterface 272 2 0
     //   271: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   274: aconst_null
-    //   275: putfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   275: putfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   278: aload_0
     //   279: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   282: iload_2
-    //   283: invokeinterface 269 2 0
+    //   283: invokeinterface 272 2 0
     //   288: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   291: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   291: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   294: ifnull +39 -> 333
     //   297: aload_0
     //   298: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   301: iload_2
-    //   302: invokeinterface 269 2 0
+    //   302: invokeinterface 272 2 0
     //   307: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   310: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   313: invokevirtual 298	android/media/MediaExtractor:release	()V
+    //   310: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
+    //   313: invokevirtual 303	android/media/MediaExtractor:release	()V
     //   316: aload_0
     //   317: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   320: iload_2
-    //   321: invokeinterface 269 2 0
+    //   321: invokeinterface 272 2 0
     //   326: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   329: aconst_null
-    //   330: putfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   330: putfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   333: aload_0
     //   334: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   337: iload_2
-    //   338: invokeinterface 316 2 0
+    //   338: invokeinterface 322 2 0
     //   343: pop
     //   344: aload_3
     //   345: monitorexit
@@ -1948,7 +1948,7 @@ public class AudioProcessApiImpl
         AVLog.a("AudioProcessApiImpl", localStringBuilder.toString());
         return false;
       }
-      AVVoiceRecog.a().a(128);
+      AVVoiceRecog.b().b(128);
       setAudioFrameCallback(1, this);
       this.mPlayMixSrcType = paramInt;
       this.mPlayState = 1;
@@ -1980,7 +1980,7 @@ public class AudioProcessApiImpl
       int j = this.mEngineCommon.setAudioDataFormat(8, 16000, 1, 16);
       if ((i == 0) && (j == 0))
       {
-        AVVoiceRecog.a().a(128);
+        AVVoiceRecog.b().b(128);
         setAudioFrameCallback(1, this);
         this.mEngineCommon.enableLocalSpeechRecognizeModel(true);
         this.mOnRecog = paramOnRecog;
@@ -2004,9 +2004,9 @@ public class AudioProcessApiImpl
   {
     if ((this.mIsInited) && (this.mEngineCommon != null))
     {
-      if (AudioDump.a())
+      if (AudioDump.c())
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), 2131690291, 1).a();
+        QQToast.makeText(BaseApplicationImpl.getApplication(), 2131887202, 1).show();
         return false;
       }
       if (isRecordStarted()) {
@@ -2048,7 +2048,7 @@ public class AudioProcessApiImpl
               return false;
             }
           }
-          AVVoiceRecog.a().a(128);
+          AVVoiceRecog.b().b(128);
           this.mOnRecord = paramOnRecord;
           setAudioFrameCallback(0, this);
           this.mRecordMixSrcType = paramInt;
@@ -2086,7 +2086,7 @@ public class AudioProcessApiImpl
         int i = this.mEngineCommon.unregisterAudioDataCallback(3);
         this.mPlayState = 0;
         if ((!isPlayStarted()) && (!isRecogStarted()) && (!isRecordStarted())) {
-          AVVoiceRecog.a().b(128);
+          AVVoiceRecog.b().c(128);
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("stopPlay successfully. ret = ");
@@ -2120,7 +2120,7 @@ public class AudioProcessApiImpl
         this.mEngineCommon.enableLocalSpeechRecognizeModel(false);
         this.mRecogState = 0;
         if ((!isPlayStarted()) && (!isRecogStarted()) && (!isRecordStarted())) {
-          AVVoiceRecog.a().b(128);
+          AVVoiceRecog.b().c(128);
         }
         AVLog.d("AudioProcessApiImpl", "stopRecog sucessfully.");
         return;
@@ -2154,7 +2154,7 @@ public class AudioProcessApiImpl
         }
         this.mRecordState = 0;
         if ((!isPlayStarted()) && (!isRecogStarted()) && (!isRecordStarted())) {
-          AVVoiceRecog.a().b(128);
+          AVVoiceRecog.b().c(128);
         }
         AVLog.d("AudioProcessApiImpl", "stopRecord sucessfully.");
         return;
@@ -2177,62 +2177,62 @@ public class AudioProcessApiImpl
     //   8: aload_0
     //   9: getfield 101	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mAddCnt	I
     //   12: ifeq +120 -> 132
-    //   15: invokestatic 506	java/lang/System:currentTimeMillis	()J
+    //   15: invokestatic 514	java/lang/System:currentTimeMillis	()J
     //   18: lstore_2
-    //   19: new 227	java/lang/StringBuilder
+    //   19: new 231	java/lang/StringBuilder
     //   22: dup
-    //   23: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   23: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   26: astore 4
     //   28: aload 4
-    //   30: ldc_w 866
-    //   33: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: ldc_w 876
+    //   33: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: pop
     //   37: aload 4
     //   39: aload_0
     //   40: getfield 101	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mAddCnt	I
-    //   43: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   46: pop
     //   47: aload 4
-    //   49: ldc_w 649
-    //   52: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: ldc_w 657
+    //   52: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: pop
     //   56: aload 4
     //   58: aload_0
     //   59: getfield 103	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mAddLen	I
-    //   62: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   62: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: aload 4
-    //   68: ldc_w 651
-    //   71: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: ldc_w 659
+    //   71: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: pop
     //   75: aload 4
     //   77: aload_0
     //   78: getfield 105	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mAddStartTime	J
-    //   81: invokevirtual 596	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 604	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   84: pop
     //   85: aload 4
-    //   87: ldc_w 653
-    //   90: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: ldc_w 661
+    //   90: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: pop
     //   94: aload 4
     //   96: lload_2
-    //   97: invokevirtual 596	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 604	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   100: pop
     //   101: aload 4
-    //   103: ldc_w 655
-    //   106: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 663
+    //   106: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: pop
     //   110: aload 4
     //   112: lload_2
     //   113: aload_0
     //   114: getfield 105	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mAddStartTime	J
     //   117: lsub
-    //   118: invokevirtual 596	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 604	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   121: pop
     //   122: ldc 20
     //   124: aload 4
-    //   126: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   129: invokestatic 541	com/tencent/qav/log/AVLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   129: invokestatic 549	com/tencent/qav/log/AVLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   132: aload_0
     //   133: iconst_0
     //   134: putfield 101	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mAddCnt	I
@@ -2245,62 +2245,62 @@ public class AudioProcessApiImpl
     //   147: aload_0
     //   148: getfield 107	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixCnt	I
     //   151: ifeq +120 -> 271
-    //   154: invokestatic 506	java/lang/System:currentTimeMillis	()J
+    //   154: invokestatic 514	java/lang/System:currentTimeMillis	()J
     //   157: lstore_2
-    //   158: new 227	java/lang/StringBuilder
+    //   158: new 231	java/lang/StringBuilder
     //   161: dup
-    //   162: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   162: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   165: astore 4
     //   167: aload 4
-    //   169: ldc_w 868
-    //   172: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   169: ldc_w 878
+    //   172: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: pop
     //   176: aload 4
     //   178: aload_0
     //   179: getfield 107	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixCnt	I
-    //   182: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   185: pop
     //   186: aload 4
-    //   188: ldc_w 730
-    //   191: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: ldc_w 738
+    //   191: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   194: pop
     //   195: aload 4
     //   197: aload_0
     //   198: getfield 109	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixLen	I
-    //   201: invokevirtual 237	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 241	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   204: pop
     //   205: aload 4
-    //   207: ldc_w 732
-    //   210: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   207: ldc_w 740
+    //   210: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: pop
     //   214: aload 4
     //   216: aload_0
     //   217: getfield 111	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixStartTime	J
-    //   220: invokevirtual 596	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   220: invokevirtual 604	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   223: pop
     //   224: aload 4
-    //   226: ldc_w 734
-    //   229: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   226: ldc_w 742
+    //   229: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   232: pop
     //   233: aload 4
     //   235: lload_2
-    //   236: invokevirtual 596	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 604	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   239: pop
     //   240: aload 4
-    //   242: ldc_w 736
-    //   245: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: ldc_w 744
+    //   245: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: pop
     //   249: aload 4
     //   251: lload_2
     //   252: aload_0
     //   253: getfield 111	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixStartTime	J
     //   256: lsub
-    //   257: invokevirtual 596	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   257: invokevirtual 604	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   260: pop
     //   261: ldc 20
     //   263: aload 4
-    //   265: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   268: invokestatic 541	com/tencent/qav/log/AVLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   265: invokevirtual 249	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   268: invokestatic 549	com/tencent/qav/log/AVLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   271: aload_0
     //   272: iconst_0
     //   273: putfield 107	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixCnt	I
@@ -2311,11 +2311,11 @@ public class AudioProcessApiImpl
     //   282: lconst_0
     //   283: putfield 111	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mMixStartTime	J
     //   286: aload_0
-    //   287: invokevirtual 870	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:stopPlay	()V
+    //   287: invokevirtual 880	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:stopPlay	()V
     //   290: aload_0
-    //   291: invokevirtual 872	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:stopRecord	()V
+    //   291: invokevirtual 882	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:stopRecord	()V
     //   294: aload_0
-    //   295: invokevirtual 874	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:stopRecog	()V
+    //   295: invokevirtual 884	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:stopRecog	()V
     //   298: aload_0
     //   299: aconst_null
     //   300: putfield 123	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mEngineCommon	Lcom/tencent/avcore/engine/common/IAVEngineCommon;
@@ -2329,130 +2329,130 @@ public class AudioProcessApiImpl
     //   314: iload_1
     //   315: aload_0
     //   316: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
-    //   319: invokeinterface 266 1 0
+    //   319: invokeinterface 269 1 0
     //   324: if_icmpge +308 -> 632
     //   327: aload_0
     //   328: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   331: iload_1
-    //   332: invokeinterface 269 2 0
+    //   332: invokeinterface 272 2 0
     //   337: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   340: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   340: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   343: astore 4
     //   345: aload 4
     //   347: ifnull +96 -> 443
     //   350: aload_0
     //   351: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   354: iload_1
-    //   355: invokeinterface 269 2 0
+    //   355: invokeinterface 272 2 0
     //   360: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   363: getfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
-    //   366: invokevirtual 338	java/io/RandomAccessFile:close	()V
+    //   363: getfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
+    //   366: invokevirtual 346	java/io/RandomAccessFile:close	()V
     //   369: aload_0
     //   370: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   373: iload_1
-    //   374: invokeinterface 269 2 0
+    //   374: invokeinterface 272 2 0
     //   379: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   382: astore 4
     //   384: aload 4
     //   386: aconst_null
-    //   387: putfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   387: putfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   390: goto +311 -> 701
     //   393: astore 4
     //   395: goto +28 -> 423
     //   398: astore 4
     //   400: aload 4
-    //   402: invokevirtual 341	java/io/IOException:printStackTrace	()V
+    //   402: invokevirtual 349	java/io/IOException:printStackTrace	()V
     //   405: aload_0
     //   406: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   409: iload_1
-    //   410: invokeinterface 269 2 0
+    //   410: invokeinterface 272 2 0
     //   415: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   418: astore 4
     //   420: goto -36 -> 384
     //   423: aload_0
     //   424: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   427: iload_1
-    //   428: invokeinterface 269 2 0
+    //   428: invokeinterface 272 2 0
     //   433: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   436: aconst_null
-    //   437: putfield 333	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_JavaIoRandomAccessFile	Ljava/io/RandomAccessFile;
+    //   437: putfield 341	com/tencent/av/audioprocess/FileInfo:h	Ljava/io/RandomAccessFile;
     //   440: aload 4
     //   442: athrow
     //   443: aload_0
     //   444: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   447: iload_1
-    //   448: invokeinterface 269 2 0
+    //   448: invokeinterface 272 2 0
     //   453: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   456: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   456: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   459: ifnonnull +22 -> 481
     //   462: aload_0
     //   463: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   466: iload_1
-    //   467: invokeinterface 269 2 0
+    //   467: invokeinterface 272 2 0
     //   472: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   475: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   475: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   478: ifnull +223 -> 701
     //   481: aload_0
     //   482: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   485: iload_1
-    //   486: invokeinterface 269 2 0
+    //   486: invokeinterface 272 2 0
     //   491: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   494: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   494: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   497: astore 4
     //   499: aload 4
     //   501: ifnull +73 -> 574
     //   504: aload_0
     //   505: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   508: iload_1
-    //   509: invokeinterface 269 2 0
+    //   509: invokeinterface 272 2 0
     //   514: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   517: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   520: invokevirtual 289	android/media/MediaCodec:stop	()V
+    //   517: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
+    //   520: invokevirtual 294	android/media/MediaCodec:stop	()V
     //   523: aload_0
     //   524: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   527: iload_1
-    //   528: invokeinterface 269 2 0
+    //   528: invokeinterface 272 2 0
     //   533: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   536: getfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
-    //   539: invokevirtual 292	android/media/MediaCodec:release	()V
+    //   536: getfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
+    //   539: invokevirtual 297	android/media/MediaCodec:release	()V
     //   542: goto +15 -> 557
     //   545: astore 4
     //   547: ldc 20
-    //   549: ldc_w 294
+    //   549: ldc_w 299
     //   552: aload 4
-    //   554: invokestatic 297	com/tencent/qav/log/AVLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   554: invokestatic 302	com/tencent/qav/log/AVLog:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   557: aload_0
     //   558: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   561: iload_1
-    //   562: invokeinterface 269 2 0
+    //   562: invokeinterface 272 2 0
     //   567: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   570: aconst_null
-    //   571: putfield 141	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaCodec	Landroid/media/MediaCodec;
+    //   571: putfield 142	com/tencent/av/audioprocess/FileInfo:a	Landroid/media/MediaCodec;
     //   574: aload_0
     //   575: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   578: iload_1
-    //   579: invokeinterface 269 2 0
+    //   579: invokeinterface 272 2 0
     //   584: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   587: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   587: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   590: ifnull +111 -> 701
     //   593: aload_0
     //   594: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   597: iload_1
-    //   598: invokeinterface 269 2 0
+    //   598: invokeinterface 272 2 0
     //   603: checkcast 134	com/tencent/av/audioprocess/FileInfo
-    //   606: getfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
-    //   609: invokevirtual 298	android/media/MediaExtractor:release	()V
+    //   606: getfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
+    //   609: invokevirtual 303	android/media/MediaExtractor:release	()V
     //   612: aload_0
     //   613: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
     //   616: iload_1
-    //   617: invokeinterface 269 2 0
+    //   617: invokeinterface 272 2 0
     //   622: checkcast 134	com/tencent/av/audioprocess/FileInfo
     //   625: aconst_null
-    //   626: putfield 138	com/tencent/av/audioprocess/FileInfo:jdField_a_of_type_AndroidMediaMediaExtractor	Landroid/media/MediaExtractor;
+    //   626: putfield 138	com/tencent/av/audioprocess/FileInfo:j	Landroid/media/MediaExtractor;
     //   629: goto +72 -> 701
     //   632: aload_0
     //   633: getfield 90	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mFileInfoList	Ljava/util/List;
-    //   636: invokeinterface 753 1 0
+    //   636: invokeinterface 761 1 0
     //   641: aload 5
     //   643: monitorexit
     //   644: aload_0
@@ -2462,15 +2462,15 @@ public class AudioProcessApiImpl
     //   652: monitorenter
     //   653: aload_0
     //   654: getfield 95	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mPCMDataQueueFromOutside	Ljava/util/Queue;
-    //   657: invokeinterface 875 1 0
+    //   657: invokeinterface 885 1 0
     //   662: aload 4
     //   664: monitorexit
     //   665: aload_0
     //   666: iconst_0
     //   667: putfield 65	com/tencent/av/audioprocess/api/impl/AudioProcessApiImpl:mIsInited	Z
     //   670: ldc 20
-    //   672: ldc_w 877
-    //   675: invokestatic 541	com/tencent/qav/log/AVLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   672: ldc_w 887
+    //   675: invokestatic 549	com/tencent/qav/log/AVLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   678: return
     //   679: astore 5
     //   681: aload 4
@@ -2550,7 +2550,7 @@ public class AudioProcessApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.audioprocess.api.impl.AudioProcessApiImpl
  * JD-Core Version:    0.7.0.1
  */

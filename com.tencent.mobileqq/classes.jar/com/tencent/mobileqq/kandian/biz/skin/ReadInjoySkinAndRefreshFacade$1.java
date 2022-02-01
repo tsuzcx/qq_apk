@@ -18,7 +18,7 @@ class ReadInjoySkinAndRefreshFacade$1
     int j = (int)(System.currentTimeMillis() / 1000L);
     if ((localRefreshData != null) && (localRefreshData.isShowInSource(ReadInjoySkinAndRefreshFacade.a(this.this$0))) && (j >= localRefreshData.beginTime) && (j <= localRefreshData.endTime))
     {
-      if (RefreshRes.a(localRefreshData.id))
+      if (RefreshRes.b(localRefreshData.id))
       {
         if (localRefreshData.isShown)
         {
@@ -46,7 +46,7 @@ class ReadInjoySkinAndRefreshFacade$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInjoySkinAndRefreshFacade.1
  * JD-Core Version:    0.7.0.1
  */

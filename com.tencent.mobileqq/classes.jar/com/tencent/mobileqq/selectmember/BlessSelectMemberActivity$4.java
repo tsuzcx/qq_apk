@@ -12,50 +12,50 @@ class BlessSelectMemberActivity$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getLineCount() >= 4)
+    if (this.a.getLineCount() >= 4)
     {
-      int j = this.jdField_a_of_type_AndroidWidgetTextView.getLayout().getLineEnd(3);
-      if (j < this.jdField_a_of_type_JavaLangStringBuilder.length())
+      int j = this.a.getLayout().getLineEnd(3);
+      if (j < this.b.length())
       {
-        String str = this.this$0.getString(2131690671);
+        String str = this.this$0.getString(2131887586);
         int i = 0;
-        str = String.format(str, new Object[] { "...", Integer.valueOf(this.this$0.a.size()) });
-        float f = this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(str);
+        str = String.format(str, new Object[] { "...", Integer.valueOf(this.this$0.d.size()) });
+        float f = this.a.getPaint().measureText(str);
         Object localObject;
-        while (i < this.jdField_a_of_type_JavaLangStringBuilder.length())
+        while (i < this.b.length())
         {
-          localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+          localObject = this.b;
           int k = j - i;
           localObject = ((StringBuilder)localObject).substring(k, j);
-          if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText((String)localObject) >= f)
+          if (this.a.getPaint().measureText((String)localObject) >= f)
           {
-            this.jdField_a_of_type_JavaLangStringBuilder.setLength(k);
+            this.b.setLength(k);
             break;
           }
           i += 1;
         }
-        BlessSelectMemberActivity.a(this.this$0, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-        if (BlessSelectMemberActivity.b(this.this$0).endsWith("、 "))
+        BlessSelectMemberActivity.b(this.this$0, this.b.toString());
+        if (BlessSelectMemberActivity.e(this.this$0).endsWith("、 "))
         {
-          localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+          localObject = this.b;
           ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 2);
         }
-        else if (BlessSelectMemberActivity.b(this.this$0).endsWith("、"))
+        else if (BlessSelectMemberActivity.e(this.this$0).endsWith("、"))
         {
-          localObject = this.jdField_a_of_type_JavaLangStringBuilder;
+          localObject = this.b;
           ((StringBuilder)localObject).setLength(((StringBuilder)localObject).length() - 1);
         }
-        this.jdField_a_of_type_JavaLangStringBuilder.append(str);
-        BlessSelectMemberActivity.a(this.this$0, this.jdField_a_of_type_JavaLangStringBuilder.toString());
-        this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(null);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(BlessSelectMemberActivity.b(this.this$0));
+        this.b.append(str);
+        BlessSelectMemberActivity.b(this.this$0, this.b.toString());
+        this.a.setEllipsize(null);
+        this.a.setText(BlessSelectMemberActivity.e(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.4
  * JD-Core Version:    0.7.0.1
  */

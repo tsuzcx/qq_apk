@@ -3,6 +3,7 @@ package org.libpag;
 import android.graphics.Matrix;
 import org.extra.tools.LibraryLoadUtils;
 
+@Deprecated
 public class PAGRenderer
 {
   private long nativeContext = 0L;
@@ -15,6 +16,7 @@ public class PAGRenderer
     nativeInit();
   }
   
+  @Deprecated
   public PAGRenderer()
   {
     nativeSetup();
@@ -38,10 +40,13 @@ public class PAGRenderer
   
   private final native void nativeSetup();
   
+  @Deprecated
   public native boolean cacheEnabled();
   
+  @Deprecated
   public native float cacheScale();
   
+  @Deprecated
   public native void draw();
   
   protected void finalize()
@@ -49,29 +54,37 @@ public class PAGRenderer
     nativeFinalize();
   }
   
+  @Deprecated
   public boolean flush()
   {
     return flush(false);
   }
   
+  @Deprecated
   public native boolean flush(boolean paramBoolean);
   
+  @Deprecated
   public PAGFile getFile()
   {
     return this.pagFile;
   }
   
+  @Deprecated
   public native PAGLayer[] getLayersUnderPoint(float paramFloat1, float paramFloat2);
   
+  @Deprecated
   public native double getProgress();
   
+  @Deprecated
   public native PAGComposition getRootComposition();
   
+  @Deprecated
   public PAGSurface getSurface()
   {
     return this.pagSurface;
   }
   
+  @Deprecated
   public Matrix matrix()
   {
     float[] arrayOfFloat = new float[9];
@@ -81,6 +94,7 @@ public class PAGRenderer
     return localMatrix;
   }
   
+  @Deprecated
   public native float maxFrameRate();
   
   public void release()
@@ -88,6 +102,7 @@ public class PAGRenderer
     nativeRelease();
   }
   
+  @Deprecated
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
     if (paramPAGImage == null)
@@ -98,14 +113,19 @@ public class PAGRenderer
     nativeReplaceImage(paramInt, paramPAGImage.nativeContext);
   }
   
+  @Deprecated
   public native void reset();
   
+  @Deprecated
   public native int scaleMode();
   
+  @Deprecated
   public native void setCacheEnabled(boolean paramBoolean);
   
+  @Deprecated
   public native void setCacheScale(float paramFloat);
   
+  @Deprecated
   public void setFile(PAGFile paramPAGFile)
   {
     this.pagFile = paramPAGFile;
@@ -117,6 +137,7 @@ public class PAGRenderer
     nativeSetFile(0L);
   }
   
+  @Deprecated
   public void setMatrix(Matrix paramMatrix)
   {
     float[] arrayOfFloat = new float[9];
@@ -124,12 +145,16 @@ public class PAGRenderer
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
   }
   
+  @Deprecated
   public native void setMaxFrameRate(float paramFloat);
   
+  @Deprecated
   public native void setProgress(double paramDouble);
   
+  @Deprecated
   public native void setScaleMode(int paramInt);
   
+  @Deprecated
   public void setSurface(PAGSurface paramPAGSurface)
   {
     this.pagSurface = paramPAGSurface;
@@ -141,11 +166,12 @@ public class PAGRenderer
     nativeSetSurface(paramPAGSurface.nativeSurface);
   }
   
+  @Deprecated
   public native void setTextData(int paramInt, PAGText paramPAGText);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGRenderer
  * JD-Core Version:    0.7.0.1
  */

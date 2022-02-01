@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.widget.IPullRefreshHeaderControl;
 
 class Conversation$4
   implements Runnable
@@ -11,19 +12,20 @@ class Conversation$4
   
   public void run()
   {
-    boolean bool = ((IPhoneContactService)this.this$0.a.getRuntimeService(IPhoneContactService.class, "")).checkAndUploadContact(true);
-    if (QLog.isColorLevel())
+    if (Conversation.i(this.this$0) != null) {
+      Conversation.i(this.this$0).scrollTo(0, -ScreenUtil.dip2px(50.0F));
+    }
+    if (this.this$0.x != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("REQ_FOR_SETTING : ");
-      localStringBuilder.append(bool);
-      QLog.i("BindMsgConstant", 2, localStringBuilder.toString());
+      this.this$0.x.a(0L);
+      Conversation localConversation = this.this$0;
+      localConversation.onViewCompleteVisableAndReleased(0, (View)localConversation.x, Conversation.i(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.4
  * JD-Core Version:    0.7.0.1
  */

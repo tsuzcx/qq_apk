@@ -7,6 +7,8 @@ import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.drawer.FriendProfileBubble;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.model.ApolloCmQQStatusData;
+import com.tencent.mobileqq.apollo.model.ApolloCmQQStatusData.From;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
 import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
 import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
@@ -17,6 +19,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
 
@@ -27,18 +30,18 @@ class FriendCardApolloViewController$DrawerInfoCallback
   
   public void a()
   {
-    QQAppInterface localQQAppInterface = this.a.a();
-    QBaseActivity localQBaseActivity = (QBaseActivity)FriendCardApolloViewController.a(this.a).get();
-    Object localObject1 = (View)FriendCardApolloViewController.b(this.a).get();
+    QQAppInterface localQQAppInterface = this.a.c();
+    QBaseActivity localQBaseActivity = (QBaseActivity)FriendCardApolloViewController.c(this.a).get();
+    Object localObject1 = (View)FriendCardApolloViewController.d(this.a).get();
     if ((localQQAppInterface != null) && (localQBaseActivity != null))
     {
       if (localObject1 == null) {
         return;
       }
-      if ((!TextUtils.isEmpty(FriendCardApolloViewController.a(this.a))) && ((this.a.a == null) || (this.a.a.getVisibility() != 0))) {
+      if ((!TextUtils.isEmpty(FriendCardApolloViewController.e(this.a))) && ((this.a.b == null) || (this.a.b.getVisibility() != 0))) {
         ThreadManager.getUIHandler().post(new FriendCardApolloViewController.DrawerInfoCallback.1(this, localQBaseActivity, (View)localObject1));
       }
-      Object localObject4 = FriendCardApolloViewController.a(this.a);
+      Object localObject4 = FriendCardApolloViewController.f(this.a);
       Object localObject3 = null;
       if ((localObject4 != null) && (((ProfileCardInfo)localObject4).allInOne != null)) {
         localObject1 = ((ProfileCardInfo)localObject4).allInOne.uin;
@@ -57,10 +60,13 @@ class FriendCardApolloViewController$DrawerInfoCallback
           }
         }
       }
+      if (FriendCardApolloViewController.a(this.a, localQQAppInterface, (String)localObject2)) {
+        return;
+      }
       localObject4 = (ApolloManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
       localObject1 = localObject3;
-      if (!FriendCardApolloViewController.a(this.a)) {
-        localObject1 = ((ApolloManagerServiceImpl)localObject4).getRandomAppearAction(localQQAppInterface, (String)localObject2, new int[] { 4 });
+      if (!FriendCardApolloViewController.g(this.a)) {
+        localObject1 = ((ApolloManagerServiceImpl)localObject4).getRandomAppearAction(FriendCardApolloViewController.a(this.a), localQQAppInterface, (String)localObject2, new int[] { 4 });
       }
       int i = 5;
       if (localObject1 == null)
@@ -73,8 +79,8 @@ class FriendCardApolloViewController$DrawerInfoCallback
       {
         i = 12;
       }
-      SpriteUtil.a(FriendCardApolloViewController.a(this.a), i, (ApolloActionData)localObject1);
-      new FriendProfileBubble((String)localObject2).a(FriendCardApolloViewController.a(this.a), localQBaseActivity, localQQAppInterface, HardCodeUtil.a(2131704964));
+      SpriteUtil.a(FriendCardApolloViewController.b(this.a), i, (ApolloActionData)localObject1);
+      new FriendProfileBubble((String)localObject2).a(FriendCardApolloViewController.b(this.a), localQBaseActivity, localQQAppInterface, HardCodeUtil.a(2131902855));
     }
   }
   
@@ -87,7 +93,7 @@ class FriendCardApolloViewController$DrawerInfoCallback
   
   public void c()
   {
-    ProfileCardInfo localProfileCardInfo = FriendCardApolloViewController.a(this.a);
+    ProfileCardInfo localProfileCardInfo = FriendCardApolloViewController.f(this.a);
     String str1;
     if ((localProfileCardInfo != null) && (localProfileCardInfo.allInOne != null)) {
       str1 = localProfileCardInfo.allInOne.uin;
@@ -109,6 +115,25 @@ class FriendCardApolloViewController$DrawerInfoCallback
     FriendCardApolloViewController.a(this.a, str2, "expose");
   }
   
+  public void d()
+  {
+    if (FriendCardApolloViewController.f(this.a) == null)
+    {
+      QLog.e("[cmshow]FriendCardApolloViewController", 1, "profileCardInfo is null");
+      return;
+    }
+    Object localObject = this.a;
+    localObject = FriendCardApolloViewController.a((FriendCardApolloViewController)localObject, FriendCardApolloViewController.f((FriendCardApolloViewController)localObject));
+    localObject = FriendCardApolloViewController.b(this.a, (String)localObject);
+    if (localObject == null)
+    {
+      QLog.e("[cmshow]FriendCardApolloViewController", 1, "apolloCmQQStatusData is null");
+      return;
+    }
+    int i = ((ApolloCmQQStatusData)localObject).getShowUpBubbleTime(ApolloCmQQStatusData.From.CARD);
+    FriendCardApolloViewController.a(this.a, ((ApolloCmQQStatusData)localObject).apolloQQPicUrl, ((ApolloCmQQStatusData)localObject).apolloQQBubbleId, i);
+  }
+  
   public void onClick(View paramView)
   {
     this.a.a(1, 0, null);
@@ -116,7 +141,7 @@ class FriendCardApolloViewController$DrawerInfoCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.profilecard.FriendCardApolloViewController.DrawerInfoCallback
  * JD-Core Version:    0.7.0.1
  */

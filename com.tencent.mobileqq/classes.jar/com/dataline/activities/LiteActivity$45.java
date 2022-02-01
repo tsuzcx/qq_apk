@@ -1,31 +1,32 @@
 package com.dataline.activities;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.InputStream;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import java.util.ArrayList;
 
 class LiteActivity$45
-  implements DialogInterface.OnClickListener
+  implements FMDialogUtil.FMDialogInterface
 {
-  LiteActivity$45(LiteActivity paramLiteActivity, String paramString, InputStream paramInputStream, long paramLong) {}
+  LiteActivity$45(LiteActivity paramLiteActivity, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
+    Bundle localBundle;
+    if (!this.a.isEmpty())
     {
-      LiteActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      return;
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.a);
+      new LiteActivity.SendPhotoAsyncTask(this.c).execute(new Bundle[] { localBundle });
     }
-    catch (Exception paramDialogInterface)
+    if (!this.b.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(LiteActivity.jdField_a_of_type_JavaLangString, 2, "copy file error", paramDialogInterface);
-      }
-      paramDialogInterface = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity;
-      LiteActivity.a(paramDialogInterface, paramDialogInterface.b());
+      localBundle = new Bundle();
+      localBundle.putStringArrayList("PhotoConst.PHOTO_PATHS", this.b);
+      new LiteActivity.SendVideoAsyncTask(this.c).execute(new Bundle[] { localBundle });
     }
   }
+  
+  public void b() {}
 }
 
 

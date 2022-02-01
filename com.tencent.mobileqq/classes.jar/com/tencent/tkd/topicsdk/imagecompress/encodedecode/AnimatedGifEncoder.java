@@ -11,175 +11,190 @@ import org.jetbrains.annotations.Nullable;
 
 public class AnimatedGifEncoder
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private OutputStream jdField_a_of_type_JavaIoOutputStream;
-  private Integer jdField_a_of_type_JavaLangInteger = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private boolean[] jdField_a_of_type_ArrayOfBoolean = new boolean[256];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  private byte[] jdField_c_of_type_ArrayOfByte;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int;
-  private boolean jdField_e_of_type_Boolean;
-  private int f = -1;
-  private int g = 0;
-  private int h;
-  private int i = 7;
-  private int j = -1;
-  private int k = 10;
-  
-  private int a(int paramInt)
-  {
-    if (this.jdField_c_of_type_ArrayOfByte == null) {
-      return -1;
-    }
-    int i4 = Color.red(paramInt);
-    int i5 = Color.green(paramInt);
-    int i6 = Color.blue(paramInt);
-    int i7 = this.jdField_c_of_type_ArrayOfByte.length;
-    int i1 = 0;
-    int m = 0;
-    int n;
-    for (paramInt = 16777216; i1 < i7; paramInt = n)
-    {
-      byte[] arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
-      int i2 = i1 + 1;
-      n = i4 - (arrayOfByte[i1] & 0xFF);
-      int i8 = i2 + 1;
-      i1 = i5 - (arrayOfByte[i2] & 0xFF);
-      i2 = i6 - (arrayOfByte[i8] & 0xFF);
-      int i3 = n * n + i1 * i1 + i2 * i2;
-      i2 = i8 / 3;
-      i1 = m;
-      n = paramInt;
-      if (this.jdField_a_of_type_ArrayOfBoolean[i2] != 0)
-      {
-        i1 = m;
-        n = paramInt;
-        if (i3 < paramInt)
-        {
-          n = i3;
-          i1 = i2;
-        }
-      }
-      paramInt = i8 + 1;
-      m = i1;
-      i1 = paramInt;
-    }
-    return m;
-  }
-  
-  private void a()
-  {
-    Object localObject = this.jdField_a_of_type_ArrayOfByte;
-    int n = localObject.length;
-    int i2 = n / 3;
-    this.jdField_b_of_type_ArrayOfByte = new byte[i2];
-    localObject = new NeuQuant((byte[])localObject, n, this.k);
-    this.jdField_c_of_type_ArrayOfByte = ((NeuQuant)localObject).b();
-    n = 0;
-    byte[] arrayOfByte;
-    for (;;)
-    {
-      arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
-      if (n >= arrayOfByte.length) {
-        break;
-      }
-      int m = arrayOfByte[n];
-      i1 = n + 2;
-      arrayOfByte[n] = arrayOfByte[i1];
-      arrayOfByte[i1] = m;
-      this.jdField_a_of_type_ArrayOfBoolean[(n / 3)] = false;
-      n += 3;
-    }
-    n = 0;
-    int i1 = 0;
-    while (n < i2)
-    {
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i3 = i1 + 1;
-      int i4 = arrayOfByte[i1];
-      i1 = i3 + 1;
-      i3 = ((NeuQuant)localObject).a(i4 & 0xFF, arrayOfByte[i3] & 0xFF, arrayOfByte[i1] & 0xFF);
-      this.jdField_a_of_type_ArrayOfBoolean[i3] = true;
-      this.jdField_b_of_type_ArrayOfByte[n] = ((byte)i3);
-      n += 1;
-      i1 += 1;
-    }
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.h = 8;
-    this.i = 7;
-    localObject = this.jdField_a_of_type_JavaLangInteger;
-    if (localObject != null)
-    {
-      this.jdField_e_of_type_Int = a(((Integer)localObject).intValue());
-      return;
-    }
-    if (this.jdField_e_of_type_Boolean) {
-      this.jdField_e_of_type_Int = a(0);
-    }
-  }
+  private int a;
+  private int b;
+  private int c;
+  private int d;
+  private Integer e = null;
+  private int f;
+  private int g = -1;
+  private int h = 0;
+  private boolean i = false;
+  private OutputStream j;
+  private Bitmap k;
+  private byte[] l;
+  private byte[] m;
+  private int n;
+  private byte[] o;
+  private boolean[] p = new boolean[256];
+  private int q = 7;
+  private int r = -1;
+  private boolean s = false;
+  private boolean t = true;
+  private boolean u = false;
+  private int v = 10;
+  private boolean w;
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
   
   private void a(String paramString)
   {
-    int m = 0;
-    while (m < paramString.length())
+    int i1 = 0;
+    while (i1 < paramString.length())
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write((byte)paramString.charAt(m));
-      m += 1;
+      this.j.write((byte)paramString.charAt(i1));
+      i1 += 1;
     }
   }
   
   private void b()
   {
-    int m = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    if ((m != this.jdField_a_of_type_Int) || (n != this.jdField_b_of_type_Int))
+    Object localObject = this.l;
+    int i2 = localObject.length;
+    int i4 = i2 / 3;
+    this.m = new byte[i4];
+    localObject = new NeuQuant((byte[])localObject, i2, this.v);
+    this.o = ((NeuQuant)localObject).d();
+    i2 = 0;
+    byte[] arrayOfByte;
+    for (;;)
     {
-      localObject = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Bitmap.Config.ARGB_8888);
-      new Canvas((Bitmap)localObject).drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-    }
-    Object localObject = new int[m * n];
-    this.jdField_a_of_type_AndroidGraphicsBitmap.getPixels((int[])localObject, 0, m, 0, 0, m, n);
-    this.jdField_a_of_type_ArrayOfByte = new byte[localObject.length * 3];
-    boolean bool = false;
-    this.jdField_e_of_type_Boolean = false;
-    int i3 = localObject.length;
-    m = 0;
-    int i2 = 0;
-    n = 0;
-    while (m < i3)
-    {
-      int i4 = localObject[m];
-      int i1 = i2;
-      if (i4 == 0) {
-        i1 = i2 + 1;
+      arrayOfByte = this.o;
+      if (i2 >= arrayOfByte.length) {
+        break;
       }
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      i2 = n + 1;
-      arrayOfByte[n] = ((byte)(i4 & 0xFF));
-      n = i2 + 1;
-      arrayOfByte[i2] = ((byte)(i4 >> 8 & 0xFF));
-      arrayOfByte[n] = ((byte)(i4 >> 16 & 0xFF));
-      m += 1;
-      n += 1;
-      i2 = i1;
+      int i1 = arrayOfByte[i2];
+      i3 = i2 + 2;
+      arrayOfByte[i2] = arrayOfByte[i3];
+      arrayOfByte[i3] = i1;
+      this.p[(i2 / 3)] = false;
+      i2 += 3;
     }
-    double d1 = i2 * 100;
+    i2 = 0;
+    int i3 = 0;
+    while (i2 < i4)
+    {
+      arrayOfByte = this.l;
+      int i5 = i3 + 1;
+      int i6 = arrayOfByte[i3];
+      i3 = i5 + 1;
+      i5 = ((NeuQuant)localObject).a(i6 & 0xFF, arrayOfByte[i5] & 0xFF, arrayOfByte[i3] & 0xFF);
+      this.p[i5] = true;
+      this.m[i2] = ((byte)i5);
+      i2 += 1;
+      i3 += 1;
+    }
+    this.l = null;
+    this.n = 8;
+    this.q = 7;
+    localObject = this.e;
+    if (localObject != null)
+    {
+      this.f = c(((Integer)localObject).intValue());
+      return;
+    }
+    if (this.w) {
+      this.f = c(0);
+    }
+  }
+  
+  private void b(int paramInt1, int paramInt2)
+  {
+    this.j.write(44);
+    d(paramInt1);
+    d(paramInt2);
+    d(this.a);
+    d(this.b);
+    if (this.t)
+    {
+      this.j.write(0);
+      return;
+    }
+    this.j.write(this.q | 0x80);
+  }
+  
+  private int c(int paramInt)
+  {
+    if (this.o == null) {
+      return -1;
+    }
+    int i6 = Color.red(paramInt);
+    int i7 = Color.green(paramInt);
+    int i8 = Color.blue(paramInt);
+    int i9 = this.o.length;
+    int i3 = 0;
+    int i1 = 0;
+    int i2;
+    for (paramInt = 16777216; i3 < i9; paramInt = i2)
+    {
+      byte[] arrayOfByte = this.o;
+      int i4 = i3 + 1;
+      i2 = i6 - (arrayOfByte[i3] & 0xFF);
+      int i10 = i4 + 1;
+      i3 = i7 - (arrayOfByte[i4] & 0xFF);
+      i4 = i8 - (arrayOfByte[i10] & 0xFF);
+      int i5 = i2 * i2 + i3 * i3 + i4 * i4;
+      i4 = i10 / 3;
+      i3 = i1;
+      i2 = paramInt;
+      if (this.p[i4] != 0)
+      {
+        i3 = i1;
+        i2 = paramInt;
+        if (i5 < paramInt)
+        {
+          i2 = i5;
+          i3 = i4;
+        }
+      }
+      paramInt = i10 + 1;
+      i1 = i3;
+      i3 = paramInt;
+    }
+    return i1;
+  }
+  
+  private void c()
+  {
+    int i1 = this.k.getWidth();
+    int i2 = this.k.getHeight();
+    if ((i1 != this.a) || (i2 != this.b))
+    {
+      localObject = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
+      new Canvas((Bitmap)localObject).drawBitmap((Bitmap)localObject, 0.0F, 0.0F, null);
+      this.k = ((Bitmap)localObject);
+    }
+    Object localObject = new int[i1 * i2];
+    this.k.getPixels((int[])localObject, 0, i1, 0, 0, i1, i2);
+    this.l = new byte[localObject.length * 3];
+    boolean bool = false;
+    this.w = false;
+    int i5 = localObject.length;
+    i1 = 0;
+    int i4 = 0;
+    i2 = 0;
+    while (i1 < i5)
+    {
+      int i6 = localObject[i1];
+      int i3 = i4;
+      if (i6 == 0) {
+        i3 = i4 + 1;
+      }
+      byte[] arrayOfByte = this.l;
+      i4 = i2 + 1;
+      arrayOfByte[i2] = ((byte)(i6 & 0xFF));
+      i2 = i4 + 1;
+      arrayOfByte[i4] = ((byte)(i6 >> 8 & 0xFF));
+      arrayOfByte[i2] = ((byte)(i6 >> 16 & 0xFF));
+      i1 += 1;
+      i2 += 1;
+      i4 = i3;
+    }
+    double d1 = i4 * 100;
     double d2 = localObject.length;
     Double.isNaN(d1);
     Double.isNaN(d2);
@@ -187,7 +202,7 @@ public class AnimatedGifEncoder
     if (d1 > 4.0D) {
       bool = true;
     }
-    this.jdField_e_of_type_Boolean = bool;
+    this.w = bool;
     if (Log.isLoggable("AnimatedGifEncoder", 3))
     {
       localObject = new StringBuilder();
@@ -198,111 +213,96 @@ public class AnimatedGifEncoder
     }
   }
   
-  private void b(int paramInt1, int paramInt2)
+  private void d()
   {
-    this.jdField_a_of_type_JavaIoOutputStream.write(44);
-    c(paramInt1);
-    c(paramInt2);
-    c(this.jdField_a_of_type_Int);
-    c(this.jdField_b_of_type_Int);
-    if (this.jdField_c_of_type_Boolean)
+    this.j.write(33);
+    this.j.write(249);
+    this.j.write(4);
+    int i2;
+    int i1;
+    if ((this.e == null) && (!this.w))
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(0);
-      return;
-    }
-    this.jdField_a_of_type_JavaIoOutputStream.write(this.i | 0x80);
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_JavaIoOutputStream.write(33);
-    this.jdField_a_of_type_JavaIoOutputStream.write(249);
-    this.jdField_a_of_type_JavaIoOutputStream.write(4);
-    int n;
-    int m;
-    if ((this.jdField_a_of_type_JavaLangInteger == null) && (!this.jdField_e_of_type_Boolean))
-    {
-      n = 0;
-      m = 0;
+      i2 = 0;
+      i1 = 0;
     }
     else
     {
-      n = 1;
-      m = 2;
+      i2 = 1;
+      i1 = 2;
     }
-    int i1 = this.j;
-    if (i1 >= 0) {
-      m = i1 & 0x7;
+    int i3 = this.r;
+    if (i3 >= 0) {
+      i1 = i3 & 0x7;
     }
-    this.jdField_a_of_type_JavaIoOutputStream.write(n | m << 2 | 0x0 | 0x0);
-    c(this.g);
-    this.jdField_a_of_type_JavaIoOutputStream.write(this.jdField_e_of_type_Int);
-    this.jdField_a_of_type_JavaIoOutputStream.write(0);
+    this.j.write(i2 | i1 << 2 | 0x0 | 0x0);
+    d(this.h);
+    this.j.write(this.f);
+    this.j.write(0);
   }
   
-  private void c(int paramInt)
+  private void d(int paramInt)
   {
-    this.jdField_a_of_type_JavaIoOutputStream.write(paramInt & 0xFF);
-    this.jdField_a_of_type_JavaIoOutputStream.write(paramInt >> 8 & 0xFF);
-  }
-  
-  private void d()
-  {
-    c(this.jdField_a_of_type_Int);
-    c(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_JavaIoOutputStream.write(this.i | 0xF0);
-    this.jdField_a_of_type_JavaIoOutputStream.write(0);
-    this.jdField_a_of_type_JavaIoOutputStream.write(0);
+    this.j.write(paramInt & 0xFF);
+    this.j.write(paramInt >> 8 & 0xFF);
   }
   
   private void e()
   {
-    this.jdField_a_of_type_JavaIoOutputStream.write(33);
-    this.jdField_a_of_type_JavaIoOutputStream.write(255);
-    this.jdField_a_of_type_JavaIoOutputStream.write(11);
-    a("NETSCAPE2.0");
-    this.jdField_a_of_type_JavaIoOutputStream.write(3);
-    this.jdField_a_of_type_JavaIoOutputStream.write(1);
-    c(this.f);
-    this.jdField_a_of_type_JavaIoOutputStream.write(0);
+    d(this.a);
+    d(this.b);
+    this.j.write(this.q | 0xF0);
+    this.j.write(0);
+    this.j.write(0);
   }
   
   private void f()
   {
-    OutputStream localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
-    byte[] arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
-    localOutputStream.write(arrayOfByte, 0, arrayOfByte.length);
-    int n = this.jdField_c_of_type_ArrayOfByte.length;
-    int m = 0;
-    while (m < 768 - n)
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(0);
-      m += 1;
-    }
+    this.j.write(33);
+    this.j.write(255);
+    this.j.write(11);
+    a("NETSCAPE2.0");
+    this.j.write(3);
+    this.j.write(1);
+    d(this.g);
+    this.j.write(0);
   }
   
   private void g()
   {
-    new LZWEncoder(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfByte, this.h).b(this.jdField_a_of_type_JavaIoOutputStream);
+    OutputStream localOutputStream = this.j;
+    byte[] arrayOfByte = this.o;
+    localOutputStream.write(arrayOfByte, 0, arrayOfByte.length);
+    int i2 = this.o.length;
+    int i1 = 0;
+    while (i1 < 768 - i2)
+    {
+      this.j.write(0);
+      i1 += 1;
+    }
+  }
+  
+  private void h()
+  {
+    new LZWEncoder(this.a, this.b, this.m, this.n).b(this.j);
   }
   
   public void a(int paramInt)
   {
-    this.g = Math.round(paramInt / 10.0F);
+    this.h = Math.round(paramInt / 10.0F);
   }
   
   public boolean a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.i) {
       return false;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.i = false;
     try
     {
-      this.jdField_a_of_type_JavaIoOutputStream.write(59);
-      this.jdField_a_of_type_JavaIoOutputStream.flush();
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_JavaIoOutputStream.close();
+      this.j.write(59);
+      this.j.flush();
+      if (this.s) {
+        this.j.close();
       }
       bool = true;
     }
@@ -313,14 +313,14 @@ public class AnimatedGifEncoder
       break label49;
     }
     bool = false;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_JavaIoOutputStream = null;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_ArrayOfByte = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
+    this.f = 0;
+    this.j = null;
+    this.k = null;
+    this.l = null;
+    this.m = null;
+    this.o = null;
+    this.s = false;
+    this.t = true;
     return bool;
   }
   
@@ -333,35 +333,35 @@ public class AnimatedGifEncoder
   {
     boolean bool = false;
     if (paramBitmap != null) {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.i) {
         return false;
       }
     }
     try
     {
-      if (this.jdField_d_of_type_Boolean) {
-        a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
+      if (this.u) {
+        a(this.c, this.d);
       } else {
         a(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.k = paramBitmap;
+      c();
       b();
-      a();
-      if (this.jdField_c_of_type_Boolean)
+      if (this.t)
       {
-        d();
-        f();
-        if (this.f >= 0) {
-          e();
+        e();
+        g();
+        if (this.g >= 0) {
+          f();
         }
       }
-      c();
+      d();
       b(paramInt1, paramInt2);
-      if (!this.jdField_c_of_type_Boolean) {
-        f();
+      if (!this.t) {
+        g();
       }
-      g();
-      this.jdField_c_of_type_Boolean = false;
+      h();
+      this.t = false;
       bool = true;
       return bool;
     }
@@ -375,8 +375,8 @@ public class AnimatedGifEncoder
     if (paramOutputStream == null) {
       return false;
     }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaIoOutputStream = paramOutputStream;
+    this.s = false;
+    this.j = paramOutputStream;
     try
     {
       a("GIF89a");
@@ -384,23 +384,23 @@ public class AnimatedGifEncoder
     }
     catch (IOException paramOutputStream)
     {
-      label26:
-      break label26;
+      label27:
+      break label27;
     }
-    this.jdField_a_of_type_Boolean = bool;
+    this.i = bool;
     return bool;
   }
   
   public void b(int paramInt)
   {
     if (paramInt >= 0) {
-      this.f = paramInt;
+      this.g = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.AnimatedGifEncoder
  * JD-Core Version:    0.7.0.1
  */

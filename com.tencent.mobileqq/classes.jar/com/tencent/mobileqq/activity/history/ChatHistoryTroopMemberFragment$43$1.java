@@ -16,18 +16,18 @@ class ChatHistoryTroopMemberFragment$43$1
   
   public void run()
   {
-    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.b.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    TroopMemberInfo localTroopMemberInfo = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.b, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.c, this.jdField_a_of_type_JavaLangString);
+    Object localObject = (FriendsManager)this.b.a.bc.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    TroopMemberInfo localTroopMemberInfo = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.b.a.bc, this.b.a.w, this.a);
     if ((localTroopMemberInfo != null) && (localObject != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.a(localTroopMemberInfo, (FriendsManager)localObject);
+      localObject = this.b.a.a(localTroopMemberInfo, (FriendsManager)localObject);
       ThreadManager.getUIHandler().post(new ChatHistoryTroopMemberFragment.43.1.1(this, (ChatHistoryTroopMemberFragment.ATroopMember)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.43.1
  * JD-Core Version:    0.7.0.1
  */

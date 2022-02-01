@@ -19,24 +19,18 @@ import mqq.app.MobileQQ;
 public class AvatarUpdateService
   implements HttpImageDownloadAsyncTask.TaskCompleteCallback
 {
-  private static AvatarUpdateService a;
-  protected SharedPreferences a;
-  protected HashMap<String, AvatarUpdateService.AvatarUpdateTask> a;
-  
-  protected AvatarUpdateService()
-  {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = MobileQQ.sMobileQQ.getSharedPreferences("uin_avatarurl", 0);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  private static AvatarUpdateService c;
+  protected HashMap<String, AvatarUpdateService.AvatarUpdateTask> a = new HashMap();
+  protected SharedPreferences b = MobileQQ.sMobileQQ.getSharedPreferences("uin_avatarurl", 0);
   
   public static AvatarUpdateService a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService == null) {
-        jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService = new AvatarUpdateService();
+      if (c == null) {
+        c = new AvatarUpdateService();
       }
-      return jdField_a_of_type_ComTencentOpenBaseHttpAvatarUpdateService;
+      return c;
     }
     finally {}
   }
@@ -51,7 +45,7 @@ public class AvatarUpdateService
     ((StringBuilder)localObject).append("https://openmobile.qq.com/getface?appid=716027609&imgtype=3&encrytype=0&devtype=0&keytype=0&uin=");
     ((StringBuilder)localObject).append(paramString1);
     String str1 = ((StringBuilder)localObject).toString();
-    String str2 = OpenSdkVirtualUtil.a(paramString1);
+    String str2 = OpenSdkVirtualUtil.b(paramString1);
     for (localObject = paramString1; ((String)localObject).length() < 10; localObject = localStringBuilder.toString())
     {
       localStringBuilder = new StringBuilder();
@@ -88,9 +82,9 @@ public class AvatarUpdateService
   public void a(String paramString, Bitmap arg2)
   {
     Object localObject1;
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    synchronized (this.a)
     {
-      localObject1 = (AvatarUpdateService.AvatarUpdateTask)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      localObject1 = (AvatarUpdateService.AvatarUpdateTask)this.a.get(paramString);
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
@@ -117,7 +111,7 @@ public class AvatarUpdateService
       if (localObject1 == null) {
         return;
       }
-      ??? = (Context)((AvatarUpdateService.AvatarUpdateTask)localObject1).jdField_a_of_type_JavaLangRefWeakReference.get();
+      ??? = (Context)((AvatarUpdateService.AvatarUpdateTask)localObject1).a.get();
       if ((??? != null) && (??? != null))
       {
         ??? = AuthorityUtil.a((Context)???, ???, 63, 63);
@@ -126,12 +120,12 @@ public class AvatarUpdateService
     }
     try
     {
-      a(???, ((AvatarUpdateService.AvatarUpdateTask)localObject1).jdField_b_of_type_JavaLangString);
-      ??? = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)???).putString(((AvatarUpdateService.AvatarUpdateTask)localObject1).jdField_a_of_type_JavaLangString, ((AvatarUpdateService.AvatarUpdateTask)localObject1).c);
+      a(???, ((AvatarUpdateService.AvatarUpdateTask)localObject1).c);
+      ??? = this.b.edit();
+      ((SharedPreferences.Editor)???).putString(((AvatarUpdateService.AvatarUpdateTask)localObject1).b, ((AvatarUpdateService.AvatarUpdateTask)localObject1).d);
       ((SharedPreferences.Editor)???).commit();
       label213:
-      localObject1 = (HttpImageDownloadAsyncTask.TaskCompleteCallback)((AvatarUpdateService.AvatarUpdateTask)localObject1).jdField_b_of_type_JavaLangRefWeakReference.get();
+      localObject1 = (HttpImageDownloadAsyncTask.TaskCompleteCallback)((AvatarUpdateService.AvatarUpdateTask)localObject1).e.get();
       if (localObject1 != null)
       {
         if (QLog.isColorLevel()) {
@@ -139,9 +133,9 @@ public class AvatarUpdateService
         }
         ((HttpImageDownloadAsyncTask.TaskCompleteCallback)localObject1).a(paramString, ???);
       }
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      synchronized (this.a)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        this.a.remove(paramString);
         return;
       }
       paramString = finally;
@@ -155,7 +149,7 @@ public class AvatarUpdateService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.http.AvatarUpdateService
  * JD-Core Version:    0.7.0.1
  */

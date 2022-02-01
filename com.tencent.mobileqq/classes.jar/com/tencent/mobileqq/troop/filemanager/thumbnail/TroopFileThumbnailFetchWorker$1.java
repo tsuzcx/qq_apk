@@ -16,30 +16,30 @@ class TroopFileThumbnailFetchWorker$1
   public void run()
   {
     int i;
-    if (this.this$0.jdField_a_of_type_Boolean)
+    if (this.this$0.d)
     {
-      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      i = TroopFileTransferUtil.Log.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.this$0.c);
       ((StringBuilder)localObject).append("] start. had stoped");
       TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       return;
     }
-    this.this$0.c();
+    this.this$0.f();
     Object localObject = this.this$0;
-    ((TroopFileThumbnailFetchWorker)localObject).e = ((TroopFileThumbnailFetchWorker)localObject).jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
+    ((TroopFileThumbnailFetchWorker)localObject).j = ((TroopFileThumbnailFetchWorker)localObject).b.getThumbnailFile(this.this$0.a, this.this$0.k);
     localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.this$0.e);
+    localStringBuilder.append(this.this$0.j);
     localStringBuilder.append(".ttmp");
-    ((TroopFileThumbnailFetchWorker)localObject).d = localStringBuilder.toString();
-    if (FileUtils.fileExistsAndNotEmpty(this.this$0.e))
+    ((TroopFileThumbnailFetchWorker)localObject).i = localStringBuilder.toString();
+    if (FileUtils.fileExistsAndNotEmpty(this.this$0.j))
     {
-      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      i = TroopFileTransferUtil.Log.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.this$0.c);
       ((StringBuilder)localObject).append("] thumb had exsited");
       TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       this.this$0.a(true);
@@ -47,32 +47,32 @@ class TroopFileThumbnailFetchWorker$1
     }
     if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
-      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      i = TroopFileTransferUtil.Log.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.this$0.c);
       ((StringBuilder)localObject).append("] no network");
       TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       this.this$0.c(TroopTechReportUtils.TroopFileReportResultCode.k);
       return;
     }
-    if (TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath))
+    if (TextUtils.isEmpty(this.this$0.b.FilePath))
     {
-      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      i = TroopFileTransferUtil.Log.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.this$0.c);
       ((StringBuilder)localObject).append("] filepath is null");
       TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       this.this$0.c(TroopTechReportUtils.TroopFileReportResultCode.w);
       return;
     }
-    this.this$0.b();
+    this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker.1
  * JD-Core Version:    0.7.0.1
  */

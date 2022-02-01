@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.apollo.model;
 
+import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -10,7 +11,6 @@ public class ApolloActionData
   implements Serializable
 {
   public static final int ACTION_HIDE = 0;
-  public static final int ACTION_ID_3D_SEGMENT = 300000;
   public static final int ACTION_SHOW = 1;
   public static final int CURRENCY_TYPE_GOLD = 1;
   public static final int MAIN_ACTION = 1;
@@ -79,7 +79,7 @@ public class ApolloActionData
   
   public static boolean isAction3DModel(int paramInt)
   {
-    return paramInt >= 300000;
+    return paramInt >= ApolloConstant.f;
   }
   
   public boolean isHasPostAction()
@@ -112,7 +112,7 @@ public class ApolloActionData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.model.ApolloActionData
  * JD-Core Version:    0.7.0.1
  */

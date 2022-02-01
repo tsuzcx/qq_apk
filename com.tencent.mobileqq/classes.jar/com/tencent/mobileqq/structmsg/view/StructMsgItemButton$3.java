@@ -44,13 +44,13 @@ class StructMsgItemButton$3
   
   public void onClick(View paramView)
   {
-    if (SystemClock.uptimeMillis() - this.a.jdField_c_of_type_Long >= 1000L)
+    if (SystemClock.uptimeMillis() - this.a.aR >= 1000L)
     {
-      this.a.jdField_c_of_type_Long = SystemClock.uptimeMillis();
+      this.a.aR = SystemClock.uptimeMillis();
       Object localObject1 = paramView.getTag();
       if ((localObject1 != null) && (StructMsgItemButton.class.isInstance(localObject1)))
       {
-        Object localObject2 = ((ViewGroup)paramView.getParent().getParent()).getTag(2131377989);
+        Object localObject2 = ((ViewGroup)paramView.getParent().getParent()).getTag(2131446476);
         if ((localObject2 != null) && (StructMsgForGeneralShare.class.isInstance(localObject2)))
         {
           StructMsgForGeneralShare localStructMsgForGeneralShare = (StructMsgForGeneralShare)localObject2;
@@ -60,7 +60,7 @@ class StructMsgItemButton$3
           {
             localObject1 = ((BaseActivity)localObject4).getChatFragment();
             if (localObject1 != null) {
-              localObject1 = ((ChatFragment)localObject1).a();
+              localObject1 = ((ChatFragment)localObject1).j();
             }
             for (;;)
             {
@@ -85,11 +85,11 @@ class StructMsgItemButton$3
                 {
                   Object localObject6 = new JSONObject();
                   ((JSONObject)localObject6).put("puin", localStructMsgForGeneralShare.message.frienduin);
-                  ((JSONObject)localObject6).put("type", localStructMsgItemButton.l);
-                  ((JSONObject)localObject6).put("index", localStructMsgItemButton.j);
-                  ((JSONObject)localObject6).put("name", localStructMsgItemButton.k);
+                  ((JSONObject)localObject6).put("type", localStructMsgItemButton.n);
+                  ((JSONObject)localObject6).put("index", localStructMsgItemButton.l);
+                  ((JSONObject)localObject6).put("name", localStructMsgItemButton.m);
                   ((JSONObject)localObject6).put("net", String.valueOf(HttpUtil.getNetWorkType()));
-                  ((JSONObject)localObject6).put("mobile_imei", DeviceInfoUtil.a());
+                  ((JSONObject)localObject6).put("mobile_imei", DeviceInfoUtil.b());
                   ((JSONObject)localObject6).put("obj", "");
                   ((JSONObject)localObject6).put("gdt_cli_data", localStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_msgClick"));
                   ((JSONObject)localObject6).put("view_id", localStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_view_id"));
@@ -109,16 +109,16 @@ class StructMsgItemButton$3
               Object localObject3 = new StructMsgClickHandler((QQAppInterface)localObject1, paramView, localStructMsgForGeneralShare.message);
               boolean bool = EcshopMessageApiImpl.enterGdtCanvasActivity((BaseQQAppInterface)localObject1, this.a, (Activity)localObject4);
               if (!bool) {
-                if (localStructMsgItemButton.b())
+                if (localStructMsgItemButton.r())
                 {
-                  if (localStructMsgItemButton.a())
+                  if (localStructMsgItemButton.q())
                   {
                     ReportController.b((AppRuntime)localObject1, "P_CliOper", "Pb_account_lifeservice", localStructMsgForGeneralShare.uin, "0X80061FE", "0X80061FE", 0, 1, 0, "", "", "", "");
                     ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", ((QQAppInterface)localObject1).getAccount(), "wallet", "publicpaymsg.btn.click", 1, 0, localStructMsgForGeneralShare.uin, "", String.valueOf(localStructMsgForGeneralShare.msgId), "");
-                    if (TextUtils.isEmpty(this.a.e)) {
-                      localObject3 = this.a.d;
+                    if (TextUtils.isEmpty(this.a.g)) {
+                      localObject3 = this.a.f;
                     } else {
-                      localObject3 = this.a.e;
+                      localObject3 = this.a.g;
                     }
                     try
                     {
@@ -126,7 +126,7 @@ class StructMsgItemButton$3
                       localObject5 = new StringBuilder();
                       ((StringBuilder)localObject5).append("orderId=");
                       ((StringBuilder)localObject5).append(((JSONObject)localObject3).optString("orderId"));
-                      VACDReportUtil.a(((StringBuilder)localObject5).toString(), "qqwallet", "publicpaymsg.pay.click", null, null, 0, null);
+                      VACDReportUtil.b(((StringBuilder)localObject5).toString(), "qqwallet", "publicpaymsg.pay.click", null, null, 0, null);
                       ((IPublicQuickPayService)((QQAppInterface)localObject1).getRuntimeService(IPublicQuickPayService.class)).publicQuickPay(localStructMsgForGeneralShare.message.frienduin, (JSONObject)localObject3, (Context)localObject4, new StructMsgItemButton.3.1(this, localStructMsgForGeneralShare, (Context)localObject4));
                     }
                     catch (Exception localException)
@@ -150,11 +150,11 @@ class StructMsgItemButton$3
                 }
                 else if (localStructMsgForGeneralShare.message != null)
                 {
-                  localStructMsgItemButton.b = EcShopAssistantManager.a(localStructMsgForGeneralShare.message.frienduin, localStructMsgItemButton.b, (QQAppInterface)localObject1);
+                  localStructMsgItemButton.d = EcShopAssistantManager.a(localStructMsgForGeneralShare.message.frienduin, localStructMsgItemButton.d, (QQAppInterface)localObject1);
                   if ("1".equals(localStructMsgForGeneralShare.message.getExtInfoFromExtStr("is_AdArrive_Msg"))) {
-                    bool = localException.a(localStructMsgItemButton.jdField_c_of_type_JavaLangString, localStructMsgItemButton.b, localStructMsgItemButton.d, localStructMsgItemButton.e, localStructMsgItemButton.a, new Object[] { Boolean.valueOf(true) });
+                    bool = localException.a(localStructMsgItemButton.e, localStructMsgItemButton.d, localStructMsgItemButton.f, localStructMsgItemButton.g, localStructMsgItemButton.ao, new Object[] { Boolean.valueOf(true) });
                   } else {
-                    bool = localException.a(localStructMsgItemButton.jdField_c_of_type_JavaLangString, localStructMsgItemButton.b, localStructMsgItemButton.d, localStructMsgItemButton.e, localStructMsgForGeneralShare.msgId, new Object[0]);
+                    bool = localException.a(localStructMsgItemButton.e, localStructMsgItemButton.d, localStructMsgItemButton.f, localStructMsgItemButton.g, localStructMsgForGeneralShare.msgId, new Object[0]);
                   }
                 }
               }
@@ -163,11 +163,11 @@ class StructMsgItemButton$3
                 ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).addPublicAccountToRu((AppInterface)localObject1, localStructMsgForGeneralShare.uin);
               }
               QidianManager localQidianManager = (QidianManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.QIDIAN_MANAGER);
-              if (QidianManager.a(localStructMsgItemButton.e, localStructMsgItemButton.d, localStructMsgItemButton.b)) {
-                localQidianManager.a(localStructMsgItemButton.jdField_c_of_type_JavaLangString, localStructMsgItemButton.e, localStructMsgItemButton.d, localStructMsgItemButton.b, 2, "");
+              if (QidianManager.a(localStructMsgItemButton.g, localStructMsgItemButton.f, localStructMsgItemButton.d)) {
+                localQidianManager.a(localStructMsgItemButton.e, localStructMsgItemButton.g, localStructMsgItemButton.f, localStructMsgItemButton.d, 2, "");
               }
               if ((localStructMsgForGeneralShare.message != null) && (QidianManager.a((QQAppInterface)localObject1, localStructMsgForGeneralShare.message))) {
-                localQidianManager.a(localStructMsgItemButton.d);
+                localQidianManager.j(localStructMsgItemButton.f);
               }
               if (localStructMsgForGeneralShare.msgId > 0L) {
                 ThreadManager.getSubThreadHandler().postDelayed(new StructMsgItemButton.3.2(this, localStructMsgItemButton, localStructMsgForGeneralShare, (QQAppInterface)localObject1, bool), 0L);
@@ -182,7 +182,7 @@ class StructMsgItemButton$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton.3
  * JD-Core Version:    0.7.0.1
  */

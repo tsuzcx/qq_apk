@@ -46,23 +46,13 @@ public class TianshuRenewalsBarManager
     this.a = paramConversation;
   }
   
-  private static List<TianShuAdPosItemData> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
-    localTianShuAdPosItemData.b = 1;
-    localTianShuAdPosItemData.a = 596;
-    localArrayList.add(localTianShuAdPosItemData);
-    return localArrayList;
-  }
-  
   private static void a(Resources paramResources, TextView paramTextView, FrameLayout paramFrameLayout, URLImageView paramURLImageView)
   {
     if (Build.VERSION.SDK_INT >= 16) {
-      paramFrameLayout.setBackground(paramResources.getDrawable(2130839393));
+      paramFrameLayout.setBackground(paramResources.getDrawable(2130839577));
     }
     paramURLImageView.setVisibility(8);
-    paramTextView.setTextColor(paramResources.getColorStateList(2131167063));
+    paramTextView.setTextColor(paramResources.getColorStateList(2131168001));
   }
   
   public static void a(BaseActivity paramBaseActivity, View paramView, VipBannerInfo paramVipBannerInfo, boolean paramBoolean)
@@ -70,12 +60,12 @@ public class TianshuRenewalsBarManager
     if (a(paramBaseActivity, paramView, paramVipBannerInfo)) {
       return;
     }
-    Object localObject1 = (TextView)paramView.findViewById(2131376410);
+    Object localObject1 = (TextView)paramView.findViewById(2131444626);
     Object localObject2 = paramVipBannerInfo.c;
     if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
       ((TextView)localObject1).setText((CharSequence)localObject2);
     }
-    localObject1 = (URLImageView)paramView.findViewById(2131376409);
+    localObject1 = (URLImageView)paramView.findViewById(2131444625);
     if ((localObject1 != null) && (!TextUtils.isEmpty(paramVipBannerInfo.e)))
     {
       localObject2 = URLDrawable.getDrawable(paramVipBannerInfo.e);
@@ -83,7 +73,7 @@ public class TianshuRenewalsBarManager
         ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
       }
     }
-    localObject1 = (TextView)paramView.findViewById(2131376406);
+    localObject1 = (TextView)paramView.findViewById(2131444622);
     if ((localObject1 != null) && (!TextUtils.isEmpty(paramVipBannerInfo.f))) {
       ((TextView)localObject1).setText(paramVipBannerInfo.f);
     }
@@ -91,11 +81,11 @@ public class TianshuRenewalsBarManager
     TianshuReportUtils.a(paramVipBannerInfo.a, 101);
     localObject1 = new TianshuRenewalsBarManager.1(paramVipBannerInfo);
     localObject2 = new TianshuRenewalsBarManager.2(paramVipBannerInfo, paramBaseActivity);
-    FrameLayout localFrameLayout = (FrameLayout)paramView.findViewById(2131376404);
+    FrameLayout localFrameLayout = (FrameLayout)paramView.findViewById(2131444620);
     if (localFrameLayout != null) {
       localFrameLayout.setOnClickListener((View.OnClickListener)localObject2);
     }
-    localObject2 = (Button)paramView.findViewById(2131376408);
+    localObject2 = (Button)paramView.findViewById(2131444624);
     if (localObject2 != null) {
       ((Button)localObject2).setOnClickListener((View.OnClickListener)localObject1);
     }
@@ -122,7 +112,7 @@ public class TianshuRenewalsBarManager
         return;
       }
     }
-    paramTextView.setTextColor(paramResources.getColorStateList(2131167063));
+    paramTextView.setTextColor(paramResources.getColorStateList(2131168001));
   }
   
   private static void a(VipBannerInfo paramVipBannerInfo, QQAppInterface paramQQAppInterface, View paramView)
@@ -132,8 +122,8 @@ public class TianshuRenewalsBarManager
       if (paramVipBannerInfo == null) {
         return;
       }
-      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131376407);
-      paramView = (TextView)paramView.findViewById(2131376406);
+      URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131444623);
+      paramView = (TextView)paramView.findViewById(2131444622);
       if (localURLImageView != null)
       {
         if (paramView == null) {
@@ -183,9 +173,9 @@ public class TianshuRenewalsBarManager
       if (paramView == null) {
         return;
       }
-      TextView localTextView = (TextView)paramView.findViewById(2131376410);
-      FrameLayout localFrameLayout = (FrameLayout)paramView.findViewById(2131376404);
-      paramView = (URLImageView)paramView.findViewById(2131376405);
+      TextView localTextView = (TextView)paramView.findViewById(2131444626);
+      FrameLayout localFrameLayout = (FrameLayout)paramView.findViewById(2131444620);
+      paramView = (URLImageView)paramView.findViewById(2131444621);
       if ((localTextView != null) && (localFrameLayout != null))
       {
         if (paramView == null) {
@@ -211,11 +201,11 @@ public class TianshuRenewalsBarManager
     Object localObject = this.a;
     if (localObject != null)
     {
-      if (((Conversation)localObject).a == null) {
+      if (((Conversation)localObject).y == null) {
         return;
       }
       int i;
-      if (BannerManager.a().a(RenewalsBannerProcessor.a) == 2) {
+      if (BannerManager.a().b(RenewalsBannerProcessor.a) == 2) {
         i = 1;
       } else {
         i = 0;
@@ -265,18 +255,28 @@ public class TianshuRenewalsBarManager
   {
     if (Build.VERSION.SDK_INT >= 16) {
       if ((paramBoolean) && ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isSimpleDayTheme(false)))) {
-        paramFrameLayout.setBackground(paramResources.getDrawable(2130839394));
+        paramFrameLayout.setBackground(paramResources.getDrawable(2130839578));
       } else {
-        paramFrameLayout.setBackground(paramResources.getDrawable(2130839393));
+        paramFrameLayout.setBackground(paramResources.getDrawable(2130839577));
       }
     }
     paramURLImageView.setVisibility(8);
-    paramTextView.setTextColor(paramResources.getColorStateList(2131167063));
+    paramTextView.setTextColor(paramResources.getColorStateList(2131168001));
   }
   
   private static boolean a(BaseActivity paramBaseActivity, View paramView, VipBannerInfo paramVipBannerInfo)
   {
     return (paramBaseActivity == null) || (paramView == null) || (paramVipBannerInfo == null);
+  }
+  
+  private static List<TianShuAdPosItemData> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    TianShuAdPosItemData localTianShuAdPosItemData = new TianShuAdPosItemData();
+    localTianShuAdPosItemData.b = 1;
+    localTianShuAdPosItemData.a = 596;
+    localArrayList.add(localTianShuAdPosItemData);
+    return localArrayList;
   }
   
   public static void b(BaseActivity paramBaseActivity, View paramView, VipBannerInfo paramVipBannerInfo, boolean paramBoolean)
@@ -341,12 +341,12 @@ public class TianshuRenewalsBarManager
   
   public void a(String paramString)
   {
-    TianShuManager.getInstance().requestAdv(a(), new TianshuRenewalsBarManager.TianshuGetRenewalsBarCallback(this, paramString));
+    TianShuManager.getInstance().requestAdv(b(), new TianshuRenewalsBarManager.TianshuGetRenewalsBarCallback(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.ad.TianshuRenewalsBarManager
  * JD-Core Version:    0.7.0.1
  */

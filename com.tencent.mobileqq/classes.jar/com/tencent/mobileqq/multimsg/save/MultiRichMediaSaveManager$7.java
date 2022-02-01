@@ -13,16 +13,16 @@ class MultiRichMediaSaveManager$7
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.a != null)
+    if (this.b.c != null)
     {
-      String str = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq.a.a);
-      FileSaveResult localFileSaveResult = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(str);
+      String str = this.c.a(this.b.c.e);
+      FileSaveResult localFileSaveResult = this.c.a(str);
       if ((localFileSaveResult != null) && (!localFileSaveResult.a))
       {
         paramInt /= 100;
-        localFileSaveResult.c = paramInt;
-        this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(str, localFileSaveResult);
-        MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, localFileSaveResult, paramInt);
+        localFileSaveResult.e = paramInt;
+        this.c.a(str, localFileSaveResult);
+        MultiRichMediaSaveManager.a(this.c, localFileSaveResult, paramInt);
       }
     }
   }
@@ -33,27 +33,27 @@ class MultiRichMediaSaveManager$7
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("downloadShortVideo key = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(", result = ");
       localStringBuilder.append(paramInt);
       QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
     }
     int i = 0;
-    if ((paramShortVideoResult != null) && (paramShortVideoResult.a != null))
+    if ((paramShortVideoResult != null) && (paramShortVideoResult.b != null))
     {
-      i = paramShortVideoResult.a.a;
-      paramShortVideoResult = paramShortVideoResult.a.b;
+      i = paramShortVideoResult.b.c;
+      paramShortVideoResult = paramShortVideoResult.b.b;
     }
     else
     {
       paramShortVideoResult = "";
     }
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, paramInt, i, paramShortVideoResult);
+    this.c.a(this.b, paramInt, i, paramShortVideoResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.7
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class RecentItemQCallData
     this.mDisplayTime = this.mUser.lastmsgtime;
     a(paramQQAppInterface, paramContext, this.msgSummary);
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder();
       paramQQAppInterface.append(this.mTitleName);
@@ -57,7 +57,7 @@ public class RecentItemQCallData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemQCallData
  * JD-Core Version:    0.7.0.1
  */

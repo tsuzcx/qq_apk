@@ -22,18 +22,18 @@ class LiveDelivery$5
     }
     EIPCResult localEIPCResult = new EIPCResult();
     localEIPCResult.data = new Bundle();
-    localEIPCResult.data.putString("type", paramGetAdsRsp.jdField_a_of_type_JavaLangString);
+    localEIPCResult.data.putString("type", paramGetAdsRsp.a);
     localEIPCResult.data.putString("pic", paramGetAdsRsp.c);
     localEIPCResult.data.putString("url", paramGetAdsRsp.b);
-    if (paramGetAdsRsp.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem != null) {
-      localEIPCResult.data.putInt("adId", paramGetAdsRsp.jdField_a_of_type_CooperationVipPbTianShuAccess$AdItem.iAdId.get());
+    if (paramGetAdsRsp.d != null) {
+      localEIPCResult.data.putInt("adId", paramGetAdsRsp.d.iAdId.get());
     }
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery.5
  * JD-Core Version:    0.7.0.1
  */

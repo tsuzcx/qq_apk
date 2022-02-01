@@ -26,16 +26,16 @@ public class TroopStoryMemoriesListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131718216, 2131691479 };
-  private static final int[] b = { 2131165695, 2131165596 };
-  private static final int[] c = { 2131376438, 2131370801 };
-  final float jdField_a_of_type_Float;
-  Context jdField_a_of_type_AndroidContentContext;
-  TroopStoryMemoriesListAdapter.OnUIClickListener jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$OnUIClickListener;
-  TroopStoryMemoriesListAdapter.StoryListItemBuilder jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ArrayList<TroopStoryItemInfo> jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean;
+  private static final int[] h = { 2131915698, 2131888438 };
+  private static final int[] i = { 2131166161, 2131165945 };
+  private static final int[] j = { 2131444659, 2131438111 };
+  ArrayList<TroopStoryItemInfo> a;
+  Context b;
+  TroopStoryMemoriesListAdapter.OnUIClickListener c;
+  QQAppInterface d;
+  final float e;
+  TroopStoryMemoriesListAdapter.StoryListItemBuilder f;
+  boolean g;
   
   private View a(int paramInt, ViewGroup paramViewGroup)
   {
@@ -45,37 +45,37 @@ public class TroopStoryMemoriesListAdapter
     default: 
       return null;
     case 6: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561796, paramViewGroup, false);
+      localView = LayoutInflater.from(this.b).inflate(2131628175, paramViewGroup, false);
       paramViewGroup = new TroopStoryMemoriesListAdapter.SubmitFailedVideoItemViewHolder(this, localView);
-      localView = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder.createView(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = this.f.createView(this.b, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     case 5: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561796, paramViewGroup, false);
+      localView = LayoutInflater.from(this.b).inflate(2131628175, paramViewGroup, false);
       paramViewGroup = new TroopStoryMemoriesListAdapter.UploadVideoItemViewHolder(this, localView);
-      localView = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder.createView(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = this.f.createView(this.b, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     case 4: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561794, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.b).inflate(2131628173, paramViewGroup, false);
       paramViewGroup.setTag(new TroopStoryMemoriesListAdapter.EmptyItemHolder(this, paramViewGroup));
       return paramViewGroup;
     case 3: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561795, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.b).inflate(2131628174, paramViewGroup, false);
       paramViewGroup.setTag(new TroopStoryMemoriesListAdapter.ShootingItemViewHolder(this, paramViewGroup));
       return paramViewGroup;
     case 2: 
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561796, paramViewGroup, false);
+      localView = LayoutInflater.from(this.b).inflate(2131628175, paramViewGroup, false);
       paramViewGroup = new TroopStoryMemoriesListAdapter.VideoItemViewHolder(this, localView);
-      localView = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder.createView(this.jdField_a_of_type_AndroidContentContext, localView, paramViewGroup, -1);
+      localView = this.f.createView(this.b, localView, paramViewGroup, -1);
       localView.setTag(paramViewGroup);
       return localView;
     case 1: 
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561793, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.b).inflate(2131628172, paramViewGroup, false);
       paramViewGroup.setTag(new TroopStoryMemoriesListAdapter.DayItemViewHolder(this, paramViewGroup));
       return paramViewGroup;
     }
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561797, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.b).inflate(2131628176, paramViewGroup, false);
     paramViewGroup.setTag(new TroopStoryMemoriesListAdapter.YearItemViewHolder(this, paramViewGroup));
     return paramViewGroup;
   }
@@ -85,10 +85,10 @@ public class TroopStoryMemoriesListAdapter
     if (paramView == null) {
       return;
     }
-    int i = getItemViewType(paramInt);
-    TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    int k = getItemViewType(paramInt);
+    TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.a.get(paramInt);
     Object localObject;
-    switch (i)
+    switch (k)
     {
     default: 
       return;
@@ -96,13 +96,13 @@ public class TroopStoryMemoriesListAdapter
       localObject = (TroopStoryMemoriesListAdapter.SubmitFailedVideoItemViewHolder)paramView.getTag();
       ((TroopStoryMemoriesListAdapter.SubmitFailedVideoItemViewHolder)localObject).a(localTroopStoryItemInfo, paramInt);
       paramView.setOnLongClickListener(new TroopStoryMemoriesListAdapter.2(this, paramInt));
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder.updateRightMenuView(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
+      this.f.updateRightMenuView(this.b, paramView, paramInt, this.a.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
       return;
     case 5: 
       localObject = (TroopStoryMemoriesListAdapter.UploadVideoItemViewHolder)paramView.getTag();
       ((TroopStoryMemoriesListAdapter.UploadVideoItemViewHolder)localObject).a(localTroopStoryItemInfo, paramInt);
       paramView.setOnLongClickListener(new TroopStoryMemoriesListAdapter.1(this, paramInt));
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder.updateRightMenuView(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
+      this.f.updateRightMenuView(this.b, paramView, paramInt, this.a.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
       return;
     case 4: 
       ((TroopStoryMemoriesListAdapter.EmptyItemHolder)paramView.getTag()).a(localTroopStoryItemInfo);
@@ -114,7 +114,7 @@ public class TroopStoryMemoriesListAdapter
       localObject = (TroopStoryMemoriesListAdapter.VideoItemViewHolder)paramView.getTag();
       ((TroopStoryMemoriesListAdapter.VideoItemViewHolder)localObject).a(localTroopStoryItemInfo, paramInt);
       paramView.setOnLongClickListener(new TroopStoryMemoriesListAdapter.3(this, paramInt));
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$StoryListItemBuilder.updateRightMenuView(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
+      this.f.updateRightMenuView(this.b, paramView, paramInt, this.a.get(paramInt), (SwipRightMenuBuilder.SwipItemBaseHolder)localObject, this);
       return;
     case 1: 
       ((TroopStoryMemoriesListAdapter.DayItemViewHolder)paramView.getTag()).a(localTroopStoryItemInfo, paramInt);
@@ -125,7 +125,7 @@ public class TroopStoryMemoriesListAdapter
   
   private void a(TroopStoryItemInfo paramTroopStoryItemInfo, URLImageView paramURLImageView, TextView paramTextView)
   {
-    Drawable localDrawable = ImageUtil.e();
+    Drawable localDrawable = ImageUtil.j();
     if (paramTroopStoryItemInfo.unionIdRole == 2)
     {
       localObject = ((UserManager)SuperManager.a(2)).b(paramTroopStoryItemInfo.unionId);
@@ -133,9 +133,9 @@ public class TroopStoryMemoriesListAdapter
       {
         if (!((QQUserUIItem)localObject).isFriend())
         {
-          PlayModeUtils.a(paramURLImageView, ((QQUserUIItem)localObject).headUrl, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 35.0F));
+          PlayModeUtils.a(paramURLImageView, ((QQUserUIItem)localObject).headUrl, true, (int)DisplayUtils.a(this.b, 35.0F));
           paramTextView.setText(PlayModeUtils.a((QQUserUIItem)localObject));
-          PlayModeUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), paramTextView, ((QQUserUIItem)localObject).symbolUrl, 13.0F, 2.0F);
+          PlayModeUtils.a(this.b.getResources(), paramTextView, ((QQUserUIItem)localObject).symbolUrl, 13.0F, 2.0F);
         }
       }
       else
@@ -147,7 +147,7 @@ public class TroopStoryMemoriesListAdapter
       }
     }
     Object localObject = paramTroopStoryItemInfo.uin;
-    FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject, 3, localDrawable, localDrawable);
+    FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.d, 1, (String)localObject, 3, localDrawable, localDrawable);
     localObject = localFaceDrawable;
     if (localFaceDrawable == null) {
       localObject = localDrawable;
@@ -159,12 +159,12 @@ public class TroopStoryMemoriesListAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -174,7 +174,7 @@ public class TroopStoryMemoriesListAdapter
   
   public int getItemViewType(int paramInt)
   {
-    return ((TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).itemType;
+    return ((TroopStoryItemInfo)this.a.get(paramInt)).itemType;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -195,30 +195,30 @@ public class TroopStoryMemoriesListAdapter
   
   public void onClick(View paramView)
   {
-    int i;
+    int k;
     try
     {
-      i = Integer.parseInt(String.valueOf(paramView.getTag(-1)));
+      k = Integer.parseInt(String.valueOf(paramView.getTag(-1)));
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
         QLog.e("TroopStoryMemoriesListAdapter", 2, localException, new Object[0]);
       }
-      i = -1;
+      k = -1;
     }
-    if ((i != -1) && (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$OnUIClickListener != null))
+    if ((k != -1) && (this.c != null))
     {
-      TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      int j = paramView.getId();
-      if (j != 2131370801)
+      TroopStoryItemInfo localTroopStoryItemInfo = (TroopStoryItemInfo)this.a.get(k);
+      int m = paramView.getId();
+      if (m != 2131438111)
       {
-        if (j == 2131376438) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$OnUIClickListener.a(paramView, localTroopStoryItemInfo, 2);
+        if (m == 2131444659) {
+          this.c.a(paramView, localTroopStoryItemInfo, 2);
         }
       }
       else {
-        this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter$OnUIClickListener.a(paramView, i, localTroopStoryItemInfo, 2);
+        this.c.a(paramView, k, localTroopStoryItemInfo, 2);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

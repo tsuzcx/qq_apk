@@ -23,15 +23,15 @@ public class ChildLockSign
   extends View
   implements Handler.Callback, View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ChildLockSign.ChangeSignThread jdField_a_of_type_ComTencentAvWidgetChildLockSign$ChangeSignThread = null;
-  private boolean jdField_a_of_type_Boolean = true;
+  private Bitmap a;
   private Bitmap b;
   private Bitmap c;
+  private final RectF d = new RectF();
+  private int e;
+  private final Paint f = new Paint();
+  private Handler g;
+  private boolean h = true;
+  private ChildLockSign.ChangeSignThread i = null;
   
   public ChildLockSign(Context paramContext)
   {
@@ -55,28 +55,28 @@ public class ChildLockSign
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentAvWidgetChildLockSign$ChangeSignThread = new ChildLockSign.ChangeSignThread(this);
-    this.jdField_a_of_type_ComTencentAvWidgetChildLockSign$ChangeSignThread.start();
+    this.i = new ChildLockSign.ChangeSignThread(this);
+    this.i.start();
   }
   
   private void a(int paramInt)
   {
     Message localMessage = new Message();
     localMessage.what = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.g.sendMessage(localMessage);
   }
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131373366);
+    setId(2131441039);
     paramAttributeSet = getResources();
-    this.jdField_a_of_type_Boolean = true;
+    this.h = true;
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130842151);
-      this.b = BitmapFactory.decodeResource(paramAttributeSet, 2130842152);
-      if (this.jdField_a_of_type_Boolean) {
-        this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.a = BitmapFactory.decodeResource(paramAttributeSet, 2130843079);
+      this.b = BitmapFactory.decodeResource(paramAttributeSet, 2130843080);
+      if (this.h) {
+        this.c = this.a;
       } else {
         this.c = this.b;
       }
@@ -85,9 +85,9 @@ public class ChildLockSign
     {
       paramAttributeSet.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.f.setFlags(1);
+    this.f.setColor(-1);
+    this.g = new Handler(Looper.getMainLooper(), this);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -103,7 +103,7 @@ public class ChildLockSign
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
       setEnabled(false);
       a();
@@ -114,18 +114,18 @@ public class ChildLockSign
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(8.0F);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
+    this.f.setStrokeWidth(8.0F);
+    this.f.setStyle(Paint.Style.STROKE);
+    this.f.setAlpha(255);
     Bitmap localBitmap = this.c;
     if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-      paramCanvas.drawBitmap(this.c, null, this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawBitmap(this.c, null, this.d, this.f);
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = Math.min(paramInt1, paramInt2);
+    this.e = Math.min(paramInt1, paramInt2);
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
@@ -134,28 +134,28 @@ public class ChildLockSign
       ((StringBuilder)localObject).append("  h = ");
       ((StringBuilder)localObject).append(paramInt2);
       ((StringBuilder)localObject).append(" min = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.e);
       ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int / 6);
+      ((StringBuilder)localObject).append(this.e / 6);
       ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int / 6);
+      ((StringBuilder)localObject).append(this.e / 6);
       ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int * 5 / 6);
+      ((StringBuilder)localObject).append(this.e * 5 / 6);
       ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int * 5 / 6);
+      ((StringBuilder)localObject).append(this.e * 5 / 6);
       QLog.d("ChildLockSign", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    paramInt1 = this.jdField_a_of_type_Int;
+    Object localObject = this.d;
+    paramInt1 = this.e;
     ((RectF)localObject).set(paramInt1 / 6, paramInt1 / 6, paramInt1 * 5 / 6, paramInt1 * 5 / 6);
   }
   
   public void setLocked(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    this.h = paramBoolean;
+    if (this.h)
     {
-      this.c = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.c = this.a;
       return;
     }
     this.c = this.b;

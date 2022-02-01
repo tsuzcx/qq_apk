@@ -7,23 +7,23 @@ class BaseTransientBottomBar$10
   
   public void run()
   {
-    if (this.this$0.a == null) {
+    if (this.this$0.b == null) {
       return;
     }
-    if (this.this$0.a.getParent() != null) {
-      this.this$0.a.setVisibility(0);
+    if (this.this$0.b.getParent() != null) {
+      this.this$0.b.setVisibility(0);
     }
-    if (this.this$0.a.a() == 1)
+    if (this.this$0.b.getAnimationMode() == 1)
     {
-      BaseTransientBottomBar.c(this.this$0);
+      BaseTransientBottomBar.i(this.this$0);
       return;
     }
-    BaseTransientBottomBar.d(this.this$0);
+    BaseTransientBottomBar.j(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.10
  * JD-Core Version:    0.7.0.1
  */

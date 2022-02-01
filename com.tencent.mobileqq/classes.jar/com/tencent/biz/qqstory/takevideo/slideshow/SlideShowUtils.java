@@ -80,7 +80,7 @@ public class SlideShowUtils
     {
       SlideItemInfo localSlideItemInfo = (SlideItemInfo)paramList.next();
       if (localSlideItemInfo != null) {
-        localArrayList.add(localSlideItemInfo.jdField_b_of_type_JavaLangString);
+        localArrayList.add(localSlideItemInfo.f);
       }
     }
     return localArrayList;
@@ -110,7 +110,7 @@ public class SlideShowUtils
           }
           SlideItemInfo localSlideItemInfo = (SlideItemInfo)paramList1.get(j);
           if (localSlideItemInfo != null) {
-            localObject2 = localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+            localObject2 = localSlideItemInfo.a;
           } else {
             localObject2 = null;
           }
@@ -123,24 +123,24 @@ public class SlideShowUtils
               localObject3 = (SlideItemInfo)paramList1.get(j);
               if ((localObject1 != null) && (localObject3 != null))
               {
-                ((SlideItemInfo)localObject1).jdField_b_of_type_Long = ((SlideItemInfo)localObject3).jdField_b_of_type_Long;
-                ((SlideItemInfo)localObject1).jdField_c_of_type_Long = ((SlideItemInfo)localObject3).jdField_c_of_type_Long;
-                ((SlideItemInfo)localObject1).jdField_e_of_type_Int = ((SlideItemInfo)localObject3).jdField_e_of_type_Int;
-                ((SlideItemInfo)localObject1).f = ((SlideItemInfo)localObject3).f;
+                ((SlideItemInfo)localObject1).i = ((SlideItemInfo)localObject3).i;
+                ((SlideItemInfo)localObject1).j = ((SlideItemInfo)localObject3).j;
+                ((SlideItemInfo)localObject1).p = ((SlideItemInfo)localObject3).p;
+                ((SlideItemInfo)localObject1).q = ((SlideItemInfo)localObject3).q;
+                ((SlideItemInfo)localObject1).o = ((SlideItemInfo)localObject3).o;
+                ((SlideItemInfo)localObject1).s = ((SlideItemInfo)localObject3).s;
+                ((SlideItemInfo)localObject1).n = ((SlideItemInfo)localObject3).n;
+                ((SlideItemInfo)localObject1).m = ((SlideItemInfo)localObject3).m;
+                ((SlideItemInfo)localObject1).t = ((SlideItemInfo)localObject3).t;
+                ((SlideItemInfo)localObject1).r = ((SlideItemInfo)localObject3).r;
+                ((SlideItemInfo)localObject1).c = ((SlideItemInfo)localObject3).c;
                 ((SlideItemInfo)localObject1).d = ((SlideItemInfo)localObject3).d;
-                ((SlideItemInfo)localObject1).jdField_b_of_type_Boolean = ((SlideItemInfo)localObject3).jdField_b_of_type_Boolean;
-                ((SlideItemInfo)localObject1).jdField_c_of_type_Int = ((SlideItemInfo)localObject3).jdField_c_of_type_Int;
-                ((SlideItemInfo)localObject1).jdField_a_of_type_Boolean = ((SlideItemInfo)localObject3).jdField_a_of_type_Boolean;
-                ((SlideItemInfo)localObject1).jdField_c_of_type_Boolean = ((SlideItemInfo)localObject3).jdField_c_of_type_Boolean;
-                ((SlideItemInfo)localObject1).jdField_e_of_type_JavaLangString = ((SlideItemInfo)localObject3).jdField_e_of_type_JavaLangString;
-                ((SlideItemInfo)localObject1).jdField_a_of_type_Int = ((SlideItemInfo)localObject3).jdField_a_of_type_Int;
-                ((SlideItemInfo)localObject1).jdField_a_of_type_JavaLangString = ((SlideItemInfo)localObject3).jdField_a_of_type_JavaLangString;
                 localObject3 = localObject1;
-                if (((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo != null)
+                if (((SlideItemInfo)localObject1).a != null)
                 {
-                  ((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = ((LocalMediaInfo)localObject2).mediaWidth;
-                  ((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = ((LocalMediaInfo)localObject2).mediaHeight;
-                  ((SlideItemInfo)localObject1).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.rotation = ((LocalMediaInfo)localObject2).rotation;
+                  ((SlideItemInfo)localObject1).a.mediaWidth = ((LocalMediaInfo)localObject2).mediaWidth;
+                  ((SlideItemInfo)localObject1).a.mediaHeight = ((LocalMediaInfo)localObject2).mediaHeight;
+                  ((SlideItemInfo)localObject1).a.rotation = ((LocalMediaInfo)localObject2).rotation;
                   localObject3 = localObject1;
                 }
               }

@@ -23,23 +23,16 @@ import tencent.im.oidb.articlesummary.feeds_info.AccountProfile;
 public class UGCFeedsInfo
 {
   public int a;
-  public long a;
-  public AccountProfileInfo a;
-  public BiuInfo a;
-  public String a;
-  public ArrayList<UGCPicInfo> a;
-  public int b;
-  public String b;
-  public ArrayList<UGCVideoInfo> b;
-  public String c;
-  public ArrayList<UGCVoiceInfo> c;
-  
-  public UGCFeedsInfo()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public ArrayList<UGCPicInfo> b = new ArrayList();
+  public ArrayList<UGCVideoInfo> c = new ArrayList();
+  public ArrayList<UGCVoiceInfo> d = new ArrayList();
+  public long e;
+  public String f;
+  public String g;
+  public BiuInfo h;
+  public int i;
+  public String j;
+  public AccountProfileInfo k;
   
   public static articlesummary.UGCFeedsInfo a(UGCFeedsInfo paramUGCFeedsInfo)
   {
@@ -53,11 +46,11 @@ public class UGCFeedsInfo
   
   public static void a(UGCFeedsInfo paramUGCFeedsInfo, articlesummary.UGCFeedsInfo paramUGCFeedsInfo1)
   {
-    ArrayList localArrayList = paramUGCFeedsInfo.jdField_c_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = paramUGCFeedsInfo.d;
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       localArrayList = new ArrayList();
-      paramUGCFeedsInfo = paramUGCFeedsInfo.jdField_c_of_type_JavaUtilArrayList.iterator();
+      paramUGCFeedsInfo = paramUGCFeedsInfo.d.iterator();
       while (paramUGCFeedsInfo.hasNext())
       {
         UGCVoiceInfo localUGCVoiceInfo = (UGCVoiceInfo)paramUGCFeedsInfo.next();
@@ -75,49 +68,49 @@ public class UGCFeedsInfo
   
   public static void b(UGCFeedsInfo paramUGCFeedsInfo, articlesummary.UGCFeedsInfo paramUGCFeedsInfo1)
   {
-    ArrayList localArrayList = paramUGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = paramUGCFeedsInfo.c;
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       localArrayList = new ArrayList();
-      paramUGCFeedsInfo = paramUGCFeedsInfo.jdField_b_of_type_JavaUtilArrayList.iterator();
+      paramUGCFeedsInfo = paramUGCFeedsInfo.c.iterator();
       while (paramUGCFeedsInfo.hasNext())
       {
         UGCVideoInfo localUGCVideoInfo = (UGCVideoInfo)paramUGCFeedsInfo.next();
         articlesummary.UGCVideoInfo localUGCVideoInfo1 = new articlesummary.UGCVideoInfo();
-        localUGCVideoInfo1.uint64_duration.set(localUGCVideoInfo.jdField_a_of_type_Long);
-        if (!TextUtils.isEmpty(localUGCVideoInfo.jdField_b_of_type_JavaLangString)) {
-          localUGCVideoInfo1.bytes_video_url.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.jdField_b_of_type_JavaLangString));
+        localUGCVideoInfo1.uint64_duration.set(localUGCVideoInfo.g);
+        if (!TextUtils.isEmpty(localUGCVideoInfo.b)) {
+          localUGCVideoInfo1.bytes_video_url.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.b));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.jdField_a_of_type_JavaLangString)) {
-          localUGCVideoInfo1.bytes_video_md5.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.jdField_a_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.a)) {
+          localUGCVideoInfo1.bytes_video_md5.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.a));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.jdField_f_of_type_JavaLangString)) {
-          localUGCVideoInfo1.bytes_uuid.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.jdField_f_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.f)) {
+          localUGCVideoInfo1.bytes_uuid.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.f));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.jdField_c_of_type_JavaLangString)) {
-          localUGCVideoInfo1.bytes_pic_md5.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.jdField_c_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.c)) {
+          localUGCVideoInfo1.bytes_pic_md5.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.c));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.jdField_d_of_type_JavaLangString)) {
-          localUGCVideoInfo1.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.jdField_d_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.d)) {
+          localUGCVideoInfo1.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.d));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.jdField_e_of_type_JavaLangString)) {
-          localUGCVideoInfo1.bytes_title.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.jdField_e_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.e)) {
+          localUGCVideoInfo1.bytes_title.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.e));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.g)) {
-          localUGCVideoInfo1.bytes_uniq_id.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.g));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.l)) {
+          localUGCVideoInfo1.bytes_uniq_id.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.l));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.h)) {
-          localUGCVideoInfo1.bytes_share_url.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.h));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.n)) {
+          localUGCVideoInfo1.bytes_share_url.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.n));
         }
-        if (!TextUtils.isEmpty(localUGCVideoInfo.i)) {
-          localUGCVideoInfo1.bytes_vid.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.i));
+        if (!TextUtils.isEmpty(localUGCVideoInfo.p)) {
+          localUGCVideoInfo1.bytes_vid.set(ByteStringMicro.copyFromUtf8(localUGCVideoInfo.p));
         }
-        localUGCVideoInfo1.uint32_create_time.set(localUGCVideoInfo.jdField_e_of_type_Int);
-        localUGCVideoInfo1.uint32_busi_type.set(localUGCVideoInfo.jdField_f_of_type_Int);
-        localUGCVideoInfo1.uint32_pic_height.set(localUGCVideoInfo.jdField_d_of_type_Int);
-        localUGCVideoInfo1.uint32_pic_width.set(localUGCVideoInfo.jdField_c_of_type_Int);
-        localUGCVideoInfo1.uint32_video_height.set(localUGCVideoInfo.jdField_b_of_type_Int);
-        localUGCVideoInfo1.uint32_video_width.set(localUGCVideoInfo.jdField_a_of_type_Int);
+        localUGCVideoInfo1.uint32_create_time.set(localUGCVideoInfo.m);
+        localUGCVideoInfo1.uint32_busi_type.set(localUGCVideoInfo.o);
+        localUGCVideoInfo1.uint32_pic_height.set(localUGCVideoInfo.k);
+        localUGCVideoInfo1.uint32_pic_width.set(localUGCVideoInfo.j);
+        localUGCVideoInfo1.uint32_video_height.set(localUGCVideoInfo.i);
+        localUGCVideoInfo1.uint32_video_width.set(localUGCVideoInfo.h);
         localArrayList.add(localUGCVideoInfo1);
       }
       paramUGCFeedsInfo1.msg_ugc_video_info_list.set(localArrayList);
@@ -126,27 +119,27 @@ public class UGCFeedsInfo
   
   private static void c(UGCFeedsInfo paramUGCFeedsInfo, articlesummary.UGCFeedsInfo paramUGCFeedsInfo1)
   {
-    ArrayList localArrayList = paramUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = paramUGCFeedsInfo.b;
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       localArrayList = new ArrayList();
-      paramUGCFeedsInfo = paramUGCFeedsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+      paramUGCFeedsInfo = paramUGCFeedsInfo.b.iterator();
       while (paramUGCFeedsInfo.hasNext())
       {
         UGCPicInfo localUGCPicInfo = (UGCPicInfo)paramUGCFeedsInfo.next();
         articlesummary.UGCPicInfo localUGCPicInfo1 = new articlesummary.UGCPicInfo();
-        localUGCPicInfo1.uint32_pic_width.set(localUGCPicInfo.jdField_a_of_type_Int);
-        localUGCPicInfo1.uint32_pic_height.set(localUGCPicInfo.jdField_b_of_type_Int);
-        if (!TextUtils.isEmpty(localUGCPicInfo.jdField_b_of_type_JavaLangString)) {
-          localUGCPicInfo1.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localUGCPicInfo.jdField_b_of_type_JavaLangString));
+        localUGCPicInfo1.uint32_pic_width.set(localUGCPicInfo.a);
+        localUGCPicInfo1.uint32_pic_height.set(localUGCPicInfo.b);
+        if (!TextUtils.isEmpty(localUGCPicInfo.d)) {
+          localUGCPicInfo1.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(localUGCPicInfo.d));
         }
-        if (!TextUtils.isEmpty(localUGCPicInfo.jdField_a_of_type_JavaLangString)) {
-          localUGCPicInfo1.bytes_pic_md5.set(ByteStringMicro.copyFromUtf8(localUGCPicInfo.jdField_a_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCPicInfo.c)) {
+          localUGCPicInfo1.bytes_pic_md5.set(ByteStringMicro.copyFromUtf8(localUGCPicInfo.c));
         }
-        if (!TextUtils.isEmpty(localUGCPicInfo.jdField_c_of_type_JavaLangString)) {
-          localUGCPicInfo1.bytes_thumbnail_url.set(ByteStringMicro.copyFromUtf8(localUGCPicInfo.jdField_c_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(localUGCPicInfo.e)) {
+          localUGCPicInfo1.bytes_thumbnail_url.set(ByteStringMicro.copyFromUtf8(localUGCPicInfo.e));
         }
-        localUGCPicInfo1.is_animation.set(localUGCPicInfo.jdField_c_of_type_Int);
+        localUGCPicInfo1.is_animation.set(localUGCPicInfo.f);
         localArrayList.add(localUGCPicInfo1);
       }
       paramUGCFeedsInfo1.msg_ugc_pic_info_list.set(localArrayList);
@@ -155,20 +148,20 @@ public class UGCFeedsInfo
   
   private static void d(UGCFeedsInfo paramUGCFeedsInfo, articlesummary.UGCFeedsInfo paramUGCFeedsInfo1)
   {
-    paramUGCFeedsInfo1.enum_ugc_feeds_card_type.set(paramUGCFeedsInfo.jdField_a_of_type_Int);
-    paramUGCFeedsInfo1.enum_ugc_feeds_src.set(paramUGCFeedsInfo.jdField_b_of_type_Int);
-    paramUGCFeedsInfo1.uint64_cuin.set(paramUGCFeedsInfo.jdField_a_of_type_Long);
-    if (!TextUtils.isEmpty(paramUGCFeedsInfo.jdField_a_of_type_JavaLangString)) {
-      paramUGCFeedsInfo1.bytes_ugc_comments.set(ByteStringMicro.copyFromUtf8(paramUGCFeedsInfo.jdField_a_of_type_JavaLangString));
+    paramUGCFeedsInfo1.enum_ugc_feeds_card_type.set(paramUGCFeedsInfo.a);
+    paramUGCFeedsInfo1.enum_ugc_feeds_src.set(paramUGCFeedsInfo.i);
+    paramUGCFeedsInfo1.uint64_cuin.set(paramUGCFeedsInfo.e);
+    if (!TextUtils.isEmpty(paramUGCFeedsInfo.f)) {
+      paramUGCFeedsInfo1.bytes_ugc_comments.set(ByteStringMicro.copyFromUtf8(paramUGCFeedsInfo.f));
     }
-    if (paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo != null) {
-      paramUGCFeedsInfo1.msg_at_multi_level.set(paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a());
+    if (paramUGCFeedsInfo.h != null) {
+      paramUGCFeedsInfo1.msg_at_multi_level.set(paramUGCFeedsInfo.h.b());
     }
-    if (paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAccountProfileInfo != null) {
-      paramUGCFeedsInfo1.account_profile.set(paramUGCFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAccountProfileInfo.a());
+    if (paramUGCFeedsInfo.k != null) {
+      paramUGCFeedsInfo1.account_profile.set(paramUGCFeedsInfo.k.a());
     }
-    if (!TextUtils.isEmpty(paramUGCFeedsInfo.jdField_c_of_type_JavaLangString)) {
-      paramUGCFeedsInfo1.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(paramUGCFeedsInfo.jdField_c_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(paramUGCFeedsInfo.j)) {
+      paramUGCFeedsInfo1.bytes_jump_url.set(ByteStringMicro.copyFromUtf8(paramUGCFeedsInfo.j));
     }
   }
   
@@ -176,37 +169,37 @@ public class UGCFeedsInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UGCFeedsInfo{ugcFeedsCardType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ugcPicInfos=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", ugcVideoInfos=");
-    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", ugcVoiceInfos=");
-    localStringBuilder.append(this.jdField_c_of_type_JavaUtilArrayList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", cuin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", ugcComments='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", nickName='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", ugcAtComments=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", ugcFeedsSrc=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", jumpUrl='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('\'');
     localStringBuilder.append(", accountProfileInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAccountProfileInfo);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.UGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

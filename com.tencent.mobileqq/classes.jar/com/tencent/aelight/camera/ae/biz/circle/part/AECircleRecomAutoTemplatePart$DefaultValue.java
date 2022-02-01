@@ -1,0 +1,13 @@
+package com.tencent.aelight.camera.ae.biz.circle.part;
+
+class AECircleRecomAutoTemplatePart$DefaultValue
+{
+  public static String a = "[{    \"id\": \"luxiangji\",    \"thumbUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/a1718428-4b58-11eb-bb12-2e654f41d585-89f5a4d7ed760c8bb82611534c0dd06a.png\",    \"preDownload\": false,    \"packageUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/9bb56a2c-4b58-11eb-ae5e-2e654f41d585-luxiangji.zip\",    \"additionalFields\": {        \"pTuForegroundImage\": \"https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/template_foreground/richang/foreground_luxiangji.png\"    },    \"packageMd5\": \"808e8f50c26e5db3ba250529fabf8b95\"}, {    \"id\": \"fushengyiri\",    \"thumbUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/7f943a2c-4f62-11eb-90ce-4e7d1464fac0-6603e30523fa63328a380547b2609c6a.png\",    \"preDownload\": false,    \"packageUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/71909646-4f62-11eb-b082-4e7d1464fac0-fushengyiri.zip\",    \"additionalFields\": {        \"pTuForegroundImage\": \"https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/template_foreground/fengjing/foreground_fushengyiri.png\"    },    \"packageMd5\": \"25a2180a6b142e5b0e22c06562941301\"}, {    \"id\": \"zhuanshubeiwanglu\",    \"thumbUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/7238adde-a379-11eb-942c-0693fcaddf20-日常-7-专属备忘录.png\",    \"packageUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/a912cb60-534b-11eb-a344-324c0860a8c1-zhuanshubeiwanglu.zip\",    \"additionalFields\": {        \"pTuForegroundImage\": \"https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/template_foreground/richang/foreground_zhuanshubeiwanglu.png\"    },    \"packageMd5\": \"77a59621c0c234144a57c7ab83d1ac29\"}, {    \"id\": \"xingkongjianying\",    \"thumbUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/82cb3454-a36b-11eb-8879-0693fcaddf20-日常-8-星空剪影.png\",    \"packageUrl\": \"https://xmaterial.tu.qq.com/xmaterial/materials/24ababf8-534b-11eb-9d33-324c0860a8c1-xingkongjianying.zip\",    \"additionalFields\": {        \"pTuForegroundImage\": \"https://wezone-theme.cdn-go.cn/url-resource/latest/defaultmode/template_foreground/richang/foreground_xingkongjianying.png\"    },    \"packageMd5\": \"4bdcae0e7a192c5546e441b8e663649f\"}]";
+  public static String b = "记录当下,记录生活瞬间,生活印迹,我的小时光,我的生活瞬间";
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.AECircleRecomAutoTemplatePart.DefaultValue
+ * JD-Core Version:    0.7.0.1
+ */

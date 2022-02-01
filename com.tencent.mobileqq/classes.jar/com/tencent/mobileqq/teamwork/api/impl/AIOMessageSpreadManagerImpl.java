@@ -16,7 +16,7 @@ public class AIOMessageSpreadManagerImpl
     if ((paramObject instanceof TencentDocTipsConfigBean))
     {
       paramObject = (TencentDocTipsConfigBean)paramObject;
-      if (!TextUtils.isEmpty(paramObject.d())) {
+      if (!TextUtils.isEmpty(paramObject.i())) {
         ((AIOMessageSpreadManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(paramObject);
       }
     }
@@ -24,7 +24,7 @@ public class AIOMessageSpreadManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.impl.AIOMessageSpreadManagerImpl
  * JD-Core Version:    0.7.0.1
  */

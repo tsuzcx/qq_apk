@@ -8,14 +8,14 @@ import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class RecentTroopMenuOption
 {
-  private BaseActivity a;
   public QQAppInterface a;
-  protected QQProgressNotifier a;
+  protected QQProgressNotifier b;
+  private BaseActivity c;
   
   public RecentTroopMenuOption(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramBaseActivity;
+    this.a = paramQQAppInterface;
   }
   
   public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
@@ -23,8 +23,8 @@ public class RecentTroopMenuOption
     if (paramRecentBaseData == null) {
       return;
     }
-    TroopAssistantManager.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    TroopAssistantManager.a().b(this.a, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a;
     String str = paramRecentBaseData.getRecentUserUin();
     if (paramBoolean) {
       paramRecentBaseData = "1";
@@ -36,12 +36,12 @@ public class RecentTroopMenuOption
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentTroopMenuOption
  * JD-Core Version:    0.7.0.1
  */

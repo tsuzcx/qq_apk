@@ -13,14 +13,14 @@ final class NetUtil$1
   
   public void onResp(NetResp paramNetResp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkDelegateIHTTPDownloadCallback.a(paramNetResp.mErrCode, NetUtil.a(paramNetResp, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq));
+    this.a.a(paramNetResp.mErrCode, NetUtil.a(paramNetResp, this.b));
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.util.NetUtil.1
  * JD-Core Version:    0.7.0.1
  */

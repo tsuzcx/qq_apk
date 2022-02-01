@@ -15,7 +15,7 @@ final class MediaDisplayLayout$initGridView$$inlined$also$lambda$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.a.a();
+    paramView = this.a.getOnScrollListener();
     if (paramView != null) {
       paramView = (Unit)paramView.invoke();
     }
@@ -24,7 +24,7 @@ final class MediaDisplayLayout$initGridView$$inlined$also$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.MediaDisplayLayout.initGridView..inlined.also.lambda.1
  * JD-Core Version:    0.7.0.1
  */

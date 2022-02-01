@@ -9,13 +9,13 @@ class ChatHistoryTroopFileFragment$7
   
   public void run()
   {
-    TroopFileProtocol.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment$FileFileCountObserver);
-    TroopFileProtocol.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment$FileFileSpaceObserver);
+    TroopFileProtocol.a(this.this$0.a, ChatHistoryTroopFileFragment.b(this.this$0), this.this$0.t);
+    TroopFileProtocol.a(this.this$0.a, ChatHistoryTroopFileFragment.b(this.this$0), this.this$0.u);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.7
  * JD-Core Version:    0.7.0.1
  */

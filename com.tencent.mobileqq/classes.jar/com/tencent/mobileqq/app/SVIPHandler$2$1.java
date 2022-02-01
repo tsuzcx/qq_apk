@@ -30,11 +30,11 @@ class SVIPHandler$2$1
             while (localIterator.hasNext())
             {
               Object localObject = (DiyPendantSticker)localIterator.next();
-              localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a((DiyPendantSticker)localObject);
-              this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.add(localObject);
+              localObject = this.a.a((DiyPendantSticker)localObject);
+              this.a.h.add(localObject);
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b();
+          this.a.c();
           return;
         }
       }
@@ -49,7 +49,7 @@ class SVIPHandler$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.SVIPHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

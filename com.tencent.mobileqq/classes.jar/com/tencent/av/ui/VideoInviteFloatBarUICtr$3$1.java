@@ -9,9 +9,9 @@ class VideoInviteFloatBarUICtr$3$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBarUICtr$3.a.jdField_a_of_type_ComTencentAvAppSessionInfo.ab = true;
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBarUICtr$3.a.b == 1) {
-      this.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBarUICtr$3.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
+    this.b.b.l.bv = true;
+    if (this.b.b.g == 1) {
+      this.b.b.c.a(this.a);
     }
   }
 }

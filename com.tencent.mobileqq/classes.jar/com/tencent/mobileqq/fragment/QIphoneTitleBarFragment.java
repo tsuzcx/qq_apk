@@ -29,29 +29,22 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public abstract class QIphoneTitleBarFragment
   extends QPublicBaseFragment
 {
-  protected float a;
-  protected View.OnClickListener a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  protected NavBarCommon a;
   private boolean a;
-  protected View b;
-  protected ImageView b;
-  public TextView b;
-  protected boolean b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  protected TextView f;
-  
-  public QIphoneTitleBarFragment()
-  {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new QIphoneTitleBarFragment.1(this);
-  }
+  public TextView h;
+  public TextView i;
+  public TextView j;
+  public TextView k;
+  public TextView l;
+  public ImageView m;
+  protected TextView n;
+  protected ImageView o;
+  protected NavBarCommon p;
+  protected float q;
+  public View r = null;
+  public RelativeLayout s;
+  protected View t;
+  protected boolean u = false;
+  protected View.OnClickListener v = new QIphoneTitleBarFragment.1(this);
   
   public static void a(View paramView)
   {
@@ -63,39 +56,24 @@ public abstract class QIphoneTitleBarFragment
   
   protected abstract int a();
   
-  protected View a()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369202));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.f = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379476));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369563));
-    TextView localTextView = this.f;
-    if ((localTextView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null))
-    {
-      localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    }
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
   public View a(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setBottomTitleLayoutIdAndInflateIt(paramString, paramInt);
+    return this.p.setBottomTitleLayoutIdAndInflateIt(paramString, paramInt);
   }
   
   public void a(int paramInt, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369204));
-    a(this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt);
+    this.h.setVisibility(8);
+    this.i = ((TextView)this.s.findViewById(2131436182));
+    a(this.i);
+    this.i.setVisibility(0);
+    this.i.setText(paramInt);
     if (paramOnClickListener == null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.i.setOnClickListener(this.v);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
+    this.i.setOnClickListener(paramOnClickListener);
   }
   
   protected void a(Bundle paramBundle)
@@ -103,25 +81,25 @@ public abstract class QIphoneTitleBarFragment
     if (getActivity() == null) {
       return;
     }
-    ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130850439));
-    if ((a()) && (needImmersive()) && (needStatusTrans()))
+    ((FrameLayout)getActivity().findViewById(16908290)).setForeground(getResources().getDrawable(2130852235));
+    if ((i()) && (needImmersive()) && (needStatusTrans()))
     {
       ViewParent localViewParent = getActivity().findViewById(16908310).getParent();
       if ((localViewParent != null) && ((localViewParent instanceof FrameLayout))) {
         ((FrameLayout)localViewParent).setVisibility(8);
       }
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView == null)
+    if (this.h == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376636));
-      a();
+      this.p = ((NavBarCommon)this.s.findViewById(2131444897));
+      j();
       try
       {
-        if ((paramBundle.getBoolean("hide_title_left_arrow", false)) && (this.jdField_a_of_type_AndroidWidgetTextView != null)) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
+        if ((paramBundle.getBoolean("hide_title_left_arrow", false)) && (this.h != null)) {
+          this.h.setBackgroundDrawable(null);
         }
-        d();
-        e();
+        n();
+        o();
         a_(paramBundle);
         return;
       }
@@ -132,68 +110,140 @@ public abstract class QIphoneTitleBarFragment
     }
   }
   
-  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle) {}
+  protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle) {}
   
   protected void a(TextView paramTextView, int paramInt)
   {
     paramTextView.setText(paramInt);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramTextView.getText());
-      localStringBuilder.append(HardCodeUtil.a(2131705906));
+      localStringBuilder.append(HardCodeUtil.a(2131903787));
       paramTextView.setContentDescription(localStringBuilder.toString());
     }
   }
   
   public void a(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setTitle(paramCharSequence);
+    this.p.setTitle(paramCharSequence);
   }
   
   public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369204));
+    this.h.setVisibility(8);
+    this.i = ((TextView)this.s.findViewById(2131436182));
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.i.setVisibility(8);
       return;
     }
-    a(this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    a(this.i);
+    this.i.setVisibility(0);
+    this.i.setText(paramString);
     if (paramOnClickListener == null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.i.setOnClickListener(this.v);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    this.i.setOnClickListener(paramOnClickListener);
   }
   
   public void a_(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setLeftViewName(paramBundle);
+    this.p.setLeftViewName(paramBundle);
   }
   
-  public View b()
+  protected void b(int paramInt, View.OnClickListener paramOnClickListener)
   {
-    this.d = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369233));
-    a(this.d);
-    return this.d;
+    this.a = true;
+    Object localObject = this.k;
+    if (localObject != null)
+    {
+      ((TextView)localObject).setVisibility(0);
+      this.k.setText(paramInt);
+      this.k.setEnabled(false);
+      this.l = ((TextView)LayoutInflater.from(getActivity()).inflate(2131624584, null));
+      a(this.l);
+      this.l.setText(paramInt);
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(11, 1);
+      ((RelativeLayout.LayoutParams)localObject).addRule(15, 1);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(this.q * 8.0F));
+      this.p.addView(this.l, (ViewGroup.LayoutParams)localObject);
+      this.l.setVisibility(8);
+      if (paramOnClickListener != null) {
+        this.l.setOnClickListener(paramOnClickListener);
+      }
+    }
   }
   
-  public void b()
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.a = false;
+    this.k.setVisibility(0);
+    this.k.setText(paramString);
+    this.k.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.k.setOnClickListener(paramOnClickListener);
+    }
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (this.l != null)
+    {
+      if (!this.a) {
+        return;
+      }
+      if (paramBoolean)
+      {
+        this.k.setVisibility(8);
+        this.l.setVisibility(0);
+        return;
+      }
+      this.k.setVisibility(0);
+      this.l.setVisibility(8);
+    }
+  }
+  
+  public void c(int paramInt, View.OnClickListener paramOnClickListener)
+  {
+    this.a = false;
+    this.k.setVisibility(0);
+    a(this.k, paramInt);
+    this.k.setEnabled(true);
+    if (paramOnClickListener != null) {
+      this.k.setOnClickListener(paramOnClickListener);
+    }
+  }
+  
+  protected boolean i()
+  {
+    return false;
+  }
+  
+  protected View j()
+  {
+    this.h = ((TextView)this.s.findViewById(2131436180));
+    this.h.setOnClickListener(this.v);
+    this.n = ((TextView)this.s.findViewById(2131448219));
+    this.o = ((ImageView)this.s.findViewById(2131436666));
+    TextView localTextView = this.n;
+    if ((localTextView != null) && (this.o != null))
+    {
+      localTextView.setOnClickListener(this.v);
+      this.o.setOnClickListener(this.v);
+    }
+    return this.h;
+  }
+  
+  public void k()
   {
     try
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376636);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.r = this.s.findViewById(2131444897);
+      this.r.setVisibility(8);
       return;
     }
     catch (Throwable localThrowable)
@@ -204,93 +254,36 @@ public abstract class QIphoneTitleBarFragment
     }
   }
   
-  protected void b(int paramInt, View.OnClickListener paramOnClickListener)
+  public View l()
   {
-    this.jdField_a_of_type_Boolean = true;
-    Object localObject = this.d;
-    if (localObject != null)
-    {
-      ((TextView)localObject).setVisibility(0);
-      this.d.setText(paramInt);
-      this.d.setEnabled(false);
-      this.e = ((TextView)LayoutInflater.from(getActivity()).inflate(2131558951, null));
-      a(this.e);
-      this.e.setText(paramInt);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(11, 1);
-      ((RelativeLayout.LayoutParams)localObject).addRule(15, 1);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(this.jdField_a_of_type_Float * 8.0F));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.addView(this.e, (ViewGroup.LayoutParams)localObject);
-      this.e.setVisibility(8);
-      if (paramOnClickListener != null) {
-        this.e.setOnClickListener(paramOnClickListener);
-      }
-    }
+    this.k = ((TextView)this.s.findViewById(2131436211));
+    a(this.k);
+    return this.k;
   }
   
-  public void b(String paramString, View.OnClickListener paramOnClickListener)
+  public View m()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.d.setVisibility(0);
-    this.d.setText(paramString);
-    this.d.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.d.setOnClickListener(paramOnClickListener);
-    }
+    return this.s.findViewById(2131444897);
   }
   
-  protected void b(boolean paramBoolean)
+  protected View n()
   {
-    if (this.e != null)
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        return;
-      }
-      if (paramBoolean)
-      {
-        this.d.setVisibility(8);
-        this.e.setVisibility(0);
-        return;
-      }
-      this.d.setVisibility(0);
-      this.e.setVisibility(8);
-    }
+    this.j = ((TextView)this.s.findViewById(2131436227));
+    return this.j;
   }
   
-  public View c()
+  public void n_(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376636);
+    this.k.setEnabled(paramBoolean);
   }
   
-  public void c(int paramInt, View.OnClickListener paramOnClickListener)
+  protected View o()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.d.setVisibility(0);
-    a(this.d, paramInt);
-    this.d.setEnabled(true);
-    if (paramOnClickListener != null) {
-      this.d.setOnClickListener(paramOnClickListener);
-    }
-  }
-  
-  protected View d()
-  {
-    this.c = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369249));
-    return this.c;
-  }
-  
-  protected View e()
-  {
-    this.d = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369233));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131369216));
-    a(this.d);
-    a(this.jdField_a_of_type_AndroidWidgetImageView);
-    return this.d;
-  }
-  
-  public void i_(boolean paramBoolean)
-  {
-    this.d.setEnabled(paramBoolean);
+    this.k = ((TextView)this.s.findViewById(2131436211));
+    this.m = ((ImageView)this.s.findViewById(2131436194));
+    a(this.k);
+    a(this.m);
+    return this.k;
   }
   
   public boolean onBackEvent()
@@ -303,9 +296,9 @@ public abstract class QIphoneTitleBarFragment
   
   @TargetApi(14)
   @Nullable
-  public final View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  public final View onCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    View localView4 = paramLayoutInflater.inflate(2131558948, paramViewGroup, false);
+    View localView4 = paramLayoutInflater.inflate(2131624581, paramViewGroup, false);
     View localView2;
     try
     {
@@ -318,16 +311,16 @@ public abstract class QIphoneTitleBarFragment
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView4.findViewById(2131378893));
+      this.s = ((RelativeLayout)localView4.findViewById(2131447595));
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setFitsSystemWindows(true);
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
+        this.s.setFitsSystemWindows(true);
+        this.s.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
       }
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131376636);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localView2, localLayoutParams);
-      this.jdField_b_of_type_AndroidViewView = localView2;
+      localLayoutParams.addRule(3, 2131444897);
+      this.s.addView(localView2, localLayoutParams);
+      this.t = localView2;
     }
     catch (RuntimeException localRuntimeException)
     {
@@ -337,11 +330,11 @@ public abstract class QIphoneTitleBarFragment
     {
       QLog.e("IphoneTitleBarFragment", 1, localInflateException, new Object[0]);
     }
-    View localView3 = this.jdField_a_of_type_AndroidViewView;
+    View localView3 = this.r;
     if (localView3 != null) {
       localView3.setVisibility(0);
     }
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
+    this.q = getResources().getDisplayMetrics().density;
     a(getArguments());
     a(paramLayoutInflater, paramViewGroup, paramBundle);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, localView4);
@@ -350,7 +343,7 @@ public abstract class QIphoneTitleBarFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QIphoneTitleBarFragment
  * JD-Core Version:    0.7.0.1
  */

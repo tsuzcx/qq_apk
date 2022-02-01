@@ -6,10 +6,10 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
-import com.tencent.liteav.audio.e;
+import com.tencent.liteav.audio.g;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
 import java.util.Vector;
@@ -22,7 +22,7 @@ public class b
   private MediaFormat c;
   private MediaCodec d;
   private Vector<byte[]> e;
-  private WeakReference<e> f;
+  private WeakReference<g> f;
   private volatile boolean g = false;
   private volatile boolean h = false;
   private final Object i = new Object();
@@ -34,7 +34,7 @@ public class b
   
   static
   {
-    f.f();
+    h.f();
   }
   
   @TargetApi(16)
@@ -175,9 +175,9 @@ public class b
     Object localObject = this.f;
     if (localObject != null)
     {
-      localObject = (e)((WeakReference)localObject).get();
+      localObject = (g)((WeakReference)localObject).get();
       if (localObject != null) {
-        ((e)localObject).onRecordEncData(paramArrayOfByte, paramLong, this.k, this.l, this.m);
+        ((g)localObject).onRecordEncData(paramArrayOfByte, paramLong, this.k, this.l, this.m);
       }
     }
   }
@@ -228,7 +228,7 @@ public class b
     c();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, WeakReference<e> paramWeakReference)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, WeakReference<g> paramWeakReference)
   {
     this.f = paramWeakReference;
     this.a = new MediaCodec.BufferInfo();
@@ -334,7 +334,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Record.b
  * JD-Core Version:    0.7.0.1
  */

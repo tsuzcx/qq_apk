@@ -159,10 +159,10 @@ public class NetBaseParser
               case 2: 
                 paramVarArgs = new NetSearchTemplateAvatarsItem((String)localObject5, l3, localArrayList, (DynamicSearch.ResultItem)localObject6, j);
               }
-              if ((paramVarArgs != null) && (paramVarArgs.b()))
+              if ((paramVarArgs != null) && (paramVarArgs.i()))
               {
-                paramVarArgs.u = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
-                paramVarArgs.a = bool1;
+                paramVarArgs.af = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
+                paramVarArgs.r = bool1;
                 ((List)localObject2).add(paramVarArgs);
               }
               else
@@ -189,18 +189,18 @@ public class NetBaseParser
                   break;
                 }
                 localObject7 = new SearchResultModelForEntrance((String)localObject5, str7, -4, str5);
-                ((SearchResultModelForEntrance)localObject7).u = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
+                ((SearchResultModelForEntrance)localObject7).af = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
                 paramVarArgs.add(localObject7);
               }
             }
             localObject2 = paramVarArgs;
             paramVarArgs = (Object[])localObject1;
             localObject1 = new GroupBaseNetSearchModelItem((String)localObject5, (String)localObject7, str4, str5, str6, str7, l2, localArrayList, j);
-            ((GroupBaseNetSearchModelItem)localObject1).u = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
-            ((GroupBaseNetSearchModelItem)localObject1).c = bool1;
-            ((GroupBaseNetSearchModelItem)localObject1).j = i;
-            ((GroupBaseNetSearchModelItem)localObject1).k = i;
-            ((GroupBaseNetSearchModelItem)localObject1).a = j;
+            ((GroupBaseNetSearchModelItem)localObject1).af = ((DynamicSearch.ResultItem)localObject6).seporator_type.get();
+            ((GroupBaseNetSearchModelItem)localObject1).G = bool1;
+            ((GroupBaseNetSearchModelItem)localObject1).L = i;
+            ((GroupBaseNetSearchModelItem)localObject1).M = i;
+            ((GroupBaseNetSearchModelItem)localObject1).m = j;
             ((List)localObject2).add(localObject1);
             localObject1 = localObject2;
             label1112:
@@ -237,7 +237,7 @@ public class NetBaseParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.net.parser.NetBaseParser
  * JD-Core Version:    0.7.0.1
  */

@@ -163,9 +163,9 @@ public class CheckForwardServlet
     if (str.equals("QQApkSvc.check_jump_url")) {
       paramPacket.setTimeout(10000L);
     } else if (str.equals("QQApkSvc.check_download_apk")) {
-      paramPacket.setTimeout(((TeleScreenConfig.Config)QConfigManager.a().a(416)).a);
+      paramPacket.setTimeout(((TeleScreenConfig.Config)QConfigManager.b().b(416)).a);
     } else if (str.equals("QQApkSvc.check_jump_apk")) {
-      paramPacket.setTimeout(((TeleScreenConfig.Config)QConfigManager.a().a(416)).b);
+      paramPacket.setTimeout(((TeleScreenConfig.Config)QConfigManager.b().b(416)).b);
     }
     if (QLog.isColorLevel())
     {
@@ -179,7 +179,7 @@ public class CheckForwardServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.sso.CheckForwardServlet
  * JD-Core Version:    0.7.0.1
  */

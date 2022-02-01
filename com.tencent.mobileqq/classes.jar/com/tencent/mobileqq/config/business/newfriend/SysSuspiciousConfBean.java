@@ -7,12 +7,7 @@ import org.json.JSONObject;
 
 public class SysSuspiciousConfBean
 {
-  private int a;
-  
-  public SysSuspiciousConfBean()
-  {
-    this.jdField_a_of_type_Int = 1;
-  }
+  private int a = 1;
   
   public static SysSuspiciousConfBean a(QConfItem paramQConfItem)
   {
@@ -24,14 +19,14 @@ public class SysSuspiciousConfBean
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("parse taskid->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(paramQConfItem.a);
         localStringBuilder.append(" content->");
-        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramQConfItem.b);
         QLog.d("SysSuspiciousConfBean", 2, localStringBuilder.toString());
       }
       try
       {
-        localSysSuspiciousConfBean.jdField_a_of_type_Int = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString).optInt("suspiciousSwitch", 1);
+        localSysSuspiciousConfBean.a = new JSONObject(paramQConfItem.b).optInt("suspiciousSwitch", 1);
         return localSysSuspiciousConfBean;
       }
       catch (JSONException paramQConfItem)
@@ -50,12 +45,12 @@ public class SysSuspiciousConfBean
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.a == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.newfriend.SysSuspiciousConfBean
  * JD-Core Version:    0.7.0.1
  */

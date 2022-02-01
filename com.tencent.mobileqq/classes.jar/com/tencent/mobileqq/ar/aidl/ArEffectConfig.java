@@ -11,56 +11,36 @@ public class ArEffectConfig
 {
   public static final Parcelable.Creator<ArEffectConfig> CREATOR = new ArEffectConfig.1();
   public int a;
-  public ArrayList<String> a;
-  public int b;
-  public ArrayList<String> b;
-  public int c;
-  public ArrayList<String> c;
-  public int d;
-  public ArrayList<String> d;
-  public int e;
-  public ArrayList<ArDefaultSetting> e;
-  public int f = 30;
-  public int g = 30;
-  public int h = 30;
+  public ArrayList<String> b = new ArrayList();
+  public ArrayList<String> c = new ArrayList();
+  public ArrayList<String> d = new ArrayList();
+  public ArrayList<String> e = new ArrayList();
+  public int f = 80;
+  public int g = 80;
+  public int h = 80;
+  public int i = 30;
+  public int j = 30;
+  public int k = 30;
+  public int l = 30;
+  public ArrayList<ArDefaultSetting> m = new ArrayList();
   
-  public ArEffectConfig()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Int = 80;
-    this.jdField_c_of_type_Int = 80;
-    this.jdField_d_of_type_Int = 80;
-    this.jdField_e_of_type_Int = 30;
-    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  public ArEffectConfig() {}
   
   public ArEffectConfig(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_d_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Int = 80;
-    this.jdField_c_of_type_Int = 80;
-    this.jdField_d_of_type_Int = 80;
-    this.jdField_e_of_type_Int = 30;
-    this.jdField_e_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    paramParcel.readList(this.jdField_a_of_type_JavaUtilArrayList, String.class.getClassLoader());
-    paramParcel.readList(this.jdField_b_of_type_JavaUtilArrayList, String.class.getClassLoader());
-    paramParcel.readList(this.jdField_c_of_type_JavaUtilArrayList, String.class.getClassLoader());
-    paramParcel.readList(this.jdField_d_of_type_JavaUtilArrayList, String.class.getClassLoader());
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.jdField_e_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
+    paramParcel.readList(this.b, String.class.getClassLoader());
+    paramParcel.readList(this.c, String.class.getClassLoader());
+    paramParcel.readList(this.d, String.class.getClassLoader());
+    paramParcel.readList(this.e, String.class.getClassLoader());
     this.f = paramParcel.readInt();
     this.g = paramParcel.readInt();
     this.h = paramParcel.readInt();
-    paramParcel.readList(this.jdField_e_of_type_JavaUtilArrayList, ArDefaultSetting.class.getClassLoader());
+    this.i = paramParcel.readInt();
+    this.j = paramParcel.readInt();
+    this.k = paramParcel.readInt();
+    this.l = paramParcel.readInt();
+    paramParcel.readList(this.m, ArDefaultSetting.class.getClassLoader());
   }
   
   public static ArEffectConfig a()
@@ -77,55 +57,55 @@ public class ArEffectConfig
   {
     StringBuffer localStringBuffer = new StringBuffer("ArEffectConfig{");
     localStringBuffer.append("version=");
-    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(this.a);
     localStringBuffer.append(", toplevelModel=");
-    localStringBuffer.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuffer.append(this.b);
     localStringBuffer.append(", toplevelGPU=");
-    localStringBuffer.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuffer.append(this.c);
     localStringBuffer.append(", blacklistModel=");
-    localStringBuffer.append(this.jdField_c_of_type_JavaUtilArrayList);
+    localStringBuffer.append(this.d);
     localStringBuffer.append(", blacklistGPU=");
-    localStringBuffer.append(this.jdField_d_of_type_JavaUtilArrayList);
+    localStringBuffer.append(this.e);
     localStringBuffer.append(", topModelStandard=");
-    localStringBuffer.append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", removeShadowLevel=");
-    localStringBuffer.append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", adjustBone=");
-    localStringBuffer.append(this.jdField_d_of_type_Int);
-    localStringBuffer.append(", traceQuality2=");
-    localStringBuffer.append(this.jdField_e_of_type_Int);
-    localStringBuffer.append(", traceQuality3=");
     localStringBuffer.append(this.f);
-    localStringBuffer.append(", traceQuality4=");
+    localStringBuffer.append(", removeShadowLevel=");
     localStringBuffer.append(this.g);
-    localStringBuffer.append(", traceQuality5=");
+    localStringBuffer.append(", adjustBone=");
     localStringBuffer.append(this.h);
+    localStringBuffer.append(", traceQuality2=");
+    localStringBuffer.append(this.i);
+    localStringBuffer.append(", traceQuality3=");
+    localStringBuffer.append(this.j);
+    localStringBuffer.append(", traceQuality4=");
+    localStringBuffer.append(this.k);
+    localStringBuffer.append(", traceQuality5=");
+    localStringBuffer.append(this.l);
     localStringBuffer.append(", defaultSettings=");
-    localStringBuffer.append(this.jdField_e_of_type_JavaUtilArrayList);
+    localStringBuffer.append(this.m);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeList(this.jdField_b_of_type_JavaUtilArrayList);
-    paramParcel.writeList(this.jdField_c_of_type_JavaUtilArrayList);
-    paramParcel.writeList(this.jdField_d_of_type_JavaUtilArrayList);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.jdField_e_of_type_Int);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeList(this.b);
+    paramParcel.writeList(this.c);
+    paramParcel.writeList(this.d);
+    paramParcel.writeList(this.e);
     paramParcel.writeInt(this.f);
     paramParcel.writeInt(this.g);
     paramParcel.writeInt(this.h);
-    paramParcel.writeList(this.jdField_e_of_type_JavaUtilArrayList);
+    paramParcel.writeInt(this.i);
+    paramParcel.writeInt(this.j);
+    paramParcel.writeInt(this.k);
+    paramParcel.writeInt(this.l);
+    paramParcel.writeList(this.m);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArEffectConfig
  * JD-Core Version:    0.7.0.1
  */

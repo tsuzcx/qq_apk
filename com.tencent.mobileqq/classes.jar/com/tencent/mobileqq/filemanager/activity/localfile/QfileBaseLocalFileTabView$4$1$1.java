@@ -18,24 +18,24 @@ class QfileBaseLocalFileTabView$4$1$1
 {
   QfileBaseLocalFileTabView$4$1$1(QfileBaseLocalFileTabView.4.1 param1, FileInfo paramFileInfo, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).isFileExists(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())))
+    if ((((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).isFileExists(this.a.d())) && (!((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).deleteFile(this.a.d())))
     {
-      FMToastUtil.a(2131692274);
+      FMToastUtil.a(2131889262);
       return;
     }
-    QQFileManagerUtil.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$4$1.a.a.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo);
+    QQFileManagerUtil.u(this.a.d());
+    this.c.b.a.c(this.a);
     try
     {
       paramView = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      paramView.setData(Uri.fromFile(new File(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.c())));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$4$1.a.a.a.sendBroadcast(paramView);
+      paramView.setData(Uri.fromFile(new File(this.a.d())));
+      this.c.b.a.C.sendBroadcast(paramView);
       label133:
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$4$1.a.a.f();
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.c.b.a.e();
+      if (this.b.isShowing()) {
+        this.b.dismiss();
       }
       return;
     }
@@ -47,7 +47,7 @@ class QfileBaseLocalFileTabView$4$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.4.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,24 +9,24 @@ import org.json.JSONException;
 class TavPlayerProxy$MyPlayerListener
   implements TavPlayer.PlayerListener
 {
-  private final TavPlayer jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer;
+  private final TavPlayer b;
   
   public TavPlayerProxy$MyPlayerListener(TavPlayerProxy paramTavPlayerProxy, TavPlayer paramTavPlayer)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer = paramTavPlayer;
+    this.b = paramTavPlayer;
   }
   
   private void a(String paramString1, String paramString2, Object paramObject)
   {
     try
     {
-      paramString1 = ObjConvector.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayer, paramString1, paramString2, paramObject);
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayerProxy.a("tav_play", paramString1);
+      paramString1 = ObjConvector.a(this.b, paramString1, paramString2, paramObject);
+      this.a.a("tav_play", paramString1);
       return;
     }
     catch (JSONException paramString1)
     {
-      Logger.e(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavPlayerProxy.a, "trySubscribe: ", paramString1);
+      Logger.e(this.a.a, "trySubscribe: ", paramString1);
     }
   }
   
@@ -63,7 +63,7 @@ class TavPlayerProxy$MyPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavPlayerProxy.MyPlayerListener
  * JD-Core Version:    0.7.0.1
  */

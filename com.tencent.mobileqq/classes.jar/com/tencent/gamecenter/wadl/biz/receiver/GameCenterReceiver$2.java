@@ -32,12 +32,12 @@ class GameCenterReceiver$2
           if (i != 8) {
             return;
           }
-          synchronized (this.this$0.a)
+          synchronized (this.this$0.b)
           {
             WadlResult localWadlResult1 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
             if (localWadlResult1 != null)
             {
-              localObject5 = this.this$0.a.iterator();
+              localObject5 = this.this$0.b.iterator();
               while (((Iterator)localObject5).hasNext()) {
                 ((GameCenterListener)((Iterator)localObject5).next()).onTaskInstall(localWadlResult1);
               }
@@ -45,12 +45,12 @@ class GameCenterReceiver$2
             return;
           }
         }
-        synchronized (this.this$0.a)
+        synchronized (this.this$0.b)
         {
           WadlResult localWadlResult2 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
           if (localWadlResult2 != null)
           {
-            localObject5 = this.this$0.a.iterator();
+            localObject5 = this.this$0.b.iterator();
             while (((Iterator)localObject5).hasNext()) {
               ((GameCenterListener)((Iterator)localObject5).next()).onTaskComplete(localWadlResult2);
             }
@@ -58,13 +58,13 @@ class GameCenterReceiver$2
           return;
         }
       }
-      synchronized (this.this$0.a)
+      synchronized (this.this$0.b)
       {
         String str = this.a.getStringExtra("key_appid");
         localObject5 = this.a.getStringExtra("key_pkg_name");
         if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
         {
-          Iterator localIterator = this.this$0.a.iterator();
+          Iterator localIterator = this.this$0.b.iterator();
           while (localIterator.hasNext()) {
             ((GameCenterListener)localIterator.next()).onTaskDeleted(str, (String)localObject5);
           }
@@ -77,7 +77,7 @@ class GameCenterReceiver$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.receiver.GameCenterReceiver.2
  * JD-Core Version:    0.7.0.1
  */

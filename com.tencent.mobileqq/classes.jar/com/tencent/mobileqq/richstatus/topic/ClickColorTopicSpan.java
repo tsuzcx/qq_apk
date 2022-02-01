@@ -15,19 +15,19 @@ public class ClickColorTopicSpan
   extends ClickableSpan
   implements ITopic
 {
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private ITopic.OnTopicClickListener jdField_a_of_type_ComTencentMobileqqTextITopic$OnTopicClickListener;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  private boolean jdField_b_of_type_Boolean;
+  private boolean a;
+  private ColorStateList b;
+  private ColorStateList c;
+  private Object d;
+  private ITopic.OnTopicClickListener e;
+  private boolean f;
   
   public ClickColorTopicSpan(ITopic.OnTopicClickListener paramOnTopicClickListener, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTextITopic$OnTopicClickListener = paramOnTopicClickListener;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
-    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.e = paramOnTopicClickListener;
+    this.b = paramColorStateList1;
+    this.c = paramColorStateList2;
+    this.d = paramObject;
   }
   
   public ClickColorTopicSpan(ITopic.OnTopicClickListener paramOnTopicClickListener, ColorStateList paramColorStateList, Object paramObject)
@@ -37,7 +37,7 @@ public class ClickColorTopicSpan
   
   public Object getData()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.d;
   }
   
   public void onClick(View paramView)
@@ -48,9 +48,9 @@ public class ClickColorTopicSpan
       if (((ClickPreventableTextView)localObject).a()) {
         return;
       }
-      ((ClickPreventableTextView)localObject).a();
+      ((ClickPreventableTextView)localObject).b();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTextITopic$OnTopicClickListener;
+    Object localObject = this.e;
     if (localObject != null) {
       ((ITopic.OnTopicClickListener)localObject).onClick(this, paramView);
     }
@@ -58,8 +58,8 @@ public class ClickColorTopicSpan
   
   public void setCustomFont(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean) {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+    if (this.f != paramBoolean) {
+      this.f = paramBoolean;
     }
   }
   
@@ -68,9 +68,9 @@ public class ClickColorTopicSpan
     if (QLog.isColorLevel()) {
       QLog.i("ClickColorTopicSpan", 2, String.format("setPressed %b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.a != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.a = paramBoolean;
       paramView.invalidate();
     }
   }
@@ -79,7 +79,7 @@ public class ClickColorTopicSpan
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.d;
     if ((localObject instanceof Pair))
     {
       localObject = (Pair)localObject;
@@ -96,15 +96,15 @@ public class ClickColorTopicSpan
   public void updateDrawState(TextPaint paramTextPaint)
   {
     super.updateDrawState(paramTextPaint);
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.f) {
       return;
     }
     paramTextPaint.setUnderlineText(false);
-    ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentResColorStateList;
+    ColorStateList localColorStateList = this.b;
     int i;
     if (localColorStateList != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
       } else {
         i = localColorStateList.getColorForState(new int[0], 0);
@@ -115,10 +115,10 @@ public class ClickColorTopicSpan
     {
       paramTextPaint.setColor(-16777216);
     }
-    localColorStateList = this.jdField_b_of_type_AndroidContentResColorStateList;
+    localColorStateList = this.c;
     if (localColorStateList != null)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         i = localColorStateList.getColorForState(new int[] { 16842919 }, 0);
       } else {
         i = localColorStateList.getColorForState(new int[0], 0);
@@ -131,7 +131,7 @@ public class ClickColorTopicSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.ClickColorTopicSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -12,77 +12,59 @@ import com.tencent.qphone.base.util.QLog;
 public class PublicAccountImageView$MatrixTouchListener
   implements View.OnTouchListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = 0;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
   boolean b;
   boolean c = false;
+  private int e = 0;
+  private float f;
+  private Matrix g = new Matrix();
+  private PointF h = new PointF();
   
   public PublicAccountImageView$MatrixTouchListener(PublicAccountImageView paramPublicAccountImageView) {}
   
-  private float a(MotionEvent paramMotionEvent)
-  {
-    float f1 = paramMotionEvent.getX(1) - paramMotionEvent.getX(0);
-    float f2 = paramMotionEvent.getY(1) - paramMotionEvent.getY(0);
-    return (float)Math.sqrt(f1 * f1 + f2 * f2);
-  }
-  
   private float a(float[] paramArrayOfFloat, float paramFloat)
   {
-    float f2 = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getHeight();
-    if (PublicAccountImageView.c(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * paramArrayOfFloat[4] / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[4] < f2) {
+    float f2 = this.d.getHeight();
+    if (PublicAccountImageView.f(this.d) * paramArrayOfFloat[4] / this.d.g[4] < f2) {
       return 0.0F;
     }
     if (paramArrayOfFloat[5] + paramFloat > 0.0F) {
       return -paramArrayOfFloat[5];
     }
     float f1 = paramFloat;
-    if (paramArrayOfFloat[5] + paramFloat < -(PublicAccountImageView.c(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * paramArrayOfFloat[4] / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[4] - f2)) {
-      f1 = -(PublicAccountImageView.c(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * paramArrayOfFloat[4] / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[4] - f2) - paramArrayOfFloat[5];
+    if (paramArrayOfFloat[5] + paramFloat < -(PublicAccountImageView.f(this.d) * paramArrayOfFloat[4] / this.d.g[4] - f2)) {
+      f1 = -(PublicAccountImageView.f(this.d) * paramArrayOfFloat[4] / this.d.g[4] - f2) - paramArrayOfFloat[5];
     }
     return f1;
   }
   
   private void a()
   {
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) != null) {
-      PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView).a();
+    if (PublicAccountImageView.c(this.d) != null) {
+      PublicAccountImageView.c(this.d).a();
     }
-  }
-  
-  private boolean a()
-  {
-    float[] arrayOfFloat = new float[9];
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getImageMatrix().getValues(arrayOfFloat);
-    boolean bool = false;
-    if (arrayOfFloat[0] != PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView)) {
-      bool = true;
-    }
-    return bool;
   }
   
   private float b(float[] paramArrayOfFloat, float paramFloat)
   {
-    float f2 = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getWidth();
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * paramArrayOfFloat[0] / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[0] < f2) {
+    float f2 = this.d.getWidth();
+    if (PublicAccountImageView.d(this.d) * paramArrayOfFloat[0] / this.d.g[0] < f2) {
       return 0.0F;
     }
     if (paramArrayOfFloat[2] + paramFloat > 0.0F) {
       return -paramArrayOfFloat[2];
     }
     float f1 = paramFloat;
-    if (paramArrayOfFloat[2] + paramFloat < -(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * paramArrayOfFloat[0] / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[0] - f2)) {
-      f1 = -(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * paramArrayOfFloat[0] / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_ArrayOfFloat[0] - f2) - paramArrayOfFloat[2];
+    if (paramArrayOfFloat[2] + paramFloat < -(PublicAccountImageView.d(this.d) * paramArrayOfFloat[0] / this.d.g[0] - f2)) {
+      f1 = -(PublicAccountImageView.d(this.d) * paramArrayOfFloat[0] / this.d.g[0] - f2) - paramArrayOfFloat[2];
     }
     return f1;
   }
   
   private void b()
   {
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) != null) {
-      PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView).b();
+    if (PublicAccountImageView.c(this.d) != null) {
+      PublicAccountImageView.c(this.d).b();
     }
   }
   
@@ -91,32 +73,32 @@ public class PublicAccountImageView$MatrixTouchListener
     if (paramMotionEvent.getPointerCount() < 2) {
       return;
     }
-    float f1 = a(paramMotionEvent);
+    float f1 = c(paramMotionEvent);
     if (f1 > 10.0F)
     {
-      float f2 = f1 / this.jdField_a_of_type_Float;
-      this.jdField_a_of_type_Float = f1;
-      paramMotionEvent = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView;
-      paramMotionEvent.jdField_a_of_type_Boolean = false;
-      paramMotionEvent.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramMotionEvent.getImageMatrix());
+      float f2 = f1 / this.f;
+      this.f = f1;
+      paramMotionEvent = this.d;
+      paramMotionEvent.e = false;
+      paramMotionEvent.f = false;
+      this.g.set(paramMotionEvent.getImageMatrix());
       paramMotionEvent = new float[9];
-      this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(paramMotionEvent);
-      if (paramMotionEvent[0] > PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_Float)
+      this.g.getValues(paramMotionEvent);
+      if (paramMotionEvent[0] > PublicAccountImageView.e(this.d) * this.d.c)
       {
         f1 = 1.0F;
-        this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_Boolean = true;
+        this.d.e = true;
       }
       else
       {
         f1 = f2;
-        if (paramMotionEvent[0] < PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView))
+        if (paramMotionEvent[0] < PublicAccountImageView.e(this.d))
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_b_of_type_Boolean = true;
+          this.d.f = true;
           f1 = f2;
         }
       }
-      this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f1, f1, this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getWidth() / 2, this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getHeight() / 2);
+      this.g.postScale(f1, f1, this.d.getWidth() / 2, this.d.getHeight() / 2);
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
@@ -132,86 +114,104 @@ public class PublicAccountImageView$MatrixTouchListener
         localStringBuilder.append(paramMotionEvent[0]);
         QLog.d("PublicAccountImageView", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+      this.d.setImageMatrix(this.g);
     }
   }
   
-  private boolean b()
+  private float c(MotionEvent paramMotionEvent)
+  {
+    float f1 = paramMotionEvent.getX(1) - paramMotionEvent.getX(0);
+    float f2 = paramMotionEvent.getY(1) - paramMotionEvent.getY(0);
+    return (float)Math.sqrt(f1 * f1 + f2 * f2);
+  }
+  
+  private void c()
+  {
+    this.a = true;
+    this.b = true;
+    this.c = true;
+    float[] arrayOfFloat = new float[9];
+    this.d.getImageMatrix().getValues(arrayOfFloat);
+    if (arrayOfFloat[2] >= 0.0F) {
+      this.b = false;
+    }
+    if (PublicAccountImageView.d(this.d) * arrayOfFloat[0] + arrayOfFloat[2] <= this.d.getWidth()) {
+      this.a = false;
+    }
+  }
+  
+  private boolean d()
   {
     float[] arrayOfFloat = new float[9];
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getImageMatrix().getValues(arrayOfFloat);
+    this.d.getImageMatrix().getValues(arrayOfFloat);
     boolean bool = false;
-    if (arrayOfFloat[0] < PublicAccountImageView.b(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView)) {
+    if (arrayOfFloat[0] != PublicAccountImageView.e(this.d)) {
       bool = true;
     }
     return bool;
   }
   
-  private void c()
+  private void e()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.c = true;
-    float[] arrayOfFloat = new float[9];
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getImageMatrix().getValues(arrayOfFloat);
-    if (arrayOfFloat[2] >= 0.0F) {
-      this.jdField_b_of_type_Boolean = false;
-    }
-    if (PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView) * arrayOfFloat[0] + arrayOfFloat[2] <= this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getWidth()) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  private void d()
-  {
-    float f = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_b_of_type_Float / this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_Float;
+    float f1 = this.d.d / this.d.c;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("back scale is");
-      localStringBuilder.append(f);
+      localStringBuilder.append(f1);
       QLog.d("PublicAccountImageView", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.postScale(f, f, this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getWidth() / 2, this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getHeight() / 2);
-    this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-  }
-  
-  private void e()
-  {
-    if (b())
-    {
-      this.jdField_a_of_type_AndroidGraphicsMatrix.set(PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView));
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    }
+    this.g.postScale(f1, f1, this.d.getWidth() / 2, this.d.getHeight() / 2);
+    this.d.setImageMatrix(this.g);
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getScaleType() != ImageView.ScaleType.CENTER)
+    if (g())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setScaleType(ImageView.ScaleType.MATRIX);
+      this.g.set(PublicAccountImageView.a(this.d));
+      this.d.setImageMatrix(this.g);
+      this.d.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    }
+  }
+  
+  private boolean g()
+  {
+    float[] arrayOfFloat = new float[9];
+    this.d.getImageMatrix().getValues(arrayOfFloat);
+    boolean bool = false;
+    if (arrayOfFloat[0] < PublicAccountImageView.e(this.d)) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private void h()
+  {
+    if (this.d.getScaleType() != ImageView.ScaleType.CENTER)
+    {
+      this.d.setScaleType(ImageView.ScaleType.MATRIX);
       return;
     }
-    this.jdField_a_of_type_Int = 3;
+    this.e = 3;
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
-    if (a())
+    if (d())
     {
-      float f1 = paramMotionEvent.getX() - this.jdField_a_of_type_AndroidGraphicsPointF.x;
-      float f2 = paramMotionEvent.getY() - this.jdField_a_of_type_AndroidGraphicsPointF.y;
+      float f1 = paramMotionEvent.getX() - this.h.x;
+      float f2 = paramMotionEvent.getY() - this.h.y;
       if (Math.sqrt(f1 * f1 + f2 * f2) > 10.0D)
       {
-        this.jdField_a_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-        this.jdField_a_of_type_AndroidGraphicsMatrix.set(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.getImageMatrix());
+        this.h.set(paramMotionEvent.getX(), paramMotionEvent.getY());
+        this.g.set(this.d.getImageMatrix());
         paramMotionEvent = new float[9];
-        this.jdField_a_of_type_AndroidGraphicsMatrix.getValues(paramMotionEvent);
+        this.g.getValues(paramMotionEvent);
         f2 = a(paramMotionEvent, f2);
         f1 = b(paramMotionEvent, f1);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f1, f2);
-        this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setImageMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix);
+        this.g.postTranslate(f1, f2);
+        this.d.setImageMatrix(this.g);
       }
     }
     else
@@ -233,20 +233,20 @@ public class PublicAccountImageView$MatrixTouchListener
           {
             if (i == 5)
             {
-              if (this.jdField_a_of_type_Int == 3) {
+              if (this.e == 3) {
                 return true;
               }
-              this.jdField_a_of_type_Int = 2;
-              this.jdField_a_of_type_Float = a(paramMotionEvent);
+              this.e = 2;
+              this.f = c(paramMotionEvent);
             }
           }
           else {
-            e();
+            f();
           }
         }
         else
         {
-          i = this.jdField_a_of_type_Int;
+          i = this.e;
           if (i == 2) {
             b(paramMotionEvent);
           } else if (i == 1) {
@@ -261,36 +261,36 @@ public class PublicAccountImageView$MatrixTouchListener
         if (QLog.isColorLevel()) {
           QLog.d("PublicAccountImageView", 2, "the current state is action up");
         }
-        if (this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_Boolean)
+        if (this.d.e)
         {
-          d();
-          this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_a_of_type_Boolean = false;
+          e();
+          this.d.e = false;
         }
-        else if (this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.jdField_b_of_type_Boolean)
+        else if (this.d.f)
         {
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountImageView", 2, "back to init matrix");
           }
-          paramView = this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView;
+          paramView = this.d;
           paramView.setImageMatrix(PublicAccountImageView.a(paramView));
-          this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+          this.d.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-      f();
+      this.e = 1;
+      this.h.set(paramMotionEvent.getX(), paramMotionEvent.getY());
+      h();
       a();
       c();
     }
-    return PublicAccountImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountImagecollectionPublicAccountImageView).onTouchEvent(paramMotionEvent);
+    return PublicAccountImageView.b(this.d).onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageView.MatrixTouchListener
  * JD-Core Version:    0.7.0.1
  */

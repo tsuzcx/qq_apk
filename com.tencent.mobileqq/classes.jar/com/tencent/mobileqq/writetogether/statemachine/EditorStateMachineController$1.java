@@ -13,15 +13,15 @@ class EditorStateMachineController$1
   {
     if ((paramLong & 0x40000000) != 0L)
     {
-      EditorStateMachineController.a(this.a).a(EditorState.CLOSED_BY_ADMIN, EditorStateMachineController.a(this.a).getString(2131720455));
+      EditorStateMachineController.b(this.a).a(EditorState.CLOSED_BY_ADMIN, EditorStateMachineController.a(this.a).getString(2131918131));
       return;
     }
-    EditorStateMachineController.a(this.a).a(EditorState.OPEN_BY_ADMIN);
+    EditorStateMachineController.b(this.a).a(EditorState.OPEN_BY_ADMIN);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController.1
  * JD-Core Version:    0.7.0.1
  */

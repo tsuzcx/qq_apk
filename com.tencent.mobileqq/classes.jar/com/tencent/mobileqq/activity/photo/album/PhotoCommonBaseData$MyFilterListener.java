@@ -15,10 +15,16 @@ public class PhotoCommonBaseData$MyFilterListener
   {
     if (paramLocalMediaInfo.mMediaType == 0)
     {
-      if ((this.this$0.filter.imageMinHeight > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinHeight)) {
+      if ((this.this$0.filter.imageMinHeight > 0) && (paramLocalMediaInfo.mediaHeight > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinHeight)) {
         return true;
       }
-      if ((this.this$0.filter.imageMinWidth > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinWidth)) {
+      if ((this.this$0.filter.imageMinWidth > 0) && (paramLocalMediaInfo.mediaWidth > 0) && (paramLocalMediaInfo.mediaWidth < this.this$0.filter.imageMinWidth)) {
+        return true;
+      }
+      if ((this.this$0.filter.imageMaxHeight > 0) && (paramLocalMediaInfo.mediaHeight > this.this$0.filter.imageMaxHeight)) {
+        return true;
+      }
+      if ((this.this$0.filter.imageMaxWidth > 0) && (paramLocalMediaInfo.mediaWidth > this.this$0.filter.imageMaxWidth)) {
         return true;
       }
       if ((this.this$0.filter.imageMinSize > 0L) && (paramLocalMediaInfo.fileSize < this.this$0.filter.imageMinSize)) {
@@ -27,6 +33,18 @@ public class PhotoCommonBaseData$MyFilterListener
     }
     else if (paramLocalMediaInfo.mMediaType == 1)
     {
+      if ((this.this$0.filter.videoMinHeight > 0) && (paramLocalMediaInfo.mediaHeight > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.videoMinHeight)) {
+        return true;
+      }
+      if ((this.this$0.filter.videoMinWidth > 0) && (paramLocalMediaInfo.mediaWidth > 0) && (paramLocalMediaInfo.mediaWidth < this.this$0.filter.videoMinWidth)) {
+        return true;
+      }
+      if ((this.this$0.filter.videoMaxHeight > 0) && (paramLocalMediaInfo.mediaHeight > this.this$0.filter.videoMaxHeight)) {
+        return true;
+      }
+      if ((this.this$0.filter.videoMaxWidth > 0) && (paramLocalMediaInfo.mediaWidth > this.this$0.filter.videoMaxWidth)) {
+        return true;
+      }
       if ((this.this$0.filter.videoMaxDuration > 0L) && (paramLocalMediaInfo.mDuration > this.this$0.filter.videoMaxDuration)) {
         return true;
       }
@@ -67,7 +85,7 @@ public class PhotoCommonBaseData$MyFilterListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData.MyFilterListener
  * JD-Core Version:    0.7.0.1
  */

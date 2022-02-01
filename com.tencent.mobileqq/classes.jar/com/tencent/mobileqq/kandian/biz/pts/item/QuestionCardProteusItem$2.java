@@ -14,14 +14,14 @@ class QuestionCardProteusItem$2
   
   public void onClick(View paramView)
   {
-    RIJJumpUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, 2, false, 6, false);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    RIJJumpUtils.a(this.a, this.b, 2, false, 6, false);
+    paramView = this.b;
     RIJFrameworkReportManager.b(paramView, (int)paramView.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.QuestionCardProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

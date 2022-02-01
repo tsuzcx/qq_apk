@@ -6,9 +6,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
-import com.tencent.biz.subscribe.SubscribeUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.qcircle.api.IQCircleCommonUtil;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
@@ -23,10 +22,10 @@ import mqq.app.MobileQQ;
 public class QCircleHybirdFragment
   extends WebViewFragment
 {
-  private static final String jdField_a_of_type_JavaLangString = "QCircleHybirdFragment";
-  private QCircleHybirdFragment.QCircleHybirdBroadcastReceiver jdField_a_of_type_ComTencentMobileqqQcircleApiHybirdQCircleHybirdFragment$QCircleHybirdBroadcastReceiver;
+  private static final String a = "QCircleHybirdFragment";
+  private QCircleHybirdFragment.QCircleHybirdBroadcastReceiver b;
   
-  private void a()
+  private void c()
   {
     Object localObject1;
     Resources localResources;
@@ -36,15 +35,15 @@ public class QCircleHybirdFragment
     {
       localObject1 = getUIStyleHandler();
       localResources = getResources();
-      boolean bool = SubscribeUtils.a();
-      j = 2131166281;
+      boolean bool = ((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).isInNightMode();
+      j = 2131167018;
       if (bool) {
-        i = 2131166281;
+        i = 2131167018;
       } else {
-        i = 2131166280;
+        i = 2131167017;
       }
-      ((SwiftBrowserUIStyleHandler)localObject1).a = localResources.getColor(i);
-      getUIStyleHandler().c.setBackgroundColor(getUIStyleHandler().a);
+      ((SwiftBrowserUIStyleHandler)localObject1).E = localResources.getColor(i);
+      getUIStyleHandler().D.setBackgroundColor(getUIStyleHandler().E);
       if (getWebView().getX5WebViewExtension() == null) {}
     }
     for (;;)
@@ -53,17 +52,17 @@ public class QCircleHybirdFragment
       {
         localObject1 = getWebView().getView();
         localResources = getResources();
-        if (!SubscribeUtils.a()) {
-          break label246;
+        if (!((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).isInNightMode()) {
+          break label296;
         }
-        i = 2131166281;
+        i = 2131167018;
         ((View)localObject1).setBackgroundColor(localResources.getColor(i));
         localObject1 = getWebView();
         localResources = getResources();
-        if (!SubscribeUtils.a()) {
-          break label252;
+        if (!((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).isInNightMode()) {
+          break label302;
         }
-        i = 2131166281;
+        i = 2131167018;
         ((CustomWebView)localObject1).setBackgroundColor(localResources.getColor(i));
       }
       catch (Exception localException)
@@ -72,43 +71,52 @@ public class QCircleHybirdFragment
       }
       Object localObject2 = getWebView();
       localResources = getResources();
-      if (SubscribeUtils.a()) {
-        i = 2131166281;
+      if (((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).isInNightMode()) {
+        i = 2131167018;
       } else {
-        i = 2131166280;
+        i = 2131167017;
       }
       ((CustomWebView)localObject2).setBackgroundColor(localResources.getColor(i));
       if (this.contentView != null)
       {
         localObject2 = this.contentView;
         localResources = getResources();
-        if (SubscribeUtils.a()) {
+        if (((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).isInNightMode()) {
           i = j;
         } else {
-          i = 2131166280;
+          i = 2131167017;
         }
         ((WebBrowserViewContainer)localObject2).setBackgroundColor(localResources.getColor(i));
       }
       return;
-      label246:
-      i = 2131166280;
+      label296:
+      i = 2131167017;
       continue;
-      label252:
-      i = 2131166280;
+      label302:
+      i = 2131167017;
     }
   }
   
-  private void b()
+  private void d()
   {
     VideoReport.addToDetectionWhitelist(getHostActivity());
     VideoReport.setPageId(getView(), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).getQCircleDaTongBasePageId());
-    VideoReport.setPageParams(getView(), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).buildPageParams(jdField_a_of_type_JavaLangString));
-    String str = jdField_a_of_type_JavaLangString;
-    int i = RFLog.USR;
+    VideoReport.setPageParams(getView(), ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).buildPageParams(a));
+    String str = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reportDaTongRegister  subPage: ");
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    RFLog.i(str, i, localStringBuilder.toString());
+    localStringBuilder.append(a);
+    QLog.i(str, 1, localStringBuilder.toString());
+  }
+  
+  public void a()
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("action_update_native_tag_follow_state");
+    if (getHostActivity() != null) {
+      getHostActivity().sendBroadcast(localIntent);
+    }
+    a(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
   }
   
   public void a(int paramInt)
@@ -138,12 +146,12 @@ public class QCircleHybirdFragment
     Activity localActivity = getHostActivity();
     if (localActivity == null)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[sendNativeUserWearingMedalUpdateBroadcast] activity should not be null.");
+      QLog.w(a, 1, "[sendNativeUserWearingMedalUpdateBroadcast] activity should not be null.");
       return;
     }
     if (localActivity.isFinishing())
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[sendNativeUserWearingMedalUpdateBroadcast] activity is finishing state, not send broadcast.");
+      QLog.w(a, 1, "[sendNativeUserWearingMedalUpdateBroadcast] activity is finishing state, not send broadcast.");
       return;
     }
     localActivity.sendBroadcast(paramIntent);
@@ -157,16 +165,6 @@ public class QCircleHybirdFragment
     if (getHostActivity() != null) {
       getHostActivity().sendBroadcast(localIntent);
     }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    paramString = new Intent();
-    paramString.setAction("action_update_native_tag_follow_state");
-    if (getHostActivity() != null) {
-      getHostActivity().sendBroadcast(paramString);
-    }
-    a(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -205,14 +203,14 @@ public class QCircleHybirdFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    a();
+    c();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if ((getQBaseActivity() != null) && (this.jdField_a_of_type_ComTencentMobileqqQcircleApiHybirdQCircleHybirdFragment$QCircleHybirdBroadcastReceiver != null)) {
-      getQBaseActivity().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqQcircleApiHybirdQCircleHybirdFragment$QCircleHybirdBroadcastReceiver);
+    if ((getQBaseActivity() != null) && (this.b != null)) {
+      getQBaseActivity().unregisterReceiver(this.b);
     }
   }
   
@@ -228,7 +226,7 @@ public class QCircleHybirdFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleHybirdFragment
  * JD-Core Version:    0.7.0.1
  */

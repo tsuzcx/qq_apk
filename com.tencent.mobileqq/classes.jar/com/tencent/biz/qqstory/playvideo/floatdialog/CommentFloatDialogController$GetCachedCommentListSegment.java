@@ -14,9 +14,9 @@ public class CommentFloatDialogController$GetCachedCommentListSegment
   
   protected void a(JobContext paramJobContext, DetailFeedItem paramDetailFeedItem)
   {
-    paramDetailFeedItem.a(CommentFloatDialogController.a(this.a).a(paramDetailFeedItem.a.feedId, true), true, true);
-    if (paramDetailFeedItem.a()) {
-      paramDetailFeedItem.a(CommentFloatDialogController.a(this.a).a(CommentFloatDialogController.a(this.a), false), true, false);
+    paramDetailFeedItem.a(CommentFloatDialogController.e(this.a).a(paramDetailFeedItem.a.feedId, true), true, true);
+    if (paramDetailFeedItem.b()) {
+      paramDetailFeedItem.a(CommentFloatDialogController.e(this.a).a(CommentFloatDialogController.d(this.a), false), true, false);
     }
     SLog.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", CommentFloatDialogController.a(this.a).toString());
     notifyResult(paramDetailFeedItem);
@@ -24,7 +24,7 @@ public class CommentFloatDialogController$GetCachedCommentListSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.GetCachedCommentListSegment
  * JD-Core Version:    0.7.0.1
  */

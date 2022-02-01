@@ -1,26 +1,19 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.basic.module.Monitor;
-
 class TRTCCloudImpl$9
-  implements Runnable
+  implements TRTCRoomInfo.UserAction
 {
   TRTCCloudImpl$9(TRTCCloudImpl paramTRTCCloudImpl) {}
   
-  public void run()
+  public void accept(String paramString, TRTCRoomInfo.UserInfo paramUserInfo)
   {
-    this.this$0.apiLog("DisconnectOtherRoom");
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("DisconnectOtherRoom self:");
-    ((StringBuilder)localObject).append(this.this$0.hashCode());
-    Monitor.a(1, ((StringBuilder)localObject).toString(), "", 0);
-    localObject = this.this$0;
-    TRTCCloudImpl.access$1800((TRTCCloudImpl)localObject, ((TRTCCloudImpl)localObject).mNativeRtcContext);
+    paramUserInfo.mainRender.muteAudio = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
+    paramUserInfo.mainRender.muteVideo = TRTCRoomInfo.TRTCRemoteMuteState.UNSET;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.9
  * JD-Core Version:    0.7.0.1
  */

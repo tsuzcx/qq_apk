@@ -27,10 +27,10 @@ class IphoneTreeView$1
       {
         paramView.setPressed(false);
         paramView = this.a;
-        paramView.collapseGroup(paramView.jdField_a_of_type_Int);
+        paramView.collapseGroup(paramView.b);
         paramView = this.a;
-        paramView.setSelectedGroup(paramView.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_AndroidViewView = null;
+        paramView.setSelectedGroup(paramView.b);
+        this.a.a = null;
       }
       return true;
     }
@@ -41,7 +41,7 @@ class IphoneTreeView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IphoneTreeView.1
  * JD-Core Version:    0.7.0.1
  */

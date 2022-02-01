@@ -14,24 +14,24 @@ class TroopSettingActivity$60
   {
     if (!this.a.isFinishing())
     {
-      if (this.a.n) {
+      if (this.a.aY) {
         return;
       }
-      this.a.n();
-      if (this.a.b != null) {
-        this.a.b.removeCallbacksAndMessages(null);
+      this.a.o();
+      if (this.a.aX != null) {
+        this.a.aX.removeCallbacksAndMessages(null);
       }
       if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.chatopttroop", 2, "openIdObserver success");
         }
-        if (!paramOpenID.openID.equals(this.a.e))
+        if (!paramOpenID.openID.equals(this.a.ak))
         {
           if (QLog.isColorLevel()) {
             QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
           }
-          this.a.q();
+          this.a.r();
         }
       }
       else if (QLog.isColorLevel())
@@ -57,7 +57,7 @@ class TroopSettingActivity$60
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.60
  * JD-Core Version:    0.7.0.1
  */

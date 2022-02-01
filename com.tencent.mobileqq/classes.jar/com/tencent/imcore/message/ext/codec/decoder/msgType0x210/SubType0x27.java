@@ -165,40 +165,6 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.SnsUpdateOneFla
 public class SubType0x27
   implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
-  private int a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
-  {
-    int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asIntBuffer().get();
-    ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(paramLong));
-    paramProfileInfo = localExtensionInfo;
-    if (localExtensionInfo == null)
-    {
-      paramProfileInfo = new ExtensionInfo();
-      paramProfileInfo.uin = String.valueOf(paramLong);
-    }
-    long l1 = paramProfileInfo.uVipFont;
-    long l2 = i;
-    if ((l1 != FontManagerConstants.parseFontId(l2)) || (paramProfileInfo.vipFontType != FontManagerConstants.parseFontType(l2)))
-    {
-      paramProfileInfo.uVipFont = FontManagerConstants.parseFontId(l2);
-      paramProfileInfo.vipFontType = FontManagerConstants.parseFontType(l2);
-      paramProfileInfo.timestamp = System.currentTimeMillis();
-      paramFriendsManager.a(paramProfileInfo);
-      VasUtils.a(paramOnLinePushMessageProcessor.a());
-    }
-    if (QLog.isColorLevel())
-    {
-      paramOnLinePushMessageProcessor = new StringBuilder();
-      paramOnLinePushMessageProcessor.append("push, Get Font, uin=");
-      paramOnLinePushMessageProcessor.append(paramLong);
-      paramOnLinePushMessageProcessor.append(", id=");
-      paramOnLinePushMessageProcessor.append(paramProfileInfo.uVipFont);
-      paramOnLinePushMessageProcessor.append(", type = ");
-      paramOnLinePushMessageProcessor.append(paramProfileInfo.vipFontType);
-      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
-    }
-    return (int)FontManagerConstants.parseFontId(l2);
-  }
-  
   private int a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, Friends[] paramArrayOfFriends, int paramInt, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     String str = paramProfileInfo.bytes_value.get().toStringUtf8();
@@ -209,7 +175,7 @@ public class SubType0x27
       paramProfileInfo.append(str);
       QLog.d("cardpush", 2, paramProfileInfo.toString());
     }
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     paramProfileInfo = null;
     if (localFriends != null) {
       paramProfileInfo = localFriends.name;
@@ -217,14 +183,14 @@ public class SubType0x27
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramLong);
     localStringBuilder.append("");
-    paramArrayOfFriends[paramInt] = paramFriendsManager.a(localStringBuilder.toString(), str);
+    paramArrayOfFriends[paramInt] = paramFriendsManager.c(localStringBuilder.toString(), str);
     if ((localFriends != null) && (localFriends.isFriend()) && (QQProfileItem.a(str, paramProfileInfo))) {
       QQProfileItem.a(paramLong, str, (DiscussionManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.DISCUSSION_MANAGER));
     }
     paramArrayOfFriends = new StringBuilder();
     paramArrayOfFriends.append(paramLong);
     paramArrayOfFriends.append("");
-    paramArrayOfFriends = paramFriendsManager.a(paramArrayOfFriends.toString());
+    paramArrayOfFriends = paramFriendsManager.f(paramArrayOfFriends.toString());
     if (paramArrayOfFriends != null)
     {
       paramArrayOfFriends.strNick = str;
@@ -374,13 +340,13 @@ public class SubType0x27
             i(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 27201: 
-            i = a(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
+            i = n(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 27041: 
             k(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 27025: 
-            n(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
+            o(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 23109: 
             paramForwardBody.c((OnLinePushMessageProcessor)localObject1, l, (SubMsgType0x27.ProfileInfo)localObject2);
@@ -392,10 +358,10 @@ public class SubType0x27
             paramForwardBody.j((OnLinePushMessageProcessor)localObject1, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 20015: 
-            p(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
+            q(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 20009: 
-            o(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
+            p(paramOnLinePushMessageProcessor, paramFriendsManager, l, (SubMsgType0x27.ProfileInfo)localObject2);
             break;
           case 20002: 
             paramInt = a(paramOnLinePushMessageProcessor, paramFriendsManager, paramArrayOfFriends, paramInt, l, (SubMsgType0x27.ProfileInfo)localObject2);
@@ -417,7 +383,7 @@ public class SubType0x27
           paramForwardBody.append(j);
           QLog.d("FontManagerConstants", 2, paramForwardBody.toString());
         }
-        paramFriendsManager = paramFriendsManager.a(String.valueOf(l));
+        paramFriendsManager = paramFriendsManager.x(String.valueOf(l));
         paramForwardBody = paramFriendsManager;
         if (paramFriendsManager == null)
         {
@@ -480,15 +446,27 @@ public class SubType0x27
     {
       localInvalidProtocolBufferMicroException.printStackTrace();
     }
-    int i = paramProfileInfo.short_nameplate_itemid.get();
+    int i = paramProfileInfo.nameplate_pendant_itemid.get();
     int j = paramProfileInfo.diyfontid.get();
-    paramProfileInfo = paramFriendsManager.e(Long.toString(paramLong));
+    int k = paramProfileInfo.game_nameplate.get();
+    paramProfileInfo = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.bigClubExtTemplateId = i;
       paramProfileInfo.diyFontId = j;
-      paramFriendsManager.a(paramProfileInfo);
+      paramProfileInfo.gameCardId = k;
+      paramFriendsManager.b(paramProfileInfo);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
+    }
+    paramProfileInfo = new StringBuilder();
+    paramProfileInfo.append(paramLong);
+    paramProfileInfo.append("");
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    if ((paramProfileInfo != null) && (paramProfileInfo.gameCardId != k))
+    {
+      paramProfileInfo.gameCardId = k;
+      paramFriendsManager.a(paramProfileInfo);
+      paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER).notifyUI(1, true, paramProfileInfo);
     }
     if (QLog.isColorLevel())
     {
@@ -513,7 +491,7 @@ public class SubType0x27
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(l);
         ((StringBuilder)localObject2).append("");
-        paramFriendsManager.d(((StringBuilder)localObject2).toString());
+        paramFriendsManager.s(((StringBuilder)localObject2).toString());
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append(l);
         ((StringBuilder)localObject2).append("");
@@ -533,9 +511,9 @@ public class SubType0x27
             localStringBuilder = new StringBuilder();
             localStringBuilder.append(l);
             localStringBuilder.append("");
-            if (((QidianManager)localObject2).a(localStringBuilder.toString()))
+            if (((QidianManager)localObject2).e(localStringBuilder.toString()))
             {
-              paramOnLinePushMessageProcessor.getProxyManager().a().a(String.valueOf(l), true);
+              paramOnLinePushMessageProcessor.getProxyManager().g().a(String.valueOf(l), true);
               localObject2 = paramOnLinePushMessageProcessor.getApplication().getBaseContext();
               localStringBuilder = new StringBuilder();
               localStringBuilder.append(paramOnLinePushMessageProcessor.getCurrentAccountUin());
@@ -605,7 +583,7 @@ public class SubType0x27
           Object localObject5;
           if ((j == 13569) && (paramOnLinePushMessageProcessor.uint32_result.get() == 0))
           {
-            localObject3 = paramTroopManager.b(Long.toString(paramOnLinePushMessageProcessor.uint64_uin.get()));
+            localObject3 = paramTroopManager.k(Long.toString(paramOnLinePushMessageProcessor.uint64_uin.get()));
             j = ((SubMsgType0x27.SnsUpdateItem)localObject4).bytes_value.get().size();
             if (QLog.isColorLevel())
             {
@@ -618,10 +596,10 @@ public class SubType0x27
             }
             if (j == 0)
             {
-              if (paramTroopManager.b((String)localObject3))
+              if (paramTroopManager.p((String)localObject3))
               {
                 localObject4 = localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_COMMONLY_USED_HANDLER);
-                j = TroopCommonlyUsedObserver.a;
+                j = TroopCommonlyUsedObserver.b;
                 localObject5 = new Object[4];
                 localObject5[i] = localObject3;
                 localObject5[1] = Integer.valueOf(1);
@@ -635,8 +613,8 @@ public class SubType0x27
               localObject4 = ((SubMsgType0x27.SnsUpdateItem)localObject4).bytes_value.get().toByteArray();
               localObject5 = new byte[4];
               System.arraycopy(localObject4, i, localObject5, i, 4);
-              if (paramTroopManager.a((String)localObject3, MessageHandlerUtils.a((byte[])localObject5))) {
-                localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_COMMONLY_USED_HANDLER).notifyUI(TroopCommonlyUsedObserver.a, true, new Object[] { localObject3, localObject1, localObject1, null });
+              if (paramTroopManager.c((String)localObject3, MessageHandlerUtils.a((byte[])localObject5))) {
+                localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_COMMONLY_USED_HANDLER).notifyUI(TroopCommonlyUsedObserver.b, true, new Object[] { localObject3, localObject1, localObject1, null });
               }
             }
           }
@@ -655,12 +633,12 @@ public class SubType0x27
                 }
                 localObject5 = new byte[4];
                 System.arraycopy(localObject4, 2, localObject5, 0, 4);
-                if (paramTroopManager.b((String)localObject3, MessageHandlerUtils.a((byte[])localObject5))) {
-                  localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHOW_EXTERNAL_HANDLER).notifyUI(TroopShowExternalObserver.b, true, new Object[] { localObject3, Integer.valueOf(i), localObject1, Integer.valueOf(i) });
+                if (paramTroopManager.d((String)localObject3, MessageHandlerUtils.a((byte[])localObject5))) {
+                  localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHOW_EXTERNAL_HANDLER).notifyUI(TroopShowExternalObserver.d, true, new Object[] { localObject3, Integer.valueOf(i), localObject1, Integer.valueOf(i) });
                 }
               }
-              if ((i == 0) && (paramTroopManager.d((String)localObject3))) {
-                localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHOW_EXTERNAL_HANDLER).notifyUI(TroopShowExternalObserver.b, true, new Object[] { localObject3, Integer.valueOf(i), localObject1, Integer.valueOf(i) });
+              if ((i == 0) && (paramTroopManager.r((String)localObject3))) {
+                localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHOW_EXTERNAL_HANDLER).notifyUI(TroopShowExternalObserver.d, true, new Object[] { localObject3, Integer.valueOf(i), localObject1, Integer.valueOf(i) });
               }
             }
           }
@@ -695,7 +673,7 @@ public class SubType0x27
                 paramOnLinePushMessageProcessor = paramTroopManager;
                 if (paramTroopManager == null)
                 {
-                  paramTroopManager = paramFriendsManager.a(String.valueOf(l));
+                  paramTroopManager = paramFriendsManager.y(String.valueOf(l));
                   paramOnLinePushMessageProcessor = paramTroopManager;
                   if (paramTroopManager == null)
                   {
@@ -738,7 +716,7 @@ public class SubType0x27
           paramTroopManager.append(paramOnLinePushMessageProcessor.size());
           QLog.d("Q.msg.BaseMessageProcessor", 2, paramTroopManager.toString());
         }
-        paramFriendsManager.c(paramOnLinePushMessageProcessor);
+        paramFriendsManager.d(paramOnLinePushMessageProcessor);
         if (paramOnLinePushMessageProcessor.size() > 0) {
           localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(97, true, new Object[] { Boolean.valueOf(true), paramOnLinePushMessageProcessor });
         }
@@ -756,7 +734,7 @@ public class SubType0x27
       long l = paramForwardBody.getLong();
       byte[] arrayOfByte = new byte[paramForwardBody.remaining()];
       paramForwardBody.get(arrayOfByte);
-      Object localObject = paramFriendsManager.a(str);
+      Object localObject = paramFriendsManager.x(str);
       paramForwardBody = (SubMsgType0x27.ForwardBody)localObject;
       if (localObject == null)
       {
@@ -765,7 +743,7 @@ public class SubType0x27
       }
       ExtensionRichStatus.a(paramForwardBody, arrayOfByte, l);
       paramOnLinePushMessageProcessor = (QQAppInterface)paramOnLinePushMessageProcessor.a();
-      paramForwardBody.isAdded2C2C = SignatureManager.a(paramOnLinePushMessageProcessor, str, ExtensionRichStatus.a(paramForwardBody));
+      paramForwardBody.isAdded2C2C = SignatureManager.a(paramOnLinePushMessageProcessor, str, ExtensionRichStatus.c(paramForwardBody));
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -779,7 +757,7 @@ public class SubType0x27
       paramForwardBody = new StringBuilder();
       paramForwardBody.append(localModLongNick.uint64_uin.get());
       paramForwardBody.append("");
-      paramForwardBody = paramFriendsManager.a(paramForwardBody.toString());
+      paramForwardBody = paramFriendsManager.f(paramForwardBody.toString());
       if (paramForwardBody != null)
       {
         paramForwardBody.vRichSign = arrayOfByte;
@@ -832,7 +810,7 @@ public class SubType0x27
               {
                 paramForwardBody.colorNick = ColorNickManager.a(((SubMsgType0x27.GroupMemberProfileInfo)localObject2).bytes_value.get());
                 paramForwardBody.name = ColorNickManager.b(paramForwardBody.colorNick);
-                paramForwardBody.colorNickId = ColorNickManager.a(((SubMsgType0x27.GroupMemberProfileInfo)localObject2).bytes_value.get().toByteArray());
+                paramForwardBody.colorNickId = ColorNickManager.c(((SubMsgType0x27.GroupMemberProfileInfo)localObject2).bytes_value.get().toByteArray());
                 localObject2 = new StringBuilder();
                 ((StringBuilder)localObject2).append(l1);
                 ((StringBuilder)localObject2).append("");
@@ -937,7 +915,7 @@ public class SubType0x27
             {
               paramForwardBody.colorNick = ColorNickManager.a(((SubMsgType0x27.GroupMemberProfileInfo)localObject2).bytes_value.get());
               paramForwardBody.name = ColorNickManager.b(paramForwardBody.colorNick);
-              paramForwardBody.colorNickId = ColorNickManager.a(((SubMsgType0x27.GroupMemberProfileInfo)localObject2).bytes_value.get().toByteArray());
+              paramForwardBody.colorNickId = ColorNickManager.c(((SubMsgType0x27.GroupMemberProfileInfo)localObject2).bytes_value.get().toByteArray());
             }
           }
           if (paramForwardBody != null)
@@ -1156,7 +1134,7 @@ public class SubType0x27
   private void a(FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asIntBuffer().get();
-    ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(paramLong));
+    ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(paramLong));
     paramProfileInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -1209,7 +1187,7 @@ public class SubType0x27
         QLog.d("cardpush", 2, ((StringBuilder)localObject).toString());
       }
       Object localObject = (TroopManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.TROOP_MANAGER);
-      TroopInfo localTroopInfo = ((TroopManager)localObject).c(String.valueOf(paramFriendRemark.uint64_group_code.get()));
+      TroopInfo localTroopInfo = ((TroopManager)localObject).g(String.valueOf(paramFriendRemark.uint64_group_code.get()));
       localTroopInfo.troopRemark = paramFriendRemark.bytes_rmk_name.get().toStringUtf8();
       ((TroopManager)localObject).b(localTroopInfo);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER).notifyUI(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
@@ -1234,7 +1212,7 @@ public class SubType0x27
   private void b(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asIntBuffer().get();
-    ((VasExtensionManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a.b(Long.toString(paramLong), i);
+    ((VasExtensionManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).c.b(Long.toString(paramLong), i);
     if (QLog.isColorLevel())
     {
       paramOnLinePushMessageProcessor = new StringBuilder();
@@ -1273,7 +1251,7 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
     if ((paramProfileInfo != null) && (paramProfileInfo.mQQLevelType != i))
     {
       paramProfileInfo.mQQLevelType = i;
@@ -1294,7 +1272,7 @@ public class SubType0x27
           if (localFriendRemark.uint32_type.get() == 0)
           {
             long l = localFriendRemark.uint64_fuin.get();
-            Object localObject1 = paramFriendsManager.e(Long.toString(l));
+            Object localObject1 = paramFriendsManager.m(Long.toString(l));
             paramForwardBody = null;
             if (localObject1 != null) {
               paramForwardBody = ((Friends)localObject1).remark;
@@ -1313,11 +1291,11 @@ public class SubType0x27
             Object localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append(localFriendRemark.uint64_fuin.get());
             ((StringBuilder)localObject2).append("");
-            paramFriendsManager.b(((StringBuilder)localObject2).toString(), localFriendRemark.bytes_rmk_name.get().toStringUtf8());
+            paramFriendsManager.d(((StringBuilder)localObject2).toString(), localFriendRemark.bytes_rmk_name.get().toStringUtf8());
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append(localFriendRemark.uint64_fuin.get());
             ((StringBuilder)localObject2).append("");
-            localObject2 = paramFriendsManager.a(((StringBuilder)localObject2).toString());
+            localObject2 = paramFriendsManager.f(((StringBuilder)localObject2).toString());
             String str = localFriendRemark.bytes_rmk_name.get().toStringUtf8();
             if ((localObject2 != null) && (!str.equals(((Card)localObject2).strReMark)))
             {
@@ -1386,7 +1364,7 @@ public class SubType0x27
                     localObject1 = new StringBuilder();
                     ((StringBuilder)localObject1).append(l1);
                     ((StringBuilder)localObject1).append("");
-                    localObject1 = paramTroopManager.b(((StringBuilder)localObject1).toString());
+                    localObject1 = paramTroopManager.f(((StringBuilder)localObject1).toString());
                     ((TroopInfo)localObject1).troopface = s;
                     ((TroopInfo)localObject1).hasSetNewTroopHead = true;
                     if (QLog.isColorLevel())
@@ -1422,7 +1400,7 @@ public class SubType0x27
                   localObject2 = new StringBuilder();
                   ((StringBuilder)localObject2).append(l2);
                   ((StringBuilder)localObject2).append("");
-                  localObject2 = paramTroopManager.b(((StringBuilder)localObject2).toString());
+                  localObject2 = paramTroopManager.f(((StringBuilder)localObject2).toString());
                   if (localObject2 != null)
                   {
                     ((TroopInfo)localObject2).troopCreditLevel = Long.valueOf((String)localObject1).longValue();
@@ -1486,11 +1464,11 @@ public class SubType0x27
     } else {
       i = ByteBuffer.wrap(paramProfileInfo).asShortBuffer().get();
     }
-    paramProfileInfo = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.cNewLoverDiamondFlag = i;
-      paramFriendsManager.a(paramProfileInfo);
+      paramFriendsManager.b(paramProfileInfo);
     }
   }
   
@@ -1594,11 +1572,11 @@ public class SubType0x27
       paramProfileInfo.append(i);
       QLog.d("QVipSettingMe.Q.msg.BaseMessageProcessor", 1, paramProfileInfo.toString());
     }
-    paramProfileInfo = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.bigClubInfo = ((i & 0xFF) << 16 | paramProfileInfo.bigClubInfo & 0xFF00FFFF);
-      paramFriendsManager.a(paramProfileInfo);
+      paramFriendsManager.b(paramProfileInfo);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     paramFriendsManager = (TicketManager)paramOnLinePushMessageProcessor.a().getManager(2);
@@ -1623,7 +1601,7 @@ public class SubType0x27
       int j = paramForwardBody.uint32_days.get();
       if (paramOnLinePushMessageProcessor.a().getCurrentAccountUin().equals(String.valueOf(l1)))
       {
-        paramForwardBody = paramFriendsManager.b(paramOnLinePushMessageProcessor.a().getCurrentAccountUin());
+        paramForwardBody = paramFriendsManager.g(paramOnLinePushMessageProcessor.a().getCurrentAccountUin());
         long l2 = i;
         if ((l2 != paramForwardBody.lLoginDays) || (j != paramForwardBody.lQQMasterLogindays))
         {
@@ -1691,7 +1669,7 @@ public class SubType0x27
             paramOnLinePushMessageProcessor.append(l);
             QLog.d("cardpush", 2, paramOnLinePushMessageProcessor.toString());
           }
-          paramOnLinePushMessageProcessor = paramTroopManager.b(String.valueOf(l));
+          paramOnLinePushMessageProcessor = paramTroopManager.f(String.valueOf(l));
           paramOnLinePushMessageProcessor.hasSetNewTroopHead = true;
           paramTroopManager.b(paramOnLinePushMessageProcessor);
           paramForwardBody.getTroopHead(Long.toString(l));
@@ -1737,7 +1715,7 @@ public class SubType0x27
       boolean bool2 = bool1;
       if (bool1)
       {
-        paramProfileInfo = (PttAutoChangeBean)QConfigManager.a().a(442);
+        paramProfileInfo = (PttAutoChangeBean)QConfigManager.b().b(442);
         bool2 = bool1;
         if (paramProfileInfo != null)
         {
@@ -1775,8 +1753,8 @@ public class SubType0x27
         paramProfileInfo.putLong((String)localObject2, 9223372036854775807L);
       }
       paramProfileInfo.apply();
-      com.tencent.mobileqq.activity.aio.item.PttConstants.c = bool2;
-      com.tencent.mobileqq.activity.aio.item.PttConstants.a = l;
+      com.tencent.mobileqq.activity.aio.item.PttConstants.f = bool2;
+      com.tencent.mobileqq.activity.aio.item.PttConstants.g = l;
       return;
     }
     QLog.e("vip_ptt.Q.msg.BaseMessageProcessor", 1, "it have receive push value is null");
@@ -1803,8 +1781,8 @@ public class SubType0x27
       paramProfileInfo = new StringBuilder();
       paramProfileInfo.append(paramLong);
       paramProfileInfo.append("");
-      paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-      Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+      paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+      Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
       if (paramProfileInfo != null)
       {
         paramProfileInfo.grayNameplateFlag = i;
@@ -1813,7 +1791,7 @@ public class SubType0x27
       if (localFriends != null)
       {
         localFriends.grayNameplateFlag = i;
-        paramFriendsManager.a(localFriends);
+        paramFriendsManager.b(localFriends);
       }
     }
   }
@@ -1830,8 +1808,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       long l = i;
@@ -1844,7 +1822,7 @@ public class SubType0x27
     {
       localFriends.superVipTemplateId = i;
       localFriends.bigClubTemplateId = i;
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
   }
@@ -1876,7 +1854,7 @@ public class SubType0x27
           }
           if (l2 == 4051L)
           {
-            localObject = paramFriendsManager.e(String.valueOf(l1));
+            localObject = paramFriendsManager.m(String.valueOf(l1));
             if (localObject != null)
             {
               boolean bool;
@@ -1886,7 +1864,7 @@ public class SubType0x27
                 bool = false;
               }
               ((Friends)localObject).setShieldFlag(bool);
-              paramFriendsManager.a((Friends)localObject);
+              paramFriendsManager.b((Friends)localObject);
               paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(55, true, new Object[] { Long.valueOf(l1), Boolean.valueOf(bool), Boolean.valueOf(true), Boolean.valueOf(true), "" });
             }
           }
@@ -1913,7 +1891,7 @@ public class SubType0x27
     }
     if (!TextUtils.isEmpty(paramForwardBody))
     {
-      localObject = BitmapManager.a(paramOnLinePushMessageProcessor.a().getApp().getResources(), 2130840405);
+      localObject = BitmapManager.a(paramOnLinePushMessageProcessor.a().getApp().getResources(), 2130841158);
       ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramOnLinePushMessageProcessor.a().getCurrentAccountUin(), "CMD_SHOW_NOTIFIYCATION");
       Intent localIntent = new Intent(paramOnLinePushMessageProcessor.a().getApp(), LikeRankingListActivity.class);
       localIntent.putExtra("param_from", 1);
@@ -1959,18 +1937,15 @@ public class SubType0x27
     if ((paramProfileInfo.uint32_field.has()) && (paramProfileInfo.bytes_value.has()))
     {
       int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asShortBuffer().get();
-      if (QLog.isColorLevel())
-      {
-        paramProfileInfo = new StringBuilder();
-        paramProfileInfo.append("push 42344 = ");
-        paramProfileInfo.append(i);
-        QLog.d("QVipSettingMe.Q.msg.BaseMessageProcessor", 1, paramProfileInfo.toString());
-      }
+      paramProfileInfo = new StringBuilder();
+      paramProfileInfo.append("push 42344 = ");
+      paramProfileInfo.append(i);
+      QLog.i("QVipSettingMe.Q.msg.BaseMessageProcessor", 1, paramProfileInfo.toString());
       paramProfileInfo = new StringBuilder();
       paramProfileInfo.append(paramLong);
       paramProfileInfo.append("");
-      paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-      Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+      paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+      Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
       if (paramProfileInfo != null)
       {
         paramProfileInfo.nameplateVipType = i;
@@ -1979,7 +1954,7 @@ public class SubType0x27
       if (localFriends != null)
       {
         localFriends.nameplateVipType = i;
-        paramFriendsManager.a(localFriends);
+        paramFriendsManager.b(localFriends);
       }
     }
   }
@@ -1996,8 +1971,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.iBigClubVipType = i;
@@ -2007,7 +1982,7 @@ public class SubType0x27
     if (localFriends != null)
     {
       localFriends.bigClubInfo = (localFriends.bigClubInfo & 0xFFFFFF | (i & 0xFF) << 24);
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     if (QLog.isColorLevel())
@@ -2144,8 +2119,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.iBigClubVipLevel = i;
@@ -2155,7 +2130,7 @@ public class SubType0x27
     if (localFriends != null)
     {
       localFriends.bigClubInfo = (i & 0xFFFF | localFriends.bigClubInfo & 0xFFFF0000);
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     paramFriendsManager = (TicketManager)paramOnLinePushMessageProcessor.a().getManager(2);
@@ -2245,8 +2220,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     boolean bool2 = false;
     boolean bool1;
     if (paramProfileInfo != null)
@@ -2267,7 +2242,7 @@ public class SubType0x27
         bool1 = true;
       }
       localFriends.namePlateOfKingDanDisplatSwitch = bool1;
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     paramOnLinePushMessageProcessor = new StringBuilder();
@@ -2287,7 +2262,7 @@ public class SubType0x27
       {
         int i = localModGroupName.uint32_groupid.get();
         String str = localModGroupName.bytes_groupname.get().toStringUtf8();
-        paramForwardBody = paramFriendsManager.a(String.valueOf(i));
+        paramForwardBody = paramFriendsManager.u(String.valueOf(i));
         if (paramForwardBody != null)
         {
           paramForwardBody.group_name = str;
@@ -2352,7 +2327,7 @@ public class SubType0x27
             }
             localObject = new ArrayList();
             MessageRecord localMessageRecord = MessageRecordFactory.a(-1024);
-            l2 = MessageCache.a();
+            l2 = MessageCache.c();
             if (QLog.isColorLevel())
             {
               StringBuilder localStringBuilder = new StringBuilder();
@@ -2434,8 +2409,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.namePlateOfKingDan = i;
@@ -2445,7 +2420,7 @@ public class SubType0x27
     if (localFriends != null)
     {
       localFriends.namePlateOfKingDan = i;
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     paramOnLinePushMessageProcessor = new StringBuilder();
@@ -2466,7 +2441,7 @@ public class SubType0x27
         Object localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramForwardBody.uint32_groupid.get());
         ((StringBuilder)localObject).append("");
-        paramFriendsManager = paramFriendsManager.a(((StringBuilder)localObject).toString());
+        paramFriendsManager = paramFriendsManager.u(((StringBuilder)localObject).toString());
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -2490,7 +2465,7 @@ public class SubType0x27
     paramOnLinePushMessageProcessor = (BubbleManager)paramOnLinePushMessageProcessor.a().getManager(QQManagerFactory.CHAT_BUBBLE_MANAGER);
     if (paramOnLinePushMessageProcessor != null)
     {
-      paramOnLinePushMessageProcessor = paramOnLinePushMessageProcessor.a;
+      paramOnLinePushMessageProcessor = paramOnLinePushMessageProcessor.m;
       boolean bool;
       if (i == 0) {
         bool = true;
@@ -2514,8 +2489,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.namePlateOfKingLoginTime = l;
@@ -2525,7 +2500,7 @@ public class SubType0x27
     if (localFriends != null)
     {
       localFriends.namePlateOfKingLoginTime = l;
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     paramOnLinePushMessageProcessor = new StringBuilder();
@@ -2610,8 +2585,8 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
-    Friends localFriends = paramFriendsManager.e(Long.toString(paramLong));
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
+    Friends localFriends = paramFriendsManager.m(Long.toString(paramLong));
     if (paramProfileInfo != null)
     {
       paramProfileInfo.namePlateOfKingGameId = l;
@@ -2621,7 +2596,7 @@ public class SubType0x27
     if (localFriends != null)
     {
       localFriends.namePlateOfKingGameId = l;
-      paramFriendsManager.a(localFriends);
+      paramFriendsManager.b(localFriends);
       paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(3, true, Long.toString(paramLong));
     }
     paramOnLinePushMessageProcessor = new StringBuilder();
@@ -2649,7 +2624,7 @@ public class SubType0x27
   private void k(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asIntBuffer().get();
-    ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(paramLong));
+    ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(paramLong));
     paramProfileInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -2679,7 +2654,7 @@ public class SubType0x27
   private void l(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     int k = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asShortBuffer().get();
-    paramProfileInfo = paramFriendsManager.a(String.valueOf(paramLong));
+    paramProfileInfo = paramFriendsManager.x(String.valueOf(paramLong));
     int j = 1;
     int i;
     if (paramProfileInfo == null)
@@ -2719,7 +2694,7 @@ public class SubType0x27
   private void m(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asShortBuffer().get();
-    ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(paramLong));
+    ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(paramLong));
     paramProfileInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -2745,10 +2720,44 @@ public class SubType0x27
     }
   }
   
-  private void n(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
+  private int n(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
+  {
+    int i = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asIntBuffer().get();
+    ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(paramLong));
+    paramProfileInfo = localExtensionInfo;
+    if (localExtensionInfo == null)
+    {
+      paramProfileInfo = new ExtensionInfo();
+      paramProfileInfo.uin = String.valueOf(paramLong);
+    }
+    long l1 = paramProfileInfo.uVipFont;
+    long l2 = i;
+    if ((l1 != FontManagerConstants.parseFontId(l2)) || (paramProfileInfo.vipFontType != FontManagerConstants.parseFontType(l2)))
+    {
+      paramProfileInfo.uVipFont = FontManagerConstants.parseFontId(l2);
+      paramProfileInfo.vipFontType = FontManagerConstants.parseFontType(l2);
+      paramProfileInfo.timestamp = System.currentTimeMillis();
+      paramFriendsManager.a(paramProfileInfo);
+      VasUtils.a(paramOnLinePushMessageProcessor.a());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramOnLinePushMessageProcessor = new StringBuilder();
+      paramOnLinePushMessageProcessor.append("push, Get Font, uin=");
+      paramOnLinePushMessageProcessor.append(paramLong);
+      paramOnLinePushMessageProcessor.append(", id=");
+      paramOnLinePushMessageProcessor.append(paramProfileInfo.uVipFont);
+      paramOnLinePushMessageProcessor.append(", type = ");
+      paramOnLinePushMessageProcessor.append(paramProfileInfo.vipFontType);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, paramOnLinePushMessageProcessor.toString());
+    }
+    return (int)FontManagerConstants.parseFontId(l2);
+  }
+  
+  private void o(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     long l = ByteBuffer.wrap(paramProfileInfo.bytes_value.get().toByteArray()).asLongBuffer().get();
-    ExtensionInfo localExtensionInfo = paramFriendsManager.a(String.valueOf(paramLong));
+    ExtensionInfo localExtensionInfo = paramFriendsManager.x(String.valueOf(paramLong));
     paramProfileInfo = localExtensionInfo;
     if (localExtensionInfo == null)
     {
@@ -2772,7 +2781,7 @@ public class SubType0x27
     paramOnLinePushMessageProcessor.a().getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(65, true, paramFriendsManager);
   }
   
-  private void o(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
+  private void p(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     int j = paramProfileInfo.bytes_value.get().byteAt(0);
     int i;
@@ -2801,7 +2810,7 @@ public class SubType0x27
     paramProfileInfo = new StringBuilder();
     paramProfileInfo.append(paramLong);
     paramProfileInfo.append("");
-    paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
+    paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
     if (paramProfileInfo != null)
     {
       paramProfileInfo.shGender = ((short)i);
@@ -2810,7 +2819,7 @@ public class SubType0x27
     }
   }
   
-  private void p(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
+  private void q(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, FriendsManager paramFriendsManager, long paramLong, SubMsgType0x27.ProfileInfo paramProfileInfo)
   {
     paramProfileInfo = paramProfileInfo.bytes_value.get();
     if ((paramProfileInfo != null) && (paramProfileInfo.size() == 2))
@@ -2828,7 +2837,7 @@ public class SubType0x27
       paramProfileInfo = new StringBuilder();
       paramProfileInfo.append(paramLong);
       paramProfileInfo.append("");
-      paramProfileInfo = paramFriendsManager.a(paramProfileInfo.toString());
+      paramProfileInfo = paramFriendsManager.f(paramProfileInfo.toString());
       if (paramProfileInfo != null)
       {
         paramProfileInfo.nFaceID = i;
@@ -2851,7 +2860,7 @@ public class SubType0x27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x27
  * JD-Core Version:    0.7.0.1
  */

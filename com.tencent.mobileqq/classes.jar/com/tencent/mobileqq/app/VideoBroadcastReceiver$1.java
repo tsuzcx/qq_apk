@@ -12,16 +12,16 @@ class VideoBroadcastReceiver$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Boolean ^ true, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+    VideoMsgTools.a(this.a, this.b, this.c, this.d ^ true, this.e, this.f, this.g, null, true, new Object[0]);
     if (paramDialogInterface != null) {
       paramDialogInterface.dismiss();
     }
-    DataReport.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackgroundPause, this.jdField_a_of_type_Boolean);
+    DataReport.b(this.a.isBackgroundPause, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.VideoBroadcastReceiver.1
  * JD-Core Version:    0.7.0.1
  */

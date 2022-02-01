@@ -25,85 +25,51 @@ public abstract class TopicBase
   extends Topic
   implements Indexable
 {
-  public AVRes a;
-  public ArrayList<Pair<Integer, String>> a;
-  List<TopicBase> a;
-  protected int b;
-  public AVRes b;
-  public ArrayList<AVRes> b;
-  public boolean b;
-  public int c;
-  public String c;
-  public ArrayList<String> c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public TopicBase()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes = new AVRes();
-    this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes = new AVRes();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public ITopic a()
-  {
-    TopicBase localTopicBase = a();
-    try
-    {
-      localTopicBase.a(this);
-      return localTopicBase;
-    }
-    catch (Exception localException) {}
-    return localTopicBase;
-  }
+  List<TopicBase> g = new ArrayList();
+  protected int h = 0;
+  public AVRes i = new AVRes();
+  public AVRes j = new AVRes();
+  public ArrayList<Pair<Integer, String>> k = new ArrayList();
+  public ArrayList<AVRes> l = new ArrayList();
+  public int m;
+  public ArrayList<String> n;
+  public int o;
+  public int p;
+  public boolean q;
+  public String r;
+  public int s;
   
   public AVRes a(int paramInt)
   {
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() > paramInt) {
-      return (AVRes)this.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    if (this.l.size() > paramInt) {
+      return (AVRes)this.l.get(paramInt);
     }
     return null;
   }
   
-  protected abstract TopicBase a();
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes.jdField_c_of_type_JavaLangString;
-  }
-  
-  public List<TopicBase> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   protected void a(TopicBase paramTopicBase)
   {
-    this.jdField_a_of_type_Boolean = paramTopicBase.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_Int = paramTopicBase.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Int = paramTopicBase.jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaLangString = paramTopicBase.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramTopicBase.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramTopicBase.jdField_a_of_type_ArrayOfJavaLangString;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes.a(paramTopicBase.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes);
-    this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes.a(paramTopicBase.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramTopicBase.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_b_of_type_JavaUtilArrayList.addAll(paramTopicBase.jdField_b_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramTopicBase.jdField_a_of_type_JavaUtilList);
-    this.jdField_c_of_type_Int = paramTopicBase.jdField_c_of_type_Int;
-    ArrayList localArrayList = paramTopicBase.jdField_c_of_type_JavaUtilArrayList;
-    if (localArrayList != null) {
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(localArrayList);
-    }
-    this.e = paramTopicBase.e;
-    this.d = paramTopicBase.d;
-    this.jdField_b_of_type_Boolean = paramTopicBase.jdField_b_of_type_Boolean;
-    this.jdField_c_of_type_JavaLangString = paramTopicBase.jdField_c_of_type_JavaLangString;
     this.f = paramTopicBase.f;
+    this.h = paramTopicBase.h;
+    this.a = paramTopicBase.a;
+    this.b = paramTopicBase.b;
+    this.c = paramTopicBase.c;
+    this.d = paramTopicBase.d;
+    this.i.a(paramTopicBase.i);
+    this.j.a(paramTopicBase.j);
+    this.k.addAll(paramTopicBase.k);
+    this.l.addAll(paramTopicBase.l);
+    this.g.addAll(paramTopicBase.g);
+    this.m = paramTopicBase.m;
+    ArrayList localArrayList = paramTopicBase.n;
+    if (localArrayList != null) {
+      this.n = new ArrayList(localArrayList);
+    }
+    this.p = paramTopicBase.p;
+    this.o = paramTopicBase.o;
+    this.q = paramTopicBase.q;
+    this.r = paramTopicBase.r;
+    this.s = paramTopicBase.s;
   }
   
   protected void a(AvGameCommon.CommonQuestionInfo paramCommonQuestionInfo)
@@ -111,18 +77,18 @@ public abstract class TopicBase
     Object localObject1 = (AvGameCommon.QuestionItemInfo)paramCommonQuestionInfo.item.get();
     if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes.a(((AvGameCommon.QuestionItemInfo)localObject1).question_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_duration.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_url.get());
-      this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes.a(((AvGameCommon.QuestionItemInfo)localObject1).answer_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_duration.get(), "");
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_type.get();
-      this.jdField_a_of_type_ArrayOfJavaLangString[1] = ((AvGameCommon.QuestionItemInfo)localObject1).extra_reward.get();
-      this.jdField_a_of_type_ArrayOfJavaLangString[2] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_stroke_color.get();
+      this.i.a(((AvGameCommon.QuestionItemInfo)localObject1).question_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_duration.get(), ((AvGameCommon.QuestionItemInfo)localObject1).question_url.get());
+      this.j.a(((AvGameCommon.QuestionItemInfo)localObject1).answer_content.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_md5.get(), ((AvGameCommon.QuestionItemInfo)localObject1).answer_duration.get(), "");
+      this.d[0] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_type.get();
+      this.d[1] = ((AvGameCommon.QuestionItemInfo)localObject1).extra_reward.get();
+      this.d[2] = ((AvGameCommon.QuestionItemInfo)localObject1).reward_stroke_color.get();
       if (((AvGameCommon.QuestionItemInfo)localObject1).answer_option.has()) {
-        this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(((AvGameCommon.QuestionItemInfo)localObject1).answer_option.get());
+        this.n = new ArrayList(((AvGameCommon.QuestionItemInfo)localObject1).answer_option.get());
       }
-      this.d = ((AvGameCommon.QuestionItemInfo)localObject1).answer_index.get();
-      this.jdField_b_of_type_Boolean = ((AvGameCommon.QuestionItemInfo)localObject1).business_flag.get();
-      this.jdField_c_of_type_JavaLangString = ((AvGameCommon.QuestionItemInfo)localObject1).business_ads.get();
-      this.f = ((AvGameCommon.QuestionItemInfo)localObject1).prize_id.get();
+      this.o = ((AvGameCommon.QuestionItemInfo)localObject1).answer_index.get();
+      this.q = ((AvGameCommon.QuestionItemInfo)localObject1).business_flag.get();
+      this.r = ((AvGameCommon.QuestionItemInfo)localObject1).business_ads.get();
+      this.s = ((AvGameCommon.QuestionItemInfo)localObject1).prize_id.get();
     }
     localObject1 = paramCommonQuestionInfo.feedbacks.get();
     Object localObject2;
@@ -134,7 +100,7 @@ public abstract class TopicBase
         localObject2 = (AvGameCommon.QuestionFeedbackInfo)((Iterator)localObject1).next();
         AVRes localAVRes = new AVRes();
         localAVRes.a((AvGameCommon.QuestionFeedbackInfo)localObject2);
-        this.jdField_b_of_type_JavaUtilArrayList.add(localAVRes);
+        this.l.add(localAVRes);
       }
     }
     localObject1 = paramCommonQuestionInfo.tips.get();
@@ -145,33 +111,33 @@ public abstract class TopicBase
       {
         localObject2 = (AvGameCommon.QuestionTipsInfo)((Iterator)localObject1).next();
         localObject2 = new Pair(Integer.valueOf(((AvGameCommon.QuestionTipsInfo)localObject2).show_delay_ts.get()), ((AvGameCommon.QuestionTipsInfo)localObject2).tips.get());
-        this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        this.k.add(localObject2);
       }
     }
-    this.jdField_c_of_type_Int = paramCommonQuestionInfo.size.get();
-    this.e = paramCommonQuestionInfo.score.get();
+    this.m = paramCommonQuestionInfo.size.get();
+    this.p = paramCommonQuestionInfo.score.get();
   }
   
   public void a(AvGameCommon.GameQuestionInfo paramGameQuestionInfo)
   {
-    this.jdField_a_of_type_Int = paramGameQuestionInfo.id.get();
-    this.jdField_b_of_type_Int = Math.max(0, paramGameQuestionInfo.index.get() - 1);
+    this.a = paramGameQuestionInfo.id.get();
+    this.h = Math.max(0, paramGameQuestionInfo.index.get() - 1);
     if (paramGameQuestionInfo.questions.get() != null)
     {
       paramGameQuestionInfo = paramGameQuestionInfo.questions.get().iterator();
       while (paramGameQuestionInfo.hasNext())
       {
         AvGameCommon.CommonQuestionInfo localCommonQuestionInfo = (AvGameCommon.CommonQuestionInfo)paramGameQuestionInfo.next();
-        TopicBase localTopicBase = a();
+        TopicBase localTopicBase = n();
         localTopicBase.a(localCommonQuestionInfo);
-        localTopicBase.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-        localTopicBase.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localTopicBase.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_JavaUtilList.add(localTopicBase);
+        localTopicBase.h = this.h;
+        localTopicBase.a = this.a;
+        localTopicBase.f = false;
+        this.g.add(localTopicBase);
       }
     }
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      a((TopicBase)this.jdField_a_of_type_JavaUtilList.get(0));
+    if ((!this.f) && (this.g.size() > 0)) {
+      a((TopicBase)this.g.get(0));
     }
   }
   
@@ -182,64 +148,93 @@ public abstract class TopicBase
       return false;
     }
     boolean bool1 = bool2;
-    if (Utils.a(c(), paramITopic.c()))
+    if (Utils.a(e(), paramITopic.e()))
     {
       bool1 = bool2;
-      if (Utils.a(b(), paramITopic.b())) {
+      if (Utils.a(d(), paramITopic.d())) {
         bool1 = true;
       }
     }
     return bool1;
   }
   
-  @Nullable
-  public String b()
+  public int aC_()
   {
-    return this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> b()
-  {
-    return this.jdField_c_of_type_JavaUtilArrayList;
-  }
-  
-  public int c()
-  {
-    AVRes localAVRes = this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes;
-    if (localAVRes == null) {
-      return 0;
-    }
-    return localAVRes.jdField_a_of_type_Int;
+    return this.h;
   }
   
   public String c()
   {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes.jdField_a_of_type_JavaLangString;
+    return this.i.d;
   }
   
-  public int c_()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public int d()
-  {
-    return this.d;
-  }
-  
+  @Nullable
   public String d()
   {
+    return this.j.a;
+  }
+  
+  public String e()
+  {
+    return this.i.a;
+  }
+  
+  public int f()
+  {
+    AVRes localAVRes = this.i;
+    if (localAVRes == null) {
+      return 0;
+    }
+    return localAVRes.c;
+  }
+  
+  public List<TopicBase> i()
+  {
+    return this.g;
+  }
+  
+  public ITopic j()
+  {
+    TopicBase localTopicBase = n();
+    try
+    {
+      localTopicBase.a(this);
+      return localTopicBase;
+    }
+    catch (Exception localException) {}
+    return localTopicBase;
+  }
+  
+  public List<String> k()
+  {
+    return this.n;
+  }
+  
+  public int l()
+  {
+    return this.o;
+  }
+  
+  public int m()
+  {
+    return this.p;
+  }
+  
+  protected abstract TopicBase n();
+  
+  public String o()
+  {
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
       localStringBuilder.append("\n【题库】:");
       localStringBuilder.append("topicsCount");
       localStringBuilder.append("=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+      localStringBuilder.append(this.g.size());
       localStringBuilder.append("|");
       localStringBuilder.append("【题目列表】");
       localStringBuilder.append("=");
-      localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()));
+      localStringBuilder.append(Arrays.toString(this.g.toArray()));
       localStringBuilder.append("|");
     }
     else
@@ -247,7 +242,7 @@ public abstract class TopicBase
       localStringBuilder.append("\n【题目】:");
       localStringBuilder.append("id");
       localStringBuilder.append("=");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("|");
       localStringBuilder.append("gameType");
       localStringBuilder.append("=");
@@ -255,49 +250,44 @@ public abstract class TopicBase
       localStringBuilder.append("|");
       localStringBuilder.append("index");
       localStringBuilder.append("=");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.h);
       localStringBuilder.append("|");
       localStringBuilder.append("contentRes");
       localStringBuilder.append("=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataAVRes);
+      localStringBuilder.append(this.i);
       localStringBuilder.append("|");
       localStringBuilder.append("answerRes");
       localStringBuilder.append("=");
-      localStringBuilder.append(this.jdField_b_of_type_ComTencentAvgameGamelogicDataAVRes);
+      localStringBuilder.append(this.j);
       localStringBuilder.append("|");
       localStringBuilder.append("tips");
       localStringBuilder.append("=");
-      localStringBuilder.append(GameUtil.a(this.jdField_a_of_type_JavaUtilArrayList));
+      localStringBuilder.append(GameUtil.a(this.k));
       localStringBuilder.append("|");
       localStringBuilder.append("feedBacks");
       localStringBuilder.append("=");
-      localStringBuilder.append(Arrays.toString(this.jdField_b_of_type_JavaUtilArrayList.toArray()));
+      localStringBuilder.append(Arrays.toString(this.l.toArray()));
       localStringBuilder.append("|");
       localStringBuilder.append("answerOptionForClick=");
-      localStringBuilder.append(this.jdField_c_of_type_JavaUtilArrayList);
+      localStringBuilder.append(this.n);
       localStringBuilder.append("|");
       localStringBuilder.append("answerScoreForClick=");
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.p);
       localStringBuilder.append("|");
       localStringBuilder.append("isBusinessFlag=");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.q);
       localStringBuilder.append("|");
       localStringBuilder.append("businessAdsTips=");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append(this.r);
       localStringBuilder.append("|");
       localStringBuilder.append("prizeId=");
-      localStringBuilder.append(this.f);
+      localStringBuilder.append(this.s);
       localStringBuilder.append("|");
       localStringBuilder.append("answerIndexForClick=");
-      localStringBuilder.append(this.d);
+      localStringBuilder.append(this.o);
       localStringBuilder.append("|");
     }
     return localStringBuilder.toString();
-  }
-  
-  public int e()
-  {
-    return this.e;
   }
 }
 

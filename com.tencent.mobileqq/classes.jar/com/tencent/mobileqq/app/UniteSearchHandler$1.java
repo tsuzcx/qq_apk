@@ -13,11 +13,11 @@ class UniteSearchHandler$1
     //   1: astore_2
     //   2: aconst_null
     //   3: astore_1
-    //   4: invokestatic 32	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   4: invokestatic 33	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   7: aload_0
-    //   8: getfield 17	com/tencent/mobileqq/app/UniteSearchHandler$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   8: getfield 18	com/tencent/mobileqq/app/UniteSearchHandler$1:a	Ljava/lang/String;
     //   11: iconst_0
-    //   12: invokevirtual 36	com/tencent/qphone/base/util/BaseApplication:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   12: invokevirtual 37	com/tencent/qphone/base/util/BaseApplication:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   15: astore_3
     //   16: aload_3
     //   17: ifnull +32 -> 49
@@ -27,76 +27,76 @@ class UniteSearchHandler$1
     //   23: astore_2
     //   24: aload_3
     //   25: aload_0
-    //   26: getfield 19	com/tencent/mobileqq/app/UniteSearchHandler$1:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   29: checkcast 38	[B
-    //   32: checkcast 38	[B
-    //   35: invokevirtual 44	java/io/FileOutputStream:write	([B)V
+    //   26: getfield 20	com/tencent/mobileqq/app/UniteSearchHandler$1:b	Ljava/lang/Object;
+    //   29: checkcast 39	[B
+    //   32: checkcast 39	[B
+    //   35: invokevirtual 45	java/io/FileOutputStream:write	([B)V
     //   38: aload_3
     //   39: astore_1
     //   40: aload_3
     //   41: astore_2
     //   42: aload_3
-    //   43: invokevirtual 47	java/io/FileOutputStream:flush	()V
+    //   43: invokevirtual 48	java/io/FileOutputStream:flush	()V
     //   46: goto +15 -> 61
     //   49: aload_3
     //   50: astore_1
     //   51: aload_3
     //   52: astore_2
-    //   53: ldc 49
+    //   53: ldc 50
     //   55: iconst_1
-    //   56: ldc 51
-    //   58: invokestatic 57	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   56: ldc 52
+    //   58: invokestatic 58	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   61: aload_3
     //   62: ifnull +70 -> 132
     //   65: aload_3
-    //   66: invokevirtual 60	java/io/FileOutputStream:close	()V
+    //   66: invokevirtual 61	java/io/FileOutputStream:close	()V
     //   69: return
     //   70: astore_1
-    //   71: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   71: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   74: ifeq +58 -> 132
-    //   77: ldc 49
+    //   77: ldc 50
     //   79: iconst_2
     //   80: aload_1
-    //   81: invokestatic 68	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   84: invokestatic 71	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   81: invokestatic 69	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   84: invokestatic 72	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   87: return
     //   88: astore_2
     //   89: goto +44 -> 133
     //   92: astore_3
     //   93: aload_2
     //   94: astore_1
-    //   95: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   95: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   98: ifeq +15 -> 113
     //   101: aload_2
     //   102: astore_1
-    //   103: ldc 49
+    //   103: ldc 50
     //   105: iconst_2
     //   106: aload_3
-    //   107: invokestatic 68	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   110: invokestatic 71	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: invokestatic 69	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   110: invokestatic 72	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   113: aload_2
     //   114: ifnull +18 -> 132
     //   117: aload_2
-    //   118: invokevirtual 60	java/io/FileOutputStream:close	()V
+    //   118: invokevirtual 61	java/io/FileOutputStream:close	()V
     //   121: return
     //   122: astore_1
-    //   123: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   123: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   126: ifeq +6 -> 132
     //   129: goto -52 -> 77
     //   132: return
     //   133: aload_1
     //   134: ifnull +27 -> 161
     //   137: aload_1
-    //   138: invokevirtual 60	java/io/FileOutputStream:close	()V
+    //   138: invokevirtual 61	java/io/FileOutputStream:close	()V
     //   141: goto +20 -> 161
     //   144: astore_1
-    //   145: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   145: invokestatic 65	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   148: ifeq +13 -> 161
-    //   151: ldc 49
+    //   151: ldc 50
     //   153: iconst_2
     //   154: aload_1
-    //   155: invokestatic 68	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   158: invokestatic 71	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   155: invokestatic 69	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   158: invokestatic 72	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   161: goto +5 -> 166
     //   164: aload_2
     //   165: athrow
@@ -132,7 +132,7 @@ class UniteSearchHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.UniteSearchHandler.1
  * JD-Core Version:    0.7.0.1
  */

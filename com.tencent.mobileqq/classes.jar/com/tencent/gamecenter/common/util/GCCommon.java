@@ -3,6 +3,8 @@ package com.tencent.gamecenter.common.util;
 import android.content.Context;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.open.appcommon.Common;
 import java.io.File;
 import java.net.InetAddress;
@@ -32,11 +34,11 @@ public class GCCommon
     Object localObject2 = (TelephonyManager)paramContext.getSystemService("phone");
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("");
-    ((StringBuilder)localObject1).append(((TelephonyManager)localObject2).getDeviceId());
+    ((StringBuilder)localObject1).append(PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject2));
     localObject1 = ((StringBuilder)localObject1).toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(((TelephonyManager)localObject2).getSimSerialNumber());
+    localStringBuilder.append(PhoneInfoMonitor.getSimSerialNumber((TelephonyManager)localObject2));
     localObject2 = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
@@ -53,7 +55,7 @@ public class GCCommon
       InetAddress localInetAddress;
       do
       {
-        localObject = NetworkInterface.getNetworkInterfaces();
+        localObject = NetworkMonitor.getNetworkInterfaces();
         Enumeration localEnumeration;
         while (!localEnumeration.hasMoreElements())
         {
@@ -77,7 +79,7 @@ public class GCCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GCCommon
  * JD-Core Version:    0.7.0.1
  */

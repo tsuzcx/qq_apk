@@ -4,14 +4,14 @@ import android.text.TextUtils;
 
 public class DecodeConfig
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
+  public int b = 0;
   public boolean c = false;
+  public boolean d;
+  public long e = 0L;
+  public long f = 0L;
+  public int g;
+  public boolean h = false;
   
   public DecodeConfig()
   {
@@ -25,16 +25,12 @@ public class DecodeConfig
   
   public DecodeConfig(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramBoolean2;
+    this.d = paramBoolean1;
+    this.e = paramLong1;
+    this.f = paramLong2;
   }
   
   public boolean a(DecodeConfig paramDecodeConfig)
@@ -42,58 +38,58 @@ public class DecodeConfig
     if (paramDecodeConfig != null)
     {
       boolean bool1 = false;
-      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramDecodeConfig.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.equals(this.a, paramDecodeConfig.a))
       {
-        this.jdField_a_of_type_JavaLangString = paramDecodeConfig.jdField_a_of_type_JavaLangString;
+        this.a = paramDecodeConfig.a;
         bool1 = true;
       }
-      int i = this.jdField_a_of_type_Int;
-      int j = paramDecodeConfig.jdField_a_of_type_Int;
+      int i = this.b;
+      int j = paramDecodeConfig.b;
       if (i != j)
       {
-        this.jdField_a_of_type_Int = j;
+        this.b = j;
         bool1 = true;
       }
-      boolean bool2 = this.jdField_a_of_type_Boolean;
-      boolean bool3 = paramDecodeConfig.jdField_a_of_type_Boolean;
-      if (bool2 != bool3)
-      {
-        this.jdField_a_of_type_Boolean = bool3;
-        bool1 = true;
-      }
-      bool2 = this.jdField_b_of_type_Boolean;
-      bool3 = paramDecodeConfig.jdField_b_of_type_Boolean;
-      if (bool2 != bool3)
-      {
-        this.jdField_b_of_type_Boolean = bool3;
-        bool1 = true;
-      }
-      long l1 = this.jdField_a_of_type_Long;
-      long l2 = paramDecodeConfig.jdField_a_of_type_Long;
-      if (l1 != l2)
-      {
-        this.jdField_a_of_type_Long = l2;
-        bool1 = true;
-      }
-      l1 = this.jdField_b_of_type_Long;
-      l2 = paramDecodeConfig.jdField_b_of_type_Long;
-      if (l1 != l2)
-      {
-        this.jdField_b_of_type_Long = l2;
-        bool1 = true;
-      }
-      i = this.jdField_b_of_type_Int;
-      j = paramDecodeConfig.jdField_b_of_type_Int;
-      if (i != j)
-      {
-        this.jdField_b_of_type_Int = j;
-        bool1 = true;
-      }
-      bool2 = this.c;
-      bool3 = paramDecodeConfig.c;
+      boolean bool2 = this.c;
+      boolean bool3 = paramDecodeConfig.c;
       if (bool2 != bool3)
       {
         this.c = bool3;
+        bool1 = true;
+      }
+      bool2 = this.d;
+      bool3 = paramDecodeConfig.d;
+      if (bool2 != bool3)
+      {
+        this.d = bool3;
+        bool1 = true;
+      }
+      long l1 = this.e;
+      long l2 = paramDecodeConfig.e;
+      if (l1 != l2)
+      {
+        this.e = l2;
+        bool1 = true;
+      }
+      l1 = this.f;
+      l2 = paramDecodeConfig.f;
+      if (l1 != l2)
+      {
+        this.f = l2;
+        bool1 = true;
+      }
+      i = this.g;
+      j = paramDecodeConfig.g;
+      if (i != j)
+      {
+        this.g = j;
+        bool1 = true;
+      }
+      bool2 = this.h;
+      bool3 = paramDecodeConfig.h;
+      if (bool2 != bool3)
+      {
+        this.h = bool3;
         bool1 = true;
       }
       return bool1;
@@ -105,23 +101,23 @@ public class DecodeConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("inputFilePath=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" speedType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" noSleep=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" repeat=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" startTimeMillSecond=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" endTimeMillSecond=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.f);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.decoder.DecodeConfig
  * JD-Core Version:    0.7.0.1
  */

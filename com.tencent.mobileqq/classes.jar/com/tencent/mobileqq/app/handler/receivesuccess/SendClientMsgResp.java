@@ -22,10 +22,10 @@ public class SendClientMsgResp
     paramToServiceMsg.append(l3);
     paramToServiceMsg.append("");
     paramToServiceMsg = paramToServiceMsg.toString();
-    paramMessageHandler.a.getMessageFacade().a(paramToServiceMsg, 1001, l2, 32768, paramFromServiceMsg.getResultCode());
+    paramMessageHandler.n.getMessageFacade().a(paramToServiceMsg, 1001, l2, 32768, paramFromServiceMsg.getResultCode());
     paramMessageHandler.a(3001, false, new Object[] { String.valueOf(l3), Integer.valueOf(1001), Integer.valueOf(0), null, Long.valueOf(l4), Long.valueOf(l2) });
-    if ((480000L == l4) && (paramMessageHandler.a(l1) != null)) {
-      paramMessageHandler.a(l1);
+    if ((480000L == l4) && (paramMessageHandler.b(l1) != null)) {
+      paramMessageHandler.c(l1);
     }
   }
   
@@ -44,10 +44,10 @@ public class SendClientMsgResp
       long l1 = paramToServiceMsg.extraData.getLong("uniseq");
       long l3 = paramToServiceMsg.extraData.getLong("to");
       long l4 = paramToServiceMsg.extraData.getLong("timeOut");
-      paramMessageHandler.a(l2);
+      paramMessageHandler.c(l2);
       if (paramObject.stHeader.eReplyCode == 0)
       {
-        paramMessageHandler.a.getMsgCache().a(String.valueOf(paramToServiceMsg.extraData.getLong("to")), 1001, l1);
+        paramMessageHandler.n.getMsgCache().b(String.valueOf(paramToServiceMsg.extraData.getLong("to")), 1001, l1);
         l2 = paramToServiceMsg.extraData.getLong("to");
         paramToServiceMsg = new StringBuilder();
         paramToServiceMsg.append(l1);
@@ -60,14 +60,14 @@ public class SendClientMsgResp
       paramToServiceMsg.append(l3);
       paramToServiceMsg.append("");
       paramToServiceMsg = paramToServiceMsg.toString();
-      paramMessageHandler.a.getMessageFacade().a(paramToServiceMsg, 1001, l1, 32768, paramFromServiceMsg.getResultCode());
+      paramMessageHandler.n.getMessageFacade().a(paramToServiceMsg, 1001, l1, 32768, paramFromServiceMsg.getResultCode());
       paramMessageHandler.a(3001, false, new Object[] { String.valueOf(l3), Integer.valueOf(1001), Integer.valueOf(i), null, Long.valueOf(l4), Long.valueOf(l1) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.SendClientMsgResp
  * JD-Core Version:    0.7.0.1
  */

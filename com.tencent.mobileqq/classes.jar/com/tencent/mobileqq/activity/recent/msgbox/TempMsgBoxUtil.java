@@ -35,39 +35,37 @@ import mqq.app.MobileQQ;
 public class TempMsgBoxUtil
 {
   public static ITempMsgBoxCallback a;
-  private static HashMap<String, ITempMsgBoxBusinessHandler> jdField_a_of_type_JavaUtilHashMap;
-  private static Map<Integer, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
   private static Map<Integer, Integer> b = new HashMap();
-  private static Map<Integer, String> c = new HashMap();
+  private static Map<Integer, Integer> c = new HashMap();
+  private static Map<Integer, String> d = new HashMap();
+  private static HashMap<String, ITempMsgBoxBusinessHandler> e = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
     try
     {
-      jdField_a_of_type_ComTencentMobileqqActivityRecentMsgboxITempMsgBoxCallback = (ITempMsgBoxCallback)((Class)TempMsgBoxBusinessInjectUtil.jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
+      a = (ITempMsgBoxCallback)((Class)TempMsgBoxBusinessInjectUtil.b.get(0)).newInstance();
     }
     catch (Exception localException)
     {
       QLog.e("TempMsgBoxUtil", 1, "registerCallback error: ", localException);
     }
-    c.put(Integer.valueOf(10007), "tempGameMsg");
-    c.put(Integer.valueOf(1024), "publicAccount");
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1000), Integer.valueOf(2131699394));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1004), Integer.valueOf(2131699394));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1006), Integer.valueOf(2131699396));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1023), Integer.valueOf(2131699397));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1022), Integer.valueOf(2131699401));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10010), Integer.valueOf(2131699389));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1024), Integer.valueOf(2131699390));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1005), Integer.valueOf(2131699402));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10009), Integer.valueOf(2131699393));
-    b.put(Integer.valueOf(1000), Integer.valueOf(0));
-    b.put(Integer.valueOf(1004), Integer.valueOf(1));
-    b.put(Integer.valueOf(1006), Integer.valueOf(130));
-    b.put(Integer.valueOf(1023), Integer.valueOf(133));
-    b.put(Integer.valueOf(1022), Integer.valueOf(134));
-    b.put(Integer.valueOf(10010), Integer.valueOf(167));
+    d.put(Integer.valueOf(10007), "tempGameMsg");
+    d.put(Integer.valueOf(1024), "publicAccount");
+    b.put(Integer.valueOf(1000), Integer.valueOf(2131897425));
+    b.put(Integer.valueOf(1004), Integer.valueOf(2131897425));
+    b.put(Integer.valueOf(1006), Integer.valueOf(2131897427));
+    b.put(Integer.valueOf(1023), Integer.valueOf(2131897428));
+    b.put(Integer.valueOf(1022), Integer.valueOf(2131897432));
+    b.put(Integer.valueOf(10010), Integer.valueOf(2131897420));
+    b.put(Integer.valueOf(1024), Integer.valueOf(2131897421));
+    b.put(Integer.valueOf(1005), Integer.valueOf(2131897433));
+    c.put(Integer.valueOf(1000), Integer.valueOf(0));
+    c.put(Integer.valueOf(1004), Integer.valueOf(1));
+    c.put(Integer.valueOf(1006), Integer.valueOf(130));
+    c.put(Integer.valueOf(1023), Integer.valueOf(133));
+    c.put(Integer.valueOf(1022), Integer.valueOf(134));
+    c.put(Integer.valueOf(10010), Integer.valueOf(167));
   }
   
   private static int a(int paramInt, IConversationFacade paramIConversationFacade)
@@ -176,10 +174,10 @@ public class TempMsgBoxUtil
     if (localObject != null) {
       return ((AbstractTempChatPlugin)localObject).b(paramRecentUser.uin);
     }
-    localObject = (String)c.get(Integer.valueOf(i));
+    localObject = (String)d.get(Integer.valueOf(i));
     if (localObject != null)
     {
-      localObject = (ITempMsgBoxBusinessHandler)jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localObject = (ITempMsgBoxBusinessHandler)e.get(localObject);
       if (localObject != null)
       {
         localObject = ((ITempMsgBoxBusinessHandler)localObject).a(paramAppInterface, paramRecentUser.uin);
@@ -218,11 +216,6 @@ public class TempMsgBoxUtil
     return paramAppInterface;
   }
   
-  public static HashMap<String, ITempMsgBoxBusinessHandler> a()
-  {
-    return jdField_a_of_type_JavaUtilHashMap;
-  }
-  
   @NonNull
   private static List<ConversationInfo> a(Set<ConversationInfo> paramSet, AppInterface paramAppInterface)
   {
@@ -241,28 +234,7 @@ public class TempMsgBoxUtil
   
   public static Map<Integer, Integer> a()
   {
-    return jdField_a_of_type_JavaUtilMap;
-  }
-  
-  public static void a()
-  {
-    HashMap localHashMap = TempMsgBoxBusinessInjectUtil.jdField_a_of_type_JavaUtilHashMap;
-    Iterator localIterator = localHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      Class localClass = (Class)localHashMap.get(str);
-      if (localClass != null) {
-        try
-        {
-          jdField_a_of_type_JavaUtilHashMap.put(str, localClass.newInstance());
-        }
-        catch (Exception localException)
-        {
-          QLog.e("TempMsgBoxUtil", 1, "registerBusinessHandler error: ", localException);
-        }
-      }
-    }
+    return b;
   }
   
   public static void a(int paramInt, String paramString, MsgSummary paramMsgSummary)
@@ -282,7 +254,7 @@ public class TempMsgBoxUtil
     }
     if (bool)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      Iterator localIterator = e.values().iterator();
       while (localIterator.hasNext()) {
         ((ITempMsgBoxBusinessHandler)localIterator.next()).a(paramAppInterface, paramObject);
       }
@@ -294,7 +266,7 @@ public class TempMsgBoxUtil
     if (((ITempMsgBoxManager)paramAppInterface.getRuntimeService(ITempMsgBoxManager.class, "")).getMsgBoxRecentUsers().isEmpty())
     {
       paramAppInterface = ((IRecentUserProxyService)paramAppInterface.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      paramAppInterface.a(paramAppInterface.a(AppConstants.TEMP_MSG_BOX_UIN, 10011), paramBoolean);
+      paramAppInterface.a(paramAppInterface.b(AppConstants.TEMP_MSG_BOX_UIN, 10011), paramBoolean);
     }
   }
   
@@ -318,17 +290,43 @@ public class TempMsgBoxUtil
   
   public static Map<Integer, Integer> b()
   {
-    return b;
+    return c;
   }
   
   public static Map<Integer, String> c()
   {
-    return c;
+    return d;
+  }
+  
+  public static HashMap<String, ITempMsgBoxBusinessHandler> d()
+  {
+    return e;
+  }
+  
+  public static void e()
+  {
+    HashMap localHashMap = TempMsgBoxBusinessInjectUtil.a;
+    Iterator localIterator = localHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Class localClass = (Class)localHashMap.get(str);
+      if (localClass != null) {
+        try
+        {
+          e.put(str, localClass.newInstance());
+        }
+        catch (Exception localException)
+        {
+          QLog.e("TempMsgBoxUtil", 1, "registerBusinessHandler error: ", localException);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxUtil
  * JD-Core Version:    0.7.0.1
  */

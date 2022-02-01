@@ -18,16 +18,16 @@ class NewTroopContactView$5
     if (this.a.a(str))
     {
       NewTroopContactView.a(this.a, str);
-      this.a.a.notifyDataSetChanged();
+      this.a.y.notifyDataSetChanged();
       this.a.b(false);
-      this.a.o();
+      this.a.p();
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.5
  * JD-Core Version:    0.7.0.1
  */

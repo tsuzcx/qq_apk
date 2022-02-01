@@ -26,20 +26,15 @@ public class AECMShowConfigManager
     return (AECMShowConfig)GsonUtils.json2Obj(paramString, a);
   }
   
-  public static AECMShowConfigManager a()
+  public static AECMShowConfigManager d()
   {
     return AECMShowConfigManager.InstanceHolder.a;
-  }
-  
-  public int a()
-  {
-    return AECameraPrefsUtil.a().a("KEY_CMSHOW_IMG_MAX_LENGTH", 763, 0);
   }
   
   @NonNull
   public HashMap<String, AEEditorDownloadResBean> a()
   {
-    Object localObject = AECameraPrefsUtil.a().a("KEY_CMSHOW_PRE_DOWNLOAD_RES_INFO", "", 0);
+    Object localObject = AECameraPrefsUtil.a().b("KEY_CMSHOW_PRE_DOWNLOAD_RES_INFO", "", 0);
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return AECMShowConfig.DEFAULT_RES_INFO_MAP;
     }
@@ -76,7 +71,12 @@ public class AECMShowConfigManager
   
   public int b()
   {
-    float f2 = AECameraPrefsUtil.a().a("KEY_CMSHOW_IMG_QUALITY", 0.9F, 0);
+    return AECameraPrefsUtil.a().b("KEY_CMSHOW_IMG_MAX_LENGTH", 763, 0);
+  }
+  
+  public int c()
+  {
+    float f2 = AECameraPrefsUtil.a().b("KEY_CMSHOW_IMG_QUALITY", 0.9F, 0);
     float f1 = f2;
     if (f2 <= 0.0F) {
       f1 = 0.9F;
@@ -86,7 +86,7 @@ public class AECMShowConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.config.AECMShowConfigManager
  * JD-Core Version:    0.7.0.1
  */

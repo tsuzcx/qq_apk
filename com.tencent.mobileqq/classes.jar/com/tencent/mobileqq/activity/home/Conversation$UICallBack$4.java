@@ -12,16 +12,17 @@ class Conversation$UICallBack$4
   
   public void run()
   {
-    if (((MsgTabStoryNodeConfigManager)this.a.a.a.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a)
+    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager = (MsgTabStoryNodeConfigManager)this.a.a.aF.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
+    if ((localMsgTabStoryNodeConfigManager != null) && (localMsgTabStoryNodeConfigManager.a))
     {
-      ((MsgTabStoryManager)this.a.a.a.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a();
+      ((MsgTabStoryManager)this.a.a.aF.getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a();
       this.a.a.b(new Conversation.UICallBack.4.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.UICallBack.4
  * JD-Core Version:    0.7.0.1
  */

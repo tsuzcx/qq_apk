@@ -10,27 +10,27 @@ class ThumbDownloadManager$3
   
   public void run()
   {
-    if (ThumbDownloadManager.a(this.this$0).size() >= 8) {
+    if (ThumbDownloadManager.b(this.this$0).size() >= 8) {
       return;
     }
-    if (ThumbDownloadManager.a(this.this$0).size() == 0) {
+    if (ThumbDownloadManager.c(this.this$0).size() == 0) {
       return;
     }
-    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.this$0).get(0);
+    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.c(this.this$0).get(0);
     if (localThumbTask == null)
     {
-      ThumbDownloadManager.a(this.this$0).remove(0);
+      ThumbDownloadManager.c(this.this$0).remove(0);
       ThumbDownloadManager.a(this.this$0);
       return;
     }
-    ThumbDownloadManager.a(this.this$0).remove(localThumbTask);
+    ThumbDownloadManager.c(this.this$0).remove(localThumbTask);
     ThumbDownloadManager.a(this.this$0, localThumbTask);
     ThumbDownloadManager.b(this.this$0, localThumbTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -26,24 +26,24 @@ class NotifyPushSettingFragment$27
     }
     if (paramInt == 0)
     {
-      QQToast.a(this.a.getBaseActivity(), 1, 2131696114, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.a.getBaseActivity(), 1, 2131893879, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
       return;
     }
     if (NotifyPushSettingFragment.a(this.a).compareAndSet(true, true))
     {
-      QQToast.a(this.a.getBaseActivity(), 1, 2131698376, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(this.a.getBaseActivity(), 1, 2131896300, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
       return;
     }
     NotifyPushSettingFragment.a(this.a, false, true);
-    paramDialogInterface = NotifyPushSettingFragment.a(this.a).a().getText().toString();
-    NotifyPushSettingFragment.a(this.a).a().setText("");
+    paramDialogInterface = NotifyPushSettingFragment.b(this.a).getRightTextView().getText().toString();
+    NotifyPushSettingFragment.b(this.a).getRightTextView().setText("");
     NotifyPushSettingFragment.a(this.a).set(true);
-    ((CardHandler)NotifyPushSettingFragment.a(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, paramDialogInterface, "not_disturb_from_notify_push_setting_activity");
+    ((CardHandler)NotifyPushSettingFragment.c(this.a).getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).a(0, paramDialogInterface, "not_disturb_from_notify_push_setting_activity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.27
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,12 @@ package com.tencent.mobileqq.kandian.biz.comment.base.bridgeimpl;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.ViewGroup;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
 import com.tencent.mobileqq.kandian.biz.comment.base.model.CommentArgumentModel;
 import com.tencent.mobileqq.kandian.biz.comment.entity.BaseCommentData.CommentLinkData;
 import com.tencent.mobileqq.kandian.biz.comment.event.AddCommentLinkEvent;
-import com.tencent.mobileqq.kandian.biz.comment.ui.CommentLinkView;
-import com.tencent.mobileqq.kandian.biz.comment.ui.CommentLinkView.OnLinkDeleteListener;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.tkd.comment.publisher.qq.model.TkdCommentLinkData;
 import com.tencent.tkd.comment.publisher.qq.util.QQViewCallback;
@@ -19,13 +16,9 @@ import java.util.Iterator;
 import java.util.List;
 
 class QQViewBridgeImpl$LinkUi
-  implements SimpleEventReceiver, CommentLinkView.OnLinkDeleteListener
+  implements SimpleEventReceiver<AddCommentLinkEvent>
 {
-  @Deprecated
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  @Deprecated
-  private CommentLinkView jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView;
-  private List<BaseCommentData.CommentLinkData> jdField_a_of_type_JavaUtilList;
+  private List<BaseCommentData.CommentLinkData> b;
   
   private QQViewBridgeImpl$LinkUi(QQViewBridgeImpl paramQQViewBridgeImpl) {}
   
@@ -33,8 +26,8 @@ class QQViewBridgeImpl$LinkUi
   {
     SimpleEventBus.getInstance().registerReceiver(this);
     Bundle localBundle = new Bundle();
-    int j = QQViewBridgeImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseBridgeimplQQViewBridgeImpl).g;
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    int j = QQViewBridgeImpl.b(this.a).b;
+    Object localObject = this.b;
     int i;
     if (localObject == null) {
       i = 0;
@@ -47,24 +40,21 @@ class QQViewBridgeImpl$LinkUi
     RIJJumpUtils.a(paramContext, ((StringBuilder)localObject).toString(), localBundle);
   }
   
-  @Deprecated
-  private void a(BaseCommentData.CommentLinkData paramCommentLinkData) {}
-  
-  private void b(BaseCommentData.CommentLinkData paramCommentLinkData)
+  private void a(BaseCommentData.CommentLinkData paramCommentLinkData)
   {
     if (paramCommentLinkData == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList(QQViewBridgeImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseBridgeimplQQViewBridgeImpl).g);
+    if (this.b == null) {
+      this.b = new ArrayList(QQViewBridgeImpl.b(this.a).b);
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramCommentLinkData);
+    this.b.add(paramCommentLinkData);
     TkdCommentLinkData localTkdCommentLinkData = new TkdCommentLinkData();
     localTkdCommentLinkData.type = paramCommentLinkData.type;
     localTkdCommentLinkData.iconUrl = paramCommentLinkData.iconUrl;
     localTkdCommentLinkData.linkUrl = paramCommentLinkData.linkUrl;
     localTkdCommentLinkData.wording = paramCommentLinkData.wording;
-    QQViewBridgeImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseBridgeimplQQViewBridgeImpl).onAddLink(localTkdCommentLinkData);
+    QQViewBridgeImpl.a(this.a).onAddLink(localTkdCommentLinkData);
   }
   
   void a()
@@ -72,27 +62,12 @@ class QQViewBridgeImpl$LinkUi
     SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
   
-  @Deprecated
-  void a(ViewGroup paramViewGroup)
+  void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  @Deprecated
-  public void b()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList == null) || (localList.isEmpty())) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentUiCommentLinkView.setVisibility(8);
-    }
-  }
-  
-  void c()
-  {
-    Object localObject = QQViewBridgeImpl.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseBridgeimplQQViewBridgeImpl).getCommentLinkData();
+    Object localObject = QQViewBridgeImpl.a(this.a).getCommentLinkData();
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -102,14 +77,14 @@ class QQViewBridgeImpl$LinkUi
         localCommentLinkData.iconUrl = localTkdCommentLinkData.iconUrl;
         localCommentLinkData.linkUrl = localTkdCommentLinkData.linkUrl;
         localCommentLinkData.type = localTkdCommentLinkData.type;
-        this.jdField_a_of_type_JavaUtilList.add(localCommentLinkData);
+        this.b.add(localCommentLinkData);
       }
       return;
     }
-    this.jdField_a_of_type_JavaUtilList = null;
+    this.b = null;
   }
   
-  public ArrayList<Class> getEventClass()
+  public ArrayList<Class<AddCommentLinkEvent>> getEventClass()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(AddCommentLinkEvent.class);
@@ -118,18 +93,15 @@ class QQViewBridgeImpl$LinkUi
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
-    if ((paramSimpleBaseEvent instanceof AddCommentLinkEvent))
-    {
-      paramSimpleBaseEvent = (AddCommentLinkEvent)paramSimpleBaseEvent;
-      a(paramSimpleBaseEvent.linkData);
-      b(paramSimpleBaseEvent.linkData);
+    if ((paramSimpleBaseEvent instanceof AddCommentLinkEvent)) {
+      a(((AddCommentLinkEvent)paramSimpleBaseEvent).linkData);
     }
     SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.bridgeimpl.QQViewBridgeImpl.LinkUi
  * JD-Core Version:    0.7.0.1
  */

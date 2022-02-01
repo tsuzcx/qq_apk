@@ -24,75 +24,75 @@ final class SetSplash$5
   {
     int i = paramView.getId();
     Object localObject;
-    if (i != 2131369593)
+    if (i != 2131436701)
     {
-      if (i == 2131377787)
+      if ((i == 2131444944) || (i == 2131446248))
       {
-        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.setOnClickListener(null);
-        VasSplashUtil.a = true;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashUIdata;
+        this.c.setOnClickListener(null);
+        VasSplashUtil.c = true;
+        localObject = this.d;
         int j = 0;
         i = j;
         if (localObject != null) {
-          if (((SplashUIdata)localObject).jdField_d_of_type_Int != 2)
+          if (((SplashUIdata)localObject).i != 2)
           {
             i = j;
-            if (this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashUIdata.jdField_d_of_type_Int != 3) {}
+            if (this.d.i != 3) {}
           }
           else
           {
-            VasSplashUtil.a = false;
+            VasSplashUtil.c = false;
             i = 2000;
-            if ((this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.a) && (this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b) && (this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashUIdata.a == 2)) {
-              this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+            if ((this.c.k) && (this.c.l) && (this.d.a == 2)) {
+              this.c.d();
             }
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashUIdata.b)) {
-              TianShuManager.setLastClickAdTraceInfo(this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.b, this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.j);
+            if (!TextUtils.isEmpty(this.d.d)) {
+              TianShuManager.setLastClickAdTraceInfo(this.a.b, this.a.n);
             }
-            localObject = this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem;
+            localObject = this.a;
             if (localObject != null) {
               if (((SplashItem)localObject).c()) {
-                TianshuReportUtils.b(this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.b, 102, this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.j);
+                TianshuReportUtils.b(this.a.b, 102, this.a.n);
               } else {
-                TianshuReportUtils.c(this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.b, 102, this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.j);
+                TianshuReportUtils.c(this.a.b, 102, this.a.n);
               }
             }
-            VipHandler.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashUIdata.jdField_d_of_type_JavaLangString);
+            VipHandler.b(this.e, this.d.j);
           }
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem;
+        localObject = this.a;
         if ((localObject != null) && (((SplashItem)localObject).c()))
         {
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(this.f);
           ((StringBuilder)localObject).append("");
-          VasSplashUtil.a(((StringBuilder)localObject).toString());
+          VasSplashUtil.b(((StringBuilder)localObject).toString());
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("cover_layer =");
         ((StringBuilder)localObject).append(i);
         QLog.i("QSplash@VasSplashUtil", 1, ((StringBuilder)localObject).toString());
-        this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a(15, 1, i);
+        this.b.a(15, 1, i);
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem;
+      localObject = this.a;
       if (localObject != null) {
         if (((SplashItem)localObject).c()) {
-          TianshuReportUtils.b(this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.b, 122, this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.j);
+          TianshuReportUtils.b(this.a.b, 122, this.a.n);
         } else {
-          TianshuReportUtils.c(this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.b, 122, this.jdField_a_of_type_ComTencentMobileqqVassplashModelSplashItem.j);
+          TianshuReportUtils.c(this.a.b, 122, this.a.n);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqStartupDirectorStartupDirector.a(15, 1, 0L);
+      this.b.a(15, 1, 0L);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.5
  * JD-Core Version:    0.7.0.1
  */

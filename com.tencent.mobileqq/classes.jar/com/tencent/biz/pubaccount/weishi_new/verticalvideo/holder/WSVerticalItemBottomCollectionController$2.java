@@ -13,7 +13,7 @@ class WSVerticalItemBottomCollectionController$2
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    WSVerticalItemBottomCollectionController.b(this.a);
+    WSVerticalItemBottomCollectionController.c(this.a);
   }
   
   public void onAnimationStart(Animator paramAnimator)
@@ -21,10 +21,10 @@ class WSVerticalItemBottomCollectionController$2
     super.onAnimationStart(paramAnimator);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("collection animator start: ");
-    if (WSVerticalItemBottomCollectionController.a(this.a) == null) {
+    if (WSVerticalItemBottomCollectionController.b(this.a) == null) {
       paramAnimator = "null";
     } else {
-      paramAnimator = WSVerticalItemBottomCollectionController.a(this.a).feed_desc;
+      paramAnimator = WSVerticalItemBottomCollectionController.b(this.a).feed_desc;
     }
     localStringBuilder.append(paramAnimator);
     WSLog.b("AbsWsUIGroup", localStringBuilder.toString());
@@ -32,7 +32,7 @@ class WSVerticalItemBottomCollectionController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomCollectionController.2
  * JD-Core Version:    0.7.0.1
  */

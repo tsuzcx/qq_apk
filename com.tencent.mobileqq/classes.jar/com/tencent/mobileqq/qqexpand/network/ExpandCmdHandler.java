@@ -20,19 +20,14 @@ import mqq.os.MqqHandler;
 
 public class ExpandCmdHandler
 {
-  public static final AtomicInteger a;
-  private final BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private Map<Integer, ExpandCmdHandler.RequestObject> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
-  }
+  public static final AtomicInteger a = new AtomicInteger();
+  private Map<Integer, ExpandCmdHandler.RequestObject> b = new ConcurrentHashMap();
+  private final BaseQQAppInterface c;
   
   public ExpandCmdHandler(@NonNull BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.c = paramBaseQQAppInterface;
+    this.b = new ConcurrentHashMap();
   }
   
   public static ExpandCmdHandler a(@NonNull BaseQQAppInterface paramBaseQQAppInterface)
@@ -41,48 +36,52 @@ public class ExpandCmdHandler
     if (paramBaseQQAppInterface == null) {
       return null;
     }
-    return paramBaseQQAppInterface.a();
+    return paramBaseQQAppInterface.p();
   }
   
   private ExpandResponse a(ExpandCmdHandler.RequestObject paramRequestObject, FromServiceMsg paramFromServiceMsg)
   {
     Object localObject;
-    if (paramRequestObject.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a())
+    if (paramRequestObject.a.c())
     {
-      localObject = new ExpandResponse.ExpandOIDBResponse(paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg());
-      paramRequestObject = (ExpandCmdHandler.RequestObject)localObject;
+      paramRequestObject = new ExpandResponse.ExpandOIDBResponse(paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg());
+      localObject = paramRequestObject;
       if (paramFromServiceMsg.isSuccess())
       {
-        ((ExpandResponse)localObject).a(paramFromServiceMsg.getWupBuffer());
-        return localObject;
+        paramRequestObject.a(paramFromServiceMsg.getWupBuffer());
+        return paramRequestObject;
       }
     }
     else
     {
-      localObject = new ExpandResponse.ExpandSSOResponse(paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg());
-      paramRequestObject = (ExpandCmdHandler.RequestObject)localObject;
+      if (paramRequestObject.a.d()) {
+        paramRequestObject = new ExpandResponse.ExpandDirectConnectSSOResponse(paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg());
+      } else {
+        paramRequestObject = new ExpandResponse.ExpandSSOResponse(paramFromServiceMsg.getResultCode(), paramFromServiceMsg.getBusinessFailMsg());
+      }
+      localObject = paramRequestObject;
       if (paramFromServiceMsg.isSuccess())
       {
         int i = paramFromServiceMsg.getWupBuffer().length - 4;
-        paramRequestObject = new byte[i];
-        PkgTools.copyData(paramRequestObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-        ((ExpandResponse)localObject).a(paramRequestObject);
-        paramRequestObject = (ExpandCmdHandler.RequestObject)localObject;
+        localObject = new byte[i];
+        PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+        paramRequestObject.a((byte[])localObject);
+        localObject = paramRequestObject;
       }
     }
-    return paramRequestObject;
+    return localObject;
   }
   
   private void a(ExpandCmdHandler.RequestObject paramRequestObject, ExpandResponse paramExpandResponse)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("cmd", paramRequestObject.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a());
-    localHashMap.put("msg", paramExpandResponse.a());
+    localHashMap.put("cmd", paramRequestObject.a.e());
+    localHashMap.put("msg", paramExpandResponse.c());
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramExpandResponse.a());
+    localStringBuilder.append(paramExpandResponse.b());
     localStringBuilder.append("");
     localHashMap.put("result", localStringBuilder.toString());
-    if (paramRequestObject.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo.a()) {
+    if (paramRequestObject.a.c()) {
       paramRequestObject = "0";
     } else {
       paramRequestObject = "1";
@@ -95,19 +94,19 @@ public class ExpandCmdHandler
   {
     int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
     long l = System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("REQUEST_TIME");
-    if (paramExpandResponse.a() != 0)
+    if (paramExpandResponse.b() != 0)
     {
-      QLog.w("expand.cmd.ExpandCmdHandler", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errorInfo: %s, request seq: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l), paramExpandResponse.b(), Integer.valueOf(i) }));
+      QLog.w("expand.cmd.ExpandCmdHandler", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errorInfo: %s, request seq: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l), paramExpandResponse.d(), Integer.valueOf(i) }));
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("expand.cmd.ExpandCmdHandler", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errorInfo: %s, request seq: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l), paramExpandResponse.b(), Integer.valueOf(i) }));
+      QLog.d("expand.cmd.ExpandCmdHandler", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errorInfo: %s, request seq: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l), paramExpandResponse.d(), Integer.valueOf(i) }));
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
   }
   
   public void a(ExpandReqInfo paramExpandReqInfo, IExpandCmdCallback paramIExpandCmdCallback)
@@ -119,7 +118,7 @@ public class ExpandCmdHandler
     }
     if (!AppNetConnInfo.isNetSupport())
     {
-      paramIExpandCmdCallback.a(paramExpandReqInfo, new ExpandResponse(900000000, "no network"));
+      paramIExpandCmdCallback.onProtocol(paramExpandReqInfo, new ExpandResponse(900000000, "no network"));
       return;
     }
     ThreadManager.getSubThreadHandler().post(new ExpandCmdHandler.1(this, paramExpandReqInfo, paramIExpandCmdCallback));
@@ -130,7 +129,7 @@ public class ExpandCmdHandler
     if ((paramToServiceMsg != null) && (paramFromServiceMsg != null))
     {
       int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
-      ExpandCmdHandler.RequestObject localRequestObject = (ExpandCmdHandler.RequestObject)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      ExpandCmdHandler.RequestObject localRequestObject = (ExpandCmdHandler.RequestObject)this.b.get(Integer.valueOf(i));
       if (localRequestObject == null)
       {
         paramFromServiceMsg = new StringBuilder();
@@ -143,8 +142,8 @@ public class ExpandCmdHandler
       }
       paramFromServiceMsg = a(localRequestObject, paramFromServiceMsg);
       a(paramToServiceMsg, paramFromServiceMsg);
-      if (localRequestObject.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkIExpandCmdCallback != null) {
-        localRequestObject.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkIExpandCmdCallback.a(localRequestObject.jdField_a_of_type_ComTencentMobileqqQqexpandNetworkExpandReqInfo, paramFromServiceMsg);
+      if (localRequestObject.b != null) {
+        localRequestObject.b.onProtocol(localRequestObject.a, paramFromServiceMsg);
       }
       a(localRequestObject, paramFromServiceMsg);
       return;
@@ -161,10 +160,15 @@ public class ExpandCmdHandler
   {
     a(new ExpandReqInfo.Builder().a(false).a(paramString).a(paramArrayOfByte).a(), paramIExpandCmdCallback);
   }
+  
+  public void b(String paramString, byte[] paramArrayOfByte, IExpandCmdCallback paramIExpandCmdCallback)
+  {
+    a(new ExpandReqInfo.Builder().a(false).b(true).a(paramString).a(paramArrayOfByte).a(), paramIExpandCmdCallback);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.network.ExpandCmdHandler
  * JD-Core Version:    0.7.0.1
  */

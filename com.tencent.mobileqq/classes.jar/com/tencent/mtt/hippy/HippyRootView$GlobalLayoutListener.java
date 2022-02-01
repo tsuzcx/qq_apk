@@ -14,6 +14,7 @@ import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.HippyModuleManager;
 import com.tencent.mtt.hippy.modules.javascriptmodules.Dimensions;
 import com.tencent.mtt.hippy.utils.DimensionsUtil;
+import com.tencent.mtt.hippy.utils.LogUtils;
 import java.lang.reflect.Method;
 
 class HippyRootView$GlobalLayoutListener
@@ -98,7 +99,13 @@ class HippyRootView$GlobalLayoutListener
     checkUpdateDimension(-1, -1, false, false);
   }
   
-  private void sendOrientationChangeEvent(int paramInt) {}
+  private void sendOrientationChangeEvent(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendOrientationChangeEvent: orientation=");
+    localStringBuilder.append(paramInt);
+    LogUtils.d("HippyRootView", localStringBuilder.toString());
+  }
   
   public void onGlobalLayout()
   {
@@ -126,7 +133,7 @@ class HippyRootView$GlobalLayoutListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyRootView.GlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

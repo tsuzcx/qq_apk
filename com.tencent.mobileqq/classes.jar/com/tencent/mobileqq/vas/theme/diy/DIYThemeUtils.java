@@ -30,9 +30,9 @@ public class DIYThemeUtils
     Object localObject1;
     if ((paramResData != null) && (paramContext != null))
     {
-      if (paramResData.jdField_d_of_type_Int > 0)
+      if (paramResData.h > 0)
       {
-        if (paramResData.jdField_d_of_type_Int == 2130846235)
+        if (paramResData.h == 2130847705)
         {
           paramResData = paramContext.getResources().getAssets();
           try
@@ -70,25 +70,25 @@ public class DIYThemeUtils
           QLog.e("DIYThemeUtils", 1, "getDIYDrawable qq_setting_me_bg.png bitmap null err");
           return null;
         }
-        return SkinEngine.getInstances().getDefaultThemeDrawable(paramResData.jdField_d_of_type_Int);
+        return SkinEngine.getInstances().getDefaultThemeDrawable(paramResData.h);
       }
-      if (1 == paramResData.e) {
-        localObject1 = paramContext.getResources().getDrawable(2130846235);
-      } else if (2 == paramResData.e) {
-        localObject1 = paramContext.getResources().getDrawable(2130850361);
-      } else if (3 == paramResData.e) {
-        localObject1 = paramContext.getResources().getDrawable(2130850371);
+      if (1 == paramResData.i) {
+        localObject1 = paramContext.getResources().getDrawable(2130847705);
+      } else if (2 == paramResData.i) {
+        localObject1 = paramContext.getResources().getDrawable(2130852152);
+      } else if (3 == paramResData.i) {
+        localObject1 = paramContext.getResources().getDrawable(2130852162);
       } else {
-        localObject1 = paramContext.getResources().getDrawable(2130847697);
+        localObject1 = paramContext.getResources().getDrawable(2130849357);
       }
     }
     for (;;)
     {
       try
       {
-        localObject2 = paramResData.jdField_c_of_type_JavaLangString;
+        localObject2 = paramResData.d;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramResData.jdField_d_of_type_JavaLangString);
+        localStringBuilder.append(paramResData.e);
         if (!paramBoolean) {
           break label511;
         }
@@ -132,18 +132,18 @@ public class DIYThemeUtils
   public static ResData a(AppRuntime paramAppRuntime, ResSuitData paramResSuitData, int paramInt, String paramString)
   {
     ResData localResData = new ResData();
-    localResData.jdField_c_of_type_Int = paramInt;
+    localResData.g = paramInt;
     localResData.b = paramResSuitData.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(a);
-    localStringBuilder.append(paramResSuitData.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(paramResSuitData.f);
     localStringBuilder.append("/");
-    localStringBuilder.append(paramResSuitData.e);
+    localStringBuilder.append(paramResSuitData.g);
     localStringBuilder.append("/");
     localStringBuilder.append(localResData.b);
     localStringBuilder.append("/");
     localStringBuilder.append(paramString);
-    localResData.jdField_d_of_type_JavaLangString = localStringBuilder.toString();
+    localResData.e = localStringBuilder.toString();
     localResData.a = paramString;
     if (paramInt != 110)
     {
@@ -162,32 +162,32 @@ public class DIYThemeUtils
               paramAppRuntime.append(AppConstants.PATH_SYSTEM_BACKGROUND_THUMBNAIL);
               paramAppRuntime.append(localResData.b);
               paramAppRuntime.append("/");
-              paramAppRuntime.append(localResData.jdField_d_of_type_JavaLangString.hashCode());
-              localResData.jdField_c_of_type_JavaLangString = paramAppRuntime.toString();
+              paramAppRuntime.append(localResData.e.hashCode());
+              localResData.d = paramAppRuntime.toString();
               return localResData;
             case 116: 
               paramAppRuntime = new StringBuilder();
               paramAppRuntime.append(AppConstants.PATH_SYSTEM_BACKGROUND_RESOURCE);
               paramAppRuntime.append("deal/");
               paramAppRuntime.append(paramResSuitData.b);
-              localResData.jdField_c_of_type_JavaLangString = paramAppRuntime.toString();
+              localResData.d = paramAppRuntime.toString();
               return localResData;
             }
-            localResData.jdField_c_of_type_JavaLangString = ChatBackgroundUtil.a(true, paramResSuitData.b);
+            localResData.d = ChatBackgroundUtil.a(true, paramResSuitData.b);
             return localResData;
           }
           paramAppRuntime = new StringBuilder();
           paramAppRuntime.append(ThemeDiyStyleLogic.a());
           paramAppRuntime.append("styleThum/");
           paramAppRuntime.append(paramString);
-          localResData.jdField_c_of_type_JavaLangString = paramAppRuntime.toString();
+          localResData.d = paramAppRuntime.toString();
           return localResData;
         }
         paramAppRuntime = new StringBuilder();
         paramAppRuntime.append(ThemeDiyStyleLogic.a());
         paramAppRuntime.append("styleShot/");
         paramAppRuntime.append(paramString);
-        localResData.jdField_c_of_type_JavaLangString = paramAppRuntime.toString();
+        localResData.d = paramAppRuntime.toString();
         return localResData;
       }
       if (paramAppRuntime == null) {
@@ -207,16 +207,16 @@ public class DIYThemeUtils
         paramString = paramAppRuntime.toString();
       }
       paramResSuitData.append(paramString);
-      localResData.jdField_c_of_type_JavaLangString = paramResSuitData.toString();
+      localResData.d = paramResSuitData.toString();
       return localResData;
     }
-    localResData.jdField_c_of_type_JavaLangString = ChatBackgroundUtil.a(true, paramResSuitData.b);
+    localResData.d = ChatBackgroundUtil.a(true, paramResSuitData.b);
     return localResData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.DIYThemeUtils
  * JD-Core Version:    0.7.0.1
  */

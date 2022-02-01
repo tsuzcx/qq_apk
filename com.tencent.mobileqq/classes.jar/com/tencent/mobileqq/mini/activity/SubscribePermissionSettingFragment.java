@@ -151,12 +151,12 @@ public class SubscribePermissionSettingFragment
         }
         if (((List)localObject).size() > 0)
         {
-          localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694153)));
+          localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131891783)));
           localArrayList1.addAll((Collection)localObject);
         }
         if (localArrayList2.size() > 0)
         {
-          localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694151)));
+          localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131891781)));
           localArrayList1.addAll(localArrayList2);
         }
         if (localArrayList3.size() > 0)
@@ -235,7 +235,7 @@ public class SubscribePermissionSettingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559395, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131625361, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
@@ -262,12 +262,12 @@ public class SubscribePermissionSettingFragment
     this.appId = paramBundle.getStringExtra("EXTRA_APP_ID");
     if ((!TextUtils.isEmpty(this.appId)) && (this.miniAppInterface != null))
     {
-      paramBundle = (TextView)paramView.findViewById(2131369202);
-      TextView localTextView = (TextView)paramView.findViewById(2131369249);
-      paramBundle.setText(HardCodeUtil.a(2131707931));
-      localTextView.setText(HardCodeUtil.a(2131707941));
+      paramBundle = (TextView)paramView.findViewById(2131436180);
+      TextView localTextView = (TextView)paramView.findViewById(2131436227);
+      paramBundle.setText(HardCodeUtil.a(2131901576));
+      localTextView.setText(HardCodeUtil.a(2131905753));
       paramBundle.setOnClickListener(this.onClickListener);
-      this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131378079));
+      this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131446584));
       this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
       if (this.authorizeCenter == null)
       {
@@ -288,7 +288,7 @@ public class SubscribePermissionSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

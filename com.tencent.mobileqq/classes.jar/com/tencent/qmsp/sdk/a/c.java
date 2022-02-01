@@ -8,6 +8,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.text.TextUtils;
 import com.tencent.qmsp.sdk.app.QmspSDK;
+import com.tencent.qmsp.sdk.c.b;
 import com.tencent.qmsp.sdk.f.e;
 import java.io.File;
 import java.security.MessageDigest;
@@ -100,6 +101,21 @@ public class c
   
   public static String e()
   {
+    try
+    {
+      String str = b.c;
+      return str;
+    }
+    finally
+    {
+      label6:
+      break label6;
+    }
+    return "";
+  }
+  
+  public static String f()
+  {
     Object localObject1 = QmspSDK.getContext().getPackageManager();
     try
     {
@@ -127,7 +143,7 @@ public class c
     return "";
   }
   
-  public static int f()
+  public static int g()
   {
     Object localObject = c();
     try
@@ -153,7 +169,7 @@ public class c
     }
   }
   
-  public static boolean g()
+  public static boolean h()
   {
     String str = System.getProperty("os.arch");
     return (str != null) && (str.contains("64"));
@@ -161,7 +177,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.a.c
  * JD-Core Version:    0.7.0.1
  */

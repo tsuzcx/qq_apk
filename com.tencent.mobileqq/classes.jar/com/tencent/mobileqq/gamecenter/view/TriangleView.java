@@ -13,9 +13,9 @@ import com.tencent.mobileqq.R.styleable;
 public class TriangleView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  private Paint a = new Paint(1);
+  private Path b = new Path();
+  private float c;
   
   public TriangleView(Context paramContext)
   {
@@ -56,33 +56,33 @@ public class TriangleView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    paramCanvas.rotate(this.jdField_a_of_type_Float);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.rotate(this.c);
+    paramCanvas.drawPath(this.b, this.a);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt3 = paramInt1 / 2;
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(paramInt1, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(paramInt3, paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
+    this.b.reset();
+    this.b.moveTo(0.0F, 0.0F);
+    this.b.lineTo(paramInt1, 0.0F);
+    this.b.lineTo(paramInt3, paramInt2);
+    this.b.close();
   }
   
   public void setAngle(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
   }
   
   public void setColor(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.a.setColor(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.TriangleView
  * JD-Core Version:    0.7.0.1
  */

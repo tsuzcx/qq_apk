@@ -11,14 +11,14 @@ class ReadInJoyBaseDeliverActivity$16
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface = this.a;
-    paramDialogInterface.m = true;
-    ReadInJoyBaseDeliverActivity.b(paramDialogInterface);
-    this.a.a();
+    paramDialogInterface.M = true;
+    ReadInJoyBaseDeliverActivity.f(paramDialogInterface);
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyBaseDeliverActivity.16
  * JD-Core Version:    0.7.0.1
  */

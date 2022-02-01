@@ -1,14 +1,11 @@
 package com.tencent.comic.hippy.module;
 
 import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.comic.api.hippy.BoodoModuleProxy;
 import com.tencent.comic.api.hippy.IBoodoModule;
 import com.tencent.comic.hippy.BoodoHippyBirdge;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.module.QQBaseWebIpcModule;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.mtt.hippy.HippyEngine;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
@@ -42,29 +39,11 @@ public class BoodoModule
     BoodoModuleProxy localBoodoModuleProxy = this.mModuleProxy;
   }
   
-  public static void test(Activity paramActivity)
-  {
-    try
-    {
-      paramActivity = new ActivityURIRequest(paramActivity, "/base/vipcomic");
-      JSONObject localJSONObject = new JSONObject("{\"leftViewText\":\"动态\",\"jumpto\":\"com.qqcomic.activity.reader.VipComicPortraitReadingActivity\",\"comic\":{\"comicID\":\"505430\",\"comicPageOffset\":0,\"comicSectionID\":\"19\",\"comicPageID\":\"1161\",\"returnToDetail\":false}}");
-      paramActivity.extra().putString("jumpto", "com.qqcomic.activity.reader.VipComicPortraitReadingActivity");
-      paramActivity.extra().putString("options", localJSONObject.toString());
-      paramActivity.extra().putLong("click_start_time", System.currentTimeMillis());
-      QRoute.startUri(paramActivity, null);
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      QLog.e("BoodoModule", 1, paramActivity, new Object[0]);
-    }
-  }
-  
   public void destroy()
   {
     super.destroy();
     QLog.d("HippyQQComicModule", 2, "HippyQQComicModule destroy");
-    com.tencent.comic.data.VipComicDataHelper.a = false;
+    com.tencent.comic.data.VipComicDataHelper.r = false;
   }
   
   public void doPromiseCallback(Promise paramPromise, int paramInt, String paramString)
@@ -175,7 +154,7 @@ public class BoodoModule
   public void mainTabAppear(HippyMap paramHippyMap, Promise paramPromise)
   {
     checkInitModule();
-    com.tencent.comic.data.VipComicDataHelper.a = true;
+    com.tencent.comic.data.VipComicDataHelper.r = true;
     QLog.i("BoodoModule", 1, "mainTabAppear has been called");
     if (this.mModuleProxy != null)
     {
@@ -365,7 +344,7 @@ public class BoodoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.hippy.module.BoodoModule
  * JD-Core Version:    0.7.0.1
  */

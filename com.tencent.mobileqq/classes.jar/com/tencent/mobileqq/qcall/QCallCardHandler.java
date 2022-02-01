@@ -29,14 +29,14 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class QCallCardHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QCallCardHandler.OnGetQCallCardListener jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = null;
   protected Set<String> a;
+  private QQAppInterface b;
+  private QCallCardHandler.OnGetQCallCardListener c = null;
   
   public QCallCardHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -109,7 +109,7 @@ public class QCallCardHandler
           paramObject.append(UinUtils.a(((Long)paramFromServiceMsg.get(0)).longValue()));
           QLog.i("QCallCardHandler", 2, paramObject.toString());
         }
-        paramObject = (QCallCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QCALLCARD_MANAGER);
+        paramObject = (QCallCardManager)this.b.getManager(QQManagerFactory.QCALLCARD_MANAGER);
         localQCallCardInfo = paramObject.a(UinUtils.a(((Long)paramFromServiceMsg.get(0)).longValue()));
         if (localQCallCardInfo != null)
         {
@@ -178,9 +178,9 @@ public class QCallCardHandler
       if (QLog.isColorLevel()) {
         QLog.i("QCallCardHandler", 2, "handlerGetQcallCard  success");
       }
-      ((QCallCardManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QCALLCARD_MANAGER)).a((QCallCardInfo)paramToServiceMsg.get(0));
+      ((QCallCardManager)this.b.getManager(QQManagerFactory.QCALLCARD_MANAGER)).a((QCallCardInfo)paramToServiceMsg.get(0));
       notifyUI(1, true, Integer.valueOf(i));
-      paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener;
+      paramFromServiceMsg = this.c;
       if (paramFromServiceMsg != null) {
         paramFromServiceMsg.a(((QCallCardInfo)paramToServiceMsg.get(0)).nickname);
       }
@@ -197,7 +197,7 @@ public class QCallCardHandler
   
   public void a(QCallCardHandler.OnGetQCallCardListener paramOnGetQCallCardListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQcallQCallCardHandler$OnGetQCallCardListener = paramOnGetQCallCardListener;
+    this.c = paramOnGetQCallCardListener;
   }
   
   public void a(String paramString)
@@ -210,7 +210,7 @@ public class QCallCardHandler
       ((StringBuilder)localObject).append(paramString);
       QLog.d("QCallCardHandler", 2, ((StringBuilder)localObject).toString());
     }
-    if (!StringUtil.c(paramString))
+    if (!StringUtil.isValideUin(paramString))
     {
       QLog.d("QCallCardHandler", 2, "Uin getQcallCardSimpleInfo uin is unValid!!!");
       return;
@@ -246,12 +246,12 @@ public class QCallCardHandler
   
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("QcallOidbSvc.0x5e3_1");
+      this.a = new HashSet();
+      this.a.add("QcallOidbSvc.0x5e3_1");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.a;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -284,7 +284,7 @@ public class QCallCardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallCardHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -23,13 +23,13 @@ public class SubscirbeLoadingDialog
     localLayoutParams.width = -2;
     localLayoutParams.height = -2;
     localLayoutParams.gravity = 17;
-    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131299256);
+    localLayoutParams.y -= getContext().getResources().getDimensionPixelOffset(2131300012);
     paramBundle.setAttributes(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscirbeLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

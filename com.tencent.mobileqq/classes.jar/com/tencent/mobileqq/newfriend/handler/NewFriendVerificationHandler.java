@@ -62,14 +62,6 @@ public class NewFriendVerificationHandler
     }
   }
   
-  private static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.compile("^[-\\+]?[\\d]*$").matcher(paramString).matches();
-  }
-  
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if (QLog.isColorLevel())
@@ -169,10 +161,10 @@ public class NewFriendVerificationHandler
           localObject = (oidb_cmd0xd83.BlockedInfo)paramObject.next();
           long l = ((oidb_cmd0xd83.BlockedInfo)localObject).uint64_uin.get();
           localAddFriendBlockedInfo = new AddFriendBlockedInfo();
-          localAddFriendBlockedInfo.jdField_a_of_type_JavaLangString = String.valueOf(l);
-          localAddFriendBlockedInfo.jdField_b_of_type_JavaLangString = ((oidb_cmd0xd83.BlockedInfo)localObject).bytes_nick.get().toStringUtf8();
-          localAddFriendBlockedInfo.jdField_a_of_type_Int = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_age.get();
-          localAddFriendBlockedInfo.jdField_b_of_type_Int = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_sex.get();
+          localAddFriendBlockedInfo.a = String.valueOf(l);
+          localAddFriendBlockedInfo.b = ((oidb_cmd0xd83.BlockedInfo)localObject).bytes_nick.get().toStringUtf8();
+          localAddFriendBlockedInfo.c = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_age.get();
+          localAddFriendBlockedInfo.d = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_sex.get();
           if (((oidb_cmd0xd83.BlockedInfo)localObject).uint32_has_read.get() != 1) {
             continue;
           }
@@ -186,10 +178,10 @@ public class NewFriendVerificationHandler
           boolean bool = false;
           continue;
         }
-        localAddFriendBlockedInfo.jdField_a_of_type_Boolean = bool;
-        localAddFriendBlockedInfo.jdField_c_of_type_JavaLangString = ((oidb_cmd0xd83.BlockedInfo)localObject).bytes_source.get().toStringUtf8();
-        localAddFriendBlockedInfo.jdField_a_of_type_Long = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_time.get();
-        localAddFriendBlockedInfo.jdField_c_of_type_Int = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_comm_frd.get();
+        localAddFriendBlockedInfo.g = bool;
+        localAddFriendBlockedInfo.e = ((oidb_cmd0xd83.BlockedInfo)localObject).bytes_source.get().toStringUtf8();
+        localAddFriendBlockedInfo.f = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_time.get();
+        localAddFriendBlockedInfo.h = ((oidb_cmd0xd83.BlockedInfo)localObject).uint32_comm_frd.get();
         paramFromServiceMsg.add(localAddFriendBlockedInfo);
         if (QLog.isDebugVersion())
         {
@@ -202,7 +194,7 @@ public class NewFriendVerificationHandler
       paramObject = paramToServiceMsg.bytes_cookies.get().toStringUtf8();
       paramToServiceMsg.uint32_entrance.get();
       if (paramFromServiceMsg.size() > 0) {
-        paramToServiceMsg = ((AddFriendBlockedInfo)paramFromServiceMsg.get(0)).jdField_a_of_type_JavaLangString;
+        paramToServiceMsg = ((AddFriendBlockedInfo)paramFromServiceMsg.get(0)).a;
       }
       if (this.a != null)
       {
@@ -219,6 +211,14 @@ public class NewFriendVerificationHandler
     if (paramToServiceMsg != null) {
       paramToServiceMsg.onGetAddFriendBlockedList(false, null, "");
     }
+  }
+  
+  private static boolean c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return Pattern.compile("^[-\\+]?[\\d]*$").matcher(paramString).matches();
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -291,7 +291,7 @@ public class NewFriendVerificationHandler
       localReqBody.blocked_uin.set(Long.parseLong(paramString2));
       localReqBody.source_id.set(paramInt1);
       localReqBody.sub_sourceid.set(paramInt2);
-      if (a(paramString3)) {
+      if (c(paramString3)) {
         localReqBody.group_uin.set(Long.parseLong(paramString3));
       } else {
         localReqBody.group_uin.set(0L);
@@ -372,7 +372,7 @@ public class NewFriendVerificationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.handler.NewFriendVerificationHandler
  * JD-Core Version:    0.7.0.1
  */

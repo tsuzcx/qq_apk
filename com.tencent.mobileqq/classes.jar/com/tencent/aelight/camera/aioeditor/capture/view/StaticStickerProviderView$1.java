@@ -16,7 +16,7 @@ class StaticStickerProviderView$1
   public void a()
   {
     SLog.b("StaticStickerProviderView", "用户点击重新拉取地理贴纸");
-    ((PasterDataManager)QIMManager.a(4)).a(true, this.jdField_a_of_type_AndroidAppActivity);
+    ((PasterDataManager)QIMManager.a(4)).a(true, this.a);
   }
   
   public void a(String paramString)
@@ -41,7 +41,7 @@ class StaticStickerProviderView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.StaticStickerProviderView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,26 +11,26 @@ import java.util.HashMap;
 
 public class TranslateController
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ARCloudFileUpload jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
-  private IOCRHandler jdField_a_of_type_ComTencentMobileqqOcrApiIOCRHandler;
-  HashMap<String, TranslateController.ImageTranslateTask> jdField_a_of_type_JavaUtilHashMap;
+  HashMap<String, TranslateController.ImageTranslateTask> a;
+  private ARCloudFileUpload b;
+  private HandlerThread c;
+  private Handler d;
+  private QQAppInterface e;
+  private IOCRHandler f;
   
   public TranslateController(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload = new ARCloudFileUpload(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload.a();
+    this.e = paramQQAppInterface;
+    this.b = new ARCloudFileUpload(paramQQAppInterface);
+    this.b.b();
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append("TranslateFileUpload_");
     paramQQAppInterface.append(System.currentTimeMillis());
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(paramQQAppInterface.toString());
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqOcrApiIOCRHandler = ((IOCRHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOCRHandler.class, ""));
+    this.c = new HandlerThread(paramQQAppInterface.toString());
+    this.c.start();
+    this.d = new Handler(this.c.getLooper());
+    this.a = new HashMap();
+    this.f = ((IOCRHandler)this.e.getRuntimeService(IOCRHandler.class, ""));
   }
   
   private void a(boolean paramBoolean, String paramString, TranslateResult arg3)
@@ -38,15 +38,15 @@ public class TranslateController
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrApiIOCRHandler != null)
+    if (this.f != null)
     {
       if (??? != null) {
-        ???.c = paramString;
+        ???.e = paramString;
       }
-      this.jdField_a_of_type_ComTencentMobileqqOcrApiIOCRHandler.notifyUI(2, paramBoolean, new Object[] { Integer.valueOf(2), ??? });
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      this.f.notifyUI(2, paramBoolean, new Object[] { Integer.valueOf(2), ??? });
+      synchronized (this.a)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+        this.a.remove(paramString);
         return;
       }
     }
@@ -54,7 +54,7 @@ public class TranslateController
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    IOCRHandler localIOCRHandler = this.jdField_a_of_type_ComTencentMobileqqOcrApiIOCRHandler;
+    IOCRHandler localIOCRHandler = this.f;
     if (localIOCRHandler != null) {
       localIOCRHandler.batchTranslate(paramString1, paramString2, paramString3);
     }
@@ -62,7 +62,7 @@ public class TranslateController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateController
  * JD-Core Version:    0.7.0.1
  */

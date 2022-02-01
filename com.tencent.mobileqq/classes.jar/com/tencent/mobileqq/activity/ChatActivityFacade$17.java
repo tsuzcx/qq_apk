@@ -14,19 +14,19 @@ final class ChatActivityFacade$17
   
   public void run()
   {
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    ChatActivityFacade.jdField_a_of_type_ComTencentMobileqqDataChatMessage = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-    String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696093);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.setMainTitle(str);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.addButton(2131691479, 3);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.addCancelButton(2131690728);
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.setOnButtonClickListener(new ChatActivityFacade.17.1(this));
-    ChatActivityFacade.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+    ChatActivityFacade.c = (ActionSheet)ActionSheetHelper.b(this.a, null);
+    ChatActivityFacade.d = this.b;
+    String str = this.a.getResources().getString(2131893858);
+    ChatActivityFacade.c.setMainTitle(str);
+    ChatActivityFacade.c.addButton(2131888438, 3);
+    ChatActivityFacade.c.addCancelButton(2131887648);
+    ChatActivityFacade.c.setOnButtonClickListener(new ChatActivityFacade.17.1(this));
+    ChatActivityFacade.c.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.17
  * JD-Core Version:    0.7.0.1
  */

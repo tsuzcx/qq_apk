@@ -16,50 +16,6 @@ import org.json.JSONObject;
 
 public class PatchConfigManager
 {
-  public static PatchConfig a(Context paramContext, String paramString)
-  {
-    paramContext = PatchSharedPreUtil.getPatchConfig(paramContext, paramString);
-    paramString = new ArrayList();
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (TextUtils.isEmpty(paramContext)) {
-          paramContext = new JSONArray();
-        } else {
-          paramContext = new JSONArray(paramContext);
-        }
-      }
-      catch (JSONException paramContext)
-      {
-        JSONObject localJSONObject;
-        QLog.d("PatchLogTag", 1, "PatchConfigManager getLatestPatchConfig", paramContext);
-        if (paramString.size() <= 1) {
-          continue;
-        }
-        Collections.sort(paramString, new PatchConfigManager.1());
-        if (paramString.size() <= 0) {
-          continue;
-        }
-        return (PatchConfig)paramString.get(0);
-        return null;
-      }
-      if (i < paramContext.length())
-      {
-        localJSONObject = paramContext.getJSONObject(i);
-        if (localJSONObject != null) {
-          paramString.add(new PatchConfig(localJSONObject));
-        }
-        i += 1;
-      }
-      else
-      {
-        i = 0;
-      }
-    }
-  }
-  
   public static void a(Context paramContext, PatchConfig paramPatchConfig)
   {
     if (paramPatchConfig == null) {
@@ -69,7 +25,7 @@ public class PatchConfigManager
     {
       try
       {
-        String str = paramPatchConfig.a();
+        String str = paramPatchConfig.c();
         Object localObject = PatchSharedPreUtil.getPatchConfig(paramContext, str);
         if (TextUtils.isEmpty((CharSequence)localObject)) {
           break label128;
@@ -79,13 +35,13 @@ public class PatchConfigManager
           break label128;
         }
         i = 0;
-        if (new PatchConfig(((JSONArray)localObject).getJSONObject(0)).a() < paramPatchConfig.a()) {
+        if (new PatchConfig(((JSONArray)localObject).getJSONObject(0)).d() < paramPatchConfig.d()) {
           break label128;
         }
         if (i != 0)
         {
           localObject = new JSONArray();
-          ((JSONArray)localObject).put(new JSONObject(paramPatchConfig.e()));
+          ((JSONArray)localObject).put(new JSONObject(paramPatchConfig.j()));
           PatchSharedPreUtil.updatePatchConfig(paramContext, str, ((JSONArray)localObject).toString());
           return;
         }
@@ -127,7 +83,7 @@ public class PatchConfigManager
         localObject2 = paramString.getJSONObject(i);
         if (localObject2 != null)
         {
-          localObject3 = new PatchConfig((JSONObject)localObject2).a();
+          localObject3 = new PatchConfig((JSONObject)localObject2).c();
           if (("dex".equals(localObject3)) || ("Native".equals(localObject3))) {
             if (((HashMap)localObject1).containsKey(localObject3))
             {
@@ -171,10 +127,54 @@ public class PatchConfigManager
       i += 1;
     }
   }
+  
+  public static PatchConfig b(Context paramContext, String paramString)
+  {
+    paramContext = PatchSharedPreUtil.getPatchConfig(paramContext, paramString);
+    paramString = new ArrayList();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if (TextUtils.isEmpty(paramContext)) {
+          paramContext = new JSONArray();
+        } else {
+          paramContext = new JSONArray(paramContext);
+        }
+      }
+      catch (JSONException paramContext)
+      {
+        JSONObject localJSONObject;
+        QLog.d("PatchLogTag", 1, "PatchConfigManager getLatestPatchConfig", paramContext);
+        if (paramString.size() <= 1) {
+          continue;
+        }
+        Collections.sort(paramString, new PatchConfigManager.1());
+        if (paramString.size() <= 0) {
+          continue;
+        }
+        return (PatchConfig)paramString.get(0);
+        return null;
+      }
+      if (i < paramContext.length())
+      {
+        localJSONObject = paramContext.getJSONObject(i);
+        if (localJSONObject != null) {
+          paramString.add(new PatchConfig(localJSONObject));
+        }
+        i += 1;
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hotpatch.config.PatchConfigManager
  * JD-Core Version:    0.7.0.1
  */

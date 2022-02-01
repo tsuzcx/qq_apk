@@ -85,7 +85,7 @@ public class GameRoomAVControllerDelegateImpl
       return;
     }
     if (paramOnBindCallback != null) {
-      paramOnBindCallback.at();
+      paramOnBindCallback.bJ();
     }
   }
   
@@ -98,7 +98,7 @@ public class GameRoomAVControllerDelegateImpl
     try
     {
       localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface)) && (((QQAppInterface)localObject).getAVNotifyCenter().b())) {
+      if ((localObject != null) && ((localObject instanceof QQAppInterface)) && (((QQAppInterface)localObject).getAVNotifyCenter().d())) {
         this.mAVServiceForQQ.c();
       }
       this.mAVServiceForQQ.a(paramLong, paramString);
@@ -170,7 +170,7 @@ public class GameRoomAVControllerDelegateImpl
   
   public int getFloatViewState()
   {
-    return this.mGameRoomFloatView.a();
+    return this.mGameRoomFloatView.b();
   }
   
   public boolean getInAIO()
@@ -326,7 +326,7 @@ public class GameRoomAVControllerDelegateImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.impl.GameRoomAVControllerDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

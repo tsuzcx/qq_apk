@@ -14,30 +14,6 @@ class IArConfigManager$Stub$Proxy
     this.a = paramIBinder;
   }
   
-  public ARCommonConfigInfo a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      this.a.transact(5, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      ARCommonConfigInfo localARCommonConfigInfo;
-      if (localParcel2.readInt() != 0) {
-        localARCommonConfigInfo = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(localParcel2);
-      } else {
-        localARCommonConfigInfo = null;
-      }
-      return localARCommonConfigInfo;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public ArConfigInfo a()
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -54,48 +30,6 @@ class IArConfigManager$Stub$Proxy
         localArConfigInfo = null;
       }
       return localArConfigInfo;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public ArEffectConfig a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      this.a.transact(4, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      ArEffectConfig localArEffectConfig;
-      if (localParcel2.readInt() != 0) {
-        localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(localParcel2);
-      } else {
-        localArEffectConfig = null;
-      }
-      return localArEffectConfig;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      this.a.transact(6, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
     }
     finally
     {
@@ -231,45 +165,27 @@ class IArConfigManager$Stub$Proxy
     }
   }
   
-  public boolean a()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      IBinder localIBinder = this.a;
-      boolean bool = false;
-      localIBinder.transact(11, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public IBinder asBinder()
   {
     return this.a;
   }
   
-  public void b()
+  public ArEffectConfig b()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
-      this.a.transact(7, localParcel1, localParcel2, 0);
+      this.a.transact(4, localParcel1, localParcel2, 0);
       localParcel2.readException();
-      return;
+      ArEffectConfig localArEffectConfig;
+      if (localParcel2.readInt() != 0) {
+        localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(localParcel2);
+      } else {
+        localArEffectConfig = null;
+      }
+      return localArEffectConfig;
     }
     finally
     {
@@ -378,7 +294,91 @@ class IArConfigManager$Stub$Proxy
     }
   }
   
-  public boolean b()
+  public ARCommonConfigInfo c()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      ARCommonConfigInfo localARCommonConfigInfo;
+      if (localParcel2.readInt() != 0) {
+        localARCommonConfigInfo = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(localParcel2);
+      } else {
+        localARCommonConfigInfo = null;
+      }
+      return localARCommonConfigInfo;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void d()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      this.a.transact(6, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void e()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      this.a.transact(7, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean f()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArConfigManager");
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(11, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean g()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -402,7 +402,7 @@ class IArConfigManager$Stub$Proxy
     }
   }
   
-  public void c()
+  public void h()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -420,7 +420,7 @@ class IArConfigManager$Stub$Proxy
     }
   }
   
-  public boolean c()
+  public boolean i()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -444,7 +444,7 @@ class IArConfigManager$Stub$Proxy
     }
   }
   
-  public void d()
+  public void j()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -464,7 +464,7 @@ class IArConfigManager$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArConfigManager.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

@@ -15,123 +15,117 @@ public final class ApngOptions
 {
   @JvmField
   @NotNull
-  public static final ColorDrawable a;
-  public static final ApngOptions.Companion a;
-  private int jdField_a_of_type_Int;
+  public static final ColorDrawable a = new ColorDrawable(0);
+  public static final ApngOptions.Companion b = new ApngOptions.Companion(null);
+  private int c;
+  @NotNull
+  private int[] d = new int[0];
+  @NotNull
+  private Bundle e = new Bundle();
+  private int f;
+  private int g;
+  private boolean h = true;
   @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = (Drawable)jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+  private Drawable i = (Drawable)a;
+  private boolean j = true;
+  private boolean k = true;
   @NotNull
-  private Bundle jdField_a_of_type_AndroidOsBundle = new Bundle();
-  @NotNull
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = (URLDrawable.URLDrawableListener)new ApngOptions.URLDrawableListenerAdapter();
-  private boolean jdField_a_of_type_Boolean = true;
-  @NotNull
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasApngApiApngOptions$Companion = new ApngOptions.Companion(null);
-    jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  }
+  private URLDrawable.URLDrawableListener l = (URLDrawable.URLDrawableListener)new ApngOptions.URLDrawableListenerAdapter();
   
   public final int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public final Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
-  @NotNull
-  public final Bundle a()
-  {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  @NotNull
-  public final URLDrawable.URLDrawableListener a()
-  {
-    return this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+    return this.c;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public final void a(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.i = paramDrawable;
   }
   
   public final void a(@NotNull URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
     Intrinsics.checkParameterIsNotNull(paramURLDrawableListener, "<set-?>");
-    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = paramURLDrawableListener;
+    this.l = paramURLDrawableListener;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public final void a(@NotNull int[] paramArrayOfInt)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "<set-?>");
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-  }
-  
-  public final boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @NotNull
-  public final int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
-  }
-  
-  public final int b()
-  {
-    return this.jdField_b_of_type_Int;
+    this.d = paramArrayOfInt;
   }
   
   public final void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
-  public final boolean b()
+  @NotNull
+  public final int[] b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.d;
   }
   
-  public final int c()
+  @NotNull
+  public final Bundle c()
   {
-    return this.jdField_c_of_type_Int;
+    return this.e;
   }
   
   public final void c(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
-  public final boolean c()
+  public final int d()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.f;
+  }
+  
+  public final int e()
+  {
+    return this.g;
+  }
+  
+  public final boolean f()
+  {
+    return this.h;
+  }
+  
+  @Nullable
+  public final Drawable g()
+  {
+    return this.i;
+  }
+  
+  public final boolean h()
+  {
+    return this.j;
+  }
+  
+  public final boolean i()
+  {
+    return this.k;
+  }
+  
+  @NotNull
+  public final URLDrawable.URLDrawableListener j()
+  {
+    return this.l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.apng.api.ApngOptions
  * JD-Core Version:    0.7.0.1
  */

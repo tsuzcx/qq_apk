@@ -42,7 +42,7 @@ class GdtMvWebGetAdInfoHandler
       {
         QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "callJs", paramString);
       }
-      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "getAdInfo", paramGdtAdWebPlugin.a());
+      AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "getAdInfo", paramGdtAdWebPlugin.b());
       return true;
     }
     QLog.i("WebGdtMvWebGetAdInfoHandler", 1, "webPlugin == null || activity == null");
@@ -51,7 +51,7 @@ class GdtMvWebGetAdInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtMvWebGetAdInfoHandler
  * JD-Core Version:    0.7.0.1
  */

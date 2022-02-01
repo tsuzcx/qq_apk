@@ -12,10 +12,10 @@ class GdtVideoImaxFragment$1$1
   
   public void run()
   {
-    GdtVideoImaxFragment.a(this.a.a).setBackgroundColor(-16777216);
-    if (GdtVideoImaxFragment.a(this.a.a) != null)
+    GdtVideoImaxFragment.d(this.a.a).setBackgroundColor(-16777216);
+    if (GdtVideoImaxFragment.e(this.a.a) != null)
     {
-      GdtVideoImaxFragment.a(this.a.a).send(2, new Bundle());
+      GdtVideoImaxFragment.e(this.a.a).send(2, new Bundle());
       return;
     }
     GdtLog.a("GdtVideoImaxFragment", "onStart() mResultReceiver != null");
@@ -23,7 +23,7 @@ class GdtVideoImaxFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.NetworkMonitor;
 import com.tencent.qqmini.sdk.annotation.JsEvent;
 import com.tencent.qqmini.sdk.annotation.JsPlugin;
 import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
@@ -354,7 +355,7 @@ public class WifiJsPlugin
     {
       if (((WifiManager)localObject).isWifiEnabled())
       {
-        localObject = getWifiInfo(this.wifiManager.getConnectionInfo());
+        localObject = getWifiInfo(NetworkMonitor.getConnectionInfo(this.wifiManager));
         try
         {
           ((JSONObject)localObject).put("errCode", 0);
@@ -561,7 +562,7 @@ public class WifiJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.WifiJsPlugin
  * JD-Core Version:    0.7.0.1
  */

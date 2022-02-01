@@ -8,16 +8,16 @@ class WerewolvesHostInterface$1
 {
   WerewolvesHostInterface$1(WerewolvesHostInterface paramWerewolvesHostInterface) {}
   
-  public void at()
+  public void bJ()
   {
     this.a.gameRoomAVControllerDelegate.stopSpeak();
   }
   
-  public void au() {}
+  public void bK() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHostInterface.1
  * JD-Core Version:    0.7.0.1
  */

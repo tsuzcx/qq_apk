@@ -13,14 +13,14 @@ final class ScreenShotUtil$3
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewTDProgressDialog.dismiss();
+    this.a.set(true);
+    this.b.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,23 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetPoiFacesRequest
   extends NetworkRequest<GetPoiFacesResponse>
 {
-  public final int c;
-  public final int d;
   public final int e;
+  public final int f;
+  public final int g;
   
   public GetPoiFacesRequest(int paramInt1, int paramInt2)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = 1;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.g = 1;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StorySvc.video_poi_posters_get");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
     try
@@ -39,25 +44,20 @@ public class GetPoiFacesRequest
     return new GetPoiFacesResponse(localRspGetPOIPosters);
   }
   
-  public String a()
-  {
-    return StoryApi.a("StorySvc.video_poi_posters_get");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
     qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.lng.set(this.c);
-    localGpsMsg.lat.set(this.d);
-    localReqGetPOIPosters.coordinate.set(this.e);
+    localGpsMsg.lng.set(this.e);
+    localGpsMsg.lat.set(this.f);
+    localReqGetPOIPosters.coordinate.set(this.g);
     localReqGetPOIPosters.gps.set(localGpsMsg);
     return localReqGetPOIPosters.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetPoiFacesRequest
  * JD-Core Version:    0.7.0.1
  */

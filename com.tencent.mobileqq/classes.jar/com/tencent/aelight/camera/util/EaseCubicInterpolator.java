@@ -6,16 +6,16 @@ import android.view.animation.Interpolator;
 public class EaseCubicInterpolator
   implements Interpolator
 {
-  private int jdField_a_of_type_Int = 0;
-  private final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private int a = 0;
   private final PointF b = new PointF();
+  private final PointF c = new PointF();
   
   public EaseCubicInterpolator(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    PointF localPointF = this.jdField_a_of_type_AndroidGraphicsPointF;
+    PointF localPointF = this.b;
     localPointF.x = paramFloat1;
     localPointF.y = paramFloat2;
-    localPointF = this.b;
+    localPointF = this.c;
     localPointF.x = paramFloat3;
     localPointF.y = paramFloat4;
   }
@@ -30,24 +30,24 @@ public class EaseCubicInterpolator
   
   public float getInterpolation(float paramFloat)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     float f = paramFloat;
     while (i < 4096)
     {
       f = i * 1.0F / 4096.0F;
-      if (a(f, 0.0D, this.jdField_a_of_type_AndroidGraphicsPointF.x, this.b.x, 1.0D) >= paramFloat)
+      if (a(f, 0.0D, this.b.x, this.c.x, 1.0D) >= paramFloat)
       {
-        this.jdField_a_of_type_Int = i;
+        this.a = i;
         break;
       }
       i += 1;
     }
-    double d2 = a(f, 0.0D, this.jdField_a_of_type_AndroidGraphicsPointF.y, this.b.y, 1.0D);
+    double d2 = a(f, 0.0D, this.b.y, this.c.y, 1.0D);
     double d1 = d2;
     if (d2 > 0.999D)
     {
       d1 = 1.0D;
-      this.jdField_a_of_type_Int = 0;
+      this.a = 0;
     }
     return (float)d1;
   }

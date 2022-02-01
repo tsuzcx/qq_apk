@@ -308,12 +308,12 @@ public class UserAction
   
   public static void setCollectImei(boolean paramBoolean)
   {
-    b.collectIMEIEnable(paramBoolean);
+    BeaconReport.getInstance().setCollectImei(paramBoolean);
   }
   
   public static void setCollectMAC(boolean paramBoolean)
   {
-    b.collectMACEnable(paramBoolean);
+    BeaconReport.getInstance().setCollectMac(paramBoolean);
   }
   
   public static void setJsClientId(String paramString) {}

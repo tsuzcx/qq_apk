@@ -102,8 +102,8 @@ public class PicEmoticonInfo
       try
       {
         paramString = MobileQQ.sMobileQQ.getResources();
-        this.mDefault = paramString.getDrawable(2130850883);
-        this.mFailed = paramString.getDrawable(2130850888);
+        this.mDefault = paramString.getDrawable(2130852735);
+        this.mFailed = paramString.getDrawable(2130852740);
         return;
       }
       catch (OutOfMemoryError paramString)
@@ -131,8 +131,8 @@ public class PicEmoticonInfo
         try
         {
           paramEmoticon = MobileQQ.getContext().getResources();
-          paramPicEmoticonInfo.mFiveInchDefault = paramEmoticon.getDrawable(2130846448);
-          paramPicEmoticonInfo.mFiveInchFailed = paramEmoticon.getDrawable(2130846449);
+          paramPicEmoticonInfo.mFiveInchDefault = paramEmoticon.getDrawable(2130847921);
+          paramPicEmoticonInfo.mFiveInchFailed = paramEmoticon.getDrawable(2130847922);
         }
         catch (OutOfMemoryError paramEmoticon)
         {
@@ -316,7 +316,7 @@ public class PicEmoticonInfo
           ((URLDrawable)localObject1).setTag(localEmoticon);
           ((URLDrawable)localObject1).addHeader("my_uin", localPicEmoticonInfo.uin);
           paramT = (TT)localObject1;
-          if (!FileUtil.b(str)) {}
+          if (!FileUtil.d(str)) {}
         }
       }
     }
@@ -751,7 +751,7 @@ public class PicEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PicEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

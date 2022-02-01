@@ -25,13 +25,13 @@ import java.util.List;
 class MessageNotifySegment$MessageListFirstObserver
   extends ProtoUtils.StoryProtocolObserver
 {
-  WeakReference<MessageNotifySegment> b;
-  WeakReference<ImageView> c;
+  WeakReference<MessageNotifySegment> d;
+  WeakReference<ImageView> e;
   
   public MessageNotifySegment$MessageListFirstObserver(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView)
   {
-    this.b = new WeakReference(paramMessageNotifySegment);
-    this.c = new WeakReference(paramImageView);
+    this.d = new WeakReference(paramMessageNotifySegment);
+    this.e = new WeakReference(paramImageView);
   }
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
@@ -43,8 +43,8 @@ class MessageNotifySegment$MessageListFirstObserver
       paramBundle.append(paramInt);
       QLog.d("Q.qqstory.home.MessageNotifySegment", 2, paramBundle.toString());
     }
-    MessageNotifySegment localMessageNotifySegment = (MessageNotifySegment)this.b.get();
-    paramBundle = (ImageView)this.c.get();
+    MessageNotifySegment localMessageNotifySegment = (MessageNotifySegment)this.d.get();
+    paramBundle = (ImageView)this.e.get();
     if ((localMessageNotifySegment != null) && (paramBundle != null))
     {
       if ((paramInt == 0) && (paramArrayOfByte != null)) {
@@ -58,9 +58,9 @@ class MessageNotifySegment$MessageListFirstObserver
             while (paramArrayOfByte.hasNext())
             {
               localObject = new MessageData((qqstory_710_message.StoryMessage)paramArrayOfByte.next());
-              if (((MessageData)localObject).d)
+              if (((MessageData)localObject).v)
               {
-                paramArrayOfByte = ((MessageData)localObject).a;
+                paramArrayOfByte = ((MessageData)localObject).c;
                 if (QLog.isColorLevel())
                 {
                   localObject = new StringBuilder();
@@ -69,7 +69,7 @@ class MessageNotifySegment$MessageListFirstObserver
                   QLog.d("Q.qqstory.home.MessageNotifySegment", 2, ((StringBuilder)localObject).toString());
                 }
                 if (!TextUtils.isEmpty(paramArrayOfByte)) {
-                  PlayModeUtils.a(paramBundle, PlayModeUtils.b(paramArrayOfByte), true, (int)DisplayUtils.a(MessageNotifySegment.b(localMessageNotifySegment), 33.0F));
+                  PlayModeUtils.a(paramBundle, PlayModeUtils.b(paramArrayOfByte), true, (int)DisplayUtils.a(MessageNotifySegment.d(localMessageNotifySegment), 33.0F));
                 }
                 return null;
               }
@@ -83,9 +83,9 @@ class MessageNotifySegment$MessageListFirstObserver
           }
         }
       }
-      paramArrayOfByte = ImageUtil.e();
+      paramArrayOfByte = ImageUtil.j();
       QQStoryContext.a();
-      paramArrayOfByte = FaceDrawable.getFaceDrawable(QQStoryContext.a(), 1, Long.toString(MessageNotifySegment.a(localMessageNotifySegment)), 3, paramArrayOfByte, paramArrayOfByte);
+      paramArrayOfByte = FaceDrawable.getFaceDrawable(QQStoryContext.j(), 1, Long.toString(MessageNotifySegment.a(localMessageNotifySegment)), 3, paramArrayOfByte, paramArrayOfByte);
       if (paramArrayOfByte != null) {
         paramBundle.setImageDrawable(paramArrayOfByte);
       }

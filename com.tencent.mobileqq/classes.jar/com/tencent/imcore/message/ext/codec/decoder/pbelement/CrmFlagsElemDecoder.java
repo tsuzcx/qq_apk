@@ -50,11 +50,11 @@ public class CrmFlagsElemDecoder
       localStringBuilder.append("");
       paramList.saveExtInfoToExtStr("crmelem_qidian_flag", localStringBuilder.toString());
     }
-    paramList = paramMessageHandler.a.getCurrentAccountUin();
+    paramList = paramMessageHandler.n.getCurrentAccountUin();
     paramMsg = String.valueOf(paramMsg.msg_head.from_uin.get());
     if (!paramList.equals(paramMsg))
     {
-      paramList = (QidianManager)paramMessageHandler.a.getManager(QQManagerFactory.QIDIAN_MANAGER);
+      paramList = (QidianManager)paramMessageHandler.n.getManager(QQManagerFactory.QIDIAN_MANAGER);
       if (!paramList.a.containsKey(paramMsg)) {
         paramList.a(new BmqqAccountType(paramMsg, 1));
       }
@@ -96,7 +96,7 @@ public class CrmFlagsElemDecoder
         if (QLog.isColorLevel()) {
           QLog.d("CrmFlagsElemDecoder", 2, String.format("received qidian bulk message taskId: %d, msgType: %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k) }));
         }
-        MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), ((MessageHandler)localObject).a());
+        MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), ((MessageHandler)localObject).b());
         if (j != 0)
         {
           paramCrmElem = (QidianHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QIDIAN_HANDLER);
@@ -202,7 +202,7 @@ public class CrmFlagsElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.CrmFlagsElemDecoder
  * JD-Core Version:    0.7.0.1
  */

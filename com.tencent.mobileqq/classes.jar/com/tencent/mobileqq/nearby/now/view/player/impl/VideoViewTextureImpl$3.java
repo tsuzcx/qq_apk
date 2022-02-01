@@ -27,12 +27,12 @@ class VideoViewTextureImpl$3
         i = 3;
       }
     }
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerImplVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
+    return this.a.a(this.b, i, Integer.valueOf(paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.player.impl.VideoViewTextureImpl.3
  * JD-Core Version:    0.7.0.1
  */

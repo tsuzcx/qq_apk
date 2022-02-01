@@ -7,7 +7,7 @@ import com.tencent.mobileqq.hiboom.HiBoomTextView;
 public class DiyTextView
   extends HiBoomTextView
 {
-  VipProfileCardDiyActivity.OnMeasuredListener a;
+  VipProfileCardDiyActivity.OnMeasuredListener l;
   
   public DiyTextView(Context paramContext)
   {
@@ -19,7 +19,7 @@ public class DiyTextView
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
     paramInt2 = getMeasuredHeight();
-    VipProfileCardDiyActivity.OnMeasuredListener localOnMeasuredListener = this.a;
+    VipProfileCardDiyActivity.OnMeasuredListener localOnMeasuredListener = this.l;
     if (localOnMeasuredListener != null) {
       localOnMeasuredListener.onMeasured(paramInt1, paramInt2);
     }
@@ -27,12 +27,12 @@ public class DiyTextView
   
   public void setOnMeasuredListener(VipProfileCardDiyActivity.OnMeasuredListener paramOnMeasuredListener)
   {
-    this.a = paramOnMeasuredListener;
+    this.l = paramOnMeasuredListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.diy.DiyTextView
  * JD-Core Version:    0.7.0.1
  */

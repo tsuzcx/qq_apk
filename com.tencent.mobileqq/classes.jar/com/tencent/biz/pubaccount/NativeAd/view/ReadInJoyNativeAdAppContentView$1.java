@@ -37,7 +37,7 @@ class ReadInJoyNativeAdAppContentView$1
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    paramWebView = this.a.findViewById(2131362821);
+    paramWebView = this.a.findViewById(2131428508);
     if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
     {
       ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
@@ -64,7 +64,7 @@ class ReadInJoyNativeAdAppContentView$1
     {
       paramString = Uri.parse(paramString);
       localObject = paramString.getScheme();
-      if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+      if (AuthorizeConfig.a().d(paramWebView.getUrl(), (String)localObject).booleanValue())
       {
         paramWebView = new Intent("android.intent.action.VIEW", paramString);
         paramWebView.addFlags(268435456);
@@ -85,7 +85,7 @@ class ReadInJoyNativeAdAppContentView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView.1
  * JD-Core Version:    0.7.0.1
  */

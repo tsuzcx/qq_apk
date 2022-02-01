@@ -19,34 +19,34 @@ public class DataLinePanelBarLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.a.add(AIOPanelUtiles.d);
-    this.a.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.e);
+    this.a.add(AIOPanelUtiles.p);
     a();
     b();
-    this.a.add(AIOPanelUtiles.h);
-    this.a.add(AIOPanelUtiles.J);
-    this.a.add(AIOPanelUtiles.y);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo);
+    this.a.add(AIOPanelUtiles.i);
+    this.a.add(AIOPanelUtiles.K);
+    this.a.add(AIOPanelUtiles.z);
   }
   
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
-    this.a.add(AIOPanelUtiles.d);
-    this.a.add(AIOPanelUtiles.o);
+    this.a.add(AIOPanelUtiles.e);
+    this.a.add(AIOPanelUtiles.p);
     a();
     b();
-    this.a.add(AIOPanelUtiles.h);
-    this.a.add(AIOPanelUtiles.J);
-    this.a.add(AIOPanelUtiles.y);
+    this.a.add(AIOPanelUtiles.i);
+    this.a.add(AIOPanelUtiles.K);
+    this.a.add(AIOPanelUtiles.z);
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return SessionTypeUtil.a(paramQQAppInterface, paramSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.DataLinePanelBarLoader
  * JD-Core Version:    0.7.0.1
  */

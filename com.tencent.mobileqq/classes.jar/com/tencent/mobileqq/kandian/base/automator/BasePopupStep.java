@@ -7,21 +7,16 @@ import com.tencent.qphone.base.util.QLog;
 public abstract class BasePopupStep
 {
   @NonNull
-  private RIJPopupAutomator jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
-  @NonNull
-  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  private boolean jdField_a_of_type_Boolean = false;
+  private RIJPopupAutomator a;
   private boolean b = false;
+  private boolean c = false;
+  @NonNull
+  private String d = getClass().getSimpleName();
   
   public BasePopupStep(@NonNull RIJPopupAutomator paramRIJPopupAutomator, @NonNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator = paramRIJPopupAutomator;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public RIJPopupAutomator a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator;
+    this.a = paramRIJPopupAutomator;
+    this.d = paramString;
   }
   
   public void a()
@@ -30,7 +25,7 @@ public abstract class BasePopupStep
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(") onCreate");
       QLog.d("BasePopupStep", 2, localStringBuilder.toString());
     }
@@ -39,12 +34,7 @@ public abstract class BasePopupStep
   @UiThread
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseAutomatorRIJPopupAutomator.a(this, paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    this.a.a(this, paramBoolean);
   }
   
   public void b()
@@ -53,7 +43,7 @@ public abstract class BasePopupStep
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(") onDestroy");
       QLog.d("BasePopupStep", 2, localStringBuilder.toString());
     }
@@ -61,12 +51,12 @@ public abstract class BasePopupStep
   
   public void c()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.b = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(") onResume");
       QLog.d("BasePopupStep", 2, localStringBuilder.toString());
     }
@@ -74,12 +64,12 @@ public abstract class BasePopupStep
   
   public void d()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(") onPause");
       QLog.d("BasePopupStep", 2, localStringBuilder.toString());
     }
@@ -87,12 +77,12 @@ public abstract class BasePopupStep
   
   public void e()
   {
-    this.b = true;
+    this.c = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(") onShowSelf");
       QLog.d("BasePopupStep", 2, localStringBuilder.toString());
     }
@@ -100,30 +90,40 @@ public abstract class BasePopupStep
   
   public void f()
   {
-    this.b = false;
+    this.c = false;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("(");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.d);
       localStringBuilder.append(") onHideSelf");
       QLog.d("BasePopupStep", 2, localStringBuilder.toString());
     }
   }
   
-  protected abstract void g();
+  public boolean g()
+  {
+    return this.b;
+  }
   
   protected abstract void h();
+  
+  protected abstract void i();
+  
+  public RIJPopupAutomator k()
+  {
+    return this.a;
+  }
   
   @NonNull
   public String toString()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.BasePopupStep
  * JD-Core Version:    0.7.0.1
  */

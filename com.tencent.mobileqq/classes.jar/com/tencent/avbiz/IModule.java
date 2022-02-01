@@ -1,14 +1,21 @@
 package com.tencent.avbiz;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 public abstract interface IModule
 {
-  public abstract String a();
+  public abstract void abandonAVFocus();
   
-  public abstract void a();
+  public abstract String checkAVFocus();
   
-  public abstract void a(IModule.FocusChangeListener paramFocusChangeListener);
+  public abstract HashMap<Long, String> getFocusBusiness();
   
-  public abstract String b();
+  public abstract HashSet<String> getInQueueBusiness();
+  
+  public abstract String requestAVFocus();
+  
+  public abstract void setListener(IModule.FocusChangeListener paramFocusChangeListener);
 }
 
 

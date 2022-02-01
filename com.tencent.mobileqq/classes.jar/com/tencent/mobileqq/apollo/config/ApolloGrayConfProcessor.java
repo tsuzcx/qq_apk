@@ -13,7 +13,7 @@ public class ApolloGrayConfProcessor
 {
   public static void a()
   {
-    ApolloGrayConfBean localApolloGrayConfBean = (ApolloGrayConfBean)QConfigManager.a().a(430);
+    ApolloGrayConfBean localApolloGrayConfBean = (ApolloGrayConfBean)QConfigManager.b().b(430);
     ApolloGrayConfBean.a(BaseApplicationImpl.getApplication().getRuntime(), false, localApolloGrayConfBean);
   }
   
@@ -75,7 +75,7 @@ public class ApolloGrayConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.config.ApolloGrayConfProcessor
  * JD-Core Version:    0.7.0.1
  */

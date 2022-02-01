@@ -12,28 +12,28 @@ import java.util.HashMap;
 
 public class RIJFrameworkHandleClick
 {
-  private RIJDataManager jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager;
-  private ClickHandler jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickClickHandler = new RIJFrameworkHandleClick.1(this);
-  private HashMap<Integer, ClickHandler> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ClickHandler b = new RIJFrameworkHandleClick.2(this);
-  private ClickHandler c = new RIJFrameworkHandleClick.3(this);
+  private RIJDataManager a;
+  private HashMap<Integer, ClickHandler> b = new HashMap();
+  private ClickHandler c = new RIJFrameworkHandleClick.1(this);
+  private ClickHandler d = new RIJFrameworkHandleClick.2(this);
+  private ClickHandler e = new RIJFrameworkHandleClick.3(this);
   
   public RIJFrameworkHandleClick(RIJDataManager paramRIJDataManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager = paramRIJDataManager;
+    this.a = paramRIJDataManager;
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376438), this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkClickClickHandler);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376054), this.b);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131368343), this.b);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131361884), this.b);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131369961), this.b);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131376575), this.b);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131362082), this.c);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2131380181), this.c);
+    this.b.put(Integer.valueOf(2131444659), this.c);
+    this.b.put(Integer.valueOf(2131444254), this.d);
+    this.b.put(Integer.valueOf(2131435219), this.d);
+    this.b.put(Integer.valueOf(2131427438), this.d);
+    this.b.put(Integer.valueOf(2131437111), this.d);
+    this.b.put(Integer.valueOf(2131444830), this.d);
+    this.b.put(Integer.valueOf(2131427660), this.e);
+    this.b.put(Integer.valueOf(2131449096), this.e);
   }
   
   private void a(String paramString, Context paramContext)
@@ -42,14 +42,14 @@ public class RIJFrameworkHandleClick
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ReadInJoyConstants.k);
+    localStringBuilder.append(ReadInJoyConstants.l);
     localStringBuilder.append(Base64Util.encodeToString(String.valueOf(paramString).getBytes(), 2));
     ReadInJoyUtils.a(paramContext, localStringBuilder.toString());
   }
   
   public void a(View paramView)
   {
-    Object localObject = (ClickHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramView.getId()));
+    Object localObject = (ClickHandler)this.b.get(Integer.valueOf(paramView.getId()));
     if (localObject != null)
     {
       ((ClickHandler)localObject).onClick(paramView);
@@ -64,7 +64,7 @@ public class RIJFrameworkHandleClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.click.RIJFrameworkHandleClick
  * JD-Core Version:    0.7.0.1
  */

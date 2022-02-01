@@ -26,6 +26,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
 import com.tencent.ttpic.openapi.initializer.LightSdkInitializer;
@@ -46,16 +47,10 @@ import mqq.os.MqqHandler;
 
 public class AEResUtil
 {
-  public static final String a;
-  public static final Map<String, AEResInfo> a;
-  private static final Map<AEResInfo, String> b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = b();
-    b = c();
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131708717);
-  }
+  public static final Map<String, AEResInfo> a = ;
+  public static final String b = HardCodeUtil.a(2131906498);
+  private static final Map<AEResInfo, String> c = q();
+  private static final Map<AEResInfo, Integer> d = r();
   
   public static int a(int paramInt)
   {
@@ -63,33 +58,12 @@ public class AEResUtil
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("key_ae_light_res_");
     localStringBuilder.append(paramInt);
-    return localAECameraPrefsUtil.a(localStringBuilder.toString(), 0, 4);
-  }
-  
-  public static int a(AEResInfo paramAEResInfo)
-  {
-    int i;
-    if (PtvFilterSoLoad.a())
-    {
-      if (b(paramAEResInfo)) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-    }
-    else {
-      i = 0;
-    }
-    paramAEResInfo = new StringBuilder();
-    paramAEResInfo.append("getFilterSoState ");
-    paramAEResInfo.append(i);
-    AEQLog.a("AEResUtil", paramAEResInfo.toString());
-    return i;
+    return localAECameraPrefsUtil.b(localStringBuilder.toString(), 0, 4);
   }
   
   public static int a(VideoMaterial paramVideoMaterial)
   {
-    if ((paramVideoMaterial.needHandDetect()) && (!b(AEResInfo.LIGHT_RES_BUNDLE_HAND))) {
+    if ((paramVideoMaterial.needHandDetect()) && (!d(AEResInfo.LIGHT_RES_BUNDLE_HAND))) {
       j = 1;
     } else {
       j = 0;
@@ -98,7 +72,7 @@ public class AEResUtil
     if (paramVideoMaterial.needDetectGender())
     {
       i = j;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_GENDER)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_GENDER)) {
         i = j | 0x2;
       }
     }
@@ -106,7 +80,7 @@ public class AEResUtil
     if (paramVideoMaterial.needDetectCat())
     {
       j = i;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_CAT)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_CAT)) {
         j = i | 0x4;
       }
     }
@@ -114,7 +88,7 @@ public class AEResUtil
     if (paramVideoMaterial.needRGBDepth())
     {
       i = j;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_DEPTH)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_DEPTH)) {
         i = j | 0x8;
       }
     }
@@ -122,7 +96,7 @@ public class AEResUtil
     if (paramVideoMaterial.needHairSegment())
     {
       j = i;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR)) {
         j = i | 0x20;
       }
     }
@@ -130,7 +104,7 @@ public class AEResUtil
     if (paramVideoMaterial.needSkySegment())
     {
       i = j;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY)) {
         i = j | 0x10;
       }
     }
@@ -138,7 +112,7 @@ public class AEResUtil
     if (paramVideoMaterial.needAce3D())
     {
       j = i;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_ACE3D)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_ACE3D)) {
         j = i | 0x40;
       }
     }
@@ -146,7 +120,7 @@ public class AEResUtil
     if (paramVideoMaterial.need3DMM())
     {
       i = j;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_3DMM)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_3DMM)) {
         i = j | 0x80;
       }
     }
@@ -154,8 +128,40 @@ public class AEResUtil
     if (paramVideoMaterial.needHeadSegment())
     {
       j = i;
-      if (!b(AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD)) {
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD)) {
         j = i | 0x100;
+      }
+    }
+    i = j;
+    if (paramVideoMaterial.needBodyDetect())
+    {
+      i = j;
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_BODY)) {
+        i = j | 0x800;
+      }
+    }
+    j = i;
+    if (paramVideoMaterial.needEmotion())
+    {
+      j = i;
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_EMOTION)) {
+        j = i | 0x400;
+      }
+    }
+    i = j;
+    if (paramVideoMaterial.needGazeDetect())
+    {
+      i = j;
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_GAZE)) {
+        i = j | 0x2000;
+      }
+    }
+    j = i;
+    if (paramVideoMaterial.needBody3D())
+    {
+      j = i;
+      if (!d(AEResInfo.LIGHT_RES_BUNDLE_BODY_3D)) {
+        j = i | 0x4000;
       }
     }
     return j;
@@ -286,18 +292,13 @@ public class AEResUtil
     return j;
   }
   
-  public static String a()
-  {
-    return AEPath.CAMERA.INTERNAL_FILES.jdField_a_of_type_JavaLangString;
-  }
-  
   @NonNull
   public static String a(@NonNull AEResInfo paramAEResInfo)
   {
     if (!paramAEResInfo.isPackage) {
       return "";
     }
-    return b();
+    return c();
   }
   
   public static String a(String paramString)
@@ -307,17 +308,7 @@ public class AEResUtil
   
   public static Map<AEResInfo, String> a()
   {
-    return b;
-  }
-  
-  public static void a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("KEY_RES_PREFIX", AEResInfo.AE_RES_BASE_PACKAGE.resPrefix);
-    QIPCClientHelper.getInstance().getClient().callServer("AECameraGetInfoServer", "ACTION_DOWNLOAD_AE_RES", localBundle);
-    localBundle = new Bundle();
-    localBundle.putString("KEY_RES_PREFIX", AEResInfo.LIGHT_RES_BASE_PACKAGE.resPrefix);
-    QIPCClientHelper.getInstance().getClient().callServer("AECameraGetInfoServer", "ACTION_DOWNLOAD_AE_RES", localBundle);
+    return c;
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -340,6 +331,16 @@ public class AEResUtil
     {
       AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载GENDER");
       a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_GENDER.resPrefix);
+    }
+    if (a(paramLong, 4096))
+    {
+      AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载AGE");
+      a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_AGE.resPrefix);
+    }
+    if (a(paramLong, 8192))
+    {
+      AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载GAZE");
+      a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_GAZE.resPrefix);
     }
     if (a(paramLong, 4))
     {
@@ -376,6 +377,26 @@ public class AEResUtil
       AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载HEAD");
       a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD.resPrefix);
     }
+    if (a(paramLong, 512))
+    {
+      AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载SCENE");
+      a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_SCENE.resPrefix);
+    }
+    if (a(paramLong, 2048))
+    {
+      AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载BODY");
+      a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_BODY.resPrefix);
+    }
+    if (a(paramLong, 1024))
+    {
+      AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载EMOTION");
+      a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_EMOTION.resPrefix);
+    }
+    if (a(paramLong, 16384))
+    {
+      AEQLog.a("PreCheckAERes", "[fetchBundles] 需要下载BODY 3D");
+      a(paramContext, AEResInfo.LIGHT_RES_BUNDLE_BODY_3D.resPrefix);
+    }
   }
   
   public static void a(Context paramContext, String paramString)
@@ -389,7 +410,7 @@ public class AEResUtil
     paramContext.append("【tryDownloadLightAdditionBundle】wifi网络 : request download --> prefix:");
     paramContext.append(paramString);
     AEQLog.d("PreCheckAERes", paramContext.toString());
-    a(paramString);
+    c(paramString);
   }
   
   public static void a(AEResInfo paramAEResInfo, String paramString)
@@ -405,18 +426,6 @@ public class AEResUtil
     BaseApplicationImpl.getContext().sendBroadcast(localIntent);
   }
   
-  private static void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("KEY_RES_PREFIX", paramString);
-    QIPCClientHelper.getInstance().getClient().callServer("AECameraGetInfoServer", "ACTION_DOWNLOAD_AE_RES", localBundle);
-  }
-  
-  public static boolean a()
-  {
-    return FeatureManager.isBasicFeaturesFunctionReady();
-  }
-  
   private static boolean a(long paramLong, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -427,37 +436,6 @@ public class AEResUtil
     AEQLog.a("AEResUtil", localStringBuilder.toString());
     long l = paramInt;
     return (paramLong & l) == l;
-  }
-  
-  public static boolean a(@NonNull AEResInfo paramAEResInfo)
-  {
-    int i = a(paramAEResInfo.index);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[checkAEResVersionOK] packageVersion:");
-    localStringBuilder.append(i);
-    AEQLog.d("PreCheckAERes", localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[checkAEResVersionOK] aeResInfo.resVersionLimit:");
-    localStringBuilder.append(paramAEResInfo.resVersionLimit);
-    AEQLog.d("PreCheckAERes", localStringBuilder.toString());
-    return i >= paramAEResInfo.resVersionLimit;
-  }
-  
-  public static boolean a(@NonNull String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEPath.CAMERA.INTERNAL_FILES.b);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(File.separator);
-    paramString = localStringBuilder.toString();
-    AECameraPrefsUtil.a().a("aeres_copy_final_path_key", paramString, 4);
-    if (AECameraPrefsUtil.a().a("aeres_copy_final_path_key", AEPath.CAMERA.INTERNAL_FILES.b, 4).equals(paramString))
-    {
-      AEQLog.a("AEResUtil", "[saveAEResUnzipFinalPath] success");
-      return true;
-    }
-    AEQLog.d("AEResUtil", "[saveAEResUnzipFinalPath] error");
-    return false;
   }
   
   public static boolean a(@NonNull String paramString, @NonNull AEResInfo paramAEResInfo)
@@ -473,7 +451,7 @@ public class AEResUtil
     localStringBuilder.append(paramAEResInfo.resPrefix);
     localStringBuilder.append(paramAEResInfo.resVersion);
     localStringBuilder.append("aeres_unzip_path_key");
-    if (paramString.equals(localAECameraPrefsUtil.a(localStringBuilder.toString(), "", 4)))
+    if (paramString.equals(localAECameraPrefsUtil.b(localStringBuilder.toString(), "", 4)))
     {
       AEQLog.a("AEResUtil", "[saveAEResUnzipPath] success");
       return true;
@@ -506,14 +484,48 @@ public class AEResUtil
     return false;
   }
   
+  public static int b(List<AEResInfo> paramList)
+  {
+    int j = 0;
+    int i = 0;
+    if (paramList != null)
+    {
+      if (paramList.size() == 0) {
+        return 0;
+      }
+      paramList = paramList.iterator();
+      for (;;)
+      {
+        j = i;
+        if (!paramList.hasNext()) {
+          break;
+        }
+        AEResInfo localAEResInfo = (AEResInfo)paramList.next();
+        if (!d(localAEResInfo))
+        {
+          Object localObject = (Integer)d.get(localAEResInfo);
+          if (localObject != null)
+          {
+            i |= ((Integer)localObject).intValue();
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(localAEResInfo.description);
+            ((StringBuilder)localObject).append(" need download.");
+            QLog.i("AEResUtil", 4, ((StringBuilder)localObject).toString());
+          }
+        }
+      }
+    }
+    return j;
+  }
+  
   public static String b()
   {
-    return h();
+    return AEPath.CAMERA.INTERNAL_FILES.a;
   }
   
   public static String b(@NonNull AEResInfo paramAEResInfo)
   {
-    String str = d(paramAEResInfo);
+    String str = g(paramAEResInfo);
     if (TextUtils.isEmpty(str))
     {
       AEQLog.d("AEResUtil", "[getAEResPath] pathVersion null");
@@ -525,25 +537,10 @@ public class AEResUtil
       return null;
     }
     paramAEResInfo = new StringBuilder();
-    paramAEResInfo.append(a());
+    paramAEResInfo.append(b());
     paramAEResInfo.append(str);
     paramAEResInfo.append(File.separator);
     return paramAEResInfo.toString();
-  }
-  
-  private static Map<String, AEResInfo> b()
-  {
-    HashMap localHashMap = new HashMap();
-    AEResInfo[] arrayOfAEResInfo = AEResInfo.packageValues;
-    int j = arrayOfAEResInfo.length;
-    int i = 0;
-    while (i < j)
-    {
-      AEResInfo localAEResInfo = arrayOfAEResInfo[i];
-      localHashMap.put(localAEResInfo.resPrefix, localAEResInfo);
-      i += 1;
-    }
-    return Collections.unmodifiableMap(localHashMap);
   }
   
   public static void b(Context paramContext, String paramString)
@@ -557,15 +554,61 @@ public class AEResUtil
     paramContext.append("【tryDownloadLightAdditionBundle】wifi网络 : request download --> prefix:");
     paramContext.append(paramString);
     AEQLog.d("PreCheckAERes", paramContext.toString());
-    a(paramString);
+    c(paramString);
   }
   
-  public static boolean b()
+  public static boolean b(@NonNull String paramString)
   {
-    return (b(AEResInfo.AE_RES_BASE_PACKAGE)) && (b(AEResInfo.LIGHT_RES_BASE_PACKAGE));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEPath.CAMERA.INTERNAL_FILES.b);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    paramString = localStringBuilder.toString();
+    AECameraPrefsUtil.a().a("aeres_copy_final_path_key", paramString, 4);
+    if (AECameraPrefsUtil.a().b("aeres_copy_final_path_key", AEPath.CAMERA.INTERNAL_FILES.b, 4).equals(paramString))
+    {
+      AEQLog.a("AEResUtil", "[saveAEResUnzipFinalPath] success");
+      return true;
+    }
+    AEQLog.d("AEResUtil", "[saveAEResUnzipFinalPath] error");
+    return false;
   }
   
-  public static boolean b(AEResInfo paramAEResInfo)
+  public static String c()
+  {
+    return p();
+  }
+  
+  private static void c(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("KEY_RES_PREFIX", paramString);
+    QIPCClientHelper.getInstance().getClient().callServer("AECameraGetInfoServer", "ACTION_DOWNLOAD_AE_RES", localBundle);
+  }
+  
+  public static boolean c(@NonNull AEResInfo paramAEResInfo)
+  {
+    int i = a(paramAEResInfo.index);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[checkAEResVersionOK] packageVersion:");
+    localStringBuilder.append(i);
+    AEQLog.d("PreCheckAERes", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[checkAEResVersionOK] aeResInfo.resVersionLimit:");
+    localStringBuilder.append(paramAEResInfo.resVersionLimit);
+    AEQLog.d("PreCheckAERes", localStringBuilder.toString());
+    return i >= paramAEResInfo.resVersionLimit;
+  }
+  
+  public static String d()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEPathBase.TMP.a);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean d(AEResInfo paramAEResInfo)
   {
     int i = a(paramAEResInfo.index);
     int j = paramAEResInfo.resVersionLimit;
@@ -580,7 +623,7 @@ public class AEResUtil
       AEQLog.d("AEResUtil", ((StringBuilder)localObject).toString());
       return false;
     }
-    Object localObject = b();
+    Object localObject = c();
     if (localObject == null)
     {
       localObject = new StringBuilder();
@@ -616,12 +659,12 @@ public class AEResUtil
     if (paramAEResInfo == AEResInfo.LIGHT_RES_BASE_PACKAGE) {
       return FeatureManager.Features.LIGHT_SDK.isSoReadyInDirectory((String)localObject);
     }
-    if ((paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_HAND) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_GENDER) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_CAT) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_DEPTH) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_ACE3D) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_3DMM) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SCENE)) {
+    if ((paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_HAND) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_GENDER) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_AGE) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_GAZE) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_CAT) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_DEPTH) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_ACE3D) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_3DMM) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_SCENE) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_BODY) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_BODY_3D) && (paramAEResInfo != AEResInfo.LIGHT_RES_BUNDLE_EMOTION)) {
       return false;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
-    localStringBuilder.append((String)b.get(paramAEResInfo));
+    localStringBuilder.append((String)c.get(paramAEResInfo));
     localObject = new File(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("[isAEResExist] exists=");
@@ -632,17 +675,68 @@ public class AEResUtil
     return ((File)localObject).exists();
   }
   
-  public static String c()
+  public static int e(AEResInfo paramAEResInfo)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEPathBase.TMP.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
+    int i;
+    if (PtvFilterSoLoad.a())
+    {
+      if (d(paramAEResInfo)) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+    }
+    else {
+      i = 0;
+    }
+    paramAEResInfo = new StringBuilder();
+    paramAEResInfo.append("getFilterSoState ");
+    paramAEResInfo.append(i);
+    AEQLog.a("AEResUtil", paramAEResInfo.toString());
+    return i;
   }
   
-  public static String c(@NonNull AEResInfo paramAEResInfo)
+  private static void e(@NonNull Context paramContext, String paramString)
   {
-    if (!b(paramAEResInfo))
+    paramContext = new Bundle();
+    paramContext.putString("VALUE_MSG_LIGHT_BUNDLE_PREFIX", paramString);
+    paramContext = VideoPlayIPCClient.a().a("CMD_QUERY_STATUS_PTU_RES", paramContext);
+    int i;
+    if (paramContext != null)
+    {
+      i = paramContext.getInt("VALUE_MSG_PTU_RES_STATUS");
+      paramContext = new StringBuilder();
+      paramContext.append("【showLightBundleDownloadDialog】query bundle file status: ");
+      paramContext.append(i);
+      AEQLog.a("PreCheckAERes", paramContext.toString());
+    }
+    else
+    {
+      i = 0;
+    }
+    if ((i != 0) && (c(AEResInfo.LIGHT_RES_BASE_PACKAGE)))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("[showLightBundleDownloadDialog] is already downloading, prefix = ");
+      paramContext.append(paramString);
+      AEQLog.a("PreCheckAERes", paramContext.toString());
+      return;
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("【showLightBundleDownloadDialog】dialog: choose sure, prefix = ");
+    paramContext.append(paramString);
+    AEQLog.a("PreCheckAERes", paramContext.toString());
+    c(paramString);
+  }
+  
+  public static boolean e()
+  {
+    return FeatureManager.isBasicFeaturesFunctionReady();
+  }
+  
+  public static String f(@NonNull AEResInfo paramAEResInfo)
+  {
+    if (!d(paramAEResInfo))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("getLightBundleDir:");
@@ -652,12 +746,194 @@ public class AEResUtil
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append((String)b.get(paramAEResInfo));
+    localStringBuilder.append(c());
+    localStringBuilder.append((String)c.get(paramAEResInfo));
     return localStringBuilder.toString();
   }
   
-  private static Map<AEResInfo, String> c()
+  private static void f(@NonNull Context paramContext, String paramString)
+  {
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("VALUE_MSG_LIGHT_BUNDLE_PREFIX", paramString);
+    localObject = VideoPlayIPCClient.a().a("CMD_QUERY_STATUS_PTU_RES", (Bundle)localObject);
+    int i;
+    if (localObject != null)
+    {
+      i = ((Bundle)localObject).getInt("VALUE_MSG_PTU_RES_STATUS");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("【showLightBundleDownloadDialog】query bundle file status: ");
+      ((StringBuilder)localObject).append(i);
+      AEQLog.a("PreCheckAERes", ((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      i = 0;
+    }
+    if ((i != 0) && (c(AEResInfo.LIGHT_RES_BASE_PACKAGE)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[showLightBundleDownloadDialog] is already downloading, prefix = ");
+      ((StringBuilder)localObject).append(paramString);
+      AEQLog.a("PreCheckAERes", ((StringBuilder)localObject).toString());
+      QQToast.makeText(paramContext, 2064187392, 1).show();
+      return;
+    }
+    paramContext = new StringBuilder();
+    paramContext.append("【showLightBundleDownloadDialog】dialog: choose sure, prefix = ");
+    paramContext.append(paramString);
+    AEQLog.a("PreCheckAERes", paramContext.toString());
+    c(paramString);
+  }
+  
+  public static boolean f()
+  {
+    return (d(AEResInfo.AE_RES_BASE_PACKAGE)) && (d(AEResInfo.LIGHT_RES_BASE_PACKAGE));
+  }
+  
+  private static String g(@NonNull AEResInfo paramAEResInfo)
+  {
+    AECameraPrefsUtil localAECameraPrefsUtil = AECameraPrefsUtil.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramAEResInfo.resPrefix);
+    localStringBuilder.append(paramAEResInfo.resVersion);
+    localStringBuilder.append("aeres_unzip_path_key");
+    return localAECameraPrefsUtil.b(localStringBuilder.toString(), "", 4);
+  }
+  
+  public static boolean g()
+  {
+    int i = e(AEResInfo.AE_RES_BASE_PACKAGE);
+    boolean bool = true;
+    if (i == 1)
+    {
+      if (e(AEResInfo.LIGHT_RES_BASE_PACKAGE) != 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public static boolean h()
+  {
+    return FeatureManager.Features.FACE_DETECT.isAllSoVersionOk();
+  }
+  
+  public static boolean i()
+  {
+    try
+    {
+      if (!e()) {
+        if (AEKitForQQ.a())
+        {
+          bool = FeatureManager.loadBasicFeatures();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("SoLoader.loadSvFilterSo success:");
+          localStringBuilder.append(bool);
+          AEQLog.d("AEResUtil", localStringBuilder.toString());
+        }
+        else
+        {
+          AEQLog.d("AEResUtil", "SoLoader.loadSvFilterSo success: false -> AEKitForQQ init failed");
+        }
+      }
+      boolean bool = e();
+      return bool;
+    }
+    finally {}
+  }
+  
+  public static void j()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("KEY_RES_PREFIX", AEResInfo.AE_RES_BASE_PACKAGE.resPrefix);
+    QIPCClientHelper.getInstance().getClient().callServer("AECameraGetInfoServer", "ACTION_DOWNLOAD_AE_RES", localBundle);
+    localBundle = new Bundle();
+    localBundle.putString("KEY_RES_PREFIX", AEResInfo.LIGHT_RES_BASE_PACKAGE.resPrefix);
+    QIPCClientHelper.getInstance().getClient().callServer("AECameraGetInfoServer", "ACTION_DOWNLOAD_AE_RES", localBundle);
+  }
+  
+  public static String k()
+  {
+    if (!d(AEResInfo.LIGHT_RES_BASE_PACKAGE))
+    {
+      AEQLog.d("AEResUtil", "[getLightAssetsDir]: LightBasePackage not exist, return empty path!");
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("assets");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  public static String l()
+  {
+    if (!d(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("assets");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("material");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("video_empty");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("template.json");
+    return localStringBuilder.toString();
+  }
+  
+  public static String m()
+  {
+    if (!d(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("assets");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("material");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("video_empty_segmentation");
+    return localStringBuilder.toString();
+  }
+  
+  public static String n()
+  {
+    if (!d(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("assets");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("models");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
+  }
+  
+  private static Map<String, AEResInfo> o()
+  {
+    HashMap localHashMap = new HashMap();
+    AEResInfo[] arrayOfAEResInfo = AEResInfo.packageValues;
+    int j = arrayOfAEResInfo.length;
+    int i = 0;
+    while (i < j)
+    {
+      AEResInfo localAEResInfo = arrayOfAEResInfo[i];
+      localHashMap.put(localAEResInfo.resPrefix, localAEResInfo);
+      i += 1;
+    }
+    return Collections.unmodifiableMap(localHashMap);
+  }
+  
+  private static String p()
+  {
+    return AECameraPrefsUtil.a().b("aeres_copy_final_path_key", AEPath.CAMERA.INTERNAL_FILES.b, 4);
+  }
+  
+  private static Map<AEResInfo, String> q()
   {
     HashMap localHashMap = new HashMap();
     Object localObject1 = new StringBuilder();
@@ -679,6 +955,12 @@ public class AEResUtil
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject1);
     localStringBuilder.append("LightGenderModel.bundle");
+    localStringBuilder.append(File.separator);
+    localHashMap.put(localObject3, localStringBuilder.toString());
+    localObject3 = AEResInfo.LIGHT_RES_BUNDLE_AGE;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("LightAgeModel.bundle");
     localStringBuilder.append(File.separator);
     localHashMap.put(localObject3, localStringBuilder.toString());
     localObject3 = AEResInfo.LIGHT_RES_BUNDLE_CAT;
@@ -728,197 +1010,59 @@ public class AEResUtil
     ((StringBuilder)localObject3).append("LightSceneClassify.bundle");
     ((StringBuilder)localObject3).append(File.separator);
     localHashMap.put(localObject2, ((StringBuilder)localObject3).toString());
+    localObject2 = AEResInfo.LIGHT_RES_BUNDLE_BODY;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("LightBodyModel.bundle");
+    ((StringBuilder)localObject3).append(File.separator);
+    localHashMap.put(localObject2, ((StringBuilder)localObject3).toString());
+    localObject2 = AEResInfo.LIGHT_RES_BUNDLE_EMOTION;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("LightEmotionModel.bundle");
+    ((StringBuilder)localObject3).append(File.separator);
+    localHashMap.put(localObject2, ((StringBuilder)localObject3).toString());
+    localObject2 = AEResInfo.LIGHT_RES_BUNDLE_GAZE;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("LightGazeEstimate.bundle");
+    ((StringBuilder)localObject3).append(File.separator);
+    ((StringBuilder)localObject3).append("high");
+    ((StringBuilder)localObject3).append(File.separator);
+    localHashMap.put(localObject2, ((StringBuilder)localObject3).toString());
+    localObject2 = AEResInfo.LIGHT_RES_BUNDLE_BODY_3D;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("LightBody3DModel.bundle");
+    ((StringBuilder)localObject3).append(File.separator);
+    localHashMap.put(localObject2, ((StringBuilder)localObject3).toString());
     return Collections.unmodifiableMap(localHashMap);
   }
   
-  public static boolean c()
+  private static Map<AEResInfo, Integer> r()
   {
-    int i = a(AEResInfo.AE_RES_BASE_PACKAGE);
-    boolean bool = true;
-    if (i == 1)
-    {
-      if (a(AEResInfo.LIGHT_RES_BASE_PACKAGE) != 1) {
-        return true;
-      }
-      bool = false;
-    }
-    return bool;
-  }
-  
-  public static String d()
-  {
-    if (!b(AEResInfo.LIGHT_RES_BASE_PACKAGE))
-    {
-      AEQLog.d("AEResUtil", "[getLightAssetsDir]: LightBasePackage not exist, return empty path!");
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("assets");
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  private static String d(@NonNull AEResInfo paramAEResInfo)
-  {
-    AECameraPrefsUtil localAECameraPrefsUtil = AECameraPrefsUtil.a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramAEResInfo.resPrefix);
-    localStringBuilder.append(paramAEResInfo.resVersion);
-    localStringBuilder.append("aeres_unzip_path_key");
-    return localAECameraPrefsUtil.a(localStringBuilder.toString(), "", 4);
-  }
-  
-  public static boolean d()
-  {
-    return FeatureManager.Features.FACE_DETECT.isAllSoVersionOk();
-  }
-  
-  public static String e()
-  {
-    if (!b(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("assets");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("material");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("video_empty");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("template.json");
-    return localStringBuilder.toString();
-  }
-  
-  private static void e(@NonNull Context paramContext, String paramString)
-  {
-    paramContext = new Bundle();
-    paramContext.putString("VALUE_MSG_LIGHT_BUNDLE_PREFIX", paramString);
-    paramContext = VideoPlayIPCClient.a().a("CMD_QUERY_STATUS_PTU_RES", paramContext);
-    int i;
-    if (paramContext != null)
-    {
-      i = paramContext.getInt("VALUE_MSG_PTU_RES_STATUS");
-      paramContext = new StringBuilder();
-      paramContext.append("【showLightBundleDownloadDialog】query bundle file status: ");
-      paramContext.append(i);
-      AEQLog.a("PreCheckAERes", paramContext.toString());
-    }
-    else
-    {
-      i = 0;
-    }
-    if ((i != 0) && (a(AEResInfo.LIGHT_RES_BASE_PACKAGE)))
-    {
-      paramContext = new StringBuilder();
-      paramContext.append("[showLightBundleDownloadDialog] is already downloading, prefix = ");
-      paramContext.append(paramString);
-      AEQLog.a("PreCheckAERes", paramContext.toString());
-      return;
-    }
-    paramContext = new StringBuilder();
-    paramContext.append("【showLightBundleDownloadDialog】dialog: choose sure, prefix = ");
-    paramContext.append(paramString);
-    AEQLog.a("PreCheckAERes", paramContext.toString());
-    a(paramString);
-  }
-  
-  public static boolean e()
-  {
-    try
-    {
-      if (!a()) {
-        if (AEKitForQQ.a())
-        {
-          bool = FeatureManager.loadBasicFeatures();
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("SoLoader.loadSvFilterSo success:");
-          localStringBuilder.append(bool);
-          AEQLog.d("AEResUtil", localStringBuilder.toString());
-        }
-        else
-        {
-          AEQLog.d("AEResUtil", "SoLoader.loadSvFilterSo success: false -> AEKitForQQ init failed");
-        }
-      }
-      boolean bool = a();
-      return bool;
-    }
-    finally {}
-  }
-  
-  public static String f()
-  {
-    if (!b(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("assets");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("material");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("video_empty_segmentation");
-    return localStringBuilder.toString();
-  }
-  
-  private static void f(@NonNull Context paramContext, String paramString)
-  {
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("VALUE_MSG_LIGHT_BUNDLE_PREFIX", paramString);
-    localObject = VideoPlayIPCClient.a().a("CMD_QUERY_STATUS_PTU_RES", (Bundle)localObject);
-    int i;
-    if (localObject != null)
-    {
-      i = ((Bundle)localObject).getInt("VALUE_MSG_PTU_RES_STATUS");
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("【showLightBundleDownloadDialog】query bundle file status: ");
-      ((StringBuilder)localObject).append(i);
-      AEQLog.a("PreCheckAERes", ((StringBuilder)localObject).toString());
-    }
-    else
-    {
-      i = 0;
-    }
-    if ((i != 0) && (a(AEResInfo.LIGHT_RES_BASE_PACKAGE)))
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[showLightBundleDownloadDialog] is already downloading, prefix = ");
-      ((StringBuilder)localObject).append(paramString);
-      AEQLog.a("PreCheckAERes", ((StringBuilder)localObject).toString());
-      QQToast.a(paramContext, 2064515072, 1).a();
-      return;
-    }
-    paramContext = new StringBuilder();
-    paramContext.append("【showLightBundleDownloadDialog】dialog: choose sure, prefix = ");
-    paramContext.append(paramString);
-    AEQLog.a("PreCheckAERes", paramContext.toString());
-    a(paramString);
-  }
-  
-  public static String g()
-  {
-    if (!b(AEResInfo.LIGHT_RES_BASE_PACKAGE)) {
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("assets");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("models");
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  private static String h()
-  {
-    return AECameraPrefsUtil.a().a("aeres_copy_final_path_key", AEPath.CAMERA.INTERNAL_FILES.b, 4);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_HAND, Integer.valueOf(1));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_GENDER, Integer.valueOf(2));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_AGE, Integer.valueOf(4096));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_GAZE, Integer.valueOf(8192));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_CAT, Integer.valueOf(4));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_DEPTH, Integer.valueOf(8));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_SEG_HAIR, Integer.valueOf(32));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_SEG_SKY, Integer.valueOf(16));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_ACE3D, Integer.valueOf(64));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_3DMM, Integer.valueOf(128));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_SEG_HEAD, Integer.valueOf(256));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_SCENE, Integer.valueOf(512));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_BODY, Integer.valueOf(2048));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_BODY_3D, Integer.valueOf(16384));
+    localHashMap.put(AEResInfo.LIGHT_RES_BUNDLE_EMOTION, Integer.valueOf(1024));
+    return Collections.unmodifiableMap(localHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.AEResUtil
  * JD-Core Version:    0.7.0.1
  */

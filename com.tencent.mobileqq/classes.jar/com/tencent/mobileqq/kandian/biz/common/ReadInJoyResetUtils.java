@@ -34,7 +34,7 @@ public class ReadInJoyResetUtils
 {
   public static int a()
   {
-    SharedPreferences localSharedPreferences = a(RIJQQAppInterfaceUtil.a());
+    SharedPreferences localSharedPreferences = a(RIJQQAppInterfaceUtil.e());
     if (localSharedPreferences == null)
     {
       QLog.d("ReadInJoyResetUtils", 2, "[getLocalResetVersion] return 0 for sp is null");
@@ -57,48 +57,9 @@ public class ReadInJoyResetUtils
     return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
   }
   
-  public static String a()
-  {
-    return TextUtils.join("\n", new String[] { CommonSkinRes.a(), OfflineUtils.a() });
-  }
-  
-  public static void a()
-  {
-    int i = SharedPreUtils.L(BaseApplicationImpl.getApplication(), RIJQQAppInterfaceUtil.a());
-    int j = a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[maybeClearAllConfigs] remoteVersion=");
-    localStringBuilder.append(i);
-    localStringBuilder.append(", localVersion=");
-    localStringBuilder.append(j);
-    QLog.d("ReadInJoyResetUtils", 2, localStringBuilder.toString());
-    if (i != j) {
-      try
-      {
-        b();
-        QQAladdinPrefUtils.a();
-        d();
-        e();
-        f();
-        a(i);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[maybeClearAllConfigs] done resetting, update local version to ");
-        localStringBuilder.append(i);
-        QLog.i("ReadInJoyResetUtils", 1, localStringBuilder.toString());
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] ", localException);
-        return;
-      }
-    }
-    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] won't reset");
-  }
-  
   private static void a(int paramInt)
   {
-    SharedPreferences localSharedPreferences = a(RIJQQAppInterfaceUtil.a());
+    SharedPreferences localSharedPreferences = a(RIJQQAppInterfaceUtil.e());
     if (localSharedPreferences == null)
     {
       QLog.d("ReadInJoyResetUtils", 2, "[putLocalResetVersion] sp == null");
@@ -127,19 +88,53 @@ public class ReadInJoyResetUtils
   
   public static void b()
   {
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_COMMON_CONFIG - 92 to 0");
-    SharedPreUtils.o(BaseApplicationImpl.getApplication(), 0, RIJQQAppInterfaceUtil.a());
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_MERGE_CONFIG_CMD - 79 to 0");
-    SharedPreUtils.n(BaseApplicationImpl.getApplication(), 0, RIJQQAppInterfaceUtil.a());
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_CONFIG_CMD - 72 to 0");
-    SharedPreUtils.p(BaseApplicationImpl.getApplication(), RIJQQAppInterfaceUtil.a(), 0);
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_SETTING_CMD - 72 to 0");
-    SharedPreUtils.o(BaseApplicationImpl.getApplication(), 0);
-    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_SEARCH_JUMP_URL_CONFIG - 292 to 0");
-    SharedPreUtils.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", RIJQQAppInterfaceUtil.a(), 0);
+    int i = SharedPreUtils.V(BaseApplicationImpl.getApplication(), RIJQQAppInterfaceUtil.d());
+    int j = a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[maybeClearAllConfigs] remoteVersion=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(", localVersion=");
+    localStringBuilder.append(j);
+    QLog.d("ReadInJoyResetUtils", 2, localStringBuilder.toString());
+    if (i != j) {
+      try
+      {
+        c();
+        QQAladdinPrefUtils.a();
+        e();
+        f();
+        g();
+        a(i);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[maybeClearAllConfigs] done resetting, update local version to ");
+        localStringBuilder.append(i);
+        QLog.i("ReadInJoyResetUtils", 1, localStringBuilder.toString());
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] ", localException);
+        return;
+      }
+    }
+    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] won't reset");
   }
   
   public static void c()
+  {
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_COMMON_CONFIG - 92 to 0");
+    SharedPreUtils.o(BaseApplicationImpl.getApplication(), 0, RIJQQAppInterfaceUtil.d());
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_MERGE_CONFIG_CMD - 79 to 0");
+    SharedPreUtils.n(BaseApplicationImpl.getApplication(), 0, RIJQQAppInterfaceUtil.d());
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_CONFIG_CMD - 72 to 0");
+    SharedPreUtils.p(BaseApplicationImpl.getApplication(), RIJQQAppInterfaceUtil.d(), 0);
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_SETTING_CMD - 72 to 0");
+    SharedPreUtils.o(BaseApplicationImpl.getApplication(), 0);
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_SEARCH_JUMP_URL_CONFIG - 292 to 0");
+    SharedPreUtils.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", RIJQQAppInterfaceUtil.d(), 0);
+  }
+  
+  public static void d()
   {
     QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP");
     a(BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4));
@@ -149,10 +144,10 @@ public class ReadInJoyResetUtils
     QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP success");
   }
   
-  public static void d()
+  public static void e()
   {
     QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] ");
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
+    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -167,7 +162,7 @@ public class ReadInJoyResetUtils
     {
       QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
     }
-    localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), false, true);
+    localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), false, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -182,16 +177,16 @@ public class ReadInJoyResetUtils
     {
       QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
     }
-    c();
-    h();
+    d();
+    j();
   }
   
-  public static void e()
+  public static void f()
   {
     QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase");
     try
     {
-      EntityManagerFactory localEntityManagerFactory = ReadInJoyLogicEngine.a().a();
+      EntityManagerFactory localEntityManagerFactory = ReadInJoyLogicEngine.a().b();
       if ((localEntityManagerFactory instanceof ReadInJoyEntityManagerFactory))
       {
         ((ReadInJoyEntityManagerFactory)localEntityManagerFactory).a();
@@ -204,30 +199,35 @@ public class ReadInJoyResetUtils
     }
   }
   
-  public static void f()
+  public static void g()
   {
     QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyLocalFiles");
-    i();
-    j();
     k();
+    l();
+    m();
   }
   
-  public static void g()
+  public static String h()
+  {
+    return TextUtils.join("\n", new String[] { CommonSkinRes.c(), OfflineUtils.d() });
+  }
+  
+  public static void i()
   {
     a(0);
   }
   
-  private static void h()
+  private static void j()
   {
     QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] QQSETTING_KANDIAN_DOWNLOAD_PIC_IN_WIFI_ONLY set to false");
-    SettingCloneUtil.writeValue(BaseApplicationImpl.getApplication(), RIJQQAppInterfaceUtil.a(), null, "qqsetting_kandian_download_pic_flag", false);
+    SettingCloneUtil.writeValue(BaseApplicationImpl.getApplication(), RIJQQAppInterfaceUtil.d(), null, "qqsetting_kandian_download_pic_flag", false);
     QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] done");
   }
   
-  private static void i()
+  private static void k()
   {
     QLog.d("ReadInJoyResetUtils", 2, "clearSkinRes");
-    Object localObject = new File(Common.e());
+    Object localObject = new File(Common.f());
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
       localObject = ((File)localObject).listFiles();
@@ -260,7 +260,7 @@ public class ReadInJoyResetUtils
     }
     try
     {
-      localObject = (ReadInJoyOperationManager)RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER);
+      localObject = (ReadInJoyOperationManager)RIJQQAppInterfaceUtil.e().getManager(QQManagerFactory.READ_IN_JOY_OPERATION_MANAGER);
       if (localObject != null)
       {
         ((ReadInJoyOperationManager)localObject).a();
@@ -276,35 +276,35 @@ public class ReadInJoyResetUtils
     }
   }
   
-  private static void j()
+  private static void l()
   {
     QLog.d("ReadInJoyResetUtils", 2, "clearProteusStyles");
     OfflineUtils.c();
   }
   
-  private static void k()
+  private static void m()
   {
     QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint");
     try
     {
-      Object localObject = ((QQAppInterface)RIJQQAppInterfaceUtil.a()).getMessageFacade();
-      ((QQMessageFacade)localObject).a(AppConstants.KANDIAN_MERGE_UIN, 7220);
+      Object localObject = ((QQAppInterface)RIJQQAppInterfaceUtil.e()).getMessageFacade();
+      ((QQMessageFacade)localObject).c(AppConstants.KANDIAN_MERGE_UIN, 7220);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_MERGE_UIN cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
+      ((QQMessageFacade)localObject).c(AppConstants.KANDIAN_SUBSCRIBE_UIN, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_SUBSCRIBE_UIN cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.NEW_KANDIAN_UIN, 1008);
+      ((QQMessageFacade)localObject).c(AppConstants.NEW_KANDIAN_UIN, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.NEW_KANDIAN_UIN, 0);
+      ((QQMessageFacade)localObject).c(AppConstants.NEW_KANDIAN_UIN, 0);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.OLD_KANDIAN_UIN, 1008);
+      ((QQMessageFacade)localObject).c(AppConstants.OLD_KANDIAN_UIN, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: OLD_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.OLD_KANDIAN_UIN, 0);
+      ((QQMessageFacade)localObject).c(AppConstants.OLD_KANDIAN_UIN, 0);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.WEISHI_UIN, 1008);
+      ((QQMessageFacade)localObject).c(AppConstants.WEISHI_UIN, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: WEISHI_UIN cleared");
-      ((QQMessageFacade)localObject).a(AppConstants.KANDIAN_DAILY_UIN, 1008);
+      ((QQMessageFacade)localObject).c(AppConstants.KANDIAN_DAILY_UIN, 1008);
       QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_DAILY cleared");
-      localObject = ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.a(), 1);
+      localObject = ReadInJoyHelper.a((QQAppInterface)RIJQQAppInterfaceUtil.e(), 1);
       if (localObject != null)
       {
         if (((SharedPreferences)localObject).edit().clear().commit())
@@ -324,7 +324,7 @@ public class ReadInJoyResetUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyResetUtils
  * JD-Core Version:    0.7.0.1
  */

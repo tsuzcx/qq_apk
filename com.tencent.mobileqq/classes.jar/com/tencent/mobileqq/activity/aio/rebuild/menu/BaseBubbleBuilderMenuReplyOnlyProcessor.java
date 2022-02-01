@@ -43,14 +43,14 @@ public class BaseBubbleBuilderMenuReplyOnlyProcessor
     int j = 2;
     if ((paramContext != null) && (paramChatMessage != null))
     {
-      ((ForwardMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(paramChatMessage);
+      ((ForwardMsgManager)this.a.getManager(QQManagerFactory.FORWARD_MSG_MANAGER)).a(paramChatMessage);
       Intent localIntent = AIOUtils.a(new Intent(paramContext, SplashActivity.class), new int[] { 1 });
       localIntent.putExtra("uin", paramChatMessage.senderuin);
       Object localObject = new Bundle();
       ((Bundle)localObject).putLong("key_reply_only_uniseq", paramChatMessage.uniseq);
       localIntent.putExtras((Bundle)localObject);
-      localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramChatMessage.senderuin);
-      localIntent.putExtra("troop_code", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      localObject = ((FriendsManager)this.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramChatMessage.senderuin);
+      localIntent.putExtra("troop_code", this.b.b);
       int i;
       if ((localObject != null) && (((Friends)localObject).isFriend()))
       {
@@ -61,20 +61,20 @@ public class BaseBubbleBuilderMenuReplyOnlyProcessor
       else
       {
         localIntent.putExtra("uintype", 1000);
-        localIntent.putExtra("uinname", ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage.senderuin));
+        localIntent.putExtra("uinname", ContactUtils.d(this.a, this.b.b, paramChatMessage.senderuin));
         localIntent = new Intent(localIntent);
-        localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+        localObject = (TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER);
         i = j;
         if (localObject != null)
         {
-          ((TroopManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, new BaseBubbleBuilderMenuReplyOnlyProcessor.1(this, localIntent, paramContext));
+          ((TroopManager)localObject).a(this.b.b, new BaseBubbleBuilderMenuReplyOnlyProcessor.1(this, localIntent, paramContext));
           i = j;
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(paramChatMessage.senderuin)) {
+      if (this.a.getCurrentUin().equals(paramChatMessage.senderuin)) {
         i = 3;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A4F5", "0X800A4F5", i, 0, "", "", "", "");
+      ReportController.b(this.a, "dc00898", "", "", "0X800A4F5", "0X800A4F5", i, 0, "", "", "", "");
       return;
     }
     if (QLog.isColorLevel()) {
@@ -84,30 +84,30 @@ public class BaseBubbleBuilderMenuReplyOnlyProcessor
   
   protected void a(ChatMessage paramChatMessage, QQCustomMenu paramQQCustomMenu, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
+    if (this.b.a == 1)
     {
       if (paramChatMessage == null) {
         return;
       }
-      if ((!RobotUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.senderuin)) && (!AnonymousChatHelper.a(paramChatMessage)) && (!ConfessMsgUtil.a(paramChatMessage)) && (!"1000000".equals(paramChatMessage.senderuin)) && (paramChatMessage.isSupportReply()))
+      if ((!RobotUtils.a(this.a, paramChatMessage.senderuin)) && (!AnonymousChatHelper.c(paramChatMessage)) && (!ConfessMsgUtil.b(paramChatMessage)) && (!"1000000".equals(paramChatMessage.senderuin)) && (paramChatMessage.isSupportReply()))
       {
-        if ((paramChatMessage.senderuin != null) && (!paramChatMessage.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())))
+        if ((paramChatMessage.senderuin != null) && (!paramChatMessage.senderuin.equals(this.a.getCurrentUin())))
         {
-          paramQQCustomMenu.a(2131376430, paramContext.getString(2131697701), 2130838918);
+          paramQQCustomMenu.a(2131444651, paramContext.getString(2131895474), 2130839072);
           return;
         }
         if ((paramChatMessage.isSend()) && (paramChatMessage.extraflag != 32772) && (paramChatMessage.extraflag != 32768)) {
-          paramQQCustomMenu.a(2131376430, paramContext.getString(2131697701), 2130838918);
+          paramQQCustomMenu.a(2131444651, paramContext.getString(2131895474), 2130839072);
         }
       }
       else if (QLog.isColorLevel())
       {
         paramQQCustomMenu = new StringBuilder("addReplyOnlyMenu isRobot=");
-        paramQQCustomMenu.append(RobotUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage.senderuin));
+        paramQQCustomMenu.append(RobotUtils.a(this.a, paramChatMessage.senderuin));
         paramQQCustomMenu.append(" isAnonymousMsg=");
-        paramQQCustomMenu.append(AnonymousChatHelper.a(paramChatMessage));
+        paramQQCustomMenu.append(AnonymousChatHelper.c(paramChatMessage));
         paramQQCustomMenu.append(" isConfessMsg=");
-        paramQQCustomMenu.append(ConfessMsgUtil.a(paramChatMessage));
+        paramQQCustomMenu.append(ConfessMsgUtil.b(paramChatMessage));
         paramQQCustomMenu.append(" isNotSupport=");
         paramQQCustomMenu.append(paramChatMessage.isSupportReply() ^ true);
         QLog.d("BaseBubbleBuilderMenuClickReplyOnlyProcessor", 2, paramQQCustomMenu.toString());
@@ -122,12 +122,12 @@ public class BaseBubbleBuilderMenuReplyOnlyProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131376430;
+    return paramInt == 2131444651;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuReplyOnlyProcessor
  * JD-Core Version:    0.7.0.1
  */

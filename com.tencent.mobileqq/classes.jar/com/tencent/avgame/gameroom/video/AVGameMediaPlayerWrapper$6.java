@@ -16,7 +16,7 @@ class AVGameMediaPlayerWrapper$6
       AVGameMediaPlayerWrapper.a(this.this$0).stop();
       AVGameMediaPlayerWrapper.a(this.this$0).release();
       AVGameMediaPlayerWrapper.a(this.this$0, null);
-      AVGameMediaPlayerWrapper.b(this.this$0);
+      AVGameMediaPlayerWrapper.e(this.this$0);
       AVGameMediaPlayerWrapper.b(this.this$0, false);
     }
   }

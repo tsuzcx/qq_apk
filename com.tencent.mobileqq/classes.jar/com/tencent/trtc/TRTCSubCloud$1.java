@@ -1,5 +1,6 @@
 package com.tencent.trtc;
 
+import com.tencent.liteav.audio.a;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,6 +23,7 @@ class TRTCSubCloud$1
       TRTCSubCloud.access$702(this.a, null);
       TRTCSubCloud.access$800(this.a).clear();
       TRTCSubCloud.access$900(this.a).clear();
+      a.a().a(this.a.hashCode());
       return;
     }
   }

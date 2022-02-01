@@ -27,140 +27,140 @@ class ShortVideoPlayActivity$22
 {
   ShortVideoPlayActivity$22(ShortVideoPlayActivity paramShortVideoPlayActivity, ActionSheet paramActionSheet, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
+    this.a.dismiss();
+    paramView = this.a.getContent(paramInt);
     if (paramView != null)
     {
       Object localObject1;
       Object localObject2;
-      if (paramView.equals(this.jdField_a_of_type_JavaLangString))
+      if (paramView.equals(this.b))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ShortVideoPlayActivity", 2, "click menu to forward shortVideo......");
         }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity;
+        paramView = this.i;
         localObject1 = ShortVideoPlayActivity.access$1801(paramView).getExtras();
         ((Bundle)localObject1).putInt("forward_type", 21);
         ((Bundle)localObject1).putBoolean("forward_need_sendmsg", true);
-        ((Bundle)localObject1).putString("forward_thumb", SVUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mThumbMd5, "jpg"));
-        ((Bundle)localObject1).putString("file_send_path", this.b);
-        if (FileUtils.fileExistsAndNotEmpty(this.b))
+        ((Bundle)localObject1).putString("forward_thumb", SVUtils.a(this.i.mThumbMd5, "jpg"));
+        ((Bundle)localObject1).putString("file_send_path", this.c);
+        if (FileUtils.fileExistsAndNotEmpty(this.c))
         {
           ((Bundle)localObject1).putBoolean("k_dataline", true);
-          ((Bundle)localObject1).putString("forward_extra", this.b);
+          ((Bundle)localObject1).putString("forward_extra", this.c);
           ((Bundle)localObject1).putBoolean("direct_send_if_dataline_forward", true);
         }
         localObject2 = new Intent();
         ((Intent)localObject2).putExtras((Bundle)localObject1);
         ForwardBaseOption.a(paramView, (Intent)localObject2);
-        ShortVideoPlayActivity.access$1901(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.isFromMultiMsg) {
+        ShortVideoPlayActivity.access$1901(this.i);
+        if (this.i.isFromMultiMsg) {
           MultiMsgUtil.a("0X8009ABC");
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X80052CC", "0X80052CC", 0, 0, "", "2", "", "");
+        ReportController.b(this.i.app, "CliOper", "", "", "0X80052CC", "0X80052CC", 0, 0, "", "2", "", "");
         return;
       }
-      if (paramView.equals(this.c))
+      if (paramView.equals(this.d))
       {
         if (QLog.isColorLevel())
         {
           paramView = new StringBuilder();
           paramView.append("click menu to share to qzone, finalVideoExists=");
-          paramView.append(this.jdField_a_of_type_Boolean);
+          paramView.append(this.e);
           QLog.d("ShortVideoPlayActivity", 2, paramView.toString());
         }
-        if (this.jdField_a_of_type_Boolean)
+        if (this.e)
         {
-          ShortVideoPlayActivity.access$2000(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity);
+          ShortVideoPlayActivity.access$2000(this.i);
           return;
         }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mContext, 0, 2131719067, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mContext.getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this.i.mContext, 0, 2131916603, 0).show(this.i.mContext.getResources().getDimensionPixelSize(2131299920));
         return;
       }
-      if (paramView.equals(this.d))
+      if (paramView.equals(this.f))
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.e)
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mContext, 0, 2131719067, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this.i.mContext, 0, 2131916603, 0).show(this.i.mContext.getResources().getDimensionPixelSize(2131299920));
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mHandler.get() != null)
+        if (this.i.mHandler.get() != null)
         {
           paramView = ThreadManager.getFileThreadHandler();
-          localObject1 = this.e;
-          localObject2 = (MqqHandler)this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mHandler.get();
+          localObject1 = this.g;
+          localObject2 = (MqqHandler)this.i.mHandler.get();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mMd5);
+          localStringBuilder.append(this.i.mMd5);
           localStringBuilder.append(".mp4");
           paramView.post(new ShortVideoUtils.VideoFileSaveRunnable((String)localObject1, (MqqHandler)localObject2, localStringBuilder.toString(), false));
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mUinType == 0)
+        if (this.i.mUinType == 0)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "1", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "1", "", "");
+          this.i.mPlaySucReported = true;
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mUinType == 3000)
+        else if (this.i.mUinType == 3000)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "2", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "2", "", "");
+          this.i.mPlaySucReported = true;
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mUinType == 1)
+        else if (this.i.mUinType == 1)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "3", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "3", "", "");
+          this.i.mPlaySucReported = true;
         }
         else
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "4", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004675", "0X8004675", 0, 0, "", "4", "", "");
+          this.i.mPlaySucReported = true;
         }
-        new DCShortVideo(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, 2002, this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mCurSessionType, this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mCurSessionUin);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.isFromMultiMsg) {
+        new DCShortVideo(BaseApplication.getContext()).a(this.i.app, 2002, this.i.mCurSessionType, this.i.mCurSessionUin);
+        if (this.i.isFromMultiMsg) {
           MultiMsgUtil.a("0X8009ABD");
         }
       }
-      else if (paramView.equals(this.f))
+      else if (paramView.equals(this.h))
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.e)
         {
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mContext, 0, 2131719067, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mContext.getResources().getDimensionPixelSize(2131299168));
+          QQToast.makeText(this.i.mContext, 0, 2131916603, 0).show(this.i.mContext.getResources().getDimensionPixelSize(2131299920));
           return;
         }
         paramView = new Intent("android.intent.action.VIEW");
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("file://");
-        ((StringBuilder)localObject1).append(this.e);
+        ((StringBuilder)localObject1).append(this.g);
         paramView.setDataAndType(Uri.parse(((StringBuilder)localObject1).toString()), "video/*");
-        this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.startActivity(paramView);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mUinType == 0)
+        this.i.startActivity(paramView);
+        if (this.i.mUinType == 0)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "1", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "1", "", "");
+          this.i.mPlaySucReported = true;
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mUinType == 3000)
+        if (this.i.mUinType == 3000)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "2", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "2", "", "");
+          this.i.mPlaySucReported = true;
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mUinType == 1)
+        if (this.i.mUinType == 1)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "3", "", "");
-          this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+          ReportController.b(this.i.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "3", "", "");
+          this.i.mPlaySucReported = true;
           return;
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "4", "", "");
-        this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPlayActivity.mPlaySucReported = true;
+        ReportController.b(this.i.app, "CliOper", "", "", "0X8004676", "0X8004676", 0, 0, "", "4", "", "");
+        this.i.mPlaySucReported = true;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.22
  * JD-Core Version:    0.7.0.1
  */

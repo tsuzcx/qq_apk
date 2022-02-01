@@ -9,23 +9,23 @@ import java.security.SecureRandom;
 
 public class ReportController
 {
-  private static volatile ReportController jdField_a_of_type_ComTencentFeaturetoggleStrategyReportController;
-  private SecureRandom jdField_a_of_type_JavaSecuritySecureRandom = new SecureRandom();
+  private static volatile ReportController a;
+  private SecureRandom b = new SecureRandom();
   
   public static ReportController a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentFeaturetoggleStrategyReportController == null) {
+      if (a == null) {
         try
         {
-          if (jdField_a_of_type_ComTencentFeaturetoggleStrategyReportController == null) {
-            jdField_a_of_type_ComTencentFeaturetoggleStrategyReportController = new ReportController();
+          if (a == null) {
+            a = new ReportController();
           }
         }
         finally {}
       }
-      ReportController localReportController = jdField_a_of_type_ComTencentFeaturetoggleStrategyReportController;
+      ReportController localReportController = a;
       return localReportController;
     }
     finally {}
@@ -37,7 +37,7 @@ public class ReportController
     {
       try
       {
-        long l3 = this.jdField_a_of_type_JavaSecuritySecureRandom.nextInt(10000) - 5000;
+        long l3 = this.b.nextInt(10000) - 5000;
         if (paramInt != 2001) {
           l2 = 0L;
         }
@@ -45,44 +45,44 @@ public class ReportController
         {
         case 2009: 
           if (ToggleSetting.a() != null) {
-            HeaderThreadUtil.a().a(1005, ToggleSetting.a().a());
+            HeaderThreadUtil.a().a(1005, ToggleSetting.a().j());
           }
           break;
         case 2008: 
+          HeaderThreadUtil.a().c(1004);
           HeaderThreadUtil.a().b(1004);
-          HeaderThreadUtil.a().a(1004);
           break;
         case 2006: 
-          long l4 = SystemClock.elapsedRealtime() - ToggleSetting.b();
+          long l4 = SystemClock.elapsedRealtime() - ToggleSetting.e();
           l1 = l2;
           if (l4 >= 0L)
           {
             l1 = l2;
-            if (l4 < ToggleSetting.f()) {
-              l1 = ToggleSetting.f() - l4 + l3;
+            if (l4 < ToggleSetting.x()) {
+              l1 = ToggleSetting.x() - l4 + l3;
             }
           }
-          HeaderThreadUtil.a().b(1002);
+          HeaderThreadUtil.a().c(1002);
           HeaderThreadUtil.a().a(1002, l1);
-          LogUtils.c("Next time to push toggle event is :%d s", new Object[] { Long.valueOf(l1 / 1000L) });
+          LogUtils.e("Next time to push toggle event is :%d s", new Object[] { Long.valueOf(l1 / 1000L) });
           break;
         case 2005: 
-          l1 = SystemClock.elapsedRealtime() - ToggleSetting.a();
-          if ((l1 < 0L) || (l1 >= ToggleSetting.e())) {
+          l1 = SystemClock.elapsedRealtime() - ToggleSetting.d();
+          if ((l1 < 0L) || (l1 >= ToggleSetting.w())) {
             break label352;
           }
-          l1 = l3 + (ToggleSetting.e() - l1);
+          l1 = l3 + (ToggleSetting.w() - l1);
           break label354;
-          HeaderThreadUtil.a().b(1001);
+          HeaderThreadUtil.a().c(1001);
           HeaderThreadUtil.a().a(1001, l2);
           LogUtils.b("Next time to obtain the toggle is :%d s", new Object[] { Long.valueOf(l2 / 1000L) });
           break;
         case 2004: 
-          if (SystemClock.elapsedRealtime() - ToggleSetting.a() < 10000L) {
+          if (SystemClock.elapsedRealtime() - ToggleSetting.d() < 10000L) {
             break;
           }
         case 2007: 
-          HeaderThreadUtil.a().a(1001);
+          HeaderThreadUtil.a().b(1001);
           continue;
           HeaderThreadUtil.a().a(1001, 100L);
           HeaderThreadUtil.a().a(1002, 300L);
@@ -104,7 +104,7 @@ public class ReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.strategy.ReportController
  * JD-Core Version:    0.7.0.1
  */

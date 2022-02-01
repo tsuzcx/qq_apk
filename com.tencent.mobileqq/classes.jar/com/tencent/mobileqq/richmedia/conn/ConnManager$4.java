@@ -11,12 +11,12 @@ class ConnManager$4
   
   public void run()
   {
-    ((PeakAudioTransHandler)ConnManager.a(this.this$0).getBusinessHandler(PeakAppInterface.a)).a(this.a);
+    ((PeakAudioTransHandler)ConnManager.c(this.this$0).getBusinessHandler(PeakAppInterface.b)).a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.ConnManager.4
  * JD-Core Version:    0.7.0.1
  */

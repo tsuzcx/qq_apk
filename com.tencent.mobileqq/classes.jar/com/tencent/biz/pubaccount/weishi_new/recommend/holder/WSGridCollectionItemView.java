@@ -19,29 +19,29 @@ import java.util.ArrayList;
 public class WSGridCollectionItemView
   implements IWSItemView<stSimpleMetaFeed>
 {
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final SparseArray<WSGridFeedCollectionController> jdField_a_of_type_AndroidUtilSparseArray;
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSRecommendAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
-  private final WSGridCollectionHolder jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCollectionHolder;
+  private final Context a;
+  private final WSGridCollectionHolder b;
+  private final ViewGroup c;
+  private TextView d;
+  private final SparseArray<WSGridFeedCollectionController> e;
+  private WSRecommendAdapter f;
+  private stSimpleMetaFeed g;
   
   public WSGridCollectionItemView(Context paramContext, View paramView, WSGridCollectionHolder paramWSGridCollectionHolder)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCollectionHolder = paramWSGridCollectionHolder;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.a = paramContext;
+    this.b = paramWSGridCollectionHolder;
+    this.c = ((ViewGroup)paramView);
+    this.e = new SparseArray();
     b();
   }
   
   private void a(int paramInt1, int paramInt2, ArrayList<stCollection> paramArrayList)
   {
-    int j = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCollectionHolder.getLayoutPosition();
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+    int j = this.b.getLayoutPosition();
+    Object localObject = this.f;
     if (localObject != null) {
-      localObject = ((WSRecommendAdapter)localObject).a;
+      localObject = ((WSRecommendAdapter)localObject).l;
     } else {
       localObject = "";
     }
@@ -49,15 +49,15 @@ public class WSGridCollectionItemView
     while (i < paramInt2)
     {
       WSCollectionItemData localWSCollectionItemData = new WSCollectionItemData((stCollection)paramArrayList.get(i), paramInt1);
-      WSGridFeedCollectionController localWSGridFeedCollectionController2 = (WSGridFeedCollectionController)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      WSGridFeedCollectionController localWSGridFeedCollectionController2 = (WSGridFeedCollectionController)this.e.get(i);
       WSGridFeedCollectionController localWSGridFeedCollectionController1 = localWSGridFeedCollectionController2;
       if (localWSGridFeedCollectionController2 == null)
       {
-        localWSGridFeedCollectionController1 = new WSGridFeedCollectionController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-        this.jdField_a_of_type_AndroidUtilSparseArray.append(i, localWSGridFeedCollectionController1);
+        localWSGridFeedCollectionController1 = new WSGridFeedCollectionController(this.a, this.g);
+        this.e.append(i, localWSGridFeedCollectionController1);
       }
       localWSGridFeedCollectionController1.b(j);
-      localWSGridFeedCollectionController1.a(this.jdField_a_of_type_AndroidViewViewGroup);
+      localWSGridFeedCollectionController1.a(this.c);
       localWSGridFeedCollectionController1.c(i);
       localWSGridFeedCollectionController1.a((String)localObject);
       localWSGridFeedCollectionController1.a(localWSCollectionItemData);
@@ -67,14 +67,14 @@ public class WSGridCollectionItemView
   
   private void e()
   {
-    stCardInfo localstCardInfo = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.cardInfo;
+    stCardInfo localstCardInfo = this.g.cardInfo;
     Object localObject1 = localstCardInfo.collectionCardInfo;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("setData :");
     ((StringBuilder)localObject2).append(((stCollectionCardInfo)localObject1).toString());
     WSLog.a("WSGridCollectionItemView", ((StringBuilder)localObject2).toString());
     localObject2 = ((stCollectionCardInfo)localObject1).title;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+    this.d.setText((CharSequence)localObject2);
     localObject1 = ((stCollectionCardInfo)localObject1).collectionList;
     int i = Math.min(((ArrayList)localObject1).size(), 5);
     a(localstCardInfo.cardType, i, (ArrayList)localObject1);
@@ -84,14 +84,14 @@ public class WSGridCollectionItemView
   private void e(int paramInt)
   {
     int i = paramInt;
-    if (paramInt + 1 >= this.jdField_a_of_type_AndroidUtilSparseArray.size()) {
+    if (paramInt + 1 >= this.e.size()) {
       return;
     }
-    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    while (i < this.e.size())
     {
-      WSGridFeedCollectionController localWSGridFeedCollectionController = (WSGridFeedCollectionController)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      WSGridFeedCollectionController localWSGridFeedCollectionController = (WSGridFeedCollectionController)this.e.get(i);
       if (localWSGridFeedCollectionController != null) {
-        localWSGridFeedCollectionController.e();
+        localWSGridFeedCollectionController.i();
       }
       i += 1;
     }
@@ -103,22 +103,22 @@ public class WSGridCollectionItemView
   
   public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = paramstSimpleMetaFeed;
+    this.g = paramstSimpleMetaFeed;
     e();
   }
   
   public void a(WSRecommendAdapter paramWSRecommendAdapter)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = paramWSRecommendAdapter;
+    this.f = paramWSRecommendAdapter;
   }
   
   public void b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("initUI:");
-    localStringBuilder.append(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    localStringBuilder.append(this.g);
     WSLog.a("WSGridCollectionItemView", localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131366634));
+    this.d = ((TextView)this.c.findViewById(2131432956));
   }
   
   public void b(int paramInt) {}
@@ -133,7 +133,7 @@ public class WSGridCollectionItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridCollectionItemView
  * JD-Core Version:    0.7.0.1
  */

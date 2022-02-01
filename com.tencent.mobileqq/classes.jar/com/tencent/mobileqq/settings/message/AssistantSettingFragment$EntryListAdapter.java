@@ -15,16 +15,16 @@ import java.util.List;
 class AssistantSettingFragment$EntryListAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private final List<CTEntry> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private Context b;
+  private final List<CTEntry> c;
+  private CompoundButton.OnCheckedChangeListener d;
   
   public AssistantSettingFragment$EntryListAdapter(Context paramContext, CompoundButton.OnCheckedChangeListener paramOnCheckedChangeListener)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = paramOnCheckedChangeListener;
+    this.b = paramContext;
+    this.c = new ArrayList();
+    this.d = paramOnCheckedChangeListener;
   }
   
   private void b(List<CTEntry> paramList)
@@ -38,7 +38,7 @@ class AssistantSettingFragment$EntryListAdapter
       while (i >= 0)
       {
         CTEntry localCTEntry = (CTEntry)paramList.get(i);
-        if (((localCTEntry == null) || (localCTEntry.jdField_a_of_type_Int == 1) || (localCTEntry.jdField_a_of_type_Int == 2)) && (localCTEntry != null)) {
+        if (((localCTEntry == null) || (localCTEntry.a == 1) || (localCTEntry.a == 2)) && (localCTEntry != null)) {
           paramList.remove(localCTEntry);
         }
         i -= 1;
@@ -49,10 +49,10 @@ class AssistantSettingFragment$EntryListAdapter
   public CTEntry a(short paramShort)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.c.size())
     {
-      if (((CTEntry)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Short == paramShort) {
-        return (CTEntry)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (((CTEntry)this.c.get(i)).j == paramShort) {
+        return (CTEntry)this.c.get(i);
       }
       i += 1;
     }
@@ -61,18 +61,18 @@ class AssistantSettingFragment$EntryListAdapter
   
   public void a(List<CTEntry> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
     if (paramList != null)
     {
       b(paramList);
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.c.addAll(paramList);
     }
     notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a(short[] paramArrayOfShort)
@@ -91,11 +91,11 @@ class AssistantSettingFragment$EntryListAdapter
             for (;;)
             {
               bool2 = bool1;
-              if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
+              if (j >= this.c.size()) {
                 break;
               }
               int k = paramArrayOfShort[i];
-              int m = ((CTEntry)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Short;
+              int m = ((CTEntry)this.c.get(j)).j;
               if (k == m)
               {
                 bool2 = true;
@@ -118,13 +118,13 @@ class AssistantSettingFragment$EntryListAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.c.size();
   }
   
   public Object getItem(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < getCount())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.c.get(paramInt);
     }
     return null;
   }
@@ -135,7 +135,7 @@ class AssistantSettingFragment$EntryListAdapter
     if (localCTEntry == null) {
       return 0L;
     }
-    return localCTEntry.jdField_a_of_type_Int;
+    return localCTEntry.a;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -143,7 +143,7 @@ class AssistantSettingFragment$EntryListAdapter
     FormMultiLineSwitchItem localFormMultiLineSwitchItem;
     if (!(paramView instanceof FormSwitchItem))
     {
-      localFormMultiLineSwitchItem = new FormMultiLineSwitchItem(this.jdField_a_of_type_AndroidContentContext);
+      localFormMultiLineSwitchItem = new FormMultiLineSwitchItem(this.b);
       paramView = localFormMultiLineSwitchItem;
     }
     else
@@ -153,11 +153,11 @@ class AssistantSettingFragment$EntryListAdapter
     CTEntry localCTEntry = (CTEntry)getItem(paramInt);
     if (localCTEntry != null)
     {
-      localFormMultiLineSwitchItem.setText(localCTEntry.jdField_a_of_type_JavaLangString);
-      localFormMultiLineSwitchItem.setChecked(localCTEntry.e ^ true);
-      if ((localCTEntry.jdField_a_of_type_Int == 3) && (localCTEntry.e))
+      localFormMultiLineSwitchItem.setText(localCTEntry.b);
+      localFormMultiLineSwitchItem.setChecked(localCTEntry.m ^ true);
+      if ((localCTEntry.a == 3) && (localCTEntry.m))
       {
-        localFormMultiLineSwitchItem.setSecendLineText(this.jdField_a_of_type_AndroidContentContext.getString(2131699008));
+        localFormMultiLineSwitchItem.setSecendLineText(this.b.getString(2131897012));
         localFormMultiLineSwitchItem.setSecondLineTextViewVisibility(0);
       }
       else
@@ -169,7 +169,7 @@ class AssistantSettingFragment$EntryListAdapter
     int i = getCount();
     if ((paramInt == 0) && (i == 1))
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.a) {
         localFormMultiLineSwitchItem.setBgType(2);
       } else {
         localFormMultiLineSwitchItem.setBgType(0);
@@ -184,7 +184,7 @@ class AssistantSettingFragment$EntryListAdapter
       i -= 1;
       if (paramInt == i)
       {
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.a) {
           localFormMultiLineSwitchItem.setBgType(2);
         } else {
           localFormMultiLineSwitchItem.setBgType(3);
@@ -195,14 +195,14 @@ class AssistantSettingFragment$EntryListAdapter
       }
     }
     localFormMultiLineSwitchItem.setTag(localCTEntry);
-    localFormMultiLineSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    localFormMultiLineSwitchItem.setOnCheckedChangeListener(this.d);
     EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.EntryListAdapter
  * JD-Core Version:    0.7.0.1
  */

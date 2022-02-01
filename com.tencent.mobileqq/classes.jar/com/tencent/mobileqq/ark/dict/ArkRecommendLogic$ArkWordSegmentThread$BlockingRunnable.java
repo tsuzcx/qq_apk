@@ -5,24 +5,24 @@ import android.os.Handler;
 final class ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable
   implements Runnable
 {
-  private final ArkRecommendLogic.ArkWordSegmentThread jdField_a_of_type_ComTencentMobileqqArkDictArkRecommendLogic$ArkWordSegmentThread;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private final Runnable a;
+  private final ArkRecommendLogic.ArkWordSegmentThread b;
+  private volatile boolean c = false;
   
   public ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable(ArkRecommendLogic.ArkWordSegmentThread paramArkWordSegmentThread, Runnable paramRunnable)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
-    this.jdField_a_of_type_ComTencentMobileqqArkDictArkRecommendLogic$ArkWordSegmentThread = paramArkWordSegmentThread;
+    this.a = paramRunnable;
+    this.b = paramArkWordSegmentThread;
   }
   
   public void a()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkDictArkRecommendLogic$ArkWordSegmentThread.a().post(this);
+      this.b.a().post(this);
       for (;;)
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
+        boolean bool = this.c;
         if (!bool) {}
         try
         {
@@ -49,15 +49,15 @@ final class ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 19	com/tencent/mobileqq/ark/dict/ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   4: invokeinterface 41 1 0
+    //   1: getfield 21	com/tencent/mobileqq/ark/dict/ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable:a	Ljava/lang/Runnable;
+    //   4: invokeinterface 43 1 0
     //   9: aload_0
     //   10: monitorenter
     //   11: aload_0
     //   12: iconst_1
-    //   13: putfield 17	com/tencent/mobileqq/ark/dict/ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable:jdField_a_of_type_Boolean	Z
+    //   13: putfield 19	com/tencent/mobileqq/ark/dict/ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable:c	Z
     //   16: aload_0
-    //   17: invokevirtual 44	java/lang/Object:notifyAll	()V
+    //   17: invokevirtual 46	java/lang/Object:notifyAll	()V
     //   20: aload_0
     //   21: monitorexit
     //   22: return
@@ -71,9 +71,9 @@ final class ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable
     //   30: monitorenter
     //   31: aload_0
     //   32: iconst_1
-    //   33: putfield 17	com/tencent/mobileqq/ark/dict/ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable:jdField_a_of_type_Boolean	Z
+    //   33: putfield 19	com/tencent/mobileqq/ark/dict/ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable:c	Z
     //   36: aload_0
-    //   37: invokevirtual 44	java/lang/Object:notifyAll	()V
+    //   37: invokevirtual 46	java/lang/Object:notifyAll	()V
     //   40: aload_0
     //   41: monitorexit
     //   42: aload_1
@@ -100,7 +100,7 @@ final class ArkRecommendLogic$ArkWordSegmentThread$BlockingRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.ArkRecommendLogic.ArkWordSegmentThread.BlockingRunnable
  * JD-Core Version:    0.7.0.1
  */

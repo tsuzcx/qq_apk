@@ -6,11 +6,13 @@ import android.util.SparseArray;
 import com.tencent.viola.adapter.IBridgeAdapter;
 import com.tencent.viola.adapter.IHttpAdapter;
 import com.tencent.viola.adapter.ILogAdapter;
+import com.tencent.viola.adapter.IMultiV8ViolaRuntimeAdapter;
 import com.tencent.viola.adapter.VComponentAdapter;
 import com.tencent.viola.adapter.VWebSocketAdapter;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.commons.IReportDelegate;
 import com.tencent.viola.commons.ViolaThread;
+import com.tencent.viola.experiment.IExperimentConfigManager;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -40,8 +42,10 @@ public class ViolaSDKManager
   private SparseArray<WeakReference<ViolaInstance>> mCurrentViolaInstanceArray = new SparseArray();
   private ViolaDomManager mDomMgr;
   private ThreadPoolExecutor mExecutorService;
+  private IExperimentConfigManager mExperimentConfigManager;
   private IHttpAdapter mHttpAdapter;
   private ILogAdapter mLogAdapter;
+  private IMultiV8ViolaRuntimeAdapter mMultiV8ViolaRuntimeAdapter;
   private ViolaRenderManager mRenderMgr;
   private IReportDelegate mReportDelegate;
   private BlockingQueue<Runnable> mTaskQueue;
@@ -125,7 +129,7 @@ public class ViolaSDKManager
         str = "";
       }
       ViolaLogUtils.e("ViolaSDKManager", "violaInstance createInstance start!");
-      this.mBridgeMgr.createInstance(paramViolaInstance.getInstanceId(), paramString1, paramMap, str);
+      this.mBridgeMgr.createInstance(paramViolaInstance.getRuntimeName(), paramViolaInstance.getInstanceId(), paramString1, paramMap, str);
     }
   }
   
@@ -142,7 +146,7 @@ public class ViolaSDKManager
       if (TextUtils.isEmpty(paramString3)) {
         localObject = "";
       }
-      this.mBridgeMgr.createInstanceBySource(paramViolaInstance.getInstanceId(), paramString1, paramString2, (String)localObject);
+      this.mBridgeMgr.createInstanceBySource(paramViolaInstance.getRuntimeName(), paramViolaInstance.getInstanceId(), paramString1, paramString2, (String)localObject);
     }
   }
   
@@ -224,6 +228,11 @@ public class ViolaSDKManager
     return this.mDomMgr;
   }
   
+  public IExperimentConfigManager getExperimentConfigManager()
+  {
+    return this.mExperimentConfigManager;
+  }
+  
   public IHttpAdapter getHttpAdapter()
   {
     return this.mHttpAdapter;
@@ -240,6 +249,11 @@ public class ViolaSDKManager
   public ILogAdapter getLogAdapter()
   {
     return this.mLogAdapter;
+  }
+  
+  public IMultiV8ViolaRuntimeAdapter getMultiV8ViolaRuntimeAdapter()
+  {
+    return this.mMultiV8ViolaRuntimeAdapter;
   }
   
   public ViolaRenderManager getRenderManager()
@@ -400,6 +414,8 @@ public class ViolaSDKManager
     this.mReportDelegate = paramInitConfig.getReportDelegate();
     this.mWebsocketAdapter = paramInitConfig.getWebsocketAdapter();
     this.mLogAdapter = paramInitConfig.getLogAdapter();
+    this.mExperimentConfigManager = paramInitConfig.getConfigManager();
+    this.mMultiV8ViolaRuntimeAdapter = paramInitConfig.getMultiV8ViolaRuntimeAdapter();
   }
   
   public void setReportDelegate(IReportDelegate paramIReportDelegate)
@@ -426,7 +442,7 @@ public class ViolaSDKManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.core.ViolaSDKManager
  * JD-Core Version:    0.7.0.1
  */

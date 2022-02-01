@@ -20,32 +20,32 @@ public class FileIPv6StrateyControllerImpl
   
   public int debugGetLocalConfigIPv6Strategy()
   {
-    return this.controller.a();
+    return this.controller.h();
   }
   
   public boolean debugIsLocalConfigEnableC2CIPv6()
   {
-    return this.controller.c();
+    return this.controller.d();
   }
   
   public boolean debugIsLocalConfigEnableDatalineIPv6()
   {
-    return this.controller.f();
+    return this.controller.g();
   }
   
   public boolean debugIsLocalConfigEnableDiscIPv6()
   {
-    return this.controller.e();
+    return this.controller.f();
   }
   
   public boolean debugIsLocalConfigEnableGroupIPv6()
   {
-    return this.controller.d();
+    return this.controller.e();
   }
   
   public boolean debugIsUseLocalConfig()
   {
-    return this.controller.b();
+    return this.controller.c();
   }
   
   public void debugSetLocalConfigEnableC2CIPv6(boolean paramBoolean)
@@ -95,12 +95,12 @@ public class FileIPv6StrateyControllerImpl
   
   public boolean isConfigEnableIPV6(BaseQQAppInterface paramBaseQQAppInterface, int paramInt)
   {
-    return this.controller.a(paramBaseQQAppInterface, paramInt);
+    return this.controller.b(paramBaseQQAppInterface, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileIPv6StrateyControllerImpl
  * JD-Core Version:    0.7.0.1
  */

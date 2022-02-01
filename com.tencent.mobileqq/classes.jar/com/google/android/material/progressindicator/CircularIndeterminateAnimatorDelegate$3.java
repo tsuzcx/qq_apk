@@ -12,7 +12,7 @@ final class CircularIndeterminateAnimatorDelegate$3
   
   public Float a(CircularIndeterminateAnimatorDelegate paramCircularIndeterminateAnimatorDelegate)
   {
-    return Float.valueOf(CircularIndeterminateAnimatorDelegate.a(paramCircularIndeterminateAnimatorDelegate));
+    return Float.valueOf(CircularIndeterminateAnimatorDelegate.c(paramCircularIndeterminateAnimatorDelegate));
   }
   
   public void a(CircularIndeterminateAnimatorDelegate paramCircularIndeterminateAnimatorDelegate, Float paramFloat)
@@ -22,7 +22,7 @@ final class CircularIndeterminateAnimatorDelegate$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.CircularIndeterminateAnimatorDelegate.3
  * JD-Core Version:    0.7.0.1
  */

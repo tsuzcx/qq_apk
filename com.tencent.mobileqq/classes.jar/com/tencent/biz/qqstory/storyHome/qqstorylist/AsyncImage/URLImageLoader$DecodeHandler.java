@@ -14,8 +14,8 @@ public class URLImageLoader$DecodeHandler
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation != null) {
-      return StoryListUtils.a(new BitmapDrawable(paramBitmap), this.a.jdField_a_of_type_Int, this.a.b, UIUtils.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation);
+    if (this.a.b != null) {
+      return StoryListUtils.a(new BitmapDrawable(paramBitmap), this.a.c, this.a.d, UIUtils.e, this.a.b);
     }
     return paramBitmap;
   }

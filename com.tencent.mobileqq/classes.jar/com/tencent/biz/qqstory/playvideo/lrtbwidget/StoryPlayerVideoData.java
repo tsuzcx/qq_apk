@@ -13,17 +13,17 @@ import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
 public class StoryPlayerVideoData
 {
-  private ErrorMessage a;
   public MsgTabNodeInfo a;
   @NonNull
-  public final String a;
   public final String b;
-  private String c;
+  public final String c;
+  private String d;
+  private ErrorMessage e;
   
   public StoryPlayerVideoData(@NonNull String paramString1, @NonNull String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.b = paramString1;
+    this.c = paramString2;
   }
   
   public static StoryPlayerVideoData a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
@@ -35,7 +35,7 @@ public class StoryPlayerVideoData
       paramString2 = "ERROR_NO_FEED";
     }
     paramString1 = new StoryPlayerVideoData(paramString1, paramString2);
-    paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    paramString1.e = paramErrorMessage;
     return paramString1;
   }
   
@@ -48,26 +48,41 @@ public class StoryPlayerVideoData
       paramString2 = "LOADING_NO_FEED";
     }
     paramString1 = new StoryPlayerVideoData(paramString1, paramString2);
-    paramString1.c = paramString3;
+    paramString1.d = paramString3;
     return paramString1;
   }
   
-  public ErrorMessage a()
+  public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+    return this.d != null;
   }
   
-  public StoryVideoItem a()
+  public boolean b()
   {
-    return ((StoryManager)SuperManager.a(5)).b(this.jdField_a_of_type_JavaLangString);
+    return this.e != null;
   }
   
-  public VideoListFeedItem a()
+  public ErrorMessage c()
   {
-    if (TextUtils.isEmpty(this.b)) {
+    return this.e;
+  }
+  
+  public boolean d()
+  {
+    return (!a()) && (!b());
+  }
+  
+  public StoryVideoItem e()
+  {
+    return ((StoryManager)SuperManager.a(5)).b(this.b);
+  }
+  
+  public VideoListFeedItem f()
+  {
+    if (TextUtils.isEmpty(this.c)) {
       return null;
     }
-    FeedItem localFeedItem = ((FeedManager)SuperManager.a(11)).a(this.b, true);
+    FeedItem localFeedItem = ((FeedManager)SuperManager.a(11)).a(this.c, true);
     if (localFeedItem == null) {
       return null;
     }
@@ -77,53 +92,38 @@ public class StoryPlayerVideoData
     return null;
   }
   
-  public boolean a()
-  {
-    return this.c != null;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
-  }
-  
-  public boolean c()
-  {
-    return (!a()) && (!b());
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("VideoData{");
     localStringBuilder.append("msgTabNodeType=");
-    MsgTabNodeInfo localMsgTabNodeInfo = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo;
+    MsgTabNodeInfo localMsgTabNodeInfo = this.a;
     int i;
     if (localMsgTabNodeInfo == null) {
       i = 0;
     } else {
-      i = localMsgTabNodeInfo.a;
+      i = localMsgTabNodeInfo.b;
     }
     localStringBuilder.append(i);
     localStringBuilder.append(",");
     if (a())
     {
       localStringBuilder.append("loadingMessage='");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.d);
       localStringBuilder.append('\'');
     }
     else if (b())
     {
       localStringBuilder.append("errorMessage=");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      localStringBuilder.append(this.e);
     }
     else
     {
       localStringBuilder.append("vid='");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append('\'');
       localStringBuilder.append(", feedId='");
-      localStringBuilder.append(this.b);
+      localStringBuilder.append(this.c);
       localStringBuilder.append('\'');
     }
     localStringBuilder.append("}");
@@ -132,7 +132,7 @@ public class StoryPlayerVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerVideoData
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,18 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   void a(long paramLong)
   {
     this.a = paramLong;
-    this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable, 5000L);
-    this.this$0.jdField_d_of_type_Boolean = true;
+    this.this$0.al.a().postDelayed(this.this$0.o, 5000L);
+    this.this$0.d = true;
   }
   
   void b(long paramLong)
   {
     if (QLog.isColorLevel())
     {
-      String str = this.this$0.jdField_d_of_type_JavaLangString;
+      String str = this.this$0.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StartTimerRunnable.remove, mNeedRemoveAudioCallback[");
-      localStringBuilder.append(this.this$0.jdField_d_of_type_Boolean);
+      localStringBuilder.append(this.this$0.d);
       localStringBuilder.append("], seq[");
       localStringBuilder.append(paramLong);
       localStringBuilder.append("], lastseq[");
@@ -33,8 +33,8 @@ class DoubleVideoCtrlUI$StartTimerRunnable
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    if (this.this$0.jdField_d_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable);
+    if (this.this$0.d) {
+      this.this$0.al.a().removeCallbacks(this.this$0.o);
     }
   }
   
@@ -42,14 +42,14 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   {
     if (QLog.isColorLevel())
     {
-      String str = this.this$0.jdField_d_of_type_JavaLangString;
+      String str = this.this$0.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("StartTimerRunnable.Run, seq[");
       localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
     }
-    this.this$0.A(this.a);
+    this.this$0.G(this.a);
   }
 }
 

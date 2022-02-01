@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,14 +22,10 @@ import com.tencent.tkd.comment.publisher.qq.bridge.QQReportBridge;
 import com.tencent.tkd.comment.publisher.qq.bridge.QQSharedPreferenceBridge;
 import com.tencent.tkd.comment.publisher.qq.bridge.QQUrlImageBridge;
 import com.tencent.tkd.comment.publisher.qq.bridge.QQViewBridge;
-import com.tencent.tkd.comment.publisher.qq.model.TkdCommentLinkData;
 import com.tencent.tkd.comment.publisher.qq.model.TkdQQArgument;
-import com.tencent.tkd.comment.publisher.qq.model.TkdQQArticleInfo;
 import com.tencent.tkd.comment.publisher.qq.widget.TKDListenFocusEditText;
 import com.tencent.tkd.comment.publisher.qq.widget.TkdCommentLinkView;
 import com.tencent.tkd.comment.util.CommonUtil;
-import java.util.Iterator;
-import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,19 +33,14 @@ public class QQPublishCommentFragment
   extends PanelInputDialogFragment
   implements View.OnClickListener
 {
-  private static final int OUTSIDE_COMMENT_EDIT_SRC_KANDIAN_FOLLOW_FEEDS = 1;
-  protected static final int PANEL_EMOTION = 1;
-  protected static final int PANEL_GIF = 2;
-  protected static final int PANEL_NONE = 0;
-  private static final int REPLY_COMMENT = 2;
-  private static final String RIJ_SP_EDITOR_LAST_CHECK = "rij_sp_editor_last_check";
+  private static final int PANEL_EMOTION = 1;
+  private static final int PANEL_GIF = 2;
+  private static final int PANEL_NONE = 0;
   private static final String TAG = "QQPublisherFragment";
-  private static final int WRITE_COMMENT = 1;
-  private QQPublishCommentFragment.BiuAndCommentMixUi biuAndCommentMixUi;
-  private QQPublishCommentFragment.BiuUi biuUi;
   private int curPanel = 0;
   private boolean dismissOnDeliver;
   private QQPublishCommentFragment.EmotionUi emotionUi;
+  private boolean firstOpen = true;
   private QQPublishCommentFragment.GifUi gifUi;
   private boolean isRecreate;
   private int lastState = 1;
@@ -60,7 +50,6 @@ public class QQPublishCommentFragment
   private Activity mActivity;
   private boolean mInputOverlong;
   private int mMaxCharCount = 140;
-  private String placeHolder;
   public QQPublishCommentBridge publishCommentBridge = QQPublishCommentBridge.EMPTY;
   private TkdQQArgument qqArgument;
   public QQReportBridge reportBridge = QQReportBridge.EMPTY;
@@ -91,20 +80,26 @@ public class QQPublishCommentFragment
     }
   }
   
-  private void asyncPublicAccountReportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  private void checkFirstAction()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("toUin", paramString1);
-    localBundle.putString("subAction", paramString2);
-    localBundle.putString("actionName", paramString3);
-    localBundle.putInt("fromType", 0);
-    localBundle.putInt("result", 0);
-    localBundle.putString("r2", paramString4);
-    localBundle.putString("r3", paramString5);
-    localBundle.putString("r4", paramString6);
-    localBundle.putString("r5", paramString7);
-    localBundle.putBoolean("shouldEncode", false);
-    this.reportBridge.asyncReport(localBundle);
+    if (!this.firstOpen) {
+      return;
+    }
+    this.firstOpen = false;
+    int i = this.qqArgument.firstAction;
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        this.lastState = 1;
+        return;
+      }
+      this.lastState = 0;
+      performClickAt();
+      return;
+    }
+    this.lastState = 0;
+    this.emotionUi.switchPanel();
   }
   
   private boolean checkIsReadyToDeliver()
@@ -112,13 +107,13 @@ public class QQPublishCommentFragment
     if (this.mInputOverlong)
     {
       this.logBridge.d("QQPublisherFragment", "onDeliver overlong!");
-      showToast(getActivity().getString(R.string.d), 0, 1);
+      showToast(getActivity().getString(R.string.b), 0, 1);
       return false;
     }
     if (!this.publishCommentBridge.isNetworkAvailable())
     {
       this.logBridge.d("QQPublisherFragment", "onDeliver network error!");
-      showToast(getActivity().getString(R.string.e), 0, 1);
+      showToast(getActivity().getString(R.string.c), 0, 1);
       return false;
     }
     return true;
@@ -139,53 +134,18 @@ public class QQPublishCommentFragment
   
   private String getCommentString()
   {
-    return this.publishCommentBridge.getCommentString(this.vInputEdit.getText());
+    return this.viewBridge.getCommentString(this.vInputEdit.getText());
   }
   
-  private JSONObject getFolderStatus(boolean paramBoolean)
+  private void initAt(Dialog paramDialog)
   {
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    this.vAt = ((ImageView)paramDialog.findViewById(R.id.a));
+    if (this.qqArgument.forceHideAt)
     {
-      try
-      {
-        localJSONObject.put("folder_status", this.reportBridge.getFolderStatus());
-        if (paramBoolean)
-        {
-          if (this.biuUi.isSelected)
-          {
-            String str1 = "0";
-            localJSONObject.put("biu_comment", str1);
-          }
-        }
-        else
-        {
-          localJSONObject.put("os", 1);
-          localJSONObject.put("entry", this.reportBridge.getEntry());
-          localJSONObject.put("scene", this.reportBridge.getScene());
-          return localJSONObject;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return localJSONObject;
-      }
-      String str2 = "1";
+      this.vAt.setVisibility(8);
+      return;
     }
-  }
-  
-  private String getFolderStatusString(boolean paramBoolean)
-  {
-    return getFolderStatus(paramBoolean).toString();
-  }
-  
-  private String getToUin()
-  {
-    if (this.qqArgument.mArticleInfo != null) {
-      return this.qqArgument.mArticleInfo.toUin;
-    }
-    return "";
+    this.viewBridge.bindAt(getActivity(), this.vAt);
   }
   
   private void initDefaultCommentAtFromArguments()
@@ -206,66 +166,62 @@ public class QQPublishCommentFragment
   
   private void initPlaceHolderFromArguments()
   {
-    this.placeHolder = this.qqArgument.placeHolder;
+    String str = this.qqArgument.placeHolder;
     QQLogBridge localQQLogBridge = this.logBridge;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("initData | comment_placeholder : ");
-    localStringBuilder.append(this.placeHolder);
+    localStringBuilder.append(str);
     localQQLogBridge.d("QQPublisherFragment", localStringBuilder.toString());
-    if (!TextUtils.isEmpty(this.placeHolder))
+    if (!TextUtils.isEmpty(str))
     {
-      this.vInputEdit.setHint(this.placeHolder);
+      this.vInputEdit.setHint(str);
       return;
     }
-    this.vInputEdit.setHint(this.mActivity.getString(R.string.c));
+    this.vInputEdit.setHint(this.mActivity.getString(R.string.a));
+  }
+  
+  private void initTopic(Dialog paramDialog)
+  {
+    this.vTopic = ((ImageView)paramDialog.findViewById(R.id.t));
+    if (this.qqArgument.forceHideTopic)
+    {
+      this.vTopic.setVisibility(8);
+      return;
+    }
+    this.viewBridge.bindTopic(this.vTopic);
   }
   
   private void initView()
   {
     Dialog localDialog = getDialog();
-    this.vPanelHolder = ((PanelFrameLayout)localDialog.findViewById(R.id.q));
-    this.vCharCountView = ((TextView)localDialog.findViewById(R.id.j));
-    this.vDeliverButton = ((Button)localDialog.findViewById(R.id.n));
+    this.vPanelHolder = ((PanelFrameLayout)localDialog.findViewById(R.id.h));
+    this.vCharCountView = ((TextView)localDialog.findViewById(R.id.b));
+    this.vDeliverButton = ((Button)localDialog.findViewById(R.id.e));
     this.vDeliverButton.setOnClickListener(this);
-    this.vInputEdit = ((TKDListenFocusEditText)localDialog.findViewById(R.id.w));
-    this.vInputEdit.requestFocus();
+    this.vInputEdit = ((TKDListenFocusEditText)localDialog.findViewById(R.id.n));
     try
     {
       this.vInputEdit.setEditableFactory(this.viewBridge.getEditFactory());
-      label93:
-      this.vInputEdit.post(new QQPublishCommentFragment.1(this));
-      init(localDialog.findViewById(R.id.B), this.vPanelHolder, this.vInputEdit);
-      this.viewBridge.bindInput(this.vInputEdit);
-      this.vTopic = ((ImageView)localDialog.findViewById(R.id.C));
-      this.viewBridge.bindTopic(this.vTopic);
-      this.vAt = ((ImageView)localDialog.findViewById(R.id.a));
-      this.viewBridge.bindAt(getActivity(), this.vAt);
-      this.vInputEdit.addTextChangedListener(new QQPublishCommentFragment.MyTextWatcher(this, null));
-      this.emotionUi = new QQPublishCommentFragment.EmotionUi(this, localDialog);
-      this.gifUi = new QQPublishCommentFragment.GifUi(this, localDialog);
-      this.gifUi.initData();
-      this.linkUi = new QQPublishCommentFragment.LinkUi(this, localDialog);
-      this.linkUi.initData();
-      this.biuAndCommentMixUi = new QQPublishCommentFragment.BiuAndCommentMixUi(this, localDialog);
-      this.biuUi = new QQPublishCommentFragment.BiuUi(this, localDialog);
-      this.biuUi.initData();
-      this.gifUi.setOnGifChangeListener(this.biuUi);
-      addViewToPanel(this.emotionUi.getEmotionPanel(), true);
-      if (this.viewBridge.isNightMode()) {
-        localDialog.findViewById(R.id.A).setVisibility(0);
-      }
-      if (this.biuAndCommentMixUi.initBiuAndCommentMix())
-      {
-        this.biuUi.hide();
-        this.vDeliverButton.setVisibility(8);
-      }
-      this.viewBridge.bindCallback(new QQPublishCommentFragment.ViewCallback(this, null));
-      return;
     }
     catch (Exception localException)
     {
-      break label93;
+      this.logBridge.d("QQPublisherFragment", localException.getMessage());
     }
+    init(localDialog.findViewById(R.id.s), this.vPanelHolder, this.vInputEdit);
+    this.viewBridge.bindInput(this.vInputEdit);
+    initTopic(localDialog);
+    initAt(localDialog);
+    this.vInputEdit.addTextChangedListener(new QQPublishCommentFragment.MyTextWatcher(this, null));
+    this.emotionUi = new QQPublishCommentFragment.EmotionUi(this, localDialog);
+    this.gifUi = new QQPublishCommentFragment.GifUi(this, localDialog);
+    this.gifUi.initData();
+    this.linkUi = new QQPublishCommentFragment.LinkUi(this, localDialog);
+    this.linkUi.initData();
+    addViewToPanel(this.emotionUi.getEmotionPanel(), true);
+    if (this.viewBridge.isNightMode()) {
+      localDialog.findViewById(R.id.r).setVisibility(0);
+    }
+    this.viewBridge.bindCallback(new QQPublishCommentFragment.ViewCallback(this, null));
   }
   
   private void onDeliver()
@@ -273,7 +229,7 @@ public class QQPublishCommentFragment
     if (!checkIsReadyToDeliver()) {
       return;
     }
-    reportDeliver();
+    this.reportBridge.reportDeliver(this.vInputEdit.getText(), QQPublishCommentFragment.LinkUi.access$400(this.linkUi).getData());
     this.viewBridge.onDeliever(packageDataInfo());
     this.dismissOnDeliver = true;
     dismissAllowingStateLoss();
@@ -281,26 +237,13 @@ public class QQPublishCommentFragment
   
   private String packageDataInfo()
   {
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("comment", new String(Base64.encode(getCommentString().getBytes(), 0)));
-      if (this.qqArgument.isNativeCommentComponet)
-      {
-        if (TextUtils.isEmpty(this.qqArgument.isSecondCommentReplyUin)) {
-          str = "";
-        } else {
-          str = this.qqArgument.isSecondCommentReplyUin;
-        }
-        localJSONObject.put("replyUin", str);
-        localJSONObject.put("isSecondReply", this.qqArgument.isSecondCommentReply);
-        localJSONObject.put("commentId", this.qqArgument.commentId);
-        localJSONObject.put("commentUin", this.qqArgument.mCommentAuthorUin);
-      }
-      this.linkUi.packageDataInfo(localJSONObject);
-      this.biuUi.packageDataInfo(localJSONObject);
-      String str = localJSONObject.toString();
-      return str;
+      this.viewBridge.packageDataInfo((JSONObject)localObject, this.vInputEdit.getText());
+      this.linkUi.packageDataInfo((JSONObject)localObject);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
@@ -309,164 +252,14 @@ public class QQPublishCommentFragment
     return null;
   }
   
-  private void publicAccountReportClickEvent(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
+  private void performClickAt()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("toUin", paramString1);
-    localBundle.putString("subAction", paramString2);
-    localBundle.putString("actionName", paramString3);
-    localBundle.putInt("fromType", 0);
-    localBundle.putInt("result", 0);
-    localBundle.putString("r2", paramString4);
-    localBundle.putString("r3", paramString5);
-    localBundle.putString("r4", paramString6);
-    localBundle.putString("r5", paramString7);
-    localBundle.putBoolean("shouldEncode", false);
-    this.reportBridge.report(localBundle);
-  }
-  
-  private void reportCommentCancelEvent()
-  {
-    if (this.qqArgument.mClickCommentEditViewSrc == -1) {
-      return;
-    }
-    String str;
-    if (this.qqArgument.mClickCommentEditViewSrc == 1) {
-      str = "0X80094C4";
-    } else {
-      str = "";
-    }
-    asyncPublicAccountReportClickEvent("", "", str, String.valueOf(this.qqArgument.mCommentType), "", "", getFolderStatusString(true));
-  }
-  
-  private void reportDeliver()
-  {
-    boolean bool = TextUtils.isEmpty(getCommentString());
-    int k = 0;
-    int i;
-    if (!bool) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    int j = i;
-    if (this.viewBridge.hasGif()) {
-      j = i + 2;
-    }
-    String str;
-    if (this.qqArgument.mClickCommentEditViewSrc == 1) {
-      str = "0X80094A1";
-    } else {
-      str = "0X800844E";
-    }
-    JSONObject localJSONObject = getFolderStatus(true);
-    for (;;)
-    {
-      try
-      {
-        localObject = QQPublishCommentFragment.LinkUi.access$400(this.linkUi).getData();
-        if (localObject == null) {
-          break label266;
-        }
-        if (!((List)localObject).isEmpty()) {
-          break label261;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        localJSONException.printStackTrace();
-      }
-      localJSONObject.put("link", k);
-      if (i == 0)
-      {
-        localStringBuilder = new StringBuilder();
-        localObject = ((List)localObject).iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          localStringBuilder.append(((TkdCommentLinkData)((Iterator)localObject).next()).type);
-          localStringBuilder.append(',');
-          continue;
-        }
-        localJSONObject.put("link_type", localStringBuilder.deleteCharAt(localStringBuilder.length() - 1).toString());
-      }
-      this.reportBridge.fillR5OnDeliver(localJSONObject, this.vInputEdit.getText());
-      publicAccountReportClickEvent(getToUin(), str, str, String.valueOf(this.qqArgument.mCommentType), String.valueOf(j), "", localJSONObject.toString());
-      return;
-      label261:
-      i = 0;
-      break label268;
-      label266:
-      i = 1;
-      label268:
-      if (i == 0) {
-        k = 1;
-      }
-    }
-  }
-  
-  private void reportOpenCommentComponent()
-  {
-    boolean bool = TextUtils.isEmpty(this.placeHolder);
-    int k = 1;
-    int i;
-    if ((!bool) && (this.placeHolder.contains(getString(R.string.b)))) {
-      i = 2;
-    } else {
-      i = 1;
-    }
-    for (;;)
-    {
-      String str;
-      try
-      {
-        Object localObject = new JSONObject();
-        ((JSONObject)localObject).put("folder_status", this.reportBridge.getFolderStatus());
-        if (this.qqArgument.mArticleInfo != null) {
-          ((JSONObject)localObject).put("consume_time", this.reportBridge.getConsumeTime());
-        }
-        ((JSONObject)localObject).put("os", 1);
-        ((JSONObject)localObject).put("link_reply", this.qqArgument.linkReply);
-        ((JSONObject)localObject).put("entry", this.reportBridge.getEntry());
-        ((JSONObject)localObject).put("scene", this.reportBridge.getScene());
-        if (!this.qqArgument.linkEnable) {
-          break label288;
-        }
-        j = 1;
-        ((JSONObject)localObject).put("link_entry", j);
-        if (this.vTopic.getVisibility() != 0) {
-          break label293;
-        }
-        j = 1;
-        ((JSONObject)localObject).put("subject", j);
-        if (this.vAt.getVisibility() != 0) {
-          break label298;
-        }
-        j = k;
-        ((JSONObject)localObject).put("at_entry", j);
-        localObject = ((JSONObject)localObject).toString();
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        str = "";
-      }
-      publicAccountReportClickEvent(getToUin(), "0X800844A", "0X800844A", String.valueOf(i), String.valueOf(this.qqArgument.mSourceType), "", str);
-      return;
-      label288:
-      int j = 0;
-      continue;
-      label293:
-      j = 0;
-      continue;
-      label298:
-      j = 0;
-    }
+    this.vAt.post(new QQPublishCommentFragment.1(this));
   }
   
   private void showInputMethod()
   {
+    this.vInputEdit.requestFocus();
     this.vInputEdit.setWindowFocusChangeListener(new QQPublishCommentFragment.2(this));
   }
   
@@ -491,6 +284,11 @@ public class QQPublishCommentFragment
     }
   }
   
+  private void showToast(String paramString, int paramInt1, int paramInt2)
+  {
+    this.publishCommentBridge.showToast(paramString, paramInt1, paramInt2);
+  }
+  
   private void updateDeliverEnable()
   {
     boolean bool2 = this.viewBridge.hasGif();
@@ -499,7 +297,6 @@ public class QQPublishCommentFragment
       bool1 = false;
     }
     this.vDeliverButton.setEnabled(bool1);
-    this.biuAndCommentMixUi.onUpdateDeliverEnable(bool1);
   }
   
   protected void beforeStateChange(int paramInt1, int paramInt2)
@@ -523,6 +320,7 @@ public class QQPublishCommentFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
+    boolean bool2 = true;
     if (paramBundle != null)
     {
       this.isRecreate = true;
@@ -534,7 +332,17 @@ public class QQPublishCommentFragment
     this.mMaxCharCount = this.qqArgument.maxCharCount;
     initDefaultCommentAtFromArguments();
     initPlaceHolderFromArguments();
-    reportOpenCommentComponent();
+    paramBundle = this.reportBridge;
+    boolean bool1;
+    if (this.vTopic.getVisibility() == 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    if (this.vAt.getVisibility() != 0) {
+      bool2 = false;
+    }
+    paramBundle.reportOpenCommentComponent(bool1, bool2);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -569,7 +377,7 @@ public class QQPublishCommentFragment
     }
     this.linkUi.onDestroy();
     if (!this.dismissOnDeliver) {
-      reportCommentCancelEvent();
+      this.reportBridge.reportCommentCancelEvent();
     }
     this.lifecycleBridge.onDestroy(this.dismissOnDeliver ^ true);
   }
@@ -579,30 +387,24 @@ public class QQPublishCommentFragment
     super.onPause();
     this.lastState = getState();
     this.lifecycleBridge.onPause();
+    if (this.lastState == 0) {
+      showInputMethod();
+    }
   }
   
   public void onResume()
   {
     super.onResume();
     this.lifecycleBridge.onResume();
+    checkFirstAction();
     if (this.lastState == 1) {
       showInputMethod();
     }
   }
-  
-  public void showToast(String paramString, int paramInt)
-  {
-    showToast(paramString, paramInt, 0);
-  }
-  
-  public void showToast(String paramString, int paramInt1, int paramInt2)
-  {
-    this.publishCommentBridge.showToast(paramString, paramInt1, paramInt2);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ class NowLiteStrategy$1
   public void a(boolean paramBoolean)
   {
     NowBizConfigManager.a("multi_voice", paramBoolean);
-    IDoneCallback localIDoneCallback = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIDoneCallback;
+    IDoneCallback localIDoneCallback = this.a;
     if (localIDoneCallback != null) {
       localIDoneCallback.a();
     }
-    DataReport.a(this.jdField_a_of_type_AndroidOsBundle, paramBoolean);
+    DataReport.a(this.b, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.NowLiteStrategy.1
  * JD-Core Version:    0.7.0.1
  */

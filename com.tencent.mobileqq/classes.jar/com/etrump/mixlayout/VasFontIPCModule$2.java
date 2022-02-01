@@ -19,9 +19,9 @@ class VasFontIPCModule$2
       if (TextUtils.isDigitsOnly(paramString2))
       {
         paramInt2 = Integer.parseInt(paramString2);
-        if (VasFontIPCModule.a(this.a).containsKey(Integer.valueOf(paramInt2)))
+        if (VasFontIPCModule.c(this.a).containsKey(Integer.valueOf(paramInt2)))
         {
-          int i = ((Integer)VasFontIPCModule.a(this.a).get(Integer.valueOf(paramInt2))).intValue();
+          int i = ((Integer)VasFontIPCModule.c(this.a).get(Integer.valueOf(paramInt2))).intValue();
           paramString2 = new Bundle();
           paramString2.putInt("id", paramInt2);
           paramString2.putInt("notify_type", 7);
@@ -31,11 +31,11 @@ class VasFontIPCModule$2
             paramString2 = EIPCResult.createResult(-102, paramString2);
           }
           this.a.callbackResult(i, paramString2);
-          VasFontIPCModule.a(this.a).remove(Integer.valueOf(paramInt2));
+          VasFontIPCModule.c(this.a).remove(Integer.valueOf(paramInt2));
         }
       }
     }
-    if (VasFontIPCModule.b(this.a).containsKey(paramString1))
+    if (VasFontIPCModule.d(this.a).containsKey(paramString1))
     {
       paramString2 = new Bundle();
       paramString2.putInt("notify_type", 8);
@@ -48,9 +48,9 @@ class VasFontIPCModule$2
       }
       paramString2.putInt("download_result", paramInt1);
       paramString2 = EIPCResult.createResult(0, paramString2);
-      paramInt1 = ((Integer)VasFontIPCModule.b(this.a).get(paramString1)).intValue();
+      paramInt1 = ((Integer)VasFontIPCModule.d(this.a).get(paramString1)).intValue();
       this.a.callbackResult(paramInt1, paramString2);
-      VasFontIPCModule.b(this.a).remove(paramString1);
+      VasFontIPCModule.d(this.a).remove(paramString1);
     }
   }
 }

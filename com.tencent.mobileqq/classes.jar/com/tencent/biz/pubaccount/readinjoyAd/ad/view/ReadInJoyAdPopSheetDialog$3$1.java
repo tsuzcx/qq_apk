@@ -9,12 +9,12 @@ class ReadInJoyAdPopSheetDialog$3$1
   
   public void run()
   {
-    ReadInJoyAdPopSheetDialog.a(this.a.this$0).loadUrl(this.a.a);
+    ReadInJoyAdPopSheetDialog.c(this.a.this$0).loadUrl(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class DropdownView$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$1.a.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$AutoCompleteView.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$1.a.b);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDropdownView$1.a.jdField_a_of_type_Boolean = true;
+    this.b.a.a.showDropDown();
+    ((ImageView)this.a).setImageDrawable(this.b.a.c);
+    this.b.a.d = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DropdownView.1.1
  * JD-Core Version:    0.7.0.1
  */

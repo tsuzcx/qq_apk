@@ -16,30 +16,30 @@ class MultiIncomingCallUICtr$3
   protected void a(long paramLong, int paramInt)
   {
     StringBuilder localStringBuilder;
-    if (this.a.jdField_b_of_type_Boolean)
+    if (this.b.t)
     {
-      long l = AudioHelper.b();
+      long l = AudioHelper.c();
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("onDestroyInviteUI, groupId[");
         localStringBuilder.append(paramLong);
         localStringBuilder.append("], mPeerUin[");
-        localStringBuilder.append(this.a.jdField_c_of_type_JavaLangString);
+        localStringBuilder.append(this.b.m);
         localStringBuilder.append("], seq[");
         localStringBuilder.append(l);
         localStringBuilder.append("]");
         QLog.w("MultiIncomingCallUICtr", 1, localStringBuilder.toString());
       }
-      if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(String.valueOf(paramLong))))
+      if ((this.b.m != null) && (this.b.m.equals(String.valueOf(paramLong))))
       {
-        this.a.a(l, paramInt);
-        this.a.a();
+        this.b.a(l, paramInt);
+        this.b.a();
       }
     }
-    else if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong))
+    else if ((this.b.d == paramLong) || (0L == paramLong))
     {
-      this.a.a();
+      this.b.a();
     }
     if (QLog.isColorLevel())
     {
@@ -49,7 +49,7 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append(", reason:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", mGroupId:");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.d);
       QLog.d("MultiIncomingCallUICtr", 2, localStringBuilder.toString());
     }
   }
@@ -63,9 +63,9 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append(paramLong2);
       QLog.d("MultiIncomingCallUICtr", 2, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.ab = true;
-    if (this.a.jdField_b_of_type_Int == 1) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
+    this.b.l.bv = true;
+    if (this.b.g == 1) {
+      this.b.c.a(paramLong2);
     }
   }
   
@@ -78,8 +78,8 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append(paramLong);
       QLog.d("MultiIncomingCallUICtr", 2, localStringBuilder.toString());
     }
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.a();
+    if ((this.b.d == paramLong) && (this.b.x.equals(paramString))) {
+      this.b.a();
     }
   }
   
@@ -95,14 +95,14 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append("]");
       QLog.w("MultiIncomingCallUICtr", 1, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.3.1(this, paramLong2), 500L);
-    this.a.f();
-    SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
+    this.b.c.a().postDelayed(new MultiIncomingCallUICtr.3.1(this, paramLong2), 500L);
+    this.b.g();
+    SmallScreenActivityPlugin.a(this.b.c).a(paramLong1, false);
+    if (this.b.o != null) {
+      this.b.o.c();
     }
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
-    TraeHelper.a().a(this.a.f);
+    this.b.c.a().postDelayed(this.b.H, 1000L);
+    TraeHelper.a().a(this.b.E);
   }
   
   protected void b(long paramLong1, long paramLong2, String paramString)
@@ -117,13 +117,13 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append(",invitedId:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", mInviterUin:");
-      localStringBuilder.append(this.a.jdField_b_of_type_Long);
+      localStringBuilder.append(this.b.i);
       localStringBuilder.append(", mGroupId:");
-      localStringBuilder.append(this.a.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b.d);
       QLog.d("MultiIncomingCallUICtr.troopgroup_vedio.invite", 2, localStringBuilder.toString());
     }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.a();
+    if ((paramLong2 == this.b.i) && (paramLong1 == this.b.d)) {
+      this.b.a();
     }
   }
   
@@ -136,10 +136,10 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append(paramLong);
       QLog.d("MultiIncomingCallUICtr", 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_Long != paramLong) {
-      this.a.b(0);
+    if (this.b.d != paramLong) {
+      this.b.b(0);
     }
-    this.a.a();
+    this.b.a();
   }
   
   protected void e(long paramLong)
@@ -151,8 +151,8 @@ class MultiIncomingCallUICtr$3
       localStringBuilder.append(paramLong);
       QLog.d("MultiIncomingCallUICtr", 2, localStringBuilder.toString());
     }
-    if (this.a.jdField_a_of_type_Long == paramLong) {
-      this.a.a();
+    if (this.b.d == paramLong) {
+      this.b.a();
     }
   }
 }

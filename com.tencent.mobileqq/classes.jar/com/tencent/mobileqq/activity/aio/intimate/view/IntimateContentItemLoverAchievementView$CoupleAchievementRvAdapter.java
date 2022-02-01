@@ -20,7 +20,7 @@ import java.util.List;
 class IntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter
   extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  private List<LoveAchievementInfo.LoveAchievementItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<LoveAchievementInfo.LoveAchievementItem> b = new ArrayList();
   
   private IntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter(IntimateContentItemLoverAchievementView paramIntimateContentItemLoverAchievementView) {}
   
@@ -28,45 +28,45 @@ class IntimateContentItemLoverAchievementView$CoupleAchievementRvAdapter
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.b.clear();
+      this.b.addAll(paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public void onBindViewHolder(@NonNull RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     paramViewHolder = (IntimateContentItemLoverAchievementView.CoupleAchievementViewHolder)paramViewHolder;
-    Object localObject = (LoveAchievementInfo.LoveAchievementItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = (LoveAchievementInfo.LoveAchievementItem)this.b.get(paramInt);
     paramViewHolder.itemView.setTag(localObject);
-    if (!TextUtils.isEmpty(((LoveAchievementInfo.LoveAchievementItem)localObject).a))
+    if (!TextUtils.isEmpty(((LoveAchievementInfo.LoveAchievementItem)localObject).b))
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestHeight = paramViewHolder.a.getHeight();
       localURLDrawableOptions.mRequestWidth = paramViewHolder.a.getWidth();
       localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(0);
       localURLDrawableOptions.mFailedDrawable = new ColorDrawable(0);
-      localObject = URLDrawable.getDrawable(((LoveAchievementInfo.LoveAchievementItem)localObject).a, localURLDrawableOptions);
+      localObject = URLDrawable.getDrawable(((LoveAchievementInfo.LoveAchievementItem)localObject).b, localURLDrawableOptions);
       paramViewHolder.a.setImageDrawable((Drawable)localObject);
-      paramViewHolder.a.setCornerRadiusAndMode(ViewUtils.b(7.0F), 1);
+      paramViewHolder.a.setCornerRadiusAndMode(ViewUtils.dpToPx(7.0F), 1);
     }
   }
   
   @NonNull
   public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateViewIntimateContentItemLoverAchievementView;
-    return new IntimateContentItemLoverAchievementView.CoupleAchievementViewHolder(paramViewGroup, LayoutInflater.from(paramViewGroup.a).inflate(2131559261, null));
+    paramViewGroup = this.a;
+    return new IntimateContentItemLoverAchievementView.CoupleAchievementViewHolder(paramViewGroup, LayoutInflater.from(paramViewGroup.a).inflate(2131625182, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemLoverAchievementView.CoupleAchievementRvAdapter
  * JD-Core Version:    0.7.0.1
  */

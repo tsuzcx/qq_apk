@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<vector android:height="32.0dip" android:width="32.0dip" android:viewportWidth="36.0" android:viewportHeight="36.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="20.0dip" />
-    <gradient android:startColor="#9900aaff" android:endColor="#990064ff" android:angle="0.0" android:type="linear" />
-</shape>
+    <path android:fillColor="#ff878b99" android:pathData="M19.8104,5.2876C19.9333,5.4456 20,5.64 20,5.8402L20,30.1598C20,30.6569 19.5971,31.0598 19.1,31.0598C18.8999,31.0598 18.7054,30.9931 18.5475,30.8702L11,25L5.8,25C4.8059,25 4,24.1941 4,23.2L4,13C4,11.8954 4.8954,11 6,11L11,11L18.5475,5.1298C18.9398,4.8246 19.5053,4.8953 19.8104,5.2876ZM22,7.5C27.799,7.5 32.5,12.201 32.5,18C32.5,23.7039 27.9519,28.3456 22.2843,28.4962L22,28.5L22,25.5C26.1421,25.5 29.5,22.1421 29.5,18C29.5,13.9391 26.2725,10.632 22.2427,10.5039L22,10.5L22,7.5ZM17,10.1331L12.0293,14L7,13.9991L7,21.9991L12.0293,22L17,25.8661L17,10.1331ZM22,12.9C24.8167,12.9 27.1,15.1833 27.1,18C27.1,20.7444 24.9322,22.9826 22.2156,23.0955L22,23.1L22,20.1C23.1598,20.1 24.1,19.1598 24.1,18C24.1,16.8906 23.2398,15.9822 22.15,15.9053L22,15.9L22,12.9Z" android:strokeColor="#00000000" android:strokeWidth="1.0" android:fillType="nonZero" />
+</vector>

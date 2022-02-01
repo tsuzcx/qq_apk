@@ -11,10 +11,10 @@ class EmojiManagerServiceImpl$7
   
   public void onJsonComplete(EmoticonPackage arg1, int paramInt, Bundle paramBundle)
   {
-    if (???.epId.equals(this.jdField_a_of_type_JavaLangString)) {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+    if (???.epId.equals(this.a)) {
+      synchronized (this.b)
       {
-        this.jdField_a_of_type_JavaLangObject.notify();
+        this.b.notify();
         return;
       }
     }
@@ -22,7 +22,7 @@ class EmojiManagerServiceImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.api.impl.EmojiManagerServiceImpl.7
  * JD-Core Version:    0.7.0.1
  */

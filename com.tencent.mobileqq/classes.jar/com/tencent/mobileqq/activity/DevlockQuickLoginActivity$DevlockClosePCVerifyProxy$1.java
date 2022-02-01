@@ -23,8 +23,8 @@ class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1
       if (DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.a(this.this$0)) {
         return;
       }
-      localObject1 = (BaseActivity)DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.a(this.this$0).get();
-      localObject2 = (TextView)DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.b(this.this$0).get();
+      localObject1 = (BaseActivity)DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.b(this.this$0).get();
+      localObject2 = (TextView)DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.c(this.this$0).get();
       if (((BaseActivity)localObject1).isFinishing())
       {
         QLog.e("DevlockQuickLoginActivity", 1, "handleSetPCVerify error: activity.isFinishing()");
@@ -33,10 +33,10 @@ class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1
       if (this.a)
       {
         ((TextView)localObject2).setVisibility(4);
-        QQToast.a(BaseApplication.getContext(), 2, 2131698701, 1).a();
+        QQToast.makeText(BaseApplication.getContext(), 2, 2131896659, 1).show();
         return;
       }
-      QQToast.a(BaseApplication.getContext(), 1, 2131698700, 1).a();
+      QQToast.makeText(BaseApplication.getContext(), 1, 2131896658, 1).show();
       return;
     }
     catch (Exception localException)
@@ -50,7 +50,7 @@ class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockQuickLoginActivity.DevlockClosePCVerifyProxy.1
  * JD-Core Version:    0.7.0.1
  */

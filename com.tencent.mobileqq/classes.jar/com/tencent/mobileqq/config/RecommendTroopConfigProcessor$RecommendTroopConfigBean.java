@@ -6,17 +6,11 @@ import com.tencent.mobileqq.jsonconverter.JSONConverter;
 public class RecommendTroopConfigProcessor$RecommendTroopConfigBean
 {
   @Alias(a="poll_interval")
-  public int a;
+  public int a = 10;
   @Alias(a="jump_url")
-  public String a;
+  public String b = "";
   @Alias(a="search_empty_show_troop_recommend")
-  public int b = 0;
-  
-  public RecommendTroopConfigProcessor$RecommendTroopConfigBean()
-  {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public int c = 0;
   
   public static RecommendTroopConfigBean a(String paramString)
   {
@@ -25,7 +19,7 @@ public class RecommendTroopConfigProcessor$RecommendTroopConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.RecommendTroopConfigProcessor.RecommendTroopConfigBean
  * JD-Core Version:    0.7.0.1
  */

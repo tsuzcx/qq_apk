@@ -5,38 +5,38 @@ import java.util.Arrays;
 public class UFTC2CUploadInfo
   extends UFTBaseUploadInfo
 {
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
+  private long a = -1L;
+  private byte[] b;
+  private String c;
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.b = paramArrayOfByte;
   }
   
   public void c(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
+  }
+  
+  public long g()
+  {
+    return this.a;
+  }
+  
+  public byte[] h()
+  {
+    return this.b;
+  }
+  
+  public String i()
+  {
+    return this.c;
   }
   
   public String toString()
@@ -45,11 +45,11 @@ public class UFTC2CUploadInfo
     localStringBuilder.append("UFTC2CUploadInfo{");
     localStringBuilder.append(super.toString());
     localStringBuilder.append(", tempSessionType=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", tmpSessionSig=");
-    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(Arrays.toString(this.b));
     localStringBuilder.append(", tmpSessionToPhone='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -57,7 +57,7 @@ public class UFTC2CUploadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.api.UFTC2CUploadInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/i3_" />
-    <item android:state_pressed="true" android:drawable="@drawable/i3_" />
-    <item android:drawable="@drawable/i39" />
-</selector>
+    <item android:height="91.0dip">
+        <shape>
+            <gradient android:startColor="#ffffffff" android:endColor="#00ffffff" android:angle="90.0" android:type="linear" />
+        </shape>
+    </item>
+    <item android:height="73.0dip" android:top="91.0dip">
+        <shape>
+            <solid android:color="#ffffffff" />
+        </shape>
+    </item>
+</layer-list>

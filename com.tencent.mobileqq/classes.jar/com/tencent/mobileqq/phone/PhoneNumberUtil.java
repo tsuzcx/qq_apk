@@ -15,7 +15,7 @@ public class PhoneNumberUtil
     Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
-      localObject = a(paramString);
+      localObject = b(paramString);
       paramString = (String)((ArrayList)localObject).get(0);
       localObject = (String)((ArrayList)localObject).get(1);
     }
@@ -27,7 +27,7 @@ public class PhoneNumberUtil
     return new PhoneNumberInfo(paramString, "", (String)localObject);
   }
   
-  public static ArrayList<String> a(String paramString)
+  public static ArrayList<String> b(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (!TextUtils.isEmpty(paramString))
@@ -105,7 +105,7 @@ public class PhoneNumberUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phone.PhoneNumberUtil
  * JD-Core Version:    0.7.0.1
  */

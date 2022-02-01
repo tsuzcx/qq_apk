@@ -19,13 +19,13 @@ class QRDisplayActivity$4
   
   public void onClick(@NonNull View paramView)
   {
-    paramView = TroopInfoUIUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, 5, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopLat, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopLon, 0, "");
-    paramView.putString("leftViewText", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.getString(2131719940));
+    paramView = TroopInfoUIUtil.a(this.a.troopuin, 5, this.a.troopLat, this.a.troopLon, 0, "");
+    paramView.putString("leftViewText", this.b.getString(2131917545));
     paramView.putInt("PARAM_EXIT_ANIMATION", 1);
     paramView.putBoolean(TroopInfoActivityConstant.a, true);
-    ((ITroopInfoActivityApi)QRoute.api(ITroopInfoActivityApi.class)).openTroopProfile(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, paramView);
-    this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.overridePendingTransition(2130771993, 2130771994);
-    TroopReportor.a("Grp_QR", "search_upgrade", "search_upgrade_click", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin });
+    ((ITroopInfoActivityApi)QRoute.api(ITroopInfoActivityApi.class)).openTroopProfile(this.b, paramView);
+    this.b.overridePendingTransition(2130771996, 2130771997);
+    TroopReportor.a("Grp_QR", "search_upgrade", "search_upgrade_click", 0, 0, new String[] { this.a.troopuin });
   }
   
   public void updateDrawState(TextPaint paramTextPaint)

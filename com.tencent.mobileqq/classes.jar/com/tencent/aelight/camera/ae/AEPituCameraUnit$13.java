@@ -1,28 +1,26 @@
 package com.tencent.aelight.camera.ae;
 
-import com.tencent.aelight.camera.aioeditor.setting.IQIMCameraContainer;
-import com.tencent.util.LiuHaiUtils;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
 class AEPituCameraUnit$13
-  implements Runnable
+  implements CosFunHelper.CountDownListener
 {
   AEPituCameraUnit$13(AEPituCameraUnit paramAEPituCameraUnit) {}
   
-  public void run()
+  public void onCountDownEnd()
   {
-    LiuHaiUtils.a();
-    LiuHaiUtils.a(this.this$0.a.a());
-    if (LiuHaiUtils.c()) {
-      LiuHaiUtils.b(this.this$0.a.a());
-    } else {
-      LiuHaiUtils.c(this.this$0.a.a());
-    }
-    this.this$0.aa();
+    this.a.av();
+  }
+  
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
+  {
+    AEPituCameraUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEPituCameraUnit.13
  * JD-Core Version:    0.7.0.1
  */

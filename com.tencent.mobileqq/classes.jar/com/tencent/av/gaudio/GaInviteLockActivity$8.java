@@ -10,17 +10,17 @@ class GaInviteLockActivity$8
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
+    if (this.b.L != null)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373510, false);
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131373511, false);
+      this.b.L.setViewEnable(2131441182, false);
+      this.b.L.setViewEnable(2131441183, false);
     }
   }
   
   public void b()
   {
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
-    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772219);
+    GaInviteLockActivity.a(this.b, this.a);
+    GaInviteLockActivity.a(this.b, 0, 2130772285);
   }
 }
 

@@ -94,7 +94,7 @@ public class BlockAdManager
   public float getDensity()
   {
     if (this.mGameDensity == -1.0F) {
-      this.mGameDensity = ViewUtils.a();
+      this.mGameDensity = ViewUtils.getDensity();
     }
     return this.mGameDensity;
   }
@@ -102,7 +102,7 @@ public class BlockAdManager
   public int getGameHeight()
   {
     if (this.mGameHeight == 0) {
-      this.mGameHeight = ViewUtils.b();
+      this.mGameHeight = ViewUtils.getScreenHeight();
     }
     return this.mGameHeight;
   }
@@ -110,7 +110,7 @@ public class BlockAdManager
   public int getGameWidth()
   {
     if (this.mGameWidth == 0) {
-      this.mGameWidth = ViewUtils.a();
+      this.mGameWidth = ViewUtils.getScreenWidth();
     }
     return this.mGameWidth;
   }
@@ -175,7 +175,7 @@ public class BlockAdManager
     paramActivity.append("density = ");
     paramActivity.append(localDisplayMetrics.density);
     paramActivity.append(", ViewUtils.density = ");
-    paramActivity.append(ViewUtils.a());
+    paramActivity.append(ViewUtils.getDensity());
     paramActivity.append(", screenW = ");
     paramActivity.append(this.mGameWidth);
     paramActivity.append(", screenH = ");
@@ -188,61 +188,61 @@ public class BlockAdManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 274	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 273	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: ldc_w 276
+    //   9: ldc_w 275
     //   12: astore 9
     //   14: iconst_m1
     //   15: istore 6
     //   17: aload 9
     //   19: astore 10
-    //   21: new 278	org/json/JSONObject
+    //   21: new 277	org/json/JSONObject
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 281	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   26: invokespecial 280	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   29: astore 11
     //   31: aload 9
     //   33: astore 10
     //   35: aload 11
-    //   37: ldc_w 283
-    //   40: invokevirtual 287	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: ldc_w 282
+    //   40: invokevirtual 286	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   43: astore 9
     //   45: aload 9
     //   47: astore 10
     //   49: aload 11
-    //   51: ldc_w 289
-    //   54: invokevirtual 293	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   57: ldc_w 295
-    //   60: invokevirtual 299	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   51: ldc_w 288
+    //   54: invokevirtual 292	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   57: ldc_w 294
+    //   60: invokevirtual 298	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   63: istore_3
     //   64: aload 11
-    //   66: ldc_w 289
-    //   69: invokevirtual 293	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   72: ldc_w 301
-    //   75: invokevirtual 299	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   66: ldc_w 288
+    //   69: invokevirtual 292	org/json/JSONObject:getJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   72: ldc_w 300
+    //   75: invokevirtual 298	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   78: istore 4
     //   80: aload 11
-    //   82: ldc_w 302
+    //   82: ldc_w 301
     //   85: iconst_1
-    //   86: invokevirtual 306	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   86: invokevirtual 305	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   89: istore 5
     //   91: aload 11
-    //   93: ldc_w 307
+    //   93: ldc_w 306
     //   96: ldc 8
-    //   98: invokevirtual 311	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   98: invokevirtual 310	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   101: astore 10
     //   103: ldc 8
     //   105: aload 10
-    //   107: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   107: invokevirtual 315	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   110: ifeq +9 -> 119
     //   113: bipush 90
     //   115: istore_2
     //   116: goto +24 -> 140
     //   119: ldc 11
     //   121: aload 10
-    //   123: invokevirtual 316	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   123: invokevirtual 315	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   126: istore 8
     //   128: iload 8
     //   130: ifeq +8 -> 138
@@ -252,8 +252,8 @@ public class BlockAdManager
     //   138: iconst_m1
     //   139: istore_2
     //   140: aload 11
-    //   142: ldc_w 318
-    //   145: invokevirtual 299	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   142: ldc_w 317
+    //   145: invokevirtual 298	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   148: istore 7
     //   150: iload 7
     //   152: istore 6
@@ -281,26 +281,26 @@ public class BlockAdManager
     //   196: istore 5
     //   198: iconst_m1
     //   199: istore_2
-    //   200: new 236	java/lang/StringBuilder
+    //   200: new 235	java/lang/StringBuilder
     //   203: dup
-    //   204: invokespecial 237	java/lang/StringBuilder:<init>	()V
+    //   204: invokespecial 236	java/lang/StringBuilder:<init>	()V
     //   207: astore 11
     //   209: aload 11
-    //   211: ldc_w 320
-    //   214: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: ldc_w 319
+    //   214: invokevirtual 242	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: pop
     //   218: aload 11
     //   220: aload_1
-    //   221: invokevirtual 243	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   221: invokevirtual 242	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: pop
     //   225: ldc 14
     //   227: iconst_2
     //   228: aload 11
-    //   230: invokevirtual 258	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   233: aload 10
-    //   235: invokestatic 323	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   235: invokestatic 322	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   238: aload 9
-    //   240: invokestatic 274	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   240: invokestatic 273	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   243: ifne +58 -> 301
     //   246: iload_3
     //   247: iflt +54 -> 301
@@ -319,7 +319,7 @@ public class BlockAdManager
     //   276: iload 5
     //   278: iload_2
     //   279: iload 6
-    //   281: invokespecial 326	com/tencent/mobileqq/minigame/data/BlockAdInfo:<init>	(Ljava/lang/String;IIIII)V
+    //   281: invokespecial 325	com/tencent/mobileqq/minigame/data/BlockAdInfo:<init>	(Ljava/lang/String;IIIII)V
     //   284: astore_1
     //   285: aload_0
     //   286: getfield 37	com/tencent/mobileqq/minigame/manager/BlockAdManager:blockAdInfoHashMap	Ljava/util/HashMap;
@@ -367,7 +367,7 @@ public class BlockAdManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.BlockAdManager
  * JD-Core Version:    0.7.0.1
  */

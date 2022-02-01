@@ -22,10 +22,10 @@ public class QQIdentiferLegacyActivity
   {
     paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = paramFragmentActivity.beginTransaction();
-    if (paramFragmentActivity.findFragmentById(2131367906) != null) {
-      localFragmentTransaction.replace(2131367906, paramFragment);
+    if (paramFragmentActivity.findFragmentById(2131434494) != null) {
+      localFragmentTransaction.replace(2131434494, paramFragment);
     } else {
-      localFragmentTransaction.add(2131367906, paramFragment);
+      localFragmentTransaction.add(2131434494, paramFragment);
     }
     if (VersionUtils.e())
     {
@@ -48,7 +48,7 @@ public class QQIdentiferLegacyActivity
   {
     super.doOnCreate(paramBundle);
     paramBundle = new FrameLayout(this);
-    paramBundle.setId(2131367906);
+    paramBundle.setId(2131434494);
     paramBundle.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     setContentView(paramBundle);
     changeBaseFragment(this, new QQIdentiferLegacy());
@@ -64,7 +64,7 @@ public class QQIdentiferLegacyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacyActivity
  * JD-Core Version:    0.7.0.1
  */

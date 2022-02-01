@@ -31,7 +31,7 @@ public class QzoneUserHomePageJsPlugin
       if (paramArrayOfString.length == 0) {
         return;
       }
-      Activity localActivity = paramWebViewPlugin.mRuntime.a();
+      Activity localActivity = paramWebViewPlugin.mRuntime.d();
       if (localActivity != null)
       {
         if (localActivity.isFinishing()) {
@@ -67,7 +67,7 @@ public class QzoneUserHomePageJsPlugin
       if (paramArrayOfString.length == 0) {
         return false;
       }
-      paramWebViewPlugin = paramWebViewPlugin.mRuntime.a();
+      paramWebViewPlugin = paramWebViewPlugin.mRuntime.d();
       if (paramWebViewPlugin != null)
       {
         if (paramWebViewPlugin.isFinishing()) {
@@ -135,7 +135,7 @@ public class QzoneUserHomePageJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneUserHomePageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

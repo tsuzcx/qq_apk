@@ -21,71 +21,71 @@ final class TroopNoticeJsHandler$2
   
   public void run()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);
+    Intent localIntent = new Intent(this.a, TroopAvatarWallPreviewActivity.class);
     Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putInt("index", this.jdField_a_of_type_Int);
-    ((Bundle)localObject1).putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
-    Object localObject2 = this.jdField_b_of_type_JavaUtilArrayList;
+    ((Bundle)localObject1).putInt("index", this.b);
+    ((Bundle)localObject1).putStringArrayList("seqNum", this.c);
+    Object localObject2 = this.d;
     if (localObject2 != null) {
       ((Bundle)localObject1).putStringArrayList("descs", (ArrayList)localObject2);
     }
-    localObject2 = this.jdField_a_of_type_ArrayOfBoolean;
+    localObject2 = this.e;
     if (localObject2 != null) {
       ((Bundle)localObject1).putBooleanArray("likes", (boolean[])localObject2);
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport;
+    localObject2 = this.f;
     if ((localObject2 != null) && (((PublicAccountShowPictureReport)localObject2).isReport)) {
-      ((Bundle)localObject1).putString("PublicAccountShowPictureReport", this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountShowPictureReport.toString());
+      ((Bundle)localObject1).putString("PublicAccountShowPictureReport", this.f.toString());
     }
-    localObject2 = this.jdField_c_of_type_JavaUtilArrayList;
+    localObject2 = this.g;
     if (localObject2 != null) {
       ((Bundle)localObject1).putStringArrayList("origin_list", (ArrayList)localObject2);
     }
-    localObject2 = this.d;
+    localObject2 = this.h;
     if (localObject2 != null) {
       ((Bundle)localObject1).putStringArrayList("origin_size_list", (ArrayList)localObject2);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.i))
     {
-      ((Bundle)localObject1).putString("dt_page_id", this.jdField_a_of_type_JavaLangString);
-      localObject2 = this.jdField_a_of_type_JavaUtilHashMap;
+      ((Bundle)localObject1).putString("dt_page_id", this.i);
+      localObject2 = this.j;
       if (localObject2 != null) {
         ((Bundle)localObject1).putSerializable("dt_page_params", (Serializable)localObject2);
       }
     }
-    ((Bundle)localObject1).putBoolean("needBottomBar", this.jdField_a_of_type_Boolean);
+    ((Bundle)localObject1).putBoolean("needBottomBar", this.k);
     ((Bundle)localObject1).putBoolean("IS_EDIT", false);
     ((Bundle)localObject1).putBoolean("is_use_path", true);
     ((Bundle)localObject1).putBoolean("is_show_action", true);
-    ((Bundle)localObject1).putBoolean("is_not_show_index", this.jdField_b_of_type_Boolean);
-    ((Bundle)localObject1).putBoolean("is_need_to_aio", this.jdField_c_of_type_Boolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo != null)
+    ((Bundle)localObject1).putBoolean("is_not_show_index", this.l);
+    ((Bundle)localObject1).putBoolean("is_need_to_aio", this.m);
+    if (this.n != null)
     {
       ((Bundle)localObject1).putBoolean("is_grid_image_report", true);
-      ((IRIJFrameworkReportManager)QRoute.api(IRIJFrameworkReportManager.class)).makeGridImageReadArticleReport(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, "", this.jdField_a_of_type_Int, (Bundle)localObject1);
+      ((IRIJFrameworkReportManager)QRoute.api(IRIJFrameworkReportManager.class)).makeGridImageReadArticleReport(this.n, "", this.b, (Bundle)localObject1);
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      ((Bundle)localObject1).putString("src_id", this.jdField_b_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.o)) {
+      ((Bundle)localObject1).putString("src_id", this.o);
     }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      ((Bundle)localObject1).putString("str_data_extra", this.jdField_c_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.p)) {
+      ((Bundle)localObject1).putString("str_data_extra", this.p);
     }
     localIntent.putExtras((Bundle)localObject1);
-    localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+    localObject1 = this.c;
     if ((localObject1 != null) && (((ArrayList)localObject1).size() > TroopNoticeJsHandler.a()))
     {
-      LargeIntentManager.saveIntent(localIntent, this.jdField_a_of_type_AndroidAppActivity);
-      localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);
+      LargeIntentManager.saveIntent(localIntent, this.a);
+      localIntent = new Intent(this.a, TroopAvatarWallPreviewActivity.class);
       localIntent.putExtra("save_intent_to_file", true);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, this.jdField_b_of_type_Int);
+      this.a.startActivityForResult(localIntent, this.q);
       return;
     }
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, this.jdField_b_of_type_Int);
+    this.a.startActivityForResult(localIntent, this.q);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -146,7 +146,7 @@ public class ProfileAnonymousComponent
       if (this.mViewContainer == null)
       {
         this.anonymousView = new AnonymousView(this.mActivity);
-        this.anonymousView.setTitle(this.mActivity.getString(2131698628));
+        this.anonymousView.setTitle(this.mActivity.getString(2131896575));
         paramCard = this.anonymousView;
         localObject = this.mApp;
         bool1 = bool4;
@@ -212,9 +212,9 @@ public class ProfileAnonymousComponent
     {
       int i;
       if (isHost()) {
-        i = 2131698631;
+        i = 2131896578;
       } else {
-        i = 2131698634;
+        i = 2131896581;
       }
       int j;
       if (isHost()) {
@@ -235,7 +235,7 @@ public class ProfileAnonymousComponent
     }
     if ((AnonymousRedPointUtils.showProfileRedPointGuide(this.mApp)) && (isHost()))
     {
-      localObject = paramAnonymousView.getResources().getDrawable(2130850766);
+      localObject = paramAnonymousView.getResources().getDrawable(2130852588);
       ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getMinimumWidth(), ((Drawable)localObject).getMinimumHeight());
       paramAnonymousView.mTitleText.setCompoundDrawables(null, null, (Drawable)localObject, null);
       paramAnonymousView.mTitleText.setCompoundDrawablePadding(Utils.a(4.0F, paramAnonymousView.getResources()));
@@ -295,7 +295,7 @@ public class ProfileAnonymousComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.ProfileAnonymousComponent
  * JD-Core Version:    0.7.0.1
  */

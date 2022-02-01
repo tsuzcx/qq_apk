@@ -9,12 +9,12 @@ class PublicAccountH5AbilityPluginImpl$26$1
   
   public void run()
   {
-    this.a.a.dismiss();
+    this.a.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.26.1
  * JD-Core Version:    0.7.0.1
  */

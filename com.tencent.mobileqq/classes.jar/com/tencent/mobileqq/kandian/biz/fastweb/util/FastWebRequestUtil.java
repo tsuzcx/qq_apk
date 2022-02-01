@@ -52,58 +52,10 @@ public class FastWebRequestUtil
 {
   private static Map<String, String> a;
   
-  public static int a(String paramString)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      localObject = (JSONObject)localJSONObject.opt("author_hot_article_datas");
-      if (localObject != null) {
-        ((JSONObject)localObject).optBoolean("should_have_ad");
-      }
-      int i = localJSONObject.optInt("recommend_type");
-      return i;
-    }
-    catch (JSONException localJSONException)
-    {
-      String str = localJSONException.toString();
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(" item:");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.e("FastWebRequestUtil", 1, new Object[] { "parseProteusDataShouldHaveAd error:", str, ((StringBuilder)localObject).toString() });
-    }
-    return 0;
-  }
-  
-  private static long a(String paramString)
-  {
-    try
-    {
-      long l = Long.parseLong(Uri.parse(paramString).getQueryParameter("article_id"));
-      return l;
-    }
-    catch (Exception localException)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("which", "3");
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("");
-      localStringBuilder.append(paramString);
-      localHashMap.put("article_url", localStringBuilder.toString());
-      paramString = new StringBuilder();
-      paramString.append("");
-      paramString.append(localException.toString());
-      localHashMap.put("error", paramString.toString());
-      localHashMap.put("param_uin", RIJQQAppInterfaceUtil.a());
-      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actKandianFastWebCost", false, 0L, 0L, localHashMap, null);
-    }
-    return -1L;
-  }
-  
   public static BaseData a()
   {
     ProteusRecommendItemData localProteusRecommendItemData = new ProteusRecommendItemData();
-    localProteusRecommendItemData.w = 2;
+    localProteusRecommendItemData.aW = 2;
     for (;;)
     {
       try
@@ -117,8 +69,8 @@ public class FastWebRequestUtil
         localObject1 = ((TemplateFactory)localObject1).getTemplateBean(localJSONObject);
         if (localObject1 != null)
         {
-          localProteusRecommendItemData.a = ((TemplateBean)localObject1);
-          localProteusRecommendItemData.c = localJSONObject;
+          localProteusRecommendItemData.bd = ((TemplateBean)localObject1);
+          localProteusRecommendItemData.bb = localJSONObject;
           return localProteusRecommendItemData;
         }
       }
@@ -135,7 +87,7 @@ public class FastWebRequestUtil
   public static BaseData a(AuthorData paramAuthorData)
   {
     ProteusRecommendItemData localProteusRecommendItemData = new ProteusRecommendItemData();
-    localProteusRecommendItemData.w = 1;
+    localProteusRecommendItemData.aW = 1;
     for (;;)
     {
       try
@@ -149,8 +101,8 @@ public class FastWebRequestUtil
         paramAuthorData = paramAuthorData.getTemplateBean(localJSONObject);
         if (paramAuthorData != null)
         {
-          localProteusRecommendItemData.a = paramAuthorData;
-          localProteusRecommendItemData.c = localJSONObject;
+          localProteusRecommendItemData.bd = paramAuthorData;
+          localProteusRecommendItemData.bb = localJSONObject;
           return localProteusRecommendItemData;
         }
       }
@@ -262,7 +214,7 @@ public class FastWebRequestUtil
       localObject2 = (String)((ViewBean)localObject2).valueBean.normalValue.get("setFontSizeString:");
       try
       {
-        int i = (int)FastWebPTSUtils.a();
+        int i = (int)FastWebPTSUtils.c();
         int i1 = Utils.dp2px(Integer.valueOf(str2).intValue());
         int j = Utils.dp2px(Integer.valueOf((String)localObject1).intValue());
         int k = Utils.dp2px(Integer.valueOf(str1).intValue());
@@ -339,10 +291,10 @@ public class FastWebRequestUtil
       if ((localObject instanceof ProteusItemData))
       {
         localObject = (ProteusItemData)localObject;
-        if (((ProteusItemData)localObject).w == 1) {
+        if (((ProteusItemData)localObject).aW == 1) {
           try
           {
-            a(paramAuthorData, ((ProteusItemData)localObject).c);
+            a(paramAuthorData, ((ProteusItemData)localObject).bb);
           }
           catch (JSONException localJSONException)
           {
@@ -360,7 +312,7 @@ public class FastWebRequestUtil
     paramJSONObject.put("nickname_text", paramAuthorData.b);
     paramJSONObject.put("timestamp_text", paramAuthorData.d);
     paramJSONObject.put("author_data", paramAuthorData);
-    FastWebPTSDataConverter.b(paramAuthorData.a, paramJSONObject);
+    FastWebPTSDataConverter.b(paramAuthorData.g, paramJSONObject);
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FeedbackCallback paramFeedbackCallback)
@@ -377,12 +329,12 @@ public class FastWebRequestUtil
     float f;
     if ((paramAbsBaseArticleInfo != null) && (paramProteusItemData != null))
     {
-      if (paramProteusItemData.c == null) {
+      if (paramProteusItemData.bb == null) {
         return;
       }
       try
       {
-        localJSONObject = paramProteusItemData.c.optJSONObject("card_info");
+        localJSONObject = paramProteusItemData.bb.optJSONObject("card_info");
         if (localJSONObject == null) {
           break label185;
         }
@@ -410,9 +362,9 @@ public class FastWebRequestUtil
     for (;;)
     {
       label120:
-      paramProteusItemData.b = f;
-      paramProteusItemData.A = paramInt;
-      paramProteusItemData.c.put("dt_rowkey", paramAbsBaseArticleInfo.innerUniqueID);
+      paramProteusItemData.aV = f;
+      paramProteusItemData.bf = paramInt;
+      paramProteusItemData.bb.put("dt_rowkey", paramAbsBaseArticleInfo.innerUniqueID);
       a(paramProteusItemData);
       return;
       return;
@@ -430,13 +382,13 @@ public class FastWebRequestUtil
   private static void a(ProteusItemData paramProteusItemData)
   {
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = paramProteusItemData.c.keys();
+    Iterator localIterator = paramProteusItemData.bb.keys();
     String str;
     Object localObject;
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      localObject = paramProteusItemData.c.optJSONObject(str);
+      localObject = paramProteusItemData.bb.optJSONObject(str);
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -450,7 +402,7 @@ public class FastWebRequestUtil
     {
       str = (String)localIterator.next();
       localObject = (String)localHashMap.get(str);
-      paramProteusItemData.c.put(str, localObject);
+      paramProteusItemData.bb.put(str, localObject);
     }
   }
   
@@ -463,7 +415,7 @@ public class FastWebRequestUtil
     localStringBuilder = null;
     try
     {
-      long l = a(paramString);
+      long l = c(paramString);
       if (l == -1L) {
         return;
       }
@@ -486,7 +438,7 @@ public class FastWebRequestUtil
         catch (Throwable paramFastWebArticleInfo)
         {
           paramString = "";
-          break label297;
+          break label301;
         }
       } else {
         paramString = "";
@@ -501,10 +453,10 @@ public class FastWebRequestUtil
         localStringBuilder.append(paramString);
         QLog.d("Q.readinjoy.fast_web", 2, localStringBuilder.toString());
         l = new JSONObject(paramString).getInt("readCount");
-        if (l <= paramFastWebArticleInfo.a) {
+        if (l <= paramFastWebArticleInfo.c) {
           return;
         }
-        paramFastWebArticleInfo.a = l;
+        paramFastWebArticleInfo.c = l;
         ThreadManager.getUIHandler().post(new FastWebRequestUtil.4());
         return;
       }
@@ -515,7 +467,7 @@ public class FastWebRequestUtil
     {
       paramString = localStringBuilder;
     }
-    label297:
+    label301:
     localStringBuilder.append("");
     localStringBuilder.append(paramString);
     QLog.e("Q.readinjoy.fast_web", 2, paramFastWebArticleInfo, new Object[] { localStringBuilder.toString() });
@@ -531,62 +483,6 @@ public class FastWebRequestUtil
     paramRecommendAndAdCallback = new FastWebRequestUtil.RecommendAndAd(paramString1, paramRecommendAndAdCallback);
     a(paramString1, paramString2, paramString3, new FastWebRequestUtil.1(paramRecommendAndAdCallback), paramInt2, paramAuthorData);
     ((IRIJFastWebAdService)QRoute.api(IRIJFastWebAdService.class)).getAdData(paramString1, paramString2, paramString3, paramString4, paramBoolean, paramString5, paramString6, paramString7, paramInt1, paramLong, new FastWebRequestUtil.2(paramRecommendAndAdCallback), paramInt2);
-  }
-  
-  private static void a(JSONObject paramJSONObject)
-  {
-    Object localObject1 = paramJSONObject.optString("kd_ug_rsp_info");
-    if ((localObject1 != null) && (paramJSONObject.opt("id_recommend_category_txt") != null) && (paramJSONObject.opt("kd_ug_download_url") != null))
-    {
-      localObject1 = new FastWebRecommendUGInfo((String)localObject1, WebFastAdapter.a(paramJSONObject));
-      a(paramJSONObject, (FastWebRecommendUGInfo)localObject1);
-      Object localObject2 = ((FastWebRecommendUGInfo)localObject1).b;
-      paramJSONObject = paramJSONObject.getJSONObject("id_recommend_category_txt");
-      paramJSONObject.put("text_color", "#FF4A2D");
-      paramJSONObject.put("label_ug_progress_bgcolor", "#FFE9E9");
-      paramJSONObject.put("label_ug_progress_fgcolor", "#FFCECE");
-      if (!PackageUtil.a(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0"))
-      {
-        if ((((FastWebRecommendUGInfo)localObject1).b()) && (!TextUtils.isEmpty(((FastWebRecommendUGInfo)localObject1).c)))
-        {
-          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).e);
-          paramJSONObject.put("label_ug_progress_progress", 100);
-          return;
-        }
-        paramJSONObject.put("text", "");
-        return;
-      }
-      if ((((FastWebRecommendUGInfo)localObject1).a()) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-      {
-        localObject2 = DownloadManagerV2.a().b((String)localObject2);
-        if (localObject2 == null)
-        {
-          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).f);
-          paramJSONObject.put("label_ug_progress_progress", 0);
-          return;
-        }
-        if (((DownloadInfo)localObject2).a() == 4)
-        {
-          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).g);
-          paramJSONObject.put("label_ug_progress_progress", 100);
-          return;
-        }
-        if ((((DownloadInfo)localObject2).a() != 20) && (((DownloadInfo)localObject2).a() != 1) && (((DownloadInfo)localObject2).a() != 2))
-        {
-          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).j);
-          paramJSONObject.put("label_ug_progress_progress", ((DownloadInfo)localObject2).f);
-          return;
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(((FastWebRecommendUGInfo)localObject1).h);
-        localStringBuilder.append(((DownloadInfo)localObject2).f);
-        localStringBuilder.append("%");
-        paramJSONObject.put("text", localStringBuilder.toString());
-        paramJSONObject.put("label_ug_progress_progress", ((DownloadInfo)localObject2).f);
-        return;
-      }
-      paramJSONObject.put("text", "");
-    }
   }
   
   private static void a(JSONObject paramJSONObject, FastWebRecommendUGInfo paramFastWebRecommendUGInfo)
@@ -609,7 +505,7 @@ public class FastWebRequestUtil
         str1 = str2;
       }
     }
-    KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(paramFastWebRecommendUGInfo.a, str1, "1"));
+    KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(paramFastWebRecommendUGInfo.c, str1, "1"));
   }
   
   public static boolean a(String paramString)
@@ -634,11 +530,34 @@ public class FastWebRequestUtil
     return true;
   }
   
+  public static int b(String paramString)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localObject = (JSONObject)localJSONObject.opt("author_hot_article_datas");
+      if (localObject != null) {
+        ((JSONObject)localObject).optBoolean("should_have_ad");
+      }
+      int i = localJSONObject.optInt("recommend_type");
+      return i;
+    }
+    catch (JSONException localJSONException)
+    {
+      String str = localJSONException.toString();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" item:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("FastWebRequestUtil", 1, new Object[] { "parseProteusDataShouldHaveAd error:", str, ((StringBuilder)localObject).toString() });
+    }
+    return 0;
+  }
+  
   @RequiresApi(api=19)
   private static List<BaseData> b(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    label323:
+    label325:
     for (;;)
     {
       try
@@ -656,12 +575,12 @@ public class FastWebRequestUtil
             a(i, localJSONArray.length(), localJSONObject);
             b(i, localJSONArray.length(), localJSONObject);
             if (paramInt2 == 0) {
-              a(localJSONObject);
+              b(localJSONObject);
             }
           }
           localObject = TemplateFactory.a("native_article", true);
           if (localObject == null) {
-            break label323;
+            break label325;
           }
           localObject = ((TemplateFactory)localObject).getTemplateBean(localJSONObject);
           if (localObject != null)
@@ -669,8 +588,8 @@ public class FastWebRequestUtil
             ProteusItemData localProteusItemData = a(paramInt1);
             if (localProteusItemData != null)
             {
-              localProteusItemData.a = ((TemplateBean)localObject);
-              localProteusItemData.c = localJSONObject;
+              localProteusItemData.bd = ((TemplateBean)localObject);
+              localProteusItemData.bb = localJSONObject;
               localArrayList.add(localProteusItemData);
             }
           }
@@ -731,10 +650,91 @@ public class FastWebRequestUtil
     QLog.d("FastWebRequestUtil", 2, "shieldFeedSource");
     ThreadManager.excute(new FastWebRequestUtil.6(paramAbsBaseArticleInfo, paramFeedbackCallback), 128, null, true);
   }
+  
+  private static void b(JSONObject paramJSONObject)
+  {
+    Object localObject1 = paramJSONObject.optString("kd_ug_rsp_info");
+    if ((localObject1 != null) && (paramJSONObject.opt("id_recommend_category_txt") != null) && (paramJSONObject.opt("kd_ug_download_url") != null))
+    {
+      localObject1 = new FastWebRecommendUGInfo((String)localObject1, WebFastAdapter.a(paramJSONObject));
+      a(paramJSONObject, (FastWebRecommendUGInfo)localObject1);
+      Object localObject2 = ((FastWebRecommendUGInfo)localObject1).d;
+      paramJSONObject = paramJSONObject.getJSONObject("id_recommend_category_txt");
+      paramJSONObject.put("text_color", "#FF4A2D");
+      paramJSONObject.put("label_ug_progress_bgcolor", "#FFE9E9");
+      paramJSONObject.put("label_ug_progress_fgcolor", "#FFCECE");
+      if (!PackageUtil.b(BaseApplicationImpl.getContext(), "com.tencent.reading").equals("0"))
+      {
+        if ((((FastWebRecommendUGInfo)localObject1).b()) && (!TextUtils.isEmpty(((FastWebRecommendUGInfo)localObject1).e)))
+        {
+          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).g);
+          paramJSONObject.put("label_ug_progress_progress", 100);
+          return;
+        }
+        paramJSONObject.put("text", "");
+        return;
+      }
+      if ((((FastWebRecommendUGInfo)localObject1).a()) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        localObject2 = DownloadManagerV2.a().b((String)localObject2);
+        if (localObject2 == null)
+        {
+          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).h);
+          paramJSONObject.put("label_ug_progress_progress", 0);
+          return;
+        }
+        if (((DownloadInfo)localObject2).a() == 4)
+        {
+          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).i);
+          paramJSONObject.put("label_ug_progress_progress", 100);
+          return;
+        }
+        if ((((DownloadInfo)localObject2).a() != 20) && (((DownloadInfo)localObject2).a() != 1) && (((DownloadInfo)localObject2).a() != 2))
+        {
+          paramJSONObject.put("text", ((FastWebRecommendUGInfo)localObject1).l);
+          paramJSONObject.put("label_ug_progress_progress", ((DownloadInfo)localObject2).t);
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((FastWebRecommendUGInfo)localObject1).j);
+        localStringBuilder.append(((DownloadInfo)localObject2).t);
+        localStringBuilder.append("%");
+        paramJSONObject.put("text", localStringBuilder.toString());
+        paramJSONObject.put("label_ug_progress_progress", ((DownloadInfo)localObject2).t);
+        return;
+      }
+      paramJSONObject.put("text", "");
+    }
+  }
+  
+  private static long c(String paramString)
+  {
+    try
+    {
+      long l = Long.parseLong(Uri.parse(paramString).getQueryParameter("article_id"));
+      return l;
+    }
+    catch (Exception localException)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("which", "3");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramString);
+      localHashMap.put("article_url", localStringBuilder.toString());
+      paramString = new StringBuilder();
+      paramString.append("");
+      paramString.append(localException.toString());
+      localHashMap.put("error", paramString.toString());
+      localHashMap.put("param_uin", RIJQQAppInterfaceUtil.d());
+      StatisticCollector.getInstance(BaseApplicationImpl.getApplication()).collectPerformance(null, "actKandianFastWebCost", false, 0L, 0L, localHashMap, null);
+    }
+    return -1L;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.FastWebRequestUtil
  * JD-Core Version:    0.7.0.1
  */

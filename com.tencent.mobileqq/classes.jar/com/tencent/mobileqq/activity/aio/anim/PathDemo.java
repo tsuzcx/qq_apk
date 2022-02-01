@@ -3,35 +3,35 @@ package com.tencent.mobileqq.activity.aio.anim;
 public class PathDemo
   implements AnimationPath
 {
-  double jdField_a_of_type_Double;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private int b;
+  double b;
   private int c;
   private int d;
-  private int e;
+  private float e;
   private int f;
+  private int g;
+  private int h;
+  private int i;
   
   public int a(long paramLong, AnimationPath.Values paramValues)
   {
-    float f1 = this.jdField_a_of_type_Int;
-    float f2 = this.jdField_a_of_type_Float;
+    float f1 = this.c;
+    float f2 = this.e;
     float f3 = (float)paramLong;
-    paramValues.jdField_a_of_type_Int = ((int)(f1 + f2 * f3));
-    double d1 = this.jdField_b_of_type_Int;
+    paramValues.a = ((int)(f1 + f2 * f3));
+    double d1 = this.d;
     double d2 = paramLong;
     Double.isNaN(d2);
     Double.isNaN(d1);
-    paramValues.jdField_b_of_type_Int = ((int)(d1 + d2 * 0.8D));
-    paramValues.f = ((float)((Math.sin(f3 / 500.0F) + 1.0D) / 2.0D));
+    paramValues.b = ((int)(d1 + d2 * 0.8D));
+    paramValues.i = ((float)((Math.sin(f3 / 500.0F) + 1.0D) / 2.0D));
     d1 = f3 / 2.0F;
-    d2 = Math.sin(this.jdField_a_of_type_Double);
+    d2 = Math.sin(this.b);
     Double.isNaN(d1);
-    paramValues.jdField_b_of_type_Float = ((float)(d2 * d1));
-    d2 = Math.cos(this.jdField_a_of_type_Double);
+    paramValues.d = ((float)(d2 * d1));
+    d2 = Math.cos(this.b);
     Double.isNaN(d1);
-    paramValues.c = ((float)(d1 * d2));
-    if ((paramValues.jdField_a_of_type_Int >= -this.c) && (paramValues.jdField_b_of_type_Int >= -this.d) && (paramValues.jdField_a_of_type_Int <= this.e + this.c) && (paramValues.jdField_b_of_type_Int <= this.f + this.d)) {
+    paramValues.e = ((float)(d1 * d2));
+    if ((paramValues.a >= -this.f) && (paramValues.b >= -this.g) && (paramValues.a <= this.h + this.f) && (paramValues.b <= this.i + this.g)) {
       return 16;
     }
     return -1;
@@ -39,27 +39,27 @@ public class PathDemo
   
   public int a(AnimationPath.Values paramValues, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Int = (paramInt3 / 2);
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = ((float)(Math.random() - 0.5D));
-    this.c = (paramInt1 / 2);
-    this.d = (paramInt2 / 2);
-    this.e = paramInt3;
-    this.f = paramInt4;
-    paramValues.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramValues.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Double = (Math.random() * 2.0D * 3.141592653589793D);
+    this.c = (paramInt3 / 2);
+    this.d = 0;
+    this.e = ((float)(Math.random() - 0.5D));
+    this.f = (paramInt1 / 2);
+    this.g = (paramInt2 / 2);
+    this.h = paramInt3;
+    this.i = paramInt4;
+    paramValues.a = this.c;
+    paramValues.b = this.d;
+    this.b = (Math.random() * 2.0D * 3.141592653589793D);
     return 1;
   }
   
-  public PathDemo a()
+  public PathDemo b()
   {
     return new PathDemo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.PathDemo
  * JD-Core Version:    0.7.0.1
  */

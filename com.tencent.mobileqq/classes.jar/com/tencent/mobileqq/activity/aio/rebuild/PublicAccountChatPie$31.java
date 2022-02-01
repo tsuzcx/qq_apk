@@ -11,7 +11,7 @@ class PublicAccountChatPie$31
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    PublicAccountChatPie.d(this.a).post(new PublicAccountChatPie.31.1(this));
+    PublicAccountChatPie.s(this.a).post(new PublicAccountChatPie.31.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class PublicAccountChatPie$31
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.31
  * JD-Core Version:    0.7.0.1
  */

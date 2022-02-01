@@ -70,23 +70,23 @@ public class ProfileMetalWallUtils
         return false;
       }
       TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if ((paramProfileCardInfo.isTroopMemberCard) && (localTroopManager.m(paramProfileCardInfo.troopUin))) {
+      if ((paramProfileCardInfo.isTroopMemberCard) && (localTroopManager.Z(paramProfileCardInfo.troopUin))) {
         return false;
       }
-      if (SharedPreUtils.U(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {
+      if (SharedPreUtils.am(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin()) != 1) {
         return false;
       }
       if (paramProfileCardInfo.card.medalSwitchDisable) {
         return false;
       }
-      return !Utils.b(paramProfileCardInfo.allInOne.uin);
+      return !Utils.c(paramProfileCardInfo.allInOne.uin);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.medalwall.ProfileMetalWallUtils
  * JD-Core Version:    0.7.0.1
  */

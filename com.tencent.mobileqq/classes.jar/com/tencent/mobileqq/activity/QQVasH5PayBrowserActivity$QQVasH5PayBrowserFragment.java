@@ -25,20 +25,20 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
   {
     if (super.getWebView() != null)
     {
-      if ((getUIStyle().a & 0x80000) != 0L)
+      if ((getUIStyle().c & 0x80000) != 0L)
       {
-        getUIStyleHandler().a.setVisibility(8);
+        getUIStyleHandler().v.setVisibility(8);
         Intent localIntent = getIntent();
         if ((localIntent != null) && (localIntent.getBooleanExtra("from_qreader", false))) {
           a((ViewGroup)getActivity().getWindow().getDecorView());
         } else {
-          super.getActivity().getWindow().setBackgroundDrawableResource(2131167333);
+          super.getActivity().getWindow().setBackgroundDrawableResource(2131168376);
         }
-        if ((getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
-          ((RefreshView)getUIStyleHandler().jdField_c_of_type_AndroidViewViewGroup).a(false);
+        if ((getUIStyleHandler().u instanceof RefreshView)) {
+          ((RefreshView)getUIStyleHandler().u).a(false);
         }
-        if (getUIStyleHandler().jdField_c_of_type_AndroidViewView != null) {
-          getUIStyleHandler().jdField_c_of_type_AndroidViewView.setVisibility(8);
+        if (getUIStyleHandler().D != null) {
+          getUIStyleHandler().D.setVisibility(8);
         }
         if (this.webView.getX5WebViewExtension() != null)
         {
@@ -62,11 +62,11 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
           }
         }
       }
-      else if (getUIStyleHandler().jdField_c_of_type_AndroidViewView != null)
+      else if (getUIStyleHandler().D != null)
       {
-        getUIStyleHandler().jdField_c_of_type_AndroidViewView.setVisibility(0);
+        getUIStyleHandler().D.setVisibility(0);
       }
-      getWebTitleBarInterface().d(true);
+      getWebTitleBarInterface().e(true);
       super.getWebView().setVisibility(4);
     }
   }
@@ -101,7 +101,7 @@ public class QQVasH5PayBrowserActivity$QQVasH5PayBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity.QQVasH5PayBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

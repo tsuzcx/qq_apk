@@ -74,24 +74,24 @@ public final class PTSLiteDataFactory$Companion
         AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.next();
         Object localObject1 = paramRIJDataManager.a();
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "dataManager.builder");
-        localObject1 = ((RIJDataManager.Builder)localObject1).a();
+        localObject1 = ((RIJDataManager.Builder)localObject1).A();
         Object localObject2 = paramRIJDataManager.a();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "dataManager.builder");
-        int i = ((RIJDataManager.Builder)localObject2).b();
+        int i = ((RIJDataManager.Builder)localObject2).B();
         localObject2 = paramRIJDataManager.a();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "dataManager.builder");
-        int j = ((RIJDataManager.Builder)localObject2).a();
+        int j = ((RIJDataManager.Builder)localObject2).r();
         localObject2 = paramRIJDataManager.a();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "dataManager.builder");
-        boolean bool = ((RIJDataManager.Builder)localObject2).d();
+        boolean bool = ((RIJDataManager.Builder)localObject2).n();
         localObject2 = paramRIJDataManager.a();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "dataManager.builder");
-        localObject2 = ((RIJDataManager.Builder)localObject2).a();
+        localObject2 = ((RIJDataManager.Builder)localObject2).v();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "dataManager.builder.readInJoyBaseAdapter");
         int k = ((ReadInJoyBaseAdapter)localObject2).getCount();
         localObject2 = paramRIJDataManager.a();
         Intrinsics.checkExpressionValueIsNotNull(localObject2, "dataManager.builder");
-        RIJReportDataCollectionManager.a(localAbsBaseArticleInfo, (IReadInJoyModel)new ReadInJoyModelImpl((Context)localObject1, localAbsBaseArticleInfo, 46, i, j, paramInt, bool, k, null, (IReadInJoyBaseAdapter)((RIJDataManager.Builder)localObject2).a()), paramLong, paramInt, paramRIJDataManager);
+        RIJReportDataCollectionManager.a(localAbsBaseArticleInfo, (IReadInJoyModel)new ReadInJoyModelImpl((Context)localObject1, localAbsBaseArticleInfo, 46, i, j, paramInt, bool, k, null, (IReadInJoyBaseAdapter)((RIJDataManager.Builder)localObject2).v()), paramLong, paramInt, paramRIJDataManager);
       }
     }
   }
@@ -148,7 +148,7 @@ public final class PTSLiteDataFactory$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.PTSLiteDataFactory.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -75,10 +75,10 @@ public class AnimationManager
   
   public void init()
   {
-    this.recyclerView = this.mRoot.findViewById(2131376306);
-    this.animationView = ((AnimationView)this.mRoot.findViewById(2131362696));
-    this.rootView = this.mRoot.findViewById(2131376809);
-    this.bgView = this.mRoot.findViewById(2131363349);
+    this.recyclerView = this.mRoot.findViewById(2131444517);
+    this.animationView = ((AnimationView)this.mRoot.findViewById(2131428368));
+    this.rootView = this.mRoot.findViewById(2131445137);
+    this.bgView = this.mRoot.findViewById(2131429234);
   }
   
   public void onDestroy()
@@ -236,7 +236,7 @@ public class AnimationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.richmediabrowser.animation.AnimationManager
  * JD-Core Version:    0.7.0.1
  */

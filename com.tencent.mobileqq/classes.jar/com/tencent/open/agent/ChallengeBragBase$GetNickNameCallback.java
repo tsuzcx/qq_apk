@@ -43,7 +43,7 @@ public class ChallengeBragBase$GetNickNameCallback
   
   public void a(Exception paramException)
   {
-    this.a.d();
+    this.a.e();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("GetNickNameCallback exception.");
     ((StringBuilder)localObject).append(paramException.getMessage());
@@ -91,7 +91,7 @@ public class ChallengeBragBase$GetNickNameCallback
   {
     try
     {
-      this.a.d();
+      this.a.e();
       int i = paramJSONObject.getInt("ret");
       localObject = paramJSONObject.getString("msg");
       if (i != 0)
@@ -109,19 +109,19 @@ public class ChallengeBragBase$GetNickNameCallback
         paramJSONObject = new Intent();
         paramJSONObject.putExtra("key_error_code", -5);
         paramJSONObject.putExtra("key_error_msg", Constants.c);
-        paramJSONObject.putExtra("key_error_detail", HardCodeUtil.a(2131701723));
+        paramJSONObject.putExtra("key_error_detail", HardCodeUtil.a(2131899743));
         a(paramJSONObject);
         return;
       }
       paramJSONObject = StringAddition.a(StringAddition.a(paramJSONObject.getJSONObject(0).getString("nick")), 12, true, true);
-      if ("action_brag".equals(this.a.p))
+      if ("action_brag".equals(this.a.B))
       {
-        this.a.a.setText(this.a.getString(2131689812, new Object[] { paramJSONObject }));
+        this.a.x.setText(this.a.getString(2131886453, new Object[] { paramJSONObject }));
         return;
       }
-      if ("action_challenge".equals(this.a.p))
+      if ("action_challenge".equals(this.a.B))
       {
-        this.a.a.setText(this.a.getString(2131689816, new Object[] { paramJSONObject }));
+        this.a.x.setText(this.a.getString(2131886457, new Object[] { paramJSONObject }));
         return;
       }
     }
@@ -145,7 +145,7 @@ public class ChallengeBragBase$GetNickNameCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.ChallengeBragBase.GetNickNameCallback
  * JD-Core Version:    0.7.0.1
  */

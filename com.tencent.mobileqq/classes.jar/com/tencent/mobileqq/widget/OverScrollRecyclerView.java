@@ -36,18 +36,18 @@ public class OverScrollRecyclerView
   
   public void b()
   {
-    this.a.c();
+    this.a.d();
   }
   
   public void c()
   {
-    this.a.b();
+    this.a.c();
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.a.c();
+    this.a.d();
   }
   
   public void setLayoutManager(RecyclerView.LayoutManager paramLayoutManager)
@@ -58,16 +58,16 @@ public class OverScrollRecyclerView
   
   public void setTouchDragRatio(float paramFloat1, float paramFloat2)
   {
-    if (this.a.a != null)
+    if (this.a.f != null)
     {
-      this.a.a.a = paramFloat1;
-      this.a.a.b = paramFloat2;
+      this.a.f.b = paramFloat1;
+      this.a.f.c = paramFloat2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OverScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

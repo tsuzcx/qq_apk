@@ -21,8 +21,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public final class GdtDownloaderAdapterV2
   implements AdDownloaderAdapterV2
 {
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new GdtDownloaderAdapterV2.3(this);
-  private List<WeakReference<AdDownloaderV2.Listener>> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private List<WeakReference<AdDownloaderV2.Listener>> a = new CopyOnWriteArrayList();
+  private DownloadListener b = new GdtDownloaderAdapterV2.3(this);
   
   private void a(String paramString, int paramInt)
   {
@@ -46,12 +46,12 @@ public final class GdtDownloaderAdapterV2
     if ((paramString.a() != 2) && (paramString.a() != 3)) {
       return -2147483648;
     }
-    return paramString.f;
+    return paramString.t;
   }
   
   public void init()
   {
-    DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
+    DownloadManagerV2.a().a(this.b);
   }
   
   public void installDownload(String paramString)
@@ -66,7 +66,7 @@ public final class GdtDownloaderAdapterV2
       GdtLog.d("GdtDownloaderAdapterV2", "installDownload error");
       return;
     }
-    DownloadManagerV2.a().a(paramString);
+    DownloadManagerV2.a().d(paramString);
   }
   
   public boolean isDownloadedOnFileThread(String paramString)
@@ -74,8 +74,8 @@ public final class GdtDownloaderAdapterV2
     if (!TextUtils.isEmpty(paramString))
     {
       paramString = DownloadManagerV2.a().b(paramString);
-      if ((paramString != null) && (!TextUtils.isEmpty(paramString.l))) {
-        return new File(paramString.l).exists();
+      if ((paramString != null) && (!TextUtils.isEmpty(paramString.q))) {
+        return new File(paramString.q).exists();
       }
     }
     return false;
@@ -88,7 +88,7 @@ public final class GdtDownloaderAdapterV2
       GdtLog.d("GdtDownloaderAdapterV2", "pauseDownload error");
       return;
     }
-    DownloadManagerV2.a().a(paramString);
+    DownloadManagerV2.a().e(paramString);
   }
   
   public void registerListener(WeakReference<AdDownloaderV2.Listener> paramWeakReference)
@@ -98,7 +98,7 @@ public final class GdtDownloaderAdapterV2
       if (paramWeakReference.get() == null) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -106,7 +106,7 @@ public final class GdtDownloaderAdapterV2
           return;
         }
       }
-      this.jdField_a_of_type_JavaUtilList.add(paramWeakReference);
+      this.a.add(paramWeakReference);
     }
   }
   
@@ -133,10 +133,8 @@ public final class GdtDownloaderAdapterV2
       paramBundle.putBoolean(DownloadConstants.s, false);
       paramBundle.putBoolean(DownloadConstants.L, false);
       paramBundle.putString(DownloadConstants.i, paramAd.getVia());
+      paramBundle.putInt("hideInstallSuccessPage", 1);
       paramBundle.putAll(localBundle);
-      if ((!TextUtils.isEmpty(paramAd.getAppDeeplink())) || (paramAd.canLaunchAppAfterInstalled())) {
-        paramBundle.putInt("hideInstallSuccessPage", 1);
-      }
       DownloadProxy.a().a(null, paramBundle, "biz_src_ads", null, 0);
       return;
     }
@@ -150,12 +148,12 @@ public final class GdtDownloaderAdapterV2
       if (paramWeakReference.get() == null) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if ((localWeakReference != null) && (localWeakReference.get() == paramWeakReference.get())) {
-          this.jdField_a_of_type_JavaUtilList.remove(localWeakReference);
+          this.a.remove(localWeakReference);
         }
       }
     }
@@ -163,7 +161,7 @@ public final class GdtDownloaderAdapterV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtDownloaderAdapterV2
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,6 @@ import android.os.Build.VERSION;
 final class SystemLibraryLoader
   implements ReLinker.LibraryLoader
 {
-  public String a(String paramString)
-  {
-    if ((paramString.startsWith("lib")) && (paramString.endsWith(".so"))) {
-      return paramString;
-    }
-    return System.mapLibraryName(paramString);
-  }
-  
   public void a(String paramString)
   {
     System.loadLibrary(paramString);
@@ -30,14 +22,22 @@ final class SystemLibraryLoader
     return new String[] { Build.CPU_ABI };
   }
   
-  public String b(String paramString)
-  {
-    return paramString.substring(3, paramString.length() - 3);
-  }
-  
   public void b(String paramString)
   {
     System.load(paramString);
+  }
+  
+  public String c(String paramString)
+  {
+    if ((paramString.startsWith("lib")) && (paramString.endsWith(".so"))) {
+      return paramString;
+    }
+    return System.mapLibraryName(paramString);
+  }
+  
+  public String d(String paramString)
+  {
+    return paramString.substring(3, paramString.length() - 3);
   }
 }
 

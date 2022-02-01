@@ -9,15 +9,15 @@ public class StartSecurityScan
 {
   protected int doStep()
   {
-    if (this.mAutomator.a.isNeedSecurityScan()) {
-      this.mAutomator.a.startSecurityScan();
+    if (this.mAutomator.k.isNeedSecurityScan()) {
+      this.mAutomator.k.startSecurityScan();
     }
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.StartSecurityScan
  * JD-Core Version:    0.7.0.1
  */

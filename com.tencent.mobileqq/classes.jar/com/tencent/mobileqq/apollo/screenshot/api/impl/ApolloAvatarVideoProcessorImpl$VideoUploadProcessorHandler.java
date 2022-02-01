@@ -28,13 +28,13 @@ class ApolloAvatarVideoProcessorImpl$VideoUploadProcessorHandler
     } else if (paramFileMsg.fileType == 48) {
       ApolloAvatarVideoProcessorImpl.access$2200(this.a, paramFileMsg);
     }
-    FaceUtil.a(null);
+    FaceUtil.e(null);
   }
   
   private void b(FileMsg paramFileMsg)
   {
     QLog.e("[cmshow]ApolloAvatarVideoProcessor", 2, String.format("handleStatusSendError, errorCode=%s", new Object[] { Integer.valueOf(paramFileMsg.errorCode) }));
-    FaceUtil.a(null);
+    FaceUtil.e(null);
     if (ApolloAvatarVideoProcessorImpl.access$300(this.a) != null) {
       ApolloAvatarVideoProcessorImpl.access$300(this.a).a(false, ApolloAvatarVideoProcessorImpl.access$400(this.a));
     }
@@ -71,7 +71,7 @@ class ApolloAvatarVideoProcessorImpl$VideoUploadProcessorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.screenshot.api.impl.ApolloAvatarVideoProcessorImpl.VideoUploadProcessorHandler
  * JD-Core Version:    0.7.0.1
  */

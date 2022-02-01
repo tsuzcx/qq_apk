@@ -14,12 +14,12 @@ public class ARPromotionConfigHandler$ARPromotionResHandler
   
   public void onGetConfigFinish(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
   {
-    PromotionUtil.a(paramQQAppInterface).a(paramQQAppInterface, paramString, paramDefaultConfigInfo);
+    PromotionUtil.b(paramQQAppInterface).a(paramQQAppInterface, paramString, paramDefaultConfigInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.ARPromotionConfigHandler.ARPromotionResHandler
  * JD-Core Version:    0.7.0.1
  */

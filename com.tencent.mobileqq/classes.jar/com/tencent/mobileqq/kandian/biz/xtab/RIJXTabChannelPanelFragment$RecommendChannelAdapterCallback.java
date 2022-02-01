@@ -5,12 +5,11 @@ import com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyDynamicGridView.Ba
 import com.tencent.mobileqq.kandian.biz.feeds.RIJBaseChannelGridViewAdapter;
 import com.tencent.mobileqq.kandian.biz.feeds.RIJBaseChannelGridViewAdapter.AdapterCallback;
 import com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelReporter;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJChannelHelper;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import java.net.URLDecoder;
@@ -54,10 +53,10 @@ class RIJXTabChannelPanelFragment$RecommendChannelAdapterCallback
     }
     if (paramTabChannelCoverInfo.mChannelType == 3)
     {
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoSubChannelActivity(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
+      ReadInJoyActivityHelper.INSTANCE.launchVideoSubChannelActivity(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
       return;
     }
-    ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchChannelActivity(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
+    ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
   }
   
   public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
@@ -79,7 +78,7 @@ class RIJXTabChannelPanelFragment$RecommendChannelAdapterCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.xtab.RIJXTabChannelPanelFragment.RecommendChannelAdapterCallback
  * JD-Core Version:    0.7.0.1
  */

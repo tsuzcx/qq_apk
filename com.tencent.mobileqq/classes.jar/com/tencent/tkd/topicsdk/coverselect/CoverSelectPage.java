@@ -45,58 +45,49 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectPage;", "Lcom/tencent/tkd/topicsdk/framework/BaseSDKPage;", "()V", "adapter", "Lcom/tencent/tkd/topicsdk/framework/PagerAdapterProxy;", "getAdapter", "()Lcom/tencent/tkd/topicsdk/framework/PagerAdapterProxy;", "captureEndTime", "", "captureIndicatorView", "Landroid/view/View;", "captureLayout", "Landroid/view/ViewGroup;", "captureStartTime", "captureTextView", "Landroid/widget/TextView;", "closeView", "config", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "confirmView", "coverGalleryView", "Lcom/tencent/tkd/topicsdk/covergallery/CoverGalleryView;", "coverPath", "", "fromPageId", "fromTabId", "fromTabId$annotations", "galleryIndicatorView", "galleryLayout", "galleryTextView", "initialProgress", "", "mAdapter", "rootView", "Landroid/widget/LinearLayout;", "selectMode", "selectMode$annotations", "videoCaptureView", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView;", "videoHeight", "videoPath", "videoWidth", "viewPagerProxy", "Lcom/tencent/tkd/topicsdk/framework/ViewPagerProxy;", "changeTab", "", "tabId", "getImmersiveStatusBarStatus", "Lkotlin/Pair;", "initCaptureChangeListener", "initConfirmView", "view", "initData", "initTabLayout", "initView", "initViewPager", "onConfirmItemClick", "outputPicListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/OutputPicListener;", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "onDestroyView", "refreshTabLayout", "reportClickConfirmCover", "reportTabSelected", "setCoverDataResult", "path", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/coverselect/CoverSelectPage;", "Lcom/tencent/tkd/topicsdk/framework/BaseSDKPage;", "()V", "adapter", "Lcom/tencent/tkd/topicsdk/framework/PagerAdapterProxy;", "getAdapter", "()Lcom/tencent/tkd/topicsdk/framework/PagerAdapterProxy;", "captureEndTime", "", "captureIndicatorView", "Landroid/view/View;", "captureLayout", "Landroid/view/ViewGroup;", "captureStartTime", "captureTextView", "Landroid/widget/TextView;", "closeView", "config", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "confirmView", "coverGalleryView", "Lcom/tencent/tkd/topicsdk/covergallery/CoverGalleryView;", "coverPath", "", "coverRatio", "", "fromPageId", "fromTabId", "fromTabId$annotations", "galleryIndicatorView", "galleryLayout", "galleryTextView", "initialProgress", "mAdapter", "rootView", "Landroid/widget/LinearLayout;", "selectMode", "selectMode$annotations", "videoCaptureView", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView;", "videoHeight", "videoPath", "videoWidth", "viewPagerProxy", "Lcom/tencent/tkd/topicsdk/framework/ViewPagerProxy;", "changeTab", "", "tabId", "getImmersiveStatusBarStatus", "Lkotlin/Pair;", "initCaptureChangeListener", "initConfirmView", "view", "initData", "initTabLayout", "initView", "initViewPager", "onConfirmItemClick", "outputPicListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/OutputPicListener;", "onCreateView", "inflater", "Landroid/view/LayoutInflater;", "container", "onDestroyView", "refreshTabLayout", "reportClickConfirmCover", "reportTabSelected", "setCoverDataResult", "path", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class CoverSelectPage
   extends BaseSDKPage
 {
-  public static final CoverSelectPage.Companion a;
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private GlobalPublisherConfig jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig;
-  private CoverGalleryView jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView;
-  private PagerAdapterProxy jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy = (PagerAdapterProxy)new CoverSelectPage.mAdapter.1(this);
-  private ViewPagerProxy jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
-  private VideoCaptureView jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private ViewGroup jdField_b_of_type_AndroidViewViewGroup;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private int jdField_d_of_type_Int = 2147483647;
-  private View jdField_d_of_type_AndroidViewView;
-  private int e;
-  private int f;
-  private int g;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkCoverselectCoverSelectPage$Companion = new CoverSelectPage.Companion(null);
-  }
-  
-  private final PagerAdapterProxy a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkPagerAdapterProxy;
-  }
+  public static final CoverSelectPage.Companion a = new CoverSelectPage.Companion(null);
+  private PagerAdapterProxy A = (PagerAdapterProxy)new CoverSelectPage.mAdapter.1(this);
+  private View c;
+  private ViewGroup d;
+  private TextView e;
+  private View f;
+  private ViewGroup g;
+  private TextView h;
+  private View i;
+  private View j;
+  private ViewPagerProxy k;
+  private VideoCaptureView l;
+  private CoverGalleryView m;
+  private int n;
+  private int o;
+  private String p = "";
+  private int q;
+  private int r = 2147483647;
+  private float s;
+  private String t = "";
+  private int u;
+  private int v;
+  private float w;
+  private LinearLayout x;
+  private int y;
+  private GlobalPublisherConfig z;
   
   private final void a(int paramInt)
   {
-    int i = this.jdField_b_of_type_Int;
-    if (i == 1) {
+    int i1 = this.o;
+    if (i1 == 1) {
       paramInt = 0;
-    } else if (i == 2) {
+    } else if (i1 == 2) {
       paramInt = 1;
     }
     ViewPagerProxy localViewPagerProxy;
     if (paramInt == 0)
     {
-      localViewPagerProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+      localViewPagerProxy = this.k;
       if (localViewPagerProxy == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
       }
@@ -104,7 +95,7 @@ public final class CoverSelectPage
     }
     else
     {
-      localViewPagerProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+      localViewPagerProxy = this.k;
       if (localViewPagerProxy == null) {
         Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
       }
@@ -116,69 +107,72 @@ public final class CoverSelectPage
   
   private final void a(View paramView)
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if (localObject1 != null) {
       localObject1 = (Context)localObject1;
     } else {
       localObject1 = AppContext.a.a();
     }
-    Object localObject2 = paramView.findViewById(R.id.Y);
+    Object localObject2 = paramView.findViewById(R.id.D);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.iv_close)");
-    this.jdField_a_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = this.jdField_a_of_type_AndroidViewView;
+    this.c = ((View)localObject2);
+    localObject2 = this.c;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("closeView");
     }
     ((View)localObject2).setOnClickListener((View.OnClickListener)new CoverSelectPage.initView.1(this));
-    localObject2 = paramView.findViewById(R.id.ag);
+    localObject2 = paramView.findViewById(R.id.K);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.ll_from_capture)");
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject2);
-    localObject2 = this.jdField_a_of_type_AndroidViewViewGroup;
+    this.d = ((ViewGroup)localObject2);
+    localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureLayout");
     }
     ((ViewGroup)localObject2).setOnClickListener((View.OnClickListener)new CoverSelectPage.initView.2(this));
-    localObject2 = paramView.findViewById(R.id.ba);
+    localObject2 = paramView.findViewById(R.id.aB);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.tv_from_capture)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    localObject2 = paramView.findViewById(R.id.bw);
+    this.e = ((TextView)localObject2);
+    localObject2 = paramView.findViewById(R.id.aU);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.v…w_from_capture_indicator)");
-    this.jdField_b_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = paramView.findViewById(R.id.ah);
+    this.f = ((View)localObject2);
+    localObject2 = paramView.findViewById(R.id.L);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.ll_from_gallery)");
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)localObject2);
-    localObject2 = this.jdField_b_of_type_AndroidViewViewGroup;
+    this.g = ((ViewGroup)localObject2);
+    localObject2 = this.g;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("galleryLayout");
     }
     ((ViewGroup)localObject2).setOnClickListener((View.OnClickListener)new CoverSelectPage.initView.3(this));
-    localObject2 = paramView.findViewById(R.id.bb);
+    localObject2 = paramView.findViewById(R.id.aC);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.tv_from_gallery)");
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    localObject2 = paramView.findViewById(R.id.bx);
+    this.h = ((TextView)localObject2);
+    localObject2 = paramView.findViewById(R.id.aV);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "view.findViewById(R.id.v…w_from_gallery_indicator)");
-    this.jdField_c_of_type_AndroidViewView = ((View)localObject2);
-    localObject2 = new VideoCaptureView.CaptureVideoInfo(this.jdField_a_of_type_JavaLangString);
-    ((VideoCaptureView.CaptureVideoInfo)localObject2).a(this.jdField_c_of_type_Int);
-    ((VideoCaptureView.CaptureVideoInfo)localObject2).b(this.jdField_d_of_type_Int);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView = new VideoCaptureView((Context)localObject1, (VideoCaptureView.CaptureVideoInfo)localObject2, this.jdField_a_of_type_Float, null, 8, null);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView = new CoverGalleryView((Context)localObject1, this.e, this.f, this.jdField_b_of_type_JavaLangString, null, 16, null);
-    g();
+    this.i = ((View)localObject2);
+    localObject2 = new VideoCaptureView.CaptureVideoInfo(this.p);
+    ((VideoCaptureView.CaptureVideoInfo)localObject2).a(this.q);
+    ((VideoCaptureView.CaptureVideoInfo)localObject2).b(this.r);
+    ((VideoCaptureView.CaptureVideoInfo)localObject2).c(this.u);
+    ((VideoCaptureView.CaptureVideoInfo)localObject2).d(this.v);
+    ((VideoCaptureView.CaptureVideoInfo)localObject2).a(this.w);
+    this.l = new VideoCaptureView((Context)localObject1, (VideoCaptureView.CaptureVideoInfo)localObject2, this.s, null, 8, null);
+    this.m = new CoverGalleryView((Context)localObject1, this.u, this.v, this.t, this.w, null, 32, null);
+    p();
     b(paramView);
     c(paramView);
-    h();
+    q();
   }
   
   private final void a(OutputPicListener paramOutputPicListener)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+    Object localObject = this.k;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
     }
-    if (((ViewPagerProxy)localObject).a() == 0)
+    if (((ViewPagerProxy)localObject).b() == 0)
     {
-      this.g = 0;
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView;
+      this.y = 0;
+      localObject = this.l;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("videoCaptureView");
       }
@@ -186,52 +180,52 @@ public final class CoverSelectPage
     }
     else
     {
-      this.g = 1;
-      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkCovergalleryCoverGalleryView;
+      this.y = 1;
+      localObject = this.m;
       if (localObject == null) {
         Intrinsics.throwUninitializedPropertyAccessException("coverGalleryView");
       }
       ((CoverGalleryView)localObject).a(paramOutputPicListener);
     }
-    i();
+    r();
   }
   
   private final void a(String paramString)
   {
-    int i;
+    int i1;
     if (((CharSequence)paramString).length() > 0) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       Intent localIntent = new Intent();
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.n == 0)
       {
-        VideoCaptureView localVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView;
+        VideoCaptureView localVideoCaptureView = this.l;
         if (localVideoCaptureView == null) {
           Intrinsics.throwUninitializedPropertyAccessException("videoCaptureView");
         }
-        float f1 = localVideoCaptureView.a();
-        localVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView;
+        float f1 = localVideoCaptureView.getProgress();
+        localVideoCaptureView = this.l;
         if (localVideoCaptureView == null) {
           Intrinsics.throwUninitializedPropertyAccessException("videoCaptureView");
         }
-        i = localVideoCaptureView.d();
+        i1 = localVideoCaptureView.getSeekVideoPosition();
         localIntent.putExtra("initial_progress", f1);
-        localIntent.putExtra("seek_video_position", i);
+        localIntent.putExtra("seek_video_position", i1);
       }
       localIntent.putExtra("result_path", paramString);
-      localIntent.putExtra("from_page", this.g);
-      paramString = a();
+      localIntent.putExtra("from_page", this.y);
+      paramString = b();
       if (paramString != null) {
         paramString.setResult(-1, localIntent);
       }
     }
     else
     {
-      paramString = a();
+      paramString = b();
       if (paramString != null) {
         paramString.setResult(0, null);
       }
@@ -240,16 +234,16 @@ public final class CoverSelectPage
   
   private final void b(int paramInt)
   {
-    if (this.jdField_b_of_type_Int != 0) {
+    if (this.o != 0) {
       return;
     }
-    int j = 0;
+    int i2 = 0;
     if (paramInt == 0) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
-    Object localObject2 = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject2 = this.e;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureTextView");
     }
@@ -259,7 +253,7 @@ public final class CoverSelectPage
       localObject1 = Typeface.defaultFromStyle(0);
     }
     ((TextView)localObject2).setTypeface((Typeface)localObject1);
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.e;
     if (localTextView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureTextView");
     }
@@ -270,7 +264,7 @@ public final class CoverSelectPage
       localObject1 = "#B3B3B3";
     }
     localTextView.setTextColor(Color.parseColor((String)localObject1));
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    localTextView = this.h;
     if (localTextView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("galleryTextView");
     }
@@ -280,7 +274,7 @@ public final class CoverSelectPage
       localObject1 = Typeface.defaultFromStyle(1);
     }
     localTextView.setTypeface((Typeface)localObject1);
-    localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+    localTextView = this.h;
     if (localTextView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("galleryTextView");
     }
@@ -289,33 +283,33 @@ public final class CoverSelectPage
       localObject1 = "#B3B3B3";
     }
     localTextView.setTextColor(Color.parseColor((String)localObject1));
-    localObject1 = this.jdField_b_of_type_AndroidViewView;
+    localObject1 = this.f;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureIndicatorView");
     }
     if (paramInt != 0) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 4;
+      i1 = 4;
     }
-    ((View)localObject1).setVisibility(i);
-    localObject1 = this.jdField_c_of_type_AndroidViewView;
+    ((View)localObject1).setVisibility(i1);
+    localObject1 = this.i;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("galleryIndicatorView");
     }
-    int i = j;
+    int i1 = i2;
     if (paramInt != 0) {
-      i = 4;
+      i1 = 4;
     }
-    ((View)localObject1).setVisibility(i);
+    ((View)localObject1).setVisibility(i1);
   }
   
   private final void b(View paramView)
   {
-    paramView = paramView.findViewById(R.id.aU);
+    paramView = paramView.findViewById(R.id.av);
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.findViewById(R.id.tv_confirm)");
-    this.jdField_d_of_type_AndroidViewView = paramView;
-    paramView = this.jdField_d_of_type_AndroidViewView;
+    this.j = paramView;
+    paramView = this.j;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("confirmView");
     }
@@ -330,137 +324,143 @@ public final class CoverSelectPage
     } else {
       localReportEventElement = ReportEventElement.BUTTON_SELECT_COVER_GALLERY_TAB;
     }
-    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_SELECT_VIDEO_COVER, localReportEventElement, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig, null, null, 97, null));
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_SELECT_VIDEO_COVER, localReportEventElement, this.z, null, null, 97, null));
   }
   
   private final void c(View paramView)
   {
     paramView = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramView, "view.context");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy = new ViewPagerProxy(paramView, TopicSDK.a.a().a().a());
-    paramView = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    this.k = new ViewPagerProxy(paramView, TopicSDK.a.a().b().p());
+    paramView = this.x;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("rootView");
     }
-    ViewPagerProxy localViewPagerProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+    ViewPagerProxy localViewPagerProxy = this.k;
     if (localViewPagerProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
     }
     paramView.addView(localViewPagerProxy.a(), (ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -1));
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+    paramView = this.k;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
     }
     paramView.a(false);
-    paramView = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+    paramView = this.k;
     if (paramView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
     }
-    paramView.a(a());
-    a(this.jdField_a_of_type_Int);
+    paramView.a(n());
+    a(this.n);
   }
   
-  private final void f()
+  private final PagerAdapterProxy n()
+  {
+    return this.A;
+  }
+  
+  private final void o()
   {
     Bundle localBundle = a();
     if ((localBundle != null) && (localBundle != null))
     {
-      this.jdField_a_of_type_Int = localBundle.getInt("from_page");
-      this.jdField_b_of_type_Int = localBundle.getInt("select_mode");
+      this.n = localBundle.getInt("from_page");
+      this.o = localBundle.getInt("select_mode");
       String str = localBundle.getString("cover_path");
       if (str == null) {
         str = "";
       }
-      this.jdField_b_of_type_JavaLangString = str;
-      this.e = localBundle.getInt("video_width");
-      this.f = localBundle.getInt("video_height");
+      this.t = str;
+      this.u = localBundle.getInt("video_width");
+      this.v = localBundle.getInt("video_height");
+      this.w = localBundle.getFloat("cover_ratio", this.u / this.v);
       str = localBundle.getString("video_path");
       if (str == null) {
         str = "";
       }
-      this.jdField_a_of_type_JavaLangString = str;
-      this.jdField_a_of_type_Float = localBundle.getFloat("initial_progress");
-      this.jdField_c_of_type_Int = localBundle.getInt("capture_start_progress");
-      this.jdField_d_of_type_Int = localBundle.getInt("capture_end_progress");
-      this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig = GlobalPublisherConfig.Companion.a(localBundle);
+      this.p = str;
+      this.s = localBundle.getFloat("initial_progress");
+      this.q = localBundle.getInt("capture_start_progress");
+      this.r = localBundle.getInt("capture_end_progress");
+      this.z = GlobalPublisherConfig.Companion.a(localBundle);
     }
   }
   
-  private final void g()
+  private final void p()
   {
-    int i = this.jdField_b_of_type_Int;
-    if (i != 0)
+    int i1 = this.o;
+    if (i1 != 0)
     {
-      if (i != 1)
+      if (i1 != 1)
       {
-        if (i != 2) {
+        if (i1 != 2) {
           return;
         }
-        localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+        localViewGroup = this.d;
         if (localViewGroup == null) {
           Intrinsics.throwUninitializedPropertyAccessException("captureLayout");
         }
         localViewGroup.setVisibility(8);
-        localViewGroup = this.jdField_b_of_type_AndroidViewViewGroup;
+        localViewGroup = this.g;
         if (localViewGroup == null) {
           Intrinsics.throwUninitializedPropertyAccessException("galleryLayout");
         }
         localViewGroup.setVisibility(0);
         return;
       }
-      localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+      localViewGroup = this.d;
       if (localViewGroup == null) {
         Intrinsics.throwUninitializedPropertyAccessException("captureLayout");
       }
       localViewGroup.setVisibility(0);
-      localViewGroup = this.jdField_b_of_type_AndroidViewViewGroup;
+      localViewGroup = this.g;
       if (localViewGroup == null) {
         Intrinsics.throwUninitializedPropertyAccessException("galleryLayout");
       }
       localViewGroup.setVisibility(8);
       return;
     }
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    ViewGroup localViewGroup = this.d;
     if (localViewGroup == null) {
       Intrinsics.throwUninitializedPropertyAccessException("captureLayout");
     }
     localViewGroup.setVisibility(0);
-    localViewGroup = this.jdField_b_of_type_AndroidViewViewGroup;
+    localViewGroup = this.g;
     if (localViewGroup == null) {
       Intrinsics.throwUninitializedPropertyAccessException("galleryLayout");
     }
     localViewGroup.setVisibility(0);
   }
   
-  private final void h()
+  private final void q()
   {
-    VideoCaptureView localVideoCaptureView = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView;
+    VideoCaptureView localVideoCaptureView = this.l;
     if (localVideoCaptureView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("videoCaptureView");
     }
     localVideoCaptureView.setImageUpdateListener((ImageUpdateListener)new CoverSelectPage.initCaptureChangeListener.1(this));
   }
   
-  private final void i()
+  private final void r()
   {
-    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_SELECT_VIDEO_COVER, ReportEventElement.BUTTON_CONFIRM, this.jdField_a_of_type_ComTencentTkdTopicsdkBeanGlobalPublisherConfig, null, null, 97, null));
+    DispatchManager.a.a((IEvent)new UserActionEvent(null, ReportEventKey.EVENT_CLICK, ReportEventPage.PAGE_SELECT_VIDEO_COVER, ReportEventElement.BUTTON_CONFIRM, this.z, null, null, 97, null));
   }
   
   @Nullable
   public View a(@NotNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramLayoutInflater, "inflater");
-    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.i, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(R.layout.e, paramViewGroup, false);
     if (paramLayoutInflater != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater);
-      f();
-      paramLayoutInflater = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      this.x = ((LinearLayout)paramLayoutInflater);
+      o();
+      paramLayoutInflater = this.x;
       if (paramLayoutInflater == null) {
         Intrinsics.throwUninitializedPropertyAccessException("rootView");
       }
       a((View)paramLayoutInflater);
-      paramLayoutInflater = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      paramLayoutInflater = this.x;
       if (paramLayoutInflater == null) {
         Intrinsics.throwUninitializedPropertyAccessException("rootView");
       }
@@ -470,28 +470,28 @@ public final class CoverSelectPage
   }
   
   @NotNull
-  public Pair<Integer, Integer> a()
+  public Pair<Integer, Integer> c()
   {
-    Activity localActivity = a();
+    Activity localActivity = b();
     if (localActivity == null) {
       Intrinsics.throwNpe();
     }
-    return new Pair(Integer.valueOf(ContextCompat.getColor((Context)localActivity, R.color.jdField_b_of_type_Int)), Integer.valueOf(0));
+    return new Pair(Integer.valueOf(ContextCompat.getColor((Context)localActivity, R.color.b)), Integer.valueOf(0));
   }
   
-  public void a()
+  public void f()
   {
-    super.a();
-    ViewPagerProxy localViewPagerProxy = this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkViewPagerProxy;
+    super.f();
+    ViewPagerProxy localViewPagerProxy = this.k;
     if (localViewPagerProxy == null) {
       Intrinsics.throwUninitializedPropertyAccessException("viewPagerProxy");
     }
-    localViewPagerProxy.a();
+    localViewPagerProxy.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.coverselect.CoverSelectPage
  * JD-Core Version:    0.7.0.1
  */

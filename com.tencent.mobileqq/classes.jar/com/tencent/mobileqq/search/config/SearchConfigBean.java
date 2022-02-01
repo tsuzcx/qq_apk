@@ -11,7 +11,7 @@ public class SearchConfigBean
   {
     SearchConfigBean localSearchConfigBean = new SearchConfigBean();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].b;
     } else {
       paramArrayOfQConfItem = null;
     }
@@ -25,7 +25,7 @@ public class SearchConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.config.SearchConfigBean
  * JD-Core Version:    0.7.0.1
  */

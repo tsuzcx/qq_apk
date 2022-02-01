@@ -6,8 +6,8 @@ import cooperation.qzone.QUA;
 public class QCircleFlutterPluginQualityReporter$ReportData
 {
   private String checkCode = "";
-  private String client_time = String.valueOf(System.currentTimeMillis());
-  private String event_id = "";
+  private String clientTime = String.valueOf(System.currentTimeMillis());
+  private String eventId = "";
   private String ext2;
   private String flutterVersion;
   private String md5;
@@ -25,14 +25,14 @@ public class QCircleFlutterPluginQualityReporter$ReportData
     return this.checkCode;
   }
   
-  public String getClient_time()
+  public String getClientTime()
   {
-    return this.client_time;
+    return this.clientTime;
   }
   
-  public String getEvent_id()
+  public String getEventId()
   {
-    return this.event_id;
+    return this.eventId;
   }
   
   public String getFlutterVersion()
@@ -91,15 +91,15 @@ public class QCircleFlutterPluginQualityReporter$ReportData
     return this;
   }
   
-  public ReportData setClient_time(String paramString)
+  public ReportData setClientTime(String paramString)
   {
-    this.client_time = paramString;
+    this.clientTime = paramString;
     return this;
   }
   
-  public ReportData setEvent_id(String paramString)
+  public ReportData setEventId(String paramString)
   {
-    this.event_id = paramString;
+    this.eventId = paramString;
     return this;
   }
   
@@ -165,7 +165,7 @@ public class QCircleFlutterPluginQualityReporter$ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleFlutterPluginQualityReporter.ReportData
  * JD-Core Version:    0.7.0.1
  */

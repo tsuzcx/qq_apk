@@ -3,6 +3,8 @@ package com.tencent.mobileqq.kandian.glue.businesshandler.engine;
 import android.text.TextUtils;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl.Companion;
 import com.tencent.mobileqq.kandian.repo.db.struct.KandianMsgBoxRedPntInfoUtils;
 import com.tencent.mobileqq.kandian.repo.reddot.KandianMsgBoxRedPntInfo;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -30,17 +32,17 @@ class KandianMergeManager$16
       if (!TextUtils.isEmpty(paramString))
       {
         paramList = KandianMsgBoxRedPntInfoUtils.a(paramString);
-        if ((paramList != null) && (paramList.mMsgCnt > 0) && ((KandianMergeManager.a(this.a) == null) || (paramList.mSeq > KandianMergeManager.a(this.a).mSeq)))
+        if ((paramList != null) && (RIJPrivateChatServiceImpl.Companion.a().getTotalRedCount(paramList) > 0) && ((KandianMergeManager.f(this.a) == null) || (paramList.mSeq > KandianMergeManager.f(this.a).mSeq) || (paramList.mPrivateChatSeq > KandianMergeManager.f(this.a).mPrivateChatSeq)))
         {
           if (Aladdin.getConfig(215).getIntegerFromString("message_reddot_style", 1) != 2) {
             this.a.a(paramList);
           } else {
-            ReadInJoyLogicEngine.a().j(1);
+            ReadInJoyLogicEngine.a().p(1);
           }
         }
         else
         {
-          QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.a(this.a), "new : ", paramList });
+          QLog.d("KandianMergeManager", 2, new Object[] { "[redpnt_center]new msgbox red info has error, local : ", KandianMergeManager.f(this.a), "new : ", paramList });
           return;
         }
       }
@@ -53,7 +55,7 @@ class KandianMergeManager$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.16
  * JD-Core Version:    0.7.0.1
  */

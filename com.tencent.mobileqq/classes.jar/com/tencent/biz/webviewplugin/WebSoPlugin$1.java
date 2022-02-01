@@ -18,7 +18,7 @@ class WebSoPlugin$1
   {
     if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
     {
-      WebSoUtils.a("handle MSG_WNS_HTTP_GET_DATA");
+      WebSoUtils.m("handle MSG_WNS_HTTP_GET_DATA");
       paramMessage = (Bundle)paramMessage.obj;
       WebSoPlugin.a(this.a, paramMessage);
     }
@@ -34,7 +34,7 @@ class WebSoPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.WebSoPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ final class DataBridgeInvokeHandler$register$2
   
   public final void invoke(@Nullable JSONObject paramJSONObject, @Nullable String paramString)
   {
-    this.this$0.a().getUserInfo(paramString, true);
+    this.this$0.d().getUserInfo(paramString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.DataBridgeInvokeHandler.register.2
  * JD-Core Version:    0.7.0.1
  */

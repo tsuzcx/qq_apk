@@ -9,12 +9,12 @@ class MyAppApi$6
   
   public void run()
   {
-    ToastUtil.a().a(this.this$0.a);
+    ToastUtil.a().a(this.this$0.o);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.6
  * JD-Core Version:    0.7.0.1
  */

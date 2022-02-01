@@ -25,7 +25,7 @@ class NearbyHybridFragment$18
   
   public void a(List<nearbyPeopleRecommend.QueryRspItem> paramList)
   {
-    if ((this.a.b.getVisibility() == 0) && (paramList != null))
+    if ((this.a.t.getVisibility() == 0) && (paramList != null))
     {
       paramList = (nearbyPeopleRecommend.QueryRspItem)paramList.get(0);
       ((INearbyRecommendPeopleInfo)QRoute.api(INearbyRecommendPeopleInfo.class)).setLatestRecommendList(paramList.msg_id.get(), paramList.rd_people.get());
@@ -45,12 +45,12 @@ class NearbyHybridFragment$18
     localNearPeopleFilters.d(paramInt4);
     localNearPeopleFilters.e(paramInt9);
     localNearPeopleFilters.f(paramInt5);
-    localNearPeopleFilters.a()[0] = String.valueOf(paramInt6);
-    localNearPeopleFilters.a()[1] = String.valueOf(paramInt7);
-    localNearPeopleFilters.a()[2] = String.valueOf(paramInt8);
-    localNearPeopleFilters.b = paramString1;
-    localNearPeopleFilters.c = paramString2;
-    localNearPeopleFilters.d = paramString3;
+    localNearPeopleFilters.g()[0] = String.valueOf(paramInt6);
+    localNearPeopleFilters.g()[1] = String.valueOf(paramInt7);
+    localNearPeopleFilters.g()[2] = String.valueOf(paramInt8);
+    localNearPeopleFilters.h = paramString1;
+    localNearPeopleFilters.i = paramString2;
+    localNearPeopleFilters.j = paramString3;
     StringBuilder localStringBuilder = new StringBuilder();
     if (!TextUtils.isEmpty(paramString1)) {
       localStringBuilder.append(paramString1);
@@ -70,14 +70,14 @@ class NearbyHybridFragment$18
     if (TextUtils.isEmpty(paramString2)) {
       paramString1 = "不限";
     }
-    localNearPeopleFilters.jdField_a_of_type_JavaLangString = paramString1;
-    if (!localNearPeopleFilters.equals(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters)) {
-      localNearPeopleFilters.jdField_a_of_type_Boolean = true;
+    localNearPeopleFilters.g = paramString1;
+    if (!localNearPeopleFilters.equals(this.a.A)) {
+      localNearPeopleFilters.f = true;
     }
     paramString1 = this.a;
-    paramString1.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters = localNearPeopleFilters;
-    if ((((NearbyDataManager)paramString1.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getManager(NearbyConstants.b)).a() == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters.jdField_a_of_type_Boolean)) {
-      NearPeopleFilters.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters);
+    paramString1.A = localNearPeopleFilters;
+    if ((((NearbyDataManager)paramString1.k.getManager(NearbyConstants.d)).a() == 0) && (this.a.A != null) && (this.a.A.f)) {
+      NearPeopleFilters.a(this.a.k.getCurrentAccountUin(), this.a.A);
     }
   }
   
@@ -89,21 +89,21 @@ class NearbyHybridFragment$18
     QLog.e("nearby.NearbyHybridFragment", 2, localStringBuilder.toString());
     if ((paramBoolean) && (paramList.size() > 0))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.b(paramList);
+      this.a.s.b(paramList);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.b(null);
+    this.a.s.b(null);
   }
   
   public void b()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.overridePendingTransition(0, 0);
+    this.a.ag.finish();
+    this.a.ag.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.18
  * JD-Core Version:    0.7.0.1
  */

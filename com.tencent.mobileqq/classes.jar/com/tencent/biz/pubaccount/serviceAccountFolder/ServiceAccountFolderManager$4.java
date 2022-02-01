@@ -18,17 +18,17 @@ class ServiceAccountFolderManager$4
     while (localIterator.hasNext())
     {
       ServiceAccountFolderFeed localServiceAccountFolderFeed = (ServiceAccountFolderFeed)localIterator.next();
-      this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localServiceAccountFolderFeed, false);
+      this.this$0.a(this.a, localServiceAccountFolderFeed, false);
     }
     localArrayList.clear();
-    this.this$0.h(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.this$0.j(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    this.this$0.o(this.a);
+    this.this$0.q(this.a);
+    this.this$0.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager.4
  * JD-Core Version:    0.7.0.1
  */

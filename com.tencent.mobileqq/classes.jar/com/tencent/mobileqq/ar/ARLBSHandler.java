@@ -36,13 +36,13 @@ public class ARLBSHandler
     } else {
       i = 0;
     }
-    localPOIInfo.jdField_a_of_type_Int = i;
+    localPOIInfo.a = i;
     if (paramLBSPoint.int32_lon.has()) {
       i = paramLBSPoint.int32_lon.get();
     } else {
       i = 0;
     }
-    localPOIInfo.jdField_b_of_type_Int = i;
+    localPOIInfo.b = i;
     bool = paramLBSPoint.str_name.has();
     String str2 = "";
     if (bool) {
@@ -50,17 +50,17 @@ public class ARLBSHandler
     } else {
       str1 = "";
     }
-    localPOIInfo.jdField_a_of_type_JavaLangString = str1;
+    localPOIInfo.c = str1;
     String str1 = str2;
     if (paramLBSPoint.str_addr.has()) {
       str1 = paramLBSPoint.str_addr.get();
     }
-    localPOIInfo.jdField_b_of_type_JavaLangString = str1;
+    localPOIInfo.d = str1;
     int i = j;
     if (paramLBSPoint.uint32_dist.has()) {
       i = paramLBSPoint.uint32_dist.get();
     }
-    localPOIInfo.c = i;
+    localPOIInfo.e = i;
     return localPOIInfo;
   }
   
@@ -135,18 +135,18 @@ public class ARLBSHandler
             } else {
               i = -1;
             }
-            localARCloudLBSLocationCheckResult.jdField_a_of_type_Int = i;
-            localARCloudLBSLocationCheckResult.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+            localARCloudLBSLocationCheckResult.a = i;
+            localARCloudLBSLocationCheckResult.b = paramToServiceMsg;
             if (paramFromServiceMsg.msg_nearest_point.has()) {
               paramToServiceMsg = a(paramFromServiceMsg.msg_nearest_point);
             } else {
               paramToServiceMsg = null;
             }
-            localARCloudLBSLocationCheckResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult$POIInfo = paramToServiceMsg;
+            localARCloudLBSLocationCheckResult.c = paramToServiceMsg;
           }
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("onReceiveLBSLocation. resp is success. retCode = ");
-          paramToServiceMsg.append(localARCloudLBSLocationCheckResult.jdField_a_of_type_Int);
+          paramToServiceMsg.append(localARCloudLBSLocationCheckResult.a);
           QLog.i("ARLBSHandler", 1, paramToServiceMsg.toString());
         }
         else
@@ -160,7 +160,7 @@ public class ARLBSHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARLBSHandler
  * JD-Core Version:    0.7.0.1
  */

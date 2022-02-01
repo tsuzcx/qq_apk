@@ -12,12 +12,12 @@ class ARTipsManager$9
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeView(this.jdField_a_of_type_AndroidViewView);
+    ARTipsManager.e(this.b).removeView(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.ARTipsManager.9
  * JD-Core Version:    0.7.0.1
  */

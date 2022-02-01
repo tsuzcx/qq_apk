@@ -8,80 +8,55 @@ import java.nio.ByteBuffer;
 
 public class FilterProcess
 {
-  int jdField_a_of_type_Int = -1;
-  QQAVImageFilter jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = null;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
-  byte[] jdField_a_of_type_ArrayOfByte = null;
-  int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  int jdField_b_of_type_Int = -1;
-  byte[] jdField_b_of_type_ArrayOfByte = null;
-  int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  int c = 0;
-  int d = 0;
-  int e = 0;
+  int[] a = new int[1];
+  int b = -1;
+  int[] c = new int[1];
+  int d = -1;
+  byte[] e = null;
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  byte[] i = null;
+  ByteBuffer j = null;
+  QQAVImageFilter k = null;
   
   public FilterProcess(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = (paramInt1 * paramInt2 * 3);
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.e);
-    this.jdField_b_of_type_ArrayOfByte = new byte[this.c * this.d * 4];
-    paramArrayOfByte = this.jdField_a_of_type_ArrayOfInt;
+    this.e = paramArrayOfByte;
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.h = (paramInt1 * paramInt2 * 3);
+    this.j = ByteBuffer.allocate(this.h);
+    this.i = new byte[this.f * this.g * 4];
+    paramArrayOfByte = this.a;
     GLES20.glGenTextures(paramArrayOfByte.length, paramArrayOfByte, 0);
-    paramArrayOfByte = this.jdField_b_of_type_ArrayOfInt;
+    paramArrayOfByte = this.c;
     GLES20.glGenTextures(paramArrayOfByte.length, paramArrayOfByte, 0);
-    this.jdField_a_of_type_Int = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_a_of_type_ArrayOfInt[0]);
-    this.jdField_b_of_type_Int = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_b_of_type_ArrayOfInt[0]);
-    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = new QQAVImageEffectTestFilter();
-    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.init();
-    this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter.setQQAVEffectID("filter-test");
+    this.b = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.a[0]);
+    this.d = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.c[0]);
+    this.k = new QQAVImageEffectTestFilter();
+    this.k.init();
+    this.k.setQQAVEffectID("filter-test");
     if (QLog.isColorLevel())
     {
       paramArrayOfByte = new StringBuilder();
       paramArrayOfByte.append("mBeforeTextureId:");
-      paramArrayOfByte.append(this.jdField_a_of_type_ArrayOfInt[0]);
+      paramArrayOfByte.append(this.a[0]);
       paramArrayOfByte.append("\nmBeforeTextureFbo:");
-      paramArrayOfByte.append(this.jdField_a_of_type_Int);
+      paramArrayOfByte.append(this.b);
       paramArrayOfByte.append("\nmAfterTextureId:");
-      paramArrayOfByte.append(this.jdField_b_of_type_ArrayOfInt[0]);
+      paramArrayOfByte.append(this.c[0]);
       paramArrayOfByte.append("\nmAfterTextureFbo:");
-      paramArrayOfByte.append(this.jdField_b_of_type_Int);
+      paramArrayOfByte.append(this.d);
       QLog.d("FilterProcess", 2, paramArrayOfByte.toString());
     }
-  }
-  
-  public long a()
-  {
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    if ((arrayOfByte != null) && (arrayOfByte.length != 0))
-    {
-      if (this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter == null) {
-        return -2L;
-      }
-      if ((this.jdField_a_of_type_ArrayOfInt[0] != 0) && (this.jdField_b_of_type_ArrayOfInt[0] != 0))
-      {
-        long l = System.nanoTime();
-        int i = 0;
-        while (i < 70)
-        {
-          a();
-          a(a(this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt[0], this.jdField_b_of_type_Int, this.jdField_b_of_type_ArrayOfInt[0]).jdField_a_of_type_Int, this.c, this.d, 6408, this.jdField_b_of_type_ArrayOfByte);
-          i += 1;
-        }
-        return (System.nanoTime() - l) / 1000L / 1000L;
-      }
-      return -3L;
-    }
-    return -1L;
   }
   
   FilterProcess.GLTexture a(QQAVImageFilter paramQQAVImageFilter, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (paramQQAVImageFilter != null)
     {
-      paramQQAVImageFilter.onOutputSizeChanged(this.c, this.d);
+      paramQQAVImageFilter.onOutputSizeChanged(this.f, this.g);
       paramQQAVImageFilter.onDraw2(paramInt2, paramInt3);
       return new FilterProcess.GLTexture(this, paramInt3, paramInt4);
     }
@@ -90,22 +65,22 @@ public class FilterProcess
   
   void a()
   {
-    ByteBuffer localByteBuffer = this.jdField_a_of_type_JavaNioByteBuffer;
+    ByteBuffer localByteBuffer = this.j;
     if (localByteBuffer != null)
     {
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
+      if (this.e == null) {
         return;
       }
       localByteBuffer.position(0);
-      this.jdField_a_of_type_JavaNioByteBuffer.put(this.jdField_a_of_type_ArrayOfByte, 0, this.e);
-      this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+      this.j.put(this.e, 0, this.h);
+      this.j.position(0);
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+      GLES20.glBindTexture(3553, this.a[0]);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glTexImage2D(3553, 0, 6407, this.c, this.d, 0, 6407, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
+      GLES20.glTexImage2D(3553, 0, 6407, this.f, this.g, 0, 6407, 5121, this.j);
     }
   }
   
@@ -117,25 +92,50 @@ public class FilterProcess
     GLES20.glBindFramebuffer(36160, 0);
   }
   
-  public void b()
+  public long b()
   {
-    Object localObject = this.jdField_a_of_type_JavaNioByteBuffer;
+    byte[] arrayOfByte = this.e;
+    if ((arrayOfByte != null) && (arrayOfByte.length != 0))
+    {
+      if (this.k == null) {
+        return -2L;
+      }
+      if ((this.a[0] != 0) && (this.c[0] != 0))
+      {
+        long l = System.nanoTime();
+        int m = 0;
+        while (m < 70)
+        {
+          a();
+          a(a(this.k, this.b, this.a[0], this.d, this.c[0]).a, this.f, this.g, 6408, this.i);
+          m += 1;
+        }
+        return (System.nanoTime() - l) / 1000L / 1000L;
+      }
+      return -3L;
+    }
+    return -1L;
+  }
+  
+  public void c()
+  {
+    Object localObject = this.j;
     if (localObject != null)
     {
       ((ByteBuffer)localObject).clear();
-      this.jdField_a_of_type_JavaNioByteBuffer = null;
+      this.j = null;
     }
-    this.jdField_b_of_type_ArrayOfByte = null;
-    GLES20.glDeleteFramebuffers(2, new int[] { this.jdField_a_of_type_Int, this.jdField_b_of_type_Int }, 0);
-    localObject = this.jdField_a_of_type_ArrayOfInt;
+    this.i = null;
+    GLES20.glDeleteFramebuffers(2, new int[] { this.b, this.d }, 0);
+    localObject = this.a;
     GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
-    localObject = this.jdField_b_of_type_ArrayOfInt;
+    localObject = this.c;
     GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
-    localObject = this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter;
+    localObject = this.k;
     if (localObject != null)
     {
       ((QQAVImageFilter)localObject).destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectCoreQqavimageQQAVImageFilter = null;
+      this.k = null;
     }
   }
 }

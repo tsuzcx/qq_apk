@@ -28,14 +28,14 @@ class ReadInJoyIPCModule$1
       paramString = new Bundle();
       paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
       paramString = EIPCResult.createResult(0, paramString);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonReadInJoyIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuRIJBiuAndCommentMixDataManager.a();
+      this.c.callbackResult(this.a, paramString);
+      this.b.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

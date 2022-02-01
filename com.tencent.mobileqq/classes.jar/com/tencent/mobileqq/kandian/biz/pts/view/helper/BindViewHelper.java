@@ -33,7 +33,7 @@ public class BindViewHelper
     }
     if (paramViewBase != null)
     {
-      String str = Util.a(paramAbsBaseArticleInfo);
+      String str = Util.b(paramAbsBaseArticleInfo);
       paramViewBase.setText(str);
       if (QLog.isColorLevel())
       {
@@ -54,13 +54,13 @@ public class BindViewHelper
       if (paramIReadInJoyModel == null) {
         return;
       }
-      paramIReadInJoyModel = paramIReadInJoyModel.a();
+      paramIReadInJoyModel = paramIReadInJoyModel.k();
       if ((paramIReadInJoyModel != null) && (paramIReadInJoyModel.mSocialFeedInfo != null))
       {
-        if (paramIReadInJoyModel.mSocialFeedInfo.a == null) {
+        if (paramIReadInJoyModel.mSocialFeedInfo.c == null) {
           return;
         }
-        long l = paramIReadInJoyModel.mSocialFeedInfo.a.a;
+        long l = paramIReadInJoyModel.mSocialFeedInfo.c.a;
         if ((paramIReadInJoyModel.mProteusTemplateBean != null) && (paramIReadInJoyModel.mProteusTemplateBean.getViewDataBinding().containsKey("id_feeds_social_header_wrapper"))) {
           paramViewBase = paramViewBase.findViewBaseByName("id_feeds_extra_info");
         } else {
@@ -79,8 +79,8 @@ public class BindViewHelper
     paramViewBase = paramViewBase.findViewBaseByName("id_jump_channel_bar");
     if ((paramIReadInJoyModel != null) && (paramViewBase != null))
     {
-      boolean bool = RIJAppSetting.b();
-      if ((bool) && (RIJFeedsType.B(paramIReadInJoyModel.a())))
+      boolean bool = RIJAppSetting.e();
+      if ((bool) && (RIJFeedsType.H(paramIReadInJoyModel.k())))
       {
         paramViewBase.setVisibility(0);
       }
@@ -117,7 +117,7 @@ public class BindViewHelper
   
   public static void d(ViewBase paramViewBase, IReadInJoyModel paramIReadInJoyModel)
   {
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
     paramViewBase = paramViewBase.findViewBaseByName("id_flow_guide_separator");
     if (paramViewBase != null) {
       try
@@ -144,7 +144,7 @@ public class BindViewHelper
   
   public static void e(ViewBase paramViewBase, IReadInJoyModel paramIReadInJoyModel)
   {
-    paramIReadInJoyModel = paramIReadInJoyModel.a();
+    paramIReadInJoyModel = paramIReadInJoyModel.k();
     if (paramIReadInJoyModel == null) {
       return;
     }
@@ -186,10 +186,10 @@ public class BindViewHelper
   {
     if (paramIReadInJoyModel != null)
     {
-      if (paramIReadInJoyModel.a() == null) {
+      if (paramIReadInJoyModel.k() == null) {
         return;
       }
-      AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+      AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
       if ((localAbsBaseArticleInfo.mProteusTemplateBean != null) && (localAbsBaseArticleInfo.mProteusTemplateBean.getViewDataBinding().containsKey("id_feeds_social_header_wrapper"))) {
         paramViewBase = (AvatarView)paramViewBase.findViewBaseByName("id_feeds_info_avator");
       } else {
@@ -203,7 +203,7 @@ public class BindViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.helper.BindViewHelper
  * JD-Core Version:    0.7.0.1
  */

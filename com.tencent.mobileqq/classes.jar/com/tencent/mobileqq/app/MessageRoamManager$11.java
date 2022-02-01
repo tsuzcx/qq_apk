@@ -17,16 +17,16 @@ class MessageRoamManager$11
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDone status: ");
-      ((StringBuilder)localObject).append(paramDownloadTask.f);
+      ((StringBuilder)localObject).append(paramDownloadTask.H);
       ((StringBuilder)localObject).append(", url: ");
-      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
       QLog.d("Q.roammsg.MessageRoamManager", 2, ((StringBuilder)localObject).toString());
     }
-    int i = paramDownloadTask.a.indexOf("?");
+    int i = paramDownloadTask.b.indexOf("?");
     if (i == -1) {
-      localObject = paramDownloadTask.a;
+      localObject = paramDownloadTask.b;
     } else {
-      localObject = paramDownloadTask.a.substring(0, i - 1);
+      localObject = paramDownloadTask.b.substring(0, i - 1);
     }
     if (MessageRoamConstants.a.contains((CharSequence)localObject))
     {
@@ -42,14 +42,14 @@ class MessageRoamManager$11
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onDone unkonw url: ");
-      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      ((StringBuilder)localObject).append(paramDownloadTask.b);
       QLog.e("Q.roammsg.MessageRoamManager", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.11
  * JD-Core Version:    0.7.0.1
  */

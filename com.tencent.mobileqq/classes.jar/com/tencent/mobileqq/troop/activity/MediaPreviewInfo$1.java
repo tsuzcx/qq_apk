@@ -9,10 +9,10 @@ final class MediaPreviewInfo$1
   public MediaPreviewInfo a(Parcel paramParcel)
   {
     MediaPreviewInfo localMediaPreviewInfo = new MediaPreviewInfo();
-    localMediaPreviewInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localMediaPreviewInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localMediaPreviewInfo.a = paramParcel.readInt();
     localMediaPreviewInfo.b = paramParcel.readString();
     localMediaPreviewInfo.c = paramParcel.readString();
+    localMediaPreviewInfo.d = paramParcel.readString();
     return localMediaPreviewInfo;
   }
   
@@ -23,7 +23,7 @@ final class MediaPreviewInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewInfo.1
  * JD-Core Version:    0.7.0.1
  */

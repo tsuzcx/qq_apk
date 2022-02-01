@@ -18,7 +18,7 @@ class QRScanEntryView$16
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_QRScanEntryView", 2, "onMultiCancel");
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession instanceof QRSession)) && (this.a.m)) {
+    if ((this.a.G != null) && ((this.a.G instanceof QRSession)) && (this.a.J)) {
       this.a.postDelayed(new QRScanEntryView.16.1(this), 500L);
     }
   }
@@ -35,11 +35,11 @@ class QRScanEntryView$16
       QLog.d("AREngine_QRScanEntryView", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    String str1 = paramQBarResult.b;
-    String str2 = paramQBarResult.a;
-    Activity localActivity = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
+    String str1 = paramQBarResult.c;
+    String str2 = paramQBarResult.b;
+    Activity localActivity = (Activity)this.a.E;
     if (paramImageData != null) {
-      paramQBarResult = paramImageData.a;
+      paramQBarResult = paramImageData.d;
     } else {
       paramQBarResult = null;
     }
@@ -58,19 +58,20 @@ class QRScanEntryView$16
       QLog.d("AREngine_QRScanEntryView", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.a;
-    String str = paramQMiniResult.a;
-    Activity localActivity = (Activity)this.a.jdField_a_of_type_AndroidContentContext;
+    String str1 = paramQMiniResult.b;
+    String str2 = paramQMiniResult.d;
+    Activity localActivity = (Activity)this.a.E;
     if (paramImageData != null) {
-      paramQMiniResult = paramImageData.a;
+      paramQMiniResult = paramImageData.d;
     } else {
       paramQMiniResult = null;
     }
-    QRScanEntryView.a((QRScanEntryView)localObject, str, localActivity, paramQMiniResult);
+    QRScanEntryView.b((QRScanEntryView)localObject, str1, str2, localActivity, paramQMiniResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.QRScanEntryView.16
  * JD-Core Version:    0.7.0.1
  */

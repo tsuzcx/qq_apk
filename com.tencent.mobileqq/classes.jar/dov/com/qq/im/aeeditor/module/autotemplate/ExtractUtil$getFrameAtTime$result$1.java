@@ -14,12 +14,12 @@ final class ExtractUtil$getFrameAtTime$result$1<V>
   @Nullable
   public final Bitmap a()
   {
-    return ExtractUtil.a(ExtractUtil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    return ExtractUtil.a(ExtractUtil.a, this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.autotemplate.ExtractUtil.getFrameAtTime.result.1
  * JD-Core Version:    0.7.0.1
  */

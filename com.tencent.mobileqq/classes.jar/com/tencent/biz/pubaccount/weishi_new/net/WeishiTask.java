@@ -15,47 +15,36 @@ import java.util.HashMap;
 public class WeishiTask
   implements IWeishiProtocolListener
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  protected static final WeishiProtocolService a;
-  public static boolean a = false;
-  public int a;
-  public long a;
+  public static boolean f = false;
+  protected static final WeishiProtocolService l = WeishiProtocolService.a();
+  private static Handler p = new Handler(Looper.getMainLooper());
   public transient UniAttribute a;
-  public transient IWeishiServiceListener a;
-  public RspHeaderBean a;
-  public WeishiRequest a;
-  public Object a;
-  public transient String a;
-  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
-  public HashMap<Object, Object> a;
-  public int b;
-  public int c;
-  public int d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService = WeishiProtocolService.a();
-  }
+  public transient IWeishiServiceListener b;
+  public transient String c = "";
+  public int d = 0;
+  public int e;
+  public WeishiRequest g;
+  public int h;
+  public HashMap<Object, Object> i = new HashMap();
+  public int j;
+  public long k;
+  public Object m;
+  public RspHeaderBean n;
+  private WeakReference<Handler> o;
   
   public WeishiTask()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.k = System.currentTimeMillis();
   }
   
   public WeishiTask(WeishiRequest paramWeishiRequest, Handler paramHandler, IWeishiServiceListener paramIWeishiServiceListener, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest = paramWeishiRequest;
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetIWeishiServiceListener = paramIWeishiServiceListener;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.g = paramWeishiRequest;
+    this.h = paramInt;
+    this.b = paramIWeishiServiceListener;
+    this.k = System.currentTimeMillis();
     if (paramHandler != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
+      this.o = new WeakReference(paramHandler);
     }
   }
   
@@ -76,55 +65,55 @@ public class WeishiTask
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest;
+    Object localObject = this.g;
     if (localObject != null)
     {
-      ((WeishiRequest)localObject).a(this.d);
-      if (jdField_a_of_type_Boolean)
+      ((WeishiRequest)localObject).b(this.j);
+      if (f)
       {
         localObject = new StringBuilder();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.a != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.a.display((StringBuilder)localObject, 0);
+        if (this.g.c != null) {
+          this.g.c.display((StringBuilder)localObject, 0);
         }
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("startRunTask: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.getCmdString());
+      ((StringBuilder)localObject).append(this.g.getCmdString());
       ((StringBuilder)localObject).append(", ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.toString());
+      ((StringBuilder)localObject).append(this.g.toString());
       WSLog.a("WeishiTask", ((StringBuilder)localObject).toString());
     }
-    int i = jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, this);
-    if (i != 0) {
-      a(null, i, i, a(i), false, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean);
+    int i1 = l.a(this.g, this);
+    if (i1 != 0) {
+      a(null, i1, i1, a(i1), false, this.n);
     }
   }
   
   public void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, RspHeaderBean paramRspHeaderBean)
   {
     if ((paramObject instanceof UniAttribute)) {
-      this.jdField_a_of_type_ComQqJceWupUniAttribute = ((UniAttribute)paramObject);
+      this.a = ((UniAttribute)paramObject);
     }
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean = paramRspHeaderBean;
+    this.m = paramObject;
+    this.e = paramInt1;
+    this.d = paramInt2;
+    this.c = paramString;
+    this.n = paramRspHeaderBean;
     if (1000006 == paramInt1) {
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716397);
+      this.c = HardCodeUtil.a(2131913837);
     }
     WeishiBusinessLooper.a().b(this);
   }
   
-  public boolean a()
+  public boolean b()
   {
-    int i = this.b;
-    return (i == 0) || (i == 1000) || ((Math.abs(i) <= 19999) && (Math.abs(this.b) >= 19000));
+    int i1 = this.e;
+    return (i1 == 0) || (i1 == 1000) || ((Math.abs(i1) <= 19999) && (Math.abs(this.e) >= 19000));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiTask
  * JD-Core Version:    0.7.0.1
  */

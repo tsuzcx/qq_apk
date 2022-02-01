@@ -12,8 +12,6 @@ public abstract interface IWSPlayerListener
   
   public abstract void a(IWSPlayer paramIWSPlayer, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap);
   
-  public abstract void a(String paramString);
-  
   public abstract boolean a(IWSPlayer paramIWSPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString);
   
   public abstract boolean a(IWSPlayer paramIWSPlayer, int paramInt, Object paramObject);
@@ -24,7 +22,7 @@ public abstract interface IWSPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerListener
  * JD-Core Version:    0.7.0.1
  */

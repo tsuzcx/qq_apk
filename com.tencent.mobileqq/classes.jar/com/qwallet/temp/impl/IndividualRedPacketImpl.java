@@ -50,7 +50,7 @@ public class IndividualRedPacketImpl
     if (checkAppRuntimeInValid()) {
       return false;
     }
-    return getManager().a().a;
+    return getManager().a().j;
   }
   
   public void dealRedPacketToShow(RedPacketInfo paramRedPacketInfo)
@@ -63,7 +63,7 @@ public class IndividualRedPacketImpl
     if (checkAppRuntimeInValid()) {
       return false;
     }
-    return getManager().a();
+    return getManager().f();
   }
   
   public String getMallURL(int paramInt)
@@ -84,7 +84,7 @@ public class IndividualRedPacketImpl
     if (checkAppRuntimeInValid()) {
       return false;
     }
-    return getManager().c();
+    return getManager().h();
   }
   
   public boolean isIndividualRedPacketEnable()
@@ -92,7 +92,7 @@ public class IndividualRedPacketImpl
     if (checkAppRuntimeInValid()) {
       return false;
     }
-    return getManager().b();
+    return getManager().g();
   }
   
   public boolean isSDCardError()
@@ -100,7 +100,7 @@ public class IndividualRedPacketImpl
     if (checkAppRuntimeInValid()) {
       return false;
     }
-    return getManager().c.get();
+    return getManager().m.get();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -122,7 +122,7 @@ public class IndividualRedPacketImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.IndividualRedPacketImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ class ADVideoItemDelegate$3
   
   public void onClick(View paramView)
   {
-    paramView = ReadInJoyVideoFeedsAdUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo.a);
-    ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramView, 2005, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemDelegate.a.a());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsHardAdBarManager.a(ADVideoItemDelegate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideofeedsADVideoItemDelegate), this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo, paramView, 2005);
+    paramView = ReadInJoyVideoFeedsAdUtils.a(this.a.as);
+    ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(paramView, 2005, this.c.b.x());
+    this.b.a(ADVideoItemDelegate.a(this.c), this.a, paramView, 2005);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.videofeeds.ADVideoItemDelegate.3
  * JD-Core Version:    0.7.0.1
  */

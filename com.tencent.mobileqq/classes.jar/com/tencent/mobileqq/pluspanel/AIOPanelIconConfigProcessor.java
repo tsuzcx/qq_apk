@@ -21,7 +21,7 @@ public abstract class AIOPanelIconConfigProcessor
   {
     AIOPanelIconConfigProcessor.Config localConfig = new AIOPanelIconConfigProcessor.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      AIOPanelIconConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      AIOPanelIconConfigProcessor.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -57,7 +57,7 @@ public abstract class AIOPanelIconConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.AIOPanelIconConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

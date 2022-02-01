@@ -29,17 +29,17 @@ public final class StudyModeSwitchDialog
   extends ReportDialog
   implements ModeSwitchManager.OnModeChangeResultCallback
 {
-  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private final Lazy jdField_a_of_type_KotlinLazy;
+  private final Lazy a;
   private final Lazy b;
   private final Lazy c;
+  private QQProgressDialog d;
+  private final BaseActivity e;
   
   public StudyModeSwitchDialog(@NotNull BaseActivity paramBaseActivity)
   {
-    super((Context)paramBaseActivity, 2131755340);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new StudyModeSwitchDialog.ivClose.2(this));
+    super((Context)paramBaseActivity, 2131952034);
+    this.e = paramBaseActivity;
+    this.a = LazyKt.lazy((Function0)new StudyModeSwitchDialog.ivClose.2(this));
     this.b = LazyKt.lazy((Function0)new StudyModeSwitchDialog.btnSwitchOn.2(this));
     this.c = LazyKt.lazy((Function0)new StudyModeSwitchDialog.manager.2(this));
     paramBaseActivity = getWindow();
@@ -50,55 +50,55 @@ public final class StudyModeSwitchDialog
       }
       ImmersiveUtils.clearCoverForStatus(paramBaseActivity, true);
     }
-    setContentView(2131558908);
-    a();
-    a().a((ModeSwitchManager.OnModeChangeResultCallback)this);
-    ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD4", "0X800ADD4", 0, 0, "", "", "", "");
-  }
-  
-  private final Button a()
-  {
-    return (Button)this.b.getValue();
+    setContentView(2131624530);
+    d();
+    c().a((ModeSwitchManager.OnModeChangeResultCallback)this);
+    ReportController.b((AppRuntime)this.e.app, "dc00898", "", "", "0X800ADD4", "0X800ADD4", 0, 0, "", "", "", "");
   }
   
   private final ImageView a()
   {
-    return (ImageView)this.jdField_a_of_type_KotlinLazy.getValue();
+    return (ImageView)this.a.getValue();
   }
   
-  private final ModeSwitchManager a()
+  private final Button b()
+  {
+    return (Button)this.b.getValue();
+  }
+  
+  private final ModeSwitchManager c()
   {
     return (ModeSwitchManager)this.c.getValue();
   }
   
-  private final void a()
+  private final void d()
   {
     a().setOnClickListener((View.OnClickListener)new StudyModeSwitchDialog.initView.1(this));
-    a().setOnClickListener((View.OnClickListener)new StudyModeSwitchDialog.initView.2(this));
+    b().setOnClickListener((View.OnClickListener)new StudyModeSwitchDialog.initView.2(this));
     setOnDismissListener((DialogInterface.OnDismissListener)new StudyModeSwitchDialog.initView.3(this));
   }
   
-  private final void b()
+  private final void e()
   {
-    if (a().a())
+    if (c().c())
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718855, 0).a();
+      QQToast.makeText((Context)this.e, 0, 2131916387, 0).show();
       return;
     }
     if (ModeConstantsKt.a() == 2)
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719268, 0).a();
+      QQToast.makeText((Context)this.e, 0, 2131916820, 0).show();
       dismiss();
       return;
     }
-    int i = SimpleUIUtil.f();
-    ModeSwitchManager.SwitchingStatus localSwitchingStatus = a().a((Activity)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2, i, true);
-    if ((!localSwitchingStatus.a()) && (localSwitchingStatus.a() == localSwitchingStatus.b()))
+    int i = SimpleUIUtil.i();
+    ModeSwitchManager.SwitchingStatus localSwitchingStatus = c().a((Activity)this.e, 2, i, true);
+    if ((!localSwitchingStatus.a()) && (localSwitchingStatus.b() == localSwitchingStatus.c()))
     {
-      QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131719268, 0).a();
+      QQToast.makeText((Context)this.e, 0, 2131916820, 0).show();
       dismiss();
     }
-    ReportController.b((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, "dc00898", "", "", "0X800ADD5", "0X800ADD5", 0, 0, "", "", "", "");
+    ReportController.b((AppRuntime)this.e.app, "dc00898", "", "", "0X800ADD5", "0X800ADD5", 0, 0, "", "", "", "");
   }
   
   public void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString)
@@ -107,15 +107,15 @@ public final class StudyModeSwitchDialog
     paramString = (CharSequence)paramString;
     if (!TextUtils.isEmpty(paramString))
     {
-      Context localContext = (Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      Context localContext = (Context)this.e;
       if (paramBoolean) {
         paramInt1 = 2;
       } else {
         paramInt1 = 1;
       }
-      QQToast.a(localContext, paramInt1, paramString, 0).a();
+      QQToast.makeText(localContext, paramInt1, paramString, 0).show();
     }
-    paramString = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    paramString = this.d;
     if (paramString != null) {
       paramString.dismiss();
     }
@@ -134,16 +134,16 @@ public final class StudyModeSwitchDialog
   
   public void b(int paramInt1, int paramInt2)
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.d;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing() == true))
     {
-      localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+      localQQProgressDialog = this.d;
       if (localQQProgressDialog != null) {
         localQQProgressDialog.dismiss();
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    this.d = new QQProgressDialog((Context)this.e);
+    localQQProgressDialog = this.d;
     if (localQQProgressDialog == null) {
       Intrinsics.throwNpe();
     }
@@ -156,7 +156,7 @@ public final class StudyModeSwitchDialog
   
   public void c(int paramInt1, int paramInt2)
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.d;
     if (localQQProgressDialog != null) {
       localQQProgressDialog.dismiss();
     }
@@ -164,12 +164,12 @@ public final class StudyModeSwitchDialog
   
   public void d(int paramInt1, int paramInt2)
   {
-    QQToast.a((Context)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, 2131718855, 0).a();
+    QQToast.makeText((Context)this.e, 0, 2131916387, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeSwitchDialog
  * JD-Core Version:    0.7.0.1
  */

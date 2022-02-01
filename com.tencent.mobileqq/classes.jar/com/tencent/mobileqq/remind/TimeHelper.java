@@ -9,8 +9,8 @@ import java.util.Date;
 public class TimeHelper
 {
   public static int a = 25568;
-  public static String[] a = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
-  public static String[] b = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+  public static String[] b = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
+  public static String[] c = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
   
   public static int a(long paramLong)
   {
@@ -38,7 +38,26 @@ public class TimeHelper
     return new Date().getTime();
   }
   
-  public static long a(long paramLong)
+  public static String a(int paramInt)
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    Date localDate = new Date();
+    localDate.setTime(paramInt * 86400L * 1000L);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MM月dd日 E");
+    if (localSimpleDateFormat.format(localDate).equals(localSimpleDateFormat.format(localCalendar.getTime()))) {
+      return HardCodeUtil.a(2131912262);
+    }
+    return localSimpleDateFormat.format(localDate);
+  }
+  
+  public static int b(long paramLong)
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong);
+    return localCalendar.get(12);
+  }
+  
+  public static long c(long paramLong)
   {
     Object localObject = Calendar.getInstance();
     ((Calendar)localObject).set(1970, 0, 1, 0, 0, 0);
@@ -67,19 +86,7 @@ public class TimeHelper
     return l2;
   }
   
-  public static String a(int paramInt)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    Date localDate = new Date();
-    localDate.setTime(paramInt * 86400L * 1000L);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MM月dd日 E");
-    if (localSimpleDateFormat.format(localDate).equals(localSimpleDateFormat.format(localCalendar.getTime()))) {
-      return HardCodeUtil.a(2131714758);
-    }
-    return localSimpleDateFormat.format(localDate);
-  }
-  
-  public static String a(long paramLong)
+  public static String d(long paramLong)
   {
     Object localObject = Calendar.getInstance();
     ((Calendar)localObject).setTimeInMillis(paramLong);
@@ -96,17 +103,10 @@ public class TimeHelper
     localObject = new Date();
     return localSimpleDateFormat.format((Date)localObject);
   }
-  
-  public static int b(long paramLong)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(paramLong);
-    return localCalendar.get(12);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.TimeHelper
  * JD-Core Version:    0.7.0.1
  */

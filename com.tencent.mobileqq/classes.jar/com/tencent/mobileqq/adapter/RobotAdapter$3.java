@@ -17,16 +17,16 @@ class RobotAdapter$3
     if (paramInt == 0)
     {
       RobotAdapter.a(this.a, null, null);
-      RobotAdapter.a(this.a).resume();
+      RobotAdapter.f(this.a).resume();
       return;
     }
-    RobotAdapter.a(this.a).pause();
-    RobotAdapter.a(this.a).cancelPendingRequests();
+    RobotAdapter.f(this.a).pause();
+    RobotAdapter.f(this.a).cancelPendingRequests();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.RobotAdapter.3
  * JD-Core Version:    0.7.0.1
  */

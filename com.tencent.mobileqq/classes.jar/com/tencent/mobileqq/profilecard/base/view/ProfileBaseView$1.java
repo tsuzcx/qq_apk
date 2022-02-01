@@ -17,7 +17,7 @@ class ProfileBaseView$1
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.val$cardInfo.allInOne.uin);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)this.this$0.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.val$cardInfo.allInOne.uin);
     ProfileBaseView.1.1 local1 = new ProfileBaseView.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
     if ((this.val$isInit) && (localExtensionInfo != null) && (AvatarPendantUtil.b(localExtensionInfo.pendantId)))
@@ -29,7 +29,7 @@ class ProfileBaseView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.ProfileBaseView.1
  * JD-Core Version:    0.7.0.1
  */

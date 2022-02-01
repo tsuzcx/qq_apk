@@ -15,13 +15,13 @@ class VideoHandler$9
   public void onAnimationEnd(Animator paramAnimator)
   {
     super.onAnimationEnd(paramAnimator);
-    VideoHandler.a(this.a).setLayerType(0, null);
-    VideoHandler.a(this.a).setVisibility(8);
-    VideoHandler.a(this.a).setAlpha(1.0F);
-    if (this.a.a() != null) {
-      this.a.j();
+    VideoHandler.h(this.a).setLayerType(0, null);
+    VideoHandler.g(this.a).setVisibility(8);
+    VideoHandler.b(this.a).setAlpha(1.0F);
+    if (this.a.g() != null) {
+      this.a.z();
     }
-    VideoHandler.a(this.a).setVisibility(8);
+    VideoHandler.h(this.a).setVisibility(8);
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.videoanimation", 2, "trans animation end");
     }
@@ -34,7 +34,7 @@ class VideoHandler$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.VideoHandler.9
  * JD-Core Version:    0.7.0.1
  */

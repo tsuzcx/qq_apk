@@ -18,7 +18,7 @@ class SmsContent$1
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    SmsContent.a(this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppUtilsSMSBodyObserver);
+    SmsContent.a(this.c, this.a, this.b);
     if (QLog.isColorLevel()) {
       QLog.d("sms.content", 2, "checkPermission, grant");
     }
@@ -26,7 +26,7 @@ class SmsContent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.SmsContent.1
  * JD-Core Version:    0.7.0.1
  */

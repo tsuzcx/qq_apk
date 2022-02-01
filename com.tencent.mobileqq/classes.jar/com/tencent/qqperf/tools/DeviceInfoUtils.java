@@ -11,36 +11,37 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class DeviceInfoUtils
 {
-  private static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long = 0L;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static int b;
+  private static final int LEVEL_HIGH = 1;
+  private static final int LEVEL_LOW = 3;
+  private static final int LEVEL_MEDIUM = 2;
+  private static final int LEVEL_UNKNOWN = 0;
+  private static final long REQUEST_INTERVAL = -1702967296L;
+  public static final String TAG = "DeviceInfoUtils";
+  private static long sLastRequestTime = 0L;
+  private static int sPerfLevelLocal;
+  private static int sPerfLevelRemote;
+  private static AtomicBoolean sRequestPost = new AtomicBoolean(false);
   
-  public static int a()
+  public static int getPerfLevel()
   {
-    int i = c();
+    int i = getPerfLevelRemote();
     if (i != 0) {
       return i;
     }
-    if (b == 0) {
-      b = b();
+    if (sPerfLevelLocal == 0) {
+      sPerfLevelLocal = getPerfLevelLocal();
     }
-    return b;
+    return sPerfLevelLocal;
   }
   
-  public static boolean a()
-  {
-    return a() == 1;
-  }
-  
-  private static int b()
+  private static int getPerfLevelLocal()
   {
     int j = DeviceOptSwitch.a().getInt("localLevel", 0);
     int i = j;
     if (j == 0)
     {
-      i = DeviceInfoUtil.b();
-      long l1 = DeviceInfoUtil.c();
+      i = DeviceInfoUtil.h();
+      long l1 = DeviceInfoUtil.l();
       long l2 = DeviceInfoUtil.a();
       if ((i >= 8) && (l1 >= 2000000L) && (l2 >= 5368709120L)) {
         i = 1;
@@ -54,48 +55,53 @@ public class DeviceInfoUtils
     return i;
   }
   
-  public static boolean b()
+  private static int getPerfLevelRemote()
   {
-    return a() == 3;
-  }
-  
-  private static int c()
-  {
-    int i = jdField_a_of_type_Int;
+    int i = sPerfLevelRemote;
     if (i != 0) {
       return i;
     }
     if (LowEndPerfProcessor.a().a())
     {
-      if (jdField_a_of_type_Int != 0)
+      if (sPerfLevelRemote != 0)
       {
-        jdField_a_of_type_Int = 0;
+        sPerfLevelRemote = 0;
         DeviceOptSwitch.a().edit().putInt("device_perf_level", 0).apply();
       }
       return 0;
     }
     SharedPreferences localSharedPreferences = DeviceOptSwitch.a();
-    jdField_a_of_type_Int = localSharedPreferences.getInt("device_perf_level", 0);
-    i = jdField_a_of_type_Int;
+    sPerfLevelRemote = localSharedPreferences.getInt("device_perf_level", 0);
+    i = sPerfLevelRemote;
     if (i != 0) {
       return i;
     }
-    if (jdField_a_of_type_Long == 0L) {
-      jdField_a_of_type_Long = localSharedPreferences.getLong("device_perf_level_timestamps", 0L);
+    if (sLastRequestTime == 0L) {
+      sLastRequestTime = localSharedPreferences.getLong("device_perf_level_timestamps", 0L);
     }
-    if (Math.abs(jdField_a_of_type_Long - System.currentTimeMillis()) < -1702967296L) {
-      return jdField_a_of_type_Int;
+    if (Math.abs(sLastRequestTime - System.currentTimeMillis()) < -1702967296L) {
+      return sPerfLevelRemote;
     }
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-      return jdField_a_of_type_Int;
+    if (!sRequestPost.compareAndSet(false, true)) {
+      return sPerfLevelRemote;
     }
     ThreadManagerV2.excute(new DeviceInfoUtils.1(localSharedPreferences), 128, null, true);
-    return jdField_a_of_type_Int;
+    return sPerfLevelRemote;
+  }
+  
+  public static boolean isHighPerfDevice()
+  {
+    return getPerfLevel() == 1;
+  }
+  
+  public static boolean isLowPerfDevice()
+  {
+    return getPerfLevel() == 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.tools.DeviceInfoUtils
  * JD-Core Version:    0.7.0.1
  */

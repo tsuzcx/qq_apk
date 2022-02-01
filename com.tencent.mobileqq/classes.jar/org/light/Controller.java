@@ -24,6 +24,8 @@ public abstract class Controller
   
   private static native void nativeInit();
   
+  public native void addEntity(int paramInt1, int paramInt2, String paramString);
+  
   protected void finalize()
   {
     super.finalize();
@@ -52,7 +54,11 @@ public abstract class Controller
     return localArrayList;
   }
   
+  public native int[] getEntitiesUnderPoint(float paramFloat1, float paramFloat2);
+  
   public native String[] getSoundEffectIDs();
+  
+  public native TextPlaceHolder[] getTextPlaceHolderByEntityId(int paramInt);
   
   public native TextPlaceHolder[] getTextPlaceHolders();
   
@@ -60,9 +66,13 @@ public abstract class Controller
   
   public native HashMap<String, String> presetData();
   
+  public native void removeEntity(int paramInt);
+  
   public native void replaceAudioAsset(String paramString, AudioAsset paramAudioAsset);
   
   public native void resetAsset();
+  
+  public native void setExternalAudioProcessor(HashMap<String, IExternalAudioProcessor> paramHashMap);
   
   public native void setMaterialClipAssets(String paramString, ClipAsset[] paramArrayOfClipAsset);
   
@@ -70,11 +80,17 @@ public abstract class Controller
   
   public native void setTextAsset(String paramString, TextAsset paramTextAsset);
   
+  public native TimeLine[] timeLine();
+  
   public abstract int type();
+  
+  public native void updateComponent(int paramInt, String paramString);
+  
+  public native void updateResource(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.light.Controller
  * JD-Core Version:    0.7.0.1
  */

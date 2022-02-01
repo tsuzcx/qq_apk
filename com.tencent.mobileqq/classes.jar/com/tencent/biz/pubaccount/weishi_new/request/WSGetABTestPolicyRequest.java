@@ -16,7 +16,7 @@ public class WSGetABTestPolicyRequest
     stGetAllABTestPolicyReq localstGetAllABTestPolicyReq = new stGetAllABTestPolicyReq();
     localstGetAllABTestPolicyReq.uin = paramString;
     localstGetAllABTestPolicyReq.hasInstalledWeishi = WeishiGuideUtils.a(BaseApplicationImpl.getApplication());
-    this.a = localstGetAllABTestPolicyReq;
+    this.c = localstGetAllABTestPolicyReq;
     paramString = new StringBuilder();
     paramString.append("[WSGetABTestPolicyRequest] uin:");
     paramString.append(localstGetAllABTestPolicyReq.uin);
@@ -25,19 +25,19 @@ public class WSGetABTestPolicyRequest
     WSLog.e("WSGetABTestPolicyRequest", paramString.toString());
   }
   
-  public boolean a()
+  public boolean c()
   {
     return false;
   }
   
-  public boolean b()
+  public boolean d()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.WSGetABTestPolicyRequest
  * JD-Core Version:    0.7.0.1
  */

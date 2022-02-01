@@ -56,7 +56,7 @@ public class ReportUtils
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, BaseSessionInfo paramBaseSessionInfo)
   {
     String str;
-    if (SimpleUIUtil.a()) {
+    if (SimpleUIUtil.e()) {
       str = "1";
     } else if (((IStudyModeManager)QRoute.api(IStudyModeManager.class)).getStudyModeSwitch()) {
       str = "2";
@@ -77,12 +77,16 @@ public class ReportUtils
         {
           paramBaseSessionInfo = "2";
         }
+        else if (paramBaseSessionInfo.a == 1)
+        {
+          paramBaseSessionInfo = "1";
+        }
         else
         {
-          if (paramBaseSessionInfo.a != 1) {
-            break label143;
+          if (paramBaseSessionInfo.a != 10014) {
+            break label162;
           }
-          paramBaseSessionInfo = "1";
+          paramBaseSessionInfo = String.valueOf(11);
         }
       }
       catch (Exception paramBaseQQAppInterface)
@@ -103,7 +107,7 @@ public class ReportUtils
       for (;;)
       {
         break;
-        label143:
+        label162:
         paramBaseSessionInfo = "0";
       }
       paramBaseSessionInfo = "";
@@ -121,7 +125,7 @@ public class ReportUtils
         paramMap.put("plat", "android");
       }
       if (!paramMap.containsKey("version")) {
-        paramMap.put("version", "8.7.0");
+        paramMap.put("version", "8.8.17");
       }
     }
     UserAction.onUserActionToTunnel(paramString1, paramString2, true, -1L, -1L, paramMap, true, true);
@@ -134,7 +138,7 @@ public class ReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.ReportUtils
  * JD-Core Version:    0.7.0.1
  */

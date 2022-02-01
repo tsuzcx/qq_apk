@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/o1k" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/o1h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/o1i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:src="@drawable/g76" android:layout_centerInParent="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/al6" android:gravity="center" android:id="@id/o1j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/o1i" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/o1y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="55.0dip">
-        <com.qzone.widget.AsyncImageView android:id="@id/o1x" android:layout_width="321.0dip" android:layout_height="200.0dip" android:scaleType="fitCenter" />
-        <TextView android:textSize="18.0dip" android:textColor="#ffffffff" android:id="@id/o20" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="#c0ffffff" android:id="@id/o1z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" />
-    </LinearLayout>
-</FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="38.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:layout_gravity="center_vertical" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="@string/z4q" android:includeFontPadding="false" />
+        <ImageView android:layout_gravity="center|right" android:id="@id/moe" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/in3" />
+    </FrameLayout>
+    <View android:background="@color/al5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginBottom="16.0dip" />
+</LinearLayout>

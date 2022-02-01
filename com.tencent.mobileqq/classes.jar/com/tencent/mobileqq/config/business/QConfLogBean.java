@@ -4,12 +4,12 @@ import org.json.JSONObject;
 
 public class QConfLogBean
 {
-  private long jdField_a_of_type_Long = 2000L;
-  private boolean jdField_a_of_type_Boolean = true;
-  private long jdField_b_of_type_Long = 60000L;
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean a = true;
+  private boolean b = false;
   private boolean c = true;
   private boolean d = false;
+  private long e = 2000L;
+  private long f = 60000L;
   
   public static QConfLogBean a(String paramString)
   {
@@ -26,12 +26,12 @@ public class QConfLogBean
         if (paramString.optInt("useNewLog", 1) == 1)
         {
           bool1 = true;
-          localQConfLogBean.jdField_a_of_type_Boolean = bool1;
+          localQConfLogBean.a = bool1;
           if (paramString.optInt("compressAndEncrypt", 0) != 1) {
             break label149;
           }
           bool1 = true;
-          localQConfLogBean.jdField_b_of_type_Boolean = bool1;
+          localQConfLogBean.b = bool1;
           if (paramString.optInt("enableConsole", 1) != 1) {
             break label154;
           }
@@ -42,8 +42,8 @@ public class QConfLogBean
           }
           bool1 = bool2;
           localQConfLogBean.d = bool1;
-          localQConfLogBean.jdField_a_of_type_Long = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
-          localQConfLogBean.jdField_b_of_type_Long = paramString.optLong("locationBgTimeoutMillis", 60000L);
+          localQConfLogBean.e = paramString.optLong("locationSdkCallbackIntervalMillis", 2000L);
+          localQConfLogBean.f = paramString.optLong("locationBgTimeoutMillis", 60000L);
           return localQConfLogBean;
         }
       }
@@ -67,7 +67,7 @@ public class QConfLogBean
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public boolean b()
@@ -79,24 +79,24 @@ public class QConfLogBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QConfLogBean{useNewLog=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", compressAndEncrypt=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", enableConsole=");
     localStringBuilder.append(this.c);
     localStringBuilder.append(",enableCheckPermission=");
     localStringBuilder.append(this.d);
     localStringBuilder.append(",locationSdkCallbackIntervalMillis=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",locationBgTimeoutMillis=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QConfLogBean
  * JD-Core Version:    0.7.0.1
  */

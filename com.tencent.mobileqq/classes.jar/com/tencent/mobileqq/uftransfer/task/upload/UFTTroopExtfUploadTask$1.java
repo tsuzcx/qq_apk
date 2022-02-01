@@ -29,8 +29,8 @@ class UFTTroopExtfUploadTask$1
   {
     if (!UFTTroopExtfUploadTask.c(this.a))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadTaskRunNotesInfo.i(paramLong1);
-      this.a.jdField_a_of_type_ComTencentMobileqqUftransferTaskUploadUFTUploadCbWrapper.a(UFTTroopExtfUploadTask.a(this.a), UFTTroopExtfUploadTask.a(this.a).b(), paramLong1, paramLong3);
+      this.a.j.i(paramLong1);
+      this.a.k.a(UFTTroopExtfUploadTask.d(this.a), UFTTroopExtfUploadTask.e(this.a).p(), paramLong1, paramLong3);
     }
   }
   
@@ -43,13 +43,13 @@ class UFTTroopExtfUploadTask$1
   
   public void a(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadTaskRunNotesInfo.a(paramString);
-    this.a.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadTaskRunNotesInfo.b(this.a.jdField_a_of_type_ComTencentMobileqqUftransferTaskTaskinfoUFTUploadTaskRunNotesInfo.b() + 1);
+    this.a.j.a(paramString);
+    this.a.j.b(this.a.j.n() + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTTroopExtfUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

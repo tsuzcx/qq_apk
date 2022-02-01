@@ -10,7 +10,6 @@ import com.tencent.mobileqq.kandian.base.utils.TimeSliceHelper;
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.DailyModeConfigHandler;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.ugc.RIJUGRuleSp;
-import com.tencent.mobileqq.kandian.repo.ugc.api.IUGRuleManager;
 import com.tencent.mobileqq.kandian.repo.ugc.srt.ArticleDiversionInfo;
 import com.tencent.mobileqq.kandian.repo.ugc.srt.BackOffGroup;
 import com.tencent.mobileqq.kandian.repo.ugc.srt.BackOffInfoWithArticleInfo;
@@ -19,7 +18,6 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -35,74 +33,9 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.BackOffGroupInfo;
 public class UGRuleManager
   implements ReadInJoySrtHandler.IRuleManager
 {
-  private static int jdField_a_of_type_Int;
   private static int b;
-  private Map<String, BackOffGroup> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool = c(paramAbsBaseArticleInfo);
-    int i = 1;
-    if (!bool) {
-      return 1;
-    }
-    if (paramAbsBaseArticleInfo.weishiUGInfo.msg_url_jump_info.uint32_jump_src.has()) {
-      i = paramAbsBaseArticleInfo.weishiUGInfo.msg_url_jump_info.uint32_jump_src.get();
-    }
-    return i;
-  }
-  
-  public static int a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
-  {
-    if (!c(paramAbsBaseArticleInfo)) {
-      return 0;
-    }
-    if (!paramBoolean) {
-      return 2;
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  private AbsBaseArticleInfo a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    if (paramAbsBaseArticleInfo.viewRowkey != null)
-    {
-      localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-      if (!paramAbsBaseArticleInfo.viewRowkey.equals(paramAbsBaseArticleInfo.innerUniqueID))
-      {
-        localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-        if (paramAbsBaseArticleInfo.mSubArticleList != null)
-        {
-          localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-          if (paramAbsBaseArticleInfo.mSubArticleList.size() > 0)
-          {
-            localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-            if (paramAbsBaseArticleInfo.mSubArticleList.get(0) != null)
-            {
-              localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-              if (paramAbsBaseArticleInfo.viewRowkey.equals(((AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0)).innerUniqueID)) {
-                localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0);
-              }
-            }
-          }
-        }
-      }
-    }
-    return localAbsBaseArticleInfo;
-  }
-  
-  private BackOffGroup a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (paramAbsBaseArticleInfo == null) {
-      return null;
-    }
-    String str = b(paramAbsBaseArticleInfo);
-    if (TextUtils.isEmpty(str)) {
-      return null;
-    }
-    return a(str, String.valueOf(paramAbsBaseArticleInfo.mChannelID));
-  }
+  private static int c;
+  private Map<String, BackOffGroup> a = new HashMap();
   
   private BackOffGroup a(String paramString1, String paramString2)
   {
@@ -113,12 +46,12 @@ public class UGRuleManager
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(paramString1);
       localObject = ((StringBuilder)localObject).toString();
-      paramString2 = (BackOffGroup)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+      paramString2 = (BackOffGroup)this.a.get(localObject);
       paramString1 = paramString2;
       if (paramString2 == null)
       {
         paramString1 = new BackOffGroup();
-        this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString1);
+        this.a.put(localObject, paramString1);
       }
       return paramString1;
     }
@@ -131,7 +64,7 @@ public class UGRuleManager
     if (paramString1 == null) {
       return null;
     }
-    paramString1.jdField_a_of_type_JavaLangString = paramBackOffGroupInfo.bytes_back_off_group.get().toStringUtf8();
+    paramString1.a = paramBackOffGroupInfo.bytes_back_off_group.get().toStringUtf8();
     boolean bool = paramBackOffGroupInfo.uint32_max_evoke_count.has();
     int j = 0;
     if (bool) {
@@ -139,76 +72,43 @@ public class UGRuleManager
     } else {
       i = 0;
     }
-    paramString1.jdField_a_of_type_Int = i;
+    paramString1.b = i;
     int i = j;
     if (paramBackOffGroupInfo.uint32_max_fresh_evoke_count.has()) {
       i = paramBackOffGroupInfo.uint32_max_fresh_evoke_count.get();
     }
-    paramString1.b = i;
+    paramString1.c = i;
     paramBackOffGroupInfo = new StringBuilder();
     paramBackOffGroupInfo.append("handleBackOffGroup id: ");
-    paramBackOffGroupInfo.append(paramString1.jdField_a_of_type_JavaLangString);
+    paramBackOffGroupInfo.append(paramString1.a);
     paramBackOffGroupInfo.append(", maxEvokeCnt : ");
-    paramBackOffGroupInfo.append(paramString1.jdField_a_of_type_Int);
-    paramBackOffGroupInfo.append(", maxFreshEvokeCnt : ");
     paramBackOffGroupInfo.append(paramString1.b);
+    paramBackOffGroupInfo.append(", maxFreshEvokeCnt : ");
+    paramBackOffGroupInfo.append(paramString1.c);
     QLog.d("UGRuleManager", 1, paramBackOffGroupInfo.toString());
     return paramString1;
   }
   
-  private String a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    String str = paramAbsBaseArticleInfo.innerUniqueID;
-    if (paramAbsBaseArticleInfo.viewRowkey != null) {
-      str = paramAbsBaseArticleInfo.viewRowkey;
-    }
-    return str;
-  }
-  
-  public static List<String> a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if (!c(paramAbsBaseArticleInfo)) {
-      return null;
-    }
-    if ((paramAbsBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.has()) && (paramAbsBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.get() != null))
-    {
-      ArrayList localArrayList = new ArrayList();
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.get().iterator();
-      while (paramAbsBaseArticleInfo.hasNext())
-      {
-        ByteStringMicro localByteStringMicro = (ByteStringMicro)paramAbsBaseArticleInfo.next();
-        localArrayList.add(localByteStringMicro.toStringUtf8());
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("getReportUrl is ");
-        localStringBuilder.append(localByteStringMicro.toStringUtf8());
-        QLog.d("UGRuleManager", 1, localStringBuilder.toString());
-      }
-      return localArrayList;
-    }
-    QLog.d("UGRuleManager", 1, "getReportUrl is null");
-    return null;
-  }
-  
   public static void a()
   {
-    b(b);
+    b(c);
   }
   
   public static void a(int paramInt)
   {
     Object localObject1;
-    if (b != paramInt)
+    if (c != paramInt)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("wakeUpTimeCalculate change channel channel id is ");
       ((StringBuilder)localObject1).append(paramInt);
       QLog.d("UGRuleManager", 1, ((StringBuilder)localObject1).toString());
-      b(b);
+      b(c);
     }
     if ((paramInt == 0) || (DailyModeConfigHandler.b(paramInt)))
     {
-      b = paramInt;
-      Object localObject2 = TimeSliceHelper.a(String.valueOf(paramInt));
+      c = paramInt;
+      Object localObject2 = TimeSliceHelper.b(String.valueOf(paramInt));
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -219,13 +119,13 @@ public class UGRuleManager
       ((StringBuilder)localObject2).append("wakeUpTimeCalculate channel id is ");
       ((StringBuilder)localObject2).append(paramInt);
       QLog.d("UGRuleManager", 1, ((StringBuilder)localObject2).toString());
-      ((TimeSliceHelper)localObject1).a();
+      ((TimeSliceHelper)localObject1).b();
     }
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    paramAbsBaseArticleInfo = ((IUGRuleManager)QRoute.api(IUGRuleManager.class)).getReportUrl(paramAbsBaseArticleInfo);
+    paramAbsBaseArticleInfo = e(paramAbsBaseArticleInfo);
     if (paramAbsBaseArticleInfo == null) {
       return;
     }
@@ -249,16 +149,16 @@ public class UGRuleManager
   private void a(BackOffInfoWithArticleInfo paramBackOffInfoWithArticleInfo)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramBackOffInfoWithArticleInfo.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (paramBackOffInfoWithArticleInfo.a.size() > 0)
     {
-      Iterator localIterator = paramBackOffInfoWithArticleInfo.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = paramBackOffInfoWithArticleInfo.a.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (oidb_cmd0x68b.BackOffGroupInfo)localIterator.next();
         String str = RIJPBFieldUtils.a(((oidb_cmd0x68b.BackOffGroupInfo)localObject).bytes_back_off_group);
         if (!TextUtils.isEmpty(str))
         {
-          localObject = a((oidb_cmd0x68b.BackOffGroupInfo)localObject, String.valueOf(paramBackOffInfoWithArticleInfo.jdField_a_of_type_Int), str);
+          localObject = a((oidb_cmd0x68b.BackOffGroupInfo)localObject, String.valueOf(paramBackOffInfoWithArticleInfo.c), str);
           if ((localObject != null) && (paramBackOffInfoWithArticleInfo.b != null) && (!localArrayList.contains(str)))
           {
             FreshInfo localFreshInfo = new FreshInfo();
@@ -277,8 +177,8 @@ public class UGRuleManager
     while (paramList.hasNext())
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramList.next();
-      if (paramBackOffGroup.jdField_a_of_type_JavaLangString.equals(c(localAbsBaseArticleInfo))) {
-        paramFreshInfo.jdField_a_of_type_JavaUtilHashMap.put(localAbsBaseArticleInfo.innerUniqueID, new ArticleDiversionInfo(localAbsBaseArticleInfo.innerUniqueID));
+      if (paramBackOffGroup.a.equals(l(localAbsBaseArticleInfo))) {
+        paramFreshInfo.b.put(localAbsBaseArticleInfo.innerUniqueID, new ArticleDiversionInfo(localAbsBaseArticleInfo.innerUniqueID));
       }
       if ((localAbsBaseArticleInfo.mSubArticleList != null) && (localAbsBaseArticleInfo.mSubArticleList.size() > 0)) {
         a(localAbsBaseArticleInfo.mSubArticleList, paramBackOffGroup, paramFreshInfo);
@@ -309,40 +209,33 @@ public class UGRuleManager
     return bool1;
   }
   
-  private String b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static int b(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean)
   {
-    return RIJPBFieldUtils.a(paramAbsBaseArticleInfo.weishiUGInfo.bytes_back_off_group, "");
+    if (!c(paramAbsBaseArticleInfo)) {
+      return 0;
+    }
+    if (!paramBoolean) {
+      return 2;
+    }
+    return b;
   }
   
   public static void b(int paramInt)
   {
     if ((paramInt == 0) || (DailyModeConfigHandler.b(paramInt)))
     {
-      Object localObject = TimeSliceHelper.a(String.valueOf(paramInt));
-      if ((localObject != null) && (((TimeSliceHelper)localObject).a()))
+      Object localObject = TimeSliceHelper.b(String.valueOf(paramInt));
+      if ((localObject != null) && (((TimeSliceHelper)localObject).f()))
       {
-        RIJUGRuleSp.a(paramInt);
-        ((TimeSliceHelper)localObject).b();
+        RIJUGRuleSp.b(paramInt);
         ((TimeSliceHelper)localObject).c();
+        ((TimeSliceHelper)localObject).g();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("stopTimeCalculate channel id is ");
         ((StringBuilder)localObject).append(paramInt);
         QLog.d("UGRuleManager", 1, ((StringBuilder)localObject).toString());
       }
     }
-  }
-  
-  private String c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool = c(paramAbsBaseArticleInfo);
-    String str = null;
-    if (!bool) {
-      return null;
-    }
-    if (paramAbsBaseArticleInfo.weishiUGInfo.bytes_back_off_group.has()) {
-      str = paramAbsBaseArticleInfo.weishiUGInfo.bytes_back_off_group.get().toStringUtf8();
-    }
-    return str;
   }
   
   public static boolean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
@@ -358,7 +251,31 @@ public class UGRuleManager
     return (paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.weishiUGInfo != null) && (paramAbsBaseArticleInfo.weishiUGInfo.uint32_is_with_angle_sign.has()) && (paramAbsBaseArticleInfo.weishiUGInfo.uint32_is_with_angle_sign.get() > 0) && (paramAbsBaseArticleInfo.weishiUGInfo.msg_url_jump_info.has()) && (paramAbsBaseArticleInfo.weishiUGInfo.msg_url_jump_info.get() != null);
   }
   
-  public static boolean e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public static List<String> e(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (!c(paramAbsBaseArticleInfo)) {
+      return null;
+    }
+    if ((paramAbsBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.has()) && (paramAbsBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.get() != null))
+    {
+      ArrayList localArrayList = new ArrayList();
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.weishiUGInfo.rpt_bytes_report_base_url.get().iterator();
+      while (paramAbsBaseArticleInfo.hasNext())
+      {
+        ByteStringMicro localByteStringMicro = (ByteStringMicro)paramAbsBaseArticleInfo.next();
+        localArrayList.add(localByteStringMicro.toStringUtf8());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getReportUrl is ");
+        localStringBuilder.append(localByteStringMicro.toStringUtf8());
+        QLog.d("UGRuleManager", 1, localStringBuilder.toString());
+      }
+      return localArrayList;
+    }
+    QLog.d("UGRuleManager", 1, "getReportUrl is null");
+    return null;
+  }
+  
+  public static boolean f(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     boolean bool1 = c(paramAbsBaseArticleInfo);
     boolean bool2 = false;
@@ -399,12 +316,93 @@ public class UGRuleManager
     return bool1;
   }
   
+  public static int g(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool = c(paramAbsBaseArticleInfo);
+    int i = 1;
+    if (!bool) {
+      return 1;
+    }
+    if (paramAbsBaseArticleInfo.weishiUGInfo.msg_url_jump_info.uint32_jump_src.has()) {
+      i = paramAbsBaseArticleInfo.weishiUGInfo.msg_url_jump_info.uint32_jump_src.get();
+    }
+    return i;
+  }
+  
+  private String h(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    String str = paramAbsBaseArticleInfo.innerUniqueID;
+    if (paramAbsBaseArticleInfo.viewRowkey != null) {
+      str = paramAbsBaseArticleInfo.viewRowkey;
+    }
+    return str;
+  }
+  
+  private String i(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    return RIJPBFieldUtils.a(paramAbsBaseArticleInfo.weishiUGInfo.bytes_back_off_group, "");
+  }
+  
+  private AbsBaseArticleInfo j(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    if (paramAbsBaseArticleInfo.viewRowkey != null)
+    {
+      localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+      if (!paramAbsBaseArticleInfo.viewRowkey.equals(paramAbsBaseArticleInfo.innerUniqueID))
+      {
+        localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+        if (paramAbsBaseArticleInfo.mSubArticleList != null)
+        {
+          localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+          if (paramAbsBaseArticleInfo.mSubArticleList.size() > 0)
+          {
+            localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+            if (paramAbsBaseArticleInfo.mSubArticleList.get(0) != null)
+            {
+              localAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+              if (paramAbsBaseArticleInfo.viewRowkey.equals(((AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0)).innerUniqueID)) {
+                localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0);
+              }
+            }
+          }
+        }
+      }
+    }
+    return localAbsBaseArticleInfo;
+  }
+  
+  private BackOffGroup k(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if (paramAbsBaseArticleInfo == null) {
+      return null;
+    }
+    String str = i(paramAbsBaseArticleInfo);
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    return a(str, String.valueOf(paramAbsBaseArticleInfo.mChannelID));
+  }
+  
+  private String l(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool = c(paramAbsBaseArticleInfo);
+    String str = null;
+    if (!bool) {
+      return null;
+    }
+    if (paramAbsBaseArticleInfo.weishiUGInfo.bytes_back_off_group.has()) {
+      str = paramAbsBaseArticleInfo.weishiUGInfo.bytes_back_off_group.get().toStringUtf8();
+    }
+    return str;
+  }
+  
   public String a(AbsBaseArticleInfo paramAbsBaseArticleInfo, TemplateBean paramTemplateBean, ViewBase paramViewBase)
   {
     if (!c(paramAbsBaseArticleInfo)) {
       return null;
     }
-    paramViewBase = a(paramAbsBaseArticleInfo);
+    paramViewBase = j(paramAbsBaseArticleInfo);
     articlesummary.UrlJumpInfo localUrlJumpInfo = paramViewBase.weishiUGInfo.msg_url_jump_info;
     boolean bool = localUrlJumpInfo.bytes_jump_schema.has();
     paramTemplateBean = "";
@@ -426,10 +424,10 @@ public class UGRuleManager
     if ((TextUtils.isEmpty(paramAbsBaseArticleInfo)) && (TextUtils.isEmpty(paramTemplateBean)))
     {
       QLog.d("UGRuleManager", 1, "getJumpUrl schema & h5 is null");
-      jdField_a_of_type_Int = 3;
+      b = 3;
       return null;
     }
-    if (!e(paramViewBase))
+    if (!f(paramViewBase))
     {
       if ((j == 2) && (i == 2) && (!TextUtils.isEmpty(paramTemplateBean)))
       {
@@ -437,11 +435,11 @@ public class UGRuleManager
         paramAbsBaseArticleInfo.append("getJumpUrl return is h5:");
         paramAbsBaseArticleInfo.append(paramTemplateBean);
         QLog.d("UGRuleManager", 1, paramAbsBaseArticleInfo.toString());
-        jdField_a_of_type_Int = 108;
+        b = 108;
         return paramTemplateBean;
       }
       QLog.d("UGRuleManager", 1, "getJumpUrl judgeIsAgreement is false");
-      jdField_a_of_type_Int = 109;
+      b = 109;
       return null;
     }
     if (j == 1)
@@ -452,7 +450,7 @@ public class UGRuleManager
         paramAbsBaseArticleInfo.append("getJumpUrl return is h5:");
         paramAbsBaseArticleInfo.append(paramTemplateBean);
         QLog.d("UGRuleManager", 1, paramAbsBaseArticleInfo.toString());
-        jdField_a_of_type_Int = 108;
+        b = 108;
         return paramTemplateBean;
       }
     }
@@ -464,7 +462,7 @@ public class UGRuleManager
         paramTemplateBean.append("getJumpUrl return is schema:");
         paramTemplateBean.append(paramAbsBaseArticleInfo);
         QLog.d("UGRuleManager", 1, paramTemplateBean.toString());
-        jdField_a_of_type_Int = 7;
+        b = 7;
         return paramAbsBaseArticleInfo;
       }
       if ((i == 1) && (!TextUtils.isEmpty(paramTemplateBean)))
@@ -473,18 +471,18 @@ public class UGRuleManager
         paramAbsBaseArticleInfo.append("getJumpUrl return is h5:");
         paramAbsBaseArticleInfo.append(paramTemplateBean);
         QLog.d("UGRuleManager", 1, paramAbsBaseArticleInfo.toString());
-        jdField_a_of_type_Int = 108;
+        b = 108;
         return paramTemplateBean;
       }
     }
-    jdField_a_of_type_Int = 3;
+    b = 3;
     QLog.d("UGRuleManager", 1, "getJumpUrl return is null");
     return null;
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = a(paramAbsBaseArticleInfo, paramBoolean2);
+    int j = b(paramAbsBaseArticleInfo, paramBoolean2);
     if (j != 0)
     {
       int i = j;
@@ -514,21 +512,21 @@ public class UGRuleManager
   
   public boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    Object localObject1 = a(paramAbsBaseArticleInfo);
+    Object localObject1 = k(paramAbsBaseArticleInfo);
     if (localObject1 == null) {
       return false;
     }
-    paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo);
-    localObject1 = ((BackOffGroup)localObject1).jdField_a_of_type_JavaUtilDeque.iterator();
+    paramAbsBaseArticleInfo = h(paramAbsBaseArticleInfo);
+    localObject1 = ((BackOffGroup)localObject1).e.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (FreshInfo)((Iterator)localObject1).next();
-      if (((FreshInfo)localObject2).jdField_a_of_type_JavaUtilHashMap.containsKey(paramAbsBaseArticleInfo))
+      if (((FreshInfo)localObject2).b.containsKey(paramAbsBaseArticleInfo))
       {
-        localObject2 = (ArticleDiversionInfo)((FreshInfo)localObject2).jdField_a_of_type_JavaUtilHashMap.get(paramAbsBaseArticleInfo);
-        if ((localObject2 != null) && (((ArticleDiversionInfo)localObject2).jdField_a_of_type_Int != 0))
+        localObject2 = (ArticleDiversionInfo)((FreshInfo)localObject2).b.get(paramAbsBaseArticleInfo);
+        if ((localObject2 != null) && (((ArticleDiversionInfo)localObject2).b != 0))
         {
-          ((ArticleDiversionInfo)localObject2).jdField_a_of_type_Int -= 1;
+          ((ArticleDiversionInfo)localObject2).b -= 1;
           return true;
         }
       }
@@ -556,53 +554,53 @@ public class UGRuleManager
   
   public boolean b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    BackOffGroup localBackOffGroup = a(paramAbsBaseArticleInfo);
+    BackOffGroup localBackOffGroup = k(paramAbsBaseArticleInfo);
     if (localBackOffGroup == null) {
       return false;
     }
-    Object localObject1 = a(paramAbsBaseArticleInfo);
-    String str = b(paramAbsBaseArticleInfo);
+    Object localObject1 = h(paramAbsBaseArticleInfo);
+    String str = i(paramAbsBaseArticleInfo);
     if (RIJPBFieldUtils.a(paramAbsBaseArticleInfo.weishiUGInfo.uint32_residence_threshold, 0) > RIJUGRuleSp.a((int)paramAbsBaseArticleInfo.mChannelID))
     {
       QLog.d("UGRuleManager", 1, "judgeHitRule is not reach minTime");
-      jdField_a_of_type_Int = 110;
+      b = 110;
       return false;
     }
-    localBackOffGroup.c = RIJUGRuleSp.a(localBackOffGroup, str, String.valueOf(paramAbsBaseArticleInfo.mChannelID));
+    localBackOffGroup.d = RIJUGRuleSp.b(localBackOffGroup, str, String.valueOf(paramAbsBaseArticleInfo.mChannelID));
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("judgeHitRule backOffGroup.clickTime is ");
-    ((StringBuilder)localObject2).append(localBackOffGroup.c);
+    ((StringBuilder)localObject2).append(localBackOffGroup.d);
     ((StringBuilder)localObject2).append(" backOffGroup.maxEvokeCount is ");
-    ((StringBuilder)localObject2).append(localBackOffGroup.jdField_a_of_type_Int);
+    ((StringBuilder)localObject2).append(localBackOffGroup.b);
     ((StringBuilder)localObject2).append(" groupid is ");
-    ((StringBuilder)localObject2).append(localBackOffGroup.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(localBackOffGroup.a);
     QLog.d("UGRuleManager", 1, ((StringBuilder)localObject2).toString());
-    if (localBackOffGroup.c >= localBackOffGroup.jdField_a_of_type_Int)
+    if (localBackOffGroup.d >= localBackOffGroup.b)
     {
       QLog.d("UGRuleManager", 1, "judgeHitRule over groupClick");
       return false;
     }
-    Iterator localIterator = localBackOffGroup.jdField_a_of_type_JavaUtilDeque.iterator();
+    Iterator localIterator = localBackOffGroup.e.iterator();
     while (localIterator.hasNext())
     {
       localObject2 = (FreshInfo)localIterator.next();
-      if (((FreshInfo)localObject2).jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1))
+      if (((FreshInfo)localObject2).b.containsKey(localObject1))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("judgeHitRule freshInfo.clickTime is ");
-        localStringBuilder.append(((FreshInfo)localObject2).jdField_a_of_type_Int);
+        localStringBuilder.append(((FreshInfo)localObject2).a);
         localStringBuilder.append(" backOffGroup.maxFreshEvokeCount is ");
-        localStringBuilder.append(localBackOffGroup.b);
+        localStringBuilder.append(localBackOffGroup.c);
         QLog.d("UGRuleManager", 1, localStringBuilder.toString());
-        if (((FreshInfo)localObject2).jdField_a_of_type_Int < localBackOffGroup.b)
+        if (((FreshInfo)localObject2).a < localBackOffGroup.c)
         {
           if (!TextUtils.isEmpty(a(paramAbsBaseArticleInfo, null, null)))
           {
-            localObject1 = (ArticleDiversionInfo)((FreshInfo)localObject2).jdField_a_of_type_JavaUtilHashMap.get(paramAbsBaseArticleInfo.innerUniqueID);
+            localObject1 = (ArticleDiversionInfo)((FreshInfo)localObject2).b.get(paramAbsBaseArticleInfo.innerUniqueID);
             if (localObject1 != null) {
-              ((ArticleDiversionInfo)localObject1).jdField_a_of_type_Int += 1;
+              ((ArticleDiversionInfo)localObject1).b += 1;
             }
-            ((FreshInfo)localObject2).jdField_a_of_type_Int += 1;
+            ((FreshInfo)localObject2).a += 1;
             RIJUGRuleSp.a(localBackOffGroup, str, String.valueOf(paramAbsBaseArticleInfo.mChannelID));
           }
           return true;
@@ -614,7 +612,7 @@ public class UGRuleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.ugc.srtutils.UGRuleManager
  * JD-Core Version:    0.7.0.1
  */

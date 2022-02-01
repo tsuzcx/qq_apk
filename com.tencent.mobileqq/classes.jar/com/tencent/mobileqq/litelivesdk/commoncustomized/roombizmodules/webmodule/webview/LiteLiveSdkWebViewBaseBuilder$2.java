@@ -16,11 +16,11 @@ class LiteLiveSdkWebViewBaseBuilder$2
     if (this.this$0.mWebview == null) {
       return;
     }
-    Iterator localIterator = LiteLiveSdkWebViewBaseBuilder.a().iterator();
+    Iterator localIterator = LiteLiveSdkWebViewBaseBuilder.g().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = this.this$0.mWebview.getPluginEngine().a((String)localObject);
+      localObject = this.this$0.mWebview.getPluginEngine().b((String)localObject);
       if ((localObject instanceof LiteLiveJsInterface)) {
         ((LiteLiveJsInterface)localObject).onInitJsAdapter(LiteLiveSdkWebViewBaseBuilder.a(this.this$0));
       }
@@ -30,7 +30,7 @@ class LiteLiveSdkWebViewBaseBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.LiteLiveSdkWebViewBaseBuilder.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,12 +17,14 @@ public class DiffDevOAuthFactory
   
   public static IDiffDevOAuth getDiffDevOAuth(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("getDiffDevOAuth, version = ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getDiffDevOAuth, version = ");
     localStringBuilder.append(paramInt);
     Log.v("MicroMsg.SDK.DiffDevOAuthFactory", localStringBuilder.toString());
     if (paramInt > 1)
     {
-      localStringBuilder = new StringBuilder("getDiffDevOAuth fail, unsupported version = ");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDiffDevOAuth fail, unsupported version = ");
       localStringBuilder.append(paramInt);
       Log.e("MicroMsg.SDK.DiffDevOAuthFactory", localStringBuilder.toString());
       return null;
@@ -38,7 +40,7 @@ public class DiffDevOAuthFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.DiffDevOAuthFactory
  * JD-Core Version:    0.7.0.1
  */

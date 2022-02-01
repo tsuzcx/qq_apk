@@ -31,9 +31,11 @@ import com.tencent.imcore.message.facade.msg.summary.MsgSummaryProvider;
 import com.tencent.imcore.message.facade.notify.MessageNotifyProcessorProvider;
 import com.tencent.imcore.message.facade.send.MessageRealSendProcessorProvider;
 import com.tencent.imcore.message.facade.send.sender.MsgSenderProvider;
+import com.tencent.imcore.message.facade.unread.count.UnreadCountUtil;
 import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.mobileqq.activity.QQLSActivity.SyncTroopSummaryTask;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxABTestApi;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -48,6 +50,7 @@ import com.tencent.mobileqq.gamecenter.message.TinyMsgCodec;
 import com.tencent.mobileqq.nearby.api.IHotChatUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.qcall.QCallFacade;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.subaccount.api.ISubAccountService;
@@ -90,7 +93,7 @@ public class MessageFacadeServiceImpl
   
   public ConversationProxy getConversationProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getProxyManager().a();
+    return ((QQAppInterface)paramBaseQQAppInterface).getProxyManager().h();
   }
   
   public Provider<Map<Integer, ILastMsgGetter<QQMessageFacade, QQAppInterface>>> getLastMsgGetterProvider()
@@ -120,7 +123,7 @@ public class MessageFacadeServiceImpl
   
   public MessageCache getMsgHandlerMsgCache(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((QQAppInterface)paramBaseQQAppInterface).getMsgHandler().a();
+    return ((QQAppInterface)paramBaseQQAppInterface).getMsgHandler().l();
   }
   
   public Provider<Map<Integer, BaseMessageManager>> getMsgManagerProvider(AppRuntime paramAppRuntime, MsgPool paramMsgPool)
@@ -156,7 +159,7 @@ public class MessageFacadeServiceImpl
           localMessage.isFromLS = true;
           paramFT.a(localMessage);
           localMessage.isFromLS = false;
-          ThreadManager.getSubThreadHandler().post(new QQLSActivity.SyncTroopSummaryTask(paramAT, ((QQLSActivity)paramContext).a, localMessage.senderuin, localMessage.frienduin));
+          ThreadManager.getSubThreadHandler().post(new QQLSActivity.SyncTroopSummaryTask(paramAT, ((QQLSActivity)paramContext).w, localMessage.senderuin, localMessage.frienduin));
         }
         else
         {
@@ -189,6 +192,12 @@ public class MessageFacadeServiceImpl
   public String getUinByPhoneNum(AppInterface paramAppInterface, String paramString)
   {
     return ContactUtils.b(paramAppInterface, paramString);
+  }
+  
+  public int getUnReadMsg(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
+    return QCallFacade.a(localQQAppInterface) + UnreadCountUtil.a(localQQAppInterface, paramBaseQQAppInterface.getApplicationContext());
   }
   
   public boolean isBelongServiceAccountFolder(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
@@ -233,11 +242,16 @@ public class MessageFacadeServiceImpl
   
   public msg_svc.PbC2CReadedReportReq setTempGameMsgReaded(BaseQQAppInterface paramBaseQQAppInterface, BaseQQMessageFacade paramBaseQQMessageFacade, boolean paramBoolean, msg_svc.PbC2CReadedReportReq paramPbC2CReadedReportReq, ConversationInfo paramConversationInfo)
   {
-    Object localObject = paramPbC2CReadedReportReq;
-    if (paramBoolean)
+    Object localObject;
+    if (!paramBoolean)
+    {
+      localObject = paramPbC2CReadedReportReq;
+      if (!((IGameMsgBoxABTestApi)QRoute.api(IGameMsgBoxABTestApi.class)).isGameMsgAddTab()) {}
+    }
+    else
     {
       paramBaseQQMessageFacade.a(paramConversationInfo.uin, paramConversationInfo.type, true, paramBoolean);
-      long l = paramBaseQQMessageFacade.a(paramConversationInfo.uin, paramConversationInfo.type);
+      long l = paramBaseQQMessageFacade.i(paramConversationInfo.uin, paramConversationInfo.type);
       paramBaseQQMessageFacade = paramPbC2CReadedReportReq;
       if (paramPbC2CReadedReportReq == null) {
         paramBaseQQMessageFacade = new msg_svc.PbC2CReadedReportReq();
@@ -261,7 +275,7 @@ public class MessageFacadeServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.api.impl.MessageFacadeServiceImpl
  * JD-Core Version:    0.7.0.1
  */

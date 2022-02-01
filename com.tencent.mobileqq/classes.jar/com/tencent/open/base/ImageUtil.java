@@ -15,25 +15,6 @@ import java.io.File;
 
 public class ImageUtil
 {
-  public static Bitmap a(Drawable paramDrawable)
-  {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {
-      localObject = Bitmap.Config.ARGB_8888;
-    } else {
-      localObject = Bitmap.Config.RGB_565;
-    }
-    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-    paramDrawable.draw(localCanvas);
-    return localObject;
-  }
-  
   public static Bitmap a(String paramString)
   {
     String str = a(paramString, 100);
@@ -67,7 +48,7 @@ public class ImageUtil
     if (Build.VERSION.SDK_INT <= 7) {
       return "";
     }
-    paramDrawable = a(paramDrawable);
+    paramDrawable = b(paramDrawable);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     paramDrawable.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
     return Base64.encodeToString(localByteArrayOutputStream.toByteArray(), 0);
@@ -93,12 +74,31 @@ public class ImageUtil
   
   public static Bitmap b(Drawable paramDrawable)
   {
-    return a(paramDrawable);
+    if ((paramDrawable instanceof BitmapDrawable)) {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if (paramDrawable.getOpacity() != -1) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
+    }
+    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+    paramDrawable.draw(localCanvas);
+    return localObject;
+  }
+  
+  public static Bitmap c(Drawable paramDrawable)
+  {
+    return b(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.ImageUtil
  * JD-Core Version:    0.7.0.1
  */

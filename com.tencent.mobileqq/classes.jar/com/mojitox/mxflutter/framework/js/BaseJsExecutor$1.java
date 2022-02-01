@@ -9,12 +9,12 @@ class BaseJsExecutor$1
   
   public void a()
   {
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    this.this$0.c(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.BaseJsExecutor.1
  * JD-Core Version:    0.7.0.1
  */

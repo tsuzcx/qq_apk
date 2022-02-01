@@ -13,21 +13,21 @@ class ForwardChooseFriendOption$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (this.c.a != null)
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramDialogInterface);
+      paramDialogInterface = this.c.b(this.a, this.b);
+      this.c.a.send(0, paramDialogInterface);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity != null)
+    if (this.c.s != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity.setResult(1);
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardChooseFriendOption.jdField_a_of_type_AndroidAppActivity.finish();
+      this.c.s.setResult(1);
+      this.c.s.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardChooseFriendOption.1
  * JD-Core Version:    0.7.0.1
  */

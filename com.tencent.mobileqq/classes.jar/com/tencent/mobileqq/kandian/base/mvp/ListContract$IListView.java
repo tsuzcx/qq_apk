@@ -4,37 +4,33 @@ import java.util.List;
 
 public abstract interface ListContract$IListView<BEAN>
 {
-  public abstract void setCenterEmpty();
+  public abstract void a();
   
-  public abstract void setCenterError(int paramInt, String paramString);
+  public abstract void a(int paramInt);
   
-  public abstract void setCenterHide();
+  public abstract void a(int paramInt, String paramString);
   
-  public abstract void setCenterLoading();
+  public abstract void a(List<BEAN> paramList, boolean paramBoolean);
   
-  public abstract void setFooterError(int paramInt, String paramString);
+  public abstract void b();
   
-  public abstract void setFooterHasMore();
+  public abstract void b(int paramInt, String paramString);
   
-  public abstract void setFooterHide();
+  public abstract void c();
   
-  public abstract void setFooterLoading();
+  public abstract void c(int paramInt, String paramString);
   
-  public abstract void setFooterNoMore();
+  public abstract void d();
   
-  public abstract void setHeaderError(int paramInt, String paramString);
+  public abstract void e();
   
-  public abstract void setHeaderLoading();
+  public abstract void f();
   
-  public abstract void setHeaderSuccess();
-  
-  public abstract void setListData(List<BEAN> paramList, boolean paramBoolean);
-  
-  public abstract void setTotal(int paramInt);
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.mvp.ListContract.IListView
  * JD-Core Version:    0.7.0.1
  */

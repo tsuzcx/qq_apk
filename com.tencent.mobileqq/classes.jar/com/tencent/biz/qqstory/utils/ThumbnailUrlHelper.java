@@ -16,26 +16,26 @@ import org.json.JSONObject;
 
 public class ThumbnailUrlHelper
 {
-  private static final List<Integer> jdField_a_of_type_JavaUtilList;
-  private static Map<String, List<Integer>> jdField_a_of_type_JavaUtilMap;
+  private static final List<Integer> a;
   private static final List<Integer> b;
-  private static final List<Integer> c;
+  private static Map<String, List<Integer>> c;
+  private static final List<Integer> d;
   
   static
   {
     Integer localInteger1 = Integer.valueOf(120);
     Integer localInteger2 = Integer.valueOf(200);
     Integer localInteger3 = Integer.valueOf(320);
-    jdField_a_of_type_JavaUtilList = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3, Integer.valueOf(512), Integer.valueOf(640), Integer.valueOf(750), Integer.valueOf(1000) });
+    a = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3, Integer.valueOf(512), Integer.valueOf(640), Integer.valueOf(750), Integer.valueOf(1000) });
     b = Arrays.asList(new Integer[] { Integer.valueOf(40), Integer.valueOf(60), Integer.valueOf(80), Integer.valueOf(100), localInteger1, Integer.valueOf(140), Integer.valueOf(160), localInteger2 });
-    c = Arrays.asList(new Integer[] { Integer.valueOf(180), localInteger2, localInteger3 });
+    d = Arrays.asList(new Integer[] { Integer.valueOf(180), localInteger2, localInteger3 });
   }
   
   private static int a(int paramInt)
   {
-    Object localObject = jdField_a_of_type_JavaUtilMap;
+    Object localObject = c;
     if (localObject == null) {
-      localObject = jdField_a_of_type_JavaUtilList;
+      localObject = a;
     } else {
       localObject = (List)((Map)localObject).get("qqstory_pic");
     }
@@ -64,14 +64,14 @@ public class ThumbnailUrlHelper
       SLog.d("Q.qqstory.home.ThumbnailUrlHelper", "origPath is null");
       return -1;
     }
-    if (a(paramString)) {
-      return a(jdField_a_of_type_JavaUtilList, paramInt);
+    if (f(paramString)) {
+      return a(a, paramInt);
     }
-    if (b(paramString)) {
+    if (g(paramString)) {
       return a(b, paramInt);
     }
-    if (c(paramString)) {
-      return a(c, paramInt);
+    if (i(paramString)) {
+      return a(d, paramInt);
     }
     return -1;
   }
@@ -104,7 +104,7 @@ public class ThumbnailUrlHelper
     if (paramString == null) {
       return "";
     }
-    if (!a(paramString))
+    if (!f(paramString))
     {
       paramContext = new StringBuilder();
       paramContext.append("not qqstory url for getFullScreenThumbnailPath ");
@@ -113,7 +113,7 @@ public class ThumbnailUrlHelper
       return paramString;
     }
     paramString = d(paramString);
-    int i = a(UIUtils.a(paramContext));
+    int i = a(UIUtils.b(paramContext));
     paramContext = new StringBuilder();
     paramContext.append("get fullscreen thumbnail url ");
     paramContext.append(paramString);
@@ -150,7 +150,7 @@ public class ThumbnailUrlHelper
   
   private static void a()
   {
-    Object localObject1 = StoryConfigManager.g();
+    Object localObject1 = StoryConfigManager.u();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("Json config in string ");
     ((StringBuilder)localObject2).append((String)localObject1);
@@ -168,7 +168,7 @@ public class ThumbnailUrlHelper
       SLog.b("Q.qqstory.home.ThumbnailUrlHelper", ((StringBuilder)localObject2).toString());
       localObject1 = new JSONObject((String)localObject1);
       localObject2 = ((JSONObject)localObject1).names();
-      jdField_a_of_type_JavaUtilMap = new HashMap();
+      c = new HashMap();
       int i = 0;
       while (i < ((JSONArray)localObject2).length())
       {
@@ -189,7 +189,7 @@ public class ThumbnailUrlHelper
           ((List)localObject4).add(Integer.valueOf(((JSONArray)localObject3).getInt(j)));
           j += 1;
         }
-        jdField_a_of_type_JavaUtilMap.put(str, localObject4);
+        c.put(str, localObject4);
         i += 1;
       }
     }
@@ -201,14 +201,6 @@ public class ThumbnailUrlHelper
     SLog.e("Q.qqstory.home.ThumbnailUrlHelper", "Invalid json format, fredguo look look");
   }
   
-  public static boolean a(@NonNull String paramString)
-  {
-    if ((paramString.length() >= 30) && (paramString.startsWith("/qqstory_pic/", 17))) {
-      return true;
-    }
-    return paramString.contains("/qqstory_pic/");
-  }
-  
   private static int b(String paramString, int paramInt)
   {
     if (paramString == null)
@@ -216,13 +208,13 @@ public class ThumbnailUrlHelper
       SLog.d("Q.qqstory.home.ThumbnailUrlHelper", "origPath is null");
       return -1;
     }
-    if (jdField_a_of_type_JavaUtilMap == null) {
+    if (c == null) {
       a();
     }
-    if (jdField_a_of_type_JavaUtilMap == null) {
+    if (c == null) {
       return a(paramString, paramInt);
     }
-    Object localObject = f(paramString);
+    Object localObject = h(paramString);
     if (localObject == null)
     {
       localObject = new StringBuilder();
@@ -231,7 +223,7 @@ public class ThumbnailUrlHelper
       SLog.d("Q.qqstory.home.ThumbnailUrlHelper", ((StringBuilder)localObject).toString());
       return -1;
     }
-    paramString = (List)jdField_a_of_type_JavaUtilMap.get(localObject);
+    paramString = (List)c.get(localObject);
     if (paramString == null)
     {
       paramString = new StringBuilder();
@@ -271,15 +263,6 @@ public class ThumbnailUrlHelper
     return localStringBuilder.toString();
   }
   
-  @Deprecated
-  public static boolean b(@NonNull String paramString)
-  {
-    if ((paramString.length() >= 26) && (paramString.startsWith("/qqstory/", 17))) {
-      return true;
-    }
-    return paramString.contains("/qqstory/");
-  }
-  
   public static String c(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -307,37 +290,9 @@ public class ThumbnailUrlHelper
     return localStringBuilder.toString();
   }
   
-  private static boolean c(@NonNull String paramString)
-  {
-    int i;
-    if (paramString.startsWith("http://"))
-    {
-      i = 7;
-    }
-    else
-    {
-      if (!paramString.startsWith("https://")) {
-        break label68;
-      }
-      i = 8;
-    }
-    if (!paramString.startsWith("qqpublic.qpic.cn/", i)) {
-      return false;
-    }
-    i += 17;
-    if (paramString.startsWith("qq_public_cover/", i)) {
-      return true;
-    }
-    if (paramString.startsWith("qq_public/", i)) {
-      return true;
-    }
-    label68:
-    return false;
-  }
-  
   public static String d(String paramString)
   {
-    if (c(paramString)) {
+    if (i(paramString)) {
       return e(paramString);
     }
     if (paramString.endsWith("/")) {
@@ -413,8 +368,25 @@ public class ThumbnailUrlHelper
     return str;
   }
   
+  public static boolean f(@NonNull String paramString)
+  {
+    if ((paramString.length() >= 30) && (paramString.startsWith("/qqstory_pic/", 17))) {
+      return true;
+    }
+    return paramString.contains("/qqstory_pic/");
+  }
+  
+  @Deprecated
+  public static boolean g(@NonNull String paramString)
+  {
+    if ((paramString.length() >= 26) && (paramString.startsWith("/qqstory/", 17))) {
+      return true;
+    }
+    return paramString.contains("/qqstory/");
+  }
+  
   @Nullable
-  private static String f(String paramString)
+  private static String h(String paramString)
   {
     if (paramString != null)
     {
@@ -428,6 +400,34 @@ public class ThumbnailUrlHelper
       return paramString[3];
     }
     return null;
+  }
+  
+  private static boolean i(@NonNull String paramString)
+  {
+    int i;
+    if (paramString.startsWith("http://"))
+    {
+      i = 7;
+    }
+    else
+    {
+      if (!paramString.startsWith("https://")) {
+        break label73;
+      }
+      i = 8;
+    }
+    if (!paramString.startsWith("qqpublic.qpic.cn/", i)) {
+      return false;
+    }
+    i += 17;
+    if (paramString.startsWith("qq_public_cover/", i)) {
+      return true;
+    }
+    if (paramString.startsWith("qq_public/", i)) {
+      return true;
+    }
+    label73:
+    return false;
   }
 }
 

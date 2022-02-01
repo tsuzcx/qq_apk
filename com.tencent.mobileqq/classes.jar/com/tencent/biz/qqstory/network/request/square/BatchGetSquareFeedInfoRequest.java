@@ -18,15 +18,15 @@ import java.util.List;
 public class BatchGetSquareFeedInfoRequest
   extends NetworkRequest
 {
-  public static final String a;
-  public List<FeedIdListSeqInfo> a;
+  public static final String e = StoryApi.a("StorySvc.square_720_share_group_vid_list");
+  public List<FeedIdListSeqInfo> f;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.square_720_share_group_vid_list");
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspDiscoveryShareGroupInfoList localRspDiscoveryShareGroupInfoList = new qqstory_service.RspDiscoveryShareGroupInfoList();
     try
@@ -41,21 +41,16 @@ public class BatchGetSquareFeedInfoRequest
     return new BatchGetSquareFeedInfoRequest.GetSquareFeedInfoResp(localRspDiscoveryShareGroupInfoList);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     Object localObject = new qqstory_service.ReqDiscoveryShareGroupInfoList();
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.f.iterator();
     while (localIterator.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)localIterator.next();
       if (localFeedIdListSeqInfo != null) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8(localFeedIdListSeqInfo.jdField_a_of_type_JavaLangString));
+        localArrayList.add(ByteStringMicro.copyFromUtf8(localFeedIdListSeqInfo.a));
       }
     }
     if (localArrayList.size() != 0)
@@ -72,7 +67,7 @@ public class BatchGetSquareFeedInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.square.BatchGetSquareFeedInfoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ public class PoiMapActivity$PoiMapNameTask
   extends AsyncTask<Void, Void, String>
 {
   protected GeoPoint a;
-  protected HttpClient a;
   protected GeoPoint b;
+  protected HttpClient c;
   
   public PoiMapActivity$PoiMapNameTask(PoiMapActivity paramPoiMapActivity) {}
   
   protected String a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizPoiMapActivity.mCurPoiAdr = "Unknown Address";
+    this.d.mCurPoiAdr = "Unknown Address";
     int i = 0;
-    while ((i < 3) && (!isCancelled()) && (this.b.getLatitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.h))
+    while ((i < 3) && (!isCancelled()) && (this.b.getLatitudeE6() == this.d.m))
     {
-      if (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i) {
+      if (this.b.getLongitudeE6() != this.d.n) {
         return "Unknown Address";
       }
-      paramVarArgs = this.jdField_a_of_type_ComTencentBizPoiMapActivity.getApplicationContext();
+      paramVarArgs = this.d.getApplicationContext();
       double d1 = this.b.getLatitudeE6();
       Double.isNaN(d1);
       d1 /= 1000000.0D;
       double d2 = this.b.getLongitudeE6();
       Double.isNaN(d2);
-      String str = ReverseGeocode.a(paramVarArgs, d1, d2 / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
-      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("rec_locate", "call_googlestation", "", "", "", "");
+      String str = ReverseGeocode.a(paramVarArgs, d1, d2 / 1000000.0D, 3, this.c);
+      this.d.a("rec_locate", "call_googlestation", "", "", "", "");
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -61,9 +61,9 @@ public class PoiMapActivity$PoiMapNameTask
   
   protected void a(String paramString)
   {
-    if (this.b.getLatitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.h)
+    if (this.b.getLatitudeE6() == this.d.m)
     {
-      if (this.b.getLongitudeE6() != this.jdField_a_of_type_ComTencentBizPoiMapActivity.i) {
+      if (this.b.getLongitudeE6() != this.d.n) {
         return;
       }
       Object localObject;
@@ -72,32 +72,32 @@ public class PoiMapActivity$PoiMapNameTask
       } else {
         localObject = paramString;
       }
-      PoiMapActivity localPoiMapActivity = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
+      PoiMapActivity localPoiMapActivity = this.d;
       localPoiMapActivity.mCurPoiAdr = paramString;
       localPoiMapActivity.runOnUiThread(new PoiMapActivity.PoiMapNameTask.1(this, (String)localObject));
-      if (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint != null)
+      if (this.a != null)
       {
-        paramString = new PoiMapNameTask(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-        paramString.a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
-        localObject = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
-        ((PoiMapActivity)localObject).a = paramString;
-        ((PoiMapActivity)localObject).a.execute(new Void[0]);
-        this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
+        paramString = new PoiMapNameTask(this.d);
+        paramString.a(this.a);
+        localObject = this.d;
+        ((PoiMapActivity)localObject).Y = paramString;
+        ((PoiMapActivity)localObject).Y.execute(new Void[0]);
+        this.a = null;
       }
     }
   }
   
   protected void onCancelled()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint;
-    if ((localObject != null) && (((GeoPoint)localObject).getLatitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.h) && (this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentBizPoiMapActivity.i))
+    Object localObject = this.a;
+    if ((localObject != null) && (((GeoPoint)localObject).getLatitudeE6() == this.d.m) && (this.a.getLongitudeE6() == this.d.n))
     {
-      localObject = new PoiMapNameTask(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
-      ((PoiMapNameTask)localObject).a(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
-      PoiMapActivity localPoiMapActivity = this.jdField_a_of_type_ComTencentBizPoiMapActivity;
-      localPoiMapActivity.a = ((PoiMapNameTask)localObject);
-      localPoiMapActivity.a.execute(new Void[0]);
-      this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = null;
+      localObject = new PoiMapNameTask(this.d);
+      ((PoiMapNameTask)localObject).a(this.a);
+      PoiMapActivity localPoiMapActivity = this.d;
+      localPoiMapActivity.Y = ((PoiMapNameTask)localObject);
+      localPoiMapActivity.Y.execute(new Void[0]);
+      this.a = null;
     }
   }
 }

@@ -2,22 +2,22 @@ package com.tencent.mobileqq.Doraemon;
 
 public class APIConfig
 {
-  public final int a;
-  public final Class<? extends DoraemonAPIModule> a;
   public final String a;
   public final int b;
+  public final int c;
+  public final Class<? extends DoraemonAPIModule> d;
   
   public APIConfig(String paramString, int paramInt1, int paramInt2, Class<? extends DoraemonAPIModule> paramClass)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.a = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.APIConfig
  * JD-Core Version:    0.7.0.1
  */

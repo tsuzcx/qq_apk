@@ -9,7 +9,7 @@ public class WSExpPreloadABTestManager
   
   private WSExpPreloadABTestManager()
   {
-    a();
+    b();
   }
   
   public static WSExpPreloadABTestManager a()
@@ -22,12 +22,45 @@ public class WSExpPreloadABTestManager
     return WSExpUtils.a(paramWSExpPolicyEntities, paramString1, paramString2);
   }
   
-  private boolean b(WSExpPolicyEntities paramWSExpPolicyEntities)
+  private boolean c(WSExpPolicyEntities paramWSExpPolicyEntities)
   {
     return TextUtils.equals(a(paramWSExpPolicyEntities, "QQFeedsPreload", "is_preload_data"), "1");
   }
   
-  public long a()
+  public void a(WSExpPolicyEntities paramWSExpPolicyEntities)
+  {
+    this.a = paramWSExpPolicyEntities;
+  }
+  
+  public void b()
+  {
+    this.a = WSExpPolicyManager.a().c();
+  }
+  
+  public boolean b(WSExpPolicyEntities paramWSExpPolicyEntities)
+  {
+    if (paramWSExpPolicyEntities == null) {
+      return false;
+    }
+    return paramWSExpPolicyEntities.equals(this.a);
+  }
+  
+  public boolean c()
+  {
+    return TextUtils.equals(a(this.a, "AioForwardScene", "scene"), "1");
+  }
+  
+  public boolean d()
+  {
+    return TextUtils.equals(a(this.a, "AioForwardScene", "image_pre_download"), "1");
+  }
+  
+  public boolean e()
+  {
+    return c(this.a);
+  }
+  
+  public long f()
   {
     long l = WeishiUtils.a(a(this.a, "QQFeedsPreload", "valid_duration"), 18000L);
     if (l <= 0L) {
@@ -36,56 +69,23 @@ public class WSExpPreloadABTestManager
     return l;
   }
   
-  public String a()
+  public boolean g()
+  {
+    return TextUtils.equals(a(this.a, "QQFeedsPreload", "is_preload_out_valid_duration"), "1");
+  }
+  
+  public String h()
   {
     WSExpPolicyEntities localWSExpPolicyEntities = this.a;
     if (localWSExpPolicyEntities != null) {
-      return localWSExpPolicyEntities.c();
+      return localWSExpPolicyEntities.d();
     }
     return "";
-  }
-  
-  public void a()
-  {
-    this.a = WSExpPolicyManager.a().a();
-  }
-  
-  public void a(WSExpPolicyEntities paramWSExpPolicyEntities)
-  {
-    this.a = paramWSExpPolicyEntities;
-  }
-  
-  public boolean a()
-  {
-    return TextUtils.equals(a(this.a, "AioForwardScene", "scene"), "1");
-  }
-  
-  public boolean a(WSExpPolicyEntities paramWSExpPolicyEntities)
-  {
-    if (paramWSExpPolicyEntities == null) {
-      return false;
-    }
-    return paramWSExpPolicyEntities.equals(this.a);
-  }
-  
-  public boolean b()
-  {
-    return TextUtils.equals(a(this.a, "AioForwardScene", "image_pre_download"), "1");
-  }
-  
-  public boolean c()
-  {
-    return b(this.a);
-  }
-  
-  public boolean d()
-  {
-    return TextUtils.equals(a(this.a, "QQFeedsPreload", "is_preload_out_valid_duration"), "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPreloadABTestManager
  * JD-Core Version:    0.7.0.1
  */

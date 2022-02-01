@@ -13,8 +13,8 @@ class GameListRecyclerViewAdapter$1$1
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (GameListRecyclerViewAdapter.a(this.a.this$0) != null) {
-      GameListRecyclerViewAdapter.a(this.a.this$0).start();
+    if (GameListRecyclerViewAdapter.b(this.a.this$0) != null) {
+      GameListRecyclerViewAdapter.b(this.a.this$0).start();
     }
   }
   

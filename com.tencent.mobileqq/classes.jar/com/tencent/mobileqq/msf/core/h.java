@@ -12,7 +12,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.a.c;
 import com.tencent.mobileqq.msf.core.a.c.a;
 import com.tencent.mobileqq.msf.core.net.b;
-import com.tencent.mobileqq.msf.core.net.g;
+import com.tencent.mobileqq.msf.core.net.f;
 import com.tencent.mobileqq.msf.core.net.l;
 import com.tencent.mobileqq.msf.core.quicksend.QuickSendStrategy;
 import com.tencent.mobileqq.msf.sdk.y;
@@ -78,9 +78,9 @@ public class h
     }
     this.d = bool;
     if (!this.d) {
-      this.a = new g();
+      this.a = new com.tencent.mobileqq.msf.core.net.g();
     } else {
-      this.a = new com.tencent.mobileqq.msf.core.net.f();
+      this.a = new f();
     }
     paramMsfCore = new HandlerThread("LightTcpSenderThread");
     paramMsfCore.start();
@@ -143,9 +143,9 @@ public class h
     return paramCopyOnWriteArrayList;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, com.tencent.mobileqq.msf.core.quicksend.f paramf)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, int paramInt, String paramString, com.tencent.mobileqq.msf.core.quicksend.g paramg)
   {
-    paramf.f = paramInt;
+    paramg.f = paramInt;
     if (paramFromServiceMsg == null)
     {
       FromServiceMsg localFromServiceMsg = o.a(paramToServiceMsg);
@@ -159,16 +159,16 @@ public class h
     {
       this.y.getSsoRespHandler().a(paramToServiceMsg, paramFromServiceMsg);
     }
-    com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, paramf);
+    com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, paramg);
   }
   
-  private boolean a(com.tencent.mobileqq.msf.core.quicksend.f paramf, ToServiceMsg paramToServiceMsg)
+  private boolean a(com.tencent.mobileqq.msf.core.quicksend.g paramg, ToServiceMsg paramToServiceMsg)
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   /* Error */
-  private boolean a(ToServiceMsg paramToServiceMsg, com.tencent.mobileqq.msf.core.quicksend.f paramf, String paramString1, String paramString2)
+  private boolean a(ToServiceMsg paramToServiceMsg, com.tencent.mobileqq.msf.core.quicksend.g paramg, String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
@@ -181,7 +181,7 @@ public class h
     //   11: aload_2
     //   12: aload_3
     //   13: aload 4
-    //   15: invokespecial 280	com/tencent/mobileqq/msf/core/h:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/mobileqq/msf/core/quicksend/f;Ljava/lang/String;Ljava/lang/String;)Z
+    //   15: invokespecial 280	com/tencent/mobileqq/msf/core/h:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;Lcom/tencent/mobileqq/msf/core/quicksend/g;Ljava/lang/String;Ljava/lang/String;)Z
     //   18: istore 5
     //   20: iload 5
     //   22: ifne +7 -> 29
@@ -219,7 +219,7 @@ public class h
     //   start	length	slot	name	signature
     //   0	68	0	this	h
     //   0	68	1	paramToServiceMsg	ToServiceMsg
-    //   0	68	2	paramf	com.tencent.mobileqq.msf.core.quicksend.f
+    //   0	68	2	paramg	com.tencent.mobileqq.msf.core.quicksend.g
     //   0	68	3	paramString1	String
     //   0	68	4	paramString2	String
     //   18	18	5	bool	boolean
@@ -232,7 +232,7 @@ public class h
     //   29	35	48	java/lang/Throwable
   }
   
-  private boolean b(ToServiceMsg paramToServiceMsg, com.tencent.mobileqq.msf.core.quicksend.f paramf, String paramString1, String paramString2)
+  private boolean b(ToServiceMsg paramToServiceMsg, com.tencent.mobileqq.msf.core.quicksend.g paramg, String paramString1, String paramString2)
   {
     Object localObject1;
     if (NetConnInfoCenter.isWifiConn())
@@ -286,10 +286,10 @@ public class h
         this.a.a(this.A);
         this.a.a(this.b);
         long l1 = SystemClock.elapsedRealtime();
-        bool = this.a.a(paramString2.c(), paramString2.f(), paramString1, paramf);
-        paramf.k += 1;
-        paramf.j = (SystemClock.elapsedRealtime() - l1);
-        paramf.i = bool;
+        bool = this.a.a(paramString2.c(), paramString2.f(), paramString1, paramg);
+        paramg.k += 1;
+        paramg.j = (SystemClock.elapsedRealtime() - l1);
+        paramg.i = bool;
         if (!bool)
         {
           if (QLog.isColorLevel())
@@ -316,12 +316,12 @@ public class h
       }
       if (!bool)
       {
-        paramf.g = (SystemClock.elapsedRealtime() - paramf.g);
+        paramg.g = (SystemClock.elapsedRealtime() - paramg.g);
         paramString1 = new StringBuilder();
         paramString1.append("selectAndConnect ssoseq:");
         paramString1.append(paramToServiceMsg.getRequestSsoSeq());
         paramString1.append(", connect all failed");
-        a(paramToServiceMsg, null, 2, paramString1.toString(), paramf);
+        a(paramToServiceMsg, null, 2, paramString1.toString(), paramg);
       }
       return false;
     }
@@ -329,7 +329,7 @@ public class h
     return false;
   }
   
-  private String c(ToServiceMsg paramToServiceMsg)
+  private String d(ToServiceMsg paramToServiceMsg)
   {
     if ((paramToServiceMsg != null) && (paramToServiceMsg.getServiceCmd().equals("MessageSvc.QueryPullUp"))) {
       return "pcactive";
@@ -340,7 +340,12 @@ public class h
     return "unknown";
   }
   
-  private byte[] d(ToServiceMsg paramToServiceMsg)
+  private boolean e()
+  {
+    return this.a.b();
+  }
+  
+  private byte[] e(ToServiceMsg paramToServiceMsg)
   {
     if (paramToServiceMsg == null) {
       return null;
@@ -360,7 +365,7 @@ public class h
         }
         try
         {
-          arrayOfByte1 = ac.b(paramToServiceMsg, b2);
+          arrayOfByte1 = ad.b(paramToServiceMsg, b2);
         }
         catch (Exception localException)
         {
@@ -417,11 +422,6 @@ public class h
       QLog.d("LightTcpSender", 1, ((StringBuilder)localObject).toString(), localThrowable);
     }
     return null;
-  }
-  
-  private boolean e()
-  {
-    return this.a.b();
   }
   
   private byte f()
@@ -559,6 +559,11 @@ public class h
     }
   }
   
+  public boolean c(ToServiceMsg paramToServiceMsg)
+  {
+    return this.e.contains(paramToServiceMsg);
+  }
+  
   public void d()
   {
     Iterator localIterator = this.e.iterator();
@@ -573,7 +578,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.h
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ import java.lang.reflect.Method;
 public class ShadowContentProvider
   extends ContentProvider
 {
-  Class<?> jdField_a_of_type_JavaLangClass;
-  Object jdField_a_of_type_JavaLangObject;
+  Object a;
+  Class<?> b;
   
   public ShadowContentProvider()
   {
     try
     {
-      this.jdField_a_of_type_JavaLangClass = Class.forName("com.tencent.shadow.core.runtime.container.PluginContainerContentProvider");
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangClass.newInstance();
+      this.b = Class.forName("com.tencent.shadow.core.runtime.container.PluginContainerContentProvider");
+      this.a = this.b.newInstance();
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (Integer)this.jdField_a_of_type_JavaLangClass.getMethod("bulkInsert", new Class[] { Uri.class, [Landroid.content.ContentValues.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramArrayOfContentValues });
+      paramUri = (Integer)this.b.getMethod("bulkInsert", new Class[] { Uri.class, [Landroid.content.ContentValues.class }).invoke(this.a, new Object[] { paramUri, paramArrayOfContentValues });
     }
     catch (Exception paramUri)
     {
@@ -48,7 +48,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramString1 = (Bundle)this.jdField_a_of_type_JavaLangClass.getMethod("call", new Class[] { String.class, String.class, Bundle.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramString1, paramString2, paramBundle });
+      paramString1 = (Bundle)this.b.getMethod("call", new Class[] { String.class, String.class, Bundle.class }).invoke(this.a, new Object[] { paramString1, paramString2, paramBundle });
       return paramString1;
     }
     catch (Exception paramString1)
@@ -62,7 +62,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (Integer)this.jdField_a_of_type_JavaLangClass.getMethod("delete", new Class[] { Uri.class, String.class, [Ljava.lang.String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramString, paramArrayOfString });
+      paramUri = (Integer)this.b.getMethod("delete", new Class[] { Uri.class, String.class, [Ljava.lang.String.class }).invoke(this.a, new Object[] { paramUri, paramString, paramArrayOfString });
     }
     catch (Exception paramUri)
     {
@@ -76,7 +76,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (String)this.jdField_a_of_type_JavaLangClass.getMethod("getType", new Class[] { Uri.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri });
+      paramUri = (String)this.b.getMethod("getType", new Class[] { Uri.class }).invoke(this.a, new Object[] { paramUri });
       return paramUri;
     }
     catch (Exception paramUri)
@@ -90,7 +90,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (Uri)this.jdField_a_of_type_JavaLangClass.getMethod("insert", new Class[] { Uri.class, ContentValues.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramContentValues });
+      paramUri = (Uri)this.b.getMethod("insert", new Class[] { Uri.class, ContentValues.class }).invoke(this.a, new Object[] { paramUri, paramContentValues });
       return paramUri;
     }
     catch (Exception paramUri)
@@ -104,7 +104,7 @@ public class ShadowContentProvider
   {
     try
     {
-      this.jdField_a_of_type_JavaLangClass.getMethod("onConfigurationChanged", new Class[] { Configuration.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramConfiguration });
+      this.b.getMethod("onConfigurationChanged", new Class[] { Configuration.class }).invoke(this.a, new Object[] { paramConfiguration });
       return;
     }
     catch (Exception paramConfiguration)
@@ -122,7 +122,7 @@ public class ShadowContentProvider
   {
     try
     {
-      this.jdField_a_of_type_JavaLangClass.getMethod("onLowMemory", new Class[0]).invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]);
+      this.b.getMethod("onLowMemory", new Class[0]).invoke(this.a, new Object[0]);
       return;
     }
     catch (Exception localException)
@@ -135,7 +135,7 @@ public class ShadowContentProvider
   {
     try
     {
-      this.jdField_a_of_type_JavaLangClass.getMethod("onTrimMemory", new Class[] { Integer.TYPE }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      this.b.getMethod("onTrimMemory", new Class[] { Integer.TYPE }).invoke(this.a, new Object[] { Integer.valueOf(paramInt) });
       return;
     }
     catch (Exception localException)
@@ -148,7 +148,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (ParcelFileDescriptor)this.jdField_a_of_type_JavaLangClass.getMethod("openFile", new Class[] { Uri.class, String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramString });
+      paramUri = (ParcelFileDescriptor)this.b.getMethod("openFile", new Class[] { Uri.class, String.class }).invoke(this.a, new Object[] { paramUri, paramString });
       return paramUri;
     }
     catch (Exception paramUri)
@@ -162,7 +162,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (ParcelFileDescriptor)this.jdField_a_of_type_JavaLangClass.getMethod("openFile", new Class[] { Uri.class, String.class, CancellationSignal.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramString, paramCancellationSignal });
+      paramUri = (ParcelFileDescriptor)this.b.getMethod("openFile", new Class[] { Uri.class, String.class, CancellationSignal.class }).invoke(this.a, new Object[] { paramUri, paramString, paramCancellationSignal });
       return paramUri;
     }
     catch (Exception paramUri)
@@ -176,7 +176,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (Cursor)this.jdField_a_of_type_JavaLangClass.getMethod("query", new Class[] { Uri.class, [Ljava.lang.String.class, String.class, [Ljava.lang.String.class, String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2 });
+      paramUri = (Cursor)this.b.getMethod("query", new Class[] { Uri.class, [Ljava.lang.String.class, String.class, [Ljava.lang.String.class, String.class }).invoke(this.a, new Object[] { paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2 });
       return paramUri;
     }
     catch (Exception paramUri)
@@ -190,7 +190,7 @@ public class ShadowContentProvider
   {
     try
     {
-      paramUri = (Integer)this.jdField_a_of_type_JavaLangClass.getMethod("update", new Class[] { Uri.class, ContentValues.class, String.class, [Ljava.lang.String.class }).invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { paramUri, paramContentValues, paramString, paramArrayOfString });
+      paramUri = (Integer)this.b.getMethod("update", new Class[] { Uri.class, ContentValues.class, String.class, [Ljava.lang.String.class }).invoke(this.a, new Object[] { paramUri, paramContentValues, paramString, paramArrayOfString });
     }
     catch (Exception paramUri)
     {
@@ -202,7 +202,7 @@ public class ShadowContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.provider.ShadowContentProvider
  * JD-Core Version:    0.7.0.1
  */

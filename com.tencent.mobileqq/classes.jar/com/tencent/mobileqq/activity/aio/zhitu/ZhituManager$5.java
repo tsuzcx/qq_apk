@@ -31,26 +31,26 @@ class ZhituManager$5
           localStringBuilder.append(paramMessage);
           QLog.d("ZhituManager", 2, localStringBuilder.toString());
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter.a(paramMessage);
+        if (this.a.e != null) {
+          this.a.e.a(paramMessage);
         }
       }
       else
       {
         i = paramMessage.arg1;
         paramMessage = (String)paramMessage.obj;
-        if (!paramMessage.equals(this.a.a()))
+        if (!paramMessage.equals(this.a.d()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage, "main handler", "reqKey is outdated, skip"));
           }
           return;
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter.a(i, paramMessage);
+        if (this.a.d != null) {
+          this.a.d.a(i, paramMessage);
         }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter.a(i, paramMessage);
+        if (this.a.e != null) {
+          this.a.e.a(i, paramMessage);
         }
       }
     }
@@ -58,15 +58,15 @@ class ZhituManager$5
     {
       paramMessage = (ZhituPicData)paramMessage.obj;
       if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
+        QLog.d("ZhituManager", 2, ZhituManager.a(paramMessage.f, "main handler", paramMessage.g, "all img process is finished, now is in main thread"));
       }
-      this.a.e(paramMessage);
+      this.a.g(paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.5
  * JD-Core Version:    0.7.0.1
  */

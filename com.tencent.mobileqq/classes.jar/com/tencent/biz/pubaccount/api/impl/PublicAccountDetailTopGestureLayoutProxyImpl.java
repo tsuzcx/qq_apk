@@ -22,7 +22,7 @@ public class PublicAccountDetailTopGestureLayoutProxyImpl
   
   public TopGestureLayout.OnGestureListener getOnFlingGesture()
   {
-    return this.mGestureLayout.a();
+    return this.mGestureLayout.getOnFlingGesture();
   }
   
   public TopGestureLayout getTopGestureLayout()
@@ -57,7 +57,7 @@ public class PublicAccountDetailTopGestureLayoutProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountDetailTopGestureLayoutProxyImpl
  * JD-Core Version:    0.7.0.1
  */

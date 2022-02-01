@@ -13,17 +13,17 @@ public class IntimateUtil
 {
   public static View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559268, null);
+    return LayoutInflater.from(paramContext).inflate(2131625189, null);
   }
   
   public static MutualMarkForDisplayInfo a(QQAppInterface paramQQAppInterface, String paramString, ExtensionInfo paramExtensionInfo)
   {
-    long[] arrayOfLong = MutualMarkUtils.a;
+    long[] arrayOfLong = MutualMarkUtils.c;
     int j = arrayOfLong.length;
     int i = 0;
     while (i < j)
     {
-      MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = MutualMarkDataCenter.a(paramQQAppInterface, paramString, paramExtensionInfo, arrayOfLong[i]);
+      MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = MutualMarkDataCenter.b(paramQQAppInterface, paramString, paramExtensionInfo, arrayOfLong[i]);
       if (localMutualMarkForDisplayInfo != null) {
         return localMutualMarkForDisplayInfo;
       }
@@ -37,16 +37,16 @@ public class IntimateUtil
     if (paramContext != null)
     {
       if (paramLong == 1L) {
-        return paramContext.getString(2131693409);
+        return paramContext.getString(2131890958);
       }
       if (paramLong == 2L) {
-        return paramContext.getString(2131693407);
+        return paramContext.getString(2131890956);
       }
       if (paramLong == 3L) {
-        return paramContext.getString(2131693408);
+        return paramContext.getString(2131890957);
       }
       if (paramLong == 26L) {
-        return paramContext.getString(2131693410);
+        return paramContext.getString(2131890959);
       }
     }
     return "";
@@ -54,7 +54,7 @@ public class IntimateUtil
   
   public static boolean a(long paramLong)
   {
-    long[] arrayOfLong = MutualMarkUtils.a;
+    long[] arrayOfLong = MutualMarkUtils.c;
     int j = arrayOfLong.length;
     int i = 0;
     while (i < j)
@@ -69,7 +69,7 @@ public class IntimateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.IntimateUtil
  * JD-Core Version:    0.7.0.1
  */

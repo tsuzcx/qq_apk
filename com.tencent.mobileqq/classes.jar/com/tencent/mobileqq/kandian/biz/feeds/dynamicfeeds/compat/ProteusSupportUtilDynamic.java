@@ -122,11 +122,11 @@ public class ProteusSupportUtilDynamic
   public static ProteusItemView a(VafContext paramVafContext, int paramInt, String paramString)
   {
     TraceUtils.traceBegin("ProteusSupportUtilDynamic.getView");
-    paramString = a(paramVafContext, a(paramInt), paramString);
+    paramString = a(paramVafContext, b(paramInt), paramString);
     paramString = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
     if (paramString != null)
     {
-      paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
+      paramString.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
       paramVafContext = new ProteusItemView(paramVafContext.getContext());
       paramVafContext.a(paramString);
     }
@@ -136,18 +136,6 @@ public class ProteusSupportUtilDynamic
     }
     TraceUtils.traceEnd();
     return paramVafContext;
-  }
-  
-  private static String a(int paramInt)
-  {
-    if ((paramInt != 0) && (paramInt != 1))
-    {
-      if (paramInt != 2) {
-        return "ReadInjoy_small_cell";
-      }
-      return "ReadInjoy_large_cell";
-    }
-    return "ReadInjoy_small_cell";
   }
   
   private static void a(int paramInt, ProteusItem paramProteusItem)
@@ -163,23 +151,23 @@ public class ProteusSupportUtilDynamic
   public static void a(ProteusItemView paramProteusItemView, int paramInt1, AbsBaseArticleInfo paramAbsBaseArticleInfo, VafContext paramVafContext, int paramInt2, String paramString)
   {
     TraceUtils.traceBegin("ProteusSupportUtilDynamic.bindData");
-    if ((paramProteusItemView != null) && (paramProteusItemView.a() != null))
+    if ((paramProteusItemView != null) && (paramProteusItemView.getContainer() != null))
     {
-      TemplateBean localTemplateBean = paramProteusItemView.a();
+      TemplateBean localTemplateBean = paramProteusItemView.getTemplateBean();
       paramString = a(paramInt1, paramAbsBaseArticleInfo, paramString);
       if ((localTemplateBean != null) && (paramString != null) && (!paramString.equals(localTemplateBean)))
       {
         Container localContainer = paramVafContext.getViewFactory().inflate(paramVafContext, paramString);
         if (localContainer != null)
         {
-          localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
-          paramProteusItemView.c();
+          localContainer.setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
+          paramProteusItemView.d();
           paramProteusItemView.a(localContainer);
         }
         paramAbsBaseArticleInfo.mProteusTemplateBean = paramString;
       }
-      paramProteusItemView = paramProteusItemView.a();
-      paramProteusItemView.setTag(2131376110, paramString);
+      paramProteusItemView = paramProteusItemView.getContainer();
+      paramProteusItemView.setTag(2131444313, paramString);
       TraceUtils.traceBegin("ProteusSupportUtilDynamic.bindDataImpl");
       if (paramString != null) {
         ProteusSupportUtil.a(paramProteusItemView, localTemplateBean, paramString);
@@ -205,10 +193,22 @@ public class ProteusSupportUtilDynamic
   {
     return a.containsKey(Integer.valueOf(paramInt));
   }
+  
+  private static String b(int paramInt)
+  {
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      if (paramInt != 2) {
+        return "ReadInjoy_small_cell";
+      }
+      return "ReadInjoy_large_cell";
+    }
+    return "ReadInjoy_small_cell";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat.ProteusSupportUtilDynamic
  * JD-Core Version:    0.7.0.1
  */

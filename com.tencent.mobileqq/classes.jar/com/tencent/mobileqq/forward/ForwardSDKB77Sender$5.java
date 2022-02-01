@@ -33,12 +33,12 @@ class ForwardSDKB77Sender$5
   public void b(UpCallBack.SendResult paramSendResult)
   {
     QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "upCallBack onSend result=", paramSendResult });
-    ForwardSDKB77Sender.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardSDKB77Sender, paramSendResult, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Long);
+    ForwardSDKB77Sender.a(this.c, paramSendResult, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSDKB77Sender.5
  * JD-Core Version:    0.7.0.1
  */

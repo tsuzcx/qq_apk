@@ -14,7 +14,7 @@ final class Achilles$1
   public void run()
   {
     Object localObject2 = Achilles.a();
-    if (!Achilles.a())
+    if (!Achilles.b())
     {
       QLog.i("Achilles", 1, "[run] wifi not connected, skip.");
       return;
@@ -43,7 +43,7 @@ final class Achilles$1
           ((StringBuilder)localObject4).append((String)localObject3);
           QLog.i("Achilles", 1, ((StringBuilder)localObject4).toString());
         }
-        else if (Achilles.a((String)localObject3))
+        else if (Achilles.c((String)localObject3))
         {
           localObject4 = new StringBuilder();
           ((StringBuilder)localObject4).append("[run] installed, skip ");
@@ -70,7 +70,7 @@ final class Achilles$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.Achilles.1
  * JD-Core Version:    0.7.0.1
  */

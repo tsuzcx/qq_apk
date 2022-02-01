@@ -12,17 +12,11 @@ import org.jetbrains.annotations.Nullable;
 public final class DatabaseHelper
   extends SQLiteOpenHelper
 {
-  public static final DatabaseHelper.Companion a;
-  private static volatile DatabaseHelper a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkCommonDbDatabaseHelper$Companion = new DatabaseHelper.Companion(null);
-  }
+  public static final DatabaseHelper.Companion a = new DatabaseHelper.Companion(null);
   
   public DatabaseHelper()
   {
-    super(TopicSDK.a.a().a().a(), "TopicSDK_DB", null, 2);
+    super(TopicSDK.a.a().b().b(), "TopicSDK_DB", null, 2);
   }
   
   public void onCreate(@Nullable SQLiteDatabase paramSQLiteDatabase)
@@ -41,7 +35,7 @@ public final class DatabaseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.db.DatabaseHelper
  * JD-Core Version:    0.7.0.1
  */

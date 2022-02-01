@@ -30,32 +30,32 @@ import mqq.os.MqqHandler;
 public class NearbyMarketGrayTips
   implements Handler.Callback, GrayTipsTask
 {
-  private int jdField_a_of_type_Int;
-  private QQMessageFacade jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade;
-  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
-  private TipsManager jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager;
-  private NearbyGrayTipsManager jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Random jdField_a_of_type_JavaUtilRandom;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
-  private int b;
+  private MqqHandler a = new CustomHandler(ThreadManager.getSubThreadLooper(), this);
+  private QQAppInterface b;
+  private BaseSessionInfo c;
+  private TipsManager d;
+  private NearbyGrayTipsManager e;
+  private Random f;
+  private int g;
+  private int h;
+  private QQMessageFacade i;
   
   public NearbyMarketGrayTips(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, TipsManager paramTipsManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilRandom = new Random();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1001) {
-      this.b = 1;
-    } else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 1010) {
-      this.b = 2;
-    } else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int == 10002) {
-      this.b = 3;
+    this.b = paramQQAppInterface;
+    this.c = paramBaseSessionInfo;
+    this.d = paramTipsManager;
+    this.g = -1;
+    this.f = new Random();
+    if (this.c.a == 1001) {
+      this.h = 1;
+    } else if (this.c.a == 1010) {
+      this.h = 2;
+    } else if (this.c.a == 10002) {
+      this.h = 3;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager = ((NearbyGrayTipsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_GRAY_TIPS_MANAGER));
-    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = ((QQMessageFacade)paramQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE));
+    this.e = ((NearbyGrayTipsManager)this.b.getManager(QQManagerFactory.NEARBY_GRAY_TIPS_MANAGER));
+    this.i = ((QQMessageFacade)paramQQAppInterface.getManager(QQManagerFactory.MGR_MSG_FACADE));
   }
   
   private NearbyGrayTipsManager.GrayTipsConfig a(NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig1, NearbyGrayTipsManager.GrayTipsConfig paramGrayTipsConfig2)
@@ -95,47 +95,28 @@ public class NearbyMarketGrayTips
     return localGrayTipsConfig;
   }
   
-  private boolean a(int paramInt, Object... paramVarArgs)
+  private boolean b(int paramInt, Object... paramVarArgs)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800524B", "0X800524B", 0, 0, String.valueOf(paramInt), "", "", "");
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    ReportController.b(this.b, "CliOper", "", "", "0X800524B", "0X800524B", 0, 0, String.valueOf(paramInt), "", "", "");
+    QQAppInterface localQQAppInterface = this.b;
     String str;
-    if (this.b == 0) {
+    if (this.h == 0) {
       str = "0";
     } else {
       str = "1";
     }
     ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "exp_oper", 0, 0, str, "", "", "");
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, paramVarArgs);
-  }
-  
-  public MessageRecord a(Object... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (paramVarArgs[0] != null)) {
-      paramVarArgs = paramVarArgs[0].toString();
-    } else {
-      paramVarArgs = null;
-    }
-    if (!TextUtils.isEmpty(paramVarArgs))
-    {
-      MessageRecord localMessageRecord = MessageRecordFactory.a(-2027);
-      long l = MessageCache.a();
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      localMessageRecord.init(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, str, paramVarArgs, l, -2027, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int, l);
-      localMessageRecord.isread = true;
-      return localMessageRecord;
-    }
-    return null;
+    return this.d.a(this, paramVarArgs);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setOtherGender, ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.g);
       QLog.i("NearbyMarketGrayTips", 2, localStringBuilder.toString());
     }
   }
@@ -152,19 +133,38 @@ public class NearbyMarketGrayTips
     if ((paramInt != 1000) && (paramInt != 1001)) {
       return;
     }
-    if (!this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(paramInt)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(paramInt);
+    if (!this.a.hasMessages(paramInt)) {
+      this.a.sendEmptyMessage(paramInt);
     }
   }
   
-  public int[] a()
+  public MessageRecord a_(Object... paramVarArgs)
   {
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (paramVarArgs[0] != null)) {
+      paramVarArgs = paramVarArgs[0].toString();
+    } else {
+      paramVarArgs = null;
+    }
+    if (!TextUtils.isEmpty(paramVarArgs))
+    {
+      MessageRecord localMessageRecord = MessageRecordFactory.a(-2027);
+      long l = MessageCache.c();
+      String str = this.b.getCurrentAccountUin();
+      localMessageRecord.init(str, this.c.b, str, paramVarArgs, l, -2027, this.c.a, l);
+      localMessageRecord.isread = true;
+      return localMessageRecord;
+    }
     return null;
   }
   
   public int b()
   {
     return 1006;
+  }
+  
+  public int[] c()
+  {
+    return null;
   }
   
   public boolean handleMessage(android.os.Message paramMessage)
@@ -176,32 +176,32 @@ public class NearbyMarketGrayTips
     case 1000: 
     case 1001: 
     case 1002: 
-      if ((!this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a()) || (this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(MessageCache.a() * 1000L))) {
+      if ((!this.e.b()) || (this.e.a(MessageCache.c() * 1000L))) {
         return false;
       }
       break;
     }
-    int i = paramMessage.what;
+    int j = paramMessage.what;
     paramMessage = null;
     Object localObject2 = null;
     long l1;
     Object localObject1;
-    switch (i)
+    switch (j)
     {
     default: 
       return false;
     case 1001: 
-      paramMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(paramMessage)) {
+      paramMessage = this.i.o(this.c.b, this.c.a);
+      if (this.e.a(paramMessage)) {
         return false;
       }
-      l1 = 1000L * MessageCache.a();
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a()) && (!this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(l1))) {
-        i = 1;
+      l1 = 1000L * MessageCache.c();
+      if ((this.e.b()) && (!this.e.a(l1))) {
+        j = 1;
       } else {
-        i = 0;
+        j = 0;
       }
-      if ((i != 0) && (paramMessage != null) && (paramMessage.size() > 0))
+      if ((j != 0) && (paramMessage != null) && (paramMessage.size() > 0))
       {
         localObject1 = (ChatMessage)paramMessage.get(paramMessage.size() - 1);
         Object localObject3;
@@ -212,30 +212,30 @@ public class NearbyMarketGrayTips
           ((StringBuilder)localObject3).append(((ChatMessage)localObject1).toString());
           QLog.d("longchen", 4, ((StringBuilder)localObject3).toString());
         }
-        if (MessageRecordInfo.b(((ChatMessage)localObject1).issend))
+        if (MessageRecordInfo.c(((ChatMessage)localObject1).issend))
         {
-          localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMessage(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
-          if (!MsgUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (com.tencent.imcore.message.Message)localObject1))
+          localObject1 = this.i.getLastMessage(this.c.b, this.c.a);
+          if (!MsgUtils.a(this.b, (com.tencent.imcore.message.Message)localObject1))
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(this.b, this.jdField_a_of_type_Int, ((com.tencent.imcore.message.Message)localObject1).msg, 1, l1);
+            localObject1 = this.e.a(this.h, this.g, ((com.tencent.imcore.message.Message)localObject1).msg, 1, l1);
             if (paramMessage != null)
             {
               paramMessage = paramMessage.iterator();
-              i = 0;
+              j = 0;
               for (;;)
               {
-                j = i;
+                k = j;
                 if (!paramMessage.hasNext()) {
                   break;
                 }
-                if (!MessageUtils.a(((ChatMessage)paramMessage.next()).msgtype)) {
-                  i += 1;
+                if (!MessageUtils.b(((ChatMessage)paramMessage.next()).msgtype)) {
+                  j += 1;
                 }
               }
             }
-            int j = 0;
-            if (j == 1) {
-              paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.c(this.b, this.jdField_a_of_type_Int, l1);
+            int k = 0;
+            if (k == 1) {
+              paramMessage = this.e.c(this.h, this.g, l1);
             } else {
               paramMessage = null;
             }
@@ -269,24 +269,24 @@ public class NearbyMarketGrayTips
             }
             if (localGrayTipsConfig != null)
             {
-              localObject1 = localGrayTipsConfig.getGrayTipWording(this.jdField_a_of_type_JavaUtilRandom);
+              localObject1 = localGrayTipsConfig.getGrayTipWording(this.f);
               if (localObject1 != null)
               {
                 if (localGrayTipsConfig.sceneId == 1)
                 {
-                  paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(localGrayTipsConfig.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 1, localGrayTipsConfig.url, this.b);
+                  paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(localGrayTipsConfig.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 1, localGrayTipsConfig.url, this.h);
                 }
                 else
                 {
                   paramMessage = (android.os.Message)localObject2;
                   if (localGrayTipsConfig.sceneId == 3) {
-                    paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(localGrayTipsConfig.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 4, localGrayTipsConfig.url, this.b);
+                    paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(localGrayTipsConfig.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 4, localGrayTipsConfig.url, this.h);
                   }
                 }
                 if (!TextUtils.isEmpty(paramMessage)) {
-                  if (a(localGrayTipsConfig.id, new Object[] { paramMessage }))
+                  if (b(localGrayTipsConfig.id, new Object[] { paramMessage }))
                   {
-                    this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(localGrayTipsConfig.id, l1);
+                    this.e.a(localGrayTipsConfig.id, l1);
                     return false;
                   }
                 }
@@ -299,19 +299,19 @@ public class NearbyMarketGrayTips
           if (QLog.isDevelopLevel()) {
             QLog.d("nearby_aio_operation_gray_tips", 4, "receive message");
           }
-          if (!MessageUtils.a(((ChatMessage)localObject1).msgtype))
+          if (!MessageUtils.b(((ChatMessage)localObject1).msgtype))
           {
-            paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(this.b, this.jdField_a_of_type_Int, ((ChatMessage)localObject1).msg, 2, l1);
+            paramMessage = this.e.a(this.h, this.g, ((ChatMessage)localObject1).msg, 2, l1);
             if (paramMessage != null)
             {
-              localObject1 = paramMessage.getGrayTipWording(this.jdField_a_of_type_JavaUtilRandom);
+              localObject1 = paramMessage.getGrayTipWording(this.f);
               if (localObject1 != null)
               {
-                localObject1 = MessageForNearbyMarketGrayTips.makeGrayTipMsg(paramMessage.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 4, paramMessage.url, this.b);
+                localObject1 = MessageForNearbyMarketGrayTips.makeGrayTipMsg(paramMessage.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 4, paramMessage.url, this.h);
                 if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                  if (a(paramMessage.id, new Object[] { localObject1 }))
+                  if (b(paramMessage.id, new Object[] { localObject1 }))
                   {
-                    this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(paramMessage.id, l1);
+                    this.e.a(paramMessage.id, l1);
                     return false;
                   }
                 }
@@ -322,9 +322,9 @@ public class NearbyMarketGrayTips
       }
       break;
     case 1000: 
-      l1 = 1000L * MessageCache.a();
+      l1 = 1000L * MessageCache.c();
       long l2 = System.currentTimeMillis();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
+      localObject1 = this.b.getMessageFacade().o(this.c.b, this.c.a);
       long l3 = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
@@ -336,26 +336,26 @@ public class NearbyMarketGrayTips
       }
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a((List)localObject1))
+        if (!this.e.a((List)localObject1))
         {
           paramMessage = (ChatMessage)((List)localObject1).get(((List)localObject1).size() - 1);
-          if (!MessageUtils.a(paramMessage.msgtype))
+          if (!MessageUtils.b(paramMessage.msgtype))
           {
             if (paramMessage.isSend()) {
-              paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(this.b, this.jdField_a_of_type_Int, paramMessage.msg, 1, l1);
+              paramMessage = this.e.a(this.h, this.g, paramMessage.msg, 1, l1);
             } else {
-              paramMessage = this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(this.b, this.jdField_a_of_type_Int, paramMessage.msg, 2, l1);
+              paramMessage = this.e.a(this.h, this.g, paramMessage.msg, 2, l1);
             }
             if (paramMessage != null)
             {
-              localObject1 = paramMessage.getGrayTipWording(this.jdField_a_of_type_JavaUtilRandom);
+              localObject1 = paramMessage.getGrayTipWording(this.f);
               if (localObject1 != null)
               {
-                localObject1 = MessageForNearbyMarketGrayTips.makeGrayTipMsg(paramMessage.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 4, paramMessage.url, this.b);
+                localObject1 = MessageForNearbyMarketGrayTips.makeGrayTipMsg(paramMessage.id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 4, paramMessage.url, this.h);
                 if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                  if (a(paramMessage.id, new Object[] { localObject1 }))
+                  if (b(paramMessage.id, new Object[] { localObject1 }))
                   {
-                    this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(paramMessage.id, l1);
+                    this.e.a(paramMessage.id, l1);
                     return false;
                   }
                 }
@@ -366,15 +366,15 @@ public class NearbyMarketGrayTips
       }
       else
       {
-        localObject2 = a(this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(this.b, this.jdField_a_of_type_Int, l1), this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.d(this.b, this.jdField_a_of_type_Int, l1));
+        localObject2 = a(this.e.a(this.h, this.g, l1), this.e.d(this.h, this.g, l1));
         if (localObject2 != null)
         {
-          this.jdField_a_of_type_JavaUtilRandom.setSeed(l1);
-          localObject1 = ((NearbyGrayTipsManager.GrayTipsConfig)localObject2).getGrayTipWording(this.jdField_a_of_type_JavaUtilRandom);
+          this.f.setSeed(l1);
+          localObject1 = ((NearbyGrayTipsManager.GrayTipsConfig)localObject2).getGrayTipWording(this.f);
           if (((NearbyGrayTipsManager.GrayTipsConfig)localObject2).sceneId == 2)
           {
             if (localObject1 != null) {
-              paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 2, ((NearbyGrayTipsManager.GrayTipsConfig)localObject2).url, this.b);
+              paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, ((NearbyGrayTipsManager.Wording)localObject1).text, ((NearbyGrayTipsManager.Wording)localObject1).highlightText, 2, ((NearbyGrayTipsManager.GrayTipsConfig)localObject2).url, this.h);
             }
           }
           else if (((NearbyGrayTipsManager.GrayTipsConfig)localObject2).sceneId == 4)
@@ -387,14 +387,14 @@ public class NearbyMarketGrayTips
             else
             {
               paramMessage = new NearbyGrayTipsManager.Wording();
-              paramMessage.text = HardCodeUtil.a(2131707244);
-              paramMessage.highlightText = HardCodeUtil.a(2131707243);
+              paramMessage.text = HardCodeUtil.a(2131905071);
+              paramMessage.highlightText = HardCodeUtil.a(2131905070);
             }
-            paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, paramMessage.text, paramMessage.highlightText, 8, ((NearbyGrayTipsManager.GrayTipsConfig)localObject2).url, this.b);
+            paramMessage = MessageForNearbyMarketGrayTips.makeGrayTipMsg(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, paramMessage.text, paramMessage.highlightText, 8, ((NearbyGrayTipsManager.GrayTipsConfig)localObject2).url, this.h);
           }
           if (!TextUtils.isEmpty(paramMessage)) {
-            if (a(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, new Object[] { paramMessage })) {
-              this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, l1);
+            if (b(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, new Object[] { paramMessage })) {
+              this.e.a(((NearbyGrayTipsManager.GrayTipsConfig)localObject2).id, l1);
             }
           }
         }
@@ -406,7 +406,7 @@ public class NearbyMarketGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.NearbyMarketGrayTips
  * JD-Core Version:    0.7.0.1
  */

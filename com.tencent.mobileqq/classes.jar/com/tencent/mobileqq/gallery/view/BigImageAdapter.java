@@ -19,20 +19,20 @@ import java.util.List;
 public class BigImageAdapter
   extends BaseAdapter
 {
-  int jdField_a_of_type_Int = -1;
-  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<String> jdField_a_of_type_JavaUtilList;
+  SparseArray<URLDrawable> a = new SparseArray();
+  int b = -1;
+  private List<String> c;
   
   public BigImageAdapter(List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramList;
   }
   
   public String a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if ((localList != null) && (paramInt < localList.size()) && (paramInt >= 0)) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return (String)this.c.get(paramInt);
     }
     return null;
   }
@@ -62,7 +62,7 @@ public class BigImageAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.c;
     if (localList != null) {
       return localList.size();
     }
@@ -84,7 +84,7 @@ public class BigImageAdapter
     else
     {
       Object localObject2 = a(a(paramInt));
-      Object localObject3 = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      Object localObject3 = (URLDrawable)this.a.get(paramInt);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
@@ -130,7 +130,7 @@ public class BigImageAdapter
         ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
       }
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131708144));
+      ((StringBuilder)localObject2).append(HardCodeUtil.a(2131905941));
       ((StringBuilder)localObject2).append(paramInt);
       ((ImageView)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
     }
@@ -140,7 +140,7 @@ public class BigImageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gallery.view.BigImageAdapter
  * JD-Core Version:    0.7.0.1
  */

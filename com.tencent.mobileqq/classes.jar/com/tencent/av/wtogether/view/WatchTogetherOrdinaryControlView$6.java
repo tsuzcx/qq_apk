@@ -10,12 +10,12 @@ class WatchTogetherOrdinaryControlView$6
   
   public void onClick(View paramView)
   {
-    WatchTogetherOrdinaryControlView.e(this.a);
+    WatchTogetherOrdinaryControlView.k(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherOrdinaryControlView.6
  * JD-Core Version:    0.7.0.1
  */

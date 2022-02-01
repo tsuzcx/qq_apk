@@ -16,7 +16,7 @@ final class MiniAppReportManager$9
   {
     try
     {
-      long l = CommonDataAdapter.a().a();
+      long l = CommonDataAdapter.a().c();
       String str = MiniAppReportManager.access$1100(this.val$miniAppConfig);
       if (!TextUtils.isEmpty(str))
       {
@@ -44,7 +44,7 @@ final class MiniAppReportManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager.9
  * JD-Core Version:    0.7.0.1
  */

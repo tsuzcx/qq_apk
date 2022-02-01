@@ -13,15 +13,15 @@ class AIOGalleryScene$25
   
   public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a() != null) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a instanceof AIOImageData)))
+    if ((this.a.c.c() != null) && ((this.a.c.c().a instanceof AIOImageData)))
     {
-      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a;
-      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
+      AIOImageData localAIOImageData = (AIOImageData)this.a.c.c().a;
+      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.w, paramAIOImageData.w)))
       {
-        if (localAIOImageData.jdField_h_of_type_Long > 0L) {
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, AIOGalleryScene.H(this.a).getString(2131694999), new Object[] { FileUtil.a(localAIOImageData.jdField_h_of_type_Long) }));
+        if (localAIOImageData.O > 0L) {
+          this.a.f.setText(String.format(Locale.CHINA, AIOGalleryScene.O(this.a).getString(2131892727), new Object[] { FileUtil.a(localAIOImageData.O) }));
         } else {
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131694996);
+          this.a.f.setText(2131892724);
         }
         this.a.d(true);
       }
@@ -30,7 +30,7 @@ class AIOGalleryScene$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.25
  * JD-Core Version:    0.7.0.1
  */

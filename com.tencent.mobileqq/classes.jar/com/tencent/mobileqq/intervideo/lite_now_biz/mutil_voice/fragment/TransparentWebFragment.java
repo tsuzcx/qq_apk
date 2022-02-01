@@ -29,12 +29,12 @@ public class TransparentWebFragment
   
   public int a()
   {
-    return 2131559523;
+    return 2131625545;
   }
   
   public FrameLayout a(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131376809);
+    return (FrameLayout)paramView.findViewById(2131445137);
   }
   
   public void a(Dialog paramDialog)
@@ -45,12 +45,12 @@ public class TransparentWebFragment
     }
   }
   
-  public void a(View paramView) {}
-  
   public FrameLayout b(View paramView)
   {
-    return (FrameLayout)paramView.findViewById(2131376809);
+    return (FrameLayout)paramView.findViewById(2131445137);
   }
+  
+  public void c(View paramView) {}
   
   public void onCreate(Bundle paramBundle)
   {
@@ -61,13 +61,13 @@ public class TransparentWebFragment
   public void onViewCreated(@NonNull View paramView, @Nullable Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentSmttSdkWebView.setBackgroundColor(0);
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new TransparentWebFragment.1(this, getContext(), this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
+    this.e.setBackgroundColor(0);
+    this.g.registerJsModule(new TransparentWebFragment.1(this, getContext(), this.j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.fragment.TransparentWebFragment
  * JD-Core Version:    0.7.0.1
  */

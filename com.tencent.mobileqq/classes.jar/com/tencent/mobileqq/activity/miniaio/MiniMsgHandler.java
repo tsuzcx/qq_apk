@@ -32,15 +32,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MiniMsgHandler
   extends BusinessHandler
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected StringBuilder a;
-  Comparator<RecentBaseData> jdField_a_of_type_JavaUtilComparator = new MiniMsgHandler.1(this);
-  private ConcurrentHashMap<Integer, ArrayList<RecentBaseData>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  Comparator<RecentBaseData> a = new MiniMsgHandler.1(this);
+  protected StringBuilder b;
+  private ConcurrentHashMap<Integer, ArrayList<RecentBaseData>> c = new ConcurrentHashMap();
+  private QQAppInterface d;
   
   public MiniMsgHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.d = paramQQAppInterface;
   }
   
   private List<RecentBaseData> a(List<RecentUser> paramList, List<RecentBaseData> paramList1)
@@ -61,7 +61,7 @@ public class MiniMsgHandler
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = ConversationDataFactory.a(localRecentUser, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+        localObject2 = ConversationDataFactory.a(localRecentUser, this.d, BaseApplicationImpl.getContext());
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -71,17 +71,17 @@ public class MiniMsgHandler
       }
       if (localObject1 != null)
       {
-        localObject1.update(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+        localObject1.update(this.d, BaseApplicationImpl.getContext());
         if ((localObject1.getUnreadNum() > 0) && ((localObject1.mUnreadFlag == 1) || (localObject1.mUnreadFlag == 4)))
         {
           int k = localObject1.getRecentUserType();
           if (k == 1)
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHotChatMng(true).a(localObject1.getRecentUserUin());
+            localObject2 = this.d.getHotChatMng(true).c(localObject1.getRecentUserUin());
             if (localObject2 != null)
             {
-              localObject3 = ((WerewolvesHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a("");
-              if ((((HotChatInfo)localObject2).isGameRoom) || (((HotChatInfo)localObject2).troopUin.equals(((WerewolvesPluginManager)localObject3).a))) {}
+              localObject3 = ((WerewolvesHandler)this.d.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a("");
+              if ((((HotChatInfo)localObject2).isGameRoom) || (((HotChatInfo)localObject2).troopUin.equals(((WerewolvesPluginManager)localObject3).d))) {}
             }
             else
             {
@@ -115,18 +115,18 @@ public class MiniMsgHandler
     Object localObject4;
     if (QLog.isDevelopLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangStringBuilder;
+      localObject1 = this.b;
       if (localObject1 == null) {
-        this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+        this.b = new StringBuilder();
       } else {
         ((StringBuilder)localObject1).setLength(0);
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("checkRUList, src[");
+      this.b.append("checkRUList, src[");
       localObject1 = paramList.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (RecentUser)((Iterator)localObject1).next();
-        localObject3 = this.jdField_a_of_type_JavaLangStringBuilder;
+        localObject3 = this.b;
         localObject4 = new StringBuilder();
         ((StringBuilder)localObject4).append(((RecentUser)localObject2).uin);
         ((StringBuilder)localObject4).append("|");
@@ -134,7 +134,7 @@ public class MiniMsgHandler
         ((StringBuilder)localObject4).append(",");
         ((StringBuilder)localObject3).append(((StringBuilder)localObject4).toString());
       }
-      this.jdField_a_of_type_JavaLangStringBuilder.append("], [");
+      this.b.append("], [");
     }
     Object localObject1 = null;
     if (paramList != null)
@@ -148,7 +148,7 @@ public class MiniMsgHandler
         if (TextUtils.isEmpty((CharSequence)localObject4))
         {
           paramList.remove(i);
-          localObject4 = this.jdField_a_of_type_JavaLangStringBuilder;
+          localObject4 = this.b;
           localObject3 = localObject1;
           if (localObject4 != null)
           {
@@ -164,7 +164,7 @@ public class MiniMsgHandler
           localObject2 = localObject1;
           if (localObject1 == null)
           {
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            localObject3 = this.d;
             localObject2 = localObject1;
             if (localObject3 != null) {
               localObject2 = ((QQAppInterface)localObject3).getHotChatMng(true);
@@ -177,7 +177,7 @@ public class MiniMsgHandler
             if (!((HotChatManager)localObject2).b((String)localObject4))
             {
               paramList.remove(i);
-              localObject1 = this.jdField_a_of_type_JavaLangStringBuilder;
+              localObject1 = this.b;
               localObject3 = localObject2;
               if (localObject1 != null)
               {
@@ -196,11 +196,11 @@ public class MiniMsgHandler
           localObject3 = localObject1;
           if (j == 3000)
           {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+            localObject2 = this.d;
             localObject3 = localObject1;
             if (localObject2 != null)
             {
-              localObject2 = ((DiscussionManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.DISCUSSION_MANAGER)).a((String)localObject4);
+              localObject2 = ((DiscussionManager)((QQAppInterface)localObject2).getManager(QQManagerFactory.DISCUSSION_MANAGER)).d((String)localObject4);
               if ((localObject2 != null) && (!((DiscussionInfo)localObject2).isUIControlFlag_Hidden_RecentUser()))
               {
                 localObject3 = localObject1;
@@ -209,7 +209,7 @@ public class MiniMsgHandler
               else
               {
                 paramList.remove(i);
-                localObject2 = this.jdField_a_of_type_JavaLangStringBuilder;
+                localObject2 = this.b;
                 localObject3 = localObject1;
                 if (localObject2 != null)
                 {
@@ -228,11 +228,11 @@ public class MiniMsgHandler
         localObject1 = localObject3;
       }
     }
-    paramList = this.jdField_a_of_type_JavaLangStringBuilder;
+    paramList = this.b;
     if (paramList != null)
     {
       paramList.append("]");
-      QLog.i("MiniMsgHandler", 4, this.jdField_a_of_type_JavaLangStringBuilder.toString());
+      QLog.i("MiniMsgHandler", 4, this.b.toString());
     }
   }
   
@@ -244,7 +244,7 @@ public class MiniMsgHandler
   public List<RecentBaseData> a(int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy();
+    Object localObject1 = this.d.getRecentUserProxy();
     int i = 0;
     List localList = ((RecentUserProxy)localObject1).a(false);
     Object localObject2 = localArrayList;
@@ -253,7 +253,7 @@ public class MiniMsgHandler
       Object localObject3;
       try
       {
-        localObject1 = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+        localObject1 = (ArrayList)this.c.get(Integer.valueOf(paramInt1));
         localObject3 = localObject1;
         if (localObject1 == null)
         {
@@ -269,7 +269,7 @@ public class MiniMsgHandler
         localObject2 = localArrayList;
         localArrayList.addAll(a(localList, localObject4));
         localObject2 = localArrayList;
-        Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+        Collections.sort(localArrayList, this.a);
         localObject1 = localArrayList;
         localObject2 = localArrayList;
         if (localArrayList.size() > 100)
@@ -282,7 +282,7 @@ public class MiniMsgHandler
         localObject2 = localObject1;
         ((ArrayList)localObject3).addAll((Collection)localObject1);
         localObject2 = localObject1;
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), localObject3);
+        this.c.put(Integer.valueOf(paramInt1), localObject3);
         localObject2 = localObject1;
         localObject3 = localObject1;
         if (QLog.isColorLevel())
@@ -324,19 +324,19 @@ public class MiniMsgHandler
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.c.clear();
   }
   
   public void a(Integer paramInteger)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
+    this.c.remove(paramInteger);
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (((paramInt1 == 1) || (paramInt1 == 0) || (paramInt1 == 3000)) && (!a(paramInt2)))
+    if (((paramInt1 == 1) || (paramInt1 == 0) || (paramInt1 == 3000) || (paramInt1 == 10014)) && (!a(paramInt2)))
     {
-      MiniMsgIPCServer.a().a();
+      MiniMsgIPCServer.a().c();
       if (!TextUtils.isEmpty(paramString)) {
         MiniMsgIPCServer.a().a(paramString, paramInt1);
       }
@@ -352,7 +352,7 @@ public class MiniMsgHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgHandler
  * JD-Core Version:    0.7.0.1
  */

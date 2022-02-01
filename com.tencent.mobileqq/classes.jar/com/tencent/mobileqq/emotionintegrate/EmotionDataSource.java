@@ -5,11 +5,7 @@ import java.util.List;
 
 public abstract class EmotionDataSource
 {
-  public abstract int a();
-  
   public abstract List<EmoticonPreviewData> a(boolean paramBoolean);
-  
-  public abstract void a();
   
   public void a(EmotionDataSource.DataLoadListener paramDataLoadListener, EmoticonPreviewData paramEmoticonPreviewData, boolean paramBoolean)
   {
@@ -17,10 +13,14 @@ public abstract class EmotionDataSource
   }
   
   public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionDataSource
  * JD-Core Version:    0.7.0.1
  */

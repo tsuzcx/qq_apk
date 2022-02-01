@@ -17,7 +17,7 @@ class TroopAlbumPlugin$2
       paramString = paramBundle.getBundle("data");
       if (paramString.getBoolean("isOpenVip"))
       {
-        TroopAlbumPlugin.a(this.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin).post(new TroopAlbumPlugin.2.1(this));
+        TroopAlbumPlugin.k(this.b).post(new TroopAlbumPlugin.2.1(this));
         return;
       }
       paramString.getInt("totalNum");
@@ -25,14 +25,14 @@ class TroopAlbumPlugin$2
       int j = paramString.getInt("failNum");
       boolean bool = paramString.getBoolean("isDownloadCanceled");
       paramString = paramString.getString("path");
-      paramBundle = this.jdField_a_of_type_ComTencentQqminiNativePluginsTroopAlbumPlugin;
-      TroopAlbumPlugin.a(paramBundle, TroopAlbumPlugin.h(paramBundle).getAttachedActivity(), i, j, paramString, bool);
+      paramBundle = this.b;
+      TroopAlbumPlugin.a(paramBundle, TroopAlbumPlugin.l(paramBundle).getAttachedActivity(), i, j, paramString, bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2
  * JD-Core Version:    0.7.0.1
  */

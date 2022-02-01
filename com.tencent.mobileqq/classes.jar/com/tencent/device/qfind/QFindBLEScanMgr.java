@@ -49,46 +49,46 @@ import tencent.im.oidb.qfind.QFind.ReqReportDevs;
 @TargetApi(18)
 public class QFindBLEScanMgr
 {
-  private static QFindBLEScanMgr jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr;
-  private static String jdField_a_of_type_JavaLangString = "Q_Find_Scan_Intent";
-  private static String jdField_b_of_type_JavaLangString = "com.tencent.mobileqq.msf.wakeup";
-  private static boolean jdField_c_of_type_Boolean = false;
-  int jdField_a_of_type_Int = 300000;
-  long jdField_a_of_type_Long = 0L;
-  public BluetoothAdapter.LeScanCallback a;
-  public BluetoothAdapter a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private PowerManager.WakeLock jdField_a_of_type_AndroidOsPowerManager$WakeLock;
-  private QFindBLEScanMgr.NotifyReceiver jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$NotifyReceiver;
-  private QFindBLEScanMgr.ScanReceiver jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$ScanReceiver;
-  public QQAppInterface a;
-  public ArrayList<String> a;
-  private Dictionary<QFindBLEScanMgr.GroupLogItem, Long> jdField_a_of_type_JavaUtilDictionary = new Hashtable();
-  public HashMap<String, BlePeerInfo> a;
-  public MqqHandler a;
-  public volatile boolean a;
-  int jdField_b_of_type_Int = 300000;
-  long jdField_b_of_type_Long = 0L;
-  public ArrayList<Long> b;
-  public HashMap<String, Long> b;
-  public boolean b;
-  int jdField_c_of_type_Int = 3600000;
-  private long jdField_c_of_type_Long;
-  public HashMap<String, QFind.DeviceInfo> c;
+  private static QFindBLEScanMgr A;
+  private static boolean F = false;
+  private static String x = "Q_Find_Scan_Intent";
+  private static String y = "com.tencent.mobileqq.msf.wakeup";
+  private HandlerThread B;
+  private PowerManager.WakeLock C;
+  private QFindBLEScanMgr.ScanReceiver D;
+  private Dictionary<QFindBLEScanMgr.GroupLogItem, Long> E = new Hashtable();
+  private QFindBLEScanMgr.NotifyReceiver G;
+  private Context H;
+  int a = 300000;
+  int b = 300000;
+  int c = 3600000;
   int d = 10;
   int e = 300000;
   int f = 3600000;
-  int g = 0;
-  public int h;
-  public int i;
-  public int j = 0;
+  long g = 0L;
+  int h = 0;
+  long i = 0L;
+  public BluetoothAdapter j;
+  public BluetoothAdapter.LeScanCallback k;
+  public volatile boolean l = false;
+  public int m;
+  public int n;
+  public boolean o = true;
+  public ArrayList<String> p = new ArrayList();
+  public ArrayList<Long> q = new ArrayList();
+  public HashMap<String, BlePeerInfo> r = new HashMap();
+  public HashMap<String, Long> s = new HashMap();
+  public HashMap<String, QFind.DeviceInfo> t = new HashMap();
+  public int u = 0;
+  public QQAppInterface v;
+  public MqqHandler w;
+  private long z;
   
   static
   {
     try
     {
-      jdField_c_of_type_Boolean = BaseApplicationImpl.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+      F = BaseApplicationImpl.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
       return;
     }
     catch (Throwable localThrowable) {}
@@ -96,58 +96,51 @@ public class QFindBLEScanMgr
   
   public QFindBLEScanMgr()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
     if (a()) {
       ThreadManager.getSubThreadHandler().post(new QFindBLEScanMgr.4(this));
     }
     if (!a()) {
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+    this.H = BaseApplicationImpl.getContext();
     try
     {
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter = ((BluetoothManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("bluetooth")).getAdapter();
+      this.j = ((BluetoothManager)this.H.getSystemService("bluetooth")).getAdapter();
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    if (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter == null) {
+    if (this.j == null) {
       return;
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
+      this.v = ((QQAppInterface)localAppRuntime);
     }
     try
     {
-      d();
+      e();
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$NotifyReceiver = new QFindBLEScanMgr.NotifyReceiver(this);
+    this.G = new QFindBLEScanMgr.NotifyReceiver(this);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.device.ble.ACTION_GATT_SERVICES_DISCOVERED");
     localIntentFilter.addAction("onDeviceVerifyRsp");
     localIntentFilter.addAction("QFIND_BLE_CONNECT_ERROR");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$NotifyReceiver, localIntentFilter);
+    this.H.registerReceiver(this.G, localIntentFilter);
   }
   
   private void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsPowerManager$WakeLock;
+    Object localObject = this.C;
     if (localObject != null)
     {
       ((PowerManager.WakeLock)localObject).release();
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = null;
+      this.C = null;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -166,7 +159,7 @@ public class QFindBLEScanMgr
     localStringBuilder.append("|");
     localStringBuilder.append(paramString);
     paramString = localStringBuilder.toString();
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+    if (this.r.containsKey(paramString)) {
       ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new QFindBLEScanMgr.1(this, 0, true, true, 0L, false, false, "smartdevice:lightapp", paramString));
     }
   }
@@ -176,16 +169,16 @@ public class QFindBLEScanMgr
     try
     {
       long l1 = NetConnInfoCenter.getServerTimeMillis();
-      if (this.jdField_b_of_type_Long > 0L)
+      if (this.i > 0L)
       {
-        long l2 = this.jdField_b_of_type_Long;
+        long l2 = this.i;
         if (l1 - l2 <= 600000L) {}
       }
       else
       {
         try
         {
-          c();
+          d();
         }
         catch (Exception localException)
         {
@@ -200,15 +193,15 @@ public class QFindBLEScanMgr
           ((StringBuilder)localObject).append("start to report dev sn=");
           ((StringBuilder)localObject).append(paramBlePeerInfo.a());
           ((StringBuilder)localObject).append(", pid=");
-          ((StringBuilder)localObject).append(paramBlePeerInfo.jdField_a_of_type_Int);
-          ((StringBuilder)localObject).append(", ble_id = ");
-          ((StringBuilder)localObject).append(paramBlePeerInfo.jdField_c_of_type_Int);
-          ((StringBuilder)localObject).append(", lastreportcount=");
-          ((StringBuilder)localObject).append(this.g);
-          ((StringBuilder)localObject).append(", run = ");
-          ((StringBuilder)localObject).append(paramBlePeerInfo.f);
-          ((StringBuilder)localObject).append(" , walk = ");
           ((StringBuilder)localObject).append(paramBlePeerInfo.e);
+          ((StringBuilder)localObject).append(", ble_id = ");
+          ((StringBuilder)localObject).append(paramBlePeerInfo.i);
+          ((StringBuilder)localObject).append(", lastreportcount=");
+          ((StringBuilder)localObject).append(this.h);
+          ((StringBuilder)localObject).append(", run = ");
+          ((StringBuilder)localObject).append(paramBlePeerInfo.p);
+          ((StringBuilder)localObject).append(" , walk = ");
+          ((StringBuilder)localObject).append(paramBlePeerInfo.o);
           QLog.w("QFindBLE", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -218,7 +211,7 @@ public class QFindBLEScanMgr
         ((StringBuilder)localObject).append("report lost dev sn=");
         ((StringBuilder)localObject).append(paramBlePeerInfo.a());
         ((StringBuilder)localObject).append(", pid=");
-        ((StringBuilder)localObject).append(paramBlePeerInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramBlePeerInfo.e);
         ((StringBuilder)localObject).append(" has loc(");
         ((StringBuilder)localObject).append(paramSosoLbsInfo.mLocation.mLat02);
         ((StringBuilder)localObject).append(",");
@@ -226,29 +219,29 @@ public class QFindBLEScanMgr
         ((StringBuilder)localObject).append(", ");
         ((StringBuilder)localObject).append(paramSosoLbsInfo.mLocation.accuracy);
         ((StringBuilder)localObject).append("), ble_id = ");
-        ((StringBuilder)localObject).append(paramBlePeerInfo.jdField_c_of_type_Int);
+        ((StringBuilder)localObject).append(paramBlePeerInfo.i);
         ((StringBuilder)localObject).append(", lastreportcount=");
-        ((StringBuilder)localObject).append(this.g);
+        ((StringBuilder)localObject).append(this.h);
         ((StringBuilder)localObject).append(", run = ");
-        ((StringBuilder)localObject).append(paramBlePeerInfo.f);
+        ((StringBuilder)localObject).append(paramBlePeerInfo.p);
         ((StringBuilder)localObject).append(" , walk = ");
-        ((StringBuilder)localObject).append(paramBlePeerInfo.e);
+        ((StringBuilder)localObject).append(paramBlePeerInfo.o);
         QLog.i("QFindBLE", 1, ((StringBuilder)localObject).toString());
       }
       Object localObject = new QFind.ReqReportDevs();
       ArrayList localArrayList1 = new ArrayList();
       QFind.DeviceInfo localDeviceInfo = new QFind.DeviceInfo();
-      localDeviceInfo.pid.set(paramBlePeerInfo.jdField_a_of_type_Int);
+      localDeviceInfo.pid.set(paramBlePeerInfo.e);
       localDeviceInfo.service_uuid.set(2L);
       localDeviceInfo.sn.set(ByteStringMicro.copyFromUtf8(paramBlePeerInfo.a()));
       if (paramBoolean) {
-        localDeviceInfo.bytes_sig.set(ByteStringMicro.copyFrom(paramBlePeerInfo.jdField_b_of_type_ArrayOfByte));
+        localDeviceInfo.bytes_sig.set(ByteStringMicro.copyFrom(paramBlePeerInfo.k));
       }
       localDeviceInfo.timestamp.set((int)(l1 / 1000L));
       ArrayList localArrayList2 = new ArrayList();
       QFind.HistoryDetail localHistoryDetail = new QFind.HistoryDetail();
-      localHistoryDetail.run.set(paramBlePeerInfo.f);
-      localHistoryDetail.walk.set(paramBlePeerInfo.e);
+      localHistoryDetail.run.set(paramBlePeerInfo.p);
+      localHistoryDetail.walk.set(paramBlePeerInfo.o);
       localArrayList2.add(localHistoryDetail);
       paramBlePeerInfo = new QFind.HistoryData();
       paramBlePeerInfo.details.set(localArrayList2);
@@ -286,50 +279,39 @@ public class QFindBLEScanMgr
   
   public static boolean a()
   {
-    return jdField_c_of_type_Boolean;
-  }
-  
-  private boolean a(BlePeerInfo paramBlePeerInfo)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("");
-    localStringBuilder.append(paramBlePeerInfo.jdField_a_of_type_Int);
-    localStringBuilder.append("|");
-    localStringBuilder.append(paramBlePeerInfo.a());
-    paramBlePeerInfo = localStringBuilder.toString();
-    return this.jdField_b_of_type_JavaUtilHashMap.containsKey(paramBlePeerInfo);
+    return F;
   }
   
   private boolean a(BlePeerInfo paramBlePeerInfo, boolean paramBoolean)
   {
     long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if ((l2 <= 0L) || (l1 - l2 > this.jdField_c_of_type_Int))
+    long l2 = this.g;
+    if ((l2 <= 0L) || (l1 - l2 > this.c))
     {
-      this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-      this.g = 0;
+      this.g = NetConnInfoCenter.getServerTimeMillis();
+      this.h = 0;
     }
-    if ((this.g > this.d) && (!paramBoolean)) {
+    if ((this.h > this.d) && (!paramBoolean)) {
       return false;
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(paramBlePeerInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramBlePeerInfo.e);
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(paramBlePeerInfo.a());
     localObject = ((StringBuilder)localObject).toString();
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject))
+    if (this.r.containsKey(localObject))
     {
-      BlePeerInfo localBlePeerInfo = (BlePeerInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      localBlePeerInfo.f = paramBlePeerInfo.f;
-      localBlePeerInfo.e = paramBlePeerInfo.e;
-      if ((!paramBoolean) && (l1 - localBlePeerInfo.jdField_a_of_type_Long < this.jdField_a_of_type_Int)) {
+      BlePeerInfo localBlePeerInfo = (BlePeerInfo)this.r.get(localObject);
+      localBlePeerInfo.p = paramBlePeerInfo.p;
+      localBlePeerInfo.o = paramBlePeerInfo.o;
+      if ((!paramBoolean) && (l1 - localBlePeerInfo.g < this.a)) {
         return false;
       }
-      if ((paramBoolean) && (l1 - localBlePeerInfo.jdField_b_of_type_Long < this.e)) {
+      if ((paramBoolean) && (l1 - localBlePeerInfo.h < this.e)) {
         return false;
       }
-      if ((paramBoolean) && (this.jdField_b_of_type_JavaUtilHashMap.containsKey(localObject)) && (l1 - ((Long)this.jdField_b_of_type_JavaUtilHashMap.get(localObject)).longValue() > this.f) && (l1 - localBlePeerInfo.jdField_b_of_type_Long < this.jdField_a_of_type_Int))
+      if ((paramBoolean) && (this.s.containsKey(localObject)) && (l1 - ((Long)this.s.get(localObject)).longValue() > this.f) && (l1 - localBlePeerInfo.h < this.a))
       {
         if (QLog.isColorLevel())
         {
@@ -340,26 +322,26 @@ public class QFindBLEScanMgr
         }
         return false;
       }
-      localBlePeerInfo.jdField_a_of_type_Long = l1;
+      localBlePeerInfo.g = l1;
       if (paramBoolean) {
-        localBlePeerInfo.jdField_b_of_type_Long = l1;
+        localBlePeerInfo.h = l1;
       }
     }
     else
     {
-      paramBlePeerInfo.jdField_a_of_type_Long = l1;
+      paramBlePeerInfo.g = l1;
       if (paramBoolean) {
-        paramBlePeerInfo.jdField_b_of_type_Long = l1;
+        paramBlePeerInfo.h = l1;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(localObject, paramBlePeerInfo);
+      this.r.put(localObject, paramBlePeerInfo);
     }
-    localObject = (BlePeerInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    if (!((BlePeerInfo)localObject).jdField_b_of_type_Boolean)
+    localObject = (BlePeerInfo)this.r.get(localObject);
+    if (!((BlePeerInfo)localObject).n)
     {
-      ((BlePeerInfo)localObject).jdField_c_of_type_Int = paramBlePeerInfo.jdField_c_of_type_Int;
-      ((BlePeerInfo)localObject).jdField_a_of_type_Boolean = false;
+      ((BlePeerInfo)localObject).i = paramBlePeerInfo.i;
+      ((BlePeerInfo)localObject).m = false;
     }
-    this.g += 1;
+    this.h += 1;
     return true;
   }
   
@@ -367,59 +349,59 @@ public class QFindBLEScanMgr
   {
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.l) {
         return true;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.p.clear();
     }
     try
     {
-      if ((this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter == null) || (!this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.isEnabled())) {
-        break label146;
+      if ((this.j == null) || (!this.j.isEnabled())) {
+        break label147;
       }
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("call native mBluetoothAdapter.startLeScan with cb=");
-        localStringBuilder.append(this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
+        localStringBuilder.append(this.k);
         localStringBuilder.append(", mScanning=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.l);
         QLog.i("QFindBLE", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.startLeScan(this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
-      if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-        break label146;
+      this.l = this.j.startLeScan(this.k);
+      if (this.w == null) {
+        break label147;
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new QFindBLEScanMgr.2(this), this.i);
+      this.w.postDelayed(new QFindBLEScanMgr.2(this), this.n);
     }
     catch (Throwable localThrowable)
     {
       StringBuilder localStringBuilder;
-      label141:
-      break label141;
+      label142:
+      break label142;
     }
-    this.jdField_a_of_type_Boolean = false;
-    label146:
-    paramBoolean = this.jdField_a_of_type_Boolean;
-    return this.jdField_a_of_type_Boolean;
-    f();
-    if (this.jdField_a_of_type_Boolean)
+    this.l = false;
+    label147:
+    paramBoolean = this.l;
+    return this.l;
+    g();
+    if (this.l)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.l = false;
       try
       {
-        if (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null)
+        if (this.j != null)
         {
           if (QLog.isColorLevel())
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("call native mBluetoothAdapter.stopLeScan with cb=");
-            localStringBuilder.append(this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
+            localStringBuilder.append(this.k);
             localStringBuilder.append(", mScanning=");
-            localStringBuilder.append(this.jdField_a_of_type_Boolean);
+            localStringBuilder.append(this.l);
             QLog.i("QFindBLE", 2, localStringBuilder.toString());
           }
-          this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.stopLeScan(this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
+          this.j.stopLeScan(this.k);
           return true;
         }
       }
@@ -431,11 +413,22 @@ public class QFindBLEScanMgr
     return true;
   }
   
-  private void c()
+  private boolean b(BlePeerInfo paramBlePeerInfo)
   {
-    this.jdField_b_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramBlePeerInfo.e);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramBlePeerInfo.a());
+    paramBlePeerInfo = localStringBuilder.toString();
+    return this.s.containsKey(paramBlePeerInfo);
+  }
+  
+  private void d()
+  {
+    this.i = NetConnInfoCenter.getServerTimeMillis();
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).edit();
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.v.getCurrentAccountUin();
     if (str != null)
     {
       if ("".equals(str)) {
@@ -444,11 +437,11 @@ public class QFindBLEScanMgr
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_SAME_DEVICE_INTERVAL");
       localStringBuilder.append(str);
-      localEditor.putInt(localStringBuilder.toString(), this.jdField_a_of_type_Int);
+      localEditor.putInt(localStringBuilder.toString(), this.a);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_ANY_DEVICE_INTERVAL");
       localStringBuilder.append(str);
-      localEditor.putInt(localStringBuilder.toString(), this.jdField_b_of_type_Int);
+      localEditor.putInt(localStringBuilder.toString(), this.b);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_OFTEN_FREQUENCE");
       localStringBuilder.append(str);
@@ -456,15 +449,15 @@ public class QFindBLEScanMgr
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_OFTEN_PERIOD");
       localStringBuilder.append(str);
-      localEditor.putInt(localStringBuilder.toString(), this.jdField_c_of_type_Int);
+      localEditor.putInt(localStringBuilder.toString(), this.c);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_LAST_REPORT_PERIOD_START");
       localStringBuilder.append(str);
-      localEditor.putLong(localStringBuilder.toString(), this.jdField_a_of_type_Long);
+      localEditor.putLong(localStringBuilder.toString(), this.g);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_LAST_REPORT_COUNT");
       localStringBuilder.append(str);
-      localEditor.putInt(localStringBuilder.toString(), this.g);
+      localEditor.putInt(localStringBuilder.toString(), this.h);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_SAME_LOST_DEVS_INTERVAL");
       localStringBuilder.append(str);
@@ -477,10 +470,10 @@ public class QFindBLEScanMgr
     }
   }
   
-  private void d()
+  private void e()
   {
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("mobileQQ", 4);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = this.v.getCurrentAccountUin();
     if (str != null)
     {
       if ("".equals(str)) {
@@ -489,15 +482,15 @@ public class QFindBLEScanMgr
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_SAME_DEVICE_INTERVAL");
       localStringBuilder.append(str);
-      this.jdField_a_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 300000);
+      this.a = localSharedPreferences.getInt(localStringBuilder.toString(), 300000);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_ANY_DEVICE_INTERVAL");
       localStringBuilder.append(str);
-      this.jdField_b_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 300000);
+      this.b = localSharedPreferences.getInt(localStringBuilder.toString(), 300000);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_OFTEN_PERIOD");
       localStringBuilder.append(str);
-      this.jdField_c_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 3600000);
+      this.c = localSharedPreferences.getInt(localStringBuilder.toString(), 3600000);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_OFTEN_FREQUENCE");
       localStringBuilder.append(str);
@@ -505,11 +498,11 @@ public class QFindBLEScanMgr
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_LAST_REPORT_COUNT");
       localStringBuilder.append(str);
-      this.g = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
+      this.h = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_LAST_REPORT_PERIOD_START");
       localStringBuilder.append(str);
-      this.jdField_a_of_type_Long = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+      this.g = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("QFIND_SETTING_REPORT_SAME_LOST_DEVS_INTERVAL");
       localStringBuilder.append(str);
@@ -521,12 +514,12 @@ public class QFindBLEScanMgr
     }
   }
   
-  private void e()
+  private void f()
   {
-    if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock == null)
+    if (this.C == null)
     {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = ((PowerManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("power")).newWakeLock(536870913, "QFindBLE");
-      PowerManager.WakeLock localWakeLock = this.jdField_a_of_type_AndroidOsPowerManager$WakeLock;
+      this.C = ((PowerManager)this.H.getSystemService("power")).newWakeLock(536870913, "QFindBLE");
+      PowerManager.WakeLock localWakeLock = this.C;
       if (localWakeLock != null) {
         localWakeLock.acquire();
       }
@@ -536,17 +529,17 @@ public class QFindBLEScanMgr
     }
   }
   
-  private void f()
+  private void g()
   {
     if (QLog.isColorLevel()) {
       QLog.i("QFindBLE", 2, "QFindBLEScanMgr cancelReceiver");
     }
     a(2);
-    QFindBLEScanMgr.ScanReceiver localScanReceiver = this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$ScanReceiver;
+    QFindBLEScanMgr.ScanReceiver localScanReceiver = this.D;
     if (localScanReceiver != null) {
       try
       {
-        this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(localScanReceiver);
+        this.H.unregisterReceiver(localScanReceiver);
         return;
       }
       catch (Throwable localThrowable)
@@ -556,14 +549,14 @@ public class QFindBLEScanMgr
     }
   }
   
-  private void g()
+  private void h()
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ble_scan_task", 0);
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback = new QFindBLEScanMgr.3(this);
+      this.B = ThreadManager.newFreeHandlerThread("ble_scan_task", 0);
+      this.B.start();
+      this.w = new MqqHandler(this.B.getLooper());
+      this.k = new QFindBLEScanMgr.3(this);
       return;
     }
     catch (Throwable localThrowable) {}
@@ -572,733 +565,733 @@ public class QFindBLEScanMgr
   protected PeerInfo a(BlePeerInfo paramBlePeerInfo)
   {
     PeerInfo localPeerInfo = new PeerInfo();
-    localPeerInfo.jdField_a_of_type_Int = paramBlePeerInfo.jdField_c_of_type_Int;
-    localPeerInfo.jdField_a_of_type_JavaLangString = paramBlePeerInfo.jdField_a_of_type_JavaLangString;
-    localPeerInfo.jdField_b_of_type_JavaLangString = paramBlePeerInfo.jdField_b_of_type_JavaLangString;
-    localPeerInfo.jdField_a_of_type_ArrayOfByte = paramBlePeerInfo.jdField_a_of_type_ArrayOfByte;
-    localPeerInfo.jdField_a_of_type_JavaUtilList = paramBlePeerInfo.jdField_a_of_type_JavaUtilList;
-    localPeerInfo.jdField_b_of_type_Int = paramBlePeerInfo.jdField_a_of_type_Int;
+    localPeerInfo.a = paramBlePeerInfo.i;
+    localPeerInfo.b = paramBlePeerInfo.a;
+    localPeerInfo.c = paramBlePeerInfo.b;
+    localPeerInfo.d = paramBlePeerInfo.d;
+    localPeerInfo.e = paramBlePeerInfo.c;
+    localPeerInfo.f = paramBlePeerInfo.e;
     return localPeerInfo;
-  }
-  
-  public void a()
-  {
-    if (!a()) {
-      return;
-    }
-    a(false);
-    this.jdField_b_of_type_Boolean = false;
   }
   
   /* Error */
   public void a(ToServiceMsg paramToServiceMsg, com.tencent.qphone.base.remote.FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     // Byte code:
-    //   0: new 339	tencent/im/oidb/qfind/QFind$ReqReportDevs
+    //   0: new 363	tencent/im/oidb/qfind/QFind$ReqReportDevs
     //   3: dup
-    //   4: invokespecial 340	tencent/im/oidb/qfind/QFind$ReqReportDevs:<init>	()V
+    //   4: invokespecial 364	tencent/im/oidb/qfind/QFind$ReqReportDevs:<init>	()V
     //   7: astore 6
     //   9: aload 6
     //   11: aload_1
-    //   12: invokevirtual 709	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   12: invokevirtual 738	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
     //   15: iconst_4
     //   16: aload_1
-    //   17: invokevirtual 709	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
+    //   17: invokevirtual 738	com/tencent/qphone/base/remote/ToServiceMsg:getWupBuffer	()[B
     //   20: arraylength
     //   21: iconst_4
     //   22: isub
-    //   23: invokevirtual 713	tencent/im/oidb/qfind/QFind$ReqReportDevs:mergeFrom	([BII)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   23: invokevirtual 742	tencent/im/oidb/qfind/QFind$ReqReportDevs:mergeFrom	([BII)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   26: pop
-    //   27: new 715	tencent/im/oidb/qfind/QFind$RspReportDevs
+    //   27: new 744	tencent/im/oidb/qfind/QFind$RspReportDevs
     //   30: dup
-    //   31: invokespecial 716	tencent/im/oidb/qfind/QFind$RspReportDevs:<init>	()V
+    //   31: invokespecial 745	tencent/im/oidb/qfind/QFind$RspReportDevs:<init>	()V
     //   34: astore_3
     //   35: aload_3
     //   36: aload_2
-    //   37: invokevirtual 719	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
-    //   40: invokevirtual 722	tencent/im/oidb/qfind/QFind$RspReportDevs:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   37: invokevirtual 748	com/tencent/qphone/base/remote/FromServiceMsg:getWupBuffer	()[B
+    //   40: invokevirtual 751	tencent/im/oidb/qfind/QFind$RspReportDevs:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   43: pop
     //   44: aload_1
-    //   45: invokevirtual 725	com/tencent/qphone/base/remote/ToServiceMsg:getAppSeq	()I
+    //   45: invokevirtual 754	com/tencent/qphone/base/remote/ToServiceMsg:getAppSeq	()I
     //   48: istore 4
     //   50: aload_0
-    //   51: getfield 113	com/tencent/device/qfind/QFindBLEScanMgr:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   54: invokevirtual 729	java/util/HashMap:values	()Ljava/util/Collection;
-    //   57: invokeinterface 735 1 0
+    //   51: getfield 137	com/tencent/device/qfind/QFindBLEScanMgr:r	Ljava/util/HashMap;
+    //   54: invokevirtual 758	java/util/HashMap:values	()Ljava/util/Collection;
+    //   57: invokeinterface 764 1 0
     //   62: astore_1
     //   63: aload_1
-    //   64: invokeinterface 740 1 0
+    //   64: invokeinterface 769 1 0
     //   69: ifeq +20 -> 89
     //   72: iload 4
     //   74: aload_1
-    //   75: invokeinterface 744 1 0
-    //   80: checkcast 283	com/tencent/device/qfind/BlePeerInfo
-    //   83: getfield 745	com/tencent/device/qfind/BlePeerInfo:jdField_b_of_type_Int	I
+    //   75: invokeinterface 773 1 0
+    //   80: checkcast 307	com/tencent/device/qfind/BlePeerInfo
+    //   83: getfield 774	com/tencent/device/qfind/BlePeerInfo:f	I
     //   86: if_icmpne -23 -> 63
     //   89: aload_3
-    //   90: getfield 749	tencent/im/oidb/qfind/QFind$RspReportDevs:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   93: invokevirtual 753	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   90: getfield 778	tencent/im/oidb/qfind/QFind$RspReportDevs:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   93: invokevirtual 782	com/tencent/mobileqq/pb/PBInt32Field:get	()I
     //   96: istore 4
     //   98: iload 4
-    //   100: ifne +644 -> 744
-    //   103: new 103	java/util/ArrayList
+    //   100: ifne +652 -> 752
+    //   103: new 127	java/util/ArrayList
     //   106: dup
-    //   107: invokespecial 104	java/util/ArrayList:<init>	()V
+    //   107: invokespecial 128	java/util/ArrayList:<init>	()V
     //   110: astore_2
-    //   111: new 103	java/util/ArrayList
+    //   111: new 127	java/util/ArrayList
     //   114: dup
-    //   115: invokespecial 104	java/util/ArrayList:<init>	()V
+    //   115: invokespecial 128	java/util/ArrayList:<init>	()V
     //   118: astore_1
     //   119: aload 6
-    //   121: getfield 429	tencent/im/oidb/qfind/QFind$ReqReportDevs:dev_infos	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   124: invokevirtual 756	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   127: invokeinterface 757 1 0
+    //   121: getfield 453	tencent/im/oidb/qfind/QFind$ReqReportDevs:dev_infos	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   124: invokevirtual 785	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   127: invokeinterface 786 1 0
     //   132: astore 7
     //   134: aload 7
-    //   136: invokeinterface 740 1 0
+    //   136: invokeinterface 769 1 0
     //   141: istore 5
     //   143: iload 5
-    //   145: ifeq +98 -> 243
+    //   145: ifeq +100 -> 245
     //   148: aload 7
-    //   150: invokeinterface 744 1 0
-    //   155: checkcast 342	tencent/im/oidb/qfind/QFind$DeviceInfo
+    //   150: invokeinterface 773 1 0
+    //   155: checkcast 366	tencent/im/oidb/qfind/QFind$DeviceInfo
     //   158: astore 8
-    //   160: new 221	java/lang/StringBuilder
+    //   160: new 245	java/lang/StringBuilder
     //   163: dup
-    //   164: invokespecial 222	java/lang/StringBuilder:<init>	()V
+    //   164: invokespecial 246	java/lang/StringBuilder:<init>	()V
     //   167: astore 9
     //   169: aload 9
-    //   171: ldc 243
-    //   173: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: pop
-    //   177: aload 9
-    //   179: aload 8
-    //   181: getfield 347	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   184: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   187: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   190: pop
-    //   191: aload 9
-    //   193: ldc 245
-    //   195: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   198: pop
-    //   199: aload 9
-    //   201: aload 8
-    //   203: getfield 367	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   206: invokevirtual 761	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   209: invokevirtual 764	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   212: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   215: pop
-    //   216: aload 9
-    //   218: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   221: astore 8
-    //   223: aload_2
-    //   224: aload 8
-    //   226: invokevirtual 765	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   229: pop
-    //   230: aload_0
-    //   231: getfield 117	com/tencent/device/qfind/QFindBLEScanMgr:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   234: aload 8
-    //   236: invokevirtual 768	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   239: pop
-    //   240: goto -106 -> 134
-    //   243: aload_3
-    //   244: getfield 771	tencent/im/oidb/qfind/QFind$RspReportDevs:lost_devs	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   247: invokevirtual 756	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   250: invokeinterface 757 1 0
-    //   255: astore 7
-    //   257: aload 7
-    //   259: invokeinterface 740 1 0
-    //   264: ifeq +281 -> 545
-    //   267: aload 7
-    //   269: invokeinterface 744 1 0
-    //   274: checkcast 342	tencent/im/oidb/qfind/QFind$DeviceInfo
-    //   277: astore 8
-    //   279: new 221	java/lang/StringBuilder
-    //   282: dup
-    //   283: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   286: astore 9
-    //   288: aload 9
-    //   290: ldc 243
-    //   292: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: pop
-    //   296: aload 9
-    //   298: aload 8
-    //   300: getfield 347	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   303: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   306: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   309: pop
-    //   310: aload 9
-    //   312: ldc 245
-    //   314: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: pop
-    //   318: aload 9
-    //   320: aload 8
-    //   322: getfield 367	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   325: invokevirtual 761	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   328: invokevirtual 764	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   331: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: pop
-    //   335: aload 9
-    //   337: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: astore 9
-    //   342: aload_0
-    //   343: getfield 117	com/tencent/device/qfind/QFindBLEScanMgr:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   346: aload 9
-    //   348: invokevirtual 249	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   351: ifeq +13 -> 364
-    //   354: aload_0
-    //   355: getfield 117	com/tencent/device/qfind/QFindBLEScanMgr:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   358: aload 9
-    //   360: invokevirtual 768	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   363: pop
-    //   364: aload_0
-    //   365: getfield 117	com/tencent/device/qfind/QFindBLEScanMgr:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   368: aload 9
-    //   370: aload 8
-    //   372: invokevirtual 529	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   375: pop
-    //   376: new 221	java/lang/StringBuilder
-    //   379: dup
-    //   380: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   383: astore 9
-    //   385: aload 9
-    //   387: ldc 243
-    //   389: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: pop
-    //   393: aload 9
-    //   395: aload 8
-    //   397: getfield 347	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   400: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   403: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   406: pop
-    //   407: aload 9
-    //   409: ldc 245
-    //   411: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   414: pop
-    //   415: aload 9
-    //   417: aload 8
-    //   419: getfield 367	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   422: invokevirtual 761	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   425: invokevirtual 764	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   428: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   431: pop
-    //   432: aload_1
-    //   433: aload 9
-    //   435: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   438: invokevirtual 765	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   441: pop
-    //   442: new 221	java/lang/StringBuilder
-    //   445: dup
-    //   446: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   449: astore 9
-    //   451: aload 9
-    //   453: ldc 243
-    //   455: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   458: pop
-    //   459: aload 9
-    //   461: aload 8
-    //   463: getfield 347	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   466: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   469: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   472: pop
-    //   473: aload 9
-    //   475: ldc 245
-    //   477: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: pop
-    //   481: aload 9
-    //   483: aload 8
-    //   485: getfield 367	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   488: invokevirtual 761	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   491: invokevirtual 764	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   494: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   497: pop
-    //   498: aload_2
-    //   499: aload 9
-    //   501: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   504: invokevirtual 773	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
-    //   507: pop
-    //   508: aload 6
-    //   510: getfield 460	tencent/im/oidb/qfind/QFind$ReqReportDevs:dev_loc	Ltencent/im/oidb/qfind/QFind$DeviceLoc;
-    //   513: invokevirtual 776	tencent/im/oidb/qfind/QFind$DeviceLoc:has	()Z
-    //   516: ifne -259 -> 257
-    //   519: aload_0
-    //   520: aload 8
-    //   522: getfield 347	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   525: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   171: ldc_w 267
+    //   174: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: pop
+    //   178: aload 9
+    //   180: aload 8
+    //   182: getfield 371	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   185: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   188: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   191: pop
+    //   192: aload 9
+    //   194: ldc_w 269
+    //   197: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: pop
+    //   201: aload 9
+    //   203: aload 8
+    //   205: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   208: invokevirtual 790	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   211: invokevirtual 793	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   214: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: aload 9
+    //   220: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   223: astore 8
+    //   225: aload_2
+    //   226: aload 8
+    //   228: invokevirtual 794	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   231: pop
+    //   232: aload_0
+    //   233: getfield 141	com/tencent/device/qfind/QFindBLEScanMgr:t	Ljava/util/HashMap;
+    //   236: aload 8
+    //   238: invokevirtual 797	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   241: pop
+    //   242: goto -108 -> 134
+    //   245: aload_3
+    //   246: getfield 800	tencent/im/oidb/qfind/QFind$RspReportDevs:lost_devs	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   249: invokevirtual 785	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   252: invokeinterface 786 1 0
+    //   257: astore 7
+    //   259: aload 7
+    //   261: invokeinterface 769 1 0
+    //   266: ifeq +287 -> 553
+    //   269: aload 7
+    //   271: invokeinterface 773 1 0
+    //   276: checkcast 366	tencent/im/oidb/qfind/QFind$DeviceInfo
+    //   279: astore 8
+    //   281: new 245	java/lang/StringBuilder
+    //   284: dup
+    //   285: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   288: astore 9
+    //   290: aload 9
+    //   292: ldc_w 267
+    //   295: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: pop
+    //   299: aload 9
+    //   301: aload 8
+    //   303: getfield 371	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   306: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   309: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   312: pop
+    //   313: aload 9
+    //   315: ldc_w 269
+    //   318: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: pop
+    //   322: aload 9
+    //   324: aload 8
+    //   326: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   329: invokevirtual 790	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   332: invokevirtual 793	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   335: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   338: pop
+    //   339: aload 9
+    //   341: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   344: astore 9
+    //   346: aload_0
+    //   347: getfield 141	com/tencent/device/qfind/QFindBLEScanMgr:t	Ljava/util/HashMap;
+    //   350: aload 9
+    //   352: invokevirtual 273	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   355: ifeq +13 -> 368
+    //   358: aload_0
+    //   359: getfield 141	com/tencent/device/qfind/QFindBLEScanMgr:t	Ljava/util/HashMap;
+    //   362: aload 9
+    //   364: invokevirtual 797	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   367: pop
+    //   368: aload_0
+    //   369: getfield 141	com/tencent/device/qfind/QFindBLEScanMgr:t	Ljava/util/HashMap;
+    //   372: aload 9
+    //   374: aload 8
+    //   376: invokevirtual 551	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   379: pop
+    //   380: new 245	java/lang/StringBuilder
+    //   383: dup
+    //   384: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   387: astore 9
+    //   389: aload 9
+    //   391: ldc_w 267
+    //   394: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   397: pop
+    //   398: aload 9
+    //   400: aload 8
+    //   402: getfield 371	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   405: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   408: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   411: pop
+    //   412: aload 9
+    //   414: ldc_w 269
+    //   417: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   420: pop
+    //   421: aload 9
+    //   423: aload 8
+    //   425: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   428: invokevirtual 790	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   431: invokevirtual 793	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   434: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   437: pop
+    //   438: aload_1
+    //   439: aload 9
+    //   441: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   444: invokevirtual 794	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   447: pop
+    //   448: new 245	java/lang/StringBuilder
+    //   451: dup
+    //   452: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   455: astore 9
+    //   457: aload 9
+    //   459: ldc_w 267
+    //   462: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   465: pop
+    //   466: aload 9
+    //   468: aload 8
+    //   470: getfield 371	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   473: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   476: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   479: pop
+    //   480: aload 9
+    //   482: ldc_w 269
+    //   485: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   488: pop
+    //   489: aload 9
+    //   491: aload 8
+    //   493: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   496: invokevirtual 790	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   499: invokevirtual 793	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   502: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   505: pop
+    //   506: aload_2
+    //   507: aload 9
+    //   509: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   512: invokevirtual 802	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   515: pop
+    //   516: aload 6
+    //   518: getfield 484	tencent/im/oidb/qfind/QFind$ReqReportDevs:dev_loc	Ltencent/im/oidb/qfind/QFind$DeviceLoc;
+    //   521: invokevirtual 805	tencent/im/oidb/qfind/QFind$DeviceLoc:has	()Z
+    //   524: ifne -265 -> 259
+    //   527: aload_0
     //   528: aload 8
-    //   530: getfield 367	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   533: invokevirtual 761	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   536: invokevirtual 764	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   539: invokespecial 507	com/tencent/device/qfind/QFindBLEScanMgr:a	(ILjava/lang/String;)V
-    //   542: goto -285 -> 257
-    //   545: aload_2
-    //   546: invokevirtual 777	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   549: astore_2
-    //   550: aload_2
-    //   551: invokeinterface 740 1 0
-    //   556: ifeq +27 -> 583
-    //   559: aload_2
-    //   560: invokeinterface 744 1 0
-    //   565: checkcast 599	java/lang/String
-    //   568: astore 6
-    //   570: aload_0
-    //   571: getfield 115	com/tencent/device/qfind/QFindBLEScanMgr:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   574: aload 6
-    //   576: invokevirtual 768	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   579: pop
-    //   580: goto -30 -> 550
-    //   583: aload_1
-    //   584: invokevirtual 777	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   587: astore_1
-    //   588: aload_1
-    //   589: invokeinterface 740 1 0
-    //   594: ifeq +42 -> 636
-    //   597: aload_1
-    //   598: invokeinterface 744 1 0
-    //   603: checkcast 599	java/lang/String
-    //   606: astore_2
-    //   607: aload_0
-    //   608: getfield 115	com/tencent/device/qfind/QFindBLEScanMgr:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   611: aload_2
-    //   612: invokevirtual 249	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   615: ifne -27 -> 588
-    //   618: aload_0
-    //   619: getfield 115	com/tencent/device/qfind/QFindBLEScanMgr:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   622: aload_2
-    //   623: invokestatic 275	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
-    //   626: invokestatic 780	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   629: invokevirtual 529	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   632: pop
-    //   633: goto -45 -> 588
-    //   636: aload_0
-    //   637: aload_3
-    //   638: getfield 783	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_dev_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   641: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   644: sipush 1000
-    //   647: imul
-    //   648: ldc 78
-    //   650: invokestatic 789	java/lang/Math:max	(II)I
-    //   653: putfield 80	com/tencent/device/qfind/QFindBLEScanMgr:jdField_a_of_type_Int	I
-    //   656: aload_0
-    //   657: aload_3
-    //   658: getfield 792	tencent/im/oidb/qfind/QFind$RspReportDevs:report_any_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   661: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   664: sipush 1000
-    //   667: imul
-    //   668: ldc 78
-    //   670: invokestatic 789	java/lang/Math:max	(II)I
-    //   673: putfield 82	com/tencent/device/qfind/QFindBLEScanMgr:jdField_b_of_type_Int	I
-    //   676: aload_0
-    //   677: aload_3
-    //   678: getfield 795	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   681: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   684: sipush 1000
-    //   687: imul
-    //   688: ldc 83
-    //   690: invokestatic 789	java/lang/Math:max	(II)I
-    //   693: putfield 85	com/tencent/device/qfind/QFindBLEScanMgr:jdField_c_of_type_Int	I
-    //   696: aload_0
-    //   697: aload_3
-    //   698: getfield 798	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_frequence	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   701: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   704: bipush 10
-    //   706: invokestatic 789	java/lang/Math:max	(II)I
-    //   709: putfield 87	com/tencent/device/qfind/QFindBLEScanMgr:d	I
-    //   712: aload_0
-    //   713: aload_3
-    //   714: getfield 801	tencent/im/oidb/qfind/QFind$RspReportDevs:force_report_lbs_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   717: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   720: ldc 83
-    //   722: invokestatic 789	java/lang/Math:max	(II)I
-    //   725: putfield 91	com/tencent/device/qfind/QFindBLEScanMgr:f	I
-    //   728: aload_0
-    //   729: aload_3
-    //   730: getfield 804	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_lost_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   733: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   736: ldc 78
-    //   738: invokestatic 789	java/lang/Math:max	(II)I
-    //   741: putfield 89	com/tencent/device/qfind/QFindBLEScanMgr:e	I
-    //   744: invokestatic 219	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   747: ifeq +562 -> 1309
-    //   750: new 806	java/lang/StringBuffer
-    //   753: dup
-    //   754: invokespecial 807	java/lang/StringBuffer:<init>	()V
-    //   757: astore_1
-    //   758: new 221	java/lang/StringBuilder
+    //   530: getfield 371	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   533: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   536: aload 8
+    //   538: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   541: invokevirtual 790	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   544: invokevirtual 793	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   547: invokespecial 529	com/tencent/device/qfind/QFindBLEScanMgr:a	(ILjava/lang/String;)V
+    //   550: goto -291 -> 259
+    //   553: aload_2
+    //   554: invokevirtual 806	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   557: astore_2
+    //   558: aload_2
+    //   559: invokeinterface 769 1 0
+    //   564: ifeq +27 -> 591
+    //   567: aload_2
+    //   568: invokeinterface 773 1 0
+    //   573: checkcast 626	java/lang/String
+    //   576: astore 6
+    //   578: aload_0
+    //   579: getfield 139	com/tencent/device/qfind/QFindBLEScanMgr:s	Ljava/util/HashMap;
+    //   582: aload 6
+    //   584: invokevirtual 797	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   587: pop
+    //   588: goto -30 -> 558
+    //   591: aload_1
+    //   592: invokevirtual 806	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   595: astore_1
+    //   596: aload_1
+    //   597: invokeinterface 769 1 0
+    //   602: ifeq +42 -> 644
+    //   605: aload_1
+    //   606: invokeinterface 773 1 0
+    //   611: checkcast 626	java/lang/String
+    //   614: astore_2
+    //   615: aload_0
+    //   616: getfield 139	com/tencent/device/qfind/QFindBLEScanMgr:s	Ljava/util/HashMap;
+    //   619: aload_2
+    //   620: invokevirtual 273	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   623: ifne -27 -> 596
+    //   626: aload_0
+    //   627: getfield 139	com/tencent/device/qfind/QFindBLEScanMgr:s	Ljava/util/HashMap;
+    //   630: aload_2
+    //   631: invokestatic 299	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTimeMillis	()J
+    //   634: invokestatic 809	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   637: invokevirtual 551	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   640: pop
+    //   641: goto -45 -> 596
+    //   644: aload_0
+    //   645: aload_3
+    //   646: getfield 812	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_dev_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   649: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   652: sipush 1000
+    //   655: imul
+    //   656: ldc 102
+    //   658: invokestatic 818	java/lang/Math:max	(II)I
+    //   661: putfield 104	com/tencent/device/qfind/QFindBLEScanMgr:a	I
+    //   664: aload_0
+    //   665: aload_3
+    //   666: getfield 821	tencent/im/oidb/qfind/QFind$RspReportDevs:report_any_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   669: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   672: sipush 1000
+    //   675: imul
+    //   676: ldc 102
+    //   678: invokestatic 818	java/lang/Math:max	(II)I
+    //   681: putfield 106	com/tencent/device/qfind/QFindBLEScanMgr:b	I
+    //   684: aload_0
+    //   685: aload_3
+    //   686: getfield 824	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   689: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   692: sipush 1000
+    //   695: imul
+    //   696: ldc 107
+    //   698: invokestatic 818	java/lang/Math:max	(II)I
+    //   701: putfield 109	com/tencent/device/qfind/QFindBLEScanMgr:c	I
+    //   704: aload_0
+    //   705: aload_3
+    //   706: getfield 827	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_frequence	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   709: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   712: bipush 10
+    //   714: invokestatic 818	java/lang/Math:max	(II)I
+    //   717: putfield 111	com/tencent/device/qfind/QFindBLEScanMgr:d	I
+    //   720: aload_0
+    //   721: aload_3
+    //   722: getfield 830	tencent/im/oidb/qfind/QFind$RspReportDevs:force_report_lbs_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   725: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   728: ldc 107
+    //   730: invokestatic 818	java/lang/Math:max	(II)I
+    //   733: putfield 115	com/tencent/device/qfind/QFindBLEScanMgr:f	I
+    //   736: aload_0
+    //   737: aload_3
+    //   738: getfield 833	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_lost_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   741: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   744: ldc 102
+    //   746: invokestatic 818	java/lang/Math:max	(II)I
+    //   749: putfield 113	com/tencent/device/qfind/QFindBLEScanMgr:e	I
+    //   752: invokestatic 243	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   755: ifeq +565 -> 1320
+    //   758: new 835	java/lang/StringBuffer
     //   761: dup
-    //   762: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   765: astore_2
-    //   766: aload_2
-    //   767: ldc_w 809
-    //   770: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   773: pop
+    //   762: invokespecial 836	java/lang/StringBuffer:<init>	()V
+    //   765: astore_1
+    //   766: new 245	java/lang/StringBuilder
+    //   769: dup
+    //   770: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   773: astore_2
     //   774: aload_2
-    //   775: aload_3
-    //   776: getfield 749	tencent/im/oidb/qfind/QFind$RspReportDevs:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
-    //   779: invokevirtual 753	com/tencent/mobileqq/pb/PBInt32Field:get	()I
-    //   782: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   785: pop
-    //   786: aload_1
-    //   787: aload_2
-    //   788: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   791: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   794: pop
-    //   795: new 221	java/lang/StringBuilder
-    //   798: dup
-    //   799: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   802: astore_2
-    //   803: aload_2
-    //   804: ldc_w 814
-    //   807: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   810: pop
+    //   775: ldc_w 838
+    //   778: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   781: pop
+    //   782: aload_2
+    //   783: aload_3
+    //   784: getfield 778	tencent/im/oidb/qfind/QFind$RspReportDevs:result	Lcom/tencent/mobileqq/pb/PBInt32Field;
+    //   787: invokevirtual 782	com/tencent/mobileqq/pb/PBInt32Field:get	()I
+    //   790: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   793: pop
+    //   794: aload_1
+    //   795: aload_2
+    //   796: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   799: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   802: pop
+    //   803: new 245	java/lang/StringBuilder
+    //   806: dup
+    //   807: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   810: astore_2
     //   811: aload_2
-    //   812: aload_3
-    //   813: getfield 783	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_dev_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   816: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   819: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   822: pop
-    //   823: aload_1
-    //   824: aload_2
-    //   825: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   828: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   831: pop
-    //   832: new 221	java/lang/StringBuilder
-    //   835: dup
-    //   836: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   839: astore_2
-    //   840: aload_2
-    //   841: ldc_w 816
-    //   844: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   847: pop
+    //   812: ldc_w 843
+    //   815: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   818: pop
+    //   819: aload_2
+    //   820: aload_3
+    //   821: getfield 812	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_dev_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   824: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   827: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   830: pop
+    //   831: aload_1
+    //   832: aload_2
+    //   833: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   836: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   839: pop
+    //   840: new 245	java/lang/StringBuilder
+    //   843: dup
+    //   844: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   847: astore_2
     //   848: aload_2
-    //   849: aload_3
-    //   850: getfield 792	tencent/im/oidb/qfind/QFind$RspReportDevs:report_any_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   853: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   856: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   859: pop
-    //   860: aload_1
-    //   861: aload_2
-    //   862: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   865: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   868: pop
-    //   869: new 221	java/lang/StringBuilder
-    //   872: dup
-    //   873: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   876: astore_2
-    //   877: aload_2
-    //   878: ldc_w 818
-    //   881: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   884: pop
+    //   849: ldc_w 845
+    //   852: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   855: pop
+    //   856: aload_2
+    //   857: aload_3
+    //   858: getfield 821	tencent/im/oidb/qfind/QFind$RspReportDevs:report_any_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   861: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   864: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   867: pop
+    //   868: aload_1
+    //   869: aload_2
+    //   870: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   873: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   876: pop
+    //   877: new 245	java/lang/StringBuilder
+    //   880: dup
+    //   881: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   884: astore_2
     //   885: aload_2
-    //   886: aload_3
-    //   887: getfield 795	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   890: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   893: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   896: pop
-    //   897: aload_1
-    //   898: aload_2
-    //   899: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   902: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   905: pop
-    //   906: new 221	java/lang/StringBuilder
-    //   909: dup
-    //   910: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   913: astore_2
-    //   914: aload_2
-    //   915: ldc_w 820
-    //   918: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   921: pop
+    //   886: ldc_w 847
+    //   889: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   892: pop
+    //   893: aload_2
+    //   894: aload_3
+    //   895: getfield 824	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   898: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   901: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   904: pop
+    //   905: aload_1
+    //   906: aload_2
+    //   907: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   910: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   913: pop
+    //   914: new 245	java/lang/StringBuilder
+    //   917: dup
+    //   918: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   921: astore_2
     //   922: aload_2
-    //   923: aload_3
-    //   924: getfield 798	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_frequence	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   927: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   930: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   933: pop
-    //   934: aload_1
-    //   935: aload_2
-    //   936: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   939: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   942: pop
-    //   943: new 221	java/lang/StringBuilder
-    //   946: dup
-    //   947: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   950: astore_2
-    //   951: aload_2
-    //   952: ldc_w 822
-    //   955: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   958: pop
+    //   923: ldc_w 849
+    //   926: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   929: pop
+    //   930: aload_2
+    //   931: aload_3
+    //   932: getfield 827	tencent/im/oidb/qfind/QFind$RspReportDevs:report_often_frequence	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   935: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   938: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   941: pop
+    //   942: aload_1
+    //   943: aload_2
+    //   944: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   947: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   950: pop
+    //   951: new 245	java/lang/StringBuilder
+    //   954: dup
+    //   955: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   958: astore_2
     //   959: aload_2
-    //   960: aload_3
-    //   961: getfield 825	tencent/im/oidb/qfind/QFind$RspReportDevs:freq_limit_report_any_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   964: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   967: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   970: pop
-    //   971: aload_1
-    //   972: aload_2
-    //   973: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   976: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   979: pop
-    //   980: new 221	java/lang/StringBuilder
-    //   983: dup
-    //   984: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   987: astore_2
-    //   988: aload_2
-    //   989: ldc_w 827
-    //   992: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   995: pop
+    //   960: ldc_w 851
+    //   963: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   966: pop
+    //   967: aload_2
+    //   968: aload_3
+    //   969: getfield 854	tencent/im/oidb/qfind/QFind$RspReportDevs:freq_limit_report_any_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   972: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   975: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   978: pop
+    //   979: aload_1
+    //   980: aload_2
+    //   981: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   984: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   987: pop
+    //   988: new 245	java/lang/StringBuilder
+    //   991: dup
+    //   992: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   995: astore_2
     //   996: aload_2
-    //   997: aload_3
-    //   998: getfield 830	tencent/im/oidb/qfind/QFind$RspReportDevs:force_report_lbs	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1001: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1004: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1007: pop
-    //   1008: aload_1
-    //   1009: aload_2
-    //   1010: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1013: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   1016: pop
-    //   1017: new 221	java/lang/StringBuilder
-    //   1020: dup
-    //   1021: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   1024: astore_2
-    //   1025: aload_2
-    //   1026: ldc_w 832
-    //   1029: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1032: pop
+    //   997: ldc_w 856
+    //   1000: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1003: pop
+    //   1004: aload_2
+    //   1005: aload_3
+    //   1006: getfield 859	tencent/im/oidb/qfind/QFind$RspReportDevs:force_report_lbs	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1009: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1012: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1015: pop
+    //   1016: aload_1
+    //   1017: aload_2
+    //   1018: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1021: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1024: pop
+    //   1025: new 245	java/lang/StringBuilder
+    //   1028: dup
+    //   1029: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   1032: astore_2
     //   1033: aload_2
-    //   1034: aload_3
-    //   1035: getfield 801	tencent/im/oidb/qfind/QFind$RspReportDevs:force_report_lbs_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1038: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1041: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1044: pop
-    //   1045: aload_1
-    //   1046: aload_2
-    //   1047: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1050: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   1053: pop
-    //   1054: new 221	java/lang/StringBuilder
-    //   1057: dup
-    //   1058: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   1061: astore_2
-    //   1062: aload_2
-    //   1063: ldc_w 834
-    //   1066: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1069: pop
+    //   1034: ldc_w 861
+    //   1037: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1040: pop
+    //   1041: aload_2
+    //   1042: aload_3
+    //   1043: getfield 830	tencent/im/oidb/qfind/QFind$RspReportDevs:force_report_lbs_period	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1046: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1049: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1052: pop
+    //   1053: aload_1
+    //   1054: aload_2
+    //   1055: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1058: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1061: pop
+    //   1062: new 245	java/lang/StringBuilder
+    //   1065: dup
+    //   1066: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   1069: astore_2
     //   1070: aload_2
-    //   1071: aload_3
-    //   1072: getfield 804	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_lost_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1075: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1078: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1081: pop
-    //   1082: aload_1
-    //   1083: aload_2
-    //   1084: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1087: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   1090: pop
-    //   1091: new 221	java/lang/StringBuilder
-    //   1094: dup
-    //   1095: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   1098: astore_2
-    //   1099: aload_2
-    //   1100: ldc_w 836
-    //   1103: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1106: pop
+    //   1071: ldc_w 863
+    //   1074: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1077: pop
+    //   1078: aload_2
+    //   1079: aload_3
+    //   1080: getfield 833	tencent/im/oidb/qfind/QFind$RspReportDevs:report_same_lost_devs_interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1083: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1086: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1089: pop
+    //   1090: aload_1
+    //   1091: aload_2
+    //   1092: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1095: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1098: pop
+    //   1099: new 245	java/lang/StringBuilder
+    //   1102: dup
+    //   1103: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   1106: astore_2
     //   1107: aload_2
-    //   1108: aload_3
-    //   1109: getfield 839	tencent/im/oidb/qfind/QFind$RspReportDevs:report_max_dev_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1112: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1115: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1118: pop
-    //   1119: aload_1
-    //   1120: aload_2
-    //   1121: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1124: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   1127: pop
-    //   1128: aload_1
-    //   1129: ldc_w 841
-    //   1132: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1108: ldc_w 865
+    //   1111: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1114: pop
+    //   1115: aload_2
+    //   1116: aload_3
+    //   1117: getfield 868	tencent/im/oidb/qfind/QFind$RspReportDevs:report_max_dev_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1120: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1123: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1126: pop
+    //   1127: aload_1
+    //   1128: aload_2
+    //   1129: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1132: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   1135: pop
-    //   1136: aload_3
-    //   1137: getfield 771	tencent/im/oidb/qfind/QFind$RspReportDevs:lost_devs	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1140: invokevirtual 756	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1143: invokeinterface 757 1 0
-    //   1148: astore_2
-    //   1149: aload_2
-    //   1150: invokeinterface 740 1 0
-    //   1155: ifeq +102 -> 1257
-    //   1158: aload_2
-    //   1159: invokeinterface 744 1 0
-    //   1164: checkcast 342	tencent/im/oidb/qfind/QFind$DeviceInfo
-    //   1167: astore_3
-    //   1168: new 221	java/lang/StringBuilder
-    //   1171: dup
-    //   1172: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   1175: astore 6
-    //   1177: aload 6
-    //   1179: aload_3
-    //   1180: getfield 347	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1183: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1186: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1189: pop
-    //   1190: aload 6
-    //   1192: ldc 245
-    //   1194: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1136: aload_1
+    //   1137: ldc_w 870
+    //   1140: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1143: pop
+    //   1144: aload_3
+    //   1145: getfield 800	tencent/im/oidb/qfind/QFind$RspReportDevs:lost_devs	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1148: invokevirtual 785	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1151: invokeinterface 786 1 0
+    //   1156: astore_2
+    //   1157: aload_2
+    //   1158: invokeinterface 769 1 0
+    //   1163: ifeq +104 -> 1267
+    //   1166: aload_2
+    //   1167: invokeinterface 773 1 0
+    //   1172: checkcast 366	tencent/im/oidb/qfind/QFind$DeviceInfo
+    //   1175: astore_3
+    //   1176: new 245	java/lang/StringBuilder
+    //   1179: dup
+    //   1180: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   1183: astore 6
+    //   1185: aload 6
+    //   1187: aload_3
+    //   1188: getfield 371	tencent/im/oidb/qfind/QFind$DeviceInfo:pid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1191: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1194: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1197: pop
     //   1198: aload 6
-    //   1200: aload_3
-    //   1201: getfield 367	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   1204: invokevirtual 761	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   1207: invokevirtual 764	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   1210: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1213: pop
-    //   1214: aload 6
-    //   1216: ldc 245
-    //   1218: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1221: pop
-    //   1222: aload 6
-    //   1224: aload_3
-    //   1225: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:timestamp	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   1228: invokevirtual 758	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   1231: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1234: pop
-    //   1235: aload 6
-    //   1237: ldc_w 323
-    //   1240: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1243: pop
-    //   1244: aload_1
+    //   1200: ldc_w 269
+    //   1203: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1206: pop
+    //   1207: aload 6
+    //   1209: aload_3
+    //   1210: getfield 391	tencent/im/oidb/qfind/QFind$DeviceInfo:sn	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   1213: invokevirtual 790	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   1216: invokevirtual 793	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   1219: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1222: pop
+    //   1223: aload 6
+    //   1225: ldc_w 269
+    //   1228: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1231: pop
+    //   1232: aload 6
+    //   1234: aload_3
+    //   1235: getfield 415	tencent/im/oidb/qfind/QFind$DeviceInfo:timestamp	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   1238: invokevirtual 787	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   1241: invokevirtual 255	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1244: pop
     //   1245: aload 6
-    //   1247: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1250: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1247: ldc_w 348
+    //   1250: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1253: pop
-    //   1254: goto -105 -> 1149
-    //   1257: aload_1
-    //   1258: ldc_w 843
-    //   1261: invokevirtual 812	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   1264: pop
-    //   1265: new 221	java/lang/StringBuilder
-    //   1268: dup
-    //   1269: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   1272: astore_2
-    //   1273: aload_2
-    //   1274: ldc_w 845
-    //   1277: invokevirtual 228	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1280: pop
-    //   1281: aload_2
-    //   1282: aload_1
-    //   1283: invokevirtual 556	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1286: pop
-    //   1287: ldc 233
-    //   1289: iconst_2
-    //   1290: aload_2
-    //   1291: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1294: invokestatic 302	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1297: goto +12 -> 1309
-    //   1300: astore_1
-    //   1301: goto +14 -> 1315
-    //   1304: astore_1
-    //   1305: aload_1
-    //   1306: invokevirtual 165	java/lang/Throwable:printStackTrace	()V
-    //   1309: aload_0
-    //   1310: iconst_3
-    //   1311: invokespecial 504	com/tencent/device/qfind/QFindBLEScanMgr:a	(I)V
-    //   1314: return
-    //   1315: aload_0
-    //   1316: iconst_3
-    //   1317: invokespecial 504	com/tencent/device/qfind/QFindBLEScanMgr:a	(I)V
-    //   1320: goto +5 -> 1325
-    //   1323: aload_1
-    //   1324: athrow
-    //   1325: goto -2 -> 1323
+    //   1254: aload_1
+    //   1255: aload 6
+    //   1257: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1260: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1263: pop
+    //   1264: goto -107 -> 1157
+    //   1267: aload_1
+    //   1268: ldc_w 872
+    //   1271: invokevirtual 841	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   1274: pop
+    //   1275: new 245	java/lang/StringBuilder
+    //   1278: dup
+    //   1279: invokespecial 246	java/lang/StringBuilder:<init>	()V
+    //   1282: astore_2
+    //   1283: aload_2
+    //   1284: ldc_w 874
+    //   1287: invokevirtual 252	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1290: pop
+    //   1291: aload_2
+    //   1292: aload_1
+    //   1293: invokevirtual 581	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1296: pop
+    //   1297: ldc_w 257
+    //   1300: iconst_2
+    //   1301: aload_2
+    //   1302: invokevirtual 261	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1305: invokestatic 328	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1308: goto +12 -> 1320
+    //   1311: astore_1
+    //   1312: goto +14 -> 1326
+    //   1315: astore_1
+    //   1316: aload_1
+    //   1317: invokevirtual 189	java/lang/Throwable:printStackTrace	()V
+    //   1320: aload_0
+    //   1321: iconst_3
+    //   1322: invokespecial 526	com/tencent/device/qfind/QFindBLEScanMgr:a	(I)V
+    //   1325: return
+    //   1326: aload_0
+    //   1327: iconst_3
+    //   1328: invokespecial 526	com/tencent/device/qfind/QFindBLEScanMgr:a	(I)V
+    //   1331: goto +5 -> 1336
+    //   1334: aload_1
+    //   1335: athrow
+    //   1336: goto -2 -> 1334
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1328	0	this	QFindBLEScanMgr
-    //   0	1328	1	paramToServiceMsg	ToServiceMsg
-    //   0	1328	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
-    //   0	1328	3	paramObject	Object
-    //   48	51	4	k	int
+    //   0	1339	0	this	QFindBLEScanMgr
+    //   0	1339	1	paramToServiceMsg	ToServiceMsg
+    //   0	1339	2	paramFromServiceMsg	com.tencent.qphone.base.remote.FromServiceMsg
+    //   0	1339	3	paramObject	Object
+    //   48	51	4	i1	int
     //   141	3	5	bool	boolean
-    //   7	1239	6	localObject1	Object
-    //   132	136	7	localIterator	java.util.Iterator
-    //   158	371	8	localObject2	Object
-    //   167	333	9	localObject3	Object
+    //   7	1249	6	localObject1	Object
+    //   132	138	7	localIterator	java.util.Iterator
+    //   158	379	8	localObject2	Object
+    //   167	341	9	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   0	63	1300	finally
-    //   63	89	1300	finally
-    //   89	98	1300	finally
-    //   103	134	1300	finally
-    //   134	143	1300	finally
-    //   148	240	1300	finally
-    //   243	257	1300	finally
-    //   257	364	1300	finally
-    //   364	542	1300	finally
-    //   545	550	1300	finally
-    //   550	580	1300	finally
-    //   583	588	1300	finally
-    //   588	633	1300	finally
-    //   636	744	1300	finally
-    //   744	1149	1300	finally
-    //   1149	1254	1300	finally
-    //   1257	1297	1300	finally
-    //   1305	1309	1300	finally
-    //   0	63	1304	java/lang/Throwable
-    //   63	89	1304	java/lang/Throwable
-    //   89	98	1304	java/lang/Throwable
-    //   103	134	1304	java/lang/Throwable
-    //   134	143	1304	java/lang/Throwable
-    //   148	240	1304	java/lang/Throwable
-    //   243	257	1304	java/lang/Throwable
-    //   257	364	1304	java/lang/Throwable
-    //   364	542	1304	java/lang/Throwable
-    //   545	550	1304	java/lang/Throwable
-    //   550	580	1304	java/lang/Throwable
-    //   583	588	1304	java/lang/Throwable
-    //   588	633	1304	java/lang/Throwable
-    //   636	744	1304	java/lang/Throwable
-    //   744	1149	1304	java/lang/Throwable
-    //   1149	1254	1304	java/lang/Throwable
-    //   1257	1297	1304	java/lang/Throwable
+    //   0	63	1311	finally
+    //   63	89	1311	finally
+    //   89	98	1311	finally
+    //   103	134	1311	finally
+    //   134	143	1311	finally
+    //   148	242	1311	finally
+    //   245	259	1311	finally
+    //   259	368	1311	finally
+    //   368	550	1311	finally
+    //   553	558	1311	finally
+    //   558	588	1311	finally
+    //   591	596	1311	finally
+    //   596	641	1311	finally
+    //   644	752	1311	finally
+    //   752	1157	1311	finally
+    //   1157	1264	1311	finally
+    //   1267	1308	1311	finally
+    //   1316	1320	1311	finally
+    //   0	63	1315	java/lang/Throwable
+    //   63	89	1315	java/lang/Throwable
+    //   89	98	1315	java/lang/Throwable
+    //   103	134	1315	java/lang/Throwable
+    //   134	143	1315	java/lang/Throwable
+    //   148	242	1315	java/lang/Throwable
+    //   245	259	1315	java/lang/Throwable
+    //   259	368	1315	java/lang/Throwable
+    //   368	550	1315	java/lang/Throwable
+    //   553	558	1315	java/lang/Throwable
+    //   558	588	1315	java/lang/Throwable
+    //   591	596	1315	java/lang/Throwable
+    //   596	641	1315	java/lang/Throwable
+    //   644	752	1315	java/lang/Throwable
+    //   752	1157	1315	java/lang/Throwable
+    //   1157	1264	1315	java/lang/Throwable
+    //   1267	1308	1315	java/lang/Throwable
   }
   
   public void b()
   {
-    a();
-    Object localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (!a()) {
+      return;
+    }
+    a(false);
+    this.o = false;
+  }
+  
+  public void c()
+  {
+    b();
+    Object localObject = this.w;
     if (localObject != null)
     {
       ((MqqHandler)localObject).removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_MqqOsMqqHandler.getLooper().quit();
+      this.w.getLooper().quit();
     }
-    localObject = this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$NotifyReceiver;
+    localObject = this.G;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver((BroadcastReceiver)localObject);
-      this.jdField_a_of_type_ComTencentDeviceQfindQFindBLEScanMgr$NotifyReceiver = null;
+      this.H.unregisterReceiver((BroadcastReceiver)localObject);
+      this.G = null;
     }
-    localObject = this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter;
+    localObject = this.j;
     if (localObject != null)
     {
-      ((BluetoothAdapter)localObject).stopLeScan(this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter = null;
+      ((BluetoothAdapter)localObject).stopLeScan(this.k);
+      this.j = null;
     }
-    if (this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback != null) {
-      this.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback = null;
+    if (this.k != null) {
+      this.k = null;
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    localObject = this.B;
     if (localObject != null)
     {
       ((HandlerThread)localObject).quitSafely();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.B = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    if (this.v != null) {
+      this.v = null;
     }
-    QFindGattManager.b();
+    QFindGattManager.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr
  * JD-Core Version:    0.7.0.1
  */

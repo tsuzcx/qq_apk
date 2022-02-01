@@ -93,7 +93,7 @@ public class TroopManagerBizObserver
       return;
     }
     paramObject = (TroopManagerBizObserver.EditTroopLocationRet)paramObject;
-    onEditTroopLocationRet(paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean, paramObject.jdField_a_of_type_JavaLangString, paramObject.b, paramObject.c);
+    onEditTroopLocationRet(paramObject.c, paramObject.a, paramObject.d, paramObject.b, paramObject.e, paramObject.f);
   }
   
   private void onUpdate_getGlobalTroopLevel(int paramInt, boolean paramBoolean, Object paramObject)
@@ -341,7 +341,7 @@ public class TroopManagerBizObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver
  * JD-Core Version:    0.7.0.1
  */

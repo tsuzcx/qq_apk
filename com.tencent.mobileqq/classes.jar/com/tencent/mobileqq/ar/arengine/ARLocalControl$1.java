@@ -14,27 +14,27 @@ class ARLocalControl$1
     if ((ARLocalControl.a(this.this$0) & 0x4) != 0L)
     {
       ??? = new ARFacePreviewResample();
-      ((ARFacePreviewResample)???).a(this.jdField_a_of_type_Int, this.b, 17);
+      ((ARFacePreviewResample)???).a(this.a, this.b, 17);
       int i = ((ARFacePreviewResample)???).a();
       int j = ((ARFacePreviewResample)???).b();
-      this.this$0.a = new ARLocalFaceRecog();
-      this.this$0.a.a((ARFacePreviewResample)???);
-      if (!this.this$0.a.a(this.jdField_a_of_type_AndroidContentContext, i, j, this.jdField_a_of_type_ComTencentMobileqqArAidlARScanStarFaceConfigInfo, this.this$0)) {
-        this.this$0.a = null;
+      this.this$0.b = new ARLocalFaceRecog();
+      this.this$0.b.a((ARFacePreviewResample)???);
+      if (!this.this$0.b.a(this.c, i, j, this.d, this.this$0)) {
+        this.this$0.b = null;
       }
     }
-    synchronized (ARLocalControl.a())
+    synchronized (ARLocalControl.e())
     {
       ARLocalControl.a(this.this$0, true);
-      ARLocalControl.a().notifyAll();
-      QLog.i("AREngine_ARLocalControl", 1, String.format("initFaceRecogAsync end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) }));
+      ARLocalControl.e().notifyAll();
+      QLog.i("AREngine_ARLocalControl", 1, String.format("initFaceRecogAsync end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.e) }));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalControl.1
  * JD-Core Version:    0.7.0.1
  */

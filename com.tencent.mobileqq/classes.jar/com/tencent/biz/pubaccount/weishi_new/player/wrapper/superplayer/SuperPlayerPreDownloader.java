@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer;
 
+import android.util.SparseArray;
 import com.tencent.biz.pubaccount.weishi_new.player.wrapper.AbsWSPlayerInfo;
 import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerPreDownloader;
 import com.tencent.biz.pubaccount.weishi_new.player.wrapper.IWSPlayerPreDownloader.Listener;
@@ -11,13 +12,14 @@ import com.tencent.superplayer.api.SuperPlayerVideoInfo;
 public class SuperPlayerPreDownloader
   implements IWSPlayerPreDownloader<Object, SuperPlayerVideoInfo>, ISPlayerPreDownloader.Listener
 {
-  private IWSPlayerPreDownloader.Listener jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
-  private ISPlayerPreDownloader jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+  private IWSPlayerPreDownloader.Listener a;
+  private final ISPlayerPreDownloader b;
+  private final SparseArray<AbsWSPlayerInfo<Object, SuperPlayerVideoInfo>> c = new SparseArray();
   
   public SuperPlayerPreDownloader(ISPlayerPreDownloader paramISPlayerPreDownloader)
   {
-    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = paramISPlayerPreDownloader;
-    paramISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    this.b = paramISPlayerPreDownloader;
+    paramISPlayerPreDownloader = this.b;
     if (paramISPlayerPreDownloader != null) {
       paramISPlayerPreDownloader.setOnPreDownloadListener(this);
     }
@@ -25,7 +27,7 @@ public class SuperPlayerPreDownloader
   
   public void a()
   {
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.b;
     if (localISPlayerPreDownloader == null) {
       return;
     }
@@ -34,40 +36,43 @@ public class SuperPlayerPreDownloader
   
   public void a(AbsWSPlayerInfo<Object, SuperPlayerVideoInfo> paramAbsWSPlayerInfo)
   {
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.b;
     if (localISPlayerPreDownloader != null)
     {
       if (paramAbsWSPlayerInfo == null) {
         return;
       }
-      localISPlayerPreDownloader.startPreDownload((SuperPlayerVideoInfo)paramAbsWSPlayerInfo.d(), paramAbsWSPlayerInfo.b, 2000L);
+      int i = localISPlayerPreDownloader.startPreDownload((SuperPlayerVideoInfo)paramAbsWSPlayerInfo.b(), paramAbsWSPlayerInfo.d, 2000L);
+      this.c.put(i, paramAbsWSPlayerInfo);
     }
   }
   
   public void a(IWSPlayerPreDownloader.Listener paramListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener = paramListener;
-  }
-  
-  public boolean a(AbsWSPlayerInfo<Object, SuperPlayerVideoInfo> paramAbsWSPlayerInfo)
-  {
-    return false;
+    this.a = paramListener;
   }
   
   public void b()
   {
-    ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    ISPlayerPreDownloader localISPlayerPreDownloader = this.b;
     if (localISPlayerPreDownloader == null) {
       return;
     }
     localISPlayerPreDownloader.destory();
   }
   
-  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2) {}
+  public boolean b(AbsWSPlayerInfo<Object, SuperPlayerVideoInfo> paramAbsWSPlayerInfo)
+  {
+    return false;
+  }
+  
+  public void onInfo(int paramInt, long paramLong1, long paramLong2, Object paramObject) {}
+  
+  public void onPrepareDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString) {}
   
   public void onPrepareError(int paramInt)
   {
-    IWSPlayerPreDownloader.Listener localListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
+    IWSPlayerPreDownloader.Listener localListener = this.a;
     if (localListener == null) {
       return;
     }
@@ -80,16 +85,22 @@ public class SuperPlayerPreDownloader
     ((StringBuilder)localObject).append("[SuperPlayerPreDownloader.java][onPrepareSuccess] taskId:");
     ((StringBuilder)localObject).append(paramInt);
     WSLog.b("SuperPlayerPreDownloader", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
-    if (localObject == null) {
+    IWSPlayerPreDownloader.Listener localListener = this.a;
+    if (localListener == null) {
       return;
     }
-    ((IWSPlayerPreDownloader.Listener)localObject).a("", "");
+    localObject = (AbsWSPlayerInfo)this.c.get(paramInt);
+    if (localObject != null) {
+      localObject = ((AbsWSPlayerInfo)localObject).b;
+    } else {
+      localObject = "";
+    }
+    localListener.a((String)localObject, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerPreDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class QQComicTabBarView$4$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$4.this$0.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.b.this$0.setBackgroundDrawable(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.4.1
  * JD-Core Version:    0.7.0.1
  */

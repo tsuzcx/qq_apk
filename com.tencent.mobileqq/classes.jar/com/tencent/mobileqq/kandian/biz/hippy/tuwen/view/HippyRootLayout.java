@@ -13,9 +13,9 @@ import com.tencent.qphone.base.util.QLog;
 public class HippyRootLayout
   extends FrameLayout
 {
-  private static final int EMPTY_HEIGHT = ViewUtils.a(250.0F);
-  private static final int ERROR_HEIGHT = ViewUtils.a(250.0F);
-  private static final int LOADING_HEIGHT = ViewUtils.a(50.0F);
+  private static final int EMPTY_HEIGHT = ViewUtils.dip2px(250.0F);
+  private static final int ERROR_HEIGHT = ViewUtils.dip2px(250.0F);
+  private static final int LOADING_HEIGHT = ViewUtils.dip2px(250.0F);
   private static final int MIN_HEIGHT = LOADING_HEIGHT;
   private static final int STATUS_EMPTY = 2;
   private static final int STATUS_ERROR = 3;
@@ -78,7 +78,7 @@ public class HippyRootLayout
   private void setDesiredHeight(int paramInt)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("setDesiredHeight:desiredHeight=");
+    ((StringBuilder)localObject).append("#setDesiredHeight: desiredHeight=");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("HippyRootLayout", 1, ((StringBuilder)localObject).toString());
     int j = MIN_HEIGHT;
@@ -86,13 +86,16 @@ public class HippyRootLayout
     if (paramInt <= j) {
       i = j;
     }
-    if (this.desiredHeight == i) {
+    if (this.desiredHeight == i)
+    {
+      QLog.d("HippyRootLayout", 1, "#setDesiredHeight: desiredHeight is not update");
       return;
     }
     this.desiredHeight = i;
     localObject = getLayoutParams();
     if (localObject != null)
     {
+      QLog.d("HippyRootLayout", 1, "#setDesiredHeight: requestLayout");
       ((ViewGroup.LayoutParams)localObject).height = this.desiredHeight;
       forceLayout();
       requestLayout();
@@ -153,7 +156,7 @@ public class HippyRootLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.view.HippyRootLayout
  * JD-Core Version:    0.7.0.1
  */

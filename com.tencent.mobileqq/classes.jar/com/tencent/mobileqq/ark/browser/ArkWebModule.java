@@ -52,42 +52,30 @@ import org.json.JSONObject;
 public class ArkWebModule
   extends AbsWVModule
 {
-  private Dialog jdField_a_of_type_AndroidAppDialog = null;
-  private APICallback jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback = null;
-  private ArkWebModule.OpenAppInfo jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo = new ArkWebModule.OpenAppInfo(null);
-  private String jdField_a_of_type_JavaLangString = null;
-  private ConcurrentHashMap<String, String> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private APICallback jdField_b_of_type_ComTencentMobileqqDoraemonAPICallback = null;
-  private String jdField_b_of_type_JavaLangString = null;
-  private ConcurrentHashMap<String, Integer> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_b_of_type_Boolean = false;
-  private String c = null;
-  private String d = null;
+  private Dialog c = null;
+  private boolean d = false;
   private String e = null;
+  private String f = null;
+  private String g = null;
+  private String h = null;
+  private String i = null;
+  private ConcurrentHashMap<String, String> j = new ConcurrentHashMap();
+  private boolean k = false;
+  private APICallback l = null;
+  private ArkWebModule.OpenAppInfo m = new ArkWebModule.OpenAppInfo(null);
+  private ConcurrentHashMap<String, Integer> n = new ConcurrentHashMap();
+  private APICallback o = null;
   
   private SwiftBrowserSetting a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat != null)
+    if (this.b != null)
     {
-      WebViewFragment localWebViewFragment = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+      WebViewFragment localWebViewFragment = this.b.e();
       if (localWebViewFragment != null) {
         return (SwiftBrowserSetting)localWebViewFragment.getComponentProvider().a(paramInt);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)) {
-        return (SwiftBrowserSetting)((SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a()).getComponentProvider().a(paramInt);
-      }
-    }
-    return null;
-  }
-  
-  private String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat != null)
-    {
-      WebViewFragment localWebViewFragment = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
-      if (localWebViewFragment != null) {
-        return localWebViewFragment.getCurrentUrl();
+      if ((this.b.c() instanceof SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)) {
+        return (SwiftBrowserSetting)((SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter)this.b.c()).getComponentProvider().a(paramInt);
       }
     }
     return null;
@@ -95,7 +83,7 @@ public class ArkWebModule
   
   private void a(Intent paramIntent, byte paramByte)
   {
-    WebViewFragment localWebViewFragment = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    WebViewFragment localWebViewFragment = this.b.e();
     if (localWebViewFragment != null)
     {
       localWebViewFragment.startActivityForResult(paramIntent, paramByte);
@@ -116,67 +104,67 @@ public class ArkWebModule
       QLog.d("ArkWebModule", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = new AppLaucherHelper();
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    AppInterface localAppInterface = this.b.b();
     if (localAppInterface == null) {
       return;
     }
-    int j = 268435456;
+    int i2 = 268435456;
     try
     {
-      k = Integer.parseInt(paramString4);
-      if ((k & 0x4000000) == 67108864) {
-        j = 335544320;
+      i3 = Integer.parseInt(paramString4);
+      if ((i3 & 0x4000000) == 67108864) {
+        i2 = 335544320;
       }
-      i = j;
-      if ((k & 0x20000000) == 536870912) {
-        i = j | 0x20000000;
+      i1 = i2;
+      if ((i3 & 0x20000000) == 536870912) {
+        i1 = i2 | 0x20000000;
       }
-      j = i;
-      if ((k & 0x400000) == 4194304) {
-        j = i | 0x400000;
+      i2 = i1;
+      if ((i3 & 0x400000) == 4194304) {
+        i2 = i1 | 0x400000;
       }
-      i = j;
+      i1 = i2;
     }
     catch (Exception paramString4)
     {
-      int k;
-      int i;
+      int i3;
+      int i1;
       label142:
       Object localObject2;
       boolean bool;
       Intent localIntent;
       break label142;
     }
-    i = 268435456;
+    i1 = 268435456;
     ReportController.b(null, "CliOper", "", "", "Game", "Launch_game", 0, 0, paramString1, "", "", "");
-    paramString4 = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    paramString4 = this.b.c();
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("tencentwtlogin");
     ((StringBuilder)localObject2).append(paramString1);
     ((StringBuilder)localObject2).append("://");
     localObject2 = ((StringBuilder)localObject2).toString();
     bool = "wtlogin".equals(paramString5);
-    k = 0;
-    j = k;
+    i3 = 0;
+    i2 = i3;
     if (bool)
     {
       paramString5 = paramString4.getPackageManager();
       localIntent = new Intent("android.intent.action.VIEW");
       localIntent.setData(Uri.parse((String)localObject2));
-      j = k;
+      i2 = i3;
       if (paramString5 != null)
       {
-        j = k;
+        i2 = i3;
         if (paramString5.queryIntentActivities(localIntent, 0).size() > 0) {
-          j = 1;
+          i2 = 1;
         }
       }
     }
-    if (j != 0)
+    if (i2 != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() != null)
+      if (this.b.a() != null)
       {
-        paramString2 = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a().getUrl();
+        paramString2 = this.b.a().getUrl();
       }
       else
       {
@@ -185,12 +173,12 @@ public class ArkWebModule
         }
         paramString2 = "";
       }
-      ((AppLaucherHelper)localObject1).a((String)localObject2, paramString4, paramString2, localAppInterface, paramString1, paramString3, i, paramString6);
+      ((AppLaucherHelper)localObject1).a((String)localObject2, paramString4, paramString2, localAppInterface, paramString1, paramString3, i1, paramString6);
       return;
     }
     if (paramString4 != null)
     {
-      ((AppLaucherHelper)localObject1).a(localAppInterface, paramString4, paramString1, paramString2, paramString3, i);
+      ((AppLaucherHelper)localObject1).a(localAppInterface, paramString4, paramString1, paramString2, paramString3, i1);
       return;
     }
     QLog.e("ArkWebModule", 1, "launchAppWithTokens fail for context is null");
@@ -198,9 +186,9 @@ public class ArkWebModule
   
   private void a(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.k)
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "no auth");
+      DoraemonUtil.a(this.l, -1, "no auth");
       return;
     }
     String str = String.format("%d", new Object[] { Integer.valueOf(ark.arkGetPlatformVersion()) });
@@ -223,7 +211,7 @@ public class ArkWebModule
       QLog.e("ArkWebModule", 1, "decodeArkH5Config, keywordCfgJsonStr is empty");
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.j.clear();
     try
     {
       paramString = new JSONObject(paramString).optJSONObject("web-view-open-app-config");
@@ -235,7 +223,7 @@ public class ArkWebModule
           String str = (String)localIterator.next();
           Object localObject = paramString.get(str);
           if (((localObject instanceof String)) && (localObject != null)) {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, (String)localObject);
+            this.j.put(str, (String)localObject);
           }
         }
       }
@@ -249,79 +237,79 @@ public class ArkWebModule
   
   private void b(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.k)
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "no auth");
+      DoraemonUtil.a(this.l, -1, "no auth");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback = paramAPICallback;
-    paramAPICallback = this.jdField_a_of_type_AndroidAppDialog;
+    this.l = paramAPICallback;
+    paramAPICallback = this.c;
     if ((paramAPICallback != null) && (paramAPICallback.isShowing()))
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -5, "other");
+      DoraemonUtil.a(this.l, -5, "other");
       return;
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("appID");
-      this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("paramsStr");
-      this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.c = paramJSONObject.optString("packageName");
-      this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.d = paramJSONObject.optString("flags");
-      this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.g = paramJSONObject.optString("url");
+      this.m.a = paramJSONObject.optString("appID");
+      this.m.b = paramJSONObject.optString("paramsStr");
+      this.m.c = paramJSONObject.optString("packageName");
+      this.m.d = paramJSONObject.optString("flags");
+      this.m.g = paramJSONObject.optString("url");
     }
     catch (Exception paramJSONObject)
     {
       QLog.e("ArkWebModule", 1, String.format("get mOpenAppinfo json error, err=%s", new Object[] { paramJSONObject.getMessage() }));
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.m.a))
     {
       QLog.e("ArkWebModule", 1, "mOpenAppinfo.appId is null");
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -2, "param error");
+      DoraemonUtil.a(this.l, -2, "param error");
       return;
     }
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString))
+    if (this.n.containsKey(this.m.a))
     {
-      paramJSONObject = (Integer)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString);
+      paramJSONObject = (Integer)this.n.get(this.m.a);
       if (paramJSONObject != null)
       {
         if (paramJSONObject.intValue() == 1)
         {
-          paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
-          if (!PackageUtil.a(paramJSONObject, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.c))
+          paramJSONObject = this.b.c();
+          if (!PackageUtil.a(paramJSONObject, this.m.c))
           {
-            if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.g))
+            if (!TextUtils.isEmpty(this.m.g))
             {
               paramAPICallback = new Intent(paramJSONObject, QQBrowserActivity.class);
-              paramAPICallback.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.g);
+              paramAPICallback.putExtra("url", this.m.g);
               paramAPICallback.putExtra("fromArkAppDownload", true);
               paramJSONObject.startActivity(paramAPICallback);
             }
-            DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -4, "need to download");
+            DoraemonUtil.a(this.l, -4, "need to download");
             return;
           }
-          a(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.c, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.d, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.e, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.f);
-          DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, APIParam.a);
+          a(this.m.a, this.m.b, this.m.c, this.m.d, this.m.e, this.m.f);
+          DoraemonUtil.a(this.l, APIParam.a);
           return;
         }
         if (paramJSONObject.intValue() == 0)
         {
           d();
-          DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -3, "user canceled");
+          DoraemonUtil.a(this.l, -3, "user canceled");
           return;
         }
       }
     }
     c();
-    paramJSONObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    paramJSONObject = this.j;
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.keySet().iterator();
       while (paramJSONObject.hasNext())
       {
         paramAPICallback = (String)paramJSONObject.next();
-        if ((!TextUtils.isEmpty(this.c)) && (paramAPICallback.equals(this.c)))
+        if ((!TextUtils.isEmpty(this.g)) && (paramAPICallback.equals(this.g)))
         {
-          paramJSONObject = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramAPICallback);
+          paramJSONObject = (String)this.j.get(paramAPICallback);
           break label483;
         }
       }
@@ -330,47 +318,47 @@ public class ArkWebModule
     label483:
     if (paramJSONObject.equals("allow"))
     {
-      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
-      if (!PackageUtil.a(paramJSONObject, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.c))
+      paramJSONObject = this.b.c();
+      if (!PackageUtil.a(paramJSONObject, this.m.c))
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.g))
+        if (!TextUtils.isEmpty(this.m.g))
         {
           paramAPICallback = new Intent(paramJSONObject, QQBrowserActivity.class);
-          paramAPICallback.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.g);
+          paramAPICallback.putExtra("url", this.m.g);
           paramAPICallback.putExtra("fromArkAppDownload", true);
           paramJSONObject.startActivity(paramAPICallback);
         }
-        DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -4, "need to download");
+        DoraemonUtil.a(this.l, -4, "need to download");
         return;
       }
-      a(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.c, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.d, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.e, this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.f);
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, APIParam.a);
+      a(this.m.a, this.m.b, this.m.c, this.m.d, this.m.e, this.m.f);
+      DoraemonUtil.a(this.l, APIParam.a);
       return;
     }
     if (paramJSONObject.equals("ask"))
     {
-      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+      paramJSONObject = this.b.c();
       if (paramJSONObject != null)
       {
         if (paramJSONObject.isFinishing()) {
           return;
         }
-        paramAPICallback = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+        paramAPICallback = this.b.b();
         if (paramAPICallback == null) {
           return;
         }
         try
         {
-          long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqArkBrowserArkWebModule$OpenAppInfo.jdField_a_of_type_JavaLangString);
-          Share.a(paramAPICallback, this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a(), paramAPICallback.getAccount(), l, 2000L, new ArkWebModule.1(this, paramJSONObject));
+          long l1 = Long.parseLong(this.m.a);
+          Share.a(paramAPICallback, this.b.c(), paramAPICallback.getAccount(), l1, 2000L, new ArkWebModule.1(this, paramJSONObject));
           return;
         }
         catch (NumberFormatException paramAPICallback)
         {
           QLog.e("ArkWebModule", 1, String.format("mOpenAppinfo appid to Long error, err=%s", new Object[] { paramAPICallback.getMessage() }));
-          paramAPICallback = paramJSONObject.getString(2131690158);
-          a(String.format(paramJSONObject.getString(2131690159), new Object[] { paramAPICallback }));
-          this.jdField_a_of_type_AndroidAppDialog.show();
+          paramAPICallback = paramJSONObject.getString(2131887057);
+          a(String.format(paramJSONObject.getString(2131887058), new Object[] { paramAPICallback }));
+          this.c.show();
           return;
         }
       }
@@ -379,13 +367,13 @@ public class ArkWebModule
     if (paramJSONObject.equals("forbidden"))
     {
       d();
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -3, "user canceled");
+      DoraemonUtil.a(this.l, -3, "user canceled");
     }
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return;
     }
     try
@@ -396,7 +384,7 @@ public class ArkWebModule
     {
       QLog.e("ArkWebModule", 1, String.format("setupArkEnvironment error, err=%s", new Object[] { localException.getMessage() }));
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    Object localObject = this.b.e();
     if (localObject != null)
     {
       localObject = ((WebViewFragment)localObject).getArguments();
@@ -405,13 +393,13 @@ public class ArkWebModule
         localObject = ((Intent)((Bundle)localObject).getParcelable("intent")).getExtras();
         if (localObject != null)
         {
-          this.c = ((Bundle)localObject).getString("h5_ark_app_name");
-          this.jdField_a_of_type_JavaLangString = ((Bundle)localObject).getString("h5_ark_app_path");
-          this.jdField_b_of_type_JavaLangString = ((Bundle)localObject).getString("h5_ark_app_des");
+          this.g = ((Bundle)localObject).getString("h5_ark_app_name");
+          this.e = ((Bundle)localObject).getString("h5_ark_app_path");
+          this.f = ((Bundle)localObject).getString("h5_ark_app_des");
           b(((Bundle)localObject).getString("h5_ark_check_config"));
-          this.d = ((Bundle)localObject).getString("h5_ark_nation_code");
-          this.e = ((Bundle)localObject).getString("h5_ark_phone_number");
-          this.jdField_a_of_type_Boolean = true;
+          this.h = ((Bundle)localObject).getString("h5_ark_nation_code");
+          this.i = ((Bundle)localObject).getString("h5_ark_phone_number");
+          this.d = true;
         }
       }
     }
@@ -420,12 +408,12 @@ public class ArkWebModule
   private void c(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
     Object localObject = this;
-    if (!((ArkWebModule)localObject).jdField_b_of_type_Boolean)
+    if (!((ArkWebModule)localObject).k)
     {
-      DoraemonUtil.a(((ArkWebModule)localObject).jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "no auth");
+      DoraemonUtil.a(((ArkWebModule)localObject).l, -1, "no auth");
       return;
     }
-    localObject = ((ArkWebModule)localObject).jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    localObject = ((ArkWebModule)localObject).b.e();
     if (localObject == null)
     {
       DoraemonUtil.a(paramAPICallback, -3, "other");
@@ -460,7 +448,7 @@ public class ArkWebModule
       String str6;
       String str7;
       boolean bool;
-      float f;
+      float f1;
       label465:
       label472:
       label492:
@@ -478,7 +466,7 @@ public class ArkWebModule
         if (bool) {
           paramJSONObject = "0.0.0.1";
         }
-        f = ArkAppCenterUtil.a();
+        f1 = ArkAppCenterUtil.d();
       }
     }
     catch (Exception paramJSONObject)
@@ -487,7 +475,7 @@ public class ArkWebModule
     }
     try
     {
-      localObject = QQCustomArkDialog.AppInfo.a(str1, str2, paramJSONObject, str4, f, null, null);
+      localObject = QQCustomArkDialog.AppInfo.a(str1, str2, paramJSONObject, str4, f1, null, null);
       ((Bundle)localObject).putBoolean("forward_ark_app_direct", false);
       ((Bundle)localObject).putString("forward_ark_app_name", str1);
       ((Bundle)localObject).putString("forward_ark_app_view", str2);
@@ -499,11 +487,11 @@ public class ArkWebModule
       ((Bundle)localObject).putString("forward_ark_app_compat", str7);
       ((Bundle)localObject).putBoolean("forward_ark_from_h5", true);
       paramJSONObject = new Intent();
-      paramJSONObject.setClass(localSwiftBrowserShareMenuHandler.a, ForwardRecentActivity.class);
+      paramJSONObject.setClass(localSwiftBrowserShareMenuHandler.d, ForwardRecentActivity.class);
       paramJSONObject.putExtra("forward_type", 27);
       paramJSONObject.putExtra("is_ark_display_share", true);
       paramJSONObject.putExtras((Bundle)localObject);
-      ForwardBaseOption.a(localSwiftBrowserShareMenuHandler.a, paramJSONObject);
+      ForwardBaseOption.a(localSwiftBrowserShareMenuHandler.d, paramJSONObject);
       if (QLog.isColorLevel())
       {
         paramJSONObject = new StringBuilder();
@@ -525,7 +513,7 @@ public class ArkWebModule
     paramJSONObject = "other";
     try
     {
-      DoraemonUtil.a(this.jdField_b_of_type_ComTencentMobileqqDoraemonAPICallback, -2, "param error");
+      DoraemonUtil.a(this.o, -2, "param error");
       return;
     }
     catch (Exception paramJSONObject)
@@ -540,34 +528,34 @@ public class ArkWebModule
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat == null) {
+    if (this.b == null) {
       return;
     }
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    Activity localActivity = this.b.c();
     if ((localActivity != null) && (!localActivity.isFinishing())) {
-      QQToast.a(localActivity, HardCodeUtil.a(2131700947), 0).a();
+      QQToast.makeText(localActivity, HardCodeUtil.a(2131898971), 0).show();
     }
   }
   
   private void d(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
     Object localObject1 = this;
-    if (!((ArkWebModule)localObject1).jdField_b_of_type_Boolean)
+    if (!((ArkWebModule)localObject1).k)
     {
-      DoraemonUtil.a(((ArkWebModule)localObject1).jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "no auth");
+      DoraemonUtil.a(((ArkWebModule)localObject1).l, -1, "no auth");
       return;
     }
-    ((ArkWebModule)localObject1).jdField_b_of_type_ComTencentMobileqqDoraemonAPICallback = paramAPICallback;
+    ((ArkWebModule)localObject1).o = paramAPICallback;
     label539:
     for (;;)
     {
       try
       {
-        Object localObject2 = ((ArkWebModule)localObject1).jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+        Object localObject2 = ((ArkWebModule)localObject1).b.c();
         paramAPICallback = new Intent();
         localObject1 = paramJSONObject.optString("appName");
         String str1 = paramJSONObject.optString("toUin");
-        int i = paramJSONObject.optInt("uinType", 0);
+        int i1 = paramJSONObject.optInt("uinType", 0);
         String str2 = paramJSONObject.optString("toNickName");
         if (str1 == null) {
           break label539;
@@ -578,7 +566,7 @@ public class ArkWebModule
           {
             paramAPICallback.setClass((Context)localObject2, DirectForwardActivity.class);
             paramAPICallback.putExtra("toUin", str1);
-            paramAPICallback.putExtra("uinType", i);
+            paramAPICallback.putExtra("uinType", i1);
             paramAPICallback.putExtra("nickName", str2);
           }
           else
@@ -599,7 +587,7 @@ public class ArkWebModule
           paramJSONObject = paramJSONObject.optString("compatibleText");
           if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str2)))
           {
-            String str6 = a();
+            String str6 = e();
             paramAPICallback.putExtra("forward_ark_app_name", (String)localObject1);
             paramAPICallback.putExtra("forward_ark_app_view", str2);
             paramAPICallback.putExtra("forward_ark_app_desc", (String)localObject2);
@@ -613,18 +601,18 @@ public class ArkWebModule
             paramAPICallback.putExtra("appView", str2);
             paramAPICallback.putExtra("appMinVersion", str1);
             paramAPICallback.putExtra("metaData", str4);
-            paramAPICallback.putExtra("scale", ArkAppCenterUtil.a());
+            paramAPICallback.putExtra("scale", ArkAppCenterUtil.d());
             if (!TextUtils.isEmpty(str6)) {
               paramAPICallback.putExtra("forward_ark_h5_from_js", str6);
             }
             a(paramAPICallback, (byte)0);
             return;
           }
-          DoraemonUtil.a(this.jdField_b_of_type_ComTencentMobileqqDoraemonAPICallback, -2, "param error");
+          DoraemonUtil.a(this.o, -2, "param error");
           return;
         }
         catch (Exception paramJSONObject) {}
-        DoraemonUtil.a(this.jdField_b_of_type_ComTencentMobileqqDoraemonAPICallback, -4, "other");
+        DoraemonUtil.a(this.o, -4, "other");
       }
       catch (Exception paramJSONObject) {}
       paramAPICallback = new StringBuilder();
@@ -635,11 +623,23 @@ public class ArkWebModule
     }
   }
   
+  private String e()
+  {
+    if (this.b != null)
+    {
+      WebViewFragment localWebViewFragment = this.b.e();
+      if (localWebViewFragment != null) {
+        return localWebViewFragment.getCurrentUrl();
+      }
+    }
+    return null;
+  }
+  
   private void e(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.k)
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "no auth");
+      DoraemonUtil.a(this.l, -1, "no auth");
       return;
     }
     try
@@ -648,7 +648,7 @@ public class ArkWebModule
         break label121;
       }
       bool3 = paramJSONObject.optBoolean("enable");
-      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+      paramJSONObject = this.b.d();
       bool2 = true;
       bool1 = true;
       if ((paramJSONObject == null) || (!(paramJSONObject instanceof WebUiUtils.WebEventInterface))) {
@@ -696,9 +696,9 @@ public class ArkWebModule
   
   private void f(JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.k)
     {
-      DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback, -1, "no auth");
+      DoraemonUtil.a(this.l, -1, "no auth");
       return;
     }
     try
@@ -707,7 +707,7 @@ public class ArkWebModule
         break label121;
       }
       bool3 = paramJSONObject.optBoolean("enable");
-      paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+      paramJSONObject = this.b.d();
       bool2 = true;
       bool1 = true;
       if ((paramJSONObject == null) || (!(paramJSONObject instanceof WebUiUtils.WebEventInterface))) {
@@ -756,8 +756,8 @@ public class ArkWebModule
   protected void a()
   {
     super.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() instanceof ArkBrowserFragment)) {
-      this.jdField_b_of_type_Boolean = true;
+    if ((this.b.e() instanceof ArkBrowserFragment)) {
+      this.k = true;
     }
   }
   
@@ -765,7 +765,7 @@ public class ArkWebModule
   {
     if (paramByte == 0)
     {
-      paramIntent = this.jdField_b_of_type_ComTencentMobileqqDoraemonAPICallback;
+      paramIntent = this.o;
       if (paramIntent != null)
       {
         if (paramInt == -1)
@@ -780,26 +780,26 @@ public class ArkWebModule
   
   protected void a(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidAppDialog;
+    Object localObject = this.c;
     if (localObject == null)
     {
-      this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(BaseActivity.sTopActivity, 2131756189);
-      this.jdField_a_of_type_AndroidAppDialog.setContentView(2131558978);
-      localObject = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365648);
-      TextView localTextView1 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365644);
-      TextView localTextView2 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365633);
-      TextView localTextView3 = (TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365639);
-      ((TextView)localObject).setText(2131719632);
+      this.c = new ReportDialog(BaseActivity.sTopActivity, 2131953338);
+      this.c.setContentView(2131624611);
+      localObject = (TextView)this.c.findViewById(2131431880);
+      TextView localTextView1 = (TextView)this.c.findViewById(2131431876);
+      TextView localTextView2 = (TextView)this.c.findViewById(2131431864);
+      TextView localTextView3 = (TextView)this.c.findViewById(2131431870);
+      ((TextView)localObject).setText(2131917233);
       if (!TextUtils.isEmpty(paramString)) {
         localTextView1.setText(paramString);
       }
-      localTextView3.setText(2131720390);
+      localTextView3.setText(2131918066);
       localTextView3.setOnClickListener(new ArkWebModule.2(this));
       localTextView2.setOnClickListener(new ArkWebModule.3(this));
-      localTextView2.setText(2131690728);
+      localTextView2.setText(2131887648);
       return;
     }
-    localObject = (TextView)((Dialog)localObject).findViewById(2131365644);
+    localObject = (TextView)((Dialog)localObject).findViewById(2131431876);
     if (!TextUtils.isEmpty(paramString)) {
       ((TextView)localObject).setText(paramString);
     }
@@ -834,7 +834,7 @@ public class ArkWebModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkWebModule
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,12 @@ import java.util.ArrayList;
 public class GameGiftsImageView
   extends FrameLayout
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private FrameLayout jdField_b_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private FrameLayout jdField_c_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView;
+  private FrameLayout a;
+  private FrameLayout b;
+  private FrameLayout c;
+  private ImageView d;
+  private ImageView e;
+  private ImageView f;
   
   public GameGiftsImageView(Context paramContext)
   {
@@ -42,13 +42,13 @@ public class GameGiftsImageView
   
   private void a()
   {
-    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560210, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368347));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368348));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368349));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365133));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365136));
-    this.jdField_c_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131365139));
+    View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131626257, this);
+    this.d = ((ImageView)localView.findViewById(2131435224));
+    this.e = ((ImageView)localView.findViewById(2131435225));
+    this.f = ((ImageView)localView.findViewById(2131435226));
+    this.a = ((FrameLayout)localView.findViewById(2131431281));
+    this.b = ((FrameLayout)localView.findViewById(2131431284));
+    this.c = ((FrameLayout)localView.findViewById(2131431287));
   }
   
   private void a(ViewGroup paramViewGroup, ImageView paramImageView, String paramString)
@@ -67,11 +67,11 @@ public class GameGiftsImageView
     {
       String str = (String)paramArrayList.get(i);
       if (i == 0) {
-        a(this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetImageView, str);
+        a(this.a, this.d, str);
       } else if (i == 1) {
-        a(this.jdField_b_of_type_AndroidWidgetFrameLayout, this.jdField_b_of_type_AndroidWidgetImageView, str);
+        a(this.b, this.e, str);
       } else if (i == 2) {
-        a(this.jdField_c_of_type_AndroidWidgetFrameLayout, this.jdField_c_of_type_AndroidWidgetImageView, str);
+        a(this.c, this.f, str);
       }
       i += 1;
     }
@@ -79,7 +79,7 @@ public class GameGiftsImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.GameGiftsImageView
  * JD-Core Version:    0.7.0.1
  */

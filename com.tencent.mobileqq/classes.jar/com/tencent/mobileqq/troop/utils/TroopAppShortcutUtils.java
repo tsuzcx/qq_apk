@@ -58,19 +58,19 @@ public class TroopAppShortcutUtils
   {
     Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
     ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = false;
-    int i = ViewUtils.b(paramFloat1);
+    int i = ViewUtils.dpToPx(paramFloat1);
     ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
     ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = i;
-    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext.getResources().getDrawable(2130843873);
-    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext.getResources().getDrawable(2130843873);
+    ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = paramContext.getResources().getDrawable(2130844828);
+    ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = paramContext.getResources().getDrawable(2130844828);
     try
     {
       paramContext = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
       if (paramFloat2 > 0.0F) {}
       try
       {
-        paramContext.setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.b(paramFloat2)));
-        paramContext.setDecodeHandler(URLDrawableDecodeHandler.i);
+        paramContext.setTag(URLDrawableDecodeHandler.b(i, i, ViewUtils.dpToPx(paramFloat2)));
+        paramContext.setDecodeHandler(URLDrawableDecodeHandler.j);
         localObject1 = paramContext;
         if (paramContext.getStatus() != 2) {
           break label172;
@@ -110,7 +110,7 @@ public class TroopAppShortcutUtils
     } else {
       str1 = "2";
     }
-    paramString2 = paramString2.replace("$GCODE$", paramString1).replace("$CLIENTVER$", "android8.7.0").replace("$UIN$", paramQQAppInterface.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", str1);
+    paramString2 = paramString2.replace("$GCODE$", paramString1).replace("$CLIENTVER$", "android8.8.17").replace("$UIN$", paramQQAppInterface.getCurrentAccountUin()).replace("$LANG$", "zh_CN").replace("$GROUPAPPID$", Long.toString(paramLong)).replace("$ROLE$", str1);
     if (paramBoolean) {
       paramQQAppInterface = str2;
     } else {
@@ -135,7 +135,7 @@ public class TroopAppShortcutUtils
       int i = j;
       if (localObject != null)
       {
-        localObject = ((TroopManager)localObject).b(String.valueOf(paramLong));
+        localObject = ((TroopManager)localObject).f(String.valueOf(paramLong));
         l1 = l2;
         i = j;
         if (localObject != null)
@@ -185,7 +185,7 @@ public class TroopAppShortcutUtils
       int i = j;
       if (localObject != null)
       {
-        localObject = ((TroopManager)localObject).b(String.valueOf(paramLong));
+        localObject = ((TroopManager)localObject).f(String.valueOf(paramLong));
         l1 = l2;
         i = j;
         if (localObject != null)
@@ -235,12 +235,12 @@ public class TroopAppShortcutUtils
         catch (Exception paramString)
         {
           QLog.e("TroopAppShortcutUtils", 1, "fetchDrawable: failed. ", paramString);
-          paramImageView.setImageDrawable(paramContext.getResources().getDrawable(2130843873));
+          paramImageView.setImageDrawable(paramContext.getResources().getDrawable(2130844828));
           a(paramImageView, false, 0.0F);
           return;
         }
       }
-      paramImageView.setImageDrawable(paramContext.getResources().getDrawable(2130843873));
+      paramImageView.setImageDrawable(paramContext.getResources().getDrawable(2130844828));
       a(paramImageView, false, 0.0F);
     }
   }
@@ -274,11 +274,11 @@ public class TroopAppShortcutUtils
     }
     if (paramBoolean)
     {
-      int i = ViewUtils.b(0.5F);
+      int i = ViewUtils.dpToPx(0.5F);
       paramView.setPadding(i, i, i, i);
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setCornerRadius(ViewUtils.b(paramFloat));
-      localGradientDrawable.setStroke(ViewUtils.b(0.5F), Color.parseColor("#FFE5E5E5"));
+      localGradientDrawable.setCornerRadius(ViewUtils.dpToPx(paramFloat));
+      localGradientDrawable.setStroke(ViewUtils.dpToPx(0.5F), Color.parseColor("#FFE5E5E5"));
       if (Build.VERSION.SDK_INT >= 16)
       {
         paramView.setBackground(localGradientDrawable);
@@ -303,7 +303,7 @@ public class TroopAppShortcutUtils
       if (TextUtils.isEmpty(paramString1)) {
         return;
       }
-      TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString1);
+      TroopInfo localTroopInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramString1);
       if (localTroopInfo == null)
       {
         if (QLog.isColorLevel()) {
@@ -366,7 +366,7 @@ public class TroopAppShortcutUtils
       if (paramLong == 101914115L) {
         QQGameTroopManager.a(paramInt1, paramString1, false);
       }
-      if ((paramLong == 1101236949L) && (QVipBigTroopExpiredProcessor.c().mIsEnable) && (localTroopInfo.mIsFreezed == 1) && ((localTroopInfo.isAdmin()) || (localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()))))
+      if ((paramLong == 1101236949L) && (QVipBigTroopExpiredProcessor.e().mIsEnable) && (localTroopInfo.mIsFreezed == 1) && ((localTroopInfo.isAdmin()) || (localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()))))
       {
         boolean bool = TroopManager.LiangGroupHelper.c(localTroopInfo.groupFreezeReason);
         if (localTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()))
@@ -376,8 +376,8 @@ public class TroopAppShortcutUtils
           } else {
             i = 8;
           }
-          String str1 = VipUtils.a(0, i).toString();
-          String str2 = HardCodeUtil.a(2131701953);
+          String str1 = VipUtils.c(0, i).toString();
+          String str2 = HardCodeUtil.a(2131898212);
           TroopAppShortcutUtils.1 local1 = new TroopAppShortcutUtils.1();
           if (bool) {
             paramBaseActivity = "0X800A57F";
@@ -433,13 +433,13 @@ public class TroopAppShortcutUtils
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, TroopInfo paramTroopInfo, String paramString)
   {
-    TogetherConfigureBean localTogetherConfigureBean = (TogetherConfigureBean)QConfigManager.a().a(535);
-    if ((localTogetherConfigureBean != null) && (localTogetherConfigureBean.a != null))
+    TogetherConfigureBean localTogetherConfigureBean = (TogetherConfigureBean)QConfigManager.b().b(535);
+    if ((localTogetherConfigureBean != null) && (localTogetherConfigureBean.b != null))
     {
       TogetherControlManager localTogetherControlManager = (TogetherControlManager)paramQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-      boolean bool = localTogetherControlManager.a(2, 1, paramTroopInfo.uin);
+      boolean bool = localTogetherControlManager.b(2, 1, paramTroopInfo.uin);
       paramString = TogetherUtils.a(bool, paramTroopInfo.isTroopOwner(paramQQAppInterface.getCurrentAccountUin()), paramTroopInfo.isAdmin(), paramTroopInfo.troopowneruin, paramString, 0);
-      int i = localTogetherConfigureBean.a.a();
+      int i = localTogetherConfigureBean.b.a();
       if (i != 0)
       {
         if (i != 1)
@@ -451,7 +451,7 @@ public class TroopAppShortcutUtils
             }
           }
           else {
-            TogetherUtils.a(paramQQAppInterface, localTogetherConfigureBean.a.b(), localTogetherConfigureBean.a.a(), localTogetherConfigureBean.a.b(), paramString, 1);
+            TogetherUtils.a(paramQQAppInterface, localTogetherConfigureBean.b.b(), localTogetherConfigureBean.b.c(), localTogetherConfigureBean.b.d(), paramString, 1);
           }
         }
         else
@@ -465,11 +465,11 @@ public class TroopAppShortcutUtils
         }
       }
       else {
-        QQToast.a(paramContext, 0, 2131693100, 0).a();
+        QQToast.makeText(paramContext, 0, 2131890214, 0).show();
       }
       return;
     }
-    QQToast.a(paramContext, 0, 2131693100, 0).a();
+    QQToast.makeText(paramContext, 0, 2131890214, 0).show();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, AppsAioShortCutViewBuilder.AioShortCutInfo paramAioShortCutInfo, long paramLong)
@@ -477,7 +477,7 @@ public class TroopAppShortcutUtils
     if (paramAioShortCutInfo == null) {
       return;
     }
-    TroopShortcutBarConfig localTroopShortcutBarConfig = (TroopShortcutBarConfig)QConfigManager.a().a(590);
+    TroopShortcutBarConfig localTroopShortcutBarConfig = (TroopShortcutBarConfig)QConfigManager.b().b(590);
     if (localTroopShortcutBarConfig == null) {
       return;
     }
@@ -485,13 +485,13 @@ public class TroopAppShortcutUtils
     if (paramQQAppInterface == null) {
       return;
     }
-    paramQQAppInterface = paramQQAppInterface.b(String.valueOf(paramLong));
+    paramQQAppInterface = paramQQAppInterface.f(String.valueOf(paramLong));
     if (paramQQAppInterface == null) {
       return;
     }
     paramAioShortCutInfo.c = localTroopShortcutBarConfig.a((int)paramQQAppInterface.dwGroupClassExt);
     boolean bool;
-    if (localTroopShortcutBarConfig.a == TroopShortcutBarConfig.c) {
+    if (localTroopShortcutBarConfig.e == TroopShortcutBarConfig.g) {
       bool = true;
     } else {
       bool = false;
@@ -508,7 +508,7 @@ public class TroopAppShortcutUtils
   {
     String str = paramQQAppInterface.getCurrentAccountUin();
     paramQQAppInterface = (TogetherControlManager)paramQQAppInterface.getManager(QQManagerFactory.TOGETHER_CONTROLLER_MANAGER);
-    boolean bool = paramQQAppInterface.a(4, -1, paramString);
+    boolean bool = paramQQAppInterface.b(4, -1, paramString);
     paramTroopInfo = TogetherUtils.a(bool, paramTroopInfo.isTroopOwner(str), paramTroopInfo.isAdmin(), paramTroopInfo.troopowneruin, paramString, 0);
     if (bool)
     {
@@ -520,7 +520,7 @@ public class TroopAppShortcutUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAppShortcutUtils
  * JD-Core Version:    0.7.0.1
  */

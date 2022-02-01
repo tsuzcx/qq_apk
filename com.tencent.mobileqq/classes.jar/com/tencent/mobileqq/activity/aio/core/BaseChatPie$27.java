@@ -18,30 +18,30 @@ class BaseChatPie$27
   
   public void run()
   {
-    ChatActivityFacade.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a, false);
-    Object localObject = EmojiStickerManager.a(this.a);
+    ChatActivityFacade.a(this.this$0.d, this.this$0.ah);
+    this.this$0.d.getMessageFacade().a(this.a, false);
+    Object localObject = EmojiStickerManager.f(this.a);
     if (localObject != null)
     {
-      EmojiStickerManager.a().jdField_b_of_type_Int = 0;
-      EmojiStickerManager.a().jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(localObject, Boolean.valueOf(true));
-      localObject = EmojiStickerManager.a().a(this.a);
+      EmojiStickerManager.a().i = 0;
+      EmojiStickerManager.a().D.put(localObject, Boolean.valueOf(true));
+      localObject = EmojiStickerManager.a().c(this.a);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           Long localLong = (Long)((Iterator)localObject).next();
-          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localLong.longValue());
+          this.this$0.d.getMessageFacade().h(this.this$0.ah.b, this.this$0.ah.a, localLong.longValue());
         }
       }
     }
-    this.this$0.jdField_a_of_type_MqqOsMqqHandler.post(new BaseChatPie.27.1(this));
+    this.this$0.m.post(new BaseChatPie.27.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.27
  * JD-Core Version:    0.7.0.1
  */

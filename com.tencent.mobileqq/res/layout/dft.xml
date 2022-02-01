@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/qsa" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginBottom="14.0dip">
+        <com.tencent.timi.game.userinfo.api.view.AvatarRoundImageView android:id="@id/qs_" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="6.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/qs_" android:layout_centerVertical="true">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.timi.game.widget.MediumBoldTextView android:textSize="14.0dip" android:textColor="@color/black" android:ellipsize="end" android:id="@id/qsb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="120.0dip" android:maxLines="1" android:singleLine="true" app:timiTextStyleMediumBold="true" />
+                <TextView android:textSize="10.0dip" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/qsd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" android:singleLine="true" />
+            </LinearLayout>
+            <TextView android:textSize="10.0dip" android:textColor="#ff999999" android:id="@id/n3i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.timi.game.profile.impl.view.record.MessageSmobaRecordView android:id="@id/psc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

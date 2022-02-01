@@ -34,14 +34,14 @@ final class GdtInterstitialView
     ArkView localArkView = null;
     Object localObject1;
     if (paramGdtInterstitialParams != null) {
-      localObject1 = paramGdtInterstitialParams.a();
+      localObject1 = paramGdtInterstitialParams.c();
     } else {
       localObject1 = null;
     }
     paramGdtInterstitialStatus = localArkView;
     try
     {
-      Object localObject2 = GdtInterstitialManager.a().a();
+      Object localObject2 = GdtInterstitialManager.a().d();
       paramGdtInterstitialStatus = localArkView;
       String str1 = a(paramContext, paramGdtInterstitialParams);
       paramGdtInterstitialStatus = localArkView;
@@ -53,9 +53,9 @@ final class GdtInterstitialView
       if (paramGdtInterstitialParams != null) {
         try
         {
-          if ((paramGdtInterstitialParams.b >= 0) && (paramGdtInterstitialParams.c >= 0))
+          if ((paramGdtInterstitialParams.g >= 0) && (paramGdtInterstitialParams.h >= 0))
           {
-            paramContext = new ArkAppInfo.Size(paramGdtInterstitialParams.b, paramGdtInterstitialParams.c);
+            paramContext = new ArkAppInfo.Size(paramGdtInterstitialParams.g, paramGdtInterstitialParams.h);
             localArkView.setSize(paramContext, paramContext, paramContext);
           }
         }
@@ -97,12 +97,12 @@ final class GdtInterstitialView
     {
       String str;
       int i;
-      if (paramGdtInterstitialParams.jdField_a_of_type_Int == 1)
+      if (paramGdtInterstitialParams.e == 1)
       {
         str = "vertical";
         i = 1;
       }
-      else if ((paramGdtInterstitialParams.jdField_a_of_type_Int != 0) && (paramGdtInterstitialParams.jdField_a_of_type_Int != 8))
+      else if ((paramGdtInterstitialParams.e != 0) && (paramGdtInterstitialParams.e != 8))
       {
         str = null;
         i = -2147483648;
@@ -114,15 +114,15 @@ final class GdtInterstitialView
       }
       if ((!TextUtils.isEmpty(str)) && (i != -2147483648))
       {
-        int j = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.b);
-        int k = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.c);
-        GdtLog.b("GdtInterstitialView", String.format("getMetaData width:%d height:%d ptWidth:%d ptHeight:%d", new Object[] { Integer.valueOf(paramGdtInterstitialParams.b), Integer.valueOf(paramGdtInterstitialParams.c), Integer.valueOf(j), Integer.valueOf(k) }));
+        int j = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.g);
+        int k = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.h);
+        GdtLog.b("GdtInterstitialView", String.format("getMetaData width:%d height:%d ptWidth:%d ptHeight:%d", new Object[] { Integer.valueOf(paramGdtInterstitialParams.g), Integer.valueOf(paramGdtInterstitialParams.h), Integer.valueOf(j), Integer.valueOf(k) }));
         try
         {
           paramContext = new JSONObject();
           paramContext.put("style", i);
           paramContext.put("screenType", str);
-          paramGdtInterstitialParams = GdtJsonPbUtil.a(paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.info);
+          paramGdtInterstitialParams = GdtJsonPbUtil.a(paramGdtInterstitialParams.d.a.info);
           if ((paramGdtInterstitialParams != null) && (!JSONObject.NULL.equals(paramGdtInterstitialParams))) {
             paramContext.put("adInfo", paramGdtInterstitialParams);
           }
@@ -151,11 +151,6 @@ final class GdtInterstitialView
     AdThreadManager.INSTANCE.post(new GdtInterstitialView.2(paramString, paramInt1, paramInt2), 0);
   }
   
-  public View a()
-  {
-    return this.a;
-  }
-  
   public void a(Context paramContext)
   {
     GdtLog.b("GdtInterstitialView", "pause");
@@ -182,10 +177,15 @@ final class GdtInterstitialView
       paramContext.onDestroy();
     }
   }
+  
+  public View getView()
+  {
+    return this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialView
  * JD-Core Version:    0.7.0.1
  */

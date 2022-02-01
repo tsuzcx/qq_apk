@@ -3,9 +3,7 @@ package com.tencent.mobileqq.activity;
 public class TroopTransferActivity$TroopMemberItem
 {
   public int a;
-  public String a = "";
   public int b;
-  public String b = "";
   public String c = "";
   public String d = "";
   public String e = "";
@@ -19,10 +17,12 @@ public class TroopTransferActivity$TroopMemberItem
   public String m = "";
   public String n = "";
   public String o = "";
+  public String p = "";
+  public String q = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem
  * JD-Core Version:    0.7.0.1
  */

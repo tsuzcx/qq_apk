@@ -20,12 +20,12 @@ class WerewolvesHandler$2
       paramRspBody.append(paramInt);
       QLog.d("WerewolvesHandler", 2, paramRspBody.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(-1, null);
+    this.a.a(-1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler.2
  * JD-Core Version:    0.7.0.1
  */

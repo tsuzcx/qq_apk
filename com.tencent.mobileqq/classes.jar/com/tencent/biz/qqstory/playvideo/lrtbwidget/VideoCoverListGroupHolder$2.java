@@ -15,18 +15,18 @@ class VideoCoverListGroupHolder$2
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (SystemClock.uptimeMillis() - VideoCoverListGroupHolder.a(this.a) < 500L) {
+    if (SystemClock.uptimeMillis() - VideoCoverListGroupHolder.b(this.a) < 500L) {
       return;
     }
     VideoCoverListGroupHolder.a(this.a, SystemClock.uptimeMillis());
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId instanceof MsgTabPlayPageLoader.MsgTabGroupId))
+    if ((this.a.e instanceof MsgTabPlayPageLoader.MsgTabGroupId))
     {
       int i = paramInt1 + paramInt2;
-      ((MsgTabPlayPageLoader.MsgTabGroupId)this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId).a = i;
+      ((MsgTabPlayPageLoader.MsgTabGroupId)this.a.e).f = i;
       if ((paramInt3 > 0) && (paramInt3 - paramInt1 - paramInt2 < 10))
       {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetGroupHolderContainer.a();
-        SLog.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.toString());
+        this.a.c.n();
+        SLog.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.e.toString());
       }
     }
   }
@@ -40,13 +40,13 @@ class VideoCoverListGroupHolder$2
       VideoCoverListGroupHolder.a(this.a, true);
     }
     if ((paramInt == 0) && (VideoCoverListGroupHolder.a(this.a))) {
-      this.a.d();
+      this.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoCoverListGroupHolder.2
  * JD-Core Version:    0.7.0.1
  */

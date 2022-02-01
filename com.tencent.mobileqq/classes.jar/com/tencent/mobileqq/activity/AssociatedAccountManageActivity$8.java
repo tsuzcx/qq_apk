@@ -33,13 +33,13 @@ class AssociatedAccountManageActivity$8
       localObject = AssociatedAccountManageActivity.access$1500(this.a, paramString, 0);
       if (localObject != null)
       {
-        ((SingleLineTextView)((View)localObject).findViewById(2131371697)).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
+        ((SingleLineTextView)((View)localObject).findViewById(2131439121)).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
         this.a.updateFace(paramString, (View)localObject);
       }
       localObject = AssociatedAccountManageActivity.access$1500(this.a, paramString, 1);
       if (localObject != null)
       {
-        ((SingleLineTextView)((View)localObject).findViewById(2131371697)).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
+        ((SingleLineTextView)((View)localObject).findViewById(2131439121)).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
         this.a.updateFace(paramString, (View)localObject);
       }
     }
@@ -47,7 +47,7 @@ class AssociatedAccountManageActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8
  * JD-Core Version:    0.7.0.1
  */

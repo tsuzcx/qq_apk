@@ -33,7 +33,7 @@ public final class ExpandPluginLauncher$installPlugin$1
     if (localObject != null) {
       ((ExpandPluginLoadingFragment)localObject).b();
     }
-    if (ExpandPluginLauncher.a(this.a) == 0L) {
+    if (ExpandPluginLauncher.e(this.a) == 0L) {
       ExpandPluginLauncher.a(this.a, TrafficStats.getTotalRxBytes());
     }
     double d1 = paramInt1;
@@ -71,14 +71,14 @@ public final class ExpandPluginLauncher$installPlugin$1
     if (paramString != null) {
       paramString.a(i);
     }
-    if (ExpandPluginLauncher.b(this.a) == 0L) {
+    if (ExpandPluginLauncher.f(this.a) == 0L) {
       ExpandPluginLauncher.b(this.a, System.currentTimeMillis());
     }
-    if ((System.currentTimeMillis() - ExpandPluginLauncher.b(this.a) > 300) && (!ExpandPluginLauncher.c(this.a)))
+    if ((System.currentTimeMillis() - ExpandPluginLauncher.f(this.a) > 300) && (!ExpandPluginLauncher.g(this.a)))
     {
       ExpandPluginLauncher.d(this.a, true);
       paramString = this.a;
-      ExpandPluginLauncher.a(paramString, paramInt2 - paramInt1, ExpandPluginLauncher.a(paramString));
+      ExpandPluginLauncher.a(paramString, paramInt2 - paramInt1, ExpandPluginLauncher.e(paramString));
     }
   }
   
@@ -93,7 +93,7 @@ public final class ExpandPluginLauncher$installPlugin$1
     localStringBuilder.append(' ');
     localStringBuilder.append(paramInt);
     ((ILog)localObject).a("ExpandPluginLauncher", 1, localStringBuilder.toString(), localThrowable);
-    if (!ExpandPluginLauncher.b(this.a)) {
+    if (!ExpandPluginLauncher.d(this.a)) {
       return;
     }
     paramString = (ExpandPluginLoadingFragment)ExpandPluginLauncher.a(this.a).get();
@@ -111,13 +111,13 @@ public final class ExpandPluginLauncher$installPlugin$1
     if (ExpandPluginLauncher.a(this.a).get() != null)
     {
       paramString = this.a;
-      ExpandPluginLauncher.a(paramString, ExpandPluginLauncher.a(paramString));
+      ExpandPluginLauncher.a(paramString, ExpandPluginLauncher.c(paramString));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.plugin.entrance.ExpandPluginLauncher.installPlugin.1
  * JD-Core Version:    0.7.0.1
  */

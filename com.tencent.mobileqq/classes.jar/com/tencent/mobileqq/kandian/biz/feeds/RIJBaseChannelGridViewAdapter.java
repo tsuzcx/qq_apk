@@ -12,59 +12,59 @@ import java.util.List;
 public abstract class RIJBaseChannelGridViewAdapter
   extends ReadInJoyDynamicGridView.BaseDynamicGridAdapter<TabChannelCoverInfo>
 {
-  protected final RIJBaseChannelGridViewAdapter.AdapterCallback a;
-  protected boolean a;
-  protected final int b;
+  protected final int d;
+  protected final RIJBaseChannelGridViewAdapter.AdapterCallback e;
+  protected boolean f;
   
   public RIJBaseChannelGridViewAdapter(Context paramContext, int paramInt1, int paramInt2, RIJBaseChannelGridViewAdapter.AdapterCallback paramAdapterCallback)
   {
     super(paramContext, paramInt1);
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJBaseChannelGridViewAdapter$AdapterCallback = paramAdapterCallback;
+    this.d = paramInt2;
+    this.e = paramAdapterCallback;
   }
   
-  private void d(List<TabChannelCoverInfo> paramList)
+  private void e(List<TabChannelCoverInfo> paramList)
   {
     int i = 0;
     while (i < paramList.size())
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJBaseChannelGridViewAdapter$AdapterCallback.a((TabChannelCoverInfo)paramList.get(i), i);
+      this.e.a((TabChannelCoverInfo)paramList.get(i), i);
       i += 1;
     }
   }
   
-  abstract List<TabChannelCoverInfo> a(List<TabChannelCoverInfo> paramList);
-  
   protected void a(TabChannelCoverInfo paramTabChannelCoverInfo, TextView paramTextView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsRIJBaseChannelGridViewAdapter$AdapterCallback.a(paramTabChannelCoverInfo);
-    if (!TextUtils.isEmpty(paramTabChannelCoverInfo.redPoint.a)) {
-      paramTextView.setText(paramTabChannelCoverInfo.redPoint.a);
+    this.e.a(paramTabChannelCoverInfo);
+    if (!TextUtils.isEmpty(paramTabChannelCoverInfo.redPoint.f)) {
+      paramTextView.setText(paramTabChannelCoverInfo.redPoint.f);
     }
-    if (paramTabChannelCoverInfo.redPoint.b != 0) {
-      paramTextView.setTextColor(paramTabChannelCoverInfo.redPoint.b);
+    if (paramTabChannelCoverInfo.redPoint.g != 0) {
+      paramTextView.setTextColor(paramTabChannelCoverInfo.redPoint.g);
     }
-    if (paramTabChannelCoverInfo.redPoint.c != 0) {
-      ((GradientDrawable)paramTextView.getBackground()).setColor(paramTabChannelCoverInfo.redPoint.c);
+    if (paramTabChannelCoverInfo.redPoint.h != 0) {
+      ((GradientDrawable)paramTextView.getBackground()).setColor(paramTabChannelCoverInfo.redPoint.h);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     notifyDataSetChanged();
   }
   
   public void c(List<TabChannelCoverInfo> paramList)
   {
-    paramList = a(paramList);
+    paramList = d(paramList);
     b(paramList);
-    d(paramList);
+    e(paramList);
   }
+  
+  abstract List<TabChannelCoverInfo> d(List<TabChannelCoverInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.RIJBaseChannelGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

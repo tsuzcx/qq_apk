@@ -16,11 +16,11 @@ public abstract interface ITempMsgBoxBusinessHandler
   
   public abstract boolean a(AppInterface paramAppInterface, int paramInt);
   
-  public abstract boolean a(AppInterface paramAppInterface, String paramString);
+  public abstract boolean b(AppInterface paramAppInterface, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.businesshandler.ITempMsgBoxBusinessHandler
  * JD-Core Version:    0.7.0.1
  */

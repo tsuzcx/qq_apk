@@ -9,27 +9,21 @@ import org.json.JSONObject;
 public class QFileAppStorePromoteDialogConfigBean
   implements IQFileAppStorePromoteDialogConfigBean, IQStorageSafable<String>
 {
-  public String a;
-  public boolean a;
-  
-  public QFileAppStorePromoteDialogConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "{}";
-  }
+  public boolean a = false;
+  public String b = "{}";
   
   public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       QLog.e("QFileAppStorePromoteDialogConfigBean<QFile>", 1, "onParse: but configContent is null!");
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     try
     {
       paramString = new JSONObject(paramString);
       if (paramString.has("dialogSwitch"))
       {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("dialogSwitch");
+        this.a = paramString.getBoolean("dialogSwitch");
         return;
       }
     }
@@ -41,17 +35,17 @@ public class QFileAppStorePromoteDialogConfigBean
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteDialogConfigBean
  * JD-Core Version:    0.7.0.1
  */

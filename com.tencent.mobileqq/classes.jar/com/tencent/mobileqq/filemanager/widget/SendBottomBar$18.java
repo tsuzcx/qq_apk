@@ -13,22 +13,22 @@ class SendBottomBar$18
   
   public void onClick(View paramView)
   {
-    if (SendBottomBar.a(this.a).isChecked())
+    if (SendBottomBar.e(this.a).isChecked())
     {
-      SendBottomBar.b(this.a, true);
+      SendBottomBar.c(this.a, true);
       FileManagerReporter.a("0X800942B");
     }
     else
     {
+      SendBottomBar.d(this.a, false);
       SendBottomBar.c(this.a, false);
-      SendBottomBar.b(this.a, false);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.18
  * JD-Core Version:    0.7.0.1
  */

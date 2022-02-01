@@ -7,12 +7,12 @@ class TroopMemGradeLevelBuilder$2
   
   public void run()
   {
-    TroopMemGradeLevelBuilder.a(this.this$0);
+    TroopMemGradeLevelBuilder.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopMemGradeLevelBuilder.2
  * JD-Core Version:    0.7.0.1
  */

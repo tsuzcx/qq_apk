@@ -8,14 +8,9 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class FakeSelfHeadIconController
   extends BaseBubbleBuilderHeadIconController
 {
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.fakeSenderType == 1;
-  }
-  
   protected void b()
   {
-    b(FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
+    b(FaceDrawable.getFaceDrawable(this.b, 1, this.b.getCurrentAccountUin()));
   }
   
   protected void c()
@@ -30,12 +25,17 @@ public class FakeSelfHeadIconController
   
   protected void g()
   {
-    a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    a(this.a);
+  }
+  
+  public boolean h()
+  {
+    return this.a.fakeSenderType == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.FakeSelfHeadIconController
  * JD-Core Version:    0.7.0.1
  */

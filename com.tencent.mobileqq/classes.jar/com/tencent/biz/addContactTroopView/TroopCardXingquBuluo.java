@@ -7,8 +7,8 @@ import tencent.im.troop_search_searchtab.searchtab.Item3;
 public class TroopCardXingquBuluo
   extends BaseTroopCardView
 {
-  protected List<searchtab.Item3> a;
-  protected searchtab.Card a;
+  protected searchtab.Card d;
+  protected List<searchtab.Item3> e;
 }
 
 

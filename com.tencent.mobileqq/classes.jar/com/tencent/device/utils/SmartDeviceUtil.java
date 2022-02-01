@@ -59,7 +59,7 @@ public class SmartDeviceUtil
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = ((SmartDeviceProxyMgr)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramDeviceInfo.productId);
+      localObject = ((SmartDeviceProxyMgr)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).b(paramDeviceInfo.productId);
       if ((localObject != null) && (!TextUtils.isEmpty(((ProductInfo)localObject).deviceName))) {
         return ((ProductInfo)localObject).deviceName;
       }
@@ -120,7 +120,7 @@ public class SmartDeviceUtil
           paramDeviceInfo.putExtra("tab_index", FrameControllerUtil.c);
           paramDeviceInfo.putExtra("from", "smartdevice");
           paramDeviceInfo.setFlags(67108864);
-          ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(paramString);
+          ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).b(paramString);
           if ((paramContext instanceof SplashActivity))
           {
             paramQQAppInterface = (SplashActivity)paramContext;
@@ -162,7 +162,7 @@ public class SmartDeviceUtil
           if (paramDeviceInfo != null) {
             break label570;
           }
-          paramQQAppInterface = paramBundle.a(Long.parseLong(str1));
+          paramQQAppInterface = paramBundle.g(Long.parseLong(str1));
           paramBundle.a((Activity)paramContext, paramQQAppInterface, false, paramString);
           return;
         }
@@ -224,7 +224,7 @@ public class SmartDeviceUtil
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramAppRuntime.getAccount(), "smart_device_proxy.cgi");
     paramBundle.putString("skey", ((TicketManager)paramAppRuntime.getManager(2)).getSkey(paramAppRuntime.getAccount()));
-    paramBundle.putString("version", "8.7.0");
+    paramBundle.putString("version", "8.8.17");
     Object localObject = new StringBuilder();
     Iterator localIterator = paramBundle.keySet().iterator();
     while (localIterator.hasNext())
@@ -281,7 +281,7 @@ public class SmartDeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.SmartDeviceUtil
  * JD-Core Version:    0.7.0.1
  */

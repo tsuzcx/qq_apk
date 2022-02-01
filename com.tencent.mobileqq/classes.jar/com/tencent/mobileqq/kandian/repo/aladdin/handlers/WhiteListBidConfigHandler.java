@@ -20,8 +20,8 @@ import java.util.Set;
 public class WhiteListBidConfigHandler
   extends SimpleConfigHandler
 {
-  private static final Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean = ((Boolean)RIJSPUtils.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
+  private static final Set<Integer> a = new HashSet();
+  private static boolean b = ((Boolean)RIJSPUtils.b("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
   
   static
   {
@@ -60,14 +60,14 @@ public class WhiteListBidConfigHandler
   {
     while (paramInt1 <= paramInt2)
     {
-      jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt1));
+      a.add(Integer.valueOf(paramInt1));
       paramInt1 += 1;
     }
   }
   
   public static boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (!jdField_a_of_type_Boolean)
+    if (!b)
     {
       QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: close");
       return true;
@@ -85,12 +85,12 @@ public class WhiteListBidConfigHandler
     if (paramAbsBaseArticleInfo.mFeedType == 29) {
       return true;
     }
-    int i = RIJFeedsType.a(paramAbsBaseArticleInfo);
-    if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i)))
+    int i = RIJFeedsType.g(paramAbsBaseArticleInfo);
+    if (a.contains(Integer.valueOf(i)))
     {
-      if (RIJFeedsType.h(paramAbsBaseArticleInfo))
+      if (RIJFeedsType.l(paramAbsBaseArticleInfo))
       {
-        i = RIJItemViewTypeUtils.d(paramAbsBaseArticleInfo);
+        i = RIJItemViewTypeUtils.G(paramAbsBaseArticleInfo);
         if ((i == 1) || (i == 2)) {
           bool = true;
         }
@@ -136,7 +136,7 @@ public class WhiteListBidConfigHandler
         } else {
           bool = false;
         }
-        jdField_a_of_type_Boolean = bool;
+        b = bool;
         RIJSPUtils.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(bool));
       }
       else if (TextUtils.equals(str2, "kandian_feeds_card_whitelist_bid"))
@@ -162,7 +162,7 @@ public class WhiteListBidConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.WhiteListBidConfigHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -20,36 +20,35 @@ public class PhotoPreviewCustomizationMiniApp
   extends PhotoPreviewCustomizationDefault
 {
   public static final String a = "com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationMiniApp";
-  private int a;
+  private int b = 0;
   
   public PhotoPreviewCustomizationMiniApp(AbstractPhotoPreviewActivity paramAbstractPhotoPreviewActivity)
   {
     super(paramAbstractPhotoPreviewActivity);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (a().getItem(paramInt).baseData.getType() == 101) {
+    if (s().getItem(paramInt).baseData.getType() == 101) {
       paramInt = 1;
     } else {
       paramInt = 0;
     }
     if (paramInt != 0)
     {
-      a().b.setVisibility(8);
-      a().c.setVisibility(8);
+      s().j.setVisibility(8);
+      s().k.setVisibility(8);
       return;
     }
-    a().b.setVisibility(0);
-    a().c.setVisibility(0);
+    s().j.setVisibility(0);
+    s().k.setVisibility(0);
   }
   
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.jdField_a_of_type_Int = paramIntent.getIntExtra("from_miniapp_cur_sizetype", 0);
+    this.b = paramIntent.getIntExtra("from_miniapp_cur_sizetype", 0);
   }
   
   public void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
@@ -64,8 +63,8 @@ public class PhotoPreviewCustomizationMiniApp
       Object localObject = (String)paramArrayList.get(i1);
       if (!ImageManager.isNetworkUrl((String)localObject))
       {
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a((String)localObject);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPreviewPresenterPreviewPresenter.a((String)localObject);
+        int k = this.i.b((String)localObject);
+        localObject = this.i.c((String)localObject);
         int m;
         if (k == 1)
         {
@@ -93,8 +92,8 @@ public class PhotoPreviewCustomizationMiniApp
       paramIntent.putExtra("PhotoConst.VIDEO_INFOS", localHashMap);
     }
     paramIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
-    paramIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", ((PhotoOtherData)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumOtherCommonData).jdField_a_of_type_Int);
-    paramIntent.putExtra("from_miniapp_cur_sizetype", this.jdField_a_of_type_Int);
+    paramIntent.putExtra("PhotoConst.CURRENT_QUALITY_TYPE", ((PhotoOtherData)this.g).d);
+    paramIntent.putExtra("from_miniapp_cur_sizetype", this.b);
     paramArrayList = new StringBuilder();
     paramArrayList.append("sendImage:");
     paramArrayList.append(i);
@@ -106,8 +105,8 @@ public class PhotoPreviewCustomizationMiniApp
     paramIntent.setFlags(paramIntent.getFlags() & 0xDFFFFFFF & 0xFBFFFFFF);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.sendBroadcast(paramIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoPreviewActivity.finish();
+      this.c.sendBroadcast(paramIntent);
+      this.c.finish();
       return;
     }
     catch (Exception paramIntent)
@@ -118,7 +117,7 @@ public class PhotoPreviewCustomizationMiniApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationMiniApp
  * JD-Core Version:    0.7.0.1
  */

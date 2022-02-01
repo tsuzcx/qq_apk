@@ -17,17 +17,20 @@ class QQSettingSettingActivity$2
     {
       paramContext = new StringBuilder();
       paramContext.append("bindMiBaoReceiver onReceive mIsBindMb：");
-      paramContext.append(QQSettingSettingActivity.a(this.a));
+      paramContext.append(QQSettingSettingActivity.c(this.a));
       QLog.d("QQSetting2Activity", 1, paramContext.toString());
     }
-    if (QQSettingSettingActivity.a(this.a)) {
+    if (QQSettingSettingActivity.c(this.a)) {
       ReportController.b(this.a.app, "dc00898", "", "", "0X800B312", "0X800B312", 0, 0, "", "", "", "");
+    }
+    if (QQSettingSettingActivity.d(this.a)) {
+      ReportController.b(this.a.app, "dc00898", "", "", "0X800BDAC", "0X800BDAC", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingSettingActivity.2
  * JD-Core Version:    0.7.0.1
  */

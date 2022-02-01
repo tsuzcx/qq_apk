@@ -2,22 +2,42 @@ package com.tencent.mobileqq.tianshu.ui;
 
 public class AnimIconRedDot
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private String a;
+  private int b;
   private String c;
+  private boolean d;
+  private String e;
   
   public AnimIconRedDot(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.c = paramString2;
   }
   
-  public int a()
+  public String a()
   {
-    int j = this.jdField_a_of_type_Int;
+    return this.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.a = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public int b()
+  {
+    int j = this.b;
     int i = j;
     if (j == 0) {
       i = 3;
@@ -25,39 +45,9 @@ public class AnimIconRedDot
     return i;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
   }
   
   public String c()
@@ -67,12 +57,22 @@ public class AnimIconRedDot
   
   public void c(String paramString)
   {
-    this.c = paramString;
+    this.e = paramString;
+  }
+  
+  public boolean d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.ui.AnimIconRedDot
  * JD-Core Version:    0.7.0.1
  */

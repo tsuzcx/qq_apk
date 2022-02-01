@@ -51,25 +51,25 @@ public class ComponentContentNoteCard
   extends RelativeLayout
   implements IReadInJoyListItemLifeCycle, SoundCheckRunnable.OnSoundActionListener, ComponentInheritView, AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ImageView jdField_a_of_type_AndroidWidgetImageView = null;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-  private TextView jdField_a_of_type_AndroidWidgetTextView = null;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-  private ReadInJoyXListView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView = null;
-  private SoundCheckRunnable jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
-  private ComponentNotIntrest jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentNotIntrest = null;
-  private ScripCmsInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsScripCmsInfo;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean = false;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView = null;
-  private TextView jdField_b_of_type_AndroidWidgetTextView = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  private ImageView jdField_c_of_type_AndroidWidgetImageView = null;
-  private TextView jdField_c_of_type_AndroidWidgetTextView = null;
-  private ImageView jdField_d_of_type_AndroidWidgetImageView = null;
-  private TextView jdField_d_of_type_AndroidWidgetTextView = null;
+  private RelativeLayout a = null;
+  private TextView b = null;
+  private TextView c = null;
+  private TextView d = null;
+  private ImageView e = null;
+  private TextView f = null;
+  private ImageView g = null;
+  private ImageView h = null;
+  private ImageView i = null;
+  private ComponentNotIntrest j = null;
+  private ReadInJoyXListView k = null;
+  private ScripCmsInfo l;
+  private LottieDrawable m = null;
+  private Handler n = new Handler(Looper.getMainLooper());
+  private SoundCheckRunnable o;
+  private int p = 0;
+  private boolean q = false;
+  private Object r;
+  private boolean s = false;
   
   public ComponentContentNoteCard(Context paramContext)
   {
@@ -89,25 +89,25 @@ public class ComponentContentNoteCard
   public ComponentContentNoteCard(Context paramContext, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView = ((ReadInJoyXListView)paramReadInJoyBaseAdapter.a());
-    a(paramContext);
+    this.k = ((ReadInJoyXListView)paramReadInJoyBaseAdapter.d());
+    b(paramContext);
   }
   
   private SpannableStringBuilder a(JSONArray paramJSONArray)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int i = 0;
-    while (i < paramJSONArray.length())
+    int i1 = 0;
+    while (i1 < paramJSONArray.length())
     {
-      Object localObject = new JSONObject(paramJSONArray.get(i).toString());
+      Object localObject = new JSONObject(paramJSONArray.get(i1).toString());
       String str = ((JSONObject)localObject).optString("word", "    ");
-      int j = Color.parseColor(((JSONObject)localObject).optString("color", "#C3C0D6"));
-      int k = Integer.valueOf(((JSONObject)localObject).optString("size", "15")).intValue();
+      int i2 = Color.parseColor(((JSONObject)localObject).optString("color", "#C3C0D6"));
+      int i3 = Integer.valueOf(((JSONObject)localObject).optString("size", "15")).intValue();
       localObject = new SpannableString(str);
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(j), 0, str.length(), 33);
-      ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(k, true), 0, str.length(), 33);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(i2), 0, str.length(), 33);
+      ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(i3, true), 0, str.length(), 33);
       localSpannableStringBuilder.append((CharSequence)localObject);
-      i += 1;
+      i1 += 1;
     }
     return localSpannableStringBuilder;
   }
@@ -157,9 +157,9 @@ public class ComponentContentNoteCard
       Object localObject1;
       String str;
       float f2;
-      int i;
+      int i1;
       label124:
-      break label136;
+      break label137;
     }
     try
     {
@@ -176,14 +176,14 @@ public class ComponentContentNoteCard
     catch (Exception paramJSONObject)
     {
       paramJSONObject = (JSONObject)localObject2;
-      break label147;
+      break label150;
     }
     try
     {
       f3 = Float.valueOf(a(paramJSONObject, "E")).floatValue();
       f1 = f3;
-      i = DisplayUtil.a(getContext(), f2);
-      f2 = i;
+      i1 = DisplayUtil.a(getContext(), f2);
+      f2 = i1;
     }
     catch (Exception paramJSONObject)
     {
@@ -191,28 +191,28 @@ public class ComponentContentNoteCard
     }
     try
     {
-      i = DisplayUtil.a(getContext(), f3);
-      f1 = i;
+      i1 = DisplayUtil.a(getContext(), f3);
+      f1 = i1;
       paramJSONObject = (JSONObject)localObject2;
     }
     catch (Exception paramJSONObject)
     {
       f1 = f3;
       paramJSONObject = (JSONObject)localObject2;
-      break label151;
+      break label154;
     }
     paramJSONObject = (JSONObject)localObject2;
-    break label151;
+    break label154;
     label130:
     paramJSONObject = "top";
-    break label147;
-    label136:
+    break label150;
+    label137:
     paramJSONObject = "top";
     str = "left";
     localObject1 = localObject2;
-    label147:
+    label150:
     f2 = 20.0F;
-    label151:
+    label154:
     QLog.e("ComponentContentNoteCard", 1, "json error!");
     try
     {
@@ -220,11 +220,11 @@ public class ComponentContentNoteCard
     }
     catch (Exception localException)
     {
-      label172:
+      label177:
       boolean bool;
       float f4;
       float f5;
-      break label172;
+      break label177;
     }
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("text json array error: ");
@@ -261,20 +261,20 @@ public class ComponentContentNoteCard
       if (paramJSONObject.equals("bottom"))
       {
         ((RelativeLayout.LayoutParams)localObject1).addRule(12);
-        break label381;
+        break label389;
       }
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       if (f1 <= 0.0F) {
-        break label376;
+        break label384;
       }
     }
     f5 = 0.0F;
     f4 = f1;
     f1 = f5;
-    break label381;
-    label376:
+    break label389;
+    label384:
     f1 = -f1;
-    label381:
+    label389:
     paramTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     paramTextView.setPadding((int)f2, (int)f4, (int)f3, (int)f1);
     paramTextView.setTextSize(paramFloat);
@@ -284,53 +284,53 @@ public class ComponentContentNoteCard
   {
     try
     {
-      a(this.jdField_a_of_type_AndroidWidgetTextView, new JSONObject(paramScripCmsInfo.jdField_a_of_type_JavaLangString), 18.0F);
-      a(this.jdField_b_of_type_AndroidWidgetTextView, new JSONObject(paramScripCmsInfo.b), 15.0F);
+      a(this.b, new JSONObject(paramScripCmsInfo.a), 18.0F);
+      a(this.c, new JSONObject(paramScripCmsInfo.b), 15.0F);
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("json error: ");
-      ((StringBuilder)localObject).append(paramScripCmsInfo.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramScripCmsInfo.a);
       ((StringBuilder)localObject).append("\n");
       ((StringBuilder)localObject).append(paramScripCmsInfo.b);
       QLog.e("ComponentContentNoteCard", 1, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(paramScripCmsInfo.jdField_d_of_type_JavaLangString);
-    Object localObject = ReadInJoyNoteCardUtil.c();
+    this.e.setVisibility(0);
+    this.d.setVisibility(0);
+    this.f.setVisibility(0);
+    this.d.setText(paramScripCmsInfo.d);
+    Object localObject = ReadInJoyNoteCardUtil.d();
     Context localContext = getContext();
-    int i;
+    int i1;
     if ((Build.VERSION.SDK_INT >= 23) && (localContext != null) && (localContext.checkSelfPermission("android.permission.RECORD_AUDIO") != 0)) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    if ((i == 0) && (ReadInJoyNoteCardUtil.a() == 1))
+    if ((i1 == 0) && (ReadInJoyNoteCardUtil.a() == 1))
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(getContext().getString(2131717979));
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ComponentContentNoteCard.1(this));
+      this.f.setText(getContext().getString(2131915459));
+      this.f.setOnClickListener(new ComponentContentNoteCard.1(this));
     }
     else
     {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      this.f.setText((CharSequence)localObject);
     }
-    a(this.jdField_a_of_type_AndroidWidgetImageView, paramScripCmsInfo.e);
-    a(this.jdField_b_of_type_AndroidWidgetImageView, paramScripCmsInfo.c);
-    this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new ComponentContentNoteCard.2(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    a(this.e, paramScripCmsInfo.e);
+    a(this.g, paramScripCmsInfo.c);
+    this.i.setOnClickListener(new ComponentContentNoteCard.2(this));
+    this.h.setVisibility(0);
+    localObject = this.m;
     if (localObject != null) {
       ((LottieDrawable)localObject).stop();
     }
     if (!TextUtils.isEmpty(paramScripCmsInfo.f)) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = ReadInJoyLottieDrawable.a(paramScripCmsInfo.f);
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+        this.m = ReadInJoyLottieDrawable.a(paramScripCmsInfo.f);
+        this.h.setImageDrawable(this.m);
         return;
       }
       catch (Exception paramScripCmsInfo)
@@ -344,27 +344,27 @@ public class ComponentContentNoteCard
   
   private void b(ScripCmsInfo paramScripCmsInfo)
   {
-    paramScripCmsInfo.g = paramScripCmsInfo.g.replace("#$%", ReadInJoyNoteCardUtil.a());
+    paramScripCmsInfo.g = paramScripCmsInfo.g.replace("#$%", ReadInJoyNoteCardUtil.b());
     Object localObject = getContext();
-    int i;
+    int i1;
     if ((Build.VERSION.SDK_INT >= 23) && (localObject != null) && (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") != 0)) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    if ((i == 0) && (ReadInJoyNoteCardUtil.a() == 1))
+    if ((i1 == 0) && (ReadInJoyNoteCardUtil.a() == 1))
     {
-      localObject = paramScripCmsInfo.h.replace("#$%", getContext().getString(2131717978));
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new ComponentContentNoteCard.3(this));
+      localObject = paramScripCmsInfo.h.replace("#$%", getContext().getString(2131915458));
+      this.c.setOnClickListener(new ComponentContentNoteCard.3(this));
     }
     else
     {
-      localObject = paramScripCmsInfo.h.replace("#$%", ReadInJoyNoteCardUtil.b());
+      localObject = paramScripCmsInfo.h.replace("#$%", ReadInJoyNoteCardUtil.c());
     }
     try
     {
-      a(this.jdField_a_of_type_AndroidWidgetTextView, new JSONObject(paramScripCmsInfo.g), 18.0F);
-      a(this.jdField_b_of_type_AndroidWidgetTextView, new JSONObject((String)localObject), 15.0F);
+      a(this.b, new JSONObject(paramScripCmsInfo.g), 18.0F);
+      a(this.c, new JSONObject((String)localObject), 15.0F);
     }
     catch (JSONException localJSONException)
     {
@@ -376,11 +376,11 @@ public class ComponentContentNoteCard
       localStringBuilder.append(paramScripCmsInfo.h);
       QLog.e("ComponentContentNoteCard", 1, localStringBuilder.toString());
     }
-    a(this.jdField_b_of_type_AndroidWidgetImageView, paramScripCmsInfo.i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    a(this.g, paramScripCmsInfo.i);
+    this.e.setVisibility(8);
+    this.d.setVisibility(8);
+    this.f.setVisibility(8);
+    this.h.setVisibility(8);
   }
   
   private void e()
@@ -400,46 +400,46 @@ public class ComponentContentNoteCard
   
   private void f()
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    Object localObject = this.a;
     if (localObject != null)
     {
       localObject = ((RelativeLayout)localObject).getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject).width = ((int)DeviceInfoUtil.k());
-      double d1 = DeviceInfoUtil.k();
+      ((ViewGroup.LayoutParams)localObject).width = ((int)DeviceInfoUtil.F());
+      double d1 = DeviceInfoUtil.F();
       Double.isNaN(d1);
       ((ViewGroup.LayoutParams)localObject).height = ((int)(d1 * 0.5625D));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
   private void g()
   {
-    SoundCheckRunnable localSoundCheckRunnable = this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
-    if ((localSoundCheckRunnable == null) || (!localSoundCheckRunnable.a()))
+    SoundCheckRunnable localSoundCheckRunnable = this.o;
+    if ((localSoundCheckRunnable == null) || (!localSoundCheckRunnable.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable = new SoundCheckRunnable();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable.a(this);
-      ThreadManager.excute(this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable, 16, null, true);
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ComponentContentNoteCard.5(this), 60000L);
+      this.o = new SoundCheckRunnable();
+      this.o.a(this);
+      ThreadManager.excute(this.o, 16, null, true);
+      this.n.removeCallbacksAndMessages(null);
+      this.n.postDelayed(new ComponentContentNoteCard.5(this), 60000L);
     }
   }
   
   private void h()
   {
-    SoundCheckRunnable localSoundCheckRunnable = this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
+    SoundCheckRunnable localSoundCheckRunnable = this.o;
     if (localSoundCheckRunnable != null)
     {
       localSoundCheckRunnable.a();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable.a(null);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable = null;
+      this.o.a(null);
+      this.o = null;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.n.removeCallbacksAndMessages(null);
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560128, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131626175, this, true);
   }
   
   public void a()
@@ -447,76 +447,71 @@ public class ComponentContentNoteCard
     if (QLog.isColorLevel()) {
       QLog.d("ComponentContentNoteCard", 2, "onItemResume");
     }
-    int j = 1;
-    this.jdField_b_of_type_Boolean = true;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    int i2 = 1;
+    this.s = true;
+    Object localObject = this.m;
     if (localObject != null) {
       ((LottieDrawable)localObject).resumeAnimation();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.a(this);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizNotecardSoundCheckRunnable;
+    this.k.a(this);
+    localObject = this.o;
     if (localObject != null) {
       ((SoundCheckRunnable)localObject).a();
     }
     localObject = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    int i;
-    if ((this.jdField_a_of_type_Boolean) && (ReadInJoyNoteCardUtil.a() != 0))
+    int i1;
+    if ((this.q) && (ReadInJoyNoteCardUtil.a() != 0))
     {
-      i = ReadInJoyNoteCardUtil.b(getContext(), (String)localObject);
-      int k = ReadInJoyNoteCardUtil.c(getContext(), (String)localObject);
-      if ((i < ReadInJoyNoteCardUtil.b()) && (k < ReadInJoyNoteCardUtil.c()))
+      i1 = ReadInJoyNoteCardUtil.b(getContext(), (String)localObject);
+      int i3 = ReadInJoyNoteCardUtil.c(getContext(), (String)localObject);
+      if ((i1 < ReadInJoyNoteCardUtil.e()) && (i3 < ReadInJoyNoteCardUtil.f()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsScripCmsInfo.jdField_a_of_type_Int = 2;
-        ReadInJoyNoteCardUtil.a(getContext(), (String)localObject, i + 1);
-        ReadInJoyNoteCardUtil.b(getContext(), (String)localObject, k + 1);
+        this.l.j = 2;
+        ReadInJoyNoteCardUtil.a(getContext(), (String)localObject, i1 + 1);
+        ReadInJoyNoteCardUtil.b(getContext(), (String)localObject, i3 + 1);
       }
     }
-    a(this.jdField_a_of_type_JavaLangObject);
+    a(this.r);
     if ((ReadInJoyNoteCardUtil.a() == 1) && (ReadInJoyNoteCardUtil.b(getContext(), (String)localObject) > 0))
     {
       localObject = getContext();
-      i = j;
+      i1 = i2;
       if (Build.VERSION.SDK_INT >= 23)
       {
-        i = j;
+        i1 = i2;
         if (localObject != null) {
           if (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-            i = j;
+            i1 = i2;
           } else {
-            i = 0;
+            i1 = 0;
           }
         }
       }
-      if (i != 0) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ComponentContentNoteCard.4(this), 1000L);
+      if (i1 != 0) {
+        this.n.postDelayed(new ComponentContentNoteCard.4(this), 1000L);
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(Context paramContext)
-  {
-    a(a(paramContext));
+    this.q = false;
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131371963));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370649));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378041));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371960));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369941));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369939));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376560));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370481));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371962));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371954));
+    this.a = ((RelativeLayout)paramView.findViewById(2131439408));
+    this.b = ((TextView)paramView.findViewById(2131437925));
+    this.c = ((TextView)paramView.findViewById(2131446541));
+    this.g = ((ImageView)paramView.findViewById(2131439405));
+    this.d = ((TextView)paramView.findViewById(2131437090));
+    this.e = ((ImageView)paramView.findViewById(2131437088));
+    this.f = ((TextView)paramView.findViewById(2131444811));
+    this.h = ((ImageView)paramView.findViewById(2131437753));
+    this.i = ((ImageView)paramView.findViewById(2131439407));
+    this.j = ((ComponentNotIntrest)paramView.findViewById(2131439399));
     f();
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
   {
-    ComponentNotIntrest localComponentNotIntrest = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentNotIntrest;
+    ComponentNotIntrest localComponentNotIntrest = this.j;
     if (localComponentNotIntrest != null) {
       localComponentNotIntrest.a(paramCellListener);
     }
@@ -524,14 +519,14 @@ public class ComponentContentNoteCard
   
   public void a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.r = paramObject;
     if ((paramObject instanceof IReadInJoyModel))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a().scripCmsInfo;
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsScripCmsInfo = paramObject;
+      paramObject = ((IReadInJoyModel)paramObject).k().scripCmsInfo;
+      this.l = paramObject;
       if (paramObject != null)
       {
-        if ((paramObject.jdField_a_of_type_Int != 1) && ((!TextUtils.isEmpty(paramObject.g)) || (!TextUtils.isEmpty(paramObject.h))))
+        if ((paramObject.j != 1) && ((!TextUtils.isEmpty(paramObject.g)) || (!TextUtils.isEmpty(paramObject.h))))
         {
           b(paramObject);
           return;
@@ -546,43 +541,48 @@ public class ComponentContentNoteCard
     if (QLog.isColorLevel()) {
       QLog.d("ComponentContentNoteCard", 2, "onItemPause");
     }
-    this.jdField_b_of_type_Boolean = false;
-    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    this.s = false;
+    LottieDrawable localLottieDrawable = this.m;
     if (localLottieDrawable != null) {
       localLottieDrawable.pauseAnimation();
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.b(this);
+    this.k.b(this);
     h();
+  }
+  
+  public void b(Context paramContext)
+  {
+    a(a(paramContext));
   }
   
   public void c()
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (ReadInJoyNoteCardUtil.a(getContext(), str) < ScripCmsInfo.jdField_d_of_type_Int)
+    if (ReadInJoyNoteCardUtil.a(getContext(), str) < ScripCmsInfo.o)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.c(7);
+      this.k.d(7);
       return;
     }
-    QQToast.a(getContext(), 0, getContext().getString(2131718069), 0).a();
+    QQToast.makeText(getContext(), 0, getContext().getString(2131915546), 0).show();
   }
   
   public void d()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.q = true;
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-    if ((paramAbsListView != null) && (paramAbsListView.isAnimating()) && (this.jdField_a_of_type_Int != 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+    paramAbsListView = this.m;
+    if ((paramAbsListView != null) && (paramAbsListView.isAnimating()) && (this.p != 0)) {
+      this.m.pauseAnimation();
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    this.p = paramInt;
+    paramAbsListView = this.m;
     if (paramAbsListView != null)
     {
       if (paramInt == 0)
@@ -596,7 +596,7 @@ public class ComponentContentNoteCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentNoteCard
  * JD-Core Version:    0.7.0.1
  */

@@ -28,8 +28,8 @@ public class QZoneEventHandlerProxyImpl
     if ((paramObject instanceof FriendChatPie))
     {
       paramObject = (FriendChatPie)paramObject;
-      if (((ChatDrawerHelper)paramObject.a(124)).a != null) {
-        ((ChatDrawerHelper)paramObject.a(124)).a.a(paramInt1, paramInt2, paramIntent);
+      if (((ChatDrawerHelper)paramObject.q(124)).b != null) {
+        ((ChatDrawerHelper)paramObject.q(124)).b.a(paramInt1, paramInt2, paramIntent);
       }
     }
     return true;
@@ -37,7 +37,7 @@ public class QZoneEventHandlerProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qzonehub.api.impl.QZoneEventHandlerProxyImpl
  * JD-Core Version:    0.7.0.1
  */

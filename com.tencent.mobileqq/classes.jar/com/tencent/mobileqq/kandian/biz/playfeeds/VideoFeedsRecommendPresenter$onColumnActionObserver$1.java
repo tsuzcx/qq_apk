@@ -21,20 +21,20 @@ public final class VideoFeedsRecommendPresenter$onColumnActionObserver$1
     Intrinsics.checkParameterIsNotNull(paramString, "violaPageName");
     if ((paramInt == 1) || (paramInt == 2))
     {
-      paramString = this.a.a();
+      paramString = this.a.b();
       if (paramString != null) {
-        paramString = paramString.a;
+        paramString = paramString.h;
       } else {
         paramString = null;
       }
       if (paramString != null)
       {
-        paramString = this.a.a();
+        paramString = this.a.b();
         if (paramString != null)
         {
-          paramString = paramString.a;
+          paramString = paramString.h;
           if (paramString != null) {
-            paramString.o();
+            paramString.X();
           }
         }
       }
@@ -45,20 +45,20 @@ public final class VideoFeedsRecommendPresenter$onColumnActionObserver$1
     }
   }
   
-  public void i()
+  public void cL_()
   {
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onViolaTopicVideoAnimStart mVideoFromType：");
-      ((StringBuilder)localObject).append(this.a.c());
+      ((StringBuilder)localObject).append(this.a.z());
       QLog.d("VideoFeedsRecommendPresenter", 2, ((StringBuilder)localObject).toString());
     }
     ReadInJoyLogicEngineEventDispatcher.a().b((ReadInJoyObserver)this);
-    if (ReadInJoyHelper.d(this.a.c()))
+    if (ReadInJoyHelper.n(this.a.z()))
     {
-      localObject = this.a.a();
+      localObject = this.a.v();
       if (localObject != null) {
         ((Activity)localObject).finish();
       }
@@ -66,21 +66,21 @@ public final class VideoFeedsRecommendPresenter$onColumnActionObserver$1
     else
     {
       VideoFeedsRecommendPresenter.a(this.a, true);
-      if (this.a.a() != null)
+      if (this.a.b() != null)
       {
-        localObject = this.a.a();
+        localObject = this.a.b();
         if (localObject != null) {
-          ((VideoPlayParam)localObject).a = ((IVideoPlayerWrapper)null);
+          ((VideoPlayParam)localObject).h = ((IVideoPlayerWrapper)null);
         }
-        this.a.a().a(ReportConstants.VideoEndType.EXIT_SCENE);
-        this.a.a().b(this.a.a());
+        this.a.w().a(ReportConstants.VideoEndType.EXIT_SCENE);
+        this.a.w().b(this.a.b());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsRecommendPresenter.onColumnActionObserver.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,6 +31,7 @@ import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -53,51 +54,56 @@ import mqq.observer.AccountObserver;
 public class TroopPhotoController
   implements iPicCtrl, Observer
 {
-  public static Uri a;
-  protected static int d = 7;
-  int jdField_a_of_type_Int = 0;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Context jdField_a_of_type_AndroidContentContext;
-  protected Handler a;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo;
-  TroopAvatarObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopAvatarObserver = new TroopPhotoController.9(this);
-  TroopAvatarManger jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger;
-  TroopInfoData jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<TroopPhotoController.OnUploadListener> jdField_a_of_type_JavaLangRefWeakReference;
-  public ArrayList<TroopClipPic> a;
-  List<AvatarInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  protected int[] a;
-  protected String[] a;
-  int jdField_b_of_type_Int = -1;
-  WeakReference<TroopPhotoController.OnGotoBigPicListener> jdField_b_of_type_JavaLangRefWeakReference;
-  List<TroopPhotoController.OnDataChangeListener> jdField_b_of_type_JavaUtilList = new ArrayList();
-  AccountObserver jdField_b_of_type_MqqObserverAccountObserver = new TroopPhotoController.8(this);
-  int c;
+  protected static int D = 7;
+  public static Uri E;
+  int A = 0;
+  protected String[] B;
+  protected int[] C;
+  List<TroopPhotoController.OnDataChangeListener> F = new ArrayList();
+  WeakReference<TroopPhotoController.OnUploadListener> G;
+  WeakReference<TroopPhotoController.OnGotoBigPicListener> H;
+  AccountObserver I = new TroopPhotoController.8(this);
+  TroopAvatarObserver J = new TroopPhotoController.9(this);
+  Context l;
+  Activity m;
+  String n;
+  TroopInfo o;
+  TroopInfoData p;
+  AppInterface q;
+  TroopAvatarManger r;
+  protected Bundle s;
+  protected int t;
+  protected String u;
+  protected Handler v = new Handler(Looper.getMainLooper());
+  int w = 0;
+  int x = -1;
+  List<AvatarInfo> y = new ArrayList();
+  public ArrayList<TroopClipPic> z = new ArrayList();
   
-  public TroopPhotoController(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, String paramString)
+  public TroopPhotoController(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    e();
-    this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger = new TroopAvatarManger(this.jdField_a_of_type_JavaLangString, TroopUploadingTask.class, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopAvatarObserver, true);
+    this.l = paramContext;
+    this.m = paramActivity;
+    this.q = paramAppInterface;
+    if (paramBundle != null)
+    {
+      this.s = paramBundle;
+      this.n = paramBundle.getString("troopUin", "");
+      this.t = paramBundle.getInt("type", 1);
+    }
+    a();
+    this.r = new TroopAvatarManger(this.n, TroopUploadingTask.class, this.q);
+    this.r.a(this);
+    this.q.addObserver(this.J, true);
   }
   
   private AvatarInfo a(long paramLong)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.y.iterator();
     while (localIterator.hasNext())
     {
       AvatarInfo localAvatarInfo = (AvatarInfo)localIterator.next();
-      if (localAvatarInfo.jdField_a_of_type_Long == paramLong) {
+      if (localAvatarInfo.n == paramLong) {
         return localAvatarInfo;
       }
     }
@@ -111,143 +117,156 @@ public class TroopPhotoController
   
   public static void a(String paramString, int paramInt)
   {
-    int i = MobileQQ.getContext().getResources().getDimensionPixelSize(2131299168);
-    QQToast.a(MobileQQ.getContext(), paramInt, paramString, 1).b(i);
+    int i = MobileQQ.getContext().getResources().getDimensionPixelSize(2131299920);
+    QQToast.makeText(MobileQQ.getContext(), paramInt, paramString, 1).show(i);
   }
   
-  private void g()
+  private int d(String paramString)
   {
-    jdField_a_of_type_AndroidNetUri = ((ITroopCardApi)QRoute.api(ITroopCardApi.class)).profileCardUtils_enterSnapshot(this.jdField_a_of_type_AndroidAppActivity, 257);
-  }
-  
-  private void h()
-  {
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
-      this.jdField_b_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
+    boolean bool = StringUtil.isEmpty(paramString);
+    int i = 0;
+    if (bool) {
+      return 0;
     }
-    if (this.jdField_b_of_type_Int < 0) {
+    int j = 5381;
+    while (i < paramString.length())
+    {
+      j += (j << 5) + paramString.charAt(i);
+      i += 1;
+    }
+    return 0x7FFFFFFF & j;
+  }
+  
+  private void j()
+  {
+    E = ((ITroopCardApi)QRoute.api(ITroopCardApi.class)).profileCardUtils_enterSnapshot(this.m, 257);
+  }
+  
+  private void k()
+  {
+    if (this.x >= this.y.size()) {
+      this.x = (this.y.size() - 1);
+    }
+    if (this.x < 0) {
       return;
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.y.size())
     {
-      if (this.jdField_b_of_type_Int == i) {
-        ((AvatarInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_d_of_type_Boolean = true;
+      if (this.x == i) {
+        ((AvatarInfo)this.y.get(i)).k = true;
       } else {
-        ((AvatarInfo)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_d_of_type_Boolean = false;
+        ((AvatarInfo)this.y.get(i)).k = false;
       }
       i += 1;
     }
   }
   
-  public AvatarInfo a()
+  protected void a()
   {
-    return null;
-  }
-  
-  @NonNull
-  public List<AvatarInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopPhotoController", 2, "startUpload");
-    }
-    AccountManager localAccountManager = (AccountManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(0);
-    String str = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getLocalSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (str == null)
+    if (this.t == 1)
     {
-      localAccountManager.updateSKey(this.jdField_b_of_type_MqqObserverAccountObserver);
-      return;
+      this.o = ((ITroopInfoService)this.q.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(String.valueOf(this.n));
     }
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopcode, str, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    else
+    {
+      this.o = new TroopInfo();
+      this.o.troopuin = this.n;
+    }
+    this.p = new TroopInfoData();
+    TroopInfoData localTroopInfoData = this.p;
+    localTroopInfoData.troopUin = this.n;
+    localTroopInfoData.updateForTroopChatSetting(this.o, this.l.getResources(), this.q.getCurrentAccountUin());
   }
   
   protected void a(int paramInt)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.F.iterator();
     while (localIterator.hasNext()) {
       ((TroopPhotoController.OnDataChangeListener)localIterator.next()).a(paramInt);
     }
   }
   
-  public void a(TroopClipPic paramTroopClipPic, String paramString1, String paramString2, String paramString3)
+  public void a(TroopClipPic paramTroopClipPic, Bundle paramBundle)
   {
-    if ((paramTroopClipPic != null) && (paramString1 != null))
-    {
-      if (paramString3 == null) {
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(paramTroopClipPic);
-      this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a(TroopUploadingThread.class, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, paramString1, paramString2, paramString3, null);
+    if (paramTroopClipPic == null) {
+      return;
     }
+    f();
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(paramTroopClipPic);
+    this.r.a(TroopUploadingThread.class, this.q, localArrayList, paramBundle, null);
   }
   
   protected void a(AvatarInfo paramAvatarInfo)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.F.iterator();
     while (localIterator.hasNext()) {
-      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).a(paramAvatarInfo);
+      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).b(paramAvatarInfo);
+    }
+    if (this.x >= this.y.size())
+    {
+      k();
+      a(this.x);
     }
   }
   
   protected void a(AvatarInfo paramAvatarInfo, TroopUploadingThread.UploadState paramUploadState)
   {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.F.iterator();
     while (localIterator.hasNext()) {
       ((TroopPhotoController.OnDataChangeListener)localIterator.next()).a(paramAvatarInfo, paramUploadState);
     }
   }
   
+  public void a(BaseUrlAction paramBaseUrlAction)
+  {
+    this.r.a(paramBaseUrlAction);
+  }
+  
   public void a(TroopPhotoController.OnDataChangeListener paramOnDataChangeListener)
   {
-    if (!this.jdField_b_of_type_JavaUtilList.contains(paramOnDataChangeListener)) {
-      this.jdField_b_of_type_JavaUtilList.add(paramOnDataChangeListener);
+    if (!this.F.contains(paramOnDataChangeListener)) {
+      this.F.add(paramOnDataChangeListener);
     }
   }
   
   public void a(TroopPhotoController.OnGotoBigPicListener paramOnGotoBigPicListener)
   {
     if (paramOnGotoBigPicListener != null) {
-      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramOnGotoBigPicListener);
+      this.H = new WeakReference(paramOnGotoBigPicListener);
     }
   }
   
   public void a(TroopPhotoController.OnUploadListener paramOnUploadListener)
   {
     if (paramOnUploadListener != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnUploadListener);
+      this.G = new WeakReference(paramOnUploadListener);
     }
   }
   
-  public void a(ArrayList<TroopClipPic> paramArrayList, String paramString1, String paramString2, String paramString3)
+  public void a(ArrayList<TroopClipPic> paramArrayList, Bundle paramBundle)
   {
-    if ((paramArrayList != null) && (paramString1 != null))
-    {
-      if (paramString3 == null) {
-        return;
-      }
-      ArrayList localArrayList = new ArrayList();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopClipPic localTroopClipPic = (TroopClipPic)paramArrayList.next();
-        AvatarInfo localAvatarInfo = a(localTroopClipPic.ts);
-        if ((localAvatarInfo != null) && (!localAvatarInfo.jdField_b_of_type_Boolean))
-        {
-          localAvatarInfo.jdField_b_of_type_Boolean = true;
-          localArrayList.add(localTroopClipPic);
-        }
-      }
-      if (localArrayList.size() == 0) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a(TroopUploadingThread.class, this.jdField_a_of_type_ComTencentCommonAppAppInterface, localArrayList, paramString1, paramString2, paramString3, null);
+    if (paramArrayList == null) {
+      return;
     }
+    f();
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      TroopClipPic localTroopClipPic = (TroopClipPic)paramArrayList.next();
+      AvatarInfo localAvatarInfo = a(localTroopClipPic.ts);
+      if ((localAvatarInfo != null) && (!localAvatarInfo.h))
+      {
+        localAvatarInfo.h = true;
+        localArrayList.add(localTroopClipPic);
+      }
+    }
+    if (localArrayList.size() == 0) {
+      return;
+    }
+    this.r.a(TroopUploadingThread.class, this.q, localArrayList, paramBundle, null);
   }
   
   public void a(boolean paramBoolean)
@@ -255,23 +274,23 @@ public class TroopPhotoController
     if (QLog.isColorLevel()) {
       QLog.i("TroopPhotoController", 2, String.format("onUpdateTroopAvatarWallList bServer=%b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    if (this.q != null)
     {
       if (paramBoolean) {
-        e();
+        a();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)
+      if (this.o != null)
       {
         Object localObject1 = new ArrayList();
-        ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getCoverFromDb((List)localObject1, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
-        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a();
+        ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getCoverFromDb((List)localObject1, this.o);
+        Object localObject2 = this.r.a();
         if (localObject2 != null)
         {
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
             UploadItem localUploadItem = (UploadItem)((Iterator)localObject2).next();
-            if ((localUploadItem != null) && (localUploadItem.jdField_b_of_type_Int != 1)) {
+            if ((localUploadItem != null) && (localUploadItem.e != 1)) {
               if (((List)localObject1).size() == 7)
               {
                 ((Iterator)localObject2).remove();
@@ -279,13 +298,13 @@ public class TroopPhotoController
               else
               {
                 AvatarInfo localAvatarInfo = new AvatarInfo();
-                localAvatarInfo.jdField_b_of_type_JavaLangString = localUploadItem.jdField_a_of_type_JavaLangString;
-                localAvatarInfo.jdField_c_of_type_Int = localUploadItem.jdField_a_of_type_Int;
-                localAvatarInfo.jdField_d_of_type_Int = localUploadItem.jdField_b_of_type_Int;
-                localAvatarInfo.jdField_b_of_type_Int = 2;
-                localAvatarInfo.jdField_a_of_type_Boolean = true;
-                localAvatarInfo.jdField_a_of_type_Long = localUploadItem.jdField_a_of_type_Long;
-                localAvatarInfo.jdField_d_of_type_JavaLangString = localUploadItem.jdField_b_of_type_JavaLangString;
+                localAvatarInfo.c = localUploadItem.a;
+                localAvatarInfo.f = localUploadItem.d;
+                localAvatarInfo.m = localUploadItem.e;
+                localAvatarInfo.e = 2;
+                localAvatarInfo.g = true;
+                localAvatarInfo.n = localUploadItem.f;
+                localAvatarInfo.l = localUploadItem.g;
                 ((List)localObject1).add(localAvatarInfo);
               }
             }
@@ -300,7 +319,7 @@ public class TroopPhotoController
           ((Runnable)localObject1).run();
           return;
         }
-        this.jdField_a_of_type_AndroidOsHandler.post((Runnable)localObject1);
+        this.v.post((Runnable)localObject1);
       }
     }
   }
@@ -310,16 +329,19 @@ public class TroopPhotoController
     if (QLog.isColorLevel()) {
       QLog.i("TroopPhotoController", 2, String.format("update2DB picId=%d info=%s", new Object[] { Integer.valueOf(paramInt), paramAvatarInfo }));
     }
+    if (this.t == 2) {
+      return false;
+    }
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.y.iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext())
     {
       AvatarInfo localAvatarInfo = (AvatarInfo)((Iterator)localObject).next();
       String str;
       if (localAvatarInfo != null) {
-        str = localAvatarInfo.jdField_c_of_type_JavaLangString;
+        str = localAvatarInfo.d;
       }
       try
       {
@@ -328,21 +350,21 @@ public class TroopPhotoController
       catch (NumberFormatException localNumberFormatException)
       {
         int j;
-        label111:
+        label122:
         TroopClipPic localTroopClipPic;
-        break label111;
+        break label122;
       }
       j = -1;
       if ((str != null) && (j >= 0))
       {
-        if (localAvatarInfo.jdField_b_of_type_Int == 1)
+        if (localAvatarInfo.e == 1)
         {
           localTroopClipPic = new TroopClipPic();
           localTroopClipPic.id = str;
-          localTroopClipPic.clipInfo = localAvatarInfo.jdField_d_of_type_JavaLangString;
-          localTroopClipPic.type = localAvatarInfo.jdField_d_of_type_Int;
+          localTroopClipPic.clipInfo = localAvatarInfo.l;
+          localTroopClipPic.type = localAvatarInfo.m;
           localArrayList.add(localTroopClipPic);
-          if (localAvatarInfo.jdField_c_of_type_Boolean) {
+          if (localAvatarInfo.j) {
             localHashSet.add(str);
           }
         }
@@ -353,28 +375,28 @@ public class TroopPhotoController
     }
     if (i != 0)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramAvatarInfo);
-      b(paramAvatarInfo);
+      this.y.remove(paramAvatarInfo);
+      a(paramAvatarInfo);
       return false;
     }
-    paramAvatarInfo.jdField_c_of_type_JavaLangString = String.valueOf(paramInt);
-    paramAvatarInfo.jdField_b_of_type_Int = 1;
-    paramAvatarInfo.jdField_a_of_type_Boolean = false;
+    paramAvatarInfo.d = String.valueOf(paramInt);
+    paramAvatarInfo.e = 1;
+    paramAvatarInfo.g = false;
     localObject = new TroopClipPic();
-    ((TroopClipPic)localObject).id = paramAvatarInfo.jdField_c_of_type_JavaLangString;
-    ((TroopClipPic)localObject).type = paramAvatarInfo.jdField_d_of_type_Int;
-    ((TroopClipPic)localObject).clipInfo = paramAvatarInfo.jdField_d_of_type_JavaLangString;
+    ((TroopClipPic)localObject).id = paramAvatarInfo.d;
+    ((TroopClipPic)localObject).type = paramAvatarInfo.m;
+    ((TroopClipPic)localObject).clipInfo = paramAvatarInfo.l;
     localArrayList.add(localObject);
-    if (paramAvatarInfo.jdField_c_of_type_Boolean) {
-      localHashSet.add(paramAvatarInfo.jdField_c_of_type_JavaLangString);
+    if (paramAvatarInfo.j) {
+      localHashSet.add(paramAvatarInfo.d);
     }
-    paramAvatarInfo = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    paramAvatarInfo = this.q;
     if (paramAvatarInfo != null)
     {
       paramAvatarInfo = (ITroopInfoService)paramAvatarInfo.getRuntimeService(ITroopInfoService.class, "");
       if (paramAvatarInfo != null)
       {
-        localObject = paramAvatarInfo.findTroopInfo(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin));
+        localObject = paramAvatarInfo.findTroopInfo(String.valueOf(this.o.troopuin));
         if ((localObject != null) && (localArrayList.size() > 0))
         {
           ((TroopInfo)localObject).mTroopPicList.clear();
@@ -388,138 +410,13 @@ public class TroopPhotoController
     return true;
   }
   
-  protected boolean a(String paramString)
+  protected boolean a(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() == 0;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    boolean bool = QLog.isColorLevel();
-    int j = 0;
-    if (bool) {
-      QLog.i("TroopPhotoController", 2, String.format("onPicPicked clip=%s path=%s", new Object[] { paramString2, paramString1 }));
-    }
-    if (b(paramString1)) {
-      return false;
-    }
-    if (b(paramString1, paramString2)) {
-      return false;
-    }
-    TroopClipPic localTroopClipPic = new TroopClipPic();
-    localTroopClipPic.id = paramString1;
-    localTroopClipPic.clipInfo = paramString2;
-    localTroopClipPic.type = this.jdField_c_of_type_Int;
-    localTroopClipPic.ts = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 7) {
-      return false;
-    }
-    paramString2 = new AvatarInfo();
-    paramString2.jdField_b_of_type_JavaLangString = localTroopClipPic.id;
-    paramString2.jdField_d_of_type_JavaLangString = localTroopClipPic.clipInfo;
-    paramString2.jdField_b_of_type_Int = 2;
-    paramString2.jdField_a_of_type_Boolean = true;
-    paramString1 = null;
-    paramString2.jdField_c_of_type_JavaLangString = null;
-    paramString2.jdField_d_of_type_Int = localTroopClipPic.type;
-    paramString2.jdField_a_of_type_Long = localTroopClipPic.ts;
-    this.jdField_a_of_type_JavaUtilList.add(paramString2);
-    this.jdField_a_of_type_JavaUtilArrayList.add(localTroopClipPic);
-    a(paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopPhotoController", 2, String.format("onPicPicked uploadPaths=[size=%d, %s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), Arrays.toString(this.jdField_a_of_type_JavaUtilList.toArray()) }));
-    }
-    paramString2 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (paramString2 != null) {
-      paramString1 = (TroopPhotoController.OnUploadListener)paramString2.get();
-    }
-    int i = j;
-    if (paramString1 != null)
-    {
-      i = j;
-      if (paramString1.a(this.jdField_c_of_type_Int)) {
-        i = 1;
-      }
-    }
-    if (i == 0) {
-      a();
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "P_CliOper", "Grp_set", "", "Grp_moredata", "upload_head", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, "", "", "");
-    return true;
-  }
-  
-  protected void b()
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).a();
-    }
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-      a(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    h();
-    a(paramInt);
-  }
-  
-  protected void b(AvatarInfo paramAvatarInfo)
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).b(paramAvatarInfo);
-    }
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
-    {
-      h();
-      a(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(localActivity, 230);
-    localQQCustomDialog.setTitle(null);
-    if (paramBoolean) {
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131693291));
-    } else {
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131693290));
-    }
-    localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131693339), new DialogUtil.DialogOnClickAdapter());
-    localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131693339));
-    localQQCustomDialog.show();
-  }
-  
-  protected boolean b(String paramString)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopTypeExt == 2) || (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopTypeExt == 3) || (this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopTypeExt == 4))
-    {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeFile(paramString, localOptions);
-      if ((localOptions.outWidth < 100) || (localOptions.outHeight < 100)) {}
-    }
-    else
-    {
-      return false;
-    }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131697251, 1).a();
-    return true;
-  }
-  
-  protected boolean b(String paramString1, String paramString2)
-  {
-    boolean bool2 = ((ITroopCardApi)QRoute.api(ITroopCardApi.class)).isInstanceOfTroopAvatarWallEditActivity(this.jdField_a_of_type_AndroidAppActivity);
+    boolean bool2 = ((ITroopCardApi)QRoute.api(ITroopCardApi.class)).isInstanceOfTroopAvatarWallEditActivity(this.m);
     boolean bool1 = false;
     if (!bool2)
     {
-      Object localObject = this.jdField_b_of_type_JavaLangRefWeakReference;
+      Object localObject = this.H;
       if (localObject != null) {
         localObject = (TroopPhotoController.OnGotoBigPicListener)((WeakReference)localObject).get();
       } else {
@@ -530,7 +427,7 @@ public class TroopPhotoController
         Bundle localBundle = new Bundle();
         localBundle.putString("PhotoConst.SINGLE_PHOTO_PATH", paramString1);
         localBundle.putString("key_clip_info", paramString2);
-        if (this.jdField_c_of_type_Int == 0) {
+        if (this.A == 0) {
           bool1 = true;
         }
         localBundle.putBoolean("IS_COVER", bool1);
@@ -542,48 +439,48 @@ public class TroopPhotoController
     return false;
   }
   
-  public void c()
+  public void b()
   {
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {
+    if (this.m == null) {
       return;
     }
-    long l = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.dwGroupFlagExt;
+    long l1 = this.p.dwGroupFlagExt;
     boolean bool = false;
     int j = 0;
-    if (((l & 0x800) == 0L) && (this.jdField_a_of_type_Int <= 0))
+    if (((l1 & 0x800) == 0L) && (this.w <= 0))
     {
-      if (this.jdField_a_of_type_ArrayOfInt == null) {
-        this.jdField_a_of_type_ArrayOfInt = new int[jdField_d_of_type_Int];
+      if (this.C == null) {
+        this.C = new int[D];
       }
-      Object localObject = this.jdField_a_of_type_ArrayOfInt;
+      Object localObject = this.C;
       localObject[0] = 13;
       localObject[1] = 14;
       localObject[2] = 16;
       int i = 3;
-      while (i < jdField_d_of_type_Int)
+      while (i < D)
       {
-        this.jdField_a_of_type_ArrayOfInt[i] = -1;
+        this.C[i] = -1;
         i += 1;
       }
-      if (this.jdField_a_of_type_ArrayOfJavaLangString == null) {
-        this.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getStringArray(2130968636);
+      if (this.B == null) {
+        this.B = this.m.getResources().getStringArray(2130968636);
       }
-      localObject = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null);
+      localObject = (ActionSheet)ActionSheetHelper.b(this.m, null);
       i = j;
       for (;;)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        int[] arrayOfInt = this.C;
         if (i >= arrayOfInt.length) {
           break;
         }
         if (arrayOfInt[i] == 16)
         {
-          ((ActionSheet)localObject).addCancelButton(this.jdField_a_of_type_ArrayOfJavaLangString[arrayOfInt[i]]);
+          ((ActionSheet)localObject).addCancelButton(this.B[arrayOfInt[i]]);
         }
         else if (arrayOfInt[i] >= 0)
         {
           j = arrayOfInt[i];
-          String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+          String[] arrayOfString = this.B;
           if (j < arrayOfString.length) {
             ((ActionSheet)localObject).addButton(arrayOfString[arrayOfInt[i]], 1);
           }
@@ -594,50 +491,160 @@ public class TroopPhotoController
       ((ActionSheet)localObject).show();
       return;
     }
-    if (this.jdField_a_of_type_Int > 0) {
+    if (this.w > 0) {
       bool = true;
     }
     b(bool);
-    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00899", "Grp_certified", "", "data", "exp_edit_head", 3, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, "", "", "");
+    ReportController.b(this.q, "dc00899", "Grp_certified", "", "data", "exp_edit_head", 3, 0, this.o.troopuin, "", "", "");
+  }
+  
+  public void b(int paramInt)
+  {
+    this.x = paramInt;
+    k();
+    a(paramInt);
+  }
+  
+  protected void b(AvatarInfo paramAvatarInfo)
+  {
+    Iterator localIterator = this.F.iterator();
+    while (localIterator.hasNext()) {
+      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).a(paramAvatarInfo);
+    }
+  }
+  
+  public void b(TroopPhotoController.OnDataChangeListener paramOnDataChangeListener)
+  {
+    this.F.remove(paramOnDataChangeListener);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    Activity localActivity = this.m;
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(localActivity, 230);
+    localQQCustomDialog.setTitle(null);
+    if (paramBoolean) {
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131890839));
+    } else {
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131890838));
+    }
+    localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131890888), new DialogUtil.DialogOnClickAdapter());
+    localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131890888));
+    localQQCustomDialog.show();
+  }
+  
+  protected boolean b(String paramString)
+  {
+    return this.z.size() == 0;
+  }
+  
+  public boolean b(String paramString1, String paramString2)
+  {
+    boolean bool = QLog.isColorLevel();
+    int j = 0;
+    if (bool) {
+      QLog.i("TroopPhotoController", 2, String.format("onPicPicked clip=%s path=%s", new Object[] { paramString2, paramString1 }));
+    }
+    if (c(paramString1)) {
+      return false;
+    }
+    if (a(paramString1, paramString2)) {
+      return false;
+    }
+    TroopClipPic localTroopClipPic = new TroopClipPic();
+    localTroopClipPic.id = paramString1;
+    localTroopClipPic.clipInfo = paramString2;
+    localTroopClipPic.type = this.A;
+    localTroopClipPic.ts = SystemClock.uptimeMillis();
+    if (this.y.size() >= 7) {
+      return false;
+    }
+    paramString2 = new AvatarInfo();
+    paramString2.c = localTroopClipPic.id;
+    paramString2.l = localTroopClipPic.clipInfo;
+    paramString2.e = 2;
+    paramString2.g = true;
+    paramString1 = null;
+    paramString2.d = null;
+    paramString2.m = localTroopClipPic.type;
+    paramString2.n = localTroopClipPic.ts;
+    this.y.add(paramString2);
+    this.z.add(localTroopClipPic);
+    b(paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController", 2, String.format("onPicPicked uploadPaths=[size=%d, %s]", new Object[] { Integer.valueOf(this.z.size()), Arrays.toString(this.y.toArray()) }));
+    }
+    paramString2 = this.G;
+    if (paramString2 != null) {
+      paramString1 = (TroopPhotoController.OnUploadListener)paramString2.get();
+    }
+    int i = j;
+    if (paramString1 != null)
+    {
+      i = j;
+      if (paramString1.b(this.A)) {
+        i = 1;
+      }
+    }
+    if (i == 0) {
+      c();
+    }
+    ReportController.b(this.q, "P_CliOper", "Grp_set", "", "Grp_moredata", "upload_head", 0, 0, this.o.troopuin, "", "", "");
+    return true;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController", 2, "startUpload");
+    }
+    AccountManager localAccountManager = (AccountManager)this.q.getManager(0);
+    this.u = ((ITroopUtilsApi)QRoute.api(ITroopUtilsApi.class)).getLocalSkey(this.q);
+    if (this.u == null)
+    {
+      localAccountManager.updateSKey(this.I);
+      return;
+    }
+    a(this.z, this.s);
   }
   
   public void c(int paramInt)
   {
-    Object localObject1 = (AvatarInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (((ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class)).isNumeric(((AvatarInfo)localObject1).jdField_c_of_type_JavaLangString))
+    Object localObject1 = (AvatarInfo)this.y.get(paramInt);
+    if (((ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class)).isNumeric(((AvatarInfo)localObject1).d))
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "del_head", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, "", "", "");
+      ReportController.b(this.q, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "del_head", 0, 0, this.o.troopuin, "", "", "");
       localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(Integer.valueOf(((AvatarInfo)localObject1).jdField_c_of_type_JavaLangString));
-      this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, 2, (ArrayList)localObject2);
+      ((ArrayList)localObject2).add(Integer.valueOf(((AvatarInfo)localObject1).d));
+      this.r.a(this.o.troopuin, 2, (ArrayList)localObject2);
     }
-    this.jdField_a_of_type_JavaUtilList.remove(localObject1);
-    b((AvatarInfo)localObject1);
+    this.y.remove(localObject1);
+    a((AvatarInfo)localObject1);
     Object localObject2 = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
-    int i = ((AvatarInfo)localObject1).jdField_b_of_type_Int;
+    int i = ((AvatarInfo)localObject1).e;
     paramInt = 1;
-    if ((i == 1) && (!TextUtils.isEmpty(((AvatarInfo)localObject1).jdField_c_of_type_JavaLangString)) && (((ITroopAvatarUtilApi)localObject2).isNumeric(((AvatarInfo)localObject1).jdField_c_of_type_JavaLangString)))
+    if ((i == 1) && (!TextUtils.isEmpty(((AvatarInfo)localObject1).d)) && (((ITroopAvatarUtilApi)localObject2).isNumeric(((AvatarInfo)localObject1).d)))
     {
       localObject2 = new ArrayList();
-      ((List)localObject2).addAll(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.mTroopPicList);
+      ((List)localObject2).addAll(this.o.mTroopPicList);
       Iterator localIterator = ((List)localObject2).iterator();
       while (localIterator.hasNext())
       {
         TroopClipPic localTroopClipPic = (TroopClipPic)localIterator.next();
-        if (((AvatarInfo)localObject1).jdField_c_of_type_JavaLangString.equals(localTroopClipPic.id))
+        if (((AvatarInfo)localObject1).d.equals(localTroopClipPic.id))
         {
           ((List)localObject2).remove(localTroopClipPic);
-          break label262;
+          break label258;
         }
       }
       paramInt = 0;
-      label262:
+      label258:
       i = paramInt;
       if (paramInt != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.mTroopPicList.clear();
-        this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.mTroopPicList.addAll((Collection)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.mTroopVerifyingPics.remove(((AvatarInfo)localObject1).jdField_c_of_type_JavaLangString);
+        this.o.mTroopPicList.clear();
+        this.o.mTroopPicList.addAll((Collection)localObject2);
+        this.o.mTroopVerifyingPics.remove(((AvatarInfo)localObject1).d);
         i = paramInt;
       }
     }
@@ -645,7 +652,7 @@ public class TroopPhotoController
     {
       i = 0;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    localObject1 = this.q;
     if ((localObject1 != null) && (i != 0))
     {
       localObject1 = (ITroopInfoService)((AppInterface)localObject1).getRuntimeService(ITroopInfoService.class, "");
@@ -657,32 +664,50 @@ public class TroopPhotoController
   
   protected void c(AvatarInfo paramAvatarInfo)
   {
-    TroopInfo localTroopInfo = ((ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
+    TroopInfo localTroopInfo = ((ITroopInfoService)this.q.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(this.o.troopuin);
     if ((localTroopInfo != null) && ((localTroopInfo.troopTypeExt == 2) || (localTroopInfo.troopTypeExt == 4)) && (localTroopInfo.isAdmin()))
     {
-      paramAvatarInfo.jdField_c_of_type_Boolean = true;
-      if (!this.jdField_a_of_type_ComTencentCommonAppAppInterface.getPreferences().getBoolean("has_shown_same_city_picture_uploaded_dialog", false))
+      paramAvatarInfo.j = true;
+      if (!this.q.getPreferences().getBoolean("has_shown_same_city_picture_uploaded_dialog", false))
       {
-        paramAvatarInfo = this.jdField_a_of_type_AndroidAppActivity;
+        paramAvatarInfo = this.m;
         if ((paramAvatarInfo != null) && (!paramAvatarInfo.isFinishing()))
         {
-          paramAvatarInfo = this.jdField_a_of_type_AndroidAppActivity;
-          DialogUtil.a(paramAvatarInfo, 230, null, paramAvatarInfo.getString(2131696081), null, this.jdField_a_of_type_AndroidAppActivity.getString(2131696071), new DialogUtil.DialogOnClickAdapter(), null).show();
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getPreferences().edit().putBoolean("has_shown_same_city_picture_uploaded_dialog", true).commit();
+          paramAvatarInfo = this.m;
+          DialogUtil.a(paramAvatarInfo, 230, null, paramAvatarInfo.getString(2131893846), null, this.m.getString(2131893836), new DialogUtil.DialogOnClickAdapter(), null).show();
+          this.q.getPreferences().edit().putBoolean("has_shown_same_city_picture_uploaded_dialog", true).commit();
         }
       }
     }
   }
   
-  public void d()
+  protected boolean c(String paramString)
   {
-    Object localObject = jdField_a_of_type_AndroidNetUri;
-    if (localObject != null)
+    if ((this.o.troopTypeExt == 2) || (this.o.troopTypeExt == 3) || (this.o.troopTypeExt == 4))
     {
-      localObject = BaseImageUtil.b(this.jdField_a_of_type_AndroidAppActivity, (Uri)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).startPhotoEdit(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getBusiByType(this.jdField_c_of_type_Int));
-      }
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramString, localOptions);
+      if ((localOptions.outWidth < 100) || (localOptions.outHeight < 100)) {}
+    }
+    else
+    {
+      return false;
+    }
+    QQToast.makeText(this.m, 2131895024, 1).show();
+    return true;
+  }
+  
+  protected void d()
+  {
+    Iterator localIterator = this.F.iterator();
+    while (localIterator.hasNext()) {
+      ((TroopPhotoController.OnDataChangeListener)localIterator.next()).b();
+    }
+    if (this.x >= this.y.size())
+    {
+      this.x = this.y.size();
+      a(this.x);
     }
   }
   
@@ -696,39 +721,77 @@ public class TroopPhotoController
       QLog.i("TroopPhotoController", 2, ((StringBuilder)localObject).toString());
     }
     a(((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getErrText(MobileQQ.getContext(), -1));
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.y.iterator();
     while (((Iterator)localObject).hasNext())
     {
       AvatarInfo localAvatarInfo = (AvatarInfo)((Iterator)localObject).next();
-      if ((localAvatarInfo.jdField_b_of_type_Int == 2) || (localAvatarInfo.jdField_a_of_type_Boolean))
+      if ((localAvatarInfo.e == 2) || (localAvatarInfo.g))
       {
         ((Iterator)localObject).remove();
-        b(localAvatarInfo);
+        a(localAvatarInfo);
       }
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
+    this.z.clear();
+    this.r.a(this.o.troopuin);
   }
   
-  protected void e()
+  public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo = ((ITroopInfoService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData = new TroopInfoData();
-    TroopInfoData localTroopInfoData = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData;
-    localTroopInfoData.troopUin = this.jdField_a_of_type_JavaLangString;
-    localTroopInfoData.updateForTroopChatSetting(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    this.r.b(this);
+    this.q.removeObserver(this.J);
+    this.F.clear();
   }
   
   public void e(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.w = paramInt;
   }
   
   public void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopAvatarTroopAvatarManger.b(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopAvatarObserver);
-    this.jdField_b_of_type_JavaUtilList.clear();
+    Object localObject = this.o;
+    if ((localObject != null) && (this.q != null))
+    {
+      this.s.putString("troopCode", ((TroopInfo)localObject).troopcode);
+      this.s.putString("ukey", this.u);
+      this.s.putString("uin", this.q.getCurrentAccountUin());
+      int i = d(this.u);
+      this.s.putInt("bkn", i);
+      this.s.putString("pUin", this.q.getCurrentAccountUin());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("troopCode:");
+      ((StringBuilder)localObject).append(this.o.troopcode);
+      ((StringBuilder)localObject).append(" skey:");
+      ((StringBuilder)localObject).append(this.u);
+      ((StringBuilder)localObject).append(" uin and pUin:");
+      ((StringBuilder)localObject).append(this.q.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(" mBkn:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("TroopPhotoController", 4, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  @NonNull
+  public List<AvatarInfo> g()
+  {
+    return this.y;
+  }
+  
+  public AvatarInfo h()
+  {
+    return null;
+  }
+  
+  public void i()
+  {
+    Object localObject = E;
+    if (localObject != null)
+    {
+      localObject = BaseImageUtil.b(this.m, (Uri)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).startPhotoEdit(this.m, (String)localObject, ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getBusiByType(this.A));
+      }
+    }
   }
   
   public void update(Observable paramObservable, Object paramObject)
@@ -740,14 +803,14 @@ public class TroopPhotoController
       return;
     }
     paramObservable = (TroopUploadingThread.UploadState)paramObject;
-    if (paramObservable.jdField_d_of_type_Int != this.jdField_c_of_type_Int) {
+    if (paramObservable.e != this.A) {
       return;
     }
-    paramObject = a(paramObservable.jdField_a_of_type_Long);
+    paramObject = a(paramObservable.d);
     if (paramObject == null) {
       return;
     }
-    int i = paramObservable.jdField_a_of_type_Int;
+    int i = paramObservable.a;
     if (i != 0)
     {
       if (i != 1)
@@ -755,35 +818,35 @@ public class TroopPhotoController
         if (i != 2) {
           return;
         }
-        ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "upload_head_cancel", 0, 0, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin, String.valueOf(paramObservable.jdField_b_of_type_Int), "", "");
-        if (TextUtils.isEmpty(paramObservable.jdField_a_of_type_JavaLangString)) {
-          paramObservable = ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getErrText(this.jdField_a_of_type_AndroidAppActivity, paramObservable.jdField_b_of_type_Int);
+        ReportController.b(this.q, "P_CliOper", "Grp_set", "", "Grp_Admin_data", "upload_head_cancel", 0, 0, this.o.troopuin, String.valueOf(paramObservable.b), "", "");
+        if (TextUtils.isEmpty(paramObservable.g)) {
+          paramObservable = ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).getErrText(this.m, paramObservable.b);
         } else {
-          paramObservable = paramObservable.jdField_a_of_type_JavaLangString;
+          paramObservable = paramObservable.g;
         }
         if (QLog.isColorLevel()) {
           QLog.i("TroopPhotoController", 2, String.format("update() failed info=%s", new Object[] { paramObject }));
         }
         paramObservable = new TroopPhotoController.3(this, paramObject, paramObservable);
-        this.jdField_a_of_type_AndroidOsHandler.post(paramObservable);
+        this.v.post(paramObservable);
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.i("TroopPhotoController", 2, String.format("update() suc state.result=%d newSeq=%d info=%s", new Object[] { Integer.valueOf(paramObservable.jdField_b_of_type_Int), Integer.valueOf(paramObservable.jdField_c_of_type_Int), paramObject }));
+        QLog.i("TroopPhotoController", 2, String.format("update() suc state.result=%d newSeq=%d info=%s", new Object[] { Integer.valueOf(paramObservable.b), Integer.valueOf(paramObservable.c), paramObject }));
       }
-      i = paramObservable.jdField_b_of_type_Int;
+      i = paramObservable.b;
       paramObservable = new TroopPhotoController.2(this, paramObservable, paramObject, i);
-      this.jdField_a_of_type_AndroidOsHandler.post(paramObservable);
-      ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).cacheFileFromLocal(i, paramObject.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo.troopuin);
+      this.v.post(paramObservable);
+      ((ITroopPhotoUtilsApi)QRoute.api(ITroopPhotoUtilsApi.class)).cacheFileFromLocal(i, paramObject.c, this.o.troopuin);
       return;
     }
-    paramObject.jdField_c_of_type_Int = paramObservable.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidOsHandler.post(new TroopPhotoController.1(this, paramObject, paramObservable));
+    paramObject.f = paramObservable.b;
+    this.v.post(new TroopPhotoController.1(this, paramObject, paramObservable));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.TroopPhotoController
  * JD-Core Version:    0.7.0.1
  */

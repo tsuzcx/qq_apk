@@ -14,11 +14,11 @@ final class NearbyTroops$1
   {
     if (paramInt1 == paramInt2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroops$CustomViewHolder.c.setText(this.jdField_a_of_type_JavaLangString);
+      this.a.e.setText(this.b);
       return;
     }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqTroopDataNearbyTroops$CustomViewHolder.c;
+    String str = this.b.substring(0, paramInt1);
+    TextView localTextView = this.a.e;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("...");
@@ -27,7 +27,7 @@ final class NearbyTroops$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.NearbyTroops.1
  * JD-Core Version:    0.7.0.1
  */

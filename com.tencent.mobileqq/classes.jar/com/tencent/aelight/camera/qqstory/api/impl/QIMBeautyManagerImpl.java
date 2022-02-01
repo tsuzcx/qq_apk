@@ -14,7 +14,7 @@ public class QIMBeautyManagerImpl
   
   public void parseConfig()
   {
-    QIMBeautyManager.a().a();
+    QIMBeautyManager.a().b();
   }
   
   public boolean saveBeautyConfig(String paramString, int paramInt, Context paramContext)
@@ -24,7 +24,7 @@ public class QIMBeautyManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.QIMBeautyManagerImpl
  * JD-Core Version:    0.7.0.1
  */

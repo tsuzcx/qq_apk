@@ -2,105 +2,119 @@ package okio;
 
 import java.io.EOFException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.zip.CRC32;
 import java.util.zip.Inflater;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/GzipSource;", "Lokio/Source;", "source", "(Lokio/Source;)V", "crc", "Ljava/util/zip/CRC32;", "inflater", "Ljava/util/zip/Inflater;", "inflaterSource", "Lokio/InflaterSource;", "section", "", "Lokio/RealBufferedSource;", "checkEqual", "", "name", "", "expected", "", "actual", "close", "consumeHeader", "consumeTrailer", "read", "", "sink", "Lokio/Buffer;", "byteCount", "timeout", "Lokio/Timeout;", "updateCrc", "buffer", "offset", "okio"}, k=1, mv={1, 1, 16})
 public final class GzipSource
   implements Source
 {
-  private static final byte FCOMMENT = 4;
-  private static final byte FEXTRA = 2;
-  private static final byte FHCRC = 1;
-  private static final byte FNAME = 3;
-  private static final byte SECTION_BODY = 1;
-  private static final byte SECTION_DONE = 3;
-  private static final byte SECTION_HEADER = 0;
-  private static final byte SECTION_TRAILER = 2;
-  private final CRC32 crc = new CRC32();
+  private final CRC32 crc;
   private final Inflater inflater;
   private final InflaterSource inflaterSource;
-  private int section = 0;
-  private final BufferedSource source;
+  private byte section;
+  private final RealBufferedSource source;
   
-  public GzipSource(Source paramSource)
+  public GzipSource(@NotNull Source paramSource)
   {
-    if (paramSource != null)
-    {
-      this.inflater = new Inflater(true);
-      this.source = Okio.buffer(paramSource);
-      this.inflaterSource = new InflaterSource(this.source, this.inflater);
-      return;
-    }
-    throw new IllegalArgumentException("source == null");
+    this.source = new RealBufferedSource(paramSource);
+    this.inflater = new Inflater(true);
+    this.inflaterSource = new InflaterSource((BufferedSource)this.source, this.inflater);
+    this.crc = new CRC32();
   }
   
-  private void checkEqual(String paramString, int paramInt1, int paramInt2)
+  private final void checkEqual(String paramString, int paramInt1, int paramInt2)
   {
     if (paramInt2 == paramInt1) {
       return;
     }
-    throw new IOException(String.format("%s: actual 0x%08x != expected 0x%08x", new Object[] { paramString, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) }));
+    Object[] arrayOfObject = new Object[3];
+    arrayOfObject[0] = paramString;
+    arrayOfObject[1] = Integer.valueOf(paramInt2);
+    arrayOfObject[2] = Integer.valueOf(paramInt1);
+    paramString = String.format("%s: actual 0x%08x != expected 0x%08x", Arrays.copyOf(arrayOfObject, arrayOfObject.length));
+    Intrinsics.checkExpressionValueIsNotNull(paramString, "java.lang.String.format(this, *args)");
+    throw ((Throwable)new IOException(paramString));
   }
   
-  private void consumeHeader()
+  private final void consumeHeader()
   {
     this.source.require(10L);
-    int j = this.source.buffer().getByte(3L);
+    int m = this.source.bufferField.getByte(3L);
+    int k = 1;
     int i;
-    if ((j >> 1 & 0x1) == 1) {
+    if ((m >> 1 & 0x1) == 1) {
       i = 1;
     } else {
       i = 0;
     }
     if (i != 0) {
-      updateCrc(this.source.buffer(), 0L, 10L);
+      updateCrc(this.source.bufferField, 0L, 10L);
     }
     checkEqual("ID1ID2", 8075, this.source.readShort());
     this.source.skip(8L);
+    int j;
+    if ((m >> 2 & 0x1) == 1) {
+      j = 1;
+    } else {
+      j = 0;
+    }
     long l;
-    if ((j >> 2 & 0x1) == 1)
+    if (j != 0)
     {
       this.source.require(2L);
       if (i != 0) {
-        updateCrc(this.source.buffer(), 0L, 2L);
+        updateCrc(this.source.bufferField, 0L, 2L);
       }
-      int k = this.source.buffer().readShortLe();
-      BufferedSource localBufferedSource = this.source;
-      l = k;
-      localBufferedSource.require(l);
+      l = this.source.bufferField.readShortLe();
+      this.source.require(l);
       if (i != 0) {
-        updateCrc(this.source.buffer(), 0L, l);
+        updateCrc(this.source.bufferField, 0L, l);
       }
       this.source.skip(l);
     }
-    if ((j >> 3 & 0x1) == 1)
+    if ((m >> 3 & 0x1) == 1) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (j != 0)
     {
       l = this.source.indexOf((byte)0);
       if (l != -1L)
       {
         if (i != 0) {
-          updateCrc(this.source.buffer(), 0L, l + 1L);
+          updateCrc(this.source.bufferField, 0L, l + 1L);
         }
         this.source.skip(l + 1L);
       }
       else
       {
-        throw new EOFException();
+        throw ((Throwable)new EOFException());
       }
     }
-    if ((j >> 4 & 0x1) == 1)
+    if ((m >> 4 & 0x1) == 1) {
+      j = k;
+    } else {
+      j = 0;
+    }
+    if (j != 0)
     {
       l = this.source.indexOf((byte)0);
       if (l != -1L)
       {
         if (i != 0) {
-          updateCrc(this.source.buffer(), 0L, l + 1L);
+          updateCrc(this.source.bufferField, 0L, l + 1L);
         }
         this.source.skip(l + 1L);
       }
       else
       {
-        throw new EOFException();
+        throw ((Throwable)new EOFException());
       }
     }
     if (i != 0)
@@ -110,25 +124,47 @@ public final class GzipSource
     }
   }
   
-  private void consumeTrailer()
+  private final void consumeTrailer()
   {
     checkEqual("CRC", this.source.readIntLe(), (int)this.crc.getValue());
     checkEqual("ISIZE", this.source.readIntLe(), (int)this.inflater.getBytesWritten());
   }
   
-  private void updateCrc(Buffer paramBuffer, long paramLong1, long paramLong2)
+  private final void updateCrc(Buffer paramBuffer, long paramLong1, long paramLong2)
   {
-    for (paramBuffer = paramBuffer.head; paramLong1 >= paramBuffer.limit - paramBuffer.pos; paramBuffer = paramBuffer.next) {
-      paramLong1 -= paramBuffer.limit - paramBuffer.pos;
+    Segment localSegment = paramBuffer.head;
+    paramBuffer = localSegment;
+    long l = paramLong1;
+    if (localSegment == null)
+    {
+      Intrinsics.throwNpe();
+      l = paramLong1;
+      paramBuffer = localSegment;
+    }
+    while (l >= paramBuffer.limit - paramBuffer.pos)
+    {
+      paramLong1 = l - (paramBuffer.limit - paramBuffer.pos);
+      localSegment = paramBuffer.next;
+      paramBuffer = localSegment;
+      l = paramLong1;
+      if (localSegment == null)
+      {
+        Intrinsics.throwNpe();
+        paramBuffer = localSegment;
+        l = paramLong1;
+      }
     }
     while (paramLong2 > 0L)
     {
-      int i = (int)(paramBuffer.pos + paramLong1);
+      int i = (int)(paramBuffer.pos + l);
       int j = (int)Math.min(paramBuffer.limit - i, paramLong2);
       this.crc.update(paramBuffer.data, i, j);
       paramLong2 -= j;
       paramBuffer = paramBuffer.next;
-      paramLong1 = 0L;
+      if (paramBuffer == null) {
+        Intrinsics.throwNpe();
+      }
+      l = 0L;
     }
   }
   
@@ -137,9 +173,16 @@ public final class GzipSource
     this.inflaterSource.close();
   }
   
-  public long read(Buffer paramBuffer, long paramLong)
+  public long read(@NotNull Buffer paramBuffer, long paramLong)
   {
-    if (paramLong >= 0L)
+    Intrinsics.checkParameterIsNotNull(paramBuffer, "sink");
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
       if (paramLong == 0L) {
         return 0L;
@@ -151,7 +194,7 @@ public final class GzipSource
       }
       if (this.section == 1)
       {
-        long l = paramBuffer.size;
+        long l = paramBuffer.size();
         paramLong = this.inflaterSource.read(paramBuffer, paramLong);
         if (paramLong != -1L)
         {
@@ -167,16 +210,17 @@ public final class GzipSource
         if (this.source.exhausted()) {
           return -1L;
         }
-        throw new IOException("gzip finished without exhausting source");
+        throw ((Throwable)new IOException("gzip finished without exhausting source"));
       }
       return -1L;
     }
     paramBuffer = new StringBuilder();
     paramBuffer.append("byteCount < 0: ");
     paramBuffer.append(paramLong);
-    throw new IllegalArgumentException(paramBuffer.toString());
+    throw ((Throwable)new IllegalArgumentException(paramBuffer.toString().toString()));
   }
   
+  @NotNull
   public Timeout timeout()
   {
     return this.source.timeout();
@@ -184,7 +228,7 @@ public final class GzipSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.GzipSource
  * JD-Core Version:    0.7.0.1
  */

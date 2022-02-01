@@ -9,7 +9,7 @@ class BaseGaInvite$ToolBarTask
   
   public void run()
   {
-    this.this$0.a.sendEmptyMessage(0);
+    this.this$0.n.sendEmptyMessage(0);
   }
 }
 

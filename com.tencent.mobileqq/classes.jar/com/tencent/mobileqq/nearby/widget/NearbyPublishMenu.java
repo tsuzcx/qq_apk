@@ -24,20 +24,19 @@ import java.util.Iterator;
 public class NearbyPublishMenu
   extends Dialog
 {
-  protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected View.OnClickListener a;
   protected NearbyPublishMenu.OnItemClickListener a;
-  protected int b;
+  protected Context b;
+  protected Drawable c;
+  protected int d;
+  protected int e;
+  protected View.OnClickListener f = new NearbyPublishMenu.1(this);
   
   public NearbyPublishMenu(Context paramContext, ArrayList<MenuItem> paramArrayList)
   {
-    super(paramContext, 2131756189);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new NearbyPublishMenu.1(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = DisplayUtil.a(paramContext, 34.0F);
-    this.jdField_a_of_type_Int = DisplayUtil.a(paramContext, 34.0F);
+    super(paramContext, 2131953338);
+    this.b = paramContext;
+    this.d = DisplayUtil.a(paramContext, 34.0F);
+    this.d = DisplayUtil.a(paramContext, 34.0F);
     a(paramArrayList);
   }
   
@@ -55,8 +54,8 @@ public class NearbyPublishMenu
   
   protected void a(ImageView paramImageView, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f2f2f2"));
+    if (this.c == null) {
+      this.c = new ColorDrawable(Color.parseColor("#f2f2f2"));
     }
     Object localObject2 = null;
     Object localObject1;
@@ -65,10 +64,10 @@ public class NearbyPublishMenu
       if (!TextUtils.isEmpty(paramString))
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.d;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.e;
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.c;
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.c;
         localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
       }
       else
@@ -95,45 +94,45 @@ public class NearbyPublishMenu
     }
     paramString = (String)localObject1;
     if (localObject1 == null) {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramString = this.c;
     }
     paramImageView.setImageDrawable(paramString);
   }
   
   public void a(NearbyPublishMenu.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyPublishMenu$OnItemClickListener = paramOnItemClickListener;
+    this.a = paramOnItemClickListener;
   }
   
   protected void a(ArrayList<MenuItem> paramArrayList)
   {
-    RoundCornerLinearLayout localRoundCornerLinearLayout = new RoundCornerLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    RoundCornerLinearLayout localRoundCornerLinearLayout = new RoundCornerLinearLayout(this.b);
     localRoundCornerLinearLayout.setOrientation(1);
-    localRoundCornerLinearLayout.setBackgroundResource(2130845709);
-    int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F);
+    localRoundCornerLinearLayout.setBackgroundResource(2130847178);
+    int i = DisplayUtil.a(this.b, 6.0F);
     localRoundCornerLinearLayout.setPadding(0, i, 0, i);
-    localRoundCornerLinearLayout.setRadius(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    localRoundCornerLinearLayout.setRadius(DisplayUtil.a(this.b, 8.0F));
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.b);
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       MenuItem localMenuItem = (MenuItem)paramArrayList.next();
-      ViewGroup localViewGroup = (ViewGroup)localLayoutInflater.inflate(2131559494, localRoundCornerLinearLayout, false);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131368343);
-      TextView localTextView1 = (TextView)localViewGroup.findViewById(2131378784);
-      TextView localTextView2 = (TextView)localViewGroup.findViewById(2131378039);
-      localTextView1.setText(localMenuItem.jdField_b_of_type_JavaLangString);
-      if (TextUtils.isEmpty(localMenuItem.c)) {
+      ViewGroup localViewGroup = (ViewGroup)localLayoutInflater.inflate(2131625515, localRoundCornerLinearLayout, false);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131435219);
+      TextView localTextView1 = (TextView)localViewGroup.findViewById(2131447463);
+      TextView localTextView2 = (TextView)localViewGroup.findViewById(2131446539);
+      localTextView1.setText(localMenuItem.d);
+      if (TextUtils.isEmpty(localMenuItem.e)) {
         localTextView2.setVisibility(8);
       } else {
-        localTextView2.setText(localMenuItem.c);
+        localTextView2.setText(localMenuItem.e);
       }
-      if (!TextUtils.isEmpty(localMenuItem.a)) {
-        a(localImageView, localMenuItem.a);
-      } else if (localMenuItem.jdField_b_of_type_Int > 0) {
-        localImageView.setImageResource(localMenuItem.jdField_b_of_type_Int);
+      if (!TextUtils.isEmpty(localMenuItem.c)) {
+        a(localImageView, localMenuItem.c);
+      } else if (localMenuItem.b > 0) {
+        localImageView.setImageResource(localMenuItem.b);
       }
-      localViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      localViewGroup.setOnClickListener(this.f);
       localViewGroup.setTag(localMenuItem);
       localRoundCornerLinearLayout.addView(localViewGroup);
     }
@@ -142,7 +141,7 @@ public class NearbyPublishMenu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyPublishMenu
  * JD-Core Version:    0.7.0.1
  */

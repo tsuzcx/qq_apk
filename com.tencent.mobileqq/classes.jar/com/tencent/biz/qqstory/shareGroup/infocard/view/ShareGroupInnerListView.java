@@ -14,10 +14,10 @@ import java.util.List;
 public class ShareGroupInnerListView
   extends StoryHomeHorizontalListView
 {
-  public ShareGroupInnerListView.ILoadMoreDataListener a;
-  protected MemoriesInnerListAdapter a;
-  protected LoadingMoreHelper.OnLoadMoreListener a;
   public String a;
+  protected MemoriesInnerListAdapter b;
+  protected LoadingMoreHelper.OnLoadMoreListener c;
+  public ShareGroupInnerListView.ILoadMoreDataListener d;
   
   public ShareGroupInnerListView(Context paramContext)
   {
@@ -27,22 +27,22 @@ public class ShareGroupInnerListView
   public ShareGroupInnerListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.c = DisplayUtil.a(paramContext, 82.0F);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter = new MemoriesInnerListAdapter(paramContext);
-    setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
-    setOnItemClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener = new ShareGroupInnerListView.1(this);
-    setOnLoadMoreListener(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener);
+    this.g = DisplayUtil.a(paramContext, 82.0F);
+    this.b = new MemoriesInnerListAdapter(paramContext);
+    setAdapter(this.b);
+    setOnItemClickListener(this.b);
+    this.c = new ShareGroupInnerListView.1(this);
+    setOnLoadMoreListener(this.c);
   }
   
-  public BaseAdapter a()
+  public BaseAdapter getAdapter()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter;
+    return this.b;
   }
   
   public void setData(VideoCollectionItem paramVideoCollectionItem)
   {
-    this.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    this.a = paramVideoCollectionItem.collectionId;
     boolean bool;
     if (paramVideoCollectionItem.collectionCount > paramVideoCollectionItem.videoVidList.size()) {
       bool = true;
@@ -50,8 +50,8 @@ public class ShareGroupInnerListView
       bool = false;
     }
     setLoadMoreComplete(bool);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
-    int i = this.b / this.c;
+    this.b.a(paramVideoCollectionItem.collectionVideoUIItemList, paramVideoCollectionItem.collectionId);
+    int i = this.f / this.g;
     if (paramVideoCollectionItem.collectionVideoUIItemList.size() >= i)
     {
       setOverScrollMode(0);
@@ -62,7 +62,7 @@ public class ShareGroupInnerListView
   
   public void setLoadMoreDataListener(ShareGroupInnerListView.ILoadMoreDataListener paramILoadMoreDataListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupInnerListView$ILoadMoreDataListener = paramILoadMoreDataListener;
+    this.d = paramILoadMoreDataListener;
   }
 }
 

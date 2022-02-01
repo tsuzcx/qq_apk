@@ -10,7 +10,7 @@ final class ArMapUtil$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     String str2 = "1";
     String str1;
     if (bool) {
@@ -31,13 +31,13 @@ final class ArMapUtil$2
       str1 = "0";
     }
     localHashMap.put("isFelxMapClick", str1);
-    localHashMap.put("operatorMapCount", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("operatorMapCount", String.valueOf(this.d));
     StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ARMAP_DETAIL_GRID_MAP", this.c, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil.2
  * JD-Core Version:    0.7.0.1
  */

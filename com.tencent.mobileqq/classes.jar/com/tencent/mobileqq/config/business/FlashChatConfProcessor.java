@@ -25,12 +25,12 @@ public class FlashChatConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      FlashChatConfBean localFlashChatConfBean = FlashChatConfBean.a(paramArrayOfQConfItem[0].a);
+      FlashChatConfBean localFlashChatConfBean = FlashChatConfBean.a(paramArrayOfQConfItem[0].b);
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       paramArrayOfQConfItem = localFlashChatConfBean;
       if ((localAppRuntime instanceof QQAppInterface))
       {
-        ((FlashChatManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).b(localFlashChatConfBean.a);
+        ((FlashChatManager)((QQAppInterface)localAppRuntime).getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).e(localFlashChatConfBean.a);
         return localFlashChatConfBean;
       }
     }
@@ -81,7 +81,7 @@ public class FlashChatConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.FlashChatConfProcessor
  * JD-Core Version:    0.7.0.1
  */

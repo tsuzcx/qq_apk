@@ -11,10 +11,10 @@ import kotlin.Metadata;
 public final class ChannelIdCheckStep
   extends SuperMaskStep
 {
-  public boolean a()
+  public boolean c()
   {
     boolean bool;
-    if ((SuperMaskUIMgr.a.b() != 0) && (!((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(SuperMaskUIMgr.a.b()))) {
+    if ((SuperMaskUIMgr.a.c() != 0) && (!((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(SuperMaskUIMgr.a.c()))) {
       bool = false;
     } else {
       bool = true;
@@ -27,7 +27,7 @@ public final class ChannelIdCheckStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.ChannelIdCheckStep
  * JD-Core Version:    0.7.0.1
  */

@@ -15,18 +15,18 @@ class AbstractAlbumListFragment$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("load Scroll Position,index:");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" top:");
       localStringBuilder.append(this.b);
       QLog.d("QQAlbum", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumlistAbstractAlbumListFragment.a.setSelectionFromTop(this.jdField_a_of_type_Int, this.b);
+    this.c.f.setSelectionFromTop(this.a, this.b);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.albumlist.AbstractAlbumListFragment.2
  * JD-Core Version:    0.7.0.1
  */

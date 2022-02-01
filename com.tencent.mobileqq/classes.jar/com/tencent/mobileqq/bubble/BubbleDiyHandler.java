@@ -154,7 +154,7 @@ public class BubbleDiyHandler
       Object localObject = new BubbleDiyComu.Bubble_Req_Comm();
       ((BubbleDiyComu.Bubble_Req_Comm)localObject).platform.set(109L);
       ((BubbleDiyComu.Bubble_Req_Comm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((BubbleDiyComu.Bubble_Req_Comm)localObject).mqqver.set("8.7.0");
+      ((BubbleDiyComu.Bubble_Req_Comm)localObject).mqqver.set("8.8.17");
       BubbleDiyComu.Bubble_GetDiyText_Req localBubble_GetDiyText_Req = new BubbleDiyComu.Bubble_GetDiyText_Req();
       ArrayList localArrayList = new ArrayList();
       b(paramList, localArrayList);
@@ -244,7 +244,7 @@ public class BubbleDiyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyHandler
  * JD-Core Version:    0.7.0.1
  */

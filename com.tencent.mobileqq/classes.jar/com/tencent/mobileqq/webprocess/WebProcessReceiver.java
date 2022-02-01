@@ -34,9 +34,35 @@ public class WebProcessReceiver
   extends QQBroadcastReceiver
 {
   public static int a = -1;
-  public static long a;
   public static long b;
-  private IWebProcessReceiverInjector a;
+  public static long c;
+  private IWebProcessReceiverInjector d;
+  
+  private void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessReceiver", 2, "Receive action delete sonic template");
+    }
+    String[] arrayOfString = paramIntent.getStringArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId");
+    paramIntent = paramIntent.getLongArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime");
+    if ((arrayOfString != null) && (arrayOfString.length > 0) && (paramIntent != null) && (paramIntent.length > 0) && (arrayOfString.length == paramIntent.length))
+    {
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      while (i < arrayOfString.length)
+      {
+        localHashMap.put(arrayOfString[i], Long.valueOf(paramIntent[i]));
+        i += 1;
+      }
+      if (localHashMap.size() > 0) {
+        ThreadManager.post(new WebProcessReceiver.1(this, localHashMap), 5, null, true);
+      }
+    }
+    else
+    {
+      QLog.e("WebProcessReceiver", 1, "Receive action delete sonic template data error");
+    }
+  }
   
   private void a(String paramString, int paramInt)
   {
@@ -46,6 +72,73 @@ public class WebProcessReceiver
     localStringBuilder.append(paramString);
     QLog.e("WebProcessReceiver", 1, localStringBuilder.toString());
     localEditor.clear().commit();
+  }
+  
+  private void a(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  {
+    Object localObject = WebAccelerateHelper.getSonicEngine();
+    if (localObject != null) {
+      ((SonicEngine)localObject).cleanCache();
+    }
+    a(paramContext);
+    SwiftBrowserCookieMonster.d();
+    localObject = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_sonic_white_list_config_");
+    localStringBuilder.append((String)localObject);
+    a(localStringBuilder.toString(), 4);
+    a("local_html", 4);
+    localObject = this.d;
+    if (localObject != null) {
+      ((IWebProcessReceiverInjector)localObject).a(paramAppRuntime, paramContext, paramIntent);
+    }
+  }
+  
+  private void a(AppRuntime paramAppRuntime, Intent paramIntent)
+  {
+    String str = WebAccelerateHelper.getInstance().getTBSDpcParam();
+    int i;
+    if ((str != null) && (str.charAt(0) == '1')) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    boolean bool1 = paramIntent.getBooleanExtra("isDownloadForeground", false);
+    boolean bool2 = paramIntent.getBooleanExtra("fromMiniApp", false);
+    if (i != 0) {
+      ThreadManagerV2.executeOnSubThread(new WebProcessReceiver.2(this, bool1, paramAppRuntime, bool2));
+    }
+  }
+  
+  private void b(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession broadcast, start web process!");
+    }
+    b = paramIntent.getLongExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
+    c = System.currentTimeMillis();
+    try
+    {
+      a = paramIntent.getIntExtra("from", -1);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fromOfPreload is ");
+      ((StringBuilder)localObject).append(a);
+      QLog.d("WebProcessReceiver", 2, ((StringBuilder)localObject).toString());
+    }
+    if (204 == a) {
+      SwiftBrowserIdleTaskHelper.a().a(new SwiftBrowserIdleTaskHelper.PreloadIdleTask(1));
+    }
+    Object localObject = this.d;
+    if (localObject != null) {
+      ((IWebProcessReceiverInjector)localObject).a(paramAppRuntime, paramContext, paramIntent, a);
+    }
   }
   
   protected void a(Context paramContext)
@@ -118,153 +211,79 @@ public class WebProcessReceiver
       if (str == null) {
         return;
       }
-      Object localObject2;
+      Object localObject;
       if (QLog.isColorLevel())
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("action=");
-        ((StringBuilder)localObject2).append(str);
-        QLog.d("WebProcessReceiver", 2, ((StringBuilder)localObject2).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("action=");
+        ((StringBuilder)localObject).append(str);
+        QLog.d("WebProcessReceiver", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUtilIWebProcessReceiverInjector == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUtilIWebProcessReceiverInjector = WebProcessReceiverInjectUtil.a();
+      if (this.d == null) {
+        this.d = WebProcessReceiverInjectUtil.a();
       }
-      boolean bool1 = "com.tencent.mobileqq.webprocess.preload_web_process".equals(str);
-      int i = 1;
-      Object localObject1;
-      if (bool1)
+      if ("com.tencent.mobileqq.webprocess.preload_web_process".equals(str))
+      {
+        b(paramAppRuntime, paramContext, paramIntent);
+        return;
+      }
+      if ("action_clear_cache".equals(str))
+      {
+        a(paramAppRuntime, paramContext, paramIntent);
+        return;
+      }
+      if ("action_reset_tbs".equals(str))
+      {
+        QbSdk.reset(paramContext.getApplicationContext());
+        return;
+      }
+      if ("action_download_tbs".equals(str))
+      {
+        a(paramAppRuntime, paramIntent);
+        return;
+      }
+      if ("action_preload_sonic_session".equals(str))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession broadcast, start web process!");
+          QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession sonic session");
         }
-        jdField_a_of_type_Long = paramIntent.getLongExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-        b = System.currentTimeMillis();
-        try
-        {
-          jdField_a_of_type_Int = paramIntent.getIntExtra("from", -1);
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        if (QLog.isColorLevel())
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("fromOfPreload is ");
-          ((StringBuilder)localObject1).append(jdField_a_of_type_Int);
-          QLog.d("WebProcessReceiver", 2, ((StringBuilder)localObject1).toString());
-        }
-        if (204 == jdField_a_of_type_Int) {
-          SwiftBrowserIdleTaskHelper.a().a(new SwiftBrowserIdleTaskHelper.PreloadIdleTask(1));
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewUtilIWebProcessReceiverInjector;
-        if (localObject1 != null) {
-          ((IWebProcessReceiverInjector)localObject1).a(paramAppRuntime, paramContext, paramIntent, jdField_a_of_type_Int);
-        }
-      }
-      else if ("action_clear_cache".equals(localObject1))
-      {
-        localObject1 = WebAccelerateHelper.getSonicEngine();
-        if (localObject1 != null) {
-          ((SonicEngine)localObject1).cleanCache();
-        }
-        a(paramContext);
-        SwiftBrowserCookieMonster.d();
-        localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("sp_sonic_white_list_config_");
-        ((StringBuilder)localObject2).append((String)localObject1);
-        a(((StringBuilder)localObject2).toString(), 4);
-        a("local_html", 4);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWebviewUtilIWebProcessReceiverInjector;
-        if (localObject1 != null) {
-          ((IWebProcessReceiverInjector)localObject1).a(paramAppRuntime, paramContext, paramIntent);
+        paramAppRuntime = paramIntent.getParcelableArrayListExtra("com.tencent.mobileqq.webprocess.sonic_preload_data");
+        if ((paramAppRuntime != null) && (paramAppRuntime.size() > 0)) {
+          ((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).preload(paramAppRuntime);
         }
       }
       else
       {
-        if ("action_reset_tbs".equals(localObject1))
+        if ("action_delete_sonic_templateinfo".equals(str))
         {
-          QbSdk.reset(paramContext.getApplicationContext());
+          a(paramIntent);
           return;
         }
-        bool1 = "action_download_tbs".equals(localObject1);
-        int j = 0;
-        if (bool1)
+        if ("com.tencent.mobileqq.webprocess.stop_web_core_service".equals(str))
         {
-          paramContext = WebAccelerateHelper.getInstance().getTBSDpcParam();
-          if ((paramContext == null) || (paramContext.charAt(0) != '1')) {
-            i = 0;
-          }
-          bool1 = paramIntent.getBooleanExtra("isDownloadForeground", false);
-          boolean bool2 = paramIntent.getBooleanExtra("fromMiniApp", false);
-          if (i != 0) {
-            ThreadManagerV2.executeOnSubThread(new WebProcessReceiver.1(this, bool1, paramAppRuntime, bool2));
-          }
+          QLog.i("WebProcessReceiver", 1, "Receive action stop web core service");
+          WebCoreService.b();
+          return;
         }
-        else if ("action_preload_sonic_session".equals(localObject1))
+        if ("com.tencent.mobileqq.webprocess.release_tool_process".equals(str))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession sonic session");
+          if (WebCoreService.a) {
+            WebCoreService.b();
           }
-          paramAppRuntime = paramIntent.getParcelableArrayListExtra("com.tencent.mobileqq.webprocess.sonic_preload_data");
-          if ((paramAppRuntime != null) && (paramAppRuntime.size() > 0)) {
-            ((ISonicPreloaderService)QRoute.api(ISonicPreloaderService.class)).preload(paramAppRuntime);
-          }
-        }
-        else if ("action_delete_sonic_templateinfo".equals(localObject1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("WebProcessReceiver", 2, "Receive action delete sonic template");
-          }
-          paramAppRuntime = paramIntent.getStringArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId");
-          paramContext = paramIntent.getLongArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime");
-          if ((paramAppRuntime != null) && (paramAppRuntime.length > 0) && (paramContext != null) && (paramContext.length > 0) && (paramAppRuntime.length == paramContext.length))
-          {
-            paramIntent = new HashMap();
-            i = j;
-            while (i < paramAppRuntime.length)
-            {
-              paramIntent.put(paramAppRuntime[i], Long.valueOf(paramContext[i]));
-              i += 1;
-            }
-            if (paramIntent.size() > 0) {
-              ThreadManager.post(new WebProcessReceiver.2(this, paramIntent), 5, null, true);
-            }
-          }
-          else
-          {
-            QLog.e("WebProcessReceiver", 1, "Receive action delete sonic template data error");
+          boolean bool = SwiftWebAccelerator.a().b;
+          paramAppRuntime = new StringBuilder();
+          paramAppRuntime.append("Receive action release tool process, isInRealWorld:");
+          paramAppRuntime.append(bool);
+          QLog.i("WebProcessReceiver", 1, paramAppRuntime.toString());
+          if (!bool) {
+            System.exit(0);
           }
         }
         else
         {
-          if ("com.tencent.mobileqq.webprocess.stop_web_core_service".equals(localObject1))
-          {
-            QLog.i("WebProcessReceiver", 1, "Receive action stop web core service");
-            WebCoreService.b();
-            return;
-          }
-          if ("com.tencent.mobileqq.webprocess.release_tool_process".equals(localObject1))
-          {
-            if (WebCoreService.a) {
-              WebCoreService.b();
-            }
-            bool1 = SwiftWebAccelerator.a().a;
-            paramAppRuntime = new StringBuilder();
-            paramAppRuntime.append("Receive action release tool process, isInRealWorld:");
-            paramAppRuntime.append(bool1);
-            QLog.i("WebProcessReceiver", 1, paramAppRuntime.toString());
-            if (!bool1) {
-              System.exit(0);
-            }
-          }
-          else
-          {
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewUtilIWebProcessReceiverInjector;
-            if (localObject2 != null) {
-              ((IWebProcessReceiverInjector)localObject2).a(paramAppRuntime, paramContext, paramIntent, (String)localObject1);
-            }
+          localObject = this.d;
+          if (localObject != null) {
+            ((IWebProcessReceiverInjector)localObject).a(paramAppRuntime, paramContext, paramIntent, str);
           }
         }
       }
@@ -273,7 +292,7 @@ public class WebProcessReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,13 +15,13 @@ class ShareGroupDateListPageLoader$2
   
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.a.a == null)
+    if (this.a.j == null)
     {
       paramJobContext = this.a;
-      paramJobContext.a = new ShareGroupDateListPageLoader.CacheContext(paramJobContext, paramJobContext.d);
+      paramJobContext.j = new ShareGroupDateListPageLoader.CacheContext(paramJobContext, paramJobContext.i);
     }
     paramJobContext = this.a;
-    paramJobContext.e = paramJobContext.a.a;
+    paramJobContext.k = paramJobContext.j.b;
     ShareGroupDateListPageLoader.a(this.a);
     return null;
   }

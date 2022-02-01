@@ -657,6 +657,7 @@ public class SosoInterface
     sRegisteredCallers.add("Face2FaceAddContactPresenter");
     sRegisteredCallers.add("qqcircle");
     sRegisteredCallers.add("extend_friend");
+    sRegisteredCallers.add("QQLive");
   }
   
   private static boolean isCallerRegistered(String paramString)
@@ -1603,7 +1604,7 @@ public class SosoInterface
         paramString2 = "actSosoRawData";
       }
       StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(str, paramString2, paramBoolean1, paramLong, 0L, localHashMap, "");
-      MagnifierSDK.a().a().a("requestSoso", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean3), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+      MagnifierSDK.b().i().a("requestSoso", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean3), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
       if (isInLaunchTime())
       {
         paramString2 = new HashMap();
@@ -1625,7 +1626,7 @@ public class SosoInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.SosoInterface
  * JD-Core Version:    0.7.0.1
  */

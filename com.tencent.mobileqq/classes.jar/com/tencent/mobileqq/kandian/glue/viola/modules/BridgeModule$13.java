@@ -8,8 +8,8 @@ import com.tencent.viola.core.ViolaInstance;
 class BridgeModule$13
   implements ViolaCommentManager.CommentEventListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  private String b;
+  private boolean c;
   
   BridgeModule$13(BridgeModule paramBridgeModule) {}
   
@@ -17,30 +17,30 @@ class BridgeModule$13
   
   public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
+    if ((this.a.getViolaInstance() != null) && ((this.a.getViolaInstance().getFragment() instanceof ViolaFragment)))
     {
-      ViolaFragment localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaModulesBridgeModule.getViolaInstance().getFragment();
+      ViolaFragment localViolaFragment = (ViolaFragment)this.a.getViolaInstance().getFragment();
       if (paramBoolean)
       {
-        this.jdField_a_of_type_JavaLangString = localViolaFragment.getStatusBarColor();
-        this.jdField_a_of_type_Boolean = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
+        this.b = localViolaFragment.getStatusBarColor();
+        this.c = localViolaFragment.getStatusBarFontColorWhite().booleanValue();
         localViolaFragment.setStatusBarColor("#FF000000");
         localViolaFragment.initStatusBarColor("#FF000000");
         localViolaFragment.setStatusBarFontColor(Boolean.valueOf(true), true);
         return;
       }
-      localViolaFragment.setStatusBarColor(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.initStatusBarColor(this.jdField_a_of_type_JavaLangString);
-      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
+      localViolaFragment.setStatusBarColor(this.b);
+      localViolaFragment.initStatusBarColor(this.b);
+      localViolaFragment.setStatusBarFontColor(Boolean.valueOf(this.c), true);
       if ((localViolaFragment.isSuspension()) && (localViolaFragment.getCommonSuspensionGestureLayout() != null) && ((localViolaFragment.getCommonSuspensionGestureLayout() instanceof CommonSuspensionGestureLayout))) {
-        ((CommonSuspensionGestureLayout)localViolaFragment.getCommonSuspensionGestureLayout()).g();
+        ((CommonSuspensionGestureLayout)localViolaFragment.getCommonSuspensionGestureLayout()).j();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.BridgeModule.13
  * JD-Core Version:    0.7.0.1
  */

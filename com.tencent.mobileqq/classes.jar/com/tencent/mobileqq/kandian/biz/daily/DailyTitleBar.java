@@ -22,21 +22,21 @@ import java.net.URL;
 public class DailyTitleBar
   extends FrameLayout
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private final TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
+  private final View a;
   private final View b;
-  private final View c;
+  private final TextView c;
+  private final View d;
+  private final KandianUrlImageView e;
   
   public DailyTitleBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     a(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370524);
-    this.b = findViewById(2131370529);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379938));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)findViewById(2131369527));
-    this.c = findViewById(2131378890);
+    this.a = findViewById(2131437797);
+    this.b = findViewById(2131437802);
+    this.c = ((TextView)findViewById(2131448824));
+    this.e = ((KandianUrlImageView)findViewById(2131436617));
+    this.d = findViewById(2131447592);
   }
   
   private void a(Context paramContext)
@@ -46,7 +46,7 @@ public class DailyTitleBar
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    View.inflate(paramContext, 2131560171, this);
+    View.inflate(paramContext, 2131626218, this);
     paramAttributeSet = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.DailyTitleBar, 0, 0);
     for (;;)
     {
@@ -55,17 +55,17 @@ public class DailyTitleBar
       {
         String str = paramAttributeSet.getString(3);
         i = paramAttributeSet.getColor(4, -16777216);
-        int j = paramAttributeSet.getResourceId(0, 2131167394);
-        k = paramAttributeSet.getResourceId(2, 2130843108);
-        m = paramAttributeSet.getResourceId(1, 2130843333);
+        int j = paramAttributeSet.getResourceId(0, 2131168464);
+        k = paramAttributeSet.getResourceId(2, 2130844063);
+        m = paramAttributeSet.getResourceId(1, 2130844287);
         setBackgroundResource(j);
-        localTextView = (TextView)findViewById(2131379938);
+        localTextView = (TextView)findViewById(2131448824);
         localTextView.setText(str);
         localTextView.setTextColor(i);
         if ((i != -1) && (i != 16777215)) {
           break label175;
         }
-        findViewById(2131369527).setVisibility(8);
+        findViewById(2131436617).setVisibility(8);
       }
       finally
       {
@@ -75,8 +75,8 @@ public class DailyTitleBar
         paramAttributeSet.recycle();
       }
       localTextView.setVisibility(8);
-      findViewById(2131369289).setBackgroundResource(k);
-      findViewById(2131369491).setBackgroundResource(m);
+      findViewById(2131436275).setBackgroundResource(k);
+      findViewById(2131436567).setBackgroundResource(m);
       paramAttributeSet.recycle();
       setClickable(true);
       a(paramContext);
@@ -91,7 +91,7 @@ public class DailyTitleBar
   
   private void b(Context paramContext)
   {
-    Object localObject1 = (KandianUrlImageView)findViewById(2131369527);
+    Object localObject1 = (KandianUrlImageView)findViewById(2131436617);
     if (localObject1 != null)
     {
       Object localObject2 = Aladdin.getConfig(226);
@@ -125,10 +125,10 @@ public class DailyTitleBar
   
   public void setOnLeftButtonClickListener(View.OnClickListener paramOnClickListener)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramOnClickListener != null))
+    if ((this.a != null) && (paramOnClickListener != null))
     {
       QLog.d("DailyTitleBar", 1, "on startButton click!");
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
+      this.a.setOnClickListener(paramOnClickListener);
     }
   }
   
@@ -142,11 +142,11 @@ public class DailyTitleBar
   
   public void setOnTitleClickListener(View.OnClickListener paramOnClickListener)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    Object localObject = this.c;
     if ((localObject != null) && (paramOnClickListener != null)) {
       ((TextView)localObject).setOnClickListener(paramOnClickListener);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
+    localObject = this.e;
     if ((localObject != null) && (paramOnClickListener != null)) {
       ((KandianUrlImageView)localObject).setOnClickListener(paramOnClickListener);
     }
@@ -154,7 +154,7 @@ public class DailyTitleBar
   
   public void setTitleText(String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -162,7 +162,7 @@ public class DailyTitleBar
   
   public void setTitleTextSize(float paramFloat)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null) {
       localTextView.setTextSize(2, paramFloat);
     }
@@ -170,7 +170,7 @@ public class DailyTitleBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.daily.DailyTitleBar
  * JD-Core Version:    0.7.0.1
  */

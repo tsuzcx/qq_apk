@@ -20,12 +20,15 @@ import com.tencent.mobileqq.app.FrameFragment.DragViewTouchListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.qcircle.api.IQCircleNativeFrameApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinEngine;
 import java.util.ArrayList;
@@ -39,32 +42,24 @@ import mqq.os.MqqHandler;
 public class ConversationInjectImpl
   extends BaseFrameBusiness
 {
-  public static final String a;
-  public static final Random a;
-  public static final int[] a;
-  public static final int[] b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = FrameControllerUtil.jdField_a_of_type_JavaLangString;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130850751, 2130841349, 2130841350, 2130841351, 2130841352, 2130841353, 2130841355, 2130841354 };
-    b = new int[] { 2130850750, 2130841356, 2130841357, 2130841358 };
-    jdField_a_of_type_JavaUtilRandom = new Random();
-  }
+  public static final String a = FrameControllerUtil.l;
+  public static final int[] b = { 2130852560, 2130842150, 2130842151, 2130842152, 2130842153, 2130842154, 2130842156, 2130842155 };
+  public static final int[] c = { 2130852558, 2130842157, 2130842158, 2130842159 };
+  public static final Random d = new Random();
   
   public static void a(FrameFragment paramFrameFragment, TabDragAnimationView paramTabDragAnimationView, AppRuntime paramAppRuntime, Runnable paramRunnable)
   {
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt = b;
     int m = arrayOfInt.length - 1;
     int j = arrayOfInt.length - 1;
-    int k = jdField_a_of_type_JavaUtilRandom.nextInt(100000) % m;
+    int k = d.nextInt(100000) % m;
     int i = k;
-    if (k == FrameFragment.jdField_a_of_type_Int) {
+    if (k == FrameFragment.n) {
       i = (k + 1) % m;
     }
-    FrameFragment.jdField_a_of_type_Int = i;
-    arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    if (!((ITabFrameController)QRoute.api(ITabFrameController.class)).hasUnReadRedPacket(paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime)) {
+    FrameFragment.n = i;
+    arrayOfInt = b;
+    if (!((ITabFrameController)QRoute.api(ITabFrameController.class)).hasUnReadRedPacket(paramFrameFragment.A)) {
       j = i;
     }
     paramTabDragAnimationView.setBgPressedDrawable(arrayOfInt[j]);
@@ -81,40 +76,45 @@ public class ConversationInjectImpl
       QLog.d("DynimiIcon", 2, paramFrameFragment.toString());
     }
     ReportController.b(paramAppRuntime, "dc00898", "", "", "0X8009CDD", "0X8009CDD", 0, 0, "", "", "", "");
-    if (FrameFragment.f)
+    if (FrameFragment.p)
     {
-      FrameFragment.f = false;
+      FrameFragment.p = false;
       ReportController.b(paramAppRuntime, "dc00898", "", "", "0X8009CDB", "0X8009CDB", 0, 0, "", "", "", "");
     }
   }
   
-  public static void i(FrameFragment paramFrameFragment)
+  private boolean c()
   {
-    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.jdField_a_of_type_Int);
+    return (((IQCircleNativeFrameApi)QRoute.api(IQCircleNativeFrameApi.class)).isNewLayerMode()) && (QCircleConfigHelper.a(StudyModeManager.h()));
+  }
+  
+  public static void j(FrameFragment paramFrameFragment)
+  {
+    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.B.get(FrameControllerUtil.a);
     Object localObject = (String)localTabDragAnimationView.getTag();
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onConversationTabIconMoveResult mIsDefaultTheme = ");
-      localStringBuilder.append(paramFrameFragment.h);
+      localStringBuilder.append(paramFrameFragment.J);
       localStringBuilder.append(", tag = ");
       localStringBuilder.append((String)localObject);
       QLog.d("DynimiIcon", 2, localStringBuilder.toString());
     }
-    if ((paramFrameFragment.h) && (paramFrameFragment.a() == FrameControllerUtil.jdField_a_of_type_Int) && (!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(FrameControllerUtil.jdField_a_of_type_JavaLangString)))
+    if ((paramFrameFragment.J) && (paramFrameFragment.w() == FrameControllerUtil.a) && (!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(FrameControllerUtil.l)))
     {
       localObject = (Conversation)paramFrameFragment.a(Conversation.class);
       int i;
       if (localObject != null) {
-        i = ((Conversation)localObject).d;
+        i = ((Conversation)localObject).O;
       } else {
         i = 0;
       }
       if (i <= 0)
       {
-        a(paramFrameFragment, localTabDragAnimationView, paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime, paramFrameFragment.jdField_a_of_type_JavaLangRunnable);
-        if (!paramFrameFragment.j) {
-          paramFrameFragment.j = true;
+        a(paramFrameFragment, localTabDragAnimationView, paramFrameFragment.A, paramFrameFragment.U);
+        if (!paramFrameFragment.N) {
+          paramFrameFragment.N = true;
         }
       }
     }
@@ -122,31 +122,33 @@ public class ConversationInjectImpl
   
   public void a()
   {
-    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(Conversation.class, FrameControllerUtil.jdField_a_of_type_Int, FrameControllerUtil.jdField_a_of_type_JavaLangString, 2130850750, 2130850751, 2131693875, 11, 2));
+    TabFrameControllerImpl.registerFrameInfo(new FrameInfoBean(Conversation.class, FrameControllerUtil.a, FrameControllerUtil.l, 2130852558, 2130852560, 2131891480, 11, 2));
   }
   
   public void a(FrameFragment paramFrameFragment)
   {
     paramFrameFragment = paramFrameFragment.a(Conversation.class);
     if (paramFrameFragment != null) {
-      ((Conversation)paramFrameFragment).g();
+      ((Conversation)paramFrameFragment).l();
     }
   }
   
   public void a(FrameFragment paramFrameFragment, int paramInt1, Frame paramFrame, int paramInt2)
   {
-    paramFrame = paramFrameFragment.jdField_a_of_type_JavaUtilHashMap;
+    paramFrame = paramFrameFragment.G;
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(FrameControllerUtil.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(FrameControllerUtil.l);
     ((StringBuilder)localObject).append("_num");
     paramFrame = (DragTextView)paramFrame.get(((StringBuilder)localObject).toString());
-    if (paramInt2 == FrameControllerUtil.jdField_a_of_type_Int)
+    if (paramInt2 == FrameControllerUtil.a)
     {
-      paramFrame.setOnModeChangeListener(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+      paramFrame.setTag(FrameControllerUtil.l);
+      paramFrame.setOnModeChangeListener(paramFrameFragment.Q);
+      paramFrame.setDragGroup(FrameControllerUtil.l);
       paramFrame.setDragViewType(2);
-      TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.jdField_a_of_type_Int);
+      TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.B.get(FrameControllerUtil.a);
       localObject = (MainFragment)paramFrameFragment;
-      ((MainFragment)localObject).a.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView = localTabDragAnimationView;
+      ((MainFragment)localObject).g.a = localTabDragAnimationView;
       if (localTabDragAnimationView != null)
       {
         if (QLog.isColorLevel()) {
@@ -154,21 +156,25 @@ public class ConversationInjectImpl
         }
         try
         {
-          localTabDragAnimationView.setOnDoubleTapListener(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqActivityHomeImplTabFrameControllerImpl$FrameDoubleTapListener);
+          localTabDragAnimationView.setOnDoubleTapListener(paramFrameFragment.aa);
+          paramFrame.setOnDoubleTapListener(paramFrameFragment.aa);
         }
         catch (Throwable paramFrameFragment)
         {
           QLog.e("DynimiIcon", 2, paramFrameFragment, new Object[0]);
         }
       }
-      ((MainFragment)localObject).a.jdField_a_of_type_AndroidViewView = paramFrame;
+      ((MainFragment)localObject).g.b = paramFrame;
       return;
     }
     try
     {
-      paramFrameFragment = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.jdField_a_of_type_Int);
+      paramFrameFragment = (TabDragAnimationView)paramFrameFragment.B.get(FrameControllerUtil.a);
       if (paramFrameFragment != null) {
         paramFrameFragment.setOnDoubleTapListener(null);
+      }
+      if (paramFrame != null) {
+        paramFrame.setOnDoubleTapListener(null);
       }
     }
     catch (Throwable paramFrameFragment)
@@ -180,16 +186,16 @@ public class ConversationInjectImpl
   
   public void a(FrameFragment paramFrameFragment, FrameFragment.DragViewTouchListener paramDragViewTouchListener)
   {
-    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[0].findViewById(2131378232);
+    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)paramFrameFragment.z[0].findViewById(2131446751);
     localTabDragAnimationView.setOnTouchListener(paramDragViewTouchListener);
     localTabDragAnimationView.a("消息");
-    paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.put(FrameControllerUtil.jdField_a_of_type_Int, localTabDragAnimationView);
-    paramFrameFragment.b.put(FrameControllerUtil.jdField_a_of_type_Int, (TextView)paramFrameFragment.jdField_a_of_type_ArrayOfAndroidViewView[0].findViewById(2131379917));
+    paramFrameFragment.B.put(FrameControllerUtil.a, localTabDragAnimationView);
+    paramFrameFragment.C.put(FrameControllerUtil.a, (TextView)paramFrameFragment.z[0].findViewById(2131448791));
   }
   
   public void a(FrameFragment paramFrameFragment, String paramString)
   {
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabContentDescription(paramFrameFragment, FrameControllerUtil.jdField_a_of_type_JavaLangString, ((ITabFrameController)QRoute.api(ITabFrameController.class)).getCurrentTabTag(paramFrameFragment.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost));
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabContentDescription(paramFrameFragment, FrameControllerUtil.l, ((ITabFrameController)QRoute.api(ITabFrameController.class)).getCurrentTabTag(paramFrameFragment.s));
   }
   
   public void a(RedTouch paramRedTouch, FrameFragment paramFrameFragment, int paramInt, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, IRedTouchManager paramIRedTouchManager)
@@ -201,43 +207,46 @@ public class ConversationInjectImpl
   
   public void a(HashMap<String, View> paramHashMap, boolean paramBoolean)
   {
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).setSoundEffectsEnableForTab(paramHashMap, paramBoolean, jdField_a_of_type_JavaLangString);
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).setSoundEffectsEnableForTab(paramHashMap, paramBoolean, a);
   }
   
   public void a(AppRuntime paramAppRuntime, SparseArray<TabDragAnimationView> paramSparseArray, int paramInt)
   {
-    paramSparseArray = (TabDragAnimationView)paramSparseArray.get(FrameControllerUtil.jdField_a_of_type_Int);
+    if (c()) {
+      return;
+    }
+    paramSparseArray = (TabDragAnimationView)paramSparseArray.get(FrameControllerUtil.a);
     boolean bool = ((ITabFrameController)QRoute.api(ITabFrameController.class)).hasUnReadRedPacket(paramAppRuntime);
     int j = 0;
     int i;
     if (bool)
     {
-      paramInt = jdField_a_of_type_ArrayOfInt.length - 1;
-      FrameFragment.jdField_a_of_type_Int = paramInt;
+      paramInt = b.length - 1;
+      FrameFragment.n = paramInt;
       i = 3;
     }
     else if (paramInt >= 30)
     {
       paramInt = 5;
-      FrameFragment.jdField_a_of_type_Int = 5;
+      FrameFragment.n = 5;
       i = 2;
     }
     else
     {
-      FrameFragment.jdField_a_of_type_Int = 0;
+      FrameFragment.n = 0;
       i = 0;
       paramInt = j;
     }
-    paramSparseArray.setBgPressedDrawable(jdField_a_of_type_ArrayOfInt[paramInt]);
-    paramSparseArray.setBgDrawable(b[i]);
+    paramSparseArray.setBgPressedDrawable(b[paramInt]);
+    paramSparseArray.setBgDrawable(c[i]);
   }
   
   public boolean a(AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = ((QQAppInterface)paramAppRuntime).getProxyManager().a();
-    if ((paramAppRuntime != null) && (RecentDataListManager.a().a.size() > 0))
+    paramAppRuntime = ((QQAppInterface)paramAppRuntime).getProxyManager().h();
+    if ((paramAppRuntime != null) && (RecentDataListManager.a().c.size() > 0))
     {
-      Object localObject = new ArrayList(RecentDataListManager.a().a);
+      Object localObject = new ArrayList(RecentDataListManager.a().c);
       if (((List)localObject).size() > 0)
       {
         localObject = ((List)localObject).iterator();
@@ -265,18 +274,18 @@ public class ConversationInjectImpl
   public void b()
   {
     FrameInfoBean localFrameInfoBean = ((ITabFrameController)QRoute.api(ITabFrameController.class)).getFrameInfoByClazz(Conversation.class);
-    localFrameInfoBean.a(FrameControllerUtil.jdField_a_of_type_Int);
+    localFrameInfoBean.a(FrameControllerUtil.a);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("doOnUpdateFrameInfo className: ");
     localStringBuilder.append(localFrameInfoBean.a().getName());
     localStringBuilder.append(" tabIndex: ");
-    localStringBuilder.append(localFrameInfoBean.a());
+    localStringBuilder.append(localFrameInfoBean.c());
     QLog.d("TabFrameControllerImplBusiness", 1, localStringBuilder.toString());
   }
   
   public void b(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment.a(FrameControllerUtil.jdField_a_of_type_Int, 2130850903, 2130850904);
+    paramFrameFragment.a(FrameControllerUtil.a, 2130852755, 2130852756);
   }
   
   public void b(FrameFragment paramFrameFragment, String paramString) {}
@@ -286,7 +295,7 @@ public class ConversationInjectImpl
     Object localObject = (Conversation)paramFrameFragment.a(Conversation.class);
     int i;
     if (localObject != null) {
-      i = ((Conversation)localObject).d;
+      i = ((Conversation)localObject).O;
     } else {
       i = 0;
     }
@@ -297,87 +306,90 @@ public class ConversationInjectImpl
       ((StringBuilder)localObject).append(i);
       QLog.d("DynimiIcon", 2, ((StringBuilder)localObject).toString());
     }
-    localObject = paramFrameFragment.a();
+    localObject = paramFrameFragment.v();
     if ((localObject instanceof Conversation)) {
-      ((Conversation)localObject).k();
+      ((Conversation)localObject).o();
     }
     if (i == 0) {
-      h(paramFrameFragment);
-    }
-  }
-  
-  public void e(FrameFragment paramFrameFragment)
-  {
-    if (paramFrameFragment.a() == FrameControllerUtil.jdField_a_of_type_Int) {
-      ((ITabFrameController)QRoute.api(ITabFrameController.class)).revertTabIconChange(paramFrameFragment);
+      i(paramFrameFragment);
     }
   }
   
   public void f(FrameFragment paramFrameFragment)
   {
-    paramFrameFragment = (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.jdField_a_of_type_Int);
+    if (paramFrameFragment.w() == FrameControllerUtil.a) {
+      ((ITabFrameController)QRoute.api(ITabFrameController.class)).revertTabIconChange(paramFrameFragment);
+    }
+  }
+  
+  public void g(FrameFragment paramFrameFragment)
+  {
+    if (c()) {
+      return;
+    }
+    paramFrameFragment = (TabDragAnimationView)paramFrameFragment.B.get(FrameControllerUtil.a);
     SkinEngine localSkinEngine = SkinEngine.getInstances();
-    int k = 2130850738;
-    boolean bool = localSkinEngine.checkResExist(2130850738);
-    int j = 2130850739;
+    int k = 2130852542;
+    boolean bool = localSkinEngine.checkResExist(2130852542);
+    int j = 2130852543;
     int i;
-    if ((bool) && (SkinEngine.getInstances().checkResExist(2130850739))) {
+    if ((bool) && (SkinEngine.getInstances().checkResExist(2130852543))) {
       i = 1;
     } else {
       i = 0;
     }
     if (i == 0) {
-      j = jdField_a_of_type_ArrayOfInt[0];
+      j = b[0];
     }
     paramFrameFragment.setBgPressedDrawable(j);
     if (i != 0) {
       i = k;
     } else {
-      i = b[0];
+      i = c[0];
     }
     paramFrameFragment.setBgDrawable(i);
   }
   
-  public void g(FrameFragment paramFrameFragment)
+  public void h(FrameFragment paramFrameFragment)
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("revertConversationIconChange mPreResIndex = ");
-      ((StringBuilder)localObject).append(FrameFragment.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(FrameFragment.n);
       QLog.d("DynimiIcon", 2, ((StringBuilder)localObject).toString());
     }
-    FrameFragment.f = true;
+    FrameFragment.p = true;
     int i = 0;
-    paramFrameFragment.j = false;
+    paramFrameFragment.N = false;
     Object localObject = (Conversation)paramFrameFragment.a(Conversation.class);
     if (localObject != null) {
-      i = ((Conversation)localObject).d;
+      i = ((Conversation)localObject).O;
     }
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabDefaultFocusIcon(paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime, paramFrameFragment.h, paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray, i);
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateTabDefaultFocusIcon(paramFrameFragment.A, paramFrameFragment.J, paramFrameFragment.B, i);
   }
   
-  public void h(FrameFragment paramFrameFragment)
+  public void i(FrameFragment paramFrameFragment)
   {
     Object localObject;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onConversationTabIconDoubleClick mIsDefaultTheme = ");
-      ((StringBuilder)localObject).append(paramFrameFragment.h);
+      ((StringBuilder)localObject).append(paramFrameFragment.J);
       QLog.d("DynimiIcon", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime != null)
+    if (paramFrameFragment.A != null)
     {
-      localObject = ((QQAppInterface)paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime).getHandler(Conversation.class);
+      localObject = ((QQAppInterface)paramFrameFragment.A).getHandler(Conversation.class);
       if (localObject != null) {
         ((MqqHandler)localObject).sendMessage(((MqqHandler)localObject).obtainMessage(1071));
       }
-      if (paramFrameFragment.h)
+      if (paramFrameFragment.J)
       {
-        a(paramFrameFragment, (TabDragAnimationView)paramFrameFragment.jdField_a_of_type_AndroidUtilSparseArray.get(FrameControllerUtil.jdField_a_of_type_Int), paramFrameFragment.jdField_a_of_type_MqqAppAppRuntime, paramFrameFragment.jdField_a_of_type_JavaLangRunnable);
-        if (!paramFrameFragment.j) {
-          paramFrameFragment.j = true;
+        a(paramFrameFragment, (TabDragAnimationView)paramFrameFragment.B.get(FrameControllerUtil.a), paramFrameFragment.A, paramFrameFragment.U);
+        if (!paramFrameFragment.N) {
+          paramFrameFragment.N = true;
         }
       }
     }
@@ -385,7 +397,7 @@ public class ConversationInjectImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.framebusiness.ConversationInjectImpl
  * JD-Core Version:    0.7.0.1
  */

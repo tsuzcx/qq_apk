@@ -22,7 +22,7 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$URLDrawableFactory
     super(paramContext);
     this.a = paramContext;
     com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new DiskCache(paramFile);
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.b = new DiskCache(paramFile);
   }
   
   protected ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
@@ -50,17 +50,17 @@ class GdtMotiveVideoMockQzoneImaxFeedsFragment$URLDrawableFactory
   
   protected Drawable getDefaultLoadingDrawable()
   {
-    return this.a.getResources().getDrawable(2130848074);
+    return this.a.getResources().getDrawable(2130849738);
   }
   
   protected Drawable getDefualtFailedDrawable()
   {
-    return this.a.getResources().getDrawable(2130848074);
+    return this.a.getResources().getDrawable(2130849738);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment.URLDrawableFactory
  * JD-Core Version:    0.7.0.1
  */

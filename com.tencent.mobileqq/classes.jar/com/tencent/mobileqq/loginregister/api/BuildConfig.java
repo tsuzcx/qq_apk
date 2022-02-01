@@ -3,7 +3,7 @@ package com.tencent.mobileqq.loginregister.api;
 public final class BuildConfig {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.api.BuildConfig
  * JD-Core Version:    0.7.0.1
  */

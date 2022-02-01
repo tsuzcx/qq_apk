@@ -62,7 +62,34 @@ public class WSDeviceUtils
     return ImmersiveUtils.getStatusBarHeight(paramActivity);
   }
   
-  public static int a(Context paramContext)
+  public static String a(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 16 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 24 & 0xFF);
+    return localStringBuilder.toString();
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static int b(Context paramContext)
   {
     try
     {
@@ -76,7 +103,7 @@ public class WSDeviceUtils
     return -1;
   }
   
-  public static String a()
+  public static String b()
   {
     try
     {
@@ -119,62 +146,30 @@ public class WSDeviceUtils
     }
   }
   
-  public static String a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt & 0xFF);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramInt >> 8 & 0xFF);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramInt >> 16 & 0xFF);
-    localStringBuilder.append(".");
-    localStringBuilder.append(paramInt >> 24 & 0xFF);
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static boolean a()
-  {
-    return TextUtils.equals("Wi-Fi", g());
-  }
-  
-  public static int b()
-  {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return Runtime.getRuntime().availableProcessors();
-    }
-    return c();
-  }
-  
-  public static String b()
+  public static String c()
   {
     return DeviceInstance.getInstance().getDeviceName();
   }
   
-  public static int c()
-  {
-    return DeviceInfoUtil.c();
-  }
-  
-  public static String c()
+  public static String d()
   {
     return Build.VERSION.RELEASE;
   }
   
-  public static String d()
+  public static int e()
+  {
+    if (Build.VERSION.SDK_INT >= 17) {
+      return Runtime.getRuntime().availableProcessors();
+    }
+    return f();
+  }
+  
+  public static int f()
+  {
+    return DeviceInfoUtil.i();
+  }
+  
+  public static String g()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
@@ -202,16 +197,21 @@ public class WSDeviceUtils
     localObject = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
-    localStringBuilder.append(b());
+    localStringBuilder.append(e());
     return localStringBuilder.toString();
   }
   
-  public static String e()
+  public static String h()
   {
     return ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getDeviceInfor();
   }
   
-  public static String f()
+  public static boolean i()
+  {
+    return TextUtils.equals("Wi-Fi", k());
+  }
+  
+  public static String j()
   {
     try
     {
@@ -236,7 +236,7 @@ public class WSDeviceUtils
     return "";
   }
   
-  public static String g()
+  public static String k()
   {
     boolean bool = AppNetConnInfo.isWifiConn();
     String str = "unknown";
@@ -268,7 +268,7 @@ public class WSDeviceUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSDeviceUtils
  * JD-Core Version:    0.7.0.1
  */

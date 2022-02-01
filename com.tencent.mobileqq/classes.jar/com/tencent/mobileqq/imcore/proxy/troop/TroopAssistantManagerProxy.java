@@ -16,23 +16,23 @@ public class TroopAssistantManagerProxy
     return 0;
   }
   
-  public static TroopAssistantDataStub a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    TroopAssistantManagerProxy.Proxy localProxy = a;
-    if (localProxy != null) {
-      return localProxy.a(paramBaseQQAppInterface);
-    }
-    return null;
-  }
-  
   public static void a(TroopAssistantManagerProxy.Proxy paramProxy)
   {
     a = paramProxy;
   }
+  
+  public static TroopAssistantDataStub b(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    TroopAssistantManagerProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.c(paramBaseQQAppInterface);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.troop.TroopAssistantManagerProxy
  * JD-Core Version:    0.7.0.1
  */

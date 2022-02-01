@@ -6,35 +6,35 @@ import java.util.Map;
 
 public class WSReportParams
 {
-  private String jdField_a_of_type_JavaLangString;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private String a;
   private Map<String, String> b;
+  private Map<String, String> c;
   
   public WSReportParams(@Nullable String paramString, @NonNull Map<String, String> paramMap1, @NonNull Map<String, String> paramMap2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilMap = paramMap1;
-    this.b = paramMap2;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a = paramString;
+    this.b = paramMap1;
+    this.c = paramMap2;
   }
   
   public Map<String, String> a()
   {
-    return this.jdField_a_of_type_JavaUtilMap;
+    return this.b;
   }
   
   public Map<String, String> b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public String c()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.openws.data.WSReportParams
  * JD-Core Version:    0.7.0.1
  */

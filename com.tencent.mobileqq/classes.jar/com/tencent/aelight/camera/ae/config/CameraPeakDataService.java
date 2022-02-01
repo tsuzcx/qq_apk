@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class CameraPeakDataService
   extends CameraDataService
 {
-  private static final String[] a = { "ShadowBackendSvc" };
+  private static final String[] b = { "ShadowBackendSvc" };
   
   private boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
@@ -127,7 +127,7 @@ public class CameraPeakDataService
   
   public String[] cmdHeaderPrefix()
   {
-    return a;
+    return b;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -196,7 +196,7 @@ public class CameraPeakDataService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.config.CameraPeakDataService
  * JD-Core Version:    0.7.0.1
  */

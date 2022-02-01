@@ -9,7 +9,7 @@ public class KeyingManager
   {
     if (paramKeyingParams != null)
     {
-      int i = paramKeyingParams.jdField_a_of_type_Int;
+      int i = paramKeyingParams.a;
       Object localObject;
       if (i != 1)
       {
@@ -21,8 +21,8 @@ public class KeyingManager
             {
               if (i != 5) {
                 localObject = new NoneKey(paramInt);
-              } else if (!TextUtils.isEmpty(paramKeyingParams.jdField_a_of_type_JavaLangString)) {
-                localObject = new CustomizeKey(paramInt, paramKeyingParams.jdField_a_of_type_JavaLangString);
+              } else if (!TextUtils.isEmpty(paramKeyingParams.k)) {
+                localObject = new CustomizeKey(paramInt, paramKeyingParams.k);
               } else {
                 throw new RuntimeException("fragmentShader can not be empty!");
               }
@@ -60,7 +60,7 @@ public class KeyingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.KeyingManager
  * JD-Core Version:    0.7.0.1
  */

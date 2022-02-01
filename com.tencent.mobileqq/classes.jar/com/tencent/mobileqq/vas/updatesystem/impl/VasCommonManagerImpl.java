@@ -9,120 +9,19 @@ import com.tencent.mobileqq.vas.updatesystem.VasUpdateConstants;
 import com.tencent.mobileqq.vas.updatesystem.VasUpdateUtil;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateAdapter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.vas.update.callback.ICommonManager;
+import com.tencent.vas.update.factory.api.ICommonManager;
 import java.io.File;
 import mqq.app.MobileQQ;
 
 public class VasCommonManagerImpl
   implements ICommonManager
 {
-  public boolean copyFile(String paramString1, String paramString2)
-  {
-    paramString1 = new File(paramString1);
-    if (paramString1.exists()) {
-      try
-      {
-        boolean bool = FileUtils.copyFile(paramString1, FileUtils.createFile(paramString2));
-        return bool;
-      }
-      catch (Throwable paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-    }
-    return false;
-  }
-  
-  public boolean filePatch(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("bsPatch: srcFile = ");
-      localStringBuilder.append(paramString1);
-      localStringBuilder.append(" patchFile = ");
-      localStringBuilder.append(paramString2);
-      QLog.d("VasUpdate_CommonManagerImpl", 2, localStringBuilder.toString());
-    }
-    return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).patch(paramString1, paramString2, paramString1);
-  }
-  
-  public String getAppVersion()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.7.0");
-    }
-    return "8.7.0";
-  }
-  
-  public Context getApplicationContext()
-  {
-    return MobileQQ.getContext();
-  }
-  
-  public String getFileMd5(String paramString)
-  {
-    return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).getFileMd5(paramString);
-  }
-  
-  public int getNetType()
-  {
-    int i;
-    switch ()
-    {
-    case -1: 
-    default: 
-      i = 0;
-      break;
-    case 4: 
-      i = 3;
-      break;
-    case 3: 
-      i = 4;
-      break;
-    case 2: 
-      i = 5;
-      break;
-    case 1: 
-    case 5: 
-      i = 2;
-      break;
-    case 0: 
-      i = 1;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getNetType netType = ");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" local = ");
-      localStringBuilder.append(HttpUtil.getNetWorkType());
-      QLog.d("VasUpdate_CommonManagerImpl", 2, localStringBuilder.toString());
-    }
-    return i;
-  }
-  
-  public String getReportVersion()
-  {
-    return "8.7.0.5295";
-  }
-  
-  public String getSeqConfigPath()
-  {
-    return VasUpdateConstants.a;
-  }
-  
-  public long getServiceTime()
-  {
-    return NetConnInfoCenter.getServerTime();
-  }
-  
-  public long getTimerDelay()
+  public long a()
   {
     return 500L;
   }
   
-  public String unCompressFile(int paramInt, String paramString)
+  public String a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel())
     {
@@ -177,10 +76,111 @@ public class VasCommonManagerImpl
     return null;
     return paramString;
   }
+  
+  public String a(String paramString)
+  {
+    return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).getFileMd5(paramString);
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("bsPatch: srcFile = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" patchFile = ");
+      localStringBuilder.append(paramString2);
+      QLog.d("VasUpdate_CommonManagerImpl", 2, localStringBuilder.toString());
+    }
+    return ((IVasQuickUpdateAdapter)QRoute.api(IVasQuickUpdateAdapter.class)).patch(paramString1, paramString2, paramString1);
+  }
+  
+  public Context b()
+  {
+    return MobileQQ.getContext();
+  }
+  
+  public boolean b(String paramString1, String paramString2)
+  {
+    paramString1 = new File(paramString1);
+    if (paramString1.exists()) {
+      try
+      {
+        boolean bool = FileUtils.copyFile(paramString1, FileUtils.createFile(paramString2));
+        return bool;
+      }
+      catch (Throwable paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public String c()
+  {
+    return VasUpdateConstants.a;
+  }
+  
+  public String d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_CommonManagerImpl", 2, "getAppVersion = 8.8.17");
+    }
+    return "8.8.17";
+  }
+  
+  public String e()
+  {
+    return "8.8.17.5770";
+  }
+  
+  public int f()
+  {
+    int i;
+    switch ()
+    {
+    case -1: 
+    default: 
+      i = 0;
+      break;
+    case 4: 
+      i = 3;
+      break;
+    case 3: 
+      i = 4;
+      break;
+    case 2: 
+      i = 5;
+      break;
+    case 1: 
+    case 5: 
+      i = 2;
+      break;
+    case 0: 
+      i = 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNetType netType = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" local = ");
+      localStringBuilder.append(HttpUtil.getNetWorkType());
+      QLog.d("VasUpdate_CommonManagerImpl", 2, localStringBuilder.toString());
+    }
+    return i;
+  }
+  
+  public long g()
+  {
+    return NetConnInfoCenter.getServerTime();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasCommonManagerImpl
  * JD-Core Version:    0.7.0.1
  */

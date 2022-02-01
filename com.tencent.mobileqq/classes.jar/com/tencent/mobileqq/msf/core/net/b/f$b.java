@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msf.core.net.b;
 
-import com.tencent.mobileqq.msf.core.ac;
+import com.tencent.mobileqq.msf.core.ad;
 import com.tencent.mobileqq.msf.core.o;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.CodecWarpper;
@@ -23,7 +23,7 @@ class f$b
         byte[] arrayOfByte2;
         try
         {
-          byte[] arrayOfByte1 = ac.b(localToServiceMsg, 0);
+          byte[] arrayOfByte1 = ad.b(localToServiceMsg, 0);
         }
         catch (Exception localException)
         {
@@ -51,7 +51,7 @@ class f$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.b.f.b
  * JD-Core Version:    0.7.0.1
  */

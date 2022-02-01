@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="200" android:drawable="@drawable/e7r" />
-    <item android:duration="200" android:drawable="@drawable/e7s" />
-    <item android:duration="200" android:drawable="@drawable/e7t" />
-</animation-list>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <size android:height="2.0dip" />
+        </shape>
+    </item>
+</selector>

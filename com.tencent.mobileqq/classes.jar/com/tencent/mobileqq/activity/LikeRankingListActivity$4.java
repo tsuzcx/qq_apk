@@ -20,13 +20,13 @@ class LikeRankingListActivity$4
       if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
         localRedTouchItem2.unReadFlag = false;
       }
-      localLocalRedTouchManager.a(100601);
+      localLocalRedTouchManager.b(100601);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.4
  * JD-Core Version:    0.7.0.1
  */

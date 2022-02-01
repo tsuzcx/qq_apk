@@ -17,8 +17,8 @@ public class DefaultBandwidthObtainer
   private long lastTimeStamp = 0L;
   private long lastTotalRxBytes;
   
-  @SuppressLint({"DiscouragedPrivateApi"})
-  private final long getLoopbackRxBytesIn14()
+  @SuppressLint({"DiscouragedPrivateApi", "PrivateApi"})
+  private long getLoopbackRxBytesIn14()
   {
     try
     {
@@ -37,8 +37,8 @@ public class DefaultBandwidthObtainer
     return 0L;
   }
   
-  @SuppressLint({"DiscouragedPrivateApi"})
-  private final long getLoopbackRxBytesIn28()
+  @SuppressLint({"DiscouragedPrivateApi", "PrivateApi"})
+  private long getLoopbackRxBytesIn28()
   {
     try
     {
@@ -107,7 +107,7 @@ public class DefaultBandwidthObtainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.DefaultBandwidthObtainer
  * JD-Core Version:    0.7.0.1
  */

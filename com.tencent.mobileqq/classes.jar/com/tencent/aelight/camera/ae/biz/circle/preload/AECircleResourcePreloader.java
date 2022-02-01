@@ -6,46 +6,41 @@ import com.tencent.aelight.camera.log.AEQLog;
 
 public class AECircleResourcePreloader
 {
-  private static AECircleResourcePreloader jdField_a_of_type_ComTencentAelightCameraAeBizCirclePreloadAECircleResourcePreloader;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  public volatile boolean a;
-  private boolean b;
-  
-  public AECircleResourcePreloader()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private static final Object b = new Object();
+  private static AECircleResourcePreloader c;
+  public volatile boolean a = false;
+  private boolean d;
   
   public static AECircleResourcePreloader a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeBizCirclePreloadAECircleResourcePreloader == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (c == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeBizCirclePreloadAECircleResourcePreloader == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeBizCirclePreloadAECircleResourcePreloader = new AECircleResourcePreloader();
+        if (c == null) {
+          c = new AECircleResourcePreloader();
         }
       }
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeBizCirclePreloadAECircleResourcePreloader;
+    return c;
   }
   
   public void a(Context paramContext)
   {
     AEQLog.a("[Performance2]AECircleResourcePreloader", "loadAEPhotoListContentView... ");
     long l = System.currentTimeMillis();
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      if (a()) {
+      if (b()) {
         return;
       }
       AEQLog.a("[Performance2]AECircleResourcePreloader", "loadAEPhotoListContentView... create");
       try
       {
-        LayoutInflater.from(paramContext).inflate(2064318494, null);
-        LayoutInflater.from(paramContext).inflate(2064318611, null);
-        LayoutInflater.from(paramContext).inflate(2064318523, null);
-        LayoutInflater.from(paramContext).inflate(2064318509, null);
-        this.b = true;
+        LayoutInflater.from(paramContext).inflate(2064056361, null);
+        LayoutInflater.from(paramContext).inflate(2064056490, null);
+        LayoutInflater.from(paramContext).inflate(2064056394, null);
+        LayoutInflater.from(paramContext).inflate(2064056377, null);
+        this.d = true;
       }
       catch (Throwable paramContext)
       {
@@ -58,14 +53,14 @@ public class AECircleResourcePreloader
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.b;
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.preload.AECircleResourcePreloader
  * JD-Core Version:    0.7.0.1
  */

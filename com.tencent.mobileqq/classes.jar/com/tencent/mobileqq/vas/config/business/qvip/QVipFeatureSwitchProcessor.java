@@ -18,7 +18,7 @@ public class QVipFeatureSwitchProcessor
   @NonNull
   public QVipFeatureSwitchConfig a(@NonNull QConfItem[] paramArrayOfQConfItem)
   {
-    String str = paramArrayOfQConfItem[0].a;
+    String str = paramArrayOfQConfItem[0].b;
     if (!TextUtils.isEmpty(str))
     {
       QVipFeatureSwitchConfig localQVipFeatureSwitchConfig = (QVipFeatureSwitchConfig)JSONConverter.a(str, QVipFeatureSwitchConfig.class);
@@ -47,15 +47,15 @@ public class QVipFeatureSwitchProcessor
     return new QVipFeatureSwitchConfig();
   }
   
-  @NonNull
-  public QVipFeatureSwitchConfig c()
-  {
-    return new QVipFeatureSwitchConfig();
-  }
-  
   public Class<QVipFeatureSwitchConfig> clazz()
   {
     return QVipFeatureSwitchConfig.class;
+  }
+  
+  @NonNull
+  public QVipFeatureSwitchConfig e()
+  {
+    return new QVipFeatureSwitchConfig();
   }
   
   public int type()
@@ -65,7 +65,7 @@ public class QVipFeatureSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.QVipFeatureSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

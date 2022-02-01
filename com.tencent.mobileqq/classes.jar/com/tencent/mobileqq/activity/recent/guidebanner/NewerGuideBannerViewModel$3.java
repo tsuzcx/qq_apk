@@ -14,16 +14,16 @@ class NewerGuideBannerViewModel$3
       QLog.d("NewerGuideBannerViewModel", 2, "[onContactsWebJump] allow");
     }
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append("&ab_auth=1");
     localObject = ((StringBuilder)localObject).toString();
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (String)localObject);
-    NewerGuideBannerViewModel.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+    this.this$0.b(this.b, (String)localObject);
+    NewerGuideBannerViewModel.a(this.this$0, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerViewModel.3
  * JD-Core Version:    0.7.0.1
  */

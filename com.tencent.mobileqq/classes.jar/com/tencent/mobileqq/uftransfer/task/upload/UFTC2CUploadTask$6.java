@@ -10,7 +10,7 @@ class UFTC2CUploadTask$6
   
   public void a(boolean paramBoolean, long paramLong, Bundle paramBundle)
   {
-    if (!UFTC2CUploadTask.h(this.a))
+    if (!UFTC2CUploadTask.k(this.a))
     {
       long l = 58L;
       Object localObject;
@@ -54,7 +54,7 @@ class UFTC2CUploadTask$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTC2CUploadTask.6
  * JD-Core Version:    0.7.0.1
  */

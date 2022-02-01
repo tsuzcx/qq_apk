@@ -17,19 +17,19 @@ class TroopFileZipPreviewActivity$1
   {
     Object localObject = new Intent();
     ((Intent)localObject).putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, (Intent)localObject);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app;
+    this.b.setResult(-1, (Intent)localObject);
+    TroopFileZipPreviewActivity.a(this.b);
+    localObject = this.b.app;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
+    localStringBuilder.append(this.a.TroopUin);
     ReportController.b((AppRuntime)localObject, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, localStringBuilder.toString(), "", "", "1");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

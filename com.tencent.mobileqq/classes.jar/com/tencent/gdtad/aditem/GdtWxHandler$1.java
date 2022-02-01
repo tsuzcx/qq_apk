@@ -10,12 +10,12 @@ final class GdtWxHandler$1
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 0, this.a, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), 0, this.a, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtWxHandler.1
  * JD-Core Version:    0.7.0.1
  */

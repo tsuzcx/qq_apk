@@ -4,7 +4,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.ObjCreateTavEvent;
 import com.tencent.qqmini.proxyimpl.tavkitplugin.SendMsgTavEvent;
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import com.tencent.tav.asset.Asset;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
@@ -19,17 +19,6 @@ import org.json.JSONObject;
 class TavResourceProxy
   extends BaseTavApiProxy
 {
-  @Nullable
-  private CMTime a(JSONObject paramJSONObject)
-  {
-    if (!paramJSONObject.has("duration"))
-    {
-      b("duration");
-      return null;
-    }
-    return ObjConvector.a(paramJSONObject.getJSONObject("duration"));
-  }
-  
   private void a(ObjCreateTavEvent paramObjCreateTavEvent, JSONObject paramJSONObject)
   {
     if (!"emptyVideo".equals(paramObjCreateTavEvent.b()))
@@ -37,7 +26,7 @@ class TavResourceProxy
       b(paramObjCreateTavEvent, paramJSONObject);
       return;
     }
-    a(new TAVEmptyResource(a(paramJSONObject), false));
+    a(new TAVEmptyResource(b(paramJSONObject), false));
   }
   
   private void a(SendMsgTavEvent paramSendMsgTavEvent, TAVResource paramTAVResource)
@@ -60,6 +49,17 @@ class TavResourceProxy
     a("no filePath");
   }
   
+  @Nullable
+  private CMTime b(JSONObject paramJSONObject)
+  {
+    if (!paramJSONObject.has("duration"))
+    {
+      b("duration");
+      return null;
+    }
+    return ObjConvector.b(paramJSONObject.getJSONObject("duration"));
+  }
+  
   private void b(ObjCreateTavEvent paramObjCreateTavEvent, JSONObject paramJSONObject)
   {
     if (!"video".equals(paramObjCreateTavEvent.b()))
@@ -69,13 +69,13 @@ class TavResourceProxy
     }
     try
     {
-      paramObjCreateTavEvent = new TAVAssetTrackResource(this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerMiniAppFileManager.getAbsolutePath(paramJSONObject.getString("filePath")));
+      paramObjCreateTavEvent = new TAVAssetTrackResource(this.d.getAbsolutePath(paramJSONObject.getString("filePath")));
       a(paramObjCreateTavEvent);
       return;
     }
     catch (Exception paramObjCreateTavEvent)
     {
-      Logger.e(this.jdField_a_of_type_JavaLangString, "matchNewVideo: ", paramObjCreateTavEvent);
+      Logger.e(this.a, "matchNewVideo: ", paramObjCreateTavEvent);
       a(String.valueOf(paramObjCreateTavEvent));
     }
   }
@@ -97,7 +97,7 @@ class TavResourceProxy
       c();
       return;
     }
-    a(new TAVImageTrackResource(this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerMiniAppFileManager.getAbsolutePath(paramJSONObject.getString("filePath")), a(paramJSONObject)));
+    a(new TAVImageTrackResource(this.d.getAbsolutePath(paramJSONObject.getString("filePath")), b(paramJSONObject)));
   }
   
   private void c(SendMsgTavEvent paramSendMsgTavEvent, TAVResource paramTAVResource)
@@ -112,7 +112,7 @@ class TavResourceProxy
   
   private void c(String paramString)
   {
-    c(this.jdField_a_of_type_ComTencentQqminiSdkCoreManagerMiniAppFileManager.getWxFilePath(paramString));
+    c(this.d.getWxFilePath(paramString));
   }
   
   private void d(SendMsgTavEvent paramSendMsgTavEvent, TAVResource paramTAVResource)
@@ -156,7 +156,7 @@ class TavResourceProxy
       g(paramSendMsgTavEvent, paramTAVResource);
       return;
     }
-    paramTAVResource.setSourceTimeRange(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("sourceTimeRange")));
+    paramTAVResource.setSourceTimeRange(ObjConvector.c(paramSendMsgTavEvent.c().getJSONObject("sourceTimeRange")));
     a();
   }
   
@@ -167,20 +167,20 @@ class TavResourceProxy
       c();
       return;
     }
-    paramTAVResource.setScaledDuration(ObjConvector.a(paramSendMsgTavEvent.a().getJSONObject("scaledDuration")));
+    paramTAVResource.setScaledDuration(ObjConvector.b(paramSendMsgTavEvent.c().getJSONObject("scaledDuration")));
     a();
   }
   
   void a(ObjCreateTavEvent paramObjCreateTavEvent)
   {
     super.a(paramObjCreateTavEvent);
-    a(paramObjCreateTavEvent, paramObjCreateTavEvent.a());
+    a(paramObjCreateTavEvent, paramObjCreateTavEvent.c());
   }
   
   void a(SendMsgTavEvent paramSendMsgTavEvent)
   {
     super.a(paramSendMsgTavEvent);
-    Object localObject = paramSendMsgTavEvent.a();
+    Object localObject = paramSendMsgTavEvent.d();
     if (!(localObject instanceof TAVResource))
     {
       b();
@@ -191,7 +191,7 @@ class TavResourceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavResourceProxy
  * JD-Core Version:    0.7.0.1
  */

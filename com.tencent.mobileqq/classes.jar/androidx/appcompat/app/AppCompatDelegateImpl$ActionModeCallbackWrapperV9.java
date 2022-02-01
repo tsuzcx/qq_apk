@@ -45,11 +45,14 @@ class AppCompatDelegateImpl$ActionModeCallbackWrapperV9
     if (this.this$0.mAppCompatCallback != null) {
       this.this$0.mAppCompatCallback.onSupportActionModeFinished(this.this$0.mActionMode);
     }
-    this.this$0.mActionMode = null;
+    paramActionMode = this.this$0;
+    paramActionMode.mActionMode = null;
+    ViewCompat.requestApplyInsets(paramActionMode.mSubDecor);
   }
   
   public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
+    ViewCompat.requestApplyInsets(this.this$0.mSubDecor);
     return this.mWrapped.onPrepareActionMode(paramActionMode, paramMenu);
   }
 }

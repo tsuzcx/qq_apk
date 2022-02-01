@@ -2,8 +2,8 @@ package com.tencent.mtt.hippy.uimanager;
 
 public class DiffUtils$PatchType
 {
-  public DiffUtils.Patch mPatch;
-  public int mType = -1;
+  public final DiffUtils.Patch mPatch;
+  public int mType;
   
   public DiffUtils$PatchType(int paramInt, DiffUtils.Patch paramPatch)
   {
@@ -13,7 +13,7 @@ public class DiffUtils$PatchType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.PatchType
  * JD-Core Version:    0.7.0.1
  */

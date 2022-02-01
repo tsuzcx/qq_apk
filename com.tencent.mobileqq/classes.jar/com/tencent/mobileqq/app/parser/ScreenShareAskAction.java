@@ -18,25 +18,25 @@ import com.tencent.qphone.base.util.QLog;
 public class ScreenShareAskAction
   extends JumpAction
 {
-  private Activity jdField_a_of_type_AndroidAppActivity = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Activity H = null;
+  private QQAppInterface I;
   
   public ScreenShareAskAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.I = paramQQAppInterface;
   }
   
   public void a(BaseActivity paramBaseActivity, String paramString)
   {
     Object localObject = paramBaseActivity.getChatFragment();
-    if ((localObject != null) && (((ChatFragment)localObject).a() != null))
+    if ((localObject != null) && (((ChatFragment)localObject).k() != null))
     {
-      localObject = ((ChatFragment)localObject).a();
-      if (((BaseChatPie)localObject).a != null)
+      localObject = ((ChatFragment)localObject).k();
+      if (((BaseChatPie)localObject).ah != null)
       {
-        FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, ((BaseChatPie)localObject).a.a);
-        paramBaseActivity = new ScreenShareAskArkBottomUpDialog(paramBaseActivity, ((BaseChatPie)localObject).a.d, localFaceDrawable, new ScreenShareAskAction.2(this, paramBaseActivity, (BaseChatPie)localObject, paramString));
+        FaceDrawable localFaceDrawable = FaceDrawable.getFaceDrawable(this.I, 1, ((BaseChatPie)localObject).ah.b);
+        paramBaseActivity = new ScreenShareAskArkBottomUpDialog(paramBaseActivity, ((BaseChatPie)localObject).ah.e, localFaceDrawable, new ScreenShareAskAction.2(this, paramBaseActivity, (BaseChatPie)localObject, paramString));
         paramBaseActivity.a(new ScreenShareAskAction.3(this, paramString));
         paramBaseActivity.show();
         ReportController.b(null, "dc00898", "", "", "0X800B8A5", "0X800B8A5", 0, 0, paramString, "", "", "");
@@ -57,14 +57,14 @@ public class ScreenShareAskAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("ScreenShareAskAction", 1, localStringBuilder.toString());
-      b_("ScreenShareAskAction");
+      h_("ScreenShareAskAction");
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.ScreenShareAskAction
  * JD-Core Version:    0.7.0.1
  */

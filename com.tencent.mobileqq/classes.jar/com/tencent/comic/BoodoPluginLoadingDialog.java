@@ -15,14 +15,14 @@ public class BoodoPluginLoadingDialog
   extends Dialog
   implements DialogInterface.OnDismissListener
 {
-  private BoodoPluginLoadingDialog.HippyActivityLaunchReceiver jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver;
-  private final VipComicJumpActivity.LoadingCondition jdField_a_of_type_ComTencentComicVipComicJumpActivity$LoadingCondition;
+  private final VipComicJumpActivity.LoadingCondition a;
+  private BoodoPluginLoadingDialog.HippyActivityLaunchReceiver b;
   
   public BoodoPluginLoadingDialog(Context paramContext, VipComicJumpActivity.LoadingCondition paramLoadingCondition)
   {
-    super(paramContext, 2131756189);
-    setContentView(2131558978);
-    this.jdField_a_of_type_ComTencentComicVipComicJumpActivity$LoadingCondition = paramLoadingCondition;
+    super(paramContext, 2131953338);
+    setContentView(2131624611);
+    this.a = paramLoadingCondition;
     a();
   }
   
@@ -39,23 +39,23 @@ public class BoodoPluginLoadingDialog
       ((Window)localObject).setGravity(17);
     }
     localObject = LayoutInflater.from(getContext()).inflate(1996816386, null);
-    ((ImageView)((View)localObject).findViewById(1996750881)).setImageResource(2130851211);
+    ((ImageView)((View)localObject).findViewById(1996750881)).setImageResource(2130853467);
     setContentView((View)localObject);
-    if (this.jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver == null)
+    if (this.b == null)
     {
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("action_hippy_activity_launch");
-      this.jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver = new BoodoPluginLoadingDialog.HippyActivityLaunchReceiver(this, null);
-      getContext().registerReceiver(this.jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver, (IntentFilter)localObject);
+      this.b = new BoodoPluginLoadingDialog.HippyActivityLaunchReceiver(this, null);
+      getContext().registerReceiver(this.b, (IntentFilter)localObject);
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver != null)
+    if (this.b != null)
     {
-      getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver);
-      this.jdField_a_of_type_ComTencentComicBoodoPluginLoadingDialog$HippyActivityLaunchReceiver = null;
+      getContext().unregisterReceiver(this.b);
+      this.b = null;
     }
   }
   
@@ -67,7 +67,7 @@ public class BoodoPluginLoadingDialog
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentComicVipComicJumpActivity$LoadingCondition;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.b = true;
     }
@@ -76,7 +76,7 @@ public class BoodoPluginLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.BoodoPluginLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

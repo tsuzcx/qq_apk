@@ -16,28 +16,28 @@ final class ModeRadioGroup$createItemView$1
   
   public final void onClick(View paramView)
   {
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext()))
+    if (!NetworkUtil.isNetSupport(this.a.getContext()))
     {
-      if (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup) != this.jdField_a_of_type_Int) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup.getContext(), 1, 2131694475, 1).a();
+      if (ModeRadioGroup.a(this.a) != this.b) {
+        QQToast.makeText(this.a.getContext(), 1, 2131892157, 1).show();
       }
     }
-    else if ((this.jdField_a_of_type_Int == 2) && (ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup) != 2))
+    else if ((this.b == 2) && (ModeRadioGroup.a(this.a) != 2))
     {
-      ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int);
+      ModeRadioGroup.a(this.a, this.b);
     }
     else
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("click item, type= ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(", old type= ");
-      localStringBuilder.append(ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup));
+      localStringBuilder.append(ModeRadioGroup.a(this.a));
       localStringBuilder.append(", enableCheck = ");
-      localStringBuilder.append(ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup));
+      localStringBuilder.append(ModeRadioGroup.b(this.a));
       QLog.d("GeneralModeRadioGroup", 2, localStringBuilder.toString());
-      if ((ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup)) && (this.jdField_a_of_type_Int != ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup))) {
-        ModeRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqStudymodeModeRadioGroup, this.jdField_a_of_type_Int, true, false, 4, null);
+      if ((ModeRadioGroup.b(this.a)) && (this.b != ModeRadioGroup.a(this.a))) {
+        ModeRadioGroup.a(this.a, this.b, true, false, 4, null);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -45,7 +45,7 @@ final class ModeRadioGroup$createItemView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeRadioGroup.createItemView.1
  * JD-Core Version:    0.7.0.1
  */

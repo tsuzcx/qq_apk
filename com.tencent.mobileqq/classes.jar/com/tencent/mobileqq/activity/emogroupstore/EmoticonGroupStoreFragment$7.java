@@ -8,12 +8,12 @@ class EmoticonGroupStoreFragment$7
   public void run()
   {
     EmoticonGroupStoreFragment localEmoticonGroupStoreFragment = this.this$0;
-    EmoticonGroupStoreFragment.c(localEmoticonGroupStoreFragment, EmoticonGroupStoreFragment.c(localEmoticonGroupStoreFragment));
+    EmoticonGroupStoreFragment.c(localEmoticonGroupStoreFragment, EmoticonGroupStoreFragment.k(localEmoticonGroupStoreFragment));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment.7
  * JD-Core Version:    0.7.0.1
  */

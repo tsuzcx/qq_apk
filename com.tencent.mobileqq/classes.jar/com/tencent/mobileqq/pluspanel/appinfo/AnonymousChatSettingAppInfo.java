@@ -24,7 +24,7 @@ public class AnonymousChatSettingAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843823;
+    return 2130844777;
   }
   
   public int getAppID()
@@ -37,17 +37,17 @@ public class AnonymousChatSettingAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131696057);
+    return BaseApplicationImpl.getContext().getString(2131893819);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    if (AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString))
+    if (AnonymousChatHelper.a().a(paramSessionInfo.b))
     {
-      QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+      QQAppInterface localQQAppInterface = paramBaseChatPie.d;
       int j = 0;
       paramPlusPanelViewModel = localQQAppInterface.getCurrentAccountUin();
-      Object localObject = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      Object localObject = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).g(paramSessionInfo.b);
       int i = j;
       if (localObject != null)
       {
@@ -62,32 +62,32 @@ public class AnonymousChatSettingAppInfo
           }
         }
       }
-      paramPlusPanelViewModel = AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString);
-      localObject = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
+      paramPlusPanelViewModel = AnonymousChatHelper.a().b(paramSessionInfo.b);
+      localObject = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("https://qqweb.qq.com/m/business/anonymoustalk/index.html?_wv=5123&_bid=227&gcode=");
-      localStringBuilder.append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(paramSessionInfo.b);
       localStringBuilder.append("&avatar=");
-      localStringBuilder.append(AnonymousChatHelper.a(paramPlusPanelViewModel.jdField_a_of_type_Int));
+      localStringBuilder.append(AnonymousChatHelper.a(paramPlusPanelViewModel.c));
       localStringBuilder.append("&nick=");
-      if (TextUtils.isEmpty(paramPlusPanelViewModel.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramPlusPanelViewModel.d)) {
         paramPlusPanelViewModel = "";
       } else {
-        paramPlusPanelViewModel = URLEncoder.encode(paramPlusPanelViewModel.jdField_a_of_type_JavaLangString);
+        paramPlusPanelViewModel = URLEncoder.encode(paramPlusPanelViewModel.d);
       }
       localStringBuilder.append(paramPlusPanelViewModel);
       localStringBuilder.append("&role=");
       localStringBuilder.append(String.valueOf(i));
       localStringBuilder.append("&self=1");
       ((Intent)localObject).putExtra("url", localStringBuilder.toString());
-      paramBaseChatPie.a().startActivity((Intent)localObject);
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_anon", "", "aio_plus", "clk_change", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, String.valueOf(i), "", "");
+      paramBaseChatPie.aX().startActivity((Intent)localObject);
+      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_anon", "", "aio_plus", "clk_change", 0, 0, paramSessionInfo.b, String.valueOf(i), "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.AnonymousChatSettingAppInfo
  * JD-Core Version:    0.7.0.1
  */

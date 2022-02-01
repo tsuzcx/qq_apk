@@ -9,12 +9,12 @@ class TroopEssenceMsgManager$6
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$QQGroupDigestMsgSummary, this.jdField_a_of_type_Boolean);
+    this.this$0.b(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.6
  * JD-Core Version:    0.7.0.1
  */

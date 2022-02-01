@@ -11,7 +11,7 @@ class ShortVideoPTVItemBuilder$ChatVideoView
   extends CircleBubbleImageView
 {
   URLDrawable a;
-  URLDrawable b;
+  URLDrawable d;
   
   public ShortVideoPTVItemBuilder$ChatVideoView(Context paramContext)
   {
@@ -32,15 +32,15 @@ class ShortVideoPTVItemBuilder$ChatVideoView
   
   public boolean a(String paramString)
   {
-    URLDrawable localURLDrawable = this.b;
+    URLDrawable localURLDrawable = this.d;
     return (localURLDrawable == null) || (!localURLDrawable.getURL().getPath().equals(paramString));
   }
   
   public void b(URLDrawable paramURLDrawable)
   {
     setImageDrawable(paramURLDrawable);
-    if (this.b != paramURLDrawable) {
-      this.b = paramURLDrawable;
+    if (this.d != paramURLDrawable) {
+      this.d = paramURLDrawable;
     }
   }
   
@@ -76,7 +76,7 @@ class ShortVideoPTVItemBuilder$ChatVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.ChatVideoView
  * JD-Core Version:    0.7.0.1
  */

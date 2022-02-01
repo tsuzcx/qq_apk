@@ -24,9 +24,9 @@ import com.tencent.widget.immersive.SystemBarTintManager;
 class DoodleLayout$TextFaceLayerTouchListener
   implements BaseLayer.OnLayerTouchListener<BaseLayer>
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
+  private Rect b;
+  private boolean c = false;
+  private boolean d = false;
   
   private DoodleLayout$TextFaceLayerTouchListener(DoodleLayout paramDoodleLayout) {}
   
@@ -45,15 +45,15 @@ class DoodleLayout$TextFaceLayerTouchListener
     }
     float f1 = 0.0F;
     if (LiuHaiUtils.b()) {
-      f1 = LiuHaiUtils.e;
+      f1 = LiuHaiUtils.j;
     }
     float f2 = f1;
-    if (SystemBarTintManager.hasNavBar(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.getContext())) {
-      f2 = f1 + SystemBarTintManager.getNavigationBarHeight(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.getContext());
+    if (SystemBarTintManager.hasNavBar(this.a.getContext())) {
+      f2 = f1 + SystemBarTintManager.getNavigationBarHeight(this.a.getContext());
     }
     f1 = paramMotionEvent.getX();
     float f3 = paramMotionEvent.getY();
-    int i = (int)Math.abs(f3 - DoodleLayout.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout));
+    int i = (int)Math.abs(f3 - DoodleLayout.l(this.a));
     int j = paramMotionEvent.getAction() & 0xFF;
     if (j != 0)
     {
@@ -65,81 +65,81 @@ class DoodleLayout$TextFaceLayerTouchListener
         if ((j != 2) && (j != 5) && (j != 6)) {
           return false;
         }
-        if (i > DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout))
+        if (i > DoodleLayout.i(this.a))
         {
-          if ((DoodleLayout.d(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout)) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0))
+          if ((DoodleLayout.h(this.a)) && (this.a.q.getVisibility() != 0))
           {
-            if (DoodleLayout.d(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout)) {
-              TakeVideoUtils.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+            if (DoodleLayout.h(this.a)) {
+              TakeVideoUtils.a(this.a.q, false);
             }
-            this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidWidgetRelativeLayout.getGlobalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect);
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.getGlobalVisibleRect(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect);
-            if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 2)
+            this.b = new Rect();
+            this.a.q.getGlobalVisibleRect(this.b);
+            this.a.v.getGlobalVisibleRect(this.a.I);
+            if (this.a.C == 2)
             {
-              DoodleLayout.f(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
+              DoodleLayout.m(this.a);
             }
-            else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 9)
+            else if (this.a.C == 9)
             {
-              if (DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout).getVisibility() == 0) {
-                DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, false, true);
+              if (DoodleLayout.n(this.a).getVisibility() == 0) {
+                DoodleLayout.a(this.a, false, true);
               }
-              DoodleLayout.e(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
+              DoodleLayout.k(this.a);
             }
-            DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, 4);
+            DoodleLayout.a(this.a, 4);
           }
-          if (this.jdField_a_of_type_AndroidGraphicsRect != null)
+          if (this.b != null)
           {
-            if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams != null) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a()))
+            if ((this.a.p != null) && (!this.a.p.b()))
             {
-              if ((paramMotionEvent.getPointerCount() == 1) && (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f3)) && (DoodleLayout.d(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout)))
+              if ((paramMotionEvent.getPointerCount() == 1) && (this.b.contains((int)f1, (int)f3)) && (DoodleLayout.h(this.a)))
               {
-                DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, true);
-                this.jdField_a_of_type_Boolean = true;
+                DoodleLayout.a(this.a, true);
+                this.c = true;
               }
               else
               {
-                DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, false);
-                this.jdField_a_of_type_Boolean = false;
+                DoodleLayout.a(this.a, false);
+                this.c = false;
               }
             }
             else
             {
               i = (int)f1;
-              j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+              j = this.a.I.left;
               k = (int)f3;
-              m = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
-              if ((!this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) && (!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(f1, f3, localRect, f2)))
+              m = this.a.I.top;
+              if ((!this.b.contains(i + j, k + m)) && (!this.a.a(f1, f3, localRect, f2)))
               {
-                DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, false);
-                this.jdField_a_of_type_Boolean = false;
+                DoodleLayout.a(this.a, false);
+                this.c = false;
               }
               else
               {
-                DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, true);
-                this.jdField_a_of_type_Boolean = true;
+                DoodleLayout.a(this.a, true);
+                this.c = true;
               }
             }
-            this.b = true;
+            this.d = true;
             return false;
           }
         }
       }
       else
       {
-        if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams == null) || (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_ComTencentMobileqqEditorParamsEditVideoParams.a())))
+        if ((this.b != null) && ((this.a.p == null) || (this.a.p.b())))
         {
           i = (int)f1;
-          j = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.left;
+          j = this.a.I.left;
           k = (int)f3;
-          m = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_AndroidGraphicsRect.top;
-          if ((DoodleLayout.e(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout)) && ((this.jdField_a_of_type_AndroidGraphicsRect.contains(i + j, k + m)) || (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(f1, f3, localRect, f2))))
+          m = this.a.I.top;
+          if ((DoodleLayout.j(this.a)) && ((this.b.contains(i + j, k + m)) || (this.a.a(f1, f3, localRect, f2))))
           {
             if (bool2)
             {
               SLog.b("DoodleLayout", "remove face.");
-              ((FaceLayer)paramBaseLayer).x_();
-              this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(false, 0.0F, 0, 0, null, false, 0);
+              ((FaceLayer)paramBaseLayer).i();
+              this.a.a(false, 0.0F, 0, 0, null, false, 0);
               if (QLog.isColorLevel()) {
                 QLog.d("DoodleLayout", 2, "delete face, disable guideline");
               }
@@ -147,84 +147,84 @@ class DoodleLayout$TextFaceLayerTouchListener
             else if ((paramBaseLayer instanceof TextLayer))
             {
               SLog.b("DoodleLayout", "editpic remove text.");
-              ((TextLayer)paramBaseLayer).i();
+              ((TextLayer)paramBaseLayer).p();
               paramBaseLayer.d(false);
             }
             else if ((paramBaseLayer instanceof TextFaceEditLayer))
             {
-              ((TextFaceEditLayer)paramBaseLayer).d();
+              ((TextFaceEditLayer)paramBaseLayer).i();
             }
-            DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, false);
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.q();
+            DoodleLayout.a(this.a, false);
+            this.a.u();
           }
         }
         else if (paramMotionEvent.getPointerCount() == 1)
         {
-          paramMotionEvent = this.jdField_a_of_type_AndroidGraphicsRect;
-          if ((paramMotionEvent != null) && (paramMotionEvent.contains((int)f1, (int)f3)) && (this.jdField_a_of_type_Boolean))
+          paramMotionEvent = this.b;
+          if ((paramMotionEvent != null) && (paramMotionEvent.contains((int)f1, (int)f3)) && (this.c))
           {
             if ((paramBaseLayer instanceof TextLayer))
             {
               SLog.b("DoodleLayout", "remove text.");
-              ((TextLayer)paramBaseLayer).i();
+              ((TextLayer)paramBaseLayer).p();
               paramBaseLayer.d(false);
             }
             else if (bool2)
             {
               SLog.b("DoodleLayout", "remove face.");
-              ((FaceLayer)paramBaseLayer).x_();
+              ((FaceLayer)paramBaseLayer).i();
             }
             else if ((paramBaseLayer instanceof TextFaceEditLayer))
             {
-              ((TextFaceEditLayer)paramBaseLayer).d();
+              ((TextFaceEditLayer)paramBaseLayer).i();
             }
-            DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, false);
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.q();
+            DoodleLayout.a(this.a, false);
+            this.a.u();
           }
         }
-        paramBaseLayer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout;
-        paramBaseLayer.a(new View[] { paramBaseLayer.jdField_a_of_type_AndroidWidgetRelativeLayout });
-        if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 2)
+        paramBaseLayer = this.a;
+        paramBaseLayer.setViewsInVisible(new View[] { paramBaseLayer.q });
+        if (this.a.C == 2)
         {
-          DoodleLayout.g(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
-          paramBaseLayer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout;
-          DoodleLayout.a(paramBaseLayer, paramBaseLayer.h);
+          DoodleLayout.o(this.a);
+          paramBaseLayer = this.a;
+          DoodleLayout.a(paramBaseLayer, paramBaseLayer.C);
         }
-        else if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h == 9)
+        else if (this.a.C == 9)
         {
-          DoodleLayout.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout);
-          paramBaseLayer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout;
-          DoodleLayout.a(paramBaseLayer, paramBaseLayer.h);
+          DoodleLayout.b(this.a);
+          paramBaseLayer = this.a;
+          DoodleLayout.a(paramBaseLayer, paramBaseLayer.C);
         }
-        else if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h != 6) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.h != 11))
+        else if ((this.a.C != 6) && (this.a.C != 11))
         {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.m();
-          DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, 0);
+          this.a.n();
+          DoodleLayout.a(this.a, 0);
         }
-        if ((DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout) == null) && (DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout) != null)) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.a(false, false, false, false);
+        if ((DoodleLayout.p(this.a) == null) && (DoodleLayout.q(this.a) != null)) {
+          this.a.a(false, false, false, false);
         } else {
-          DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout).a.a(Message.obtain(null, 15, 0, 0, new EditVideoLimitRegion.LimitMessage(false, false, false, false, true)));
+          DoodleLayout.p(this.a).t.a(Message.obtain(null, 15, 0, 0, new EditVideoLimitRegion.LimitMessage(false, false, false, false, true)));
         }
-        if ((!this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout.b) || (!this.b)) {
+        if ((!this.a.k) || (!this.d)) {
           bool1 = false;
         }
         DoodleLayout.d(bool1);
-        this.b = false;
+        this.d = false;
         return false;
       }
     }
     else
     {
-      DoodleLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleLayout, (int)f3);
-      this.jdField_a_of_type_Boolean = false;
+      DoodleLayout.b(this.a, (int)f3);
+      this.c = false;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.TextFaceLayerTouchListener
  * JD-Core Version:    0.7.0.1
  */

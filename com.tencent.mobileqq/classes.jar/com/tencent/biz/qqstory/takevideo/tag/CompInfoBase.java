@@ -6,16 +6,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class CompInfoBase
 {
-  public final int a;
   public final String a;
-  public final boolean a;
   public final String b;
   public final String c;
-  public final String d;
+  public final boolean d;
+  public final String e;
+  public final int f;
   
   public CompInfoBase(qqstory_struct.CompInfoBase paramCompInfoBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramCompInfoBase.title.get();
+    this.a = paramCompInfoBase.title.get();
     this.b = paramCompInfoBase.backgroud_url.get();
     this.c = paramCompInfoBase.compared_vid.get();
     int i = paramCompInfoBase.is_compared_able.get();
@@ -23,16 +23,16 @@ public class CompInfoBase
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.d = paramCompInfoBase.icon_url.get();
-    this.jdField_a_of_type_Int = paramCompInfoBase.oa_task_id.get();
+    this.d = bool;
+    this.e = paramCompInfoBase.icon_url.get();
+    this.f = paramCompInfoBase.oa_task_id.get();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("CompInfoBase{title='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", linkUrl='");
     localStringBuilder.append(this.b);
@@ -41,12 +41,12 @@ public class CompInfoBase
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isComparedAble=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", iconUrl='");
     localStringBuilder.append(this.d);
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", taskId=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

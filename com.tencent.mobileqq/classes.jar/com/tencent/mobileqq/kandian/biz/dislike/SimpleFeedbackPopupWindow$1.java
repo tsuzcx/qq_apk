@@ -10,13 +10,13 @@ class SimpleFeedbackPopupWindow$1
   
   public void onClick(View paramView)
   {
-    SimpleFeedbackPopupWindow.a(this.a).a(SimpleFeedbackPopupWindow.a(this.a), SimpleFeedbackPopupWindow.a(this.a));
+    SimpleFeedbackPopupWindow.c(this.a).a(SimpleFeedbackPopupWindow.a(this.a), SimpleFeedbackPopupWindow.b(this.a));
     this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.SimpleFeedbackPopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

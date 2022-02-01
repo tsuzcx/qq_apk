@@ -6,12 +6,12 @@ import com.tencent.qphone.base.util.QLog;
 public class JefsClass$CancelableRunnable
   implements JefsClass.IdSetter, Runnable
 {
-  WeakOuterRefRunnable jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean a = false;
+  WeakOuterRefRunnable b;
   
   JefsClass$CancelableRunnable(WeakOuterRefRunnable paramWeakOuterRefRunnable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable = paramWeakOuterRefRunnable;
+    this.b = paramWeakOuterRefRunnable;
   }
   
   public JefsClass.Cancelable a()
@@ -21,19 +21,19 @@ public class JefsClass$CancelableRunnable
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable.a(paramInt);
+    this.b.a(paramInt);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable.a(paramString);
+    this.b.a(paramString);
   }
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      JefsClass.a(JefsClass.getInstance(), this.jdField_a_of_type_ComTencentMobileqqBigbrotherWeakOuterRefRunnable);
+      JefsClass.a(JefsClass.getInstance(), this.b);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -43,7 +43,7 @@ public class JefsClass$CancelableRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable
  * JD-Core Version:    0.7.0.1
  */

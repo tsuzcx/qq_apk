@@ -30,29 +30,29 @@ class VideoPlayManager$UiHandler
       if (paramMessage.what != 0) {
         return;
       }
-      if (VideoPlayManager.a((VideoPlayManager)localObject1) != null)
+      if (VideoPlayManager.c((VideoPlayManager)localObject1) != null)
       {
-        if (VideoPlayManager.VideoPlayParam.a(VideoPlayManager.a((VideoPlayManager)localObject1)) == null) {
+        if (VideoPlayManager.VideoPlayParam.a(VideoPlayManager.c((VideoPlayManager)localObject1)) == null) {
           return;
         }
-        Object localObject2 = VideoPlayManager.VideoPlayParam.a(VideoPlayManager.a((VideoPlayManager)localObject1));
-        paramMessage = VideoPlayManager.a((VideoPlayManager)localObject1);
-        if ((localObject2 != null) && (((VideoPlayerWrapper)localObject2).f()))
+        Object localObject2 = VideoPlayManager.VideoPlayParam.a(VideoPlayManager.c((VideoPlayManager)localObject1));
+        paramMessage = VideoPlayManager.c((VideoPlayManager)localObject1);
+        if ((localObject2 != null) && (((VideoPlayerWrapper)localObject2).n()))
         {
-          long l = ((VideoPlayerWrapper)localObject2).a();
-          localObject2 = VideoPlayManager.a((VideoPlayManager)localObject1).iterator();
+          long l = ((VideoPlayerWrapper)localObject2).C();
+          localObject2 = VideoPlayManager.d((VideoPlayManager)localObject1).iterator();
           while (((Iterator)localObject2).hasNext()) {
             ((VideoPlayManager.VideoStatusListener)((Iterator)localObject2).next()).a(paramMessage, ViolaVideoDelegate.a(l) * 1000);
           }
         }
-        VideoPlayManager.a((VideoPlayManager)localObject1).sendEmptyMessageDelayed(0, VideoPlayManager.a((VideoPlayManager)localObject1));
+        VideoPlayManager.a((VideoPlayManager)localObject1).sendEmptyMessageDelayed(0, VideoPlayManager.e((VideoPlayManager)localObject1));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.VideoPlayManager.UiHandler
  * JD-Core Version:    0.7.0.1
  */

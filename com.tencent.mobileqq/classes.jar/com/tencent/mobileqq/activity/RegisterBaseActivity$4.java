@@ -10,15 +10,15 @@ class RegisterBaseActivity$4
   public void run()
   {
     RegisterBaseActivity localRegisterBaseActivity = this.this$0;
-    localRegisterBaseActivity.a = new ReportDialog(localRegisterBaseActivity, 2131756189);
-    this.this$0.a.setContentView(2131558463);
-    ((TextView)this.this$0.a.findViewById(2131365644)).setText(this.this$0.getString(this.a));
-    this.this$0.a.show();
+    localRegisterBaseActivity.e = new ReportDialog(localRegisterBaseActivity, 2131953338);
+    this.this$0.e.setContentView(2131623999);
+    ((TextView)this.this$0.e.findViewById(2131431876)).setText(this.this$0.getString(this.a));
+    this.this$0.e.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity.4
  * JD-Core Version:    0.7.0.1
  */

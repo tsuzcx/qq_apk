@@ -14,27 +14,26 @@ import java.util.Map;
 public class VideoHolderContainer
   extends VideoHolderBase
 {
-  Map<String, VideoHolderBase> a;
+  Map<String, VideoHolderBase> j = new HashMap();
   
   public VideoHolderContainer(@NonNull ViewGroup paramViewGroup)
   {
     super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380796)));
-    b(new SelectVideoVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380738)));
-    b(new VideoPauseVideoHolder(this.jdField_a_of_type_AndroidViewView.findViewById(2131380705)));
-    b(new VideoForwardVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380797)));
+    b(new VideoViewVideoHolder((ViewGroup)this.b.findViewById(2131449766)));
+    b(new SelectVideoVideoHolder((ViewGroup)this.b.findViewById(2131449706)));
+    b(new VideoPauseVideoHolder(this.b.findViewById(2131449666)));
+    b(new VideoForwardVideoHolder((ViewGroup)this.b.findViewById(2131449767)));
   }
   
   protected View a(ViewGroup paramViewGroup)
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561744, paramViewGroup, false);
+    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131628123, paramViewGroup, false);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.j.values().iterator();
     while (localIterator.hasNext()) {
       ((VideoHolderBase)localIterator.next()).a(paramInt1, paramInt2);
     }
@@ -43,8 +42,8 @@ public class VideoHolderContainer
   public void a(int paramInt1, int paramInt2, @NonNull StoryPlayerVideoData paramStoryPlayerVideoData, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
   {
     super.a(paramInt1, paramInt2, paramStoryPlayerVideoData, paramStoryPlayerGroupHolder);
-    SLog.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), paramStoryPlayerVideoData);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    SLog.a(this.a, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.d), Integer.valueOf(this.e), paramStoryPlayerVideoData);
+    Iterator localIterator = this.j.values().iterator();
     while (localIterator.hasNext()) {
       ((VideoHolderBase)localIterator.next()).a(paramInt1, paramInt2, paramStoryPlayerVideoData, paramStoryPlayerGroupHolder);
     }
@@ -53,7 +52,7 @@ public class VideoHolderContainer
   public void a(StoryPlayerContext paramStoryPlayerContext)
   {
     super.a(paramStoryPlayerContext);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.j.values().iterator();
     while (localIterator.hasNext()) {
       ((VideoHolderBase)localIterator.next()).a(paramStoryPlayerContext);
     }
@@ -62,7 +61,7 @@ public class VideoHolderContainer
   void a(VideoHolderContainer paramVideoHolderContainer)
   {
     super.a(this);
-    paramVideoHolderContainer = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    paramVideoHolderContainer = this.j.values().iterator();
     while (paramVideoHolderContainer.hasNext()) {
       ((VideoHolderBase)paramVideoHolderContainer.next()).a(this);
     }
@@ -71,7 +70,7 @@ public class VideoHolderContainer
   public void a(boolean paramBoolean)
   {
     super.a(paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.j.values().iterator();
     while (localIterator.hasNext()) {
       ((VideoHolderBase)localIterator.next()).a(paramBoolean);
     }
@@ -80,41 +79,41 @@ public class VideoHolderContainer
   @Nullable
   public VideoHolderBase b(Class<? extends VideoHolderBase> paramClass)
   {
-    return (VideoHolderBase)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((VideoHolderBase)localIterator.next()).b();
-    }
+    return (VideoHolderBase)this.j.get(paramClass.getName());
   }
   
   public void b(@NonNull VideoHolderBase paramVideoHolderBase)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(paramVideoHolderBase.getClass().getName(), paramVideoHolderBase);
+    this.j.put(paramVideoHolderBase.getClass().getName(), paramVideoHolderBase);
   }
   
-  public void c()
+  protected void d()
   {
-    super.c();
-    SLog.a(this.jdField_a_of_type_JavaLangString, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    super.d();
+    Iterator localIterator = this.j.values().iterator();
     while (localIterator.hasNext()) {
-      ((VideoHolderBase)localIterator.next()).c();
+      ((VideoHolderBase)localIterator.next()).d();
     }
   }
   
-  public boolean c()
+  public void e()
   {
-    return super.c();
+    super.e();
+    SLog.a(this.a, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.d), Integer.valueOf(this.e), this.c);
+    Iterator localIterator = this.j.values().iterator();
+    while (localIterator.hasNext()) {
+      ((VideoHolderBase)localIterator.next()).e();
+    }
+  }
+  
+  public boolean f()
+  {
+    return super.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoHolderContainer
  * JD-Core Version:    0.7.0.1
  */

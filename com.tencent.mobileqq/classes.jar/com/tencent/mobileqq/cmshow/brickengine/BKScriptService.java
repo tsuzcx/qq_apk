@@ -36,56 +36,51 @@ public final class BKScriptService
   implements IScriptService
 {
   @Deprecated
-  public static final BKScriptService.Companion a;
-  private final BKScriptService.buildInRequestHandler.1 jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService$buildInRequestHandler$1;
+  public static final BKScriptService.Companion a = new BKScriptService.Companion(null);
+  private final String b;
   @NotNull
-  private final BKScriptTaskBuilder jdField_a_of_type_ComTencentMobileqqCmshowBrickengineScriptTaskBKScriptTaskBuilder;
-  private final EngineContext jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext;
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<IEventPlugin> jdField_a_of_type_JavaUtilList;
-  private final Map<String, List<IEventPlugin>> jdField_a_of_type_JavaUtilMap;
-  private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  private final List<IEventPlugin> b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService$Companion = new BKScriptService.Companion(null);
-  }
+  private final BKScriptTaskBuilder c;
+  private final ReentrantLock d;
+  private final List<IEventPlugin> e;
+  private final List<IEventPlugin> f;
+  private final Map<String, List<IEventPlugin>> g;
+  private final BKScriptService.buildInRequestHandler.1 h;
+  private final EngineContext i;
   
   public BKScriptService(@NotNull EngineContext paramEngineContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext = paramEngineContext;
+    this.i = paramEngineContext;
     paramEngineContext = new StringBuilder();
     paramEngineContext.append("[cmshow][BKCMShowEngine][BKScriptService][");
-    paramEngineContext.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    paramEngineContext.append(this.i.k());
     paramEngineContext.append(']');
-    this.jdField_a_of_type_JavaLangString = paramEngineContext.toString();
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineScriptTaskBKScriptTaskBuilder = new BKScriptTaskBuilder();
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    this.b = ((List)new ArrayList());
-    this.jdField_a_of_type_JavaUtilMap = ((Map)new LinkedHashMap());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService$buildInRequestHandler$1 = new BKScriptService.buildInRequestHandler.1(this);
-    paramEngineContext = this.jdField_a_of_type_JavaLangString;
+    this.b = paramEngineContext.toString();
+    this.c = new BKScriptTaskBuilder(this.i);
+    this.d = new ReentrantLock();
+    this.e = ((List)new ArrayList());
+    this.f = ((List)new ArrayList());
+    this.g = ((Map)new LinkedHashMap());
+    this.h = new BKScriptService.buildInRequestHandler.1(this);
+    paramEngineContext = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("create ");
     localStringBuilder.append(this);
     localStringBuilder.append(" for ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
+    localStringBuilder.append(this.i.k());
     QLog.i(paramEngineContext, 1, localStringBuilder.toString());
-    ApolloCmdChannel.getInstance().addCmdHandler((IRequestHandler)this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService$buildInRequestHandler$1);
+    ApolloCmdChannel.getInstance().addCmdHandler((IRequestHandler)this.h);
     a((IEventPlugin)new GeneralEventPlugin());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a((IScriptService)this);
+    this.i.a((IScriptService)this);
   }
   
   private final String a(Argument paramArgument)
   {
     Object localObject1 = (String)null;
-    Iterator localIterator = ((Iterable)this.b).iterator();
+    Iterator localIterator = ((Iterable)this.f).iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (IEventPlugin)localIterator.next();
-      if (((IEventPlugin)localObject2).a(paramArgument.c()))
+      if (((IEventPlugin)localObject2).a(paramArgument.f()))
       {
         localObject2 = ((IEventPlugin)localObject2).a(paramArgument);
         if (localObject1 == null) {
@@ -99,7 +94,7 @@ public final class BKScriptService
   @NotNull
   public BKScriptTaskBuilder a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineScriptTaskBKScriptTaskBuilder;
+    return this.c;
   }
   
   @Nullable
@@ -109,11 +104,11 @@ public final class BKScriptService
     Argument localArgument = new Argument((IScriptService)this, paramString);
     String str = null;
     paramString = (List)null;
-    localObject = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+    localObject = (Lock)this.d;
     ((Lock)localObject).lock();
     try
     {
-      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(localArgument.c());
+      paramString = (List)this.g.get(localArgument.f());
       if (paramString == null) {
         break label289;
       }
@@ -124,8 +119,8 @@ public final class BKScriptService
       for (;;)
       {
         Unit localUnit;
-        int i;
         int j;
+        int k;
         ((Lock)localObject).unlock();
         for (;;)
         {
@@ -137,74 +132,49 @@ public final class BKScriptService
     localUnit = Unit.INSTANCE;
     ((Lock)localObject).unlock();
     if (paramString != null) {
-      i = paramString.size();
+      j = paramString.size();
     } else {
-      i = 0;
+      j = 0;
     }
-    j = 1;
-    if ((paramString != null) && (i != 0))
+    k = 1;
+    if ((paramString != null) && (j != 0))
     {
       if (paramString == null) {
         Intrinsics.throwNpe();
       }
       str = ((IEventPlugin)paramString.get(0)).a(localArgument);
-      if (i > 1) {
-        while (j < i)
+      if (j > 1) {
+        while (k < j)
         {
           if (paramString == null) {
             Intrinsics.throwNpe();
           }
-          ((IEventPlugin)paramString.get(j)).a(localArgument);
-          j += 1;
+          ((IEventPlugin)paramString.get(k)).a(localArgument);
+          k += 1;
         }
       }
       return str;
     }
-    if (Intrinsics.areEqual("error", localArgument.c()))
+    if (Intrinsics.areEqual("error", localArgument.f()))
     {
-      paramString = this.jdField_a_of_type_JavaLangString;
+      paramString = this.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onScriptEvent error, ");
-      ((StringBuilder)localObject).append(localArgument.d());
+      ((StringBuilder)localObject).append(localArgument.g());
       QLog.e(paramString, 1, ((StringBuilder)localObject).toString());
     }
     paramString = str;
-    if (EngineHelper.a.a(localArgument.c())) {
+    if (EngineHelper.a.a(localArgument.f())) {
       paramString = a(localArgument);
     }
     return paramString;
   }
   
-  public final void a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("destroy ");
-    ((StringBuilder)localObject2).append(this);
-    ((StringBuilder)localObject2).append(" for ");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a());
-    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-    ApolloCmdChannel.getInstance().removeCmdHandler((IRequestHandler)this.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineBKScriptService$buildInRequestHandler$1);
-    localObject1 = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-    ((Lock)localObject1).lock();
-    try
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      this.b.clear();
-      localObject2 = Unit.INSTANCE;
-      return;
-    }
-    finally
-    {
-      ((Lock)localObject1).unlock();
-    }
-  }
-  
   public void a(@NotNull Script paramScript)
   {
     Intrinsics.checkParameterIsNotNull(paramScript, "script");
-    IRenderService localIRenderService = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineEngineContext.a();
+    paramScript.a(this.i.i());
+    IRenderService localIRenderService = this.i.f();
     if (localIRenderService != null)
     {
       ((BKRenderService)localIRenderService).a(paramScript);
@@ -216,34 +186,34 @@ public final class BKScriptService
   public void a(@NotNull IEventPlugin paramIEventPlugin)
   {
     Intrinsics.checkParameterIsNotNull(paramIEventPlugin, "plugin");
-    Lock localLock = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+    Lock localLock = (Lock)this.d;
     localLock.lock();
     try
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramIEventPlugin);
-      if (paramIEventPlugin.a()) {
-        this.b.add(paramIEventPlugin);
+      this.e.add(paramIEventPlugin);
+      if (paramIEventPlugin.d()) {
+        this.f.add(paramIEventPlugin);
       }
-      Collections.sort(this.jdField_a_of_type_JavaUtilList, (Comparator)BKScriptService.registerPlugin.1.1.a);
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Collections.sort(this.e, (Comparator)BKScriptService.registerPlugin.1.1.a);
+      this.g.clear();
+      Iterator localIterator1 = this.e.iterator();
       while (localIterator1.hasNext())
       {
         IEventPlugin localIEventPlugin = (IEventPlugin)localIterator1.next();
-        Iterator localIterator2 = ((Iterable)localIEventPlugin.a()).iterator();
+        Iterator localIterator2 = ((Iterable)localIEventPlugin.c()).iterator();
         while (localIterator2.hasNext())
         {
           Object localObject = (String)localIterator2.next();
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+          if (this.g.containsKey(localObject))
           {
-            localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+            localObject = (List)this.g.get(localObject);
             if (localObject != null) {
               ((List)localObject).add(localIEventPlugin);
             }
           }
           else
           {
-            this.jdField_a_of_type_JavaUtilMap.put(localObject, new BKScriptService.registerPlugin..inlined.withLock.lambda.1(localIEventPlugin, this, paramIEventPlugin));
+            this.g.put(localObject, new BKScriptService.registerPlugin..inlined.withLock.lambda.1(localIEventPlugin, this, paramIEventPlugin));
           }
         }
       }
@@ -270,28 +240,28 @@ public final class BKScriptService
   public void b(@NotNull IEventPlugin paramIEventPlugin)
   {
     Intrinsics.checkParameterIsNotNull(paramIEventPlugin, "plugin");
-    Lock localLock = (Lock)this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+    Lock localLock = (Lock)this.d;
     localLock.lock();
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramIEventPlugin))
+      if (this.e.contains(paramIEventPlugin))
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramIEventPlugin);
-        Iterator localIterator = ((Iterable)paramIEventPlugin.a()).iterator();
+        this.e.remove(paramIEventPlugin);
+        Iterator localIterator = ((Iterable)paramIEventPlugin.c()).iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (String)localIterator.next();
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(localObject))
+          if (this.g.containsKey(localObject))
           {
-            localObject = (List)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+            localObject = (List)this.g.get(localObject);
             if (localObject != null) {
               ((List)localObject).remove(paramIEventPlugin);
             }
           }
         }
       }
-      if (this.b.contains(paramIEventPlugin)) {
-        this.b.remove(paramIEventPlugin);
+      if (this.f.contains(paramIEventPlugin)) {
+        this.f.remove(paramIEventPlugin);
       }
       paramIEventPlugin = Unit.INSTANCE;
       localLock.unlock();
@@ -306,10 +276,36 @@ public final class BKScriptService
       throw paramIEventPlugin;
     }
   }
+  
+  public final void c()
+  {
+    Object localObject1 = this.b;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("destroy ");
+    ((StringBuilder)localObject2).append(this);
+    ((StringBuilder)localObject2).append(" for ");
+    ((StringBuilder)localObject2).append(this.i.k());
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    ApolloCmdChannel.getInstance().removeCmdHandler((IRequestHandler)this.h);
+    localObject1 = (Lock)this.d;
+    ((Lock)localObject1).lock();
+    try
+    {
+      this.e.clear();
+      this.g.clear();
+      this.f.clear();
+      localObject2 = Unit.INSTANCE;
+      return;
+    }
+    finally
+    {
+      ((Lock)localObject1).unlock();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.BKScriptService
  * JD-Core Version:    0.7.0.1
  */

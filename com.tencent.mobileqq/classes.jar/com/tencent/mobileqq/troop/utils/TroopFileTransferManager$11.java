@@ -11,13 +11,13 @@ class TroopFileTransferManager$11
   {
     synchronized (this.this$0)
     {
-      if (TroopFileTransferManager.a(this.this$0) == 0L) {
+      if (TroopFileTransferManager.c(this.this$0) == 0L) {
         return;
       }
-      if (SystemClock.uptimeMillis() > TroopFileTransferManager.a(this.this$0) + 10000L)
+      if (SystemClock.uptimeMillis() > TroopFileTransferManager.c(this.this$0) + 10000L)
       {
         TroopFileTransferManager.a(this.this$0, 0L);
-        this.this$0.a();
+        this.this$0.f();
         return;
       }
     }
@@ -29,7 +29,7 @@ class TroopFileTransferManager$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.FormItemRelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/a5n" android:background="@drawable/ip8" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center_vertical" android:id="@id/gus" android:paddingLeft="@dimen/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/w2" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/dce" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray_group_item" android:layout_gravity="center_vertical" android:id="@id/bhs" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="" android:includeFontPadding="false" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/bht" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/qq_eqlock_closed" android:contentDescription="@null" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|left" android:orientation="horizontal" android:id="@id/h8q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/h8s" android:paddingLeft="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/h8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-    <ProgressBar android:id="@id/g2e" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:indeterminateDrawable="@drawable/jr" android:layout_toLeftOf="@id/dce" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/dce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iu" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-</com.tencent.mobileqq.widget.FormItemRelativeLayout>
+    <ImageView android:layout_gravity="center|right" android:id="@id/h8p" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/ip_" />
+</LinearLayout>

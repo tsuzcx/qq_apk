@@ -7,7 +7,7 @@ import java.lang.ref.WeakReference;
 public abstract class HippyImageLoader
   implements IImageLoaderAdapter<HippyImageLoader.Callback>
 {
-  private SparseArray<WeakReference<HippyDrawable>> mWeakImageCache = new SparseArray();
+  private final SparseArray<WeakReference<HippyDrawable>> mWeakImageCache = new SparseArray();
   
   public void destroyIfNeed() {}
   
@@ -43,7 +43,7 @@ public abstract class HippyImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.image.HippyImageLoader
  * JD-Core Version:    0.7.0.1
  */

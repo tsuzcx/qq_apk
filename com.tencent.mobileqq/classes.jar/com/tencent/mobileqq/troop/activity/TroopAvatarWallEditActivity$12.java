@@ -16,12 +16,12 @@ class TroopAvatarWallEditActivity$12
   {
     try
     {
-      String str2 = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
+      String str2 = this.a.saveTo(this.b);
       if (str2 != null)
       {
-        ImageUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, str2);
+        ImageUtil.b(this.c, str2);
         paramVarArgs = new StringBuilder();
-        paramVarArgs.append(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694913));
+        paramVarArgs.append(this.c.getString(2131892639));
         paramVarArgs.append(" ");
         paramVarArgs.append(str2);
         String str1 = paramVarArgs.toString();
@@ -35,7 +35,7 @@ class TroopAvatarWallEditActivity$12
         QLog.i("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, paramVarArgs.toString());
         return str1;
       }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694911);
+      paramVarArgs = this.c.getString(2131892637);
       return paramVarArgs;
     }
     catch (IOException paramVarArgs)
@@ -49,19 +49,19 @@ class TroopAvatarWallEditActivity$12
       label127:
       break label117;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694911);
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getString(2131694911);
+    return this.c.getString(2131892637);
+    paramVarArgs = this.c.getString(2131892637);
     return paramVarArgs;
   }
   
   protected void a(String paramString)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getTitleBarHeight());
+    QQToast.makeText(this.c, paramString, 0).show(this.c.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.12
  * JD-Core Version:    0.7.0.1
  */

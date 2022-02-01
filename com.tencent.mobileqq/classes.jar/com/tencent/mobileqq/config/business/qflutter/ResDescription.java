@@ -12,15 +12,15 @@ public final class ResDescription
 {
   @SerializedName("res_name")
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  @SerializedName("preload_engine")
-  @NotNull
-  private List<? extends PreloadEngineOption> jdField_a_of_type_JavaUtilList;
-  @SerializedName("preload")
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
   @SerializedName("pkg_suffix")
   @NotNull
   private String b;
+  @SerializedName("preload")
+  private boolean c;
+  @SerializedName("preload_engine")
+  @NotNull
+  private List<? extends PreloadEngineOption> d;
   
   public ResDescription()
   {
@@ -29,16 +29,16 @@ public final class ResDescription
   
   public ResDescription(@NotNull String paramString1, @NotNull String paramString2, boolean paramBoolean, @NotNull List<? extends PreloadEngineOption> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.c = paramBoolean;
+    this.d = paramList;
   }
   
   @NotNull
   public final String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   @NotNull
@@ -53,7 +53,7 @@ public final class ResDescription
       if ((paramObject instanceof ResDescription))
       {
         paramObject = (ResDescription)paramObject;
-        if ((Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaUtilList, paramObject.jdField_a_of_type_JavaUtilList))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b)) && (this.c == paramObject.c) && (Intrinsics.areEqual(this.d, paramObject.d))) {}
       }
       else
       {
@@ -73,20 +73,20 @@ public final class ResDescription
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ResDescription(resName=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", pkgSuffix=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", preload=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", preloadEngine=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qflutter.ResDescription
  * JD-Core Version:    0.7.0.1
  */

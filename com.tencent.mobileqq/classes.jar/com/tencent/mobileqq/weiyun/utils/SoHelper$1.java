@@ -13,7 +13,7 @@ final class SoHelper$1
   
   public void a(String paramString, long paramLong, float paramFloat)
   {
-    paramString = this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIWeiyunSoListener;
+    paramString = this.c;
     if (paramString != null) {
       paramString.a(paramLong, paramFloat);
     }
@@ -23,10 +23,10 @@ final class SoHelper$1
   {
     if (paramBoolean)
     {
-      WyDownloader.a().a(SoHelper.a(), this.jdField_a_of_type_JavaLangString, "SoHelper", new SoHelper.1.1(this));
+      WyDownloader.a().a(SoHelper.a(), this.a, "SoHelper", new SoHelper.1.1(this));
       return;
     }
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIWeiyunSoListener;
+    paramString1 = this.c;
     if (paramString1 != null) {
       paramString1.a(paramString3);
     }
@@ -34,7 +34,7 @@ final class SoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.utils.SoHelper.1
  * JD-Core Version:    0.7.0.1
  */

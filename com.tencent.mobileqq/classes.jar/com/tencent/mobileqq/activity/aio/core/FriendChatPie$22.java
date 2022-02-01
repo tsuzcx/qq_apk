@@ -1,39 +1,30 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanel;
-import com.tencent.mobileqq.activity.aio.helper.AddFriendHelper;
-import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
-import com.tencent.mobileqq.activity.aio.panel.PanelManager;
-import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarHelper;
-import com.tencent.mobileqq.relationx.onewayfriend.OneWayFriendHelper.OneWayFriendListener;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.AIOTipsListener;
+import com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
+import com.tencent.mobileqq.listentogether.ui.C2CListenTogetherPanel;
 
 class FriendChatPie$22
-  implements OneWayFriendHelper.OneWayFriendListener
+  implements AIOTipsController.AIOTipsListener
 {
   FriendChatPie$22(FriendChatPie paramFriendChatPie) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a(TipsBarTask paramTipsBarTask)
   {
-    FriendChatPie.a(this.a, paramBoolean);
-    ((AddFriendHelper)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider.a(113)).e();
-    paramString = (PlusPanel)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelManager.b(8);
-    if (paramString != null) {
-      paramString.setOneWayFriend(FriendChatPie.a(this.a));
-    }
-    if (FriendChatPie.a(this.a))
-    {
-      ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      paramString = (AIOShortcutBarHelper)this.a.a(52);
-      if (paramString != null) {
-        paramString.c(11);
-      }
-    }
+    ((C2CListenTogetherPanel)this.a.q(32)).b(1, paramTipsBarTask);
+    ((TogetherControlHelper)this.a.q(43)).a(1, paramTipsBarTask);
+  }
+  
+  public void a(TipsBarTask paramTipsBarTask1, TipsBarTask paramTipsBarTask2)
+  {
+    ((C2CListenTogetherPanel)this.a.q(32)).a(1, paramTipsBarTask2);
+    ((TogetherControlHelper)this.a.q(43)).b(1, paramTipsBarTask2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.22
  * JD-Core Version:    0.7.0.1
  */

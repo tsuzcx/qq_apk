@@ -13,12 +13,12 @@ import java.lang.ref.WeakReference;
 class ChatActivityFacade$QZoneNewestAioStoryFeedObserver
   extends QZoneObserver
 {
-  public SessionInfo a;
   public WeakReference<QQAppInterface> a;
+  public SessionInfo b;
   
   protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -27,7 +27,7 @@ class ChatActivityFacade$QZoneNewestAioStoryFeedObserver
       return;
     }
     localObject = (QQAppInterface)((WeakReference)localObject).get();
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    if ((localObject != null) && (this.b != null))
     {
       if (paramBoolean) {}
       try
@@ -37,10 +37,10 @@ class ChatActivityFacade$QZoneNewestAioStoryFeedObserver
         {
           paramBundle = QzoneAioStoryFeedRequest.onResponse(WupUtil.b(paramBundle.getWupBuffer()));
           if (paramBundle != null) {
-            ChatActivityFacade.a((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+            ChatActivityFacade.a((QQAppInterface)localObject, this.b, paramBundle);
           }
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+        this.b = null;
         return;
       }
       catch (Exception paramBundle)
@@ -59,7 +59,7 @@ class ChatActivityFacade$QZoneNewestAioStoryFeedObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.QZoneNewestAioStoryFeedObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -19,11 +19,11 @@ class GuessVideoGameRecordCtrl$2
     if (this.a != null) {
       try
       {
-        Object localObject1 = Bitmap.createBitmap(GuessVideoGameRecordCtrl.a(this.this$0), GuessVideoGameRecordCtrl.b(this.this$0), Bitmap.Config.ARGB_8888);
+        Object localObject1 = Bitmap.createBitmap(GuessVideoGameRecordCtrl.b(this.this$0), GuessVideoGameRecordCtrl.c(this.this$0), Bitmap.Config.ARGB_8888);
         ((Bitmap)localObject1).copyPixelsFromBuffer(IntBuffer.wrap(this.a));
         localObject2 = new Matrix();
         ((Matrix)localObject2).setScale(1.0F, -1.0F);
-        boolean bool = FileUtil.a(Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2, true), GuessVideoGameRecordCtrl.a(this.this$0));
+        boolean bool = FileUtil.a(Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), (Matrix)localObject2, true), GuessVideoGameRecordCtrl.d(this.this$0));
         if (!bool) {
           GuessVideoGameRecordCtrl.a(this.this$0, null);
         }
@@ -32,11 +32,11 @@ class GuessVideoGameRecordCtrl$2
         ((StringBuilder)localObject2).append("save photo ");
         ((StringBuilder)localObject2).append(bool);
         ((StringBuilder)localObject2).append(" ");
-        ((StringBuilder)localObject2).append(GuessVideoGameRecordCtrl.a(this.this$0));
+        ((StringBuilder)localObject2).append(GuessVideoGameRecordCtrl.d(this.this$0));
         AVLog.a((String)localObject1, ((StringBuilder)localObject2).toString());
-        if (!this.this$0.b())
+        if (!this.this$0.i())
         {
-          GameEngine.a().a().a(GuessVideoGameRecordCtrl.b(this.this$0), GuessVideoGameRecordCtrl.a(this.this$0), GuessVideoGameRecordCtrl.a(this.this$0));
+          GameEngine.a().s().a(GuessVideoGameRecordCtrl.e(this.this$0), GuessVideoGameRecordCtrl.d(this.this$0), GuessVideoGameRecordCtrl.f(this.this$0));
           return;
         }
       }

@@ -13,23 +13,23 @@ class DocsEntranceHelper$3
   
   public void run()
   {
-    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.this$0.a.getActivity());
+    Object localObject = PreferenceManager.getDefaultSharedPreferences(this.this$0.b.getActivity());
     int i = ((SharedPreferences)localObject).getInt(DocsEntranceHelper.a(this.this$0), 0);
     if (QLog.isColorLevel()) {
       QLog.d("DocsEntranceHelper", 2, String.format("onShow guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
     localObject = ((SharedPreferences)localObject).edit();
-    if (this.jdField_a_of_type_Boolean) {
-      ((SharedPreferences.Editor)localObject).putInt(DocsEntranceHelper.a(this.this$0), i + this.jdField_a_of_type_Int).commit();
+    if (this.a) {
+      ((SharedPreferences.Editor)localObject).putInt(DocsEntranceHelper.a(this.this$0), i + this.b).commit();
     } else {
-      ((SharedPreferences.Editor)localObject).putInt(DocsEntranceHelper.a(this.this$0), this.jdField_a_of_type_Int).commit();
+      ((SharedPreferences.Editor)localObject).putInt(DocsEntranceHelper.a(this.this$0), this.b).commit();
     }
     ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.logic.DocsEntranceHelper.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.registerGuideLogin.TouchControllerFrameLayout android:background="@color/ajs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/qy8" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/oh3" android:background="@drawable/k0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/qyf" android:layout_width="fill_parent" android:layout_height="@dimen/bol">
+                <ImageView android:layout_gravity="center" android:id="@id/ln4" android:layout_width="@dimen/bom" android:layout_height="@dimen/bom" android:src="@drawable/j1i" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.activity.registerGuideLogin.TouchControllerFrameLayout>

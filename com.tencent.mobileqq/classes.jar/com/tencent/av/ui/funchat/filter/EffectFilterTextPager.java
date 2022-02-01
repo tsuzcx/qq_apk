@@ -30,56 +30,56 @@ public class EffectFilterTextPager
   extends EffectCycleViewPager
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long = 0L;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  AVActivity.AnimationTrigger jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger = null;
-  EffectFilterTextPager.FilterTextAdapter jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter;
-  float b = 0.0F;
+  Handler c;
+  EffectFilterTextPager.FilterTextAdapter d;
+  float e = 0.0F;
+  float f = 0.0F;
+  long g = 0L;
+  VideoAppInterface h = null;
+  AVActivity.AnimationTrigger i = null;
+  private int j;
   
   public EffectFilterTextPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
-    setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new EffectFilterTextPager.MyHandler(this);
+    this.d = new EffectFilterTextPager.FilterTextAdapter(paramContext);
+    setAdapter(this.d);
+    this.c = new EffectFilterTextPager.MyHandler(this);
     setOnTouchListener(this);
-    this.jdField_a_of_type_Int = -1;
+    this.j = -1;
   }
   
   void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.c.removeMessages(1);
     AVLog.printColorLog("EffectFilterTextPager", "showPromotionText ");
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int m = getChildCount();
+    int k = 0;
+    while (k < m)
     {
-      getChildAt(i).setVisibility(0);
-      i += 1;
+      getChildAt(k).setVisibility(0);
+      k += 1;
     }
   }
   
   void a(int paramInt)
   {
     AVLog.printColorLog("EffectFilterTextPager", "dispearPromotionText view:");
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramInt);
+    this.c.removeMessages(1);
+    Message localMessage = this.c.obtainMessage(1);
+    this.c.sendMessageDelayed(localMessage, paramInt);
   }
   
   public void a(List<FilterItem> paramList)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramList);
+    this.d.a(paramList);
   }
   
   @TargetApi(11)
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramBoolean);
-    int j = getChildCount();
+    this.d.a(paramBoolean);
+    int m = getChildCount();
     float f1;
     if (paramBoolean) {
       f1 = 0.6F;
@@ -87,34 +87,34 @@ public class EffectFilterTextPager
       f1 = 1.0F;
     }
     if (paramBoolean) {
-      i = 2131297764;
+      k = 2131298433;
     } else {
-      i = 2131297763;
+      k = 2131298432;
     }
-    float f2 = getContext().getResources().getDimension(i);
+    float f2 = getContext().getResources().getDimension(k);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("changeLayout: ");
     ((StringBuilder)localObject).append(paramBoolean);
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(m);
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(f1);
     AVLog.printColorLog("EffectFilterTextPager", ((StringBuilder)localObject).toString());
-    int i = 0;
-    while (i < j)
+    int k = 0;
+    while (k < m)
     {
-      localObject = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131373385);
+      localObject = (ImageView)((ViewGroup)getChildAt(k)).findViewById(2131441058);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
       localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
       ((ImageView)localObject).setScaleX(f1);
       ((ImageView)localObject).setScaleY(f1);
-      i += 1;
+      k += 1;
     }
   }
   
   void b()
   {
-    View localView = a();
+    View localView = getCurrentView();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("dispearPromotionText_internal view:");
     ((StringBuilder)localObject).append(getCurrentItem());
@@ -132,30 +132,30 @@ public class EffectFilterTextPager
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = Boolean.valueOf(VideoController.a().a().w);
+    paramView = Boolean.valueOf(VideoController.f().k().af);
     Object localObject;
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Float = 0.0F;
-      this.b = 0.0F;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
+      this.e = 0.0F;
+      this.f = 0.0F;
+      this.g = System.currentTimeMillis();
+      this.e = paramMotionEvent.getX();
+      this.f = paramMotionEvent.getY();
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[childLock] touch onDown: ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+        ((StringBuilder)localObject).append(this.e);
         ((StringBuilder)localObject).append(" x ");
-        ((StringBuilder)localObject).append(this.b);
+        ((StringBuilder)localObject).append(this.f);
         ((StringBuilder)localObject).append(" ==========");
         QLog.e("EffectFilterTextPager", 2, ((StringBuilder)localObject).toString());
       }
-      if (this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null) {
-        if (VideoController.a().a().w) {
-          this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a();
+      if (this.i != null) {
+        if (VideoController.f().k().af) {
+          this.i.a();
         } else {
-          this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a(this.jdField_a_of_type_Float, this.b);
+          this.i.a(this.e, this.f);
         }
       }
       if (!paramView.booleanValue()) {
@@ -165,7 +165,7 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131368877);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131435813);
         if (localEditText != null)
         {
           localEditText.clearFocus();
@@ -173,12 +173,12 @@ public class EffectFilterTextPager
         }
       }
     }
-    if ((!VideoController.a().a().w) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.b) > 70.0F)))))
+    if ((!VideoController.f().k().af) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.e) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.f) > 70.0F)))))
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger);
-      localObject = this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger;
-      if ((localObject != null) && (((AVActivity.AnimationTrigger)localObject).a())) {
-        this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.c();
+      this.h.a().removeCallbacks(this.i);
+      localObject = this.i;
+      if ((localObject != null) && (((AVActivity.AnimationTrigger)localObject).d())) {
+        this.i.c();
       }
       if (QLog.isColorLevel()) {
         QLog.e("EffectFilterTextPager", 2, "[childLock] touch end ==========");
@@ -186,9 +186,9 @@ public class EffectFilterTextPager
     }
     if (paramView.booleanValue())
     {
-      if ((paramMotionEvent.getAction() == 1) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 200L))
+      if ((paramMotionEvent.getAction() == 1) && (System.currentTimeMillis() - this.g < 200L))
       {
-        paramView = this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger;
+        paramView = this.i;
         if (paramView != null) {
           paramView.b();
         }
@@ -201,19 +201,19 @@ public class EffectFilterTextPager
   
   public void setAnimationTrigger(AVActivity.AnimationTrigger paramAnimationTrigger)
   {
-    this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger = paramAnimationTrigger;
+    this.i = paramAnimationTrigger;
   }
   
   public void setApp(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.h = paramVideoAppInterface;
   }
   
   public void setCurrentFilter(FilterItem paramFilterItem)
   {
-    int i = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramFilterItem);
-    this.jdField_a_of_type_Int = i;
-    setCurrentItem(i + 1, false);
+    int k = this.d.a(paramFilterItem);
+    this.j = k;
+    setCurrentItem(k + 1, false);
   }
   
   public void setOnFilterListenner(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
@@ -226,18 +226,18 @@ public class EffectFilterTextPager
     if (paramInt == 0)
     {
       a();
-      int i;
-      if (VideoController.a().a().am) {
-        i = 4000;
+      int k;
+      if (VideoController.f().k().bK) {
+        k = 4000;
       } else {
-        i = 1300;
+        k = 1300;
       }
-      a(i);
+      a(k);
     }
     else
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      View localView = a();
+      this.c.removeMessages(1);
+      View localView = getCurrentView();
       if (localView != null) {
         localView.clearAnimation();
       }

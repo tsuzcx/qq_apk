@@ -35,7 +35,7 @@ public class ViewPagerRadioGroup
         localRadioButton.setChecked(true);
         if (paramInt == 1)
         {
-          localRadioButton.setContentDescription(HardCodeUtil.a(2131716196));
+          localRadioButton.setContentDescription(HardCodeUtil.a(2131913645));
           localRadioButton.sendAccessibilityEvent(128);
         }
       }
@@ -44,7 +44,7 @@ public class ViewPagerRadioGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.ViewPagerRadioGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -19,8 +19,8 @@ class NotifyPushSettingFragment$12
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    SettingCloneUtil.writeValue(this.a.getBaseActivity(), this.a.a, this.a.getString(2131718135), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    Object localObject2 = NotifyPushSettingFragment.a(this.a);
+    SettingCloneUtil.writeValue(this.a.getBaseActivity(), this.a.a, this.a.getString(2131915612), "qqsetting_lock_screen_whenexit_key", paramBoolean);
+    Object localObject2 = NotifyPushSettingFragment.c(this.a);
     if (paramBoolean) {
       localObject1 = "1";
     } else {
@@ -39,13 +39,13 @@ class NotifyPushSettingFragment$12
     ((StringBuilder)localObject2).append(paramBoolean);
     ((StringBuilder)localObject2).append("");
     ((HashMap)localObject1).put("param_ls_setting", ((StringBuilder)localObject2).toString());
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(NotifyPushSettingFragment.a(this.a).getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject1, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(NotifyPushSettingFragment.c(this.a).getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, (HashMap)localObject1, "");
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.12
  * JD-Core Version:    0.7.0.1
  */

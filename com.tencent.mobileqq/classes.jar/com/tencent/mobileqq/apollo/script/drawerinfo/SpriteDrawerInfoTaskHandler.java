@@ -16,36 +16,36 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class SpriteDrawerInfoTaskHandler
   implements ISpriteTaskHandler, ISpriteActionCallback
 {
-  private static int jdField_a_of_type_Int;
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private CopyOnWriteArrayList<SpriteTaskParam> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  private int jdField_b_of_type_Int = 0;
-  private CopyOnWriteArrayList<ISpriteTaskStatusCallback> jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private static int b;
+  private CopyOnWriteArrayList<SpriteTaskParam> a;
+  private SpriteContext c;
+  private CopyOnWriteArrayList<ISpriteTaskStatusCallback> d;
+  private int e = 0;
   
   public SpriteDrawerInfoTaskHandler(SpriteContext paramSpriteContext)
   {
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, "SpriteTaskHandler constructor.");
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.c = paramSpriteContext;
+    this.a = new CopyOnWriteArrayList();
+    b = 0;
+    this.d = new CopyOnWriteArrayList();
   }
   
-  private SpriteTaskParam a(long paramLong)
+  private SpriteTaskParam b(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((CopyOnWriteArrayList)localObject).size() == 0) {
         return null;
       }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)((Iterator)localObject).next();
-        if (localSpriteTaskParam.jdField_a_of_type_Long == paramLong) {
+        if (localSpriteTaskParam.h == paramLong) {
           return localSpriteTaskParam;
         }
       }
@@ -61,28 +61,19 @@ public class SpriteDrawerInfoTaskHandler
     return 0;
   }
   
-  public SpriteTaskParam a()
-  {
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() != 0)) {
-      return (SpriteTaskParam)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
-    }
-    return null;
-  }
-  
   public SpriteTaskParam a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((CopyOnWriteArrayList)localObject).size() == 0) {
         return null;
       }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)((Iterator)localObject).next();
-        if (localSpriteTaskParam.jdField_a_of_type_Int == paramInt) {
+        if (localSpriteTaskParam.a == paramInt) {
           return localSpriteTaskParam;
         }
       }
@@ -93,44 +84,139 @@ public class SpriteDrawerInfoTaskHandler
     return null;
   }
   
-  public void a()
+  public void a(ISpriteTaskStatusCallback paramISpriteTaskStatusCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, "[clear]");
-    }
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if (localObject != null) {
-      ((CopyOnWriteArrayList)localObject).clear();
-    }
-    localObject = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    if (localObject != null) {
-      ((CopyOnWriteArrayList)localObject).clear();
-    }
-    if (this.jdField_b_of_type_Int > 0)
+    if (paramISpriteTaskStatusCallback != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-      if (localObject != null) {
-        VipUtils.a(((SpriteContext)localObject).a(), "cmshow", "Apollo", "play_times", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int), 0, new String[] { Integer.toString(this.jdField_b_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString });
+      CopyOnWriteArrayList localCopyOnWriteArrayList = this.d;
+      if (localCopyOnWriteArrayList != null)
+      {
+        if (localCopyOnWriteArrayList.contains(paramISpriteTaskStatusCallback))
+        {
+          QLog.w("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 1, "[addActionCallback], repeat callback.");
+          return;
+        }
+        this.d.add(paramISpriteTaskStatusCallback);
       }
     }
-    this.jdField_b_of_type_Int = 0;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[onStartAction], taskId:", Integer.valueOf(paramInt) });
+    }
+    paramString = a(paramInt);
+    if (paramString == null) {
+      return;
+    }
+    paramString.b = 3;
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      ISpriteTaskStatusCallback localISpriteTaskStatusCallback = (ISpriteTaskStatusCallback)localIterator.next();
+      if (localISpriteTaskStatusCallback != null) {
+        localISpriteTaskStatusCallback.a(paramString, paramString.h);
+      }
+    }
+    this.e += 1;
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[onCompleteAction], taskId:", Integer.valueOf(paramInt1), ",type:", Integer.valueOf(paramInt2) });
+    }
+    paramString = a(paramInt1);
+    if (paramString == null) {
+      return;
+    }
+    paramString.b = 6;
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      ISpriteTaskStatusCallback localISpriteTaskStatusCallback = (ISpriteTaskStatusCallback)localIterator.next();
+      if (localISpriteTaskStatusCallback != null) {
+        localISpriteTaskStatusCallback.a(paramString, paramString.h, paramInt2);
+      }
+    }
+    b(paramInt1);
+  }
+  
+  public boolean a(long paramLong)
+  {
+    Object localObject = this.a;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      if (((CopyOnWriteArrayList)localObject).size() == 0) {
+        return false;
+      }
+      localObject = b(paramLong);
+      if (localObject == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (((SpriteTaskParam)localObject).b == 3) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public boolean a(SpriteTaskParam paramSpriteTaskParam)
+  {
+    Object localObject = this.c;
+    if ((localObject != null) && (((SpriteContext)localObject).c()))
+    {
+      localObject = paramSpriteTaskParam;
+      if (paramSpriteTaskParam == null) {
+        localObject = b();
+      }
+      if (localObject != null)
+      {
+        if (((SpriteTaskParam)localObject).b == 2) {
+          return false;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[execSpriteTask], taskId:", Integer.valueOf(((SpriteTaskParam)localObject).a), ",actionId:", Integer.valueOf(((SpriteTaskParam)localObject).f) });
+        }
+        if (((SpriteTaskParam)localObject).u != null) {
+          ((SpriteTaskParam)localObject).u.a((SpriteTaskParam)localObject);
+        }
+        return true;
+      }
+      return false;
+    }
+    QLog.w("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 1, "surfaceview is NOT ready.");
+    return false;
+  }
+  
+  public SpriteTaskParam b()
+  {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.a;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.size() != 0)) {
+      return (SpriteTaskParam)this.a.get(0);
+    }
+    return null;
+  }
+  
+  public void b(int paramInt)
+  {
+    Object localObject = this.a;
     if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() != 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[removeTask], total task num:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), ",taskId:", Integer.valueOf(paramInt) });
+        QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[removeTask], total task num:", Integer.valueOf(this.a.size()), ",taskId:", Integer.valueOf(paramInt) });
       }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)((Iterator)localObject).next();
-        if (localSpriteTaskParam.jdField_a_of_type_Int == paramInt)
+        if (localSpriteTaskParam.a == paramInt)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localSpriteTaskParam);
+          this.a.remove(localSpriteTaskParam);
           return;
         }
       }
@@ -145,37 +231,20 @@ public class SpriteDrawerInfoTaskHandler
     QLog.w("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 1, ((StringBuilder)localObject).toString());
   }
   
-  public void a(ISpriteTaskStatusCallback paramISpriteTaskStatusCallback)
-  {
-    if (paramISpriteTaskStatusCallback != null)
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList != null)
-      {
-        if (localCopyOnWriteArrayList.contains(paramISpriteTaskStatusCallback))
-        {
-          QLog.w("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 1, "[addActionCallback], repeat callback.");
-          return;
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramISpriteTaskStatusCallback);
-      }
-    }
-  }
-  
-  public void a(SpriteTaskParam paramSpriteTaskParam)
+  public void b(SpriteTaskParam paramSpriteTaskParam)
   {
     if (paramSpriteTaskParam != null)
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-      if ((localCopyOnWriteArrayList != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext != null))
+      CopyOnWriteArrayList localCopyOnWriteArrayList = this.a;
+      if ((localCopyOnWriteArrayList != null) && (this.c != null))
       {
-        paramSpriteTaskParam.jdField_b_of_type_Int = 1;
-        int i = jdField_a_of_type_Int + 1;
-        jdField_a_of_type_Int = i;
-        paramSpriteTaskParam.jdField_a_of_type_Int = i;
+        paramSpriteTaskParam.b = 1;
+        int i = b + 1;
+        b = i;
+        paramSpriteTaskParam.a = i;
         localCopyOnWriteArrayList.add(0, paramSpriteTaskParam);
         if (QLog.isColorLevel()) {
-          QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[addTask], size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size()), ",taskId:", Integer.valueOf(paramSpriteTaskParam.jdField_a_of_type_Int) });
+          QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[addTask], size:", Integer.valueOf(this.a.size()), ",taskId:", Integer.valueOf(paramSpriteTaskParam.a) });
         }
         a(null);
         return;
@@ -184,61 +253,19 @@ public class SpriteDrawerInfoTaskHandler
     QLog.w("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 1, "[addTask], fail. null param");
   }
   
-  public void a(String paramString, int paramInt)
+  public boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[onStartAction], taskId:", Integer.valueOf(paramInt) });
-    }
-    paramString = a(paramInt);
-    if (paramString == null) {
-      return;
-    }
-    paramString.jdField_b_of_type_Int = 3;
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ISpriteTaskStatusCallback localISpriteTaskStatusCallback = (ISpriteTaskStatusCallback)localIterator.next();
-      if (localISpriteTaskStatusCallback != null) {
-        localISpriteTaskStatusCallback.a(paramString, paramString.jdField_a_of_type_Long);
-      }
-    }
-    this.jdField_b_of_type_Int += 1;
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[onCompleteAction], taskId:", Integer.valueOf(paramInt1), ",type:", Integer.valueOf(paramInt2) });
-    }
-    paramString = a(paramInt1);
-    if (paramString == null) {
-      return;
-    }
-    paramString.jdField_b_of_type_Int = 6;
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ISpriteTaskStatusCallback localISpriteTaskStatusCallback = (ISpriteTaskStatusCallback)localIterator.next();
-      if (localISpriteTaskStatusCallback != null) {
-        localISpriteTaskStatusCallback.a(paramString, paramString.jdField_a_of_type_Long, paramInt2);
-      }
-    }
-    a(paramInt1);
-  }
-  
-  public boolean a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+    Object localObject = this.a;
     if (localObject != null)
     {
       if (((CopyOnWriteArrayList)localObject).size() == 0) {
         return false;
       }
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      localObject = this.a.iterator();
       while (((Iterator)localObject).hasNext())
       {
         SpriteTaskParam localSpriteTaskParam = (SpriteTaskParam)((Iterator)localObject).next();
-        if ((localSpriteTaskParam != null) && (localSpriteTaskParam.jdField_b_of_type_Int == 3)) {
+        if ((localSpriteTaskParam != null) && (localSpriteTaskParam.b == 3)) {
           return true;
         }
       }
@@ -246,64 +273,37 @@ public class SpriteDrawerInfoTaskHandler
     return false;
   }
   
-  public boolean a(long paramLong)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      if (((CopyOnWriteArrayList)localObject).size() == 0) {
-        return false;
-      }
-      localObject = a(paramLong);
-      if (localObject == null) {
-        return false;
-      }
-      bool1 = bool2;
-      if (((SpriteTaskParam)localObject).jdField_b_of_type_Int == 3) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(SpriteTaskParam paramSpriteTaskParam)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-    if ((localObject != null) && (((SpriteContext)localObject).c()))
-    {
-      localObject = paramSpriteTaskParam;
-      if (paramSpriteTaskParam == null) {
-        localObject = a();
-      }
-      if (localObject != null)
-      {
-        if (((SpriteTaskParam)localObject).jdField_b_of_type_Int == 2) {
-          return false;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, new Object[] { "[execSpriteTask], taskId:", Integer.valueOf(((SpriteTaskParam)localObject).jdField_a_of_type_Int), ",actionId:", Integer.valueOf(((SpriteTaskParam)localObject).f) });
-        }
-        if (((SpriteTaskParam)localObject).jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteBridge != null) {
-          ((SpriteTaskParam)localObject).jdField_a_of_type_ComTencentMobileqqApolloScriptISpriteBridge.a((SpriteTaskParam)localObject);
-        }
-        return true;
-      }
-      return false;
-    }
-    QLog.w("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 1, "surfaceview is NOT ready.");
-    return false;
-  }
-  
-  public int b()
+  public int d()
   {
     return 0;
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteDrawerInfoTaskHandler", 2, "[clear]");
+    }
+    Object localObject = this.a;
+    if (localObject != null) {
+      ((CopyOnWriteArrayList)localObject).clear();
+    }
+    localObject = this.d;
+    if (localObject != null) {
+      ((CopyOnWriteArrayList)localObject).clear();
+    }
+    if (this.e > 0)
+    {
+      localObject = this.c;
+      if (localObject != null) {
+        VipUtils.a(((SpriteContext)localObject).l(), "cmshow", "Apollo", "play_times", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(this.c.a), 0, new String[] { Integer.toString(this.e), this.c.b });
+      }
+    }
+    this.e = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoTaskHandler
  * JD-Core Version:    0.7.0.1
  */

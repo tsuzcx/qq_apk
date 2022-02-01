@@ -15,49 +15,49 @@ import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 public class MarketFaceItemBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
 {
-  public long a;
-  public FrameLayout a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public BreathAnimationLayout a;
-  public PttAudioPlayView a;
-  public PttAudioWaveView a;
-  public TriangleView a;
-  EmoticonPackage jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-  DuiButtonImageView jdField_a_of_type_ComTencentMobileqqDoutuDuiButtonImageView;
+  public boolean A = false;
+  public PttAudioPlayView B;
+  public PttAudioWaveView C;
+  public RelativeLayout D;
+  public RelativeLayout E;
+  public TriangleView F;
+  ImageView G;
+  public BreathAnimationLayout H;
   public IPicEmoticonInfo a;
-  public boolean a;
-  ImageView b;
-  public RelativeLayout b;
-  public boolean b = false;
-  ImageView c;
+  EmoticonPackage b;
+  public ImageView c;
   ImageView d;
-  public int e = -1;
-  public ImageView e;
-  public ImageView f;
-  ImageView g;
+  ImageView e;
+  ImageView f;
+  DuiButtonImageView g;
+  public ImageView s;
+  public ImageView t;
+  public FrameLayout u;
+  public ProgressBar v;
+  public TextView w;
+  public boolean x;
+  public long y;
+  public int z = -1;
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView;
+    Object localObject = this.B;
     if (localObject != null) {
-      ((PttAudioPlayView)localObject).a();
+      ((PttAudioPlayView)localObject).b();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView;
+    localObject = this.C;
     if (localObject != null) {
       ((PttAudioWaveView)localObject).b();
     }
-    localObject = this.g;
+    localObject = this.G;
     if ((localObject != null) && ((((ImageView)localObject).getDrawable() instanceof Animatable))) {
-      ((Animatable)this.g.getDrawable()).stop();
+      ((Animatable)this.G.getDrawable()).stop();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

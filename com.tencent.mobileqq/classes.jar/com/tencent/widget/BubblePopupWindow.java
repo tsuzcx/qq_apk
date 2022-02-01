@@ -35,6 +35,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class BubblePopupWindow
   implements View.OnClickListener
@@ -75,6 +78,7 @@ public class BubblePopupWindow
   private boolean mLayoutInsetDecor = false;
   private boolean mNotTouchModal;
   private BubblePopupWindow.OnDismissListener mOnDismissListener;
+  private List<BubblePopupWindow.OnDismissListener> mOnDismissListeners = new ArrayList();
   private BubblePopupWindow.OnKeyBackListener mOnKeybackListener;
   private ViewTreeObserver.OnScrollChangedListener mOnScrollChangedListener = new BubblePopupWindow.1(this);
   private boolean mOutsideTouchable = false;
@@ -159,9 +163,9 @@ public class BubblePopupWindow
       if (this.mIsDropdown)
       {
         if (this.mAboveAnchor) {
-          return 2131755345;
+          return 2131952044;
         }
-        return 2131755344;
+        return 2131952043;
       }
       i = 0;
     }
@@ -335,7 +339,7 @@ public class BubblePopupWindow
     }
     View localView = this.mContentView;
     if (((localView instanceof QQCustomMenuNoIconLayout)) && (((QQCustomMenuNoIconLayout)localView).b())) {
-      layoutMenuContainer(paramLayoutParams, paramView, (View)localObject, bool, j, k, localRect, ((QQCustomMenuNoIconLayout)this.mContentView).a());
+      layoutMenuContainer(paramLayoutParams, paramView, (View)localObject, bool, j, k, localRect, ((QQCustomMenuNoIconLayout)this.mContentView).getContainerBottom());
     } else {
       updateAboveAnchor(bool, paramInt1 - paramLayoutParams.x);
     }
@@ -523,7 +527,7 @@ public class BubblePopupWindow
       paramLayoutParams.y = i;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("BubblePopupWindow", 2, new Object[] { "[menu] layoutMenuContainerY ViewY: ", Integer.valueOf(arrayOfInt[1]), " ViewB: ", Integer.valueOf(arrayOfInt[1] + paramView1.getBottom()), " ViewT: ", Integer.valueOf(paramView1.getTop()), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " ContainerBottom: ", paramInteger, " displayFrame: ", paramRect, " screenH: ", Integer.valueOf(ViewUtils.b()), " screenW: ", Integer.valueOf(ViewUtils.a()), " onTop: ", Boolean.valueOf(paramBoolean), " popupH: ", Integer.valueOf(paramInt2), " ParamY: ", Integer.valueOf(paramLayoutParams.y), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " RootH: ", Integer.valueOf(paramView2.getHeight()) });
+      QLog.d("BubblePopupWindow", 2, new Object[] { "[menu] layoutMenuContainerY ViewY: ", Integer.valueOf(arrayOfInt[1]), " ViewB: ", Integer.valueOf(arrayOfInt[1] + paramView1.getBottom()), " ViewT: ", Integer.valueOf(paramView1.getTop()), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " ContainerBottom: ", paramInteger, " displayFrame: ", paramRect, " screenH: ", Integer.valueOf(ViewUtils.getScreenHeight()), " screenW: ", Integer.valueOf(ViewUtils.getScreenWidth()), " onTop: ", Boolean.valueOf(paramBoolean), " popupH: ", Integer.valueOf(paramInt2), " ParamY: ", Integer.valueOf(paramLayoutParams.y), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " RootH: ", Integer.valueOf(paramView2.getHeight()) });
     }
     this.mContainerCenterX = (arrayOfInt[0] + paramView1.getWidth() / 2);
     layoutMenuContainerX(paramLayoutParams, this.mContainerCenterX, bool, paramBoolean, paramInt1);
@@ -533,13 +537,13 @@ public class BubblePopupWindow
   {
     int i;
     if (paramBoolean1) {
-      i = (ViewUtils.a() - paramInt2) / 2;
+      i = (ViewUtils.getScreenWidth() - paramInt2) / 2;
     } else {
-      i = ViewUtils.b(15.0F);
+      i = ViewUtils.dpToPx(15.0F);
     }
     paramLayoutParams.x = (paramInt1 - paramInt2 / 2);
     paramLayoutParams.x = Math.max(i, paramLayoutParams.x);
-    int j = ViewUtils.a();
+    int j = ViewUtils.getScreenWidth();
     paramLayoutParams.x = Math.min(paramLayoutParams.x, j - i - paramInt2);
     if (QLog.isColorLevel())
     {
@@ -579,11 +583,11 @@ public class BubblePopupWindow
         if ((this.mContentView instanceof QQCustomMenuNoIconLayout))
         {
           this.framelayout = new FrameLayout(this.mContext);
-          this.mPressedBackground = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130838898));
+          this.mPressedBackground = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130839052));
           this.framelayout.addView(this.mContentView, new FrameLayout.LayoutParams(-2, -2, 17));
           ((FrameLayout)localObject).addView(this.framelayout, new FrameLayout.LayoutParams(-2, -2, 17));
           localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
-          localLayoutParams.setMargins(0, ViewUtils.b(9.0F), 0, ViewUtils.b(9.0F));
+          localLayoutParams.setMargins(0, ViewUtils.dpToPx(9.0F), 0, ViewUtils.dpToPx(9.0F));
           localPopupViewContainer.addView((View)localObject, localLayoutParams);
         }
         else
@@ -602,8 +606,8 @@ public class BubblePopupWindow
           localPopupViewContainer.addView((View)localObject, -1, -1);
           this.framelayout = new FrameLayout(this.mContext);
           ((FrameLayout)localObject).addView(this.framelayout, -1, -1);
-          localObject = this.mContext.getResources().getDrawable(2130838897);
-          this.mPressedBackground = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130838898));
+          localObject = this.mContext.getResources().getDrawable(2130839051);
+          this.mPressedBackground = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130839052));
           localObject = new LayerDrawable(new Drawable[] { localObject, this.mPressedBackground });
           this.framelayout.setBackgroundDrawable((Drawable)localObject);
           localObject = new FrameLayout.LayoutParams(-1, -1, 17);
@@ -611,29 +615,29 @@ public class BubblePopupWindow
         }
         this.mAboveArrow = new ImageView(this.mContext);
         FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 51);
-        paramBoolean = QQTheme.a();
+        paramBoolean = QQTheme.isNowThemeIsNight();
         if ((this.mContentView instanceof QQCustomMenuNoIconLayout))
         {
           localObject = this.mContext.getResources();
-          j = 2130838894;
+          j = 2130839048;
           if (paramBoolean) {
-            i = 2130838894;
+            i = 2130839048;
           } else {
-            i = 2130838895;
+            i = 2130839049;
           }
           this.mPressedAboveArrow = new BubblePopupWindow.MyClipDrawable(this, ((Resources)localObject).getDrawable(i));
           localObject = this.mContext.getResources();
           if (paramBoolean) {
             i = j;
           } else {
-            i = 2130838895;
+            i = 2130839049;
           }
           localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i), this.mPressedAboveArrow });
         }
         else
         {
-          this.mPressedAboveArrow = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130838896));
-          localObject = new LayerDrawable(new Drawable[] { this.mContext.getResources().getDrawable(2130838893), this.mPressedAboveArrow });
+          this.mPressedAboveArrow = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130839050));
+          localObject = new LayerDrawable(new Drawable[] { this.mContext.getResources().getDrawable(2130839047), this.mPressedAboveArrow });
         }
         this.mAboveArrow.setBackgroundDrawable((Drawable)localObject);
         localPopupViewContainer.addView(this.mAboveArrow, localLayoutParams);
@@ -642,25 +646,25 @@ public class BubblePopupWindow
         if ((this.mContentView instanceof QQCustomMenuNoIconLayout))
         {
           localObject = this.mContext.getResources();
-          j = 2130838878;
+          j = 2130839044;
           if (paramBoolean) {
-            i = 2130838878;
+            i = 2130839044;
           } else {
-            i = 2130838891;
+            i = 2130839045;
           }
           this.mPressedBottomArrow = new BubblePopupWindow.MyClipDrawable(this, ((Resources)localObject).getDrawable(i));
           localObject = this.mContext.getResources();
           if (paramBoolean) {
             i = j;
           } else {
-            i = 2130838891;
+            i = 2130839045;
           }
           localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i), this.mPressedBottomArrow });
         }
         else
         {
-          this.mPressedBottomArrow = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130838892));
-          localObject = new LayerDrawable(new Drawable[] { this.mContext.getResources().getDrawable(2130838864), this.mPressedBottomArrow });
+          this.mPressedBottomArrow = new BubblePopupWindow.MyClipDrawable(this, this.mContext.getResources().getDrawable(2130839046));
+          localObject = new LayerDrawable(new Drawable[] { this.mContext.getResources().getDrawable(2130839043), this.mPressedBottomArrow });
         }
         this.mBottomArrow.setBackgroundDrawable((Drawable)localObject);
         localPopupViewContainer.addView(this.mBottomArrow, localLayoutParams);
@@ -800,6 +804,11 @@ public class BubblePopupWindow
     localImageView.setVisibility(4);
   }
   
+  public void addOnDismissListener(BubblePopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.mOnDismissListeners.add(paramOnDismissListener);
+  }
+  
   public void dismiss()
   {
     Object localObject1;
@@ -819,30 +828,29 @@ public class BubblePopupWindow
         if (this.mPopupView.getParent() != null) {
           this.mWindowManager.removeViewImmediate(this.mPopupView);
         }
-        localObject1 = this.mPopupView;
-        localObject3 = this.mContentView;
-        if ((localObject1 != localObject3) && ((localObject1 instanceof ViewGroup))) {
-          ((ViewGroup)localObject1).removeView((View)localObject3);
-        }
-        this.mPopupView = null;
-        localObject1 = this.mOnDismissListener;
-        if (localObject1 != null)
-        {
-          ((BubblePopupWindow.OnDismissListener)localObject1).onDismiss();
-          return;
-        }
+        Object localObject3;
+        Object localObject4;
+        return;
       }
       finally
       {
-        Object localObject3 = this.mPopupView;
-        View localView = this.mContentView;
-        if ((localObject3 != localView) && ((localObject3 instanceof ViewGroup))) {
-          ((ViewGroup)localObject3).removeView(localView);
+        localObject3 = this.mPopupView;
+        localObject4 = this.mContentView;
+        if ((localObject3 != localObject4) && ((localObject3 instanceof ViewGroup))) {
+          ((ViewGroup)localObject3).removeView((View)localObject4);
         }
         this.mPopupView = null;
         localObject3 = this.mOnDismissListener;
         if (localObject3 != null) {
           ((BubblePopupWindow.OnDismissListener)localObject3).onDismiss();
+        }
+        localObject3 = this.mOnDismissListeners.iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (BubblePopupWindow.OnDismissListener)((Iterator)localObject3).next();
+          if (localObject4 != null) {
+            ((BubblePopupWindow.OnDismissListener)localObject4).onDismiss();
+          }
         }
       }
     }
@@ -1345,7 +1353,7 @@ public class BubblePopupWindow
   {
     paramInt1 = (int)(paramInt1 + this.mContentView.getX() * 2.0F);
     WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.mPopupView.getLayoutParams();
-    if (this.mContainerCenterX > ViewUtils.a() / 2) {
+    if (this.mContainerCenterX > ViewUtils.getScreenWidth() / 2) {
       localLayoutParams.x = (localLayoutParams.x + paramInt2 - paramInt1);
     }
     updateAboveAnchor(this.mAboveAnchor, this.mContainerCenterX - localLayoutParams.x);
@@ -1375,7 +1383,7 @@ public class BubblePopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.BubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

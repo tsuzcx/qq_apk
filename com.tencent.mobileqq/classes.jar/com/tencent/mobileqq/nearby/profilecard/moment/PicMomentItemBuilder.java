@@ -34,17 +34,12 @@ public class PicMomentItemBuilder
     super(paramContext, paramQQAppInterface);
   }
   
-  public int a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    return 2;
-  }
-  
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (PicMomentItemBuilder.PicViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561224, paramViewGroup, false);
-    paramMomentViewHolder.g = ((TextView)paramViewGroup.findViewById(2131379920));
-    paramMomentViewHolder.e = ((ImageView)paramViewGroup.findViewById(2131369437));
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131627578, paramViewGroup, false);
+    paramMomentViewHolder.t = ((TextView)paramViewGroup.findViewById(2131448801));
+    paramMomentViewHolder.u = ((ImageView)paramViewGroup.findViewById(2131436489));
     return paramViewGroup;
   }
   
@@ -56,9 +51,9 @@ public class PicMomentItemBuilder
   public void d(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     PicMomentFeedInfo localPicMomentFeedInfo = (PicMomentFeedInfo)paramMomentViewHolder.a;
-    if ((localPicMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry != null) && (localPicMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.publishState != 0))
+    if ((localPicMomentFeedInfo.d != null) && (localPicMomentFeedInfo.d.publishState != 0))
     {
-      NearbyMomentUtils.a(this.a, localPicMomentFeedInfo.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry, 4);
+      NearbyMomentUtils.a(this.a, localPicMomentFeedInfo.d, 4);
       return;
     }
     super.d(paramMomentViewHolder);
@@ -68,27 +63,27 @@ public class PicMomentItemBuilder
   {
     PicMomentItemBuilder.PicViewHolder localPicViewHolder = (PicMomentItemBuilder.PicViewHolder)paramMomentViewHolder;
     Object localObject1 = (PicMomentFeedInfo)localPicViewHolder.a;
-    paramMomentViewHolder = ((PicMomentFeedInfo)localObject1).n;
-    paramMomentViewHolder = TopicHelper.a(this.a, localPicViewHolder.a.a, paramMomentViewHolder);
+    paramMomentViewHolder = ((PicMomentFeedInfo)localObject1).s;
+    paramMomentViewHolder = TopicHelper.a(this.a, localPicViewHolder.a.y, paramMomentViewHolder);
     if (TextUtils.isEmpty(paramMomentViewHolder))
     {
-      localPicViewHolder.g.setVisibility(8);
+      localPicViewHolder.t.setVisibility(8);
     }
     else
     {
-      localPicViewHolder.g.setVisibility(0);
+      localPicViewHolder.t.setVisibility(0);
       if ((paramMomentViewHolder instanceof SpannableString)) {
-        localPicViewHolder.g.setMovementMethod(LinkMovementMethod.getInstance());
+        localPicViewHolder.t.setMovementMethod(LinkMovementMethod.getInstance());
       }
-      localPicViewHolder.g.setText(paramMomentViewHolder);
+      localPicViewHolder.t.setText(paramMomentViewHolder);
     }
-    Object localObject2 = (String)localPicViewHolder.e.getTag(2131378314);
+    Object localObject2 = (String)localPicViewHolder.u.getTag(2131446833);
     paramMomentViewHolder = null;
     boolean bool;
-    if (((PicMomentFeedInfo)localObject1).jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry != null)
+    if (((PicMomentFeedInfo)localObject1).d != null)
     {
       paramMomentViewHolder = new StringBuilder();
-      paramMomentViewHolder.append(((PicMomentFeedInfo)localObject1).jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath);
+      paramMomentViewHolder.append(((PicMomentFeedInfo)localObject1).d.thumbPath);
       paramMomentViewHolder.append("");
       paramMomentViewHolder = new File(paramMomentViewHolder.toString());
       bool = paramMomentViewHolder.exists();
@@ -98,19 +93,19 @@ public class PicMomentItemBuilder
       bool = false;
     }
     if (bool) {
-      localObject1 = ((PicMomentFeedInfo)localObject1).jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry.thumbPath;
+      localObject1 = ((PicMomentFeedInfo)localObject1).d.thumbPath;
     } else {
-      localObject1 = ((PicMomentFeedInfo)localObject1).jdField_a_of_type_JavaLangString;
+      localObject1 = ((PicMomentFeedInfo)localObject1).c;
     }
     if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
     {
-      localPicViewHolder.e.setTag(2131378314, localObject1);
-      localObject2 = (LinearLayout.LayoutParams)localPicViewHolder.e.getLayoutParams();
+      localPicViewHolder.u.setTag(2131446833, localObject1);
+      localObject2 = (LinearLayout.LayoutParams)localPicViewHolder.u.getLayoutParams();
       int i = UIUtils.a(BaseApplicationImpl.getContext(), 180.0F);
       if (localObject2 == null)
       {
         localObject2 = new LinearLayout.LayoutParams(-2, -2);
-        localPicViewHolder.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localPicViewHolder.u.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
       else if ((((LinearLayout.LayoutParams)localObject2).width <= i) && (((LinearLayout.LayoutParams)localObject2).height <= i))
       {
@@ -119,36 +114,41 @@ public class PicMomentItemBuilder
         } else {
           ((LinearLayout.LayoutParams)localObject2).width = i;
         }
-        localPicViewHolder.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        localPicViewHolder.u.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
       try
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130845650);
-        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130845650);
+        ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130847114);
+        ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130847114);
         ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "profileCard";
         if (bool) {
           paramMomentViewHolder = URLDrawable.getDrawable(paramMomentViewHolder, (URLDrawable.URLDrawableOptions)localObject2);
         } else {
           paramMomentViewHolder = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
         }
-        paramMomentViewHolder.setTag(URLDrawableDecodeHandler.a(DisplayUtil.a(localPicViewHolder.e.getContext(), 3.0F), 0, 0));
-        paramMomentViewHolder.setDecodeHandler(URLDrawableDecodeHandler.e);
-        localPicViewHolder.e.setImageDrawable(paramMomentViewHolder);
+        paramMomentViewHolder.setTag(URLDrawableDecodeHandler.a(DisplayUtil.a(localPicViewHolder.u.getContext(), 3.0F), 0, 0));
+        paramMomentViewHolder.setDecodeHandler(URLDrawableDecodeHandler.f);
+        localPicViewHolder.u.setImageDrawable(paramMomentViewHolder);
       }
       catch (Exception paramMomentViewHolder)
       {
-        localPicViewHolder.e.setImageDrawable(this.a.getResources().getDrawable(2130845650));
+        localPicViewHolder.u.setImageDrawable(this.a.getResources().getDrawable(2130847114));
         QLog.i("PicMomentItemBuilder", 1, paramMomentViewHolder.toString());
       }
     }
-    localPicViewHolder.e.setTag(localPicViewHolder);
-    localPicViewHolder.e.setOnClickListener(this);
+    localPicViewHolder.u.setTag(localPicViewHolder);
+    localPicViewHolder.u.setOnClickListener(this);
+  }
+  
+  public int g(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.PicMomentItemBuilder
  * JD-Core Version:    0.7.0.1
  */

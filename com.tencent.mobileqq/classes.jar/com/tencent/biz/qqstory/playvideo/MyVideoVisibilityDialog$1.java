@@ -10,12 +10,12 @@ class MyVideoVisibilityDialog$1
   
   public void onTabSelected(int paramInt1, int paramInt2)
   {
-    this.a.a.setCurrentItem(paramInt2);
+    this.a.b.setCurrentItem(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog.1
  * JD-Core Version:    0.7.0.1
  */

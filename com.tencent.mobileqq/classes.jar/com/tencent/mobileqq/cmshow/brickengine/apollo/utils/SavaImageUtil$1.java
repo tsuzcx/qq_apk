@@ -16,23 +16,23 @@ final class SavaImageUtil$1
   {
     try
     {
-      SavaImageUtil.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      SavaImageUtil.a = this.a;
       Intent localIntent;
-      if (this.jdField_a_of_type_Int == 0)
+      if (this.b == 0)
       {
         localIntent = new Intent("android.intent.action.PICK");
         localIntent.setType("image/*");
-        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14006);
+        ((Activity)this.c.getContext()).startActivityForResult(localIntent, 14006);
         return;
       }
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.b == 1)
       {
         localIntent = new Intent();
         localIntent.addCategory("android.intent.category.DEFAULT");
-        SavaImageUtil.jdField_a_of_type_JavaIoFile = new File(SavaImageUtil.a());
-        SavaImageUtil.jdField_a_of_type_JavaIoFile.createNewFile();
-        FileProvider7Helper.setSystemCapture(this.jdField_a_of_type_AndroidViewView.getContext(), SavaImageUtil.jdField_a_of_type_JavaIoFile, localIntent);
-        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14005);
+        SavaImageUtil.b = new File(SavaImageUtil.a());
+        SavaImageUtil.b.createNewFile();
+        FileProvider7Helper.setSystemCapture(this.c.getContext(), SavaImageUtil.b, localIntent);
+        ((Activity)this.c.getContext()).startActivityForResult(localIntent, 14005);
         return;
       }
     }
@@ -52,7 +52,7 @@ final class SavaImageUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.utils.SavaImageUtil.1
  * JD-Core Version:    0.7.0.1
  */

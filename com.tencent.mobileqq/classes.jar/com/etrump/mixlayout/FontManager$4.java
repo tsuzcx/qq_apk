@@ -12,8 +12,8 @@ class FontManager$4
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)FontManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
-    FontManager.a(FontManager.a(this.this$0), this.jdField_a_of_type_JavaLangString, localExtensionInfo, this.jdField_a_of_type_Int, this.b);
+    ExtensionInfo localExtensionInfo = ((FriendsManager)FontManager.a(this.this$0).getManager(QQManagerFactory.FRIENDS_MANAGER)).x(this.a);
+    FontManager.a(FontManager.a(this.this$0), this.a, localExtensionInfo, this.b, this.c);
   }
 }
 

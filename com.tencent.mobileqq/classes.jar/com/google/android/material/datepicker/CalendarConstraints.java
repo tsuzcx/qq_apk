@@ -12,66 +12,55 @@ public final class CalendarConstraints
   implements Parcelable
 {
   public static final Parcelable.Creator<CalendarConstraints> CREATOR = new CalendarConstraints.1();
-  private final int jdField_a_of_type_Int;
   @NonNull
-  private final CalendarConstraints.DateValidator jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator;
+  private final Month a;
   @NonNull
-  private final Month jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth;
-  private final int jdField_b_of_type_Int;
+  private final Month b;
   @NonNull
-  private final Month jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth;
+  private final CalendarConstraints.DateValidator c;
   @Nullable
-  private Month c;
+  private Month d;
+  private final int e;
+  private final int f;
   
   private CalendarConstraints(@NonNull Month paramMonth1, @NonNull Month paramMonth2, @NonNull CalendarConstraints.DateValidator paramDateValidator, @Nullable Month paramMonth3)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth = paramMonth1;
-    this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth = paramMonth2;
-    this.c = paramMonth3;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator = paramDateValidator;
+    this.a = paramMonth1;
+    this.b = paramMonth2;
+    this.d = paramMonth3;
+    this.c = paramDateValidator;
     if ((paramMonth3 != null) && (paramMonth1.a(paramMonth3) > 0)) {
       throw new IllegalArgumentException("start Month cannot be after current Month");
     }
     if ((paramMonth3 != null) && (paramMonth3.a(paramMonth2) > 0)) {
       throw new IllegalArgumentException("current Month cannot be after end Month");
     }
-    this.jdField_b_of_type_Int = (paramMonth1.b(paramMonth2) + 1);
-    this.jdField_a_of_type_Int = (paramMonth2.jdField_b_of_type_Int - paramMonth1.jdField_b_of_type_Int + 1);
-  }
-  
-  int a()
-  {
-    return this.jdField_b_of_type_Int;
+    this.f = (paramMonth1.b(paramMonth2) + 1);
+    this.e = (paramMonth2.b - paramMonth1.b + 1);
   }
   
   public CalendarConstraints.DateValidator a()
   {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator;
-  }
-  
-  @NonNull
-  Month a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth;
+    return this.c;
   }
   
   Month a(Month paramMonth)
   {
-    if (paramMonth.a(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth) < 0) {
-      return this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth;
+    if (paramMonth.a(this.a) < 0) {
+      return this.a;
     }
     Month localMonth = paramMonth;
-    if (paramMonth.a(this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth) > 0) {
-      localMonth = this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth;
+    if (paramMonth.a(this.b) > 0) {
+      localMonth = this.b;
     }
     return localMonth;
   }
   
   boolean a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.a(1) <= paramLong)
+    if (this.a.a(1) <= paramLong)
     {
-      Month localMonth = this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth;
+      Month localMonth = this.b;
       if (paramLong <= localMonth.a(localMonth.d)) {
         return true;
       }
@@ -79,26 +68,32 @@ public final class CalendarConstraints
     return false;
   }
   
-  int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   @NonNull
   Month b()
   {
-    return this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth;
+    return this.a;
+  }
+  
+  @NonNull
+  Month c()
+  {
+    return this.b;
   }
   
   @Nullable
-  Month c()
+  Month d()
   {
-    return this.c;
+    return this.d;
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  int e()
+  {
+    return this.f;
   }
   
   public boolean equals(Object paramObject)
@@ -110,25 +105,30 @@ public final class CalendarConstraints
       return false;
     }
     paramObject = (CalendarConstraints)paramObject;
-    return (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth.equals(paramObject.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth)) && (this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth.equals(paramObject.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth)) && (ObjectsCompat.equals(this.c, paramObject.c)) && (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator.equals(paramObject.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator));
+    return (this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)) && (ObjectsCompat.equals(this.d, paramObject.d)) && (this.c.equals(paramObject.c));
+  }
+  
+  int f()
+  {
+    return this.e;
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth, this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth, this.c, this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator });
+    return Arrays.hashCode(new Object[] { this.a, this.b, this.d, this.c });
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerMonth, 0);
-    paramParcel.writeParcelable(this.jdField_b_of_type_ComGoogleAndroidMaterialDatepickerMonth, 0);
+    paramParcel.writeParcelable(this.a, 0);
+    paramParcel.writeParcelable(this.b, 0);
+    paramParcel.writeParcelable(this.d, 0);
     paramParcel.writeParcelable(this.c, 0);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints$DateValidator, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.CalendarConstraints
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class NetConnInfoCenter
             i = msfCore.getUinPushStatus(paramString);
             ((Intent)localObject).putExtra("uin", paramString);
             ((Intent)localObject).putExtra("istatus", i);
-            ((Intent)localObject).putExtra("gatewayip", ac.q());
+            ((Intent)localObject).putExtra("gatewayip", ad.q());
             ((Intent)localObject).setPackage(BaseApplication.getContext().getPackageName());
             if (l > 0L)
             {
@@ -103,72 +103,72 @@ public class NetConnInfoCenter
   
   public static void checkConnInfo()
   {
-    s.a().a(BaseApplication.getContext(), null, false);
+    t.a().a(BaseApplication.getContext(), null, false);
   }
   
   public static void checkConnInfo(Context paramContext, NetworkInfo paramNetworkInfo, boolean paramBoolean)
   {
-    s.a().a(paramContext, paramNetworkInfo, paramBoolean);
+    t.a().a(paramContext, paramNetworkInfo, paramBoolean);
   }
   
   public static void checkConnInfo(Context paramContext, boolean paramBoolean)
   {
-    s.a().a(paramContext, null, paramBoolean);
+    t.a().a(paramContext, null, paramBoolean);
   }
   
   public static void checkRecordTime()
   {
-    s.a().z();
+    t.a().z();
   }
   
   public static int getActiveNetIpFamily(boolean paramBoolean)
   {
-    return s.a().c(paramBoolean);
+    return t.a().c(paramBoolean);
   }
   
   public static int getActiveNetworkType()
   {
-    return s.a().x();
+    return t.a().x();
   }
   
   public static int getCdmaStrength()
   {
-    return s.a().B();
+    return t.a().B();
   }
   
   public static String getCurrentAPN()
   {
-    return s.a().u();
+    return t.a().u();
   }
   
   public static String getCurrentAPN(boolean paramBoolean)
   {
-    return s.a().b(paramBoolean);
+    return t.a().b(paramBoolean);
   }
   
   public static String getCurrentSSID()
   {
-    return s.a().q();
+    return t.a().q();
   }
   
   public static String getCurrentSSID(boolean paramBoolean)
   {
-    return s.a().a(paramBoolean);
+    return t.a().a(paramBoolean);
   }
   
   public static int getGsmStrength()
   {
-    return s.a().C();
+    return t.a().C();
   }
   
   public static String getLastWifiSSID()
   {
-    return s.a().r();
+    return t.a().r();
   }
   
   public static int getMobileNetworkType()
   {
-    return s.a().t();
+    return t.a().t();
   }
   
   public static long getServerTime()
@@ -197,7 +197,7 @@ public class NetConnInfoCenter
   
   public static int getSystemNetState()
   {
-    return s.a().k();
+    return t.a().k();
   }
   
   public static String getSystemNetStateString()
@@ -207,23 +207,23 @@ public class NetConnInfoCenter
   
   public static int getSystemNetworkType()
   {
-    return s.a().w();
+    return t.a().w();
   }
   
   public static int getWifiStrength()
   {
-    return s.a().A();
+    return t.a().A();
   }
   
   public static void handleGetServerTimeResp(long paramLong)
   {
-    s.a().a(paramLong);
+    t.a().a(paramLong);
   }
   
   public static void init(MsfCore paramMsfCore)
   {
     msfCore = paramMsfCore;
-    s.a().a(paramMsfCore);
+    t.a().a(paramMsfCore);
     if (Build.VERSION.SDK_INT >= 24)
     {
       int i = BaseApplication.getContext().getApplicationInfo().targetSdkVersion;
@@ -261,7 +261,7 @@ public class NetConnInfoCenter
   
   public static boolean isMobileConn()
   {
-    return s.a().o();
+    return t.a().o();
   }
   
   public static boolean isMobileNetworkInfo(NetworkInfo paramNetworkInfo)
@@ -281,37 +281,37 @@ public class NetConnInfoCenter
   
   public static boolean isWifiConn()
   {
-    return s.a().n();
+    return t.a().n();
   }
   
   public static boolean isWifiOrMobileConn()
   {
-    return s.a().m();
+    return t.a().m();
   }
   
   public static void onConnClosed(com.tencent.qphone.base.a parama)
   {
-    s.a().a(parama);
+    t.a().a(parama);
   }
   
   public static void onConnOpened(String paramString1, String paramString2)
   {
-    s.a().c(paramString1, paramString2);
+    t.a().c(paramString1, paramString2);
   }
   
   public static void onOepnConnAllFailed()
   {
-    s.a().p();
+    t.a().p();
   }
   
   public static void onRecvFirstResp()
   {
-    s.a().s();
+    t.a().s();
   }
   
   public static void setLastConnSuccWithoutNet()
   {
-    s.a().j();
+    t.a().j();
   }
   
   public static void setNeedWifiAuth(boolean paramBoolean)
@@ -343,7 +343,7 @@ public class NetConnInfoCenter
       QLog.d("NetConnInfoCenter", 1, "init msf startService exception:", localException);
       try
       {
-        BaseApplication.getContext().bindService(paramIntent, new r(), 1);
+        BaseApplication.getContext().bindService(paramIntent, new s(), 1);
         return;
       }
       catch (Exception paramIntent)
@@ -435,7 +435,7 @@ public class NetConnInfoCenter
         ((Intent)localObject).putExtra("networkInfo", paramIntent);
         paramContext.sendBroadcast((Intent)localObject);
         checkConnInfo(paramContext, paramIntent, true);
-        u.a().d();
+        v.a().d();
         return;
       }
       catch (Exception paramContext)
@@ -451,7 +451,7 @@ public class NetConnInfoCenter
       if (bool1)
       {
         com.tencent.mobileqq.msf.core.a.a.a(true);
-        com.tencent.mobileqq.msf.core.c.j.S = true;
+        com.tencent.mobileqq.msf.core.d.j.S = true;
         if (QLog.isColorLevel()) {
           QLog.d("NetConnInfoCenter", 2, "set StatReporter.needReportBooting true");
         }
@@ -467,7 +467,7 @@ public class NetConnInfoCenter
         if (QLog.isColorLevel()) {
           QLog.i("NetConnInfoCenter", 2, "receive WIFI_STATE_CHANGED_ACTION");
         }
-        u.a().a(paramIntent);
+        v.a().a(paramIntent);
       }
     }
     else
@@ -479,13 +479,13 @@ public class NetConnInfoCenter
         paramContext.append(paramIntent.getAction());
         QLog.d("NetConnInfoCenter", 2, paramContext.toString());
       }
-      s.a().y();
+      t.a().y();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.NetConnInfoCenter
  * JD-Core Version:    0.7.0.1
  */

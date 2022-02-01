@@ -10,18 +10,18 @@ class QfileCloudFileTabView$2
   
   public View.OnClickListener a(TextView paramTextView)
   {
-    this.a.a = paramTextView;
+    this.a.p = paramTextView;
     return new QfileCloudFileTabView.2.1(this);
   }
   
   public boolean a()
   {
-    return this.a.c;
+    return this.a.A;
   }
   
   public boolean b()
   {
-    return this.a.b;
+    return this.a.r;
   }
   
   public boolean c()
@@ -31,7 +31,7 @@ class QfileCloudFileTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

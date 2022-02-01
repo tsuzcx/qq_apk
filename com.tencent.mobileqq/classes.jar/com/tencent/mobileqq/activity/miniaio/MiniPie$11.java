@@ -11,12 +11,12 @@ class MiniPie$11
   public void a(int paramInt, boolean paramBoolean)
   {
     MiniPie.a(this.a, SoftKeyboardHeight.a(paramInt));
-    this.a.a.height = MiniPie.a(this.a);
+    this.a.B.height = MiniPie.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.11
  * JD-Core Version:    0.7.0.1
  */

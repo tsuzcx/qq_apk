@@ -36,22 +36,17 @@ public class AVPreloadPlayerService
   extends AVPlayerService
   implements ThreadCenter.HandlerKeyable
 {
-  private static long c;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  AVPlayerPreloadAdapter.AVPreloadListener jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener = new AVPreloadPlayerService.1(this);
-  private PlayerStatusListener jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
-  private AVPreloadReport.ReportData jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData = new AVPreloadReport.ReportData();
-  private LiveSdkPlayerHelper jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
-  private LogAdapter jdField_a_of_type_ComTencentLivesdkLivesdkplayerLogAdapter = new AVPreloadPlayerService.2(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AVPreloadPlayerService.4(this);
-  private String jdField_a_of_type_JavaLangString = "none";
-  private long b;
-  
-  public AVPreloadPlayerService()
-  {
-    this.jdField_b_of_type_Long = 0L;
-  }
+  private static long i;
+  AVPlayerPreloadAdapter.AVPreloadListener a = new AVPreloadPlayerService.1(this);
+  private LiveSdkPlayerHelper b;
+  private PlayerStatusListener c;
+  private long d = 0L;
+  private int e = 0;
+  private AVPreloadReport.ReportData f = new AVPreloadReport.ReportData();
+  private long g = 0L;
+  private String h = "none";
+  private LogAdapter j = new AVPreloadPlayerService.2(this);
+  private Runnable k = new AVPreloadPlayerService.4(this);
   
   private long a(Context paramContext)
   {
@@ -120,52 +115,15 @@ public class AVPreloadPlayerService
     return localPlayerParams;
   }
   
-  private String a()
-  {
-    String str = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().url;
-    if (str.startsWith("http://127.0.0.1"))
-    {
-      localObject1 = this.adapter.getLogger();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("------local url play error url=");
-      ((StringBuilder)localObject2).append(str);
-      ((LogInterface)localObject1).e("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
-    }
-    else
-    {
-      localObject1 = this.adapter.getLogger();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("------remote url play error url=");
-      ((StringBuilder)localObject2).append(str);
-      ((LogInterface)localObject1).e("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
-    }
-    Object localObject2 = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().originUrl;
-    Object localObject1 = localObject2;
-    if (this.mPreloadAdapter != null)
-    {
-      localObject1 = localObject2;
-      if (((String)localObject2).startsWith("http://127.0.0.1"))
-      {
-        localObject1 = this.mPreloadAdapter.b((String)localObject2);
-        localObject2 = this.adapter.getLogger();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("------play error exchangeRemoteServerPlayUrl url=");
-        localStringBuilder.append(str);
-        ((LogInterface)localObject2).e("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
-      }
-    }
-    return localObject1;
-  }
-  
   private void a()
   {
-    String str2 = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().url;
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Boolean = str2.startsWith("http://127.0.0.1");
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_f_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_j_of_type_JavaLangString = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().originUrl;
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().userId;
+    String str2 = this.b.getCurrentParams().url;
+    this.f.x = str2.startsWith("http://127.0.0.1");
+    this.f.p = (System.currentTimeMillis() - this.d);
+    this.f.w = this.b.getCurrentParams().originUrl;
+    this.f.e = this.b.getCurrentParams().userId;
     String str1;
-    if (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Boolean) {
+    if (this.f.x) {
       str1 = "命中缓存";
     } else {
       str1 = "未命中缓存";
@@ -177,7 +135,7 @@ public class AVPreloadPlayerService
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(":首帧耗时 ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_f_of_type_Long);
+    ((StringBuilder)localObject).append(this.f.p);
     localObject = ((StringBuilder)localObject).toString();
     LogInterface localLogInterface = this.adapter.getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -194,119 +152,156 @@ public class AVPreloadPlayerService
       Object localObject = this.adapter.getLogger();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("initReportData taskId: ");
-      localStringBuilder.append(paramAVPreloadTaskInterface.j());
+      localStringBuilder.append(paramAVPreloadTaskInterface.r());
       ((LogInterface)localObject).i("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Long = paramAVPreloadTaskInterface.a();
+      this.f.j = paramAVPreloadTaskInterface.b();
       localObject = paramAVPreloadTaskInterface.a();
       if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_j_of_type_Long = (((AVPreloadTaskInterface.TaskReportInfo)localObject).a() / 1024);
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_h_of_type_Long = ((AVPreloadTaskInterface.TaskReportInfo)localObject).b();
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_g_of_type_Long = ((AVPreloadTaskInterface.TaskReportInfo)localObject).a();
-        this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Boolean = ((AVPreloadTaskInterface.TaskReportInfo)localObject).a();
+        this.f.B = (((AVPreloadTaskInterface.TaskReportInfo)localObject).d() / 1024);
+        this.f.r = ((AVPreloadTaskInterface.TaskReportInfo)localObject).b();
+        this.f.q = ((AVPreloadTaskInterface.TaskReportInfo)localObject).a();
+        this.f.D = ((AVPreloadTaskInterface.TaskReportInfo)localObject).c();
       }
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Long = paramAVPreloadTaskInterface.a();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Long = paramAVPreloadTaskInterface.b();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Int = paramAVPreloadTaskInterface.a();
-      localObject = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData;
+      this.f.j = paramAVPreloadTaskInterface.b();
+      this.f.k = paramAVPreloadTaskInterface.c();
+      this.f.u = paramAVPreloadTaskInterface.k();
+      localObject = this.f;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(paramAVPreloadTaskInterface.j());
-      ((AVPreloadReport.ReportData)localObject).jdField_l_of_type_JavaLangString = localStringBuilder.toString();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Int = paramAVPreloadTaskInterface.d();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Long = paramAVPreloadTaskInterface.c();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_k_of_type_Long = paramAVPreloadTaskInterface.i();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Int = paramAVPreloadTaskInterface.b();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Int = paramAVPreloadTaskInterface.c();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_e_of_type_Long = paramAVPreloadTaskInterface.d();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_j_of_type_JavaLangString = paramAVPreloadTaskInterface.b();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_l_of_type_Long = paramAVPreloadTaskInterface.e();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.m = (paramAVPreloadTaskInterface.h() / 1024L);
+      localStringBuilder.append(paramAVPreloadTaskInterface.r());
+      ((AVPreloadReport.ReportData)localObject).E = localStringBuilder.toString();
+      this.f.z = paramAVPreloadTaskInterface.n();
+      this.f.l = paramAVPreloadTaskInterface.d();
+      this.f.C = paramAVPreloadTaskInterface.j();
+      this.f.s = paramAVPreloadTaskInterface.l();
+      this.f.t = paramAVPreloadTaskInterface.m();
+      this.f.o = paramAVPreloadTaskInterface.e();
+      this.f.w = paramAVPreloadTaskInterface.s();
+      this.f.F = paramAVPreloadTaskInterface.f();
+      this.f.G = (paramAVPreloadTaskInterface.i() / 1024L);
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    Object localObject1 = this.b;
     if (localObject1 != null)
     {
       localObject1 = ((LiveSdkPlayerHelper)localObject1).getPlayUrl();
       if ((this.mPreloadAdapter != null) && (!((String)localObject1).startsWith("http://127.0.0.1")) && (paramBoolean)) {
-        this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().url = this.mPreloadAdapter.a((String)localObject1);
+        this.b.getCurrentParams().url = this.mPreloadAdapter.e((String)localObject1);
       }
       Object localObject2 = new StringBuffer("preparePlay()---preparePlay remote url= ");
       ((StringBuffer)localObject2).append((String)localObject1);
       ((StringBuffer)localObject2).append(" local url= ");
-      ((StringBuffer)localObject2).append(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().url);
+      ((StringBuffer)localObject2).append(this.b.getCurrentParams().url);
       this.adapter.getLogger().i("AVPreload|Core", ((StringBuffer)localObject2).toString(), new Object[0]);
       if (this.mPreloadAdapter != null) {
         this.mPreloadAdapter.d((String)localObject1);
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localObject2 = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData;
-      ((AVPreloadReport.ReportData)localObject2).jdField_j_of_type_JavaLangString = ((String)localObject1);
-      ((AVPreloadReport.ReportData)localObject2).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.openPlay();
+      this.d = System.currentTimeMillis();
+      localObject2 = this.f;
+      ((AVPreloadReport.ReportData)localObject2).w = ((String)localObject1);
+      ((AVPreloadReport.ReportData)localObject2).i = this.d;
+      this.b.openPlay();
     }
   }
   
   private String b()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_b_of_type_Long < 60000L) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    int i = NetworkUtil.getNetworkType(this.appContext);
-    if (i != 1)
+    String str = this.b.getCurrentParams().url;
+    if (str.startsWith("http://127.0.0.1"))
     {
-      if (i != 2)
+      localObject1 = this.adapter.getLogger();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("------local url play error url=");
+      ((StringBuilder)localObject2).append(str);
+      ((LogInterface)localObject1).e("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
+    }
+    else
+    {
+      localObject1 = this.adapter.getLogger();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("------remote url play error url=");
+      ((StringBuilder)localObject2).append(str);
+      ((LogInterface)localObject1).e("AVPreload|Core", ((StringBuilder)localObject2).toString(), new Object[0]);
+    }
+    Object localObject2 = this.b.getCurrentParams().originUrl;
+    Object localObject1 = localObject2;
+    if (this.mPreloadAdapter != null)
+    {
+      localObject1 = localObject2;
+      if (((String)localObject2).startsWith("http://127.0.0.1"))
       {
-        if (i != 3)
+        localObject1 = this.mPreloadAdapter.f((String)localObject2);
+        localObject2 = this.adapter.getLogger();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("------play error exchangeRemoteServerPlayUrl url=");
+        localStringBuilder.append(str);
+        ((LogInterface)localObject2).e("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
+      }
+    }
+    return localObject1;
+  }
+  
+  private void c()
+  {
+    this.b.getCurrentParams().url = b();
+    ThreadCenter.removeUITask(this, this.k);
+    if (this.e < 3)
+    {
+      ThreadCenter.postDelayedUITask(this, this.k, 1000L);
+      return;
+    }
+    this.e = 0;
+  }
+  
+  private String d()
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.g < 60000L) {
+      return this.h;
+    }
+    int m = NetworkUtil.getNetworkType(this.appContext);
+    if (m != 1)
+    {
+      if (m != 2)
+      {
+        if (m != 3)
         {
-          if (i != 4)
+          if (m != 4)
           {
-            if (i != 5) {
-              this.jdField_a_of_type_JavaLangString = "none";
+            if (m != 5) {
+              this.h = "none";
             } else {
-              this.jdField_a_of_type_JavaLangString = "mobile";
+              this.h = "mobile";
             }
           }
           else {
-            this.jdField_a_of_type_JavaLangString = "4G";
+            this.h = "4G";
           }
         }
         else {
-          this.jdField_a_of_type_JavaLangString = "3G";
+          this.h = "3G";
         }
       }
       else {
-        this.jdField_a_of_type_JavaLangString = "2G";
+        this.h = "2G";
       }
     }
     else {
-      this.jdField_a_of_type_JavaLangString = "wifi";
+      this.h = "wifi";
     }
-    this.jdField_b_of_type_Long = l;
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().url = a();
-    ThreadCenter.removeUITask(this, this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_Int < 3)
-    {
-      ThreadCenter.postDelayedUITask(this, this.jdField_a_of_type_JavaLangRunnable, 1000L);
-      return;
-    }
-    this.jdField_a_of_type_Int = 0;
+    this.g = l;
+    return this.h;
   }
   
   public void clearEventOutput() {}
   
   public long getCurrentPositionMs()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       return localLiveSdkPlayerHelper.getCurrentPositionMs();
     }
@@ -315,12 +310,12 @@ public class AVPreloadPlayerService
   
   public Rect getDisplayViewRect()
   {
-    return this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getDisplayViewRect();
+    return this.b.getDisplayViewRect();
   }
   
   public long getVideoDurationMs()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       return localLiveSdkPlayerHelper.getDurationMs();
     }
@@ -329,34 +324,34 @@ public class AVPreloadPlayerService
   
   public int getVideoHeight()
   {
-    return this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getVideoHeight();
+    return this.b.getVideoHeight();
   }
   
   public int getVideoWidth()
   {
-    return this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getVideoWidth();
+    return this.b.getVideoWidth();
   }
   
   public void init(Context paramContext, FrameLayout paramFrameLayout)
   {
     super.init(paramContext, paramFrameLayout);
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper = new LiveSdkPlayerHelper();
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.setIsHoldPlayerLog(this.adapter.isHoldPlayerLog());
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.setLog(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLogAdapter);
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.initTPPlayerId(this.adapter.getAppInfo().getTPPlayerGuid(), this.adapter.getAppInfo().getTPPlatform(), this.adapter.getAppInfo().isNeedInitTPPlatform());
+    this.b = new LiveSdkPlayerHelper();
+    this.b.setIsHoldPlayerLog(this.adapter.isHoldPlayerLog());
+    this.b.setLog(this.j);
+    this.b.initTPPlayerId(this.adapter.getAppInfo().getTPPlayerGuid(), this.adapter.getAppInfo().getTPPlatform(), this.adapter.getAppInfo().isNeedInitTPPlatform());
     IMediaPlayerMgr localIMediaPlayerMgr;
     if (this.adapter.getMediaPlayerInterface() == null) {
       localIMediaPlayerMgr = null;
     } else {
       localIMediaPlayerMgr = this.adapter.getMediaPlayerInterface().a();
     }
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.init(paramContext, localIMediaPlayerMgr);
-    this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.readyPlay(paramFrameLayout, false);
+    this.b.init(paramContext, localIMediaPlayerMgr);
+    this.b.readyPlay(paramFrameLayout, false);
   }
   
   public boolean isPaused()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       return localLiveSdkPlayerHelper.isPaused();
     }
@@ -365,7 +360,7 @@ public class AVPreloadPlayerService
   
   public boolean isPlaying()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       return localLiveSdkPlayerHelper.isPlaying();
     }
@@ -374,16 +369,16 @@ public class AVPreloadPlayerService
   
   public boolean isUseLocalServerPreload()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
-      return PreloadUtil.a(localLiveSdkPlayerHelper.getPlayUrl(), this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getCurrentParams().videoType);
+      return PreloadUtil.a(localLiveSdkPlayerHelper.getPlayUrl(), this.b.getCurrentParams().videoType);
     }
     return false;
   }
   
   public void mutePlay(boolean paramBoolean)
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.mutePlay(paramBoolean);
     }
@@ -398,7 +393,7 @@ public class AVPreloadPlayerService
   
   public void onScreenOrientationChange(boolean paramBoolean)
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.onScreenOrientationChange(paramBoolean);
     }
@@ -406,7 +401,7 @@ public class AVPreloadPlayerService
   
   public void pausePlay()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.pausePlay();
     }
@@ -414,15 +409,15 @@ public class AVPreloadPlayerService
   
   public void preload()
   {
-    if ((this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper != null) && (this.mPreloadAdapter != null))
+    if ((this.b != null) && (this.mPreloadAdapter != null))
     {
       LogInterface localLogInterface = this.adapter.getLogger();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("preload()---preload start url= ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getPlayUrl());
+      localStringBuilder.append(this.b.getPlayUrl());
       localLogInterface.i("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
-      this.mPreloadAdapter.a(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getPlayUrl(), this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener);
-      this.mPreloadAdapter.a(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getPlayUrl());
+      this.mPreloadAdapter.a(this.b.getPlayUrl(), this.a);
+      this.mPreloadAdapter.a(this.b.getPlayUrl());
     }
   }
   
@@ -433,7 +428,7 @@ public class AVPreloadPlayerService
   
   public void readyPlay(FrameLayout paramFrameLayout, boolean paramBoolean)
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.readyPlay(paramFrameLayout, paramBoolean);
     }
@@ -441,49 +436,49 @@ public class AVPreloadPlayerService
   
   public void reportPreloadData(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_i_of_type_JavaLangString = b();
-    if ((this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_g_of_type_Long > 0L) && (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_h_of_type_Long > 0L))
+    this.f.m = d();
+    if ((this.f.q > 0L) && (this.f.r > 0L))
     {
-      localObject = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData;
-      ((AVPreloadReport.ReportData)localObject).jdField_i_of_type_Long = (((AVPreloadReport.ReportData)localObject).jdField_h_of_type_Long / this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_g_of_type_Long);
+      localObject = this.f;
+      ((AVPreloadReport.ReportData)localObject).v = (((AVPreloadReport.ReportData)localObject).r / this.f.q);
     }
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_JavaLangString = this.adapter.getNickName();
-    Object localObject = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData;
+    this.f.l = System.currentTimeMillis();
+    this.f.d = this.adapter.getNickName();
+    Object localObject = this.f;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(this.adapter.getRoomId());
-    ((AVPreloadReport.ReportData)localObject).jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-    localObject = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData;
+    ((AVPreloadReport.ReportData)localObject).c = localStringBuilder.toString();
+    localObject = this.f;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(this.adapter.getAnchorUin());
-    ((AVPreloadReport.ReportData)localObject).jdField_g_of_type_JavaLangString = localStringBuilder.toString();
-    this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_k_of_type_JavaLangString = "event_close_room";
+    ((AVPreloadReport.ReportData)localObject).g = localStringBuilder.toString();
+    this.f.A = "event_close_room";
     localObject = this.adapter.getAppInfo();
     if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_JavaLangString = ((AppGeneralInfoService)localObject).getVersionName();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_JavaLangString = ((AppGeneralInfoService)localObject).getSource();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_f_of_type_JavaLangString = ((AppGeneralInfoService)localObject).getGuid();
-      this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_h_of_type_JavaLangString = ((AppGeneralInfoService)localObject).getApplication().getPackageName();
+      this.f.b = ((AppGeneralInfoService)localObject).getVersionName();
+      this.f.a = ((AppGeneralInfoService)localObject).getSource();
+      this.f.f = ((AppGeneralInfoService)localObject).getGuid();
+      this.f.h = ((AppGeneralInfoService)localObject).getApplication().getPackageName();
     }
-    if (jdField_c_of_type_Long == 0L) {
-      jdField_c_of_type_Long = a(this.appContext);
+    if (i == 0L) {
+      i = a(this.appContext);
     }
-    localObject = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData;
-    ((AVPreloadReport.ReportData)localObject).n = jdField_c_of_type_Long;
-    ((AVPreloadReport.ReportData)localObject).jdField_d_of_type_Boolean = paramBoolean;
+    localObject = this.f;
+    ((AVPreloadReport.ReportData)localObject).H = i;
+    ((AVPreloadReport.ReportData)localObject).I = paramBoolean;
     localObject = new AVPreloadReport();
     ((AVPreloadReport)localObject).a(this.adapter.getHttp());
-    ((AVPreloadReport)localObject).a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData);
+    ((AVPreloadReport)localObject).a(this.f);
     ((AVPreloadReport)localObject).a(this.adapter.getLogger());
     ((AVPreloadReport)localObject).b();
   }
   
   public void resetPlayer()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.reset();
     }
@@ -491,7 +486,7 @@ public class AVPreloadPlayerService
   
   public void resumePlay()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.resumePlay();
     }
@@ -499,7 +494,7 @@ public class AVPreloadPlayerService
   
   public void seekTo(int paramInt)
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.seek(paramInt);
     }
@@ -507,14 +502,14 @@ public class AVPreloadPlayerService
   
   public void setParams(PlayerParams paramPlayerParams)
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null)
     {
       localLiveSdkPlayerHelper.setParams(a(paramPlayerParams));
-      this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.setOffsetY(paramPlayerParams.offsetY);
+      this.b.setOffsetY(paramPlayerParams.offsetY);
     }
     if (this.mPreloadAdapter != null) {
-      a(this.mPreloadAdapter.a(paramPlayerParams.getPlayUrl()));
+      a(this.mPreloadAdapter.h(paramPlayerParams.getPlayUrl()));
     }
   }
   
@@ -526,7 +521,7 @@ public class AVPreloadPlayerService
       return;
     }
     super.setPlayerStatusListener(paramPlayerStatusListener);
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.setPlayerStatusListener(new AVPreloadPlayerService.3(this, paramPlayerStatusListener));
     }
@@ -534,7 +529,7 @@ public class AVPreloadPlayerService
   
   public void setPlayerSurface()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.setPlayerSurface();
     }
@@ -542,7 +537,7 @@ public class AVPreloadPlayerService
   
   public void startPlay()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.startPlay();
     }
@@ -550,7 +545,7 @@ public class AVPreloadPlayerService
   
   public void stopPlay()
   {
-    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper;
+    LiveSdkPlayerHelper localLiveSdkPlayerHelper = this.b;
     if (localLiveSdkPlayerHelper != null) {
       localLiveSdkPlayerHelper.stopPlay();
     }
@@ -560,7 +555,7 @@ public class AVPreloadPlayerService
   {
     stopPlay();
     resetPlayer();
-    this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener = paramPlayerStatusListener;
+    this.c = paramPlayerStatusListener;
     setParams(paramPlayerParams);
     setPlayerSurface();
     a(false);
@@ -569,24 +564,24 @@ public class AVPreloadPlayerService
   public void uninit()
   {
     super.uninit();
-    if (this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper != null)
+    if (this.b != null)
     {
       if (this.mPreloadAdapter != null)
       {
-        this.mPreloadAdapter.c(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getPlayUrl());
-        this.mPreloadAdapter.b(this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.getPlayUrl());
-        this.mPreloadAdapter.a(this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfaceAVPlayerPreloadAdapter$AVPreloadListener);
+        this.mPreloadAdapter.c(this.b.getPlayUrl());
+        this.mPreloadAdapter.b(this.b.getPlayUrl());
+        this.mPreloadAdapter.a(this.a);
       }
-      this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.setPlayerStatusListener(null);
-      this.jdField_a_of_type_ComTencentLivesdkLivesdkplayerLiveSdkPlayerHelper.uninit();
+      this.b.setPlayerStatusListener(null);
+      this.b.uninit();
     }
-    this.jdField_a_of_type_Int = 0;
+    this.e = 0;
     ThreadCenter.clear(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.AVPreloadPlayerService
  * JD-Core Version:    0.7.0.1
  */

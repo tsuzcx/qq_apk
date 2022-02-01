@@ -25,136 +25,136 @@ import java.util.List;
 public class TagAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 1;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private TagAdapter.OnItemClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener;
-  private String jdField_a_of_type_JavaLangString;
-  private final List<TagItem.TagInfoBase> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString = "来自微视APP";
-  private List<TagItem.TagInfoBase> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean = false;
+  private int a = 1;
+  private final Context b;
+  private final List<TagItem.TagInfoBase> c;
+  private List<TagItem.TagInfoBase> d;
+  private TagAdapter.OnItemClickListener e;
+  private String f;
+  private boolean g = false;
+  private boolean h = false;
+  private String i = "来自微视APP";
   
   public TagAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.b = paramContext;
+    this.c = new ArrayList();
+    this.d = new ArrayList();
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_JavaUtilList.clear();
+    this.d.clear();
     TextPaint localTextPaint = new TextPaint();
-    localTextPaint.setTextSize(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.0F));
-    int n = UIUtils.a(this.jdField_a_of_type_AndroidContentContext);
-    int i3 = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-    int i2 = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 23.0F);
-    boolean bool = this.jdField_b_of_type_Boolean;
-    int i1 = 0;
+    localTextPaint.setTextSize(UIUtils.a(this.b, 12.0F));
+    int i1 = UIUtils.b(this.b);
+    int i4 = UIUtils.a(this.b, 10.0F);
+    int i3 = UIUtils.a(this.b, 23.0F);
+    boolean bool = this.h;
+    int i2 = 0;
     if (bool) {
-      f1 = localTextPaint.measureText(this.jdField_b_of_type_JavaLangString);
+      f1 = localTextPaint.measureText(this.i);
     }
-    for (int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);; i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 18.0F))
+    for (int j = UIUtils.a(this.b, 18.0F);; j = UIUtils.a(this.b, 18.0F))
     {
-      f1 += i;
+      f1 += j;
       break label154;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.f)) {
         break;
       }
-      this.jdField_a_of_type_Boolean = true;
-      f1 = localTextPaint.measureText(this.jdField_a_of_type_JavaLangString);
+      this.g = true;
+      f1 = localTextPaint.measureText(this.f);
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.g = false;
     float f1 = 0.0F;
     label154:
-    int k;
+    int m;
     if (paramBoolean) {
-      k = 2;
+      m = 2;
     } else {
-      k = 6;
+      m = 6;
     }
-    int j = 0;
-    i = 1;
-    while (j < this.jdField_a_of_type_JavaUtilList.size())
+    int k = 0;
+    j = 1;
+    while (k < this.c.size())
     {
-      float f2 = localTextPaint.measureText(b((TagItem.TagInfoBase)this.jdField_a_of_type_JavaUtilList.get(j))) + UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+      float f2 = localTextPaint.measureText(b((TagItem.TagInfoBase)this.c.get(k))) + UIUtils.a(this.b, 18.0F);
       float f3 = f1 + f2;
-      float f4 = n - i3 * 2;
+      float f4 = i1 - i4 * 2;
       if (f3 > f4)
       {
-        int m = i + 1;
-        if (m > k)
+        int n = j + 1;
+        if (n > m)
         {
           if (paramBoolean)
           {
-            i = j;
-            n = m;
-            if (f1 + i2 <= f4) {
+            j = k;
+            i1 = n;
+            if (f1 + i3 <= f4) {
               break label429;
             }
-            i = j - 1;
-            n = m;
+            j = k - 1;
+            i1 = n;
             break label429;
           }
-          i = this.jdField_a_of_type_JavaUtilList.size();
+          j = this.c.size();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(HardCodeUtil.a(2131714520));
-          localStringBuilder.append(i - j);
-          localStringBuilder.append(HardCodeUtil.a(2131714523));
-          i = j;
-          n = m;
-          if (f1 + (localTextPaint.measureText(localStringBuilder.toString()) + UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 18.0F)) <= f4) {
+          localStringBuilder.append(HardCodeUtil.a(2131912029));
+          localStringBuilder.append(j - k);
+          localStringBuilder.append(HardCodeUtil.a(2131912032));
+          j = k;
+          i1 = n;
+          if (f1 + (localTextPaint.measureText(localStringBuilder.toString()) + UIUtils.a(this.b, 18.0F)) <= f4) {
             break label429;
           }
-          i = j - 1;
-          n = m;
+          j = k - 1;
+          i1 = n;
           break label429;
         }
         f1 = f2;
-        i = m;
+        j = n;
       }
       else
       {
         f1 = f3;
       }
-      j += 1;
+      k += 1;
     }
-    j = 0;
-    n = i;
-    i = j;
+    k = 0;
+    i1 = j;
+    j = k;
     label429:
-    if (n <= k)
+    if (i1 <= m)
     {
-      i = this.jdField_a_of_type_JavaUtilList.size();
-      this.jdField_a_of_type_Int = 1;
-      j = i1;
+      j = this.c.size();
+      this.a = 1;
+      k = i2;
     }
     else if (paramBoolean)
     {
-      this.jdField_a_of_type_Int = 2;
-      j = i1;
+      this.a = 2;
+      k = i2;
     }
     else
     {
-      this.jdField_a_of_type_Int = 3;
-      j = i1;
+      this.a = 3;
+      k = i2;
     }
-    while (j < i)
+    while (k < j)
     {
-      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.get(j));
-      j += 1;
+      this.d.add(this.c.get(k));
+      k += 1;
     }
   }
   
   private static String b(TagItem.TagInfoBase paramTagInfoBase)
   {
-    Object localObject = paramTagInfoBase.jdField_a_of_type_JavaLangString;
+    Object localObject = paramTagInfoBase.b;
     paramTagInfoBase = (TagItem.TagInfoBase)localObject;
-    if (StringUtil.a((String)localObject) > 20)
+    if (StringUtil.getWordCount((String)localObject) > 20)
     {
       paramTagInfoBase = new StringBuilder();
-      paramTagInfoBase.append(StringUtil.a((String)localObject, 0, 20));
+      paramTagInfoBase.append(StringUtil.substring((String)localObject, 0, 20));
       paramTagInfoBase.append("...");
       paramTagInfoBase = paramTagInfoBase.toString();
     }
@@ -169,20 +169,20 @@ public class TagAdapter
     String str = ThemeUtil.getCurrentThemeId();
     if ("2040".equals(str))
     {
-      paramTextView.setBackgroundResource(2130847071);
+      paramTextView.setBackgroundResource(2130848623);
       return;
     }
     if ("1103".equals(str))
     {
-      paramTextView.setBackgroundResource(2130847072);
+      paramTextView.setBackgroundResource(2130848624);
       return;
     }
-    paramTextView.setBackgroundResource(2130847073);
+    paramTextView.setBackgroundResource(2130848625);
   }
   
   public void a(TagAdapter.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.e = paramOnItemClickListener;
   }
   
   public void a(List<TagItem.TagInfoBase> paramList, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2)
@@ -193,29 +193,29 @@ public class TagAdapter
       return;
     }
     SLog.a("Q.qqstory.tag.TagAdapter", "qimWording:%s, isTagFold:%s, tagList:%s,", paramString1, Boolean.valueOf(paramBoolean1), paramList);
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_b_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c.clear();
+    this.d.clear();
+    this.c.addAll(paramList);
+    this.f = paramString1;
+    this.h = paramBoolean2;
+    this.i = paramString2;
     a(paramBoolean1);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.a == 1)
     {
-      if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-        return this.jdField_b_of_type_JavaUtilList.size();
+      if ((!this.h) && (!this.g)) {
+        return this.d.size();
       }
-      return this.jdField_b_of_type_JavaUtilList.size() + 1;
+      return this.d.size() + 1;
     }
-    if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-      return this.jdField_b_of_type_JavaUtilList.size() + 1;
+    if ((!this.h) && (!this.g)) {
+      return this.d.size() + 1;
     }
-    return this.jdField_b_of_type_JavaUtilList.size() + 2;
+    return this.d.size() + 2;
   }
   
   public Object getItem(int paramInt)
@@ -230,124 +230,124 @@ public class TagAdapter
   
   public int getItemViewType(int paramInt)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1)
+    int j = this.a;
+    if (j == 1)
     {
-      if (((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) && (paramInt == 0))
+      if (((this.h) || (this.g)) && (paramInt == 0))
       {
-        if (this.jdField_b_of_type_Boolean) {
+        if (this.h) {
           return 4;
         }
         return 3;
       }
       return 0;
     }
-    if (i == 2)
+    if (j == 2)
     {
-      if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+      if ((!this.h) && (!this.g))
       {
-        if ((paramInt >= 0) && (paramInt < this.jdField_b_of_type_JavaUtilList.size())) {
+        if ((paramInt >= 0) && (paramInt < this.d.size())) {
           return 0;
         }
         return 1;
       }
       if (paramInt == 0)
       {
-        if (this.jdField_b_of_type_Boolean) {
+        if (this.h) {
           return 4;
         }
         return 3;
       }
-      if ((paramInt > 0) && (paramInt <= this.jdField_b_of_type_JavaUtilList.size())) {
+      if ((paramInt > 0) && (paramInt <= this.d.size())) {
         return 0;
       }
       return 1;
     }
-    if (i == 3)
+    if (j == 3)
     {
-      if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean))
+      if ((!this.h) && (!this.g))
       {
-        if ((paramInt >= 0) && (paramInt < this.jdField_b_of_type_JavaUtilList.size())) {
+        if ((paramInt >= 0) && (paramInt < this.d.size())) {
           return 0;
         }
         return 2;
       }
       if (paramInt == 0)
       {
-        if (this.jdField_b_of_type_Boolean) {
+        if (this.h) {
           return 4;
         }
         return 3;
       }
-      if ((paramInt > 0) && (paramInt <= this.jdField_b_of_type_JavaUtilList.size())) {
+      if ((paramInt > 0) && (paramInt <= this.d.size())) {
         return 0;
       }
       return 2;
     }
-    SLog.e("Q.qqstory.tag.TagAdapter", "mode error:%s", new Object[] { Integer.valueOf(i) });
+    SLog.e("Q.qqstory.tag.TagAdapter", "mode error:%s", new Object[] { Integer.valueOf(j) });
     return 0;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = getItemViewType(paramInt);
+    int j = getItemViewType(paramInt);
     Object localObject1;
-    if (i == 1)
+    if (j == 1)
     {
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561788, null);
-      ((ImageView)((View)localObject1).findViewById(2131371487)).setOnClickListener(new TagAdapter.1(this));
-      ((View)localObject1).setTag(2131374617, Integer.valueOf(i));
+      localObject1 = LayoutInflater.from(this.b).inflate(2131628167, null);
+      ((ImageView)((View)localObject1).findViewById(2131438862)).setOnClickListener(new TagAdapter.1(this));
+      ((View)localObject1).setTag(2131442787, Integer.valueOf(j));
     }
     for (;;)
     {
       break;
       Object localObject2;
       Object localObject3;
-      if (i == 2)
+      if (j == 2)
       {
-        localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561786, null);
-        localObject2 = (TextView)((View)localObject1).findViewById(2131368188);
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        int k = this.jdField_b_of_type_JavaUtilList.size();
+        localObject1 = LayoutInflater.from(this.b).inflate(2131628165, null);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131435052);
+        int k = this.c.size();
+        int m = this.d.size();
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131714521));
-        ((StringBuilder)localObject3).append(j - k);
-        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131714522));
+        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131912030));
+        ((StringBuilder)localObject3).append(k - m);
+        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131912031));
         ((TextView)localObject2).setText(((StringBuilder)localObject3).toString());
-        ((View)localObject1).setTag(2131374617, Integer.valueOf(i));
+        ((View)localObject1).setTag(2131442787, Integer.valueOf(j));
       }
       else
       {
-        if (i == 3)
+        if (j == 3)
         {
-          localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561784, null);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131378259);
-          ((TextView)localObject2).setText(this.jdField_a_of_type_JavaLangString);
+          localObject1 = LayoutInflater.from(this.b).inflate(2131628163, null);
+          localObject2 = (TextView)((View)localObject1).findViewById(2131446778);
+          ((TextView)localObject2).setText(this.f);
           ((TextView)localObject2).setOnClickListener(new TagAdapter.2(this));
           b((TextView)localObject2);
-          ((View)localObject1).setTag(2131374617, Integer.valueOf(i));
+          ((View)localObject1).setTag(2131442787, Integer.valueOf(j));
         }
         for (;;)
         {
           break;
-          if (i == 4)
+          if (j == 4)
           {
-            localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561784, null);
-            localObject2 = (TextView)((View)localObject1).findViewById(2131378259);
-            float f = ((TextView)localObject2).getPaint().measureText(this.jdField_b_of_type_JavaLangString);
+            localObject1 = LayoutInflater.from(this.b).inflate(2131628163, null);
+            localObject2 = (TextView)((View)localObject1).findViewById(2131446778);
+            float f1 = ((TextView)localObject2).getPaint().measureText(this.i);
             localObject3 = Shader.TileMode.CLAMP;
-            localObject3 = new LinearGradient(0.0F, 0.0F, f, 0.0F, new int[] { -15289095, -8753934, -1161312 }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject3);
+            localObject3 = new LinearGradient(0.0F, 0.0F, f1, 0.0F, new int[] { -15289095, -8753934, -1161312 }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject3);
             ((TextView)localObject2).getPaint().setShader((Shader)localObject3);
-            ((TextView)localObject2).setText(this.jdField_b_of_type_JavaLangString);
+            ((TextView)localObject2).setText(this.i);
             ((TextView)localObject2).setOnClickListener(new TagAdapter.3(this));
             b((TextView)localObject2);
-            ((View)localObject1).setTag(2131374617, Integer.valueOf(i));
+            ((View)localObject1).setTag(2131442787, Integer.valueOf(j));
           }
           else
           {
             if (paramView == null)
             {
-              paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561784, null);
+              paramView = LayoutInflater.from(this.b).inflate(2131628163, null);
               localObject1 = new TagAdapter.TagViewHolder(paramView);
               paramView.setTag(localObject1);
             }
@@ -355,13 +355,13 @@ public class TagAdapter
             {
               localObject1 = (TagAdapter.TagViewHolder)paramView.getTag();
             }
-            if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-              localObject2 = this.jdField_b_of_type_JavaUtilList.get(paramInt);
+            if ((!this.h) && (!this.g)) {
+              localObject2 = this.d.get(paramInt);
             } else {
-              localObject2 = this.jdField_b_of_type_JavaUtilList.get(paramInt - 1);
+              localObject2 = this.d.get(paramInt - 1);
             }
-            ((TagAdapter.TagViewHolder)localObject1).a((TagItem.TagInfoBase)localObject2, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener);
-            paramView.setTag(2131374617, Integer.valueOf(i));
+            ((TagAdapter.TagViewHolder)localObject1).a((TagItem.TagInfoBase)localObject2, this.e);
+            paramView.setTag(2131442787, Integer.valueOf(j));
             localObject1 = paramView;
           }
         }
@@ -373,23 +373,23 @@ public class TagAdapter
   
   public int getViewTypeCount()
   {
-    int j = this.jdField_a_of_type_Int;
-    int i = 2;
-    if (j == 1)
+    int k = this.a;
+    int j = 2;
+    if (k == 1)
     {
-      if (!this.jdField_b_of_type_Boolean)
+      if (!this.h)
       {
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.g) {
           return 2;
         }
-        i = 1;
+        j = 1;
       }
-      return i;
+      return j;
     }
-    if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {
-      i = 3;
+    if ((this.h) || (this.g)) {
+      j = 3;
     }
-    return i;
+    return j;
   }
 }
 

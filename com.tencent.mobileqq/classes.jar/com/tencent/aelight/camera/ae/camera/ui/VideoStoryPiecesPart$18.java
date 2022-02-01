@@ -1,40 +1,69 @@
 package com.tencent.aelight.camera.ae.camera.ui;
 
-import android.animation.Animator;
-import androidx.lifecycle.MutableLiveData;
-import com.tencent.aelight.camera.ae.camera.ui.panel.AEMaterialPanel;
-import com.tencent.aelight.camera.ae.part.AEVideoStoryStateViewModel;
-import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.aelight.camera.ae.mode.AECaptureMode;
+import com.tencent.biz.qqstory.view.widget.bubble.BubbleTextView;
+import java.util.ArrayList;
 
 class VideoStoryPiecesPart$18
-  extends D8SafeAnimatorListener
+  implements Runnable
 {
-  VideoStoryPiecesPart$18(VideoStoryPiecesPart paramVideoStoryPiecesPart) {}
+  VideoStoryPiecesPart$18(VideoStoryPiecesPart paramVideoStoryPiecesPart, String paramString1, String paramString2) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoStoryPiecesPart", 2, "ptv panel down");
-    }
-    if (VideoStoryPiecesPart.a(this.a) != null)
+    VideoStoryPiecesPart.F(this.this$0);
+    VideoStoryPiecesPart.aa(this.this$0);
+    Object localObject2 = (RelativeLayout)VideoStoryPiecesPart.ab(this.this$0).findViewById(2063991385);
+    if (localObject2 != null)
     {
-      VideoStoryPiecesPart.a(this.a).setAlpha(1.0F);
-      VideoStoryPiecesPart.a(this.a).setVisibility(4);
-      VideoStoryPiecesPart.a(this.a).b().postValue(Boolean.valueOf(false));
+      Object localObject1 = VideoStoryPiecesPart.ac(this.this$0).getLayoutParams();
+      if ((localObject1 instanceof RelativeLayout.LayoutParams))
+      {
+        int i;
+        if (AECaptureMode.NORMAL.name.equals(this.a)) {
+          i = AECaptureMode.NORMAL.textId;
+        } else if (AECaptureMode.PLAY.name.equals(this.a)) {
+          i = AECaptureMode.PLAY.textId;
+        } else if (AECaptureMode.GIF.name.equals(this.a)) {
+          i = AECaptureMode.GIF.textId;
+        } else {
+          i = -1;
+        }
+        if (i == -1) {
+          return;
+        }
+        ArrayList localArrayList = new ArrayList();
+        ((RelativeLayout)localObject2).findViewsWithText(localArrayList, VideoStoryPiecesPart.ad(this.this$0).getText(i), 1);
+        if (localArrayList.size() == 1)
+        {
+          localObject2 = new Rect();
+          ((View)localArrayList.get(0)).getGlobalVisibleRect((Rect)localObject2);
+          i = VideoStoryPiecesPart.ac(this.this$0).getMeasuredWidth();
+          ((RelativeLayout.LayoutParams)localObject1).leftMargin = ((((Rect)localObject2).left + ((Rect)localObject2).right) / 2 - i / 2);
+          VideoStoryPiecesPart.ac(this.this$0).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          VideoStoryPiecesPart.ac(this.this$0).setText(this.b);
+          VideoStoryPiecesPart.ac(this.this$0).setVisibility(0);
+          localObject1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -15.0F);
+          ((TranslateAnimation)localObject1).setDuration(300L);
+          ((TranslateAnimation)localObject1).setRepeatCount(-1);
+          ((TranslateAnimation)localObject1).setRepeatMode(2);
+          VideoStoryPiecesPart.ac(this.this$0).startAnimation((Animation)localObject1);
+        }
+      }
     }
-    VideoStoryPiecesPart.f(this.a);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.VideoStoryPiecesPart.18
  * JD-Core Version:    0.7.0.1
  */

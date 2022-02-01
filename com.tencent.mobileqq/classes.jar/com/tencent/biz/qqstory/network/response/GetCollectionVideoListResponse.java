@@ -19,33 +19,31 @@ public class GetCollectionVideoListResponse
   extends BaseResponse
 {
   public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public int b;
-  public List<List<VideoUrlEntry>> b;
-  public String c;
+  public String b;
+  public boolean e;
+  public int f;
+  public List<StoryVideoItem> g = new ArrayList();
+  public List<List<VideoUrlEntry>> h = new ArrayList();
   
   public GetCollectionVideoListResponse(String paramString, qqstory_service.RspGetCollectionVideoList paramRspGetCollectionVideoList)
   {
     super(paramRspGetCollectionVideoList.result);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     int i = paramRspGetCollectionVideoList.is_end.get();
     boolean bool = true;
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.jdField_b_of_type_Int = paramRspGetCollectionVideoList.interact_status.get();
-    this.c = paramRspGetCollectionVideoList.next_cookie.get().toStringUtf8();
+    this.e = bool;
+    this.f = paramRspGetCollectionVideoList.interact_status.get();
+    this.b = paramRspGetCollectionVideoList.next_cookie.get().toStringUtf8();
     paramString = paramRspGetCollectionVideoList.full_video_info_list.get().iterator();
     while (paramString.hasNext())
     {
       Object localObject1 = (qqstory_struct.StoryVideoFullInfo)paramString.next();
       paramRspGetCollectionVideoList = new StoryVideoItem();
       paramRspGetCollectionVideoList.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject1);
-      this.jdField_a_of_type_JavaUtilList.add(paramRspGetCollectionVideoList);
+      this.g.add(paramRspGetCollectionVideoList);
       Object localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject1).compressed_video.get();
       if (localObject2 != null)
       {
@@ -60,7 +58,7 @@ public class GetCollectionVideoListResponse
           localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
           ((List)localObject1).add(localVideoUrlEntry);
         }
-        this.jdField_b_of_type_JavaUtilList.add(localObject1);
+        this.h.add(localObject1);
       }
     }
   }
@@ -69,24 +67,24 @@ public class GetCollectionVideoListResponse
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetCollectionVideoListResponse{unionId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", nextCookie='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", interactStatus=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", videoItems=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetCollectionVideoListResponse
  * JD-Core Version:    0.7.0.1
  */

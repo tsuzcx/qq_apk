@@ -6,14 +6,14 @@ public class CodecTestInfo$TestInfos$Samples
 {
   @Alias(a="w")
   public int a;
-  @Alias(a="exp")
-  public String a;
   @Alias(a="h")
   public int b;
-  @Alias(a="url")
-  public String b;
-  @Alias(a="md5")
+  @Alias(a="exp")
   public String c;
+  @Alias(a="url")
+  public String d;
+  @Alias(a="md5")
+  public String e;
 }
 
 

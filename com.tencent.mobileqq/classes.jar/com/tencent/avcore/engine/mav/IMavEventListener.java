@@ -61,6 +61,8 @@ public abstract interface IMavEventListener
   
   public abstract void onHowling();
   
+  public abstract void onInitAIDenoiseStatus();
+  
   public abstract void onKickOutFail(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString);
   
   public abstract void onKickOutSuc(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString);

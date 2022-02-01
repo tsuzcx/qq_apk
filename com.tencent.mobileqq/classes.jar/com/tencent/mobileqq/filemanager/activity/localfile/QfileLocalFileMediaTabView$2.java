@@ -13,11 +13,11 @@ class QfileLocalFileMediaTabView$2
   
   public void run()
   {
-    Object localObject = QQFileManagerUtil.a(this.a.a());
-    if (!this.this$0.c.containsKey(localObject)) {
-      this.this$0.c.put(localObject, new ArrayList());
+    Object localObject = QQFileManagerUtil.b(this.a.l());
+    if (!this.this$0.l.containsKey(localObject)) {
+      this.this$0.l.put(localObject, new ArrayList());
     }
-    localObject = (List)this.this$0.c.get(localObject);
+    localObject = (List)this.this$0.l.get(localObject);
     if (((List)localObject).contains(this.a) == true) {
       return;
     }
@@ -27,7 +27,7 @@ class QfileLocalFileMediaTabView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView.2
  * JD-Core Version:    0.7.0.1
  */

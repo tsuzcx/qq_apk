@@ -10,12 +10,12 @@ class MusicFilePresenter$6
   
   public void run()
   {
-    this.this$0.a.runOnUiThread(new MusicFilePresenter.6.1(this));
+    this.this$0.e.runOnUiThread(new MusicFilePresenter.6.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.MusicFilePresenter.6
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ class RIJDislikeManager$1
   
   public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    if (paramInt == this.jdField_a_of_type_Int)
+    if (paramInt == this.a)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().g();
-      paramView = (Animation)this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewholderViewHolder.g.getTag(2131369613);
+      this.b.a().v().P();
+      paramView = (Animation)this.c.Q.getTag(2131436721);
       paramView.setAnimationListener(new RIJDislikeManager.1.1(this, paramArrayList, paramObject));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewholderViewHolder.g.post(new RIJDislikeManager.1.2(this, paramView));
+      this.c.Q.post(new RIJDislikeManager.1.2(this, paramView));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.RIJDislikeManager.1
  * JD-Core Version:    0.7.0.1
  */

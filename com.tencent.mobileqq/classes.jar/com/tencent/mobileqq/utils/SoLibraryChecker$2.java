@@ -19,7 +19,7 @@ class SoLibraryChecker$2
       localStringBuilder.append("transToLocalUrl loadMode:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", time:");
-      localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      localStringBuilder.append(System.currentTimeMillis() - this.a);
       QLog.i("SoLibraryLoader", 2, localStringBuilder.toString());
     }
     if (QLog.isDevelopLevel())
@@ -30,10 +30,10 @@ class SoLibraryChecker$2
       QLog.i("SoLibraryLoader", 4, localStringBuilder.toString());
     }
     paramString = new StringBuilder();
-    paramString.append(OfflineEnvHelper.a(SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker)));
-    paramString.append(SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker));
+    paramString.append(OfflineEnvHelper.b(SoLibraryChecker.a(this.b)));
+    paramString.append(SoLibraryChecker.a(this.b));
     paramString.append(File.separator);
-    paramString.append(SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker));
+    paramString.append(SoLibraryChecker.d(this.b));
     paramString = paramString.toString();
     if (!new File(paramString).exists())
     {
@@ -47,15 +47,15 @@ class SoLibraryChecker$2
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker).getFilesDir().getAbsolutePath());
+    localStringBuilder.append(SoLibraryChecker.c(this.b).getFilesDir().getAbsolutePath());
     localStringBuilder.append(File.separator);
-    localStringBuilder.append(SoLibraryChecker.b(this.jdField_a_of_type_ComTencentMobileqqUtilsSoLibraryChecker));
+    localStringBuilder.append(SoLibraryChecker.d(this.b));
     FileUtils.copyFile(paramString, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoLibraryChecker.2
  * JD-Core Version:    0.7.0.1
  */

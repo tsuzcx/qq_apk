@@ -50,24 +50,19 @@ public class QZoneNotifyServlet
   extends MSFServlet
   implements WebEventListener
 {
-  private static LbsManagerServiceOnLocationChangeListener jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener;
-  private static SosoInterfaceOnLocationListener jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener;
-  private static LbsDataV2.GpsInfo jdField_a_of_type_CooperationQzoneLbsDataV2$GpsInfo;
-  public static boolean a = false;
-  public static long c;
-  public static long d;
-  private static long e;
+  public static long c = 0L;
+  public static long d = 0L;
+  public static boolean e = false;
   private static long f;
-  private static long g = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLocateInterval", 60000L);
-  public long a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new QZoneNotifyServlet.5(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private static SosoInterfaceOnLocationListener h;
+  private static LbsManagerServiceOnLocationChangeListener i;
+  private static LbsDataV2.GpsInfo j;
+  private static long k;
+  private static long l = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLocateInterval", 60000L);
+  public long a = 180000L;
   public long b = 5000L;
-  
-  public QZoneNotifyServlet()
-  {
-    this.jdField_a_of_type_Long = 180000L;
-  }
+  private MqqHandler g;
+  private Runnable m = new QZoneNotifyServlet.5(this);
   
   public static LbsDataV2.GpsInfo a(String paramString)
   {
@@ -86,76 +81,53 @@ public class QZoneNotifyServlet
     return null;
   }
   
-  private MqqHandler a()
-  {
-    if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-      try
-      {
-        if (this.jdField_a_of_type_MqqOsMqqHandler == null)
-        {
-          HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("QZONE_UNDEALCOUNT", 0);
-          localHandlerThread.start();
-          this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-        }
-      }
-      finally {}
-    }
-    return this.jdField_a_of_type_MqqOsMqqHandler;
-  }
-  
-  private void a()
-  {
-    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Long);
-  }
-  
-  public static void a(String paramString)
-  {
-    long l = System.currentTimeMillis();
-    if (l - e < g)
-    {
-      paramString = new StringBuilder();
-      paramString.append("[QZ_LBS_MODULE] mIsGettingLocation = , (now - mLastGetLocationTime) ) = ");
-      paramString.append((l - e) / 1000L);
-      paramString.append(", so return");
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", paramString.toString());
-      return;
-    }
-    e = l;
-    if (jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener != null) {
-      QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneNotifyServlet.4());
-    }
-  }
-  
   private static void b(int paramInt)
   {
     if (paramInt == 2)
     {
-      g *= 10L;
+      l *= 10L;
       return;
     }
     if (paramInt == 0)
     {
-      g = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLocateInterval", 60000L);
+      l = QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneLocateInterval", 60000L);
       return;
     }
-    g *= 2L;
+    l *= 2L;
   }
   
-  private static void b(String paramString)
+  public static void b(String paramString)
   {
-    if ((jdField_a_of_type_Boolean) && (jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener == null))
+    long l1 = System.currentTimeMillis();
+    if (l1 - f < l)
     {
-      jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener = new QZoneNotifyServlet.2(paramString, false);
+      paramString = new StringBuilder();
+      paramString.append("[QZ_LBS_MODULE] mIsGettingLocation = , (now - mLastGetLocationTime) ) = ");
+      paramString.append((l1 - f) / 1000L);
+      paramString.append(", so return");
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", paramString.toString());
+      return;
+    }
+    f = l1;
+    if (i != null) {
+      QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new QZoneNotifyServlet.4());
+    }
+  }
+  
+  private static void c(String paramString)
+  {
+    if ((e) && (i == null))
+    {
+      i = new QZoneNotifyServlet.2(paramString, false);
       try
       {
-        f = System.currentTimeMillis();
+        k = System.currentTimeMillis();
         if ((Build.VERSION.SDK_INT >= 23) && (BaseApplication.getContext() != null) && (BaseApplication.getContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0))
         {
           QZLog.w("QZLog", "[QZ_LBS_MODULE]定位有版本或权限限制");
           return;
         }
-        ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
+        ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(i);
         return;
       }
       catch (Exception paramString)
@@ -168,6 +140,29 @@ public class QZoneNotifyServlet
     }
   }
   
+  private void e()
+  {
+    f().removeCallbacks(this.m);
+    f().postDelayed(this.m, this.a);
+  }
+  
+  private MqqHandler f()
+  {
+    if (this.g == null) {
+      try
+      {
+        if (this.g == null)
+        {
+          HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("QZONE_UNDEALCOUNT", 0);
+          localHandlerThread.start();
+          this.g = new MqqHandler(localHandlerThread.getLooper());
+        }
+      }
+      finally {}
+    }
+    return this.g;
+  }
+  
   protected void onCreate()
   {
     super.onCreate();
@@ -177,16 +172,16 @@ public class QZoneNotifyServlet
   protected void onDestroy()
   {
     super.onDestroy();
-    if (jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener != null) {
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener);
+    if (h != null) {
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).removeOnLocationListener(h);
     }
-    jdField_a_of_type_ComTencentMobileqqSosoLocationSosoInterfaceOnLocationListener = null;
-    if (jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener != null) {
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
+    h = null;
+    if (i != null) {
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(i);
     }
-    jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener = null;
+    i = null;
     RemoteHandleManager.getInstance().removeWebEventListener(this);
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    if (this.g != null)
     {
       if (QLog.isDevelopLevel())
       {
@@ -195,10 +190,10 @@ public class QZoneNotifyServlet
         localStringBuilder.append(System.currentTimeMillis());
         QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 4, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_MqqOsMqqHandler.getLooper().quit();
+      this.g.removeCallbacks(this.m);
+      this.g.getLooper().quit();
     }
-    this.jdField_a_of_type_MqqOsMqqHandler = null;
+    this.g = null;
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
@@ -248,21 +243,21 @@ public class QZoneNotifyServlet
       }
       localObject2 = (QQAppInterface)localObject2;
       if (!((QQAppInterface)localObject2).isBackgroundPause) {
-        b("qzone_little_video_enter");
+        c("qzone_little_video_enter");
       }
-      int k = paramIntent.getIntExtra("scene", 102);
-      int m = paramIntent.getIntExtra("qzone_send_by_time", 4);
+      int i2 = paramIntent.getIntExtra("scene", 102);
+      int i3 = paramIntent.getIntExtra("qzone_send_by_time", 4);
       if (QLog.isColorLevel())
       {
         paramIntent = new StringBuilder();
         paramIntent.append("QzoneNotifyServlet onSend byTimeType:");
-        paramIntent.append(m);
+        paramIntent.append(i3);
         paramIntent.append(",isBackground_Pause:");
         paramIntent.append(((QQAppInterface)localObject2).isBackgroundPause);
         QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 2, paramIntent.toString());
       }
       long l1;
-      if (m == 2)
+      if (i3 == 2)
       {
         l1 = System.currentTimeMillis();
         if (QLog.isColorLevel())
@@ -283,18 +278,18 @@ public class QZoneNotifyServlet
           if (QLog.isColorLevel()) {
             QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 2, "onSend.interval time is not enough,schedule task.byTimeType:2");
           }
-          a();
+          e();
           return;
         }
-        i = 2;
+        n = 2;
       }
       else
       {
-        i = 3;
+        n = 3;
       }
       paramIntent = "qzone_lastgetfeedtime";
       long l2;
-      if (((m == 1) || (m == 4) || (m == 5) || (m == 6) || (m == 7) || (m == 8)) && (((QQAppInterface)localObject2).isBackgroundPause))
+      if (((i3 == 1) || (i3 == 4) || (i3 == 5) || (i3 == 6) || (i3 == 7) || (i3 == 8)) && (((QQAppInterface)localObject2).isBackgroundPause))
       {
         l2 = c;
         l1 = l2;
@@ -311,37 +306,37 @@ public class QZoneNotifyServlet
             paramIntent.append(" not send request,schedule task");
             QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 2, paramIntent.toString());
           }
-          a();
+          e();
           return;
         }
       }
-      if (m == 3) {
-        i = 4;
+      if (i3 == 3) {
+        n = 4;
       }
-      if (m == 1) {
-        i = 1;
+      if (i3 == 1) {
+        n = 1;
       }
-      if (m == 4) {
-        i = 3;
+      if (i3 == 4) {
+        n = 3;
       }
-      if (m == 2) {
-        i = 2;
+      if (i3 == 2) {
+        n = 2;
       }
-      if (m == 5) {
-        i = 5;
+      if (i3 == 5) {
+        n = 5;
       }
-      if (m == 6) {
-        i = 6;
+      if (i3 == 6) {
+        n = 6;
       }
-      if (m == 7) {
-        i = 7;
+      if (i3 == 7) {
+        n = 7;
       }
-      int j = 8;
-      if (m != 8) {
-        j = i;
+      int i1 = 8;
+      if (i3 != 8) {
+        i1 = n;
       }
-      int i = ((QQAppInterface)localObject2).getApp().getResources().getDisplayMetrics().widthPixels;
-      m = ((QQAppInterface)localObject2).getApp().getResources().getDisplayMetrics().heightPixels;
+      int n = ((QQAppInterface)localObject2).getApp().getResources().getDisplayMetrics().widthPixels;
+      i3 = ((QQAppInterface)localObject2).getApp().getResources().getDisplayMetrics().heightPixels;
       ConcurrentHashMap localConcurrentHashMap1 = new ConcurrentHashMap();
       ConcurrentHashMap localConcurrentHashMap2 = new ConcurrentHashMap();
       Object localObject5 = (QZoneManagerImp)((QQAppInterface)localObject2).getManager(QQManagerFactory.QZONE_MANAGER);
@@ -351,13 +346,13 @@ public class QZoneNotifyServlet
         if (localObject3 != null)
         {
           localObject3 = QZoneUnreadServletLogic.a((Map)localObject3);
-          n = ((List)localObject3).size();
-          i1 = 0;
+          i4 = ((List)localObject3).size();
+          i5 = 0;
           Object localObject6;
-          while (i1 < n)
+          while (i5 < i4)
           {
-            i2 = ((Integer)((List)localObject3).get(i1)).intValue();
-            localQZoneCountInfo = (QZoneCountInfo)((QZoneManagerImp)localObject5).a.get(Integer.valueOf(i2));
+            i6 = ((Integer)((List)localObject3).get(i5)).intValue();
+            localQZoneCountInfo = (QZoneCountInfo)((QZoneManagerImp)localObject5).a.get(Integer.valueOf(i6));
             if (localQZoneCountInfo != null)
             {
               localObject6 = new single_count(localQZoneCountInfo.uCount, (byte)localQZoneCountInfo.iControl);
@@ -369,25 +364,25 @@ public class QZoneNotifyServlet
               }
               localArrayList.add(localObject4);
               localObject4 = localQZoneCountInfo.trace_info;
-              i3 = localQZoneCountInfo.countId;
+              i7 = localQZoneCountInfo.countId;
               String str1 = localQZoneCountInfo.iconUrl;
               String str2 = localQZoneCountInfo.strShowMsg;
               String str3 = localQZoneCountInfo.reportValue;
-              localConcurrentHashMap1.put(Integer.valueOf(i2), new count_info((single_count)localObject6, localArrayList, (String)localObject4, i3, str1, str2, str3, localQZoneCountInfo.cTime, localQZoneCountInfo.iShowLevel, localQZoneCountInfo.actPageAttach));
+              localConcurrentHashMap1.put(Integer.valueOf(i6), new count_info((single_count)localObject6, localArrayList, (String)localObject4, i7, str1, str2, str3, localQZoneCountInfo.cTime, localQZoneCountInfo.iShowLevel, localQZoneCountInfo.actPageAttach));
             }
-            i1 += 1;
+            i5 += 1;
           }
-          n = i;
-          int i2 = k;
+          i4 = n;
+          int i6 = i2;
           localObject3 = paramIntent;
           QZoneCountInfo localQZoneCountInfo = (QZoneCountInfo)((QZoneManagerImp)localObject5).a.get(Integer.valueOf(56));
           localObject4 = localObject3;
           paramIntent = (Intent)localObject1;
-          i3 = m;
-          i1 = i2;
+          i7 = i3;
+          i5 = i6;
           localObject5 = localObject2;
-          k = n;
-          i = j;
+          i2 = i4;
+          n = i1;
           if (localQZoneCountInfo == null) {
             break label1278;
           }
@@ -420,25 +415,25 @@ public class QZoneNotifyServlet
           localConcurrentHashMap1.put(Integer.valueOf(56), new count_info(paramIntent, (ArrayList)localObject4, localQZoneCountInfo.trace_info, localQZoneCountInfo.countId, localQZoneCountInfo.iconUrl, localQZoneCountInfo.strShowMsg, localQZoneCountInfo.reportValue, localQZoneCountInfo.cTime, localQZoneCountInfo.iShowLevel, localQZoneCountInfo.actPageAttach));
           localObject4 = localObject3;
           paramIntent = (Intent)localObject1;
-          i3 = m;
-          i1 = i2;
+          i7 = i3;
+          i5 = i6;
           localObject5 = localObject2;
-          k = n;
-          i = j;
+          i2 = i4;
+          n = i1;
           break label1278;
         }
       }
       paramIntent = "Q.lebatab.UndealCount.QZoneNotifyServlet";
-      int n = i;
-      int i1 = k;
+      int i4 = n;
+      int i5 = i2;
       Object localObject4 = "qzone_lastgetfeedtime";
-      i = j;
-      k = n;
+      n = i1;
+      i2 = i4;
       localObject5 = localObject2;
-      int i3 = m;
+      int i7 = i3;
       label1278:
       localObject1 = LocalMultiProcConfig.getString4Uin("qzone_passive_undeal_readtime", "", ((QQAppInterface)localObject5).getLongAccountUin());
-      localObject1 = QZoneUnreadServletLogic.a(Long.valueOf(((QQAppInterface)localObject5).getCurrentAccountUin()).longValue(), null, k, i3, i, i1, localConcurrentHashMap1, (String)localObject1, localConcurrentHashMap2);
+      localObject1 = QZoneUnreadServletLogic.a(Long.valueOf(((QQAppInterface)localObject5).getCurrentAccountUin()).longValue(), null, i2, i7, n, i5, localConcurrentHashMap1, (String)localObject1, localConcurrentHashMap2);
       if (localObject1 == null)
       {
         paramIntent = new byte[4];
@@ -454,7 +449,7 @@ public class QZoneNotifyServlet
           ((StringBuilder)localObject2).append("SQQzoneSvc.");
           ((StringBuilder)localObject2).append("getUndealCount");
           ((StringBuilder)localObject2).append(" iVisitQZoneType: ");
-          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(n);
           QLog.d("NavigatorBar.Q.lebatab.UndealCount.QZoneNotifyServlet", 4, ((StringBuilder)localObject2).toString());
         }
         localObject2 = new StringBuilder();
@@ -472,7 +467,7 @@ public class QZoneNotifyServlet
           QLog.d(paramIntent, 2, paramPacket.toString());
         }
       }
-      a();
+      e();
     }
   }
   
@@ -484,7 +479,7 @@ public class QZoneNotifyServlet
         return;
       }
       paramBundle = paramBundle.getBundle("data");
-      int i = paramBundle.getInt("param.preget_seqid");
+      int n = paramBundle.getInt("param.preget_seqid");
       paramString = getAppRuntime();
       if (paramString == null) {
         return;
@@ -497,7 +492,7 @@ public class QZoneNotifyServlet
       localStringBuilder.append("onWebEvent undealcount");
       localStringBuilder.append(paramBundle);
       QLog.d("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, localStringBuilder.toString());
-      QZoneUnreadServletLogic.a((QQAppInterface)paramString, i, paramBundle);
+      QZoneUnreadServletLogic.a((QQAppInterface)paramString, n, paramBundle);
     }
   }
   
@@ -505,10 +500,10 @@ public class QZoneNotifyServlet
   {
     if (paramIntent.getAction().equals("Qzone_Refresh_UI"))
     {
-      long l = paramIntent.getLongExtra("notify_type", -1L);
+      long l1 = paramIntent.getLongExtra("notify_type", -1L);
       paramIntent = new Bundle();
       paramIntent.putBoolean("new", true);
-      paramIntent.putLong("notify_type", l);
+      paramIntent.putLong("notify_type", l1);
       notifyObserver(null, 1000, true, paramIntent, QZoneObserver.class);
       if (QLog.isColorLevel()) {
         QLog.d("Q.lebanew", 2, "qzone redtypeinfo:call notify observer");
@@ -520,7 +515,7 @@ public class QZoneNotifyServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet
  * JD-Core Version:    0.7.0.1
  */

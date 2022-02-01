@@ -304,7 +304,20 @@ public class d
   
   private boolean c()
   {
-    return "com.tencent.mobileqq".equals(getContext().getApplicationContext().getPackageName());
+    String[] arrayOfString = new String[2];
+    arrayOfString[0] = "com.tencent.mobileqq";
+    arrayOfString[1] = "com.tencent.tim";
+    String str = getContext().getApplicationContext().getPackageName();
+    int i2 = arrayOfString.length;
+    int i1 = 0;
+    while (i1 < i2)
+    {
+      if (arrayOfString[i1].equals(str)) {
+        return true;
+      }
+      i1 += 1;
+    }
+    return false;
   }
   
   private void d()
@@ -482,7 +495,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.d
  * JD-Core Version:    0.7.0.1
  */

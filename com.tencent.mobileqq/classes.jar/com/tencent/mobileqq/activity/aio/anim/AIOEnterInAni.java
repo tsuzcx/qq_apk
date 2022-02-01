@@ -6,8 +6,8 @@ import android.view.animation.TranslateAnimation;
 public class AIOEnterInAni
   extends TranslateAnimation
 {
-  public static volatile boolean a;
-  public int a;
+  public static volatile boolean b;
+  public int a = 0;
   
   public AIOEnterInAni()
   {
@@ -17,18 +17,17 @@ public class AIOEnterInAni
   public AIOEnterInAni(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
   {
     super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
+    b = false;
   }
   
   public boolean getTransformation(long paramLong, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_Int += 1;
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 2))
+    this.a += 1;
+    if ((!b) && (this.a <= 2))
     {
       setStartTime(paramLong);
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Boolean = true;
+      if (this.a == 2) {
+        b = true;
       }
     }
     return super.getTransformation(paramLong, paramTransformation);
@@ -36,14 +35,14 @@ public class AIOEnterInAni
   
   public void reset()
   {
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
+    this.a = 0;
+    b = false;
     super.reset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOEnterInAni
  * JD-Core Version:    0.7.0.1
  */

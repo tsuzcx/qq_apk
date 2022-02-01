@@ -16,12 +16,12 @@ class NewTroopContactView$1
     if (paramMessage.what != 2) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+    this.a.h.scrollTo(this.a.i.getLayoutParams().width, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.NewTroopContactView.1
  * JD-Core Version:    0.7.0.1
  */

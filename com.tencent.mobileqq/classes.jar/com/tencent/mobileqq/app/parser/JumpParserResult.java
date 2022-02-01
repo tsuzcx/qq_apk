@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class JumpParserResult
 {
-  private static String jdField_a_of_type_JavaLangString = "JumpParserResult";
-  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap;
+  private static String a = "JumpParserResult";
   private String b;
   private String c;
   private String d;
   private String e;
   private String f;
+  private HashMap<String, String> g;
   
   public JumpParserResult(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
@@ -35,17 +35,12 @@ public class JumpParserResult
     this.d = paramString2;
     this.e = paramString3;
     this.f = paramString5;
-    this.a = new HashMap();
+    this.g = new HashMap();
   }
   
   public String a()
   {
     return this.b;
-  }
-  
-  public HashMap<String, String> a()
-  {
-    return this.a;
   }
   
   public void a(String paramString)
@@ -59,7 +54,7 @@ public class JumpParserResult
   
   public void a(String paramString1, String paramString2)
   {
-    HashMap localHashMap = this.a;
+    HashMap localHashMap = this.g;
     if (localHashMap == null) {
       return;
     }
@@ -94,14 +89,19 @@ public class JumpParserResult
     this.d = str;
   }
   
-  public String d()
+  public HashMap<String, String> d()
+  {
+    return this.g;
+  }
+  
+  public String e()
   {
     return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpParserResult
  * JD-Core Version:    0.7.0.1
  */

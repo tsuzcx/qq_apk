@@ -15,12 +15,12 @@ import java.util.List;
 public class BaseAdapter
   extends RecyclerView.Adapter<BaseViewHolder<? extends IBaseData>>
 {
-  private IBaseDataSource jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource = null;
-  private BaseViewHolder.Factory jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$Factory;
-  private ViewHolderContext jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext;
-  private HashMap<Integer, BaseAdapter.BaseViewConfig> jdField_a_of_type_JavaUtilHashMap;
-  private List<BaseViewHolder> jdField_a_of_type_JavaUtilList = new ArrayList();
   private boolean b = false;
+  private BaseViewHolder.Factory c;
+  private ViewHolderContext d;
+  private HashMap<Integer, BaseAdapter.BaseViewConfig> e;
+  private IBaseDataSource f = null;
+  private List<BaseViewHolder> g = new ArrayList();
   
   public BaseAdapter()
   {
@@ -35,9 +35,9 @@ public class BaseAdapter
   public BaseAdapter(ViewHolderContext paramViewHolderContext, boolean paramBoolean)
   {
     this.b = paramBoolean;
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext = paramViewHolderContext;
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$Factory = new BaseViewHolder.Factory();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.d = paramViewHolderContext;
+    this.c = new BaseViewHolder.Factory();
+    this.e = new HashMap();
   }
   
   public BaseAdapter(boolean paramBoolean)
@@ -48,25 +48,25 @@ public class BaseAdapter
   @NonNull
   public BaseViewHolder<? extends IBaseData> a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    BaseAdapter.BaseViewConfig localBaseViewConfig = (BaseAdapter.BaseViewConfig)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    BaseAdapter.BaseViewConfig localBaseViewConfig = (BaseAdapter.BaseViewConfig)this.e.get(Integer.valueOf(paramInt));
     Object localObject;
     if (this.b)
     {
-      localObject = localBaseViewConfig.jdField_a_of_type_JavaLangClass;
-      if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
+      localObject = localBaseViewConfig.c;
+      if ((!a) && (localObject == null)) {
         throw new AssertionError("ViewHolder未被注册");
       }
-      paramViewGroup = this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$Factory.a(localBaseViewConfig.jdField_a_of_type_Int, paramViewGroup, (Class)localObject);
+      paramViewGroup = this.c.a(localBaseViewConfig.a, paramViewGroup, (Class)localObject);
     }
     else
     {
-      localObject = localBaseViewConfig.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$ViewHolderFactory;
-      if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
+      localObject = localBaseViewConfig.b;
+      if ((!a) && (localObject == null)) {
         throw new AssertionError("ViewHolderFactory未注册");
       }
-      localObject = ((BaseViewHolder.ViewHolderFactory)localObject).a(this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext, localBaseViewConfig.jdField_a_of_type_Int, paramViewGroup);
+      localObject = ((BaseViewHolder.ViewHolderFactory)localObject).a(this.d, localBaseViewConfig.a, paramViewGroup);
       paramViewGroup = (ViewGroup)localObject;
-      if (!jdField_a_of_type_Boolean) {
+      if (!a) {
         if (localObject != null) {
           paramViewGroup = (ViewGroup)localObject;
         } else {
@@ -74,45 +74,45 @@ public class BaseAdapter
         }
       }
     }
-    paramViewGroup.a(localBaseViewConfig.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener);
-    this.jdField_a_of_type_JavaUtilList.add(paramViewGroup);
+    paramViewGroup.a(localBaseViewConfig.d);
+    this.g.add(paramViewGroup);
     return paramViewGroup;
   }
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.g.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((BaseViewHolder)((Iterator)localObject).next()).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext;
+    localObject = this.d;
     if (localObject != null) {
-      ((ViewHolderContext)localObject).a();
+      ((ViewHolderContext)localObject).b();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.g.clear();
   }
   
   public void a(@NonNull int paramInt, @NonNull BaseAdapter.BaseViewConfig paramBaseViewConfig)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramBaseViewConfig);
+    this.e.put(Integer.valueOf(paramInt), paramBaseViewConfig);
   }
   
   public void a(IBaseDataSource paramIBaseDataSource)
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource = paramIBaseDataSource;
+    this.f = paramIBaseDataSource;
   }
   
   public void a(@NonNull BaseViewHolder<? extends IBaseData> paramBaseViewHolder, int paramInt)
   {
-    IBaseDataSource localIBaseDataSource = this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource;
+    IBaseDataSource localIBaseDataSource = this.f;
     if (localIBaseDataSource != null) {
-      paramBaseViewHolder.b(this.jdField_a_of_type_ComTencentAvgameGamelobbyRvViewHolderContext, localIBaseDataSource.b(paramInt), paramInt);
+      paramBaseViewHolder.b(this.d, localIBaseDataSource.d(paramInt), paramInt);
     }
   }
   
   public int getItemCount()
   {
-    IBaseDataSource localIBaseDataSource = this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource;
+    IBaseDataSource localIBaseDataSource = this.f;
     if (localIBaseDataSource != null) {
       return localIBaseDataSource.a();
     }
@@ -121,10 +121,10 @@ public class BaseAdapter
   
   public int getItemViewType(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseDataSource;
+    Object localObject = this.f;
     if (localObject != null)
     {
-      localObject = Integer.valueOf(((IBaseDataSource)localObject).a(paramInt));
+      localObject = Integer.valueOf(((IBaseDataSource)localObject).c(paramInt));
       if (localObject != null) {
         return ((Integer)localObject).intValue();
       }

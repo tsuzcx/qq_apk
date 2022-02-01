@@ -39,24 +39,23 @@ import org.json.JSONObject;
 public class ArkAppDownloadModule
   extends ArkAppQQModuleBase
 {
-  private WadlProxyServiceCallBackInterface jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface = new ArkAppDownloadModule.6(this);
-  private ArkAppDownloadModule.DownloadStateListener jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$DownloadStateListener;
-  private ArkAppDownloadModule.QueryPackageStateListener jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$QueryPackageStateListener;
-  private ArkAppDownloadModule.QueryPackageStateViaListener jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$QueryPackageStateViaListener;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean b;
-  private boolean c = false;
+  private WadlProxyServiceCallBackInterface a = new ArkAppDownloadModule.6(this);
+  private ArkAppDownloadModule.QueryPackageStateListener b;
+  private ArkAppDownloadModule.QueryPackageStateViaListener c;
+  private ArkAppDownloadModule.DownloadStateListener d;
+  private ArrayList<Long> k = new ArrayList();
+  private boolean l = false;
+  private INetInfoHandler m;
+  private boolean n = false;
   
   public ArkAppDownloadModule(ark.Application paramApplication, int paramInt)
   {
     super(paramApplication, paramInt);
-    this.jdField_b_of_type_Boolean = false;
-    WadlProxyServiceUtil.a().a(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new ArkAppDownloadModule.7(this);
+    WadlProxyServiceUtil.a().a(this.a);
+    this.m = new ArkAppDownloadModule.7(this);
     paramApplication = BaseActivity.sTopActivity;
     if (paramApplication != null) {
-      AppNetConnInfo.registerConnectionChangeReceiver(paramApplication, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      AppNetConnInfo.registerConnectionChangeReceiver(paramApplication, this.m);
     }
   }
   
@@ -67,7 +66,7 @@ public class ArkAppDownloadModule
       SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("key_download_show_not_wifi_dialog");
-      ((StringBuilder)localObject).append(paramWadlParams.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramWadlParams.e);
       localObject = ((StringBuilder)localObject).toString();
       boolean bool;
       if (localSharedPreferences != null) {
@@ -75,21 +74,21 @@ public class ArkAppDownloadModule
       } else {
         bool = true;
       }
-      if (paramDouble > Utils.b())
+      if (paramDouble > Utils.c())
       {
         ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkAppDownloadModule.9(this, paramContext, paramWadlParams));
         return 2;
       }
       if ((bool) && (NetworkUtil.isNetworkAvailable(paramContext)) && (NetworkUtil.getNetworkType(paramContext) != 1))
       {
-        String str1 = String.format(paramContext.getString(2131690154), new Object[] { FileSizeFormat.a(paramDouble) });
-        String str2 = paramContext.getString(2131690153);
+        String str1 = String.format(paramContext.getString(2131887053), new Object[] { FileSizeFormat.a(paramDouble) });
+        String str2 = paramContext.getString(2131887052);
         ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkAppDownloadModule.10(this, paramContext, str1, paramWadlParams, localSharedPreferences, (String)localObject, str2));
         return 2;
       }
     }
     WadlProxyServiceUtil.a().b(paramWadlParams);
-    this.c = true;
+    this.n = true;
     return 1;
   }
   
@@ -101,11 +100,11 @@ public class ArkAppDownloadModule
       if (paramInt != 1)
       {
         if (paramInt != 3) {
-          return localBaseActivity.getString(2131690151);
+          return localBaseActivity.getString(2131887050);
         }
-        return localBaseActivity.getString(2131690150);
+        return localBaseActivity.getString(2131887049);
       }
-      return localBaseActivity.getString(2131690149);
+      return localBaseActivity.getString(2131887048);
     }
     return "";
   }
@@ -141,27 +140,27 @@ public class ArkAppDownloadModule
         localObject = new JSONObject();
         if (paramWadlParams != null)
         {
-          ((JSONObject)localObject).put("actionCode", paramWadlParams.jdField_b_of_type_Int);
-          ((JSONObject)localObject).put("appId", paramWadlParams.jdField_a_of_type_JavaLangString);
-          ((JSONObject)localObject).put("apkUrl", paramWadlParams.jdField_e_of_type_JavaLangString);
-          ((JSONObject)localObject).put("apkSign", paramWadlParams.jdField_b_of_type_JavaLangString);
-          ((JSONObject)localObject).put("versionCode", paramWadlParams.jdField_e_of_type_Int);
-          ((JSONObject)localObject).put("packageName", paramWadlParams.f);
-          ((JSONObject)localObject).put("appName", paramWadlParams.j);
-          if (paramWadlParams.jdField_b_of_type_Boolean)
+          ((JSONObject)localObject).put("actionCode", paramWadlParams.c);
+          ((JSONObject)localObject).put("appId", paramWadlParams.e);
+          ((JSONObject)localObject).put("apkUrl", paramWadlParams.k);
+          ((JSONObject)localObject).put("apkSign", paramWadlParams.f);
+          ((JSONObject)localObject).put("versionCode", paramWadlParams.l);
+          ((JSONObject)localObject).put("packageName", paramWadlParams.m);
+          ((JSONObject)localObject).put("appName", paramWadlParams.u);
+          if (paramWadlParams.g)
           {
             i = 1;
             ((JSONObject)localObject).put("delayDownload", i);
-            ((JSONObject)localObject).put("fromWebUrl", paramWadlParams.m);
-            ((JSONObject)localObject).put("apkChannel", paramWadlParams.jdField_c_of_type_JavaLangString);
-            ((JSONObject)localObject).put("via", paramWadlParams.l);
-            ((JSONObject)localObject).put("yyStartTime", paramWadlParams.jdField_a_of_type_Long);
-            ((JSONObject)localObject).put("yyEndTime", paramWadlParams.jdField_b_of_type_Long);
-            ((JSONObject)localObject).put("adtag", paramWadlParams.n);
-            ((JSONObject)localObject).put("from", paramWadlParams.d);
-            ((JSONObject)localObject).put("flags", paramWadlParams.jdField_c_of_type_Int);
-            ((JSONObject)localObject).put("extraData", paramWadlParams.o);
-            ((JSONObject)localObject).put("sourceId", paramWadlParams.p);
+            ((JSONObject)localObject).put("fromWebUrl", paramWadlParams.x);
+            ((JSONObject)localObject).put("apkChannel", paramWadlParams.i);
+            ((JSONObject)localObject).put("via", paramWadlParams.w);
+            ((JSONObject)localObject).put("yyStartTime", paramWadlParams.n);
+            ((JSONObject)localObject).put("yyEndTime", paramWadlParams.o);
+            ((JSONObject)localObject).put("adtag", paramWadlParams.y);
+            ((JSONObject)localObject).put("from", paramWadlParams.h);
+            ((JSONObject)localObject).put("flags", paramWadlParams.d);
+            ((JSONObject)localObject).put("extraData", paramWadlParams.z);
+            ((JSONObject)localObject).put("sourceId", paramWadlParams.A);
           }
         }
         else
@@ -192,22 +191,22 @@ public class ArkAppDownloadModule
         ((JSONObject)localObject).put("progress", 0);
         return localObject;
       }
-      if (paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null)
+      if (paramWadlResult.a != null)
       {
-        JSONObject localJSONObject = a(paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams, paramString);
+        JSONObject localJSONObject = a(paramWadlResult.a, paramString);
         if (localJSONObject != null) {
           ((JSONObject)localObject).put("wadlParams", localJSONObject.toString());
         }
       }
-      ((JSONObject)localObject).put("event", paramWadlResult.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("taskId", paramWadlResult.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("taskStatus", paramWadlResult.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("fileSize", paramWadlResult.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("downloadFileSize", paramWadlResult.jdField_b_of_type_Long);
-      ((JSONObject)localObject).put("downloadFilePath", paramWadlResult.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("createTime", paramWadlResult.jdField_c_of_type_Long);
-      ((JSONObject)localObject).put("errCode", GameCenterUtil.b(paramWadlResult.jdField_c_of_type_Int));
-      ((JSONObject)localObject).put("progress", paramWadlResult.d);
+      ((JSONObject)localObject).put("event", paramWadlResult.b);
+      ((JSONObject)localObject).put("taskId", paramWadlResult.c);
+      ((JSONObject)localObject).put("taskStatus", paramWadlResult.d);
+      ((JSONObject)localObject).put("fileSize", paramWadlResult.e);
+      ((JSONObject)localObject).put("downloadFileSize", paramWadlResult.f);
+      ((JSONObject)localObject).put("downloadFilePath", paramWadlResult.g);
+      ((JSONObject)localObject).put("createTime", paramWadlResult.h);
+      ((JSONObject)localObject).put("errCode", GameCenterUtil.b(paramWadlResult.j));
+      ((JSONObject)localObject).put("progress", paramWadlResult.k);
       return localObject;
     }
     catch (Exception paramWadlResult)
@@ -237,22 +236,22 @@ public class ArkAppDownloadModule
   public void Destruct()
   {
     super.Destruct();
-    WadlProxyServiceUtil.a().b(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface);
-    this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlProxyServiceCallBackInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$QueryPackageStateListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$QueryPackageStateViaListener = null;
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    WadlProxyServiceUtil.a().b(this.a);
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    AppNetConnInfo.unregisterNetInfoHandler(this.m);
+    this.m = null;
+    ArrayList localArrayList = this.k;
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
       int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      while (i < this.k.size())
       {
-        a(((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue());
+        a(((Long)this.k.get(i)).longValue());
         i += 1;
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.k.clear();
     }
   }
   
@@ -292,29 +291,29 @@ public class ArkAppDownloadModule
   
   public boolean Invoke(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    if (!ArkAPIPermission.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentArkArk$Application, "permission.DOWNLOAD"))
+    if (!ArkAPIPermission.a(this.f, this.e, this.i, "permission.DOWNLOAD"))
     {
       QLog.i("ark.download.module", 1, "ark.dctrl.ArkAppDownloadModule.invokeFunc permission denied");
       paramString = BaseActivity.sTopActivity;
       if (paramString != null) {
-        b(paramString.getString(2131690155));
+        b(paramString.getString(2131887054));
       }
       return false;
     }
     QLog.i("ark.download.module", 1, String.format("ark.dctrl.ArkAppDownloadModule.invokeFunc.%s", new Object[] { paramString }));
     boolean bool = paramString.equals("QueryPackageState");
     int i = 2;
-    long l;
+    long l1;
     if (bool)
     {
       if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()))
       {
         paramString = paramArrayOfVariantWrapper[0].GetString();
-        l = a(paramArrayOfVariantWrapper[1].Copy());
+        l1 = a(paramArrayOfVariantWrapper[1].Copy());
         paramArrayOfVariantWrapper = new ArrayList();
         paramArrayOfVariantWrapper.add(paramString);
-        QLog.i("ark.download.module", 1, String.format("ark.dctrl.QueryPackageState.appid:%s", new Object[] { Long.valueOf(l) }));
-        this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$QueryPackageStateListener = new ArkAppDownloadModule.1(this, l);
+        QLog.i("ark.download.module", 1, String.format("ark.dctrl.QueryPackageState.appid:%s", new Object[] { Long.valueOf(l1) }));
+        this.b = new ArkAppDownloadModule.1(this, l1);
         if (paramArrayOfVariantWrapper.size() > 0) {
           WadlProxyServiceUtil.a().a(paramArrayOfVariantWrapper);
         }
@@ -339,13 +338,13 @@ public class ArkAppDownloadModule
           paramString.append((String)localObject1);
           QLog.i("ark.download.module", 1, paramString.toString());
         }
-        paramString = GameCenterUtil.a((String)localObject1);
+        paramString = GameCenterUtil.d((String)localObject1);
         if (paramString == null) {
-          break label1688;
+          break label1687;
         }
         i = paramString.versionCode;
         paramString = paramString.versionName;
-        paramArrayOfVariantWrapper = GameCenterUtil.b(GameCenterUtil.a((String)localObject1));
+        paramArrayOfVariantWrapper = GameCenterUtil.e(GameCenterUtil.c((String)localObject1));
         localObject2 = new JSONObject();
         ((JSONObject)localObject2).put("packageName", localObject1);
         ((JSONObject)localObject2).put("versionCode", i);
@@ -375,7 +374,7 @@ public class ArkAppDownloadModule
         {
           paramString = paramArrayOfVariantWrapper[0].GetString();
           QLog.i("ark.download.module", 1, String.format("ark.dctrl.QueryPackageStateVia.via:%s", new Object[] { paramString }));
-          this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$QueryPackageStateViaListener = new ArkAppDownloadModule.2(this, a(paramArrayOfVariantWrapper[1].Copy()));
+          this.c = new ArkAppDownloadModule.2(this, a(paramArrayOfVariantWrapper[1].Copy()));
           if (!TextUtils.isEmpty(paramString)) {
             WadlProxyServiceUtil.a().a(paramString);
           }
@@ -387,13 +386,13 @@ public class ArkAppDownloadModule
       {
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1))
         {
-          l = a(paramArrayOfVariantWrapper[0].Copy());
+          l1 = a(paramArrayOfVariantWrapper[0].Copy());
           paramString = new StringBuilder();
           paramString.append("ark.dctrl.DownloadInit callbackid=");
-          paramString.append(l);
+          paramString.append(l1);
           QLog.i("ark.download.module", 1, paramString.toString());
-          this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$DownloadStateListener = new ArkAppDownloadModule.3(this);
-          this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(l));
+          this.d = new ArkAppDownloadModule.3(this);
+          this.k.add(Long.valueOf(l1));
           paramVariantWrapper.SetBool(true);
           return true;
         }
@@ -402,7 +401,7 @@ public class ArkAppDownloadModule
       }
       if (paramString.equals("StartDownload"))
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule$DownloadStateListener == null)
+        if (this.d == null)
         {
           QLog.e("ark.download.module", 1, "should DownloadInit first ");
           paramVariantWrapper.SetInt(-1);
@@ -412,30 +411,30 @@ public class ArkAppDownloadModule
         if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 2) && (paramArrayOfVariantWrapper[0].IsString()))
         {
           localObject1 = paramArrayOfVariantWrapper[0].GetString();
-          double d = paramArrayOfVariantWrapper[1].GetDouble();
+          double d1 = paramArrayOfVariantWrapper[1].GetDouble();
           paramArrayOfVariantWrapper = new WadlParams((String)localObject1);
-          if (paramArrayOfVariantWrapper.jdField_b_of_type_Int == 12) {
-            ReportController.a(null, "dc00898", "", "", "0X8009E12", "0X8009E12", 0, 0, "", "", paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, "");
-          } else if (paramArrayOfVariantWrapper.jdField_b_of_type_Int == 2) {
-            ReportController.a(null, "dc00898", "", "", "0X8009E11", "0X8009E11", 0, 0, "", "", paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, "");
+          if (paramArrayOfVariantWrapper.c == 12) {
+            ReportController.a(null, "dc00898", "", "", "0X8009E12", "0X8009E12", 0, 0, "", "", paramArrayOfVariantWrapper.e, "");
+          } else if (paramArrayOfVariantWrapper.c == 2) {
+            ReportController.a(null, "dc00898", "", "", "0X8009E11", "0X8009E11", 0, 0, "", "", paramArrayOfVariantWrapper.e, "");
           }
           localObject1 = (ArkPlatformConfigBean)((IArkConfig)QRoute.api(IArkConfig.class)).loadConfig(ArkPlatformConfigBean.class);
-          if ((localObject1 != null) && (((ArkPlatformConfigBean)localObject1).a() != null))
+          if ((localObject1 != null) && (((ArkPlatformConfigBean)localObject1).b() != null))
           {
-            localObject1 = ((ArkPlatformConfigBean)localObject1).a();
-            if ((((ArkPlatformConfig)localObject1).c != null) && (((ArkPlatformConfig)localObject1).c.contains(this.jdField_b_of_type_JavaLangString)))
+            localObject1 = ((ArkPlatformConfigBean)localObject1).b();
+            if ((((ArkPlatformConfig)localObject1).l != null) && (((ArkPlatformConfig)localObject1).l.contains(this.f)))
             {
               bool = false;
-              break label896;
+              break label895;
             }
           }
           bool = true;
-          label896:
-          QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl [StartDownload] mAppName:", this.jdField_b_of_type_JavaLangString, ",showDownloadCtrlDialog=", Boolean.valueOf(bool), ",appid=", paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, ",name=", paramArrayOfVariantWrapper.j, ",iconUrl:", paramArrayOfVariantWrapper.k });
+          label895:
+          QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl [StartDownload] mAppName:", this.f, ",showDownloadCtrlDialog=", Boolean.valueOf(bool), ",appid=", paramArrayOfVariantWrapper.e, ",name=", paramArrayOfVariantWrapper.u, ",iconUrl:", paramArrayOfVariantWrapper.v });
           if (bool) {
-            ArkDownloadController.a().a(this.jdField_b_of_type_JavaLangString, paramArrayOfVariantWrapper.jdField_a_of_type_JavaLangString, paramArrayOfVariantWrapper.j, paramArrayOfVariantWrapper.k, new ArkAppDownloadModule.4(this, paramArrayOfVariantWrapper, paramString, d));
+            ArkDownloadController.a().a(this.f, paramArrayOfVariantWrapper.e, paramArrayOfVariantWrapper.u, paramArrayOfVariantWrapper.v, new ArkAppDownloadModule.4(this, paramArrayOfVariantWrapper, paramString, d1));
           } else {
-            i = a(paramString, d, paramArrayOfVariantWrapper);
+            i = a(paramString, d1, paramArrayOfVariantWrapper);
           }
         }
         else
@@ -480,14 +479,14 @@ public class ArkAppDownloadModule
           }
           if ((bool) && (paramArrayOfVariantWrapper != null) && (NetworkUtil.isNetworkAvailable(paramArrayOfVariantWrapper)) && (NetworkUtil.getNetworkType(paramArrayOfVariantWrapper) != 1))
           {
-            String str1 = paramArrayOfVariantWrapper.getString(2131690146);
-            String str2 = paramArrayOfVariantWrapper.getString(2131690153);
+            String str1 = paramArrayOfVariantWrapper.getString(2131887045);
+            String str2 = paramArrayOfVariantWrapper.getString(2131887052);
             ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToMainThread(new ArkAppDownloadModule.5(this, paramArrayOfVariantWrapper, str1, i, paramString, (SharedPreferences)localObject1, (String)localObject2, str2));
             paramVariantWrapper.SetBool(true);
             return true;
           }
           WadlProxyServiceUtil.a().b(i, paramString);
-          this.c = true;
+          this.n = true;
           ReportController.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "2", "", paramString, "");
           paramVariantWrapper.SetBool(true);
           return true;
@@ -503,7 +502,7 @@ public class ArkAppDownloadModule
           QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl.install package:", paramString });
           paramString = new WadlParams(paramString);
           WadlProxyServiceUtil.a().c(paramString);
-          ReportController.a(null, "dc00898", "", "", "0X8009E16", "0X8009E16", 0, 0, "", "", paramString.jdField_a_of_type_JavaLangString, "");
+          ReportController.a(null, "dc00898", "", "", "0X8009E16", "0X8009E16", 0, 0, "", "", paramString.e, "");
           paramVariantWrapper.SetBool(true);
           return true;
         }
@@ -525,16 +524,11 @@ public class ArkAppDownloadModule
         return true;
       }
       return false;
-      label1688:
+      label1687:
       paramString = "";
       paramArrayOfVariantWrapper = paramString;
       i = 0;
     }
-  }
-  
-  public boolean a()
-  {
-    return true;
   }
   
   protected ArkModuleMethod[] a()
@@ -546,10 +540,15 @@ public class ArkAppDownloadModule
   {
     return true;
   }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule
  * JD-Core Version:    0.7.0.1
  */

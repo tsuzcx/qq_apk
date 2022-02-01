@@ -15,14 +15,14 @@ public class FriendAddFriendHelper
     return true;
   }
   
-  protected boolean b()
+  protected boolean h()
   {
-    return this.a.g();
+    return this.a.A();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FriendAddFriendHelper
  * JD-Core Version:    0.7.0.1
  */

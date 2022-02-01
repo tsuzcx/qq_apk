@@ -27,29 +27,24 @@ public class StructMsgItemLayout23
     return paramContext;
   }
   
-  protected int b()
-  {
-    return 23;
-  }
-  
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     Object localObject4;
     if ((paramView != null) && ((paramView instanceof LinearLayout)) && ((paramView.getTag() instanceof StructMsgItemLayout23.ViewHolder_23)))
     {
       localObject1 = (StructMsgItemLayout23.ViewHolder_23)paramView.getTag();
-      localObject2 = this.a.iterator();
+      localObject2 = this.ax.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject4 = (AbsStructMsgElement)((Iterator)localObject2).next();
-        if ("button".equals(((AbsStructMsgElement)localObject4).a))
+        if ("button".equals(((AbsStructMsgElement)localObject4).b))
         {
           localObject3 = (TextView)((AbsStructMsgElement)localObject4).a(paramContext, ((StructMsgItemLayout23.ViewHolder_23)localObject1).a, paramBundle);
           localObject4 = (StructMsgItemButton)localObject4;
-          if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).c())) {
+          if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).k())) {
             ((TextView)localObject3).setTextSize(16.0F);
           }
-          if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).d())) {
+          if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).l())) {
             ((TextView)localObject3).setTextColor(Color.parseColor("#12b7f5"));
           }
         }
@@ -58,19 +53,19 @@ public class StructMsgItemLayout23
     }
     Object localObject1 = a(paramContext);
     Object localObject2 = new StructMsgItemLayout23.ViewHolder_23();
-    Object localObject3 = this.a.iterator();
+    Object localObject3 = this.ax.iterator();
     paramView = null;
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (AbsStructMsgElement)((Iterator)localObject3).next();
-      if ("button".equals(((AbsStructMsgElement)localObject4).a))
+      if ("button".equals(((AbsStructMsgElement)localObject4).b))
       {
         paramView = (TextView)((AbsStructMsgElement)localObject4).a(paramContext, null, paramBundle);
         localObject4 = (StructMsgItemButton)localObject4;
-        if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).c())) {
+        if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).k())) {
           paramView.setTextSize(16.0F);
         }
-        if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).d())) {
+        if (TextUtils.isEmpty(((StructMsgItemButton)localObject4).l())) {
           paramView.setTextColor(Color.parseColor("#12b7f5"));
         }
         localObject4 = new LinearLayout.LayoutParams(-1, AIOUtils.b(41.0F, paramContext.getResources()));
@@ -85,14 +80,19 @@ public class StructMsgItemLayout23
     return localObject1;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 23;
+  }
+  
+  public String e()
   {
     return "layout23";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout23
  * JD-Core Version:    0.7.0.1
  */

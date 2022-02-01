@@ -10,10 +10,10 @@ class TroopFileDataBaseProxy$3
   
   public void onDeleteFinish(String paramString, int paramInt)
   {
-    paramInt = TroopFileTransferUtil.Log.c;
+    paramInt = TroopFileTransferUtil.Log.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilUUID.toString());
+    localStringBuilder.append(this.a.toString());
     localStringBuilder.append("] deleteItem finish. table:");
     localStringBuilder.append(paramString);
     TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", paramInt, localStringBuilder.toString());
@@ -21,10 +21,10 @@ class TroopFileDataBaseProxy$3
   
   public void onInsertFinish(String paramString)
   {
-    int i = TroopFileTransferUtil.Log.c;
+    int i = TroopFileTransferUtil.Log.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilUUID.toString());
+    localStringBuilder.append(this.a.toString());
     localStringBuilder.append("] deleteItem finish[add]. table:");
     localStringBuilder.append(paramString);
     TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", i, localStringBuilder.toString());
@@ -32,10 +32,10 @@ class TroopFileDataBaseProxy$3
   
   public void onUpdateFinish(String paramString, int paramInt)
   {
-    paramInt = TroopFileTransferUtil.Log.c;
+    paramInt = TroopFileTransferUtil.Log.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilUUID.toString());
+    localStringBuilder.append(this.a.toString());
     localStringBuilder.append("] deleteItem finish[up]. table:");
     localStringBuilder.append(paramString);
     TroopFileTransferUtil.Log.d("TroopFileDataBaseProxy", paramInt, localStringBuilder.toString());
@@ -43,7 +43,7 @@ class TroopFileDataBaseProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileDataBaseProxy.3
  * JD-Core Version:    0.7.0.1
  */

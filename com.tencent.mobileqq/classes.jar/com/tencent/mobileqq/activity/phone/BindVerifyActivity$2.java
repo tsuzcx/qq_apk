@@ -26,43 +26,43 @@ class BindVerifyActivity$2
       QLog.i("BindVerifyActivity", 2, ((StringBuilder)localObject).toString());
     }
     BindVerifyActivity.a(this.a, false);
-    BindVerifyActivity.a(this.a).removeMessages(4);
+    BindVerifyActivity.b(this.a).removeMessages(4);
     this.a.dismissProgressDialog();
     if (!paramBoolean)
     {
       this.a.a("dc00898", "0X8009F19", 0);
       localObject = this.a;
-      ((BindVerifyActivity)localObject).showToast(1, ((BindVerifyActivity)localObject).getString(2131718218));
+      ((BindVerifyActivity)localObject).showToast(1, ((BindVerifyActivity)localObject).getString(2131915700));
     }
     else if ((paramInt != 0) && (paramInt != 106))
     {
       if (paramInt == 213)
       {
         this.a.a("dc00898", "0X8009F19", 0);
-        this.a.showToast(1, HardCodeUtil.a(2131701364));
-        BindVerifyActivity.a(this.a).setEnabled(true);
+        this.a.showToast(1, HardCodeUtil.a(2131899374));
+        BindVerifyActivity.c(this.a).setEnabled(true);
       }
       else
       {
         this.a.a("dc00898", "0X8009F19", 0);
-        localObject = HardCodeUtil.a(2131701359);
+        localObject = HardCodeUtil.a(2131899369);
         if (paramInt == 107) {
-          localObject = HardCodeUtil.a(2131701361);
+          localObject = HardCodeUtil.a(2131899371);
         }
-        this.a.showConfirmFinish(HardCodeUtil.a(2131701365), (String)localObject);
+        this.a.showConfirmFinish(HardCodeUtil.a(2131899375), (String)localObject);
       }
     }
     else
     {
-      this.a.a();
+      this.a.b();
     }
-    this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
+    this.a.app.unRegistObserver(BindVerifyActivity.d(this.a));
     BindVerifyActivity.b(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.BindVerifyActivity.2
  * JD-Core Version:    0.7.0.1
  */

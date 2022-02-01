@@ -12,15 +12,15 @@ import java.util.TimerTask;
 class AudioDecoder$BgmAudioPlayRunnable
   implements Runnable
 {
-  long jdField_a_of_type_Long;
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  Timer jdField_a_of_type_JavaUtilTimer;
-  TimerTask jdField_a_of_type_JavaUtilTimerTask;
+  MediaPlayer a;
+  Timer b;
+  long c;
+  TimerTask d;
   
   public AudioDecoder$BgmAudioPlayRunnable(AudioDecoder paramAudioDecoder)
   {
     if (paramAudioDecoder.a != null) {
-      this.jdField_a_of_type_Long = paramAudioDecoder.a.c;
+      this.c = paramAudioDecoder.a.h;
     }
   }
   
@@ -28,11 +28,11 @@ class AudioDecoder$BgmAudioPlayRunnable
   {
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(3);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new AudioDecoder.BgmAudioPlayRunnable.1(this));
+      this.a = new MediaPlayer();
+      this.a.setDataSource(paramString);
+      this.a.setAudioStreamType(3);
+      this.a.prepareAsync();
+      this.a.setOnPreparedListener(new AudioDecoder.BgmAudioPlayRunnable.1(this));
       return;
     }
     catch (IOException paramString)
@@ -48,7 +48,7 @@ class AudioDecoder$BgmAudioPlayRunnable
   
   public void a()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.a;
     if (localMediaPlayer != null) {
       localMediaPlayer.pause();
     }
@@ -56,14 +56,14 @@ class AudioDecoder$BgmAudioPlayRunnable
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+    if (this.a != null) {
       e();
     }
   }
   
   public void c()
   {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    MediaPlayer localMediaPlayer = this.a;
     if (localMediaPlayer != null)
     {
       localMediaPlayer.seekTo(0);
@@ -73,52 +73,52 @@ class AudioDecoder$BgmAudioPlayRunnable
   
   public void d()
   {
-    Object localObject = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+    Object localObject = this.a;
     if (localObject != null)
     {
       ((MediaPlayer)localObject).stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      localObject = this.jdField_a_of_type_JavaUtilTimer;
+      this.a.release();
+      this.a = null;
+      localObject = this.b;
       if (localObject != null)
       {
         ((Timer)localObject).cancel();
-        this.jdField_a_of_type_JavaUtilTimer.purge();
-        this.jdField_a_of_type_JavaUtilTimer = null;
+        this.b.purge();
+        this.b = null;
       }
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
+    if (this.a != null)
     {
-      if (this.jdField_a_of_type_JavaUtilTimer == null) {
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
+      if (this.b == null) {
+        this.b = new Timer();
       }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
+      this.a.start();
       if (this.this$0.a != null)
       {
-        TimerTask localTimerTask = this.jdField_a_of_type_JavaUtilTimerTask;
+        TimerTask localTimerTask = this.d;
         if (localTimerTask != null) {
           localTimerTask.cancel();
         }
-        this.jdField_a_of_type_JavaUtilTimerTask = new AudioDecoder.BgmAudioPlayRunnable.2(this);
-        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, this.jdField_a_of_type_Long);
+        this.d = new AudioDecoder.BgmAudioPlayRunnable.2(this);
+        this.b.schedule(this.d, this.c);
       }
     }
   }
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.this$0.a.b)) {
-      a(this.this$0.a.b);
+    if (!TextUtils.isEmpty(this.this$0.a.i)) {
+      a(this.this$0.a.i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.mediacodec.AudioDecoder.BgmAudioPlayRunnable
  * JD-Core Version:    0.7.0.1
  */

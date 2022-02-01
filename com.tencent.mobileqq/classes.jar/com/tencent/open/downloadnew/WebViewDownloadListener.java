@@ -1,7 +1,6 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.business.base.IJsCallBack;
@@ -18,20 +17,14 @@ public class WebViewDownloadListener
   implements DownloadListener
 {
   protected static WebViewDownloadListener a;
-  protected Handler a;
-  
-  protected WebViewDownloadListener()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = null;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
+  protected Handler b = null;
   
   public static WebViewDownloadListener a()
   {
-    if (jdField_a_of_type_ComTencentOpenDownloadnewWebViewDownloadListener == null) {
-      jdField_a_of_type_ComTencentOpenDownloadnewWebViewDownloadListener = new WebViewDownloadListener();
+    if (a == null) {
+      a = new WebViewDownloadListener();
     }
-    return jdField_a_of_type_ComTencentOpenDownloadnewWebViewDownloadListener;
+    return a;
   }
   
   protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
@@ -77,11 +70,11 @@ public class WebViewDownloadListener
     JsCallbackManager localJsCallbackManager = JsCallbackManager.a();
     try
     {
-      int j = localJsCallbackManager.a().size();
+      int j = localJsCallbackManager.b().size();
       int i = 0;
       while (i < j)
       {
-        Object localObject = (IJsCallBack)localJsCallbackManager.a().get(i);
+        Object localObject = (IJsCallBack)localJsCallbackManager.b().get(i);
         WebView localWebView = ((IJsCallBack)localObject).getWebview();
         if (localWebView != null)
         {
@@ -107,7 +100,7 @@ public class WebViewDownloadListener
           localStringBuilder.append(" commonJsCallBack >>> ");
           localStringBuilder.append((String)localObject);
           LogUtility.a("WebViewDownloadListener", localStringBuilder.toString());
-          this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
+          this.b.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
         }
         i += 1;
       }
@@ -127,28 +120,28 @@ public class WebViewDownloadListener
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
     if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
+      a(paramDownloadInfo.d().toString());
     }
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
     if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
+      a(a(paramDownloadInfo.c, paramInt2, paramDownloadInfo.t, paramDownloadInfo.e, paramDownloadInfo.o, paramString, paramInt1, paramDownloadInfo.D));
     }
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
     if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
+      a(paramDownloadInfo.d().toString());
     }
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
     if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
+      a(paramDownloadInfo.d().toString());
     }
   }
   
@@ -159,7 +152,7 @@ public class WebViewDownloadListener
       JSONArray localJSONArray = new JSONArray();
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        localJSONArray.put(((DownloadInfo)paramList.next()).a());
+        localJSONArray.put(((DownloadInfo)paramList.next()).d());
       }
       a(localJSONArray.toString());
     }
@@ -168,7 +161,7 @@ public class WebViewDownloadListener
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
     if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
+      a(paramDownloadInfo.d().toString());
     }
   }
   
@@ -184,7 +177,7 @@ public class WebViewDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.WebViewDownloadListener
  * JD-Core Version:    0.7.0.1
  */

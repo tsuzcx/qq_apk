@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnFaceDataDownloadListener;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResDownloader.OnFaceDataDownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -21,20 +21,20 @@ class ApolloPluginRscLoader$5
     }
     if (paramBoolean)
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
+      if (this.a.exists())
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 0, HardCodeUtil.a(2131700705));
+        ApolloPluginRscLoader.a(this.c, this.b, 0, HardCodeUtil.a(2131898731));
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, HardCodeUtil.a(2131700734));
+      ApolloPluginRscLoader.a(this.c, this.b, 2, HardCodeUtil.a(2131898760));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreWebviewApolloPluginRscLoader.a(this.jdField_a_of_type_JavaLangString, 2, HardCodeUtil.a(2131700716));
+    ApolloPluginRscLoader.a(this.c, this.b, 2, HardCodeUtil.a(2131898742));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloPluginRscLoader.5
  * JD-Core Version:    0.7.0.1
  */

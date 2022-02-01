@@ -10,8 +10,8 @@ class BannerManager$1
   public void run()
   {
     BannerManager localBannerManager = this.this$0;
-    int i = this.jdField_a_of_type_Int;
-    Message localMessage = this.jdField_a_of_type_AndroidOsMessage;
+    int i = this.a;
+    Message localMessage = this.b;
     if (localMessage == null) {
       localMessage = null;
     } else {
@@ -22,7 +22,7 @@ class BannerManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.banner.BannerManager.1
  * JD-Core Version:    0.7.0.1
  */

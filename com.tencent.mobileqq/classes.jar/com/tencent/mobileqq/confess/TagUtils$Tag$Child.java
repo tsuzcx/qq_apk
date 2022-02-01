@@ -4,20 +4,18 @@ import android.graphics.Rect;
 
 public class TagUtils$Tag$Child
 {
-  public Rect a;
-  public String a;
+  public Rect a = null;
+  public String b = null;
   
   public TagUtils$Tag$Child(Rect paramRect, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramRect;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TagUtils.Tag.Child
  * JD-Core Version:    0.7.0.1
  */

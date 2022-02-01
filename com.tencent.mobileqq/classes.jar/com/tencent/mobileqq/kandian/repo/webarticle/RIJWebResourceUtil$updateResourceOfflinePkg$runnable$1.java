@@ -18,7 +18,7 @@ final class RIJWebResourceUtil$updateResourceOfflinePkg$runnable$1
     RIJWebResourceUtil.updateResourceOfflinePkg.runnable.1.asyncBack.1 local1 = new RIJWebResourceUtil.updateResourceOfflinePkg.runnable.1.asyncBack.1();
     try
     {
-      HtmlOffline.a();
+      HtmlOffline.b();
     }
     catch (Throwable localThrowable2)
     {
@@ -45,7 +45,7 @@ final class RIJWebResourceUtil$updateResourceOfflinePkg$runnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.RIJWebResourceUtil.updateResourceOfflinePkg.runnable.1
  * JD-Core Version:    0.7.0.1
  */

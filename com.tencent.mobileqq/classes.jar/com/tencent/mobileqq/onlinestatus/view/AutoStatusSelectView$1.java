@@ -13,27 +13,27 @@ class AutoStatusSelectView$1
   
   public void onClick(View paramView)
   {
-    boolean bool = this.jdField_a_of_type_Boolean;
+    boolean bool = this.a;
     int i = 1;
     if (bool) {
-      ReportHelperKt.a("0X800AF41", 2, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.jdField_a_of_type_Int));
+      ReportHelperKt.a("0X800AF41", 2, String.valueOf(this.b.b));
     } else {
-      ReportHelperKt.a("0X800AF41", 1, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.jdField_a_of_type_Int));
+      ReportHelperKt.a("0X800AF41", 1, String.valueOf(this.b.b));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.jdField_a_of_type_Int != 1) {
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.jdField_a_of_type_Int == 2) {
+    if (this.b.b != 1) {
+      if (this.b.b == 2) {
         i = 3;
       } else {
         i = 0;
       }
     }
-    StatusVisibleFragment.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.jdField_a_of_type_ComTencentMobileqqOnlinestatusOnlineStatusPermissionChecker$OnlineStatusPermissionItem, i, this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewAutoStatusSelectView.b);
+    StatusVisibleFragment.a(this.b.g, this.b.h, i, this.b.c);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AutoStatusSelectView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class MultiRichMediaSaveManager$10
   
   public void a()
   {
-    Message localMessage = MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager).obtainMessage(1);
-    FileSaveResult localFileSaveResult = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a());
+    Message localMessage = MultiRichMediaSaveManager.b(this.b).obtainMessage(1);
+    FileSaveResult localFileSaveResult = this.b.a(this.a.b());
     if (localFileSaveResult != null)
     {
-      localFileSaveResult.jdField_a_of_type_Int = 0;
+      localFileSaveResult.b = 0;
       localMessage.obj = localFileSaveResult;
-      MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager).sendMessage(localMessage);
+      MultiRichMediaSaveManager.b(this.b).sendMessage(localMessage);
     }
   }
   
@@ -34,19 +34,19 @@ class MultiRichMediaSaveManager$10
       ((StringBuilder)localObject).append(paramString);
       QLog.e("MultiRichMediaSaveManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerMultisaveQFileMultiSaveReq.a());
+    Object localObject = this.b.a(this.a.b());
     if (localObject != null)
     {
-      ((FileSaveResult)localObject).jdField_a_of_type_Int = -1;
-      ((FileSaveResult)localObject).b = paramInt;
-      ((FileSaveResult)localObject).jdField_a_of_type_JavaLangString = paramString;
-      MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, (FileSaveResult)localObject);
+      ((FileSaveResult)localObject).b = -1;
+      ((FileSaveResult)localObject).c = paramInt;
+      ((FileSaveResult)localObject).d = paramString;
+      MultiRichMediaSaveManager.a(this.b, (FileSaveResult)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.10
  * JD-Core Version:    0.7.0.1
  */

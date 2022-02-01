@@ -7,6 +7,8 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyXListView;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl;
+import com.tencent.mobileqq.kandian.biz.privatechat.api.impl.RIJPrivateChatServiceImpl.Companion;
 import com.tencent.mobileqq.kandian.biz.push.OnTabRedNumsChangeListenner;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.glue.router.msgbox.api.impl.RIJMsgBoxUtils;
@@ -17,83 +19,87 @@ import mqq.app.AppRuntime;
 
 public class RIJTipMessageManager
 {
-  private RIJTipMessageManager.Builder jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder;
-  private ReadinjoySocialMsgUI jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI;
-  private OnTabRedNumsChangeListenner jdField_a_of_type_ComTencentMobileqqKandianBizPushOnTabRedNumsChangeListenner;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqKandianRepoPushApiMessageObserver;
+  private MessageObserver a;
+  private OnTabRedNumsChangeListenner b;
+  private ReadinjoySocialMsgUI c;
+  private RIJTipMessageManager.Builder d;
   
   public RIJTipMessageManager(RIJTipMessageManager.Builder paramBuilder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder = paramBuilder;
+    this.d = paramBuilder;
   }
   
   private void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI == null)
+    if (this.c == null)
     {
-      if (RIJMsgBoxUtils.b() == 2) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI = new ReadinjoySocialMsgCard(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a());
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI = new ReadinjoySocialMsgTips(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a(), LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a()).inflate(2131560286, this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a(), false));
+      if (RIJMsgBoxUtils.b() == 2)
+      {
+        this.c = new ReadinjoySocialMsgCard(this.d.b());
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI.a(new RIJTipMessageManager.4(this));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a().addHeaderView(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI.a());
+      else
+      {
+        this.c = new ReadinjoySocialMsgTips(this.d.b(), LayoutInflater.from(this.d.b()).inflate(2131626332, this.d.a(), false));
+        ((ReadinjoySocialMsgTips)this.c).a(this.d.c());
+      }
+      this.c.a(new RIJTipMessageManager.4(this));
+      this.d.a().addHeaderView(this.c.a());
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI.a(paramKandianMsgBoxRedPntInfo);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a().postInvalidate();
+    this.c.a(paramKandianMsgBoxRedPntInfo);
+    this.c.b();
+    this.d.a().postInvalidate();
   }
   
-  private void l()
+  private void m()
   {
-    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a();
-    if ((localKandianMsgBoxRedPntInfo != null) && (localKandianMsgBoxRedPntInfo.mMsgCnt > 0))
+    KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).Q();
+    if ((localKandianMsgBoxRedPntInfo != null) && (RIJPrivateChatServiceImpl.Companion.a().getTotalRedCount(localKandianMsgBoxRedPntInfo) > 0))
     {
       a(localKandianMsgBoxRedPntInfo);
       return;
     }
-    c();
+    d();
   }
   
   public RIJTipMessageManager.Builder a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoPushApiMessageObserver = new RIJTipMessageManager.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPushOnTabRedNumsChangeListenner = new RIJTipMessageManager.2(this);
+    return this.d;
   }
   
   public void b()
   {
+    this.a = new RIJTipMessageManager.1(this);
+    this.b = new RIJTipMessageManager.2(this);
+  }
+  
+  public void c()
+  {
     if (RIJMsgBoxUtils.b() == 0) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a() != 0) {
+    if (this.d.c() != 0) {
       return;
     }
-    if (StudyModeManager.a()) {
+    if (StudyModeManager.h()) {
       return;
     }
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      l();
+      m();
       return;
     }
     ThreadManagerV2.getUIHandlerV2().post(new RIJTipMessageManager.3(this));
   }
   
-  public void c()
+  public void d()
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a().removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI.a());
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a().postInvalidate();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI = null;
+        this.d.a().removeHeaderView(this.c.a());
+        this.d.a().postInvalidate();
+        this.c = null;
       }
       return;
     }
@@ -104,59 +110,59 @@ public class RIJTipMessageManager
     }
   }
   
-  public void d()
-  {
-    ReadinjoySocialMsgUI localReadinjoySocialMsgUI = this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI;
-    if (localReadinjoySocialMsgUI != null)
-    {
-      localReadinjoySocialMsgUI.b();
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageReadinjoySocialMsgUI = null;
-    }
-    f();
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoPushApiMessageObserver = null;
-  }
-  
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizMessageRIJTipMessageManager$Builder.a().d();
+    ReadinjoySocialMsgUI localReadinjoySocialMsgUI = this.c;
+    if (localReadinjoySocialMsgUI != null)
+    {
+      localReadinjoySocialMsgUI.c();
+      this.c = null;
+    }
     g();
+    this.a = null;
   }
   
   public void f()
   {
-    g();
+    this.d.a().e();
     h();
   }
   
   public void g()
   {
-    ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoPushApiMessageObserver);
+    h();
+    i();
   }
   
   public void h()
   {
-    ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPushOnTabRedNumsChangeListenner);
+    ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(this.a);
   }
   
   public void i()
   {
-    j();
-    k();
+    ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(this.b);
   }
   
   public void j()
   {
-    ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoPushApiMessageObserver);
+    k();
+    l();
   }
   
   public void k()
   {
-    ((KandianMergeManager)ReadInJoyUtils.a().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPushOnTabRedNumsChangeListenner);
+    ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(this.a);
+  }
+  
+  public void l()
+  {
+    ((KandianMergeManager)ReadInJoyUtils.b().getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.RIJTipMessageManager
  * JD-Core Version:    0.7.0.1
  */

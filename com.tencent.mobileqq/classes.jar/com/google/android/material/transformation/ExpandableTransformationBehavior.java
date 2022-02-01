@@ -22,9 +22,6 @@ public abstract class ExpandableTransformationBehavior
     super(paramContext, paramAttributeSet);
   }
   
-  @NonNull
-  protected abstract AnimatorSet a(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2);
-  
   @CallSuper
   protected boolean a(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2)
   {
@@ -37,7 +34,7 @@ public abstract class ExpandableTransformationBehavior
     if (bool) {
       this.a.cancel();
     }
-    this.a = a(paramView1, paramView2, paramBoolean1, bool);
+    this.a = b(paramView1, paramView2, paramBoolean1, bool);
     this.a.addListener(new ExpandableTransformationBehavior.1(this));
     this.a.start();
     if (!paramBoolean2) {
@@ -45,10 +42,13 @@ public abstract class ExpandableTransformationBehavior
     }
     return true;
   }
+  
+  @NonNull
+  protected abstract AnimatorSet b(View paramView1, View paramView2, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transformation.ExpandableTransformationBehavior
  * JD-Core Version:    0.7.0.1
  */

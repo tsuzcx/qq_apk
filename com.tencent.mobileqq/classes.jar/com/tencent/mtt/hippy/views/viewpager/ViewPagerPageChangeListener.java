@@ -14,10 +14,10 @@ public class ViewPagerPageChangeListener
 {
   private int mCurrPageIndex;
   private int mLastPageIndex;
-  private HippyPageScrollEvent mPageScrollEmitter;
-  private HippyPageScrollStateChangedEvent mPageScrollStateChangeEmitter;
-  private HippyPageSelectedEvent mPageSelectedEmitter;
-  private HippyViewPager mPager;
+  private final HippyPageScrollEvent mPageScrollEmitter;
+  private final HippyPageScrollStateChangedEvent mPageScrollStateChangeEmitter;
+  private final HippyPageSelectedEvent mPageSelectedEmitter;
+  private final HippyViewPager mPager;
   
   public ViewPagerPageChangeListener(HippyViewPager paramHippyViewPager)
   {
@@ -96,7 +96,7 @@ public class ViewPagerPageChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.ViewPagerPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

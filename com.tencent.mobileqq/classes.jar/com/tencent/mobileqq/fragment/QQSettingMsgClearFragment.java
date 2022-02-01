@@ -55,54 +55,20 @@ public class QQSettingMsgClearFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  public static final String a;
-  private static long jdField_b_of_type_Long;
-  private long jdField_a_of_type_Long = 0L;
-  Handler jdField_a_of_type_AndroidOsHandler = new QQSettingMsgClearFragment.8(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private BounceScrollView jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView;
-  private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131694578);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView = ((BounceScrollView)this.mContentView.findViewById(2131376998));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131374313);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.mContentView.findViewById(2131365470).setOnClickListener(this);
-    this.mContentView.findViewById(2131380297).setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)this.mContentView.findViewById(2131365467));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setContentDescription(getString(2131691463));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setLeftTextColor(4);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131365485);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365486));
-    f();
-    if (VersionUtils.c()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.setOverScrollMode(0);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getString(2131690861));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
-    }
-  }
+  public static final String b = HardCodeUtil.a(2131892262);
+  private static long n;
+  QQProgressDialog a;
+  Handler c = new QQSettingMsgClearFragment.8(this);
+  private DownloadListener d;
+  private QQAppInterface e;
+  private BounceScrollView f;
+  private FormSimpleItem g;
+  private View h;
+  private View i;
+  private TextView j;
+  private boolean k;
+  private boolean l = false;
+  private long m = 0L;
   
   private void a(String paramString1, String paramString2)
   {
@@ -127,8 +93,8 @@ public class QQSettingMsgClearFragment
         localStringBuilder.append(paramString2);
         QLog.e("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
       }
-      DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = null;
+      DownloadManagerV2.a().b(this.d);
+      this.d = null;
     }
   }
   
@@ -137,7 +103,7 @@ public class QQSettingMsgClearFragment
     paramString1 = DialogUtil.a(getBaseActivity(), 230).setTitle(null).setMessage(paramString1);
     paramString1.setMessageTextSize(17.0F);
     paramString1.setPositiveButton(paramString2, paramOnClickListener1);
-    paramString1.setNegativeButton(getString(2131690728), new QQSettingMsgClearFragment.7(this, paramOnClickListener2, paramString1));
+    paramString1.setNegativeButton(getString(2131887648), new QQSettingMsgClearFragment.7(this, paramOnClickListener2, paramString1));
     try
     {
       paramString1.show();
@@ -153,36 +119,77 @@ public class QQSettingMsgClearFragment
   
   private void a(boolean paramBoolean)
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.a;
     if (localQQProgressDialog != null)
     {
       if ((paramBoolean) && (!localQQProgressDialog.isShowing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.a.show();
         return;
       }
-      if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((!paramBoolean) && (this.a.isShowing())) {
+        this.a.dismiss();
       }
     }
   }
   
   public static boolean a()
   {
-    long l = System.currentTimeMillis();
-    if (l - jdField_b_of_type_Long <= 200L)
+    long l1 = System.currentTimeMillis();
+    if (l1 - n <= 200L)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQSettingMsgClearFragment", 2, "click too fast");
       }
-      jdField_b_of_type_Long = l;
+      n = l1;
       return true;
     }
-    jdField_b_of_type_Long = l;
+    n = l1;
     return false;
   }
   
   private void b()
+  {
+    this.f = ((BounceScrollView)this.mContentView.findViewById(2131445362));
+    this.h = this.mContentView.findViewById(2131442476);
+    this.h.setOnClickListener(this);
+    this.mContentView.findViewById(2131431685).setOnClickListener(this);
+    this.mContentView.findViewById(2131449218).setOnClickListener(this);
+    this.g = ((FormSimpleItem)this.mContentView.findViewById(2131431682));
+    this.g.setOnClickListener(this);
+    this.g.setContentDescription(getString(2131888421));
+    this.g.setLeftTextColor(4);
+    this.i = this.mContentView.findViewById(2131431699);
+    this.i.setOnClickListener(this);
+    this.j = ((TextView)this.mContentView.findViewById(2131431700));
+    g();
+    if (VersionUtils.c()) {
+      this.f.setOverScrollMode(0);
+    }
+    if (this.a == null)
+    {
+      this.a = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
+      this.a.a(getString(2131887798));
+      this.a.setCanceledOnTouchOutside(true);
+      this.a.c(true);
+      this.a.a(false);
+      this.a.b(true);
+    }
+  }
+  
+  private static void b(DownloadInfo paramDownloadInfo, String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" onDownloadFinish info = ");
+      localStringBuilder.append(paramDownloadInfo);
+      QLog.d("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
+    }
+  }
+  
+  private void c()
   {
     try
     {
@@ -204,24 +211,12 @@ public class QQSettingMsgClearFragment
     }
   }
   
-  private static void b(DownloadInfo paramDownloadInfo, String paramString)
+  private void d()
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(" onDownloadFinish info = ");
-      localStringBuilder.append(paramDownloadInfo);
-      QLog.d("QQSettingMsgClearFragment", 2, localStringBuilder.toString());
-    }
-  }
-  
-  private void c()
-  {
-    d();
+    e();
     Bundle localBundle = new Bundle();
     localBundle.putString(DownloadConstants.b, "5848");
-    localBundle.putString(DownloadConstants.l, jdField_a_of_type_JavaLangString);
+    localBundle.putString(DownloadConstants.l, b);
     localBundle.putString(DownloadConstants.f, "com.tencent.android.qqdownloader");
     localBundle.putString(DownloadConstants.j, "https://a.app.qq.com/o/myapp-down?g_f=1118400");
     localBundle.putInt(DownloadConstants.k, 2);
@@ -229,16 +224,16 @@ public class QQSettingMsgClearFragment
     DownloadProxy.a().a(getBaseActivity(), localBundle, "biz_src_qq_setting_msg_clean", null, 0);
   }
   
-  private void d()
+  private void e()
   {
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new QQSettingMsgClearFragment.6(this);
-      DownloadManagerV2.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
+      this.d = new QQSettingMsgClearFragment.6(this);
+      DownloadManagerV2.a().a(this.d);
     }
   }
   
-  private void e()
+  private void f()
   {
     Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("tmast://spaceclean?via=ANDROIDQQ.YYB.AZQQAPK&targetTabType=1"));
     localIntent.setFlags(268435456);
@@ -253,18 +248,18 @@ public class QQSettingMsgClearFragment
     }
   }
   
-  private void f()
+  private void g()
   {
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    if (this.i != null)
     {
       if (DeepCleanConfigProcessor.a())
       {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Boolean = PackageUtil.a(BaseApplication.getContext(), "com.tencent.android.qqdownloader");
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(DeepCleanConfigProcessor.a(BaseApplication.getContext(), this.jdField_a_of_type_Boolean));
+        this.i.setVisibility(0);
+        this.k = PackageUtil.d(BaseApplication.getContext(), "com.tencent.android.qqdownloader");
+        this.j.setText(DeepCleanConfigProcessor.a(BaseApplication.getContext(), this.k));
         return;
       }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.i.setVisibility(8);
     }
   }
   
@@ -273,21 +268,21 @@ public class QQSettingMsgClearFragment
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface))
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        a();
+      this.e = ((QQAppInterface)getBaseActivity().getAppRuntime());
+      if (this.e != null) {
+        b();
       }
     }
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561459;
+    return 2131627816;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365470)
+    if (paramView.getId() == 2131431685)
     {
       ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileClear(getActivity(), 1);
       FileManagerReporter.a("0x80087C4");
@@ -297,7 +292,7 @@ public class QQSettingMsgClearFragment
     else
     {
       Object localObject1;
-      if (paramView.getId() == 2131380297)
+      if (paramView.getId() == 2131449218)
       {
         localObject1 = new Intent(getBaseActivity(), QQSettingMsgHistoryActivity.class);
         ((Intent)localObject1).putExtra("set_display_type", 1);
@@ -307,12 +302,12 @@ public class QQSettingMsgClearFragment
       else
       {
         Object localObject2;
-        if (paramView.getId() == 2131374313)
+        if (paramView.getId() == 2131442476)
         {
           if (!a())
           {
             localObject1 = new Intent();
-            localObject2 = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "", 0, null, false);
+            localObject2 = AIOImageProviderService.a(this.e.getCurrentUin(), "", 0, null, false);
             Bundle localBundle = new Bundle();
             localBundle.putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(((AIOImageProviderService)localObject2).asBinder()));
             localBundle.putInt("jump", 1);
@@ -323,36 +318,36 @@ public class QQSettingMsgClearFragment
             QQSettingMsgHistoryActivity.a();
           }
         }
-        else if (paramView.getId() == 2131365467)
+        else if (paramView.getId() == 2131431682)
         {
           long l1 = System.currentTimeMillis();
-          long l2 = this.jdField_a_of_type_Long;
+          long l2 = this.m;
           if ((!getBaseActivity().isFinishing()) && (l1 - l2 >= 500L))
           {
-            this.jdField_a_of_type_Long = l1;
-            localObject1 = (ActionSheet)ActionSheetHelper.a(getBaseActivity(), null);
+            this.m = l1;
+            localObject1 = (ActionSheet)ActionSheetHelper.b(getBaseActivity(), null);
             localObject2 = new QQSettingMsgClearFragment.1(this, (ActionSheet)localObject1);
-            ((ActionSheet)localObject1).addButton(2131691462, 3);
-            ((ActionSheet)localObject1).addCancelButton(getString(2131690728));
+            ((ActionSheet)localObject1).addButton(2131888420, 3);
+            ((ActionSheet)localObject1).addCancelButton(getString(2131887648));
             ((ActionSheet)localObject1).setOnButtonClickListener((ActionSheet.OnButtonClickListener)localObject2);
-            ((ActionSheet)localObject1).setMainTitle(2131699236);
+            ((ActionSheet)localObject1).setMainTitle(2131897252);
             ((ActionSheet)localObject1).show();
           }
         }
-        else if (paramView.getId() == 2131365485)
+        else if (paramView.getId() == 2131431699)
         {
-          if (this.jdField_a_of_type_Boolean)
+          if (this.k)
           {
             DeepCleanConfigReporter.d();
-            a(getString(2131691612), getString(2131691613), new QQSettingMsgClearFragment.2(this), new QQSettingMsgClearFragment.3(this));
+            a(getString(2131888574), getString(2131888575), new QQSettingMsgClearFragment.2(this), new QQSettingMsgClearFragment.3(this));
           }
           else
           {
             DeepCleanConfigReporter.c();
-            a(getString(2131691608), getString(2131691609), new QQSettingMsgClearFragment.4(this), new QQSettingMsgClearFragment.5(this));
+            a(getString(2131888570), getString(2131888571), new QQSettingMsgClearFragment.4(this), new QQSettingMsgClearFragment.5(this));
           }
           DeepCleanConfigReporter.b();
-          this.jdField_b_of_type_Boolean = true;
+          this.l = true;
         }
       }
     }
@@ -362,13 +357,13 @@ public class QQSettingMsgClearFragment
   protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getBaseActivity().getString(2131699239));
+    setTitle(getBaseActivity().getString(2131897255));
     return localView;
   }
   
   public void onDestroy()
   {
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    QQProgressDialog localQQProgressDialog = this.a;
     if ((localQQProgressDialog != null) && (localQQProgressDialog.isShowing())) {
       a(false);
     }
@@ -380,29 +375,29 @@ public class QQSettingMsgClearFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener != null)
+    if (this.d != null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("QQSettingMsgClearFragment", 2, "手动注销注册时事件mQQListener");
       }
-      DownloadManagerV2.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = null;
+      DownloadManagerV2.a().b(this.d);
+      this.d = null;
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_b_of_type_Boolean) {
-      DeepCleanConfigProcessor.a();
+    if (this.l) {
+      DeepCleanConfigProcessor.b();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Boolean = PackageUtil.a(BaseApplication.getContext(), "com.tencent.android.qqdownloader");
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    this.k = PackageUtil.d(BaseApplication.getContext(), "com.tencent.android.qqdownloader");
+    View localView = this.i;
     if ((localView != null) && (localView.getVisibility() == 0)) {
       DeepCleanConfigReporter.a();
     }
@@ -410,7 +405,7 @@ public class QQSettingMsgClearFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingMsgClearFragment
  * JD-Core Version:    0.7.0.1
  */

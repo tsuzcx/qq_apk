@@ -9,15 +9,15 @@ class FileForwardManager$4
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileForwardManager$ForwarResult.a(paramString2, paramString3);
+      this.a.a(paramString2, paramString3);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileForwardManager$ForwarResult.a(paramInt, paramString1);
+    this.a.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileForwardManager.4
  * JD-Core Version:    0.7.0.1
  */

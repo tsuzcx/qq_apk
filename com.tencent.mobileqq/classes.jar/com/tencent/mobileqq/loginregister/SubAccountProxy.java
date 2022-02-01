@@ -10,21 +10,21 @@ public class SubAccountProxy
   implements ISubAccountSmsLogin
 {
   @ConfigInject(configPath="Business/qqlogin-api/src/main/resources/Inject_login_register_config.yml", version=1)
-  private static ArrayList<Class<? extends ISubAccountSmsLogin>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ISubAccountSmsLogin jdField_a_of_type_ComTencentMobileqqLoginregisterISubAccountSmsLogin;
+  private static ArrayList<Class<? extends ISubAccountSmsLogin>> a = new ArrayList();
+  private ISubAccountSmsLogin b;
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList.add(SubAccountSmsLoginImpl.class);
+    a.add(SubAccountSmsLoginImpl.class);
   }
   
   public SubAccountProxy()
   {
-    QLog.d("SubAccountProxy", 1, new Object[] { "sClassList size : ", Integer.valueOf(jdField_a_of_type_JavaUtilArrayList.size()) });
-    Class localClass = (Class)jdField_a_of_type_JavaUtilArrayList.get(0);
+    QLog.d("SubAccountProxy", 1, new Object[] { "sClassList size : ", Integer.valueOf(a.size()) });
+    Class localClass = (Class)a.get(0);
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqLoginregisterISubAccountSmsLogin = ((ISubAccountSmsLogin)localClass.newInstance());
+      this.b = ((ISubAccountSmsLogin)localClass.newInstance());
       return;
     }
     catch (Exception localException)
@@ -35,22 +35,22 @@ public class SubAccountProxy
   
   public BusinessObserver a(QBaseActivity paramQBaseActivity, ILoginSmsPageView paramILoginSmsPageView)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqLoginregisterISubAccountSmsLogin.a(paramQBaseActivity, paramILoginSmsPageView);
+    return this.b.a(paramQBaseActivity, paramILoginSmsPageView);
   }
   
   public void a(QBaseActivity paramQBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterISubAccountSmsLogin.a(paramQBaseActivity);
+    this.b.a(paramQBaseActivity);
   }
   
   public void a(QBaseActivity paramQBaseActivity, SubSmsLoginErrorInfo paramSubSmsLoginErrorInfo, ILoginSmsPageView paramILoginSmsPageView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterISubAccountSmsLogin.a(paramQBaseActivity, paramSubSmsLoginErrorInfo, paramILoginSmsPageView);
+    this.b.a(paramQBaseActivity, paramSubSmsLoginErrorInfo, paramILoginSmsPageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.SubAccountProxy
  * JD-Core Version:    0.7.0.1
  */

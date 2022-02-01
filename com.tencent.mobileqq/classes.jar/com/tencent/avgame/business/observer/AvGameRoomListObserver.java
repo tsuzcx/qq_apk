@@ -13,12 +13,7 @@ import java.util.List;
 public class AvGameRoomListObserver
   implements BusinessObserver
 {
-  public final String a;
-  
-  public AvGameRoomListObserver()
-  {
-    this.jdField_a_of_type_JavaLangString = "AvGameRoomListObserver";
-  }
+  public final String b = "AvGameRoomListObserver";
   
   private void a(boolean paramBoolean, Object paramObject)
   {
@@ -58,11 +53,11 @@ public class AvGameRoomListObserver
       if (paramObject.length == 7)
       {
         AvGameRoomListObserver.BatchGetGroupGameRoomListResult localBatchGetGroupGameRoomListResult = new AvGameRoomListObserver.BatchGetGroupGameRoomListResult(this);
-        localBatchGetGroupGameRoomListResult.jdField_a_of_type_JavaLangString = ((String)paramObject[2]);
-        localBatchGetGroupGameRoomListResult.jdField_a_of_type_JavaUtilList = ((List)paramObject[3]);
-        localBatchGetGroupGameRoomListResult.jdField_a_of_type_Int = ((Integer)paramObject[4]).intValue();
-        localBatchGetGroupGameRoomListResult.b = ((Integer)paramObject[5]).intValue();
-        localBatchGetGroupGameRoomListResult.c = ((Integer)paramObject[6]).intValue();
+        localBatchGetGroupGameRoomListResult.a = ((String)paramObject[2]);
+        localBatchGetGroupGameRoomListResult.b = ((List)paramObject[3]);
+        localBatchGetGroupGameRoomListResult.c = ((Integer)paramObject[4]).intValue();
+        localBatchGetGroupGameRoomListResult.d = ((Integer)paramObject[5]).intValue();
+        localBatchGetGroupGameRoomListResult.e = ((Integer)paramObject[6]).intValue();
         a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], localBatchGetGroupGameRoomListResult);
         return;
       }

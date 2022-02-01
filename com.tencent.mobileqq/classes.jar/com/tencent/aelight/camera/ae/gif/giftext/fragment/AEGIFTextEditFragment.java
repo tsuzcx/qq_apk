@@ -45,29 +45,29 @@ import com.tencent.widget.immersive.SystemBarTintManager;
 public class AEGIFTextEditFragment
   extends Fragment
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private Dialog jdField_a_of_type_AndroidAppDialog;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AEStoryGIFPreviewActivity jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity;
-  private AEGIFTextMvp jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp;
-  private AEGIFTextColorAdapter jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter;
-  private AEGIFTextEditFragment.TextValidCallback jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment$TextValidCallback;
-  AEGIFTextEditViewModel jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFTextEditViewModel;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float = 1.0F;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_b_of_type_JavaLangString;
-  private float jdField_c_of_type_Float = 0.82F;
-  private String jdField_c_of_type_JavaLangString = null;
-  private float d = 0.16F;
+  AEGIFTextEditViewModel a;
+  private AEStoryGIFPreviewActivity b;
+  private ViewGroup c;
+  private EditText d;
+  private ImageView e;
+  private RecyclerView f;
+  private RelativeLayout g;
+  private RelativeLayout h;
+  private AEGIFTextColorAdapter i;
+  private AEGIFTextMvp j;
+  private String k;
+  private String l;
+  private int m;
+  private QQCustomDialog n;
+  private Dialog o;
+  private AEGIFTextEditFragment.TextValidCallback p;
+  private View q;
+  private String r = null;
+  private boolean s = false;
+  private float t = 0.0F;
+  private float u = 1.0F;
+  private float v = 0.82F;
+  private float w = 0.16F;
   
   private int a(char paramChar)
   {
@@ -101,44 +101,39 @@ public class AEGIFTextEditFragment
     return localAEGIFTextEditFragment;
   }
   
-  private void a()
-  {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity.getSystemService("input_method")).toggleSoftInput(1, 2);
-  }
-  
   private void a(int paramInt)
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.post(new AEGIFTextEditFragment.13(this, paramInt));
+    this.h.post(new AEGIFTextEditFragment.13(this, paramInt));
   }
   
   private void a(AEGIFTextEditFragment.TextValidCallback paramTextValidCallback)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment$TextValidCallback = paramTextValidCallback;
+    this.p = paramTextValidCallback;
   }
   
   private void a(String paramString1, String paramString2)
   {
-    AEBaseReportParam.a().p(paramString1);
-    AEBaseReportParam.a().q(paramString2);
+    AEBaseReportParam.a().A(paramString1);
+    AEBaseReportParam.a().B(paramString2);
   }
   
   private void a(boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    Object localObject = this.d.getText().toString();
     if (paramBoolean)
     {
       if (((String)localObject).equals(""))
       {
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp;
+        localObject = this.j;
         if (localObject != null) {
           ((AEGIFTextMvp)localObject).d();
         }
-        this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFTextEditViewModel.a();
-        a("none", this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a());
+        this.a.d();
+        a("none", this.i.a());
         getFragmentManager().popBackStack();
         return;
       }
-      d();
+      e();
       b((String)localObject);
       return;
     }
@@ -151,27 +146,128 @@ public class AEGIFTextEditFragment
     {
       if (paramBoolean2)
       {
-        h();
-        Object localObject = (PngCreateResult.PngResultItem)this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFTextEditViewModel.c().getValue();
-        if ((localObject != null) && (((PngCreateResult.PngResultItem)localObject).jdField_a_of_type_JavaLangString != null)) {
-          FileUtils.deleteDirectory(((PngCreateResult.PngResultItem)localObject).jdField_a_of_type_JavaLangString);
+        i();
+        Object localObject = (PngCreateResult.PngResultItem)this.a.c().getValue();
+        if ((localObject != null) && (((PngCreateResult.PngResultItem)localObject).a != null)) {
+          FileUtils.deleteDirectory(((PngCreateResult.PngResultItem)localObject).a);
         }
-        localObject = new PngsTextDrawer(this.jdField_c_of_type_JavaLangString);
-        b();
-        String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-        ((PngsTextDrawer)localObject).a(str, 55, this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a(), this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.b(), DisplayUtil.a(getActivity(), 4.0F), this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Float, this.jdField_c_of_type_Float, this.jdField_b_of_type_Float, this.d);
+        localObject = new PngsTextDrawer(this.r);
+        c();
+        String str = this.d.getText().toString();
+        ((PngsTextDrawer)localObject).a(str, 55, this.i.a(), this.i.c(), DisplayUtil.a(getActivity(), 4.0F), this.l, this.t, this.v, this.u, this.w);
         ((PngsTextDrawer)localObject).a(new AEGIFTextEditFragment.3(this, str));
         return;
       }
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity.runOnUiThread(new AEGIFTextEditFragment.4(this));
+      this.o.dismiss();
+      this.b.runOnUiThread(new AEGIFTextEditFragment.4(this));
       return;
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    e();
+    this.o.dismiss();
+    f();
   }
   
-  private int b()
+  private void b()
+  {
+    ((InputMethodManager)this.b.getSystemService("input_method")).toggleSoftInput(1, 2);
+  }
+  
+  private void b(View paramView)
+  {
+    this.q = paramView;
+  }
+  
+  private void b(String paramString)
+  {
+    AppInterface localAppInterface = QQStoryContext.k();
+    CameraPeakServiceHandler localCameraPeakServiceHandler = (CameraPeakServiceHandler)localAppInterface.getBusinessHandler(PeakAppInterface.e);
+    localAppInterface.addObserver(new AEGIFTextEditFragment.11(this, localAppInterface));
+    localCameraPeakServiceHandler.c(paramString);
+  }
+  
+  private void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.o.dismiss();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        i();
+        getFragmentManager().popBackStack();
+        return;
+      }
+      this.b.runOnUiThread(new AEGIFTextEditFragment.5(this));
+      return;
+    }
+    f();
+  }
+  
+  private void c()
+  {
+    if (((AEGIFOutlineTextView)this.q.findViewById(2063991291) != null) && (this.d.getText().toString().indexOf('\n') > 0))
+    {
+      this.v = 0.73F;
+      this.w = 0.3F;
+    }
+  }
+  
+  private void d()
+  {
+    ((InputMethodManager)this.b.getSystemService("input_method")).hideSoftInputFromWindow(this.b.getWindow().getDecorView().getRootView().getWindowToken(), 0);
+  }
+  
+  private void e()
+  {
+    this.o = new Dialog(this.b, 2131953338);
+    this.o.setCancelable(false);
+    this.o.setCanceledOnTouchOutside(false);
+    this.o.setContentView(2064056505);
+    this.o.show();
+  }
+  
+  private void f()
+  {
+    this.n = DialogUtil.a(this.b, 230);
+    this.n.setMessage(HardCodeUtil.a(2131898246));
+    this.n.setCanceledOnTouchOutside(false);
+    this.n.setPositiveButton(HardCodeUtil.a(2131898245), new AEGIFTextEditFragment.6(this));
+    this.n.show();
+  }
+  
+  private void g()
+  {
+    this.a = ((AEGIFTextEditViewModel)AEViewModelProviders.a(this.b).get(AEGIFTextEditViewModel.class));
+  }
+  
+  private void h()
+  {
+    this.g = ((RelativeLayout)this.c.findViewById(2063991382));
+    this.h = ((RelativeLayout)this.c.findViewById(2063991388));
+    this.e = ((ImageView)this.c.findViewById(2063990932));
+    this.f = ((RecyclerView)this.c.findViewById(2063991402));
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.b, 0, false);
+    this.f.setLayoutManager(localLinearLayoutManager);
+    this.i = new AEGIFTextColorAdapter(this.b, this.f);
+    this.i.a(this.m);
+    this.f.setAdapter(this.i);
+    this.c.findViewById(2063991484).setOnClickListener(new AEGIFTextEditFragment.7(this));
+    this.c.findViewById(2063991485).setOnClickListener(new AEGIFTextEditFragment.8(this));
+    this.e.setOnClickListener(new AEGIFTextEditFragment.9(this));
+  }
+  
+  private void i()
+  {
+    String str1 = this.d.getText().toString();
+    String str2 = this.i.a();
+    int i1 = this.i.b();
+    String str3 = this.i.c();
+    if (this.j != null) {
+      this.b.runOnUiThread(new AEGIFTextEditFragment.10(this, str1, str2, str3, i1));
+    }
+    this.a.a(str1, i1);
+    a(str1, str2);
+  }
+  
+  private int j()
   {
     Activity localActivity = getActivity();
     if ((localActivity != null) && (!localActivity.isFinishing()) && (SystemBarTintManager.hasNavBar(localActivity))) {
@@ -180,105 +276,9 @@ public class AEGIFTextEditFragment
     return 0;
   }
   
-  private void b()
-  {
-    if (((AEGIFOutlineTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122466) != null) && (this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().indexOf('\n') > 0))
-    {
-      this.jdField_c_of_type_Float = 0.73F;
-      this.d = 0.3F;
-    }
-  }
-  
-  private void b(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  private void b(String paramString)
-  {
-    AppInterface localAppInterface = QQStoryContext.a();
-    CameraPeakServiceHandler localCameraPeakServiceHandler = (CameraPeakServiceHandler)localAppInterface.getBusinessHandler(PeakAppInterface.d);
-    localAppInterface.addObserver(new AEGIFTextEditFragment.11(this, localAppInterface));
-    localCameraPeakServiceHandler.c(paramString);
-  }
-  
-  private void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        h();
-        getFragmentManager().popBackStack();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity.runOnUiThread(new AEGIFTextEditFragment.5(this));
-      return;
-    }
-    e();
-  }
-  
-  private void c()
-  {
-    ((InputMethodManager)this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity.getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity.getWindow().getDecorView().getRootView().getWindowToken(), 0);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity, 2131756189);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2064318634);
-    this.jdField_a_of_type_AndroidAppDialog.show();
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(HardCodeUtil.a(2131700202));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131700201), new AEGIFTextEditFragment.6(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFTextEditViewModel = ((AEGIFTextEditViewModel)AEViewModelProviders.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity).get(AEGIFTextEditViewModel.class));
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122564));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122570));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122000));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122585));
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter = new AEGIFTextColorAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122694).setOnClickListener(new AEGIFTextEditFragment.7(this));
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122695).setOnClickListener(new AEGIFTextEditFragment.8(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new AEGIFTextEditFragment.9(this));
-  }
-  
-  private void h()
-  {
-    String str1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    String str2 = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a();
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a();
-    String str3 = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.b();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity.runOnUiThread(new AEGIFTextEditFragment.10(this, str1, str2, str3, i));
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFTextEditViewModel.a(str1, i);
-    a(str1, str2);
-  }
-  
   protected int a()
   {
-    return 2064318603;
+    return 2064056481;
   }
   
   public void a(View paramView)
@@ -288,89 +288,89 @@ public class AEGIFTextEditFragment
   
   public void a(AEGIFTextMvp paramAEGIFTextMvp)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp = paramAEGIFTextMvp;
+    this.j = paramAEGIFTextMvp;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2064122618));
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a(this.jdField_a_of_type_AndroidWidgetEditText);
-    this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidWidgetEditText.setTextColor(Color.parseColor(paramString));
-    this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.length() > 0)
+    this.d = ((EditText)this.c.findViewById(2063991425));
+    this.i.a(this.d);
+    this.d.setText(this.k);
+    this.d.setTextColor(Color.parseColor(paramString));
+    this.d.setSelection(this.k.length());
+    if (this.d.length() > 0)
     {
-      paramString = this.jdField_a_of_type_AndroidWidgetImageView;
+      paramString = this.e;
       if (paramString != null) {
         paramString.setVisibility(0);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new AEGIFTextEditFragment.LengthInputFilter(this) });
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new AEGIFTextEditFragment.14(this));
+    this.d.setFilters(new InputFilter[] { new AEGIFTextEditFragment.LengthInputFilter(this) });
+    this.d.addTextChangedListener(new AEGIFTextEditFragment.14(this));
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_c_of_type_JavaLangString = getArguments().getString("KEY_PNG_DIR_PATH");
-    this.jdField_a_of_type_Boolean = getArguments().getBoolean("KEY_IS_MULTIPLE", false);
+    this.r = getArguments().getString("KEY_PNG_DIR_PATH");
+    this.s = getArguments().getBoolean("KEY_IS_MULTIPLE", false);
     if (getArguments().containsKey("KEY_FONT_ID")) {
-      this.jdField_b_of_type_JavaLangString = getArguments().getString("KEY_FONT_ID");
+      this.l = getArguments().getString("KEY_FONT_ID");
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifAEStoryGIFPreviewActivity = ((AEStoryGIFPreviewActivity)getActivity());
-    f();
+    this.b = ((AEStoryGIFPreviewActivity)getActivity());
+    g();
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(a(), paramViewGroup, false));
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp;
+    this.c = ((ViewGroup)paramLayoutInflater.inflate(a(), paramViewGroup, false));
+    paramLayoutInflater = this.j;
     if (paramLayoutInflater != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramLayoutInflater.a();
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAEGIFTextMvp.a();
+      this.k = paramLayoutInflater.g();
+      this.m = this.j.h();
     }
     else
     {
-      this.jdField_a_of_type_JavaLangString = ((String)this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextViewmodelAEGIFTextEditViewModel.b().getValue());
+      this.k = ((String)this.a.b().getValue());
     }
-    g();
-    a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextAdapterAEGIFTextColorAdapter.a());
-    a();
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    h();
+    a(this.i.a());
+    b();
+    return this.c;
   }
   
   public void onPause()
   {
     super.onPause();
-    c();
+    d();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    this.d.requestFocus();
     AEBaseDataReporter localAEBaseDataReporter = AEBaseDataReporter.a();
     String str;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.s) {
       str = "recommend";
     } else {
       str = "edit";
     }
-    localAEBaseDataReporter.m(str);
+    localAEBaseDataReporter.o(str);
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(new AEGIFTextEditFragment.1(this));
+    this.c.setOnTouchListener(new AEGIFTextEditFragment.1(this));
     a(new AEGIFTextEditFragment.2(this));
-    a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    a(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFTextEditFragment
  * JD-Core Version:    0.7.0.1
  */

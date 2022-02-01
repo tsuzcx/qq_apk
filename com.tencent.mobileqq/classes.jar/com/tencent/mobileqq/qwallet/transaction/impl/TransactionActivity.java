@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
@@ -59,6 +60,7 @@ import com.tencent.mobileqq.util.CommonUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -208,19 +210,19 @@ public class TransactionActivity
   private String getTransFeeUint(float paramFloat)
   {
     if ((paramFloat >= 1000.0F) && (paramFloat <= 9999.0F)) {
-      return HardCodeUtil.a(R.string.db);
-    }
-    if ((paramFloat >= 10000.0F) && (paramFloat <= 99999.0F)) {
-      return HardCodeUtil.a(R.string.df);
-    }
-    if ((paramFloat >= 100000.0F) && (paramFloat <= 999999.0F)) {
       return HardCodeUtil.a(R.string.de);
     }
+    if ((paramFloat >= 10000.0F) && (paramFloat <= 99999.0F)) {
+      return HardCodeUtil.a(R.string.di);
+    }
+    if ((paramFloat >= 100000.0F) && (paramFloat <= 999999.0F)) {
+      return HardCodeUtil.a(R.string.dh);
+    }
     if ((paramFloat >= 1000000.0F) && (paramFloat <= 9999999.0F)) {
-      return HardCodeUtil.a(R.string.dc);
+      return HardCodeUtil.a(R.string.df);
     }
     if ((paramFloat >= 10000000.0F) && (paramFloat < 1.0E+008F)) {
-      return HardCodeUtil.a(R.string.da);
+      return HardCodeUtil.a(R.string.dd);
     }
     return "";
   }
@@ -253,13 +255,13 @@ public class TransactionActivity
     this.mRightView.setVisibility(8);
     this.mRootScroll.setVisibility(8);
     this.mInputScroll.setVisibility(0);
-    this.mBackBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ao, 0, 0, 0);
+    this.mBackBtn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ap, 0, 0, 0);
   }
   
   private void initYellowTips()
   {
     JSONObject localJSONObject = YellowTipsLayout.a(getApplicationContext(), this.mUin);
-    YellowTipsLayout localYellowTipsLayout = (YellowTipsLayout)findViewById(R.id.aS);
+    YellowTipsLayout localYellowTipsLayout = (YellowTipsLayout)findViewById(R.id.ba);
     if ((localYellowTipsLayout != null) && (localYellowTipsLayout.a(localJSONObject, "transfer_ad"))) {
       this.mRootScroll.setPadding(0, 0, 0, 0);
     }
@@ -394,7 +396,7 @@ public class TransactionActivity
       paramString1.printStackTrace();
     }
     paramString5.append("|");
-    paramString5.append(CommonUtil.a());
+    paramString5.append(CommonUtil.b());
     paramString5.append("|");
     if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
     {
@@ -553,7 +555,7 @@ public class TransactionActivity
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         paramIntent = getString(R.string.O);
       }
-      QQToast.a(this.mContext, paramIntent, 0).a();
+      QQToast.makeText(this.mContext, paramIntent, 0).show();
     }
   }
   
@@ -669,46 +671,51 @@ public class TransactionActivity
   {
     try
     {
-      setContentView(R.layout.w);
+      setContentView(R.layout.z);
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
       finish();
     }
-    this.root = ((LinearLayout)findViewById(R.id.bL));
-    this.mPayLayout = findViewById(R.id.bj);
-    this.mTransferLayout = findViewById(R.id.bo);
-    this.mRootScroll = findViewById(R.id.bN);
-    this.mInputScroll = findViewById(R.id.g);
+    this.root = ((LinearLayout)findViewById(R.id.bX));
+    this.mPayLayout = findViewById(R.id.bt);
+    this.mTransferLayout = findViewById(R.id.by);
+    this.mRootScroll = findViewById(R.id.bZ);
+    this.mInputScroll = findViewById(R.id.l);
     initYellowTips();
-    this.mBackBtn = ((TextView)findViewById(R.id.at));
+    this.mBackBtn = ((TextView)findViewById(R.id.aB));
     this.mBackBtn.setVisibility(0);
     this.mBackBtn.setOnClickListener(this);
-    this.titleTV = ((TextView)findViewById(R.id.aw));
-    this.transfer_unit = ((ImageView)findViewById(R.id.ct));
-    this.middle_line = findViewById(R.id.aR);
-    this.transfer_unit_text = ((TextView)findViewById(R.id.cu));
+    this.titleTV = ((TextView)findViewById(R.id.aE));
+    this.transfer_unit = ((ImageView)findViewById(R.id.cH));
+    this.middle_line = findViewById(R.id.aZ);
+    this.transfer_unit_text = ((TextView)findViewById(R.id.cI));
     this.mAmoutTxt = ((EditText)findViewById(R.id.b));
-    this.mPayAmountEdit = ((EditText)findViewById(R.id.aX));
-    this.mUinTxt = ((EditText)findViewById(R.id.cg));
+    this.mPayAmountEdit = ((EditText)findViewById(R.id.bf));
+    this.mUinTxt = ((EditText)findViewById(R.id.cu));
     this.mUinTxt.addTextChangedListener(this.mUinTextWatcher);
     this.mAmoutTxt.addTextChangedListener(this.mTextWatcher);
     Object localObject1 = this.mAmoutTxt;
     ((EditText)localObject1).addTextChangedListener(new MoneyWatcher((EditText)localObject1));
     this.mPayAmountEdit.addTextChangedListener(this.mTextWatcher);
-    this.mMemo = ((EditText)findViewById(R.id.aP));
-    this.mPayMemoEdit = ((TextView)findViewById(R.id.aY));
+    this.mMemo = ((EditText)findViewById(R.id.aX));
+    this.mPayMemoEdit = ((TextView)findViewById(R.id.bg));
     this.mMemo.setOnEditorActionListener(new TransactionActivity.6(this));
-    this.mConfirmBtn = ((Button)findViewById(R.id.cq));
+    this.mConfirmBtn = ((Button)findViewById(R.id.cE));
     this.mConfirmBtn.setOnClickListener(this);
     this.mConfirmBtn.setEnabled(false);
-    this.mUinBtn = ((Button)findViewById(R.id.cf));
+    if (QQTheme.isNowSimpleUI()) {
+      this.mConfirmBtn.setTypeface(Typeface.defaultFromStyle(0));
+    } else {
+      this.mConfirmBtn.setTypeface(Typeface.defaultFromStyle(1));
+    }
+    this.mUinBtn = ((Button)findViewById(R.id.ct));
     this.mUinBtn.setOnClickListener(this);
     this.mUinBtn.setEnabled(false);
     this.mUinBtn.setClickable(false);
-    this.mLogo = ((ImageView)findViewById(R.id.ci));
-    this.mUserNickTxt = ((TextView)findViewById(R.id.ch));
+    this.mLogo = ((ImageView)findViewById(R.id.cw));
+    this.mUserNickTxt = ((TextView)findViewById(R.id.cv));
     localObject1 = this.mContext;
     localObject1 = QWalletTools.a((Context)localObject1, this.mPayeeNick, DisplayUtil.a((Context)localObject1, this.maxWidthNick), this.mUserNickTxt.getPaint());
     Object localObject2 = this.mUserNickTxt;
@@ -718,11 +725,11 @@ public class TransactionActivity
     localStringBuilder.append(this.mPayeeUin);
     localStringBuilder.append(")");
     ((TextView)localObject2).setText(localStringBuilder.toString());
-    this.del = ((ImageView)findViewById(R.id.cr));
+    this.del = ((ImageView)findViewById(R.id.cF));
     this.del.setOnClickListener(this);
-    this.mRightView = ((TextView)findViewById(R.id.av));
+    this.mRightView = ((TextView)findViewById(R.id.aD));
     this.mRightView.setVisibility(0);
-    this.mRightView.setText(HardCodeUtil.a(R.string.dd));
+    this.mRightView.setText(HardCodeUtil.a(R.string.dg));
     this.mRightView.setOnClickListener(this);
     if ("transferInput".equals(this.mTag))
     {
@@ -804,13 +811,13 @@ public class TransactionActivity
       localObject1 = FaceDrawable.getFaceDrawable(getApp(), 1, this.mPayeeUin);
       this.mLogo.setImageDrawable((Drawable)localObject1);
     }
-    this.mTransferTips = ((TextView)findViewById(R.id.cs));
+    this.mTransferTips = ((TextView)findViewById(R.id.cG));
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == R.id.at)
+    if (i == R.id.aB)
     {
       if (("transferInput".equals(this.mTag)) && (this.mRootScroll.getVisibility() == 0) && (!this.mAvoidInput))
       {
@@ -841,7 +848,7 @@ public class TransactionActivity
       finish();
       return;
     }
-    if (i == R.id.av)
+    if (i == R.id.aD)
     {
       i = "https://myun.tenpay.com/mqq/myun/trade/record.shtml?_wv=1027&_wvx=10&jump_type=payment".indexOf(':');
       if (i == -1) {
@@ -863,7 +870,7 @@ public class TransactionActivity
     else
     {
       Object localObject;
-      if (i == R.id.cq)
+      if (i == R.id.cE)
       {
         long l = System.currentTimeMillis();
         if (this.mlastInvalidatetime + 1000L < l)
@@ -875,7 +882,7 @@ public class TransactionActivity
           ((StringBuilder)localObject).append(this.mPayeeUin);
           if (paramView.getBoolean(((StringBuilder)localObject).toString(), true))
           {
-            DialogUtil.a(this.mContext, 233, null, getString(R.string.ac), R.string.c, R.string.du, new TransactionActivity.9(this), new TransactionActivity.10(this)).show();
+            DialogUtil.a(this.mContext, 233, null, getString(R.string.ac), R.string.c, R.string.dx, new TransactionActivity.9(this), new TransactionActivity.10(this)).show();
           }
           else
           {
@@ -887,7 +894,7 @@ public class TransactionActivity
       }
       else
       {
-        if (i == R.id.cf)
+        if (i == R.id.ct)
         {
           BaseQQAppInterface localBaseQQAppInterface = getApp();
           this.mPayeeUin = this.mUinTxt.getText().toString();
@@ -937,7 +944,7 @@ public class TransactionActivity
           this.mAmoutTxt.setText("");
           return;
         }
-        if (i == R.id.cr)
+        if (i == R.id.cF)
         {
           this.mAmoutTxt.setText("");
           this.middle_line.setVisibility(0);
@@ -1044,13 +1051,13 @@ public class TransactionActivity
   public void showToast(CharSequence paramCharSequence)
   {
     if ((!this.isActivityPause) && (!isFinishing())) {
-      QQToast.a(this, paramCharSequence, 0).b(getTitleBarHeight(this.mContext));
+      QQToast.makeText(this, paramCharSequence, 0).show(getTitleBarHeight(this.mContext));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.TransactionActivity
  * JD-Core Version:    0.7.0.1
  */

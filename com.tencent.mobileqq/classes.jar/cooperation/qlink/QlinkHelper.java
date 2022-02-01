@@ -81,86 +81,6 @@ public class QlinkHelper
     return null;
   }
   
-  public static QlinkHelper.QRScanInfo a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    QlinkHelper.QRScanInfo localQRScanInfo = new QlinkHelper.QRScanInfo();
-    Object localObject;
-    int j;
-    int i;
-    String str2;
-    try
-    {
-      if (!paramString.startsWith("qqf2f://qf/?")) {
-        return null;
-      }
-      localObject = paramString.substring(12, paramString.length()).split("&");
-      paramString = new Bundle();
-      j = localObject.length;
-      i = 0;
-    }
-    catch (Exception paramString)
-    {
-      int k;
-      String str1;
-      paramString.printStackTrace();
-      return null;
-    }
-    k = str2.indexOf("=");
-    if (-1 != k)
-    {
-      k += 1;
-      str1 = str2.substring(0, k);
-      str2 = str2.substring(k, str2.length());
-      if ((str1 != null) && (str2 != null)) {
-        paramString.putString(str1, str2);
-      }
-    }
-    label301:
-    for (;;)
-    {
-      localQRScanInfo.a = paramString.getString("k=");
-      localQRScanInfo.b = d(paramString.getString("u="));
-      localObject = b(paramString.getString("n="));
-      if (localObject != null)
-      {
-        localQRScanInfo.c = URLDecoder.decode((String)localObject, "UTF-8");
-        if (localQRScanInfo.c == null) {
-          localQRScanInfo.c = localQRScanInfo.b;
-        }
-      }
-      else
-      {
-        localQRScanInfo.c = localQRScanInfo.b;
-      }
-      localQRScanInfo.d = paramString.getString("o=");
-      localQRScanInfo.e = paramString.getString("p=");
-      localQRScanInfo.f = paramString.getString("d=");
-      if ((localQRScanInfo.a != null) && (localQRScanInfo.b != null))
-      {
-        paramString = localQRScanInfo.d;
-        if (paramString == null) {
-          return null;
-        }
-        return localQRScanInfo;
-      }
-      return null;
-      for (;;)
-      {
-        if (i >= j) {
-          break label301;
-        }
-        str2 = localObject[i];
-        if (str2 != null) {
-          break;
-        }
-        i += 1;
-      }
-    }
-  }
-  
   public static String a(String paramString)
   {
     if (paramString == null) {
@@ -184,28 +104,6 @@ public class QlinkHelper
       i += 1;
     }
     return ((StringBuilder)localObject).toString();
-  }
-  
-  public static boolean a()
-  {
-    try
-    {
-      WifiManager localWifiManager = (WifiManager)BaseApplicationImpl.getContext().getSystemService("wifi");
-      Method localMethod = localWifiManager.getClass().getMethod("isWifiApEnabled", new Class[0]);
-      localMethod.setAccessible(true);
-      boolean bool = ((Boolean)localMethod.invoke(localWifiManager, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return false;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-    }
-    return false;
   }
   
   public static String b(String paramString)
@@ -250,6 +148,28 @@ public class QlinkHelper
     return null;
   }
   
+  public static boolean b()
+  {
+    try
+    {
+      WifiManager localWifiManager = (WifiManager)BaseApplicationImpl.getContext().getSystemService("wifi");
+      Method localMethod = localWifiManager.getClass().getMethod("isWifiApEnabled", new Class[0]);
+      localMethod.setAccessible(true);
+      boolean bool = ((Boolean)localMethod.invoke(localWifiManager, new Object[0])).booleanValue();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      return false;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      localNoSuchMethodException.printStackTrace();
+    }
+    return false;
+  }
+  
   public static String c(String paramString)
   {
     try
@@ -279,10 +199,90 @@ public class QlinkHelper
     }
     return null;
   }
+  
+  public static QlinkHelper.QRScanInfo e(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    QlinkHelper.QRScanInfo localQRScanInfo = new QlinkHelper.QRScanInfo();
+    Object localObject;
+    int j;
+    int i;
+    String str2;
+    try
+    {
+      if (!paramString.startsWith("qqf2f://qf/?")) {
+        return null;
+      }
+      localObject = paramString.substring(12, paramString.length()).split("&");
+      paramString = new Bundle();
+      j = localObject.length;
+      i = 0;
+    }
+    catch (Exception paramString)
+    {
+      int k;
+      String str1;
+      paramString.printStackTrace();
+      return null;
+    }
+    k = str2.indexOf("=");
+    if (-1 != k)
+    {
+      k += 1;
+      str1 = str2.substring(0, k);
+      str2 = str2.substring(k, str2.length());
+      if ((str1 != null) && (str2 != null)) {
+        paramString.putString(str1, str2);
+      }
+    }
+    label302:
+    for (;;)
+    {
+      localQRScanInfo.a = paramString.getString("k=");
+      localQRScanInfo.b = d(paramString.getString("u="));
+      localObject = b(paramString.getString("n="));
+      if (localObject != null)
+      {
+        localQRScanInfo.c = URLDecoder.decode((String)localObject, "UTF-8");
+        if (localQRScanInfo.c == null) {
+          localQRScanInfo.c = localQRScanInfo.b;
+        }
+      }
+      else
+      {
+        localQRScanInfo.c = localQRScanInfo.b;
+      }
+      localQRScanInfo.d = paramString.getString("o=");
+      localQRScanInfo.e = paramString.getString("p=");
+      localQRScanInfo.f = paramString.getString("d=");
+      if ((localQRScanInfo.a != null) && (localQRScanInfo.b != null))
+      {
+        paramString = localQRScanInfo.d;
+        if (paramString == null) {
+          return null;
+        }
+        return localQRScanInfo;
+      }
+      return null;
+      for (;;)
+      {
+        if (i >= j) {
+          break label302;
+        }
+        str2 = localObject[i];
+        if (str2 != null) {
+          break;
+        }
+        i += 1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qlink.QlinkHelper
  * JD-Core Version:    0.7.0.1
  */

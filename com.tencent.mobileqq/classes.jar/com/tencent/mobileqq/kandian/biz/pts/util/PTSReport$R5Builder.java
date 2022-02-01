@@ -16,7 +16,7 @@ public class PTSReport$R5Builder
   public PTSReport$R5Builder()
   {
     this.a = new JSONObject();
-    a();
+    b();
   }
   
   public PTSReport$R5Builder(String paramString)
@@ -25,7 +25,7 @@ public class PTSReport$R5Builder
       try
       {
         this.a = new JSONObject(paramString);
-        a();
+        b();
         return;
       }
       catch (JSONException paramString)
@@ -35,24 +35,24 @@ public class PTSReport$R5Builder
         localStringBuilder.append(paramString);
         QLog.e("PTSReport", 1, localStringBuilder.toString());
         this.a = new JSONObject();
-        a();
+        b();
         return;
       }
     }
     this.a = new JSONObject();
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
     for (;;)
     {
       try
       {
         this.a.put("os", "1");
-        this.a.put("version", "8.7.0");
-        this.a.put("pts_engine_version", PTSEngineLoader.a().a());
-        this.a.put("pts_app_version", PTSAppLoader.a().a());
+        this.a.put("version", "8.8.17");
+        this.a.put("pts_engine_version", PTSEngineLoader.a().e());
+        this.a.put("pts_app_version", PTSAppLoader.a().d());
         this.a.put("sdk_version", String.valueOf(Build.VERSION.SDK_INT));
         JSONObject localJSONObject = this.a;
         boolean bool = TextUtils.isEmpty(Build.BRAND);
@@ -107,7 +107,7 @@ public class PTSReport$R5Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.PTSReport.R5Builder
  * JD-Core Version:    0.7.0.1
  */

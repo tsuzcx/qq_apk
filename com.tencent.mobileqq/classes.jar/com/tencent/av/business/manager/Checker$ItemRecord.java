@@ -5,40 +5,40 @@ import java.util.ArrayList;
 
 class Checker$ItemRecord
 {
-  int jdField_a_of_type_Int = 0;
-  final ItemBase jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase;
-  String jdField_a_of_type_JavaLangString;
-  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
+  final ItemBase a;
+  final ArrayList<String> b = new ArrayList(0);
+  String c;
+  String d;
+  int e = 0;
+  boolean f = false;
+  boolean g = false;
   
   Checker$ItemRecord(ItemBase paramItemBase, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase = paramItemBase;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramItemBase;
+    this.e = 0;
     if (paramArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.b.addAll(paramArrayList);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   boolean a()
   {
-    return this.jdField_a_of_type_Int >= 3;
+    return this.e >= 3;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ItemRecord{");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantItemBase);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

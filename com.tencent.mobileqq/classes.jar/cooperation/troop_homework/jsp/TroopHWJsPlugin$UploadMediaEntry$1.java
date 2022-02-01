@@ -13,13 +13,13 @@ class TroopHWJsPlugin$UploadMediaEntry$1
   
   public void a(int paramInt)
   {
-    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.c, this.a.jdField_a_of_type_Int, this.a.b, "uploading", "", 0);
+    JSONObject localJSONObject = this.a.k.a(this.a.a.c, this.a.c, this.a.i, "uploading", "", 0);
     for (;;)
     {
       float f2;
       try
       {
-        int i = this.a.b;
+        int i = this.a.i;
         f1 = 1.0F;
         if (i == 2)
         {
@@ -37,15 +37,15 @@ class TroopHWJsPlugin$UploadMediaEntry$1
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("id = ");
-          localStringBuilder.append(this.a.jdField_a_of_type_Int);
+          localStringBuilder.append(this.a.c);
           localStringBuilder.append(" progress = ");
           localStringBuilder.append(paramInt);
           localStringBuilder.append(" realProgress = ");
           localStringBuilder.append(f1);
           QLog.d("TroopHWJsPlugin", 4, localStringBuilder.toString());
         }
-        this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        this.a.jdField_a_of_type_Boolean = true;
+        this.a.k.callJs(this.a.a.a, new String[] { localJSONObject.toString() });
+        this.a.f = true;
         return;
       }
       catch (Exception localException)
@@ -64,55 +64,55 @@ class TroopHWJsPlugin$UploadMediaEntry$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onComplete id = ");
-      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.a.c);
       ((StringBuilder)localObject).append(" url = ");
       ((StringBuilder)localObject).append(paramString);
       QLog.d("TroopHWJsPlugin", 2, ((StringBuilder)localObject).toString());
     }
     int i;
-    if (this.a.b == 0) {
+    if (this.a.i == 0) {
       i = 11;
     } else {
       i = 0;
     }
-    if (this.a.b == 2) {
+    if (this.a.i == 2) {
       localObject = "uploading";
     } else {
       localObject = "uploaded";
     }
-    Object localObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.c, this.a.jdField_a_of_type_Int, this.a.b, (String)localObject, paramString, i);
-    this.a.jdField_a_of_type_JavaLangString = paramString;
+    Object localObject = this.a.k.a(this.a.a.c, this.a.c, this.a.i, (String)localObject, paramString, i);
+    this.a.e = paramString;
     try
     {
       ((JSONObject)localObject).put("result", 0);
-      i = this.a.b;
+      i = this.a.i;
       if (2 == i)
       {
         ((JSONObject)localObject).put("progress", 0.949999988079071D);
       }
-      else if (this.a.b == 1)
+      else if (this.a.i == 1)
       {
         ((JSONObject)localObject).put("progress", 1.0D);
         ((JSONObject)localObject).put("size", "[0,400,694,1000]");
       }
-      else if (this.a.b == 0)
+      else if (this.a.i == 0)
       {
         ((JSONObject)localObject).put("progress", 1.0D);
       }
-      if (this.a.b != 2) {
-        this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+      if (this.a.i != 2) {
+        this.a.k.callJs(this.a.a.a, new String[] { ((JSONObject)localObject).toString() });
       }
       paramString = this.a;
-      paramString.jdField_a_of_type_Boolean = false;
-      if (paramString.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      paramString.f = false;
+      if (paramString.h.get()) {
         return;
       }
-      if (this.a.b == 2)
+      if (this.a.i == 2)
       {
         paramString = new TroopHWJsPlugin.UploadMediaEntry.1.1(this);
-        localObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin;
+        localObject = this.a.k;
         TroopHWJsPlugin.UploadMediaEntry localUploadMediaEntry = this.a;
-        ThreadManager.postImmediately(new TroopHWJsPlugin.UploadVideoThumbJob((TroopHWJsPlugin)localObject, localUploadMediaEntry, paramString, TroopHWJsPlugin.a(localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin)), null, false);
+        ThreadManager.postImmediately(new TroopHWJsPlugin.UploadVideoThumbJob((TroopHWJsPlugin)localObject, localUploadMediaEntry, paramString, TroopHWJsPlugin.b(localUploadMediaEntry.k)), null, false);
       }
       return;
     }
@@ -129,8 +129,8 @@ class TroopHWJsPlugin$UploadMediaEntry$1
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("TroopHWJsPlugin", 1, ((StringBuilder)localObject).toString());
     localObject = this.a;
-    ((TroopHWJsPlugin.UploadMediaEntry)localObject).jdField_a_of_type_Boolean = false;
-    localObject = ((TroopHWJsPlugin.UploadMediaEntry)localObject).jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.c, this.a.jdField_a_of_type_Int, this.a.b, "uploaded", "", 0);
+    ((TroopHWJsPlugin.UploadMediaEntry)localObject).f = false;
+    localObject = ((TroopHWJsPlugin.UploadMediaEntry)localObject).k.a(this.a.a.c, this.a.c, this.a.i, "uploaded", "", 0);
     try
     {
       ((JSONObject)localObject).put("result", paramInt);
@@ -139,12 +139,12 @@ class TroopHWJsPlugin$UploadMediaEntry$1
     {
       QLog.e("TroopHWJsPlugin", 1, "upload error!", localException);
     }
-    this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin$RequestSource.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+    this.a.k.callJs(this.a.a.a, new String[] { ((JSONObject)localObject).toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry.1
  * JD-Core Version:    0.7.0.1
  */

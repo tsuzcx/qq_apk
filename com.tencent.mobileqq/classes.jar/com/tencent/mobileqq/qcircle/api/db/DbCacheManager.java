@@ -13,26 +13,42 @@ public class DbCacheManager
   extends AbstractDbCacheManager
   implements IDBManagerWrapper
 {
-  private final ArrayList<WeakReference<DbCacheManager.OnChangeListener>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private String jdField_b_of_type_JavaLangString;
-  private final ArrayList<WeakReference<IDBManagerWrapper.OnCloseListener>> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private String c;
+  private String e;
+  private String f;
+  private String[] g;
+  private final ArrayList<WeakReference<DbCacheManager.OnChangeListener>> h = new ArrayList();
+  private final ArrayList<WeakReference<IDBManagerWrapper.OnCloseListener>> i = new ArrayList();
   
   protected DbCacheManager(Context paramContext, Class<? extends IDBCacheDataWrapper> paramClass, long paramLong, int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
     super(paramContext, paramClass, paramLong, paramInt1, paramInt2, paramString, paramInt3);
   }
   
-  private List<DbCacheManager.OnChangeListener> a()
+  private void h()
+  {
+    Object localObject = i();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        DbCacheManager.OnChangeListener localOnChangeListener = (DbCacheManager.OnChangeListener)((Iterator)localObject).next();
+        if (localOnChangeListener != null) {
+          localOnChangeListener.a(this);
+        }
+      }
+    }
+  }
+  
+  private List<DbCacheManager.OnChangeListener> i()
   {
     Object localObject3;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.h)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      if (this.h.size() > 0)
       {
         ArrayList localArrayList1 = new ArrayList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.h.iterator();
         Object localObject1;
         for (;;)
         {
@@ -55,15 +71,15 @@ public class DbCacheManager
     }
   }
   
-  private List<IDBManagerWrapper.OnCloseListener> b()
+  private List<IDBManagerWrapper.OnCloseListener> j()
   {
     Object localObject3;
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    synchronized (this.i)
     {
-      if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
+      if (this.i.size() > 0)
       {
         ArrayList localArrayList1 = new ArrayList();
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.i.iterator();
         Object localObject1;
         for (;;)
         {
@@ -86,25 +102,9 @@ public class DbCacheManager
     }
   }
   
-  private void d()
+  private void k()
   {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        DbCacheManager.OnChangeListener localOnChangeListener = (DbCacheManager.OnChangeListener)((Iterator)localObject).next();
-        if (localOnChangeListener != null) {
-          localOnChangeListener.a(this);
-        }
-      }
-    }
-  }
-  
-  private void e()
-  {
-    Object localObject = b();
+    Object localObject = j();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -122,24 +122,19 @@ public class DbCacheManager
   {
     try
     {
-      int i = a(paramIDBCacheDataWrapper, paramString, null);
-      return i;
+      int j = a(paramIDBCacheDataWrapper, paramString, null);
+      return j;
     }
     finally {}
-  }
-  
-  public Cursor a(String paramString, String[] paramArrayOfString)
-  {
-    return super.a(paramString, paramArrayOfString);
   }
   
   /* Error */
   public ArrayList<? extends IDBCacheDataWrapper> a(String paramString1, String paramString2, String[] paramArrayOfString, String paramString3, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: new 20	java/util/ArrayList
+    //   0: new 22	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 23	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 25	java/util/ArrayList:<init>	()V
     //   7: astore 10
     //   9: aload_0
     //   10: monitorenter
@@ -149,7 +144,7 @@ public class DbCacheManager
     //   15: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   18: ifeq +9 -> 27
     //   21: aload_0
-    //   22: getfield 100	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   22: getfield 100	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:e	Ljava/lang/String;
     //   25: astore 7
     //   27: aload 4
     //   29: astore 8
@@ -157,7 +152,7 @@ public class DbCacheManager
     //   33: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   36: ifeq +9 -> 45
     //   39: aload_0
-    //   40: getfield 102	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:c	Ljava/lang/String;
+    //   40: getfield 102	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:f	Ljava/lang/String;
     //   43: astore 8
     //   45: aload_3
     //   46: astore 4
@@ -178,7 +173,7 @@ public class DbCacheManager
     //   76: astore 4
     //   78: goto +9 -> 87
     //   81: aload_0
-    //   82: getfield 111	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   82: getfield 111	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:g	[Ljava/lang/String;
     //   85: astore 4
     //   87: aconst_null
     //   88: astore_2
@@ -256,7 +251,7 @@ public class DbCacheManager
     //   221: astore_2
     //   222: aload 10
     //   224: aload 4
-    //   226: invokevirtual 60	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   226: invokevirtual 74	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   229: pop
     //   230: iload 5
     //   232: iconst_1
@@ -343,16 +338,63 @@ public class DbCacheManager
   
   public List<IDBCacheDataWrapper> a(String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    return a(paramString1, paramArrayOfString, paramString2, 0, 0);
+    return b(paramString1, paramArrayOfString, paramString2, 0, 0);
+  }
+  
+  public void a(IDBManagerWrapper.OnCloseListener paramOnCloseListener)
+  {
+    if (paramOnCloseListener == null) {
+      return;
+    }
+    synchronized (this.i)
+    {
+      Iterator localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (WeakReference)localIterator.next();
+        if (localObject == null) {
+          localObject = null;
+        } else {
+          localObject = (IDBManagerWrapper.OnCloseListener)((WeakReference)localObject).get();
+        }
+        if (localObject == null) {
+          localIterator.remove();
+        } else if (localObject == paramOnCloseListener) {
+          localIterator.remove();
+        }
+      }
+      return;
+    }
+    for (;;)
+    {
+      throw paramOnCloseListener;
+    }
+  }
+  
+  public void addCloseListener(IDBManagerWrapper.OnCloseListener paramOnCloseListener)
+  {
+    if (paramOnCloseListener == null) {
+      return;
+    }
+    synchronized (this.i)
+    {
+      this.i.add(new WeakReference(paramOnCloseListener));
+      return;
+    }
+  }
+  
+  public Cursor b(String paramString, String[] paramArrayOfString)
+  {
+    return super.b(paramString, paramArrayOfString);
   }
   
   /* Error */
-  public List<IDBCacheDataWrapper> a(String paramString1, String[] paramArrayOfString, String paramString2, int paramInt1, int paramInt2)
+  public List<IDBCacheDataWrapper> b(String paramString1, String[] paramArrayOfString, String paramString2, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: new 20	java/util/ArrayList
+    //   0: new 22	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 23	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 25	java/util/ArrayList:<init>	()V
     //   7: astore 9
     //   9: aload_0
     //   10: monitorenter
@@ -362,7 +404,7 @@ public class DbCacheManager
     //   15: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   18: ifeq +9 -> 27
     //   21: aload_0
-    //   22: getfield 100	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   22: getfield 100	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:e	Ljava/lang/String;
     //   25: astore 6
     //   27: aload_3
     //   28: astore 7
@@ -370,7 +412,7 @@ public class DbCacheManager
     //   31: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   34: ifeq +9 -> 43
     //   37: aload_0
-    //   38: getfield 102	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:c	Ljava/lang/String;
+    //   38: getfield 102	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:f	Ljava/lang/String;
     //   41: astore 7
     //   43: aload_2
     //   44: astore_3
@@ -387,7 +429,7 @@ public class DbCacheManager
     //   65: astore_3
     //   66: goto +8 -> 74
     //   69: aload_0
-    //   70: getfield 111	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   70: getfield 111	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:g	[Ljava/lang/String;
     //   73: astore_3
     //   74: aconst_null
     //   75: astore_1
@@ -424,7 +466,7 @@ public class DbCacheManager
     //   137: aload_3
     //   138: aload 7
     //   140: aload 8
-    //   142: invokevirtual 157	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   142: invokevirtual 169	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   145: astore_3
     //   146: aload_3
     //   147: ifnull +80 -> 227
@@ -455,7 +497,7 @@ public class DbCacheManager
     //   190: aload_3
     //   191: iload 4
     //   193: invokevirtual 138	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:a	(Landroid/database/Cursor;I)Lcom/tencent/mobileqq/qcircle/api/db/IDBCacheDataWrapper;
-    //   196: checkcast 159	com/tencent/mobileqq/qcircle/api/db/DbCacheData
+    //   196: checkcast 171	com/tencent/mobileqq/qcircle/api/db/DbCacheData
     //   199: astore 6
     //   201: aload 6
     //   203: ifnull +15 -> 218
@@ -465,7 +507,7 @@ public class DbCacheManager
     //   209: astore_1
     //   210: aload 9
     //   212: aload 6
-    //   214: invokevirtual 60	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   214: invokevirtual 74	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   217: pop
     //   218: iload 4
     //   220: iconst_1
@@ -544,71 +586,14 @@ public class DbCacheManager
     //   278	280	277	finally
   }
   
-  protected void a()
-  {
-    RFThreadManager.execute(new DbCacheManager.1(this));
-  }
-  
-  public void a(IDBManagerWrapper.OnCloseListener paramOnCloseListener)
-  {
-    if (paramOnCloseListener == null) {
-      return;
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (WeakReference)localIterator.next();
-        if (localObject == null) {
-          localObject = null;
-        } else {
-          localObject = (IDBManagerWrapper.OnCloseListener)((WeakReference)localObject).get();
-        }
-        if (localObject == null) {
-          localIterator.remove();
-        } else if (localObject == paramOnCloseListener) {
-          localIterator.remove();
-        }
-      }
-      return;
-    }
-    for (;;)
-    {
-      throw paramOnCloseListener;
-    }
-  }
-  
-  public void addCloseListener(IDBManagerWrapper.OnCloseListener paramOnCloseListener)
-  {
-    if (paramOnCloseListener == null) {
-      return;
-    }
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.add(new WeakReference(paramOnCloseListener));
-      return;
-    }
-  }
-  
-  protected void b()
-  {
-    d();
-  }
-  
-  public void c()
-  {
-    try
-    {
-      a((String)null, null);
-      return;
-    }
-    finally {}
-  }
-  
   public void close()
   {
     super.close();
+  }
+  
+  protected void d()
+  {
+    RFThreadManager.execute(new DbCacheManager.1(this));
   }
   
   @Deprecated
@@ -626,7 +611,7 @@ public class DbCacheManager
   {
     try
     {
-      boolean bool = a(1, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, new IDBCacheDataWrapper[] { paramIDBCacheDataWrapper });
+      boolean bool = a(1, this.e, this.g, new IDBCacheDataWrapper[] { paramIDBCacheDataWrapper });
       return bool;
     }
     finally {}
@@ -636,7 +621,7 @@ public class DbCacheManager
   {
     try
     {
-      boolean bool = a(paramInt, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, new IDBCacheDataWrapper[] { paramIDBCacheDataWrapper });
+      boolean bool = a(paramInt, this.e, this.g, new IDBCacheDataWrapper[] { paramIDBCacheDataWrapper });
       return bool;
     }
     finally {}
@@ -646,7 +631,7 @@ public class DbCacheManager
   {
     try
     {
-      boolean bool = a(1, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, paramList);
+      boolean bool = a(1, this.e, this.g, paramList);
       return bool;
     }
     finally {}
@@ -656,7 +641,7 @@ public class DbCacheManager
   {
     try
     {
-      boolean bool = a(paramInt, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, paramList);
+      boolean bool = a(paramInt, this.e, this.g, paramList);
       return bool;
     }
     finally {}
@@ -676,7 +661,7 @@ public class DbCacheManager
   @Deprecated
   public List<IDBCacheDataWrapper> dbQueryData(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    return a(paramString1, null, paramString2, paramInt1, paramInt2);
+    return b(paramString1, null, paramString2, paramInt1, paramInt2);
   }
   
   public IDBCacheDataWrapper dbQueryFirstData(String paramString1, String paramString2)
@@ -696,7 +681,7 @@ public class DbCacheManager
     //   6: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifeq +9 -> 18
     //   12: aload_0
-    //   13: getfield 102	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:c	Ljava/lang/String;
+    //   13: getfield 102	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:f	Ljava/lang/String;
     //   16: astore 4
     //   18: aconst_null
     //   19: astore 5
@@ -708,8 +693,8 @@ public class DbCacheManager
     //   28: aload_1
     //   29: aload_3
     //   30: aload 4
-    //   32: ldc 226
-    //   34: invokevirtual 157	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   32: ldc 229
+    //   34: invokevirtual 169	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:a	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   37: astore_2
     //   38: aload 7
     //   40: astore_1
@@ -833,8 +818,23 @@ public class DbCacheManager
   {
     try
     {
-      int i = a(paramString, paramArrayOfString);
-      return i;
+      int j = a(paramString, paramArrayOfString);
+      return j;
+    }
+    finally {}
+  }
+  
+  protected void e()
+  {
+    h();
+  }
+  
+  public void g()
+  {
+    try
+    {
+      a((String)null, null);
+      return;
     }
     finally {}
   }
@@ -851,12 +851,12 @@ public class DbCacheManager
     //   6: invokespecial 114	java/lang/StringBuilder:<init>	()V
     //   9: astore 6
     //   11: aload 6
-    //   13: ldc 237
+    //   13: ldc 242
     //   15: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: pop
     //   19: aload 6
     //   21: aload_0
-    //   22: getfield 239	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   22: getfield 244	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:d	Ljava/lang/String;
     //   25: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: pop
     //   29: aload 6
@@ -876,7 +876,7 @@ public class DbCacheManager
     //   60: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   63: pop
     //   64: aload 7
-    //   66: ldc 241
+    //   66: ldc 246
     //   68: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
     //   72: aload 7
@@ -899,8 +899,8 @@ public class DbCacheManager
     //   99: aload_0
     //   100: aload 7
     //   102: aload_0
-    //   103: getfield 111	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
-    //   106: invokevirtual 242	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:a	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   103: getfield 111	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:g	[Ljava/lang/String;
+    //   106: invokevirtual 247	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:b	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   109: astore 7
     //   111: iload 5
     //   113: istore_2
@@ -913,7 +913,7 @@ public class DbCacheManager
     //   126: aload 7
     //   128: astore_1
     //   129: aload 7
-    //   131: invokeinterface 245 1 0
+    //   131: invokeinterface 250 1 0
     //   136: ifeq +19 -> 155
     //   139: aload 7
     //   141: astore 6
@@ -921,116 +921,111 @@ public class DbCacheManager
     //   145: astore_1
     //   146: aload 7
     //   148: iconst_0
-    //   149: invokeinterface 249 2 0
+    //   149: invokeinterface 254 2 0
     //   154: istore_2
     //   155: iload_2
     //   156: istore_3
     //   157: aload 7
-    //   159: ifnull +107 -> 266
+    //   159: ifnull +100 -> 259
     //   162: aload 7
     //   164: astore_1
     //   165: aload_1
     //   166: invokeinterface 141 1 0
     //   171: iload_2
     //   172: istore_3
-    //   173: goto +93 -> 266
+    //   173: goto +86 -> 259
     //   176: astore_1
-    //   177: goto +93 -> 270
+    //   177: goto +86 -> 263
     //   180: astore 7
     //   182: aload_1
     //   183: astore 6
-    //   185: getstatic 255	com/tencent/biz/richframework/delegate/impl/RFLog:USR	I
-    //   188: istore_2
-    //   189: aload_1
-    //   190: astore 6
-    //   192: new 113	java/lang/StringBuilder
-    //   195: dup
-    //   196: invokespecial 114	java/lang/StringBuilder:<init>	()V
-    //   199: astore 8
-    //   201: aload_1
-    //   202: astore 6
-    //   204: aload 8
-    //   206: ldc_w 257
-    //   209: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: pop
-    //   213: aload_1
-    //   214: astore 6
-    //   216: aload 8
-    //   218: aload_0
-    //   219: getfield 239	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   222: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: pop
-    //   226: aload_1
-    //   227: astore 6
-    //   229: ldc_w 259
-    //   232: iload_2
-    //   233: iconst_2
-    //   234: anewarray 261	java/lang/Object
-    //   237: dup
-    //   238: iconst_0
-    //   239: aload 8
-    //   241: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: aastore
-    //   245: dup
-    //   246: iconst_1
-    //   247: aload 7
-    //   249: invokevirtual 264	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   252: aastore
-    //   253: invokestatic 267	com/tencent/biz/richframework/delegate/impl/RFLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   256: aload_1
-    //   257: ifnull +9 -> 266
-    //   260: iload 4
-    //   262: istore_2
-    //   263: goto -98 -> 165
-    //   266: aload_0
-    //   267: monitorexit
-    //   268: iload_3
-    //   269: ireturn
-    //   270: aload 6
-    //   272: ifnull +10 -> 282
-    //   275: aload 6
-    //   277: invokeinterface 141 1 0
-    //   282: aload_1
-    //   283: athrow
-    //   284: astore_1
-    //   285: aload_0
-    //   286: monitorexit
-    //   287: goto +5 -> 292
-    //   290: aload_1
-    //   291: athrow
-    //   292: goto -2 -> 290
+    //   185: new 113	java/lang/StringBuilder
+    //   188: dup
+    //   189: invokespecial 114	java/lang/StringBuilder:<init>	()V
+    //   192: astore 8
+    //   194: aload_1
+    //   195: astore 6
+    //   197: aload 8
+    //   199: ldc_w 256
+    //   202: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   205: pop
+    //   206: aload_1
+    //   207: astore 6
+    //   209: aload 8
+    //   211: aload_0
+    //   212: getfield 244	com/tencent/mobileqq/qcircle/api/db/DbCacheManager:d	Ljava/lang/String;
+    //   215: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: aload_1
+    //   220: astore 6
+    //   222: ldc_w 258
+    //   225: iconst_1
+    //   226: iconst_2
+    //   227: anewarray 260	java/lang/Object
+    //   230: dup
+    //   231: iconst_0
+    //   232: aload 8
+    //   234: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   237: aastore
+    //   238: dup
+    //   239: iconst_1
+    //   240: aload 7
+    //   242: invokevirtual 263	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   245: aastore
+    //   246: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   249: aload_1
+    //   250: ifnull +9 -> 259
+    //   253: iload 4
+    //   255: istore_2
+    //   256: goto -91 -> 165
+    //   259: aload_0
+    //   260: monitorexit
+    //   261: iload_3
+    //   262: ireturn
+    //   263: aload 6
+    //   265: ifnull +10 -> 275
+    //   268: aload 6
+    //   270: invokeinterface 141 1 0
+    //   275: aload_1
+    //   276: athrow
+    //   277: astore_1
+    //   278: aload_0
+    //   279: monitorexit
+    //   280: goto +5 -> 285
+    //   283: aload_1
+    //   284: athrow
+    //   285: goto -2 -> 283
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	295	0	this	DbCacheManager
-    //   0	295	1	paramString	String
-    //   113	150	2	i	int
-    //   95	174	3	j	int
-    //   92	169	4	k	int
-    //   97	23	5	m	int
-    //   9	267	6	localObject1	Object
+    //   0	288	0	this	DbCacheManager
+    //   0	288	1	paramString	String
+    //   113	143	2	j	int
+    //   95	167	3	k	int
+    //   92	162	4	m	int
+    //   97	23	5	n	int
+    //   9	260	6	localObject1	Object
     //   38	125	7	localObject2	Object
-    //   180	68	7	localException	java.lang.Exception
-    //   199	41	8	localStringBuilder	java.lang.StringBuilder
+    //   180	61	7	localException	java.lang.Exception
+    //   192	41	8	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
     //   99	111	176	finally
     //   129	139	176	finally
     //   146	155	176	finally
-    //   185	189	176	finally
-    //   192	201	176	finally
-    //   204	213	176	finally
-    //   216	226	176	finally
-    //   229	256	176	finally
+    //   185	194	176	finally
+    //   197	206	176	finally
+    //   209	219	176	finally
+    //   222	249	176	finally
     //   99	111	180	java/lang/Exception
     //   129	139	180	java/lang/Exception
     //   146	155	180	java/lang/Exception
-    //   2	36	284	finally
-    //   40	86	284	finally
-    //   165	171	284	finally
-    //   266	268	284	finally
-    //   275	282	284	finally
-    //   282	284	284	finally
-    //   285	287	284	finally
+    //   2	36	277	finally
+    //   40	86	277	finally
+    //   165	171	277	finally
+    //   259	261	277	finally
+    //   268	275	277	finally
+    //   275	277	277	finally
+    //   278	280	277	finally
   }
   
   public boolean isClosed()
@@ -1047,7 +1042,7 @@ public class DbCacheManager
   {
     try
     {
-      boolean bool = a(paramInt, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, new IDBCacheDataWrapper[] { paramIDBCacheDataWrapper });
+      boolean bool = a(paramInt, this.e, this.g, new IDBCacheDataWrapper[] { paramIDBCacheDataWrapper });
       return bool;
     }
     finally {}
@@ -1059,15 +1054,15 @@ public class DbCacheManager
     {
       ContentValues localContentValues = new ContentValues();
       paramIDBCacheDataWrapper.writeTo(localContentValues);
-      int i = a(localContentValues, paramString, paramArrayOfString);
-      return i;
+      int j = a(localContentValues, paramString, paramArrayOfString);
+      return j;
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.DbCacheManager
  * JD-Core Version:    0.7.0.1
  */

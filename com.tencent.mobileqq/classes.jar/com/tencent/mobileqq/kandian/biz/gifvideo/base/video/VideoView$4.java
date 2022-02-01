@@ -12,19 +12,19 @@ class VideoView$4
   
   public void onClick(View paramView)
   {
-    if (Util.e(VideoView.access$200(this.a)))
+    if (Util.f(VideoView.access$200(this.a)))
     {
       VideoView.access$500(this.a);
       return;
     }
-    if (!VideoPlayController.a.a()) {
+    if (!VideoPlayController.a.f()) {
       ReadInJoyLogicEngineEventDispatcher.a().a(VideoView.access$200(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoView.4
  * JD-Core Version:    0.7.0.1
  */

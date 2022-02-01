@@ -19,7 +19,7 @@ public class RemindJavascriptInterface
   extends WebViewPlugin
   implements MultiNameSpacePluginCompact
 {
-  private static String a = "remind";
+  private static String b = "remind";
   protected Activity a;
   
   public void a(String paramString)
@@ -31,14 +31,14 @@ public class RemindJavascriptInterface
     Object localObject;
     if (QLog.isColorLevel())
     {
-      str = jdField_a_of_type_JavaLangString;
+      str = b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("remindSuccess : ");
       ((StringBuilder)localObject).append(paramString);
       QLog.d(str, 2, ((StringBuilder)localObject).toString());
     }
-    boolean bool1 = RemindHelper.a(RemindHelper.a(paramString, "isNew"));
-    boolean bool2 = RemindHelper.a(RemindHelper.a(paramString, "isInsert"));
+    boolean bool1 = RemindHelper.b(RemindHelper.a(paramString, "isNew"));
+    boolean bool2 = RemindHelper.b(RemindHelper.a(paramString, "isInsert"));
     RemindHelper.a(paramString, "title");
     RemindHelper.a(RemindHelper.a(paramString, "startDate")).longValue();
     RemindHelper.a(RemindHelper.a(paramString, "endDate")).longValue();
@@ -54,7 +54,7 @@ public class RemindJavascriptInterface
     }
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("createAndAddReport  r2: ");
       localStringBuilder.append(str);
@@ -68,7 +68,7 @@ public class RemindJavascriptInterface
   public void a(String paramString, JsBridgeListener paramJsBridgeListener)
   {
     long l = RemindHelper.a(RemindHelper.a(paramString, "currentDate")).longValue();
-    RemindHelper.a(this.jdField_a_of_type_AndroidAppActivity, l * 1000L, new RemindJavascriptInterface.1(this), paramJsBridgeListener);
+    RemindHelper.a(this.a, l * 1000L, new RemindJavascriptInterface.1(this), paramJsBridgeListener);
   }
   
   public void b(String paramString)
@@ -126,7 +126,7 @@ public class RemindJavascriptInterface
     }
     if (QLog.isColorLevel())
     {
-      localObject2 = jdField_a_of_type_JavaLangString;
+      localObject2 = b;
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("createCalendar : ");
       ((StringBuilder)localObject3).append(paramString);
@@ -168,15 +168,15 @@ public class RemindJavascriptInterface
         VACDReportUtil.a(l1, null, "parseUrl", null, 0, null);
         if (QLog.isColorLevel())
         {
-          localObject2 = jdField_a_of_type_JavaLangString;
+          localObject2 = b;
           localObject6 = new StringBuilder();
           ((StringBuilder)localObject6).append("startTime : ");
-          ((StringBuilder)localObject6).append(TimeHelper.a(l2 * 1000L));
+          ((StringBuilder)localObject6).append(TimeHelper.d(l2 * 1000L));
           ((StringBuilder)localObject6).append(" endTime : ");
-          ((StringBuilder)localObject6).append(TimeHelper.a(l3 * 1000L));
+          ((StringBuilder)localObject6).append(TimeHelper.d(l3 * 1000L));
           QLog.d((String)localObject2, 2, ((StringBuilder)localObject6).toString());
         }
-        i = RemindHelper.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject4, l2 * 1000L, l3 * 1000L, (String)localObject5, str, paramString);
+        i = RemindHelper.a(this.a, (String)localObject4, l2 * 1000L, l3 * 1000L, (String)localObject5, str, paramString);
         VACDReportUtil.endReport(l1, "insert", null, i, null);
         if (!TextUtils.isEmpty((CharSequence)localObject3))
         {
@@ -189,14 +189,14 @@ public class RemindJavascriptInterface
         if (i == 0)
         {
           if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "addByRecevierReport");
+            QLog.d(b, 2, "addByRecevierReport");
           }
           ReportController.b(null, "CliOper", "", "", "Time_reminder", "Rec_ckl_add", 0, 0, "", "", "", "");
         }
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "params error.");
+        QLog.d(b, 2, "params error.");
       }
       VACDReportUtil.endReport(l1, "parseUrl", null, -1, "params error.");
       return;
@@ -205,7 +205,7 @@ public class RemindJavascriptInterface
     {
       if (QLog.isColorLevel())
       {
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = b;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("JSONException ");
         ((StringBuilder)localObject3).append(paramString.getMessage());
@@ -240,7 +240,7 @@ public class RemindJavascriptInterface
     if (("calendar".equals(paramString2)) && ("remindDelete".equals(paramString3)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "deleteRemindSuccess");
+        QLog.d(b, 2, "deleteRemindSuccess");
       }
       ReportController.b(null, "CliOper", "", "", "Time_reminder", "Delete_clock", 0, 0, "", "", "", "");
       return true;
@@ -249,7 +249,7 @@ public class RemindJavascriptInterface
     {
       if (QLog.isColorLevel())
       {
-        paramJsBridgeListener = jdField_a_of_type_JavaLangString;
+        paramJsBridgeListener = b;
         paramString1 = new StringBuilder();
         paramString1.append("remindMsgReport : ");
         paramString1.append(paramVarArgs[0]);
@@ -261,7 +261,7 @@ public class RemindJavascriptInterface
     if (("calendar".equals(paramString2)) && ("remindAioReport".equals(paramString3)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "remindAioReport");
+        QLog.d(b, 2, "remindAioReport");
       }
       ReportController.b(null, "CliOper", "", "", "Time_reminder", "Clock_card_clk", 0, 0, "", "", "", "");
       return true;
@@ -272,12 +272,12 @@ public class RemindJavascriptInterface
   protected void onCreate()
   {
     super.onCreate();
-    this.jdField_a_of_type_AndroidAppActivity = this.mRuntime.a();
+    this.a = this.mRuntime.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.remind.RemindJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

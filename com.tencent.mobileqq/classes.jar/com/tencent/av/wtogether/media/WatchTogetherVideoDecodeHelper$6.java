@@ -10,13 +10,13 @@ class WatchTogetherVideoDecodeHelper$6
   public void run()
   {
     WatchTogetherVideoDecodeHelper.c(this.this$0, true);
-    if (!WatchTogetherVideoDecodeHelper.b(this.this$0))
+    if (!WatchTogetherVideoDecodeHelper.f(this.this$0))
     {
-      WatchTogetherVideoDecodeHelper.a(this.this$0);
+      WatchTogetherVideoDecodeHelper.g(this.this$0);
       return;
     }
-    if (WatchTogetherVideoDecodeHelper.a(this.this$0) != null) {
-      WatchTogetherVideoDecodeHelper.a(this.this$0).b();
+    if (WatchTogetherVideoDecodeHelper.d(this.this$0) != null) {
+      WatchTogetherVideoDecodeHelper.d(this.this$0).b();
     }
   }
 }

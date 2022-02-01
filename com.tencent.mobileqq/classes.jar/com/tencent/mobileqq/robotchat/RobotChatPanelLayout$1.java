@@ -20,20 +20,20 @@ class RobotChatPanelLayout$1
     boolean bool1 = false;
     if (paramInt == 0)
     {
-      if (RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout) == null)
+      if (RobotChatPanelLayout.a(this.e) == null)
       {
         if (QLog.isColorLevel()) {
           QLog.e("RobotChatPanelLayout", 2, "mTroopRobotServive = null");
         }
         return;
       }
-      if (paramRspBody.robot_uin.get() != this.jdField_a_of_type_Long)
+      if (paramRspBody.robot_uin.get() != this.a)
       {
         if (QLog.isColorLevel())
         {
           paramRspBody = new StringBuilder();
           paramRspBody.append("data not match :");
-          paramRspBody.append(this.jdField_a_of_type_Long);
+          paramRspBody.append(this.a);
           QLog.e("RobotChatPanelLayout", 2, paramRspBody.toString());
         }
         return;
@@ -43,52 +43,52 @@ class RobotChatPanelLayout$1
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("initData->reqPanelList oldVer:");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         localStringBuilder.append(" newVer:");
         localStringBuilder.append(paramInt);
         QLog.d("RobotChatPanelLayout", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_Int != paramInt)
+      if (this.b != paramInt)
       {
-        RobotChatPanelLayout.b(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout).saveRobotPanelData("1", this.jdField_a_of_type_JavaLangString, paramRspBody);
-        paramRspBody = RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, paramRspBody);
+        RobotChatPanelLayout.b(this.e).saveRobotPanelData("1", this.c, paramRspBody);
+        paramRspBody = RobotChatPanelLayout.a(this.e, paramRspBody);
         if ((paramRspBody != null) && (paramRspBody.size() > 0))
         {
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(paramRspBody, true);
+          this.e.a(false);
+          this.e.a(paramRspBody, true);
         }
         else
         {
-          this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.a(true);
+          this.e.a(true);
           if (QLog.isColorLevel()) {
             QLog.d("RobotChatPanelLayout", 2, "listDatas is null in new version");
           }
         }
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() == 0)
+      else if (this.e.getItemCount() == 0)
       {
         if (QLog.isColorLevel()) {
           QLog.d("RobotChatPanelLayout", 2, "item count == 0");
         }
-        RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
+        RobotChatPanelLayout.a(this.e, this.c);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.c();
+        this.e.d();
       }
-      paramRspBody = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$GetListDataCallback;
-      if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() > 0) {
+      paramRspBody = this.d;
+      if (this.e.getItemCount() > 0) {
         bool1 = true;
       }
-      paramRspBody.a(bool1, this.jdField_a_of_type_JavaLangString);
+      paramRspBody.a(bool1, this.c);
       return;
     }
-    RobotChatPanelLayout.a(this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout, this.jdField_a_of_type_JavaLangString);
+    RobotChatPanelLayout.a(this.e, this.c);
     bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqRobotchatRobotChatPanelLayout.b() > 0) {
+    if (this.e.getItemCount() > 0) {
       bool1 = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRobotPanelLayoutBase$GetListDataCallback.a(bool1, this.jdField_a_of_type_JavaLangString);
+    this.d.a(bool1, this.c);
     if (QLog.isColorLevel())
     {
       paramRspBody = new StringBuilder();
@@ -102,7 +102,7 @@ class RobotChatPanelLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.robotchat.RobotChatPanelLayout.1
  * JD-Core Version:    0.7.0.1
  */

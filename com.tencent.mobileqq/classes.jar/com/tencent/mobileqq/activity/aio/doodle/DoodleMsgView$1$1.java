@@ -9,18 +9,18 @@ class DoodleMsgView$1$1
   
   public void run()
   {
-    if (DoodleMsgView.a(this.a.a) != null)
+    if (DoodleMsgView.g(this.a.a) != null)
     {
-      DoodleMsgViewListener localDoodleMsgViewListener = (DoodleMsgViewListener)DoodleMsgView.a(this.a.a).get();
+      DoodleMsgViewListener localDoodleMsgViewListener = (DoodleMsgViewListener)DoodleMsgView.g(this.a.a).get();
       if (localDoodleMsgViewListener != null) {
-        localDoodleMsgViewListener.g();
+        localDoodleMsgViewListener.i();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.1.1
  * JD-Core Version:    0.7.0.1
  */

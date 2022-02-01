@@ -11,17 +11,17 @@ public class ChatLayoutListenerController
   public static int a = 1;
   public static int b = 2;
   public static int c = 3;
-  private HashMap<Integer, List<IChatLayoutListener>> a;
+  private HashMap<Integer, List<IChatLayoutListener>> d;
   
   public void a(int paramInt, IChatLayoutListener.ChatLayoutListenerInfo paramChatLayoutListenerInfo)
   {
-    Object localObject = this.a;
+    Object localObject = this.d;
     if (localObject != null)
     {
       if (((HashMap)localObject).isEmpty()) {
         return;
       }
-      localObject = (List)this.a.get(Integer.valueOf(paramInt));
+      localObject = (List)this.d.get(Integer.valueOf(paramInt));
       if (localObject != null)
       {
         if (((List)localObject).isEmpty()) {
@@ -37,28 +37,28 @@ public class ChatLayoutListenerController
   
   public void a(int paramInt, IChatLayoutListener paramIChatLayoutListener)
   {
-    if (this.a == null) {
-      this.a = new HashMap();
+    if (this.d == null) {
+      this.d = new HashMap();
     }
-    List localList = (List)this.a.get(Integer.valueOf(paramInt));
+    List localList = (List)this.d.get(Integer.valueOf(paramInt));
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new ArrayList();
-      this.a.put(Integer.valueOf(paramInt), localObject);
+      this.d.put(Integer.valueOf(paramInt), localObject);
     }
     ((List)localObject).add(paramIChatLayoutListener);
   }
   
   public void b(int paramInt, IChatLayoutListener paramIChatLayoutListener)
   {
-    Object localObject = this.a;
+    Object localObject = this.d;
     if (localObject != null)
     {
       if (((HashMap)localObject).isEmpty()) {
         return;
       }
-      localObject = (List)this.a.get(Integer.valueOf(paramInt));
+      localObject = (List)this.d.get(Integer.valueOf(paramInt));
       if (localObject != null)
       {
         if (((List)localObject).isEmpty()) {
@@ -71,7 +71,7 @@ public class ChatLayoutListenerController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutListenerController
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class ConfigServlet$8
   
   public void run()
   {
-    boolean bool = ((IHotChatSCMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOTCHAT_SCENE_CONFIG_MANAGER)).updateHotChatSceneConfig(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config);
-    SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get(), bool);
+    boolean bool = ((IHotChatSCMng)this.a.getManager(QQManagerFactory.HOTCHAT_SCENE_CONFIG_MANAGER)).updateHotChatSceneConfig(this.b);
+    SharedPreUtils.a(this.a.getApp(), this.b.version.get(), bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.8
  * JD-Core Version:    0.7.0.1
  */

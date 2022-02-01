@@ -19,6 +19,7 @@ import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
 import com.tencent.qqmini.sdk.launcher.core.plugins.engine.IJsPluginEngine;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.plugins.engine.JsPluginEngine;
+import common.config.service.QzoneConfig;
 import org.json.JSONObject;
 
 @JsPlugin(secondary=true)
@@ -94,13 +95,24 @@ public class CMShowJsPlugin
         paramRequestEvent.fail();
         return;
       }
+      int i;
+      if (QzoneConfig.getInstance().getConfig("CMShow", "CMShowMiniApiUsageReduce", 1) == 1) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        a(paramRequestEvent);
+        return;
+      }
       localIJsPluginEngine = ((BaseRuntime)this.mMiniAppContext).getJsPluginEngine();
       if (!(localIJsPluginEngine instanceof JsPluginEngine)) {
-        break label365;
+        break label402;
       }
     }
-    label365:
-    label366:
+    label402:
+    label403:
     for (;;)
     {
       try
@@ -108,21 +120,21 @@ public class CMShowJsPlugin
         JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
         PermissionInfo localPermissionInfo = new PermissionInfo();
         localPermissionInfo.reportSubAction = "getCMShowInfo";
-        localPermissionInfo.rejectDescription = ((Context)localObject2).getString(2131694145);
+        localPermissionInfo.rejectDescription = ((Context)localObject2).getString(2131891773);
         String str = localJSONObject.optString("avatarType", "2D");
         if ("2D".equalsIgnoreCase(str))
         {
           localObject1 = "scope.cmshowInfo2d";
-          localPermissionInfo.name = ((Context)localObject2).getString(2131694141);
-          localPermissionInfo.description = ((Context)localObject2).getString(2131694143);
-          break label366;
+          localPermissionInfo.name = ((Context)localObject2).getString(2131891769);
+          localPermissionInfo.description = ((Context)localObject2).getString(2131891771);
+          break label403;
         }
         if ("3D".equalsIgnoreCase(str))
         {
           localObject1 = "scope.cmshowInfo3d";
-          localPermissionInfo.name = ((Context)localObject2).getString(2131694142);
-          localPermissionInfo.description = ((Context)localObject2).getString(2131694144);
-          break label366;
+          localPermissionInfo.name = ((Context)localObject2).getString(2131891770);
+          localPermissionInfo.description = ((Context)localObject2).getString(2131891772);
+          break label403;
           localObject2 = MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId);
           if (((AuthState)localObject2).getAuthFlag((String)localObject1) == 2)
           {
@@ -182,7 +194,7 @@ public class CMShowJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.CMShowJsPlugin
  * JD-Core Version:    0.7.0.1
  */

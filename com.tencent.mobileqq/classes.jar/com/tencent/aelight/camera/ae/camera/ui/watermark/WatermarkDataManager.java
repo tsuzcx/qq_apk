@@ -17,25 +17,25 @@ import javax.annotation.Nonnull;
 
 public class WatermarkDataManager
 {
-  private static volatile WatermarkDataManager jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager;
-  private final int jdField_a_of_type_Int = 60000;
-  private long jdField_a_of_type_Long = 0L;
-  private AEMaterialMetaData jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-  private SosoLocation jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLocation;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static volatile WatermarkDataManager b;
+  private final int a = 60000;
+  private AEMaterialMetaData c;
+  private SosoLocation d;
+  private final Map<String, String> e = new HashMap();
+  private long f = 0L;
   
   public static WatermarkDataManager a()
   {
-    if (jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager == null) {
-          jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager = new WatermarkDataManager();
+        if (b == null) {
+          b = new WatermarkDataManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager;
+    return b;
   }
   
   private void a(double paramDouble1, double paramDouble2, WatermarkDataManager.IWatermarkDictCallback paramIWatermarkDictCallback)
@@ -45,12 +45,18 @@ public class WatermarkDataManager
     VSNetworkHelper.getInstance().sendRequest(localGetWatermarkDictRequest, new WatermarkDataManager.2(this, paramIWatermarkDictCallback));
   }
   
-  private boolean a()
+  private void b(WatermarkDataManager.IWatermarkDictCallback paramIWatermarkDictCallback)
+  {
+    AEQLog.b("WaterMarkManager", "updateWMProps start");
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new WatermarkDataManager.1(this, "qq_story_water_mark", false, paramIWatermarkDictCallback));
+  }
+  
+  private boolean e()
   {
     try
     {
       long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
+      long l2 = this.f;
       boolean bool;
       if (l1 - l2 <= 60000L) {
         bool = true;
@@ -66,42 +72,13 @@ public class WatermarkDataManager
     }
   }
   
-  private void b(WatermarkDataManager.IWatermarkDictCallback paramIWatermarkDictCallback)
-  {
-    AEQLog.b("WaterMarkManager", "updateWMProps start");
-    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new WatermarkDataManager.1(this, "qq_story_water_mark", false, paramIWatermarkDictCallback));
-  }
-  
-  public AEMaterialMetaData a()
-  {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-  }
-  
-  public SosoLocation a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLocation;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = null;
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      this.jdField_a_of_type_ComTencentMobileqqSosoLocationDataSosoLocation = null;
-      return;
-    }
-    finally {}
-  }
-  
   public void a(@Nonnull WatermarkDataManager.IWatermarkDictCallback paramIWatermarkDictCallback)
   {
     try
     {
-      if (a())
+      if (e())
       {
-        paramIWatermarkDictCallback.onGetWatermarkDict(Collections.unmodifiableMap(this.jdField_a_of_type_JavaUtilMap));
+        paramIWatermarkDictCallback.onGetWatermarkDict(Collections.unmodifiableMap(this.e));
         return;
       }
       b(paramIWatermarkDictCallback);
@@ -112,17 +89,40 @@ public class WatermarkDataManager
   
   public void a(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
+    this.c = paramAEMaterialMetaData;
   }
   
   public void a(boolean paramBoolean)
   {
-    VSConfigManager.a().a("WM_LIST_CONFIG_CHANGED", Boolean.valueOf(paramBoolean));
+    VSConfigManager.a().b("WM_LIST_CONFIG_CHANGED", Boolean.valueOf(paramBoolean));
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.c = null;
+      this.f = 0L;
+      this.e.clear();
+      this.d = null;
+      return;
+    }
+    finally {}
+  }
+  
+  public SosoLocation c()
+  {
+    return this.d;
+  }
+  
+  public AEMaterialMetaData d()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkDataManager
  * JD-Core Version:    0.7.0.1
  */

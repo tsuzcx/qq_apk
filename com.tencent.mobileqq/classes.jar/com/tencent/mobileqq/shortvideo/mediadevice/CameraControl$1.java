@@ -16,7 +16,7 @@ import java.io.File;
 class CameraControl$1
   implements Camera.PictureCallback
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  Handler a = new Handler(Looper.getMainLooper());
   
   CameraControl$1(CameraControl paramCameraControl, int paramInt1, long paramLong, File paramFile, Rect paramRect, CameraCover.PictureCallback paramPictureCallback, boolean paramBoolean, int paramInt2) {}
   
@@ -48,18 +48,18 @@ class CameraControl$1
     localStringBuilder.append(",");
     localStringBuilder.append(paramCamera.height);
     localStringBuilder.append(") orientation=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     QLog.i(str, 1, localStringBuilder.toString());
     if (paramArrayOfByte == null) {
       return;
     }
-    Camera2Support.a(1, paramCamera.height * paramCamera.width, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraControl.1.1(this, paramArrayOfByte, paramCamera));
+    Camera2Support.a(1, paramCamera.height * paramCamera.width, System.currentTimeMillis() - this.c);
+    this.a.post(new CameraControl.1.1(this, paramArrayOfByte, paramCamera));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.1
  * JD-Core Version:    0.7.0.1
  */

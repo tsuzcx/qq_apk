@@ -14,14 +14,14 @@ class GameRoomFragment$20
   
   public void onClick(View paramView)
   {
-    Object localObject = String.format(this.a.getString(2131690307), new Object[] { this.a.b.getText().toString().replace("-", " ") });
-    GameRoomFragment.a(this.a, (String)localObject);
+    Object localObject = String.format(this.a.getString(2131887218), new Object[] { this.a.m.getText().toString().replace("-", " ") });
+    GameRoomFragment.b(this.a, (String)localObject);
     localObject = this.a;
-    ((GameRoomFragment)localObject).a(2, ((GameRoomFragment)localObject).getString(2131690308));
-    if (this.a.a != null)
+    ((GameRoomFragment)localObject).a(2, ((GameRoomFragment)localObject).getString(2131887219));
+    if (this.a.y != null)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.a.y.dismiss();
+      this.a.y = null;
     }
     ReportController.b(null, "dc00898", "", "", "0X800B020", "0X800B020", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);

@@ -19,12 +19,12 @@ final class RIJCommentNetworkHelper$sinkComment$2
   
   public final void invoke()
   {
-    this.$callback.a(this.$commentSinkData.a(), this.$commentSinkData.a(), true, false);
+    this.$callback.a(this.$commentSinkData.b(), this.$commentSinkData.a(), true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.sinkComment.2
  * JD-Core Version:    0.7.0.1
  */

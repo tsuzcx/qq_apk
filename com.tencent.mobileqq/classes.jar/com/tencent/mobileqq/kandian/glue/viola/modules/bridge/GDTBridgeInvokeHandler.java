@@ -16,12 +16,6 @@ public final class GDTBridgeInvokeHandler
     super(paramBridgeModule);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "gdt";
-  }
-  
   public void a()
   {
     a("getDeviceInfo", (Function2)new GDTBridgeInvokeHandler.register.1(this));
@@ -37,11 +31,18 @@ public final class GDTBridgeInvokeHandler
     a("adFreshGetExposeRate", (Function2)new GDTBridgeInvokeHandler.register.11(this));
     a("adFreshRemoveAdId", (Function2)new GDTBridgeInvokeHandler.register.12(this));
     a("preLoadAfterAdLoaded", (Function2)new GDTBridgeInvokeHandler.register.13(this));
+    a("getFreeFlowCardInfo", (Function2)new GDTBridgeInvokeHandler.register.14(this));
+  }
+  
+  @NotNull
+  public String b()
+  {
+    return "gdt";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.GDTBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

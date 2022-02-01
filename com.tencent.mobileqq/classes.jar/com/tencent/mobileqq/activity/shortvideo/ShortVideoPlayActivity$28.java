@@ -12,11 +12,6 @@ class ShortVideoPlayActivity$28
 {
   ShortVideoPlayActivity$28(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public int a()
-  {
-    return ShortVideoPlayActivity.access$2200(this.a);
-  }
-  
   public void a(Bundle paramBundle)
   {
     Intent localIntent = this.a.getIntentForStartForwardRecentActivity();
@@ -24,34 +19,39 @@ class ShortVideoPlayActivity$28
     ForwardBaseOption.a((Activity)this.a.mContext, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_shoucang");
   }
   
-  public void b()
+  public void c()
   {
     ShortVideoPlayActivity.access$2100(this.a);
   }
   
-  public void e()
+  public int f()
   {
-    this.a.forwardFavorite();
-  }
-  
-  public void f()
-  {
-    ShortVideoPlayActivity.access$2400(this.a);
+    return ShortVideoPlayActivity.access$2200(this.a);
   }
   
   public void g()
   {
+    this.a.forwardFavorite();
+  }
+  
+  public void h()
+  {
+    ShortVideoPlayActivity.access$2400(this.a);
+  }
+  
+  public void i()
+  {
     this.a.shareToPC();
   }
   
-  public void m()
+  public void o()
   {
     ShortVideoPlayActivity.access$2300(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.28
  * JD-Core Version:    0.7.0.1
  */

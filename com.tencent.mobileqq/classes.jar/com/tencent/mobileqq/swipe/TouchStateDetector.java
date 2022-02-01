@@ -9,21 +9,21 @@ import com.tencent.qphone.base.util.QLog;
 
 public class TouchStateDetector
 {
-  private static double jdField_a_of_type_Double = 0.25D;
-  private static float jdField_a_of_type_Float = 0.0F;
-  private static double jdField_b_of_type_Double = 0.5D;
-  private static float jdField_b_of_type_Float;
+  private static double a = 0.25D;
+  private static double b = 0.5D;
   private static float c;
-  private int jdField_a_of_type_Int;
-  private int jdField_b_of_type_Int;
+  private static float d;
+  private static float e;
+  private int f;
+  private int g;
   
   public TouchStateDetector(Context paramContext)
   {
     a(paramContext);
     paramContext = paramContext.getResources();
-    jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2131297580);
-    jdField_b_of_type_Float = paramContext.getDimensionPixelSize(2131297581);
-    c = paramContext.getDimensionPixelSize(2131297579);
+    c = paramContext.getDimensionPixelSize(2131298244);
+    d = paramContext.getDimensionPixelSize(2131298245);
+    e = paramContext.getDimensionPixelSize(2131298243);
   }
   
   private void a(Context paramContext)
@@ -31,8 +31,8 @@ public class TouchStateDetector
     try
     {
       paramContext = (WindowManager)paramContext.getSystemService("window");
-      this.jdField_a_of_type_Int = paramContext.getDefaultDisplay().getWidth();
-      this.jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight();
+      this.f = paramContext.getDefaultDisplay().getWidth();
+      this.g = paramContext.getDefaultDisplay().getHeight();
       return;
     }
     catch (Exception paramContext)
@@ -43,17 +43,17 @@ public class TouchStateDetector
   
   public double a(MotionEvent paramMotionEvent)
   {
-    float f = paramMotionEvent.getRawX();
+    float f1 = paramMotionEvent.getRawX();
     paramMotionEvent.getRawY();
-    double d1 = f;
-    double d2 = jdField_a_of_type_Double;
-    int i = this.jdField_a_of_type_Int;
+    double d1 = f1;
+    double d2 = a;
+    int i = this.f;
     double d3 = i;
     Double.isNaN(d3);
     if (d1 <= d3 * d2) {
       return 0.0D;
     }
-    d3 = jdField_b_of_type_Double;
+    d3 = b;
     double d4 = i;
     Double.isNaN(d4);
     if (d1 >= d4 * d3) {
@@ -69,12 +69,12 @@ public class TouchStateDetector
   
   public boolean a(MotionEvent paramMotionEvent, Context paramContext)
   {
-    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.jdField_a_of_type_Int - jdField_b_of_type_Float) && (paramMotionEvent.getRawY() > this.jdField_b_of_type_Int - jdField_a_of_type_Float - c);
+    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.f - d) && (paramMotionEvent.getRawY() > this.g - c - e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.swipe.TouchStateDetector
  * JD-Core Version:    0.7.0.1
  */

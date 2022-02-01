@@ -14,25 +14,25 @@ import java.util.Iterator;
 
 public class EffectMaterialService
 {
-  private int jdField_a_of_type_Int = 0;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private HashSet<BaseJCECoder> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
+  private AppInterface a;
+  private int b = 0;
+  private boolean c = false;
+  private HashSet<BaseJCECoder> d = new HashSet();
   
   public EffectMaterialService(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
   }
   
   private BaseJCECoder a(String paramString)
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.c) {
         a();
       }
       Object localObject2 = null;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      Iterator localIterator = this.d.iterator();
       Object localObject1;
       boolean bool;
       do
@@ -55,16 +55,16 @@ public class EffectMaterialService
   
   private void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilHashSet.add(new EffectMaterialJCECoder());
-    this.jdField_a_of_type_Boolean = true;
+    this.d.add(new EffectMaterialJCECoder());
+    this.c = true;
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    ((EffectMaterialHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(EffectMaterialHandler.class.getName())).onReceive(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    ((EffectMaterialHandler)this.a.getBusinessHandler(EffectMaterialHandler.class.getName())).onReceive(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
   public void a(ToServiceMsg paramToServiceMsg)

@@ -9,25 +9,25 @@ public class WeishiResult
   @NeedParcel
   public int a;
   @NeedParcel
-  private final Bundle jdField_a_of_type_AndroidOsBundle = new Bundle();
-  @NeedParcel
-  private Object jdField_a_of_type_JavaLangObject;
-  @NeedParcel
-  private String jdField_a_of_type_JavaLangString;
-  @NeedParcel
   private int b;
   @NeedParcel
   private int c;
+  @NeedParcel
+  private String d;
+  @NeedParcel
+  private Object e;
+  @NeedParcel
+  private final Bundle f = new Bundle();
   
   public WeishiResult() {}
   
   public WeishiResult(WeishiResult paramWeishiResult)
   {
-    this.jdField_a_of_type_Int = paramWeishiResult.jdField_a_of_type_Int;
+    this.a = paramWeishiResult.a;
     this.b = paramWeishiResult.b;
     this.c = paramWeishiResult.c;
-    this.jdField_a_of_type_JavaLangString = paramWeishiResult.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_JavaLangObject = paramWeishiResult.jdField_a_of_type_JavaLangObject;
+    this.d = paramWeishiResult.d;
+    this.e = paramWeishiResult.e;
   }
   
   public WeishiResult a()
@@ -37,7 +37,7 @@ public class WeishiResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiResult
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ import java.util.List;
 public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private BaseSectionAdapter jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter;
-  private QFormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem;
+  private BaseSectionAdapter a;
+  private QFormSimpleItem b;
+  private LinearLayout c;
   
   public ColorNoteSettingBaseSection(Context paramContext)
   {
@@ -35,31 +35,31 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558889, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem = ((QFormSimpleItem)findViewById(2131377121));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363444));
+    inflate(getContext(), 2131624511, this);
+    this.b = ((QFormSimpleItem)findViewById(2131445492));
+    this.c = ((LinearLayout)findViewById(2131429342));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter.a(getContext()).iterator();
+    this.c.removeAllViews();
+    Iterator localIterator = this.a.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localHistoryFormItem);
+      this.c.addView(localHistoryFormItem);
     }
   }
   
   public void setAdapter(BaseSectionAdapter paramBaseSectionAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter = paramBaseSectionAdapter;
-    this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsBaseSectionAdapter.a(new ColorNoteSettingBaseSection.1(this));
+    this.a = paramBaseSectionAdapter;
+    this.a.a(new ColorNoteSettingBaseSection.1(this));
   }
   
   public void setBgType(int paramInt)
   {
-    QFormSimpleItem localQFormSimpleItem = this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem;
+    QFormSimpleItem localQFormSimpleItem = this.b;
     if (localQFormSimpleItem != null) {
       localQFormSimpleItem.setBgType(paramInt);
     }
@@ -67,22 +67,22 @@ public class ColorNoteSettingBaseSection
   
   public void setContentDescription(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setContentDescription(paramCharSequence);
+    this.b.setContentDescription(paramCharSequence);
   }
   
   public void setHeaderOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setOnClickListener(paramOnClickListener);
+    this.b.setOnClickListener(paramOnClickListener);
   }
   
   public void setHeaderTitle(CharSequence paramCharSequence)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setLeftText(paramCharSequence);
+    this.b.setLeftText(paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.ColorNoteSettingBaseSection
  * JD-Core Version:    0.7.0.1
  */

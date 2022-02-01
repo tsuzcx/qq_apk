@@ -18,7 +18,7 @@ public class QConfLogProcessor
   public QConfLogBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return QConfLogBean.a(paramArrayOfQConfItem[0].a);
+      return QConfLogBean.a(paramArrayOfQConfItem[0].b);
     }
     return null;
   }
@@ -59,7 +59,7 @@ public class QConfLogProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QConfLogProcessor
  * JD-Core Version:    0.7.0.1
  */

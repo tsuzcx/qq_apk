@@ -15,11 +15,11 @@ public abstract class TipsUtil
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hideAllTips, seq[");
+    localStringBuilder.append("hideAllNormalTips, seq[");
     localStringBuilder.append(paramLong);
     localStringBuilder.append("]");
     QLog.w("NewTipsManager", 1, localStringBuilder.toString());
-    paramVideoAppInterface = (TipsManager)paramVideoAppInterface.a(11);
+    paramVideoAppInterface = (TipsManager)paramVideoAppInterface.c(11);
     if (paramVideoAppInterface != null) {
       paramVideoAppInterface.b();
     }
@@ -30,23 +30,16 @@ public abstract class TipsUtil
     if (paramVideoAppInterface == null) {
       return;
     }
-    ((TipsManager)paramVideoAppInterface.a(11)).c();
+    ((TipsManager)paramVideoAppInterface.c(11)).d();
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    if (paramVideoAppInterface == null) {
-      return;
-    }
-    ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt);
-  }
-  
+  @Deprecated
   public static void a(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
   {
     if (paramVideoAppInterface == null) {
       return;
     }
-    ((TipsManager)paramVideoAppInterface.a(11)).a(paramBoolean);
+    ((TipsManager)paramVideoAppInterface.c(11)).a(paramBoolean);
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt)
@@ -54,7 +47,7 @@ public abstract class TipsUtil
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt);
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, int paramInt2)
@@ -65,20 +58,22 @@ public abstract class TipsUtil
     return a(paramVideoAppInterface, paramInt1, paramVideoAppInterface.getApp().getString(paramInt2));
   }
   
+  @Deprecated
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong)
   {
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt, paramLong);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt, paramLong);
   }
   
+  @Deprecated
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, long paramLong, boolean paramBoolean)
   {
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt, paramLong, paramBoolean);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt, paramLong, paramBoolean);
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
@@ -86,7 +81,7 @@ public abstract class TipsUtil
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt, paramString);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt, paramString);
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt1, String paramString, Drawable paramDrawable, int paramInt2, View.OnClickListener paramOnClickListener)
@@ -94,7 +89,7 @@ public abstract class TipsUtil
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt1, paramString, paramDrawable, paramInt2, paramOnClickListener);
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString, View.OnClickListener paramOnClickListener)
@@ -102,15 +97,49 @@ public abstract class TipsUtil
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt, paramString, null, -1, paramOnClickListener);
   }
   
+  public static boolean a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString1, String paramString2, View.OnClickListener paramOnClickListener)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramInt, paramString1, paramString2, null, -1, paramOnClickListener);
+  }
+  
+  @Deprecated
   public static boolean a(VideoAppInterface paramVideoAppInterface, String paramString, long paramLong, boolean paramBoolean)
   {
     if (paramVideoAppInterface == null) {
       return false;
     }
-    return ((TipsManager)paramVideoAppInterface.a(11)).a(paramString, paramLong, paramBoolean);
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramString, paramLong, paramBoolean);
+  }
+  
+  @Deprecated
+  public static boolean a(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, View.OnClickListener paramOnClickListener, long paramLong, boolean paramBoolean)
+  {
+    if (paramVideoAppInterface == null) {
+      return false;
+    }
+    return ((TipsManager)paramVideoAppInterface.c(11)).a(paramString1, paramString2, paramOnClickListener, paramLong, paramBoolean);
+  }
+  
+  public static void b(long paramLong, VideoAppInterface paramVideoAppInterface)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hideAllTips, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("NewTipsManager", 1, localStringBuilder.toString());
+    paramVideoAppInterface = (TipsManager)paramVideoAppInterface.c(11);
+    if (paramVideoAppInterface != null) {
+      paramVideoAppInterface.c();
+    }
   }
   
   public static void b(VideoAppInterface paramVideoAppInterface)
@@ -118,7 +147,15 @@ public abstract class TipsUtil
     if (paramVideoAppInterface == null) {
       return;
     }
-    ((TipsManager)paramVideoAppInterface.a(11)).d();
+    ((TipsManager)paramVideoAppInterface.c(11)).e();
+  }
+  
+  public static void b(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    if (paramVideoAppInterface == null) {
+      return;
+    }
+    ((TipsManager)paramVideoAppInterface.c(11)).b(paramInt);
   }
   
   public static void b(VideoAppInterface paramVideoAppInterface, boolean paramBoolean) {}

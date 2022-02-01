@@ -28,7 +28,7 @@ class TransactionActivity$1
       float f = Float.parseFloat(paramEditable.toString());
       int i = TransactionActivity.access$100(this.a).getText().length();
       paramEditable = TransactionActivity.access$200(this.a, f);
-      if (StringUtil.a(paramEditable))
+      if (StringUtil.isEmpty(paramEditable))
       {
         TransactionActivity.access$300(this.a).setVisibility(0);
         TransactionActivity.access$400(this.a).setVisibility(8);
@@ -67,7 +67,7 @@ class TransactionActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.transaction.impl.TransactionActivity.1
  * JD-Core Version:    0.7.0.1
  */

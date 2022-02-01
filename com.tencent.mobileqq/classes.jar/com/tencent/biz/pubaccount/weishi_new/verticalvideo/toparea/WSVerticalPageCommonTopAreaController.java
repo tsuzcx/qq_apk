@@ -13,32 +13,32 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalUtils
 public class WSVerticalPageCommonTopAreaController
   extends AbsWsUIGroup<Object>
 {
-  private WSVerticalPageFragment a;
-  private View b;
-  private View c;
+  private View g;
+  private View h;
+  private WSVerticalPageFragment i;
   
   public WSVerticalPageCommonTopAreaController(Context paramContext, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
     super(paramContext);
-    this.a = paramWSVerticalPageFragment;
+    this.i = paramWSVerticalPageFragment;
   }
   
-  private void f()
+  private void l()
   {
-    if (this.a.a() == null) {
+    if (this.i.b() == null) {
       return;
     }
-    WSVerticalVideoHolder localWSVerticalVideoHolder = this.a.a().a();
+    WSVerticalVideoHolder localWSVerticalVideoHolder = this.i.b().b();
     if (localWSVerticalVideoHolder != null) {
-      localWSVerticalVideoHolder.d();
+      localWSVerticalVideoHolder.j();
     }
-    g();
+    m();
   }
   
-  private void g()
+  private void m()
   {
-    if (this.a.a() != null) {
-      this.a.a().a(this.a.a());
+    if (this.i.J() != null) {
+      this.i.J().a(this.i.aY_());
     }
   }
   
@@ -46,61 +46,61 @@ public class WSVerticalPageCommonTopAreaController
   
   public void a(boolean paramBoolean)
   {
-    View localView = this.c;
+    View localView = this.h;
     if (localView != null)
     {
-      int i;
+      int j;
       if (paramBoolean) {
-        i = 0;
+        j = 0;
       } else {
-        i = 8;
+        j = 8;
       }
-      localView.setVisibility(i);
+      localView.setVisibility(j);
     }
   }
   
   public void a(boolean paramBoolean, MiniAIOPresenter paramMiniAIOPresenter)
   {
-    if ((this.b != null) && (paramMiniAIOPresenter != null))
+    if ((this.g != null) && (paramMiniAIOPresenter != null))
     {
       paramMiniAIOPresenter.a(paramBoolean);
-      View localView = this.b;
-      int i;
-      if ((paramMiniAIOPresenter.a() > 0) && (paramBoolean)) {
-        i = 0;
+      View localView = this.g;
+      int j;
+      if ((paramMiniAIOPresenter.b() > 0) && (paramBoolean)) {
+        j = 0;
       } else {
-        i = 4;
+        j = 4;
       }
-      localView.setVisibility(i);
+      localView.setVisibility(j);
     }
-  }
-  
-  protected int b()
-  {
-    return 2131560010;
   }
   
   protected void b() {}
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    if (this.a == null) {
+    return 2131626053;
+  }
+  
+  protected void j()
+  {
+    if (this.i == null) {
       return;
     }
-    RelativeLayout localRelativeLayout = (RelativeLayout)a(2131380469);
-    WSVerticalUtils.a(this.a.getBaseActivity(), localRelativeLayout);
-    a(2131380470).setOnClickListener(new WSVerticalPageCommonTopAreaController.1(this));
-    this.c = a(2131380472);
-    this.c.setOnClickListener(new WSVerticalPageCommonTopAreaController.2(this));
-    this.b = a(2131369274);
-    this.a.a(this.b);
+    RelativeLayout localRelativeLayout = (RelativeLayout)c(2131449422);
+    WSVerticalUtils.a(this.i.getBaseActivity(), localRelativeLayout);
+    c(2131449423).setOnClickListener(new WSVerticalPageCommonTopAreaController.1(this));
+    this.h = c(2131449425);
+    this.h.setOnClickListener(new WSVerticalPageCommonTopAreaController.2(this));
+    this.g = c(2131436253);
+    this.i.a(this.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageCommonTopAreaController
  * JD-Core Version:    0.7.0.1
  */

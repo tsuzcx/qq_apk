@@ -42,7 +42,7 @@ public class AudioPanelUtilsImpl
   
   public int getTitleBarHeight(Context paramContext)
   {
-    return paramContext.getResources().getDimensionPixelSize(2131299168);
+    return paramContext.getResources().getDimensionPixelSize(2131299920);
   }
   
   public int getVolumeLevel(int paramInt)
@@ -77,7 +77,7 @@ public class AudioPanelUtilsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.impl.AudioPanelUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

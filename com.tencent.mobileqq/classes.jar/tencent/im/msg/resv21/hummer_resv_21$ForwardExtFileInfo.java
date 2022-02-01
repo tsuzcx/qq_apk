@@ -41,7 +41,7 @@ public final class hummer_resv_21$ForwardExtFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.msg.resv21.hummer_resv_21.ForwardExtFileInfo
  * JD-Core Version:    0.7.0.1
  */

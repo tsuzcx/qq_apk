@@ -7,13 +7,13 @@ import java.util.List;
 
 public class LyricParserHelper
 {
-  private static LyricParserHelper.Instance jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricParserHelper$Instance = new LyricParserHelper.Instance();
-  private ILyricParser jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricParser = new CommonLyricParser();
+  private static LyricParserHelper.Instance c = new LyricParserHelper.Instance();
+  private ILyricParser a = new CommonLyricParser();
   private ILyricParser b = new QrcLyricParser();
   
   public static LyricParserHelper a()
   {
-    return (LyricParserHelper)jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricLyricParserHelper$Instance.getInstance();
+    return (LyricParserHelper)c.getInstance();
   }
   
   public Lyric a(String paramString1, String paramString2)
@@ -22,7 +22,7 @@ public class LyricParserHelper
       return null;
     }
     if ("LRC".equals(paramString2.toUpperCase())) {
-      return this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricParser.a(paramString1);
+      return this.a.a(paramString1);
     }
     if ("QRC".equals(paramString2.toUpperCase())) {
       return this.b.a(paramString1);
@@ -36,7 +36,7 @@ public class LyricParserHelper
     if (paramLyric == null) {
       return null;
     }
-    List localList = paramLyric.a();
+    List localList = paramLyric.d();
     if (localList == null) {
       return null;
     }
@@ -61,9 +61,9 @@ public class LyricParserHelper
         j = i + 1;
         localSentence = (Sentence)localList.get(j);
         i = j;
-      } while (paramLong < paramLyric.a);
+      } while (paramLong < paramLyric.b);
       i = j;
-    } while (localSentence.a < paramLong);
+    } while (localSentence.b < paramLong);
     localObject = paramLyric;
     if (paramLyric == null) {
       localObject = (Sentence)localList.get(m);
@@ -73,7 +73,7 @@ public class LyricParserHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.LyricParserHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -38,19 +38,16 @@ public class ScheduledHandlerExecutorService
     schedule(paramRunnable, 0L, TimeUnit.MILLISECONDS);
   }
   
-  @NonNull
   public <T> List<Future<T>> invokeAll(@NonNull Collection<? extends Callable<T>> paramCollection)
   {
     return null;
   }
   
-  @NonNull
   public <T> List<Future<T>> invokeAll(@NonNull Collection<? extends Callable<T>> paramCollection, long paramLong, @NonNull TimeUnit paramTimeUnit)
   {
     return null;
   }
   
-  @NonNull
   public <T> T invokeAny(@NonNull Collection<? extends Callable<T>> paramCollection)
   {
     return null;
@@ -150,7 +147,6 @@ public class ScheduledHandlerExecutorService
     return schedule(paramRunnable, 0L, TimeUnit.MILLISECONDS);
   }
   
-  @NonNull
   public <T> Future<T> submit(@NonNull Runnable paramRunnable, T paramT)
   {
     return null;
@@ -164,7 +160,7 @@ public class ScheduledHandlerExecutorService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.base.ScheduledHandlerExecutorService
  * JD-Core Version:    0.7.0.1
  */

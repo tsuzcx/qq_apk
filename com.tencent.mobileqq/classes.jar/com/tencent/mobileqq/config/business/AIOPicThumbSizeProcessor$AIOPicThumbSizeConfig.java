@@ -2,17 +2,17 @@ package com.tencent.mobileqq.config.business;
 
 public class AIOPicThumbSizeProcessor$AIOPicThumbSizeConfig
 {
-  public double a;
-  public int a;
   public boolean a = true;
   public double b;
-  public int b;
-  public int c;
+  public double c;
   public int d;
   public int e;
   public int f;
   public int g;
   public int h;
+  public int i;
+  public int j;
+  public int k;
   
   public boolean equals(Object paramObject)
   {
@@ -28,25 +28,25 @@ public class AIOPicThumbSizeProcessor$AIOPicThumbSizeConfig
       if (this.a == paramObject.a)
       {
         bool1 = bool2;
-        if (this.c == paramObject.c)
+        if (this.f == paramObject.f)
         {
           bool1 = bool2;
-          if (this.d == paramObject.d)
+          if (this.g == paramObject.g)
           {
             bool1 = bool2;
-            if (this.e == paramObject.e)
+            if (this.h == paramObject.h)
             {
               bool1 = bool2;
-              if (this.f == paramObject.f)
+              if (this.i == paramObject.i)
               {
                 bool1 = bool2;
-                if (this.g == paramObject.g)
+                if (this.j == paramObject.j)
                 {
                   bool1 = bool2;
-                  if (this.h == paramObject.h)
+                  if (this.k == paramObject.k)
                   {
                     bool1 = bool2;
-                    if (this.b == paramObject.b) {
+                    if (this.e == paramObject.e) {
                       bool1 = true;
                     }
                   }
@@ -62,7 +62,7 @@ public class AIOPicThumbSizeProcessor$AIOPicThumbSizeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig
  * JD-Core Version:    0.7.0.1
  */

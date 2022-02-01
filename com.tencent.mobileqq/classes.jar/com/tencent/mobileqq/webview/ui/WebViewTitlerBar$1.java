@@ -10,15 +10,15 @@ class WebViewTitlerBar$1
 {
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    if (this.a.j != null) {
+      this.a.j.callJs(this.a.i, new String[] { "" });
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTitlerBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ class LiteActivity$4
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getAction() == 0) {
-      this.a.a.a();
+      this.a.b.b();
     }
     return false;
   }

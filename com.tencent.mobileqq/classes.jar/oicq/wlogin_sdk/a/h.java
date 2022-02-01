@@ -159,7 +159,7 @@ public class h
                               {
                                 paramArrayOfByte7 = new RegTLV(52);
                                 localObject1 = new byte[4];
-                                util.int32_to_buf((byte[])localObject1, 0, 17);
+                                util.int32_to_buf((byte[])localObject1, 0, 18);
                                 paramArrayOfByte7.setData((byte[])localObject1, localObject1.length);
                                 paramArrayOfByte7 = paramArrayOfByte7.getBuf();
                                 localObject2 = new StringBuilder();
@@ -416,7 +416,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     oicq.wlogin_sdk.a.h
  * JD-Core Version:    0.7.0.1
  */

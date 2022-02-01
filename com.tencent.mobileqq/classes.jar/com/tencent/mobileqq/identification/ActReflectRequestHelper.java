@@ -24,79 +24,79 @@ import java.util.List;
 public class ActReflectRequestHelper
   implements IFaceController
 {
-  private static final String j;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private RequestListener jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
+  private static final String o;
+  private RequestListener a;
+  private String b;
+  private int c;
+  private int d;
   private String e;
   private String f;
   private String g;
   private String h;
   private String i;
+  private String j;
+  private String k;
+  private int l;
+  private String m;
+  private long n;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplication.getContext().getFilesDir());
     localStringBuilder.append("/identification/packFile");
-    j = localStringBuilder.toString();
+    o = localStringBuilder.toString();
   }
   
   public ActReflectRequestHelper(Intent paramIntent, String paramString, RequestListener paramRequestListener)
   {
     paramIntent = (FaceConf)paramIntent.getSerializableExtra("faceConf");
-    this.jdField_a_of_type_Int = paramIntent.getPlatformAppId();
-    this.jdField_b_of_type_Int = paramIntent.getAppId();
-    this.jdField_b_of_type_JavaLangString = paramIntent.getOpenId();
-    this.jdField_c_of_type_JavaLangString = paramIntent.getIdNum();
-    this.d = paramIntent.getName();
-    this.e = paramIntent.getKey();
-    this.f = paramIntent.getMethod();
-    this.g = paramIntent.getUin();
-    this.h = paramIntent.getTicket();
-    this.jdField_c_of_type_Int = paramIntent.getServiceType();
+    this.c = paramIntent.getPlatformAppId();
+    this.d = paramIntent.getAppId();
+    this.e = paramIntent.getOpenId();
+    this.f = paramIntent.getIdNum();
+    this.g = paramIntent.getName();
+    this.h = paramIntent.getKey();
+    this.i = paramIntent.getMethod();
+    this.j = paramIntent.getUin();
+    this.k = paramIntent.getTicket();
+    this.l = paramIntent.getServiceType();
     paramIntent = paramIntent.getAppConf();
     if (paramIntent != null) {
-      this.jdField_a_of_type_JavaLangString = paramIntent.session;
+      this.b = paramIntent.session;
     }
-    String str = this.jdField_b_of_type_JavaLangString;
-    paramIntent = str;
-    if (str == null) {
-      paramIntent = "";
-    }
-    this.jdField_b_of_type_JavaLangString = paramIntent;
-    str = this.jdField_c_of_type_JavaLangString;
-    paramIntent = str;
-    if (str == null) {
-      paramIntent = "";
-    }
-    this.jdField_c_of_type_JavaLangString = paramIntent;
-    str = this.d;
-    paramIntent = str;
-    if (str == null) {
-      paramIntent = "";
-    }
-    this.d = paramIntent;
-    str = this.e;
+    String str = this.e;
     paramIntent = str;
     if (str == null) {
       paramIntent = "";
     }
     this.e = paramIntent;
-    str = this.jdField_a_of_type_JavaLangString;
+    str = this.f;
     paramIntent = str;
     if (str == null) {
       paramIntent = "";
     }
-    this.jdField_a_of_type_JavaLangString = paramIntent;
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener = paramRequestListener;
-    this.i = paramString;
+    this.f = paramIntent;
+    str = this.g;
+    paramIntent = str;
+    if (str == null) {
+      paramIntent = "";
+    }
+    this.g = paramIntent;
+    str = this.h;
+    paramIntent = str;
+    if (str == null) {
+      paramIntent = "";
+    }
+    this.h = paramIntent;
+    str = this.b;
+    paramIntent = str;
+    if (str == null) {
+      paramIntent = "";
+    }
+    this.b = paramIntent;
+    this.a = paramRequestListener;
+    this.m = paramString;
   }
   
   public static Bundle a(int paramInt, String paramString, boolean paramBoolean)
@@ -111,17 +111,17 @@ public class ActReflectRequestHelper
   protected faceproto.Request a(String paramString1, String paramString2)
   {
     faceproto.Request localRequest = new faceproto.Request();
-    localRequest.AppID.set(this.jdField_a_of_type_Int);
-    localRequest.TmpKey.set(this.e);
+    localRequest.AppID.set(this.c);
+    localRequest.TmpKey.set(this.h);
     Object localObject = new faceproto.App();
-    ((faceproto.App)localObject).AppID.set(this.jdField_b_of_type_Int);
-    ((faceproto.App)localObject).OpenID.set(this.jdField_b_of_type_JavaLangString);
+    ((faceproto.App)localObject).AppID.set(this.d);
+    ((faceproto.App)localObject).OpenID.set(this.e);
     localRequest.SrcApp.set((MessageMicro)localObject);
     localObject = new faceproto.UserInfo();
-    if ((this.f == null) || (IdentificationConstant.c.contains(this.f)))
+    if ((this.i == null) || (IdentificationConstant.c.contains(this.i)))
     {
-      ((faceproto.UserInfo)localObject).IDCardNumber.set(this.jdField_c_of_type_JavaLangString);
-      ((faceproto.UserInfo)localObject).Name.set(this.d);
+      ((faceproto.UserInfo)localObject).IDCardNumber.set(this.f);
+      ((faceproto.UserInfo)localObject).Name.set(this.g);
     }
     localRequest.UserInfo.set((MessageMicro)localObject);
     localObject = new faceproto.FaceInfo();
@@ -138,104 +138,104 @@ public class ActReflectRequestHelper
   protected String a(faceproto.Request paramRequest, String paramString)
   {
     // Byte code:
-    //   0: getstatic 52	com/tencent/mobileqq/identification/ActReflectRequestHelper:j	Ljava/lang/String;
+    //   0: getstatic 57	com/tencent/mobileqq/identification/ActReflectRequestHelper:o	Ljava/lang/String;
     //   3: astore_3
-    //   4: new 24	java/lang/StringBuilder
+    //   4: new 29	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 32	java/lang/StringBuilder:<init>	()V
     //   11: astore 4
     //   13: aload 4
-    //   15: invokestatic 261	java/lang/System:currentTimeMillis	()J
-    //   18: invokevirtual 264	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   15: invokestatic 266	java/lang/System:currentTimeMillis	()J
+    //   18: invokevirtual 269	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   21: pop
     //   22: aload 4
-    //   24: ldc 129
-    //   26: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: ldc 134
+    //   26: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: pop
-    //   30: new 266	java/io/File
+    //   30: new 271	java/io/File
     //   33: dup
     //   34: aload_3
     //   35: aload 4
-    //   37: invokevirtual 50	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   40: invokespecial 268	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokespecial 273	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: astore 5
-    //   45: new 266	java/io/File
+    //   45: new 271	java/io/File
     //   48: dup
-    //   49: getstatic 52	com/tencent/mobileqq/identification/ActReflectRequestHelper:j	Ljava/lang/String;
-    //   52: invokespecial 270	java/io/File:<init>	(Ljava/lang/String;)V
+    //   49: getstatic 57	com/tencent/mobileqq/identification/ActReflectRequestHelper:o	Ljava/lang/String;
+    //   52: invokespecial 275	java/io/File:<init>	(Ljava/lang/String;)V
     //   55: astore_3
     //   56: aload_3
-    //   57: invokevirtual 274	java/io/File:exists	()Z
+    //   57: invokevirtual 279	java/io/File:exists	()Z
     //   60: ifne +11 -> 71
     //   63: aload_3
-    //   64: invokevirtual 277	java/io/File:mkdirs	()Z
+    //   64: invokevirtual 282	java/io/File:mkdirs	()Z
     //   67: pop
     //   68: goto +13 -> 81
     //   71: aload_3
-    //   72: invokevirtual 280	java/io/File:delete	()Z
+    //   72: invokevirtual 285	java/io/File:delete	()Z
     //   75: pop
     //   76: aload_3
-    //   77: invokevirtual 277	java/io/File:mkdirs	()Z
+    //   77: invokevirtual 282	java/io/File:mkdirs	()Z
     //   80: pop
-    //   81: new 282	java/io/BufferedOutputStream
+    //   81: new 287	java/io/BufferedOutputStream
     //   84: dup
-    //   85: new 284	java/io/FileOutputStream
+    //   85: new 289	java/io/FileOutputStream
     //   88: dup
     //   89: aload 5
-    //   91: invokespecial 287	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   94: invokespecial 290	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   91: invokespecial 292	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   94: invokespecial 295	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   97: astore 4
     //   99: aload 4
     //   101: astore_3
     //   102: aload 4
     //   104: bipush 40
-    //   106: invokevirtual 293	java/io/BufferedOutputStream:write	(I)V
+    //   106: invokevirtual 298	java/io/BufferedOutputStream:write	(I)V
     //   109: aload 4
     //   111: astore_3
     //   112: aload_1
-    //   113: invokevirtual 296	face/qqlogin/faceproto$Request:toByteArray	()[B
+    //   113: invokevirtual 301	face/qqlogin/faceproto$Request:toByteArray	()[B
     //   116: astore_1
     //   117: aload 4
     //   119: astore_3
     //   120: aload 4
     //   122: aload_1
     //   123: arraylength
-    //   124: invokestatic 301	com/tencent/mobileqq/util/Utils:a	(I)[B
-    //   127: invokevirtual 304	java/io/BufferedOutputStream:write	([B)V
+    //   124: invokestatic 306	com/tencent/mobileqq/util/Utils:d	(I)[B
+    //   127: invokevirtual 309	java/io/BufferedOutputStream:write	([B)V
     //   130: aload 4
     //   132: astore_3
     //   133: aload 4
     //   135: aload_2
-    //   136: ldc_w 306
-    //   139: invokevirtual 309	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   136: ldc_w 311
+    //   139: invokevirtual 314	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   142: arraylength
-    //   143: invokestatic 301	com/tencent/mobileqq/util/Utils:a	(I)[B
-    //   146: invokevirtual 304	java/io/BufferedOutputStream:write	([B)V
+    //   143: invokestatic 306	com/tencent/mobileqq/util/Utils:d	(I)[B
+    //   146: invokevirtual 309	java/io/BufferedOutputStream:write	([B)V
     //   149: aload 4
     //   151: astore_3
     //   152: aload 4
     //   154: aload_1
-    //   155: invokevirtual 304	java/io/BufferedOutputStream:write	([B)V
+    //   155: invokevirtual 309	java/io/BufferedOutputStream:write	([B)V
     //   158: aload 4
     //   160: astore_3
     //   161: aload 4
     //   163: aload_2
-    //   164: ldc_w 306
-    //   167: invokevirtual 309	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   170: invokevirtual 304	java/io/BufferedOutputStream:write	([B)V
+    //   164: ldc_w 311
+    //   167: invokevirtual 314	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   170: invokevirtual 309	java/io/BufferedOutputStream:write	([B)V
     //   173: aload 4
     //   175: astore_3
     //   176: aload 4
     //   178: bipush 41
-    //   180: invokevirtual 293	java/io/BufferedOutputStream:write	(I)V
+    //   180: invokevirtual 298	java/io/BufferedOutputStream:write	(I)V
     //   183: aload 4
     //   185: astore_3
     //   186: aload 4
-    //   188: invokevirtual 312	java/io/BufferedOutputStream:flush	()V
+    //   188: invokevirtual 317	java/io/BufferedOutputStream:flush	()V
     //   191: aload 4
-    //   193: invokestatic 315	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
+    //   193: invokestatic 320	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
     //   196: aload 5
-    //   198: invokevirtual 318	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   198: invokevirtual 323	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   201: areturn
     //   202: astore_1
     //   203: goto +17 -> 220
@@ -250,14 +250,14 @@ public class ActReflectRequestHelper
     //   218: astore 4
     //   220: aload 4
     //   222: astore_3
-    //   223: ldc_w 320
+    //   223: ldc_w 325
     //   226: iconst_1
     //   227: aload_1
     //   228: iconst_0
     //   229: anewarray 4	java/lang/Object
-    //   232: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   232: invokestatic 330	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   235: aload 4
-    //   237: invokestatic 315	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
+    //   237: invokestatic 320	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
     //   240: aconst_null
     //   241: areturn
     //   242: astore_1
@@ -265,19 +265,19 @@ public class ActReflectRequestHelper
     //   244: astore 4
     //   246: aload 4
     //   248: astore_3
-    //   249: ldc_w 320
+    //   249: ldc_w 325
     //   252: iconst_1
     //   253: aload_1
     //   254: iconst_0
     //   255: anewarray 4	java/lang/Object
-    //   258: invokestatic 325	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   258: invokestatic 330	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   261: aload 4
-    //   263: invokestatic 315	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
+    //   263: invokestatic 320	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
     //   266: aconst_null
     //   267: areturn
     //   268: astore_1
     //   269: aload_3
-    //   270: invokestatic 315	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
+    //   270: invokestatic 320	com/tencent/mobileqq/util/Utils:a	(Ljava/io/Closeable;)V
     //   273: aload_1
     //   274: athrow
     // Local variable table:
@@ -323,7 +323,7 @@ public class ActReflectRequestHelper
   
   public void a()
   {
-    Object localObject = a(this.i, this.jdField_a_of_type_JavaLangString);
+    Object localObject = a(this.m, this.b);
     boolean bool;
     if (localObject == null) {
       bool = true;
@@ -333,27 +333,27 @@ public class ActReflectRequestHelper
     QLog.d("ActReflectRequestHelper", 1, new Object[] { "start pack request, request is null ? ", Boolean.valueOf(bool) });
     if (localObject != null)
     {
-      localObject = a((faceproto.Request)localObject, this.i);
+      localObject = a((faceproto.Request)localObject, this.m);
       if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener.onRequestFinish(2, a(211, HardCodeUtil.a(2131706118), false));
+        this.a.onRequestFinish(2, a(211, HardCodeUtil.a(2131903988), false));
         return;
       }
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.n = System.currentTimeMillis();
       byte[] arrayOfByte = MD5.getFileMd5((String)localObject);
       Bundle localBundle = new Bundle();
       localBundle.putString("filePath", (String)localObject);
       localBundle.putByteArray("md5", arrayOfByte);
-      localBundle.putInt("srcAppId", this.jdField_b_of_type_Int);
-      localBundle.putInt("serviceType", this.jdField_c_of_type_Int);
-      localBundle.putString("method", this.f);
-      localBundle.putString("uin", this.g);
-      localBundle.putString("ticket", this.h);
+      localBundle.putInt("srcAppId", this.d);
+      localBundle.putInt("serviceType", this.l);
+      localBundle.putString("method", this.i);
+      localBundle.putString("uin", this.j);
+      localBundle.putString("ticket", this.k);
       localBundle.putInt("key_identification_type", 4);
       a(localBundle, (String)localObject);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener.onRequestFinish(2, null);
+    this.a.onRequestFinish(2, null);
   }
   
   protected void a(Bundle paramBundle, String paramString)
@@ -363,28 +363,28 @@ public class ActReflectRequestHelper
   
   protected void a(EIPCResult paramEIPCResult, String paramString)
   {
-    long l = FileUtils.getFileSizes(paramString) / 1024L;
-    int k = paramEIPCResult.code;
-    if (k != -102)
+    long l1 = FileUtils.getFileSizes(paramString) / 1024L;
+    int i1 = paramEIPCResult.code;
+    if (i1 != -102)
     {
-      if (k == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener.onRequestFinish(1, paramEIPCResult.data);
+      if (i1 == 0) {
+        this.a.onRequestFinish(1, paramEIPCResult.data);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqIdentificationRequestListener.onRequestFinish(2, paramEIPCResult.data);
+      this.a.onRequestFinish(2, paramEIPCResult.data);
     }
-    ReportController.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), String.valueOf(l), "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - this.n), String.valueOf(l1), "", "");
   }
   
   public void a(String paramString)
   {
-    this.i = paramString;
+    this.m = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.ActReflectRequestHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -14,15 +14,15 @@ class LoginwelcomeHelper$5
   
   public void onClick(View paramView)
   {
-    LoginUserGuideHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginwelcomeHelper.a.a(), LoginwelcomeHelper.a(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginwelcomeHelper));
-    this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginwelcomeHelper.g();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginwelcomeHelper.a.a, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
+    LoginUserGuideHelper.b(this.a, this.b.a.s(), LoginwelcomeHelper.b(this.b));
+    this.b.g();
+    ReportController.b(this.b.a.aF, "dc00898", "", "", "0X8009F4A", "0X8009F4A", 1, 0, "1", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.5
  * JD-Core Version:    0.7.0.1
  */

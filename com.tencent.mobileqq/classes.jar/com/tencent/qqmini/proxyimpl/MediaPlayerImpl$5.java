@@ -9,12 +9,12 @@ class MediaPlayerImpl$5
   
   public void onVideoSizeChanged(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnVideoSizeChangedListener.onVideoSizeChanged(this.jdField_a_of_type_ComTencentQqminiProxyimplMediaPlayerImpl, paramInt1, paramInt2);
+    this.a.onVideoSizeChanged(this.b, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MediaPlayerImpl.5
  * JD-Core Version:    0.7.0.1
  */

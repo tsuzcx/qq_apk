@@ -17,149 +17,149 @@ import java.util.List;
 public class RecentListConfig
 {
   protected static volatile RecentCheckFilterDispatcher a;
-  protected static volatile RecentConvertFilterDispatcher a;
-  protected static volatile RecentDataConvertDispatcher a;
-  protected static volatile RecentSortTopDispatcher a;
-  protected static volatile RecentSortValueDispatcher a;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static List<Class<? extends IRecentListBaseProcessor>> jdField_a_of_type_JavaUtilList;
-  private static final Object b = new Object();
-  private static final Object c = new Object();
-  private static final Object d = new Object();
-  private static final Object e = new Object();
+  protected static volatile RecentDataConvertDispatcher b;
+  protected static volatile RecentSortTopDispatcher c;
+  protected static volatile RecentSortValueDispatcher d;
+  protected static volatile RecentConvertFilterDispatcher e;
   private static final Object f = new Object();
+  private static final Object g = new Object();
+  private static final Object h = new Object();
+  private static final Object i = new Object();
+  private static final Object j = new Object();
+  private static final Object k = new Object();
+  private static List<Class<? extends IRecentListBaseProcessor>> l;
   
   public static RecentCheckFilterDispatcher a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher == null) {
-      synchronized (b)
+    if (a == null) {
+      synchronized (g)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher == null)
+        if (a == null)
         {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher = new RecentCheckFilterDispatcher();
-          Iterator localIterator = a().iterator();
+          a = new RecentCheckFilterDispatcher();
+          Iterator localIterator = f().iterator();
           while (localIterator.hasNext())
           {
             Class localClass = (Class)localIterator.next();
             if (IRecentCheckFilterProcessor.class.isAssignableFrom(localClass)) {
-              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher.a(localClass);
+              a.a(localClass);
             }
           }
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher.a();
+          a.a();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentCheckFilterDispatcher;
+    return a;
   }
   
-  public static RecentConvertFilterDispatcher a()
+  public static RecentDataConvertDispatcher b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher == null) {
-      synchronized (f)
+    if (b == null) {
+      synchronized (h)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher == null)
+        if (b == null)
         {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher = new RecentConvertFilterDispatcher();
-          Iterator localIterator = a().iterator();
-          while (localIterator.hasNext())
-          {
-            Class localClass = (Class)localIterator.next();
-            if (IRecentConvertFilterProcessor.class.isAssignableFrom(localClass)) {
-              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher.a(localClass);
-            }
-          }
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher.a();
-        }
-      }
-    }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentConvertFilterDispatcher;
-  }
-  
-  public static RecentDataConvertDispatcher a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher == null) {
-      synchronized (c)
-      {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher == null)
-        {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher = new RecentDataConvertDispatcher();
-          Iterator localIterator = a().iterator();
+          b = new RecentDataConvertDispatcher();
+          Iterator localIterator = f().iterator();
           while (localIterator.hasNext())
           {
             Class localClass = (Class)localIterator.next();
             if (IRecentDataConvertProcessor.class.isAssignableFrom(localClass)) {
-              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher.a(localClass);
+              b.a(localClass);
             }
           }
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher.a();
+          b.a();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentDataConvertDispatcher;
+    return b;
   }
   
-  public static RecentSortTopDispatcher a()
+  public static RecentSortTopDispatcher c()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher == null) {
-      synchronized (d)
+    if (c == null) {
+      synchronized (i)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher == null)
+        if (c == null)
         {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher = new RecentSortTopDispatcher();
-          Iterator localIterator = a().iterator();
+          c = new RecentSortTopDispatcher();
+          Iterator localIterator = f().iterator();
           while (localIterator.hasNext())
           {
             Class localClass = (Class)localIterator.next();
             if (IRecentSortTopProcessor.class.isAssignableFrom(localClass)) {
-              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher.a(localClass);
+              c.a(localClass);
             }
           }
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher.a();
+          c.a();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortTopDispatcher;
+    return c;
   }
   
-  public static RecentSortValueDispatcher a()
+  public static RecentSortValueDispatcher d()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher == null) {
-      synchronized (e)
+    if (d == null) {
+      synchronized (j)
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher == null)
+        if (d == null)
         {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher = new RecentSortValueDispatcher();
-          Iterator localIterator = a().iterator();
+          d = new RecentSortValueDispatcher();
+          Iterator localIterator = f().iterator();
           while (localIterator.hasNext())
           {
             Class localClass = (Class)localIterator.next();
             if (IRecentSortValueProcessor.class.isAssignableFrom(localClass)) {
-              jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher.a(localClass);
+              d.a(localClass);
             }
           }
-          jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher.a();
+          d.a();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentConfigRecentlistRecentSortValueDispatcher;
+    return d;
   }
   
-  private static List<Class<? extends IRecentListBaseProcessor>> a()
+  public static RecentConvertFilterDispatcher e()
   {
-    if (jdField_a_of_type_JavaUtilList == null) {
-      synchronized (jdField_a_of_type_JavaLangObject)
+    if (e == null) {
+      synchronized (k)
       {
-        if (jdField_a_of_type_JavaUtilList == null) {
-          jdField_a_of_type_JavaUtilList = RecentCustomizedProcessorRegister.c;
+        if (e == null)
+        {
+          e = new RecentConvertFilterDispatcher();
+          Iterator localIterator = f().iterator();
+          while (localIterator.hasNext())
+          {
+            Class localClass = (Class)localIterator.next();
+            if (IRecentConvertFilterProcessor.class.isAssignableFrom(localClass)) {
+              e.a(localClass);
+            }
+          }
+          e.a();
         }
       }
     }
-    return jdField_a_of_type_JavaUtilList;
+    return e;
+  }
+  
+  private static List<Class<? extends IRecentListBaseProcessor>> f()
+  {
+    if (l == null) {
+      synchronized (f)
+      {
+        if (l == null) {
+          l = RecentCustomizedProcessorRegister.c;
+        }
+      }
+    }
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.base.RecentListConfig
  * JD-Core Version:    0.7.0.1
  */

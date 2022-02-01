@@ -16,12 +16,12 @@ public class ReadInJoySingleTopicCell
     JSONObject localJSONObject = new JSONObject();
     Object localObject1 = paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo;
     Object localObject2 = null;
-    if ((localObject1 != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.size() != 0))
+    if ((localObject1 != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g != null) && (paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.size() != 0))
     {
-      localObject2 = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.a.get(0);
+      localObject2 = (TopicRecommendFeedsInfo.TopicRecommendInfo)paramAbsBaseArticleInfo.mTopicRecommendFeedsInfo.g.get(0);
       localObject3 = BaseApplicationImpl.getApplication().getResources();
-      localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).d;
-      localObject2 = String.format(((Resources)localObject3).getString(2131718065), new Object[] { ReadInJoyHelper.a(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).b) });
+      localObject1 = ((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).f;
+      localObject2 = String.format(((Resources)localObject3).getString(2131915542), new Object[] { ReadInJoyHelper.c(((TopicRecommendFeedsInfo.TopicRecommendInfo)localObject2).e) });
     }
     else
     {
@@ -36,7 +36,7 @@ public class ReadInJoySingleTopicCell
     localJSONObject.put("id_participant_imge", localObject2);
     localJSONObject.put("id_view_cover", new JSONObject());
     Util.d(paramAbsBaseArticleInfo, localJSONObject);
-    Util.n(paramAbsBaseArticleInfo, localJSONObject);
+    Util.o(paramAbsBaseArticleInfo, localJSONObject);
     localJSONObject.put("style_ID", "ReadInjoy_single_topic_cell");
     Util.a(localJSONObject, paramAbsBaseArticleInfo);
     return localJSONObject;
@@ -44,7 +44,7 @@ public class ReadInJoySingleTopicCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.data.ReadInJoySingleTopicCell
  * JD-Core Version:    0.7.0.1
  */

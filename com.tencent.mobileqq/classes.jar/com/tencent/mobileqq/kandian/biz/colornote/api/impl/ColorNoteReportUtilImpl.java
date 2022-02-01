@@ -17,7 +17,7 @@ public final class ColorNoteReportUtilImpl
   @Nullable
   public String createRecentColorNoteR5(@Nullable ColorNote paramColorNote)
   {
-    return ReportUtil.a(paramColorNote);
+    return ReportUtil.b(paramColorNote);
   }
   
   public void queryColorNoteAndReport(@Nullable List<? extends ColorNote> paramList)
@@ -27,7 +27,7 @@ public final class ColorNoteReportUtilImpl
   
   public void reportInsertColorNoteForViola(@Nullable ColorNote paramColorNote)
   {
-    ReportUtil.b(paramColorNote);
+    ReportUtil.c(paramColorNote);
   }
   
   public void reportInsideTabPushRedPnt(@Nullable MessageRecord paramMessageRecord)
@@ -37,7 +37,7 @@ public final class ColorNoteReportUtilImpl
   
   public void reportReadInJoyWeb(@Nullable ColorNote paramColorNote)
   {
-    ReportUtil.c(paramColorNote);
+    ReportUtil.d(paramColorNote);
   }
   
   public void reportRemainTime(@Nullable ColorNote paramColorNote)
@@ -47,7 +47,7 @@ public final class ColorNoteReportUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.colornote.api.impl.ColorNoteReportUtilImpl
  * JD-Core Version:    0.7.0.1
  */

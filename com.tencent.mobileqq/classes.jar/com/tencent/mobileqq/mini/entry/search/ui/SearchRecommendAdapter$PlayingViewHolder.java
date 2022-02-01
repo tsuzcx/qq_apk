@@ -25,10 +25,10 @@ class SearchRecommendAdapter$PlayingViewHolder
   public SearchRecommendAdapter$PlayingViewHolder(View paramView)
   {
     super(paramView);
-    this.icon = ((ImageView)paramView.findViewById(2131371220));
-    this.ranking = ((ImageView)paramView.findViewById(2131371222));
-    this.name = ((TextView)paramView.findViewById(2131371224));
-    this.category = ((TextView)paramView.findViewById(2131371225));
+    this.icon = ((ImageView)paramView.findViewById(2131438562));
+    this.ranking = ((ImageView)paramView.findViewById(2131438564));
+    this.name = ((TextView)paramView.findViewById(2131438566));
+    this.category = ((TextView)paramView.findViewById(2131438567));
   }
   
   public void update(SearchInfo paramSearchInfo, Activity paramActivity, int paramInt)
@@ -42,11 +42,11 @@ class SearchRecommendAdapter$PlayingViewHolder
     {
       this.ranking.setVisibility(0);
       if (paramInt == 0) {
-        this.ranking.setImageResource(2130841062);
+        this.ranking.setImageResource(2130841853);
       } else if (paramInt == 1) {
-        this.ranking.setImageResource(2130841063);
+        this.ranking.setImageResource(2130841854);
       } else if (paramInt == 2) {
-        this.ranking.setImageResource(2130841064);
+        this.ranking.setImageResource(2130841855);
       }
     }
     else
@@ -65,7 +65,7 @@ class SearchRecommendAdapter$PlayingViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.PlayingViewHolder
  * JD-Core Version:    0.7.0.1
  */

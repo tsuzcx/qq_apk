@@ -15,7 +15,7 @@ class PatchBundleTask$4
   {
     super.onDone(paramDownloadTask);
     Object localObject;
-    if ((3 == paramDownloadTask.a()) && (PatchBundleTask.access$700(this.this$0) != null))
+    if ((3 == paramDownloadTask.e()) && (PatchBundleTask.access$700(this.this$0) != null))
     {
       localObject = (PatchBundleConfig.BundleConfigItem)PatchBundleTask.access$700(this.this$0).mSubConfigs.get(this.val$url);
       int i = 0;
@@ -29,7 +29,7 @@ class PatchBundleTask$4
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("task.getStatus():");
-      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      ((StringBuilder)localObject).append(paramDownloadTask.e());
       ((StringBuilder)localObject).append(" url:");
       ((StringBuilder)localObject).append(this.val$url);
       QLog.i("PatchBundleTask", 1, ((StringBuilder)localObject).toString());
@@ -38,7 +38,7 @@ class PatchBundleTask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.patchbundle.PatchBundleTask.4
  * JD-Core Version:    0.7.0.1
  */

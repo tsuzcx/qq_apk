@@ -4,26 +4,26 @@ import java.util.Stack;
 
 class MixedMsgLinearLayout$TextViewScrapHeap
 {
-  private Stack<AnimationTextView> jdField_a_of_type_JavaUtilStack = new Stack();
+  private Stack<AnimationTextView> b = new Stack();
   
   MixedMsgLinearLayout$TextViewScrapHeap(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
   
   public AnimationTextView a()
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+    if (this.b.isEmpty()) {
       return null;
     }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
+    return (AnimationTextView)this.b.pop();
   }
   
   public void a(AnimationTextView paramAnimationTextView)
   {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    this.b.push(paramAnimationTextView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MixedMsgLinearLayout.TextViewScrapHeap
  * JD-Core Version:    0.7.0.1
  */

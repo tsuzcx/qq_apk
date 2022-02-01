@@ -7,48 +7,40 @@ import mqq.app.NewIntent;
 public class VideoChannelImpl
   extends VideoChannelBase
 {
-  private static VideoChannelImpl jdField_a_of_type_ComTencentQavChannelVideoChannelImpl;
-  private int jdField_a_of_type_Int;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private static VideoChannelImpl a;
+  private AppRuntime b;
+  private int c;
   
-  public static VideoChannelImpl a()
+  public static VideoChannelImpl c()
   {
-    if (jdField_a_of_type_ComTencentQavChannelVideoChannelImpl == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentQavChannelVideoChannelImpl == null) {
-          jdField_a_of_type_ComTencentQavChannelVideoChannelImpl = new VideoChannelImpl();
+        if (a == null) {
+          a = new VideoChannelImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentQavChannelVideoChannelImpl;
+    return a;
   }
   
   protected long a()
   {
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    AppRuntime localAppRuntime = this.b;
     if (localAppRuntime != null) {
       return localAppRuntime.getLongAccountUin();
     }
     return 0L;
   }
   
-  protected void a()
-  {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
-    localNewIntent.putExtra("req_type", 5);
-    localNewIntent.putExtra("app_id", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
-  }
-  
   protected void a(long paramLong, byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
     localNewIntent.putExtra("req_type", 7);
     localNewIntent.putExtra("uin", paramLong);
     localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    this.b.startServlet(localNewIntent);
   }
   
   public void a(AppRuntime paramAppRuntime)
@@ -59,53 +51,61 @@ public class VideoChannelImpl
     } else {
       i = 0;
     }
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_Int = i;
+    this.b = paramAppRuntime;
+    this.c = i;
+  }
+  
+  protected void b()
+  {
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
+    localNewIntent.putExtra("req_type", 5);
+    localNewIntent.putExtra("app_id", this.c);
+    this.b.startServlet(localNewIntent);
   }
   
   protected void f(byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
     localNewIntent.putExtra("req_type", 6);
     localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    this.b.startServlet(localNewIntent);
   }
   
   protected void g(byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
     localNewIntent.putExtra("req_type", 1);
     localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    this.b.startServlet(localNewIntent);
   }
   
   protected void h(byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
     localNewIntent.putExtra("req_type", 2);
     localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    this.b.startServlet(localNewIntent);
   }
   
   protected void i(byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
     localNewIntent.putExtra("req_type", 3);
     localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    this.b.startServlet(localNewIntent);
   }
   
   protected void j(byte[] paramArrayOfByte)
   {
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_MqqAppAppRuntime.getApplication(), VideoChannelServlet.class);
+    NewIntent localNewIntent = new NewIntent(this.b.getApplication(), VideoChannelServlet.class);
     localNewIntent.putExtra("req_type", 4);
     localNewIntent.putExtra("wup_buffer", paramArrayOfByte);
-    this.jdField_a_of_type_MqqAppAppRuntime.startServlet(localNewIntent);
+    this.b.startServlet(localNewIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.channel.VideoChannelImpl
  * JD-Core Version:    0.7.0.1
  */

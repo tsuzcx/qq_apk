@@ -25,14 +25,14 @@ final class TroopGiftComboView$setSenderAvatar$1
   {
     Intrinsics.checkParameterIsNotNull(paramPAGView, "it");
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.a(), 2, "setSenderAvatar");
+      QLog.d(this.this$0.getTAG(), 2, "setSenderAvatar");
     }
     paramPAGView.replaceImage(0, PAGImage.FromBitmap(this.$senderAvatar));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.setSenderAvatar.1
  * JD-Core Version:    0.7.0.1
  */

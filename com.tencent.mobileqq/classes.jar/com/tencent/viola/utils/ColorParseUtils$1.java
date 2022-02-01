@@ -1,6 +1,6 @@
 package com.tencent.viola.utils;
 
-final class ColorParseUtils$1
+class ColorParseUtils$1
   implements SingleFunctionParser.FlatMapper<Integer>
 {
   public Integer map(String paramString)
@@ -17,7 +17,7 @@ final class ColorParseUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.utils.ColorParseUtils.1
  * JD-Core Version:    0.7.0.1
  */

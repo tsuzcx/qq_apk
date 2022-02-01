@@ -11,13 +11,13 @@
         <item>@string/cvy</item>
         <item>@string/cvz</item>
     </string-array>
-    <integer-array name="bk">
+    <integer-array name="0">
         <item>4</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </integer-array>
-    <string-array name="bl">
+    <string-array name="1">
         <item>好友</item>
         <item>情侣</item>
         <item>闺蜜</item>
@@ -248,7 +248,7 @@
         <item>拍照</item>
         <item>从相册选择</item>
     </string-array>
-    <string-array name="bm">
+    <string-array name="2">
         <item>"我打游戏超厉害！精通五路
 声音很温柔的，一起开黑给你听"</item>
         <item>"一起唠唠嗑，倾诉小心事，打游戏，踩空间都ok
@@ -408,6 +408,10 @@
         <item>老师</item>
         <item>家长</item>
         <item>学生</item>
+    </string-array>
+    <string-array name="3">
+        <item>appbrand</item>
+        <item>support</item>
     </string-array>
     <string-array name="ax">
         <item>授权给好友</item>
@@ -861,6 +865,13 @@
         <item>从相册选择</item>
         <item>拍照</item>
     </string-array>
+    <string-array name="4">
+        <item>XFilesPDFReader</item>
+        <item>XFilesPPTReader</item>
+        <item>XFilesWordReader</item>
+        <item>XFilesExcelReader</item>
+        <item>FullScreenVideo</item>
+    </string-array>
     <string-array name="bd">
         <item>0.5</item>
         <item>1.0</item>
@@ -882,7 +893,7 @@
         <item>收到的评论</item>
         <item>已结束的约会</item>
     </string-array>
-    <string-array name="bn">
+    <string-array name="5">
         <item>\#33C573FF</item>
         <item>\#33FF80CA</item>
         <item>\#33FF5967</item>
@@ -893,7 +904,7 @@
         <item>\#3300CAFC</item>
         <item>\#3340A0FF</item>
     </string-array>
-    <string-array name="c_">
+    <string-array name="6">
         <item>\#AB6ADB</item>
         <item>\#F173BC</item>
         <item>\#E85D69</item>
@@ -914,7 +925,7 @@
         <item>昵称违规</item>
         <item>内容违规</item>
     </string-array>
-    <string-array name="ca">
+    <string-array name="7">
         <item>哈哈哈</item>
         <item>在吗</item>
         <item>宝贝</item>
@@ -1069,5 +1080,26 @@
     </string-array>
     <string-array name="c9">
         <item>接收群消息</item>
+    </string-array>
+    <string-array name="8">
+        <item>tools</item>
+        <item>toolsmp</item>
+        <item>appbrand</item>
+        <item>support</item>
+        <item>mm</item>
+    </string-array>
+    <string-array name="9">
+        <item>tools</item>
+        <item>toolsmp</item>
+        <item>appbrand</item>
+        <item>support</item>
+        <item>mm</item>
+        <item>all</item>
+    </string-array>
+    <string-array name="bk">
+        <item>xwalk.pak</item>
+        <item>xwalk_100_percent.pak</item>
+        <item>icudtl.dat</item>
+        <item>xweb_fullscreen_video.js</item>
     </string-array>
 </resources>

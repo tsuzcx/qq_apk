@@ -1,62 +1,82 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder;
 
 import android.content.Context;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
+import com.tencent.biz.pubaccount.weishi_new.combo.home.rightpager.WSComboVerticalVideoProgressManager;
+import com.tencent.biz.pubaccount.weishi_new.combo.home.rightpager.WSComboVerticalVideoProgressManager.Companion;
 import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSPlayerControlBar;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class WSVerticalItemVideoProgressController
   extends AbsWsUIGroup<WSVerticalItemData>
 {
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new WSVerticalItemVideoProgressController.3(this);
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private WSPlayerControlBar jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
-  private WSVerticalVideoRelativeLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout;
-  private WSVerticalVideoHolder jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
-  private boolean jdField_a_of_type_Boolean;
+  private static final int g = ScreenUtil.dip2px(2.5F);
+  private static final int h = ScreenUtil.dip2px(5.5F);
+  private WSVerticalVideoRelativeLayout i;
+  private WSVerticalVideoHolder j;
+  private FrameLayout k;
+  private WSPlayerControlBar l;
+  private WSPlayerManager m;
+  private boolean n;
+  private final SeekBar.OnSeekBarChangeListener o = new WSVerticalItemVideoProgressController.3(this);
   
   public WSVerticalItemVideoProgressController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder, WSVerticalVideoRelativeLayout paramWSVerticalVideoRelativeLayout)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder = paramWSVerticalVideoHolder;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = paramWSVerticalVideoRelativeLayout;
-    paramContext = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder;
-    if ((paramContext != null) && (paramContext.a != null)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder.a.a();
+    this.j = paramWSVerticalVideoHolder;
+    this.i = paramWSVerticalVideoRelativeLayout;
+    paramContext = this.j;
+    if ((paramContext != null) && (paramContext.d != null)) {
+      this.m = this.j.d.e();
     }
   }
   
-  private void i()
+  private void q()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout == null) {
+    Object localObject = this.j;
+    if (localObject != null)
+    {
+      localObject = ((WSVerticalVideoHolder)localObject).d;
+      if ((localObject != null) && (!((WSVerticalPageContract.Presenter)((WSVerticalPageFragment)localObject).aO_()).r()))
+      {
+        localObject = (FrameLayout.LayoutParams)this.l.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).bottomMargin = 0;
+        this.l.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localObject = (LinearLayout.LayoutParams)this.k.getLayoutParams();
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = (-g);
+        ((LinearLayout.LayoutParams)localObject).height = h;
+        this.k.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+    }
+  }
+  
+  private void r()
+  {
+    if (this.i == null) {
       return;
     }
     WSVerticalItemVideoProgressController.1 local1 = new WSVerticalItemVideoProgressController.1(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout.setDispatchTouchEventListener(new WSVerticalItemVideoProgressController.2(this, local1));
+    this.i.setDispatchTouchEventListener(new WSVerticalItemVideoProgressController.2(this, local1));
   }
   
   protected void a() {}
   
   public void a(float paramFloat)
   {
-    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    WSPlayerControlBar localWSPlayerControlBar = this.l;
     if (localWSPlayerControlBar != null) {
       localWSPlayerControlBar.setProgress(paramFloat);
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected int b()
-  {
-    return 2131560043;
   }
   
   protected void b()
@@ -64,45 +84,62 @@ public class WSVerticalItemVideoProgressController
     a(0.0F);
   }
   
-  protected void c()
+  protected void f()
   {
-    h();
+    o();
   }
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar = ((WSPlayerControlBar)a(2131380784));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar.setSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
-    i();
+    return 2131626087;
   }
   
-  public void f()
+  protected void j()
   {
-    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    this.k = ((FrameLayout)c(2131449763));
+    this.l = ((WSPlayerControlBar)c(2131449754));
+    this.l.setSeekBarChangeListener(this.o);
+    r();
+    q();
+  }
+  
+  public WSPlayerControlBar l()
+  {
+    return this.l;
+  }
+  
+  public void m()
+  {
+    WSPlayerControlBar localWSPlayerControlBar = this.l;
     if (localWSPlayerControlBar != null) {
       localWSPlayerControlBar.a();
     }
   }
   
-  public void g()
+  public void n()
   {
-    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    WSPlayerControlBar localWSPlayerControlBar = this.l;
     if (localWSPlayerControlBar != null) {
       localWSPlayerControlBar.b();
     }
   }
   
-  public void h()
+  public void o()
   {
-    WSPlayerControlBar localWSPlayerControlBar = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSPlayerControlBar;
+    WSPlayerControlBar localWSPlayerControlBar = this.l;
     if (localWSPlayerControlBar != null) {
       localWSPlayerControlBar.c();
     }
   }
+  
+  public boolean p()
+  {
+    return (this.n) || (WSComboVerticalVideoProgressManager.a.a().b());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoProgressController
  * JD-Core Version:    0.7.0.1
  */

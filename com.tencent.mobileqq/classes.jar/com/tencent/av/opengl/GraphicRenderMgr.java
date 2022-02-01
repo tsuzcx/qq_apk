@@ -23,7 +23,7 @@ public class GraphicRenderMgr
         if (sGraphicRender == null)
         {
           sGraphicRender = (IGraphicRender)QRoute.api(IGraphicRender.class);
-          AVSoUtils.d();
+          AVSoUtils.n();
         }
       }
       finally {}
@@ -58,7 +58,7 @@ public class GraphicRenderMgr
     if (paramYUVTexture == null) {
       paramYUVTexture = null;
     } else {
-      paramYUVTexture = paramYUVTexture.a();
+      paramYUVTexture = paramYUVTexture.v();
     }
     localIGraphicRender.setGlRender2Native(paramString, paramYUVTexture);
   }

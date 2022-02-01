@@ -20,23 +20,7 @@ public class TroopMsgTipsFilter
   {
     paramAIOContext = TroopBusinessUtil.a(paramMessage);
     if (paramAIOContext != null) {
-      paramMessage.nickName = paramAIOContext.c;
-    }
-    return null;
-  }
-  
-  public CharSequence a(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
-  {
-    paramAIOContext = (ITroopRobotService)paramAIOContext.a().getRuntimeService(ITroopRobotService.class, "all");
-    if (paramAIOContext.hasRobotNewsClassId(paramMessage))
-    {
-      if (!paramAIOContext.hasProcessedMoreDetail(paramMessage)) {
-        paramAIOContext.preProcessMessageMoreDetail(paramMessage);
-      }
-      paramAIOContext = paramAIOContext.generateMoreDetailMsg(paramMessage);
-      if (!TextUtils.isEmpty(paramAIOContext)) {
-        return paramAIOContext;
-      }
+      paramMessage.nickName = paramAIOContext.d;
     }
     return null;
   }
@@ -52,10 +36,26 @@ public class TroopMsgTipsFilter
     }
     return true;
   }
+  
+  public CharSequence b(AIOContext paramAIOContext, MessageRecord paramMessageRecord, Message paramMessage)
+  {
+    paramAIOContext = (ITroopRobotService)paramAIOContext.a().getRuntimeService(ITroopRobotService.class, "all");
+    if (paramAIOContext.hasRobotNewsClassId(paramMessage))
+    {
+      if (!paramAIOContext.hasProcessedMoreDetail(paramMessage)) {
+        paramAIOContext.preProcessMessageMoreDetail(paramMessage);
+      }
+      paramAIOContext = paramAIOContext.generateMoreDetailMsg(paramMessage);
+      if (!TextUtils.isEmpty(paramAIOContext)) {
+        return paramAIOContext;
+      }
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.tips.TroopMsgTipsFilter
  * JD-Core Version:    0.7.0.1
  */

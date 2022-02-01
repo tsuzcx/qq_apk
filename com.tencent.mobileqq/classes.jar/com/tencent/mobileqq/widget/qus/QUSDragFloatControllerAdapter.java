@@ -6,37 +6,37 @@ import kotlin.Metadata;
 public abstract class QUSDragFloatControllerAdapter
   implements QUSDragFloatController
 {
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a() {}
-  
   public int b()
   {
     return 0;
   }
-  
-  public void b() {}
   
   public int c()
   {
     return 0;
   }
   
-  public void c() {}
-  
   public int d()
   {
     return 0;
   }
   
-  public void d() {}
+  public int e()
+  {
+    return 0;
+  }
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qus.QUSDragFloatControllerAdapter
  * JD-Core Version:    0.7.0.1
  */

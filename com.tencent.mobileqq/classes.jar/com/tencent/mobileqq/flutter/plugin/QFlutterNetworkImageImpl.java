@@ -3,31 +3,30 @@ package com.tencent.mobileqq.flutter.plugin;
 import android.graphics.Bitmap;
 import com.qflutter.qflutter_network_image.LoadBitmapCallback;
 import com.qflutter.qflutter_network_image.QFlutterNetworkImageInterface;
-import com.tencent.mobileqq.activity.qcircle.utils.QCircleUtils;
-import com.tencent.mobileqq.qcircle.api.IQCircleService;
 import com.tencent.mobileqq.qcircle.api.data.Option;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qqcircle.picload.QCircleFeedPicLoader;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class QFlutterNetworkImageImpl
   implements QFlutterNetworkImageInterface
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private Map<String, Bitmap> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static String a;
+  private Map<String, Bitmap> b = new ConcurrentHashMap();
   
   public static void a(String paramString)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    a = paramString;
   }
   
   public String getLibPath()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[getLibPath] libPath=");
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public void loadBitmap(String paramString, int paramInt1, int paramInt2, LoadBitmapCallback paramLoadBitmapCallback)
@@ -47,7 +46,7 @@ public class QFlutterNetworkImageImpl
     if ((paramInt1 > 0) && (paramInt2 > 0)) {
       paramString.setRequestWidth(paramInt1).setRequestHeight(paramInt2);
     }
-    QCircleUtils.a().loadImage(paramString, new QFlutterNetworkImageImpl.1(this, paramLoadBitmapCallback));
+    QCircleFeedPicLoader.g().loadImage(paramString, new QFlutterNetworkImageImpl.1(this, paramLoadBitmapCallback));
   }
   
   public void releaseBitmap(String paramString)
@@ -59,7 +58,7 @@ public class QFlutterNetworkImageImpl
       localStringBuilder.append(paramString);
       QLog.d("QFlutterNetworkImageImpl", 2, localStringBuilder.toString());
     }
-    paramString = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    paramString = (Bitmap)this.b.remove(paramString);
     if ((paramString == null) || (paramString.isRecycled())) {
       QLog.w("QFlutterNetworkImageImpl", 1, "[releaseBitmap] bitmap is not supposed to be recycled or null, some problems occurred");
     }
@@ -67,7 +66,7 @@ public class QFlutterNetworkImageImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterNetworkImageImpl
  * JD-Core Version:    0.7.0.1
  */

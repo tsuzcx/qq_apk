@@ -117,7 +117,7 @@ public class SpringHbIPCModule
           if (paramString == null) {
             paramString = (String)localObject2;
           } else {
-            paramString = paramString.a();
+            paramString = paramString.c();
           }
           paramBundle = new EIPCResult();
           localObject1 = new Bundle();
@@ -165,9 +165,9 @@ public class SpringHbIPCModule
           localObject1 = (SpringFestivalEntryManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
           paramString = new EIPCResult();
           paramBundle = new Bundle();
-          if (((SpringFestivalEntryManager)localObject1).a() != null)
+          if (((SpringFestivalEntryManager)localObject1).d() != null)
           {
-            localObject1 = ((SpringFestivalEntryManager)localObject1).a().commonData.activityUrlPrefix;
+            localObject1 = ((SpringFestivalEntryManager)localObject1).d().commonData.activityUrlPrefix;
             if (QLog.isColorLevel())
             {
               localObject2 = new StringBuilder();
@@ -199,30 +199,30 @@ public class SpringHbIPCModule
             QLog.i("SpringHbIPCModule", 2, "onCall ACTION_GET_AWARD = getAward");
           }
           paramBundle = (SpringFestivalEntryManager)localAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-          localObject1 = paramBundle.a();
+          localObject1 = paramBundle.c();
           paramString = new EIPCResult();
           if (localObject1 != null)
           {
             localObject2 = new Bundle();
-            ((Bundle)localObject2).putInt("k_c_time", ((RedPacketResultData)localObject1).jdField_c_of_type_Int);
-            ((Bundle)localObject2).putInt("key_mtime", ((RedPacketResultData)localObject1).jdField_f_of_type_Int);
-            ((Bundle)localObject2).putInt("k_money", ((RedPacketResultData)localObject1).jdField_d_of_type_Int);
-            ((Bundle)localObject2).putInt("key_award_type", ((RedPacketResultData)localObject1).jdField_b_of_type_Int);
-            ((Bundle)localObject2).putInt("key_promotion_id", ((RedPacketResultData)localObject1).jdField_g_of_type_Int);
-            ((Bundle)localObject2).putInt("key_business_id", ((RedPacketResultData)localObject1).jdField_e_of_type_Int);
-            ((Bundle)localObject2).putInt("k_state", ((RedPacketResultData)localObject1).jdField_a_of_type_Int);
-            ((Bundle)localObject2).putInt("cardStyle", paramBundle.a().commonData.cardStyle);
-            ((Bundle)localObject2).putString("key_signature", ((RedPacketResultData)localObject1).jdField_b_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("key_req_id", ((RedPacketResultData)localObject1).jdField_f_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("k_pack_id", ((RedPacketResultData)localObject1).jdField_a_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("key_wishing", ((RedPacketResultData)localObject1).jdField_e_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("key_order", ((RedPacketResultData)localObject1).jdField_d_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("key_url", ((RedPacketResultData)localObject1).jdField_c_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("key_business_name", ((RedPacketResultData)localObject1).jdField_g_of_type_JavaLangString);
-            ((Bundle)localObject2).putString("key_business_logo", ((RedPacketResultData)localObject1).h);
-            ((Bundle)localObject2).putString("key_business_cover", ((RedPacketResultData)localObject1).j);
-            ((Bundle)localObject2).putString("key_business_video", ((RedPacketResultData)localObject1).i);
-            ((Bundle)localObject2).putString("key_business_video_cover", ((RedPacketResultData)localObject1).k);
+            ((Bundle)localObject2).putInt("k_c_time", ((RedPacketResultData)localObject1).d);
+            ((Bundle)localObject2).putInt("key_mtime", ((RedPacketResultData)localObject1).i);
+            ((Bundle)localObject2).putInt("k_money", ((RedPacketResultData)localObject1).e);
+            ((Bundle)localObject2).putInt("key_award_type", ((RedPacketResultData)localObject1).c);
+            ((Bundle)localObject2).putInt("key_promotion_id", ((RedPacketResultData)localObject1).l);
+            ((Bundle)localObject2).putInt("key_business_id", ((RedPacketResultData)localObject1).f);
+            ((Bundle)localObject2).putInt("k_state", ((RedPacketResultData)localObject1).b);
+            ((Bundle)localObject2).putInt("cardStyle", paramBundle.d().commonData.cardStyle);
+            ((Bundle)localObject2).putString("key_signature", ((RedPacketResultData)localObject1).g);
+            ((Bundle)localObject2).putString("key_req_id", ((RedPacketResultData)localObject1).m);
+            ((Bundle)localObject2).putString("k_pack_id", ((RedPacketResultData)localObject1).a);
+            ((Bundle)localObject2).putString("key_wishing", ((RedPacketResultData)localObject1).k);
+            ((Bundle)localObject2).putString("key_order", ((RedPacketResultData)localObject1).j);
+            ((Bundle)localObject2).putString("key_url", ((RedPacketResultData)localObject1).h);
+            ((Bundle)localObject2).putString("key_business_name", ((RedPacketResultData)localObject1).n);
+            ((Bundle)localObject2).putString("key_business_logo", ((RedPacketResultData)localObject1).o);
+            ((Bundle)localObject2).putString("key_business_cover", ((RedPacketResultData)localObject1).q);
+            ((Bundle)localObject2).putString("key_business_video", ((RedPacketResultData)localObject1).p);
+            ((Bundle)localObject2).putString("key_business_video_cover", ((RedPacketResultData)localObject1).r);
             paramString.data = ((Bundle)localObject2);
           }
           if (QLog.isColorLevel())
@@ -241,7 +241,7 @@ public class SpringHbIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringHbIPCModule
  * JD-Core Version:    0.7.0.1
  */

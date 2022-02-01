@@ -39,23 +39,23 @@ class ComponentHeaderUgc$4
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("ComponentHeaderUgc", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentCmpCtxt.a.a();
-    if (paramLong == ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.a.a)
+    Object localObject = this.a.a.a.k();
+    if (paramLong == ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.c.a)
     {
       if (paramBoolean)
       {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131702479));
-        this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
-        ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.h = 2;
+        this.a.g.setEnabled(false);
+        this.a.g.setText(HardCodeUtil.a(2131900481));
+        this.a.g.getPaint().setFakeBoldText(false);
+        ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.o = 2;
         ((AbsBaseArticleInfo)localObject).isNeedShowBtnWhenFollowed = true;
       }
       else
       {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131702484));
-        this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
-        ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.h = 1;
+        this.a.g.setEnabled(true);
+        this.a.g.setText(HardCodeUtil.a(2131899712));
+        this.a.g.getPaint().setFakeBoldText(true);
+        ((AbsBaseArticleInfo)localObject).mSocialFeedInfo.o = 1;
       }
       ReadInJoyLogicEngineEventDispatcher.a().c();
     }
@@ -63,7 +63,7 @@ class ComponentHeaderUgc$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentHeaderUgc.4
  * JD-Core Version:    0.7.0.1
  */

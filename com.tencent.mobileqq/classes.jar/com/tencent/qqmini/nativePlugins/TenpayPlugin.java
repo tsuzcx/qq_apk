@@ -28,9 +28,9 @@ import org.json.JSONObject;
 public class TenpayPlugin
   extends BaseJsPlugin
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private TenpayPlugin.QWalletPayJsPluginResultReceiver jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver;
-  private TenpayPlugin.TenpayRecevicer jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer;
+  private TenpayPlugin.TenpayRecevicer a;
+  private TenpayPlugin.QWalletPayJsPluginResultReceiver b;
+  private AppInterface c;
   
   private JSONObject a(RequestEvent paramRequestEvent)
   {
@@ -89,7 +89,7 @@ public class TenpayPlugin
         localStringBuilder.append(paramJSONObject);
         QLog.d("TenpayPlugin", 2, localStringBuilder.toString());
       }
-      paramJSONObject = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getExtraDataForGrapH5CommonHbResult(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject);
+      paramJSONObject = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getExtraDataForGrapH5CommonHbResult(this.c, paramJSONObject);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -99,7 +99,7 @@ public class TenpayPlugin
       }
       if (paramJSONObject != null)
       {
-        ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapH5CommonHbResult(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramJSONObject.toString(), this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
+        ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapH5CommonHbResult(this.c, paramJSONObject.toString(), this.b);
         return;
       }
       a(paramRequestEvent, "-1001", "params error");
@@ -139,7 +139,7 @@ public class TenpayPlugin
         if (bool) {
           try
           {
-            ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getHbDetailInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface, localJSONObject, "redgiftH5CommonDetail", this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver);
+            ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getHbDetailInfo(this.c, localJSONObject, "redgiftH5CommonDetail", this.b);
           }
           catch (Throwable localThrowable)
           {
@@ -169,11 +169,11 @@ public class TenpayPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin");
-    if ((!StringUtil.a(str2)) && (str2.equals(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin())) && (!StringUtil.a(str1)))
+    if ((!StringUtil.isEmpty(str2)) && (str2.equals(this.c.getCurrentAccountUin())) && (!StringUtil.isEmpty(str1)))
     {
       Object localObject = ((ITenCookie)QRoute.api(ITenCookie.class)).getTempArgs(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (StringUtil.a((String)localObject))
+      if (StringUtil.isEmpty((String)localObject))
       {
         paramJSONObject = SharedPreferencesProxyManager.getInstance();
         localObject = new StringBuilder();
@@ -223,26 +223,26 @@ public class TenpayPlugin
     }
     if (localJSONObject == null)
     {
-      paramRequestEvent.fail(HardCodeUtil.a(2131714653));
+      paramRequestEvent.fail(HardCodeUtil.a(2131912162));
       return;
     }
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer = new TenpayPlugin.TenpayRecevicer(this, paramRequestEvent, new Handler(Looper.getMainLooper()));
+    this.a = new TenpayPlugin.TenpayRecevicer(this, paramRequestEvent, new Handler(Looper.getMainLooper()));
     try
     {
       localObject = new Bundle();
       ((Bundle)localObject).putString("json", localJSONObject.getString("data"));
       ((Bundle)localObject).putString("callbackSn", "0");
       ((Bundle)localObject).putInt("payparmas_paytype", 1);
-      if (!PayBridgeActivity.tenpay(this.mMiniAppContext.getAttachedActivity(), 5, (Bundle)localObject, this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$TenpayRecevicer))
+      if (!PayBridgeActivity.tenpay(this.mMiniAppContext.getAttachedActivity(), 5, (Bundle)localObject, this.a))
       {
-        paramRequestEvent.fail(HardCodeUtil.a(2131714654));
+        paramRequestEvent.fail(HardCodeUtil.a(2131912163));
         return;
       }
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      paramRequestEvent.fail(HardCodeUtil.a(2131714653));
+      paramRequestEvent.fail(HardCodeUtil.a(2131912162));
     }
   }
   
@@ -258,8 +258,8 @@ public class TenpayPlugin
       QLog.d("TenpayPlugin", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = (BaseActivity)this.mMiniAppContext.getAttachedActivity();
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((BaseActivity)localObject).getAppInterface();
-    this.jdField_a_of_type_ComTencentQqminiNativePluginsTenpayPlugin$QWalletPayJsPluginResultReceiver = new TenpayPlugin.QWalletPayJsPluginResultReceiver(paramRequestEvent, new Handler(Looper.getMainLooper()), this.jdField_a_of_type_ComTencentCommonAppAppInterface, new WeakReference(localObject));
+    this.c = ((BaseActivity)localObject).getAppInterface();
+    this.b = new TenpayPlugin.QWalletPayJsPluginResultReceiver(paramRequestEvent, new Handler(Looper.getMainLooper()), this.c, new WeakReference(localObject));
     if (localJSONObject != null) {
       a(paramRequestEvent, localJSONObject.optString("data"));
     }
@@ -267,7 +267,7 @@ public class TenpayPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TenpayPlugin
  * JD-Core Version:    0.7.0.1
  */

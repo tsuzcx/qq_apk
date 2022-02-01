@@ -4,13 +4,13 @@ import com.tencent.mobileqq.data.DiscussionMemberInfo;
 
 class ContactSearchModelDiscussion$DiscussionMemberMatchInfo
 {
-  long jdField_a_of_type_Long;
-  DiscussionMemberInfo jdField_a_of_type_ComTencentMobileqqDataDiscussionMemberInfo;
-  String jdField_a_of_type_JavaLangString;
+  long a;
+  String b;
+  DiscussionMemberInfo c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.model.ContactSearchModelDiscussion.DiscussionMemberMatchInfo
  * JD-Core Version:    0.7.0.1
  */

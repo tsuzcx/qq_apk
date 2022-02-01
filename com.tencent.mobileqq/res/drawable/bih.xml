@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<vector android:height="40.0dip" android:width="40.0dip" android:viewportWidth="40.0" android:viewportHeight="40.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="false" android:drawable="@drawable/g54" />
-    <item android:state_pressed="true" android:drawable="@drawable/g4y" />
-</selector>
+    <group>
+        <clip-path android:pathData="M0,0h40v40H0z" />
+        <path android:fillColor="#ff222222" android:pathData="M16.5,2a9.5,9.5 0,1 0,0 19,9.5 9.5,0 0,0 0,-19zM16.5,5a6.5,6.5 0,1 1,0 13,6.5 6.5,0 0,1 0,-13z" android:fillType="nonZero" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40H0z" />
+        <path android:fillColor="#ff222222" android:pathData="M13.756,18h5.395a10.527,10.527 0,0 0,-2.141 3.001h-3.595l-0.636,0.009 -0.296,0.007 -0.552,0.022 -0.503,0.032c-1.197,0.093 -1.978,0.283 -2.7,0.609l-0.286,0.137 -0.142,0.074a5.77,5.77 0,0 0,-2.483 2.551l-0.137,0.287c-0.326,0.721 -0.516,1.502 -0.609,2.7l-0.032,0.502 -0.012,0.27 -0.017,0.578 -0.009,0.636L5,31l12.555,0.001a10.556,10.556 0,0 0,2.78 3L3.5,34A1.5,1.5 0,0 1,2 32.5l0.001,-3.124c0.002,-0.247 0.006,-0.486 0.011,-0.715l0.023,-0.663c0.105,-2.339 0.458,-3.704 1.21,-5.113a8.769,8.769 0,0 1,3.64 -3.64c1.409,-0.752 2.774,-1.105 5.113,-1.21l0.663,-0.023c0.344,-0.008 0.708,-0.012 1.095,-0.012z" android:fillType="nonZero" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40H0z" />
+        <path android:fillColor="#ff222222" android:pathData="M26.5,15C20.701,15 16,19.701 16,25.5S20.701,36 26.5,36 37,31.299 37,25.5 32.299,15 26.5,15zM26.5,18a7.5,7.5 0,1 1,0 15,7.5 7.5,0 0,1 0,-15z" android:fillType="nonZero" />
+    </group>
+    <group>
+        <clip-path android:pathData="M0,0h40v40H0z" />
+        <path android:fillColor="#ff222222" android:pathData="M26.5,20a1.5,1.5 0,0 1,1.5 1.5V24h2.5a1.5,1.5 0,0 1,0 3H28v2.5a1.5,1.5 0,0 1,-3 0V27h-2.5a1.5,1.5 0,0 1,0 -3H25v-2.5a1.5,1.5 0,0 1,1.5 -1.5z" android:fillType="evenOdd" />
+    </group>
+</vector>

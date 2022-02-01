@@ -11,25 +11,7 @@ import java.util.List;
 public abstract interface IEditorModel
   extends LocalATextGetter
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract AttribPool a();
-  
-  public abstract CreateDocParam a();
-  
-  public abstract DocMetaData a();
-  
-  public abstract Pair<Integer, Integer> a();
-  
-  public abstract String a();
-  
-  public abstract String a(String paramString);
-  
   public abstract List<UserEditInfo> a();
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -65,21 +47,39 @@ public abstract interface IEditorModel
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract int b();
+  public abstract Pair<Integer, Integer> b();
   
-  public abstract String b();
+  public abstract String b(String paramString);
   
   public abstract void b(int paramInt);
   
-  public abstract void b(String paramString);
+  public abstract void c(String paramString);
   
-  public abstract String c();
+  public abstract AttribPool d();
   
-  public abstract String d();
+  public abstract CreateDocParam e();
+  
+  public abstract void f();
+  
+  public abstract DocMetaData g();
+  
+  public abstract int h();
+  
+  public abstract long i();
+  
+  public abstract String j();
+  
+  public abstract String k();
+  
+  public abstract String l();
+  
+  public abstract String m();
+  
+  public abstract int n();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.IEditorModel
  * JD-Core Version:    0.7.0.1
  */

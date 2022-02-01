@@ -10,19 +10,13 @@ import java.util.Iterator;
 public class SwiftBrowserNavigator
   extends SwiftBrowserComponentsProvider.SwiftBrowserComponent
 {
-  private static ArrayList<INavigationProcess> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilArrayList = SwiftBrowserNavigatorInjectUtil.a();
-  }
+  private static ArrayList<INavigationProcess> a = SwiftBrowserNavigatorInjectUtil.a();
   
   public boolean a(Intent paramIntent)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+    Activity localActivity = this.b.b();
     String str = paramIntent.getStringExtra("url");
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       if (((INavigationProcess)localIterator.next()).a(paramIntent, localActivity, str)) {
         return true;
@@ -33,9 +27,9 @@ public class SwiftBrowserNavigator
   
   public boolean b(Intent paramIntent)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a();
+    Activity localActivity = this.b.b();
     String str = paramIntent.getStringExtra("url");
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       if (((INavigationProcess)localIterator.next()).b(paramIntent, localActivity, str)) {
         return true;
@@ -46,7 +40,7 @@ public class SwiftBrowserNavigator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserNavigator
  * JD-Core Version:    0.7.0.1
  */

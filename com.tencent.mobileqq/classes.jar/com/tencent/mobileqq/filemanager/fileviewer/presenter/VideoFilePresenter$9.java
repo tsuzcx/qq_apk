@@ -21,23 +21,23 @@ class VideoFilePresenter$9
     if (paramInt == -2)
     {
       if (bool) {
-        VideoFilePresenter.a(this.a);
+        VideoFilePresenter.d(this.a);
       }
     }
     else if (paramInt == 1)
     {
-      if ((!bool) && (this.a.a != null) && ((this.a.a instanceof FileBrowserActivity)) && (((FileBrowserActivity)this.a.a).isResume())) {
-        VideoFilePresenter.c(this.a);
+      if ((!bool) && (this.a.d != null) && ((this.a.d instanceof FileBrowserActivity)) && (((FileBrowserActivity)this.a.d).isResume())) {
+        VideoFilePresenter.f(this.a);
       }
     }
     else if ((paramInt == -1) && (bool)) {
-      VideoFilePresenter.a(this.a);
+      VideoFilePresenter.d(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.9
  * JD-Core Version:    0.7.0.1
  */

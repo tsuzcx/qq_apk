@@ -43,32 +43,27 @@ public class WSDramaMiddlePart
   extends WSAbsPart
   implements WSDramaEpisodeContract.View, WSSimpleEventReceiver
 {
-  public static final int a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSDramaMiddlePart.OnDramaDataListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaMiddlePart$OnDramaDataListener;
-  private final WSDramaPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment;
-  private WSEpisodeAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter;
-  private WSDramaGalleryAdapter jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter;
-  private final WSDramaEpisodePresenter jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPresenterWSDramaEpisodePresenter;
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = -1;
-  private RecyclerView jdField_b_of_type_AndroidSupportV7WidgetRecyclerView;
-  private String jdField_b_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_Int = WeishiUIUtil.c() / 2 - ScreenUtil.dip2px(51.5F) / 2;
-  }
+  public static final int a = WeishiUIUtil.c() / 2 - ScreenUtil.dip2px(51.5F) / 2;
+  private final WSDramaPageFragment e;
+  private final WSDramaEpisodePresenter f;
+  private DiniFlyAnimationView g;
+  private TextView h;
+  private RecyclerView i;
+  private RecyclerView j;
+  private WSEpisodeAdapter k;
+  private WSDramaGalleryAdapter l;
+  private WSDramaMiddlePart.OnDramaDataListener m;
+  private Bundle n;
+  private String o;
+  private String p;
+  private int q = -1;
+  private boolean r = true;
   
   public WSDramaMiddlePart(WSDramaPageFragment paramWSDramaPageFragment, ViewStub paramViewStub)
   {
     super(paramWSDramaPageFragment.getContext(), paramViewStub);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment = paramWSDramaPageFragment;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPresenterWSDramaEpisodePresenter = new WSDramaEpisodePresenter(this);
+    this.e = paramWSDramaPageFragment;
+    this.f = new WSDramaEpisodePresenter(this);
   }
   
   public static WSDramaMiddlePart a(WSDramaPageFragment paramWSDramaPageFragment, ViewStub paramViewStub, Bundle paramBundle)
@@ -78,28 +73,11 @@ public class WSDramaMiddlePart
     return paramWSDramaPageFragment;
   }
   
-  private WSDramaEpisodePresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaPresenterWSDramaEpisodePresenter;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (paramInt >= this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.getItemCount()) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.a(paramInt);
-    ((WSCenterLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager()).scrollToPositionWithOffset(Math.max(0, paramInt), jdField_a_of_type_Int);
-    b(0);
-    WSDramaBeaconReport.a((WSEpisodeItemData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.getItem(paramInt), b(), a());
-    n();
-  }
-  
   private <M extends Checkable, VH extends BaseViewHolder<M>> void a(RecyclerView paramRecyclerView, WSAbsSingleCheckAdapter<M, VH> paramWSAbsSingleCheckAdapter, RecyclerView.ItemDecoration paramItemDecoration, int paramInt)
   {
     paramRecyclerView.setAdapter(paramWSAbsSingleCheckAdapter);
     paramRecyclerView.addItemDecoration(paramItemDecoration);
-    paramItemDecoration = new WSCenterLayoutManager(this.jdField_a_of_type_AndroidContentContext, paramInt);
+    paramItemDecoration = new WSCenterLayoutManager(this.b, paramInt);
     paramItemDecoration.setOrientation(0);
     paramRecyclerView.setLayoutManager(paramItemDecoration);
     paramWSAbsSingleCheckAdapter.a(paramItemDecoration);
@@ -107,12 +85,12 @@ public class WSDramaMiddlePart
   
   private void a(WSDramaItemData paramWSDramaItemData, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramWSDramaItemData.a();
+    this.o = paramWSDramaItemData.b();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSDramaMiddlePart.java][dramaChecked] mDramaId:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.o);
     WSLog.d("WSDramaMiddlePartnel-log", ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaMiddlePart$OnDramaDataListener;
+    localObject = this.m;
     if (localObject != null) {
       ((WSDramaMiddlePart.OnDramaDataListener)localObject).a(paramWSDramaItemData, paramInt);
     }
@@ -120,7 +98,7 @@ public class WSDramaMiddlePart
   
   private void a(WSEpisodeItemData paramWSEpisodeItemData, int paramInt)
   {
-    WSDramaMiddlePart.OnDramaDataListener localOnDramaDataListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaMiddlePart$OnDramaDataListener;
+    WSDramaMiddlePart.OnDramaDataListener localOnDramaDataListener = this.m;
     if (localOnDramaDataListener != null) {
       localOnDramaDataListener.a(paramWSEpisodeItemData, paramInt);
     }
@@ -128,33 +106,33 @@ public class WSDramaMiddlePart
   
   private void a(WSDramaFollowEvent paramWSDramaFollowEvent)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter;
+    Object localObject1 = this.l;
     if (localObject1 == null) {
       return;
     }
     localObject1 = ((WSDramaGalleryAdapter)localObject1).getDataList();
-    int i = 0;
-    while (i < ((List)localObject1).size())
+    int i1 = 0;
+    while (i1 < ((List)localObject1).size())
     {
-      Object localObject2 = (WSDramaItemData)((List)localObject1).get(i);
-      if ((localObject2 != null) && (TextUtils.equals(((WSDramaItemData)localObject2).a(), paramWSDramaFollowEvent.getDramaId())))
+      Object localObject2 = (WSDramaItemData)((List)localObject1).get(i1);
+      if ((localObject2 != null) && (TextUtils.equals(((WSDramaItemData)localObject2).b(), paramWSDramaFollowEvent.getDramaId())))
       {
-        localObject2 = ((WSDramaItemData)localObject2).a().dramaInfo;
-        int j = paramWSDramaFollowEvent.getStatus();
+        localObject2 = ((WSDramaItemData)localObject2).f().dramaInfo;
+        int i2 = paramWSDramaFollowEvent.getStatus();
         boolean bool = true;
-        if (j != 1) {
+        if (i2 != 1) {
           bool = false;
         }
         ((stDramaInfo)localObject2).isFollowed = bool;
       }
-      i += 1;
+      i1 += 1;
     }
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager().smoothScrollToPosition(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView, new RecyclerView.State(), paramInt1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.j.getLayoutManager().smoothScrollToPosition(this.j, new RecyclerView.State(), paramInt1);
+    this.h.setText(paramString);
   }
   
   private void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
@@ -173,119 +151,99 @@ public class WSDramaMiddlePart
   
   private void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    if (paramInt >= this.k.getItemCount()) {
+      return;
+    }
+    this.k.a(paramInt);
+    ((WSCenterLayoutManager)this.i.getLayoutManager()).scrollToPositionWithOffset(Math.max(0, paramInt), a);
+    c(0);
+    WSDramaBeaconReport.a((WSEpisodeItemData)this.k.getItem(paramInt), i(), k());
+    u();
   }
   
   private void b(String paramString)
   {
-    WSDramaUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment, b(), c(), paramString);
+    WSDramaUtils.a(this.e, l(), q(), paramString);
   }
   
-  private String c()
+  private void c(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter;
-    localObject = (WSEpisodeItemData)((WSEpisodeAdapter)localObject).getItem(((WSEpisodeAdapter)localObject).a());
+    this.q = paramInt;
+  }
+  
+  private void p()
+  {
+    this.g.setRepeatCount(-1);
+    this.g.setRepeatMode(1);
+    this.g.setAnimation("wsdrama_enter/data.json");
+    this.g.setImageAssetsFolder("wsdrama_enter/images");
+    this.g.setOnClickListener(new WSDramaMiddlePart.1(this));
+  }
+  
+  private String q()
+  {
+    Object localObject = this.k;
+    localObject = (WSEpisodeItemData)((WSEpisodeAdapter)localObject).getItem(((WSEpisodeAdapter)localObject).b());
     if (localObject != null) {
-      return ((WSEpisodeItemData)localObject).a();
+      return ((WSEpisodeItemData)localObject).b();
     }
     return "";
   }
   
-  private void j()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setRepeatCount(-1);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setRepeatMode(1);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsdrama_enter/data.json");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetsFolder("wsdrama_enter/images");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new WSDramaMiddlePart.1(this));
-  }
-  
-  private void k()
+  private void r()
   {
     Bundle localBundle = a();
     if (localBundle == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("drama_id");
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("from");
+    this.o = localBundle.getString("drama_id");
+    this.p = localBundle.getString("from");
   }
   
-  private void l()
+  private void s()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter = new WSEpisodeAdapter(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
-    a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter, new WSEpisodeItemDecoration(), WSEpisodeItemDecoration.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.a(new WSDramaMiddlePart.2(this));
+    this.k = new WSEpisodeAdapter(this.b, this.i);
+    a(this.i, this.k, new WSEpisodeItemDecoration(), WSEpisodeItemDecoration.a);
+    this.k.a(new WSDramaMiddlePart.2(this));
   }
   
-  private void m()
+  private void t()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter = new WSDramaGalleryAdapter(this, this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView);
-    a(this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter, new WSDramaGalleryItemDecoration(), WSDramaGalleryItemDecoration.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter.a(new WSDramaMiddlePart.3(this));
+    this.l = new WSDramaGalleryAdapter(this, this.j);
+    a(this.j, this.l, new WSDramaGalleryItemDecoration(), WSDramaGalleryItemDecoration.b);
+    this.l.a(new WSDramaMiddlePart.3(this));
   }
   
-  private void n()
+  private void u()
   {
-    b(-1);
+    c(-1);
   }
   
-  private void o()
+  private void v()
   {
-    b(0);
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter.a() + 1;
-    if (i > this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter.getItemCount() - 1) {
+    c(0);
+    int i1 = this.l.b() + 1;
+    if (i1 > this.l.getItemCount() - 1) {
       return;
     }
-    a((WSDramaItemData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter.getItem(i), i);
+    a((WSDramaItemData)this.l.getItem(i1), i1);
   }
   
-  public void E_()
+  private WSDramaEpisodePresenter w()
   {
-    super.E_();
-    k();
-    e();
-    m();
-    l();
-    j();
-    WSSimpleEventBus.a().a(this);
-  }
-  
-  public void F_()
-  {
-    super.F_();
-    WSSimpleEventBus.a().b(this);
-    WSEpisodeAdapter localWSEpisodeAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter;
-    WSDramaBeaconReport.a((WSEpisodeItemData)localWSEpisodeAdapter.getItem(localWSEpisodeAdapter.a()), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.a(), a());
-  }
-  
-  protected int a()
-  {
-    return 2131560013;
+    return this.f;
   }
   
   public Bundle a()
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public ArrayList<Class> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(WSDramaVideoExposureEvent.class);
-    localArrayList.add(WSDramaFollowEvent.class);
-    return localArrayList;
+    return this.n;
   }
   
   public void a(int paramInt, String paramString) {}
   
   public void a(stDramaFeed paramstDramaFeed)
   {
-    WSDramaMiddlePart.OnDramaDataListener localOnDramaDataListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaMiddlePart$OnDramaDataListener;
+    WSDramaMiddlePart.OnDramaDataListener localOnDramaDataListener = this.m;
     if (localOnDramaDataListener != null) {
       localOnDramaDataListener.a(paramstDramaFeed);
     }
@@ -293,43 +251,43 @@ public class WSDramaMiddlePart
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.n = paramBundle;
   }
   
   public void a(WSDramaMiddlePart.OnDramaDataListener paramOnDramaDataListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaMiddlePart$OnDramaDataListener = paramOnDramaDataListener;
+    this.m = paramOnDramaDataListener;
   }
   
   public void a(AbsWSDramaHolder paramAbsWSDramaHolder, int paramInt)
   {
-    if ((b() != 0) && (b() != 1)) {
-      b(2);
+    if ((i() != 0) && (i() != 1)) {
+      c(2);
     }
-    paramAbsWSDramaHolder = paramAbsWSDramaHolder.a;
-    this.jdField_a_of_type_JavaLangString = paramAbsWSDramaHolder.a();
-    int i = paramAbsWSDramaHolder.a().dramaInfo.curWatchedFeedNum;
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter;
-    int j = i - 1;
-    localObject = (WSEpisodeItemData)((WSEpisodeAdapter)localObject).getItem(Math.max(0, j));
-    if (!this.jdField_a_of_type_Boolean)
+    paramAbsWSDramaHolder = paramAbsWSDramaHolder.c;
+    this.o = paramAbsWSDramaHolder.b();
+    int i1 = paramAbsWSDramaHolder.f().dramaInfo.curWatchedFeedNum;
+    Object localObject = this.k;
+    int i2 = i1 - 1;
+    localObject = (WSEpisodeItemData)((WSEpisodeAdapter)localObject).getItem(Math.max(0, i2));
+    if (!this.r)
     {
-      WSDramaBeaconReport.a((WSEpisodeItemData)localObject, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.b(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.a(), a());
-      WSDramaBeaconReport.a((WSEpisodeItemData)localObject, b(), a());
-      WSDramaBeaconReport.a(paramAbsWSDramaHolder, paramInt, b(), false, a());
+      WSDramaBeaconReport.a((WSEpisodeItemData)localObject, this.k.c(), this.k.d(), k());
+      WSDramaBeaconReport.a((WSEpisodeItemData)localObject, i(), k());
+      WSDramaBeaconReport.a(paramAbsWSDramaHolder, paramInt, i(), false, k());
     }
-    n();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter.a(paramInt);
-    a(false, paramAbsWSDramaHolder.a(), paramAbsWSDramaHolder.a().dramaInfo.curWatchedFeedID, i);
-    a(paramAbsWSDramaHolder.a().dramaInfo.name, paramInt, Math.max(0, j));
+    u();
+    this.r = false;
+    this.l.a(paramInt);
+    a(false, paramAbsWSDramaHolder.b(), paramAbsWSDramaHolder.f().dramaInfo.curWatchedFeedID, i1);
+    a(paramAbsWSDramaHolder.f().dramaInfo.name, paramInt, Math.max(0, i2));
   }
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     if ((paramWSSimpleBaseEvent instanceof WSDramaVideoExposureEvent))
     {
-      a(((WSDramaVideoExposureEvent)paramWSSimpleBaseEvent).getCurrentEpisodeNum() - 1);
+      b(((WSDramaVideoExposureEvent)paramWSSimpleBaseEvent).getCurrentEpisodeNum() - 1);
       return;
     }
     if ((paramWSSimpleBaseEvent instanceof WSDramaFollowEvent)) {
@@ -343,28 +301,28 @@ public class WSDramaMiddlePart
     localStringBuilder.append("[WSDramaMiddlePart.java][loadDramaFeedIds] dramaId:");
     localStringBuilder.append(paramString);
     WSLog.a("WSDramaMiddlePartnel-log", localStringBuilder.toString());
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a().c();
+    this.o = paramString;
+    w().a();
   }
   
   public void a(List<WSDramaItemData> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaGalleryWSDramaGalleryAdapter.fillList(paramList);
+    this.g.setVisibility(0);
+    this.g.playAnimation();
+    this.l.fillList(paramList);
   }
   
   public void a(List<WSEpisodeItemData> paramList, stDramaInfo paramstDramaInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.fillList(paramList);
+    this.k.fillList(paramList);
     if (paramstDramaInfo != null) {
       paramList = paramstDramaInfo.name;
     } else {
       paramList = "";
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramList);
-    int i = paramstDramaInfo.curWatchedFeedNum;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new WSDramaMiddlePart.4(this, i - 1));
+    this.h.setText(paramList);
+    int i1 = paramstDramaInfo.curWatchedFeedNum;
+    this.i.post(new WSDramaMiddlePart.4(this, i1 - 1));
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt)
@@ -375,22 +333,17 @@ public class WSDramaMiddlePart
     localStringBuilder.append(", episodeNum:");
     localStringBuilder.append(paramInt);
     WSLog.a("WSDramaMiddlePartnel-log", localStringBuilder.toString());
-    a().a(paramBoolean, paramString, paramInt);
+    w().a(paramBoolean, paramString, paramInt);
   }
   
-  public int b()
+  protected int b()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return 2131626056;
   }
   
   public void b(stDramaFeed paramstDramaFeed)
   {
-    WSDramaMiddlePart.OnDramaDataListener localOnDramaDataListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaMiddlePart$OnDramaDataListener;
+    WSDramaMiddlePart.OnDramaDataListener localOnDramaDataListener = this.m;
     if (localOnDramaDataListener != null) {
       localOnDramaDataListener.b(paramstDramaFeed);
     }
@@ -399,51 +352,93 @@ public class WSDramaMiddlePart
   public void c()
   {
     super.c();
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getVisibility() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-    }
+    r();
+    g();
+    t();
+    s();
+    p();
+    WSSimpleEventBus.a().a(this);
   }
   
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    WSSimpleEventBus.a().b(this);
+    WSEpisodeAdapter localWSEpisodeAdapter = this.k;
+    WSDramaBeaconReport.a((WSEpisodeItemData)localWSEpisodeAdapter.getItem(localWSEpisodeAdapter.b()), this.k.c(), this.k.d(), k());
   }
   
-  protected void e()
+  public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131365898));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131365905));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131365899));
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)a(2131365897));
+    super.e();
+    if (this.g.getVisibility() == 0) {
+      this.g.playAnimation();
+    }
   }
   
   public void f()
   {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.a() + 1;
-    if (i > this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.getItemCount() - 1)
-    {
-      o();
-      return;
-    }
-    WSEpisodeItemData localWSEpisodeItemData = (WSEpisodeItemData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.getItem(i);
-    a(i);
-    a(false, localWSEpisodeItemData.a(), i + 1);
+    super.f();
+    this.g.clearAnimation();
   }
   
-  public void g()
+  protected void g()
   {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.a() + 1;
-    if (i >= this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.getItemCount()) {
+    this.g = ((DiniFlyAnimationView)a(2131432166));
+    this.h = ((TextView)a(2131432173));
+    this.i = ((RecyclerView)a(2131432167));
+    this.j = ((RecyclerView)a(2131432165));
+  }
+  
+  public void h()
+  {
+    int i1 = this.k.b() + 1;
+    if (i1 > this.k.getItemCount() - 1)
+    {
+      v();
       return;
     }
-    WSEpisodeItemData localWSEpisodeItemData = (WSEpisodeItemData)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaEpisodeWSEpisodeAdapter.getItem(i);
-    a().a(localWSEpisodeItemData.a(), localWSEpisodeItemData.a());
+    WSEpisodeItemData localWSEpisodeItemData = (WSEpisodeItemData)this.k.getItem(i1);
+    b(i1);
+    a(false, localWSEpisodeItemData.b(), i1 + 1);
+  }
+  
+  public int i()
+  {
+    return this.q;
+  }
+  
+  public void j()
+  {
+    int i1 = this.k.b() + 1;
+    if (i1 >= this.k.getItemCount()) {
+      return;
+    }
+    WSEpisodeItemData localWSEpisodeItemData = (WSEpisodeItemData)this.k.getItem(i1);
+    w().a(localWSEpisodeItemData.b(), localWSEpisodeItemData.c());
+  }
+  
+  public String k()
+  {
+    return this.p;
+  }
+  
+  public String l()
+  {
+    return this.o;
+  }
+  
+  public ArrayList<Class> z()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(WSDramaVideoExposureEvent.class);
+    localArrayList.add(WSDramaFollowEvent.class);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaMiddlePart
  * JD-Core Version:    0.7.0.1
  */

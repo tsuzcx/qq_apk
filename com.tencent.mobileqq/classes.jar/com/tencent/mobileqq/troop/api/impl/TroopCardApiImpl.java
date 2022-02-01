@@ -86,7 +86,7 @@ public class TroopCardApiImpl
     } else {
       i = 8;
     }
-    paramObject = VipUtils.a(0, i);
+    paramObject = VipUtils.c(0, i);
     if (((TroopInfoData)localObject).bOwner)
     {
       String str1 = ((TroopInfoData)localObject).troopUin;
@@ -95,7 +95,7 @@ public class TroopCardApiImpl
       } else {
         paramObject = "";
       }
-      String str2 = HardCodeUtil.a(2131715438);
+      String str2 = HardCodeUtil.a(2131898212);
       TroopCardApiImpl.1 local1 = new TroopCardApiImpl.1(this, bool);
       if (bool) {
         localObject = "0X800A57F";
@@ -160,7 +160,7 @@ public class TroopCardApiImpl
   
   public void doReportTroop(Activity paramActivity, Object paramObject, AppInterface paramAppInterface)
   {
-    TroopUtils.a((QBaseActivity)paramActivity, (TroopInfoData)paramObject, (QQAppInterface)paramAppInterface);
+    TroopUtils.b((QBaseActivity)paramActivity, (TroopInfoData)paramObject, (QQAppInterface)paramAppInterface);
   }
   
   public Bitmap exifBitmapCreator_createBitmap(Bitmap paramBitmap, String paramString)
@@ -198,7 +198,7 @@ public class TroopCardApiImpl
   
   public Object getOpenIDFromCacheAndDB(AppInterface paramAppInterface, String paramString)
   {
-    return ((QQAppInterface)paramAppInterface).getMsgHandler().a(paramString);
+    return ((QQAppInterface)paramAppInterface).getMsgHandler().e(paramString);
   }
   
   public Class<?> getTroopAdminListClass()
@@ -213,8 +213,8 @@ public class TroopCardApiImpl
   
   public String getTroopCardTipsContent(Context paramContext)
   {
-    paramContext = paramContext.getString(2131719875);
-    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.a().a(695);
+    paramContext = paramContext.getString(2131917480);
+    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.b().b(695);
     if (localTroopGameCardConfig != null) {
       paramContext = localTroopGameCardConfig.c();
     }
@@ -228,7 +228,7 @@ public class TroopCardApiImpl
   
   public String getTroopGameCardResDownloadPath()
   {
-    return TroopGameCardResDownloadManager.a();
+    return TroopGameCardResDownloadManager.b();
   }
   
   public Class<?> getTroopTagViewActivityClass()
@@ -238,7 +238,7 @@ public class TroopCardApiImpl
   
   public Object get_CUSTOM_CLIP_DECODER()
   {
-    return URLDrawableDecodeHandler.w;
+    return URLDrawableDecodeHandler.x;
   }
   
   public void goToMsgList(Activity paramActivity)
@@ -281,8 +281,8 @@ public class TroopCardApiImpl
       } else {
         i = 8;
       }
-      String str2 = VipUtils.a(0, i).toString();
-      String str3 = HardCodeUtil.a(2131715438);
+      String str2 = VipUtils.c(0, i).toString();
+      String str3 = HardCodeUtil.a(2131898212);
       TroopCardApiImpl.4 local4 = new TroopCardApiImpl.4(this, bool);
       if (bool) {
         paramObject = "0X800A57F";
@@ -313,8 +313,8 @@ public class TroopCardApiImpl
       } else {
         i = 8;
       }
-      String str2 = VipUtils.a(0, i).toString();
-      String str3 = HardCodeUtil.a(2131715234);
+      String str2 = VipUtils.c(0, i).toString();
+      String str3 = HardCodeUtil.a(2131898212);
       TroopCardApiImpl.3 local3 = new TroopCardApiImpl.3(this, bool);
       if (bool) {
         paramObject = "0X800A57F";
@@ -345,8 +345,8 @@ public class TroopCardApiImpl
       } else {
         i = 8;
       }
-      String str2 = VipUtils.a(0, i).toString();
-      String str3 = HardCodeUtil.a(2131701933);
+      String str2 = VipUtils.c(0, i).toString();
+      String str3 = HardCodeUtil.a(2131899948);
       TroopCardApiImpl.2 local2 = new TroopCardApiImpl.2(this, bool);
       if (bool) {
         paramObject = "0X800A57F";
@@ -366,13 +366,13 @@ public class TroopCardApiImpl
   
   public boolean isFastDoubleClick()
   {
-    return UIUtils.b();
+    return UIUtils.d();
   }
   
   public boolean isGrayTroopForTroopGameCard(String paramString)
   {
-    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.a().a(695);
-    return (localTroopGameCardConfig != null) && (localTroopGameCardConfig.a(paramString));
+    TroopGameCardConfig localTroopGameCardConfig = (TroopGameCardConfig)QConfigManager.b().b(695);
+    return (localTroopGameCardConfig != null) && (localTroopGameCardConfig.d(paramString));
   }
   
   public boolean isInstanceOfTroopAvatarWallEditActivity(Activity paramActivity)
@@ -410,7 +410,7 @@ public class TroopCardApiImpl
     paramString2.putExtra("show_right_close_button", true);
     paramString2.putExtra("finish_animation_up_down", true);
     paramActivity.startActivity(paramString2);
-    paramActivity.overridePendingTransition(2130772011, 2130772004);
+    paramActivity.overridePendingTransition(2130772014, 2130772007);
   }
   
   public void openTroopAssociationWebPage(Context paramContext, String paramString)
@@ -488,7 +488,7 @@ public class TroopCardApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopCardApiImpl
  * JD-Core Version:    0.7.0.1
  */

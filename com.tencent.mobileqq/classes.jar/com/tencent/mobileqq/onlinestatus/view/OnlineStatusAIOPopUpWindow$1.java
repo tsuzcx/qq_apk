@@ -19,18 +19,18 @@ class OnlineStatusAIOPopUpWindow$1
       if (QLog.isColorLevel()) {
         QLog.d("OnlineStatusAIOPopUpWindow", 2, "friends status update");
       }
-      if (OnlineStatusUtils.a(OnlineStatusAIOPopUpWindow.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewOnlineStatusAIOPopUpWindow).detalStatusFlag, OnlineStatusAIOPopUpWindow.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewOnlineStatusAIOPopUpWindow).iTermType) != 0)
+      if (OnlineStatusUtils.a(OnlineStatusAIOPopUpWindow.a(this.b).detalStatusFlag, OnlineStatusAIOPopUpWindow.a(this.b).iTermType) != 0)
       {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusViewOnlineStatusAIOPopUpWindow.d();
+        this.b.e();
         return;
       }
-      ((IOnlineStatusService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOnlineStatusService.class, "")).dismissAIOStatusPopupDialog();
+      ((IOnlineStatusService)this.a.getRuntimeService(IOnlineStatusService.class, "")).dismissAIOStatusPopupDialog();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.OnlineStatusAIOPopUpWindow.1
  * JD-Core Version:    0.7.0.1
  */

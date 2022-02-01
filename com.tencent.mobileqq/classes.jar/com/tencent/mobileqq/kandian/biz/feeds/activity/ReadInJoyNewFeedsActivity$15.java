@@ -13,14 +13,14 @@ class ReadInJoyNewFeedsActivity$15
     QQMessageFacade localQQMessageFacade = this.this$0.app.getMessageFacade();
     if (localQQMessageFacade != null)
     {
-      int i = localQQMessageFacade.b();
-      this.this$0.c(i);
+      int i = localQQMessageFacade.w();
+      this.this$0.d(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.15
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ class ARResourceManagerTools$1
   
   public void a(long paramLong1, long paramLong2)
   {
-    ARResourceManagerTools.ARResourceCallback localARResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+    ARResourceManagerTools.ARResourceCallback localARResourceCallback = this.a;
     if (localARResourceCallback != null) {
-      localARResourceCallback.a(ARResourceManagerTools.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools, paramLong1, 0));
+      localARResourceCallback.a(ARResourceManagerTools.a(this.d, paramLong1, 0));
     }
   }
   
@@ -24,41 +24,41 @@ class ARResourceManagerTools$1
     ((StringBuilder)localObject1).append("onARResourceDownloadComplete result");
     ((StringBuilder)localObject1).append(paramBoolean);
     QLog.i("AREngine_ARResourceManagerTools", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+    localObject1 = this.a;
     if (localObject1 != null) {
-      ((ARResourceManagerTools.ARResourceCallback)localObject1).a(paramDownloadInfo.jdField_a_of_type_Int, paramBoolean);
+      ((ARResourceManagerTools.ARResourceCallback)localObject1).a(paramDownloadInfo.a, paramBoolean);
     }
     if (paramBoolean)
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = this.b.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         ARResourceDownload.DownloadInfo localDownloadInfo = (ARResourceDownload.DownloadInfo)((Iterator)localObject1).next();
-        if (localDownloadInfo.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.jdField_a_of_type_JavaLangString)) {
-          if (!paramDownloadInfo.jdField_a_of_type_Boolean) {}
+        if (localDownloadInfo.b.equals(paramDownloadInfo.b)) {
+          if (!paramDownloadInfo.e) {}
         }
         try
         {
           System.currentTimeMillis();
-          if (paramDownloadInfo.jdField_a_of_type_Int == 6)
+          if (paramDownloadInfo.a == 6)
           {
-            new File(paramDownloadInfo.c);
-            ArResourceConfigUtils.a(paramDownloadInfo.c, ARResouceDir.b());
+            new File(paramDownloadInfo.d);
+            ArResourceConfigUtils.b(paramDownloadInfo.d, ARResouceDir.b());
           }
-          else if (paramDownloadInfo.jdField_a_of_type_Int == 7)
+          else if (paramDownloadInfo.a == 7)
           {
-            ArResourceConfigUtils.a(paramDownloadInfo.c, ARResouceDir.a(paramDownloadInfo.b));
+            ArResourceConfigUtils.b(paramDownloadInfo.d, ARResouceDir.a(paramDownloadInfo.c));
           }
           else
           {
-            localObject2 = new File(paramDownloadInfo.c);
-            String str = paramDownloadInfo.c;
+            localObject2 = new File(paramDownloadInfo.d);
+            String str = paramDownloadInfo.d;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(((File)localObject2).getParentFile().getAbsolutePath());
             localStringBuilder.append(File.separator);
-            localStringBuilder.append(paramDownloadInfo.b);
+            localStringBuilder.append(paramDownloadInfo.c);
             localStringBuilder.append(File.separator);
-            ArResourceConfigUtils.a(str, localStringBuilder.toString());
+            ArResourceConfigUtils.b(str, localStringBuilder.toString());
           }
           QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
         }
@@ -68,43 +68,43 @@ class ARResourceManagerTools$1
           label260:
           break label260;
         }
-        new File(paramDownloadInfo.c).delete();
+        new File(paramDownloadInfo.d).delete();
         QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
-        paramDownloadInfo = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+        paramDownloadInfo = this.a;
         if (paramDownloadInfo != null) {
           paramDownloadInfo.a(false);
         }
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+        this.d.a();
         QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
         return;
-        this.b.remove(localDownloadInfo);
+        this.c.remove(localDownloadInfo);
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("onARMarkerModelDownloadComplete  remove ");
-        ((StringBuilder)localObject2).append(localDownloadInfo.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(localDownloadInfo.b);
         QLog.i("AREngine_ARResourceManagerTools", 1, ((StringBuilder)localObject2).toString());
       }
-      if (this.b.size() == 0)
+      if (this.c.size() == 0)
       {
-        paramDownloadInfo = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+        paramDownloadInfo = this.a;
         if (paramDownloadInfo != null) {
           paramDownloadInfo.a(true);
         }
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+        this.d.a();
       }
     }
     else
     {
-      paramDownloadInfo = this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback;
+      paramDownloadInfo = this.a;
       if (paramDownloadInfo != null) {
         paramDownloadInfo.a(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+      this.d.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.1
  * JD-Core Version:    0.7.0.1
  */

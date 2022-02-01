@@ -10,18 +10,18 @@ class ChatHistoryTroopMemberFragment$43$1$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43$1.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43$1.jdField_a_of_type_JavaLangString);
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43$1.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.getActivity())
+    this.b.b.a.d(this.b.a);
+    synchronized (this.b.b.a.getActivity())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43$1.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.a.add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$ATroopMember);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43$1.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment$43.a.b.sendEmptyMessage(9);
+      this.b.b.a.J.add(this.a);
+      this.b.b.a.bn.sendEmptyMessage(9);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.43.1.1
  * JD-Core Version:    0.7.0.1
  */

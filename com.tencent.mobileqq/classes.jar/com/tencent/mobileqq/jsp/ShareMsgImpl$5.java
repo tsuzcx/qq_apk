@@ -21,7 +21,7 @@ class ShareMsgImpl$5
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    this.d.a.dismiss();
     if (paramBoolean) {
       try
       {
@@ -34,7 +34,7 @@ class ShareMsgImpl$5
           {
             GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
             Object localObject2 = Share.a(paramBundle.iconsURL, 16);
-            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            Intent localIntent = this.a;
             paramBundle = localAndroidInfo.sourceUrl;
             localObject1 = "";
             if (paramBundle == null) {
@@ -43,20 +43,20 @@ class ShareMsgImpl$5
               paramBundle = localAndroidInfo.sourceUrl.get();
             }
             localIntent.putExtra("struct_share_key_source_url", paramBundle);
-            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            localIntent = this.a;
             paramBundle = (Bundle)localObject2;
             if (localObject2 == null) {
               paramBundle = "";
             }
             localIntent.putExtra("struct_share_key_source_icon", paramBundle);
-            localObject2 = this.jdField_a_of_type_AndroidContentIntent;
+            localObject2 = this.a;
             if (localAndroidInfo.messagetail == null) {
               paramBundle = "";
             } else {
               paramBundle = localAndroidInfo.messagetail.get();
             }
             ((Intent)localObject2).putExtra("struct_share_key_source_name", paramBundle);
-            localObject2 = this.jdField_a_of_type_AndroidContentIntent;
+            localObject2 = this.a;
             if (localAndroidInfo.packName == null) {
               paramBundle = (Bundle)localObject1;
             } else {
@@ -73,8 +73,8 @@ class ShareMsgImpl$5
         }
       }
     }
-    LiteAppJs.handleShareKandianLive(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentIntent);
-    paramBundle = StructMsgFactory.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    LiteAppJs.handleShareKandianLive(this.b, this.c, this.a);
+    paramBundle = StructMsgFactory.a(this.a.getExtras());
     if (paramBundle == null)
     {
       if (QLog.isColorLevel()) {
@@ -83,14 +83,14 @@ class ShareMsgImpl$5
     }
     else
     {
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl.jdField_a_of_type_ComTencentMobileqqJspShareMsgImpl$ShareMsgImplListener.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      this.a.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+      this.d.p.startActivityForResult(this.a, (byte)1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ShareMsgImpl.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,21 +12,21 @@ class QRDisplayActivity$22
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (this.a.g != null)
+    if (this.a.F != null)
     {
-      if (!this.a.g.equals(paramBaseResp.transaction)) {
+      if (!this.a.F.equals(paramBaseResp.transaction)) {
         return;
       }
-      if (this.a.jdField_c_of_type_Int == 2)
+      if (this.a.t == 2)
       {
         String str1;
-        if (this.a.i == 2) {
+        if (this.a.aN == 2) {
           str1 = "qr_wechat";
         } else {
           str1 = "qr_circle";
         }
-        String str3 = this.a.jdField_c_of_type_JavaLangString;
-        i = this.a.a;
+        String str3 = this.a.n;
+        i = this.a.q;
         String str2;
         if (paramBaseResp.errCode == 0) {
           str2 = "0";
@@ -40,11 +40,11 @@ class QRDisplayActivity$22
       {
         if (i != 0)
         {
-          QRUtils.a(1, 2131719009);
+          QRUtils.a(1, 2131916544);
           this.a.a(false);
           return;
         }
-        QRUtils.a(2, 2131719027);
+        QRUtils.a(2, 2131916563);
         this.a.a(true);
         return;
       }

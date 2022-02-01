@@ -16,7 +16,7 @@ import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.biz.subscribe.comment.SoftKeyboardStateHelper;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 import com.tencent.tavsticker.core.TAVFontManager;
 import com.tencent.tavsticker.core.TAVPAGFileManager;
 import com.tencent.tavsticker.utils.CollectionUtil;
@@ -33,37 +33,25 @@ import org.libpag.PAGView;
 public class AEEditorTextEditDialog
   extends Dialog
 {
-  private final View jdField_a_of_type_AndroidViewView;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private final AEEditorTextEditDialog.AEEditorTextEditListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog$AEEditorTextEditListener;
-  private SoftKeyboardStateHelper jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper;
-  private TextEditorData jdField_a_of_type_ComTencentTavcutBeanTextEditorData;
-  private String jdField_a_of_type_JavaLangString;
-  private PAGView jdField_a_of_type_OrgLibpagPAGView;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private final View a;
+  private final AEEditorTextEditDialog.AEEditorTextEditListener b;
+  private SoftKeyboardStateHelper c;
+  private String d;
+  private String e;
+  private TextEditorData f;
+  private EditText g;
+  private PAGView h;
+  private boolean i;
   
   public AEEditorTextEditDialog(@NonNull Context paramContext, int paramInt, AEEditorTextEditDialog.AEEditorTextEditListener paramAEEditorTextEditListener)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog$AEEditorTextEditListener = paramAEEditorTextEditListener;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2064318585, null);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new AEEditorTextEditDialog.1(this));
+    this.b = paramAEEditorTextEditListener;
+    this.a = LayoutInflater.from(paramContext).inflate(2064056457, null);
+    this.a.setOnClickListener(new AEEditorTextEditDialog.1(this));
     f();
-    setContentView(this.jdField_a_of_type_AndroidViewView);
-    AEBaseDataReporter.a().A();
-  }
-  
-  private PAGFont a(TextEditorData paramTextEditorData)
-  {
-    PAGFont localPAGFont = null;
-    if (paramTextEditorData == null) {
-      return null;
-    }
-    if (!TextUtils.isEmpty(paramTextEditorData.getFontPath())) {
-      localPAGFont = TAVFontManager.getInstance().fontWithPath(paramTextEditorData.getFontPath());
-    }
-    return localPAGFont;
+    setContentView(this.a);
+    AEBaseDataReporter.a().B();
   }
   
   private void a(TextEditorData paramTextEditorData)
@@ -86,37 +74,43 @@ public class AEEditorTextEditDialog
       return;
     }
     localPAGText.text = paramTextEditorData.getContent();
-    localPAGText.fillColor = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getTextColor();
+    localPAGText.fillColor = this.f.getTextColor();
     ThreadManager.getUIHandler().post(new AEEditorTextEditDialog.5(this, localPAGFile, paramTextEditorData, localPAGText));
+  }
+  
+  private PAGFont b(TextEditorData paramTextEditorData)
+  {
+    PAGFont localPAGFont = null;
+    if (paramTextEditorData == null) {
+      return null;
+    }
+    if (!TextUtils.isEmpty(paramTextEditorData.getFontPath())) {
+      localPAGFont = TAVFontManager.getInstance().fontWithPath(paramTextEditorData.getFontPath());
+    }
+    return localPAGFont;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_JavaLangString = getContext().getResources().getString(2064515347);
-    this.b = getContext().getResources().getString(2064515312);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2064122172));
-    this.jdField_a_of_type_OrgLibpagPAGView = ((PAGView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122673));
-    this.jdField_a_of_type_OrgLibpagPAGView.play();
-    this.jdField_a_of_type_OrgLibpagPAGView.setRepeatCount(0);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2064122298).setOnClickListener(new AEEditorTextEditDialog.3(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2064122762).setOnClickListener(new AEEditorTextEditDialog.4(this));
+    this.d = getContext().getResources().getString(2064187668);
+    this.e = getContext().getResources().getString(2064187655);
+    this.g = ((EditText)this.a.findViewById(2063991057));
+    this.h = ((PAGView)this.a.findViewById(2063991471));
+    this.h.play();
+    this.h.setRepeatCount(0);
+    this.a.findViewById(2063991177).setOnClickListener(new AEEditorTextEditDialog.3(this));
+    this.a.findViewById(2063991537).setOnClickListener(new AEEditorTextEditDialog.4(this));
     e();
-    TextEditorData localTextEditorData = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData;
-    if ((localTextEditorData != null) && (localTextEditorData.getContent() != null) && (!this.b.equals(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getContent()))) {
-      try
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getContent());
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getContent().length());
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    TextEditorData localTextEditorData = this.f;
+    if ((localTextEditorData != null) && (!TextUtils.isEmpty(localTextEditorData.getContent())) && (!this.e.equals(this.f.getContent())))
+    {
+      this.g.setText(this.f.getContent());
+      this.g.setSelection(this.f.getContent().length());
     }
-    if (this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData == null) {
-      this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = new TextEditorData();
+    if (this.f == null) {
+      this.f = new TextEditorData();
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setHint(this.b);
+    this.g.setHint(this.e);
     c();
   }
   
@@ -130,11 +124,11 @@ public class AEEditorTextEditDialog
         AEQLog.d("AEEditorTextEditDialog", "pagComposition null.");
         return;
       }
-      int j = localPAGComposition.numLayers();
-      int i = 0;
-      while (i < j)
+      int k = localPAGComposition.numLayers();
+      int j = 0;
+      while (j < k)
       {
-        PAGLayer localPAGLayer = localPAGComposition.getLayerAt(i);
+        PAGLayer localPAGLayer = localPAGComposition.getLayerAt(j);
         if ((localPAGLayer != null) && (localPAGLayer.layerType() == 2) && ((localPAGLayer instanceof PAGSolidLayer)))
         {
           paramPAGView = null;
@@ -145,41 +139,41 @@ public class AEEditorTextEditDialog
             ((PAGSolidLayer)localPAGLayer).setSolidColor(paramPAGView.intValue());
           }
         }
-        i += 1;
+        j += 1;
       }
     }
   }
   
   private void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData;
+    Object localObject = this.f;
     if (localObject == null)
     {
       AEQLog.d("AEEditorTextEditDialog", "originTextData is null.");
       return;
     }
     if (TextUtils.isEmpty(((TextEditorData)localObject).getContent().trim())) {
-      localObject = this.b;
+      localObject = this.e;
     } else {
-      localObject = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.getContent();
+      localObject = this.f.getContent();
     }
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData.setContent((String)localObject);
-    a(this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData);
+    this.f.setContent((String)localObject);
+    a(this.f);
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.i) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    TextEditorData localTextEditorData = this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData;
+    this.i = true;
+    TextEditorData localTextEditorData = this.f;
     if (localTextEditorData == null)
     {
       AEQLog.d("AEEditorTextEditDialog", "originTextData is null.");
       return;
     }
-    AEEditorTextEditDialog.AEEditorTextEditListener localAEEditorTextEditListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorTextEditDialog$AEEditorTextEditListener;
+    AEEditorTextEditDialog.AEEditorTextEditListener localAEEditorTextEditListener = this.b;
     if (localAEEditorTextEditListener != null) {
       localAEEditorTextEditListener.a(localTextEditorData);
     }
@@ -187,7 +181,7 @@ public class AEEditorTextEditDialog
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new AEEditorTextEditDialog.6(this));
+    this.g.addTextChangedListener(new AEEditorTextEditDialog.6(this));
   }
   
   private void f()
@@ -211,16 +205,16 @@ public class AEEditorTextEditDialog
   
   public void a(TextEditorData paramTextEditorData, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentTavcutBeanTextEditorData = paramTextEditorData;
+    this.f = paramTextEditorData;
     try
     {
       paramTextEditorData = String.format("%06X", new Object[] { Integer.valueOf(paramInt & 0xFFFFFF) });
       if ((paramTextEditorData.substring(0, 2).compareTo("37") < 0) && (paramTextEditorData.substring(2, 4).compareTo("37") < 0) && (paramTextEditorData.substring(4, 6).compareTo("37") < 0))
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#CCFFFFFF"));
+        this.a.setBackgroundColor(Color.parseColor("#CCFFFFFF"));
         return;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#CC000000"));
+      this.a.setBackgroundColor(Color.parseColor("#CC000000"));
       return;
     }
     catch (Exception paramTextEditorData)
@@ -232,11 +226,11 @@ public class AEEditorTextEditDialog
   public void dismiss()
   {
     super.dismiss();
-    SoftKeyboardStateHelper localSoftKeyboardStateHelper = this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper;
+    SoftKeyboardStateHelper localSoftKeyboardStateHelper = this.c;
     if (localSoftKeyboardStateHelper != null)
     {
       localSoftKeyboardStateHelper.a();
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper = null;
+      this.c = null;
     }
   }
   
@@ -249,15 +243,15 @@ public class AEEditorTextEditDialog
   public void show()
   {
     super.show();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper = new SoftKeyboardStateHelper(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentSoftKeyboardStateHelper.a(new AEEditorTextEditDialog.2(this));
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "alpha", new float[] { 0.0F, 1.0F }).setDuration(300L).start();
+    this.i = false;
+    this.c = new SoftKeyboardStateHelper(this.a);
+    this.c.a(new AEEditorTextEditDialog.2(this));
+    ObjectAnimator.ofFloat(this.a, "alpha", new float[] { 0.0F, 1.0F }).setDuration(300L).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextEditDialog
  * JD-Core Version:    0.7.0.1
  */

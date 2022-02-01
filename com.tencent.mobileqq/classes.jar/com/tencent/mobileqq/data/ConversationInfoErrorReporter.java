@@ -40,7 +40,7 @@ public class ConversationInfoErrorReporter
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         if (localObject != null)
         {
-          paramString = ((FriendsManager)((AppRuntime)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
+          paramString = ((FriendsManager)((AppRuntime)localObject).getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramString);
           if ((paramString != null) && (paramString.isFriend()))
           {
             publicaccountTypeErrorReported = true;
@@ -98,7 +98,7 @@ public class ConversationInfoErrorReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ConversationInfoErrorReporter
  * JD-Core Version:    0.7.0.1
  */

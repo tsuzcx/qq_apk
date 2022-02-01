@@ -13,29 +13,29 @@ class TroopInteractGiftAnimationController$1$1$1
   
   public void onClick(View paramView)
   {
-    this.a.a.this$0.b();
-    Object localObject = this.a.a.this$0;
-    ((TroopInteractGiftAnimationController)localObject).jdField_a_of_type_Int += 1;
-    if (this.a.a.this$0.jdField_a_of_type_Boolean)
+    this.a.b.this$0.d();
+    Object localObject = this.a.b.this$0;
+    ((TroopInteractGiftAnimationController)localObject).f += 1;
+    if (this.a.b.this$0.g)
     {
-      this.a.a.this$0.jdField_a_of_type_Boolean = false;
-      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
+      this.a.b.this$0.g = false;
+      this.a.b.this$0.a(this.a.b.b, this.a.b.b.frienduin, this.a.b.b.interactId, this.a.b.b.animationPackageId, this.a.b.this$0.f, false);
     }
-    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0)
+    if (this.a.b.this$0.f % 5 == 0)
     {
-      localObject = this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton;
+      localObject = this.a.b.this$0.c;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.a.a.a.animationPackageId);
+      localStringBuilder.append(this.a.b.b.animationPackageId);
       localStringBuilder.append("");
       ((TroopGiftActionButton)localObject).a(localStringBuilder.toString());
     }
-    ReportController.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
+    ReportController.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.b.b.frienduin, "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1.1
  * JD-Core Version:    0.7.0.1
  */

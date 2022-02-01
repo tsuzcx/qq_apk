@@ -22,7 +22,7 @@ class TransmissionHelper$2$1
   
   public void a(int paramInt, String paramString, WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadDownloadServerInfoCallback.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile, false, paramInt, paramString);
+    this.b.a(this.a, false, paramInt, paramString);
   }
   
   public void a(WeiyunPB.DiskFileBatchDownloadMsgRsp paramDiskFileBatchDownloadMsgRsp)
@@ -33,7 +33,7 @@ class TransmissionHelper$2$1
       while (((Iterator)localObject).hasNext())
       {
         paramDiskFileBatchDownloadMsgRsp = (WeiyunPB.DiskFileDownloadRspItem)((Iterator)localObject).next();
-        if ((paramDiskFileBatchDownloadMsgRsp != null) && (TextUtils.equals(paramDiskFileBatchDownloadMsgRsp.file_id.get(), this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile.jdField_a_of_type_JavaLangString))) {
+        if ((paramDiskFileBatchDownloadMsgRsp != null) && (TextUtils.equals(paramDiskFileBatchDownloadMsgRsp.file_id.get(), this.a.b))) {
           break label72;
         }
       }
@@ -42,7 +42,7 @@ class TransmissionHelper$2$1
     label72:
     if (paramDiskFileBatchDownloadMsgRsp == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadDownloadServerInfoCallback.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile, false, 1828004, HardCodeUtil.a(2131714860));
+      this.b.a(this.a, false, 1828004, HardCodeUtil.a(2131912359));
       return;
     }
     Object localObject = paramDiskFileBatchDownloadMsgRsp.cookie_name.get();
@@ -59,16 +59,16 @@ class TransmissionHelper$2$1
     {
       localObject = "";
     }
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile.a(paramDiskFileBatchDownloadMsgRsp.server_name.get(), paramDiskFileBatchDownloadMsgRsp.server_port.get(), (String)localObject, paramDiskFileBatchDownloadMsgRsp.download_url.get(), paramDiskFileBatchDownloadMsgRsp.video_url.get(), "0");
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile$DownloadServerInfo.c = DownloadHelper.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile$DownloadServerInfo.c);
+    this.a.a(paramDiskFileBatchDownloadMsgRsp.server_name.get(), paramDiskFileBatchDownloadMsgRsp.server_port.get(), (String)localObject, paramDiskFileBatchDownloadMsgRsp.download_url.get(), paramDiskFileBatchDownloadMsgRsp.video_url.get(), "0");
+    if (this.c == 0) {
+      this.a.k.d = DownloadHelper.a(this.a.k.d);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadDownloadServerInfoCallback.a(this.jdField_a_of_type_ComTencentMobileqqWeiyunModelDownloadFile, true, 0, null);
+    this.b.a(this.a, true, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weiyun.TransmissionHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

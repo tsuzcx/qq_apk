@@ -17,8 +17,8 @@ public class AioShareMusicPlugin
   extends WebViewPlugin
   implements AioShareMusicIPCWebClient.AioShareMusicClient2WebCallback, IPreCreatePluginChecker
 {
-  private WebViewAioShareMusicHelper jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper;
-  private boolean jdField_a_of_type_Boolean;
+  private WebViewAioShareMusicHelper a;
+  private boolean b;
   
   public AioShareMusicPlugin()
   {
@@ -29,7 +29,7 @@ public class AioShareMusicPlugin
   {
     if (this.mRuntime != null)
     {
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.f() == null) {
         return;
       }
       if (QLog.isColorLevel())
@@ -41,24 +41,24 @@ public class AioShareMusicPlugin
         localStringBuilder.append(paramJSONObject.toString());
         QLog.d("AioShareMusic.AioShareMusicPlugin", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper = new WebViewAioShareMusicHelper((WebViewFragment)this.mRuntime.a());
+      if (this.a == null) {
+        this.a = new WebViewAioShareMusicHelper((WebViewFragment)this.mRuntime.f());
       }
       if ("checkAioShareMusic".equals(paramString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper.a(paramJSONObject);
+        this.a.a(paramJSONObject);
         return;
       }
       if ("startListenAioShareMusic".equals(paramString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper.b(paramJSONObject);
+        this.a.b(paramJSONObject);
         return;
       }
       if ("updateSongIdToAioShareMusic".equals(paramString)) {
         try
         {
           paramString = paramJSONObject.getString("current_song_id");
-          this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper.a = paramString;
+          this.a.a = paramString;
           if (QLog.isColorLevel())
           {
             paramJSONObject = new StringBuilder();
@@ -83,13 +83,13 @@ public class AioShareMusicPlugin
   
   protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+    if ((this.mRuntime != null) && (this.mRuntime.f() != null))
     {
-      if (this.mRuntime.a() == null) {
+      if (this.mRuntime.d() == null) {
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper = new WebViewAioShareMusicHelper((WebViewFragment)this.mRuntime.a());
+      if (this.a == null) {
+        this.a = new WebViewAioShareMusicHelper((WebViewFragment)this.mRuntime.f());
       }
       Object localObject;
       if (QLog.isColorLevel())
@@ -101,10 +101,10 @@ public class AioShareMusicPlugin
       }
       if (paramLong == 8589934594L)
       {
-        if (!this.jdField_a_of_type_Boolean)
+        if (!this.b)
         {
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper.a(this.mRuntime.a().getIntent());
+          this.b = true;
+          this.a.a(this.mRuntime.d().getIntent());
           return true;
         }
       }
@@ -114,7 +114,7 @@ public class AioShareMusicPlugin
         if ((localObject != null) && ((localObject instanceof Intent)))
         {
           paramString = (Intent)localObject;
-          this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper.b(paramString);
+          this.a.b(paramString);
           return true;
         }
       }
@@ -132,19 +132,19 @@ public class AioShareMusicPlugin
   protected void onCreate()
   {
     super.onCreate();
-    AioShareMusicIPCWebClient.a().a(this);
+    AioShareMusicIPCWebClient.b().a(this);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    WebViewAioShareMusicHelper localWebViewAioShareMusicHelper = this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper;
+    WebViewAioShareMusicHelper localWebViewAioShareMusicHelper = this.a;
     if (localWebViewAioShareMusicHelper != null)
     {
       localWebViewAioShareMusicHelper.a();
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebViewAioShareMusicHelper = null;
+      this.a = null;
     }
-    AioShareMusicIPCWebClient.a().a();
+    AioShareMusicIPCWebClient.b().a();
   }
 }
 

@@ -12,7 +12,7 @@ public class SpriteUtilImpl
 {
   public void canInitCmShow(AppRuntime paramAppRuntime)
   {
-    SpriteUtil.a(paramAppRuntime);
+    SpriteUtil.g(paramAppRuntime);
   }
   
   public boolean canUseCmShow(AppRuntime paramAppRuntime, int paramInt, String paramString)
@@ -32,7 +32,7 @@ public class SpriteUtilImpl
   
   public ISpriteActionScript getActionScript(AppRuntime paramAppRuntime)
   {
-    return SpriteUtil.a(paramAppRuntime);
+    return SpriteUtil.i(paramAppRuntime);
   }
   
   public ISpriteContext getSpriteContext(AppRuntime paramAppRuntime)
@@ -47,7 +47,7 @@ public class SpriteUtilImpl
   
   public boolean isCmShowKeywordAssociationActive(AppRuntime paramAppRuntime)
   {
-    return SpriteUtil.c(paramAppRuntime);
+    return SpriteUtil.f(paramAppRuntime);
   }
   
   public boolean isProperAIO(AppRuntime paramAppRuntime, int paramInt, String paramString)
@@ -57,12 +57,12 @@ public class SpriteUtilImpl
   
   public boolean isSpriteHidden(AppRuntime paramAppRuntime)
   {
-    return SpriteUtil.a(paramAppRuntime);
+    return SpriteUtil.d(paramAppRuntime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.api.impl.SpriteUtilImpl
  * JD-Core Version:    0.7.0.1
  */

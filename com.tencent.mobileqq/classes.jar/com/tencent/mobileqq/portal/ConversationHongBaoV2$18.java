@@ -31,15 +31,15 @@ class ConversationHongBaoV2$18
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("showNormalActivityPendant onPendentClick jumpUrl = ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.d("2021_UI_ConversationHongBaoV2", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.a())
+    if (this.b.e())
     {
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.g();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryITaskManager.a();
+      this.b.h();
+      localObject1 = this.c.a();
       ((UserData)localObject1).hasClickedHolder = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryITaskManager.a();
+      this.c.b();
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
@@ -48,34 +48,34 @@ class ConversationHongBaoV2$18
         QLog.d("2021_UI_ConversationHongBaoV2", 2, ((StringBuilder)localObject2).toString());
       }
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2;
-    ((ConversationHongBaoV2)localObject1).f(((ConversationHongBaoV2)localObject1).e());
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySpringfestivalEntryModelBaseActivityData.pendantData;
-    if ((localObject1 != null) && (((PendantData)localObject1).clickType == 2) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      if ((!this.jdField_a_of_type_JavaLangString.startsWith("http")) && (!this.jdField_a_of_type_JavaLangString.startsWith("https")))
+    Object localObject1 = this.f;
+    ((ConversationHongBaoV2)localObject1).f(((ConversationHongBaoV2)localObject1).B());
+    localObject1 = this.d.pendantData;
+    if ((localObject1 != null) && (((PendantData)localObject1).clickType == 2) && (!TextUtils.isEmpty(this.a))) {
+      if ((!this.a.startsWith("http")) && (!this.a.startsWith("https")))
       {
-        if ((ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2) instanceof BaseActivity))
+        if ((ConversationHongBaoV2.q(this.f) instanceof BaseActivity))
         {
-          localObject2 = JumpParser.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.a, ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), this.jdField_a_of_type_JavaLangString);
+          localObject2 = JumpParser.a((QQAppInterface)this.f.q.aF, ConversationHongBaoV2.q(this.f), this.a);
           if (localObject2 != null) {
             ((JumpAction)localObject2).a();
           } else {
-            ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity(new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
+            ConversationHongBaoV2.q(this.f).startActivity(new Intent(ConversationHongBaoV2.q(this.f), JumpActivity.class).setData(Uri.parse(this.a)));
           }
         }
         else
         {
-          ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity(new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), JumpActivity.class).setData(Uri.parse(this.jdField_a_of_type_JavaLangString)));
+          ConversationHongBaoV2.q(this.f).startActivity(new Intent(ConversationHongBaoV2.q(this.f), JumpActivity.class).setData(Uri.parse(this.a)));
         }
       }
       else
       {
-        localObject2 = new Intent(ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2), QQBrowserActivity.class);
-        ((Intent)localObject2).putExtra("url", this.jdField_a_of_type_JavaLangString);
-        ConversationHongBaoV2.a(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2).startActivity((Intent)localObject2);
+        localObject2 = new Intent(ConversationHongBaoV2.q(this.f), QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", this.a);
+        ConversationHongBaoV2.q(this.f).startActivity((Intent)localObject2);
       }
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.a();
+    Object localObject2 = this.f.q.y();
     if ((localObject1 != null) && (((PendantData)localObject1).clickType == 1) && (localObject2 != null)) {
       ((MiniAppPullInterface)localObject2).showMicroAppEntry();
     }
@@ -87,21 +87,21 @@ class ConversationHongBaoV2$18
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showNormalActivityPendant onPendentCloseBtnClick fCloseType = ");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.e);
       QLog.d("2021_UI_ConversationHongBaoV2", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.g(false);
-    if (this.jdField_a_of_type_Int == 1)
+    this.f.g(false);
+    if (this.e == 1)
     {
-      ConversationHongBaoV2.c(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2);
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.e();
+      ConversationHongBaoV2.f(this.f);
+      this.b.f();
     }
-    ConversationHongBaoV2.d(this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2);
+    ConversationHongBaoV2.g(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.18
  * JD-Core Version:    0.7.0.1
  */

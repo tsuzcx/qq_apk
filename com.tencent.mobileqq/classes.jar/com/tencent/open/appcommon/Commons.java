@@ -60,8 +60,8 @@ public class Commons
               j += 1;
               continue;
             }
-            paramWebView = (Class)AsyncMethodMap.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-            if (!AsyncMethodMap.jdField_a_of_type_JavaUtilArrayList.contains(str1)) {
+            paramWebView = (Class)AsyncMethodMap.b.get(localObject);
+            if (!AsyncMethodMap.a.contains(str1)) {
               break label781;
             }
             localArrayList.add(str2);
@@ -182,7 +182,7 @@ public class Commons
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.Commons
  * JD-Core Version:    0.7.0.1
  */

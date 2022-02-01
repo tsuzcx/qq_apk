@@ -176,7 +176,7 @@ public abstract class FaceDecodeTask
             {
               mDecodeRunnables[i] = new FaceDecodeTask.FaceDecodeRunnable(null);
               mDecodeThreads[i] = ThreadManager.newFreeThread(mDecodeRunnables[i], "FaceDecodeThread", 5);
-              if (ThreadOptimizer.a().c()) {
+              if (ThreadOptimizer.a().f()) {
                 mDecodeThreads[i].setPriority(1);
               }
               if (mDecodeThreads[i].getState() != Thread.State.NEW) {
@@ -242,7 +242,7 @@ public abstract class FaceDecodeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecodeTask
  * JD-Core Version:    0.7.0.1
  */

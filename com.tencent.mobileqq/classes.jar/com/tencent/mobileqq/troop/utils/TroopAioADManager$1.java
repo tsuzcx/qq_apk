@@ -87,11 +87,11 @@ class TroopAioADManager$1
         if (l2 * 1000L > System.currentTimeMillis() + 86400000L) {
           l1 = System.currentTimeMillis() / 1000L + 86400L;
         }
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAioADManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+        paramBundle = this.b.a.getApp();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("TROOP_AIO_AD_MANAGER_CONFIG");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAioADManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        paramBundle.getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong(this.jdField_a_of_type_JavaLangString, l1);
+        localStringBuilder.append(this.b.a.getAccount());
+        paramBundle.getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong(this.a, l1);
         if (QLog.isColorLevel())
         {
           paramBundle = new StringBuilder();
@@ -109,7 +109,7 @@ class TroopAioADManager$1
       }
       paramBundle = (GetTroopAioTopAD.AdInfo)paramArrayOfByte.get(0);
       paramArrayOfByte = new TroopAioTopADInfo();
-      paramArrayOfByte.troopUin = this.jdField_a_of_type_JavaLangString;
+      paramArrayOfByte.troopUin = this.a;
       paramArrayOfByte.adId = paramBundle.uint32_ad_id.get();
       paramArrayOfByte.backgroundUrl = paramBundle.str_background_url.get();
       paramArrayOfByte.moreUrl = paramBundle.str_more_url.get();
@@ -121,7 +121,7 @@ class TroopAioADManager$1
         paramArrayOfByte.strWord = paramBundle.msg_ext_adinfo.str_word.get();
         paramArrayOfByte.uiUrl = paramBundle.msg_ext_adinfo.str_ui_url.get();
         paramArrayOfByte.jumpUrl = paramBundle.msg_ext_adinfo.str_jmp_url.get();
-        if ((!QQStoryManager.i()) && (!TextUtils.isEmpty(paramArrayOfByte.jumpUrl)) && (paramArrayOfByte.jumpUrl.contains("qstory")))
+        if ((!QQStoryManager.o()) && (!TextUtils.isEmpty(paramArrayOfByte.jumpUrl)) && (paramArrayOfByte.jumpUrl.contains("qstory")))
         {
           if (!QLog.isColorLevel()) {
             return;
@@ -137,9 +137,9 @@ class TroopAioADManager$1
       }
       if ((System.currentTimeMillis() < paramArrayOfByte.validTime * 1000L) && (HttpUtil.isValidUrl(paramArrayOfByte.uiUrl)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAioADManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAioADManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAioADManager.a();
+        this.b.c.put(this.a, paramArrayOfByte);
+        this.b.b.persistOrReplace(paramArrayOfByte);
+        this.b.a();
       }
       if (!QLog.isColorLevel()) {
         break label757;
@@ -168,7 +168,7 @@ class TroopAioADManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAioADManager.1
  * JD-Core Version:    0.7.0.1
  */

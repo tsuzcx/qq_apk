@@ -13,25 +13,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PackageUpdateManager
 {
-  private static PackageUpdateManager jdField_a_of_type_CooperationVipManagerPackageUpdateManager;
-  private int jdField_a_of_type_Int = 0;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static PackageUpdateManager a;
   private boolean b = false;
-  
-  private int a()
-  {
-    if (this.b) {
-      return this.jdField_a_of_type_Int;
-    }
-    this.b = true;
-    long l = a(BaseApplicationImpl.getApplication());
-    if (b(BaseApplicationImpl.getApplication()) > l) {
-      this.jdField_a_of_type_Int = 1;
-    } else {
-      this.jdField_a_of_type_Int = 0;
-    }
-    return this.jdField_a_of_type_Int;
-  }
+  private boolean c = false;
+  private int d = 0;
   
   public static long a(Context paramContext)
   {
@@ -50,23 +35,16 @@ public class PackageUpdateManager
   
   public static PackageUpdateManager a()
   {
-    if (jdField_a_of_type_CooperationVipManagerPackageUpdateManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_CooperationVipManagerPackageUpdateManager == null) {
-          jdField_a_of_type_CooperationVipManagerPackageUpdateManager = new PackageUpdateManager();
+        if (a == null) {
+          a = new PackageUpdateManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_CooperationVipManagerPackageUpdateManager;
-  }
-  
-  private void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
-    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
-    localEditor.apply();
+    return a;
   }
   
   public static long b(Context paramContext)
@@ -84,25 +62,47 @@ public class PackageUpdateManager
     return 0L;
   }
   
+  private void b()
+  {
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
+    localEditor.putBoolean("HAS_PULL", this.b);
+    localEditor.apply();
+  }
+  
+  private int c()
+  {
+    if (this.c) {
+      return this.d;
+    }
+    this.c = true;
+    long l = a(BaseApplicationImpl.getApplication());
+    if (b(BaseApplicationImpl.getApplication()) > l) {
+      this.d = 1;
+    } else {
+      this.d = 0;
+    }
+    return this.d;
+  }
+  
   public void a(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
       return;
     }
-    if (a() == 1)
+    if (c() == 1)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
       ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendGroupList(true);
-      a();
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.manager.PackageUpdateManager
  * JD-Core Version:    0.7.0.1
  */

@@ -12,13 +12,13 @@ class ApkSimpleFilePresenter$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilebrowserPresenterApkSimpleFilePresenter.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.a(this.jdField_a_of_type_ComTencentMobileqqFilebrowserPresenterApkSimpleFilePresenter.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    this.b.c.a(this.b.f, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.ApkSimpleFilePresenter.2
  * JD-Core Version:    0.7.0.1
  */

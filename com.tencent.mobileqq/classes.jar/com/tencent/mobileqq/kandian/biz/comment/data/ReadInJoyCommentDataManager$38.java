@@ -10,12 +10,12 @@ class ReadInJoyCommentDataManager$38
   
   void a(ReadInJoyCommentDataManager.OnDataChangeListener paramOnDataChangeListener)
   {
-    paramOnDataChangeListener.onCommentStateError(this.jdField_a_of_type_Int);
+    paramOnDataChangeListener.onCommentStateError(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.38
  * JD-Core Version:    0.7.0.1
  */

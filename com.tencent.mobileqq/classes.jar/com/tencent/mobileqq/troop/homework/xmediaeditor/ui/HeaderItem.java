@@ -10,25 +10,25 @@ import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HeaderInfo;
 public class HeaderItem
   extends EditItemBase<HeaderItem.HeaderHolder, HeaderInfo>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
+  private LayoutInflater a;
+  private Context d;
+  private View e;
   
   public HeaderItem(XMediaEditor paramXMediaEditor, Context paramContext)
   {
     super(paramXMediaEditor);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.d = paramContext;
+    this.a = LayoutInflater.from(paramContext);
   }
   
   public HeaderItem.HeaderHolder a(ViewGroup paramViewGroup)
   {
-    return new HeaderItem.HeaderHolder(this.jdField_a_of_type_AndroidViewView);
+    return new HeaderItem.HeaderHolder(this.e);
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.e = paramView;
   }
   
   public void a(View paramView, HeaderItem.HeaderHolder paramHeaderHolder) {}
@@ -37,7 +37,7 @@ public class HeaderItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.HeaderItem
  * JD-Core Version:    0.7.0.1
  */

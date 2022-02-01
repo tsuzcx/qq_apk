@@ -20,14 +20,14 @@ class TroopInteractGiftAnimationController$1$1
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject1 = this.a;
     if (localObject1 == null)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("TroopGiftUtil.getInteractConfig = null, packageId: ");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.b.a);
         QLog.e("TroopInteractGiftAnimationController", 2, ((StringBuilder)localObject1).toString());
       }
       return;
@@ -38,43 +38,43 @@ class TroopInteractGiftAnimationController$1$1
     } else {
       bool = false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null)
+    if (this.b.this$0.b == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = new SpriteVideoView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, bool);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setCenterCrop(true);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidWidgetLinearLayout == null)
+      this.b.this$0.b = new SpriteVideoView(this.b.this$0.a.e, bool);
+      this.b.this$0.b.setCenterCrop(true);
+      if (this.b.this$0.a.bG == null)
       {
         if (QLog.isColorLevel()) {
           QLog.e("TroopInteractGiftAnimationController", 2, "mTroopChatPie.bgAnimationLayout == null");
         }
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView, -1, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.h);
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState != 2) && (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_Boolean))
+      this.b.this$0.a.bG.removeAllViews();
+      this.b.this$0.a.bG.addView(this.b.this$0.b, -1, this.b.this$0.a.bI);
+      this.b.this$0.f = 0;
+      this.b.this$0.g = true;
+      if ((this.b.b.interactState != 2) && (this.b.c))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton = new TroopGiftActionButton(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_OrgJsonJSONObject, new TroopInteractGiftAnimationController.1.1.1(this));
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.setOnProgressChangedListener(new TroopInteractGiftAnimationController.1.1.2(this));
-        localObject1 = new RelativeLayout.LayoutParams(DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, 175.0F), DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, 175.0F));
-        ((RelativeLayout.LayoutParams)localObject1).topMargin = (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.h - DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, 85.0F));
-        ((RelativeLayout.LayoutParams)localObject1).rightMargin = (-DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.jdField_a_of_type_AndroidContentContext, 25.0F));
+        this.b.this$0.c = new TroopGiftActionButton(this.b.this$0.a.e, this.a, new TroopInteractGiftAnimationController.1.1.1(this));
+        this.b.this$0.b.setOnProgressChangedListener(new TroopInteractGiftAnimationController.1.1.2(this));
+        localObject1 = new RelativeLayout.LayoutParams(DisplayUtil.a(this.b.this$0.a.e, 175.0F), DisplayUtil.a(this.b.this$0.a.e, 175.0F));
+        ((RelativeLayout.LayoutParams)localObject1).topMargin = (this.b.this$0.a.bI - DisplayUtil.a(this.b.this$0.a.e, 85.0F));
+        ((RelativeLayout.LayoutParams)localObject1).rightMargin = (-DisplayUtil.a(this.b.this$0.a.e, 25.0F));
         ((RelativeLayout.LayoutParams)localObject1).addRule(11);
         ((RelativeLayout.LayoutParams)localObject1).addRule(10);
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton, (ViewGroup.LayoutParams)localObject1);
+        this.b.this$0.d.addView(this.b.this$0.c, (ViewGroup.LayoutParams)localObject1);
       }
-      localObject1 = TroopGiftUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-      Object localObject3 = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("animation1");
-      Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("animation2");
-      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject.optJSONObject("animation3");
+      localObject1 = TroopGiftUtil.a(this.b.b);
+      Object localObject3 = this.a.optJSONObject("animation1");
+      Object localObject2 = this.a.optJSONObject("animation2");
+      JSONObject localJSONObject = this.a.optJSONObject("animation3");
       int i = ((JSONObject)localObject3).optInt("duration");
       int j = ((JSONObject)localObject2).optInt("duration");
       int k = localJSONObject.optInt("duration");
-      int m = (int)(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds / 1000L);
-      int n = (int)(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L);
+      int m = (int)(this.b.b.alreadyPlayMicroseconds / 1000L);
+      int n = (int)(this.b.b.playTotalMicroseconds / 1000L);
       StringBuilder localStringBuilder;
-      if ((this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState != 2) && (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_Boolean))
+      if ((this.b.b.interactState != 2) && (this.b.c))
       {
         if (m < i)
         {
@@ -82,8 +82,8 @@ class TroopInteractGiftAnimationController$1$1
           localStringBuilder.append((String)localObject1);
           localStringBuilder.append(((JSONObject)localObject3).optString("videoPath", "1.mp4"));
           localObject3 = localStringBuilder.toString();
-          this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a((String)localObject3, m, new TroopInteractGiftAnimationController.1.1.4(this, i, (String)localObject1, (JSONObject)localObject2, j, localJSONObject));
-          this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, i - m - 300);
+          this.b.this$0.b.a((String)localObject3, m, new TroopInteractGiftAnimationController.1.1.4(this, i, (String)localObject1, (JSONObject)localObject2, j, localJSONObject));
+          this.b.this$0.a(this.b.b, i - m - 300);
         }
         else
         {
@@ -94,8 +94,8 @@ class TroopInteractGiftAnimationController$1$1
             ((StringBuilder)localObject3).append((String)localObject1);
             ((StringBuilder)localObject3).append(((JSONObject)localObject2).optString("videoPath", "2.mp4"));
             localObject2 = ((StringBuilder)localObject3).toString();
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a((String)localObject2, m - i, new TroopInteractGiftAnimationController.1.1.5(this, i, j, (String)localObject1, localJSONObject));
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.a(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, n - m - 300);
+            this.b.this$0.b.a((String)localObject2, m - i, new TroopInteractGiftAnimationController.1.1.5(this, i, j, (String)localObject1, localJSONObject));
+            this.b.this$0.a(this.b.b, n - m - 300);
           }
           else if (m < n + k)
           {
@@ -103,7 +103,7 @@ class TroopInteractGiftAnimationController$1$1
             ((StringBuilder)localObject2).append((String)localObject1);
             ((StringBuilder)localObject2).append(localJSONObject.optString("videoPath", "3.mp4"));
             localObject1 = ((StringBuilder)localObject2).toString();
-            this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a((String)localObject1, m - i - j, new TroopInteractGiftAnimationController.1.1.6(this));
+            this.b.this$0.b.a((String)localObject1, m - i - j, new TroopInteractGiftAnimationController.1.1.6(this));
           }
         }
       }
@@ -113,17 +113,17 @@ class TroopInteractGiftAnimationController$1$1
         localStringBuilder.append((String)localObject1);
         localStringBuilder.append(((JSONObject)localObject3).optString("videoPath", "1.mp4"));
         localObject3 = localStringBuilder.toString();
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a((String)localObject3, new TroopInteractGiftAnimationController.1.1.3(this, n, i, (String)localObject1, (JSONObject)localObject2, j, localJSONObject));
+        this.b.this$0.b.a((String)localObject3, new TroopInteractGiftAnimationController.1.1.3(this, n, i, (String)localObject1, (JSONObject)localObject2, j, localJSONObject));
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.b(this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, new TroopInteractGiftAnimationController.1.1.7(this));
+      if (this.b.b.interactState == 0) {
+        this.b.e.b(this.b.b.frienduin, this.b.b.interactId, this.b.b.animationPackageId, new TroopInteractGiftAnimationController.1.1.7(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1
  * JD-Core Version:    0.7.0.1
  */

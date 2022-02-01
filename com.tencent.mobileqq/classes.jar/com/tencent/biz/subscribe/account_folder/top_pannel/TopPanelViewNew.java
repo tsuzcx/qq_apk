@@ -16,10 +16,10 @@ public class TopPanelViewNew
   extends RelativeLayout
   implements TopPanelContract.View
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private RecommendBannerViewNew jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew;
-  private TopPanelContract.Presenter jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter;
-  private boolean jdField_a_of_type_Boolean = false;
+  private TopPanelContract.Presenter a;
+  private RecommendBannerViewNew b;
+  private View c;
+  private boolean d = false;
   
   public TopPanelViewNew(Context paramContext)
   {
@@ -50,36 +50,36 @@ public class TopPanelViewNew
       b();
       return;
     }
-    RecommendBannerViewNew localRecommendBannerViewNew = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew;
+    RecommendBannerViewNew localRecommendBannerViewNew = this.b;
     if (localRecommendBannerViewNew == null) {
       return;
     }
     localRecommendBannerViewNew.a(paramStEntry, paramList, paramBoolean);
-    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew, 0);
+    ViewUtils.setViewVisibility(this.b, 0);
     if (((paramList == null) || (paramList.size() < 10)) && (paramBoolean)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew.a();
+      this.b.a();
     }
   }
   
   protected void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = SubscribeUtils.a();
-    inflate(paramContext, 2131558743, this);
-    if (this.jdField_a_of_type_Boolean) {
+    this.d = SubscribeUtils.a();
+    inflate(paramContext, 2131624363, this);
+    if (this.d) {
       setBackgroundColor(-16777216);
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew = ((RecommendBannerViewNew)findViewById(2131376213));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369320);
+    this.b = ((RecommendBannerViewNew)findViewById(2131444421));
+    this.c = findViewById(2131436319);
   }
   
   public void b()
   {
-    ViewUtils.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew, 8);
+    ViewUtils.setViewVisibility(this.b, 8);
   }
   
   public void setOnHideBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.c;
     if (localView != null) {
       localView.setOnClickListener(paramOnClickListener);
     }
@@ -87,8 +87,8 @@ public class TopPanelViewNew
   
   public void setPresenter(TopPanelContract.Presenter paramPresenter)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$Presenter = paramPresenter;
-    RecommendBannerViewNew localRecommendBannerViewNew = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerRecommendBannerViewNew;
+    this.a = paramPresenter;
+    RecommendBannerViewNew localRecommendBannerViewNew = this.b;
     if (localRecommendBannerViewNew != null) {
       localRecommendBannerViewNew.setPresenter(paramPresenter);
     }

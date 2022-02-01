@@ -23,17 +23,87 @@ import org.json.JSONObject;
 public class DynamicItemViewHelperCompat
   extends DynamicItemViewHelperCompatBase<AbsBaseArticleInfo>
 {
-  private DynamicProteusItem a;
+  private DynamicProteusItem g;
   
-  public int a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  public void a(VafContext paramVafContext, int paramInt)
+  {
+    super.a(paramVafContext, paramInt);
+    this.g = new DynamicProteusItem(paramVafContext);
+  }
+  
+  public void a(ProteusItemView paramProteusItemView, int paramInt1, AbsBaseArticleInfo paramAbsBaseArticleInfo, VafContext paramVafContext, int paramInt2)
+  {
+    TraceUtils.traceBegin("bindData");
+    if ((paramProteusItemView != null) && (paramProteusItemView.getContainer() != null))
+    {
+      if (paramInt1 == c)
+      {
+        paramProteusItemView.setVisibility(8);
+        return;
+      }
+      QLog.d("DynamicItemViewHelperCompat", 1, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramAbsBaseArticleInfo });
+      TemplateBean localTemplateBean1 = paramProteusItemView.getTemplateBean();
+      TemplateBean localTemplateBean2 = c(paramAbsBaseArticleInfo);
+      Object localObject = localTemplateBean1;
+      if (localTemplateBean1 != null)
+      {
+        localObject = localTemplateBean1;
+        if (localTemplateBean2 != null)
+        {
+          localObject = localTemplateBean1;
+          if (!localTemplateBean2.equals(localTemplateBean1))
+          {
+            localObject = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean2);
+            if (localObject != null)
+            {
+              ((Container)localObject).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130842690));
+              paramProteusItemView.d();
+              paramProteusItemView.a((Container)localObject);
+            }
+            paramAbsBaseArticleInfo.mProteusTemplateBean = localTemplateBean2;
+            localObject = null;
+          }
+        }
+      }
+      paramAbsBaseArticleInfo = paramProteusItemView.getContainer();
+      paramProteusItemView.setTemplateBean(localTemplateBean2);
+      if (localTemplateBean2 != null) {
+        ProteusSupportUtil.a(paramAbsBaseArticleInfo, (TemplateBean)localObject, localTemplateBean2);
+      }
+      ProteusSupportUtil.a(paramAbsBaseArticleInfo, paramVafContext, localTemplateBean2);
+      TraceUtils.traceEnd();
+      return;
+    }
+    TraceUtils.traceEnd();
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicItemViewHelperCompat", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramAbsBaseArticleInfo });
+    }
+    if (paramProteusItemView != null) {
+      paramProteusItemView.setVisibility(8);
+    }
+  }
+  
+  public boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    boolean bool = false;
+    if (paramAbsBaseArticleInfo == null) {
+      return false;
+    }
+    if (paramAbsBaseArticleInfo.mFeedType == 29) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public int b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (paramAbsBaseArticleInfo == null) {
-      return b;
+      return c;
     }
-    TemplateBean localTemplateBean = a(paramAbsBaseArticleInfo);
+    TemplateBean localTemplateBean = c(paramAbsBaseArticleInfo);
     Object localObject = null;
     if (localTemplateBean != null) {
-      localObject = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localTemplateBean.getStyleName());
+      localObject = (Integer)this.a.get(localTemplateBean.getStyleName());
     }
     if (localObject == null)
     {
@@ -43,18 +113,18 @@ public class DynamicItemViewHelperCompat
       ((StringBuilder)localObject).append(" data: ");
       ((StringBuilder)localObject).append(paramAbsBaseArticleInfo.proteusItemsData);
       QLog.d("DynamicItemViewHelperCompat", 2, ((StringBuilder)localObject).toString());
-      return b;
+      return c;
     }
-    if ((((Integer)localObject).intValue() >= b) && (((Integer)localObject).intValue() < this.d)) {
+    if ((((Integer)localObject).intValue() >= c) && (((Integer)localObject).intValue() < this.e)) {
       return ((Integer)localObject).intValue();
     }
-    AIOUtils.a("DynamicItemViewHelperCompat", "", new IllegalArgumentException(HardCodeUtil.a(2131703734)));
-    return b;
+    AIOUtils.a("DynamicItemViewHelperCompat", "", new IllegalArgumentException(HardCodeUtil.a(2131901680)));
+    return c;
   }
   
-  protected TemplateBean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  protected TemplateBean c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    int i = b;
+    int i = c;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -66,13 +136,13 @@ public class DynamicItemViewHelperCompat
     Object localObject = localTemplateBean;
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDynamicProteusItem == null) {
+      if (this.g == null) {
         return null;
       }
       localObject = localTemplateBean;
-      JSONObject localJSONObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDynamicProteusItem.a(i, paramAbsBaseArticleInfo);
+      JSONObject localJSONObject = this.g.a(i, paramAbsBaseArticleInfo);
       localObject = localTemplateBean;
-      localTemplateBean = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDynamicProteusItem.a(i, localJSONObject);
+      localTemplateBean = this.g.a(i, localJSONObject);
       localObject = localTemplateBean;
       paramAbsBaseArticleInfo.mProteusTemplateBean = localTemplateBean;
       paramAbsBaseArticleInfo = localTemplateBean;
@@ -104,80 +174,10 @@ public class DynamicItemViewHelperCompat
     }
     return paramAbsBaseArticleInfo;
   }
-  
-  public void a(VafContext paramVafContext, int paramInt)
-  {
-    super.a(paramVafContext, paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemDynamicProteusItem = new DynamicProteusItem(paramVafContext);
-  }
-  
-  public void a(ProteusItemView paramProteusItemView, int paramInt1, AbsBaseArticleInfo paramAbsBaseArticleInfo, VafContext paramVafContext, int paramInt2)
-  {
-    TraceUtils.traceBegin("bindData");
-    if ((paramProteusItemView != null) && (paramProteusItemView.a() != null))
-    {
-      if (paramInt1 == b)
-      {
-        paramProteusItemView.setVisibility(8);
-        return;
-      }
-      QLog.d("DynamicItemViewHelperCompat", 1, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramAbsBaseArticleInfo });
-      TemplateBean localTemplateBean1 = paramProteusItemView.a();
-      TemplateBean localTemplateBean2 = a(paramAbsBaseArticleInfo);
-      Object localObject = localTemplateBean1;
-      if (localTemplateBean1 != null)
-      {
-        localObject = localTemplateBean1;
-        if (localTemplateBean2 != null)
-        {
-          localObject = localTemplateBean1;
-          if (!localTemplateBean2.equals(localTemplateBean1))
-          {
-            localObject = paramVafContext.getViewFactory().inflate(paramVafContext, localTemplateBean2);
-            if (localObject != null)
-            {
-              ((Container)localObject).setBackgroundDrawable(paramVafContext.getContext().getResources().getDrawable(2130841773));
-              paramProteusItemView.c();
-              paramProteusItemView.a((Container)localObject);
-            }
-            paramAbsBaseArticleInfo.mProteusTemplateBean = localTemplateBean2;
-            localObject = null;
-          }
-        }
-      }
-      paramAbsBaseArticleInfo = paramProteusItemView.a();
-      paramProteusItemView.setTemplateBean(localTemplateBean2);
-      if (localTemplateBean2 != null) {
-        ProteusSupportUtil.a(paramAbsBaseArticleInfo, (TemplateBean)localObject, localTemplateBean2);
-      }
-      ProteusSupportUtil.a(paramAbsBaseArticleInfo, paramVafContext, localTemplateBean2);
-      TraceUtils.traceEnd();
-      return;
-    }
-    TraceUtils.traceEnd();
-    if (QLog.isColorLevel()) {
-      QLog.d("DynamicItemViewHelperCompat", 2, new Object[] { "bindData, adapterViewType = ", Integer.valueOf(paramInt1), ", articleInfo = ", paramAbsBaseArticleInfo });
-    }
-    if (paramProteusItemView != null) {
-      paramProteusItemView.setVisibility(8);
-    }
-  }
-  
-  public boolean a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    boolean bool = false;
-    if (paramAbsBaseArticleInfo == null) {
-      return false;
-    }
-    if (paramAbsBaseArticleInfo.mFeedType == 29) {
-      bool = true;
-    }
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.compat.DynamicItemViewHelperCompat
  * JD-Core Version:    0.7.0.1
  */

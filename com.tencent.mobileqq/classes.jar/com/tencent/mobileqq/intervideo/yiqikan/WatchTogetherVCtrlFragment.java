@@ -25,7 +25,7 @@ public class WatchTogetherVCtrlFragment
     else
     {
       paramBundle = DialogUtil.a(paramViewGroup, "请下载QQ新版本查看");
-      paramBundle.setPositiveButton(2131694583, new DialogUtil.DialogOnClickAdapter());
+      paramBundle.setPositiveButton(2131892267, new DialogUtil.DialogOnClickAdapter());
       paramBundle.show();
       paramBundle.setOnDismissListener(new WatchTogetherVCtrlFragment.1(this, paramViewGroup));
     }
@@ -35,7 +35,7 @@ public class WatchTogetherVCtrlFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherVCtrlFragment
  * JD-Core Version:    0.7.0.1
  */

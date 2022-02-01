@@ -19,22 +19,22 @@ class PublicAccountImageCollectionAdapter$5
       QLog.d("PublicAccountImageCollectionAdapter", 2, "follow success");
     }
     paramObject = this.a;
-    paramObject.a = true;
-    PublicAccountImageCollectionAdapter.a(paramObject);
+    paramObject.h = true;
+    PublicAccountImageCollectionAdapter.d(paramObject);
   }
   
   public void a(boolean paramBoolean, Object paramObject) {}
   
   public void b(Object paramObject)
   {
-    PublicAccountImageCollectionAdapter.a(this.a, 2131695217);
+    PublicAccountImageCollectionAdapter.a(this.a, 2131892951);
   }
   
   public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.imagecollection.PublicAccountImageCollectionAdapter.5
  * JD-Core Version:    0.7.0.1
  */

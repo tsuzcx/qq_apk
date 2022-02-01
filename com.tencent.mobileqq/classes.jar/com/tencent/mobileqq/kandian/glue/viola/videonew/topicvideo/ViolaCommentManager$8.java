@@ -9,17 +9,17 @@ class ViolaCommentManager$8
   
   public void run()
   {
-    if (ViolaCommentManager.a(this.this$0) != null)
+    if (ViolaCommentManager.g(this.this$0) != null)
     {
       this.this$0.c(0);
       ViolaCommentManager.a(this.this$0, false);
-      ViolaCommentManager.a(this.this$0).d();
+      ViolaCommentManager.g(this.this$0).l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.videonew.topicvideo.ViolaCommentManager.8
  * JD-Core Version:    0.7.0.1
  */

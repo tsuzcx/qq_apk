@@ -11,7 +11,7 @@ public final class RIJUGCDianDianImpl
 {
   public int getVideoUploadTaskSize()
   {
-    return RIJUGCDianDian.a();
+    return RIJUGCDianDian.b();
   }
   
   public void secondClassDeliverOperationReport(@Nullable String paramString1, @Nullable String paramString2)
@@ -21,7 +21,7 @@ public final class RIJUGCDianDianImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.api.impl.RIJUGCDianDianImpl
  * JD-Core Version:    0.7.0.1
  */

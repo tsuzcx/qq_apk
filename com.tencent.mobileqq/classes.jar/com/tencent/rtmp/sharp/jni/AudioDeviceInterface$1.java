@@ -52,7 +52,7 @@ class AudioDeviceInterface$1
       AudioDeviceInterface.access$000(this.this$0).lock();
       AudioDeviceInterface.access$102(this.this$0, true);
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onServiceStateUpdate signalAll");
+        QLog.e("AudioDeviceInterface", 2, "onServiceStateUpdate signalAll");
       }
       AudioDeviceInterface.access$200(this.this$0).signalAll();
       AudioDeviceInterface.access$000(this.this$0).unlock();
@@ -70,7 +70,7 @@ class AudioDeviceInterface$1
       AudioDeviceInterface.access$000(this.this$0).lock();
       AudioDeviceInterface.access$102(this.this$0, true);
       if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
+        QLog.e("AudioDeviceInterface", 2, "onVoicecallPreprocessRes signalAll");
       }
       AudioDeviceInterface.access$200(this.this$0).signalAll();
       AudioDeviceInterface.access$000(this.this$0).unlock();
@@ -81,7 +81,7 @@ class AudioDeviceInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDeviceInterface.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,28 +14,28 @@ class VideoFeedsPlayManager$6
   
   public void run()
   {
-    if ((VideoFeedsPlayManager.a(this.this$0) != null) && ((VideoFeedsPlayManager.a(this.this$0).b() == 5) || (VideoFeedsPlayManager.a(this.this$0).b() == 2)))
+    if ((VideoFeedsPlayManager.i(this.this$0) != null) && ((VideoFeedsPlayManager.i(this.this$0).h() == 5) || (VideoFeedsPlayManager.i(this.this$0).h() == 2)))
     {
-      VideoFeedsPlayManager.a(this.this$0).e();
-      if (VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoUIDelegate != null) {
-        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsApiIVideoUIDelegate.e(VideoFeedsPlayManager.a(this.this$0));
+      VideoFeedsPlayManager.i(this.this$0).v();
+      if (VideoFeedsPlayManager.b(this.this$0).o != null) {
+        VideoFeedsPlayManager.b(this.this$0).o.e(VideoFeedsPlayManager.b(this.this$0));
       }
-      if (VideoFeedsPlayManager.a(this.this$0) != null)
+      if (VideoFeedsPlayManager.g(this.this$0) != null)
       {
-        Iterator localIterator = VideoFeedsPlayManager.a(this.this$0).iterator();
+        Iterator localIterator = VideoFeedsPlayManager.g(this.this$0).iterator();
         while (localIterator.hasNext()) {
-          ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).f(VideoFeedsPlayManager.a(this.this$0));
+          ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).f(VideoFeedsPlayManager.b(this.this$0));
         }
       }
-      if (VideoFeedsPlayManager.c(this.this$0)) {
-        VideoFeedsPlayManager.a(this.this$0).jdField_a_of_type_ComTencentMobileqqKandianBizAdReportReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.b;
+      if (VideoFeedsPlayManager.h(this.this$0)) {
+        VideoFeedsPlayManager.b(this.this$0).f.i = ReadinjoyAdVideoReportData.b;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsPlayManager.6
  * JD-Core Version:    0.7.0.1
  */

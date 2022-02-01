@@ -5,9 +5,6 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import androidx.annotation.NonNull;
-import com.qflutter.qqcircle.video.Messages.VideoPlayerApi._CC;
-import com.qflutter.qqcircle.video.QCircleVideoPlayerApi;
-import com.qflutter.qqcircle.video.QQCircleVideoProxy;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding;
@@ -31,9 +28,7 @@ public class TencentQQCirclePlugin
   public static final String TAG = "TencentQQCirclePlugin";
   private static IQQCircleMethod methodBridge;
   private static Map<Integer, MethodChannel> methodChannelMap = new ConcurrentHashMap();
-  private static Class<? extends QCircleVideoPlayerApi> videoPlayerApiImplClazz;
   private Activity activity;
-  private QQCircleVideoProxy videoProxy;
   
   public static void sendEvent(String paramString, Map paramMap)
   {
@@ -65,11 +60,6 @@ public class TencentQQCirclePlugin
     methodBridge = paramIQQCircleMethod;
   }
   
-  public static void setVideoPlayerApi(Class<? extends QCircleVideoPlayerApi> paramClass)
-  {
-    videoPlayerApiImplClazz = paramClass;
-  }
-  
   public void onAttachedToActivity(ActivityPluginBinding paramActivityPluginBinding)
   {
     if (PLog.isColorLevel())
@@ -84,37 +74,19 @@ public class TencentQQCirclePlugin
   
   public void onAttachedToEngine(@NonNull FlutterPlugin.FlutterPluginBinding paramFlutterPluginBinding)
   {
-    Object localObject;
     if (PLog.isColorLevel())
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("[onAttachedToEngine] plugin=");
-      ((StringBuilder)localObject).append(hashCode());
-      PLog.d("TencentQQCirclePlugin", ((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onAttachedToEngine] plugin=");
+      localStringBuilder.append(hashCode());
+      PLog.d("TencentQQCirclePlugin", localStringBuilder.toString());
     }
     try
     {
-      localObject = new MethodChannel(paramFlutterPluginBinding.getBinaryMessenger(), "tencent_qqcircle");
-      ((MethodChannel)localObject).setMethodCallHandler(this);
-      methodChannelMap.put(Integer.valueOf(hashCode()), localObject);
-      if (videoPlayerApiImplClazz == null)
-      {
-        PLog.w("TencentQQCirclePlugin", "[onAttachedToEngine] videoPlayerApiImplClazz can not be null");
-        return;
-      }
-      this.videoProxy = new QQCircleVideoProxy(paramFlutterPluginBinding.getTextureRegistry(), paramFlutterPluginBinding.getBinaryMessenger());
-      long l = System.currentTimeMillis();
-      localObject = (QCircleVideoPlayerApi)videoPlayerApiImplClazz.newInstance();
-      this.videoProxy.setVideoPlayerApi((QCircleVideoPlayerApi)localObject);
-      Messages.VideoPlayerApi._CC.setup(paramFlutterPluginBinding.getBinaryMessenger(), this.videoProxy);
-      if (PLog.isColorLevel())
-      {
-        paramFlutterPluginBinding = new StringBuilder();
-        paramFlutterPluginBinding.append("[onAttachedToEngine] cost=");
-        paramFlutterPluginBinding.append(System.currentTimeMillis() - l);
-        PLog.d("TencentQQCirclePlugin", paramFlutterPluginBinding.toString());
-        return;
-      }
+      paramFlutterPluginBinding = new MethodChannel(paramFlutterPluginBinding.getBinaryMessenger(), "tencent_qqcircle");
+      paramFlutterPluginBinding.setMethodCallHandler(this);
+      methodChannelMap.put(Integer.valueOf(hashCode()), paramFlutterPluginBinding);
+      return;
     }
     catch (Throwable paramFlutterPluginBinding)
     {
@@ -171,12 +143,6 @@ public class TencentQQCirclePlugin
       paramFlutterPluginBinding.setMethodCallHandler(null);
     }
     this.activity = null;
-    paramFlutterPluginBinding = this.videoProxy;
-    if (paramFlutterPluginBinding != null)
-    {
-      paramFlutterPluginBinding.clean();
-      this.videoProxy = null;
-    }
   }
   
   public void onMethodCall(@NonNull MethodCall paramMethodCall, @NonNull MethodChannel.Result paramResult)
@@ -203,7 +169,7 @@ public class TencentQQCirclePlugin
           if (paramMethodCall != null)
           {
             bool = paramMethodCall.isInMultiWindowMode();
-            break label178;
+            break label173;
           }
         }
         paramMethodCall = new StringBuilder();
@@ -213,7 +179,7 @@ public class TencentQQCirclePlugin
         paramMethodCall.append(this.activity);
         QLog.w("TencentQQCirclePlugin", 1, paramMethodCall.toString());
         boolean bool = false;
-        label178:
+        label173:
         paramResult.success(Boolean.valueOf(bool));
         return;
       }
@@ -245,7 +211,7 @@ public class TencentQQCirclePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.qflutter.qqcircle.TencentQQCirclePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -55,13 +55,13 @@ public class VoiceAssistantCoreImpl
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      localVoiceAssistantStateMachine.g();
+      localVoiceAssistantStateMachine.n();
     }
   }
   
   public void executeCommand(CommandInfo paramCommandInfo)
   {
-    if (!WakeManager.a().b())
+    if (!WakeManager.a().h())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceAssistantServiceImpl", 2, "executeCommand not allow");
@@ -70,15 +70,15 @@ public class VoiceAssistantCoreImpl
     }
     if ((isVoicePanelShow()) && (paramCommandInfo != null))
     {
-      if ((!TextUtils.isEmpty(paramCommandInfo.b)) && (paramCommandInfo.b.equals("发消息")))
+      if ((!TextUtils.isEmpty(paramCommandInfo.h)) && (paramCommandInfo.h.equals("发消息")))
       {
         VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
-        if ((localVoiceAssistantStateMachine != null) && (localVoiceAssistantStateMachine.a() != null))
+        if ((localVoiceAssistantStateMachine != null) && (localVoiceAssistantStateMachine.g() != null))
         {
           if (QLog.isColorLevel()) {
             QLog.d("VoiceAssistantServiceImpl", 2, "showChooseView");
           }
-          this.mVoiceAssistantStateMachine.a().f();
+          this.mVoiceAssistantStateMachine.g().f();
           sendQuitPanelMessage();
           return;
         }
@@ -108,7 +108,7 @@ public class VoiceAssistantCoreImpl
   {
     VoiceMainPresenter localVoiceMainPresenter = this.mVoicePresenter;
     if (localVoiceMainPresenter != null) {
-      return localVoiceMainPresenter.a();
+      return localVoiceMainPresenter.d();
     }
     return null;
   }
@@ -117,7 +117,7 @@ public class VoiceAssistantCoreImpl
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      return localVoiceAssistantStateMachine.a();
+      return localVoiceAssistantStateMachine.m();
     }
     return null;
   }
@@ -148,7 +148,7 @@ public class VoiceAssistantCoreImpl
       IQAssistantTempApi localIQAssistantTempApi = (IQAssistantTempApi)QRoute.api(IQAssistantTempApi.class);
       localIntentFilter.addAction(localIQAssistantTempApi.getIpcConstants_ACTION_VOICE_RECORD_OFF());
       localIntentFilter.addAction(localIQAssistantTempApi.getIpcConstants_ACTION_VOICE_RECORD_ON());
-      AssistantUtils.a().registerReceiver(this.mReceiver, localIntentFilter);
+      AssistantUtils.d().registerReceiver(this.mReceiver, localIntentFilter);
     }
   }
   
@@ -159,7 +159,7 @@ public class VoiceAssistantCoreImpl
     initReceiver();
     new ViewCommandModelCheck();
     this.mVoiceAssistantStateMachine = new VoiceAssistantStateMachine("VoiceAssistantServiceImpl", this.mVoicePresenter);
-    this.mVoiceAssistantStateMachine.e();
+    this.mVoiceAssistantStateMachine.f();
     this.mHandler = new Handler(Looper.getMainLooper(), this);
     this.mHandler.postDelayed(new VoiceAssistantCoreImpl.1(this), 500L);
   }
@@ -167,17 +167,17 @@ public class VoiceAssistantCoreImpl
   public boolean isInSession()
   {
     VoiceMainPresenter localVoiceMainPresenter = this.mVoicePresenter;
-    return (localVoiceMainPresenter != null) && (localVoiceMainPresenter.a());
+    return (localVoiceMainPresenter != null) && (localVoiceMainPresenter.c());
   }
   
   public boolean isSilent()
   {
-    Object localObject = AssistantUtils.a();
+    Object localObject = AssistantUtils.d();
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localObject != null)
     {
-      localObject = (AudioManager)AssistantUtils.a().getSystemService("audio");
+      localObject = (AudioManager)AssistantUtils.d().getSystemService("audio");
       int i = ((AudioManager)localObject).getStreamVolume(3);
       int j = ((AudioManager)localObject).getStreamMaxVolume(3);
       bool1 = bool2;
@@ -191,7 +191,7 @@ public class VoiceAssistantCoreImpl
   public boolean isVoicePanelShow()
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
-    return (localVoiceAssistantStateMachine != null) && (localVoiceAssistantStateMachine.a());
+    return (localVoiceAssistantStateMachine != null) && (localVoiceAssistantStateMachine.l());
   }
   
   public boolean isVoicePlaying()
@@ -218,11 +218,11 @@ public class VoiceAssistantCoreImpl
     Object localObject = this.mTTSPlayerManager;
     if (localObject != null)
     {
-      ((TTSPlayerManager)localObject).c();
+      ((TTSPlayerManager)localObject).d();
       this.mTTSPlayerManager = null;
     }
     if (this.isReceiverRegister.compareAndSet(true, false)) {
-      AssistantUtils.a().unregisterReceiver(this.mReceiver);
+      AssistantUtils.d().unregisterReceiver(this.mReceiver);
     }
     localObject = this.mHandler;
     if (localObject != null)
@@ -233,7 +233,7 @@ public class VoiceAssistantCoreImpl
     localObject = this.mVoiceAssistantStateMachine;
     if (localObject != null)
     {
-      ((VoiceAssistantStateMachine)localObject).j();
+      ((VoiceAssistantStateMachine)localObject).q();
       this.mVoiceAssistantStateMachine = null;
     }
   }
@@ -242,7 +242,7 @@ public class VoiceAssistantCoreImpl
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      localVoiceAssistantStateMachine.i();
+      localVoiceAssistantStateMachine.p();
     }
   }
   
@@ -250,7 +250,7 @@ public class VoiceAssistantCoreImpl
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      localVoiceAssistantStateMachine.b(paramInt, paramObject);
+      localVoiceAssistantStateMachine.c(paramInt, paramObject);
     }
   }
   
@@ -264,7 +264,7 @@ public class VoiceAssistantCoreImpl
   
   public void quitePanel(boolean paramBoolean)
   {
-    if (!WakeManager.a().b())
+    if (!WakeManager.a().h())
     {
       if (QLog.isColorLevel()) {
         QLog.d("VoiceAssistantServiceImpl", 2, "quitePanel not allow");
@@ -273,15 +273,15 @@ public class VoiceAssistantCoreImpl
     }
     Object localObject = this.mVoiceAssistantStateMachine;
     if (localObject != null) {
-      ((VoiceAssistantStateMachine)localObject).a(4, Boolean.valueOf(paramBoolean));
+      ((VoiceAssistantStateMachine)localObject).b(4, Boolean.valueOf(paramBoolean));
     }
     localObject = this.mVoicePresenter;
     if (localObject != null) {
-      ((VoiceMainPresenter)localObject).b();
+      ((VoiceMainPresenter)localObject).e();
     }
     localObject = this.mTTSPlayerManager;
     if (localObject != null) {
-      ((TTSPlayerManager)localObject).c();
+      ((TTSPlayerManager)localObject).d();
     }
   }
   
@@ -302,7 +302,7 @@ public class VoiceAssistantCoreImpl
     }
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      localVoiceAssistantStateMachine.h();
+      localVoiceAssistantStateMachine.o();
     }
   }
   
@@ -310,7 +310,7 @@ public class VoiceAssistantCoreImpl
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      localVoiceAssistantStateMachine.b(paramInt);
+      localVoiceAssistantStateMachine.d(paramInt);
     }
   }
   
@@ -363,7 +363,7 @@ public class VoiceAssistantCoreImpl
   {
     VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.mVoiceAssistantStateMachine;
     if (localVoiceAssistantStateMachine != null) {
-      localVoiceAssistantStateMachine.f();
+      localVoiceAssistantStateMachine.j();
     }
   }
   
@@ -371,13 +371,13 @@ public class VoiceAssistantCoreImpl
   {
     TTSPlayerManager localTTSPlayerManager = this.mTTSPlayerManager;
     if (localTTSPlayerManager != null) {
-      localTTSPlayerManager.a();
+      localTTSPlayerManager.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.api.impl.VoiceAssistantCoreImpl
  * JD-Core Version:    0.7.0.1
  */

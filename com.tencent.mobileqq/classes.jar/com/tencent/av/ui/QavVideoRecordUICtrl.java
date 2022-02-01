@@ -66,189 +66,684 @@ public class QavVideoRecordUICtrl
   implements Handler.Callback, View.OnClickListener, QavRecordButtonView.ShowStateChangeListener, QavRecordListener, SdkAudioFrameCallback
 {
   public static String a;
-  public static boolean a;
-  public static boolean b;
-  public int a;
-  public long a;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = null;
-  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = null;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VideoController jdField_a_of_type_ComTencentAvVideoController;
-  private DoubleVideoCtrlUI jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-  private VideoNetStateBar jdField_a_of_type_ComTencentAvUiVideoNetStateBar;
-  private QavRecordButtonView jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView;
-  public QavRecordDpc a;
-  private QavVideoAudioRecorder jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = null;
-  private File jdField_a_of_type_JavaIoFile = null;
-  private WeakReference<AVActivity> jdField_a_of_type_JavaLangRefWeakReference;
-  public int b;
-  public long b;
-  private Animator.AnimatorListener jdField_b_of_type_AndroidAnimationAnimator$AnimatorListener = null;
-  private ValueAnimator.AnimatorUpdateListener jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = null;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator = null;
-  private View jdField_b_of_type_AndroidViewView;
-  private RelativeLayout.LayoutParams jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private int jdField_c_of_type_Int = 0;
-  public long c;
-  private View jdField_c_of_type_AndroidViewView;
-  private RelativeLayout.LayoutParams jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_c_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_c_of_type_JavaLangString;
-  public boolean c;
-  private int jdField_d_of_type_Int = 1;
-  private long jdField_d_of_type_Long = 0L;
-  private RelativeLayout.LayoutParams jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_d_of_type_AndroidWidgetRelativeLayout;
-  private String jdField_d_of_type_JavaLangString = null;
-  public boolean d;
-  private int jdField_e_of_type_Int = 0;
-  private long jdField_e_of_type_Long = 0L;
-  private RelativeLayout.LayoutParams jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private RelativeLayout jdField_e_of_type_AndroidWidgetRelativeLayout;
-  private boolean jdField_e_of_type_Boolean = false;
-  private int jdField_f_of_type_Int = 0;
-  private long jdField_f_of_type_Long = 0L;
-  private boolean jdField_f_of_type_Boolean = true;
-  private volatile long jdField_g_of_type_Long;
-  private boolean jdField_g_of_type_Boolean = false;
-  private volatile long jdField_h_of_type_Long;
-  private volatile boolean jdField_h_of_type_Boolean = false;
-  private volatile boolean i = false;
+  public static boolean b = false;
+  public static boolean d = false;
+  private RelativeLayout.LayoutParams A;
+  private RelativeLayout.LayoutParams B;
+  private QavRecordButtonView C;
+  private TextView D;
+  private LinearLayout E;
+  private boolean F = true;
+  private int G = 0;
+  private long H = 0L;
+  private long I = 0L;
+  private long J = 0L;
+  private int K = 1;
+  private Handler L;
+  private String M;
+  private String N;
+  private volatile long O;
+  private volatile long P;
+  private QavVideoAudioRecorder Q = null;
+  private String R = null;
+  private File S = null;
+  private boolean T = false;
+  private int U = 0;
+  private VideoController V;
+  private DoubleVideoCtrlUI W;
+  private VideoNetStateBar X;
+  private int Y = 0;
+  private ValueAnimator Z = null;
+  private ValueAnimator.AnimatorUpdateListener aa = null;
+  private Animator.AnimatorListener ab = null;
+  private volatile boolean ac = false;
+  private ValueAnimator ad = null;
+  private ValueAnimator.AnimatorUpdateListener ae = null;
+  private Animator.AnimatorListener af = null;
+  private volatile boolean ag = false;
+  public long c = 60000L;
+  public int e = 0;
+  public long f = 0L;
+  public long g = 0L;
+  public boolean h = false;
+  public boolean i = false;
+  public QavRecordDpc j;
+  public int k = 0;
+  private boolean l = false;
+  private WeakReference<AVActivity> m;
+  private RelativeLayout n;
+  private RelativeLayout o;
+  private RelativeLayout p;
+  private RelativeLayout q;
+  private RelativeLayout r;
+  private TextView s;
+  private ImageButton t;
+  private View u;
+  private View v;
+  private View w;
+  private RelativeLayout.LayoutParams x;
+  private RelativeLayout.LayoutParams y;
+  private RelativeLayout.LayoutParams z;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir());
     localStringBuilder.append("/qav_record_test_switch.dat");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
+    a = localStringBuilder.toString();
   }
   
   public QavVideoRecordUICtrl(AVActivity paramAVActivity, RelativeLayout paramRelativeLayout1, VideoController paramVideoController, VideoAppInterface paramVideoAppInterface, RelativeLayout paramRelativeLayout2, VideoControlUI paramVideoControlUI)
   {
-    this.jdField_a_of_type_Long = 60000L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout2;
+    this.m = new WeakReference(paramAVActivity);
+    this.n = paramRelativeLayout1;
+    this.L = new Handler(this);
+    this.V = paramVideoController;
+    this.o = paramRelativeLayout2;
     if ((paramVideoControlUI instanceof DoubleVideoCtrlUI)) {
       paramAVActivity = (DoubleVideoCtrlUI)paramVideoControlUI;
     } else {
       paramAVActivity = null;
     }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI = paramAVActivity;
-    paramAVActivity = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
+    this.W = paramAVActivity;
+    paramAVActivity = this.W;
     if (paramAVActivity == null) {
       paramAVActivity = null;
     } else {
-      paramAVActivity = paramAVActivity.jdField_a_of_type_ComTencentAvUiVideoNetStateBar;
+      paramAVActivity = paramAVActivity.aE;
     }
-    this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar = paramAVActivity;
-    paramAVActivity = this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar;
+    this.X = paramAVActivity;
+    paramAVActivity = this.X;
     if (paramAVActivity != null) {
       paramAVActivity.e(true);
     }
     a(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc = QavRecordDpc.a();
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.h * 60 * 1000L);
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().k < 0L) {
-      this.jdField_a_of_type_ComTencentAvVideoController.a().k = this.jdField_a_of_type_Long;
+    this.j = QavRecordDpc.a();
+    this.c = (this.j.i * 60 * 1000L);
+    if (this.V.k().cC < 0L) {
+      this.V.k().cC = this.c;
     }
     try
     {
-      if (f()) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = new QavVideoAudioRecorder();
+      if (v()) {
+        this.Q = new QavVideoAudioRecorder();
       }
     }
     catch (OutOfMemoryError paramAVActivity)
     {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = null;
+      this.Q = null;
       paramRelativeLayout1 = new StringBuilder();
       paramRelativeLayout1.append("oom ");
       paramRelativeLayout1.append(paramAVActivity);
       QLog.e("QavVideoRecordUICtrl", 1, paramRelativeLayout1.toString(), paramAVActivity);
     }
-    paramAVActivity = DeviceInfoUtil.h();
+    paramAVActivity = DeviceInfoUtil.t();
     paramRelativeLayout1 = new StringBuilder();
     paramRelativeLayout1.append("QavVideoRecordUICtrl manufacture=");
     paramRelativeLayout1.append(paramAVActivity);
     QLog.i("QavVideoRecordUICtrl", 1, paramRelativeLayout1.toString());
     if (("OPPO".equalsIgnoreCase(paramAVActivity)) || ("vivo".equalsIgnoreCase(paramAVActivity))) {
-      this.jdField_e_of_type_Boolean = true;
+      this.l = true;
     }
   }
   
-  private int a(int paramInt)
+  public static boolean A()
   {
-    if (paramInt != 0) {
-      if (!this.jdField_c_of_type_Boolean)
+    EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.g();
+    int i1;
+    if ((localEffectFaceDeviceConfig != null) && (!localEffectFaceDeviceConfig.b())) {
+      i1 = 0;
+    } else {
+      i1 = 1;
+    }
+    if (i1 == 0) {
+      QLog.d("QavVideoRecordUICtrl", 1, "isInBlackList device not support");
+    }
+    return i1 ^ 0x1;
+  }
+  
+  private long G()
+  {
+    return Math.max(0L, System.currentTimeMillis() - this.J);
+  }
+  
+  private void H()
+  {
+    this.K = 1;
+    this.L.removeMessages(1);
+    a(false);
+    c(false);
+    this.p.setVisibility(8);
+  }
+  
+  private void I()
+  {
+    if (this.W != null)
+    {
+      if (((AVActivity)this.m.get()).L == null) {
+        return;
+      }
+      if (d())
       {
-        if (this.jdField_d_of_type_Boolean) {
-          return 0;
+        if (i())
+        {
+          if (p())
+          {
+            this.W.a(true);
+            return;
+          }
+          this.W.a(false);
+          return;
         }
-        DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-        if ((localDoubleVideoCtrlUI == null) || (!localDoubleVideoCtrlUI.i())) {}
+        this.W.a(true);
+      }
+    }
+  }
+  
+  private void J()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "doExpandAnim");
+    }
+    this.ac = true;
+    AIOUtils.b(7.5F, ((AVActivity)this.m.get()).getResources());
+    AIOUtils.b(64.0F, ((AVActivity)this.m.get()).getResources());
+    i(2131298612);
+    i(2131298609);
+    i(2131298609);
+    i(2131298611);
+    i(2131298616);
+    if (this.aa == null) {
+      this.aa = new QavVideoRecordUICtrl.5(this);
+    }
+    if (this.ab == null) {
+      this.ab = new QavVideoRecordUICtrl.6(this);
+    }
+    if (this.Z == null)
+    {
+      this.Z = ValueAnimator.ofInt(new int[] { 0, 260 });
+      this.Z.setDuration(260L);
+    }
+    this.Z.removeAllListeners();
+    this.Z.removeAllUpdateListeners();
+    this.Z.addUpdateListener(this.aa);
+    this.Z.addListener(this.ab);
+    if (this.Z.isRunning()) {
+      this.Z.cancel();
+    }
+    this.Z.start();
+  }
+  
+  /* Error */
+  private void K()
+  {
+    // Byte code:
+    //   0: invokestatic 344	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +56 -> 59
+    //   6: new 100	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   13: astore_1
+    //   14: aload_1
+    //   15: ldc_w 411
+    //   18: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_1
+    //   23: aload_0
+    //   24: getfield 187	com/tencent/av/ui/QavVideoRecordUICtrl:ac	Z
+    //   27: invokevirtual 414	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload_1
+    //   32: ldc_w 416
+    //   35: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload_1
+    //   40: aload_0
+    //   41: getfield 195	com/tencent/av/ui/QavVideoRecordUICtrl:ag	Z
+    //   44: invokevirtual 414	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: ldc_w 263
+    //   51: iconst_1
+    //   52: aload_1
+    //   53: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokestatic 277	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   59: aload_0
+    //   60: getfield 187	com/tencent/av/ui/QavVideoRecordUICtrl:ac	Z
+    //   63: ifeq +112 -> 175
+    //   66: aload_0
+    //   67: getfield 181	com/tencent/av/ui/QavVideoRecordUICtrl:Z	Landroid/animation/ValueAnimator;
+    //   70: astore_1
+    //   71: aload_1
+    //   72: ifnull +103 -> 175
+    //   75: aload_1
+    //   76: invokevirtual 401	android/animation/ValueAnimator:isRunning	()Z
+    //   79: ifeq +96 -> 175
+    //   82: aload_0
+    //   83: getfield 181	com/tencent/av/ui/QavVideoRecordUICtrl:Z	Landroid/animation/ValueAnimator;
+    //   86: invokevirtual 390	android/animation/ValueAnimator:removeAllUpdateListeners	()V
+    //   89: aload_0
+    //   90: getfield 181	com/tencent/av/ui/QavVideoRecordUICtrl:Z	Landroid/animation/ValueAnimator;
+    //   93: invokevirtual 387	android/animation/ValueAnimator:removeAllListeners	()V
+    //   96: aload_0
+    //   97: getfield 181	com/tencent/av/ui/QavVideoRecordUICtrl:Z	Landroid/animation/ValueAnimator;
+    //   100: invokevirtual 404	android/animation/ValueAnimator:cancel	()V
+    //   103: aload_0
+    //   104: iconst_0
+    //   105: putfield 187	com/tencent/av/ui/QavVideoRecordUICtrl:ac	Z
+    //   108: aload_0
+    //   109: iconst_3
+    //   110: iconst_0
+    //   111: invokevirtual 419	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
+    //   114: return
+    //   115: astore_1
+    //   116: goto +46 -> 162
+    //   119: astore_1
+    //   120: new 100	java/lang/StringBuilder
+    //   123: dup
+    //   124: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   127: astore_2
+    //   128: aload_2
+    //   129: ldc_w 421
+    //   132: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: pop
+    //   136: aload_2
+    //   137: aload_1
+    //   138: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: ldc_w 263
+    //   145: iconst_1
+    //   146: aload_2
+    //   147: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: aload_1
+    //   151: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   154: aload_0
+    //   155: iconst_0
+    //   156: putfield 187	com/tencent/av/ui/QavVideoRecordUICtrl:ac	Z
+    //   159: goto -56 -> 103
+    //   162: aload_0
+    //   163: iconst_0
+    //   164: putfield 187	com/tencent/av/ui/QavVideoRecordUICtrl:ac	Z
+    //   167: aload_0
+    //   168: iconst_3
+    //   169: iconst_0
+    //   170: invokevirtual 419	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
+    //   173: aload_1
+    //   174: athrow
+    //   175: aload_0
+    //   176: getfield 195	com/tencent/av/ui/QavVideoRecordUICtrl:ag	Z
+    //   179: ifeq +107 -> 286
+    //   182: aload_0
+    //   183: getfield 189	com/tencent/av/ui/QavVideoRecordUICtrl:ad	Landroid/animation/ValueAnimator;
+    //   186: astore_1
+    //   187: aload_1
+    //   188: ifnull +98 -> 286
+    //   191: aload_1
+    //   192: invokevirtual 401	android/animation/ValueAnimator:isRunning	()Z
+    //   195: ifeq +91 -> 286
+    //   198: aload_0
+    //   199: getfield 189	com/tencent/av/ui/QavVideoRecordUICtrl:ad	Landroid/animation/ValueAnimator;
+    //   202: invokevirtual 390	android/animation/ValueAnimator:removeAllUpdateListeners	()V
+    //   205: aload_0
+    //   206: getfield 189	com/tencent/av/ui/QavVideoRecordUICtrl:ad	Landroid/animation/ValueAnimator;
+    //   209: invokevirtual 387	android/animation/ValueAnimator:removeAllListeners	()V
+    //   212: aload_0
+    //   213: getfield 189	com/tencent/av/ui/QavVideoRecordUICtrl:ad	Landroid/animation/ValueAnimator;
+    //   216: invokevirtual 404	android/animation/ValueAnimator:cancel	()V
+    //   219: aload_0
+    //   220: iconst_0
+    //   221: putfield 195	com/tencent/av/ui/QavVideoRecordUICtrl:ag	Z
+    //   224: aload_0
+    //   225: iconst_3
+    //   226: iconst_0
+    //   227: invokevirtual 419	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
+    //   230: return
+    //   231: astore_1
+    //   232: goto +41 -> 273
+    //   235: astore_1
+    //   236: new 100	java/lang/StringBuilder
+    //   239: dup
+    //   240: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   243: astore_2
+    //   244: aload_2
+    //   245: ldc_w 421
+    //   248: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   251: pop
+    //   252: aload_2
+    //   253: aload_1
+    //   254: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   257: pop
+    //   258: ldc_w 263
+    //   261: iconst_1
+    //   262: aload_2
+    //   263: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   266: aload_1
+    //   267: invokestatic 268	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   270: goto -51 -> 219
+    //   273: aload_0
+    //   274: iconst_0
+    //   275: putfield 195	com/tencent/av/ui/QavVideoRecordUICtrl:ag	Z
+    //   278: aload_0
+    //   279: iconst_3
+    //   280: iconst_0
+    //   281: invokevirtual 419	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
+    //   284: aload_1
+    //   285: athrow
+    //   286: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	287	0	this	QavVideoRecordUICtrl
+    //   13	63	1	localObject1	Object
+    //   115	1	1	localObject2	Object
+    //   119	55	1	localException1	Exception
+    //   186	6	1	localValueAnimator	ValueAnimator
+    //   231	1	1	localObject3	Object
+    //   235	50	1	localException2	Exception
+    //   127	136	2	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   82	103	115	finally
+    //   120	159	115	finally
+    //   82	103	119	java/lang/Exception
+    //   198	219	231	finally
+    //   236	270	231	finally
+    //   198	219	235	java/lang/Exception
+  }
+  
+  private void L()
+  {
+    if (((AVActivity)this.m.get()).H == null) {
+      return;
+    }
+    this.Y = 0;
+    QLog.d("QavVideoRecordUICtrl", 1, "onRecordBegin");
+    this.V.k().cB = true;
+    a(1, true);
+    E();
+    this.C.setProgress(0L, this.c);
+    this.D.setText(a(0L));
+    this.E.setVisibility(0);
+    ((AVActivity)this.m.get()).H.a(new Object[] { Integer.valueOf(163) });
+  }
+  
+  private void M()
+  {
+    AVActivity localAVActivity = (AVActivity)this.m.get();
+    if (localAVActivity == null) {
+      return;
+    }
+    if ((localAVActivity.H != null) && (this.V != null))
+    {
+      QavRecordReporter.a("0X8008AAE");
+      if (this.V.k().af)
+      {
+        localAVActivity.X.c(2);
+        QLog.d("QavVideoRecordUICtrl", 1, "start record, child lock");
+        return;
+      }
+      if (this.V.k().cB)
+      {
+        e();
+        long l1 = (System.currentTimeMillis() - this.f) / 1000L;
+        ReportController.b(null, "CliOper", "", "", "0X800863B", "0X800863B", 0, 0, String.valueOf(l1), "", "", "");
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(localAVActivity.H.getCurrentAccountUin(), "av_record_click_end", true, l1, 0L, null, "", false);
+        return;
+      }
+      this.V.k().cL.clear();
+      boolean bool1 = v();
+      int i3 = 0;
+      int i2;
+      Object localObject;
+      if (!bool1)
+      {
+        if (localAVActivity.H != null) {
+          TipsUtil.a(localAVActivity.H, 1022, 2131893509);
+        }
+        QLog.d("QavVideoRecordUICtrl", 1, "start record, api not support");
+        i2 = i3;
       }
       else
       {
-        return 0;
+        int i1;
+        if (!this.V.k().cA)
+        {
+          QLog.d("QavVideoRecordUICtrl", 1, "start record, friend not support");
+          localObject = this.V;
+          if (((VideoController)localObject).g(((VideoController)localObject).k().s) == 5)
+          {
+            QavRecordReporter.a("0X8008AB6");
+            i1 = 2131893517;
+          }
+          else
+          {
+            QavRecordReporter.a("0X8008AB5");
+            i1 = 2131893516;
+          }
+          i2 = i3;
+          if (localAVActivity.H != null)
+          {
+            TipsUtil.a(localAVActivity.H, 1022, i1);
+            i2 = i3;
+          }
+        }
+        else if (!y())
+        {
+          if (localAVActivity.H != null) {
+            TipsUtil.a(localAVActivity.H, 1022, 2131893522);
+          }
+          QLog.d("QavVideoRecordUICtrl", 1, "start record, isPerformanceSupport==false");
+          QavRecordReporter.a("0X8008AB4");
+          i2 = i3;
+        }
+        else if ((this.V.k().cD) && (this.V.k().cz < 735))
+        {
+          QLog.d("QavVideoRecordUICtrl", 1, "start record, friend's old version not support record in same time");
+          TipsUtil.a(localAVActivity.H, 1022, 2131893520);
+          i2 = i3;
+        }
+        else if (!u())
+        {
+          QLog.d("QavVideoRecordUICtrl", 1, "start record, last encode not stop");
+          i2 = i3;
+          if (localAVActivity.H != null)
+          {
+            TipsUtil.a(localAVActivity.H, 1022, 2131893518);
+            i2 = i3;
+          }
+        }
+        else
+        {
+          if (localAVActivity.H.d(3))
+          {
+            localObject = (EffectFaceManager)localAVActivity.H.c(3);
+            FaceItem localFaceItem = (FaceItem)((EffectFaceManager)localObject).c();
+            if (localFaceItem != null)
+            {
+              bool1 = ((EffectFaceManager)localObject).k();
+              boolean bool2 = localFaceItem.isSameType("pendant");
+              boolean bool3 = localFaceItem.isSameType("face");
+              boolean bool4 = localFaceItem.isSameType("voicesticker");
+              if ((bool1) && ((bool3) || (bool4))) {
+                i1 = 1;
+              } else {
+                i1 = 0;
+              }
+              if (i1 != 0)
+              {
+                localObject = localAVActivity.H;
+                if (bool4) {
+                  i1 = 2131893542;
+                } else {
+                  i1 = 2131893541;
+                }
+                TipsUtil.a((VideoAppInterface)localObject, 1022, i1);
+                QLog.d("QavVideoRecordUICtrl", 1, "start record, isDoubleScreen");
+                if (bool4)
+                {
+                  QavRecordReporter.a("0X8009852");
+                  i2 = i3;
+                  break label958;
+                }
+                QavRecordReporter.a("0X8008AC3");
+                i2 = i3;
+                break label958;
+              }
+              if (bool2) {
+                QavRecordReporter.a("0X8008ABE");
+              }
+            }
+          }
+          if (localAVActivity.H.d(0))
+          {
+            localObject = (EffectZimuManager)localAVActivity.H.c(0);
+            if (localObject != null)
+            {
+              localObject = (ZimuItem)((EffectZimuManager)localObject).c();
+              if ((localObject != null) && ((TextUtils.isEmpty(((ZimuItem)localObject).getId()) ^ true)))
+              {
+                TipsUtil.a(localAVActivity.H, 1022, 2131893543);
+                QLog.d("QavVideoRecordUICtrl", 1, "start record, usingZimu");
+                QavRecordReporter.a("0X8008AD2");
+                i2 = i3;
+                break label958;
+              }
+            }
+          }
+          if ((localAVActivity.ai != null) && (localAVActivity.ai.b()))
+          {
+            TipsUtil.a(localAVActivity.H, 1022, 2131893540);
+            i2 = i3;
+          }
+          else if (FileSwapHelper.a() < 31457280L)
+          {
+            if (localAVActivity.H != null) {
+              TipsUtil.a(localAVActivity.H, 1022, 2131893534);
+            }
+            QLog.d("QavVideoRecordUICtrl", 1, "start record, STORAGE_LEFT_MIN_SIZE not enough");
+            i2 = i3;
+          }
+          else
+          {
+            if (this.V.k().cr != 0)
+            {
+              this.V.k().cL.add(Integer.valueOf(0));
+              QavRecordReporter.a("0X8008AC1");
+            }
+            if (localAVActivity.H.d(2))
+            {
+              localObject = (EffectPendantTools)localAVActivity.H.c(2);
+              if ((localObject != null) && (((EffectPendantTools)localObject).c() != null))
+              {
+                this.V.k().cL.add(Integer.valueOf(6));
+                QavRecordReporter.a("0X8008ABC");
+              }
+            }
+            i2 = 1;
+          }
+        }
       }
-    }
-    return paramInt;
-  }
-  
-  private void a(long paramLong)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onRecordEnd time=");
-    localStringBuilder.append(paramLong);
-    QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-    if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      label958:
+      if (i2 != 0)
+      {
+        this.V.k().cJ = true;
+        this.V.k().cK = d();
+        b();
+        if ((z()) && (localAVActivity.H.d(3)))
+        {
+          localObject = (EffectFaceManager)localAVActivity.H.c(3);
+          if (((FaceItem)((EffectFaceManager)localObject).c() != null) && (((EffectFaceManager)localObject).k()) && (localAVActivity.H != null)) {
+            TipsUtil.a(localAVActivity.H, 1022, 2131893519);
+          }
+        }
+        QavRecordReporter.a("0X800863A");
+        if (this.V.k().cD) {
+          QavRecordReporter.a("0X8008ACC");
+        }
+        if (d()) {
+          QavRecordReporter.a("0X8008AB9");
+        } else {
+          QavRecordReporter.a("0X8008AB8");
+        }
+        if (this.V.k().cL.size() == 0) {
+          QavRecordReporter.a("0X8008ABB");
+        }
+      }
+      else
+      {
+        QavRecordReporter.a("0X8008AAF");
+      }
       return;
     }
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvVideoController.a().az = false;
-    if ((paramLong <= 1000L) && (!((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).i))
-    {
-      if (paramLong >= 0L)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QavVideoRecordUICtrl.7(this), 1000L);
-        TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131695780);
-        QavRecordReporter.a("0X8008AB0");
-      }
-      else if (paramLong < 0L)
-      {
-        a(3, true);
-        TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131695755);
-        this.jdField_a_of_type_ComTencentAvVideoController.C();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QavVideoRecordUICtrl", 2, "record activity.mApp == null  || mVideoController == null");
     }
-    else
-    {
-      a(3, true);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().ag = 0;
+  }
+  
+  private void N()
+  {
+    DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.W;
+    if (localDoubleVideoCtrlUI == null) {
+      return;
     }
-    n();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
+    if ((this.u != null) && (this.v != null) && (this.w != null))
+    {
+      if (localDoubleVideoCtrlUI.ab())
+      {
+        this.v.setVisibility(8);
+        this.u.setVisibility(8);
+        this.w.setVisibility(8);
+        return;
+      }
+      if (p())
+      {
+        this.v.setVisibility(8);
+        this.w.setVisibility(8);
+        if ((this.C.getShowState() != 3) && (!i()))
+        {
+          this.u.setVisibility(8);
+          return;
+        }
+        this.u.setVisibility(0);
+        return;
+      }
+      this.u.setVisibility(8);
+      if (this.C.getShowState() == 3) {
+        this.w.setVisibility(0);
+      } else {
+        this.w.setVisibility(8);
+      }
+      if (i())
+      {
+        this.v.setVisibility(0);
+        return;
+      }
+      this.v.setVisibility(8);
+    }
+  }
+  
+  private void O()
+  {
+    VideoNetStateBar localVideoNetStateBar = this.X;
+    if (localVideoNetStateBar == null) {
+      return;
+    }
+    localVideoNetStateBar.e(this.G);
+    int i1 = this.G;
+    if ((i1 != 90) && (i1 != 270) && (i()))
+    {
+      this.X.d(l() + i(2131298571));
+      return;
+    }
+    this.X.d(i(2131298571));
+  }
+  
+  private void P()
+  {
+    this.ae = null;
+    this.ad = null;
+    this.af = null;
+    this.Z = null;
+    this.aa = null;
+    this.ab = null;
   }
   
   public static void a(VideoController paramVideoController)
@@ -261,20 +756,20 @@ public class QavVideoRecordUICtrl
       localStringBuilder.append(paramVideoController);
       QLog.d("QavVideoRecordUICtrl", 2, localStringBuilder.toString());
     }
-    if ((f()) && (!k()))
+    if ((v()) && (!A()))
     {
       if (paramVideoController != null)
       {
-        paramVideoController.a(8, "SUPPORT_TRUE");
-        paramVideoController.a(8, "SUPPORT_TRUE");
+        paramVideoController.e(8, "SUPPORT_TRUE");
+        paramVideoController.e(8, "SUPPORT_TRUE");
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("SUPPORT_TRUE_7.3.5#");
-        localStringBuilder.append(QavRecordDpc.a().h);
-        paramVideoController.a(8, localStringBuilder.toString());
+        localStringBuilder.append(QavRecordDpc.a().i);
+        paramVideoController.e(8, localStringBuilder.toString());
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("SUPPORT_TRUE_7.3.5#");
-        localStringBuilder.append(QavRecordDpc.a().h);
-        paramVideoController.a(8, localStringBuilder.toString());
+        localStringBuilder.append(QavRecordDpc.a().i);
+        paramVideoController.e(8, localStringBuilder.toString());
       }
       return;
     }
@@ -283,71 +778,143 @@ public class QavVideoRecordUICtrl
   
   private void a(VideoAppInterface paramVideoAppInterface)
   {
-    LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).inflate(2131559783, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131380734));
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376298));
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376297));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378549));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376288));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376285);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376284);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376283);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams());
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams());
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetRelativeLayout.getLayoutParams());
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_e_of_type_AndroidWidgetRelativeLayout.getLayoutParams());
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout$LayoutParams = ((RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams());
+    LayoutInflater.from((Context)this.m.get()).inflate(2131625825, this.n);
+    this.p = ((RelativeLayout)this.n.findViewById(2131449701));
+    this.q = ((RelativeLayout)this.n.findViewById(2131444507));
+    this.r = ((RelativeLayout)this.n.findViewById(2131444506));
+    this.s = ((TextView)this.n.findViewById(2131447173));
+    this.t = ((ImageButton)this.n.findViewById(2131444497));
+    this.v = this.n.findViewById(2131444494);
+    this.u = this.n.findViewById(2131444493);
+    this.w = this.n.findViewById(2131444492);
+    this.x = ((RelativeLayout.LayoutParams)this.s.getLayoutParams());
+    this.y = ((RelativeLayout.LayoutParams)this.t.getLayoutParams());
+    this.t.setOnClickListener(this);
+    this.z = ((RelativeLayout.LayoutParams)this.q.getLayoutParams());
+    this.A = ((RelativeLayout.LayoutParams)this.r.getLayoutParams());
+    this.B = ((RelativeLayout.LayoutParams)this.p.getLayoutParams());
     if (AudioHelper.a(0) == 1)
     {
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(1602735851);
-      this.jdField_d_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(2142109487);
+      this.p.setBackgroundColor(1602735851);
+      this.q.setBackgroundColor(2142109487);
     }
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setWillNotDraw(false);
-    this.jdField_a_of_type_Int = AIOUtils.b(51.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    this.jdField_b_of_type_JavaLangString = ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131695768);
-    this.jdField_c_of_type_JavaLangString = ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131695764);
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView = ((QavRecordButtonView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131376277));
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131376290));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131376289));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.p.setWillNotDraw(false);
+    this.e = AIOUtils.b(51.0F, ((AVActivity)this.m.get()).getResources());
+    this.M = ((AVActivity)this.m.get()).getString(2131893527);
+    this.N = ((AVActivity)this.m.get()).getString(2131893523);
+    this.C = ((QavRecordButtonView)((AVActivity)this.m.get()).findViewById(2131444486));
+    this.C.setOnClickListener(this);
+    this.C.setListener(this);
+    this.E = ((LinearLayout)((AVActivity)this.m.get()).findViewById(2131444499));
+    this.D = ((TextView)((AVActivity)this.m.get()).findViewById(2131444498));
+    this.E.setVisibility(8);
     if (AudioHelper.a(0) == 1)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(-273627938);
-      this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundColor(-65281);
+      this.E.setBackgroundColor(-273627938);
+      this.D.setBackgroundColor(-65281);
     }
-  }
-  
-  private int b(int paramInt)
-  {
-    return ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDimensionPixelSize(paramInt);
   }
   
   private void b(long paramLong)
   {
     StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecordEnd time=");
+    localStringBuilder.append(paramLong);
+    QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
+    if (((AVActivity)this.m.get()).H == null) {
+      return;
+    }
+    this.Y = 0;
+    this.V.k().cB = false;
+    if ((paramLong <= 1000L) && (!((AVActivity)this.m.get()).ae))
+    {
+      if (paramLong >= 0L)
+      {
+        this.L.postDelayed(new QavVideoRecordUICtrl.7(this), 1000L);
+        TipsUtil.a(((AVActivity)this.m.get()).H, 1023, 2131893539);
+        QavRecordReporter.a("0X8008AB0");
+      }
+      else if (paramLong < 0L)
+      {
+        a(3, true);
+        TipsUtil.a(((AVActivity)this.m.get()).H, 1023, 2131893514);
+        this.V.au();
+      }
+    }
+    else
+    {
+      a(3, true);
+      this.V.k().cE = 0;
+    }
+    E();
+    this.E.setVisibility(8);
+    ((AVActivity)this.m.get()).H.a(new Object[] { Integer.valueOf(163) });
+  }
+  
+  private void c(long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onForceStop time=");
     localStringBuilder.append(paramLong);
     QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-    if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+    if (((AVActivity)this.m.get()).H == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a().az = false;
-    TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131695756);
-    this.jdField_a_of_type_ComTencentAvVideoController.C();
-    n();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
+    this.V.k().cB = false;
+    TipsUtil.a(((AVActivity)this.m.get()).H, 1023, 2131893515);
+    this.V.au();
+    E();
+    this.E.setVisibility(8);
+    ((AVActivity)this.m.get()).H.a(new Object[] { Integer.valueOf(163) });
   }
   
-  private long c()
+  private int h(int paramInt)
   {
-    return Math.max(0L, System.currentTimeMillis() - this.jdField_f_of_type_Long);
+    if (paramInt != 0) {
+      if (!this.h)
+      {
+        if (this.i) {
+          return 0;
+        }
+        DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.W;
+        if ((localDoubleVideoCtrlUI == null) || (!localDoubleVideoCtrlUI.ab())) {}
+      }
+      else
+      {
+        return 0;
+      }
+    }
+    return paramInt;
   }
   
-  public static boolean f()
+  private int i(int paramInt)
+  {
+    return ((AVActivity)this.m.get()).getResources().getDimensionPixelSize(paramInt);
+  }
+  
+  private void j(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        return;
+      }
+      if (!((AVActivity)this.m.get()).ae) {
+        TipsUtil.a(((AVActivity)this.m.get()).H, 1023, 2131893514);
+      }
+    }
+    else if (!((AVActivity)this.m.get()).ae)
+    {
+      if (this.l) {
+        paramInt = 2131893529;
+      } else {
+        paramInt = 2131893528;
+      }
+      QQToast.makeText((Context)this.m.get(), 2, ((AVActivity)this.m.get()).getResources().getString(paramInt), 0).show();
+    }
+  }
+  
+  public static boolean v()
   {
     boolean bool;
     if (Build.VERSION.SDK_INT >= 18) {
@@ -365,632 +932,117 @@ public class QavVideoRecordUICtrl
     return bool;
   }
   
-  private void h(int paramInt)
+  public void B()
   {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1) {
-        return;
-      }
-      if (!((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).i) {
-        TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131695755);
-      }
-    }
-    else if (!((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).i)
-    {
-      if (this.jdField_e_of_type_Boolean) {
-        paramInt = 2131695770;
-      } else {
-        paramInt = 2131695769;
-      }
-      QQToast.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getString(paramInt), 0).a();
-    }
-  }
-  
-  public static boolean k()
-  {
-    EffectFaceDeviceConfig localEffectFaceDeviceConfig = EffectFaceDeviceConfig.a();
-    int j;
-    if ((localEffectFaceDeviceConfig != null) && (!localEffectFaceDeviceConfig.b())) {
-      j = 0;
-    } else {
-      j = 1;
-    }
-    if (j == 0) {
-      QLog.d("QavVideoRecordUICtrl", 1, "isInBlackList device not support");
-    }
-    return j ^ 0x1;
-  }
-  
-  private void p()
-  {
-    this.jdField_d_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    a(false);
-    c(false);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-  }
-  
-  private void q()
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI != null)
-    {
-      if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvUiVideoLayerUI == null) {
-        return;
-      }
-      if (b())
-      {
-        if (c())
-        {
-          if (d())
-          {
-            this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(true);
-            return;
-          }
-          this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(false);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(true);
-      }
-    }
-  }
-  
-  private void r()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "doExpandAnim");
-    }
-    this.jdField_h_of_type_Boolean = true;
-    AIOUtils.b(7.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    AIOUtils.b(64.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-    b(2131297942);
-    b(2131297939);
-    b(2131297939);
-    b(2131297941);
-    b(2131297946);
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener == null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new QavVideoRecordUICtrl.5(this);
-    }
-    if (this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener == null) {
-      this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new QavVideoRecordUICtrl.6(this);
-    }
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
-    {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 260 });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(260L);
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllListeners();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  /* Error */
-  private void s()
-  {
-    // Byte code:
-    //   0: invokestatic 340	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +55 -> 58
-    //   6: new 53	java/lang/StringBuilder
-    //   9: dup
-    //   10: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ldc_w 598
-    //   18: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: pop
-    //   22: aload_1
-    //   23: aload_0
-    //   24: getfield 140	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_h_of_type_Boolean	Z
-    //   27: invokevirtual 502	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   30: pop
-    //   31: aload_1
-    //   32: ldc_w 600
-    //   35: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: pop
-    //   39: aload_1
-    //   40: aload_0
-    //   41: getfield 148	com/tencent/av/ui/QavVideoRecordUICtrl:i	Z
-    //   44: invokevirtual 502	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   47: pop
-    //   48: ldc 214
-    //   50: iconst_1
-    //   51: aload_1
-    //   52: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokestatic 228	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   58: aload_0
-    //   59: getfield 140	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_h_of_type_Boolean	Z
-    //   62: ifeq +111 -> 173
-    //   65: aload_0
-    //   66: getfield 134	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_a_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   69: astore_1
-    //   70: aload_1
-    //   71: ifnull +102 -> 173
-    //   74: aload_1
-    //   75: invokevirtual 587	android/animation/ValueAnimator:isRunning	()Z
-    //   78: ifeq +95 -> 173
-    //   81: aload_0
-    //   82: getfield 134	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_a_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   85: invokevirtual 576	android/animation/ValueAnimator:removeAllUpdateListeners	()V
-    //   88: aload_0
-    //   89: getfield 134	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_a_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   92: invokevirtual 573	android/animation/ValueAnimator:removeAllListeners	()V
-    //   95: aload_0
-    //   96: getfield 134	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_a_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   99: invokevirtual 590	android/animation/ValueAnimator:cancel	()V
-    //   102: aload_0
-    //   103: iconst_0
-    //   104: putfield 140	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_h_of_type_Boolean	Z
-    //   107: aload_0
-    //   108: iconst_3
-    //   109: iconst_0
-    //   110: invokevirtual 602	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
-    //   113: return
-    //   114: astore_1
-    //   115: goto +45 -> 160
-    //   118: astore_1
-    //   119: new 53	java/lang/StringBuilder
-    //   122: dup
-    //   123: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   126: astore_2
-    //   127: aload_2
-    //   128: ldc_w 604
-    //   131: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: pop
-    //   135: aload_2
-    //   136: aload_1
-    //   137: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   140: pop
-    //   141: ldc 214
-    //   143: iconst_1
-    //   144: aload_2
-    //   145: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: aload_1
-    //   149: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   152: aload_0
-    //   153: iconst_0
-    //   154: putfield 140	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_h_of_type_Boolean	Z
-    //   157: goto -55 -> 102
-    //   160: aload_0
-    //   161: iconst_0
-    //   162: putfield 140	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_h_of_type_Boolean	Z
-    //   165: aload_0
-    //   166: iconst_3
-    //   167: iconst_0
-    //   168: invokevirtual 602	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
-    //   171: aload_1
-    //   172: athrow
-    //   173: aload_0
-    //   174: getfield 148	com/tencent/av/ui/QavVideoRecordUICtrl:i	Z
-    //   177: ifeq +106 -> 283
-    //   180: aload_0
-    //   181: getfield 142	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_b_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   184: astore_1
-    //   185: aload_1
-    //   186: ifnull +97 -> 283
-    //   189: aload_1
-    //   190: invokevirtual 587	android/animation/ValueAnimator:isRunning	()Z
-    //   193: ifeq +90 -> 283
-    //   196: aload_0
-    //   197: getfield 142	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_b_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   200: invokevirtual 576	android/animation/ValueAnimator:removeAllUpdateListeners	()V
-    //   203: aload_0
-    //   204: getfield 142	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_b_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   207: invokevirtual 573	android/animation/ValueAnimator:removeAllListeners	()V
-    //   210: aload_0
-    //   211: getfield 142	com/tencent/av/ui/QavVideoRecordUICtrl:jdField_b_of_type_AndroidAnimationValueAnimator	Landroid/animation/ValueAnimator;
-    //   214: invokevirtual 590	android/animation/ValueAnimator:cancel	()V
-    //   217: aload_0
-    //   218: iconst_0
-    //   219: putfield 148	com/tencent/av/ui/QavVideoRecordUICtrl:i	Z
-    //   222: aload_0
-    //   223: iconst_3
-    //   224: iconst_0
-    //   225: invokevirtual 602	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
-    //   228: return
-    //   229: astore_1
-    //   230: goto +40 -> 270
-    //   233: astore_1
-    //   234: new 53	java/lang/StringBuilder
-    //   237: dup
-    //   238: invokespecial 56	java/lang/StringBuilder:<init>	()V
-    //   241: astore_2
-    //   242: aload_2
-    //   243: ldc_w 604
-    //   246: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: pop
-    //   250: aload_2
-    //   251: aload_1
-    //   252: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   255: pop
-    //   256: ldc 214
-    //   258: iconst_1
-    //   259: aload_2
-    //   260: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   263: aload_1
-    //   264: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   267: goto -50 -> 217
-    //   270: aload_0
-    //   271: iconst_0
-    //   272: putfield 148	com/tencent/av/ui/QavVideoRecordUICtrl:i	Z
-    //   275: aload_0
-    //   276: iconst_3
-    //   277: iconst_0
-    //   278: invokevirtual 602	com/tencent/av/ui/QavVideoRecordUICtrl:b	(IZ)V
-    //   281: aload_1
-    //   282: athrow
-    //   283: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	284	0	this	QavVideoRecordUICtrl
-    //   13	62	1	localObject1	Object
-    //   114	1	1	localObject2	Object
-    //   118	54	1	localException1	Exception
-    //   184	6	1	localValueAnimator	ValueAnimator
-    //   229	1	1	localObject3	Object
-    //   233	49	1	localException2	Exception
-    //   126	134	2	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   81	102	114	finally
-    //   119	157	114	finally
-    //   81	102	118	java/lang/Exception
-    //   196	217	229	finally
-    //   234	267	229	finally
-    //   196	217	233	java/lang/Exception
-  }
-  
-  private void t()
-  {
-    if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-      return;
-    }
-    this.jdField_f_of_type_Int = 0;
-    QLog.d("QavVideoRecordUICtrl", 1, "onRecordBegin");
-    this.jdField_a_of_type_ComTencentAvVideoController.a().az = true;
-    a(1, true);
-    n();
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setProgress(0L, this.jdField_a_of_type_Long);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(a(0L));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
-  }
-  
-  private void u()
-  {
-    AVActivity localAVActivity = (AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localAVActivity == null) {
-      return;
-    }
-    if ((localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_ComTencentAvVideoController != null))
-    {
-      QavRecordReporter.a("0X8008AAE");
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().w)
-      {
-        localAVActivity.jdField_a_of_type_ComTencentAvUiControlUIObserver.c(2);
-        QLog.d("QavVideoRecordUICtrl", 1, "start record, child lock");
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().az)
-      {
-        c();
-        long l = (System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L;
-        ReportController.b(null, "CliOper", "", "", "0X800863B", "0X800863B", 0, 0, String.valueOf(l), "", "", "");
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "av_record_click_end", true, l, 0L, null, "", false);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAvVideoController.a().a.clear();
-      boolean bool1 = f();
-      int m = 0;
-      int k;
-      Object localObject;
-      if (!bool1)
-      {
-        if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-          TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695750);
-        }
-        QLog.d("QavVideoRecordUICtrl", 1, "start record, api not support");
-        k = m;
-      }
-      else
-      {
-        int j;
-        if (!this.jdField_a_of_type_ComTencentAvVideoController.a().ay)
-        {
-          QLog.d("QavVideoRecordUICtrl", 1, "start record, friend not support");
-          localObject = this.jdField_a_of_type_ComTencentAvVideoController;
-          if (((VideoController)localObject).b(((VideoController)localObject).a().jdField_c_of_type_JavaLangString) == 5)
-          {
-            QavRecordReporter.a("0X8008AB6");
-            j = 2131695758;
-          }
-          else
-          {
-            QavRecordReporter.a("0X8008AB5");
-            j = 2131695757;
-          }
-          k = m;
-          if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-          {
-            TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, j);
-            k = m;
-          }
-        }
-        else if (!i())
-        {
-          if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-            TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695763);
-          }
-          QLog.d("QavVideoRecordUICtrl", 1, "start record, isPerformanceSupport==false");
-          QavRecordReporter.a("0X8008AB4");
-          k = m;
-        }
-        else if ((this.jdField_a_of_type_ComTencentAvVideoController.a().aA) && (this.jdField_a_of_type_ComTencentAvVideoController.a().af < 735))
-        {
-          QLog.d("QavVideoRecordUICtrl", 1, "start record, friend's old version not support record in same time");
-          TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695761);
-          k = m;
-        }
-        else if (!e())
-        {
-          QLog.d("QavVideoRecordUICtrl", 1, "start record, last encode not stop");
-          k = m;
-          if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-          {
-            TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695759);
-            k = m;
-          }
-        }
-        else
-        {
-          if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3))
-          {
-            localObject = (EffectFaceManager)localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3);
-            FaceItem localFaceItem = (FaceItem)((EffectFaceManager)localObject).a();
-            if (localFaceItem != null)
-            {
-              bool1 = ((EffectFaceManager)localObject).b();
-              boolean bool2 = localFaceItem.isSameType("pendant");
-              boolean bool3 = localFaceItem.isSameType("face");
-              boolean bool4 = localFaceItem.isSameType("voicesticker");
-              if ((bool1) && ((bool3) || (bool4))) {
-                j = 1;
-              } else {
-                j = 0;
-              }
-              if (j != 0)
-              {
-                localObject = localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-                if (bool4) {
-                  j = 2131695783;
-                } else {
-                  j = 2131695782;
-                }
-                TipsUtil.a((VideoAppInterface)localObject, 1022, j);
-                QLog.d("QavVideoRecordUICtrl", 1, "start record, isDoubleScreen");
-                if (bool4)
-                {
-                  QavRecordReporter.a("0X8009852");
-                  k = m;
-                  break label949;
-                }
-                QavRecordReporter.a("0X8008AC3");
-                k = m;
-                break label949;
-              }
-              if (bool2) {
-                QavRecordReporter.a("0X8008ABE");
-              }
-            }
-          }
-          if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
-          {
-            localObject = (EffectZimuManager)localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-            if (localObject != null)
-            {
-              localObject = (ZimuItem)((EffectZimuManager)localObject).a();
-              if ((localObject != null) && ((TextUtils.isEmpty(((ZimuItem)localObject).getId()) ^ true)))
-              {
-                TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695784);
-                QLog.d("QavVideoRecordUICtrl", 1, "start record, usingZimu");
-                QavRecordReporter.a("0X8008AD2");
-                k = m;
-                break label949;
-              }
-            }
-          }
-          if ((localAVActivity.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomUIContoller != null) && (localAVActivity.jdField_a_of_type_ComTencentAvUiChatroomVideoChatRoomUIContoller.a()))
-          {
-            TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695781);
-            k = m;
-          }
-          else if (FileSwapHelper.a() < 31457280L)
-          {
-            if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-              TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695775);
-            }
-            QLog.d("QavVideoRecordUICtrl", 1, "start record, STORAGE_LEFT_MIN_SIZE not enough");
-            k = m;
-          }
-          else
-          {
-            if (this.jdField_a_of_type_ComTencentAvVideoController.a().ad != 0)
-            {
-              this.jdField_a_of_type_ComTencentAvVideoController.a().a.add(Integer.valueOf(0));
-              QavRecordReporter.a("0X8008AC1");
-            }
-            if (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2))
-            {
-              localObject = (EffectPendantTools)localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
-              if ((localObject != null) && (((EffectPendantTools)localObject).a() != null))
-              {
-                this.jdField_a_of_type_ComTencentAvVideoController.a().a.add(Integer.valueOf(6));
-                QavRecordReporter.a("0X8008ABC");
-              }
-            }
-            k = 1;
-          }
-        }
-      }
-      label949:
-      if (k != 0)
-      {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().aF = true;
-        this.jdField_a_of_type_ComTencentAvVideoController.a().aG = b();
-        b();
-        if ((j()) && (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)))
-        {
-          localObject = (EffectFaceManager)localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3);
-          if (((FaceItem)((EffectFaceManager)localObject).a() != null) && (((EffectFaceManager)localObject).b()) && (localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)) {
-            TipsUtil.a(localAVActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695760);
-          }
-        }
-        QavRecordReporter.a("0X800863A");
-        if (this.jdField_a_of_type_ComTencentAvVideoController.a().aA) {
-          QavRecordReporter.a("0X8008ACC");
-        }
-        if (b()) {
-          QavRecordReporter.a("0X8008AB9");
-        } else {
-          QavRecordReporter.a("0X8008AB8");
-        }
-        if (this.jdField_a_of_type_ComTencentAvVideoController.a().a.size() == 0) {
-          QavRecordReporter.a("0X8008ABB");
-        }
-      }
-      else
-      {
-        QavRecordReporter.a("0X8008AAF");
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoRecordUICtrl", 2, "record activity.mApp == null  || mVideoController == null");
-    }
-  }
-  
-  private void v()
-  {
-    DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-    if (localDoubleVideoCtrlUI == null) {
-      return;
-    }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_c_of_type_AndroidViewView != null))
-    {
-      if (localDoubleVideoCtrlUI.i())
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        return;
-      }
-      if (d())
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-        if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.a() != 3) && (!c()))
-        {
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          return;
-        }
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        return;
-      }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.a() == 3) {
-        this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      } else {
-        this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      }
-      if (c())
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        return;
-      }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  private void w()
-  {
-    VideoNetStateBar localVideoNetStateBar = this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar;
-    if (localVideoNetStateBar == null) {
-      return;
-    }
-    localVideoNetStateBar.e(this.jdField_c_of_type_Int);
-    int j = this.jdField_c_of_type_Int;
-    if ((j != 90) && (j != 270) && (c()))
-    {
-      this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar.d(b() + b(2131297901));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvUiVideoNetStateBar.d(b(2131297901));
-  }
-  
-  private void x()
-  {
-    this.jdField_b_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = null;
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_b_of_type_AndroidAnimationAnimator$AnimatorListener = null;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = null;
-    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = null;
-  }
-  
-  int a()
-  {
-    boolean bool = LiuHaiUtils.b();
-    if (c())
-    {
-      if (bool) {
-        return LiuHaiUtils.b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      }
-      return this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d();
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    long l;
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoFile == null) {
-        l = this.jdField_g_of_type_Long;
-      } else {
-        l = FileSwapHelper.a(this.jdField_a_of_type_JavaIoFile);
-      }
-    }
-    catch (Exception localException)
-    {
-      l = this.jdField_g_of_type_Long;
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append("getCurrentRecordSize Exception=");
-      localStringBuilder2.append(localException.getMessage());
-      QLog.d("QavVideoRecordUICtrl", 2, localStringBuilder2.toString());
-    }
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      localStringBuilder1.append("getCurrentRecordSize=");
-      localStringBuilder1.append(l);
-      QLog.d("QavVideoRecordUICtrl", 2, localStringBuilder1.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("animExpandBar, cur=");
+      ((StringBuilder)localObject).append(this.K);
+      ((StringBuilder)localObject).append(", mAnimExpanding=");
+      ((StringBuilder)localObject).append(this.ac);
+      QLog.i("QavVideoRecordUICtrl", 2, ((StringBuilder)localObject).toString());
     }
-    return l;
+    Object localObject = this.Z;
+    if ((localObject != null) && (((ValueAnimator)localObject).isRunning()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QavVideoRecordUICtrl", 2, "animExpandBar, isRunning");
+      }
+      return;
+    }
+    J();
   }
+  
+  public void C()
+  {
+    a(5, true);
+    a(d(), this.W, false);
+    b(true);
+    if (((AVActivity)this.m.get()).H != null) {
+      TipsUtil.a(((AVActivity)this.m.get()).H, 1023, 2131893545);
+    }
+    this.V.k().cD = false;
+    E();
+    ((AVActivity)this.m.get()).H.a(new Object[] { Integer.valueOf(163) });
+    long l1 = (System.currentTimeMillis() - this.g) / 1000L;
+    ReportController.b(null, "CliOper", "", "", "0X800863E", "0X800863E", 0, 0, "", String.valueOf(l1), "", "");
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(((AVActivity)this.m.get()).H.getCurrentAccountUin(), "av_record_cancel", true, l1, 0L, null, "", false);
+    c(1);
+  }
+  
+  public void D()
+  {
+    long l1 = AudioHelper.c();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("endBeenRecordedState, seq[");
+    ((StringBuilder)localObject).append(l1);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
+    localObject = this.V;
+    if ((localObject != null) && (((VideoController)localObject).k() != null) && (this.W != null))
+    {
+      this.V.k().cD = false;
+      c(1);
+      a(this.W, this.G);
+      b(true);
+      a(d(), this.W, false);
+      c(false);
+      this.W.a(true);
+    }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("endBeenRecordedState something is null: mControlUI=");
+      ((StringBuilder)localObject).append(this.W);
+      QLog.i("QavVideoRecordUICtrl", 2, ((StringBuilder)localObject).toString());
+    }
+    ((AVActivity)this.m.get()).h(l1);
+    E();
+    if (((AVActivity)this.m.get()).H != null) {
+      ((AVActivity)this.m.get()).H.a(new Object[] { Integer.valueOf(163) });
+    }
+    P();
+  }
+  
+  public void E()
+  {
+    long l1 = AudioHelper.c();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateRecordButton, seq[");
+    ((StringBuilder)localObject).append(l1);
+    ((StringBuilder)localObject).append("]");
+    QLog.w("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
+    localObject = this.V;
+    if ((localObject != null) && (((VideoController)localObject).k() != null) && (((AVActivity)this.m.get()).H != null))
+    {
+      if (this.C == null) {
+        return;
+      }
+      if (x())
+      {
+        if (this.V.k().cB) {
+          this.C.setShowState(3, ((AVActivity)this.m.get()).H.p());
+        } else {
+          this.C.setShowState(2, ((AVActivity)this.m.get()).H.p());
+        }
+        ((AVActivity)this.m.get()).K.f(l1, 16777215);
+        return;
+      }
+      this.C.setShowState(1, ((AVActivity)this.m.get()).H.p());
+    }
+  }
+  
+  public void F() {}
   
   public String a(long paramLong)
   {
     if (paramLong == 0L) {
-      return this.jdField_c_of_type_JavaLangString;
+      return this.N;
     }
-    int j = (int)(paramLong / 1000L);
-    int k = j / 60;
-    return String.format(Locale.getDefault(), "%s (%02d:%02d)", new Object[] { this.jdField_b_of_type_JavaLangString, Integer.valueOf(k), Integer.valueOf(j - k * 60) });
+    int i1 = (int)(paramLong / 1000L);
+    int i2 = i1 / 60;
+    return String.format(Locale.getDefault(), "%s (%02d:%02d)", new Object[] { this.M, Integer.valueOf(i2), Integer.valueOf(i1 - i2 * 60) });
   }
   
   public void a()
@@ -1004,12 +1056,12 @@ public class QavVideoRecordUICtrl
     localStringBuilder.append("removeTimeoutMsg");
     localStringBuilder.append(paramInt);
     QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+    this.L.removeMessages(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+    QavVideoAudioRecorder localQavVideoAudioRecorder = this.Q;
     if (localQavVideoAudioRecorder != null) {
       localQavVideoAudioRecorder.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
     }
@@ -1030,19 +1082,19 @@ public class QavVideoRecordUICtrl
       QLog.e("QavVideoRecordUICtrl", 1, "onEncodeError ", paramThrowable);
     }
     QavRecordReporter.a(paramInt, paramThrowable);
-    this.jdField_f_of_type_Boolean = true;
+    this.F = true;
     if ((paramInt != 1) && (paramInt != 2) && (paramInt != 5))
     {
       if (paramInt == 4)
       {
-        this.jdField_g_of_type_Boolean = true;
-        if (b() >= 1000L) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new QavVideoRecordUICtrl.4(this));
+        this.T = true;
+        if (g() >= 1000L) {
+          this.L.post(new QavVideoRecordUICtrl.4(this));
         }
       }
     }
     else {
-      this.jdField_a_of_type_AndroidOsHandler.post(new QavVideoRecordUICtrl.3(this));
+      this.L.post(new QavVideoRecordUICtrl.3(this));
     }
   }
   
@@ -1061,11 +1113,11 @@ public class QavVideoRecordUICtrl
     ((StringBuilder)localObject).append(", ");
     ((StringBuilder)localObject).append(paramInt2);
     QLog.d("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentAvVideoController.a(8, String.valueOf(paramInt1));
+    this.V.e(8, String.valueOf(paramInt1));
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt1);
-      localObject = this.jdField_a_of_type_AndroidOsHandler;
+      this.L.removeMessages(paramInt1);
+      localObject = this.L;
       ((Handler)localObject).sendMessageDelayed(((Handler)localObject).obtainMessage(paramInt1, paramInt2, 0), 3000L);
     }
   }
@@ -1082,8 +1134,8 @@ public class QavVideoRecordUICtrl
       } else {
         paramInt = 1;
       }
-      if ((paramInt != 0) && (this.jdField_d_of_type_Int != 1)) {
-        b(2131297949);
+      if ((paramInt != 0) && (this.K != 1)) {
+        i(2131298619);
       }
     }
   }
@@ -1094,14 +1146,14 @@ public class QavVideoRecordUICtrl
     localStringBuilder.append("onEncodeFinish, filePath[");
     localStringBuilder.append(paramString);
     localStringBuilder.append("], mDeleteThisVideo[");
-    localStringBuilder.append(this.jdField_g_of_type_Boolean);
+    localStringBuilder.append(this.T);
     localStringBuilder.append("]");
     QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
     QavRecordReporter.d();
-    if (this.jdField_g_of_type_Boolean)
+    if (this.T)
     {
       boolean bool2 = false;
-      this.jdField_g_of_type_Boolean = false;
+      this.T = false;
       boolean bool1;
       try
       {
@@ -1123,17 +1175,17 @@ public class QavVideoRecordUICtrl
     }
     else
     {
-      FileSwapHelper.a(paramString, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-      this.jdField_a_of_type_AndroidOsHandler.post(new QavVideoRecordUICtrl.2(this));
+      FileSwapHelper.a(paramString, (Context)this.m.get());
+      this.L.post(new QavVideoRecordUICtrl.2(this));
     }
-    this.jdField_f_of_type_Boolean = true;
+    this.F = true;
   }
   
   public void a(String paramString1, String paramString2)
   {
-    long l = AudioHelper.b();
+    long l1 = AudioHelper.c();
     boolean bool = QLog.isColorLevel();
-    int k = 1;
+    int i2 = 1;
     if (bool)
     {
       StringBuilder localStringBuilder1 = new StringBuilder();
@@ -1142,14 +1194,14 @@ public class QavVideoRecordUICtrl
       localStringBuilder1.append("], data[");
       localStringBuilder1.append(paramString2);
       localStringBuilder1.append("], seq[");
-      localStringBuilder1.append(l);
+      localStringBuilder1.append(l1);
       localStringBuilder1.append("]");
       QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder1.toString());
     }
-    int j;
+    int i1;
     try
     {
-      j = Integer.parseInt(paramString2);
+      i1 = Integer.parseInt(paramString2);
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -1157,9 +1209,9 @@ public class QavVideoRecordUICtrl
       localStringBuilder2.append("Qav.Record, onChangeUi_ReceiveRecordMsg, ");
       localStringBuilder2.append(localNumberFormatException.getMessage());
       QLog.i("QavVideoRecordUICtrl", 1, localStringBuilder2.toString());
-      j = -1;
+      i1 = -1;
     }
-    if (j == -1)
+    if (i1 == -1)
     {
       paramString1 = new StringBuilder();
       paramString1.append("onChangeUi_ReceiveRecordMsg, parse int failed, try parse SUPPORT, data=");
@@ -1170,39 +1222,39 @@ public class QavVideoRecordUICtrl
       }
       if ("SUPPORT_TRUE".equals(paramString2))
       {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().ay = true;
-        this.jdField_a_of_type_ComTencentAvVideoController.a().af = Math.max(this.jdField_a_of_type_ComTencentAvVideoController.a().af, 730);
-        n();
+        this.V.k().cA = true;
+        this.V.k().cz = Math.max(this.V.k().cz, 730);
+        E();
         return;
       }
       if (paramString2.startsWith("SUPPORT_TRUE_7.3.5"))
       {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().ay = true;
-        this.jdField_a_of_type_ComTencentAvVideoController.a().af = Math.max(this.jdField_a_of_type_ComTencentAvVideoController.a().af, 735);
-        j = QavRecordUtils.a(paramString2, this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.h);
+        this.V.k().cA = true;
+        this.V.k().cz = Math.max(this.V.k().cz, 735);
+        i1 = QavRecordUtils.a(paramString2, this.j.i);
         paramString1 = new StringBuilder();
         paramString1.append("onChangeUi_ReceiveRecordMsg, SUPPORT_735 val=");
-        paramString1.append(j);
+        paramString1.append(i1);
         QLog.i("QavVideoRecordUICtrl", 1, paramString1.toString());
-        this.jdField_a_of_type_ComTencentAvVideoController.a().k = (j * 60 * 1000L);
-        n();
+        this.V.k().cC = (i1 * 60 * 1000L);
+        E();
       }
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
+    if ((this.V != null) && (((AVActivity)this.m.get()).H != null))
     {
-      int m = this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Int;
+      int i3 = this.V.k().g;
       if (QLog.isColorLevel())
       {
         paramString2 = new StringBuilder();
         paramString2.append("onChangeUi_ReceiveRecordMsg, session type=");
-        paramString2.append(m);
+        paramString2.append(i3);
         QLog.i("QavVideoRecordUICtrl", 2, paramString2.toString());
       }
-      if ((m != 2) && (m != 1)) {
+      if ((i3 != 2) && (i3 != 1)) {
         return;
       }
-      switch (j)
+      switch (i1)
       {
       default: 
         return;
@@ -1214,73 +1266,73 @@ public class QavVideoRecordUICtrl
         a(5);
         return;
       case 5: 
-        if (this.jdField_a_of_type_ComTencentAvVideoController.a().az)
+        if (this.V.k().cB)
         {
           a();
-          j = k;
+          i1 = i2;
         }
         else
         {
-          j = 0;
+          i1 = 0;
         }
-        if (j != 0) {
-          j = 6;
+        if (i1 != 0) {
+          i1 = 6;
         } else {
-          j = 7;
+          i1 = 7;
         }
-        a(j, false);
+        a(i1, false);
         return;
       case 4: 
         a(3);
         return;
       case 3: 
       case 8: 
-        this.jdField_a_of_type_ComTencentAvVideoController.a().aA = false;
-        if (j == 3)
+        this.V.k().cD = false;
+        if (i1 == 3)
         {
           a(4, false);
-          TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695754);
+          TipsUtil.a(((AVActivity)this.m.get()).H, 1022, 2131893513);
         }
         else
         {
           a(9, false);
-          TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695753);
+          TipsUtil.a(((AVActivity)this.m.get()).H, 1022, 2131893512);
         }
-        m();
+        D();
         return;
       case 2: 
         a(1);
         return;
       }
-      this.jdField_a_of_type_ComTencentAvVideoController.a().aA = true;
+      this.V.k().cD = true;
       c(3);
-      n();
-      b(b());
-      a(b(), this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, true);
-      a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_c_of_type_Int);
-      this.jdField_c_of_type_Long = System.currentTimeMillis();
+      E();
+      b(d());
+      a(d(), this.W, true);
+      a(this.W, this.G);
+      this.g = System.currentTimeMillis();
       c(true);
-      ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).g(l);
+      ((AVActivity)this.m.get()).h(l1);
       if (!"self".equalsIgnoreCase(paramString1))
       {
         a(2, false);
-        if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isResume()) {
-          this.jdField_a_of_type_ComTencentAvVideoController.C();
+        if (((AVActivity)this.m.get()).isResume()) {
+          this.V.au();
         } else {
-          this.jdField_a_of_type_ComTencentAvVideoController.B();
+          this.V.at();
         }
       }
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().ad != 0) {
+      if (this.V.k().cr != 0) {
         QavRecordReporter.a("0X8008AC2");
       }
-      if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2))
+      if (((AVActivity)this.m.get()).H.d(2))
       {
-        paramString1 = (EffectPendantTools)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2);
-        if ((paramString1 != null) && (paramString1.a() != null)) {
+        paramString1 = (EffectPendantTools)((AVActivity)this.m.get()).H.c(2);
+        if ((paramString1 != null) && (paramString1.c() != null)) {
           QavRecordReporter.a("0X8008ABC");
         }
       }
-      ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
+      ((AVActivity)this.m.get()).H.a(new Object[] { Integer.valueOf(163) });
       return;
     }
     QLog.i("QavVideoRecordUICtrl", 1, "onChangeUi_ReceiveRecordMsg, mVideoController == null || mActivity.get().mApp == null");
@@ -1288,47 +1340,47 @@ public class QavVideoRecordUICtrl
   
   public void a(boolean paramBoolean)
   {
-    f();
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI == null) {
+    m();
+    if (this.W == null) {
       return;
     }
-    int j = this.jdField_c_of_type_AndroidWidgetRelativeLayout.getVisibility();
+    int i1 = this.p.getVisibility();
     boolean bool2 = false;
     boolean bool1 = false;
     DoubleVideoCtrlUI localDoubleVideoCtrlUI;
-    if ((j == 0) && (!b()) && (!LiuHaiUtils.b()))
+    if ((i1 == 0) && (!d()) && (!LiuHaiUtils.b()))
     {
-      localDoubleVideoCtrlUI = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-      j = c();
-      int k = a();
+      localDoubleVideoCtrlUI = this.W;
+      i1 = n();
+      int i2 = k();
       if (paramBoolean)
       {
         paramBoolean = bool1;
-        if (!b()) {}
+        if (!d()) {}
       }
       else
       {
         paramBoolean = true;
       }
-      localDoubleVideoCtrlUI.a(j + k, paramBoolean);
+      localDoubleVideoCtrlUI.a(i1 + i2, paramBoolean);
     }
     else
     {
-      localDoubleVideoCtrlUI = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-      j = c();
+      localDoubleVideoCtrlUI = this.W;
+      i1 = n();
       if (paramBoolean)
       {
         paramBoolean = bool2;
-        if (!b()) {}
+        if (!d()) {}
       }
       else
       {
         paramBoolean = true;
       }
-      localDoubleVideoCtrlUI.a(j, paramBoolean);
+      localDoubleVideoCtrlUI.a(i1, paramBoolean);
     }
-    ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).g(-1034L);
-    w();
+    ((AVActivity)this.m.get()).h(-1034L);
+    O();
   }
   
   public void a(boolean paramBoolean1, VideoControlUI paramVideoControlUI, boolean paramBoolean2)
@@ -1344,28 +1396,23 @@ public class QavVideoRecordUICtrl
       localStringBuilder.append(paramBoolean2);
       QLog.d("QavVideoRecordUICtrl", 2, localStringBuilder.toString());
     }
-    q();
-  }
-  
-  public boolean a()
-  {
-    return jdField_b_of_type_Boolean;
+    I();
   }
   
   @TargetApi(17)
   public int[] a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = paramInt1;
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder == null) {
+    int i1 = paramInt1;
+    if (this.Q == null) {
       try
       {
-        if (f()) {
-          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = new QavVideoAudioRecorder();
+        if (v()) {
+          this.Q = new QavVideoAudioRecorder();
         }
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = null;
+        this.Q = null;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("oom ");
         ((StringBuilder)localObject2).append(localOutOfMemoryError);
@@ -1373,45 +1420,45 @@ public class QavVideoRecordUICtrl
       }
     }
     if (paramBoolean) {
-      paramInt1 = ScreenLayoutDoubleScreen.b(paramInt1);
+      paramInt1 = ScreenLayoutDoubleScreen.c(paramInt1);
     } else {
       paramInt1 = paramInt2;
     }
-    this.jdField_d_of_type_JavaLangString = FileSwapHelper.a();
-    this.jdField_a_of_type_JavaIoFile = new File(this.jdField_d_of_type_JavaLangString);
-    this.jdField_g_of_type_Long = 0L;
+    this.R = FileSwapHelper.b();
+    this.S = new File(this.R);
+    this.O = 0L;
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("doNeedStartRecord path=");
-      ((StringBuilder)localObject1).append(this.jdField_d_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.R);
       ((StringBuilder)localObject1).append(", w=");
-      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append(i1);
       ((StringBuilder)localObject1).append(", h=");
       ((StringBuilder)localObject1).append(paramInt2);
       ((StringBuilder)localObject1).append(", rh=");
       ((StringBuilder)localObject1).append(paramInt1);
       QLog.d("QavVideoRecordUICtrl", 2, ((StringBuilder)localObject1).toString());
     }
-    int m = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_f_of_type_Int;
+    int i3 = this.j.g;
     paramInt2 = paramInt1;
-    int k = j;
-    if (j > m)
+    int i2 = i1;
+    if (i1 > i3)
     {
-      float f1 = m * 1.0F / j;
+      float f1 = i3 * 1.0F / i1;
       paramInt2 = (int)(paramInt1 * f1);
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("doNeedStartRecord calc size, maxWidth=");
-        ((StringBuilder)localObject1).append(m);
+        ((StringBuilder)localObject1).append(i3);
         ((StringBuilder)localObject1).append(", realWidth=");
-        ((StringBuilder)localObject1).append(m);
+        ((StringBuilder)localObject1).append(i3);
         ((StringBuilder)localObject1).append(", realHeight=");
         ((StringBuilder)localObject1).append(paramInt2);
         QLog.d("QavVideoRecordUICtrl", 2, ((StringBuilder)localObject1).toString());
       }
-      k = m;
+      i2 = i3;
     }
     paramInt1 = paramInt2;
     if (paramInt2 % 2 == 1)
@@ -1421,13 +1468,13 @@ public class QavVideoRecordUICtrl
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("doNeedStartRecord rW=");
-    ((StringBuilder)localObject1).append(k);
+    ((StringBuilder)localObject1).append(i2);
     ((StringBuilder)localObject1).append(", rH=");
     ((StringBuilder)localObject1).append(paramInt1);
     QLog.d("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = new EncodeConfig(this.jdField_d_of_type_JavaLangString, k, paramInt1, 5120000, 1, false, 0);
+    localObject1 = new EncodeConfig(this.R, i2, paramInt1, 5120000, 1, false, 0);
     ((EncodeConfig)localObject1).a(EGL14.eglGetCurrentContext());
-    Object localObject2 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+    Object localObject2 = this.Q;
     if (localObject2 != null)
     {
       ((QavVideoAudioRecorder)localObject2).a((EncodeConfig)localObject1, this);
@@ -1437,138 +1484,117 @@ public class QavVideoRecordUICtrl
     {
       a(5, null);
     }
-    return new int[] { k, paramInt1 };
-  }
-  
-  int b()
-  {
-    if (c()) {
-      return a() + c();
-    }
-    return 0;
-  }
-  
-  public long b()
-  {
-    long l = this.jdField_e_of_type_Long - this.jdField_f_of_type_Long;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getRealDuration, dur[");
-    localStringBuilder.append(l);
-    localStringBuilder.append("], UITime[");
-    localStringBuilder.append(this.jdField_e_of_type_Long - this.jdField_d_of_type_Long);
-    localStringBuilder.append("]");
-    QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-    return Math.max(0L, l);
+    return new int[] { i2, paramInt1 };
   }
   
   public void b()
   {
-    jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Long = (System.currentTimeMillis() - 200L);
-    this.jdField_f_of_type_Long = (this.jdField_d_of_type_Long + 99999999L);
+    d = true;
+    this.H = (System.currentTimeMillis() - 200L);
+    this.J = (this.H + 99999999L);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startRecord, mStartTime[");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.H);
     localStringBuilder.append("], mRealStartTime[");
-    localStringBuilder.append(this.jdField_f_of_type_Long);
+    localStringBuilder.append(this.J);
     localStringBuilder.append("]");
     QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_h_of_type_Long = 31457380L;
-    t();
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, 500L);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(11, 500L);
-    this.jdField_a_of_type_ComTencentAvVideoController.a(0, this);
-    int j = this.jdField_a_of_type_ComTencentAvVideoController.a(2, true);
-    int k = this.jdField_a_of_type_ComTencentAvVideoController.a(4, true);
-    int m = this.jdField_a_of_type_ComTencentAvVideoController.a(2, 48000, 1, 16);
-    int n = this.jdField_a_of_type_ComTencentAvVideoController.a(4, 48000, 1, 16);
+    this.O = 0L;
+    this.P = 31457380L;
+    L();
+    this.f = System.currentTimeMillis();
+    this.L.sendEmptyMessageDelayed(10, 500L);
+    this.L.sendEmptyMessageDelayed(11, 500L);
+    this.V.a(0, this);
+    int i1 = this.V.a(2, true);
+    int i2 = this.V.a(4, true);
+    int i3 = this.V.a(2, 48000, 1, 16);
+    int i4 = this.V.a(4, 48000, 1, 16);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("startRecord, after registerAudioDataCallback, ret2=");
-    localStringBuilder.append(j);
+    localStringBuilder.append(i1);
     localStringBuilder.append(", ret4=");
-    localStringBuilder.append(k);
+    localStringBuilder.append(i2);
     localStringBuilder.append(", set2=");
-    localStringBuilder.append(m);
+    localStringBuilder.append(i3);
     localStringBuilder.append(", set4=");
-    localStringBuilder.append(n);
+    localStringBuilder.append(i4);
     QLog.i("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().aD)
+    if (this.V.k().cH)
     {
-      j = this.jdField_a_of_type_ComTencentAvVideoController.a(3, true);
-      k = this.jdField_a_of_type_ComTencentAvVideoController.a(3, 48000, 1, 16);
+      i1 = this.V.a(3, true);
+      i2 = this.V.a(3, 48000, 1, 16);
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("startRecord, registerAudioDataCallback, mix = true, ret3=");
-      localStringBuilder.append(j);
+      localStringBuilder.append(i1);
       localStringBuilder.append(", set3=");
-      localStringBuilder.append(k);
+      localStringBuilder.append(i2);
       QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentAvVideoController.a().aB = true;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().aC = true;
+      this.V.k().cF = true;
+      this.V.k().cG = true;
     }
   }
   
   public void b(int paramInt)
   {
-    jdField_b_of_type_Boolean = false;
-    this.jdField_e_of_type_Long = System.currentTimeMillis();
+    d = false;
+    this.I = System.currentTimeMillis();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("endRecord, stopType[");
     ((StringBuilder)localObject).append(paramInt);
     ((StringBuilder)localObject).append("], mStartTime[");
-    ((StringBuilder)localObject).append(this.jdField_d_of_type_Long);
+    ((StringBuilder)localObject).append(this.H);
     ((StringBuilder)localObject).append("], mRealStartTime[");
-    ((StringBuilder)localObject).append(this.jdField_f_of_type_Long);
+    ((StringBuilder)localObject).append(this.J);
     ((StringBuilder)localObject).append("], mEndTime[");
-    ((StringBuilder)localObject).append(this.jdField_e_of_type_Long);
+    ((StringBuilder)localObject).append(this.I);
     ((StringBuilder)localObject).append("]");
     QLog.w("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(11);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(15);
+    this.L.removeMessages(10);
+    this.L.removeMessages(11);
+    this.L.removeMessages(15);
     if (paramInt == 1) {
-      a(b());
+      b(g());
     } else if (paramInt == 2) {
-      b(b());
+      c(g());
     } else {
-      a(-1L);
+      b(-1L);
     }
     boolean bool;
-    if ((b() >= 1000L) && (paramInt == 1)) {
+    if ((g() >= 1000L) && (paramInt == 1)) {
       bool = false;
     } else {
       bool = true;
     }
-    this.jdField_g_of_type_Boolean = bool;
-    localObject = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+    this.T = bool;
+    localObject = this.Q;
     if (localObject != null) {
       ((QavVideoAudioRecorder)localObject).a();
     }
-    this.jdField_a_of_type_JavaIoFile = null;
-    this.jdField_a_of_type_ComTencentAvVideoController.a(0, null);
-    int j = this.jdField_a_of_type_ComTencentAvVideoController.b(2, true);
-    int k = this.jdField_a_of_type_ComTencentAvVideoController.b(4, true);
+    this.S = null;
+    this.V.a(0, null);
+    int i1 = this.V.b(2, true);
+    int i2 = this.V.b(4, true);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("endRecord, after unregisterAudioDataCallbackAll, ret2=");
-    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(i1);
     ((StringBuilder)localObject).append(", ret4=");
-    ((StringBuilder)localObject).append(k);
+    ((StringBuilder)localObject).append(i2);
     QLog.i("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().aD)
+    if (this.V.k().cH)
     {
-      j = this.jdField_a_of_type_ComTencentAvVideoController.a(3, false);
-      k = this.jdField_a_of_type_ComTencentAvVideoController.a(3, 48000, 1, 16);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().aB = true;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().aC = false;
+      i1 = this.V.a(3, false);
+      i2 = this.V.a(3, 48000, 1, 16);
+      this.V.k().cF = true;
+      this.V.k().cG = false;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("endRecord, registerAudioDataCallback, mix = true, ret3=");
-      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(i1);
       ((StringBuilder)localObject).append(", set3=");
-      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(i2);
       QLog.i("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
     }
-    QavRecordReporter.a(this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r, this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s, paramInt, b());
+    QavRecordReporter.a(this.j.s, this.j.t, paramInt, g());
   }
   
   public void b(int paramInt, boolean paramBoolean)
@@ -1579,61 +1605,46 @@ public class QavVideoRecordUICtrl
     QLog.d("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
     if (paramInt != 3)
     {
-      p();
-      v();
+      H();
+      N();
       return;
     }
-    this.jdField_d_of_type_Int = 3;
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setAlpha(1.0F);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.setMargins(b(2131297942), 0, 0, 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    localObject = this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams;
+    this.K = 3;
+    this.p.setVisibility(0);
+    this.s.setVisibility(0);
+    this.t.setVisibility(0);
+    this.s.setAlpha(1.0F);
+    this.t.setAlpha(1.0F);
+    this.x.setMargins(i(2131298612), 0, 0, 0);
+    this.s.setLayoutParams(this.x);
+    this.t.setLayoutParams(this.y);
+    localObject = this.z;
     ((RelativeLayout.LayoutParams)localObject).height = -2;
     ((RelativeLayout.LayoutParams)localObject).width = -2;
-    RelativeLayout localRelativeLayout = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.q;
     if (localRelativeLayout != null) {
       localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localObject = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
+    localObject = this.q;
     if (localObject != null) {
       ((RelativeLayout)localObject).requestLayout();
     }
     if (paramBoolean) {
-      d();
+      h();
     } else {
-      v();
+      N();
     }
-    q();
-    a(c());
+    I();
+    a(i());
   }
   
   public void b(boolean paramBoolean)
   {
-    DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
+    DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.W;
     if (localDoubleVideoCtrlUI == null) {
       return;
     }
-    localDoubleVideoCtrlUI.o(paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    return (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) && (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvUiVideoLayerUI.i());
-  }
-  
-  public int c()
-  {
-    return b(2131297949);
-  }
-  
-  public void c()
-  {
-    b(1);
+    localDoubleVideoCtrlUI.r(paramBoolean);
   }
   
   public void c(int paramInt)
@@ -1643,175 +1654,73 @@ public class QavVideoRecordUICtrl
   
   public void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a() == null) {
+    if (this.V.k() == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(14);
+    this.L.removeMessages(14);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(14, this.jdField_a_of_type_ComTencentAvVideoController.a().k);
+      this.L.sendEmptyMessageDelayed(14, this.V.k().cC);
     }
   }
   
   public boolean c()
   {
-    return this.jdField_d_of_type_Int == 3;
-  }
-  
-  public int d()
-  {
-    return this.jdField_d_of_type_Int;
-  }
-  
-  public void d()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-    if (localObject != null)
-    {
-      if (((DoubleVideoCtrlUI)localObject).h()) {
-        return;
-      }
-      this.jdField_c_of_type_Int = a(this.jdField_c_of_type_Int);
-      f(this.jdField_c_of_type_Int);
-      v();
-      w();
-      if (!c()) {
-        return;
-      }
-      int j = this.jdField_c_of_type_Int;
-      if ((j != 90) && (j != 270)) {
-        j = 0;
-      } else {
-        j = 1;
-      }
-      if (j != 0)
-      {
-        localObject = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-        if ((localObject != null) && (!((DoubleVideoCtrlUI)localObject).i()))
-        {
-          if (d() == 3) {
-            j = b(2131297938);
-          } else {
-            j = b(2131297944);
-          }
-          localObject = this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-          ((RelativeLayout.LayoutParams)localObject).height = j;
-          ((RelativeLayout.LayoutParams)localObject).width = j;
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(15.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-          localObject = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
-          if (localObject != null) {
-            ((RelativeLayout)localObject).setLayoutParams(this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-          }
-          if (this.jdField_c_of_type_Int == 90)
-          {
-            localObject = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
-            if (localObject != null) {
-              ((RelativeLayout)localObject).setRotation(-90.0F);
-            }
-            localObject = this.jdField_e_of_type_AndroidWidgetRelativeLayout;
-            if (localObject == null) {
-              break label354;
-            }
-            ((RelativeLayout)localObject).setScaleX(1.0F);
-            this.jdField_e_of_type_AndroidWidgetRelativeLayout.setScaleY(1.0F);
-            break label354;
-          }
-          localObject = this.jdField_e_of_type_AndroidWidgetRelativeLayout;
-          if (localObject != null)
-          {
-            ((RelativeLayout)localObject).setScaleX(-1.0F);
-            this.jdField_e_of_type_AndroidWidgetRelativeLayout.setScaleY(-1.0F);
-          }
-          localObject = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
-          if (localObject == null) {
-            break label354;
-          }
-          ((RelativeLayout)localObject).setRotation(-90.0F);
-          break label354;
-        }
-      }
-      localObject = this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-      ((RelativeLayout.LayoutParams)localObject).height = -2;
-      ((RelativeLayout.LayoutParams)localObject).width = -2;
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
-      RelativeLayout localRelativeLayout = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
-      if (localRelativeLayout != null) {
-        localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      localObject = this.jdField_e_of_type_AndroidWidgetRelativeLayout;
-      if (localObject != null)
-      {
-        ((RelativeLayout)localObject).setScaleX(1.0F);
-        this.jdField_e_of_type_AndroidWidgetRelativeLayout.setScaleY(1.0F);
-      }
-      localObject = this.jdField_d_of_type_AndroidWidgetRelativeLayout;
-      if (localObject != null) {
-        ((RelativeLayout)localObject).setRotation(this.jdField_c_of_type_Int);
-      }
-      label354:
-      q();
-      a(c());
-    }
+    return d;
   }
   
   public void d(int paramInt)
   {
-    paramInt = a(paramInt);
-    if (this.jdField_c_of_type_Int != paramInt)
+    paramInt = h(paramInt);
+    if (this.G != paramInt)
     {
-      this.jdField_c_of_type_Int = paramInt;
-      a(c());
-      s();
+      this.G = paramInt;
+      a(i());
+      K();
     }
   }
   
   public boolean d()
   {
-    int j = this.jdField_c_of_type_Int;
-    return (j == 90) || (j == 270);
+    return (((AVActivity)this.m.get()).L != null) && (((AVActivity)this.m.get()).L.V());
   }
   
   public void e()
   {
-    jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(11);
-    QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
-    if (localQavVideoAudioRecorder != null) {
-      localQavVideoAudioRecorder.b();
-    }
-    this.jdField_e_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_d_of_type_AndroidWidgetRelativeLayout = null;
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_b_of_type_AndroidViewView = null;
-    this.jdField_c_of_type_AndroidViewView = null;
+    b(1);
   }
   
   public void e(int paramInt)
   {
-    v();
+    N();
   }
   
-  public boolean e()
+  public long f()
   {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI != null)
+    long l1;
+    try
     {
-      if (!c()) {
-        return;
+      if (this.S == null) {
+        l1 = this.O;
+      } else {
+        l1 = FileSwapHelper.a(this.S);
       }
-      int j = a();
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_c_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      localLayoutParams.topMargin = j;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("iveswu statusBar:density=");
-      localStringBuilder.append(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDisplayMetrics().density);
-      QLog.i("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-      this.jdField_c_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
     }
+    catch (Exception localException)
+    {
+      l1 = this.O;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("getCurrentRecordSize Exception=");
+      localStringBuilder2.append(localException.getMessage());
+      QLog.d("QavVideoRecordUICtrl", 2, localStringBuilder2.toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("getCurrentRecordSize=");
+      localStringBuilder1.append(l1);
+      QLog.d("QavVideoRecordUICtrl", 2, localStringBuilder1.toString());
+    }
+    return l1;
   }
   
   public void f(int paramInt)
@@ -1827,56 +1736,63 @@ public class QavVideoRecordUICtrl
           return;
         }
       }
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-      localLayoutParams.setMargins(AIOUtils.b(-12.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()), 0, 0, AIOUtils.b(32.5F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()));
-      localLayoutParams.addRule(2, 2131376277);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.E.getLayoutParams();
+      localLayoutParams.setMargins(AIOUtils.b(-12.5F, ((AVActivity)this.m.get()).getResources()), 0, 0, AIOUtils.b(32.5F, ((AVActivity)this.m.get()).getResources()));
+      localLayoutParams.addRule(2, 2131444486);
       localLayoutParams.addRule(1, 0);
       localLayoutParams.addRule(6, 0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+      this.E.setLayoutParams(localLayoutParams);
       if (paramInt == 90)
       {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(19);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setRotation(270.0F);
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setRotation(270.0F);
+        this.E.setGravity(19);
+        this.E.setRotation(270.0F);
+        this.C.setRotation(270.0F);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(21);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setRotation(90.0F);
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setRotation(90.0F);
+      this.E.setGravity(21);
+      this.E.setRotation(90.0F);
+      this.C.setRotation(90.0F);
       return;
     }
     label175:
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
-    localLayoutParams.setMargins(AIOUtils.b(10.0F, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources()), 0, 0, 0);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.E.getLayoutParams();
+    localLayoutParams.setMargins(AIOUtils.b(10.0F, ((AVActivity)this.m.get()).getResources()), 0, 0, 0);
     localLayoutParams.addRule(2, 0);
-    localLayoutParams.addRule(1, 2131376277);
-    localLayoutParams.addRule(6, 2131376277);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    localLayoutParams.addRule(1, 2131444486);
+    localLayoutParams.addRule(6, 2131444486);
+    this.E.setLayoutParams(localLayoutParams);
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(19);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setRotation(0.0F);
+      this.E.setGravity(19);
+      this.E.setRotation(0.0F);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(21);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setRotation(180.0F);
+      this.E.setGravity(21);
+      this.E.setRotation(180.0F);
     }
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setRotation(paramInt);
+    this.C.setRotation(paramInt);
   }
   
-  public void g()
+  public long g()
   {
-    QLog.d("QavVideoRecordUICtrl", 1, "onEncodeStart");
-    this.jdField_f_of_type_Boolean = false;
+    long l1 = this.I - this.J;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getRealDuration, dur[");
+    localStringBuilder.append(l1);
+    localStringBuilder.append("], UITime[");
+    localStringBuilder.append(this.I - this.H);
+    localStringBuilder.append("]");
+    QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
+    return Math.max(0L, l1);
   }
   
   public void g(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI == null) {
+    if (this.W == null) {
       return;
     }
-    boolean bool = this.jdField_a_of_type_ComTencentAvVideoController.a().az;
+    boolean bool = this.V.k().cB;
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -1889,13 +1805,13 @@ public class QavVideoRecordUICtrl
     }
     if (bool)
     {
-      if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      if (((AVActivity)this.m.get()).H == null) {
         return;
       }
-      int j = 1;
-      int k = 1 << paramInt - 1;
-      int m = this.jdField_f_of_type_Int;
-      if ((m & k) == k)
+      int i1 = 1;
+      int i2 = 1 << paramInt - 1;
+      int i3 = this.Y;
+      if ((i3 & i2) == i2)
       {
         if (QLog.isColorLevel())
         {
@@ -1906,7 +1822,7 @@ public class QavVideoRecordUICtrl
         }
         return;
       }
-      this.jdField_f_of_type_Int = (k | m);
+      this.Y = (i2 | i3);
       if (paramInt != 0)
       {
         if (paramInt != 1)
@@ -1914,33 +1830,306 @@ public class QavVideoRecordUICtrl
           if (paramInt != 2) {
             return;
           }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(15, 2000L);
+          this.L.sendEmptyMessageDelayed(15, 2000L);
           QavRecordReporter.a("0X8008ACA");
           return;
         }
-        TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695765);
+        TipsUtil.a(((AVActivity)this.m.get()).H, 1022, 2131893524);
         QavRecordReporter.a("0X8008AC9");
         return;
       }
-      localObject = (FaceItem)((EffectFaceManager)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a();
+      localObject = (FaceItem)((EffectFaceManager)((AVActivity)this.m.get()).H.c(3)).c();
       if ((localObject != null) && (((FaceItem)localObject).getId().equalsIgnoreCase("daquan"))) {
-        paramInt = j;
+        paramInt = i1;
       } else {
         paramInt = 0;
       }
       if (paramInt != 0) {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QavVideoRecordUICtrl.8(this), 2000L);
+        this.L.postDelayed(new QavVideoRecordUICtrl.8(this), 2000L);
       } else {
-        TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695766);
+        TipsUtil.a(((AVActivity)this.m.get()).H, 1022, 2131893525);
       }
       QavRecordReporter.a("0X8008AC8");
     }
   }
   
-  public boolean g()
+  public void h()
+  {
+    Object localObject = this.W;
+    if (localObject != null)
+    {
+      if (((DoubleVideoCtrlUI)localObject).V()) {
+        return;
+      }
+      this.G = h(this.G);
+      f(this.G);
+      N();
+      O();
+      if (!i()) {
+        return;
+      }
+      int i1 = this.G;
+      if ((i1 != 90) && (i1 != 270)) {
+        i1 = 0;
+      } else {
+        i1 = 1;
+      }
+      if (i1 != 0)
+      {
+        localObject = this.W;
+        if ((localObject != null) && (!((DoubleVideoCtrlUI)localObject).ab()))
+        {
+          if (o() == 3) {
+            i1 = i(2131298608);
+          } else {
+            i1 = i(2131298614);
+          }
+          localObject = this.z;
+          ((RelativeLayout.LayoutParams)localObject).height = i1;
+          ((RelativeLayout.LayoutParams)localObject).width = i1;
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(15.0F, ((AVActivity)this.m.get()).getResources());
+          localObject = this.q;
+          if (localObject != null) {
+            ((RelativeLayout)localObject).setLayoutParams(this.z);
+          }
+          if (this.G == 90)
+          {
+            localObject = this.q;
+            if (localObject != null) {
+              ((RelativeLayout)localObject).setRotation(-90.0F);
+            }
+            localObject = this.r;
+            if (localObject == null) {
+              break label354;
+            }
+            ((RelativeLayout)localObject).setScaleX(1.0F);
+            this.r.setScaleY(1.0F);
+            break label354;
+          }
+          localObject = this.r;
+          if (localObject != null)
+          {
+            ((RelativeLayout)localObject).setScaleX(-1.0F);
+            this.r.setScaleY(-1.0F);
+          }
+          localObject = this.q;
+          if (localObject == null) {
+            break label354;
+          }
+          ((RelativeLayout)localObject).setRotation(-90.0F);
+          break label354;
+        }
+      }
+      localObject = this.z;
+      ((RelativeLayout.LayoutParams)localObject).height = -2;
+      ((RelativeLayout.LayoutParams)localObject).width = -2;
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = 0;
+      RelativeLayout localRelativeLayout = this.q;
+      if (localRelativeLayout != null) {
+        localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      localObject = this.r;
+      if (localObject != null)
+      {
+        ((RelativeLayout)localObject).setScaleX(1.0F);
+        this.r.setScaleY(1.0F);
+      }
+      localObject = this.q;
+      if (localObject != null) {
+        ((RelativeLayout)localObject).setRotation(this.G);
+      }
+      label354:
+      I();
+      a(i());
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    int i1 = paramMessage.what;
+    if ((i1 != 1) && (i1 != 3) && (i1 != 5) && (i1 != 8)) {
+      if (i1 != 14) {
+        if (i1 == 15) {}
+      }
+    }
+    switch (i1)
+    {
+    default: 
+      return true;
+    case 10: 
+      this.L.removeMessages(10);
+      if (!d) {
+        return true;
+      }
+      long l1 = G();
+      long l2 = this.c;
+      if (l1 > l2)
+      {
+        e();
+        l1 = this.c / 1000L;
+        ReportController.b(null, "CliOper", "", "", "0X800863C", "0X800863C", 0, 0, String.valueOf(l1), "", "", "");
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_timeout", true, l1, 0L, null, "", false);
+        return true;
+      }
+      this.C.setProgress(l1, l2);
+      this.D.setText(a(l1));
+      this.L.sendEmptyMessageDelayed(10, 500L);
+    case 11: 
+      this.L.removeMessages(11);
+      if (!d) {
+        return true;
+      }
+      ThreadManager.postImmediately(new QavVideoRecordUICtrl.1(this), null, false);
+      return true;
+      if (((AVActivity)this.m.get()).H != null)
+      {
+        TipsUtil.a(((AVActivity)this.m.get()).H, 1022, 2131893526);
+        return true;
+        if (!((AVActivity)this.m.get()).ae)
+        {
+          D();
+          return true;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("on msg time, msg=");
+          localStringBuilder.append(paramMessage.what);
+          QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
+          a(paramMessage.what, false, paramMessage.arg1 - 1);
+        }
+      }
+      break;
+    }
+    return true;
+  }
+  
+  public boolean i()
+  {
+    return this.K == 3;
+  }
+  
+  public void j()
+  {
+    d = false;
+    this.L.removeMessages(10);
+    this.L.removeMessages(11);
+    QavVideoAudioRecorder localQavVideoAudioRecorder = this.Q;
+    if (localQavVideoAudioRecorder != null) {
+      localQavVideoAudioRecorder.d();
+    }
+    this.r = null;
+    this.q = null;
+    this.u = null;
+    this.v = null;
+    this.w = null;
+  }
+  
+  int k()
+  {
+    boolean bool = LiuHaiUtils.b();
+    if (i())
+    {
+      if (bool) {
+        return LiuHaiUtils.e((Activity)this.m.get());
+      }
+      return this.W.ap();
+    }
+    return 0;
+  }
+  
+  int l()
+  {
+    if (i()) {
+      return k() + n();
+    }
+    return 0;
+  }
+  
+  public void m()
+  {
+    if (this.W != null)
+    {
+      if (!i()) {
+        return;
+      }
+      int i1 = k();
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.p.getLayoutParams();
+      localLayoutParams.topMargin = i1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("iveswu statusBar:density=");
+      localStringBuilder.append(((AVActivity)this.m.get()).getResources().getDisplayMetrics().density);
+      QLog.i("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
+      this.p.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  public int n()
+  {
+    return i(2131298619);
+  }
+  
+  public int o()
+  {
+    return this.K;
+  }
+  
+  public void onClick(View paramView)
+  {
+    QLog.d("QavVideoRecordUICtrl", 1, "onClick");
+    if (paramView == this.t) {
+      C();
+    } else if (paramView == this.C) {
+      M();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onReceiveAudioFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (d)
+    {
+      QavVideoAudioRecorder localQavVideoAudioRecorder = this.Q;
+      if ((localQavVideoAudioRecorder != null) && (paramInt1 == 100)) {
+        localQavVideoAudioRecorder.a(paramArrayOfByte, SystemClock.elapsedRealtimeNanos() / 1000L);
+      }
+    }
+  }
+  
+  public boolean p()
+  {
+    int i1 = this.G;
+    return (i1 == 90) || (i1 == 270);
+  }
+  
+  public void q()
+  {
+    QLog.d("QavVideoRecordUICtrl", 1, "onEncodeStart");
+    this.F = false;
+  }
+  
+  public void r() {}
+  
+  public void s() {}
+  
+  public void t()
+  {
+    this.J = System.currentTimeMillis();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEncodeRealStart, mRealStartTime[");
+    localStringBuilder.append(this.J);
+    localStringBuilder.append("], StartOffset[");
+    localStringBuilder.append(this.J - this.H);
+    localStringBuilder.append("]");
+    QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
+  }
+  
+  public boolean u()
+  {
+    return this.F;
+  }
+  
+  public boolean w()
   {
     boolean bool;
-    if ((!k()) && (f()) && (i()) && (this.jdField_a_of_type_ComTencentAvVideoController.a().ay)) {
+    if ((!A()) && (v()) && (y()) && (this.V.k().cA)) {
       bool = true;
     } else {
       bool = false;
@@ -1952,31 +2141,29 @@ public class QavVideoRecordUICtrl
     return bool;
   }
   
-  public void h() {}
-  
-  public boolean h()
+  public boolean x()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvVideoController;
-    if ((localObject != null) && (((VideoController)localObject).a() != null))
+    Object localObject = this.V;
+    if ((localObject != null) && (((VideoController)localObject).k() != null))
     {
-      if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
+      if (((AVActivity)this.m.get()).H == null) {
         return false;
       }
-      boolean bool1 = this.jdField_a_of_type_ComTencentAvVideoController.a().az;
-      boolean bool6 = this.jdField_a_of_type_ComTencentAvVideoController.a().aA;
-      boolean bool7 = this.jdField_a_of_type_ComTencentAvVideoController.a().w;
-      if (g())
+      boolean bool1 = this.V.k().cB;
+      boolean bool6 = this.V.k().cD;
+      boolean bool7 = this.V.k().af;
+      if (w())
       {
         if (bool1) {
           return true;
         }
-        if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3))
+        if (((AVActivity)this.m.get()).H.d(3))
         {
-          localObject = (EffectFaceManager)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3);
-          FaceItem localFaceItem = (FaceItem)((EffectFaceManager)localObject).a();
+          localObject = (EffectFaceManager)((AVActivity)this.m.get()).H.c(3);
+          FaceItem localFaceItem = (FaceItem)((EffectFaceManager)localObject).c();
           if (localFaceItem != null)
           {
-            bool2 = ((EffectFaceManager)localObject).b();
+            bool2 = ((EffectFaceManager)localObject).k();
             bool3 = localFaceItem.isSameType("face");
             bool4 = localFaceItem.isSameType("voicesticker");
             bool1 = true;
@@ -1988,12 +2175,12 @@ public class QavVideoRecordUICtrl
         boolean bool3 = false;
         boolean bool4 = false;
         label181:
-        if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0))
+        if (((AVActivity)this.m.get()).H.d(0))
         {
-          localObject = (EffectZimuManager)((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+          localObject = (EffectZimuManager)((AVActivity)this.m.get()).H.c(0);
           if (localObject != null)
           {
-            localObject = (ZimuItem)((EffectZimuManager)localObject).a();
+            localObject = (ZimuItem)((EffectZimuManager)localObject).c();
             if (localObject != null)
             {
               bool5 = TextUtils.isEmpty(((ZimuItem)localObject).getId()) ^ true;
@@ -2012,108 +2199,49 @@ public class QavVideoRecordUICtrl
         ((StringBuilder)localObject).append(bool2);
         QLog.i("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
         if ((!bool7) && (!bool5) && ((!bool1) || (!bool2) || ((!bool3) && (!bool4)))) {
-          return (!bool6) || (this.jdField_a_of_type_ComTencentAvVideoController.a().af >= 735);
+          return (!bool6) || (this.V.k().cz >= 735);
         }
       }
     }
     return false;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean y()
   {
-    int j = paramMessage.what;
-    if ((j != 1) && (j != 3) && (j != 5) && (j != 8)) {
-      if (j != 14) {
-        if (j == 15) {}
-      }
-    }
-    switch (j)
-    {
-    default: 
-      return true;
-    case 10: 
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
-      if (!jdField_b_of_type_Boolean) {
-        return true;
-      }
-      long l1 = c();
-      long l2 = this.jdField_a_of_type_Long;
-      if (l1 > l2)
-      {
-        c();
-        l1 = this.jdField_a_of_type_Long / 1000L;
-        ReportController.b(null, "CliOper", "", "", "0X800863C", "0X800863C", 0, 0, String.valueOf(l1), "", "", "");
-        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_timeout", true, l1, 0L, null, "", false);
-        return true;
-      }
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setProgress(l1, l2);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(a(l1));
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, 500L);
-    case 11: 
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(11);
-      if (!jdField_b_of_type_Boolean) {
-        return true;
-      }
-      ThreadManager.postImmediately(new QavVideoRecordUICtrl.1(this), null, false);
-      return true;
-      if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-      {
-        TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1022, 2131695767);
-        return true;
-        if (!((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).i)
-        {
-          m();
-          return true;
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("on msg time, msg=");
-          localStringBuilder.append(paramMessage.what);
-          QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-          a(paramMessage.what, false, paramMessage.arg1 - 1);
-        }
-      }
-      break;
-    }
-    return true;
-  }
-  
-  public void i() {}
-  
-  public boolean i()
-  {
-    int j = this.jdField_b_of_type_Int;
+    int i1 = this.k;
     boolean bool2 = true;
-    if (j == 0)
+    if (i1 == 0)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r > this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_d_of_type_Int) {
-        this.jdField_b_of_type_Int = 2;
-      } else if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_d_of_type_Int) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s >= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_e_of_type_Int)) {
-        this.jdField_b_of_type_Int = 2;
-      } else if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r > this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_b_of_type_Int) {
-        this.jdField_b_of_type_Int = 1;
-      } else if ((this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.r == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_b_of_type_Int) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.s >= this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_c_of_type_Int)) {
-        this.jdField_b_of_type_Int = 1;
+      if (this.j.s > this.j.e) {
+        this.k = 2;
+      } else if ((this.j.s == this.j.e) && (this.j.t >= this.j.f)) {
+        this.k = 2;
+      } else if (this.j.s > this.j.c) {
+        this.k = 1;
+      } else if ((this.j.s == this.j.c) && (this.j.t >= this.j.d)) {
+        this.k = 1;
       } else {
-        this.jdField_b_of_type_Int = 3;
+        this.k = 3;
       }
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.jdField_a_of_type_Int != 1) {
-        this.jdField_b_of_type_Int = 4;
+      if (this.j.b != 1) {
+        this.k = 4;
       }
-      if (jdField_a_of_type_Boolean) {
-        this.jdField_b_of_type_Int = 5;
+      if (b) {
+        this.k = 5;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isPerformanceSupport=");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.k);
       QLog.d("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
     }
-    j = this.jdField_b_of_type_Int;
+    i1 = this.k;
     boolean bool1 = bool2;
-    if (j != 2)
+    if (i1 != 2)
     {
       bool1 = bool2;
-      if (j != 1)
+      if (i1 != 1)
       {
-        if (j == 5) {
+        if (i1 == 5) {
           return true;
         }
         bool1 = false;
@@ -2122,149 +2250,12 @@ public class QavVideoRecordUICtrl
     return bool1;
   }
   
-  public void j()
+  public boolean z()
   {
-    this.jdField_f_of_type_Long = System.currentTimeMillis();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onEncodeRealStart, mRealStartTime[");
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append("], StartOffset[");
-    localStringBuilder.append(this.jdField_f_of_type_Long - this.jdField_d_of_type_Long);
-    localStringBuilder.append("]");
-    QLog.w("QavVideoRecordUICtrl", 1, localStringBuilder.toString());
-  }
-  
-  public boolean j()
-  {
-    if (this.jdField_b_of_type_Int == 0) {
-      i();
+    if (this.k == 0) {
+      y();
     }
-    return this.jdField_b_of_type_Int == 1;
-  }
-  
-  public void k()
-  {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("animExpandBar, cur=");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
-      ((StringBuilder)localObject).append(", mAnimExpanding=");
-      ((StringBuilder)localObject).append(this.jdField_h_of_type_Boolean);
-      QLog.i("QavVideoRecordUICtrl", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_AndroidAnimationValueAnimator;
-    if ((localObject != null) && (((ValueAnimator)localObject).isRunning()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QavVideoRecordUICtrl", 2, "animExpandBar, isRunning");
-      }
-      return;
-    }
-    r();
-  }
-  
-  public void l()
-  {
-    a(5, true);
-    a(b(), this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, false);
-    b(true);
-    if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      TipsUtil.a(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1023, 2131695786);
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a().aA = false;
-    n();
-    ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
-    long l = (System.currentTimeMillis() - this.jdField_c_of_type_Long) / 1000L;
-    ReportController.b(null, "CliOper", "", "", "0X800863E", "0X800863E", 0, 0, "", String.valueOf(l), "", "");
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "av_record_cancel", true, l, 0L, null, "", false);
-    c(1);
-  }
-  
-  public void m()
-  {
-    long l = AudioHelper.b();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("endBeenRecordedState, seq[");
-    ((StringBuilder)localObject).append(l);
-    ((StringBuilder)localObject).append("]");
-    QLog.w("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAvVideoController;
-    if ((localObject != null) && (((VideoController)localObject).a() != null) && (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI != null))
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.a().aA = false;
-      c(1);
-      a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, this.jdField_c_of_type_Int);
-      b(true);
-      a(b(), this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI, false);
-      c(false);
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a(true);
-    }
-    else if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("endBeenRecordedState something is null: mControlUI=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI);
-      QLog.i("QavVideoRecordUICtrl", 2, ((StringBuilder)localObject).toString());
-    }
-    ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).g(l);
-    n();
-    if (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(163) });
-    }
-    x();
-  }
-  
-  public void n()
-  {
-    long l = AudioHelper.b();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("updateRecordButton, seq[");
-    ((StringBuilder)localObject).append(l);
-    ((StringBuilder)localObject).append("]");
-    QLog.w("QavVideoRecordUICtrl", 1, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentAvVideoController;
-    if ((localObject != null) && (((VideoController)localObject).a() != null) && (((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
-    {
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView == null) {
-        return;
-      }
-      if (h())
-      {
-        if (this.jdField_a_of_type_ComTencentAvVideoController.a().az) {
-          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setShowState(3, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.e());
-        } else {
-          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setShowState(2, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.e());
-        }
-        ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvUiVideoControlUI.i(l, 16777215);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView.setShowState(1, ((AVActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentAvAppVideoAppInterface.e());
-    }
-  }
-  
-  public void o() {}
-  
-  public void onClick(View paramView)
-  {
-    QLog.d("QavVideoRecordUICtrl", 1, "onClick");
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageButton) {
-      l();
-    } else if (paramView == this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordButtonView) {
-      u();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
-  
-  public void onReceiveAudioFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (jdField_b_of_type_Boolean)
-    {
-      QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
-      if ((localQavVideoAudioRecorder != null) && (paramInt1 == 100)) {
-        localQavVideoAudioRecorder.a(paramArrayOfByte, SystemClock.elapsedRealtimeNanos() / 1000L);
-      }
-    }
+    return this.k == 1;
   }
 }
 

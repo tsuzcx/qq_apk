@@ -11,9 +11,9 @@ class TroopStoryAIOVideoListSynchronizer$1
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a();
+    this.a.a();
+    this.b.l.set(false);
+    this.b.a();
   }
 }
 

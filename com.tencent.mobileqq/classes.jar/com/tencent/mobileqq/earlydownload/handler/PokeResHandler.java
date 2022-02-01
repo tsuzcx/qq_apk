@@ -15,26 +15,16 @@ import java.io.File;
 public class PokeResHandler
   extends EarlyHandler
 {
-  private boolean d = false;
+  private boolean h = false;
   
   public PokeResHandler(QQAppInterface paramQQAppInterface)
   {
     super("qq.android.poke.res_0625", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10044;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return PokeResData.class;
-  }
-  
-  public String a()
-  {
-    return "PokeResHandler_0625";
   }
   
   public void a(String paramString)
@@ -53,7 +43,7 @@ public class PokeResHandler
       }
       return;
     }
-    Object localObject = VFSAssistantUtils.getSDKPrivatePath(PokeItemHelper.a());
+    Object localObject = VFSAssistantUtils.getSDKPrivatePath(PokeItemHelper.c());
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -71,32 +61,42 @@ public class PokeResHandler
     ThreadManager.executeOnSubThread(new PokeResHandler.2(this));
   }
   
-  public boolean a()
+  public String b()
   {
-    return true;
+    return "PokeResHandler_0625";
   }
   
-  public String b()
+  public int c()
+  {
+    return 10044;
+  }
+  
+  public String d()
   {
     return null;
   }
   
-  public void f()
+  public boolean e()
   {
-    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
+    return true;
   }
   
-  public boolean g()
+  public boolean r()
   {
-    if (!this.d) {
-      this.d = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
+    if (!this.h) {
+      this.h = BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).getBoolean("ready", false);
     }
-    return super.g() & this.d;
+    return super.r() & this.h;
+  }
+  
+  public void w()
+  {
+    BaseApplication.getContext().getSharedPreferences("vasPokeConfig", 0).edit().putBoolean("ready", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PokeResHandler
  * JD-Core Version:    0.7.0.1
  */

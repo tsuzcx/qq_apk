@@ -28,7 +28,7 @@ class CustomizeStrategyFactory$VoiceResStrategy$1$1
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("aio.png");
         localObject = localStringBuilder.toString();
-        float f = CustomizeStrategyFactory.a;
+        float f = CustomizeStrategyFactory.d;
         double d = f * 47.0F;
         Double.isNaN(d);
         paramInt = (int)(d + 0.5D);
@@ -52,12 +52,12 @@ class CustomizeStrategyFactory$VoiceResStrategy$1$1
         paramPathResult.printStackTrace();
       }
     }
-    CustomizeStrategyFactory.a().a(this.a.a);
+    CustomizeStrategyFactory.d().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory.VoiceResStrategy.1.1
  * JD-Core Version:    0.7.0.1
  */

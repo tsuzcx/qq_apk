@@ -20,7 +20,7 @@ class ArkFlashChatItemBubbleBuilder$3
     MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)paramView.getTag();
     if (localMessageForArkFlashChat != null)
     {
-      FlashChatManager.GlobalConfig localGlobalConfig = ((FlashChatManager)this.a.a.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a;
+      FlashChatManager.GlobalConfig localGlobalConfig = ((FlashChatManager)this.a.d.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).c;
       String str1 = localGlobalConfig.c;
       String str2 = localGlobalConfig.f;
       String str3 = localGlobalConfig.g;
@@ -44,7 +44,7 @@ class ArkFlashChatItemBubbleBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder.3
  * JD-Core Version:    0.7.0.1
  */

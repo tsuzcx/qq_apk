@@ -24,75 +24,74 @@ import mqq.app.AppRuntime;
 public class OnlineStatusConstellationDisplayInfo
   extends BaseOnlineStatusDisplayInfo
 {
-  StatusExtInfoObserver a;
-  private String e = "";
-  private String f = "";
+  StatusExtInfoObserver k = new OnlineStatusConstellationDisplayInfo.1(this);
+  private String l = "";
+  private String m = "";
   
   public OnlineStatusConstellationDisplayInfo(long paramLong, BaseOnlineStatusDisplayInfo.UpdateUIListener paramUpdateUIListener, AppInterface paramAppInterface, QBaseActivity paramQBaseActivity)
   {
     super(paramLong, paramUpdateUIListener, paramAppInterface, paramQBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver = new OnlineStatusConstellationDisplayInfo.1(this);
-    paramAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver);
-    this.e = OnlineStatusUtil.b(((IProfileCardUtil)QRoute.api(IProfileCardUtil.class)).initCard(paramAppInterface, paramAppInterface.getCurrentAccountUin()).constellation);
+    paramAppInterface.registObserver(this.k);
+    this.l = OnlineStatusUtil.b(((IProfileCardUtil)QRoute.api(IProfileCardUtil.class)).initCard(paramAppInterface, paramAppInterface.getCurrentAccountUin()).constellation);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698487);
-    this.jdField_a_of_type_Boolean = false;
-    this.d = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131698474);
-    if (!TextUtils.isEmpty(this.f))
+    this.a = this.h.getString(2131896427);
+    this.d = false;
+    this.e = this.h.getString(2131896414);
+    if (!TextUtils.isEmpty(this.m))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.e);
+      localStringBuilder.append(this.l);
       localStringBuilder.append(" | ");
-      localStringBuilder.append(this.f);
-      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+      localStringBuilder.append(this.m);
+      this.b = localStringBuilder.toString();
       return;
     }
-    this.jdField_b_of_type_JavaLangString = this.e;
+    this.b = this.l;
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.a(paramInt1, paramInt2, paramIntent);
-    this.e = ((String)ConstellationViewKt.a(this.jdField_a_of_type_MqqAppAppRuntime, paramIntent, this.e).getSecond());
+    this.l = ((String)ConstellationViewKt.a(this.i, paramIntent, this.l).getSecond());
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      OnlineStatusExtInfoServlet.a(this.jdField_a_of_type_MqqAppAppRuntime, this.e);
+      OnlineStatusExtInfoServlet.a(this.i, this.l);
     }
   }
   
   public void a(boolean paramBoolean, OnlineStatusPermissionChecker.OnlineStatusPermissionItem paramOnlineStatusPermissionItem)
   {
-    ExtensionBizInfoHelper.a.a(this.jdField_a_of_type_MqqAppAppRuntime, 1040);
+    ExtensionBizInfoHelper.a.a(this.i, 1040);
   }
   
   public void b()
   {
-    Friends localFriends = ((IFriendDataService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFriendDataService.class, "")).getFriend(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), true, true, true);
-    ConstellationLauncher.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, localFriends.constellationJumpUrl, 4015);
+    Friends localFriends = ((IFriendDataService)this.i.getRuntimeService(IFriendDataService.class, "")).getFriend(this.i.getCurrentUin(), true, true, true);
+    ConstellationLauncher.c.a(this.h, localFriends.constellationJumpUrl, 4015);
     ReportHelperKt.a("0X800AF4D");
   }
   
-  public void c()
+  public void d()
   {
-    ConstellationLauncher.a.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, "VAL_FROM_STATUS_SETTING");
+    ConstellationLauncher.c.a(this.h, "VAL_FROM_STATUS_SETTING");
     ReportHelperKt.a("0X800AF97");
   }
   
-  public void e()
+  public void f()
   {
-    super.e();
-    this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationStatusExtInfoObserver);
+    super.f();
+    this.i.unRegistObserver(this.k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.OnlineStatusConstellationDisplayInfo
  * JD-Core Version:    0.7.0.1
  */

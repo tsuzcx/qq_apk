@@ -56,6 +56,7 @@ import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 import com.tencent.mobileqq.util.JSONUtils;
 import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -86,51 +87,63 @@ import tencent.im.zhitu.gate.ZhituSafeGate.ReqBody;
 public class ZhituManager
   implements Handler.Callback, ZhituTextManager.ImgGenerateCallback, Manager
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static volatile boolean h = false;
-  private static volatile boolean i = false;
-  private long jdField_a_of_type_Long = 0L;
-  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private static volatile boolean K = false;
+  private static volatile boolean L = false;
+  private static int f;
+  private boolean A;
+  private boolean B = true;
+  private boolean C = false;
+  private boolean D = false;
+  private AppInterface E;
+  private final int F = 180;
+  private boolean G = false;
+  private boolean H = false;
+  private long I = 0L;
+  private int J = 180;
+  private ZhituManager.ZhituSendListener M;
+  private Handler N = new ZhituManager.5(this, Looper.getMainLooper());
   public LinearLayout a;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public ZhituEmotionHorizonListView a;
-  private ZhituManager.DownloadListener jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$DownloadListener;
-  private ZhituManager.ZhituSendListener jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$ZhituSendListener;
-  private ZhituObserver jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituObserver;
-  public ZhituPanelView.ZhituPanelAdapter a;
-  public ZhituPanelView a;
-  public ZhituPicAdapter a;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<HttpNetReq> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private BlockingDeque<ZhituReportData> jdField_a_of_type_JavaUtilConcurrentBlockingDeque = new LinkedBlockingDeque();
-  private Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private Handler jdField_b_of_type_AndroidOsHandler = new ZhituManager.5(this, Looper.getMainLooper());
-  private volatile String jdField_b_of_type_JavaLangString = "";
-  private List<String> jdField_b_of_type_JavaUtilList = new LinkedList();
-  private Map<String, String> jdField_b_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_b_of_type_Boolean;
-  private volatile int jdField_c_of_type_Int = 0;
-  private Map<String, ZhituResponse> jdField_c_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int = 0;
-  private Map<File, Boolean> jdField_d_of_type_JavaUtilMap;
-  private boolean jdField_d_of_type_Boolean = false;
-  private int jdField_e_of_type_Int = 0;
-  private boolean jdField_e_of_type_Boolean = false;
-  private final int jdField_f_of_type_Int = 180;
-  private boolean jdField_f_of_type_Boolean = false;
-  private int jdField_g_of_type_Int = 180;
-  private boolean jdField_g_of_type_Boolean = false;
+  public ZhituEmotionHorizonListView b;
+  public ZhituPanelView c;
+  public ZhituPicAdapter d;
+  public ZhituPanelView.ZhituPanelAdapter e;
+  private ZhituObserver g;
+  private Map<String, String> h = new HashMap();
+  private Map<String, String> i = new HashMap();
+  private BlockingDeque<ZhituReportData> j = new LinkedBlockingDeque();
+  private String k = "";
+  private int l;
+  private volatile String m = "";
+  private boolean n = false;
+  private Typeface o;
+  private volatile int p = 0;
+  private Map<String, ZhituResponse> q = new HashMap();
+  private HandlerThread r;
+  private Handler s;
+  private Executor t;
+  private List<HttpNetReq> u = new LinkedList();
+  private ZhituManager.DownloadListener v;
+  private Map<File, Boolean> w;
+  private int x = 0;
+  private int y = 0;
+  private List<String> z = new LinkedList();
   
   public ZhituManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    f();
+    this.E = paramAppInterface;
+    A();
+  }
+  
+  private void A()
+  {
+    this.B = SharedPreUtils.bA(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.A = SharedPreUtils.bo(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.l = SharedPreUtils.bB(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.G = SharedPreUtils.bC(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.H = SharedPreUtils.bD(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.I = SharedPreUtils.bE(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.J = SharedPreUtils.bF(this.E.getApp(), this.E.getCurrentAccountUin());
+    this.C = true;
   }
   
   public static int a(int paramInt)
@@ -151,31 +164,6 @@ public class ZhituManager
       return 3;
     }
     return 1;
-  }
-  
-  private int a(String paramString)
-  {
-    try
-    {
-      int j = Integer.parseInt(paramString);
-      if (j != 0)
-      {
-        if (j != 1) {
-          return 2;
-        }
-        return 1;
-      }
-      return 0;
-    }
-    catch (NumberFormatException paramString)
-    {
-      label20:
-      break label20;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "img response has invalid style");
-    }
-    return 2;
   }
   
   @Nullable
@@ -232,46 +220,16 @@ public class ZhituManager
     return (ZhituManager)paramAppInterface.getManager(QQManagerFactory.ZHITU_MANAGER);
   }
   
-  private File a()
-  {
-    return new File(b(), "font");
-  }
-  
-  private File a(ZhituImgResponse paramZhituImgResponse)
-  {
-    return a(c(), paramZhituImgResponse);
-  }
-  
   private File a(File paramFile, ZhituImgResponse paramZhituImgResponse)
   {
     return new File(paramFile, a(paramZhituImgResponse));
-  }
-  
-  private String a(int paramInt)
-  {
-    if (paramInt != 0)
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 3000)
-        {
-          if (paramInt != 7220) {
-            return Integer.toString(paramInt);
-          }
-          return "kandian";
-        }
-        return "discussion";
-      }
-      return "troop";
-    }
-    return "c2c";
   }
   
   @NonNull
   private String a(ZhituImgResponse paramZhituImgResponse)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(com.tencent.securitysdk.utils.MD5.a(paramZhituImgResponse.url));
+    localStringBuilder.append(com.tencent.securitysdk.utils.MD5.b(paramZhituImgResponse.url));
     localStringBuilder.append("_");
     localStringBuilder.append(paramZhituImgResponse.md5);
     return localStringBuilder.toString();
@@ -314,7 +272,7 @@ public class ZhituManager
   
   private void a(Bitmap paramBitmap1, Bitmap paramBitmap2, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    if (!paramString1.equals(a()))
+    if (!paramString1.equals(d()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(paramString1, "notifyImgProcessFinished", "notifyImgProcessFinished but the reqKey is outdated"));
@@ -322,38 +280,38 @@ public class ZhituManager
       return;
     }
     ZhituPicData localZhituPicData = new ZhituPicData();
-    localZhituPicData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), paramBitmap2);
+    localZhituPicData.i = new BitmapDrawable(this.E.getApp().getResources(), paramBitmap2);
     if (paramBitmap1 != null) {
-      paramBitmap1 = new BitmapDrawable(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources(), paramBitmap1);
+      paramBitmap1 = new BitmapDrawable(this.E.getApp().getResources(), paramBitmap1);
     } else {
       paramBitmap1 = null;
     }
-    localZhituPicData.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramBitmap1;
+    localZhituPicData.j = paramBitmap1;
     boolean bool = false;
-    localZhituPicData.jdField_b_of_type_Boolean = false;
+    localZhituPicData.k = false;
     if (paramInt == 0) {
       bool = true;
     }
-    localZhituPicData.jdField_d_of_type_Boolean = bool;
-    localZhituPicData.jdField_e_of_type_Boolean = paramBoolean;
+    localZhituPicData.p = bool;
+    localZhituPicData.q = paramBoolean;
     a(paramString1, paramInt, paramString2, paramString3, paramString4, paramString5, localZhituPicData);
-    h(localZhituPicData);
+    j(localZhituPicData);
   }
   
   private void a(Bundle paramBundle)
   {
     String str1 = paramBundle.getString("ReqUniqueKey");
-    if (!a().equals(str1))
+    if (!d().equals(str1))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(str1, "retryFailDownload", "reqKey is outdated, skip."));
       }
       return;
     }
-    int j = paramBundle.getInt("RetryCount", 0);
-    int k = paramBundle.getInt("IdxInRes");
+    int i1 = paramBundle.getInt("RetryCount", 0);
+    int i2 = paramBundle.getInt("IdxInRes");
     str1 = paramBundle.getString("ReqUniqueKey");
-    if (j >= 3)
+    if (i1 >= 3)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(str1, "retryFailDownload", "max retry limitation is reached."));
@@ -364,25 +322,25 @@ public class ZhituManager
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("current retry count is ");
-      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(i1);
       QLog.d("ZhituManager", 2, a(str1, "retryFailDownload", ((StringBuilder)localObject).toString()));
     }
     if (QLog.isColorLevel()) {
       QLog.d("ZhituManager", 2, a(str1, "retryFailDownload", "retry img download"));
     }
-    paramBundle.putInt("RetryCount", j + 1);
+    paramBundle.putInt("RetryCount", i1 + 1);
     Object localObject = (ZhituResponse)paramBundle.getParcelable("ZhituRespose");
     ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)paramBundle.getParcelable("ImgResponse");
     String str2 = paramBundle.getString("QueryText");
     paramBundle.remove("ErrorCode");
-    a((ZhituResponse)localObject, str1, this.jdField_a_of_type_ComTencentCommonAppAppInterface, k, localZhituImgResponse, str2, paramBundle);
+    a((ZhituResponse)localObject, str1, this.E, i2, localZhituImgResponse, str2, paramBundle);
   }
   
   private void a(Message paramMessage)
   {
     Object localObject = (Bundle)paramMessage.obj;
     paramMessage = ((Bundle)localObject).getString("ReqUniqueKey");
-    if (!a().equals(paramMessage))
+    if (!d().equals(paramMessage))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(paramMessage, "MSG_WHAT_IMG_DOWNLOAD_SUCC", "reqKey is outdated, skip."));
@@ -391,30 +349,30 @@ public class ZhituManager
     }
     ZhituResponse localZhituResponse = (ZhituResponse)((Bundle)localObject).getParcelable("ZhituRespose");
     ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)((Bundle)localObject).getParcelable("ImgResponse");
-    int k = ((Bundle)localObject).getInt("IdxInRes");
+    int i2 = ((Bundle)localObject).getInt("IdxInRes");
     localObject = ((Bundle)localObject).getString("QueryText");
     if ((localZhituResponse != null) && (localZhituImgResponse != null))
     {
-      int m = a(localZhituImgResponse.style);
+      int i3 = e(localZhituImgResponse.style);
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("style is ");
-        localStringBuilder.append(m);
-        QLog.d("ZhituManager", 2, a(paramMessage, "MSG_WHAT_IMG_DOWNLOAD_SUCC", k, localStringBuilder.toString()));
+        localStringBuilder.append(i3);
+        QLog.d("ZhituManager", 2, a(paramMessage, "MSG_WHAT_IMG_DOWNLOAD_SUCC", i2, localStringBuilder.toString()));
       }
-      int n = b();
-      int j = 1;
-      if (n != 1) {
-        j = 0;
+      int i4 = f();
+      int i1 = 1;
+      if (i4 != 1) {
+        i1 = 0;
       }
-      if (m != 2)
+      if (i3 != 2)
       {
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new ZhituManager.6(this, paramMessage, k, localZhituResponse, localZhituImgResponse, m, (String)localObject));
+        this.t.execute(new ZhituManager.6(this, paramMessage, i2, localZhituResponse, localZhituImgResponse, i3, (String)localObject));
         return;
       }
-      if (j != 0)
+      if (i1 != 0)
       {
         if (QLog.isColorLevel())
         {
@@ -422,20 +380,20 @@ public class ZhituManager
           localStringBuilder.append("zhitutest handleImgDownloadSucc key = ");
           localStringBuilder.append(paramMessage);
           localStringBuilder.append(" |idxinRes = ");
-          localStringBuilder.append(k);
+          localStringBuilder.append(i2);
           localStringBuilder.append(" | originQueryText = ");
           localStringBuilder.append((String)localObject);
           QLog.d("ZhituManager", 2, localStringBuilder.toString());
         }
         if (a(paramMessage, localZhituImgResponse) != null)
         {
-          this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new ZhituManager.7(this, paramMessage, k, localZhituResponse, localZhituImgResponse, m, (String)localObject));
+          this.t.execute(new ZhituManager.7(this, paramMessage, i2, localZhituResponse, localZhituImgResponse, i3, (String)localObject));
           return;
         }
-        a(paramMessage, k, localZhituImgResponse);
+        a(paramMessage, i2, localZhituImgResponse);
         return;
       }
-      a(paramMessage, k, localZhituImgResponse);
+      a(paramMessage, i2, localZhituImgResponse);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -451,7 +409,7 @@ public class ZhituManager
   
   private void a(AbstractGifImage paramAbstractGifImage, ZhituTextManager.DrawTextParam paramDrawTextParam, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    if (!paramString3.equals(a()))
+    if (!paramString3.equals(d()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(paramString3, "notifyImgProcessFinished", "notifyImgProcessFinished but the reqKey is outdated"));
@@ -459,24 +417,24 @@ public class ZhituManager
       return;
     }
     ZhituPicData localZhituPicData = new ZhituPicData();
-    localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam = paramDrawTextParam;
+    localZhituPicData.d = paramDrawTextParam;
     boolean bool = true;
-    localZhituPicData.jdField_b_of_type_Boolean = true;
+    localZhituPicData.k = true;
     localZhituPicData.c = paramString1;
-    localZhituPicData.jdField_b_of_type_JavaLangString = paramString2;
-    localZhituPicData.jdField_a_of_type_Boolean = true;
+    localZhituPicData.b = paramString2;
+    localZhituPicData.e = true;
     if (paramInt != 0) {
       bool = false;
     }
-    localZhituPicData.jdField_d_of_type_Boolean = bool;
+    localZhituPicData.p = bool;
     a(paramString3, paramInt, paramString4, paramString5, paramString6, paramString7, localZhituPicData);
-    paramDrawTextParam = b(localZhituPicData);
+    paramDrawTextParam = f(localZhituPicData);
     a(paramDrawTextParam, paramAbstractGifImage);
-    paramAbstractGifImage = this.jdField_a_of_type_AndroidOsHandler;
+    paramAbstractGifImage = this.s;
     if (paramAbstractGifImage != null) {
       paramAbstractGifImage.post(new ZhituManager.8(this, paramDrawTextParam));
     }
-    h(localZhituPicData);
+    j(localZhituPicData);
   }
   
   private void a(ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2)
@@ -486,32 +444,32 @@ public class ZhituManager
     {
       QLog.d("ZhituManager", 1, a(paramString1, "handleZhituResponse", "the list is null"));
       if (paramInt == 0) {
-        a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources().getString(2131720495));
+        f(this.E.getApp().getResources().getString(2131918212));
       }
       return;
     }
-    this.jdField_c_of_type_JavaUtilMap.put(paramString1, paramZhituResponse);
+    this.q.put(paramString1, paramZhituResponse);
     if ((paramInt == 0) && (((List)localObject).isEmpty()))
     {
-      a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getResources().getString(2131720495));
+      f(this.E.getApp().getResources().getString(2131918212));
       return;
     }
-    int j = Math.min(((List)localObject).size(), paramInt + d());
-    if (!a(paramZhituResponse, (List)localObject, paramInt, j, paramString1, paramString2))
+    int i1 = Math.min(((List)localObject).size(), paramInt + y());
+    if (!a(paramZhituResponse, (List)localObject, paramInt, i1, paramString1, paramString2))
     {
       QLog.d("ZhituManager", 1, a(paramString1, "handleZhituResponse", "fail to start download"));
       return;
     }
-    localObject = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(6);
-    ((Message)localObject).arg1 = (j - paramInt);
+    localObject = this.N.obtainMessage(6);
+    ((Message)localObject).arg1 = (i1 - paramInt);
     if (paramInt == 0) {
       ((Message)localObject).arg1 += 1;
     }
     ((Message)localObject).arg2 = paramZhituResponse.hasMore;
     ((Message)localObject).obj = paramString1;
-    this.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    this.N.sendMessage((Message)localObject);
     if (paramInt == 0) {
-      this.jdField_a_of_type_JavaUtilConcurrentExecutor.execute(new ZhituManager.9(this, paramZhituResponse, paramString1, j, paramString2));
+      this.t.execute(new ZhituManager.9(this, paramZhituResponse, paramString1, i1, paramString2));
     }
   }
   
@@ -527,19 +485,19 @@ public class ZhituManager
     localBundle.putInt("IdxInRes", paramInt);
     localBundle.putString("QueryText", paramString2);
     localBundle.putLong("StartTs", System.currentTimeMillis());
-    paramZhituResponse = a(paramZhituImgResponse);
+    paramZhituResponse = b(paramZhituImgResponse);
     boolean bool = paramZhituResponse.exists();
-    int j = 1;
+    int i1 = 1;
     if (bool)
     {
-      b(paramZhituResponse.getAbsolutePath());
+      g(paramZhituResponse.getAbsolutePath());
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(paramString1, "startEachImgDownloadRequest", paramInt, "md5 matched, the origin img is downloaded and just skip download."));
       }
-      if (this.jdField_e_of_type_Int != 2)
+      if (this.y != 2)
       {
         bool = paramZhituResponse.setLastModified(System.currentTimeMillis());
-        if ((this.jdField_e_of_type_Int == 0) && (QLog.isColorLevel()))
+        if ((this.y == 0) && (QLog.isColorLevel()))
         {
           paramZhituResponse = new StringBuilder();
           paramZhituResponse.append("set last modified time is supported? ");
@@ -547,26 +505,26 @@ public class ZhituManager
           QLog.d("ZhituManager", 2, paramZhituResponse.toString());
         }
         if (bool) {
-          paramInt = j;
+          paramInt = i1;
         } else {
           paramInt = 2;
         }
-        this.jdField_e_of_type_Int = paramInt;
+        this.y = paramInt;
       }
-      paramZhituResponse = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+      paramZhituResponse = this.s.obtainMessage(3);
       paramZhituResponse.obj = localBundle;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramZhituResponse);
+      this.s.sendMessage(paramZhituResponse);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$DownloadListener == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$DownloadListener = new ZhituManager.DownloadListener(this.jdField_a_of_type_AndroidOsHandler);
+    if (this.v == null) {
+      this.v = new ZhituManager.DownloadListener(this.s);
     }
     paramZhituImgResponse = paramZhituImgResponse.url;
     paramAppInterface = (IHttpEngineService)paramAppInterface.getRuntimeService(IHttpEngineService.class, "all");
     paramString2 = new HttpNetReq();
     paramString2.mNeedIpConnect = true;
     paramString2.mNeedNotReferer = true;
-    paramString2.mCallback = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$DownloadListener;
+    paramString2.mCallback = this.v;
     paramString2.mHttpMethod = 0;
     paramString2.mReqUrl = paramZhituImgResponse;
     paramString2.mOutPath = paramZhituResponse.getAbsolutePath();
@@ -579,7 +537,7 @@ public class ZhituManager
       paramZhituResponse.append(paramZhituImgResponse);
       QLog.d("ZhituManager", 2, a(paramString1, "startEachImgDownloadRequest", paramInt, paramZhituResponse.toString()));
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramString2);
+    this.u.add(paramString2);
     paramAppInterface.sendReq(paramString2);
   }
   
@@ -608,14 +566,14 @@ public class ZhituManager
   {
     try
     {
-      if (this.jdField_d_of_type_JavaUtilMap == null) {
-        this.jdField_d_of_type_JavaUtilMap = new HashMap();
+      if (this.w == null) {
+        this.w = new HashMap();
       }
-      if (!this.jdField_d_of_type_JavaUtilMap.containsKey(paramFile))
+      if (!this.w.containsKey(paramFile))
       {
         File localFile = new File(paramFile, ".nomedia");
         if ((!localFile.exists()) && (localFile.createNewFile())) {
-          this.jdField_d_of_type_JavaUtilMap.put(paramFile, Boolean.valueOf(true));
+          this.w.put(paramFile, Boolean.valueOf(true));
         }
       }
       return;
@@ -627,18 +585,12 @@ public class ZhituManager
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ZhituCreateBitmapCatchedExceptionOOM when create bitmap with count: ");
-    localStringBuilder.append(jdField_a_of_type_Int);
+    localStringBuilder.append(f);
     CaughtExceptionReport.a(paramOutOfMemoryError, localStringBuilder.toString());
     paramOutOfMemoryError = new StringBuilder();
     paramOutOfMemoryError.append("create bitmap but oom, ");
-    paramOutOfMemoryError.append(jdField_a_of_type_Int);
+    paramOutOfMemoryError.append(f);
     QLog.d("ZhituManager", 1, paramOutOfMemoryError.toString());
-  }
-  
-  private void a(String paramString)
-  {
-    paramString = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(11, paramString);
-    this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramString);
   }
   
   private void a(String paramString, int paramInt, ZhituImgResponse paramZhituImgResponse)
@@ -650,18 +602,18 @@ public class ZhituManager
     if (".gif".equalsIgnoreCase(str.substring(str.lastIndexOf(".")))) {}
     try
     {
-      str = a(paramZhituImgResponse).getAbsolutePath();
+      str = b(paramZhituImgResponse).getAbsolutePath();
       a(new NativeGifImage(new File(str), false), null, str, str, paramString, paramInt, paramZhituImgResponse.url, paramZhituImgResponse.md5, paramZhituImgResponse.style, paramZhituImgResponse.pass);
       return;
     }
     catch (IOException paramZhituImgResponse)
     {
-      label109:
-      break label109;
+      label110:
+      break label110;
     }
     QLog.e("ZhituManager", 1, a(paramString, "passThroughOriginImg", "convert to gif drawable fail"));
     return;
-    a(null, BitmapFactory.decodeFile(a(paramZhituImgResponse).getAbsolutePath()), paramString, paramInt, paramZhituImgResponse.url, paramZhituImgResponse.md5, paramZhituImgResponse.style, paramZhituImgResponse.pass, false);
+    a(null, BitmapFactory.decodeFile(b(paramZhituImgResponse).getAbsolutePath()), paramString, paramInt, paramZhituImgResponse.url, paramZhituImgResponse.md5, paramZhituImgResponse.style, paramZhituImgResponse.pass, false);
   }
   
   /* Error */
@@ -670,440 +622,440 @@ public class ZhituManager
     // Byte code:
     //   0: aload_1
     //   1: astore 11
-    //   3: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +20 -> 26
-    //   9: ldc 139
-    //   11: iconst_2
-    //   12: aload 11
-    //   14: ldc 206
-    //   16: iload_2
-    //   17: ldc_w 793
-    //   20: invokestatic 439	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
-    //   23: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   26: getstatic 777	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:jdField_a_of_type_Int	I
-    //   29: iconst_1
-    //   30: iadd
-    //   31: putstatic 777	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:jdField_a_of_type_Int	I
-    //   34: aload 4
-    //   36: getfield 279	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
-    //   39: astore 12
-    //   41: aload 12
+    //   3: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6: ifeq +22 -> 28
+    //   9: ldc_w 260
+    //   12: iconst_2
+    //   13: aload 11
+    //   15: ldc_w 262
+    //   18: iload_2
+    //   19: ldc_w 830
+    //   22: invokestatic 475	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+    //   25: invokestatic 273	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   28: getstatic 817	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:f	I
+    //   31: iconst_1
+    //   32: iadd
+    //   33: putstatic 817	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:f	I
+    //   36: aload 4
+    //   38: getfield 316	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
+    //   41: astore 12
     //   43: aload 12
-    //   45: ldc_w 797
-    //   48: invokevirtual 800	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   51: invokevirtual 803	java/lang/String:substring	(I)Ljava/lang/String;
-    //   54: astore 14
-    //   56: aload_0
-    //   57: aload 11
-    //   59: aload 4
-    //   61: invokespecial 463	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse;)Landroid/graphics/Rect;
-    //   64: astore 13
-    //   66: aload 13
-    //   68: ifnonnull +4 -> 72
-    //   71: return
-    //   72: aload_0
-    //   73: aload 4
-    //   75: invokespecial 616	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse;)Ljava/io/File;
-    //   78: invokevirtual 622	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   81: astore 12
-    //   83: invokestatic 610	java/lang/System:currentTimeMillis	()J
-    //   86: lstore 9
-    //   88: ldc_w 795
-    //   91: aload 14
-    //   93: invokevirtual 807	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   96: ifeq +519 -> 615
-    //   99: aload_0
-    //   100: invokevirtual 442	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:b	()I
-    //   103: istore 7
-    //   105: iload 7
-    //   107: iconst_1
-    //   108: if_icmpne +9 -> 117
-    //   111: iconst_1
-    //   112: istore 7
-    //   114: goto +6 -> 120
-    //   117: iconst_0
-    //   118: istore 7
-    //   120: iload_2
-    //   121: ifeq +121 -> 242
-    //   124: iload 7
-    //   126: ifeq +6 -> 132
-    //   129: goto +113 -> 242
-    //   132: new 809	com/tencent/image/NativeGifImage
-    //   135: dup
-    //   136: new 248	java/io/File
-    //   139: dup
-    //   140: aload 12
-    //   142: invokespecial 811	java/io/File:<init>	(Ljava/lang/String;)V
-    //   145: iconst_0
-    //   146: invokespecial 814	com/tencent/image/NativeGifImage:<init>	(Ljava/io/File;Z)V
-    //   149: astore 11
-    //   151: invokestatic 836	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	()Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager;
-    //   154: astore 14
-    //   156: aload 11
-    //   158: invokevirtual 839	com/tencent/image/NativeGifImage:getWidth	()I
-    //   161: istore 7
-    //   163: aload 11
-    //   165: invokevirtual 842	com/tencent/image/NativeGifImage:getHeight	()I
-    //   168: istore 8
-    //   170: aload_3
-    //   171: getfield 845	com/tencent/mobileqq/activity/aio/zhitu/ZhituResponse:tokens	Ljava/util/List;
-    //   174: astore_3
-    //   175: aload 4
-    //   177: getfield 848	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:textColor	Ljava/lang/String;
-    //   180: astore 15
-    //   182: aload_0
-    //   183: getfield 850	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:jdField_a_of_type_AndroidGraphicsTypeface	Landroid/graphics/Typeface;
-    //   186: astore 16
-    //   188: aload_0
-    //   189: aload 11
-    //   191: aload 14
-    //   193: iload 7
-    //   195: iload 8
-    //   197: aload 6
-    //   199: aload_3
-    //   200: aload 15
-    //   202: aload 13
-    //   204: iload 5
-    //   206: aload_1
-    //   207: iload_2
-    //   208: aload 16
-    //   210: invokevirtual 853	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	(IILjava/lang/String;Ljava/util/List;Ljava/lang/String;Landroid/graphics/Rect;ILjava/lang/String;ILandroid/graphics/Typeface;)Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;
-    //   213: aload 12
-    //   215: aconst_null
-    //   216: aload_1
-    //   217: iload_2
-    //   218: aload 4
-    //   220: getfield 279	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
-    //   223: aload 4
-    //   225: getfield 289	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:md5	Ljava/lang/String;
-    //   228: aload 4
-    //   230: getfield 433	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:style	Ljava/lang/String;
-    //   233: aload 4
-    //   235: getfield 817	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:pass	Ljava/lang/String;
-    //   238: invokespecial 819	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Lcom/tencent/image/AbstractGifImage;Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   241: return
-    //   242: ldc 139
-    //   244: astore 11
-    //   246: new 855	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText
-    //   249: dup
-    //   250: new 248	java/io/File
-    //   253: dup
-    //   254: aload 12
-    //   256: invokespecial 811	java/io/File:<init>	(Ljava/lang/String;)V
-    //   259: iconst_0
-    //   260: fconst_0
-    //   261: invokespecial 858	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:<init>	(Ljava/io/File;ZF)V
-    //   264: astore 14
-    //   266: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   269: ifeq +79 -> 348
-    //   272: new 197	java/lang/StringBuilder
-    //   275: dup
-    //   276: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   279: astore 15
-    //   281: aload 15
-    //   283: ldc_w 860
-    //   286: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   289: pop
-    //   290: aload 15
-    //   292: iload_2
-    //   293: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   296: pop
-    //   297: aload 15
-    //   299: ldc_w 312
-    //   302: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: pop
-    //   306: aload 15
-    //   308: aload 14
-    //   310: invokevirtual 861	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getWidth	()I
-    //   313: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   316: pop
-    //   317: aload 15
-    //   319: ldc_w 312
-    //   322: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: pop
-    //   326: aload 15
-    //   328: aload 14
-    //   330: invokevirtual 862	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:d	()I
-    //   333: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   336: pop
-    //   337: aload 11
-    //   339: iconst_2
-    //   340: aload 15
-    //   342: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   345: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   348: invokestatic 836	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	()Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager;
-    //   351: astore 15
-    //   353: aload 14
-    //   355: invokevirtual 861	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getWidth	()I
-    //   358: istore 7
-    //   360: aload 14
-    //   362: invokevirtual 863	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getHeight	()I
-    //   365: istore 8
-    //   367: aload_3
-    //   368: getfield 845	com/tencent/mobileqq/activity/aio/zhitu/ZhituResponse:tokens	Ljava/util/List;
-    //   371: astore_3
-    //   372: aload 4
-    //   374: getfield 848	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:textColor	Ljava/lang/String;
-    //   377: astore 16
-    //   379: aload_0
-    //   380: getfield 850	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:jdField_a_of_type_AndroidGraphicsTypeface	Landroid/graphics/Typeface;
-    //   383: astore 17
-    //   385: aload 15
-    //   387: iload 7
-    //   389: iload 8
-    //   391: aload 6
-    //   393: aload_3
-    //   394: aload 16
-    //   396: aload 13
-    //   398: iload 5
-    //   400: aload_1
-    //   401: iload_2
-    //   402: aload 17
-    //   404: invokevirtual 853	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	(IILjava/lang/String;Ljava/util/List;Ljava/lang/String;Landroid/graphics/Rect;ILjava/lang/String;ILandroid/graphics/Typeface;)Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;
-    //   407: astore_3
-    //   408: aload 14
-    //   410: aload_3
-    //   411: invokevirtual 866	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	(Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;)V
-    //   414: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   417: ifeq +376 -> 793
-    //   420: new 197	java/lang/StringBuilder
-    //   423: dup
-    //   424: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   427: astore 6
-    //   429: aload 6
-    //   431: ldc_w 868
-    //   434: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   437: pop
-    //   438: aload 6
-    //   440: invokestatic 610	java/lang/System:currentTimeMillis	()J
-    //   443: lload 9
-    //   445: lsub
-    //   446: invokestatic 873	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   449: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   452: pop
-    //   453: aload 6
-    //   455: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   458: astore 6
-    //   460: aload 11
-    //   462: iconst_2
-    //   463: aload_1
-    //   464: ldc_w 875
-    //   467: iload_2
-    //   468: aload 6
-    //   470: invokestatic 439	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
-    //   473: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   476: goto +3 -> 479
-    //   479: aload 4
-    //   481: getfield 279	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
-    //   484: astore 6
-    //   486: aload 4
-    //   488: getfield 289	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:md5	Ljava/lang/String;
-    //   491: astore 11
-    //   493: aload 4
-    //   495: getfield 433	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:style	Ljava/lang/String;
-    //   498: astore 13
-    //   500: aload 4
-    //   502: getfield 817	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:pass	Ljava/lang/String;
-    //   505: astore 15
-    //   507: ldc 139
-    //   509: astore 4
-    //   511: aload_0
-    //   512: aload 14
-    //   514: aload_3
-    //   515: aload 12
-    //   517: aconst_null
-    //   518: aload_1
-    //   519: iload_2
-    //   520: aload 6
-    //   522: aload 11
-    //   524: aload 13
-    //   526: aload 15
-    //   528: invokespecial 819	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Lcom/tencent/image/AbstractGifImage;Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   531: return
-    //   532: astore_3
-    //   533: goto +38 -> 571
+    //   45: aload 12
+    //   47: ldc_w 834
+    //   50: invokevirtual 837	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   53: invokevirtual 840	java/lang/String:substring	(I)Ljava/lang/String;
+    //   56: astore 14
+    //   58: aload_0
+    //   59: aload 11
+    //   61: aload 4
+    //   63: invokespecial 499	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse;)Landroid/graphics/Rect;
+    //   66: astore 13
+    //   68: aload 13
+    //   70: ifnonnull +4 -> 74
+    //   73: return
+    //   74: aload_0
+    //   75: aload 4
+    //   77: invokespecial 654	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:b	(Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse;)Ljava/io/File;
+    //   80: invokevirtual 660	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   83: astore 12
+    //   85: invokestatic 647	java/lang/System:currentTimeMillis	()J
+    //   88: lstore 9
+    //   90: ldc_w 832
+    //   93: aload 14
+    //   95: invokevirtual 844	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   98: ifeq +525 -> 623
+    //   101: aload_0
+    //   102: invokevirtual 478	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:f	()I
+    //   105: istore 7
+    //   107: iload 7
+    //   109: iconst_1
+    //   110: if_icmpne +9 -> 119
+    //   113: iconst_1
+    //   114: istore 7
+    //   116: goto +6 -> 122
+    //   119: iconst_0
+    //   120: istore 7
+    //   122: iload_2
+    //   123: ifeq +121 -> 244
+    //   126: iload 7
+    //   128: ifeq +6 -> 134
+    //   131: goto +113 -> 244
+    //   134: new 846	com/tencent/image/NativeGifImage
+    //   137: dup
+    //   138: new 306	java/io/File
+    //   141: dup
+    //   142: aload 12
+    //   144: invokespecial 848	java/io/File:<init>	(Ljava/lang/String;)V
+    //   147: iconst_0
+    //   148: invokespecial 851	com/tencent/image/NativeGifImage:<init>	(Ljava/io/File;Z)V
+    //   151: astore 11
+    //   153: invokestatic 873	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	()Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager;
+    //   156: astore 14
+    //   158: aload 11
+    //   160: invokevirtual 876	com/tencent/image/NativeGifImage:getWidth	()I
+    //   163: istore 7
+    //   165: aload 11
+    //   167: invokevirtual 879	com/tencent/image/NativeGifImage:getHeight	()I
+    //   170: istore 8
+    //   172: aload_3
+    //   173: getfield 882	com/tencent/mobileqq/activity/aio/zhitu/ZhituResponse:tokens	Ljava/util/List;
+    //   176: astore_3
+    //   177: aload 4
+    //   179: getfield 885	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:textColor	Ljava/lang/String;
+    //   182: astore 15
+    //   184: aload_0
+    //   185: getfield 887	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:o	Landroid/graphics/Typeface;
+    //   188: astore 16
+    //   190: aload_0
+    //   191: aload 11
+    //   193: aload 14
+    //   195: iload 7
+    //   197: iload 8
+    //   199: aload 6
+    //   201: aload_3
+    //   202: aload 15
+    //   204: aload 13
+    //   206: iload 5
+    //   208: aload_1
+    //   209: iload_2
+    //   210: aload 16
+    //   212: invokevirtual 890	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	(IILjava/lang/String;Ljava/util/List;Ljava/lang/String;Landroid/graphics/Rect;ILjava/lang/String;ILandroid/graphics/Typeface;)Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;
+    //   215: aload 12
+    //   217: aconst_null
+    //   218: aload_1
+    //   219: iload_2
+    //   220: aload 4
+    //   222: getfield 316	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
+    //   225: aload 4
+    //   227: getfield 326	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:md5	Ljava/lang/String;
+    //   230: aload 4
+    //   232: getfield 469	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:style	Ljava/lang/String;
+    //   235: aload 4
+    //   237: getfield 854	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:pass	Ljava/lang/String;
+    //   240: invokespecial 856	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Lcom/tencent/image/AbstractGifImage;Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   243: return
+    //   244: ldc_w 260
+    //   247: astore 11
+    //   249: new 892	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText
+    //   252: dup
+    //   253: new 306	java/io/File
+    //   256: dup
+    //   257: aload 12
+    //   259: invokespecial 848	java/io/File:<init>	(Ljava/lang/String;)V
+    //   262: iconst_0
+    //   263: fconst_0
+    //   264: invokespecial 895	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:<init>	(Ljava/io/File;ZF)V
+    //   267: astore 14
+    //   269: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   272: ifeq +79 -> 351
+    //   275: new 251	java/lang/StringBuilder
+    //   278: dup
+    //   279: invokespecial 252	java/lang/StringBuilder:<init>	()V
+    //   282: astore 15
+    //   284: aload 15
+    //   286: ldc_w 897
+    //   289: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   292: pop
+    //   293: aload 15
+    //   295: iload_2
+    //   296: invokevirtual 332	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   299: pop
+    //   300: aload 15
+    //   302: ldc_w 350
+    //   305: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   308: pop
+    //   309: aload 15
+    //   311: aload 14
+    //   313: invokevirtual 898	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getWidth	()I
+    //   316: invokevirtual 332	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   319: pop
+    //   320: aload 15
+    //   322: ldc_w 350
+    //   325: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   328: pop
+    //   329: aload 15
+    //   331: aload 14
+    //   333: invokevirtual 899	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:f	()I
+    //   336: invokevirtual 332	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   339: pop
+    //   340: aload 11
+    //   342: iconst_2
+    //   343: aload 15
+    //   345: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokestatic 273	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   351: invokestatic 873	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	()Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager;
+    //   354: astore 15
+    //   356: aload 14
+    //   358: invokevirtual 898	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getWidth	()I
+    //   361: istore 7
+    //   363: aload 14
+    //   365: invokevirtual 900	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:getHeight	()I
+    //   368: istore 8
+    //   370: aload_3
+    //   371: getfield 882	com/tencent/mobileqq/activity/aio/zhitu/ZhituResponse:tokens	Ljava/util/List;
+    //   374: astore_3
+    //   375: aload 4
+    //   377: getfield 885	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:textColor	Ljava/lang/String;
+    //   380: astore 16
+    //   382: aload_0
+    //   383: getfield 887	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:o	Landroid/graphics/Typeface;
+    //   386: astore 17
+    //   388: aload 15
+    //   390: iload 7
+    //   392: iload 8
+    //   394: aload 6
+    //   396: aload_3
+    //   397: aload 16
+    //   399: aload 13
+    //   401: iload 5
+    //   403: aload_1
+    //   404: iload_2
+    //   405: aload 17
+    //   407: invokevirtual 890	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	(IILjava/lang/String;Ljava/util/List;Ljava/lang/String;Landroid/graphics/Rect;ILjava/lang/String;ILandroid/graphics/Typeface;)Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;
+    //   410: astore_3
+    //   411: aload 14
+    //   413: aload_3
+    //   414: invokevirtual 903	com/tencent/mobileqq/activity/aio/zhitu/GifImageWithText:a	(Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;)V
+    //   417: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   420: ifeq +385 -> 805
+    //   423: new 251	java/lang/StringBuilder
+    //   426: dup
+    //   427: invokespecial 252	java/lang/StringBuilder:<init>	()V
+    //   430: astore 6
+    //   432: aload 6
+    //   434: ldc_w 905
+    //   437: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   440: pop
+    //   441: aload 6
+    //   443: invokestatic 647	java/lang/System:currentTimeMillis	()J
+    //   446: lload 9
+    //   448: lsub
+    //   449: invokestatic 910	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   452: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   455: pop
+    //   456: aload 6
+    //   458: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   461: astore 6
+    //   463: aload 11
+    //   465: iconst_2
+    //   466: aload_1
+    //   467: ldc_w 912
+    //   470: iload_2
+    //   471: aload 6
+    //   473: invokestatic 475	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+    //   476: invokestatic 273	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   479: goto +3 -> 482
+    //   482: aload 4
+    //   484: getfield 316	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
+    //   487: astore 6
+    //   489: aload 4
+    //   491: getfield 326	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:md5	Ljava/lang/String;
+    //   494: astore 11
+    //   496: aload 4
+    //   498: getfield 469	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:style	Ljava/lang/String;
+    //   501: astore 13
+    //   503: aload 4
+    //   505: getfield 854	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:pass	Ljava/lang/String;
+    //   508: astore 15
+    //   510: ldc_w 260
+    //   513: astore 4
+    //   515: aload_0
+    //   516: aload 14
+    //   518: aload_3
+    //   519: aload 12
+    //   521: aconst_null
+    //   522: aload_1
+    //   523: iload_2
+    //   524: aload 6
+    //   526: aload 11
+    //   528: aload 13
+    //   530: aload 15
+    //   532: invokespecial 856	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Lcom/tencent/image/AbstractGifImage;Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager$DrawTextParam;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   535: return
     //   536: astore_3
-    //   537: ldc 139
-    //   539: astore 4
-    //   541: goto +30 -> 571
-    //   544: astore_3
-    //   545: aload 11
-    //   547: astore 4
-    //   549: goto +22 -> 571
-    //   552: astore_3
-    //   553: ldc 139
-    //   555: astore 4
-    //   557: goto +14 -> 571
-    //   560: astore_1
-    //   561: aload_1
-    //   562: invokestatic 163	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/OutOfMemoryError;)V
-    //   565: return
-    //   566: astore_3
-    //   567: ldc 139
-    //   569: astore 4
-    //   571: new 197	java/lang/StringBuilder
-    //   574: dup
-    //   575: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   578: astore 6
-    //   580: aload 6
-    //   582: ldc_w 877
-    //   585: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   588: pop
-    //   589: aload 6
-    //   591: aload_3
-    //   592: invokevirtual 315	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   537: goto +41 -> 578
+    //   540: astore_3
+    //   541: ldc_w 260
+    //   544: astore 4
+    //   546: goto +32 -> 578
+    //   549: astore_3
+    //   550: aload 11
+    //   552: astore 4
+    //   554: goto +24 -> 578
+    //   557: astore_3
+    //   558: ldc_w 260
+    //   561: astore 4
+    //   563: goto +15 -> 578
+    //   566: astore_1
+    //   567: aload_1
+    //   568: invokestatic 211	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/OutOfMemoryError;)V
+    //   571: return
+    //   572: astore_3
+    //   573: ldc_w 260
+    //   576: astore 4
+    //   578: new 251	java/lang/StringBuilder
+    //   581: dup
+    //   582: invokespecial 252	java/lang/StringBuilder:<init>	()V
+    //   585: astore 6
+    //   587: aload 6
+    //   589: ldc_w 914
+    //   592: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   595: pop
-    //   596: aload 4
-    //   598: iconst_1
-    //   599: aload_1
-    //   600: ldc 206
-    //   602: iload_2
-    //   603: aload 6
-    //   605: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   608: invokestatic 439	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
-    //   611: invokestatic 823	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   614: return
-    //   615: aload 12
-    //   617: invokestatic 829	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   620: astore 14
-    //   622: aload 14
-    //   624: ifnonnull +22 -> 646
-    //   627: ldc 139
-    //   629: iconst_1
-    //   630: aload 11
-    //   632: ldc_w 879
-    //   635: iload_2
-    //   636: ldc_w 881
-    //   639: invokestatic 439	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
-    //   642: invokestatic 823	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   645: return
-    //   646: invokestatic 836	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	()Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager;
-    //   649: aload 12
-    //   651: aload 6
-    //   653: aload_3
-    //   654: getfield 845	com/tencent/mobileqq/activity/aio/zhitu/ZhituResponse:tokens	Ljava/util/List;
-    //   657: aload 4
-    //   659: getfield 848	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:textColor	Ljava/lang/String;
-    //   662: aload 13
-    //   664: iload 5
-    //   666: aload_1
-    //   667: iload_2
-    //   668: aload_0
-    //   669: getfield 850	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:jdField_a_of_type_AndroidGraphicsTypeface	Landroid/graphics/Typeface;
-    //   672: invokevirtual 884	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Landroid/graphics/Rect;ILjava/lang/String;ILandroid/graphics/Typeface;)Landroid/graphics/Bitmap;
-    //   675: astore_3
-    //   676: invokestatic 137	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   679: ifeq +56 -> 735
-    //   682: new 197	java/lang/StringBuilder
-    //   685: dup
-    //   686: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   689: astore 6
-    //   691: aload 6
-    //   693: ldc_w 868
-    //   696: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   699: pop
+    //   596: aload 6
+    //   598: aload_3
+    //   599: invokevirtual 353	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   602: pop
+    //   603: aload 4
+    //   605: iconst_1
+    //   606: aload_1
+    //   607: ldc_w 262
+    //   610: iload_2
+    //   611: aload 6
+    //   613: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   616: invokestatic 475	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+    //   619: invokestatic 860	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   622: return
+    //   623: aload 12
+    //   625: invokestatic 866	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   628: astore 14
+    //   630: aload 14
+    //   632: ifnonnull +23 -> 655
+    //   635: ldc_w 260
+    //   638: iconst_1
+    //   639: aload 11
+    //   641: ldc_w 916
+    //   644: iload_2
+    //   645: ldc_w 918
+    //   648: invokestatic 475	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+    //   651: invokestatic 860	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   654: return
+    //   655: invokestatic 873	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	()Lcom/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager;
+    //   658: aload 12
+    //   660: aload 6
+    //   662: aload_3
+    //   663: getfield 882	com/tencent/mobileqq/activity/aio/zhitu/ZhituResponse:tokens	Ljava/util/List;
+    //   666: aload 4
+    //   668: getfield 885	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:textColor	Ljava/lang/String;
+    //   671: aload 13
+    //   673: iload 5
+    //   675: aload_1
+    //   676: iload_2
+    //   677: aload_0
+    //   678: getfield 887	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:o	Landroid/graphics/Typeface;
+    //   681: invokevirtual 921	com/tencent/mobileqq/activity/aio/zhitu/ZhituTextManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Landroid/graphics/Rect;ILjava/lang/String;ILandroid/graphics/Typeface;)Landroid/graphics/Bitmap;
+    //   684: astore_3
+    //   685: invokestatic 346	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   688: ifeq +57 -> 745
+    //   691: new 251	java/lang/StringBuilder
+    //   694: dup
+    //   695: invokespecial 252	java/lang/StringBuilder:<init>	()V
+    //   698: astore 6
     //   700: aload 6
-    //   702: invokestatic 610	java/lang/System:currentTimeMillis	()J
-    //   705: lload 9
-    //   707: lsub
-    //   708: invokestatic 873	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   711: invokevirtual 204	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   714: pop
-    //   715: ldc 139
-    //   717: iconst_2
-    //   718: aload 11
-    //   720: ldc_w 886
-    //   723: iload_2
-    //   724: aload 6
-    //   726: invokevirtual 210	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   729: invokestatic 439	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
-    //   732: invokestatic 144	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   735: aload_3
-    //   736: ifnonnull +4 -> 740
-    //   739: return
-    //   740: aload_0
-    //   741: aload 14
-    //   743: aload_3
-    //   744: aload_1
-    //   745: iload_2
-    //   746: aload 4
-    //   748: getfield 279	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
-    //   751: aload 4
-    //   753: getfield 289	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:md5	Ljava/lang/String;
+    //   702: ldc_w 905
+    //   705: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   708: pop
+    //   709: aload 6
+    //   711: invokestatic 647	java/lang/System:currentTimeMillis	()J
+    //   714: lload 9
+    //   716: lsub
+    //   717: invokestatic 910	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   720: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   723: pop
+    //   724: ldc_w 260
+    //   727: iconst_2
+    //   728: aload 11
+    //   730: ldc_w 923
+    //   733: iload_2
+    //   734: aload 6
+    //   736: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   739: invokestatic 475	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;
+    //   742: invokestatic 273	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   745: aload_3
+    //   746: ifnonnull +4 -> 750
+    //   749: return
+    //   750: aload_0
+    //   751: aload 14
+    //   753: aload_3
+    //   754: aload_1
+    //   755: iload_2
     //   756: aload 4
-    //   758: getfield 433	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:style	Ljava/lang/String;
+    //   758: getfield 316	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:url	Ljava/lang/String;
     //   761: aload 4
-    //   763: getfield 817	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:pass	Ljava/lang/String;
-    //   766: iconst_0
-    //   767: invokespecial 831	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
-    //   770: return
-    //   771: ldc 139
-    //   773: iconst_1
-    //   774: ldc_w 888
-    //   777: invokestatic 823	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   763: getfield 326	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:md5	Ljava/lang/String;
+    //   766: aload 4
+    //   768: getfield 469	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:style	Ljava/lang/String;
+    //   771: aload 4
+    //   773: getfield 854	com/tencent/mobileqq/activity/aio/zhitu/ZhituImgResponse:pass	Ljava/lang/String;
+    //   776: iconst_0
+    //   777: invokespecial 868	com/tencent/mobileqq/activity/aio/zhitu/ZhituManager:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
     //   780: return
-    //   781: astore_1
-    //   782: goto -11 -> 771
-    //   785: astore_3
-    //   786: ldc 139
-    //   788: astore 4
-    //   790: goto -219 -> 571
-    //   793: goto -314 -> 479
+    //   781: ldc_w 260
+    //   784: iconst_1
+    //   785: ldc_w 925
+    //   788: invokestatic 860	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   791: return
+    //   792: astore_1
+    //   793: goto -12 -> 781
+    //   796: astore_3
+    //   797: ldc_w 260
+    //   800: astore 4
+    //   802: goto -224 -> 578
+    //   805: goto -323 -> 482
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	796	0	this	ZhituManager
-    //   0	796	1	paramString1	String
-    //   0	796	2	paramInt1	int
-    //   0	796	3	paramZhituResponse	ZhituResponse
-    //   0	796	4	paramZhituImgResponse	ZhituImgResponse
-    //   0	796	5	paramInt2	int
-    //   0	796	6	paramString2	String
-    //   103	285	7	j	int
-    //   168	222	8	k	int
-    //   86	620	9	l	long
-    //   1	718	11	localObject1	Object
-    //   39	611	12	str	String
-    //   64	599	13	localObject2	Object
-    //   54	688	14	localObject3	Object
-    //   180	347	15	localObject4	Object
-    //   186	209	16	localObject5	Object
-    //   383	20	17	localTypeface	Typeface
+    //   0	808	0	this	ZhituManager
+    //   0	808	1	paramString1	String
+    //   0	808	2	paramInt1	int
+    //   0	808	3	paramZhituResponse	ZhituResponse
+    //   0	808	4	paramZhituImgResponse	ZhituImgResponse
+    //   0	808	5	paramInt2	int
+    //   0	808	6	paramString2	String
+    //   105	286	7	i1	int
+    //   170	223	8	i2	int
+    //   88	627	9	l1	long
+    //   1	728	11	localObject1	Object
+    //   41	618	12	str	String
+    //   66	606	13	localObject2	Object
+    //   56	696	14	localObject3	Object
+    //   182	349	15	localObject4	Object
+    //   188	210	16	localObject5	Object
+    //   386	20	17	localTypeface	Typeface
     // Exception table:
     //   from	to	target	type
-    //   511	531	532	java/io/IOException
-    //   460	476	536	java/io/IOException
-    //   479	507	536	java/io/IOException
-    //   385	460	544	java/io/IOException
-    //   188	241	552	java/io/IOException
-    //   246	348	552	java/io/IOException
-    //   348	385	552	java/io/IOException
-    //   99	105	560	java/lang/OutOfMemoryError
-    //   132	188	560	java/lang/OutOfMemoryError
-    //   188	241	560	java/lang/OutOfMemoryError
-    //   246	348	560	java/lang/OutOfMemoryError
-    //   348	385	560	java/lang/OutOfMemoryError
-    //   385	460	560	java/lang/OutOfMemoryError
-    //   460	476	560	java/lang/OutOfMemoryError
-    //   479	507	560	java/lang/OutOfMemoryError
-    //   511	531	560	java/lang/OutOfMemoryError
-    //   99	105	566	java/io/IOException
-    //   615	622	781	java/lang/OutOfMemoryError
-    //   132	188	785	java/io/IOException
+    //   515	535	536	java/io/IOException
+    //   463	479	540	java/io/IOException
+    //   482	510	540	java/io/IOException
+    //   388	463	549	java/io/IOException
+    //   190	243	557	java/io/IOException
+    //   249	351	557	java/io/IOException
+    //   351	388	557	java/io/IOException
+    //   101	107	566	java/lang/OutOfMemoryError
+    //   134	190	566	java/lang/OutOfMemoryError
+    //   190	243	566	java/lang/OutOfMemoryError
+    //   249	351	566	java/lang/OutOfMemoryError
+    //   351	388	566	java/lang/OutOfMemoryError
+    //   388	463	566	java/lang/OutOfMemoryError
+    //   463	479	566	java/lang/OutOfMemoryError
+    //   482	510	566	java/lang/OutOfMemoryError
+    //   515	535	566	java/lang/OutOfMemoryError
+    //   101	107	572	java/io/IOException
+    //   623	630	792	java/lang/OutOfMemoryError
+    //   134	190	796	java/io/IOException
   }
   
   private void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, ZhituPicData paramZhituPicData)
   {
-    paramZhituPicData.jdField_d_of_type_JavaLangString = paramString1;
-    paramZhituPicData.jdField_a_of_type_Int = paramInt;
-    paramZhituPicData.jdField_a_of_type_JavaLangString = paramString2;
-    paramZhituPicData.jdField_e_of_type_JavaLangString = paramString3;
+    paramZhituPicData.f = paramString1;
+    paramZhituPicData.g = paramInt;
+    paramZhituPicData.a = paramString2;
+    paramZhituPicData.h = paramString3;
     paramString1 = new ZhituReportData();
-    paramString1.jdField_b_of_type_JavaLangString = paramString3;
+    paramString1.b = paramString3;
     paramString1.c = paramString4;
-    paramString1.jdField_a_of_type_JavaLangString = paramString5;
-    paramString1.jdField_d_of_type_JavaLangString = b(this.jdField_c_of_type_Int);
-    paramString1.jdField_e_of_type_JavaLangString = b();
-    paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData = paramString1;
+    paramString1.a = paramString5;
+    paramString1.e = g(this.p);
+    paramString1.f = e();
+    paramZhituPicData.l = paramString1;
   }
   
   private void a(String paramString, AbstractGifImage paramAbstractGifImage)
@@ -1122,23 +1074,23 @@ public class ZhituManager
     }
     HashSet localHashSet = new HashSet(localList.size());
     ArrayList localArrayList = new ArrayList(localList.size());
-    int j = 0;
-    while (j < localList.size())
+    int i1 = 0;
+    while (i1 < localList.size())
     {
-      if (!localHashSet.add(localList.get(j)))
+      if (!localHashSet.add(localList.get(i1)))
       {
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("find duplication res: ");
-          localStringBuilder.append(localList.get(j));
+          localStringBuilder.append(localList.get(i1));
           QLog.e("ZhituManager", 2, a(paramString, "removeDuplicateImg", localStringBuilder.toString()));
         }
       }
       else {
-        localArrayList.add(localList.get(j));
+        localArrayList.add(localList.get(i1));
       }
-      j += 1;
+      i1 += 1;
     }
     paramZhituResponse.list = localArrayList;
   }
@@ -1152,7 +1104,7 @@ public class ZhituManager
       ((StringBuilder)localObject).append(paramList.size());
       QLog.d("ZhituManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (IHttpEngineService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IHttpEngineService.class, "all");
+    Object localObject = (IHttpEngineService)this.E.getRuntimeService(IHttpEngineService.class, "all");
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
       ((IHttpEngineService)localObject).cancelReq((HttpNetReq)paramList.next());
@@ -1161,13 +1113,172 @@ public class ZhituManager
   
   private void a(NewIntent paramNewIntent, Handler paramHandler)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituObserver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituObserver = new ZhituObserver(paramHandler);
+    if (this.g == null) {
+      this.g = new ZhituObserver(paramHandler);
     }
-    paramNewIntent.setObserver(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituObserver);
+    paramNewIntent.setObserver(this.g);
   }
   
-  public static boolean a(int paramInt)
+  private boolean a(ZhituResponse paramZhituResponse, List<ZhituImgResponse> paramList, int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start / end idx: ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" / ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("ZhituManager", 2, a(paramString1, "startImgDownload", ((StringBuilder)localObject).toString()));
+    }
+    Object localObject = v();
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+    {
+      QLog.d("ZhituManager", 1, a(paramString1, "startImgDownload", "can not create dir."));
+      return false;
+    }
+    try
+    {
+      a((File)localObject);
+      label116:
+      int i1;
+      if (paramInt1 == 0) {
+        i1 = 0;
+      } else {
+        i1 = -1;
+      }
+      while (paramInt1 < paramInt2)
+      {
+        localObject = (ZhituImgResponse)paramList.get(paramInt1 + i1);
+        a(paramZhituResponse, paramString1, this.E, paramInt1, (ZhituImgResponse)localObject, paramString2, null);
+        paramInt1 += 1;
+      }
+      return true;
+    }
+    catch (IOException localIOException)
+    {
+      break label116;
+    }
+  }
+  
+  public static boolean a(MessageForPic paramMessageForPic)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool1 = localAppRuntime instanceof QQAppInterface;
+    boolean bool3 = false;
+    if (bool1) {
+      bool1 = a((QQAppInterface)localAppRuntime).i();
+    } else {
+      bool1 = false;
+    }
+    boolean bool2 = bool3;
+    if (b(paramMessageForPic))
+    {
+      bool2 = bool3;
+      if (!bool1) {
+        bool2 = true;
+      }
+    }
+    return bool2;
+  }
+  
+  private File b(ZhituImgResponse paramZhituImgResponse)
+  {
+    return a(v(), paramZhituImgResponse);
+  }
+  
+  private void b(Message paramMessage)
+  {
+    int i1 = paramMessage.arg1;
+    paramMessage = (String)paramMessage.obj;
+    if (android.text.TextUtils.isEmpty(paramMessage)) {
+      return;
+    }
+    if (!paramMessage.equals(d()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, a(paramMessage, "MSG_WHAT_REQUEST_MORE_IMG", "more img key is not the last req key, stop."));
+      }
+      return;
+    }
+    ZhituResponse localZhituResponse = (ZhituResponse)this.q.get(paramMessage);
+    if (localZhituResponse != null) {
+      a(localZhituResponse, paramMessage, i1, e());
+    }
+  }
+  
+  private void b(MessageQueue paramMessageQueue)
+  {
+    paramMessageQueue.addIdleHandler(new ZhituManager.4(this));
+  }
+  
+  private void b(ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, a(paramString1, "generateFullTextZhitu", paramInt, ""));
+    }
+    Bitmap localBitmap = a(200, 200);
+    if (localBitmap == null) {
+      return;
+    }
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    localPaint.setColor(-1);
+    Rect localRect = new Rect(0, 0, 200, 200);
+    localCanvas.drawRect(localRect, localPaint);
+    paramZhituResponse = ZhituTextManager.a().a(localBitmap, paramString2, paramZhituResponse.tokens, "#000000", localRect, 3, paramString1, paramInt, this.o);
+    if (paramZhituResponse == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "generate full text zhitu fail");
+      }
+      return;
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append("mario");
+    paramString2.append(System.currentTimeMillis());
+    a(null, paramZhituResponse, paramString1, paramInt, "http://img.qq.com/zhitu/fulltext.jpg", paramString2.toString(), "WhiteBack", null, true);
+  }
+  
+  public static boolean b(MessageForPic paramMessageForPic)
+  {
+    return (paramMessageForPic != null) && (paramMessageForPic.picExtraData != null) && (paramMessageForPic.picExtraData.isZhitu());
+  }
+  
+  private void d(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "realSendZhituSafeGateRequest start");
+    }
+    if (StringUtil.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ZhituManager", 1, "realSendZhituSafeGateRequest iCurrentUin is Empty");
+      }
+      return;
+    }
+    ZhituSafeGate.ReqBody localReqBody = new ZhituSafeGate.ReqBody();
+    localReqBody.uint64_src_uin.set(Long.parseLong(paramString));
+    localReqBody.uint32_src_term.set(3);
+    paramString = new NewIntent(this.E.getApp(), ZhituServlet.class);
+    paramString.putExtra("ZhituCMD", "ZhituGate.Check");
+    paramString.putExtra("ZhituRequestBytes", localReqBody.toByteArray());
+    this.E.startServlet(paramString);
+  }
+  
+  public static void d(boolean paramBoolean)
+  {
+    if (K == paramBoolean) {
+      return;
+    }
+    try
+    {
+      K = paramBoolean;
+      return;
+    }
+    finally {}
+  }
+  
+  public static boolean d(int paramInt)
   {
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -1185,69 +1296,65 @@ public class ZhituManager
     return bool1;
   }
   
-  private boolean a(ZhituResponse paramZhituResponse, List<ZhituImgResponse> paramList, int paramInt1, int paramInt2, String paramString1, String paramString2)
+  private int e(String paramString)
   {
-    if (QLog.isColorLevel())
+    try
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("start / end idx: ");
-      ((StringBuilder)localObject).append(paramInt1);
-      ((StringBuilder)localObject).append(" / ");
-      ((StringBuilder)localObject).append(paramInt2);
-      QLog.d("ZhituManager", 2, a(paramString1, "startImgDownload", ((StringBuilder)localObject).toString()));
+      int i1 = Integer.parseInt(paramString);
+      if (i1 != 0)
+      {
+        if (i1 != 1) {
+          return 2;
+        }
+        return 1;
+      }
+      return 0;
     }
-    Object localObject = c();
-    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+    catch (NumberFormatException paramString)
     {
-      QLog.d("ZhituManager", 1, a(paramString1, "startImgDownload", "can not create dir."));
-      return false;
+      label20:
+      break label20;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "img response has invalid style");
+    }
+    return 2;
+  }
+  
+  private String e(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 3000)
+        {
+          if (paramInt != 7220) {
+            return Integer.toString(paramInt);
+          }
+          return "kandian";
+        }
+        return "discussion";
+      }
+      return "troop";
+    }
+    return "c2c";
+  }
+  
+  public static void e(boolean paramBoolean)
+  {
+    if (L == paramBoolean) {
+      return;
     }
     try
     {
-      a((File)localObject);
-      label114:
-      int j;
-      if (paramInt1 == 0) {
-        j = 0;
-      } else {
-        j = -1;
-      }
-      while (paramInt1 < paramInt2)
-      {
-        localObject = (ZhituImgResponse)paramList.get(paramInt1 + j);
-        a(paramZhituResponse, paramString1, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramInt1, (ZhituImgResponse)localObject, paramString2, null);
-        paramInt1 += 1;
-      }
-      return true;
+      L = paramBoolean;
+      return;
     }
-    catch (IOException localIOException)
-    {
-      break label114;
-    }
+    finally {}
   }
   
-  public static boolean a(MessageForPic paramMessageForPic)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    boolean bool1 = localAppRuntime instanceof QQAppInterface;
-    boolean bool3 = false;
-    if (bool1) {
-      bool1 = a((QQAppInterface)localAppRuntime).b();
-    } else {
-      bool1 = false;
-    }
-    boolean bool2 = bool3;
-    if (b(paramMessageForPic))
-    {
-      bool2 = bool3;
-      if (!bool1) {
-        bool2 = true;
-      }
-    }
-    return bool2;
-  }
-  
-  private int b(int paramInt)
+  private int f(int paramInt)
   {
     if (paramInt != 0)
     {
@@ -1267,12 +1374,46 @@ public class ZhituManager
     return 1;
   }
   
-  private File b()
+  private void f(String paramString)
   {
-    return d();
+    paramString = this.N.obtainMessage(11, paramString);
+    this.N.sendMessage(paramString);
   }
   
-  private String b(int paramInt)
+  private void f(boolean paramBoolean)
+  {
+    if (this.j.size() == 0) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    LinkedList localLinkedList = new LinkedList();
+    while ((!this.j.isEmpty()) && ((localLinkedList.size() <= 100) || (!paramBoolean))) {
+      localLinkedList.add(this.j.poll());
+    }
+    Object localObject = localLinkedList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      ZhituReportMsg.ReqBody localReqBody = ((ZhituReportData)((Iterator)localObject).next()).a();
+      if (localReqBody != null)
+      {
+        NewIntent localNewIntent = new NewIntent(this.E.getApp(), ZhituServlet.class);
+        localNewIntent.putExtra("ZhituCMD", "MQInference.ZhituReport");
+        localNewIntent.putExtra("ZhituRequestBytes", localReqBody.toByteArray());
+        this.E.startServlet(localNewIntent);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("send ");
+      ((StringBuilder)localObject).append(localLinkedList.size());
+      ((StringBuilder)localObject).append(" reports, take ");
+      ((StringBuilder)localObject).append(Long.toString(System.currentTimeMillis() - l1));
+      QLog.d("ZhituManager", 2, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  private String g(int paramInt)
   {
     if (paramInt != 0)
     {
@@ -1292,10 +1433,10 @@ public class ZhituManager
     return "c2c";
   }
   
-  private static String b(String paramString)
+  private static String g(String paramString)
   {
     localObject1 = "";
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     try
     {
       try
@@ -1338,226 +1479,13 @@ public class ZhituManager
       ((StringBuilder)localObject1).append("md5:");
       ((StringBuilder)localObject1).append(paramString);
       ((StringBuilder)localObject1).append(",cost:");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
       QLog.d("ZhituManager", 2, new Object[] { "calcMD5", ((StringBuilder)localObject1).toString() });
     }
     return paramString;
   }
   
-  private void b(Message paramMessage)
-  {
-    int j = paramMessage.arg1;
-    paramMessage = (String)paramMessage.obj;
-    if (android.text.TextUtils.isEmpty(paramMessage)) {
-      return;
-    }
-    if (!paramMessage.equals(a()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, a(paramMessage, "MSG_WHAT_REQUEST_MORE_IMG", "more img key is not the last req key, stop."));
-      }
-      return;
-    }
-    ZhituResponse localZhituResponse = (ZhituResponse)this.jdField_c_of_type_JavaUtilMap.get(paramMessage);
-    if (localZhituResponse != null) {
-      a(localZhituResponse, paramMessage, j, b());
-    }
-  }
-  
-  private void b(MessageQueue paramMessageQueue)
-  {
-    paramMessageQueue.addIdleHandler(new ZhituManager.4(this));
-  }
-  
-  private void b(ZhituResponse paramZhituResponse, String paramString1, int paramInt, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, a(paramString1, "generateFullTextZhitu", paramInt, ""));
-    }
-    Bitmap localBitmap = a(200, 200);
-    if (localBitmap == null) {
-      return;
-    }
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    localPaint.setColor(-1);
-    Rect localRect = new Rect(0, 0, 200, 200);
-    localCanvas.drawRect(localRect, localPaint);
-    paramZhituResponse = ZhituTextManager.a().a(localBitmap, paramString2, paramZhituResponse.tokens, "#000000", localRect, 3, paramString1, paramInt, this.jdField_a_of_type_AndroidGraphicsTypeface);
-    if (paramZhituResponse == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "generate full text zhitu fail");
-      }
-      return;
-    }
-    paramString2 = new StringBuilder();
-    paramString2.append("mario");
-    paramString2.append(System.currentTimeMillis());
-    a(null, paramZhituResponse, paramString1, paramInt, "http://img.qq.com/zhitu/fulltext.jpg", paramString2.toString(), "WhiteBack", null, true);
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "realSendZhituSafeGateRequest start");
-    }
-    ZhituSafeGate.ReqBody localReqBody = new ZhituSafeGate.ReqBody();
-    localReqBody.uint64_src_uin.set(Long.parseLong(paramQQAppInterface.getCurrentUin()));
-    localReqBody.uint32_src_term.set(3);
-    paramQQAppInterface = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ZhituServlet.class);
-    paramQQAppInterface.putExtra("ZhituCMD", "ZhituGate.Check");
-    paramQQAppInterface.putExtra("ZhituRequestBytes", localReqBody.toByteArray());
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramQQAppInterface);
-  }
-  
-  public static boolean b(MessageForPic paramMessageForPic)
-  {
-    return (paramMessageForPic != null) && (paramMessageForPic.picExtraData != null) && (paramMessageForPic.picExtraData.isZhitu());
-  }
-  
-  private File c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append("zhitu");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("origin/");
-    return new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
-  }
-  
-  private int d()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  private File d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append("zhitu");
-    return new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "cancelAllRequestMessage");
-      }
-      int j = 1;
-      while (j < 10)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(j);
-        j += 1;
-      }
-    }
-  }
-  
-  public static void d(boolean paramBoolean)
-  {
-    if (h == paramBoolean) {
-      return;
-    }
-    try
-    {
-      h = paramBoolean;
-      return;
-    }
-    finally {}
-  }
-  
-  private File e()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append("zhitu");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("sent/");
-    return new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
-  }
-  
-  private void e()
-  {
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      GlobalImageCache.a.remove(str);
-    }
-    this.jdField_b_of_type_JavaUtilList.clear();
-  }
-  
-  public static void e(boolean paramBoolean)
-  {
-    if (i == paramBoolean) {
-      return;
-    }
-    try
-    {
-      i = paramBoolean;
-      return;
-    }
-    finally {}
-  }
-  
-  private void f()
-  {
-    this.jdField_c_of_type_Boolean = SharedPreUtils.q(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_b_of_type_Boolean = SharedPreUtils.n(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_b_of_type_Int = SharedPreUtils.aw(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_f_of_type_Boolean = SharedPreUtils.r(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_g_of_type_Boolean = SharedPreUtils.s(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_Long = SharedPreUtils.g(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_g_of_type_Int = SharedPreUtils.ax(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    this.jdField_d_of_type_Boolean = true;
-  }
-  
-  private void f(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.size() == 0) {
-      return;
-    }
-    long l = System.currentTimeMillis();
-    LinkedList localLinkedList = new LinkedList();
-    while ((!this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.isEmpty()) && ((localLinkedList.size() <= 100) || (!paramBoolean))) {
-      localLinkedList.add(this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.poll());
-    }
-    Object localObject = localLinkedList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ZhituReportMsg.ReqBody localReqBody = ((ZhituReportData)((Iterator)localObject).next()).a();
-      if (localReqBody != null)
-      {
-        NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ZhituServlet.class);
-        localNewIntent.putExtra("ZhituCMD", "MQInference.ZhituReport");
-        localNewIntent.putExtra("ZhituRequestBytes", localReqBody.toByteArray());
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
-      }
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("send ");
-      ((StringBuilder)localObject).append(localLinkedList.size());
-      ((StringBuilder)localObject).append(" reports, take ");
-      ((StringBuilder)localObject).append(Long.toString(System.currentTimeMillis() - l));
-      QLog.d("ZhituManager", 2, ((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static boolean f()
-  {
-    try
-    {
-      boolean bool = i;
-      return bool;
-    }
-    finally {}
-  }
-  
-  private void g(ZhituPicData paramZhituPicData)
+  private void i(ZhituPicData paramZhituPicData)
   {
     if (paramZhituPicData == null)
     {
@@ -1566,23 +1494,23 @@ public class ZhituManager
       }
       return;
     }
-    int k = b();
-    int j = 1;
-    if (k != 1) {
-      j = 0;
+    int i2 = f();
+    int i1 = 1;
+    if (i2 != 1) {
+      i1 = 0;
     }
-    String str = b(paramZhituPicData);
+    String str = f(paramZhituPicData);
     if (a(str) != null)
     {
-      h(paramZhituPicData);
+      j(paramZhituPicData);
       return;
     }
     try
     {
-      if ((paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam != null) && ((paramZhituPicData.jdField_d_of_type_Boolean) || (j != 0)))
+      if ((paramZhituPicData.d != null) && ((paramZhituPicData.p) || (i1 != 0)))
       {
         localObject = new GifImageWithText(new File(paramZhituPicData.c), false, 0.0F);
-        ((GifImageWithText)localObject).a(paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam);
+        ((GifImageWithText)localObject).a(paramZhituPicData.d);
       }
       else
       {
@@ -1600,8 +1528,8 @@ public class ZhituManager
         localObject = new NativeGifImage(new File(paramZhituPicData.c), false);
       }
       a(str, (AbstractGifImage)localObject);
-      this.jdField_b_of_type_JavaUtilList.add(str);
-      h(paramZhituPicData);
+      this.z.add(str);
+      j(paramZhituPicData);
       return;
     }
     catch (OutOfMemoryError paramZhituPicData)
@@ -1623,132 +1551,110 @@ public class ZhituManager
     }
   }
   
-  public static boolean g()
+  private void j(ZhituPicData paramZhituPicData)
+  {
+    paramZhituPicData = this.N.obtainMessage(5, paramZhituPicData);
+    this.N.sendMessage(paramZhituPicData);
+  }
+  
+  public static boolean p()
   {
     try
     {
-      boolean bool = h;
+      boolean bool = L;
       return bool;
     }
     finally {}
   }
   
-  private void h(ZhituPicData paramZhituPicData)
+  public static boolean q()
   {
-    paramZhituPicData = this.jdField_b_of_type_AndroidOsHandler.obtainMessage(5, paramZhituPicData);
-    this.jdField_b_of_type_AndroidOsHandler.sendMessage(paramZhituPicData);
+    try
+    {
+      boolean bool = K;
+      return bool;
+    }
+    finally {}
   }
   
-  private boolean h()
+  private File r()
   {
-    return this.jdField_e_of_type_Boolean;
+    return new File(s(), "font");
+  }
+  
+  private File s()
+  {
+    return w();
+  }
+  
+  private void t()
+  {
+    if (this.s != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "cancelAllRequestMessage");
+      }
+      int i1 = 1;
+      while (i1 < 10)
+      {
+        this.s.removeMessages(i1);
+        i1 += 1;
+      }
+    }
+  }
+  
+  private void u()
+  {
+    Iterator localIterator = this.z.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      GlobalImageCache.a.remove(str);
+    }
+    this.z.clear();
+  }
+  
+  private File v()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("zhitu");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("origin/");
+    return new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+  }
+  
+  private File w()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("zhitu");
+    return new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+  }
+  
+  private File x()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("zhitu");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("sent/");
+    return new File(VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString()));
+  }
+  
+  private int y()
+  {
+    return this.l;
+  }
+  
+  private boolean z()
+  {
+    return this.D;
   }
   
   public int a()
   {
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public long a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getZhituSafeGateRequestTime = ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
-      QLog.d("ZhituManager", 2, localStringBuilder.toString());
-    }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public File a(@NonNull String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(new File(paramString).getName());
-    localStringBuilder.append("_");
-    localStringBuilder.append(System.currentTimeMillis());
-    paramString = localStringBuilder.toString();
-    return new File(e(), paramString);
-  }
-  
-  public File a(@NonNull String paramString1, @Nullable String paramString2)
-  {
-    if (!android.text.TextUtils.isEmpty(paramString2)) {
-      return a(paramString2);
-    }
-    int j = paramString1.lastIndexOf("/") + 1;
-    int k = paramString1.lastIndexOf(".");
-    if (j < k) {
-      paramString1 = paramString1.substring(j, k);
-    } else {
-      paramString1 = "fakeFileName";
-    }
-    paramString2 = new StringBuilder();
-    paramString2.append(paramString1);
-    paramString2.append("_");
-    paramString2.append(System.currentTimeMillis());
-    paramString1 = paramString2.toString();
-    return new File(e(), paramString1);
-  }
-  
-  public String a()
-  {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  @Nullable
-  public String a(ZhituPicData paramZhituPicData)
-  {
-    if ((paramZhituPicData.jdField_a_of_type_Boolean) && (paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam != null)) {
-      return ZhituTextManager.a().a(paramZhituPicData.c, paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam, paramZhituPicData.jdField_d_of_type_JavaLangString, paramZhituPicData.jdField_a_of_type_Int, this);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView;
-    if ((localObject != null) && (((ZhituPanelView)localObject).getVisibility() == 0))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter;
-      if (localObject != null) {
-        ((ZhituPanelView.ZhituPanelAdapter)localObject).b();
-      }
-    }
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
-    if ((localObject != null) && (((LinearLayout)localObject).getVisibility() == 0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter = ((ZhituPicAdapter)this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.getAdapter());
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter;
-      if (localObject == null) {
-        return;
-      }
-      ((ZhituPicAdapter)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.resetCurrentX(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter.notifyDataSetChanged();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setZhituSafeGateRequestInterval: ");
-      localStringBuilder.append(paramInt);
-      QLog.d("ZhituManager", 2, localStringBuilder.toString());
-    }
-    this.jdField_g_of_type_Int = paramInt;
-    SharedPreUtils.P(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    return this.p;
   }
   
   public void a(int paramInt, String paramString)
@@ -1756,17 +1662,17 @@ public class ZhituManager
     if (QLog.isColorLevel()) {
       QLog.d("ZhituManager", 2, a(paramString, "requestDownloadMoreImg", paramInt, ""));
     }
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(7);
+    Message localMessage = this.s.obtainMessage(7);
     localMessage.obj = paramString;
     localMessage.arg1 = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-    paramString = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    this.s.sendMessage(localMessage);
+    paramString = this.E;
     if ((paramString instanceof QQAppInterface)) {
       paramString = (QQAppInterface)paramString;
     } else {
       paramString = null;
     }
-    ReportController.b(paramString, "dc00898", "", "", "0X8008C73", "0X8008C73", a(this.jdField_c_of_type_Int), 0, "", "", "", "");
+    ReportController.b(paramString, "dc00898", "", "", "0X8008C73", "0X8008C73", a(this.p), 0, "", "", "", "");
   }
   
   public void a(long paramLong)
@@ -1778,8 +1684,8 @@ public class ZhituManager
       localStringBuilder.append(paramLong);
       QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Long = paramLong;
-    SharedPreUtils.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramLong);
+    this.I = paramLong;
+    SharedPreUtils.f(this.E.getApp(), this.E.getCurrentAccountUin(), paramLong);
   }
   
   public void a(Context paramContext, ViewGroup paramViewGroup, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, boolean paramBoolean, MqqHandler paramMqqHandler)
@@ -1791,42 +1697,42 @@ public class ZhituManager
       }
       return;
     }
-    this.jdField_e_of_type_Boolean = paramBoolean;
-    Object localObject = (LinearLayout)paramViewGroup.findViewById(2131381343);
+    this.D = paramBoolean;
+    Object localObject = (LinearLayout)paramViewGroup.findViewById(2131450396);
     if (localObject != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, "showZhituEmotionLayout : zhituLayout != null.");
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView = ((ZhituEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131381347));
+      this.a = ((LinearLayout)localObject);
+      this.b = ((ZhituEmotionHorizonListView)this.a.findViewById(2131450400));
     }
     else
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, "showZhituEmotionLayout : zhituLayout == null.");
       }
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)View.inflate(paramContext, 2131558600, null));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView = ((ZhituEmotionHorizonListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131381347));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.setOnScrollStateChangedListener(new ZhituManager.10(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.setTouchListener(new ZhituManager.11(this, paramMqqHandler));
+      this.a = ((LinearLayout)View.inflate(paramContext, 2131624160, null));
+      this.b = ((ZhituEmotionHorizonListView)this.a.findViewById(2131450400));
+      this.b.setOnScrollStateChangedListener(new ZhituManager.10(this));
+      this.b.setTouchListener(new ZhituManager.11(this, paramMqqHandler));
       localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131368875);
+      ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131435809);
       ((RelativeLayout.LayoutParams)localObject).addRule(11);
-      paramViewGroup.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
+      paramViewGroup.addView(this.a, (ViewGroup.LayoutParams)localObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter = ((ZhituPicAdapter)this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.getAdapter());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter == null)
+    this.d = ((ZhituPicAdapter)this.b.getAdapter());
+    if (this.d == null)
     {
-      paramViewGroup = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      paramViewGroup = this.E;
       if ((paramViewGroup instanceof QQAppInterface))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter = new ZhituPicAdapter(paramContext, (QQAppInterface)paramViewGroup, paramBaseActivity, paramSessionInfo, paramMqqHandler);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView.setRecycleListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter);
+        this.d = new ZhituPicAdapter(paramContext, (QQAppInterface)paramViewGroup, paramBaseActivity, paramSessionInfo, paramMqqHandler);
+        this.b.setAdapter(this.d);
+        this.b.setRecycleListener(this.d);
       }
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.setVisibility(0);
     if (paramMqqHandler != null)
     {
       paramMqqHandler.removeMessages(84);
@@ -1836,7 +1742,7 @@ public class ZhituManager
   
   public void a(ZhituManager.ZhituSendListener paramZhituSendListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$ZhituSendListener = paramZhituSendListener;
+    this.M = paramZhituSendListener;
   }
   
   public void a(ZhituPicData paramZhituPicData)
@@ -1848,17 +1754,17 @@ public class ZhituManager
       ((StringBuilder)localObject).append(paramZhituPicData);
       QLog.d("ZhituManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), b());
-    this.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramZhituPicData.jdField_e_of_type_JavaLangString);
-    Object localObject = paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData;
-    ((ZhituReportData)localObject).jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.add(localObject);
+    this.i.put(this.E.getCurrentAccountUin(), e());
+    this.h.put(this.E.getCurrentAccountUin(), paramZhituPicData.h);
+    Object localObject = paramZhituPicData.l;
+    ((ZhituReportData)localObject).d = 1;
+    this.j.add(localObject);
     localObject = null;
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.E;
     if ((localAppInterface instanceof QQAppInterface)) {
       localObject = (QQAppInterface)localAppInterface;
     }
-    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800ADCD", "0X800ADCD", 0, 0, "", "", paramZhituPicData.jdField_e_of_type_JavaLangString, "");
+    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800ADCD", "0X800ADCD", 0, 0, "", "", paramZhituPicData.h, "");
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -1866,26 +1772,26 @@ public class ZhituManager
     if (QLog.isColorLevel()) {
       QLog.d("ZhituManager", 2, "sendZhituSafeGateRequest start");
     }
-    if (!RichTextChatManager.a(paramQQAppInterface).a(paramQQAppInterface))
+    if (!RichTextChatManager.a(paramQQAppInterface).c(paramQQAppInterface))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, "sendZhituSafeGateRequest isZhituLegalOpen is fales return");
       }
       return;
     }
-    long l = System.currentTimeMillis() - a();
-    if (l < c() * 60000L)
+    long l1 = System.currentTimeMillis() - k();
+    if (l1 < l() * 60000L)
     {
       if (QLog.isColorLevel())
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append("sendZhituSafeGateRequest time is short return time = ");
-        paramQQAppInterface.append(l);
+        paramQQAppInterface.append(l1);
         QLog.d("ZhituManager", 2, paramQQAppInterface.toString());
       }
       return;
     }
-    b(paramQQAppInterface);
+    d(paramQQAppInterface.getCurrentUin());
   }
   
   public void a(QQAppInterface paramQQAppInterface, Editable paramEditable, List<ChatMessage> paramList, int paramInt, boolean paramBoolean)
@@ -1900,45 +1806,45 @@ public class ZhituManager
       if (!a(paramEditable)) {
         return;
       }
-      paramEditable = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView;
-      if ((paramEditable != null) && (paramEditable.a() != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView.a().setEnabled(false);
+      paramEditable = this.c;
+      if ((paramEditable != null) && (paramEditable.getSendView() != null)) {
+        this.c.getSendView().setEnabled(false);
       }
-      a();
-      d();
-      if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+      b();
+      t();
+      if (this.r == null)
       {
-        this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ZhituThread", 8);
-        this.jdField_a_of_type_AndroidOsHandlerThread.start();
-        this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+        this.r = ThreadManager.newFreeHandlerThread("ZhituThread", 8);
+        this.r.start();
+        this.s = new Handler(this.r.getLooper(), this);
         if (Build.VERSION.SDK_INT >= 23) {
-          a(this.jdField_a_of_type_AndroidOsHandler.getLooper().getQueue());
+          a(this.s.getLooper().getQueue());
         } else {
-          this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(new ZhituManager.1(this));
+          this.s.postAtFrontOfQueue(new ZhituManager.1(this));
         }
         paramEditable = new ThreadPoolParams();
         paramEditable.corePoolsize = 1;
         paramEditable.maxPooolSize = 1;
         paramEditable.priority = 8;
         paramEditable.poolThreadName = "ZhituImgGenerateThreadPool";
-        this.jdField_a_of_type_JavaUtilConcurrentExecutor = ThreadManager.newFreeThreadPool(paramEditable);
+        this.t = ThreadManager.newFreeThreadPool(paramEditable);
       }
       paramEditable = new StringBuilder();
-      paramEditable.append(com.tencent.securitysdk.utils.MD5.a(paramList));
+      paramEditable.append(com.tencent.securitysdk.utils.MD5.b(paramList));
       paramEditable.append("_");
       paramEditable.append(System.currentTimeMillis());
       paramEditable = paramEditable.toString();
       a(paramEditable, paramList);
       paramQQAppInterface = new ZhituManager.2(this, paramInt, paramQQAppInterface, paramEditable, paramList);
-      paramQQAppInterface = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramQQAppInterface);
-      paramList = this.jdField_a_of_type_AndroidOsHandler;
-      long l;
+      paramQQAppInterface = this.s.obtainMessage(1, paramQQAppInterface);
+      paramList = this.s;
+      long l1;
       if (paramBoolean) {
-        l = 500L;
+        l1 = 500L;
       } else {
-        l = 0L;
+        l1 = 0L;
       }
-      paramList.sendMessageDelayed(paramQQAppInterface, l);
+      paramList.sendMessageDelayed(paramQQAppInterface, l1);
       if (QLog.isColorLevel()) {
         QLog.d("ZhituManager", 2, a(paramEditable, "pending request", ""));
       }
@@ -1955,26 +1861,26 @@ public class ZhituManager
     localZhituRequest.os = "android";
     localZhituRequest.text = paramString2;
     localZhituRequest.styles = 3;
-    localZhituRequest.chat = a(paramInt1);
-    localZhituRequest.version = "8.7.0";
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramQQAppInterface.getCurrentUin()))
+    localZhituRequest.chat = e(paramInt1);
+    localZhituRequest.version = "8.8.17";
+    if (this.h.containsKey(paramQQAppInterface.getCurrentUin()))
     {
       paramString2 = new ZhituReportRequest();
-      paramString2.jdField_a_of_type_JavaUtilList = paramList;
-      paramString2.jdField_b_of_type_JavaLangString = ((String)this.jdField_b_of_type_JavaUtilMap.get(paramQQAppInterface.getCurrentUin()));
-      paramString2.jdField_a_of_type_JavaLangString = ((String)this.jdField_a_of_type_JavaUtilMap.get(paramQQAppInterface.getCurrentUin()));
-      paramString2.jdField_a_of_type_Int = b(paramInt1);
+      paramString2.a = paramList;
+      paramString2.d = ((String)this.i.get(paramQQAppInterface.getCurrentUin()));
+      paramString2.c = ((String)this.h.get(paramQQAppInterface.getCurrentUin()));
+      paramString2.b = f(paramInt1);
       localZhituRequest.report = paramString2;
     }
-    a(paramQQAppInterface, paramString1, localZhituRequest, 0, this.jdField_a_of_type_AndroidOsHandler);
+    a(paramQQAppInterface, paramString1, localZhituRequest, 0, this.s);
   }
   
   public void a(String paramString1, String paramString2)
   {
     try
     {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
+      this.k = paramString1;
+      this.m = paramString2;
       return;
     }
     finally
@@ -1993,20 +1899,8 @@ public class ZhituManager
       localStringBuilder.append(paramBoolean);
       QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    SharedPreUtils.j(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isZhituConfigOpen.zhituSwitch = ");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
-      QLog.d("ZhituManager", 2, localStringBuilder.toString());
-    }
-    return this.jdField_b_of_type_Boolean;
+    this.A = paramBoolean;
+    SharedPreUtils.i(this.E.getApp(), this.E.getCurrentAccountUin(), paramBoolean);
   }
   
   public boolean a(Editable paramEditable)
@@ -2040,96 +1934,64 @@ public class ZhituManager
       paramEditable.append("isLegal: ");
       paramEditable.append(bool1);
       paramEditable.append(" / ");
-      paramEditable.append(com.tencent.securitysdk.utils.MD5.a(str));
+      paramEditable.append(com.tencent.securitysdk.utils.MD5.b(str));
       QLog.d("ZhituManager", 2, paramEditable.toString());
     }
     return bool1;
   }
   
-  public int b()
+  public File b(@NonNull String paramString)
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
-    if ((localAppInterface != null) && ((localAppInterface instanceof QQAppInterface))) {
-      return RichTextChatManager.a((QQAppInterface)localAppInterface).a();
-    }
-    return 0;
-  }
-  
-  public String b()
-  {
-    try
-    {
-      String str = this.jdField_b_of_type_JavaLangString;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  @NonNull
-  String b(ZhituPicData paramZhituPicData)
-  {
-    int k = b();
-    int j = 1;
-    if (k != 1) {
-      j = 0;
-    }
-    Object localObject = "origin";
-    if (j != 0)
-    {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Zhitu_");
-      localStringBuilder.append(paramZhituPicData.c);
-      localStringBuilder.append("_");
-      if (paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam != null) {
-        localObject = Integer.valueOf(paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.hashCode());
-      }
-      localStringBuilder.append(localObject);
-      return localStringBuilder.toString();
-    }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Zhitu_");
-    localStringBuilder.append(paramZhituPicData.c);
+    localStringBuilder.append(new File(paramString).getName());
     localStringBuilder.append("_");
-    if ((paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam != null) && (paramZhituPicData.jdField_d_of_type_Boolean)) {
-      localObject = Integer.valueOf(paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituTextManager$DrawTextParam.hashCode());
+    localStringBuilder.append(System.currentTimeMillis());
+    paramString = localStringBuilder.toString();
+    return new File(x(), paramString);
+  }
+  
+  public File b(@NonNull String paramString1, @Nullable String paramString2)
+  {
+    if (!android.text.TextUtils.isEmpty(paramString2)) {
+      return b(paramString2);
     }
-    localStringBuilder.append(localObject);
-    return localStringBuilder.toString();
+    int i1 = paramString1.lastIndexOf("/") + 1;
+    int i2 = paramString1.lastIndexOf(".");
+    if (i1 < i2) {
+      paramString1 = paramString1.substring(i1, i2);
+    } else {
+      paramString1 = "fakeFileName";
+    }
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("_");
+    paramString2.append(System.currentTimeMillis());
+    paramString1 = paramString2.toString();
+    return new File(x(), paramString1);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    File localFile = b();
-    if ((!localFile.exists()) && (!localFile.mkdirs())) {
-      return;
-    }
-    localFile = new File(localFile, "font");
-    if ((localFile.exists()) && ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(b(localFile.getAbsolutePath()))))
+    Object localObject = this.c;
+    if ((localObject != null) && (((ZhituPanelView)localObject).getVisibility() == 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "startDownload Font but file is exist and correct");
+      localObject = this.e;
+      if (localObject != null) {
+        ((ZhituPanelView.ZhituPanelAdapter)localObject).b();
       }
-      this.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(localFile);
-      this.jdField_a_of_type_Boolean = true;
-      return;
     }
-    IHttpEngineService localIHttpEngineService = (IHttpEngineService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IHttpEngineService.class, "all");
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mNeedIpConnect = true;
-    localHttpNetReq.mNeedNotReferer = true;
-    localHttpNetReq.mCallback = new ZhituManager.FontDownloadListener(this.jdField_a_of_type_AndroidOsHandler);
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mReqUrl = "https://dl.url.cn/myapp/qq_desk/qqrm/smartgif/lantingyuan.ttf";
-    localHttpNetReq.mOutPath = localFile.getAbsolutePath();
-    localHttpNetReq.mPrioty = 0;
-    localIHttpEngineService.sendReq(localHttpNetReq);
+    localObject = this.a;
+    if ((localObject != null) && (((LinearLayout)localObject).getVisibility() == 0))
+    {
+      this.d = ((ZhituPicAdapter)this.b.getAdapter());
+      localObject = this.d;
+      if (localObject == null) {
+        return;
+      }
+      ((ZhituPicAdapter)localObject).a();
+      this.b.resetCurrentX(0);
+      this.d.notifyDataSetChanged();
+    }
   }
   
   public void b(int paramInt)
@@ -2137,12 +1999,12 @@ public class ZhituManager
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setPageLen: ");
+      localStringBuilder.append("setZhituSafeGateRequestInterval: ");
       localStringBuilder.append(paramInt);
       QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Int = paramInt;
-    SharedPreUtils.O(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramInt);
+    this.J = paramInt;
+    SharedPreUtils.T(this.E.getApp(), this.E.getCurrentAccountUin(), paramInt);
   }
   
   public void b(ZhituPicData paramZhituPicData)
@@ -2154,15 +2016,15 @@ public class ZhituManager
       ((StringBuilder)localObject).append(paramZhituPicData);
       QLog.d("ZhituManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = paramZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData;
-    ((ZhituReportData)localObject).jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingDeque.add(localObject);
+    Object localObject = paramZhituPicData.l;
+    ((ZhituReportData)localObject).d = 0;
+    this.j.add(localObject);
     localObject = null;
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.E;
     if ((localAppInterface instanceof QQAppInterface)) {
       localObject = (QQAppInterface)localAppInterface;
     }
-    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800ADCC", "0X800ADCC", 0, 0, "", "", paramZhituPicData.jdField_e_of_type_JavaLangString, "");
+    ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X800ADCC", "0X800ADCC", 0, 0, "", "", paramZhituPicData.h, "");
   }
   
   public void b(boolean paramBoolean)
@@ -2174,30 +2036,159 @@ public class ZhituManager
       localStringBuilder.append(paramBoolean);
       QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
-    this.jdField_f_of_type_Boolean = paramBoolean;
-    SharedPreUtils.k(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBoolean);
+    this.G = paramBoolean;
+    SharedPreUtils.j(this.E.getApp(), this.E.getCurrentAccountUin(), paramBoolean);
   }
   
-  public boolean b()
+  @Nullable
+  public String c(ZhituPicData paramZhituPicData)
   {
-    return this.jdField_f_of_type_Boolean;
+    if ((paramZhituPicData.e) && (paramZhituPicData.d != null)) {
+      return ZhituTextManager.a().a(paramZhituPicData.c, paramZhituPicData.d, paramZhituPicData.f, paramZhituPicData.g, this);
+    }
+    return null;
   }
   
-  public int c()
+  public void c()
+  {
+    if (this.n) {
+      return;
+    }
+    File localFile = s();
+    if ((!localFile.exists()) && (!localFile.mkdirs())) {
+      return;
+    }
+    localFile = new File(localFile, "font");
+    if ((localFile.exists()) && ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(g(localFile.getAbsolutePath()))))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ZhituManager", 2, "startDownload Font but file is exist and correct");
+      }
+      this.o = Typeface.createFromFile(localFile);
+      this.n = true;
+      return;
+    }
+    IHttpEngineService localIHttpEngineService = (IHttpEngineService)this.E.getRuntimeService(IHttpEngineService.class, "all");
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mNeedIpConnect = true;
+    localHttpNetReq.mNeedNotReferer = true;
+    localHttpNetReq.mCallback = new ZhituManager.FontDownloadListener(this.s);
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mReqUrl = "https://dl.url.cn/myapp/qq_desk/qqrm/smartgif/lantingyuan.ttf";
+    localHttpNetReq.mOutPath = localFile.getAbsolutePath();
+    localHttpNetReq.mPrioty = 0;
+    localIHttpEngineService.sendReq(localHttpNetReq);
+  }
+  
+  public void c(int paramInt)
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getZhituSafeGateRequestInterval = ");
-      localStringBuilder.append(this.jdField_g_of_type_Int);
+      localStringBuilder.append("setPageLen: ");
+      localStringBuilder.append(paramInt);
       QLog.d("ZhituManager", 2, localStringBuilder.toString());
     }
-    return this.jdField_g_of_type_Int;
+    this.l = paramInt;
+    SharedPreUtils.S(this.E.getApp(), this.E.getCurrentAccountUin(), paramInt);
   }
   
-  public String c()
+  public void c(boolean paramBoolean)
   {
-    File localFile = e();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setZhituSafeGateSwitch: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
+    }
+    this.H = paramBoolean;
+    SharedPreUtils.k(this.E.getApp(), this.E.getCurrentAccountUin(), paramBoolean);
+  }
+  
+  public String d()
+  {
+    try
+    {
+      String str = this.k;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void d(ZhituPicData paramZhituPicData)
+  {
+    paramZhituPicData = this.s.obtainMessage(10, paramZhituPicData);
+    this.s.sendMessage(paramZhituPicData);
+  }
+  
+  public String e()
+  {
+    try
+    {
+      String str = this.m;
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void e(ZhituPicData paramZhituPicData)
+  {
+    d(paramZhituPicData);
+  }
+  
+  public int f()
+  {
+    AppInterface localAppInterface = this.E;
+    if ((localAppInterface != null) && ((localAppInterface instanceof QQAppInterface))) {
+      return RichTextChatManager.a((QQAppInterface)localAppInterface).e();
+    }
+    return 0;
+  }
+  
+  @NonNull
+  String f(ZhituPicData paramZhituPicData)
+  {
+    int i2 = f();
+    int i1 = 1;
+    if (i2 != 1) {
+      i1 = 0;
+    }
+    Object localObject = "origin";
+    if (i1 != 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Zhitu_");
+      localStringBuilder.append(paramZhituPicData.c);
+      localStringBuilder.append("_");
+      if (paramZhituPicData.d != null) {
+        localObject = Integer.valueOf(paramZhituPicData.d.hashCode());
+      }
+      localStringBuilder.append(localObject);
+      return localStringBuilder.toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Zhitu_");
+    localStringBuilder.append(paramZhituPicData.c);
+    localStringBuilder.append("_");
+    if ((paramZhituPicData.d != null) && (paramZhituPicData.p)) {
+      localObject = Integer.valueOf(paramZhituPicData.d.hashCode());
+    }
+    localStringBuilder.append(localObject);
+    return localStringBuilder.toString();
+  }
+  
+  public String g()
+  {
+    File localFile = x();
     if ((!localFile.exists()) && (!localFile.mkdirs())) {
       return null;
     }
@@ -2213,161 +2204,89 @@ public class ZhituManager
     }
   }
   
-  public void c()
+  public void g(ZhituPicData paramZhituPicData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "hideZhituEmotionLayout.");
-    }
-    if ((h()) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))) {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, "zhitu", false);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-    {
-      a();
-      ((ViewGroup)this.jdField_a_of_type_AndroidWidgetLinearLayout.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter = null;
-    }
-    d();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
-    if (localHandler != null)
-    {
-      localHandler.post(new ZhituManager.12(this));
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9, 10000L);
-    }
-  }
-  
-  public void c(ZhituPicData paramZhituPicData)
-  {
-    paramZhituPicData = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(10, paramZhituPicData);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramZhituPicData);
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("setZhituSafeGateSwitch: ");
-      localStringBuilder.append(paramBoolean);
-      QLog.d("ZhituManager", 2, localStringBuilder.toString());
-    }
-    this.jdField_g_of_type_Boolean = paramBoolean;
-    SharedPreUtils.l(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBoolean);
-  }
-  
-  public boolean c()
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("isZhituSafeGateSwitch = ");
-      localStringBuilder.append(this.jdField_g_of_type_Boolean);
-      QLog.d("ZhituManager", 2, localStringBuilder.toString());
-    }
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public void d(ZhituPicData paramZhituPicData)
-  {
-    c(paramZhituPicData);
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public void e(ZhituPicData paramZhituPicData)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject = this.a;
     if ((localObject != null) && (((LinearLayout)localObject).getVisibility() == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter.a(paramZhituPicData);
+      this.d.a(paramZhituPicData);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView;
+    localObject = this.c;
     if ((localObject != null) && (((ZhituPanelView)localObject).getVisibility() == 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter.a(paramZhituPicData);
+      this.e.a(paramZhituPicData);
     }
   }
   
-  public boolean e()
+  public void h(ZhituPicData paramZhituPicData)
   {
-    boolean bool1 = g();
-    boolean bool2 = false;
-    if (bool1) {
-      return false;
-    }
-    bool1 = bool2;
-    if (a())
-    {
-      bool1 = bool2;
-      if (d()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public void f(ZhituPicData paramZhituPicData)
-  {
-    ZhituManager.ZhituSendListener localZhituSendListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager$ZhituSendListener;
+    ZhituManager.ZhituSendListener localZhituSendListener = this.M;
     if (localZhituSendListener != null) {
       localZhituSendListener.a(paramZhituPicData);
     }
   }
   
+  public boolean h()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isZhituConfigOpen.zhituSwitch = ");
+      localStringBuilder.append(this.A);
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
+    }
+    return this.A;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    int j = paramMessage.what;
-    if (j != 1) {
-      if (j != 2) {
-        if (j != 3) {
-          if (j != 4) {
-            if (j != 100) {
-              if (j == 101) {}
+    int i1 = paramMessage.what;
+    if (i1 != 1) {
+      if (i1 != 2) {
+        if (i1 != 3) {
+          if (i1 != 4) {
+            if (i1 != 100) {
+              if (i1 == 101) {}
             }
           }
         }
       }
     }
-    switch (j)
+    switch (i1)
     {
     default: 
       return true;
     case 10: 
-      g((ZhituPicData)paramMessage.obj);
+      i((ZhituPicData)paramMessage.obj);
       return true;
     case 8: 
       if ((paramMessage.obj instanceof HttpNetReq))
       {
-        this.jdField_a_of_type_JavaUtilList.remove(paramMessage.obj);
+        this.u.remove(paramMessage.obj);
         return true;
       }
       break;
     case 7: 
       b(paramMessage);
       return true;
-      this.jdField_d_of_type_Int += 1;
+      this.x += 1;
       if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
         paramMessage.append("download font fail, retry count: ");
-        paramMessage.append(this.jdField_d_of_type_Int);
+        paramMessage.append(this.x);
         QLog.d("ZhituManager", 2, paramMessage.toString());
       }
-      if (this.jdField_d_of_type_Int <= 3)
+      if (this.x <= 3)
       {
         b(Looper.myQueue());
         return true;
-        paramMessage = a();
+        paramMessage = r();
         if (paramMessage.exists()) {
           paramMessage = Typeface.createFromFile(paramMessage);
         } else {
           paramMessage = null;
         }
-        this.jdField_a_of_type_AndroidGraphicsTypeface = paramMessage;
-        this.jdField_a_of_type_Boolean = true;
+        this.o = paramMessage;
+        this.n = true;
         return true;
         a((Bundle)paramMessage.obj);
         return true;
@@ -2384,25 +2303,114 @@ public class ZhituManager
     return true;
   }
   
+  public boolean i()
+  {
+    return this.G;
+  }
+  
+  public boolean j()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isZhituSafeGateSwitch = ");
+      localStringBuilder.append(this.H);
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
+    }
+    return this.H;
+  }
+  
+  public long k()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getZhituSafeGateRequestTime = ");
+      localStringBuilder.append(this.I);
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
+    }
+    return this.I;
+  }
+  
+  public int l()
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getZhituSafeGateRequestInterval = ");
+      localStringBuilder.append(this.J);
+      QLog.d("ZhituManager", 2, localStringBuilder.toString());
+    }
+    return this.J;
+  }
+  
+  public boolean m()
+  {
+    return this.B;
+  }
+  
+  public boolean n()
+  {
+    boolean bool1 = q();
+    boolean bool2 = false;
+    if (bool1) {
+      return false;
+    }
+    bool1 = bool2;
+    if (h())
+    {
+      bool1 = bool2;
+      if (m()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public void o()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "hideZhituEmotionLayout.");
+    }
+    if ((z()) && ((this.E instanceof QQAppInterface))) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite((QQAppInterface)this.E, "zhitu", false);
+    }
+    if (this.a != null)
+    {
+      b();
+      ((ViewGroup)this.a.getParent()).removeView(this.a);
+      this.a = null;
+      this.b = null;
+      this.d = null;
+    }
+    t();
+    Handler localHandler = this.s;
+    if (localHandler != null)
+    {
+      localHandler.post(new ZhituManager.12(this));
+      this.s.sendEmptyMessageDelayed(9, 10000L);
+    }
+  }
+  
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituEmotionHorizonListView = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicAdapter = null;
+      this.a = null;
+      this.b = null;
+      this.d = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView != null)
+    if (this.c != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView = null;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter = null;
+      this.c = null;
+      this.e = null;
     }
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+    if ((this.r != null) && (this.s != null))
     {
-      d();
-      this.jdField_a_of_type_AndroidOsHandler.post(new ZhituManager.13(this));
+      t();
+      this.s.post(new ZhituManager.13(this));
     }
-    Executor localExecutor = this.jdField_a_of_type_JavaUtilConcurrentExecutor;
+    Executor localExecutor = this.t;
     if ((localExecutor instanceof ExecutorService)) {
       ((ExecutorService)localExecutor).shutdown();
     }
@@ -2410,7 +2418,7 @@ public class ZhituManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager
  * JD-Core Version:    0.7.0.1
  */

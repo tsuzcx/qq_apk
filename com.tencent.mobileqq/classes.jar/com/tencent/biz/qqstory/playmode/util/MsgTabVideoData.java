@@ -7,28 +7,23 @@ import org.json.JSONObject;
 
 public class MsgTabVideoData
 {
-  public long a;
-  public StoryVideoItem a;
-  public String a;
   public boolean a;
   public String b;
-  public boolean b;
-  
-  public MsgTabVideoData()
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public String c;
+  public long d;
+  public StoryVideoItem e;
+  public boolean f = false;
   
   public JSONObject a()
   {
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("feedId", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("didRead", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("vid", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("videoIndex", this.jdField_a_of_type_Long);
-      localJSONObject.put("isLocal", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("feedId", this.b);
+      localJSONObject.put("didRead", this.a);
+      localJSONObject.put("vid", this.c);
+      localJSONObject.put("videoIndex", this.d);
+      localJSONObject.put("isLocal", this.f);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -42,11 +37,11 @@ public class MsgTabVideoData
   {
     try
     {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("didRead");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("feedId");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("vid");
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("videoIndex");
-      this.jdField_b_of_type_Boolean = paramJSONObject.getBoolean("isLocal");
+      this.a = paramJSONObject.getBoolean("didRead");
+      this.b = paramJSONObject.getString("feedId");
+      this.c = paramJSONObject.getString("vid");
+      this.d = paramJSONObject.optLong("videoIndex");
+      this.f = paramJSONObject.getBoolean("isLocal");
       return;
     }
     catch (JSONException paramJSONObject)
@@ -59,27 +54,27 @@ public class MsgTabVideoData
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MsgTabVideoData{didRead=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", vid='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", videoIndex='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", storyVideoItem=");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", isLocal=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.MsgTabVideoData
  * JD-Core Version:    0.7.0.1
  */

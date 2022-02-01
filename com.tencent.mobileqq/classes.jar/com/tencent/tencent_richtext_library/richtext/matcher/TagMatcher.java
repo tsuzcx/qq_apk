@@ -40,20 +40,20 @@ public class TagMatcher
       break label79;
     }
     paramString2 = new HashMap();
-    paramString2.put("nodeType", Integer.valueOf(QcircleFlutterTextCellParser.h));
+    paramString2.put("nodeType", Integer.valueOf(QcircleFlutterTextCellParser.r));
     paramString2.put("text", paramString1);
-    paramString2.put("textColor", Integer.valueOf(jdField_a_of_type_Int));
+    paramString2.put("textColor", Integer.valueOf(a));
     return paramString2;
   }
   
   public HashMap<String, Object> a(int paramInt, boolean paramBoolean, CharSequence paramCharSequence)
   {
-    return a(this.jdField_a_of_type_JavaLangString, "tagName=");
+    return a(this.b, "tagName=");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.TagMatcher
  * JD-Core Version:    0.7.0.1
  */

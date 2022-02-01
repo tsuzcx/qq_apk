@@ -15,12 +15,12 @@ class AvGameSysMusicPlayer$1
     {
       if (paramBoolean)
       {
-        AVSoundHelper.g();
-        AVSoundHelper.c();
+        AVSoundHelper.h();
+        AVSoundHelper.d();
         return;
       }
-      AVSoundHelper.h();
-      AVSoundHelper.d();
+      AVSoundHelper.i();
+      AVSoundHelper.e();
     }
   }
 }

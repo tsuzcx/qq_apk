@@ -27,9 +27,9 @@ public final class ExpandChannelRegisterImpl
   
   private final void registerMethodChannel(BinaryMessenger paramBinaryMessenger, BaseMethodChannel paramBaseMethodChannel, LinkedList<Object> paramLinkedList)
   {
-    MethodCodec localMethodCodec = paramBaseMethodChannel.a();
+    MethodCodec localMethodCodec = paramBaseMethodChannel.b();
     String str = paramBaseMethodChannel.a();
-    new MethodChannel(paramBinaryMessenger, str, localMethodCodec).setMethodCallHandler(paramBaseMethodChannel.a());
+    new MethodChannel(paramBinaryMessenger, str, localMethodCodec).setMethodCallHandler(paramBaseMethodChannel.c());
     paramLinkedList.add(paramBaseMethodChannel);
     if (QLog.isColorLevel())
     {
@@ -64,7 +64,7 @@ public final class ExpandChannelRegisterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.impl.ExpandChannelRegisterImpl
  * JD-Core Version:    0.7.0.1
  */

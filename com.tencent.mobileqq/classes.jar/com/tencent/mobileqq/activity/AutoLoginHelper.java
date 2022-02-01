@@ -28,89 +28,107 @@ import mqq.os.MqqHandler;
 public class AutoLoginHelper
   implements IRegisterView
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private RegisterNewBaseActivity jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity;
-  private IContactInterface jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface;
-  private ILoginApi jdField_a_of_type_ComTencentMobileqqLogintempapiILoginApi;
-  private RegisterLiangHaoHelper jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = null;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private byte[] A;
+  private ILoginApi B;
+  private IContactInterface C;
   public String a;
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  protected AccountObserver a;
-  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new AutoLoginHelper.1(this);
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  public String b;
-  public boolean b;
-  private byte[] b;
+  public String b = "86";
   public String c;
-  public boolean c;
-  private byte[] c;
-  private String d;
-  public boolean d;
-  private String jdField_e_of_type_JavaLangString = null;
-  private boolean jdField_e_of_type_Boolean = false;
-  private boolean f = false;
-  private boolean g = false;
-  private boolean h = true;
-  private boolean i = true;
-  private boolean j = false;
-  private boolean k = false;
-  private boolean l = false;
+  public boolean d = false;
+  public boolean e = true;
+  public boolean f = false;
+  public boolean g = false;
+  WtloginObserver h = new AutoLoginHelper.1(this);
+  protected AccountObserver i = new AutoLoginHelper.2(this);
+  private String j = null;
+  private byte[] k = null;
+  private byte[] l = null;
+  private boolean m = false;
+  private boolean n = false;
+  private QQProgressDialog o;
+  private boolean p = false;
+  private String q = null;
+  private boolean r = true;
+  private boolean s = true;
+  private boolean t = false;
+  private boolean u = false;
+  private boolean v = false;
+  private RegisterLiangHaoHelper w = null;
+  private Intent x;
+  private AppRuntime y;
+  private RegisterNewBaseActivity z;
   
   public AutoLoginHelper(AppRuntime paramAppRuntime, RegisterNewBaseActivity paramRegisterNewBaseActivity, Intent paramIntent)
   {
-    this.jdField_b_of_type_JavaLangString = "86";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_JavaLangString = null;
-    this.jdField_b_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqObserverAccountObserver = new AutoLoginHelper.2(this);
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity = paramRegisterNewBaseActivity;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentMobileqqLogintempapiILoginApi = ((ILoginApi)QRoute.api(ILoginApi.class));
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface = new ContactProxy();
+    this.y = paramAppRuntime;
+    this.z = paramRegisterNewBaseActivity;
+    this.x = paramIntent;
+    this.B = ((ILoginApi)QRoute.api(ILoginApi.class));
+    this.C = new ContactProxy();
   }
   
-  private void m()
+  private void o()
   {
     PhoneNumLoginImpl.a().a(true);
-    PhoneNumLoginImpl.a().b(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    PhoneNumLoginImpl.a().b(this.y, this.b, this.a, this.h);
   }
   
   public Intent a()
   {
-    return this.jdField_a_of_type_AndroidContentIntent;
+    return this.x;
   }
   
-  public void a()
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (paramString != null)
+    {
+      if (!paramString.equals(this.j)) {
+        return;
+      }
+      this.t = paramBoolean;
+      if ((!this.t) && (this.u))
+      {
+        j();
+        this.z.notifyToast(2131914061, 0);
+      }
+      else if ((this.t) && (this.u))
+      {
+        if (this.n) {
+          this.z.getAppRuntime().login(this.j, this.l, this.i);
+        } else {
+          this.C.a(this.y, this.k, this.j);
+        }
+      }
+      this.u = false;
+      this.v = false;
+    }
+  }
+  
+  public void b()
   {
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a(getClass().getSimpleName(), a());
     }
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, a());
-    this.g = a().getBooleanExtra("key_register_from_quick_register", false);
-    if (this.g) {
-      this.jdField_e_of_type_JavaLangString = a().getStringExtra("key_register_secret_phone");
+    this.C.a(this.z, a());
+    this.p = a().getBooleanExtra("key_register_from_quick_register", false);
+    if (this.p) {
+      this.q = a().getStringExtra("key_register_secret_phone");
     }
-    this.jdField_a_of_type_JavaLangString = a().getStringExtra("phonenum");
-    this.jdField_c_of_type_JavaLangString = a().getStringExtra("invite_code");
-    this.jdField_b_of_type_JavaLangString = a().getStringExtra("key");
-    this.jdField_a_of_type_Boolean = a().getBooleanExtra("key_register_is_phone_num_registered", false);
-    this.jdField_b_of_type_Boolean = a().getBooleanExtra("key_register_has_pwd", true);
-    this.jdField_d_of_type_JavaLangString = a().getStringExtra("uin");
-    this.jdField_a_of_type_ArrayOfByte = a().getByteArrayExtra("key_register_sign");
-    this.jdField_c_of_type_ArrayOfByte = a().getByteArrayExtra("resp_register_supersig");
+    this.a = a().getStringExtra("phonenum");
+    this.c = a().getStringExtra("invite_code");
+    this.b = a().getStringExtra("key");
+    this.d = a().getBooleanExtra("key_register_is_phone_num_registered", false);
+    this.e = a().getBooleanExtra("key_register_has_pwd", true);
+    this.j = a().getStringExtra("uin");
+    this.k = a().getByteArrayExtra("key_register_sign");
+    this.A = a().getByteArrayExtra("resp_register_supersig");
     Object localObject2;
     if (QLog.isDevelopLevel())
     {
       Locale localLocale = Locale.getDefault();
-      String str1 = this.jdField_d_of_type_JavaLangString;
-      String str2 = com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte);
-      localObject2 = this.jdField_c_of_type_JavaLangString;
+      String str1 = this.j;
+      String str2 = com.tencent.qphone.base.util.MD5.toMD5(this.k);
+      localObject2 = this.c;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
@@ -119,7 +137,7 @@ public class AutoLoginHelper
     }
     Object localObject1 = a().getStringExtra("key_register_password");
     if (localObject1 != null) {
-      this.jdField_b_of_type_ArrayOfByte = com.tencent.mobileqq.mqsafeedit.MD5.toMD5Byte((String)localObject1);
+      this.l = com.tencent.mobileqq.mqsafeedit.MD5.toMD5Byte((String)localObject1);
     }
     if (QLog.isColorLevel())
     {
@@ -127,64 +145,33 @@ public class AutoLoginHelper
       ((StringBuilder)localObject2).append("onCreate ,pwd = ");
       ((StringBuilder)localObject2).append((String)localObject1);
       ((StringBuilder)localObject2).append(",mPassByte = ");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_ArrayOfByte);
+      ((StringBuilder)localObject2).append(this.l);
       QLog.d("AutoLoginHelper", 2, ((StringBuilder)localObject2).toString());
     }
-    this.f = a().getBooleanExtra("key_register_unbind", false);
-    localObject1 = this.jdField_a_of_type_MqqAppAppRuntime;
+    this.n = a().getBooleanExtra("key_register_unbind", false);
+    localObject1 = this.y;
     if (localObject1 == null)
     {
       QLog.d("AutoLoginHelper", 2, "onCreate app is null");
       return;
     }
-    ((AppRuntime)localObject1).registObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this));
-    this.h = a().getBooleanExtra("key_register_result", true);
-    this.i = a().getBooleanExtra("key_register_is_lh", false);
-    if ((this.h) && (this.i))
+    ((AppRuntime)localObject1).registObserver(this.C.a(this));
+    this.r = a().getBooleanExtra("key_register_result", true);
+    this.s = a().getBooleanExtra("key_register_is_lh", false);
+    if ((this.r) && (this.s))
     {
-      this.k = false;
-      this.l = true;
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = new RegisterLiangHaoHelper(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, null);
-      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper.a(this.jdField_d_of_type_JavaLangString, new AutoLoginHelper.LHCallback(this));
+      this.u = false;
+      this.v = true;
+      this.w = new RegisterLiangHaoHelper(this.z, null);
+      this.w.a(this.j, new AutoLoginHelper.LHCallback(this));
     }
-    this.jdField_d_of_type_Boolean = false;
-    b();
+    this.g = false;
+    c();
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void c()
   {
-    if (paramString != null)
-    {
-      if (!paramString.equals(this.jdField_d_of_type_JavaLangString)) {
-        return;
-      }
-      this.j = paramBoolean;
-      if ((!this.j) && (this.k))
-      {
-        h();
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716598, 0);
-      }
-      else if ((this.j) && (this.k))
-      {
-        if (this.f) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
-        } else {
-          this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
-        }
-      }
-      this.k = false;
-      this.l = false;
-    }
-  }
-  
-  protected boolean a()
-  {
-    return NetworkUtil.isNetSupport(BaseApplication.getContext());
-  }
-  
-  public void b()
-  {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    Object localObject = this.y;
     if (!(localObject instanceof AppInterface))
     {
       QLog.e("AutoLoginHelper", 1, "closeAllActs, app is not appinterface");
@@ -199,21 +186,21 @@ public class AutoLoginHelper
     if (localMqqHandler != null) {
       localMqqHandler.sendEmptyMessage(109);
     }
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterSendUpSms))
+    if (!(this.z instanceof RegisterSendUpSms))
     {
       localMqqHandler = ((AppInterface)localObject).getHandler(RegisterSendUpSms.class);
       if (localMqqHandler != null) {
         localMqqHandler.sendEmptyMessage(107);
       }
     }
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterVerifyCodeActivity))
+    if (!(this.z instanceof RegisterVerifyCodeActivity))
     {
       localMqqHandler = ((AppInterface)localObject).getHandler(RegisterVerifyCodeActivity.class);
       if (localMqqHandler != null) {
         localMqqHandler.sendEmptyMessage(106);
       }
     }
-    if (!(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity instanceof RegisterByNicknameAndPwdActivity))
+    if (!(this.z instanceof RegisterByNicknameAndPwdActivity))
     {
       localObject = ((AppInterface)localObject).getHandler(RegisterByNicknameAndPwdActivity.class);
       if (localObject != null) {
@@ -222,20 +209,20 @@ public class AutoLoginHelper
     }
   }
   
-  protected void c()
+  protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity == null) {
+    if (this.z == null) {
       return;
     }
-    this.jdField_d_of_type_Boolean = true;
+    this.g = true;
     Object localObject = new Intent();
     ((Intent)localObject).putExtra("tab_index", 0);
     ((Intent)localObject).putExtra("fragment_id", 1);
     ((Intent)localObject).putExtra("afterRegAndAutoLogin", true);
     ((Intent)localObject).addFlags(67108864);
-    LoginUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, (Intent)localObject, "/base/start/splash");
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.finish();
-    localObject = this.jdField_a_of_type_MqqAppAppRuntime;
+    LoginUtils.a(this.z, (Intent)localObject, "/base/start/splash");
+    this.z.finish();
+    localObject = this.y;
     if (!(localObject instanceof AppInterface))
     {
       QLog.e("AutoLoginHelper", 1, "closeAllActs, app is not appinterface");
@@ -247,102 +234,102 @@ public class AutoLoginHelper
     }
   }
   
-  public void d()
+  public void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AutoLoginHelper", 2, "onAccountChanged success");
     }
-    if (this.f)
+    if (this.n)
     {
-      this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this));
-      if (this.g)
+      this.y.unRegistObserver(this.C.a(this));
+      if (this.p)
       {
-        this.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime();
-        this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_d_of_type_JavaLangString);
+        this.y = this.z.getAppRuntime();
+        this.C.a(this.y, this.j);
       }
-      g();
-      c();
+      i();
+      d();
       return;
     }
-    if (!PhoneNumLoginImpl.a().a())
+    if (!PhoneNumLoginImpl.a().b())
     {
       if (QLog.isColorLevel()) {
         QLog.d("AutoLoginHelper", 2, "onAccountChanged not phonenum login");
       }
       return;
     }
-    this.jdField_a_of_type_MqqAppAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this));
-    this.jdField_a_of_type_MqqAppAppRuntime = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime();
-    this.jdField_a_of_type_MqqAppAppRuntime.registObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this));
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this.jdField_a_of_type_MqqAppAppRuntime);
-    g();
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_d_of_type_JavaLangString);
-    c();
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLoginHelper", 2, "onDestroy");
-    }
-    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
-    if (localAppRuntime != null) {
-      localAppRuntime.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
-    h();
+    this.y.unRegistObserver(this.C.a(this));
+    this.y = this.z.getAppRuntime();
+    this.y.registObserver(this.C.a(this));
+    this.C.a(this.y);
+    i();
+    this.C.a(this.y, this.j);
+    d();
   }
   
   public void f()
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "onDestroy");
+    }
+    AppRuntime localAppRuntime = this.y;
+    if (localAppRuntime != null) {
+      localAppRuntime.unRegistObserver(this.C.a(this));
+    }
+    this.z.closeDialog();
+    j();
+  }
+  
+  public void g()
+  {
     Object localObject;
-    if (!this.h)
+    if (!this.r)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity;
+      localObject = this.z;
       if (localObject != null) {
         ((RegisterNewBaseActivity)localObject).finish();
       }
       return;
     }
-    if (this.g) {
-      ReportController.a(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
+    if (this.p) {
+      ReportController.a(this.y, "dc00898", "", "", "0X80072FC", "0X80072FC", 0, 0, "", "", "", "");
     }
-    if (!a())
+    if (!h())
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity;
+      localObject = this.z;
       if (localObject != null) {
-        ((RegisterNewBaseActivity)localObject).notifyToast(2131692183, 0);
+        ((RegisterNewBaseActivity)localObject).notifyToast(2131889169, 0);
       }
       return;
     }
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    if ((this.i) && (!this.j))
+    this.f = true;
+    this.g = false;
+    if ((this.s) && (!this.t))
     {
-      if (!this.l)
+      if (!this.v)
       {
-        this.l = true;
-        if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper == null) {
-          this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper = new RegisterLiangHaoHelper(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, null);
+        this.v = true;
+        if (this.w == null) {
+          this.w = new RegisterLiangHaoHelper(this.z, null);
         }
-        this.jdField_a_of_type_ComTencentMobileqqVipLianghaoRegisterLiangHaoHelper.a(this.jdField_d_of_type_JavaLangString, new AutoLoginHelper.LHCallback(this));
+        this.w.a(this.j, new AutoLoginHelper.LHCallback(this));
       }
-      this.k = true;
-      g();
+      this.u = true;
+      i();
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("AutoLoginHelper", 2, "bindUinWithPhone start to getVerifyBindPhoneUin");
     }
-    g();
+    i();
     if (QLog.isColorLevel()) {
-      if (this.jdField_a_of_type_ArrayOfByte != null)
+      if (this.k != null)
       {
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("swz mSign = ");
-          ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+          ((StringBuilder)localObject).append(HexUtil.bytes2HexStr(this.k));
           QLog.d("AutoLoginHelper", 2, ((StringBuilder)localObject).toString());
         }
       }
@@ -350,56 +337,61 @@ public class AutoLoginHelper
         QLog.d("AutoLoginHelper", 2, "swz mSign = null");
       }
     }
-    if (this.f)
+    if (this.n)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.getAppRuntime().login(this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_ArrayOfByte, this.jdField_c_of_type_ArrayOfByte, this.jdField_a_of_type_MqqObserverAccountObserver);
+      this.z.getAppRuntime().login(this.j, this.l, this.A, this.i);
       return;
     }
     if (QLog.isDevelopLevel()) {
-      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.jdField_d_of_type_JavaLangString, com.tencent.qphone.base.util.MD5.toMD5(this.jdField_a_of_type_ArrayOfByte) }));
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onClick  uin: %s, sign: %s", new Object[] { this.j, com.tencent.qphone.base.util.MD5.toMD5(this.k) }));
     }
-    this.jdField_a_of_type_ComTencentMobileqqLoginregisterIContactInterface.a(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ArrayOfByte, this.jdField_d_of_type_JavaLangString);
+    this.C.a(this.y, this.k, this.j);
   }
   
-  protected void g()
+  protected boolean h()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.handler.post(new AutoLoginHelper.3(this));
+    return NetworkUtil.isNetSupport(BaseApplication.getContext());
   }
   
-  protected void h()
+  protected void i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.handler.post(new AutoLoginHelper.4(this));
+    this.z.handler.post(new AutoLoginHelper.3(this));
   }
   
-  public void i()
+  protected void j()
+  {
+    this.z.handler.post(new AutoLoginHelper.4(this));
+  }
+  
+  public void k()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResume， isStartingMain=");
-      localStringBuilder.append(this.jdField_d_of_type_Boolean);
+      localStringBuilder.append(this.g);
       QLog.i("AutoLoginHelper", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_d_of_type_Boolean) {
-      h();
+    if (!this.g) {
+      j();
     }
   }
   
-  public void j() {}
+  public void l() {}
   
-  public void k()
+  public void m()
   {
-    m();
+    o();
   }
   
-  public void l()
+  public void n()
   {
-    h();
+    j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AutoLoginHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,9 @@ import com.tencent.mobileqq.kandian.biz.comment.emotion.span.IEmotionSpan;
 import com.tencent.mobileqq.kandian.biz.comment.emotion.span.IShrinkLength;
 import com.tencent.mobileqq.kandian.biz.comment.emotion.span.RIJEmotionImageSpan;
 import com.tencent.mobileqq.kandian.biz.comment.emotion.span.RIJEmotionTextSpan;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.push.RIJKanDianFolderStatus;
 import com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.qphone.base.util.QLog;
 import java.util.regex.Matcher;
@@ -79,7 +78,7 @@ public class RIJEmotionUtil
     {
       QLog.w("RIJEmotionUtil", 4, paramString.getMessage(), paramString);
     }
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800B99F", "0X800B99F", 0, 0, String.valueOf(paramInt), "", "", localJSONObject.toString(), false);
+    PublicAccountReportUtils.a(null, "", "0X800B99F", "0X800B99F", 0, 0, String.valueOf(paramInt), "", "", localJSONObject.toString(), false);
   }
   
   public static void a(SpannableStringBuilder paramSpannableStringBuilder)
@@ -116,7 +115,7 @@ public class RIJEmotionUtil
         Object localObject = paramSpanned[i];
         if ((localObject instanceof RIJEmotionTextSpan))
         {
-          localStringBuilder.append(localObject.a().a);
+          localStringBuilder.append(localObject.b().a);
           localStringBuilder.append(',');
         }
         i += 1;
@@ -139,11 +138,11 @@ public class RIJEmotionUtil
       {
         int i = localMatcher.start();
         int j = localMatcher.end();
-        Object localObject = RIJEmotionCacheManager.a(localMatcher.group());
+        Object localObject = RIJEmotionCacheManager.b(localMatcher.group());
         if (localObject != null)
         {
           localObject = new RIJEmotionImageSpan((RIJBaseEmotionInfo)localObject);
-          ((RIJEmotionImageSpan)localObject).b(IRIJEmotionSize.a, IRIJEmotionSize.a);
+          ((RIJEmotionImageSpan)localObject).b(IRIJEmotionSize.b, IRIJEmotionSize.b);
           ((RIJEmotionImageSpan)localObject).a(paramIViewProxy);
           paramSpannable.setSpan(localObject, i, j, 33);
         }
@@ -173,7 +172,7 @@ public class RIJEmotionUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.util.RIJEmotionUtil
  * JD-Core Version:    0.7.0.1
  */

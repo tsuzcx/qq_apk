@@ -9,32 +9,32 @@ class LyricViewController$6
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface != null) {
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface.a(this.a, this.b);
+    if (this.this$0.c != null) {
+      this.this$0.c.a(this.a, this.b);
     }
-    if ((this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll != null) && (this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface != null))
+    if ((this.this$0.b != null) && (this.this$0.c != null))
     {
       if (LyricViewController.a(this.this$0))
       {
         AEQLog.a("ModuleController", "current is selecting lyric. not auto scroll.");
         return;
       }
-      int i = this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricBaseInternalViewInterface.a();
-      if (LyricViewController.a(this.this$0) == i) {
+      int i = this.this$0.c.getTopScroll();
+      if (LyricViewController.b(this.this$0) == i) {
         return;
       }
       if (i == 0)
       {
-        this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.b(i);
+        this.this$0.b.b(i);
         return;
       }
-      this.this$0.jdField_a_of_type_ComTencentAelightCameraAeeditorLyricWidgetLyricViewScroll.a(i);
+      this.this$0.b.a(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.lyric.widget.LyricViewController.6
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,32 @@ import java.lang.ref.WeakReference;
 class BBannerHelper$WebViewBannerInteract
   implements BBannerHelper.IBannerInteract
 {
-  private final int jdField_a_of_type_Int;
-  @Nullable
-  private final Bundle jdField_a_of_type_AndroidOsBundle;
-  @Nullable
-  private BBannerHelper.MessageToShowBanner jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner;
   @NonNull
-  private final String jdField_a_of_type_JavaLangString;
+  private final String a;
   @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  private final WeakReference<QQAppInterface> b;
   @Nullable
-  private final String b;
+  private final String c;
+  @Nullable
+  private BBannerHelper.MessageToShowBanner d;
+  @Nullable
+  private final Bundle e;
+  private final int f;
+  private final boolean g;
   
   public BBannerHelper$WebViewBannerInteract(@NonNull String paramString1, @NonNull QQAppInterface paramQQAppInterface, @Nullable String paramString2, int paramInt, @Nullable Bundle paramBundle, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString1;
+    this.b = new WeakReference(paramQQAppInterface);
+    this.c = paramString2;
+    this.f = paramInt;
+    this.e = paramBundle;
+    this.g = paramBoolean;
   }
   
   public void a(@Nullable BBannerHelper.MessageToShowBanner paramMessageToShowBanner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner = paramMessageToShowBanner;
+    this.d = paramMessageToShowBanner;
   }
   
   public boolean isNeedAutoCloseWhenAccountChange()
@@ -51,14 +51,14 @@ class BBannerHelper$WebViewBannerInteract
   
   public void onClose()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.d == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
     if (localQQAppInterface == null) {
       return;
     }
-    BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+    BBannerHelper.a(localQQAppInterface, this.d);
   }
   
   public void onEnter()
@@ -67,28 +67,28 @@ class BBannerHelper$WebViewBannerInteract
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("onEnter: ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      ((StringBuilder)localObject1).append(this.d);
       ((StringBuilder)localObject1).append(" / ");
-      ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(this.c);
       ((StringBuilder)localObject1).append(" / ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(this.f);
       ((StringBuilder)localObject1).append(" / ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.a);
       QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject1).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner == null) {
+    if (this.d == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
     if (localQQAppInterface == null) {
       return;
     }
     Object localObject3 = QQBrowserActivity.class;
     Object localObject1 = localObject3;
-    if (!TextUtils.isEmpty(this.b)) {}
+    if (!TextUtils.isEmpty(this.c)) {}
     try
     {
-      localObject1 = Class.forName(this.b);
+      localObject1 = Class.forName(this.c);
       BaseActivity localBaseActivity = BaseActivity.sTopActivity;
       localObject3 = localBaseActivity;
       if (localBaseActivity == null)
@@ -99,11 +99,11 @@ class BBannerHelper$WebViewBannerInteract
       if (localObject3 != null)
       {
         localObject1 = new Intent(localQQAppInterface.getApp(), (Class)localObject1);
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_Int);
+        ((Intent)localObject1).setFlags(this.f);
         ((Intent)localObject1).putExtra("banner_fromBanner", true);
-        ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject1).putExtra("banner_webview_extra", this.jdField_a_of_type_AndroidOsBundle);
-        ((Intent)localObject1).putExtra("force_no_reload", this.jdField_a_of_type_Boolean);
+        ((Intent)localObject1).putExtra("url", this.a);
+        ((Intent)localObject1).putExtra("banner_webview_extra", this.e);
+        ((Intent)localObject1).putExtra("force_no_reload", this.g);
         try
         {
           ((Context)localObject3).startActivity((Intent)localObject1);
@@ -120,7 +120,7 @@ class BBannerHelper$WebViewBannerInteract
       {
         QLog.d("Q.recent.banner", 2, "sTopActivity is null");
       }
-      BBannerHelper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner);
+      BBannerHelper.a(localQQAppInterface, this.d);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -138,7 +138,7 @@ class BBannerHelper$WebViewBannerInteract
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("banner for ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" is overrided");
       QLog.d("Q.recent.banner", 2, localStringBuilder.toString());
     }
@@ -146,7 +146,7 @@ class BBannerHelper$WebViewBannerInteract
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.WebViewBannerInteract
  * JD-Core Version:    0.7.0.1
  */

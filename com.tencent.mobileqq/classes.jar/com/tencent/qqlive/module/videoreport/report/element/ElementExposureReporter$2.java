@@ -35,14 +35,16 @@ class ElementExposureReporter$2
           ((IEventDynamicParams)localObject1).setEventDynamicParams("imp", localFinalData.getEventParams());
         }
         localFinalData.put("dt_ele_reuse_id", str);
-        localObject1 = ExposurePolicyHelper.getEleExposeInfo(localObject2, localView, str);
+        localObject1 = ExposurePolicyHelper.getEleExposeInfo(localObject2, localView, str, false);
         paramExposureElementInfo = (ExposureElementInfo)localObject1;
         if (localObject1 == null)
         {
           paramExposureElementInfo = new EleExposeInfo();
-          ExposurePolicyHelper.putEleExposeInfo(localObject2, localView, str, paramExposureElementInfo);
+          ExposurePolicyHelper.putEleExposeInfo(localObject2, localView, str, paramExposureElementInfo, false);
         }
-        localFinalData.put("dt_ele_is_first_imp", String.valueOf(paramExposureElementInfo.mHasReport ^ true));
+        localFinalData.put("dt_ele_is_first_imp", String.valueOf(paramExposureElementInfo.hasReport() ^ true));
+        localFinalData.put("dt_ele_is_first_scroll_imp", "0");
+        localFinalData.put("dt_ele_scroll_flag", "0");
         FinalDataTarget.handle(localView, localFinalData);
         paramExposureElementInfo.onReport();
       }
@@ -51,7 +53,7 @@ class ElementExposureReporter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ElementExposureReporter.2
  * JD-Core Version:    0.7.0.1
  */

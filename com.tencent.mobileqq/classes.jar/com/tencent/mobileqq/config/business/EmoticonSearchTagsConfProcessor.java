@@ -12,7 +12,7 @@ public class EmoticonSearchTagsConfProcessor
 {
   public static EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean a()
   {
-    return (EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean)QConfigManager.a().a(620);
+    return (EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean)QConfigManager.b().b(620);
   }
   
   @NonNull
@@ -71,7 +71,7 @@ public class EmoticonSearchTagsConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.EmoticonSearchTagsConfProcessor
  * JD-Core Version:    0.7.0.1
  */

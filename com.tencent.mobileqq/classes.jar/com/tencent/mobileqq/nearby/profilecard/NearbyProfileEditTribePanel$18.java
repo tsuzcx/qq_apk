@@ -17,7 +17,7 @@ class NearbyProfileEditTribePanel$18
   @TargetApi(11)
   public boolean onLongClick(View paramView)
   {
-    if (this.a.a.getChildCount() <= 1) {
+    if (this.a.h.getChildCount() <= 1) {
       return true;
     }
     Object localObject = new ClipData.Item("");
@@ -25,11 +25,11 @@ class NearbyProfileEditTribePanel$18
     localObject = NearbyProfileEditTribePanel.a(this.a, (PicInfo)paramView.getTag(), null);
     ((RelativeLayout)localObject).setVisibility(4);
     NearbyProfileEditTribePanel.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
+    int i = this.a.h.indexOfChild(paramView);
     if (i != -1)
     {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(NearbyProfileEditTribePanel.a(this.a), i);
+      this.a.h.removeView(paramView);
+      this.a.h.addView(NearbyProfileEditTribePanel.e(this.a), i);
       return true;
     }
     paramView.setVisibility(4);
@@ -38,7 +38,7 @@ class NearbyProfileEditTribePanel$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.18
  * JD-Core Version:    0.7.0.1
  */

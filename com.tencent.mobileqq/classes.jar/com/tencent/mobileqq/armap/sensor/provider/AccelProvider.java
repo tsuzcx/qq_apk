@@ -12,13 +12,13 @@ import java.util.List;
 public class AccelProvider
   extends OrientationProvider2
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  boolean jdField_a_of_type_Boolean = false;
-  private float b = -1.0F;
-  private float c = -1.0F;
-  private float[] d = new float[3];
-  private float[] e = new float[3];
-  private float[] f = new float[16];
+  boolean a = false;
+  private float[] b = new float[3];
+  private float[] c = new float[3];
+  private float[] n = new float[16];
+  private float o = -1.0F;
+  private float p = -1.0F;
+  private float q = -1.0F;
   
   public AccelProvider(Context paramContext, int paramInt, SensorManager paramSensorManager, ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
@@ -26,7 +26,7 @@ public class AccelProvider
     paramContext = paramSensorManager.getDefaultSensor(1);
     if (paramContext != null)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      this.d.add(paramContext);
       return;
     }
     throw new OrientationProviderNotFound(String.valueOf(1));
@@ -34,61 +34,61 @@ public class AccelProvider
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener == null) {
+    if (this.g == null) {
       return;
     }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    if (Math.abs(paramFloat1 - this.o) > 1.0F)
     {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateAzimuth(paramFloat1);
+      this.o = paramFloat1;
+      this.g.updateAzimuth(paramFloat1);
     }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    if (Math.abs(paramFloat2 - this.p) > 1.0F)
     {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updatePitch(paramFloat2);
+      this.p = paramFloat2;
+      this.g.updatePitch(paramFloat2);
     }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    if (Math.abs(paramFloat3 - this.q) > 1.0F)
     {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateRoll(paramFloat3);
+      this.q = paramFloat3;
+      this.g.updateRoll(paramFloat3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+    this.g.updateSensor(paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     if (paramSensorEvent.sensor.getType() == 1)
     {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
-      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
-      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
-      this.d[1] = (-(float)Math.atan2(f2, f3));
-      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
-      if (this.jdField_a_of_type_Boolean) {
-        this.d = SensorSmoother.a(this.d, this.e);
+      System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
+      float f1 = this.e[0];
+      float f2 = this.e[1];
+      float f3 = this.e[2];
+      this.b[1] = (-(float)Math.atan2(f2, f3));
+      this.b[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
+      if (this.a) {
+        this.b = SensorSmoother.a(this.b, this.c);
       }
-      System.arraycopy(this.d, 0, this.e, 0, 3);
-      this.jdField_a_of_type_Boolean = true;
-      SensorUtil.a(SensorUtil.a(this.d), this.f);
-      if (this.jdField_a_of_type_Int != 1)
+      System.arraycopy(this.b, 0, this.c, 0, 3);
+      this.a = true;
+      SensorUtil.a(SensorUtil.a(this.b), this.n);
+      if (this.m != 1)
       {
-        super.a(this.f);
+        super.a(this.n);
         return;
       }
-      paramSensorEvent = this.d;
-      double d1 = paramSensorEvent[1] * 180.0F;
-      Double.isNaN(d1);
-      f1 = (float)(d1 / 3.141592653589793D);
-      d1 = paramSensorEvent[2] * 180.0F;
-      Double.isNaN(d1);
-      a(0.0F, f1, (float)(d1 / 3.141592653589793D));
+      paramSensorEvent = this.b;
+      double d = paramSensorEvent[1] * 180.0F;
+      Double.isNaN(d);
+      f1 = (float)(d / 3.141592653589793D);
+      d = paramSensorEvent[2] * 180.0F;
+      Double.isNaN(d);
+      a(0.0F, f1, (float)(d / 3.141592653589793D));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.AccelProvider
  * JD-Core Version:    0.7.0.1
  */

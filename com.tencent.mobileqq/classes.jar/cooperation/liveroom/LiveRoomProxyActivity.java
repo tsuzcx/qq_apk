@@ -63,7 +63,7 @@ public class LiveRoomProxyActivity
     localIntent.putExtra("url", (String)localObject1);
     localIntent.putExtra("startOpenPageTime", clickTime);
     localIntent.putExtra("pluginFinished", System.currentTimeMillis());
-    if ("com.tencent.mobileqq:tool".equals(Common.r()))
+    if ("com.tencent.mobileqq:tool".equals(Common.x()))
     {
       paramString = LiveRoomHelper.getPluginVersionInTool();
     }
@@ -86,19 +86,19 @@ public class LiveRoomProxyActivity
   {
     QLog.d("LiveRoomProxyActivity", 1, "launchPlugin");
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = "LiveRoomPlugin.apk";
-    localPluginParams.e = "直播SDK";
-    localPluginParams.f = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
-    localPluginParams.jdField_a_of_type_JavaLangClass = LiveRoomProxyActivity.class;
-    localPluginParams.c = 1011;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = getPluginIntent(paramString);
+    localPluginParams.d = "LiveRoomPlugin.apk";
+    localPluginParams.g = "直播SDK";
+    localPluginParams.h = "com.tencent.gamecontent.livesdkqqplugin.plugins.QQLiveRoomPluginActivity";
+    localPluginParams.i = LiveRoomProxyActivity.class;
+    localPluginParams.k = 1011;
+    localPluginParams.j = getPluginIntent(paramString);
     IPluginManager.a(paramActivity, localPluginParams);
   }
   
   public static void open(Activity paramActivity, String paramString1, String paramString2)
   {
     clickTime = System.currentTimeMillis();
-    boolean bool = "com.tencent.mobileqq:tool".equals(Common.r());
+    boolean bool = "com.tencent.mobileqq:tool".equals(Common.x());
     if (bool ? LiveRoomHelper.getPluginInstalledInTool() : LiveRoomHelper.isPluginInstalledInQQ())
     {
       if (QLog.isColorLevel()) {
@@ -180,7 +180,7 @@ public class LiveRoomProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomProxyActivity
  * JD-Core Version:    0.7.0.1
  */

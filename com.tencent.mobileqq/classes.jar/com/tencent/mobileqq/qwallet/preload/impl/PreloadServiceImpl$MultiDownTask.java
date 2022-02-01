@@ -9,32 +9,32 @@ import java.util.List;
 
 class PreloadServiceImpl$MultiDownTask
 {
-  int jdField_a_of_type_Int = 0;
-  IPreloadService.OnGetPathsListener jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener;
-  HashMap<String, IPreloadService.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
+  List<DownloadParam> a;
+  IPreloadService.OnGetPathsListener b;
+  HashMap<String, IPreloadService.PathResult> c = new HashMap();
+  boolean d = false;
+  int e = 0;
   
   public PreloadServiceImpl$MultiDownTask(List<DownloadParam> paramList, IPreloadService.OnGetPathsListener paramOnGetPathsListener)
   {
-    this.jdField_a_of_type_JavaUtilList = paramOnGetPathsListener;
+    this.a = paramOnGetPathsListener;
     Object localObject;
-    this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener = localObject;
+    this.b = localObject;
   }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl.getResPath(localDownloadParam, new PreloadServiceImpl.MultiDownTask.1(this));
+      this.f.getResPath(localDownloadParam, new PreloadServiceImpl.MultiDownTask.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.MultiDownTask
  * JD-Core Version:    0.7.0.1
  */

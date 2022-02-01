@@ -10,9 +10,9 @@ class BaseInviteFloatBarUICtr$1
   
   public boolean a(Bitmap paramBitmap, String paramString)
   {
-    if (this.a.a != null)
+    if (this.a.o != null)
     {
-      this.a.a.a(paramBitmap);
+      this.a.o.a(paramBitmap);
       return true;
     }
     return false;

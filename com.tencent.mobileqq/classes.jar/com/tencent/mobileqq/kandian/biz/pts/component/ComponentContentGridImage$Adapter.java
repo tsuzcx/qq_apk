@@ -18,24 +18,14 @@ import java.util.List;
 class ComponentContentGridImage$Adapter
   extends BaseAdapter
 {
-  String jdField_a_of_type_JavaLangString;
-  List<URL> jdField_a_of_type_JavaUtilList;
-  String jdField_b_of_type_JavaLangString;
-  List<SquareCornerTextImageView.PicInfo> jdField_b_of_type_JavaUtilList;
+  List<URL> a;
+  List<SquareCornerTextImageView.PicInfo> b;
+  String c;
+  String d;
   
   public ComponentContentGridImage$Adapter(ComponentContentGridImage paramComponentContentGridImage, ComponentContentGridImage.Model paramModel)
   {
     a(paramModel);
-  }
-  
-  private int a()
-  {
-    int i = AIOUtils.b(82.0F, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage.getResources());
-    int j = getCount();
-    if ((j == 2) || (j == 4)) {
-      i = AIOUtils.b(116.0F, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage.getResources());
-    }
-    return i;
   }
   
   private <T> List<T> a(List<T> paramList, int paramInt)
@@ -56,12 +46,6 @@ class ComponentContentGridImage$Adapter
       return localArrayList;
     }
     return paramList;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilList, 3);
-    this.jdField_b_of_type_JavaUtilList = a(this.jdField_b_of_type_JavaUtilList, 3);
   }
   
   private void a(SquareCornerTextImageView paramSquareCornerTextImageView, @NonNull SquareCornerTextImageView.PicInfo paramPicInfo, String paramString, int paramInt1, int paramInt2)
@@ -88,48 +72,64 @@ class ComponentContentGridImage$Adapter
     paramSquareCornerTextImageView.a(paramPicInfo, str);
   }
   
-  private int b()
+  private int d()
   {
-    int i = AIOUtils.b(116.0F, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage.getResources());
+    int i = AIOUtils.b(82.0F, this.e.getResources());
     int j = getCount();
     if ((j == 2) || (j == 4)) {
-      i = AIOUtils.b(175.0F, this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage.getResources());
+      i = AIOUtils.b(116.0F, this.e.getResources());
     }
     return i;
   }
   
-  public String a()
+  private int e()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    int i = AIOUtils.b(116.0F, this.e.getResources());
+    int j = getCount();
+    if ((j == 2) || (j == 4)) {
+      i = AIOUtils.b(175.0F, this.e.getResources());
+    }
+    return i;
+  }
+  
+  private void f()
+  {
+    this.a = a(this.a, 3);
+    this.b = a(this.b, 3);
   }
   
   public List<URL> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(ComponentContentGridImage.Model paramModel)
   {
-    this.jdField_b_of_type_JavaUtilList = paramModel.a();
-    this.jdField_a_of_type_JavaUtilList = paramModel.b();
-    this.jdField_a_of_type_JavaLangString = paramModel.a();
-    this.jdField_b_of_type_JavaLangString = paramModel.b();
-    a();
+    this.b = paramModel.a();
+    this.a = paramModel.b();
+    this.c = paramModel.c();
+    this.d = paramModel.d();
+    f();
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
+    return this.c;
+  }
+  
+  public String c()
+  {
+    return this.d;
   }
   
   public int getCount()
   {
-    return this.jdField_b_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_b_of_type_JavaUtilList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -144,15 +144,15 @@ class ComponentContentGridImage$Adapter
     if (paramView == null) {
       paramViewGroup = new SquareCornerTextImageView(localContext);
     }
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, a()));
-    a((SquareCornerTextImageView)paramViewGroup, (SquareCornerTextImageView.PicInfo)this.jdField_b_of_type_JavaUtilList.get(paramInt), ((URL)this.jdField_a_of_type_JavaUtilList.get(paramInt)).toString(), b(), a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentGridImage.a(paramViewGroup);
+    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, d()));
+    a((SquareCornerTextImageView)paramViewGroup, (SquareCornerTextImageView.PicInfo)this.b.get(paramInt), ((URL)this.a.get(paramInt)).toString(), e(), d());
+    this.e.a(paramViewGroup);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentGridImage.Adapter
  * JD-Core Version:    0.7.0.1
  */

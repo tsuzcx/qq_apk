@@ -21,20 +21,20 @@ class StructingMsgItemBuilder$16
   
   public void onClickAction(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
+    if (StructingMsgItemBuilder.c(this.d)) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
-    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
+    String str = this.a.getExtInfoFromExtStr("msg_template_id");
+    int i = this.a.istroop;
+    NewIntent localNewIntent = new NewIntent(this.b, ((IPublicAccountServlet)QRoute.api(IPublicAccountServlet.class)).getServletClass());
     localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
     mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
-    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+    localSubscribeRequest.msg_id.set(this.c.msgId);
     localSubscribeRequest.index.set(paramMenuItem.id);
     long l1 = 0L;
     try
     {
-      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      long l2 = Long.parseLong(this.a.frienduin);
       l1 = l2;
     }
     catch (Exception paramMenuItem)
@@ -46,13 +46,13 @@ class StructingMsgItemBuilder$16
     localSubscribeRequest.puin.set(l1);
     localNewIntent.setObserver(new StructingMsgItemBuilder.16.1(this, str));
     localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
-    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
+    this.d.d.startServlet(localNewIntent);
+    StructingMsgItemBuilder.c(this.d, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.16
  * JD-Core Version:    0.7.0.1
  */

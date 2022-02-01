@@ -50,7 +50,7 @@ public class SwipePostTableLayoutImpl$SwipeGestureDetector
             else
             {
               SwipePostTableLayoutImpl.access$502(this.a, true);
-              SwipePostTableLayoutImpl.access$300(this.a).a();
+              SwipePostTableLayoutImpl.access$300(this.a).b();
             }
             this.a.postInvalidate();
           }
@@ -64,7 +64,7 @@ public class SwipePostTableLayoutImpl$SwipeGestureDetector
             else
             {
               SwipePostTableLayoutImpl.access$902(this.a, true);
-              SwipePostTableLayoutImpl.access$300(this.a).a();
+              SwipePostTableLayoutImpl.access$300(this.a).b();
             }
           }
           else if (i != 0)
@@ -74,7 +74,7 @@ public class SwipePostTableLayoutImpl$SwipeGestureDetector
           else
           {
             SwipePostTableLayoutImpl.access$902(this.a, true);
-            SwipePostTableLayoutImpl.access$300(this.a).a();
+            SwipePostTableLayoutImpl.access$300(this.a).b();
           }
         }
         if (SwipePostTableLayoutImpl.access$1100(this.a) != null) {
@@ -89,7 +89,7 @@ public class SwipePostTableLayoutImpl$SwipeGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.swipeback.impl.SwipePostTableLayoutImpl.SwipeGestureDetector
  * JD-Core Version:    0.7.0.1
  */

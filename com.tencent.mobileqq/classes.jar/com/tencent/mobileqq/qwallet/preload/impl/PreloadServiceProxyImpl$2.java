@@ -14,15 +14,15 @@ class PreloadServiceProxyImpl$2
   {
     if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramEIPCResult.data);
+      this.a.send(0, paramEIPCResult.data);
       return;
     }
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, new Bundle());
+    this.a.send(0, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl.2
  * JD-Core Version:    0.7.0.1
  */

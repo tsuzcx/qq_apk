@@ -5,36 +5,36 @@ import android.graphics.Typeface;
 public class FontInfo
 {
   public int a;
-  public Typeface a;
-  public ETFont a;
-  public String a;
-  public boolean a;
-  public int b;
   public String b;
   public int c;
+  public Typeface d;
+  public String e;
+  public ETFont f;
+  public boolean g;
+  public int h;
   
   public FontInfo() {}
   
   public FontInfo(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt1;
+    this.c = paramInt2;
+    this.b = paramString;
   }
   
   public FontInfo(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[id=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",path=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

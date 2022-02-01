@@ -24,11 +24,11 @@ final class PeakIpcController$7
       {
         paramInt = paramBundle.getInt("key_upload_ark_video_progress");
         paramString = new StringBuilder();
-        paramString.append(this.jdField_a_of_type_JavaLangString);
+        paramString.append(this.a);
         paramString.append(" uploadArkVideo progress=");
         paramString.append(paramInt);
         AEQLog.a("PeakIpcController", paramString.toString());
-        paramString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcController$IUploadArkVideoCallback;
+        paramString = this.b;
         if (paramString != null)
         {
           paramString.a(paramInt);
@@ -44,11 +44,11 @@ final class PeakIpcController$7
         paramString = null;
       }
       paramBundle = new StringBuilder();
-      paramBundle.append(this.jdField_a_of_type_JavaLangString);
+      paramBundle.append(this.a);
       paramBundle.append(" uploadArkVideo SUCCESS: videoDownUrl=");
       paramBundle.append(paramString);
       AEQLog.b("PeakIpcController", paramBundle.toString());
-      paramBundle = this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcController$IUploadArkVideoCallback;
+      paramBundle = this.b;
       if (paramBundle != null)
       {
         paramBundle.a(paramString);
@@ -58,10 +58,10 @@ final class PeakIpcController$7
     else if ("action_upload_ark_video_fail".equals(paramString))
     {
       paramString = new StringBuilder();
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a);
       paramString.append(" uploadArkVideo FAIL");
       AEQLog.b("PeakIpcController", paramString.toString());
-      paramString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcController$IUploadArkVideoCallback;
+      paramString = this.b;
       if (paramString != null)
       {
         paramString.a();
@@ -71,10 +71,10 @@ final class PeakIpcController$7
     else if ("action_upload_ark_video_cancel".equals(paramString))
     {
       paramString = new StringBuilder();
-      paramString.append(this.jdField_a_of_type_JavaLangString);
+      paramString.append(this.a);
       paramString.append(" uploadArkVideo CANCEL");
       AEQLog.b("PeakIpcController", paramString.toString());
-      paramString = this.jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcController$IUploadArkVideoCallback;
+      paramString = this.b;
       if (paramString != null) {
         paramString.b();
       }
@@ -84,7 +84,7 @@ final class PeakIpcController$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.editipc.PeakIpcController.7
  * JD-Core Version:    0.7.0.1
  */

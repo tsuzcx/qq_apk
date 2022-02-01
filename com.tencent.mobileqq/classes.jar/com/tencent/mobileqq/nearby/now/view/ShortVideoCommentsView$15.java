@@ -10,18 +10,18 @@ class ShortVideoCommentsView$15
 {
   ShortVideoCommentsView$15(ShortVideoCommentsView paramShortVideoCommentsView, Comments.Comment paramComment, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt == 1) {
-        ShortVideoCommentsView.access$2200(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+        ShortVideoCommentsView.access$2200(this.c, this.a);
       }
     }
     else {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.jump2Report(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+      this.c.jump2Report(this.a);
     }
-    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    paramView = this.b;
     if (paramView != null) {
       paramView.dismiss();
     }
@@ -29,7 +29,7 @@ class ShortVideoCommentsView$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.15
  * JD-Core Version:    0.7.0.1
  */

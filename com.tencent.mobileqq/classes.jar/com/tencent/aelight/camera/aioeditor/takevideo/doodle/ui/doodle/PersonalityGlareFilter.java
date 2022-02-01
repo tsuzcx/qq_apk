@@ -26,43 +26,26 @@ import java.util.List;
 public class PersonalityGlareFilter
   extends VideoFilterBase
 {
-  public int a;
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  protected UniformParam.TextureBitmapParam a;
-  private DoodleItem jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
-  private String jdField_a_of_type_JavaLangString = "doodle_image";
-  List<PointF> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  public int b;
-  List<Bitmap> b;
-  public int c = 1080;
-  public int d = 1440;
+  List<PointF> a = new ArrayList();
+  Point b;
+  List<Bitmap> c = new ArrayList();
+  protected UniformParam.TextureBitmapParam d;
+  public int e = 320;
+  public int f = 480;
+  public int g = 1080;
+  public int h = 1440;
+  private String i = "doodle_image";
+  private DoodleItem j;
+  private boolean k = false;
   
   public PersonalityGlareFilter(DoodleItem paramDoodleItem, String paramString)
   {
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_DOODLE));
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = 320;
-    this.jdField_b_of_type_Int = 480;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem = paramDoodleItem;
+    this.j = paramDoodleItem;
     initParams();
     a(paramString);
     paramDoodleItem.width = 25;
     paramDoodleItem.height = 25;
-  }
-  
-  private void a()
-  {
-    Bitmap localBitmap = (Bitmap)this.jdField_b_of_type_JavaUtilList.get(0);
-    UniformParam.TextureBitmapParam localTextureBitmapParam = this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam;
-    if (localTextureBitmapParam != null)
-    {
-      localTextureBitmapParam.swapTextureBitmap(localBitmap);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam = new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, false);
-    this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam.initialParams(super.getProgramIds());
-    super.addParam(this.jdField_a_of_type_ComTencentAekitOpenrenderUniformParam$TextureBitmapParam);
   }
   
   private void a(String paramString)
@@ -70,14 +53,14 @@ public class PersonalityGlareFilter
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     localStringBuilder.append("/");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("/");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("_0.png");
     paramString = BitmapUtils.decodeSampledBitmapFromFile(FileUtils.getRealPath(localStringBuilder.toString()), MediaConfig.VIDEO_IMAGE_WIDTH, MediaConfig.VIDEO_IMAGE_HEIGHT);
     if (BitmapUtils.isLegal(paramString))
     {
-      this.jdField_b_of_type_JavaUtilList.add(paramString);
+      this.c.add(paramString);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -85,11 +68,25 @@ public class PersonalityGlareFilter
     }
   }
   
+  private void b()
+  {
+    Bitmap localBitmap = (Bitmap)this.c.get(0);
+    UniformParam.TextureBitmapParam localTextureBitmapParam = this.d;
+    if (localTextureBitmapParam != null)
+    {
+      localTextureBitmapParam.swapTextureBitmap(localBitmap);
+      return;
+    }
+    this.d = new UniformParam.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, false);
+    this.d.initialParams(super.getProgramIds());
+    super.addParam(this.d);
+  }
+  
   public void ApplyGLSLFilter()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.k)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.k = true;
       super.ApplyGLSLFilter();
     }
   }
@@ -104,20 +101,20 @@ public class PersonalityGlareFilter
   
   void a(ArrayList<PointF> paramArrayList)
   {
-    float f3 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.c;
-    int i = 3;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    float f3 = this.j.width * this.width / this.g;
+    int m = 3;
+    while (m < this.a.size())
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
-      int j = i - 3;
-      localObject = (PointF)((List)localObject).get(j);
-      List localList = this.jdField_a_of_type_JavaUtilList;
-      int k = i - 2;
-      float f1 = (float)PersonalityUtils.a((PointF)localObject, (PointF)localList.get(k));
-      localObject = (PointF)this.jdField_a_of_type_JavaUtilList.get(k);
-      localList = this.jdField_a_of_type_JavaUtilList;
-      int m = i - 1;
-      float f2 = 1.0F / ((int)((f1 + (float)PersonalityUtils.a((PointF)localObject, (PointF)localList.get(m)) + (float)PersonalityUtils.a((PointF)this.jdField_a_of_type_JavaUtilList.get(m), (PointF)this.jdField_a_of_type_JavaUtilList.get(i))) / (f3 * 1.5F)) * 12 * 1.0F);
+      Object localObject = this.a;
+      int n = m - 3;
+      localObject = (PointF)((List)localObject).get(n);
+      List localList = this.a;
+      int i1 = m - 2;
+      float f1 = (float)PersonalityUtils.a((PointF)localObject, (PointF)localList.get(i1));
+      localObject = (PointF)this.a.get(i1);
+      localList = this.a;
+      int i2 = m - 1;
+      float f2 = 1.0F / ((int)((f1 + (float)PersonalityUtils.a((PointF)localObject, (PointF)localList.get(i2)) + (float)PersonalityUtils.a((PointF)this.a.get(i2), (PointF)this.a.get(m))) / (f3 * 1.5F)) * 12 * 1.0F);
       if (f2 > 0.1F)
       {
         f1 = 0.1F;
@@ -130,124 +127,124 @@ public class PersonalityGlareFilter
         }
       }
       for (f2 = 0.0F; f2 < 1.0F; f2 += f1) {
-        paramArrayList.add(a((PointF)this.jdField_a_of_type_JavaUtilList.get(j), (PointF)this.jdField_a_of_type_JavaUtilList.get(k), (PointF)this.jdField_a_of_type_JavaUtilList.get(m), (PointF)this.jdField_a_of_type_JavaUtilList.get(i), f2));
+        paramArrayList.add(a((PointF)this.a.get(n), (PointF)this.a.get(i1), (PointF)this.a.get(i2), (PointF)this.a.get(m), f2));
       }
-      i += 1;
+      m += 1;
     }
   }
   
   public void a(List<PointF> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (this.jdField_b_of_type_JavaUtilList.size() < 1) {
+    this.a.clear();
+    if (this.c.size() < 1) {
       return;
     }
-    a();
+    b();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       PointF localPointF = (PointF)paramList.next();
-      localPointF = new PointF(localPointF.x + this.jdField_a_of_type_AndroidGraphicsPoint.x, localPointF.y + this.jdField_a_of_type_AndroidGraphicsPoint.y);
-      this.jdField_a_of_type_JavaUtilList.add(localPointF);
+      localPointF = new PointF(localPointF.x + this.b.x, localPointF.y + this.b.y);
+      this.a.add(localPointF);
     }
   }
   
   public boolean a()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList;
+    Object localObject1 = this.a;
     if ((localObject1 != null) && (((List)localObject1).size() >= 1))
     {
       System.currentTimeMillis();
-      int i = 2;
+      int m = 2;
       PersonalityUtils.a(2);
-      float f1 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.width * this.width / this.c * 1.5F;
-      float f2 = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem.height * this.height / this.d * 1.5F;
+      float f1 = this.j.width * this.width / this.g * 1.5F;
+      float f2 = this.j.height * this.height / this.h * 1.5F;
       localObject1 = new ArrayList();
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 3) {
-        i = 3;
+      if (this.a.size() <= 3) {
+        m = 3;
       }
-      int j = 0;
-      int m;
-      int k;
+      int n = 0;
+      int i2;
+      int i1;
       float f3;
       float f5;
       float f4;
       float f6;
-      while ((j < this.jdField_a_of_type_JavaUtilList.size()) && (j < i))
+      while ((n < this.a.size()) && (n < m))
       {
-        if (j > 0)
+        if (n > 0)
         {
-          localObject2 = (PointF)this.jdField_a_of_type_JavaUtilList.get(j - 1);
-          localObject3 = (PointF)this.jdField_a_of_type_JavaUtilList.get(j);
-          m = (int)((float)PersonalityUtils.a((PointF)localObject2, (PointF)localObject3) / f1 * 18.0F) + 1;
-          k = m;
-          if (m < 6) {
-            k = 6;
+          localObject2 = (PointF)this.a.get(n - 1);
+          localObject3 = (PointF)this.a.get(n);
+          i2 = (int)((float)PersonalityUtils.a((PointF)localObject2, (PointF)localObject3) / f1 * 18.0F) + 1;
+          i1 = i2;
+          if (i2 < 6) {
+            i1 = 6;
           }
           f3 = ((PointF)localObject3).x;
           f5 = ((PointF)localObject2).x;
-          f4 = k * 1.0F;
+          f4 = i1 * 1.0F;
           f3 = (f3 - f5) / f4;
           f4 = (((PointF)localObject3).y - ((PointF)localObject2).y) / f4;
-          m = 0;
-          while (m < k)
+          i2 = 0;
+          while (i2 < i1)
           {
             f5 = ((PointF)localObject2).x;
-            f6 = m;
+            f6 = i2;
             ((ArrayList)localObject1).add(new PointF(f5 + f3 * f6, ((PointF)localObject2).y + f6 * f4));
-            m += 1;
+            i2 += 1;
           }
           if (!((PointF)((ArrayList)localObject1).get(((ArrayList)localObject1).size() - 1)).equals(((PointF)localObject3).x, ((PointF)localObject3).y)) {
             ((ArrayList)localObject1).add(localObject2);
           }
         }
-        j += 1;
+        n += 1;
       }
-      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+      if (this.a.size() > 3) {
         a((ArrayList)localObject1);
       }
       Object localObject2 = new float[((ArrayList)localObject1).size() * 8];
       Object localObject3 = new float[((ArrayList)localObject1).size() * 8];
-      i = 0;
-      while (i < ((ArrayList)localObject1).size())
+      m = 0;
+      while (m < ((ArrayList)localObject1).size())
       {
-        PointF localPointF = (PointF)((ArrayList)localObject1).get(i);
+        PointF localPointF = (PointF)((ArrayList)localObject1).get(m);
         f6 = localPointF.x - f1 / 2.0F;
         f5 = this.height - localPointF.y + f2 / 2.0F;
         f3 = f6 / this.width * 2.0F - 1.0F;
         f4 = f5 / this.height * 2.0F - 1.0F;
         f6 = (f6 + f1) / this.width * 2.0F - 1.0F;
         f5 = (f5 - f2) / this.height * 2.0F - 1.0F;
-        int i4 = i * 8;
-        j = i4 + 0;
-        localObject2[j] = f3;
-        k = i4 + 1;
-        localObject2[k] = f5;
-        m = i4 + 2;
-        localObject2[m] = f6;
-        int n = i4 + 3;
-        localObject2[n] = f5;
-        int i1 = i4 + 4;
-        localObject2[i1] = f3;
-        int i2 = i4 + 5;
-        localObject2[i2] = f4;
-        int i3 = i4 + 6;
-        localObject2[i3] = f6;
-        i4 += 7;
-        localObject2[i4] = f4;
-        localObject3[j] = 0.0F;
-        localObject3[k] = 1.0F;
-        localObject3[m] = 1.0F;
-        localObject3[n] = 1.0F;
-        localObject3[i1] = 0.0F;
-        localObject3[i2] = 0.0F;
+        int i7 = m * 8;
+        n = i7 + 0;
+        localObject2[n] = f3;
+        i1 = i7 + 1;
+        localObject2[i1] = f5;
+        i2 = i7 + 2;
+        localObject2[i2] = f6;
+        int i3 = i7 + 3;
+        localObject2[i3] = f5;
+        int i4 = i7 + 4;
+        localObject2[i4] = f3;
+        int i5 = i7 + 5;
+        localObject2[i5] = f4;
+        int i6 = i7 + 6;
+        localObject2[i6] = f6;
+        i7 += 7;
+        localObject2[i7] = f4;
+        localObject3[n] = 0.0F;
+        localObject3[i1] = 1.0F;
+        localObject3[i2] = 1.0F;
         localObject3[i3] = 1.0F;
         localObject3[i4] = 0.0F;
-        i += 1;
+        localObject3[i5] = 0.0F;
+        localObject3[i6] = 1.0F;
+        localObject3[i7] = 0.0F;
+        m += 1;
       }
       super.setPositions((float[])localObject2);
       super.setTexCords((float[])localObject3);
-      super.addParam(new UniformParam.Float2fParam("texAnchor", -this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y));
+      super.addParam(new UniformParam.Float2fParam("texAnchor", -this.b.x, this.b.y));
       super.addParam(new UniformParam.FloatParam("texScale", 1.0F));
       super.addParam(new UniformParam.FloatParam("texScaleX", 1.0F));
       super.addParam(new UniformParam.FloatParam("texScaleY", 1.0F));
@@ -273,7 +270,7 @@ public class PersonalityGlareFilter
     super.addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
     super.addParam(new UniformParam.FloatParam("positionRotate", 0.0F));
     super.addParam(new UniformParam.FloatParam("alpha", 1.0F));
-    DoodleItem localDoodleItem = this.jdField_a_of_type_ComTencentTtpicOpenapiModelDoodleItem;
+    DoodleItem localDoodleItem = this.j;
     if (localDoodleItem != null) {
       super.addParam(new UniformParam.IntParam("blendMode", localDoodleItem.blendMode));
     }
@@ -285,13 +282,13 @@ public class PersonalityGlareFilter
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramInt1 / 2, paramInt2 / 2);
+    this.b = new Point(paramInt1 / 2, paramInt2 / 2);
     super.addParam(new UniformParam.Float2fParam("canvasSize", paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.PersonalityGlareFilter
  * JD-Core Version:    0.7.0.1
  */

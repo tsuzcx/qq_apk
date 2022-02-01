@@ -6,19 +6,19 @@ public class Plugin$Builder
   
   public Builder a(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.d = paramInt;
     return this;
   }
   
   public Builder a(String paramString)
   {
-    this.a.jdField_b_of_type_JavaLangString = paramString;
+    this.a.c = paramString;
     return this;
   }
   
   public Builder a(String[] paramArrayOfString)
   {
-    this.a.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.a.h = paramArrayOfString;
     return this;
   }
   
@@ -29,43 +29,43 @@ public class Plugin$Builder
   
   public Builder b(int paramInt)
   {
-    this.a.jdField_b_of_type_Int = paramInt;
+    this.a.e = paramInt;
     return this;
   }
   
   public Builder b(String paramString)
   {
-    this.a.c = paramString;
+    this.a.f = paramString;
     return this;
   }
   
   public Builder b(String[] paramArrayOfString)
   {
-    this.a.jdField_b_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.a.i = paramArrayOfString;
     return this;
   }
   
   public Builder c(String paramString)
   {
-    this.a.d = paramString;
+    this.a.g = paramString;
     return this;
   }
   
   public Builder d(String paramString)
   {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
+    this.a.a = paramString;
     return this;
   }
   
   public Builder e(String paramString)
   {
-    this.a.e = paramString;
+    this.a.j = paramString;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.Plugin.Builder
  * JD-Core Version:    0.7.0.1
  */

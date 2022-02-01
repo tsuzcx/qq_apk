@@ -72,7 +72,7 @@ public final class TogetherUtils
   
   public static ChatMessage a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().b(paramString, paramInt);
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade().o(paramString, paramInt);
     if (paramQQAppInterface != null)
     {
       if (paramQQAppInterface.isEmpty()) {
@@ -82,7 +82,7 @@ public final class TogetherUtils
       while (paramInt >= 0)
       {
         paramString = (ChatMessage)paramQQAppInterface.get(paramInt);
-        if (!MessageUtils.a(paramString.msgtype)) {
+        if (!MessageUtils.b(paramString.msgtype)) {
           return paramString;
         }
         paramInt -= 1;
@@ -115,7 +115,7 @@ public final class TogetherUtils
       int k;
       try
       {
-        i = TagUtil.a(paramString);
+        i = TagUtil.b(paramString);
         localObject = paramString;
         if (paramInt > 0)
         {
@@ -234,7 +234,7 @@ public final class TogetherUtils
   
   public static void a(int paramInt, Map<String, Object> paramMap, Map<String, String> paramMap1)
   {
-    Object localObject6 = null;
+    Object localObject5 = null;
     String str1;
     if (paramMap1 == null) {
       str1 = null;
@@ -247,37 +247,36 @@ public final class TogetherUtils
       paramMap1 = (String)paramMap1.get("chatUIN");
     }
     if (paramMap == null) {
-      localObject4 = null;
-    } else {
-      localObject4 = (HashMap)paramMap.get("extra");
-    }
-    Object localObject1;
-    if (localObject4 == null) {
-      localObject1 = null;
-    } else {
-      localObject1 = ((Map)localObject4).get("aio_media_id");
-    }
-    if (localObject4 == null) {
       localObject3 = null;
     } else {
-      localObject3 = ((Map)localObject4).get("song_id");
+      localObject3 = (HashMap)paramMap.get("extra");
     }
-    if (localObject4 == null) {
-      localObject5 = "";
+    if (localObject3 == null) {
+      localObject1 = null;
     } else {
-      localObject5 = ((Map)localObject4).get("match_id");
+      localObject1 = ((Map)localObject3).get("aio_media_id");
     }
-    Object localObject5 = (String)localObject5;
-    if (localObject4 == null) {
-      localObject4 = null;
+    if (localObject3 == null) {
+      localObject2 = null;
     } else {
-      localObject4 = ((Map)localObject4).get("sub_type");
+      localObject2 = ((Map)localObject3).get("song_id");
     }
-    Object localObject4 = (Integer)localObject4;
-    if (localObject4 != null) {
+    if (localObject3 == null) {
+      localObject4 = "";
+    } else {
+      localObject4 = ((Map)localObject3).get("match_id");
+    }
+    Object localObject4 = (String)localObject4;
+    if (localObject3 == null) {
+      localObject3 = null;
+    } else {
+      localObject3 = ((Map)localObject3).get("sub_type");
+    }
+    Object localObject3 = (Integer)localObject3;
+    if (localObject3 != null) {
       try
       {
-        i = ((Integer)localObject4).intValue();
+        i = ((Integer)localObject3).intValue();
       }
       catch (Throwable localThrowable)
       {
@@ -301,26 +300,17 @@ public final class TogetherUtils
     } else {
       paramMap = (String)paramMap.get("cover");
     }
-    QLog.d("TogetherUtils", 1, new Object[] { "onArkTogetherClick params[", str1, " ", paramMap1, " ", localObject1, " ", localObject3, "]" });
+    QLog.d("TogetherUtils", 1, new Object[] { "onArkTogetherClick params[", str1, " ", paramMap1, " ", localObject1, " ", localObject2, "]" });
     int k = -1;
     long l;
     if ((localObject1 instanceof Long)) {
-      try
-      {
-        l = ((Long)localObject1).longValue();
-      }
-      catch (Exception localException2)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("TogetherUtils", 2, localException2.getMessage(), localException2);
-        }
-      }
+      l = ((Long)localObject1).longValue();
     } else {
       l = 0L;
     }
-    Object localObject2 = localObject6;
-    if ((localObject3 instanceof String)) {
-      localObject2 = (String)localObject3;
+    Object localObject1 = localObject5;
+    if ((localObject2 instanceof String)) {
+      localObject1 = (String)localObject2;
     }
     int i = k;
     if (!TextUtils.isEmpty(str1))
@@ -342,12 +332,12 @@ public final class TogetherUtils
             }
           }
         }
-        catch (Exception localException1)
+        catch (Exception localException)
         {
           i = k;
           if (QLog.isColorLevel())
           {
-            QLog.i("TogetherUtils", 2, localException1.getMessage(), localException1);
+            QLog.i("TogetherUtils", 2, localException.getMessage(), localException);
             i = k;
           }
         }
@@ -364,13 +354,13 @@ public final class TogetherUtils
       QLog.d("TogetherUtils", 1, "onArkTogetherClick return null activity");
       return;
     }
-    Object localObject3 = new Bundle();
-    ((Bundle)localObject3).putString("video_id", (String)localObject5);
-    ((Bundle)localObject3).putInt("category_id", j);
-    ((Bundle)localObject3).putString("title_name", str2);
-    ((Bundle)localObject3).putString("room_cover", paramMap);
-    ((Bundle)localObject3).putString("song_id", (String)localObject2);
-    TogetherControlManager.a(localBaseActivity.app).a(localBaseActivity, paramInt, i, paramMap1, l, 8, (Bundle)localObject3);
+    Object localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("video_id", (String)localObject4);
+    ((Bundle)localObject2).putInt("category_id", j);
+    ((Bundle)localObject2).putString("title_name", str2);
+    ((Bundle)localObject2).putString("room_cover", paramMap);
+    ((Bundle)localObject2).putString("song_id", (String)localObject1);
+    TogetherControlManager.a(localBaseActivity.app).a(localBaseActivity, paramInt, i, paramMap1, l, 8, (Bundle)localObject2);
   }
   
   public static void a(@NonNull Context paramContext, int paramInt1, @NonNull String paramString1, @Nullable String paramString2, @NonNull Bundle paramBundle, int paramInt2)
@@ -379,7 +369,7 @@ public final class TogetherUtils
     {
       if (paramInt1 != 2)
       {
-        QQToast.a(paramContext, 0, 2131720349, 0).a();
+        QQToast.makeText(paramContext, 0, 2131917986, 0).show();
         return;
       }
       paramString2 = new Intent();
@@ -416,12 +406,12 @@ public final class TogetherUtils
   public static void a(@NonNull QQAppInterface paramQQAppInterface, @NonNull TogetherSession paramTogetherSession, boolean paramBoolean)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramTogetherSession.jdField_e_of_type_Int);
+    localStringBuilder.append(paramTogetherSession.l);
     localStringBuilder.append("_");
-    localStringBuilder.append(paramTogetherSession.f);
+    localStringBuilder.append(paramTogetherSession.m);
     localStringBuilder.append("_");
-    localStringBuilder.append(paramTogetherSession.jdField_e_of_type_JavaLangString);
-    a(paramQQAppInterface, localStringBuilder.toString(), paramBoolean, true);
+    localStringBuilder.append(paramTogetherSession.n);
+    b(paramQQAppInterface, localStringBuilder.toString(), paramBoolean, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
@@ -443,7 +433,7 @@ public final class TogetherUtils
       localObject = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       if (localObject != null)
       {
-        paramString = ((TroopManager)localObject).b(paramString);
+        paramString = ((TroopManager)localObject).f(paramString);
         if (paramString != null)
         {
           boolean bool = paramString.isWatchTogetherOpen();
@@ -496,7 +486,7 @@ public final class TogetherUtils
       i = j;
       if (localObject != null)
       {
-        paramString = ((TroopManager)localObject).b(paramString);
+        paramString = ((TroopManager)localObject).f(paramString);
         i = j;
         if (paramString != null)
         {
@@ -526,7 +516,7 @@ public final class TogetherUtils
           break label334;
         }
         localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        paramString = ((FriendsManager)localObject).a(paramString, false);
+        paramString = ((FriendsManager)localObject).d(paramString, false);
         if (paramString == null) {
           break;
         }
@@ -564,17 +554,6 @@ public final class TogetherUtils
         paramQQAppInterface.sendEmptyMessage(1);
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    String str;
-    if (paramBoolean2) {
-      str = paramQQAppInterface.getCurrentUin();
-    } else {
-      str = "qq_together_pref";
-    }
-    paramQQAppInterface.getApplication().getSharedPreferences(str, 0).edit().putBoolean(paramString, paramBoolean1).apply();
   }
   
   public static void a(String paramString1, String paramString2)
@@ -620,11 +599,11 @@ public final class TogetherUtils
     paramIntent.putExtra("together_business_has_show_join_dialog", true);
     if ((paramBoolean) && (!bool))
     {
-      if ((paramTogetherSession.h == 1) && (paramTogetherSession.i != 2)) {
+      if ((paramTogetherSession.p == 1) && (paramTogetherSession.q != 2)) {
         return true;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("TogetherUtils", 2, new Object[] { "invokeJoinDialog togetherSession.status=", Integer.valueOf(paramTogetherSession.h), " togetherSession.userState=", Integer.valueOf(paramTogetherSession.i) });
+        QLog.d("TogetherUtils", 2, new Object[] { "invokeJoinDialog togetherSession.status=", Integer.valueOf(paramTogetherSession.p), " togetherSession.userState=", Integer.valueOf(paramTogetherSession.q) });
       }
       return false;
     }
@@ -637,11 +616,11 @@ public final class TogetherUtils
   public static boolean a(@NonNull QQAppInterface paramQQAppInterface, @NonNull TogetherSession paramTogetherSession)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramTogetherSession.jdField_e_of_type_Int);
+    localStringBuilder.append(paramTogetherSession.l);
     localStringBuilder.append("_");
-    localStringBuilder.append(paramTogetherSession.f);
+    localStringBuilder.append(paramTogetherSession.m);
     localStringBuilder.append("_");
-    localStringBuilder.append(paramTogetherSession.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(paramTogetherSession.n);
     return a(paramQQAppInterface, localStringBuilder.toString(), true, true);
   }
   
@@ -664,7 +643,7 @@ public final class TogetherUtils
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.b(paramString);
+        paramQQAppInterface = paramQQAppInterface.f(paramString);
         if (paramQQAppInterface != null)
         {
           bool = paramQQAppInterface.isTogetherBusinessOpen(paramInt2);
@@ -682,8 +661,8 @@ public final class TogetherUtils
     else if (paramInt1 == 2)
     {
       localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-      paramQQAppInterface = ((FriendsManager)localObject).a(paramString, false);
-      paramString = ((FriendsManager)localObject).b(paramString);
+      paramQQAppInterface = ((FriendsManager)localObject).d(paramString, false);
+      paramString = ((FriendsManager)localObject).c(paramString);
       if (paramString != null)
       {
         if (!paramString.isFriend()) {
@@ -778,10 +757,21 @@ public final class TogetherUtils
     }
     return localObject;
   }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    String str;
+    if (paramBoolean2) {
+      str = paramQQAppInterface.getCurrentUin();
+    } else {
+      str = "qq_together_pref";
+    }
+    paramQQAppInterface.getApplication().getSharedPreferences(str, 0).edit().putBoolean(paramString, paramBoolean1).apply();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherUtils
  * JD-Core Version:    0.7.0.1
  */

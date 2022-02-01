@@ -31,7 +31,7 @@ class TroopRedTouchManager$4
       if (QLog.isColorLevel())
       {
         Object localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(this.this$0.c);
+        ((StringBuilder)localObject4).append(this.this$0.d);
         ((StringBuilder)localObject4).append("Q.qqstory.redPoint");
         localObject4 = ((StringBuilder)localObject4).toString();
         StringBuilder localStringBuilder = new StringBuilder();

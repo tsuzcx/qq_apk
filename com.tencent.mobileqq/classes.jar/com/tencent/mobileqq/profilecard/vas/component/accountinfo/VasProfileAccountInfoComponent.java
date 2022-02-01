@@ -69,9 +69,9 @@ public class VasProfileAccountInfoComponent
         localObject = localView;
         if (!TextUtils.isEmpty(paramCharSequence))
         {
-          localObject = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131561339, null);
-          localView = ((ViewGroup)localObject).findViewById(2131368343);
-          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131368773);
+          localObject = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131627695, null);
+          localView = ((ViewGroup)localObject).findViewById(2131435219);
+          TextView localTextView = (TextView)((ViewGroup)localObject).findViewById(2131435692);
           localView.setBackgroundResource(paramInt1);
           if ((paramCharSequence instanceof String)) {
             localTextView.setText(((String)paramCharSequence).trim());
@@ -94,9 +94,9 @@ public class VasProfileAccountInfoComponent
     if (!isShowAccountPrettyItem(paramViewGroup, paramInt1, paramCharSequence)) {
       return null;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131561342, null);
-    Object localObject = localViewGroup.findViewById(2131368343);
-    TextView localTextView = (TextView)localViewGroup.findViewById(2131368773);
+    ViewGroup localViewGroup = (ViewGroup)this.mActivity.getLayoutInflater().inflate(2131627698, null);
+    Object localObject = localViewGroup.findViewById(2131435219);
+    TextView localTextView = (TextView)localViewGroup.findViewById(2131435692);
     ((View)localObject).setBackgroundResource(paramInt1);
     if (checkProfile((ProfileCardInfo)this.mData)) {
       paramInt1 = ((ProfileCardInfo)this.mData).card.lhLevel;
@@ -192,7 +192,7 @@ public class VasProfileAccountInfoComponent
     View localView2 = (View)this.mViewContainer;
     View localView1 = localView2;
     if (localView2 == null) {
-      localView1 = this.mActivity.getLayoutInflater().inflate(2131561338, null);
+      localView1 = this.mActivity.getLayoutInflater().inflate(2131627694, null);
     }
     if (localView1 != null) {
       this.mViewContainer = localView1;
@@ -202,7 +202,7 @@ public class VasProfileAccountInfoComponent
   
   private QidCoolTextView getQidView(ViewGroup paramViewGroup)
   {
-    paramViewGroup = (QidCoolTextView)paramViewGroup.findViewById(2131373972);
+    paramViewGroup = (QidCoolTextView)paramViewGroup.findViewById(2131442038);
     paramViewGroup.a(this.mQQAppInterface, (ProfileCardInfo)this.mData);
     paramViewGroup.setTag(new DataTag(105, null));
     paramViewGroup.setOnClickListener(this);
@@ -215,10 +215,10 @@ public class VasProfileAccountInfoComponent
     DisplayMetrics localDisplayMetrics = paramContext.getDisplayMetrics();
     this.mDensity = localDisplayMetrics.density;
     this.mScreenWidth = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    this.mLeftSpace = (paramContext.getDimensionPixelSize(2131297246) + paramContext.getDimensionPixelSize(2131297597) + paramContext.getDimensionPixelSize(2131297598));
+    this.mLeftSpace = (paramContext.getDimensionPixelSize(2131297677) + paramContext.getDimensionPixelSize(2131298261) + paramContext.getDimensionPixelSize(2131298262));
     float f = this.mDensity;
-    int i = paramContext.getDimensionPixelSize(2131297594);
-    int j = paramContext.getDimensionPixelSize(2131297595);
+    int i = paramContext.getDimensionPixelSize(2131298258);
+    int j = paramContext.getDimensionPixelSize(2131298259);
     this.mRightSpace = (f * 7.0F + i + j);
     this.mItemInfoWidth = (this.mScreenWidth - this.mLeftSpace - this.mRightSpace);
   }
@@ -282,7 +282,7 @@ public class VasProfileAccountInfoComponent
   
   private boolean isValidForAccountBaseInfoThirdLine(TroopManager paramTroopManager)
   {
-    return (!paramTroopManager.m(((ProfileCardInfo)this.mData).troopUin)) && (!isDIYTemplateProfile());
+    return (!paramTroopManager.Z(((ProfileCardInfo)this.mData).troopUin)) && (!isDIYTemplateProfile());
   }
   
   private boolean makeOrRefreshAccountBaseInfoView(Card paramCard, boolean paramBoolean)
@@ -298,8 +298,8 @@ public class VasProfileAccountInfoComponent
     }
     View localView = getAccountBaseInfoView();
     Object localObject = (ViewGroup)localView;
-    ViewGroup localViewGroup1 = (ViewGroup)((ViewGroup)localObject).findViewById(2131361874);
-    ViewGroup localViewGroup2 = (ViewGroup)((ViewGroup)localObject).findViewById(2131361877);
+    ViewGroup localViewGroup1 = (ViewGroup)((ViewGroup)localObject).findViewById(2131427428);
+    ViewGroup localViewGroup2 = (ViewGroup)((ViewGroup)localObject).findViewById(2131427431);
     localViewGroup1.removeAllViews();
     if ((!ProfilePAUtils.isFromWholePeopleVote(((ProfileCardInfo)this.mData).allInOne)) && (!ProfilePAUtils.isFromExtendFriend(((ProfileCardInfo)this.mData).allInOne))) {
       localObject = " ";
@@ -319,12 +319,12 @@ public class VasProfileAccountInfoComponent
   private void refreshAccountBaseInfoFirstLine(Card paramCard, ViewGroup paramViewGroup, String paramString)
   {
     int j = 0;
-    paramViewGroup = addAccountPrettyItem(paramViewGroup, 2130845955, paramString, 0);
+    paramViewGroup = addAccountPrettyItem(paramViewGroup, 2130847425, paramString, 0);
     if (paramViewGroup == null) {
       return;
     }
-    TextView localTextView = (TextView)paramViewGroup.findViewById(2131368773);
-    paramViewGroup = (QidCoolTextView)paramViewGroup.findViewById(2131373972);
+    TextView localTextView = (TextView)paramViewGroup.findViewById(2131435692);
+    paramViewGroup = (QidCoolTextView)paramViewGroup.findViewById(2131442038);
     paramString = null;
     if (localTextView == null) {
       return;
@@ -371,13 +371,13 @@ public class VasProfileAccountInfoComponent
   {
     paramViewGroup.setTag(new DataTag(66, paramCard.uin));
     paramViewGroup.setOnClickListener(this);
-    updateItemTheme(null, (TextView)paramViewGroup.findViewById(2131361878), (ImageView)paramViewGroup.findViewById(2131362975), null);
+    updateItemTheme(null, (TextView)paramViewGroup.findViewById(2131427432), (ImageView)paramViewGroup.findViewById(2131428774), null);
   }
   
   private void refreshAccountBaseInfoSecondLine(ViewGroup paramViewGroup)
   {
     if (isDIYTemplateProfile()) {
-      addAccountBaseInfoItem(paramViewGroup, 2130845966, ProfileCardUtil.b(this.mActivity, (ProfileCardInfo)this.mData), 1);
+      addAccountBaseInfoItem(paramViewGroup, 2130847436, ProfileCardUtil.b(this.mActivity, (ProfileCardInfo)this.mData), 1);
     }
   }
   
@@ -398,7 +398,7 @@ public class VasProfileAccountInfoComponent
           {
             str = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getHometownWithPrivacy((ProfileCardInfo)this.mData);
             if (!TextUtils.isEmpty(str)) {
-              addAccountBaseInfoItem(paramViewGroup, 2130845965, str, 1);
+              addAccountBaseInfoItem(paramViewGroup, 2130847435, str, 1);
             }
           }
         }
@@ -423,14 +423,14 @@ public class VasProfileAccountInfoComponent
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
     paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfessionTagWithPrivacy((ProfileCardInfo)this.mData);
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, com.tencent.mobileqq.util.NearbyProfileUtil.d[14])))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, com.tencent.mobileqq.util.NearbyProfileUtil.e[14])))
     {
       if (localStringBuilder.length() > 0) {
         localStringBuilder.append(" ");
       }
       localStringBuilder.append(paramString);
     }
-    addAccountBaseInfoItem(paramViewGroup, 2130845970, localStringBuilder.toString(), 1);
+    addAccountBaseInfoItem(paramViewGroup, 2130847440, localStringBuilder.toString(), 1);
   }
   
   private void refreshSchoolInfo(Card paramCard, ViewGroup paramViewGroup)
@@ -440,16 +440,16 @@ public class VasProfileAccountInfoComponent
     {
       Object localObject = str;
       if (paramCard.schoolVerifiedFlag) {
-        localObject = ProfileCardUtil.a(str, true, 2130845178, 2131298260, 2131298259, this.mActivity, this.mQQAppInterface);
+        localObject = ProfileCardUtil.a(str, true, 2130846620, 2131298961, 2131298960, this.mActivity, this.mQQAppInterface);
       }
-      addAccountBaseInfoItem(paramViewGroup, 2130845975, (CharSequence)localObject, 1);
+      addAccountBaseInfoItem(paramViewGroup, 2130847445, (CharSequence)localObject, 1);
     }
   }
   
   private void updateNickForTroopMemberCard(Card paramCard, TextView paramTextView, QidCoolTextView paramQidCoolTextView)
   {
     TroopManager localTroopManager = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    Object localObject1 = localTroopManager.b(((ProfileCardInfo)this.mData).troopUin, paramCard.uin);
+    Object localObject1 = localTroopManager.g(((ProfileCardInfo)this.mData).troopUin, paramCard.uin);
     if ((localObject1 != null) && (TextUtils.isEmpty(((TroopMemberInfo)localObject1).troopnick)) && (!TextUtils.isEmpty(paramCard.strReMark))) {
       localObject1 = paramCard.strNick;
     } else if (TextUtils.isEmpty(paramCard.strReMark)) {
@@ -461,7 +461,7 @@ public class VasProfileAccountInfoComponent
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       localObject2 = ContactUtils.a(this.mQQAppInterface, paramCard.uin, false);
     }
-    if (localTroopManager.m(((ProfileCardInfo)this.mData).troopUin)) {
+    if (localTroopManager.Z(((ProfileCardInfo)this.mData).troopUin)) {
       paramQidCoolTextView = (QidCoolTextView)localObject2;
     } else {
       paramQidCoolTextView = combineNickNameAndNumber(paramTextView, paramQidCoolTextView, paramCard);
@@ -531,7 +531,7 @@ public class VasProfileAccountInfoComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.accountinfo.VasProfileAccountInfoComponent
  * JD-Core Version:    0.7.0.1
  */

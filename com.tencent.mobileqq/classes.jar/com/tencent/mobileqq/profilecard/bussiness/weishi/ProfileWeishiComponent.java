@@ -100,16 +100,16 @@ public class ProfileWeishiComponent
       paramCard = (Card)localObject;
       if (localObject == null)
       {
-        paramCard = this.mActivity.getLayoutInflater().inflate(2131559578, null);
+        paramCard = this.mActivity.getLayoutInflater().inflate(2131625606, null);
         this.mWeishiPanel.a(paramCard);
         this.mWeishiPanel.a(new ProfileWeishiComponent.1(this));
         this.mViewContainer = paramCard;
         QLog.i("ProfileWeishiComponent", 2, "makeOrRefreshWeishiFeedList show weishi panel!");
         bool1 = true;
       }
-      localObject = this.mWeishiPanel.a();
+      localObject = this.mWeishiPanel.b();
       ImageView localImageView = this.mWeishiPanel.a();
-      this.mWeishiPanel.b();
+      this.mWeishiPanel.d();
       updateItemTheme(paramCard, (TextView)localObject, null, localImageView);
       return bool1;
     }
@@ -270,7 +270,7 @@ public class ProfileWeishiComponent
       }
     }
     this.mWeishiPanel.a(bool, str);
-    this.mWeishiPanel.c();
+    this.mWeishiPanel.e();
     return;
     if (QLog.isColorLevel())
     {
@@ -283,7 +283,7 @@ public class ProfileWeishiComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.weishi.ProfileWeishiComponent
  * JD-Core Version:    0.7.0.1
  */

@@ -74,8 +74,8 @@ public class ThemeDIYDownloader
     for (;;)
     {
       i = 1;
-      break label566;
-      paramOutputStream = new File(QQSharpPUtil.a(paramURLDrawableHandler));
+      break label567;
+      paramOutputStream = new File(QQSharpPUtil.b(paramURLDrawableHandler));
       bool = paramDownloadParams.useSharpPImage;
       if ((bool) && (paramOutputStream.exists()))
       {
@@ -102,11 +102,11 @@ public class ThemeDIYDownloader
         QLog.d("themediydownloader", 2, paramOutputStream.toString());
       }
       paramOutputStream = new DownloadTask((String)localObject1, paramURLDrawableHandler);
-      paramOutputStream.k = bool;
+      paramOutputStream.E = bool;
       if (DownloaderFactory.a(paramOutputStream, BaseApplicationImpl.sApplication.getRuntime()) != 0) {
         break;
       }
-      if ((paramURLDrawableHandler.exists()) && (!SignatureManager.a(paramURLDrawableHandler.getAbsolutePath())))
+      if ((paramURLDrawableHandler.exists()) && (!SignatureManager.c(paramURLDrawableHandler.getAbsolutePath())))
       {
         paramURLDrawableHandler.delete();
         paramOutputStream = new StringBuilder();
@@ -143,15 +143,15 @@ public class ThemeDIYDownloader
       paramURLDrawableHandler.append("downloadImage onPostThemeChanged pageIndex: ");
       paramURLDrawableHandler.append(i);
       paramURLDrawableHandler.append(", needUpdateThemeForBg=");
-      paramURLDrawableHandler.append(ThemeBackground.c);
+      paramURLDrawableHandler.append(ThemeBackground.f);
       QLog.i("themediydownloader", 1, paramURLDrawableHandler.toString());
       paramURLDrawableHandler = paramOutputStream;
-      if (ThemeBackground.c)
+      if (ThemeBackground.f)
       {
         paramURLDrawableHandler = paramOutputStream;
         if (100 == i)
         {
-          ThemeBackground.c = false;
+          ThemeBackground.f = false;
           paramURLDrawableHandler = new Intent("com.tencent.qplus.THEME_INVALIDATE");
           paramURLDrawableHandler.putExtra("pid", Process.myPid());
           BaseApplicationImpl.sApplication.sendBroadcast(paramURLDrawableHandler, "com.tencent.msg.permission.pushnotify");
@@ -167,7 +167,7 @@ public class ThemeDIYDownloader
     paramOutputStream.append(str);
     QLog.e("themediydownloader", 1, paramOutputStream.toString());
     int i = 0;
-    label566:
+    label567:
     paramOutputStream = paramDownloadParams.getHeader("my_uin");
     if (paramOutputStream != null) {}
     for (;;)
@@ -186,23 +186,23 @@ public class ThemeDIYDownloader
             paramOutputStream = localHeader.getValue();
           }
           ((ResData)localObject3).b = paramOutputStream;
-          ((ResData)localObject3).jdField_c_of_type_JavaLangString = str;
-          ((ResData)localObject3).d = ((String)localObject1);
+          ((ResData)localObject3).d = str;
+          ((ResData)localObject3).e = ((String)localObject1);
           paramOutputStream = paramDownloadParams.getHeader("my_type");
           if (paramOutputStream != null) {
             j = Integer.parseInt(paramOutputStream.getValue());
           }
-          ((ResData)localObject3).jdField_c_of_type_Int = j;
+          ((ResData)localObject3).g = j;
           paramOutputStream = new Bundle();
           paramDownloadParams = paramDownloadParams.getHeader("page_index");
           if (paramDownloadParams == null) {
-            break label811;
+            break label812;
           }
           j = Integer.parseInt(paramDownloadParams.getValue());
           paramOutputStream.putInt("page_index", j);
           paramDownloadParams = localIThemeSwitchManager.getstyleCallBack();
           if (i == 0) {
-            break label817;
+            break label818;
           }
           i = 4;
           paramDownloadParams.a(18, i, paramOutputStream, (ResData)localObject3);
@@ -217,17 +217,17 @@ public class ThemeDIYDownloader
         QLog.e("themediydownloader", 1, paramDownloadParams.toString());
       }
       return paramURLDrawableHandler;
-      label811:
+      label812:
       j = -1;
       continue;
-      label817:
+      label818:
       i = 8;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ThemeDIYDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -32,8 +32,8 @@ class ReportCenter$4
       {
         try
         {
-          Bundle localBundle = this.this$0.a();
-          j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_HttpRetryCount");
+          Bundle localBundle = this.this$0.b();
+          j = OpenConfig.a(CommonDataAdapter.a().b(), null).d("Common_HttpRetryCount");
           i = j;
           if (j == 0) {
             i = 3;
@@ -71,7 +71,7 @@ class ReportCenter$4
             if (n != 200) {
               continue;
             }
-            ReportDatabaseHelper.a().a("report_cgi");
+            ReportDatabaseHelper.a().c("report_cgi");
             j = 1;
           }
           catch (Error localError)
@@ -106,11 +106,11 @@ class ReportCenter$4
         }
         finally {}
         if (j == 0) {
-          ReportDatabaseHelper.a().a("report_cgi", this.this$0.a);
+          ReportDatabaseHelper.a().a("report_cgi", this.this$0.c);
         }
         synchronized (this.this$0)
         {
-          this.this$0.a.clear();
+          this.this$0.c.clear();
           return;
         }
         j = m;
@@ -131,7 +131,7 @@ class ReportCenter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter.4
  * JD-Core Version:    0.7.0.1
  */

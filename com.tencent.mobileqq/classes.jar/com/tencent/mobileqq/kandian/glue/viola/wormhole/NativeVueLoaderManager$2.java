@@ -14,11 +14,11 @@ class NativeVueLoaderManager$2
   {
     if (paramInt == 0)
     {
-      this.jdField_a_of_type_ComTencentNativevueNativeVuePreconditionAdapter$LoadSoResult.onLoadSuccess();
+      this.a.onLoadSuccess();
       QLog.d("NativeVueLoaderManager", 1, "load NativeVue Success");
       return;
     }
-    this.jdField_a_of_type_ComTencentNativevueNativeVuePreconditionAdapter$LoadSoResult.onLoadError();
+    this.a.onLoadError();
     paramLoadExtResult = new StringBuilder();
     paramLoadExtResult.append("load NativeVue Error: ");
     paramLoadExtResult.append(paramInt);
@@ -27,7 +27,7 @@ class NativeVueLoaderManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.wormhole.NativeVueLoaderManager.2
  * JD-Core Version:    0.7.0.1
  */

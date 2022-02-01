@@ -6,93 +6,28 @@ import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMedia
 
 public class MediaPlayerHelper
 {
-  private static MediaPlayerHelper jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
+  private static MediaPlayerHelper a;
+  private MediaPlayer b;
   
   public static MediaPlayerHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper == null) {
-      jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper = new MediaPlayerHelper();
+    if (a == null) {
+      a = new MediaPlayerHelper();
     }
-    return jdField_a_of_type_ComTencentMobileqqUtilsMediaPlayerHelper;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-      if (localMediaPlayer == null) {
-        return;
-      }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      return;
-    }
-    finally {}
+    return a;
   }
   
   public void a(MediaPlayer.OnCompletionListener paramOnCompletionListener)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
+      if (this.b == null) {
+        this.b = new ReportMediaPlayer();
       }
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(paramOnCompletionListener);
+      this.b.setOnCompletionListener(paramOnCompletionListener);
       return;
     }
     finally {}
-  }
-  
-  /* Error */
-  public boolean a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnonnull +7 -> 15
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: iconst_0
-    //   14: ireturn
-    //   15: aload_0
-    //   16: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   19: invokevirtual 42	android/media/MediaPlayer:start	()V
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: iconst_1
-    //   25: ireturn
-    //   26: astore_1
-    //   27: aload_1
-    //   28: invokevirtual 45	java/lang/IllegalStateException:printStackTrace	()V
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: iconst_0
-    //   34: ireturn
-    //   35: astore_1
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_1
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	this	MediaPlayerHelper
-    //   6	2	1	localMediaPlayer	MediaPlayer
-    //   26	2	1	localIllegalStateException	java.lang.IllegalStateException
-    //   35	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	22	26	java/lang/IllegalStateException
-    //   2	7	35	finally
-    //   15	22	35	finally
-    //   27	31	35	finally
   }
   
   /* Error */
@@ -102,57 +37,57 @@ public class MediaPlayerHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   3: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   6: ifnonnull +17 -> 23
     //   9: aload_0
-    //   10: new 32	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
+    //   10: new 22	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
     //   13: dup
-    //   14: invokespecial 33	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
-    //   17: putfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   14: invokespecial 23	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
+    //   17: putfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   20: goto +10 -> 30
     //   23: aload_0
-    //   24: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   27: invokevirtual 26	android/media/MediaPlayer:reset	()V
+    //   24: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   27: invokevirtual 40	android/media/MediaPlayer:reset	()V
     //   30: aload_0
-    //   31: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   31: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   34: iconst_3
-    //   35: invokevirtual 56	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   35: invokevirtual 44	android/media/MediaPlayer:setAudioStreamType	(I)V
     //   38: aload_0
-    //   39: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   39: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   42: aload_1
     //   43: aload_2
-    //   44: invokevirtual 60	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
+    //   44: invokevirtual 48	android/media/MediaPlayer:setDataSource	(Landroid/content/Context;Landroid/net/Uri;)V
     //   47: aload_0
-    //   48: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   51: invokevirtual 63	android/media/MediaPlayer:prepare	()V
+    //   48: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   51: invokevirtual 51	android/media/MediaPlayer:prepare	()V
     //   54: aload_0
     //   55: monitorexit
     //   56: iconst_1
     //   57: ireturn
     //   58: astore_1
     //   59: aload_1
-    //   60: invokevirtual 64	java/lang/SecurityException:printStackTrace	()V
+    //   60: invokevirtual 54	java/lang/SecurityException:printStackTrace	()V
     //   63: aload_0
     //   64: monitorexit
     //   65: iconst_0
     //   66: ireturn
     //   67: astore_1
     //   68: aload_1
-    //   69: invokevirtual 65	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   69: invokevirtual 55	java/lang/IllegalArgumentException:printStackTrace	()V
     //   72: aload_0
     //   73: monitorexit
     //   74: iconst_0
     //   75: ireturn
     //   76: astore_1
     //   77: aload_1
-    //   78: invokevirtual 66	java/io/IOException:printStackTrace	()V
+    //   78: invokevirtual 56	java/io/IOException:printStackTrace	()V
     //   81: aload_0
     //   82: monitorexit
     //   83: iconst_0
     //   84: ireturn
     //   85: astore_1
     //   86: aload_1
-    //   87: invokevirtual 45	java/lang/IllegalStateException:printStackTrace	()V
+    //   87: invokevirtual 57	java/lang/IllegalStateException:printStackTrace	()V
     //   90: aload_0
     //   91: monitorexit
     //   92: iconst_0
@@ -189,28 +124,28 @@ public class MediaPlayerHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   3: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   6: ifnonnull +17 -> 23
     //   9: aload_0
-    //   10: new 32	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
+    //   10: new 22	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer
     //   13: dup
-    //   14: invokespecial 33	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
-    //   17: putfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   14: invokespecial 23	com/tencent/qqlive/module/videoreport/dtreport/audio/playback/ReportMediaPlayer:<init>	()V
+    //   17: putfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   20: goto +10 -> 30
     //   23: aload_0
-    //   24: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   27: invokevirtual 26	android/media/MediaPlayer:reset	()V
+    //   24: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   27: invokevirtual 40	android/media/MediaPlayer:reset	()V
     //   30: aload_0
-    //   31: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   31: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   34: iconst_3
-    //   35: invokevirtual 56	android/media/MediaPlayer:setAudioStreamType	(I)V
-    //   38: new 69	java/io/File
+    //   35: invokevirtual 44	android/media/MediaPlayer:setAudioStreamType	(I)V
+    //   38: new 60	java/io/File
     //   41: dup
     //   42: aload_2
-    //   43: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   43: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
     //   46: astore_1
     //   47: aload_1
-    //   48: invokevirtual 75	java/io/File:exists	()Z
+    //   48: invokevirtual 67	java/io/File:exists	()Z
     //   51: istore 4
     //   53: iload 4
     //   55: ifne +7 -> 62
@@ -218,36 +153,36 @@ public class MediaPlayerHelper
     //   59: monitorexit
     //   60: iconst_0
     //   61: ireturn
-    //   62: new 77	java/io/FileInputStream
+    //   62: new 69	java/io/FileInputStream
     //   65: dup
     //   66: aload_1
-    //   67: invokevirtual 81	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   70: invokespecial 82	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   67: invokevirtual 73	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   70: invokespecial 74	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   73: astore_2
     //   74: aload_2
     //   75: astore_1
     //   76: aload_0
-    //   77: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   77: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   80: aload_2
-    //   81: invokevirtual 86	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
-    //   84: invokevirtual 89	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   81: invokevirtual 78	java/io/FileInputStream:getFD	()Ljava/io/FileDescriptor;
+    //   84: invokevirtual 81	android/media/MediaPlayer:setDataSource	(Ljava/io/FileDescriptor;)V
     //   87: aload_2
     //   88: astore_1
     //   89: aload_0
-    //   90: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   90: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   93: aload_3
-    //   94: invokevirtual 93	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
+    //   94: invokevirtual 85	android/media/MediaPlayer:setOnPreparedListener	(Landroid/media/MediaPlayer$OnPreparedListener;)V
     //   97: aload_2
     //   98: astore_1
     //   99: aload_0
-    //   100: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   103: invokevirtual 96	android/media/MediaPlayer:prepareAsync	()V
+    //   100: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   103: invokevirtual 88	android/media/MediaPlayer:prepareAsync	()V
     //   106: aload_2
     //   107: astore_1
     //   108: aload_2
-    //   109: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   109: invokevirtual 91	java/io/FileInputStream:close	()V
     //   112: aload_2
-    //   113: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   113: invokevirtual 91	java/io/FileInputStream:close	()V
     //   116: aload_0
     //   117: monitorexit
     //   118: iconst_1
@@ -270,15 +205,15 @@ public class MediaPlayerHelper
     //   150: aload_2
     //   151: astore_1
     //   152: aload 5
-    //   154: invokevirtual 64	java/lang/SecurityException:printStackTrace	()V
+    //   154: invokevirtual 54	java/lang/SecurityException:printStackTrace	()V
     //   157: aload_2
     //   158: astore_1
     //   159: aload_3
-    //   160: invokevirtual 103	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
+    //   160: invokevirtual 95	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
     //   163: aload_2
     //   164: ifnull +7 -> 171
     //   167: aload_2
-    //   168: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   168: invokevirtual 91	java/io/FileInputStream:close	()V
     //   171: aload_0
     //   172: monitorexit
     //   173: iconst_0
@@ -289,15 +224,15 @@ public class MediaPlayerHelper
     //   179: aload_2
     //   180: astore_1
     //   181: aload 5
-    //   183: invokevirtual 65	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   183: invokevirtual 55	java/lang/IllegalArgumentException:printStackTrace	()V
     //   186: aload_2
     //   187: astore_1
     //   188: aload_3
-    //   189: invokevirtual 103	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
+    //   189: invokevirtual 95	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
     //   192: aload_2
     //   193: ifnull +7 -> 200
     //   196: aload_2
-    //   197: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   197: invokevirtual 91	java/io/FileInputStream:close	()V
     //   200: aload_0
     //   201: monitorexit
     //   202: iconst_0
@@ -308,15 +243,15 @@ public class MediaPlayerHelper
     //   208: aload_2
     //   209: astore_1
     //   210: aload 5
-    //   212: invokevirtual 66	java/io/IOException:printStackTrace	()V
+    //   212: invokevirtual 56	java/io/IOException:printStackTrace	()V
     //   215: aload_2
     //   216: astore_1
     //   217: aload_3
-    //   218: invokevirtual 103	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
+    //   218: invokevirtual 95	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
     //   221: aload_2
     //   222: ifnull +7 -> 229
     //   225: aload_2
-    //   226: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   226: invokevirtual 91	java/io/FileInputStream:close	()V
     //   229: aload_0
     //   230: monitorexit
     //   231: iconst_0
@@ -327,15 +262,15 @@ public class MediaPlayerHelper
     //   237: aload_2
     //   238: astore_1
     //   239: aload 5
-    //   241: invokevirtual 45	java/lang/IllegalStateException:printStackTrace	()V
+    //   241: invokevirtual 57	java/lang/IllegalStateException:printStackTrace	()V
     //   244: aload_2
     //   245: astore_1
     //   246: aload_3
-    //   247: invokevirtual 103	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
+    //   247: invokevirtual 95	com/tencent/mobileqq/activity/specialcare/VipSpecialSoundWebViewPlugin$PreparedListener:a	()V
     //   250: aload_2
     //   251: ifnull +7 -> 258
     //   254: aload_2
-    //   255: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   255: invokevirtual 91	java/io/FileInputStream:close	()V
     //   258: aload_0
     //   259: monitorexit
     //   260: iconst_0
@@ -348,7 +283,7 @@ public class MediaPlayerHelper
     //   267: aload_2
     //   268: ifnull +7 -> 275
     //   271: aload_2
-    //   272: invokevirtual 99	java/io/FileInputStream:close	()V
+    //   272: invokevirtual 91	java/io/FileInputStream:close	()V
     //   275: aload_1
     //   276: athrow
     //   277: astore_1
@@ -447,7 +382,7 @@ public class MediaPlayerHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   3: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnonnull +7 -> 15
@@ -456,16 +391,16 @@ public class MediaPlayerHelper
     //   13: iconst_0
     //   14: ireturn
     //   15: aload_0
-    //   16: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   16: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   19: iload_1
-    //   20: invokevirtual 108	android/media/MediaPlayer:setLooping	(Z)V
+    //   20: invokevirtual 100	android/media/MediaPlayer:setLooping	(Z)V
     //   23: aload_0
     //   24: monitorexit
     //   25: iconst_1
     //   26: ireturn
     //   27: astore_2
     //   28: aload_2
-    //   29: invokevirtual 45	java/lang/IllegalStateException:printStackTrace	()V
+    //   29: invokevirtual 57	java/lang/IllegalStateException:printStackTrace	()V
     //   32: aload_0
     //   33: monitorexit
     //   34: iconst_0
@@ -497,7 +432,7 @@ public class MediaPlayerHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   3: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnonnull +7 -> 15
@@ -506,15 +441,15 @@ public class MediaPlayerHelper
     //   13: iconst_0
     //   14: ireturn
     //   15: aload_0
-    //   16: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   19: invokevirtual 23	android/media/MediaPlayer:stop	()V
+    //   16: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   19: invokevirtual 103	android/media/MediaPlayer:start	()V
     //   22: aload_0
     //   23: monitorexit
     //   24: iconst_1
     //   25: ireturn
     //   26: astore_1
     //   27: aload_1
-    //   28: invokevirtual 45	java/lang/IllegalStateException:printStackTrace	()V
+    //   28: invokevirtual 57	java/lang/IllegalStateException:printStackTrace	()V
     //   31: aload_0
     //   32: monitorexit
     //   33: iconst_0
@@ -545,7 +480,7 @@ public class MediaPlayerHelper
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
+    //   3: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnonnull +7 -> 15
@@ -554,15 +489,15 @@ public class MediaPlayerHelper
     //   13: iconst_0
     //   14: ireturn
     //   15: aload_0
-    //   16: getfield 18	com/tencent/mobileqq/utils/MediaPlayerHelper:jdField_a_of_type_AndroidMediaMediaPlayer	Landroid/media/MediaPlayer;
-    //   19: invokevirtual 113	android/media/MediaPlayer:pause	()V
+    //   16: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   19: invokevirtual 107	android/media/MediaPlayer:stop	()V
     //   22: aload_0
     //   23: monitorexit
     //   24: iconst_1
     //   25: ireturn
     //   26: astore_1
     //   27: aload_1
-    //   28: invokevirtual 45	java/lang/IllegalStateException:printStackTrace	()V
+    //   28: invokevirtual 57	java/lang/IllegalStateException:printStackTrace	()V
     //   31: aload_0
     //   32: monitorexit
     //   33: iconst_0
@@ -586,15 +521,80 @@ public class MediaPlayerHelper
     //   27	31	35	finally
   }
   
+  /* Error */
   public boolean d()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnonnull +7 -> 15
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: iconst_0
+    //   14: ireturn
+    //   15: aload_0
+    //   16: getfield 20	com/tencent/mobileqq/utils/MediaPlayerHelper:b	Landroid/media/MediaPlayer;
+    //   19: invokevirtual 111	android/media/MediaPlayer:pause	()V
+    //   22: aload_0
+    //   23: monitorexit
+    //   24: iconst_1
+    //   25: ireturn
+    //   26: astore_1
+    //   27: aload_1
+    //   28: invokevirtual 57	java/lang/IllegalStateException:printStackTrace	()V
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: iconst_0
+    //   34: ireturn
+    //   35: astore_1
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	40	0	this	MediaPlayerHelper
+    //   6	2	1	localMediaPlayer	MediaPlayer
+    //   26	2	1	localIllegalStateException	java.lang.IllegalStateException
+    //   35	4	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   15	22	26	java/lang/IllegalStateException
+    //   2	7	35	finally
+    //   15	22	35	finally
+    //   27	31	35	finally
+  }
+  
+  public void e()
   {
     try
     {
-      MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
+      MediaPlayer localMediaPlayer = this.b;
+      if (localMediaPlayer == null) {
+        return;
+      }
+      this.b.stop();
+      this.b.reset();
+      this.b.release();
+      this.b = null;
+      return;
+    }
+    finally {}
+  }
+  
+  public boolean f()
+  {
+    try
+    {
+      MediaPlayer localMediaPlayer = this.b;
       if (localMediaPlayer == null) {
         return false;
       }
-      boolean bool = this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
+      boolean bool = this.b.isPlaying();
       return bool;
     }
     finally {}
@@ -602,7 +602,7 @@ public class MediaPlayerHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.MediaPlayerHelper
  * JD-Core Version:    0.7.0.1
  */

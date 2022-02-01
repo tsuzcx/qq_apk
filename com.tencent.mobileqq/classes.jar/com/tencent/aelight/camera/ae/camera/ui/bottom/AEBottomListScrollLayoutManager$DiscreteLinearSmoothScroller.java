@@ -16,28 +16,28 @@ class AEBottomListScrollLayoutManager$DiscreteLinearSmoothScroller
   
   public int calculateDxToMakeVisible(View paramView, int paramInt)
   {
-    return AEBottomListScrollLayoutManager.a(this.a).a(-this.a.g);
+    return AEBottomListScrollLayoutManager.a(this.a).a(-this.a.j);
   }
   
   public int calculateDyToMakeVisible(View paramView, int paramInt)
   {
-    return AEBottomListScrollLayoutManager.a(this.a).b(-this.a.g);
+    return AEBottomListScrollLayoutManager.a(this.a).b(-this.a.j);
   }
   
   protected int calculateTimeForScrolling(int paramInt)
   {
-    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * AEBottomListScrollLayoutManager.a(this.a));
+    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.g) / this.a.g) * AEBottomListScrollLayoutManager.b(this.a));
   }
   
   @Nullable
   public PointF computeScrollVectorForPosition(int paramInt)
   {
-    return new PointF(AEBottomListScrollLayoutManager.a(this.a).a(this.a.g), AEBottomListScrollLayoutManager.a(this.a).b(this.a.g));
+    return new PointF(AEBottomListScrollLayoutManager.a(this.a).a(this.a.j), AEBottomListScrollLayoutManager.a(this.a).b(this.a.j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListScrollLayoutManager.DiscreteLinearSmoothScroller
  * JD-Core Version:    0.7.0.1
  */

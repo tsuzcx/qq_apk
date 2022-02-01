@@ -67,7 +67,7 @@ public class QzoneBasicJsPlugin
           paramString3.putExtra("content", paramJsBridgeListener);
           paramString3.putExtra("jumpUrl", paramString1);
           paramString3.putExtra("timestamp", l);
-          PublicFragmentActivity.Launcher.a(this.parentPlugin.mRuntime.a(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
+          PublicFragmentActivity.Launcher.a(this.parentPlugin.mRuntime.d(), paramString3, PublicTransFragmentActivity.class, ActivateFriendShareFragment.class);
           return false;
         }
         catch (Throwable paramJsBridgeListener)
@@ -81,7 +81,7 @@ public class QzoneBasicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBasicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

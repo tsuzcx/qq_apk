@@ -18,17 +18,17 @@ public class QQStoryShareGroupProfileActivity$VideoSortEventReceiver
   {
     if (paramChangeVideoSortEvent.a == 1)
     {
-      paramQQStoryShareGroupProfileActivity.g = true;
+      paramQQStoryShareGroupProfileActivity.G = true;
     }
     else if (paramChangeVideoSortEvent.a == 0)
     {
-      paramQQStoryShareGroupProfileActivity.g = false;
-      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
+      paramQQStoryShareGroupProfileActivity.G = false;
+      paramQQStoryShareGroupProfileActivity.r = false;
     }
-    paramQQStoryShareGroupProfileActivity.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewShareGroupsListAdapter.a();
+    paramQQStoryShareGroupProfileActivity.e.b();
     paramQQStoryShareGroupProfileActivity.b(true);
-    paramChangeVideoSortEvent = paramQQStoryShareGroupProfileActivity.b;
-    if (paramQQStoryShareGroupProfileActivity.g) {
+    paramChangeVideoSortEvent = paramQQStoryShareGroupProfileActivity.t;
+    if (paramQQStoryShareGroupProfileActivity.G) {
       paramQQStoryShareGroupProfileActivity = "1";
     } else {
       paramQQStoryShareGroupProfileActivity = "2";

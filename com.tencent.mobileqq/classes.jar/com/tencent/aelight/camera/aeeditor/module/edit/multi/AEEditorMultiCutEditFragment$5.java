@@ -11,12 +11,12 @@ class AEEditorMultiCutEditFragment$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a().a(this.a.getActivity());
+    this.a.b().a(this.a.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment.5
  * JD-Core Version:    0.7.0.1
  */

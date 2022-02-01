@@ -12,10 +12,10 @@ class GameRoomPresenterImp$5
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentAvgameGameroomSeatISeatPresenter.a(this.a);
-    this.this$0.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.a);
-    if (this.this$0.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStagePresenter != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStagePresenter.a(this.a);
+    this.this$0.d.a(this.a);
+    this.this$0.c.a(this.a);
+    if (this.this$0.h != null) {
+      this.this$0.h.a(this.a);
     }
   }
 }

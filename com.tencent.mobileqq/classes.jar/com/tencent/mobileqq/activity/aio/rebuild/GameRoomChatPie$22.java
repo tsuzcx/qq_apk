@@ -22,17 +22,17 @@ class GameRoomChatPie$22
 {
   GameRoomChatPie$22(GameRoomChatPie paramGameRoomChatPie, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if ((paramInt != 0) || (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a()))) {}
+    if ((paramInt != 0) || (NetworkUtil.isNetSupport(this.b.aX()))) {}
     try
     {
-      ((WerewolvesHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new GameRoomChatPie.22.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d = new QQProgressDialog(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d.setContentView(2131562765);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a().getString(2131692086));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.d.show();
+      ((WerewolvesHandler)this.b.d.getBusinessHandler(BusinessHandlerFactory.WEREWOLVES_HANDLER)).a(this.b.bR, new GameRoomChatPie.22.1(this));
+      this.b.bD = new QQProgressDialog(this.b.aX(), this.b.A());
+      this.b.bD.setContentView(2131629210);
+      this.b.bD.a(this.b.aX().getString(2131889064));
+      this.b.bD.setCancelable(false);
+      this.b.bD.show();
     }
     catch (Exception paramView)
     {
@@ -42,23 +42,23 @@ class GameRoomChatPie$22
     }
     if (QLog.isColorLevel())
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.b;
+      paramView = this.b.c;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("the sessionInfo.curFriendUin is wrong: ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      localStringBuilder.append(this.b.ah.b);
       QLog.e(paramView, 2, localStringBuilder.toString());
     }
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    if ((paramView != null) && (paramView.b()))
+    paramView = this.b.bC.c();
+    if ((paramView != null) && (paramView.d()))
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
+      ReportController.b(this.b.d, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
       break label287;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a(), 2130839573, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a().getResources().getString(2131694475), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a());
+      QQToast.makeText(this.b.aX(), 2130839791, this.b.aX().getResources().getString(2131892157), 0).show(this.b.A());
     }
     try
     {
       label287:
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.dismiss();
       return;
     }
     catch (Exception paramView)
@@ -70,7 +70,7 @@ class GameRoomChatPie$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.22
  * JD-Core Version:    0.7.0.1
  */

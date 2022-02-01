@@ -26,21 +26,21 @@ public class PictureFilePresenter
   extends FileBrowserPresenterBase
   implements FileBrowserModelBase.OnThumbEventListener, FileBrowserModelBase.OnTransEventListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new PictureFilePresenter.2(this);
   protected PictureFileViewer a;
-  private AdapterView.OnItemClickListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener = new PictureFilePresenter.3(this);
-  private AdapterView.OnItemSelectedListener jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener = new PictureFilePresenter.4(this);
-  private List<FileBrowserModelBase.ImageFileInfo> jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a();
-  boolean jdField_a_of_type_Boolean = false;
-  private int b = 0;
-  private boolean d = false;
+  boolean b = false;
+  private int j = 0;
+  private List<FileBrowserModelBase.ImageFileInfo> k = this.c.S();
+  private boolean l = false;
+  private int m = 0;
+  private View.OnClickListener n = new PictureFilePresenter.2(this);
+  private AdapterView.OnItemClickListener o = new PictureFilePresenter.3(this);
+  private AdapterView.OnItemSelectedListener p = new PictureFilePresenter.4(this);
   
   public PictureFilePresenter(FileBrowserModelBase paramFileBrowserModelBase, Activity paramActivity)
   {
     super(paramFileBrowserModelBase, paramActivity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer = new PictureFileViewer(paramActivity);
-    a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer);
+    this.a = new PictureFileViewer(paramActivity);
+    a(this.a);
   }
   
   private boolean a(String paramString)
@@ -48,36 +48,36 @@ public class PictureFilePresenter
     return !TextUtils.isEmpty(paramString);
   }
   
-  private String b()
+  private String i()
   {
-    FileBrowserModelBase.ImageFileInfo localImageFileInfo = (FileBrowserModelBase.ImageFileInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
+    FileBrowserModelBase.ImageFileInfo localImageFileInfo = (FileBrowserModelBase.ImageFileInfo)this.k.get(this.c.s());
     if (localImageFileInfo == null) {
       return null;
     }
-    String str2 = localImageFileInfo.a();
+    String str2 = localImageFileInfo.c();
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = localImageFileInfo.b();
+      str1 = localImageFileInfo.g();
     }
     return str1;
   }
   
-  private void b()
+  private void j()
   {
-    Object localObject = b();
+    Object localObject = i();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       QLog.i("PictureFilePresenter<QFile>", 1, "startEditPicture. but file path is null.");
       return;
     }
-    localObject = ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, true, true, true, true, true, 2, 130, 7);
+    localObject = ((IAELaunchEditPic)QRoute.api(IAELaunchEditPic.class)).startEditPic(this.d, (String)localObject, true, true, true, true, true, 2, 130, 7);
     ((Intent)localObject).putExtra("open_chatfragment", true);
     ((Intent)localObject).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1041);
     ((Intent)localObject).putExtra("key_enable_edit_title_bar", true);
     ((Intent)localObject).putExtra("key_help_forward_pic", true);
     ((Intent)localObject).putExtra("key_allow_multiple_forward_from_limit", false);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.l();
+    this.d.startActivity((Intent)localObject);
+    int i = this.c.ao();
     if ((i != 3) && (i != 4))
     {
       if ((i != 7) && (i != 8) && (i != 9))
@@ -96,12 +96,7 @@ public class PictureFilePresenter
       i = 3;
     }
     ReportController.b(null, "dc00898", "", "", "0X800A1E2", "0X800A1E2", i, 0, "", "", "", "");
-    this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(2130772065, 2130772067);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c();
+    this.d.overridePendingTransition(2130772090, 2130772092);
   }
   
   public void a()
@@ -110,21 +105,21 @@ public class PictureFilePresenter
     if (QLog.isColorLevel()) {
       QLog.w("PictureFilePresenter<QFile>", 1, "FileBrowserPresenter init: type = picture");
     }
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if ((localList != null) && (localList.get(this.jdField_a_of_type_Int) != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.e()))
+    List localList = this.k;
+    if ((localList != null) && (localList.get(this.j) != null) && (this.c.G()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.c(a(b()));
-      FMToastUtil.b(BaseApplicationImpl.getContext().getString(2131692353));
+      this.a.c(a(i()));
+      FMToastUtil.b(BaseApplicationImpl.getContext().getString(2131889341));
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(new PictureFilePresenter.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(this.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemSelectedListener);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
+    this.a.a(this.k);
+    this.a.a(this.o);
+    this.a.a(new PictureFilePresenter.1(this));
+    this.a.a(this.p);
+    this.a.b(this.n);
+    this.a.c(this.c.s());
     h();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(this);
+    this.c.a(this);
+    this.c.a(this);
   }
   
   public void a(float paramFloat)
@@ -134,13 +129,13 @@ public class PictureFilePresenter
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i()) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a() != null))
+    this.c.c(paramInt);
+    if ((this.c.P()) && (this.c.f() != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(true);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
+      this.a.b(true);
+      this.a.a(false);
       b(0.0F);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().a();
+      this.c.f().a();
     }
     h();
   }
@@ -154,8 +149,8 @@ public class PictureFilePresenter
       }
       return;
     }
-    FileBrowserModelBase.ImageFileInfo localImageFileInfo = (FileBrowserModelBase.ImageFileInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c());
-    if (!localImageFileInfo.a(paramString1)) {
+    FileBrowserModelBase.ImageFileInfo localImageFileInfo = (FileBrowserModelBase.ImageFileInfo)this.k.get(this.c.s());
+    if (!localImageFileInfo.c(paramString1)) {
       return;
     }
     if (TextUtils.isEmpty(paramString2))
@@ -178,12 +173,7 @@ public class PictureFilePresenter
     }
     localImageFileInfo.a(paramString2);
     localImageFileInfo.a(2);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.c();
-  }
-  
-  public boolean a()
-  {
-    return false;
+    this.a.e();
   }
   
   public boolean b()
@@ -191,11 +181,16 @@ public class PictureFilePresenter
     return false;
   }
   
+  public boolean c()
+  {
+    return false;
+  }
+  
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(true);
-    b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a());
+    this.a.a(false);
+    this.a.b(true);
+    b(this.c.J());
   }
   
   public void e()
@@ -206,44 +201,49 @@ public class PictureFilePresenter
   public void f()
   {
     h();
-    ((FileBrowserModelBase.ImageFileInfo)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.c())).b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.d());
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.c();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.c();
+    ((FileBrowserModelBase.ImageFileInfo)this.k.get(this.c.s())).b(this.c.y());
+    this.a.e();
+    this.a.f();
+    if (this.e != null) {
+      this.e.h();
     }
   }
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(false);
+    this.a.a(true);
+    this.a.b(false);
     h();
   }
   
   protected void h()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i();
+    int i = this.c.R();
     if ((i != 2) && (i != 5))
     {
       if (i == 6)
       {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(true);
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(false);
+        this.a.a(true);
+        this.a.b(false);
       }
       super.h();
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.f() == 9501) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b();
+      if (this.c.B() == 9501) {
+        this.a.c();
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(false);
+    this.a.a(false);
+    this.a.b(false);
+  }
+  
+  public String q()
+  {
+    return this.c.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.PictureFilePresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,30 +13,30 @@ class IPluginManager$2$1
   {
     try
     {
-      if ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).startActivityForResult(this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a, this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c);
+      if ((this.this$0.b instanceof Activity)) {
+        ((Activity)this.this$0.b).startActivityForResult(this.this$0.a.j, this.this$0.a.k);
       } else {
-        this.this$0.jdField_a_of_type_AndroidContentContext.startActivity(this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a);
+        this.this$0.b.startActivity(this.this$0.a.j);
       }
-      if (this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$OnOpenPluginListener != null) {
-        this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$OnOpenPluginListener.a(true);
+      if (this.this$0.c != null) {
+        this.this$0.c.a(true);
       }
-      PluginReporter.a(this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, true);
+      PluginReporter.a(this.this$0.a, true);
     }
     catch (Exception localException)
     {
       QLog.e("plugin_tag", 1, "launch df plugin service error! ", localException);
-      PluginReporter.a(this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, false);
-      if (this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$OnOpenPluginListener != null) {
-        this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$OnOpenPluginListener.a(false);
+      PluginReporter.a(this.this$0.a, false);
+      if (this.this$0.c != null) {
+        this.this$0.c.a(false);
       }
     }
-    this.this$0.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.a();
+    this.this$0.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.IPluginManager.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.viola.ui.baseComponent;
 
 import com.tencent.viola.utils.ViolaLogUtils;
 
-final class ComponentRegistry$3
+class ComponentRegistry$3
   implements Runnable
 {
   ComponentRegistry$3(String paramString, IFComponentHolder paramIFComponentHolder) {}
@@ -26,7 +26,7 @@ final class ComponentRegistry$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentRegistry.3
  * JD-Core Version:    0.7.0.1
  */

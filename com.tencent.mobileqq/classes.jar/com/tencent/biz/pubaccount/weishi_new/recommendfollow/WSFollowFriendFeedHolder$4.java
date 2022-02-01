@@ -11,14 +11,14 @@ class WSFollowFriendFeedHolder$4
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    WSFollowFriendFeedHolder.b(this.a).removeAnimatorListener(this);
+    WSFollowFriendFeedHolder.j(this.a).removeAnimatorListener(this);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    WSFollowFriendFeedHolder.c(this.a);
-    WSFollowFriendFeedHolder.b(this.a).setVisibility(8);
-    WSFollowFriendFeedHolder.b(this.a).removeAnimatorListener(this);
+    WSFollowFriendFeedHolder.i(this.a);
+    WSFollowFriendFeedHolder.j(this.a).setVisibility(8);
+    WSFollowFriendFeedHolder.j(this.a).removeAnimatorListener(this);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -27,7 +27,7 @@ class WSFollowFriendFeedHolder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedHolder.4
  * JD-Core Version:    0.7.0.1
  */

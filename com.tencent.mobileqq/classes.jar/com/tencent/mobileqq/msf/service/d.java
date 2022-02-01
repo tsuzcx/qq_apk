@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.service;
 import android.os.IBinder.DeathRecipient;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.i;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
@@ -19,7 +19,7 @@ class d
   
   public void binderDied()
   {
-    boolean bool = i.a().g();
+    boolean bool = i.a().i();
     QLog.w("MSF.S.AppProcessInfo", 1, String.format("binderDied appProcessName = %s, keepProcessAlive = %s, isBinderConnectOptEnable = %b", new Object[] { this.a.g, Boolean.valueOf(this.a.k), Boolean.valueOf(bool) }));
     String str;
     if ((MsfCore.sCore != null) && (MsfCore.sCore.getAccountCenter() != null)) {
@@ -48,7 +48,7 @@ class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.d
  * JD-Core Version:    0.7.0.1
  */

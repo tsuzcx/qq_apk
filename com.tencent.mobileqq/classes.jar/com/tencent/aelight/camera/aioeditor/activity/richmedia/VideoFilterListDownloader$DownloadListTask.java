@@ -7,16 +7,13 @@ import java.util.ArrayList;
 class VideoFilterListDownloader$DownloadListTask
 {
   public FilterDesc a;
-  public ArrayList<WeakReference<VideoFilterListDownloader.downloadListTaskListener>> a;
+  public ArrayList<WeakReference<VideoFilterListDownloader.downloadListTaskListener>> b = new ArrayList();
   
-  VideoFilterListDownloader$DownloadListTask(VideoFilterListDownloader paramVideoFilterListDownloader)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  VideoFilterListDownloader$DownloadListTask(VideoFilterListDownloader paramVideoFilterListDownloader) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.VideoFilterListDownloader.DownloadListTask
  * JD-Core Version:    0.7.0.1
  */

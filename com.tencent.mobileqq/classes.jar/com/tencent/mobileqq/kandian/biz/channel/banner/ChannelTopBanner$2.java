@@ -12,15 +12,15 @@ class ChannelTopBanner$2
       if (paramInt != 1) {
         return;
       }
-      this.a.d();
+      this.a.e();
       return;
     }
-    this.a.e();
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.channel.banner.ChannelTopBanner.2
  * JD-Core Version:    0.7.0.1
  */

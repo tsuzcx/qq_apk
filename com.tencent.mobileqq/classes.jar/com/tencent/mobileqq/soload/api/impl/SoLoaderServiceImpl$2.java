@@ -10,12 +10,12 @@ class SoLoaderServiceImpl$2
   
   public void run()
   {
-    SoLoaderServiceImpl.access$200(this.this$0, this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadParam, new SoLoaderServiceImpl.2.1(this));
+    SoLoaderServiceImpl.access$100(this.this$0, this.a, new SoLoaderServiceImpl.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.SoLoaderServiceImpl.2
  * JD-Core Version:    0.7.0.1
  */

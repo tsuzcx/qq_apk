@@ -13,16 +13,16 @@ class RefreshAnimView$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    RefreshAnimView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView).postDelayed(new RefreshAnimView.3.1(this), RefreshAnimView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView));
+    RefreshAnimView.c(this.c).postDelayed(new RefreshAnimView.3.1(this), RefreshAnimView.b(this.c));
     paramAnimation = new RefreshAnimView.3.2(this);
-    if (RefreshAnimView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView) != null)
+    if (RefreshAnimView.d(this.c) != null)
     {
       paramAnimation.run();
       return;
     }
     try
     {
-      LottieComposition.Factory.fromAssetFileName(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.getContext(), "readinjoy_refresh_animation.json", new RefreshAnimView.3.3(this, paramAnimation));
+      LottieComposition.Factory.fromAssetFileName(this.c.getContext(), "readinjoy_refresh_animation.json", new RefreshAnimView.3.3(this, paramAnimation));
       return;
     }
     catch (Exception paramAnimation)
@@ -37,7 +37,7 @@ class RefreshAnimView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.pullrefresh.RefreshAnimView.3
  * JD-Core Version:    0.7.0.1
  */

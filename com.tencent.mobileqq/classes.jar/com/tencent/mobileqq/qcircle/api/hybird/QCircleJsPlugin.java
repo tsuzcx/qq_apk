@@ -7,7 +7,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.aelight.camera.music.api.IAEMusicClipDialog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.app.AppConstants;
@@ -47,13 +47,40 @@ public class QCircleJsPlugin
     if ((paramArrayOfString != null) && (paramArrayOfString.length >= 1)) {
       return true;
     }
-    RFLog.e("QCircleJsPlugin", RFLog.CLR, "args is null");
+    QLog.e("QCircleJsPlugin", 2, "args is null");
     return false;
+  }
+  
+  private void getDisableRightInfo(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.e("QCircleJsPlugin", 1, "getDisableRightInfo callback is null");
+      return;
+    }
+    Object localObject = this.mRuntime.d().getIntent().getBundleExtra("disableRightInfo");
+    String str1 = ((Bundle)localObject).getString("disableUinId");
+    String str2 = ((Bundle)localObject).getString("disableGroupId");
+    localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("uinlist", str1);
+      ((JSONObject)localObject).put("groupid", str2);
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getDisableRightInfo  jsonObject = ");
+    localStringBuilder.append(localObject);
+    QLog.i("QCircleJsPlugin", 1, localStringBuilder.toString());
+    callJs(paramString, new String[] { ((JSONObject)localObject).toString() });
   }
   
   private void getGpsInfo(String paramString)
   {
-    Object localObject1 = this.mRuntime.a();
+    Object localObject1 = this.mRuntime.d();
     Object localObject2;
     if ((localObject1 != null) && (!((Activity)localObject1).isFinishing()))
     {
@@ -68,7 +95,7 @@ public class QCircleJsPlugin
       if (localObject1 == null) {
         return;
       }
-      localObject2 = (LbsDataV2.GpsInfo)((Bundle)localObject1).getParcelable(((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).KEY_GPS_INFO());
+      localObject2 = (LbsDataV2.GpsInfo)((Bundle)localObject1).getParcelable(((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).keyGpsInfo());
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -99,7 +126,7 @@ public class QCircleJsPlugin
   
   private void getLabel(String paramString)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     if ((localObject != null) && (!((Activity)localObject).isFinishing()) && (!TextUtils.isEmpty(paramString)))
     {
       localObject = ((Activity)localObject).getIntent();
@@ -113,13 +140,13 @@ public class QCircleJsPlugin
       callJs(paramString, new String[] { ((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).labelToJson((Bundle)localObject) });
       return;
     }
-    RFLog.e("QCircleJsPlugin", RFLog.USR, "getLabel activity is null");
+    QLog.e("QCircleJsPlugin", 1, "getLabel activity is null");
   }
   
   private QCircleHybirdFragment getQCircleHybirdFragment()
   {
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment))) {
-      return (QCircleHybirdFragment)this.mRuntime.a();
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment))) {
+      return (QCircleHybirdFragment)this.mRuntime.f();
     }
     return null;
   }
@@ -128,7 +155,7 @@ public class QCircleJsPlugin
   {
     if (TextUtils.isEmpty(paramString))
     {
-      RFLog.e("QCircleJsPlugin", RFLog.USR, "getTongSessionId callback is null");
+      QLog.e("QCircleJsPlugin", 1, "getTongSessionId callback is null");
       return;
     }
     String str = QCircleNativeSessionManager.g().getSession();
@@ -160,7 +187,7 @@ public class QCircleJsPlugin
       Object localObject3 = ((JSONArray)localObject2).getJSONObject(i).getString("image");
       if (!TextUtils.isEmpty((CharSequence)localObject3))
       {
-        localObject3 = Base64.a(localObject3.split(",")[1]);
+        localObject3 = Base64.b(localObject3.split(",")[1]);
         localObject3 = BitmapFactory.decodeByteArray((byte[])localObject3, 0, localObject3.length);
         JSONObject localJSONObject = new JSONObject();
         if (localObject3 != null)
@@ -178,34 +205,30 @@ public class QCircleJsPlugin
           ((StringBuilder)localObject5).append(str);
           ((StringBuilder)localObject5).append((String)localObject4);
           localObject4 = ((StringBuilder)localObject5).toString();
-          int j;
           if (PhotoUtils.a((Bitmap)localObject3, (String)localObject4, Bitmap.CompressFormat.JPEG, 100, true))
           {
             localJSONObject.put("path", localObject4);
             ((JSONArray)localObject1).put(localJSONObject);
-            j = RFLog.USR;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("handleBase64ToPics... file save success:");
             ((StringBuilder)localObject3).append((String)localObject4);
-            RFLog.i("QCircleJsPlugin", j, ((StringBuilder)localObject3).toString());
+            QLog.i("QCircleJsPlugin", 1, ((StringBuilder)localObject3).toString());
           }
           else
           {
-            j = RFLog.USR;
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("handleBase64ToPics... file save failed:");
             ((StringBuilder)localObject3).append((String)localObject4);
-            RFLog.e("QCircleJsPlugin", j, ((StringBuilder)localObject3).toString());
+            QLog.e("QCircleJsPlugin", 1, ((StringBuilder)localObject3).toString());
           }
         }
       }
       i += 1;
     }
-    i = RFLog.USR;
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("handleBase64ToPics... list:");
     ((StringBuilder)localObject2).append(((JSONArray)localObject1).toString());
-    RFLog.i("QCircleJsPlugin", i, ((StringBuilder)localObject2).toString());
+    QLog.i("QCircleJsPlugin", 1, ((StringBuilder)localObject2).toString());
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("window.");
     ((StringBuilder)localObject2).append(paramString);
@@ -213,6 +236,19 @@ public class QCircleJsPlugin
     ((StringBuilder)localObject2).append(((JSONArray)localObject1).toString());
     ((StringBuilder)localObject2).append("})");
     callJs(((StringBuilder)localObject2).toString());
+  }
+  
+  private void handleCacheMusicEvent(String paramString)
+  {
+    if (this.mRuntime != null)
+    {
+      Intent localIntent = new Intent();
+      paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString);
+      localIntent.setAction("action_dispatch_music_event");
+      localIntent.putExtra("event", "kTribeDownloadMusic");
+      localIntent.putExtra("data", paramString.toString());
+      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    }
   }
   
   private void handleChargeStatus(String paramString)
@@ -232,26 +268,59 @@ public class QCircleJsPlugin
     }
   }
   
+  private void handleClipMusicEvent(String paramString)
+  {
+    if (this.mRuntime != null)
+    {
+      paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString);
+      Activity localActivity = this.mRuntime.d();
+      ((IAEMusicClipDialog)QRoute.api(IAEMusicClipDialog.class)).showMusicClipDialogOnWebView(paramString, localActivity);
+    }
+  }
+  
   private void handleConfirmSchoolName(String paramString)
   {
     paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString).getString("schoolName");
-    if ((this.mRuntime != null) && (((this.mRuntime.a() instanceof QCircleHybirdFragment)) || ((this.mRuntime.a() instanceof QQTranslucentBrowserActivity.QQTranslucentBrowserFragment))))
+    if ((this.mRuntime != null) && (((this.mRuntime.f() instanceof QCircleHybirdFragment)) || ((this.mRuntime.f() instanceof QQTranslucentBrowserActivity.QQTranslucentBrowserFragment))))
     {
       Intent localIntent = new Intent();
       localIntent.setAction("action_confirm_school_name");
       localIntent.putExtra("schoolName", paramString);
       BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().finish();
+      if (this.mRuntime.d() != null) {
+        this.mRuntime.d().finish();
       }
+    }
+  }
+  
+  private void handleDisableSetRightInfo(String paramString)
+  {
+    Object localObject = new QCircleJsPlugin.SafeJsonObject(this, paramString);
+    paramString = ((QCircleJsPlugin.SafeJsonObject)localObject).optString("uinlist");
+    String str1 = ((QCircleJsPlugin.SafeJsonObject)localObject).optString("groupid");
+    String str2 = ((QCircleJsPlugin.SafeJsonObject)localObject).optString("nickname");
+    String str3 = ((QCircleJsPlugin.SafeJsonObject)localObject).optString("groupname");
+    localObject = ((QCircleJsPlugin.SafeJsonObject)localObject).optString("uinnumber");
+    Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("disableNickName", str2);
+    localBundle.putString("disableGroupName", str3);
+    localBundle.putString("disableUinId", paramString);
+    localBundle.putString("disableGroupId", str1);
+    localBundle.putString("disableUinNumber", (String)localObject);
+    localIntent.putExtra("disableRightInfo", localBundle);
+    localIntent.setAction("ACTION_USER_PUBLISH_DISABLE_INFO");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    if (this.mRuntime.d() != null) {
+      this.mRuntime.d().finish();
     }
   }
   
   private void handleRefreshFeedList(String paramString)
   {
     paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString).getString("page");
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment))) {
-      ((QCircleHybirdFragment)this.mRuntime.a()).b(paramString);
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment))) {
+      ((QCircleHybirdFragment)this.mRuntime.f()).b(paramString);
     }
   }
   
@@ -267,7 +336,7 @@ public class QCircleJsPlugin
   private void handleReloadMainPage(String paramString)
   {
     paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString).getString("uin");
-    if ((this.mRuntime != null) && (((this.mRuntime.a() instanceof QCircleHybirdFragment)) || ((this.mRuntime.a() instanceof QQTranslucentBrowserActivity.QQTranslucentBrowserFragment))))
+    if ((this.mRuntime != null) && (((this.mRuntime.f() instanceof QCircleHybirdFragment)) || ((this.mRuntime.f() instanceof QQTranslucentBrowserActivity.QQTranslucentBrowserFragment))))
     {
       Intent localIntent = new Intent();
       localIntent.setAction("action_reload_get_main_page");
@@ -276,14 +345,24 @@ public class QCircleJsPlugin
     }
   }
   
+  private void handleSelectMusicEvent(String paramString)
+  {
+    if (this.mRuntime != null)
+    {
+      paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString);
+      Activity localActivity = this.mRuntime.d();
+      ((IAEMusicClipDialog)QRoute.api(IAEMusicClipDialog.class)).showMusicSelectLoadingOnWebView(paramString, localActivity);
+    }
+  }
+  
   private void handleSetUserWearingMedal(String paramString)
   {
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment)))
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment)))
     {
       Intent localIntent = new Intent();
       localIntent.setAction("action_user_wearing_medal_update");
       localIntent.putExtra("json", paramString);
-      ((QCircleHybirdFragment)this.mRuntime.a()).a(localIntent);
+      ((QCircleHybirdFragment)this.mRuntime.f()).a(localIntent);
     }
   }
   
@@ -294,14 +373,14 @@ public class QCircleJsPlugin
     {
       int i = ((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).getColorFromJSON(paramString, "titleTextColor");
       paramString = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
-      if ((paramString != null) && (paramString.a != null))
+      if ((paramString != null) && (paramString.g != null))
       {
         if (i == -1)
         {
-          paramString.a.h();
+          paramString.g.j();
           return;
         }
-        paramString.a.d(i | 0xFF000000);
+        paramString.g.d(i | 0xFF000000);
       }
     }
   }
@@ -312,18 +391,15 @@ public class QCircleJsPlugin
     int i = paramString.optInt("tagtype");
     int j = paramString.optInt("status");
     paramString = paramString.optString("tagname");
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment))) {
-      ((QCircleHybirdFragment)this.mRuntime.a()).a(i, j, paramString);
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment))) {
+      ((QCircleHybirdFragment)this.mRuntime.f()).a(i, j, paramString);
     }
   }
   
   private void handleUpdateNativeTagFollowState(String paramString)
   {
-    paramString = new QCircleJsPlugin.SafeJsonObject(this, paramString);
-    String str = paramString.getString("tagId");
-    int i = paramString.getInt("type");
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment))) {
-      ((QCircleHybirdFragment)this.mRuntime.a()).a(str, i);
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment))) {
+      ((QCircleHybirdFragment)this.mRuntime.f()).a();
     }
   }
   
@@ -334,8 +410,8 @@ public class QCircleJsPlugin
     int i = ((QCircleJsPlugin.SafeJsonObject)localObject).getInt("type");
     int j = ((QCircleJsPlugin.SafeJsonObject)localObject).optInt("isDoubly");
     localObject = ((QCircleJsPlugin.SafeJsonObject)localObject).optString("nick");
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment))) {
-      ((QCircleHybirdFragment)this.mRuntime.a()).a(paramString, i, j, (String)localObject);
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment))) {
+      ((QCircleHybirdFragment)this.mRuntime.f()).a(paramString, i, j, (String)localObject);
     }
   }
   
@@ -418,28 +494,52 @@ public class QCircleJsPlugin
       handleSetUserWearingMedal(paramArrayOfString[0]);
       return;
     }
-    if (("confirmSchoolName".equals(paramString)) && (checkArgsValid(paramArrayOfString))) {
+    if (("confirmSchoolName".equals(paramString)) && (checkArgsValid(paramArrayOfString)))
+    {
       handleConfirmSchoolName(paramArrayOfString[0]);
+      return;
+    }
+    if (("kTribeSelectMusic".equals(paramString)) && (checkArgsValid(paramArrayOfString)))
+    {
+      handleSelectMusicEvent(paramArrayOfString[0]);
+      return;
+    }
+    if (("kTribeClipsMusic".equals(paramString)) && (checkArgsValid(paramArrayOfString)))
+    {
+      handleClipMusicEvent(paramArrayOfString[0]);
+      return;
+    }
+    if (("kTribeDownloadMusic".equals(paramString)) && (checkArgsValid(paramArrayOfString)))
+    {
+      handleCacheMusicEvent(paramArrayOfString[0]);
+      return;
+    }
+    if (("getRightInfo".equals(paramString)) && (checkArgsValid(paramArrayOfString)))
+    {
+      getDisableRightInfo(new JSONObject(paramArrayOfString[0]).optString("callback"));
+      return;
+    }
+    if (("setRightInfo".equals(paramString)) && (checkArgsValid(paramArrayOfString))) {
+      handleDisableSetRightInfo(paramArrayOfString[0]);
     }
   }
   
   private void reportReadMessage(String paramString)
   {
     int i = new QCircleJsPlugin.SafeJsonObject(this, paramString).getInt("createTime");
-    if ((this.mRuntime != null) && ((this.mRuntime.a() instanceof QCircleHybirdFragment)))
+    if ((this.mRuntime != null) && ((this.mRuntime.f() instanceof QCircleHybirdFragment)))
     {
-      int j = RFLog.USR;
       paramString = new StringBuilder();
       paramString.append("reportReadMessage createTime");
       paramString.append(i);
-      RFLog.d("QCircleJsPlugin", j, paramString.toString());
-      ((QCircleHybirdFragment)this.mRuntime.a()).a(i);
+      QLog.d("QCircleJsPlugin", 1, paramString.toString());
+      ((QCircleHybirdFragment)this.mRuntime.f()).a(i);
     }
   }
   
   private void setLabel(String paramString1, String paramString2)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.d();
     if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
       Intent localIntent = new Intent();
@@ -447,7 +547,7 @@ public class QCircleJsPlugin
       ((Activity)localObject).setResult(-1, localIntent);
       if (!TextUtils.isEmpty(paramString2))
       {
-        paramString1 = localIntent.getStringExtra(((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).KEY_PARSE_DATA_ERROR_MSG());
+        paramString1 = localIntent.getStringExtra(((IQCircleCommonUtil)QRoute.api(IQCircleCommonUtil.class)).keyParseDataErrorMsg());
         if (!TextUtils.isEmpty(paramString1))
         {
           localObject = new StringBuilder();
@@ -464,35 +564,33 @@ public class QCircleJsPlugin
       }
       return;
     }
-    RFLog.e("QCircleJsPlugin", RFLog.USR, "setLabel activity is null");
+    QLog.e("QCircleJsPlugin", 1, "setLabel activity is null");
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ("qcircle".equals(paramString2))
     {
-      int i = RFLog.CLR;
       paramJsBridgeListener = new StringBuilder();
       paramJsBridgeListener.append("handleJsRequest:");
       paramJsBridgeListener.append(paramString1);
-      RFLog.i("QCircleJsPlugin", i, paramJsBridgeListener.toString());
+      QLog.i("QCircleJsPlugin", 2, paramJsBridgeListener.toString());
       try
       {
         parseJsBridge(paramString3, paramVarArgs);
-        return true;
       }
       catch (Exception paramJsBridgeListener)
       {
-        RFLog.d("QCircleJsPlugin", RFLog.CLR, new Object[] { paramJsBridgeListener });
-        return true;
+        QLog.d("QCircleJsPlugin", 2, paramJsBridgeListener, new Object[0]);
       }
+      return true;
     }
     return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleJsPlugin
  * JD-Core Version:    0.7.0.1
  */

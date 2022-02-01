@@ -193,12 +193,12 @@ public class RemoteServiceProxy
       Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), this.clazz);
       localIntent.putExtra("useSkinEngine", 1);
       IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.b = QzonePluginProxyActivity.getQZonePluginName();
-      localPluginParams.e = "QQ空间";
-      localPluginParams.jdField_a_of_type_JavaLangString = this.mUin;
-      localPluginParams.f = this.serviceName;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
+      localPluginParams.d = QzonePluginProxyActivity.getQZonePluginName();
+      localPluginParams.g = "QQ空间";
+      localPluginParams.c = this.mUin;
+      localPluginParams.h = this.serviceName;
+      localPluginParams.j = localIntent;
+      localPluginParams.o = this.conn;
       IPluginManager.c(BaseApplicationImpl.getApplication(), localPluginParams);
       if (QLog.isColorLevel())
       {
@@ -253,7 +253,7 @@ public class RemoteServiceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.remote.RemoteServiceProxy
  * JD-Core Version:    0.7.0.1
  */

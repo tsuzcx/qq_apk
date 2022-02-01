@@ -12,14 +12,14 @@ class BaseSearchActivity$2
   
   public void onClick(View paramView)
   {
-    BaseSearchActivity.c = 1;
-    this.a.a.setText("");
+    BaseSearchActivity.l = 1;
+    this.a.d.setText("");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.activity.BaseSearchActivity.2
  * JD-Core Version:    0.7.0.1
  */

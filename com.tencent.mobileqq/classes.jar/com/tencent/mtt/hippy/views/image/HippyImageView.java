@@ -30,6 +30,7 @@ import com.tencent.mtt.supportui.views.asyncimage.AsyncImageView;
 import com.tencent.mtt.supportui.views.asyncimage.AsyncImageView.ScaleType;
 import com.tencent.mtt.supportui.views.asyncimage.BackgroundDrawable;
 import com.tencent.mtt.supportui.views.asyncimage.ContentDrawable;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,14 +41,14 @@ public class HippyImageView
   public static final String IMAGE_PROPS = "props";
   public static final String IMAGE_TYPE_APNG = "apng";
   public static final String IMAGE_TYPE_GIF = "gif";
-  private HippyEngineContext hippyEngineContext;
+  public static final String IMAGE_VIEW_OBJ = "viewobj";
+  private final HippyEngineContext hippyEngineContext;
   private HippyMap initProps = new HippyMap();
   private boolean isGifPaused = false;
   protected NativeGestureDispatcher mGestureDispatcher;
   private long mGifLastPlayTime = -1L;
   private boolean mGifMatrixComputed = false;
   private Movie mGifMovie;
-  private long mGifMovieStart;
   private int mGifProgress = 0;
   private float mGifScaleX = 1.0F;
   private float mGifScaleY = 1.0F;
@@ -59,9 +60,7 @@ public class HippyImageView
   private HippyImageView.OnLoadEndEvent mOnLoadEndEvent;
   private HippyImageView.OnLoadEvent mOnLoadEvent;
   private HippyImageView.OnLoadStartEvent mOnLoadStartEvent;
-  private int mRepeatCount = -1;
-  private boolean[] mShouldSendImageEvent = new boolean[HippyImageView.ImageEvent.values().length];
-  private int mShowCount = 0;
+  private final boolean[] mShouldSendImageEvent = new boolean[HippyImageView.ImageEvent.values().length];
   private boolean mUserHasSetBackgroudnColor = false;
   private int mUserSetBackgroundColor = 0;
   
@@ -154,7 +153,7 @@ public class HippyImageView
   private HippyImageView.OnErrorEvent getOnErrorEvent()
   {
     if (this.mOnErrorEvent == null) {
-      this.mOnErrorEvent = new HippyImageView.OnErrorEvent(this, "onError");
+      this.mOnErrorEvent = new HippyImageView.OnErrorEvent(this);
     }
     return this.mOnErrorEvent;
   }
@@ -162,7 +161,7 @@ public class HippyImageView
   private HippyImageView.OnLoadEndEvent getOnLoadEndEvent()
   {
     if (this.mOnLoadEndEvent == null) {
-      this.mOnLoadEndEvent = new HippyImageView.OnLoadEndEvent(this, "onLoadEnd");
+      this.mOnLoadEndEvent = new HippyImageView.OnLoadEndEvent(this);
     }
     return this.mOnLoadEndEvent;
   }
@@ -170,7 +169,7 @@ public class HippyImageView
   private HippyImageView.OnLoadEvent getOnLoadEvent()
   {
     if (this.mOnLoadEvent == null) {
-      this.mOnLoadEvent = new HippyImageView.OnLoadEvent(this, "onLoad");
+      this.mOnLoadEvent = new HippyImageView.OnLoadEvent(this);
     }
     return this.mOnLoadEvent;
   }
@@ -178,7 +177,7 @@ public class HippyImageView
   private HippyImageView.OnLoadStartEvent getOnLoadStartEvent()
   {
     if (this.mOnLoadStartEvent == null) {
-      this.mOnLoadStartEvent = new HippyImageView.OnLoadStartEvent(this, "onLoadStart");
+      this.mOnLoadStartEvent = new HippyImageView.OnLoadStartEvent(this);
     }
     return this.mOnLoadStartEvent;
   }
@@ -214,16 +213,17 @@ public class HippyImageView
         try
         {
           ((Map)localObject).put("props", this.initProps);
+          ((Map)localObject).put("viewobj", this);
         }
         catch (Exception paramObject)
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("doFetchImage: ");
-          localStringBuilder.append(paramObject.getMessage());
+          localStringBuilder.append(paramObject);
           LogUtils.d("HippyImageView", localStringBuilder.toString());
         }
       }
-      if (paramInt == SOURCE_TYPE_SRC) {
+      if (paramInt == 1) {
         paramObject = this.mUrl;
       } else {
         paramObject = this.mDefaultSourceUrl;
@@ -339,7 +339,7 @@ public class HippyImageView
         setLayerType(1, null);
       }
     }
-    if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (paramInt == SOURCE_TYPE_SRC))
+    if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (paramInt == 1))
     {
       if (paramIDrawableTarget != null)
       {
@@ -375,6 +375,9 @@ public class HippyImageView
   
   protected void onFetchImage(String paramString)
   {
+    if (((this.mContentDrawable instanceof ContentDrawable)) && (((ContentDrawable)this.mContentDrawable).getSourceType() == 2)) {
+      return;
+    }
     Drawable localDrawable = getBackground();
     resetContent();
     if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString))))
@@ -444,16 +447,7 @@ public class HippyImageView
     this.mUrl = null;
     this.mImageType = null;
     setBackgroundDrawable(null);
-    int i = 0;
-    for (;;)
-    {
-      boolean[] arrayOfBoolean = this.mShouldSendImageEvent;
-      if (i >= arrayOfBoolean.length) {
-        break;
-      }
-      arrayOfBoolean[i] = false;
-      i += 1;
-    }
+    Arrays.fill(this.mShouldSendImageEvent, false);
   }
   
   protected void restoreBackgroundColorAfterSetContent()
@@ -512,59 +506,44 @@ public class HippyImageView
     }
   }
   
-  public void setRepeatCount(int paramInt)
-  {
-    this.mRepeatCount = paramInt;
-    if (this.mRepeatCount == 0) {
-      this.mRepeatCount = 1;
-    }
-    this.mShowCount = 0;
-  }
-  
   protected boolean shouldFetchImage()
   {
-    if (this.mUrlFetchState == 1) {
+    int i = this.mUrlFetchState;
+    boolean bool = false;
+    if (i == 1) {
       return false;
     }
     if (this.mUrlFetchState == 0) {
       return true;
     }
     Object localObject = this.initProps;
-    boolean bool1;
-    if (localObject != null) {
-      bool1 = ((HippyMap)localObject).getBoolean("isGif");
+    if ((localObject != null) && (((HippyMap)localObject).getBoolean("isGif"))) {
+      i = 1;
     } else {
-      bool1 = false;
+      i = 0;
     }
-    boolean bool2 = bool1;
-    if (!bool1) {
+    int j = i;
+    if (i == 0) {
       if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("gif"))) {
-        bool2 = true;
+        j = 1;
       } else {
-        bool2 = false;
+        j = 0;
       }
     }
     if ((!TextUtils.isEmpty(this.mImageType)) && (this.mImageType.equals("apng")) && (this.mContentDrawable != null) && (!(this.mContentDrawable instanceof ContentDrawable))) {
       return false;
     }
-    if (bool2)
+    if (j != 0)
     {
       if (this.mGifMovie == null) {
-        return true;
+        bool = true;
       }
+      return bool;
     }
-    else
-    {
-      localObject = getBitmap();
-      if (localObject == null) {
-        break label150;
-      }
-      if (((Bitmap)localObject).isRecycled()) {
-        return true;
-      }
+    localObject = getBitmap();
+    if (localObject != null) {
+      return ((Bitmap)localObject).isRecycled();
     }
-    return false;
-    label150:
     return true;
   }
   
@@ -579,17 +558,17 @@ public class HippyImageView
     invalidate();
   }
   
-  protected void updateContentDrawableProperty()
+  protected void updateContentDrawableProperty(int paramInt)
   {
-    super.updateContentDrawableProperty();
-    if ((this.mContentDrawable instanceof HippyContentDrawable)) {
+    super.updateContentDrawableProperty(paramInt);
+    if (((this.mContentDrawable instanceof HippyContentDrawable)) && (paramInt == 1)) {
       ((HippyContentDrawable)this.mContentDrawable).setNinePatchCoordinate(this.mNinePatchRect);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageView
  * JD-Core Version:    0.7.0.1
  */

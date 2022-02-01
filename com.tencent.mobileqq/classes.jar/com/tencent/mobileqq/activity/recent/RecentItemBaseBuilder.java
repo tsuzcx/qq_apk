@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout.OnDragModeChangedListener;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipRightMenuBuilder;
 import com.tencent.widget.ThemeImageWrapper;
@@ -18,16 +19,11 @@ import java.util.List;
 
 public abstract class RecentItemBaseBuilder
 {
-  public static final int[] a;
-  public static final int[] b = { 2130839507, 2130839506, 2130839506, 2130839506, 2130839508, 2130839508, 2130839506, 2130839506, 2130839506, 2130839508 };
-  public static final int[] c = { 2131370801, 2131370819, 2131370797, 2131370812, 2131370809, 2131370810, 2131370822, 2131370818, 2131370817, 2131370796 };
-  protected RecentAdapter a;
-  protected SwipRightMenuBuilder a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691479, 2131691277, 2131691260, 2131691263, 2131691261, 2131691262, 2131694335, 2131693069, 2131693067, 2131691259 };
-  }
+  public static final int[] c = { 2131888438, 2131888227, 2131888206, 2131888211, 2131888207, 2131888208, 2131891973, 2131890183, 2131890181, 2131888205, 2131888209, 2131888210 };
+  public static final int[] d = { 2130839698, 2130839697, 2130839702, 2130839702, 2130839699, 2130839699, 2130839697, 2130839702, 2130839702, 2130839699, 2130839700, 2130839704 };
+  public static final int[] e = { 2131438111, 2131438142, 2131438107, 2131438132, 2131438127, 2131438128, 2131438145, 2131438141, 2131438140, 2131438106, 2131438130, 2131438131 };
+  protected RecentAdapter f;
+  protected SwipRightMenuBuilder g;
   
   public int a()
   {
@@ -39,13 +35,13 @@ public abstract class RecentItemBaseBuilder
   public final View a(Context paramContext, int paramInt, RecentItemBaseBuilder.RecentItemBaseHolder paramRecentItemBaseHolder)
   {
     View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    RecentAdapter localRecentAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
+    RecentAdapter localRecentAdapter = this.f;
     if ((localRecentAdapter != null) && (localRecentAdapter.a()))
     {
-      if (this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder == null) {
-        this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(paramContext);
+      if (this.g == null) {
+        this.g = a(paramContext);
       }
-      return this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.createView(paramContext, localView, paramRecentItemBaseHolder, -1);
+      return this.g.createView(paramContext, localView, paramRecentItemBaseHolder, -1);
     }
     paramRecentItemBaseHolder.leftView = localView;
     paramRecentItemBaseHolder.rightMenuItems = null;
@@ -54,13 +50,13 @@ public abstract class RecentItemBaseBuilder
   
   public SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298886);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298887);
+    int i = paramContext.getResources().getDimensionPixelSize(2131299609);
+    int j = paramContext.getResources().getDimensionPixelSize(2131299608);
     int k = a();
-    paramContext = c;
-    int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
-    int[] arrayOfInt2 = b;
-    return new RecentItemBaseBuilder.1(this, k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    paramContext = e;
+    int[] arrayOfInt1 = c;
+    int[] arrayOfInt2 = d;
+    return new RecentItemBaseBuilder.RecentSwipeTextViewMenuBuilder(k, 2, new int[] { i, j }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   public List<String> a(RecentBaseData paramRecentBaseData, Context paramContext)
@@ -70,34 +66,38 @@ public abstract class RecentItemBaseBuilder
   
   public void a(Context paramContext, View paramView, int paramInt, Object paramObject, RecentItemBaseBuilder.RecentItemBaseHolder paramRecentItemBaseHolder, View.OnClickListener paramOnClickListener)
   {
-    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.g;
     int i;
-    if (localSwipRightMenuBuilder != null) {
-      i = localSwipRightMenuBuilder.updateRightMenuView(paramContext, paramView, paramInt, paramObject, paramRecentItemBaseHolder, paramOnClickListener);
-    } else {
+    if (localSwipRightMenuBuilder != null)
+    {
+      SimpleModeHelper.a(localSwipRightMenuBuilder);
+      i = this.g.updateRightMenuView(paramContext, paramView, paramInt, paramObject, paramRecentItemBaseHolder, paramOnClickListener);
+    }
+    else
+    {
       i = 0;
     }
     int j = paramView.getScrollX();
     if (paramInt >= 0)
     {
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
-      if ((paramContext != null) && (paramContext.a == paramInt))
+      paramContext = this.f;
+      if ((paramContext != null) && (paramContext.i == paramInt))
       {
         paramView.scrollTo(i, 0);
-        break label81;
+        break label88;
       }
     }
     if (j != 0) {
       paramView.scrollTo(0, 0);
     }
-    label81:
+    label88:
     if ((j != 0) && (QLog.isDevelopLevel()))
     {
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
+      paramContext = this.f;
       if (paramContext == null) {
         paramContext = null;
       } else {
-        paramContext = Integer.valueOf(paramContext.a);
+        paramContext = Integer.valueOf(paramContext.i);
       }
       NearbyUtils.a("updateItemMenuView", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext });
     }
@@ -108,10 +108,10 @@ public abstract class RecentItemBaseBuilder
     if ((paramView instanceof DynamicAvatarView))
     {
       paramView = (DynamicAvatarView)paramView;
-      if (paramView.a == null) {
-        paramView.a = new ThemeImageWrapper();
+      if (paramView.g == null) {
+        paramView.g = new ThemeImageWrapper();
       }
-      paramView.a.setSupportMaskView(true);
+      paramView.g.setSupportMaskView(true);
     }
   }
   
@@ -119,12 +119,12 @@ public abstract class RecentItemBaseBuilder
   
   public void a(RecentAdapter paramRecentAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter = paramRecentAdapter;
+    this.f = paramRecentAdapter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -36,13 +36,13 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
   {
     super(paramView);
     this.activityReference = paramWeakReference;
-    this.backgroundView = paramView.findViewById(2131371087);
-    this.icon = ((ImageView)paramView.findViewById(2131371090));
-    this.title = ((TextView)paramView.findViewById(2131371093));
-    this.helpInfo = ((TextView)paramView.findViewById(2131371089));
-    this.addBtn = ((ImageView)paramView.findViewById(2131371086));
-    this.closeBtn = ((ImageView)paramView.findViewById(2131371088));
-    this.helpInfo.setText(HardCodeUtil.a(2131706928));
+    this.backgroundView = paramView.findViewById(2131438428);
+    this.icon = ((ImageView)paramView.findViewById(2131438431));
+    this.title = ((TextView)paramView.findViewById(2131438434));
+    this.helpInfo = ((TextView)paramView.findViewById(2131438430));
+    this.addBtn = ((ImageView)paramView.findViewById(2131438427));
+    this.closeBtn = ((ImageView)paramView.findViewById(2131438429));
+    this.helpInfo.setText(HardCodeUtil.a(2131904771));
     this.backgroundView.setOnClickListener(this);
     this.addBtn.setOnClickListener(this);
     this.closeBtn.setOnClickListener(this);
@@ -124,9 +124,9 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131371086)
+    if (i != 2131438427)
     {
-      if (i != 2131371088)
+      if (i != 2131438429)
       {
         onOtherClicked();
         return;
@@ -147,7 +147,7 @@ class MiniAppDesktopAdapter$DesktopMostCommonlyUsedViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.DesktopMostCommonlyUsedViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,6 +22,7 @@ public final class FeedCloudMeta$StShare
   public final PBUInt32Field publishTotalUser = PBField.initUInt32(0);
   public final PBStringField shareCardInfo = PBField.initString("");
   public FeedCloudMeta.StShareQzoneInfo shareQzoneInfo = new FeedCloudMeta.StShareQzoneInfo();
+  public final PBUInt32Field sharedCount = PBField.initUInt32(0);
   public final PBStringField shorturl = PBField.initString("");
   public final PBStringField title = PBField.initString("");
   public final PBUInt32Field type = PBField.initUInt32(0);
@@ -32,12 +33,12 @@ public final class FeedCloudMeta$StShare
   {
     Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112 }, new String[] { "title", "desc", "type", "url", "author", "poster", "cover", "video", "shorturl", "shareCardInfo", "shareQzoneInfo", "busiData", "images", "publishTotalUser" }, new Object[] { "", "", localInteger, "", null, null, null, null, "", "", null, localByteStringMicro, null, localInteger }, StShare.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 112, 120 }, new String[] { "title", "desc", "type", "url", "author", "poster", "cover", "video", "shorturl", "shareCardInfo", "shareQzoneInfo", "busiData", "images", "publishTotalUser", "sharedCount" }, new Object[] { "", "", localInteger, "", null, null, null, null, "", "", null, localByteStringMicro, null, localInteger, localInteger }, StShare.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudMeta.StShare
  * JD-Core Version:    0.7.0.1
  */

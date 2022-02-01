@@ -5,56 +5,54 @@ import org.jetbrains.annotations.NotNull;
 
 public class DecodeConfig
 {
-  int jdField_a_of_type_Int;
-  public long a;
   public String a;
-  boolean jdField_a_of_type_Boolean;
-  public long b;
-  boolean b;
+  public long b = 0L;
+  public long c = 0L;
+  int d;
+  boolean e;
+  boolean f;
   
   public DecodeConfig(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.a = paramString;
+    this.d = paramInt;
+    this.e = paramBoolean2;
+    this.f = paramBoolean1;
+    this.b = paramLong1;
+    this.c = paramLong2;
   }
   
   void a(DecodeConfig paramDecodeConfig)
   {
     if (paramDecodeConfig != null)
     {
-      if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramDecodeConfig.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = paramDecodeConfig.jdField_a_of_type_JavaLangString;
+      if (!TextUtils.equals(this.a, paramDecodeConfig.a)) {
+        this.a = paramDecodeConfig.a;
       }
-      int i = this.jdField_a_of_type_Int;
-      int j = paramDecodeConfig.jdField_a_of_type_Int;
+      int i = this.d;
+      int j = paramDecodeConfig.d;
       if (i != j) {
-        this.jdField_a_of_type_Int = j;
+        this.d = j;
       }
-      boolean bool1 = this.jdField_a_of_type_Boolean;
-      boolean bool2 = paramDecodeConfig.jdField_a_of_type_Boolean;
+      boolean bool1 = this.e;
+      boolean bool2 = paramDecodeConfig.e;
       if (bool1 != bool2) {
-        this.jdField_a_of_type_Boolean = bool2;
+        this.e = bool2;
       }
-      bool1 = this.jdField_b_of_type_Boolean;
-      bool2 = paramDecodeConfig.jdField_b_of_type_Boolean;
+      bool1 = this.f;
+      bool2 = paramDecodeConfig.f;
       if (bool1 != bool2) {
-        this.jdField_b_of_type_Boolean = bool2;
+        this.f = bool2;
       }
-      long l1 = this.jdField_a_of_type_Long;
-      long l2 = paramDecodeConfig.jdField_a_of_type_Long;
+      long l1 = this.b;
+      long l2 = paramDecodeConfig.b;
       if (l1 != l2) {
-        this.jdField_a_of_type_Long = l2;
+        this.b = l2;
       }
-      l1 = this.jdField_b_of_type_Long;
-      l2 = paramDecodeConfig.jdField_b_of_type_Long;
+      l1 = this.c;
+      l2 = paramDecodeConfig.c;
       if (l1 != l2) {
-        this.jdField_b_of_type_Long = l2;
+        this.c = l2;
       }
       return;
     }
@@ -66,23 +64,23 @@ public class DecodeConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("inputFilePath=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" speedType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" noSleep=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" repeat=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" startTimeMillSecond=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" endTimeMillSecond=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.decoder.DecodeConfig
  * JD-Core Version:    0.7.0.1
  */

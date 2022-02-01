@@ -1,32 +1,25 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.audio.TXCSoundEffectPlayer;
-import com.tencent.trtc.TRTCCloudDef.TRTCAudioEffectParam;
+import com.tencent.liteav.audio.TXCLiveBGMPlayer;
 
 class TRTCCloudImpl$98
   implements Runnable
 {
-  TRTCCloudImpl$98(TRTCCloudImpl paramTRTCCloudImpl, TRTCCloudDef.TRTCAudioEffectParam paramTRTCAudioEffectParam) {}
+  TRTCCloudImpl$98(TRTCCloudImpl paramTRTCCloudImpl, int paramInt) {}
   
   public void run()
   {
     TRTCCloudImpl localTRTCCloudImpl = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("playAudioEffect -> effectId = ");
-    localStringBuilder.append(this.val$effect.effectId);
-    localStringBuilder.append(" path = ");
-    localStringBuilder.append(this.val$effect.path);
-    localStringBuilder.append(" publish = ");
-    localStringBuilder.append(this.val$effect.publish);
-    localStringBuilder.append(" loopCount = ");
-    localStringBuilder.append(this.val$effect.loopCount);
+    localStringBuilder.append("setBGMPosition ");
+    localStringBuilder.append(this.val$progress);
     localTRTCCloudImpl.apiLog(localStringBuilder.toString());
-    TXCSoundEffectPlayer.getInstance().playEffectWithId(this.val$effect.effectId, this.val$effect.path, this.val$effect.publish, this.val$effect.loopCount);
+    TXCLiveBGMPlayer.getInstance().setBGMPosition(this.val$progress);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.98
  * JD-Core Version:    0.7.0.1
  */

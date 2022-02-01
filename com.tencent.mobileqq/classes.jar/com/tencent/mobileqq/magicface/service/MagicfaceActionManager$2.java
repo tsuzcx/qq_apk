@@ -11,7 +11,7 @@ class MagicfaceActionManager$2
     // Byte code:
     //   0: aload_0
     //   1: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   4: getfield 32	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:c	Z
+    //   4: getfield 32	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:k	Z
     //   7: istore_1
     //   8: iload_1
     //   9: ifeq +31 -> 40
@@ -26,14 +26,14 @@ class MagicfaceActionManager$2
     //   30: astore_2
     //   31: aload_2
     //   32: aload_2
-    //   33: getfield 49	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   36: invokevirtual 52	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
+    //   33: getfield 50	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:p	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   36: invokevirtual 53	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   39: return
     //   40: aload_0
     //   41: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
     //   44: aload_0
     //   45: getfield 17	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:a	I
-    //   48: invokevirtual 55	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:a	(I)V
+    //   48: invokevirtual 56	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(I)V
     //   51: aconst_null
     //   52: astore_2
     //   53: aload_0
@@ -41,9 +41,9 @@ class MagicfaceActionManager$2
     //   57: ifne +19 -> 76
     //   60: aload_0
     //   61: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   64: getfield 58	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader	Lcom/tencent/mobileqq/magicface/model/MagicfaceResLoader;
-    //   67: ldc 60
-    //   69: invokevirtual 65	com/tencent/mobileqq/magicface/model/MagicfaceResLoader:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   64: getfield 60	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:g	Lcom/tencent/mobileqq/magicface/model/MagicfaceResLoader;
+    //   67: ldc 62
+    //   69: invokevirtual 67	com/tencent/mobileqq/magicface/model/MagicfaceResLoader:a	(Ljava/lang/String;)Ljava/lang/String;
     //   72: astore_2
     //   73: goto +24 -> 97
     //   76: aload_0
@@ -52,15 +52,15 @@ class MagicfaceActionManager$2
     //   81: if_icmpne +16 -> 97
     //   84: aload_0
     //   85: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   88: getfield 58	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader	Lcom/tencent/mobileqq/magicface/model/MagicfaceResLoader;
-    //   91: ldc 67
-    //   93: invokevirtual 65	com/tencent/mobileqq/magicface/model/MagicfaceResLoader:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   88: getfield 60	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:g	Lcom/tencent/mobileqq/magicface/model/MagicfaceResLoader;
+    //   91: ldc 69
+    //   93: invokevirtual 67	com/tencent/mobileqq/magicface/model/MagicfaceResLoader:a	(Ljava/lang/String;)Ljava/lang/String;
     //   96: astore_2
     //   97: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   100: ifeq +11 -> 111
     //   103: ldc 40
     //   105: iconst_2
-    //   106: ldc 69
+    //   106: ldc 71
     //   108: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   111: aload_2
     //   112: ifnull +188 -> 300
@@ -68,80 +68,80 @@ class MagicfaceActionManager$2
     //   116: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
     //   119: aload_0
     //   120: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   123: getfield 72	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
+    //   123: getfield 74	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:d	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
     //   126: aload_2
-    //   127: invokevirtual 77	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   130: putfield 49	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   127: invokevirtual 79	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   130: putfield 50	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:p	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
     //   133: aload_0
     //   134: getfield 19	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:b	I
     //   137: iconst_1
     //   138: if_icmpne +10 -> 148
     //   141: aload_0
     //   142: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   145: invokevirtual 80	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:e	()V
+    //   145: invokevirtual 82	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:e	()V
     //   148: aload_0
     //   149: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
     //   152: aload_0
     //   153: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   156: getfield 49	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   159: invokevirtual 82	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:a	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
+    //   156: getfield 50	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:p	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   159: invokevirtual 84	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:a	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   162: aload_0
     //   163: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
     //   166: aload_0
     //   167: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   170: getfield 72	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
+    //   170: getfield 74	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:d	Lcom/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder;
     //   173: aload_2
-    //   174: invokevirtual 85	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Ljava/util/List;
-    //   177: putfield 88	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   174: invokevirtual 87	com/tencent/mobileqq/magicface/magicfaceaction/MagicfaceActionDecoder:a	(Ljava/lang/String;)Ljava/util/List;
+    //   177: putfield 91	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:f	Ljava/util/List;
     //   180: aload_0
     //   181: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   184: invokevirtual 90	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:d	()V
+    //   184: invokevirtual 93	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:d	()V
     //   187: aload_0
     //   188: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   191: getfield 88	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   194: invokeinterface 96 1 0
+    //   191: getfield 91	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:f	Ljava/util/List;
+    //   194: invokeinterface 99 1 0
     //   199: astore_2
     //   200: aload_2
-    //   201: invokeinterface 101 1 0
+    //   201: invokeinterface 104 1 0
     //   206: ifeq +94 -> 300
     //   209: aload_2
-    //   210: invokeinterface 105 1 0
-    //   215: checkcast 107	com/tencent/mobileqq/magicface/magicfaceaction/Action
+    //   210: invokeinterface 108 1 0
+    //   215: checkcast 110	com/tencent/mobileqq/magicface/magicfaceaction/Action
     //   218: astore_3
     //   219: aload_0
     //   220: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
     //   223: aload_3
-    //   224: putfield 110	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction	Lcom/tencent/mobileqq/magicface/magicfaceaction/Action;
+    //   224: putfield 114	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:h	Lcom/tencent/mobileqq/magicface/magicfaceaction/Action;
     //   227: aload_3
     //   228: aload_0
     //   229: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   232: getfield 113	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
-    //   235: putfield 114	com/tencent/mobileqq/magicface/magicfaceaction/Action:jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
+    //   232: getfield 117	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:e	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
+    //   235: putfield 119	com/tencent/mobileqq/magicface/magicfaceaction/Action:g	Lcom/tencent/mobileqq/magicface/service/MagicfacePlayManager;
     //   238: aload_3
     //   239: aload_0
     //   240: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   243: getfield 49	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   246: putfield 115	com/tencent/mobileqq/magicface/magicfaceaction/Action:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   243: getfield 50	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:p	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   246: putfield 121	com/tencent/mobileqq/magicface/magicfaceaction/Action:a	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
     //   249: aload_3
-    //   250: invokevirtual 117	com/tencent/mobileqq/magicface/magicfaceaction/Action:a	()Z
+    //   250: invokevirtual 123	com/tencent/mobileqq/magicface/magicfaceaction/Action:a	()Z
     //   253: istore_1
     //   254: aload_0
     //   255: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   258: getfield 119	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	Z
+    //   258: getfield 126	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:j	Z
     //   261: ifeq +6 -> 267
     //   264: goto +36 -> 300
     //   267: aload_3
-    //   268: getfield 121	com/tencent/mobileqq/magicface/magicfaceaction/Action:d	Z
+    //   268: getfield 129	com/tencent/mobileqq/magicface/magicfaceaction/Action:n	Z
     //   271: ifeq +13 -> 284
     //   274: aload_0
     //   275: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   278: invokevirtual 123	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:c	()V
+    //   278: invokevirtual 132	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:c	()V
     //   281: goto +19 -> 300
     //   284: iload_1
     //   285: ifeq +15 -> 300
     //   288: aload_0
     //   289: getfield 15	com/tencent/mobileqq/magicface/service/MagicfaceActionManager$2:this$0	Lcom/tencent/mobileqq/magicface/service/MagicfaceActionManager;
-    //   292: getfield 119	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	Z
+    //   292: getfield 126	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:j	Z
     //   295: istore_1
     //   296: iload_1
     //   297: ifeq -97 -> 200
@@ -153,23 +153,23 @@ class MagicfaceActionManager$2
     //   313: astore_2
     //   314: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   317: ifeq +37 -> 354
-    //   320: new 125	java/lang/StringBuilder
+    //   320: new 134	java/lang/StringBuilder
     //   323: dup
-    //   324: invokespecial 126	java/lang/StringBuilder:<init>	()V
+    //   324: invokespecial 135	java/lang/StringBuilder:<init>	()V
     //   327: astore_3
     //   328: aload_3
-    //   329: ldc 128
-    //   331: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: ldc 137
+    //   331: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   334: pop
     //   335: aload_3
     //   336: aload_2
-    //   337: invokevirtual 136	java/lang/Exception:toString	()Ljava/lang/String;
-    //   340: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   337: invokevirtual 145	java/lang/Exception:toString	()Ljava/lang/String;
+    //   340: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   343: pop
     //   344: ldc 40
     //   346: iconst_2
     //   347: aload_3
-    //   348: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   348: invokevirtual 146	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   351: invokestatic 46	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   354: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   357: ifeq +11 -> 368
@@ -182,8 +182,8 @@ class MagicfaceActionManager$2
     //   372: astore_2
     //   373: aload_2
     //   374: aload_2
-    //   375: getfield 49	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   378: invokevirtual 52	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
+    //   375: getfield 50	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:p	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   378: invokevirtual 53	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   381: return
     //   382: invokestatic 38	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   385: ifeq +11 -> 396
@@ -196,8 +196,8 @@ class MagicfaceActionManager$2
     //   400: astore_3
     //   401: aload_3
     //   402: aload_3
-    //   403: getfield 49	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
-    //   406: invokevirtual 52	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
+    //   403: getfield 50	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:p	Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;
+    //   406: invokevirtual 53	com/tencent/mobileqq/magicface/service/MagicfaceActionManager:b	(Lcom/tencent/mobileqq/magicface/magicfaceaction/ActionGlobalData;)V
     //   409: goto +5 -> 414
     //   412: aload_2
     //   413: athrow
@@ -238,7 +238,7 @@ class MagicfaceActionManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.MagicfaceActionManager.2
  * JD-Core Version:    0.7.0.1
  */

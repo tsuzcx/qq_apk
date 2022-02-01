@@ -6,33 +6,33 @@ import android.util.DisplayMetrics;
 
 public class DisplayInfo
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
+  private int a;
   private int b;
+  private boolean c = false;
+  private float d = 1.0F;
   
   public DisplayInfo(Context paramContext, boolean paramBoolean)
   {
     paramContext = paramContext.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_Int = paramContext.widthPixels;
+    this.d = 1.0F;
+    this.a = paramContext.widthPixels;
     this.b = paramContext.heightPixels;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
+    return this.d;
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.util.DisplayInfo
  * JD-Core Version:    0.7.0.1
  */

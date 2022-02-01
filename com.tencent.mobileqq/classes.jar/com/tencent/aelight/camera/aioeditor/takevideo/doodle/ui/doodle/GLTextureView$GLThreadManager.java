@@ -4,23 +4,23 @@ import javax.microedition.khronos.opengles.GL10;
 
 class GLTextureView$GLThreadManager
 {
-  private static String jdField_a_of_type_JavaLangString = "GLThreadManager";
-  private int jdField_a_of_type_Int;
-  private GLTextureView.GLThread jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread;
-  private boolean jdField_a_of_type_Boolean;
+  private static String a = "GLThreadManager";
   private boolean b;
-  private boolean c;
+  private int c;
   private boolean d;
+  private boolean e;
+  private boolean f;
+  private GLTextureView.GLThread g;
   
-  private void a()
+  private void c()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_Int = GLTextureView.a();
-      if (this.jdField_a_of_type_Int >= 131072) {
-        this.c = true;
+      this.c = GLTextureView.e();
+      if (this.c >= 131072) {
+        this.e = true;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
     }
   }
   
@@ -29,8 +29,8 @@ class GLTextureView$GLThreadManager
     try
     {
       GLTextureView.GLThread.a(paramGLThread, true);
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread == paramGLThread) {
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread = null;
+      if (this.g == paramGLThread) {
+        this.g = null;
       }
       notifyAll();
       return;
@@ -44,29 +44,29 @@ class GLTextureView$GLThreadManager
     {
       try
       {
-        if (!this.b)
+        if (!this.d)
         {
-          a();
+          c();
           paramGL10 = paramGL10.glGetString(7937);
-          int i = this.jdField_a_of_type_Int;
+          int i = this.c;
           boolean bool2 = false;
           if (i < 131072)
           {
             if (!paramGL10.startsWith("Q3Dimension MSM7500 "))
             {
               bool1 = true;
-              this.c = bool1;
+              this.e = bool1;
               notifyAll();
             }
           }
           else
           {
             bool1 = bool2;
-            if (!this.c) {
+            if (!this.e) {
               bool1 = true;
             }
-            this.d = bool1;
-            this.b = true;
+            this.f = bool1;
+            this.d = true;
           }
         }
         else
@@ -83,7 +83,7 @@ class GLTextureView$GLThreadManager
   {
     try
     {
-      boolean bool = this.d;
+      boolean bool = this.f;
       return bool;
     }
     finally
@@ -93,40 +93,12 @@ class GLTextureView$GLThreadManager
     }
   }
   
-  public boolean a(GLTextureView.GLThread paramGLThread)
-  {
-    GLTextureView.GLThread localGLThread = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread;
-    if ((localGLThread != paramGLThread) && (localGLThread != null))
-    {
-      a();
-      if (this.c) {
-        return true;
-      }
-      paramGLThread = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread;
-      if (paramGLThread != null) {
-        paramGLThread.e();
-      }
-      return false;
-    }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread = paramGLThread;
-    notifyAll();
-    return true;
-  }
-  
-  public void b(GLTextureView.GLThread paramGLThread)
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread == paramGLThread) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleGLTextureView$GLThread = null;
-    }
-    notifyAll();
-  }
-  
   public boolean b()
   {
     try
     {
-      a();
-      boolean bool = this.c;
+      c();
+      boolean bool = this.e;
       return bool ^ true;
     }
     finally
@@ -135,10 +107,38 @@ class GLTextureView$GLThreadManager
       throw localObject;
     }
   }
+  
+  public boolean b(GLTextureView.GLThread paramGLThread)
+  {
+    GLTextureView.GLThread localGLThread = this.g;
+    if ((localGLThread != paramGLThread) && (localGLThread != null))
+    {
+      c();
+      if (this.e) {
+        return true;
+      }
+      paramGLThread = this.g;
+      if (paramGLThread != null) {
+        paramGLThread.g();
+      }
+      return false;
+    }
+    this.g = paramGLThread;
+    notifyAll();
+    return true;
+  }
+  
+  public void c(GLTextureView.GLThread paramGLThread)
+  {
+    if (this.g == paramGLThread) {
+      this.g = null;
+    }
+    notifyAll();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.GLTextureView.GLThreadManager
  * JD-Core Version:    0.7.0.1
  */

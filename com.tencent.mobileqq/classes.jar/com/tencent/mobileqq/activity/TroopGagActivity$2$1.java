@@ -13,13 +13,13 @@ class TroopGagActivity$2$1
   
   public void run()
   {
-    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2.a.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity$2.a.a, false);
-    this.jdField_a_of_type_AndroidOsHandler.post(new TroopGagActivity.2.1.1(this, localArrayList));
+    ArrayList localArrayList = ((TroopGagMgr)this.b.a.app.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).b(this.b.a.c, false);
+    this.a.post(new TroopGagActivity.2.1.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopGagActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/di7" android:layout_width="fill_parent" android:layout_height="38.0dip" android:layout_marginLeft="16.0dip"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/nl0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/nl1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" />
+    <LinearLayout android:gravity="bottom|center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="35.0dip">
+        <ImageView android:id="@id/nf0" android:layout_width="48.0dip" android:layout_height="64.0dip" android:src="@drawable/jtg" android:scaleX="1.0" android:scaleY="1.0" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/b79" android:id="@id/nct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/3b" android:text="@string/za5" />
 </LinearLayout>

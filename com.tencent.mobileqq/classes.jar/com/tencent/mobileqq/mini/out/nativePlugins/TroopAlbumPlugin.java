@@ -72,13 +72,13 @@ public class TroopAlbumPlugin
       if (paramInt1 > 0)
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131717563), new Object[] { Integer.valueOf(paramInt1) }));
+        ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131915038), new Object[] { Integer.valueOf(paramInt1) }));
         ((StringBuilder)localObject).append("，");
         localObject = ((StringBuilder)localObject).toString();
         localStringBuilder = new StringBuilder();
         localStringBuilder.append((String)localObject);
         localStringBuilder.append(paramString);
-        localStringBuilder.append(HardCodeUtil.a(2131714960));
+        localStringBuilder.append(HardCodeUtil.a(2131912456));
         paramString = localStringBuilder.toString();
       }
       else
@@ -87,16 +87,16 @@ public class TroopAlbumPlugin
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131717556), new Object[] { Integer.valueOf(paramInt2) }));
+      ((StringBuilder)localObject).append(String.format(paramActivity.getString(2131915031), new Object[] { Integer.valueOf(paramInt2) }));
       paramString = ((StringBuilder)localObject).toString();
-      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131717561, new TroopAlbumPlugin.5(this)).show();
+      DialogUtil.a(paramActivity, 232).setMessage(paramString).setNegativeButton(2131915036, new TroopAlbumPlugin.5(this)).show();
       return;
     }
     localObject = ToastUtil.a();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramActivity.getString(2131717564));
+    localStringBuilder.append(paramActivity.getString(2131915039));
     localStringBuilder.append(paramString);
-    localStringBuilder.append(HardCodeUtil.a(2131714959));
+    localStringBuilder.append(HardCodeUtil.a(2131912455));
     ((ToastUtil)localObject).a(localStringBuilder.toString());
   }
   
@@ -117,18 +117,18 @@ public class TroopAlbumPlugin
     RemoteHandleManager.getInstance().addWebEventListener(new TroopAlbumPlugin.2(this, paramJSONObject, paramJSContext));
     if (!isSdcardWorking())
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131714955));
+      ToastUtil.a().a(HardCodeUtil.a(2131912452));
       return;
     }
     if (!NetworkState.isNetSupport())
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131714954));
+      ToastUtil.a().a(HardCodeUtil.a(2131912451));
       return;
     }
     if (!NetworkState.isWifiConn())
     {
       paramJSContext = paramJSContext.getActivity();
-      DialogUtil.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131717560)).setMessage(paramJSContext.getString(2131717562)).setPositiveButton(paramJSContext.getString(2131717559), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131717558), new TroopAlbumPlugin.3(this)).show();
+      DialogUtil.a(paramJSContext, 230).setTitle(paramJSContext.getString(2131915035)).setMessage(paramJSContext.getString(2131915037)).setPositiveButton(paramJSContext.getString(2131915034), new TroopAlbumPlugin.4(this, paramJSONObject)).setNegativeButton(paramJSContext.getString(2131915033), new TroopAlbumPlugin.3(this)).show();
       return;
     }
     RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(paramJSONObject);
@@ -383,7 +383,7 @@ public class TroopAlbumPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TroopAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

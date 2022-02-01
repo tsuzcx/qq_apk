@@ -18,7 +18,7 @@ final class RockDownloader$2
   
   public void run()
   {
-    Object localObject = RockDownloader.a().query(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
+    Object localObject = RockDownloader.b().query(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -41,7 +41,7 @@ final class RockDownloader$2
             if (QLog.isColorLevel()) {
               QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localEntity.toString() });
             }
-            RockDownloader.a().remove(localRockDownloadInfo);
+            RockDownloader.b().remove(localRockDownloadInfo);
           }
         }
       }
@@ -53,13 +53,13 @@ final class RockDownloader$2
         this.a.getQueryAPKListener().a(localArrayList);
         return;
       }
-      this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), HardCodeUtil.a(2131713413), 10002);
+      this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), HardCodeUtil.a(2131910964), 10002);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader.2
  * JD-Core Version:    0.7.0.1
  */

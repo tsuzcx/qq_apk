@@ -8,20 +8,20 @@ import android.widget.TextView;
 class CustomCoverFragment$MoreViewHolder
   extends RecyclerView.ViewHolder
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView a;
+  ImageView b;
   
   public CustomCoverFragment$MoreViewHolder(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
     super(paramView);
     this.itemView.setTag(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367151));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367136));
+    this.a = ((TextView)paramView.findViewById(2131433605));
+    this.b = ((ImageView)paramView.findViewById(2131433590));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.CustomCoverFragment.MoreViewHolder
  * JD-Core Version:    0.7.0.1
  */

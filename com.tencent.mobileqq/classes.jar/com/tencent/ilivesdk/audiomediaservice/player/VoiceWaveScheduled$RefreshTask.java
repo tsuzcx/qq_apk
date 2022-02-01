@@ -10,7 +10,7 @@ class VoiceWaveScheduled$RefreshTask
     if (VoiceWaveScheduled.a(this.this$0) == null) {
       return;
     }
-    if (VoiceWaveScheduled.a(this.this$0))
+    if (VoiceWaveScheduled.b(this.this$0))
     {
       localVoiceWaveScheduled = this.this$0;
       VoiceWaveScheduled.b(localVoiceWaveScheduled, VoiceWaveScheduled.a(localVoiceWaveScheduled));
@@ -22,7 +22,7 @@ class VoiceWaveScheduled$RefreshTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.VoiceWaveScheduled.RefreshTask
  * JD-Core Version:    0.7.0.1
  */

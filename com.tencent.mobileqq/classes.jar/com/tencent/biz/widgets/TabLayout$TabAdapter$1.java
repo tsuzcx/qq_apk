@@ -10,22 +10,22 @@ class TabLayout$TabAdapter$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentBizWidgetsTabLayout.setChildView(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView);
-    this.this$0.jdField_a_of_type_ComTencentBizWidgetsTabLayout.setChildWidth(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth());
+    this.this$0.c.setChildView(this.a, this.b);
+    this.this$0.c.setChildWidth(this.a, this.b.getMeasuredWidth());
     int i;
-    if (this.this$0.jdField_a_of_type_JavaUtilList == null) {
+    if (this.this$0.b == null) {
       i = 0;
     } else {
-      i = this.this$0.jdField_a_of_type_JavaUtilList.size();
+      i = this.this$0.b.size();
     }
-    if (this.this$0.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a() == i) {
-      this.this$0.a();
+    if (this.this$0.c.getChildSize() == i) {
+      this.this$0.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.TabLayout.TabAdapter.1
  * JD-Core Version:    0.7.0.1
  */

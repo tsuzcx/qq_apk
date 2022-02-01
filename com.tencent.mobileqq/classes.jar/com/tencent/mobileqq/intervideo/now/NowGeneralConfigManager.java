@@ -24,7 +24,7 @@ public class NowGeneralConfigManager
   
   public void a(String paramString)
   {
-    boolean bool = StringUtil.a(paramString);
+    boolean bool = StringUtil.isEmpty(paramString);
     int j = 0;
     if (bool)
     {
@@ -70,7 +70,7 @@ public class NowGeneralConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowGeneralConfigManager
  * JD-Core Version:    0.7.0.1
  */

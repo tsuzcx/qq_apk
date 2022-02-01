@@ -26,6 +26,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameFlutterApi;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameMsgParser;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameSubscribeService;
@@ -39,6 +40,7 @@ import com.tencent.mobileqq.qqgamepub.data.QQGamePubSubscribe.GetSubscribeListRe
 import com.tencent.mobileqq.qqgamepub.data.QQGamePubSubscribe.SetSubscribeStatusReq;
 import com.tencent.mobileqq.qqgamepub.data.QQGamePubSubscribe.SetSubscribeStatusRsp;
 import com.tencent.mobileqq.qqgamepub.data.QQGameSubscribeBusEvent;
+import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mobileqq.qqgamepub.utils.UIUtils;
 import com.tencent.mobileqq.qqgamepub.view.QQGameGrayTipsView;
 import com.tencent.mobileqq.qqgamepub.view.QQGameSubscribeInfoView;
@@ -80,7 +82,7 @@ public class QQGameSubscribeServiceImpl
       {
         QQGamePubSubscribe.GetSubscribeInfoRsp localGetSubscribeInfoRsp = new QQGamePubSubscribe.GetSubscribeInfoRsp();
         localGetSubscribeInfoRsp.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
-        paramIntent.addAll(localGetSubscribeInfoRsp.app_list.get());
+        paramIntent.addAll(localGetSubscribeInfoRsp.appList.get());
         paramTrpcInovkeRsp = new QQGameSubscribeBusEvent(2);
         if ((paramIntent.size() > 0) && (paramIntent.get(0) != null))
         {
@@ -142,7 +144,7 @@ public class QQGameSubscribeServiceImpl
     //   62: aload_0
     //   63: getfield 44	com/tencent/mobileqq/qqgamepub/api/impl/QQGameSubscribeServiceImpl:mSubscribedList	Ljava/util/ArrayList;
     //   66: aload_1
-    //   67: getfield 207	com/tencent/mobileqq/qqgamepub/data/QQGamePubSubscribe$GetSubscribeListRsp:subscribe_list	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   67: getfield 207	com/tencent/mobileqq/qqgamepub/data/QQGamePubSubscribe$GetSubscribeListRsp:subscribeList	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   70: invokevirtual 126	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   73: invokevirtual 208	java/util/ArrayList:addAll	(Ljava/util/Collection;)Z
     //   76: pop
@@ -265,7 +267,7 @@ public class QQGameSubscribeServiceImpl
       {
         localObject1 = new QQGamePubSubscribe.SetSubscribeStatusRsp();
         ((QQGamePubSubscribe.SetSubscribeStatusRsp)localObject1).mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
-        localArrayList.addAll(((QQGamePubSubscribe.SetSubscribeStatusRsp)localObject1).app_list.get());
+        localArrayList.addAll(((QQGamePubSubscribe.SetSubscribeStatusRsp)localObject1).appList.get());
         if ((localArrayList.size() > 0) && (localArrayList.get(0) != null))
         {
           paramTrpcInovkeRsp = (QQGamePubSubscribe.AppSubscribeInfo)localArrayList.get(0);
@@ -448,9 +450,9 @@ public class QQGameSubscribeServiceImpl
       HashMap localHashMap = new HashMap();
       localHashMap.put("isNightMode", Boolean.valueOf(((IQQGameTempRelyApi)QRoute.api(IQQGameTempRelyApi.class)).isInNightMode()));
       localHashMap.put("uniquePagePath", paramString3);
-      localHashMap.put("clickTime", Long.valueOf(System.currentTimeMillis()));
+      localHashMap.put("basicInfo", GamePubAccountHelper.h());
       paramString1 = new PageRouterBuilder().b(paramString1).a(paramString2).a(true).b(true).c(true).a(localHashMap).a();
-      ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).startQQGameFlutter(paramActivity, paramString1, null);
+      ((IQQGameFlutterApi)QRoute.api(IQQGameFlutterApi.class)).startFlutterPage(paramActivity, paramString1, null);
       return true;
     }
     QLog.e("QQGamePub_QQGameSubscribeServiceImpl", 4, "enterSubscribeManagePage activity is null or is not from game pub");
@@ -493,7 +495,7 @@ public class QQGameSubscribeServiceImpl
   public View findGameGrayTipsViewInParent(ViewGroup paramViewGroup)
   {
     if (paramViewGroup != null) {
-      return paramViewGroup.findViewById(2131374421);
+      return paramViewGroup.findViewById(2131442588);
     }
     return null;
   }
@@ -526,7 +528,7 @@ public class QQGameSubscribeServiceImpl
       return;
     }
     Object localObject = new QQGamePubSubscribe.GetSubscribeInfoReq();
-    ((QQGamePubSubscribe.GetSubscribeInfoReq)localObject).appid_list.add(Integer.valueOf(Integer.parseInt(paramString)));
+    ((QQGamePubSubscribe.GetSubscribeInfoReq)localObject).appidList.add(Integer.valueOf(Integer.parseInt(paramString)));
     paramString = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/97", false, ((QQGamePubSubscribe.GetSubscribeInfoReq)localObject).toByteArray());
     localObject = new TrpcProxy.TrpcListReq();
     ((TrpcProxy.TrpcListReq)localObject).list.add(paramString);
@@ -553,7 +555,7 @@ public class QQGameSubscribeServiceImpl
       if (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isInValidGameAppId(paramString)) {
         return;
       }
-      paramViewGroup = (QQGameSubscribeInfoView)paramViewGroup.findViewById(2131374422);
+      paramViewGroup = (QQGameSubscribeInfoView)paramViewGroup.findViewById(2131442589);
       if (paramViewGroup != null) {
         paramViewGroup.a(paramString, paramAppSubscribeInfo, paramBoolean);
       }
@@ -590,7 +592,7 @@ public class QQGameSubscribeServiceImpl
               paramChatMessage = new RelativeLayout.LayoutParams(-2, -2);
               paramString = getGameGrayTipsView(localActivity);
               paramChatMessage.addRule(14);
-              paramChatMessage.addRule(3, 2131364521);
+              paramChatMessage.addRule(3, 2131430578);
               paramChatMessage.topMargin = paramInt;
               paramViewGroup.addView(paramString, paramChatMessage);
             }
@@ -723,14 +725,14 @@ public class QQGameSubscribeServiceImpl
       if (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isInValidGameAppId(paramString)) {
         return;
       }
-      View localView = paramViewGroup.findViewById(2131376809);
-      Object localObject2 = (QQGameSubscribeInfoView)paramViewGroup.findViewById(2131374422);
+      View localView = paramViewGroup.findViewById(2131445137);
+      Object localObject2 = (QQGameSubscribeInfoView)paramViewGroup.findViewById(2131442589);
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new QQGameSubscribeInfoView(paramViewGroup.getContext());
       }
       localObject2 = new RelativeLayout.LayoutParams(-1, UIUtils.a(80.0F, paramViewGroup.getResources()));
-      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131376636);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131444897);
       paramViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
       localView.setPadding(0, UIUtils.a(80.0F, paramViewGroup.getResources()), 0, 0);
       ((QQGameSubscribeInfoView)localObject1).a(paramString, null, false);
@@ -756,7 +758,7 @@ public class QQGameSubscribeServiceImpl
     long l = System.currentTimeMillis();
     Object localObject1 = new QQGamePubSubscribe.SetSubscribeStatusReq();
     ((QQGamePubSubscribe.SetSubscribeStatusReq)localObject1).operation.set(paramInt1);
-    ((QQGamePubSubscribe.SetSubscribeStatusReq)localObject1).appid_list.add(Integer.valueOf(Integer.parseInt(paramString)));
+    ((QQGamePubSubscribe.SetSubscribeStatusReq)localObject1).appidList.add(Integer.valueOf(Integer.parseInt(paramString)));
     Object localObject2 = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/95", false, ((QQGamePubSubscribe.SetSubscribeStatusReq)localObject1).toByteArray());
     localObject1 = new TrpcProxy.TrpcListReq();
     ((TrpcProxy.TrpcListReq)localObject1).list.add((MessageMicro)localObject2);
@@ -800,7 +802,7 @@ public class QQGameSubscribeServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGameSubscribeServiceImpl
  * JD-Core Version:    0.7.0.1
  */

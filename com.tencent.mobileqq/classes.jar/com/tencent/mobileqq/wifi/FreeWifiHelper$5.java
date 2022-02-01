@@ -12,39 +12,39 @@ final class FreeWifiHelper$5
   
   public void run()
   {
-    String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131692612);
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 0, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.d, str, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener).show();
-    int i = this.jdField_a_of_type_Int;
-    if (i == 1)
+    String str = this.a.getString(2131889635);
+    DialogUtil.a(this.a, 0, this.b, this.c, this.d, this.e, str, this.f, this.g, this.h).show();
+    int j = this.i;
+    if (j == 1)
     {
-      FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398667);
+      FreeWifiHelper.b(this.a, 398667);
       FreeWifiHelper.a("0X80094F2");
       return;
     }
-    if ((i != 2) && (i != 5))
+    if ((j != 2) && (j != 5))
     {
-      if (i == 3)
+      if (j == 3)
       {
-        FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398670);
+        FreeWifiHelper.b(this.a, 398670);
         FreeWifiHelper.a("0X80094F3");
         return;
       }
-      if (i == 4)
+      if (j == 4)
       {
-        FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398689);
+        FreeWifiHelper.b(this.a, 398689);
         FreeWifiHelper.a("0X80094F1");
       }
     }
     else
     {
-      FreeWifiHelper.b(this.jdField_a_of_type_AndroidAppActivity, 398667);
+      FreeWifiHelper.b(this.a, 398667);
       FreeWifiHelper.a("0X80094F1");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.5
  * JD-Core Version:    0.7.0.1
  */

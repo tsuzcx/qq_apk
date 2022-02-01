@@ -28,7 +28,7 @@ public class ExceptionModule
   }
   
   @HippyMethod(name="handleException")
-  public void handleException(String paramString1, String paramString2, int paramInt)
+  public void handleException(String paramString1, String paramString2)
   {
     if (this.mContext != null) {
       this.mContext.handleException(new HippyJsException(paramString1, paramString2));
@@ -37,7 +37,7 @@ public class ExceptionModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.exception.ExceptionModule
  * JD-Core Version:    0.7.0.1
  */

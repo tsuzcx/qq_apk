@@ -39,15 +39,9 @@ import java.util.regex.Pattern;
 
 public class RichTextParser
 {
-  private static HashMap<String, Drawable> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private static Map<String, Integer> jdField_a_of_type_JavaUtilMap;
-  public static final Pattern a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\{img:(.*?),w:(\\d+),h:(\\d+)\\}");
-    jdField_a_of_type_JavaUtilMap = new RichTextParser.1();
-  }
+  public static final Pattern a = Pattern.compile("\\{img:(.*?),w:(\\d+),h:(\\d+)\\}");
+  private static Map<String, Integer> b = new RichTextParser.1();
+  private static HashMap<String, Drawable> c = new HashMap();
   
   public static CertifiedAccountMeta.StUser a(String paramString1, String paramString2)
   {
@@ -93,7 +87,7 @@ public class RichTextParser
         a(paramContext, paramCharSequence, paramInt1, paramOnUserNameClickListener);
       }
       a(paramTextImageSpanConfig, paramOnCustomUrlClickListener, a(paramTextImageSpanConfig), paramCharSequence, paramURLDrawableListener);
-      paramTextImageSpanConfig.jdField_a_of_type_Float += ViewUtils.b(4.0F);
+      paramTextImageSpanConfig.a += ViewUtils.dpToPx(4.0F);
       b(paramTextImageSpanConfig, paramOnCustomUrlClickListener, a(paramTextImageSpanConfig), paramCharSequence, paramURLDrawableListener);
       return paramCharSequence;
     }
@@ -106,12 +100,12 @@ public class RichTextParser
   
   private static VerticalCenterImageSpan a(RichTextParser.TextImageSpanConfig paramTextImageSpanConfig, Drawable paramDrawable)
   {
-    int i = (int)paramTextImageSpanConfig.jdField_a_of_type_Float;
+    int i = (int)paramTextImageSpanConfig.a;
     Rect localRect = new Rect(0, 0, i, i);
     if (paramDrawable != null)
     {
       paramDrawable.setBounds(localRect);
-      return new VerticalCenterImageSpan(paramDrawable, paramTextImageSpanConfig.jdField_a_of_type_Int);
+      return new VerticalCenterImageSpan(paramDrawable, paramTextImageSpanConfig.b);
     }
     return null;
   }
@@ -123,7 +117,7 @@ public class RichTextParser
     if (bool) {
       return null;
     }
-    Matcher localMatcher = Patterns.c.matcher(paramRichSpannableStringBuilder);
+    Matcher localMatcher = Patterns.i.matcher(paramRichSpannableStringBuilder);
     int i = 0;
     Object localObject2;
     for (;;)
@@ -192,7 +186,7 @@ public class RichTextParser
   
   private static HashMap<String, ImageSpan> a(RichTextParser.TextImageSpanConfig paramTextImageSpanConfig)
   {
-    paramTextImageSpanConfig = paramTextImageSpanConfig.jdField_a_of_type_JavaLangCharSequence;
+    paramTextImageSpanConfig = paramTextImageSpanConfig.c;
     if ((paramTextImageSpanConfig != null) && ((paramTextImageSpanConfig instanceof Spannable)))
     {
       paramTextImageSpanConfig = (Spannable)paramTextImageSpanConfig;
@@ -222,7 +216,7 @@ public class RichTextParser
       if (paramContext == null) {
         return;
       }
-      Matcher localMatcher = Patterns.i.matcher(paramSpannableStringBuilder);
+      Matcher localMatcher = Patterns.o.matcher(paramSpannableStringBuilder);
       int i = 0;
       while (localMatcher.find())
       {
@@ -238,7 +232,7 @@ public class RichTextParser
         {
           localObject = str2.substring(m + 7, n);
           String str1 = str2.substring(i1 + 5, str2.indexOf(",color:"));
-          Integer localInteger = (Integer)jdField_a_of_type_JavaUtilMap.get(localObject);
+          Integer localInteger = (Integer)b.get(localObject);
           localObject = str1;
           if (localInteger != null)
           {
@@ -270,7 +264,7 @@ public class RichTextParser
       if (paramContext == null) {
         return;
       }
-      Matcher localMatcher = Patterns.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramRichSpannableStringBuilder);
+      Matcher localMatcher = Patterns.a.matcher(paramRichSpannableStringBuilder);
       int i = 0;
       while (localMatcher.find())
       {
@@ -304,7 +298,7 @@ public class RichTextParser
     if (paramRichSpannableStringBuilder == null) {
       return;
     }
-    Matcher localMatcher = Patterns.g.matcher(paramRichSpannableStringBuilder);
+    Matcher localMatcher = Patterns.m.matcher(paramRichSpannableStringBuilder);
     while (localMatcher.find())
     {
       paramRichSpannableStringBuilder.c = true;
@@ -316,8 +310,8 @@ public class RichTextParser
       if (paramBoolean)
       {
         paramHashMap = paramCharSequence;
-        if (jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {
-          paramHashMap = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str);
+        if (c.containsKey(str)) {
+          paramHashMap = (Drawable)c.get(str);
         }
       }
       paramCharSequence = paramHashMap;
@@ -358,7 +352,7 @@ public class RichTextParser
       paramCharSequence.append(".gif");
       paramCharSequence = paramCharSequence.toString();
       paramHashMap = URLDrawable.URLDrawableOptions.obtain();
-      paramHashMap.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848488);
+      paramHashMap.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850154);
       paramHashMap = URLDrawable.getDrawable(paramCharSequence, paramHashMap);
       paramCharSequence = paramHashMap;
       if (paramHashMap != null)
@@ -376,7 +370,7 @@ public class RichTextParser
       if (paramCharSequence != null)
       {
         if (paramBoolean) {
-          jdField_a_of_type_JavaUtilHashMap.put(str, paramCharSequence);
+          c.put(str, paramCharSequence);
         }
         paramCharSequence = a(paramTextImageSpanConfig, paramCharSequence);
         if (paramCharSequence != null) {
@@ -391,7 +385,7 @@ public class RichTextParser
     if (TextUtils.isEmpty(paramRichSpannableStringBuilder)) {
       return;
     }
-    Matcher localMatcher = jdField_a_of_type_JavaUtilRegexPattern.matcher(paramRichSpannableStringBuilder);
+    Matcher localMatcher = a.matcher(paramRichSpannableStringBuilder);
     try
     {
       while (localMatcher.find())
@@ -405,8 +399,8 @@ public class RichTextParser
           int j = localMatcher.end();
           String str1 = paramRichSpannableStringBuilder.subSequence(i, j).toString();
           paramCharSequence = null;
-          if (jdField_a_of_type_JavaUtilHashMap.containsKey(str1)) {
-            paramCharSequence = (Drawable)jdField_a_of_type_JavaUtilHashMap.get(str1);
+          if (c.containsKey(str1)) {
+            paramCharSequence = (Drawable)c.get(str1);
           }
           paramHashMap = paramCharSequence;
           if (paramCharSequence == null)
@@ -426,7 +420,7 @@ public class RichTextParser
             {
               QLog.e("RichTextParser", 1, paramHashMap, new Object[0]);
             }
-            paramCharSequence.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130848488);
+            paramCharSequence.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850154);
             paramCharSequence = URLDrawable.getDrawable(str2, paramCharSequence);
             paramHashMap = paramCharSequence;
             if (paramCharSequence != null)
@@ -441,7 +435,7 @@ public class RichTextParser
           }
           if (paramHashMap != null)
           {
-            jdField_a_of_type_JavaUtilHashMap.put(str1, paramHashMap);
+            c.put(str1, paramHashMap);
             paramCharSequence = a(paramTextImageSpanConfig, paramHashMap);
             if (paramCharSequence != null) {
               paramRichSpannableStringBuilder.setSpan(paramCharSequence, i, j, 33);
@@ -459,7 +453,7 @@ public class RichTextParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.RichTextParser
  * JD-Core Version:    0.7.0.1
  */

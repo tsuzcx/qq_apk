@@ -168,7 +168,7 @@ public class BaseImageUtil
       paramExifInterface.append("getExifOrientation  orientation  =====");
       paramExifInterface.append(i);
       paramExifInterface.append("=====");
-      a(paramExifInterface.toString());
+      f(paramExifInterface.toString());
       if (i != -1) {
         if (i != 3)
         {
@@ -199,66 +199,8 @@ public class BaseImageUtil
     paramExifInterface.append("getExifOrientation degree =======");
     paramExifInterface.append(i);
     paramExifInterface.append("==========");
-    a(paramExifInterface.toString());
+    f(paramExifInterface.toString());
     return i;
-  }
-  
-  public static int a(String paramString)
-  {
-    int k = 0;
-    StringBuilder localStringBuilder;
-    try
-    {
-      paramString = Class.forName("android.media.ExifInterface").getConstructor(new Class[] { String.class }).newInstance(new Object[] { paramString });
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("e = ");
-        localStringBuilder.append(paramString.toString());
-        QLog.e("reflection", 2, localStringBuilder.toString());
-      }
-      paramString = null;
-    }
-    int j = k;
-    if (paramString != null)
-    {
-      int i;
-      try
-      {
-        i = ((Integer)paramString.getClass().getMethod("getAttributeInt", new Class[] { String.class, Integer.TYPE }).invoke(paramString, new Object[] { "Orientation", Integer.valueOf(-1) })).intValue();
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("e = ");
-          localStringBuilder.append(paramString.toString());
-          QLog.e("reflection", 2, localStringBuilder.toString());
-        }
-        i = 0;
-      }
-      j = k;
-      if (i != -1)
-      {
-        if (i != 3)
-        {
-          if (i != 6)
-          {
-            if (i != 8) {
-              return 0;
-            }
-            return 270;
-          }
-          return 90;
-        }
-        j = 180;
-      }
-    }
-    return j;
   }
   
   public static Bitmap a()
@@ -272,7 +214,7 @@ public class BaseImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = c(BitmapManager.b(BaseApplication.getContext().getResources(), 2130840583), 50, 50);
+      localBitmap1 = c(BitmapManager.b(BaseApplication.getContext().getResources(), 2130841349), 50, 50);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -336,27 +278,27 @@ public class BaseImageUtil
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 280	android/util/TypedValue
+    //   5: new 215	android/util/TypedValue
     //   8: dup
-    //   9: invokespecial 281	android/util/TypedValue:<init>	()V
+    //   9: invokespecial 216	android/util/TypedValue:<init>	()V
     //   12: astore 5
-    //   14: new 283	java/io/BufferedInputStream
+    //   14: new 218	java/io/BufferedInputStream
     //   17: dup
     //   18: aload_0
     //   19: iload_1
     //   20: aload 5
-    //   22: invokevirtual 287	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
-    //   25: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: invokevirtual 222	android/content/res/Resources:openRawResource	(ILandroid/util/TypedValue;)Ljava/io/InputStream;
+    //   25: invokespecial 225	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   28: astore_2
     //   29: aload_0
     //   30: aload 5
     //   32: aload_2
     //   33: aconst_null
     //   34: aconst_null
-    //   35: invokestatic 296	android/graphics/BitmapFactory:decodeResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   35: invokestatic 231	android/graphics/BitmapFactory:decodeResourceStream	(Landroid/content/res/Resources;Landroid/util/TypedValue;Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   38: astore_0
     //   39: aload_2
-    //   40: invokevirtual 301	java/io/InputStream:close	()V
+    //   40: invokevirtual 236	java/io/InputStream:close	()V
     //   43: aload_0
     //   44: areturn
     //   45: astore_0
@@ -367,7 +309,7 @@ public class BaseImageUtil
     //   53: aload_2
     //   54: ifnull +7 -> 61
     //   57: aload_2
-    //   58: invokevirtual 301	java/io/InputStream:close	()V
+    //   58: invokevirtual 236	java/io/InputStream:close	()V
     //   61: aload_0
     //   62: athrow
     //   63: aconst_null
@@ -470,7 +412,7 @@ public class BaseImageUtil
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("OOM occurred in ImageUtil.round");
       ((StringBuilder)localObject2).append(localOutOfMemoryError.getMessage());
-      a(((StringBuilder)localObject2).toString());
+      f(((StringBuilder)localObject2).toString());
     }
     if (localObject1 != null)
     {
@@ -508,7 +450,7 @@ public class BaseImageUtil
         ((StringBuilder)localObject).append(", ");
         ((StringBuilder)localObject).append(paramFloat2);
         ((StringBuilder)localObject).append("]");
-        a(((StringBuilder)localObject).toString());
+        f(((StringBuilder)localObject).toString());
         float f3 = paramFloat1 / f2;
         f4 = paramFloat2 / f1;
         if (f3 > f4)
@@ -624,21 +566,21 @@ public class BaseImageUtil
     //   4: ifnonnull +5 -> 9
     //   7: aconst_null
     //   8: areturn
-    //   9: new 400	android/graphics/Matrix
+    //   9: new 344	android/graphics/Matrix
     //   12: dup
-    //   13: invokespecial 401	android/graphics/Matrix:<init>	()V
+    //   13: invokespecial 345	android/graphics/Matrix:<init>	()V
     //   16: astore 7
     //   18: aload_0
-    //   19: invokevirtual 191	android/graphics/Bitmap:getWidth	()I
+    //   19: invokevirtual 126	android/graphics/Bitmap:getWidth	()I
     //   22: istore_3
     //   23: aload_0
-    //   24: invokevirtual 200	android/graphics/Bitmap:getHeight	()I
+    //   24: invokevirtual 135	android/graphics/Bitmap:getHeight	()I
     //   27: istore 4
     //   29: iload_1
     //   30: i2f
     //   31: iload_3
     //   32: iload 4
-    //   34: invokestatic 439	java/lang/Math:max	(II)I
+    //   34: invokestatic 383	java/lang/Math:max	(II)I
     //   37: i2f
     //   38: fconst_1
     //   39: fmul
@@ -659,7 +601,7 @@ public class BaseImageUtil
     //   62: aload 7
     //   64: fload_2
     //   65: fload_2
-    //   66: invokevirtual 405	android/graphics/Matrix:postScale	(FF)Z
+    //   66: invokevirtual 349	android/graphics/Matrix:postScale	(FF)Z
     //   69: pop
     //   70: aload_0
     //   71: iconst_0
@@ -668,11 +610,11 @@ public class BaseImageUtil
     //   74: iload 4
     //   76: aload 7
     //   78: iconst_1
-    //   79: invokestatic 442	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   79: invokestatic 386	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   82: astore 5
     //   84: goto +59 -> 143
-    //   87: ldc_w 444
-    //   90: invokestatic 67	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)V
+    //   87: ldc_w 388
+    //   90: invokestatic 68	com/tencent/mobileqq/utils/BaseImageUtil:f	(Ljava/lang/String;)V
     //   93: aload 6
     //   95: astore 5
     //   97: goto +46 -> 143
@@ -682,17 +624,17 @@ public class BaseImageUtil
     //   106: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   109: astore 7
     //   111: aload 7
-    //   113: ldc_w 446
+    //   113: ldc_w 390
     //   116: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: pop
     //   120: aload 7
     //   122: aload 5
-    //   124: invokevirtual 447	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   124: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   127: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   130: pop
     //   131: aload 7
     //   133: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 67	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)V
+    //   136: invokestatic 68	com/tencent/mobileqq/utils/BaseImageUtil:f	(Ljava/lang/String;)V
     //   139: aload 6
     //   141: astore 5
     //   143: aload 5
@@ -700,14 +642,14 @@ public class BaseImageUtil
     //   148: aload_0
     //   149: ifnull +23 -> 172
     //   152: aload_0
-    //   153: invokevirtual 450	android/graphics/Bitmap:isRecycled	()Z
+    //   153: invokevirtual 394	android/graphics/Bitmap:isRecycled	()Z
     //   156: ifne +16 -> 172
     //   159: aload_0
     //   160: aload 5
-    //   162: invokevirtual 454	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   162: invokevirtual 398	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   165: ifne +7 -> 172
     //   168: aload_0
-    //   169: invokevirtual 457	android/graphics/Bitmap:recycle	()V
+    //   169: invokevirtual 401	android/graphics/Bitmap:recycle	()V
     //   172: aload 5
     //   174: areturn
     //   175: aload_0
@@ -1063,13 +1005,13 @@ public class BaseImageUtil
     //   16: aload 8
     //   18: iconst_1
     //   19: putfield 21	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   22: new 283	java/io/BufferedInputStream
+    //   22: new 218	java/io/BufferedInputStream
     //   25: dup
-    //   26: new 567	java/io/FileInputStream
+    //   26: new 515	java/io/FileInputStream
     //   29: dup
     //   30: aload_0
-    //   31: invokespecial 569	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   34: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   31: invokespecial 517	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   34: invokespecial 225	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   37: astore 6
     //   39: aload 6
     //   41: astore 5
@@ -1103,8 +1045,8 @@ public class BaseImageUtil
     //   95: iload 4
     //   97: iload_2
     //   98: idiv
-    //   99: invokestatic 439	java/lang/Math:max	(II)I
-    //   102: putfield 572	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   99: invokestatic 383	java/lang/Math:max	(II)I
+    //   102: putfield 520	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   105: aload 6
     //   107: astore 5
     //   109: aload 8
@@ -1114,20 +1056,20 @@ public class BaseImageUtil
     //   117: astore 5
     //   119: aload 8
     //   121: iconst_1
-    //   122: putfield 575	android/graphics/BitmapFactory$Options:inPurgeable	Z
+    //   122: putfield 523	android/graphics/BitmapFactory$Options:inPurgeable	Z
     //   125: aload 6
     //   127: astore 5
     //   129: aload 6
-    //   131: invokevirtual 301	java/io/InputStream:close	()V
+    //   131: invokevirtual 236	java/io/InputStream:close	()V
     //   134: aload 6
     //   136: astore 5
-    //   138: new 283	java/io/BufferedInputStream
+    //   138: new 218	java/io/BufferedInputStream
     //   141: dup
-    //   142: new 567	java/io/FileInputStream
+    //   142: new 515	java/io/FileInputStream
     //   145: dup
     //   146: aload_0
-    //   147: invokespecial 569	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   150: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   147: invokespecial 517	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   150: invokespecial 225	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   153: astore_0
     //   154: aload_0
     //   155: aconst_null
@@ -1137,7 +1079,7 @@ public class BaseImageUtil
     //   163: aload 6
     //   165: astore 5
     //   167: aload_0
-    //   168: invokevirtual 301	java/io/InputStream:close	()V
+    //   168: invokevirtual 236	java/io/InputStream:close	()V
     //   171: aload 6
     //   173: areturn
     //   174: astore 6
@@ -1164,20 +1106,20 @@ public class BaseImageUtil
     //   213: aload_0
     //   214: astore 5
     //   216: aload 6
-    //   218: invokevirtual 434	java/lang/Throwable:printStackTrace	()V
+    //   218: invokevirtual 378	java/lang/Throwable:printStackTrace	()V
     //   221: aload_0
     //   222: ifnull +11 -> 233
     //   225: aload 7
     //   227: astore 5
     //   229: aload_0
-    //   230: invokevirtual 301	java/io/InputStream:close	()V
+    //   230: invokevirtual 236	java/io/InputStream:close	()V
     //   233: aconst_null
     //   234: areturn
     //   235: astore_0
     //   236: aload 5
     //   238: ifnull +8 -> 246
     //   241: aload 5
-    //   243: invokevirtual 301	java/io/InputStream:close	()V
+    //   243: invokevirtual 236	java/io/InputStream:close	()V
     //   246: aload_0
     //   247: athrow
     //   248: aconst_null
@@ -1249,33 +1191,33 @@ public class BaseImageUtil
     //   8: aload_1
     //   9: getfield 21	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   12: ifeq +25 -> 37
-    //   15: new 283	java/io/BufferedInputStream
+    //   15: new 218	java/io/BufferedInputStream
     //   18: dup
-    //   19: new 567	java/io/FileInputStream
+    //   19: new 515	java/io/FileInputStream
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 569	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   24: invokespecial 517	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   27: sipush 2048
-    //   30: invokespecial 580	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   30: invokespecial 528	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   33: astore_0
     //   34: goto +19 -> 53
-    //   37: new 283	java/io/BufferedInputStream
+    //   37: new 218	java/io/BufferedInputStream
     //   40: dup
-    //   41: new 567	java/io/FileInputStream
+    //   41: new 515	java/io/FileInputStream
     //   44: dup
     //   45: aload_0
-    //   46: invokespecial 569	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   49: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   46: invokespecial 517	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   49: invokespecial 225	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   52: astore_0
     //   53: aload_0
     //   54: astore_2
     //   55: aload_0
     //   56: aconst_null
     //   57: aload_1
-    //   58: invokestatic 581	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   58: invokestatic 529	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   61: astore_1
     //   62: aload_0
-    //   63: invokevirtual 301	java/io/InputStream:close	()V
+    //   63: invokevirtual 236	java/io/InputStream:close	()V
     //   66: aload_1
     //   67: areturn
     //   68: astore_1
@@ -1287,15 +1229,15 @@ public class BaseImageUtil
     //   78: astore_0
     //   79: aload_0
     //   80: astore_2
-    //   81: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   81: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   84: ifeq +16 -> 100
     //   87: aload_0
     //   88: astore_2
-    //   89: ldc_w 341
+    //   89: ldc_w 282
     //   92: iconst_2
-    //   93: ldc_w 583
+    //   93: ldc_w 531
     //   96: aload_1
-    //   97: invokestatic 585	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   97: invokestatic 533	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   100: aload_0
     //   101: ifnull +8 -> 109
     //   104: aload_3
@@ -1307,7 +1249,7 @@ public class BaseImageUtil
     //   112: aload_2
     //   113: ifnull +7 -> 120
     //   116: aload_2
-    //   117: invokevirtual 301	java/io/InputStream:close	()V
+    //   117: invokevirtual 236	java/io/InputStream:close	()V
     //   120: goto +5 -> 125
     //   123: aload_0
     //   124: athrow
@@ -1335,46 +1277,6 @@ public class BaseImageUtil
     //   89	100	111	finally
     //   62	66	128	java/io/IOException
     //   116	120	131	java/io/IOException
-  }
-  
-  public static Bitmap a(boolean paramBoolean)
-  {
-    int i;
-    Object localObject;
-    if ((!paramBoolean) && (QQTheme.f()))
-    {
-      i = 2130840322;
-      localObject = "static://DefaultFace_square";
-    }
-    else
-    {
-      localObject = "static://DefaultFace";
-      i = 2130840321;
-    }
-    Bitmap localBitmap1;
-    if (GlobalImageCache.a != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
-    } else {
-      localBitmap1 = null;
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), i);
-      if ((localBitmap1 != null) && (GlobalImageCache.a != null)) {
-        GlobalImageCache.a.put(localObject, localBitmap1);
-      }
-      localBitmap2 = localBitmap1;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getDefaultFaceBitmap, bitmap=");
-        ((StringBuilder)localObject).append(localBitmap1);
-        QLog.d("ImageUtil", 2, ((StringBuilder)localObject).toString());
-        localBitmap2 = localBitmap1;
-      }
-    }
-    return localBitmap2;
   }
   
   public static BitmapFactory.Options a(BitmapFactory.Options paramOptions, String paramString, int paramInt)
@@ -1460,7 +1362,7 @@ public class BaseImageUtil
     paramString.append(k);
     paramString.append(",height:");
     paramString.append(j);
-    a(paramString.toString());
+    f(paramString.toString());
     int i = 1;
     while ((j > paramInt) && (k > paramInt))
     {
@@ -1546,11 +1448,6 @@ public class BaseImageUtil
     return localRect;
   }
   
-  public static Drawable a()
-  {
-    return new BitmapDrawable(a());
-  }
-  
   public static Drawable a(Drawable paramDrawable, int paramInt)
   {
     if (paramDrawable == null) {
@@ -1567,7 +1464,7 @@ public class BaseImageUtil
   
   public static Drawable a(boolean paramBoolean)
   {
-    return new BitmapDrawable(a(paramBoolean));
+    return new BitmapDrawable(b(paramBoolean));
   }
   
   public static StateListDrawable a(int paramInt, Context paramContext)
@@ -1853,8 +1750,8 @@ public class BaseImageUtil
   {
     // Byte code:
     //   0: aload_1
-    //   1: getstatic 210	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   4: putfield 885	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   1: getstatic 145	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   4: putfield 818	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   7: aconst_null
     //   8: astore_3
     //   9: aload_0
@@ -1867,40 +1764,40 @@ public class BaseImageUtil
     //   22: aconst_null
     //   23: areturn
     //   24: aload_2
-    //   25: invokestatic 887	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)Ljava/io/File;
+    //   25: invokestatic 820	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)Ljava/io/File;
     //   28: astore 5
-    //   30: new 889	java/io/BufferedOutputStream
+    //   30: new 822	java/io/BufferedOutputStream
     //   33: dup
-    //   34: new 891	java/io/FileOutputStream
+    //   34: new 824	java/io/FileOutputStream
     //   37: dup
     //   38: aload 5
-    //   40: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   43: invokespecial 895	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   40: invokespecial 825	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   43: invokespecial 828	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   46: astore_0
     //   47: aload 4
-    //   49: getstatic 901	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   49: getstatic 834	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   52: bipush 100
     //   54: aload_0
-    //   55: invokevirtual 905	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   55: invokevirtual 838	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   58: pop
     //   59: aload_0
-    //   60: invokevirtual 908	java/io/OutputStream:close	()V
+    //   60: invokevirtual 841	java/io/OutputStream:close	()V
     //   63: aload 4
     //   65: ifnull +16 -> 81
     //   68: aload 4
-    //   70: invokevirtual 450	android/graphics/Bitmap:isRecycled	()Z
+    //   70: invokevirtual 394	android/graphics/Bitmap:isRecycled	()Z
     //   73: ifne +8 -> 81
     //   76: aload 4
-    //   78: invokevirtual 457	android/graphics/Bitmap:recycle	()V
+    //   78: invokevirtual 401	android/graphics/Bitmap:recycle	()V
     //   81: aload_2
     //   82: ifnonnull +22 -> 104
     //   85: aload 5
     //   87: ifnull +17 -> 104
     //   90: aload 5
-    //   92: invokevirtual 691	java/io/File:exists	()Z
+    //   92: invokevirtual 621	java/io/File:exists	()Z
     //   95: ifeq +9 -> 104
     //   98: aload 5
-    //   100: invokevirtual 707	java/io/File:delete	()Z
+    //   100: invokevirtual 639	java/io/File:delete	()Z
     //   103: pop
     //   104: aload_2
     //   105: areturn
@@ -1914,24 +1811,24 @@ public class BaseImageUtil
     //   119: aload_0
     //   120: ifnull +10 -> 130
     //   123: aload_0
-    //   124: invokevirtual 908	java/io/OutputStream:close	()V
+    //   124: invokevirtual 841	java/io/OutputStream:close	()V
     //   127: goto +3 -> 130
     //   130: aload 4
     //   132: ifnull +16 -> 148
     //   135: aload 4
-    //   137: invokevirtual 450	android/graphics/Bitmap:isRecycled	()Z
+    //   137: invokevirtual 394	android/graphics/Bitmap:isRecycled	()Z
     //   140: ifne +8 -> 148
     //   143: aload 4
-    //   145: invokevirtual 457	android/graphics/Bitmap:recycle	()V
+    //   145: invokevirtual 401	android/graphics/Bitmap:recycle	()V
     //   148: aload_2
     //   149: ifnonnull +22 -> 171
     //   152: aload 5
     //   154: ifnull +17 -> 171
     //   157: aload 5
-    //   159: invokevirtual 691	java/io/File:exists	()Z
+    //   159: invokevirtual 621	java/io/File:exists	()Z
     //   162: ifeq +9 -> 171
     //   165: aload 5
-    //   167: invokevirtual 707	java/io/File:delete	()Z
+    //   167: invokevirtual 639	java/io/File:delete	()Z
     //   170: pop
     //   171: aload_1
     //   172: athrow
@@ -1940,22 +1837,22 @@ public class BaseImageUtil
     //   175: aload_0
     //   176: ifnull +10 -> 186
     //   179: aload_0
-    //   180: invokevirtual 908	java/io/OutputStream:close	()V
+    //   180: invokevirtual 841	java/io/OutputStream:close	()V
     //   183: goto +3 -> 186
     //   186: aload 4
     //   188: ifnull +16 -> 204
     //   191: aload 4
-    //   193: invokevirtual 450	android/graphics/Bitmap:isRecycled	()Z
+    //   193: invokevirtual 394	android/graphics/Bitmap:isRecycled	()Z
     //   196: ifne +8 -> 204
     //   199: aload 4
-    //   201: invokevirtual 457	android/graphics/Bitmap:recycle	()V
+    //   201: invokevirtual 401	android/graphics/Bitmap:recycle	()V
     //   204: aload 5
     //   206: ifnull +66 -> 272
     //   209: aload 5
-    //   211: invokevirtual 691	java/io/File:exists	()Z
+    //   211: invokevirtual 621	java/io/File:exists	()Z
     //   214: ifeq +58 -> 272
     //   217: aload 5
-    //   219: invokevirtual 707	java/io/File:delete	()Z
+    //   219: invokevirtual 639	java/io/File:delete	()Z
     //   222: pop
     //   223: aconst_null
     //   224: areturn
@@ -1964,19 +1861,19 @@ public class BaseImageUtil
     //   227: aload_0
     //   228: ifnull +10 -> 238
     //   231: aload_0
-    //   232: invokevirtual 908	java/io/OutputStream:close	()V
+    //   232: invokevirtual 841	java/io/OutputStream:close	()V
     //   235: goto +3 -> 238
     //   238: aload 4
     //   240: ifnull +16 -> 256
     //   243: aload 4
-    //   245: invokevirtual 450	android/graphics/Bitmap:isRecycled	()Z
+    //   245: invokevirtual 394	android/graphics/Bitmap:isRecycled	()Z
     //   248: ifne +8 -> 256
     //   251: aload 4
-    //   253: invokevirtual 457	android/graphics/Bitmap:recycle	()V
+    //   253: invokevirtual 401	android/graphics/Bitmap:recycle	()V
     //   256: aload 5
     //   258: ifnull +14 -> 272
     //   261: aload 5
-    //   263: invokevirtual 691	java/io/File:exists	()Z
+    //   263: invokevirtual 621	java/io/File:exists	()Z
     //   266: ifeq +6 -> 272
     //   269: goto -52 -> 217
     //   272: aconst_null
@@ -2032,53 +1929,53 @@ public class BaseImageUtil
     //   8: ifnonnull +5 -> 13
     //   11: aconst_null
     //   12: areturn
-    //   13: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   13: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   16: ifeq +56 -> 72
     //   19: new 48	java/lang/StringBuilder
     //   22: dup
     //   23: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   26: astore_0
     //   27: aload_0
-    //   28: ldc_w 911
+    //   28: ldc_w 844
     //   31: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: pop
     //   35: aload_0
     //   36: aload_1
-    //   37: invokevirtual 191	android/graphics/Bitmap:getWidth	()I
+    //   37: invokevirtual 126	android/graphics/Bitmap:getWidth	()I
     //   40: invokevirtual 58	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   43: pop
     //   44: aload_0
-    //   45: ldc_w 913
+    //   45: ldc_w 846
     //   48: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   51: pop
     //   52: aload_0
     //   53: aload_1
-    //   54: invokevirtual 200	android/graphics/Bitmap:getHeight	()I
+    //   54: invokevirtual 135	android/graphics/Bitmap:getHeight	()I
     //   57: invokevirtual 58	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   60: pop
-    //   61: ldc_w 341
+    //   61: ldc_w 282
     //   64: iconst_2
     //   65: aload_0
     //   66: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   69: invokestatic 916	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   69: invokestatic 849	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   72: aload_2
-    //   73: invokestatic 887	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)Ljava/io/File;
+    //   73: invokestatic 820	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)Ljava/io/File;
     //   76: astore_0
-    //   77: new 891	java/io/FileOutputStream
+    //   77: new 824	java/io/FileOutputStream
     //   80: dup
     //   81: aload_0
-    //   82: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   82: invokespecial 825	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   85: astore_0
     //   86: aload_1
-    //   87: getstatic 919	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   87: getstatic 852	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   90: bipush 100
     //   92: iload_3
-    //   93: invokestatic 626	java/lang/Math:min	(II)I
+    //   93: invokestatic 557	java/lang/Math:min	(II)I
     //   96: aload_0
-    //   97: invokevirtual 905	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   97: invokevirtual 838	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   100: pop
     //   101: aload_0
-    //   102: invokevirtual 908	java/io/OutputStream:close	()V
+    //   102: invokevirtual 841	java/io/OutputStream:close	()V
     //   105: aload_2
     //   106: areturn
     //   107: astore_2
@@ -2094,7 +1991,7 @@ public class BaseImageUtil
     //   121: aload_1
     //   122: ifnull +7 -> 129
     //   125: aload_1
-    //   126: invokevirtual 908	java/io/OutputStream:close	()V
+    //   126: invokevirtual 841	java/io/OutputStream:close	()V
     //   129: aload_0
     //   130: athrow
     //   131: aconst_null
@@ -2102,7 +1999,7 @@ public class BaseImageUtil
     //   133: aload_0
     //   134: ifnull +7 -> 141
     //   137: aload_0
-    //   138: invokevirtual 908	java/io/OutputStream:close	()V
+    //   138: invokevirtual 841	java/io/OutputStream:close	()V
     //   141: aconst_null
     //   142: areturn
     //   143: astore_0
@@ -2141,31 +2038,31 @@ public class BaseImageUtil
     //   1: astore 6
     //   3: aconst_null
     //   4: astore 5
-    //   6: new 610	java/io/File
+    //   6: new 541	java/io/File
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 688	java/io/File:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 618	java/io/File:<init>	(Ljava/lang/String;)V
     //   14: astore_0
     //   15: aload_0
     //   16: iload_2
     //   17: iload_3
-    //   18: invokestatic 924	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/File;II)Landroid/graphics/BitmapFactory$Options;
+    //   18: invokestatic 857	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/File;II)Landroid/graphics/BitmapFactory$Options;
     //   21: astore 7
-    //   23: new 567	java/io/FileInputStream
+    //   23: new 515	java/io/FileInputStream
     //   26: dup
     //   27: aload_0
-    //   28: invokespecial 617	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: invokespecial 548	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   31: astore_0
     //   32: aload_0
     //   33: aload 7
     //   35: aload_1
     //   36: bipush 100
     //   38: iload 4
-    //   40: invokestatic 626	java/lang/Math:min	(II)I
-    //   43: invokestatic 926	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Ljava/lang/String;
+    //   40: invokestatic 557	java/lang/Math:min	(II)I
+    //   43: invokestatic 859	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;I)Ljava/lang/String;
     //   46: astore_1
     //   47: aload_0
-    //   48: invokevirtual 301	java/io/InputStream:close	()V
+    //   48: invokevirtual 236	java/io/InputStream:close	()V
     //   51: aload_1
     //   52: areturn
     //   53: astore 5
@@ -2182,7 +2079,7 @@ public class BaseImageUtil
     //   73: aload_1
     //   74: ifnull +7 -> 81
     //   77: aload_1
-    //   78: invokevirtual 301	java/io/InputStream:close	()V
+    //   78: invokevirtual 236	java/io/InputStream:close	()V
     //   81: aload_0
     //   82: athrow
     //   83: aconst_null
@@ -2244,7 +2141,7 @@ public class BaseImageUtil
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
     BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
     localObject = ((BitmapFactory.Options)localObject).outMimeType;
-    int i = b(str);
+    int i = g(str);
     ContentValues localContentValues = new ContentValues(7);
     localContentValues.put("title", paramFile.getName());
     localContentValues.put("_display_name", paramFile.getName());
@@ -2267,11 +2164,6 @@ public class BaseImageUtil
     }
   }
   
-  public static void a(Context paramContext, String paramString)
-  {
-    FileProvider7Helper.savePhotoToSysAlbum(paramContext, paramString);
-  }
-  
   /* Error */
   public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
@@ -2282,35 +2174,35 @@ public class BaseImageUtil
     //   4: astore 6
     //   6: aload 6
     //   8: astore_0
-    //   9: new 610	java/io/File
+    //   9: new 541	java/io/File
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 688	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 618	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore_1
     //   18: aload 6
     //   20: astore_0
     //   21: aload_1
     //   22: iload_3
     //   23: iload 4
-    //   25: invokestatic 924	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/File;II)Landroid/graphics/BitmapFactory$Options;
+    //   25: invokestatic 857	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/File;II)Landroid/graphics/BitmapFactory$Options;
     //   28: astore 7
     //   30: aload 6
     //   32: astore_0
-    //   33: new 283	java/io/BufferedInputStream
+    //   33: new 218	java/io/BufferedInputStream
     //   36: dup
-    //   37: new 567	java/io/FileInputStream
+    //   37: new 515	java/io/FileInputStream
     //   40: dup
     //   41: aload_1
-    //   42: invokespecial 617	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   45: invokespecial 290	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   42: invokespecial 548	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   45: invokespecial 225	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   48: astore_1
     //   49: aload_1
     //   50: aload 7
     //   52: aload_2
-    //   53: invokestatic 1004	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;)Ljava/lang/String;
+    //   53: invokestatic 936	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/io/InputStream;Landroid/graphics/BitmapFactory$Options;Ljava/lang/String;)Ljava/lang/String;
     //   56: pop
     //   57: aload_1
-    //   58: invokevirtual 301	java/io/InputStream:close	()V
+    //   58: invokevirtual 236	java/io/InputStream:close	()V
     //   61: return
     //   62: astore_0
     //   63: goto +72 -> 135
@@ -2334,30 +2226,30 @@ public class BaseImageUtil
     //   93: aload_1
     //   94: astore_0
     //   95: aload 5
-    //   97: ldc_w 1006
+    //   97: ldc_w 938
     //   100: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   103: pop
     //   104: aload_1
     //   105: astore_0
     //   106: aload 5
     //   108: aload_2
-    //   109: invokevirtual 447	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   109: invokevirtual 391	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   112: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: pop
     //   116: aload_1
     //   117: astore_0
     //   118: aload 5
     //   120: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   123: invokestatic 67	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)V
+    //   123: invokestatic 68	com/tencent/mobileqq/utils/BaseImageUtil:f	(Ljava/lang/String;)V
     //   126: aload_1
     //   127: ifnull +7 -> 134
     //   130: aload_1
-    //   131: invokevirtual 301	java/io/InputStream:close	()V
+    //   131: invokevirtual 236	java/io/InputStream:close	()V
     //   134: return
     //   135: aload_1
     //   136: ifnull +7 -> 143
     //   139: aload_1
-    //   140: invokevirtual 301	java/io/InputStream:close	()V
+    //   140: invokevirtual 236	java/io/InputStream:close	()V
     //   143: aload_0
     //   144: athrow
     //   145: astore_0
@@ -2413,52 +2305,52 @@ public class BaseImageUtil
   public static void a(Bitmap paramBitmap, File paramFile)
   {
     // Byte code:
-    //   0: new 610	java/io/File
+    //   0: new 541	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokevirtual 1024	java/io/File:getParent	()Ljava/lang/String;
-    //   8: invokespecial 688	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokevirtual 956	java/io/File:getParent	()Ljava/lang/String;
+    //   8: invokespecial 618	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_2
     //   12: aload_2
-    //   13: invokevirtual 691	java/io/File:exists	()Z
+    //   13: invokevirtual 621	java/io/File:exists	()Z
     //   16: ifeq +10 -> 26
     //   19: aload_2
-    //   20: invokevirtual 1027	java/io/File:isDirectory	()Z
+    //   20: invokevirtual 959	java/io/File:isDirectory	()Z
     //   23: ifne +8 -> 31
     //   26: aload_2
-    //   27: invokevirtual 704	java/io/File:mkdirs	()Z
+    //   27: invokevirtual 636	java/io/File:mkdirs	()Z
     //   30: pop
     //   31: aload_1
-    //   32: invokevirtual 691	java/io/File:exists	()Z
+    //   32: invokevirtual 621	java/io/File:exists	()Z
     //   35: ifeq +10 -> 45
     //   38: aload_1
-    //   39: invokevirtual 1030	java/io/File:isFile	()Z
+    //   39: invokevirtual 962	java/io/File:isFile	()Z
     //   42: ifne +8 -> 50
     //   45: aload_1
-    //   46: invokevirtual 710	java/io/File:createNewFile	()Z
+    //   46: invokevirtual 642	java/io/File:createNewFile	()Z
     //   49: pop
     //   50: aconst_null
     //   51: astore_3
     //   52: aconst_null
     //   53: astore_2
-    //   54: new 889	java/io/BufferedOutputStream
+    //   54: new 822	java/io/BufferedOutputStream
     //   57: dup
-    //   58: new 891	java/io/FileOutputStream
+    //   58: new 824	java/io/FileOutputStream
     //   61: dup
     //   62: aload_1
-    //   63: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   66: invokespecial 895	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   63: invokespecial 825	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   66: invokespecial 828	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   69: astore_1
     //   70: aload_0
-    //   71: getstatic 901	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   71: getstatic 834	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   74: bipush 100
     //   76: aload_1
-    //   77: invokevirtual 905	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   77: invokevirtual 838	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   80: pop
     //   81: aload_1
-    //   82: invokevirtual 1033	java/io/BufferedOutputStream:flush	()V
+    //   82: invokevirtual 965	java/io/BufferedOutputStream:flush	()V
     //   85: aload_1
-    //   86: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   86: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   89: return
     //   90: astore_2
     //   91: aload_1
@@ -2473,13 +2365,13 @@ public class BaseImageUtil
     //   104: aload_0
     //   105: ifnull +7 -> 112
     //   108: aload_0
-    //   109: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   109: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   112: aload_1
     //   113: athrow
     //   114: aload_1
     //   115: ifnull +7 -> 122
     //   118: aload_1
-    //   119: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   119: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   122: return
     //   123: astore_0
     //   124: aload_3
@@ -2521,13 +2413,6 @@ public class BaseImageUtil
     }
   }
   
-  static void a(String paramString)
-  {
-    if ((QLog.isColorLevel()) || (UtilApi.a.a())) {
-      QLog.e("ImageUtil", 2, paramString);
-    }
-  }
-  
   static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
     paramContext = MobileQQ.sMobileQQ.waitAppRuntime(null);
@@ -2544,30 +2429,30 @@ public class BaseImageUtil
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 610	java/io/File
+    //   5: new 541	java/io/File
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 688	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 618	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_0
     //   14: aload_1
-    //   15: invokestatic 887	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)Ljava/io/File;
+    //   15: invokestatic 820	com/tencent/mobileqq/utils/BaseImageUtil:a	(Ljava/lang/String;)Ljava/io/File;
     //   18: astore 5
-    //   20: new 567	java/io/FileInputStream
+    //   20: new 515	java/io/FileInputStream
     //   23: dup
     //   24: aload_0
-    //   25: invokespecial 617	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   25: invokespecial 548	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   28: astore_1
-    //   29: new 891	java/io/FileOutputStream
+    //   29: new 824	java/io/FileOutputStream
     //   32: dup
     //   33: aload 5
-    //   35: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   35: invokespecial 825	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   38: astore_0
     //   39: sipush 2048
     //   42: newarray byte
     //   44: astore_3
     //   45: aload_1
     //   46: aload_3
-    //   47: invokevirtual 1082	java/io/InputStream:read	([B)I
+    //   47: invokevirtual 1005	java/io/InputStream:read	([B)I
     //   50: istore_2
     //   51: iload_2
     //   52: iflt +13 -> 65
@@ -2575,12 +2460,12 @@ public class BaseImageUtil
     //   56: aload_3
     //   57: iconst_0
     //   58: iload_2
-    //   59: invokevirtual 1086	java/io/OutputStream:write	([BII)V
+    //   59: invokevirtual 1009	java/io/OutputStream:write	([BII)V
     //   62: goto -17 -> 45
     //   65: aload_1
-    //   66: invokevirtual 301	java/io/InputStream:close	()V
+    //   66: invokevirtual 236	java/io/InputStream:close	()V
     //   69: aload_0
-    //   70: invokevirtual 908	java/io/OutputStream:close	()V
+    //   70: invokevirtual 841	java/io/OutputStream:close	()V
     //   73: return
     //   74: astore 4
     //   76: aload_0
@@ -2600,12 +2485,12 @@ public class BaseImageUtil
     //   100: aload_1
     //   101: ifnull +10 -> 111
     //   104: aload_1
-    //   105: invokevirtual 301	java/io/InputStream:close	()V
+    //   105: invokevirtual 236	java/io/InputStream:close	()V
     //   108: goto +3 -> 111
     //   111: aload_3
     //   112: ifnull +7 -> 119
     //   115: aload_3
-    //   116: invokevirtual 908	java/io/OutputStream:close	()V
+    //   116: invokevirtual 841	java/io/OutputStream:close	()V
     //   119: aload_0
     //   120: athrow
     //   121: aconst_null
@@ -2615,12 +2500,12 @@ public class BaseImageUtil
     //   126: aload_1
     //   127: ifnull +10 -> 137
     //   130: aload_1
-    //   131: invokevirtual 301	java/io/InputStream:close	()V
+    //   131: invokevirtual 236	java/io/InputStream:close	()V
     //   134: goto +3 -> 137
     //   137: aload_0
     //   138: ifnull +7 -> 145
     //   141: aload_0
-    //   142: invokevirtual 908	java/io/OutputStream:close	()V
+    //   142: invokevirtual 841	java/io/OutputStream:close	()V
     //   145: return
     //   146: astore_0
     //   147: goto -26 -> 121
@@ -2686,23 +2571,23 @@ public class BaseImageUtil
       } else if (paramString2.getHeight() < paramInt2) {
         paramString2.getHeight();
       }
-      a(a(paramString2, paramInt1, paramInt2), new File(paramString1));
+      b(a(paramString2, paramInt1, paramInt2), new File(paramString1));
       return;
     }
     catch (Error paramString1)
     {
-      a(paramString1.toString());
+      f(paramString1.toString());
       return;
     }
     catch (Exception paramString1)
     {
-      a(paramString1.toString());
+      f(paramString1.toString());
     }
   }
   
   private static void a(String paramString, Throwable paramThrowable)
   {
-    if ((QLog.isColorLevel()) || (UtilApi.a.a())) {
+    if ((QLog.isColorLevel()) || (UtilApi.b.c())) {
       QLog.e("ImageUtil", 2, paramString, paramThrowable);
     }
   }
@@ -2711,52 +2596,52 @@ public class BaseImageUtil
   public static boolean a(Bitmap paramBitmap, int paramInt, File paramFile)
   {
     // Byte code:
-    //   0: new 610	java/io/File
+    //   0: new 541	java/io/File
     //   3: dup
     //   4: aload_2
-    //   5: invokevirtual 1024	java/io/File:getParent	()Ljava/lang/String;
-    //   8: invokespecial 688	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokevirtual 956	java/io/File:getParent	()Ljava/lang/String;
+    //   8: invokespecial 618	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_3
     //   12: aload_3
-    //   13: invokevirtual 691	java/io/File:exists	()Z
+    //   13: invokevirtual 621	java/io/File:exists	()Z
     //   16: ifeq +10 -> 26
     //   19: aload_3
-    //   20: invokevirtual 1027	java/io/File:isDirectory	()Z
+    //   20: invokevirtual 959	java/io/File:isDirectory	()Z
     //   23: ifne +8 -> 31
     //   26: aload_3
-    //   27: invokevirtual 704	java/io/File:mkdirs	()Z
+    //   27: invokevirtual 636	java/io/File:mkdirs	()Z
     //   30: pop
     //   31: aload_2
-    //   32: invokevirtual 691	java/io/File:exists	()Z
+    //   32: invokevirtual 621	java/io/File:exists	()Z
     //   35: ifeq +10 -> 45
     //   38: aload_2
-    //   39: invokevirtual 1030	java/io/File:isFile	()Z
+    //   39: invokevirtual 962	java/io/File:isFile	()Z
     //   42: ifne +8 -> 50
     //   45: aload_2
-    //   46: invokevirtual 710	java/io/File:createNewFile	()Z
+    //   46: invokevirtual 642	java/io/File:createNewFile	()Z
     //   49: pop
     //   50: aconst_null
     //   51: astore 4
     //   53: aconst_null
     //   54: astore_3
-    //   55: new 889	java/io/BufferedOutputStream
+    //   55: new 822	java/io/BufferedOutputStream
     //   58: dup
-    //   59: new 891	java/io/FileOutputStream
+    //   59: new 824	java/io/FileOutputStream
     //   62: dup
     //   63: aload_2
-    //   64: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   67: invokespecial 895	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   64: invokespecial 825	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   67: invokespecial 828	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   70: astore_2
     //   71: aload_0
-    //   72: getstatic 901	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   72: getstatic 834	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   75: iload_1
     //   76: aload_2
-    //   77: invokevirtual 905	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   77: invokevirtual 838	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   80: pop
     //   81: aload_2
-    //   82: invokevirtual 1033	java/io/BufferedOutputStream:flush	()V
+    //   82: invokevirtual 965	java/io/BufferedOutputStream:flush	()V
     //   85: aload_2
-    //   86: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   86: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   89: iconst_1
     //   90: ireturn
     //   91: astore_0
@@ -2777,7 +2662,7 @@ public class BaseImageUtil
     //   113: aload_3
     //   114: ifnull +7 -> 121
     //   117: aload_3
-    //   118: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   118: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   121: aload_0
     //   122: athrow
     // Local variable table:
@@ -2796,128 +2681,47 @@ public class BaseImageUtil
     //   55	71	107	java/io/IOException
   }
   
-  public static boolean a(Bitmap paramBitmap, File paramFile)
-  {
-    return b(paramBitmap, 100, paramFile);
-  }
-  
   public static boolean a(ExifInterface paramExifInterface1, ExifInterface paramExifInterface2, boolean paramBoolean)
   {
-    if ((paramExifInterface1 != null) && (paramExifInterface2 != null))
+    if (paramExifInterface1 != null)
     {
-      paramBoolean = PicUploadExifInfoSwitch.getSwitch();
-      String str6 = paramExifInterface1.getAttribute("DateTime");
-      String str7 = paramExifInterface1.getAttribute("Flash");
-      String str8 = paramExifInterface1.getAttribute("FocalLength");
-      String str9 = paramExifInterface1.getAttribute("GPSAltitude");
-      String str10 = paramExifInterface1.getAttribute("GPSAltitudeRef");
-      String str11 = paramExifInterface1.getAttribute("GPSDateStamp");
-      String str12 = paramExifInterface1.getAttribute("GPSLatitude");
-      String str13 = paramExifInterface1.getAttribute("GPSLatitudeRef");
-      String str14 = paramExifInterface1.getAttribute("GPSLongitude");
-      String str15 = paramExifInterface1.getAttribute("GPSLongitudeRef");
-      String str16 = paramExifInterface1.getAttribute("GPSProcessingMethod");
-      String str17 = paramExifInterface1.getAttribute("GPSTimeStamp");
-      Object localObject1 = paramExifInterface1.getAttribute("ImageLength");
-      Object localObject2 = paramExifInterface1.getAttribute("ImageWidth");
-      String str1 = paramExifInterface1.getAttribute("ISOSpeedRatings");
-      String str2 = paramExifInterface1.getAttribute("Make");
-      String str3 = paramExifInterface1.getAttribute("Model");
-      String str4 = paramExifInterface1.getAttribute("WhiteBalance");
-      String str5 = paramExifInterface1.getAttribute("UserComment");
-      paramExifInterface1 = paramExifInterface1.getAttribute("ImageDescription");
-      if ((paramExifInterface1 != null) && (QLog.isColorLevel()))
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("E D = ");
-        localStringBuilder.append(paramExifInterface1);
-        QLog.d("ImageUtil", 2, localStringBuilder.toString());
+      if (paramExifInterface2 == null) {
+        return false;
       }
-      paramExifInterface1 = (ExifInterface)localObject2;
-      if ((str6 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("DateTime", str6);
-      } else {
-        paramExifInterface2.setAttribute("DateTime", "");
+      b(paramExifInterface1, paramExifInterface2, PicUploadExifInfoSwitch.getSwitch());
+      Object localObject = paramExifInterface1.getAttribute("ImageLength");
+      String str = paramExifInterface1.getAttribute("ImageWidth");
+      if (localObject != null) {
+        paramExifInterface2.setAttribute("ImageLength", (String)localObject);
       }
-      if (str7 != null) {
-        paramExifInterface2.setAttribute("Flash", str7);
+      if (str != null) {
+        paramExifInterface2.setAttribute("ImageWidth", str);
       }
-      if (str8 != null) {
-        paramExifInterface2.setAttribute("FocalLength", str8);
-      }
-      if ((str9 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSAltitude", str9);
-      }
-      if ((str10 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSAltitudeRef", str10);
-      }
-      if ((str11 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSDateStamp", str11);
-      }
-      if ((str12 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSLatitude", str12);
-      }
-      if ((str13 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSLatitudeRef", str13);
-      }
-      if ((str14 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSLongitude", str14);
-      }
-      if ((str15 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSLongitudeRef", str15);
-      }
-      if ((str16 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSProcessingMethod", str16);
-      }
-      if ((str17 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("GPSTimeStamp", str17);
-      }
-      if (localObject1 != null) {
-        paramExifInterface2.setAttribute("ImageLength", (String)localObject1);
-      }
-      if (paramExifInterface1 != null) {
-        paramExifInterface2.setAttribute("ImageWidth", paramExifInterface1);
-      }
-      if (str1 != null) {
-        paramExifInterface2.setAttribute("ISOSpeedRatings", str1);
-      }
-      if ((str2 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("Make", str2);
-      }
-      if ((str3 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("Model", str3);
-      }
-      if (str4 != null) {
-        paramExifInterface2.setAttribute("WhiteBalance", str4);
-      }
-      if ((str5 != null) && (paramBoolean)) {
-        paramExifInterface2.setAttribute("UserComment", str5);
-      }
-      if (ZhuoXusManager.a().g()) {
+      if (ZhuoXusManager.a().j()) {
         try
         {
-          localObject2 = new JSONObject();
-          if (localObject1 != null) {
-            ((JSONObject)localObject2).put("ImageLength", localObject1);
+          paramExifInterface1 = new JSONObject();
+          if (localObject != null) {
+            paramExifInterface1.put("ImageLength", localObject);
           }
-          if (paramExifInterface1 != null) {
-            ((JSONObject)localObject2).put("ImageWidth", paramExifInterface1);
+          if (str != null) {
+            paramExifInterface1.put("ImageWidth", str);
           }
-          paramExifInterface2.setAttribute("ImageDescription", ((JSONObject)localObject2).toString());
+          paramExifInterface2.setAttribute("ImageDescription", paramExifInterface1.toString());
           if (QLog.isColorLevel())
           {
-            paramExifInterface1 = new StringBuilder();
-            paramExifInterface1.append("s E D = ");
-            paramExifInterface1.append(((JSONObject)localObject2).toString());
-            QLog.d("ImageUtil", 2, paramExifInterface1.toString());
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("s E D = ");
+            ((StringBuilder)localObject).append(paramExifInterface1.toString());
+            QLog.d("ImageUtil", 2, ((StringBuilder)localObject).toString());
           }
         }
         catch (Throwable paramExifInterface1)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("F s d ");
-          ((StringBuilder)localObject1).append(paramExifInterface1.getMessage());
-          a(((StringBuilder)localObject1).toString());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("F s d ");
+          ((StringBuilder)localObject).append(paramExifInterface1.getMessage());
+          f(((StringBuilder)localObject).toString());
         }
       }
       try
@@ -2930,29 +2734,9 @@ public class BaseImageUtil
         paramExifInterface2 = new StringBuilder();
         paramExifInterface2.append("Failed to save EXIF. ");
         paramExifInterface2.append(paramExifInterface1.getMessage());
-        a(paramExifInterface2.toString());
-        return false;
+        f(paramExifInterface2.toString());
       }
     }
-    return false;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
-      return false;
-    }
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inJustDecodeBounds = true;
-    try
-    {
-      SafeBitmapFactory.decodeFile(paramString, localOptions);
-      if (localOptions.outWidth > 0) {
-        return localOptions.outHeight > 0;
-      }
-      return false;
-    }
-    catch (Exception|OutOfMemoryError paramString) {}
     return false;
   }
   
@@ -3003,44 +2787,6 @@ public class BaseImageUtil
     }
   }
   
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (!paramString1.equals(paramString2)) && (!JpegExifReader.isCrashJpeg(paramString1))) {
-      try
-      {
-        paramString1 = new ExifInterface(paramString1);
-        ExifInterface localExifInterface = new ExifInterface(paramString2);
-        int i = paramString1.getAttributeInt("Orientation", 0);
-        paramString2 = new StringBuilder();
-        paramString2.append(i);
-        paramString2.append("");
-        localExifInterface.setAttribute("Orientation", paramString2.toString());
-        paramString2 = paramString1.getAttribute("DateTime");
-        paramString1 = paramString2;
-        if (paramString2 == null) {
-          paramString1 = "";
-        }
-        localExifInterface.setAttribute("DateTime", paramString1);
-        localExifInterface.saveAttributes();
-        return true;
-      }
-      catch (UnsupportedOperationException paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ImageUtil", 2, "copyExif ", paramString1);
-        }
-        return false;
-      }
-      catch (IOException paramString1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ImageUtil", 2, "copyExif ", paramString1);
-        }
-      }
-    }
-    return false;
-  }
-  
   public static boolean a(String paramString1, String paramString2, String paramString3)
   {
     if (paramString1 != null) {
@@ -3067,70 +2813,6 @@ public class BaseImageUtil
     catch (IOException|NullPointerException|UnsupportedOperationException paramString1) {}
     return false;
     return false;
-  }
-  
-  public static byte[] a(Bitmap paramBitmap)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public static int b(String paramString)
-  {
-    int i = JpegExifReader.readOrientation(paramString);
-    if (i != 3)
-    {
-      if (i != 6)
-      {
-        if (i != 8) {
-          return 0;
-        }
-        return 270;
-      }
-      return 90;
-    }
-    return 180;
-  }
-  
-  public static Bitmap b()
-  {
-    int i;
-    Object localObject;
-    if (QQTheme.f())
-    {
-      i = 2130840410;
-      localObject = "static://DefaultPhoneContactFace_square";
-    }
-    else
-    {
-      localObject = "static://DefaultPhoneContactFace";
-      i = 2130840409;
-    }
-    Bitmap localBitmap1;
-    if (GlobalImageCache.a != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
-    } else {
-      localBitmap1 = null;
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), i);
-      if ((localBitmap1 != null) && (GlobalImageCache.a != null)) {
-        GlobalImageCache.a.put(localObject, localBitmap1);
-      }
-      localBitmap2 = localBitmap1;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("getDefaultPhoneContactBitmap, bitmap=");
-        ((StringBuilder)localObject).append(localBitmap1);
-        QLog.d("ImageUtil", 2, ((StringBuilder)localObject).toString());
-        localBitmap2 = localBitmap1;
-      }
-    }
-    return localBitmap2;
   }
   
   public static Bitmap b(Bitmap paramBitmap)
@@ -3330,9 +3012,49 @@ public class BaseImageUtil
     return null;
   }
   
+  public static Bitmap b(boolean paramBoolean)
+  {
+    int i;
+    Object localObject;
+    if ((!paramBoolean) && (QQTheme.isNowSimpleUI()))
+    {
+      i = 2130841061;
+      localObject = "static://DefaultFace_square";
+    }
+    else
+    {
+      localObject = "static://DefaultFace";
+      i = 2130841060;
+    }
+    Bitmap localBitmap1;
+    if (GlobalImageCache.a != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
+    } else {
+      localBitmap1 = null;
+    }
+    Bitmap localBitmap2 = localBitmap1;
+    if (localBitmap1 == null)
+    {
+      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), i);
+      if ((localBitmap1 != null) && (GlobalImageCache.a != null)) {
+        GlobalImageCache.a.put(localObject, localBitmap1);
+      }
+      localBitmap2 = localBitmap1;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getDefaultFaceBitmap, bitmap=");
+        ((StringBuilder)localObject).append(localBitmap1);
+        QLog.d("ImageUtil", 2, ((StringBuilder)localObject).toString());
+        localBitmap2 = localBitmap1;
+      }
+    }
+    return localBitmap2;
+  }
+  
   public static Drawable b()
   {
-    return new BitmapDrawable(c());
+    return new BitmapDrawable(a());
   }
   
   public static String b(Context paramContext, Uri paramUri)
@@ -3359,56 +3081,143 @@ public class BaseImageUtil
     }
   }
   
+  public static void b(Context paramContext, String paramString)
+  {
+    FileProvider7Helper.savePhotoToSysAlbum(paramContext, paramString);
+  }
+  
+  private static void b(ExifInterface paramExifInterface1, ExifInterface paramExifInterface2, boolean paramBoolean)
+  {
+    String str2 = paramExifInterface1.getAttribute("DateTime");
+    String str3 = paramExifInterface1.getAttribute("Flash");
+    String str4 = paramExifInterface1.getAttribute("FocalLength");
+    String str5 = paramExifInterface1.getAttribute("GPSAltitude");
+    String str6 = paramExifInterface1.getAttribute("GPSAltitudeRef");
+    String str7 = paramExifInterface1.getAttribute("GPSDateStamp");
+    String str8 = paramExifInterface1.getAttribute("GPSLatitude");
+    String str9 = paramExifInterface1.getAttribute("GPSLatitudeRef");
+    String str10 = paramExifInterface1.getAttribute("GPSLongitude");
+    String str11 = paramExifInterface1.getAttribute("GPSLongitudeRef");
+    String str12 = paramExifInterface1.getAttribute("GPSProcessingMethod");
+    String str13 = paramExifInterface1.getAttribute("GPSTimeStamp");
+    String str14 = paramExifInterface1.getAttribute("ISOSpeedRatings");
+    String str15 = paramExifInterface1.getAttribute("Make");
+    String str1 = paramExifInterface1.getAttribute("Model");
+    String str16 = paramExifInterface1.getAttribute("WhiteBalance");
+    String str17 = paramExifInterface1.getAttribute("UserComment");
+    paramExifInterface1 = paramExifInterface1.getAttribute("ImageDescription");
+    if ((paramExifInterface1 != null) && (QLog.isColorLevel()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("E D = ");
+      localStringBuilder.append(paramExifInterface1);
+      QLog.d("ImageUtil", 2, localStringBuilder.toString());
+    }
+    if ((str2 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("DateTime", str2);
+    } else {
+      paramExifInterface2.setAttribute("DateTime", "");
+    }
+    if (str3 != null) {
+      paramExifInterface2.setAttribute("Flash", str3);
+    }
+    if (str4 != null) {
+      paramExifInterface2.setAttribute("FocalLength", str4);
+    }
+    if ((str5 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSAltitude", str5);
+    }
+    if ((str6 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSAltitudeRef", str6);
+    }
+    if ((str7 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSDateStamp", str7);
+    }
+    if ((str8 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSLatitude", str8);
+    }
+    if ((str9 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSLatitudeRef", str9);
+    }
+    if ((str10 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSLongitude", str10);
+    }
+    if ((str11 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSLongitudeRef", str11);
+    }
+    if ((str12 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSProcessingMethod", str12);
+    }
+    if ((str13 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("GPSTimeStamp", str13);
+    }
+    if (str14 != null) {
+      paramExifInterface2.setAttribute("ISOSpeedRatings", str14);
+    }
+    if ((str15 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("Make", str15);
+    }
+    if ((str1 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("Model", str1);
+    }
+    if (str16 != null) {
+      paramExifInterface2.setAttribute("WhiteBalance", str16);
+    }
+    if ((str17 != null) && (paramBoolean)) {
+      paramExifInterface2.setAttribute("UserComment", str17);
+    }
+  }
+  
   /* Error */
   public static boolean b(Bitmap paramBitmap, int paramInt, File paramFile)
   {
     // Byte code:
-    //   0: new 610	java/io/File
+    //   0: new 541	java/io/File
     //   3: dup
     //   4: aload_2
-    //   5: invokevirtual 1024	java/io/File:getParent	()Ljava/lang/String;
-    //   8: invokespecial 688	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokevirtual 956	java/io/File:getParent	()Ljava/lang/String;
+    //   8: invokespecial 618	java/io/File:<init>	(Ljava/lang/String;)V
     //   11: astore_3
     //   12: aload_3
-    //   13: invokevirtual 691	java/io/File:exists	()Z
+    //   13: invokevirtual 621	java/io/File:exists	()Z
     //   16: ifeq +10 -> 26
     //   19: aload_3
-    //   20: invokevirtual 1027	java/io/File:isDirectory	()Z
+    //   20: invokevirtual 959	java/io/File:isDirectory	()Z
     //   23: ifne +8 -> 31
     //   26: aload_3
-    //   27: invokevirtual 704	java/io/File:mkdirs	()Z
+    //   27: invokevirtual 636	java/io/File:mkdirs	()Z
     //   30: pop
     //   31: aload_2
-    //   32: invokevirtual 691	java/io/File:exists	()Z
+    //   32: invokevirtual 621	java/io/File:exists	()Z
     //   35: ifeq +10 -> 45
     //   38: aload_2
-    //   39: invokevirtual 1030	java/io/File:isFile	()Z
+    //   39: invokevirtual 962	java/io/File:isFile	()Z
     //   42: ifne +8 -> 50
     //   45: aload_2
-    //   46: invokevirtual 710	java/io/File:createNewFile	()Z
+    //   46: invokevirtual 642	java/io/File:createNewFile	()Z
     //   49: pop
     //   50: aconst_null
     //   51: astore 4
     //   53: aconst_null
     //   54: astore_3
-    //   55: new 889	java/io/BufferedOutputStream
+    //   55: new 822	java/io/BufferedOutputStream
     //   58: dup
-    //   59: new 891	java/io/FileOutputStream
+    //   59: new 824	java/io/FileOutputStream
     //   62: dup
     //   63: aload_2
-    //   64: invokespecial 892	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   67: invokespecial 895	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   64: invokespecial 825	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   67: invokespecial 828	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   70: astore_2
     //   71: aload_0
-    //   72: getstatic 919	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   72: getstatic 852	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   75: iload_1
     //   76: aload_2
-    //   77: invokevirtual 905	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   77: invokevirtual 838	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   80: pop
     //   81: aload_2
-    //   82: invokevirtual 1033	java/io/BufferedOutputStream:flush	()V
+    //   82: invokevirtual 965	java/io/BufferedOutputStream:flush	()V
     //   85: aload_2
-    //   86: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   86: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   89: iconst_1
     //   90: ireturn
     //   91: astore_0
@@ -3429,7 +3238,7 @@ public class BaseImageUtil
     //   113: aload_3
     //   114: ifnull +7 -> 121
     //   117: aload_3
-    //   118: invokevirtual 1034	java/io/BufferedOutputStream:close	()V
+    //   118: invokevirtual 966	java/io/BufferedOutputStream:close	()V
     //   121: aload_0
     //   122: athrow
     // Local variable table:
@@ -3448,68 +3257,94 @@ public class BaseImageUtil
     //   55	71	107	java/io/IOException
   }
   
+  public static boolean b(Bitmap paramBitmap, File paramFile)
+  {
+    return b(paramBitmap, 100, paramFile);
+  }
+  
   public static boolean b(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if (!FileUtils.fileExistsAndNotEmpty(paramString)) {
+      return false;
+    }
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    try
     {
-      boolean bool = GifDrawable.isGifFile(new File(paramString));
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder();
-        paramString.append("isGifFile result:");
-        paramString.append(bool);
-        QLog.d("_photo", 2, paramString.toString());
+      SafeBitmapFactory.decodeFile(paramString, localOptions);
+      if (localOptions.outWidth > 0) {
+        return localOptions.outHeight > 0;
       }
-      return bool;
+      return false;
+    }
+    catch (Exception|OutOfMemoryError paramString) {}
+    return false;
+  }
+  
+  public static boolean b(String paramString1, String paramString2)
+  {
+    if ((paramString1 != null) && (!paramString1.equals(paramString2)) && (!JpegExifReader.isCrashJpeg(paramString1))) {
+      try
+      {
+        paramString1 = new ExifInterface(paramString1);
+        ExifInterface localExifInterface = new ExifInterface(paramString2);
+        int i = paramString1.getAttributeInt("Orientation", 0);
+        paramString2 = new StringBuilder();
+        paramString2.append(i);
+        paramString2.append("");
+        localExifInterface.setAttribute("Orientation", paramString2.toString());
+        paramString2 = paramString1.getAttribute("DateTime");
+        paramString1 = paramString2;
+        if (paramString2 == null) {
+          paramString1 = "";
+        }
+        localExifInterface.setAttribute("DateTime", paramString1);
+        localExifInterface.saveAttributes();
+        return true;
+      }
+      catch (UnsupportedOperationException paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ImageUtil", 2, "copyExif ", paramString1);
+        }
+        return false;
+      }
+      catch (IOException paramString1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ImageUtil", 2, "copyExif ", paramString1);
+        }
+      }
     }
     return false;
   }
   
-  public static int c(String paramString)
-  {
-    if (PhotoIncompatibleBase.b(paramString))
-    {
-      int i = Utils.getHeifOrientation(paramString);
-      if (i != 3)
-      {
-        if (i != 6)
-        {
-          if (i != 8) {
-            return 0;
-          }
-          return 270;
-        }
-        return 90;
-      }
-      return 180;
-    }
-    return JpegExifReader.getRotationDegree(paramString);
-  }
-  
   public static Bitmap c()
   {
-    Bitmap localBitmap1;
+    Bitmap localBitmap;
     if (GlobalImageCache.a != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.a.get("static://DefaultSubAccountFace");
+      localBitmap = (Bitmap)GlobalImageCache.a.get("static://DefaultPhoneContactFace");
     } else {
-      localBitmap1 = null;
+      localBitmap = null;
     }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
+    Object localObject = localBitmap;
+    if (localBitmap == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), 2130840427);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
+      localBitmap = BitmapManager.b(BaseApplication.getContext().getResources(), 2130841162);
+      if ((localBitmap != null) && (GlobalImageCache.a != null)) {
+        GlobalImageCache.a.put("static://DefaultPhoneContactFace", localBitmap);
+      }
+      localObject = localBitmap;
+      if (QLog.isColorLevel())
       {
-        localBitmap2 = localBitmap1;
-        if (GlobalImageCache.a != null)
-        {
-          GlobalImageCache.a.put("static://DefaultSubAccountFace", localBitmap1, (byte)0);
-          localBitmap2 = localBitmap1;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getDefaultPhoneContactBitmap, bitmap=");
+        ((StringBuilder)localObject).append(localBitmap);
+        QLog.d("ImageUtil", 2, ((StringBuilder)localObject).toString());
+        localObject = localBitmap;
       }
     }
-    return localBitmap2;
+    return localObject;
   }
   
   public static Bitmap c(Bitmap paramBitmap)
@@ -3519,6 +3354,31 @@ public class BaseImageUtil
     paramBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
     paramBitmap.setPixels(arrayOfInt, 0, paramBitmap.getWidth(), 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
     return paramBitmap;
+  }
+  
+  public static Bitmap c(Bitmap paramBitmap, float paramFloat)
+  {
+    int k = paramBitmap.getWidth();
+    int m = paramBitmap.getHeight();
+    float f1 = k;
+    float f2 = m;
+    float f3 = 1.0F * f1 / f2;
+    if (f3 == paramFloat) {
+      return paramBitmap;
+    }
+    int j;
+    int i;
+    if (f3 > paramFloat)
+    {
+      j = (int)(f2 * paramFloat);
+      i = m;
+    }
+    else
+    {
+      i = (int)(f1 / paramFloat);
+      j = k;
+    }
+    return Bitmap.createBitmap(paramBitmap, (k - j) / 2, (m - i) / 2, j, i);
   }
   
   public static Bitmap c(Bitmap paramBitmap, float paramFloat, int paramInt1, int paramInt2)
@@ -3670,67 +3530,79 @@ public class BaseImageUtil
     return null;
   }
   
-  public static Drawable c()
-  {
-    return new BitmapDrawable(d());
-  }
-  
   public static boolean c(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      boolean bool = GifDrawable.isGifFile(new File(paramString));
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("isGifFile result:");
+        paramString.append(bool);
+        QLog.d("_photo", 2, paramString.toString());
+      }
+      return bool;
+    }
+    return false;
+  }
+  
+  public static int d(String paramString)
+  {
+    int k = 0;
+    StringBuilder localStringBuilder;
     try
     {
-      paramString = new FileInputStream(paramString);
-      bool1 = bool2;
-      bool2 = "jpg".equals(a(paramString));
-      bool1 = bool2;
-      paramString.close();
-      return bool2;
+      paramString = Class.forName("android.media.ExifInterface").getConstructor(new Class[] { String.class }).newInstance(new Object[] { paramString });
     }
     catch (Exception paramString)
     {
-      a(paramString.toString());
-    }
-    return bool1;
-  }
-  
-  public static Bitmap d()
-  {
-    int i;
-    String str;
-    if (QQTheme.f())
-    {
-      i = 2130840322;
-      str = "static://DefaultTroopFace_square";
-    }
-    else
-    {
-      str = "static://DefaultTroopFace";
-      i = 2130840582;
-    }
-    Bitmap localBitmap1;
-    if (GlobalImageCache.a != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.a.get(str);
-    } else {
-      localBitmap1 = null;
-    }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
-    {
-      localBitmap1 = c(BitmapManager.b(BaseApplication.getContext().getResources(), i), 50, 50);
-      localBitmap2 = localBitmap1;
-      if (localBitmap1 != null)
+      if (QLog.isColorLevel())
       {
-        localBitmap2 = localBitmap1;
-        if (GlobalImageCache.a != null)
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("e = ");
+        localStringBuilder.append(paramString.toString());
+        QLog.e("reflection", 2, localStringBuilder.toString());
+      }
+      paramString = null;
+    }
+    int j = k;
+    if (paramString != null)
+    {
+      int i;
+      try
+      {
+        i = ((Integer)paramString.getClass().getMethod("getAttributeInt", new Class[] { String.class, Integer.TYPE }).invoke(paramString, new Object[] { "Orientation", Integer.valueOf(-1) })).intValue();
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
         {
-          GlobalImageCache.a.put(str, localBitmap1);
-          localBitmap2 = localBitmap1;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("e = ");
+          localStringBuilder.append(paramString.toString());
+          QLog.e("reflection", 2, localStringBuilder.toString());
         }
+        i = 0;
+      }
+      j = k;
+      if (i != -1)
+      {
+        if (i != 3)
+        {
+          if (i != 6)
+          {
+            if (i != 8) {
+              return 0;
+            }
+            return 270;
+          }
+          return 90;
+        }
+        j = 180;
       }
     }
-    return localBitmap2;
+    return j;
   }
   
   public static Bitmap d(Bitmap paramBitmap, float paramFloat, int paramInt1, int paramInt2)
@@ -3850,49 +3722,37 @@ public class BaseImageUtil
     return new BitmapDrawable(e());
   }
   
+  public static byte[] d(Bitmap paramBitmap)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
+    return localByteArrayOutputStream.toByteArray();
+  }
+  
   public static Bitmap e()
   {
-    int i;
-    String str;
-    if (QQTheme.f())
-    {
-      i = 2130840322;
-      str = "static://DefaultDiscusionFace_square";
-    }
-    else
-    {
-      str = "static://DefaultDiscusionFace";
-      i = 2130840582;
-    }
-    Object localObject1;
+    Bitmap localBitmap1;
     if (GlobalImageCache.a != null) {
-      localObject1 = (Bitmap)GlobalImageCache.a.get(str);
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get("static://DefaultSubAccountFace");
     } else {
-      localObject1 = null;
+      localBitmap1 = null;
     }
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {}
-    try
+    Bitmap localBitmap2 = localBitmap1;
+    if (localBitmap1 == null)
     {
-      localObject2 = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), i);
-      localObject1 = localObject2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      label66:
-      break label66;
-    }
-    localObject2 = localObject1;
-    if (localObject1 != null)
-    {
-      localObject2 = localObject1;
-      if (GlobalImageCache.a != null)
+      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), 2130841183);
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 != null)
       {
-        GlobalImageCache.a.put(str, localObject1);
-        localObject2 = localObject1;
+        localBitmap2 = localBitmap1;
+        if (GlobalImageCache.a != null)
+        {
+          GlobalImageCache.a.put("static://DefaultSubAccountFace", localBitmap1, (byte)0);
+          localBitmap2 = localBitmap1;
+        }
       }
     }
-    return localObject2;
+    return localBitmap2;
   }
   
   public static Bitmap e(Bitmap paramBitmap, float paramFloat, int paramInt1, int paramInt2)
@@ -3929,22 +3789,163 @@ public class BaseImageUtil
     return null;
   }
   
-  public static Drawable e()
+  public static boolean e(String paramString)
   {
-    return new BitmapDrawable(f());
-  }
-  
-  public static Bitmap f()
-  {
-    return a(false);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
+    {
+      paramString = new FileInputStream(paramString);
+      bool1 = bool2;
+      bool2 = "jpg".equals(a(paramString));
+      bool1 = bool2;
+      paramString.close();
+      return bool2;
+    }
+    catch (Exception paramString)
+    {
+      f(paramString.toString());
+    }
+    return bool1;
   }
   
   public static Drawable f()
   {
-    return new BitmapDrawable(h());
+    return new BitmapDrawable(g());
+  }
+  
+  static void f(String paramString)
+  {
+    if ((QLog.isColorLevel()) || (UtilApi.b.c())) {
+      QLog.e("ImageUtil", 2, paramString);
+    }
+  }
+  
+  public static int g(String paramString)
+  {
+    int i = JpegExifReader.readOrientation(paramString);
+    if (i != 3)
+    {
+      if (i != 6)
+      {
+        if (i != 8) {
+          return 0;
+        }
+        return 270;
+      }
+      return 90;
+    }
+    return 180;
   }
   
   public static Bitmap g()
+  {
+    int i;
+    String str;
+    if (QQTheme.isNowSimpleUI())
+    {
+      i = 2130841061;
+      str = "static://DefaultTroopFace_square";
+    }
+    else
+    {
+      str = "static://DefaultTroopFace";
+      i = 2130841348;
+    }
+    Bitmap localBitmap1;
+    if (GlobalImageCache.a != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get(str);
+    } else {
+      localBitmap1 = null;
+    }
+    Bitmap localBitmap2 = localBitmap1;
+    if (localBitmap1 == null)
+    {
+      localBitmap1 = c(BitmapManager.b(BaseApplication.getContext().getResources(), i), 50, 50);
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 != null)
+      {
+        localBitmap2 = localBitmap1;
+        if (GlobalImageCache.a != null)
+        {
+          GlobalImageCache.a.put(str, localBitmap1);
+          localBitmap2 = localBitmap1;
+        }
+      }
+    }
+    return localBitmap2;
+  }
+  
+  public static int h(String paramString)
+  {
+    if (PhotoIncompatibleBase.b(paramString))
+    {
+      int i = Utils.getHeifOrientation(paramString);
+      if (i != 3)
+      {
+        if (i != 6)
+        {
+          if (i != 8) {
+            return 0;
+          }
+          return 270;
+        }
+        return 90;
+      }
+      return 180;
+    }
+    return JpegExifReader.getRotationDegree(paramString);
+  }
+  
+  public static Drawable h()
+  {
+    return new BitmapDrawable(i());
+  }
+  
+  public static Bitmap i()
+  {
+    Object localObject1;
+    if (GlobalImageCache.a != null) {
+      localObject1 = (Bitmap)GlobalImageCache.a.get("static://DefaultDiscusionFace");
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {}
+    try
+    {
+      localObject2 = BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), 2130841348);
+      localObject1 = localObject2;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label45:
+      break label45;
+    }
+    localObject2 = localObject1;
+    if (localObject1 != null)
+    {
+      localObject2 = localObject1;
+      if (GlobalImageCache.a != null)
+      {
+        GlobalImageCache.a.put("static://DefaultDiscusionFace", localObject1);
+        localObject2 = localObject1;
+      }
+    }
+    return localObject2;
+  }
+  
+  public static Drawable j()
+  {
+    return new BitmapDrawable(k());
+  }
+  
+  public static Bitmap k()
+  {
+    return b(true);
+  }
+  
+  public static Bitmap l()
   {
     Bitmap localBitmap1;
     if (GlobalImageCache.a != null) {
@@ -3955,7 +3956,7 @@ public class BaseImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), 2130850893);
+      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), 2130852745);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -3970,49 +3971,42 @@ public class BaseImageUtil
     return localBitmap2;
   }
   
-  public static Bitmap h()
+  public static Drawable m()
   {
-    int i;
-    Object localObject;
-    if (QQTheme.f())
-    {
-      i = 2130840324;
-      localObject = "static://DefaultFace140_140_square";
-    }
-    else
-    {
-      localObject = "static://DefaultFace140_140";
-      i = 2130840323;
-    }
-    Bitmap localBitmap1;
+    return new BitmapDrawable(n());
+  }
+  
+  public static Bitmap n()
+  {
+    Bitmap localBitmap;
     if (GlobalImageCache.a != null) {
-      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
+      localBitmap = (Bitmap)GlobalImageCache.a.get("static://DefaultFace140_140");
     } else {
-      localBitmap1 = null;
+      localBitmap = null;
     }
-    Bitmap localBitmap2 = localBitmap1;
-    if (localBitmap1 == null)
+    Object localObject = localBitmap;
+    if (localBitmap == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), i);
-      if ((localBitmap1 != null) && (GlobalImageCache.a != null)) {
-        GlobalImageCache.a.put(localObject, localBitmap1);
+      localBitmap = BitmapManager.b(BaseApplication.getContext().getResources(), 2130841062);
+      if ((localBitmap != null) && (GlobalImageCache.a != null)) {
+        GlobalImageCache.a.put("static://DefaultFace140_140", localBitmap);
       }
-      localBitmap2 = localBitmap1;
+      localObject = localBitmap;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("getDefaultFaceBitmap140_140, bitmap=");
-        ((StringBuilder)localObject).append(localBitmap1);
+        ((StringBuilder)localObject).append(localBitmap);
         QLog.d("ImageUtil", 2, ((StringBuilder)localObject).toString());
-        localBitmap2 = localBitmap1;
+        localObject = localBitmap;
       }
     }
-    return localBitmap2;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BaseImageUtil
  * JD-Core Version:    0.7.0.1
  */

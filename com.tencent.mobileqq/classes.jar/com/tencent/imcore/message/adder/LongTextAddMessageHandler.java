@@ -20,7 +20,7 @@ public class LongTextAddMessageHandler
     if ((!paramMessageRecord.isSendFromLocal()) && ((paramMessageRecord.msgtype == -1051) || ((paramMessageRecord.isLongMsg()) && (paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1))))
     {
       LongTextMsgManager localLongTextMsgManager = (LongTextMsgManager)paramQQAppInterface.getManager(QQManagerFactory.LONG_TEXT_MSG_MANAGER);
-      if (paramQQAppInterface.mAutomator.a() == 1)
+      if (paramQQAppInterface.mAutomator.f() == 1)
       {
         localLongTextMsgManager.b(paramQQAppInterface, paramMessageRecord);
         return;
@@ -44,7 +44,7 @@ public class LongTextAddMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.adder.LongTextAddMessageHandler
  * JD-Core Version:    0.7.0.1
  */

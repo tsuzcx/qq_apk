@@ -34,14 +34,14 @@ import com.tencent.mobileqq.wifi.FreeWifiHelper;
 public class QFileSendBarManager
   extends QFileCustomBottomBarManager
 {
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new QFileSendBarManager.1(this);
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
+  private TextView g;
+  private TextView h;
+  private QQProgressDialog i;
+  private int j;
+  private String k;
+  private int l;
+  private String m;
+  private View.OnClickListener n = new QFileSendBarManager.1(this);
   
   public QFileSendBarManager(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
@@ -51,39 +51,39 @@ public class QFileSendBarManager
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    if (this.i != null)
     {
       g();
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(SplashActivity.sTopActivity, SplashActivity.sTopActivity.getResources().getDimensionPixelSize(2131299168));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131713695));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.i = new QQProgressDialog(SplashActivity.sTopActivity, SplashActivity.sTopActivity.getResources().getDimensionPixelSize(2131299920));
+      this.i.setCancelable(false);
+      this.i.a(HardCodeUtil.a(2131911238));
+      this.i.show();
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    if (!this.i.isShowing()) {
+      this.i.show();
     }
   }
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377187));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371932));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.g = ((TextView)this.c.a(2131445568));
+    this.h = ((TextView)this.c.a(2131439377));
+    this.g.setOnClickListener(this.n);
   }
   
   private void e()
   {
     if (!AppNetConnInfo.isNetSupport())
     {
-      FMToastUtil.a(2131694395);
+      FMToastUtil.a(2131892074);
       return;
     }
-    if ((FileManagerUtil.a()) && (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedLocalFileSize() > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
+    if ((FileManagerUtil.b()) && (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedLocalFileSize() > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      FileManagerUtil.a(true, this.jdField_a_of_type_AndroidContentContext, new QFileSendBarManager.2(this), this.jdField_b_of_type_Int);
+      FileManagerUtil.a(true, this.a, new QFileSendBarManager.2(this), this.l);
       return;
     }
     c();
@@ -91,21 +91,21 @@ public class QFileSendBarManager
   
   private void f()
   {
-    if (TroopFileUtils.a(this.jdField_a_of_type_AndroidContentContext) == 0)
+    if (TroopFileUtils.a(this.a) == 0)
     {
-      TroopFileError.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131697616));
+      TroopFileError.a(this.a, this.a.getString(2131895389));
       c();
       return;
     }
-    if (FileManagerUtil.a())
+    if (FileManagerUtil.b())
     {
-      if (FreeWifiHelper.a((Activity)this.jdField_a_of_type_AndroidContentContext, 2, new QFileSendBarManager.3(this)))
+      if (FreeWifiHelper.a((Activity)this.a, 2, new QFileSendBarManager.3(this)))
       {
         Object localObject = new QFileSendBarManager.4(this);
-        String str = this.jdField_a_of_type_AndroidContentContext.getString(2131697403);
-        localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_AndroidContentContext.getString(2131697613), str, 2131690728, 2131697809, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
-        if ((KingCardProcessor.c().b.jdField_a_of_type_Boolean) && (!TMSManager.a().b())) {
-          ((QQCustomDialog)localObject).setMessageWithoutAutoLink(KingCardProcessor.c().b.a(this.jdField_a_of_type_AndroidContentContext, str));
+        String str = this.a.getString(2131895176);
+        localObject = DialogUtil.a(this.a, 230, this.a.getString(2131895386), str, 2131887648, 2131895582, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+        if ((KingCardProcessor.e().b.a) && (!TMSManager.a().d())) {
+          ((QQCustomDialog)localObject).setMessageWithoutAutoLink(KingCardProcessor.e().b.a(this.a, str));
         }
         ((QQCustomDialog)localObject).show();
       }
@@ -119,9 +119,9 @@ public class QFileSendBarManager
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      if ((this.i != null) && (this.i.isShowing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+        this.i.cancel();
         return;
       }
     }
@@ -134,17 +134,17 @@ public class QFileSendBarManager
   public void a()
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692335));
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692531));
+    ((StringBuilder)localObject1).append(this.a.getString(2131889323));
+    ((StringBuilder)localObject1).append(this.a.getString(2131889554));
     ((StringBuilder)localObject1).append(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount());
-    ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692532));
+    ((StringBuilder)localObject1).append(this.a.getString(2131889555));
     String str = ((StringBuilder)localObject1).toString();
-    long l = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedFileSize();
-    if (l > 0L)
+    long l1 = ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedFileSize();
+    if (l1 > 0L)
     {
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692333));
-      ((StringBuilder)localObject1).append(FileUtil.a(l));
+      ((StringBuilder)localObject1).append(this.a.getString(2131889321));
+      ((StringBuilder)localObject1).append(FileUtil.a(l1));
       localObject1 = ((StringBuilder)localObject1).toString();
     }
     else
@@ -155,28 +155,28 @@ public class QFileSendBarManager
     if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCloudFileSize() > 0L)
     {
       localObject2 = localObject1;
-      if (!QQFileManagerUtil.a(this.jdField_a_of_type_AndroidContentContext))
+      if (!QQFileManagerUtil.c(this.a))
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append((String)localObject1);
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692334));
+        ((StringBuilder)localObject2).append(this.a.getString(2131889322));
         ((StringBuilder)localObject2).append(FileUtil.a(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCloudFileSize()));
         localObject2 = ((StringBuilder)localObject2).toString();
       }
     }
     localObject1 = str;
-    if (this.jdField_b_of_type_Int == 1101)
+    if (this.l == 1101)
     {
-      localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694583);
+      localObject1 = this.a.getResources().getString(2131892267);
       localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692333));
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692531));
+      ((StringBuilder)localObject2).append(this.a.getString(2131889321));
+      ((StringBuilder)localObject2).append(this.a.getString(2131889554));
       ((StringBuilder)localObject2).append(((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount());
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidContentContext.getString(2131692532));
+      ((StringBuilder)localObject2).append(this.a.getString(2131889555));
       localObject2 = ((StringBuilder)localObject2).toString();
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-    localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.g.setText((CharSequence)localObject1);
+    localObject1 = this.g;
     boolean bool;
     if (((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).getSelectedCount() > 0L) {
       bool = true;
@@ -184,21 +184,21 @@ public class QFileSendBarManager
       bool = false;
     }
     ((TextView)localObject1).setEnabled(bool);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
+    this.h.setText((CharSequence)localObject2);
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_busi_type");
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_peer_type", -1);
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_exparams_send_uin");
+      this.j = this.d.getInt("qfile_search_param_exparams_busi_type");
+      this.k = this.d.getString("qfile_search_param_ex_params_target_uin");
+      this.l = this.d.getInt("qfile_search_param_exparams_peer_type", -1);
+      this.m = this.d.getString("qfile_search_param_exparams_send_uin");
     }
     if (paramBundle.getInt("file_choose_extension_handle_type", -1) == 1) {
-      this.jdField_b_of_type_Int = 1101;
+      this.l = 1101;
     }
   }
   
@@ -209,13 +209,13 @@ public class QFileSendBarManager
   
   public void c()
   {
-    a(2131694882);
+    a(2131892585);
     new Handler().postDelayed(new QFileSendBarManager.5(this), 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager
  * JD-Core Version:    0.7.0.1
  */

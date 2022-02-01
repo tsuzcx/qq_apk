@@ -4,12 +4,12 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
 import com.tencent.mobileqq.mqq.api.IAccountRuntime;
 import com.tencent.mobileqq.qcircle.api.constant.QCircleAlphaUserReportDataBuilder;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qcircle.cooperation.config.QCircleConfigHelper;
+import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QUA;
 import feedcloud.FeedCloudCommon.Entry;
 import java.util.ArrayList;
@@ -93,11 +93,10 @@ public class QCircleAlphaUserReporter
     catch (JSONException paramString)
     {
       paramString.printStackTrace();
-      i = RFLog.USR;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("convertListFromStr exception:");
       localStringBuilder.append(paramString.toString());
-      RFLog.e("QCircleReportHelper_QCircleAlphaUserReporter", i, localStringBuilder.toString());
+      QLog.e("QCircleReportHelper_QCircleAlphaUserReporter", 1, localStringBuilder.toString());
     }
   }
   
@@ -127,7 +126,7 @@ public class QCircleAlphaUserReporter
   
   private static void initNeedClientReportSuccessRateCmdList()
   {
-    String str = QCircleConfigHelper.a();
+    String str = QCircleConfigHelper.au();
     if (!TextUtils.isEmpty(str)) {
       updateCmdList(convertStrToList(str));
     }
@@ -138,16 +137,15 @@ public class QCircleAlphaUserReporter
     if ("FeedCloudSvr.trpc.circlereport.clientreport.ClientReport.DataReport".equalsIgnoreCase(paramQCircleAlphaUserReportDataBuilder.cmd)) {
       return;
     }
-    if (!QCircleConfigHelper.b()) {
+    if (!QCircleConfigHelper.as()) {
       return;
     }
     if (!sCmdLists.contains(paramQCircleAlphaUserReportDataBuilder.cmd))
     {
-      int i = RFLog.CLR;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportCmdSuccessRateEvent cmd miss hit,input cmdName:");
       localStringBuilder.append(paramQCircleAlphaUserReportDataBuilder.cmd);
-      RFLog.e("QCircleAlphaUserReporter", i, localStringBuilder.toString());
+      QLog.e("QCircleAlphaUserReporter", 2, localStringBuilder.toString());
       return;
     }
     doClientLogReport(paramQCircleAlphaUserReportDataBuilder, "client_report_cmd_success_rate_event");
@@ -155,6 +153,7 @@ public class QCircleAlphaUserReporter
   
   public static void reportLaunchPeriodEvent(QCircleAlphaUserReportDataBuilder paramQCircleAlphaUserReportDataBuilder)
   {
+    QLog.d("QCircleAlphaUserReporter", 1, new Object[] { "reportLaunchPeriodEvent: type=", paramQCircleAlphaUserReportDataBuilder.type, ",state=", paramQCircleAlphaUserReportDataBuilder.state, ",attachInfo=", paramQCircleAlphaUserReportDataBuilder.attachInfo });
     doClientLogReport(paramQCircleAlphaUserReportDataBuilder, "client_launch_period_duration_event");
   }
   
@@ -174,17 +173,16 @@ public class QCircleAlphaUserReporter
     {
       sCmdLists.clear();
       sCmdLists.addAll(paramList);
-      int i = RFLog.CLR;
       paramList = new StringBuilder();
       paramList.append("updateCmdList->");
       paramList.append(sCmdLists.toString());
-      RFLog.d("QCircleAlphaUserReporter", i, paramList.toString());
+      QLog.d("QCircleAlphaUserReporter", 2, paramList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleAlphaUserReporter
  * JD-Core Version:    0.7.0.1
  */

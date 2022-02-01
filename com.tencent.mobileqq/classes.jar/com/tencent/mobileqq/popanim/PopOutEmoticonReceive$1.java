@@ -9,14 +9,14 @@ class PopOutEmoticonReceive$1
   {
     if (PopOutEmoticonReceive.a(this.this$0))
     {
-      PopOutEmoticonReceive.a(this.this$0).stopShakeAnimation();
+      PopOutEmoticonReceive.b(this.this$0).stopShakeAnimation();
       PopOutEmoticonReceive.a(this.this$0, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.popanim.PopOutEmoticonReceive.1
  * JD-Core Version:    0.7.0.1
  */

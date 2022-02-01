@@ -21,18 +21,18 @@ class LiteMutiPicViewerActivity$1
   
   public void a()
   {
-    LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setPaused(false);
-    if ((LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getGroupType() == -2000) && (!LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).isSingle())) {
-      DataLineReportUtil.p(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
+    LiteMutiPicViewerActivity.a(this.b).setPaused(false);
+    if ((LiteMutiPicViewerActivity.a(this.b).getGroupType() == -2000) && (!LiteMutiPicViewerActivity.a(this.b).isSingle())) {
+      DataLineReportUtil.p(this.b.app);
     }
-    Iterator localIterator = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).values().iterator();
+    Iterator localIterator = LiteMutiPicViewerActivity.a(this.b).values().iterator();
     Object localObject2 = null;
     Object localObject1 = null;
     while (localIterator.hasNext())
     {
       DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
       Object localObject3 = DatalineFilesAdapter.a(localDataLineMsgRecord);
-      if (((DLFileInfo)localObject3).a == 1)
+      if (((DLFileInfo)localObject3).b == 1)
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -41,13 +41,13 @@ class LiteMutiPicViewerActivity$1
         ((ArrayList)localObject3).add(localDataLineMsgRecord);
         localObject2 = localObject3;
       }
-      else if ((((DLFileInfo)localObject3).a == 4) || (((DLFileInfo)localObject3).a == 2))
+      else if ((((DLFileInfo)localObject3).b == 4) || (((DLFileInfo)localObject3).b == 2))
       {
         if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
           if (DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
-            DataLineReportUtil.d(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
+            DataLineReportUtil.d(this.b.app);
           } else {
-            DataLineReportUtil.e(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
+            DataLineReportUtil.e(this.b.app);
           }
         }
         localObject3 = localObject1;
@@ -57,17 +57,17 @@ class LiteMutiPicViewerActivity$1
         ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
         int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
         localDataLineMsgRecord.fileMsgStatus = 0L;
-        this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
+        this.b.app.getMessageFacade().d(i).f(localDataLineMsgRecord.msgId);
         localObject1 = localObject3;
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localObject2, true);
+      this.a.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localObject1);
+      this.a.b(localObject1);
     }
-    LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
+    LiteMutiPicViewerActivity.b(this.b);
   }
   
   public void b() {}

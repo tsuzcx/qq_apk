@@ -17,20 +17,20 @@ class VirtualCreatorDataSourceImpl$1
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uint64_appid", this.jdField_a_of_type_Long);
-      localJSONObject.put("str_nick", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("str_head_id", this.b);
+      localJSONObject.put("uint64_appid", this.a);
+      localJSONObject.put("str_nick", this.b);
+      localJSONObject.put("str_head_id", this.c);
     }
     catch (JSONException localJSONException)
     {
       SSOLog.a("VirtualCreatorPresenter", "createVirtual.e:", localJSONException);
     }
-    OpenSdkVirtualUtil.a("oidb_0xd17_1", this.jdField_a_of_type_ComTencentOpenModelAccountInfo, localJSONObject.toString(), this.jdField_a_of_type_ComTencentOpenAgentAuthorityCGICallback, this.jdField_a_of_type_Boolean);
+    OpenSdkVirtualUtil.a("oidb_0xd17_1", this.d, localJSONObject.toString(), this.e, this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.model.VirtualCreatorDataSourceImpl.1
  * JD-Core Version:    0.7.0.1
  */

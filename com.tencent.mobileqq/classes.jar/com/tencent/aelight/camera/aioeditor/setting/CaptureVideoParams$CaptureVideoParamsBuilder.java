@@ -2,29 +2,23 @@ package com.tencent.aelight.camera.aioeditor.setting;
 
 public class CaptureVideoParams$CaptureVideoParamsBuilder
 {
-  public int a;
-  public boolean a;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int = 1;
-  private boolean jdField_c_of_type_Boolean = true;
-  private boolean d = false;
-  
-  public CaptureVideoParams$CaptureVideoParamsBuilder()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public boolean a = true;
+  public int b = 0;
+  private boolean c = true;
+  private boolean d = true;
+  private int e = 0;
+  private int f = 1;
+  private boolean g = false;
   
   public CaptureVideoParamsBuilder a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
     return this;
   }
   
   public CaptureVideoParamsBuilder a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
     return this;
   }
   
@@ -35,31 +29,31 @@ public class CaptureVideoParams$CaptureVideoParamsBuilder
   
   public CaptureVideoParamsBuilder b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.f = paramInt;
     return this;
   }
   
   public CaptureVideoParamsBuilder b(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
   }
   
   public CaptureVideoParamsBuilder c(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
     return this;
   }
   
   public CaptureVideoParamsBuilder c(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.g = paramBoolean;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.setting.CaptureVideoParams.CaptureVideoParamsBuilder
  * JD-Core Version:    0.7.0.1
  */

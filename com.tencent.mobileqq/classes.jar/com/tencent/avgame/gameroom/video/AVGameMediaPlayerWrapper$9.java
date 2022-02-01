@@ -11,7 +11,7 @@ class AVGameMediaPlayerWrapper$9
   {
     if (AVGameMediaPlayerWrapper.a(this.this$0) != null)
     {
-      if (!AVGameMediaPlayerWrapper.c(this.this$0)) {
+      if (!AVGameMediaPlayerWrapper.i(this.this$0)) {
         return;
       }
       AVGameMediaPlayerWrapper.a(this.this$0).start();

@@ -15,12 +15,12 @@ class ForwardNewVersionDialog$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ForwardNewVersionDialog.a(this.a).setImageResource(2130840141);
-    ForwardNewVersionDialog.a(this.a).setTag(Integer.valueOf(2130840141));
-    if (ForwardNewVersionDialog.a(this.a))
+    ForwardNewVersionDialog.c(this.a).setImageResource(2130840446);
+    ForwardNewVersionDialog.c(this.a).setTag(Integer.valueOf(2130840446));
+    if (ForwardNewVersionDialog.d(this.a))
     {
-      ForwardNewVersionDialog.a(this.a);
-      ForwardNewVersionDialog.a(this.a).removeView(ForwardNewVersionDialog.a(this.a).getView());
+      ForwardNewVersionDialog.e(this.a);
+      ForwardNewVersionDialog.g(this.a).removeView(ForwardNewVersionDialog.f(this.a).getView());
       ForwardNewVersionDialog.a(this.a, false);
       paramView = this.a.getWindow().getAttributes();
       paramView.y = 0;
@@ -31,7 +31,7 @@ class ForwardNewVersionDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardNewVersionDialog.2
  * JD-Core Version:    0.7.0.1
  */

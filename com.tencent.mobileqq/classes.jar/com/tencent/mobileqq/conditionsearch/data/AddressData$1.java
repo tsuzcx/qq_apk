@@ -15,14 +15,14 @@ class AddressData$1
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("条件搜素配置文件存在不同code对应相同name的问题！！！ name = ");
       localStringBuilder.append(this.a);
-      QQToast.a(localBaseApplicationImpl, localStringBuilder.toString(), 1).a();
+      QQToast.makeText(localBaseApplicationImpl, localStringBuilder.toString(), 1).show();
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.AddressData.1
  * JD-Core Version:    0.7.0.1
  */

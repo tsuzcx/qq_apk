@@ -11,15 +11,15 @@ class FileTransferHandler$5
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("OLfilesession[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]  handle cmd 0x211-0x1.save to weiyun");
     QLog.i("FileTransferHandler<FileAssistant>", 1, localStringBuilder.toString());
-    this.this$0.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 4);
+    this.this$0.a.getOnlineFileSessionCenter().a(this.b, this.a, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.5
  * JD-Core Version:    0.7.0.1
  */

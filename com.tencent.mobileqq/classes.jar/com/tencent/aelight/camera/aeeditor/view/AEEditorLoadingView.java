@@ -22,6 +22,7 @@ import com.tencent.aelight.camera.aeeditor.AEEditorPath.EDITOR.PAG;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.vas.ui.IVasPagViewApi;
 import com.tencent.mobileqq.vas.ui.VasPagView;
+import com.tencent.mobileqq.wink.edit.manager.WinkEditorResourceManager;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import org.libpag.PAGFile;
@@ -30,47 +31,51 @@ import org.libpag.PAGView;
 public class AEEditorLoadingView
   extends FrameLayout
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final String jdField_b_of_type_JavaLangString;
-  private static final String jdField_c_of_type_JavaLangString;
+  private static final String a;
+  private static final String b;
+  private static final String c;
   private static final String d;
-  private int jdField_a_of_type_Int;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AEEditorLoadingView.LoadingListener jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView$LoadingListener;
-  private VasPagView jdField_a_of_type_ComTencentMobileqqVasUiVasPagView;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private VasPagView jdField_b_of_type_ComTencentMobileqqVasUiVasPagView;
-  private View jdField_c_of_type_AndroidViewView;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String e;
+  private static final String e = WinkEditorResourceManager.c().x();
+  private View f;
+  private LinearLayout g;
+  private VasPagView h;
+  private VasPagView i;
+  private ProgressBar j;
+  private RelativeLayout k;
+  private TextView l;
+  private TextView m;
+  private TextView n;
+  private View o;
+  private View p;
+  private View q;
+  private TextView r;
+  private AEEditorLoadingView.LoadingListener s;
+  private int t;
+  private int u;
+  private String v;
+  private ObjectAnimator w;
+  private CountDownTimer x;
+  private boolean y = true;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEEditorPath.EDITOR.PAG.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEEditorPath.EDITOR.PAG.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("editor_loading_img_bmp.pag");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEEditorPath.EDITOR.PAG.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEEditorPath.EDITOR.PAG.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("editor_loading_text_filter_bmp.pag");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEEditorPath.EDITOR.PAG.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEEditorPath.EDITOR.PAG.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("editor_loading_text_dapian_bmp.pag");
-    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+    c = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEEditorPath.EDITOR.PAG.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(AEEditorPath.EDITOR.PAG.b);
     localStringBuilder.append(File.separator);
     localStringBuilder.append("editor_loading_text_muban_bmp.pag");
     d = localStringBuilder.toString();
@@ -98,26 +103,11 @@ public class AEEditorLoadingView
     return (paramFloat * paramFloat * paramFloat * paramFloat * paramFloat + 1.0F) * 1.0F + 0.0F;
   }
   
-  @NotNull
-  private ObjectAnimator a()
-  {
-    return ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetLinearLayout, "alpha", new float[] { 1.0F, 0.0F }).setDuration(500L);
-  }
-  
-  @NotNull
-  private ValueAnimator a(boolean paramBoolean)
-  {
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
-    localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new AEEditorLoadingView.8(this, paramBoolean));
-    return localValueAnimator;
-  }
-  
   private void a(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2064318574, this);
-    b();
-    c();
+    this.f = LayoutInflater.from(paramContext).inflate(2064056446, this);
+    g();
+    h();
   }
   
   private void a(PAGView paramPAGView, String paramString)
@@ -128,37 +118,20 @@ public class AEEditorLoadingView
       paramString = PAGFile.Load(paramString.getAbsolutePath());
       if (paramString != null)
       {
-        paramPAGView.setFile(paramString);
+        paramPAGView.setComposition(paramString);
         paramPAGView.setRepeatCount(0);
         paramPAGView.play();
       }
     }
   }
   
-  @NotNull
-  private ObjectAnimator b()
-  {
-    return ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F }).setDuration(500L);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2064122357));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2064122511));
-    this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView = ((VasPagView)findViewById(2064122842));
-    this.jdField_b_of_type_ComTencentMobileqqVasUiVasPagView = ((VasPagView)findViewById(2064122843));
-    this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView.a().a();
-    this.jdField_b_of_type_ComTencentMobileqqVasUiVasPagView.a().a();
-    findViewById(2064122749).setOnClickListener(new AEEditorLoadingView.1(this));
-  }
-  
   private void b(boolean paramBoolean)
   {
     boolean bool;
-    if (getResources().getString(2064515112).equals(this.e))
+    if (getResources().getString(2064187454).equals(this.v))
     {
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.p.setVisibility(8);
+      this.o.setVisibility(8);
       bool = true;
     }
     else
@@ -168,38 +141,72 @@ public class AEEditorLoadingView
     AnimatorSet localAnimatorSet = new AnimatorSet();
     if (paramBoolean)
     {
-      localAnimatorSet.play(a()).with(a(bool)).before(b());
+      localAnimatorSet.play(getLoadingFadeOutAnimator()).with(c(bool)).before(getContainerFadeOutAnimator());
       localAnimatorSet.addListener(new AEEditorLoadingView.5(this));
     }
     else
     {
-      localAnimatorSet.play(b());
+      localAnimatorSet.play(getContainerFadeOutAnimator());
       localAnimatorSet.addListener(new AEEditorLoadingView.6(this));
     }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator.isRunning()) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    if (this.w.isRunning()) {
+      this.w.cancel();
     }
-    ProgressBar localProgressBar = this.jdField_a_of_type_AndroidWidgetProgressBar;
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(localProgressBar, "progress", new int[] { localProgressBar.getProgress(), 100 }).setDuration(100L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new AEEditorLoadingView.7(this, localAnimatorSet));
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    ProgressBar localProgressBar = this.j;
+    this.w = ObjectAnimator.ofInt(localProgressBar, "progress", new int[] { localProgressBar.getProgress(), 100 }).setDuration(100L);
+    this.w.addListener(new AEEditorLoadingView.7(this, localAnimatorSet));
+    this.w.start();
   }
   
-  private void c()
+  @NotNull
+  private ValueAnimator c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2064122561));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122684));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122685));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2064122686));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2064122546);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2064122850);
-    this.jdField_a_of_type_Int = UIUtils.a(getContext(), 80.0F);
-    this.jdField_b_of_type_Int = UIUtils.a(getContext(), 7.0F);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
+    localValueAnimator.setDuration(1000L);
+    localValueAnimator.addUpdateListener(new AEEditorLoadingView.8(this, paramBoolean));
+    return localValueAnimator;
   }
   
-  private void d()
+  private void g()
   {
-    AEEditorLoadingView.LoadingListener localLoadingListener = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView$LoadingListener;
+    this.g = ((LinearLayout)findViewById(2063991230));
+    this.j = ((ProgressBar)findViewById(2063991327));
+    this.h = ((VasPagView)findViewById(2063991615));
+    this.i = ((VasPagView)findViewById(2063991616));
+    this.h.g().a();
+    this.i.g().a();
+    this.r = ((TextView)findViewById(2063991274));
+    this.q = findViewById(2063991523);
+    this.q.setOnClickListener(new AEEditorLoadingView.1(this));
+  }
+  
+  @NotNull
+  private ObjectAnimator getContainerFadeOutAnimator()
+  {
+    return ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F }).setDuration(500L);
+  }
+  
+  @NotNull
+  private ObjectAnimator getLoadingFadeOutAnimator()
+  {
+    return ObjectAnimator.ofFloat(this.g, "alpha", new float[] { 1.0F, 0.0F }).setDuration(500L);
+  }
+  
+  private void h()
+  {
+    this.k = ((RelativeLayout)findViewById(2063991378));
+    this.l = ((TextView)findViewById(2063991479));
+    this.m = ((TextView)findViewById(2063991480));
+    this.n = ((TextView)findViewById(2063991481));
+    this.o = findViewById(2063991364);
+    this.p = findViewById(2063991623);
+    this.t = UIUtils.a(getContext(), 80.0F);
+    this.u = UIUtils.a(getContext(), 7.0F);
+  }
+  
+  private void i()
+  {
+    AEEditorLoadingView.LoadingListener localLoadingListener = this.s;
     if (localLoadingListener != null) {
       localLoadingListener.a();
     }
@@ -212,7 +219,7 @@ public class AEEditorLoadingView
       return;
     }
     ((ViewGroup)getParent()).removeAllViews();
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    CountDownTimer localCountDownTimer = this.x;
     if (localCountDownTimer != null) {
       localCountDownTimer.cancel();
     }
@@ -220,14 +227,29 @@ public class AEEditorLoadingView
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_AndroidWidgetProgressBar, "progress", new int[] { 0, 80 }).setDuration(3000L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "alpha", new float[] { 0.0F, 1.0F }).setDuration(500L).start();
-    this.jdField_a_of_type_ComTencentMobileqqVasUiVasPagView.a().a(new AEEditorLoadingView.2(this));
-    this.jdField_b_of_type_ComTencentMobileqqVasUiVasPagView.a().a(new AEEditorLoadingView.3(this, paramInt));
-    this.jdField_a_of_type_AndroidOsCountDownTimer = new AEEditorLoadingView.4(this, 10000L, 1000L);
-    this.jdField_a_of_type_AndroidOsCountDownTimer.start();
+    this.f.setAlpha(0.0F);
+    if (paramInt == 4)
+    {
+      this.j.setVisibility(8);
+      this.q.setVisibility(8);
+    }
+    else
+    {
+      this.j.setVisibility(0);
+      this.q.setVisibility(0);
+    }
+    this.w = ObjectAnimator.ofInt(this.j, "progress", new int[] { 0, 80 }).setDuration(3000L);
+    this.w.start();
+    ObjectAnimator.ofFloat(this.f, "alpha", new float[] { 0.0F, 1.0F }).setDuration(500L).start();
+    this.h.g().a(new AEEditorLoadingView.2(this));
+    this.i.g().a(new AEEditorLoadingView.3(this, paramInt));
+    if (paramInt == 4) {
+      this.r.setVisibility(0);
+    } else {
+      this.r.setVisibility(8);
+    }
+    this.x = new AEEditorLoadingView.4(this, 10000L, 1000L, paramInt);
+    this.x.start();
   }
   
   public void a(boolean paramBoolean)
@@ -235,23 +257,28 @@ public class AEEditorLoadingView
     b(paramBoolean);
   }
   
+  public void setFromQCircle(boolean paramBoolean)
+  {
+    this.y = paramBoolean;
+  }
+  
   public void setLoadingListener(AEEditorLoadingView.LoadingListener paramLoadingListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewAEEditorLoadingView$LoadingListener = paramLoadingListener;
+    this.s = paramLoadingListener;
   }
   
   public void setSceneText(String paramString1, String paramString2, String paramString3)
   {
-    this.e = paramString1;
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.v = paramString1;
+    TextView localTextView = this.l;
     if (localTextView != null) {
       localTextView.setText(paramString1);
     }
-    paramString1 = this.jdField_b_of_type_AndroidWidgetTextView;
+    paramString1 = this.m;
     if (paramString1 != null) {
       paramString1.setText(paramString2);
     }
-    paramString1 = this.jdField_c_of_type_AndroidWidgetTextView;
+    paramString1 = this.n;
     if (paramString1 != null) {
       paramString1.setText(paramString3);
     }
@@ -259,7 +286,7 @@ public class AEEditorLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.AEEditorLoadingView
  * JD-Core Version:    0.7.0.1
  */

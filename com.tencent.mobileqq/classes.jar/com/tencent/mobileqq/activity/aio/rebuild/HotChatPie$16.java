@@ -21,9 +21,9 @@ class HotChatPie$16
 {
   HotChatPie$16(HotChatPie paramHotChatPie, ActionSheet paramActionSheet, ChatMessage paramChatMessage, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt != 0)
     {
       if (paramInt != 1) {
@@ -31,33 +31,33 @@ class HotChatPie$16
       }
       if (QLog.isColorLevel())
       {
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.b;
+        paramView = this.d.c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("del hot chat member onClick, uin=");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+        localStringBuilder.append(this.b.senderuin);
         QLog.i(paramView, 2, localStringBuilder.toString());
       }
       if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getString(2131694424), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getTitleBarHeight());
+        QQToast.makeText(this.d.aX(), this.d.aX().getString(2131892104), 0).show(this.d.aX().getTitleBarHeight());
         return;
       }
-      if ((IHotChatHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName()) != null)
+      if ((IHotChatHandler)this.d.d.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName()) != null)
       {
-        paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), 230).setMessage(2131693178).setNegativeButton(2131690707, new HotChatPie.16.2(this)).setPositiveButton(2131690709, new HotChatPie.16.1(this));
-        paramView.setTitle(2131693179);
+        paramView = DialogUtil.a(this.d.aX(), 230).setMessage(2131890718).setNegativeButton(2131887626, new HotChatPie.16.2(this)).setPositiveButton(2131887629, new HotChatPie.16.1(this));
+        paramView.setTitle(2131890719);
         paramView.show();
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
+      this.d.a(this.b.senderuin, this.c, false, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.16
  * JD-Core Version:    0.7.0.1
  */

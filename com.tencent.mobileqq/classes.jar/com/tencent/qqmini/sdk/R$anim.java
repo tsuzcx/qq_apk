@@ -2,22 +2,22 @@ package com.tencent.qqmini.sdk;
 
 public final class R$anim
 {
-  public static final int mini_sdk_actionsheet_enter = 2130772128;
-  public static final int mini_sdk_actionsheet_exit = 2130772129;
-  public static final int mini_sdk_activity_slide_in_from_bottom = 2130772130;
-  public static final int mini_sdk_activity_slide_out_to_back = 2130772131;
-  public static final int mini_sdk_decelerate_cubic = 2130772132;
-  public static final int mini_sdk_dialog_enter = 2130772133;
-  public static final int mini_sdk_dialog_exit = 2130772134;
-  public static final int mini_sdk_page_slide_in_from_right = 2130772135;
-  public static final int mini_sdk_page_slide_out_to_right = 2130772136;
-  public static final int mini_sdk_slide_in_from_bottom = 2130772137;
-  public static final int mini_sdk_toast_enter_anim = 2130772138;
-  public static final int mini_sdk_toast_exit_anim = 2130772139;
+  public static final int mini_sdk_actionsheet_enter = com.tencent.qqmini.R.anim.a;
+  public static final int mini_sdk_actionsheet_exit = com.tencent.qqmini.R.anim.b;
+  public static final int mini_sdk_activity_slide_in_from_bottom = com.tencent.qqmini.R.anim.c;
+  public static final int mini_sdk_activity_slide_out_to_back = com.tencent.qqmini.R.anim.d;
+  public static final int mini_sdk_decelerate_cubic = com.tencent.qqmini.R.anim.e;
+  public static final int mini_sdk_dialog_enter = com.tencent.qqmini.R.anim.f;
+  public static final int mini_sdk_dialog_exit = com.tencent.qqmini.R.anim.g;
+  public static final int mini_sdk_page_slide_in_from_right = com.tencent.qqmini.R.anim.h;
+  public static final int mini_sdk_page_slide_out_to_right = com.tencent.qqmini.R.anim.i;
+  public static final int mini_sdk_slide_in_from_bottom = com.tencent.qqmini.R.anim.j;
+  public static final int mini_sdk_toast_enter_anim = com.tencent.qqmini.R.anim.k;
+  public static final int mini_sdk_toast_exit_anim = com.tencent.qqmini.R.anim.l;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.R.anim
  * JD-Core Version:    0.7.0.1
  */

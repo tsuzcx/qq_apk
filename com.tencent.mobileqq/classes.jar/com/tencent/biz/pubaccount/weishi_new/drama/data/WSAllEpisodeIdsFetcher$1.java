@@ -20,7 +20,7 @@ class WSAllEpisodeIdsFetcher$1
   protected void a(stGetAllFeedsByDramaIDRsp paramstGetAllFeedsByDramaIDRsp)
   {
     super.a(paramstGetAllFeedsByDramaIDRsp);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener.a(paramstGetAllFeedsByDramaIDRsp.feedIDs, false, false, null);
+    this.a.a(paramstGetAllFeedsByDramaIDRsp.feedIDs, false, false, null);
   }
   
   protected void a(WSServiceErrorInfo paramWSServiceErrorInfo) {}
@@ -28,12 +28,12 @@ class WSAllEpisodeIdsFetcher$1
   protected void b(WSServiceErrorInfo paramWSServiceErrorInfo)
   {
     super.b(paramWSServiceErrorInfo);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDataIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), false, false);
+    this.a.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.data.WSAllEpisodeIdsFetcher.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,24 +11,24 @@ class RegisterQQNumberActivity$3
   {
     try
     {
-      if ((RegisterQQNumberActivity.a(this.this$0) == null) && (!this.this$0.isFinishing()))
+      if ((RegisterQQNumberActivity.c(this.this$0) == null) && (!this.this$0.isFinishing()))
       {
         RegisterQQNumberActivity.a(this.this$0, new QQProgressDialog(this.this$0, this.this$0.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.this$0).c(2131694668);
+        RegisterQQNumberActivity.c(this.this$0).c(2131892360);
       }
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
-    if ((RegisterQQNumberActivity.a(this.this$0) != null) && (!RegisterQQNumberActivity.a(this.this$0).isShowing())) {
-      RegisterQQNumberActivity.a(this.this$0).show();
+    if ((RegisterQQNumberActivity.c(this.this$0) != null) && (!RegisterQQNumberActivity.c(this.this$0).isShowing())) {
+      RegisterQQNumberActivity.c(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.3
  * JD-Core Version:    0.7.0.1
  */

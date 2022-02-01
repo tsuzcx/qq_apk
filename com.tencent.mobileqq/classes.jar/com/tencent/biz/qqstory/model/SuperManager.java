@@ -24,14 +24,14 @@ public class SuperManager
     return SuperManager.InstanceHolder.a.b(paramInt);
   }
   
-  public static SuperManager a()
-  {
-    return SuperManager.InstanceHolder.a;
-  }
-  
   private void a(int paramInt, IManager paramIManager)
   {
     this.a[paramInt] = paramIManager;
+  }
+  
+  public static SuperManager c()
+  {
+    return SuperManager.InstanceHolder.a;
   }
   
   public void a() {}
@@ -161,7 +161,7 @@ public class SuperManager
   
   public void b() {}
   
-  public void c()
+  public void d()
   {
     IManager[] arrayOfIManager = this.a;
     int i = 0;
@@ -188,7 +188,7 @@ public class SuperManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.SuperManager
  * JD-Core Version:    0.7.0.1
  */

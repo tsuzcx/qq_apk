@@ -15,12 +15,12 @@ class QzoneSwitchFragmentTitleBarUI$1
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
     int i = this.a.a(paramRadioGroup);
-    if (((QQBrowserActivity)this.a.a.a).oldTabSelectIndex != i)
+    if (((QQBrowserActivity)this.a.a.i).oldTabSelectIndex != i)
     {
-      WebViewFragment localWebViewFragment = QQBrowserActivity.switchFragment(i, (QQBrowserActivity)this.a.a.a);
-      ((QQBrowserActivity)this.a.a.a).oldTabSelectIndex = i;
-      if ((localWebViewFragment.getSwiftTitleUI() != null) && (localWebViewFragment.getSwiftTitleUI().a != null)) {
-        localWebViewFragment.getSwiftTitleUI().a.setSelectedTab(i);
+      WebViewFragment localWebViewFragment = QQBrowserActivity.switchFragment(i, (QQBrowserActivity)this.a.a.i);
+      ((QQBrowserActivity)this.a.a.i).oldTabSelectIndex = i;
+      if ((localWebViewFragment.getSwiftTitleUI() != null) && (localWebViewFragment.getSwiftTitleUI().N != null)) {
+        localWebViewFragment.getSwiftTitleUI().N.setSelectedTab(i);
       }
     }
     EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
@@ -28,7 +28,7 @@ class QzoneSwitchFragmentTitleBarUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.QzoneSwitchFragmentTitleBarUI.1
  * JD-Core Version:    0.7.0.1
  */

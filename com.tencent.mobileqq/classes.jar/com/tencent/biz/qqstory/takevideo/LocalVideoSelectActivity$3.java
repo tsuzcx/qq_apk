@@ -11,8 +11,8 @@ class LocalVideoSelectActivity$3
   
   public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
+    LocalVideoSelectActivity.i(this.a).b();
+    LocalVideoSelectActivity.i(this.a).a(true);
     return true;
   }
 }

@@ -10,12 +10,12 @@ class DoodleLayout$11$1
   
   public void run()
   {
-    ((QIMInformationPasterManager)QIMManager.a().c(12)).c();
+    ((QIMInformationPasterManager)QIMManager.a().d(12)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleLayout.11.1
  * JD-Core Version:    0.7.0.1
  */

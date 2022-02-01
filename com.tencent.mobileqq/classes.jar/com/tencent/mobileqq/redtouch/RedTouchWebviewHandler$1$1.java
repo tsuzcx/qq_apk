@@ -12,17 +12,17 @@ class RedTouchWebviewHandler$1$1
   
   public void run()
   {
-    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("callbackId");
-    Bundle localBundle = (Bundle)this.jdField_a_of_type_JavaUtilHashMap.get("req");
-    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("jsonResult");
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.callJs((String)localObject, new String[] { str });
-    localObject = DataFactory.a("redTouch_getAppInfo_report", (String)localObject, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.mOnRemoteResp.key, localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$1.this$0.sendRemoteReq((Bundle)localObject, false, true);
+    Object localObject = (String)this.a.get("callbackId");
+    Bundle localBundle = (Bundle)this.a.get("req");
+    String str = (String)this.a.get("jsonResult");
+    this.b.this$0.callJs((String)localObject, new String[] { str });
+    localObject = DataFactory.a("redTouch_getAppInfo_report", (String)localObject, this.b.this$0.mOnRemoteResp.key, localBundle);
+    this.b.this$0.sendRemoteReq((Bundle)localObject, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

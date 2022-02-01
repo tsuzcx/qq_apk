@@ -10,12 +10,12 @@ class TroopSettingActivity$26
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopSettingActivity.f(this.a);
+    TroopSettingActivity.i(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.26
  * JD-Core Version:    0.7.0.1
  */

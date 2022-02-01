@@ -20,15 +20,15 @@ class UiApiPlugin$7$1
     {
       int i = paramBundle.getInt("appid");
       Object localObject = paramBundle.getString("openId");
-      if ((i == this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$7.jdField_a_of_type_JavaLangInteger.intValue()) && (((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$7.jdField_a_of_type_JavaLangString)))
+      if ((i == this.b.a.intValue()) && (((String)localObject).equals(this.b.b)))
       {
         paramBundle = paramBundle.getString("uin");
         if (!TextUtils.isEmpty(paramBundle))
         {
-          localObject = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$7.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), null);
-          ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
+          localObject = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.b.d.e(), null);
+          ((Intent)localObject).putExtra("troopUin", this.a);
           ((Intent)localObject).putExtra("memberUin", paramBundle);
-          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$7.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
+          this.b.d.e().startActivity((Intent)localObject);
         }
       }
       else if (QLog.isColorLevel())
@@ -40,7 +40,7 @@ class UiApiPlugin$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.7.1
  * JD-Core Version:    0.7.0.1
  */

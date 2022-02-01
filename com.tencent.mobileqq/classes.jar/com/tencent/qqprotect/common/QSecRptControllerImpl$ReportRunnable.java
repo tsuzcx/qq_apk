@@ -42,15 +42,15 @@ class QSecRptControllerImpl$ReportRunnable
             if (localObject2 == null) {
               localObject1 = new SafeReport.ReqBody();
             }
-            String str = QSecRptController.a(QSecRptController.a(((QSecRptItem)localObject3).jdField_a_of_type_Int));
+            String str = QSecRptController.b(QSecRptController.a(((QSecRptItem)localObject3).a));
             localObject2 = new SafeReport.LogItem();
-            ((SafeReport.LogItem)localObject2).uint32_rpt_id.set(((QSecRptItem)localObject3).jdField_a_of_type_Int);
+            ((SafeReport.LogItem)localObject2).uint32_rpt_id.set(((QSecRptItem)localObject3).a);
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(str);
             localStringBuilder.append(",");
             localStringBuilder.append(((QSecRptItem)localObject3).b);
             localStringBuilder.append(",");
-            localStringBuilder.append(((QSecRptItem)localObject3).jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(((QSecRptItem)localObject3).c);
             localObject3 = localStringBuilder.toString();
             ((SafeReport.LogItem)localObject2).bytes_rpt_data.set(ByteStringMicro.copyFrom(((String)localObject3).getBytes()));
             ((SafeReport.ReqBody)localObject1).LogItem_reportdata.add((MessageMicro)localObject2);
@@ -98,7 +98,7 @@ class QSecRptControllerImpl$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QSecRptControllerImpl.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

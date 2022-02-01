@@ -13,18 +13,18 @@ class AEBaseCameraUnit$2
   {
     if (paramBoolean)
     {
-      this.a.a.onChangeCamera(paramInt);
-      if (this.a.a()) {
+      this.a.h.onChangeCamera(paramInt);
+      if (this.a.h()) {
         CameraHelper.a(paramInt);
       }
-      this.a.c();
-      this.a.l();
+      this.a.g();
+      this.a.A();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.AEBaseCameraUnit.2
  * JD-Core Version:    0.7.0.1
  */

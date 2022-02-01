@@ -11,11 +11,10 @@ import android.util.DisplayMetrics;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.kandian.biz.daily.api.IKandianDailyManager;
+import com.tencent.mobileqq.kandian.biz.daily.api.impl.KandianDailyManagerSingleton;
 import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
 import com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -224,7 +223,7 @@ public class ReadInjoyFloatingWindowHelper
     }
     ((Bundle)localObject).putBoolean("scroll_to_top", paramBoolean);
     ((Bundle)localObject).putBundle("floating_bundle_extra_data", paramBundle);
-    ((IKandianDailyManager)QRoute.api(IKandianDailyManager.class)).launchKandianDaily(paramContext, false, (Bundle)localObject, paramInt2);
+    KandianDailyManagerSingleton.INSTANCE.launchKandianDaily(paramContext, false, (Bundle)localObject, paramInt2);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean)
@@ -256,7 +255,7 @@ public class ReadInjoyFloatingWindowHelper
       paramBoolean = false;
     }
     ((Bundle)localObject).putBoolean("scroll_to_top", paramBoolean);
-    ((IKandianDailyManager)QRoute.api(IKandianDailyManager.class)).launchKandianDaily(paramContext, false, (Bundle)localObject, paramInt2);
+    KandianDailyManagerSingleton.INSTANCE.launchKandianDaily(paramContext, false, (Bundle)localObject, paramInt2);
   }
   
   private static void a(Context paramContext, int paramInt1, Bundle paramBundle, int paramInt2)
@@ -292,7 +291,7 @@ public class ReadInjoyFloatingWindowHelper
     //   1: ifnonnull +13 -> 14
     //   4: ldc 58
     //   6: iconst_1
-    //   7: ldc_w 281
+    //   7: ldc_w 279
     //   10: invokestatic 68	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   13: return
     //   14: aload_0
@@ -302,38 +301,38 @@ public class ReadInjoyFloatingWindowHelper
     //   21: invokestatic 112	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   24: astore 6
     //   26: aload_1
-    //   27: ldc_w 283
-    //   30: invokevirtual 289	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   33: checkcast 291	java/lang/String
+    //   27: ldc_w 281
+    //   30: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   33: checkcast 289	java/lang/String
     //   36: astore 7
     //   38: aload_1
-    //   39: ldc_w 293
-    //   42: invokevirtual 289	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   45: checkcast 291	java/lang/String
+    //   39: ldc_w 291
+    //   42: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   45: checkcast 289	java/lang/String
     //   48: astore 9
     //   50: aload_1
-    //   51: ldc_w 295
-    //   54: invokevirtual 289	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   57: checkcast 291	java/lang/String
+    //   51: ldc_w 293
+    //   54: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   57: checkcast 289	java/lang/String
     //   60: astore 8
     //   62: iconst_0
     //   63: istore 5
     //   65: aload_1
-    //   66: ldc_w 297
-    //   69: invokevirtual 289	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   72: checkcast 291	java/lang/String
+    //   66: ldc_w 295
+    //   69: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   72: checkcast 289	java/lang/String
     //   75: invokestatic 89	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   78: istore_2
     //   79: aload_1
-    //   80: ldc_w 299
-    //   83: invokevirtual 289	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   86: checkcast 291	java/lang/String
+    //   80: ldc_w 297
+    //   83: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   86: checkcast 289	java/lang/String
     //   89: invokestatic 89	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   92: istore_3
     //   93: aload_1
-    //   94: ldc_w 301
-    //   97: invokevirtual 289	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: checkcast 291	java/lang/String
+    //   94: ldc_w 299
+    //   97: invokevirtual 287	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: checkcast 289	java/lang/String
     //   103: invokestatic 89	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   106: istore 4
     //   108: goto +51 -> 159
@@ -351,7 +350,7 @@ public class ReadInjoyFloatingWindowHelper
     //   128: invokespecial 50	java/lang/StringBuilder:<init>	()V
     //   131: astore_1
     //   132: aload_1
-    //   133: ldc_w 303
+    //   133: ldc_w 301
     //   136: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   139: pop
     //   140: aload_1
@@ -399,10 +398,10 @@ public class ReadInjoyFloatingWindowHelper
     //   228: invokestatic 37	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   231: ifne +17 -> 248
     //   234: aload_0
-    //   235: ldc 252
+    //   235: ldc 250
     //   237: aload 9
-    //   239: ldc_w 305
-    //   242: invokestatic 310	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   239: ldc_w 303
+    //   242: invokestatic 308	java/net/URLDecoder:decode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   245: invokevirtual 213	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   248: aload 8
     //   250: invokestatic 37	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -416,7 +415,7 @@ public class ReadInjoyFloatingWindowHelper
     //   267: iload_2
     //   268: aload_0
     //   269: iload 4
-    //   271: invokestatic 312	com/tencent/mobileqq/kandian/biz/common/ReadInjoyFloatingWindowHelper:a	(Landroid/content/Context;IILandroid/os/Bundle;I)V
+    //   271: invokestatic 310	com/tencent/mobileqq/kandian/biz/common/ReadInjoyFloatingWindowHelper:a	(Landroid/content/Context;IILandroid/os/Bundle;I)V
     //   274: goto +36 -> 310
     //   277: astore_0
     //   278: new 49	java/lang/StringBuilder
@@ -424,7 +423,7 @@ public class ReadInjoyFloatingWindowHelper
     //   282: invokespecial 50	java/lang/StringBuilder:<init>	()V
     //   285: astore_1
     //   286: aload_1
-    //   287: ldc_w 314
+    //   287: ldc_w 312
     //   290: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: pop
     //   294: aload_1
@@ -441,7 +440,7 @@ public class ReadInjoyFloatingWindowHelper
     //   314: invokespecial 50	java/lang/StringBuilder:<init>	()V
     //   317: astore_0
     //   318: aload_0
-    //   319: ldc_w 316
+    //   319: ldc_w 314
     //   322: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: pop
     //   326: aload_0
@@ -449,7 +448,7 @@ public class ReadInjoyFloatingWindowHelper
     //   328: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   331: pop
     //   332: aload_0
-    //   333: ldc_w 318
+    //   333: ldc_w 316
     //   336: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   339: pop
     //   340: aload_0
@@ -457,7 +456,7 @@ public class ReadInjoyFloatingWindowHelper
     //   343: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   346: pop
     //   347: aload_0
-    //   348: ldc_w 320
+    //   348: ldc_w 318
     //   351: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   354: pop
     //   355: aload_0
@@ -465,7 +464,7 @@ public class ReadInjoyFloatingWindowHelper
     //   358: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   361: pop
     //   362: aload_0
-    //   363: ldc_w 322
+    //   363: ldc_w 320
     //   366: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   369: pop
     //   370: aload_0
@@ -473,7 +472,7 @@ public class ReadInjoyFloatingWindowHelper
     //   372: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   375: pop
     //   376: aload_0
-    //   377: ldc_w 324
+    //   377: ldc_w 322
     //   380: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   383: pop
     //   384: aload_0
@@ -634,7 +633,7 @@ public class ReadInjoyFloatingWindowHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInjoyFloatingWindowHelper
  * JD-Core Version:    0.7.0.1
  */

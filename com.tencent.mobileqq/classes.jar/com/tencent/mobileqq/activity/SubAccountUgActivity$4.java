@@ -34,15 +34,15 @@ class SubAccountUgActivity$4
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onPushSubAccountMsg() data.errorType=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.a);
         ((StringBuilder)localObject).append("  errorMsg=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.b);
         ((StringBuilder)localObject).append(" mainAccount=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_b_of_type_JavaLangString);
-        ((StringBuilder)localObject).append("  subAccount=");
         ((StringBuilder)localObject).append(paramSubAccountBackProtocData.c);
+        ((StringBuilder)localObject).append("  subAccount=");
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.d);
         ((StringBuilder)localObject).append(" isNeedStartGetMsg=");
-        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(paramSubAccountBackProtocData.k);
         QLog.i("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -55,7 +55,7 @@ class SubAccountUgActivity$4
         return;
       }
       localObject = (SubAccountControlServiceImpl)this.a.app.getRuntimeService(SubAccountControlServiceImpl.class, null);
-      if (paramSubAccountBackProtocData.jdField_a_of_type_Int == 1)
+      if (paramSubAccountBackProtocData.a == 1)
       {
         if ((this.a.subUin != null) && (this.a.subUin.equals(paramString))) {
           this.a.showUnbindDialog((ISubAccountControlService)localObject, paramString);
@@ -69,7 +69,7 @@ class SubAccountUgActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountUgActivity.4
  * JD-Core Version:    0.7.0.1
  */

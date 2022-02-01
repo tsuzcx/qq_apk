@@ -16,17 +16,17 @@ class GameRoomChatPie$6
   
   public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    if ((paramInt == 0) && (this.a.J))
+    if ((paramInt == 0) && (this.a.bA))
     {
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, HardCodeUtil.a(2131705221), 0).a();
-      SharedPreUtils.f(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).reset(this.a.jdField_a_of_type_AndroidContentContext);
+      QQToast.makeText(this.a.e, 2, HardCodeUtil.a(2131903107), 0).show();
+      SharedPreUtils.e(this.a.aX(), this.a.d.getCurrentAccountUin(), false);
+      ((IGameRoomAVControllerDelegate)QRoute.api(IGameRoomAVControllerDelegate.class)).reset(this.a.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.6
  * JD-Core Version:    0.7.0.1
  */

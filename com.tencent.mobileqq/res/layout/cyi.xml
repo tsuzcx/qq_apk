@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="83.0dip" android:layout_height="83.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AsyncImageView android:id="@id/lp2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/lq8" android:background="@drawable/evm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:gravity="left" android:id="@id/lrm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="49.0dip" android:layout_marginRight="4.0dip" android:text="相册标题" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="2.0dip" android:layout_below="@id/lrm">
-        <ImageView android:id="@id/lqh" android:background="@drawable/iay" android:layout_width="11.899994dip" android:layout_height="11.899994dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="9.0sp" android:textColor="@color/al3" android:gravity="left" android:id="@id/lr_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginBottom="17.5dip" android:text="66" android:layout_toRightOf="@id/lqh" />
-    </RelativeLayout>
-</RelativeLayout>
+<com.tencent.biz.qqcircle.utils.QCircleSlidBottomView android:orientation="vertical" android:id="@id/p_q" android:background="@color/j_" android:layout_width="fill_parent" android:layout_height="fill_parent" app:qcircleControllerHeight="30.0dip" app:qcircleControllerImgWidth="56.0dip" app:qcircleIsFixPanelHeight="true" app:qcircleShowRate="0.5" app:qcircleTopHeight="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/p7m" android:background="@color/qcircle_skin_color_bg_default" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/p_t" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="30.0dip" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/p_u" android:layout_width="56.0dip" android:layout_height="16.0dip" android:layout_marginTop="7.0dip" android:src="@drawable/qcircle_skin_feed_bottomsheet_dropdown" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <com.tencent.biz.qqcircle.widgets.QCircleHalfScreenStatusView android:layout_gravity="center" android:id="@id/p_r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-50.0dip" />
+        <com.tencent.biz.qqcircle.widgets.QCirclePanelLoadingView android:layout_gravity="center_horizontal" android:id="@id/p_s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="200.0dip" />
+    </FrameLayout>
+</com.tencent.biz.qqcircle.utils.QCircleSlidBottomView>

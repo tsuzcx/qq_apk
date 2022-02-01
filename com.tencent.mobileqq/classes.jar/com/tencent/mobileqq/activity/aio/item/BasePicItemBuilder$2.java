@@ -11,12 +11,12 @@ class BasePicItemBuilder$2
   
   public void onCancel(ArrayList<MessageRecord> paramArrayList)
   {
-    this.a.b();
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

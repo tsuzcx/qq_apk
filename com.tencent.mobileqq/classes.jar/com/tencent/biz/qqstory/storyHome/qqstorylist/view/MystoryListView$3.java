@@ -5,22 +5,22 @@ import android.view.MotionEvent;
 class MystoryListView$3
   implements Runnable
 {
-  int jdField_a_of_type_Int = -1;
+  int a = -1;
   
   MystoryListView$3(MystoryListView paramMystoryListView, int[] paramArrayOfInt1, int[] paramArrayOfInt2, float[] paramArrayOfFloat) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
-    if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
+    int i = this.a;
+    if (i >= this.b.length) {
       return;
     }
     if (i < 0)
     {
-      this.jdField_a_of_type_Int = (i + 1);
-      i = this.jdField_a_of_type_Int;
+      this.a = (i + 1);
+      i = this.a;
       if (i >= 0) {
-        i = this.b[i];
+        i = this.c[i];
       } else {
         i = 0;
       }
@@ -28,13 +28,13 @@ class MystoryListView$3
       return;
     }
     long l = System.currentTimeMillis();
-    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int], this.this$0.getWidth() / 2, this.jdField_a_of_type_ArrayOfFloat[this.jdField_a_of_type_Int], 0);
+    MotionEvent localMotionEvent = MotionEvent.obtain(l, l, this.b[this.a], this.this$0.getWidth() / 2, this.d[this.a], 0);
     this.this$0.dispatchTouchEvent(localMotionEvent);
     localMotionEvent.recycle();
-    this.jdField_a_of_type_Int += 1;
-    i = this.jdField_a_of_type_Int;
-    if (i < this.jdField_a_of_type_ArrayOfInt.length) {
-      this.this$0.postDelayed(this, this.b[i]);
+    this.a += 1;
+    i = this.a;
+    if (i < this.b.length) {
+      this.this$0.postDelayed(this, this.c[i]);
     }
   }
 }

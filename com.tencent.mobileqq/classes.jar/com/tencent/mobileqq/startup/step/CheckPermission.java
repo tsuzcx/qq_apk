@@ -23,7 +23,8 @@ public class CheckPermission
   extends Step
   implements DialogInterface.OnClickListener, QQPermissionCallback
 {
-  private static final String[] EXPLAINS = { HardCodeUtil.a(2131701988), "QQ使用电话权限确定本机号码和设备ID，以保证帐号登录的安全性。QQ不会拨打其他号码或终止通话。\n请在设置中开启电话权限，以正常使用QQ功能。" };
+  private static final String[] EXPLAINS = { HardCodeUtil.a(2131900001), "QQ使用电话权限确定本机号码和设备ID，以保证帐号登录的安全性。QQ不会拨打其他号码或终止通话。\n请在设置中开启电话权限，以正常使用QQ功能。" };
+  public static final String TAG = "CheckPermission";
   private static boolean sPrivatePolicyShow = true;
   private static boolean sSystemPermissionShow = false;
   private AppActivity mAct;
@@ -66,22 +67,23 @@ public class CheckPermission
   @TargetApi(23)
   public boolean checkPermission(AppActivity paramAppActivity)
   {
+    QLog.d("CheckPermission", 1, "enter CheckPermission");
     if ((paramAppActivity != null) && (this.mAct != paramAppActivity)) {
       this.mAct = paramAppActivity;
     }
     AppActivity localAppActivity = this.mAct;
-    if (localAppActivity != null)
+    if ((localAppActivity != null) && (!localAppActivity.isFinishing()))
     {
-      if (localAppActivity.isFinishing()) {
+      if (!sPrivatePolicyShow)
+      {
+        QLog.d("CheckPermission", 1, "sPrivatePolicyShow is false!");
         return true;
       }
-      if (!sPrivatePolicyShow) {
-        return true;
-      }
-      if (!PrivacyPolicyHelper.a())
+      if (!PrivacyPolicyHelper.d())
       {
         paramAppActivity = new CheckPermission.1(this);
         PrivacyPolicyHelper.a(this.mAct, "", paramAppActivity, paramAppActivity).show();
+        QLog.d("CheckPermission", 1, "PrivacyPolicyHelper User Allow is show");
         return false;
       }
       if (!sSystemPermissionShow) {
@@ -101,7 +103,9 @@ public class CheckPermission
         }
         j += 1;
       }
+      return true;
     }
+    QLog.d("CheckPermission", 1, "mAct is destoryed");
     return true;
   }
   
@@ -112,12 +116,12 @@ public class CheckPermission
     paramArrayOfString.append(paramInt);
     QLog.d("AutoMonitor", 1, paramArrayOfString.toString());
     paramArrayOfString = EXPLAINS[(paramInt - 1)];
-    paramArrayOfInt = HardCodeUtil.a(2131701985);
+    paramArrayOfInt = HardCodeUtil.a(2131899999);
     QQCustomDialog localQQCustomDialog = DialogUtil.a(this.mAct, 230);
     localQQCustomDialog.setTitle(paramArrayOfInt);
     localQQCustomDialog.setMessage(paramArrayOfString);
-    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131701987), this);
-    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131701986), this);
+    localQQCustomDialog.setNegativeButton(HardCodeUtil.a(2131898212), this);
+    localQQCustomDialog.setPositiveButton(HardCodeUtil.a(2131900000), this);
     localQQCustomDialog.setOnDismissListener(null);
     localQQCustomDialog.show();
   }
@@ -129,7 +133,7 @@ public class CheckPermission
     paramArrayOfString.append(paramInt);
     QLog.d("AutoMonitor", 1, paramArrayOfString.toString());
     this.mAct = null;
-    this.mDirector.a();
+    this.mDirector.c();
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
@@ -146,7 +150,7 @@ public class CheckPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.CheckPermission
  * JD-Core Version:    0.7.0.1
  */

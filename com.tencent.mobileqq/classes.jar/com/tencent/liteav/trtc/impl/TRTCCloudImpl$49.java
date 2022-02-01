@@ -1,7 +1,6 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.audio.TXCAudioEngine;
-import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.d;
 
 class TRTCCloudImpl$49
   implements Runnable
@@ -10,27 +9,19 @@ class TRTCCloudImpl$49
   
   public void run()
   {
-    Object localObject = this.this$0;
+    TRTCCloudImpl.access$5102(this.this$0, this.val$mode);
+    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setAudioRoute ");
-    localStringBuilder.append(this.val$route);
-    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    if (this.val$route == 0) {
-      localObject = "Speaker";
-    } else {
-      localObject = "Earpiece";
-    }
-    localStringBuilder.append(String.format("setAudioRoute route:%s", new Object[] { localObject }));
-    localStringBuilder.append(" self:");
-    localStringBuilder.append(this.this$0.hashCode());
-    Monitor.a(1, localStringBuilder.toString(), "", 0);
-    TXCAudioEngine.setAudioRoute(this.val$route);
+    localStringBuilder.append("setLocalViewMirror ");
+    localStringBuilder.append(this.val$mode);
+    localTRTCCloudImpl.apiLog(localStringBuilder.toString());
+    this.this$0.mCaptureAndEnc.b(this.val$mode);
+    TRTCCloudImpl.access$100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.49
  * JD-Core Version:    0.7.0.1
  */

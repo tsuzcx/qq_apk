@@ -9,18 +9,8 @@ import java.util.LinkedHashMap;
 
 public class AddressData
 {
-  public static final String a;
-  public HashMap<String, BaseAddress> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131700098);
-  }
-  
-  public AddressData()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(30);
-  }
+  public static final String a = HardCodeUtil.a(2131898143);
+  public HashMap<String, BaseAddress> b = new HashMap(30);
   
   private int a(int paramInt)
   {
@@ -69,20 +59,20 @@ public class AddressData
   
   public void a()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.b;
     if (localHashMap != null)
     {
       localHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.b = null;
     }
   }
   
   public boolean a(AppInterface paramAppInterface, String paramString)
   {
-    if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
+    if (paramString.startsWith(a)) {
       return false;
     }
-    String[] arrayOfString = StringUtil.a(paramString, '|');
+    String[] arrayOfString = StringUtil.split(paramString, '|');
     if (!paramString.startsWith("#"))
     {
       if (arrayOfString.length < 2) {
@@ -91,13 +81,13 @@ public class AddressData
       int i = arrayOfString.length;
       Object localObject1 = arrayOfString[0];
       Object localObject2 = arrayOfString[1];
-      paramString = (BaseAddress)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+      paramString = (BaseAddress)this.b.get(localObject1);
       paramAppInterface = paramString;
       if (paramString == null)
       {
         paramAppInterface = new BaseAddress((String)localObject2, (String)localObject1, a(1));
-        this.jdField_a_of_type_JavaUtilHashMap.put("0", new BaseAddress("不限", "0", 0));
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, paramAppInterface);
+        this.b.put("0", new BaseAddress("不限", "0", 0));
+        this.b.put(localObject1, paramAppInterface);
       }
       int k = a(2, i, arrayOfString);
       if (k == -1) {
@@ -156,7 +146,7 @@ public class AddressData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.AddressData
  * JD-Core Version:    0.7.0.1
  */

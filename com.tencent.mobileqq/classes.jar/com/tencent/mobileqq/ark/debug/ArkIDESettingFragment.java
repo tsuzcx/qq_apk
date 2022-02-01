@@ -32,19 +32,14 @@ public class ArkIDESettingFragment
   extends IphoneTitleBarFragment
 {
   public static ArkIDESettingFragment a;
-  private TextView a;
-  
-  public ArkIDESettingFragment()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-  }
+  private TextView b = null;
   
   public static ArkIDESettingFragment a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqArkDebugArkIDESettingFragment == null) {
-      jdField_a_of_type_ComTencentMobileqqArkDebugArkIDESettingFragment = new ArkIDESettingFragment();
+    if (a == null) {
+      a = new ArkIDESettingFragment();
     }
-    return jdField_a_of_type_ComTencentMobileqqArkDebugArkIDESettingFragment;
+    return a;
   }
   
   private void a(int paramInt)
@@ -52,41 +47,45 @@ public class ArkIDESettingFragment
     JSDebuggerSoLoader.a(paramInt, new ArkIDESettingFragment.6(this));
   }
   
-  protected QQAppInterface a()
+  public void a(String paramString)
+  {
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ark_ide_state_");
+    localStringBuilder.append(d());
+    SharePreferenceUtils.a(localBaseApplication, localStringBuilder.toString(), paramString);
+  }
+  
+  protected QQAppInterface b()
   {
     return (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
   }
   
-  public String a()
+  void b(String paramString)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null)
-    {
-      ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("appinterface is null", new Object[0]));
-      return "";
-    }
-    return localQQAppInterface.getCurrentAccountUin();
+    int i = this.mContentView.getHeight();
+    QQToast.makeText(BaseApplication.getContext(), paramString, 0).show(i - 20);
   }
   
-  void a()
+  void c()
   {
-    FormSwitchItem localFormSwitchItem1 = (FormSwitchItem)this.mContentView.findViewById(2131364065);
-    FormSwitchItem localFormSwitchItem2 = (FormSwitchItem)this.mContentView.findViewById(2131364067);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131369579));
-    View localView1 = this.mContentView.findViewById(2131363884);
-    View localView2 = this.mContentView.findViewById(2131363883);
-    View localView3 = this.mContentView.findViewById(2131364104);
+    FormSwitchItem localFormSwitchItem1 = (FormSwitchItem)this.mContentView.findViewById(2131430023);
+    FormSwitchItem localFormSwitchItem2 = (FormSwitchItem)this.mContentView.findViewById(2131430025);
+    this.b = ((TextView)this.mContentView.findViewById(2131436683));
+    View localView1 = this.mContentView.findViewById(2131429834);
+    View localView2 = this.mContentView.findViewById(2131429833);
+    View localView3 = this.mContentView.findViewById(2131430070);
     localFormSwitchItem1.setChecked(true);
     localFormSwitchItem1.setOnCheckedChangeListener(new ArkIDESettingFragment.1(this));
-    if ((!TextUtils.isEmpty(b())) && (b().equals("close")))
+    if ((!TextUtils.isEmpty(e())) && (e().equals("close")))
     {
       localFormSwitchItem2.setChecked(false);
-      ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("btnSetupIDE is closed and idestate=%s", new Object[] { b() }));
+      ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("btnSetupIDE is closed and idestate=%s", new Object[] { e() }));
     }
     else
     {
       localFormSwitchItem2.setChecked(true);
-      b();
+      f();
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("btnSetupIDE is open", new Object[0]));
     }
     localFormSwitchItem2.setOnCheckedChangeListener(new ArkIDESettingFragment.2(this));
@@ -95,35 +94,44 @@ public class ArkIDESettingFragment
     localView3.setOnClickListener(new ArkIDESettingFragment.5(this));
   }
   
-  public void a(String paramString)
+  public String d()
   {
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ark_ide_state_");
-    localStringBuilder.append(a());
-    SharePreferenceUtils.a(localBaseApplication, localStringBuilder.toString(), paramString);
+    QQAppInterface localQQAppInterface = b();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("appinterface is null", new Object[0]));
+      return "";
+    }
+    return localQQAppInterface.getCurrentAccountUin();
   }
   
-  public String b()
+  protected void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    setTitle(HardCodeUtil.a(2131898945));
+    c();
+    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
+  }
+  
+  public String e()
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ark_ide_state_");
-    localStringBuilder.append(a());
+    localStringBuilder.append(d());
     return SharePreferenceUtils.a(localBaseApplication, localStringBuilder.toString()).toString();
   }
   
-  public void b()
+  public void f()
   {
     long l = NetConnInfoCenter.getServerTime();
-    Object localObject = a();
+    Object localObject = b();
     if (localObject == null)
     {
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("appinterface is null", new Object[0]));
       return;
     }
-    localObject = ((QQAppInterface)localObject).getProxyManager().a();
-    RecentUser localRecentUser = ((RecentUserProxy)localObject).a(AppConstants.ARK_DEBUG_UIN, 1031);
+    localObject = ((QQAppInterface)localObject).getProxyManager().g();
+    RecentUser localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.ARK_DEBUG_UIN, 1031);
     if (localRecentUser.lastmsgtime < l) {
       localRecentUser.lastmsgtime = l;
     }
@@ -135,23 +143,17 @@ public class ArkIDESettingFragment
     a(1);
   }
   
-  void b(String paramString)
-  {
-    int i = this.mContentView.getHeight();
-    QQToast.a(BaseApplication.getContext(), paramString, 0).b(i - 20);
-  }
-  
-  public void c()
+  public void g()
   {
     long l = NetConnInfoCenter.getServerTime();
-    Object localObject = a();
+    Object localObject = b();
     if (localObject == null)
     {
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("appinterface is null", new Object[0]));
       return;
     }
-    localObject = ((QQAppInterface)localObject).getProxyManager().a();
-    RecentUser localRecentUser = ((RecentUserProxy)localObject).a(AppConstants.ARK_DEBUG_UIN, 1031);
+    localObject = ((QQAppInterface)localObject).getProxyManager().g();
+    RecentUser localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.ARK_DEBUG_UIN, 1031);
     if (localRecentUser.lastmsgtime < l) {
       localRecentUser.lastmsgtime = l;
     }
@@ -161,22 +163,20 @@ public class ArkIDESettingFragment
     }
   }
   
-  void d()
+  protected int getContentLayoutId()
+  {
+    return 2131627310;
+  }
+  
+  void h()
   {
     LocalAppManager.deleteAllLocalApps();
     ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("App is clear", new Object[0]));
   }
   
-  protected void doOnCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  void i()
   {
-    setTitle(HardCodeUtil.a(2131700921));
-    a();
-    super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-  }
-  
-  void e()
-  {
-    Object localObject = a();
+    Object localObject = b();
     if (localObject == null)
     {
       ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("appinterface is null", new Object[0]));
@@ -195,11 +195,6 @@ public class ArkIDESettingFragment
     ArkAppCenter.a("ArkApp.DebugOnlineActivity", "AppConfig is clear");
   }
   
-  protected int getContentLayoutId()
-  {
-    return 2131560969;
-  }
-  
   public void onDestroy()
   {
     super.onDestroy();
@@ -208,7 +203,7 @@ public class ArkIDESettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment
  * JD-Core Version:    0.7.0.1
  */

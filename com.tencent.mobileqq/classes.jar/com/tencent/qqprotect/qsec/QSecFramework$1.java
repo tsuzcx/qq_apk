@@ -8,12 +8,12 @@ final class QSecFramework$1
 {
   public void a()
   {
-    if (QSecFramework.a()) {
+    if (QSecFramework.f()) {
       return;
     }
     try
     {
-      if (!QSecFramework.b()) {
+      if (!QSecFramework.g()) {
         System.loadLibrary("QSec");
       }
       QSecFramework.a(true);
@@ -35,7 +35,7 @@ final class QSecFramework$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework.1
  * JD-Core Version:    0.7.0.1
  */

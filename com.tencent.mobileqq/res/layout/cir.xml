@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:background="@drawable/bx4" android:layout_width="43.0dip" android:layout_height="70.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dwf" android:layout_width="18.0dip" android:layout_height="8.0dip" android:src="@drawable/gnw" />
-    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k9z" android:background="@drawable/bw4" android:padding="1.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="16.0dip" android:text="99+" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/aw5" android:textColor="#ff999999" android:id="@id/ntv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/x68" android:includeFontPadding="false" />
+    <LinearLayout android:orientation="vertical" android:id="@id/nrz" android:background="@drawable/dox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="@dimen/ms" android:layout_marginRight="16.0dip">
+        <RelativeLayout android:id="@id/p2h" android:background="@drawable/dy9" android:layout_width="fill_parent" android:layout_height="56.0dip">
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/qmw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="@string/x66" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/o7m" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/bu7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

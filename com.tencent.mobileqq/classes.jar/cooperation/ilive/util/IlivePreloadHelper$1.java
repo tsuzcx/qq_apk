@@ -21,30 +21,29 @@ final class IlivePreloadHelper$1
     Object localObject = IliveManagerConfProcessor.a();
     if ((localObject != null) && (((IliveManagerCfgBean)localObject).d()))
     {
-      IliveLiteHelper.a().a();
-      IlivePreloadHelper.a((IliveManagerCfgBean)localObject);
+      IliveLiteHelper.a().b();
       return;
     }
-    if (!QVipSDKProcessor.c().d()) {
+    if (!QVipSDKProcessor.e().d()) {
       return;
     }
-    if ((this.jdField_a_of_type_Int == 1) && (!IlivePreloadHelper.a()))
+    if ((this.a == 1) && (!IlivePreloadHelper.c()))
     {
       QLog.e("IlivePreloadHelper", 1, "preloadLiveShopping checkDrawerSwitchEnable = false");
       return;
     }
-    IlivePreloadHelper.c();
+    IlivePreloadHelper.d();
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("ilive start preloadLiveShopping , source = ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     QLog.e("IlivePreloadHelper", 1, ((StringBuilder)localObject).toString());
     PreloadService.b(-1);
-    localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, PreloadWebService.class);
+    localObject = new Intent(this.b, PreloadWebService.class);
     ((Intent)localObject).putExtra("isPreloadLiveShopping", true);
-    ((Intent)localObject).putExtra("source", this.jdField_a_of_type_Int);
+    ((Intent)localObject).putExtra("source", this.a);
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.startService((Intent)localObject);
+      this.b.startService((Intent)localObject);
       return;
     }
     catch (Throwable localThrowable)
@@ -61,7 +60,7 @@ final class IlivePreloadHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.util.IlivePreloadHelper.1
  * JD-Core Version:    0.7.0.1
  */

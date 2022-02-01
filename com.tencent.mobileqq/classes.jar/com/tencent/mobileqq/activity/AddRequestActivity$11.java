@@ -19,15 +19,15 @@ class AddRequestActivity$11
     {
       long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
       this.a.showDialog(2);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
+      this.a.h.a(l, Long.valueOf(this.a.a).longValue(), 1);
       return;
     }
-    QQToast.a(this.a, 2131694424, 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a, 2131892104, 0).show(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import com.tencent.mobileqq.widget.PullRefreshHeader;
 public class ReadInJoyAnimDefaultManager
   extends ReadInJoyAnimBaseManager
 {
-  private RefreshAnimView a;
+  private RefreshAnimView g;
   
   public ReadInJoyAnimDefaultManager(Context paramContext)
   {
@@ -22,55 +22,55 @@ public class ReadInJoyAnimDefaultManager
   public void endOfRefresh()
   {
     super.endOfRefresh();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a(1000L);
+    this.g.a(1000L);
   }
   
   public int getPullRefreshAreaHeight()
   {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298852);
+    return this.a.getResources().getDimensionPixelSize(2131299569);
   }
   
   public View getRefreshView(ViewGroup paramViewGroup)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader == null)
+    if (this.b == null)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562705, paramViewGroup, false);
-      paramViewGroup.findViewById(2131376344).getLayoutParams().width = -2;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader = ((IPullRefreshHeader)paramViewGroup);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView = ((RefreshAnimView)((PullRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader).findViewById(2131376336));
+      paramViewGroup = LayoutInflater.from(this.a).inflate(2131629138, paramViewGroup, false);
+      paramViewGroup.findViewById(2131444559).getLayoutParams().width = -2;
+      this.b = ((IPullRefreshHeader)paramViewGroup);
+      this.g = ((RefreshAnimView)((PullRefreshHeader)this.b).findViewById(2131444549));
     }
-    return (View)this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader;
+    return (View)this.b;
   }
   
   public void onPullRefreshComplete(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader == null) {
+    if (this.b == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a(0L);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.b();
+    this.b.a(0L);
+    this.g.a();
+    this.g.b();
   }
   
   public void onPullRefreshing(int paramInt, boolean paramBoolean)
   {
     super.onPullRefreshing(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader == null) {
+    if (this.b == null) {
       return;
     }
     if (paramInt == 100)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.b(0L);
+      this.b.b(0L);
       return;
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.f();
+      this.b.f();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.c(0L);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a();
-    RefreshAnimView localRefreshAnimView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView;
+    this.b.c(0L);
+    this.g.a();
+    RefreshAnimView localRefreshAnimView = this.g;
     double d = paramInt;
     Double.isNaN(d);
     localRefreshAnimView.a(d / 100.0D);
@@ -78,24 +78,24 @@ public class ReadInJoyAnimDefaultManager
   
   public void showPullRefresh()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader == null) {
+    if (this.b == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.a(0L);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader.f();
+    this.b.a(0L);
+    this.b.f();
   }
   
   public void showRefreshResult(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetIPullRefreshHeader == null) {
+    if (this.b == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+    this.g.a(paramBoolean, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pullrefresh.ReadInJoyAnimDefaultManager
  * JD-Core Version:    0.7.0.1
  */

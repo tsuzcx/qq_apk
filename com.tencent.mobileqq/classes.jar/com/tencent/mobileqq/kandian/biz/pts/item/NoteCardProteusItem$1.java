@@ -26,31 +26,31 @@ class NoteCardProteusItem$1
   {
     int j = 1;
     QLog.d("NoteCardProteusItem", 1, "onItemResume");
-    NoteCardProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem, true);
-    if (NoteCardProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem) != null) {
-      NoteCardProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem).a();
+    NoteCardProteusItem.a(this.d, true);
+    if (NoteCardProteusItem.a(this.d) != null) {
+      NoteCardProteusItem.a(this.d).a();
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoyLottieView;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ReadInJoyLottieView)localObject).a();
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().scripCmsInfo;
+    localObject = this.b.k().scripCmsInfo;
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     int i;
-    if ((NoteCardProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem)) && (ReadInJoyNoteCardUtil.a() != 0))
+    if ((NoteCardProteusItem.b(this.d)) && (ReadInJoyNoteCardUtil.a() != 0))
     {
-      i = ReadInJoyNoteCardUtil.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str);
-      int k = ReadInJoyNoteCardUtil.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str);
-      if ((i < ReadInJoyNoteCardUtil.b()) && (k < ReadInJoyNoteCardUtil.c()))
+      i = ReadInJoyNoteCardUtil.b(this.c.getContext(), str);
+      int k = ReadInJoyNoteCardUtil.c(this.c.getContext(), str);
+      if ((i < ReadInJoyNoteCardUtil.e()) && (k < ReadInJoyNoteCardUtil.f()))
       {
-        ((ScripCmsInfo)localObject).a = 2;
-        ReadInJoyNoteCardUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, i + 1);
-        ReadInJoyNoteCardUtil.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, k + 1);
+        ((ScripCmsInfo)localObject).j = 2;
+        ReadInJoyNoteCardUtil.a(this.c.getContext(), str, i + 1);
+        ReadInJoyNoteCardUtil.b(this.c.getContext(), str, k + 1);
       }
     }
-    if ((ReadInJoyNoteCardUtil.a() == 1) && (ReadInJoyNoteCardUtil.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str) > 0))
+    if ((ReadInJoyNoteCardUtil.a() == 1) && (ReadInJoyNoteCardUtil.b(this.c.getContext(), str) > 0))
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext();
+      localObject = this.c.getContext();
       i = j;
       if (Build.VERSION.SDK_INT >= 23)
       {
@@ -67,8 +67,8 @@ class NoteCardProteusItem$1
         ThreadManager.getUIHandler().postDelayed(new NoteCardProteusItem.1.1(this), 1000L);
       }
     }
-    NoteCardProteusItem.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem, false);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    NoteCardProteusItem.b(this.d, false);
+    localObject = this.b.k();
     if (localObject != null)
     {
       ((AbsBaseArticleInfo)localObject).invalidateProteusTemplateBean();
@@ -79,17 +79,17 @@ class NoteCardProteusItem$1
   public void b()
   {
     QLog.d("NoteCardProteusItem", 1, "onItemPause");
-    NoteCardProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem, false);
-    ReadInJoyLottieView localReadInJoyLottieView = this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewReadInJoyLottieView;
+    NoteCardProteusItem.a(this.d, false);
+    ReadInJoyLottieView localReadInJoyLottieView = this.a;
     if (localReadInJoyLottieView != null) {
       localReadInJoyLottieView.b();
     }
-    NoteCardProteusItem.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNoteCardProteusItem);
+    NoteCardProteusItem.e(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NoteCardProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

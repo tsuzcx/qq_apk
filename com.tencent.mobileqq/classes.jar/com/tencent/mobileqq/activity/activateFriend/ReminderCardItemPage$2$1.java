@@ -12,32 +12,32 @@ class ReminderCardItemPage$2$1
   public void run()
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderCardItemPage$2.a.a.mn_appid == 0) {
+    if (this.d.a.k.mn_appid == 0) {
       i = 0;
     } else {
       i = 1;
     }
-    if (this.jdField_a_of_type_Int == 2001)
+    if (this.a == 2001)
     {
-      if (this.jdField_a_of_type_Boolean)
+      if (this.b)
       {
-        AcsDelMsgRsp localAcsDelMsgRsp = (AcsDelMsgRsp)this.jdField_a_of_type_AndroidOsBundle.getSerializable("rsp");
+        AcsDelMsgRsp localAcsDelMsgRsp = (AcsDelMsgRsp)this.c.getSerializable("rsp");
         if (localAcsDelMsgRsp == null)
         {
-          QQNotifyHelper.a(ReminderCardItemPage.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderCardItemPage$2.a), -1, i);
+          QQNotifyHelper.a(ReminderCardItemPage.a(this.d.a), -1, i);
           return;
         }
         int j = localAcsDelMsgRsp.ret_code;
-        QQNotifyHelper.a(ReminderCardItemPage.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderCardItemPage$2.a), j, i);
+        QQNotifyHelper.a(ReminderCardItemPage.a(this.d.a), j, i);
         return;
       }
-      QQNotifyHelper.a(ReminderCardItemPage.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendReminderCardItemPage$2.a), -1, i);
+      QQNotifyHelper.a(ReminderCardItemPage.a(this.d.a), -1, i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.2.1
  * JD-Core Version:    0.7.0.1
  */

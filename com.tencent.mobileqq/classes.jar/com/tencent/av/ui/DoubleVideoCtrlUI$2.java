@@ -12,9 +12,9 @@ class DoubleVideoCtrlUI$2
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (!this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j()))
+    if ((this.this$0.am != null) && (!this.this$0.am.k().j()))
     {
-      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1049);
+      TipsUtil.a(this.this$0.al, 1049);
       ReportController.b(null, "CliOper", "", "", "0X8009D02", "0X8009D02", 0, 0, "", "", "", "");
     }
   }

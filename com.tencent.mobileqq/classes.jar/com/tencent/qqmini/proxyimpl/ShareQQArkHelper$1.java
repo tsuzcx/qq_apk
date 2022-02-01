@@ -11,12 +11,12 @@ final class ShareQQArkHelper$1
   
   public void run()
   {
-    ShareQQArkHelper.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniArkShareModel, this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener);
+    ShareQQArkHelper.b(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareQQArkHelper.1
  * JD-Core Version:    0.7.0.1
  */

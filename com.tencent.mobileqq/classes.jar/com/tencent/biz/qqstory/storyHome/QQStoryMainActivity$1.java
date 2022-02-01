@@ -16,21 +16,6 @@ class QQStoryMainActivity$1
     return QQStoryMainActivity.a(this.a);
   }
   
-  public ImageView a()
-  {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
   public void a(String paramString)
   {
     QQStoryMainActivity.a(this.a, paramString);
@@ -46,19 +31,34 @@ class QQStoryMainActivity$1
     this.a.stopTitleProgress();
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.a.onBackEvent();
+  }
   
   public void b(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      QQStoryMainActivity.a(this.a, QQStoryConstant.a, HardCodeUtil.a(2131710898));
+      QQStoryMainActivity.a(this.a, QQStoryConstant.a, HardCodeUtil.a(2131908569));
       return;
     }
     a(QQStoryConstant.a);
   }
   
-  public void c() {}
+  public ImageView c()
+  {
+    return this.a.rightViewImg;
+  }
+  
+  public TextView d()
+  {
+    return this.a.rightViewText;
+  }
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 

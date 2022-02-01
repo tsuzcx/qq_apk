@@ -60,8 +60,8 @@ public class FriendHandlerServiceImpl
       QLog.d("IMCore.friend.FriendHandlerServiceImp", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = this.mHandler;
-    if ((localObject != null) && (((FriendHandler)localObject).a() != null)) {
-      this.mHandler.a().a(paramString, paramInt1, paramInt2, paramArrayOfByte);
+    if ((localObject != null) && (((FriendHandler)localObject).c() != null)) {
+      this.mHandler.c().a(paramString, paramInt1, paramInt2, paramArrayOfByte);
     }
   }
   
@@ -82,7 +82,7 @@ public class FriendHandlerServiceImpl
   
   public boolean isRequestingFriendList()
   {
-    return this.mHandler.a();
+    return this.mHandler.f();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -220,7 +220,7 @@ public class FriendHandlerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.friend.api.impl.FriendHandlerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

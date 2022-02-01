@@ -37,7 +37,7 @@ class TroopMemberDataProvider$2
     }
     if (paramInt1 == 6)
     {
-      if (!this.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramLong1))) {
+      if (!this.a.c.equals(String.valueOf(paramLong1))) {
         return;
       }
       paramString = new HashMap();
@@ -54,8 +54,8 @@ class TroopMemberDataProvider$2
           }
         }
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$DataNotifyCallBack != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, paramString));
+      if (this.a.d != null) {
+        this.a.k.sendMessage(this.a.k.obtainMessage(4, paramString));
       }
     }
   }
@@ -64,7 +64,7 @@ class TroopMemberDataProvider$2
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      if (!this.a.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      if (!this.a.c.equals(paramString)) {
         return;
       }
       ThreadManager.post(new TroopMemberDataProvider.2.1(this, paramList), 5, null, true);
@@ -73,7 +73,7 @@ class TroopMemberDataProvider$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.TroopMemberDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

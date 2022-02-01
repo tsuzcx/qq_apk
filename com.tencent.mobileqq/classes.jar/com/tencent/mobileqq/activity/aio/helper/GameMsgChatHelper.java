@@ -29,7 +29,7 @@ import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.gamecenter.config.GameCenterMsgBean;
 import com.tencent.mobileqq.gamecenter.config.GameCenterMsgConfigProcessor;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
 import com.tencent.mobileqq.gamecenter.view.TriangleView;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
@@ -40,40 +40,20 @@ import com.tencent.widget.XEditTextEx;
 public class GameMsgChatHelper
   extends SimpleUIAIOHelper
 {
-  private GameMsgChatPie.StrangerRecomInfo jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo;
-  private GameDetailInfo jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameDetailInfo;
-  private ImageButton jdField_c_of_type_AndroidWidgetImageButton;
-  private boolean jdField_c_of_type_Boolean;
-  
-  public GameMsgChatHelper(BaseChatPie paramBaseChatPie)
-  {
-    super(paramBaseChatPie);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof GameMsgChatPie)) {
-      return;
-    }
-    throw new IllegalArgumentException("A GameMsgChatPie is required");
-  }
-  
-  private SessionInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-  }
-  
-  private GameDetailInfo a()
-  {
-    return ((GameMsgChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie).c();
-  }
+  private ImageButton a;
+  private GameMsgChatPie.StrangerRecomInfo b;
+  private boolean h;
   
   private void a(View paramView)
   {
     PopupWindow localPopupWindow = new PopupWindow(paramView.getContext());
     localPopupWindow.setBackgroundDrawable(null);
-    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131559141, null);
+    ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(paramView.getContext()).inflate(2131624896, null);
     localViewGroup.measure(0, 0);
     localPopupWindow.setContentView(localViewGroup);
     localPopupWindow.setOutsideTouchable(true);
     localPopupWindow.setFocusable(true);
-    Object localObject = (TriangleView)localViewGroup.findViewById(2131379124);
+    Object localObject = (TriangleView)localViewGroup.findViewById(2131447860);
     int i = ((TriangleView)localObject).getMeasuredWidth() / 2;
     int j = ((ViewGroup.MarginLayoutParams)((TriangleView)localObject).getLayoutParams()).rightMargin;
     localObject = new int[2];
@@ -81,176 +61,172 @@ public class GameMsgChatHelper
     localPopupWindow.showAtLocation(paramView, 51, localObject[0] + paramView.getMeasuredWidth() / 2 - localViewGroup.getMeasuredWidth() + (i + j), localObject[1] - localViewGroup.getMeasuredHeight());
   }
   
-  private void h()
+  private GameDetailInfo e()
   {
-    if (this.jdField_c_of_type_AndroidWidgetImageButton != null) {
+    return ((GameMsgChatPie)this.c).bH();
+  }
+  
+  private SessionInfo h()
+  {
+    return this.c.aE();
+  }
+  
+  private void i()
+  {
+    if (this.a != null) {
       return;
     }
-    Object localObject = a();
+    Object localObject = e();
     if ((localObject != null) && ("1104466820".equals(((GameDetailInfo)localObject).c)))
     {
       localObject = GameCenterMsgConfigProcessor.a();
       if (localObject != null)
       {
-        if (!((GameCenterMsgBean)localObject).a) {
+        if (!((GameCenterMsgBean)localObject).k) {
           return;
         }
-        localObject = (ViewStub)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.findViewById(2131362487);
+        localObject = (ViewStub)this.c.X.findViewById(2131428096);
         if (localObject != null)
         {
-          this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)((ViewStub)localObject).inflate());
-          this.jdField_c_of_type_AndroidWidgetImageButton.setBackgroundResource(2130840184);
-          this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-          this.jdField_c_of_type_AndroidWidgetImageButton.setVisibility(0);
-          j();
-          if (!((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getAIOGameEntryShown(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getAccount())) {
-            this.jdField_c_of_type_AndroidWidgetImageButton.getViewTreeObserver().addOnPreDrawListener(new GameMsgChatHelper.1(this));
+          this.a = ((ImageButton)((ViewStub)localObject).inflate());
+          this.a.setBackgroundResource(2130840496);
+          this.a.setOnClickListener(this);
+          this.a.setVisibility(0);
+          k();
+          if (!((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getAIOGameEntryShown(this.c.i().getAccount())) {
+            this.a.getViewTreeObserver().addOnPreDrawListener(new GameMsgChatHelper.1(this));
           }
         }
       }
     }
   }
   
-  private void i()
-  {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), QQBrowserActivity.class);
-    String str = a().a();
-    localIntent.putExtra("url", String.format("https://imgcache.qq.com/ogame/sgame-team/index.html#/subscribe-form?_wv=7&gameappid=%s&fromRoleid=%s&toRoleid=%s&pvsrc=msg-helper", new Object[] { "1104466820", a().b(), str }));
-    localIntent.putExtra("big_brother_source_key", "biz_src_zf_games");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().startActivity(localIntent);
-  }
-  
   private void j()
   {
-    if ((!this.jdField_c_of_type_Boolean) && (this.jdField_c_of_type_AndroidWidgetImageButton != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo != null))
+    Intent localIntent = new Intent(this.c.aX(), QQBrowserActivity.class);
+    String str = h().c();
+    localIntent.putExtra("url", String.format("https://imgcache.qq.com/ogame/sgame-team/index.html#/subscribe-form?_wv=7&gameappid=%s&fromRoleid=%s&toRoleid=%s&pvsrc=msg-helper", new Object[] { "1104466820", h().d(), str }));
+    localIntent.putExtra("big_brother_source_key", "biz_src_zf_games");
+    this.c.aX().startActivity(localIntent);
+  }
+  
+  private void k()
+  {
+    if ((!this.h) && (this.a != null) && (this.b != null))
     {
-      this.jdField_c_of_type_Boolean = true;
+      this.h = true;
       IGameMsgHelperApi localIGameMsgHelperApi = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
       String str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+      if (this.b.a == 0) {
         str1 = "92015";
       } else {
         str1 = "92005";
       }
       String str2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+      if (this.b.a == 0) {
         str2 = "207979";
       } else {
         str2 = "207977";
       }
-      localIGameMsgHelperApi.reportForGameMsg("1104466820", "1", "145", "920", str1, str2, "", "", "20", a().a(), a().b(), "");
+      localIGameMsgHelperApi.reportForGameMsg("1104466820", "1", "145", "920", str1, str2, "", "", "20", h().c(), h().d(), "");
     }
   }
   
-  private void k()
+  private void r()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo != null)
+    if (this.b != null)
     {
       String str1;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() != null)) {
-        str1 = ((IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().getRuntimeService(IGameMsgManagerService.class, "all")).getAIORedDotStyleId();
+      if ((this.c != null) && (this.c.i() != null)) {
+        str1 = ((IGameMsgManagerService)this.c.i().getRuntimeService(IGameMsgManagerService.class, "all")).getAIORedDotStyleId();
       } else {
         str1 = "";
       }
       IGameMsgHelperApi localIGameMsgHelperApi = (IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class);
       String str2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+      if (this.b.a == 0) {
         str2 = "92015";
       } else {
         str2 = "92005";
       }
       String str3;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo.a == 0) {
+      if (this.b.a == 0) {
         str3 = "207980";
       } else {
         str3 = "207978";
       }
-      localIGameMsgHelperApi.reportForGameMsg865WithTianJi("1104466820", "1", "145", "920", str2, str3, "", "", "20", a().a(), a().b(), "", str1);
+      localIGameMsgHelperApi.reportForGameMsg865WithTianJi("1104466820", "1", "145", "920", str2, str3, "", "", "20", h().c(), h().d(), "", str1);
     }
   }
   
   protected void a()
   {
     super.a();
-    if (this.jdField_a_of_type_AndroidWidgetImageButton != null) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+    if (this.e != null) {
+      this.e.setVisibility(8);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton != null)
+    if (this.c.Z != null)
     {
-      Object localObject1 = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131367418);
+      Object localObject1 = (LinearLayout)this.c.aZ.findViewById(2131433921);
       Object localObject2 = (LinearLayout.LayoutParams)((LinearLayout)localObject1).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).bottomMargin = 0;
       ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton;
+      localObject1 = this.c.Z;
       ViewGroup.LayoutParams localLayoutParams = ((View)localObject1).getLayoutParams();
       localObject2 = localLayoutParams;
       if ((localLayoutParams instanceof FrameLayout.LayoutParams))
       {
-        localObject1 = (View)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.getParent();
+        localObject1 = (View)this.c.Z.getParent();
         localObject2 = ((View)localObject1).getLayoutParams();
       }
       if ((localObject2 instanceof LinearLayout.LayoutParams))
       {
         localObject2 = (LinearLayout.LayoutParams)localObject2;
-        ((LinearLayout.LayoutParams)localObject2).width = AIOUtils.b(60.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
-        ((LinearLayout.LayoutParams)localObject2).height = AIOUtils.b(34.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources());
+        ((LinearLayout.LayoutParams)localObject2).width = AIOUtils.b(60.0F, this.c.f.getResources());
+        ((LinearLayout.LayoutParams)localObject2).height = AIOUtils.b(34.0F, this.c.f.getResources());
         ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+        this.c.Z.setVisibility(0);
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundResource(a());
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setText(2131690820);
-        if (AppSetting.d) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setContentDescription(HardCodeUtil.a(2131714054));
+        this.c.Z.setBackgroundResource(g());
+        this.c.Z.setText(2131887750);
+        if (AppSetting.e) {
+          this.c.Z.setContentDescription(HardCodeUtil.a(2131911585));
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setEnabled(false);
+      this.c.Z.setEnabled(false);
     }
-    h();
-  }
-  
-  public void a(GameMsgChatPie.StrangerRecomInfo paramStrangerRecomInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie$StrangerRecomInfo = paramStrangerRecomInfo;
-    j();
-  }
-  
-  public void a(GameDetailInfo paramGameDetailInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMsgInfoGameDetailInfo = paramGameDetailInfo;
-    h();
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return true;
+    i();
   }
   
   protected void b()
   {
-    this.jdField_b_of_type_Boolean = true;
+    this.g = true;
   }
   
   public void b(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_AndroidWidgetImageButton != null) {
-      this.jdField_b_of_type_AndroidWidgetImageButton.setSelected(false);
+    if (this.f != null) {
+      this.f.setSelected(false);
     }
   }
   
-  public void c()
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public void d()
   {
     try
     {
-      super.c();
-      LinearLayout localLinearLayout = (LinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131367418);
+      super.d();
+      LinearLayout localLinearLayout = (LinearLayout)this.c.aZ.findViewById(2131433921);
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
       localLayoutParams.bottomMargin = 0;
       localLinearLayout.setLayoutParams(localLayoutParams);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString()))
+      if (TextUtils.isEmpty(this.c.Y.getText().toString()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetPatchedButton.setEnabled(false);
+        this.c.Z.setEnabled(false);
         return;
       }
     }
@@ -260,6 +236,8 @@ public class GameMsgChatHelper
     }
   }
   
+  public void g_(boolean paramBoolean) {}
+  
   public String getTag()
   {
     return "GameMsgChatHelper";
@@ -268,18 +246,18 @@ public class GameMsgChatHelper
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131366114)
+    if (i != 2131432400)
     {
-      if (i == 2131367455)
+      if (i == 2131433961)
       {
-        i();
-        k();
+        j();
+        r();
         break label91;
       }
     }
     else
     {
-      GameDetailInfo localGameDetailInfo = a();
+      GameDetailInfo localGameDetailInfo = e();
       if (localGameDetailInfo != null) {
         ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).reportForGameMsg(localGameDetailInfo.c, "1", "145", "920", "92005", "206353", "", "", "20", "0");
       }
@@ -291,7 +269,7 @@ public class GameMsgChatHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GameMsgChatHelper
  * JD-Core Version:    0.7.0.1
  */

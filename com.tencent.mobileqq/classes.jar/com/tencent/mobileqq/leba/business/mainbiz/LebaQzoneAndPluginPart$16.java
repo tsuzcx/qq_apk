@@ -12,23 +12,23 @@ class LebaQzoneAndPluginPart$16
   
   public void run()
   {
-    GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAMECENTER_MANAGER);
+    GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)this.a.getManager(QQManagerFactory.GAMECENTER_MANAGER);
     if (localGameCenterManagerImp != null) {
       if (!localGameCenterManagerImp.a(601L))
       {
-        long l = this.jdField_a_of_type_Long;
+        long l = this.b;
         if ((l <= 0L) || (!localGameCenterManagerImp.a(l))) {}
       }
       else
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
+        ReportController.b(this.a, "CliOper", "", "", "app_center", "new_exposure", 0, 0, "", "", "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.16
  * JD-Core Version:    0.7.0.1
  */

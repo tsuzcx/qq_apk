@@ -11,6 +11,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.R.attr;
 import androidx.appcompat.R.styleable;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
@@ -28,21 +31,21 @@ abstract class AbsActionBarView
   protected final AbsActionBarView.VisibilityAnimListener mVisAnimListener = new AbsActionBarView.VisibilityAnimListener(this);
   protected ViewPropertyAnimatorCompat mVisibilityAnim;
   
-  AbsActionBarView(Context paramContext)
+  AbsActionBarView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  AbsActionBarView(Context paramContext, AttributeSet paramAttributeSet)
+  AbsActionBarView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
-  AbsActionBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  AbsActionBarView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = new TypedValue();
-    if ((paramContext.getTheme().resolveAttribute(2131034119, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
+    if ((paramContext.getTheme().resolveAttribute(R.attr.actionBarPopupTheme, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
       this.mPopupContext = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
       return;
@@ -131,7 +134,7 @@ abstract class AbsActionBarView
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    Object localObject = getContext().obtainStyledAttributes(null, R.styleable.ActionBar, 2131034122, 0);
+    Object localObject = getContext().obtainStyledAttributes(null, R.styleable.ActionBar, R.attr.actionBarStyle, 0);
     setContentHeight(((TypedArray)localObject).getLayoutDimension(R.styleable.ActionBar_height, 0));
     ((TypedArray)localObject).recycle();
     localObject = this.mActionMenuPresenter;

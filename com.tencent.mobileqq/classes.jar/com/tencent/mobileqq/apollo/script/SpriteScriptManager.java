@@ -7,10 +7,10 @@ import com.tencent.mobileqq.apollo.api.IApolloMessageService;
 import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
 import com.tencent.mobileqq.apollo.api.impl.ApolloMessageServiceImpl;
 import com.tencent.mobileqq.apollo.api.impl.ApolloMessageServiceImpl.Companion.MessageType;
+import com.tencent.mobileqq.apollo.bubble.ApolloBubbleLogic;
 import com.tencent.mobileqq.apollo.listener.IApolloStatusOrDressChangeListener;
 import com.tencent.mobileqq.apollo.listener.ITraceSpanMessage;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
-import com.tencent.mobileqq.apollo.task.ApolloBubbleLogic;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
@@ -22,7 +22,7 @@ import mqq.app.AppRuntime;
 public class SpriteScriptManager
   implements ISpriteScriptManager
 {
-  public static final String TAG = "[cmshow][scripted]SpriteScriptManager";
+  private static final String TAG = "[cmshow][scripted]SpriteScriptManager";
   private WeakReference<QQAppInterface> mAppRef;
   private ApolloBubbleLogic mBubbleLogic;
   private boolean mIsInit = false;
@@ -39,7 +39,7 @@ public class SpriteScriptManager
   
   private void notifyStatusOrDressChanged(int paramInt, ArrayList<String> paramArrayList)
   {
-    SpriteActionScript localSpriteActionScript = SpriteUtil.a(getApp());
+    SpriteActionScript localSpriteActionScript = SpriteUtil.i(getApp());
     if (localSpriteActionScript != null) {
       localSpriteActionScript.a(paramInt, paramArrayList);
     }
@@ -48,7 +48,7 @@ public class SpriteScriptManager
   private void reportTraceSpanMsg(int paramInt, Object... paramVarArgs)
   {
     if (!this.mIsInit) {
-      TraceReportUtil.a(TraceReportUtil.a(this.mSpriteContext.d), 1, paramInt, 0L, paramVarArgs);
+      TraceReportUtil.a(TraceReportUtil.c(this.mSpriteContext.i), 1, paramInt, 0L, paramVarArgs);
     }
   }
   
@@ -57,7 +57,7 @@ public class SpriteScriptManager
     if (!SpriteUtil.b(getApp(), paramInt, paramString)) {
       return;
     }
-    paramString = SpriteUtil.a(getApp());
+    paramString = SpriteUtil.i(getApp());
     if (paramString != null) {
       paramString.c(1);
     }
@@ -72,7 +72,7 @@ public class SpriteScriptManager
     if (!SpriteUtil.b(getApp(), paramInt, paramString)) {
       return;
     }
-    paramString = SpriteUtil.a(getApp());
+    paramString = SpriteUtil.i(getApp());
     if (paramString != null) {
       paramString.c(2);
     }
@@ -175,7 +175,7 @@ public class SpriteScriptManager
   {
     SpriteBridge localSpriteBridge = this.mTaskBridge;
     if (localSpriteBridge != null) {
-      localSpriteBridge.a();
+      localSpriteBridge.b();
     }
   }
   
@@ -189,7 +189,7 @@ public class SpriteScriptManager
     localObject = this.mBubbleLogic;
     if (localObject != null)
     {
-      ((ApolloBubbleLogic)localObject).a();
+      ((ApolloBubbleLogic)localObject).b();
       this.mBubbleLogic = null;
     }
     localObject = this.mSpriteActionMessage;
@@ -204,10 +204,10 @@ public class SpriteScriptManager
       ((SpriteBackgroundManager)localObject).f();
       this.mSpriteBackgroundManager = null;
     }
-    this.mTaskHandler.a();
+    this.mTaskHandler.e();
     this.mScriptCreator.b();
-    this.mTaskBridge.b();
-    this.mSpriteContext.c();
+    this.mTaskBridge.c();
+    this.mSpriteContext.y();
     this.mIsInit = false;
     localObject = getApp();
     if (localObject == null) {
@@ -247,14 +247,14 @@ public class SpriteScriptManager
   {
     if (paramSessionInfo != null)
     {
-      this.mSpriteContext.a(paramSessionInfo.jdField_a_of_type_Int, 0);
-      this.mSpriteContext.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+      this.mSpriteContext.a(paramSessionInfo.a, 0);
+      this.mSpriteContext.b = paramSessionInfo.b;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteScriptManager
  * JD-Core Version:    0.7.0.1
  */

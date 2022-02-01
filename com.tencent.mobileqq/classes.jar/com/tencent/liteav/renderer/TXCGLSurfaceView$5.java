@@ -2,14 +2,14 @@ package com.tencent.liteav.renderer;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import com.tencent.liteav.basic.c.o;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.opengl.p;
 import java.nio.ByteBuffer;
 
 class TXCGLSurfaceView$5
   implements Runnable
 {
-  TXCGLSurfaceView$5(TXCGLSurfaceView paramTXCGLSurfaceView, ByteBuffer paramByteBuffer, Bitmap paramBitmap, int paramInt1, int paramInt2, o paramo) {}
+  TXCGLSurfaceView$5(TXCGLSurfaceView paramTXCGLSurfaceView, ByteBuffer paramByteBuffer, Bitmap paramBitmap, int paramInt1, int paramInt2, p paramp) {}
   
   public void run()
   {
@@ -43,7 +43,7 @@ class TXCGLSurfaceView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCGLSurfaceView.5
  * JD-Core Version:    0.7.0.1
  */

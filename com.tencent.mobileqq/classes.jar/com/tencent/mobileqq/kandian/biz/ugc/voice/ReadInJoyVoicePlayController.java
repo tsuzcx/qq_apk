@@ -13,76 +13,45 @@ import java.lang.ref.WeakReference;
 
 public class ReadInJoyVoicePlayController
 {
-  private static ReadInJoyVoicePlayController jdField_a_of_type_ComTencentMobileqqKandianBizUgcVoiceReadInJoyVoicePlayController;
   public static final String a = "ReadInJoyVoicePlayController";
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager = (AudioManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("audio");
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private UGCVoiceInfo jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerUGCVoiceInfo;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ReadInJoyVoicePlayController.3(this);
-  private WeakReference<ReadInJoyVoicePlayController.IPlayCallback> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static ReadInJoyVoicePlayController b;
+  private MediaPlayer c;
+  private AudioManager d = (AudioManager)BaseApplicationImpl.getApplication().getBaseContext().getSystemService("audio");
+  private WeakReference<ReadInJoyVoicePlayController.IPlayCallback> e;
+  private UGCVoiceInfo f;
+  private boolean g = false;
+  private Handler h = new Handler(Looper.getMainLooper());
+  private Runnable i = new ReadInJoyVoicePlayController.3(this);
   
   public static ReadInJoyVoicePlayController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianBizUgcVoiceReadInJoyVoicePlayController == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianBizUgcVoiceReadInJoyVoicePlayController == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianBizUgcVoiceReadInJoyVoicePlayController = new ReadInJoyVoicePlayController();
+        if (b == null) {
+          b = new ReadInJoyVoicePlayController();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBizUgcVoiceReadInJoyVoicePlayController;
-  }
-  
-  public void a()
-  {
-    MediaPlayer localMediaPlayer = this.jdField_a_of_type_AndroidMediaMediaPlayer;
-    if (localMediaPlayer != null)
-    {
-      try
-      {
-        localMediaPlayer.stop();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerUGCVoiceInfo;
-      if (localObject != null)
-      {
-        ((UGCVoiceInfo)localObject).isPlaying = false;
-        localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-        if (localObject != null)
-        {
-          localObject = (ReadInJoyVoicePlayController.IPlayCallback)((WeakReference)localObject).get();
-          if (localObject != null)
-          {
-            ((ReadInJoyVoicePlayController.IPlayCallback)localObject).b(this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerUGCVoiceInfo);
-            a(false, "ugc voice play");
-          }
-        }
-      }
-    }
+    return b;
   }
   
   public void a(ReadInJoyVoicePlayController.IPlayCallback paramIPlayCallback, UGCVoiceInfo paramUGCVoiceInfo)
   {
-    if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+    if (this.c == null) {
+      this.c = new MediaPlayer();
     }
-    a();
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIPlayCallback);
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerUGCVoiceInfo = paramUGCVoiceInfo;
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new ReadInJoyVoicePlayController.1(this));
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(new ReadInJoyVoicePlayController.2(this));
+    b();
+    this.c.reset();
+    this.e = new WeakReference(paramIPlayCallback);
+    this.f = paramUGCVoiceInfo;
+    this.c.setOnPreparedListener(new ReadInJoyVoicePlayController.1(this));
+    this.c.setOnCompletionListener(new ReadInJoyVoicePlayController.2(this));
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramUGCVoiceInfo.voiceUrl);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+      this.c.setDataSource(paramUGCVoiceInfo.voiceUrl);
+      this.c.prepareAsync();
       return;
     }
     catch (IOException paramIPlayCallback)
@@ -95,12 +64,12 @@ public class ReadInJoyVoicePlayController
   {
     try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_JavaLangRunnable != null))
+      this.g = paramBoolean;
+      if ((this.h != null) && (this.i != null))
       {
         if (QLog.isColorLevel())
         {
-          String str = jdField_a_of_type_JavaLangString;
+          String str = a;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("requestOrAbandonAudioFocus isFocus:");
           localStringBuilder.append(paramBoolean);
@@ -108,21 +77,52 @@ public class ReadInJoyVoicePlayController
           localStringBuilder.append(paramString);
           QLog.d(str, 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+        this.h.removeCallbacks(this.i);
+        if (this.g) {
+          this.h.post(this.i);
         } else {
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+          this.h.postDelayed(this.i, 2000L);
         }
       }
       return;
     }
     finally {}
   }
+  
+  public void b()
+  {
+    MediaPlayer localMediaPlayer = this.c;
+    if (localMediaPlayer != null)
+    {
+      try
+      {
+        localMediaPlayer.stop();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      Object localObject = this.f;
+      if (localObject != null)
+      {
+        ((UGCVoiceInfo)localObject).isPlaying = false;
+        localObject = this.e;
+        if (localObject != null)
+        {
+          localObject = (ReadInJoyVoicePlayController.IPlayCallback)((WeakReference)localObject).get();
+          if (localObject != null)
+          {
+            ((ReadInJoyVoicePlayController.IPlayCallback)localObject).b(this.f);
+            a(false, "ugc voice play");
+          }
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.voice.ReadInJoyVoicePlayController
  * JD-Core Version:    0.7.0.1
  */

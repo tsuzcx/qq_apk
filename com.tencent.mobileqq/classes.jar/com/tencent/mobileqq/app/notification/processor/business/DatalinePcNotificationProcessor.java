@@ -13,27 +13,27 @@ public class DatalinePcNotificationProcessor
     super(paramQQAppInterface, paramNotificationElement);
   }
   
-  public int a(Message paramMessage)
-  {
-    return -113;
-  }
-  
   public NotificationElement a(Message paramMessage)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(b());
     ((StringBuilder)localObject).append(": ");
     localObject = ((StringBuilder)localObject).toString();
-    this.a.b((String)localObject);
-    localObject = c();
-    this.a.d((String)localObject);
-    b(paramMessage);
-    return this.a;
+    this.b.b((String)localObject);
+    localObject = d();
+    this.b.d((String)localObject);
+    c(paramMessage);
+    return this.b;
+  }
+  
+  public int b(Message paramMessage)
+  {
+    return -113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.processor.business.DatalinePcNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

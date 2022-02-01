@@ -90,9 +90,27 @@ public class DTReportComponent$Builder
     return this;
   }
   
+  public Builder elementScrollEndExposePolicy(EndExposurePolicy paramEndExposurePolicy)
+  {
+    this.mConfigurationBuilder.elementScrollEndExposePolicy(paramEndExposurePolicy);
+    return this;
+  }
+  
+  public Builder elementScrollExposePolicy(ExposurePolicy paramExposurePolicy)
+  {
+    this.mConfigurationBuilder.elementScrollExposePolicy(paramExposurePolicy);
+    return this;
+  }
+  
   public Builder enableDebug(boolean paramBoolean)
   {
     this.mEnableDebug = paramBoolean;
+    return this;
+  }
+  
+  public Builder enableElementDetect(boolean paramBoolean)
+  {
+    this.mConfigurationBuilder.elementDetectEnable(paramBoolean);
     return this;
   }
   
@@ -146,7 +164,7 @@ public class DTReportComponent$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.DTReportComponent.Builder
  * JD-Core Version:    0.7.0.1
  */

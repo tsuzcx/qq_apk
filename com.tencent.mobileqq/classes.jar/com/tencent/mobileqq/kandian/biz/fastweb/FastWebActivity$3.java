@@ -27,8 +27,8 @@ class FastWebActivity$3
   public void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     FastWebActivity.a(this.a, true);
-    FastWebActivity.a(this.a, false);
-    FastWebActivity.a(this.a);
+    FastWebActivity.b(this.a, false);
+    FastWebActivity.c(this.a);
     if ((paramInt2 != 3) && (paramInt2 != 5)) {
       this.a.overridePendingTransition(0, 0);
     }
@@ -61,7 +61,7 @@ class FastWebActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.3
  * JD-Core Version:    0.7.0.1
  */

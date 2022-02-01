@@ -12,24 +12,24 @@ class OkHttpNetworkManager$3
   
   public long contentLength()
   {
-    return this.jdField_a_of_type_Okhttp3RequestBody.contentLength();
+    return this.a.contentLength();
   }
   
   public MediaType contentType()
   {
-    return this.jdField_a_of_type_Okhttp3RequestBody.contentType();
+    return this.a.contentType();
   }
   
   public void writeTo(BufferedSink paramBufferedSink)
   {
     paramBufferedSink = Okio.buffer(Okio.sink(new OkHttpNetworkManager.3.1(this, paramBufferedSink.outputStream())));
-    this.jdField_a_of_type_Okhttp3RequestBody.writeTo(paramBufferedSink);
+    this.a.writeTo(paramBufferedSink);
     paramBufferedSink.flush();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager.3
  * JD-Core Version:    0.7.0.1
  */

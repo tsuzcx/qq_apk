@@ -18,16 +18,16 @@ import com.tencent.aelight.camera.impl.R.styleable;
 public class AECropperGridView
   extends View
 {
-  private float jdField_a_of_type_Float = 0.8F;
-  private int jdField_a_of_type_Int = 268435455;
-  private long jdField_a_of_type_Long = 200L;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AECropperGridView.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b = 200;
-  private int c = 3;
+  private long a = 200L;
+  private Paint b;
+  private int c = 268435455;
+  private int d = 200;
+  private float e = 0.8F;
+  private int f = 3;
+  private boolean g = false;
+  private Handler h;
+  private Path i;
+  private Runnable j = new AECropperGridView.1(this);
   
   public AECropperGridView(Context paramContext)
   {
@@ -52,9 +52,9 @@ public class AECropperGridView
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.c);
-      this.jdField_a_of_type_Int = paramContext.getColor(0, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Float = paramContext.getFloat(1, 1.0F);
-      float f2 = this.jdField_a_of_type_Float * 255.0F;
+      this.c = paramContext.getColor(0, this.c);
+      this.e = paramContext.getFloat(1, 1.0F);
+      float f2 = this.e * 255.0F;
       float f1;
       if (f2 < 0.0F)
       {
@@ -67,61 +67,61 @@ public class AECropperGridView
           f1 = 255.0F;
         }
       }
-      this.b = ((int)f1);
-      this.c = paramContext.getDimensionPixelOffset(2, this.c);
+      this.d = ((int)f1);
+      this.f = paramContext.getDimensionPixelOffset(2, this.f);
       paramContext.recycle();
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.c);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.b);
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.b = new Paint();
+    this.b.setColor(this.c);
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeCap(Paint.Cap.ROUND);
+    this.b.setStrokeWidth(this.f);
+    this.b.setAlpha(this.d);
+    this.i = new Path();
+    this.h = new Handler();
     if (isInEditMode()) {
-      this.jdField_a_of_type_Boolean = true;
+      this.g = true;
     }
   }
   
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.g) {
       return;
     }
-    int i = paramCanvas.getWidth();
-    int j = paramCanvas.getHeight();
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f2 = i / 3;
+    int k = paramCanvas.getWidth();
+    int m = paramCanvas.getHeight();
+    this.i.reset();
+    Path localPath = this.i;
+    float f2 = k / 3;
     localPath.moveTo(f2, 0.0F);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f1 = j;
+    localPath = this.i;
+    float f1 = m;
     localPath.lineTo(f2, f1);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    f2 = i * 2 / 3;
+    localPath = this.i;
+    f2 = k * 2 / 3;
     localPath.moveTo(f2, 0.0F);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2, f1);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    f2 = j / 3;
+    this.i.lineTo(f2, f1);
+    localPath = this.i;
+    f2 = m / 3;
     localPath.moveTo(0.0F, f2);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    f1 = i;
+    localPath = this.i;
+    f1 = k;
     localPath.lineTo(f1, f2);
-    localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    f2 = j * 2 / 3;
+    localPath = this.i;
+    f2 = m * 2 / 3;
     localPath.moveTo(0.0F, f2);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1, f2);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.i.lineTo(f1, f2);
+    paramCanvas.drawPath(this.i, this.b);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    int i = getContext().getResources().getConfiguration().orientation;
-    if ((i != 1) && (i != 0))
+    int k = getContext().getResources().getConfiguration().orientation;
+    if ((k != 1) && (k != 0))
     {
       paramInt1 = View.MeasureSpec.getSize(paramInt2);
       setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), paramInt1);
@@ -133,23 +133,23 @@ public class AECropperGridView
   
   public void setShowGrid(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.g != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Boolean)
+      this.g = paramBoolean;
+      if (this.g)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-        setAlpha(this.jdField_a_of_type_Float);
+        this.h.removeCallbacks(this.j);
+        setAlpha(this.e);
         invalidate();
         return;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Long);
+      this.h.postDelayed(this.j, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.nocropper.AECropperGridView
  * JD-Core Version:    0.7.0.1
  */

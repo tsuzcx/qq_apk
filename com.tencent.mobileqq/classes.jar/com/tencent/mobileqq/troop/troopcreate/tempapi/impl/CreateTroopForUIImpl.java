@@ -47,14 +47,14 @@ public class CreateTroopForUIImpl
   ContactSearchFragment getContactSearchFragment(NewTroopContactView paramNewTroopContactView)
   {
     this.mView = paramNewTroopContactView;
-    return ContactSearchFragment.a(-1, 4194309, null, paramNewTroopContactView.b, this.listener);
+    return ContactSearchFragment.a(-1, 4194309, null, paramNewTroopContactView.d, this.listener);
   }
   
   public Groups getGroupByGroupId(long paramLong)
   {
     ContactListAdapter localContactListAdapter = this.mAdapter;
     if (localContactListAdapter != null) {
-      localContactListAdapter.a(paramLong);
+      localContactListAdapter.b(paramLong);
     }
     QLog.e("CreateTroopForUIImpl", 1, new Object[] { "getGroupByGroupId: adapter = ", this.mAdapter });
     return new Groups();
@@ -98,13 +98,13 @@ public class CreateTroopForUIImpl
     if (localContactSearchFragment != null)
     {
       localContactSearchFragment.d(true);
-      localContactSearchFragment.a(paramNewTroopContactView.a(), paramNewTroopContactView.a);
+      localContactSearchFragment.a(paramNewTroopContactView.getResultUins(), paramNewTroopContactView.c);
       paramNewTroopContactView = paramQBaseActivity.getSupportFragmentManager().beginTransaction();
       paramQBaseActivity = this.mSearchFragment;
       if (paramQBaseActivity != null) {
         paramNewTroopContactView.remove(paramQBaseActivity);
       }
-      paramNewTroopContactView.add(2131376483, localContactSearchFragment);
+      paramNewTroopContactView.add(2131444724, localContactSearchFragment);
       paramNewTroopContactView.commitAllowingStateLoss();
       this.mSearchFragment = localContactSearchFragment;
     }
@@ -120,7 +120,7 @@ public class CreateTroopForUIImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.tempapi.impl.CreateTroopForUIImpl
  * JD-Core Version:    0.7.0.1
  */

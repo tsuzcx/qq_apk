@@ -21,24 +21,24 @@ class TroopMemberDataProvider$2$1
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onUpdateTroopGetMemberList:");
         int i;
-        if (this.jdField_a_of_type_JavaUtilList == null) {
+        if (this.a == null) {
           i = 0;
         } else {
-          i = this.jdField_a_of_type_JavaUtilList.size();
+          i = this.a.size();
         }
         ((StringBuilder)localObject).append(i);
         QLog.d("TroopMemberDataProvider", 2, ((StringBuilder)localObject).toString());
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$2.a.jdField_a_of_type_AndroidContentContext;
+      Object localObject = this.b.a.b;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("last_update_time");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$2.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localStringBuilder.append(this.b.a.a.getCurrentAccountUin());
       localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 4).edit();
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("key_last_update_time");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$2.a.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b.a.c);
       ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), System.currentTimeMillis()).commit();
-      TroopMemberDataProvider.a(this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$2.a, this.jdField_a_of_type_ComTencentMobileqqTroopSelecttroopmemberTroopMemberDataProvider$2.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+      TroopMemberDataProvider.a(this.b.a, this.b.a.c, this.a);
       return;
     }
     catch (Exception localException)
@@ -56,7 +56,7 @@ class TroopMemberDataProvider$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.TroopMemberDataProvider.2.1
  * JD-Core Version:    0.7.0.1
  */

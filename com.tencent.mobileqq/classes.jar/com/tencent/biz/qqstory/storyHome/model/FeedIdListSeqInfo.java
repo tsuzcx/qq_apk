@@ -17,22 +17,21 @@ import java.util.List;
 
 public class FeedIdListSeqInfo
 {
-  public final int a;
-  public long a;
   public final String a;
-  public final boolean a;
-  public int b;
-  public final String b;
-  public boolean b;
+  public final int b;
   public final String c;
+  public final String d;
+  public long e;
+  public final boolean f;
+  public boolean g;
+  public int h = -1;
   
   public FeedIdListSeqInfo(qqstory_struct.FeedSeqInfo paramFeedSeqInfo)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramFeedSeqInfo.feed_id.get().toStringUtf8();
-    this.jdField_a_of_type_Int = paramFeedSeqInfo.seq.get();
-    this.jdField_b_of_type_JavaLangString = paramFeedSeqInfo.union_id.get().toStringUtf8();
-    this.c = String.valueOf(paramFeedSeqInfo.date.get());
+    this.a = paramFeedSeqInfo.feed_id.get().toStringUtf8();
+    this.b = paramFeedSeqInfo.seq.get();
+    this.c = paramFeedSeqInfo.union_id.get().toStringUtf8();
+    this.d = String.valueOf(paramFeedSeqInfo.date.get());
     boolean bool2 = paramFeedSeqInfo.is_playable.has();
     boolean bool1 = true;
     if (bool2)
@@ -40,40 +39,39 @@ public class FeedIdListSeqInfo
       if (paramFeedSeqInfo.is_playable.get() != 1) {
         bool1 = false;
       }
-      this.jdField_a_of_type_Boolean = bool1;
+      this.f = bool1;
     }
     else
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.f = true;
     }
     try
     {
-      if (!TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
+      if (!TextUtils.isEmpty(this.d)) {
+        this.e = FeedManager.h().parse(this.d).getTime();
       }
     }
     catch (Exception paramFeedSeqInfo)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parse date ");
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.d);
       SLog.c("Q.qqstory.home", localStringBuilder.toString(), paramFeedSeqInfo);
     }
-    AssertUtils.checkNotEmpty(this.jdField_a_of_type_JavaLangString);
+    AssertUtils.checkNotEmpty(this.a);
   }
   
   public FeedIdListSeqInfo(@NonNull String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Boolean = true;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.f = true;
     try
     {
-      if (!TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
+      if (!TextUtils.isEmpty(this.d)) {
+        this.e = FeedManager.h().parse(this.d).getTime();
       }
     }
     catch (ParseException paramString2)
@@ -89,7 +87,7 @@ public class FeedIdListSeqInfo
     int i = 0;
     while (paramList.hasNext())
     {
-      if (((FeedIdListSeqInfo)paramList.next()).jdField_a_of_type_JavaLangString.equals(paramString)) {
+      if (((FeedIdListSeqInfo)paramList.next()).a.equals(paramString)) {
         return i;
       }
       i += 1;
@@ -100,14 +98,14 @@ public class FeedIdListSeqInfo
   public qqstory_struct.FeedSeqInfo a()
   {
     qqstory_struct.FeedSeqInfo localFeedSeqInfo = new qqstory_struct.FeedSeqInfo();
-    localFeedSeqInfo.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localFeedSeqInfo.seq.set(this.jdField_a_of_type_Int);
-    if (this.jdField_b_of_type_JavaLangString != null) {
-      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localFeedSeqInfo.feed_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    localFeedSeqInfo.seq.set(this.b);
+    if (this.c != null) {
+      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.c));
     }
     try
     {
-      Integer localInteger1 = Integer.valueOf(FeedManager.a().format(new Date(NetConnInfoCenter.getServerTimeMillis())));
+      Integer localInteger1 = Integer.valueOf(FeedManager.h().format(new Date(NetConnInfoCenter.getServerTimeMillis())));
       localFeedSeqInfo.date.set(localInteger1.intValue());
       return localFeedSeqInfo;
     }
@@ -116,7 +114,7 @@ public class FeedIdListSeqInfo
       SLog.b("FeedIdListSeqInfo", "exception ", localException1);
       try
       {
-        Integer localInteger2 = Integer.valueOf(FeedManager.a().format(new Date()));
+        Integer localInteger2 = Integer.valueOf(FeedManager.h().format(new Date()));
         localFeedSeqInfo.date.set(localInteger2.intValue());
         return localFeedSeqInfo;
       }
@@ -132,15 +130,15 @@ public class FeedIdListSeqInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("FeedIdListSeqInfo{feedId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mSeq=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mUnionId='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", date='");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();

@@ -32,7 +32,7 @@ public class ArkAppListActivity
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838740);
+    paramBundle.setBackgroundResource(2130838959);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
     int j = AIOUtils.b(20.0F, getResources());
@@ -58,7 +58,7 @@ public class ArkAppListActivity
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131690123);
+    super.setTitle(2131887022);
     return true;
   }
   
@@ -71,7 +71,7 @@ public class ArkAppListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.setting.ArkAppListActivity
  * JD-Core Version:    0.7.0.1
  */

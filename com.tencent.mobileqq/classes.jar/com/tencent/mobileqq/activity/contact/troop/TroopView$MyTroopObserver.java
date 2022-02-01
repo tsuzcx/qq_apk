@@ -14,14 +14,14 @@ public class TroopView$MyTroopObserver
   protected void onGetMutilTroopInfoResult(boolean paramBoolean, ArrayList<TroopInfo> paramArrayList)
   {
     if (paramBoolean) {
-      this.a.j();
+      this.a.l();
     }
   }
   
   protected void onGetTroopInfoResult(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
-      this.a.j();
+      this.a.l();
     }
   }
   
@@ -30,34 +30,34 @@ public class TroopView$MyTroopObserver
     if (paramBoolean) {
       TroopView.a(this.a);
     }
-    if (this.a.c)
+    if (this.a.l)
     {
       TroopView localTroopView = this.a;
-      localTroopView.c = false;
+      localTroopView.l = false;
       if (paramBoolean)
       {
-        localTroopView.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+        localTroopView.m.a(0);
         this.a.a(101, 800L);
       }
       else
       {
-        localTroopView.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.springBackOverScrollHeaderView();
-        this.a.b(2131719247);
+        localTroopView.j.springBackOverScrollHeaderView();
+        this.a.a(2131916799);
       }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
+    this.a.j.postDelayed(new TroopView.MyTroopObserver.1(this), 1200L);
   }
   
   protected void onUpdateTroopNickname(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.a.j();
+      this.a.l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver
  * JD-Core Version:    0.7.0.1
  */

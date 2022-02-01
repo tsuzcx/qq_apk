@@ -28,7 +28,7 @@ class PtvTemplateManager$4$1
     if (this.a.a.usable) {
       try
       {
-        ZipUtils.unZipFile(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+        ZipUtils.unZipFile(new File(PtvTemplateManager.e, this.a.a.name), PtvTemplateManager.b);
         return;
       }
       catch (IOException paramNetResp)
@@ -44,7 +44,7 @@ class PtvTemplateManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.4.1
  * JD-Core Version:    0.7.0.1
  */

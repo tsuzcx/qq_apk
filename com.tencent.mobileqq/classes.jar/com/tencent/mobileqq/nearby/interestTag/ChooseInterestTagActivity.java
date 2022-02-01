@@ -163,7 +163,7 @@ public class ChooseInterestTagActivity
     {
       this.rightViewText.setEnabled(false);
       if (!this.mIsFoodOrSport) {
-        this.mEtIntput.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842412), null, null, null);
+        this.mEtIntput.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130843365), null, null, null);
       }
     }
     else
@@ -205,7 +205,7 @@ public class ChooseInterestTagActivity
       {
         this.rightViewText.setEnabled(false);
         if (!this.mIsFoodOrSport) {
-          this.mEtIntput.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842412), null, null, null);
+          this.mEtIntput.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130843365), null, null, null);
         }
       }
       else
@@ -245,15 +245,15 @@ public class ChooseInterestTagActivity
         if (this.mTagType == 7)
         {
           localObject2 = new GradientDrawable();
-          ((GradientDrawable)localObject2).setColor(getResources().getColor(2131165886));
+          ((GradientDrawable)localObject2).setColor(getResources().getColor(2131166580));
           ((GradientDrawable)localObject2).setCornerRadius(this.mScreenDensity * 10.0F);
           ((GradientDrawable)localObject2).setShape(0);
-          i = getResources().getDimensionPixelSize(2131297462);
+          i = getResources().getDimensionPixelSize(2131298113);
           ((GradientDrawable)localObject2).setSize(i, i);
         }
         else
         {
-          localObject2 = getResources().getDrawable(2131165886);
+          localObject2 = getResources().getDrawable(2131166580);
         }
         if (!TextUtils.isEmpty(paramInterestTagInfo.tagIconUrl))
         {
@@ -262,15 +262,15 @@ public class ChooseInterestTagActivity
             localObject1 = URLDrawable.URLDrawableOptions.obtain();
             if (this.mTagType == 5)
             {
-              i = getResources().getDimensionPixelSize(2131297464);
+              i = getResources().getDimensionPixelSize(2131298115);
               ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
             }
             else
             {
-              i = getResources().getDimensionPixelSize(2131297462);
+              i = getResources().getDimensionPixelSize(2131298113);
               ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = i;
             }
-            j = getResources().getDimensionPixelSize(2131297463);
+            j = getResources().getDimensionPixelSize(2131298114);
             ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = j;
             ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
             ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
@@ -280,7 +280,7 @@ public class ChooseInterestTagActivity
               if (this.mTagType == 7)
               {
                 paramInterestTagInfo.setTag(URLDrawableDecodeHandler.b(j, i, (int)(this.mScreenDensity * 10.0F)));
-                paramInterestTagInfo.setDecodeHandler(URLDrawableDecodeHandler.c);
+                paramInterestTagInfo.setDecodeHandler(URLDrawableDecodeHandler.d);
               }
               ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = null;
               ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = null;
@@ -306,8 +306,8 @@ public class ChooseInterestTagActivity
         return localURLImageView;
       }
     }
-    View localView = this.mLayoutInflater.inflate(2131561229, null);
-    localTextView = (TextView)localView.findViewById(2131379994);
+    View localView = this.mLayoutInflater.inflate(2131627585, null);
+    localTextView = (TextView)localView.findViewById(2131448897);
     if (localTextView != null)
     {
       if (paramInterestTagInfo.tagName == null) {
@@ -330,7 +330,7 @@ public class ChooseInterestTagActivity
         i = LabelEditCtrl.a(this.mTagType);
         if (i != -1)
         {
-          i = Color.parseColor(LabelEditCtrl.b[i]);
+          i = Color.parseColor(LabelEditCtrl.h[i]);
           break label647;
         }
       }
@@ -356,7 +356,7 @@ public class ChooseInterestTagActivity
       int m = LabelEditCtrl.a(this.mTagType);
       i = k;
       if (m != -1) {
-        i = Color.parseColor(LabelEditCtrl.a[m]);
+        i = Color.parseColor(LabelEditCtrl.g[m]);
       }
     }
     else
@@ -381,7 +381,7 @@ public class ChooseInterestTagActivity
     }
     GradientDrawable localGradientDrawable = new GradientDrawable();
     localGradientDrawable.setColor(i);
-    localGradientDrawable.setCornerRadius(getResources().getDimensionPixelSize(2131298938));
+    localGradientDrawable.setCornerRadius(getResources().getDimensionPixelSize(2131299660));
     localView.setBackgroundDrawable(localGradientDrawable);
     localView.setTag(paramInterestTagInfo);
     paramInterestTagInfo = new LinearLayout.LayoutParams(-2, (int)DisplayUtils.a(this, 17.0F));
@@ -442,19 +442,19 @@ public class ChooseInterestTagActivity
       this.mRlTips.setVisibility(0);
       i = this.mTagType;
       if (i == 3) {
-        localObject = HardCodeUtil.a(2131702032);
+        localObject = HardCodeUtil.a(2131900044);
       } else if (i == 5) {
-        localObject = HardCodeUtil.a(2131702010);
+        localObject = HardCodeUtil.a(2131900022);
       } else if (i == 6) {
-        localObject = HardCodeUtil.a(2131701996);
+        localObject = HardCodeUtil.a(2131900009);
       } else if (i == 2) {
-        localObject = HardCodeUtil.a(2131702015);
+        localObject = HardCodeUtil.a(2131900027);
       } else if (i == 7) {
-        localObject = HardCodeUtil.a(2131702013);
+        localObject = HardCodeUtil.a(2131900025);
       } else if (i == 4) {
-        localObject = HardCodeUtil.a(2131701991);
+        localObject = HardCodeUtil.a(2131900004);
       } else if (i == 1) {
-        localObject = HardCodeUtil.a(2131701995);
+        localObject = HardCodeUtil.a(2131900008);
       } else {
         localObject = "";
       }
@@ -542,59 +542,59 @@ public class ChooseInterestTagActivity
   
   private void initTitle()
   {
-    String str3 = HardCodeUtil.a(2131701992);
+    String str3 = HardCodeUtil.a(2131900005);
     int i = this.mTagType;
     String str2 = "";
     String str1;
     if (i == 3)
     {
-      str2 = HardCodeUtil.a(2131702002);
-      str1 = HardCodeUtil.a(2131702030);
+      str2 = HardCodeUtil.a(2131900015);
+      str1 = HardCodeUtil.a(2131900042);
       this.mTxvRecommendTitle.setVisibility(8);
       this.mRecommendTitleDivider.setVisibility(8);
     }
     else if (i == 5)
     {
-      str2 = HardCodeUtil.a(2131701993);
-      str1 = HardCodeUtil.a(2131702001);
+      str2 = HardCodeUtil.a(2131900006);
+      str1 = HardCodeUtil.a(2131900014);
       this.mTxvRecommendTitle.setVisibility(0);
       this.mRecommendTitleDivider.setVisibility(0);
     }
     else if (i == 6)
     {
-      str2 = HardCodeUtil.a(2131702025);
-      str1 = HardCodeUtil.a(2131702019);
+      str2 = HardCodeUtil.a(2131900037);
+      str1 = HardCodeUtil.a(2131900031);
       this.mTxvRecommendTitle.setVisibility(0);
       this.mRecommendTitleDivider.setVisibility(0);
     }
     else if (i == 2)
     {
-      str2 = HardCodeUtil.a(2131701998);
-      str1 = HardCodeUtil.a(2131702022);
+      str2 = HardCodeUtil.a(2131900011);
+      str1 = HardCodeUtil.a(2131900034);
       this.mTxvRecommendTitle.setVisibility(8);
       this.mRecommendTitleDivider.setVisibility(8);
     }
     else if (i == 7)
     {
-      str2 = HardCodeUtil.a(2131701997);
-      str1 = HardCodeUtil.a(2131702023);
+      str2 = HardCodeUtil.a(2131900010);
+      str1 = HardCodeUtil.a(2131900035);
       this.mTxvRecommendTitle.setVisibility(0);
       this.mRecommendTitleDivider.setVisibility(0);
     }
     else if (i == 4)
     {
-      str1 = HardCodeUtil.a(2131702031);
-      str2 = HardCodeUtil.a(2131702003);
+      str1 = HardCodeUtil.a(2131900043);
+      str2 = HardCodeUtil.a(2131900016);
       this.mTxvRecommendTitle.setVisibility(8);
       this.mRecommendTitleDivider.setVisibility(8);
     }
     else if (i == 1)
     {
-      str2 = HardCodeUtil.a(2131702000);
-      str1 = HardCodeUtil.a(2131702009);
+      str2 = HardCodeUtil.a(2131900013);
+      str1 = HardCodeUtil.a(2131900021);
       this.mTxvRecommendTitle.setVisibility(0);
       this.mRecommendTitleDivider.setVisibility(0);
-      str3 = HardCodeUtil.a(2131701994);
+      str3 = HardCodeUtil.a(2131900007);
     }
     else
     {
@@ -607,15 +607,15 @@ public class ChooseInterestTagActivity
     setTitle(str1);
     if (this.mIsFromJudge)
     {
-      setLeftViewName(2131690728);
+      setLeftViewName(2131887648);
       this.leftView.setOnClickListener(this.mOnClickListener);
       this.rightViewImg.setVisibility(8);
       this.rightViewText.setVisibility(0);
-      this.rightViewText.setText(HardCodeUtil.a(2131702014));
+      this.rightViewText.setText(HardCodeUtil.a(2131900026));
       this.rightViewText.setOnClickListener(this.mOnClickListener);
       return;
     }
-    setLeftViewName(2131690529);
+    setLeftViewName(2131887440);
     this.leftView.setOnClickListener(this.mOnClickListener);
     this.rightViewImg.setVisibility(8);
     this.rightViewText.setVisibility(8);
@@ -625,34 +625,34 @@ public class ChooseInterestTagActivity
   private void initViews()
   {
     this.mLayoutInflater = LayoutInflater.from(this);
-    this.mEtIntput = ((EditText)findViewById(2131366321));
-    this.mHsvContent = ((MonitorSizeChangeHSV)findViewById(2131368321));
-    this.mLayoutPicGallary = ((LinearLayout)findViewById(2131370286));
-    this.mLvContent = ((ListView)findViewById(2131370503));
-    this.mRlInput = ((RelativeLayout)findViewById(2131376694));
-    this.mLayoutInitLoading = findViewById(2131376693);
-    this.mLayoutSearchLoading = findViewById(2131376734);
-    this.mTxvInitLoadingContent = ((TextView)findViewById(2131380072));
-    this.mTxvSearchLoadingContent = ((TextView)findViewById(2131380081));
-    this.mRlTips = ((RelativeLayout)findViewById(2131376747));
-    this.mTxvTipsContent = ((TextView)findViewById(2131380092));
-    this.mViewDivider = findViewById(2131380360);
-    this.mTxvRecommendTitle = ((TextView)findViewById(2131380080));
-    this.mRecommendTitleDivider = findViewById(2131380370);
-    this.mTextSearchResultTips = ((TextView)findViewById(2131380082));
+    this.mEtIntput = ((EditText)findViewById(2131432623));
+    this.mHsvContent = ((MonitorSizeChangeHSV)findViewById(2131435195));
+    this.mLayoutPicGallary = ((LinearLayout)findViewById(2131437516));
+    this.mLvContent = ((ListView)findViewById(2131437775));
+    this.mRlInput = ((RelativeLayout)findViewById(2131444970));
+    this.mLayoutInitLoading = findViewById(2131444969);
+    this.mLayoutSearchLoading = findViewById(2131445019);
+    this.mTxvInitLoadingContent = ((TextView)findViewById(2131448985));
+    this.mTxvSearchLoadingContent = ((TextView)findViewById(2131448994));
+    this.mRlTips = ((RelativeLayout)findViewById(2131445038));
+    this.mTxvTipsContent = ((TextView)findViewById(2131449005));
+    this.mViewDivider = findViewById(2131449305);
+    this.mTxvRecommendTitle = ((TextView)findViewById(2131448993));
+    this.mRecommendTitleDivider = findViewById(2131449316);
+    this.mTextSearchResultTips = ((TextView)findViewById(2131448995));
     this.mLayoutInitLoading.setVisibility(0);
-    int i = getResources().getColor(2131166377);
+    int i = getResources().getColor(2131167212);
     this.mViewDivider.setBackgroundColor(i);
     this.mRecommendTitleDivider.setBackgroundColor(i);
-    this.mLoadMoreFooterView = ((LinearLayout)LayoutInflater.from(this).inflate(2131559469, null));
+    this.mLoadMoreFooterView = ((LinearLayout)LayoutInflater.from(this).inflate(2131625460, null));
     updateLoadMoreFooterView(false, true);
     if (!this.mIsFoodOrSport)
     {
       this.mEtIntput.addTextChangedListener(this.mTextWatcher);
       this.mEtIntput.setOnKeyListener(this.mEtOnKeyListener);
       this.mEtIntput.setOnClickListener(this.mOnClickListener);
-      if (AppSetting.d) {
-        this.mEtIntput.setContentDescription(HardCodeUtil.a(2131702024));
+      if (AppSetting.e) {
+        this.mEtIntput.setContentDescription(HardCodeUtil.a(2131900036));
       }
     }
     this.mHsvContent.setOnSizeChangeCallback(this.mOnHsvSizeChangeCallback);
@@ -742,7 +742,7 @@ public class ChooseInterestTagActivity
     {
       this.rightViewText.setEnabled(false);
       if (!this.mIsFoodOrSport) {
-        this.mEtIntput.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130842412), null, null, null);
+        this.mEtIntput.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2130843365), null, null, null);
       }
     }
     else
@@ -779,7 +779,7 @@ public class ChooseInterestTagActivity
   
   private void toast(String paramString)
   {
-    QQToast.a(this, paramString, 0).b(getTitleBarHeight());
+    QQToast.makeText(this, paramString, 0).show(getTitleBarHeight());
   }
   
   private void updateChoosedTags()
@@ -846,30 +846,30 @@ public class ChooseInterestTagActivity
       this.mLvContent.addFooterView(this.mLoadMoreFooterView);
       this.mIsHasFooterView = true;
     }
-    localObject = (TextView)this.mLoadMoreFooterView.findViewById(2131371517);
-    ProgressBar localProgressBar = (ProgressBar)this.mLoadMoreFooterView.findViewById(2131376345);
-    ImageView localImageView = (ImageView)this.mLoadMoreFooterView.findViewById(2131370354);
+    localObject = (TextView)this.mLoadMoreFooterView.findViewById(2131438894);
+    ProgressBar localProgressBar = (ProgressBar)this.mLoadMoreFooterView.findViewById(2131444560);
+    ImageView localImageView = (ImageView)this.mLoadMoreFooterView.findViewById(2131437616);
     if (localImageView.getVisibility() != 8) {
       localImageView.setVisibility(8);
     }
     if (paramBoolean1)
     {
-      ((TextView)localObject).setTextColor(getResources().getColor(2131167138));
-      ((TextView)localObject).setText(HardCodeUtil.a(2131702021));
+      ((TextView)localObject).setTextColor(getResources().getColor(2131168118));
+      ((TextView)localObject).setText(HardCodeUtil.a(2131900033));
       localProgressBar.setVisibility(0);
       this.mLoadMoreFooterView.setOnClickListener(this.mOnClickListener);
       return;
     }
     if (paramBoolean2)
     {
-      ((TextView)localObject).setTextColor(getResources().getColor(2131167203));
-      ((TextView)localObject).setText(HardCodeUtil.a(2131702007));
+      ((TextView)localObject).setTextColor(getResources().getColor(2131168189));
+      ((TextView)localObject).setText(HardCodeUtil.a(2131900019));
       localProgressBar.setVisibility(8);
       this.mLoadMoreFooterView.setOnClickListener(this.mOnClickListener);
       return;
     }
-    ((TextView)localObject).setTextColor(getResources().getColor(2131167138));
-    ((TextView)localObject).setText(HardCodeUtil.a(2131702029));
+    ((TextView)localObject).setTextColor(getResources().getColor(2131168118));
+    ((TextView)localObject).setText(HardCodeUtil.a(2131900041));
     localProgressBar.setVisibility(8);
     this.mLoadMoreFooterView.setOnClickListener(null);
   }
@@ -894,8 +894,8 @@ public class ChooseInterestTagActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561178);
-    getWindow().setBackgroundDrawable(getResources().getDrawable(2130845058));
+    setContentView(2131627530);
+    getWindow().setBackgroundDrawable(getResources().getDrawable(2130846495));
     initViews();
     addObserver(this.mNearbyCardObserver);
     initData();
@@ -921,7 +921,7 @@ public class ChooseInterestTagActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity
  * JD-Core Version:    0.7.0.1
  */

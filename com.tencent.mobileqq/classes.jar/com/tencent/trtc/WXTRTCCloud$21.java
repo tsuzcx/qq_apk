@@ -31,7 +31,7 @@ class WXTRTCCloud$21
         localObject = ((TXCRenderAndDec)localObject).getVideoRender();
         if (localObject != null)
         {
-          ((e)localObject).c(this.b, this.c);
+          ((e)localObject).d(this.b, this.c);
           return;
         }
         WXTRTCCloud.access$2600(this.d, "videoRender no exist");

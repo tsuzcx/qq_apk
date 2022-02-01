@@ -31,60 +31,52 @@ public class AutoPlayImageView
   extends ImageView
   implements QQLiveDrawable.OnStateListener
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  public boolean a = true;
   private int b;
-  private int c;
-  private int d = 0;
+  private String c;
+  private int d;
+  private int e;
+  private Path f;
+  private int g = 0;
+  private URLDrawable h;
+  private Drawable i;
+  private Paint j;
   
   public AutoPlayImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
-    d();
+    g();
   }
   
   public AutoPlayImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
-    d();
+    g();
   }
   
   public AutoPlayImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = true;
-    d();
+    g();
   }
   
-  private void d()
+  private void g()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.b = 0;
+    this.f = new Path();
     if (Build.VERSION.SDK_INT >= 16) {
       super.setLayerType(2, null);
     } else if (Build.VERSION.SDK_INT >= 14) {
       super.setLayerType(1, null);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2302756);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.j = new Paint();
+    this.j.setColor(-2302756);
+    this.j.setStyle(Paint.Style.STROKE);
   }
   
   public Drawable a(String paramString, int paramInt1, int paramInt2)
   {
-    paramString = ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getCurrDrawable();
+    paramString = ((URLDrawable)this.i).getCurrDrawable();
     if ((paramString != null) && ((paramString instanceof RegionDrawable)))
     {
       paramString = ((RegionDrawable)paramString).getBitmap();
@@ -106,58 +98,37 @@ public class AutoPlayImageView
   public QQLiveDrawable.QQLiveDrawableParams a(int paramInt1, int paramInt2, long paramLong, String paramString1, String paramString2, QQLiveDrawable.OnStateListener paramOnStateListener)
   {
     paramOnStateListener = new QQLiveDrawable.QQLiveDrawableParams();
-    int i;
+    int k;
     if (paramInt1 > 0)
     {
-      i = paramInt1;
+      k = paramInt1;
       paramInt1 = paramInt2;
       if (paramInt2 > 0) {}
     }
     else
     {
-      i = 544;
+      k = 544;
       paramInt1 = 968;
     }
-    paramOnStateListener.mPreviewWidth = i;
+    paramOnStateListener.mPreviewWidth = k;
     paramOnStateListener.mPreviewHeight = paramInt1;
-    paramOnStateListener.mCoverWidth = this.b;
-    paramOnStateListener.mCoverHeight = this.c;
+    paramOnStateListener.mCoverWidth = this.d;
+    paramOnStateListener.mCoverHeight = this.e;
     paramOnStateListener.mPlayType = 2;
     paramOnStateListener.mDataSourceType = 3;
     paramOnStateListener.mDataSource = paramString2;
     paramOnStateListener.mCoverUrl = paramString1;
-    paramOnStateListener.mCoverLoadingDrawable = new EmptyDrawable(-2631721, i, paramInt1);
+    paramOnStateListener.mCoverLoadingDrawable = new EmptyDrawable(-2631721, k, paramInt1);
     paramOnStateListener.mLoopback = true;
     paramOnStateListener.msgUniseq = paramLong;
     return paramOnStateListener;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("pausePlay last mState=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 2;
-    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable))) {
-      ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).pause();
-    }
-  }
-  
   public void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
-    SLog.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
+    SLog.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.b));
+    this.a = true;
+    this.b = 1;
     paramString1 = a(paramInt1, paramInt2, paramLong, paramString1, paramString2, this);
     paramString2 = URLDrawable.URLDrawableOptions.obtain();
     paramString2.mExtraInfo = paramString1;
@@ -169,12 +140,12 @@ public class AutoPlayImageView
   
   public boolean a()
   {
-    int i = this.jdField_a_of_type_Int;
+    int k = this.b;
     boolean bool2 = false;
-    if (i == 3) {
+    if (k == 3) {
       return false;
     }
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.h;
     boolean bool1 = bool2;
     if (localURLDrawable != null)
     {
@@ -182,7 +153,7 @@ public class AutoPlayImageView
       if ((localURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))
       {
         bool1 = bool2;
-        if (((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getPlayState() == 4) {
+        if (((QQLiveDrawable)this.h.getCurrDrawable()).getPlayState() == 4) {
           bool1 = true;
         }
       }
@@ -190,27 +161,9 @@ public class AutoPlayImageView
     return bool1;
   }
   
-  public void b()
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("resumePlay last mState=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
-    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    this.jdField_a_of_type_Int = 1;
-    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable)))
-    {
-      ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).resume();
-      super.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    }
-  }
-  
   public boolean b()
   {
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.h;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (localURLDrawable != null)
@@ -219,7 +172,7 @@ public class AutoPlayImageView
       if ((localURLDrawable.getCurrDrawable() instanceof QQLiveDrawable))
       {
         bool1 = bool2;
-        if (((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getPlayState() == 2) {
+        if (((QQLiveDrawable)this.h.getCurrDrawable()).getPlayState() == 2) {
           bool1 = true;
         }
       }
@@ -231,63 +184,107 @@ public class AutoPlayImageView
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("pausePlay last mState=");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.b);
     SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_Int == 1) {
-      this.jdField_a_of_type_Boolean = false;
+    if (this.b == 3) {
+      return;
     }
-    this.jdField_a_of_type_Int = 3;
-    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    this.b = 2;
+    localObject = this.h;
     if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable))) {
-      ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).recyleAndKeepPostion();
+      ((QQLiveDrawable)this.h.getCurrDrawable()).pause();
     }
   }
   
-  public boolean c()
+  public void d()
   {
-    if (this.jdField_a_of_type_Int != 3) {
-      return false;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resumePlay last mState=");
+    ((StringBuilder)localObject).append(this.b);
+    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
+    if (this.b == 3) {
+      return;
     }
-    return this.jdField_a_of_type_Boolean;
+    this.b = 1;
+    localObject = this.h;
+    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable)))
+    {
+      ((QQLiveDrawable)this.h.getCurrDrawable()).resume();
+      super.setImageDrawable(this.h);
+    }
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsPath == null) {
-      this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    if (this.f == null) {
+      this.f = new Path();
     }
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    int j = getWidth() - getPaddingLeft() - getPaddingRight();
-    int i = getHeight();
-    int k = getPaddingTop();
-    int m = getPaddingBottom();
-    RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + j, getPaddingTop() + (i - k - m));
-    i = this.d;
-    if (i <= 0) {
-      i = j / 30;
+    this.f.reset();
+    int m = getWidth() - getPaddingLeft() - getPaddingRight();
+    int k = getHeight();
+    int n = getPaddingTop();
+    int i1 = getPaddingBottom();
+    RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + m, getPaddingTop() + (k - n - i1));
+    k = this.g;
+    if (k <= 0) {
+      k = m / 30;
     }
-    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-    float f = i;
-    localPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
-    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    Path localPath = this.f;
+    float f1 = k;
+    localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CCW);
+    this.f.setFillType(Path.FillType.EVEN_ODD);
+    paramCanvas.clipPath(this.f);
     super.draw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, f, f, Path.Direction.CCW);
-    if (QQStoryContext.a()) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131166531));
+    this.f.reset();
+    this.f.addRoundRect(localRectF, f1, f1, Path.Direction.CCW);
+    if (QQStoryContext.e()) {
+      this.j.setColor(getContext().getResources().getColor(2131167388));
     }
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.f, this.j);
+  }
+  
+  public void e()
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pausePlay last mState=");
+    ((StringBuilder)localObject).append(this.b);
+    SLog.b("AutoPlayImageView", ((StringBuilder)localObject).toString());
+    if (this.b == 1) {
+      this.a = false;
+    }
+    this.b = 3;
+    localObject = this.h;
+    if ((localObject != null) && ((((URLDrawable)localObject).getCurrDrawable() instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.h.getCurrDrawable()).recyleAndKeepPostion();
+    }
+  }
+  
+  public boolean f()
+  {
+    if (this.b != 3) {
+      return false;
+    }
+    return this.a;
+  }
+  
+  public int getAutoPlayState()
+  {
+    return this.b;
+  }
+  
+  public String getCoverUrl()
+  {
+    return this.c;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.h;
     if ((localURLDrawable != null) && ((localURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)))
     {
-      ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).release();
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+      ((QQLiveDrawable)this.h.getCurrDrawable()).release();
+      this.h = null;
     }
   }
   
@@ -300,7 +297,7 @@ public class AutoPlayImageView
   
   public void setBorderColor(@ColorInt int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.j.setColor(paramInt);
     invalidate();
   }
   
@@ -308,7 +305,7 @@ public class AutoPlayImageView
   {
     if (paramInt > 0)
     {
-      this.d = paramInt;
+      this.g = paramInt;
       return;
     }
     throw new IllegalArgumentException("should not be less than 0");
@@ -316,22 +313,22 @@ public class AutoPlayImageView
   
   public void setCoverDrawable(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.i = paramDrawable;
   }
   
   public void setCoverUrl(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt1;
-    this.c = paramInt2;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.e = paramInt2;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     if ((paramDrawable instanceof URLDrawable)) {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)paramDrawable);
+      this.h = ((URLDrawable)paramDrawable);
     } else {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+      this.h = null;
     }
     super.setImageDrawable(paramDrawable);
   }

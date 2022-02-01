@@ -10,59 +10,59 @@ import java.util.Iterator;
 
 public class ExtendFriendSignalBombCardData
 {
-  public int a;
   public long a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public long b;
   public String b;
-  public int c;
-  public long c;
   public String c;
-  public String d;
+  public long d;
   public String e;
   public String f;
-  public String g;
-  public String h;
+  public long g;
+  public int h;
   public String i;
+  public int j;
+  public ArrayList<String> k;
+  public String l;
+  public String m;
+  public int n;
+  public String o;
+  public String p;
   
   public static ExtendFriendSignalBombCardData a(MatchInfo paramMatchInfo)
   {
     ExtendFriendSignalBombCardData localExtendFriendSignalBombCardData = new ExtendFriendSignalBombCardData();
-    localExtendFriendSignalBombCardData.jdField_a_of_type_Long = paramMatchInfo.jdField_a_of_type_Long;
-    localExtendFriendSignalBombCardData.jdField_a_of_type_JavaLangString = paramMatchInfo.jdField_b_of_type_JavaLangString;
-    localExtendFriendSignalBombCardData.jdField_b_of_type_JavaLangString = paramMatchInfo.d;
-    if (paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo != null)
+    localExtendFriendSignalBombCardData.a = paramMatchInfo.e;
+    localExtendFriendSignalBombCardData.b = paramMatchInfo.c;
+    localExtendFriendSignalBombCardData.c = paramMatchInfo.g;
+    if (paramMatchInfo.k != null)
     {
-      localExtendFriendSignalBombCardData.jdField_b_of_type_Long = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_Long;
+      localExtendFriendSignalBombCardData.d = paramMatchInfo.k.p;
       Object localObject;
-      if ((paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_b_of_type_JavaUtilArrayList != null) && (!paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_b_of_type_JavaUtilArrayList.isEmpty()))
+      if ((paramMatchInfo.k.q != null) && (!paramMatchInfo.k.q.isEmpty()))
       {
-        localObject = (SchoolInfo)paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_b_of_type_JavaUtilArrayList.get(0);
-        localExtendFriendSignalBombCardData.d = ((SchoolInfo)localObject).jdField_a_of_type_JavaLangString;
-        localExtendFriendSignalBombCardData.jdField_c_of_type_Long = ((SchoolInfo)localObject).jdField_a_of_type_Long;
-        localExtendFriendSignalBombCardData.jdField_c_of_type_JavaLangString = ((SchoolInfo)localObject).jdField_b_of_type_JavaLangString;
+        localObject = (SchoolInfo)paramMatchInfo.k.q.get(0);
+        localExtendFriendSignalBombCardData.f = ((SchoolInfo)localObject).a;
+        localExtendFriendSignalBombCardData.g = ((SchoolInfo)localObject).c;
+        localExtendFriendSignalBombCardData.e = ((SchoolInfo)localObject).b;
       }
-      localExtendFriendSignalBombCardData.jdField_a_of_type_Int = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_f_of_type_Int;
-      localExtendFriendSignalBombCardData.e = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_b_of_type_JavaLangString;
-      localExtendFriendSignalBombCardData.jdField_b_of_type_Int = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_Int;
-      if (paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_JavaUtilArrayList != null)
+      localExtendFriendSignalBombCardData.h = paramMatchInfo.k.r;
+      localExtendFriendSignalBombCardData.i = paramMatchInfo.k.b;
+      localExtendFriendSignalBombCardData.j = paramMatchInfo.k.h;
+      if (paramMatchInfo.k.f != null)
       {
-        localExtendFriendSignalBombCardData.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_JavaUtilArrayList.size());
-        localObject = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
+        localExtendFriendSignalBombCardData.k = new ArrayList(paramMatchInfo.k.f.size());
+        localObject = paramMatchInfo.k.f.iterator();
         while (((Iterator)localObject).hasNext())
         {
           PersonalTag localPersonalTag = (PersonalTag)((Iterator)localObject).next();
-          localExtendFriendSignalBombCardData.jdField_a_of_type_JavaUtilArrayList.add(localPersonalTag.jdField_a_of_type_JavaLangString);
+          localExtendFriendSignalBombCardData.k.add(localPersonalTag.b);
         }
       }
-      localExtendFriendSignalBombCardData.jdField_f_of_type_JavaLangString = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.g;
-      localExtendFriendSignalBombCardData.g = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.h;
-      localExtendFriendSignalBombCardData.jdField_c_of_type_Int = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_b_of_type_Int;
-      localExtendFriendSignalBombCardData.jdField_a_of_type_Int = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_f_of_type_Int;
-      localExtendFriendSignalBombCardData.h = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_c_of_type_JavaLangString;
-      localExtendFriendSignalBombCardData.i = paramMatchInfo.jdField_a_of_type_ComTencentMobileqqQqexpandBeanChatChatFriendInfo.jdField_f_of_type_JavaLangString;
+      localExtendFriendSignalBombCardData.l = paramMatchInfo.k.i;
+      localExtendFriendSignalBombCardData.m = paramMatchInfo.k.j;
+      localExtendFriendSignalBombCardData.n = paramMatchInfo.k.k;
+      localExtendFriendSignalBombCardData.h = paramMatchInfo.k.r;
+      localExtendFriendSignalBombCardData.o = paramMatchInfo.k.c;
+      localExtendFriendSignalBombCardData.p = paramMatchInfo.k.g;
     }
     return localExtendFriendSignalBombCardData;
   }
@@ -70,12 +70,12 @@ public class ExtendFriendSignalBombCardData
   @NonNull
   public String toString()
   {
-    return String.format("uin:%s,nick:%s,dis:%d", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) });
+    return String.format("uin:%s,nick:%s,dis:%d", new Object[] { this.b, this.c, Integer.valueOf(this.h) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.match.ExtendFriendSignalBombCardData
  * JD-Core Version:    0.7.0.1
  */

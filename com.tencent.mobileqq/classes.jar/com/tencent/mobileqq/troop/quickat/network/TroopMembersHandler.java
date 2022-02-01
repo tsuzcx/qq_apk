@@ -9,16 +9,16 @@ import com.tencent.mobileqq.troop.api.handler.ITroopMemberListHandler;
 
 public class TroopMembersHandler
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private QQAppInterface a;
   private long b;
+  private TroopManager c;
+  private int d;
+  private long e;
   
   public TroopMembersHandler(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER));
+    this.a = paramQQAppInterface;
+    this.c = ((TroopManager)this.a.getManager(QQManagerFactory.TROOP_MANAGER));
   }
   
   private boolean a(TroopInfo paramTroopInfo)
@@ -26,41 +26,41 @@ public class TroopMembersHandler
     if (paramTroopInfo == null) {
       return true;
     }
-    if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
+    if (this.d != paramTroopInfo.wMemberNum) {
       return false;
     }
     long l = System.currentTimeMillis();
     if (paramTroopInfo.wMemberNum <= 500) {
-      return l - this.b < 180000L;
+      return l - this.e < 180000L;
     }
-    return l - this.b < 1800000L;
+    return l - this.e < 1800000L;
   }
   
   public void a(String paramString)
   {
-    ITroopMemberListHandler localITroopMemberListHandler = (ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
+    ITroopMemberListHandler localITroopMemberListHandler = (ITroopMemberListHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
     if (localITroopMemberListHandler != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+      Object localObject = this.c;
       if (localObject != null)
       {
-        localObject = ((TroopManager)localObject).b(paramString);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        localITroopMemberListHandler.a(true, paramString, ((TroopInfo)localObject).troopcode, true, 2, this.jdField_a_of_type_Long, 0);
-        this.jdField_a_of_type_Int = ((TroopInfo)localObject).wMemberNum;
+        localObject = ((TroopManager)localObject).f(paramString);
         this.b = System.currentTimeMillis();
+        localITroopMemberListHandler.a(true, paramString, ((TroopInfo)localObject).troopcode, true, 2, this.b, 0);
+        this.d = ((TroopInfo)localObject).wMemberNum;
+        this.e = System.currentTimeMillis();
       }
     }
   }
   
-  public boolean a(String paramString)
+  public boolean b(String paramString)
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
+    return a(this.c.f(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.network.TroopMembersHandler
  * JD-Core Version:    0.7.0.1
  */

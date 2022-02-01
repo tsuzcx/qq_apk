@@ -34,7 +34,7 @@ class VersionManager$3
       QLog.i("VersionManager", 1, paramBundle.toString());
       bool1 = bool2;
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizVersionManager$IVersionGrayscaleCallback;
+    paramArrayOfByte = this.a;
     if (paramArrayOfByte != null) {
       paramArrayOfByte.a(bool1);
     }
@@ -42,7 +42,7 @@ class VersionManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.VersionManager.3
  * JD-Core Version:    0.7.0.1
  */

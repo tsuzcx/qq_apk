@@ -16,14 +16,14 @@ class ReadInJoyPicWaterFallFragment$1
   protected void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
     super.a(paramViewHolder, paramInt);
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqKandianBizChannelChannelClassificationListView.setData(this.a.b(), this.a.jdField_a_of_type_JavaUtilArrayList);
+    if ((paramInt == 0) && (this.h.a != null)) {
+      this.h.a.setData(this.h.d(), this.h.r);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyPicWaterFallFragment.1
  * JD-Core Version:    0.7.0.1
  */

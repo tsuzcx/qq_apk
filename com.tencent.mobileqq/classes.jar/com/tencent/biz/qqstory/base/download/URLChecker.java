@@ -7,7 +7,12 @@ import java.net.URL;
 @TargetApi(14)
 public class URLChecker
 {
-  public static URL a(URL paramURL)
+  public static boolean a(URL paramURL)
+  {
+    return paramURL.getHost().indexOf(':') == -1;
+  }
+  
+  public static URL b(URL paramURL)
   {
     String str1 = paramURL.getHost();
     int k = str1.indexOf(':');
@@ -24,15 +29,10 @@ public class URLChecker
     }
     return paramURL;
   }
-  
-  public static boolean a(URL paramURL)
-  {
-    return paramURL.getHost().indexOf(':') == -1;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.URLChecker
  * JD-Core Version:    0.7.0.1
  */

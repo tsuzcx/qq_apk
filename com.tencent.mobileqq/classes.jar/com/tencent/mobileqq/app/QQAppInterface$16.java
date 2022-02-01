@@ -17,7 +17,7 @@ class QQAppInterface$16
     localEditor.commit();
     try
     {
-      QQAppInterface.access$2700(this.this$0).unregisterReceiver(QQAppInterface.access$2600(this.this$0));
+      QQAppInterface.access$2800(this.this$0).unregisterReceiver(QQAppInterface.access$2700(this.this$0));
       return;
     }
     catch (Exception localException) {}
@@ -25,7 +25,7 @@ class QQAppInterface$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQAppInterface.16
  * JD-Core Version:    0.7.0.1
  */

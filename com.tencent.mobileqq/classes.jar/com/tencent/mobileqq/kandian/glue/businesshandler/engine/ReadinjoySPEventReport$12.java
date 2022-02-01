@@ -15,7 +15,7 @@ final class ReadinjoySPEventReport$12
   
   public void run()
   {
-    if (ReadinjoySPEventReport.b(23))
+    if (ReadinjoySPEventReport.j(23))
     {
       oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
       localAttributeList.att_id.set(1);
@@ -30,7 +30,7 @@ final class ReadinjoySPEventReport$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.12
  * JD-Core Version:    0.7.0.1
  */

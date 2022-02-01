@@ -35,7 +35,7 @@ public abstract class TofuDataBaseHandler
       bool1 = false;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("Tofu_TofuDataBaseHandler", 2, String.format("makeReqItemIfPull [%s] [canPull,tsCheck]=[%b,%b] [curTs,lastTs,interval]=[%d,%d,%d]", new Object[] { TofuConst.a(paramTofuItem.busId), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong), Long.valueOf(paramTofuItem.lastPullTsLocal), Long.valueOf(paramTofuItem.pullInterval) }));
+      QLog.i("Tofu_TofuDataBaseHandler", 2, String.format("makeReqItemIfPull [%s] [canPull,tsCheck]=[%b,%b] [curTs,lastTs,interval]=[%d,%d,%d]", new Object[] { TofuConst.b(paramTofuItem.busId), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Long.valueOf(paramLong), Long.valueOf(paramTofuItem.lastPullTsLocal), Long.valueOf(paramTofuItem.pullInterval) }));
     }
     if ((bool2) && (bool1))
     {
@@ -46,24 +46,18 @@ public abstract class TofuDataBaseHandler
     return null;
   }
   
-  public abstract String a(TofuItem paramTofuItem);
-  
   public final oidb_0xe61.BeancurdCubeInfo a(TofuItem paramTofuItem)
   {
     oidb_0xe61.BeancurdCubeInfo localBeancurdCubeInfo = paramTofuItem.packToPbReq();
     if (localBeancurdCubeInfo != null)
     {
-      paramTofuItem = a(paramTofuItem);
+      paramTofuItem = b(paramTofuItem);
       if (paramTofuItem != null) {
         localBeancurdCubeInfo.bytes_busi_data_req.set(ByteStringMicro.copyFrom(paramTofuItem));
       }
     }
     return localBeancurdCubeInfo;
   }
-  
-  public void a() {}
-  
-  protected void a(TofuItem paramTofuItem) {}
   
   public final void a(@NotNull TofuItem paramTofuItem, oidb_0xe61.BeancurdCubeInfoResult paramBeancurdCubeInfoResult, long paramLong)
   {
@@ -81,7 +75,7 @@ public abstract class TofuDataBaseHandler
     if (bool) {
       try
       {
-        paramBeancurdCubeInfoResult = a(paramTofuItem);
+        paramBeancurdCubeInfoResult = c(paramTofuItem);
         if (!TextUtils.isEmpty(paramBeancurdCubeInfoResult))
         {
           localObject = new BeancurdMsg();
@@ -90,14 +84,14 @@ public abstract class TofuDataBaseHandler
           ((BeancurdMsg)localObject).isNeedDelHistory = paramTofuItem.bNeedDelHistory();
           ((BeancurdMsg)localObject).ispush = paramTofuItem.bInsertImmediate();
           ((BeancurdMsg)localObject).originTime = paramTofuItem.eventTs;
-          ((BeancurdMsg)localObject).startTime = MessageCache.a();
+          ((BeancurdMsg)localObject).startTime = MessageCache.c();
           ((BeancurdMsg)localObject).validTime = paramTofuItem.validTime;
           ((BeancurdMsg)localObject).buffer = paramBeancurdCubeInfoResult;
-          TofuHelper.a(this.a, (BeancurdMsg)localObject, a((BeancurdMsg)localObject), a());
+          TofuHelper.a(this.a, (BeancurdMsg)localObject, a((BeancurdMsg)localObject), c());
         }
         else
         {
-          a(paramTofuItem);
+          d(paramTofuItem);
         }
       }
       catch (Exception paramBeancurdCubeInfoResult)
@@ -108,12 +102,7 @@ public abstract class TofuDataBaseHandler
         QLog.d("Tofu_TofuDataBaseHandler", 1, ((StringBuilder)localObject).toString(), paramBeancurdCubeInfoResult);
       }
     }
-    QLog.d("Tofu_TofuDataBaseHandler", 1, String.format("onGetRsp [%s] bNew=%b ts=%d item=%s", new Object[] { TofuConst.a(paramTofuItem.busId), Boolean.valueOf(bool), Long.valueOf(paramLong), paramTofuItem }));
-  }
-  
-  public boolean a()
-  {
-    return false;
+    QLog.d("Tofu_TofuDataBaseHandler", 1, String.format("onGetRsp [%s] bNew=%b ts=%d item=%s", new Object[] { TofuConst.b(paramTofuItem.busId), Boolean.valueOf(bool), Long.valueOf(paramLong), paramTofuItem }));
   }
   
   public boolean a(int paramInt)
@@ -190,16 +179,27 @@ public abstract class TofuDataBaseHandler
     return false;
   }
   
-  public abstract byte[] a(TofuItem paramTofuItem);
+  public void b() {}
   
-  public boolean b()
+  public abstract byte[] b(TofuItem paramTofuItem);
+  
+  public abstract String c(TofuItem paramTofuItem);
+  
+  public boolean c()
+  {
+    return false;
+  }
+  
+  protected void d(TofuItem paramTofuItem) {}
+  
+  public boolean d()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuDataBaseHandler
  * JD-Core Version:    0.7.0.1
  */

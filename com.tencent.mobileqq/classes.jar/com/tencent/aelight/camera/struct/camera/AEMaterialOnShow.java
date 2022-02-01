@@ -34,10 +34,10 @@ public class AEMaterialOnShow
     }
     paramObject = (AEMaterialOnShow)paramObject;
     boolean bool1 = bool2;
-    if (!StringUtil.a(this.a))
+    if (!StringUtil.isEmpty(this.a))
     {
       bool1 = bool2;
-      if (!StringUtil.a(this.b))
+      if (!StringUtil.isEmpty(this.b))
       {
         if (paramObject == null) {
           return false;

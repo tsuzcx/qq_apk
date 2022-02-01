@@ -12,7 +12,7 @@ class GaInviteLockActivity$7
   
   public void run()
   {
-    ArrayList localArrayList = this.this$0.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    ArrayList localArrayList = this.this$0.f.a(this.a, this.b);
     ThreadManager.getUIHandler().post(new GaInviteLockActivity.7.1(this, localArrayList));
   }
 }

@@ -215,7 +215,7 @@ public abstract class BootBizModules
   
   protected void onCreateBizLayout()
   {
-    this.rootView = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131559244, null));
+    this.rootView = ((ViewGroup)LayoutInflater.from(this.context).inflate(2131625164, null));
     ViewGroup localViewGroup1 = onCreateBottomLayout();
     ViewGroup localViewGroup2 = onNormalLayoutCreated(onCreateNormalLayout());
     ViewGroup localViewGroup3 = onCreateTopLayout();
@@ -407,7 +407,7 @@ public abstract class BootBizModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.base.bizmodule.BootBizModules
  * JD-Core Version:    0.7.0.1
  */

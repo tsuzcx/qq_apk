@@ -21,30 +21,30 @@ public class MsgBackupListAdapter$BackupAndMigrateItemHolder
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
   public View a;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  public ImageView a;
-  private MsgBackupListAdapter.OnItemCheckedChangeListener jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener;
-  public SingleLineTextView a;
+  public ImageView b;
+  public SingleLineTextView c;
+  private CheckBox e;
+  private MsgBackupListAdapter.OnItemCheckedChangeListener f;
   
   public MsgBackupListAdapter$BackupAndMigrateItemHolder(MsgBackupListAdapter paramMsgBackupListAdapter, View paramView, MsgBackupListAdapter.OnItemCheckedChangeListener paramOnItemCheckedChangeListener)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369151));
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130839072);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369083));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131369163));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(paramView.getContext().getResources().getColor(2131167063));
-    this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener = paramOnItemCheckedChangeListener;
+    this.a = paramView;
+    this.e = ((CheckBox)paramView.findViewById(2131436122));
+    this.e.setButtonDrawable(2130839226);
+    this.e.setOnCheckedChangeListener(null);
+    this.e.setOnCheckedChangeListener(this);
+    this.b = ((ImageView)paramView.findViewById(2131436047));
+    this.c = ((SingleLineTextView)paramView.findViewById(2131436136));
+    this.c.setTextColor(paramView.getContext().getResources().getColor(2131168001));
+    this.f = paramOnItemCheckedChangeListener;
     paramView.setOnClickListener(this);
     paramView.setTag(this);
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener != null)
+    if (this.f != null)
     {
       int i = getAdapterPosition();
       if (QLog.isColorLevel())
@@ -56,26 +56,26 @@ public class MsgBackupListAdapter$BackupAndMigrateItemHolder
         localStringBuilder.append(paramBoolean);
         QLog.i("MsgBackup.BackupAndMigrateListAdapter", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-      MsgBackupListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter).setValueAt(i, Boolean.valueOf(paramBoolean));
-      this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener.a(this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked(), (RecentBaseData)MsgBackupListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter).get(i));
+      this.e.setChecked(paramBoolean);
+      MsgBackupListAdapter.a(this.d).setValueAt(i, Boolean.valueOf(paramBoolean));
+      this.f.a(this.e.isChecked(), (RecentBaseData)MsgBackupListAdapter.b(this.d).get(i));
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMsgbackupFragmentMsgBackupListAdapter$OnItemCheckedChangeListener != null)
+    if (this.f != null)
     {
-      boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool ^ true);
+      boolean bool = this.e.isChecked();
+      this.e.setChecked(bool ^ true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupListAdapter.BackupAndMigrateItemHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <android.support.v7.widget.RecyclerView android:id="@id/qbn" android:layout_width="fill_parent" android:layout_height="72.0dip" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_marginLeft="22.0dip">
+        <TextView android:textColor="@color/8p" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="字色" android:includeFontPadding="false" />
+        <View android:background="@color/fa" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" />
+    </LinearLayout>
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="15.0dip">
+        <androidx.cardview.widget.CardView android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" app:cardCornerRadius="4.0dip" app:cardElevation="0.0dip">
+            <LinearLayout android:orientation="horizontal" android:id="@id/mxo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </androidx.cardview.widget.CardView>
+        <View android:id="@id/mxn" android:background="@drawable/gng" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

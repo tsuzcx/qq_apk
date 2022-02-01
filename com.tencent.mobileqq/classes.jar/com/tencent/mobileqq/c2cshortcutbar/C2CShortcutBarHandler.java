@@ -96,66 +96,66 @@ public class C2CShortcutBarHandler
           } else {
             paramToServiceMsg = "";
           }
-          localC2CShortcutAppInfo.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+          localC2CShortcutAppInfo.a = paramToServiceMsg;
           long l1;
           if (((oidb_0xeb5.App)localObject).type.has()) {
             l1 = ((oidb_0xeb5.App)localObject).type.get();
           } else {
             l1 = 0L;
           }
-          localC2CShortcutAppInfo.jdField_a_of_type_Long = l1;
+          localC2CShortcutAppInfo.b = l1;
           if (((oidb_0xeb5.App)localObject).name.has()) {
             paramToServiceMsg = ((oidb_0xeb5.App)localObject).name.get();
           } else {
             paramToServiceMsg = "";
           }
-          localC2CShortcutAppInfo.b = paramToServiceMsg;
+          localC2CShortcutAppInfo.c = paramToServiceMsg;
           if (((oidb_0xeb5.App)localObject).icon.has()) {
             paramToServiceMsg = ((oidb_0xeb5.App)localObject).icon.get();
           } else {
             paramToServiceMsg = "";
           }
-          localC2CShortcutAppInfo.jdField_c_of_type_JavaLangString = paramToServiceMsg;
+          localC2CShortcutAppInfo.d = paramToServiceMsg;
           if (((oidb_0xeb5.App)localObject).url.has()) {
             paramToServiceMsg = ((oidb_0xeb5.App)localObject).url.get();
           } else {
             paramToServiceMsg = "";
           }
-          localC2CShortcutAppInfo.jdField_d_of_type_JavaLangString = paramToServiceMsg;
+          localC2CShortcutAppInfo.e = paramToServiceMsg;
           if (((oidb_0xeb5.App)localObject).desc.has()) {
             paramToServiceMsg = ((oidb_0xeb5.App)localObject).desc.get();
           } else {
             paramToServiceMsg = "";
           }
-          localC2CShortcutAppInfo.e = paramToServiceMsg;
+          localC2CShortcutAppInfo.f = paramToServiceMsg;
           int m;
           if (((oidb_0xeb5.App)localObject).redpoint.has()) {
             m = ((oidb_0xeb5.App)localObject).redpoint.get();
           } else {
             m = 0;
           }
-          localC2CShortcutAppInfo.jdField_a_of_type_Int = m;
+          localC2CShortcutAppInfo.h = m;
           if (((oidb_0xeb5.App)localObject).playing_num.has()) {
             m = ((oidb_0xeb5.App)localObject).playing_num.get();
           } else {
             m = 0;
           }
-          localC2CShortcutAppInfo.jdField_c_of_type_Int = m;
+          localC2CShortcutAppInfo.j = m;
           if (((oidb_0xeb5.App)localObject).ark.has()) {
             bool = ((oidb_0xeb5.App)localObject).ark.get();
           } else {
             bool = false;
           }
-          localC2CShortcutAppInfo.jdField_a_of_type_Boolean = bool;
+          localC2CShortcutAppInfo.k = bool;
           if (((oidb_0xeb5.App)localObject).ark_label.has()) {
             paramToServiceMsg = ((oidb_0xeb5.App)localObject).ark_label.get();
           } else {
             paramToServiceMsg = "";
           }
-          localC2CShortcutAppInfo.g = paramToServiceMsg;
+          localC2CShortcutAppInfo.l = paramToServiceMsg;
           if (((oidb_0xeb5.App)localObject).labels.has())
           {
-            localC2CShortcutAppInfo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+            localC2CShortcutAppInfo.m = new ArrayList();
             Iterator localIterator = ((oidb_0xeb5.App)localObject).labels.get().iterator();
             while (localIterator.hasNext())
             {
@@ -166,23 +166,23 @@ public class C2CShortcutBarHandler
               } else {
                 paramToServiceMsg = "";
               }
-              localLabel.jdField_a_of_type_JavaLangString = paramToServiceMsg;
+              localLabel.a = paramToServiceMsg;
               if (localLabel1.text_color.has()) {
                 paramToServiceMsg = localLabel1.text_color.get();
               } else {
                 paramToServiceMsg = "";
               }
-              localLabel.jdField_c_of_type_JavaLangString = paramToServiceMsg;
+              localLabel.c = paramToServiceMsg;
               if (localLabel1.bg_color.has()) {
                 paramToServiceMsg = localLabel1.bg_color.get();
               } else {
                 paramToServiceMsg = "";
               }
               localLabel.b = paramToServiceMsg;
-              localC2CShortcutAppInfo.jdField_a_of_type_JavaUtilArrayList.add(localLabel);
+              localC2CShortcutAppInfo.m.add(localLabel);
             }
           }
-          localC2CShortcutAppInfo.jdField_d_of_type_Int = ((oidb_0xeb5.App)localObject).jump_type.get();
+          localC2CShortcutAppInfo.n = ((oidb_0xeb5.App)localObject).jump_type.get();
           paramFromServiceMsg.add(localC2CShortcutAppInfo);
         }
         C2CShortcutBarManager.a(this.a).a(Long.valueOf(l2), paramFromServiceMsg);
@@ -449,7 +449,7 @@ public class C2CShortcutBarHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarHandler
  * JD-Core Version:    0.7.0.1
  */

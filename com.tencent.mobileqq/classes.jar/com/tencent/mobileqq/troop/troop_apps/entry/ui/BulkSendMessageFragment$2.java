@@ -32,14 +32,14 @@ class BulkSendMessageFragment$2
       if (paramRspSend1V1Msg == null) {
         localObject = "null";
       } else {
-        localObject = PBUtils.a(paramRspSend1V1Msg);
+        localObject = PBUtils.b(paramRspSend1V1Msg);
       }
       QLog.d(".troop.troop_app.BulkSendMessageFragment", 2, new Object[] { "Receive response succ=", Boolean.valueOf(paramBoolean), "resp: ", localObject });
     }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$StoryProgressUI != null)
+    if (this.a.m != null)
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$StoryProgressUI.a();
-      this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$StoryProgressUI = null;
+      this.a.m.a();
+      this.a.m = null;
     }
     Object localObject = this.a.getBaseActivity();
     if (localObject == null)
@@ -49,28 +49,28 @@ class BulkSendMessageFragment$2
     }
     if (paramRspSend1V1Msg == null)
     {
-      QQToast.a((Context)localObject, 1, HardCodeUtil.a(2131701448), 1).a();
+      QQToast.makeText((Context)localObject, 1, HardCodeUtil.a(2131899473), 1).show();
       return;
     }
     if (paramRspSend1V1Msg.result.error_code.get() != 0)
     {
-      QQToast.a((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).a();
+      QQToast.makeText((Context)localObject, 1, paramRspSend1V1Msg.result.error_desc.get().toStringUtf8(), 1).show();
       return;
     }
-    QQToast.a((Context)localObject, 2, HardCodeUtil.a(2131701444), 1).a();
+    QQToast.makeText((Context)localObject, 2, HardCodeUtil.a(2131899469), 1).show();
     ((BaseActivity)localObject).finish();
-    ((BaseActivity)localObject).overridePendingTransition(0, 2130772015);
-    paramRspSend1V1Msg = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    ((BaseActivity)localObject).overridePendingTransition(0, 2130772018);
+    paramRspSend1V1Msg = this.a.d.getHandler(Conversation.class);
     if (paramRspSend1V1Msg != null) {
       paramRspSend1V1Msg.sendEmptyMessage(1009);
     }
-    paramRspSend1V1Msg = TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString);
-    TroopReportor.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.jdField_a_of_type_JavaLangString, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
+    paramRspSend1V1Msg = TroopReportor.a(this.a.d, this.a.c);
+    TroopReportor.a("Grp_edu", "MassMessage", "CreateMessage_Send", 0, 0, new String[] { this.a.c, paramRspSend1V1Msg, paramReqSend1V1Msg.text.get().toStringUtf8(), String.valueOf(paramReqSend1V1Msg.to_uins.size()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment.2
  * JD-Core Version:    0.7.0.1
  */

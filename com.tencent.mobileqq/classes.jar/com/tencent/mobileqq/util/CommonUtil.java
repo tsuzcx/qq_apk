@@ -22,14 +22,6 @@ public class CommonUtil
     return Uri.parse(str);
   }
   
-  public static String a()
-  {
-    Time localTime = new Time();
-    localTime.setToNow();
-    localTime.switchTimezone("Asia/Shanghai");
-    return localTime.format("%Y%m%d%H%M%S");
-  }
-  
   public static String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
     Object localObject = new Time();
@@ -118,10 +110,18 @@ public class CommonUtil
     }
     return true;
   }
+  
+  public static String b()
+  {
+    Time localTime = new Time();
+    localTime.setToNow();
+    localTime.switchTimezone("Asia/Shanghai");
+    return localTime.format("%Y%m%d%H%M%S");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class AddContactTroopHandler$1
     if (paramInt == 0) {}
     try
     {
-      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB, paramSosoLbsInfo);
+      this.b.a(this.a, paramSosoLbsInfo);
       return;
     }
     catch (Exception paramSosoLbsInfo)
@@ -24,14 +24,14 @@ class AddContactTroopHandler$1
       if (QLog.isColorLevel()) {
         QLog.w("AddContactTroopHandler", 2, "location permission denied 2");
       }
-      this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler.a(this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB);
+      this.b.a(this.a);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
+    this.a.b();
     return;
     label58:
     paramSosoLbsInfo.printStackTrace();
-    this.jdField_a_of_type_ComTencentBizAddContactTroopViewAddContactTroopHandler$IGetPopClassAndSearchCB.b();
+    this.a.b();
   }
 }
 

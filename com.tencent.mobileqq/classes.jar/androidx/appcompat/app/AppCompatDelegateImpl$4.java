@@ -10,7 +10,7 @@ class AppCompatDelegateImpl$4
   
   public void onFitSystemWindows(Rect paramRect)
   {
-    paramRect.top = this.this$0.updateStatusGuard(paramRect.top);
+    paramRect.top = this.this$0.updateStatusGuard(null, paramRect);
   }
 }
 

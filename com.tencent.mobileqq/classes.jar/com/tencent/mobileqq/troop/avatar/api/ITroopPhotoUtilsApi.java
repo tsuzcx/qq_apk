@@ -85,7 +85,7 @@ public abstract interface ITroopPhotoUtilsApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.api.ITroopPhotoUtilsApi
  * JD-Core Version:    0.7.0.1
  */

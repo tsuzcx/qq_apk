@@ -14,18 +14,18 @@ import com.tencent.widget.QIMCircleProgress;
 public class AnimationQIMCircleProgress
   extends QIMCircleProgress
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private CircleCaptureStyle jdField_a_of_type_DovComQqImAeCurrentCircleCaptureStyle = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = false;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean = true;
+  Paint a;
+  private float b = 1.0F;
+  private int c;
+  private int d;
+  private boolean e = false;
+  private boolean f = false;
+  private boolean g = false;
+  private CircleCaptureStyle h = null;
+  private RectF i;
+  private int j;
+  private int k;
+  private boolean l = true;
   
   public AnimationQIMCircleProgress(Context paramContext)
   {
@@ -39,51 +39,51 @@ public class AnimationQIMCircleProgress
   
   protected void a(Canvas paramCanvas)
   {
-    int i = (getWidth() - this.jdField_c_of_type_Int) / 2;
-    int k = getHeight();
-    int j = this.jdField_c_of_type_Int;
-    k = (k - j) / 2;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i, k, i + j, k + j);
-    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-    i = this.jdField_d_of_type_Int;
-    paramCanvas.drawRoundRect(localRectF, i, i, this.mPaintWhite);
+    int m = (getWidth() - this.j) / 2;
+    int i1 = getHeight();
+    int n = this.j;
+    i1 = (i1 - n) / 2;
+    this.i.set(m, i1, m + n, i1 + n);
+    RectF localRectF = this.i;
+    m = this.k;
+    paramCanvas.drawRoundRect(localRectF, m, m, this.mPaintWhite);
   }
   
   protected void b(Canvas paramCanvas)
   {
-    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.jdField_b_of_type_Int * this.mCenterScale, this.mPaintWhite);
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.d * this.mCenterScale, this.mPaintWhite);
   }
   
   protected void c(Canvas paramCanvas)
   {
-    int i = UIUtils.a(getContext(), 3.0F);
+    int m = UIUtils.a(getContext(), 3.0F);
     Color.parseColor("#33000000");
     float f1 = this.mWidth / 2;
     float f2 = this.mWidth / 2;
-    float f3 = this.mWidth / 2 - i / 2;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(i);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawCircle(f1, f2, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+    float f3 = this.mWidth / 2 - m / 2;
+    this.a.setStyle(Paint.Style.STROKE);
+    this.a.setStrokeWidth(m);
+    this.a.setColor(-1);
+    paramCanvas.drawCircle(f1, f2, f3, this.a);
   }
   
   public void changeMode(int paramInt)
   {
-    if (this.jdField_c_of_type_Boolean)
+    if (this.g)
     {
-      CircleCaptureStyle localCircleCaptureStyle = this.jdField_a_of_type_DovComQqImAeCurrentCircleCaptureStyle;
+      CircleCaptureStyle localCircleCaptureStyle = this.h;
       if (localCircleCaptureStyle != null)
       {
-        setBackgroundResource(localCircleCaptureStyle.jdField_c_of_type_Int);
+        setBackgroundResource(localCircleCaptureStyle.k);
         break label69;
       }
     }
-    if (this.jdField_b_of_type_Boolean) {
-      setBackgroundResource(2130837905);
-    } else if ((paramInt != 1) && (this.jdField_a_of_type_Boolean)) {
+    if (this.f) {
+      setBackgroundResource(2130837929);
+    } else if ((paramInt != 1) && (this.e)) {
       setBackgroundDrawable(null);
     } else {
-      setBackgroundResource(2130844508);
+      setBackgroundResource(2130845881);
     }
     label69:
     super.changeMode(paramInt);
@@ -91,10 +91,10 @@ public class AnimationQIMCircleProgress
   
   protected void drawCenterCircle(Canvas paramCanvas)
   {
-    if (!this.jdField_d_of_type_Boolean) {
+    if (!this.l) {
       return;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.e)
     {
       if (this.mMode == 3)
       {
@@ -118,45 +118,45 @@ public class AnimationQIMCircleProgress
   protected void init()
   {
     super.init();
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.a = new Paint();
+    this.a.setAntiAlias(true);
     this.mPaintWhite.setStyle(Paint.Style.FILL);
-    setBackgroundResource(2130844508);
-    this.jdField_c_of_type_Int = ViewUtils.a(30.0F);
-    this.jdField_d_of_type_Int = ViewUtils.a(6.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    setBackgroundResource(2130845881);
+    this.j = ViewUtils.dip2px(30.0F);
+    this.k = ViewUtils.dip2px(6.0F);
+    this.i = new RectF();
   }
   
   public void setCenterView()
   {
     super.setCenterView();
-    this.jdField_a_of_type_Int = ViewUtils.a(3.0F);
-    this.jdField_b_of_type_Int = (ViewUtils.a(53.0F) / 2);
+    this.c = ViewUtils.dip2px(3.0F);
+    this.d = (ViewUtils.dip2px(53.0F) / 2);
   }
   
   public void setDrawCenterCircle(boolean paramBoolean)
   {
-    if (this.jdField_d_of_type_Boolean != paramBoolean)
+    if (this.l != paramBoolean)
     {
-      this.jdField_d_of_type_Boolean = paramBoolean;
+      this.l = paramBoolean;
       invalidate();
     }
   }
   
   public void setIldeStyle(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean) {
+    this.e = paramBoolean;
+    if (this.e) {
       setBackgroundDrawable(null);
     } else {
-      setBackgroundResource(2130844508);
+      setBackgroundResource(2130845881);
     }
     invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.current.AnimationQIMCircleProgress
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class VasResController$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    VasResController.a(this.a).sendMessage(VasResController.a(this.a).obtainMessage(10002, paramDownloadTask.a(), 0, paramDownloadTask.a()));
+    VasResController.a(this.a).sendMessage(VasResController.a(this.a).obtainMessage(10002, paramDownloadTask.e(), 0, paramDownloadTask.b()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResController.1
  * JD-Core Version:    0.7.0.1
  */

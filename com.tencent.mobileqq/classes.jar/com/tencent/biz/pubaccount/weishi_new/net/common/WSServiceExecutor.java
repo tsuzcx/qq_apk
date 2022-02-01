@@ -18,12 +18,6 @@ public class WSServiceExecutor<T extends JceStruct>
 {
   private WSRequest<T> a;
   
-  @NotNull
-  private <E> IWSProtocolListener<T, UniAttribute> a(ServiceCallback<T, E> paramServiceCallback)
-  {
-    return new WSServiceExecutor.1(this, paramServiceCallback);
-  }
-  
   private void a()
   {
     this.a.getTimeRecord().m();
@@ -61,6 +55,12 @@ public class WSServiceExecutor<T extends JceStruct>
     }
   }
   
+  @NotNull
+  private <E> IWSProtocolListener<T, UniAttribute> b(ServiceCallback<T, E> paramServiceCallback)
+  {
+    return new WSServiceExecutor.1(this, paramServiceCallback);
+  }
+  
   <E> void a(ServiceCallback<T, E> paramServiceCallback)
   {
     Object localObject1 = this.a;
@@ -70,7 +70,7 @@ public class WSServiceExecutor<T extends JceStruct>
       return;
     }
     ((WSRequest)localObject1).getTimeRecord().b();
-    this.a.setListener(a(paramServiceCallback));
+    this.a.setListener(b(paramServiceCallback));
     try
     {
       localObject2 = new WeishiIntent(BaseApplication.getContext(), WSServlet.class);
@@ -113,7 +113,7 @@ public class WSServiceExecutor<T extends JceStruct>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSServiceExecutor
  * JD-Core Version:    0.7.0.1
  */

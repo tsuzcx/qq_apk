@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.feeds;
 
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
 import com.tencent.mobileqq.kandian.biz.common.baseui.IReadInJoyBaseAdapter;
@@ -153,7 +154,7 @@ public class ReadinjoyFixPosArticleManager
       return;
     }
     int i = getFixPosArticlePosition(paramLong);
-    this.adArticleController.a(paramInt, i);
+    this.adArticleController.b(paramInt, i);
   }
   
   public ReadInJoyBaseAdapter getBaseAdapter(int paramInt)
@@ -167,7 +168,29 @@ public class ReadinjoyFixPosArticleManager
   
   public List<Integer> getFixPosArticleInfos(int paramInt)
   {
-    return (List)this.adArticleController.a.get(Integer.valueOf(paramInt));
+    Object localObject1 = (WeakReference)this.adapterHashMap.get(Integer.valueOf(paramInt));
+    if (localObject1 == null) {
+      return new ArrayList();
+    }
+    Object localObject2 = (ReadInJoyBaseAdapter)((WeakReference)localObject1).get();
+    if ((localObject2 != null) && (!((ReadInJoyBaseAdapter)localObject2).isEmpty()))
+    {
+      localObject1 = new ArrayList();
+      localObject2 = ((ReadInJoyBaseAdapter)localObject2).h();
+      if (localObject2 == null) {
+        return new ArrayList();
+      }
+      paramInt = 0;
+      while (paramInt < ((List)localObject2).size())
+      {
+        if ((((List)localObject2).get(paramInt) instanceof AdvertisementInfo)) {
+          ((ArrayList)localObject1).add(Integer.valueOf(paramInt));
+        }
+        paramInt += 1;
+      }
+      return localObject1;
+    }
+    return new ArrayList();
   }
   
   public AbsBaseArticleInfo getSpecialArticleInfo(int paramInt, long paramLong)
@@ -181,7 +204,7 @@ public class ReadinjoyFixPosArticleManager
       return null;
     }
     this.adArticleController.a(paramInt1);
-    if (!this.adArticleController.a(paramInt1))
+    if (!this.adArticleController.e(paramInt1))
     {
       QLog.d("ReadinjoyFixPosArticleManager", 1, "has no fix article , give up insert !");
       return paramList1;
@@ -206,8 +229,8 @@ public class ReadinjoyFixPosArticleManager
         {
           j = getFixPosArticlePosition(l);
           int k = paramInt2 - j;
-          localObject1 = (ArrayList)this.adArticleController.a.get(Integer.valueOf(paramInt1));
-          localArrayList = (ArrayList)this.adArticleController.b.get(Integer.valueOf(paramInt1));
+          localObject1 = (ArrayList)this.adArticleController.b.get(Integer.valueOf(paramInt1));
+          localArrayList = (ArrayList)this.adArticleController.c.get(Integer.valueOf(paramInt1));
           if ((localObject1 != null) && (localArrayList != null))
           {
             int m = ((ArrayList)localObject1).indexOf(Integer.valueOf(j));
@@ -228,9 +251,9 @@ public class ReadinjoyFixPosArticleManager
         paramInt2 += 1;
       }
     }
-    paramList2 = (ArrayList)this.adArticleController.a.get(Integer.valueOf(paramInt1));
-    localObject1 = (ArrayList)this.adArticleController.b.get(Integer.valueOf(paramInt1));
-    Object localObject2 = (ArrayList)this.adArticleController.c.get(Integer.valueOf(paramInt1));
+    paramList2 = (ArrayList)this.adArticleController.b.get(Integer.valueOf(paramInt1));
+    localObject1 = (ArrayList)this.adArticleController.c.get(Integer.valueOf(paramInt1));
+    Object localObject2 = (ArrayList)this.adArticleController.d.get(Integer.valueOf(paramInt1));
     if ((paramList2 != null) && (localObject1 != null) && (localObject2 != null))
     {
       localArrayList = new ArrayList(paramList1);
@@ -314,7 +337,7 @@ public class ReadinjoyFixPosArticleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadinjoyFixPosArticleManager
  * JD-Core Version:    0.7.0.1
  */

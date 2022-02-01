@@ -28,7 +28,7 @@ class SearchBaseFragment$2
               if (i != 5) {
                 return;
               }
-              this.a.h();
+              this.a.k();
               return;
             }
             this.a.a((List)paramMessage.obj);
@@ -37,7 +37,7 @@ class SearchBaseFragment$2
           this.a.c();
           return;
         }
-        this.a.g();
+        this.a.j();
         return;
       }
       this.a.a((String)paramMessage.obj);
@@ -48,7 +48,7 @@ class SearchBaseFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment.2
  * JD-Core Version:    0.7.0.1
  */

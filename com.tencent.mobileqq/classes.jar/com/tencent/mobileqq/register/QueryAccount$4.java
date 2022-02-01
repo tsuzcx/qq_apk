@@ -23,15 +23,15 @@ class QueryAccount$4
     paramIntent = paramIntent.getStringExtra("face_result");
     if ((!TextUtils.isEmpty(paramContext)) && (!TextUtils.isEmpty(paramIntent)))
     {
-      paramContext = new QueryAccount.RegisterFaceResult(this.a, paramContext, paramIntent);
-      RegisterManager.a().a(paramContext);
-      if (QueryAccount.a(this.a))
+      paramContext = new QueryAccount.RegisterFaceResult(paramContext, paramIntent);
+      RegisterManager.b().a(paramContext);
+      if (QueryAccount.b(this.a))
       {
-        this.a.a.createWaitingDialog(2131716612);
+        this.a.h.createWaitingDialog(2131914075);
         this.a.a(null, paramContext.a());
       }
-      if (this.a.a.phoneNum != null) {
-        ReportController.b(this.a.a.getAppRuntime(), "dc00898", "", "", "0X800B7C8", "0X800B7C8", 0, 0, "", "", this.a.a.phoneNum, "");
+      if (this.a.h.phoneNum != null) {
+        ReportController.b(this.a.h.getAppRuntime(), "dc00898", "", "", "0X800B7C8", "0X800B7C8", 0, 0, "", "", this.a.h.phoneNum, "");
       }
       return;
     }
@@ -40,7 +40,7 @@ class QueryAccount$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.register.QueryAccount.4
  * JD-Core Version:    0.7.0.1
  */

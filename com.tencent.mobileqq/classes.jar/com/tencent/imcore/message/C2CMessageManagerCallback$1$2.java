@@ -10,14 +10,14 @@ class C2CMessageManagerCallback$1$2
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getRefreshActionMap().containsKey(UinTypeUtil.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade.getRefreshActionMap().remove(UinTypeUtil.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
+    if (this.a.f.getRefreshActionMap().containsKey(UinTypeUtil.a(this.a.d, this.a.c))) {
+      this.a.f.getRefreshActionMap().remove(UinTypeUtil.a(this.a.d, this.a.c));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageManagerCallback.1.2
  * JD-Core Version:    0.7.0.1
  */

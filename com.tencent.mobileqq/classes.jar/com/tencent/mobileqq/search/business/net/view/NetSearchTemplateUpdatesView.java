@@ -16,14 +16,14 @@ import mqq.app.MobileQQ;
 public class NetSearchTemplateUpdatesView
   extends NetSearchTemplateBaseView
 {
-  public FrameLayout a;
-  public LinearLayout a;
-  public TextView a;
-  public int b;
-  public ImageView c;
-  public SquareImageView c;
-  public ImageView d;
-  public ImageView f;
+  public ImageView a;
+  public ImageView b;
+  public TextView c;
+  public LinearLayout d;
+  public SquareImageView n;
+  public ImageView o;
+  public FrameLayout p;
+  public int q;
   
   public NetSearchTemplateUpdatesView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -33,28 +33,28 @@ public class NetSearchTemplateUpdatesView
   protected void a()
   {
     super.a();
-    Object localObject = a(this.jdField_a_of_type_Int);
-    this.d = ((ImageView)((View)localObject).findViewById(2131365295));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131368343));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131378309));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)((View)localObject).findViewById(2131372733));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)((View)localObject).findViewById(2131377628));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131368557));
-    this.f = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131369731));
-    this.b = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-    localObject = a();
-    TextView localTextView1 = b();
-    TextView localTextView2 = c();
+    Object localObject = b(this.m);
+    this.b = ((ImageView)((View)localObject).findViewById(2131431472));
+    this.a = ((ImageView)((View)localObject).findViewById(2131435219));
+    this.c = ((TextView)((View)localObject).findViewById(2131446828));
+    this.d = ((LinearLayout)((View)localObject).findViewById(2131440280));
+    this.p = ((FrameLayout)((View)localObject).findViewById(2131446037));
+    this.n = ((SquareImageView)this.p.findViewById(2131435463));
+    this.o = ((ImageView)this.p.findViewById(2131436849));
+    this.q = this.d.getChildCount();
+    localObject = b();
+    TextView localTextView1 = c();
+    TextView localTextView2 = d();
     if (ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.peekAppRuntime(), false, null))
     {
       if (localObject != null) {
-        ((TextView)localObject).setTextColor(((View)localObject).getContext().getResources().getColor(2131166983));
+        ((TextView)localObject).setTextColor(((View)localObject).getContext().getResources().getColor(2131167917));
       }
       if (localTextView1 != null) {
-        ((TextView)localTextView1).setTextColor(localTextView1.getContext().getResources().getColor(2131166982));
+        ((TextView)localTextView1).setTextColor(localTextView1.getContext().getResources().getColor(2131167916));
       }
       if (localTextView2 != null) {
-        ((TextView)localTextView2).setTextColor(localTextView2.getContext().getResources().getColor(2131166982));
+        ((TextView)localTextView2).setTextColor(localTextView2.getContext().getResources().getColor(2131167916));
       }
     }
     else
@@ -73,7 +73,7 @@ public class NetSearchTemplateUpdatesView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.view.NetSearchTemplateUpdatesView
  * JD-Core Version:    0.7.0.1
  */

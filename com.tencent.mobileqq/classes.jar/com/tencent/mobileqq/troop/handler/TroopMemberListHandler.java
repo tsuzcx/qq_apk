@@ -67,15 +67,15 @@ public class TroopMemberListHandler
   extends TroopBaseHandler
   implements ITroopMemberListHandler
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   protected Set<String> a;
-  private HashMap<String, ArrayList<stTroopMemberInfo>> b = null;
+  private AppInterface b;
+  private HashMap<String, Long> c = new HashMap();
+  private HashMap<String, ArrayList<stTroopMemberInfo>> d = null;
   
   public TroopMemberListHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.b = paramAppInterface;
     TroopMemberListHandlerProcessorConfig.a();
   }
   
@@ -123,35 +123,6 @@ public class TroopMemberListHandler
     return 0;
   }
   
-  private long a(String paramString)
-  {
-    long l = 0L;
-    if (paramString != null) {
-      if (paramString.length() <= 0) {
-        return 0L;
-      }
-    }
-    try
-    {
-      l = Long.parseLong(paramString);
-      if (l < 10000L) {
-        return 0L;
-      }
-      return l;
-    }
-    catch (NumberFormatException paramString) {}
-    return 0L;
-  }
-  
-  private String a(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = paramLong + 4294967296L;
-    }
-    return String.valueOf(l);
-  }
-  
   private List<TroopMemberInfo> a(String paramString, long paramLong)
   {
     long l3;
@@ -172,13 +143,13 @@ public class TroopMemberListHandler
     {
       try
       {
-        if ((this.b != null) && (this.b.containsKey(localObject1)))
+        if ((this.d != null) && (this.d.containsKey(localObject1)))
         {
-          ArrayList localArrayList = (ArrayList)this.b.remove(localObject1);
+          ArrayList localArrayList = (ArrayList)this.d.remove(localObject1);
           if ((localArrayList != null) && (!localArrayList.isEmpty()))
           {
             localObject1 = new ArrayList();
-            EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
+            EntityManager localEntityManager = this.b.getEntityManagerFactory().createEntityManager();
             EntityTransaction localEntityTransaction = localEntityManager.getTransaction();
             localEntityTransaction.begin();
             try
@@ -204,7 +175,7 @@ public class TroopMemberListHandler
                   a(paramLong, localEntityManager, localstTroopMemberInfo, (TroopMemberInfo)localObject2);
                 }
                 Object localObject4 = localObject3;
-                TroopMemberCardInfo localTroopMemberCardInfo = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, localObject4);
+                TroopMemberCardInfo localTroopMemberCardInfo = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberCardInfo(this.b, paramString, localObject4);
                 localObject3 = localTroopMemberCardInfo;
                 if (localTroopMemberCardInfo == null)
                 {
@@ -221,7 +192,7 @@ public class TroopMemberListHandler
                 ((TroopMemberCardInfo)localObject3).mVipType = ((int)localstTroopMemberInfo.dwVipType);
                 ((TroopMemberCardInfo)localObject3).mVipLevel = a((int)localstTroopMemberInfo.dwVipLevel);
                 TroopMemberListHandlerProcessorConfig.a((TroopMemberCardInfo)localObject3, localstTroopMemberInfo);
-                ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).saveTroopMemberCardInfo(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (TroopMemberCardInfo)localObject3);
+                ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).saveTroopMemberCardInfo(this.b, (TroopMemberCardInfo)localObject3);
                 ((List)localObject1).add(localObject2);
                 continue;
               }
@@ -240,7 +211,7 @@ public class TroopMemberListHandler
                 ((StringBuilder)localObject2).append(paramLong - l3);
                 QLog.d("TroopMemberListHandler", 2, ((StringBuilder)localObject2).toString());
               }
-              TroopMemberListHandlerProcessorConfig.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString, localArrayList);
+              TroopMemberListHandlerProcessorConfig.a(this.b, paramString, localArrayList);
               return localObject1;
             }
             finally
@@ -375,7 +346,7 @@ public class TroopMemberListHandler
   
   private void a(ToServiceMsg paramToServiceMsg, GetTroopMemberListResp paramGetTroopMemberListResp)
   {
-    String str1 = a(paramToServiceMsg.extraData.getLong("troop_uin"));
+    String str1 = b(paramToServiceMsg.extraData.getLong("troop_uin"));
     long l1 = paramToServiceMsg.extraData.getLong("troop_time");
     boolean bool = paramToServiceMsg.extraData.getBoolean("needCallBackCache");
     int i = paramToServiceMsg.extraData.getInt("reqType", 0);
@@ -389,7 +360,7 @@ public class TroopMemberListHandler
     if (paramGetTroopMemberListResp != null)
     {
       if (paramGetTroopMemberListResp.NextGetTime != 0L) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(str2, Long.valueOf(paramGetTroopMemberListResp.NextGetTime));
+        this.c.put(str2, Long.valueOf(paramGetTroopMemberListResp.NextGetTime));
       }
       long l3 = paramGetTroopMemberListResp.GroupUin;
       paramGetTroopMemberListResp.GroupUin = paramGetTroopMemberListResp.GroupCode;
@@ -419,18 +390,18 @@ public class TroopMemberListHandler
       {
         try
         {
-          if (this.b == null) {
-            this.b = new HashMap();
+          if (this.d == null) {
+            this.d = new HashMap();
           }
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(str1);
           ((StringBuilder)localObject2).append("_");
           ((StringBuilder)localObject2).append(l1);
           localObject2 = ((StringBuilder)localObject2).toString();
-          if (this.b.containsKey(localObject2)) {
-            ((ArrayList)this.b.get(localObject2)).addAll(paramGetTroopMemberListResp.vecTroopMember);
+          if (this.d.containsKey(localObject2)) {
+            ((ArrayList)this.d.get(localObject2)).addAll(paramGetTroopMemberListResp.vecTroopMember);
           } else {
-            this.b.put(localObject2, paramGetTroopMemberListResp.vecTroopMember);
+            this.d.put(localObject2, paramGetTroopMemberListResp.vecTroopMember);
           }
           paramGetTroopMemberListResp.vecTroopMember.size();
           if (paramGetTroopMemberListResp.NextUin != 0L)
@@ -521,8 +492,8 @@ public class TroopMemberListHandler
         paramToServiceMsg.append("|reqType:");
         paramToServiceMsg.append(i);
         paramToServiceMsg.append("|memberListNextReqTime:");
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str2)) {
-          l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(str2)).longValue();
+        if (this.c.containsKey(str2)) {
+          l1 = ((Long)this.c.get(str2)).longValue();
         } else {
           l1 = 0L;
         }
@@ -543,16 +514,16 @@ public class TroopMemberListHandler
     }
     else if (!paramstTroopMemberInfo.Nick.equals(paramTroopMemberInfo.friendnick))
     {
-      paramTroopMemberInfo.pyFirst_friendnick = ChnToSpell.a(paramstTroopMemberInfo.Nick, 2);
-      paramTroopMemberInfo.pyAll_friendnick = ChnToSpell.a(paramstTroopMemberInfo.Nick, 1);
+      paramTroopMemberInfo.pyFirst_friendnick = ChnToSpell.b(paramstTroopMemberInfo.Nick, 2);
+      paramTroopMemberInfo.pyAll_friendnick = ChnToSpell.b(paramstTroopMemberInfo.Nick, 1);
     }
     else
     {
       if (TextUtils.isEmpty(paramTroopMemberInfo.pyFirst_friendnick)) {
-        paramTroopMemberInfo.pyFirst_friendnick = ChnToSpell.a(paramstTroopMemberInfo.Nick, 2);
+        paramTroopMemberInfo.pyFirst_friendnick = ChnToSpell.b(paramstTroopMemberInfo.Nick, 2);
       }
       if (TextUtils.isEmpty(paramTroopMemberInfo.pyAll_friendnick)) {
-        paramTroopMemberInfo.pyAll_friendnick = ChnToSpell.a(paramstTroopMemberInfo.Nick, 1);
+        paramTroopMemberInfo.pyAll_friendnick = ChnToSpell.b(paramstTroopMemberInfo.Nick, 1);
       }
     }
     paramTroopMemberInfo.friendnick = paramstTroopMemberInfo.Nick;
@@ -571,7 +542,7 @@ public class TroopMemberListHandler
       ((ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "")).saveTroopInfo(paramTroopInfo);
     }
     ((ITroopMemberInfoService)this.appRuntime.getRuntimeService(ITroopMemberInfoService.class, "")).updateTroopMemberCache(paramString);
-    ITroopNameHelperService localITroopNameHelperService = (ITroopNameHelperService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopNameHelperService.class, "");
+    ITroopNameHelperService localITroopNameHelperService = (ITroopNameHelperService)this.b.getRuntimeService(ITroopNameHelperService.class, "");
     if ((!localITroopNameHelperService.isInReturnTaskList(paramString)) && (!paramTroopInfo.hasSetTroopName())) {
       localITroopNameHelperService.updateTroopName(paramString);
     }
@@ -585,7 +556,7 @@ public class TroopMemberListHandler
   
   private boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    long l2 = a(paramToServiceMsg.getUin());
+    long l2 = b(paramToServiceMsg.getUin());
     long l1 = 0L;
     if (l2 == 0L) {
       return false;
@@ -602,8 +573,8 @@ public class TroopMemberListHandler
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(localGetTroopMemberListReq.ReqType);
     localObject = ((StringBuilder)localObject).toString();
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
-      l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).longValue();
+    if (this.c.containsKey(localObject)) {
+      l1 = ((Long)this.c.get(localObject)).longValue();
     }
     localGetTroopMemberListReq.GetListAppointTime = l1;
     paramToServiceMsg.getBoolean("force_refresh");
@@ -902,6 +873,35 @@ public class TroopMemberListHandler
     }
   }
   
+  private long b(String paramString)
+  {
+    long l = 0L;
+    if (paramString != null) {
+      if (paramString.length() <= 0) {
+        return 0L;
+      }
+    }
+    try
+    {
+      l = Long.parseLong(paramString);
+      if (l < 10000L) {
+        return 0L;
+      }
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
+    return 0L;
+  }
+  
+  private String b(long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong < 0L) {
+      l = paramLong + 4294967296L;
+    }
+    return String.valueOf(l);
+  }
+  
   private void b(stTroopMemberInfo paramstTroopMemberInfo, TroopMemberInfo paramTroopMemberInfo)
   {
     if (TextUtils.isEmpty(paramstTroopMemberInfo.strAutoRemark))
@@ -912,15 +912,15 @@ public class TroopMemberListHandler
     }
     if (!paramstTroopMemberInfo.strAutoRemark.equals(paramTroopMemberInfo.autoremark))
     {
-      paramTroopMemberInfo.pyFirst_autoremark = ChnToSpell.a(paramstTroopMemberInfo.strAutoRemark, 2);
-      paramTroopMemberInfo.pyAll_autoremark = ChnToSpell.a(paramstTroopMemberInfo.strAutoRemark, 1);
+      paramTroopMemberInfo.pyFirst_autoremark = ChnToSpell.b(paramstTroopMemberInfo.strAutoRemark, 2);
+      paramTroopMemberInfo.pyAll_autoremark = ChnToSpell.b(paramstTroopMemberInfo.strAutoRemark, 1);
       return;
     }
     if (TextUtils.isEmpty(paramTroopMemberInfo.pyFirst_autoremark)) {
-      paramTroopMemberInfo.pyFirst_autoremark = ChnToSpell.a(paramstTroopMemberInfo.strAutoRemark, 2);
+      paramTroopMemberInfo.pyFirst_autoremark = ChnToSpell.b(paramstTroopMemberInfo.strAutoRemark, 2);
     }
     if (TextUtils.isEmpty(paramTroopMemberInfo.pyAll_autoremark)) {
-      paramTroopMemberInfo.pyAll_autoremark = ChnToSpell.a(paramstTroopMemberInfo.strAutoRemark, 1);
+      paramTroopMemberInfo.pyAll_autoremark = ChnToSpell.b(paramstTroopMemberInfo.strAutoRemark, 1);
     }
   }
   
@@ -1011,7 +1011,7 @@ public class TroopMemberListHandler
       {
         localObject1 = ((ITroopInfoService)this.appRuntime.getRuntimeService(ITroopInfoService.class, "")).findTroopInfo(String.valueOf(l2));
         if (localObject1 != null) {
-          TroopMemberUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, (TroopInfo)localObject1, paramObject, true);
+          TroopMemberUtil.a(this.b, (TroopInfo)localObject1, paramObject, true);
         }
       }
       notifyUI(TroopObserver.TYPE_OIDB_0X899_1, bool1, new Object[] { Long.valueOf(l2), Integer.valueOf(i), paramObject, Long.valueOf(l1), Integer.valueOf(j), paramToServiceMsg });
@@ -1044,10 +1044,10 @@ public class TroopMemberListHandler
     localTroopMemberInfo.troopuin = paramString1;
     localTroopMemberInfo.memberuin = paramString2;
     localTroopMemberInfo.friendnick = paramstTroopMemberInfo.Nick;
-    localTroopMemberInfo.pyFirst_friendnick = ChnToSpell.a(localTroopMemberInfo.friendnick, 2);
-    localTroopMemberInfo.pyAll_friendnick = ChnToSpell.a(localTroopMemberInfo.friendnick, 1);
-    localTroopMemberInfo.pyFirst_troopnick = ChnToSpell.a(localTroopMemberInfo.troopnick, 2);
-    localTroopMemberInfo.pyAll_troopnick = ChnToSpell.a(localTroopMemberInfo.troopnick, 1);
+    localTroopMemberInfo.pyFirst_friendnick = ChnToSpell.b(localTroopMemberInfo.friendnick, 2);
+    localTroopMemberInfo.pyAll_friendnick = ChnToSpell.b(localTroopMemberInfo.friendnick, 1);
+    localTroopMemberInfo.pyFirst_troopnick = ChnToSpell.b(localTroopMemberInfo.troopnick, 2);
+    localTroopMemberInfo.pyAll_troopnick = ChnToSpell.b(localTroopMemberInfo.troopnick, 1);
     localTroopMemberInfo.autoremark = paramstTroopMemberInfo.strAutoRemark;
     localTroopMemberInfo.faceid = paramstTroopMemberInfo.FaceId;
     localTroopMemberInfo.sex = paramstTroopMemberInfo.Gender;
@@ -1092,11 +1092,6 @@ public class TroopMemberListHandler
     }
     paramEntityManager.persist(localTroopMemberInfo);
     return localTroopMemberInfo;
-  }
-  
-  protected String a()
-  {
-    return "TroopMemberListHandler";
   }
   
   public void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
@@ -1231,7 +1226,7 @@ public class TroopMemberListHandler
     }
     long l = paramToServiceMsg.extraData.getLong("troop_uin");
     int i = paramToServiceMsg.extraData.getInt("type", 0);
-    a(false, new Object[] { a(l), null, Integer.valueOf(paramToServiceMsg.extraData.getInt("reqType", 0)), Long.valueOf(paramToServiceMsg.extraData.getLong("timestamp")), Integer.valueOf(i) });
+    a(false, new Object[] { b(l), null, Integer.valueOf(paramToServiceMsg.extraData.getInt("reqType", 0)), Long.valueOf(paramToServiceMsg.extraData.getLong("timestamp")), Integer.valueOf(i) });
   }
   
   public void a(String paramString)
@@ -1274,9 +1269,9 @@ public class TroopMemberListHandler
       ((StringBuilder)localObject1).append(paramList.size());
       QLog.d("TroopMemberListHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    double d = paramList.size();
-    Double.isNaN(d);
-    int n = (int)Math.ceil(d / 50.0D);
+    double d1 = paramList.size();
+    Double.isNaN(d1);
+    int n = (int)Math.ceil(d1 / 50.0D);
     int k;
     for (int i = 0; i < n; i = k)
     {
@@ -1313,7 +1308,7 @@ public class TroopMemberListHandler
     Object localObject2;
     if ((!TextUtils.isEmpty(paramString1)) && (!"0".equals(paramString1)))
     {
-      localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount(), "friendlist.getTroopMemberList");
+      localObject1 = new ToServiceMsg("mobileqq.service", this.b.getAccount(), "friendlist.getTroopMemberList");
       ((ToServiceMsg)localObject1).extraData.putLong("startTime", System.currentTimeMillis());
       ((ToServiceMsg)localObject1).extraData.putBoolean("force_refresh", paramBoolean1);
       ((ToServiceMsg)localObject1).extraData.putBoolean("needCallBackCache", paramBoolean2);
@@ -1326,8 +1321,8 @@ public class TroopMemberListHandler
       ((StringBuilder)localObject2).append(paramInt1);
       localObject2 = ((StringBuilder)localObject2).toString();
       Bundle localBundle = ((ToServiceMsg)localObject1).extraData;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject2)) {
-        paramLong = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(localObject2)).longValue();
+      if (this.c.containsKey(localObject2)) {
+        paramLong = ((Long)this.c.get(localObject2)).longValue();
       } else {
         paramLong = 0L;
       }
@@ -1335,7 +1330,7 @@ public class TroopMemberListHandler
     }
     try
     {
-      ((ToServiceMsg)localObject1).extraData.putLong("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin());
+      ((ToServiceMsg)localObject1).extraData.putLong("uin", this.b.getLongAccountUin());
       ((ToServiceMsg)localObject1).extraData.putLong("troop_uin", Long.parseLong(paramString1));
       ((ToServiceMsg)localObject1).extraData.putLong("troop_code", Long.parseLong(paramString2));
     }
@@ -1451,14 +1446,14 @@ public class TroopMemberListHandler
             }
             paramFromServiceMsg = null;
             localITroopMemberInfoService.saveTroopMemberEx(String.valueOf(l), str, paramObject, -100, paramFromServiceMsg, null, -100, -100, -100, -100L, (byte)-100, -100L, -100.0D);
-            paramToServiceMsg.add(new Pair(str, ((ITroopMemberNameService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopMemberNameService.class, "")).getTroopMemberName(String.valueOf(l), str)));
+            paramToServiceMsg.add(new Pair(str, ((ITroopMemberNameService)this.b.getRuntimeService(ITroopMemberNameService.class, "")).getTroopMemberName(String.valueOf(l), str)));
             continue;
           }
           notifyUI(TroopObserver.TYPE_GET_TROOP_MEMBER_LIST_BY_787, true, new Object[] { String.valueOf(l), paramToServiceMsg });
           if (QLog.isColorLevel()) {
             QLog.d("TroopMemberListHandler", 2, localStringBuffer.toString());
           }
-          ((ITroopNameHelperService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ITroopNameHelperService.class, "")).reExecuteReturnTask(String.valueOf(l), true);
+          ((ITroopNameHelperService)this.b.getRuntimeService(ITroopNameHelperService.class, "")).reExecuteReturnTask(String.valueOf(l), true);
           return;
         }
         paramToServiceMsg = new StringBuilder();
@@ -1483,18 +1478,23 @@ public class TroopMemberListHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopMemberListHandler";
+  }
+  
   public Set<String> getCommandList()
   {
-    if (this.jdField_a_of_type_JavaUtilSet == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet();
-      this.jdField_a_of_type_JavaUtilSet.add("friendlist.getTroopMemberList");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0xaf6_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x787_11");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x899_0");
-      this.jdField_a_of_type_JavaUtilSet.add("OidbSvc.0x899_9");
+      this.a = new HashSet();
+      this.a.add("friendlist.getTroopMemberList");
+      this.a.add("OidbSvc.0xaf6_0");
+      this.a.add("OidbSvc.0x787_11");
+      this.a.add("OidbSvc.0x899_0");
+      this.a.add("OidbSvc.0x899_9");
     }
-    return this.jdField_a_of_type_JavaUtilSet;
+    return this.a;
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -1518,7 +1518,7 @@ public class TroopMemberListHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -1556,7 +1556,7 @@ public class TroopMemberListHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopMemberListHandler
  * JD-Core Version:    0.7.0.1
  */

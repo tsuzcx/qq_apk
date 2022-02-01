@@ -19,7 +19,7 @@ public class WeishiPublicAccountAction
   {
     try
     {
-      ((IWSManager)QRoute.api(IWSManager.class)).enterWSPublicAccount(this.a, "from_search_rzh_ws", false);
+      ((IWSManager)QRoute.api(IWSManager.class)).enterWSPublicAccount(this.b, "from_search_rzh_ws", false);
       return true;
     }
     catch (Exception localException)
@@ -28,14 +28,14 @@ public class WeishiPublicAccountAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("WeishiPublicAccountAction", 1, localStringBuilder.toString());
-      b_("WeishiPublicAccountAction");
+      h_("WeishiPublicAccountAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.WeishiPublicAccountAction
  * JD-Core Version:    0.7.0.1
  */

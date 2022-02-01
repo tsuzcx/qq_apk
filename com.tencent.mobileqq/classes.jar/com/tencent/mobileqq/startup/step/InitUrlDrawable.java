@@ -16,22 +16,17 @@ import com.tencent.xaction.log.IQLog;
 public class InitUrlDrawable
   extends Step
 {
-  public static DiskCache a;
-  private static IQLog a;
   public static volatile boolean a = false;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentXactionLogIQLog = new InitUrlDrawable.1();
-  }
+  public static DiskCache b;
+  private static IQLog c = new InitUrlDrawable.1();
   
   protected boolean doStep()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       return true;
     }
-    jdField_a_of_type_Boolean = true;
-    com.tencent.xaction.log.QLog.a(jdField_a_of_type_ComTencentXactionLogIQLog);
+    a = true;
+    com.tencent.xaction.log.QLog.a(c);
     QEffectEngine.getInstance().setJsonConvert(new InitUrlDrawable.QEffectJsonConvert());
     QEffectEngine.getInstance().registerLoad(new QEffectLoad());
     QEffectEngine.getInstance().registerEffect(2, "a.png", QEffectApngImageView.class);
@@ -47,15 +42,15 @@ public class InitUrlDrawable
     {
       com.tencent.qphone.base.util.QLog.e("AutoMonitor", 1, "", localThrowable);
     }
-    jdField_a_of_type_ComTencentMobileqqTransfileDiskCache = AbsDownloader.sDiskCache;
-    com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = jdField_a_of_type_ComTencentMobileqqTransfileDiskCache.getDirectory();
+    b = AbsDownloader.sDiskCache;
+    com.tencent.mobileqq.transfile.URLDrawableHelper.diskCachePath = b.getDirectory();
     JpegExifReader.initJpegExifReader(new InitUrlDrawable.JpegExifReaderOperator());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitUrlDrawable
  * JD-Core Version:    0.7.0.1
  */

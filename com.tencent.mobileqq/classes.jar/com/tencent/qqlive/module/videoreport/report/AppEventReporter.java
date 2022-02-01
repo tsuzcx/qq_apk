@@ -428,7 +428,7 @@ public class AppEventReporter
     }
     if (!this.mActivityHashCode.remove(Integer.valueOf(paramActivity.hashCode())))
     {
-      localObject = paramActivity.getApplicationContext().getString(2131693626, new Object[] { paramActivity.toString() });
+      localObject = paramActivity.getApplicationContext().getString(2131891201, new Object[] { paramActivity.toString() });
       if (VideoReportInner.getInstance().isDebugMode()) {
         Toast.makeText(paramActivity.getApplicationContext(), (CharSequence)localObject, 1).show();
       }
@@ -489,7 +489,7 @@ public class AppEventReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.AppEventReporter
  * JD-Core Version:    0.7.0.1
  */

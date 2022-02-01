@@ -11,8 +11,8 @@ class AdExposeFreshManager$2
   {
     try
     {
-      double d1 = paramCacheAd2.a;
-      double d2 = paramCacheAd1.a;
+      double d1 = paramCacheAd2.c;
+      double d2 = paramCacheAd1.c;
       return (int)(d1 - d2);
     }
     catch (Throwable paramCacheAd1)
@@ -24,7 +24,7 @@ class AdExposeFreshManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.AdExposeFreshManager.2
  * JD-Core Version:    0.7.0.1
  */

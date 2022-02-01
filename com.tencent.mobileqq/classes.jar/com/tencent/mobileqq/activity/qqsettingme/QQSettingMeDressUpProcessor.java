@@ -19,6 +19,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.utils.VasUtils;
 import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vip.QQSettingConfigManager;
@@ -32,41 +33,42 @@ public class QQSettingMeDressUpProcessor
 {
   public final MutableLiveData<QQSettingMeDynamicItemBean> b = new MutableLiveData();
   
-  private void j()
+  private void a()
   {
-    Object localObject1 = QQSettingConfigManager.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime);
+    Object localObject1 = QQSettingConfigManager.a().a((QQAppInterface)this.c);
     Object localObject2 = Integer.valueOf(3);
     Object localObject3 = (MenumItem)((Map)localObject1).get(localObject2);
     if (localObject3 == null) {
       return;
     }
     localObject1 = new QQSettingMeDynamicItemBean();
-    ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_JavaLangString = QQSettingConfigManager.a().a((Integer)localObject2);
+    ((QQSettingMeDynamicItemBean)localObject1).a = QQSettingConfigManager.a().b((Integer)localObject2);
     if (!TextUtils.isEmpty(((MenumItem)localObject3).title)) {
-      ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_ComTencentMobileqqTextQQText = ChatRoomUtil.a(((MenumItem)localObject3).title, 16);
+      ((QQSettingMeDynamicItemBean)localObject1).b = ChatRoomUtil.a(((MenumItem)localObject3).title, 16);
     }
     if (!TextUtils.isEmpty(((MenumItem)localObject3).icon))
     {
       localObject2 = ((MenumItem)localObject3).icon;
       localObject3 = URLDrawableHelperConstants.a;
-      ((QQSettingMeDynamicItemBean)localObject1).jdField_a_of_type_ComTencentImageURLDrawable = VasApngUtil.getApngURLDrawable((String)localObject2, new int[] { 1 }, (Drawable)localObject3, null, null);
+      ((QQSettingMeDynamicItemBean)localObject1).c = VasApngUtil.getApngURLDrawable((String)localObject2, new int[] { 1 }, (Drawable)localObject3, null, null);
     }
     this.b.postValue(localObject1);
   }
   
-  public String a()
+  private void b(String paramString)
   {
-    return "d_decoration";
-  }
-  
-  public void a()
-  {
-    j();
+    if (!VasUtils.b())
+    {
+      if (this.d == null) {
+        return;
+      }
+      VasWebviewUtil.a(this.d, paramString);
+    }
   }
   
   public void a(View paramView)
   {
-    paramView = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
+    paramView = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
     Object localObject = paramView.getAppInfoByPath(String.valueOf(100005));
     int i;
     if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() != 0)) {
@@ -82,9 +84,9 @@ public class QQSettingMeDressUpProcessor
     } else {
       paramView = MobileReportManager.getNewDefaultReportInfo("outside", "3");
     }
-    VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, paramView);
+    b(paramView);
     ThreadManager.post(new QQSettingMeDressUpProcessor.2(this), 5, null, true);
-    paramView = QQSettingConfigManager.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "key_svip_item_makup_");
+    paramView = QQSettingConfigManager.a().a((QQAppInterface)this.c, "key_svip_item_makup_");
     if (paramView != null)
     {
       localObject = new StringBuilder();
@@ -97,34 +99,44 @@ public class QQSettingMeDressUpProcessor
       paramView = "0";
     }
     MobileReportManager.getInstance().qqSetingMeReport(6, 102, paramView);
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Trends_tab", "Personality_setting", 0, 0, "", "", "", "");
-    com.tencent.mobileqq.activity.recent.DrawerFrame.a = QQSettingMe.a;
+    ReportController.b(this.c, "CliOper", "", "", "Trends_tab", "Personality_setting", 0, 0, "", "", "", "");
+    com.tencent.mobileqq.activity.recent.DrawerFrame.b = QQSettingMe.a;
   }
   
   public void a(QQSettingMe paramQQSettingMe)
   {
     super.a(paramQQSettingMe);
-    this.b.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeDressUpProcessor.1(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeDressUpProcessor.1(this, paramQQSettingMe));
   }
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin(), 0);
+    SharedPreferences localSharedPreferences = this.c.getApplication().getSharedPreferences(this.c.getCurrentAccountUin(), 0);
     if ((paramAppInfo != null) && (paramAppInfo.iNewFlag.get() == 1)) {
       localSharedPreferences.edit().putBoolean("individuationIsForcePullSpKey", true).commit();
     } else {
       localSharedPreferences.edit().putBoolean("individuationIsForcePullSpKey", false).commit();
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.g) {
       ThreadManagerV2.getUIHandlerV2().post(new QQSettingMeDressUpProcessor.3(this));
     }
     super.a(paramAppInfo, paramBoolean);
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    Object localObject = QQSettingConfigManager.a().a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "key_svip_item_makup_");
+    return "d_decoration";
+  }
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public void d()
+  {
+    super.d();
+    Object localObject = QQSettingConfigManager.a().a((QQAppInterface)this.c, "key_svip_item_makup_");
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -137,17 +149,17 @@ public class QQSettingMeDressUpProcessor
       localObject = "0";
     }
     MobileReportManager.getInstance().qqSetingMeReport(6, 101, (String)localObject);
-    j();
+    a();
   }
   
-  public void f()
+  public void h()
   {
-    j();
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeDressUpProcessor
  * JD-Core Version:    0.7.0.1
  */

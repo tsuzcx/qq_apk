@@ -9,13 +9,13 @@ class UniteDownloadDbOperator$1
   
   public void run()
   {
-    UniteDownloadEntity localUniteDownloadEntity = UniteDownloadEntity.fromDownloadInfo(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, localUniteDownloadEntity);
+    UniteDownloadEntity localUniteDownloadEntity = UniteDownloadEntity.fromDownloadInfo(this.a);
+    this.this$0.a(this.b, localUniteDownloadEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.download.unite.core.UniteDownloadDbOperator.1
  * JD-Core Version:    0.7.0.1
  */

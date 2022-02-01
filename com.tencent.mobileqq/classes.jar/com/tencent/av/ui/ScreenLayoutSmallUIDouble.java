@@ -15,25 +15,20 @@ public class ScreenLayoutSmallUIDouble
   private void a(GLVideoView paramGLVideoView1, GLVideoView paramGLVideoView2, int paramInt)
   {
     int i = paramInt >> 1;
-    int j = ScreenLayoutDoubleScreen.b(paramInt);
+    int j = ScreenLayoutDoubleScreen.c(paramInt);
     paramGLVideoView1.a(0, 0, 0, 0);
-    paramGLVideoView1.b(i, 0, paramInt, j);
-    paramGLVideoView1.d(-15197410);
+    paramGLVideoView1.c(i, 0, paramInt, j);
+    paramGLVideoView1.e(-15197410);
     paramGLVideoView2.a(0, 0, 0, 0);
-    paramGLVideoView2.b(0, 0, i, j);
-    paramGLVideoView2.d(-15197410);
-  }
-  
-  public int a()
-  {
-    return 2;
+    paramGLVideoView2.c(0, 0, i, j);
+    paramGLVideoView2.e(-15197410);
   }
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
   public void a(GLVideoView[] paramArrayOfGLVideoView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    boolean bool2 = this.a.getCurrentAccountUin().equals(paramArrayOfGLVideoView[1].a(0)) ^ true;
+    boolean bool2 = this.b.getCurrentAccountUin().equals(paramArrayOfGLVideoView[1].d(0)) ^ true;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("layoutCommon: ");
     localStringBuilder.append(paramBoolean);
@@ -52,7 +47,12 @@ public class ScreenLayoutSmallUIDouble
     a(paramArrayOfGLVideoView[1], paramArrayOfGLVideoView[0], paramInt1);
   }
   
-  public boolean b()
+  public int b()
+  {
+    return 2;
+  }
+  
+  public boolean d()
   {
     return false;
   }

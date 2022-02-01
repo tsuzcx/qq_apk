@@ -56,61 +56,61 @@ public class StickerGrayTipLayout
         while (((Iterator)localObject).hasNext())
         {
           EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-          if (localSticker.jdField_a_of_type_Int + this.bubbleLeft + localSticker.c / 2 < getMeasuredWidth() / 2)
+          if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2)
           {
-            if (Math.abs(localSticker.e) > 200)
+            if (Math.abs(localSticker.g) > 200)
             {
-              localSticker.e -= EmojiStickerManager.f;
-              localSticker.f -= Math.abs(EmojiStickerManager.f / 2);
-              localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+              localSticker.g -= EmojiStickerManager.r;
+              localSticker.h -= Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
             }
             else
             {
-              localSticker.f += Math.abs(EmojiStickerManager.f / 2);
-              localSticker.f = Math.min(255, Math.max(0, localSticker.f));
-              localSticker.e += EmojiStickerManager.f;
+              localSticker.h += Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g += EmojiStickerManager.r;
             }
-            if (localSticker.e <= 0) {
+            if (localSticker.g <= 0) {
               break label350;
             }
-            localSticker.e = 0;
-            localSticker.f = 255;
+            localSticker.g = 0;
+            localSticker.h = 255;
             this.autoDismiss = false;
           }
           else
           {
-            if (Math.abs(localSticker.e) < 200)
+            if (Math.abs(localSticker.g) < 200)
             {
-              localSticker.f += Math.abs(EmojiStickerManager.f / 2);
-              localSticker.f = Math.min(255, Math.max(0, localSticker.f));
-              localSticker.e -= EmojiStickerManager.f;
+              localSticker.h += Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g -= EmojiStickerManager.r;
             }
             else
             {
-              localSticker.f -= Math.abs(EmojiStickerManager.f / 2);
-              localSticker.f = Math.min(255, Math.max(0, localSticker.f));
-              localSticker.e += EmojiStickerManager.f;
+              localSticker.h -= Math.abs(EmojiStickerManager.r / 2);
+              localSticker.h = Math.min(255, Math.max(0, localSticker.h));
+              localSticker.g += EmojiStickerManager.r;
             }
-            if (localSticker.e >= 0) {
+            if (localSticker.g >= 0) {
               break label350;
             }
-            localSticker.e = 0;
-            localSticker.f = 255;
+            localSticker.g = 0;
+            localSticker.h = 255;
             this.autoDismiss = false;
           }
           bool = false;
           label350:
-          if (localSticker.e < -400)
+          if (localSticker.g < -400)
           {
-            localSticker.e = -400;
-            localSticker.f = 0;
+            localSticker.g = -400;
+            localSticker.h = 0;
             this.autoDismiss = false;
             bool = true;
           }
-          if (localSticker.e > 400)
+          if (localSticker.g > 400)
           {
-            localSticker.e = 400;
-            localSticker.f = 0;
+            localSticker.g = 400;
+            localSticker.h = 0;
             this.autoDismiss = false;
             bool = true;
           }
@@ -149,19 +149,19 @@ public class StickerGrayTipLayout
       while (((Iterator)localObject).hasNext())
       {
         EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-        int i = localSticker.jdField_a_of_type_Int;
+        int i = localSticker.b;
         int j = this.bubbleLeft;
-        int n = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.c);
-        int m = (int)((localSticker.jdField_a_of_type_Float - 1.0F) * localSticker.d);
-        int k = localSticker.e;
+        int n = (int)((localSticker.n - 1.0F) * localSticker.d);
+        int m = (int)((localSticker.n - 1.0F) * localSticker.e);
+        int k = localSticker.g;
         n /= 2;
-        int i1 = localSticker.b;
+        int i1 = localSticker.c;
         m /= 2;
         float f = i + j + k - n;
-        if ((paramFloat1 > f) && (paramFloat1 < f + localSticker.jdField_a_of_type_Float * localSticker.c))
+        if ((paramFloat1 > f) && (paramFloat1 < f + localSticker.n * localSticker.d))
         {
           f = i1 - m;
-          if ((paramFloat2 > f) && (paramFloat2 < f + localSticker.jdField_a_of_type_Float * localSticker.d)) {
+          if ((paramFloat2 > f) && (paramFloat2 < f + localSticker.n * localSticker.e)) {
             return true;
           }
         }
@@ -180,15 +180,15 @@ public class StickerGrayTipLayout
       EmojiStickerManager.Sticker localSticker = new EmojiStickerManager.Sticker();
       if (paramDrawable != null)
       {
-        localSticker.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable.mutate();
+        localSticker.a = paramDrawable.mutate();
         paramDrawable.setCallback(this);
       }
-      localSticker.jdField_a_of_type_Int = paramInt1;
-      localSticker.b = paramInt2;
-      localSticker.c = paramInt3;
-      localSticker.d = paramInt4;
-      localSticker.jdField_a_of_type_Double = paramDouble;
-      localSticker.jdField_a_of_type_JavaLangString = paramString;
+      localSticker.b = paramInt1;
+      localSticker.c = paramInt2;
+      localSticker.d = paramInt3;
+      localSticker.e = paramInt4;
+      localSticker.f = paramDouble;
+      localSticker.i = paramString;
       this.stickers.add(localSticker);
       return true;
     }
@@ -204,7 +204,7 @@ public class StickerGrayTipLayout
       while (((Iterator)localObject).hasNext())
       {
         EmojiStickerManager.Sticker localSticker = (EmojiStickerManager.Sticker)((Iterator)localObject).next();
-        localSticker.b += paramInt;
+        localSticker.c += paramInt;
       }
     }
   }
@@ -217,14 +217,14 @@ public class StickerGrayTipLayout
     {
       localObject = (ViewGroup)localObject;
       if ((((ViewGroup)localObject).getTag() instanceof ChatItemBuilder.BaseHolder)) {
-        this.message = ((ChatItemBuilder.BaseHolder)((ViewGroup)localObject).getTag()).a;
+        this.message = ((ChatItemBuilder.BaseHolder)((ViewGroup)localObject).getTag()).q;
       }
     }
     int i = getChildCount() - 1;
     while (i >= 0)
     {
       localObject = getChildAt(i);
-      if (((View)localObject).getId() == 2131367798) {
+      if (((View)localObject).getId() == 2131434371) {
         this.bubbleLeft = ((View)localObject).getLeft();
       }
       i -= 1;
@@ -238,21 +238,21 @@ public class StickerGrayTipLayout
         MessageRecord localMessageRecord = this.message;
         if ((localMessageRecord != null) && (localMessageRecord.stickerHidden))
         {
-          if (((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_Int + this.bubbleLeft + ((EmojiStickerManager.Sticker)localObject).c / 2 < getMeasuredWidth() / 2) {
+          if (((EmojiStickerManager.Sticker)localObject).b + this.bubbleLeft + ((EmojiStickerManager.Sticker)localObject).d / 2 < getMeasuredWidth() / 2) {
             j = -400;
           } else {
             j = 400;
           }
-          ((EmojiStickerManager.Sticker)localObject).e = j;
-          ((EmojiStickerManager.Sticker)localObject).f = 0;
+          ((EmojiStickerManager.Sticker)localObject).g = j;
+          ((EmojiStickerManager.Sticker)localObject).h = 0;
         }
         int j = paramCanvas.getSaveCount();
         paramCanvas.save();
-        paramCanvas.translate(((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_Int + this.bubbleLeft + ((EmojiStickerManager.Sticker)localObject).e, ((EmojiStickerManager.Sticker)localObject).b);
-        paramCanvas.rotate((float)((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_Double, ((EmojiStickerManager.Sticker)localObject).c / 2, ((EmojiStickerManager.Sticker)localObject).d / 2);
-        ((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(((EmojiStickerManager.Sticker)localObject).f);
-        ((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ((EmojiStickerManager.Sticker)localObject).c, ((EmojiStickerManager.Sticker)localObject).d);
-        ((EmojiStickerManager.Sticker)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        paramCanvas.translate(((EmojiStickerManager.Sticker)localObject).b + this.bubbleLeft + ((EmojiStickerManager.Sticker)localObject).g, ((EmojiStickerManager.Sticker)localObject).c);
+        paramCanvas.rotate((float)((EmojiStickerManager.Sticker)localObject).f, ((EmojiStickerManager.Sticker)localObject).d / 2, ((EmojiStickerManager.Sticker)localObject).e / 2);
+        ((EmojiStickerManager.Sticker)localObject).a.setAlpha(((EmojiStickerManager.Sticker)localObject).h);
+        ((EmojiStickerManager.Sticker)localObject).a.setBounds(0, 0, ((EmojiStickerManager.Sticker)localObject).d, ((EmojiStickerManager.Sticker)localObject).e);
+        ((EmojiStickerManager.Sticker)localObject).a.draw(paramCanvas);
         paramCanvas.restoreToCount(j);
         i += 1;
       }
@@ -279,58 +279,58 @@ public class StickerGrayTipLayout
         if ((this.message != null) && (i != 0))
         {
           int j;
-          if (localSticker.jdField_a_of_type_Int + this.bubbleLeft + localSticker.c / 2 < getMeasuredWidth() / 2) {
+          if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2) {
             j = -400;
           } else {
             j = 400;
           }
-          localSticker.e = j;
-          localSticker.f = 0;
+          localSticker.g = j;
+          localSticker.h = 0;
         }
-        if ((paramInt2 != EmojiStickerManager.e) || (localSticker.e != 0)) {
-          if (paramInt2 == EmojiStickerManager.d)
+        if ((paramInt2 != EmojiStickerManager.q) || (localSticker.g != 0)) {
+          if (paramInt2 == EmojiStickerManager.p)
           {
-            if (localSticker.jdField_a_of_type_Int + this.bubbleLeft + localSticker.c / 2 < getMeasuredWidth() / 2) {
-              localSticker.e -= paramInt1;
+            if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2) {
+              localSticker.g -= paramInt1;
             } else {
-              localSticker.e += paramInt1;
+              localSticker.g += paramInt1;
             }
-            localSticker.f -= Math.abs(paramInt1 / 2);
-            localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+            localSticker.h -= Math.abs(paramInt1 / 2);
+            localSticker.h = Math.min(255, Math.max(0, localSticker.h));
           }
-          else if (paramInt2 == EmojiStickerManager.e)
+          else if (paramInt2 == EmojiStickerManager.q)
           {
-            if (localSticker.jdField_a_of_type_Int + this.bubbleLeft + localSticker.c / 2 < getMeasuredWidth() / 2)
+            if (localSticker.b + this.bubbleLeft + localSticker.d / 2 < getMeasuredWidth() / 2)
             {
-              localSticker.e += paramInt1;
-              if (localSticker.e > 0)
+              localSticker.g += paramInt1;
+              if (localSticker.g > 0)
               {
-                localSticker.e = 0;
-                localSticker.f = 255;
+                localSticker.g = 0;
+                localSticker.h = 255;
               }
             }
             else
             {
-              localSticker.e -= paramInt1;
-              if (localSticker.e < 0)
+              localSticker.g -= paramInt1;
+              if (localSticker.g < 0)
               {
-                localSticker.e = 0;
-                localSticker.f = 255;
+                localSticker.g = 0;
+                localSticker.h = 255;
               }
             }
-            localSticker.f += Math.abs(paramInt1 / 2);
-            localSticker.f = Math.min(255, Math.max(0, localSticker.f));
+            localSticker.h += Math.abs(paramInt1 / 2);
+            localSticker.h = Math.min(255, Math.max(0, localSticker.h));
           }
         }
-        if (localSticker.e < -400)
+        if (localSticker.g < -400)
         {
-          localSticker.e = -400;
-          localSticker.f = 0;
+          localSticker.g = -400;
+          localSticker.h = 0;
         }
-        if (localSticker.e > 400)
+        if (localSticker.g > 400)
         {
-          localSticker.e = 400;
-          localSticker.f = 0;
+          localSticker.g = 400;
+          localSticker.h = 0;
         }
       }
       if (i != 0)
@@ -385,12 +385,12 @@ public class StickerGrayTipLayout
       while (paramInt1 < this.stickers.size())
       {
         localObject = (EmojiStickerManager.Sticker)this.stickers.get(paramInt1);
-        ((EmojiStickerManager.Sticker)localObject).f = 255;
-        ((EmojiStickerManager.Sticker)localObject).e = 0;
+        ((EmojiStickerManager.Sticker)localObject).h = 255;
+        ((EmojiStickerManager.Sticker)localObject).g = 0;
         int i = paramInt2;
-        if (((EmojiStickerManager.Sticker)localObject).b + ((EmojiStickerManager.Sticker)localObject).d > paramInt2)
+        if (((EmojiStickerManager.Sticker)localObject).c + ((EmojiStickerManager.Sticker)localObject).e > paramInt2)
         {
-          i = ((EmojiStickerManager.Sticker)localObject).b + ((EmojiStickerManager.Sticker)localObject).d;
+          i = ((EmojiStickerManager.Sticker)localObject).c + ((EmojiStickerManager.Sticker)localObject).e;
           j = 1;
         }
         paramInt1 += 1;
@@ -460,7 +460,7 @@ public class StickerGrayTipLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGrayTipLayout
  * JD-Core Version:    0.7.0.1
  */

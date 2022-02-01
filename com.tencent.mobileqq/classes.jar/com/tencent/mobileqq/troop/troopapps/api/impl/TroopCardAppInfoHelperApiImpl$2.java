@@ -48,7 +48,7 @@ class TroopCardAppInfoHelperApiImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.api.impl.TroopCardAppInfoHelperApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

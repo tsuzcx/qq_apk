@@ -21,13 +21,13 @@ public class ActivateFriendMessage
 {
   public MessageForActivateFriends a;
   
-  private boolean b(AppRuntime paramAppRuntime)
+  private boolean c(AppRuntime paramAppRuntime)
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
     if (QLog.isColorLevel()) {
       localStringBuilder.append("isOutOfDate ");
     }
-    SubMsgType0x76.MsgBody localMsgBody = this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsMessageForActivateFriends.getMsgBody();
+    SubMsgType0x76.MsgBody localMsgBody = this.a.getMsgBody();
     int i = localMsgBody.uint32_msg_type.get();
     boolean bool2 = false;
     if (i == 2)
@@ -41,7 +41,7 @@ public class ActivateFriendMessage
         if (QLog.isColorLevel()) {
           localStringBuilder.append(l);
         }
-        if (!paramAppRuntime.b(String.valueOf(l)))
+        if (!paramAppRuntime.n(String.valueOf(l)))
         {
           if (QLog.isColorLevel()) {
             localStringBuilder.append(" not friend");
@@ -77,31 +77,18 @@ public class ActivateFriendMessage
   
   public String a()
   {
-    SubMsgType0x76.MsgBody localMsgBody = this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsMessageForActivateFriends.getMsgBody();
+    SubMsgType0x76.MsgBody localMsgBody = this.a.getMsgBody();
     if ((localMsgBody.uint32_msg_type.get() == 2) && (localMsgBody.msg_birthday_notify.rpt_msg_one_friend.get().size() > 0)) {
       return String.valueOf(((SubMsgType0x76.OneBirthdayFriend)localMsgBody.msg_birthday_notify.rpt_msg_one_friend.get().get(0)).uint64_uin.get());
     }
     return super.a();
   }
   
-  public String a(AppRuntime paramAppRuntime)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsMessageForActivateFriends.msg;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppActivateFriendsMessageForActivateFriends.isread;
-  }
-  
   public boolean a(AppRuntime paramAppRuntime)
   {
     try
     {
-      boolean bool = b(paramAppRuntime);
+      boolean bool = c(paramAppRuntime);
       return true ^ bool;
     }
     catch (Exception paramAppRuntime)
@@ -112,10 +99,23 @@ public class ActivateFriendMessage
     catch (NoSuchFieldError paramAppRuntime) {}
     return true;
   }
+  
+  public String b(AppRuntime paramAppRuntime)
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      this.c = this.a.msg;
+    }
+    return this.c;
+  }
+  
+  public boolean b()
+  {
+    return this.a.isread;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.msg.ActivateFriendMessage
  * JD-Core Version:    0.7.0.1
  */

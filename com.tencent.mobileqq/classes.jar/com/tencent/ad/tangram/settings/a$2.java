@@ -10,7 +10,7 @@ class a$2
   public void run()
   {
     gdt_settings.Settings localSettings = a.access$400(this.this$0).getCacheByIPC();
-    a.access$000(this.this$0, localSettings);
+    a.access$100(this.this$0, localSettings);
   }
 }
 

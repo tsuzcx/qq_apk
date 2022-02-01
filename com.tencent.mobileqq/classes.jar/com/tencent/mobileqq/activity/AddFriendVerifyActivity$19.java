@@ -38,7 +38,7 @@ class AddFriendVerifyActivity$19
           this.a.startActivity(paramString);
         }
       }
-      else if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
+      else if (!TextUtils.isEmpty(this.a.o))
       {
         if (TextUtils.isEmpty(this.a.app.getAccount())) {
           return;
@@ -49,7 +49,7 @@ class AddFriendVerifyActivity$19
         if (paramTroopInfo != null)
         {
           paramString = this.a.app.getProxyManager();
-          RecentUser localRecentUser = paramString.a().a(paramTroopInfo.troopuin, 1);
+          RecentUser localRecentUser = paramString.g().b(paramTroopInfo.troopuin, 1);
           localRecentUser.displayName = paramTroopInfo.troopname;
           localRecentUser.msgData = null;
           localRecentUser.msg = null;
@@ -58,7 +58,7 @@ class AddFriendVerifyActivity$19
           if (localRecentUser.lastmsgtime < l) {
             localRecentUser.lastmsgtime = l;
           }
-          paramString.a().b(localRecentUser);
+          paramString.g().b(localRecentUser);
           this.a.setResult(-1);
         }
         this.a.finish();
@@ -67,11 +67,11 @@ class AddFriendVerifyActivity$19
     else
     {
       this.a.setResult(-1);
-      if ((this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager != null) && (AddFriendVerifyActivity.a(this.a) != null))
+      if ((this.a.s != null) && (AddFriendVerifyActivity.b(this.a) != null))
       {
         this.a.getWindow().setSoftInputMode(2);
-        this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-        AddFriendVerifyActivity.a(this.a).clearFocus();
+        this.a.s.hideSoftInputFromWindow(AddFriendVerifyActivity.b(this.a).getWindowToken(), 0);
+        AddFriendVerifyActivity.b(this.a).clearFocus();
       }
       this.a.finish();
     }
@@ -79,7 +79,7 @@ class AddFriendVerifyActivity$19
   
   protected void onOIDB0X88D_10_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
   {
-    if (!Utils.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) {
+    if (!Utils.a(String.valueOf(paramLong), this.a.o)) {
       return;
     }
     Object localObject;
@@ -107,12 +107,12 @@ class AddFriendVerifyActivity$19
       }
       if ((l != 10009L) && (l != 10010L) && (l != 10011L) && (l != 10012L) && (!paramTroopInfo.isHomeworkTroop()))
       {
-        paramTroopInfo = AddFriendVerifyActivity.b(this.a);
+        paramTroopInfo = AddFriendVerifyActivity.q(this.a);
         if (!TextUtils.isEmpty(paramTroopInfo))
         {
           paramString = new StringBuilder();
           localObject = this.a;
-          paramString.append(((AddFriendVerifyActivity)localObject).getString(2131697545, new Object[] { ((AddFriendVerifyActivity)localObject).app.getCurrentNickname() }));
+          paramString.append(((AddFriendVerifyActivity)localObject).getString(2131895318, new Object[] { ((AddFriendVerifyActivity)localObject).app.getCurrentNickname() }));
           paramString.append(paramTroopInfo);
           paramTroopInfo = paramString.toString();
           this.a.d(paramTroopInfo);
@@ -144,7 +144,7 @@ class AddFriendVerifyActivity$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.19
  * JD-Core Version:    0.7.0.1
  */

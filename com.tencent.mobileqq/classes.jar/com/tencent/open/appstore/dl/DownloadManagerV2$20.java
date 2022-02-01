@@ -19,32 +19,32 @@ class DownloadManagerV2$20
   {
     try
     {
-      if (!CommonDataAdapter.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
+      if (!CommonDataAdapter.a().b().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).getBoolean("download_clear_unuse", false))
       {
-        Iterator localIterator = DownloadManagerV2.a(this.this$0).values().iterator();
+        Iterator localIterator = DownloadManagerV2.c(this.this$0).values().iterator();
         Object localObject;
         while (localIterator.hasNext())
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)localIterator.next();
-          if (localDownloadInfo.c == 0)
+          if (localDownloadInfo.o == 0)
           {
-            if (localDownloadInfo.a == 0) {
+            if (localDownloadInfo.j == 0) {
               localObject = localDownloadInfo.d;
             } else {
-              localObject = localDownloadInfo.i;
+              localObject = localDownloadInfo.k;
             }
-            if (this.this$0.a((String)localObject) == null) {
+            if (this.this$0.g((String)localObject) == null) {
               DownloadManagerV2.a(this.this$0, localDownloadInfo);
             }
           }
-          else if (this.this$0.a(localDownloadInfo) == null)
+          else if (this.this$0.c(localDownloadInfo) == null)
           {
             DownloadManagerV2.a(this.this$0, localDownloadInfo);
           }
         }
-        if (DownloadManagerV2.a(this.this$0).size() > 200)
+        if (DownloadManagerV2.c(this.this$0).size() > 200)
         {
-          localObject = CommonDataAdapter.a().a().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
+          localObject = CommonDataAdapter.a().b().getSharedPreferences("opensdk_config_DownloadManagerV2", 0).edit();
           ((SharedPreferences.Editor)localObject).putBoolean("download_clear_unuse", true);
           ((SharedPreferences.Editor)localObject).apply();
           return;
@@ -59,7 +59,7 @@ class DownloadManagerV2$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appstore.dl.DownloadManagerV2.20
  * JD-Core Version:    0.7.0.1
  */

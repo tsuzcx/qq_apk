@@ -10,19 +10,19 @@ class FrameworkHandler$6
   
   public void run()
   {
-    if (ReadInJoyChannelGuidingManager.a(this.this$0.a()))
+    if (ReadInJoyChannelGuidingManager.a(this.this$0.c()))
     {
-      this.this$0.a(true, 1);
+      this.this$0.b(true, 1);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[handleDailyJumpToRecommendChannel], backToTop refresh, channelID = ");
-      localStringBuilder.append(this.this$0.a());
+      localStringBuilder.append(this.this$0.c());
       QLog.i("FrameworkHandler", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.handlers.FrameworkHandler.6
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ class AddFriendVerifyActivity$23
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131362182) || (i == 2131368486)) {
-      AddFriendVerifyActivity.d(this.a);
+    if ((i == 2131427763) || (i == 2131435388)) {
+      AddFriendVerifyActivity.x(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.23
  * JD-Core Version:    0.7.0.1
  */

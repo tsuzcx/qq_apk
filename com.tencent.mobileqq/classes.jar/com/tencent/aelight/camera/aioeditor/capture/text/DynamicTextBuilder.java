@@ -25,110 +25,116 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DynamicTextBuilder
 {
-  private static final String jdField_a_of_type_JavaLangString = "DynamicTextBuilder";
-  private static final Map<Integer, List<String>> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private DynamicTextConfigManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager;
-  private ConcurrentHashMap<String, Typeface> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private ConcurrentHashMap<Integer, Bitmap> b = new ConcurrentHashMap();
+  private static final String a = "DynamicTextBuilder";
+  private static final Map<Integer, List<String>> b = new HashMap();
+  private ConcurrentHashMap<String, Typeface> c = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, Bitmap> d = new ConcurrentHashMap();
+  private DynamicTextConfigManager e;
   
   static
   {
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(0), Collections.singletonList(HardCodeUtil.a(2131689718)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), Collections.singletonList("Hi (•ω•)"));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(3), Collections.singletonList(HardCodeUtil.a(2131703757)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(4), Collections.singletonList(HardCodeUtil.a(2131703770)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(5), Arrays.asList(new String[] { HardCodeUtil.a(2131703745), "MY JOURNEY" }));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(7), Collections.singletonList(HardCodeUtil.a(2131703744)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(8), Collections.singletonList(HardCodeUtil.a(2131703767)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(11), Collections.singletonList(HardCodeUtil.a(2131703762)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(15), Collections.singletonList(HardCodeUtil.a(2131703763)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(16), Collections.singletonList(HardCodeUtil.a(2131703749)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(17), Collections.singletonList(HardCodeUtil.a(2131703773)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(19), Collections.singletonList(HardCodeUtil.a(2131703768)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(20), Collections.singletonList("superich"));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(21), Collections.singletonList(HardCodeUtil.a(2131703758)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(24), Collections.singletonList("街头，\n艺术家。"));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(26), Collections.singletonList(HardCodeUtil.a(2131703750)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", "jenny" }));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(31), Collections.singletonList(HardCodeUtil.a(2131689721)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(30), Collections.singletonList(HardCodeUtil.a(2131689717)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(32), Collections.singletonList(HardCodeUtil.a(2131689720)));
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(33), Collections.singletonList(HardCodeUtil.a(2131689719)));
+    b.put(Integer.valueOf(0), Collections.singletonList(HardCodeUtil.a(2131886346)));
+    b.put(Integer.valueOf(1), Collections.singletonList("Hi (•ω•)"));
+    b.put(Integer.valueOf(3), Collections.singletonList(HardCodeUtil.a(2131901703)));
+    b.put(Integer.valueOf(4), Collections.singletonList(HardCodeUtil.a(2131901716)));
+    b.put(Integer.valueOf(5), Arrays.asList(new String[] { HardCodeUtil.a(2131901691), "MY JOURNEY" }));
+    b.put(Integer.valueOf(7), Collections.singletonList(HardCodeUtil.a(2131901690)));
+    b.put(Integer.valueOf(8), Collections.singletonList(HardCodeUtil.a(2131901713)));
+    b.put(Integer.valueOf(11), Collections.singletonList(HardCodeUtil.a(2131901708)));
+    b.put(Integer.valueOf(15), Collections.singletonList(HardCodeUtil.a(2131901709)));
+    b.put(Integer.valueOf(16), Collections.singletonList(HardCodeUtil.a(2131901695)));
+    b.put(Integer.valueOf(17), Collections.singletonList(HardCodeUtil.a(2131901719)));
+    b.put(Integer.valueOf(19), Collections.singletonList(HardCodeUtil.a(2131901714)));
+    b.put(Integer.valueOf(20), Collections.singletonList("superich"));
+    b.put(Integer.valueOf(21), Collections.singletonList(HardCodeUtil.a(2131901704)));
+    b.put(Integer.valueOf(24), Collections.singletonList("街头，\n艺术家。"));
+    b.put(Integer.valueOf(26), Collections.singletonList(HardCodeUtil.a(2131901696)));
+    b.put(Integer.valueOf(27), Arrays.asList(new String[] { "悠闲的\n下午。", "jenny" }));
+    b.put(Integer.valueOf(31), Collections.singletonList(HardCodeUtil.a(2131886349)));
+    b.put(Integer.valueOf(30), Collections.singletonList(HardCodeUtil.a(2131886345)));
+    b.put(Integer.valueOf(32), Collections.singletonList(HardCodeUtil.a(2131886348)));
+    b.put(Integer.valueOf(33), Collections.singletonList(HardCodeUtil.a(2131886347)));
     ThreadManager.post(new DynamicTextBuilder.1(), 5, null, false);
   }
   
-  public static int a(int paramInt)
+  public static String a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getIconDrawable type is: ");
-      localStringBuilder.append(paramInt);
-      QLog.i("DText", 2, localStringBuilder.toString());
+    List localList = a(paramInt1);
+    if ((localList != null) && (paramInt2 >= 0) && (paramInt2 < localList.size())) {
+      return (String)localList.get(paramInt2);
     }
-    int i = 2130844556;
-    switch (paramInt)
-    {
-    case 2: 
-    case 6: 
-    case 9: 
-    case 10: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 18: 
-    case 22: 
-    case 23: 
-    case 25: 
-    case 28: 
-    case 29: 
-    default: 
-      return 2130844556;
-    case 33: 
-      return 2130844551;
-    case 32: 
-      return 2130844564;
-    case 31: 
-      return 2130844565;
-    case 30: 
-      return 2130844539;
-    case 27: 
-      return 2130844559;
-    case 26: 
-      return 2130844552;
-    case 24: 
-      return 2130844558;
-    case 21: 
-      return 2130844557;
-    case 20: 
-      return 2130844563;
-    case 19: 
-      return 2130844542;
-    case 17: 
-      return 2130844550;
-    case 16: 
-      return 2130844554;
-    case 15: 
-      return 2130844549;
-    case 11: 
-      return 2130844535;
-    case 8: 
-      return 2130844544;
-    case 7: 
-      return 2130844561;
-    case 5: 
-      return 2130844546;
-    case 4: 
-      return 2130844547;
-    case 3: 
-      return 2130844545;
-    case 1: 
-      i = 2130844543;
-    }
-    return i;
+    return "";
   }
   
-  public static String a(int paramInt)
+  public static List<String> a(int paramInt)
+  {
+    if (b.containsKey(Integer.valueOf(paramInt))) {
+      return (List)b.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  public static List<String> a(List<String> paramList, @NonNull DynamicTextItem paramDynamicTextItem)
+  {
+    ArrayList localArrayList = paramDynamicTextItem.j();
+    if (!localArrayList.isEmpty())
+    {
+      int j = 0;
+      if (TextUtils.isEmpty((CharSequence)localArrayList.get(0))) {
+        return paramList;
+      }
+      Iterator localIterator = localArrayList.iterator();
+      int i;
+      if (localIterator.hasNext())
+      {
+        localIterator.next();
+        i = 1;
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if ((str != null) && (str.equals(a(paramDynamicTextItem.k(), i)))) {
+            localIterator.remove();
+          }
+          i += 1;
+        }
+      }
+      if (paramList != null)
+      {
+        if (paramList.isEmpty()) {
+          return localArrayList;
+        }
+        i = localArrayList.size();
+        int m = paramList.size();
+        int k = Math.min(i, paramDynamicTextItem.b());
+        i = j;
+        for (;;)
+        {
+          j = k;
+          if (i >= k) {
+            break;
+          }
+          if (i >= m)
+          {
+            j = k;
+            break;
+          }
+          if (((String)localArrayList.get(i)).equals(a(paramDynamicTextItem.k(), i))) {
+            localArrayList.set(i, paramList.get(i));
+          }
+          i += 1;
+        }
+        while (j < m)
+        {
+          localArrayList.add(paramList.get(j));
+          j += 1;
+        }
+      }
+      return localArrayList;
+    }
+    return paramList;
+  }
+  
+  public static String b(int paramInt)
   {
     switch (paramInt)
     {
@@ -146,116 +152,110 @@ public class DynamicTextBuilder
     default: 
       return null;
     case 27: 
-      return HardCodeUtil.a(2131703752);
+      return HardCodeUtil.a(2131901698);
     case 26: 
-      return HardCodeUtil.a(2131703769);
+      return HardCodeUtil.a(2131901715);
     case 24: 
-      return HardCodeUtil.a(2131703755);
+      return HardCodeUtil.a(2131901701);
     case 21: 
-      return HardCodeUtil.a(2131703753);
+      return HardCodeUtil.a(2131901699);
     case 20: 
       return "superich";
     case 19: 
-      return HardCodeUtil.a(2131703754);
+      return HardCodeUtil.a(2131901700);
     case 17: 
-      return HardCodeUtil.a(2131703746);
+      return HardCodeUtil.a(2131901692);
     case 16: 
-      return HardCodeUtil.a(2131703772);
+      return HardCodeUtil.a(2131901718);
     case 15: 
-      return HardCodeUtil.a(2131703748);
+      return HardCodeUtil.a(2131901694);
     case 11: 
-      return HardCodeUtil.a(2131703751);
+      return HardCodeUtil.a(2131901697);
     case 8: 
-      return HardCodeUtil.a(2131703764);
+      return HardCodeUtil.a(2131901710);
     case 7: 
-      return HardCodeUtil.a(2131703765);
+      return HardCodeUtil.a(2131901711);
     case 5: 
-      return HardCodeUtil.a(2131703761);
+      return HardCodeUtil.a(2131901707);
     case 4: 
-      return HardCodeUtil.a(2131703766);
+      return HardCodeUtil.a(2131901712);
     case 3: 
-      return HardCodeUtil.a(2131703759);
+      return HardCodeUtil.a(2131901705);
     case 1: 
       return "Hi";
     }
-    return HardCodeUtil.a(2131703760);
+    return HardCodeUtil.a(2131901706);
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  public static int c(int paramInt)
   {
-    List localList = a(paramInt1);
-    if ((localList != null) && (paramInt2 >= 0) && (paramInt2 < localList.size())) {
-      return (String)localList.get(paramInt2);
-    }
-    return "";
-  }
-  
-  public static List<String> a(int paramInt)
-  {
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) {
-      return (List)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    }
-    return null;
-  }
-  
-  public static List<String> a(List<String> paramList, @NonNull DynamicTextItem paramDynamicTextItem)
-  {
-    ArrayList localArrayList = paramDynamicTextItem.a();
-    if (!localArrayList.isEmpty())
+    if (QLog.isColorLevel())
     {
-      int j = 0;
-      if (TextUtils.isEmpty((CharSequence)localArrayList.get(0))) {
-        return paramList;
-      }
-      Iterator localIterator = localArrayList.iterator();
-      int i;
-      if (localIterator.hasNext())
-      {
-        localIterator.next();
-        i = 1;
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if ((str != null) && (str.equals(a(paramDynamicTextItem.c(), i)))) {
-            localIterator.remove();
-          }
-          i += 1;
-        }
-      }
-      if (paramList != null)
-      {
-        if (paramList.isEmpty()) {
-          return localArrayList;
-        }
-        i = localArrayList.size();
-        int m = paramList.size();
-        int k = Math.min(i, paramDynamicTextItem.a());
-        i = j;
-        for (;;)
-        {
-          j = k;
-          if (i >= k) {
-            break;
-          }
-          if (i >= m)
-          {
-            j = k;
-            break;
-          }
-          if (((String)localArrayList.get(i)).equals(a(paramDynamicTextItem.c(), i))) {
-            localArrayList.set(i, paramList.get(i));
-          }
-          i += 1;
-        }
-        while (j < m)
-        {
-          localArrayList.add(paramList.get(j));
-          j += 1;
-        }
-      }
-      return localArrayList;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIconDrawable type is: ");
+      localStringBuilder.append(paramInt);
+      QLog.i("DText", 2, localStringBuilder.toString());
     }
-    return paramList;
+    int i = 2130845929;
+    switch (paramInt)
+    {
+    case 2: 
+    case 6: 
+    case 9: 
+    case 10: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 18: 
+    case 22: 
+    case 23: 
+    case 25: 
+    case 28: 
+    case 29: 
+    default: 
+      return 2130845929;
+    case 33: 
+      return 2130845924;
+    case 32: 
+      return 2130845937;
+    case 31: 
+      return 2130845938;
+    case 30: 
+      return 2130845912;
+    case 27: 
+      return 2130845932;
+    case 26: 
+      return 2130845925;
+    case 24: 
+      return 2130845931;
+    case 21: 
+      return 2130845930;
+    case 20: 
+      return 2130845936;
+    case 19: 
+      return 2130845915;
+    case 17: 
+      return 2130845923;
+    case 16: 
+      return 2130845927;
+    case 15: 
+      return 2130845922;
+    case 11: 
+      return 2130845908;
+    case 8: 
+      return 2130845917;
+    case 7: 
+      return 2130845934;
+    case 5: 
+      return 2130845919;
+    case 4: 
+      return 2130845920;
+    case 3: 
+      return 2130845918;
+    case 1: 
+      i = 2130845916;
+    }
+    return i;
   }
   
   public int a(DynamicTextItem paramDynamicTextItem)
@@ -323,7 +323,7 @@ public class DynamicTextBuilder
         return 27;
       }
       if (BasicTextRegionTextItem.class.isInstance(paramDynamicTextItem)) {
-        return ((BasicTextRegionTextItem)paramDynamicTextItem).c();
+        return ((BasicTextRegionTextItem)paramDynamicTextItem).k();
       }
     }
     return 0;
@@ -331,8 +331,8 @@ public class DynamicTextBuilder
   
   public <T extends DynamicTextItem> T a(int paramInt, @NonNull List<String> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager == null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager = ((DynamicTextConfigManager)QIMManager.a(7));
+    if (this.e == null) {
+      this.e = ((DynamicTextConfigManager)QIMManager.a(7));
     }
     Object localObject4 = new ArrayList();
     if (paramList != null)
@@ -349,7 +349,7 @@ public class DynamicTextBuilder
         localObject4 = paramList;
       }
     }
-    Object localObject12 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.a(String.valueOf(paramInt));
+    Object localObject12 = this.e.b(String.valueOf(paramInt));
     Object localObject10 = null;
     Object localObject1;
     Object localObject3;
@@ -361,7 +361,7 @@ public class DynamicTextBuilder
         paramList = (DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((DynamicTextConfigManager.DynamicTextConfigBean)localObject12).fontInfos.get(0);
       }
       if (paramList != null) {
-        localObject1 = (Typeface)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramList.c);
+        localObject1 = (Typeface)this.c.get(paramList.c);
       } else {
         localObject1 = null;
       }
@@ -400,7 +400,7 @@ public class DynamicTextBuilder
       paramList = paramList.toString();
       if (QLog.isColorLevel())
       {
-        localObject5 = jdField_a_of_type_JavaLangString;
+        localObject5 = a;
         localObject10 = new StringBuilder();
         ((StringBuilder)localObject10).append("DynamicTextBuilder : ");
         ((StringBuilder)localObject10).append(paramList);
@@ -424,14 +424,14 @@ public class DynamicTextBuilder
       if (localObject1 == null)
       {
         localObject5 = new StringBuilder();
-        ((StringBuilder)localObject5).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+        ((StringBuilder)localObject5).append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
         ((StringBuilder)localObject5).append("dynamic_text.ttf");
         paramList = (List<String>)localObject1;
-        if (FileUtil.b(((StringBuilder)localObject5).toString())) {
+        if (FileUtil.d(((StringBuilder)localObject5).toString())) {
           try
           {
             paramList = new StringBuilder();
-            paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+            paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
             paramList.append("dynamic_text.ttf");
             paramList = Typeface.createFromFile(paramList.toString());
           }
@@ -440,46 +440,46 @@ public class DynamicTextBuilder
             paramList = (List<String>)localObject1;
             if (QLog.isColorLevel())
             {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, localException2.toString());
+              QLog.i(a, 2, localException2.toString());
               paramList = (List<String>)localObject1;
             }
           }
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "added new rich super : ");
+        QLog.i(a, 2, "added new rich super : ");
       }
       localObject4 = new RelaxedAfternoon(paramInt, (List)localObject4, paramList);
       localObject1 = paramList;
       paramList = (List<String>)localObject4;
       break;
     case 26: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844541));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845914));
       Object localObject6 = paramList;
       if (paramList == null)
       {
-        localObject6 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844541);
-        this.b.put(Integer.valueOf(2130844541), localObject6);
+        localObject6 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845914);
+        this.d.put(Integer.valueOf(2130845914), localObject6);
       }
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844540));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845913));
       localObject10 = paramList;
       if (paramList == null)
       {
-        localObject10 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844540);
-        this.b.put(Integer.valueOf(2130844540), localObject10);
+        localObject10 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845913);
+        this.d.put(Integer.valueOf(2130845913), localObject10);
       }
       if (localObject1 == null) {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
           if (QLog.isColorLevel()) {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, paramList.getMessage(), paramList);
+            QLog.i(a, 2, paramList.getMessage(), paramList);
           }
         }
       } else {
@@ -495,7 +495,7 @@ public class DynamicTextBuilder
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
@@ -504,7 +504,7 @@ public class DynamicTextBuilder
           paramList = (List<String>)localObject1;
           if (QLog.isColorLevel())
           {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, localException3.getMessage(), localException3);
+            QLog.i(a, 2, localException3.getMessage(), localException3);
             paramList = (List<String>)localObject1;
           }
         }
@@ -514,33 +514,33 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 21: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844646));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130846019));
       localObject7 = paramList;
       if (paramList == null)
       {
-        localObject7 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844646);
-        this.b.put(Integer.valueOf(2130844646), localObject7);
+        localObject7 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846019);
+        this.d.put(Integer.valueOf(2130846019), localObject7);
       }
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844647));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130846020));
       localObject10 = paramList;
       if (paramList == null)
       {
-        localObject10 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844647);
-        this.b.put(Integer.valueOf(2130844647), localObject10);
+        localObject10 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846020);
+        this.d.put(Integer.valueOf(2130846020), localObject10);
       }
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844648));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130846021));
       localObject12 = paramList;
       if (paramList == null)
       {
-        localObject12 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844648);
-        this.b.put(Integer.valueOf(2130844648), localObject12);
+        localObject12 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846021);
+        this.d.put(Integer.valueOf(2130846021), localObject12);
       }
       paramList = (List<String>)localObject1;
       if (localObject1 == null) {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
@@ -549,7 +549,7 @@ public class DynamicTextBuilder
           paramList = (List<String>)localObject1;
           if (QLog.isColorLevel())
           {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, localException6.getMessage(), localException6);
+            QLog.i(a, 2, localException6.getMessage(), localException6);
             paramList = (List<String>)localObject1;
           }
         }
@@ -572,14 +572,14 @@ public class DynamicTextBuilder
       if (localObject1 == null)
       {
         localObject7 = new StringBuilder();
-        ((StringBuilder)localObject7).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+        ((StringBuilder)localObject7).append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
         ((StringBuilder)localObject7).append("dynamic_text.ttf");
         paramList = (List<String>)localObject1;
-        if (FileUtil.b(((StringBuilder)localObject7).toString())) {
+        if (FileUtil.d(((StringBuilder)localObject7).toString())) {
           try
           {
             paramList = new StringBuilder();
-            paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+            paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
             paramList.append("dynamic_text.ttf");
             paramList = Typeface.createFromFile(paramList.toString());
           }
@@ -588,14 +588,14 @@ public class DynamicTextBuilder
             paramList = (List<String>)localObject1;
             if (QLog.isColorLevel())
             {
-              QLog.i(jdField_a_of_type_JavaLangString, 2, localException4.toString());
+              QLog.i(a, 2, localException4.toString());
               paramList = (List<String>)localObject1;
             }
           }
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "added new rich super : ");
+        QLog.i(a, 2, "added new rich super : ");
       }
       localObject4 = new SuperRichTextItem(paramInt, (List)localObject4, paramList);
       localObject1 = paramList;
@@ -606,20 +606,20 @@ public class DynamicTextBuilder
       if (localObject1 == null)
       {
         localObject8 = new StringBuilder();
-        ((StringBuilder)localObject8).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+        ((StringBuilder)localObject8).append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
         ((StringBuilder)localObject8).append("dynamic_text.ttf");
         paramList = (List<String>)localObject1;
-        if (FileUtil.b(((StringBuilder)localObject8).toString())) {
+        if (FileUtil.d(((StringBuilder)localObject8).toString())) {
           try
           {
             paramList = new StringBuilder();
-            paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+            paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
             paramList.append("dynamic_text.ttf");
             paramList = Typeface.createFromFile(paramList.toString());
           }
           catch (Exception paramList)
           {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+            QLog.i(a, 2, Log.getStackTraceString(paramList));
             paramList = (List<String>)localObject1;
           }
         }
@@ -629,19 +629,19 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 17: 
-      localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844644));
+      localObject8 = (Bitmap)this.d.get(Integer.valueOf(2130846017));
       paramList = (List<String>)localObject8;
       if (localObject8 == null)
       {
-        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844644);
-        this.b.put(Integer.valueOf(2130844644), paramList);
+        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846017);
+        this.d.put(Integer.valueOf(2130846017), paramList);
       }
-      localObject10 = (Bitmap)this.b.get(Integer.valueOf(2130844645));
+      localObject10 = (Bitmap)this.d.get(Integer.valueOf(2130846018));
       localObject8 = localObject10;
       if (localObject10 == null)
       {
-        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844645);
-        this.b.put(Integer.valueOf(2130844645), localObject8);
+        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846018);
+        this.d.put(Integer.valueOf(2130846018), localObject8);
       }
       localObject10 = new ArrayList(3);
       ((List)localObject10).add(paramList);
@@ -651,13 +651,13 @@ public class DynamicTextBuilder
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
           paramList = (List<String>)localObject1;
         }
       }
@@ -666,25 +666,25 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 16: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844553));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845926));
       localObject8 = paramList;
       if (paramList == null)
       {
-        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844553);
-        this.b.put(Integer.valueOf(2130844553), localObject8);
+        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845926);
+        this.d.put(Integer.valueOf(2130845926), localObject8);
       }
       paramList = (List<String>)localObject1;
       if (localObject1 == null) {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
           paramList = (List<String>)localObject1;
         }
       }
@@ -700,19 +700,19 @@ public class DynamicTextBuilder
             localObject1 = localObject10;
             if (!TextUtils.isEmpty(((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((DynamicTextConfigManager.DynamicTextConfigBean)localObject12).fontInfos.get(1)).c))
             {
-              localObject10 = (Typeface)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((DynamicTextConfigManager.DynamicTextConfigBean)localObject12).fontInfos.get(1)).c);
+              localObject10 = (Typeface)this.c.get(((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((DynamicTextConfigManager.DynamicTextConfigBean)localObject12).fontInfos.get(1)).c);
               localObject1 = localObject10;
               if (localObject10 == null) {
                 try
                 {
                   localObject1 = new StringBuilder();
-                  ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((DynamicTextConfigManager.DynamicTextConfigBean)localObject12).fontInfos.get(1)));
+                  ((StringBuilder)localObject1).append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)((DynamicTextConfigManager.DynamicTextConfigBean)localObject12).fontInfos.get(1)));
                   ((StringBuilder)localObject1).append("dynamic_text.ttf");
                   localObject1 = Typeface.createFromFile(((StringBuilder)localObject1).toString());
                 }
                 catch (Exception localException1)
                 {
-                  QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localException1));
+                  QLog.i(a, 2, Log.getStackTraceString(localException1));
                   localObject2 = localObject10;
                 }
               }
@@ -725,25 +725,25 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 15: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844548));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845921));
       localObject8 = paramList;
       if (paramList == null)
       {
-        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844548);
-        this.b.put(Integer.valueOf(2130844548), localObject8);
+        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845921);
+        this.d.put(Integer.valueOf(2130845921), localObject8);
       }
       paramList = (List<String>)localObject2;
       if (localObject2 == null) {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
           paramList = (List<String>)localObject2;
         }
       }
@@ -752,27 +752,27 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 11: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844536));
-      localObject10 = (Bitmap)this.b.get(Integer.valueOf(2130844538));
-      localObject12 = (Bitmap)this.b.get(Integer.valueOf(2130844537));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845909));
+      localObject10 = (Bitmap)this.d.get(Integer.valueOf(2130845911));
+      localObject12 = (Bitmap)this.d.get(Integer.valueOf(2130845910));
       localObject8 = paramList;
       if (paramList == null)
       {
-        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844536);
-        localObject10 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844538);
-        localObject12 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844537);
+        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845909);
+        localObject10 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845911);
+        localObject12 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845910);
       }
       if (localObject2 == null) {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
         }
       } else {
         paramList = (List<String>)localObject2;
@@ -782,19 +782,19 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 8: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844580));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845953));
       localObject8 = paramList;
       if (paramList == null)
       {
-        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844580);
-        this.b.put(Integer.valueOf(2130844580), localObject8);
+        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845953);
+        this.d.put(Integer.valueOf(2130845953), localObject8);
       }
       paramList = (List<String>)localObject2;
       if (localObject2 == null) {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
@@ -803,7 +803,7 @@ public class DynamicTextBuilder
           paramList = (List<String>)localObject2;
           if (QLog.isColorLevel())
           {
-            QLog.e(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(localRuntimeException));
+            QLog.e(a, 2, Log.getStackTraceString(localRuntimeException));
             paramList = (List<String>)localObject2;
           }
         }
@@ -813,26 +813,26 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 7: 
-      localObject8 = (Bitmap)this.b.get(Integer.valueOf(2130844649));
+      localObject8 = (Bitmap)this.d.get(Integer.valueOf(2130846022));
       paramList = (List<String>)localObject8;
       if (localObject8 == null)
       {
-        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844649);
-        this.b.put(Integer.valueOf(2130844649), paramList);
+        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846022);
+        this.d.put(Integer.valueOf(2130846022), paramList);
       }
-      localObject11 = (Bitmap)this.b.get(Integer.valueOf(2130844650));
+      localObject11 = (Bitmap)this.d.get(Integer.valueOf(2130846023));
       localObject8 = localObject11;
       if (localObject11 == null)
       {
-        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844650);
-        this.b.put(Integer.valueOf(2130844650), localObject8);
+        localObject8 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846023);
+        this.d.put(Integer.valueOf(2130846023), localObject8);
       }
-      localObject12 = (Bitmap)this.b.get(Integer.valueOf(2130844651));
+      localObject12 = (Bitmap)this.d.get(Integer.valueOf(2130846024));
       localObject11 = localObject12;
       if (localObject12 == null)
       {
-        localObject11 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844651);
-        this.b.put(Integer.valueOf(2130844651), localObject11);
+        localObject11 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846024);
+        this.d.put(Integer.valueOf(2130846024), localObject11);
       }
       localObject12 = new ArrayList(3);
       ((List)localObject12).add(paramList);
@@ -843,7 +843,7 @@ public class DynamicTextBuilder
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
@@ -852,7 +852,7 @@ public class DynamicTextBuilder
           paramList = (List<String>)localObject2;
           if (QLog.isColorLevel())
           {
-            QLog.i(jdField_a_of_type_JavaLangString, 2, localException5.getMessage(), localException5);
+            QLog.i(a, 2, localException5.getMessage(), localException5);
             paramList = (List<String>)localObject2;
           }
         }
@@ -862,13 +862,13 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 5: 
-      localObject11 = (Bitmap)this.b.get(Integer.valueOf(2130844587));
-      localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844586));
+      localObject11 = (Bitmap)this.d.get(Integer.valueOf(2130845960));
+      localObject9 = (Bitmap)this.d.get(Integer.valueOf(2130845959));
       paramList = (List<String>)localObject11;
       if (localObject11 == null)
       {
-        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844587);
-        localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844586);
+        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845960);
+        localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845959);
       }
       paramList = new JourneyTextItem(paramInt, (List)localObject4, paramList, (Bitmap)localObject9);
       break;
@@ -878,13 +878,13 @@ public class DynamicTextBuilder
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
           paramList = (List<String>)localObject2;
         }
       }
@@ -893,31 +893,31 @@ public class DynamicTextBuilder
       paramList = (List<String>)localObject4;
       break;
     case 3: 
-      paramList = (Bitmap)this.b.get(Integer.valueOf(2130844566));
-      localObject9 = (Bitmap)this.b.get(Integer.valueOf(2130844567));
+      paramList = (Bitmap)this.d.get(Integer.valueOf(2130845939));
+      localObject9 = (Bitmap)this.d.get(Integer.valueOf(2130845940));
       if (localObject2 == null)
       {
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
           localObject2 = paramList;
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
         }
-        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844566);
-        localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844567);
-        this.b.put(Integer.valueOf(2130844566), paramList);
-        this.b.put(Integer.valueOf(2130844567), localObject9);
+        paramList = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845939);
+        localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130845940);
+        this.d.put(Integer.valueOf(2130845939), paramList);
+        this.d.put(Integer.valueOf(2130845940), localObject9);
       }
       paramList = new FringesTextItems(paramInt, (List)localObject4, (Typeface)localObject2, paramList, (Bitmap)localObject9);
       break;
     case 1: 
-      localObject11 = (Bitmap)this.b.get(Integer.valueOf(2130844643));
+      localObject11 = (Bitmap)this.d.get(Integer.valueOf(2130846016));
       if (localObject2 != null)
       {
         localObject9 = localObject11;
@@ -929,17 +929,17 @@ public class DynamicTextBuilder
         try
         {
           paramList = new StringBuilder();
-          paramList.append(this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureTextDynamicTextConfigManager.b((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
+          paramList.append(this.e.d((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3));
           paramList.append("dynamic_text.ttf");
           paramList = Typeface.createFromFile(paramList.toString());
         }
         catch (Exception paramList)
         {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, Log.getStackTraceString(paramList));
+          QLog.i(a, 2, Log.getStackTraceString(paramList));
           paramList = (List<String>)localObject2;
         }
-        localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130844643);
-        this.b.put(Integer.valueOf(2130844643), localObject9);
+        localObject9 = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130846016);
+        this.d.put(Integer.valueOf(2130846016), localObject9);
       }
       localObject4 = new BubbleTextItem(paramInt, (List)localObject4, paramList, (Bitmap)localObject9);
       localObject2 = paramList;
@@ -950,15 +950,15 @@ public class DynamicTextBuilder
       break;
     }
     paramList = new NormalTextItem(paramInt, (List)localObject4);
-    if ((localObject2 != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)) == null) && (localObject3 != null)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3).c, localObject2);
+    if ((localObject2 != null) && (this.c.get(Integer.valueOf(paramInt)) == null) && (localObject3 != null)) {
+      this.c.put(((DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localObject3).c, localObject2);
     }
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.DynamicTextBuilder
  * JD-Core Version:    0.7.0.1
  */

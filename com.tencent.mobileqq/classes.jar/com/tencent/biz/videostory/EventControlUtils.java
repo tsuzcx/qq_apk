@@ -9,20 +9,15 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class EventControlUtils
 {
-  private static SimpleArrayMap<String, Long> jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap;
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
-  
-  static
-  {
-    a = new SimpleArrayMap();
-  }
+  private static ConcurrentHashMap<String, Long> a;
+  private static SimpleArrayMap<String, Long> b = new SimpleArrayMap();
+  private static SimpleArrayMap<String, Timer> c = new SimpleArrayMap();
   
   public static void a(String paramString, long paramLong, EventControlUtils.OnDebounceListener paramOnDebounceListener)
   {
     try
     {
-      Object localObject = (Long)a.get(paramString);
+      Object localObject = (Long)b.get(paramString);
       long l = SystemClock.elapsedRealtime();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("currentTime");
@@ -36,14 +31,14 @@ public class EventControlUtils
         LogUtils.w("EventControlUtils", paramString.toString());
         return;
       }
-      a.put(paramString, Long.valueOf(l));
-      localObject = (Timer)b.get(paramString);
+      b.put(paramString, Long.valueOf(l));
+      localObject = (Timer)c.get(paramString);
       if (localObject != null) {
         ((Timer)localObject).cancel();
       }
       localObject = new Timer();
       ((Timer)localObject).schedule(new EventControlUtils.1(paramOnDebounceListener), paramLong);
-      b.put(paramString, localObject);
+      c.put(paramString, localObject);
       return;
     }
     catch (Exception paramString) {}
@@ -51,7 +46,7 @@ public class EventControlUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.EventControlUtils
  * JD-Core Version:    0.7.0.1
  */

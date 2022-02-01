@@ -11,12 +11,12 @@ class QQSettingMeSettingProcessor$1
   protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
     QQSettingMeSettingProcessor.a(this.a, paramUpgradeDetailWrapper);
-    this.a.g();
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeSettingProcessor.1
  * JD-Core Version:    0.7.0.1
  */

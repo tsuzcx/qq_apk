@@ -12,13 +12,13 @@ class DeviceMsgHandle$3
   
   public void run()
   {
-    DeviceMsgHandle.a(this.this$0).getMsgCache().a(this.a.frienduin, this.a.istroop, this.a.uniseq);
+    DeviceMsgHandle.a(this.this$0).getMsgCache().b(this.a.frienduin, this.a.istroop, this.a.uniseq);
     DeviceMsgHandle.a(this.this$0).getMessageFacade().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.3
  * JD-Core Version:    0.7.0.1
  */

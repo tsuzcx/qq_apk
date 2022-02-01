@@ -40,6 +40,11 @@ public class SuperPlayerSDKMgr
     return sDataCacheFolder;
   }
   
+  public static String getDeviceId()
+  {
+    return sDeviceId;
+  }
+  
   public static SuperPlayerSDKMgr.ILogListener getLogListener()
   {
     return sLogListener;
@@ -70,13 +75,18 @@ public class SuperPlayerSDKMgr
     return sUid;
   }
   
+  public static boolean hasDeviceId()
+  {
+    String str = sDeviceId;
+    return (str != null) && (!str.isEmpty());
+  }
+  
   private static void initConfigComponent()
   {
     ConfigManager.get().init();
     ConfigManager.get().setCallback(new SuperPlayerSDKMgr.2());
   }
   
-  @Deprecated
   public static void initSDK(Context paramContext, int paramInt, String paramString)
   {
     initSDK(paramContext, paramInt, paramString, SuperPlayerSdkOption.option());
@@ -149,6 +159,12 @@ public class SuperPlayerSDKMgr
     return TVideoMgr.registerTVideoPlatformInfo(TVideoPlatformInfo.convert(paramTVideoPlatformInfo));
   }
   
+  public static void setDeviceId(String paramString)
+  {
+    sDeviceId = paramString;
+    TPPlayerMgr.setGuid(paramString);
+  }
+  
   public static void setLibLoader(ITPModuleLoader paramITPModuleLoader)
   {
     TPPlayerMgr.setLibLoader(paramITPModuleLoader);
@@ -157,6 +173,11 @@ public class SuperPlayerSDKMgr
   public static void setOnLogListener(SuperPlayerSDKMgr.ILogListener paramILogListener)
   {
     sLogListener = paramILogListener;
+  }
+  
+  public static void setProxyMaxUseMemoryMB(int paramInt)
+  {
+    TPPlayerMgr.setProxyMaxUseMemoryMB(paramInt);
   }
   
   public static void setUpcInfo(String paramString, int paramInt)
@@ -176,7 +197,7 @@ public class SuperPlayerSDKMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerSDKMgr
  * JD-Core Version:    0.7.0.1
  */

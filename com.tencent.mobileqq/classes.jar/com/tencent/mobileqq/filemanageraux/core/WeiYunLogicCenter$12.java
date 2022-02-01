@@ -27,7 +27,7 @@ class WeiYunLogicCenter$12
       paramPwdQueryMsgRsp.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, paramPwdQueryMsgRsp.toString());
     }
-    WeiYunLogicCenter.a(this.a).getFileManagerNotifyCenter().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
+    WeiYunLogicCenter.c(this.a).getFileManagerNotifyCenter().a(false, 44, new Object[] { Integer.valueOf(paramInt), paramString, null });
   }
   
   public void a(WeiyunPB.PwdQueryMsgRsp paramPwdQueryMsgRsp)
@@ -40,16 +40,16 @@ class WeiYunLogicCenter$12
       localStringBuilder.append("]");
       QLog.i("WeiYunLogicCenter<FileAssistant>", 2, localStringBuilder.toString());
     }
-    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).setPwdQueried(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
+    ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).setPwdQueried(WeiYunLogicCenter.c(this.a).getApplication().getApplicationContext(), true);
     if (paramPwdQueryMsgRsp.pwd_open.get()) {
-      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).setPwdOpened(WeiYunLogicCenter.a(this.a).getApplication().getApplicationContext(), true);
+      ((IWeiyunApi)QRoute.api(IWeiyunApi.class)).setPwdOpened(WeiYunLogicCenter.c(this.a).getApplication().getApplicationContext(), true);
     }
-    WeiYunLogicCenter.a(this.a).getFileManagerNotifyCenter().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
+    WeiYunLogicCenter.c(this.a).getFileManagerNotifyCenter().a(true, 44, new Object[] { Integer.valueOf(0), null, Boolean.valueOf(paramPwdQueryMsgRsp.pwd_open.get()) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiYunLogicCenter.12
  * JD-Core Version:    0.7.0.1
  */

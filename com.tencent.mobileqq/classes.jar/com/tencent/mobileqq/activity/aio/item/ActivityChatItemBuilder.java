@@ -29,7 +29,7 @@ public class ActivityChatItemBuilder
   extends AbstractChatItemBuilder
   implements View.OnClickListener
 {
-  protected String a;
+  protected String e;
   
   public ActivityChatItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
@@ -42,28 +42,28 @@ public class ActivityChatItemBuilder
     paramViewHolder = paramView;
     if (paramView == null)
     {
-      paramViewHolder = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559866, null);
-      paramOnLongClickAndTouchListener.b = ((TextView)paramViewHolder.findViewById(2131364519));
-      paramOnLongClickAndTouchListener.c = ((TextView)paramViewHolder.findViewById(2131364518));
-      paramOnLongClickAndTouchListener.d = ((TextView)paramViewHolder.findViewById(2131364517));
-      paramOnLongClickAndTouchListener.a = ((ImageView)paramViewHolder.findViewById(2131364515));
+      paramViewHolder = LayoutInflater.from(this.c).inflate(2131625909, null);
+      paramOnLongClickAndTouchListener.d = ((TextView)paramViewHolder.findViewById(2131430576));
+      paramOnLongClickAndTouchListener.e = ((TextView)paramViewHolder.findViewById(2131430575));
+      paramOnLongClickAndTouchListener.f = ((TextView)paramViewHolder.findViewById(2131430574));
+      paramOnLongClickAndTouchListener.g = ((ImageView)paramViewHolder.findViewById(2131430572));
       paramViewHolder.setOnClickListener(this);
-      paramOnLongClickAndTouchListener.b.setOnClickListener(this);
-      paramOnLongClickAndTouchListener.c.setOnClickListener(this);
       paramOnLongClickAndTouchListener.d.setOnClickListener(this);
-      paramOnLongClickAndTouchListener.a.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.e.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.f.setOnClickListener(this);
+      paramOnLongClickAndTouchListener.g.setOnClickListener(this);
     }
     if ((paramMessageRecord instanceof MessageForActivity))
     {
       paramLinearLayout = (MessageForActivity)paramMessageRecord;
-      paramOnLongClickAndTouchListener.b.setText(HardCodeUtil.a(2131700009));
-      paramOnLongClickAndTouchListener.c.setText(paramLinearLayout.title);
-      a(paramLinearLayout.summary, paramOnLongClickAndTouchListener.d);
+      paramOnLongClickAndTouchListener.d.setText(HardCodeUtil.a(2131898056));
+      paramOnLongClickAndTouchListener.e.setText(paramLinearLayout.title);
+      a(paramLinearLayout.summary, paramOnLongClickAndTouchListener.f);
     }
     try
     {
-      paramMessageRecord = URLDrawable.getDrawable(paramLinearLayout.bigPic, paramViewHolder.getResources().getDrawable(2130842587), paramViewHolder.getResources().getDrawable(2130842586));
-      paramOnLongClickAndTouchListener.a.setBackgroundDrawable(paramMessageRecord);
+      paramMessageRecord = URLDrawable.getDrawable(paramLinearLayout.bigPic, paramViewHolder.getResources().getDrawable(2130843540), paramViewHolder.getResources().getDrawable(2130843539));
+      paramOnLongClickAndTouchListener.g.setBackgroundDrawable(paramMessageRecord);
     }
     catch (Exception paramMessageRecord)
     {
@@ -71,9 +71,9 @@ public class ActivityChatItemBuilder
       boolean bool;
       break label215;
     }
-    paramOnLongClickAndTouchListener.a.setBackgroundResource(2130842586);
-    this.jdField_a_of_type_JavaLangString = paramLinearLayout.url;
-    if (e)
+    paramOnLongClickAndTouchListener.g.setBackgroundResource(2130843539);
+    this.e = paramLinearLayout.url;
+    if (v)
     {
       bool = TextUtils.isEmpty(paramLinearLayout.title);
       paramView = "";
@@ -114,13 +114,13 @@ public class ActivityChatItemBuilder
   
   public void onClick(View paramView)
   {
-    TroopQQBrowserHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    TroopQQBrowserHelper.a(this.c, this.e, this.a.getCurrentAccountUin());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ActivityChatItemBuilder
  * JD-Core Version:    0.7.0.1
  */

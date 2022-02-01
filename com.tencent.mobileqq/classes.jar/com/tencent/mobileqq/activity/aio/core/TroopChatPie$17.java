@@ -12,14 +12,14 @@ class TroopChatPie$17
   
   protected void a(Object paramObject)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    if (this.a.V != null) {
+      this.a.V.notifyDataSetChanged();
     }
   }
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isResume()) {
+    if (!this.a.f.isResume()) {
       return;
     }
     if (paramBoolean1)
@@ -27,24 +27,24 @@ class TroopChatPie$17
       int i;
       if (paramBoolean2)
       {
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-        i = 2131696202;
+        localObject = this.a.f;
+        i = 2131893968;
       }
       else
       {
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-        i = 2131696111;
+        localObject = this.a.f;
+        i = 2131893876;
       }
       Object localObject = ((BaseActivity)localObject).getString(i);
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), 2, (CharSequence)localObject, 1).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      QQToast.makeText(this.a.f.getApplicationContext(), 2, (CharSequence)localObject, 1).show(this.a.f.getTitleBarHeight());
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext(), 1, 2131696201, 1).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+    QQToast.makeText(this.a.f.getApplicationContext(), 1, 2131893967, 1).show(this.a.f.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.17
  * JD-Core Version:    0.7.0.1
  */

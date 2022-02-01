@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.kandian.biz.feeds.activity;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
-import com.tencent.mobileqq.qroute.QRoute;
 
 class ReadInJoyVideoSubChannelActivity$2
   implements Runnable
@@ -11,12 +10,12 @@ class ReadInJoyVideoSubChannelActivity$2
   
   public void run()
   {
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
+    PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "1", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.a(this.this$0), null), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyVideoSubChannelActivity.2
  * JD-Core Version:    0.7.0.1
  */

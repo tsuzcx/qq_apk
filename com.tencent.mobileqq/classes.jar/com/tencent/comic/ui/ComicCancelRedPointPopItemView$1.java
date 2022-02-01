@@ -14,12 +14,12 @@ class ComicCancelRedPointPopItemView$1
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    return BaseImageUtil.b(paramBitmap, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 260.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 346.5F));
+    return BaseImageUtil.b(paramBitmap, DisplayUtil.a(this.a, 8.0F), DisplayUtil.a(this.a, 260.0F), DisplayUtil.a(this.a, 346.5F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.ComicCancelRedPointPopItemView.1
  * JD-Core Version:    0.7.0.1
  */

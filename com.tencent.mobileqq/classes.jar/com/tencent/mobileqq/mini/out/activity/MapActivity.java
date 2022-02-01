@@ -133,7 +133,7 @@ public class MapActivity
       localLocationReq.page.set(this.poiAdapter.nextBegin);
       localLocationReq.count.set(10);
       localLocationReq.requireMyLbs.set(0);
-      String str = DeviceInfoUtil.a();
+      String str = DeviceInfoUtil.b();
       localObject = str;
       if (str == null) {
         localObject = "";
@@ -187,7 +187,7 @@ public class MapActivity
     super.doOnCreate(paramBundle);
     paramBundle = LayoutInflater.from(this);
     Object localObject1 = null;
-    paramBundle = paramBundle.inflate(2131561996, null);
+    paramBundle = paramBundle.inflate(2131628422, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
@@ -195,26 +195,26 @@ public class MapActivity
     }
     super.setContentView(paramBundle);
     this.app = getAppInterface();
-    this.dialog = new QQCustomDialog(this, 2131756189);
-    this.dialog.setContentView(2131558978);
+    this.dialog = new QQCustomDialog(this, 2131953338);
+    this.dialog.setContentView(2131624611);
     this.dialog.setCanceledOnTouchOutside(false);
     this.mapHelper = new MapHelper(this);
     Intent localIntent = getIntent();
     this.type = localIntent.getIntExtra("key_type", 0);
-    this.titleView = ((TextView)findViewById(2131369249));
-    this.leftBtnView = ((TextView)findViewById(2131369202));
-    this.rightBtnView = ((TextView)findViewById(2131369234));
-    this.mapView = ((QQMapView)findViewById(2131370660));
-    this.mapView.setContentDescription(getString(2131694946));
+    this.titleView = ((TextView)findViewById(2131436227));
+    this.leftBtnView = ((TextView)findViewById(2131436180));
+    this.rightBtnView = ((TextView)findViewById(2131436212));
+    this.mapView = ((QQMapView)findViewById(2131437937));
+    this.mapView.setContentDescription(getString(2131892673));
     this.mapView.getMap().getUiSettings().setLogoPosition(0);
     this.mapView.getMap().getUiSettings().setScaleViewEnabled(false);
     this.mapView.setObserver(this);
     this.map = this.mapView.getMap();
-    this.poiLocationView = ((ImageView)findViewById(2131372909));
-    this.pinView = ((ImageView)findViewById(2131372798));
-    this.poiLayout = ((RelativeLayout)findViewById(2131372904));
-    this.routeLayout = findViewById(2131376852);
-    this.routeBtn = ((Button)findViewById(2131376848));
+    this.poiLocationView = ((ImageView)findViewById(2131440472));
+    this.pinView = ((ImageView)findViewById(2131440347));
+    this.poiLayout = ((RelativeLayout)findViewById(2131440467));
+    this.routeLayout = findViewById(2131445185);
+    this.routeBtn = ((Button)findViewById(2131445181));
     this.routeBtn.setOnClickListener(this);
     this.leftBtnView.setOnClickListener(this);
     this.rightBtnView.setOnClickListener(this);
@@ -222,7 +222,7 @@ public class MapActivity
     this.poiLocationView.setOnClickListener(this);
     try
     {
-      paramBundle = BitmapFactory.decodeResource(getResources(), 2130847909);
+      paramBundle = BitmapFactory.decodeResource(getResources(), 2130849569);
     }
     catch (OutOfMemoryError paramBundle)
     {
@@ -233,7 +233,7 @@ public class MapActivity
     }
     try
     {
-      localObject2 = BitmapFactory.decodeResource(getResources(), 2130842473);
+      localObject2 = BitmapFactory.decodeResource(getResources(), 2130843426);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -247,7 +247,7 @@ public class MapActivity
     i = this.type;
     if (i == 1)
     {
-      this.leftBtnView.setText(HardCodeUtil.a(2131706511));
+      this.leftBtnView.setText(HardCodeUtil.a(2131904367));
       this.routeLayout.setVisibility(0);
       this.targetLatLng = new LatLng(localIntent.getDoubleExtra("latitude", 0.0D), localIntent.getDoubleExtra("longitude", 0.0D));
       this.map.moveCamera(CameraUpdateFactory.newLatLng(this.targetLatLng));
@@ -257,8 +257,8 @@ public class MapActivity
       this.map.addMarker((MarkerOptions)localObject1);
       this.targetName = localIntent.getStringExtra("name");
       paramBundle = localIntent.getStringExtra("address");
-      localObject1 = (TextView)this.routeLayout.findViewById(2131362253);
-      localObject2 = (TextView)this.routeLayout.findViewById(2131365545);
+      localObject1 = (TextView)this.routeLayout.findViewById(2131427834);
+      localObject2 = (TextView)this.routeLayout.findViewById(2131431772);
       ((TextView)localObject1).setText(this.targetName);
       ((TextView)localObject2).setText(paramBundle);
       location(false);
@@ -266,15 +266,15 @@ public class MapActivity
     }
     if (i == 2)
     {
-      this.noResultView = ((TextView)findViewById(2131371921));
+      this.noResultView = ((TextView)findViewById(2131439366));
       this.poiAdapter = new POIAdapter(this);
-      this.poiListView = ((XListView)findViewById(2131377016));
+      this.poiListView = ((XListView)findViewById(2131445380));
       this.poiListView.setAdapter(this.poiAdapter);
       this.poiListView.setOnScrollListener(this.mOnSearchScrollListener);
       this.poiListView.setOnItemClickListener(new MapActivity.1(this));
-      this.leftBtnView.setText(HardCodeUtil.a(2131706508));
+      this.leftBtnView.setText(HardCodeUtil.a(2131904364));
       this.rightBtnView.setVisibility(0);
-      this.rightBtnView.setText(HardCodeUtil.a(2131706504));
+      this.rightBtnView.setText(HardCodeUtil.a(2131899883));
       this.poiLayout.setVisibility(0);
       this.pinView.setVisibility(0);
       if (localObject1 != null)
@@ -312,25 +312,25 @@ public class MapActivity
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369202)
+    if (paramView.getId() == 2131436180)
     {
       finish();
     }
-    else if (paramView.getId() == 2131372909)
+    else if (paramView.getId() == 2131440472)
     {
       location(true);
     }
-    else if (paramView.getId() == 2131376848)
+    else if (paramView.getId() == 2131445181)
     {
       this.mapHelper.showActionSheet(this.fromLatLng, this.targetLatLng, null, this.targetName);
     }
-    else if (paramView.getId() == 2131369234)
+    else if (paramView.getId() == 2131436212)
     {
       Object localObject = this.poiAdapter;
       localObject = ((POIAdapter)localObject).getItem(((POIAdapter)localObject).selectPos);
       if (localObject == null)
       {
-        QQToast.a(this, 0, HardCodeUtil.a(2131706510), 1).b(getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(this, 0, HardCodeUtil.a(2131904366), 1).show(getResources().getDimensionPixelSize(2131299920));
       }
       else
       {
@@ -368,7 +368,7 @@ public class MapActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity
  * JD-Core Version:    0.7.0.1
  */

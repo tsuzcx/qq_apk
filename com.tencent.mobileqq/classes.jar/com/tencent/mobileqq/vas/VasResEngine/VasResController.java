@@ -18,30 +18,25 @@ import mqq.app.AppRuntime;
 
 public class VasResController
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new VasResController.1(this);
-  private DownloaderInterface jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface;
+  DownloadListener a = new VasResController.1(this);
+  private int b;
+  private Handler c;
+  private DownloaderInterface d;
   
   public VasResController(int paramInt, Handler paramHandler)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.b = paramInt;
+    this.c = paramHandler;
   }
   
   public Handler a()
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
+    return this.c;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -51,11 +46,11 @@ public class VasResController
   
   public void a(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppRuntime localAppRuntime = VasUtil.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface == null) && (localAppRuntime != null)) {
+    AppRuntime localAppRuntime = VasUtil.c();
+    if ((this.d == null) && (localAppRuntime != null)) {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).getDownloader(localAppRuntime);
+        this.d = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).getDownloader(localAppRuntime);
       }
       catch (Exception localException)
       {
@@ -69,11 +64,11 @@ public class VasResController
       ((StringBuilder)localObject).append(paramString2);
       QLog.e("VasResController", 1, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface;
+    Object localObject = this.d;
     if ((localObject != null) && (((DownloaderInterface)localObject).getTask(paramString1) == null))
     {
       paramString1 = new DownloadTask(paramString1, new File(paramString2));
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface.startDownload(paramString1, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, paramBundle);
+      this.d.startDownload(paramString1, this.a, paramBundle);
     }
   }
   
@@ -111,10 +106,15 @@ public class VasResController
     }
     return null;
   }
+  
+  public int b()
+  {
+    return this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResController
  * JD-Core Version:    0.7.0.1
  */

@@ -34,6 +34,8 @@ public abstract interface IMediaPlayer
   public static final int MEDIA_INFO_VIDEO_ROTATION_CHANGED = 10001;
   public static final int MEDIA_INFO_VIDEO_TRACK_LAGGING = 700;
   
+  public abstract int getBufferPercent();
+  
   public abstract long getCurrentPosition();
   
   public abstract long getDuration();
@@ -45,6 +47,8 @@ public abstract interface IMediaPlayer
   public abstract boolean isLooping();
   
   public abstract boolean isPlaying();
+  
+  public abstract boolean isSuperPlayer();
   
   public abstract void pause();
   
@@ -59,6 +63,8 @@ public abstract interface IMediaPlayer
   public abstract void setDataSource(String paramString);
   
   public abstract void setDisplay(SurfaceHolder paramSurfaceHolder);
+  
+  public abstract void setDrmDataSource(String paramString1, String paramString2, String paramString3);
   
   public abstract void setLooping(boolean paramBoolean);
   
@@ -92,7 +98,7 @@ public abstract interface IMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

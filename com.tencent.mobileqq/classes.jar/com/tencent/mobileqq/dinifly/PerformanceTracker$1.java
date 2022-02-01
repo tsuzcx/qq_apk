@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.util.Pair;
+import androidx.core.util.Pair;
 import java.util.Comparator;
 
 class PerformanceTracker$1
@@ -23,7 +23,7 @@ class PerformanceTracker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.PerformanceTracker.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ public class QZoneCategoryAlbumPlugin
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("categoryType");
       paramString = paramString.optString("categoryId");
-      Activity localActivity = this.parentPlugin.mRuntime.a();
+      Activity localActivity = this.parentPlugin.mRuntime.d();
       if (localActivity != null)
       {
-        QZoneHelper.forwardToCategoryAlbum(localActivity, this.parentPlugin.mRuntime.a().getCurrentAccountUin(), i, paramString, -1);
+        QZoneHelper.forwardToCategoryAlbum(localActivity, this.parentPlugin.mRuntime.b().getCurrentAccountUin(), i, paramString, -1);
         return true;
       }
       return false;
@@ -52,7 +52,7 @@ public class QZoneCategoryAlbumPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneCategoryAlbumPlugin
  * JD-Core Version:    0.7.0.1
  */

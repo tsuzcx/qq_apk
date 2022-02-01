@@ -10,8 +10,8 @@ class ScreenLayoutMultipleGrid$1
   
   public void run()
   {
-    TipsUtil.a(this.this$0.a, 1054);
-    UITools.a(1);
+    TipsUtil.a(this.this$0.b, 1054);
+    UITools.f(1);
   }
 }
 

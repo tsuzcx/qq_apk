@@ -7,7 +7,9 @@ import com.tencent.xaction.api.base.BaseRule;
 import com.tencent.xaction.api.data.ViewData;
 import com.tencent.xaction.api.util.ReflectUtil;
 import com.tencent.xaction.api.util.ReflectUtil.Companion;
+import com.tencent.xaction.log.QLog;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,12 +22,13 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/manager/RuleManager;", "Lcom/tencent/xaction/api/IRuleManager;", "()V", "ruleNameMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getRuleNameMap", "()Ljava/util/HashMap;", "rules", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseRule;", "Lkotlin/collections/ArrayList;", "getRules", "()Ljava/util/ArrayList;", "setRules", "(Ljava/util/ArrayList;)V", "getRuleValue", "rule", "parseRuleMap", "", "ruleName", "ruleKey", "viewData", "refreshAnimRuleValue", "", "anim", "Lcom/tencent/xaction/api/base/BaseAnim;", "key", "value", "refreshRuleValue", "Lcom/tencent/xaction/api/data/ViewData;", "registerRule", "registerRuleLine", "unregisterRule", "Companion", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/manager/RuleManager;", "Lcom/tencent/xaction/api/IRuleManager;", "()V", "ruleNameMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getRuleNameMap", "()Ljava/util/HashMap;", "rules", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseRule;", "Lkotlin/collections/ArrayList;", "getRules", "()Ljava/util/ArrayList;", "setRules", "(Ljava/util/ArrayList;)V", "getRuleValue", "rule", "parseRuleMap", "", "ruleName", "ruleKey", "obj", "putEleForHashMap", "", "lastObj", "it", "ruleValue", "refreshAnimRuleValue", "key", "value", "refreshRuleValue", "viewData", "Lcom/tencent/xaction/api/data/ViewData;", "registerRule", "registerRuleLine", "setRuleValueToObj", "fieldKey", "setValueToObj", "unregisterRule", "Companion", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class RuleManager
   implements IRuleManager
 {
   public static final RuleManager.Companion Companion = new RuleManager.Companion(null);
+  private static final String TAG = "RuleManager";
   @NotNull
   private static final HashMap<String, Object> globalRuleNameMap = new HashMap();
   @NotNull
@@ -54,6 +57,7 @@ public final class RuleManager
           paramString1 = (String)paramString1;
           try
           {
+            putEleForHashMap(paramHashMap, paramString1, localObject);
             paramString1 = ReflectUtil.a.a(paramHashMap.getClass(), paramString1);
             if (paramString1 != null)
             {
@@ -76,6 +80,10 @@ public final class RuleManager
           }
           catch (Exception paramString1)
           {
+            paramObject = new StringBuilder();
+            paramObject.append("exception ");
+            paramObject.append(paramString1.getMessage());
+            QLog.a("RuleManager", 2, paramObject.toString());
             paramString1.printStackTrace();
             i += 1;
           }
@@ -93,6 +101,13 @@ public final class RuleManager
       return true;
     }
     return false;
+  }
+  
+  private final void putEleForHashMap(Object paramObject1, String paramString, Object paramObject2)
+  {
+    if (Intrinsics.areEqual(paramObject1.getClass(), HashMap.class)) {
+      paramObject1.getClass().getMethod("put", new Class[] { Object.class, Object.class }).invoke(paramObject1, new Object[] { paramString, paramObject2 });
+    }
   }
   
   @NotNull
@@ -117,17 +132,20 @@ public final class RuleManager
     return this.rules;
   }
   
-  public void refreshAnimRuleValue(@NotNull BaseAnim paramBaseAnim, @NotNull String paramString1, @NotNull String paramString2)
+  public void refreshAnimRuleValue(@NotNull Object paramObject, @NotNull String paramString1, @NotNull String paramString2)
   {
-    Intrinsics.checkParameterIsNotNull(paramBaseAnim, "anim");
+    Intrinsics.checkParameterIsNotNull(paramObject, "obj");
     Intrinsics.checkParameterIsNotNull(paramString1, "key");
     Intrinsics.checkParameterIsNotNull(paramString2, "value");
-    Iterator localIterator = ((Iterable)this.rules).iterator();
-    while (localIterator.hasNext()) {
-      ((BaseRule)localIterator.next()).ruleAnimParse(paramBaseAnim, paramString1, paramString2);
+    if ((paramObject instanceof BaseAnim))
+    {
+      Iterator localIterator = ((Iterable)this.rules).iterator();
+      while (localIterator.hasNext()) {
+        ((BaseRule)localIterator.next()).ruleAnimParse((BaseAnim)paramObject, paramString1, paramString2);
+      }
     }
-    if (!parseRuleMap(this.ruleNameMap, paramString2, paramString1, paramBaseAnim)) {
-      parseRuleMap(globalRuleNameMap, paramString2, paramString1, paramBaseAnim);
+    if (!parseRuleMap(this.ruleNameMap, paramString2, paramString1, paramObject)) {
+      parseRuleMap(globalRuleNameMap, paramString2, paramString1, paramObject);
     }
   }
   
@@ -160,10 +178,43 @@ public final class RuleManager
     ((Map)this.ruleNameMap).put(paramString, paramObject);
   }
   
+  public final void setRuleValueToObj(@NotNull Object paramObject, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramObject, "obj");
+    Intrinsics.checkParameterIsNotNull(paramString1, "fieldKey");
+    Intrinsics.checkParameterIsNotNull(paramString2, "ruleKey");
+    paramString2 = getRuleValue(paramString2);
+    if (paramString2 != null) {
+      setValueToObj(paramObject, paramString1, paramString2);
+    }
+  }
+  
   public final void setRules(@NotNull ArrayList<BaseRule> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
     this.rules = paramArrayList;
+  }
+  
+  public final void setValueToObj(@NotNull Object paramObject1, @NotNull String paramString, @NotNull Object paramObject2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramObject1, "obj");
+    Intrinsics.checkParameterIsNotNull(paramString, "fieldKey");
+    Intrinsics.checkParameterIsNotNull(paramObject2, "value");
+    try
+    {
+      paramString = ReflectUtil.a.a(paramObject1.getClass(), paramString);
+      if (paramString != null)
+      {
+        paramString.setAccessible(true);
+        paramString.set(paramObject1, paramObject2);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramObject1)
+    {
+      QLog.a("RuleManager", 1, "setRuleValueToObj error", (Throwable)paramObject1);
+    }
   }
   
   public boolean unregisterRule(@NotNull BaseRule paramBaseRule)
@@ -174,7 +225,7 @@ public final class RuleManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.manager.RuleManager
  * JD-Core Version:    0.7.0.1
  */

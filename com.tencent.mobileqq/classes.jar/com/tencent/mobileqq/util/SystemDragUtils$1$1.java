@@ -9,12 +9,12 @@ class SystemDragUtils$1$1
   
   public void run()
   {
-    SystemDragUtils.a(this.a, this.this$0.jdField_a_of_type_AndroidWidgetImageView, this.this$0.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.this$0.jdField_a_of_type_AndroidViewViewGroup, this.this$0.b, this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    SystemDragUtils.a(this.a, this.this$0.a, this.this$0.b, this.this$0.c, this.this$0.d, this.this$0.e, this.this$0.f, this.this$0.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.1.1
  * JD-Core Version:    0.7.0.1
  */

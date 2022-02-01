@@ -13,7 +13,7 @@ class VideoFeedsCPUMonitor$1$1$1
     try
     {
       Thread.sleep(30000L);
-      VideoFeedsCPUMonitor.a().set(2);
+      VideoFeedsCPUMonitor.b().set(2);
       return;
     }
     catch (InterruptedException localInterruptedException)
@@ -28,7 +28,7 @@ class VideoFeedsCPUMonitor$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsCPUMonitor.1.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,15 +18,15 @@ class NotificationActivity$21
     {
       try
       {
-        boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-        if (this.jdField_a_of_type_Boolean != bool) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
+        boolean bool = this.a.isChecked();
+        if (this.b != bool) {
+          this.c.edit().putBoolean("MemoryAlertAutoClear", bool).commit();
         }
-        MemoryManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, NotificationActivity.class, 10);
+        MemoryManager.a().a(this.d, NotificationActivity.class, 10);
       }
       finally
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        this.d.finish();
       }
     }
     catch (Exception paramDialogInterface)
@@ -34,12 +34,12 @@ class NotificationActivity$21
       label66:
       break label66;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+    this.d.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.21
  * JD-Core Version:    0.7.0.1
  */

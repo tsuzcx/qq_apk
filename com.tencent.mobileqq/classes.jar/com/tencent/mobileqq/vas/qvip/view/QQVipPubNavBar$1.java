@@ -14,11 +14,11 @@ class QQVipPubNavBar$1
   
   public void onClick(View paramView)
   {
-    if ((QQVipPubNavBar.a(this.a) == 4) && (!TextUtils.isEmpty(QQVipPubNavBar.a(this.a))) && ((QQVipPubNavBar.a(this.a).startsWith("http")) || (QQVipPubNavBar.a(this.a).startsWith("https"))))
+    if ((QQVipPubNavBar.a(this.a) == 4) && (!TextUtils.isEmpty(QQVipPubNavBar.b(this.a))) && ((QQVipPubNavBar.b(this.a).startsWith("http")) || (QQVipPubNavBar.b(this.a).startsWith("https"))))
     {
       Object localObject = this.a;
-      QQVipPubNavBar.a((QQVipPubNavBar)localObject, QQVipPubNavBar.a((QQVipPubNavBar)localObject));
-      if (QQVipPubNavBar.a(this.a).equals(QVipPubAccountConfig.c())) {
+      QQVipPubNavBar.a((QQVipPubNavBar)localObject, QQVipPubNavBar.b((QQVipPubNavBar)localObject));
+      if (QQVipPubNavBar.b(this.a).equals(QVipPubAccountConfig.c())) {
         localObject = "game_icon";
       } else {
         localObject = "vip_icon";
@@ -30,7 +30,7 @@ class QQVipPubNavBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipPubNavBar.1
  * JD-Core Version:    0.7.0.1
  */

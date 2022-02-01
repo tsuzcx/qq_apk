@@ -12,11 +12,11 @@ class TroopRemindSettingManager$1
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager();
-    if ((TroopRemindSettingData)localEntityManager.find(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
+    EntityManager localEntityManager = this.a.getEntityManagerFactory().createEntityManager();
+    if ((TroopRemindSettingData)localEntityManager.find(TroopRemindSettingData.class, this.b) == null)
     {
       TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
-      localTroopRemindSettingData.troopUin = this.jdField_a_of_type_JavaLangString;
+      localTroopRemindSettingData.troopUin = this.b;
       localTroopRemindSettingData.isOpenState = 0;
       localEntityManager.persistOrReplace(localTroopRemindSettingData);
     }
@@ -24,7 +24,7 @@ class TroopRemindSettingManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRemindSettingManager.1
  * JD-Core Version:    0.7.0.1
  */

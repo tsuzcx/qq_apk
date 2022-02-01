@@ -10,7 +10,9 @@ class NewReportPlugin$4$2
   
   public void run()
   {
-    this.this$0.a.dismiss();
+    if (this.this$0.k.isShowing()) {
+      this.this$0.k.dismiss();
+    }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -22,7 +24,7 @@ class NewReportPlugin$4$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.4.2
  * JD-Core Version:    0.7.0.1
  */

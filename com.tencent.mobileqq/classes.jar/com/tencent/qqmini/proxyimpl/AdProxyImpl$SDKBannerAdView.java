@@ -33,53 +33,51 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 class AdProxyImpl$SDKBannerAdView
   extends AdProxy.AbsBannerAdView
 {
-  int jdField_a_of_type_Int = 53;
-  long jdField_a_of_type_Long;
-  public AdExposureChecker.ExposureCallback a;
-  GdtAdListener jdField_a_of_type_ComTencentGdtadApiGdtAdListener;
-  GdtBannerView jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
-  IGdtBannerAd jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd;
-  IMiniAppContext jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
-  AdProxy.IBannerAdListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener;
-  IGetAdPosInfo jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIGetAdPosInfo;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  public ArrayList<AdExposureChecker> a;
-  protected qq_ad_get.QQAdGetRsp.AdInfo a;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int;
-  String jdField_d_of_type_JavaLangString;
-  int jdField_e_of_type_Int;
-  String jdField_e_of_type_JavaLangString;
-  String f;
-  String g;
+  WeakReference<Activity> a;
+  AdProxy.IBannerAdListener b;
+  GdtBannerView c;
+  GdtAdListener d;
+  IGdtBannerAd e;
+  protected qq_ad_get.QQAdGetRsp.AdInfo f;
+  int g = 53;
   String h;
   String i;
+  String j;
+  int k;
+  int l;
+  String m;
+  String n;
+  String o;
+  String p;
+  String q;
+  int r;
+  int s;
+  String t;
+  long u;
+  IMiniAppContext v;
+  IGetAdPosInfo w;
+  public ArrayList<AdExposureChecker> x = new ArrayList();
+  public AdExposureChecker.ExposureCallback y = null;
   
   public AdProxyImpl$SDKBannerAdView(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt3, int paramInt4, AdProxy.IBannerAdListener paramIBannerAdListener, IMiniAppContext paramIMiniAppContext, IGetAdPosInfo paramIGetAdPosInfo)
   {
     super(paramAdProxyImpl);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener = paramIBannerAdListener;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_e_of_type_JavaLangString = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
-    this.jdField_d_of_type_Int = paramInt3;
-    this.jdField_e_of_type_Int = paramInt4;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext = paramIMiniAppContext;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIGetAdPosInfo = paramIGetAdPosInfo;
+    this.a = new WeakReference(paramActivity);
+    this.b = paramIBannerAdListener;
+    this.h = paramString1;
+    this.i = paramString2;
+    this.j = paramString3;
+    this.k = paramInt1;
+    this.l = paramInt2;
+    this.m = paramString4;
+    this.n = paramString5;
+    this.o = paramString6;
+    this.p = paramString7;
+    this.q = paramString8;
+    this.r = paramInt3;
+    this.s = paramInt4;
+    this.v = paramIMiniAppContext;
+    this.w = paramIGetAdPosInfo;
     a(paramActivity);
   }
   
@@ -100,13 +98,13 @@ class AdProxyImpl$SDKBannerAdView
       {
         QLog.i("AdProxyImpl", 1, "createBannerAd");
         localObject = new GdtBannerParams();
-        ((GdtBannerParams)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = AdProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl, paramActivity, paramAdInfo, paramIMiniAppContext, paramString);
-        ((GdtBannerParams)localObject).jdField_a_of_type_Int = 0;
-        ((GdtBannerParams)localObject).jdField_b_of_type_Int = paramInt1;
-        ((GdtBannerParams)localObject).jdField_c_of_type_Int = paramInt2;
-        this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd = ((IGdtBannerAdAPI)QRoute.api(IGdtBannerAdAPI.class)).buildBannerAd((GdtBannerParams)localObject);
-        paramAdInfo = this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd.render(paramActivity, paramInt1, paramInt2);
-        this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd.setListener(new WeakReference(this.jdField_a_of_type_ComTencentGdtadApiGdtAdListener));
+        ((GdtBannerParams)localObject).b = AdProxyImpl.a(this.z, paramActivity, paramAdInfo, paramIMiniAppContext, paramString);
+        ((GdtBannerParams)localObject).c = 0;
+        ((GdtBannerParams)localObject).d = paramInt1;
+        ((GdtBannerParams)localObject).e = paramInt2;
+        this.e = ((IGdtBannerAdAPI)QRoute.api(IGdtBannerAdAPI.class)).buildBannerAd((GdtBannerParams)localObject);
+        paramAdInfo = this.e.render(paramActivity, paramInt1, paramInt2);
+        this.e.setListener(new WeakReference(this.d));
         paramActivity = paramAdInfo;
         if (paramAdInfo == null)
         {
@@ -129,17 +127,17 @@ class AdProxyImpl$SDKBannerAdView
     if (paramMiniAdPosInfo == null) {
       return "";
     }
-    int j = paramMiniAdPosInfo.left;
-    int k = paramMiniAdPosInfo.top;
-    int m = paramMiniAdPosInfo.width;
-    int n = paramMiniAdPosInfo.height;
+    int i1 = paramMiniAdPosInfo.left;
+    int i2 = paramMiniAdPosInfo.top;
+    int i3 = paramMiniAdPosInfo.width;
+    int i4 = paramMiniAdPosInfo.height;
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("px", String.valueOf(j));
-      ((JSONObject)localObject).put("py", String.valueOf(k));
-      ((JSONObject)localObject).put("da", String.valueOf(m));
-      ((JSONObject)localObject).put("db", String.valueOf(n));
+      ((JSONObject)localObject).put("px", String.valueOf(i1));
+      ((JSONObject)localObject).put("py", String.valueOf(i2));
+      ((JSONObject)localObject).put("da", String.valueOf(i3));
+      ((JSONObject)localObject).put("db", String.valueOf(i4));
       ((JSONObject)localObject).put("x", "0");
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("s=");
@@ -164,8 +162,8 @@ class AdProxyImpl$SDKBannerAdView
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_ComTencentGdtadApiGdtAdListener == null) {
-      this.jdField_a_of_type_ComTencentGdtadApiGdtAdListener = new AdProxyImpl.SDKBannerAdView.1(this, paramActivity);
+    if (this.d == null) {
+      this.d = new AdProxyImpl.SDKBannerAdView.1(this, paramActivity);
     }
   }
   
@@ -180,15 +178,15 @@ class AdProxyImpl$SDKBannerAdView
     {
       if (AdUtils.isHitReport50ViewAndOneSecond(new GdtAd(paramAdInfo)))
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        if (this.x == null) {
+          this.x = new ArrayList();
         }
         paramAdInfo = new AdExposureChecker(new GdtAd(paramAdInfo), new WeakReference(paramView));
-        if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-          this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new AdProxyImpl.SDKBannerAdView.3(this);
+        if (this.y == null) {
+          this.y = new AdProxyImpl.SDKBannerAdView.3(this);
         }
-        paramAdInfo.setCallback(new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramAdInfo);
+        paramAdInfo.setCallback(new WeakReference(this.y));
+        this.x.add(paramAdInfo);
         paramAdInfo.startCheck();
         QLog.i("AdProxyImpl", 1, "startonExposure");
       }
@@ -199,7 +197,7 @@ class AdProxyImpl$SDKBannerAdView
   
   public void destroy(Context paramContext)
   {
-    paramContext = this.jdField_a_of_type_JavaUtilArrayList;
+    paramContext = this.x;
     if (paramContext != null)
     {
       paramContext = paramContext.iterator();
@@ -209,38 +207,38 @@ class AdProxyImpl$SDKBannerAdView
         localAdExposureChecker.onActivityDestroy();
         localAdExposureChecker.setCallback(null);
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = null;
+      this.x.clear();
+      this.y = null;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener = null;
-    this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView = null;
-    this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = null;
-    this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.f = null;
+    this.e = null;
   }
   
   public long getAdID()
   {
-    return this.jdField_a_of_type_Long;
+    return this.u;
   }
   
   public String getReportUrl()
   {
-    return this.i;
+    return this.t;
   }
   
   public View getView()
   {
-    GdtBannerView localGdtBannerView = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    GdtBannerView localGdtBannerView = this.c;
     if (localGdtBannerView != null) {
-      return localGdtBannerView.a();
+      return localGdtBannerView.getView();
     }
     return null;
   }
   
   public void loadAD()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.a;
     if (localObject != null) {
       localObject = (Activity)((WeakReference)localObject).get();
     } else {
@@ -251,43 +249,43 @@ class AdProxyImpl$SDKBannerAdView
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("loadAD, act is null, ");
       boolean bool;
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null) {
+      if (this.b != null) {
         bool = true;
       } else {
         bool = false;
       }
       ((StringBuilder)localObject).append(bool);
       QLog.e("AdProxyImpl", 1, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener;
+      localObject = this.b;
       if (localObject != null) {
         ((AdProxy.IBannerAdListener)localObject).onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.f, this.g, this.h, 1, new AdProxyImpl.SDKBannerAdView.2(this, (Activity)localObject));
+    this.z.requestAdInfo((Context)localObject, this.j, this.i, this.h, this.g, this.k, this.l, this.m, this.n, this.o, this.p, this.q, 1, new AdProxyImpl.SDKBannerAdView.2(this, (Activity)localObject));
   }
   
   public void onExposure()
   {
-    if (AdUtils.isHitReport50ViewAndOneSecond(new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo)))
+    if (AdUtils.isHitReport50ViewAndOneSecond(new GdtAd(this.f)))
     {
-      a(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo, getView());
+      a(this.f, getView());
     }
     else
     {
-      a(this.i);
-      MiniAdAntiSpamReportUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext, this.i, System.currentTimeMillis(), this.jdField_b_of_type_JavaLangString, 2);
+      a(this.t);
+      MiniAdAntiSpamReportUtil.a(this.v, this.t, System.currentTimeMillis(), this.i, 2);
     }
-    this.jdField_a_of_type_ComTencentGdtadApiBannerIGdtBannerAd.onDisplay();
+    this.e.onDisplay();
   }
   
   public void pause(Context paramContext)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((GdtBannerView)localObject).a(paramContext);
     }
-    paramContext = this.jdField_a_of_type_JavaUtilArrayList;
+    paramContext = this.x;
     if (paramContext != null)
     {
       paramContext = paramContext.iterator();
@@ -303,11 +301,11 @@ class AdProxyImpl$SDKBannerAdView
   
   public void resume(Context paramContext)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    Object localObject = this.c;
     if (localObject != null) {
       ((GdtBannerView)localObject).b(paramContext);
     }
-    paramContext = this.jdField_a_of_type_JavaUtilArrayList;
+    paramContext = this.x;
     if (paramContext != null)
     {
       paramContext = paramContext.iterator();
@@ -323,7 +321,7 @@ class AdProxyImpl$SDKBannerAdView
   
   public void setSize(int paramInt1, int paramInt2)
   {
-    GdtBannerView localGdtBannerView = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerView;
+    GdtBannerView localGdtBannerView = this.c;
     if (localGdtBannerView != null) {
       localGdtBannerView.setSize(paramInt1, paramInt2);
     }
@@ -331,7 +329,7 @@ class AdProxyImpl$SDKBannerAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBannerAdView
  * JD-Core Version:    0.7.0.1
  */

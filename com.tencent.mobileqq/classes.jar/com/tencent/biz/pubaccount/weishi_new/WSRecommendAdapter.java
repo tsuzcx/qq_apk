@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.weishi_new.baseui.IWSItemView;
 import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadListenerWrapper;
-import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
 import com.tencent.biz.pubaccount.weishi_new.recommend.holder.AbsWSGridBaseHolder;
 import com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridHolderFactory;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -19,60 +18,42 @@ import java.util.List;
 public class WSRecommendAdapter
   extends BaseAdapter<stSimpleMetaFeed, BaseViewHolder<stSimpleMetaFeed>>
 {
-  public static int b;
-  public int a;
-  public long a;
-  private WSRecommendAdapter.ItemViewExposeListener a;
-  public RockDownloadListenerWrapper a;
-  public WSDownloadListenerWrapper a;
+  public static int f;
   public RecyclerViewWithHeaderFooter a;
-  public final String a;
-  public boolean a;
-  public final String b;
-  public int c = 0;
-  public final int d;
-  public final int e;
-  public final int f;
-  public final int g;
+  public WSDownloadListenerWrapper b;
+  public RockDownloadListenerWrapper c;
+  public long d = 0L;
+  public int e = 0;
+  public int g = 0;
+  public final int h;
+  public final int i;
+  public final int j;
+  public final int k;
+  public final String l;
+  public final String m;
+  public boolean n;
+  private WSRecommendAdapter.ItemViewExposeListener o;
   
   public WSRecommendAdapter(Context paramContext, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, String paramString1, String paramString2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = paramRecyclerViewWithHeaderFooter;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.d = ScreenUtil.getRealWidth(paramContext);
-    this.e = ScreenUtil.dip2px(5.0F);
-    this.f = ScreenUtil.dip2px(18.0F);
-    this.g = ScreenUtil.dip2px(14.0F);
-  }
-  
-  public RockDownloadListenerWrapper a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper = new WSRecommendAdapter.1(this);
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadRockDownloadListenerWrapper;
-  }
-  
-  public WSDownloadListenerWrapper a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper = WeishiDownloadUtil.a(100, 2);
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadListenerWrapper;
+    this.a = paramRecyclerViewWithHeaderFooter;
+    this.l = paramString1;
+    this.m = paramString2;
+    this.h = ScreenUtil.getRealWidth(paramContext);
+    this.i = ScreenUtil.dip2px(5.0F);
+    this.j = ScreenUtil.dip2px(18.0F);
+    this.k = ScreenUtil.dip2px(14.0F);
   }
   
   public void a(WSRecommendAdapter.ItemViewExposeListener paramItemViewExposeListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter$ItemViewExposeListener = paramItemViewExposeListener;
+    this.o = paramItemViewExposeListener;
   }
   
   public void a(BaseViewHolder<stSimpleMetaFeed> paramBaseViewHolder)
   {
-    WSRecommendAdapter.ItemViewExposeListener localItemViewExposeListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter$ItemViewExposeListener;
+    WSRecommendAdapter.ItemViewExposeListener localItemViewExposeListener = this.o;
     if (localItemViewExposeListener != null) {
       localItemViewExposeListener.a(paramBaseViewHolder);
     }
@@ -88,7 +69,7 @@ public class WSRecommendAdapter
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.n = paramBoolean;
   }
   
   public int getCustomItemViewType(int paramInt)
@@ -122,7 +103,7 @@ public class WSRecommendAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,11 @@ import tencent.im.oidb.articlesummary.articlesummary.SubscriptInfo;
 
 public class SubscriptInfo
 {
-  public int a;
   public String a;
-  public int b;
   public String b;
   public String c;
+  public int d;
+  public int e;
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, articlesummary.SubscriptInfo paramSubscriptInfo)
   {
@@ -44,25 +44,25 @@ public class SubscriptInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SubscriptInfo{wording='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", wordingColor='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", bgColor='");
     localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", location=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.SubscriptInfo
  * JD-Core Version:    0.7.0.1
  */

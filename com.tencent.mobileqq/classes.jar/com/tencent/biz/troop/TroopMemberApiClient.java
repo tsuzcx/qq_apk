@@ -35,51 +35,46 @@ import org.json.JSONObject;
 
 public class TroopMemberApiClient
 {
-  static int jdField_a_of_type_Int;
   protected static TroopMemberApiClient a;
-  private static String jdField_a_of_type_JavaLangString;
-  protected ServiceConnection a;
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new TroopMemberApiClient.IncomingHandler(this));
-  SparseArray<BusinessObserver> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  QQMusicClient jdField_a_of_type_ComTencentBizApiproxyQQMusicClient;
-  WebPushClient jdField_a_of_type_ComTencentBizApiproxyWebPushClient;
-  BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
-  private ITroopMemberApiClientApi.Callback jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<BusinessObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
-  Map<Integer, ITroopMemberApiClientApi.Callback> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  Messenger jdField_b_of_type_AndroidOsMessenger = null;
-  private HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  List<Message> jdField_b_of_type_JavaUtilList = new ArrayList();
-  AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  private TroopMemberApiClient()
-  {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new TroopMemberApiClient.1(this);
-  }
+  static int l;
+  private static String o;
+  final Messenger b = new Messenger(new TroopMemberApiClient.IncomingHandler(this));
+  Messenger c = null;
+  AtomicInteger d = new AtomicInteger(0);
+  List<BusinessObserver> e = new ArrayList();
+  List<Message> f = new ArrayList();
+  AtomicInteger g = new AtomicInteger(0);
+  Map<Integer, ITroopMemberApiClientApi.Callback> h = new ConcurrentHashMap();
+  QQMusicClient i;
+  WebPushClient j;
+  protected ServiceConnection k = new TroopMemberApiClient.1(this);
+  SparseArray<BusinessObserver> m = new SparseArray();
+  BizTroopObserver n;
+  private HashMap<String, Integer> p = new HashMap();
+  private HashMap<String, Integer> q = new HashMap();
+  private ITroopMemberApiClientApi.Callback r;
   
   public static TroopMemberApiClient a()
   {
-    if (jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) {
-          jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = new TroopMemberApiClient();
+        if (a == null) {
+          a = new TroopMemberApiClient();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+    return a;
   }
   
-  public static String a()
+  public static String d()
   {
-    Object localObject = jdField_a_of_type_JavaLangString;
+    Object localObject = o;
     if (localObject != null) {
       return localObject;
     }
-    int i = Process.myPid();
+    int i1 = Process.myPid();
     localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
     if (localObject != null)
     {
@@ -90,10 +85,10 @@ public class TroopMemberApiClient
       while (((Iterator)localObject).hasNext())
       {
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-        if (localRunningAppProcessInfo.pid == i)
+        if (localRunningAppProcessInfo.pid == i1)
         {
           localObject = localRunningAppProcessInfo.processName;
-          jdField_a_of_type_JavaLangString = (String)localObject;
+          o = (String)localObject;
           return localObject;
         }
       }
@@ -107,74 +102,32 @@ public class TroopMemberApiClient
     if (paramBundle == null) {
       localBundle = new Bundle();
     }
-    int i = a(paramCallback);
-    localBundle.putInt("seq", i);
-    localBundle.putString("processName", a());
+    int i1 = e(paramCallback);
+    localBundle.putInt("seq", i1);
+    localBundle.putString("processName", d());
     a(paramInt, localBundle);
-    return i;
-  }
-  
-  public int a(ITroopMemberApiClientApi.Callback paramCallback)
-  {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
-    return i;
+    return i1;
   }
   
   public int a(WebSecurityPluginV2.URLCheckParams paramURLCheckParams, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("url", paramURLCheckParams.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("type", paramURLCheckParams.jdField_a_of_type_Int);
-    localBundle.putInt("msgfrom", paramURLCheckParams.jdField_b_of_type_Int);
-    localBundle.putString("senderUin", paramURLCheckParams.jdField_b_of_type_JavaLangString);
-    localBundle.putString("chatId", paramURLCheckParams.c);
-    localBundle.putString("source", paramURLCheckParams.d);
-    localBundle.putString("originUrl", paramURLCheckParams.e);
-    localBundle.putString("ark_business_name", paramURLCheckParams.f);
-    localBundle.putBoolean("is_page_finish", paramURLCheckParams.jdField_a_of_type_Boolean);
-    localBundle.putStringArrayList("pre_jump_urls", paramURLCheckParams.jdField_a_of_type_JavaUtilArrayList);
+    localBundle.putString("url", paramURLCheckParams.a);
+    localBundle.putInt("type", paramURLCheckParams.b);
+    localBundle.putInt("msgfrom", paramURLCheckParams.c);
+    localBundle.putString("senderUin", paramURLCheckParams.d);
+    localBundle.putString("chatId", paramURLCheckParams.e);
+    localBundle.putString("source", paramURLCheckParams.f);
+    localBundle.putString("originUrl", paramURLCheckParams.g);
+    localBundle.putString("ark_business_name", paramURLCheckParams.h);
+    localBundle.putBoolean("is_page_finish", paramURLCheckParams.i);
+    localBundle.putStringArrayList("pre_jump_urls", paramURLCheckParams.j);
     return a(121, localBundle, paramCallback);
-  }
-  
-  public QQMusicClient a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizApiproxyQQMusicClient == null) {
-      this.jdField_a_of_type_ComTencentBizApiproxyQQMusicClient = new QQMusicClient(this);
-    }
-    return this.jdField_a_of_type_ComTencentBizApiproxyQQMusicClient;
-  }
-  
-  public WebPushClient a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizApiproxyWebPushClient == null) {
-      this.jdField_a_of_type_ComTencentBizApiproxyWebPushClient = new WebPushClient(this);
-    }
-    return this.jdField_a_of_type_ComTencentBizApiproxyWebPushClient;
   }
   
   public ITroopMemberApiClientApi.Callback a(int paramInt)
   {
-    return (ITroopMemberApiClientApi.Callback)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(1) == 0)
-    {
-      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      localBaseApplication.bindService(new Intent(localBaseApplication, TroopMemberApiService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.biz.troop.TroopMemberApiClient", 2, "Binding...");
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("fontSize", paramInt);
-    a(53, localBundle);
+    return (ITroopMemberApiClientApi.Callback)this.h.remove(Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -199,13 +152,13 @@ public class TroopMemberApiClient
   public void a(int paramInt, Bundle paramBundle)
   {
     Message localMessage = Message.obtain(null, paramInt);
-    localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
+    localMessage.replyTo = this.b;
     localMessage.setData(paramBundle);
-    paramBundle = this.jdField_b_of_type_AndroidOsMessenger;
+    paramBundle = this.c;
     if (paramBundle == null) {
       try
       {
-        this.jdField_b_of_type_JavaUtilList.add(localMessage);
+        this.f.add(localMessage);
         return;
       }
       finally {}
@@ -223,12 +176,12 @@ public class TroopMemberApiClient
   
   public void a(int paramInt, Bundle paramBundle, BusinessObserver paramBusinessObserver)
   {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    localSparseArray.append(i, paramBusinessObserver);
-    paramBundle.putString("processName", a());
-    paramBundle.putInt("req_seq", jdField_a_of_type_Int);
+    SparseArray localSparseArray = this.m;
+    int i1 = l + 1;
+    l = i1;
+    localSparseArray.append(i1, paramBusinessObserver);
+    paramBundle.putString("processName", d());
+    paramBundle.putInt("req_seq", l);
     a(paramInt, paramBundle);
   }
   
@@ -236,7 +189,7 @@ public class TroopMemberApiClient
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("appId", paramInt);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(44, localBundle);
   }
   
@@ -256,7 +209,7 @@ public class TroopMemberApiClient
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("callback", paramString4);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putInt("appid", paramInt);
     localBundle.putString("openGroupId", paramString1);
     localBundle.putString("token", paramString2);
@@ -287,7 +240,7 @@ public class TroopMemberApiClient
     localBundle.putString("fileName", paramString2);
     localBundle.putLong("fileSize", paramLong2);
     localBundle.putInt("busid", paramInt);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(20, localBundle);
   }
   
@@ -316,23 +269,23 @@ public class TroopMemberApiClient
       localStringBuilder.append(paramBusinessObserver.hashCode());
       QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, localStringBuilder.toString());
     }
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
+    if (!this.e.contains(paramBusinessObserver)) {
+      this.e.add(paramBusinessObserver);
     }
   }
   
   public void a(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
-    localBundle.putString("processName", a());
+    localBundle.putInt("seq", e(paramCallback));
+    localBundle.putString("processName", d());
     a(81, localBundle);
   }
   
   public void a(Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putInt("start", paramInteger1.intValue());
     localBundle.putInt("msgType", paramInteger2.intValue());
     localBundle.putInt("count", paramInteger3.intValue());
@@ -360,7 +313,7 @@ public class TroopMemberApiClient
   public void a(Integer paramInteger, String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putInt("appid", paramInteger.intValue());
     localBundle.putString("openId", paramString1);
     localBundle.putString("token", paramString2);
@@ -371,7 +324,7 @@ public class TroopMemberApiClient
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
+    localBundle.putString("processName", d());
     a(39, localBundle);
   }
   
@@ -424,8 +377,8 @@ public class TroopMemberApiClient
     localBundle.putString("pic_local_path", paramString1);
     localBundle.putInt("is_showProgress_tips", paramInt);
     localBundle.putString("pic_puin", paramString2);
-    localBundle.putInt("seq1", a(paramCallback2));
-    localBundle.putInt("seq", a(paramCallback1));
+    localBundle.putInt("seq1", e(paramCallback2));
+    localBundle.putInt("seq", e(paramCallback1));
     localBundle.putBoolean("is_pic_or_voice", paramBoolean);
     a(21, localBundle);
   }
@@ -439,7 +392,7 @@ public class TroopMemberApiClient
     localBundle.putString("nickName", paramString2);
     localBundle.putInt("expireTime", paramInt2);
     localBundle.putString("rankColor", paramString3);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(13, localBundle);
   }
   
@@ -453,7 +406,7 @@ public class TroopMemberApiClient
     localBundle.putLong("startTime", paramLong2);
     localBundle.putLong("endTime", paramLong3);
     localBundle.putInt("volumeIsOn", paramInt);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
@@ -473,7 +426,7 @@ public class TroopMemberApiClient
     localBundle.putLong("skinSeq", paramLong1);
     localBundle.putLong("startTime", paramLong2);
     localBundle.putLong("endTime", paramLong3);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
@@ -491,27 +444,27 @@ public class TroopMemberApiClient
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString);
-    localBundle.putString("filePath", paramAIOImageData.h);
-    localBundle.putString("fileName", paramAIOImageData.g);
-    localBundle.putInt("busId", paramAIOImageData.c);
+    localBundle.putString("filePath", paramAIOImageData.w);
+    localBundle.putString("fileName", paramAIOImageData.v);
+    localBundle.putInt("busId", paramAIOImageData.x);
     localBundle.putInt("size", paramInt);
-    int i = a(paramCallback);
-    localBundle.putInt("seq", i);
+    int i1 = e(paramCallback);
+    localBundle.putInt("seq", i1);
     paramString = new StringBuilder();
-    paramString.append(paramAIOImageData.h);
+    paramString.append(paramAIOImageData.w);
     paramString.append("/");
     paramString.append(paramInt);
     paramString = paramString.toString();
-    this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
+    this.q.put(paramString, Integer.valueOf(i1));
     a(58, localBundle);
   }
   
   public void a(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
+    localBundle.putString("processName", d());
     a(59, localBundle);
   }
   
@@ -538,7 +491,7 @@ public class TroopMemberApiClient
     localBundle.putString("path", paramString1);
     localBundle.putString("troopUin", paramString2);
     localBundle.putInt("msgTailType", paramInt);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(87, localBundle);
   }
   
@@ -546,7 +499,7 @@ public class TroopMemberApiClient
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("callback", paramString3);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putString("troopUin", paramString1);
     localBundle.putString("troopName", paramString2);
     localBundle.putInt("troopTypeId", paramInt);
@@ -558,7 +511,7 @@ public class TroopMemberApiClient
     Bundle localBundle = new Bundle();
     localBundle.putString("groupCode", paramString1);
     localBundle.putString("groupMemberUin", paramString2);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(72, localBundle);
   }
   
@@ -574,11 +527,10 @@ public class TroopMemberApiClient
   public void a(String paramString1, String paramString2, String paramString3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("chatType", paramString2);
-    localBundle.putString("callback", paramString3);
-    localBundle.putInt("seq", a(paramCallback));
-    a(111, localBundle);
+    localBundle.putString("appid", paramString1);
+    localBundle.putString("openid", paramString2);
+    localBundle.putString("troopuin", paramString3);
+    a(146, localBundle, paramCallback);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -589,6 +541,17 @@ public class TroopMemberApiClient
     localBundle.putString("url", paramString3);
     localBundle.putString("source", paramString4);
     a(150, localBundle);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, String paramString4, ITroopMemberApiClientApi.Callback paramCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("troopUin", paramString1);
+    localBundle.putString("chatType", paramString2);
+    localBundle.putString("packageId", paramString3);
+    localBundle.putString("callback", paramString4);
+    localBundle.putInt("seq", e(paramCallback));
+    a(111, localBundle);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
@@ -640,18 +603,18 @@ public class TroopMemberApiClient
   
   public void a(ArrayList<String> paramArrayList, ITroopMemberApiClientApi.Callback paramCallback)
   {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    int i1 = this.g.addAndGet(1);
     Bundle localBundle = new Bundle();
     localBundle.putStringArrayList("tinyIdList", paramArrayList);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
+    localBundle.putInt("seq", i1);
+    this.h.put(Integer.valueOf(i1), paramCallback);
     a(102, localBundle);
   }
   
   public void a(JSONObject paramJSONObject, Parcelable paramParcelable, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putString("BUNDLE_KEY_JS_OBJ", paramJSONObject.toString());
     localBundle.putParcelable("BUNDLE_KEY_CREATE_COMMENT_DATA", paramParcelable);
     a(154, localBundle);
@@ -660,7 +623,8 @@ public class TroopMemberApiClient
   public void a(JSONObject paramJSONObject, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
+    localBundle.putString("processName", d());
     localBundle.putString("ALD_CONFIG_RESULT", paramJSONObject.toString());
     a(155, localBundle);
   }
@@ -668,7 +632,7 @@ public class TroopMemberApiClient
   public void a(short paramShort, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putShort("tmpPushType", paramShort);
     a(151, localBundle);
   }
@@ -676,7 +640,7 @@ public class TroopMemberApiClient
   public void a(short paramShort, boolean paramBoolean, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putShort("tmpPushType", paramShort);
     localBundle.putBoolean("enable", paramBoolean);
     a(152, localBundle);
@@ -707,60 +671,19 @@ public class TroopMemberApiClient
     a(73, localBundle);
   }
   
-  public int b(ITroopMemberApiClientApi.Callback paramCallback)
+  public QQMusicClient b()
   {
-    Bundle localBundle = new Bundle();
-    int i = a(paramCallback);
-    localBundle.putInt("seq", i);
-    a(52, localBundle);
-    return i;
+    if (this.i == null) {
+      this.i = new QQMusicClient(this);
+    }
+    return this.i;
   }
   
-  public void b()
+  public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0)
-    {
-      QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-      return;
-    }
-    BaseApplication localBaseApplication;
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1) == 0)
-    {
-      localBaseApplication = BaseApplicationImpl.getContext();
-      if (this.jdField_b_of_type_AndroidOsMessenger == null) {}
-    }
-    try
-    {
-      Message localMessage = Message.obtain(null, 2);
-      localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("processName", a());
-      localMessage.obj = localBundle;
-      this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
-      label94:
-      localBaseApplication.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.jdField_b_of_type_AndroidOsMessenger = null;
-      try
-      {
-        this.jdField_b_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        a().a();
-        if (QLog.isColorLevel()) {
-          QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Unbinding...");
-        }
-      }
-      finally {}
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 0)
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-      }
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      break label94;
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("fontSize", paramInt);
+    a(53, localBundle);
   }
   
   public void b(Bundle paramBundle)
@@ -780,15 +703,15 @@ public class TroopMemberApiClient
       localStringBuilder.append(paramBusinessObserver.hashCode());
       QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
+    if (this.e.contains(paramBusinessObserver)) {
+      this.e.remove(paramBusinessObserver);
     }
   }
   
   public void b(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(84, localBundle);
   }
   
@@ -823,15 +746,15 @@ public class TroopMemberApiClient
     localBundle.putInt("is_showProgress_tips", paramInt);
     localBundle.putString("pic_puin", paramString2);
     localBundle.putBoolean("is_pic_or_voice", paramBoolean);
-    localBundle.putInt("seq1", a(paramCallback2));
-    localBundle.putInt("seq", a(paramCallback1));
+    localBundle.putInt("seq1", e(paramCallback2));
+    localBundle.putInt("seq", e(paramCallback1));
     a(22, localBundle);
   }
   
   public void b(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putString("hashName", paramString);
     if (QLog.isColorLevel()) {
       QLog.d("allen", 2, "此时发送请求");
@@ -867,7 +790,7 @@ public class TroopMemberApiClient
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString1);
     localBundle.putString("rewardId", paramString2);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(55, localBundle);
   }
   
@@ -878,15 +801,6 @@ public class TroopMemberApiClient
     localBundle.putString("uin", paramString2);
     localBundle.putString("nick", paramString3);
     a(99, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3, ITroopMemberApiClientApi.Callback paramCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appid", paramString1);
-    localBundle.putString("openid", paramString2);
-    localBundle.putString("troopuin", paramString3);
-    a(146, localBundle, paramCallback);
   }
   
   public void b(String paramString, boolean paramBoolean)
@@ -911,9 +825,12 @@ public class TroopMemberApiClient
     a(91, localBundle);
   }
   
-  public void c()
+  public WebPushClient c()
   {
-    a(6, null);
+    if (this.j == null) {
+      this.j = new WebPushClient(this);
+    }
+    return this.j;
   }
   
   public void c(Bundle paramBundle)
@@ -926,7 +843,7 @@ public class TroopMemberApiClient
   public void c(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(76, localBundle);
   }
   
@@ -954,7 +871,7 @@ public class TroopMemberApiClient
     if (!TextUtils.isEmpty(paramString)) {
       localBundle.putString("callback", paramString);
     }
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     a(15, localBundle);
   }
   
@@ -968,12 +885,12 @@ public class TroopMemberApiClient
   
   public void c(String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    int i1 = this.g.addAndGet(1);
     Bundle localBundle = new Bundle();
     localBundle.putString("troopCode", paramString1);
     localBundle.putString("rid", paramString2);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
+    localBundle.putInt("seq", i1);
+    this.h.put(Integer.valueOf(i1), paramCallback);
     a(101, localBundle);
   }
   
@@ -983,11 +900,6 @@ public class TroopMemberApiClient
     localBundle.putString("troopUin", paramString);
     localBundle.putBoolean("isChecked", paramBoolean);
     a(153, localBundle);
-  }
-  
-  public void d()
-  {
-    a(93, new Bundle());
   }
   
   public void d(Bundle paramBundle)
@@ -1013,7 +925,7 @@ public class TroopMemberApiClient
   public void d(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     localBundle.putString("content", paramString);
     if (QLog.isColorLevel()) {
       QLog.d("Readinjoy", 2, "TroopMemberApiClient sendToComputer");
@@ -1034,7 +946,7 @@ public class TroopMemberApiClient
     Bundle localBundle = new Bundle();
     localBundle.putString("skinId", paramString1);
     localBundle.putString("skinUrl", paramString2);
-    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putInt("seq", e(paramCallback));
     if (QLog.isColorLevel())
     {
       paramString2 = new StringBuilder();
@@ -1053,14 +965,23 @@ public class TroopMemberApiClient
     a(156, localBundle);
   }
   
-  public void e()
+  public int e(ITroopMemberApiClientApi.Callback paramCallback)
   {
-    a(77, new Bundle());
+    int i1 = this.g.addAndGet(1);
+    this.h.put(Integer.valueOf(i1), paramCallback);
+    return i1;
   }
   
-  public void e(ITroopMemberApiClientApi.Callback paramCallback)
+  public void e()
   {
-    a(128, new Bundle(), paramCallback);
+    if (this.d.getAndAdd(1) == 0)
+    {
+      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+      localBaseApplication.bindService(new Intent(localBaseApplication, TroopMemberApiService.class), this.k, 1);
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.biz.troop.TroopMemberApiClient", 2, "Binding...");
+      }
+    }
   }
   
   public void e(String paramString)
@@ -1095,14 +1016,54 @@ public class TroopMemberApiClient
   
   public void f()
   {
-    a(27, new Bundle());
+    if (this.d.get() == 0)
+    {
+      QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
+      return;
+    }
+    BaseApplication localBaseApplication;
+    if (this.d.addAndGet(-1) == 0)
+    {
+      localBaseApplication = BaseApplicationImpl.getContext();
+      if (this.c == null) {}
+    }
+    try
+    {
+      Message localMessage = Message.obtain(null, 2);
+      localMessage.replyTo = this.b;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("processName", d());
+      localMessage.obj = localBundle;
+      this.c.send(localMessage);
+      label94:
+      localBaseApplication.unbindService(this.k);
+      this.c = null;
+      try
+      {
+        this.f.clear();
+        this.h.clear();
+        c().a();
+        if (QLog.isColorLevel()) {
+          QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Unbinding...");
+        }
+      }
+      finally {}
+      if (this.d.get() < 0)
+      {
+        this.d.set(0);
+        QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
+      }
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      break label94;
+    }
   }
   
   public void f(ITroopMemberApiClientApi.Callback paramCallback)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
-    a(80, localBundle);
+    a(128, new Bundle(), paramCallback);
   }
   
   public void f(String paramString)
@@ -1120,14 +1081,18 @@ public class TroopMemberApiClient
     a(97, localBundle);
   }
   
-  public void g()
+  public int g(ITroopMemberApiClientApi.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = null;
+    Bundle localBundle = new Bundle();
+    int i1 = e(paramCallback);
+    localBundle.putInt("seq", i1);
+    a(52, localBundle);
+    return i1;
   }
   
-  public void g(ITroopMemberApiClientApi.Callback paramCallback)
+  public void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = paramCallback;
+    a(6, null);
   }
   
   public void g(String paramString)
@@ -1147,17 +1112,14 @@ public class TroopMemberApiClient
   
   public void h()
   {
-    a(89, null);
+    a(93, new Bundle());
   }
   
   public void h(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient getReadinjoyCurrentSkin");
-    }
-    a(110, localBundle);
+    localBundle.putInt("seq", e(paramCallback));
+    a(80, localBundle);
   }
   
   public void h(String paramString1, String paramString2)
@@ -1170,13 +1132,12 @@ public class TroopMemberApiClient
   
   public void i()
   {
-    a(104, new Bundle());
+    a(77, new Bundle());
   }
   
   public void i(ITroopMemberApiClientApi.Callback paramCallback)
   {
-    a(141, new Bundle(), paramCallback);
-    AdAnalysisHelperForUtil.reportForAPIInvoked(BaseApplicationImpl.getApplication(), true, "com.tencent.biz.troop.TroopMemberApiClient#gdtGetCurrentUserInfo(Callback)", "");
+    this.r = paramCallback;
   }
   
   public void i(String paramString1, String paramString2)
@@ -1189,24 +1150,60 @@ public class TroopMemberApiClient
   
   public void j()
   {
-    a(116, new Bundle());
+    a(27, new Bundle());
   }
   
   public void j(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
-    a(163, localBundle);
+    localBundle.putInt("seq", e(paramCallback));
+    if (QLog.isColorLevel()) {
+      QLog.d("Readinjoy", 2, "TroopMemberApiClient getReadinjoyCurrentSkin");
+    }
+    a(110, localBundle);
   }
   
   public void k()
+  {
+    this.r = null;
+  }
+  
+  public void k(ITroopMemberApiClientApi.Callback paramCallback)
+  {
+    a(141, new Bundle(), paramCallback);
+    AdAnalysisHelperForUtil.reportForAPIInvoked(BaseApplicationImpl.getApplication(), true, "com.tencent.biz.troop.TroopMemberApiClient#gdtGetCurrentUserInfo(Callback)", "");
+  }
+  
+  public void l()
+  {
+    a(89, null);
+  }
+  
+  public void l(ITroopMemberApiClientApi.Callback paramCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", e(paramCallback));
+    a(164, localBundle);
+  }
+  
+  public void m()
+  {
+    a(104, new Bundle());
+  }
+  
+  public void n()
+  {
+    a(116, new Bundle());
+  }
+  
+  public void o()
   {
     a(124, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiClient
  * JD-Core Version:    0.7.0.1
  */

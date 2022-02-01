@@ -13,8 +13,8 @@ class ArkFullScreenAppActivity$3
   
   public void onClick(View paramView)
   {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      ArkAppDataReport.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, ArkAppDataReport.c, 0, 0);
+    if (ArkFullScreenAppActivity.b(this.a) != null) {
+      ArkAppDataReport.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.b(this.a).a, null, ArkAppDataReport.c, 0, 0);
     }
     this.a.a();
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class ArkFullScreenAppActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.3
  * JD-Core Version:    0.7.0.1
  */

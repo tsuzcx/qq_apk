@@ -1,28 +1,33 @@
 package com.tencent.mobileqq.settings.message;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity;
+import com.tencent.mobileqq.activity.QPublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.fragment.BottomTabSettingFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AssistantSettingFragment$36
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   AssistantSettingFragment$36(AssistantSettingFragment paramAssistantSettingFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    AssistantSettingFragment localAssistantSettingFragment = this.a;
-    AssistantSettingFragment.a(localAssistantSettingFragment, AssistantSettingFragment.a(localAssistantSettingFragment).a(), paramBoolean);
-    AssistantSettingFragment.a(this.a).a(paramBoolean, true);
-    ReportClickEventHelper.a(AssistantSettingFragment.a(this.a), "0X800B88B", paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    Intent localIntent = new Intent();
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("KEY_ENTRANCE", "VALUE_QQ_SETTING_FRAGMENT");
+    QPublicFragmentActivity.Launcher.a(paramView.getContext(), localIntent, QPublicFragmentActivity.class, BottomTabSettingFragment.class);
+    ReportController.b(BaseApplicationImpl.getApplication().getRuntime(), "CliOper", "", "", "bottom_tab", "entrance_clk", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.36
  * JD-Core Version:    0.7.0.1
  */

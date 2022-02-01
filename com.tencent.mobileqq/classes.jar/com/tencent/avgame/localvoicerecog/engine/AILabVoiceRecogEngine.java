@@ -9,28 +9,28 @@ import java.util.ArrayList;
 public class AILabVoiceRecogEngine
   implements IVoiceRecogEngine
 {
-  private static volatile AILabVoiceRecogEngine jdField_a_of_type_ComTencentAvgameLocalvoicerecogEngineAILabVoiceRecogEngine;
-  private static float b;
-  private static float c;
-  private float jdField_a_of_type_Float = 3.8F;
-  private int jdField_a_of_type_Int = 0;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
+  private static volatile AILabVoiceRecogEngine a;
+  private static float e;
+  private static float f;
+  private byte[] b = null;
+  private int c = 0;
+  private float d = 3.8F;
   
   public static AILabVoiceRecogEngine a()
   {
-    if (jdField_a_of_type_ComTencentAvgameLocalvoicerecogEngineAILabVoiceRecogEngine == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvgameLocalvoicerecogEngineAILabVoiceRecogEngine == null) {
-          jdField_a_of_type_ComTencentAvgameLocalvoicerecogEngineAILabVoiceRecogEngine = new AILabVoiceRecogEngine();
+        if (a == null) {
+          a = new AILabVoiceRecogEngine();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvgameLocalvoicerecogEngineAILabVoiceRecogEngine;
+    return a;
   }
   
-  private String a(String paramString)
+  private String b(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramString.length() * 2);
     int i = 0;
@@ -45,28 +45,16 @@ public class AILabVoiceRecogEngine
     return localStringBuilder.toString();
   }
   
-  public static float b()
+  public static float f()
   {
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getCurSceneWordScore ");
-      localStringBuilder.append(b);
+      localStringBuilder.append(e);
       QLog.d("AILabVoiceRecogEngine", 2, localStringBuilder.toString());
     }
-    return b;
-  }
-  
-  public float a()
-  {
-    AILibCkwsOutParam localAILibCkwsOutParam = new AILibCkwsOutParam();
-    AILibCkws.getCkwsInfo(localAILibCkwsOutParam);
-    return localAILibCkwsOutParam.score;
-  }
-  
-  public int a()
-  {
-    return 0;
+    return e;
   }
   
   public int a(String paramString)
@@ -77,16 +65,16 @@ public class AILabVoiceRecogEngine
       ((StringBuilder)localObject).append("update word:");
       ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append(" format:");
-      ((StringBuilder)localObject).append(a(paramString));
+      ((StringBuilder)localObject).append(b(paramString));
       ((StringBuilder)localObject).append(" SceneWordsTh: ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+      ((StringBuilder)localObject).append(this.d);
       QLog.d("AILabVoiceRecogEngine", 2, ((StringBuilder)localObject).toString());
     }
-    b = 0.0F;
+    e = 0.0F;
     Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(a(paramString));
+    ((ArrayList)localObject).add(b(paramString));
     paramString = new ArrayList();
-    paramString.add(Float.valueOf(this.jdField_a_of_type_Float));
+    paramString.add(Float.valueOf(this.d));
     return AILibCkws.setWords((ArrayList)localObject, paramString);
   }
   
@@ -106,8 +94,8 @@ public class AILabVoiceRecogEngine
   
   public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.jdField_a_of_type_ArrayOfByte == null) {
-      this.jdField_a_of_type_ArrayOfByte = new byte[1280];
+    if (this.b == null) {
+      this.b = new byte[1280];
     }
     byte[] arrayOfByte = new byte[320];
     AILibCkwsParam localAILibCkwsParam = new AILibCkwsParam();
@@ -115,15 +103,15 @@ public class AILabVoiceRecogEngine
     localAILibCkwsParam.dataMicInLength = arrayOfByte.length;
     localAILibCkwsParam.chaneel = 1;
     localAILibCkwsParam.hasKeyWord = 0;
-    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, paramArrayOfByte.length);
-    this.jdField_a_of_type_Int += paramArrayOfByte.length;
+    System.arraycopy(paramArrayOfByte, 0, this.b, this.c, paramArrayOfByte.length);
+    this.c += paramArrayOfByte.length;
     int i = 0;
-    while (this.jdField_a_of_type_Int >= arrayOfByte.length)
+    while (this.c >= arrayOfByte.length)
     {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, arrayOfByte.length);
-      this.jdField_a_of_type_Int -= arrayOfByte.length;
-      paramArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      System.arraycopy(paramArrayOfByte, arrayOfByte.length, paramArrayOfByte, 0, this.jdField_a_of_type_Int);
+      System.arraycopy(this.b, 0, arrayOfByte, 0, arrayOfByte.length);
+      this.c -= arrayOfByte.length;
+      paramArrayOfByte = this.b;
+      System.arraycopy(paramArrayOfByte, arrayOfByte.length, paramArrayOfByte, 0, this.c);
       int j = AILibCkws.process(localAILibCkwsParam);
       paramInt = i;
       if (i != 1) {
@@ -133,15 +121,15 @@ public class AILabVoiceRecogEngine
           paramInt = j;
         }
       }
-      float f = a();
+      float f1 = d();
       i = paramInt;
-      if (c != f)
+      if (f != f1)
       {
-        c = f;
+        f = f1;
         i = paramInt;
-        if (f > b)
+        if (f1 > e)
         {
-          b = f;
+          e = f1;
           i = paramInt;
         }
       }
@@ -151,20 +139,32 @@ public class AILabVoiceRecogEngine
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.d = paramFloat;
   }
   
   public int b()
   {
-    QLog.d("AILabVoiceRecogEngine", 1, "end");
     return 0;
   }
   
   public int c()
   {
+    QLog.d("AILabVoiceRecogEngine", 1, "end");
+    return 0;
+  }
+  
+  public float d()
+  {
+    AILibCkwsOutParam localAILibCkwsOutParam = new AILibCkwsOutParam();
+    AILibCkws.getCkwsInfo(localAILibCkwsOutParam);
+    return localAILibCkwsOutParam.score;
+  }
+  
+  public int e()
+  {
     QLog.d("AILabVoiceRecogEngine", 1, "destroy");
-    b = 0.0F;
-    c = 0.0F;
+    e = 0.0F;
+    f = 0.0F;
     return AILibCkws.exit();
   }
 }

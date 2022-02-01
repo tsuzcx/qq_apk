@@ -16,15 +16,15 @@ class ChatHistoryC2CMediaFragment$1
   
   protected void a(int paramInt, long paramLong, String paramString)
   {
-    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.w != null)) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
   
   protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
-    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    if ((((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt)) && (this.a.w != null)) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
   
@@ -45,15 +45,15 @@ class ChatHistoryC2CMediaFragment$1
       paramString2.append("]");
       QLog.d("ChatHistoryMediaBaseFragment", 2, paramString2.toString());
     }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6) && (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    paramString1 = this.a.a.getFileManagerDataCenter().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt2)) && (this.a.w != null)) {
+      this.a.w.sendEmptyMessage(102);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CMediaFragment.1
  * JD-Core Version:    0.7.0.1
  */

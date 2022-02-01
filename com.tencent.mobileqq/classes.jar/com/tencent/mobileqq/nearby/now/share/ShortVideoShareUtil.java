@@ -214,7 +214,7 @@ public class ShortVideoShareUtil
         paramString1 = a(a);
         paramBaseActivity = paramString1;
         if (paramString1 == null) {
-          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
         }
         WXShareHelper.a().a(new ShortVideoShareUtil.5(str, paramOnShareCallBack));
         WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
@@ -226,7 +226,7 @@ public class ShortVideoShareUtil
         paramString1 = a(a);
         paramBaseActivity = paramString1;
         if (paramString1 == null) {
-          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+          paramBaseActivity = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
         }
         WXShareHelper.a().a(new ShortVideoShareUtil.6(str, paramOnShareCallBack));
         WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
@@ -245,7 +245,7 @@ public class ShortVideoShareUtil
     String str = String.valueOf(System.currentTimeMillis());
     paramString1 = paramBitmap;
     if (paramBitmap == null) {
-      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845467);
+      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846923);
     }
     WXShareHelper.a().a(new ShortVideoShareUtil.4(str, paramOnShareCallBack));
     WXShareHelper.a().b(str, paramString2, paramString1, paramString3, paramString4);
@@ -254,7 +254,7 @@ public class ShortVideoShareUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil
  * JD-Core Version:    0.7.0.1
  */

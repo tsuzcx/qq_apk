@@ -14,28 +14,28 @@ class DoubleVideoCtrlUI$1
   
   public void run()
   {
-    if (this.this$0.h()) {
+    if (this.this$0.V()) {
       return;
     }
-    long l = AudioHelper.b();
-    if ((!this.this$0.jdField_a_of_type_ComTencentAvVideoController.g()) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().e == 1) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().j))
+    long l = AudioHelper.c();
+    if ((!this.this$0.am.n()) && (this.this$0.am.k().h == 1) && (this.this$0.am.k().H))
     {
       if (QLog.isColorLevel())
       {
-        String str = this.this$0.d;
+        String str = this.this$0.X;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("FixTerSwitchStatus ,switch to pc ,local close camera, seq[");
         localStringBuilder.append(l);
         localStringBuilder.append("]");
         QLog.w(str, 1, localStringBuilder.toString());
       }
-      this.this$0.k(l);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
-      TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1021);
+      this.this$0.m(l);
+      this.this$0.al.a(new Object[] { Integer.valueOf(106), Long.valueOf(l) });
+      TipsUtil.a(this.this$0.al, 1021);
     }
-    this.this$0.i(l, 16777215);
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().g) {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(true, this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c);
+    this.this$0.f(l, 16777215);
+    if (this.this$0.am.k().E) {
+      this.this$0.am.a(true, this.this$0.am.k().s);
     }
   }
 }

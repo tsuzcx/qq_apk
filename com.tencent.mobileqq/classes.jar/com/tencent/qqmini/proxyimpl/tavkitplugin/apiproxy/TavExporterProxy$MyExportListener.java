@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy;
 
 import android.util.Log;
-import com.tencent.qqmini.sdk.core.manager.MiniAppFileManager;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppFileManager;
 import com.tencent.tav.core.AssetExportSession;
 import com.tencent.tav.decoder.logger.Logger;
 import org.json.JSONException;
@@ -9,24 +9,24 @@ import org.json.JSONException;
 class TavExporterProxy$MyExportListener
   implements TavExporter.ExportListener
 {
-  private final TavExporter jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporter;
+  private final TavExporter b;
   
   TavExporterProxy$MyExportListener(TavExporterProxy paramTavExporterProxy, TavExporter paramTavExporter)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporter = paramTavExporter;
+    this.b = paramTavExporter;
   }
   
   private void a(String paramString1, String paramString2, Object paramObject)
   {
     try
     {
-      paramString1 = ObjConvector.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporter, paramString1, paramString2, paramObject);
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.a("tav_export", paramString1);
+      paramString1 = ObjConvector.a(this.b, paramString1, paramString2, paramObject);
+      this.a.a("tav_export", paramString1);
       return;
     }
     catch (JSONException paramString1)
     {
-      Logger.e(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.jdField_a_of_type_JavaLangString, "trySubscribe: ", paramString1);
+      Logger.e(this.a.a, "trySubscribe: ", paramString1);
     }
   }
   
@@ -34,7 +34,7 @@ class TavExporterProxy$MyExportListener
   
   public void a(float paramFloat)
   {
-    String str = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExporting() called with: progress = [");
     localStringBuilder.append(paramFloat);
@@ -45,7 +45,7 @@ class TavExporterProxy$MyExportListener
   
   public void a(AssetExportSession paramAssetExportSession)
   {
-    String str = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportError() called with: assetExportSession = [");
     localStringBuilder.append(paramAssetExportSession);
@@ -56,23 +56,23 @@ class TavExporterProxy$MyExportListener
   
   public void a(String paramString)
   {
-    String str = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.jdField_a_of_type_JavaLangString;
+    String str = this.a.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onExportCompleted() called with: exportPath = [");
     localStringBuilder.append(paramString);
     localStringBuilder.append("]");
     Log.d(str, localStringBuilder.toString());
-    a("success", "outputURL", this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.jdField_a_of_type_ComTencentQqminiSdkCoreManagerMiniAppFileManager.getWxFilePath(paramString));
+    a("success", "outputURL", this.a.d.getWxFilePath(paramString));
   }
   
   public void b()
   {
-    Logger.d(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavExporterProxy.jdField_a_of_type_JavaLangString, "onExportCancel() called");
+    Logger.d(this.a.a, "onExportCancel() called");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavExporterProxy.MyExportListener
  * JD-Core Version:    0.7.0.1
  */

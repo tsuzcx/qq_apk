@@ -75,7 +75,7 @@ public class RIJCommentInLikeFeedUgcDeliverHandler
       paramToServiceMsg.append(paramObject);
       QLog.d("RIJCommentInLikeFeedUgcDeliverHandler", 1, paramToServiceMsg.toString());
     }
-    paramToServiceMsg = BaseApplication.getContext().getString(2131717876);
+    paramToServiceMsg = BaseApplication.getContext().getString(2131915349);
     if (((oidb_cmd0x83e.RspBody)localObject).bytes_result_desc.has())
     {
       paramToServiceMsg = ((oidb_cmd0x83e.RspBody)localObject).bytes_result_desc.get().toStringUtf8();
@@ -84,7 +84,7 @@ public class RIJCommentInLikeFeedUgcDeliverHandler
       ((StringBuilder)localObject).append(paramToServiceMsg);
       QLog.d("RIJCommentInLikeFeedUgcDeliverHandler", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJCommentInLikeFeedUgcDeliverHandler.1(this, i, l, paramFromServiceMsg, j, paramObject, paramToServiceMsg));
+    this.b.post(new RIJCommentInLikeFeedUgcDeliverHandler.1(this, i, l, paramFromServiceMsg, j, paramObject, paramToServiceMsg));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, List<Integer> paramList, String paramString4, String paramString5, String[] paramArrayOfString1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String[] paramArrayOfString2, ArrayList<BiuCommentInfo> paramArrayList, boolean paramBoolean, int paramInt1, int paramInt2, AccountProfileInfo paramAccountProfileInfo, TroopBarPOI paramTroopBarPOI, VisibleSetParam paramVisibleSetParam, int paramInt3)
@@ -112,7 +112,7 @@ public class RIJCommentInLikeFeedUgcDeliverHandler
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append("location = ");
       if (paramTroopBarPOI != null) {
-        paramString2 = String.format("(name:%s,lat:%s,long:%s)", new Object[] { paramTroopBarPOI.c, Integer.valueOf(paramTroopBarPOI.b), Integer.valueOf(paramTroopBarPOI.jdField_a_of_type_Int) });
+        paramString2 = String.format("(name:%s,lat:%s,long:%s)", new Object[] { paramTroopBarPOI.c, Integer.valueOf(paramTroopBarPOI.f), Integer.valueOf(paramTroopBarPOI.d) });
       } else {
         paramString2 = "null";
       }
@@ -173,7 +173,7 @@ public class RIJCommentInLikeFeedUgcDeliverHandler
     {
       paramString1 = new feeds_info.VisibleSetParam();
       paramString1.uint32_visible_type.set(paramVisibleSetParam.a());
-      paramString1.rpt_uint64_uin.addAll(paramVisibleSetParam.a());
+      paramString1.rpt_uint64_uin.addAll(paramVisibleSetParam.b());
       paramString4 = new feeds_info.VisibleInfo();
       paramString4.visible_param.set(paramString1);
       paramString3.visible_info.set(paramString4);
@@ -284,11 +284,11 @@ public class RIJCommentInLikeFeedUgcDeliverHandler
     if ((paramInt1 == 21) && (paramAccountProfileInfo != null))
     {
       paramString3 = new feeds_info.AccountProfile();
-      paramString3.bytes_desc.set(ByteStringMicro.copyFromUtf8(paramAccountProfileInfo.c));
-      paramString3.bytes_nick.set(ByteStringMicro.copyFromUtf8(paramAccountProfileInfo.jdField_a_of_type_JavaLangString));
-      paramString3.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(paramAccountProfileInfo.b));
-      paramString3.uint64_uin.set(paramAccountProfileInfo.jdField_a_of_type_Long);
-      paramString3.uint32_account_type.set(paramAccountProfileInfo.jdField_a_of_type_Int);
+      paramString3.bytes_desc.set(ByteStringMicro.copyFromUtf8(paramAccountProfileInfo.e));
+      paramString3.bytes_nick.set(ByteStringMicro.copyFromUtf8(paramAccountProfileInfo.c));
+      paramString3.bytes_profile_photo_url.set(ByteStringMicro.copyFromUtf8(paramAccountProfileInfo.d));
+      paramString3.uint64_uin.set(paramAccountProfileInfo.a);
+      paramString3.uint32_account_type.set(paramAccountProfileInfo.b);
       paramString4.account_profile.set(paramString3);
       paramString4.enum_ugc_feeds_src.set(6);
     }
@@ -297,25 +297,25 @@ public class RIJCommentInLikeFeedUgcDeliverHandler
     {
       paramString3 = new feeds_info.LocationInfo();
       paramString3.bytes_name.set(ByteStringMicro.copyFromUtf8(paramTroopBarPOI.c));
-      paramString3.uint32_longitude.set(paramTroopBarPOI.jdField_a_of_type_Int);
-      paramString3.uint32_latitude.set(paramTroopBarPOI.b);
+      paramString3.uint32_longitude.set(paramTroopBarPOI.d);
+      paramString3.uint32_latitude.set(paramTroopBarPOI.f);
       paramString2.location_info.set(paramString3);
     }
     ((oidb_cmd0x83e.FeedsInfo)localObject).msg_social_feeds_info.set(paramString2);
     paramString1.msg_feeds_info.set((MessageMicro)localObject);
     paramString2 = new StringBuilder();
-    paramString2.append(String.valueOf(RIJQQAppInterfaceUtil.a()));
+    paramString2.append(String.valueOf(RIJQQAppInterfaceUtil.d()));
     paramString2.append(System.currentTimeMillis());
     paramString2 = paramString2.toString();
     paramString1.bytes_req_seq.set(ByteStringMicro.copyFromUtf8(paramString2));
     paramString1 = ReadInJoyOidbHelper.a("OidbSvc.0x83e", 2110, 0, paramString1.toByteArray());
     paramString1.addAttribute("ugc_deliver", Integer.valueOf(1));
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReqWithAutoRetry(paramString1);
+    this.a.sendPbReqWithAutoRetry(paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedUgcDeliverHandler
  * JD-Core Version:    0.7.0.1
  */

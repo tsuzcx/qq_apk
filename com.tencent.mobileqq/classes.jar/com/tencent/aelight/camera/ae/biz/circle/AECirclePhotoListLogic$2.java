@@ -15,12 +15,12 @@ class AECirclePhotoListLogic$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     LocalMultiProcConfig.putInt4Uin("_qq_circle_publish", 0, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
-    AEReportUtils.e(3);
+    AEReportUtils.e(3, this.a.i());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECirclePhotoListLogic.2
  * JD-Core Version:    0.7.0.1
  */

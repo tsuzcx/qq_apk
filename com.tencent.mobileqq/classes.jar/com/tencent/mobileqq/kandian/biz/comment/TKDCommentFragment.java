@@ -30,71 +30,50 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/TKDCommentFragment;", "Lcom/tencent/mobileqq/kandian/biz/viola/view/ViolaFragment;", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleOwner;", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/ITKDHippyEventDispatcherOwner;", "()V", "adTag", "", "getAdTag", "()I", "setAdTag", "(I)V", "anchorData", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/AnchorData;", "getAnchorData", "()Lcom/tencent/mobileqq/kandian/biz/comment/entity/AnchorData;", "setAnchorData", "(Lcom/tencent/mobileqq/kandian/biz/comment/entity/AnchorData;)V", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "getArticleInfo", "()Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "setArticleInfo", "(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)V", "biuType", "getBiuType", "setBiuType", "commentEventListener", "com/tencent/mobileqq/kandian/biz/comment/TKDCommentFragment$commentEventListener$1", "Lcom/tencent/mobileqq/kandian/biz/comment/TKDCommentFragment$commentEventListener$1;", "commentState", "getCommentState", "setCommentState", "commentTopGestureLayout", "Lcom/tencent/mobileqq/kandian/biz/comment/FlingExitLayout;", "getCommentTopGestureLayout", "()Lcom/tencent/mobileqq/kandian/biz/comment/FlingExitLayout;", "setCommentTopGestureLayout", "(Lcom/tencent/mobileqq/kandian/biz/comment/FlingExitLayout;)V", "container", "Landroid/view/ViewGroup;", "getContainer", "()Landroid/view/ViewGroup;", "setContainer", "(Landroid/view/ViewGroup;)V", "contentSrc", "getContentSrc", "setContentSrc", "dispatcher", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleDispatcher;", "eventDispatcher", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/dispatcher/ITKDHippyEventDispatcher;", "hippyCommentPageListener", "Lcom/tencent/mobileqq/kandian/biz/comment/HippyCommentPageListener;", "getHippyCommentPageListener", "()Lcom/tencent/mobileqq/kandian/biz/comment/HippyCommentPageListener;", "setHippyCommentPageListener", "(Lcom/tencent/mobileqq/kandian/biz/comment/HippyCommentPageListener;)V", "isEdit", "", "()Z", "setEdit", "(Z)V", "getActivityLifecycleDispatcher", "getHippyListView", "Lcom/tencent/mtt/hippy/views/list/HippyListView;", "viewGroup", "getJsPropsMap", "Lcom/tencent/mtt/hippy/common/HippyMap;", "getPropsMap", "getTKDHippyEventDispatcher", "initAfterVisible", "", "bundle", "Landroid/os/Bundle;", "contentView", "onActivityCreated", "savedInstanceState", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onCreateFragment", "onDestroy", "onDestroyView", "onHippyPageLoad", "isSuccess", "errMsg", "", "onPause", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "setGestureLayout", "shouldFinishActivity", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/comment/TKDCommentFragment;", "Lcom/tencent/mobileqq/kandian/biz/viola/view/ViolaFragment;", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleOwner;", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/ITKDHippyEventDispatcherOwner;", "()V", "adTag", "", "getAdTag", "()I", "setAdTag", "(I)V", "anchorData", "Lcom/tencent/mobileqq/kandian/biz/comment/entity/AnchorData;", "getAnchorData", "()Lcom/tencent/mobileqq/kandian/biz/comment/entity/AnchorData;", "setAnchorData", "(Lcom/tencent/mobileqq/kandian/biz/comment/entity/AnchorData;)V", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "getArticleInfo", "()Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "setArticleInfo", "(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)V", "biuType", "getBiuType", "setBiuType", "commentEventListener", "com/tencent/mobileqq/kandian/biz/comment/TKDCommentFragment$commentEventListener$1", "Lcom/tencent/mobileqq/kandian/biz/comment/TKDCommentFragment$commentEventListener$1;", "commentState", "getCommentState", "setCommentState", "commentTopGestureLayout", "Lcom/tencent/mobileqq/kandian/biz/comment/FlingExitLayout;", "getCommentTopGestureLayout", "()Lcom/tencent/mobileqq/kandian/biz/comment/FlingExitLayout;", "setCommentTopGestureLayout", "(Lcom/tencent/mobileqq/kandian/biz/comment/FlingExitLayout;)V", "container", "Landroid/view/ViewGroup;", "getContainer", "()Landroid/view/ViewGroup;", "setContainer", "(Landroid/view/ViewGroup;)V", "contentSrc", "getContentSrc", "setContentSrc", "dispatcher", "Lcom/tencent/hippy/qq/fragment/HippyActivityLifecycleDispatcher;", "eventDispatcher", "Lcom/tencent/mobileqq/kandian/biz/hippy/interfaces/dispatcher/ITKDHippyEventDispatcher;", "hippyCommentPageListener", "Lcom/tencent/mobileqq/kandian/biz/comment/HippyCommentPageListener;", "getHippyCommentPageListener", "()Lcom/tencent/mobileqq/kandian/biz/comment/HippyCommentPageListener;", "setHippyCommentPageListener", "(Lcom/tencent/mobileqq/kandian/biz/comment/HippyCommentPageListener;)V", "isEdit", "", "()Z", "setEdit", "(Z)V", "showShare", "getShowShare", "setShowShare", "getActivityLifecycleDispatcher", "getHippyListView", "Lcom/tencent/mtt/hippy/views/list/HippyListView;", "viewGroup", "getJsPropsMap", "Lcom/tencent/mtt/hippy/common/HippyMap;", "getPropsMap", "getTKDHippyEventDispatcher", "initAfterVisible", "", "bundle", "Landroid/os/Bundle;", "contentView", "onActivityCreated", "savedInstanceState", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onCreateFragment", "onDestroy", "onDestroyView", "onHippyPageLoad", "isSuccess", "errMsg", "", "onPause", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "setGestureLayout", "shouldFinishActivity", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class TKDCommentFragment
   extends ViolaFragment
   implements HippyActivityLifecycleOwner, ITKDHippyEventDispatcherOwner
 {
-  public static final TKDCommentFragment.Companion a;
+  public static final TKDCommentFragment.Companion a = new TKDCommentFragment.Companion(null);
   @NotNull
-  private static final String jdField_a_of_type_JavaLangString = "TKDCommentFragment";
+  private static final String p = "TKDCommentFragment";
   @NotNull
-  private static final String jdField_b_of_type_JavaLangString = "TKDComment";
-  private static final int e = -1;
-  private static final int f = 0;
-  private static final int g = 1;
-  private int jdField_a_of_type_Int;
-  @Nullable
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private final HippyActivityLifecycleDispatcher jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher = new HippyActivityLifecycleDispatcher();
-  @Nullable
-  private FlingExitLayout jdField_a_of_type_ComTencentMobileqqKandianBizCommentFlingExitLayout;
-  @Nullable
-  private HippyCommentPageListener jdField_a_of_type_ComTencentMobileqqKandianBizCommentHippyCommentPageListener;
-  private final TKDCommentFragment.commentEventListener.1 jdField_a_of_type_ComTencentMobileqqKandianBizCommentTKDCommentFragment$commentEventListener$1 = new TKDCommentFragment.commentEventListener.1(this);
-  @Nullable
-  private AnchorData jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityAnchorData;
-  private ITKDHippyEventDispatcher jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher = (ITKDHippyEventDispatcher)new TKDHippyEventDispatcher();
-  @Nullable
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = f;
+  private static final String q = "TKDComment";
+  private static final int r = -1;
+  private static final int s = 0;
+  private static final int t = 1;
+  private final HippyActivityLifecycleDispatcher b = new HippyActivityLifecycleDispatcher();
   private int c;
-  private int d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizCommentTKDCommentFragment$Companion = new TKDCommentFragment.Companion(null);
-  }
+  @Nullable
+  private AbsBaseArticleInfo d;
+  private int e = s;
+  @Nullable
+  private FlingExitLayout f;
+  @Nullable
+  private ViewGroup g;
+  @Nullable
+  private AnchorData h;
+  private boolean i;
+  private int j;
+  private int k;
+  private boolean l = true;
+  private ITKDHippyEventDispatcher m = (ITKDHippyEventDispatcher)new TKDHippyEventDispatcher();
+  @Nullable
+  private HippyCommentPageListener n;
+  private final TKDCommentFragment.commentEventListener.1 o = new TKDCommentFragment.commentEventListener.1(this);
   
   @JvmStatic
   @NotNull
   public static final TKDCommentFragment a(@Nullable String paramString, @Nullable SerializableMap paramSerializableMap, boolean paramBoolean)
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianBizCommentTKDCommentFragment$Companion.a(paramString, paramSerializableMap, paramBoolean);
-  }
-  
-  public final int a()
-  {
-    return this.c;
-  }
-  
-  @Nullable
-  public final FlingExitLayout a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentFlingExitLayout;
+    return a.a(paramString, paramSerializableMap, paramBoolean);
   }
   
   @Nullable
   public final AbsBaseArticleInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  }
-  
-  @NotNull
-  public final HippyMap a()
-  {
-    return getPropsMap();
+    return this.d;
   }
   
   @Nullable
@@ -103,64 +82,86 @@ public final class TKDCommentFragment
     return (HippyListView)TKDTuWenCommentUtil.rFindView((View)paramViewGroup, HippyListView.class);
   }
   
-  public final void a()
-  {
-    FlingExitLayout localFlingExitLayout = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentFlingExitLayout;
-    if (localFlingExitLayout != null) {
-      localFlingExitLayout.setRecyclerView((RecyclerView)a((ViewGroup)localFlingExitLayout), this.jdField_b_of_type_Int);
-    }
-  }
-  
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public final void a(@Nullable FlingExitLayout paramFlingExitLayout)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentFlingExitLayout = paramFlingExitLayout;
+    this.f = paramFlingExitLayout;
   }
   
   public final void a(@Nullable HippyCommentPageListener paramHippyCommentPageListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentHippyCommentPageListener = paramHippyCommentPageListener;
+    this.n = paramHippyCommentPageListener;
   }
   
   public final void a(@Nullable AnchorData paramAnchorData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityAnchorData = paramAnchorData;
+    this.h = paramAnchorData;
   }
   
   public final void a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.d = paramAbsBaseArticleInfo;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.i = paramBoolean;
   }
   
-  public final boolean a()
+  @Nullable
+  public final FlingExitLayout b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher.jsCloseComment();
-    return this.jdField_b_of_type_Int == g;
-  }
-  
-  public final int b()
-  {
-    return this.d;
+    return this.f;
   }
   
   public final void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.e = paramInt;
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    this.l = paramBoolean;
+  }
+  
+  public final int c()
+  {
+    return this.j;
+  }
+  
+  public final int d()
+  {
+    return this.k;
+  }
+  
+  public final void e()
+  {
+    FlingExitLayout localFlingExitLayout = this.f;
+    if (localFlingExitLayout != null) {
+      localFlingExitLayout.setRecyclerView((RecyclerView)a((ViewGroup)localFlingExitLayout), this.e);
+    }
+  }
+  
+  @NotNull
+  public final HippyMap f()
+  {
+    return getPropsMap();
+  }
+  
+  public final boolean g()
+  {
+    this.m.jsCloseComment();
+    return this.e == t;
   }
   
   @NotNull
   public HippyActivityLifecycleDispatcher getActivityLifecycleDispatcher()
   {
-    return this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher;
+    return this.b;
   }
   
   @NotNull
@@ -172,7 +173,7 @@ public final class TKDCommentFragment
   @NotNull
   public ITKDHippyEventDispatcher getTKDHippyEventDispatcher()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher;
+    return this.m;
   }
   
   public void initAfterVisible(@Nullable Bundle paramBundle, @Nullable ViewGroup paramViewGroup)
@@ -180,7 +181,7 @@ public final class TKDCommentFragment
     Object localObject = this.mPresenter;
     if (localObject != null)
     {
-      localObject = ((IViolaFragmentPresenter)localObject).a();
+      localObject = ((IViolaFragmentPresenter)localObject).i();
       if (localObject != null) {
         ((IViolaUiDelegate)localObject).a(false);
       }
@@ -196,59 +197,59 @@ public final class TKDCommentFragment
       {
         paramBundle = ((ITKDHippyEventDispatcherOwner)paramBundle).getTKDHippyEventDispatcher();
         Intrinsics.checkExpressionValueIsNotNull(paramBundle, "(mHippyQQEngine as ITKDH…).tkdHippyEventDispatcher");
-        paramBundle.merge(this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher.clear();
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher = paramBundle;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher.register((ITKDHippyEventReceiver)this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentTKDCommentFragment$commentEventListener$1);
+        paramBundle.merge(this.m);
+        this.m.clear();
+        this.m = paramBundle;
+        this.m.register((ITKDHippyEventReceiver)this.o);
         return;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.hippy.interfaces.ITKDHippyEventDispatcherOwner");
     }
-    ReadInJoyHelper.a(jdField_a_of_type_JavaLangString, (Throwable)new IllegalStateException("initAfterVisible: not find tkdHippyEventDispatcher"));
+    ReadInJoyHelper.a(p, (Throwable)new IllegalStateException("initAfterVisible: not find tkdHippyEventDispatcher"));
   }
   
   public void onActivityCreated(@Nullable Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityCreated((Activity)getQBaseActivity(), paramBundle);
+    this.b.onActivityCreated((Activity)getQBaseActivity(), paramBundle);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, @Nullable Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityResult((Activity)getQBaseActivity(), paramInt1, paramInt2, paramIntent);
+    this.b.onActivityResult((Activity)getQBaseActivity(), paramInt1, paramInt2, paramIntent);
   }
   
   protected void onCreateFragment(@NotNull ViewGroup paramViewGroup)
   {
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.g = paramViewGroup;
     super.onCreateFragment(paramViewGroup);
-    a();
+    e();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizHippyInterfacesDispatcherITKDHippyEventDispatcher.clear();
+    this.m.clear();
   }
   
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityDestroyed((Activity)getQBaseActivity());
+    this.b.onActivityDestroyed((Activity)getQBaseActivity());
   }
   
   public boolean onHippyPageLoad(boolean paramBoolean, @Nullable String paramString)
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = p;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[onHippyPageLoad] isSuccess:");
     localStringBuilder.append(paramBoolean);
     localStringBuilder.append(", errMsg:");
     localStringBuilder.append(paramString);
     QLog.d(str, 1, localStringBuilder.toString());
-    paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentHippyCommentPageListener;
+    paramString = this.n;
     if (paramString != null) {
       paramString.a(paramBoolean);
     }
@@ -258,32 +259,32 @@ public final class TKDCommentFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityPaused((Activity)getQBaseActivity());
+    this.b.onActivityPaused((Activity)getQBaseActivity());
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityResumed((Activity)getQBaseActivity());
+    this.b.onActivityResumed((Activity)getQBaseActivity());
   }
   
   public void onSaveInstanceState(@NotNull Bundle paramBundle)
   {
     Intrinsics.checkParameterIsNotNull(paramBundle, "outState");
     super.onSaveInstanceState(paramBundle);
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivitySaveInstanceState((Activity)getQBaseActivity(), paramBundle);
+    this.b.onActivitySaveInstanceState((Activity)getQBaseActivity(), paramBundle);
   }
   
   public void onStart()
   {
     super.onStart();
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityStarted((Activity)getQBaseActivity());
+    this.b.onActivityStarted((Activity)getQBaseActivity());
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_ComTencentHippyQqFragmentHippyActivityLifecycleDispatcher.onActivityStopped((Activity)getQBaseActivity());
+    this.b.onActivityStopped((Activity)getQBaseActivity());
   }
   
   public boolean shouldFinishActivity()
@@ -293,7 +294,7 @@ public final class TKDCommentFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.TKDCommentFragment
  * JD-Core Version:    0.7.0.1
  */

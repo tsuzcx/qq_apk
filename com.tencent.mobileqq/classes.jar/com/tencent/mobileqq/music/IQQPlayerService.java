@@ -7,16 +7,6 @@ import android.os.IInterface;
 public abstract interface IQQPlayerService
   extends IInterface
 {
-  public abstract int a();
-  
-  public abstract Intent a();
-  
-  public abstract Bundle a();
-  
-  public abstract SongInfo a();
-  
-  public abstract String a();
-  
   public abstract String a(int paramInt, String paramString);
   
   public abstract void a();
@@ -31,15 +21,7 @@ public abstract interface IQQPlayerService
   
   public abstract void a(String paramString, SongInfo[] paramArrayOfSongInfo, int paramInt);
   
-  public abstract boolean a();
-  
   public abstract boolean a(String paramString);
-  
-  public abstract SongInfo[] a();
-  
-  public abstract int b();
-  
-  public abstract SongInfo b();
   
   public abstract void b();
   
@@ -47,25 +29,43 @@ public abstract interface IQQPlayerService
   
   public abstract void b(IQQPlayerCallback paramIQQPlayerCallback);
   
-  public abstract int c();
-  
   public abstract void c();
-  
-  public abstract int d();
   
   public abstract void d();
   
-  public abstract int e();
-  
   public abstract void e();
   
-  public abstract int f();
+  public abstract boolean f();
   
   public abstract int g();
+  
+  public abstract int h();
+  
+  public abstract int i();
+  
+  public abstract int j();
+  
+  public abstract SongInfo k();
+  
+  public abstract SongInfo l();
+  
+  public abstract int m();
+  
+  public abstract int n();
+  
+  public abstract SongInfo[] o();
+  
+  public abstract Intent p();
+  
+  public abstract Bundle q();
+  
+  public abstract String r();
+  
+  public abstract int s();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.IQQPlayerService
  * JD-Core Version:    0.7.0.1
  */

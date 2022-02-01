@@ -22,11 +22,11 @@ class WorkSpaceView$1
     else
     {
       WorkSpaceView localWorkSpaceView = this.a;
-      i = ((PushBanner)localWorkSpaceView.getChildAt(localWorkSpaceView.a).getTag()).a;
+      i = ((PushBanner)localWorkSpaceView.getChildAt(localWorkSpaceView.a).getTag()).d;
       if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0))
       {
         localWorkSpaceView = this.a;
-        localWorkSpaceView.a(localWorkSpaceView.a() + 1);
+        localWorkSpaceView.a(localWorkSpaceView.getCurrentScreen() + 1);
       }
       WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
     }
@@ -35,7 +35,7 @@ class WorkSpaceView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WorkSpaceView.1
  * JD-Core Version:    0.7.0.1
  */

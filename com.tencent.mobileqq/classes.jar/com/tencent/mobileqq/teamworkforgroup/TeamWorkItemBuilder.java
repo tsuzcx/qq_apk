@@ -26,22 +26,22 @@ import java.util.List;
 public class TeamWorkItemBuilder
   extends BaseMenuCloudFileItemBuilder
 {
-  private Context b;
+  private Context j;
   
   public TeamWorkItemBuilder(AppInterface paramAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
     super(paramAppInterface, paramContext, paramBaseAdapter, paramInt);
-    this.jdField_b_of_type_AndroidContentContext = paramContext;
+    this.j = paramContext;
   }
   
   private String a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin().equals(paramString1)) {
-      return HardCodeUtil.a(2131719561);
+    if (this.f.getCurrentAccountUin().equals(paramString1)) {
+      return HardCodeUtil.a(2131917124);
     }
     String str = null;
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof AppInterface)) {
-      str = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getBuddyName(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1, true);
+    if ((this.f instanceof AppInterface)) {
+      str = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getBuddyName(this.f, paramString1, true);
     }
     if (((str == null) || (str.equals(paramString1))) && (!TextUtils.isEmpty(paramString2))) {
       return paramString2;
@@ -52,8 +52,8 @@ public class TeamWorkItemBuilder
   public List<MenuItem> a()
   {
     ArrayList localArrayList = new ArrayList();
+    localArrayList.add(d);
     localArrayList.add(c);
-    localArrayList.add(jdField_b_of_type_ComTencentMobileqqTeamworkforgroupMenuItem);
     return localArrayList;
   }
   
@@ -65,14 +65,14 @@ public class TeamWorkItemBuilder
       paramICloudFile = (GPadInfo)paramICloudFile;
       boolean bool;
       int i;
-      if (((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isInstanceGroupTeamWorkListActivity(this.jdField_b_of_type_AndroidContentContext))
+      if (((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isInstanceGroupTeamWorkListActivity(this.j))
       {
-        if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof AppInterface)) {
-          bool = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isTroopAdmin(this.jdField_a_of_type_ComTencentCommonAppAppInterface, ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getGroupUin(this.jdField_b_of_type_AndroidContentContext), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+        if ((this.f instanceof AppInterface)) {
+          bool = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).isTroopAdmin(this.f, ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getGroupUin(this.j), this.f.getCurrentAccountUin());
         } else {
           bool = false;
         }
-        if (paramICloudFile.creatorUin == this.jdField_a_of_type_ComTencentCommonAppAppInterface.getLongAccountUin()) {
+        if (paramICloudFile.creatorUin == this.f.getLongAccountUin()) {
           i = 1;
         } else {
           i = 0;
@@ -86,9 +86,9 @@ public class TeamWorkItemBuilder
       if (i != 0) {
         BaseApplication.getContext().getSharedPreferences("mobileQQ", 4).getBoolean("TIMDocLimitSettingFlag", false);
       }
-      localArrayList.add(c);
+      localArrayList.add(d);
       if ((i != 0) || (bool)) {
-        localArrayList.add(jdField_b_of_type_ComTencentMobileqqTeamworkforgroupMenuItem);
+        localArrayList.add(c);
       }
     }
     return localArrayList;
@@ -100,14 +100,14 @@ public class TeamWorkItemBuilder
     TeamWorkItemBuilder.Holder localHolder;
     if (paramView == null)
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562918, paramViewGroup, false);
+      paramViewGroup = LayoutInflater.from(this.g).inflate(2131629378, paramViewGroup, false);
       localHolder = new TeamWorkItemBuilder.Holder(this, null);
-      localHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131364731));
-      localHolder.jdField_a_of_type_ComTencentMobileqqRelySingleLineHotwordTextView = ((SingleLineHotwordTextView)paramViewGroup.findViewById(2131364733));
-      localHolder.c = ((TextView)paramViewGroup.findViewById(2131364734));
-      localHolder.b = ((TextView)paramViewGroup.findViewById(2131364750));
-      localHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131364751));
-      localHolder.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131364735);
+      localHolder.c = ((ImageView)paramViewGroup.findViewById(2131430839));
+      localHolder.d = ((SingleLineHotwordTextView)paramViewGroup.findViewById(2131430841));
+      localHolder.g = ((TextView)paramViewGroup.findViewById(2131430842));
+      localHolder.f = ((TextView)paramViewGroup.findViewById(2131430858));
+      localHolder.e = ((TextView)paramViewGroup.findViewById(2131430859));
+      localHolder.h = paramViewGroup.findViewById(2131430843);
       paramViewGroup.setTag(localHolder);
     }
     else
@@ -117,11 +117,11 @@ public class TeamWorkItemBuilder
     }
     PadInfo localPadInfo = (PadInfo)paramICloudFile;
     if (localPadInfo.type == 1) {
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850935);
+      localHolder.c.setImageResource(2130852787);
     } else if (localPadInfo.type == 3) {
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850936);
+      localHolder.c.setImageResource(2130852788);
     } else {
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850943);
+      localHolder.c.setImageResource(2130852795);
     }
     paramBoolean1 = localPadInfo instanceof GPadInfo;
     if (paramBoolean1)
@@ -130,14 +130,14 @@ public class TeamWorkItemBuilder
       if (paramView.searchKeyWordList.size() > 0)
       {
         paramView = (ArrayList)paramView.searchKeyWordList;
-        localHolder.jdField_a_of_type_ComTencentMobileqqRelySingleLineHotwordTextView.setHotwords(paramView);
+        localHolder.d.setHotwords(paramView);
       }
     }
-    localHolder.jdField_a_of_type_ComTencentMobileqqRelySingleLineHotwordTextView.setText(localPadInfo.title);
+    localHolder.d.setText(localPadInfo.title);
     paramInt2 = localPadInfo.type_list;
     if (paramInt2 != 1)
     {
-      paramView = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+      paramView = this.f.getCurrentAccountUin();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
       localStringBuilder.append(localPadInfo.creatorUin);
@@ -149,20 +149,20 @@ public class TeamWorkItemBuilder
           paramView.append("");
           paramView.append(localPadInfo.creatorUin);
           paramView = a(paramView.toString(), localPadInfo.shardNick);
-          paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719554), new Object[] { paramView });
+          paramView = String.format(this.g.getResources().getString(2131917117), new Object[] { paramView });
           break label481;
         }
         paramView = new StringBuilder();
         paramView.append("");
         paramView.append(localPadInfo.creatorUin);
         paramView = a(paramView.toString(), localPadInfo.creatorNick);
-        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719552), new Object[] { paramView });
+        paramView = String.format(this.g.getResources().getString(2131917115), new Object[] { paramView });
         break label481;
       }
     }
-    paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719512);
+    paramView = this.g.getResources().getString(2131917075);
     label481:
-    localHolder.c.setText(paramView);
+    localHolder.g.setText(paramView);
     long l;
     if (paramBoolean1) {
       l = localPadInfo.lastEditTime;
@@ -177,65 +177,65 @@ public class TeamWorkItemBuilder
         paramView.append("");
         paramView.append(localPadInfo.lastEditorUin);
         paramView = a(paramView.toString(), localPadInfo.lastEditorNick);
-        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719553), new Object[] { paramView });
+        paramView = String.format(this.g.getResources().getString(2131917116), new Object[] { paramView });
       }
       else if (l == 0L)
       {
-        paramView = HardCodeUtil.a(2131719561);
-        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719551), new Object[] { paramView });
+        paramView = HardCodeUtil.a(2131917124);
+        paramView = String.format(this.g.getResources().getString(2131917114), new Object[] { paramView });
       }
       else
       {
         paramView = localObject;
         if (l == localPadInfo.currentUserBrowseTime)
         {
-          paramView = HardCodeUtil.a(2131719561);
-          paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719555), new Object[] { paramView });
+          paramView = HardCodeUtil.a(2131917124);
+          paramView = String.format(this.g.getResources().getString(2131917118), new Object[] { paramView });
         }
       }
     }
     if (paramView != null)
     {
-      localHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localHolder.b.setText(paramView);
+      localHolder.h.setVisibility(0);
+      localHolder.f.setText(paramView);
       paramView = ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).getCloudFileTime(l);
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      localHolder.e.setText(paramView);
     }
     else
     {
-      localHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      localHolder.b.setText("");
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      localHolder.h.setVisibility(8);
+      localHolder.f.setText("");
+      localHolder.e.setText("");
     }
-    if (this.jdField_b_of_type_Int == 1)
+    if (this.i == 1)
     {
       if (localPadInfo.type_list == 4)
       {
         if (localPadInfo.pinInAllList) {
-          paramViewGroup.setBackgroundResource(2130839503);
+          paramViewGroup.setBackgroundResource(2130839694);
         } else {
-          paramViewGroup.setBackgroundResource(2130839502);
+          paramViewGroup.setBackgroundResource(2130839693);
         }
       }
       else if (localPadInfo.pinedFlag) {
-        paramViewGroup.setBackgroundResource(2130839503);
+        paramViewGroup.setBackgroundResource(2130839694);
       } else {
-        paramViewGroup.setBackgroundResource(2130839502);
+        paramViewGroup.setBackgroundResource(2130839693);
       }
     }
     else {
-      paramViewGroup.setBackgroundResource(2130839502);
+      paramViewGroup.setBackgroundResource(2130839693);
     }
     paramViewGroup.setOnClickListener(paramOnClickListener);
     paramViewGroup.setOnLongClickListener(paramOnLongClickListener);
-    localHolder.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupICloudFile = paramICloudFile;
+    localHolder.a = paramICloudFile;
     paramViewGroup.setTag(-1, Integer.valueOf(paramInt1));
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.TeamWorkItemBuilder
  * JD-Core Version:    0.7.0.1
  */

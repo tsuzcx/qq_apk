@@ -8,13 +8,13 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/aio/item/TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo;", "", "hasGetLatestInfo", "", "questId", "", "praiseNum", "", "beenPraised", "commentNum", "showTimes", "(ZLjava/lang/String;JZJJ)V", "getBeenPraised", "()Z", "setBeenPraised", "(Z)V", "getCommentNum", "()J", "setCommentNum", "(J)V", "getHasGetLatestInfo", "setHasGetLatestInfo", "getPraiseNum", "setPraiseNum", "getQuestId", "()Ljava/lang/String;", "setQuestId", "(Ljava/lang/String;)V", "getShowTimes", "setShowTimes", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "hashCode", "", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
 {
-  private long jdField_a_of_type_Long;
+  private boolean a;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  private String b;
   private long c;
+  private boolean d;
+  private long e;
+  private long f;
   
   public TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo()
   {
@@ -23,64 +23,49 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
   
   public TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo(boolean paramBoolean1, @NotNull String paramString, long paramLong1, boolean paramBoolean2, long paramLong2, long paramLong3)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.c = paramLong3;
-  }
-  
-  public final long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a = paramBoolean1;
+    this.b = paramString;
+    this.c = paramLong1;
+    this.d = paramBoolean2;
+    this.e = paramLong2;
+    this.f = paramLong3;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public final void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
-  public final long b()
+  @NotNull
+  public final String b()
   {
-    return this.jdField_b_of_type_Long;
+    return this.b;
   }
   
   public final void b(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.e = paramLong;
   }
   
   public final void b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    this.d = paramBoolean;
   }
   
   public final long c()
@@ -90,7 +75,17 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
   
   public final void c(long paramLong)
   {
-    this.c = paramLong;
+    this.f = paramLong;
+  }
+  
+  public final boolean d()
+  {
+    return this.d;
+  }
+  
+  public final long e()
+  {
+    return this.e;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -99,7 +94,7 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
       if ((paramObject instanceof LatestAnonymousInfo))
       {
         paramObject = (LatestAnonymousInfo)paramObject;
-        if ((this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) && (this.jdField_b_of_type_Boolean == paramObject.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long) && (this.c == paramObject.c)) {}
+        if ((this.a == paramObject.a) && (Intrinsics.areEqual(this.b, paramObject.b)) && (this.c == paramObject.c) && (this.d == paramObject.d) && (this.e == paramObject.e) && (this.f == paramObject.f)) {}
       }
       else
       {
@@ -107,6 +102,11 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
       }
     }
     return true;
+  }
+  
+  public final long f()
+  {
+    return this.f;
   }
   
   public int hashCode()
@@ -119,24 +119,24 @@ public final class TofuAskAnonymouslyItemBuilder$LatestAnonymousInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LatestAnonymousInfo(hasGetLatestInfo=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", questId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", praiseNum=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", beenPraised=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", commentNum=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", showTimes=");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(", beenPraised=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", commentNum=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", showTimes=");
+    localStringBuilder.append(this.f);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TofuAskAnonymouslyItemBuilder.LatestAnonymousInfo
  * JD-Core Version:    0.7.0.1
  */

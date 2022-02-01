@@ -9,25 +9,25 @@ import com.tencent.qphone.base.util.QLog;
 
 public class FaceUIController
 {
-  Context a;
   public ARTipsManager a;
-  public QQCustomDialog a;
+  public QQCustomDialog b;
+  Context c;
   
   public FaceUIController(Context paramContext, ARTipsManager paramARTipsManager)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager = paramARTipsManager;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230);
+    this.c = paramContext;
+    this.a = paramARTipsManager;
+    this.b = DialogUtil.a(this.c, 230);
     paramContext = new FaceUIController.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690116, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690115, paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131690118);
+    this.b.setPositiveButton(2131887015, paramContext);
+    this.b.setNegativeButton(2131887014, paramContext);
+    this.b.setMessage(2131887017);
   }
   
   public void a()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if (!this.b.isShowing()) {
+      this.b.show();
     }
     if (QLog.isColorLevel()) {
       QLog.d("FaceUIController", 2, "doOnClickFeedBack");
@@ -37,7 +37,7 @@ public class FaceUIController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FaceUIController
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,6 @@ import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
 import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
 import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
 import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
-import com.tencent.mobileqq.cmshow.engine.script.Script;
 import com.tencent.mobileqq.cmshow.engine.script.task.BackgroundPlayActionTask;
 import com.tencent.mobileqq.cmshow.engine.script.task.IScriptTaskBuilder;
 import com.tencent.mobileqq.cmshow.engine.script.task.ScriptTaskType;
@@ -21,42 +20,42 @@ import mqq.os.MqqHandler;
 public class SpriteBackgroundManager
   implements IRenderCallback
 {
-  private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private ICMShowEngine jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
-  private String jdField_a_of_type_JavaLangString;
-  private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private SpriteContext a;
+  private ICMShowEngine b;
+  private ConcurrentLinkedQueue c = new ConcurrentLinkedQueue();
+  private String d;
+  private volatile boolean e = false;
   
   public SpriteBackgroundManager(SpriteContext paramSpriteContext, ICMShowEngine paramICMShowEngine)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = paramICMShowEngine;
+    this.a = paramSpriteContext;
+    this.b = paramICMShowEngine;
   }
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine == null) {
+    if (this.b == null) {
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, new Object[] { "[execAction], ready to play, actionId:", Integer.valueOf(paramInt) });
     }
-    IScriptService localIScriptService = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine.a();
-    BackgroundPlayActionTask localBackgroundPlayActionTask = (BackgroundPlayActionTask)localIScriptService.a().a(ScriptTaskType.BACKGROUND_PLAY_ACTION);
-    localBackgroundPlayActionTask.a(paramInt);
-    localIScriptService.a(new Script(localBackgroundPlayActionTask.a()));
-    this.jdField_a_of_type_JavaLangString = localBackgroundPlayActionTask.f();
+    IScriptService localIScriptService = this.b.e();
+    BackgroundPlayActionTask localBackgroundPlayActionTask = (BackgroundPlayActionTask)localIScriptService.b().a(ScriptTaskType.BACKGROUND_PLAY_ACTION);
+    localBackgroundPlayActionTask.d(paramInt);
+    localIScriptService.a(localBackgroundPlayActionTask.a());
+    this.d = localBackgroundPlayActionTask.s();
   }
   
   private void b(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    Object localObject = this.b;
     if (localObject == null)
     {
       QLog.e("[cmshow][scripted]SpriteBackgroundManager", 1, "[setBackgroundSurfaceVisibility] mCMShowEngine is null");
       return;
     }
-    localObject = ((ICMShowEngine)localObject).a().a();
+    localObject = ((ICMShowEngine)localObject).c().a();
     if (localObject == null)
     {
       QLog.e("[cmshow][scripted]SpriteBackgroundManager", 1, "[setBackgroundSurfaceVisibility] cmShowView is null");
@@ -67,20 +66,20 @@ public class SpriteBackgroundManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine != null)
+    if (this.b != null)
     {
-      if (this.jdField_a_of_type_JavaLangString == null) {
+      if (this.d == null) {
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, new Object[] { "removeBackgroundAction isRunning:", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",actionName:", this.jdField_a_of_type_JavaLangString });
+        QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, new Object[] { "removeBackgroundAction isRunning:", Boolean.valueOf(this.e), ",actionName:", this.d });
       }
-      ConcurrentLinkedQueue localConcurrentLinkedQueue = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+      ConcurrentLinkedQueue localConcurrentLinkedQueue = this.c;
       if ((localConcurrentLinkedQueue != null) && (!localConcurrentLinkedQueue.isEmpty())) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+        this.c.clear();
       }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = false;
+      if (this.e) {
+        this.e = false;
       }
     }
   }
@@ -90,50 +89,41 @@ public class SpriteBackgroundManager
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onCompleteRender]");
     }
-    this.jdField_a_of_type_Boolean = false;
-    paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+    this.e = false;
+    paramString = this.c;
     if ((paramString != null) && (!paramString.isEmpty()))
     {
-      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      paramString = (Integer)this.c.poll();
       if (paramString != null) {
         a(paramString.intValue());
       }
     }
-    else if (!this.jdField_a_of_type_Boolean)
+    else if (!this.e)
     {
       b(8);
     }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onStartRender]");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    b(0);
   }
   
   public void a(List<Integer> paramList)
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null) {
+      if (this.c == null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[execBackgroundListAction], actionList:");
       localStringBuilder.append(paramList);
       QLog.i("[cmshow][scripted]SpriteBackgroundManager", 1, localStringBuilder.toString());
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.e) {
         a();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.addAll(paramList);
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+      this.c.clear();
+      this.c.addAll(paramList);
+      if (this.c.isEmpty()) {
         return;
       }
-      paramList = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      paramList = (Integer)this.c.poll();
       if (paramList != null) {
         a(paramList.intValue());
       }
@@ -142,39 +132,48 @@ public class SpriteBackgroundManager
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+    Object localObject = this.a;
     if (localObject != null)
     {
-      if (((SpriteContext)localObject).a() == null) {
+      if (((SpriteContext)localObject).l() == null) {
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onSurfaceReady]");
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.h(true);
-      localObject = (SpriteScriptManagerImpl)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c()) && (!((SpriteScriptManagerImpl)localObject).getTaskHandler().a(null))) {
+      this.a.h(true);
+      localObject = (SpriteScriptManagerImpl)this.a.l().getRuntimeService(ISpriteScriptManager.class, "all");
+      if ((this.a.c()) && (!((SpriteScriptManagerImpl)localObject).getTaskHandler().a(null))) {
         e();
       }
     }
   }
   
+  public void b_(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onStartRender]");
+    }
+    this.e = true;
+    b(0);
+  }
+  
   public void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.e) {
       return;
     }
-    ICMShowEngine localICMShowEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    ICMShowEngine localICMShowEngine = this.b;
     if (localICMShowEngine != null) {
-      localICMShowEngine.b();
+      localICMShowEngine.l();
     }
   }
   
   public void d()
   {
-    ICMShowEngine localICMShowEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    ICMShowEngine localICMShowEngine = this.b;
     if (localICMShowEngine != null) {
-      localICMShowEngine.a();
+      localICMShowEngine.k();
     }
   }
   
@@ -186,16 +185,16 @@ public class SpriteBackgroundManager
   
   public void f()
   {
-    ConcurrentLinkedQueue localConcurrentLinkedQueue = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+    ConcurrentLinkedQueue localConcurrentLinkedQueue = this.c;
     if (localConcurrentLinkedQueue != null) {
       localConcurrentLinkedQueue.clear();
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteBackgroundManager
  * JD-Core Version:    0.7.0.1
  */

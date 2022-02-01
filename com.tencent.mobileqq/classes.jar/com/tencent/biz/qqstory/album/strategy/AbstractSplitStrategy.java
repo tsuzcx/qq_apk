@@ -11,20 +11,11 @@ import java.util.List;
 public abstract class AbstractSplitStrategy<Config extends BaseSplitConfig>
 {
   protected StoryAlbum a;
-  private Config a;
+  private Config b;
   
   public Config a()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStrategyBaseSplitConfig;
-  }
-  
-  protected List<StoryAlbum.PicInfo> a()
-  {
-    StoryAlbum localStoryAlbum = this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum;
-    if (localStoryAlbum != null) {
-      return localStoryAlbum.a();
-    }
-    return null;
+    return this.b;
   }
   
   protected abstract List<StoryAlbum> a(@NonNull List<StoryAlbum.PicInfo> paramList);
@@ -32,23 +23,32 @@ public abstract class AbstractSplitStrategy<Config extends BaseSplitConfig>
   public void a(StoryAlbum paramStoryAlbum)
   {
     boolean bool;
-    if (paramStoryAlbum.b() > 0) {
+    if (paramStoryAlbum.c() > 0) {
       bool = true;
     } else {
       bool = false;
     }
     AssertUtils.assertTrue(bool);
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStoryAlbum = paramStoryAlbum;
+    this.a = paramStoryAlbum;
   }
   
   public void a(Config paramConfig)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryAlbumModelStrategyBaseSplitConfig = paramConfig;
+    this.b = paramConfig;
   }
   
-  public List<StoryAlbum> b()
+  protected List<StoryAlbum.PicInfo> b()
   {
-    List localList = a();
+    StoryAlbum localStoryAlbum = this.a;
+    if (localStoryAlbum != null) {
+      return localStoryAlbum.a();
+    }
+    return null;
+  }
+  
+  public List<StoryAlbum> c()
+  {
+    List localList = b();
     if ((localList != null) && (localList.size() != 0))
     {
       if ((a() != null) && (localList.size() < a().b))
@@ -56,7 +56,7 @@ public abstract class AbstractSplitStrategy<Config extends BaseSplitConfig>
         SLog.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
         return null;
       }
-      return a(a());
+      return a(b());
     }
     SLog.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
     return null;
@@ -64,7 +64,7 @@ public abstract class AbstractSplitStrategy<Config extends BaseSplitConfig>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.AbstractSplitStrategy
  * JD-Core Version:    0.7.0.1
  */

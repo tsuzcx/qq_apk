@@ -11,15 +11,15 @@ final class PTSGeneralRequestModule$handleReceivePtsData$1
   
   public final void run()
   {
-    PTSComposer localPTSComposer = this.jdField_a_of_type_ComTencentPtsCorePTSComposer;
+    PTSComposer localPTSComposer = this.a;
     if (localPTSComposer != null) {
-      localPTSComposer.updateData(this.jdField_a_of_type_JavaLangString);
+      localPTSComposer.updateData(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.network.PTSGeneralRequestModule.handleReceivePtsData.1
  * JD-Core Version:    0.7.0.1
  */

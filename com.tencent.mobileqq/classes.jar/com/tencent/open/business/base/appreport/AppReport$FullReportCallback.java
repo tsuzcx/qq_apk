@@ -12,8 +12,8 @@ public class AppReport$FullReportCallback
   implements HttpCgiAsyncTask.Callback
 {
   protected Context a;
-  protected WebView a;
-  protected String a;
+  protected String b;
+  protected WebView c;
   
   public void a(Exception paramException)
   {
@@ -21,8 +21,8 @@ public class AppReport$FullReportCallback
     localStringBuilder.append("<AppReport> FullReportCallback onException >>> ");
     localStringBuilder.append(paramException.toString());
     LogUtility.b("AppReport", localStringBuilder.toString());
-    AppReport.b(this.jdField_a_of_type_AndroidContentContext);
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+    AppReport.b(this.a);
+    if ((this.b != null) && (this.c != null))
     {
       LogUtility.c("AppReport", "<AppReport> onException get app update list after full report");
       paramException = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
@@ -31,9 +31,9 @@ public class AppReport$FullReportCallback
       } else {
         paramException = "";
       }
-      AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramException);
+      AppUpdate.a(this.a, this.c, this.b, false, paramException);
     }
-    AppReport.a = false;
+    AppReport.b = false;
   }
   
   public void a(JSONObject paramJSONObject)
@@ -48,11 +48,11 @@ public class AppReport$FullReportCallback
     LogUtility.b("AppReport", paramJSONObject.toString());
     int i = localJSONObject.optInt("code", -1);
     if (i == 0) {
-      AppReport.a(this.jdField_a_of_type_AndroidContentContext);
+      AppReport.a(this.a);
     } else {
-      AppReport.b(this.jdField_a_of_type_AndroidContentContext);
+      AppReport.b(this.a);
     }
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+    if ((this.b != null) && (this.c != null))
     {
       LogUtility.c("AppReport", "<AppReport> onResult get app update list after full report");
       paramJSONObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
@@ -62,17 +62,17 @@ public class AppReport$FullReportCallback
         paramJSONObject = "";
       }
       if (i == 0) {
-        AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, true, paramJSONObject);
+        AppUpdate.a(this.a, this.c, this.b, true, paramJSONObject);
       } else {
-        AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramJSONObject);
+        AppUpdate.a(this.a, this.c, this.b, false, paramJSONObject);
       }
     }
-    AppReport.a = false;
+    AppReport.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppReport.FullReportCallback
  * JD-Core Version:    0.7.0.1
  */

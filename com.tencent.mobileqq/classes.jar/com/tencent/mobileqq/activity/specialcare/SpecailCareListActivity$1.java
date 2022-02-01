@@ -18,30 +18,30 @@ class SpecailCareListActivity$1
     {
     default: 
     case 2002: 
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.a.i == null)
       {
         paramMessage = this.a;
-        paramMessage.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramMessage, paramMessage.getTitleBarHeight());
+        paramMessage.i = new QQProgressDialog(paramMessage, paramMessage.getTitleBarHeight());
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131699313);
-      if ((!this.a.isFinishing()) && (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      this.a.i.c(2131897330);
+      if ((!this.a.isFinishing()) && (!this.a.i.isShowing()))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.a.i.show();
         return;
       }
       break;
     case 2001: 
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      this.a.h.springBackOverScrollHeaderView();
       return;
     case 2000: 
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      QQToast.a(BaseApplication.getContext(), 1, 2131694424, 0).b(this.a.getTitleBarHeight());
+      this.a.h.springBackOverScrollHeaderView();
+      QQToast.makeText(BaseApplication.getContext(), 1, 2131892104, 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.1
  * JD-Core Version:    0.7.0.1
  */

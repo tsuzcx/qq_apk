@@ -14,7 +14,7 @@ class AEGifMaterialManager$2
     {
       synchronized (AEGifMaterialManager.a(this.this$0))
       {
-        List localList = AEGifMaterialManager.a(this.this$0);
+        List localList = AEGifMaterialManager.b(this.this$0);
         if (!CollectionUtils.isEmpty(localList)) {
           AEGifMaterialManager.a(this.this$0, localList);
         }
@@ -32,7 +32,7 @@ class AEGifMaterialManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEGifMaterialManager.2
  * JD-Core Version:    0.7.0.1
  */

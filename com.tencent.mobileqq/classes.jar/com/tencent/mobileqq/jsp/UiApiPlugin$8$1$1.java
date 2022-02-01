@@ -19,11 +19,11 @@ class UiApiPlugin$8$1$1
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.a.optString("briefMsg");
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.a.optString("appName");
-    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.a.optString("iconUrl");
-    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.a.optString("actionUrl");
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    String str1 = this.b.a.a.optString("briefMsg");
+    String str2 = this.b.a.a.optString("appName");
+    String str3 = this.b.a.a.optString("iconUrl");
+    String str4 = this.b.a.a.optString("actionUrl");
+    if (this.a != null)
     {
       Object localObject1 = new File(BaseApplicationImpl.getApplication().getCacheDir(), "ShareScreenShots");
       Object localObject2 = new StringBuilder();
@@ -31,8 +31,8 @@ class UiApiPlugin$8$1$1
       ((StringBuilder)localObject2).append(System.currentTimeMillis());
       ((StringBuilder)localObject2).append(".jpg");
       localObject2 = ((StringBuilder)localObject2).toString();
-      localObject1 = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
-      localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.this$0.mRuntime.a(), ForwardRecentActivity.class);
+      localObject1 = ScreenShotUtil.a(this.a, (File)localObject1, (String)localObject2);
+      localObject2 = new Intent(this.b.a.this$0.mRuntime.d(), ForwardRecentActivity.class);
       ((Intent)localObject2).putExtra("key_flag_from_plugin", true);
       ((Intent)localObject2).putExtra("image_url", (String)localObject1);
       ((Intent)localObject2).putExtra("forward_type", -3);
@@ -47,13 +47,13 @@ class UiApiPlugin$8$1$1
       ((Intent)localObject2).putExtra("struct_share_key_source_action", "web");
       ((Intent)localObject2).putExtra("struct_share_key_source_url", str4);
       ((Intent)localObject2).putExtra("stuctmsg_bytes", StructMsgFactory.a(((Intent)localObject2).getExtras()).getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.this$0.startActivityForResult((Intent)localObject2, (byte)15);
+      this.b.a.this$0.startActivityForResult((Intent)localObject2, (byte)15);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1
  * JD-Core Version:    0.7.0.1
  */

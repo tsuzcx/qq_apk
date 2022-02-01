@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<androidx.core.widget.NestedScrollView android:id="@id/b9w" android:background="@drawable/bhg" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/nev" android:background="#fff1f3f8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mobileqq.qqgamepub.view.GamePubNav android:gravity="center_vertical" android:id="@id/rlCommenTitle" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="30.0dip" />
-    </LinearLayout>
-    <FrameLayout android:background="#fff7f7f7" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/n6t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/nrw" android:background="@drawable/bhg" android:paddingBottom="@dimen/n2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</androidx.core.widget.NestedScrollView>

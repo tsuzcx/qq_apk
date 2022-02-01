@@ -173,7 +173,7 @@ public class MsgNotification
     if (!TextUtils.isEmpty(paramString)) {
       str = paramString;
     } else {
-      str = BaseApplication.getContext().getString(2131719438);
+      str = BaseApplication.getContext().getString(2131916998);
     }
     if (paramInt == 0) {
       return str;
@@ -184,15 +184,15 @@ public class MsgNotification
     }
     if (paramInt == 3000532)
     {
-      paramString = BaseApplication.getContext().getString(2131720123);
+      paramString = BaseApplication.getContext().getString(2131917749);
     }
     else if (paramInt == 3000533)
     {
-      paramString = BaseApplication.getContext().getString(2131720124);
+      paramString = BaseApplication.getContext().getString(2131917750);
     }
     else if (paramInt == 3000534)
     {
-      paramString = BaseApplication.getContext().getString(2131720125);
+      paramString = BaseApplication.getContext().getString(2131917751);
     }
     else
     {
@@ -200,14 +200,14 @@ public class MsgNotification
       if (paramInt != 3000535) {
         return paramString;
       }
-      paramString = BaseApplication.getContext().getString(2131720126);
+      paramString = BaseApplication.getContext().getString(2131917752);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("(");
-    localStringBuilder.append(BaseApplication.getContext().getString(2131693270));
+    localStringBuilder.append(BaseApplication.getContext().getString(2131890818));
     localStringBuilder.append(i);
-    localStringBuilder.append(BaseApplication.getContext().getString(2131719257));
+    localStringBuilder.append(BaseApplication.getContext().getString(2131916809));
     localStringBuilder.append(paramString);
     localStringBuilder.append(")");
     paramString = localStringBuilder.toString();
@@ -387,7 +387,7 @@ public class MsgNotification
     PendingIntent localPendingIntent = PendingIntent.getActivity(paramContext, 245, paramString3, 134217728);
     try
     {
-      localObject = BitmapFactory.decodeResource(paramContext.getResources(), 2130848771);
+      localObject = BitmapFactory.decodeResource(paramContext.getResources(), 2130850438);
     }
     catch (OutOfMemoryError paramString3)
     {
@@ -425,7 +425,7 @@ public class MsgNotification
       {
         try
         {
-          paramString3 = BitmapFactory.decodeResource(paramContext.getResources(), 2130848644);
+          paramString3 = BitmapFactory.decodeResource(paramContext.getResources(), 2130850307);
           localObject = paramString3;
           QLog.e("MsgNotification", 1, "use small icon ,exp:", localThrowable);
         }
@@ -444,11 +444,11 @@ public class MsgNotification
       }
     }
     if (!MobileIssueSettings.e) {
-      paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForMz(localPendingIntent, paramContext, paramString3, paramString1, paramString2, 2130847752);
-    } else if ("oppo".equalsIgnoreCase(DeviceInfoUtil.k())) {
-      paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForOppo(localPendingIntent, paramContext, paramString3, paramString1, paramString2, 2130847752);
+      paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForMz(localPendingIntent, paramContext, paramString3, paramString1, paramString2, 2130849413);
+    } else if ("oppo".equalsIgnoreCase(DeviceInfoUtil.w())) {
+      paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForOppo(localPendingIntent, paramContext, paramString3, paramString1, paramString2, 2130849413);
     } else {
-      paramString1 = QZoneNotificationAdapter.getInstance().buildNotification(localPendingIntent, paramContext, paramString3, paramString1, paramString2, 2130847752);
+      paramString1 = QZoneNotificationAdapter.getInstance().buildNotification(localPendingIntent, paramContext, paramString3, paramString1, paramString2, 2130849413);
     }
     BadgeUtils.a(paramContext, 0, paramString1);
     try
@@ -565,12 +565,12 @@ public class MsgNotification
                     try
                     {
                       localObject4 = new QzNotificationStruct((String)localObject4, paramString2, paramBoolean1, paramInt2, paramString5, paramString6);
-                      if (CliNotifyPush.a == null) {
-                        CliNotifyPush.a = Collections.synchronizedList(new ArrayList());
+                      if (CliNotifyPush.b == null) {
+                        CliNotifyPush.b = Collections.synchronizedList(new ArrayList());
                       }
                       if (paramBoolean2)
                       {
-                        CliNotifyPush.a.add(localObject4);
+                        CliNotifyPush.b.add(localObject4);
                         try
                         {
                           LpReportInfo_dc01245.report(Long.parseLong(((Uri)localObject2).getQueryParameter("uin")), Long.parseLong(BaseApplicationImpl.getApplication().getRuntime().getAccount()), 11, 0);
@@ -618,7 +618,7 @@ public class MsgNotification
       localObject1 = localObject3;
       if (localObject4 != null)
       {
-        paramInt1 = ((QZoneManagerImp)localObject4).a(1);
+        paramInt1 = ((QZoneManagerImp)localObject4).d(1);
         ((QZoneManagerImp)localObject4).a(1, paramInt1);
         if (paramInt1 <= 0)
         {
@@ -657,22 +657,22 @@ public class MsgNotification
           if ((paramInt2 != 2) && (paramInt2 != 8) && (paramInt2 != 4))
           {
             paramString1 = new StringBuilder();
-            paramString1.append(BaseApplication.getContext().getString(2131718403));
+            paramString1.append(BaseApplication.getContext().getString(2131915895));
             paramString1.append("(");
-            paramString1.append(BaseApplication.getContext().getString(2131693270));
+            paramString1.append(BaseApplication.getContext().getString(2131890818));
             paramString1.append(paramInt1);
-            paramString1.append(BaseApplication.getContext().getString(2131719257));
-            paramString1.append(BaseApplication.getContext().getString(2131720122));
+            paramString1.append(BaseApplication.getContext().getString(2131916809));
+            paramString1.append(BaseApplication.getContext().getString(2131917748));
             paramString1.append(")");
             paramString1 = paramString1.toString();
           }
           else
           {
-            paramString1 = BaseApplication.getContext().getString(2131718403);
+            paramString1 = BaseApplication.getContext().getString(2131915895);
           }
         }
         else {
-          paramString1 = BaseApplication.getContext().getString(2131718403);
+          paramString1 = BaseApplication.getContext().getString(2131915895);
         }
         localObject1 = paramString1;
       }
@@ -687,22 +687,22 @@ public class MsgNotification
       }
       for (;;)
       {
-        paramInt3 = 2130847752;
+        paramInt3 = 2130849413;
         break;
         if (paramInt2 == 366)
         {
-          localObject3 = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130844099);
+          localObject3 = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130845121);
           NewMsgNotificationManager localNewMsgNotificationManager = NewMsgNotificationManager.a(paramQQAppInterface);
           paramString1 = (String)localObject3;
           if (localNewMsgNotificationManager.a(paramString3, paramString4)) {
             paramString1 = localNewMsgNotificationManager.a(paramString3, paramString4, (Bitmap)localObject3);
           }
-          paramInt3 = 2130841471;
+          paramInt3 = 2130842313;
           break;
         }
         try
         {
-          paramString3 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848771);
+          paramString3 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130850438);
         }
         catch (OutOfMemoryError paramString1)
         {
@@ -740,7 +740,7 @@ public class MsgNotification
           {
             try
             {
-              paramString1 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130848644);
+              paramString1 = BitmapFactory.decodeResource(paramQQAppInterface.getApp().getResources(), 2130850307);
               paramString3 = paramString1;
               QLog.e("MsgNotification", 1, "use small icon ,exp:", paramString4);
             }
@@ -765,7 +765,7 @@ public class MsgNotification
       for (;;)
       {
         break;
-        if ("oppo".equalsIgnoreCase(DeviceInfoUtil.k())) {
+        if ("oppo".equalsIgnoreCase(DeviceInfoUtil.w())) {
           paramString1 = QZoneNotificationAdapter.getInstance().newNotificationForOppo((PendingIntent)localObject4, paramQQAppInterface.getApp(), paramString1, (String)localObject1, paramString2, paramInt3);
         } else {
           paramString1 = QZoneNotificationAdapter.getInstance().buildNotification((PendingIntent)localObject4, paramQQAppInterface.getApp(), paramString1, (String)localObject1, paramString2, paramInt3);
@@ -805,8 +805,8 @@ public class MsgNotification
       if (paramQQAppInterface != null)
       {
         QZoneHelper.preloadQzone(paramQQAppInterface, getClass().getSimpleName());
-        if (GuardManager.a != null) {
-          GuardManager.a.b(0, null);
+        if (GuardManager.sInstance != null) {
+          GuardManager.sInstance.onEvent(0, null);
         }
       }
       if (paramBoolean2) {
@@ -831,7 +831,7 @@ public class MsgNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.push.MsgNotification
  * JD-Core Version:    0.7.0.1
  */

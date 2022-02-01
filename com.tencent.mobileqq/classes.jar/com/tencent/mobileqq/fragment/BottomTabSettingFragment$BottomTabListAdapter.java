@@ -17,7 +17,7 @@ public class BottomTabSettingFragment$BottomTabListAdapter
   
   private View.OnClickListener a(int paramInt)
   {
-    return new BottomTabSettingFragment.BottomTabListAdapter.1(this, paramInt);
+    return new -..Lambda.BottomTabSettingFragment.BottomTabListAdapter._Jevyf8tWXYWKrUodELUX-dDDDU(this, paramInt);
   }
   
   public int getCount()
@@ -37,9 +37,9 @@ public class BottomTabSettingFragment$BottomTabListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getBaseActivity());
-    if (paramInt == BottomTabSettingFragment.a(this.a)) {
-      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130844706), ScreenUtil.dip2px(16.0F), ScreenUtil.dip2px(16.0F));
+    FormSimpleItem localFormSimpleItem = new FormSimpleItem(this.a.getQBaseActivity());
+    if (paramInt == BottomTabSettingFragment.b(this.a)) {
+      localFormSimpleItem.setRightIcon(this.a.getResources().getDrawable(2130846138), ScreenUtil.dip2px(16.0F), ScreenUtil.dip2px(16.0F));
     } else {
       localFormSimpleItem.setRightIcon(null);
     }
@@ -54,7 +54,7 @@ public class BottomTabSettingFragment$BottomTabListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.BottomTabSettingFragment.BottomTabListAdapter
  * JD-Core Version:    0.7.0.1
  */

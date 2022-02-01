@@ -11,7 +11,7 @@ public class CouponActivity
   extends QQBrowserActivity
 {
   static String a = "https://web.p.qq.com/qqmpmobile/coupon/shop.html?_bid=108";
-  public int a;
+  public int b;
   
   public CouponActivity()
   {
@@ -29,7 +29,7 @@ public class CouponActivity
   
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.a = getIntent().getIntExtra("from", 10);
+    this.b = getIntent().getIntExtra("from", 10);
     return super.doOnCreate(paramBundle);
   }
   
@@ -42,7 +42,7 @@ public class CouponActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.coupon.CouponActivity
  * JD-Core Version:    0.7.0.1
  */

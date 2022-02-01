@@ -16,44 +16,39 @@ import java.lang.ref.WeakReference;
 class PromotionEntry$UpdateOperateBtnStatusRunnable
   implements Runnable
 {
-  ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator = null;
-  PromotionConfigInfo.PromotionItem jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem = null;
-  LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-  OnCompositionLoadedListener jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = null;
-  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  public boolean a;
-  
-  private PromotionEntry$UpdateOperateBtnStatusRunnable()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public boolean a = false;
+  ObjectAnimator b = null;
+  LottieDrawable c = null;
+  PromotionConfigInfo.PromotionItem d = null;
+  OnCompositionLoadedListener e = null;
+  private WeakReference<ImageView> f = new WeakReference(null);
   
   public void a()
   {
-    Object localObject = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (ImageView)this.f.get();
     if (localObject != null) {
       ((ImageView)localObject).setImageDrawable(null);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    localObject = this.c;
     if (localObject != null)
     {
       ((LottieDrawable)localObject).cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
+      this.c = null;
     }
   }
   
   public void a(ImageView paramImageView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+    if (this.b != null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$PromotionItem;
+    Object localObject = this.d;
     if (localObject == null)
     {
       QLog.w(PromotionEntry.a, 1, "createShowOperateBtnAnim, promotionItem为空");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
+    if (this.c == null)
     {
       localObject = PromotionPath.a((PromotionConfigInfo.PromotionItem)localObject);
       a((String)localObject);
@@ -63,7 +58,7 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable
         localStringBuilder.append((String)localObject);
         localStringBuilder.append("entry.json");
         localObject = new FileInputStream(localStringBuilder.toString());
-        LottieComposition.Factory.fromInputStream(paramImageView.getContext(), (InputStream)localObject, this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener);
+        LottieComposition.Factory.fromInputStream(paramImageView.getContext(), (InputStream)localObject, this.e);
         return;
       }
       catch (Exception paramImageView)
@@ -75,54 +70,54 @@ class PromotionEntry$UpdateOperateBtnStatusRunnable
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyOnCompositionLoadedListener = new PromotionEntry.UpdateOperateBtnStatusRunnable.1(this, paramString);
+    this.e = new PromotionEntry.UpdateOperateBtnStatusRunnable.1(this, paramString);
   }
   
   public void run()
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ImageView localImageView = (ImageView)this.f.get();
     if (localImageView == null) {
       return;
     }
     Object localObject;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       if (localImageView.getVisibility() != 0)
       {
         localImageView.setVisibility(0);
         a(localImageView, 0);
-        localObject = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+        localObject = this.b;
         if (localObject != null) {
           ((ObjectAnimator)localObject).start();
         }
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+        localObject = this.c;
         if (localObject != null)
         {
           localImageView.setImageDrawable((Drawable)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setRepeatCount(5);
-          this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+          this.c.setRepeatCount(5);
+          this.c.playAnimation();
         }
       }
     }
     else
     {
       localImageView.setVisibility(8);
-      localObject = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+      localObject = this.b;
       if (localObject != null) {
         ((ObjectAnimator)localObject).end();
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+      localObject = this.c;
       if (localObject != null)
       {
         localImageView.setImageDrawable((Drawable)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.endAnimation();
+        this.c.endAnimation();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.activity.PromotionEntry.UpdateOperateBtnStatusRunnable
  * JD-Core Version:    0.7.0.1
  */

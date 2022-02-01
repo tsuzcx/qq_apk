@@ -17,14 +17,14 @@ class AIOMusicSkin$3
       paramString2.append(paramString1);
       QLog.i("AIOMusicSkin", 2, paramString2.toString());
     }
-    this.a.a();
+    this.a.d();
   }
   
   public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.3
  * JD-Core Version:    0.7.0.1
  */

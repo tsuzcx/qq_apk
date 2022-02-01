@@ -136,19 +136,19 @@ public class RIJCoinInfoModule
     paramReqBody.meta.set((MessageMicro)localObject);
     localObject = new oidb_cmd0xed4.SecurityInfo();
     ((oidb_cmd0xed4.SecurityInfo)localObject).nickname.set(this.mApp.getCurrentNickname());
-    if (!TextUtils.isEmpty(DeviceInfoUtil.b())) {
-      ((oidb_cmd0xed4.SecurityInfo)localObject).device_id.set(DeviceInfoUtil.b());
+    if (!TextUtils.isEmpty(DeviceInfoUtil.c())) {
+      ((oidb_cmd0xed4.SecurityInfo)localObject).device_id.set(DeviceInfoUtil.c());
     }
     String str = IPUtils.a(BaseApplicationImpl.getContext());
     if (!TextUtils.isEmpty(str)) {
       ((oidb_cmd0xed4.SecurityInfo)localObject).ip.set(str);
     }
-    str = DeviceInfoUtil.a();
+    str = DeviceInfoUtil.b();
     if (!TextUtils.isEmpty(str)) {
       ((oidb_cmd0xed4.SecurityInfo)localObject).terminal_id.set(str);
     }
     ((oidb_cmd0xed4.SecurityInfo)localObject).os_type.set(2);
-    ((oidb_cmd0xed4.SecurityInfo)localObject).app_version.set("8.7.0");
+    ((oidb_cmd0xed4.SecurityInfo)localObject).app_version.set("8.8.17");
     paramReqBody.security_info.set((MessageMicro)localObject);
   }
   
@@ -188,12 +188,12 @@ public class RIJCoinInfoModule
     try
     {
       localObject1 = new oidb_cmd0xed4.ReqBody();
-      Object localObject2 = a(paramRequest0xed4Params.jdField_a_of_type_Int);
+      Object localObject2 = a(paramRequest0xed4Params.a);
       if (localObject2 == null)
       {
         paramBundle = new StringBuilder();
         paramBundle.append("request0xed4CoinInfo cant find requestHandler, requestType=");
-        paramBundle.append(paramRequest0xed4Params.jdField_a_of_type_Int);
+        paramBundle.append(paramRequest0xed4Params.a);
         QLog.e("RIJCoinInfoModule", 1, paramBundle.toString());
         return;
       }
@@ -204,15 +204,15 @@ public class RIJCoinInfoModule
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("request0xed4CoinInfo requestType:");
-        ((StringBuilder)localObject2).append(paramRequest0xed4Params.jdField_a_of_type_Int);
+        ((StringBuilder)localObject2).append(paramRequest0xed4Params.a);
         ((StringBuilder)localObject2).append(", toByteArray size=");
         ((StringBuilder)localObject2).append(localObject1.length);
         QLog.d("RIJCoinInfoModule", 2, ((StringBuilder)localObject2).toString());
       }
       localObject1 = ReadInJoyOidbHelper.a("OidbSvc.0xed4", 3796, 1, (byte[])localObject1);
-      ((ToServiceMsg)localObject1).getAttributes().put("RequestType", Integer.valueOf(paramRequest0xed4Params.jdField_a_of_type_Int));
-      if (!TextUtils.isEmpty(paramRequest0xed4Params.jdField_a_of_type_JavaLangString)) {
-        ((ToServiceMsg)localObject1).getAttributes().put("RequestRowkey", paramRequest0xed4Params.jdField_a_of_type_JavaLangString);
+      ((ToServiceMsg)localObject1).getAttributes().put("RequestType", Integer.valueOf(paramRequest0xed4Params.a));
+      if (!TextUtils.isEmpty(paramRequest0xed4Params.b)) {
+        ((ToServiceMsg)localObject1).getAttributes().put("RequestRowkey", paramRequest0xed4Params.b);
       }
       a(paramBundle, (ToServiceMsg)localObject1);
       sendPbReq((ToServiceMsg)localObject1);
@@ -225,9 +225,9 @@ public class RIJCoinInfoModule
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("request0xed4CoinInfo failed. type=");
-        ((StringBuilder)localObject1).append(paramRequest0xed4Params.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(paramRequest0xed4Params.a);
         ((StringBuilder)localObject1).append(", rowkey=");
-        ((StringBuilder)localObject1).append(paramRequest0xed4Params.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(paramRequest0xed4Params.b);
         QLog.e("RIJCoinInfoModule", 2, ((StringBuilder)localObject1).toString(), paramBundle);
       }
     }
@@ -244,7 +244,7 @@ public class RIJCoinInfoModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.reward.RIJCoinInfoModule
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.avatar.api.impl;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.mobileqq.app.AppConstants;
@@ -31,13 +32,32 @@ public class QQAvatarDataServiceImpl
   private static final String TAG = "QQAvatarDataServiceImpl";
   private AppRuntime mApp;
   private MemoryCache<Bitmap> mAvatarCache;
-  private MemoryCache<Setting> mAvatarSettingCache;
+  private volatile MemoryCache<Setting> mAvatarSettingCache;
   private EntityManager mEntityManager;
+  private volatile boolean mIsSettingDBInitFinish = false;
+  private final Object mSettingCacheLock = new Object();
+  private final Object mSettingDBInitLock = new Object();
   
   private void checkAndCreateFaceSettingCache()
   {
-    if (this.mAvatarSettingCache == null) {
-      this.mAvatarSettingCache = new LruAvatarSettingCache();
+    if (this.mAvatarSettingCache == null)
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(Thread.currentThread().getName());
+      ((StringBuilder)???).append("尝试进行 mAvatarSettingCache new 的初始化，stack = ");
+      QLog.i("Q.qqhead.", 1, ((StringBuilder)???).toString(), new RuntimeException("new mAvatarSettingCache"));
+      synchronized (this.mSettingCacheLock)
+      {
+        if (this.mAvatarSettingCache == null)
+        {
+          this.mAvatarSettingCache = new LruAvatarSettingCache();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(Thread.currentThread().getName());
+          localStringBuilder.append("完成了 mAvatarSettingCache new 的过程，stack = ");
+          QLog.i("Q.qqhead.", 1, localStringBuilder.toString(), new RuntimeException("new mAvatarSettingCache"));
+        }
+        return;
+      }
     }
   }
   
@@ -236,15 +256,15 @@ public class QQAvatarDataServiceImpl
     }
     if (paramString != null)
     {
-      localObject = MD5.a(paramString);
+      localObject = MD5.b(paramString);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(paramString);
-      localObject = MD5.a(localStringBuilder.toString());
+      localObject = MD5.b(localStringBuilder.toString());
       localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localStringBuilder.append(paramString);
-      paramSetting.append(MD5.a(localStringBuilder.toString()));
+      paramSetting.append(MD5.b(localStringBuilder.toString()));
     }
     paramSetting.append(".jpg_");
     return paramSetting.toString();
@@ -383,24 +403,23 @@ public class QQAvatarDataServiceImpl
   
   public Setting getFaceSetting(String paramString)
   {
-    MemoryCache localMemoryCache = this.mAvatarSettingCache;
-    if (localMemoryCache == null) {
+    if (this.mAvatarSettingCache == null) {
       return null;
     }
-    return (Setting)localMemoryCache.a(paramString);
+    return (Setting)this.mAvatarSettingCache.a(paramString);
   }
   
   public String getOldCustomFaceFilePath(int paramInt, String paramString)
   {
-    Object localObject = MD5.a(paramString);
+    Object localObject = MD5.b(paramString);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(paramString);
-    localObject = MD5.a(localStringBuilder.toString());
+    localObject = MD5.b(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(paramString);
-    paramString = MD5.a(localStringBuilder.toString());
+    paramString = MD5.b(localStringBuilder.toString());
     localObject = new StringBuilder(256);
     if (paramInt == 4)
     {
@@ -426,17 +445,12 @@ public class QQAvatarDataServiceImpl
   public Pair<Boolean, Setting> getQQHeadSetting(int paramInt1, String paramString, int paramInt2)
   {
     String str = AvatarUtil.a(paramInt1, paramString, paramInt2);
-    if (!TextUtils.isEmpty(str))
-    {
-      localObject1 = this.mAvatarSettingCache;
-      if (localObject1 != null)
-      {
-        localObject1 = (Setting)((MemoryCache)localObject1).a(str);
-        break label47;
-      }
+    Object localObject1;
+    if ((!TextUtils.isEmpty(str)) && (this.mAvatarSettingCache != null)) {
+      localObject1 = (Setting)this.mAvatarSettingCache.a(str);
+    } else {
+      localObject1 = null;
     }
-    Object localObject1 = null;
-    label47:
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
@@ -502,53 +516,53 @@ public class QQAvatarDataServiceImpl
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   1: getfield 273	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   4: ifnonnull +11 -> 15
     //   7: aload_0
     //   8: aload_0
-    //   9: invokevirtual 235	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:getEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   12: putfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   9: invokevirtual 275	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:getEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   12: putfield 273	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   15: aload_0
-    //   16: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   19: ldc 76
+    //   16: getfield 273	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   19: ldc 115
     //   21: aload_1
-    //   22: invokevirtual 243	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
-    //   25: checkcast 76	com/tencent/mobileqq/data/Setting
+    //   22: invokevirtual 283	com/tencent/mobileqq/persistence/EntityManager:find	(Ljava/lang/Class;Ljava/lang/String;)Lcom/tencent/mobileqq/persistence/Entity;
+    //   25: checkcast 115	com/tencent/mobileqq/data/Setting
     //   28: astore_2
     //   29: aload_0
-    //   30: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   30: getfield 273	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   33: astore_3
     //   34: aload_2
     //   35: astore_1
     //   36: aload_3
     //   37: ifnull +33 -> 70
     //   40: aload_3
-    //   41: invokevirtual 316	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   41: invokevirtual 351	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   44: aload_2
     //   45: areturn
     //   46: astore_1
     //   47: goto +25 -> 72
     //   50: astore_1
     //   51: aload_1
-    //   52: invokevirtual 319	java/lang/Exception:printStackTrace	()V
+    //   52: invokevirtual 354	java/lang/Exception:printStackTrace	()V
     //   55: aload_0
-    //   56: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   56: getfield 273	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   59: astore_1
     //   60: aload_1
     //   61: ifnull +7 -> 68
     //   64: aload_1
-    //   65: invokevirtual 316	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   65: invokevirtual 351	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   68: aconst_null
     //   69: astore_1
     //   70: aload_1
     //   71: areturn
     //   72: aload_0
-    //   73: getfield 233	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   73: getfield 273	com/tencent/mobileqq/avatar/api/impl/QQAvatarDataServiceImpl:mEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   76: astore_2
     //   77: aload_2
     //   78: ifnull +7 -> 85
     //   81: aload_2
-    //   82: invokevirtual 316	com/tencent/mobileqq/persistence/EntityManager:close	()V
+    //   82: invokevirtual 351	com/tencent/mobileqq/persistence/EntityManager:close	()V
     //   85: aload_1
     //   86: athrow
     // Local variable table:
@@ -593,97 +607,129 @@ public class QQAvatarDataServiceImpl
   
   public void initFaceSettingCache()
   {
+    long l1 = SystemClock.currentThreadTimeMillis();
     checkAndCreateFaceSettingCache();
-    this.mAvatarSettingCache.a();
-    if (this.mEntityManager == null) {
-      this.mEntityManager = getEntityManager();
-    }
-    Object localObject1 = this.mEntityManager;
-    if (localObject1 == null) {
-      return;
-    }
-    Object localObject2 = ((EntityManager)localObject1).query(Setting.class, new Setting().getTableName(), false, null, null, null, null, "updateTimestamp desc", null);
-    int j = 0;
+    localObject1 = this.mSettingDBInitLock;
+    j = 0;
     int i2 = 0;
-    int i;
-    if (localObject2 != null)
+    try
     {
-      k = ((List)localObject2).size();
+      this.mIsSettingDBInitFinish = false;
+      this.mAvatarSettingCache.a();
+      if (this.mEntityManager == null) {
+        this.mEntityManager = getEntityManager();
+      }
+      if (this.mEntityManager == null) {
+        return;
+      }
+      localObject4 = this.mEntityManager.query(Setting.class, new Setting().getTableName(), false, null, null, null, null, "updateTimestamp desc", null);
+      if (localObject4 == null) {
+        break label546;
+      }
+      k = ((List)localObject4).size();
       i = k;
-      if (k > 0)
+      if (k <= 0) {
+        break label548;
+      }
+      localObject2 = new ArrayList();
+      m = 0;
+      j = 0;
+      i = 0;
+    }
+    finally
+    {
+      for (;;)
       {
-        localObject1 = new ArrayList();
-        m = 0;
-        j = 0;
+        Object localObject4;
+        Object localObject2;
+        Setting localSetting;
+        int n;
         int i1;
-        for (i = 0; m < k; i = i1)
+        long l2;
+        for (;;)
         {
-          Setting localSetting = (Setting)((List)localObject2).get(m);
-          n = j;
-          i1 = i;
-          if (localSetting != null)
+          throw localObject3;
+        }
+        m += 1;
+        j = n;
+        int i = i1;
+        continue;
+        m += 1;
+        continue;
+        continue;
+        i = 0;
+        int m = 0;
+        int k = i;
+        i = m;
+      }
+    }
+    if (m < k)
+    {
+      localSetting = (Setting)((List)localObject4).get(m);
+      n = j;
+      i1 = i;
+      if (localSetting != null)
+      {
+        n = j;
+        i1 = i;
+        if (!TextUtils.isEmpty(localSetting.uin)) {
+          if (j >= 4000)
           {
             n = j;
             i1 = i;
-            if (!TextUtils.isEmpty(localSetting.uin)) {
-              if (j >= 4000)
-              {
-                n = j;
-                i1 = i;
-              }
-              else
-              {
-                localSetting.url = null;
-                if (((localSetting.bSourceType == 1) || (localSetting.bUsrType == 32)) && (i <= 100))
-                {
-                  ((List)localObject1).add(localSetting);
-                  i1 = i + 1;
-                  n = j;
-                }
-                else
-                {
-                  this.mAvatarSettingCache.a(localSetting.uin, localSetting);
-                  n = j + 1;
-                  i1 = i;
-                }
-              }
-            }
           }
-          m += 1;
-          j = n;
-        }
-        int n = Math.min(100, Math.min(4000 - j, ((List)localObject1).size()));
-        if (n > 0)
-        {
-          m = i2;
-          while (m < n)
+          else
           {
-            localObject2 = (Setting)((List)localObject1).get(m);
-            if ((localObject2 != null) && (!TextUtils.isEmpty(((Setting)localObject2).uin))) {
-              this.mAvatarSettingCache.a(((Setting)localObject2).uin, localObject2);
+            localSetting.url = null;
+            if (((localSetting.bSourceType == 1) || (localSetting.bUsrType == 32)) && (i <= 100))
+            {
+              ((List)localObject2).add(localSetting);
+              i1 = i + 1;
+              n = j;
             }
-            m += 1;
+            else
+            {
+              this.mAvatarSettingCache.a(localSetting.uin, localSetting);
+              n = j + 1;
+              i1 = i;
+            }
           }
         }
-        m = i;
-        break label374;
       }
     }
     else
     {
-      i = 0;
+      n = Math.min(100, Math.min(4000 - j, ((List)localObject2).size()));
+      if (n <= 0) {
+        break label543;
+      }
+      m = i2;
+      if (m >= n) {
+        break label543;
+      }
+      localObject4 = (Setting)((List)localObject2).get(m);
+      if ((localObject4 == null) || (TextUtils.isEmpty(((Setting)localObject4).uin))) {
+        break label534;
+      }
+      this.mAvatarSettingCache.a(((Setting)localObject4).uin, localObject4);
+      break label534;
+      this.mIsSettingDBInitFinish = true;
+      l2 = SystemClock.currentThreadTimeMillis();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("initFaceSettingCache,");
+      ((StringBuilder)localObject2).append(k);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append(",");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("，耗时：");
+      ((StringBuilder)localObject2).append(l2 - l1);
+      ((StringBuilder)localObject2).append(", Thread name = ");
+      ((StringBuilder)localObject2).append(Thread.currentThread().getName());
+      ((StringBuilder)localObject2).append("，stack = ");
+      QLog.d("QQAvatarDataServiceImpl", 1, ((StringBuilder)localObject2).toString(), new RuntimeException("initFaceSettingCache"));
+      return;
     }
-    int m = 0;
-    int k = i;
-    label374:
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("initFaceSettingCache,");
-    ((StringBuilder)localObject1).append(k);
-    ((StringBuilder)localObject1).append(",");
-    ((StringBuilder)localObject1).append(j);
-    ((StringBuilder)localObject1).append(",");
-    ((StringBuilder)localObject1).append(m);
-    QLog.d("QQAvatarDataServiceImpl", 1, ((StringBuilder)localObject1).toString());
   }
   
   public boolean isFaceFileExist(int paramInt1, String paramString, int paramInt2, int paramInt3)
@@ -743,7 +789,7 @@ public class QQAvatarDataServiceImpl
       if (QLog.isColorLevel())
       {
         localBitmap = paramBitmap;
-        if (paramBitmapDecodeResult.a == 0)
+        if (paramBitmapDecodeResult.b == 0)
         {
           paramString2 = new StringBuilder();
           paramString2.append("getFaceBitmap decode shape fail, faceType=");
@@ -765,7 +811,7 @@ public class QQAvatarDataServiceImpl
   public void removeBitmapFromCache(String paramString)
   {
     checkAndInitAvatarCache();
-    this.mAvatarCache.a(paramString);
+    this.mAvatarCache.b(paramString);
   }
   
   public void removeFaceIconCache(int paramInt1, String paramString, int paramInt2)
@@ -804,18 +850,32 @@ public class QQAvatarDataServiceImpl
     }
   }
   
-  public void updateSettingTableCache(Setting paramSetting)
+  public void updateSettingTableCache(Setting arg1)
   {
-    if (paramSetting != null)
+    if (??? != null)
     {
-      paramSetting = paramSetting.clone();
-      if (paramSetting != null)
+      Object localObject1 = ???.clone();
+      if (localObject1 != null)
       {
-        paramSetting.url = null;
-        if (!TextUtils.isEmpty(paramSetting.uin))
+        ((Setting)localObject1).url = null;
+        if (!TextUtils.isEmpty(((Setting)localObject1).uin))
         {
           checkAndCreateFaceSettingCache();
-          this.mAvatarSettingCache.a(paramSetting.uin, paramSetting);
+          if (this.mIsSettingDBInitFinish)
+          {
+            this.mAvatarSettingCache.a(((Setting)localObject1).uin, localObject1);
+            return;
+          }
+          synchronized (this.mSettingDBInitLock)
+          {
+            this.mAvatarSettingCache.a(((Setting)localObject1).uin, localObject1);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("有线程在等待 initFaceSettingCache 完成。线程名：");
+            ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+            ((StringBuilder)localObject1).append("，stack = ");
+            QLog.i("Q.qqhead.", 1, ((StringBuilder)localObject1).toString(), new RuntimeException("等待 initFaceSettingCache 完成"));
+            return;
+          }
         }
       }
     }
@@ -823,7 +883,7 @@ public class QQAvatarDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

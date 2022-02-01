@@ -12,7 +12,12 @@ public class d
     return new File(paramString);
   }
   
-  public static String a(File paramFile)
+  public static boolean a(File paramFile)
+  {
+    return (paramFile != null) && (paramFile.exists());
+  }
+  
+  public static String b(File paramFile)
   {
     if (paramFile != null) {
       return paramFile.getName();
@@ -20,27 +25,22 @@ public class d
     return null;
   }
   
-  public static String a(String paramString)
+  public static boolean b(String paramString)
+  {
+    return a(a(paramString));
+  }
+  
+  public static String c(String paramString)
   {
     if (paramString == null) {
       return null;
     }
-    return a(a(paramString));
-  }
-  
-  public static boolean a(File paramFile)
-  {
-    return (paramFile != null) && (paramFile.exists());
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return a(a(paramString));
+    return b(a(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tgpa.vendorpd.b.d
  * JD-Core Version:    0.7.0.1
  */

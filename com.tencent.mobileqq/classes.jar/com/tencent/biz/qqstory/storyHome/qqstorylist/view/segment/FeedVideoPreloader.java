@@ -14,24 +14,19 @@ import java.util.Map;
 
 public class FeedVideoPreloader
 {
-  public IVideoPreloader a;
-  protected StoryVideoItem a;
-  protected FeedVideoPreloader.CurrentVid a;
-  public FeedVideoPreloader.OnFileDownloadListener a;
-  protected FeedVideoPreloader.OnVideoDownloadListener a;
-  private Object a;
-  protected List<StoryHomeFeed> a;
-  protected List<DownloadTask> b = new ArrayList();
+  public IVideoPreloader a = new VideoPreloader();
+  public FeedVideoPreloader.OnFileDownloadListener b = new FeedVideoPreloader.OnFileDownloadListener(this);
+  protected FeedVideoPreloader.OnVideoDownloadListener c;
+  protected List<StoryHomeFeed> d = new ArrayList();
+  protected List<DownloadTask> e = new ArrayList();
+  protected StoryVideoItem f = null;
+  protected FeedVideoPreloader.CurrentVid g;
+  private Object h = new Object();
   
   public FeedVideoPreloader()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader = new VideoPreloader();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = null;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnFileDownloadListener = new FeedVideoPreloader.OnFileDownloadListener(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(1);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnFileDownloadListener);
+    this.a.a(1);
+    this.a.a(this.b);
   }
   
   private void a(StoryVideoItem paramStoryVideoItem, List<DownloadTask> paramList, boolean paramBoolean)
@@ -42,10 +37,10 @@ public class FeedVideoPreloader
       DownloadTask localDownloadTask1 = DownloadTask.a(paramStoryVideoItem.mVid, 1);
       DownloadTask localDownloadTask2 = DownloadTask.a(paramStoryVideoItem.mVid, 0);
       paramStoryVideoItem = DownloadTask.a(paramStoryVideoItem.mVid, 2);
-      localDownloadTask1.g = 0;
-      localDownloadTask2.g = 0;
-      paramStoryVideoItem.g = 1;
-      localDownloadTask2.a.put("handleCallback", localBoolean);
+      localDownloadTask1.s = 0;
+      localDownloadTask2.s = 0;
+      paramStoryVideoItem.s = 1;
+      localDownloadTask2.l.put("handleCallback", localBoolean);
       paramList.add(localDownloadTask1);
       paramList.add(localDownloadTask2);
       paramList.add(paramStoryVideoItem);
@@ -54,14 +49,14 @@ public class FeedVideoPreloader
     paramList.add(DownloadTask.a(paramStoryVideoItem.mVid, 2));
     paramList.add(DownloadTask.a(paramStoryVideoItem.mVid, 1));
     paramStoryVideoItem = DownloadTask.a(paramStoryVideoItem.mVid, 0);
-    paramStoryVideoItem.a.put("handleCallback", localBoolean);
+    paramStoryVideoItem.l.put("handleCallback", localBoolean);
     paramList.add(paramStoryVideoItem);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener = null;
+    this.a.a();
+    this.c = null;
   }
   
   public void a(StoryVideoItem paramStoryVideoItem, List<StoryHomeFeed> paramList)
@@ -75,7 +70,7 @@ public class FeedVideoPreloader
   
   public void a(FeedVideoPreloader.OnVideoDownloadListener paramOnVideoDownloadListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedVideoPreloader$OnVideoDownloadListener = paramOnVideoDownloadListener;
+    this.c = paramOnVideoDownloadListener;
   }
   
   protected boolean a(String paramString)
@@ -89,26 +84,26 @@ public class FeedVideoPreloader
     Object localObject2 = new ArrayList();
     int i;
     int j;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.h)
     {
-      ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
+      ((List)localObject2).addAll(this.d);
+      if (this.f != null)
       {
         i = 0;
         if (i < ((List)localObject2).size())
         {
-          List localList = ((StoryHomeFeed)((List)localObject2).get(i)).d();
-          if ((localList.size() > 0) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
+          List localList = ((StoryHomeFeed)((List)localObject2).get(i)).j();
+          if ((localList.size() > 0) && (TextUtils.equals(this.f.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
           {
             j = 1;
-            a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localArrayList, true);
+            a(this.f, localArrayList, true);
             if (j == 0) {
               i = 0;
             }
             j = i + 1;
             if (j < ((List)localObject2).size())
             {
-              ??? = ((StoryHomeFeed)((List)localObject2).get(j)).d();
+              ??? = ((StoryHomeFeed)((List)localObject2).get(j)).j();
               if (((List)???).size() > 0) {
                 a((StoryVideoItem)((List)???).get(0), localArrayList, false);
               }
@@ -116,13 +111,13 @@ public class FeedVideoPreloader
             i -= 1;
             if ((i >= 0) && (i < ((List)localObject2).size()))
             {
-              localObject2 = ((StoryHomeFeed)((List)localObject2).get(i)).d();
+              localObject2 = ((StoryHomeFeed)((List)localObject2).get(i)).j();
               if (((List)localObject2).size() > 0) {
                 a((StoryVideoItem)((List)localObject2).get(0), localArrayList, false);
               }
             }
-            this.b = localArrayList;
-            this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadIVideoPreloader.a(localArrayList, true);
+            this.e = localArrayList;
+            this.a.a(localArrayList, true);
             return;
           }
         }

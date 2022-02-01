@@ -15,19 +15,19 @@ import org.apache.http.protocol.HttpContext;
 class AsyncHttpRequest
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private final AsyncHttpResponseHandler jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
-  private final HttpUriRequest jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest;
-  private final AbstractHttpClient jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient;
-  private final HttpContext jdField_a_of_type_OrgApacheHttpProtocolHttpContext;
-  private boolean jdField_a_of_type_Boolean;
+  private final AbstractHttpClient a;
+  private final HttpContext b;
+  private final HttpUriRequest c;
+  private final AsyncHttpResponseHandler d;
+  private boolean e;
+  private int f;
   
   public AsyncHttpRequest(AbstractHttpClient paramAbstractHttpClient, HttpContext paramHttpContext, HttpUriRequest paramHttpUriRequest, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
   {
-    this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient = paramAbstractHttpClient;
-    this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext = paramHttpContext;
-    this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest = paramHttpUriRequest;
-    this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler = paramAsyncHttpResponseHandler;
+    this.a = paramAbstractHttpClient;
+    this.b = paramHttpContext;
+    this.c = paramHttpUriRequest;
+    this.d = paramAsyncHttpResponseHandler;
   }
   
   private void a()
@@ -35,10 +35,10 @@ class AsyncHttpRequest
     if (!Thread.currentThread().isInterrupted()) {
       try
       {
-        HttpResponse localHttpResponse = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.execute(this.jdField_a_of_type_OrgApacheHttpClientMethodsHttpUriRequest, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
-        if ((!Thread.currentThread().isInterrupted()) && (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null))
+        HttpResponse localHttpResponse = this.a.execute(this.c, this.b);
+        if ((!Thread.currentThread().isInterrupted()) && (this.d != null))
         {
-          this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localHttpResponse);
+          this.d.a(localHttpResponse);
           return;
         }
       }
@@ -61,7 +61,7 @@ class AsyncHttpRequest
   
   private void b()
   {
-    Object localObject2 = this.jdField_a_of_type_OrgApacheHttpImplClientAbstractHttpClient.getHttpRequestRetryHandler();
+    Object localObject2 = this.a.getHttpRequestRetryHandler();
     Object localObject1 = null;
     boolean bool = true;
     while (bool) {
@@ -83,9 +83,9 @@ class AsyncHttpRequest
         localStringBuilder2.append("NPE in HttpClient");
         localStringBuilder2.append(localNullPointerException.getMessage());
         IOException localIOException1 = new IOException(localStringBuilder2.toString());
-        i = this.jdField_a_of_type_Int + 1;
-        this.jdField_a_of_type_Int = i;
-        bool = ((HttpRequestRetryHandler)localObject2).retryRequest(localIOException1, i, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
+        i = this.f + 1;
+        this.f = i;
+        bool = ((HttpRequestRetryHandler)localObject2).retryRequest(localIOException1, i, this.b);
       }
       catch (IOException localIOException2)
       {
@@ -97,13 +97,13 @@ class AsyncHttpRequest
           localStringBuilder2.append(localIOException2);
           QLog.e("Translator", 2, localStringBuilder2.toString());
         }
-        int i = this.jdField_a_of_type_Int + 1;
-        this.jdField_a_of_type_Int = i;
-        bool = ((HttpRequestRetryHandler)localObject2).retryRequest(localIOException2, i, this.jdField_a_of_type_OrgApacheHttpProtocolHttpContext);
+        int i = this.f + 1;
+        this.f = i;
+        bool = ((HttpRequestRetryHandler)localObject2).retryRequest(localIOException2, i, this.b);
       }
       catch (SocketTimeoutException localSocketTimeoutException)
       {
-        localObject2 = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+        localObject2 = this.d;
         if (localObject2 != null) {
           ((AsyncHttpResponseHandler)localObject2).b(localSocketTimeoutException, "socket time out");
         }
@@ -111,7 +111,7 @@ class AsyncHttpRequest
       }
       catch (SocketException localSocketException)
       {
-        localObject2 = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+        localObject2 = this.d;
         if (localObject2 != null) {
           ((AsyncHttpResponseHandler)localObject2).b(localSocketException, "can't resolve host");
         }
@@ -119,7 +119,7 @@ class AsyncHttpRequest
       }
       catch (UnknownHostException localUnknownHostException)
       {
-        localObject2 = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+        localObject2 = this.d;
         if (localObject2 != null) {
           ((AsyncHttpResponseHandler)localObject2).b(localUnknownHostException, "can't resolve host");
         }
@@ -145,28 +145,28 @@ class AsyncHttpRequest
   {
     try
     {
-      if (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null) {
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.c();
+      if (this.d != null) {
+        this.d.c();
       }
       b();
-      if (this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler != null)
+      if (this.d != null)
       {
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.d();
+        this.d.d();
         return;
       }
     }
     catch (IOException localIOException)
     {
-      AsyncHttpResponseHandler localAsyncHttpResponseHandler = this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler;
+      AsyncHttpResponseHandler localAsyncHttpResponseHandler = this.d;
       if (localAsyncHttpResponseHandler != null)
       {
         localAsyncHttpResponseHandler.d();
-        if (this.jdField_a_of_type_Boolean)
+        if (this.e)
         {
-          this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.a(localIOException, (byte[])null);
+          this.d.a(localIOException, (byte[])null);
           return;
         }
-        this.jdField_a_of_type_ComRookeryAsyncHttpClientAsyncHttpResponseHandler.b(localIOException, (String)null);
+        this.d.b(localIOException, (String)null);
       }
     }
   }

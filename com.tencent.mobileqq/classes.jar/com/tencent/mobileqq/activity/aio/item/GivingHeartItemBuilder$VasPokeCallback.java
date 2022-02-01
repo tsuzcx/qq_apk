@@ -27,9 +27,9 @@ public class GivingHeartItemBuilder$VasPokeCallback
         localObject2 = Integer.valueOf((String)localObject1);
         paramString2 = (String)localObject1;
         paramString3 = (String)localObject2;
-        if (PokeItemHelper.c.contains(localObject2))
+        if (PokeItemHelper.i.contains(localObject2))
         {
-          PokeItemHelper.c.remove(localObject2);
+          PokeItemHelper.i.remove(localObject2);
           paramString3 = (String)localObject2;
           paramString2 = (String)localObject1;
         }
@@ -47,10 +47,10 @@ public class GivingHeartItemBuilder$VasPokeCallback
           localObject1 = Integer.valueOf((String)localObject2);
           paramString2 = (String)localObject2;
           paramString3 = (String)localObject1;
-          if (!PokeItemHelper.d.contains(localObject1)) {
+          if (!PokeItemHelper.j.contains(localObject1)) {
             break label166;
           }
-          PokeItemHelper.d.remove(localObject1);
+          PokeItemHelper.j.remove(localObject1);
           paramString2 = (String)localObject2;
           paramString3 = (String)localObject1;
         }
@@ -58,12 +58,12 @@ public class GivingHeartItemBuilder$VasPokeCallback
         paramString2 = "";
       }
       label166:
-      if ((!TextUtils.isEmpty(paramString2)) && (paramInt2 != 0) && (!PokeItemHelper.c.contains(paramString3)) && (!PokeItemHelper.c.contains(paramString3)))
+      if ((!TextUtils.isEmpty(paramString2)) && (paramInt2 != 0) && (!PokeItemHelper.i.contains(paramString3)) && (!PokeItemHelper.i.contains(paramString3)))
       {
         bool1 = PokeItemHelper.a("bubble", paramString3.intValue());
         boolean bool2 = PokeItemHelper.a("/normal.png", paramString3.intValue());
-        boolean bool3 = PokeItemHelper.b.contains(paramString3);
-        paramString3 = this.a.a;
+        boolean bool3 = PokeItemHelper.h.contains(paramString3);
+        paramString3 = this.a.e;
         paramString2 = str;
         if ((bool1 ^ true))
         {
@@ -72,7 +72,7 @@ public class GivingHeartItemBuilder$VasPokeCallback
           {
             paramString2 = str;
             if (bool3) {
-              paramString2 = HardCodeUtil.a(2131705374);
+              paramString2 = HardCodeUtil.a(2131903255);
             }
           }
         }
@@ -92,7 +92,7 @@ public class GivingHeartItemBuilder$VasPokeCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.VasPokeCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -13,22 +13,22 @@ class FounderColorLayout$1
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i >= this.a.i[0])
+    if (i >= this.a.p[0])
     {
-      this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.a.r.cancel();
       paramValueAnimator = this.a;
-      paramValueAnimator.e = 0;
-      paramValueAnimator.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.setIsFounderAnimating(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
-      this.a.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.onAnimationEnd(this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      paramValueAnimator.s = 0;
+      paramValueAnimator.q.mShouldDisplayAnimation = false;
+      this.a.b.setIsFounderAnimating(false);
+      this.a.b.invalidate();
+      this.a.b.onAnimationEnd(this.a.q.mFontId);
       return;
     }
-    if (i > this.a.e)
+    if (i > this.a.s)
     {
       paramValueAnimator = this.a;
-      paramValueAnimator.e = i;
-      paramValueAnimator.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
+      paramValueAnimator.s = i;
+      paramValueAnimator.b.invalidate();
     }
   }
 }

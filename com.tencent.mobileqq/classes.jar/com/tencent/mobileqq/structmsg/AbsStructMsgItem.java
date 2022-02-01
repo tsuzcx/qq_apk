@@ -32,29 +32,29 @@ import org.xmlpull.v1.XmlSerializer;
 public abstract class AbsStructMsgItem
   extends AbsStructMsgElement
 {
-  public ArrayList<AbsStructMsgElement> a;
-  public int o;
-  protected int p;
-  protected int q;
-  public int r;
+  public int au;
+  protected int av;
+  protected int aw;
+  public ArrayList<AbsStructMsgElement> ax;
+  public int ay;
   
   protected AbsStructMsgItem()
   {
-    this.jdField_a_of_type_JavaLangString = "item";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_r_of_type_Int = b();
+    this.b = "item";
+    this.ax = new ArrayList();
+    this.ay = c();
   }
   
   protected AbsStructMsgItem(Collection<AbsStructMsgElement> paramCollection)
   {
-    this.jdField_a_of_type_JavaLangString = "item";
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramCollection);
-    this.jdField_r_of_type_Int = b();
+    this.b = "item";
+    this.ax = new ArrayList(paramCollection);
+    this.ay = c();
   }
   
-  private boolean b()
+  private boolean f()
   {
-    int i = this.jdField_p_of_type_Int;
+    int i = this.av;
     return (i >= 0) && (i <= 3);
   }
   
@@ -68,25 +68,9 @@ public abstract class AbsStructMsgItem
     return b(paramContext, paramView, paramBundle);
   }
   
-  public String a()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(b());
-    localStringBuffer.append(this.jdField_o_of_type_Int);
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    if (localObject != null)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localStringBuffer.append(((AbsStructMsgElement)((Iterator)localObject).next()).a());
-      }
-    }
-    return localStringBuffer.toString();
-  }
-  
   public void a(View paramView)
   {
-    if (!TextUtils.isEmpty(this.b))
+    if (!TextUtils.isEmpty(this.d))
     {
       int i = a();
       if (i != 0)
@@ -98,22 +82,22 @@ public abstract class AbsStructMsgItem
             if (i != 3) {
               return;
             }
-            paramView.setBackgroundResource(2130838253);
+            paramView.setBackgroundResource(2130838312);
             return;
           }
-          paramView.setBackgroundResource(2130838254);
+          paramView.setBackgroundResource(2130838313);
           return;
         }
-        paramView.setBackgroundResource(2130838256);
+        paramView.setBackgroundResource(2130838315);
         return;
       }
-      paramView.setBackgroundResource(2130838255);
+      paramView.setBackgroundResource(2130838314);
     }
   }
   
   public void a(AbsShareMsg paramAbsShareMsg)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.ax.iterator();
     while (localIterator.hasNext()) {
       ((AbsStructMsgElement)localIterator.next()).a(paramAbsShareMsg);
     }
@@ -121,27 +105,27 @@ public abstract class AbsStructMsgItem
   
   public void a(AbsStructMsgElement paramAbsStructMsgElement)
   {
-    if (((paramAbsStructMsgElement instanceof AbsStructMsgTextElement)) && (!b())) {
-      ((AbsStructMsgTextElement)paramAbsStructMsgElement).ac = null;
+    if (((paramAbsStructMsgElement instanceof AbsStructMsgTextElement)) && (!f())) {
+      ((AbsStructMsgTextElement)paramAbsStructMsgElement).au = null;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAbsStructMsgElement);
+    this.ax.add(paramAbsStructMsgElement);
   }
   
   public void a(ObjectInput paramObjectInput)
   {
-    this.jdField_a_of_type_Int = paramObjectInput.readInt();
-    if ((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Int <= 18))
+    this.a = paramObjectInput.readInt();
+    if ((this.a > 0) && (this.a <= 18))
     {
-      this.b = paramObjectInput.readUTF();
-      this.jdField_c_of_type_JavaLangString = paramObjectInput.readUTF();
-      this.jdField_d_of_type_JavaLangString = paramObjectInput.readUTF();
-      this.jdField_e_of_type_JavaLangString = paramObjectInput.readUTF();
-      this.jdField_f_of_type_JavaLangString = paramObjectInput.readUTF();
-      this.jdField_g_of_type_JavaLangString = paramObjectInput.readUTF();
-      this.jdField_m_of_type_Int = paramObjectInput.readInt();
-      this.jdField_o_of_type_Int = paramObjectInput.readInt();
-      if ((2 <= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_Int <= 18)) {
-        this.jdField_p_of_type_Int = paramObjectInput.readInt();
+      this.d = paramObjectInput.readUTF();
+      this.e = paramObjectInput.readUTF();
+      this.f = paramObjectInput.readUTF();
+      this.g = paramObjectInput.readUTF();
+      this.h = paramObjectInput.readUTF();
+      this.i = paramObjectInput.readUTF();
+      this.al = paramObjectInput.readInt();
+      this.au = paramObjectInput.readInt();
+      if ((2 <= this.a) && (this.a <= 18)) {
+        this.av = paramObjectInput.readInt();
       }
       int m = paramObjectInput.readInt();
       int k = 0;
@@ -160,8 +144,8 @@ public abstract class AbsStructMsgItem
           int j = i;
           if ("button".equals(str))
           {
-            ((AbsStructMsgElement)localObject).aa = String.valueOf(i);
-            ((AbsStructMsgElement)localObject).ab = this.ab;
+            ((AbsStructMsgElement)localObject).an = String.valueOf(i);
+            ((AbsStructMsgElement)localObject).ap = this.ap;
             j = i + 1;
           }
           if ((localObject != null) && (AbsStructMsgItem.class.isInstance(localObject))) {
@@ -169,111 +153,111 @@ public abstract class AbsStructMsgItem
           }
           i = j;
         }
-        str = b();
+        str = e();
         if ((str != null) && (localObject != null) && ((localObject instanceof StructMsgItemCover))) {
           if ((!str.endsWith("Layout4")) && (!str.endsWith("Layout2")) && (!str.endsWith("Layout9")))
           {
             if (str.endsWith("Layout3")) {
-              ((StructMsgItemCover)localObject).t = StructMsgItemCover.jdField_r_of_type_Int;
+              ((StructMsgItemCover)localObject).aC = StructMsgItemCover.aA;
             }
           }
           else {
-            ((StructMsgItemCover)localObject).t = StructMsgItemCover.jdField_q_of_type_Int;
+            ((StructMsgItemCover)localObject).aC = StructMsgItemCover.az;
           }
         }
         if (localObject != null)
         {
-          ((AbsStructMsgElement)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+          ((AbsStructMsgElement)localObject).as = this.as;
           ((AbsStructMsgElement)localObject).a(paramObjectInput);
           a((AbsStructMsgElement)localObject);
         }
         k += 1;
       }
-      if ((this.jdField_a_of_type_Int >= 3) && (this.jdField_a_of_type_Int <= 18))
+      if ((this.a >= 3) && (this.a <= 18))
       {
-        this.jdField_h_of_type_JavaLangString = paramObjectInput.readUTF();
-        if (this.jdField_a_of_type_Int > 5)
+        this.j = paramObjectInput.readUTF();
+        if (this.a > 5)
         {
-          this.jdField_j_of_type_JavaLangString = paramObjectInput.readUTF();
-          this.jdField_k_of_type_JavaLangString = paramObjectInput.readUTF();
-          this.jdField_l_of_type_JavaLangString = paramObjectInput.readUTF();
-        }
-        if (this.jdField_a_of_type_Int > 8) {
-          this.jdField_i_of_type_JavaLangString = paramObjectInput.readUTF();
-        }
-        if (this.jdField_a_of_type_Int > 9)
-        {
+          this.l = paramObjectInput.readUTF();
+          this.m = paramObjectInput.readUTF();
           this.n = paramObjectInput.readUTF();
-          this.jdField_o_of_type_JavaLangString = paramObjectInput.readUTF();
-          this.jdField_p_of_type_JavaLangString = paramObjectInput.readUTF();
-          this.jdField_m_of_type_JavaLangString = paramObjectInput.readUTF();
-          this.jdField_q_of_type_JavaLangString = paramObjectInput.readUTF();
         }
-        if (this.jdField_a_of_type_Int > 10)
+        if (this.a > 8) {
+          this.k = paramObjectInput.readUTF();
+        }
+        if (this.a > 9)
         {
-          this.jdField_c_of_type_Int = paramObjectInput.readInt();
-          this.jdField_r_of_type_JavaLangString = paramObjectInput.readUTF();
+          this.p = paramObjectInput.readUTF();
+          this.q = paramObjectInput.readUTF();
+          this.r = paramObjectInput.readUTF();
+          this.o = paramObjectInput.readUTF();
           this.s = paramObjectInput.readUTF();
-          this.t = paramObjectInput.readUTF();
+        }
+        if (this.a > 10)
+        {
+          this.t = paramObjectInput.readInt();
           this.u = paramObjectInput.readUTF();
           this.v = paramObjectInput.readUTF();
-          this.jdField_d_of_type_Int = paramObjectInput.readInt();
           this.w = paramObjectInput.readUTF();
           this.x = paramObjectInput.readUTF();
           this.y = paramObjectInput.readUTF();
-          this.z = paramObjectInput.readUTF();
+          this.z = paramObjectInput.readInt();
           this.A = paramObjectInput.readUTF();
-          this.jdField_e_of_type_Int = paramObjectInput.readInt();
           this.B = paramObjectInput.readUTF();
           this.C = paramObjectInput.readUTF();
           this.D = paramObjectInput.readUTF();
           this.E = paramObjectInput.readUTF();
-          this.F = paramObjectInput.readUTF();
+          this.F = paramObjectInput.readInt();
           this.G = paramObjectInput.readUTF();
           this.H = paramObjectInput.readUTF();
           this.I = paramObjectInput.readUTF();
           this.J = paramObjectInput.readUTF();
-        }
-        if (this.jdField_a_of_type_Int > 11)
-        {
           this.K = paramObjectInput.readUTF();
           this.L = paramObjectInput.readUTF();
           this.M = paramObjectInput.readUTF();
-        }
-        if (this.jdField_a_of_type_Int > 12)
-        {
           this.N = paramObjectInput.readUTF();
           this.O = paramObjectInput.readUTF();
         }
-        if (this.jdField_a_of_type_Int > 13) {
-          this.jdField_f_of_type_Int = paramObjectInput.readInt();
-        }
-        if (this.jdField_a_of_type_Int > 14)
+        if (this.a > 11)
         {
-          this.jdField_g_of_type_Int = paramObjectInput.readInt();
-          this.jdField_h_of_type_Int = paramObjectInput.readInt();
-        }
-        if (this.jdField_a_of_type_Int > 15)
-        {
-          this.P = paramObjectInput.readUTF();
           this.Q = paramObjectInput.readUTF();
           this.R = paramObjectInput.readUTF();
-          this.jdField_i_of_type_Int = paramObjectInput.readInt();
-          this.jdField_j_of_type_Int = paramObjectInput.readInt();
-          this.jdField_k_of_type_Int = paramObjectInput.readInt();
-          this.jdField_l_of_type_Int = paramObjectInput.readInt();
           this.S = paramObjectInput.readUTF();
+        }
+        if (this.a > 12)
+        {
           this.T = paramObjectInput.readUTF();
           this.U = paramObjectInput.readUTF();
-          this.V = paramObjectInput.readUTF();
         }
-        if (this.jdField_a_of_type_Int > 16) {
-          this.W = paramObjectInput.readUTF();
+        if (this.a > 13) {
+          this.P = paramObjectInput.readInt();
         }
-        if (this.jdField_a_of_type_Int > 17)
+        if (this.a > 14)
+        {
+          this.V = paramObjectInput.readInt();
+          this.W = paramObjectInput.readInt();
+        }
+        if (this.a > 15)
         {
           this.X = paramObjectInput.readUTF();
           this.Y = paramObjectInput.readUTF();
+          this.Z = paramObjectInput.readUTF();
+          this.aa = paramObjectInput.readInt();
+          this.ab = paramObjectInput.readInt();
+          this.ac = paramObjectInput.readInt();
+          this.ad = paramObjectInput.readInt();
+          this.ae = paramObjectInput.readUTF();
+          this.af = paramObjectInput.readUTF();
+          this.ag = paramObjectInput.readUTF();
+          this.ah = paramObjectInput.readUTF();
+        }
+        if (this.a > 16) {
+          this.ai = paramObjectInput.readUTF();
+        }
+        if (this.a > 17)
+        {
+          this.aj = paramObjectInput.readUTF();
+          this.ak = paramObjectInput.readUTF();
         }
       }
       return;
@@ -287,166 +271,147 @@ public abstract class AbsStructMsgItem
   
   public void a(ObjectOutput paramObjectOutput)
   {
-    paramObjectOutput.writeUTF(this.jdField_a_of_type_JavaLangString);
-    paramObjectOutput.writeInt(this.jdField_r_of_type_Int);
-    paramObjectOutput.writeInt(this.jdField_a_of_type_Int);
-    Object localObject = this.b;
+    paramObjectOutput.writeUTF(this.b);
+    paramObjectOutput.writeInt(this.ay);
+    paramObjectOutput.writeInt(this.a);
+    Object localObject = this.d;
     String str1 = "";
     if (localObject == null) {
       localObject = "";
     } else {
-      localObject = this.b;
+      localObject = this.d;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_c_of_type_JavaLangString == null) {
+    if (this.e == null) {
       localObject = "";
     } else {
-      localObject = this.jdField_c_of_type_JavaLangString;
+      localObject = this.e;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_d_of_type_JavaLangString == null) {
+    if (this.f == null) {
       localObject = "";
     } else {
-      localObject = this.jdField_d_of_type_JavaLangString;
+      localObject = this.f;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_e_of_type_JavaLangString == null) {
+    if (this.g == null) {
       localObject = "";
     } else {
-      localObject = this.jdField_e_of_type_JavaLangString;
+      localObject = this.g;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_f_of_type_JavaLangString == null) {
+    if (this.h == null) {
       localObject = "";
     } else {
-      localObject = this.jdField_f_of_type_JavaLangString;
+      localObject = this.h;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    if (this.jdField_g_of_type_JavaLangString == null) {
+    if (this.i == null) {
       localObject = "";
     } else {
-      localObject = this.jdField_g_of_type_JavaLangString;
+      localObject = this.i;
     }
     paramObjectOutput.writeUTF((String)localObject);
-    paramObjectOutput.writeInt(this.jdField_m_of_type_Int);
-    paramObjectOutput.writeInt(this.jdField_o_of_type_Int);
-    paramObjectOutput.writeInt(this.jdField_p_of_type_Int);
-    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
+    paramObjectOutput.writeInt(this.al);
+    paramObjectOutput.writeInt(this.au);
+    paramObjectOutput.writeInt(this.av);
+    paramObjectOutput.writeInt(this.ax.size());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("mVersion: ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.a);
     QLog.i("getStructMsgFromXmlBuff", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localObject = this.ax.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramObjectOutput);
     }
-    if ((this.jdField_a_of_type_Int >= 3) && (this.jdField_a_of_type_Int <= 18))
+    if ((this.a >= 3) && (this.a <= 18))
     {
-      if (this.jdField_h_of_type_JavaLangString == null) {
+      if (this.j == null) {
         localObject = "";
       } else {
-        localObject = this.jdField_h_of_type_JavaLangString;
+        localObject = this.j;
       }
       paramObjectOutput.writeUTF((String)localObject);
-      if (this.jdField_a_of_type_Int > 5)
+      if (this.a > 5)
       {
-        if (this.jdField_j_of_type_JavaLangString == null) {
+        if (this.l == null) {
           localObject = "";
         } else {
-          localObject = this.jdField_j_of_type_JavaLangString;
+          localObject = this.l;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_k_of_type_JavaLangString == null) {
+        if (this.m == null) {
           localObject = "";
         } else {
-          localObject = this.jdField_k_of_type_JavaLangString;
+          localObject = this.m;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_l_of_type_JavaLangString == null) {
-          localObject = "";
-        } else {
-          localObject = this.jdField_l_of_type_JavaLangString;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
-      }
-      if (this.jdField_a_of_type_Int > 8)
-      {
-        if (this.jdField_i_of_type_JavaLangString == null) {
-          localObject = "";
-        } else {
-          localObject = this.jdField_i_of_type_JavaLangString;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
-      }
-      if (this.jdField_a_of_type_Int > 9)
-      {
         if (this.n == null) {
           localObject = "";
         } else {
           localObject = this.n;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_o_of_type_JavaLangString == null) {
+      }
+      if (this.a > 8)
+      {
+        if (this.k == null) {
           localObject = "";
         } else {
-          localObject = this.jdField_o_of_type_JavaLangString;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_p_of_type_JavaLangString == null) {
-          localObject = "";
-        } else {
-          localObject = this.jdField_p_of_type_JavaLangString;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_m_of_type_JavaLangString == null) {
-          localObject = "";
-        } else {
-          localObject = this.jdField_m_of_type_JavaLangString;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
-        if (this.jdField_q_of_type_JavaLangString == null) {
-          localObject = "";
-        } else {
-          localObject = this.jdField_q_of_type_JavaLangString;
+          localObject = this.k;
         }
         paramObjectOutput.writeUTF((String)localObject);
       }
-      if (this.jdField_a_of_type_Int > 10)
+      if (this.a > 9)
       {
-        paramObjectOutput.writeInt(this.jdField_c_of_type_Int);
-        localObject = this.jdField_r_of_type_JavaLangString;
-        String str2 = "0";
-        if (localObject == null) {
-          localObject = "0";
+        if (this.p == null) {
+          localObject = "";
         } else {
-          localObject = this.jdField_r_of_type_JavaLangString;
+          localObject = this.p;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.q == null) {
+          localObject = "";
+        } else {
+          localObject = this.q;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.r == null) {
+          localObject = "";
+        } else {
+          localObject = this.r;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.o == null) {
+          localObject = "";
+        } else {
+          localObject = this.o;
         }
         paramObjectOutput.writeUTF((String)localObject);
         if (this.s == null) {
-          localObject = str2;
+          localObject = "";
         } else {
           localObject = this.s;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.t == null) {
-          localObject = "";
-        } else {
-          localObject = this.t;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
-        if (this.u == null) {
-          localObject = "";
+      }
+      if (this.a > 10)
+      {
+        paramObjectOutput.writeInt(this.t);
+        localObject = this.u;
+        String str2 = "0";
+        if (localObject == null) {
+          localObject = "0";
         } else {
           localObject = this.u;
         }
         paramObjectOutput.writeUTF((String)localObject);
         if (this.v == null) {
-          localObject = "";
+          localObject = str2;
         } else {
           localObject = this.v;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        paramObjectOutput.writeInt(this.jdField_d_of_type_Int);
         if (this.w == null) {
           localObject = "";
         } else {
@@ -465,19 +430,13 @@ public abstract class AbsStructMsgItem
           localObject = this.y;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.z == null) {
-          localObject = "";
-        } else {
-          localObject = this.z;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
+        paramObjectOutput.writeInt(this.z);
         if (this.A == null) {
           localObject = "";
         } else {
           localObject = this.A;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        paramObjectOutput.writeInt(this.jdField_e_of_type_Int);
         if (this.B == null) {
           localObject = "";
         } else {
@@ -502,12 +461,7 @@ public abstract class AbsStructMsgItem
           localObject = this.E;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.F == null) {
-          localObject = "";
-        } else {
-          localObject = this.F;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
+        paramObjectOutput.writeInt(this.F);
         if (this.G == null) {
           localObject = "";
         } else {
@@ -532,9 +486,6 @@ public abstract class AbsStructMsgItem
           localObject = this.J;
         }
         paramObjectOutput.writeUTF((String)localObject);
-      }
-      if (this.jdField_a_of_type_Int > 11)
-      {
         if (this.K == null) {
           localObject = "";
         } else {
@@ -553,9 +504,6 @@ public abstract class AbsStructMsgItem
           localObject = this.M;
         }
         paramObjectOutput.writeUTF((String)localObject);
-      }
-      if (this.jdField_a_of_type_Int > 12)
-      {
         if (this.N == null) {
           localObject = "";
         } else {
@@ -569,22 +517,8 @@ public abstract class AbsStructMsgItem
         }
         paramObjectOutput.writeUTF((String)localObject);
       }
-      if (this.jdField_a_of_type_Int > 13) {
-        paramObjectOutput.writeInt(this.jdField_f_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Int > 14)
+      if (this.a > 11)
       {
-        paramObjectOutput.writeInt(this.jdField_g_of_type_Int);
-        paramObjectOutput.writeInt(this.jdField_h_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Int > 15)
-      {
-        if (this.P == null) {
-          localObject = "";
-        } else {
-          localObject = this.P;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
         if (this.Q == null) {
           localObject = "";
         } else {
@@ -597,16 +531,15 @@ public abstract class AbsStructMsgItem
           localObject = this.R;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        paramObjectOutput.writeInt(this.jdField_i_of_type_Int);
-        paramObjectOutput.writeInt(this.jdField_j_of_type_Int);
-        paramObjectOutput.writeInt(this.jdField_k_of_type_Int);
-        paramObjectOutput.writeInt(this.jdField_l_of_type_Int);
         if (this.S == null) {
           localObject = "";
         } else {
           localObject = this.S;
         }
         paramObjectOutput.writeUTF((String)localObject);
+      }
+      if (this.a > 12)
+      {
         if (this.T == null) {
           localObject = "";
         } else {
@@ -619,23 +552,16 @@ public abstract class AbsStructMsgItem
           localObject = this.U;
         }
         paramObjectOutput.writeUTF((String)localObject);
-        if (this.V == null) {
-          localObject = "";
-        } else {
-          localObject = this.V;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
       }
-      if (this.jdField_a_of_type_Int > 16)
+      if (this.a > 13) {
+        paramObjectOutput.writeInt(this.P);
+      }
+      if (this.a > 14)
       {
-        if (this.W == null) {
-          localObject = "";
-        } else {
-          localObject = this.W;
-        }
-        paramObjectOutput.writeUTF((String)localObject);
+        paramObjectOutput.writeInt(this.V);
+        paramObjectOutput.writeInt(this.W);
       }
-      if (this.jdField_a_of_type_Int > 17)
+      if (this.a > 15)
       {
         if (this.X == null) {
           localObject = "";
@@ -644,24 +570,76 @@ public abstract class AbsStructMsgItem
         }
         paramObjectOutput.writeUTF((String)localObject);
         if (this.Y == null) {
-          localObject = str1;
+          localObject = "";
         } else {
           localObject = this.Y;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.Z == null) {
+          localObject = "";
+        } else {
+          localObject = this.Z;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        paramObjectOutput.writeInt(this.aa);
+        paramObjectOutput.writeInt(this.ab);
+        paramObjectOutput.writeInt(this.ac);
+        paramObjectOutput.writeInt(this.ad);
+        if (this.ae == null) {
+          localObject = "";
+        } else {
+          localObject = this.ae;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.af == null) {
+          localObject = "";
+        } else {
+          localObject = this.af;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.ag == null) {
+          localObject = "";
+        } else {
+          localObject = this.ag;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.ah == null) {
+          localObject = "";
+        } else {
+          localObject = this.ah;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+      }
+      if (this.a > 16)
+      {
+        if (this.ai == null) {
+          localObject = "";
+        } else {
+          localObject = this.ai;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+      }
+      if (this.a > 17)
+      {
+        if (this.aj == null) {
+          localObject = "";
+        } else {
+          localObject = this.aj;
+        }
+        paramObjectOutput.writeUTF((String)localObject);
+        if (this.ak == null) {
+          localObject = str1;
+        } else {
+          localObject = this.ak;
         }
         paramObjectOutput.writeUTF((String)localObject);
       }
     }
   }
   
-  public void a(String paramString)
-  {
-    a(new StructMsgItemSummary(paramString));
-    a(new StructMsgItemHr());
-  }
-  
   public void a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_o_of_type_Int = paramInt;
+    this.au = paramInt;
     a(new StructMsgItemCover(paramString1, paramString3));
     a(new StructMsgItemTitle(""));
   }
@@ -678,7 +656,7 @@ public abstract class AbsStructMsgItem
   
   public void a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
-    this.jdField_o_of_type_Int = paramInt;
+    this.au = paramInt;
     a(new StructMsgItemCover(paramString1, paramString4));
     a(new StructMsgItemTitle(paramString2));
     a(new StructMsgItemSummary(paramString3));
@@ -686,7 +664,7 @@ public abstract class AbsStructMsgItem
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    this.jdField_o_of_type_Int = paramInt;
+    this.au = paramInt;
     if ((paramString2 != null) && (!paramString2.equals(""))) {
       a(new StructMsgItemTitle(paramString2));
     }
@@ -703,215 +681,210 @@ public abstract class AbsStructMsgItem
   
   public void a(XmlSerializer paramXmlSerializer)
   {
-    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
-    int i = this.jdField_r_of_type_Int;
+    paramXmlSerializer.startTag(null, this.b);
+    int i = this.ay;
     if (i < 0) {
       localObject = "0";
     } else {
       localObject = String.valueOf(i);
     }
     paramXmlSerializer.attribute(null, "layout", (String)localObject);
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "action", this.jdField_c_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.e)) {
+      paramXmlSerializer.attribute(null, "action", this.e);
     }
-    if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "actionData", this.jdField_d_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.f)) {
+      paramXmlSerializer.attribute(null, "actionData", this.f);
     }
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "a_actionData", this.jdField_e_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.g)) {
+      paramXmlSerializer.attribute(null, "a_actionData", this.g);
     }
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "i_actionData", this.jdField_f_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.h)) {
+      paramXmlSerializer.attribute(null, "i_actionData", this.h);
     }
-    if (!TextUtils.isEmpty(this.b)) {
-      paramXmlSerializer.attribute(null, "url", this.b);
+    if (!TextUtils.isEmpty(this.d)) {
+      paramXmlSerializer.attribute(null, "url", this.d);
     }
-    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "brief", this.jdField_g_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.i)) {
+      paramXmlSerializer.attribute(null, "brief", this.i);
     }
-    if (this.jdField_m_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "flag", String.valueOf(this.jdField_m_of_type_Int));
+    if (this.al != 0) {
+      paramXmlSerializer.attribute(null, "flag", String.valueOf(this.al));
     }
-    i = this.jdField_o_of_type_Int;
+    i = this.au;
     if (i != 0) {
       paramXmlSerializer.attribute(null, "mode", String.valueOf(i));
     }
-    i = this.jdField_p_of_type_Int;
+    i = this.av;
     if (i != 0) {
       paramXmlSerializer.attribute(null, "bg", String.valueOf(i));
     }
-    if (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "businessData", this.jdField_h_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.j)) {
+      paramXmlSerializer.attribute(null, "businessData", this.j);
     }
-    if (!TextUtils.isEmpty(this.jdField_i_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "commonData", this.jdField_i_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.k)) {
+      paramXmlSerializer.attribute(null, "commonData", this.k);
     }
-    if (!TextUtils.isEmpty(this.jdField_j_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "index", this.jdField_j_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.l)) {
+      paramXmlSerializer.attribute(null, "index", this.l);
     }
-    if (!TextUtils.isEmpty(this.jdField_k_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "index_name", this.jdField_k_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_l_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "index_type", this.jdField_l_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_o_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "canvas", this.jdField_o_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_m_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "rurl", this.jdField_m_of_type_JavaLangString);
-    }
-    if (!TextUtils.isEmpty(this.jdField_p_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "disType", this.jdField_p_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.m)) {
+      paramXmlSerializer.attribute(null, "index_name", this.m);
     }
     if (!TextUtils.isEmpty(this.n)) {
-      paramXmlSerializer.attribute(null, "tid", this.n);
+      paramXmlSerializer.attribute(null, "index_type", this.n);
     }
-    if (!TextUtils.isEmpty(this.jdField_q_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "apurl", this.jdField_q_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.q)) {
+      paramXmlSerializer.attribute(null, "canvas", this.q);
     }
-    if (this.jdField_c_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "action_type", String.valueOf(this.jdField_c_of_type_Int));
+    if (!TextUtils.isEmpty(this.o)) {
+      paramXmlSerializer.attribute(null, "rurl", this.o);
     }
-    if (!TextUtils.isEmpty(this.jdField_r_of_type_JavaLangString)) {
-      paramXmlSerializer.attribute(null, "advertiser_id", this.jdField_r_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.r)) {
+      paramXmlSerializer.attribute(null, "disType", this.r);
+    }
+    if (!TextUtils.isEmpty(this.p)) {
+      paramXmlSerializer.attribute(null, "tid", this.p);
     }
     if (!TextUtils.isEmpty(this.s)) {
-      paramXmlSerializer.attribute(null, "aid", this.s);
+      paramXmlSerializer.attribute(null, "apurl", this.s);
     }
-    if (!TextUtils.isEmpty(this.t)) {
-      paramXmlSerializer.attribute(null, "app_download_schema", this.t);
+    if (this.t != 0) {
+      paramXmlSerializer.attribute(null, "action_type", String.valueOf(this.t));
     }
     if (!TextUtils.isEmpty(this.u)) {
-      paramXmlSerializer.attribute(null, "canvas_json", this.u);
+      paramXmlSerializer.attribute(null, "advertiser_id", this.u);
     }
     if (!TextUtils.isEmpty(this.v)) {
-      paramXmlSerializer.attribute(null, "customized_invoke_url", this.v);
-    }
-    if (this.jdField_d_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "dest_type", String.valueOf(this.jdField_d_of_type_Int));
+      paramXmlSerializer.attribute(null, "aid", this.v);
     }
     if (!TextUtils.isEmpty(this.w)) {
-      paramXmlSerializer.attribute(null, "effect_url", this.w);
+      paramXmlSerializer.attribute(null, "app_download_schema", this.w);
     }
     if (!TextUtils.isEmpty(this.x)) {
-      paramXmlSerializer.attribute(null, "landing_page", this.x);
+      paramXmlSerializer.attribute(null, "canvas_json", this.x);
     }
     if (!TextUtils.isEmpty(this.y)) {
-      paramXmlSerializer.attribute(null, "landing_page_report_url", this.y);
+      paramXmlSerializer.attribute(null, "customized_invoke_url", this.y);
     }
-    if (!TextUtils.isEmpty(this.z)) {
-      paramXmlSerializer.attribute(null, "noco_id", this.z);
+    if (this.z != 0) {
+      paramXmlSerializer.attribute(null, "dest_type", String.valueOf(this.z));
     }
     if (!TextUtils.isEmpty(this.A)) {
-      paramXmlSerializer.attribute(null, "product_id", this.A);
-    }
-    if (this.jdField_e_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "product_type", String.valueOf(this.jdField_e_of_type_Int));
-    }
-    if (this.jdField_f_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "mini_program_type", String.valueOf(this.jdField_f_of_type_Int));
+      paramXmlSerializer.attribute(null, "effect_url", this.A);
     }
     if (!TextUtils.isEmpty(this.B)) {
-      paramXmlSerializer.attribute(null, "rl", this.B);
+      paramXmlSerializer.attribute(null, "landing_page", this.B);
     }
     if (!TextUtils.isEmpty(this.C)) {
-      paramXmlSerializer.attribute(null, "subordinate_product_id", this.C);
+      paramXmlSerializer.attribute(null, "landing_page_report_url", this.C);
     }
     if (!TextUtils.isEmpty(this.D)) {
-      paramXmlSerializer.attribute(null, "traceid", this.D);
+      paramXmlSerializer.attribute(null, "noco_id", this.D);
     }
     if (!TextUtils.isEmpty(this.E)) {
-      paramXmlSerializer.attribute(null, "via", this.E);
+      paramXmlSerializer.attribute(null, "product_id", this.E);
     }
-    if (!TextUtils.isEmpty(this.F)) {
-      paramXmlSerializer.attribute(null, "video_url", this.F);
+    if (this.F != 0) {
+      paramXmlSerializer.attribute(null, "product_type", String.valueOf(this.F));
+    }
+    if (this.P != 0) {
+      paramXmlSerializer.attribute(null, "mini_program_type", String.valueOf(this.P));
     }
     if (!TextUtils.isEmpty(this.G)) {
-      paramXmlSerializer.attribute(null, "appname", this.G);
+      paramXmlSerializer.attribute(null, "rl", this.G);
     }
     if (!TextUtils.isEmpty(this.H)) {
-      paramXmlSerializer.attribute(null, "customized_invoke_url", this.H);
+      paramXmlSerializer.attribute(null, "subordinate_product_id", this.H);
     }
     if (!TextUtils.isEmpty(this.I)) {
-      paramXmlSerializer.attribute(null, "pkg_name", this.I);
+      paramXmlSerializer.attribute(null, "traceid", this.I);
     }
     if (!TextUtils.isEmpty(this.J)) {
-      paramXmlSerializer.attribute(null, "pkgurl", this.J);
-    }
-    if (!TextUtils.isEmpty(this.L)) {
-      paramXmlSerializer.attribute(null, "api_exposure_monitor_url", this.L);
+      paramXmlSerializer.attribute(null, "via", this.J);
     }
     if (!TextUtils.isEmpty(this.K)) {
-      paramXmlSerializer.attribute(null, "api_click_monitor_url", this.K);
+      paramXmlSerializer.attribute(null, "video_url", this.K);
+    }
+    if (!TextUtils.isEmpty(this.L)) {
+      paramXmlSerializer.attribute(null, "appname", this.L);
     }
     if (!TextUtils.isEmpty(this.M)) {
-      paramXmlSerializer.attribute(null, "trace_info_aid", this.M);
+      paramXmlSerializer.attribute(null, "customized_invoke_url", this.M);
     }
     if (!TextUtils.isEmpty(this.N)) {
-      paramXmlSerializer.attribute(null, "corporate_image_name", this.N);
+      paramXmlSerializer.attribute(null, "pkg_name", this.N);
     }
     if (!TextUtils.isEmpty(this.O)) {
-      paramXmlSerializer.attribute(null, "corporate_logo", this.O);
-    }
-    if (this.jdField_g_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "tab_id", String.valueOf(this.jdField_g_of_type_Int));
-    }
-    if (this.jdField_h_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "is_hidden", String.valueOf(this.jdField_h_of_type_Int));
-    }
-    if (!TextUtils.isEmpty(this.P)) {
-      paramXmlSerializer.attribute(null, "negative_feedback_url", this.P);
-    }
-    if (!TextUtils.isEmpty(this.Q)) {
-      paramXmlSerializer.attribute(null, "sdk_exposure_monitor_url", this.Q);
+      paramXmlSerializer.attribute(null, "pkgurl", this.O);
     }
     if (!TextUtils.isEmpty(this.R)) {
-      paramXmlSerializer.attribute(null, "sdk_click_monitor_url", this.R);
+      paramXmlSerializer.attribute(null, "api_exposure_monitor_url", this.R);
     }
-    if (this.jdField_i_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "media_duration", String.valueOf(this.jdField_i_of_type_Int));
-    }
-    if (this.jdField_j_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "video_file_size", String.valueOf(this.jdField_j_of_type_Int));
-    }
-    if (this.jdField_k_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "app_score_num", String.valueOf(this.jdField_k_of_type_Int));
-    }
-    if (this.jdField_l_of_type_Int != 0) {
-      paramXmlSerializer.attribute(null, "download_num", String.valueOf(this.jdField_l_of_type_Int));
+    if (!TextUtils.isEmpty(this.Q)) {
+      paramXmlSerializer.attribute(null, "api_click_monitor_url", this.Q);
     }
     if (!TextUtils.isEmpty(this.S)) {
-      paramXmlSerializer.attribute(null, "universal_link", this.S);
+      paramXmlSerializer.attribute(null, "trace_info_aid", this.S);
     }
     if (!TextUtils.isEmpty(this.T)) {
-      paramXmlSerializer.attribute(null, "sdk_data", this.T);
+      paramXmlSerializer.attribute(null, "corporate_image_name", this.T);
     }
     if (!TextUtils.isEmpty(this.U)) {
-      paramXmlSerializer.attribute(null, "tencent_video_id", this.U);
+      paramXmlSerializer.attribute(null, "corporate_logo", this.U);
     }
-    if (!TextUtils.isEmpty(this.V)) {
-      paramXmlSerializer.attribute(null, "view_id", this.V);
+    if (this.V != 0) {
+      paramXmlSerializer.attribute(null, "tab_id", String.valueOf(this.V));
     }
-    if (!TextUtils.isEmpty(this.W)) {
-      paramXmlSerializer.attribute(null, "qgg_ext", this.W);
+    if (this.W != 0) {
+      paramXmlSerializer.attribute(null, "is_hidden", String.valueOf(this.W));
     }
     if (!TextUtils.isEmpty(this.X)) {
-      paramXmlSerializer.attribute(null, "adInfo", this.X);
+      paramXmlSerializer.attribute(null, "negative_feedback_url", this.X);
     }
     if (!TextUtils.isEmpty(this.Y)) {
-      paramXmlSerializer.attribute(null, "is_report_click", this.Y);
+      paramXmlSerializer.attribute(null, "sdk_exposure_monitor_url", this.Y);
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    if (!TextUtils.isEmpty(this.Z)) {
+      paramXmlSerializer.attribute(null, "sdk_click_monitor_url", this.Z);
+    }
+    if (this.aa != 0) {
+      paramXmlSerializer.attribute(null, "media_duration", String.valueOf(this.aa));
+    }
+    if (this.ab != 0) {
+      paramXmlSerializer.attribute(null, "video_file_size", String.valueOf(this.ab));
+    }
+    if (this.ac != 0) {
+      paramXmlSerializer.attribute(null, "app_score_num", String.valueOf(this.ac));
+    }
+    if (this.ad != 0) {
+      paramXmlSerializer.attribute(null, "download_num", String.valueOf(this.ad));
+    }
+    if (!TextUtils.isEmpty(this.ae)) {
+      paramXmlSerializer.attribute(null, "universal_link", this.ae);
+    }
+    if (!TextUtils.isEmpty(this.af)) {
+      paramXmlSerializer.attribute(null, "sdk_data", this.af);
+    }
+    if (!TextUtils.isEmpty(this.ag)) {
+      paramXmlSerializer.attribute(null, "tencent_video_id", this.ag);
+    }
+    if (!TextUtils.isEmpty(this.ah)) {
+      paramXmlSerializer.attribute(null, "view_id", this.ah);
+    }
+    if (!TextUtils.isEmpty(this.ai)) {
+      paramXmlSerializer.attribute(null, "qgg_ext", this.ai);
+    }
+    if (!TextUtils.isEmpty(this.aj)) {
+      paramXmlSerializer.attribute(null, "adInfo", this.aj);
+    }
+    if (!TextUtils.isEmpty(this.ak)) {
+      paramXmlSerializer.attribute(null, "is_report_click", this.ak);
+    }
+    Object localObject = this.ax.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((AbsStructMsgElement)((Iterator)localObject).next()).a(paramXmlSerializer);
     }
-    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a()
-  {
-    return a() == 1;
+    paramXmlSerializer.endTag(null, this.b);
   }
   
   public boolean a(StructMsgNode paramStructMsgNode)
@@ -919,37 +892,37 @@ public abstract class AbsStructMsgItem
     if (paramStructMsgNode == null) {
       return true;
     }
-    this.jdField_c_of_type_JavaLangString = paramStructMsgNode.a("action");
-    this.jdField_d_of_type_JavaLangString = paramStructMsgNode.a("actionData");
-    this.jdField_e_of_type_JavaLangString = paramStructMsgNode.a("a_actionData");
-    this.jdField_f_of_type_JavaLangString = paramStructMsgNode.a("i_actionData");
-    this.b = paramStructMsgNode.a("url");
-    this.jdField_g_of_type_JavaLangString = paramStructMsgNode.a("brief");
-    this.jdField_q_of_type_JavaLangString = paramStructMsgNode.a("apurl");
+    this.e = paramStructMsgNode.a("action");
+    this.f = paramStructMsgNode.a("actionData");
+    this.g = paramStructMsgNode.a("a_actionData");
+    this.h = paramStructMsgNode.a("i_actionData");
+    this.d = paramStructMsgNode.a("url");
+    this.i = paramStructMsgNode.a("brief");
+    this.s = paramStructMsgNode.a("apurl");
     Object localObject1 = paramStructMsgNode.a("flag");
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     try
     {
-      this.jdField_m_of_type_Int = Integer.parseInt((String)localObject1);
+      this.al = Integer.parseInt((String)localObject1);
     }
     catch (NumberFormatException localNumberFormatException1)
     {
       label112:
       break label112;
     }
-    this.jdField_m_of_type_Int = 0;
+    this.al = 0;
     localObject1 = paramStructMsgNode.a("mode");
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
     try
     {
-      this.jdField_o_of_type_Int = Integer.parseInt((String)localObject1);
+      this.au = Integer.parseInt((String)localObject1);
     }
     catch (NumberFormatException localNumberFormatException2)
     {
       label146:
       break label146;
     }
-    this.jdField_o_of_type_Int = 0;
+    this.au = 0;
     localObject1 = paramStructMsgNode.a("bg");
     try
     {
@@ -957,9 +930,9 @@ public abstract class AbsStructMsgItem
         break label249;
       }
       if (((String)localObject1).startsWith("#")) {
-        this.jdField_p_of_type_Int = Color.parseColor((String)localObject1);
+        this.av = Color.parseColor((String)localObject1);
       } else {
-        this.jdField_p_of_type_Int = Integer.parseInt((String)localObject1);
+        this.av = Integer.parseInt((String)localObject1);
       }
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -973,21 +946,21 @@ public abstract class AbsStructMsgItem
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("Item bg value is ");
-      ((StringBuilder)localObject1).append(this.jdField_p_of_type_Int);
+      ((StringBuilder)localObject1).append(this.av);
       QLog.i("AbsStructMsgItem", 2, ((StringBuilder)localObject1).toString());
     }
-    this.jdField_h_of_type_JavaLangString = paramStructMsgNode.a("businessData");
-    this.jdField_i_of_type_JavaLangString = paramStructMsgNode.a("commonData");
-    this.jdField_j_of_type_JavaLangString = paramStructMsgNode.a("index");
-    this.jdField_k_of_type_JavaLangString = paramStructMsgNode.a("index_name");
-    this.jdField_l_of_type_JavaLangString = paramStructMsgNode.a("index_type");
-    this.jdField_o_of_type_JavaLangString = paramStructMsgNode.a("canvas");
-    this.jdField_m_of_type_JavaLangString = paramStructMsgNode.a("rurl");
-    this.jdField_p_of_type_JavaLangString = paramStructMsgNode.a("disType");
-    this.n = paramStructMsgNode.a("tid");
-    if (this.jdField_a_of_type_Int > 10)
+    this.j = paramStructMsgNode.a("businessData");
+    this.k = paramStructMsgNode.a("commonData");
+    this.l = paramStructMsgNode.a("index");
+    this.m = paramStructMsgNode.a("index_name");
+    this.n = paramStructMsgNode.a("index_type");
+    this.q = paramStructMsgNode.a("canvas");
+    this.o = paramStructMsgNode.a("rurl");
+    this.r = paramStructMsgNode.a("disType");
+    this.p = paramStructMsgNode.a("tid");
+    if (this.a > 10)
     {
-      localObject1 = paramStructMsgNode.a;
+      localObject1 = paramStructMsgNode.e;
       if (localObject1 != null)
       {
         localObject2 = ((StructMsgNode)localObject1).a("action_type");
@@ -996,7 +969,7 @@ public abstract class AbsStructMsgItem
     }
     try
     {
-      this.jdField_c_of_type_Int = Integer.parseInt((String)localObject2);
+      this.t = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException5)
     {
@@ -1004,96 +977,96 @@ public abstract class AbsStructMsgItem
       label433:
       break label398;
     }
-    this.jdField_c_of_type_Int = 0;
+    this.t = 0;
     localObject2 = ((StructMsgNode)localObject1).a("dest_type");
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
     try
     {
-      this.jdField_d_of_type_Int = Integer.parseInt((String)localObject2);
+      this.z = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException6)
     {
       break label433;
     }
-    this.jdField_d_of_type_Int = 0;
+    this.z = 0;
     localObject2 = ((StructMsgNode)localObject1).a("product_type");
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
     try
     {
-      this.jdField_e_of_type_Int = Integer.parseInt((String)localObject2);
+      this.F = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException7)
     {
       label468:
       break label468;
     }
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_r_of_type_JavaLangString = ((StructMsgNode)localObject1).a("advertiser_id");
-    this.s = ((StructMsgNode)localObject1).a("aid");
-    this.t = ((StructMsgNode)localObject1).a("app_download_schema");
-    this.u = ((StructMsgNode)localObject1).a("canvas_json");
-    this.v = ((StructMsgNode)localObject1).a("customized_invoke_url");
-    this.w = ((StructMsgNode)localObject1).a("effect_url");
-    this.x = ((StructMsgNode)localObject1).a("landing_page");
-    this.y = ((StructMsgNode)localObject1).a("landing_page_report_url");
-    this.z = ((StructMsgNode)localObject1).a("noco_id");
-    this.A = ((StructMsgNode)localObject1).a("product_id");
-    this.B = ((StructMsgNode)localObject1).a("rl");
-    this.C = ((StructMsgNode)localObject1).a("subordinate_product_id");
-    this.D = ((StructMsgNode)localObject1).a("traceid");
-    this.E = ((StructMsgNode)localObject1).a("via");
-    this.F = ((StructMsgNode)localObject1).a("video_url");
-    this.G = ((StructMsgNode)localObject1).a("appname");
-    this.H = ((StructMsgNode)localObject1).a("customized_invoke_url");
-    this.I = ((StructMsgNode)localObject1).a("pkg_name");
-    this.J = ((StructMsgNode)localObject1).a("pkgurl");
-    this.jdField_q_of_type_JavaLangString = ((StructMsgNode)localObject1).a("apurl");
-    if (this.jdField_a_of_type_Int > 11)
+    this.F = 0;
+    this.u = ((StructMsgNode)localObject1).a("advertiser_id");
+    this.v = ((StructMsgNode)localObject1).a("aid");
+    this.w = ((StructMsgNode)localObject1).a("app_download_schema");
+    this.x = ((StructMsgNode)localObject1).a("canvas_json");
+    this.y = ((StructMsgNode)localObject1).a("customized_invoke_url");
+    this.A = ((StructMsgNode)localObject1).a("effect_url");
+    this.B = ((StructMsgNode)localObject1).a("landing_page");
+    this.C = ((StructMsgNode)localObject1).a("landing_page_report_url");
+    this.D = ((StructMsgNode)localObject1).a("noco_id");
+    this.E = ((StructMsgNode)localObject1).a("product_id");
+    this.G = ((StructMsgNode)localObject1).a("rl");
+    this.H = ((StructMsgNode)localObject1).a("subordinate_product_id");
+    this.I = ((StructMsgNode)localObject1).a("traceid");
+    this.J = ((StructMsgNode)localObject1).a("via");
+    this.K = ((StructMsgNode)localObject1).a("video_url");
+    this.L = ((StructMsgNode)localObject1).a("appname");
+    this.M = ((StructMsgNode)localObject1).a("customized_invoke_url");
+    this.N = ((StructMsgNode)localObject1).a("pkg_name");
+    this.O = ((StructMsgNode)localObject1).a("pkgurl");
+    this.s = ((StructMsgNode)localObject1).a("apurl");
+    if (this.a > 11)
     {
-      localObject1 = paramStructMsgNode.a;
+      localObject1 = paramStructMsgNode.e;
       if (localObject1 != null)
       {
-        this.K = ((StructMsgNode)localObject1).a("api_click_monitor_url");
-        this.L = ((StructMsgNode)localObject1).a("api_exposure_monitor_url");
-        this.M = ((StructMsgNode)localObject1).a("trace_info_aid");
+        this.Q = ((StructMsgNode)localObject1).a("api_click_monitor_url");
+        this.R = ((StructMsgNode)localObject1).a("api_exposure_monitor_url");
+        this.S = ((StructMsgNode)localObject1).a("trace_info_aid");
       }
     }
-    if (this.jdField_a_of_type_Int > 12)
+    if (this.a > 12)
     {
-      localObject1 = paramStructMsgNode.a;
+      localObject1 = paramStructMsgNode.e;
       if (localObject1 != null)
       {
-        this.N = ((StructMsgNode)localObject1).a("corporate_image_name");
-        this.O = ((StructMsgNode)localObject1).a("corporate_logo");
+        this.T = ((StructMsgNode)localObject1).a("corporate_image_name");
+        this.U = ((StructMsgNode)localObject1).a("corporate_logo");
       }
     }
-    if (this.jdField_a_of_type_Int > 13)
+    if (this.a > 13)
     {
-      localObject1 = paramStructMsgNode.a.a("mini_program_type");
+      localObject1 = paramStructMsgNode.e.a("mini_program_type");
       if (TextUtils.isEmpty((CharSequence)localObject1)) {}
     }
     try
     {
-      this.jdField_f_of_type_Int = Integer.parseInt((String)localObject1);
+      this.P = Integer.parseInt((String)localObject1);
     }
     catch (NumberFormatException localNumberFormatException3)
     {
       label854:
       break label854;
     }
-    this.jdField_f_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int > 14)
+    this.P = 0;
+    if (this.a > 14)
     {
-      localObject1 = paramStructMsgNode.a;
+      localObject1 = paramStructMsgNode.e;
       if (localObject1 != null)
       {
         localObject2 = ((StructMsgNode)localObject1).a("tab_id");
-        if (StringUtil.a((String)localObject2)) {}
+        if (StringUtil.isEmpty((String)localObject2)) {}
       }
     }
     try
     {
-      this.jdField_g_of_type_Int = Integer.parseInt((String)localObject2);
+      this.V = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException8)
     {
@@ -1101,66 +1074,66 @@ public abstract class AbsStructMsgItem
       label944:
       break label909;
     }
-    this.jdField_g_of_type_Int = 0;
+    this.V = 0;
     localObject1 = ((StructMsgNode)localObject1).a("is_hidden");
-    if (!StringUtil.a((String)localObject1)) {}
+    if (!StringUtil.isEmpty((String)localObject1)) {}
     try
     {
-      this.jdField_h_of_type_Int = Integer.parseInt((String)localObject1);
+      this.W = Integer.parseInt((String)localObject1);
     }
     catch (NumberFormatException localNumberFormatException4)
     {
       break label944;
     }
-    this.jdField_h_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int > 15)
+    this.W = 0;
+    if (this.a > 15)
     {
-      localObject1 = paramStructMsgNode.a;
-      this.P = ((StructMsgNode)localObject1).a("negative_feedback_url");
-      this.Q = ((StructMsgNode)localObject1).a("sdk_exposure_monitor_url");
-      this.R = ((StructMsgNode)localObject1).a("sdk_click_monitor_url");
+      localObject1 = paramStructMsgNode.e;
+      this.X = ((StructMsgNode)localObject1).a("negative_feedback_url");
+      this.Y = ((StructMsgNode)localObject1).a("sdk_exposure_monitor_url");
+      this.Z = ((StructMsgNode)localObject1).a("sdk_click_monitor_url");
       localObject2 = ((StructMsgNode)localObject1).a("media_duration");
-      if (StringUtil.a((String)localObject2)) {}
+      if (StringUtil.isEmpty((String)localObject2)) {}
     }
     try
     {
-      this.jdField_i_of_type_Int = Integer.parseInt((String)localObject2);
+      this.aa = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException9)
     {
       label1030:
       break label1030;
     }
-    this.jdField_i_of_type_Int = 0;
+    this.aa = 0;
     localObject2 = ((StructMsgNode)localObject1).a("video_file_size");
-    if (!StringUtil.a((String)localObject2)) {}
+    if (!StringUtil.isEmpty((String)localObject2)) {}
     try
     {
-      this.jdField_j_of_type_Int = Integer.parseInt((String)localObject2);
+      this.ab = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException10)
     {
       label1065:
       break label1065;
     }
-    this.jdField_j_of_type_Int = 0;
+    this.ab = 0;
     localObject2 = ((StructMsgNode)localObject1).a("app_score_num");
-    if (!StringUtil.a((String)localObject2)) {}
+    if (!StringUtil.isEmpty((String)localObject2)) {}
     try
     {
-      this.jdField_k_of_type_Int = Integer.parseInt((String)localObject2);
+      this.ac = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException11)
     {
       label1100:
       break label1100;
     }
-    this.jdField_k_of_type_Int = 0;
+    this.ac = 0;
     localObject2 = ((StructMsgNode)localObject1).a("download_num");
-    if (!StringUtil.a((String)localObject2)) {}
+    if (!StringUtil.isEmpty((String)localObject2)) {}
     try
     {
-      this.jdField_l_of_type_Int = Integer.parseInt((String)localObject2);
+      this.ad = Integer.parseInt((String)localObject2);
     }
     catch (NumberFormatException localNumberFormatException12)
     {
@@ -1169,19 +1142,19 @@ public abstract class AbsStructMsgItem
       int i;
       break label1135;
     }
-    this.jdField_l_of_type_Int = 0;
-    this.S = ((StructMsgNode)localObject1).a("universal_link");
-    this.T = ((StructMsgNode)localObject1).a("sdk_data");
-    this.U = ((StructMsgNode)localObject1).a("tencent_video_id");
-    this.V = ((StructMsgNode)localObject1).a("view_id");
-    if (this.jdField_a_of_type_Int > 16) {
-      this.W = paramStructMsgNode.a.a("qgg_ext");
+    this.ad = 0;
+    this.ae = ((StructMsgNode)localObject1).a("universal_link");
+    this.af = ((StructMsgNode)localObject1).a("sdk_data");
+    this.ag = ((StructMsgNode)localObject1).a("tencent_video_id");
+    this.ah = ((StructMsgNode)localObject1).a("view_id");
+    if (this.a > 16) {
+      this.ai = paramStructMsgNode.e.a("qgg_ext");
     }
-    if (this.jdField_a_of_type_Int > 17)
+    if (this.a > 17)
     {
-      localObject1 = paramStructMsgNode.a;
-      this.X = ((StructMsgNode)localObject1).a("adInfo");
-      this.Y = ((StructMsgNode)localObject1).a("is_report_click");
+      localObject1 = paramStructMsgNode.e;
+      this.aj = ((StructMsgNode)localObject1).a("adInfo");
+      this.ak = ((StructMsgNode)localObject1).a("is_report_click");
     }
     k = paramStructMsgNode.a();
     i = 0;
@@ -1233,20 +1206,27 @@ public abstract class AbsStructMsgItem
     return true;
   }
   
-  protected abstract int b();
-  
   public abstract View b(Context paramContext, View paramView, Bundle paramBundle);
   
-  public abstract String b();
-  
-  public void b(int paramInt)
+  public String b()
   {
-    this.jdField_o_of_type_Int = paramInt;
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(e());
+    localStringBuffer.append(this.au);
+    Object localObject = this.ax;
+    if (localObject != null)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuffer.append(((AbsStructMsgElement)((Iterator)localObject).next()).b());
+      }
+    }
+    return localStringBuffer.toString();
   }
   
   public void b(View paramView)
   {
-    if (!TextUtils.isEmpty(this.b))
+    if (!TextUtils.isEmpty(this.d))
     {
       Object localObject = paramView.getLayoutParams();
       int i = paramView.getPaddingLeft();
@@ -1261,29 +1241,29 @@ public abstract class AbsStructMsgItem
           if (n != 2)
           {
             if (n == 3) {
-              paramView.setBackgroundResource(2130838253);
+              paramView.setBackgroundResource(2130838312);
             }
           }
           else {
-            paramView.setBackgroundResource(2130838254);
+            paramView.setBackgroundResource(2130838313);
           }
         }
         else {
-          paramView.setBackgroundResource(2130838256);
+          paramView.setBackgroundResource(2130838315);
         }
       }
       else {
-        paramView.setBackgroundResource(2130838255);
+        paramView.setBackgroundResource(2130838314);
       }
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       paramView.setPadding(i, j, k, m);
-      localObject = paramView.findViewById(2131368633);
+      localObject = paramView.findViewById(2131435545);
       if ((localObject != null) && ((localObject instanceof PAHighLightImageView)))
       {
         ((PAHighLightImageView)localObject).a();
         return;
       }
-      paramView = paramView.findViewById(2131377977);
+      paramView = paramView.findViewById(2131446464);
       if ((paramView != null) && ((paramView instanceof PAHighLightImageView))) {
         ((PAHighLightImageView)paramView).a();
       }
@@ -1292,13 +1272,20 @@ public abstract class AbsStructMsgItem
   
   public void b(String paramString)
   {
-    this.jdField_r_of_type_Int = 0;
-    a(new StructMsgItemImage(paramString));
+    a(new StructMsgItemSummary(paramString));
+    a(new StructMsgItemHr());
+  }
+  
+  protected abstract int c();
+  
+  public void c(int paramInt)
+  {
+    this.au = paramInt;
   }
   
   public void c(View paramView)
   {
-    if (!TextUtils.isEmpty(this.b))
+    if (!TextUtils.isEmpty(this.d))
     {
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
       int i = paramView.getPaddingLeft();
@@ -1313,61 +1300,67 @@ public abstract class AbsStructMsgItem
           if (n != 2)
           {
             if (n == 3) {
-              paramView.setBackgroundResource(2130838269);
+              paramView.setBackgroundResource(2130838328);
             }
           }
           else {
-            paramView.setBackgroundResource(2130838266);
+            paramView.setBackgroundResource(2130838325);
           }
         }
         else {
-          paramView.setBackgroundResource(2130838270);
+          paramView.setBackgroundResource(2130838329);
         }
       }
       else {
-        paramView.setBackgroundResource(2130838267);
+        paramView.setBackgroundResource(2130838326);
       }
       paramView.setLayoutParams(localLayoutParams);
       paramView.setPadding(i, j, k, m);
     }
   }
   
+  public void c(String paramString)
+  {
+    this.ay = 0;
+    a(new StructMsgItemImage(paramString));
+  }
+  
   @TargetApi(16)
   protected void d(View paramView)
   {
-    if ((b()) && (a()))
+    if ((f()) && (d()))
     {
-      int i = this.jdField_p_of_type_Int;
+      int i = this.av;
       if (i != 1)
       {
         if (i == 2) {
-          if (!TextUtils.isEmpty(this.b)) {
-            this.jdField_q_of_type_Int = 2130838258;
+          if (!TextUtils.isEmpty(this.d)) {
+            this.aw = 2130838317;
           } else {
-            this.jdField_q_of_type_Int = 2130838283;
+            this.aw = 2130838331;
           }
         }
       }
-      else if (!TextUtils.isEmpty(this.b)) {
-        this.jdField_q_of_type_Int = 2130838257;
+      else if (!TextUtils.isEmpty(this.d)) {
+        this.aw = 2130838316;
       } else {
-        this.jdField_q_of_type_Int = 2130838271;
+        this.aw = 2130838330;
       }
       if ((paramView != null) && (a() == 1))
       {
-        i = this.jdField_q_of_type_Int;
+        i = this.aw;
         if (i != 0)
         {
           paramView.setBackgroundResource(i);
           return;
         }
-        paramView.setBackgroundResource(2130838256);
+        paramView.setBackgroundResource(2130838315);
       }
     }
-    else if ((a()) && (this.jdField_p_of_type_Int != 0))
+    else if ((d()) && (this.av != 0))
     {
       float f = AIOUtils.b(4.0F, paramView.getResources());
-      StateListDrawable localStateListDrawable = StructMsgUtils.a(paramView.getResources(), this.jdField_p_of_type_Int, new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
+      StateListDrawable localStateListDrawable = StructMsgUtils.a(paramView.getResources(), this.av, new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
       if (localStateListDrawable != null)
       {
         if (Build.VERSION.SDK_INT < 16)
@@ -1379,10 +1372,17 @@ public abstract class AbsStructMsgItem
       }
     }
   }
+  
+  public boolean d()
+  {
+    return a() == 1;
+  }
+  
+  public abstract String e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgItem
  * JD-Core Version:    0.7.0.1
  */

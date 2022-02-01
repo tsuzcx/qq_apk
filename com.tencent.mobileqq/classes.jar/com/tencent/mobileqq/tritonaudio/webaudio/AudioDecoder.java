@@ -227,102 +227,116 @@ class AudioDecoder
     //   389: invokevirtual 132	android/media/MediaExtractor:release	()V
     //   392: aload 7
     //   394: areturn
-    //   395: astore 7
-    //   397: goto +38 -> 435
-    //   400: astore 7
-    //   402: aload 7
-    //   404: invokevirtual 135	java/lang/Exception:printStackTrace	()V
-    //   407: aload 8
-    //   409: invokevirtual 125	java/io/ByteArrayOutputStream:close	()V
-    //   412: aload_0
-    //   413: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
-    //   416: invokevirtual 128	android/media/MediaCodec:stop	()V
-    //   419: aload_0
-    //   420: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
-    //   423: invokevirtual 131	android/media/MediaCodec:release	()V
-    //   426: aload_0
-    //   427: getfield 63	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaExtractor	Landroid/media/MediaExtractor;
-    //   430: invokevirtual 132	android/media/MediaExtractor:release	()V
-    //   433: aconst_null
-    //   434: areturn
-    //   435: aload 8
-    //   437: invokevirtual 125	java/io/ByteArrayOutputStream:close	()V
-    //   440: aload_0
-    //   441: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
-    //   444: invokevirtual 128	android/media/MediaCodec:stop	()V
-    //   447: aload_0
-    //   448: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
-    //   451: invokevirtual 131	android/media/MediaCodec:release	()V
-    //   454: aload_0
-    //   455: getfield 63	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaExtractor	Landroid/media/MediaExtractor;
-    //   458: invokevirtual 132	android/media/MediaExtractor:release	()V
-    //   461: goto +6 -> 467
-    //   464: aload 7
-    //   466: athrow
-    //   467: goto -3 -> 464
-    //   470: astore 8
-    //   472: aload 7
-    //   474: areturn
-    //   475: astore 7
-    //   477: aconst_null
-    //   478: areturn
-    //   479: astore 8
-    //   481: goto -20 -> 461
+    //   395: astore 8
+    //   397: ldc 12
+    //   399: ldc 134
+    //   401: aload 8
+    //   403: invokestatic 140	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   406: pop
+    //   407: aload 7
+    //   409: areturn
+    //   410: astore 7
+    //   412: goto +53 -> 465
+    //   415: astore 7
+    //   417: aload 7
+    //   419: invokevirtual 143	java/lang/Exception:printStackTrace	()V
+    //   422: aload 8
+    //   424: invokevirtual 125	java/io/ByteArrayOutputStream:close	()V
+    //   427: aload_0
+    //   428: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
+    //   431: invokevirtual 128	android/media/MediaCodec:stop	()V
+    //   434: aload_0
+    //   435: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
+    //   438: invokevirtual 131	android/media/MediaCodec:release	()V
+    //   441: aload_0
+    //   442: getfield 63	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaExtractor	Landroid/media/MediaExtractor;
+    //   445: invokevirtual 132	android/media/MediaExtractor:release	()V
+    //   448: goto +15 -> 463
+    //   451: astore 7
+    //   453: ldc 12
+    //   455: ldc 134
+    //   457: aload 7
+    //   459: invokestatic 140	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   462: pop
+    //   463: aconst_null
+    //   464: areturn
+    //   465: aload 8
+    //   467: invokevirtual 125	java/io/ByteArrayOutputStream:close	()V
+    //   470: aload_0
+    //   471: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
+    //   474: invokevirtual 128	android/media/MediaCodec:stop	()V
+    //   477: aload_0
+    //   478: getfield 42	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaCodec	Landroid/media/MediaCodec;
+    //   481: invokevirtual 131	android/media/MediaCodec:release	()V
+    //   484: aload_0
+    //   485: getfield 63	com/tencent/mobileqq/tritonaudio/webaudio/AudioDecoder:mediaExtractor	Landroid/media/MediaExtractor;
+    //   488: invokevirtual 132	android/media/MediaExtractor:release	()V
+    //   491: goto +15 -> 506
+    //   494: astore 8
+    //   496: ldc 12
+    //   498: ldc 134
+    //   500: aload 8
+    //   502: invokestatic 140	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   505: pop
+    //   506: goto +6 -> 512
+    //   509: aload 7
+    //   511: athrow
+    //   512: goto -3 -> 509
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	484	0	this	AudioDecoder
+    //   0	515	0	this	AudioDecoder
     //   37	248	1	i	int
     //   39	294	2	j	int
     //   45	287	3	k	int
     //   60	258	4	m	int
     //   116	11	5	l	long
-    //   16	377	7	localObject1	Object
-    //   395	1	7	localObject2	Object
-    //   400	73	7	localException1	Exception
-    //   475	1	7	localException2	Exception
-    //   34	402	8	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   470	1	8	localException3	Exception
-    //   479	1	8	localException4	Exception
+    //   16	392	7	localObject1	Object
+    //   410	1	7	localObject2	Object
+    //   415	3	7	localException1	Exception
+    //   451	59	7	localException2	Exception
+    //   34	333	8	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   395	71	8	localException3	Exception
+    //   494	7	8	localException4	Exception
     //   7	63	9	arrayOfByteBuffer	java.nio.ByteBuffer[]
     //   25	249	10	localBufferInfo	android.media.MediaCodec.BufferInfo
     //   74	137	11	localByteBuffer	java.nio.ByteBuffer
     //   208	49	12	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   50	62	395	finally
-    //   76	87	395	finally
-    //   91	104	395	finally
-    //   109	140	395	finally
-    //   142	156	395	finally
-    //   161	181	395	finally
-    //   186	194	395	finally
-    //   201	250	395	finally
-    //   250	261	395	finally
-    //   261	271	395	finally
-    //   273	283	395	finally
-    //   297	306	395	finally
-    //   320	331	395	finally
-    //   336	359	395	finally
-    //   359	366	395	finally
-    //   402	407	395	finally
-    //   50	62	400	java/lang/Exception
-    //   76	87	400	java/lang/Exception
-    //   91	104	400	java/lang/Exception
-    //   109	140	400	java/lang/Exception
-    //   142	156	400	java/lang/Exception
-    //   161	181	400	java/lang/Exception
-    //   186	194	400	java/lang/Exception
-    //   201	250	400	java/lang/Exception
-    //   250	261	400	java/lang/Exception
-    //   261	271	400	java/lang/Exception
-    //   273	283	400	java/lang/Exception
-    //   297	306	400	java/lang/Exception
-    //   320	331	400	java/lang/Exception
-    //   336	359	400	java/lang/Exception
-    //   359	366	400	java/lang/Exception
-    //   366	392	470	java/lang/Exception
-    //   407	433	475	java/lang/Exception
-    //   435	461	479	java/lang/Exception
+    //   366	392	395	java/lang/Exception
+    //   50	62	410	finally
+    //   76	87	410	finally
+    //   91	104	410	finally
+    //   109	140	410	finally
+    //   142	156	410	finally
+    //   161	181	410	finally
+    //   186	194	410	finally
+    //   201	250	410	finally
+    //   250	261	410	finally
+    //   261	271	410	finally
+    //   273	283	410	finally
+    //   297	306	410	finally
+    //   320	331	410	finally
+    //   336	359	410	finally
+    //   359	366	410	finally
+    //   417	422	410	finally
+    //   50	62	415	java/lang/Exception
+    //   76	87	415	java/lang/Exception
+    //   91	104	415	java/lang/Exception
+    //   109	140	415	java/lang/Exception
+    //   142	156	415	java/lang/Exception
+    //   161	181	415	java/lang/Exception
+    //   186	194	415	java/lang/Exception
+    //   201	250	415	java/lang/Exception
+    //   250	261	415	java/lang/Exception
+    //   261	271	415	java/lang/Exception
+    //   273	283	415	java/lang/Exception
+    //   297	306	415	java/lang/Exception
+    //   320	331	415	java/lang/Exception
+    //   336	359	415	java/lang/Exception
+    //   359	366	415	java/lang/Exception
+    //   422	448	451	java/lang/Exception
+    //   465	491	494	java/lang/Exception
   }
   
   @RequiresApi(api=16)
@@ -475,7 +489,7 @@ class AudioDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.webaudio.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,13 @@ class EffectPendantBase$1
   {
     try
     {
-      ZipUtils.unZipFile(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString);
+      ZipUtils.unZipFile(this.a, this.b);
       return;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "isTemplateUsable unzip error", localException);
+        QLog.i(this.this$0.a, 2, "isTemplateUsable unzip error", localException);
       }
     }
   }

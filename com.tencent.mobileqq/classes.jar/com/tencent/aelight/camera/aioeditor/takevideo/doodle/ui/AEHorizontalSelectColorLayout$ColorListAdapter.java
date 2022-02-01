@@ -12,26 +12,26 @@ import java.util.List;
 class AEHorizontalSelectColorLayout$ColorListAdapter
   extends RecyclerView.Adapter<AEHorizontalSelectColorLayout.ColorVH>
 {
-  private int jdField_a_of_type_Int;
-  private AEHorizontalSelectColorLayout.IColorSelectListener jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$IColorSelectListener;
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b = 0;
-  private int c;
+  private int a;
+  private AEHorizontalSelectColorLayout.IColorSelectListener b;
+  private int c = 0;
+  private List<Integer> d = new ArrayList();
+  private int e;
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   private void a(AEHorizontalSelectColorLayout.IColorSelectListener paramIColorSelectListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiAEHorizontalSelectColorLayout$IColorSelectListener = paramIColorSelectListener;
+    this.b = paramIColorSelectListener;
   }
   
   private void a(List<Integer> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.d.clear();
+    this.d.addAll(paramList);
   }
   
   private void a(boolean paramBoolean)
@@ -41,45 +41,45 @@ class AEHorizontalSelectColorLayout$ColorListAdapter
   
   public AEHorizontalSelectColorLayout.ColorVH a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new AEHorizontalSelectColorLayout.ColorVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558511, paramViewGroup, false), null);
+    return new AEHorizontalSelectColorLayout.ColorVH(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624064, paramViewGroup, false), null);
   }
   
   public void a(AEHorizontalSelectColorLayout.ColorVH paramColorVH, int paramInt)
   {
-    int i = this.b;
+    int i = this.c;
     if (paramInt < i)
     {
-      AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH).setBackgroundResource(2130837736);
+      AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH).setBackgroundResource(2130837820);
     }
     else
     {
-      i = ((Integer)this.jdField_a_of_type_JavaUtilList.get(paramInt - i)).intValue();
-      AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH).mutate();
-      AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH).setColor(i);
-      AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH).setBackgroundDrawable(AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH));
+      i = ((Integer)this.d.get(paramInt - i)).intValue();
+      AEHorizontalSelectColorLayout.ColorVH.b(paramColorVH).mutate();
+      AEHorizontalSelectColorLayout.ColorVH.b(paramColorVH).setColor(i);
+      AEHorizontalSelectColorLayout.ColorVH.a(paramColorVH).setBackgroundDrawable(AEHorizontalSelectColorLayout.ColorVH.b(paramColorVH));
     }
-    ImageView localImageView = AEHorizontalSelectColorLayout.ColorVH.b(paramColorVH);
-    if (paramInt == this.jdField_a_of_type_Int) {
+    ImageView localImageView = AEHorizontalSelectColorLayout.ColorVH.c(paramColorVH);
+    if (paramInt == this.a) {
       i = 0;
     } else {
       i = 8;
     }
     localImageView.setVisibility(i);
-    i = this.b;
-    if ((paramInt >= i) && (paramInt == this.jdField_a_of_type_Int)) {
-      this.c = (paramInt - i);
+    i = this.c;
+    if ((paramInt >= i) && (paramInt == this.a)) {
+      this.e = (paramInt - i);
     }
     paramColorVH.itemView.setOnClickListener(new AEHorizontalSelectColorLayout.ColorListAdapter.1(this, paramColorVH));
   }
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() + this.b;
+    return this.d.size() + this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.AEHorizontalSelectColorLayout.ColorListAdapter
  * JD-Core Version:    0.7.0.1
  */

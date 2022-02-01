@@ -11,7 +11,7 @@ public class SuitUIPlugin
   void OnActivityCreate()
   {
     super.OnActivityCreate();
-    WebViewProvider localWebViewProvider = this.mRuntime.a();
+    WebViewProvider localWebViewProvider = this.mRuntime.f();
     if (localWebViewProvider != null) {
       localWebViewProvider.setCurUrl(super.decodeUrl(localWebViewProvider.getCurrentUrl()));
     }
@@ -29,7 +29,7 @@ public class SuitUIPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.SuitUIPlugin
  * JD-Core Version:    0.7.0.1
  */

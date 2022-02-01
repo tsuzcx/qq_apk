@@ -91,8 +91,8 @@ public class SubType0x85
       } else {
         paramMsgInfo = null;
       }
-      paramMsgType0x210 = HardCodeUtil.a(2131707841);
-      localObject = HardCodeUtil.a(2131707840);
+      paramMsgType0x210 = HardCodeUtil.a(2131905655);
+      localObject = HardCodeUtil.a(2131905654);
       paramMsgInfo = localMessageForQQWalletTips.getQQWalletTips(paramQQAppInterface, paramMsgInfo);
       if ((TextUtils.isEmpty(paramMsgInfo)) || ((!paramMsgInfo.equals(paramMsgType0x210)) && (!paramMsgInfo.equals(localObject)))) {
         break;
@@ -109,7 +109,7 @@ public class SubType0x85
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x85
  * JD-Core Version:    0.7.0.1
  */

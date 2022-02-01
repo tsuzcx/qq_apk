@@ -6,18 +6,18 @@ public class NewPolymericInfo$PackVideoInfo
   implements Cloneable
 {
   public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
   public String b;
   public int c;
-  public String c;
   public int d;
-  public String d;
-  public String e;
-  public String f;
+  public int e;
+  public long f;
   public String g;
+  public String h;
+  public long i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
   protected Object clone()
   {
@@ -40,37 +40,37 @@ public class NewPolymericInfo$PackVideoInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PackVideoInfo{businessType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", vid='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", width=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", height=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", duration=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", xgFileSize=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", thirdUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", shareUrl='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", thirdUin=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(", thirdUinName='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.j);
     localStringBuilder.append('\'');
     localStringBuilder.append(", thirdName='");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.k);
     localStringBuilder.append('\'');
     localStringBuilder.append(", thirdIcon='");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.l);
     localStringBuilder.append('\'');
     localStringBuilder.append(", thirdAction='");
-    localStringBuilder.append(this.g);
+    localStringBuilder.append(this.m);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -78,7 +78,7 @@ public class NewPolymericInfo$PackVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.NewPolymericInfo.PackVideoInfo
  * JD-Core Version:    0.7.0.1
  */

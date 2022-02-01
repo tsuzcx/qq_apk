@@ -56,7 +56,7 @@ class FMTSrvAddrProvider$SrvAddrChooser
   private int findBestServerForPttDown(int[] paramArrayOfInt)
   {
     int i;
-    if (!FMTSrvAddrProvider.access$600(this.this$0).a()) {
+    if (!FMTSrvAddrProvider.access$600(this.this$0).c()) {
       i = 2;
     } else {
       i = 5;
@@ -322,7 +322,7 @@ class FMTSrvAddrProvider$SrvAddrChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FMTSrvAddrProvider.SrvAddrChooser
  * JD-Core Version:    0.7.0.1
  */

@@ -14,36 +14,36 @@ import mqq.app.AppRuntime.Status;
 
 public class OnlineStatusViewPresenter
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  OnlineStatusBean jdField_a_of_type_ComTencentMobileqqConfigBusinessOnlineStatusBean = (OnlineStatusBean)QConfigManager.a().a(578);
-  OnlineBatteryProducer jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer = new OnlineBatteryProducer();
+  OnlineStatusBean a = (OnlineStatusBean)QConfigManager.b().b(578);
+  OnlineBatteryProducer b = new OnlineBatteryProducer();
+  long c;
+  int d;
   
   public boolean a(AppRuntime paramAppRuntime, Friends paramFriends, OnlineStatusView paramOnlineStatusView)
   {
-    this.jdField_a_of_type_Long = paramFriends.uExtOnlineStatus;
-    this.jdField_a_of_type_Int = paramFriends.getBatteryCapacity();
+    this.c = paramFriends.uExtOnlineStatus;
+    this.d = paramFriends.getBatteryCapacity();
     if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusViewBinding", 2, new Object[] { "setOnlineStatus extStatus:", Long.valueOf(this.jdField_a_of_type_Long), " battery:", Integer.valueOf(this.jdField_a_of_type_Int) });
+      QLog.d("OnlineStatusViewBinding", 2, new Object[] { "setOnlineStatus extStatus:", Long.valueOf(this.c), " battery:", Integer.valueOf(this.d) });
     }
     boolean bool = paramAppRuntime.getCurrentUin().equals(paramFriends.uin);
-    OnlineStatusItem localOnlineStatusItem = OnLineStatusHelper.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long, bool ^ true);
-    if ((localOnlineStatusItem.jdField_a_of_type_Int != 2) && ((this.jdField_a_of_type_Long != 1000L) || (this.jdField_a_of_type_Int > 0)))
+    OnlineStatusItem localOnlineStatusItem = OnLineStatusHelper.a().a(AppRuntime.Status.online, this.c, bool ^ true);
+    if ((localOnlineStatusItem.f != 2) && ((this.c != 1000L) || (this.d > 0)))
     {
-      paramAppRuntime = OnLineStatusHelper.a().b(paramAppRuntime, localOnlineStatusItem, localOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status, paramFriends, paramOnlineStatusView.a(), 2);
-      if ((localOnlineStatusItem.jdField_a_of_type_Long == 1030L) && (TextUtils.isEmpty(paramAppRuntime))) {
+      paramAppRuntime = OnLineStatusHelper.a().b(paramAppRuntime, localOnlineStatusItem, localOnlineStatusItem.g, paramFriends, paramOnlineStatusView.getSuffixTextView(), 2);
+      if ((localOnlineStatusItem.b == 1030L) && (TextUtils.isEmpty(paramAppRuntime))) {
         return false;
       }
-      if ((localOnlineStatusItem.jdField_a_of_type_Long == 1040L) && (TextUtils.isEmpty(paramAppRuntime))) {
+      if ((localOnlineStatusItem.b == 1040L) && (TextUtils.isEmpty(paramAppRuntime))) {
         return false;
       }
-      if ((localOnlineStatusItem.jdField_a_of_type_Long == 40001L) && (TextUtils.isEmpty(paramAppRuntime))) {
+      if ((localOnlineStatusItem.b == 40001L) && (TextUtils.isEmpty(paramAppRuntime))) {
         return false;
       }
-      if (OnlineStatusItem.a(this.jdField_a_of_type_Long)) {
-        paramOnlineStatusView.setIconDrawable(this.jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer.a(this.jdField_a_of_type_Int, 1));
+      if (OnlineStatusItem.a(this.c)) {
+        paramOnlineStatusView.setIconDrawable(this.b.a(this.d, 1));
       } else {
-        paramOnlineStatusView.setIconDrawable(OnLineStatusHelper.a().a(localOnlineStatusItem, paramFriends));
+        paramOnlineStatusView.setIconDrawable(OnLineStatusHelper.a().b(localOnlineStatusItem, paramFriends));
       }
       paramOnlineStatusView.setDescText(paramAppRuntime);
       return true;
@@ -54,7 +54,7 @@ public class OnlineStatusViewPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.presenter.OnlineStatusViewPresenter
  * JD-Core Version:    0.7.0.1
  */

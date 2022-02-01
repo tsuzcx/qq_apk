@@ -11,12 +11,12 @@ class TextPreviewActivity$10$5
   public void run()
   {
     TextPreviewActivity.d(this.a.a);
-    QQToast.a(this.a.a.getApplicationContext(), HardCodeUtil.a(2131714684), 0).a();
+    QQToast.makeText(this.a.a.getApplicationContext(), HardCodeUtil.a(2131912193), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.10.5
  * JD-Core Version:    0.7.0.1
  */

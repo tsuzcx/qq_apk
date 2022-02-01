@@ -12,15 +12,15 @@ class QQBlurView$1
     if (!QQBlurView.a(this.a)) {
       return true;
     }
-    if (!QQBlurView.a(this.a).a()) {
+    if (!QQBlurView.b(this.a).a()) {
       return true;
     }
-    return QQBlurView.a(this.a).b();
+    return QQBlurView.b(this.a).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlurView.1
  * JD-Core Version:    0.7.0.1
  */

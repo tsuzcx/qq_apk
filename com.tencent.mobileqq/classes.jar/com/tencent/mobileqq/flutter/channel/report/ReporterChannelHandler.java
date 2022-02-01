@@ -10,7 +10,7 @@ import io.flutter.plugin.common.StandardMethodCodec;
 public abstract class ReporterChannelHandler
   implements MethodChannel.MethodCallHandler
 {
-  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
+  public static final MethodCodec b = StandardMethodCodec.INSTANCE;
   
   protected abstract void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, String paramString5, String paramString6, Boolean paramBoolean, MethodChannel.Result paramResult);
   
@@ -28,7 +28,7 @@ public abstract class ReporterChannelHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.report.ReporterChannelHandler
  * JD-Core Version:    0.7.0.1
  */

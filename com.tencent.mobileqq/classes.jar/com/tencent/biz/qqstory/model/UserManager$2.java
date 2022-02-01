@@ -23,32 +23,32 @@ class UserManager$2
       if (???.size() > 0)
       {
         ??? = (QQUserUIItem)???.get(0);
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(???);
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a = ???.qq;
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b = ???.uid;
-        if (this.jdField_a_of_type_Boolean)
+        ??? = this.d.a(???);
+        this.a.a = ???.qq;
+        this.a.b = ???.uid;
+        if (this.b)
         {
           ??? = (StoryConfigManager)SuperManager.a(10);
-          ???.b("qqstory_my_uin", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a);
-          ???.b("qqstory_my_union_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b);
+          ???.d("qqstory_my_uin", this.a.a);
+          ???.d("qqstory_my_union_id", this.a.b);
         }
       }
-      SLog.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID, Long.valueOf(l - this.jdField_a_of_type_Long) });
+      SLog.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.a, Long.valueOf(l - this.c) });
     }
     else
     {
-      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
+      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.c) });
     }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID)
+    synchronized (this.a)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.notifyAll();
+      this.a.notifyAll();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.UserManager.2
  * JD-Core Version:    0.7.0.1
  */

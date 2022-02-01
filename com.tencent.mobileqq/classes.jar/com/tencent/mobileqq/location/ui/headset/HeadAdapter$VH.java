@@ -5,17 +5,17 @@ import android.widget.ImageView;
 
 class HeadAdapter$VH
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  String jdField_a_of_type_JavaLangString;
+  ImageView a;
+  String b;
   
   public HeadAdapter$VH(View paramView)
   {
-    this.a = ((ImageView)HeadAdapter.a(paramView, 2131370423));
+    this.a = ((ImageView)HeadAdapter.a(paramView, 2131437691));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.headset.HeadAdapter.VH
  * JD-Core Version:    0.7.0.1
  */

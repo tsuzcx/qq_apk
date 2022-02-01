@@ -19,9 +19,9 @@ class ImageDisplayView$1
     {
       try
       {
-        Bitmap localBitmap = BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString);
+        Bitmap localBitmap = BitmapFactory.decodeFile(this.a);
         localObject1 = localBitmap;
-        int i = new ExifInterface(this.jdField_a_of_type_JavaLangString).getAttributeInt("Orientation", 0);
+        int i = new ExifInterface(this.a).getAttributeInt("Orientation", 0);
         localObject1 = localBitmap;
         Object localObject2 = new Matrix();
         switch (i)
@@ -90,7 +90,7 @@ class ImageDisplayView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView.1
  * JD-Core Version:    0.7.0.1
  */

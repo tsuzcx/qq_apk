@@ -22,7 +22,7 @@ public class BaseMsgLoader
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext, boolean paramBoolean)
   {
-    List localList = paramAIOContext.a().getMessageFacade().a(paramAIOContext.a().jdField_a_of_type_JavaLangString, paramAIOContext.a().jdField_a_of_type_Int, -1L, paramBoolean);
+    List localList = paramAIOContext.a().getMessageFacade().c(paramAIOContext.O().b, paramAIOContext.O().a, -1L, paramBoolean);
     if (!a()) {
       return localList;
     }
@@ -33,15 +33,10 @@ public class BaseMsgLoader
         if (QLog.isColorLevel()) {
           QLog.d("BaseMsgLoader", 2, "aioList cache update, re get aioList from cache");
         }
-        localList = paramAIOContext.a().getMessageFacade().a(paramAIOContext.a().jdField_a_of_type_JavaLangString, paramAIOContext.a().jdField_a_of_type_Int, -1L, paramBoolean);
+        localList = paramAIOContext.a().getMessageFacade().c(paramAIOContext.O().b, paramAIOContext.O().a, -1L, paramBoolean);
       }
     }
     return localList;
-  }
-  
-  public void a(@NonNull AIOContext paramAIOContext)
-  {
-    ThreadManager.post(new BaseMsgLoader.1(this, paramAIOContext), 8, null, true);
   }
   
   void a(@NonNull List<IMsgLoader> paramList)
@@ -53,10 +48,15 @@ public class BaseMsgLoader
   {
     return this.a != null;
   }
+  
+  public void b(@NonNull AIOContext paramAIOContext)
+  {
+    ThreadManager.post(new BaseMsgLoader.1(this, paramAIOContext), 8, null, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.msglist.BaseMsgLoader
  * JD-Core Version:    0.7.0.1
  */

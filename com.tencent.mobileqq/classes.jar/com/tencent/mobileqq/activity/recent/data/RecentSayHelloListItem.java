@@ -64,7 +64,7 @@ public class RecentSayHelloListItem
       } else {
         this.mUnreadNum = 0;
       }
-      if (UinTypeUtil.a((MessageRecord)localObject1)) {
+      if (UinTypeUtil.c((MessageRecord)localObject1)) {
         this.mUnreadFlag = 3;
       }
     }
@@ -79,23 +79,23 @@ public class RecentSayHelloListItem
     this.mMsgExtroInfo = null;
     if (DatingUtil.a(paramQQAppInterface, getRecentUserUin(), 1001))
     {
-      this.mMsgExtroInfo = paramContext.getResources().getString(2131693169);
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+      this.mMsgExtroInfo = paramContext.getResources().getString(2131890709);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       if (localObject2 != null) {
-        localMsgSummary.strContent = ((ConversationFacade)localObject2).a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131693168), 0);
+        localMsgSummary.strContent = ((ConversationFacade)localObject2).b(getRecentUserUin(), 1001, paramContext.getResources().getString(2131890708), 0);
       }
     }
     else if (DatingUtil.b(paramQQAppInterface, getRecentUserUin(), 1001))
     {
       this.mHasFlowerMsg = true;
-      this.mMsgExtroInfo = paramContext.getResources().getString(2131694301);
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+      this.mMsgExtroInfo = paramContext.getResources().getString(2131891939);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
     }
     else
     {
       super.buildMessageBody((Message)localObject1, getRecentUserType(), paramQQAppInterface, paramContext, localMsgSummary);
     }
-    localObject2 = ContactUtils.g(paramQQAppInterface, getRecentUserUin());
+    localObject2 = ContactUtils.h(paramQQAppInterface, getRecentUserUin());
     localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ContactUtils.a(paramQQAppInterface, getRecentUserUin(), false);
@@ -109,7 +109,7 @@ public class RecentSayHelloListItem
     super.dealStatus(paramQQAppInterface);
     a(paramQQAppInterface, localMsgSummary);
     super.extraUpdate(paramQQAppInterface, paramContext, localMsgSummary);
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -240,7 +240,7 @@ public class RecentSayHelloListItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentSayHelloListItem
  * JD-Core Version:    0.7.0.1
  */

@@ -5,32 +5,24 @@ import com.tencent.qphone.base.util.QLog;
 public class CountdownTimeTask
   implements Runnable
 {
-  protected long a;
-  protected Object a;
-  protected Runnable a;
+  protected long a = 1000L;
+  protected Object b = new Object();
+  protected Runnable c = null;
   
   public CountdownTimeTask(Runnable paramRunnable, int paramInt)
   {
-    this.jdField_a_of_type_Long = 1000L;
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaLangRunnable = null;
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.c = paramRunnable;
     a(paramInt);
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
   }
   
   public void a()
   {
-    a(this.jdField_a_of_type_Long);
+    a(this.a);
   }
   
   public void a(long paramLong)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
       if (QLog.isColorLevel())
       {
@@ -39,7 +31,7 @@ public class CountdownTimeTask
         localStringBuilder.append(paramLong);
         QLog.d("CountDownTimeTask", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Long = paramLong;
+      this.a = paramLong;
       return;
     }
   }
@@ -49,27 +41,32 @@ public class CountdownTimeTask
     a(-1L);
   }
   
+  public long c()
+  {
+    return this.a;
+  }
+  
   public void run()
   {
     long l;
     for (;;)
     {
-      l = this.jdField_a_of_type_Long;
+      l = this.a;
       if (l <= 0L) {
         break;
       }
       try
       {
         Thread.sleep(100L);
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.b)
         {
-          this.jdField_a_of_type_Long -= 100L;
+          this.a -= 100L;
           if (!QLog.isColorLevel()) {
             continue;
           }
           ??? = new StringBuilder();
           ((StringBuilder)???).append("run: ");
-          ((StringBuilder)???).append(this.jdField_a_of_type_Long);
+          ((StringBuilder)???).append(this.a);
           QLog.d("CountDownTimeTask", 2, ((StringBuilder)???).toString());
         }
         if (!QLog.isColorLevel()) {
@@ -81,7 +78,7 @@ public class CountdownTimeTask
     }
     if (l != -1L)
     {
-      Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+      Runnable localRunnable = this.c;
       if (localRunnable != null) {
         localRunnable.run();
       }
@@ -90,7 +87,7 @@ public class CountdownTimeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.rely.CountdownTimeTask
  * JD-Core Version:    0.7.0.1
  */

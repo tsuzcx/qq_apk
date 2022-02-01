@@ -22,8 +22,8 @@ public class EmoMatcher
     paramCharSequence = new HashMap();
     try
     {
-      paramCharSequence.put("emojiUrl", a(this.a.substring(4, this.a.indexOf("[/em]"))));
-      paramCharSequence.put("nodeType", Integer.valueOf(QcircleFlutterTextCellParser.d));
+      paramCharSequence.put("emojiUrl", a(this.b.substring(4, this.b.indexOf("[/em]"))));
+      paramCharSequence.put("nodeType", Integer.valueOf(QcircleFlutterTextCellParser.n));
       paramCharSequence.put("displayWidth", Double.valueOf(20.0D));
       paramCharSequence.put("displayHeight", Double.valueOf(20.0D));
       return paramCharSequence;
@@ -34,7 +34,7 @@ public class EmoMatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.EmoMatcher
  * JD-Core Version:    0.7.0.1
  */

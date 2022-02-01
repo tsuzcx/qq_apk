@@ -13,19 +13,19 @@ class HealthBusinessPlugin$9
   
   public void run()
   {
-    Iterator localIterator = this.this$0.d.keySet().iterator();
+    Iterator localIterator = this.this$0.l.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ImageView)((FrameLayout)this.this$0.e.get(localObject)).findViewById(2131374357);
-      ((ImageView)localObject).setImageResource(2130849461);
+      localObject = (ImageView)((FrameLayout)this.this$0.m.get(localObject)).findViewById(2131442519);
+      ((ImageView)localObject).setImageResource(2130851145);
       ((ImageView)localObject).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthBusinessPlugin.9
  * JD-Core Version:    0.7.0.1
  */

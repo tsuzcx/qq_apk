@@ -20,7 +20,7 @@ class ChatHistoryEmotionBaseFragment$4
     }
     if (paramObject == null)
     {
-      ChatHistoryEmotionBaseFragment.a(this.a).b(3);
+      ChatHistoryEmotionBaseFragment.b(this.a).b(3);
       return;
     }
     paramObject = (EmoticonResp)paramObject;
@@ -36,12 +36,12 @@ class ChatHistoryEmotionBaseFragment$4
       ((IEmoticonManagerService)this.a.a.getRuntimeService(IEmoticonManagerService.class)).asyncFindEmoticon(String.valueOf(paramObject.epId), paramObject.emoticonId, new ChatHistoryEmotionBaseFragment.4.1(this, paramObject));
       return;
     }
-    ChatHistoryEmotionBaseFragment.a(this.a).b(3);
+    ChatHistoryEmotionBaseFragment.b(this.a).b(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment.4
  * JD-Core Version:    0.7.0.1
  */

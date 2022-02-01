@@ -42,9 +42,9 @@ public class TroopClockInHandler
       int j = paramToServiceMsg.extraData.getInt("signInScene");
       int i;
       if (localBoolean.booleanValue()) {
-        i = TroopClockInObserver.b;
+        i = TroopClockInObserver.c;
       } else {
-        i = TroopClockInObserver.a;
+        i = TroopClockInObserver.b;
       }
       paramToServiceMsg = new oidb_0xeb7.RspBody();
       int k = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
@@ -95,7 +95,7 @@ public class TroopClockInHandler
         localObject2 = new oidb_0xeb7.StSignInWriteReq();
         ((oidb_0xeb7.StSignInWriteReq)localObject2).groupId.set(paramString1);
         ((oidb_0xeb7.StSignInWriteReq)localObject2).uid.set(paramString2);
-        ((oidb_0xeb7.StSignInWriteReq)localObject2).clientVersion.set("8.7.0");
+        ((oidb_0xeb7.StSignInWriteReq)localObject2).clientVersion.set("8.8.17");
         ((oidb_0xeb7.ReqBody)localObject1).signInWriteReq.set((MessageMicro)localObject2);
         i = 1;
       }
@@ -105,7 +105,7 @@ public class TroopClockInHandler
         ((oidb_0xeb7.StSignInStatusReq)localObject2).groupId.set(paramString1);
         ((oidb_0xeb7.StSignInStatusReq)localObject2).uid.set(paramString2);
         ((oidb_0xeb7.StSignInStatusReq)localObject2).scene.set(paramInt);
-        ((oidb_0xeb7.StSignInStatusReq)localObject2).clientVersion.set("8.7.0");
+        ((oidb_0xeb7.StSignInStatusReq)localObject2).clientVersion.set("8.8.17");
         ((oidb_0xeb7.ReqBody)localObject1).signInStatusReq.set((MessageMicro)localObject2);
         i = 0;
       }
@@ -123,11 +123,6 @@ public class TroopClockInHandler
     }
   }
   
-  protected String a()
-  {
-    return "TroopClockInHandler";
-  }
-  
   public void a(String paramString1, String paramString2)
   {
     a(paramString1, paramString2, 0, true);
@@ -136,6 +131,11 @@ public class TroopClockInHandler
   public void a(String paramString1, String paramString2, int paramInt)
   {
     a(paramString1, paramString2, paramInt, false);
+  }
+  
+  protected String dv_()
+  {
+    return "TroopClockInHandler";
   }
   
   public Set<String> getCommandList()
@@ -169,7 +169,7 @@ public class TroopClockInHandler
         }
         return;
       }
-      if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+      if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
       {
         if (QLog.isColorLevel())
         {
@@ -192,7 +192,7 @@ public class TroopClockInHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.clockin.handler.TroopClockInHandler
  * JD-Core Version:    0.7.0.1
  */

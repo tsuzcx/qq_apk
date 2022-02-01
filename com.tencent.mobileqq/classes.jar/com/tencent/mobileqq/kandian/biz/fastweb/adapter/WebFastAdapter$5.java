@@ -18,18 +18,18 @@ class WebFastAdapter$5
   
   public void run()
   {
-    Iterator localIterator = this.this$0.a().iterator();
+    Iterator localIterator = this.this$0.f().iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject1 = (BaseData)localIterator.next();
       if ((localObject1 instanceof ProteusItemData))
       {
-        JSONObject localJSONObject = ((ProteusItemData)localObject1).c;
+        JSONObject localJSONObject = ((ProteusItemData)localObject1).bb;
         if ((localJSONObject != null) && (localJSONObject.optString("kd_ug_rsp_info") != null))
         {
           FastWebRecommendUGInfo localFastWebRecommendUGInfo = new FastWebRecommendUGInfo(localJSONObject.optString("kd_ug_rsp_info"), WebFastAdapter.a(localJSONObject));
-          if ((!TextUtils.isEmpty(localFastWebRecommendUGInfo.b)) && (localFastWebRecommendUGInfo.b.equals(this.a.d)))
+          if ((!TextUtils.isEmpty(localFastWebRecommendUGInfo.d)) && (localFastWebRecommendUGInfo.d.equals(this.a.d)))
           {
             int j = i;
             try
@@ -41,7 +41,7 @@ class WebFastAdapter$5
                 j = k;
                 localObject1 = localJSONObject.getJSONObject("id_recommend_category_txt");
                 j = k;
-                ((JSONObject)localObject1).put("text", localFastWebRecommendUGInfo.g);
+                ((JSONObject)localObject1).put("text", localFastWebRecommendUGInfo.i);
                 j = k;
                 ((JSONObject)localObject1).put("label_ug_progress_progress", 100);
                 String str = "";
@@ -66,9 +66,9 @@ class WebFastAdapter$5
                   }
                 }
                 j = k;
-                KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.a, localObject2, "20"));
+                KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.c, localObject2, "20"));
                 j = k;
-                KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.a, localObject2, "11"));
+                KandianUGStatisticUtils.a(KandianUGStatisticUtils.a(localFastWebRecommendUGInfo.c, localObject2, "11"));
               }
             }
             catch (JSONException localJSONException2)
@@ -87,7 +87,7 @@ class WebFastAdapter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.WebFastAdapter.5
  * JD-Core Version:    0.7.0.1
  */

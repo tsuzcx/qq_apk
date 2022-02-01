@@ -19,19 +19,19 @@ class LoginInfoActivity$10
   public void onClick(View paramView)
   {
     Object localObject;
-    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
+    if (!NetworkUtil.isNetSupport(this.c))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity;
-      QQToast.a((Context)localObject, ((LoginInfoActivity)localObject).getString(2131692183), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+      localObject = this.c;
+      QQToast.makeText((Context)localObject, ((LoginInfoActivity)localObject).getString(2131889169), 0).show(this.c.getTitleBarHeight());
     }
     else
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
-      localObject = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
+      ReportController.b(this.c.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
+      localObject = (SvcDevLoginInfo)this.a.getTag();
       if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new LoginInfoActivity.10.1(this, (SvcDevLoginInfo)localObject));
+        this.c.app.getSubAccountKey(this.c.app.getAccount(), this.c.app.getAccount(), new LoginInfoActivity.10.1(this, (SvcDevLoginInfo)localObject));
       } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131694375), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+        QQToast.makeText(this.c.getApplicationContext(), this.c.getString(2131892053), 0).show(this.c.getTitleBarHeight());
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -39,7 +39,7 @@ class LoginInfoActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.10
  * JD-Core Version:    0.7.0.1
  */

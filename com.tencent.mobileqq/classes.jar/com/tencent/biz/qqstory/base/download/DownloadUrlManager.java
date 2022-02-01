@@ -38,28 +38,52 @@ import java.util.concurrent.locks.ReentrantLock;
 public class DownloadUrlManager
   extends BaseManger
 {
-  private LruCache<String, List<VideoUrlEntry>> jdField_a_of_type_AndroidUtilLruCache = new LruCache(100);
-  private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private LruCache<String, List<VideoUrlEntry>> a = new LruCache(100);
   private LruCache<String, DownloadingUrlEntry> b = new LruCache(300);
   private LruCache<String, DownloadUrlManager.DownloadUrlQueryResult> c = new LruCache(200);
+  private final ReentrantLock d = new ReentrantLock();
   
-  private DownloadingUrlEntry a(String paramString, int paramInt)
+  private void a(@NonNull String paramString, @NonNull DownloadUrlManager.PullNewVideoInfoCallBack paramPullNewVideoInfoCallBack)
   {
-    Object localObject = (DownloadingUrlEntry)this.b.get(DownloadingUrlEntry.makeKey(paramString, paramInt));
-    if (localObject != null) {
-      return localObject;
-    }
-    localObject = StoryManager.a(QQStoryContext.a().a().createEntityManager(), DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(paramString, paramInt) });
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = (DownloadingUrlEntry)((List)localObject).get(0);
-      this.b.put(DownloadingUrlEntry.makeKey(paramString, paramInt), localObject);
-      return localObject;
-    }
-    return null;
+    SLog.b("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary , vid = %s", paramString);
+    Bosses.get().postJob(new DownloadUrlManager.5(this, "Q.qqstory.DownloadUrlManager", paramString, paramPullNewVideoInfoCallBack));
   }
   
-  public static String a(String paramString)
+  @Deprecated
+  private void b(@NonNull String paramString, @NonNull DownloadUrlManager.PullNewVideoInfoCallBack paramPullNewVideoInfoCallBack)
+  {
+    SLog.b("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessaryInner , vid = %s", paramString);
+    Object localObject = ((StoryManager)SuperManager.a(5)).a(paramString);
+    if (localObject == null)
+    {
+      SLog.e("Q.qqstory.DownloadUrlManager", "DownloadUrlQueryResult:: error video is null");
+      paramPullNewVideoInfoCallBack.a(false);
+      return;
+    }
+    if (((StoryVideoItem)localObject).videoUrlExpireTime <= 0L)
+    {
+      paramPullNewVideoInfoCallBack.a(false);
+      return;
+    }
+    if (((StoryVideoItem)localObject).videoUrlExpireTime - NetConnInfoCenter.getServerTimeMillis() > 0L)
+    {
+      paramPullNewVideoInfoCallBack.a(false);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((StoryVideoItem)localObject).mVid);
+    localStringBuilder.append(" request video url is expire :");
+    localStringBuilder.append(((StoryVideoItem)localObject).videoUrlExpireTime);
+    SLog.d("Q.qqstory.DownloadUrlManager", localStringBuilder.toString());
+    localObject = new GetVideoFullInfoListRequest();
+    ((GetVideoFullInfoListRequest)localObject).e = new ArrayList(1);
+    ((GetVideoFullInfoListRequest)localObject).e.add(paramString);
+    ((GetVideoFullInfoListRequest)localObject).b = 10000L;
+    paramString = new DownloadUrlManager.6(this, paramPullNewVideoInfoCallBack, paramString);
+    CmdTaskManger.a().a((NetworkRequest)localObject, paramString);
+  }
+  
+  public static String c(String paramString)
   {
     try
     {
@@ -80,13 +104,7 @@ public class DownloadUrlManager
     return null;
   }
   
-  private void a(@NonNull String paramString, @NonNull DownloadUrlManager.PullNewVideoInfoCallBack paramPullNewVideoInfoCallBack)
-  {
-    SLog.b("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary , vid = %s", paramString);
-    Bosses.get().postJob(new DownloadUrlManager.5(this, "Q.qqstory.DownloadUrlManager", paramString, paramPullNewVideoInfoCallBack));
-  }
-  
-  private boolean a(String paramString)
+  private boolean d(String paramString)
   {
     StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(paramString);
     if (localStoryVideoItem == null)
@@ -106,9 +124,9 @@ public class DownloadUrlManager
     ((StringBuilder)localObject).append(localStoryVideoItem.videoUrlExpireTime);
     SLog.d("Q.qqstory.DownloadUrlManager", ((StringBuilder)localObject).toString());
     GetVideoFullInfoListRequest localGetVideoFullInfoListRequest = new GetVideoFullInfoListRequest();
-    localGetVideoFullInfoListRequest.jdField_a_of_type_JavaUtilList = new ArrayList(1);
-    localGetVideoFullInfoListRequest.jdField_a_of_type_JavaUtilList.add(paramString);
-    localGetVideoFullInfoListRequest.jdField_a_of_type_Long = 10000L;
+    localGetVideoFullInfoListRequest.e = new ArrayList(1);
+    localGetVideoFullInfoListRequest.e.add(paramString);
+    localGetVideoFullInfoListRequest.b = 10000L;
     localObject = new Object();
     AtomicBoolean localAtomicBoolean1 = new AtomicBoolean(false);
     AtomicBoolean localAtomicBoolean2 = new AtomicBoolean(false);
@@ -139,89 +157,71 @@ public class DownloadUrlManager
     finally {}
   }
   
-  private DownloadUrlManager.DownloadUrlQueryResult b(String paramString, int paramInt)
+  private DownloadUrlManager.DownloadUrlQueryResult e(String paramString, int paramInt)
   {
     paramString = DownloadingUrlEntry.makeKey(paramString, paramInt);
     paramString = (DownloadUrlManager.DownloadUrlQueryResult)this.c.get(paramString);
-    if ((paramString != null) && (!TextUtils.isEmpty(paramString.jdField_b_of_type_JavaLangString)) && (Math.abs(System.currentTimeMillis() - paramString.jdField_a_of_type_Long) <= 300000L)) {
+    if ((paramString != null) && (!TextUtils.isEmpty(paramString.c)) && (Math.abs(System.currentTimeMillis() - paramString.g) <= 300000L)) {
       return paramString;
     }
     return null;
   }
   
-  @Deprecated
-  private void b(@NonNull String paramString, @NonNull DownloadUrlManager.PullNewVideoInfoCallBack paramPullNewVideoInfoCallBack)
+  private DownloadingUrlEntry f(String paramString, int paramInt)
   {
-    SLog.b("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessaryInner , vid = %s", paramString);
-    Object localObject = ((StoryManager)SuperManager.a(5)).a(paramString);
-    if (localObject == null)
-    {
-      SLog.e("Q.qqstory.DownloadUrlManager", "DownloadUrlQueryResult:: error video is null");
-      paramPullNewVideoInfoCallBack.a(false);
-      return;
+    Object localObject = (DownloadingUrlEntry)this.b.get(DownloadingUrlEntry.makeKey(paramString, paramInt));
+    if (localObject != null) {
+      return localObject;
     }
-    if (((StoryVideoItem)localObject).videoUrlExpireTime <= 0L)
+    localObject = StoryManager.a(QQStoryContext.a().d().createEntityManager(), DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(paramString, paramInt) });
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      paramPullNewVideoInfoCallBack.a(false);
-      return;
+      localObject = (DownloadingUrlEntry)((List)localObject).get(0);
+      this.b.put(DownloadingUrlEntry.makeKey(paramString, paramInt), localObject);
+      return localObject;
     }
-    if (((StoryVideoItem)localObject).videoUrlExpireTime - NetConnInfoCenter.getServerTimeMillis() > 0L)
-    {
-      paramPullNewVideoInfoCallBack.a(false);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((StoryVideoItem)localObject).mVid);
-    localStringBuilder.append(" request video url is expire :");
-    localStringBuilder.append(((StoryVideoItem)localObject).videoUrlExpireTime);
-    SLog.d("Q.qqstory.DownloadUrlManager", localStringBuilder.toString());
-    localObject = new GetVideoFullInfoListRequest();
-    ((GetVideoFullInfoListRequest)localObject).jdField_a_of_type_JavaUtilList = new ArrayList(1);
-    ((GetVideoFullInfoListRequest)localObject).jdField_a_of_type_JavaUtilList.add(paramString);
-    ((GetVideoFullInfoListRequest)localObject).jdField_a_of_type_Long = 10000L;
-    paramString = new DownloadUrlManager.6(this, paramPullNewVideoInfoCallBack, paramString);
-    CmdTaskManger.a().a((NetworkRequest)localObject, paramString);
+    return null;
   }
   
   public DownloadUrlManager.DownloadUrlQueryResult a(String paramString, int paramInt)
   {
     AssertUtils.notMainThreadCheck();
     DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = new DownloadUrlManager.DownloadUrlQueryResult();
-    localDownloadUrlQueryResult.jdField_a_of_type_JavaLangString = paramString;
-    localDownloadUrlQueryResult.jdField_a_of_type_Int = paramInt;
+    localDownloadUrlQueryResult.a = paramString;
+    localDownloadUrlQueryResult.b = paramInt;
     Object localObject3 = (StoryManager)SuperManager.a(5);
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+      this.d.lock();
       int i;
       Object localObject1;
-      if ((paramInt == 0) && (a(paramString)))
+      if ((paramInt == 0) && (d(paramString)))
       {
         i = 1;
       }
       else
       {
-        localObject1 = a(paramString, paramInt);
+        localObject1 = f(paramString, paramInt);
         if ((localObject1 != null) && (((DownloadingUrlEntry)localObject1).bIsDownloadCompleted == 0))
         {
-          localDownloadUrlQueryResult.jdField_b_of_type_Int = 0;
-          localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString = ((DownloadingUrlEntry)localObject1).url;
-          localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject1).compressLevel;
+          localDownloadUrlQueryResult.d = 0;
+          localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject1).url;
+          localDownloadUrlQueryResult.f = ((DownloadingUrlEntry)localObject1).compressLevel;
         }
       }
       for (;;)
       {
         localDownloadUrlQueryResult.a();
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        this.d.unlock();
         return localDownloadUrlQueryResult;
         i = 0;
-        localDownloadUrlQueryResult.jdField_a_of_type_Boolean = true;
+        localDownloadUrlQueryResult.e = true;
         Object localObject2 = null;
         localObject1 = localObject2;
         if (paramInt == 0)
         {
           localObject1 = localObject2;
-          if (a())
+          if (c())
           {
             List localList = a(paramString);
             localObject1 = localObject2;
@@ -237,15 +237,15 @@ public class DownloadUrlManager
                 ((DownloadingUrlEntry)localObject1).fileType = 0;
                 ((DownloadingUrlEntry)localObject1).compressLevel = ((VideoUrlEntry)localObject2).videoUrlLevel;
                 ((DownloadingUrlEntry)localObject1).key = DownloadingUrlEntry.makeKey(((DownloadingUrlEntry)localObject1).vid, ((DownloadingUrlEntry)localObject1).fileType);
-                localDownloadUrlQueryResult.jdField_b_of_type_Int = 2;
-                localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString = ((DownloadingUrlEntry)localObject1).url;
-                localDownloadUrlQueryResult.c = ((VideoUrlEntry)localObject2).videoUrlLevel;
+                localDownloadUrlQueryResult.d = 2;
+                localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject1).url;
+                localDownloadUrlQueryResult.f = ((VideoUrlEntry)localObject2).videoUrlLevel;
               }
             }
           }
         }
         localObject2 = localObject1;
-        if (localDownloadUrlQueryResult.jdField_b_of_type_Int == -1)
+        if (localDownloadUrlQueryResult.d == -1)
         {
           localObject3 = ((StoryManager)localObject3).a(paramString);
           localObject2 = localObject1;
@@ -262,8 +262,8 @@ public class DownloadUrlManager
               ((DownloadingUrlEntry)localObject2).url = ((StoryVideoItem)localObject3).getThumbUrl();
             }
             ((DownloadingUrlEntry)localObject2).key = DownloadingUrlEntry.makeKey(((DownloadingUrlEntry)localObject2).vid, ((DownloadingUrlEntry)localObject2).fileType);
-            localDownloadUrlQueryResult.jdField_b_of_type_Int = 3;
-            localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString = ((DownloadingUrlEntry)localObject2).url;
+            localDownloadUrlQueryResult.d = 3;
+            localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject2).url;
           }
         }
         if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadingUrlEntry)localObject2).url)))
@@ -273,22 +273,22 @@ public class DownloadUrlManager
           {
             ((DownloadingUrlEntry)localObject2).updatedMs = System.currentTimeMillis();
             this.b.put(DownloadingUrlEntry.makeKey(paramString, paramInt), localObject2);
-            QQStoryContext.a().a().createEntityManager().persistOrReplace((Entity)localObject2);
+            QQStoryContext.a().d().createEntityManager().persistOrReplace((Entity)localObject2);
           }
         }
         if (i != 0)
         {
           SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: video url have expire,so we need to handle the temOrphan~~");
-          paramString = a(paramString, paramInt);
-          if ((paramString != null) && (TextUtils.equals(paramString.url, localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString)))
+          paramString = f(paramString, paramInt);
+          if ((paramString != null) && (TextUtils.equals(paramString.url, localDownloadUrlQueryResult.c)))
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("pullNewVideoInfoIfNecessary: set isTmpOrphan false,cache entry url=");
             ((StringBuilder)localObject1).append(paramString.url);
             ((StringBuilder)localObject1).append(" result url=");
-            ((StringBuilder)localObject1).append(localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(localDownloadUrlQueryResult.c);
             SLog.d("Q.qqstory.DownloadUrlManager", ((StringBuilder)localObject1).toString());
-            localDownloadUrlQueryResult.jdField_a_of_type_Boolean = false;
+            localDownloadUrlQueryResult.e = false;
           }
           else if (paramString == null)
           {
@@ -308,7 +308,7 @@ public class DownloadUrlManager
     finally
     {
       localDownloadUrlQueryResult.a();
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      this.d.unlock();
     }
     for (;;) {}
   }
@@ -318,33 +318,33 @@ public class DownloadUrlManager
     AssertUtils.notMainThreadCheck();
     String str = DownloadingUrlEntry.makeKey(paramString, paramInt);
     DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = new DownloadUrlManager.DownloadUrlQueryResult();
-    localDownloadUrlQueryResult.jdField_a_of_type_JavaLangString = paramString;
-    localDownloadUrlQueryResult.jdField_a_of_type_Int = paramInt;
+    localDownloadUrlQueryResult.a = paramString;
+    localDownloadUrlQueryResult.b = paramInt;
     Object localObject3 = (StoryManager)SuperManager.a(5);
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-      Object localObject1 = a(paramString, paramInt);
+      this.d.lock();
+      Object localObject1 = f(paramString, paramInt);
       if ((localObject1 != null) && (((DownloadingUrlEntry)localObject1).bIsDownloadCompleted == 0))
       {
-        localDownloadUrlQueryResult.jdField_b_of_type_Int = 0;
-        localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString = ((DownloadingUrlEntry)localObject1).url;
-        localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject1).compressLevel;
+        localDownloadUrlQueryResult.d = 0;
+        localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject1).url;
+        localDownloadUrlQueryResult.f = ((DownloadingUrlEntry)localObject1).compressLevel;
       }
       for (;;)
       {
         localDownloadUrlQueryResult.a();
-        localDownloadUrlQueryResult.jdField_a_of_type_Long = System.currentTimeMillis();
+        localDownloadUrlQueryResult.g = System.currentTimeMillis();
         this.c.put(str, localDownloadUrlQueryResult);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+        this.d.unlock();
         return localDownloadUrlQueryResult;
-        localDownloadUrlQueryResult.jdField_a_of_type_Boolean = true;
+        localDownloadUrlQueryResult.e = true;
         Object localObject2 = null;
         localObject1 = localObject2;
         if (paramInt == 0)
         {
           localObject1 = localObject2;
-          if (a())
+          if (c())
           {
             List localList = a(paramString);
             localObject1 = localObject2;
@@ -360,15 +360,15 @@ public class DownloadUrlManager
                 ((DownloadingUrlEntry)localObject1).fileType = 0;
                 ((DownloadingUrlEntry)localObject1).compressLevel = ((VideoUrlEntry)localObject2).videoUrlLevel;
                 ((DownloadingUrlEntry)localObject1).key = DownloadingUrlEntry.makeKey(((DownloadingUrlEntry)localObject1).vid, ((DownloadingUrlEntry)localObject1).fileType);
-                localDownloadUrlQueryResult.jdField_b_of_type_Int = 2;
-                localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString = ((DownloadingUrlEntry)localObject1).url;
-                localDownloadUrlQueryResult.c = ((VideoUrlEntry)localObject2).videoUrlLevel;
+                localDownloadUrlQueryResult.d = 2;
+                localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject1).url;
+                localDownloadUrlQueryResult.f = ((VideoUrlEntry)localObject2).videoUrlLevel;
               }
             }
           }
         }
         localObject2 = localObject1;
-        if (localDownloadUrlQueryResult.jdField_b_of_type_Int == -1)
+        if (localDownloadUrlQueryResult.d == -1)
         {
           localObject3 = ((StoryManager)localObject3).a(paramString);
           localObject2 = localObject1;
@@ -385,8 +385,8 @@ public class DownloadUrlManager
               ((DownloadingUrlEntry)localObject2).url = ((StoryVideoItem)localObject3).getThumbUrl();
             }
             ((DownloadingUrlEntry)localObject2).key = DownloadingUrlEntry.makeKey(((DownloadingUrlEntry)localObject2).vid, ((DownloadingUrlEntry)localObject2).fileType);
-            localDownloadUrlQueryResult.jdField_b_of_type_Int = 3;
-            localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString = ((DownloadingUrlEntry)localObject2).url;
+            localDownloadUrlQueryResult.d = 3;
+            localDownloadUrlQueryResult.c = ((DownloadingUrlEntry)localObject2).url;
           }
         }
         if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadingUrlEntry)localObject2).url)))
@@ -396,22 +396,22 @@ public class DownloadUrlManager
           {
             ((DownloadingUrlEntry)localObject2).updatedMs = System.currentTimeMillis();
             this.b.put(DownloadingUrlEntry.makeKey(paramString, paramInt), localObject2);
-            QQStoryContext.a().a().createEntityManager().persistOrReplace((Entity)localObject2);
+            QQStoryContext.a().d().createEntityManager().persistOrReplace((Entity)localObject2);
           }
         }
         if (paramBoolean)
         {
           SLog.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: video url have expire,so we need to handle the temOrphan~~");
-          paramString = a(paramString, paramInt);
-          if ((paramString != null) && (TextUtils.equals(paramString.url, localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString)))
+          paramString = f(paramString, paramInt);
+          if ((paramString != null) && (TextUtils.equals(paramString.url, localDownloadUrlQueryResult.c)))
           {
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("pullNewVideoInfoIfNecessary: set isTmpOrphan false,cache entry url=");
             ((StringBuilder)localObject1).append(paramString.url);
             ((StringBuilder)localObject1).append(" result url=");
-            ((StringBuilder)localObject1).append(localDownloadUrlQueryResult.jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject1).append(localDownloadUrlQueryResult.c);
             SLog.d("Q.qqstory.DownloadUrlManager", ((StringBuilder)localObject1).toString());
-            localDownloadUrlQueryResult.jdField_a_of_type_Boolean = false;
+            localDownloadUrlQueryResult.e = false;
           }
           else if (paramString == null)
           {
@@ -431,42 +431,31 @@ public class DownloadUrlManager
     finally
     {
       localDownloadUrlQueryResult.a();
-      localDownloadUrlQueryResult.jdField_a_of_type_Long = System.currentTimeMillis();
+      localDownloadUrlQueryResult.g = System.currentTimeMillis();
       this.c.put(str, localDownloadUrlQueryResult);
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      this.d.unlock();
     }
     for (;;) {}
   }
   
   public List<VideoUrlEntry> a(String paramString)
   {
-    Object localObject = (List)this.jdField_a_of_type_AndroidUtilLruCache.get(paramString);
+    Object localObject = (List)this.a.get(paramString);
     if (localObject != null) {
       return localObject;
     }
-    List localList = StoryManager.a(QQStoryContext.a().a().createEntityManager(), VideoUrlEntry.class, VideoUrlEntry.class.getSimpleName(), "vid=?", new String[] { paramString });
+    List localList = StoryManager.a(QQStoryContext.a().d().createEntityManager(), VideoUrlEntry.class, VideoUrlEntry.class.getSimpleName(), "vid=?", new String[] { paramString });
     localObject = localList;
     if (localList == null) {
       localObject = new ArrayList(0);
     }
-    this.jdField_a_of_type_AndroidUtilLruCache.put(paramString, localObject);
+    this.a.put(paramString, localObject);
     return localObject;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (TroopStoryUtil.a(paramString)) {
-        return;
-      }
-      Bosses.get().postJob(new DownloadUrlManager.3(this, "Q.qqstory.DownloadUrlManager", paramString, paramInt));
-    }
   }
   
   public void a(String paramString, int paramInt, DownloadUrlManager.QueryUrlResultUICallBack paramQueryUrlResultUICallBack)
   {
-    DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = b(paramString, paramInt);
+    DownloadUrlManager.DownloadUrlQueryResult localDownloadUrlQueryResult = e(paramString, paramInt);
     if (localDownloadUrlQueryResult != null)
     {
       paramQueryUrlResultUICallBack.a(localDownloadUrlQueryResult);
@@ -486,7 +475,7 @@ public class DownloadUrlManager
       return;
     }
     SLog.a("Q.qqstory.DownloadUrlManager", "update video url:%s", paramList);
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
+    EntityManager localEntityManager = QQStoryContext.a().d().createEntityManager();
     try
     {
       localEntityManager.getTransaction().begin();
@@ -514,7 +503,7 @@ public class DownloadUrlManager
               localEntityManager.persistOrReplace(localVideoUrlEntry2);
             }
           }
-          this.jdField_a_of_type_AndroidUtilLruCache.put(localVideoUrlEntry1.vid, localList);
+          this.a.put(localVideoUrlEntry1.vid, localList);
         }
       }
       localEntityManager.getTransaction().commit();
@@ -531,12 +520,25 @@ public class DownloadUrlManager
     }
   }
   
-  public boolean a()
+  public void b(String paramString, int paramInt)
   {
-    return true;
+    if (paramInt == 0)
+    {
+      if (TroopStoryUtil.a(paramString)) {
+        return;
+      }
+      Bosses.get().postJob(new DownloadUrlManager.3(this, "Q.qqstory.DownloadUrlManager", paramString, paramInt));
+    }
   }
   
-  public String[] a(String paramString)
+  public void b(List<VideoUrlEntry> paramList)
+  {
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(paramList);
+    a(localArrayList);
+  }
+  
+  public String[] b(String paramString)
   {
     SLog.a("Q.qqstory.DownloadUrlManager", "replaceDomain2Ip domain - url: %s", paramString);
     if (!TextUtils.isEmpty(paramString)) {
@@ -600,26 +602,24 @@ public class DownloadUrlManager
     return new String[] { paramString };
   }
   
-  public void b(String paramString, int paramInt)
+  public void c(String paramString, int paramInt)
   {
     Bosses.get().postJob(new DownloadUrlManager.4(this, "Q.qqstory.DownloadUrlManager", paramString, paramInt));
   }
   
-  public void b(List<VideoUrlEntry> paramList)
+  public boolean c()
   {
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(paramList);
-    a(localArrayList);
+    return true;
   }
   
-  public void c(String paramString, int paramInt)
+  public void d(String paramString, int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+      this.d.lock();
       Object localObject = DownloadingUrlEntry.makeKey(paramString, paramInt);
       this.b.remove(localObject);
-      localObject = QQStoryContext.a().a().createEntityManager();
+      localObject = QQStoryContext.a().d().createEntityManager();
       paramString = StoryManager.a((EntityManager)localObject, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(paramString, paramInt) });
       if ((paramString != null) && (paramString.size() > 0))
       {
@@ -631,13 +631,13 @@ public class DownloadUrlManager
     }
     finally
     {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      this.d.unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.DownloadUrlManager
  * JD-Core Version:    0.7.0.1
  */

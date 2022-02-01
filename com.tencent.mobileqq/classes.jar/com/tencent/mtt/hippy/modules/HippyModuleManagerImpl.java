@@ -32,12 +32,12 @@ public class HippyModuleManagerImpl
   private static final int MSG_CODE_CALL_NATIVES = 1;
   private static final int MSG_CODE_DESTROY_MODULE = 2;
   private boolean isDestroyed = false;
-  private HippyModuleANRMonitor mANRMonitor;
+  private final HippyModuleANRMonitor mANRMonitor;
   private volatile Handler mBridgeThreadHandler;
-  private HippyEngineContext mContext;
+  private final HippyEngineContext mContext;
   private volatile Handler mDomThreadHandler;
-  private HashMap<Class<? extends HippyJavaScriptModule>, HippyJavaScriptModule> mJsModules;
-  private HashMap<String, HippyNativeModuleInfo> mNativeModuleInfo;
+  private final HashMap<Class<? extends HippyJavaScriptModule>, HippyJavaScriptModule> mJsModules;
+  private final HashMap<String, HippyNativeModuleInfo> mNativeModuleInfo;
   private volatile Handler mUIThreadHandler;
   
   public HippyModuleManagerImpl(HippyEngineContext paramHippyEngineContext, List<HippyAPIProvider> paramList)
@@ -507,7 +507,7 @@ public class HippyModuleManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.HippyModuleManagerImpl
  * JD-Core Version:    0.7.0.1
  */

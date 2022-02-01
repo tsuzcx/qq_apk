@@ -22,25 +22,25 @@ class PgcShortContentProteusItem$5
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a();
+    paramView = this.a.k();
     paramView.clickArea = 11;
     QLog.d("PgcShortContentProteusItem", 1, "click short content small image");
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.jdField_a_of_type_Int == 3)
+    if (this.a.k().mSocialFeedInfo.L.a == 3)
     {
-      paramView.clickJumpTarget = PGCShortContentUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.h, "-1");
-      RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPgcSmallView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.jdField_a_of_type_ComTencentMobileqqKandianRepoVideoEntityPGCVideoInfo.h, null);
+      paramView.clickJumpTarget = PGCShortContentUtils.a(this.a.k().mSocialFeedInfo.L.c.l, "-1");
+      RIJJumpUtils.a(this.b.getContext(), this.a.k().mSocialFeedInfo.L.c.l, null);
     }
     else
     {
-      paramView.clickJumpTarget = PGCShortContentUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleBasicInfo.c, "-1");
-      RIJJumpUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPgcSmallView.getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a().mSocialFeedInfo.a.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityArticleBasicInfo.c, null);
+      paramView.clickJumpTarget = PGCShortContentUtils.a(this.a.k().mSocialFeedInfo.L.b.d, "-1");
+      RIJJumpUtils.a(this.b.getContext(), this.a.k().mSocialFeedInfo.L.b.d, null);
     }
-    RIJFrameworkReportManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramView, (int)paramView.mChannelID);
+    RIJFrameworkReportManager.a(this.c.getContext(), paramView, (int)paramView.mChannelID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.PgcShortContentProteusItem.5
  * JD-Core Version:    0.7.0.1
  */

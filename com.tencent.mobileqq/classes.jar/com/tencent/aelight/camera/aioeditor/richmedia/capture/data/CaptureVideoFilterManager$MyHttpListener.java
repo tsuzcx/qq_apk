@@ -43,9 +43,9 @@ class CaptureVideoFilterManager$MyHttpListener
       localObject = CaptureVideoFilterManager.b;
       FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
       FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
-      if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null))
+      if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.b(this.a) != null))
       {
-        CaptureVideoFilterManager.a(this.a).a(true);
+        CaptureVideoFilterManager.b(this.a).a(true);
         return;
       }
     }
@@ -60,7 +60,7 @@ class CaptureVideoFilterManager$MyHttpListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.data.CaptureVideoFilterManager.MyHttpListener
  * JD-Core Version:    0.7.0.1
  */

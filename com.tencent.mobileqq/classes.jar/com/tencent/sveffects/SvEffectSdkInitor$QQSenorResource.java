@@ -10,12 +10,12 @@ public class SvEffectSdkInitor$QQSenorResource
 {
   public boolean checkSensorEnable()
   {
-    return PanoramaSensorManager.a().a();
+    return PanoramaSensorManager.a().b();
   }
   
   public boolean getCameraIsFront()
   {
-    return PanoramaSensorManager.a().b();
+    return PanoramaSensorManager.a().c();
   }
   
   public int getRotation()
@@ -40,7 +40,7 @@ public class SvEffectSdkInitor$QQSenorResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQSenorResource
  * JD-Core Version:    0.7.0.1
  */

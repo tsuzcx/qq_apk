@@ -11,74 +11,74 @@ import com.tencent.mobileqq.vas.adv.api.IVasAdvApi;
 
 public class WSInitializeHelper
 {
-  private int jdField_a_of_type_Int;
-  private WSLaunchDeltaTimeCalculator jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSLaunchDeltaTimeCalculator;
-  private String jdField_a_of_type_JavaLangString;
+  private WSLaunchDeltaTimeCalculator a;
+  private int b;
+  private String c;
   
   public static WSInitializeHelper a()
   {
     return WSInitializeHelper.SingletonHolder.a();
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    this.b = paramInt;
   }
   
-  public WSLaunchDeltaTimeCalculator a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSLaunchDeltaTimeCalculator == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSLaunchDeltaTimeCalculator = new WSLaunchDeltaTimeCalculator();
-    }
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSLaunchDeltaTimeCalculator;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
+  public void b()
   {
     WSReportUtils.a("QQ_official_account");
   }
   
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void b()
+  public void c()
   {
     WSReportUtils.a("weishi_share_trendstab");
     ((IVasAdvApi)QRoute.api(IVasAdvApi.class)).initTbsEnvironment();
   }
   
-  public void c()
-  {
-    WSExpABTestManager.a().a();
-    WSRedDotPreloadManager.a().a();
-  }
-  
   public void d()
   {
-    WSRedDotPushMsg localWSRedDotPushMsg = WeishiUtils.a();
-    if (localWSRedDotPushMsg != null) {
-      this.jdField_a_of_type_JavaLangString = localWSRedDotPushMsg.mPushId;
-    }
-    this.jdField_a_of_type_Int = 0;
-    WSAioListHelper.b();
+    WSExpABTestManager.a().b();
+    WSRedDotPreloadManager.a().b();
   }
   
   public void e()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newReportWSLaunchDeltaTimeCalculator = null;
+    WSRedDotPushMsg localWSRedDotPushMsg = WeishiUtils.g();
+    if (localWSRedDotPushMsg != null) {
+      this.c = localWSRedDotPushMsg.mPushId;
+    }
+    this.b = 0;
+    WSAioListHelper.c();
+  }
+  
+  public String f()
+  {
+    return this.c;
+  }
+  
+  public int g()
+  {
+    return this.b;
+  }
+  
+  public WSLaunchDeltaTimeCalculator h()
+  {
+    if (this.a == null) {
+      this.a = new WSLaunchDeltaTimeCalculator();
+    }
+    return this.a;
+  }
+  
+  public void i()
+  {
+    this.c = "";
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSInitializeHelper
  * JD-Core Version:    0.7.0.1
  */

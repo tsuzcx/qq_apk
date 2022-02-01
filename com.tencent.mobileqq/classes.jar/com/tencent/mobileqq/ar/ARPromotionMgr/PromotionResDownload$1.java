@@ -10,12 +10,12 @@ class PromotionResDownload$1
   
   public void run()
   {
-    PromotionResDownload.a(this.this$0, HardCodeUtil.a(2131708506), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$ZipItem.e, this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$ZipItem.a, this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo$ZipItem);
+    PromotionResDownload.a(this.this$0, HardCodeUtil.a(2131906291), this.a, this.b, this.c.f, this.c.a, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionResDownload.1
  * JD-Core Version:    0.7.0.1
  */

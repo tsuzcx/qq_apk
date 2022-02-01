@@ -21,20 +21,20 @@ class ForwardPreviewTroopMemberController$3
     ((StringBuilder)localObject).append("onDecodeTaskCompleted uin: ");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("Forward.Preview.Dialog", 1, ((StringBuilder)localObject).toString());
-    if (ForwardPreviewTroopMemberController.a(this.a) == null) {
+    if (ForwardPreviewTroopMemberController.d(this.a) == null) {
       return;
     }
-    if (ForwardPreviewTroopMemberController.a(this.a).isPausing()) {
+    if (ForwardPreviewTroopMemberController.e(this.a).isPausing()) {
       return;
     }
-    paramInt2 = ForwardPreviewTroopMemberController.a(this.a).findFirstVisibleItemPosition();
-    int i = ForwardPreviewTroopMemberController.a(this.a).getChildCount();
+    paramInt2 = ForwardPreviewTroopMemberController.f(this.a).findFirstVisibleItemPosition();
+    int i = ForwardPreviewTroopMemberController.d(this.a).getChildCount();
     paramInt1 = 1;
     while (paramInt1 < i)
     {
-      if (((String)((Pair)ForwardPreviewTroopMemberController.a(this.a).a.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
+      if (((String)((Pair)ForwardPreviewTroopMemberController.b(this.a).c.get(paramInt2 + paramInt1 - 1)).first).equals(paramString))
       {
-        localObject = (ForwardPreviewTroopMemberController.ViewHolder)ForwardPreviewTroopMemberController.a(this.a).getChildViewHolder(ForwardPreviewTroopMemberController.a(this.a).getChildAt(paramInt1));
+        localObject = (ForwardPreviewTroopMemberController.ViewHolder)ForwardPreviewTroopMemberController.d(this.a).getChildViewHolder(ForwardPreviewTroopMemberController.d(this.a).getChildAt(paramInt1));
         if ((localObject instanceof ForwardPreviewTroopMemberController.TroopMemberViewHolder)) {
           ((ForwardPreviewTroopMemberController.TroopMemberViewHolder)localObject).a.setImageBitmap(paramBitmap);
         } else {
@@ -47,7 +47,7 @@ class ForwardPreviewTroopMemberController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.3
  * JD-Core Version:    0.7.0.1
  */

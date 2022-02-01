@@ -13,9 +13,9 @@ public class HuaYangParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new HuaYangAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "huayang";
-    paramBaseQQAppInterface.c = "open";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "huayang";
+    paramBaseQQAppInterface.e = "open";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -51,7 +51,7 @@ public class HuaYangParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HuaYangParser
  * JD-Core Version:    0.7.0.1
  */

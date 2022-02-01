@@ -14,10 +14,10 @@ public class CommonMenuPopupView
 {
   public static int a = 1;
   public static int b = 2;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  QQCustomMenu jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
-  private BubblePopupWindow.OnDismissListener jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener;
-  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  QQCustomMenu c;
+  private BubblePopupWindow d;
+  private BubblePopupWindow.OnDismissListener e;
+  private View.OnClickListener f;
   
   public static QQCustomMenuNoIconLayout a(BubblePopupWindow paramBubblePopupWindow, Context paramContext, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener)
   {
@@ -28,29 +28,29 @@ public class CommonMenuPopupView
     paramContext.setPopupWindow(paramBubblePopupWindow, null);
     paramContext.setMenu(paramQQCustomMenu);
     paramContext.setMenuIconClickListener(paramOnClickListener);
-    paramContext.a();
+    paramContext.c();
     return paramContext;
   }
   
   public void a()
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    BubblePopupWindow localBubblePopupWindow = this.d;
     if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing())) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
+      this.d.dismiss();
     }
   }
   
   public void a(int paramInt1, String paramString, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = new QQCustomMenu();
+    if (this.c == null) {
+      this.c = new QQCustomMenu();
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu.a(paramInt1, paramString, paramInt2);
+    this.c.a(paramInt1, paramString, paramInt2);
   }
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.f = paramOnClickListener;
   }
   
   public void a(View paramView, int paramInt1, int paramInt2)
@@ -60,45 +60,45 @@ public class CommonMenuPopupView
   
   public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    BubblePopupWindow localBubblePopupWindow = this.d;
     if ((localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing()))
     {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.dismiss();
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+      this.d.dismiss();
+      this.d = null;
     }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    localBubblePopupWindow.setContentView(a(localBubblePopupWindow, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOutsideTouchable(paramBoolean);
+    this.d = new BubblePopupWindow(-2, -2);
+    localBubblePopupWindow = this.d;
+    localBubblePopupWindow.setContentView(a(localBubblePopupWindow, paramView.getContext(), this.c, this.f));
+    this.d.setBackgroundDrawable(new ColorDrawable(0));
+    this.d.setOutsideTouchable(paramBoolean);
     boolean bool = true;
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setFocusable(true);
+      this.d.setFocusable(true);
     }
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setFocusable(false);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOutsideTouchable(true);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setSoftInputMode(1);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setInputMethodMode(2);
-    localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
-    if (paramInt3 == jdField_a_of_type_Int) {
+    this.d.setFocusable(false);
+    this.d.setOutsideTouchable(true);
+    this.d.setSoftInputMode(1);
+    this.d.setInputMethodMode(2);
+    localBubblePopupWindow = this.d;
+    if (paramInt3 == a) {
       paramBoolean = bool;
     } else {
       paramBoolean = false;
     }
     localBubblePopupWindow.setKeepAbove(paramBoolean);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.setOnDismissListener(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow$OnDismissListener);
+    this.d.setOnDismissListener(this.e);
     paramView.post(new CommonMenuPopupView.1(this, paramView, paramInt1, paramInt2));
   }
   
-  public boolean a()
+  public boolean b()
   {
-    BubblePopupWindow localBubblePopupWindow = this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+    BubblePopupWindow localBubblePopupWindow = this.d;
     return (localBubblePopupWindow != null) && (localBubblePopupWindow.isShowing());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.CommonMenuPopupView
  * JD-Core Version:    0.7.0.1
  */

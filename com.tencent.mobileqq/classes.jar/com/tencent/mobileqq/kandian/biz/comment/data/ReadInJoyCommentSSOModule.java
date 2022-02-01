@@ -23,19 +23,19 @@ import org.json.JSONObject;
 
 public class ReadInJoyCommentSSOModule
 {
-  private static final AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  private ReadInJoyCommentObserver jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver = null;
-  private String jdField_a_of_type_JavaLangString = "";
+  private static final AtomicLong a = new AtomicLong(0L);
+  private ReadInJoyCommentObserver b = null;
+  private String c = "";
   
   public ReadInJoyCommentSSOModule()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(System.currentTimeMillis());
     localStringBuilder.append("");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.c = localStringBuilder.toString();
   }
   
-  private QQAppInterface a()
+  private QQAppInterface b()
   {
     if (BaseActivity.sTopActivity != null) {
       return (QQAppInterface)BaseActivity.sTopActivity.getAppInterface();
@@ -45,19 +45,19 @@ public class ReadInJoyCommentSSOModule
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver = null;
+    this.b = null;
   }
   
   public void a(ReadInJoyCommentObserver paramReadInJoyCommentObserver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver = paramReadInJoyCommentObserver;
+    this.b = paramReadInJoyCommentObserver;
   }
   
   public void a(BaseCommentData paramBaseCommentData, int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    Object localObject1 = a();
+    Object localObject1 = b();
     if ((paramBaseCommentData != null) && (localObject1 != null)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver == null) {
+      if (this.b == null) {
         return;
       }
     }
@@ -87,7 +87,7 @@ public class ReadInJoyCommentSSOModule
         }
         i = 400;
         ((JSONObject)localObject2).put("src", i);
-        ((JSONObject)localObject2).put("uuid", this.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject2).put("uuid", this.c);
         ((JSONObject)localObject2).put("to_uin", Long.parseLong(paramBaseCommentData.uin));
         ((JSONObject)localObject2).put("content_src", ReadInJoyCommentHelper.a(paramInt3));
         paramString = ((JSONObject)localObject2).toString();
@@ -109,7 +109,7 @@ public class ReadInJoyCommentSSOModule
       }
       catch (Exception paramString)
       {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver;
+        localObject1 = this.b;
         if (localObject1 != null) {
           ((ReadInJoyCommentObserver)localObject1).a(false, paramBaseCommentData, paramInt1, paramInt2);
         }
@@ -132,10 +132,10 @@ public class ReadInJoyCommentSSOModule
   {
     try
     {
-      localObject1 = a();
+      localObject1 = b();
       if (localObject1 != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver == null) {
+        if (this.b == null) {
           return;
         }
         Object localObject2 = new JSONObject();
@@ -153,7 +153,7 @@ public class ReadInJoyCommentSSOModule
         ((JSONObject)localObject2).put("article_id", paramString);
         ((JSONObject)localObject2).put("native_version", DeviceInfoUtil.a(BaseApplicationImpl.getContext()));
         ((JSONObject)localObject2).put("src", 20);
-        ((JSONObject)localObject2).put("uuid", this.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject2).put("uuid", this.c);
         ((JSONObject)localObject2).put("content_src", ReadInJoyCommentHelper.a(paramInt));
         paramString = ((JSONObject)localObject2).toString();
         if (QLog.isColorLevel())
@@ -178,7 +178,7 @@ public class ReadInJoyCommentSSOModule
     }
     catch (Exception paramString)
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentObserver;
+      Object localObject1 = this.b;
       if (localObject1 != null) {
         ((ReadInJoyCommentObserver)localObject1).a(false, paramBaseCommentData, "");
       }
@@ -195,7 +195,7 @@ public class ReadInJoyCommentSSOModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentSSOModule
  * JD-Core Version:    0.7.0.1
  */

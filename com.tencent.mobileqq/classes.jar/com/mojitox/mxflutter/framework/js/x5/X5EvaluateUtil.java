@@ -21,7 +21,7 @@ public class X5EvaluateUtil
   }
   
   @Nullable
-  public static String a(Object paramObject)
+  public static String b(Object paramObject)
   {
     for (;;)
     {
@@ -55,7 +55,7 @@ public class X5EvaluateUtil
   }
   
   @Nullable
-  public static String b(Object paramObject)
+  public static String c(Object paramObject)
   {
     for (;;)
     {
@@ -115,7 +115,7 @@ public class X5EvaluateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.js.x5.X5EvaluateUtil
  * JD-Core Version:    0.7.0.1
  */

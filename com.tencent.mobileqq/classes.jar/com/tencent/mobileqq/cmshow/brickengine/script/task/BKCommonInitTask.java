@@ -1,16 +1,23 @@
 package com.tencent.mobileqq.cmshow.brickengine.script.task;
 
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.cmshow.engine.script.task.CommonInitTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class BKCommonInitTask
   extends CommonInitTask
 {
-  protected JSONObject a()
+  public BKCommonInitTask(@NotNull IApolloResManager paramIApolloResManager)
+  {
+    super(paramIApolloResManager);
+  }
+  
+  protected JSONObject b()
   {
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(ApolloConstant.a);
@@ -80,7 +87,7 @@ public class BKCommonInitTask
       ((StringBuilder)localObject3).append("transformAction/2to3");
       ((JSONObject)localObject1).put("2to3DAction", ((StringBuilder)localObject3).toString());
     }
-    if ((b() == 2) && (new File((File)localObject2, "friendcard/1/action.bin").exists()))
+    if ((i() == 2) && (new File((File)localObject2, "friendcard/1/action.bin").exists()))
     {
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("def/role/0/3D/");
@@ -132,7 +139,7 @@ public class BKCommonInitTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.script.task.BKCommonInitTask
  * JD-Core Version:    0.7.0.1
  */

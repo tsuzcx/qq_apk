@@ -12,33 +12,33 @@ class PrivacyShowSettingFragment$8
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
+    if (paramBoolean1)
+    {
+      PrivacyShowSettingFragment localPrivacyShowSettingFragment = this.a;
+      PrivacyShowSettingFragment.a(localPrivacyShowSettingFragment, PrivacyShowSettingFragment.d(localPrivacyShowSettingFragment).getSwitch(), paramBoolean2);
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
     int i = 1;
     if (!paramBoolean1)
     {
-      this.a.a(2131718834, 1);
+      this.a.a(2131916364, 1);
       return;
     }
     Object localObject = this.a;
-    PrivacyShowSettingFragment.a((PrivacyShowSettingFragment)localObject, PrivacyShowSettingFragment.d((PrivacyShowSettingFragment)localObject).a(), paramBoolean2);
+    PrivacyShowSettingFragment.a((PrivacyShowSettingFragment)localObject, PrivacyShowSettingFragment.d((PrivacyShowSettingFragment)localObject).getSwitch(), paramBoolean2);
     localObject = this.a.a;
     if (paramBoolean2) {
       i = 2;
     }
     ReportController.b((AppRuntime)localObject, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
   }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      PrivacyShowSettingFragment localPrivacyShowSettingFragment = this.a;
-      PrivacyShowSettingFragment.a(localPrivacyShowSettingFragment, PrivacyShowSettingFragment.d(localPrivacyShowSettingFragment).a(), paramBoolean2);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.8
  * JD-Core Version:    0.7.0.1
  */

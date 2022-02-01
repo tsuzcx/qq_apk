@@ -18,7 +18,7 @@ final class PlusRedPointHelper$onMoveToState$1<T>
     Object localObject = PlusRedPointHelper.a(this.a);
     if (localObject != null)
     {
-      localObject = ((BaseChatPie)localObject).a;
+      localObject = ((BaseChatPie)localObject).d;
       if (localObject != null) {
         ((QQAppInterface)localObject).runOnUiThread((Runnable)new PlusRedPointHelper.onMoveToState.1.1(this, paramArrayList));
       }
@@ -27,7 +27,7 @@ final class PlusRedPointHelper$onMoveToState$1<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.PlusRedPointHelper.onMoveToState.1
  * JD-Core Version:    0.7.0.1
  */

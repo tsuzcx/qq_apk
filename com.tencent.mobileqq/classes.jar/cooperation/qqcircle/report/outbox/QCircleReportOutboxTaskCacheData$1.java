@@ -2,9 +2,9 @@ package cooperation.qqcircle.report.outbox;
 
 import android.database.Cursor;
 import android.os.Parcel;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.qcircle.api.db.IDBCacheDataWrapper.DbCreator;
 import com.tencent.mobileqq.qcircle.api.db.IDBCacheDataWrapper.Structure;
+import com.tencent.qphone.base.util.QLog;
 
 final class QCircleReportOutboxTaskCacheData$1
   implements IDBCacheDataWrapper.DbCreator<QCircleReportOutboxTaskCacheData>
@@ -25,7 +25,7 @@ final class QCircleReportOutboxTaskCacheData$1
     }
     catch (Throwable paramCursor)
     {
-      RFLog.w("QueueTaskCacheData", RFLog.USR, paramCursor.getMessage());
+      QLog.w("QueueTaskCacheData", 1, paramCursor.getMessage());
     }
     return null;
   }
@@ -47,7 +47,7 @@ final class QCircleReportOutboxTaskCacheData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskCacheData.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ public class ReportEvilHandler
 {
   public void a(@NonNull ReportEvilRequest paramReportEvilRequest, @Nullable ReportEvilResponse paramReportEvilResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramReportEvilRequest = new ReportEvilHandler.ReportEvent(this, paramErrorMessage, paramReportEvilRequest.b, paramReportEvilRequest.jdField_c_of_type_JavaLangString, paramReportEvilRequest.jdField_c_of_type_Int);
+    paramReportEvilRequest = new ReportEvilHandler.ReportEvent(this, paramErrorMessage, paramReportEvilRequest.f, paramReportEvilRequest.g, paramReportEvilRequest.i);
     StoryDispatcher.a().dispatch(paramReportEvilRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportEvilHandler
  * JD-Core Version:    0.7.0.1
  */

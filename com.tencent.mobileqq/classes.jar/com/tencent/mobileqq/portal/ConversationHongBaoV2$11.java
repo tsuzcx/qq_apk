@@ -15,7 +15,7 @@ class ConversationHongBaoV2$11
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_ConversationHongBaoV2", 2, "doShowTitleAnim onAnimationCancel");
     }
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.q();
+    this.b.t();
   }
   
   public void onAnimationEnd(Animator paramAnimator)
@@ -23,21 +23,21 @@ class ConversationHongBaoV2$11
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_ConversationHongBaoV2", 2, "doShowTitleAnim onAnimationEnd");
     }
-    this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.q();
+    this.b.t();
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.e) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if (this.b.n) {
+      this.a.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.11
  * JD-Core Version:    0.7.0.1
  */

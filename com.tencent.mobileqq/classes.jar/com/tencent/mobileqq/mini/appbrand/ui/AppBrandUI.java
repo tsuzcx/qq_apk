@@ -120,19 +120,19 @@ public class AppBrandUI
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_process_mem_alert_mode", 0);
       if (i == 0)
       {
-        Toast.makeText(this, 2131694159, 0).show();
+        Toast.makeText(this, 2131891789, 0).show();
         return;
       }
       if (i == 1)
       {
         if (this.mRestartDialog == null)
         {
-          this.mRestartDialog = new QQCustomDialog(this, 2131756189);
-          this.mRestartDialog.setContentView(2131558954);
-          this.mRestartDialog.setTitle(2131694111);
-          this.mRestartDialog.setMessage(2131694159);
-          this.mRestartDialog.setPositiveButton(HardCodeUtil.a(2131705963), new AppBrandUI.6(this));
-          this.mRestartDialog.setNegativeButton(HardCodeUtil.a(2131705960), new AppBrandUI.7(this));
+          this.mRestartDialog = new QQCustomDialog(this, 2131953338);
+          this.mRestartDialog.setContentView(2131624587);
+          this.mRestartDialog.setTitle(2131891739);
+          this.mRestartDialog.setMessage(2131891789);
+          this.mRestartDialog.setPositiveButton(HardCodeUtil.a(2131899883), new AppBrandUI.6(this));
+          this.mRestartDialog.setNegativeButton(HardCodeUtil.a(2131898212), new AppBrandUI.7(this));
           this.mRestartDialog.setCanceledOnTouchOutside(true);
         }
         if (!this.mRestartDialog.isShowing())
@@ -323,7 +323,7 @@ public class AppBrandUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI
  * JD-Core Version:    0.7.0.1
  */

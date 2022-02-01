@@ -12,7 +12,7 @@ class TroopAssistantActivity$19
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mRefreshListener onAdded:");
-    localStringBuilder.append(TroopAssistantActivity.a(this.a));
+    localStringBuilder.append(TroopAssistantActivity.c(this.a));
     QLog.e("TroopAssistantActivity", 2, localStringBuilder.toString());
     TroopAssistantActivity.a(this.a, true);
   }
@@ -21,7 +21,7 @@ class TroopAssistantActivity$19
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mRefreshListener onPostRun:");
-    localStringBuilder.append(TroopAssistantActivity.a(this.a));
+    localStringBuilder.append(TroopAssistantActivity.c(this.a));
     QLog.e("TroopAssistantActivity", 2, localStringBuilder.toString());
     TroopAssistantActivity.a(this.a, false);
   }
@@ -30,14 +30,14 @@ class TroopAssistantActivity$19
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mRefreshListener onPreRun:");
-    localStringBuilder.append(TroopAssistantActivity.a(this.a));
+    localStringBuilder.append(TroopAssistantActivity.c(this.a));
     QLog.e("TroopAssistantActivity", 2, localStringBuilder.toString());
     TroopAssistantActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.19
  * JD-Core Version:    0.7.0.1
  */

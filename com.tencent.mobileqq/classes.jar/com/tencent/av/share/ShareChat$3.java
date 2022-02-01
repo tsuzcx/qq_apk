@@ -15,30 +15,12 @@ final class ShareChat$3
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return 0L;
+    return this.d;
   }
   
   public Bitmap a(long paramLong)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.b, (byte)3, false, false);
-  }
-  
-  public TroopInfoData a()
-  {
-    TroopInfoData localTroopInfoData = new TroopInfoData();
-    localTroopInfoData.troopUin = this.b;
-    localTroopInfoData.updateForTroopInfo(((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.b), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    return localTroopInfoData;
-  }
-  
-  public String a()
-  {
-    return ShareChat.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
+    return this.b.getTroopFaceBitmap(this.c, (byte)3, false, false);
   }
   
   public String a(int paramInt)
@@ -48,37 +30,55 @@ final class ShareChat$3
   
   public String a(long paramLong, int paramInt)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 == 2) {
-      ShareChatReport.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+      ShareChatReport.a(paramInt1, paramInt2, this.d, this.c);
     }
-    ShareChat.a(this.jdField_a_of_type_Long, (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    ShareChat.a(this.e, (Context)this.f.get());
   }
   
-  public int b()
+  public long b()
   {
-    return 0;
-  }
-  
-  public String b()
-  {
-    return ShareChat.a(this.b);
+    return 0L;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 == 2) {
-      ShareChatReport.a(paramInt1, paramInt2, this.jdField_a_of_type_Int, this.b);
+      ShareChatReport.a(paramInt1, paramInt2, this.d, this.c);
     }
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public String d()
+  {
+    return ShareChat.b(this.b, this.c);
+  }
+  
+  public String e()
+  {
+    return ShareChat.a(this.c);
+  }
+  
+  public TroopInfoData f()
+  {
+    TroopInfoData localTroopInfoData = new TroopInfoData();
+    localTroopInfoData.troopUin = this.c;
+    localTroopInfoData.updateForTroopInfo(((TroopManager)this.b.getManager(QQManagerFactory.TROOP_MANAGER)).g(this.c), this.b.getCurrentAccountUin());
+    return localTroopInfoData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.3
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class WSEpisodeChoicePanel$7
   
   public void run()
   {
-    WSTopSmoothScroller localWSTopSmoothScroller = new WSTopSmoothScroller(WSEpisodeChoicePanel.a(this.this$0));
+    WSTopSmoothScroller localWSTopSmoothScroller = new WSTopSmoothScroller(WSEpisodeChoicePanel.g(this.this$0));
     localWSTopSmoothScroller.setTargetPosition(this.a);
     WSEpisodeChoicePanel.a(this.this$0).getRecyclerView().getLayoutManager().startSmoothScroll(localWSTopSmoothScroller);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel.WSEpisodeChoicePanel.7
  * JD-Core Version:    0.7.0.1
  */

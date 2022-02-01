@@ -19,7 +19,7 @@ public class TeleScreenConfig
   {
     TeleScreenConfig.Config localConfig = new TeleScreenConfig.Config();
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null)) {
-      TeleScreenConfig.Config.a(localConfig, paramArrayOfQConfItem[0].a);
+      TeleScreenConfig.Config.a(localConfig, paramArrayOfQConfItem[0].b);
     }
     return localConfig;
   }
@@ -62,7 +62,7 @@ public class TeleScreenConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.TeleScreenConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -32,40 +32,40 @@ import java.util.Map;
 public class ReadInJoyTabAdapter
   extends TabLayout.TabAdapter<TabChannelCoverInfo>
 {
-  public static final String a = "ReadInJoyTabAdapter";
-  private ReadInJoyChannelViewPagerController jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController;
-  private Map<Integer, BaseReportData> jdField_a_of_type_JavaUtilMap;
-  private TabLayout b;
+  public static final String d = "ReadInJoyTabAdapter";
+  private TabLayout e;
+  private Map<Integer, BaseReportData> f;
+  private ReadInJoyChannelViewPagerController g;
   
   public ReadInJoyTabAdapter(Context paramContext, List<TabChannelCoverInfo> paramList, TabLayout paramTabLayout, ReadInJoyChannelViewPagerController paramReadInJoyChannelViewPagerController)
   {
     super(paramContext, paramList);
-    this.b = paramTabLayout;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController = paramReadInJoyChannelViewPagerController;
+    this.e = paramTabLayout;
+    this.g = paramReadInJoyChannelViewPagerController;
   }
   
   private void a(TabLayout.TabAdapter.TabViewHolder paramTabViewHolder, int paramInt, TextView paramTextView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController != null)
+    if (this.g != null)
     {
-      paramTabViewHolder = paramTabViewHolder.a(2131369098);
-      if (paramInt == this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController.d())
+      paramTabViewHolder = paramTabViewHolder.a(2131436062);
+      if (paramInt == this.g.k())
       {
-        paramTextView.setTextColor(paramTextView.getResources().getColor(2131166935));
+        paramTextView.setTextColor(paramTextView.getResources().getColor(2131167856));
         paramTextView.setTypeface(Typeface.defaultFromStyle(1));
         paramTabViewHolder.setVisibility(0);
       }
       else
       {
-        paramTextView.setTextColor(paramTextView.getResources().getColor(2131166936));
+        paramTextView.setTextColor(paramTextView.getResources().getColor(2131167857));
         paramTextView.setTypeface(Typeface.defaultFromStyle(0));
         paramTabViewHolder.setVisibility(4);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController.a() == 0)
+      if (this.g.d() == 0)
       {
         paramTextView = (ViewGroup.MarginLayoutParams)paramTabViewHolder.getLayoutParams();
-        paramTextView.leftMargin = ViewUtils.b(0.0F);
-        paramTextView.rightMargin = ViewUtils.b(0.0F);
+        paramTextView.leftMargin = ViewUtils.dpToPx(0.0F);
+        paramTextView.rightMargin = ViewUtils.dpToPx(0.0F);
         paramTabViewHolder.setLayoutParams(paramTextView);
       }
     }
@@ -73,14 +73,14 @@ public class ReadInJoyTabAdapter
   
   private void a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)getItem(this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController.d());
+    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)getItem(this.g.k());
     int i;
     if (localTabChannelCoverInfo != null) {
       i = localTabChannelCoverInfo.mChannelCoverId;
     } else {
       i = 0;
     }
-    VideoReport.reportEvent("clck", new RIJDtParamBuilder().a(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId)).a("14").b("channel_bar").c("click_channel").a().a("eid", "channel_button").a("ref_channel", Integer.valueOf(i)).a());
+    VideoReport.reportEvent("clck", new RIJDtParamBuilder().a(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId)).a("14").b("channel_bar").c("click_channel").a().a("eid", "channel_button").a("ref_channel", Integer.valueOf(i)).c());
   }
   
   private void a(TabChannelCoverInfo paramTabChannelCoverInfo, int paramInt, ImageView paramImageView1, ImageView paramImageView2)
@@ -91,11 +91,11 @@ public class ReadInJoyTabAdapter
       localRedTypeInfo.red_type.set(0);
       localRedTypeInfo.red_content.set("");
       localRedTypeInfo.red_desc.set("");
-      if (paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean)
+      if (paramTabChannelCoverInfo.redPoint.a)
       {
         long l = System.currentTimeMillis() / 1000L;
         boolean bool = a(paramTabChannelCoverInfo, l);
-        if ((paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Long <= l) && ((paramTabChannelCoverInfo.redPoint.b == 0L) || (paramTabChannelCoverInfo.redPoint.b >= l)))
+        if ((paramTabChannelCoverInfo.redPoint.b <= l) && ((paramTabChannelCoverInfo.redPoint.c == 0L) || (paramTabChannelCoverInfo.redPoint.c >= l)))
         {
           a(paramTabChannelCoverInfo, paramInt, paramImageView1, paramImageView2, bool);
           return;
@@ -114,13 +114,13 @@ public class ReadInJoyTabAdapter
   
   private void a(TabChannelCoverInfo paramTabChannelCoverInfo, int paramInt, ImageView paramImageView1, ImageView paramImageView2, boolean paramBoolean)
   {
-    if (paramTabChannelCoverInfo.redPoint.jdField_a_of_type_Int == 0)
+    if (paramTabChannelCoverInfo.redPoint.e == 0)
     {
       paramImageView2.setVisibility(0);
     }
-    else if ((paramInt < b()) && (!paramBoolean))
+    else if ((paramInt < e()) && (!paramBoolean))
     {
-      if (ReadInJoyChannelViewPagerController.jdField_a_of_type_Boolean)
+      if (ReadInJoyChannelViewPagerController.d)
       {
         paramImageView1.setVisibility(0);
         paramImageView2 = new TranslateAnimation(1, 1.0F, 1, -1.0F, 1, -1.0F, 1, 1.0F);
@@ -130,8 +130,8 @@ public class ReadInJoyTabAdapter
         paramImageView2.setFillAfter(true);
         paramImageView1.startAnimation(paramImageView2);
       }
-      paramTabChannelCoverInfo.redPoint.c = (System.currentTimeMillis() / 1000L);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizTabReadInJoyChannelViewPagerController.a(paramTabChannelCoverInfo);
+      paramTabChannelCoverInfo.redPoint.d = (System.currentTimeMillis() / 1000L);
+      this.g.a(paramTabChannelCoverInfo);
       return;
     }
   }
@@ -154,7 +154,7 @@ public class ReadInJoyTabAdapter
       {
         if (QLog.isColorLevel())
         {
-          paramImageView2 = jdField_a_of_type_JavaLangString;
+          paramImageView2 = d;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("load channel cover error : ");
           localStringBuilder.append(paramImageView1);
@@ -187,7 +187,7 @@ public class ReadInJoyTabAdapter
     }
   }
   
-  private int b()
+  private int e()
   {
     if (ChannelModeConfigHandler.a()) {
       return 11;
@@ -197,33 +197,33 @@ public class ReadInJoyTabAdapter
   
   protected int a()
   {
-    return 2131560232;
+    return 2131626279;
   }
   
   protected void a(TabLayout.TabAdapter.TabViewHolder paramTabViewHolder, TabChannelCoverInfo paramTabChannelCoverInfo, int paramInt)
   {
-    TextView localTextView = (TextView)paramTabViewHolder.a(2131379930);
-    Object localObject = (ImageView)paramTabViewHolder.a(2131369387);
-    ImageView localImageView1 = (ImageView)paramTabViewHolder.a(2131369390);
-    ImageView localImageView2 = (ImageView)paramTabViewHolder.a(2131371798);
+    TextView localTextView = (TextView)paramTabViewHolder.a(2131448814);
+    Object localObject = (ImageView)paramTabViewHolder.a(2131436420);
+    ImageView localImageView1 = (ImageView)paramTabViewHolder.a(2131436423);
+    ImageView localImageView2 = (ImageView)paramTabViewHolder.a(2131439233);
     a(new View[] { localTextView, localObject, localImageView1, localImageView2 });
-    ImageView localImageView3 = (ImageView)paramTabViewHolder.a(2131369479);
+    ImageView localImageView3 = (ImageView)paramTabViewHolder.a(2131436550);
     if (paramTabChannelCoverInfo != null)
     {
       a(paramTabChannelCoverInfo, localTextView, (ImageView)localObject, localImageView1, paramTabChannelCoverInfo);
       a(paramTabChannelCoverInfo, paramInt, localImageView2, localImageView3);
       paramTabViewHolder.a().setOnClickListener(new ReadInJoyTabAdapter.1(this, paramTabChannelCoverInfo, paramInt, paramTabChannelCoverInfo, localImageView3));
-      localObject = this.b;
+      localObject = this.e;
       if (localObject != null)
       {
         int i = ((TabLayout)localObject).getFirstVisiblePosition();
-        int j = this.b.getLastVisiblePosition();
-        if ((paramInt >= i) && (paramInt <= j) && (this.jdField_a_of_type_JavaUtilMap != null))
+        int j = this.e.getLastVisiblePosition();
+        if ((paramInt >= i) && (paramInt <= j) && (this.f != null))
         {
           localObject = new ReportData();
-          ((BaseReportData)localObject).a = paramTabChannelCoverInfo;
-          ((BaseReportData)localObject).l = paramInt;
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), localObject);
+          ((BaseReportData)localObject).C = paramTabChannelCoverInfo;
+          ((BaseReportData)localObject).D = paramInt;
+          this.f.put(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), localObject);
         }
       }
     }
@@ -232,18 +232,18 @@ public class ReadInJoyTabAdapter
   
   public void a(Map<Integer, BaseReportData> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.f = paramMap;
   }
   
   @VisibleForTesting
   boolean a(TabChannelCoverInfo paramTabChannelCoverInfo, long paramLong)
   {
-    return (paramTabChannelCoverInfo.redPoint.c != 0L) && ((float)(paramLong - paramTabChannelCoverInfo.redPoint.c) > 2.5F) && ((float)(paramLong / 3600L - paramTabChannelCoverInfo.redPoint.c / 3600L) < 1.0F);
+    return (paramTabChannelCoverInfo.redPoint.d != 0L) && ((float)(paramLong - paramTabChannelCoverInfo.redPoint.d) > 2.5F) && ((float)(paramLong / 3600L - paramTabChannelCoverInfo.redPoint.d / 3600L) < 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyTabAdapter
  * JD-Core Version:    0.7.0.1
  */

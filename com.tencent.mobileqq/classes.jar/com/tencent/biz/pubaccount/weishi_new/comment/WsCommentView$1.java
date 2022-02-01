@@ -17,16 +17,16 @@ class WsCommentView$1
   {
     if ((WsCommentView.a(this.a) != null) && (WsCommentView.a(this.a).replyList.size() > 0))
     {
-      WsCommentView.a(this.a).a(paramView, 10, WsCommentView.a(this.a), WsCommentView.a(this.a));
-      this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentView$MoreCommentHolder.b.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsCommentView$MoreCommentHolder.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountWeishi_newCommentWsReplyContainer.setVisibility(0);
+      WsCommentView.c(this.a).a(paramView, 10, WsCommentView.b(this.a), WsCommentView.a(this.a));
+      this.a.j.f.setVisibility(8);
+      this.a.j.e.setVisibility(8);
+      this.a.e.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentView.1
  * JD-Core Version:    0.7.0.1
  */

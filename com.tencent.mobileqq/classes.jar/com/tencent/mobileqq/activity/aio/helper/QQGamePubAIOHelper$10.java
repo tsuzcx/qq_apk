@@ -43,7 +43,7 @@ class QQGamePubAIOHelper$10
       ((StringBuilder)localObject1).append(",rsp:");
       ((StringBuilder)localObject1).append(paramTrpcInovkeRsp);
       ((StringBuilder)localObject1).append(",cost:");
-      ((StringBuilder)localObject1).append(System.currentTimeMillis() - QQGamePubAIOHelper.a(this.a));
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - QQGamePubAIOHelper.e(this.a));
       QLog.i("QQGamePub_QQGamePubAIOHelper", 2, ((StringBuilder)localObject1).toString());
     }
     QQGamePubAIOHelper.b(this.a, false);
@@ -93,7 +93,7 @@ class QQGamePubAIOHelper$10
           paramString = paramIntent;
           paramTrpcInovkeRsp.append("doLoopTeamInfo onReceive: conf:");
           paramString = paramIntent;
-          paramTrpcInovkeRsp.append(QQGamePubAIOHelper.a());
+          paramTrpcInovkeRsp.append(QQGamePubAIOHelper.e());
           paramString = paramIntent;
           paramTrpcInovkeRsp.append(",teams:");
           paramString = paramIntent;
@@ -125,7 +125,7 @@ class QQGamePubAIOHelper$10
         paramTrpcInovkeRsp = localException;
       }
       label440:
-      if (QQGamePubAIOHelper.a(this.a, paramTrpcInovkeRsp))
+      if (QQGamePubAIOHelper.b(this.a, paramTrpcInovkeRsp))
       {
         ThreadManagerV2.getUIHandlerV2().post(new QQGamePubAIOHelper.10.2(this, paramTrpcInovkeRsp));
         return;
@@ -146,7 +146,7 @@ class QQGamePubAIOHelper$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.10
  * JD-Core Version:    0.7.0.1
  */

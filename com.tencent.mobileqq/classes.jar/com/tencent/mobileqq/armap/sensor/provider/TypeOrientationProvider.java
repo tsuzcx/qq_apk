@@ -11,19 +11,18 @@ import java.util.List;
 public class TypeOrientationProvider
   extends OrientationProvider2
 {
-  private float a;
-  private float b = -1.0F;
+  float[] a = new float[3];
+  private float[] b = new float[16];
   private float c = -1.0F;
-  float[] d = new float[3];
-  private float[] e = new float[16];
+  private float n = -1.0F;
+  private float o = -1.0F;
   
   public TypeOrientationProvider(Context paramContext, int paramInt, SensorManager paramSensorManager, ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
     super(paramContext, paramInt, paramSensorManager, paramOnSensorChangeListener);
-    this.jdField_a_of_type_Float = -1.0F;
     if (paramSensorManager.getDefaultSensor(3) != null)
     {
-      this.jdField_a_of_type_JavaUtilList.add(paramSensorManager.getDefaultSensor(3));
+      this.d.add(paramSensorManager.getDefaultSensor(3));
       return;
     }
     throw new OrientationProviderNotFound(String.valueOf(3));
@@ -31,48 +30,48 @@ public class TypeOrientationProvider
   
   private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener == null) {
+    if (this.g == null) {
       return;
     }
-    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
+    if (Math.abs(paramFloat1 - this.c) > 1.0F)
     {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateAzimuth(paramFloat1);
+      this.c = paramFloat1;
+      this.g.updateAzimuth(paramFloat1);
     }
-    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    if (Math.abs(paramFloat2 - this.n) > 1.0F)
     {
-      this.b = paramFloat2;
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updatePitch(paramFloat2);
+      this.n = paramFloat2;
+      this.g.updatePitch(paramFloat2);
     }
-    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    if (Math.abs(paramFloat3 - this.o) > 1.0F)
     {
-      this.c = paramFloat3;
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateRoll(paramFloat3);
+      this.o = paramFloat3;
+      this.g.updateRoll(paramFloat3);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+    this.g.updateSensor(paramFloat1, paramFloat2, paramFloat3);
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     if (paramSensorEvent.sensor.getType() == 3)
     {
-      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
-      if (this.jdField_a_of_type_Int != 1)
+      System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
+      if (this.m != 1)
       {
-        this.d[0] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[0]));
-        this.d[1] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[1]));
-        this.d[2] = ((float)Math.toRadians(this.jdField_a_of_type_ArrayOfFloat[2]));
-        SensorUtil.a(SensorUtil.a(this.d), this.e);
-        super.a(this.e);
+        this.a[0] = ((float)Math.toRadians(this.e[0]));
+        this.a[1] = ((float)Math.toRadians(this.e[1]));
+        this.a[2] = ((float)Math.toRadians(this.e[2]));
+        SensorUtil.a(SensorUtil.a(this.a), this.b);
+        super.a(this.b);
         return;
       }
-      a(this.jdField_a_of_type_ArrayOfFloat[0], this.jdField_a_of_type_ArrayOfFloat[1], this.jdField_a_of_type_ArrayOfFloat[2]);
+      a(this.e[0], this.e[1], this.e[2]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.TypeOrientationProvider
  * JD-Core Version:    0.7.0.1
  */

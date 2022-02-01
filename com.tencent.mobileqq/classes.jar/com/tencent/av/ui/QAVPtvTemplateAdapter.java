@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.avatar2d.EffectAvatar2dManager;
+import com.tencent.av.business.manager.material.EffectMaterialManager;
+import com.tencent.av.ui.effect.interfaces.IEffectCallback;
+import com.tencent.av.ui.effect.interfaces.IItemDownloadMgr;
 import com.tencent.av.utils.AudioHelper;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -23,26 +28,26 @@ import mqq.os.MqqHandler;
 public class QAVPtvTemplateAdapter
   extends BaseAdapter
 {
-  public static int a;
-  public static int b;
   public static int c;
-  float jdField_a_of_type_Float = 6.25F;
-  long jdField_a_of_type_Long = 0L;
-  public Context a;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private View jdField_a_of_type_AndroidViewView = null;
-  QAVPtvTemplateAdapter.IEffectCallback jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IEffectCallback;
-  QAVPtvTemplateAdapter.IItemDownloadMgr jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IItemDownloadMgr;
-  private QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = new QAVPtvTemplateAdapter.4(this);
-  private QavListItemBase.IDownloadCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IDownloadCallback = new QAVPtvTemplateAdapter.5(this);
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
-  public ArrayList<QavListItemBase.ItemInfo> a;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b;
-  public boolean c;
-  protected volatile int d = -1;
-  protected int e = -1;
+  public static int d;
+  public static int e;
+  public ArrayList<QavListItemBase.ItemInfo> a = new ArrayList();
+  public Context b;
+  boolean f = false;
+  HorizontalListView g;
+  boolean h = true;
+  AppInterface i;
+  protected volatile int j = -1;
+  protected int k = -1;
+  IEffectCallback l;
+  IItemDownloadMgr m;
+  public boolean n = false;
+  float o = 6.25F;
+  long p = 0L;
+  private Resources q;
+  private View r = null;
+  private QavListItemBase.IClickCallback s = new QAVPtvTemplateAdapter.4(this);
+  private QavListItemBase.IDownloadCallback t = new QAVPtvTemplateAdapter.5(this);
   
   public QAVPtvTemplateAdapter(AppInterface paramAppInterface, Context paramContext, ArrayList<QavListItemBase.ItemInfo> paramArrayList, HorizontalListView paramHorizontalListView)
   {
@@ -51,39 +56,36 @@ public class QAVPtvTemplateAdapter
   
   public QAVPtvTemplateAdapter(AppInterface paramAppInterface, Context paramContext, ArrayList<QavListItemBase.ItemInfo> paramArrayList, HorizontalListView paramHorizontalListView, float paramFloat)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.i = paramAppInterface;
+    this.b = paramContext;
+    this.q = this.b.getResources();
+    this.g = paramHorizontalListView;
+    this.o = paramFloat;
     a(paramArrayList);
-    jdField_a_of_type_Int = a(this.jdField_a_of_type_AndroidContentResResources, a());
-    jdField_b_of_type_Int = a(this.jdField_a_of_type_AndroidContentResResources, a(), 0.1666667F);
-    jdField_c_of_type_Int = jdField_a_of_type_Int + AIOUtils.b(30.0F, this.jdField_a_of_type_AndroidContentResResources);
-    if (this.jdField_a_of_type_Float < 6.0F) {
-      jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131297662);
+    c = a(this.q, a());
+    d = a(this.q, a(), 0.1666667F);
+    e = c + AIOUtils.b(30.0F, this.q);
+    if (this.o < 6.0F) {
+      e = this.q.getDimensionPixelSize(2131298327);
     }
     if (QLog.isDevelopLevel())
     {
       paramAppInterface = new StringBuilder();
       paramAppInterface.append("init, w[");
-      paramAppInterface.append(jdField_a_of_type_Int);
+      paramAppInterface.append(c);
       paramAppInterface.append("], h[");
-      paramAppInterface.append(jdField_c_of_type_Int);
+      paramAppInterface.append(e);
       paramAppInterface.append("], half[");
-      paramAppInterface.append(jdField_b_of_type_Int);
+      paramAppInterface.append(d);
       paramAppInterface.append("]");
       QLog.i("QAVPtvTemplateAdapter", 4, paramAppInterface.toString());
     }
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.addOnLayoutChangeListener(new QAVPtvTemplateAdapter.1(this));
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new QAVPtvTemplateAdapter.2(this));
-    paramAppInterface = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLayoutParams();
+    this.g.addOnLayoutChangeListener(new QAVPtvTemplateAdapter.1(this));
+    this.g.setOnScrollStateChangedListener(new QAVPtvTemplateAdapter.2(this));
+    paramAppInterface = this.g.getLayoutParams();
     paramAppInterface.width = -1;
-    paramAppInterface.height = jdField_c_of_type_Int;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setLayoutParams(paramAppInterface);
+    paramAppInterface.height = e;
+    this.g.setLayoutParams(paramAppInterface);
   }
   
   public static int a(Resources paramResources, float paramFloat)
@@ -98,55 +100,15 @@ public class QAVPtvTemplateAdapter
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public QavListItemBase.ItemInfo a()
-  {
-    int i = this.e;
-    if ((i >= 0) && (i < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(this.e);
-    }
-    return null;
-  }
-  
-  public QavListItemBase.ItemInfo a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition() >= paramInt)
-    {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPositionFromLeftOrRight(paramInt, 0, 200);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition() <= paramInt)
-    {
-      View localView = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChild(paramInt);
-      if ((localView == null) || (localView.getRight() > this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getRight()))
-      {
-        int i;
-        if (paramInt == getCount() - 1) {
-          i = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().widthPixels - jdField_a_of_type_Int;
-        } else {
-          i = jdField_a_of_type_Int * 5;
-        }
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.smoothScrollToPositionFromLeftOrRight(paramInt, -i, 200);
-      }
-    }
+    return this.o;
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.f)
     {
-      View localView1 = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChild(paramInt1);
-      View localView2 = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChild(paramInt2);
+      View localView1 = this.g.getChild(paramInt1);
+      View localView2 = this.g.getChild(paramInt2);
       if ((paramInt2 != paramInt1) && (localView1 != null) && ((localView1 instanceof QavListItemBase))) {
         ((QavListItemBase)localView1).setHighlight(false);
       }
@@ -156,51 +118,47 @@ public class QAVPtvTemplateAdapter
     }
   }
   
-  protected void a(long paramLong, int paramInt)
+  public void a(long paramLong, int paramInt)
   {
     if (paramInt >= 0)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= paramInt) {
+      if (this.a.size() <= paramInt) {
         return;
       }
-      QavListItemBase.ItemInfo localItemInfo = (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if ((!TextUtils.isEmpty(localItemInfo.jdField_a_of_type_JavaLangString)) && (!localItemInfo.jdField_a_of_type_JavaLangString.equals("0")))
+      QavListItemBase.ItemInfo localItemInfo = (QavListItemBase.ItemInfo)this.a.get(paramInt);
+      if (!TextUtils.isEmpty(localItemInfo.a))
       {
-        if (localItemInfo.jdField_a_of_type_Boolean)
-        {
-          a(paramLong, localItemInfo);
+        if (localItemInfo.a.equals("0")) {
           return;
         }
-        if ((!localItemInfo.jdField_b_of_type_Boolean) && (!TextUtils.isEmpty(localItemInfo.jdField_a_of_type_JavaLangString)))
+        if ((!localItemInfo.d) && (!localItemInfo.e) && (!TextUtils.isEmpty(localItemInfo.a)))
         {
-          QAVPtvTemplateAdapter.IItemDownloadMgr localIItemDownloadMgr = this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IItemDownloadMgr;
+          IItemDownloadMgr localIItemDownloadMgr = this.m;
           if (localIItemDownloadMgr != null)
           {
-            localIItemDownloadMgr.startDownloadTemplate(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramLong, localItemInfo, this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IDownloadCallback);
-            localItemInfo.jdField_b_of_type_Boolean = true;
+            localIItemDownloadMgr.startDownloadTemplate(this.i, paramLong, localItemInfo, this.t);
+            localItemInfo.e = true;
             return;
           }
           throw new IllegalArgumentException("mIItemDownloadMgr is null, pealse call setItemDownloadMgr");
         }
-        return;
       }
-      a(paramLong, localItemInfo);
     }
   }
   
   void a(long paramLong, QavListItemBase.ItemInfo paramItemInfo)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IEffectCallback == null) {
+    if (this.l == null) {
       return;
     }
-    if ((TextUtils.isEmpty(paramItemInfo.jdField_a_of_type_JavaLangString)) || (paramItemInfo.jdField_a_of_type_JavaLangString.equals("0")) || (paramItemInfo.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IEffectCallback.a(paramLong, paramItemInfo);
+    if ((TextUtils.isEmpty(paramItemInfo.a)) || (paramItemInfo.a.equals("0")) || (paramItemInfo.d)) {
+      this.l.a(paramLong, paramItemInfo);
     }
   }
   
   public void a(long paramLong, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new QAVPtvTemplateAdapter.6(this, paramString, paramBoolean, paramLong));
+    this.g.post(new QAVPtvTemplateAdapter.6(this, paramString, paramBoolean, paramLong));
   }
   
   void a(View paramView, QavListItemBase.ItemInfo paramItemInfo, int paramInt)
@@ -208,22 +166,22 @@ public class QAVPtvTemplateAdapter
     if (paramView == null) {
       return;
     }
-    paramView = paramView.findViewById(2131373387);
+    paramView = paramView.findViewById(2131441060);
     if ((paramView != null) && (paramItemInfo != null))
     {
-      paramView.setContentDescription(paramItemInfo.d);
+      paramView.setContentDescription(paramItemInfo.k);
       ViewCompat.setAccessibilityDelegate(paramView, new QAVPtvTemplateAdapter.3(this, paramInt));
     }
   }
   
-  public void a(QAVPtvTemplateAdapter.IEffectCallback paramIEffectCallback)
+  public void a(IEffectCallback paramIEffectCallback)
   {
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IEffectCallback = paramIEffectCallback;
+    this.l = paramIEffectCallback;
   }
   
-  public void a(QAVPtvTemplateAdapter.IItemDownloadMgr paramIItemDownloadMgr)
+  public void a(IItemDownloadMgr paramIItemDownloadMgr)
   {
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IItemDownloadMgr = paramIItemDownloadMgr;
+    this.m = paramIItemDownloadMgr;
   }
   
   public void a(String paramString, int paramInt)
@@ -233,25 +191,25 @@ public class QAVPtvTemplateAdapter
   
   public void a(ArrayList<QavListItemBase.ItemInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.a.clear();
     if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.a.addAll(paramArrayList);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public boolean a(int paramInt)
   {
-    int i = this.d;
-    int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int i1 = this.j;
+    int i2 = this.a.size();
     boolean bool;
-    if ((this.d != paramInt) && (paramInt >= 0) && (paramInt < j))
+    if ((this.j != paramInt) && (paramInt >= 0) && (paramInt < i2))
     {
-      this.d = paramInt;
+      this.j = paramInt;
       notifyDataSetChanged();
       bool = true;
     }
@@ -265,37 +223,86 @@ public class QAVPtvTemplateAdapter
     localStringBuilder.append("], index[");
     localStringBuilder.append(paramInt);
     localStringBuilder.append("], mCurSelectedPosition[");
-    localStringBuilder.append(i);
+    localStringBuilder.append(i1);
     localStringBuilder.append("->");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.j);
     localStringBuilder.append("], size[");
-    localStringBuilder.append(j);
+    localStringBuilder.append(i2);
     localStringBuilder.append("]");
     QLog.w("QAVPtvTemplateAdapter", 1, localStringBuilder.toString());
     return bool;
   }
   
+  public QavListItemBase.ItemInfo b()
+  {
+    int i1 = this.k;
+    if ((i1 >= 0) && (i1 < this.a.size())) {
+      return (QavListItemBase.ItemInfo)this.a.get(this.k);
+    }
+    return null;
+  }
+  
+  public QavListItemBase.ItemInfo b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (QavListItemBase.ItemInfo)this.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  protected void b(long paramLong, int paramInt)
+  {
+    if (paramInt >= 0)
+    {
+      if (this.a.size() <= paramInt) {
+        return;
+      }
+      QavListItemBase.ItemInfo localItemInfo = (QavListItemBase.ItemInfo)this.a.get(paramInt);
+      if ((!TextUtils.isEmpty(localItemInfo.a)) && (!localItemInfo.a.equals("0")))
+      {
+        if (localItemInfo.d)
+        {
+          a(paramLong, localItemInfo);
+          return;
+        }
+        if ((!localItemInfo.e) && (!TextUtils.isEmpty(localItemInfo.a)))
+        {
+          IItemDownloadMgr localIItemDownloadMgr = this.m;
+          if (localIItemDownloadMgr != null)
+          {
+            localIItemDownloadMgr.startDownloadTemplate(this.i, paramLong, localItemInfo, this.t);
+            localItemInfo.e = true;
+            return;
+          }
+          throw new IllegalArgumentException("mIItemDownloadMgr is null, pealse call setItemDownloadMgr");
+        }
+        return;
+      }
+      a(paramLong, localItemInfo);
+    }
+  }
+  
   void b(String paramString, int paramInt)
   {
-    int m = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-    int i1 = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getLastVisiblePosition();
-    int i = m;
+    int i4 = this.g.getFirstVisiblePosition();
+    int i6 = this.g.getLastVisiblePosition();
+    int i1 = i4;
     Object localObject2;
     for (;;)
     {
       localObject2 = null;
-      if (i > i1) {
+      if (i1 > i6) {
         break;
       }
-      if (i >= 0)
+      if (i1 >= 0)
       {
-        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (i1 >= this.a.size()) {
           break;
         }
-        localObject3 = (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localObject3 != null) && (((QavListItemBase.ItemInfo)localObject3).jdField_a_of_type_JavaLangString.equals(paramString)))
+        localObject3 = (QavListItemBase.ItemInfo)this.a.get(i1);
+        if ((localObject3 != null) && (((QavListItemBase.ItemInfo)localObject3).a.equals(paramString)))
         {
-          View localView = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - m);
+          View localView = this.g.getChildAt(i1 - i4);
           localObject4 = localObject2;
           localObject1 = localObject3;
           if (!(localView instanceof QavListItemBase)) {
@@ -303,7 +310,7 @@ public class QAVPtvTemplateAdapter
           }
           localObject4 = localObject2;
           localObject1 = localObject3;
-          if (!this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getAdapter().equals(this)) {
+          if (!this.g.getAdapter().equals(this)) {
             break label160;
           }
           localObject4 = (QavListItemBase)localView;
@@ -311,61 +318,61 @@ public class QAVPtvTemplateAdapter
           break label160;
         }
       }
-      i += 1;
+      i1 += 1;
     }
     Object localObject1 = null;
     Object localObject4 = localObject2;
     label160:
-    int k = i;
+    int i3 = i1;
     Object localObject3 = localObject1;
     if (localObject1 == null)
     {
-      k = i;
+      i3 = i1;
       localObject3 = localObject1;
       if (paramInt == 101)
       {
-        int n = this.jdField_a_of_type_JavaUtilArrayList.size();
-        k = 0;
-        int j;
+        int i5 = this.a.size();
+        i3 = 0;
+        int i2;
         for (;;)
         {
-          j = i;
+          i2 = i1;
           localObject2 = localObject1;
-          if (k >= m) {
+          if (i3 >= i4) {
             break;
           }
-          j = i;
+          i2 = i1;
           localObject2 = localObject1;
-          if (k >= n) {
+          if (i3 >= i5) {
             break;
           }
-          localObject2 = (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k);
-          if ((localObject2 != null) && (((QavListItemBase.ItemInfo)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)))
+          localObject2 = (QavListItemBase.ItemInfo)this.a.get(i3);
+          if ((localObject2 != null) && (((QavListItemBase.ItemInfo)localObject2).a.equals(paramString)))
           {
-            j = k;
+            i2 = i3;
             break;
           }
-          k += 1;
+          i3 += 1;
         }
-        k = j;
+        i3 = i2;
         localObject3 = localObject2;
         if (localObject2 == null)
         {
-          i = i1 + 1;
+          i1 = i6 + 1;
           for (;;)
           {
-            k = j;
+            i3 = i2;
             localObject3 = localObject2;
-            if (i >= n) {
+            if (i1 >= i5) {
               break;
             }
-            localObject3 = (QavListItemBase.ItemInfo)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-            if ((localObject3 != null) && (((QavListItemBase.ItemInfo)localObject3).jdField_a_of_type_JavaLangString.equals(paramString)))
+            localObject3 = (QavListItemBase.ItemInfo)this.a.get(i1);
+            if ((localObject3 != null) && (((QavListItemBase.ItemInfo)localObject3).a.equals(paramString)))
             {
-              k = i;
+              i3 = i1;
               break;
             }
-            i += 1;
+            i1 += 1;
           }
         }
       }
@@ -373,25 +380,25 @@ public class QAVPtvTemplateAdapter
     if (localObject3 != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, String.format("onProgressUpdate, index[%s], [%s][%s], progress[%s]", new Object[] { Integer.valueOf(k), ((QavListItemBase.ItemInfo)localObject3).jdField_a_of_type_JavaLangString, ((QavListItemBase.ItemInfo)localObject3).c, Integer.valueOf(paramInt) }));
+        QLog.i("PtvTemplateManager", 2, String.format("onProgressUpdate, index[%s], [%s][%s], progress[%s]", new Object[] { Integer.valueOf(i3), ((QavListItemBase.ItemInfo)localObject3).a, ((QavListItemBase.ItemInfo)localObject3).c, Integer.valueOf(paramInt) }));
       }
       if (paramInt == -1)
       {
-        ((QavListItemBase.ItemInfo)localObject3).jdField_b_of_type_Boolean = false;
+        ((QavListItemBase.ItemInfo)localObject3).e = false;
       }
       else if (paramInt == 101)
       {
-        ((QavListItemBase.ItemInfo)localObject3).jdField_b_of_type_Boolean = false;
-        ((QavListItemBase.ItemInfo)localObject3).jdField_a_of_type_Boolean = true;
+        ((QavListItemBase.ItemInfo)localObject3).e = false;
+        ((QavListItemBase.ItemInfo)localObject3).d = true;
       }
       else
       {
-        i = paramInt;
+        i1 = paramInt;
         if (paramInt == 100) {
-          i = 99;
+          i1 = 99;
         }
-        ((QavListItemBase.ItemInfo)localObject3).jdField_b_of_type_Boolean = true;
-        paramInt = i;
+        ((QavListItemBase.ItemInfo)localObject3).e = true;
+        paramInt = i1;
       }
       if (localObject4 != null) {
         ((QavListItemBase)localObject4).a(paramInt);
@@ -401,20 +408,43 @@ public class QAVPtvTemplateAdapter
   
   public void b(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
-  void c(String paramString, int paramInt)
+  void c(int paramInt)
+  {
+    if (this.g.getFirstVisiblePosition() >= paramInt)
+    {
+      this.g.smoothScrollToPositionFromLeftOrRight(paramInt, 0, 200);
+      return;
+    }
+    if (this.g.getLastVisiblePosition() <= paramInt)
+    {
+      View localView = this.g.getChild(paramInt);
+      if ((localView == null) || (localView.getRight() > this.g.getRight()))
+      {
+        int i1;
+        if (paramInt == getCount() - 1) {
+          i1 = this.q.getDisplayMetrics().widthPixels - c;
+        } else {
+          i1 = c * 5;
+        }
+        this.g.smoothScrollToPositionFromLeftOrRight(paramInt, -i1, 200);
+      }
+    }
+  }
+  
+  public void c(String paramString, int paramInt)
   {
     ThreadManager.getUIHandler().post(new QAVPtvTemplateAdapter.7(this, paramString, paramInt));
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
+    if (this.a.isEmpty()) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public long getItemId(int paramInt)
@@ -424,7 +454,7 @@ public class QAVPtvTemplateAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    QavListItemBase.ItemInfo localItemInfo = a(paramInt);
+    QavListItemBase.ItemInfo localItemInfo = b(paramInt);
     Object localObject2 = null;
     if (localItemInfo == null)
     {
@@ -435,20 +465,20 @@ public class QAVPtvTemplateAdapter
     {
       Object localObject1;
       Object localObject3;
-      if ("-1".equals(localItemInfo.jdField_a_of_type_JavaLangString))
+      if ("-1".equals(localItemInfo.a))
       {
         localObject1 = localObject2;
         if (paramView != null)
         {
           localObject1 = localObject2;
-          if (paramView.getId() == Integer.valueOf(localItemInfo.jdField_a_of_type_JavaLangString).intValue()) {
+          if (paramView.getId() == Integer.valueOf(localItemInfo.a).intValue()) {
             localObject1 = paramView;
           }
         }
         localObject2 = localObject1;
         if (localObject1 == null)
         {
-          localObject3 = this.jdField_a_of_type_AndroidViewView;
+          localObject3 = this.r;
           localObject2 = localObject1;
           if (localObject3 != null) {
             localObject2 = localObject3;
@@ -457,10 +487,10 @@ public class QAVPtvTemplateAdapter
         localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = new View(this.jdField_a_of_type_AndroidContentContext);
-          ((View)localObject1).setId(Integer.valueOf(localItemInfo.jdField_a_of_type_JavaLangString).intValue());
-          ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(jdField_b_of_type_Int, -1));
-          this.jdField_a_of_type_AndroidViewView = ((View)localObject1);
+          localObject1 = new View(this.b);
+          ((View)localObject1).setId(Integer.valueOf(localItemInfo.a).intValue());
+          ((View)localObject1).setLayoutParams(new AbsListView.LayoutParams(d, -1));
+          this.r = ((View)localObject1);
         }
         localObject2 = localObject1;
         if (AudioHelper.a(0) == 1)
@@ -473,18 +503,18 @@ public class QAVPtvTemplateAdapter
       {
         if (!(paramView instanceof QavListItemBase))
         {
-          if (localItemInfo.jdField_a_of_type_Int == 2)
+          if (localItemInfo.f == 2)
           {
-            localObject1 = new VoiceChangeItemView2(this.jdField_a_of_type_AndroidContentContext);
+            localObject1 = new VoiceChangeItemView2(this.b);
           }
           else
           {
-            localObject2 = new QavPtvTemplateItemView(this.jdField_a_of_type_AndroidContentContext);
-            ((QavPtvTemplateItemView)localObject2).jdField_a_of_type_Boolean = this.jdField_c_of_type_Boolean;
+            localObject2 = new QavPtvTemplateItemView(this.b);
+            ((QavPtvTemplateItemView)localObject2).j = this.n;
             localObject1 = localObject2;
-            if (this.jdField_a_of_type_Float < 6.0F)
+            if (this.o < 6.0F)
             {
-              localObject3 = ((QavPtvTemplateItemView)localObject2).findViewById(2131373553);
+              localObject3 = ((QavPtvTemplateItemView)localObject2).findViewById(2131441226);
               localObject1 = localObject2;
               if ((localObject3 instanceof LinearLayout))
               {
@@ -493,7 +523,7 @@ public class QAVPtvTemplateAdapter
               }
             }
           }
-          ((QavListItemBase)localObject1).a(jdField_a_of_type_Int, jdField_c_of_type_Int);
+          ((QavListItemBase)localObject1).a(c, e);
         }
         else
         {
@@ -502,24 +532,24 @@ public class QAVPtvTemplateAdapter
         if (AudioHelper.a(0) == 1)
         {
           ((QavListItemBase)localObject1).a(localItemInfo, paramInt);
-          this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setBackgroundColor(-1);
+          this.g.setBackgroundColor(-1);
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("getView, itemView[");
           ((StringBuilder)localObject2).append(localObject1.hashCode());
           ((StringBuilder)localObject2).append("], mListView[");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.hashCode());
+          ((StringBuilder)localObject2).append(this.g.hashCode());
           ((StringBuilder)localObject2).append("], position[");
           ((StringBuilder)localObject2).append(paramInt);
           ((StringBuilder)localObject2).append("], getPosition[");
-          ((StringBuilder)localObject2).append(((QavListItemBase)localObject1).a());
+          ((StringBuilder)localObject2).append(((QavListItemBase)localObject1).getPosition());
           ((StringBuilder)localObject2).append("], mFullItemWidth[");
-          ((StringBuilder)localObject2).append(jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(c);
           ((StringBuilder)localObject2).append("], mListViewHeight[");
-          ((StringBuilder)localObject2).append(jdField_c_of_type_Int);
+          ((StringBuilder)localObject2).append(e);
           ((StringBuilder)localObject2).append("], mListView.Height[");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getMeasuredHeight());
+          ((StringBuilder)localObject2).append(this.g.getMeasuredHeight());
           ((StringBuilder)localObject2).append("|");
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getHeight());
+          ((StringBuilder)localObject2).append(this.g.getHeight());
           ((StringBuilder)localObject2).append("], itemView.Height[");
           ((StringBuilder)localObject2).append(((QavListItemBase)localObject1).getMeasuredHeight());
           ((StringBuilder)localObject2).append("|");
@@ -529,21 +559,55 @@ public class QAVPtvTemplateAdapter
           ((StringBuilder)localObject2).append("]");
           QLog.w("QAVPtvTemplateAdapter", 1, ((StringBuilder)localObject2).toString());
         }
-        ((QavListItemBase)localObject1).b(jdField_a_of_type_Int, jdField_c_of_type_Int);
-        int i;
-        if (paramInt == this.d) {
-          i = 1;
+        ((QavListItemBase)localObject1).b(c, e);
+        int i1;
+        if (paramInt == this.j) {
+          i1 = 1;
         } else {
-          i = 0;
+          i1 = 0;
         }
+        if (localItemInfo.f == 7)
+        {
+          localObject2 = (EffectAvatar2dManager)((VideoAppInterface)this.i).c(16);
+          localObject3 = (EffectMaterialManager)((VideoAppInterface)this.i).c(15);
+          if (((EffectAvatar2dManager)localObject2).c() == null)
+          {
+            if (paramInt == 0)
+            {
+              this.j = 0;
+            }
+            else
+            {
+              i1 = 0;
+              break label723;
+            }
+          }
+          else
+          {
+            if (!((EffectMaterialManager)localObject3).r().equals(localItemInfo.a)) {
+              break label712;
+            }
+            this.j = paramInt;
+          }
+          for (;;)
+          {
+            i1 = 1;
+            break label723;
+            label712:
+            if (paramInt != this.j) {
+              break;
+            }
+          }
+        }
+        label723:
         boolean bool1;
-        if ((this.jdField_a_of_type_Boolean) && (i != 0)) {
+        if ((this.f) && (i1 != 0)) {
           bool1 = true;
         } else {
           bool1 = false;
         }
-        boolean bool2 = this.jdField_b_of_type_Boolean;
-        localObject3 = this.jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback;
+        boolean bool2 = this.h;
+        localObject3 = this.s;
         localObject2 = localObject1;
         ((QavListItemBase)localObject2).a(paramInt, bool1, bool2, localItemInfo, (QavListItemBase.IClickCallback)localObject3);
         a((View)localObject1, localItemInfo, paramInt);
@@ -555,7 +619,7 @@ public class QAVPtvTemplateAdapter
   
   public void notifyDataSetChanged()
   {
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.r = null;
     super.notifyDataSetChanged();
   }
 }

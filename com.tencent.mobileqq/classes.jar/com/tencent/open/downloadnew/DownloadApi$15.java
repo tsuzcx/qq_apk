@@ -12,7 +12,7 @@ final class DownloadApi$15
 {
   public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
   {
-    LogUtility.b(DownloadApi.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
+    LogUtility.b(DownloadApi.a, "onExchangedURLSucceed --- ");
     if ((paramBoolean) && (??? != null) && (???.size() > 0))
     {
       ??? = ???.iterator();
@@ -24,14 +24,14 @@ final class DownloadApi$15
           localObject1 = (AppSimpleDetail)localObject1;
           int i = ((AppSimpleDetail)localObject1).versionCode;
           if (i > 0) {
-            DownloadApi.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
+            DownloadApi.c.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
           }
         }
       }
     }
-    synchronized (DownloadApi.jdField_a_of_type_JavaLangObject)
+    synchronized (DownloadApi.b)
     {
-      DownloadApi.jdField_a_of_type_JavaLangObject.notify();
+      DownloadApi.b.notify();
       return;
     }
     for (;;)
@@ -42,7 +42,7 @@ final class DownloadApi$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.15
  * JD-Core Version:    0.7.0.1
  */

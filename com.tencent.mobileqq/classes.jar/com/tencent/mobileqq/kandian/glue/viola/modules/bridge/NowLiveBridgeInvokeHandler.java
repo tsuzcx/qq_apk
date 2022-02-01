@@ -65,22 +65,22 @@ public final class NowLiveBridgeInvokeHandler
     ThreadManager.post((Runnable)NowLiveBridgeInvokeHandler.preload.1.a, 8, null, true);
   }
   
-  @NotNull
-  public String a()
-  {
-    return "nowlive";
-  }
-  
   public void a()
   {
     NowLiveBridgeInvokeHandler localNowLiveBridgeInvokeHandler = (NowLiveBridgeInvokeHandler)this;
     a("openRoom", (Function2)new NowLiveBridgeInvokeHandler.register.1(localNowLiveBridgeInvokeHandler));
     a("preload", (Function2)new NowLiveBridgeInvokeHandler.register.2(localNowLiveBridgeInvokeHandler));
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "nowlive";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.bridge.NowLiveBridgeInvokeHandler
  * JD-Core Version:    0.7.0.1
  */

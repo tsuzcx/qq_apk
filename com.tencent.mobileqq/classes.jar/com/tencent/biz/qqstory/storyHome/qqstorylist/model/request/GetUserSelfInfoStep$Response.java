@@ -11,69 +11,69 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetUserSelfInfoStep$Response
   extends BaseResponse
 {
-  public String a;
-  public int b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  public int a;
+  public String b;
   public int e;
+  public int f;
+  public int g;
+  public String h;
+  public String i;
   
   public GetUserSelfInfoStep$Response(qqstory_service.RspGetUserSelfInfo paramRspGetUserSelfInfo)
   {
     String str = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
+    this.h = "";
+    this.i = "";
     Object localObject = paramRspGetUserSelfInfo.result;
-    this.jdField_a_of_type_Int = ((qqstory_struct.ErrorInfo)localObject).error_code.get();
-    this.jdField_b_of_type_JavaLangString = ((qqstory_struct.ErrorInfo)localObject).error_desc.get().toStringUtf8();
+    this.c = ((qqstory_struct.ErrorInfo)localObject).error_code.get();
+    this.d = ((qqstory_struct.ErrorInfo)localObject).error_desc.get().toStringUtf8();
     boolean bool = paramRspGetUserSelfInfo.is_vip.has();
-    int j = 0;
+    int k = 0;
     if (bool) {
-      i = paramRspGetUserSelfInfo.is_vip.get();
+      j = paramRspGetUserSelfInfo.is_vip.get();
     } else {
-      i = 0;
+      j = 0;
     }
-    this.jdField_b_of_type_Int = i;
+    this.a = j;
     if (paramRspGetUserSelfInfo.union_id.has()) {
       localObject = paramRspGetUserSelfInfo.union_id.get().toStringUtf8();
     } else {
       localObject = "";
     }
-    this.jdField_a_of_type_JavaLangString = ((String)localObject);
+    this.b = ((String)localObject);
     if (paramRspGetUserSelfInfo.fans_count.has()) {
-      i = paramRspGetUserSelfInfo.fans_count.get();
+      j = paramRspGetUserSelfInfo.fans_count.get();
     } else {
-      i = 0;
+      j = 0;
     }
-    this.jdField_c_of_type_Int = i;
+    this.e = j;
     if (paramRspGetUserSelfInfo.video_count.has()) {
-      i = paramRspGetUserSelfInfo.video_count.get();
+      j = paramRspGetUserSelfInfo.video_count.get();
     } else {
-      i = 0;
+      j = 0;
     }
-    this.jdField_d_of_type_Int = i;
-    int i = j;
+    this.f = j;
+    int j = k;
     if (paramRspGetUserSelfInfo.visit_total_count.has()) {
-      i = paramRspGetUserSelfInfo.visit_total_count.get();
+      j = paramRspGetUserSelfInfo.visit_total_count.get();
     }
-    this.e = i;
+    this.g = j;
     if (paramRspGetUserSelfInfo.newest_video_cover.has()) {
       localObject = paramRspGetUserSelfInfo.newest_video_cover.get().toStringUtf8();
     } else {
       localObject = "";
     }
-    this.jdField_c_of_type_JavaLangString = ((String)localObject);
+    this.h = ((String)localObject);
     localObject = str;
     if (paramRspGetUserSelfInfo.newest_video_vid.has()) {
       localObject = paramRspGetUserSelfInfo.newest_video_vid.get().toStringUtf8();
     }
-    this.jdField_d_of_type_JavaLangString = ((String)localObject);
+    this.i = ((String)localObject);
   }
   
   public String toString()
   {
-    return StringAppendTool.a(new Object[] { "Response{ isVip=", Integer.valueOf(this.jdField_b_of_type_Int), " fansCount=", Integer.valueOf(this.jdField_c_of_type_Int), " myVideoCount=", Integer.valueOf(this.jdField_d_of_type_Int), " myVisitTotalCount=", Integer.valueOf(this.e), " newestVideoCover=", this.jdField_c_of_type_JavaLangString, " newestVideoVid=", this.jdField_d_of_type_JavaLangString });
+    return StringAppendTool.a(new Object[] { "Response{ isVip=", Integer.valueOf(this.a), " fansCount=", Integer.valueOf(this.e), " myVideoCount=", Integer.valueOf(this.f), " myVisitTotalCount=", Integer.valueOf(this.g), " newestVideoCover=", this.h, " newestVideoVid=", this.i });
   }
 }
 

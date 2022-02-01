@@ -24,28 +24,16 @@ import java.util.List;
 public class QzEditVideoPartManager
   extends EditVideoPartManager
 {
-  public int a;
+  public boolean A;
+  public boolean B;
   public Activity a;
-  public View a;
-  public QzoneVerticalVideoTopicInfo a;
-  public String a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
+  private int ak;
+  public View b;
+  public ArrayList<String> c = null;
   public int d;
-  public String d;
-  public boolean d;
-  public int e;
   public String e;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  private int h;
+  public String f;
+  public String g;
   public boolean h;
   public boolean i;
   public boolean j;
@@ -53,34 +41,54 @@ public class QzEditVideoPartManager
   public boolean l;
   public boolean m;
   public boolean n;
+  public int o;
+  public int p;
+  public String q;
+  public int r;
+  public String s;
+  public boolean t;
+  public boolean u;
+  public int v;
+  public QzoneVerticalVideoTopicInfo w;
+  public boolean x;
+  public boolean y;
+  public boolean z;
   
   public QzEditVideoPartManager(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
     boolean bool = true;
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = true;
-    this.f = true;
-    this.g = true;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.m = false;
-    this.jdField_h_of_type_Int = -1;
-    this.n = false;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.d = 1;
+    this.g = "";
+    this.i = true;
+    this.k = true;
+    this.m = true;
+    this.n = true;
+    this.o = -1;
+    this.p = -1;
+    this.r = -1;
+    this.A = false;
+    this.ak = -1;
+    this.B = false;
+    this.a = paramActivity;
     if (paramActivity.getIntent().getIntExtra("qqstory_slide_show_scene", -1) != 22) {
       bool = false;
     }
-    this.m = bool;
-    this.jdField_h_of_type_Int = paramActivity.getIntent().getIntExtra("qqstory_slide_show_entrance", -1);
+    this.A = bool;
+    this.ak = paramActivity.getIntent().getIntExtra("qqstory_slide_show_entrance", -1);
   }
   
-  private QzoneEditVideoPartReport a()
+  static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    Iterator localIterator = a().iterator();
+    QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
+    localReportInfo.actionType = paramString1;
+    localReportInfo.subactionType = paramString2;
+    localReportInfo.reserves = paramString3;
+    QZoneClickReport.report(QQStoryContext.a().g(), localReportInfo, paramBoolean);
+  }
+  
+  private QzoneEditVideoPartReport d()
+  {
+    Iterator localIterator = W().iterator();
     while (localIterator.hasNext())
     {
       EditVideoPart localEditVideoPart = (EditVideoPart)localIterator.next();
@@ -91,27 +99,18 @@ public class QzEditVideoPartManager
     return null;
   }
   
-  static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    QZoneClickReport.ReportInfo localReportInfo = new QZoneClickReport.ReportInfo();
-    localReportInfo.actionType = paramString1;
-    localReportInfo.subactionType = paramString2;
-    localReportInfo.reserves = paramString3;
-    QZoneClickReport.report(QQStoryContext.a().a(), localReportInfo, paramBoolean);
-  }
-  
   public void a()
   {
     a("608", "1", "0", true);
-    if ((!this.jdField_h_of_type_Boolean) && (this.e > 0)) {
-      CodecParam.mMaxrate /= this.e;
+    if ((!this.t) && (this.v > 0)) {
+      CodecParam.mMaxrate /= this.v;
     }
     super.a();
   }
   
   public void a(@QzEditVideoPartManager.UIEditExtraType int paramInt)
   {
-    QzoneEditVideoPartReport localQzoneEditVideoPartReport = a();
+    QzoneEditVideoPartReport localQzoneEditVideoPartReport = d();
     if (localQzoneEditVideoPartReport != null) {
       localQzoneEditVideoPartReport.a(paramInt, null);
     }
@@ -125,39 +124,46 @@ public class QzEditVideoPartManager
   public void a(EditVideoUi paramEditVideoUi, EditVideoParams paramEditVideoParams)
   {
     super.a(paramEditVideoUi, paramEditVideoParams);
-    if ((paramEditVideoParams != null) && (paramEditVideoParams.a != null))
+    if ((paramEditVideoParams != null) && (paramEditVideoParams.d != null))
     {
-      int i1 = this.jdField_h_of_type_Int;
+      int i1 = this.ak;
       if ((i1 == 17) || (i1 == 18))
       {
-        paramEditVideoUi = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131717537);
-        paramEditVideoParams.a.putString("extra_publish_text", paramEditVideoUi);
+        paramEditVideoUi = this.a.getResources().getString(2131915012);
+        paramEditVideoParams.d.putString("extra_publish_text", paramEditVideoUi);
       }
     }
   }
   
   protected void a(List<EditVideoPart> paramList)
   {
-    if (this.m)
+    if (this.A)
     {
-      int i1 = this.jdField_h_of_type_Int;
+      int i1 = this.ak;
       if ((i1 == 14) || (i1 == 19)) {}
     }
     else
     {
       paramList.add(new EditVideoQzComment(this));
     }
-    if (this.m) {
+    if (this.A) {
       paramList.add(new EditVideoProgressBar(this));
     }
-    if ((this.i) && (!this.m)) {
-      paramList.add(new QzoneRightButton(this, this.jdField_a_of_type_AndroidAppActivity));
+    if ((this.u) && (!this.A)) {
+      paramList.add(new QzoneRightButton(this, this.a));
     }
-    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = this.jdField_a_of_type_CooperationQzoneVideoQzoneVerticalVideoTopicInfo;
+    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = this.w;
     if (localQzoneVerticalVideoTopicInfo != null) {
       paramList.add(new QzoneEditTopic(this, localQzoneVerticalVideoTopicInfo));
     }
     paramList.add(new QzoneEditVideoPartReport(this));
+  }
+  
+  public void av_()
+  {
+    if (this.aj != null) {
+      this.aj.h();
+    }
   }
   
   public void b()
@@ -170,17 +176,10 @@ public class QzEditVideoPartManager
   {
     a(paramString1, paramString2, paramString3, paramBoolean);
   }
-  
-  public void u_()
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer != null) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoHWEditLocalVideoPlayer.h();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.activity.richmedia.QzEditVideoPartManager
  * JD-Core Version:    0.7.0.1
  */

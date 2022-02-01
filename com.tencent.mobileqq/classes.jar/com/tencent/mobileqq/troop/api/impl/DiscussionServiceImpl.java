@@ -22,7 +22,7 @@ public class DiscussionServiceImpl
   {
     DiscussionManager localDiscussionManager = this.mManager;
     if (localDiscussionManager != null) {
-      localDiscussionManager.a(paramString);
+      localDiscussionManager.d(paramString);
     }
     return null;
   }
@@ -34,7 +34,7 @@ public class DiscussionServiceImpl
   
   public Object getDiscussList()
   {
-    return this.mManager.a();
+    return this.mManager.b();
   }
   
   public int getDiscussionManager_COLLECT_MAX_Value()
@@ -44,7 +44,7 @@ public class DiscussionServiceImpl
   
   public Object getDiscussionMemberInfo(String paramString1, String paramString2)
   {
-    return this.mManager.a(paramString1, String.valueOf(paramString2));
+    return this.mManager.b(paramString1, String.valueOf(paramString2));
   }
   
   public Object getDiscussionMemberInfoListByUin(String paramString)
@@ -54,7 +54,7 @@ public class DiscussionServiceImpl
   
   public Object getDiscussionMemberInfoMapByUin(String paramString)
   {
-    return ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramString);
+    return ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b(paramString);
   }
   
   public Object getDiscussionMemberMapByUins(String[] paramArrayOfString)
@@ -72,7 +72,7 @@ public class DiscussionServiceImpl
       DiscussionManager localDiscussionManager = this.mManager;
       if (localDiscussionManager != null)
       {
-        paramString1 = localDiscussionManager.a(paramString1, String.valueOf(paramString2));
+        paramString1 = localDiscussionManager.b(paramString1, String.valueOf(paramString2));
         if (paramString1 != null) {
           return paramString1.getDiscussionMemberName();
         }
@@ -89,7 +89,7 @@ public class DiscussionServiceImpl
       if (paramAppRuntime == null) {
         return "";
       }
-      paramAppRuntime = paramAppRuntime.a(paramString1, paramString2);
+      paramAppRuntime = paramAppRuntime.b(paramString1, paramString2);
       if (paramAppRuntime != null)
       {
         if (!TextUtils.isEmpty(paramAppRuntime.memberName)) {
@@ -103,7 +103,7 @@ public class DiscussionServiceImpl
   
   public int getDiscussionMemberNum(String paramString)
   {
-    return this.mManager.a(paramString);
+    return this.mManager.c(paramString);
   }
   
   public String getDiscussionName(Context paramContext, String paramString)
@@ -123,7 +123,7 @@ public class DiscussionServiceImpl
     DiscussionManager localDiscussionManager = this.mManager;
     if (localDiscussionManager != null)
     {
-      paramString = localDiscussionManager.a(paramString);
+      paramString = localDiscussionManager.d(paramString);
       if (paramString != null) {
         return paramString.discussionName;
       }
@@ -133,7 +133,7 @@ public class DiscussionServiceImpl
   
   public int getFavoriteCount()
   {
-    return ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+    return ((DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -152,7 +152,7 @@ public class DiscussionServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.DiscussionServiceImpl
  * JD-Core Version:    0.7.0.1
  */

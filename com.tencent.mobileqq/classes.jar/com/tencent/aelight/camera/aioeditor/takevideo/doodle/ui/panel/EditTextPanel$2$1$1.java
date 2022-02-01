@@ -9,13 +9,13 @@ class EditTextPanel$2$1$1
   
   public void run()
   {
-    EditTextEffectView.EditTextHolder localEditTextHolder = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiPanelEditTextEffectView$EditTextHolder;
-    localEditTextHolder.a(localEditTextHolder.a.getProgress());
+    EditTextEffectView.EditTextHolder localEditTextHolder = this.a;
+    localEditTextHolder.a(localEditTextHolder.b.getProgress());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextPanel.2.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -59,34 +59,34 @@ public class PublicAccountConfigAttrImpl
     IPublicAccountConfigAttr.PaConfigInfo localPaConfigInfo = new IPublicAccountConfigAttr.PaConfigInfo();
     try
     {
-      localPaConfigInfo.jdField_a_of_type_Int = paramJSONObject.optInt("type");
-      localPaConfigInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
-      localPaConfigInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("content");
-      localPaConfigInfo.jdField_b_of_type_Int = paramJSONObject.optInt("follow_handle");
-      localPaConfigInfo.jdField_c_of_type_Int = paramJSONObject.optInt("event_id");
-      localPaConfigInfo.jdField_d_of_type_Int = paramJSONObject.optInt("state");
-      localPaConfigInfo.jdField_e_of_type_Int = paramJSONObject.optInt("state_id");
-      localPaConfigInfo.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
-      localPaConfigInfo.jdField_f_of_type_Int = paramJSONObject.optInt("confirm_flag");
-      localPaConfigInfo.jdField_d_of_type_JavaLangString = paramJSONObject.optString("confirm_tips");
-      localPaConfigInfo.jdField_e_of_type_JavaLangString = paramJSONObject.optString("pic_url");
-      localPaConfigInfo.jdField_f_of_type_JavaLangString = paramJSONObject.optString("lng");
-      localPaConfigInfo.jdField_g_of_type_JavaLangString = paramJSONObject.optString("lat");
-      localPaConfigInfo.jdField_h_of_type_JavaLangString = paramJSONObject.optString("phone_number");
-      localPaConfigInfo.jdField_g_of_type_Int = paramJSONObject.optInt("width");
-      localPaConfigInfo.jdField_h_of_type_Int = paramJSONObject.optInt("height");
-      localPaConfigInfo.i = paramJSONObject.optString("icon");
-      localPaConfigInfo.j = paramJSONObject.optString("vid");
-      if ((localPaConfigInfo.jdField_a_of_type_Int == 3) && (localPaConfigInfo.jdField_c_of_type_Int == 23) && (!TextUtils.isEmpty(localPaConfigInfo.jdField_b_of_type_JavaLangString)))
+      localPaConfigInfo.a = paramJSONObject.optInt("type");
+      localPaConfigInfo.b = paramJSONObject.optString("title");
+      localPaConfigInfo.c = paramJSONObject.optString("content");
+      localPaConfigInfo.d = paramJSONObject.optInt("follow_handle");
+      localPaConfigInfo.e = paramJSONObject.optInt("event_id");
+      localPaConfigInfo.f = paramJSONObject.optInt("state");
+      localPaConfigInfo.g = paramJSONObject.optInt("state_id");
+      localPaConfigInfo.h = paramJSONObject.optString("url");
+      localPaConfigInfo.i = paramJSONObject.optInt("confirm_flag");
+      localPaConfigInfo.j = paramJSONObject.optString("confirm_tips");
+      localPaConfigInfo.k = paramJSONObject.optString("pic_url");
+      localPaConfigInfo.l = paramJSONObject.optString("lng");
+      localPaConfigInfo.m = paramJSONObject.optString("lat");
+      localPaConfigInfo.n = paramJSONObject.optString("phone_number");
+      localPaConfigInfo.o = paramJSONObject.optInt("width");
+      localPaConfigInfo.p = paramJSONObject.optInt("height");
+      localPaConfigInfo.q = paramJSONObject.optString("icon");
+      localPaConfigInfo.r = paramJSONObject.optString("vid");
+      if ((localPaConfigInfo.a == 3) && (localPaConfigInfo.e == 23) && (!TextUtils.isEmpty(localPaConfigInfo.c)))
       {
         paramJSONObject = new DynamicInfo();
-        paramJSONObject.a(localPaConfigInfo.jdField_b_of_type_JavaLangString);
-        if ((TextUtils.isEmpty(localPaConfigInfo.jdField_e_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_a_of_type_JavaLangString))) {
-          localPaConfigInfo.jdField_e_of_type_JavaLangString = paramJSONObject.jdField_a_of_type_ComTencentBizPubaccountAccountdetailBeanVideoAttr.jdField_a_of_type_JavaLangString;
+        paramJSONObject.a(localPaConfigInfo.c);
+        if ((TextUtils.isEmpty(localPaConfigInfo.k)) && (!TextUtils.isEmpty(paramJSONObject.f.b))) {
+          localPaConfigInfo.k = paramJSONObject.f.b;
         }
-        if ((TextUtils.isEmpty(localPaConfigInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramJSONObject.jdField_a_of_type_JavaLangString)))
+        if ((TextUtils.isEmpty(localPaConfigInfo.b)) && (!TextUtils.isEmpty(paramJSONObject.a)))
         {
-          localPaConfigInfo.jdField_a_of_type_JavaLangString = paramJSONObject.jdField_a_of_type_JavaLangString;
+          localPaConfigInfo.b = paramJSONObject.a;
           return localPaConfigInfo;
         }
       }
@@ -123,15 +123,15 @@ public class PublicAccountConfigAttrImpl
   
   public void initPaConfigInfo(IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo, mobileqq_mp.ConfigInfo paramConfigInfo)
   {
-    paramPaConfigInfo.jdField_a_of_type_Int = paramConfigInfo.type.get();
-    paramPaConfigInfo.jdField_a_of_type_JavaLangString = paramConfigInfo.title.get();
-    paramPaConfigInfo.jdField_b_of_type_JavaLangString = paramConfigInfo.content.get();
-    paramPaConfigInfo.jdField_c_of_type_Int = paramConfigInfo.event_id.get();
-    paramPaConfigInfo.jdField_c_of_type_JavaLangString = paramConfigInfo.url.get();
-    paramPaConfigInfo.jdField_d_of_type_Int = paramConfigInfo.state.get();
-    paramPaConfigInfo.jdField_e_of_type_Int = paramConfigInfo.state_id.get();
-    paramPaConfigInfo.jdField_f_of_type_Int = paramConfigInfo.confirm_flag.get();
-    paramPaConfigInfo.jdField_d_of_type_JavaLangString = paramConfigInfo.confirm_tips.get();
+    paramPaConfigInfo.a = paramConfigInfo.type.get();
+    paramPaConfigInfo.b = paramConfigInfo.title.get();
+    paramPaConfigInfo.c = paramConfigInfo.content.get();
+    paramPaConfigInfo.e = paramConfigInfo.event_id.get();
+    paramPaConfigInfo.h = paramConfigInfo.url.get();
+    paramPaConfigInfo.f = paramConfigInfo.state.get();
+    paramPaConfigInfo.g = paramConfigInfo.state_id.get();
+    paramPaConfigInfo.i = paramConfigInfo.confirm_flag.get();
+    paramPaConfigInfo.j = paramConfigInfo.confirm_tips.get();
   }
   
   public List<IPublicAccountConfigAttr> parser(JSONArray paramJSONArray)
@@ -183,7 +183,7 @@ public class PublicAccountConfigAttrImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountConfigAttrImpl
  * JD-Core Version:    0.7.0.1
  */

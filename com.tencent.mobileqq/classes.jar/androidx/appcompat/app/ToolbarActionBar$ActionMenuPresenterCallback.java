@@ -1,6 +1,7 @@
 package androidx.appcompat.app;
 
 import android.view.Window.Callback;
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPresenter.Callback;
 import androidx.appcompat.widget.DecorToolbar;
@@ -12,7 +13,7 @@ final class ToolbarActionBar$ActionMenuPresenterCallback
   
   ToolbarActionBar$ActionMenuPresenterCallback(ToolbarActionBar paramToolbarActionBar) {}
   
-  public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+  public void onCloseMenu(@NonNull MenuBuilder paramMenuBuilder, boolean paramBoolean)
   {
     if (this.mClosingActionMenu) {
       return;
@@ -25,7 +26,7 @@ final class ToolbarActionBar$ActionMenuPresenterCallback
     this.mClosingActionMenu = false;
   }
   
-  public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+  public boolean onOpenSubMenu(@NonNull MenuBuilder paramMenuBuilder)
   {
     if (this.this$0.mWindowCallback != null)
     {

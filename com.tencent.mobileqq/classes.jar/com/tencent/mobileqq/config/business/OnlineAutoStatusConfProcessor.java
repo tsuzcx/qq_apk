@@ -29,12 +29,12 @@ public class OnlineAutoStatusConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      OnlineAutoStatusBean localOnlineAutoStatusBean = OnlineAutoStatusBean.a(paramArrayOfQConfItem[0].a);
+      OnlineAutoStatusBean localOnlineAutoStatusBean = OnlineAutoStatusBean.a(paramArrayOfQConfItem[0].b);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("OnlineAutoStatusConfProcessor", 2, localStringBuilder.toString());
       }
       return localOnlineAutoStatusBean;
@@ -65,8 +65,8 @@ public class OnlineAutoStatusConfProcessor
     if (OnlineStatusItem.a(localIOnlineStatusService.getOnlineStatus(), localIOnlineStatusService.getExtOnlineStatus())) {
       ((AutoStatusManager)localObject2).a("configUpdate");
     }
-    ((OnlineStatusDataManager)localObject1).g(localIOnlineStatusService.getExtOnlineStatus());
-    ((OnlineStatusDataManager)localObject1).e(localIOnlineStatusService.getExtOnlineStatus());
+    ((OnlineStatusDataManager)localObject1).d(localIOnlineStatusService.getExtOnlineStatus());
+    ((OnlineStatusDataManager)localObject1).b(localIOnlineStatusService.getExtOnlineStatus());
   }
   
   public Class<OnlineAutoStatusBean> clazz()
@@ -112,7 +112,7 @@ public class OnlineAutoStatusConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OnlineAutoStatusConfProcessor
  * JD-Core Version:    0.7.0.1
  */

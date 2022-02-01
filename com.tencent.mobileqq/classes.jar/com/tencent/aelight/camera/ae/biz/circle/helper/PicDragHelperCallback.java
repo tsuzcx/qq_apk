@@ -16,33 +16,23 @@ import java.util.ArrayList;
 public class PicDragHelperCallback
   extends ItemTouchHelper.Callback
 {
-  private float jdField_a_of_type_Float = 1.2F;
-  private int jdField_a_of_type_Int = -1;
-  private RecyclerView.ViewHolder jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
-  private View jdField_a_of_type_AndroidViewView;
-  private PicPreviewMoveAdapter jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter;
-  private PicDragHelperCallback.DragListener jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$DragListener;
-  private PicDragHelperCallback.ScaleProperty jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$ScaleProperty = new PicDragHelperCallback.ScaleProperty("scale");
-  private boolean jdField_a_of_type_Boolean = false;
-  private float b = 1.0F;
-  private float c = 0.86F;
-  private float d = 0.3F;
-  private float e = this.jdField_a_of_type_Float;
+  private PicPreviewMoveAdapter a;
+  private View b;
+  private PicDragHelperCallback.DragListener c;
+  private boolean d = false;
+  private int e = -1;
+  private RecyclerView.ViewHolder f;
+  private float g = 1.2F;
+  private float h = 1.0F;
+  private float i = 0.86F;
+  private float j = 0.3F;
+  private float k = this.g;
+  private PicDragHelperCallback.ScaleProperty l = new PicDragHelperCallback.ScaleProperty("scale");
   
   public PicDragHelperCallback(@NonNull PicPreviewMoveAdapter paramPicPreviewMoveAdapter, View paramView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter = paramPicPreviewMoveAdapter;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  private void a(View paramView)
-  {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof ObjectAnimator))
-    {
-      ((ObjectAnimator)localObject).cancel();
-      paramView.setTag(null);
-    }
+    this.a = paramPicPreviewMoveAdapter;
+    this.b = paramView;
   }
   
   private void a(View paramView, float paramFloat1, float paramFloat2, long paramLong)
@@ -50,7 +40,7 @@ public class PicDragHelperCallback
     if ((paramView.getTag() instanceof ObjectAnimator)) {
       return;
     }
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$ScaleProperty, new float[] { paramFloat1, paramFloat2 });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(paramView, this.l, new float[] { paramFloat1, paramFloat2 });
     localObjectAnimator.setDuration(paramLong);
     localObjectAnimator.start();
     paramView.setTag(localObjectAnimator);
@@ -62,33 +52,43 @@ public class PicDragHelperCallback
     return ((paramView instanceof ObjectAnimator)) && (((ObjectAnimator)paramView).isRunning());
   }
   
+  private void b(View paramView)
+  {
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof ObjectAnimator))
+    {
+      ((ObjectAnimator)localObject).cancel();
+      paramView.setTag(null);
+    }
+  }
+  
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.e = this.jdField_a_of_type_Float;
+    this.g = paramFloat;
+    this.k = this.g;
   }
   
   public void a(PicDragHelperCallback.DragListener paramDragListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$DragListener = paramDragListener;
+    this.c = paramDragListener;
   }
   
   public void b(@FloatRange(from=0.0D, to=1.0D) float paramFloat)
   {
-    this.b = paramFloat;
+    this.h = paramFloat;
   }
   
   public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
   {
-    a(paramViewHolder.itemView);
-    a(paramViewHolder.itemView, this.jdField_a_of_type_Float, 1.0F, 150L);
+    b(paramViewHolder.itemView);
+    a(paramViewHolder.itemView, this.g, 1.0F, 150L);
     paramViewHolder.itemView.setAlpha(1.0F);
     super.clearView(paramRecyclerView, paramViewHolder);
   }
   
   public long getAnimationDuration(RecyclerView paramRecyclerView, int paramInt, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       return 0L;
     }
     return super.getAnimationDuration(paramRecyclerView, paramInt, paramFloat1, paramFloat2);
@@ -114,61 +114,61 @@ public class PicDragHelperCallback
   
   public void onChildDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (!a(paramViewHolder.itemView)))
+    if ((this.b != null) && (!a(paramViewHolder.itemView)))
     {
-      int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+      int m = this.b.getWidth();
+      int n = this.b.getHeight();
       Object localObject = new int[2];
-      this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
+      this.b.getLocationInWindow((int[])localObject);
       boolean bool2 = false;
-      int k = localObject[0];
-      int m = localObject[1];
-      int i3 = paramViewHolder.itemView.getWidth();
-      int i2 = paramViewHolder.itemView.getHeight();
+      int i1 = localObject[0];
+      int i2 = localObject[1];
+      int i6 = paramViewHolder.itemView.getWidth();
+      int i5 = paramViewHolder.itemView.getHeight();
       localObject = new int[2];
       paramViewHolder.itemView.getLocationInWindow((int[])localObject);
-      int i1 = localObject[0];
-      int n = localObject[1];
-      float f1 = i3;
-      float f2 = this.e;
-      i3 = (int)(f1 * f2);
-      i2 = (int)(i2 * f2);
-      i1 += i3 / 2;
-      n += i2 / 2;
+      int i4 = localObject[0];
+      int i3 = localObject[1];
+      float f1 = i6;
+      float f2 = this.k;
+      i6 = (int)(f1 * f2);
+      i5 = (int)(i5 * f2);
+      i4 += i6 / 2;
+      i3 += i5 / 2;
       boolean bool1;
-      if ((n > m) && (n < m + j) && (i1 > k) && (i1 < k + i)) {
+      if ((i3 > i2) && (i3 < i2 + n) && (i4 > i1) && (i4 < i1 + m)) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      if (bool1 != this.jdField_a_of_type_Boolean)
+      if (bool1 != this.d)
       {
-        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder != null) {
+        if (this.f != null) {
           if (bool1)
           {
-            this.e = this.c;
-            a(paramViewHolder.itemView);
-            a(paramViewHolder.itemView, this.jdField_a_of_type_Float, this.c, 150L);
-            paramViewHolder.itemView.setAlpha(this.d);
+            this.k = this.i;
+            b(paramViewHolder.itemView);
+            a(paramViewHolder.itemView, this.g, this.i, 150L);
+            paramViewHolder.itemView.setAlpha(this.j);
           }
           else
           {
-            this.e = this.jdField_a_of_type_Float;
-            a(paramViewHolder.itemView);
-            a(paramViewHolder.itemView, this.c, this.jdField_a_of_type_Float, 150L);
-            paramViewHolder.itemView.setAlpha(this.b);
+            this.k = this.g;
+            b(paramViewHolder.itemView);
+            a(paramViewHolder.itemView, this.i, this.g, 150L);
+            paramViewHolder.itemView.setAlpha(this.h);
           }
         }
-        localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$DragListener;
+        localObject = this.c;
         if (localObject != null)
         {
-          if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder == null) {
+          if (this.f == null) {
             bool2 = true;
           }
           ((PicDragHelperCallback.DragListener)localObject).a(bool1, bool2);
         }
       }
-      this.jdField_a_of_type_Boolean = bool1;
+      this.d = bool1;
       super.onChildDraw(paramCanvas, paramRecyclerView, paramViewHolder, paramFloat1, paramFloat2, paramInt, paramBoolean);
       return;
     }
@@ -183,17 +183,17 @@ public class PicDragHelperCallback
     if ((paramViewHolder2 instanceof PicPreviewMoveAdapter.PicAddViewHolder)) {
       return false;
     }
-    paramRecyclerView = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter.a();
+    paramRecyclerView = this.a.a();
     if (paramRecyclerView != null)
     {
       if (paramRecyclerView.size() < 2) {
         return false;
       }
-      int i = paramViewHolder1.getAdapterPosition();
-      int j = paramViewHolder2.getAdapterPosition();
-      this.jdField_a_of_type_Int = j;
-      paramRecyclerView.add(j, paramRecyclerView.remove(i));
-      this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter.notifyItemMoved(i, j);
+      int m = paramViewHolder1.getAdapterPosition();
+      int n = paramViewHolder2.getAdapterPosition();
+      this.e = n;
+      paramRecyclerView.add(n, paramRecyclerView.remove(m));
+      this.a.notifyItemMoved(m, n);
       return true;
     }
     return false;
@@ -204,38 +204,38 @@ public class PicDragHelperCallback
     Object localObject;
     if (paramInt != 0)
     {
-      a(paramViewHolder.itemView);
-      a(paramViewHolder.itemView, 1.0F, this.jdField_a_of_type_Float, 200L);
-      paramViewHolder.itemView.setAlpha(this.b);
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$DragListener;
+      b(paramViewHolder.itemView);
+      a(paramViewHolder.itemView, 1.0F, this.g, 200L);
+      paramViewHolder.itemView.setAlpha(this.h);
+      localObject = this.c;
       if (localObject != null) {
         ((PicDragHelperCallback.DragListener)localObject).a();
       }
-      this.jdField_a_of_type_Int = paramViewHolder.getAdapterPosition();
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
+      this.e = paramViewHolder.getAdapterPosition();
+      this.f = paramViewHolder;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onSelectedChanged delPos:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.e);
       Log.d("jiabin", ((StringBuilder)localObject).toString());
     }
     else
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleHelperPicDragHelperCallback$DragListener;
+      localObject = this.c;
       if (localObject != null) {
-        ((PicDragHelperCallback.DragListener)localObject).a(this.jdField_a_of_type_Boolean);
+        ((PicDragHelperCallback.DragListener)localObject).a(this.d);
       }
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= 0))
+      if ((this.d) && (this.e >= 0))
       {
-        localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder;
+        localObject = this.f;
         if (localObject != null)
         {
           ((RecyclerView.ViewHolder)localObject).itemView.setVisibility(4);
-          this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAdapterPicPreviewMoveAdapter.a(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Boolean = false;
+          this.a.a(this.e);
+          this.d = false;
         }
       }
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = null;
+      this.e = -1;
+      this.f = null;
     }
     super.onSelectedChanged(paramViewHolder, paramInt);
   }
@@ -244,7 +244,7 @@ public class PicDragHelperCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.helper.PicDragHelperCallback
  * JD-Core Version:    0.7.0.1
  */

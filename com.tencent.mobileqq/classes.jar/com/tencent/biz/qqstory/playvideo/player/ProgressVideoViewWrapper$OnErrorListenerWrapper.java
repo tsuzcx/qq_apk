@@ -9,10 +9,10 @@ class ProgressVideoViewWrapper$OnErrorListenerWrapper
   
   public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper) != null) {
-      ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper).c(ProgressVideoViewWrapper.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerProgressVideoViewWrapper));
+    if (ProgressVideoViewWrapper.a(this.b) != null) {
+      ProgressVideoViewWrapper.a(this.b).c(ProgressVideoViewWrapper.b(this.b));
     }
-    IVideoView.OnErrorListener localOnErrorListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnErrorListener;
+    IVideoView.OnErrorListener localOnErrorListener = this.a;
     if (localOnErrorListener != null) {
       return localOnErrorListener.a(paramIVideoView, paramInt1, paramInt2, paramInt3, paramString, paramObject);
     }
@@ -21,7 +21,7 @@ class ProgressVideoViewWrapper$OnErrorListenerWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.ProgressVideoViewWrapper.OnErrorListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

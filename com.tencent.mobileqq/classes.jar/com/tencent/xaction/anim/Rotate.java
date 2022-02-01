@@ -7,7 +7,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Rotate;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "rx", "", "getRx", "()F", "setRx", "(F)V", "ry", "getRy", "setRy", "rz", "getRz", "setRz", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "startZ", "getStartZ", "setStartZ", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Rotate;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "rx", "", "getRx", "()F", "setRx", "(F)V", "ry", "getRy", "setRy", "rz", "getRz", "setRz", "startX", "getStartX", "setStartX", "startY", "getStartY", "setStartY", "startZ", "getStartZ", "setStartZ", "doFrameUpdate", "", "animTime", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Rotate
   extends BaseAnim
@@ -41,8 +41,6 @@ public final class Rotate
       localView.setRotation(f + (this.rz - f) * paramFloat);
     }
   }
-  
-  public void end() {}
   
   public final float getRx()
   {
@@ -115,7 +113,7 @@ public final class Rotate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.anim.Rotate
  * JD-Core Version:    0.7.0.1
  */

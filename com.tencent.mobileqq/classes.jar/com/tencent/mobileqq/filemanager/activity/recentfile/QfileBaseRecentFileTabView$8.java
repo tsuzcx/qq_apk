@@ -14,13 +14,13 @@ class QfileBaseRecentFileTabView$8
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f()) && (this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap != null) && (this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.size() > 0))
+    if ((this.this$0.C.D()) && (this.this$0.c != null) && (this.this$0.c.size() > 0))
     {
-      Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      Iterator localIterator = this.this$0.c.keySet().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (String)localIterator.next();
-        localObject = ((List)this.this$0.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject)).iterator();
+        localObject = ((List)this.this$0.c.get(localObject)).iterator();
         while (((Iterator)localObject).hasNext()) {
           if (((FileManagerEntity)((Iterator)localObject).next()).sendCloudUnsuccessful()) {
             ((Iterator)localObject).remove();
@@ -28,12 +28,12 @@ class QfileBaseRecentFileTabView$8
         }
       }
     }
-    this.this$0.g();
+    this.this$0.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.8
  * JD-Core Version:    0.7.0.1
  */

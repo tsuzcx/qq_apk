@@ -13,20 +13,20 @@ class LikeRankingListActivity$8
   
   public void run()
   {
-    if (this.this$0.c == null) {
+    if (this.this$0.D == null) {
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestHeight = this.this$0.e;
-    localURLDrawableOptions.mRequestWidth = this.this$0.d;
-    this.this$0.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.this$0.b.setImageDrawable(URLDrawable.getDrawable(this.this$0.c, localURLDrawableOptions));
-    this.this$0.a.a(true);
+    localURLDrawableOptions.mRequestHeight = this.this$0.C;
+    localURLDrawableOptions.mRequestWidth = this.this$0.B;
+    this.this$0.q.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    this.this$0.q.setImageDrawable(URLDrawable.getDrawable(this.this$0.D, localURLDrawableOptions));
+    this.this$0.m.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.8
  * JD-Core Version:    0.7.0.1
  */

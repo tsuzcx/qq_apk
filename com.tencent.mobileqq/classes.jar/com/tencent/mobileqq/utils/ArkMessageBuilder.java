@@ -35,7 +35,7 @@ public class ArkMessageBuilder
     if (TextUtils.isEmpty(str)) {
       localObject = localArkAppMessage.appDesc;
     }
-    localArkAppMessage.promptText = String.format(HardCodeUtil.a(2131700882), new Object[] { localObject });
+    localArkAppMessage.promptText = String.format(HardCodeUtil.a(2131898906), new Object[] { localObject });
     localArkAppMessage.metaList = QQCustomArkDialog.a(paramBundle, localArkAppMessage.appName);
     localArkAppMessage.config = a();
     paramBundle = MessageRecordFactory.a(paramQQAppInterface, paramString1, paramString2, paramInt, localArkAppMessage);
@@ -73,7 +73,7 @@ public class ArkMessageBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ArkMessageBuilder
  * JD-Core Version:    0.7.0.1
  */

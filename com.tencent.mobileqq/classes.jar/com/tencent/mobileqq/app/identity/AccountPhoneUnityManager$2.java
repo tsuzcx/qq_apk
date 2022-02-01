@@ -12,7 +12,7 @@ class AccountPhoneUnityManager$2
   
   public void getPhoneUnitySuccess(cmd0x9ae.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityAccountPhoneUnityManager.a(this.jdField_a_of_type_MqqAppAppRuntime, paramRspBody);
+    this.b.a(this.a, paramRspBody);
   }
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
@@ -22,7 +22,7 @@ class AccountPhoneUnityManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.AccountPhoneUnityManager.2
  * JD-Core Version:    0.7.0.1
  */

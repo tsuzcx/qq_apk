@@ -17,16 +17,16 @@ import java.util.Observer;
 public class ImportantMsgProcessor
   extends IShortcutBarProcessor
 {
-  private long jdField_a_of_type_Long;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IShortcutBarDataProvider jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
-  private Observer jdField_a_of_type_JavaUtilObserver;
+  private BaseChatPie a;
+  private QQAppInterface b;
+  private IShortcutBarDataProvider c;
+  private long d;
+  private Observer e;
   
   private void a(ArrayList<ImportantMsgItem.MsgInfo> paramArrayList)
   {
     paramArrayList = ImportantMsgUtil.a(paramArrayList);
-    IShortcutBarDataProvider localIShortcutBarDataProvider = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
+    IShortcutBarDataProvider localIShortcutBarDataProvider = this.c;
     if (localIShortcutBarDataProvider != null) {
       localIShortcutBarDataProvider.a(2, paramArrayList);
     }
@@ -40,35 +40,35 @@ public class ImportantMsgProcessor
     if ((paramObject instanceof ImportantMsgItem))
     {
       paramObject = (ImportantMsgItem)paramObject;
-      if (paramObject.troopUin != this.jdField_a_of_type_Long) {
+      if (paramObject.troopUin != this.d) {
         return;
       }
       a(paramObject.getMsgInfoList());
       return;
     }
-    if (((paramObject instanceof HashMap)) && (((HashMap)paramObject).containsKey(Long.valueOf(this.jdField_a_of_type_Long))))
+    if (((paramObject instanceof HashMap)) && (((HashMap)paramObject).containsKey(Long.valueOf(this.d))))
     {
       paramObject = new StringBuilder();
       paramObject.append("updateInternal seqChange: mTroopUin:");
-      paramObject.append(this.jdField_a_of_type_Long);
+      paramObject.append(this.d);
       QLog.i("ImportantMsgProcessor", 2, paramObject.toString());
-      paramObject = (ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
-      paramObject.a(this.jdField_a_of_type_Long, new ImportantMsgProcessor.3(this, paramObject));
+      paramObject = (ImportantMsgManager)this.b.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
+      paramObject.a(this.d, new ImportantMsgProcessor.3(this, paramObject));
     }
   }
   
   private void e()
   {
-    this.jdField_a_of_type_JavaUtilObserver = new ImportantMsgProcessor.1(this);
-    ((ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    this.e = new ImportantMsgProcessor.1(this);
+    ((ImportantMsgManager)this.b.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).addObserver(this.e);
     f();
   }
   
   private void f()
   {
-    Object localObject = (ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
+    Object localObject = (ImportantMsgManager)this.b.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER);
     long l = SystemClock.uptimeMillis();
-    ((ImportantMsgManager)localObject).a(this.jdField_a_of_type_Long, new ImportantMsgProcessor.2(this, (ImportantMsgManager)localObject));
+    ((ImportantMsgManager)localObject).a(this.d, new ImportantMsgProcessor.2(this, (ImportantMsgManager)localObject));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("initData Time = ");
     ((StringBuilder)localObject).append(SystemClock.uptimeMillis() - l);
@@ -78,10 +78,10 @@ public class ImportantMsgProcessor
   
   private void g()
   {
-    if (this.jdField_a_of_type_JavaUtilObserver != null)
+    if (this.e != null)
     {
-      ((ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
-      this.jdField_a_of_type_JavaUtilObserver = null;
+      ((ImportantMsgManager)this.b.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).deleteObserver(this.e);
+      this.e = null;
     }
   }
   
@@ -97,11 +97,11 @@ public class ImportantMsgProcessor
       if (!(paramObject instanceof ImportantMsgInfo)) {
         return;
       }
-      BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-      if ((localBaseChatPie != null) && (localBaseChatPie.a() != null))
+      BaseChatPie localBaseChatPie = this.a;
+      if ((localBaseChatPie != null) && (localBaseChatPie.aE() != null))
       {
         paramObject = (ImportantMsgInfo)paramObject;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a);
+        this.b.getMessageFacade().getLastMessage(String.valueOf(this.d), this.a.aE().a);
         return;
       }
       QLog.i("ImportantMsgProcessor", 2, "mChatPie == null or mChatPie.getSessionInfo() == null");
@@ -121,7 +121,7 @@ public class ImportantMsgProcessor
         return;
       }
       paramObject = (ImportantMsgInfo)paramObject;
-      ((ImportantMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).a(this.jdField_a_of_type_Long, new ArrayList(Arrays.asList(new Long[] { Long.valueOf(paramObject.a()) })), 1);
+      ((ImportantMsgManager)this.b.getManager(QQManagerFactory.TROOP_IMPORTANT_MSG_MANAGER)).a(this.d, new ArrayList(Arrays.asList(new Long[] { Long.valueOf(paramObject.b()) })), 1);
     }
   }
   
@@ -131,7 +131,7 @@ public class ImportantMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

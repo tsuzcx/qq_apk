@@ -12,9 +12,14 @@ import com.tencent.mobileqq.pb.PBBytesField;
 public class GetProfileYearNodeListRequest
   extends NetworkRequest
 {
-  public String a;
+  public String e;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StorySvc.get_profile_year_node_info");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspProfileYearNodeList localRspProfileYearNodeList = new qqstory_service.RspProfileYearNodeList();
     try
@@ -28,21 +33,16 @@ public class GetProfileYearNodeListRequest
     return new GetProfileYearNodeListRequest.GetProfileYearNodeListResponse(localRspProfileYearNodeList);
   }
   
-  public String a()
-  {
-    return StoryApi.a("StorySvc.get_profile_year_node_info");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
-    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.e));
     return localReqProfileYearNodeList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest
  * JD-Core Version:    0.7.0.1
  */

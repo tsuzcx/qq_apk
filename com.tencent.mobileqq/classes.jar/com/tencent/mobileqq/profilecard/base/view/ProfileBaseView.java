@@ -75,44 +75,44 @@ public class ProfileBaseView
       QLog.d(TAG, 2, "initHeadUI");
     }
     Object localObject = getContext();
-    this.mHeadContainer = ((ViewGroup)this.mContentView.findViewById(2131368784));
-    this.mAvatar = ((AvatarLayout)this.mContentView.findViewById(2131368780));
+    this.mHeadContainer = ((ViewGroup)this.mContentView.findViewById(2131435705));
+    this.mAvatar = ((AvatarLayout)this.mContentView.findViewById(2131435701));
     this.mAvatar.setVisibility(0);
     DataTag localDataTag = new DataTag(1, null);
     if (this.mCardInfo.allInOne.pa == 0) {
-      localObject = ((Context)localObject).getString(2131691197);
+      localObject = ((Context)localObject).getString(2131888143);
     } else {
-      localObject = ((Context)localObject).getString(2131691196);
+      localObject = ((Context)localObject).getString(2131888142);
     }
     this.mAvatar.setTag(localDataTag);
     this.mAvatar.setOnClickListener(this.mOnClickListener);
     this.mAvatar.setContentDescription((CharSequence)localObject);
     localObject = this.mAvatar;
-    ((AvatarLayout)localObject).a(0, ((AvatarLayout)localObject).findViewById(2131363438), false);
+    ((AvatarLayout)localObject).a(0, ((AvatarLayout)localObject).findViewById(2131429335), false);
     this.mHeaderChildMap.put("map_key_face", this.mAvatar);
-    this.mHeaderChildMap.put("map_key_face_stoke", this.mContentView.findViewById(2131368782));
-    this.mAvatarPendant = ((ImageView)this.mContentView.findViewById(2131368617));
+    this.mHeaderChildMap.put("map_key_face_stoke", this.mContentView.findViewById(2131435703));
+    this.mAvatarPendant = ((ImageView)this.mContentView.findViewById(2131435529));
     this.mHeaderChildMap.put("map_key_avatar_pendant", this.mAvatarPendant);
     this.mAvatarPendant.setVisibility(4);
     this.mAvatarPendant.setTag(localDataTag);
     this.mAvatarPendant.setOnClickListener(this.mOnClickListener);
-    this.mNameLayout = this.mContentView.findViewById(2131374280);
-    this.mNameView = ((ProfileNameView)this.mContentView.findViewById(2131371861));
+    this.mNameLayout = this.mContentView.findViewById(2131442443);
+    this.mNameView = ((ProfileNameView)this.mContentView.findViewById(2131439302));
     this.mHeaderChildMap.put("map_key_profile_nick_name", this.mNameView);
     this.mNameView.setVisibility(0);
     this.mNameView.setClickable(true);
     this.mNameView.setClickListener(this.mOnClickListener);
-    this.mRemarkName = ((TextView)this.mContentView.findViewById(2131376390));
+    this.mRemarkName = ((TextView)this.mContentView.findViewById(2131444606));
     this.mHeaderChildMap.put("map_key_profile_remark_name", this.mRemarkName);
-    this.mVoteView = ((VoteViewV2)this.mContentView.findViewById(2131380996));
-    this.mVoteHeartLayout = ((HeartLayout)this.mContentView.findViewById(2131368151));
+    this.mVoteView = ((VoteViewV2)this.mContentView.findViewById(2131449991));
+    this.mVoteHeartLayout = ((HeartLayout)this.mContentView.findViewById(2131435008));
     this.mHeaderChildMap.put("map_key_like", this.mVoteView);
     this.mVoteView.setHeartLayout(this.mApp, this.mVoteHeartLayout);
     this.mVoteHeartLayout.setEnabled(false);
-    this.mUinLayout = this.mContentView.findViewById(2131374036);
-    this.mUinInfoView = ((TextView)this.mContentView.findViewById(2131374034));
+    this.mUinLayout = this.mContentView.findViewById(2131442130);
+    this.mUinInfoView = ((TextView)this.mContentView.findViewById(2131442128));
     this.mHeaderChildMap.put("map_key_uin_info", this.mUinInfoView);
-    this.mQidInfoView = ((QidCoolTextView)this.mContentView.findViewById(2131374305));
+    this.mQidInfoView = ((QidCoolTextView)this.mContentView.findViewById(2131442468));
     this.mHeaderChildMap.put("map_key_qid_info", this.mQidInfoView);
     this.mQidInfoView.setOnClickListener(this.mOnClickListener);
   }
@@ -122,7 +122,7 @@ public class ProfileBaseView
     QidCoolTextView localQidCoolTextView = this.mQidInfoView;
     if (localQidCoolTextView != null)
     {
-      int i = localQidCoolTextView.a(paramProfileCardInfo);
+      int i = localQidCoolTextView.b(paramProfileCardInfo);
       if (i != 0) {
         this.mQidInfoView.a(0.0F, i);
       }
@@ -155,7 +155,7 @@ public class ProfileBaseView
     boolean bool = true;
     if (localRandomCoverView != null)
     {
-      if (localRandomCoverView.a() == 1) {
+      if (localRandomCoverView.getCoverMode() == 1) {
         return true;
       }
       bool = false;
@@ -173,7 +173,7 @@ public class ProfileBaseView
       localStringBuilder.append(paramInt);
       QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131562003, this.mHeadContainer, false);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131628429, this.mHeadContainer, false);
     if (localObject != null)
     {
       this.mHeadContainer.removeAllViews();
@@ -186,13 +186,13 @@ public class ProfileBaseView
     if (QLog.isColorLevel()) {
       QLog.i(TAG, 2, String.format("onCoverModeChange mode: %s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    int i = 2131167056;
+    int i = 2131167993;
     Object localObject;
     if (paramInt == 1)
     {
       localObject = this.mNameView;
       if (localObject != null) {
-        ((ProfileNameView)localObject).setTextColor(getResources().getColor(2131167056));
+        ((ProfileNameView)localObject).setTextColor(getResources().getColor(2131167993));
       }
       localObject = this.mVoteView;
       if (localObject != null) {
@@ -212,7 +212,7 @@ public class ProfileBaseView
       if (this.mNameView != null)
       {
         if (!ThemeUtil.isInNightMode(this.mApp)) {
-          i = 2131167222;
+          i = 2131168212;
         }
         this.mNameView.setTextColor(getResources().getColor(i));
       }
@@ -221,14 +221,14 @@ public class ProfileBaseView
         ((VoteViewV2)localObject).a(0);
       }
       localObject = (RelativeLayout.LayoutParams)this.mContentBgView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131368800);
+      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131435721);
       ((RelativeLayout.LayoutParams)localObject).addRule(10, 0);
       this.mContentBgView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       DataTag localDataTag = new DataTag(17, null);
       if (paramProfileCardInfo.allInOne.pa == 0) {
-        localObject = getContext().getString(2131691192);
+        localObject = getContext().getString(2131888138);
       } else {
-        localObject = getContext().getString(2131691191);
+        localObject = getContext().getString(2131888137);
       }
       this.mCoverView.setTag(localDataTag);
       this.mCoverView.setOnClickListener(this.mOnClickListener);
@@ -240,11 +240,11 @@ public class ProfileBaseView
   
   protected void onInit(ProfileCardInfo paramProfileCardInfo)
   {
-    this.mContentView = LayoutInflater.from(getContext()).inflate(2131562002, this, true);
-    this.mHeadContainer = ((ViewGroup)this.mContentView.findViewById(2131368784));
-    this.mCoverView = ((RandomCoverView)this.mContentView.findViewById(2131368800));
-    this.mListView.setHeaderImage(this.mCoverView.a());
-    this.mListView.setHeaderMask(this.mCoverView.a());
+    this.mContentView = LayoutInflater.from(getContext()).inflate(2131628428, this, true);
+    this.mHeadContainer = ((ViewGroup)this.mContentView.findViewById(2131435705));
+    this.mCoverView = ((RandomCoverView)this.mContentView.findViewById(2131435721));
+    this.mListView.setHeaderImage(this.mCoverView.getCoverView());
+    this.mListView.setHeaderMask(this.mCoverView.getCoverMask());
     this.mListView.setProfileBaseView(this);
     if (ProfilePAUtils.isPaTypeStrangerInContact(paramProfileCardInfo.allInOne)) {}
     do
@@ -269,8 +269,8 @@ public class ProfileBaseView
     } while (i != 0);
     int i = 0;
     label199:
-    this.mCoverView = ((RandomCoverView)this.mContentView.findViewById(2131368800));
-    this.mContentBgView = this.mContentView.findViewById(2131368777);
+    this.mCoverView = ((RandomCoverView)this.mContentView.findViewById(2131435721));
+    this.mContentBgView = this.mContentView.findViewById(2131435698);
     this.mHeaderChildMap.put("map_key_qzonecover", this.mCoverView);
     this.mCoverView.setVisibility(0);
     Object localObject1 = this.mCoverView;
@@ -297,7 +297,7 @@ public class ProfileBaseView
     onCoverModeChange(i, paramProfileCardInfo);
     if (ThemeUtil.isInNightMode(this.mApp))
     {
-      paramProfileCardInfo = (ImageView)this.mAvatar.findViewById(2131363438);
+      paramProfileCardInfo = (ImageView)this.mAvatar.findViewById(2131429335);
       localObject1 = (ImageView)this.mHeaderChildMap.get("map_key_face_stoke");
       localObject2 = this.mAvatarPendant;
       paramProfileCardInfo.setColorFilter(1996488704);
@@ -394,7 +394,7 @@ public class ProfileBaseView
       if ((TextUtils.isEmpty(this.mCoverUrl)) || (paramProfileCardInfo.card.isNoCover())) {
         i = 1;
       }
-      if (this.mCoverView.a() != i)
+      if (this.mCoverView.getCoverMode() != i)
       {
         this.mCoverView.a(i);
         onCoverModeChange(i, paramProfileCardInfo);
@@ -411,7 +411,7 @@ public class ProfileBaseView
     localObject = this.mCoverView;
     if (localObject != null)
     {
-      updateLayoutMargin(((RandomCoverView)localObject).a());
+      updateLayoutMargin(((RandomCoverView)localObject).getCoverMode());
       updateQidViewMargin(paramProfileCardInfo);
     }
   }
@@ -428,7 +428,7 @@ public class ProfileBaseView
         localObject = (ViewGroup.MarginLayoutParams)this.mVoteHeartLayout.getLayoutParams();
         ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = ScreenUtil.dip2px(5.0F);
         this.mVoteHeartLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        if (this.mNameView.c() == 2)
+        if (this.mNameView.getMode() == 2)
         {
           localObject = (RelativeLayout.LayoutParams)this.mNameLayout.getLayoutParams();
           if (this.mRemarkName.getVisibility() == 0)
@@ -445,7 +445,7 @@ public class ProfileBaseView
         }
         localObject = (RelativeLayout.LayoutParams)this.mNameLayout.getLayoutParams();
         ((RelativeLayout.LayoutParams)localObject).addRule(6, 0);
-        ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131368054);
+        ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131434904);
         this.mNameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
         return;
       }
@@ -453,11 +453,11 @@ public class ProfileBaseView
       ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = ScreenUtil.dip2px(15.0F);
       this.mVoteHeartLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = getResources();
-      int i = ((Resources)localObject).getDimensionPixelSize(2131297603);
-      int j = ((Resources)localObject).getDimensionPixelSize(2131297605);
+      int i = ((Resources)localObject).getDimensionPixelSize(2131298267);
+      int j = ((Resources)localObject).getDimensionPixelSize(2131298269);
       localObject = (RelativeLayout.LayoutParams)this.mNameLayout.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).addRule(6, 0);
-      ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131368054);
+      ((RelativeLayout.LayoutParams)localObject).addRule(8, 2131434904);
       this.mNameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = (ViewGroup.MarginLayoutParams)this.mNameLayout.getLayoutParams();
       if (((ViewGroup.MarginLayoutParams)localObject).bottomMargin != i)
@@ -480,7 +480,7 @@ public class ProfileBaseView
   public void updateLike(ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject).m(paramProfileCardInfo.troopUin))) {
+    if ((paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject).Z(paramProfileCardInfo.troopUin))) {
       return;
     }
     localObject = (View)this.mHeaderChildMap.get("map_key_like");
@@ -499,7 +499,7 @@ public class ProfileBaseView
         int i;
         if (paramProfileCardInfo.card == null)
         {
-          paramProfileCardInfo = this.mActivity.getString(2131691244);
+          paramProfileCardInfo = this.mActivity.getString(2131888190);
           j = 0;
           bool1 = false;
           localObject = null;
@@ -517,20 +517,20 @@ public class ProfileBaseView
           } else {
             bool1 = false;
           }
-          this.mNewVoteAnimHelper.a = paramProfileCardInfo.card.getLastPraiseInfoList();
-          if (i <= this.mNewVoteAnimHelper.a.size()) {
-            this.mNewVoteAnimHelper.a = this.mNewVoteAnimHelper.a.subList(0, i);
+          this.mNewVoteAnimHelper.g = paramProfileCardInfo.card.getLastPraiseInfoList();
+          if (i <= this.mNewVoteAnimHelper.g.size()) {
+            this.mNewVoteAnimHelper.g = this.mNewVoteAnimHelper.g.subList(0, i);
           }
-          this.mNewVoteAnimHelper.a = PraiseConfigHelper.a(this.mNewVoteAnimHelper.a);
+          this.mNewVoteAnimHelper.g = PraiseConfigHelper.a(this.mNewVoteAnimHelper.g);
           if (bool2)
           {
             localObject = new DataTag(10, paramProfileCardInfo.card);
-            paramProfileCardInfo = String.format(this.mActivity.getString(2131691242), new Object[] { String.valueOf(j) });
+            paramProfileCardInfo = String.format(this.mActivity.getString(2131888188), new Object[] { String.valueOf(j) });
           }
           else
           {
             localObject = new DataTag(10, paramProfileCardInfo.card);
-            String str = String.format(this.mActivity.getString(2131691155), new Object[] { String.valueOf(j) });
+            String str = String.format(this.mActivity.getString(2131888101), new Object[] { String.valueOf(j) });
             if (paramProfileCardInfo.card.bAvailVoteCnt == 0) {
               localVoteViewV2.a();
             }
@@ -555,13 +555,13 @@ public class ProfileBaseView
       localObject = (VoteViewV2)localObject;
       long l = paramLong;
       if (paramLong == -1L) {
-        l = ((VoteViewV2)localObject).e;
+        l = ((VoteViewV2)localObject).m;
       }
       if ((paramProfileCardInfo.card != null) && (paramProfileCardInfo.card.bAvailVoteCnt == 0)) {
         ((VoteViewV2)localObject).a();
       }
       ((VoteViewV2)localObject).a(false, true, (int)l, 0, null, paramBoolean);
-      ((VoteViewV2)localObject).setContentDescription(String.format(this.mActivity.getString(2131691167), new Object[] { String.valueOf(l) }));
+      ((VoteViewV2)localObject).setContentDescription(String.format(this.mActivity.getString(2131888113), new Object[] { String.valueOf(l) }));
     }
   }
   
@@ -569,7 +569,7 @@ public class ProfileBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.ProfileBaseView
  * JD-Core Version:    0.7.0.1
  */

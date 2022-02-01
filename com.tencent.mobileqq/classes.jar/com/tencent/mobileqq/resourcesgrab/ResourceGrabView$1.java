@@ -10,9 +10,9 @@ import android.view.WindowManager.LayoutParams;
 class ResourceGrabView$1
   implements View.OnTouchListener
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = 0;
+  float a = 0.0F;
   float b = 0.0F;
+  int c = 0;
   
   ResourceGrabView$1(ResourceGrabView paramResourceGrabView) {}
   
@@ -27,34 +27,34 @@ class ResourceGrabView$1
           return true;
         }
         float f = paramMotionEvent.getY();
-        paramView = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView);
+        paramView = ResourceGrabView.a(this.d);
         paramView.y = ((int)(paramView.y + (f - this.b) / 3.0F));
-        paramView = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView);
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView;
+        paramView = ResourceGrabView.b(this.d);
+        paramMotionEvent = this.d;
         paramView.updateViewLayout(paramMotionEvent, ResourceGrabView.a(paramMotionEvent));
         return true;
       }
-      i = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView).y;
+      i = ResourceGrabView.a(this.d).y;
       int j = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-      if ((Math.abs(i - this.jdField_a_of_type_Int) <= j) && (System.currentTimeMillis() - ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView) >= 500L))
+      if ((Math.abs(i - this.c) <= j) && (System.currentTimeMillis() - ResourceGrabView.c(this.d) >= 500L))
       {
-        this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView.a();
+        this.d.a();
         return true;
       }
     }
     else
     {
-      ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView, System.currentTimeMillis());
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      ResourceGrabView.a(this.d, System.currentTimeMillis());
+      this.a = paramMotionEvent.getX();
       this.b = paramMotionEvent.getY();
-      this.jdField_a_of_type_Int = ResourceGrabView.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabView).y;
+      this.c = ResourceGrabView.a(this.d).y;
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabView.1
  * JD-Core Version:    0.7.0.1
  */

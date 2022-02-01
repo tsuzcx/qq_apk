@@ -22,14 +22,14 @@ class FriendOnlineStatusHelper$2
       localStringBuilder.append(paramView);
       QLog.i("FriendOnlineStatusHelper", 2, localStringBuilder.toString());
     }
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80087E6", "0X80087E6", 0, 0, "", "", "", "");
-    QIMUserManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
+    ReportController.b(this.a.b, "CliOper", "", "", "0X80087E6", "0X80087E6", 0, 0, "", "", "", "");
+    QIMUserManager.b().a(this.a.b, this.a.a.b());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FriendOnlineStatusHelper.2
  * JD-Core Version:    0.7.0.1
  */

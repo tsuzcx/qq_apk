@@ -11,21 +11,21 @@ class MediaPreviewActivity$6
 {
   MediaPreviewActivity$6(MediaPreviewActivity paramMediaPreviewActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Int);
-    String str = this.jdField_a_of_type_ComTencentWidgetActionSheet.getContent(paramInt);
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693256).equals(str)) && (paramView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, paramView.a);
-    } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693262).equals(str)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    paramView = this.c.e.a(this.c.i);
+    String str = this.a.getContent(paramInt);
+    if ((this.c.getString(2131890804).equals(str)) && (paramView != null)) {
+      this.c.a(this.b, paramView.b);
+    } else if (this.c.getString(2131890810).equals(str)) {
+      this.c.a(this.b);
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

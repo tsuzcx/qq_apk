@@ -51,11 +51,11 @@ public class TroopNotificationUtils
   
   public static int a(AppInterface paramAppInterface)
   {
-    Object localObject = (TroopNotificationEntryConfig)QConfigManager.a().a(691);
+    Object localObject = (TroopNotificationEntryConfig)QConfigManager.b().b(691);
     int i = 0;
-    if ((localObject == null) || (!((TroopNotificationEntryConfig)localObject).a(paramAppInterface.getCurrentAccountUin())))
+    if ((localObject == null) || (!((TroopNotificationEntryConfig)localObject).b(paramAppInterface.getCurrentAccountUin())))
     {
-      i = 0 + GroupSystemMsgController.a().a(paramAppInterface);
+      i = 0 + GroupSystemMsgController.a().b(paramAppInterface);
       if (QLog.isDevelopLevel())
       {
         localObject = new StringBuilder();
@@ -97,21 +97,12 @@ public class TroopNotificationUtils
       {
         paramIFaceDecoder.requestDecodeFace(paramString, paramInt, true);
         if (paramInt == 4) {
-          localBitmap1 = BaseImageUtil.d();
+          localBitmap1 = BaseImageUtil.g();
         } else {
-          localBitmap1 = BaseImageUtil.f();
+          localBitmap1 = BaseImageUtil.k();
         }
       }
       return new BitmapDrawable(localBitmap1);
-    }
-    return null;
-  }
-  
-  public static final structmsg.StructMsg a(String paramString)
-  {
-    HashMap localHashMap = a;
-    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
-      return (structmsg.StructMsg)a.get(paramString);
     }
     return null;
   }
@@ -144,15 +135,6 @@ public class TroopNotificationUtils
     paramContext.extra().putString("url", paramString1);
     paramContext.extra().putString("big_brother_source_key", "biz_src_location_share");
     QRoute.startUri(paramContext, null);
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getAccount(), 0);
-    int i = paramAppInterface.getInt("share_key_pay2joinTroop_request_num", 0);
-    paramAppInterface = paramAppInterface.edit();
-    paramAppInterface.putInt("share_key_pay2joinTroop_request_num", i + 1);
-    paramAppInterface.commit();
   }
   
   public static final void a(String paramString, structmsg.StructMsg paramStructMsg)
@@ -188,22 +170,6 @@ public class TroopNotificationUtils
     }
   }
   
-  public static boolean a(AppInterface paramAppInterface)
-  {
-    TroopNotificationEntryConfig localTroopNotificationEntryConfig = (TroopNotificationEntryConfig)QConfigManager.a().a(691);
-    if ((localTroopNotificationEntryConfig != null) && (localTroopNotificationEntryConfig.a(paramAppInterface.getCurrentAccountUin())))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopNotificationUtils", 2, "isTroopNotificationShowNewEntry return true");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotificationUtils", 2, "isTroopNotificationShowNewEntry return false");
-    }
-    return false;
-  }
-  
   public static boolean a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -229,9 +195,13 @@ public class TroopNotificationUtils
     return bool;
   }
   
-  public static int b(AppInterface paramAppInterface)
+  public static final structmsg.StructMsg b(String paramString)
   {
-    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getAccount(), 0).getInt("share_key_pay2joinTroop_request_num", 0);
+    HashMap localHashMap = a;
+    if ((localHashMap != null) && (localHashMap.containsKey(paramString))) {
+      return (structmsg.StructMsg)a.get(paramString);
+    }
+    return null;
   }
   
   public static final void b()
@@ -242,16 +212,46 @@ public class TroopNotificationUtils
     }
   }
   
-  public static void b(AppInterface paramAppInterface)
+  public static boolean b(AppInterface paramAppInterface)
+  {
+    TroopNotificationEntryConfig localTroopNotificationEntryConfig = (TroopNotificationEntryConfig)QConfigManager.b().b(691);
+    if ((localTroopNotificationEntryConfig != null) && (localTroopNotificationEntryConfig.b(paramAppInterface.getCurrentAccountUin())))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNotificationUtils", 2, "isTroopNotificationShowNewEntry return true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotificationUtils", 2, "isTroopNotificationShowNewEntry return false");
+    }
+    return false;
+  }
+  
+  public static void c(AppInterface paramAppInterface)
+  {
+    paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getAccount(), 0);
+    int i = paramAppInterface.getInt("share_key_pay2joinTroop_request_num", 0);
+    paramAppInterface = paramAppInterface.edit();
+    paramAppInterface.putInt("share_key_pay2joinTroop_request_num", i + 1);
+    paramAppInterface.commit();
+  }
+  
+  public static void d(AppInterface paramAppInterface)
   {
     paramAppInterface = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getAccount(), 0).edit();
     paramAppInterface.putInt("share_key_pay2joinTroop_request_num", 0);
     paramAppInterface.commit();
   }
+  
+  public static int e(AppInterface paramAppInterface)
+  {
+    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getAccount(), 0).getInt("share_key_pay2joinTroop_request_num", 0);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.utils.TroopNotificationUtils
  * JD-Core Version:    0.7.0.1
  */

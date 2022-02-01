@@ -15,12 +15,12 @@ class DiscussionMemberActivity$3
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.getHandler().postDelayed(new DiscussionMemberActivity.3.1(this), 150L);
+    this.e.c.getHandler().postDelayed(new DiscussionMemberActivity.3.1(this), 150L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionMemberActivity.3
  * JD-Core Version:    0.7.0.1
  */

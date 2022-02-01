@@ -25,24 +25,24 @@ public final class PublishArticlePage$initMediaDisplayLayout$1
   
   public void a(int paramInt)
   {
-    Object localObject1 = PublishArticlePage.a(this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterPublisharticlePublishArticlePage).a().get(paramInt);
+    Object localObject1 = PublishArticlePage.l(this.a).getDisplayItems().get(paramInt);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "mediaDisplayLayout.displayItems[position]");
     if (((DisplayItem)localObject1).getMedia().getType() == MediaType.PHOTO)
     {
-      Object localObject2 = (Iterable)PublishArticlePage.a(this.jdField_a_of_type_ComTencentTkdTopicsdkAdapterPublisharticlePublishArticlePage).a();
+      Object localObject2 = (Iterable)PublishArticlePage.l(this.a).getDisplayItems();
       localObject1 = (Collection)new ArrayList(CollectionsKt.collectionSizeOrDefault((Iterable)localObject2, 10));
       localObject2 = ((Iterable)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((Collection)localObject1).add(((DisplayItem)((Iterator)localObject2).next()).getMedia().getFilePath());
       }
       localObject1 = (List)localObject1;
-      PreviewPhotoPage.a.a(this.jdField_a_of_type_AndroidAppActivity, 3, paramInt, (List)localObject1, (List)localObject1, 9);
+      PreviewPhotoPage.f.a(this.b, 3, paramInt, (List)localObject1, (List)localObject1, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.initMediaDisplayLayout.1
  * JD-Core Version:    0.7.0.1
  */

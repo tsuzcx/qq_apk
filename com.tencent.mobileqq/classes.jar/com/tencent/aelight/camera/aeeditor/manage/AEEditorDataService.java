@@ -19,18 +19,12 @@ import java.util.HashMap;
 public class AEEditorDataService
   extends BaseProtocolCoder
 {
-  public static final HashMap<String, String> a;
-  private static final String[] a;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "ShadowBackendSvc" };
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static final HashMap<String, String> a = new HashMap();
+  private static final String[] b = { "ShadowBackendSvc" };
   
   private String a(String paramString)
   {
-    return AECameraPrefsUtil.a().a(paramString, "", 4);
+    return AECameraPrefsUtil.a().b(paramString, "", 4);
   }
   
   private ArrayList<MetaSdkInfo> a()
@@ -39,10 +33,10 @@ public class AEEditorDataService
     MetaSdkInfo localMetaSdkInfo = new MetaSdkInfo();
     localMetaSdkInfo.sdk = 0;
     localMetaSdkInfo.sdkVersion = "2.0.0";
-    Object localObject = "2.2.6.40";
-    if (!TextUtils.isEmpty("2.2.6.40"))
+    Object localObject = "2.6.0.23";
+    if (!TextUtils.isEmpty("2.6.0.23"))
     {
-      String[] arrayOfString = "2.2.6.40".split("\\.");
+      String[] arrayOfString = "2.6.0.23".split("\\.");
       if (arrayOfString.length > 3)
       {
         localObject = new StringBuilder();
@@ -102,7 +96,7 @@ public class AEEditorDataService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return b;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -129,7 +123,7 @@ public class AEEditorDataService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.manage.AEEditorDataService
  * JD-Core Version:    0.7.0.1
  */

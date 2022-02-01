@@ -11,12 +11,12 @@ class VideoControlUI$8
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a != null)
+    if (this.b.ak != null)
     {
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d;
+      paramDialogInterface = this.b.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("showPermissionDialog.Cancel, seq[");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.w(paramDialogInterface, 1, localStringBuilder.toString());
     }

@@ -18,11 +18,11 @@ public class TroopQuery
   
   private <T> List<T> a(String paramString)
   {
-    FTSTroopOperator localFTSTroopOperator = (FTSTroopOperator)((FTSDBRuntimeServiceImpl)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(2);
+    FTSTroopOperator localFTSTroopOperator = (FTSTroopOperator)((FTSDBRuntimeServiceImpl)this.a.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(2);
     if ((localFTSTroopOperator != null) && (paramString != null) && (!TextUtils.isEmpty(paramString)))
     {
       FTSQueryArgsV2.Builder localBuilder = new FTSQueryArgsV2.Builder().a(TroopIndex.class).a(new FTSQueryArgsV2.MatchKey[] { new FTSQueryArgsV2.MatchKey("TroopIndex", paramString, true) }).a(true);
-      if (((FTSUtils.a(paramString)) || (FTSUtils.b(paramString))) && (!FTSUtils.c(paramString))) {
+      if (((FTSUtils.d(paramString)) || (FTSUtils.e(paramString))) && (!FTSUtils.f(paramString))) {
         localBuilder.a(200);
       }
       return localFTSTroopOperator.a(localBuilder.a());
@@ -32,7 +32,7 @@ public class TroopQuery
   
   private <T> List<T> b(String paramString)
   {
-    FTSTroopOperator localFTSTroopOperator = (FTSTroopOperator)((FTSDBRuntimeServiceImpl)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(2);
+    FTSTroopOperator localFTSTroopOperator = (FTSTroopOperator)((FTSDBRuntimeServiceImpl)this.a.getRuntimeService(IFTSDBRuntimeService.class, "")).getOperator(2);
     if ((localFTSTroopOperator != null) && (paramString != null) && (!TextUtils.isEmpty(paramString))) {
       return localFTSTroopOperator.a(new FTSQueryArgsV2.Builder().a(TroopIndex.class).a(new FTSQueryArgsV2.MatchKey[] { new FTSQueryArgsV2.MatchKey("ext1", paramString, true) }).a(true).a());
     }
@@ -41,19 +41,19 @@ public class TroopQuery
   
   public <T> List<T> a(QueryArgs paramQueryArgs)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramQueryArgs.jdField_a_of_type_MqqAppAppRuntime;
-    if (paramQueryArgs.jdField_a_of_type_Int == 1) {
-      return a(paramQueryArgs.jdField_a_of_type_JavaLangString);
+    this.a = paramQueryArgs.a;
+    if (paramQueryArgs.b == 1) {
+      return a(paramQueryArgs.c);
     }
-    if (paramQueryArgs.jdField_a_of_type_Int == 2) {
-      return b(paramQueryArgs.jdField_a_of_type_JavaLangString);
+    if (paramQueryArgs.b == 2) {
+      return b(paramQueryArgs.c);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.query.TroopQuery
  * JD-Core Version:    0.7.0.1
  */

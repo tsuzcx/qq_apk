@@ -38,10 +38,10 @@ public final class UEC
   implements Application.ActivityLifecycleCallbacks, QBaseFragment.IFragmentAttachCallback, QBaseFragment.IFragmentLifecycleCallback
 {
   public static UEC a;
-  private int jdField_a_of_type_Int;
-  private LinkedHashMap<String, UEC.UECItem> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(8);
-  private List<IPageLifecycleCallback> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final boolean jdField_a_of_type_Boolean;
+  private LinkedHashMap<String, UEC.UECItem> b = new LinkedHashMap(8);
+  private final boolean c;
+  private List<IPageLifecycleCallback> d = new ArrayList();
+  private int e;
   
   private UEC()
   {
@@ -50,24 +50,24 @@ public final class UEC
     if (i != 1) {
       bool = false;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    jdField_a_of_type_ComTencentMobileqqStatisticsUEC = this;
-    this.jdField_a_of_type_Int = 0;
-    a();
+    this.c = bool;
+    a = this;
+    this.e = 0;
+    b();
   }
   
   public static UEC a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStatisticsUEC == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqStatisticsUEC == null) {
-          jdField_a_of_type_ComTencentMobileqqStatisticsUEC = new UEC();
+        if (a == null) {
+          a = new UEC();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqStatisticsUEC;
+    return a;
   }
   
   public static String a(String paramString)
@@ -168,11 +168,6 @@ public final class UEC
     return paramString1.toString();
   }
   
-  private void a()
-  {
-    a(new UECPageStayTimeReport());
-  }
-  
   private void a(Object paramObject1, String paramString1, boolean paramBoolean, String paramString2, Object paramObject2)
   {
     int i = paramObject1.hashCode();
@@ -230,7 +225,7 @@ public final class UEC
   
   private String b(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "null";
     }
     int i = paramString.indexOf("?");
@@ -243,22 +238,7 @@ public final class UEC
   
   private void b()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(8);
-    ArrayList localArrayList = new ArrayList(((LinkedHashMap)localObject).size());
-    localObject = ((LinkedHashMap)localObject).values().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add((UEC.UECItem)((Iterator)localObject).next());
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      a(localArrayList);
-      return;
-    }
-    localObject = new Intent();
-    ((Intent)localObject).putParcelableArrayListExtra("UECData", localArrayList);
-    ((Intent)localObject).setClass(BaseApplicationImpl.sApplication, UECReceiver.class);
-    BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject);
+    a(new UECPageStayTimeReport());
   }
   
   private String c(Activity paramActivity)
@@ -290,7 +270,7 @@ public final class UEC
   
   private String c(String paramString)
   {
-    if (StringUtil.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "null";
     }
     int j = paramString.indexOf("//");
@@ -317,32 +297,52 @@ public final class UEC
     return str;
   }
   
+  private void c()
+  {
+    Object localObject = this.b;
+    this.b = new LinkedHashMap(8);
+    ArrayList localArrayList = new ArrayList(((LinkedHashMap)localObject).size());
+    localObject = ((LinkedHashMap)localObject).values().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      localArrayList.add((UEC.UECItem)((Iterator)localObject).next());
+    }
+    if (this.c)
+    {
+      a(localArrayList);
+      return;
+    }
+    localObject = new Intent();
+    ((Intent)localObject).putParcelableArrayListExtra("UECData", localArrayList);
+    ((Intent)localObject).setClass(BaseApplicationImpl.sApplication, UECReceiver.class);
+    BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject);
+  }
+  
   public UEC.UECItem a(String paramString1, String paramString2, long paramLong, String paramString3, Object paramObject)
   {
-    paramObject = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
+    paramObject = (UEC.UECItem)this.b.get(paramString1);
     if (paramObject == null)
     {
       paramObject = new UEC.UECItem();
-      paramObject.jdField_a_of_type_JavaLangString = paramString1;
-      paramObject.jdField_a_of_type_Int = 1;
-      if ((paramString1.startsWith(QQBrowserActivity.class.getSimpleName())) && (paramObject.d == null))
+      paramObject.a = paramString1;
+      paramObject.b = 1;
+      if ((paramString1.startsWith(QQBrowserActivity.class.getSimpleName())) && (paramObject.i == null))
       {
         int i = paramString1.indexOf("_");
         if ((i >= 0) && (paramString1.length() > i)) {
-          paramObject.d = c(paramString1.substring(paramString1.indexOf("_") + 1));
+          paramObject.i = c(paramString1.substring(paramString1.indexOf("_") + 1));
         }
       }
-      paramObject.f = paramString3;
-      paramObject.e = "8.7.0";
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, paramObject);
+      paramObject.k = paramString3;
+      paramObject.j = "8.8.17";
+      this.b.put(paramString1, paramObject);
       paramString1 = paramObject;
     }
     else
     {
-      paramObject.jdField_a_of_type_Int += 1;
+      paramObject.b += 1;
       paramString1 = paramObject;
     }
-    paramString1.jdField_b_of_type_JavaLangString = a(paramString1.jdField_b_of_type_JavaLangString, paramString2, 1, paramLong);
+    paramString1.g = a(paramString1.g, paramString2, 1, paramLong);
     return paramString1;
   }
   
@@ -367,26 +367,26 @@ public final class UEC
     if (paramIPageLifecycleCallback == null) {
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramIPageLifecycleCallback)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramIPageLifecycleCallback);
+    if (!this.d.contains(paramIPageLifecycleCallback)) {
+      this.d.add(paramIPageLifecycleCallback);
     }
   }
   
   public void a(String paramString1, int paramInt, String paramString2, Object paramObject)
   {
-    UEC.UECItem localUECItem2 = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
+    UEC.UECItem localUECItem2 = (UEC.UECItem)this.b.get(paramString1);
     UEC.UECItem localUECItem1 = localUECItem2;
     if (localUECItem2 == null) {
       localUECItem1 = a(paramString1, null, 0L, paramString2, paramObject);
     }
-    if ((paramInt == localUECItem1.c) && (localUECItem1.jdField_b_of_type_Long > 0L))
+    if ((paramInt == localUECItem1.e) && (localUECItem1.f > 0L))
     {
       long l1 = SystemClock.uptimeMillis();
-      long l2 = localUECItem1.jdField_b_of_type_Long;
-      localUECItem1.jdField_a_of_type_Long += l1 - l2;
-      localUECItem1.jdField_b_of_type_Long = 0L;
+      long l2 = localUECItem1.f;
+      localUECItem1.c += l1 - l2;
+      localUECItem1.f = 0L;
       if (a(paramObject)) {
-        MagnifierSDK.a().b(paramString2);
+        MagnifierSDK.b().b(paramString2);
       }
     }
   }
@@ -395,7 +395,7 @@ public final class UEC
   {
     if (paramString != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.d.iterator();
       while (localIterator.hasNext()) {
         ((IPageLifecycleCallback)localIterator.next()).a(paramString, paramActivity, paramBoolean, paramObject);
       }
@@ -431,22 +431,22 @@ public final class UEC
   
   public void b(String paramString1, int paramInt, String paramString2, Object paramObject)
   {
-    UEC.UECItem localUECItem2 = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
+    UEC.UECItem localUECItem2 = (UEC.UECItem)this.b.get(paramString1);
     UEC.UECItem localUECItem1 = localUECItem2;
     if (localUECItem2 == null) {
       localUECItem1 = a(paramString1, null, 0L, paramString2, paramObject);
     }
-    localUECItem1.c = paramInt;
-    localUECItem1.jdField_b_of_type_Int += 1;
-    localUECItem1.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    localUECItem1.e = paramInt;
+    localUECItem1.d += 1;
+    localUECItem1.f = SystemClock.uptimeMillis();
     if (a(paramObject)) {
-      MagnifierSDK.a().a(paramString2);
+      MagnifierSDK.b().a(paramString2);
     }
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((IPageLifecycleCallback)localIterator.next()).onActivityCreated(paramActivity, paramBundle);
     }
@@ -490,7 +490,7 @@ public final class UEC
   
   public void onActivityPaused(Activity paramActivity)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((IPageLifecycleCallback)((Iterator)localObject).next()).onActivityPaused(paramActivity);
     }
@@ -504,7 +504,7 @@ public final class UEC
   
   public void onActivityResumed(Activity paramActivity)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((IPageLifecycleCallback)((Iterator)localObject).next()).onActivityResumed(paramActivity);
     }
@@ -520,11 +520,11 @@ public final class UEC
   
   public void onActivityStarted(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((IPageLifecycleCallback)localIterator.next()).onActivityStarted(paramActivity);
     }
-    this.jdField_a_of_type_Int += 1;
+    this.e += 1;
     LocaleManager.b(paramActivity);
     if (Build.VERSION.SDK_INT >= 26) {
       FontSettingManager.resetFontIfNeeded(paramActivity, true, false);
@@ -533,19 +533,19 @@ public final class UEC
   
   public void onActivityStopped(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       ((IPageLifecycleCallback)localIterator.next()).onActivityStopped(paramActivity);
     }
-    this.jdField_a_of_type_Int -= 1;
-    if (this.jdField_a_of_type_Int == 0) {
-      b();
+    this.e -= 1;
+    if (this.e == 0) {
+      c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.UEC
  * JD-Core Version:    0.7.0.1
  */

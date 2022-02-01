@@ -78,7 +78,7 @@ public class HotChatSCHelper
       if (localOnShowNoteListener != null)
       {
         if (paramMessage != null) {
-          paramMessage.jdField_a_of_type_Boolean = localOnShowNoteListener.a(paramMessage);
+          paramMessage.g = localOnShowNoteListener.a(paramMessage);
         } else {
           localOnShowNoteListener.a(null);
         }
@@ -88,7 +88,7 @@ public class HotChatSCHelper
       }
       long l1;
       if (paramMessage != null) {
-        l1 = paramMessage.b - l2;
+        l1 = paramMessage.f - l2;
       } else {
         l1 = 0L;
       }
@@ -101,7 +101,7 @@ public class HotChatSCHelper
       NearbyUtils.a("HotchatSCMng", "MSG_GET_NOTE_TOSHOW", new Object[] { "next", paramMessage });
       if (paramMessage != null)
       {
-        l1 = Math.max(60000L, paramMessage.jdField_a_of_type_Long - l2);
+        l1 = Math.max(60000L, paramMessage.e - l2);
         this.mHandler.sendEmptyMessageDelayed(0, l1);
         return true;
       }
@@ -162,7 +162,7 @@ public class HotChatSCHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.HotChatSCHelper
  * JD-Core Version:    0.7.0.1
  */

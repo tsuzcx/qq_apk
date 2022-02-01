@@ -21,38 +21,32 @@ import java.util.Map;
 public abstract class BuddyListItem
 {
   @SuppressLint({"UseSparseArrays"})
-  public static Map<Integer, ColorStateList> a;
-  protected int a;
-  public Context a;
-  protected Drawable a;
-  protected BuddyListItem.BuddyListCallback a;
-  protected BuddyListAdapter a;
-  public QQAppInterface a;
-  public Entity a;
+  public static Map<Integer, ColorStateList> c = new HashMap(5);
   protected SwipRightMenuBuilder a;
-  protected boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilMap = new HashMap(5);
-  }
+  protected int b;
+  public QQAppInterface d;
+  public Context e;
+  public Entity f;
+  protected BuddyListAdapter g;
+  protected BuddyListItem.BuddyListCallback h;
+  protected Drawable i = null;
+  protected boolean j;
   
   protected BuddyListItem(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
+    this.d = paramQQAppInterface;
+    this.e = paramContext;
+    this.f = paramEntity;
   }
   
   protected static ColorStateList a(Context paramContext, int paramInt)
   {
-    ColorStateList localColorStateList2 = (ColorStateList)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    ColorStateList localColorStateList2 = (ColorStateList)c.get(Integer.valueOf(paramInt));
     ColorStateList localColorStateList1 = localColorStateList2;
     if (localColorStateList2 == null)
     {
       localColorStateList1 = paramContext.getResources().getColorStateList(paramInt);
-      jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localColorStateList1);
+      c.put(Integer.valueOf(paramInt), localColorStateList1);
     }
     return localColorStateList1;
   }
@@ -62,79 +56,45 @@ public abstract class BuddyListItem
     return 1;
   }
   
-  protected Drawable a()
-  {
-    boolean bool = SimpleUIUtil.a();
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_Boolean != bool)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {}
-    try
-    {
-      localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-      if (!bool) {
-        break label72;
-      }
-      i = 2130844954;
-    }
-    catch (Exception|OutOfMemoryError localException)
-    {
-      for (;;)
-      {
-        Resources localResources;
-        continue;
-        int i = 2130844953;
-      }
-    }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(i);
-    this.jdField_a_of_type_Boolean = bool;
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  }
-  
   public abstract View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener);
   
   protected SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = ViewUtils.a(152.0F);
-    int j = a();
-    int k = b();
-    paramContext = a();
-    int[] arrayOfInt1 = b();
-    int[] arrayOfInt2 = c();
-    return new BuddyListItem.1(this, j, k, new int[] { i }, -1, paramContext, arrayOfInt1, arrayOfInt2);
+    int k = ViewUtils.dip2px(152.0F);
+    int m = a();
+    int n = b();
+    paramContext = c();
+    int[] arrayOfInt1 = d();
+    int[] arrayOfInt2 = e();
+    return new BuddyListItem.1(this, m, n, new int[] { k }, -1, paramContext, arrayOfInt1, arrayOfInt2);
   }
   
   protected void a(int paramInt, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem) {}
   
   public void a(View paramView, int paramInt, BuddyListItem.ViewTag paramViewTag, View.OnClickListener paramOnClickListener)
   {
-    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
-    int i;
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.a;
+    int k;
     if (localSwipRightMenuBuilder != null) {
-      i = localSwipRightMenuBuilder.updateRightMenuView(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity, paramViewTag, paramOnClickListener);
+      k = localSwipRightMenuBuilder.updateRightMenuView(this.e, paramView, paramInt, this.f, paramViewTag, paramOnClickListener);
     } else {
-      i = 0;
+      k = 0;
     }
-    paramViewTag = this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter;
-    if ((paramViewTag != null) && (paramViewTag.jdField_a_of_type_Int != -1))
+    paramViewTag = this.g;
+    if ((paramViewTag != null) && (paramViewTag.b != -1))
     {
-      if (paramInt != this.jdField_a_of_type_ComTencentMobileqqActivityContactsFriendBuddyListAdapter.jdField_a_of_type_Int)
+      if (paramInt != this.g.b)
       {
         paramView.scrollTo(0, 0);
         return;
       }
-      paramView.scrollTo(i, 0);
+      paramView.scrollTo(k, 0);
     }
   }
   
   public void a(BuddyListItem.BuddyListCallback paramBuddyListCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseBuddyListItem$BuddyListCallback = paramBuddyListCallback;
-  }
-  
-  protected int[] a()
-  {
-    return null;
+    this.h = paramBuddyListCallback;
   }
   
   protected int b()
@@ -142,24 +102,49 @@ public abstract class BuddyListItem
     return 1;
   }
   
-  protected int[] b()
-  {
-    return null;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
   protected int[] c()
   {
     return null;
   }
+  
+  protected int[] d()
+  {
+    return null;
+  }
+  
+  protected int[] e()
+  {
+    return null;
+  }
+  
+  public int f()
+  {
+    return this.b;
+  }
+  
+  protected Drawable g()
+  {
+    boolean bool = SimpleUIUtil.e();
+    if ((this.i != null) && (this.j != bool)) {
+      this.i = null;
+    }
+    if (this.i == null) {}
+    try
+    {
+      this.i = this.e.getResources().getDrawable(2130846389);
+      this.j = bool;
+      label52:
+      return this.i;
+    }
+    catch (Exception|OutOfMemoryError localException)
+    {
+      break label52;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.base.BuddyListItem
  * JD-Core Version:    0.7.0.1
  */

@@ -17,33 +17,33 @@ class AVPreloadPlayerService$3
   
   public void onError(IMediaPlayerMgr paramIMediaPlayerMgr, int paramInt, String paramString)
   {
-    paramIMediaPlayerMgr = AVPreloadPlayerService.r(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger();
+    paramIMediaPlayerMgr = AVPreloadPlayerService.z(this.b).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("------play error errorCode: ");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(" msg: ");
     localStringBuilder.append(paramString);
     paramIMediaPlayerMgr.e("AVPreload|Core", localStringBuilder.toString(), new Object[0]);
-    AVPreloadPlayerService.b(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService);
-    paramIMediaPlayerMgr = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    AVPreloadPlayerService.A(this.b);
+    paramIMediaPlayerMgr = this.a;
     if (paramIMediaPlayerMgr != null) {
       paramIMediaPlayerMgr.onError(paramInt, paramString);
     }
-    if (AVPreloadPlayerService.c(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService) != null)
+    if (AVPreloadPlayerService.s(this.b) != null)
     {
-      AVPreloadPlayerService.c(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).onError(paramInt, paramString);
-      AVPreloadPlayerService.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService, null);
+      AVPreloadPlayerService.s(this.b).onError(paramInt, paramString);
+      AVPreloadPlayerService.a(this.b, null);
     }
   }
   
   public void onFirstFrameCome(IMediaPlayerMgr paramIMediaPlayerMgr)
   {
-    AVPreloadPlayerService.p(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger().i("AVPreload|AVPreloadService", "onFirstFrameCome", new Object[0]);
-    AVPreloadPlayerService.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService);
-    if (AVPreloadPlayerService.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService) != null) {
-      AVPreloadPlayerService.b(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).e(AVPreloadPlayerService.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getCurrentParams().originUrl);
+    AVPreloadPlayerService.t(this.b).getLogger().i("AVPreload|AVPreloadService", "onFirstFrameCome", new Object[0]);
+    AVPreloadPlayerService.u(this.b);
+    if (AVPreloadPlayerService.v(this.b) != null) {
+      AVPreloadPlayerService.x(this.b).g(AVPreloadPlayerService.w(this.b).getCurrentParams().originUrl);
     }
-    paramIMediaPlayerMgr = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    paramIMediaPlayerMgr = this.a;
     if (paramIMediaPlayerMgr != null) {
       paramIMediaPlayerMgr.onFirstFrameCome();
     }
@@ -51,8 +51,8 @@ class AVPreloadPlayerService$3
   
   public void onNetworkAnomaly()
   {
-    AVPreloadPlayerService.u(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger().i("AVPreloadPlayerService", "onNetworkAnomaly 网络异常", new Object[0]);
-    PlayerStatusListener localPlayerStatusListener = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    AVPreloadPlayerService.D(this.b).getLogger().i("AVPreloadPlayerService", "onNetworkAnomaly 网络异常", new Object[0]);
+    PlayerStatusListener localPlayerStatusListener = this.a;
     if (localPlayerStatusListener != null) {
       localPlayerStatusListener.onNetworkAnomaly();
     }
@@ -60,7 +60,7 @@ class AVPreloadPlayerService$3
   
   public void onNetworkChanged(int paramInt)
   {
-    PlayerStatusListener localPlayerStatusListener = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    PlayerStatusListener localPlayerStatusListener = this.a;
     if (localPlayerStatusListener != null) {
       localPlayerStatusListener.onNetworkChanged(paramInt);
     }
@@ -68,8 +68,8 @@ class AVPreloadPlayerService$3
   
   public void onPlayCompleted(IMediaPlayerMgr paramIMediaPlayerMgr)
   {
-    AVPreloadPlayerService.q(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger().i("AVPreloadPlayerService", "onPlayCompleted", new Object[0]);
-    paramIMediaPlayerMgr = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    AVPreloadPlayerService.y(this.b).getLogger().i("AVPreloadPlayerService", "onPlayCompleted", new Object[0]);
+    paramIMediaPlayerMgr = this.a;
     if (paramIMediaPlayerMgr != null) {
       paramIMediaPlayerMgr.onPlayCompleted();
     }
@@ -77,21 +77,21 @@ class AVPreloadPlayerService$3
   
   public void onReadyCompleted(IMediaPlayerMgr paramIMediaPlayerMgr)
   {
-    AVPreloadPlayerService.o(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger().i("AVPreloadPlayerService", "onReadyCompleted", new Object[0]);
-    paramIMediaPlayerMgr = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    AVPreloadPlayerService.r(this.b).getLogger().i("AVPreloadPlayerService", "onReadyCompleted", new Object[0]);
+    paramIMediaPlayerMgr = this.a;
     if (paramIMediaPlayerMgr != null) {
       paramIMediaPlayerMgr.onReadyCompleted();
     }
-    if (AVPreloadPlayerService.c(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService) != null)
+    if (AVPreloadPlayerService.s(this.b) != null)
     {
-      AVPreloadPlayerService.c(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).onReadyCompleted();
-      AVPreloadPlayerService.a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService, null);
+      AVPreloadPlayerService.s(this.b).onReadyCompleted();
+      AVPreloadPlayerService.a(this.b, null);
     }
   }
   
   public void onReadyLayout(ITPPlayerVideoViewBase paramITPPlayerVideoViewBase, int paramInt1, int paramInt2)
   {
-    paramITPPlayerVideoViewBase = AVPreloadPlayerService.n(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger();
+    paramITPPlayerVideoViewBase = AVPreloadPlayerService.q(this.b).getLogger();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("videoWidth = ");
     localStringBuilder.append(paramInt1);
@@ -102,16 +102,16 @@ class AVPreloadPlayerService$3
   
   public long onReportRoomId()
   {
-    if (AVPreloadPlayerService.v(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService) != null) {
-      return AVPreloadPlayerService.w(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getRoomId();
+    if (AVPreloadPlayerService.E(this.b) != null) {
+      return AVPreloadPlayerService.F(this.b).getRoomId();
     }
     return 0L;
   }
   
   public void onStartBuffer(IMediaPlayerMgr paramIMediaPlayerMgr)
   {
-    AVPreloadPlayerService.s(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger().i("AVPreloadPlayerService", "onStartBuffer", new Object[0]);
-    paramIMediaPlayerMgr = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    AVPreloadPlayerService.B(this.b).getLogger().i("AVPreloadPlayerService", "onStartBuffer", new Object[0]);
+    paramIMediaPlayerMgr = this.a;
     if (paramIMediaPlayerMgr != null) {
       paramIMediaPlayerMgr.onStartBuffer();
     }
@@ -119,8 +119,8 @@ class AVPreloadPlayerService$3
   
   public void onStopBuffer(IMediaPlayerMgr paramIMediaPlayerMgr)
   {
-    AVPreloadPlayerService.t(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceAVPreloadPlayerService).getLogger().i("AVPreloadPlayerService", "onStopBuffer", new Object[0]);
-    paramIMediaPlayerMgr = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    AVPreloadPlayerService.C(this.b).getLogger().i("AVPreloadPlayerService", "onStopBuffer", new Object[0]);
+    paramIMediaPlayerMgr = this.a;
     if (paramIMediaPlayerMgr != null) {
       paramIMediaPlayerMgr.onStopBuffer();
     }
@@ -128,7 +128,7 @@ class AVPreloadPlayerService$3
   
   public void onSurfaceCreated()
   {
-    PlayerStatusListener localPlayerStatusListener = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    PlayerStatusListener localPlayerStatusListener = this.a;
     if (localPlayerStatusListener != null) {
       localPlayerStatusListener.onSurfaceCreated();
     }
@@ -136,7 +136,7 @@ class AVPreloadPlayerService$3
   
   public void onSurfaceDestroyed()
   {
-    PlayerStatusListener localPlayerStatusListener = this.jdField_a_of_type_ComTencentIlivesdkAvplayerservice_interfacePlayerStatusListener;
+    PlayerStatusListener localPlayerStatusListener = this.a;
     if (localPlayerStatusListener != null) {
       localPlayerStatusListener.onSurfaceDestroyed();
     }
@@ -144,7 +144,7 @@ class AVPreloadPlayerService$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.AVPreloadPlayerService.3
  * JD-Core Version:    0.7.0.1
  */

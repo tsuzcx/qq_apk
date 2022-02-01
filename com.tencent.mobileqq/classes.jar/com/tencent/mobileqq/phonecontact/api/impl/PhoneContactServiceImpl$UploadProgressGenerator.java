@@ -7,17 +7,17 @@ import mqq.os.MqqHandler;
 class PhoneContactServiceImpl$UploadProgressGenerator
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  volatile boolean jdField_a_of_type_Boolean;
-  volatile int jdField_b_of_type_Int = 0;
-  volatile boolean jdField_b_of_type_Boolean = false;
+  int a = 0;
+  volatile int b = 0;
   volatile int c = 5;
+  volatile boolean d;
+  volatile boolean e = false;
   
   private PhoneContactServiceImpl$UploadProgressGenerator(PhoneContactServiceImpl paramPhoneContactServiceImpl) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
     ThreadManager.getUIHandler().postDelayed(this, 100L);
   }
   
@@ -32,8 +32,8 @@ class PhoneContactServiceImpl$UploadProgressGenerator
       localStringBuilder.append(paramInt2);
       QLog.d("IMCore.PhoneContact.PhoneContactServiceImpl", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = paramInt1;
+    this.e = true;
+    this.b = paramInt1;
     this.c = paramInt2;
     ThreadManager.getUIHandler().removeCallbacks(this);
     ThreadManager.getUIHandler().postDelayed(this, 20L);
@@ -41,7 +41,7 @@ class PhoneContactServiceImpl$UploadProgressGenerator
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
     ThreadManager.getUIHandler().removeCallbacks(this);
   }
   
@@ -52,25 +52,25 @@ class PhoneContactServiceImpl$UploadProgressGenerator
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("run progress, isCanceled = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(", bindState = ");
       ((StringBuilder)localObject).append(PhoneContactServiceImpl.access$1400(this.this$0));
       QLog.d("IMCore.PhoneContact.PhoneContactServiceImpl", 2, ((StringBuilder)localObject).toString());
     }
-    if ((!this.jdField_a_of_type_Boolean) && ((PhoneContactServiceImpl.access$1400(this.this$0) == 8) || (PhoneContactServiceImpl.access$1400(this.this$0) == 4)) && (this.jdField_a_of_type_Int + 1 < this.c))
+    if ((!this.d) && ((PhoneContactServiceImpl.access$1400(this.this$0) == 8) || (PhoneContactServiceImpl.access$1400(this.this$0) == 4)) && (this.a + 1 < this.c))
     {
       localObject = this.this$0;
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
+      int i = this.a;
+      this.a = (i + 1);
       PhoneContactServiceImpl.access$3500((PhoneContactServiceImpl)localObject, i);
-      if (this.jdField_b_of_type_Boolean)
+      if (this.e)
       {
         PhoneContactServiceImpl.access$2000(this.this$0, 7);
-        this.jdField_b_of_type_Boolean = false;
+        this.e = false;
       }
       localObject = ThreadManager.getUIHandler();
       long l;
-      if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {
+      if (this.a < this.b) {
         l = 20L;
       } else {
         l = 100L;
@@ -81,7 +81,7 @@ class PhoneContactServiceImpl$UploadProgressGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.api.impl.PhoneContactServiceImpl.UploadProgressGenerator
  * JD-Core Version:    0.7.0.1
  */

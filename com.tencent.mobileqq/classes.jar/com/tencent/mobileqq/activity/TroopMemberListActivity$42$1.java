@@ -15,18 +15,18 @@ class TroopMemberListActivity$42$1
   
   public void run()
   {
-    Object localObject = (IFriendDataService)this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$42.a.app.getRuntimeService(IFriendDataService.class, "");
-    TroopMemberInfo localTroopMemberInfo = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$42.a.app, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$42.a.mTroopUin, this.jdField_a_of_type_JavaLangString);
+    Object localObject = (IFriendDataService)this.b.a.app.getRuntimeService(IFriendDataService.class, "");
+    TroopMemberInfo localTroopMemberInfo = ((ITroopDBUtilsApi)QRoute.api(ITroopDBUtilsApi.class)).getTroopMemberInfo(this.b.a.app, this.b.a.mTroopUin, this.a);
     if ((localTroopMemberInfo != null) && (localObject != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$42.a.convertTroopMemberInfo(localTroopMemberInfo, (IFriendDataService)localObject);
+      localObject = this.b.a.convertTroopMemberInfo(localTroopMemberInfo, (IFriendDataService)localObject);
       ThreadManager.getUIHandler().post(new TroopMemberListActivity.42.1.1(this, (TroopMemberListActivity.ATroopMember)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.42.1
  * JD-Core Version:    0.7.0.1
  */

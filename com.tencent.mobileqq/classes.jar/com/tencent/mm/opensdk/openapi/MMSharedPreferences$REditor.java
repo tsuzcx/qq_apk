@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.c.b;
+import com.tencent.mm.opensdk.utils.a;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -38,14 +38,14 @@ class MMSharedPreferences$REditor
     ContentValues localContentValues = new ContentValues();
     if (this.clear)
     {
-      this.cr.delete(c.b.CONTENT_URI, null, null);
+      this.cr.delete(a.a, null, null);
       this.clear = false;
     }
     Object localObject1 = this.remove.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      this.cr.delete(c.b.CONTENT_URI, "key = ?", new String[] { localObject2 });
+      this.cr.delete(a.a, "key = ?", new String[] { localObject2 });
     }
     Object localObject2 = this.values.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
@@ -89,7 +89,8 @@ class MMSharedPreferences$REditor
           i = 6;
           break;
         }
-        localObject1 = new StringBuilder("unresolve failed, unknown type=");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("unresolve failed, unknown type=");
         ((StringBuilder)localObject1).append(localObject3.getClass().toString());
       }
       if (i == 0)
@@ -103,7 +104,7 @@ class MMSharedPreferences$REditor
         i = 1;
       }
       if (i != 0) {
-        this.cr.update(c.b.CONTENT_URI, localContentValues, "key = ?", new String[] { (String)localEntry.getKey() });
+        this.cr.update(a.a, localContentValues, "key = ?", new String[] { (String)localEntry.getKey() });
       }
     }
     return true;
@@ -157,7 +158,7 @@ class MMSharedPreferences$REditor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.MMSharedPreferences.REditor
  * JD-Core Version:    0.7.0.1
  */

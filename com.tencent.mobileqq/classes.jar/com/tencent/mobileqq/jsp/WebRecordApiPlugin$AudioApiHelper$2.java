@@ -14,7 +14,7 @@ class WebRecordApiPlugin$AudioApiHelper$2
   
   public void run()
   {
-    Object localObject1 = new File(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = new File(this.a);
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
       localObject1 = ((File)localObject1).listFiles();
@@ -25,7 +25,7 @@ class WebRecordApiPlugin$AudioApiHelper$2
         {
           Object localObject3 = localObject1[i].getName();
           Object localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append(this.a);
           ((StringBuilder)localObject2).append((String)localObject3);
           localObject2 = ((StringBuilder)localObject2).toString();
           localObject3 = localObject3.split("\\.")[0];
@@ -41,7 +41,7 @@ class WebRecordApiPlugin$AudioApiHelper$2
             if (((Date)localObject3).before(((Calendar)localObject4).getTime()))
             {
               localObject1[i].delete();
-              SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a, (String)localObject2);
+              SharePreferenceUtils.b(this.b.a, (String)localObject2);
             }
           }
           catch (ParseException localParseException)
@@ -53,13 +53,13 @@ class WebRecordApiPlugin$AudioApiHelper$2
       }
       long l = System.currentTimeMillis();
       localObject1 = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-      SharePreferenceUtils.a(this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a, "LAST_DELETE_TIME", (String)localObject1);
+      SharePreferenceUtils.a(this.b.a, "LAST_DELETE_TIME", (String)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebRecordApiPlugin.AudioApiHelper.2
  * JD-Core Version:    0.7.0.1
  */

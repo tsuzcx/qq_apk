@@ -22,7 +22,7 @@ class TroopMemberApiService$1
   public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
+    localBundle.putInt("seq", this.a.o);
     localBundle.putBoolean("isSuccess", paramBoolean);
     localBundle.putStringArrayList("uins", paramArrayList1);
     localBundle.putStringArrayList("tinyIds", paramArrayList2);
@@ -31,7 +31,7 @@ class TroopMemberApiService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.1
  * JD-Core Version:    0.7.0.1
  */

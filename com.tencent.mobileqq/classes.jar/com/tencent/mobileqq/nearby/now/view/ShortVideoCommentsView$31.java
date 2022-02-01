@@ -11,12 +11,12 @@ class ShortVideoCommentsView$31
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoCommentsView.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment);
+    ShortVideoCommentsView.access$3000(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.31
  * JD-Core Version:    0.7.0.1
  */

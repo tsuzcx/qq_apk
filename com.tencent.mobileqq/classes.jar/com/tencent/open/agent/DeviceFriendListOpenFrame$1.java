@@ -19,18 +19,18 @@ class DeviceFriendListOpenFrame$1
         if (i != 3) {
           return;
         }
-        this.a.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame$FriendListAdapter.notifyDataSetChanged();
+        this.a.c.notifyDataSetChanged();
         return;
       }
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
+      this.a.f.setPadding(0, 0, 0, 0);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
+    this.a.f.setPadding(0, 0, 40, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.DeviceFriendListOpenFrame.1
  * JD-Core Version:    0.7.0.1
  */

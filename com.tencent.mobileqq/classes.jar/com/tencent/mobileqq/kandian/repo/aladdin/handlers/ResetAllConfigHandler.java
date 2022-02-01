@@ -49,7 +49,7 @@ public class ResetAllConfigHandler
       try
       {
         paramInt1 = Integer.valueOf(paramString).intValue();
-        SharedPreUtils.p(BaseApplicationImpl.getApplication(), paramInt1, RIJQQAppInterfaceUtil.a());
+        SharedPreUtils.p(BaseApplicationImpl.getApplication(), paramInt1, RIJQQAppInterfaceUtil.d());
         return true;
       }
       catch (NumberFormatException paramString)
@@ -74,7 +74,7 @@ public class ResetAllConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.ResetAllConfigHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,39 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.gaudio.VideoViewInfo;
-import java.util.Comparator;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 
 class AVActivity$14
-  implements Comparator<VideoViewInfo>
+  implements Runnable
 {
-  AVActivity$14(AVActivity paramAVActivity) {}
+  AVActivity$14(AVActivity paramAVActivity, long paramLong) {}
   
-  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
+  public void run()
   {
-    if (paramVideoViewInfo1.a) {
-      return 1;
+    if (this.this$0.I == null) {
+      return;
     }
-    if (paramVideoViewInfo2.a) {
-      return 1;
+    SessionInfo localSessionInfo = this.this$0.I.k();
+    if (localSessionInfo.b())
+    {
+      this.this$0.I.a(localSessionInfo.s, 229);
+      this.this$0.I.b(229);
+      int i = localSessionInfo.g;
+      this.this$0.I.b(localSessionInfo.s, 21);
+      if (i == 1) {
+        localSessionInfo.a(this.a, "av.onResume.1", 3);
+      } else if (i == 2) {
+        localSessionInfo.a(this.a, "av.onResume.2", 4);
+      }
+      if (localSessionInfo.c()) {
+        localSessionInfo.p = 1;
+      } else {
+        localSessionInfo.p = 3000;
+      }
+      localSessionInfo.c(this.a, false);
+      localSessionInfo.d("AVActivity.onResume", 0);
+      this.this$0.X.a(this.a);
     }
-    return 0;
   }
 }
 

@@ -9,25 +9,25 @@ class QidianProfileCardActivity$17
 {
   QidianProfileCardActivity$17(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1)
+    if (this.b.m == 1)
     {
       if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+        this.b.f(this.a);
       } else if (paramInt == 1) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
+        this.b.f();
       }
     }
     else if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+      this.b.f(this.a);
     }
-    QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+    QidianProfileCardActivity.d(this.b).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.17
  * JD-Core Version:    0.7.0.1
  */

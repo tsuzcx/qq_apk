@@ -6,20 +6,16 @@ import com.tencent.av.utils.PhoneStatusTools;
 
 public abstract class CameraCallback
 {
-  protected int a;
-  protected final AndroidCamera a;
-  protected final CameraCallback.PreviewAngleParam a;
-  protected CameraPreviewCallback a;
-  protected PreviewCallbackInfo a;
+  protected PreviewCallbackInfo a = new PreviewCallbackInfo();
+  protected final AndroidCamera b;
+  protected CameraPreviewCallback c = null;
+  protected final CameraCallback.PreviewAngleParam d = new CameraCallback.PreviewAngleParam();
+  protected int e = -1;
   
   public CameraCallback(AndroidCamera paramAndroidCamera, CameraPreviewCallback paramCameraPreviewCallback)
   {
-    this.jdField_a_of_type_ComTencentAvCameraPreviewCallbackInfo = new PreviewCallbackInfo();
-    this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback = null;
-    this.jdField_a_of_type_ComTencentAvCameraCameraCallback$PreviewAngleParam = new CameraCallback.PreviewAngleParam();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentAvCameraAndroidCamera = paramAndroidCamera;
-    this.jdField_a_of_type_ComTencentAvCameraCameraPreviewCallback = paramCameraPreviewCallback;
+    this.b = paramAndroidCamera;
+    this.c = paramCameraPreviewCallback;
   }
   
   public int a(int paramInt, boolean paramBoolean)
@@ -36,42 +32,40 @@ public abstract class CameraCallback
     }
     else
     {
-      b = 0;
+      b1 = 0;
       break label41;
     }
-    byte b = 3;
+    byte b1 = 3;
     break label41;
     label34:
-    b = 2;
+    b1 = 2;
     break label41;
     label39:
-    b = 1;
+    b1 = 1;
     label41:
     if (paramBoolean) {}
-    for (paramInt = ConfigSystemImpl.a(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a, true, false, b, false);; paramInt = ConfigSystemImpl.b(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a, true, false, b, false)) {
+    for (paramInt = ConfigSystemImpl.a(this.b.j, true, false, b1, false);; paramInt = ConfigSystemImpl.b(this.b.j, true, false, b1, false)) {
       return paramInt * 90;
     }
   }
-  
-  public abstract void a();
   
   public abstract void a(long paramLong, SurfaceTexture paramSurfaceTexture);
   
   public void a(CameraCallback.PreviewAngleParam paramPreviewAngleParam)
   {
-    int m = this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.f();
-    boolean bool = this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean;
+    int m = this.b.h();
+    boolean bool = this.b.y;
     int i = 0;
     int j;
     if (bool) {
       j = 0;
     } else {
-      j = this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.c() * 90;
+      j = this.b.d() * 90;
     }
-    int n = this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.g();
-    if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 1) {
+    int n = this.b.i();
+    if (this.b.l == 1) {
       i = (360 - (m + j) % 360) % 360;
-    } else if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 2) {
+    } else if (this.b.l == 2) {
       i = (m - j + 360) % 360;
     }
     i += n;
@@ -87,22 +81,22 @@ public abstract class CameraCallback
       if ((n != 90) && (n != 270))
       {
         k = i;
-        if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int != 1) {
+        if (this.b.l != 1) {
           break label275;
         }
         k = i;
-        if (!this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.d) {
+        if (!this.b.w) {
           break label275;
         }
       }
       else
       {
         k = i;
-        if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int != 1) {
+        if (this.b.l != 1) {
           break label275;
         }
         k = i;
-        if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.d) {
+        if (this.b.w) {
           break label275;
         }
       }
@@ -114,42 +108,42 @@ public abstract class CameraCallback
         break label275;
       }
       k = i;
-      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int != 1) {
+      if (this.b.l != 1) {
         break label275;
       }
       if (a())
       {
         k = i;
-        if (!this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.e) {
+        if (!this.b.x) {
           break label275;
         }
       }
     }
     int k = i + 180;
     label275:
-    if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Int == 1)
+    if (this.b.l == 1)
     {
-      if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.l > 0)
+      if (this.b.u > 0)
       {
-        i = 360 - this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.l + k;
+        i = 360 - this.b.u + k;
         break label371;
       }
-      i = a(n, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean);
+      i = a(n, this.b.y);
     }
-    else if (this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.m > 0)
+    else if (this.b.v > 0)
     {
-      i = this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.m;
+      i = this.b.v;
     }
     else
     {
-      i = b(n, this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.jdField_f_of_type_Boolean);
+      i = b(n, this.b.y);
     }
     i += k;
     label371:
     i = i % 360 / 90;
     if (paramPreviewAngleParam != null)
     {
-      paramPreviewAngleParam.jdField_a_of_type_Int = i;
+      paramPreviewAngleParam.a = i;
       paramPreviewAngleParam.b = n;
       paramPreviewAngleParam.c = m;
       paramPreviewAngleParam.d = j;
@@ -158,16 +152,16 @@ public abstract class CameraCallback
   
   public boolean a()
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.e;
     boolean bool = false;
     if (i == -1) {
-      if (PhoneStatusTools.a(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a, "ro.qq.orientation").equalsIgnoreCase("ZTE")) {
-        this.jdField_a_of_type_Int = 1;
+      if (PhoneStatusTools.a(this.b.j, "ro.qq.orientation").equalsIgnoreCase("ZTE")) {
+        this.e = 1;
       } else {
-        this.jdField_a_of_type_Int = 0;
+        this.e = 0;
       }
     }
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.e == 1) {
       bool = true;
     }
     return bool;
@@ -187,22 +181,24 @@ public abstract class CameraCallback
     }
     else
     {
-      b = 0;
+      b1 = 0;
       break label41;
     }
-    byte b = 3;
+    byte b1 = 3;
     break label41;
     label34:
-    b = 2;
+    b1 = 2;
     break label41;
     label39:
-    b = 1;
+    b1 = 1;
     label41:
     if (paramBoolean) {}
-    for (paramInt = ConfigSystemImpl.a(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a, false, false, b, false);; paramInt = ConfigSystemImpl.b(this.jdField_a_of_type_ComTencentAvCameraAndroidCamera.a, false, false, b, false)) {
+    for (paramInt = ConfigSystemImpl.a(this.b.j, false, false, b1, false);; paramInt = ConfigSystemImpl.b(this.b.j, false, false, b1, false)) {
       return paramInt * 90;
     }
   }
+  
+  public abstract void b();
 }
 
 

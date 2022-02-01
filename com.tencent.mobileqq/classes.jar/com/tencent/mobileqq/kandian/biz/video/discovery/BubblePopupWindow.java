@@ -13,31 +13,31 @@ public class BubblePopupWindow
   extends PopupWindow
 {
   public static float a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private BubblePopupWindow.SharpView jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView;
-  private int b;
-  private int c = 80;
-  private int d = 49;
+  private Context b;
+  private FrameLayout c;
+  private View d;
+  private BubblePopupWindow.SharpView e;
+  private FrameLayout.LayoutParams f;
+  private int g;
+  private int h;
+  private int i = 80;
+  private int j = 49;
   
   public BubblePopupWindow(Context paramContext)
   {
     super(-2, -2);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    this.b = paramContext;
+    d();
   }
   
-  private void a()
+  private void d()
   {
-    FrameLayout localFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
-    BubblePopupWindow.SharpView localSharpView = new BubblePopupWindow.SharpView(this, this.jdField_a_of_type_AndroidContentContext);
+    FrameLayout localFrameLayout = new FrameLayout(this.b);
+    BubblePopupWindow.SharpView localSharpView = new BubblePopupWindow.SharpView(this, this.b);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView = localSharpView;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = localFrameLayout;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = localLayoutParams;
+    this.e = localSharpView;
+    this.c = localFrameLayout;
+    this.f = localLayoutParams;
     setBackgroundDrawable(new ColorDrawable(0));
     setTouchable(true);
     setFocusable(false);
@@ -49,76 +49,76 @@ public class BubblePopupWindow
     b(-1);
   }
   
-  private void b()
+  private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.gravity = this.d;
-    BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView).setColor(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView, this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    this.c.removeAllViews();
+    this.f.gravity = this.j;
+    BubblePopupWindow.SharpView.a(this.e).setColor(this.g);
+    this.c.addView(this.e, this.f);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    int i = this.c;
-    localLayoutParams.gravity = i;
-    if (i != 3)
+    int k = this.i;
+    localLayoutParams.gravity = k;
+    if (k != 3)
     {
-      if (i != 5)
+      if (k != 5)
       {
-        if (i != 48)
+        if (k != 48)
         {
-          if (i == 80)
+          if (k == 80)
           {
-            localLayoutParams.topMargin = BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView);
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView.setRotation(0.0F);
+            localLayoutParams.topMargin = BubblePopupWindow.SharpView.b(this.e);
+            this.e.setRotation(0.0F);
           }
         }
         else
         {
-          localLayoutParams.bottomMargin = BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView.setRotation(180.0F);
+          localLayoutParams.bottomMargin = BubblePopupWindow.SharpView.b(this.e);
+          this.e.setRotation(180.0F);
         }
       }
       else
       {
-        localLayoutParams.leftMargin = BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView);
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView.setRotation(270.0F);
+        localLayoutParams.leftMargin = BubblePopupWindow.SharpView.b(this.e);
+        this.e.setRotation(270.0F);
       }
     }
     else
     {
-      localLayoutParams.rightMargin = BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView.setRotation(90.0F);
+      localLayoutParams.rightMargin = BubblePopupWindow.SharpView.b(this.e);
+      this.e.setRotation(90.0F);
     }
     GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setColor(this.jdField_a_of_type_Int);
-    localGradientDrawable.setCornerRadius(this.b);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localGradientDrawable);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
-    super.setContentView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    localGradientDrawable.setColor(this.g);
+    localGradientDrawable.setCornerRadius(this.h);
+    this.d.setBackgroundDrawable(localGradientDrawable);
+    this.c.addView(this.d, localLayoutParams);
+    super.setContentView(this.c);
   }
   
   public int a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView == null) {
       return 0;
     }
     localView.measure(0, 0);
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
+    return this.d.getMeasuredHeight();
   }
   
   public void a(int paramInt)
   {
-    BubblePopupWindow.SharpView.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView, paramInt);
+    BubblePopupWindow.SharpView.c(this.e, paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView, paramInt1);
-    BubblePopupWindow.SharpView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView, paramInt2);
+    BubblePopupWindow.SharpView.a(this.e, paramInt1);
+    BubblePopupWindow.SharpView.b(this.e, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    FrameLayout.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
+    FrameLayout.LayoutParams localLayoutParams = this.f;
     localLayoutParams.leftMargin = paramInt1;
     localLayoutParams.rightMargin = paramInt2;
     localLayoutParams.topMargin = paramInt3;
@@ -129,24 +129,24 @@ public class BubblePopupWindow
   {
     if (!isShowing())
     {
-      int i = 49;
+      int k = 49;
       if (paramInt1 != 3)
       {
         if (paramInt1 != 5)
         {
           if (paramInt1 == 48) {
-            i = 81;
+            k = 81;
           }
         }
         else {
-          i = 19;
+          k = 19;
         }
       }
       else {
-        i = 21;
+        k = 21;
       }
-      this.c = paramInt1;
-      d(i);
+      this.i = paramInt1;
+      d(k);
       showAtLocation(paramView, 0, paramInt2, paramInt3);
       return;
     }
@@ -155,60 +155,60 @@ public class BubblePopupWindow
   
   public int b()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView == null) {
       return 0;
     }
     localView.measure(0, 0);
-    return this.jdField_a_of_type_AndroidViewView.getMeasuredWidth();
+    return this.d.getMeasuredWidth();
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.g = paramInt;
   }
   
   public int c()
   {
-    return BubblePopupWindow.SharpView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoDiscoveryBubblePopupWindow$SharpView);
+    return BubblePopupWindow.SharpView.b(this.e);
   }
   
   public void c(int paramInt)
   {
-    this.b = paramInt;
+    this.h = paramInt;
   }
   
   public void d(int paramInt)
   {
-    this.d = paramInt;
+    this.j = paramInt;
   }
   
   public void setContentView(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.d = paramView;
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt3;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      b();
+    this.i = paramInt3;
+    if (this.d != null) {
+      e();
     }
     super.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
   }
   
   public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      b();
+    this.i = paramInt1;
+    if (this.d != null) {
+      e();
     }
     super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.discovery.BubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

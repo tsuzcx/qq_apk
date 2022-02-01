@@ -19,7 +19,7 @@ class SmallScreenVideoController$VideoOrientationEventListener
     int i;
     try
     {
-      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      i = (this.a.a.getRotation() * 90 + paramInt) % 360;
     }
     catch (Exception localException)
     {
@@ -32,21 +32,21 @@ class SmallScreenVideoController$VideoOrientationEventListener
       }
       i = 0;
     }
-    if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.c(i);
+    if (this.a.t != null) {
+      this.a.t.d(i);
     }
-    if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null) {
-      this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(paramInt, paramBoolean);
+    if (this.a.u != null) {
+      this.a.u.a(paramInt, paramBoolean);
     }
-    if (this.a.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi != null) {
-      this.a.jdField_a_of_type_ComTencentAvCameraApiICameraManagerApi.setRotation(paramInt);
+    if (this.a.v != null) {
+      this.a.v.setRotation(paramInt);
     }
-    this.a.g = paramInt;
+    this.a.y = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.VideoOrientationEventListener
  * JD-Core Version:    0.7.0.1
  */

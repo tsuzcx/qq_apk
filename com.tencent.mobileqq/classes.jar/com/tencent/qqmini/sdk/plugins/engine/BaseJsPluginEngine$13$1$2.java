@@ -12,17 +12,17 @@ class BaseJsPluginEngine$13$1$2
   
   public void onClick(View paramView)
   {
-    if (this.a.a.a.authDialog != null)
+    if (this.a.e.i.authDialog != null)
     {
-      this.a.a.a.authDialog.setRefuse(true);
-      this.a.a.a.authDialog.dismiss();
+      this.a.e.i.authDialog.setRefuse(true);
+      this.a.e.i.authDialog.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.13.1.2
  * JD-Core Version:    0.7.0.1
  */

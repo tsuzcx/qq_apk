@@ -340,7 +340,7 @@ public class AVReportCenter
     //   263: ldc_w 390
     //   266: invokevirtual 394	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   269: checkcast 396	android/telephony/TelephonyManager
-    //   272: invokevirtual 399	android/telephony/TelephonyManager:getDeviceId	()Ljava/lang/String;
+    //   272: invokestatic 402	com/tencent/mobileqq/qmethodmonitor/monitor/PhoneInfoMonitor:getDeviceId	(Landroid/telephony/TelephonyManager;)Ljava/lang/String;
     //   275: putfield 227	org/libpag/reporter/AVReportCenter:imei	Ljava/lang/String;
     //   278: goto +14 -> 292
     //   281: astore_1
@@ -350,36 +350,36 @@ public class AVReportCenter
     //   287: ldc 207
     //   289: putfield 227	org/libpag/reporter/AVReportCenter:imei	Ljava/lang/String;
     //   292: aload_0
-    //   293: new 401	android/os/HandlerThread
+    //   293: new 404	android/os/HandlerThread
     //   296: dup
     //   297: getstatic 53	org/libpag/reporter/AVReportCenter:TAG	Ljava/lang/String;
-    //   300: invokespecial 402	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
-    //   303: putfield 404	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
+    //   300: invokespecial 405	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
+    //   303: putfield 407	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
     //   306: aload_0
-    //   307: getfield 404	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
+    //   307: getfield 407	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
     //   310: iconst_1
-    //   311: invokevirtual 408	android/os/HandlerThread:setDaemon	(Z)V
+    //   311: invokevirtual 411	android/os/HandlerThread:setDaemon	(Z)V
     //   314: aload_0
-    //   315: getfield 404	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
-    //   318: invokevirtual 411	android/os/HandlerThread:start	()V
+    //   315: getfield 407	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
+    //   318: invokevirtual 414	android/os/HandlerThread:start	()V
     //   321: aload_0
-    //   322: getfield 404	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
-    //   325: invokevirtual 414	android/os/HandlerThread:isAlive	()Z
+    //   322: getfield 407	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
+    //   325: invokevirtual 417	android/os/HandlerThread:isAlive	()Z
     //   328: ifeq -7 -> 321
     //   331: aload_0
     //   332: new 309	android/os/Handler
     //   335: dup
     //   336: aload_0
-    //   337: getfield 404	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
-    //   340: invokevirtual 418	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
-    //   343: invokespecial 421	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   337: getfield 407	org/libpag/reporter/AVReportCenter:ioThread	Landroid/os/HandlerThread;
+    //   340: invokevirtual 421	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   343: invokespecial 424	android/os/Handler:<init>	(Landroid/os/Looper;)V
     //   346: putfield 91	org/libpag/reporter/AVReportCenter:ioHandler	Landroid/os/Handler;
     //   349: aload_0
     //   350: getfield 91	org/libpag/reporter/AVReportCenter:ioHandler	Landroid/os/Handler;
-    //   353: new 423	org/libpag/reporter/AVReportCenter$1
+    //   353: new 426	org/libpag/reporter/AVReportCenter$1
     //   356: dup
     //   357: aload_0
-    //   358: invokespecial 424	org/libpag/reporter/AVReportCenter$1:<init>	(Lorg/libpag/reporter/AVReportCenter;)V
+    //   358: invokespecial 427	org/libpag/reporter/AVReportCenter$1:<init>	(Lorg/libpag/reporter/AVReportCenter;)V
     //   361: invokevirtual 313	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   364: pop
     //   365: ldc 2
@@ -444,7 +444,7 @@ public class AVReportCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.reporter.AVReportCenter
  * JD-Core Version:    0.7.0.1
  */

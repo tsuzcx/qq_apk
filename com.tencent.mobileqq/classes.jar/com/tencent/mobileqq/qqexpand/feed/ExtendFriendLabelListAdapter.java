@@ -22,13 +22,13 @@ import java.util.List;
 public class ExtendFriendLabelListAdapter
   extends BaseAdapter
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final List<LabelInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private final Context a;
+  private boolean b = false;
+  private final List<LabelInfo> c = new ArrayList();
   
   public ExtendFriendLabelListAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   private int a(float paramFloat, int paramInt)
@@ -38,33 +38,19 @@ public class ExtendFriendLabelListAdapter
   
   private ColorStateList a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int[] arrayOfInt1 = { 16842919, 16842910 };
-    int[] arrayOfInt2 = { 16842910 };
-    return new ColorStateList(new int[][] { arrayOfInt1, { 16842910, 16842908 }, arrayOfInt2, { 16842908 }, { 16842909 }, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
-  }
-  
-  private Drawable a(int paramInt)
-  {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setCornerRadius(25.0F);
-    localGradientDrawable.setColor(paramInt);
-    if (this.jdField_a_of_type_Boolean) {
-      localGradientDrawable.setStroke(1, -1);
-    }
-    return localGradientDrawable;
+    return new ColorStateList(new int[][] { { 16842919, 16842910 }, { 16842910, 16842908 }, { 16842910 }, { 16842908 }, { 16842909 }, new int[0] }, new int[] { paramInt2, paramInt3, paramInt1, paramInt3, paramInt4, paramInt1 });
   }
   
   private Drawable a(int paramInt1, int paramInt2)
   {
     StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable = a(paramInt1);
+    Drawable localDrawable = b(paramInt1);
     localStateListDrawable.addState(new int[] { 16842919 }, localDrawable);
-    localDrawable = a(paramInt1);
+    localDrawable = b(paramInt1);
     localStateListDrawable.addState(new int[] { 16842908 }, localDrawable);
-    localDrawable = a(paramInt1);
+    localDrawable = b(paramInt1);
     localStateListDrawable.addState(new int[] { 16842913 }, localDrawable);
-    localDrawable = a(paramInt2);
+    localDrawable = b(paramInt2);
     localStateListDrawable.addState(new int[0], localDrawable);
     return localStateListDrawable;
   }
@@ -72,35 +58,47 @@ public class ExtendFriendLabelListAdapter
   private SpannableString a(Drawable paramDrawable)
   {
     SpannableString localSpannableString = new SpannableString(" ");
-    int i = AIOUtils.b(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.b(11.0F, this.a.getResources());
     paramDrawable.setBounds(0, 0, i, i);
     localSpannableString.setSpan(new VerticalCenterImageSpan(paramDrawable, 0), 0, 1, 33);
     return localSpannableString;
   }
   
+  private Drawable b(int paramInt)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(25.0F);
+    localGradientDrawable.setColor(paramInt);
+    if (this.b) {
+      localGradientDrawable.setStroke(1, -1);
+    }
+    return localGradientDrawable;
+  }
+  
   public LabelInfo a(int paramInt)
   {
-    return (LabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (LabelInfo)this.c.get(paramInt);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.c.clear();
   }
   
   public void a(List<LabelInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.c.addAll(paramList);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.c.size();
   }
   
   public long getItemId(int paramInt)
@@ -112,9 +110,9 @@ public class ExtendFriendLabelListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561083, null, false);
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131627431, null, false);
       paramViewGroup = new ExtendFriendLabelListAdapter.ViewHolder(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379659));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131448436));
       paramView.setTag(paramViewGroup);
     }
     else
@@ -124,42 +122,42 @@ public class ExtendFriendLabelListAdapter
     LabelInfo localLabelInfo = a(paramInt);
     if (localLabelInfo != null)
     {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
+      paramViewGroup.a = paramInt;
       SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-      if (localLabelInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        localSpannableStringBuilder.append(a(localLabelInfo.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+      if (localLabelInfo.e != null) {
+        localSpannableStringBuilder.append(a(localLabelInfo.e));
       }
-      if (!TextUtils.isEmpty(localLabelInfo.jdField_a_of_type_JavaLangString)) {
-        localSpannableStringBuilder.append(localLabelInfo.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(localLabelInfo.b)) {
+        localSpannableStringBuilder.append(localLabelInfo.b);
       }
-      TextView localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = paramViewGroup.b;
       Object localObject = localSpannableStringBuilder;
       if (TextUtils.isEmpty(localSpannableStringBuilder)) {
         localObject = "";
       }
       localTextView.setText((CharSequence)localObject);
-      if (TextUtils.isEmpty(localLabelInfo.b))
+      if (TextUtils.isEmpty(localLabelInfo.c))
       {
         paramInt = Color.parseColor("#FF80BF");
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(a(0.2F, paramInt), a(0.2F, paramInt)));
+        paramViewGroup.b.setBackgroundDrawable(a(a(0.2F, paramInt), a(0.2F, paramInt)));
       }
       else
       {
-        paramInt = Color.parseColor(localLabelInfo.b);
-        if (TextUtils.isEmpty(localLabelInfo.c)) {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(a(0.2F, paramInt), a(0.2F, paramInt)));
+        paramInt = Color.parseColor(localLabelInfo.c);
+        if (TextUtils.isEmpty(localLabelInfo.d)) {
+          paramViewGroup.b.setBackgroundDrawable(a(a(0.2F, paramInt), a(0.2F, paramInt)));
         } else {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(a(Color.parseColor(localLabelInfo.c), Color.parseColor(localLabelInfo.c)));
+          paramViewGroup.b.setBackgroundDrawable(a(Color.parseColor(localLabelInfo.d), Color.parseColor(localLabelInfo.d)));
         }
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a(paramInt, paramInt, paramInt, paramInt));
+      paramViewGroup.b.setTextColor(a(paramInt, paramInt, paramInt, paramInt));
     }
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.feed.ExtendFriendLabelListAdapter
  * JD-Core Version:    0.7.0.1
  */

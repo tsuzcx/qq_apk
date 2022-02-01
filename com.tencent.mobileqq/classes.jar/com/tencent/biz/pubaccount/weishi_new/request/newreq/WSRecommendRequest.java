@@ -6,7 +6,6 @@ import UserGrowth.stSimpleGetFeedListRsp;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPreloadABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.net.common.WSRequest;
-import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class WSRecommendRequest
     localstSimpleGetFeedListReq.session = paramString4;
     localstSimpleGetFeedListReq.push_info = paramString5;
     localstSimpleGetFeedListReq.linkStragetyArgs = WeishiLinkUtil.a();
-    localstSimpleGetFeedListReq.qqNum = WeishiUtils.a();
+    localstSimpleGetFeedListReq.qqNum = WeishiUtils.c();
     localstSimpleGetFeedListReq.subTabID = paramString6;
     localstSimpleGetFeedListReq.exposureFeedList = paramArrayList1;
     this.req = localstSimpleGetFeedListReq;
@@ -49,16 +48,12 @@ public class WSRecommendRequest
     }
     this.mIsRefresh = bool1;
     this.mRequestSubId = paramString6;
-    paramString1 = new StringBuilder();
-    paramString1.append("stSimpleGetFeedListReq  = ");
-    paramString1.append(localstSimpleGetFeedListReq.toString());
-    WSLog.d("RecommendRequest", paramString1.toString());
   }
   
   public String getExpABTestDataStr()
   {
     if (this.mReqScene == 8) {
-      return WSExpPreloadABTestManager.a().a();
+      return WSExpPreloadABTestManager.a().h();
     }
     return super.getExpABTestDataStr();
   }
@@ -87,7 +82,7 @@ public class WSRecommendRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.newreq.WSRecommendRequest
  * JD-Core Version:    0.7.0.1
  */

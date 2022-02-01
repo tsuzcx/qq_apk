@@ -17,16 +17,16 @@ class GrayTipsItemBuilder$5
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a instanceof Activity))
+    if ((this.b.c instanceof Activity))
     {
-      paramView = ActionSheet.create(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a);
-      paramView.addButton(2131691851);
-      paramView.addCancelButton(2131690728);
+      paramView = ActionSheet.create(this.b.c);
+      paramView.addButton(2131888816);
+      paramView.addCancelButton(2131887648);
       paramView.setOnButtonClickListener(new GrayTipsItemBuilder.5.1(this, paramView));
       paramView.show();
-      BaseChatPie localBaseChatPie = ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a).getChatFragment().a();
+      BaseChatPie localBaseChatPie = ((BaseActivity)this.b.c).getChatFragment().k();
       if ((localBaseChatPie instanceof DiscussChatPie)) {
-        ((DiscussChatPie)localBaseChatPie).a = paramView;
+        ((DiscussChatPie)localBaseChatPie).bi = paramView;
       }
     }
   }
@@ -38,7 +38,7 @@ class GrayTipsItemBuilder$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

@@ -6,12 +6,13 @@ import com.tencent.xaction.api.base.BaseAnim;
 import com.tencent.xaction.api.util.ScreenUnit;
 import com.tencent.xaction.api.util.ScreenUnit.Companion;
 import java.util.ArrayList;
+import java.util.HashMap;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/LinkView;", "", "()V", "anim", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lkotlin/collections/ArrayList;", "getAnim", "()Ljava/util/ArrayList;", "bx", "", "getBx", "()I", "setBx", "(I)V", "by", "getBy", "setBy", "damping", "", "getDamping", "()F", "setDamping", "(F)V", "float", "", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "floatData", "Lcom/tencent/xaction/api/data/FloatViewData;", "getFloatData", "()Lcom/tencent/xaction/api/data/FloatViewData;", "setFloatData", "(Lcom/tencent/xaction/api/data/FloatViewData;)V", "fx", "getFx", "setFx", "fy", "getFy", "setFy", "isForWardActive", "", "()Z", "setForWardActive", "(Z)V", "lId", "", "getLId", "()[Ljava/lang/Integer;", "setLId", "([Ljava/lang/Integer;)V", "[Ljava/lang/Integer;", "lTag", "getLTag", "()[Ljava/lang/String;", "setLTag", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "runViewAnim", "getRunViewAnim", "status", "getStatus", "setStatus", "views", "Lcom/tencent/xaction/api/IView;", "getViews", "setViews", "(Ljava/util/ArrayList;)V", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/LinkView;", "", "()V", "anim", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lkotlin/collections/ArrayList;", "getAnim", "()Ljava/util/ArrayList;", "bx", "", "getBx", "()I", "setBx", "(I)V", "by", "getBy", "setBy", "damping", "", "getDamping", "()F", "setDamping", "(F)V", "float", "", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "floatData", "Lcom/tencent/xaction/api/data/FloatViewData;", "getFloatData", "()Lcom/tencent/xaction/api/data/FloatViewData;", "setFloatData", "(Lcom/tencent/xaction/api/data/FloatViewData;)V", "fx", "getFx", "setFx", "fy", "getFy", "setFy", "isForWardActive", "", "()Z", "setForWardActive", "(Z)V", "lId", "", "getLId", "()[Ljava/lang/Integer;", "setLId", "([Ljava/lang/Integer;)V", "[Ljava/lang/Integer;", "lTag", "getLTag", "()[Ljava/lang/String;", "setLTag", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "parCount", "getParCount", "setParCount", "parRules", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "getParRules", "()Ljava/util/HashMap;", "setParRules", "(Ljava/util/HashMap;)V", "parViews", "Lcom/tencent/xaction/api/IView;", "getParViews", "setParViews", "(Ljava/util/ArrayList;)V", "rules", "getRules", "setRules", "runViewAnim", "getRunViewAnim", "status", "getStatus", "setStatus", "views", "getViews", "setViews", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class LinkView
 {
@@ -31,6 +32,13 @@ public final class LinkView
   private Integer[] lId;
   @Nullable
   private String[] lTag;
+  private int parCount;
+  @NotNull
+  private HashMap<String, String> parRules = new HashMap();
+  @NotNull
+  private transient ArrayList<IView> parViews = new ArrayList();
+  @NotNull
+  private HashMap<String, String> rules = new HashMap();
   private final boolean runViewAnim;
   @NotNull
   private String status = "";
@@ -90,6 +98,29 @@ public final class LinkView
   public final String[] getLTag()
   {
     return this.lTag;
+  }
+  
+  public final int getParCount()
+  {
+    return this.parCount;
+  }
+  
+  @NotNull
+  public final HashMap<String, String> getParRules()
+  {
+    return this.parRules;
+  }
+  
+  @NotNull
+  public final ArrayList<IView> getParViews()
+  {
+    return this.parViews;
+  }
+  
+  @NotNull
+  public final HashMap<String, String> getRules()
+  {
+    return this.rules;
   }
   
   public final boolean getRunViewAnim()
@@ -166,6 +197,29 @@ public final class LinkView
     this.lTag = paramArrayOfString;
   }
   
+  public final void setParCount(int paramInt)
+  {
+    this.parCount = paramInt;
+  }
+  
+  public final void setParRules(@NotNull HashMap<String, String> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "<set-?>");
+    this.parRules = paramHashMap;
+  }
+  
+  public final void setParViews(@NotNull ArrayList<IView> paramArrayList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
+    this.parViews = paramArrayList;
+  }
+  
+  public final void setRules(@NotNull HashMap<String, String> paramHashMap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramHashMap, "<set-?>");
+    this.rules = paramHashMap;
+  }
+  
   public final void setStatus(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
@@ -180,7 +234,7 @@ public final class LinkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.data.LinkView
  * JD-Core Version:    0.7.0.1
  */

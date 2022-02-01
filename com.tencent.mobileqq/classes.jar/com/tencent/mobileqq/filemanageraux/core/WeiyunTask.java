@@ -9,40 +9,40 @@ import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListene
 
 public class WeiyunTask
 {
-  private final IDownloadStatusListener jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener;
-  private final UploadManager.IUploadStatusListener jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private String b;
+  private final String a;
+  private final Object b;
+  private final boolean c;
+  private final IDownloadStatusListener d;
+  private final UploadManager.IUploadStatusListener e;
+  private String f;
   
   public WeiyunTask(String paramString, Object paramObject, boolean paramBoolean, UploadManager.IUploadStatusListener paramIUploadStatusListener, IDownloadStatusListener paramIDownloadStatusListener)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadManager$IUploadStatusListener = paramIUploadStatusListener;
-    this.jdField_a_of_type_ComTencentMobileqqWeiyunApiDownloadIDownloadStatusListener = paramIDownloadStatusListener;
+    this.a = paramString;
+    this.b = paramObject;
+    this.c = paramBoolean;
+    this.e = paramIUploadStatusListener;
+    this.d = paramIDownloadStatusListener;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.jdField_a_of_type_JavaLangString);
+      WeiyunTransmissionGlobal.getInstance().getUploadManager().removeJob(this.a);
       return;
     }
-    ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).removeJob(this.jdField_a_of_type_JavaLangString);
+    ((IWeiyunUploadDownloadService)QRoute.api(IWeiyunUploadDownloadService.class)).removeJob(this.a);
   }
   
   public void a(String paramString)
   {
-    this.b = paramString;
+    this.f = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.core.WeiyunTask
  * JD-Core Version:    0.7.0.1
  */

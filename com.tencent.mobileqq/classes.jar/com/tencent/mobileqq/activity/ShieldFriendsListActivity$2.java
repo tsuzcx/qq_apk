@@ -21,7 +21,7 @@ class ShieldFriendsListActivity$2
     if (!paramBoolean2)
     {
       if (ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1 ^ true)) {
-        QQToast.a(BaseApplication.getContext(), HardCodeUtil.a(2131713873), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(BaseApplication.getContext(), HardCodeUtil.a(2131911408), 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
       }
     }
     else
@@ -31,18 +31,18 @@ class ShieldFriendsListActivity$2
         ShieldFriendsListActivity.a(this.a, paramLong, paramBoolean1);
         return;
       }
-      paramString = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(String.valueOf(paramLong));
+      paramString = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).m(String.valueOf(paramLong));
       if ((paramString != null) && (!paramString.isShield()))
       {
         ShieldFriendsListActivity.a(this.a).a(paramString);
-        ShieldFriendsListActivity.a(this.a);
+        ShieldFriendsListActivity.b(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ShieldFriendsListActivity.2
  * JD-Core Version:    0.7.0.1
  */

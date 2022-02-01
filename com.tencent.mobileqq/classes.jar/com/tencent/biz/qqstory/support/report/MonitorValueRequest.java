@@ -13,11 +13,22 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class MonitorValueRequest
   extends NetworkRequest
 {
-  public String a;
-  private int c;
-  private int d;
+  public String e;
+  private int f;
+  private int g;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StoryMonitorSvc.client_monitor_report");
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.f = paramInt1;
+    this.g = paramInt2;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
     try
@@ -33,28 +44,17 @@ public class MonitorValueRequest
     return null;
   }
   
-  public String a()
-  {
-    return StoryApi.a("StoryMonitorSvc.client_monitor_report");
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
-    localReqMonitorValue.ID.set(this.c);
-    if (this.d > 0) {
-      localReqMonitorValue.Value.set(this.d);
+    localReqMonitorValue.ID.set(this.f);
+    if (this.g > 0) {
+      localReqMonitorValue.Value.set(this.g);
     } else {
       localReqMonitorValue.Value.set(1);
     }
-    if (this.a != null) {
-      localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+    if (this.e != null) {
+      localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.e));
     }
     return localReqMonitorValue.toByteArray();
   }
@@ -63,11 +63,11 @@ public class MonitorValueRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MonitorValueRequest{ID=");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", value=");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", msg=");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

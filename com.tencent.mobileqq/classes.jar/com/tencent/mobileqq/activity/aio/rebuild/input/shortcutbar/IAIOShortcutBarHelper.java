@@ -15,26 +15,6 @@ public abstract interface IAIOShortcutBarHelper
 {
   public abstract int a();
   
-  public abstract Activity a();
-  
-  public abstract Context a();
-  
-  public abstract Drawable a();
-  
-  public abstract ViewGroup.LayoutParams a();
-  
-  public abstract SessionInfo a();
-  
-  public abstract <T extends IHelper> T a(int paramInt);
-  
-  public abstract NavigateBarManager a();
-  
-  public abstract XEditTextEx a();
-  
-  public abstract AppRuntime a();
-  
-  public abstract void a();
-  
   public abstract void a(int paramInt);
   
   public abstract void a(ViewGroup.LayoutParams paramLayoutParams);
@@ -47,25 +27,45 @@ public abstract interface IAIOShortcutBarHelper
   
   public abstract void a(boolean paramBoolean);
   
+  public abstract <T extends IHelper> T b(int paramInt);
+  
   public abstract void b(DrawerFrame.TouchEventConsumer paramTouchEventConsumer);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
   
   public abstract boolean c();
   
-  public abstract boolean d();
-  
-  public abstract void e();
+  public abstract void d();
   
   public abstract void f();
   
-  public abstract void g();
+  public abstract SessionInfo h();
+  
+  public abstract AppRuntime i();
+  
+  public abstract Activity j();
+  
+  public abstract Context k();
+  
+  public abstract void l();
+  
+  public abstract void m();
+  
+  public abstract boolean n();
+  
+  public abstract NavigateBarManager o();
+  
+  public abstract ViewGroup.LayoutParams p();
+  
+  public abstract Drawable q();
+  
+  public abstract XEditTextEx r();
+  
+  public abstract void s();
+  
+  public abstract boolean t();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.IAIOShortcutBarHelper
  * JD-Core Version:    0.7.0.1
  */

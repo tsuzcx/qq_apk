@@ -3,6 +3,7 @@ package com.tencent.smtt.export.external;
 import android.content.Context;
 import android.graphics.Bitmap.Config;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 import java.io.File;
 import java.io.IOException;
@@ -18,19 +19,30 @@ public class libwebp
   private static boolean isMultiCore = false;
   private static libwebp mInstance;
   private static boolean mIsLoadLibSuccess = false;
+  private static String mModle = "";
   private int mBitmapType = 4;
   
   public static int checkIsHuaModel()
   {
-    String str1 = Build.BRAND.trim().toLowerCase();
-    String str2 = Build.MODEL.trim().toLowerCase();
-    int i;
-    if ((str1 != null) && (str1.length() > 0) && (str1.contains("huawei"))) {
-      i = 1;
-    } else {
-      i = 0;
+    if (TextUtils.isEmpty(mModle)) {
+      mModle = Build.MODEL;
     }
-    int j = i;
+    String str1 = Build.BRAND.trim().toLowerCase();
+    String str2 = mModle.trim().toLowerCase();
+    int j = 0;
+    int i = j;
+    if (str1 != null)
+    {
+      i = j;
+      if (str1.length() > 0)
+      {
+        i = j;
+        if (str1.contains("huawei")) {
+          i = 1;
+        }
+      }
+    }
+    j = i;
     if (str2 != null)
     {
       j = i;
@@ -198,7 +210,7 @@ public class libwebp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.export.external.libwebp
  * JD-Core Version:    0.7.0.1
  */

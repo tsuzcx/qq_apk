@@ -24,15 +24,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NowEntry
 {
-  long jdField_a_of_type_Long = 0L;
-  ActionCallback jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceActionCallback = new NowEntry.4(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  NowDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter = PluginManagerInterfaceImpl.a().a();
-  private OnOpenCloseRoomCallback jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanOnOpenCloseRoomCallback;
+  NowDataReporter a = PluginManagerInterfaceImpl.a().d();
+  QQAppInterface b;
+  long c = 0L;
+  ActionCallback d = new NowEntry.4(this);
+  private OnOpenCloseRoomCallback e;
   
   public NowEntry(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramQQAppInterface;
   }
   
   private boolean a(String paramString)
@@ -64,18 +64,18 @@ public class NowEntry
     label73:
     paramBundle.putString("cover_file", (String)localObject1);
     paramBundle.putString("appid", "2");
-    paramBundle.putString("uid", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    paramBundle.putString("uid", this.b.getCurrentUin());
     paramBundle.putString("hostVersion", String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext())));
     localObject1 = Uri.parse(paramBundle.getString("mqqScheme", "")).getQuery();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append((String)localObject1);
     ((StringBuilder)localObject2).append("&action=openroom");
-    NowLive.doActionWithExtra(((StringBuilder)localObject2).toString(), paramBundle, this.jdField_a_of_type_ComTencentIntervideoNowproxyCustomized_interfaceActionCallback);
+    NowLive.doActionWithExtra(((StringBuilder)localObject2).toString(), paramBundle, this.d);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.b = null;
   }
   
   public void a(Bundle paramBundle)
@@ -85,20 +85,20 @@ public class NowEntry
   
   public void a(Bundle paramBundle, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanOnOpenCloseRoomCallback = paramOnOpenCloseRoomCallback;
+    this.e = paramOnOpenCloseRoomCallback;
     paramOnOpenCloseRoomCallback = paramBundle.getString("mqqUrl", "");
     long l = System.currentTimeMillis();
-    if ((l - this.jdField_a_of_type_Long < 1000L) && (!NowProxyParamParser.f(paramBundle).equals("1")))
+    if ((l - this.c < 1000L) && (!NowProxyParamParser.h(paramBundle).equals("1")))
     {
       paramBundle = new StringBuilder();
       paramBundle.append("开始处理mqq　scheme,time = ");
       paramBundle.append(System.currentTimeMillis());
       paramBundle.append(" 点太快了");
       QLog.i("DynamicNow | NowEntry", 1, paramBundle.toString());
-      QQToast.a(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131707669), 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), HardCodeUtil.a(2131905483), 0).show();
       return;
     }
-    this.jdField_a_of_type_Long = l;
+    this.c = l;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("开始进入now结合版,time = ");
     localStringBuilder.append(System.currentTimeMillis());
@@ -111,10 +111,10 @@ public class NowEntry
   
   public void b(Bundle paramBundle)
   {
-    Object localObject1 = NowProxyParamParser.a(paramBundle);
-    Object localObject2 = NowProxyParamParser.d(paramBundle);
+    Object localObject1 = NowProxyParamParser.b(paramBundle);
+    Object localObject2 = NowProxyParamParser.f(paramBundle);
     long l = NowProxyParamParser.a(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(false, (String)localObject2, String.valueOf(l), (String)localObject1, false, false, true);
+    this.a.a(false, (String)localObject2, String.valueOf(l), (String)localObject1, false, false, true);
     paramBundle.putLong("entryTime", System.currentTimeMillis());
     localObject1 = paramBundle.getString("coverurl");
     localObject2 = new StringBuilder();
@@ -148,7 +148,7 @@ public class NowEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowEntry
  * JD-Core Version:    0.7.0.1
  */

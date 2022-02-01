@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.gamecenter.wadl.api.IQQGameTrpcService;
@@ -15,12 +16,20 @@ import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.mobileqq.gamecenter.api.impl.GameMsgManagerServiceImpl;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameBasicInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameSwitchConfig;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameUserInfo;
+import com.tencent.mobileqq.gamecenter.data.GameMsgRemoteUserItem;
+import com.tencent.mobileqq.gamecenter.msginfo.GameBasicInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameSwitchConfig;
+import com.tencent.mobileqq.gamecenter.msginfo.GameUserInfo;
+import com.tencent.mobileqq.gamecenter.sso.GameCenterSsoRspData;
 import com.tencent.mobileqq.gamecenter.sso.GameCenterUnissoObserver;
+import com.tencent.mobileqq.gamecenter.trpcprotocol.GameMsgGreeting.QueryAIOGreetInfoReq;
+import com.tencent.mobileqq.gamecenter.trpcprotocol.GameMsgGreeting.QueryAIOGreetInfoRsp;
+import com.tencent.mobileqq.gamecenter.trpcprotocol.GetMobileDialogReq;
+import com.tencent.mobileqq.gamecenter.trpcprotocol.GetMobileDialogRsp;
+import com.tencent.mobileqq.gamecenter.trpcprotocol.MobileDialog;
 import com.tencent.mobileqq.gamecenter.utils.CommUtils;
+import com.tencent.mobileqq.gamecenter.utils.GameMsgUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -54,15 +63,15 @@ public class GameCenterUnissoHandler
   public static final String a = "com.tencent.mobileqq.gamecenter.protocols.GameCenterUnissoHandler";
   public static String b = "GameCenterMsg.";
   private static String c;
-  private long jdField_a_of_type_Long = 0L;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private WadlTrpcListener jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener = new GameCenterUnissoHandler.1(this);
-  private long b;
+  private long d = 0L;
+  private long e = 1200L;
+  private AppInterface f;
+  private WadlTrpcListener g = new GameCenterUnissoHandler.1(this);
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append("GameCenterUnissoHandler");
     c = localStringBuilder.toString();
   }
@@ -70,8 +79,7 @@ public class GameCenterUnissoHandler
   public GameCenterUnissoHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_b_of_type_Long = 1200L;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.f = paramAppInterface;
   }
   
   private GameDetailInfo a(GameUserInfo paramGameUserInfo)
@@ -79,7 +87,7 @@ public class GameCenterUnissoHandler
     if (paramGameUserInfo == null) {
       return null;
     }
-    GameMsgManagerServiceImpl localGameMsgManagerServiceImpl = (GameMsgManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+    GameMsgManagerServiceImpl localGameMsgManagerServiceImpl = (GameMsgManagerServiceImpl)this.f.getRuntimeService(IGameMsgManagerService.class, "");
     if (GameUserInfo.isUsrInfoUpdate(localGameMsgManagerServiceImpl.findGameUserInfo(paramGameUserInfo.mRoleId), paramGameUserInfo))
     {
       String str = c;
@@ -94,7 +102,17 @@ public class GameCenterUnissoHandler
   
   public static GameCenterUnissoHandler a()
   {
-    return (GameCenterUnissoHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString);
+    return (GameCenterUnissoHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(a);
+  }
+  
+  private GameCenterSsoRspData a(Intent paramIntent, Object paramObject)
+  {
+    GameCenterSsoRspData localGameCenterSsoRspData = new GameCenterSsoRspData();
+    localGameCenterSsoRspData.b = paramObject;
+    if (paramIntent != null) {
+      localGameCenterSsoRspData.a = paramIntent.getIntExtra("req_intent_param_hashcode", -1);
+    }
+    return localGameCenterSsoRspData;
   }
   
   private CommonReq a(long paramLong1, long paramLong2)
@@ -102,7 +120,7 @@ public class GameCenterUnissoHandler
     CommonReq localCommonReq = new CommonReq();
     try
     {
-      localCommonReq.cpuCoreCount.set(DeviceInfoUtil.b());
+      localCommonReq.cpuCoreCount.set(DeviceInfoUtil.h());
       localCommonReq.manufacturer.set(Build.BRAND);
       localCommonReq.model.set(Build.MODEL);
       localCommonReq.osVersionCode.set(Build.VERSION.SDK_INT);
@@ -133,44 +151,19 @@ public class GameCenterUnissoHandler
       ((StringBuilder)localObject).append(paramLong);
       QLog.d(str, 2, ((StringBuilder)localObject).toString());
     }
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences("game_center_sp", 0).edit();
+    String str = this.f.getCurrentAccountUin();
+    Object localObject = this.f.getApplication().getSharedPreferences("game_center_sp", 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("sp_key_get_tab_config_interval");
     ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong);
-    this.jdField_b_of_type_Long = paramLong;
-  }
-  
-  private boolean a()
-  {
-    this.jdField_b_of_type_Long = a();
-    this.jdField_a_of_type_Long = b();
-    boolean bool;
-    if (NetConnInfoCenter.getServerTime() - this.jdField_a_of_type_Long / 1000L < this.jdField_b_of_type_Long) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    if (QLog.isColorLevel())
-    {
-      String str = c;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[checkTabConfigInterval] ret=");
-      localStringBuilder.append(bool);
-      localStringBuilder.append(",lasttime = ");
-      localStringBuilder.append(this.jdField_a_of_type_Long / 1000L);
-      localStringBuilder.append(", interval = ");
-      localStringBuilder.append(this.jdField_b_of_type_Long);
-      QLog.d(str, 2, localStringBuilder.toString());
-    }
-    return bool;
+    this.e = paramLong;
   }
   
   private void b(long paramLong)
   {
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences("game_center_sp", 0).edit();
+    String str = this.f.getCurrentAccountUin();
+    SharedPreferences.Editor localEditor = this.f.getApplication().getSharedPreferences("game_center_sp", 0).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append("sp_key_last_get_tab_config_timestamp");
@@ -187,35 +180,86 @@ public class GameCenterUnissoHandler
     {
       if (paramFromServiceMsg.isSuccess())
       {
-        paramIntent = new WebSSOAgent.UniSsoServerRsp();
-        paramIntent.mergeFrom(paramArrayOfByte);
-        paramIntent.ret.get();
-        paramIntent = new JSONObject(paramIntent.rspdata.get());
+        paramFromServiceMsg = new WebSSOAgent.UniSsoServerRsp();
+        paramFromServiceMsg.mergeFrom(paramArrayOfByte);
+        paramFromServiceMsg.ret.get();
+        paramFromServiceMsg = new JSONObject(paramFromServiceMsg.rspdata.get());
         if (QLog.isColorLevel())
         {
-          paramFromServiceMsg = c;
-          paramArrayOfByte = new StringBuilder();
-          paramArrayOfByte.append("[handleGameStartPriority] root: ");
-          paramArrayOfByte.append(paramIntent.toString());
-          QLog.d(paramFromServiceMsg, 2, paramArrayOfByte.toString());
+          paramArrayOfByte = c;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[handleGameStartPriority] root: ");
+          localStringBuilder.append(paramFromServiceMsg.toString());
+          QLog.d(paramArrayOfByte, 2, localStringBuilder.toString());
         }
-        paramIntent = paramIntent.optJSONObject("GameInfo.GetGameStartPriority");
-        if (paramIntent != null)
+        paramFromServiceMsg = paramFromServiceMsg.optJSONObject("GameInfo.GetGameStartPriority");
+        if (paramFromServiceMsg != null)
         {
-          paramIntent = paramIntent.optJSONObject("rsp");
-          if ((paramIntent != null) && (paramIntent.optInt("ret_code") == 0))
+          paramFromServiceMsg = paramFromServiceMsg.optJSONObject("rsp");
+          if ((paramFromServiceMsg != null) && (paramFromServiceMsg.optInt("ret_code") == 0))
           {
-            notifyUI(8227, true, paramIntent);
+            notifyUI(8227, true, a(paramIntent, paramFromServiceMsg));
             return;
           }
         }
       }
-      notifyUI(8227, false, null);
+      notifyUI(8227, false, a(paramIntent, null));
       return;
     }
     catch (Exception paramIntent)
     {
       QLog.e(c, 1, "", paramIntent);
+    }
+  }
+  
+  private void c(Intent paramIntent, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
+  {
+    paramIntent = c;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[handleRemoteUserList], retCode:");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.i(paramIntent, 1, ((StringBuilder)localObject).toString());
+    try
+    {
+      paramIntent = (IGameMsgManagerService)this.f.getRuntimeService(IGameMsgManagerService.class, "");
+      if ((paramLong == 0L) && (paramTrpcInovkeRsp != null) && (paramTrpcInovkeRsp.data.has()))
+      {
+        localObject = new GetMobileDialogRsp();
+        ((GetMobileDialogRsp)localObject).mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
+        localObject = ((GetMobileDialogRsp)localObject).dialogList.get();
+        paramTrpcInovkeRsp = new ArrayList();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MobileDialog localMobileDialog = (MobileDialog)((Iterator)localObject).next();
+          GameMsgRemoteUserItem localGameMsgRemoteUserItem = new GameMsgRemoteUserItem();
+          localGameMsgRemoteUserItem.f = localMobileDialog.fromOpenID.get();
+          localGameMsgRemoteUserItem.b = localMobileDialog.fromRoleID.get();
+          localGameMsgRemoteUserItem.d = localMobileDialog.fromTinyID.get();
+          localGameMsgRemoteUserItem.g = localMobileDialog.toOpenID.get();
+          localGameMsgRemoteUserItem.c = localMobileDialog.toRoleID.get();
+          localGameMsgRemoteUserItem.e = localMobileDialog.toTinyID.get();
+          localGameMsgRemoteUserItem.a = localMobileDialog.appid.get();
+          localGameMsgRemoteUserItem.h = localMobileDialog.sig.get();
+          localGameMsgRemoteUserItem.i = localMobileDialog.time.get();
+          paramTrpcInovkeRsp.add(localGameMsgRemoteUserItem);
+        }
+        paramIntent.notifyRemoteUserReady(0, paramTrpcInovkeRsp);
+        paramIntent = c;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(",dialog size:");
+        ((StringBuilder)localObject).append(paramTrpcInovkeRsp.size());
+        QLog.i(paramIntent, 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+      QLog.w(c, 1, "rsp errors!");
+      paramIntent.notifyRemoteUserReady((int)paramLong, null);
+      return;
+    }
+    catch (Throwable paramIntent)
+    {
+      QLog.e(c, 1, paramIntent, new Object[0]);
+      ((IGameMsgManagerService)this.f.getRuntimeService(IGameMsgManagerService.class, "")).notifyRemoteUserReady(-2001, null);
     }
   }
   
@@ -229,54 +273,59 @@ public class GameCenterUnissoHandler
       {
         if (paramFromServiceMsg.isSuccess())
         {
-          paramIntent = new WebSSOAgent.UniSsoServerRsp();
-          paramIntent.mergeFrom(paramArrayOfByte);
-          paramIntent.ret.get();
-          paramIntent = new JSONObject(paramIntent.rspdata.get()).optJSONObject("Aio.GetAioPop");
-          if (paramIntent != null)
+          paramFromServiceMsg = new WebSSOAgent.UniSsoServerRsp();
+          paramFromServiceMsg.mergeFrom(paramArrayOfByte);
+          paramFromServiceMsg.ret.get();
+          paramFromServiceMsg = new JSONObject(paramFromServiceMsg.rspdata.get()).optJSONObject("Aio.GetAioPop");
+          if (paramFromServiceMsg != null)
           {
-            paramIntent = paramIntent.optJSONObject("rsp");
-            if (paramIntent != null)
+            paramFromServiceMsg = paramFromServiceMsg.optJSONObject("rsp");
+            if (paramFromServiceMsg != null)
             {
-              int i = paramIntent.optInt("ret_code");
-              paramArrayOfByte = paramIntent.optString("err_msg");
-              paramFromServiceMsg = paramIntent.optJSONObject("popinfo");
+              int i = paramFromServiceMsg.optInt("ret_code");
+              Object localObject1 = paramFromServiceMsg.optString("err_msg");
+              paramArrayOfByte = paramFromServiceMsg.optJSONObject("popinfo");
               if (i != 0)
               {
                 paramIntent = c;
                 paramFromServiceMsg = new StringBuilder();
                 paramFromServiceMsg.append("errMsg:");
-                paramFromServiceMsg.append(paramArrayOfByte);
+                paramFromServiceMsg.append((String)localObject1);
                 QLog.w(paramIntent, 1, paramFromServiceMsg.toString());
                 return;
               }
               if (QLog.isColorLevel())
               {
-                paramArrayOfByte = c;
-                localObject = new StringBuilder();
-                ((StringBuilder)localObject).append("[handleAioPopInfo] popInfo: ");
-                ((StringBuilder)localObject).append(paramFromServiceMsg.toString());
-                QLog.d(paramArrayOfByte, 2, ((StringBuilder)localObject).toString());
+                localObject1 = c;
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("[handleAioPopInfo] popInfo: ");
+                ((StringBuilder)localObject2).append(paramArrayOfByte.toString());
+                QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
               }
-              paramArrayOfByte = paramIntent.optJSONObject("friend_info");
-              Object localObject = paramIntent.optJSONArray("gray_tips_list");
+              localObject1 = paramFromServiceMsg.optJSONObject("friend_info");
+              Object localObject2 = paramFromServiceMsg.optJSONArray("gray_tips_list");
+              if (localObject1 != null) {
+                notifyUI(8226, true, a(paramIntent, localObject1));
+              }
               if (paramArrayOfByte != null) {
-                notifyUI(8226, true, paramArrayOfByte);
+                notifyUI(8225, true, a(paramIntent, paramArrayOfByte));
               }
-              if (paramFromServiceMsg != null) {
-                notifyUI(8225, true, paramFromServiceMsg);
+              if (localObject2 != null) {
+                notifyUI(8228, true, a(paramIntent, localObject2));
               }
-              if (localObject != null) {
-                notifyUI(8228, true, localObject);
+              notifyUI(8273, true, a(paramIntent, paramFromServiceMsg.optString("desc")));
+              paramArrayOfByte = paramFromServiceMsg.optJSONObject("stranger_recomd");
+              if (paramArrayOfByte != null) {
+                notifyUI(8262, true, a(paramIntent, paramArrayOfByte));
               }
-              notifyUI(8273, true, paramIntent.optString("desc"));
-              paramFromServiceMsg = paramIntent.optJSONObject("stranger_recomd");
-              if (paramFromServiceMsg != null) {
-                notifyUI(8262, true, paramFromServiceMsg);
+              notifyUI(8261, true, a(paramIntent, paramFromServiceMsg.optString("top_gray_tips")));
+              notifyUI(8264, true, a(paramIntent, paramFromServiceMsg.optJSONArray("head_icon_list")));
+              notifyUI(8274, true, a(paramIntent, paramFromServiceMsg));
+              if (paramFromServiceMsg.has("sgamebattle"))
+              {
+                notifyUI(8275, true, a(paramIntent, paramFromServiceMsg));
+                return;
               }
-              notifyUI(8261, true, paramIntent.optString("top_gray_tips"));
-              notifyUI(8264, true, paramIntent.optJSONArray("head_icon_list"));
-              return;
             }
           }
         }
@@ -298,20 +347,20 @@ public class GameCenterUnissoHandler
       {
         if (paramFromServiceMsg.isSuccess())
         {
-          paramIntent = new WebSSOAgent.UniSsoServerRsp();
-          paramIntent.mergeFrom(paramArrayOfByte);
-          long l = paramIntent.ret.get();
+          paramFromServiceMsg = new WebSSOAgent.UniSsoServerRsp();
+          paramFromServiceMsg.mergeFrom(paramArrayOfByte);
+          long l = paramFromServiceMsg.ret.get();
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = c;
-            paramArrayOfByte = new StringBuilder();
-            paramArrayOfByte.append("ret:");
-            paramArrayOfByte.append(l);
-            QLog.d(paramFromServiceMsg, 2, paramArrayOfByte.toString());
+            paramArrayOfByte = c;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("ret:");
+            localStringBuilder.append(l);
+            QLog.d(paramArrayOfByte, 2, localStringBuilder.toString());
           }
-          if (new JSONObject(paramIntent.rspdata.get()).getJSONObject("UserInfo.SetSwitch").getJSONObject("rsp").optInt("ret_code") == 0)
+          if (new JSONObject(paramFromServiceMsg.rspdata.get()).getJSONObject("UserInfo.SetSwitch").getJSONObject("rsp").optInt("ret_code") == 0)
           {
-            notifyUI(8265, true, "");
+            notifyUI(8265, true, a(paramIntent, ""));
             return;
           }
         }
@@ -333,30 +382,30 @@ public class GameCenterUnissoHandler
       CommUtils.a();
       if ((paramArrayOfByte != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
       {
-        paramIntent = new WebSSOAgent.UniSsoServerRsp();
-        paramIntent.mergeFrom(paramArrayOfByte);
-        paramIntent.ret.get();
-        paramIntent = new JSONObject(paramIntent.rspdata.get()).getJSONObject("Aio.DealGameFriend").getJSONObject("rsp");
-        int i = paramIntent.optInt("ret_code");
-        int j = paramIntent.optInt("op_type");
-        paramFromServiceMsg = paramIntent.optString("err_msg");
-        paramArrayOfByte = c;
+        paramFromServiceMsg = new WebSSOAgent.UniSsoServerRsp();
+        paramFromServiceMsg.mergeFrom(paramArrayOfByte);
+        paramFromServiceMsg.ret.get();
+        paramFromServiceMsg = new JSONObject(paramFromServiceMsg.rspdata.get()).getJSONObject("Aio.DealGameFriend").getJSONObject("rsp");
+        int i = paramFromServiceMsg.optInt("ret_code");
+        int j = paramFromServiceMsg.optInt("op_type");
+        paramArrayOfByte = paramFromServiceMsg.optString("err_msg");
+        String str = c;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("[handleAddOrShieldFriend], retCode:");
         localStringBuilder.append(i);
         localStringBuilder.append(",errMsg:");
-        localStringBuilder.append(paramFromServiceMsg);
+        localStringBuilder.append(paramArrayOfByte);
         localStringBuilder.append(",type:");
         localStringBuilder.append(j);
-        QLog.i(paramArrayOfByte, 1, localStringBuilder.toString());
-        notifyUI(8263, true, paramIntent);
+        QLog.i(str, 1, localStringBuilder.toString());
+        notifyUI(8263, true, a(paramIntent, paramFromServiceMsg));
         return;
       }
     }
-    catch (Throwable paramIntent)
+    catch (Throwable paramFromServiceMsg)
     {
-      notifyUI(8263, false, null);
-      QLog.e(c, 1, paramIntent.getMessage());
+      notifyUI(8263, false, a(paramIntent, null));
+      QLog.e(c, 1, paramFromServiceMsg.getMessage());
     }
   }
   
@@ -370,52 +419,53 @@ public class GameCenterUnissoHandler
       {
         if (paramFromServiceMsg.isSuccess())
         {
-          paramIntent = new WebSSOAgent.UniSsoServerRsp();
-          paramIntent.mergeFrom(paramArrayOfByte);
-          paramIntent.ret.get();
-          paramIntent = new JSONObject(paramIntent.rspdata.get()).getJSONObject("UserInfo.GetSwitch").getJSONObject("rsp");
-          int i = paramIntent.optInt("ret_code");
-          paramFromServiceMsg = paramIntent.optString("err_msg");
-          paramIntent = paramIntent.optJSONObject("result_map").optJSONObject(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+          paramFromServiceMsg = new WebSSOAgent.UniSsoServerRsp();
+          paramFromServiceMsg.mergeFrom(paramArrayOfByte);
+          paramFromServiceMsg.ret.get();
+          paramFromServiceMsg = new JSONObject(paramFromServiceMsg.rspdata.get()).getJSONObject("UserInfo.GetSwitch").getJSONObject("rsp");
+          int i = paramFromServiceMsg.optInt("ret_code");
+          paramArrayOfByte = paramFromServiceMsg.optString("err_msg");
+          paramFromServiceMsg = paramFromServiceMsg.optJSONObject("result_map").optJSONObject(this.f.getCurrentAccountUin());
           if (i != 0)
           {
             paramIntent = c;
-            paramArrayOfByte = new StringBuilder();
-            paramArrayOfByte.append("errMsg:");
-            paramArrayOfByte.append(paramFromServiceMsg);
-            QLog.w(paramIntent, 1, paramArrayOfByte.toString());
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("errMsg:");
+            paramFromServiceMsg.append(paramArrayOfByte);
+            QLog.w(paramIntent, 1, paramFromServiceMsg.toString());
             return;
           }
+          Object localObject;
           if (QLog.isColorLevel())
           {
-            paramFromServiceMsg = c;
-            paramArrayOfByte = new StringBuilder();
-            paramArrayOfByte.append("[handleGetGameSwitch] result: ");
-            paramArrayOfByte.append(paramIntent.toString());
-            QLog.d(paramFromServiceMsg, 2, paramArrayOfByte.toString());
+            paramArrayOfByte = c;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[handleGetGameSwitch] result: ");
+            ((StringBuilder)localObject).append(paramFromServiceMsg.toString());
+            QLog.d(paramArrayOfByte, 2, ((StringBuilder)localObject).toString());
           }
-          paramFromServiceMsg = new ArrayList();
-          if (paramIntent != null)
+          paramArrayOfByte = new ArrayList();
+          if (paramFromServiceMsg != null)
           {
-            paramArrayOfByte = paramIntent.keys();
-            while (paramArrayOfByte.hasNext())
+            localObject = paramFromServiceMsg.keys();
+            while (((Iterator)localObject).hasNext())
             {
-              String str = (String)paramArrayOfByte.next();
+              String str = (String)((Iterator)localObject).next();
               if (!TextUtils.isEmpty(str))
               {
                 GameSwitchConfig localGameSwitchConfig = new GameSwitchConfig();
-                JSONObject localJSONObject = paramIntent.getJSONObject(str);
+                JSONObject localJSONObject = paramFromServiceMsg.getJSONObject(str);
                 localGameSwitchConfig.mAppId = str;
                 localGameSwitchConfig.mSyncSwitch = localJSONObject.optInt("switch");
                 localGameSwitchConfig.mBlockSwitch = localJSONObject.optInt("qq_block_switch");
                 localGameSwitchConfig.mBoxSwitch = localJSONObject.optInt("box_switch");
                 localGameSwitchConfig.print();
-                paramFromServiceMsg.add(localGameSwitchConfig);
+                paramArrayOfByte.add(localGameSwitchConfig);
               }
             }
-            ((GameMsgManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).saveOrUpdateGameSwitchConfigs(paramFromServiceMsg);
+            ((GameMsgManagerServiceImpl)this.f.getRuntimeService(IGameMsgManagerService.class, "")).saveOrUpdateGameSwitchConfigs(paramArrayOfByte);
           }
-          notifyUI(8272, true, "");
+          notifyUI(8272, true, a(paramIntent, ""));
           return;
         }
       }
@@ -428,6 +478,7 @@ public class GameCenterUnissoHandler
   
   private void g(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
   {
+    String str1 = "game_profile";
     if (QLog.isColorLevel()) {
       QLog.d(c, 2, "[handleGetUserInfoRsp]");
     }
@@ -436,7 +487,7 @@ public class GameCenterUnissoHandler
       try
       {
         l1 = System.currentTimeMillis();
-        paramIntent = (GameMsgManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+        localObject2 = (GameMsgManagerServiceImpl)this.f.getRuntimeService(IGameMsgManagerService.class, "");
         if ((paramArrayOfByte != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
         {
           paramFromServiceMsg = new WebSSOAgent.UniSsoServerRsp();
@@ -459,7 +510,7 @@ public class GameCenterUnissoHandler
             return;
           }
           paramArrayOfByte = paramFromServiceMsg.optJSONObject("game_config");
-          localObject2 = new ArrayList();
+          localArrayList = new ArrayList();
           localObject1 = "data_update_ts";
           if (paramArrayOfByte != null)
           {
@@ -479,22 +530,22 @@ public class GameCenterUnissoHandler
               ((GameBasicInfo)localObject4).mUpdateTs = ((JSONObject)localObject5).optLong("data_update_ts");
               ((GameBasicInfo)localObject4).mStartGameUrl = ((JSONObject)localObject5).optString("zone_url");
               ((GameBasicInfo)localObject4).print();
-              ((ArrayList)localObject2).add(localObject4);
+              localArrayList.add(localObject4);
               continue;
             }
-            paramIntent.saveOrUpdateGameBasicConfigs((ArrayList)localObject2);
+            ((GameMsgManagerServiceImpl)localObject2).saveOrUpdateGameBasicConfigs(localArrayList);
           }
           localObject3 = paramFromServiceMsg.optJSONArray("result_list");
-          localObject2 = new ArrayList();
+          paramFromServiceMsg = new ArrayList();
           if (localObject3 == null) {
-            break label780;
+            break label815;
           }
           i = ((JSONArray)localObject3).length();
-          paramArrayOfByte = new ArrayList();
+          localArrayList = new ArrayList();
           j = 0;
-          paramFromServiceMsg = paramIntent;
-          paramIntent = (Intent)localObject2;
+          paramArrayOfByte = (byte[])localObject2;
           localObject2 = localObject3;
+          localObject3 = this;
           if (j < i)
           {
             localObject3 = new GameUserInfo();
@@ -505,9 +556,9 @@ public class GameCenterUnissoHandler
             l2 = ((JSONObject)localObject6).optLong((String)localObject1);
             n = ((JSONObject)localObject6).optInt("msgsync_switch");
             localObject5 = ((JSONObject)localObject6).optString("appid");
-            str1 = ((JSONObject)localObject6).optString("nick");
-            str2 = ((JSONObject)localObject6).optString("face_url");
-            str3 = ((JSONObject)localObject6).optString("role_id");
+            str2 = ((JSONObject)localObject6).optString("nick");
+            str3 = ((JSONObject)localObject6).optString("face_url");
+            str4 = ((JSONObject)localObject6).optString("role_id");
           }
         }
       }
@@ -515,6 +566,8 @@ public class GameCenterUnissoHandler
       {
         long l1;
         Object localObject2;
+        ArrayList localArrayList;
+        Object localObject1;
         Object localObject3;
         Object localObject5;
         Object localObject4;
@@ -524,61 +577,65 @@ public class GameCenterUnissoHandler
         int m;
         long l2;
         int n;
-        String str1;
         String str2;
         String str3;
         String str4;
         String str5;
         String str6;
+        String str7;
+        String str8;
         QLog.e(c, 1, paramIntent.getMessage());
       }
       try
       {
-        str4 = ((JSONObject)localObject6).optString("partition_name");
-        str5 = ((JSONObject)localObject6).optJSONObject("game_profile").optString("level_pic");
-        str6 = ((JSONObject)localObject6).optJSONObject("game_profile").getString("level_text");
-        localObject6 = ((JSONObject)localObject6).optString("online_desc");
+        str5 = ((JSONObject)localObject6).optString("partition_name");
+        str6 = ((JSONObject)localObject6).optJSONObject(str1).optString("level_pic");
+        str7 = ((JSONObject)localObject6).optJSONObject(str1).getString("level_text");
+        str8 = ((JSONObject)localObject6).optString("online_desc");
+        localObject6 = ((JSONObject)localObject6).optString("viprank_url");
         ((GameUserInfo)localObject3).mUin = ((String)localObject4);
-        ((GameUserInfo)localObject3).mRoleId = str3;
+        ((GameUserInfo)localObject3).mRoleId = str4;
         ((GameUserInfo)localObject3).mAppId = ((String)localObject5);
         ((GameUserInfo)localObject3).mUpdateTs = l2;
-        ((GameUserInfo)localObject3).mFaceUrl = str2;
+        ((GameUserInfo)localObject3).mFaceUrl = str3;
         ((GameUserInfo)localObject3).mSex = m;
-        ((GameUserInfo)localObject3).mNickInGame = str1;
+        ((GameUserInfo)localObject3).mNickInGame = str2;
         ((GameUserInfo)localObject3).mOnlineType = k;
-        ((GameUserInfo)localObject3).mPartitioName = str4;
-        ((GameUserInfo)localObject3).mLevelPic = str5;
-        ((GameUserInfo)localObject3).mLevelText = str6;
+        ((GameUserInfo)localObject3).mPartitioName = str5;
+        ((GameUserInfo)localObject3).mLevelPic = str6;
+        ((GameUserInfo)localObject3).mLevelText = str7;
         ((GameUserInfo)localObject3).mSaveTs = l1;
         ((GameUserInfo)localObject3).mSwitchInGame = n;
-        ((GameUserInfo)localObject3).mOnLineDesc = ((String)localObject6);
+        ((GameUserInfo)localObject3).mOnLineDesc = str8;
+        ((GameUserInfo)localObject3).mVipRankUrl = ((String)localObject6);
         ((GameUserInfo)localObject3).print();
         try
         {
           localObject4 = a((GameUserInfo)localObject3);
           if (localObject4 == null) {
-            break label773;
+            break label808;
           }
-          paramArrayOfByte.add(localObject4);
-          paramIntent.add(localObject3);
+          localArrayList.add(localObject4);
+          paramFromServiceMsg.add(localObject3);
           j += 1;
         }
         catch (Throwable paramIntent)
         {
           continue;
         }
-        localObject2 = paramIntent;
-        localObject1 = paramFromServiceMsg;
-        if (paramArrayOfByte.size() > 0)
+        localObject1 = paramArrayOfByte;
+        paramArrayOfByte = paramFromServiceMsg;
+        localObject2 = localObject1;
+        if (localArrayList.size() > 0)
         {
-          notifyUI(8224, true, paramArrayOfByte);
-          localObject2 = paramIntent;
-          localObject1 = paramFromServiceMsg;
+          ((GameCenterUnissoHandler)localObject3).notifyUI(8224, true, ((GameCenterUnissoHandler)localObject3).a(paramIntent, localArrayList));
+          paramArrayOfByte = paramFromServiceMsg;
+          localObject2 = localObject1;
         }
-        if (localObject1 == null) {
-          break label772;
+        if (localObject2 == null) {
+          break label807;
         }
-        ((GameMsgManagerServiceImpl)localObject1).saveOrUpdateGameUsrInfoArrays((ArrayList)localObject2);
+        ((GameMsgManagerServiceImpl)localObject2).saveOrUpdateGameUsrInfoArrays(paramArrayOfByte);
         return;
       }
       catch (Throwable paramIntent)
@@ -586,26 +643,41 @@ public class GameCenterUnissoHandler
         continue;
       }
       return;
-      label772:
+      label807:
       return;
-      label773:
+      label808:
       continue;
-      label780:
-      Object localObject1 = paramIntent;
+      label815:
+      paramArrayOfByte = paramFromServiceMsg;
     }
   }
   
-  public long a()
+  private boolean h()
   {
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences("game_center_sp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("sp_key_get_tab_config_interval");
-    return localSharedPreferences.getLong(localStringBuilder.toString(), 1200L);
+    this.e = d();
+    this.d = e();
+    boolean bool;
+    if (NetConnInfoCenter.getServerTime() - this.d / 1000L < this.e) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    if (QLog.isColorLevel())
+    {
+      String str = c;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[checkTabConfigInterval] ret=");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(",lasttime = ");
+      localStringBuilder.append(this.d / 1000L);
+      localStringBuilder.append(", interval = ");
+      localStringBuilder.append(this.e);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
-  public void a()
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d(c, 2, "[getGameSwitch]");
@@ -615,7 +687,7 @@ public class GameCenterUnissoHandler
       Object localObject = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
       WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
       localUniSsoServerReq.comm.set((MessageMicro)localObject);
       localObject = new JSONObject();
@@ -626,10 +698,11 @@ public class GameCenterUnissoHandler
       if (QLog.isColorLevel()) {
         QLog.d(c, 2, ((JSONObject)localObject).toString());
       }
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), GameCenterUnissoServlet.class);
+      localObject = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
       ((NewIntent)localObject).putExtra("cmd", "GameCenterMsg.GetSwitch");
       ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet((NewIntent)localObject);
+      ((NewIntent)localObject).putExtra("req_intent_param_hashcode", paramInt);
+      this.f.startServlet((NewIntent)localObject);
       return;
     }
     catch (Throwable localThrowable)
@@ -638,7 +711,7 @@ public class GameCenterUnissoHandler
     }
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     Object localObject1;
     Object localObject2;
@@ -647,7 +720,7 @@ public class GameCenterUnissoHandler
       localObject1 = c;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[addOrShieldFriend], type:");
-      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(paramInt2);
       ((StringBuilder)localObject2).append(",friRoleId:");
       ((StringBuilder)localObject2).append(paramString1);
       ((StringBuilder)localObject2).append(",myRoleId:");
@@ -661,12 +734,12 @@ public class GameCenterUnissoHandler
       localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
       localObject1 = new WebSSOAgent.UniSsoServerReq();
       ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
       localObject2 = new JSONObject();
       JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("op_type", paramInt);
+      localJSONObject.put("op_type", paramInt2);
       localJSONObject.put("to_roleid", paramString1);
       localJSONObject.put("roleid", paramString2);
       localJSONObject.put("text", paramString3);
@@ -677,15 +750,217 @@ public class GameCenterUnissoHandler
       if (QLog.isColorLevel()) {
         QLog.d(c, 2, ((JSONObject)localObject2).toString());
       }
-      paramString1 = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), GameCenterUnissoServlet.class);
+      paramString1 = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
       paramString1.putExtra("cmd", "GameCenterMsg.DealGameFriend");
       paramString1.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramString1);
+      paramString1.putExtra("req_intent_param_hashcode", paramInt1);
+      this.f.startServlet(paramString1);
       return;
     }
     catch (Throwable paramString1)
     {
       QLog.e(c, 1, paramString1.getMessage());
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = c;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[getGameStartPriority] appid: ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    try
+    {
+      localObject2 = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
+      localObject1 = new WebSSOAgent.UniSsoServerReq();
+      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
+      localObject2 = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("appid", paramString);
+      paramString = new JSONObject();
+      paramString.put("req", localJSONObject);
+      ((JSONObject)localObject2).put("GameInfo.GetGameStartPriority", paramString);
+      ((WebSSOAgent.UniSsoServerReq)localObject1).reqdata.set(((JSONObject)localObject2).toString());
+      if (QLog.isColorLevel()) {
+        QLog.d(c, 2, ((JSONObject)localObject2).toString());
+      }
+      paramString = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
+      paramString.putExtra("cmd", "GameCenterMsg.GetGameStartPriority");
+      paramString.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
+      paramString.putExtra("req_intent_param_hashcode", paramInt);
+      this.f.startServlet(paramString);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e(c, 1, paramString.getMessage());
+    }
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = c;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[setGameSwitch] synSwitch: ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append(",blockSwitch:");
+      ((StringBuilder)localObject2).append(paramInt3);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    try
+    {
+      localObject2 = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
+      localObject1 = new WebSSOAgent.UniSsoServerReq();
+      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
+      localObject2 = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("appid", paramString);
+      localJSONObject.put("switch_type", paramInt2);
+      localJSONObject.put("qq_block_switch_type", paramInt3);
+      paramString = new JSONObject();
+      paramString.put("req", localJSONObject);
+      ((JSONObject)localObject2).put("UserInfo.SetSwitch", paramString);
+      ((WebSSOAgent.UniSsoServerReq)localObject1).reqdata.set(((JSONObject)localObject2).toString());
+      if (QLog.isColorLevel()) {
+        QLog.d(c, 2, ((JSONObject)localObject2).toString());
+      }
+      paramString = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
+      paramString.putExtra("cmd", "GameCenterMsg.SetSwitch");
+      paramString.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
+      paramString.putExtra("req_intent_param_hashcode", paramInt1);
+      this.f.startServlet(paramString);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e(c, 1, paramString.getMessage());
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    Object localObject1;
+    Object localObject2;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = c;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[getAioPopInfo] from svr mid: ");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(",fid:");
+      ((StringBuilder)localObject2).append(paramString2);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      try
+      {
+        localObject2 = new WebSSOAgent.UniSsoServerReqComm();
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.8.17");
+        localObject1 = new WebSSOAgent.UniSsoServerReq();
+        ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
+        localObject2 = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("me_roleid", paramString1);
+        localJSONObject.put("friend_roleid", paramString2);
+        paramString1 = (TicketManager)this.f.getManager(2);
+        if (paramString1 != null) {
+          localJSONObject.put("skey", paramString1.getSkey(this.f.getAccount()));
+        }
+        paramString1 = new JSONObject();
+        paramString1.put("req", localJSONObject);
+        ((JSONObject)localObject2).put("Aio.GetAioPop", paramString1);
+        ((WebSSOAgent.UniSsoServerReq)localObject1).reqdata.set(((JSONObject)localObject2).toString());
+        if (QLog.isColorLevel()) {
+          QLog.d(c, 2, ((JSONObject)localObject2).toString());
+        }
+        paramString1 = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
+        paramString1.putExtra("cmd", "GameCenterMsg.GetAioPop");
+        paramString1.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
+        paramString1.putExtra("req_intent_param_hashcode", paramInt);
+        this.f.startServlet(paramString1);
+        return;
+      }
+      catch (Throwable paramString1)
+      {
+        QLog.e(c, 1, paramString1.getMessage());
+      }
+    }
+  }
+  
+  public void a(int paramInt, ArrayList<String> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(c, 2, "[getGameUserInfo] from svr");
+    }
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.size() == 0) {
+        return;
+      }
+      try
+      {
+        Object localObject1 = new WebSSOAgent.UniSsoServerReqComm();
+        ((WebSSOAgent.UniSsoServerReqComm)localObject1).platform.set(109L);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject1).osver.set(Build.VERSION.RELEASE);
+        ((WebSSOAgent.UniSsoServerReqComm)localObject1).mqqver.set("8.8.17");
+        WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+        localUniSsoServerReq.comm.set((MessageMicro)localObject1);
+        localObject1 = new JSONObject();
+        Object localObject2 = new JSONArray();
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext())
+        {
+          String str = (String)paramArrayList.next();
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("role_id", str);
+          ((JSONArray)localObject2).put(localJSONObject);
+        }
+        paramArrayList = new JSONObject();
+        paramArrayList.put("is_need_game_config", true);
+        paramArrayList.put("query_list", localObject2);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("req", paramArrayList);
+        ((JSONObject)localObject1).put("UserInfo.GetUserInfo", localObject2);
+        localUniSsoServerReq.reqdata.set(((JSONObject)localObject1).toString());
+        if (QLog.isColorLevel()) {
+          QLog.d(c, 2, ((JSONObject)localObject1).toString());
+        }
+        paramArrayList = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
+        paramArrayList.putExtra("cmd", "GameCenterMsg.GetUserInfo");
+        paramArrayList.putExtra("data", localUniSsoServerReq.toByteArray());
+        paramArrayList.putExtra("req_intent_param_hashcode", paramInt);
+        this.f.startServlet(paramArrayList);
+        return;
+      }
+      catch (Throwable paramArrayList)
+      {
+        QLog.e(c, 1, paramArrayList.getMessage());
+      }
     }
   }
   
@@ -725,7 +1000,7 @@ public class GameCenterUnissoHandler
             continue;
           }
           paramIntent = paramTrpcInovkeRsp.conf.get();
-          ((GameMsgManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).saveOrUpdateTabConfigs(paramIntent);
+          ((GameMsgManagerServiceImpl)this.f.getRuntimeService(IGameMsgManagerService.class, "")).saveOrUpdateTabConfigs(paramIntent);
           return;
         }
       }
@@ -787,221 +1062,107 @@ public class GameCenterUnissoHandler
     }
   }
   
-  public void a(String paramString)
+  public void b()
   {
-    Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = c;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[getGameStartPriority] appid: ");
-      ((StringBuilder)localObject2).append(paramString);
-      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
+    QLog.i(c, 1, "[getRemoteUserList]");
     try
     {
-      localObject2 = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
-      localObject1 = new WebSSOAgent.UniSsoServerReq();
-      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
-      localObject2 = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("appid", paramString);
-      paramString = new JSONObject();
-      paramString.put("req", localJSONObject);
-      ((JSONObject)localObject2).put("GameInfo.GetGameStartPriority", paramString);
-      ((WebSSOAgent.UniSsoServerReq)localObject1).reqdata.set(((JSONObject)localObject2).toString());
-      if (QLog.isColorLevel()) {
-        QLog.d(c, 2, ((JSONObject)localObject2).toString());
-      }
-      paramString = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), GameCenterUnissoServlet.class);
-      paramString.putExtra("cmd", "GameCenterMsg.GetGameStartPriority");
-      paramString.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramString);
+      Object localObject = new GetMobileDialogReq();
+      ((GetMobileDialogReq)localObject).offset.set(0);
+      ((GetMobileDialogReq)localObject).pageSize.set(-1);
+      ((GetMobileDialogReq)localObject).uin.set(Long.parseLong(GameMsgUtil.a().getCurrentAccountUin()));
+      localObject = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/216", false, ((GetMobileDialogReq)localObject).toByteArray());
+      TrpcProxy.TrpcListReq localTrpcListReq = new TrpcProxy.TrpcListReq();
+      localTrpcListReq.list.add((MessageMicro)localObject);
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.g);
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc(localTrpcListReq, null);
       return;
     }
-    catch (Throwable paramString)
+    catch (Throwable localThrowable)
     {
-      QLog.e(c, 1, paramString.getMessage());
+      QLog.e(c, 1, localThrowable, new Object[0]);
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void b(int paramInt, String paramString1, String paramString2)
   {
-    Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = c;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[setGameSwitch] synSwitch: ");
-      ((StringBuilder)localObject2).append(paramInt1);
-      ((StringBuilder)localObject2).append(",blockSwitch:");
-      ((StringBuilder)localObject2).append(paramInt2);
-      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    }
-    try
-    {
-      localObject2 = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
-      localObject1 = new WebSSOAgent.UniSsoServerReq();
-      ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
-      localObject2 = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("appid", paramString);
-      localJSONObject.put("switch_type", paramInt1);
-      localJSONObject.put("qq_block_switch_type", paramInt2);
-      paramString = new JSONObject();
-      paramString.put("req", localJSONObject);
-      ((JSONObject)localObject2).put("UserInfo.SetSwitch", paramString);
-      ((WebSSOAgent.UniSsoServerReq)localObject1).reqdata.set(((JSONObject)localObject2).toString());
-      if (QLog.isColorLevel()) {
-        QLog.d(c, 2, ((JSONObject)localObject2).toString());
-      }
-      paramString = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), GameCenterUnissoServlet.class);
-      paramString.putExtra("cmd", "GameCenterMsg.SetSwitch");
-      paramString.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramString);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e(c, 1, paramString.getMessage());
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Object localObject1;
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = c;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("[getGameUserInfo] from svr mid: ");
-      ((StringBuilder)localObject2).append(paramString1);
-      ((StringBuilder)localObject2).append(",fid:");
-      ((StringBuilder)localObject2).append(paramString2);
-      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      if (TextUtils.isEmpty(paramString2)) {
-        return;
-      }
+    QLog.i(c, 1, "[reqGameMsgSayHiInfo]");
+    IGameMsgManagerService localIGameMsgManagerService = (IGameMsgManagerService)this.f.getRuntimeService(IGameMsgManagerService.class, "");
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
       try
       {
-        localObject2 = new WebSSOAgent.UniSsoServerReqComm();
-        ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("8.7.0");
-        localObject1 = new WebSSOAgent.UniSsoServerReq();
-        ((WebSSOAgent.UniSsoServerReq)localObject1).comm.set((MessageMicro)localObject2);
-        localObject2 = new JSONObject();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("me_roleid", paramString1);
-        localJSONObject.put("friend_roleid", paramString2);
-        paramString1 = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
-        if (paramString1 != null) {
-          localJSONObject.put("skey", paramString1.getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()));
-        }
-        paramString1 = new JSONObject();
-        paramString1.put("req", localJSONObject);
-        ((JSONObject)localObject2).put("Aio.GetAioPop", paramString1);
-        ((WebSSOAgent.UniSsoServerReq)localObject1).reqdata.set(((JSONObject)localObject2).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, ((JSONObject)localObject2).toString());
-        }
-        paramString1 = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), GameCenterUnissoServlet.class);
-        paramString1.putExtra("cmd", "GameCenterMsg.GetAioPop");
-        paramString1.putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject1).toByteArray());
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramString1);
+        GameMsgGreeting.QueryAIOGreetInfoReq localQueryAIOGreetInfoReq = new GameMsgGreeting.QueryAIOGreetInfoReq();
+        localQueryAIOGreetInfoReq.fromRoleID.set(paramString1);
+        localQueryAIOGreetInfoReq.toRoleID.set(paramString2);
+        paramString2 = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/221", false, localQueryAIOGreetInfoReq.toByteArray());
+        paramString1 = new TrpcProxy.TrpcListReq();
+        paramString1.list.add(paramString2);
+        ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.g);
+        paramString2 = new Bundle();
+        paramString2.putInt("requestId", paramInt);
+        ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc(paramString1, paramString2);
         return;
       }
       catch (Throwable paramString1)
       {
-        QLog.e(c, 1, paramString1.getMessage());
-      }
-    }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(c, 2, "[getGameUserInfo] from svr");
-    }
-    if (paramArrayList != null)
-    {
-      if (paramArrayList.size() == 0) {
+        paramString2 = new StringBuilder();
+        paramString2.append("request error.");
+        paramString2.append(paramString1);
+        localIGameMsgManagerService.notifyGameMsgSayHiInfo(paramInt, -1L, paramString2.toString(), null);
+        QLog.e(c, 1, paramString1, new Object[0]);
         return;
       }
-      try
-      {
-        Object localObject1 = new WebSSOAgent.UniSsoServerReqComm();
-        ((WebSSOAgent.UniSsoServerReqComm)localObject1).platform.set(109L);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject1).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject1).mqqver.set("8.7.0");
-        WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-        localUniSsoServerReq.comm.set((MessageMicro)localObject1);
-        localObject1 = new JSONObject();
-        Object localObject2 = new JSONArray();
-        paramArrayList = paramArrayList.iterator();
-        while (paramArrayList.hasNext())
-        {
-          String str = (String)paramArrayList.next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("role_id", str);
-          ((JSONArray)localObject2).put(localJSONObject);
-        }
-        paramArrayList = new JSONObject();
-        paramArrayList.put("is_need_game_config", true);
-        paramArrayList.put("query_list", localObject2);
-        localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("req", paramArrayList);
-        ((JSONObject)localObject1).put("UserInfo.GetUserInfo", localObject2);
-        localUniSsoServerReq.reqdata.set(((JSONObject)localObject1).toString());
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, ((JSONObject)localObject1).toString());
-        }
-        paramArrayList = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), GameCenterUnissoServlet.class);
-        paramArrayList.putExtra("cmd", "GameCenterMsg.GetUserInfo");
-        paramArrayList.putExtra("data", localUniSsoServerReq.toByteArray());
-        this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramArrayList);
-        return;
-      }
-      catch (Throwable paramArrayList)
-      {
-        QLog.e(c, 1, paramArrayList.getMessage());
-      }
     }
+    localIGameMsgManagerService.notifyGameMsgSayHiInfo(paramInt, -1L, "roleId is empty.", null);
+    QLog.i(c, 1, "[reqGameMsgSayHiInfo] roleId is empty.");
   }
   
-  public long b()
+  protected void b(Intent paramIntent, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
   {
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getSharedPreferences("game_center_sp", 0);
+    Object localObject = c;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str);
-    localStringBuilder.append("sp_key_last_get_tab_config_timestamp");
-    this.jdField_a_of_type_Long = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (!a()) {
+    localStringBuilder.append("handleGameMsgSayHiInfo retCode:");
+    localStringBuilder.append(paramLong);
+    QLog.i((String)localObject, 1, localStringBuilder.toString());
+    if (paramIntent == null)
+    {
+      QLog.i(c, 1, "handleGameMsgSayHiInfo request is null.");
       return;
     }
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    b(this.jdField_a_of_type_Long);
+    localObject = (IGameMsgManagerService)this.f.getRuntimeService(IGameMsgManagerService.class, "");
+    int i = paramIntent.getIntExtra("requestId", 0);
+    if ((paramLong == 0L) && (paramTrpcInovkeRsp != null) && (paramTrpcInovkeRsp.data.has())) {
+      try
+      {
+        paramIntent = new GameMsgGreeting.QueryAIOGreetInfoRsp();
+        paramIntent.mergeFrom(paramTrpcInovkeRsp.data.get().toByteArray());
+        ((IGameMsgManagerService)localObject).notifyGameMsgSayHiInfo(i, 0L, "", paramIntent);
+        return;
+      }
+      catch (Throwable paramIntent)
+      {
+        paramTrpcInovkeRsp = new StringBuilder();
+        paramTrpcInovkeRsp.append("parse rsp error:");
+        paramTrpcInovkeRsp.append(paramIntent);
+        ((IGameMsgManagerService)localObject).notifyGameMsgSayHiInfo(i, -1L, paramTrpcInovkeRsp.toString(), null);
+        paramTrpcInovkeRsp = c;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleGameMsgSayHiInfo error:");
+        ((StringBuilder)localObject).append(paramIntent);
+        QLog.i(paramTrpcInovkeRsp, 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+    }
+    ((IGameMsgManagerService)localObject).notifyGameMsgSayHiInfo(i, paramLong, "error.", null);
+  }
+  
+  public void c()
+  {
+    if (!h()) {
+      return;
+    }
+    this.d = NetConnInfoCenter.getServerTimeMillis();
+    b(this.d);
     QLog.i(c, 1, "getGameMsgTabConfig start");
     try
     {
@@ -1024,13 +1185,60 @@ public class GameCenterUnissoHandler
       localObject1 = ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).createTrpcInvokeReq("/v1/33", false, ((CommonMobileConfQueryReq)localObject1).toByteArray());
       localObject2 = new TrpcProxy.TrpcListReq();
       ((TrpcProxy.TrpcListReq)localObject2).list.add((MessageMicro)localObject1);
-      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.jdField_a_of_type_ComTencentGamecenterWadlBizListenerWadlTrpcListener);
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).addListener(this.g);
       ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).requestTrpc((TrpcProxy.TrpcListReq)localObject2, null);
       return;
     }
     catch (Exception localException)
     {
       QLog.e(c, 1, "getGameMsgTabConfig err: ", localException);
+    }
+  }
+  
+  public long d()
+  {
+    String str = this.f.getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = this.f.getApplication().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("sp_key_get_tab_config_interval");
+    return localSharedPreferences.getLong(localStringBuilder.toString(), 1200L);
+  }
+  
+  public long e()
+  {
+    String str = this.f.getCurrentAccountUin();
+    SharedPreferences localSharedPreferences = this.f.getApplication().getSharedPreferences("game_center_sp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("sp_key_last_get_tab_config_timestamp");
+    this.d = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
+    return this.d;
+  }
+  
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(c, 2, "sendProfileGuideShowed");
+    }
+    try
+    {
+      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
+      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17");
+      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
+      localUniSsoServerReq.comm.set((MessageMicro)localObject);
+      localUniSsoServerReq.reqdata.set("");
+      localObject = new NewIntent(this.f.getApp(), GameCenterUnissoServlet.class);
+      ((NewIntent)localObject).putExtra("cmd", "GameCenterMsg.SetQQCardPopSwitch");
+      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
+      this.f.startServlet((NewIntent)localObject);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e(c, 1, localThrowable.getMessage());
     }
   }
   
@@ -1042,13 +1250,14 @@ public class GameCenterUnissoHandler
   public void onDestroy()
   {
     super.onDestroy();
+    ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).removeListener(this.g);
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.protocols.GameCenterUnissoHandler
  * JD-Core Version:    0.7.0.1
  */

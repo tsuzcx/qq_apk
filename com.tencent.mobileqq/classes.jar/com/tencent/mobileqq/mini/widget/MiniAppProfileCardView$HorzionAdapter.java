@@ -26,7 +26,7 @@ class MiniAppProfileCardView$HorzionAdapter
   {
     ArrayList localArrayList = this.miniAppInfoItems;
     if (localArrayList != null) {
-      return (MiniAppInfo)localArrayList.get(paramInt);
+      return localArrayList.get(paramInt);
     }
     return null;
   }
@@ -74,7 +74,7 @@ class MiniAppProfileCardView$HorzionAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardView.HorzionAdapter
  * JD-Core Version:    0.7.0.1
  */

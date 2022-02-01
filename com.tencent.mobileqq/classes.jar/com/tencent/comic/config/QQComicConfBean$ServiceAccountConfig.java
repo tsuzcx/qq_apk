@@ -17,37 +17,6 @@ public class QQComicConfBean$ServiceAccountConfig
   private String a = "";
   private String b = "";
   
-  private static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    try
-    {
-      Object localObject1 = new JSONObject(paramString).getString("oac_triggle").split("&");
-      if (localObject1 != null)
-      {
-        int j = localObject1.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          if (localObject2.startsWith("busi_id"))
-          {
-            localObject1 = URLUtil.b(localObject2.split("=")[1]);
-            return localObject1;
-          }
-          i += 1;
-        }
-      }
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QQComicConfBean", 1, localException, new Object[0]);
-    }
-  }
-  
   private static String a(String paramString1, String paramString2, String paramString3)
   {
     int i = paramString1.indexOf('?');
@@ -58,14 +27,14 @@ public class QQComicConfBean$ServiceAccountConfig
     }
     try
     {
-      localObject = URLUtil.a("&");
+      localObject = URLUtil.c("&");
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append((String)localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(paramString2);
       ((StringBuilder)localObject).append('=');
       ((StringBuilder)localObject).append(paramString3);
-      localStringBuilder.append(URLUtil.a(((StringBuilder)localObject).toString()));
+      localStringBuilder.append(URLUtil.c(((StringBuilder)localObject).toString()));
       paramString2 = localStringBuilder.toString();
       if (j == -1)
       {
@@ -86,6 +55,37 @@ public class QQComicConfBean$ServiceAccountConfig
     catch (Exception paramString2) {}
   }
   
+  private static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    try
+    {
+      Object localObject1 = new JSONObject(paramString).getString("oac_triggle").split("&");
+      if (localObject1 != null)
+      {
+        int j = localObject1.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject2 = localObject1[i];
+          if (localObject2.startsWith("busi_id"))
+          {
+            localObject1 = URLUtil.d(localObject2.split("=")[1]);
+            return localObject1;
+          }
+          i += 1;
+        }
+      }
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QQComicConfBean", 1, localException, new Object[0]);
+    }
+  }
+  
   public boolean a(String paramString)
   {
     return TextUtils.equals(paramString, this.a);
@@ -104,7 +104,7 @@ public class QQComicConfBean$ServiceAccountConfig
       {
         paramAppInterface = str1;
         if (!localMessage.isread) {
-          paramAppInterface = a(localMessage.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
+          paramAppInterface = b(localMessage.getExtInfoFromExtStr("report_key_bytes_oac_msg_extend"));
         }
       }
       str1 = str2;
@@ -133,7 +133,7 @@ public class QQComicConfBean$ServiceAccountConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.config.QQComicConfBean.ServiceAccountConfig
  * JD-Core Version:    0.7.0.1
  */

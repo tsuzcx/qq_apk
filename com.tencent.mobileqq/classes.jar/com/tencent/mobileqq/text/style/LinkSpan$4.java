@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.text.style;
 
-import android.view.View;
-import com.tencent.util.Thrower;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-final class LinkSpan$4
-  implements ActionSheet.OnButtonClickListener
+class LinkSpan$4
+  implements ActionSheet.OnDismissListener
 {
-  LinkSpan$4(Thrower paramThrower) {}
+  LinkSpan$4(LinkSpan paramLinkSpan, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss()
   {
-    this.a.a(Integer.valueOf(paramInt));
+    ReportController.b(this.a, "dc00898", "", "", "0X800A92E", "0X800A92E", this.b, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.LinkSpan.4
  * JD-Core Version:    0.7.0.1
  */

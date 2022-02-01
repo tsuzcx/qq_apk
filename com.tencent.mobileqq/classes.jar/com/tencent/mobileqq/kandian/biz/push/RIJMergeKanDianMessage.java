@@ -19,13 +19,12 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.kandian.base.utils.RIJDisplayStyleManager;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.base.utils.api.IRIJDisplayStyleManager;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.mobileqq.kandian.repo.handler.sp.RIJGetIndividualArticleSp;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
@@ -40,17 +39,12 @@ import org.json.JSONObject;
 
 public class RIJMergeKanDianMessage
 {
-  public static SimpleDateFormat a;
-  public static volatile boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
-  }
+  public static SimpleDateFormat a = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+  public static volatile boolean b;
   
   public static int a()
   {
-    if (RIJQQAppInterfaceUtil.a() == null) {
+    if (RIJQQAppInterfaceUtil.e() == null) {
       return -1;
     }
     ArrayList localArrayList = new ArrayList();
@@ -62,7 +56,7 @@ public class RIJMergeKanDianMessage
         if (localObject1 == null) {
           return -1;
         }
-        localObject1 = ((Conversation)localObject1).a().b();
+        localObject1 = ((Conversation)localObject1).K().j();
         if (localObject1 == null) {
           return -1;
         }
@@ -99,10 +93,313 @@ public class RIJMergeKanDianMessage
     }
   }
   
-  public static long a(QQAppInterface paramQQAppInterface)
+  public static String a(int paramInt)
+  {
+    Object localObject = RIJQQAppInterfaceUtil.a();
+    int j = Math.max(10, RIJDisplayStyleManager.INSTANCE.getRecentListReportVisibleItemCount());
+    if (localObject == null) {
+      return "";
+    }
+    List localList = c();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(RIJDisplayStyleManager.INSTANCE.getRecentListReportVisibleItemCount());
+    localStringBuilder.append(":");
+    localStringBuilder = new StringBuilder(localStringBuilder.toString());
+    int i = localList.size();
+    j += 0;
+    if (j < i) {
+      i = j;
+    }
+    ConversationFacade localConversationFacade = ((QQAppInterface)localObject).getConversationFacade();
+    j = 0;
+    while (j < i)
+    {
+      localObject = (RecentBaseData)localList.get(j);
+      if (localObject != null)
+      {
+        RecentUserBaseData localRecentUserBaseData = (RecentUserBaseData)localObject;
+        if ((localRecentUserBaseData.mUser != null) && ((localRecentUserBaseData.mUser.getType() == paramInt) || (paramInt == -1)))
+        {
+          int k = localConversationFacade.a(localRecentUserBaseData.getRecentUserUin(), localRecentUserBaseData.mUser.getType());
+          if (localRecentUserBaseData.mUnreadFlag == 3) {
+            k = 0;
+          }
+          if (localRecentUserBaseData.mUser.getType() == 1008) {
+            localObject = "1";
+          } else {
+            localObject = "0";
+          }
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("_");
+          localStringBuilder.append(localRecentUserBaseData.getRecentUserUin());
+          localStringBuilder.append("_");
+          localStringBuilder.append(k);
+          if (j != i - 1) {
+            localStringBuilder.append(":");
+          }
+        }
+      }
+      j += 1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getScreenPaInfo : ");
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+      QLog.d("ReadinjoySPEventReport", 2, ((StringBuilder)localObject).toString());
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static void a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    Object localObject = paramQQAppInterface.getMessageFacade();
+    if (localObject != null)
+    {
+      localObject = ((QQMessageFacade)localObject).a();
+      if ((localObject != null) && (((ConversationFacade)localObject).a(paramString, 1008) > 0)) {
+        ThreadManager.post(new RIJMergeKanDianMessage.2(paramString, paramQQAppInterface), 8, null, false);
+      }
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.r(AppConstants.KANDIAN_MERGE_UIN, 7220);
+      bool1 = bool2;
+      if (paramQQAppInterface != null)
+      {
+        bool1 = bool2;
+        if (!paramQQAppInterface.isread) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForStructing))
+    {
+      paramMessageRecord = (MessageForStructing)paramMessageRecord;
+      if (!paramMessageRecord.mIsParsed) {
+        paramMessageRecord.parse();
+      }
+      if (paramMessageRecord.structingMsg == null) {
+        return true;
+      }
+      if (!TextUtils.isEmpty(paramMessageRecord.structingMsg.mExtraData)) {
+        try
+        {
+          int i = new JSONObject(paramMessageRecord.structingMsg.mExtraData).optInt("keyguard_jump", 1);
+          return i == 1;
+        }
+        catch (JSONException paramMessageRecord)
+        {
+          paramMessageRecord.printStackTrace();
+        }
+      }
+    }
+    return true;
+  }
+  
+  public static boolean a(AbsStructMsg paramAbsStructMsg)
+  {
+    return (paramAbsStructMsg != null) && (paramAbsStructMsg.mMsgUrl != null) && (paramAbsStructMsg.mMsgUrl.contains("kandianshare.html5.qq.com"));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    Object localObject1 = new ArrayList();
+    try
+    {
+      Object localObject2 = (Conversation)FrameHelperActivity.a(BaseActivity.sTopActivity).a(Conversation.class);
+      if (localObject2 == null) {
+        return false;
+      }
+      localObject2 = ((Conversation)localObject2).K().j();
+      if (localObject2 == null) {
+        return false;
+      }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject3 = ((Iterator)localObject2).next();
+        if ((localObject3 instanceof RecentBaseData)) {
+          ((List)localObject1).add((RecentBaseData)localObject3);
+        }
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (RecentBaseData)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          localObject2 = (RecentUserBaseData)localObject2;
+          if (TextUtils.equals(((RecentUserBaseData)localObject2).getRecentUserUin(), paramString)) {
+            return true;
+          }
+          int i = ((RecentUserBaseData)localObject2).mMenuFlag;
+          if ((i & 0x20) == 0) {
+            return false;
+          }
+        }
+      }
+    }
+    catch (Exception paramString)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("failed to construct recent base ");
+      ((StringBuilder)localObject1).append(paramString.toString());
+      QLog.d("RIJMergeKanDianMessage", 1, ((StringBuilder)localObject1).toString());
+    }
+    return false;
+  }
+  
+  public static int b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      localObject1 = (Conversation)FrameHelperActivity.a(BaseActivity.sTopActivity).a(Conversation.class);
+      if (localObject1 == null) {
+        return -1;
+      }
+      localObject1 = ((Conversation)localObject1).K().j();
+      if (localObject1 == null) {
+        return -1;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        if ((localObject2 instanceof RecentBaseData)) {
+          localArrayList.add((RecentBaseData)localObject2);
+        }
+      }
+      int m = Math.min(localArrayList.size(), RIJDisplayStyleManager.INSTANCE.getRecentListReportVisibleItemCount());
+      int i = 0;
+      int k;
+      for (int j = 0; i < m; j = k)
+      {
+        localObject1 = (RecentBaseData)localArrayList.get(i);
+        k = j;
+        if (localObject1 != null)
+        {
+          localObject1 = (RecentUserBaseData)localObject1;
+          k = j;
+          if (!TextUtils.equals(((RecentUserBaseData)localObject1).getRecentUserUin(), AppConstants.KANDIAN_MERGE_UIN)) {
+            if (((RecentUserBaseData)localObject1).getRecentUserType() == 5000)
+            {
+              k = j;
+            }
+            else
+            {
+              k = j;
+              if (((RecentUserBaseData)localObject1).getUnreadNum() > 0)
+              {
+                k = ((RecentUserBaseData)localObject1).getUnreadNum();
+                k = j + k;
+              }
+            }
+          }
+        }
+        i += 1;
+      }
+      return j;
+    }
+    catch (Exception localException)
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("failed to construct recent base ");
+      ((StringBuilder)localObject1).append(localException.toString());
+      QLog.d("RIJMergeKanDianMessage", 1, ((StringBuilder)localObject1).toString());
+    }
+    return -1;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    int i = RIJDisplayStyleManager.INSTANCE.getRecentListReportVisibleItemCount();
+    Object localObject1;
+    if (paramQQAppInterface != null)
+    {
+      if (i <= 0) {
+        return false;
+      }
+      localObject1 = new ArrayList();
+    }
+    for (;;)
+    {
+      int j;
+      try
+      {
+        Object localObject2 = RecentDataListManager.a().c;
+        if (localObject2 != null) {
+          ((List)localObject1).addAll((Collection)localObject2);
+        }
+        localObject2 = ((List)localObject1).iterator();
+        if (((Iterator)localObject2).hasNext())
+        {
+          Object localObject3 = (RecentBaseData)((Iterator)localObject2).next();
+          if (localObject3 == null) {
+            continue;
+          }
+          localObject3 = (RecentUserBaseData)localObject3;
+          if ((((RecentUserBaseData)localObject3).mUser == null) || (((RecentUserBaseData)localObject3).mUser.getType() != 1008) || (!ServiceAccountFolderManager.b(paramQQAppInterface, ((RecentUserBaseData)localObject3).mUser.uin))) {
+            continue;
+          }
+          ((Iterator)localObject2).remove();
+          continue;
+        }
+        j = ((List)localObject1).size();
+        if (i <= j) {
+          break label248;
+        }
+        i = j;
+      }
+      catch (Exception paramQQAppInterface)
+      {
+        boolean bool;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("failed to construct recent base ");
+        ((StringBuilder)localObject1).append(paramQQAppInterface.toString());
+        QLog.d("RIJMergeKanDianMessage", 1, ((StringBuilder)localObject1).toString());
+      }
+      if (j < i)
+      {
+        paramQQAppInterface = (RecentBaseData)((List)localObject1).get(j);
+        if (paramQQAppInterface != null)
+        {
+          bool = TextUtils.equals(((RecentUserBaseData)paramQQAppInterface).getRecentUserUin(), AppConstants.KANDIAN_MERGE_UIN);
+          if (bool) {
+            return true;
+          }
+        }
+        j += 1;
+      }
+      else
+      {
+        return false;
+        label248:
+        j = 0;
+      }
+    }
+  }
+  
+  public static long c(QQAppInterface paramQQAppInterface)
   {
     long l1 = NetConnInfoCenter.getServerTime();
-    int i = ((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).getRecentListReportVisibleItemCount();
+    int i = RIJDisplayStyleManager.INSTANCE.getRecentListReportVisibleItemCount();
     int k = i - 2;
     Object localObject1;
     int m;
@@ -120,7 +417,7 @@ public class RIJMergeKanDianMessage
           QLog.d("RIJMergeKanDianMessage", 1, "conversation frame is null");
           return l1;
         }
-        localObject2 = ((Conversation)localObject2).a().b();
+        localObject2 = ((Conversation)localObject2).K().j();
         if (localObject2 == null) {
           return l1;
         }
@@ -158,7 +455,7 @@ public class RIJMergeKanDianMessage
           i2 = i;
           m = k;
           if (n >= j) {
-            break label460;
+            break label457;
           }
           i1 = i;
           try
@@ -204,12 +501,12 @@ public class RIJMergeKanDianMessage
       m = k;
       int i2 = i1;
       i1 = j;
-      label460:
+      label457:
       if (i2 != 0)
       {
         i = 0;
         if (i >= i1) {
-          break label843;
+          break label851;
         }
       }
     }
@@ -272,70 +569,12 @@ public class RIJMergeKanDianMessage
       return l1;
       i += 1;
       break;
-      label843:
+      label851:
       j = 0;
     }
   }
   
-  public static String a(int paramInt)
-  {
-    Object localObject = RIJQQAppInterfaceUtil.a();
-    int j = Math.max(10, ((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).getRecentListReportVisibleItemCount());
-    if (localObject == null) {
-      return "";
-    }
-    List localList = a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).getRecentListReportVisibleItemCount());
-    localStringBuilder.append(":");
-    localStringBuilder = new StringBuilder(localStringBuilder.toString());
-    int i = localList.size();
-    j += 0;
-    if (j < i) {
-      i = j;
-    }
-    ConversationFacade localConversationFacade = ((QQAppInterface)localObject).getConversationFacade();
-    j = 0;
-    while (j < i)
-    {
-      localObject = (RecentBaseData)localList.get(j);
-      if (localObject != null)
-      {
-        RecentUserBaseData localRecentUserBaseData = (RecentUserBaseData)localObject;
-        if ((localRecentUserBaseData.mUser != null) && ((localRecentUserBaseData.mUser.getType() == paramInt) || (paramInt == -1)))
-        {
-          int k = localConversationFacade.a(localRecentUserBaseData.getRecentUserUin(), localRecentUserBaseData.mUser.getType());
-          if (localRecentUserBaseData.mUnreadFlag == 3) {
-            k = 0;
-          }
-          if (localRecentUserBaseData.mUser.getType() == 1008) {
-            localObject = "1";
-          } else {
-            localObject = "0";
-          }
-          localStringBuilder.append((String)localObject);
-          localStringBuilder.append("_");
-          localStringBuilder.append(localRecentUserBaseData.getRecentUserUin());
-          localStringBuilder.append("_");
-          localStringBuilder.append(k);
-          if (j != i - 1) {
-            localStringBuilder.append(":");
-          }
-        }
-      }
-      j += 1;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getScreenPaInfo : ");
-      ((StringBuilder)localObject).append(localStringBuilder.toString());
-      QLog.d("ReadinjoySPEventReport", 2, ((StringBuilder)localObject).toString());
-    }
-    return localStringBuilder.toString();
-  }
-  
-  private static List<RecentBaseData> a()
+  private static List<RecentBaseData> c()
   {
     localArrayList = new ArrayList();
     try
@@ -347,7 +586,7 @@ public class RIJMergeKanDianMessage
         QLog.d("RIJMergeKanDianMessage", 1, "conversation frame is null");
         return localArrayList;
       }
-      localObject1 = ((Conversation)localObject1).a().b();
+      localObject1 = ((Conversation)localObject1).K().j();
       if (localObject1 == null) {
         return localArrayList;
       }
@@ -380,257 +619,12 @@ public class RIJMergeKanDianMessage
     }
   }
   
-  public static void a(String paramString, QQAppInterface paramQQAppInterface)
+  public static boolean d(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    Object localObject = paramQQAppInterface.getMessageFacade();
-    if (localObject != null)
-    {
-      localObject = ((QQMessageFacade)localObject).a();
-      if ((localObject != null) && (((ConversationFacade)localObject).a(paramString, 1008) > 0)) {
-        ThreadManager.post(new RIJMergeKanDianMessage.2(paramString, paramQQAppInterface), 8, null, false);
-      }
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.b(AppConstants.KANDIAN_MERGE_UIN, 7220);
-      bool1 = bool2;
-      if (paramQQAppInterface != null)
-      {
-        bool1 = bool2;
-        if (!paramQQAppInterface.isread) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForStructing))
-    {
-      paramMessageRecord = (MessageForStructing)paramMessageRecord;
-      if (!paramMessageRecord.mIsParsed) {
-        paramMessageRecord.parse();
-      }
-      if (paramMessageRecord.structingMsg == null) {
-        return true;
-      }
-      if (!TextUtils.isEmpty(paramMessageRecord.structingMsg.mExtraData)) {
-        try
-        {
-          int i = new JSONObject(paramMessageRecord.structingMsg.mExtraData).optInt("keyguard_jump", 1);
-          return i == 1;
-        }
-        catch (JSONException paramMessageRecord)
-        {
-          paramMessageRecord.printStackTrace();
-        }
-      }
-    }
-    return true;
-  }
-  
-  public static boolean a(AbsStructMsg paramAbsStructMsg)
-  {
-    return (paramAbsStructMsg != null) && (paramAbsStructMsg.mMsgUrl != null) && (paramAbsStructMsg.mMsgUrl.contains("kandianshare.html5.qq.com"));
-  }
-  
-  public static boolean a(String paramString)
-  {
-    Object localObject1 = new ArrayList();
-    try
-    {
-      Object localObject2 = (Conversation)FrameHelperActivity.a(BaseActivity.sTopActivity).a(Conversation.class);
-      if (localObject2 == null) {
-        return false;
-      }
-      localObject2 = ((Conversation)localObject2).a().b();
-      if (localObject2 == null) {
-        return false;
-      }
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject3 = ((Iterator)localObject2).next();
-        if ((localObject3 instanceof RecentBaseData)) {
-          ((List)localObject1).add((RecentBaseData)localObject3);
-        }
-      }
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (RecentBaseData)((Iterator)localObject1).next();
-        if (localObject2 != null)
-        {
-          localObject2 = (RecentUserBaseData)localObject2;
-          if (TextUtils.equals(((RecentUserBaseData)localObject2).getRecentUserUin(), paramString)) {
-            return true;
-          }
-          int i = ((RecentUserBaseData)localObject2).mMenuFlag;
-          if ((i & 0x20) == 0) {
-            return false;
-          }
-        }
-      }
-    }
-    catch (Exception paramString)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("failed to construct recent base ");
-      ((StringBuilder)localObject1).append(paramString.toString());
-      QLog.d("RIJMergeKanDianMessage", 1, ((StringBuilder)localObject1).toString());
-    }
-    return false;
-  }
-  
-  public static int b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      localObject1 = (Conversation)FrameHelperActivity.a(BaseActivity.sTopActivity).a(Conversation.class);
-      if (localObject1 == null) {
-        return -1;
-      }
-      localObject1 = ((Conversation)localObject1).a().b();
-      if (localObject1 == null) {
-        return -1;
-      }
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = ((Iterator)localObject1).next();
-        if ((localObject2 instanceof RecentBaseData)) {
-          localArrayList.add((RecentBaseData)localObject2);
-        }
-      }
-      int m = Math.min(localArrayList.size(), ((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).getRecentListReportVisibleItemCount());
-      int i = 0;
-      int k;
-      for (int j = 0; i < m; j = k)
-      {
-        localObject1 = (RecentBaseData)localArrayList.get(i);
-        k = j;
-        if (localObject1 != null)
-        {
-          localObject1 = (RecentUserBaseData)localObject1;
-          k = j;
-          if (!TextUtils.equals(((RecentUserBaseData)localObject1).getRecentUserUin(), AppConstants.KANDIAN_MERGE_UIN)) {
-            if (((RecentUserBaseData)localObject1).getRecentUserType() == 5000)
-            {
-              k = j;
-            }
-            else
-            {
-              k = j;
-              if (((RecentUserBaseData)localObject1).getUnreadNum() > 0)
-              {
-                k = ((RecentUserBaseData)localObject1).getUnreadNum();
-                k = j + k;
-              }
-            }
-          }
-        }
-        i += 1;
-      }
-      return j;
-    }
-    catch (Exception localException)
-    {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("failed to construct recent base ");
-      ((StringBuilder)localObject1).append(localException.toString());
-      QLog.d("RIJMergeKanDianMessage", 1, ((StringBuilder)localObject1).toString());
-    }
-    return -1;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    int i = ((IRIJDisplayStyleManager)QRoute.api(IRIJDisplayStyleManager.class)).getRecentListReportVisibleItemCount();
-    Object localObject1;
-    if (paramQQAppInterface != null)
-    {
-      if (i <= 0) {
-        return false;
-      }
-      localObject1 = new ArrayList();
-    }
-    for (;;)
-    {
-      int j;
-      try
-      {
-        Object localObject2 = RecentDataListManager.a().a;
-        if (localObject2 != null) {
-          ((List)localObject1).addAll((Collection)localObject2);
-        }
-        localObject2 = ((List)localObject1).iterator();
-        if (((Iterator)localObject2).hasNext())
-        {
-          Object localObject3 = (RecentBaseData)((Iterator)localObject2).next();
-          if (localObject3 == null) {
-            continue;
-          }
-          localObject3 = (RecentUserBaseData)localObject3;
-          if ((((RecentUserBaseData)localObject3).mUser == null) || (((RecentUserBaseData)localObject3).mUser.getType() != 1008) || (!ServiceAccountFolderManager.b(paramQQAppInterface, ((RecentUserBaseData)localObject3).mUser.uin))) {
-            continue;
-          }
-          ((Iterator)localObject2).remove();
-          continue;
-        }
-        j = ((List)localObject1).size();
-        if (i <= j) {
-          break label253;
-        }
-        i = j;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        boolean bool;
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("failed to construct recent base ");
-        ((StringBuilder)localObject1).append(paramQQAppInterface.toString());
-        QLog.d("RIJMergeKanDianMessage", 1, ((StringBuilder)localObject1).toString());
-      }
-      if (j < i)
-      {
-        paramQQAppInterface = (RecentBaseData)((List)localObject1).get(j);
-        if (paramQQAppInterface != null)
-        {
-          bool = TextUtils.equals(((RecentUserBaseData)paramQQAppInterface).getRecentUserUin(), AppConstants.KANDIAN_MERGE_UIN);
-          if (bool) {
-            return true;
-          }
-        }
-        j += 1;
-      }
-      else
-      {
-        return false;
-        label253:
-        j = 0;
-      }
-    }
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface)
-  {
-    if (jdField_a_of_type_Boolean)
+    if (b)
     {
       ThreadManager.executeOnSubThread(new RIJMergeKanDianMessage.1(paramQQAppInterface));
-      jdField_a_of_type_Boolean = false;
+      b = false;
     }
     Object localObject = BaseActivity.sTopActivity;
     if ((localObject instanceof SplashActivity))
@@ -640,7 +634,7 @@ public class RIJMergeKanDianMessage
         QLog.d("RIJMergeKanDianMessage", 1, "r:Not in conversationtab");
         return false;
       }
-      if (!ReadInJoyHelper.c(paramQQAppInterface))
+      if (!ReadInJoyHelper.d(paramQQAppInterface))
       {
         QLog.d("RIJMergeKanDianMessage", 1, "r:config false");
         return false;
@@ -650,8 +644,8 @@ public class RIJMergeKanDianMessage
         QLog.d("RIJMergeKanDianMessage", 1, "kandian push disabled");
         return false;
       }
-      localObject = RIJGetIndividualArticleSp.a(paramQQAppInterface);
-      String str = jdField_a_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(System.currentTimeMillis()));
+      localObject = RIJGetIndividualArticleSp.b(paramQQAppInterface);
+      String str = a.format(Long.valueOf(System.currentTimeMillis()));
       int i = Calendar.getInstance().get(11);
       if ((!TextUtils.equals((CharSequence)localObject, str)) && (i >= 6))
       {
@@ -675,7 +669,7 @@ public class RIJMergeKanDianMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.RIJMergeKanDianMessage
  * JD-Core Version:    0.7.0.1
  */

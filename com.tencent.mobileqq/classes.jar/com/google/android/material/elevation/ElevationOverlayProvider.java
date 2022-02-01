@@ -13,27 +13,27 @@ import com.google.android.material.resources.MaterialAttributes;
 
 public class ElevationOverlayProvider
 {
-  private final float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  private final boolean a;
   private final int b;
+  private final int c;
+  private final float d;
   
   public ElevationOverlayProvider(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = MaterialAttributes.a(paramContext, R.attr.p, false);
-    this.jdField_a_of_type_Int = MaterialColors.a(paramContext, R.attr.o, 0);
-    this.b = MaterialColors.a(paramContext, R.attr.n, 0);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
+    this.a = MaterialAttributes.a(paramContext, R.attr.w, false);
+    this.b = MaterialColors.a(paramContext, R.attr.v, 0);
+    this.c = MaterialColors.a(paramContext, R.attr.t, 0);
+    this.d = paramContext.getResources().getDisplayMetrics().density;
   }
   
   private boolean a(@ColorInt int paramInt)
   {
-    return ColorUtils.setAlphaComponent(paramInt, 255) == this.b;
+    return ColorUtils.setAlphaComponent(paramInt, 255) == this.c;
   }
   
   public float a(float paramFloat)
   {
-    float f = this.jdField_a_of_type_Float;
+    float f = this.d;
     if (f > 0.0F)
     {
       if (paramFloat <= 0.0F) {
@@ -48,7 +48,7 @@ public class ElevationOverlayProvider
   public int a(@ColorInt int paramInt, float paramFloat)
   {
     int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       i = paramInt;
       if (a(paramInt)) {
@@ -60,7 +60,7 @@ public class ElevationOverlayProvider
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   @ColorInt
@@ -68,12 +68,12 @@ public class ElevationOverlayProvider
   {
     paramFloat = a(paramFloat);
     int i = Color.alpha(paramInt);
-    return ColorUtils.setAlphaComponent(MaterialColors.a(ColorUtils.setAlphaComponent(paramInt, 255), this.jdField_a_of_type_Int, paramFloat), i);
+    return ColorUtils.setAlphaComponent(MaterialColors.a(ColorUtils.setAlphaComponent(paramInt, 255), this.b, paramFloat), i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.elevation.ElevationOverlayProvider
  * JD-Core Version:    0.7.0.1
  */

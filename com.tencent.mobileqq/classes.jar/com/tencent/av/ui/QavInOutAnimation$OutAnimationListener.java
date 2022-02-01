@@ -18,16 +18,13 @@ class QavInOutAnimation$OutAnimationListener
     }
     try
     {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      if ((this.a.x != null) && (this.a.x.k() != null))
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ai = false;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().aj = false;
+        this.a.x.k().bD = false;
+        this.a.x.k().bE = false;
       }
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
-      }
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      if (this.a.i != null) {
+        this.a.i.setVisibility(4);
       }
       if (this.a.b != null) {
         this.a.b.setVisibility(4);
@@ -41,12 +38,15 @@ class QavInOutAnimation$OutAnimationListener
       if (this.a.e != null) {
         this.a.e.setVisibility(4);
       }
-      if (this.a.g != null) {
-        this.a.g.setVisibility(4);
+      if (this.a.f != null) {
+        this.a.f.setVisibility(4);
       }
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null)
+      if (this.a.h != null) {
+        this.a.h.setVisibility(4);
+      }
+      if (this.a.z != null)
       {
-        this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.b();
+        this.a.z.b();
         return;
       }
     }
@@ -71,9 +71,9 @@ class QavInOutAnimation$OutAnimationListener
     }
     try
     {
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null)
+      if (this.a.z != null)
       {
-        this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.a();
+        this.a.z.a();
         return;
       }
     }

@@ -23,14 +23,14 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$1
         if (i != 3) {
           return true;
         }
-        this.a.l();
+        this.a.m();
         return true;
       }
       this.a.b(null);
       return true;
     }
     paramMessage = (Intent)paramMessage.obj;
-    this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    this.a.j = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
     if ((55 == paramMessage.getIntExtra(AlbumConstants.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
     {
       ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
@@ -52,7 +52,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

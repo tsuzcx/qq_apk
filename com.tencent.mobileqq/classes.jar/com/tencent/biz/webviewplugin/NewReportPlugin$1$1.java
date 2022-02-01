@@ -7,12 +7,12 @@ class NewReportPlugin$1$1
   
   public void run()
   {
-    NewReportPlugin.a(this.this$0.a, this.a);
+    NewReportPlugin.a(this.this$0.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

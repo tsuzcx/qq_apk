@@ -3,7 +3,7 @@ package androidx.appcompat.app;
 import android.os.Parcel;
 import android.os.Parcelable.ClassLoaderCreator;
 
-final class AppCompatDelegateImpl$PanelFeatureState$SavedState$1
+class AppCompatDelegateImpl$PanelFeatureState$SavedState$1
   implements Parcelable.ClassLoaderCreator<AppCompatDelegateImpl.PanelFeatureState.SavedState>
 {
   public AppCompatDelegateImpl.PanelFeatureState.SavedState createFromParcel(Parcel paramParcel)

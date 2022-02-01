@@ -12,12 +12,12 @@ class RainView$1
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView.b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite);
-    if ((RainView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView) != null))
+    this.b.b(this.a);
+    if ((RainView.a(this.b).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.b).get()) && (RainView.c(this.b) != null))
     {
-      RainView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView).set(0);
-      RainView.b(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView).set(0);
-      RainView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetRainView).a();
+      RainView.a(this.b).set(0);
+      RainView.b(this.b).set(0);
+      RainView.c(this.b).a();
       if (QLog.isColorLevel()) {
         QLog.d("SpriteGLView", 2, "rain animation end");
       }
@@ -26,7 +26,7 @@ class RainView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.RainView.1
  * JD-Core Version:    0.7.0.1
  */

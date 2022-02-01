@@ -21,7 +21,7 @@ class QCallProxy$3
         while (localCursor.moveToNext())
         {
           String str = SecurityUtile.encode(localCursor.getString(i));
-          int j = QCallProxy.a(this.this$0, str);
+          int j = QCallProxy.b(this.this$0, str);
           if (j != -1) {
             QCallProxy.a(this.this$0).addMsgQueue(this.a, j, str, null, null, 2, null);
           }
@@ -38,7 +38,7 @@ class QCallProxy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy.3
  * JD-Core Version:    0.7.0.1
  */

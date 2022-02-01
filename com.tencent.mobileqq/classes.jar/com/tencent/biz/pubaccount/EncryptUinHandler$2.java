@@ -16,14 +16,14 @@ class EncryptUinHandler$2
     if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
     {
       paramList = (EncryptUinInfo)paramList.get(0);
-      if ((paramList.jdField_a_of_type_Int == 0) && (paramList.jdField_a_of_type_Long == EncryptUinHandler.a(this.a).getLongAccountUin()) && (!TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString)))
+      if ((paramList.b == 0) && (paramList.a == EncryptUinHandler.b(this.a).getLongAccountUin()) && (!TextUtils.isEmpty(paramList.c)))
       {
-        EncryptUinHandler.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+        EncryptUinHandler.a(this.a, paramList.c);
         if (QLog.isColorLevel())
         {
           paramList = new StringBuilder();
           paramList.append("onGetEncryptUin: ");
-          paramList.append(EncryptUinHandler.a(this.a));
+          paramList.append(EncryptUinHandler.c(this.a));
           QLog.d("EncryptUinHandler", 2, paramList.toString());
         }
       }
@@ -31,11 +31,11 @@ class EncryptUinHandler$2
       {
         paramBundle = new StringBuilder();
         paramBundle.append("onGetEncryptUin: failed，code=");
-        paramBundle.append(paramList.jdField_a_of_type_Int);
+        paramBundle.append(paramList.b);
         QLog.d("EncryptUinHandler", 2, paramBundle.toString());
       }
-      if (EncryptUinHandler.a(this.a) != null) {
-        EncryptUinHandler.a(this.a).a(EncryptUinHandler.a(this.a));
+      if (EncryptUinHandler.d(this.a) != null) {
+        EncryptUinHandler.d(this.a).a(EncryptUinHandler.c(this.a));
       }
     }
   }
@@ -45,13 +45,13 @@ class EncryptUinHandler$2
     if (paramInt == 1)
     {
       super.onUpdate(paramInt, paramBoolean, paramObject);
-      EncryptUinHandler.a(this.a).removeObserver(EncryptUinHandler.a(this.a));
+      EncryptUinHandler.b(this.a).removeObserver(EncryptUinHandler.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.EncryptUinHandler.2
  * JD-Core Version:    0.7.0.1
  */

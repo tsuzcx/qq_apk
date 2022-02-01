@@ -15,14 +15,17 @@ class QQCustomDialogWtihForwardAvatar$3
   public void onClick(View paramView)
   {
     ResultRecord localResultRecord = (ResultRecord)paramView.getTag();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.hideSoftInputFromWindow();
-    MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, localResultRecord.getUinType(), localResultRecord.uin, localResultRecord.name, 0.86F, this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihForwardAvatar.a(this.jdField_a_of_type_AndroidAppActivity, 0.78F));
+    if (localResultRecord.uinType != 10014)
+    {
+      this.b.hideSoftInputFromWindow();
+      MiniChatActivity.a(this.a, localResultRecord.getUinType(), localResultRecord.uin, localResultRecord.name, 0.86F, this.b.a(this.a, 0.78F));
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihForwardAvatar.3
  * JD-Core Version:    0.7.0.1
  */

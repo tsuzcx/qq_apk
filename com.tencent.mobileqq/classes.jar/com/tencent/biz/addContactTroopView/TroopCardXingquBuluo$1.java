@@ -14,9 +14,9 @@ class TroopCardXingquBuluo$1
 {
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    searchtab.Item3 localItem3 = (searchtab.Item3)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    searchtab.Item3 localItem3 = (searchtab.Item3)this.a.e.get(paramInt);
     this.a.a(localItem3.str_transfer_url.get());
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_find", "", "grptab", "Clk_tribe", 0, 0, "", "", "", "");
+    ReportController.b(this.a.c, "P_CliOper", "Grp_find", "", "grptab", "Clk_tribe", 0, 0, "", "", "", "");
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }

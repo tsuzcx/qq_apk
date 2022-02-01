@@ -17,29 +17,29 @@ import com.tencent.qphone.base.util.QLog;
 public class CommentAvatarView
   extends ImageBase
 {
-  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130841788));
-  private ReadInJoyHeadImageView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView;
-  private Long jdField_a_of_type_JavaLangLong = null;
+  private static Drawable b = new BitmapDrawable(BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130842705));
+  private ReadInJoyHeadImageView a;
+  private Long c = null;
   
   public CommentAvatarView(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView = new ReadInJoyHeadImageView(paramVafContext.getContext());
+    this.a = new ReadInJoyHeadImageView(paramVafContext.getContext());
   }
   
   public int getComMeasuredHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.getComMeasuredHeight();
+    return this.a.getComMeasuredHeight();
   }
   
   public int getComMeasuredWidth()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.getComMeasuredWidth();
+    return this.a.getComMeasuredWidth();
   }
   
   public View getNativeView()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView;
+    return this.a;
   }
   
   public void loadImage(String paramString)
@@ -61,8 +61,8 @@ public class CommentAvatarView
     label134:
     try
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.getResources().getDrawable(paramString.intValue());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setImageDrawable(paramString);
+      paramString = this.a.getResources().getDrawable(paramString.intValue());
+      this.a.setImageDrawable(paramString);
       return;
     }
     catch (Resources.NotFoundException paramString)
@@ -72,26 +72,26 @@ public class CommentAvatarView
     }
     QLog.d("", 2, "loadImage: cant find in resources dir, do nothing");
     return;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setImagePlaceHolder(jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setImageSrc(paramString);
+    this.a.setImagePlaceHolder(b);
+    this.a.setImageSrc(paramString);
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    this.a.onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.onComMeasure(paramInt1, paramInt2);
+    this.a.onComMeasure(paramInt1, paramInt2);
   }
   
   public void onParseValueFinished()
   {
     super.onParseValueFinished();
-    Long localLong = this.jdField_a_of_type_JavaLangLong;
+    Long localLong = this.c;
     if (localLong != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setHeadImgByUin(localLong.longValue(), true);
+      this.a.setHeadImgByUin(localLong.longValue(), true);
     } else {
       loadImage(this.mSrc);
     }
@@ -101,7 +101,7 @@ public class CommentAvatarView
   public void reset()
   {
     super.reset();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setImageSrc(null);
+    this.a.setImageSrc(null);
     this.mSrc = null;
   }
   
@@ -117,7 +117,7 @@ public class CommentAvatarView
     }
     try
     {
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(Long.parseLong(paramString));
+      this.c = Long.valueOf(Long.parseLong(paramString));
       return true;
     }
     catch (Exception paramString)
@@ -129,12 +129,12 @@ public class CommentAvatarView
   
   public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyHeadImageView.setImageBitmap(paramBitmap);
+    this.a.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentAvatarView
  * JD-Core Version:    0.7.0.1
  */

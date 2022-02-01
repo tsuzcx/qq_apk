@@ -12,13 +12,13 @@ class LebaQZoneFacePlayHelper$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_Boolean) && (LebaQZoneFacePlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper) != null) && (LebaQZoneFacePlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper).size() >= 2)) {
-      LebaQZoneFacePlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper).sendEmptyMessageDelayed(1688002, 1400L);
+    if ((this.a) && (LebaQZoneFacePlayHelper.a(this.b) != null) && (LebaQZoneFacePlayHelper.a(this.b).size() >= 2)) {
+      LebaQZoneFacePlayHelper.b(this.b).sendEmptyMessageDelayed(1688002, 1400L);
     }
-    if (LebaQZoneFacePlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper) != null)
+    if (LebaQZoneFacePlayHelper.c(this.b) != null)
     {
-      LebaQZoneFacePlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper).a();
-      LebaQZoneFacePlayHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityLebaQZoneFacePlayHelper, null);
+      LebaQZoneFacePlayHelper.c(this.b).c();
+      LebaQZoneFacePlayHelper.a(this.b, null);
     }
   }
   
@@ -28,7 +28,7 @@ class LebaQZoneFacePlayHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper.1
  * JD-Core Version:    0.7.0.1
  */

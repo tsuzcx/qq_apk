@@ -29,7 +29,7 @@ public final class VideoSeeLaterController
     Object localObject = this.a;
     if (localObject != null)
     {
-      localObject = ((VideoPlayController)localObject).a();
+      localObject = ((VideoPlayController)localObject).k();
       if (localObject != null)
       {
         long l1 = VideoDataManager.a.a(((AbsBaseArticleInfo)localObject).innerUniqueID);
@@ -41,7 +41,7 @@ public final class VideoSeeLaterController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoSeeLaterController
  * JD-Core Version:    0.7.0.1
  */

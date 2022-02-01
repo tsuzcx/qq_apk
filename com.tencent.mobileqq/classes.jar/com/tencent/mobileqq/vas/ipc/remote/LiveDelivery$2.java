@@ -17,14 +17,14 @@ class LiveDelivery$2
     localEIPCResult.data = new Bundle();
     localEIPCResult.data.putBoolean("isSuccess", paramBoolean);
     if (paramObject != null) {
-      localEIPCResult.data.putByteArray("rspBytes", PbProtocol.a((byte[])paramObject));
+      localEIPCResult.data.putByteArray("rspBytes", PbProtocol.b((byte[])paramObject));
     }
     this.val$moudle.callbackResult(this.val$callbackId, localEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery.2
  * JD-Core Version:    0.7.0.1
  */

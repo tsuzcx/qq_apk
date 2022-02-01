@@ -10,11 +10,11 @@ import com.tencent.qphone.base.util.QLog;
 class NearbyProfileEditTribePanel$OnPicDragListener
   implements View.OnDragListener
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   public NearbyProfileEditTribePanel$OnPicDragListener(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public boolean onDrag(View paramView, DragEvent paramDragEvent)
@@ -28,7 +28,7 @@ class NearbyProfileEditTribePanel$OnPicDragListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.OnPicDragListener
  * JD-Core Version:    0.7.0.1
  */

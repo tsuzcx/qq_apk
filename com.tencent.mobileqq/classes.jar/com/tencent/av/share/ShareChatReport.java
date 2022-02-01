@@ -95,15 +95,6 @@ public class ShareChatReport
     a(str);
   }
   
-  public static void a(int paramInt1, int paramInt2)
-  {
-    Pair localPair = a(paramInt1, paramInt2);
-    if (localPair == null) {
-      return;
-    }
-    ReportController.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
-  }
-  
   public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     String str;
@@ -151,6 +142,15 @@ public class ShareChatReport
   public static void b()
   {
     a("0X800A2BA");
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    Pair localPair = a(paramInt1, paramInt2);
+    if (localPair == null) {
+      return;
+    }
+    ReportController.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
   }
   
   public static void c()

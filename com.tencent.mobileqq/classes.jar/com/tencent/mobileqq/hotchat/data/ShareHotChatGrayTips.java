@@ -19,7 +19,7 @@ public class ShareHotChatGrayTips
   private static final String JUMP_URL = "jump_url";
   private static final String MSG_CONTENT = "msg_content";
   private static final String MSG_CONTENT_HIGHLIGHT = "msg_content_highlight";
-  public static final String SHARE_GRAY_TIP_CONTENT = HardCodeUtil.a(2131713820);
+  public static final String SHARE_GRAY_TIP_CONTENT = HardCodeUtil.a(2131911360);
   private static final String TROOP_NAME = "troop_name";
   private static final String TROOP_UIN = "troop_uin";
   public String mHotnamecode;
@@ -121,7 +121,7 @@ public class ShareHotChatGrayTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.data.ShareHotChatGrayTips
  * JD-Core Version:    0.7.0.1
  */

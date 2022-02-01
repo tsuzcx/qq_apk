@@ -13,13 +13,13 @@ class ExtendOpenPageAction$1
   
   public void run()
   {
-    String str = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    NewReportPlugin.a((QBaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext, str, NewReportPlugin.b(str, NewReportPlugin.b(2)), "0", null, this.this$0.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin(), 20005, null, new Bundle());
+    String str = (String)this.this$0.f.get("uin");
+    NewReportPlugin.a((QBaseActivity)this.this$0.b, str, NewReportPlugin.b(str, NewReportPlugin.c(2)), "0", null, this.this$0.a.getCurrentAccountUin(), 20005, null, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendOpenPageAction.1
  * JD-Core Version:    0.7.0.1
  */

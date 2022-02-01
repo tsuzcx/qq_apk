@@ -10,16 +10,16 @@ class ReadInJoyMessagesActivity$2
   
   public void drawFinished()
   {
-    if ((!this.a.a) && (this.a.b))
+    if ((!this.a.d) && (this.a.e))
     {
-      this.a.a = true;
+      this.a.d = true;
       PublicTracker.a("subscribe_tab_cost", null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.activity.ReadInJoyMessagesActivity.2
  * JD-Core Version:    0.7.0.1
  */

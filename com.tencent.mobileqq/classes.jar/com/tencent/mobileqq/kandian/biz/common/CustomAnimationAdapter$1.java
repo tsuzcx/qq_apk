@@ -11,14 +11,14 @@ class CustomAnimationAdapter$1
   
   public boolean onPreDraw()
   {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    CustomAnimationAdapter.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonCustomAnimationAdapter, this.jdField_a_of_type_AndroidViewView);
+    this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    CustomAnimationAdapter.a(this.b, this.a);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.CustomAnimationAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,9 +28,9 @@ import java.util.List;
 public class HotRecommendFeedAdapter
   extends FeedItemThumbAdapter
 {
-  private UserManager jdField_a_of_type_ComTencentBizQqstoryModelUserManager = (UserManager)SuperManager.a(2);
-  private ChildViewClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = new HotRecommendFeedAdapter.1(this);
-  private HotRecommendFeedAdapter.OnSubscribeClickListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewAdapterHotRecommendFeedAdapter$OnSubscribeClickListener;
+  private UserManager k = (UserManager)SuperManager.a(2);
+  private HotRecommendFeedAdapter.OnSubscribeClickListener l;
+  private ChildViewClickListener m = new HotRecommendFeedAdapter.1(this);
   
   public HotRecommendFeedAdapter(Context paramContext, Activity paramActivity, int paramInt)
   {
@@ -39,36 +39,36 @@ public class HotRecommendFeedAdapter
   
   protected View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramBaseViewHolder.b = paramInt;
-    paramBaseViewHolder.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener);
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()))
+    paramBaseViewHolder.f = paramInt;
+    paramBaseViewHolder.a(this.m);
+    if ((this.b != null) && (paramInt < this.b.size()))
     {
-      Object localObject1 = paramBaseViewHolder.a(2131365298);
+      Object localObject1 = paramBaseViewHolder.a(2131431476);
       ((View)localObject1).setVisibility(8);
-      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131379896);
+      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131448770);
       localTextView1.setVisibility(4);
       localTextView1.setOnClickListener(null);
-      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131379839);
+      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131448695);
       localTextView2.setVisibility(4);
-      StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131380921);
+      StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131449911);
       localStoryUserBadgeView.setVisibility(8);
-      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131379778);
+      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131448598);
       localTextView3.setVisibility(8);
-      Object localObject2 = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131374520);
-      paramViewGroup = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      Object localObject2 = (QQStoryAutoPlayView)paramBaseViewHolder.a(2131442690);
+      paramViewGroup = (StoryVideoItem)this.b.get(paramInt);
       if (paramViewGroup != null)
       {
-        ((QQStoryAutoPlayView)localObject2).setItemData(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem, paramViewGroup, paramInt);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager != null) {
-          ((QQStoryAutoPlayView)localObject2).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayAutoPlayManager);
+        ((QQStoryAutoPlayView)localObject2).setItemData(this.c, paramViewGroup, paramInt);
+        if (this.e != null) {
+          ((QQStoryAutoPlayView)localObject2).a(this.e);
         }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener != null) {
-          ((QQStoryAutoPlayView)localObject2).setStoryCoverClickListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAutoplayQQStoryAutoPlayView$StoryCoverClickListener);
+        if (this.i != null) {
+          ((QQStoryAutoPlayView)localObject2).setStoryCoverClickListener(this.i);
         }
-        FeedSegment.a(paramViewGroup, (QQStoryAutoPlayView)localObject2, "QQStory_feed_min", UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 178.0F));
+        FeedSegment.a(paramViewGroup, (QQStoryAutoPlayView)localObject2, "QQStory_feed_min", UIUtils.a(this.a, 100.0F), UIUtils.a(this.a, 178.0F));
         if (!TextUtils.isEmpty(paramViewGroup.mOwnerUid))
         {
-          localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(paramViewGroup.mOwnerUid);
+          localObject2 = this.k.b(paramViewGroup.mOwnerUid);
           if (localObject2 != null)
           {
             localTextView3.setVisibility(0);
@@ -92,7 +92,7 @@ public class HotRecommendFeedAdapter
               localTextView1.setVisibility(0);
               if (((QQUserUIItem)localObject2).isSubscribe())
               {
-                localTextView1.setText(HardCodeUtil.a(2131705704));
+                localTextView1.setText(HardCodeUtil.a(2131903589));
                 localTextView1.setTextColor(Color.parseColor("#80FFFFFF"));
                 localTextView1.setBackgroundDrawable(null);
                 localTextView1.setOnClickListener(null);
@@ -101,9 +101,9 @@ public class HotRecommendFeedAdapter
               }
               else
               {
-                localTextView1.setText(HardCodeUtil.a(2131705703));
+                localTextView1.setText(HardCodeUtil.a(2131903588));
                 localTextView1.setTextColor(Color.parseColor("#FFFFFF"));
-                localTextView1.setBackgroundResource(2130847134);
+                localTextView1.setBackgroundResource(2130848686);
                 localTextView1.setOnClickListener(paramBaseViewHolder);
               }
             }
@@ -126,12 +126,12 @@ public class HotRecommendFeedAdapter
   
   protected BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561686, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.a).inflate(2131628065, paramViewGroup, false));
   }
   
   public void a(HotRecommendFeedAdapter.OnSubscribeClickListener paramOnSubscribeClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewAdapterHotRecommendFeedAdapter$OnSubscribeClickListener = paramOnSubscribeClickListener;
+    this.l = paramOnSubscribeClickListener;
   }
 }
 

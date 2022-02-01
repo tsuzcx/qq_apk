@@ -15,15 +15,15 @@ class VideoTrackContainerView$8
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    ((VideoTrackTimeLineView)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIDragView).b(i);
-    i = this.jdField_a_of_type_Int + VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView).a(this.b - i);
-    ((VideoTrackTimeLineView)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIDragView).a().scrollTo(i, 0);
-    VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView).scrollTo(i, 0);
+    ((VideoTrackTimeLineView)this.a).b(i);
+    i = this.b + VideoTrackContainerView.g(this.d).c(this.c - i);
+    ((VideoTrackTimeLineView)this.a).getVideoThumbnailView().scrollTo(i, 0);
+    VideoTrackContainerView.i(this.d).scrollTo(i, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView.8
  * JD-Core Version:    0.7.0.1
  */

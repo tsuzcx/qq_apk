@@ -11,13 +11,13 @@ class QQSettingMeHeadVipProcessor$3
   
   public void a(QQSettingMeLevelAndMedalBean paramQQSettingMeLevelAndMedalBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a(paramQQSettingMeLevelAndMedalBean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.b(paramQQSettingMeLevelAndMedalBean);
+    this.a.a(paramQQSettingMeLevelAndMedalBean);
+    this.a.b(paramQQSettingMeLevelAndMedalBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeHeadVipProcessor.3
  * JD-Core Version:    0.7.0.1
  */

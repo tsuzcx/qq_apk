@@ -24,49 +24,49 @@ import java.util.List;
 public class FeedItemCellTypeTopicMulti
   extends FeedItemCell
 {
-  TextView a;
-  TextView b;
+  TextView G;
+  TextView H;
   
   public FeedItemCellTypeTopicMulti(Context paramContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
     super(paramContext, paramIFaceDecoder, paramReadInJoyBaseAdapter);
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    return l().t().n();
+    return n().w().p();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    LinearLayout localLinearLayout = new LinearLayout(this.e);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     localLinearLayout.setOnClickListener(new FeedItemCellTypeTopicMulti.1(this));
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 2))
+    if ((this.C != null) && (this.C.size() >= 2))
     {
-      Object localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      Object localObject1 = LayoutInflater.from(this.e);
       int i = 0;
-      localObject1 = (RelativeLayout)((LayoutInflater)localObject1).inflate(2131560198, localLinearLayout, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((RelativeLayout)localObject1).findViewById(2131378784));
-      this.b = ((TextView)((RelativeLayout)localObject1).findViewById(2131371472));
-      Object localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+      localObject1 = (RelativeLayout)((LayoutInflater)localObject1).inflate(2131626245, localLinearLayout, false);
+      this.G = ((TextView)((RelativeLayout)localObject1).findViewById(2131447463));
+      this.H = ((TextView)((RelativeLayout)localObject1).findViewById(2131438844));
+      Object localObject2 = this.e.getResources().getDisplayMetrics();
       if (localObject2 != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(((DisplayMetrics)localObject2).widthPixels / 2);
-        this.b.setMaxWidth(((DisplayMetrics)localObject2).widthPixels / 4);
+        this.G.setMaxWidth(((DisplayMetrics)localObject2).widthPixels / 2);
+        this.H.setMaxWidth(((DisplayMetrics)localObject2).widthPixels / 4);
       }
-      localObject2 = (LinearLayout)((RelativeLayout)localObject1).findViewById(2131365171);
+      localObject2 = (LinearLayout)((RelativeLayout)localObject1).findViewById(2131431324);
       while (i < 2)
       {
-        ComponentTopicItemMulti localComponentTopicItemMulti = (ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i);
+        ComponentTopicItemMulti localComponentTopicItemMulti = (ComponentTopicItemMulti)this.C.get(i);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
         localLayoutParams.weight = 1.0F;
         if (i < 1) {
-          localLayoutParams.rightMargin = AIOUtils.b(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          localLayoutParams.rightMargin = AIOUtils.b(0.75F, this.e.getResources());
         }
         if (i > 0) {
-          localLayoutParams.leftMargin = AIOUtils.b(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
+          localLayoutParams.leftMargin = AIOUtils.b(0.75F, this.e.getResources());
         }
         localComponentTopicItemMulti.setLayoutParams(localLayoutParams);
         ((LinearLayout)localObject2).addView(localComponentTopicItemMulti);
@@ -74,63 +74,63 @@ public class FeedItemCellTypeTopicMulti
       }
       localLinearLayout.addView((View)localObject1);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+    if (this.r != null) {
+      localLinearLayout.addView(this.r);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+    if (this.t != null) {
+      localLinearLayout.addView(this.t);
     }
     a(localLinearLayout);
     return this;
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return null;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    super.o();
-    if ((this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel))
+    super.q();
+    if ((this.b instanceof IReadInJoyModel))
     {
-      AbsBaseArticleInfo localAbsBaseArticleInfo = ((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).a();
+      AbsBaseArticleInfo localAbsBaseArticleInfo = ((IReadInJoyModel)this.b).k();
       TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = localAbsBaseArticleInfo.mTopicRecommendFeedsInfo;
-      if ((localTopicRecommendFeedsInfo != null) && (localTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList != null))
+      if ((localTopicRecommendFeedsInfo != null) && (localTopicRecommendFeedsInfo.g != null))
       {
-        if (localTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.size() < 2) {
+        if (localTopicRecommendFeedsInfo.g.size() < 2) {
           return this;
         }
-        if (localTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(localTopicRecommendFeedsInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityTopicRecommendFeedsInfo$TopicRecommendFeedsTitle.a);
+        if (localTopicRecommendFeedsInfo.e != null) {
+          this.G.setText(localTopicRecommendFeedsInfo.e.a);
         } else {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+          this.G.setText("");
         }
-        TopicRecommendFeedsInfo.TopicRecommendFeedsTitle localTopicRecommendFeedsTitle = localTopicRecommendFeedsInfo.b;
+        TopicRecommendFeedsInfo.TopicRecommendFeedsTitle localTopicRecommendFeedsTitle = localTopicRecommendFeedsInfo.f;
         int i = 0;
-        if ((localTopicRecommendFeedsTitle != null) && (!TextUtils.isEmpty(localTopicRecommendFeedsInfo.b.a)))
+        if ((localTopicRecommendFeedsTitle != null) && (!TextUtils.isEmpty(localTopicRecommendFeedsInfo.f.a)))
         {
-          this.b.setVisibility(0);
-          this.b.setText(localTopicRecommendFeedsInfo.b.a);
-          if (TextUtils.isEmpty(localTopicRecommendFeedsInfo.b.b))
+          this.H.setVisibility(0);
+          this.H.setText(localTopicRecommendFeedsInfo.f.a);
+          if (TextUtils.isEmpty(localTopicRecommendFeedsInfo.f.b))
           {
-            this.b.setCompoundDrawables(null, null, null, null);
-            this.b.setOnClickListener(null);
+            this.H.setCompoundDrawables(null, null, null, null);
+            this.H.setOnClickListener(null);
           }
           else
           {
-            this.b.setOnClickListener(new FeedItemCellTypeTopicMulti.2(this, localAbsBaseArticleInfo, localTopicRecommendFeedsInfo));
+            this.H.setOnClickListener(new FeedItemCellTypeTopicMulti.2(this, localAbsBaseArticleInfo, localTopicRecommendFeedsInfo));
           }
         }
         else
         {
-          this.b.setVisibility(8);
+          this.H.setVisibility(8);
         }
-        if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 2)) {
+        if ((this.C != null) && (this.C.size() >= 2)) {
           while (i < 2)
           {
-            ((ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i)).a(localTopicRecommendFeedsInfo.jdField_a_of_type_JavaUtilArrayList.get(i));
-            ((ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i)).setArticleInfo(localAbsBaseArticleInfo, ((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).c());
+            ((ComponentTopicItemMulti)this.C.get(i)).a(localTopicRecommendFeedsInfo.g.get(i));
+            ((ComponentTopicItemMulti)this.C.get(i)).setArticleInfo(localAbsBaseArticleInfo, ((IReadInJoyModel)this.b).m());
             i += 1;
           }
         }
@@ -141,7 +141,7 @@ public class FeedItemCellTypeTopicMulti
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypeTopicMulti
  * JD-Core Version:    0.7.0.1
  */

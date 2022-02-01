@@ -11,7 +11,7 @@ class AEEditorVideoEditFragment$25
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Int;
+    int j = this.a;
     int i = j;
     if (j > 100) {
       i = 100;
@@ -20,15 +20,15 @@ class AEEditorVideoEditFragment$25
     if (i < 0) {
       j = 0;
     }
-    List localList = AEEditorVideoEditFragment.a(this.this$0, this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$AEEditorMusicInfo, 1, j);
+    List localList = AEEditorVideoEditFragment.a(this.this$0, this.b, 1, j);
     if (localList != null) {
-      AEEditorVideoEditFragment.a(this.this$0).a(localList);
+      AEEditorVideoEditFragment.m(this.this$0).a(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorVideoEditFragment.25
  * JD-Core Version:    0.7.0.1
  */

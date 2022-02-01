@@ -15,28 +15,28 @@ class ClassificationSearchActivity$2
   
   public void afterTextChanged(Editable paramEditable)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
+    String str = this.a.K.getText().toString();
+    paramEditable = this.a.J;
     if (str.equals("")) {
       i = 8;
     } else {
       i = 0;
     }
     paramEditable.setVisibility(i);
-    int j = this.a.f;
-    int k = ClassificationSearchActivity.c;
-    int i = 2131690728;
+    int j = this.a.q;
+    int k = ClassificationSearchActivity.m;
+    int i = 2131887648;
     if (j == k)
     {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690728));
+      this.a.I.setText(this.a.getResources().getString(2131887648));
     }
     else
     {
-      Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
+      Button localButton = this.a.I;
       if (!str.equals(""))
       {
         paramEditable = this.a.getResources();
-        i = 2131718623;
+        i = 2131916124;
       }
       else
       {
@@ -44,14 +44,14 @@ class ClassificationSearchActivity$2
       }
       localButton.setText(paramEditable.getString(i));
     }
-    if (AppSetting.d) {
-      this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
+    if (AppSetting.e) {
+      this.a.I.setContentDescription(this.a.I.getText().toString());
     }
-    if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+    if ((str.equals("")) && (this.a.M != null))
     {
-      if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d))
+      if ((this.a.q != ClassificationSearchActivity.k) && (this.a.q != ClassificationSearchActivity.n))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+        this.a.M.e();
         return;
       }
       ClassificationSearchActivity.a(this.a);
@@ -64,7 +64,7 @@ class ClassificationSearchActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.2
  * JD-Core Version:    0.7.0.1
  */

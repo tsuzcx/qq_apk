@@ -12,11 +12,11 @@ class BaseGuessPictureStageView$7
   
   public void run()
   {
-    Bitmap localBitmap = MosaicUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int);
-    Message localMessage = this.this$0.a.obtainMessage();
+    Bitmap localBitmap = MosaicUtil.a(this.a, this.b);
+    Message localMessage = this.this$0.E.obtainMessage();
     localMessage.obj = localBitmap;
     localMessage.what = 1;
-    this.this$0.a.sendMessage(localMessage);
+    this.this$0.E.sendMessage(localMessage);
   }
 }
 

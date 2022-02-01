@@ -9,13 +9,13 @@ class ViolaFragmentPresenter$8$1
   
   public void run()
   {
-    this.a.a.a.d();
-    this.a.a.a.b();
+    this.a.a.b.h();
+    this.a.a.b.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.presenter.ViolaFragmentPresenter.8.1
  * JD-Core Version:    0.7.0.1
  */

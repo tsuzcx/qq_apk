@@ -21,18 +21,17 @@ import java.util.List;
 public class OfflineVideoThumbDownLoader
   extends BaseThumbDownloader
 {
-  private FMObserver a;
+  private FMObserver c = new OfflineVideoThumbDownLoader.1(this);
   
   public OfflineVideoThumbDownLoader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new OfflineVideoThumbDownLoader.1(this);
-    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+    paramQQAppInterface.getFileManagerNotifyCenter().addObserver(this.c);
   }
   
   private OfflineVideoThumbDownLoader.VideoSession a(long paramLong, boolean paramBoolean)
   {
-    Object localObject = a(paramLong);
+    Object localObject = b(paramLong);
     if (localObject == null) {
       return null;
     }
@@ -56,13 +55,13 @@ public class OfflineVideoThumbDownLoader
       ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
       ((StringBuilder)localObject1).append("]");
       QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
       return null;
     }
     int i = a(paramFileManagerEntity.fileName);
     if (-1 == i)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
+      this.a.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
       return null;
     }
     a();
@@ -72,14 +71,14 @@ public class OfflineVideoThumbDownLoader
     ((StringBuilder)localObject2).append(a(paramInt, (String)localObject1));
     localObject2 = ((StringBuilder)localObject2).toString();
     localObject1 = localObject2;
-    if (!FileUtil.a((String)localObject2))
+    if (!FileUtil.b((String)localObject2))
     {
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramFileManagerEntity.strFileMd5))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(FMSettings.a().getDefaultThumbPath());
-        ((StringBuilder)localObject1).append(a(paramInt, MD5.a(paramFileManagerEntity.strFileMd5)));
+        ((StringBuilder)localObject1).append(a(paramInt, MD5.b(paramFileManagerEntity.strFileMd5)));
         localObject1 = ((StringBuilder)localObject1).toString();
       }
     }
@@ -94,14 +93,14 @@ public class OfflineVideoThumbDownLoader
       return localObject1;
     }
     localObject2 = new OfflineVideoThumbDownLoader.VideoSession(paramFileManagerEntity);
-    ((OfflineVideoThumbDownLoader.VideoSession)localObject2).jdField_a_of_type_Int = paramInt;
-    ((OfflineVideoThumbDownLoader.VideoSession)localObject2).b = i;
-    a((BaseThumbDownloader.Session)localObject2, (String)localObject1);
+    ((OfflineVideoThumbDownLoader.VideoSession)localObject2).c = paramInt;
+    ((OfflineVideoThumbDownLoader.VideoSession)localObject2).d = i;
+    a((BaseThumbDownloader.Session)localObject2, (String)localObject1, true);
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[downloadThumb] download  nSession[");
     ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
     ((StringBuilder)localObject1).append("], ThumbDownloadId[");
-    ((StringBuilder)localObject1).append(((OfflineVideoThumbDownLoader.VideoSession)localObject2).jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append(((OfflineVideoThumbDownLoader.VideoSession)localObject2).a);
     ((StringBuilder)localObject1).append("]");
     QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
     return null;
@@ -110,7 +109,7 @@ public class OfflineVideoThumbDownLoader
   public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
   {
     paramList = a(paramLong, false);
-    if ((paramList != null) && (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!TextUtils.isEmpty(paramString)) && (FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1)))
+    if ((paramList != null) && (paramList.b != null) && (!TextUtils.isEmpty(paramString)) && (FileIPv6StrateyController.b().isConfigEnableIPV6(this.a, 1)))
     {
       paramList = new StringBuilder();
       paramList.append("[downloadThumb]  ID[");
@@ -120,18 +119,18 @@ public class OfflineVideoThumbDownLoader
       paramList.append("]");
       QLog.i("OfflineVideoThumbDownLoader<FileAssistant>", 1, paramList.toString());
       paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt);
-      paramList = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1);
+      paramList = FileIPv6StrateyController.b().getIPlistForV6Domain(this.a, paramString, 1);
       if ((paramList != null) && (!paramList.a()))
       {
         paramString = new ArrayList();
-        paramList = paramList.a.iterator();
+        paramList = paramList.b.iterator();
         while (paramList.hasNext())
         {
           FileIPv6StrateyController.IPInfo localIPInfo = (FileIPv6StrateyController.IPInfo)paramList.next();
           StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append(localIPInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(localIPInfo.a);
           localStringBuilder.append(":");
-          localStringBuilder.append(localIPInfo.jdField_a_of_type_Int);
+          localStringBuilder.append(localIPInfo.b);
           paramString.add(localStringBuilder.toString());
         }
         paramList = new StringBuilder();
@@ -150,8 +149,6 @@ public class OfflineVideoThumbDownLoader
     }
     return null;
   }
-  
-  public void a(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
   
   public void a(long paramLong, HttpMsg paramHttpMsg)
   {
@@ -172,11 +169,11 @@ public class OfflineVideoThumbDownLoader
     }
     if (paramBoolean)
     {
-      localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
-      FileManagerUtil.d(localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      localVideoSession.b.strLargeThumPath = paramString;
+      FileManagerUtil.n(localVideoSession.b);
+      this.a.getFileManagerDataCenter().c(localVideoSession.b);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(paramBoolean, 50, new Object[] { localVideoSession.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localVideoSession.jdField_a_of_type_Int) });
+    this.a.getFileManagerNotifyCenter().a(paramBoolean, 50, new Object[] { localVideoSession.b, Integer.valueOf(localVideoSession.c) });
     super.a(paramLong, paramBoolean, paramInt, paramString, paramDownloadTask);
   }
   
@@ -192,15 +189,17 @@ public class OfflineVideoThumbDownLoader
       QLog.e("OfflineVideoThumbDownLoader<FileAssistant>", 2, paramDownloadTask.toString());
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().a(paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, paramLong);
+    this.a.getFileTransferHandler().a(paramDownloadTask.b.Uuid, paramDownloadTask.b.fileIdCrc, paramLong);
     return true;
   }
   
   public void b(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
+  
+  public void c(long paramLong, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OfflineVideoThumbDownLoader
  * JD-Core Version:    0.7.0.1
  */

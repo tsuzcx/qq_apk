@@ -11,9 +11,9 @@ class QRDisplayActivity$25
   
   public void run()
   {
-    CustomAccessibilityDelegate localCustomAccessibilityDelegate = new CustomAccessibilityDelegate(this.this$0.d, this.this$0);
-    this.this$0.d.setAccessibilityDelegate(localCustomAccessibilityDelegate);
-    AccessibilityUtil.a(this.this$0.a, false);
+    CustomAccessibilityDelegate localCustomAccessibilityDelegate = new CustomAccessibilityDelegate(this.this$0.I, this.this$0);
+    this.this$0.I.setAccessibilityDelegate(localCustomAccessibilityDelegate);
+    AccessibilityUtil.a(this.this$0.d, false);
   }
 }
 

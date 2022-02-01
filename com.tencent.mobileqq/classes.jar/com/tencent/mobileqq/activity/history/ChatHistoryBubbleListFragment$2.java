@@ -17,20 +17,20 @@ class ChatHistoryBubbleListFragment$2
   public void run()
   {
     Object localObject;
-    if (this.this$0.jdField_a_of_type_Int == 1) {
-      localObject = this.this$0.b;
+    if (this.this$0.a == 1) {
+      localObject = this.this$0.c;
     } else {
-      localObject = this.this$0.jdField_a_of_type_JavaLangString;
+      localObject = this.this$0.b;
     }
-    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().e((String)localObject, this.this$0.jdField_a_of_type_Int, this.this$0.jdField_c_of_type_Long);
+    MessageRecord localMessageRecord = this.this$0.f.getMessageFacade().e((String)localObject, this.this$0.a, this.this$0.i);
     if (localMessageRecord != null)
     {
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b((String)localObject, this.this$0.jdField_a_of_type_Int, localMessageRecord.shmsgseq, 20);
+      localObject = this.this$0.f.getMessageFacade().b((String)localObject, this.this$0.a, localMessageRecord.shmsgseq, 20);
       ((List)localObject).add(0, localMessageRecord);
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.2.1(this, (List)localObject));
       return;
     }
-    TroopTechReportUtils.a("chat_history", "target_404", String.valueOf(this.this$0.jdField_c_of_type_Long), String.valueOf(this.this$0.jdField_c_of_type_Int), "", "");
+    TroopTechReportUtils.a("chat_history", "target_404", String.valueOf(this.this$0.i), String.valueOf(this.this$0.m), "", "");
     if (QLog.isColorLevel()) {
       QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }
@@ -39,7 +39,7 @@ class ChatHistoryBubbleListFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBubbleListFragment.2
  * JD-Core Version:    0.7.0.1
  */

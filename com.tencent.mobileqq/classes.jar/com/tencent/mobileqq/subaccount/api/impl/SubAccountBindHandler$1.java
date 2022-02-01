@@ -18,30 +18,30 @@ class SubAccountBindHandler$1
     boolean bool1 = false;
     if ((paramString3 != null) && (paramString2 != null) && (paramString1 != null))
     {
-      if ((SubAccountBindHandler.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler) != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)) && (paramString1.equalsIgnoreCase(SubAccountBindHandler.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler).getAccount())))
+      if ((SubAccountBindHandler.a(this.d) != null) && (paramString2.equalsIgnoreCase(this.a.d)) && (paramString1.equalsIgnoreCase(SubAccountBindHandler.a(this.d).getAccount())))
       {
-        this.jdField_a_of_type_ComTencentMobileqqSubaccountApiISubAccountService.updateA2(paramString2, paramString3, this.jdField_a_of_type_Boolean);
-        SubAccountControllUtil.a(SubAccountBindHandler.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler), (byte)1, paramString2);
-        paramString1 = this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData;
-        paramString1.b = true;
-        this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler.notifyUI(2, true, paramString1);
+        this.b.updateA2(paramString2, paramString3, this.c);
+        SubAccountControllUtil.a(SubAccountBindHandler.a(this.d), (byte)1, paramString2);
+        paramString1 = this.a;
+        paramString1.k = true;
+        this.d.notifyUI(2, true, paramString1);
         return;
       }
       if (QLog.isColorLevel())
       {
         paramString3 = new StringBuilder();
         paramString3.append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
-        if (SubAccountBindHandler.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler) == null) {
+        if (SubAccountBindHandler.a(this.d) == null) {
           bool1 = true;
         }
         paramString3.append(bool1);
         paramString3.append(" subUin:");
-        paramString3.append(paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c));
+        paramString3.append(paramString2.equalsIgnoreCase(this.a.d));
         paramString3.append(" mainAccount:");
-        paramString3.append(paramString1.equalsIgnoreCase(SubAccountBindHandler.a(this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler).getAccount()));
+        paramString3.append(paramString1.equalsIgnoreCase(SubAccountBindHandler.a(this.d).getAccount()));
         QLog.d("SUB_ACCOUNT", 2, paramString3.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler.notifyUI(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+      this.d.notifyUI(2, true, this.a);
       return;
     }
     if (QLog.isColorLevel())
@@ -67,12 +67,12 @@ class SubAccountBindHandler$1
       localStringBuilder.append(bool1);
       QLog.e("SUB_ACCOUNT", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountApiImplSubAccountBindHandler.notifyUI(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+    this.d.notifyUI(2, true, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.api.impl.SubAccountBindHandler.1
  * JD-Core Version:    0.7.0.1
  */

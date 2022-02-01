@@ -9,14 +9,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataFetchManager;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.router.RIJJumpUtils;
 import com.tencent.mobileqq.kandian.repo.db.struct.BaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.share.ShareReport;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -34,69 +33,69 @@ import org.json.JSONObject;
 public final class RIJActivityResultHandler
 {
   @JvmField
-  public int a;
-  @JvmField
-  @NotNull
-  public Activity a;
-  @JvmField
-  @NotNull
-  public RIJDataFetchManager a;
-  @JvmField
   @NotNull
   public ReadInJoyBaseAdapter a;
-  private final Map<Integer, Function3<Integer, Integer, Intent, Unit>> a;
+  @JvmField
+  @NotNull
+  public Activity b;
+  @JvmField
+  public int c;
+  @JvmField
+  @NotNull
+  public RIJDataFetchManager d;
+  private final Map<Integer, Function3<Integer, Integer, Intent, Unit>> e;
   
   public RIJActivityResultHandler(@NotNull ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, @NotNull Activity paramActivity, int paramInt, @NotNull RIJDataFetchManager paramRIJDataFetchManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter = paramReadInJoyBaseAdapter;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataFetchManager = paramRIJDataFetchManager;
-    this.jdField_a_of_type_JavaUtilMap = ((Map)new LinkedHashMap());
+    this.a = paramReadInJoyBaseAdapter;
+    this.b = paramActivity;
+    this.c = paramInt;
+    this.d = paramRIJDataFetchManager;
+    this.e = ((Map)new LinkedHashMap());
     a();
   }
   
   private final void a()
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.e;
     RIJActivityResultHandler localRIJActivityResultHandler = (RIJActivityResultHandler)this;
     localMap.put(Integer.valueOf(9991), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.1(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(9091), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.2(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(21), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.3(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(19202), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.4(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(125), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.5(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(2), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.6(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.7(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10922), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.8(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(20001), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.9(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(1032), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.10(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(9999), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.11(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(102), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.12(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(55577), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.13(localRIJActivityResultHandler));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(117), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.14(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(9091), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.2(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(21), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.3(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(19202), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.4(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(125), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.5(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(2), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.6(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(1), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.7(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(10922), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.8(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(20001), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.9(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(1032), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.10(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(9999), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.11(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(102), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.12(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(55577), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.13(localRIJActivityResultHandler));
+    this.e.put(Integer.valueOf(117), new RIJActivityResultHandler.registerRequestCodeToFunctionMap.14(localRIJActivityResultHandler));
   }
   
   private final void a(int paramInt)
   {
     if (-1 == paramInt) {
-      ReadInJoyLogicEngine.a().o();
+      ReadInJoyLogicEngine.a().O();
     }
   }
   
   private final void b(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(paramInt2, paramIntent);
+    this.a.a(paramInt2, paramIntent);
   }
   
   private final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt1 == -1) && (paramIntent != null))
     {
-      Object localObject = ReadInJoyUtils.a();
+      Object localObject = ReadInJoyUtils.b();
       if (localObject != null)
       {
         localObject = (QQAppInterface)localObject;
-        Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+        Activity localActivity = this.b;
         ForwardUtils.a((QQAppInterface)localObject, localActivity, localActivity.getApplicationContext(), paramIntent, null);
       }
       else
@@ -145,20 +144,20 @@ public final class RIJActivityResultHandler
       label32:
       paramIntent = (AbsBaseArticleInfo)paramIntent;
       if (paramIntent != null) {
-        RIJJumpUtils.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_Int);
+        RIJJumpUtils.a(this.b, paramIntent, this.a, this.c);
       }
     }
   }
   
   private final void f(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    paramIntent = ReadInJoyUtils.a();
+    paramIntent = ReadInJoyUtils.b();
     if (paramIntent != null)
     {
       paramIntent = paramIntent.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER);
       if (paramIntent != null)
       {
-        ((KandianMergeManager)paramIntent).q();
+        ((KandianMergeManager)paramIntent).T();
         QLog.d("ReadInJoyListViewGroup", 1, "back from msgbox page, setRead!");
         return;
       }
@@ -182,7 +181,7 @@ public final class RIJActivityResultHandler
         localObject = new JSONObject();
         try
         {
-          ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_Int);
+          ((JSONObject)localObject).put("channel_id", this.c);
           ((JSONObject)localObject).put("rowkey", paramIntent.optString("rowkey"));
           ((JSONObject)localObject).put("topicid", "");
         }
@@ -190,11 +189,10 @@ public final class RIJActivityResultHandler
         try
         {
           localException.printStackTrace();
-          IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append(paramIntent.optString("feedsId"));
           localStringBuilder.append("");
-          localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800982D", "0X800982D", 0, 0, localStringBuilder.toString(), "2", "", ((JSONObject)localObject).toString(), false);
+          PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800982D", "0X800982D", 0, 0, localStringBuilder.toString(), "2", "", ((JSONObject)localObject).toString(), false);
           return;
         }
         catch (Exception paramIntent) {}
@@ -219,7 +217,7 @@ public final class RIJActivityResultHandler
       }
       paramIntent = (AdvertisementInfo)paramIntent;
       if (paramIntent != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter.a(paramIntent);
+        this.a.a(paramIntent);
       }
     }
   }
@@ -230,7 +228,7 @@ public final class RIJActivityResultHandler
     {
       BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramIntent.getParcelableExtra("comment_article_info");
       if (localBaseArticleInfo != null) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataFetchManager.a(paramInt1, (AbsBaseArticleInfo)localBaseArticleInfo, paramIntent);
+        this.d.a(paramInt1, (AbsBaseArticleInfo)localBaseArticleInfo, paramIntent);
       }
     }
   }
@@ -242,21 +240,21 @@ public final class RIJActivityResultHandler
     {
       if (paramInt1 == 9091)
       {
-        localFunction3 = (Function3)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+        localFunction3 = (Function3)this.e.get(Integer.valueOf(paramInt1));
         if (localFunction3 != null) {
           paramIntent = (Unit)localFunction3.invoke(Integer.valueOf(paramInt2), Integer.valueOf(0), paramIntent);
         }
       }
       else if (paramInt1 == 1)
       {
-        localFunction3 = (Function3)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+        localFunction3 = (Function3)this.e.get(Integer.valueOf(paramInt1));
         if (localFunction3 != null) {
           paramIntent = (Unit)localFunction3.invoke(Integer.valueOf(paramInt2), Integer.valueOf(1), paramIntent);
         }
       }
       else
       {
-        localFunction3 = (Function3)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+        localFunction3 = (Function3)this.e.get(Integer.valueOf(paramInt1));
         if (localFunction3 != null) {
           paramIntent = (Unit)localFunction3.invoke(Integer.valueOf(paramInt2), Integer.valueOf(0), paramIntent);
         }
@@ -264,7 +262,7 @@ public final class RIJActivityResultHandler
     }
     else
     {
-      localFunction3 = (Function3)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt1));
+      localFunction3 = (Function3)this.e.get(Integer.valueOf(paramInt1));
       if (localFunction3 != null) {
         paramIntent = (Unit)localFunction3.invoke(Integer.valueOf(paramInt2), Integer.valueOf(2), paramIntent);
       }
@@ -273,7 +271,7 @@ public final class RIJActivityResultHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJActivityResultHandler
  * JD-Core Version:    0.7.0.1
  */

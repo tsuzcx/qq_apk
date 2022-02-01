@@ -21,53 +21,53 @@ import java.util.Vector;
 public class VideoDrawableHandler
   implements Handler.Callback
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 4;
-  private static int d;
-  long jdField_a_of_type_Long = 0L;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  VideoDrawableHandler.OnGetFrameListener jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler$OnGetFrameListener;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString;
-  LinkedList<VideoDrawableHandler.DecodeFrameTask> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  Vector<WeakReference<VideoDrawable>> jdField_a_of_type_JavaUtilVector = new Vector();
-  boolean jdField_a_of_type_Boolean = true;
+  public static int k = 1;
+  public static int l = 2;
+  public static int m = 4;
+  private static int p;
+  Vector<WeakReference<VideoDrawable>> a = new Vector();
   Bitmap b;
-  private Bitmap c;
+  Bitmap c;
+  MediaMetadataRetriever d;
+  LinkedList<VideoDrawableHandler.DecodeFrameTask> e = new LinkedList();
+  boolean f = true;
+  Handler g = new Handler(Looper.getMainLooper(), this);
+  long h = 0L;
+  final Object i = new Object();
+  VideoDrawableHandler.OnGetFrameListener j;
+  private String n;
+  private Bitmap o;
+  private AppInterface q;
   
   public VideoDrawableHandler(AppInterface paramAppInterface, VideoDrawableHandler.OnGetFrameListener paramOnGetFrameListener)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler$OnGetFrameListener = paramOnGetFrameListener;
+    this.q = paramAppInterface;
+    this.j = paramOnGetFrameListener;
   }
   
   /* Error */
-  public static Bitmap a(String paramString)
+  public static Bitmap b(String paramString)
   {
     // Byte code:
-    //   0: ldc 91
-    //   2: invokestatic 97	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   0: ldc 104
+    //   2: invokestatic 110	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   5: astore_1
     //   6: aload_1
-    //   7: invokevirtual 101	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   7: invokevirtual 114	java/lang/Class:newInstance	()Ljava/lang/Object;
     //   10: astore_2
     //   11: aload_1
     //   12: astore 4
     //   14: aload_2
     //   15: astore_3
     //   16: aload_1
-    //   17: ldc 103
+    //   17: ldc 116
     //   19: iconst_1
-    //   20: anewarray 93	java/lang/Class
+    //   20: anewarray 106	java/lang/Class
     //   23: dup
     //   24: iconst_0
-    //   25: ldc 105
+    //   25: ldc 118
     //   27: aastore
-    //   28: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   28: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   31: aload_2
     //   32: iconst_1
     //   33: anewarray 4	java/lang/Object
@@ -75,13 +75,13 @@ public class VideoDrawableHandler
     //   37: iconst_0
     //   38: aload_0
     //   39: aastore
-    //   40: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   40: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   43: pop
     //   44: aload_1
     //   45: astore 4
     //   47: aload_2
     //   48: astore_3
-    //   49: getstatic 120	android/os/Build$VERSION:SDK_INT	I
+    //   49: getstatic 133	android/os/Build$VERSION:SDK_INT	I
     //   52: bipush 9
     //   54: if_icmpgt +55 -> 109
     //   57: aload_1
@@ -89,27 +89,27 @@ public class VideoDrawableHandler
     //   60: aload_2
     //   61: astore_3
     //   62: aload_1
-    //   63: ldc 122
+    //   63: ldc 135
     //   65: iconst_0
-    //   66: anewarray 93	java/lang/Class
-    //   69: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   66: anewarray 106	java/lang/Class
+    //   69: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   72: aload_2
     //   73: iconst_0
     //   74: anewarray 4	java/lang/Object
-    //   77: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   80: checkcast 124	android/graphics/Bitmap
+    //   77: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   80: checkcast 137	android/graphics/Bitmap
     //   83: astore_0
     //   84: aload_2
     //   85: ifnull +22 -> 107
     //   88: aload_1
-    //   89: ldc 126
+    //   89: ldc 139
     //   91: iconst_0
-    //   92: anewarray 93	java/lang/Class
-    //   95: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   92: anewarray 106	java/lang/Class
+    //   95: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   98: aload_2
     //   99: iconst_0
     //   100: anewarray 4	java/lang/Object
-    //   103: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   103: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   106: pop
     //   107: aload_0
     //   108: areturn
@@ -118,16 +118,16 @@ public class VideoDrawableHandler
     //   112: aload_2
     //   113: astore_3
     //   114: aload_1
-    //   115: ldc 128
+    //   115: ldc 141
     //   117: iconst_0
-    //   118: anewarray 93	java/lang/Class
-    //   121: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   118: anewarray 106	java/lang/Class
+    //   121: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   124: aload_2
     //   125: iconst_0
     //   126: anewarray 4	java/lang/Object
-    //   129: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   132: checkcast 130	[B
-    //   135: checkcast 130	[B
+    //   129: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   132: checkcast 143	[B
+    //   135: checkcast 143	[B
     //   138: astore 5
     //   140: aload 5
     //   142: ifnull +87 -> 229
@@ -139,7 +139,7 @@ public class VideoDrawableHandler
     //   152: iconst_0
     //   153: aload 5
     //   155: arraylength
-    //   156: invokestatic 136	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   156: invokestatic 149	android/graphics/BitmapFactory:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   159: astore 5
     //   161: aload 5
     //   163: astore_3
@@ -149,18 +149,18 @@ public class VideoDrawableHandler
     //   170: astore 4
     //   172: aload_2
     //   173: astore_3
-    //   174: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   174: invokestatic 155	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   177: ifeq +21 -> 198
     //   180: aload_1
     //   181: astore 4
     //   183: aload_2
     //   184: astore_3
-    //   185: ldc 144
+    //   185: ldc 157
     //   187: iconst_2
     //   188: aload 5
-    //   190: invokevirtual 148	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   190: invokevirtual 161	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
     //   193: aload 5
-    //   195: invokestatic 152	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   195: invokestatic 164	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   198: aconst_null
     //   199: astore_3
     //   200: aload_3
@@ -168,14 +168,14 @@ public class VideoDrawableHandler
     //   204: aload_2
     //   205: ifnull +22 -> 227
     //   208: aload_1
-    //   209: ldc 126
+    //   209: ldc 139
     //   211: iconst_0
-    //   212: anewarray 93	java/lang/Class
-    //   215: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   212: anewarray 106	java/lang/Class
+    //   215: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   218: aload_2
     //   219: iconst_0
     //   220: anewarray 4	java/lang/Object
-    //   223: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   223: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   226: pop
     //   227: aload_3
     //   228: areturn
@@ -185,21 +185,21 @@ public class VideoDrawableHandler
     //   233: astore_3
     //   234: aload_0
     //   235: iconst_1
-    //   236: invokestatic 158	android/media/ThumbnailUtils:createVideoThumbnail	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
+    //   236: invokestatic 170	android/media/ThumbnailUtils:createVideoThumbnail	(Ljava/lang/String;I)Landroid/graphics/Bitmap;
     //   239: astore_0
     //   240: aload_0
     //   241: ifnull +28 -> 269
     //   244: aload_2
     //   245: ifnull +22 -> 267
     //   248: aload_1
-    //   249: ldc 126
+    //   249: ldc 139
     //   251: iconst_0
-    //   252: anewarray 93	java/lang/Class
-    //   255: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   252: anewarray 106	java/lang/Class
+    //   255: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   258: aload_2
     //   259: iconst_0
     //   260: anewarray 4	java/lang/Object
-    //   263: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   263: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   266: pop
     //   267: aload_0
     //   268: areturn
@@ -208,27 +208,27 @@ public class VideoDrawableHandler
     //   272: aload_2
     //   273: astore_3
     //   274: aload_1
-    //   275: ldc 160
+    //   275: ldc 172
     //   277: iconst_0
-    //   278: anewarray 93	java/lang/Class
-    //   281: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   278: anewarray 106	java/lang/Class
+    //   281: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   284: aload_2
     //   285: iconst_0
     //   286: anewarray 4	java/lang/Object
-    //   289: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   292: checkcast 124	android/graphics/Bitmap
+    //   289: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   292: checkcast 137	android/graphics/Bitmap
     //   295: astore_0
     //   296: aload_2
     //   297: ifnull +22 -> 319
     //   300: aload_1
-    //   301: ldc 126
+    //   301: ldc 139
     //   303: iconst_0
-    //   304: anewarray 93	java/lang/Class
-    //   307: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   304: anewarray 106	java/lang/Class
+    //   307: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   310: aload_2
     //   311: iconst_0
     //   312: anewarray 4	java/lang/Object
-    //   315: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   315: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   318: pop
     //   319: aload_0
     //   320: areturn
@@ -291,22 +291,22 @@ public class VideoDrawableHandler
     //   408: astore 4
     //   410: aload_2
     //   411: astore_3
-    //   412: ldc 144
-    //   414: ldc 161
+    //   412: ldc 157
+    //   414: ldc 173
     //   416: aload_0
-    //   417: invokestatic 167	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   417: invokestatic 178	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   420: pop
     //   421: aload_2
     //   422: ifnull +277 -> 699
     //   425: aload_1
-    //   426: ldc 126
+    //   426: ldc 139
     //   428: iconst_0
-    //   429: anewarray 93	java/lang/Class
-    //   432: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   429: anewarray 106	java/lang/Class
+    //   432: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   435: aload_2
     //   436: iconst_0
     //   437: anewarray 4	java/lang/Object
-    //   440: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   440: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   443: pop
     //   444: aconst_null
     //   445: areturn
@@ -319,22 +319,22 @@ public class VideoDrawableHandler
     //   452: astore 4
     //   454: aload_2
     //   455: astore_3
-    //   456: ldc 144
-    //   458: ldc 161
+    //   456: ldc 157
+    //   458: ldc 173
     //   460: aload_0
-    //   461: invokestatic 167	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   461: invokestatic 178	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   464: pop
     //   465: aload_2
     //   466: ifnull +233 -> 699
     //   469: aload_1
-    //   470: ldc 126
+    //   470: ldc 139
     //   472: iconst_0
-    //   473: anewarray 93	java/lang/Class
-    //   476: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   473: anewarray 106	java/lang/Class
+    //   476: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   479: aload_2
     //   480: iconst_0
     //   481: anewarray 4	java/lang/Object
-    //   484: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   484: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   487: pop
     //   488: aconst_null
     //   489: areturn
@@ -347,22 +347,22 @@ public class VideoDrawableHandler
     //   496: astore 4
     //   498: aload_2
     //   499: astore_3
-    //   500: ldc 144
-    //   502: ldc 161
+    //   500: ldc 157
+    //   502: ldc 173
     //   504: aload_0
-    //   505: invokestatic 167	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   505: invokestatic 178	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   508: pop
     //   509: aload_2
     //   510: ifnull +189 -> 699
     //   513: aload_1
-    //   514: ldc 126
+    //   514: ldc 139
     //   516: iconst_0
-    //   517: anewarray 93	java/lang/Class
-    //   520: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   517: anewarray 106	java/lang/Class
+    //   520: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   523: aload_2
     //   524: iconst_0
     //   525: anewarray 4	java/lang/Object
-    //   528: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   528: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   531: pop
     //   532: aconst_null
     //   533: areturn
@@ -375,22 +375,22 @@ public class VideoDrawableHandler
     //   540: astore 4
     //   542: aload_2
     //   543: astore_3
-    //   544: ldc 144
-    //   546: ldc 161
+    //   544: ldc 157
+    //   546: ldc 173
     //   548: aload_0
-    //   549: invokestatic 167	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   549: invokestatic 178	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   552: pop
     //   553: aload_2
     //   554: ifnull +145 -> 699
     //   557: aload_1
-    //   558: ldc 126
+    //   558: ldc 139
     //   560: iconst_0
-    //   561: anewarray 93	java/lang/Class
-    //   564: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   561: anewarray 106	java/lang/Class
+    //   564: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   567: aload_2
     //   568: iconst_0
     //   569: anewarray 4	java/lang/Object
-    //   572: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   572: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   575: pop
     //   576: aconst_null
     //   577: areturn
@@ -403,36 +403,36 @@ public class VideoDrawableHandler
     //   584: astore 4
     //   586: aload_2
     //   587: astore_3
-    //   588: ldc 144
-    //   590: ldc 161
+    //   588: ldc 157
+    //   590: ldc 173
     //   592: aload_0
-    //   593: invokestatic 167	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   593: invokestatic 178	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   596: pop
     //   597: aload_2
     //   598: ifnull +101 -> 699
     //   601: aload_1
-    //   602: ldc 126
+    //   602: ldc 139
     //   604: iconst_0
-    //   605: anewarray 93	java/lang/Class
-    //   608: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   605: anewarray 106	java/lang/Class
+    //   608: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   611: aload_2
     //   612: iconst_0
     //   613: anewarray 4	java/lang/Object
-    //   616: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   616: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   619: pop
     //   620: aconst_null
     //   621: areturn
     //   622: aload_3
     //   623: ifnull +22 -> 645
     //   626: aload_1
-    //   627: ldc 126
+    //   627: ldc 139
     //   629: iconst_0
-    //   630: anewarray 93	java/lang/Class
-    //   633: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   630: anewarray 106	java/lang/Class
+    //   633: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   636: aload_3
     //   637: iconst_0
     //   638: anewarray 4	java/lang/Object
-    //   641: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   641: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   644: pop
     //   645: aload_0
     //   646: athrow
@@ -443,28 +443,28 @@ public class VideoDrawableHandler
     //   651: aload_2
     //   652: ifnull +47 -> 699
     //   655: aload_1
-    //   656: ldc 126
+    //   656: ldc 139
     //   658: iconst_0
-    //   659: anewarray 93	java/lang/Class
-    //   662: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   659: anewarray 106	java/lang/Class
+    //   662: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   665: aload_2
     //   666: iconst_0
     //   667: anewarray 4	java/lang/Object
-    //   670: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   670: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   673: pop
     //   674: aconst_null
     //   675: areturn
     //   676: aload_2
     //   677: ifnull +22 -> 699
     //   680: aload_1
-    //   681: ldc 126
+    //   681: ldc 139
     //   683: iconst_0
-    //   684: anewarray 93	java/lang/Class
-    //   687: invokevirtual 109	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   684: anewarray 106	java/lang/Class
+    //   687: invokevirtual 122	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   690: aload_2
     //   691: iconst_0
     //   692: anewarray 4	java/lang/Object
-    //   695: invokevirtual 115	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   695: invokevirtual 128	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   698: pop
     //   699: aconst_null
     //   700: areturn
@@ -626,57 +626,52 @@ public class VideoDrawableHandler
     //   626	645	740	java/lang/Exception
   }
   
-  private void d()
+  private void f()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.f) {
       return;
     }
-    VideoDrawableHandler.DecodeFrameTask localDecodeFrameTask = (VideoDrawableHandler.DecodeFrameTask)this.jdField_a_of_type_JavaUtilLinkedList.poll();
+    VideoDrawableHandler.DecodeFrameTask localDecodeFrameTask = (VideoDrawableHandler.DecodeFrameTask)this.e.poll();
     if (localDecodeFrameTask != null)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.f = false;
       ThreadManager.postImmediately(localDecodeFrameTask, null, true);
     }
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_c_of_type_AndroidGraphicsBitmap;
+    return this.h;
   }
   
   @TargetApi(10)
   public Bitmap a(int paramInt)
   {
-    Object localObject2 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+    Object localObject2 = this.d;
     Object localObject1 = null;
     if (localObject2 == null) {
       return null;
     }
-    int j;
-    if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {
-      j = jdField_c_of_type_Int | 0x0;
+    int i2;
+    if (this.o != null) {
+      i2 = m | 0x0;
     } else {
-      j = 0;
+      i2 = 0;
     }
-    int k;
-    if (d < 3)
+    int i3;
+    if (p < 3)
     {
       try
       {
-        localObject2 = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(paramInt * 1000, 2);
+        localObject2 = this.d.getFrameAtTime(paramInt * 1000, 2);
         if (localObject2 == null)
         {
-          i = 1;
+          i1 = 1;
           localObject1 = localObject2;
         }
         else
         {
-          i = 0;
+          i1 = 0;
           localObject1 = localObject2;
         }
       }
@@ -685,46 +680,46 @@ public class VideoDrawableHandler
         if (QLog.isColorLevel()) {
           QLog.i("VideoDrawableHandler", 2, localThrowable1.getMessage(), localThrowable1);
         }
-        i = 2;
+        i1 = 2;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
       {
         if (QLog.isColorLevel()) {
           QLog.i("VideoDrawableHandler", 2, localOutOfMemoryError1.getMessage(), localOutOfMemoryError1);
         }
-        i = 3;
+        i1 = 3;
       }
-      k = j;
+      i3 = i2;
       if (localObject1 != null) {
-        k = j | jdField_a_of_type_Int;
+        i3 = i2 | k;
       }
-      j = k;
-      k = i;
+      i2 = i3;
+      i3 = i1;
     }
     else
     {
       localObject1 = null;
-      k = 0;
+      i3 = 0;
     }
-    if ((k == 1) || (k == 2)) {
-      d += 1;
+    if ((i3 == 1) || (i3 == 2)) {
+      p += 1;
     }
-    int m;
+    int i4;
     Object localObject3;
-    int n;
-    if ((localObject1 == null) && (k != 3))
+    int i5;
+    if ((localObject1 == null) && (i3 != 3))
     {
       try
       {
-        Bitmap localBitmap = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.getFrameAtTime(paramInt * 1000, 2);
+        Bitmap localBitmap = this.d.getFrameAtTime(paramInt * 1000, 2);
         if (localBitmap == null)
         {
-          i = 1;
+          i1 = 1;
           localObject1 = localBitmap;
         }
         else
         {
-          i = 0;
+          i1 = 0;
           localObject1 = localBitmap;
         }
       }
@@ -733,41 +728,41 @@ public class VideoDrawableHandler
         if (QLog.isColorLevel()) {
           QLog.i("VideoDrawableHandler", 2, localThrowable2.getMessage(), localThrowable2);
         }
-        i = 2;
+        i1 = 2;
       }
       catch (OutOfMemoryError localOutOfMemoryError2)
       {
         if (QLog.isColorLevel()) {
           QLog.i("VideoDrawableHandler", 2, localOutOfMemoryError2.getMessage(), localOutOfMemoryError2);
         }
-        i = 3;
+        i1 = 3;
       }
-      m = i;
+      i4 = i1;
       localObject3 = localObject1;
-      n = j;
+      i5 = i2;
       if (localObject1 != null)
       {
-        n = j | jdField_b_of_type_Int;
-        m = i;
+        i5 = i2 | l;
+        i4 = i1;
         localObject3 = localObject1;
       }
     }
     else
     {
-      m = 0;
-      n = j;
+      i4 = 0;
+      i5 = i2;
       localObject3 = localObject1;
     }
-    int i = m << 2 | k;
+    int i1 = i4 << 2 | i3;
     if (localObject3 == null)
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("getBitmapAt at:");
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append(" status:");
-      ((StringBuilder)localObject1).append(n);
+      ((StringBuilder)localObject1).append(i5);
       ((StringBuilder)localObject1).append(" errorReason:");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(i1);
       QLog.i("VideoDrawableHandler", 1, ((StringBuilder)localObject1).toString());
     }
     boolean bool;
@@ -777,7 +772,7 @@ public class VideoDrawableHandler
       ((StringBuilder)localObject1).append("getBitmapAt ");
       ((StringBuilder)localObject1).append(paramInt);
       ((StringBuilder)localObject1).append(" failCount:");
-      ((StringBuilder)localObject1).append(d);
+      ((StringBuilder)localObject1).append(p);
       ((StringBuilder)localObject1).append(" bmp!=null:");
       if (localObject3 != null) {
         bool = true;
@@ -786,68 +781,41 @@ public class VideoDrawableHandler
       }
       ((StringBuilder)localObject1).append(bool);
       ((StringBuilder)localObject1).append(" status:");
-      ((StringBuilder)localObject1).append(n);
+      ((StringBuilder)localObject1).append(i5);
       ((StringBuilder)localObject1).append(" errorReason:");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(i1);
       QLog.i("VideoDrawableHandler", 2, ((StringBuilder)localObject1).toString());
     }
     localObject1 = new HashMap();
     Object localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append(DeviceInfoUtil.f());
+    ((StringBuilder)localObject4).append(DeviceInfoUtil.O());
     ((StringBuilder)localObject4).append("");
     ((HashMap)localObject1).put("param_DeviceType", ((StringBuilder)localObject4).toString());
     localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append(k);
+    ((StringBuilder)localObject4).append(i3);
     ((StringBuilder)localObject4).append("");
     ((HashMap)localObject1).put("param_ErrorArbitary", ((StringBuilder)localObject4).toString());
     localObject4 = new StringBuilder();
-    ((StringBuilder)localObject4).append(m);
+    ((StringBuilder)localObject4).append(i4);
     ((StringBuilder)localObject4).append("");
     ((HashMap)localObject1).put("param_ErrorKey", ((StringBuilder)localObject4).toString());
     localObject4 = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-    String str = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    String str = this.q.getCurrentAccountUin();
     if (localObject3 != null) {
       bool = true;
     } else {
       bool = false;
     }
-    ((StatisticCollector)localObject4).collectPerformance(str, "CMD_EXTRACT_FRAME", bool, n, i, (HashMap)localObject1, "");
+    ((StatisticCollector)localObject4).collectPerformance(str, "CMD_EXTRACT_FRAME", bool, i5, i1, (HashMap)localObject1, "");
     return localObject3;
-  }
-  
-  public void a()
-  {
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilVector.size())
-    {
-      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilVector.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((VideoDrawable)localWeakReference.get()).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    VideoDrawableHandler.DecodeFrameTask localDecodeFrameTask = new VideoDrawableHandler.DecodeFrameTask(this, paramInt);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.add(localDecodeFrameTask);
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 2) {
-        this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      }
-      d();
-      return;
-    }
   }
   
   public void a(VideoDrawable paramVideoDrawable)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.i)
     {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(paramVideoDrawable)) {
-        this.jdField_a_of_type_JavaUtilVector.add(new WeakReference(paramVideoDrawable));
+      if (!this.a.contains(paramVideoDrawable)) {
+        this.a.add(new WeakReference(paramVideoDrawable));
       }
       return;
     }
@@ -860,21 +828,21 @@ public class VideoDrawableHandler
     boolean bool1;
     try
     {
-      if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever != null) {
-        this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.release();
+      if (this.d != null) {
+        this.d.release();
       }
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(paramString);
-      this.jdField_a_of_type_Long = Long.valueOf(this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.extractMetadata(9)).longValue();
+      this.d = new MediaMetadataRetriever();
+      this.d.setDataSource(paramString);
+      this.h = Long.valueOf(this.d.extractMetadata(9)).longValue();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("duration:");
-        localStringBuilder1.append(this.jdField_a_of_type_Long);
+        localStringBuilder1.append(this.h);
         QLog.i("VideoDrawableHandler", 2, localStringBuilder1.toString());
       }
-      long l = this.jdField_a_of_type_Long;
-      if (l > 0L) {
+      long l1 = this.h;
+      if (l1 > 0L) {
         bool1 = true;
       }
     }
@@ -896,14 +864,14 @@ public class VideoDrawableHandler
     }
     if (bool1)
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_c_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_JavaLangString);
+      this.n = paramString;
+      this.o = b(this.n);
     }
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("init suc:");
     localStringBuilder2.append(bool1);
     localStringBuilder2.append(" thumb!=Null:");
-    if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {
+    if (this.o != null) {
       bool2 = true;
     }
     localStringBuilder2.append(bool2);
@@ -915,23 +883,55 @@ public class VideoDrawableHandler
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i1 = 0;
+    while (i1 < this.a.size())
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
+      WeakReference localWeakReference = (WeakReference)this.a.get(i1);
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((VideoDrawable)localWeakReference.get()).a(this.b);
+      }
+      i1 += 1;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    VideoDrawableHandler.DecodeFrameTask localDecodeFrameTask = new VideoDrawableHandler.DecodeFrameTask(this, paramInt);
+    synchronized (this.i)
+    {
+      this.e.add(localDecodeFrameTask);
+      if (this.e.size() > 2) {
+        this.e.removeFirst();
+      }
+      f();
+      return;
+    }
+  }
+  
+  public Bitmap c()
+  {
+    return this.o;
+  }
+  
+  public void d()
+  {
+    synchronized (this.i)
+    {
+      this.e.clear();
       return;
     }
   }
   
   @TargetApi(10)
-  public void c()
+  public void e()
   {
-    b();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    MediaMetadataRetriever localMediaMetadataRetriever = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+    d();
+    this.g.removeCallbacksAndMessages(null);
+    MediaMetadataRetriever localMediaMetadataRetriever = this.d;
     if (localMediaMetadataRetriever != null)
     {
       localMediaMetadataRetriever.release();
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = null;
+      this.d = null;
     }
   }
   
@@ -939,24 +939,24 @@ public class VideoDrawableHandler
   {
     if (paramMessage.what == 0)
     {
-      int i = paramMessage.arg1;
-      paramMessage = this.jdField_a_of_type_JavaLangObject;
-      if (i == 0) {}
+      int i1 = paramMessage.arg1;
+      paramMessage = this.i;
+      if (i1 == 0) {}
       try
       {
-        a();
-        if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled()) && (this.jdField_b_of_type_AndroidGraphicsBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) && (this.jdField_b_of_type_AndroidGraphicsBitmap != this.jdField_c_of_type_AndroidGraphicsBitmap)) {
-          this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+        b();
+        if ((this.c != null) && (!this.c.isRecycled()) && (this.c != this.b) && (this.c != this.o)) {
+          this.c.recycle();
         }
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("refresh. pending task size:");
-          localStringBuilder.append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+          localStringBuilder.append(this.e.size());
           QLog.i("VideoDrawableHandler", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_Boolean = true;
-        d();
+        this.f = true;
+        f();
       }
       finally {}
     }
@@ -965,7 +965,7 @@ public class VideoDrawableHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler
  * JD-Core Version:    0.7.0.1
  */

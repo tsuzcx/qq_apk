@@ -11,17 +11,17 @@ import mqq.app.MobileQQ;
 
 public class AVGameBackAction
 {
-  public final int a;
-  public final long a;
   public final String a;
-  public final String b;
+  public final int b;
+  public final String c;
+  public final long d;
   
   private AVGameBackAction(String paramString1, int paramInt, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramString1;
+    this.b = paramInt;
+    this.c = paramString2;
+    this.d = paramLong;
   }
   
   public static AVGameBackAction a(Intent paramIntent)
@@ -50,10 +50,10 @@ public class AVGameBackAction
   {
     if ((paramIntent != null) && (paramAVGameBackAction != null))
     {
-      paramIntent.putExtra("key_from", paramAVGameBackAction.jdField_a_of_type_JavaLangString);
-      paramIntent.putExtra("key_msg_seq", paramAVGameBackAction.jdField_a_of_type_Long);
-      paramIntent.putExtra("uintype", paramAVGameBackAction.jdField_a_of_type_Int);
-      paramIntent.putExtra("uin", paramAVGameBackAction.b);
+      paramIntent.putExtra("key_from", paramAVGameBackAction.a);
+      paramIntent.putExtra("key_msg_seq", paramAVGameBackAction.d);
+      paramIntent.putExtra("uintype", paramAVGameBackAction.b);
+      paramIntent.putExtra("uin", paramAVGameBackAction.c);
       if (QLog.isDevelopLevel())
       {
         paramIntent = new StringBuilder();
@@ -95,11 +95,11 @@ public class AVGameBackAction
       localObject = MobileQQ.getContext();
     }
     paramContext = new Intent();
-    if (this.jdField_a_of_type_Int == 1024) {
+    if (this.b == 1024) {
       paramContext.putExtra("chat_subType", 1);
     }
-    paramContext.putExtra("uin", this.b);
-    paramContext.putExtra("uintype", this.jdField_a_of_type_Int);
+    paramContext.putExtra("uin", this.c);
+    paramContext.putExtra("uintype", this.b);
     paramContext = BaseAIOUtils.a(paramContext, new int[] { 2 });
     paramContext.setAction("com.tencent.mobileqq.action.MAINACTIVITY");
     RouteUtils.a((Context)localObject, paramContext, "/base/start/splash");
@@ -109,13 +109,13 @@ public class AVGameBackAction
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }

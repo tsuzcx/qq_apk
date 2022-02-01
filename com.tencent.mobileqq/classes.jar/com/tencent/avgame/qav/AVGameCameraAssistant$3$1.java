@@ -22,10 +22,10 @@ class AVGameCameraAssistant$3$1
     }
     if ((paramInt == 1) && (paramBoolean))
     {
-      if (AVGameCameraAssistant.a(this.a.this$0) != null) {
-        AVGameCameraAssistant.a(this.a.this$0).g();
+      if (AVGameCameraAssistant.d(this.a.this$0) != null) {
+        AVGameCameraAssistant.d(this.a.this$0).o();
       }
-      AVGameCameraAssistant.a(this.a.this$0);
+      AVGameCameraAssistant.i(this.a.this$0);
     }
   }
 }

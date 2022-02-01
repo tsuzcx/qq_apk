@@ -10,21 +10,21 @@ import java.lang.ref.WeakReference;
 public class OpenJsBridge$OpenJsBridgeListener
   extends JsBridge.JsBridgeListener
 {
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
+  WeakReference<WebView> d;
+  long e;
+  String f;
   
   public OpenJsBridge$OpenJsBridgeListener(WebView paramWebView, long paramLong, String paramString)
   {
     super(paramWebView, paramLong, paramString);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.d = new WeakReference(paramWebView);
+    this.e = paramLong;
+    this.f = paramString;
   }
   
   public void a(String paramString, Object paramObject)
   {
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    WebView localWebView = (WebView)this.d.get();
     if (localWebView != null)
     {
       if (paramObject == null) {
@@ -60,7 +60,7 @@ public class OpenJsBridge$OpenJsBridgeListener
     if (QLog.isDevelopLevel()) {
       QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
     }
-    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    WebView localWebView = (WebView)this.d.get();
     if (localWebView == null) {
       return;
     }
@@ -69,7 +69,7 @@ public class OpenJsBridge$OpenJsBridgeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener
  * JD-Core Version:    0.7.0.1
  */

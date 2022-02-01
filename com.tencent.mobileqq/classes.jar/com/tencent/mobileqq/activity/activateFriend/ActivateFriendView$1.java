@@ -12,21 +12,21 @@ class ActivateFriendView$1
   public void onClick(View paramView)
   {
     ActivateFriendViewItem localActivateFriendViewItem = (ActivateFriendViewItem)paramView;
-    if (localActivateFriendViewItem.a) {
+    if (localActivateFriendViewItem.f) {
       ActivateFriendView.a(this.a);
     } else {
       ActivateFriendView.b(this.a);
     }
-    localActivateFriendViewItem.setChecked(localActivateFriendViewItem.a ^ true);
-    if (ActivateFriendView.a(this.a) != null) {
-      ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+    localActivateFriendViewItem.setChecked(localActivateFriendViewItem.f ^ true);
+    if (ActivateFriendView.c(this.a) != null) {
+      ActivateFriendView.c(this.a).a(ActivateFriendView.d(this.a));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendView.1
  * JD-Core Version:    0.7.0.1
  */

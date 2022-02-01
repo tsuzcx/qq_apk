@@ -25,7 +25,7 @@ final class ExpandEntranceImpl$checkABTestPassTime$1
       QLog.d("ExpandEntranceImpl", 1, "checkABTestPassTime uin is empty");
       return;
     }
-    if (!ExpandSharePreUtils.b((String)localObject))
+    if (!ExpandSharePreUtils.e((String)localObject))
     {
       ExpandSharePreUtils.a((String)localObject, System.currentTimeMillis());
       localObject = this.a.getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
@@ -44,7 +44,7 @@ final class ExpandEntranceImpl$checkABTestPassTime$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.impl.ExpandEntranceImpl.checkABTestPassTime.1
  * JD-Core Version:    0.7.0.1
  */

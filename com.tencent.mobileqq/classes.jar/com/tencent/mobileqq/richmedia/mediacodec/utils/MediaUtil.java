@@ -39,7 +39,7 @@ public class MediaUtil
       localStringBuilder.append("getVideoDuration path=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" exists=");
-      localStringBuilder.append(FileUtils.e(paramString));
+      localStringBuilder.append(FileUtils.i(paramString));
       SLog.c("MediaUtil", localStringBuilder.toString(), localError);
       localMediaMetadataRetriever.release();
       return 0L;
@@ -50,7 +50,7 @@ public class MediaUtil
       localStringBuilder.append("getVideoDuration path=");
       localStringBuilder.append(paramString);
       localStringBuilder.append(" exists=");
-      localStringBuilder.append(FileUtils.e(paramString));
+      localStringBuilder.append(FileUtils.i(paramString));
       SLog.c("MediaUtil", localStringBuilder.toString(), localRuntimeException);
       localMediaMetadataRetriever.release();
     }
@@ -59,7 +59,7 @@ public class MediaUtil
   
   public static Bitmap a(String paramString, int paramInt)
   {
-    boolean bool = FileUtils.e(paramString);
+    boolean bool = FileUtils.i(paramString);
     StringBuilder localStringBuilder = null;
     if (!bool)
     {
@@ -96,7 +96,7 @@ public class MediaUtil
   }
   
   /* Error */
-  public static int[] a(String paramString)
+  public static int[] b(String paramString)
   {
     // Byte code:
     //   0: new 34	android/media/MediaMetadataRetriever
@@ -115,21 +115,21 @@ public class MediaUtil
     //   23: invokevirtual 43	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   26: astore 4
     //   28: aload_0
-    //   29: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   29: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   32: ifne +14 -> 46
     //   35: aload_0
-    //   36: invokestatic 130	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   39: invokevirtual 134	java/lang/Integer:intValue	()I
+    //   36: invokestatic 132	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   39: invokevirtual 136	java/lang/Integer:intValue	()I
     //   42: istore_1
     //   43: goto +5 -> 48
     //   46: iconst_0
     //   47: istore_1
     //   48: aload 4
-    //   50: invokestatic 124	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   50: invokestatic 126	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   53: ifne +15 -> 68
     //   56: aload 4
-    //   58: invokestatic 130	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   61: invokevirtual 134	java/lang/Integer:intValue	()I
+    //   58: invokestatic 132	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   61: invokevirtual 136	java/lang/Integer:intValue	()I
     //   64: istore_2
     //   65: goto +5 -> 70
     //   68: iconst_0
@@ -146,8 +146,8 @@ public class MediaUtil
     //   87: istore_1
     //   88: ldc 76
     //   90: aload_0
-    //   91: invokevirtual 135	java/lang/NumberFormatException:toString	()Ljava/lang/String;
-    //   94: invokestatic 99	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   91: invokevirtual 137	java/lang/NumberFormatException:toString	()Ljava/lang/String;
+    //   94: invokestatic 100	com/tencent/biz/qqstory/support/logging/SLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   97: aload_3
     //   98: invokevirtual 54	android/media/MediaMetadataRetriever:release	()V
     //   101: iconst_0
@@ -185,7 +185,7 @@ public class MediaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil
  * JD-Core Version:    0.7.0.1
  */

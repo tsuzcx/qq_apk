@@ -62,12 +62,12 @@ import mqq.app.MobileQQ;
 public class ProfileService
   extends BaseProtocolCoder
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "ProfileService", "StatSvc", "AvatarInfoSvr", "NickQuerySvc", "GetAvatarInfo", "ChatAvatar" };
-  private int jdField_a_of_type_Int = 0;
-  private final AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-  private OnlineStatusService jdField_a_of_type_ComTencentMobileqqServiceOnlineStatusService;
-  private TroopService jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService;
-  private IBizTroopServiceApi jdField_a_of_type_ComTencentMobileqqTroopServiceApiIBizTroopServiceApi = (IBizTroopServiceApi)QRoute.api(IBizTroopServiceApi.class);
+  private static final String[] a = { "ProfileService", "StatSvc", "AvatarInfoSvr", "NickQuerySvc", "GetAvatarInfo", "ChatAvatar" };
+  private int b = 0;
+  private final AppInterface c = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+  private TroopService d;
+  private OnlineStatusService e;
+  private IBizTroopServiceApi f = (IBizTroopServiceApi)QRoute.api(IBizTroopServiceApi.class);
   
   public ProfileService()
   {
@@ -90,8 +90,8 @@ public class ProfileService
     this.requestHandles.put("StatSvc.BindUin", Integer.valueOf(29));
     this.requestHandles.put("ProfileService.ReqBatchProcess", Integer.valueOf(30));
     this.requestHandles.put("StatSvc.SetStatusFromClient", Integer.valueOf(31));
-    this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService = new TroopService(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqServiceOnlineStatusService = new OnlineStatusService(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    this.d = new TroopService(this.c);
+    this.e = new OnlineStatusService(this.c);
   }
   
   private boolean A(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -151,8 +151,8 @@ public class ProfileService
     paramUniPacket.setEncodeName("utf-8");
     paramUniPacket.setServantName("KQQ.ProfileService.ProfileServantObj");
     paramUniPacket.setFuncName("GetWeatherInfo");
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    int i = this.b;
+    this.b = (i + 1);
     paramUniPacket.put("req", new WeatherInfoReq(i, "", paramString));
     return true;
   }
@@ -210,7 +210,7 @@ public class ProfileService
     Object localObject1;
     if (bool)
     {
-      paramToServiceMsg = ((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).mAutomator.a().entrySet().iterator();
+      paramToServiceMsg = ((QQAppInterface)this.c).mAutomator.a().entrySet().iterator();
       while (paramToServiceMsg.hasNext())
       {
         localObject1 = (Map.Entry)paramToServiceMsg.next();
@@ -235,7 +235,7 @@ public class ProfileService
         }
       }
     }
-    paramToServiceMsg = (CheckUpdateItemInterface)((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).mAutomator.a().get(Integer.valueOf(101));
+    paramToServiceMsg = (CheckUpdateItemInterface)((QQAppInterface)this.c).mAutomator.a().get(Integer.valueOf(101));
     if ((paramToServiceMsg.a() & i) != 0)
     {
       paramToServiceMsg = paramToServiceMsg.a(i);
@@ -509,7 +509,7 @@ public class ProfileService
       j = paramToServiceMsg.extraData.getInt("reqType", 0);
       bool2 = paramToServiceMsg.extraData.getBoolean("showDateNickname");
       paramToServiceMsg = new ArrayList();
-      localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      localFriendsManager = (FriendsManager)this.c.getManager(QQManagerFactory.FRIENDS_MANAGER);
       k = arrayOfString.length;
       i = 0;
     }
@@ -524,7 +524,7 @@ public class ProfileService
         long l2 = Long.parseLong((String)localObject);
         if (j != 1)
         {
-          localObject = localFriendsManager.a((String)localObject);
+          localObject = localFriendsManager.x((String)localObject);
           long l1;
           if (localObject != null) {
             l1 = ((ExtensionInfo)localObject).richTime;
@@ -872,7 +872,7 @@ public class ProfileService
   
   public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopServiceApiIBizTroopServiceApi.handleRequest(paramToServiceMsg, paramUniPacket)) {
+    if (this.f.handleRequest(paramToServiceMsg, paramUniPacket)) {
       return true;
     }
     int i = ((Integer)this.requestHandles.get(paramToServiceMsg.getServiceCmd())).intValue();
@@ -898,9 +898,9 @@ public class ProfileService
                     default: 
                       return false;
                     case 31: 
-                      return this.jdField_a_of_type_ComTencentMobileqqServiceOnlineStatusService.encodeReqMsg(paramToServiceMsg, paramUniPacket);
+                      return this.e.encodeReqMsg(paramToServiceMsg, paramUniPacket);
                     case 30: 
-                      return this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService.encodeReqMsg(paramToServiceMsg, paramUniPacket);
+                      return this.d.encodeReqMsg(paramToServiceMsg, paramUniPacket);
                     case 29: 
                       return h(paramToServiceMsg, paramUniPacket);
                     case 28: 
@@ -951,12 +951,12 @@ public class ProfileService
   
   public String[] cmdHeaderPrefix()
   {
-    return jdField_a_of_type_ArrayOfJavaLangString;
+    return a;
   }
   
   public Object decode(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopServiceApiIBizTroopServiceApi.handleDecode(paramToServiceMsg, paramFromServiceMsg);
+    Object localObject = this.f.handleDecode(paramToServiceMsg, paramFromServiceMsg);
     if (localObject != null) {
       return localObject;
     }
@@ -985,9 +985,9 @@ public class ProfileService
                   default: 
                     break;
                   case 31: 
-                    return this.jdField_a_of_type_ComTencentMobileqqServiceOnlineStatusService.decode(paramToServiceMsg, paramFromServiceMsg);
+                    return this.e.decode(paramToServiceMsg, paramFromServiceMsg);
                   case 30: 
-                    return this.jdField_a_of_type_ComTencentMobileqqServiceTroopTroopService.decode(paramToServiceMsg, paramFromServiceMsg);
+                    return this.d.decode(paramToServiceMsg, paramFromServiceMsg);
                   case 29: 
                     return e(paramToServiceMsg, paramFromServiceMsg);
                   case 28: 
@@ -1036,7 +1036,7 @@ public class ProfileService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.service.profile.ProfileService
  * JD-Core Version:    0.7.0.1
  */

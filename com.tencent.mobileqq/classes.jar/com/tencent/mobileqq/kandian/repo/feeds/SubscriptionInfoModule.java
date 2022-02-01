@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyEngineModule;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.SubscriptionFeed;
@@ -29,17 +29,17 @@ import mqq.os.MqqHandler;
 public class SubscriptionInfoModule
   extends ReadInJoyEngineModule
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler = new SubscriptionInfoModule.9(this, ThreadManager.getSubThreadLooper());
-  private IPublicAccountObserver.OnCallback jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver$OnCallback = new SubscriptionInfoModule.8(this);
-  private IPublicAccountObserver jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
-  private List<SubscriptionFeed> jdField_a_of_type_JavaUtilList = null;
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  private long a = 0L;
+  private volatile boolean b = false;
+  private List<SubscriptionFeed> c = null;
+  private IPublicAccountObserver d = (IPublicAccountObserver)QRoute.api(IPublicAccountObserver.class);
+  private IPublicAccountObserver.OnCallback e = new SubscriptionInfoModule.8(this);
+  private Handler f = new SubscriptionInfoModule.9(this, ThreadManager.getSubThreadLooper());
   
   public SubscriptionInfoModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
     super(paramAppInterface, paramEntityManager, paramExecutorService, paramReadInJoyMSFService, paramHandler);
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver.setOnCallback(this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver$OnCallback);
+    this.d.setOnCallback(this.e);
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -47,31 +47,17 @@ public class SubscriptionInfoModule
     this.mMainThreadHandler.post(new SubscriptionInfoModule.7(this, paramInt1, paramInt2));
   }
   
-  public int a()
-  {
-    boolean bool = this.mApp instanceof QQAppInterface;
-    int i = 0;
-    if (!bool) {
-      return 0;
-    }
-    Iterator localIterator = TroopBarAssistantManager.a().b((QQAppInterface)this.mApp).iterator();
-    while (localIterator.hasNext()) {
-      i += ((SubscriptionFeed)localIterator.next()).b;
-    }
-    return i;
-  }
-  
   public void a() {}
   
   public void a(String paramString)
   {
-    if (!TroopBarAssistantManager.a().a(paramString, (QQAppInterface)this.mApp))
+    if (!TroopBarAssistantManager.a().b(paramString, (QQAppInterface)this.mApp))
     {
-      TroopBarAssistantManager.a().b(paramString, (QQAppInterface)this.mApp);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8006112", "0X8006112", 0, 0, "", "", "", "");
-      int k = TroopBarAssistantManager.a().a();
+      TroopBarAssistantManager.a().c(paramString, (QQAppInterface)this.mApp);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8006112", "0X8006112", 0, 0, "", "", "", "");
+      int k = TroopBarAssistantManager.a().d();
       int j = 0;
-      Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject1 = this.c.iterator();
       do
       {
         i = j;
@@ -79,7 +65,7 @@ public class SubscriptionInfoModule
           break;
         }
         localObject2 = (SubscriptionFeed)((Iterator)localObject1).next();
-      } while ((((SubscriptionFeed)localObject2).a == null) || (!((SubscriptionFeed)localObject2).a.equals(paramString)));
+      } while ((((SubscriptionFeed)localObject2).c == null) || (!((SubscriptionFeed)localObject2).c.equals(paramString)));
       int i = ((SubscriptionFeed)localObject2).b;
       e();
       localObject1 = new StringBuilder();
@@ -104,7 +90,7 @@ public class SubscriptionInfoModule
     }
     this.mExecutorService.execute(new SubscriptionInfoModule.5(this, paramString, paramContext));
     int j = 0;
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    paramContext = this.c.iterator();
     SubscriptionFeed localSubscriptionFeed;
     do
     {
@@ -113,7 +99,7 @@ public class SubscriptionInfoModule
         break;
       }
       localSubscriptionFeed = (SubscriptionFeed)paramContext.next();
-    } while ((localSubscriptionFeed.a == null) || (!localSubscriptionFeed.a.equals(paramString)));
+    } while ((localSubscriptionFeed.c == null) || (!localSubscriptionFeed.c.equals(paramString)));
     int i = localSubscriptionFeed.b;
     paramContext = new StringBuilder();
     paramContext.append("");
@@ -136,13 +122,13 @@ public class SubscriptionInfoModule
   
   public void b(String paramString)
   {
-    TroopBarAssistantManager.a().c(paramString, (QQAppInterface)this.mApp);
-    int j = TroopBarAssistantManager.a().a();
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    TroopBarAssistantManager.a().d(paramString, (QQAppInterface)this.mApp);
+    int j = TroopBarAssistantManager.a().d();
+    Object localObject1 = this.c.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (SubscriptionFeed)((Iterator)localObject1).next();
-      if ((((SubscriptionFeed)localObject2).a != null) && (((SubscriptionFeed)localObject2).a.equals(paramString)))
+      if ((((SubscriptionFeed)localObject2).c != null) && (((SubscriptionFeed)localObject2).c.equals(paramString)))
       {
         i = ((SubscriptionFeed)localObject2).b;
         break label85;
@@ -193,7 +179,7 @@ public class SubscriptionInfoModule
       ((MqqHandler)localObject).sendEmptyMessage(1014);
     }
     int j = 0;
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    localObject = this.c.iterator();
     SubscriptionFeed localSubscriptionFeed;
     do
     {
@@ -202,7 +188,7 @@ public class SubscriptionInfoModule
         break;
       }
       localSubscriptionFeed = (SubscriptionFeed)((Iterator)localObject).next();
-    } while ((localSubscriptionFeed.a == null) || (!localSubscriptionFeed.a.equals(paramString)));
+    } while ((localSubscriptionFeed.c == null) || (!localSubscriptionFeed.c.equals(paramString)));
     int i = localSubscriptionFeed.b;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
@@ -229,22 +215,36 @@ public class SubscriptionInfoModule
     a(((KandianMergeManager)((QQAppInterface)this.mApp).getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).a(1), 1);
   }
   
+  public int g()
+  {
+    boolean bool = this.mApp instanceof QQAppInterface;
+    int i = 0;
+    if (!bool) {
+      return 0;
+    }
+    Iterator localIterator = TroopBarAssistantManager.a().i((QQAppInterface)this.mApp).iterator();
+    while (localIterator.hasNext()) {
+      i += ((SubscriptionFeed)localIterator.next()).b;
+    }
+    return i;
+  }
+  
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountObserver = null;
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    this.d = null;
+    Handler localHandler = this.f;
     if (localHandler != null)
     {
       localHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.f = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.SubscriptionInfoModule
  * JD-Core Version:    0.7.0.1
  */

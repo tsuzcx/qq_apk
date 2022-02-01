@@ -10,10 +10,10 @@ public abstract class BaseViewHolder$ViewHolderFactory<VH extends BaseViewHolder
 {
   public VH a(ViewHolderContext paramViewHolderContext, int paramInt, @NonNull ViewGroup paramViewGroup)
   {
-    return a(paramViewHolderContext, LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
+    return b(paramViewHolderContext, LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
   }
   
-  public VH a(ViewHolderContext paramViewHolderContext, View paramView)
+  public VH b(ViewHolderContext paramViewHolderContext, View paramView)
   {
     return null;
   }

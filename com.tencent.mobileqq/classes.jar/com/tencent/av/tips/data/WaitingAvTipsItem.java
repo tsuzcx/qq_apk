@@ -3,12 +3,13 @@ package com.tencent.av.tips.data;
 public class WaitingAvTipsItem
   extends AvTipsItemBase
 {
-  boolean a = false;
+  boolean g = false;
+  boolean h = false;
   
   public WaitingAvTipsItem(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, boolean paramBoolean)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
-    this.a = paramBoolean;
+    this.g = paramBoolean;
   }
   
   public int a()
@@ -16,9 +17,19 @@ public class WaitingAvTipsItem
     return 2;
   }
   
-  public boolean b()
+  public void a(boolean paramBoolean)
   {
-    return this.a;
+    this.h = paramBoolean;
+  }
+  
+  public boolean h()
+  {
+    return this.g;
+  }
+  
+  public boolean i()
+  {
+    return this.h;
   }
 }
 

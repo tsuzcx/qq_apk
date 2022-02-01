@@ -18,24 +18,24 @@ import com.tencent.mobileqq.transfile.AlbumThumbDownloader;
 
 public class StoryAlbum$PicInfo
 {
-  public double a;
-  public int a;
   public long a;
-  public AddressItem a;
-  private LocalMediaInfo a;
-  public String a;
-  public double b;
-  public int b;
-  public long b;
-  @Deprecated
   public String b;
-  public int c;
-  public long c;
+  @Deprecated
   public String c;
-  private int d;
-  public long d;
-  public String d;
-  public long e;
+  public int d;
+  public int e;
+  public int f;
+  public long g;
+  public long h;
+  public long i;
+  public double j;
+  public double k;
+  public String l;
+  public long m;
+  public String n;
+  public AddressItem o;
+  private int p;
+  private LocalMediaInfo q;
   
   public Bitmap a(Context paramContext, int paramInt, BitmapFactory.Options paramOptions)
   {
@@ -50,98 +50,25 @@ public class StoryAlbum$PicInfo
       AssertUtils.fail("kind is illegal", new Object[0]);
       return null;
     }
-    return MediaStore.Images.Thumbnails.getThumbnail(paramContext.getContentResolver(), this.jdField_a_of_type_Long, paramInt, paramOptions);
-  }
-  
-  public SerializationPB.PicInfo a()
-  {
-    SerializationPB.PicInfo localPicInfo = new SerializationPB.PicInfo();
-    localPicInfo.id.set(this.jdField_a_of_type_Long);
-    PBStringField localPBStringField = localPicInfo.path;
-    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-    String str2 = "";
-    String str1;
-    if (bool) {
-      str1 = "";
-    } else {
-      str1 = this.jdField_a_of_type_JavaLangString;
-    }
-    localPBStringField.set(str1);
-    localPBStringField = localPicInfo.thumb;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      str1 = str2;
-    } else {
-      str1 = this.jdField_b_of_type_JavaLangString;
-    }
-    localPBStringField.set(str1);
-    localPicInfo.width.set(this.jdField_a_of_type_Int);
-    localPicInfo.height.set(this.jdField_b_of_type_Int);
-    localPicInfo.orientation.set(this.jdField_c_of_type_Int);
-    localPicInfo.create_time.set(this.jdField_b_of_type_Long);
-    localPicInfo.lat.set(this.jdField_a_of_type_Double);
-    localPicInfo.lng.set(this.jdField_b_of_type_Double);
-    localPicInfo.geo_hash.set(this.jdField_c_of_type_JavaLangString);
-    localPicInfo.state.set(this.jdField_d_of_type_Int);
-    localPicInfo.mime.set(this.jdField_d_of_type_JavaLangString);
-    localPicInfo.size.set(this.e);
-    localPicInfo.db_create_time.set(this.jdField_d_of_type_Long);
-    return localPicInfo;
-  }
-  
-  public StoryAlbumPicEntry a()
-  {
-    StoryAlbumPicEntry localStoryAlbumPicEntry = new StoryAlbumPicEntry();
-    localStoryAlbumPicEntry.path = this.jdField_a_of_type_JavaLangString;
-    localStoryAlbumPicEntry.thumbPath = this.jdField_b_of_type_JavaLangString;
-    localStoryAlbumPicEntry.width = this.jdField_a_of_type_Int;
-    localStoryAlbumPicEntry.height = this.jdField_b_of_type_Int;
-    localStoryAlbumPicEntry.orientation = this.jdField_c_of_type_Int;
-    localStoryAlbumPicEntry.createTime = this.jdField_b_of_type_Long;
-    localStoryAlbumPicEntry.gpsLat = this.jdField_a_of_type_Double;
-    localStoryAlbumPicEntry.gpsLng = this.jdField_b_of_type_Double;
-    localStoryAlbumPicEntry.geohashString = this.jdField_c_of_type_JavaLangString;
-    localStoryAlbumPicEntry.state = this.jdField_d_of_type_Int;
-    localStoryAlbumPicEntry.mime = this.jdField_d_of_type_JavaLangString;
-    localStoryAlbumPicEntry.size = this.e;
-    return localStoryAlbumPicEntry;
-  }
-  
-  public LocalMediaInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
-      LocalMediaInfo localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
-      localLocalMediaInfo._id = this.jdField_a_of_type_Long;
-      localLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
-      localLocalMediaInfo.orientation = this.jdField_c_of_type_Int;
-      localLocalMediaInfo.mediaWidth = this.jdField_a_of_type_Int;
-      localLocalMediaInfo.mediaHeight = this.jdField_b_of_type_Int;
-      localLocalMediaInfo.mMimeType = this.jdField_d_of_type_JavaLangString;
-      localLocalMediaInfo.fileSize = this.e;
-      int i = AlbumThumbDownloader.THUMB_WIDHT;
-      localLocalMediaInfo.thumbHeight = i;
-      localLocalMediaInfo.thumbWidth = i;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+    return MediaStore.Images.Thumbnails.getThumbnail(paramContext.getContentResolver(), this.a, paramInt, paramOptions);
   }
   
   public void a(SerializationPB.PicInfo paramPicInfo)
   {
-    this.jdField_a_of_type_Long = paramPicInfo.id.get();
-    this.jdField_a_of_type_JavaLangString = paramPicInfo.path.get();
-    this.jdField_b_of_type_JavaLangString = paramPicInfo.thumb.get();
-    this.jdField_a_of_type_Int = paramPicInfo.width.get();
-    this.jdField_b_of_type_Int = paramPicInfo.height.get();
-    this.jdField_c_of_type_Int = paramPicInfo.orientation.get();
-    this.jdField_b_of_type_Long = paramPicInfo.create_time.get();
-    this.jdField_a_of_type_Double = paramPicInfo.lat.get();
-    this.jdField_b_of_type_Double = paramPicInfo.lng.get();
-    this.jdField_c_of_type_JavaLangString = paramPicInfo.geo_hash.get();
-    this.jdField_d_of_type_Int = paramPicInfo.state.get();
-    this.jdField_d_of_type_JavaLangString = paramPicInfo.mime.get();
-    this.e = paramPicInfo.size.get();
-    this.jdField_d_of_type_Long = paramPicInfo.db_create_time.get();
+    this.a = paramPicInfo.id.get();
+    this.b = paramPicInfo.path.get();
+    this.c = paramPicInfo.thumb.get();
+    this.d = paramPicInfo.width.get();
+    this.e = paramPicInfo.height.get();
+    this.f = paramPicInfo.orientation.get();
+    this.g = paramPicInfo.create_time.get();
+    this.j = paramPicInfo.lat.get();
+    this.k = paramPicInfo.lng.get();
+    this.l = paramPicInfo.geo_hash.get();
+    this.p = paramPicInfo.state.get();
+    this.n = paramPicInfo.mime.get();
+    this.m = paramPicInfo.size.get();
+    this.i = paramPicInfo.db_create_time.get();
   }
   
   public void a(boolean paramBoolean)
@@ -151,13 +78,86 @@ public class StoryAlbum$PicInfo
   
   public boolean a()
   {
-    return this.jdField_d_of_type_Int == 1;
+    return this.p == 1;
+  }
+  
+  public StoryAlbumPicEntry b()
+  {
+    StoryAlbumPicEntry localStoryAlbumPicEntry = new StoryAlbumPicEntry();
+    localStoryAlbumPicEntry.path = this.b;
+    localStoryAlbumPicEntry.thumbPath = this.c;
+    localStoryAlbumPicEntry.width = this.d;
+    localStoryAlbumPicEntry.height = this.e;
+    localStoryAlbumPicEntry.orientation = this.f;
+    localStoryAlbumPicEntry.createTime = this.g;
+    localStoryAlbumPicEntry.gpsLat = this.j;
+    localStoryAlbumPicEntry.gpsLng = this.k;
+    localStoryAlbumPicEntry.geohashString = this.l;
+    localStoryAlbumPicEntry.state = this.p;
+    localStoryAlbumPicEntry.mime = this.n;
+    localStoryAlbumPicEntry.size = this.m;
+    return localStoryAlbumPicEntry;
+  }
+  
+  public SerializationPB.PicInfo c()
+  {
+    SerializationPB.PicInfo localPicInfo = new SerializationPB.PicInfo();
+    localPicInfo.id.set(this.a);
+    PBStringField localPBStringField = localPicInfo.path;
+    boolean bool = TextUtils.isEmpty(this.b);
+    String str2 = "";
+    String str1;
+    if (bool) {
+      str1 = "";
+    } else {
+      str1 = this.b;
+    }
+    localPBStringField.set(str1);
+    localPBStringField = localPicInfo.thumb;
+    if (TextUtils.isEmpty(this.c)) {
+      str1 = str2;
+    } else {
+      str1 = this.c;
+    }
+    localPBStringField.set(str1);
+    localPicInfo.width.set(this.d);
+    localPicInfo.height.set(this.e);
+    localPicInfo.orientation.set(this.f);
+    localPicInfo.create_time.set(this.g);
+    localPicInfo.lat.set(this.j);
+    localPicInfo.lng.set(this.k);
+    localPicInfo.geo_hash.set(this.l);
+    localPicInfo.state.set(this.p);
+    localPicInfo.mime.set(this.n);
+    localPicInfo.size.set(this.m);
+    localPicInfo.db_create_time.set(this.i);
+    return localPicInfo;
+  }
+  
+  public LocalMediaInfo d()
+  {
+    if (this.q == null)
+    {
+      this.q = new LocalMediaInfo();
+      LocalMediaInfo localLocalMediaInfo = this.q;
+      localLocalMediaInfo._id = this.a;
+      localLocalMediaInfo.path = this.b;
+      localLocalMediaInfo.orientation = this.f;
+      localLocalMediaInfo.mediaWidth = this.d;
+      localLocalMediaInfo.mediaHeight = this.e;
+      localLocalMediaInfo.mMimeType = this.n;
+      localLocalMediaInfo.fileSize = this.m;
+      int i1 = AlbumThumbDownloader.THUMB_WIDHT;
+      localLocalMediaInfo.thumbHeight = i1;
+      localLocalMediaInfo.thumbWidth = i1;
+    }
+    return this.q;
   }
   
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof PicInfo)) {
-      return this.jdField_a_of_type_JavaLangString.equals(((PicInfo)paramObject).jdField_a_of_type_JavaLangString);
+      return this.b.equals(((PicInfo)paramObject).b);
     }
     return false;
   }
@@ -166,36 +166,36 @@ public class StoryAlbum$PicInfo
   {
     StringBuilder localStringBuilder = new StringBuilder("PicInfo=[");
     localStringBuilder.append(" mId:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mPath:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" mThumbPath:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" width:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" height:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" orientation:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" mCreateTime:");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" mDBCreateTime:");
-    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" mGpsLat:");
-    localStringBuilder.append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(" mGpsLng:");
-    localStringBuilder.append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(" mGeohashString:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(" mState:");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.model.StoryAlbum.PicInfo
  * JD-Core Version:    0.7.0.1
  */

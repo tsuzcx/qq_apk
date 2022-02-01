@@ -28,24 +28,24 @@ import java.util.List;
 
 public class LocationShareController
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public QBaseActivity a;
-  private DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener;
-  private final LocationShareViewModel jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel;
-  private LocationRoom.RoomKey jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey;
-  private HeadSetViewModule jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetViewModule;
   public MapWidget a;
-  private RouteHolder jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder;
-  private VenueHolder jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder;
-  private final LifeCycleAndViewModelStoreOwner jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner;
-  private View b;
-  private View c;
+  public QBaseActivity b;
+  private VenueHolder c;
+  private RouteHolder d;
+  private View e;
+  private View f;
+  private View g;
+  private HeadSetViewModule h;
+  private ImageView i;
+  private LocationRoom.RoomKey j;
+  private DecodeTaskCompletionListener k;
+  private final LocationShareViewModel l;
+  private final LifeCycleAndViewModelStoreOwner m;
   
   public LocationShareController(LocationShareViewModel paramLocationShareViewModel, LifeCycleAndViewModelStoreOwner paramLifeCycleAndViewModelStoreOwner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel = paramLocationShareViewModel;
-    this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner = paramLifeCycleAndViewModelStoreOwner;
+    this.l = paramLocationShareViewModel;
+    this.m = paramLifeCycleAndViewModelStoreOwner;
   }
   
   private void a(boolean paramBoolean, MapWidget.RouteDetail paramRouteDetail)
@@ -59,32 +59,32 @@ public class LocationShareController
       ((StringBuilder)localObject).append(paramRouteDetail.a);
       QLog.d("LocationShareController", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+    Object localObject = this.a.getVenue();
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("LocationShareController", 2, "[venue] finishRoute: called. venue null");
       }
-      e();
+      f();
       return;
     }
     if (paramRouteDetail.a != null)
     {
       if (paramBoolean) {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.a(paramRouteDetail, (LocationRoom.Venue)localObject);
+        this.d.a(paramRouteDetail, (LocationRoom.Venue)localObject);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.a(paramRouteDetail);
+        this.d.a(paramRouteDetail);
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.a(paramRouteDetail);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, "路径规划失败，请稍后重试", 1).a();
+      this.d.a(paramRouteDetail);
+      QQToast.makeText(this.b, 1, "路径规划失败，请稍后重试", 1).show();
     }
-    this.c.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder.b();
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.a();
+    this.g.setVisibility(0);
+    this.e.setVisibility(8);
+    this.c.b();
+    this.d.a();
   }
   
   private void b(LocationRoom.Venue paramVenue)
@@ -92,103 +92,103 @@ public class LocationShareController
     if (QLog.isColorLevel()) {
       QLog.d("LocationShareController", 2, "[venue] showVenue: called.");
     }
-    this.c.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder.a(paramVenue);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.b();
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder.a();
+    this.g.setVisibility(0);
+    this.e.setVisibility(8);
+    this.c.a(paramVenue);
+    this.d.b();
+    this.c.a();
   }
   
   private void b(VenueOptBean paramVenueOptBean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(false);
-    this.b.setVisibility(8);
-    if (paramVenueOptBean.jdField_a_of_type_Boolean)
+    this.a.setVenueOprating(false);
+    this.f.setVisibility(8);
+    if (paramVenueOptBean.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenue(paramVenueOptBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2, "集合点设置成功", 0).a();
+      this.a.setVenue(paramVenueOptBean.a);
+      QQToast.makeText(this.b, 2, "集合点设置成功", 0).show();
       ReportController.b(null, "CliOper", "", "", "0X800A964", "0X800A964", 0, 0, "0", "0", "0", "");
       return;
     }
-    int i = paramVenueOptBean.jdField_a_of_type_Int;
-    if (i != 10104)
+    int n = paramVenueOptBean.c;
+    if (n != 10104)
     {
-      if (i != 10105) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, "设置失败，请稍后重试", 0).a();
+      if (n != 10105) {
+        QQToast.makeText(this.b, 1, "设置失败，请稍后重试", 0).show();
       } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, "已有人设置集合点", 0).a();
+        QQToast.makeText(this.b, 1, "已有人设置集合点", 0).show();
       }
     }
     else
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, "你已离开共享会话", 0).a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.finish();
+      QQToast.makeText(this.b, 1, "你已离开共享会话", 0).show();
+      this.b.finish();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a() != null)
+    if (this.a.getVenue() != null)
     {
       c();
       return;
     }
-    e();
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new LocationShareController.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setListener(new LocationShareController.3(this));
+    f();
   }
   
   private void e()
   {
+    this.i.setOnClickListener(new LocationShareController.2(this));
+    this.a.setListener(new LocationShareController.3(this));
+  }
+  
+  private void f()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("LocationShareController", 2, "[venue] hideVenueAndRoute: called.");
     }
-    this.c.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder.b();
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.b();
+    this.g.setVisibility(4);
+    this.e.setVisibility(0);
+    this.c.b();
+    this.d.b();
   }
   
   void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel.d();
-    LocationAvatarHelper.a().a();
+    this.l.e();
+    LocationAvatarHelper.a().b();
   }
   
   void a(QBaseActivity paramQBaseActivity, LocationRoom.RoomKey paramRoomKey, MapWidget paramMapWidget, HeadSetViewModule paramHeadSetViewModule, ImageView paramImageView, View paramView1, View paramView2, View paramView3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget = paramMapWidget;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetViewModule = paramHeadSetViewModule;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey = paramRoomKey;
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.b = paramView1;
-    this.c = paramView3;
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder = new VenueHolder(this, this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel, paramView3);
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder = new RouteHolder(this, paramView3);
-    this.b.setVisibility(8);
-    LiuHaiUtils.a(paramQBaseActivity);
-    int i;
-    if (LiuHaiUtils.jdField_a_of_type_Boolean) {
-      i = DisplayUtil.a(paramQBaseActivity, 112.0F) + LiuHaiUtils.jdField_a_of_type_Int;
+    this.b = paramQBaseActivity;
+    this.a = paramMapWidget;
+    this.h = paramHeadSetViewModule;
+    this.i = paramImageView;
+    this.j = paramRoomKey;
+    this.e = paramView2;
+    this.f = paramView1;
+    this.g = paramView3;
+    this.c = new VenueHolder(this, this.l, paramView3);
+    this.d = new RouteHolder(this, paramView3);
+    this.f.setVisibility(8);
+    LiuHaiUtils.f(paramQBaseActivity);
+    int n;
+    if (LiuHaiUtils.b) {
+      n = DisplayUtil.a(paramQBaseActivity, 112.0F) + LiuHaiUtils.d;
     } else {
-      i = DisplayUtil.a(paramQBaseActivity, 112.0F);
+      n = DisplayUtil.a(paramQBaseActivity, 112.0F);
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramQBaseActivity, LocationHandler.a().a(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey), null, i, paramView3);
-    d();
+    this.a.a(paramQBaseActivity, LocationHandler.a().b(this.j), null, n, paramView3);
+    e();
     LocationAvatarHelper.a().a(new LocationShareController.1(this));
-    if (QQUIDelegate.b())
+    if (QQUIDelegate.c())
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130840626);
-      paramView3.setBackgroundResource(2130838739);
+      this.i.setBackgroundResource(2130841399);
+      paramView3.setBackgroundResource(2130838958);
     }
-    LocationShareViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel, this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, this);
+    LocationShareViewBinder.a(this.l, this.m, this);
   }
   
   public void a(DecodeTaskCompletionListener paramDecodeTaskCompletionListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAvatarListenerDecodeTaskCompletionListener = paramDecodeTaskCompletionListener;
+    this.k = paramDecodeTaskCompletionListener;
   }
   
   void a(LocationRoom.Venue paramVenue)
@@ -202,69 +202,69 @@ public class LocationShareController
     }
     if (!NetworkUtil.isNetworkAvailable())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131693828, 0).a();
+      QQToast.makeText(this.b, 2131891404, 0).show();
       return;
     }
     if (paramVenue == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel.a(paramVenue);
+    this.l.a(paramVenue);
   }
   
   public void a(UserLocationsUpdateBean paramUserLocationsUpdateBean)
   {
-    if (paramUserLocationsUpdateBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey.equals(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey))
+    if (paramUserLocationsUpdateBean.a.equals(this.j))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.isFinishing()) {
+      if (this.b.isFinishing()) {
         return;
       }
-      Iterator localIterator = paramUserLocationsUpdateBean.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = paramUserLocationsUpdateBean.c.iterator();
       while (localIterator.hasNext())
       {
         LocationItem localLocationItem = (LocationItem)localIterator.next();
-        Bitmap localBitmap = LocationAvatarHelper.a().a(localLocationItem.a());
+        Bitmap localBitmap = LocationAvatarHelper.a().a(localLocationItem.c());
         if (localBitmap != null)
         {
           localBitmap = BaseImageUtil.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(localLocationItem.a(), localBitmap);
+          this.a.a(localLocationItem.c(), localBitmap);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiHeadSetViewModule.a(paramUserLocationsUpdateBean.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramUserLocationsUpdateBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey);
+      this.h.a(paramUserLocationsUpdateBean.c);
+      this.a.a(paramUserLocationsUpdateBean.a);
     }
   }
   
   public void a(VenueOptBean paramVenueOptBean)
   {
-    if (paramVenueOptBean.b == 1)
+    if (paramVenueOptBean.d == 1)
     {
-      if (paramVenueOptBean.c == 1)
+      if (paramVenueOptBean.e == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(true);
-        b(paramVenueOptBean.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
-        this.b.setVisibility(0);
+        this.a.setVenueOprating(true);
+        b(paramVenueOptBean.a);
+        this.f.setVisibility(0);
         return;
       }
-      if (paramVenueOptBean.c == 2) {
+      if (paramVenueOptBean.e == 2) {
         b(paramVenueOptBean);
       }
     }
-    else if (paramVenueOptBean.b == 2)
+    else if (paramVenueOptBean.d == 2)
     {
-      if (paramVenueOptBean.c == 1)
+      if (paramVenueOptBean.e == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(true);
-        this.b.setVisibility(0);
+        this.a.setVenueOprating(true);
+        this.f.setVisibility(0);
         return;
       }
-      if (paramVenueOptBean.c == 2)
+      if (paramVenueOptBean.e == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenueOprating(false);
-        this.b.setVisibility(8);
-        if (paramVenueOptBean.jdField_a_of_type_Boolean)
+        this.a.setVenueOprating(false);
+        this.f.setVisibility(8);
+        if (paramVenueOptBean.b)
         {
-          this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.setVenue(null);
-          e();
+          this.a.setVenue(null);
+          f();
         }
       }
     }
@@ -274,16 +274,16 @@ public class LocationShareController
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131693828, 0).a();
+      QQToast.makeText(this.b, 2131891404, 0).show();
       return;
     }
-    int i;
+    int n;
     if (paramInteger == null) {
-      i = 0;
+      n = 0;
     } else {
-      i = paramInteger.intValue();
+      n = paramInteger.intValue();
     }
-    Integer localInteger = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(i);
+    Integer localInteger = this.a.a(n);
     if ((paramInteger == null) && (localInteger != null)) {
       if (localInteger.intValue() == 3) {
         ReportController.b(null, "CliOper", "", "", "0X800A96C", "0X800A96C", 1, 0, "", "0", "0", "");
@@ -293,69 +293,69 @@ public class LocationShareController
     }
     if (localInteger != null)
     {
-      this.c.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.a(localInteger.intValue());
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiVenueHolder.b();
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiRouteHolder.a();
+      this.g.setVisibility(0);
+      this.e.setVisibility(8);
+      this.d.a(localInteger.intValue());
+      this.c.b();
+      this.d.a();
       return;
     }
     paramInteger = new MapWidget.RouteDetail();
-    paramInteger.a = Integer.valueOf(i);
+    paramInteger.a = Integer.valueOf(n);
     a(false, paramInteger);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(paramString, true);
+    this.a.a(paramString, true);
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
-      if (QQUIDelegate.b())
+      this.i.setClickable(false);
+      if (QQUIDelegate.c())
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130840631));
+        this.i.setImageDrawable(this.b.getResources().getDrawable(2130841404));
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130840630));
+      this.i.setImageDrawable(this.b.getResources().getDrawable(2130841403));
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130840632));
-  }
-  
-  boolean a()
-  {
-    return this.b.getVisibility() == 0;
+    this.i.setClickable(true);
+    this.i.setImageDrawable(this.b.getResources().getDrawable(2130841405));
   }
   
   void b()
   {
     if (!NetworkUtil.isNetworkAvailable())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131693828, 0).a();
+      QQToast.makeText(this.b, 2131891404, 0).show();
       return;
     }
-    LocationRoom.Venue localVenue = this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a();
+    LocationRoom.Venue localVenue = this.a.getVenue();
     if (localVenue == null)
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, "移除失败，请稍后重试", 0).a();
+      QQToast.makeText(this.b, 1, "移除失败，请稍后重试", 0).show();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqLocationLocationShareViewModel.b(localVenue);
+    this.l.b(localVenue);
   }
   
   void c()
   {
     b(null);
   }
+  
+  boolean d()
+  {
+    return this.f.getVisibility() == 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationShareController
  * JD-Core Version:    0.7.0.1
  */

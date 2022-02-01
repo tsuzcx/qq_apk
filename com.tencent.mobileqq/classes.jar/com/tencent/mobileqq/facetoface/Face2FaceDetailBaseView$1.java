@@ -10,7 +10,7 @@ class Face2FaceDetailBaseView$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.b();
+    this.a.n.c();
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -19,7 +19,7 @@ class Face2FaceDetailBaseView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import com.tencent.qphone.base.util.QLog;
 
 public class Logger
 {
-  private static int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean = true;
-  private int b = 3;
+  private static int a;
+  private final boolean b = true;
+  private String c;
+  private int d = 3;
   
   static
   {
@@ -17,16 +17,11 @@ public class Logger
     {
       if (Logger.class.getName().equals(arrayOfStackTraceElement[i].getClassName()))
       {
-        jdField_a_of_type_Int = i;
+        a = i;
         return;
       }
       i += 1;
     }
-  }
-  
-  private StringBuilder a(int paramInt)
-  {
-    return new StringBuilder();
   }
   
   private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
@@ -44,7 +39,7 @@ public class Logger
           return;
         }
       }
-      localStringBuilder = a(paramInt3);
+      localStringBuilder = b(paramInt3);
       if (paramString2 != null) {
         localStringBuilder.append(paramString2);
       }
@@ -52,7 +47,7 @@ public class Logger
       if (paramString1 != null) {
         break label139;
       }
-      paramString2 = this.jdField_a_of_type_JavaLangString;
+      paramString2 = this.c;
     }
     finally {}
     QLog.e(paramString2, paramInt1, localStringBuilder.toString());
@@ -85,38 +80,43 @@ public class Logger
     }
   }
   
+  private StringBuilder b(int paramInt)
+  {
+    return new StringBuilder();
+  }
+  
   public Logger a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramString;
     return this;
   }
   
   public Logger a(String paramString1, int paramInt, String paramString2)
   {
-    a(paramString1, paramInt, 6, paramString2, this.b);
+    a(paramString1, paramInt, 6, paramString2, this.d);
     return this;
   }
   
   public final void a(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
   }
   
   public Logger b(String paramString1, int paramInt, String paramString2)
   {
-    a(paramString1, paramInt, 4, paramString2, this.b);
+    a(paramString1, paramInt, 4, paramString2, this.d);
     return this;
   }
   
   public Logger c(String paramString1, int paramInt, String paramString2)
   {
-    a(paramString1, paramInt, 3, paramString2, this.b);
+    a(paramString1, paramInt, 3, paramString2, this.d);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.util.Logger
  * JD-Core Version:    0.7.0.1
  */

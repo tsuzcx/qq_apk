@@ -14,9 +14,9 @@ class SubscribeVideoDetailFragment$3
   {
     try
     {
-      if (QQPlayerService.a())
+      if (QQPlayerService.b())
       {
-        QQPlayerService.c(this.a.getBaseActivity());
+        QQPlayerService.e(this.a.getBaseActivity());
         return;
       }
     }

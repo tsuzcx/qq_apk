@@ -14,16 +14,16 @@ class LocationHandler$3
   
   public void run()
   {
-    if (LocationHandler.a(this.this$0))
+    if (LocationHandler.b(this.this$0))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(LocationHandler.a(this.this$0)) });
+        QLog.d("LocationHandler", 2, new Object[] { "run: invoked. ", " bgHandlerForDelayExitRoomStopped: ", Boolean.valueOf(LocationHandler.b(this.this$0)) });
       }
       return;
     }
-    LocationShareLocationManager.a().a(LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$RoomKey, true);
-    LocationShareRoomManager.a().jdField_a_of_type_ComTencentMobileqqLocationNetRoomQueryHandler.a();
-    QQToast.a(BaseApplication.getContext(), BaseApplication.getContext().getString(2131693118), 0).a();
+    LocationShareLocationManager.a().a(LocationShareRoomManager.a().a, true);
+    LocationShareRoomManager.a().c.a();
+    QQToast.makeText(BaseApplication.getContext(), BaseApplication.getContext().getString(2131890657), 0).show();
     QBaseActivity localQBaseActivity = QBaseActivity.sTopActivity;
     if (localQBaseActivity != null)
     {
@@ -40,7 +40,7 @@ class LocationHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationHandler.3
  * JD-Core Version:    0.7.0.1
  */

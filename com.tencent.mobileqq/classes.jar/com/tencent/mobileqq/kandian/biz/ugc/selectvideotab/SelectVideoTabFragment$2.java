@@ -11,7 +11,7 @@ class SelectVideoTabFragment$2
   
   public void a(TabLayoutCompat.Tab paramTab)
   {
-    SelectVideoTabFragment.a(this.a).setCurrentItem(paramTab.a());
+    SelectVideoTabFragment.a(this.a).setCurrentItem(paramTab.d());
   }
   
   public void b(TabLayoutCompat.Tab paramTab) {}
@@ -20,7 +20,7 @@ class SelectVideoTabFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectvideotab.SelectVideoTabFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,24 +15,24 @@ class VideoFeedsGameAdComManager$5
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      if (VideoFeedsGameAdComManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager)) {
+      if (VideoFeedsGameAdComManager.k(this.b)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager.b();
+      this.b.e();
       return;
     }
-    if ((VideoFeedsGameAdComManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager) instanceof Activity))
+    if ((VideoFeedsGameAdComManager.h(this.b) instanceof Activity))
     {
-      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addGdtWebClickReport(VideoFeedsGameAdComManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager));
-      FastWeqAdUtils.a(VideoFeedsGameAdComManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager), VideoFeedsGameAdComManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager).p, VideoFeedsGameAdComManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdGame_componentVideoFeedsGameAdComManager).q, "");
+      ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).addGdtWebClickReport(VideoFeedsGameAdComManager.e(this.b));
+      FastWeqAdUtils.a(VideoFeedsGameAdComManager.h(this.b), VideoFeedsGameAdComManager.c(this.b).q, VideoFeedsGameAdComManager.c(this.b).r, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.game_component.VideoFeedsGameAdComManager.5
  * JD-Core Version:    0.7.0.1
  */

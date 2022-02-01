@@ -12,13 +12,13 @@ class TroopFileItemOperation$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (paramInt == 1) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      this.a.a(this.b, this.c, this.d, this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileItemOperation.3
  * JD-Core Version:    0.7.0.1
  */

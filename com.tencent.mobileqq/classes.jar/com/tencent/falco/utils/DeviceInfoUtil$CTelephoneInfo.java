@@ -3,6 +3,7 @@ package com.tencent.falco.utils;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.lang.reflect.Method;
 
 class DeviceInfoUtil$CTelephoneInfo
@@ -138,7 +139,7 @@ class DeviceInfoUtil$CTelephoneInfo
   public void setCTelephoneInfo()
   {
     Object localObject = (TelephonyManager)mContext.getSystemService("phone");
-    CTelephoneInfo.imeiSIM1 = ((TelephonyManager)localObject).getDeviceId();
+    CTelephoneInfo.imeiSIM1 = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject);
     CTelephoneInfo localCTelephoneInfo1 = CTelephoneInfo;
     localCTelephoneInfo1.imeiSIM2 = null;
     try
@@ -201,7 +202,7 @@ class DeviceInfoUtil$CTelephoneInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.falco.utils.DeviceInfoUtil.CTelephoneInfo
  * JD-Core Version:    0.7.0.1
  */

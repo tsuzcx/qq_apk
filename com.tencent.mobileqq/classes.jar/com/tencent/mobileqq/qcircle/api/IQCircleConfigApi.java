@@ -8,11 +8,15 @@ import com.tencent.mobileqq.qroute.annotation.QAPI;
 public abstract interface IQCircleConfigApi
   extends QRouteApi
 {
+  public abstract String getPluginMark();
+  
   public abstract String getPluginQUA();
   
   public abstract SharedPreferences getQCircleSp();
   
   public abstract long getQQCircleFollowTabUpdateNotificationShowInterval();
+  
+  public abstract boolean isShowQCircleEnter(boolean paramBoolean);
   
   public abstract boolean isShowQQCircleMainTabEntrance(boolean paramBoolean);
   
@@ -20,7 +24,7 @@ public abstract interface IQCircleConfigApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.IQCircleConfigApi
  * JD-Core Version:    0.7.0.1
  */

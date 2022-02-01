@@ -13,7 +13,7 @@ class PathTraceManagerImpl$7
   {
     try
     {
-      ((IQQHealthApi)QRoute.apiIPCSync(IQQHealthApi.class)).showBanner(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      ((IQQHealthApi)QRoute.apiIPCSync(IQQHealthApi.class)).showBanner(this.a, this.b);
       return;
     }
     catch (Exception localException)
@@ -24,7 +24,7 @@ class PathTraceManagerImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.PathTraceManagerImpl.7
  * JD-Core Version:    0.7.0.1
  */

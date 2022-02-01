@@ -23,15 +23,9 @@ public class PhotoListCustomizationEmotion
     super(paramAbstractPhotoListActivity);
   }
   
-  public String a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.maxSelectNum;
-    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getString(2131694849, new Object[] { Integer.valueOf(i) });
-  }
-  
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList;
+    ArrayList localArrayList = this.e.selectedPhotoList;
     if ((QLog.isDevelopLevel()) && (localArrayList != null) && (localArrayList.size() != 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -41,43 +35,49 @@ public class PhotoListCustomizationEmotion
     }
     if ((paramInt2 == -1) && (paramInt1 == 10015))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.setResult(-1, paramIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
+      this.c.setResult(-1, paramIntent);
+      this.c.finish();
     }
   }
   
   public void a(Intent paramIntent)
   {
     super.a(paramIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.customSendBtnText = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getString(2131694887);
-  }
-  
-  protected void b()
-  {
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList != null) {
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList.size();
-    } else {
-      i = 0;
-    }
-    ReportController.b(null, "CliOper", "", "", "0X800A6D8", "0X800A6D8", 0, 0, String.valueOf(i), "", "", "");
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.finish();
-    AlbumUtil.anim(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, false, false);
+    this.e.customSendBtnText = this.c.getString(2131892590);
   }
   
   public void b(Intent paramIntent)
   {
     ReportController.b(null, "CliOper", "", "", "0X800A6D9", "0X800A6D9", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.startActivityForResult(paramIntent, 10015);
+    this.c.startActivityForResult(paramIntent, 10015);
   }
   
   public void b(View paramView)
   {
     ReportController.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
     super.b(paramView);
+  }
+  
+  public String c(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.e.maxSelectNum;
+    return this.c.getString(2131892552, new Object[] { Integer.valueOf(i) });
+  }
+  
+  protected void c()
+  {
+    int i;
+    if (this.e.selectedPhotoList != null) {
+      i = this.e.selectedPhotoList.size();
+    } else {
+      i = 0;
+    }
+    ReportController.b(null, "CliOper", "", "", "0X800A6D8", "0X800A6D8", 0, 0, String.valueOf(i), "", "", "");
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.e.selectedPhotoList);
+    this.c.setResult(-1, localIntent);
+    this.c.finish();
+    AlbumUtil.anim(this.c, false, false);
   }
   
   public void c(Intent paramIntent)
@@ -88,13 +88,13 @@ public class PhotoListCustomizationEmotion
   
   public void c(View paramView)
   {
-    EmotionPreviewFragment.enterEmotionPreview(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.getIntent(), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.selectedPhotoList);
+    EmotionPreviewFragment.enterEmotionPreview(this.c, this.c.getIntent(), this.e.selectedPhotoList);
     ReportController.b(null, "dc00898", "", "", "0X800A6DC", "0X800A6DC", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationEmotion
  * JD-Core Version:    0.7.0.1
  */

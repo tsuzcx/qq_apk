@@ -23,18 +23,18 @@ class FormalView$3
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
+    FormalView.g(this.a).setVisibility(0);
+    if (this.a.b == 1)
     {
-      FormalView.b(this.a).setVisibility(0);
+      FormalView.i(this.a).setVisibility(0);
       return;
     }
-    FormalView.b(this.a).setVisibility(8);
+    FormalView.i(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FormalView.3
  * JD-Core Version:    0.7.0.1
  */

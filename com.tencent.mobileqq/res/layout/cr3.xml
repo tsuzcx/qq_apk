@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView android:id="@id/n74" android:paddingBottom="5.0dip" android:scrollbars="none" android:layout_width="260.0dip" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ps_" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/ngt" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/en9" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/en_" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/ni8" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/ni9" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-    </LinearLayout>
-</HorizontalScrollView>
+    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/g1f" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray3" android:id="@id/txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fbu" />
+</LinearLayout>

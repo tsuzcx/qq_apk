@@ -11,20 +11,20 @@ class TroopFileThumbnailMgr$2
   
   public void run()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.jdField_a_of_type_Long, 640);
-    if (FileUtil.a(str))
+    String str = this.a.getThumbnailFile(this.b, 640);
+    if (FileUtil.b(str))
     {
-      TroopFileThumbnailMgr.a(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, str);
+      TroopFileThumbnailMgr.a(this.this$0).a(this.b, this.a, this.c, str);
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) && (new VFSFile(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).exists())) {
-      TroopFileThumbnailMgr.a(this.this$0).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_Int, null);
+    if ((this.a.LocalFile != null) && (new VFSFile(this.a.LocalFile).exists())) {
+      TroopFileThumbnailMgr.a(this.this$0).a(this.b, this.a, this.c, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr.2
  * JD-Core Version:    0.7.0.1
  */

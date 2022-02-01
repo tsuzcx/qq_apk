@@ -16,19 +16,19 @@ class TroopFileModel$4
   
   protected void a(TroopFileStatusInfo paramTroopFileStatusInfo, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin != paramTroopFileStatusInfo.b) {
+    if (this.a.c.r().TroopUin != paramTroopFileStatusInfo.d) {
       return;
     }
-    if ((paramTroopFileStatusInfo.a != null) && (TroopFileModel.a(this.a) != null) && (TroopFileModel.a(this.a).equals(paramTroopFileStatusInfo.a.toString())) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnMMApkSafeCheckListener != null) && (paramInt1 == 0)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnMMApkSafeCheckListener.a(paramInt2, paramString1, paramString2, paramBundle);
+    if ((paramTroopFileStatusInfo.a != null) && (TroopFileModel.a(this.a) != null) && (TroopFileModel.a(this.a).equals(paramTroopFileStatusInfo.a.toString())) && (this.a.y != null) && (paramInt1 == 0)) {
+      this.a.y.a(paramInt2, paramString1, paramString2, paramBundle);
     }
   }
   
   protected void a(Object paramObject)
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    Object localObject = this.a.c.r();
     paramObject = (TroopFileStatusInfo)paramObject;
-    if (((FileManagerEntity)localObject).TroopUin != paramObject.b)
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.d)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
@@ -37,7 +37,7 @@ class TroopFileModel$4
     }
     if (TextUtils.isEmpty(TroopFileModel.a(this.a)))
     {
-      localObject = this.a.a((FileManagerEntity)localObject);
+      localObject = this.a.e((FileManagerEntity)localObject);
       if (((TroopFileStatusInfo)localObject).a != null) {
         TroopFileModel.a(this.a, ((TroopFileStatusInfo)localObject).a.toString());
       }
@@ -49,7 +49,7 @@ class TroopFileModel$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.4
  * JD-Core Version:    0.7.0.1
  */

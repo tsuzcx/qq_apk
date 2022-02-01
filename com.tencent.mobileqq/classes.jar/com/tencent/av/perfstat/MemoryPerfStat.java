@@ -25,23 +25,23 @@ import java.util.Set;
 public class MemoryPerfStat
   implements Handler.Callback
 {
-  private static MemoryPerfStat jdField_a_of_type_ComTencentAvPerfstatMemoryPerfStat;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private String jdField_a_of_type_JavaLangString = null;
-  private final HashMap<String, MemoryPerfStat.MemoryItem> jdField_a_of_type_JavaUtilHashMap = new HashMap(5);
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = 0L;
-  private int c = 0;
+  private static MemoryPerfStat a;
+  private final HashMap<String, MemoryPerfStat.MemoryItem> b = new HashMap(5);
+  private final WeakReferenceHandler c = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private final int[] d = new int[1];
+  private long e = 0L;
+  private int f = 0;
+  private int g = 0;
+  private long h = 0L;
+  private int i = 0;
+  private String j = null;
   
   public static MemoryPerfStat a()
   {
-    if (jdField_a_of_type_ComTencentAvPerfstatMemoryPerfStat == null) {
-      jdField_a_of_type_ComTencentAvPerfstatMemoryPerfStat = new MemoryPerfStat();
+    if (a == null) {
+      a = new MemoryPerfStat();
     }
-    return jdField_a_of_type_ComTencentAvPerfstatMemoryPerfStat;
+    return a;
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -52,12 +52,12 @@ public class MemoryPerfStat
         return;
       }
       if (paramInt1 == 0) {
-        a().a();
+        a().b();
       }
     }
     else if (paramInt1 != 0)
     {
-      a().b();
+      a().c();
     }
   }
   
@@ -72,12 +72,12 @@ public class MemoryPerfStat
     if (paramContext == null) {
       return;
     }
-    this.jdField_a_of_type_Int += 1;
-    this.jdField_a_of_type_ArrayOfInt[0] = Process.myPid();
+    this.f += 1;
+    this.d[0] = Process.myPid();
     String str = null;
     try
     {
-      paramContext = paramContext.getProcessMemoryInfo(this.jdField_a_of_type_ArrayOfInt);
+      paramContext = paramContext.getProcessMemoryInfo(this.d);
     }
     catch (Throwable paramContext)
     {
@@ -132,11 +132,11 @@ public class MemoryPerfStat
     a("summary.java-heap", ((Debug.MemoryInfo)localObject1).dalvikPrivateDirty);
     a("summary.native-heap", ((Debug.MemoryInfo)localObject1).nativePrivateDirty);
     l1 = Math.abs(SystemClock.elapsedRealtime() - l2);
-    l2 = this.jdField_b_of_type_Long;
+    l2 = this.h;
     if (l2 == 0L) {
-      this.jdField_b_of_type_Long = l1;
+      this.h = l1;
     } else {
-      this.jdField_b_of_type_Long = ((l2 + l1) / 2L);
+      this.h = ((l2 + l1) / 2L);
     }
     if (QLog.isColorLevel())
     {
@@ -144,21 +144,21 @@ public class MemoryPerfStat
       paramContext.append("getMemoryInfoFromAM, cost[");
       paramContext.append(l1);
       paramContext.append("], avgCost[");
-      paramContext.append(this.jdField_b_of_type_Long);
+      paramContext.append(this.h);
       paramContext.append("], cnt[");
-      paramContext.append(this.jdField_a_of_type_Int);
+      paramContext.append(this.f);
       paramContext.append("], flag[");
-      paramContext.append(this.c);
+      paramContext.append(this.i);
       paramContext.append("], \n{");
       try
       {
-        localObject1 = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+        localObject1 = this.b.keySet().iterator();
         while (((Iterator)localObject1).hasNext())
         {
           str = (String)((Iterator)localObject1).next();
-          localObject2 = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+          localObject2 = (MemoryPerfStat.MemoryItem)this.b.get(str);
           if (localObject2 != null) {
-            paramContext.append(String.format("%s : [avg:%s, max: %s, min: %s]  KB \n", new Object[] { str, Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).c), Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).jdField_a_of_type_Long), Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).jdField_b_of_type_Long) }));
+            paramContext.append(String.format("%s : [avg:%s, max: %s, min: %s]  KB \n", new Object[] { str, Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).d), Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).b), Long.valueOf(((MemoryPerfStat.MemoryItem)localObject2).c) }));
           }
         }
         return;
@@ -179,44 +179,107 @@ public class MemoryPerfStat
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      MemoryPerfStat.MemoryItem localMemoryItem = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      MemoryPerfStat.MemoryItem localMemoryItem = (MemoryPerfStat.MemoryItem)this.b.get(paramString);
       if (localMemoryItem == null)
       {
         localMemoryItem = new MemoryPerfStat.MemoryItem(paramString, paramLong);
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localMemoryItem);
+        this.b.put(paramString, localMemoryItem);
         return;
       }
       localMemoryItem.a(paramLong);
     }
   }
   
-  private void c()
+  private void e()
   {
-    String str = SessionMgr.a().a().c;
-    this.jdField_a_of_type_JavaLangString = a();
+    String str = SessionMgr.a().b().s;
+    this.j = d();
     if (QLog.isColorLevel()) {
-      QLog.i("MemoryPerfStat", 2, String.format("updatePerfInfo, peer[%s], key[%s], value[%s]", new Object[] { str, "PerfInfo", this.jdField_a_of_type_JavaLangString }));
+      QLog.i("MemoryPerfStat", 2, String.format("updatePerfInfo, peer[%s], key[%s], value[%s]", new Object[] { str, "PerfInfo", this.j }));
     }
     if (!TextUtils.isEmpty(str)) {
-      VideoController.a().a(str, "PerfInfo", this.jdField_a_of_type_JavaLangString);
+      VideoController.f().a(str, "PerfInfo", this.j);
     }
   }
   
-  public String a()
+  public void a(int paramInt)
+  {
+    int k = this.i;
+    if ((k & 0x1) == 0) {
+      this.i = (k | 0x1);
+    }
+    if ((paramInt & 0x8) == 8)
+    {
+      k = this.i;
+      if ((k & 0x4) == 0) {
+        this.i = (k | 0x4);
+      }
+    }
+    if ((paramInt & 0x10) == 16)
+    {
+      k = this.i;
+      if ((k & 0x8) == 0) {
+        this.i = (k | 0x8);
+      }
+    }
+    if ((paramInt & 0x20) == 32)
+    {
+      k = this.i;
+      if ((k & 0x10) == 0) {
+        this.i = (k | 0x10);
+      }
+    }
+    if ((paramInt & 0x100) == 256)
+    {
+      paramInt = this.i;
+      if ((paramInt & 0x20) == 0) {
+        this.i = (paramInt | 0x20);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (this.g == 1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MemoryPerfStat", 2, "start");
+    }
+    this.g = 1;
+    this.i = 0;
+    this.b.clear();
+    this.c.sendEmptyMessageDelayed(1, 200L);
+  }
+  
+  public void c()
+  {
+    if (this.g != 1) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MemoryPerfStat", 2, "stop");
+    }
+    this.g = -1;
+    this.c.removeMessages(1);
+    this.j = d();
+  }
+  
+  public String d()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    Object localObject = (MemoryPerfStat.MemoryItem)this.jdField_a_of_type_JavaUtilHashMap.get("summary.total-pss");
+    localStringBuilder.append(this.e);
+    Object localObject = (MemoryPerfStat.MemoryItem)this.b.get("summary.total-pss");
     if (localObject != null)
     {
       localStringBuilder.append(';');
+      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).d);
+      localStringBuilder.append(';');
+      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).b);
+      localStringBuilder.append(';');
       localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).c);
       localStringBuilder.append(';');
-      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).jdField_a_of_type_Long);
-      localStringBuilder.append(';');
-      localStringBuilder.append(((MemoryPerfStat.MemoryItem)localObject).jdField_b_of_type_Long);
-      localStringBuilder.append(';');
-      localStringBuilder.append(this.c);
+      localStringBuilder.append(this.i);
     }
     if (QLog.isColorLevel())
     {
@@ -229,72 +292,9 @@ public class MemoryPerfStat
     return localStringBuilder.toString();
   }
   
-  public void a()
-  {
-    if (this.jdField_b_of_type_Int == 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MemoryPerfStat", 2, "start");
-    }
-    this.jdField_b_of_type_Int = 1;
-    this.c = 0;
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1, 200L);
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = this.c;
-    if ((i & 0x1) == 0) {
-      this.c = (i | 0x1);
-    }
-    if ((paramInt & 0x8) == 8)
-    {
-      i = this.c;
-      if ((i & 0x4) == 0) {
-        this.c = (i | 0x4);
-      }
-    }
-    if ((paramInt & 0x10) == 16)
-    {
-      i = this.c;
-      if ((i & 0x8) == 0) {
-        this.c = (i | 0x8);
-      }
-    }
-    if ((paramInt & 0x20) == 32)
-    {
-      i = this.c;
-      if ((i & 0x10) == 0) {
-        this.c = (i | 0x10);
-      }
-    }
-    if ((paramInt & 0x100) == 256)
-    {
-      paramInt = this.c;
-      if ((paramInt & 0x20) == 0) {
-        this.c = (paramInt | 0x20);
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Int != 1) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MemoryPerfStat", 2, "stop");
-    }
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-    this.jdField_a_of_type_JavaLangString = a();
-  }
-  
   public boolean handleMessage(Message paramMessage)
   {
-    if ((paramMessage.what == 1) && (this.jdField_b_of_type_Int == 1)) {
+    if ((paramMessage.what == 1) && (this.g == 1)) {
       ThreadManager.excute(new MemoryPerfStat.1(this), 16, null, false);
     }
     return true;

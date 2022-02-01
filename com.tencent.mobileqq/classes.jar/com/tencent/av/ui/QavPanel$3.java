@@ -16,22 +16,22 @@ class QavPanel$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.h.isEnabled())
+    if (this.a.J.isEnabled())
     {
-      if (this.a.a == null) {
+      if (this.a.U == null) {
         return false;
       }
-      int i = this.a.a();
-      paramView = this.a.a.a().a();
+      int i = this.a.getCurrentSpeakerMode();
+      paramView = this.a.U.b().k();
       int j = paramMotionEvent.getAction();
       if (j != 0)
       {
         if ((j != 1) && (j != 3)) {
           return false;
         }
-        QavPanel.a(this.a).setAlpha(255);
-        QavPanel.a(this.a).removeMessages(256);
-        QavPanel.a(this.a).removeMessages(261);
+        QavPanel.c(this.a).setAlpha(255);
+        QavPanel.e(this.a).removeMessages(256);
+        QavPanel.e(this.a).removeMessages(261);
         if (i == 3)
         {
           QavPanel.a(this.a, true);
@@ -43,12 +43,12 @@ class QavPanel$3
           }
           else
           {
-            this.a.a.a().a("MotionEventACTION_UP", QavPanel.a(this.a).a(), false, true, 1);
+            this.a.U.b().a("MotionEventACTION_UP", QavPanel.b(this.a).d(), false, true, 1);
             this.a.a("MotionEventACTION_UP", 3, 1, false);
-            QavPanel.a(this.a).a(false, true);
+            QavPanel.b(this.a).a(false, true);
           }
         }
-        QavPanel.a(this.a).a();
+        QavPanel.b(this.a).c();
         return false;
       }
       if ((i == 0) || (i == 1) || (i == 2))
@@ -62,26 +62,26 @@ class QavPanel$3
           }
           else
           {
-            if (this.a.a.a().i()) {
-              this.a.a.a().c("MotionEventDown", 1);
+            if (this.a.U.b().H()) {
+              this.a.U.b().c("MotionEventDown", 1);
             } else {
-              this.a.a.a().a("MotionEventDown", QavPanel.a(this.a).a(), false, true, 1);
+              this.a.U.b().a("MotionEventDown", QavPanel.b(this.a).d(), false, true, 1);
             }
             this.a.a("MotionEventDown", 2, 1, false);
-            QavPanel.a(this.a).a(false, false);
+            QavPanel.b(this.a).a(false, false);
           }
         }
-        QavPanel.a(this.a).setAlpha(127);
+        QavPanel.c(this.a).setAlpha(127);
       }
-      if (QavPanel.b(this.a))
+      if (QavPanel.d(this.a))
       {
         QavPanel.a(this.a, false);
-        QavPanel.a(this.a).removeMessages(256);
-        QavPanel.a(this.a).sendEmptyMessageDelayed(256, 200L);
-        QavPanel.a(this.a).removeMessages(261);
+        QavPanel.e(this.a).removeMessages(256);
+        QavPanel.e(this.a).sendEmptyMessageDelayed(256, 200L);
+        QavPanel.e(this.a).removeMessages(261);
       }
-      if (QavPanel.a(this.a) != null) {
-        QavPanel.a(this.a).a();
+      if (QavPanel.b(this.a) != null) {
+        QavPanel.b(this.a).c();
       }
     }
     return false;

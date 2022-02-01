@@ -10,11 +10,11 @@ class AuthDevRenameActivity$2
   
   protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    AuthDevRenameActivity.a(this.a);
+    AuthDevRenameActivity.access$000(this.a);
     if (!paramBoolean)
     {
       paramArrayOfByte = this.a;
-      QQToast.a(paramArrayOfByte, paramArrayOfByte.getString(2131692041), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramArrayOfByte, paramArrayOfByte.getString(2131889008), 0).show(this.a.getTitleBarHeight());
       return;
     }
     this.a.finish();
@@ -22,7 +22,7 @@ class AuthDevRenameActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.2
  * JD-Core Version:    0.7.0.1
  */

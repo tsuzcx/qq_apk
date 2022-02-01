@@ -4,13 +4,13 @@ import org.json.JSONObject;
 
 class UrlQRProcessor$ConcurrentReqManager$MiniAppReqResult
 {
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  boolean jdField_a_of_type_Boolean;
+  boolean a;
+  JSONObject b;
   
   public UrlQRProcessor$ConcurrentReqManager$MiniAppReqResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.a = paramBoolean;
+    this.b = paramJSONObject;
   }
 }
 

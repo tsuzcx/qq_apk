@@ -7,65 +7,43 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import androidx.core.content.res.ResourcesCompat;
 import com.tencent.aelight.camera.ae.data.AEMaterialMetaData;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.biz.qqstory.utils.UIUtils;
-import java.util.List;
 
 public class AEBottomListAdapter$ViewHolder
   extends RecyclerView.ViewHolder
   implements View.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AEBottomListScrollView jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView;
   public AEMaterialMetaData a;
-  private boolean jdField_a_of_type_Boolean;
   private ImageView b;
-  private ImageView c;
+  private View c;
   private ImageView d;
+  private ImageView e;
+  private ImageView f;
+  private RelativeLayout g;
+  private AEBottomListScrollView h;
+  private boolean i;
   
   public AEBottomListAdapter$ViewHolder(View paramView, AEBottomListScrollView paramAEBottomListScrollView, boolean paramBoolean)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2064122818));
-    this.d = ((ImageView)paramView.findViewById(2064122825));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122831);
-    this.b = ((ImageView)paramView.findViewById(2064122832));
-    this.c = ((ImageView)paramView.findViewById(2064122827));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2064122834));
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView = paramAEBottomListScrollView;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  protected String a(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k.equals("0")) {
-      return (String)AEBottomListAdapter.a().get(5);
-    }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k.equals("call_material_id")) {
-      return (String)AEBottomListAdapter.a().get(6);
-    }
-    if (AEBottomListAdapter.b())
-    {
-      if (paramInt == 1) {
-        paramInt = 3;
-      } else {
-        paramInt = (paramInt - 1 - 1) % 4;
-      }
-    }
-    else {
-      paramInt = (paramInt - 1) % 4;
-    }
-    return (String)AEBottomListAdapter.a().get(paramInt);
+    this.b = ((ImageView)paramView.findViewById(2063991592));
+    this.f = ((ImageView)paramView.findViewById(2063991599));
+    this.c = paramView.findViewById(2063991605);
+    this.d = ((ImageView)paramView.findViewById(2063991606));
+    this.e = ((ImageView)paramView.findViewById(2063991601));
+    this.g = ((RelativeLayout)paramView.findViewById(2063991608));
+    this.h = paramAEBottomListScrollView;
+    this.i = paramBoolean;
   }
   
   public void a(int paramInt)
   {
-    Object localObject;
+    View localView;
     if (paramInt != 0)
     {
       if (paramInt != 1)
@@ -77,197 +55,207 @@ public class AEBottomListAdapter$ViewHolder
             if (paramInt != 4) {
               return;
             }
-            localObject = this.c;
-            if (localObject != null) {
-              ((ImageView)localObject).setVisibility(4);
-            }
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+            this.b.setSelected(false);
+            this.g.setVisibility(4);
             return;
           }
-          localObject = this.c;
-          if ((localObject != null) && (!this.jdField_a_of_type_Boolean)) {
-            ((ImageView)localObject).setVisibility(0);
-          }
-          if ((this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_Boolean) && (!"0".equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)))
+          this.b.setSelected(true);
+          if ((this.a.u) && (!this.i) && (!"0".equals(this.a.m)))
           {
-            this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+            this.g.setVisibility(0);
             return;
           }
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
+          this.g.setVisibility(4);
           return;
         }
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        if (localObject != null) {
-          ((View)localObject).setVisibility(8);
+        localView = this.c;
+        if (localView != null) {
+          localView.setVisibility(8);
         }
       }
       else
       {
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        if (localObject != null) {
-          ((View)localObject).setVisibility(0);
+        localView = this.c;
+        if (localView != null) {
+          localView.setVisibility(0);
         }
       }
     }
     else
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (localObject != null) {
-        ((View)localObject).setVisibility(8);
+      localView = this.c;
+      if (localView != null) {
+        localView.setVisibility(8);
       }
     }
   }
   
   public void a(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData != null)
+    this.a = paramAEMaterialMetaData;
+    if (this.a != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-      if ((!"0".equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)) && (!"call_material_id".equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k)))
+      this.g.setVisibility(4);
+      if ((!"0".equals(this.a.m)) && (!"call_material_id".equals(this.a.m)))
       {
-        if ("stub_placeholder_material_id".equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k))
+        if ("stub_placeholder_material_id".equals(this.a.m))
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          this.b.setVisibility(8);
-          this.d.setVisibility(0);
-          this.d.setImageResource(2064056680);
-        }
-        else if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.a())
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          this.d.setVisibility(0);
-          this.d.setTag(2131378314, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.m);
-          this.d.setTag(2131378280, Boolean.valueOf(false));
-          UIUtils.a(this.d, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.m, UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.a()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.a()), this.itemView.getContext().getResources().getDrawable(2064056680), null);
-          this.d.setVisibility(0);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(8);
           this.b.setVisibility(0);
-          this.b.setImageResource(2130846136);
+          this.c.setVisibility(8);
+          this.d.setVisibility(8);
+          this.f.setVisibility(0);
+          this.f.setImageResource(2063925645);
+        }
+        else if (this.a.a())
+        {
+          this.b.setVisibility(8);
+          this.f.setVisibility(0);
+          this.f.setTag(2131446833, this.a.q);
+          this.f.setTag(2131446799, Boolean.valueOf(false));
+          UIUtils.a(this.f, this.a.q, UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.e()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.e()), this.itemView.getContext().getResources().getDrawable(2063925645), null);
+          this.f.setVisibility(0);
+          this.c.setVisibility(8);
+          this.d.setVisibility(0);
+          this.d.setImageResource(2130847606);
         }
         else
         {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.d.setVisibility(0);
-          this.d.setTag(2131378314, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.m);
-          this.d.setTag(2131378280, Boolean.valueOf(false));
-          UIUtils.a(this.d, this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.m, UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.a()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.a()), this.itemView.getContext().getResources().getDrawable(2064056680), null);
-          if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.e) {
+          this.b.setVisibility(0);
+          this.f.setVisibility(0);
+          this.f.setTag(2131446833, this.a.q);
+          this.f.setTag(2131446799, Boolean.valueOf(false));
+          UIUtils.a(this.f, this.a.q, UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.e()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.e()), this.itemView.getContext().getResources().getDrawable(2063925645), null);
+          if (this.a.A) {
             a(2);
-          } else if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.f) {
+          } else if (this.a.B) {
             a(1);
           } else {
             a(0);
           }
-          this.b.setVisibility(8);
+          this.d.setVisibility(8);
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        this.b.setVisibility(8);
+        this.c.setVisibility(8);
         this.d.setVisibility(8);
-        if (this.jdField_a_of_type_Boolean)
+        this.f.setVisibility(8);
+        if (this.i)
         {
-          if ("0".equals(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.k))
+          if ("0".equals(this.a.m))
           {
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+            this.b.setVisibility(8);
           }
           else
           {
-            this.d.setVisibility(0);
-            UIUtils.a(this.d, "https://downv6.qq.com/shadow_qqcamera/Android/image/material_more.png", UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.a()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.a()), this.itemView.getContext().getResources().getDrawable(2064056686), null);
+            this.f.setVisibility(0);
+            UIUtils.a(this.f, "https://downv6.qq.com/shadow_qqcamera/Android/image/material_more.png", UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.e()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.e()), this.itemView.getContext().getResources().getDrawable(2063925653), null);
           }
         }
         else {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          this.b.setVisibility(0);
         }
       }
-      if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.b())
+      if (this.a.b())
       {
-        this.b.setVisibility(0);
-        this.b.setImageResource(this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.a());
+        this.d.setVisibility(0);
+        this.d.setImageResource(this.a.c());
       }
-      else if (this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData.a())
+      else if (this.a.a())
       {
-        this.b.setVisibility(0);
-        this.b.setImageResource(2130846136);
+        this.d.setVisibility(0);
+        this.d.setImageResource(2130847606);
       }
       else
       {
-        this.b.setVisibility(8);
+        this.d.setVisibility(8);
       }
       this.itemView.setOnClickListener(this);
-      paramAEMaterialMetaData = a(getAdapterPosition());
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131378314, paramAEMaterialMetaData);
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(2131378280, Boolean.valueOf(false));
-      if (this.jdField_a_of_type_Boolean)
+      if (this.i)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(AEBottomListAdapter.c);
+        this.b.setImageResource(AEBottomListAdapter.c);
         return;
       }
-      UIUtils.a(this.jdField_a_of_type_AndroidWidgetImageView, paramAEMaterialMetaData, UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.b()), UIUtils.a(this.itemView.getContext(), AEBottomListAdapter.b()), this.itemView.getContext().getResources().getDrawable(2064056686), null);
+      if ("call_material_id".equals(this.a.m))
+      {
+        this.b.setVisibility(0);
+        this.f.setVisibility(8);
+        UIUtils.a(this.b, "https://qd.myapp.com/myapp/qqteam/youqingzhiyuan/more.png", UIUtils.a(this.itemView.getContext(), 52.0F), UIUtils.a(this.itemView.getContext(), 52.0F), ResourcesCompat.getDrawable(this.itemView.getResources(), 2063925653, null), null);
+        return;
+      }
+      this.b.setVisibility(0);
+      this.f.setVisibility(0);
+      if ("0".equals(this.a.m)) {
+        this.f.setImageResource(2063925620);
+      }
+      paramAEMaterialMetaData = this.b;
+      int j;
+      if ("0".equals(this.a.m)) {
+        j = 2063925269;
+      } else {
+        j = 2063925268;
+      }
+      paramAEMaterialMetaData.setBackgroundResource(j);
     }
   }
   
   public void b(AEMaterialMetaData paramAEMaterialMetaData)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData = paramAEMaterialMetaData;
+    this.a = paramAEMaterialMetaData;
   }
   
   public void onClick(View paramView)
   {
-    int i = getAdapterPosition();
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView != null) && (i >= 0))
+    int j = getAdapterPosition();
+    if ((this.h != null) && (j >= 0))
     {
       AEBottomListAdapter.a = AEBottomListAdapter.b;
-      AEBottomListAdapter.b = i;
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.smoothScrollToPosition(i);
-      if ((this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.getAdapter() instanceof AEBottomListAdapter)) {
-        ((AEBottomListAdapter)this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.getAdapter()).a(true);
+      AEBottomListAdapter.b = j;
+      this.h.smoothScrollToPosition(j);
+      if ((this.h.getAdapter() instanceof AEBottomListAdapter)) {
+        ((AEBottomListAdapter)this.h.getAdapter()).a(true);
       }
     }
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
-    if ((paramView != null) && ("call_material_id".equals(paramView.k)))
+    paramView = this.a;
+    if ((paramView != null) && ("call_material_id".equals(paramView.m)))
     {
-      AEBaseDataReporter.a().aa();
+      AEBaseDataReporter.a().ab();
       return;
     }
-    AEBaseReportParam.a().n("none");
-    AEBaseReportParam.a().m("2");
-    AEBaseReportParam.a().e(0);
-    if (i == 0) {
-      AEBaseReportParam.a().d(-1);
+    AEBaseReportParam.a().r("none");
+    AEBaseReportParam.a().q("2");
+    AEBaseReportParam.a().g(0);
+    if (j == 0) {
+      AEBaseReportParam.a().f(-1);
     } else {
-      AEBaseReportParam.a().d(i);
+      AEBaseReportParam.a().f(j);
     }
     Object localObject = AEBaseDataReporter.a();
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    paramView = this.a;
     String str = "";
     if (paramView == null) {
       paramView = "";
     } else {
-      paramView = paramView.k;
+      paramView = paramView.m;
     }
     ((AEBaseDataReporter)localObject).c(paramView);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("【Click】Item :");
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    paramView = this.a;
     if (paramView == null) {
       paramView = "";
     } else {
-      paramView = paramView.k;
+      paramView = paramView.m;
     }
     ((StringBuilder)localObject).append(paramView);
     AEQLog.b("AEBottomListAdapter", ((StringBuilder)localObject).toString());
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("【Click】Usable :");
-    paramView = this.jdField_a_of_type_ComTencentAelightCameraAeDataAEMaterialMetaData;
+    paramView = this.a;
     if (paramView == null) {
       paramView = str;
     } else {
-      paramView = Boolean.valueOf(paramView.e);
+      paramView = Boolean.valueOf(paramView.A);
     }
     ((StringBuilder)localObject).append(paramView);
     AEQLog.b("AEBottomListAdapter", ((StringBuilder)localObject).toString());
@@ -275,7 +263,7 @@ public class AEBottomListAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

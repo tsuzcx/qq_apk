@@ -43,11 +43,11 @@ import tencent.im.oidb.qqshop.qqshop_richmsg.SQQSHPRichMsgRsp;
 public class EcshopReportHandler
   extends BusinessHandler
 {
-  static String jdField_a_of_type_JavaLangString;
+  static String a;
   static final String b;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public MessageObserver a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public MessageObserver c = new EcshopReportHandler.1(this);
+  private QQAppInterface d;
+  private AppInterface e;
   
   static
   {
@@ -61,10 +61,9 @@ public class EcshopReportHandler
   public EcshopReportHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new EcshopReportHandler.1(this);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.e = paramAppInterface;
     if ((paramAppInterface instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+      this.d = ((QQAppInterface)paramAppInterface);
     }
   }
   
@@ -82,12 +81,12 @@ public class EcshopReportHandler
         JSONArray localJSONArray1 = ((JSONObject)localObject).optJSONArray("report_list");
         JSONArray localJSONArray2 = ((JSONObject)localObject).optJSONArray("gtk_list");
         ArrayList localArrayList = new ArrayList();
-        EcShopAssistantManager.c = new ArrayList();
+        EcShopAssistantManager.p = new ArrayList();
         bool = true;
         if (((JSONObject)localObject).optInt("aio_auto_play", 1) != 1) {
           break label239;
         }
-        EcShopAssistantManager.a = bool;
+        EcShopAssistantManager.t = bool;
         int i;
         if ((localJSONArray1 != null) && (localJSONArray1.length() > 0))
         {
@@ -99,18 +98,18 @@ public class EcshopReportHandler
             continue;
           }
         }
-        EcShopAssistantManager.b = localArrayList;
+        EcShopAssistantManager.o = localArrayList;
         if ((localJSONArray2 != null) && (localJSONArray2.length() > 0))
         {
           i = 0;
           if (i < localJSONArray2.length())
           {
-            EcShopAssistantManager.c.add(String.valueOf(localJSONArray2.getLong(i)));
+            EcShopAssistantManager.p.add(String.valueOf(localJSONArray2.getLong(i)));
             i += 1;
             continue;
           }
         }
-        if (EcShopAssistantManager.b != null) {
+        if (EcShopAssistantManager.o != null) {
           break label222;
         }
       }
@@ -118,10 +117,10 @@ public class EcshopReportHandler
       {
         QLog.e("EcshopReportHandler", 2, localException, new Object[0]);
       }
-      EcShopAssistantManager.b = new ArrayList();
+      EcShopAssistantManager.o = new ArrayList();
       label222:
-      if (EcShopAssistantManager.c == null) {
-        EcShopAssistantManager.c = new ArrayList();
+      if (EcShopAssistantManager.p == null) {
+        EcShopAssistantManager.p = new ArrayList();
       }
       return;
       label239:
@@ -168,7 +167,7 @@ public class EcshopReportHandler
     long l;
     try
     {
-      i = NetworkUtil.getSystemNetwork(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext());
+      i = NetworkUtil.getSystemNetwork(this.d.getApp().getApplicationContext());
       l = Long.parseLong(paramString1);
     }
     catch (Exception paramString1)
@@ -177,7 +176,7 @@ public class EcshopReportHandler
       l = 0L;
       i = 0;
     }
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramString1 = this.d;
     if (paramString1 == null) {
       paramString1 = "";
     } else {
@@ -215,11 +214,11 @@ public class EcshopReportHandler
     localSQQSHPCliLogInfo.uintp4.set(paramLong4);
     if (paramBoolean)
     {
-      if (jdField_a_of_type_JavaLangString == null) {
-        jdField_a_of_type_JavaLangString = QQDeviceInfo.getMAC("5076bf");
+      if (a == null) {
+        a = QQDeviceInfo.getMAC("5076bf");
       }
-      if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-        localSQQSHPCliLogInfo.wifimac.set(jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(a)) {
+        localSQQSHPCliLogInfo.wifimac.set(a);
       }
     }
     ((qqshop_report.SQQSHPCliLogReq)localObject).logs.add(localSQQSHPCliLogInfo);
@@ -232,7 +231,7 @@ public class EcshopReportHandler
   {
     if (paramMessageRecord != null)
     {
-      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      Object localObject1 = this.d;
       if (localObject1 == null) {
         return;
       }
@@ -255,7 +254,7 @@ public class EcshopReportHandler
       QLog.i("EcshopReportHandler", 2, ((StringBuilder)localObject2).toString());
       localObject2 = localEcShopAssistantManager.a(paramMessageRecord.senderuin);
       ((EcShopData)localObject2).mLastMsgTime = paramMessageRecord.time;
-      paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getLastMessage(((EcShopData)localObject2).mUin, 1008);
+      paramMessageRecord = this.d.getMessageFacade().getLastMessage(((EcShopData)localObject2).mUin, 1008);
       if (paramMessageRecord != null)
       {
         long l = paramMessageRecord.time;
@@ -270,7 +269,7 @@ public class EcshopReportHandler
         return;
       }
       ((qqshop_richmsg.SQQSHPRichMsgReq)localObject1).rich_msgs.addAll(localArrayList);
-      paramMessageRecord = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "SQQShopMsgSvc.GetRichMsgInfo");
+      paramMessageRecord = new ToServiceMsg("mobileqq.service", this.d.getCurrentAccountUin(), "SQQShopMsgSvc.GetRichMsgInfo");
       paramMessageRecord.putWupBuffer(((qqshop_richmsg.SQQSHPRichMsgReq)localObject1).toByteArray());
       super.sendPbReq(paramMessageRecord);
     }
@@ -283,7 +282,7 @@ public class EcshopReportHandler
       String str = paramMessageRecord.getExtInfoFromExtStr("public_account_msg_id");
       if ("1".equals(paramMessageRecord.getExtInfoFromExtStr("is_AdArrive_Msg")))
       {
-        ((IEcshopReportApi)QRoute.api(IEcshopReportApi.class)).doClickReport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, paramInt);
+        ((IEcshopReportApi)QRoute.api(IEcshopReportApi.class)).doClickReport(this.d, paramMessageRecord, paramInt);
         return;
       }
       if (paramBoolean)
@@ -313,7 +312,7 @@ public class EcshopReportHandler
       QLog.i("EcshopReportHandler", 1, localStringBuilder.toString());
       if ("1".equals(str))
       {
-        ((IEcshopReportApi)QRoute.api(IEcshopReportApi.class)).doArrivalReport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord);
+        ((IEcshopReportApi)QRoute.api(IEcshopReportApi.class)).doArrivalReport(this.d, paramMessageRecord);
         return;
       }
       if ((paramMessageRecord instanceof MessageForArkApp))
@@ -345,13 +344,13 @@ public class EcshopReportHandler
     paramFromServiceMsg.append("on receive:");
     paramFromServiceMsg.append(paramToServiceMsg.getServiceCmd());
     QLog.i("EcshopReportHandler", 2, paramFromServiceMsg.toString());
-    if (("SQQShopMsgSvc.GetRichMsgInfo".equals(paramToServiceMsg.getServiceCmd())) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if (("SQQShopMsgSvc.GetRichMsgInfo".equals(paramToServiceMsg.getServiceCmd())) && (this.d != null))
     {
       if (paramObject == null) {
         return;
       }
       paramFromServiceMsg = new qqshop_richmsg.SQQSHPRichMsgRsp();
-      paramToServiceMsg = (EcShopAssistantManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+      paramToServiceMsg = (EcShopAssistantManager)this.d.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
       Object localObject1 = paramToServiceMsg.a();
       Object localObject2;
       try
@@ -411,7 +410,7 @@ public class EcshopReportHandler
       if (paramFromServiceMsg.ad_msgs.has())
       {
         paramFromServiceMsg = (qqshop_richmsg.SQQSHPFolderAdMsg)paramFromServiceMsg.ad_msgs.get(0);
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+        localObject1 = this.d.getCurrentAccountUin();
         if (paramFromServiceMsg == null) {
           return;
         }
@@ -421,16 +420,16 @@ public class EcshopReportHandler
           if (paramObject.isEmpty()) {
             return;
           }
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+          localObject2 = this.d.getApp();
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append("ecshop_sp");
           ((StringBuilder)localObject3).append((String)localObject1);
           localObject1 = ((BaseApplication)localObject2).getSharedPreferences(((StringBuilder)localObject3).toString(), 0);
           long l = ((SharedPreferences)localObject1).getLong("ad_puin", 0L);
-          EcShopAssistantManager.g = String.valueOf(l);
+          EcShopAssistantManager.s = String.valueOf(l);
           localObject1 = ((SharedPreferences)localObject1).edit();
           if (l != 0L) {
-            paramToServiceMsg.b(String.valueOf(l));
+            paramToServiceMsg.c(String.valueOf(l));
           }
           ((SharedPreferences.Editor)localObject1).putBoolean("is_ad_added", false);
           ((SharedPreferences.Editor)localObject1).putInt("ad_start", paramFromServiceMsg.begin_time.get());
@@ -474,7 +473,7 @@ public class EcshopReportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler
  * JD-Core Version:    0.7.0.1
  */

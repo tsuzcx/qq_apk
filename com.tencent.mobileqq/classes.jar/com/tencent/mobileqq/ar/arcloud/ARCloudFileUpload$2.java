@@ -13,18 +13,18 @@ class ARCloudFileUpload$2
   
   public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    synchronized (ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload))
+    synchronized (ARCloudFileUpload.b(this.c))
     {
-      if (ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload) != null)
+      if (ARCloudFileUpload.c(this.c) != null)
       {
         int i = 0;
-        while (i < ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).size())
+        while (i < ARCloudFileUpload.c(this.c).size())
         {
-          if (((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a))
+          if (((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.c(this.c).get(i)).b.a.equals(this.a.a))
           {
-            paramArrayOfByte = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback;
-            str = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a;
-            ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).remove(i);
+            paramArrayOfByte = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.c(this.c).get(i)).d;
+            str = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.c(this.c).get(i)).b.a;
+            ARCloudFileUpload.c(this.c).remove(i);
             break label147;
           }
           i += 1;
@@ -54,21 +54,21 @@ class ARCloudFileUpload$2
   
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    synchronized (ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload))
+    synchronized (ARCloudFileUpload.b(this.c))
     {
-      Object localObject1 = ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload);
+      Object localObject1 = ARCloudFileUpload.c(this.c);
       int j = 0;
       int i;
       if (localObject1 != null)
       {
         i = 0;
-        while (i < ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).size())
+        while (i < ARCloudFileUpload.c(this.c).size())
         {
-          if (((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.equals(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a))
+          if (((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.c(this.c).get(i)).b.a.equals(this.a.a))
           {
-            localObject1 = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback;
-            str = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a;
-            ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload).remove(i);
+            localObject1 = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.c(this.c).get(i)).d;
+            str = ((ARCloudFileUpload.TaskInfo)ARCloudFileUpload.c(this.c).get(i)).b.a;
+            ARCloudFileUpload.c(this.c).remove(i);
             break label148;
           }
           i += 1;
@@ -77,7 +77,7 @@ class ARCloudFileUpload$2
       localObject1 = null;
       String str = "";
       label148:
-      paramArrayOfByte = ARCloudFileUpload.a(this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload, paramArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo);
+      paramArrayOfByte = ARCloudFileUpload.a(this.c, paramArrayOfByte, this.a);
       if (paramArrayOfByte == null)
       {
         i = 9058;
@@ -120,7 +120,7 @@ class ARCloudFileUpload$2
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Upload start. sessionId = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a);
+    localStringBuilder.append(this.a.a);
     QLog.i("AREngine_ARCloudFileUpload", 1, localStringBuilder.toString());
   }
   
@@ -130,9 +130,9 @@ class ARCloudFileUpload$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onUpdateProgress. sessionId = ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a);
+      localStringBuilder.append(this.a.a);
       localStringBuilder.append(". total size = ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append(", transfered size = ");
       localStringBuilder.append(paramInt);
       QLog.d("AREngine_ARCloudFileUpload", 2, localStringBuilder.toString());
@@ -141,7 +141,7 @@ class ARCloudFileUpload$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.2
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,12 @@ class CollapsingToolbarLayout$2
   
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
-    this.a.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.setScrimAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.CollapsingToolbarLayout.2
  * JD-Core Version:    0.7.0.1
  */

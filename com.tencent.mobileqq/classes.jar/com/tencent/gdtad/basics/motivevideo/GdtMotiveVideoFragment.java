@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.FrameLayout;
 import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.basics.motivebrowsing.GdtMotiveBrowsingDialog;
@@ -33,43 +36,60 @@ import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class GdtMotiveVideoFragment
   extends QPublicBaseFragment
 {
-  private GdtMvViewController jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController;
-  private GdtMotiveVideoModel jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel;
-  private boolean jdField_a_of_type_Boolean = false;
+  private GdtMvViewController a;
+  private GdtMotiveVideoModel b;
+  private FrameLayout c;
+  private GdtMotiveVideoPageData d;
+  private boolean e = false;
+  private GdtMvViewController.Listener f = new GdtMotiveVideoFragment.1(this);
+  private boolean g;
   
   public GdtMotiveVideoFragment()
   {
     GdtLog.a("GdtMotiveVideoFragment", "GdtMotiveVideoFragment: ");
   }
   
+  private static GdtMotiveVideoPageData a(@Nullable Serializable paramSerializable)
+  {
+    if (!(paramSerializable instanceof GdtMotiveVideoPageData)) {
+      return null;
+    }
+    return (GdtMotiveVideoPageData)paramSerializable;
+  }
+  
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController == null) {
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController = new GdtMvViewController(new GdtMotiveVideoFragment.3(this), this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel, false);
+    if ((this.a == null) || (this.g))
+    {
+      this.g = false;
+      this.a = new GdtMvViewController(new GdtMotiveVideoFragment.4(this), this.b, false);
     }
   }
   
   private void a(Activity paramActivity)
   {
-    Object localObject = getArguments();
-    if (localObject == null)
+    Bundle localBundle = getArguments();
+    if (localBundle == null)
     {
       paramActivity.finish();
       return;
     }
-    localObject = ((Bundle)localObject).getSerializable("data");
-    if (!(localObject instanceof GdtMotiveVideoPageData))
+    GdtMotiveVideoPageData localGdtMotiveVideoPageData = a(localBundle.getSerializable("data"));
+    if (localGdtMotiveVideoPageData == null)
     {
       paramActivity.finish();
       return;
     }
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel = new GdtMotiveVideoModel((GdtMotiveVideoPageData)GdtMotiveVideoPageData.class.cast(localObject));
+    this.b = new GdtMotiveVideoModel(localGdtMotiveVideoPageData);
+    this.d = a(localBundle.getSerializable("second_data"));
   }
   
   private static void a(Context paramContext, GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
@@ -106,22 +126,24 @@ public class GdtMotiveVideoFragment
   
   public static void a(StartGdtMotiveVideoParams paramStartGdtMotiveVideoParams)
   {
-    Activity localActivity = paramStartGdtMotiveVideoParams.jdField_a_of_type_AndroidAppActivity;
-    GdtMotiveVideoPageData localGdtMotiveVideoPageData = paramStartGdtMotiveVideoParams.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData;
-    Bundle localBundle = paramStartGdtMotiveVideoParams.jdField_a_of_type_AndroidOsBundle;
-    boolean bool = paramStartGdtMotiveVideoParams.jdField_a_of_type_Boolean;
-    ResultReceiver localResultReceiver = paramStartGdtMotiveVideoParams.jdField_a_of_type_AndroidOsResultReceiver;
-    int i = paramStartGdtMotiveVideoParams.jdField_a_of_type_Int;
-    a(localActivity, localGdtMotiveVideoPageData);
-    if ((localActivity != null) && (localGdtMotiveVideoPageData != null) && (localBundle != null))
+    if ((paramStartGdtMotiveVideoParams != null) && (paramStartGdtMotiveVideoParams.a != null) && (paramStartGdtMotiveVideoParams.b != null) && (paramStartGdtMotiveVideoParams.f != null))
     {
+      Activity localActivity = paramStartGdtMotiveVideoParams.a;
+      GdtMotiveVideoPageData localGdtMotiveVideoPageData = paramStartGdtMotiveVideoParams.b;
+      Object localObject = paramStartGdtMotiveVideoParams.c;
+      Bundle localBundle = paramStartGdtMotiveVideoParams.f;
+      boolean bool = paramStartGdtMotiveVideoParams.e;
+      ResultReceiver localResultReceiver = paramStartGdtMotiveVideoParams.d;
+      int i = paramStartGdtMotiveVideoParams.g;
+      a(localActivity, localGdtMotiveVideoPageData);
       localBundle.putSerializable("data", localGdtMotiveVideoPageData);
+      localBundle.putSerializable("second_data", (Serializable)localObject);
       localBundle.putString("big_brother_ref_source_key", localGdtMotiveVideoPageData.refId);
-      Intent localIntent = new Intent();
-      localIntent.putExtra("public_fragment_window_feature", 1);
-      localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-      localIntent.putExtras(localBundle);
-      if (TextUtils.isEmpty(localIntent.getStringExtra("big_brother_ref_source_key"))) {
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
+      ((Intent)localObject).putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      ((Intent)localObject).putExtras(localBundle);
+      if (TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_ref_source_key"))) {
         GdtLog.d("GdtMotiveVideoFragment", "start gdt empty refId");
       }
       if (a(localGdtMotiveVideoPageData))
@@ -131,16 +153,16 @@ public class GdtMotiveVideoFragment
         paramStartGdtMotiveVideoParams.append(localGdtMotiveVideoPageData.containerType);
         QLog.i("GdtMotiveVideoFragment", 1, paramStartGdtMotiveVideoParams.toString());
         if (localGdtMotiveVideoPageData.containerType == 1) {
-          GdtMotiveBrowsingDialog.a.a(localActivity, localGdtMotiveVideoPageData, localIntent);
+          GdtMotiveBrowsingDialog.a.a(localActivity, localGdtMotiveVideoPageData, (Intent)localObject);
         } else {
-          GdtMotiveBrowsingFragment.a.a(localActivity, localGdtMotiveVideoPageData, localIntent);
+          GdtMotiveBrowsingFragment.a.a(localActivity, localGdtMotiveVideoPageData, (Intent)localObject);
         }
         GdtADFlyingStreamingReportHelper.a().a(3);
         return;
       }
       if (localGdtMotiveVideoPageData.containerType == 1)
       {
-        localActivity.runOnUiThread(new GdtMotiveVideoFragment.1(localActivity, localIntent, localResultReceiver));
+        localActivity.runOnUiThread(new GdtMotiveVideoFragment.2(localActivity, (Intent)localObject, localResultReceiver));
         return;
       }
       if (bool)
@@ -150,7 +172,7 @@ public class GdtMotiveVideoFragment
         } else {
           paramStartGdtMotiveVideoParams = QPublicFragmentActivityForTool.class;
         }
-        QPublicFragmentActivity.Launcher.a(localActivity, localIntent, paramStartGdtMotiveVideoParams, GdtMotiveVideoFragment.class, i);
+        QPublicFragmentActivity.Launcher.a(localActivity, (Intent)localObject, paramStartGdtMotiveVideoParams, GdtMotiveVideoFragment.class, i);
         return;
       }
       if (localGdtMotiveVideoPageData.screenOrientation == 0) {
@@ -158,13 +180,10 @@ public class GdtMotiveVideoFragment
       } else {
         paramStartGdtMotiveVideoParams = QPublicFragmentActivity.class;
       }
-      QPublicFragmentActivity.Launcher.a(localActivity, localIntent, paramStartGdtMotiveVideoParams, GdtMotiveVideoFragment.class, i);
+      QPublicFragmentActivity.Launcher.a(localActivity, (Intent)localObject, paramStartGdtMotiveVideoParams, GdtMotiveVideoFragment.class, i);
       return;
     }
-    paramStartGdtMotiveVideoParams = new StringBuilder();
-    paramStartGdtMotiveVideoParams.append("start error data:");
-    paramStartGdtMotiveVideoParams.append(localGdtMotiveVideoPageData);
-    GdtLog.b("GdtMotiveVideoFragment", paramStartGdtMotiveVideoParams.toString());
+    GdtLog.b("GdtMotiveVideoFragment", "[start] error params");
   }
   
   private static boolean a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
@@ -172,17 +191,36 @@ public class GdtMotiveVideoFragment
     return (paramGdtMotiveVideoPageData != null) && (paramGdtMotiveVideoPageData.vSize != 585) && (paramGdtMotiveVideoPageData.vSize != 185);
   }
   
+  @Nullable
+  public View a(@NonNull LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    a();
+    this.a.a(paramInt);
+    if (this.d != null) {
+      this.a.d(true);
+    }
+    this.a.n();
+    if ((this.b.a().screenOrientation == 1) && (GdtUIUtils.b(getQBaseActivity()))) {
+      GdtUIUtils.c(getQBaseActivity());
+    }
+    this.a.a(new WeakReference(this.f));
+    return this.a.a(paramLayoutInflater, paramViewGroup);
+  }
+  
   public void beforeFinish()
   {
-    if ((this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController != null) && (!this.jdField_a_of_type_Boolean))
+    if ((this.a != null) && (!this.e))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.e = true;
       Bundle localBundle = getArguments();
       String str = "";
       if (localBundle != null) {
         str = getArguments().getString("arg_callback", "");
       }
-      this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.a(str);
+      this.a.a(str);
     }
   }
   
@@ -198,9 +236,9 @@ public class GdtMotiveVideoFragment
     localObject = ((Window)localObject).getDecorView();
     ((View)localObject).setSystemUiVisibility(7942);
     if (Build.VERSION.SDK_INT >= 19) {
-      ((View)localObject).setOnSystemUiVisibilityChangeListener(new GdtMotiveVideoFragment.2(this, (View)localObject));
+      ((View)localObject).setOnSystemUiVisibilityChangeListener(new GdtMotiveVideoFragment.3(this, (View)localObject));
     }
-    paramActivity.setRequestedOrientation(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().screenOrientation);
+    paramActivity.setRequestedOrientation(this.b.a().screenOrientation);
   }
   
   public boolean isWrapContent()
@@ -220,9 +258,9 @@ public class GdtMotiveVideoFragment
   
   public boolean onBackEvent()
   {
-    GdtMvViewController localGdtMvViewController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController;
+    GdtMvViewController localGdtMvViewController = this.a;
     if (localGdtMvViewController != null) {
-      return localGdtMvViewController.c();
+      return localGdtMvViewController.f();
     }
     return super.onBackEvent();
   }
@@ -231,38 +269,30 @@ public class GdtMotiveVideoFragment
   {
     super.onCreate(paramBundle);
     GdtLog.b("GdtMotiveVideoFragment", "onCreate: ");
-    if (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel == null) {
+    if (this.b == null) {
       return;
     }
     a();
-    this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.i();
+    this.a.n();
   }
   
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel == null)
-    {
-      paramLayoutInflater = null;
-    }
-    else
-    {
-      a();
-      if ((this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoModel.a().screenOrientation == 1) && (GdtUIUtils.a(getQBaseActivity()))) {
-        GdtUIUtils.a(getQBaseActivity());
-      }
-      paramLayoutInflater = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController.a(paramLayoutInflater, paramViewGroup);
-    }
+    this.c = new FrameLayout(paramLayoutInflater.getContext());
+    paramLayoutInflater = a(paramLayoutInflater, this.c, 1);
+    this.c.addView(paramLayoutInflater);
+    paramLayoutInflater = this.c;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    GdtMvViewController localGdtMvViewController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController;
+    GdtMvViewController localGdtMvViewController = this.a;
     if (localGdtMvViewController != null) {
-      localGdtMvViewController.h();
+      localGdtMvViewController.m();
     }
-    GdtADFlyingStreamingReportHelper.a().a();
+    GdtADFlyingStreamingReportHelper.a().c();
     super.onDestroy();
   }
   
@@ -273,9 +303,9 @@ public class GdtMotiveVideoFragment
   
   public void onPause()
   {
-    GdtMvViewController localGdtMvViewController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController;
+    GdtMvViewController localGdtMvViewController = this.a;
     if (localGdtMvViewController != null) {
-      localGdtMvViewController.f();
+      localGdtMvViewController.k();
     }
     super.onPause();
   }
@@ -284,9 +314,9 @@ public class GdtMotiveVideoFragment
   {
     super.onResume();
     GdtLog.b("GdtMotiveVideoFragment", "onResume: ");
-    GdtMvViewController localGdtMvViewController = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoGdtMvViewController;
+    GdtMvViewController localGdtMvViewController = this.a;
     if (localGdtMvViewController != null) {
-      localGdtMvViewController.g();
+      localGdtMvViewController.l();
     }
   }
   
@@ -300,7 +330,7 @@ public class GdtMotiveVideoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.GdtMotiveVideoFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mtt.hippy;
 
-import com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorEvent;
 import com.tencent.mtt.hippy.common.Callback;
 import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.utils.TimeMonitor;
@@ -23,7 +22,7 @@ class HippyEngineManagerImpl$6
       this.this$0.notifyEngineInitialized(HippyEngine.EngineInitStatus.STATUS_WRONG_STATE, paramThrowable);
       return;
     }
-    this.this$0.mStartTimeMonitor.startEvent(HippyEngineMonitorEvent.ENGINE_LOAD_EVENT_NOTIFY_ENGINE_INITED);
+    this.this$0.mStartTimeMonitor.startEvent("notifyEngineInited");
     Object localObject1 = this.this$0.mInstances.iterator();
     while (((Iterator)localObject1).hasNext())
     {
@@ -59,7 +58,7 @@ class HippyEngineManagerImpl$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl.6
  * JD-Core Version:    0.7.0.1
  */

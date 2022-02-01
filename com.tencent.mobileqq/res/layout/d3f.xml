@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:id="@id/idg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.immersive.refresh.QFSPullRefreshLayout android:id="@id/p23" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.viewpager2.widget.ViewPager2 android:id="@id/pu0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.biz.qqcircle.immersive.refresh.QFSPullRefreshLayout>
+</merge>

@@ -8,15 +8,15 @@ class ShareModeBase$8
 {
   ShareModeBase$8(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
   
-  public boolean b()
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
+    this.a.a = ((String)b("UploadImageJob_out_image_url"));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.8
  * JD-Core Version:    0.7.0.1
  */

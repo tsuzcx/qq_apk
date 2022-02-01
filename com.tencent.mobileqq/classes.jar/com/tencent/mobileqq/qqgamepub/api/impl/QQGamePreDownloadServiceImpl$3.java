@@ -17,11 +17,11 @@ class QQGamePreDownloadServiceImpl$3
   
   public void run()
   {
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.url, new File(this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.filePath));
-    localDownloadTask.f = "qqgame_pubaccount";
-    if (this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.headers != null)
+    DownloadTask localDownloadTask = new DownloadTask(this.a.url, new File(this.a.filePath));
+    localDownloadTask.L = "qqgame_pubaccount";
+    if (this.a.headers != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataDownloadParam.headers.iterator();
+      Iterator localIterator = this.a.headers.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();
@@ -31,13 +31,13 @@ class QQGamePreDownloadServiceImpl$3
       }
     }
     if (QQGamePreDownloadServiceImpl.access$100(this.this$0) != null) {
-      QQGamePreDownloadServiceImpl.access$100(this.this$0).startDownload(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.jdField_a_of_type_AndroidOsBundle);
+      QQGamePreDownloadServiceImpl.access$100(this.this$0).startDownload(localDownloadTask, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

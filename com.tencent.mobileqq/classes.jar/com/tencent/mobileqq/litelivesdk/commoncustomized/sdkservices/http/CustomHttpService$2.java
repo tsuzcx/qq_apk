@@ -13,7 +13,7 @@ class CustomHttpService$2
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    CustomHttpService.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService).post(new CustomHttpService.2.1(this));
+    CustomHttpService.b(this.c).post(new CustomHttpService.2.1(this));
   }
   
   /* Error */
@@ -21,18 +21,18 @@ class CustomHttpService$2
   {
     // Byte code:
     //   0: aload_2
-    //   1: invokevirtual 50	okhttp3/Response:code	()I
+    //   1: invokevirtual 52	okhttp3/Response:code	()I
     //   4: sipush 200
     //   7: if_icmpeq +24 -> 31
     //   10: aload_0
-    //   11: getfield 14	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
-    //   14: invokestatic 29	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:a	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
-    //   17: new 52	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$2
+    //   11: getfield 16	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:c	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
+    //   14: invokestatic 31	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:b	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
+    //   17: new 54	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$2
     //   20: dup
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 55	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$2:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;Lokhttp3/Response;)V
-    //   26: invokevirtual 40	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   23: invokespecial 57	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$2:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;Lokhttp3/Response;)V
+    //   26: invokevirtual 42	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   29: pop
     //   30: return
     //   31: sipush 2048
@@ -41,29 +41,29 @@ class CustomHttpService$2
     //   38: aconst_null
     //   39: astore_1
     //   40: aload_2
-    //   41: invokevirtual 59	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   44: invokevirtual 65	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
+    //   41: invokevirtual 61	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   44: invokevirtual 67	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
     //   47: astore 8
     //   49: aload_2
-    //   50: invokevirtual 59	okhttp3/Response:body	()Lokhttp3/ResponseBody;
-    //   53: invokevirtual 69	okhttp3/ResponseBody:contentLength	()J
+    //   50: invokevirtual 61	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   53: invokevirtual 71	okhttp3/ResponseBody:contentLength	()J
     //   56: lstore 6
-    //   58: new 71	java/io/File
+    //   58: new 73	java/io/File
     //   61: dup
     //   62: aload_0
-    //   63: getfield 18	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   66: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
+    //   63: getfield 20	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:b	Ljava/lang/String;
+    //   66: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
     //   69: astore_1
-    //   70: new 76	java/io/FileOutputStream
+    //   70: new 78	java/io/FileOutputStream
     //   73: dup
     //   74: aload_1
-    //   75: invokespecial 79	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   75: invokespecial 81	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   78: astore_2
     //   79: lconst_0
     //   80: lstore 4
     //   82: aload 8
     //   84: aload 9
-    //   86: invokevirtual 85	java/io/InputStream:read	([B)I
+    //   86: invokevirtual 87	java/io/InputStream:read	([B)I
     //   89: istore_3
     //   90: iload_3
     //   91: iconst_m1
@@ -72,7 +72,7 @@ class CustomHttpService$2
     //   96: aload 9
     //   98: iconst_0
     //   99: iload_3
-    //   100: invokevirtual 89	java/io/FileOutputStream:write	([BII)V
+    //   100: invokevirtual 91	java/io/FileOutputStream:write	([BII)V
     //   103: lload 4
     //   105: iload_3
     //   106: i2l
@@ -85,49 +85,49 @@ class CustomHttpService$2
     //   115: lload 6
     //   117: l2f
     //   118: fdiv
-    //   119: ldc 90
+    //   119: ldc 92
     //   121: fmul
     //   122: f2i
     //   123: istore_3
     //   124: aload_0
-    //   125: getfield 14	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
-    //   128: invokestatic 29	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:a	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
-    //   131: new 92	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$3
+    //   125: getfield 16	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:c	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
+    //   128: invokestatic 31	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:b	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
+    //   131: new 94	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$3
     //   134: dup
     //   135: aload_0
     //   136: lload 4
     //   138: lload 6
     //   140: iload_3
-    //   141: invokespecial 95	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$3:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;JJI)V
-    //   144: invokevirtual 40	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   141: invokespecial 97	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$3:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;JJI)V
+    //   144: invokevirtual 42	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   147: pop
     //   148: goto -66 -> 82
     //   151: aload_2
-    //   152: invokevirtual 98	java/io/FileOutputStream:flush	()V
+    //   152: invokevirtual 100	java/io/FileOutputStream:flush	()V
     //   155: aload_0
-    //   156: getfield 14	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
-    //   159: invokestatic 29	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:a	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
-    //   162: new 100	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$4
+    //   156: getfield 16	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:c	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
+    //   159: invokestatic 31	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:b	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
+    //   162: new 102	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$4
     //   165: dup
     //   166: aload_0
     //   167: aload_1
-    //   168: invokespecial 103	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$4:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;Ljava/io/File;)V
-    //   171: invokevirtual 40	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   168: invokespecial 105	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$4:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;Ljava/io/File;)V
+    //   171: invokevirtual 42	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   174: pop
     //   175: aload 8
     //   177: ifnull +16 -> 193
     //   180: aload 8
-    //   182: invokevirtual 106	java/io/InputStream:close	()V
+    //   182: invokevirtual 108	java/io/InputStream:close	()V
     //   185: goto +8 -> 193
     //   188: astore_1
     //   189: aload_1
-    //   190: invokevirtual 109	java/lang/Exception:printStackTrace	()V
+    //   190: invokevirtual 111	java/lang/Exception:printStackTrace	()V
     //   193: aload_2
-    //   194: invokevirtual 110	java/io/FileOutputStream:close	()V
+    //   194: invokevirtual 112	java/io/FileOutputStream:close	()V
     //   197: return
     //   198: astore_1
     //   199: aload_1
-    //   200: invokevirtual 109	java/lang/Exception:printStackTrace	()V
+    //   200: invokevirtual 111	java/lang/Exception:printStackTrace	()V
     //   203: return
     //   204: astore_1
     //   205: goto +36 -> 241
@@ -157,50 +157,50 @@ class CustomHttpService$2
     //   246: aconst_null
     //   247: astore_2
     //   248: aload_0
-    //   249: getfield 14	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
-    //   252: invokestatic 113	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:a	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Lcom/tencent/falco/base/libapi/http/HttpInterface$HttpComponentAdapter;
-    //   255: invokeinterface 119 1 0
+    //   249: getfield 16	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:c	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
+    //   252: invokestatic 115	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:a	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Lcom/tencent/falco/base/libapi/http/HttpInterface$HttpComponentAdapter;
+    //   255: invokeinterface 121 1 0
     //   260: astore 9
-    //   262: new 121	java/lang/StringBuilder
+    //   262: new 123	java/lang/StringBuilder
     //   265: dup
-    //   266: invokespecial 122	java/lang/StringBuilder:<init>	()V
+    //   266: invokespecial 124	java/lang/StringBuilder:<init>	()V
     //   269: astore 10
     //   271: aload 10
-    //   273: ldc 124
-    //   275: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: ldc 126
+    //   275: invokevirtual 130	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   278: pop
     //   279: aload 10
     //   281: aload 8
-    //   283: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   283: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   286: pop
     //   287: aload 9
-    //   289: ldc 133
+    //   289: ldc 135
     //   291: aload 10
-    //   293: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   296: iconst_0
     //   297: anewarray 4	java/lang/Object
-    //   300: invokeinterface 143 4 0
+    //   300: invokeinterface 145 4 0
     //   305: aload_0
-    //   306: getfield 14	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesHttpCustomHttpService	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
-    //   309: invokestatic 29	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:a	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
-    //   312: new 145	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$5
+    //   306: getfield 16	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2:c	Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;
+    //   309: invokestatic 31	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService:b	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService;)Landroid/os/Handler;
+    //   312: new 147	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$5
     //   315: dup
     //   316: aload_0
-    //   317: invokespecial 146	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$5:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;)V
-    //   320: invokevirtual 40	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   317: invokespecial 148	com/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2$5:<init>	(Lcom/tencent/mobileqq/litelivesdk/commoncustomized/sdkservices/http/CustomHttpService$2;)V
+    //   320: invokevirtual 42	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   323: pop
     //   324: aload_1
     //   325: ifnull +15 -> 340
     //   328: aload_1
-    //   329: invokevirtual 106	java/io/InputStream:close	()V
+    //   329: invokevirtual 108	java/io/InputStream:close	()V
     //   332: goto +8 -> 340
     //   335: astore_1
     //   336: aload_1
-    //   337: invokevirtual 109	java/lang/Exception:printStackTrace	()V
+    //   337: invokevirtual 111	java/lang/Exception:printStackTrace	()V
     //   340: aload_2
     //   341: ifnull +7 -> 348
     //   344: aload_2
-    //   345: invokevirtual 110	java/io/FileOutputStream:close	()V
+    //   345: invokevirtual 112	java/io/FileOutputStream:close	()V
     //   348: return
     //   349: astore 9
     //   351: aload_1
@@ -211,19 +211,19 @@ class CustomHttpService$2
     //   360: aload 8
     //   362: ifnull +18 -> 380
     //   365: aload 8
-    //   367: invokevirtual 106	java/io/InputStream:close	()V
+    //   367: invokevirtual 108	java/io/InputStream:close	()V
     //   370: goto +10 -> 380
     //   373: astore 8
     //   375: aload 8
-    //   377: invokevirtual 109	java/lang/Exception:printStackTrace	()V
+    //   377: invokevirtual 111	java/lang/Exception:printStackTrace	()V
     //   380: aload_2
     //   381: ifnull +15 -> 396
     //   384: aload_2
-    //   385: invokevirtual 110	java/io/FileOutputStream:close	()V
+    //   385: invokevirtual 112	java/io/FileOutputStream:close	()V
     //   388: goto +8 -> 396
     //   391: astore_2
     //   392: aload_2
-    //   393: invokevirtual 109	java/lang/Exception:printStackTrace	()V
+    //   393: invokevirtual 111	java/lang/Exception:printStackTrace	()V
     //   396: goto +5 -> 401
     //   399: aload_1
     //   400: athrow
@@ -268,7 +268,7 @@ class CustomHttpService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CustomHttpService.2
  * JD-Core Version:    0.7.0.1
  */

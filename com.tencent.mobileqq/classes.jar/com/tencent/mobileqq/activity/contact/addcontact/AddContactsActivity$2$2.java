@@ -17,17 +17,17 @@ class AddContactsActivity$2$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.a = true;
+    this.a.a.b = true;
     if (QLog.isColorLevel())
     {
       paramAnimator = new StringBuilder();
       paramAnimator.append("click search onAnimationEnd mCurrentView = ");
-      paramAnimator.append(AddContactsActivity.a(this.a.a));
+      paramAnimator.append(AddContactsActivity.i(this.a.a));
       QLog.d("AddContactsActivity", 2, paramAnimator.toString());
     }
-    if ((AddContactsActivity.a(this.a.a) instanceof AddContactsView))
+    if ((AddContactsActivity.i(this.a.a) instanceof AddContactsView))
     {
-      ActiveEntitySearchActivity.a(this.a.a, HardCodeUtil.a(2131713565), new long[] { 1001L, 1002L }, 99);
+      ActiveEntitySearchActivity.a(this.a.a, HardCodeUtil.a(2131911111), new long[] { 1001L, 1002L }, 99);
     }
     else
     {
@@ -46,7 +46,7 @@ class AddContactsActivity$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity.2.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,6 +10,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,13 +23,13 @@ public class KandianMsgBoxRedPntInfoUtils
 {
   public static KandianMsgBoxRedPntInfo a()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     KandianMsgBoxRedPntInfo localKandianMsgBoxRedPntInfo = (KandianMsgBoxRedPntInfo)RIJSPUtils.a(localAppRuntime, "kandian_msg_box_sp_key_new", true);
     Object localObject = localKandianMsgBoxRedPntInfo;
     if (localKandianMsgBoxRedPntInfo == null)
     {
-      KandianOx210MsgInfo localKandianOx210MsgInfo1 = KandianOx210MsgInfo.d();
-      KandianOx210MsgInfo localKandianOx210MsgInfo2 = KandianOx210MsgInfo.a();
+      KandianOx210MsgInfo localKandianOx210MsgInfo1 = KandianOx210MsgInfo.e();
+      KandianOx210MsgInfo localKandianOx210MsgInfo2 = KandianOx210MsgInfo.b();
       if (localKandianOx210MsgInfo1 == null)
       {
         localObject = localKandianMsgBoxRedPntInfo;
@@ -41,15 +42,15 @@ public class KandianMsgBoxRedPntInfoUtils
         ((KandianMsgBoxRedPntInfo)localObject).mNeedShowInFolder = false;
         if (localKandianOx210MsgInfo2 != null)
         {
-          ((KandianMsgBoxRedPntInfo)localObject).mMsgCnt += localKandianOx210MsgInfo2.a;
-          ((KandianMsgBoxRedPntInfo)localObject).mUin = localKandianOx210MsgInfo2.e;
+          ((KandianMsgBoxRedPntInfo)localObject).setMsgCnt(((KandianMsgBoxRedPntInfo)localObject).getMsgCnt() + localKandianOx210MsgInfo2.a);
+          ((KandianMsgBoxRedPntInfo)localObject).mUin = localKandianOx210MsgInfo2.p;
           ((KandianMsgBoxRedPntInfo)localObject).mMsgTime = System.currentTimeMillis();
           ((KandianMsgBoxRedPntInfo)localObject).mMsgType = 1;
           localKandianOx210MsgInfo2.a(localAppRuntime);
         }
         if (localKandianOx210MsgInfo1 != null)
         {
-          ((KandianMsgBoxRedPntInfo)localObject).mMsgCnt += localKandianOx210MsgInfo1.a;
+          ((KandianMsgBoxRedPntInfo)localObject).setMsgCnt(((KandianMsgBoxRedPntInfo)localObject).getMsgCnt() + localKandianOx210MsgInfo1.a);
           ((KandianMsgBoxRedPntInfo)localObject).mMsgType = 2;
           localKandianOx210MsgInfo1.d((QQAppInterface)localAppRuntime);
         }
@@ -78,7 +79,7 @@ public class KandianMsgBoxRedPntInfoUtils
       if ((!TextUtils.isEmpty(localKandianMsgBoxRedPntInfoImpl.mSummary)) && (!TextUtils.isEmpty(localKandianMsgBoxRedPntInfoImpl.mOrangeWord))) {
         localKandianMsgBoxRedPntInfoImpl.mNeedShowInFolder = true;
       }
-      localKandianMsgBoxRedPntInfoImpl.mMsgCnt = paramString.getInt("_red_ext_unread");
+      localKandianMsgBoxRedPntInfoImpl.setMsgCnt(paramString.getInt("_red_ext_unread"));
       return localKandianMsgBoxRedPntInfoImpl;
     }
     catch (JSONException paramString)
@@ -95,7 +96,7 @@ public class KandianMsgBoxRedPntInfoUtils
       return null;
     }
     KandianMsgBoxRedPntInfoImpl localKandianMsgBoxRedPntInfoImpl = new KandianMsgBoxRedPntInfoImpl();
-    localKandianMsgBoxRedPntInfoImpl.mMsgCnt = ((int)paramMsgGetRsp.uint64_unread.get());
+    localKandianMsgBoxRedPntInfoImpl.setMsgCnt((int)paramMsgGetRsp.uint64_unread.get());
     oidb_cmd0xbe4.MsgBody localMsgBody = (oidb_cmd0xbe4.MsgBody)paramMsgGetRsp.msg_body.get();
     if (localMsgBody == null) {
       return null;
@@ -175,10 +176,27 @@ public class KandianMsgBoxRedPntInfoUtils
     }
     return localKandianMsgBoxRedPntInfoImpl;
   }
+  
+  public static void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo, long paramLong)
+  {
+    paramKandianMsgBoxRedPntInfo.isRead = false;
+    paramKandianMsgBoxRedPntInfo.isExpose = false;
+    paramKandianMsgBoxRedPntInfo.mUin = paramLong;
+    paramKandianMsgBoxRedPntInfo.mIconUrl = "";
+    paramKandianMsgBoxRedPntInfo.mMsgType = 1;
+    paramKandianMsgBoxRedPntInfo.mPrivateChatSeq = (((Long)RIJSPUtils.b("kandian_msg_box_private_chat_seq_sp_key", Long.valueOf(0L))).longValue() + 1L);
+    RIJSPUtils.a("kandian_msg_box_private_chat_seq_sp_key", Long.valueOf(paramKandianMsgBoxRedPntInfo.mPrivateChatSeq));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[updateRIJPrivateChatRedPntInfo] redPntInfo = ");
+    localStringBuilder.append(paramKandianMsgBoxRedPntInfo);
+    localStringBuilder.append(", uin = ");
+    localStringBuilder.append(paramLong);
+    QLog.i("KandianMsgBoxRedPntInfoUtils", 1, localStringBuilder.toString());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.KandianMsgBoxRedPntInfoUtils
  * JD-Core Version:    0.7.0.1
  */

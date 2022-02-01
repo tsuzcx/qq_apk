@@ -5,13 +5,7 @@ import android.os.IInterface;
 public abstract interface IArConfigManager
   extends IInterface
 {
-  public abstract ARCommonConfigInfo a();
-  
   public abstract ArConfigInfo a();
-  
-  public abstract ArEffectConfig a();
-  
-  public abstract void a();
   
   public abstract void a(int paramInt);
   
@@ -23,9 +17,7 @@ public abstract interface IArConfigManager
   
   public abstract void a(IArSoCallback paramIArSoCallback);
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public abstract ArEffectConfig b();
   
   public abstract void b(int paramInt);
   
@@ -35,17 +27,25 @@ public abstract interface IArConfigManager
   
   public abstract void b(IArSoCallback paramIArSoCallback);
   
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
+  public abstract ARCommonConfigInfo c();
   
   public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract boolean f();
+  
+  public abstract boolean g();
+  
+  public abstract void h();
+  
+  public abstract boolean i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.IArConfigManager
  * JD-Core Version:    0.7.0.1
  */

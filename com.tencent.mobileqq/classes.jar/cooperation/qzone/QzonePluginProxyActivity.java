@@ -212,7 +212,7 @@ public class QzonePluginProxyActivity
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    ViewUtils.a();
+    ViewUtils.resetScreenSize();
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
@@ -231,7 +231,7 @@ public class QzonePluginProxyActivity
         paramBundle = getIntent().getExtras();
       }
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-      localObject = new StringBuffer(HardCodeUtil.a(2131712142));
+      localObject = new StringBuffer(HardCodeUtil.a(2131909758));
       ((StringBuffer)localObject).append(paramBundle);
       ((StringBuffer)localObject).append(" ");
       ((StringBuffer)localObject).append(this.mCreateErrorInfo);
@@ -239,7 +239,7 @@ public class QzonePluginProxyActivity
       paramBundle = (IQzoneExceptionReport)QRoute.api(IQzoneExceptionReport.class);
       localObject = new QZoneStartupFailException(this.mCreateErrorInfo);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(HardCodeUtil.a(2131712129));
+      localStringBuilder.append(HardCodeUtil.a(2131909747));
       localStringBuilder.append(getPluginActivity());
       paramBundle.doReport((Throwable)localObject, localStringBuilder.toString());
       dismissPluginLoading();
@@ -351,7 +351,7 @@ public class QzonePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.QzonePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

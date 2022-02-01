@@ -23,12 +23,6 @@ public class TavStickerLayerInfoWrapper
     this.a = paramTAVSticker;
   }
   
-  CGSize a()
-  {
-    RectF localRectF = this.a.getPagFile().getLayerAt(getLayerIndex()).getBounds();
-    return new CGSize(localRectF.width(), localRectF.height());
-  }
-  
   CMTime a()
   {
     Object localObject = CMTime.CMTimeZero;
@@ -42,10 +36,16 @@ public class TavStickerLayerInfoWrapper
     }
     return localObject;
   }
+  
+  CGSize b()
+  {
+    RectF localRectF = this.a.getPagFile().getLayerAt(getLayerIndex()).getBounds();
+    return new CGSize(localRectF.width(), localRectF.height());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavStickerLayerInfoWrapper
  * JD-Core Version:    0.7.0.1
  */

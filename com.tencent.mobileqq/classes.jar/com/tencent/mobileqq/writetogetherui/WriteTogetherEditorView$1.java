@@ -21,11 +21,11 @@ class WriteTogetherEditorView$1
       while (paramValueAnimator.hasNext())
       {
         UserEditInfo localUserEditInfo = (UserEditInfo)paramValueAnimator.next();
-        if (localUserEditInfo.jdField_a_of_type_Float < 0.0F) {
-          localUserEditInfo.jdField_a_of_type_Float = (1.0F - f1);
+        if (localUserEditInfo.i < 0.0F) {
+          localUserEditInfo.i = (1.0F - f1);
         }
-        float f2 = localUserEditInfo.jdField_a_of_type_Float;
-        WriteTogetherEditorView.a(this.a).put(localUserEditInfo.jdField_a_of_type_JavaLangString, Float.valueOf((f2 + f1) % 1.0F));
+        float f2 = localUserEditInfo.i;
+        WriteTogetherEditorView.b(this.a).put(localUserEditInfo.a, Float.valueOf((f2 + f1) % 1.0F));
       }
       this.a.invalidate();
     }
@@ -33,7 +33,7 @@ class WriteTogetherEditorView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorView.1
  * JD-Core Version:    0.7.0.1
  */

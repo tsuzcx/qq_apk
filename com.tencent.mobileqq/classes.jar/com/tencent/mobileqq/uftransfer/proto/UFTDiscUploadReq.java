@@ -2,31 +2,26 @@ package com.tencent.mobileqq.uftransfer.proto;
 
 public class UFTDiscUploadReq
 {
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
   private String c;
   private String d;
   private String e;
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
+  private long f = 0L;
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.f = paramLong;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public String b()
@@ -68,10 +63,15 @@ public class UFTDiscUploadReq
   {
     this.e = paramString;
   }
+  
+  public long f()
+  {
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.proto.UFTDiscUploadReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1161,10 +1161,10 @@ public class SpringFestivalRedpacketConfigServlet
         localObject3 = new ConfigurationService.Screen();
         ((ConfigurationService.Screen)localObject3).setHasFlag(true);
         ((ConfigurationService.Screen)localObject3).model.set("");
-        ((ConfigurationService.Screen)localObject3).width.set((int)DeviceInfoUtil.g());
-        ((ConfigurationService.Screen)localObject3).height.set((int)DeviceInfoUtil.h());
-        ((ConfigurationService.Screen)localObject3).dpi.set(DeviceInfoUtil.e());
-        ((ConfigurationService.Screen)localObject3).multi_touch.set(DeviceInfoUtil.c());
+        ((ConfigurationService.Screen)localObject3).width.set((int)DeviceInfoUtil.B());
+        ((ConfigurationService.Screen)localObject3).height.set((int)DeviceInfoUtil.C());
+        ((ConfigurationService.Screen)localObject3).dpi.set(DeviceInfoUtil.J());
+        ((ConfigurationService.Screen)localObject3).multi_touch.set(DeviceInfoUtil.K());
         localObject2 = new ConfigurationService.DeviceInfo();
         ((ConfigurationService.DeviceInfo)localObject2).setHasFlag(true);
         ((ConfigurationService.DeviceInfo)localObject2).screen = ((ConfigurationService.Screen)localObject3);
@@ -1201,7 +1201,7 @@ public class SpringFestivalRedpacketConfigServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfigServlet
  * JD-Core Version:    0.7.0.1
  */

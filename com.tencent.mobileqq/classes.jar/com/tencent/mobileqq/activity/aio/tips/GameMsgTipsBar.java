@@ -15,15 +15,15 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class GameMsgTipsBar
   implements View.OnClickListener, TipsBarTask
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
+  private QQAppInterface a;
+  private Activity b;
+  private View c;
+  private String d;
   
   public GameMsgTipsBar(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseActivity;
+    this.a = paramQQAppInterface;
+    this.b = paramBaseActivity;
   }
   
   public int a()
@@ -33,25 +33,17 @@ public class GameMsgTipsBar
   
   public View a(Object... paramVarArgs)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.c == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131559139, null);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367485)).setOnClickListener(this);
-      paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379697);
-      if ((paramVarArgs != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
+      this.c = LayoutInflater.from(this.b).inflate(2131624887, null);
+      this.c.setOnClickListener(this);
+      ((ImageView)this.c.findViewById(2131434003)).setOnClickListener(this);
+      paramVarArgs = (TextView)this.c.findViewById(2131448486);
+      if ((paramVarArgs != null) && (!TextUtils.isEmpty(this.d))) {
+        paramVarArgs.setText(this.d);
       }
     }
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a()
-  {
-    QLog.i("GameMsgTipsBar", 1, "[onDestory]");
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    return this.c;
   }
   
   public void a(int paramInt, Object... paramVarArgs) {}
@@ -65,12 +57,7 @@ public class GameMsgTipsBar
       localStringBuilder.append(paramString);
       QLog.d("GameMsgTipsBar", 0, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int[] a()
-  {
-    return null;
+    this.d = paramString;
   }
   
   public int b()
@@ -78,11 +65,24 @@ public class GameMsgTipsBar
     return 2003;
   }
   
+  public int[] c()
+  {
+    return null;
+  }
+  
+  public void d()
+  {
+    QLog.i("GameMsgTipsBar", 1, "[onDestory]");
+    this.c = null;
+    this.b = null;
+    this.a = null;
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131367485)
+    if (paramView.getId() == 2131434003)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
+      View localView = this.c;
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -92,7 +92,7 @@ public class GameMsgTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GameMsgTipsBar
  * JD-Core Version:    0.7.0.1
  */

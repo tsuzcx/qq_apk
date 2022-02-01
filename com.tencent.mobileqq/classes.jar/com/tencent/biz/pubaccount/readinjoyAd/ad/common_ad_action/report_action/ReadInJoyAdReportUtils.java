@@ -76,8 +76,16 @@ public class ReadInJoyAdReportUtils
     Object localObject1;
     if (paramInt3 == 3)
     {
-      localObject1 = null;
-      paramInt1 = 2;
+      if ((paramAdvertisementInfo.mAdvertisementSoftInfo != null) && (paramAdvertisementInfo.mAdvertisementSoftInfo.o == 3))
+      {
+        localObject1 = null;
+        paramInt1 = 16;
+      }
+      else
+      {
+        localObject1 = null;
+        paramInt1 = 2;
+      }
     }
     else if (paramInt3 == 4)
     {
@@ -101,12 +109,12 @@ public class ReadInJoyAdReportUtils
             paramInt1 = 8;
           }
         }
-        else if (paramAdvertisementInfo.mAdvertisementSoftInfo.c == 0)
+        else if (paramAdvertisementInfo.mAdvertisementSoftInfo.o == 0)
         {
           paramInt1 = 13;
           localObject1 = ActionEntity.VIDEO_SOFT_AD_AMS_GUIDE;
         }
-        else if ((paramAdvertisementInfo.mAdvertisementSoftInfo.C != null) && (paramAdvertisementInfo.mAdvertisementSoftInfo.C.equals("white")))
+        else if ((paramAdvertisementInfo.mAdvertisementSoftInfo.M != null) && (paramAdvertisementInfo.mAdvertisementSoftInfo.M.equals("white")))
         {
           paramInt1 = 11;
           localObject1 = ActionEntity.VIDEO_SOFT_AD_WHITE_GUIDE;
@@ -191,7 +199,7 @@ public class ReadInJoyAdReportUtils
       paramInteger = localObject3;
       if (!paramAdvertisementInfo.mAdvertisementSoftInfo.a)
       {
-        paramInteger = paramAdvertisementInfo.mAdvertisementSoftInfo.R;
+        paramInteger = paramAdvertisementInfo.mAdvertisementSoftInfo.ab;
         paramAdvertisementInfo.mAdvertisementSoftInfo.a = true;
       }
     }
@@ -203,7 +211,7 @@ public class ReadInJoyAdReportUtils
         paramInteger = localObject3;
         if (!paramAdvertisementInfo.mAdvertisementSoftInfo.b)
         {
-          paramInteger = paramAdvertisementInfo.mAdvertisementSoftInfo.S;
+          paramInteger = paramAdvertisementInfo.mAdvertisementSoftInfo.ac;
           paramAdvertisementInfo.mAdvertisementSoftInfo.b = true;
         }
       }
@@ -294,11 +302,19 @@ public class ReadInJoyAdReportUtils
   
   private static void d(AdvertisementInfo paramAdvertisementInfo, int paramInt1, int paramInt2, boolean paramBoolean, Integer paramInteger, ReportAction paramReportAction)
   {
+    int j = paramAdvertisementInfo.mCommentAdReportType;
+    int i = 1;
+    if (-1 != j) {
+      if (paramAdvertisementInfo.mCommentAdReportType == 2) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+    }
     paramInteger = a(paramAdvertisementInfo, paramInt1, paramInt2, paramInteger).a(paramReportAction);
+    paramInt1 = i;
     if (paramBoolean) {
       paramInt1 = 2;
-    } else {
-      paramInt1 = 1;
     }
     paramInteger = paramInteger.a(Integer.valueOf(paramInt1)).b(paramBoolean);
     ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(paramInteger);
@@ -311,7 +327,7 @@ public class ReadInJoyAdReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.ReadInJoyAdReportUtils
  * JD-Core Version:    0.7.0.1
  */

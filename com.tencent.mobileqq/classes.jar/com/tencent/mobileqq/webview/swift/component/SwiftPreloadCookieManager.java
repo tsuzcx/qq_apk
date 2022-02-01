@@ -11,28 +11,28 @@ import mqq.app.AppRuntime;
 
 public class SwiftPreloadCookieManager
 {
-  public EntityManager a;
   public AppRuntime a;
+  public EntityManager b;
   
   public SwiftPreloadCookieManager(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    paramAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime.getEntityManagerFactory();
+    this.a = paramAppRuntime;
+    paramAppRuntime = this.a.getEntityManagerFactory();
     if (paramAppRuntime != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppRuntime.createEntityManager();
+      this.b = paramAppRuntime.createEntityManager();
     }
   }
   
   public List<String> a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null)
+    if (this.b == null)
     {
       QLog.i("SwiftPreloadCookieManager", 1, "getTopDomain mEM empty");
       return null;
     }
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+      Object localObject = this.b;
       int i = 0;
       localObject = ((EntityManager)localObject).query(PreloadCookie.class, false, "cookieKey=?", new String[] { paramString }, null, null, "hitCount DESC", "10");
       if (QLog.isColorLevel())
@@ -62,21 +62,21 @@ public class SwiftPreloadCookieManager
   
   public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null)
+    if (this.b == null)
     {
       QLog.i("SwiftPreloadCookieManager", 1, "getTopDomain mEM empty");
       return;
     }
     try
     {
-      PreloadCookie localPreloadCookie = (PreloadCookie)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(PreloadCookie.class, new String[] { paramString1, paramString2 });
+      PreloadCookie localPreloadCookie = (PreloadCookie)this.b.find(PreloadCookie.class, new String[] { paramString1, paramString2 });
       if (localPreloadCookie != null)
       {
         if (QLog.isColorLevel()) {
           QLog.i("SwiftPreloadCookieManager", 2, String.format("update host: %s, cookieKey: %s , hitCount: %d ", new Object[] { paramString1, paramString2, Long.valueOf(localPreloadCookie.hitCount + 1L) }));
         }
         localPreloadCookie.hitCount += 1L;
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(localPreloadCookie);
+        this.b.update(localPreloadCookie);
       }
       else
       {
@@ -87,7 +87,7 @@ public class SwiftPreloadCookieManager
         localPreloadCookie.host = paramString1;
         localPreloadCookie.cookieKey = paramString2;
         localPreloadCookie.hitCount = 1L;
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(localPreloadCookie);
+        this.b.persist(localPreloadCookie);
       }
       return;
     }
@@ -96,14 +96,14 @@ public class SwiftPreloadCookieManager
   
   public void b(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null)
+    if (this.b == null)
     {
       QLog.i("SwiftPreloadCookieManager", 1, "getTopDomain mEM empty");
       return;
     }
     try
     {
-      PreloadCookie localPreloadCookie = (PreloadCookie)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(PreloadCookie.class, new String[] { paramString1, paramString2 });
+      PreloadCookie localPreloadCookie = (PreloadCookie)this.b.find(PreloadCookie.class, new String[] { paramString1, paramString2 });
       if (localPreloadCookie != null)
       {
         if (QLog.isColorLevel())
@@ -115,7 +115,7 @@ public class SwiftPreloadCookieManager
           localStringBuilder.append(paramString2);
           QLog.i("SwiftPreloadCookieManager", 2, localStringBuilder.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localPreloadCookie);
+        this.b.remove(localPreloadCookie);
       }
       return;
     }
@@ -124,7 +124,7 @@ public class SwiftPreloadCookieManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftPreloadCookieManager
  * JD-Core Version:    0.7.0.1
  */

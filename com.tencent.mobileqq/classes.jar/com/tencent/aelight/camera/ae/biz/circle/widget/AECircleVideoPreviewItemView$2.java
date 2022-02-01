@@ -12,23 +12,23 @@ class AECircleVideoPreviewItemView$2
   
   public void onClick(View paramView)
   {
-    if (AECircleVideoPreviewItemView.a(this.a) == null) {
+    if (AECircleVideoPreviewItemView.f(this.a) == null) {
       return;
     }
-    if (AECircleVideoPreviewItemView.a(this.a).isPlaying())
+    if (AECircleVideoPreviewItemView.f(this.a).isPlaying())
     {
-      AECircleVideoPreviewItemView.a(this.a).pause();
+      AECircleVideoPreviewItemView.f(this.a).pause();
       AECircleVideoPreviewItemView.b(this.a).setVisibility(0);
       return;
     }
-    AECircleVideoPreviewItemView.a(this.a).resume();
+    AECircleVideoPreviewItemView.f(this.a).resume();
     AECircleVideoPreviewItemView.a(this.a).setVisibility(8);
     AECircleVideoPreviewItemView.b(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.widget.AECircleVideoPreviewItemView.2
  * JD-Core Version:    0.7.0.1
  */

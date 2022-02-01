@@ -14,7 +14,7 @@ class CustomDownLoadBuilder$1
   
   public int getAppId()
   {
-    return Integer.parseInt(BusinessManager.a.a().a);
+    return Integer.parseInt(BusinessManager.a.b().a);
   }
   
   public LogInterface getLog()
@@ -29,7 +29,7 @@ class CustomDownLoadBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.download.CustomDownLoadBuilder.1
  * JD-Core Version:    0.7.0.1
  */

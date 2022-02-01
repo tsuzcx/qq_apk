@@ -22,21 +22,21 @@ class TroopGiftMsgItemBuilder$5
   
   public void onFileDownloadFailed(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.isFromNearby)
+    if (this.b.isFromNearby)
     {
-      NearbyFlowerManager.a("gift_aio", "fail_obj", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+      NearbyFlowerManager.a("gift_aio", "fail_obj", this.d.f.b, "", "", "");
       return;
     }
-    if (AnonymousChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift)) {
+    if (AnonymousChatHelper.c(this.b)) {
       paramInt = 2;
     } else {
       paramInt = 1;
     }
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    QQAppInterface localQQAppInterface = this.d.d;
+    String str = this.d.f.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(TroopMemberUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    localStringBuilder.append(TroopMemberUtil.a(this.d.d, this.d.d.getCurrentAccountUin(), this.d.f.b));
     ReportController.b(localQQAppInterface, "P_CliOper", "Grp_flower", "", "grp_aio", "objicon_fail", paramInt, 0, str, "", "0", localStringBuilder.toString());
   }
   
@@ -45,20 +45,20 @@ class TroopGiftMsgItemBuilder$5
   public void onFileDownloadSucceed(long paramLong)
   {
     Object localObject;
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    if ((this.a.getCurrDrawable() instanceof RegionDrawable))
     {
-      int j = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.objColor;
+      int j = this.b.objColor;
       int i = j;
       if (j == 0) {
         i = -2138570752;
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.interactId))
+      if (TextUtils.isEmpty(this.b.interactId))
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder;
-        Bitmap localBitmap = ((RegionDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).getBitmap();
-        BubbleImageView localBubbleImageView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder$TroopGiftMsgHolder.a;
+        localObject = this.d;
+        Bitmap localBitmap = ((RegionDrawable)this.a.getCurrDrawable()).getBitmap();
+        BubbleImageView localBubbleImageView = this.c.f;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopGift.giftPicId);
+        localStringBuilder.append(this.b.giftPicId);
         localStringBuilder.append("");
         ((TroopGiftMsgItemBuilder)localObject).a(localBitmap, i, localBubbleImageView, localStringBuilder.toString());
       }
@@ -67,14 +67,14 @@ class TroopGiftMsgItemBuilder$5
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("drawable.getCurrDrawable() instanceof  RegionDrawable = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof RegionDrawable);
+      ((StringBuilder)localObject).append(this.a.getCurrDrawable() instanceof RegionDrawable);
       QLog.e("TroopGiftMsgItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

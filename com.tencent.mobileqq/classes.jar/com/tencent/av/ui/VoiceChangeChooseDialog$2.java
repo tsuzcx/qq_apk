@@ -20,11 +20,11 @@ class VoiceChangeChooseDialog$2
       if (i != 1) {
         bool = false;
       }
-      paramContext.jdField_a_of_type_Boolean = bool;
-      if ((this.a.jdField_a_of_type_Boolean) && (VoiceChangeChooseDialog.a(this.a) == 2))
+      paramContext.g = bool;
+      if ((this.a.g) && (VoiceChangeChooseDialog.a(this.a) == 2))
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131695977);
+        this.a.k.removeCallbacks(this.a.l);
+        this.a.f.setText(2131893739);
         VoiceChangeChooseDialog.a(this.a, 0);
       }
     }

@@ -5,18 +5,18 @@ import android.os.HandlerThread;
 
 public class EmojiIPCAlarmer
 {
-  private volatile Handler jdField_a_of_type_AndroidOsHandler;
-  EmojiIPCAlarmer.TimeoutObserver jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver;
+  EmojiIPCAlarmer.TimeoutObserver a;
+  private volatile Handler b;
   
   public EmojiIPCAlarmer(EmojiIPCAlarmer.TimeoutObserver paramTimeoutObserver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = paramTimeoutObserver;
+    this.a = paramTimeoutObserver;
   }
   
   public Runnable a(int paramInt, long paramLong)
   {
     EmojiIPCAlarmer.TimeoutTaskWrapper localTimeoutTaskWrapper = new EmojiIPCAlarmer.TimeoutTaskWrapper(this, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localTimeoutTaskWrapper, paramLong);
+    this.b.postDelayed(localTimeoutTaskWrapper, paramLong);
     return localTimeoutTaskWrapper;
   }
   
@@ -24,19 +24,19 @@ public class EmojiIPCAlarmer
   {
     HandlerThread localHandlerThread = new HandlerThread("EmojiIPCTimeoutChecker", 5);
     localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
+    this.b = new Handler(localHandlerThread.getLooper());
   }
   
   public void a(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
+      this.b.removeCallbacks(paramRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer
  * JD-Core Version:    0.7.0.1
  */

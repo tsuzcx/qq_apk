@@ -8,21 +8,16 @@ import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 public class HotWordItem
 {
   public String a;
-  public boolean a;
   public String b;
   public String c;
   public String d;
-  
-  public HotWordItem()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public boolean e = false;
   
   public static HotWordItem a(articlesummary.HotWordItem paramHotWordItem)
   {
     HotWordItem localHotWordItem = new HotWordItem();
     if (paramHotWordItem.hot_word.has()) {
-      localHotWordItem.jdField_a_of_type_JavaLangString = paramHotWordItem.hot_word.get().toStringUtf8();
+      localHotWordItem.a = paramHotWordItem.hot_word.get().toStringUtf8();
     }
     if (paramHotWordItem.jump_url.has()) {
       localHotWordItem.b = paramHotWordItem.jump_url.get().toStringUtf8();
@@ -39,8 +34,8 @@ public class HotWordItem
   public articlesummary.HotWordItem a()
   {
     articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    if (!TextUtils.isEmpty(this.a)) {
+      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
     }
     if (!TextUtils.isEmpty(this.d)) {
       localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
@@ -62,12 +57,12 @@ public class HotWordItem
     if (bool3)
     {
       bool1 = bool2;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.a))
       {
-        String str = this.jdField_a_of_type_JavaLangString;
+        String str = this.a;
         paramObject = (HotWordItem)paramObject;
         bool1 = bool2;
-        if (str.equals(paramObject.jdField_a_of_type_JavaLangString))
+        if (str.equals(paramObject.a))
         {
           bool1 = bool2;
           if (!TextUtils.isEmpty(this.b))
@@ -85,7 +80,7 @@ public class HotWordItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.HotWordItem
  * JD-Core Version:    0.7.0.1
  */

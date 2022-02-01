@@ -35,34 +35,29 @@ import java.util.concurrent.ConcurrentHashMap;
 public class EncodeVideoTask
   extends AsyncTask<Void, Void, Integer>
 {
-  private static FFmpeg jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg;
-  public static ConcurrentHashMap<Long, EncodeVideoTask> a;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private EncodeVideoTask.EncodeProcessListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$EncodeProcessListener = new EncodeVideoTask.2(this);
-  private EncodeVideoTask.ThumbInfo jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ThumbInfo;
-  public MessageForShortVideo a;
-  public PublishVideoEntry a;
-  private ResultListener jdField_a_of_type_ComTencentMobileqqShortvideoResultListener;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private byte[] jdField_b_of_type_ArrayOfByte;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString;
-  private boolean jdField_e_of_type_Boolean;
-  private boolean f = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public static ConcurrentHashMap<Long, EncodeVideoTask> a = new ConcurrentHashMap();
+  private static FFmpeg w;
+  public PublishVideoEntry b;
+  public MessageForShortVideo c;
+  public boolean d = false;
+  private boolean e = true;
+  private Context f;
+  private String g;
+  private boolean h;
+  private ResultListener i;
+  private EncodeVideoTask.ThumbInfo j;
+  private boolean k;
+  private String l;
+  private String m;
+  private byte[] n;
+  private String o;
+  private byte[] p;
+  private String q;
+  private int r;
+  private int s;
+  private boolean t;
+  private boolean u = false;
+  private EncodeVideoTask.EncodeProcessListener v = new EncodeVideoTask.2(this);
   
   public EncodeVideoTask(Context paramContext, String paramString, boolean paramBoolean, EncodeVideoTask.ThumbInfo paramThumbInfo)
   {
@@ -71,15 +66,14 @@ public class EncodeVideoTask
   
   public EncodeVideoTask(Context paramContext, String paramString, boolean paramBoolean1, EncodeVideoTask.ThumbInfo paramThumbInfo, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ThumbInfo = paramThumbInfo;
-    this.jdField_c_of_type_Boolean = paramBoolean1;
+    this.f = paramContext;
+    this.g = paramString;
+    this.j = paramThumbInfo;
+    this.h = paramBoolean1;
     if (paramThumbInfo != null) {
-      this.jdField_b_of_type_JavaLangString = paramThumbInfo.jdField_a_of_type_JavaLangString;
+      this.l = paramThumbInfo.a;
     }
-    this.jdField_d_of_type_Boolean = paramBoolean2;
+    this.k = paramBoolean2;
   }
   
   public EncodeVideoTask(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean, EncodeVideoTask.ThumbInfo paramThumbInfo, MessageForShortVideo paramMessageForShortVideo)
@@ -87,7 +81,7 @@ public class EncodeVideoTask
     this(paramContext, paramString, paramBoolean, paramThumbInfo, false);
     if ((paramMessageForShortVideo != null) && (paramMessageForShortVideo.busiType == 1) && (paramQQAppInterface != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
+      this.c = paramMessageForShortVideo;
       paramMessageForShortVideo.videoFileStatus = 998;
       try
       {
@@ -97,7 +91,7 @@ public class EncodeVideoTask
         {
           paramQQAppInterface = new StringBuilder();
           paramQQAppInterface.append("encodeVideoTask uniseq:");
-          paramQQAppInterface.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+          paramQQAppInterface.append(this.c.uniseq);
           QLog.i("EncodeVideoTask", 2, paramQQAppInterface.toString());
           return;
         }
@@ -152,10 +146,10 @@ public class EncodeVideoTask
   private static void b(String paramString, PublishVideoEntry paramPublishVideoEntry, EncodeVideoTask.EncodeProcessListener paramEncodeProcessListener)
   {
     String str = ShortVideoUtils.getMergeVideoPath(new File(paramPublishVideoEntry.mLocalRawVideoDir));
-    if (jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg == null) {
-      jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
+    if (w == null) {
+      w = FFmpeg.getInstance(BaseApplicationImpl.getApplication());
     }
-    if (jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.isFFmpegCommandRunning())
+    if (w.isFFmpegCommandRunning())
     {
       if (QLog.isColorLevel()) {
         QLog.d("EncodeVideoTask", 2, "generate files mFFmpeg is running!");
@@ -165,8 +159,8 @@ public class EncodeVideoTask
     try
     {
       EncodeVideoTask.VideoSaveAlumCallBack localVideoSaveAlumCallBack = new EncodeVideoTask.VideoSaveAlumCallBack(paramPublishVideoEntry, paramString, str, paramEncodeProcessListener);
-      jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.setCurrentTaskUni(str);
-      jdField_a_of_type_ComTencentMobileqqVideocodecFfmpegFFmpeg.watermark(paramPublishVideoEntry.doodlePath, paramString, str, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, localVideoSaveAlumCallBack);
+      w.setCurrentTaskUni(str);
+      w.watermark(paramPublishVideoEntry.doodlePath, paramString, str, paramPublishVideoEntry.videoWidth, paramPublishVideoEntry.videoHeight, localVideoSaveAlumCallBack);
       return;
     }
     catch (Exception paramString)
@@ -178,30 +172,30 @@ public class EncodeVideoTask
   
   protected Integer a()
   {
-    long l = System.currentTimeMillis();
-    if (CaptureFreqMonitor.jdField_b_of_type_Boolean) {
-      CaptureFreqMonitor.c.b();
+    long l1 = System.currentTimeMillis();
+    if (CaptureFreqMonitor.d) {
+      CaptureFreqMonitor.f.c();
     }
-    Object localObject1 = VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = VideoCompositeHelper.a(this.g);
     if (localObject1 == null)
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("[StoryEncodeType]configure param error, fakeVid:");
-        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append(this.g);
         QLog.i("EncodeVideoTask", 2, ((StringBuilder)localObject1).toString());
       }
       return Integer.valueOf(-62);
     }
-    this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry = ((PublishVideoEntry)localObject1);
+    this.b = ((PublishVideoEntry)localObject1);
     if (TextUtils.isEmpty(((PublishVideoEntry)localObject1).mLocalRawVideoDir))
     {
       if (QLog.isColorLevel())
       {
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[StoryEncodeType]configure param error, fakeId:");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject2).append(this.g);
         ((StringBuilder)localObject2).append(", EntryId:");
         ((StringBuilder)localObject2).append(((PublishVideoEntry)localObject1).fakeVid);
         QLog.i("EncodeVideoTask", 2, ((StringBuilder)localObject2).toString());
@@ -210,13 +204,13 @@ public class EncodeVideoTask
       return Integer.valueOf(-62);
     }
     Object localObject2 = ShortVideoUtils.getMergeVideoPath(new File(((PublishVideoEntry)localObject1).mLocalRawVideoDir).getParentFile());
-    new VideoCompositeHelper().a((PublishVideoEntry)localObject1, (String)localObject2, false, true, new EncodeVideoTask.1(this, (PublishVideoEntry)localObject1, (String)localObject2, l));
+    new VideoCompositeHelper().a((PublishVideoEntry)localObject1, (String)localObject2, false, true, new EncodeVideoTask.1(this, (PublishVideoEntry)localObject1, (String)localObject2, l1));
     return Integer.valueOf(0);
   }
   
   protected Integer a(Void... paramVarArgs)
   {
-    if (!this.jdField_c_of_type_Boolean) {
+    if (!this.h) {
       return c(paramVarArgs);
     }
     return b(paramVarArgs);
@@ -230,7 +224,7 @@ public class EncodeVideoTask
     if (paramPublishVideoEntry != null)
     {
       paramPublishVideoEntry.publishState = 0;
-      QQStoryContext.a().a().createEntityManager().update(paramPublishVideoEntry);
+      QQStoryContext.a().d().createEntityManager().update(paramPublishVideoEntry);
     }
     boolean bool;
     if (paramInt == 0) {
@@ -261,23 +255,23 @@ public class EncodeVideoTask
     } else {
       paramInt = 0;
     }
-    if ((CaptureFreqMonitor.jdField_b_of_type_Boolean) && (paramInt == 0) && (CaptureFreqMonitor.c.a()))
+    if ((CaptureFreqMonitor.d) && (paramInt == 0) && (CaptureFreqMonitor.f.b()))
     {
-      l1 = CaptureFreqMonitor.c.a[0];
-      long l2 = CaptureFreqMonitor.c.a[1];
-      long l3 = CaptureFreqMonitor.c.a[2];
-      long l4 = CaptureFreqMonitor.c.a[3];
-      long l5 = CaptureFreqMonitor.c.a[4];
+      l1 = CaptureFreqMonitor.f.b[0];
+      long l2 = CaptureFreqMonitor.f.b[1];
+      long l3 = CaptureFreqMonitor.f.b[2];
+      long l4 = CaptureFreqMonitor.f.b[3];
+      long l5 = CaptureFreqMonitor.f.b[4];
       if ((StoryReportor.a(paramLong, 0L, 120000L)) && (StoryReportor.a(l1, 0L, 120000L)) && (StoryReportor.a(l2, 0L, 120000L)) && (StoryReportor.a(l3, 0L, 10000L)) && (StoryReportor.a(l4, 0L, 120000L)) && (StoryReportor.a(l5, 0L, 120000L))) {
         StoryReportor.a("AIOMergeVideoCost", true, paramLong, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(l3), String.valueOf(l4), String.valueOf(l5) });
       }
-      CaptureFreqMonitor.c.c();
+      CaptureFreqMonitor.f.d();
     }
   }
   
   public void a(ResultListener paramResultListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoResultListener = paramResultListener;
+    this.i = paramResultListener;
   }
   
   protected void a(Integer paramInteger)
@@ -302,24 +296,55 @@ public class EncodeVideoTask
         ((StringBuilder)localObject).append(paramInteger);
         QLog.d("EncodeVideoTask", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoResultListener.a(paramInteger.intValue());
+      this.i.a(paramInteger.intValue());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
-  public boolean a()
+  protected Integer b(Void... paramVarArgs)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (TextUtils.isEmpty(this.g))
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqEditorDatabasePublishVideoEntry;
+      this.v.a(-61, null, null, null, 0L);
+      return Integer.valueOf(-61);
+    }
+    long l1 = SystemClock.uptimeMillis();
+    int i1 = HardCoderManager.getInstance().start(0, 1, 1, Process.myTid(), 8000, 603, 1L, Process.myTid(), "video", true);
+    int i2 = a().intValue();
+    if (i2 != 0) {
+      this.v.a(i2, null, null, null, 0L);
+    }
+    if (i1 != 0) {
+      HardCoderManager.getInstance().stop(i1);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("encode cost=");
+      paramVarArgs.append(SystemClock.uptimeMillis() - l1);
+      QLog.d("EncodeVideoTask", 2, new Object[] { paramVarArgs.toString(), " ret:", Integer.valueOf(i2) });
+    }
+    return Integer.valueOf(i2);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.t = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    if (!this.d)
+    {
+      Object localObject = this.b;
       if (localObject != null) {
         ((PublishVideoEntry)localObject).isCancel = true;
       }
-      this.f = true;
+      this.u = true;
       boolean bool = HwVideoMerge.destroyRunningProcess();
       FFmpegUtils.killRunningProcesses();
       if (QLog.isColorLevel())
@@ -334,50 +359,19 @@ public class EncodeVideoTask
     return false;
   }
   
-  protected Integer b(Void... paramVarArgs)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$EncodeProcessListener.a(-61, null, null, null, 0L);
-      return Integer.valueOf(-61);
-    }
-    long l = SystemClock.uptimeMillis();
-    int i = HardCoderManager.a().a(0, 1, 1, Process.myTid(), 8000, 603, 1L, Process.myTid(), "video", true);
-    int j = a().intValue();
-    if (j != 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$EncodeProcessListener.a(j, null, null, null, 0L);
-    }
-    if (i != 0) {
-      HardCoderManager.a().a(i);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramVarArgs = new StringBuilder();
-      paramVarArgs.append("encode cost=");
-      paramVarArgs.append(SystemClock.uptimeMillis() - l);
-      QLog.d("EncodeVideoTask", 2, new Object[] { paramVarArgs.toString(), " ret:", Integer.valueOf(j) });
-    }
-    return Integer.valueOf(j);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_e_of_type_Boolean = paramBoolean;
-  }
-  
   protected Integer c(Void... paramVarArgs)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.g)) {
       return Integer.valueOf(-1);
     }
-    PublishVideoEntry localPublishVideoEntry = VideoCompositeHelper.a(this.jdField_a_of_type_JavaLangString);
+    PublishVideoEntry localPublishVideoEntry = VideoCompositeHelper.a(this.g);
     if (localPublishVideoEntry == null)
     {
       if (QLog.isColorLevel())
       {
         paramVarArgs = new StringBuilder();
         paramVarArgs.append("configure param error, fakeVid:");
-        paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+        paramVarArgs.append(this.g);
         QLog.i("EncodeVideoTask", 2, paramVarArgs.toString());
       }
       return Integer.valueOf(-2);
@@ -388,24 +382,24 @@ public class EncodeVideoTask
       com.tencent.mobileqq.editor.composite.CodecParam.mSaveMode = localPublishVideoEntry.saveMode;
     }
     if (localPublishVideoEntry.businessId == 2) {
-      i = 0;
+      i1 = 0;
     } else {
-      i = 1;
+      i1 = 1;
     }
-    com.tencent.mobileqq.editor.composite.CodecParam.mAdjustSpecialSpeed = i;
-    int i = TextUtils.isEmpty(localPublishVideoEntry.backgroundMusicPath) ^ true;
+    com.tencent.mobileqq.editor.composite.CodecParam.mAdjustSpecialSpeed = i1;
+    int i1 = TextUtils.isEmpty(localPublishVideoEntry.backgroundMusicPath) ^ true;
     boolean bool = TextUtils.isEmpty(localPublishVideoEntry.doodlePath);
     Object localObject2 = new File(localPublishVideoEntry.mLocalRawVideoDir);
     Object localObject1 = ShortVideoUtils.getTempVideoPath((File)localObject2);
     paramVarArgs = (Void[])localObject1;
-    if (i == 0)
+    if (i1 == 0)
     {
       paramVarArgs = (Void[])localObject1;
       if (!(bool ^ true)) {
         paramVarArgs = ShortVideoUtils.getMergeVideoPath((File)localObject2);
       }
     }
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     localObject1 = new EncodeThread(null, null, localPublishVideoEntry.mLocalRawVideoDir, paramVarArgs, null);
     ((EncodeThread)localObject1).setEnableHardEncode(false);
     ((EncodeThread)localObject1).setEnableDeleteCache(false);
@@ -414,25 +408,25 @@ public class EncodeVideoTask
       ((EncodeThread)localObject1).setMosaicMask(localPublishVideoEntry.mMosaicMask, localPublishVideoEntry.mMosaicSize);
     }
     ((EncodeThread)localObject1).run();
-    a(System.currentTimeMillis() - l, 1);
+    a(System.currentTimeMillis() - l1, 1);
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("generate files|first step cost:");
-      double d1 = System.currentTimeMillis() - l;
+      double d1 = System.currentTimeMillis() - l1;
       Double.isNaN(d1);
       ((StringBuilder)localObject1).append(d1 / 1000.0D);
       QLog.d("EncodeVideoTask", 2, ((StringBuilder)localObject1).toString());
     }
-    if (i != 0)
+    if (i1 != 0)
     {
       try
       {
         localObject1 = ShortVideoUtils.getTempAudioPath((File)localObject2);
-        l = ShortVideoUtils.getDurationOfVideo(paramVarArgs);
+        l1 = ShortVideoUtils.getDurationOfVideo(paramVarArgs);
         localObject2 = new EncodeVideoTask.ResponseCallBack(localPublishVideoEntry, paramVarArgs, (String)localObject1);
-        ((EncodeVideoTask.ResponseCallBack)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$EncodeProcessListener);
-        FFmpegUtils.combinBackgroundMusic(this.jdField_a_of_type_AndroidContentContext, paramVarArgs, localPublishVideoEntry.backgroundMusicPath, localPublishVideoEntry.backgroundMusicOffset, (int)l, (String)localObject1, (ExecuteBinResponseCallback)localObject2);
+        ((EncodeVideoTask.ResponseCallBack)localObject2).a(this.v);
+        FFmpegUtils.combinBackgroundMusic(this.f, paramVarArgs, localPublishVideoEntry.backgroundMusicPath, localPublishVideoEntry.backgroundMusicOffset, (int)l1, (String)localObject1, (ExecuteBinResponseCallback)localObject2);
       }
       catch (Exception paramVarArgs)
       {
@@ -444,7 +438,7 @@ public class EncodeVideoTask
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$EncodeProcessListener.a(localPublishVideoEntry, paramVarArgs);
+      this.v.a(localPublishVideoEntry, paramVarArgs);
     }
     label442:
     return Integer.valueOf(0);
@@ -452,7 +446,7 @@ public class EncodeVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask
  * JD-Core Version:    0.7.0.1
  */

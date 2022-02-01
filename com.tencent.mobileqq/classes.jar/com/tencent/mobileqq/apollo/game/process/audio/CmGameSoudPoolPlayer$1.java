@@ -13,32 +13,32 @@ class CmGameSoudPoolPlayer$1
   
   public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    if (CmGameSoudPoolPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer) != null) {
+    if (CmGameSoudPoolPlayer.a(this.f) != null) {
       try
       {
-        float f;
-        if (-1.0F == this.jdField_a_of_type_Float) {
-          f = 1.0F;
+        float f1;
+        if (-1.0F == this.a) {
+          f1 = 1.0F;
         } else {
-          f = this.jdField_a_of_type_Float;
+          f1 = this.a;
         }
-        paramInt1 = CmGameSoudPoolPlayer.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessAudioCmGameSoudPoolPlayer).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
+        paramInt1 = CmGameSoudPoolPlayer.a(this.f).play(paramInt1, f1, f1, 0, this.b, 1.0F);
         if (paramInt1 == 0)
         {
           paramSoundPool = new StringBuilder();
           paramSoundPool.append("fail to play, musicPath:");
-          paramSoundPool.append(this.jdField_a_of_type_JavaLangString);
+          paramSoundPool.append(this.c);
           QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, paramSoundPool.toString());
           return;
         }
-        paramSoundPool = this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameNativeMethodHandler;
+        paramSoundPool = this.d;
         if (paramSoundPool != null) {
           try
           {
-            if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+            if (this.e != null)
             {
-              this.jdField_a_of_type_OrgJsonJSONObject.put("id", paramInt1);
-              this.jdField_a_of_type_ComTencentMobileqqApolloGameProcessChanelCmGameNativeMethodHandler.a(this.jdField_a_of_type_OrgJsonJSONObject);
+              this.e.put("id", paramInt1);
+              this.d.a(this.e);
               return;
             }
             QLog.e("cmgame_process.CmGameSoudPoolPlayer", 1, "result is null");
@@ -64,7 +64,7 @@ class CmGameSoudPoolPlayer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.audio.CmGameSoudPoolPlayer.1
  * JD-Core Version:    0.7.0.1
  */

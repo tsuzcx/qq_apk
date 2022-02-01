@@ -26,6 +26,7 @@ public class TbsAsyncTask
   public static final int MSG_WHAT_CHECK_TBS = 6;
   public static final int MSG_WHAT_X5_DOWNLOAD_PROGRESS = 3;
   public static final int MSG_WHAT_X5_TIMEOUT = 7;
+  private static final int X5_LOAD_TIME_OUT = 30000;
   private static int X5_STATE_DOWNLOAD_EXIST_IN_WX = 122;
   private static int X5_STATE_DOWNLOAD_FAIL_INIT_THREAD = 121;
   private static int X5_STATE_DOWNLOAD_OTHER_PROCESS = 177;
@@ -35,7 +36,6 @@ public class TbsAsyncTask
   private static int X5_STATE_INSTALL_COPY_SUCC = 220;
   private static int X5_STATE_INSTALL_SUCC = 200;
   private static int X5_STATE_INSTALL_SUCCESS_AND_RELEASE_LOCK = 232;
-  private final int X5_LOAD_TIME_OUT = 30000;
   private boolean mDownloadForground = false;
   public boolean mIsTimeout = false;
   private int mTbsProgress = 0;
@@ -243,7 +243,7 @@ public class TbsAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.task.TbsAsyncTask
  * JD-Core Version:    0.7.0.1
  */

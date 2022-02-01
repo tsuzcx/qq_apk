@@ -32,7 +32,7 @@ class UiApiPlugin$1
   
   public void onResponse(Bundle paramBundle)
   {
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.C.key))
     {
       String str1 = paramBundle.getString("cmd");
       String str2 = paramBundle.getString("callbackid");
@@ -67,7 +67,7 @@ class UiApiPlugin$1
         }
         return;
       }
-      Activity localActivity = this.a.mRuntime.a();
+      Activity localActivity = this.a.mRuntime.d();
       if (("checkRelation".equals(str1)) && (localActivity != null) && (paramBundle != null))
       {
         boolean bool = "openSocialCard".equals(localObject4);
@@ -82,7 +82,7 @@ class UiApiPlugin$1
           if (j == 0) {
             i = 999;
           }
-          localObject1 = this.a.mRuntime.a();
+          localObject1 = this.a.mRuntime.b();
           if ((((Bundle)localObject2).getBoolean("result", false)) && (localObject1 != null) && (!((AppInterface)localObject1).getCurrentAccountUin().equals(paramBundle)))
           {
             paramBundle = new AllInOne(paramBundle, localObject3[k]);
@@ -94,7 +94,7 @@ class UiApiPlugin$1
           {
             localObject1 = new AllInOne(paramBundle, localObject3[k]);
             if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-              ((AllInOne)localObject1).chatCookie = ChatActivityUtils.a((String)localObject4);
+              ((AllInOne)localObject1).chatCookie = ChatActivityUtils.b((String)localObject4);
             }
             ((AllInOne)localObject1).profileEntryType = i;
             paramBundle = new Intent();
@@ -190,11 +190,11 @@ class UiApiPlugin$1
               }
               ((Intent)localObject4).putExtra("uintype", i);
               if (i == 1001) {
-                ((Intent)localObject4).putExtra("rich_accost_sig", ChatActivityUtils.a((String)localObject2));
+                ((Intent)localObject4).putExtra("rich_accost_sig", ChatActivityUtils.b((String)localObject2));
               } else if (i == 1010) {
-                ((Intent)localObject4).putExtra("rich_date_sig", ChatActivityUtils.a((String)localObject2));
+                ((Intent)localObject4).putExtra("rich_date_sig", ChatActivityUtils.b((String)localObject2));
               } else if (i == 10004) {
-                ((Intent)localObject4).putExtra("rich_movie_sig", ChatActivityUtils.a((String)localObject2));
+                ((Intent)localObject4).putExtra("rich_movie_sig", ChatActivityUtils.b((String)localObject2));
               }
               localActivity.startActivity((Intent)localObject4);
               paramBundle = str1;
@@ -214,7 +214,7 @@ class UiApiPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

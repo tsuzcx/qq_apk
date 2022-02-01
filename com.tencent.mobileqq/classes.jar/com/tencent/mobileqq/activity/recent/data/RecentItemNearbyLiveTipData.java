@@ -23,27 +23,6 @@ public class RecentItemNearbyLiveTipData
     this.mMenuFlag |= 0x200000;
   }
   
-  public String a()
-  {
-    String str = this.mData.senderuin;
-    try
-    {
-      long l1 = Long.valueOf(str).longValue();
-      Object localObject = str;
-      if (l1 > AppConstants.NOW_LIVE_TIP_UIN_BASE)
-      {
-        long l2 = AppConstants.NOW_LIVE_TIP_UIN_BASE;
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(l1 - l2);
-        ((StringBuilder)localObject).append("");
-        localObject = ((StringBuilder)localObject).toString();
-      }
-      return localObject;
-    }
-    catch (NumberFormatException localNumberFormatException) {}
-    return str;
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     if (paramQQAppInterface != null)
@@ -83,11 +62,11 @@ public class RecentItemNearbyLiveTipData
       } else {
         this.mUnreadNum = 0;
       }
-      if (a().equals("1822701914")) {
+      if (bW_().equals("1822701914")) {
         this.mUnreadFlag = 3;
       }
       extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
@@ -121,10 +100,31 @@ public class RecentItemNearbyLiveTipData
       }
     }
   }
+  
+  public String bW_()
+  {
+    String str = this.mData.senderuin;
+    try
+    {
+      long l1 = Long.valueOf(str).longValue();
+      Object localObject = str;
+      if (l1 > AppConstants.NOW_LIVE_TIP_UIN_BASE)
+      {
+        long l2 = AppConstants.NOW_LIVE_TIP_UIN_BASE;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(l1 - l2);
+        ((StringBuilder)localObject).append("");
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      return localObject;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData
  * JD-Core Version:    0.7.0.1
  */

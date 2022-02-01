@@ -25,12 +25,12 @@ public final class VideoPlayUtilsImpl
   @Nullable
   public String makeErrorText(int paramInt1, int paramInt2)
   {
-    return VideoPlayUtils.a(paramInt1, paramInt2);
+    return VideoPlayUtils.b(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.api.impl.VideoPlayUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

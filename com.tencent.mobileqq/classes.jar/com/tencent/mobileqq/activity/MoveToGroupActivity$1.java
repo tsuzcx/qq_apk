@@ -32,19 +32,19 @@ class MoveToGroupActivity$1
     if (paramString == null)
     {
       paramString = this.a;
-      QQToast.a(paramString, paramString.getString(2131694223), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramString, paramString.getString(2131891861), 0).show(this.a.getTitleBarHeight());
     }
     else
     {
       paramString = this.a;
-      QQToast.a(paramString, 2, paramString.getString(2131694225), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(paramString, 2, paramString.getString(2131891863), 0).show(this.a.getTitleBarHeight());
     }
     MoveToGroupActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MoveToGroupActivity.1
  * JD-Core Version:    0.7.0.1
  */

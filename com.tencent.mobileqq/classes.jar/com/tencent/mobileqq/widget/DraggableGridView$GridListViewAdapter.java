@@ -14,7 +14,7 @@ class DraggableGridView$GridListViewAdapter
   public int getCount()
   {
     if (DraggableGridView.a(this.a) != null) {
-      return DraggableGridView.a(this.a).a() * 2;
+      return DraggableGridView.a(this.a).d() * 2;
     }
     return 0;
   }
@@ -35,21 +35,21 @@ class DraggableGridView$GridListViewAdapter
   public int getItemViewType(int paramInt)
   {
     if (paramInt % 2 == 0) {
-      return DraggableGridView.a(this.a).b(paramInt / 2) + 1;
+      return DraggableGridView.a(this.a).c(paramInt / 2) + 1;
     }
-    return DraggableGridView.a();
+    return DraggableGridView.c();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     Object localObject;
-    if (getItemViewType(paramInt) == DraggableGridView.a())
+    if (getItemViewType(paramInt) == DraggableGridView.c())
     {
       if (paramView == null)
       {
-        localObject = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131560618, paramViewGroup, false);
+        localObject = (MeasureGridView)LayoutInflater.from(this.a.getContext()).inflate(2131626663, paramViewGroup, false);
         ((MeasureGridView)localObject).setClickable(false);
-        ((MeasureGridView)localObject).setNumColumns(DraggableGridView.a(this.a));
+        ((MeasureGridView)localObject).setNumColumns(DraggableGridView.c(this.a));
         ((MeasureGridView)localObject).setAdapter(new DraggableGridView.GridViewAdapter(this.a, paramInt / 2));
         paramView = (View)localObject;
       }
@@ -79,12 +79,12 @@ class DraggableGridView$GridListViewAdapter
   
   public int getViewTypeCount()
   {
-    return DraggableGridView.a(this.a).b() + 1;
+    return DraggableGridView.a(this.a).e() + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.DraggableGridView.GridListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

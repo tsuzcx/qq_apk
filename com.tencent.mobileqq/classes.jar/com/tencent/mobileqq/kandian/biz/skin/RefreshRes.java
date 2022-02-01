@@ -15,22 +15,14 @@ import org.json.JSONObject;
 
 public class RefreshRes
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static long jdField_a_of_type_Long = -1L;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static int jdField_b_of_type_Int = -1;
-  private static String jdField_b_of_type_JavaLangString;
-  private static int jdField_c_of_type_Int = -1;
-  private static String jdField_c_of_type_JavaLangString;
-  
-  public static int a()
-  {
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    return jdField_a_of_type_Int;
-  }
+  private static String a = "";
+  private static long b = -1L;
+  private static int c = 0;
+  private static String d;
+  private static String e;
+  private static List<String> f;
+  private static int g = -1;
+  private static int h = -1;
   
   public static String a()
   {
@@ -49,16 +41,182 @@ public class RefreshRes
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static List<String> a()
+  static void a(String paramString, long paramLong)
   {
-    Object localObject = jdField_a_of_type_JavaUtilList;
+    if ((!a.equals(paramString)) || (b != paramLong))
+    {
+      a = paramString;
+      l();
+    }
+  }
+  
+  public static String b()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".readInjoy/refresh_res/");
+    localStringBuilder.append(a);
+    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+  }
+  
+  public static boolean b(String paramString)
+  {
+    return SceneBuilder.a(new File(a(paramString)));
+  }
+  
+  public static String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b());
+    localStringBuilder.append("/");
+    localStringBuilder.append("refresh");
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
+  }
+  
+  public static String d()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append("refreshGuideConfig");
+    return localStringBuilder.toString();
+  }
+  
+  public static void e()
+  {
+    JSONObject localJSONObject = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    Object localObject2 = localJSONObject;
+    try
+    {
+      Object localObject4 = new StringBuilder();
+      localObject1 = localObject3;
+      localObject2 = localJSONObject;
+      ((StringBuilder)localObject4).append(c());
+      localObject1 = localObject3;
+      localObject2 = localJSONObject;
+      ((StringBuilder)localObject4).append("refreshConfig.json");
+      localObject1 = localObject3;
+      localObject2 = localJSONObject;
+      localObject4 = new File(((StringBuilder)localObject4).toString());
+      localObject1 = localObject3;
+      localObject2 = localJSONObject;
+      if (((File)localObject4).exists())
+      {
+        localObject1 = localObject3;
+        localObject2 = localJSONObject;
+        localObject3 = FileUtils.readFileToString((File)localObject4);
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        localJSONObject = new JSONObject((String)localObject3);
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        c = localJSONObject.optInt("refresh_type");
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        d = localJSONObject.optString("voice_path");
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        e = localJSONObject.optString("rain_animate_path");
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        g = localJSONObject.optInt("refresh_sub_type");
+        localObject1 = localObject3;
+        localObject2 = localObject3;
+        h = localJSONObject.optInt("refresh_length_type", 0);
+        return;
+      }
+      localObject1 = localObject3;
+      localObject2 = localJSONObject;
+      QLog.e("RefreshRes", 1, "parseRefreshParaJson error refreshConfig not exist ");
+      return;
+    }
+    catch (Exception localException)
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("parseRefreshParaJson error json = ");
+      ((StringBuilder)localObject3).append(localObject1);
+      QLog.e("RefreshRes", 1, localException, new Object[] { ((StringBuilder)localObject3).toString() });
+      localException.printStackTrace();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("parseRefreshParaJson JSONException json = ");
+      ((StringBuilder)localObject3).append(localException);
+      QLog.e("RefreshRes", 1, ((StringBuilder)localObject3).toString());
+      localJSONException.printStackTrace();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public static int f()
+  {
+    if (c == 0) {
+      e();
+    }
+    return c;
+  }
+  
+  public static int g()
+  {
+    return g;
+  }
+  
+  public static String h()
+  {
+    if ((TextUtils.isEmpty(d)) && (c == 0)) {
+      e();
+    }
+    if (!TextUtils.isEmpty(d))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(c());
+      localStringBuilder.append(d);
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  public static String i()
+  {
+    if ((TextUtils.isEmpty(e)) && (c == 0)) {
+      e();
+    }
+    if (!TextUtils.isEmpty(e))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(c());
+      localStringBuilder.append(e);
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  public static boolean j()
+  {
+    if (h < 0) {
+      e();
+    }
+    return h > 0;
+  }
+  
+  public static List<String> k()
+  {
+    Object localObject = f;
     if (localObject != null) {
       return localObject;
     }
-    if (jdField_a_of_type_Int == 0) {
-      a();
+    if (c == 0) {
+      e();
     }
-    int i = jdField_a_of_type_Int;
+    int i = c;
     if ((i != 1) && (i != 3))
     {
       if (i == 2)
@@ -97,186 +255,28 @@ public class RefreshRes
         }
         i += 1;
       }
-      jdField_a_of_type_JavaUtilList = localArrayList;
+      f = localArrayList;
       return localArrayList;
     }
     return null;
   }
   
-  public static void a()
-  {
-    JSONObject localJSONObject = null;
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    Object localObject2 = localJSONObject;
-    try
-    {
-      Object localObject4 = new StringBuilder();
-      localObject1 = localObject3;
-      localObject2 = localJSONObject;
-      ((StringBuilder)localObject4).append(c());
-      localObject1 = localObject3;
-      localObject2 = localJSONObject;
-      ((StringBuilder)localObject4).append("refreshConfig.json");
-      localObject1 = localObject3;
-      localObject2 = localJSONObject;
-      localObject4 = new File(((StringBuilder)localObject4).toString());
-      localObject1 = localObject3;
-      localObject2 = localJSONObject;
-      if (((File)localObject4).exists())
-      {
-        localObject1 = localObject3;
-        localObject2 = localJSONObject;
-        localObject3 = FileUtils.readFileToString((File)localObject4);
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-        localJSONObject = new JSONObject((String)localObject3);
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-        jdField_a_of_type_Int = localJSONObject.optInt("refresh_type");
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-        jdField_b_of_type_JavaLangString = localJSONObject.optString("voice_path");
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-        jdField_c_of_type_JavaLangString = localJSONObject.optString("rain_animate_path");
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-        jdField_b_of_type_Int = localJSONObject.optInt("refresh_sub_type");
-        localObject1 = localObject3;
-        localObject2 = localObject3;
-        jdField_c_of_type_Int = localJSONObject.optInt("refresh_length_type", 0);
-        return;
-      }
-      localObject1 = localObject3;
-      localObject2 = localJSONObject;
-      QLog.e("RefreshRes", 1, "parseRefreshParaJson error refreshConfig not exist ");
-      return;
-    }
-    catch (Exception localException)
-    {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("parseRefreshParaJson error json = ");
-      ((StringBuilder)localObject3).append(localObject1);
-      QLog.e("RefreshRes", 1, localException, new Object[] { ((StringBuilder)localObject3).toString() });
-      localException.printStackTrace();
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("parseRefreshParaJson JSONException json = ");
-      ((StringBuilder)localObject3).append(localException);
-      QLog.e("RefreshRes", 1, ((StringBuilder)localObject3).toString());
-      localJSONException.printStackTrace();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-  }
-  
-  static void a(String paramString, long paramLong)
-  {
-    if ((!jdField_a_of_type_JavaLangString.equals(paramString)) || (jdField_a_of_type_Long != paramLong))
-    {
-      jdField_a_of_type_JavaLangString = paramString;
-      b();
-    }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_c_of_type_Int < 0) {
-      a();
-    }
-    return jdField_c_of_type_Int > 0;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return SceneBuilder.a(new File(a(paramString)));
-  }
-  
-  public static int b()
-  {
-    return jdField_b_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append(".readInjoy/refresh_res/");
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
-  }
-  
-  private static void b()
+  private static void l()
   {
     if (QLog.isColorLevel()) {
       QLog.d("RefreshRes", 2, "clearDataAfterSetRefreshInfo()");
     }
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_JavaLangString = null;
-    jdField_c_of_type_JavaLangString = null;
-    jdField_a_of_type_JavaUtilList = null;
-    jdField_b_of_type_Int = -1;
-    jdField_a_of_type_Long = -1L;
-  }
-  
-  public static String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("/");
-    localStringBuilder.append("refresh");
-    localStringBuilder.append("/");
-    return localStringBuilder.toString();
-  }
-  
-  public static String d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    localStringBuilder.append("refreshGuideConfig");
-    return localStringBuilder.toString();
-  }
-  
-  public static String e()
-  {
-    if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(c());
-      localStringBuilder.append(jdField_b_of_type_JavaLangString);
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
-  public static String f()
-  {
-    if ((TextUtils.isEmpty(jdField_c_of_type_JavaLangString)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(jdField_c_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(c());
-      localStringBuilder.append(jdField_c_of_type_JavaLangString);
-      return localStringBuilder.toString();
-    }
-    return null;
+    c = 0;
+    d = null;
+    e = null;
+    f = null;
+    g = -1;
+    b = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.RefreshRes
  * JD-Core Version:    0.7.0.1
  */

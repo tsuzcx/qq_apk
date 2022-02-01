@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 class Conversation$DragChangedListener
   implements DragFrameLayout.OnDragModeChangedListener
 {
-  private final int jdField_a_of_type_Int = -2147483648;
+  private final int b = -2147483648;
   
   private Conversation$DragChangedListener(Conversation paramConversation) {}
   
@@ -18,18 +18,18 @@ class Conversation$DragChangedListener
   
   public void onChange(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if (paramDragFrameLayout.a() == -1)
+    if (paramDragFrameLayout.getMode() == -1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.b.sendEmptyMessage(10);
-      FrameHelperActivity.b(true);
+      this.a.G.sendEmptyMessage(10);
+      FrameHelperActivity.c(true);
       return;
     }
-    FrameHelperActivity.b(false);
+    FrameHelperActivity.c(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.DragChangedListener
  * JD-Core Version:    0.7.0.1
  */

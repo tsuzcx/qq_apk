@@ -15,21 +15,21 @@ import java.util.Date;
 abstract class DateFormatTextWatcher
   extends TextWatcherAdapter
 {
-  private final CalendarConstraints jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints;
   @NonNull
-  private final TextInputLayout jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
-  private final String jdField_a_of_type_JavaLangString;
-  private final DateFormat jdField_a_of_type_JavaTextDateFormat;
-  private Runnable b;
+  private final TextInputLayout a;
+  private final DateFormat b;
+  private final CalendarConstraints c;
+  private final String d;
+  private final Runnable e;
+  private Runnable f;
   
   DateFormatTextWatcher(String paramString, DateFormat paramDateFormat, @NonNull TextInputLayout paramTextInputLayout, CalendarConstraints paramCalendarConstraints)
   {
-    this.jdField_a_of_type_JavaTextDateFormat = paramDateFormat;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout = paramTextInputLayout;
-    this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints = paramCalendarConstraints;
-    this.jdField_a_of_type_JavaLangString = paramTextInputLayout.getContext().getString(R.string.F);
-    this.jdField_a_of_type_JavaLangRunnable = new DateFormatTextWatcher.1(this, paramString);
+    this.b = paramDateFormat;
+    this.a = paramTextInputLayout;
+    this.c = paramCalendarConstraints;
+    this.d = paramTextInputLayout.getContext().getString(R.string.F);
+    this.e = new DateFormatTextWatcher.1(this, paramString);
   }
   
   private Runnable a(long paramLong)
@@ -48,25 +48,25 @@ abstract class DateFormatTextWatcher
   
   public void onTextChanged(@NonNull CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.removeCallbacks(this.b);
-    this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setError(null);
+    this.a.removeCallbacks(this.e);
+    this.a.removeCallbacks(this.f);
+    this.a.setError(null);
     a(null);
     if (TextUtils.isEmpty(paramCharSequence)) {
       return;
     }
     try
     {
-      paramCharSequence = this.jdField_a_of_type_JavaTextDateFormat.parse(paramCharSequence.toString());
-      this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout.setError(null);
+      paramCharSequence = this.b.parse(paramCharSequence.toString());
+      this.a.setError(null);
       long l = paramCharSequence.getTime();
-      if ((this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a().a(l)) && (this.jdField_a_of_type_ComGoogleAndroidMaterialDatepickerCalendarConstraints.a(l)))
+      if ((this.c.a().a(l)) && (this.c.a(l)))
       {
         a(Long.valueOf(paramCharSequence.getTime()));
         return;
       }
-      this.b = a(l);
-      a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout, this.b);
+      this.f = a(l);
+      a(this.a, this.f);
       return;
     }
     catch (ParseException paramCharSequence)
@@ -74,12 +74,12 @@ abstract class DateFormatTextWatcher
       label137:
       break label137;
     }
-    a(this.jdField_a_of_type_ComGoogleAndroidMaterialTextfieldTextInputLayout, this.jdField_a_of_type_JavaLangRunnable);
+    a(this.a, this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.datepicker.DateFormatTextWatcher
  * JD-Core Version:    0.7.0.1
  */

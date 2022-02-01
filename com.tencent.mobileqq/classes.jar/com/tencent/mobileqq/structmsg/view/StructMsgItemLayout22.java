@@ -29,11 +29,6 @@ public class StructMsgItemLayout22
     return localLinearLayout;
   }
   
-  protected int b()
-  {
-    return 22;
-  }
-  
   public View b(Context paramContext, View paramView, Bundle paramBundle)
   {
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
@@ -45,23 +40,23 @@ public class StructMsgItemLayout22
     {
       paramView = a(paramContext);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.ax.iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (AbsStructMsgElement)localIterator.next();
-      Object localObject2 = ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangString;
-      ((AbsStructMsgElement)localObject1).jdField_a_of_type_JavaLangRefWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      Object localObject2 = ((AbsStructMsgElement)localObject1).b;
+      ((AbsStructMsgElement)localObject1).ar = this.ar;
       if ("title".equals(localObject2))
       {
         localObject2 = (StructMsgItemTitle)localObject1;
-        ((StructMsgItemTitle)localObject2).a(a(), this.p);
+        ((StructMsgItemTitle)localObject2).a(d(), this.av);
         localObject1 = (TextView)((AbsStructMsgElement)localObject1).a(paramContext, null, paramBundle);
         ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
         ((TextView)localObject1).setMaxLines(2);
-        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).c())) {
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).k())) {
           ((TextView)localObject1).setTextSize(18.0F);
         }
-        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).d())) {
+        if (TextUtils.isEmpty(((StructMsgItemTitle)localObject2).l())) {
           ((TextView)localObject1).setTextColor(Color.parseColor("#000000"));
         }
         localObject2 = new LinearLayout.LayoutParams(-1, -2);
@@ -80,14 +75,19 @@ public class StructMsgItemLayout22
     return paramView;
   }
   
-  public String b()
+  protected int c()
+  {
+    return 22;
+  }
+  
+  public String e()
   {
     return "layout22";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout22
  * JD-Core Version:    0.7.0.1
  */

@@ -4,22 +4,19 @@ import org.apache.http.Header;
 
 public class VasResDrawable$Options
 {
-  public int a;
-  public String a;
-  public Header[] a;
+  public String a = "";
   public int b;
-  public int c = 0;
+  public int c;
   public int d = 0;
-  public int e;
+  public int e = 0;
+  public Header[] f;
+  public int g;
   
-  public VasResDrawable$Options(VasResDrawable paramVasResDrawable)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public VasResDrawable$Options(VasResDrawable paramVasResDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResDrawable.Options
  * JD-Core Version:    0.7.0.1
  */

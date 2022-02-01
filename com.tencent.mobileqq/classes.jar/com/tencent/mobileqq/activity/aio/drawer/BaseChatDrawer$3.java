@@ -12,67 +12,65 @@ class BaseChatDrawer$3
   
   public void a(int paramInt)
   {
-    if ((!BaseChatDrawer.a(this.a)) && (paramInt == 1)) {
+    if ((!BaseChatDrawer.b(this.a)) && (paramInt == 1)) {
       this.a.a();
     }
   }
   
   public void a(int paramInt, float paramFloat)
   {
-    if (BaseChatDrawer.a(this.a)) {
+    if (BaseChatDrawer.b(this.a)) {
       this.a.a(paramInt, paramFloat);
     }
   }
   
   public void b(int paramInt)
   {
-    BaseChatDrawer.a(this.a);
-    if (BaseChatDrawer.a(this.a)) {
+    if (BaseChatDrawer.b(this.a)) {
       this.a.b(paramInt);
-    }
-  }
-  
-  public void f()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.N();
-    }
-    if (BaseChatDrawer.a(this.a)) {
-      this.a.f();
-    }
-    if ((((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) ^ true)) {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", true);
-    }
-  }
-  
-  public void g()
-  {
-    if (BaseChatDrawer.a(this.a)) {
-      this.a.g();
-    }
-  }
-  
-  public void h()
-  {
-    if (BaseChatDrawer.a(this.a)) {
-      this.a.h();
     }
   }
   
   public void i()
   {
-    BaseChatDrawer.b(this.a);
-    if (BaseChatDrawer.a(this.a)) {
+    if (this.a.e != null) {
+      this.a.e.as();
+    }
+    if (BaseChatDrawer.b(this.a)) {
       this.a.i();
     }
-    if (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "intimate", false);
+    if ((((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.a.a) ^ true)) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.a, "intimate", true);
+    }
+  }
+  
+  public void j()
+  {
+    if (BaseChatDrawer.b(this.a)) {
+      this.a.j();
+    }
+  }
+  
+  public void k()
+  {
+    if (BaseChatDrawer.b(this.a)) {
+      this.a.k();
+    }
+  }
+  
+  public void l()
+  {
+    if (BaseChatDrawer.b(this.a)) {
+      this.a.l();
+    }
+    if (((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).isSpriteHidden(this.a.a)) {
+      ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(this.a.a, "intimate", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer.3
  * JD-Core Version:    0.7.0.1
  */

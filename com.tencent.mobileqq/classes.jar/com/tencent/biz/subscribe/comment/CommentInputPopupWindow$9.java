@@ -7,9 +7,9 @@ class CommentInputPopupWindow$9
 {
   public void run()
   {
-    CommentInputPopupWindow.b(this.this$0);
-    CommentInputPopupWindow.a(this.this$0).setVisibility(0);
-    CommentInputPopupWindow.b(this.this$0).setVisibility(8);
+    CommentInputPopupWindow.k(this.this$0);
+    CommentInputPopupWindow.l(this.this$0).setVisibility(0);
+    CommentInputPopupWindow.m(this.this$0).setVisibility(8);
   }
 }
 

@@ -17,21 +17,21 @@ class QQServiceForAV$QQServiceForAVBinder$1
     {
       ??? = new StringBuilder();
       ???.append("sendNearbyVideoChatPbReq, cmd ");
-      ???.append(this.jdField_a_of_type_JavaLangString);
+      ???.append(this.a);
       ???.append("==>onResult, errorCode:");
       ???.append(paramInt);
       QLog.d("QQServiceForAVQ.nearby.video_chat", 2, ???.toString());
     }
-    synchronized (this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a)
+    synchronized (this.c.a.m)
     {
-      int j = this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a.beginBroadcast();
+      int j = this.c.a.m.beginBroadcast();
       int i = 0;
       for (;;)
       {
         if (i < j) {
           try
           {
-            ((IQQServiceCallback)this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            ((IQQServiceCallback)this.c.a.m.getBroadcastItem(i)).a(this.a, this.b, paramInt, paramArrayOfByte);
             i += 1;
           }
           catch (RemoteException paramArrayOfByte)
@@ -42,7 +42,7 @@ class QQServiceForAV$QQServiceForAVBinder$1
           }
         }
       }
-      this.jdField_a_of_type_ComTencentAvServiceQQServiceForAV$QQServiceForAVBinder.a.a.finishBroadcast();
+      this.c.a.m.finishBroadcast();
       return;
     }
     for (;;)

@@ -22,16 +22,6 @@ public class MsgBackupDBHelper
     }
   }
   
-  public int a()
-  {
-    return this.a.a("msg");
-  }
-  
-  public String a()
-  {
-    return this.a.name;
-  }
-  
   public List<MsgBackupExtraEntity> a()
   {
     return this.a.a();
@@ -52,13 +42,6 @@ public class MsgBackupDBHelper
     return this.a.a(paramLong1, paramLong2);
   }
   
-  public void a()
-  {
-    if (this.a.isOpen()) {
-      this.a.close();
-    }
-  }
-  
   public void a(List<MsgBackupMsgEntity> paramList)
   {
     if (paramList != null)
@@ -70,9 +53,11 @@ public class MsgBackupDBHelper
     }
   }
   
-  public int b()
+  public void b()
   {
-    return this.a.b("res");
+    if (this.a.isOpen()) {
+      this.a.close();
+    }
   }
   
   public void b(List<MsgBackupResEntity> paramList)
@@ -86,6 +71,11 @@ public class MsgBackupDBHelper
     }
   }
   
+  public int c()
+  {
+    return this.a.a("msg");
+  }
+  
   public void c(List<MsgBackupExtraEntity> paramList)
   {
     if (paramList != null)
@@ -96,10 +86,20 @@ public class MsgBackupDBHelper
       this.a.a(paramList);
     }
   }
+  
+  public int d()
+  {
+    return this.a.b("res");
+  }
+  
+  public String e()
+  {
+    return this.a.name;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupDBHelper
  * JD-Core Version:    0.7.0.1
  */

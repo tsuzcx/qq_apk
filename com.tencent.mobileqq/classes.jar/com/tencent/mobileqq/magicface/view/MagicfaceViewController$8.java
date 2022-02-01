@@ -9,12 +9,12 @@ class MagicfaceViewController$8
   
   public void run()
   {
-    this.this$0.a.G();
+    this.this$0.b.aj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceViewController.8
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class HippyPageSelectedEvent
   extends HippyViewEvent
 {
   public static final String EVENT_NAME = "onPageSelected";
-  private View mTarget;
+  private final View mTarget;
   
   public HippyPageSelectedEvent(View paramView)
   {
@@ -25,7 +25,7 @@ public class HippyPageSelectedEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.event.HippyPageSelectedEvent
  * JD-Core Version:    0.7.0.1
  */

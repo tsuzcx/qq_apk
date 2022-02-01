@@ -9,13 +9,13 @@ final class GroupSearchEngine$1
 {
   public int a(GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity1, GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity2)
   {
-    Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity2.a);
+    Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity2.f);
     paramSearchEngineEntity2 = Integer.valueOf(0);
     Object localObject = localInteger;
     if (localInteger == null) {
       localObject = paramSearchEngineEntity2;
     }
-    localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity1.a);
+    localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity1.f);
     paramSearchEngineEntity1 = localInteger;
     if (localInteger == null) {
       paramSearchEngineEntity1 = paramSearchEngineEntity2;
@@ -25,7 +25,7 @@ final class GroupSearchEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

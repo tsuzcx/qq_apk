@@ -54,14 +54,14 @@ public final class StudyRoomQShadowLauncher$Companion
   
   private final ExecutorService a()
   {
-    Lazy localLazy = StudyRoomQShadowLauncher.a();
+    Lazy localLazy = StudyRoomQShadowLauncher.b();
     Companion localCompanion = StudyRoomQShadowLauncher.a;
     return (ExecutorService)localLazy.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.utils.StudyRoomQShadowLauncher.Companion
  * JD-Core Version:    0.7.0.1
  */

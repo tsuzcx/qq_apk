@@ -21,7 +21,7 @@ class TranslateController$ImageTranslateTask$1
     if (QLog.isColorLevel())
     {
       if (paramARCloudRecogResult != null) {
-        localObject = paramARCloudRecogResult.a;
+        localObject = paramARCloudRecogResult.l;
       } else {
         localObject = null;
       }
@@ -36,30 +36,30 @@ class TranslateController$ImageTranslateTask$1
     }
     boolean bool = true;
     int i;
-    if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.a != null))
+    if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.l != null))
     {
-      paramString = paramARCloudRecogResult.a;
+      paramString = paramARCloudRecogResult.l;
       i = 1;
     }
     else
     {
       paramString = new TranslateResult(2);
-      paramString.b = 1002;
+      paramString.h = 1002;
       i = 0;
     }
-    paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.b;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.a;
-    paramString.c = paramARCloudRecogResult;
-    if ((FileUtil.b((String)localObject)) && (!((String)localObject).equals(paramARCloudRecogResult))) {
-      FileUtil.c((String)localObject);
+    paramARCloudRecogResult = this.a.b.e;
+    Object localObject = this.a.b.a;
+    paramString.e = paramARCloudRecogResult;
+    if ((FileUtil.d((String)localObject)) && (!((String)localObject).equals(paramARCloudRecogResult))) {
+      FileUtil.e((String)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
+    localObject = this.b.this$0;
     if (paramInt != 0) {
       bool = false;
     }
     TranslateController.a((TranslateController)localObject, bool, paramARCloudRecogResult, paramString);
     paramARCloudRecogResult = new HashMap();
-    paramARCloudRecogResult.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.c));
+    paramARCloudRecogResult.put("costTime", String.valueOf(System.currentTimeMillis() - this.a.q));
     paramARCloudRecogResult.put("retCode", String.valueOf(paramInt));
     if (i != 0) {
       paramString = "1";
@@ -72,7 +72,7 @@ class TranslateController$ImageTranslateTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask.1
  * JD-Core Version:    0.7.0.1
  */

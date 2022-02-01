@@ -12,15 +12,15 @@ public class CaptureAsyncStep$InitPaster
   protected int doStep()
   {
     LbsFilterStatusManager.a(CaptureContext.a());
-    PasterDataManager localPasterDataManager = (PasterDataManager)QIMManager.a().c(4);
-    localPasterDataManager.c();
-    localPasterDataManager.e();
+    PasterDataManager localPasterDataManager = (PasterDataManager)QIMManager.a().d(4);
+    localPasterDataManager.a();
+    localPasterDataManager.i();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.CaptureAsyncStep.InitPaster
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mobileqq.kandian.base.msf.ReadInJoyMSFService;
 import com.tencent.mobileqq.kandian.base.msf.ReadInJoyOidbHelper;
 import com.tencent.mobileqq.kandian.base.utils.RIJPBFieldUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJStatisticCollectorReport;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyEngineModule;
 import com.tencent.mobileqq.kandian.repo.fastweb.entity.FastWebShareInfo;
@@ -36,7 +36,6 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mqpsdk.util.NetUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -86,11 +85,11 @@ public class FastWebModule
   implements IFastWebModuleConst
 {
   public static final String a = "FastWebModule";
-  private QQLruCache<String, List<BaseData>> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
-  private HashMap<String, FastWebModule.OutdateLimitCacheFeild<Parcelable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private ConcurrentHashMap<String, FastWebModule.OutdateLimitCacheFeild<FastWebArticleInfo>> b = new ConcurrentHashMap();
+  private AtomicInteger b = new AtomicInteger(0);
+  private ConcurrentHashMap<Integer, Object> c = new ConcurrentHashMap();
+  private HashMap<String, FastWebModule.OutdateLimitCacheFeild<Parcelable>> d = new HashMap();
+  private ConcurrentHashMap<String, FastWebModule.OutdateLimitCacheFeild<FastWebArticleInfo>> e = new ConcurrentHashMap();
+  private QQLruCache<String, List<BaseData>> f;
   
   public FastWebModule(AppInterface paramAppInterface, EntityManager paramEntityManager, ExecutorService paramExecutorService, ReadInJoyMSFService paramReadInJoyMSFService, Handler paramHandler)
   {
@@ -98,10 +97,98 @@ public class FastWebModule
     a();
   }
   
-  private long a(int paramInt)
+  private Object a(Integer paramInteger)
+  {
+    return this.c.remove(paramInteger);
+  }
+  
+  private oidb_cmd0xe7e.ParagraphInfo a(ProteusItemData paramProteusItemData)
+  {
+    oidb_cmd0xe7e.ParagraphInfo localParagraphInfo = new oidb_cmd0xe7e.ParagraphInfo();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      if (paramProteusItemData.be == 2)
+      {
+        localJSONObject.put("url", paramProteusItemData.n());
+        localParagraphInfo.enum_type.set(1);
+      }
+      else if (paramProteusItemData.be == 3)
+      {
+        localJSONObject.put("vid", paramProteusItemData.m());
+        localParagraphInfo.enum_type.set(2);
+      }
+      else if (paramProteusItemData.be == 4)
+      {
+        localJSONObject.put("type", paramProteusItemData.o());
+        localParagraphInfo.enum_type.set(3);
+      }
+      else if (paramProteusItemData.be == 1)
+      {
+        localParagraphInfo.enum_type.set(0);
+      }
+      else
+      {
+        return null;
+      }
+    }
+    catch (JSONException paramProteusItemData)
+    {
+      QLog.d(a, 1, paramProteusItemData, new Object[0]);
+      localParagraphInfo.bytes_detail_info.set(ByteStringMicro.copyFromUtf8(localJSONObject.toString()));
+    }
+    return localParagraphInfo;
+  }
+  
+  private oidb_cmd0xe7e.ParagraphInfo a(PtsData paramPtsData)
+  {
+    oidb_cmd0xe7e.ParagraphInfo localParagraphInfo = new oidb_cmd0xe7e.ParagraphInfo();
+    localParagraphInfo.enum_type.set(3);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("type", paramPtsData.b);
+      localParagraphInfo.bytes_detail_info.set(ByteStringMicro.copyFromUtf8(localJSONObject.toString()));
+      return localParagraphInfo;
+    }
+    catch (JSONException paramPtsData)
+    {
+      QLog.e(a, 1, "generateParagraphInfo error : ", paramPtsData);
+    }
+    return localParagraphInfo;
+  }
+  
+  private void a()
+  {
+    this.f = new FastWebModule.4(this, 2012, 30, 1);
+  }
+  
+  private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSubArticleList != null))
+    {
+      if (paramAbsBaseArticleInfo.mSubArticleList.size() <= 0) {
+        return;
+      }
+      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSubArticleList.iterator();
+      while (paramAbsBaseArticleInfo.hasNext()) {
+        b((AbsBaseArticleInfo)paramAbsBaseArticleInfo.next());
+      }
+    }
+  }
+  
+  private void a(Integer paramInteger, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    this.c.put(paramInteger, paramObject);
+  }
+  
+  private long b(int paramInt)
   {
     int i = NetUtil.a(null);
-    Object localObject = FastWebSPUtils.a(RIJQQAppInterfaceUtil.a());
+    Object localObject = FastWebSPUtils.b(RIJQQAppInterfaceUtil.e());
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       return 1000L;
     }
@@ -130,12 +217,12 @@ public class FastWebModule
     return Long.valueOf(localObject[0]).longValue();
   }
   
-  private Object a(Integer paramInteger)
+  private Object b(Integer paramInteger)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
+    return this.c.get(paramInteger);
   }
   
-  private static List<BaseData> a(List<BaseData> paramList)
+  private static List<BaseData> b(List<BaseData> paramList)
   {
     if (paramList == null) {
       return null;
@@ -148,94 +235,6 @@ public class FastWebModule
     return localArrayList;
   }
   
-  private oidb_cmd0xe7e.ParagraphInfo a(ProteusItemData paramProteusItemData)
-  {
-    oidb_cmd0xe7e.ParagraphInfo localParagraphInfo = new oidb_cmd0xe7e.ParagraphInfo();
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      if (paramProteusItemData.z == 2)
-      {
-        localJSONObject.put("url", paramProteusItemData.c());
-        localParagraphInfo.enum_type.set(1);
-      }
-      else if (paramProteusItemData.z == 3)
-      {
-        localJSONObject.put("vid", paramProteusItemData.b());
-        localParagraphInfo.enum_type.set(2);
-      }
-      else if (paramProteusItemData.z == 4)
-      {
-        localJSONObject.put("type", paramProteusItemData.d());
-        localParagraphInfo.enum_type.set(3);
-      }
-      else if (paramProteusItemData.z == 1)
-      {
-        localParagraphInfo.enum_type.set(0);
-      }
-      else
-      {
-        return null;
-      }
-    }
-    catch (JSONException paramProteusItemData)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, paramProteusItemData, new Object[0]);
-      localParagraphInfo.bytes_detail_info.set(ByteStringMicro.copyFromUtf8(localJSONObject.toString()));
-    }
-    return localParagraphInfo;
-  }
-  
-  private oidb_cmd0xe7e.ParagraphInfo a(PtsData paramPtsData)
-  {
-    oidb_cmd0xe7e.ParagraphInfo localParagraphInfo = new oidb_cmd0xe7e.ParagraphInfo();
-    localParagraphInfo.enum_type.set(3);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", paramPtsData.jdField_a_of_type_JavaLangString);
-      localParagraphInfo.bytes_detail_info.set(ByteStringMicro.copyFromUtf8(localJSONObject.toString()));
-      return localParagraphInfo;
-    }
-    catch (JSONException paramPtsData)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "generateParagraphInfo error : ", paramPtsData);
-    }
-    return localParagraphInfo;
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new FastWebModule.4(this, 2012, 30, 1);
-  }
-  
-  private void a(AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    if ((paramAbsBaseArticleInfo != null) && (paramAbsBaseArticleInfo.mSubArticleList != null))
-    {
-      if (paramAbsBaseArticleInfo.mSubArticleList.size() <= 0) {
-        return;
-      }
-      paramAbsBaseArticleInfo = paramAbsBaseArticleInfo.mSubArticleList.iterator();
-      while (paramAbsBaseArticleInfo.hasNext()) {
-        b((AbsBaseArticleInfo)paramAbsBaseArticleInfo.next());
-      }
-    }
-  }
-  
-  private void a(Integer paramInteger, Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramInteger, paramObject);
-  }
-  
-  private Object b(Integer paramInteger)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramInteger);
-  }
-  
   private void b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     if (!RIJFeedsType.a(paramAbsBaseArticleInfo))
@@ -246,7 +245,7 @@ public class FastWebModule
       if (!RIJFeedsType.a(paramAbsBaseArticleInfo.mArticleContentUrl, paramAbsBaseArticleInfo.mChannelID, paramAbsBaseArticleInfo)) {
         return;
       }
-      Object localObject = this.b;
+      Object localObject = this.e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramAbsBaseArticleInfo.mChannelID);
       localStringBuilder.append("_");
@@ -256,7 +255,7 @@ public class FastWebModule
       {
         if (QLog.isColorLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("[preloadFastWebArticleInfoImp] title = ");
           localStringBuilder.append(paramAbsBaseArticleInfo.mTitle);
@@ -287,7 +286,7 @@ public class FastWebModule
       paramToServiceMsg = null;
     }
     boolean bool2;
-    if ((paramToServiceMsg != null) && (!paramToServiceMsg.d)) {
+    if ((paramToServiceMsg != null) && (!paramToServiceMsg.K)) {
       bool2 = false;
     } else {
       bool2 = true;
@@ -334,23 +333,23 @@ public class FastWebModule
       {
         if (paramToServiceMsg != null)
         {
-          if (!this.b.containsKey(str)) {
+          if (!this.e.containsKey(str)) {
             break label516;
           }
-          paramFromServiceMsg = (FastWebModule.OutdateLimitCacheFeild)this.b.get(str);
-          ((FastWebArticleInfo)paramFromServiceMsg.a()).a(paramToServiceMsg.b, paramToServiceMsg.a);
-          paramFromServiceMsg.a(paramFromServiceMsg.a());
+          paramFromServiceMsg = (FastWebModule.OutdateLimitCacheFeild)this.e.get(str);
+          ((FastWebArticleInfo)paramFromServiceMsg.b()).a(paramToServiceMsg.d, paramToServiceMsg.c);
+          paramFromServiceMsg.a(paramFromServiceMsg.b());
         }
       }
       else {
-        this.b.put(str, new FastWebModule.OutdateLimitCacheFeild(this, paramToServiceMsg));
+        this.e.put(str, new FastWebModule.OutdateLimitCacheFeild(this, paramToServiceMsg));
       }
     }
     label516:
     paramToServiceMsg = new HashMap();
     paramToServiceMsg.put("which", "2");
     paramToServiceMsg.put("reqType", String.valueOf(i));
-    paramToServiceMsg.put("param_uin", RIJQQAppInterfaceUtil.a());
+    paramToServiceMsg.put("param_uin", RIJQQAppInterfaceUtil.d());
     paramFromServiceMsg = new StringBuilder();
     paramFromServiceMsg.append(j);
     paramFromServiceMsg.append("");
@@ -378,7 +377,7 @@ public class FastWebModule
       bool = true;
       paramFromServiceMsg = (oidb_cmd0xad7.RspShare)localRspBody.msg_rsp_share.get();
       paramToServiceMsg.b = paramFromServiceMsg.bytes_wechat_pyq.get().toStringUtf8();
-      paramToServiceMsg.jdField_a_of_type_JavaLangString = paramFromServiceMsg.bytes_weibo.get().toStringUtf8();
+      paramToServiceMsg.a = paramFromServiceMsg.bytes_weibo.get().toStringUtf8();
       paramToServiceMsg.d = paramFromServiceMsg.bytes_friend.get().toStringUtf8();
       paramToServiceMsg.c = paramFromServiceMsg.bytes_wechat.get().toStringUtf8();
       paramToServiceMsg.e = paramFromServiceMsg.bytes_qzhone.get().toStringUtf8();
@@ -430,8 +429,8 @@ public class FastWebModule
     if (paramFromServiceMsg != null) {
       ThreadManager.getUIHandler().post(new FastWebModule.2(this, paramFromServiceMsg, bool, j, paramToServiceMsg));
     }
-    QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "handle0xbd3Resp, retCode = ", Integer.valueOf(k), ", success= ", Boolean.valueOf(bool), ", cost = ", Long.valueOf(l), ", shareJson = ", paramToServiceMsg });
-    RIJStatisticCollectorReport.a(RIJQQAppInterfaceUtil.a(), bool, l, k);
+    QLog.d(a, 1, new Object[] { "handle0xbd3Resp, retCode = ", Integer.valueOf(k), ", success= ", Boolean.valueOf(bool), ", cost = ", Long.valueOf(l), ", shareJson = ", paramToServiceMsg });
+    RIJStatisticCollectorReport.a(RIJQQAppInterfaceUtil.e(), bool, l, k);
   }
   
   public int a(String paramString1, String paramString2, String paramString3, int paramInt, FastWebModule.FastWebContentGetCallback paramFastWebContentGetCallback)
@@ -452,26 +451,26 @@ public class FastWebModule
         QLog.d("Q.readinjoy.fast_web", 1, ((StringBuilder)localObject1).toString());
         if ((paramInt != 2) && (paramString2 != null))
         {
-          localObject1 = (FastWebModule.OutdateLimitCacheFeild)this.b.get(paramString2);
+          localObject1 = (FastWebModule.OutdateLimitCacheFeild)this.e.get(paramString2);
           if (localObject1 != null) {
             if (((FastWebModule.OutdateLimitCacheFeild)localObject1).a())
             {
-              this.b.remove(paramString2);
+              this.e.remove(paramString2);
             }
             else
             {
-              paramString3 = (FastWebArticleInfo)((FastWebModule.OutdateLimitCacheFeild)localObject1).a();
-              if ((paramString3 == null) || (paramString3.d)) {
-                break label813;
+              paramString3 = (FastWebArticleInfo)((FastWebModule.OutdateLimitCacheFeild)localObject1).b();
+              if ((paramString3 == null) || (paramString3.K)) {
+                break label802;
               }
-              if (!((FastWebModule.OutdateLimitCacheFeild)localObject1).a) {
-                break label807;
+              if (!((FastWebModule.OutdateLimitCacheFeild)localObject1).b) {
+                break label796;
               }
-              break label813;
+              break label802;
               if (paramFastWebContentGetCallback != null)
               {
                 paramFastWebContentGetCallback.a(true, bool, paramString3);
-                ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X8009C51", "0X8009C51", 0, 0, "", "", "", "", false);
+                PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009C51", "0X8009C51", 0, 0, "", "", "", "", false);
               }
               paramString3 = new StringBuilder();
               paramString3.append("hit cache, rowkey : ");
@@ -487,7 +486,7 @@ public class FastWebModule
         }
         localObject1 = new oidb_cmd0xad6.ReqBody();
         Object localObject2 = new oidb_cmd0xad6.Client();
-        ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+        ((oidb_cmd0xad6.Client)localObject2).bytes_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
         ((oidb_cmd0xad6.Client)localObject2).uint32_type.set(1);
         ((oidb_cmd0xad6.ReqBody)localObject1).msg_client.set((MessageMicro)localObject2);
         localObject2 = new oidb_cmd0xad6.ReqArticle();
@@ -522,8 +521,8 @@ public class FastWebModule
           ((oidb_cmd0xad6.ReqBody)localObject1).uint32_read_count.set(1);
         }
         paramString3 = ReadInJoyOidbHelper.a("OidbSvc.0xad6", 2774, 0, ((oidb_cmd0xad6.ReqBody)localObject1).toByteArray());
-        int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-        long l = a(paramInt);
+        int i = this.b.incrementAndGet();
+        long l = b(paramInt);
         paramString3.addAttribute("ad6Seq", Integer.valueOf(i));
         paramString3.addAttribute("ad6ReqTime", Long.valueOf(System.currentTimeMillis()));
         paramString3.addAttribute("uniflag", paramString2);
@@ -557,40 +556,26 @@ public class FastWebModule
         }
         return -1;
       }
-      label807:
+      label796:
       boolean bool = false;
       continue;
-      label813:
+      label802:
       bool = true;
     }
   }
   
   public Parcelable a(String paramString)
   {
-    paramString = (FastWebModule.OutdateLimitCacheFeild)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (FastWebModule.OutdateLimitCacheFeild)this.d.get(paramString);
     if ((paramString != null) && (!paramString.a())) {
-      return (Parcelable)paramString.a();
+      return (Parcelable)paramString.b();
     }
     return null;
-  }
-  
-  public FastWebArticleInfo a(String paramString)
-  {
-    paramString = (FastWebModule.OutdateLimitCacheFeild)this.b.get(paramString);
-    if (paramString != null) {
-      return (FastWebArticleInfo)paramString.a();
-    }
-    return null;
-  }
-  
-  public List<BaseData> a(String paramString)
-  {
-    return a((List)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString));
   }
   
   public void a(int paramInt)
   {
-    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    ConcurrentHashMap localConcurrentHashMap = this.c;
     if (localConcurrentHashMap != null) {
       localConcurrentHashMap.remove(Integer.valueOf(paramInt));
     }
@@ -610,32 +595,32 @@ public class FastWebModule
       str = paramAbsBaseArticleInfo.mSubscribeName;
     }
     localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-    localFeedParam.multi_level_info.set(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentMobileqqKandianRepoHandlerBiuInfo.a());
+    localFeedParam.multi_level_info.set(paramAbsBaseArticleInfo.mSocialFeedInfo.n.c());
     localFeedParam.uint64_uin.set(paramAbsBaseArticleInfo.publishUin);
     localFeedParam.uint32_share_type.set(paramInt);
     try
     {
-      if ((paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ArrayOfByte != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ArrayOfByte.length > 0)) {
-        localFeedParam.feed_ext_info.mergeFrom(paramAbsBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ArrayOfByte);
+      if ((paramAbsBaseArticleInfo.mSocialFeedInfo.q != null) && (paramAbsBaseArticleInfo.mSocialFeedInfo.q.length > 0)) {
+        localFeedParam.feed_ext_info.mergeFrom(paramAbsBaseArticleInfo.mSocialFeedInfo.q);
       }
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "req0xbd3ShareJson feed_ext_info exception");
+      QLog.d(a, 2, "req0xbd3ShareJson feed_ext_info exception");
       localInvalidProtocolBufferMicroException.printStackTrace();
     }
     Object localObject = new ArrayList();
     ((List)localObject).add(localFeedParam);
-    QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "req0xbd3ShareJson, feed_type = ", Integer.valueOf(localFeedParam.feed_type.get()), "\n", "feed_id = ", Long.valueOf(localFeedParam.uint64_feed_id.get()), "\n", "subscribe_name = ", localFeedParam.bytes_subscribe_name.get().toStringUtf8(), "\n", "uin = ", Long.valueOf(localFeedParam.uint64_uin.get()), "\n", "share_type = ", Integer.valueOf(localFeedParam.uint32_share_type.get()) });
+    QLog.d(a, 2, new Object[] { "req0xbd3ShareJson, feed_type = ", Integer.valueOf(localFeedParam.feed_type.get()), "\n", "feed_id = ", Long.valueOf(localFeedParam.uint64_feed_id.get()), "\n", "subscribe_name = ", localFeedParam.bytes_subscribe_name.get().toStringUtf8(), "\n", "uin = ", Long.valueOf(localFeedParam.uint64_uin.get()), "\n", "share_type = ", Integer.valueOf(localFeedParam.uint32_share_type.get()) });
     localReqBody.rpt_feed_param.set((List)localObject);
     localObject = ReadInJoyOidbHelper.a("OidbSvc.0xbd3", 3027, 0, localReqBody.toByteArray());
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.b.incrementAndGet();
     ((ToServiceMsg)localObject).addAttribute("bd3Seq", Integer.valueOf(i));
     ((ToServiceMsg)localObject).addAttribute("bd3ReqTime", Long.valueOf(System.currentTimeMillis()));
     ((ToServiceMsg)localObject).addAttribute("bd3ShareType", Integer.valueOf(paramInt));
     a(Integer.valueOf(i), paramFeedbackCallback);
     sendPbReq((ToServiceMsg)localObject);
-    QLog.d(jdField_a_of_type_JavaLangString, 1, new Object[] { "req0xbd3ShareJson, articleInfo = ", paramAbsBaseArticleInfo, ", seq = ", Integer.valueOf(i), ", shareType = ", Integer.valueOf(paramInt) });
+    QLog.d(a, 1, new Object[] { "req0xbd3ShareJson, articleInfo = ", paramAbsBaseArticleInfo, ", seq = ", Integer.valueOf(i), ", shareType = ", Integer.valueOf(paramInt) });
   }
   
   public void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebModule.FastWebArticleRichReqCallback paramFastWebArticleRichReqCallback, boolean paramBoolean)
@@ -647,7 +632,7 @@ public class FastWebModule
   {
     oidb_cmd0xb54.ReqBody localReqBody = new oidb_cmd0xb54.ReqBody();
     Object localObject1 = new oidb_cmd0xb54.Client();
-    ((oidb_cmd0xb54.Client)localObject1).bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((oidb_cmd0xb54.Client)localObject1).bytes_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     ((oidb_cmd0xb54.Client)localObject1).uint32_type.set(1);
     localReqBody.msg_client.set((MessageMicro)localObject1);
     localObject1 = new oidb_cmd0xb54.ReqOption();
@@ -666,14 +651,14 @@ public class FastWebModule
     ((oidb_cmd0xb54.ReqOption)localObject1).uint32_need_share.set(1);
     oidb_cmd0xb54.ReqArticle localReqArticle = new oidb_cmd0xb54.ReqArticle();
     localReqArticle.bytes_row_key.set(ByteStringMicro.copyFromUtf8(paramAbsBaseArticleInfo.innerUniqueID));
-    Object localObject2 = (FastWebModule.OutdateLimitCacheFeild)this.b.get(paramAbsBaseArticleInfo.innerUniqueID);
+    Object localObject2 = (FastWebModule.OutdateLimitCacheFeild)this.e.get(paramAbsBaseArticleInfo.innerUniqueID);
     if (localObject2 != null)
     {
-      paramFastWebArticleInfo = (FastWebArticleInfo)((FastWebModule.OutdateLimitCacheFeild)localObject2).a();
-      if ((paramFastWebArticleInfo != null) && (!paramFastWebArticleInfo.c.isEmpty()))
+      paramFastWebArticleInfo = (FastWebArticleInfo)((FastWebModule.OutdateLimitCacheFeild)localObject2).b();
+      if ((paramFastWebArticleInfo != null) && (!paramFastWebArticleInfo.J.isEmpty()))
       {
         ((oidb_cmd0xb54.ReqOption)localObject1).uint32_style_card.set(1);
-        paramFastWebArticleInfo = paramFastWebArticleInfo.c.iterator();
+        paramFastWebArticleInfo = paramFastWebArticleInfo.J.iterator();
         while (paramFastWebArticleInfo.hasNext())
         {
           localObject2 = (String)paramFastWebArticleInfo.next();
@@ -683,13 +668,13 @@ public class FastWebModule
     }
     else if (paramFastWebArticleInfo != null)
     {
-      this.b.put(paramAbsBaseArticleInfo.innerUniqueID, new FastWebModule.OutdateLimitCacheFeild(this, paramFastWebArticleInfo));
+      this.e.put(paramAbsBaseArticleInfo.innerUniqueID, new FastWebModule.OutdateLimitCacheFeild(this, paramFastWebArticleInfo));
     }
     localReqBody.msg_option.set((MessageMicro)localObject1);
     localReqBody.msg_req_article.set(localReqArticle);
     localReqBody.uint32_topic.set(1);
     paramFastWebArticleInfo = ReadInJoyOidbHelper.a("OidbSvc.0xb54", 2900, 0, localReqBody.toByteArray());
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.b.incrementAndGet();
     paramFastWebArticleInfo.addAttribute("b54Seq", Integer.valueOf(i));
     paramFastWebArticleInfo.addAttribute("b54ReqTime", Long.valueOf(System.currentTimeMillis()));
     paramFastWebArticleInfo.addAttribute("uniflag", paramAbsBaseArticleInfo.innerUniqueID);
@@ -713,20 +698,20 @@ public class FastWebModule
         return;
       }
       oidb_cmd0xe7e.ReqBody localReqBody = new oidb_cmd0xe7e.ReqBody();
-      RIJPBFieldUtils.a(localReqBody.bytes_qq, RIJQQAppInterfaceUtil.a());
+      RIJPBFieldUtils.b(localReqBody.bytes_qq, RIJQQAppInterfaceUtil.d());
       Object localObject = new oidb_cmd0xe7e.WebInfo();
-      RIJPBFieldUtils.a(((oidb_cmd0xe7e.WebInfo)localObject).bytes_url, paramAbsBaseArticleInfo.mArticleContentUrl);
+      RIJPBFieldUtils.b(((oidb_cmd0xe7e.WebInfo)localObject).bytes_url, paramAbsBaseArticleInfo.mArticleContentUrl);
       try
       {
-        RIJPBFieldUtils.a(((oidb_cmd0xe7e.WebInfo)localObject).bytes_domain, new URL(paramAbsBaseArticleInfo.mArticleContentUrl).getHost());
+        RIJPBFieldUtils.b(((oidb_cmd0xe7e.WebInfo)localObject).bytes_domain, new URL(paramAbsBaseArticleInfo.mArticleContentUrl).getHost());
       }
       catch (MalformedURLException localMalformedURLException)
       {
-        RIJPBFieldUtils.a(((oidb_cmd0xe7e.WebInfo)localObject).bytes_domain, "post.mp.qq.com");
-        QLog.e(jdField_a_of_type_JavaLangString, 1, localMalformedURLException, new Object[0]);
+        RIJPBFieldUtils.b(((oidb_cmd0xe7e.WebInfo)localObject).bytes_domain, "post.mp.qq.com");
+        QLog.e(a, 1, localMalformedURLException, new Object[0]);
       }
       localReqBody.rpt_web_info.set((MessageMicro)localObject);
-      RIJPBFieldUtils.a(localReqBody.bytes_rowkey, paramAbsBaseArticleInfo.innerUniqueID);
+      RIJPBFieldUtils.b(localReqBody.bytes_rowkey, paramAbsBaseArticleInfo.innerUniqueID);
       localObject = new ArrayList();
       StringBuilder localStringBuilder = new StringBuilder(1024);
       paramList = paramList.iterator();
@@ -737,7 +722,7 @@ public class FastWebModule
         if ((localBaseData instanceof ProteusItemData))
         {
           paramAbsBaseArticleInfo = (ProteusItemData)localBaseData;
-          if ((paramAbsBaseArticleInfo.A != 1) || (paramAbsBaseArticleInfo.c == null)) {
+          if ((paramAbsBaseArticleInfo.bf != 1) || (paramAbsBaseArticleInfo.bb == null)) {
             continue;
           }
           paramAbsBaseArticleInfo = a(paramAbsBaseArticleInfo);
@@ -758,7 +743,7 @@ public class FastWebModule
       }
       if (QLog.isColorLevel())
       {
-        paramAbsBaseArticleInfo = jdField_a_of_type_JavaLangString;
+        paramAbsBaseArticleInfo = a;
         paramList = new StringBuilder();
         paramList.append("requestFastWebInsertData : ");
         paramList.append(localStringBuilder.toString());
@@ -775,7 +760,7 @@ public class FastWebModule
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, localRspBody);
     if (i != 0)
     {
-      paramToServiceMsg = jdField_a_of_type_JavaLangString;
+      paramToServiceMsg = a;
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("handleFastWebInsertDataResp fail , retCode : ");
       paramFromServiceMsg.append(i);
@@ -800,7 +785,7 @@ public class FastWebModule
     if (paramObject == null) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet();
+    Object localObject = this.c.entrySet();
     Integer localInteger = null;
     localObject = ((Set)localObject).iterator();
     while (((Iterator)localObject).hasNext())
@@ -811,17 +796,17 @@ public class FastWebModule
       }
     }
     if (localInteger != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localInteger);
+      this.c.remove(localInteger);
     }
   }
   
   public void a(String paramString, Parcelable paramParcelable)
   {
-    FastWebModule.OutdateLimitCacheFeild localOutdateLimitCacheFeild = (FastWebModule.OutdateLimitCacheFeild)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    FastWebModule.OutdateLimitCacheFeild localOutdateLimitCacheFeild = (FastWebModule.OutdateLimitCacheFeild)this.d.get(paramString);
     if (localOutdateLimitCacheFeild == null)
     {
       paramParcelable = new FastWebModule.OutdateLimitCacheFeild(this, paramParcelable);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramParcelable);
+      this.d.put(paramString, paramParcelable);
       return;
     }
     localOutdateLimitCacheFeild.a(paramParcelable);
@@ -829,14 +814,14 @@ public class FastWebModule
   
   public void a(String paramString, FastWebArticleInfo paramFastWebArticleInfo)
   {
-    this.b.put(paramString, new FastWebModule.OutdateLimitCacheFeild(this, paramFastWebArticleInfo));
+    this.e.put(paramString, new FastWebModule.OutdateLimitCacheFeild(this, paramFastWebArticleInfo));
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, FastWebModule.FastWebArticleRichReqCallback paramFastWebArticleRichReqCallback)
   {
     oidb_cmd0xad7.ReqBody localReqBody = new oidb_cmd0xad7.ReqBody();
     Object localObject = new oidb_cmd0xad7.Client();
-    ((oidb_cmd0xad7.Client)localObject).bytes_version.set(ByteStringMicro.copyFromUtf8("8.7.0"));
+    ((oidb_cmd0xad7.Client)localObject).bytes_version.set(ByteStringMicro.copyFromUtf8("8.8.17"));
     ((oidb_cmd0xad7.Client)localObject).uint32_type.set(1);
     localReqBody.msg_client.set((MessageMicro)localObject);
     localObject = new oidb_cmd0xad7.ReqArticle();
@@ -869,7 +854,7 @@ public class FastWebModule
       localReqBody.uint32_wechat_pyq.set(1);
     }
     paramString3 = ReadInJoyOidbHelper.a("OidbSvc.0xad7", 2775, 0, localReqBody.toByteArray());
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    int i = this.b.incrementAndGet();
     paramString3.addAttribute("ad7Seq", Integer.valueOf(i));
     paramString3.addAttribute("ad7ReqTime", Long.valueOf(System.currentTimeMillis()));
     paramString3.addAttribute("ad7Action", Integer.valueOf(paramInt));
@@ -894,7 +879,7 @@ public class FastWebModule
       if (paramList == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, paramList);
+      this.f.put(paramString, paramList);
     }
   }
   
@@ -909,6 +894,15 @@ public class FastWebModule
     }
   }
   
+  public FastWebArticleInfo b(String paramString)
+  {
+    paramString = (FastWebModule.OutdateLimitCacheFeild)this.e.get(paramString);
+    if (paramString != null) {
+      return (FastWebArticleInfo)paramString.b();
+    }
+    return null;
+  }
+  
   public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     int i = ((Integer)paramToServiceMsg.getAttribute("b54Seq")).intValue();
@@ -919,24 +913,29 @@ public class FastWebModule
     oidb_cmd0xb54.RspBody localRspBody = new oidb_cmd0xb54.RspBody();
     int j = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, localRspBody);
     paramFromServiceMsg = (FastWebModule.FastWebArticleRichReqCallback)b(Integer.valueOf(i));
-    paramObject = (FastWebModule.OutdateLimitCacheFeild)this.b.get(str2);
+    paramObject = (FastWebModule.OutdateLimitCacheFeild)this.e.get(str2);
     if (paramObject == null) {
       return;
     }
-    paramObject = (FastWebArticleInfo)paramObject.a();
+    paramObject = (FastWebArticleInfo)paramObject.b();
     if (j == 0)
     {
       FastWebModuleUtils.a(paramToServiceMsg, localRspBody, paramObject, paramFromServiceMsg, str1);
     }
     else
     {
-      paramToServiceMsg = jdField_a_of_type_JavaLangString;
+      paramToServiceMsg = a;
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("oxb54 resp error, code : ");
       paramFromServiceMsg.append(j);
       QLog.d(paramToServiceMsg, 1, paramFromServiceMsg.toString());
     }
     ThreadManager.getUIHandler().post(new FastWebModule.6(this));
+  }
+  
+  public List<BaseData> c(String paramString)
+  {
+    return b((List)this.f.get(paramString));
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -968,12 +967,12 @@ public class FastWebModule
   
   public void unInitialize()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.c.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.FastWebModule
  * JD-Core Version:    0.7.0.1
  */

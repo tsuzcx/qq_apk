@@ -16,22 +16,22 @@ class SingleItemViewHolder$1
     int i = paramMotionEvent.getAction();
     if (i == 0)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
-      this.a.c.setAlpha(0.5F);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      this.a.d.setAlpha(0.15F);
+      this.a.h.setAlpha(0.5F);
+      this.a.f.setAlpha(0.5F);
     }
     else if ((i == 3) || (i == 1))
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-      this.a.c.setAlpha(1.0F);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      this.a.d.setAlpha(1.0F);
+      this.a.h.setAlpha(1.0F);
+      this.a.f.setAlpha(1.0F);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopcreate.ui.SingleItemViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

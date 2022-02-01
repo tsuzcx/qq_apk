@@ -8,28 +8,21 @@ import java.util.List;
 
 public class ApolloBoxData
 {
-  public int a;
-  public long a;
   public String a;
-  public final HashMap<Integer, ApolloBoxData.BoxCardListSummary> a;
-  public final List<ApolloBoxData.BoxCardListSummary> a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public List<ApolloBoxData.ApolloBoxDataItem> b;
-  public long c;
-  public String c;
-  public List<ApolloBoxData.ApolloBoxDataItem> c;
+  public boolean c;
   public String d;
-  public String e;
-  
-  public ApolloBoxData()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public long e;
+  public long f;
+  public long g;
+  public String h;
+  public String i;
+  public int j = -1;
+  public int k;
+  public final HashMap<Integer, ApolloBoxData.BoxCardListSummary> l = new HashMap();
+  public final List<ApolloBoxData.BoxCardListSummary> m = new ArrayList();
+  public List<ApolloBoxData.ApolloBoxDataItem> n;
+  public List<ApolloBoxData.ApolloBoxDataItem> o;
   
   public static String a(int paramInt)
   {
@@ -69,43 +62,43 @@ public class ApolloBoxData
   
   public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.a))
     {
-      Object localObject = this.jdField_b_of_type_JavaUtilList;
+      Object localObject = this.n;
       if (localObject != null)
       {
         if (((List)localObject).isEmpty()) {
           return;
         }
-        localObject = this.jdField_b_of_type_JavaUtilList.iterator();
+        localObject = this.n.iterator();
         while (((Iterator)localObject).hasNext())
         {
           ApolloBoxData.ApolloBoxDataItem localApolloBoxDataItem = (ApolloBoxData.ApolloBoxDataItem)((Iterator)localObject).next();
-          if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(String.valueOf(localApolloBoxDataItem.jdField_a_of_type_Long))))
+          if ((!TextUtils.isEmpty(this.a)) && (this.a.equals(String.valueOf(localApolloBoxDataItem.a))))
           {
             ApolloBoxData.BoxCardListSummary localBoxCardListSummary;
-            if (localApolloBoxDataItem.jdField_a_of_type_Short <= 4)
+            if (localApolloBoxDataItem.f <= 4)
             {
-              localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(3));
+              localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.l.get(Integer.valueOf(3));
               if (localBoxCardListSummary != null)
               {
-                localBoxCardListSummary.c += 1;
-                this.jdField_b_of_type_Int += 1;
+                localBoxCardListSummary.d += 1;
+                this.k += 1;
               }
             }
             else
             {
-              localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.jdField_a_of_type_JavaUtilHashMap.get(Short.valueOf(localApolloBoxDataItem.jdField_a_of_type_Short));
+              localBoxCardListSummary = (ApolloBoxData.BoxCardListSummary)this.l.get(Short.valueOf(localApolloBoxDataItem.f));
               if (localBoxCardListSummary != null)
               {
-                localBoxCardListSummary.c += localApolloBoxDataItem.f;
-                this.jdField_b_of_type_Int += localApolloBoxDataItem.f;
+                localBoxCardListSummary.d += localApolloBoxDataItem.s;
+                this.k += localApolloBoxDataItem.s;
               }
             }
-            if (this.c == null) {
-              this.c = new ArrayList();
+            if (this.o == null) {
+              this.o = new ArrayList();
             }
-            this.c.add(localApolloBoxDataItem);
+            this.o.add(localApolloBoxDataItem);
           }
         }
       }
@@ -114,7 +107,7 @@ public class ApolloBoxData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.ApolloBoxData
  * JD-Core Version:    0.7.0.1
  */

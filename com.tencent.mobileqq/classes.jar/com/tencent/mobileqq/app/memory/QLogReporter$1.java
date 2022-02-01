@@ -70,8 +70,8 @@ class QLogReporter$1
                 if (((String)localObject2).contains((CharSequence)localObject1)) {
                   break label759;
                 }
-                localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-                ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
+                localObject1 = this.a.edit();
+                ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.b);
                 ((SharedPreferences.Editor)localObject1).commit();
                 return;
               }
@@ -149,8 +149,8 @@ class QLogReporter$1
               continue;
             }
             StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject1, "");
-            localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-            ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
+            localObject1 = this.a.edit();
+            ((SharedPreferences.Editor)localObject1).putLong("LastLogSizeReportTime", this.b);
             ((SharedPreferences.Editor)localObject1).commit();
             return;
           }
@@ -175,7 +175,7 @@ class QLogReporter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.memory.QLogReporter.1
  * JD-Core Version:    0.7.0.1
  */

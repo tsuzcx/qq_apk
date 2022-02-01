@@ -17,13 +17,13 @@ class ExtendOpenPageAction$2
     ((StringBuilder)localObject).append("gotoSafetyReport, thread:");
     ((StringBuilder)localObject).append(Thread.currentThread().getName());
     QLog.d("expand.ExtendOpenPageAction", 2, ((StringBuilder)localObject).toString());
-    localObject = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    NewReportPlugin.a((QBaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext, 1044, (String)localObject, this.this$0.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin());
+    localObject = (String)this.this$0.f.get("uin");
+    NewReportPlugin.a((QBaseActivity)this.this$0.b, 1044, (String)localObject, this.this$0.a.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendOpenPageAction.2
  * JD-Core Version:    0.7.0.1
  */

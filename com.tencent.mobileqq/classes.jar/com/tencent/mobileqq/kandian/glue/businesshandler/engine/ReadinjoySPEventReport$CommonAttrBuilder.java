@@ -10,13 +10,13 @@ import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 class ReadinjoySPEventReport$CommonAttrBuilder
 {
-  private List<oidb_cmd0x80a.AttributeList> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<oidb_cmd0x80a.AttributeList> b = new ArrayList();
   
   public ReadinjoySPEventReport$CommonAttrBuilder(List<oidb_cmd0x80a.AttributeList> paramList)
   {
     Object localObject;
     if (localObject != null) {
-      this.jdField_a_of_type_JavaUtilList = localObject;
+      this.b = localObject;
     }
   }
   
@@ -36,7 +36,7 @@ class ReadinjoySPEventReport$CommonAttrBuilder
     localAttributeList.att_id.set(paramInt);
     localAttributeList.att_name.set(paramString1);
     localAttributeList.att_value.set(paramString2);
-    this.jdField_a_of_type_JavaUtilList.add(localAttributeList);
+    this.b.add(localAttributeList);
     return this;
   }
   
@@ -48,19 +48,19 @@ class ReadinjoySPEventReport$CommonAttrBuilder
   public CommonAttrBuilder a(oidb_cmd0x80a.AttributeList paramAttributeList)
   {
     if (paramAttributeList != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramAttributeList);
+      this.b.add(paramAttributeList);
     }
     return this;
   }
   
   public List<oidb_cmd0x80a.AttributeList> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadinjoySPEventReport.CommonAttrBuilder
  * JD-Core Version:    0.7.0.1
  */

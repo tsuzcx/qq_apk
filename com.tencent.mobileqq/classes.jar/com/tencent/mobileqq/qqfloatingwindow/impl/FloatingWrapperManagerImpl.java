@@ -26,11 +26,13 @@ import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoInnerStatusListener;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IVideoOuterStatusListener;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IWindowClickListener;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IWindowStatusListener;
+import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 
 public class FloatingWrapperManagerImpl
   implements IFloatingWrapperManager
 {
+  private static final String TAG = "FloatingWrapperManagerImpl";
   public Context mContext = MobileQQ.sMobileQQ;
   public ImageView mFloatingCloseBtn;
   public FloatingScreenContainer mFloatingContainer;
@@ -95,10 +97,10 @@ public class FloatingWrapperManagerImpl
     removeParent(this.mFloatingWidgetWrapper);
     this.mFloatingContainer.a(this.mFloatingWidgetWrapper, localFloatingScreenParams);
     if (paramIUpdateUICallbackListener != null) {
-      paramIUpdateUICallbackListener.aT_();
+      paramIUpdateUICallbackListener.dz_();
     }
     if (paramIAddReceiverStatusListener != null) {
-      paramIAddReceiverStatusListener.c();
+      paramIAddReceiverStatusListener.j();
     }
     return 0;
   }
@@ -128,7 +130,7 @@ public class FloatingWrapperManagerImpl
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
     if (localFloatingScreenContainer != null) {
-      return localFloatingScreenContainer.a();
+      return localFloatingScreenContainer.getIsFloating();
     }
     return false;
   }
@@ -137,16 +139,21 @@ public class FloatingWrapperManagerImpl
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
     if (localFloatingScreenContainer != null) {
-      return localFloatingScreenContainer.b();
+      return localFloatingScreenContainer.getIsSmallFloating();
     }
     return true;
+  }
+  
+  public int getFloatWindowShapeType()
+  {
+    return this.mFloatingContainer.getShapeType();
   }
   
   public int getFloatingContainerCenterX()
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
     if (localFloatingScreenContainer != null) {
-      return localFloatingScreenContainer.a();
+      return localFloatingScreenContainer.getFloatingCenterX();
     }
     return 0;
   }
@@ -155,7 +162,7 @@ public class FloatingWrapperManagerImpl
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
     if (localFloatingScreenContainer != null) {
-      return localFloatingScreenContainer.b();
+      return localFloatingScreenContainer.getFloatingCenterY();
     }
     return 0;
   }
@@ -183,7 +190,7 @@ public class FloatingWrapperManagerImpl
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
     if (localFloatingScreenContainer != null) {
-      return localFloatingScreenContainer.c();
+      return localFloatingScreenContainer.getIsFullScreenFloating();
     }
     return false;
   }
@@ -229,13 +236,13 @@ public class FloatingWrapperManagerImpl
       return;
     }
     this.mFloatingContainer = new FloatingScreenContainer(paramContext);
-    this.mFloatingContainer.setBackgroundColor(paramContext.getResources().getColor(2131167333));
+    this.mFloatingContainer.setBackgroundColor(paramContext.getResources().getColor(2131168376));
     this.mFloatingWidgetWrapper = new FrameLayout(paramContext);
-    this.mFloatingWidgetWrapper.setId(2131374416);
-    this.mFloatingWidgetWrapper.setBackgroundColor(paramContext.getResources().getColor(2131167333));
-    this.mRootLayout = ((RelativeLayout)View.inflate(paramContext, 2131561610, null));
-    this.mFloatingCloseBtn = ((ImageView)this.mRootLayout.findViewById(2131374402));
-    this.mFloatingCloseBtn.setContentDescription(this.mContext.getResources().getString(2131699783));
+    this.mFloatingWidgetWrapper.setId(2131442583);
+    this.mFloatingWidgetWrapper.setBackgroundColor(paramContext.getResources().getColor(2131168376));
+    this.mRootLayout = ((RelativeLayout)View.inflate(paramContext, 2131627973, null));
+    this.mFloatingCloseBtn = ((ImageView)this.mRootLayout.findViewById(2131442568));
+    this.mFloatingCloseBtn.setContentDescription(this.mContext.getResources().getString(2131897816));
     setViewsClick(paramOnClickListener, new View[] { this.mRootLayout, this.mFloatingCloseBtn });
   }
   
@@ -243,26 +250,31 @@ public class FloatingWrapperManagerImpl
   {
     this.mFloatingWidgetWrapper.removeAllViews();
     removeParent(paramView);
-    paramView.setId(2131374418);
+    paramView.setId(2131442585);
     this.mFloatingWidgetWrapper.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
     removeParent(this.mRootLayout);
     this.mFloatingWidgetWrapper.addView(this.mRootLayout, new FrameLayout.LayoutParams(-1, -1));
   }
   
+  public boolean isFloatWindowHasZoomed()
+  {
+    return this.mFloatingContainer.k();
+  }
+  
   public void onViewClick(View paramView, IUpdateUICallbackListener paramIUpdateUICallbackListener)
   {
     int i = paramView.getId();
-    if (i == 2131374402)
+    if (i == 2131442568)
     {
       if (paramIUpdateUICallbackListener != null) {
-        paramIUpdateUICallbackListener.b(1);
+        paramIUpdateUICallbackListener.a(1);
       }
     }
-    else if (i == 2131374409)
+    else if (i == 2131442576)
     {
       paramView = this.mWindowClickListener;
       if (paramView != null) {
-        paramView.a(this.mFloatingContainer.a(), this.mFloatingContainer.b());
+        paramView.a(this.mFloatingContainer.getFloatingCenterX(), this.mFloatingContainer.getFloatingCenterY());
       }
     }
   }
@@ -279,7 +291,7 @@ public class FloatingWrapperManagerImpl
     {
       this.mWindowClickListener = null;
       localObject = this.mFloatingContainer;
-      if ((localObject != null) && (((FloatingScreenContainer)localObject).d()))
+      if ((localObject != null) && (((FloatingScreenContainer)localObject).i()))
       {
         removeParent(this.mFloatingWidgetWrapper);
         localObject = this.mFloatingWidgetWrapper;
@@ -340,6 +352,16 @@ public class FloatingWrapperManagerImpl
     removeParent(this.mFloatingWidgetWrapper);
   }
   
+  public void resetFloatWindowScale()
+  {
+    this.mFloatingContainer.j();
+  }
+  
+  public void resetWindowSize()
+  {
+    this.mFloatingContainer.h();
+  }
+  
   public void restoreLastCenterPosition(FloatingScreenParams paramFloatingScreenParams) {}
   
   public void setCloseBtnContentDescription(String paramString)
@@ -379,6 +401,22 @@ public class FloatingWrapperManagerImpl
     }
   }
   
+  public void setFloatingContainerBackground(Drawable paramDrawable)
+  {
+    FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
+    if (localFloatingScreenContainer != null) {
+      localFloatingScreenContainer.setBackgroundDrawable(paramDrawable);
+    }
+  }
+  
+  public void setFloatingContainerBackgroundRes(int paramInt)
+  {
+    FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
+    if (localFloatingScreenContainer != null) {
+      localFloatingScreenContainer.setOutCornerBackgroundDrawable(paramInt);
+    }
+  }
+  
   public void setFloatingContainerDragListener(IDragListener paramIDragListener)
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
@@ -390,8 +428,16 @@ public class FloatingWrapperManagerImpl
   public void setFloatingContainerOrientation(boolean paramBoolean)
   {
     FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
-    if ((localFloatingScreenContainer != null) && (localFloatingScreenContainer.a())) {
+    if ((localFloatingScreenContainer != null) && (localFloatingScreenContainer.getIsFloating())) {
       this.mFloatingContainer.a(paramBoolean);
+    }
+  }
+  
+  public void setFloatingContainerPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    FloatingScreenContainer localFloatingScreenContainer = this.mFloatingContainer;
+    if (localFloatingScreenContainer != null) {
+      localFloatingScreenContainer.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -468,15 +514,48 @@ public class FloatingWrapperManagerImpl
   
   public void setRoundCorners(int paramInt1, int paramInt2)
   {
+    Object localObject;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      Object localObject = this.mFloatingContainer;
+      localObject = this.mFloatingContainer;
       if (localObject != null)
       {
         ((FloatingScreenContainer)localObject).setOutlineProvider(new FloatingOutlineProvider(paramInt2));
         this.mFloatingContainer.setClipToOutline(true);
         this.mFloatingContainer.setElevation(15.0F);
-        this.mFloatingContainer.setBackground(this.mContext.getResources().getDrawable(2130846468));
+        int i = this.mFloatingContainer.getOutCornerBackgroundDrawable();
+        this.mFloatingContainer.setBackground(this.mContext.getResources().getDrawable(i));
+        localObject = (FrameLayout)this.mFloatingContainer.findViewById(2131442582);
+        if (localObject != null)
+        {
+          ((FrameLayout)localObject).setOutlineProvider(new FloatingOutlineProvider(paramInt1));
+          ((FrameLayout)localObject).setClipToOutline(true);
+        }
+        View localView = this.mFloatingContainer.findViewById(2131442585);
+        if (localView != null)
+        {
+          localView.setOutlineProvider(new FloatingOutlineProvider(paramInt1));
+          localView.setClipToOutline(true);
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("setRoundCorners() videoCoverContainer == null: ");
+          boolean bool2 = false;
+          if (localObject == null) {
+            bool1 = true;
+          } else {
+            bool1 = false;
+          }
+          localStringBuilder.append(bool1);
+          localStringBuilder.append(" customView == null: ");
+          boolean bool1 = bool2;
+          if (localView == null) {
+            bool1 = true;
+          }
+          localStringBuilder.append(bool1);
+          QLog.d("FloatingWrapperManagerImpl", 2, localStringBuilder.toString());
+        }
       }
       localObject = this.mFloatingWidgetWrapper;
       if (localObject != null)
@@ -484,6 +563,15 @@ public class FloatingWrapperManagerImpl
         ((FrameLayout)localObject).setOutlineProvider(new FloatingOutlineProvider(paramInt1));
         this.mFloatingWidgetWrapper.setClipToOutline(true);
       }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setRoundCorners() innerRoundCorners = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" outerRoundCorners = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("FloatingWrapperManagerImpl", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -494,36 +582,15 @@ public class FloatingWrapperManagerImpl
       if (Build.VERSION.SDK_INT >= 23)
       {
         localObject = this.mFloatingContainer;
-        if ((localObject != null) && (((FloatingScreenContainer)localObject).c()))
+        if ((localObject != null) && (((FloatingScreenContainer)localObject).getIsFullScreenFloating()))
         {
-          this.mRootLayout.setBackgroundResource(2130846474);
+          this.mRootLayout.setBackgroundResource(2130847947);
           return;
         }
       }
       Object localObject = this.mContext;
       if ((localObject != null) && (((Context)localObject).getResources() != null)) {
-        this.mRootLayout.setBackgroundColor(this.mContext.getResources().getColor(2131167333));
-      }
-    }
-  }
-  
-  public void setVideoWrapperCorners(int paramInt1, int paramInt2)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      Object localObject = this.mFloatingContainer;
-      if (localObject != null)
-      {
-        ((FloatingScreenContainer)localObject).setOutlineProvider(new FloatingOutlineProvider(paramInt2));
-        this.mFloatingContainer.setClipToOutline(true);
-      }
-      localObject = this.mFloatingWidgetWrapper;
-      if (localObject != null)
-      {
-        ((FrameLayout)localObject).setOutlineProvider(new FloatingOutlineProvider(paramInt1));
-        this.mFloatingWidgetWrapper.setClipToOutline(true);
-        this.mFloatingWidgetWrapper.setElevation(15.0F);
-        this.mFloatingWidgetWrapper.setBackground(this.mContext.getResources().getDrawable(2130846468));
+        this.mRootLayout.setBackgroundColor(this.mContext.getResources().getColor(2131168376));
       }
     }
   }
@@ -593,19 +660,29 @@ public class FloatingWrapperManagerImpl
     setViewsVisibility(true, new View[] { this.mFloatingContainer, this.mFloatingCloseBtn });
   }
   
+  public void updateLocation(int paramInt1, int paramInt2)
+  {
+    this.mFloatingContainer.a(paramInt1, paramInt2);
+  }
+  
   public void updateRatio(float paramFloat)
   {
-    this.mFloatingContainer.b(paramFloat);
+    this.mFloatingContainer.a(paramFloat);
   }
   
   public void updateShapeType(int paramInt)
   {
     this.mFloatingContainer.a(paramInt);
   }
+  
+  public void updateSize(int paramInt1, int paramInt2)
+  {
+    this.mFloatingContainer.b(paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingWrapperManagerImpl
  * JD-Core Version:    0.7.0.1
  */

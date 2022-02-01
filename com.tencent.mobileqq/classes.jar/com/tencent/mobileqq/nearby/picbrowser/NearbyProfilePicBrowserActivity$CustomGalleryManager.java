@@ -14,11 +14,6 @@ class NearbyProfilePicBrowserActivity$CustomGalleryManager
 {
   NearbyProfilePicBrowserActivity$CustomGalleryManager(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
   public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     return new NearbyProfilePicBrowserGalleryScene((PicBrowserActivity)paramActivity, paramAbstractImageListModel);
@@ -28,18 +23,23 @@ class NearbyProfilePicBrowserActivity$CustomGalleryManager
   {
     paramActivity = this.a;
     paramActivity = new PicBrowserModel(paramActivity, NearbyProfilePicBrowserActivity.access$000(paramActivity));
-    paramActivity.a(NearbyProfilePicBrowserActivity.access$100(this.a));
+    paramActivity.b(NearbyProfilePicBrowserActivity.access$100(this.a));
     return paramActivity;
   }
   
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public AbstractImageListScene b(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     return null;
+  }
+  
+  public AbstractAnimationManager c(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return super.c(paramActivity, paramAbstractImageListModel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity.CustomGalleryManager
  * JD-Core Version:    0.7.0.1
  */

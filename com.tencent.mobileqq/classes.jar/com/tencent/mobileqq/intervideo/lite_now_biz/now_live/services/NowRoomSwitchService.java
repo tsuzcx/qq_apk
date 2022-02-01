@@ -34,10 +34,10 @@ import org.json.JSONObject;
 public class NowRoomSwitchService
   implements RoomSwitchInterface
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LogInterface jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface;
-  private RoomSwitchServiceAdapter jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter;
-  private String jdField_a_of_type_JavaLangString;
+  private Context a;
+  private String b;
+  private RoomSwitchServiceAdapter c;
+  private LogInterface d;
   
   private long a(SwitchRoomInfo paramSwitchRoomInfo1, SwitchRoomInfo paramSwitchRoomInfo2, SwitchRoomInfo paramSwitchRoomInfo3, int paramInt)
   {
@@ -122,21 +122,12 @@ public class NowRoomSwitchService
     }
     catch (JSONException paramJSONObject)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+      localObject1 = this.c.getLogger();
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("");
       ((StringBuilder)localObject2).append(paramJSONObject);
       ((LogInterface)localObject1).e("NowRoomSwitchService", ((StringBuilder)localObject2).toString(), new Object[0]);
     }
-  }
-  
-  private Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("referer", "https://now.qq.com/");
-    localHashMap.put("user-agent", "TencentConnect");
-    localHashMap.put("cookie", NowWebCookieManager.a());
-    return localHashMap;
   }
   
   private Map<String, String> a(List<SwitchRoomInfo> paramList, int paramInt1, int paramInt2)
@@ -152,7 +143,7 @@ public class NowRoomSwitchService
     }
     paramList = (String)RoomManager.a(paramList).get("fromid");
     int j = NowBizConfigConst.a(paramList);
-    String str2 = NowBizConfigConst.a(paramList);
+    String str2 = NowBizConfigConst.b(paramList);
     int i;
     if (paramInt1 == 1) {
       i = 0;
@@ -184,7 +175,7 @@ public class NowRoomSwitchService
     ((Map)localObject).put("room_id", paramList);
     ((Map)localObject).put("next_room_id", String.valueOf(l));
     ((Map)localObject).put("sex", "2");
-    ((Map)localObject).put("machine_code", DeviceUtils.a(this.jdField_a_of_type_AndroidContentContext));
+    ((Map)localObject).put("machine_code", DeviceUtils.a(this.a));
     ((Map)localObject).put("biz_version", "100");
     return localObject;
   }
@@ -218,10 +209,19 @@ public class NowRoomSwitchService
     return ((HostProxyInterface)BizEngineMgr.getInstance().getLiveEngine().getService(HostProxyInterface.class)).getSdkInfoInterface().isTestEnv();
   }
   
+  private Map<String, String> b()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("referer", "https://now.qq.com/");
+    localHashMap.put("user-agent", "TencentConnect");
+    localHashMap.put("cookie", NowWebCookieManager.a());
+    return localHashMap;
+  }
+  
   public void a(RoomSwitchServiceAdapter paramRoomSwitchServiceAdapter)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter = paramRoomSwitchServiceAdapter;
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface = paramRoomSwitchServiceAdapter.getLogger();
+    this.c = paramRoomSwitchServiceAdapter;
+    this.d = paramRoomSwitchServiceAdapter.getLogger();
   }
   
   public void clearEventOutput() {}
@@ -238,7 +238,7 @@ public class NowRoomSwitchService
   
   public void onCreate(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     StringBuilder localStringBuilder = new StringBuilder();
     if (a()) {
       paramContext = "https://fastest.now.qq.com/";
@@ -247,14 +247,14 @@ public class NowRoomSwitchService
     }
     localStringBuilder.append(paramContext);
     localStringBuilder.append("cgi-bin/now/web/room/room_switch");
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    this.b = localStringBuilder.toString();
   }
   
   public void onDestroy() {}
   
   public void queryRoomList(List<SwitchRoomInfo> paramList, int paramInt1, int paramInt2, RoomSwitchInterface.IRoomList paramIRoomList)
   {
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("NowLiteRoomSwitchService", "queryRoomList direction[%d],  index[%d] ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.d.i("NowLiteRoomSwitchService", "queryRoomList direction[%d],  index[%d] ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 1) {
       return;
     }
@@ -262,14 +262,14 @@ public class NowRoomSwitchService
       return;
     }
     Map localMap = a(paramList, paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getHttpInterface().post(this.jdField_a_of_type_JavaLangString, a(), localMap, new NowRoomSwitchService.1(this, paramList, paramIRoomList));
+    this.c.getHttpInterface().post(this.b, b(), localMap, new NowRoomSwitchService.1(this, paramList, paramIRoomList));
   }
   
   public void setQueryRoomListTrigger(RoomSwitchInterface.QueryRoomListTrigger paramQueryRoomListTrigger) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.services.NowRoomSwitchService
  * JD-Core Version:    0.7.0.1
  */

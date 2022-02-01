@@ -30,19 +30,19 @@ class ReadInJoyAtlasManager$6
         paramBundle.mergeFrom(paramArrayOfByte);
         if ((paramBundle.msg_ext_info.has()) && (((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.has()))
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback != null) {
-            this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback.a(true, ((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.get(), 0);
+          if (this.b != null) {
+            this.b.a(true, ((oidb_cmd0xad6.ArticleExtInfo)paramBundle.msg_ext_info.get()).uint64_comment.get(), 0);
           }
         }
-        else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback != null)
+        else if (this.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback.a(false, 0L, -1);
+          this.b.a(false, 0L, -1);
           return;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        paramBundle = this.jdField_a_of_type_ComTencentMobileqqKandianBizAtlasReadInJoyAtlasManager$AtlasCallback;
+        paramBundle = this.b;
         if (paramBundle != null) {
           paramBundle.a(false, 0L, -1);
         }
@@ -57,7 +57,7 @@ class ReadInJoyAtlasManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasManager.6
  * JD-Core Version:    0.7.0.1
  */

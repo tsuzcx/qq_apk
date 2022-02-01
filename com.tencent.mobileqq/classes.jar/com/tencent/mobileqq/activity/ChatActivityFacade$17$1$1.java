@@ -10,12 +10,12 @@ class ChatActivityFacade$17$1$1
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    this.a.a.c.getMessageFacade().a(this.a.a.b, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.17.1.1
  * JD-Core Version:    0.7.0.1
  */

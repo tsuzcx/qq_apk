@@ -52,7 +52,7 @@ class GateWayVerifyManager$4
             }
           }
         }
-        Object localObject2 = InetAddress.getByName(new URL(this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl.str_upload_url.get()).getHost());
+        Object localObject2 = InetAddress.getByName(new URL(this.a.str_upload_url.get()).getHost());
         if ((localObject2 instanceof Inet4Address))
         {
           i = GateWayVerifyManager.a(this.this$0, ((InetAddress)localObject2).getHostAddress());
@@ -62,7 +62,7 @@ class GateWayVerifyManager$4
           if (!(localObject2 instanceof Inet6Address)) {
             break label382;
           }
-          i = GateWayVerifyManager.a(this.this$0, ((InetAddress)localObject2).getHostAddress()).intValue();
+          i = GateWayVerifyManager.b(this.this$0, ((InetAddress)localObject2).getHostAddress()).intValue();
         }
         localObject1 = ReflectUtils.a(ConnectivityManager.class, "requestRouteToHost", new Class[] { Integer.TYPE, Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(5), Integer.valueOf(i) });
         if ((!(localObject1 instanceof Boolean)) || (!((Boolean)localObject1).booleanValue())) {
@@ -72,17 +72,17 @@ class GateWayVerifyManager$4
         QLog.d("GateWayVerifyManager", 1, new Object[] { "changeNetTypeToMobileV19 finish: ", Boolean.valueOf(bool) });
         if (bool)
         {
-          GateWayVerifyManager.a(this.this$0, this.jdField_a_of_type_TencentImLoginGatewayVerify$SelfPhoneUrl, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback);
+          GateWayVerifyManager.a(this.this$0, this.a, this.b);
           return;
         }
         QLog.e("GateWayVerifyManager", 1, "切换网络失败or无数据网络");
-        this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(new Exception("change network to mobile failed or no mobile network"));
+        this.b.a(new Exception("change network to mobile failed or no mobile network"));
         return;
       }
       catch (Exception localException)
       {
         QLog.e("GateWayVerifyManager", 1, new Object[] { "switch network error", localException.getMessage() });
-        this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeGatewayCallback.a(localException);
+        this.b.a(localException);
         return;
       }
       label382:
@@ -95,7 +95,7 @@ class GateWayVerifyManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.GateWayVerifyManager.4
  * JD-Core Version:    0.7.0.1
  */

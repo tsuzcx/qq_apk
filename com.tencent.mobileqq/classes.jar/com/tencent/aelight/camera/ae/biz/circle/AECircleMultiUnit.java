@@ -27,6 +27,7 @@ import com.tencent.aelight.camera.ae.view.NoScrollViewPager;
 import com.tencent.aelight.camera.ae.view.TabLayout;
 import com.tencent.aelight.camera.aebase.QIMCameraCaptureActivity;
 import com.tencent.aelight.camera.aebase.QIMCameraLifeCycleBaseUnit;
+import com.tencent.aelight.camera.aeeditor.module.params.ParamsUtil;
 import com.tencent.aelight.camera.aeeditor.record.AEEditorRecordRecoveryHelper;
 import com.tencent.aelight.camera.aeeditor.util.AEEditorJumpUtil;
 import com.tencent.aelight.camera.aeeditor.util.AELocalMediaInfoUtil;
@@ -40,9 +41,9 @@ import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qcircle.tavcut.bean.Size;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tavcut.bean.Size;
 import com.tencent.util.LiuHaiUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
@@ -50,63 +51,46 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
 
 public class AECircleMultiUnit
   extends QIMCameraLifeCycleBaseUnit
   implements SimpleEventReceiver
 {
-  private AEPituCameraUnit jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-  private AECircleMultiUnit.AEEditorUIBroadCast jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$AEEditorUIBroadCast;
-  private AECircleMultiUnit.PhotoCameraViewPagerAdapter jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$PhotoCameraViewPagerAdapter;
-  private AECirclePhotoUnit jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoUnit;
-  private AETouchNotifyRelativeLayout jdField_a_of_type_ComTencentAelightCameraAeViewAETouchNotifyRelativeLayout;
-  private NoScrollViewPager jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager;
-  private TabLayout jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout;
-  private ICameraEntrance jdField_a_of_type_ComTencentAelightCameraAioeditorSettingICameraEntrance;
-  private IQIMCameraContainer jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer;
-  private List<AECircleMultiUnit.PageData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
+  private IQIMCameraContainer a;
+  private ICameraEntrance b;
+  private NoScrollViewPager c;
+  private AECircleMultiUnit.PhotoCameraViewPagerAdapter d;
+  private List<AECircleMultiUnit.PageData> e = new ArrayList();
+  private AEPituCameraUnit f;
+  private AECirclePhotoUnit g;
+  private TabLayout h;
+  private AETouchNotifyRelativeLayout i;
+  private AECircleMultiUnit.AEEditorUIBroadCast j;
+  private boolean k = false;
   
   public AECircleMultiUnit(IQIMCameraContainer paramIQIMCameraContainer, ICameraEntrance paramICameraEntrance)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer = paramIQIMCameraContainer;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingICameraEntrance = paramICameraEntrance;
+    this.a = paramIQIMCameraContainer;
+    this.b = paramICameraEntrance;
     b();
     c();
-  }
-  
-  private Activity a()
-  {
-    IQIMCameraContainer localIQIMCameraContainer = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer;
-    if (localIQIMCameraContainer == null) {
-      return null;
-    }
-    return localIQIMCameraContainer.a();
-  }
-  
-  private QIMCameraLifeCycleBaseUnit a()
-  {
-    int i = this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.getCurrentItem();
-    return AECircleMultiUnit.PageData.a((AECircleMultiUnit.PageData)this.jdField_a_of_type_JavaUtilList.get(i));
   }
   
   private void a()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("addPituCameraUnit... hasReloadPituCamera:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append(this.k);
     ((StringBuilder)localObject).append(" unitList.size():");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+    ((StringBuilder)localObject).append(this.e.size());
     QLog.d("[AEEditor2]AECircleMultiUnit", 1, ((StringBuilder)localObject).toString());
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 1))
+    if ((!this.k) && (this.e.size() == 1))
     {
-      this.jdField_a_of_type_Boolean = true;
-      localObject = this.jdField_a_of_type_JavaUtilList;
-      AEPituCameraUnit localAEPituCameraUnit = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-      ((List)localObject).add(new AECircleMultiUnit.PageData(localAEPituCameraUnit, localAEPituCameraUnit.a()));
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.getAdapter().notifyDataSetChanged();
+      this.k = true;
+      localObject = this.e;
+      AEPituCameraUnit localAEPituCameraUnit = this.f;
+      ((List)localObject).add(new AECircleMultiUnit.PageData(localAEPituCameraUnit, localAEPituCameraUnit.j()));
+      this.c.getAdapter().notifyDataSetChanged();
     }
   }
   
@@ -135,172 +119,195 @@ public class AECircleMultiUnit
     if (paramActivity == null) {
       return;
     }
+    if ((!paramActivity.hasWindowFocus()) && (paramBoolean)) {
+      return;
+    }
     Intent localIntent = new Intent();
     localIntent.setAction("ae_editor_bottom_tab_show_hide");
     localIntent.putExtra("is_show", paramBoolean);
     paramActivity.sendBroadcast(localIntent);
   }
   
-  private boolean a()
-  {
-    Activity localActivity = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a();
-    if (Build.VERSION.SDK_INT < 23) {
-      return true;
-    }
-    int i = localActivity.checkSelfPermission("android.permission.CAMERA");
-    int j = localActivity.checkSelfPermission("android.permission.RECORD_AUDIO");
-    return (i == 0) && (j == 0);
-  }
-  
   private boolean a(QIMCameraLifeCycleBaseUnit paramQIMCameraLifeCycleBaseUnit)
   {
-    if ((a() != null) && (AECameraEntryManager.o(a().getIntent()))) {
+    if ((d() != null) && (AECameraEntryManager.t(d().getIntent()))) {
       return false;
     }
-    AECirclePhotoUnit localAECirclePhotoUnit = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoUnit;
-    if (paramQIMCameraLifeCycleBaseUnit == localAECirclePhotoUnit) {
-      return localAECirclePhotoUnit.a();
+    if ((d() != null) && (AECameraEntryManager.u(d().getIntent()))) {
+      return false;
     }
-    if (paramQIMCameraLifeCycleBaseUnit == this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit) {}
+    AECirclePhotoUnit localAECirclePhotoUnit = this.g;
+    if (paramQIMCameraLifeCycleBaseUnit == localAECirclePhotoUnit) {
+      return localAECirclePhotoUnit.b();
+    }
+    if (paramQIMCameraLifeCycleBaseUnit == this.f) {}
     return true;
   }
   
   private void b()
   {
-    if (a() == null) {
+    if (d() == null) {
       return;
     }
-    int i = a().getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
-    String str = a().getIntent().getStringExtra("VIDEO_STORY_ACTIVITY_ID");
-    if (AECameraEntry.a(i).a()) {
-      AEBaseReportParam.a().a(i, str);
+    int m = d().getIntent().getIntExtra("VIDEO_STORY_FROM_TYPE", AECameraEntry.a.a());
+    String str = d().getIntent().getStringExtra("VIDEO_STORY_ACTIVITY_ID");
+    if (AECameraEntry.a(m).c()) {
+      AEBaseReportParam.a().a(m, str);
     }
-    str = a().getIntent().getStringExtra("intent_key_uid_for_report");
+    str = d().getIntent().getStringExtra("intent_key_uid_for_report");
     AEBaseReportParam.a().c(str);
     AEBaseReportParam.a().a(true);
+    AEBaseReportParam.a().d();
     AEBaseReportParam.a().b();
-    AEBaseReportParam.a().a();
-    AEBaseReportParam.a().d(CameraOperationHelper.a(a()));
+    AEBaseReportParam.a().d(CameraOperationHelper.a());
+    AEBaseReportParam.a().e(CameraOperationHelper.b());
+    AEBaseReportParam.a().a(ParamsUtil.b());
   }
   
   private void c()
   {
-    String str = a().getIntent().getStringExtra("qcircle_client_traceid");
+    String str = d().getIntent().getStringExtra("qcircle_client_traceid");
     if (!TextUtils.isEmpty(str)) {
       PeakIpcController.a(str, "action_qcircle_report");
     }
   }
   
-  private void d()
+  private Activity d()
+  {
+    IQIMCameraContainer localIQIMCameraContainer = this.a;
+    if (localIQIMCameraContainer == null) {
+      return null;
+    }
+    return localIQIMCameraContainer.getActivity();
+  }
+  
+  private void e()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject = a().getIntent().getStringExtra("tab");
+    Object localObject = d().getIntent().getStringExtra("tab");
     boolean bool2 = TextUtils.isEmpty((CharSequence)localObject);
     boolean bool1 = true;
-    int i;
+    int m;
     if ((!bool2) && (((String)localObject).equals("camera"))) {
-      i = 1;
+      m = 1;
     } else {
-      i = 0;
+      m = 0;
     }
-    int j = i;
-    if (i == 0)
+    int n = m;
+    if (m == 0)
     {
-      j = i;
-      if (AECameraPrefsUtil.a().a("circle_entry_type_camera", false, 4)) {
-        j = 1;
+      n = m;
+      if (AECameraPrefsUtil.a().b("circle_entry_type_camera", false, 4)) {
+        n = 1;
       }
     }
     localObject = AECameraPrefsUtil.a();
-    if (j == 1) {
+    if (n == 1) {
       bool1 = false;
     }
     ((AECameraPrefsUtil)localObject).a("sp_key_ae_photo_switch_ratio_tips_should_auto_disappear", bool1, 0);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[initBottomTab] choose tab index=");
-    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(n);
     AEQLog.b("[AEEditor2]AECircleMultiUnit", ((StringBuilder)localObject).toString());
-    localArrayList.add(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getResources().getString(2131694837));
-    localArrayList.add(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getResources().getString(2064515075));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout.a(this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout.setTabSelectedCallback(new AECircleMultiUnit.1(this));
-    if (!a())
+    localArrayList.add(this.a.getActivity().getResources().getString(2131892540));
+    localArrayList.add(this.a.getActivity().getResources().getString(2064187400));
+    this.h.a(this.c);
+    this.h.setTabSelectedCallback(new AECircleMultiUnit.1(this));
+    if (!n())
     {
-      if (j != 0) {
-        k();
+      if (n != 0) {
+        o();
       }
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout.setTabs(localArrayList, 0);
+      this.h.setTabs(localArrayList, 0);
     }
     else
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout.setTabs(localArrayList, j);
+      this.h.setTabs(localArrayList, n);
     }
-    a(a(a()), a());
+    a(a(i()), d());
   }
   
-  private void h()
+  private void f()
   {
-    if (a())
+    if (n())
     {
-      j();
-      AEBaseDataReporter.a().ai();
+      h();
+      AEBaseDataReporter.a().an();
       SimpleEventBus.getInstance().dispatchEvent(new AECircleClearAllSelectEvent());
       return;
     }
-    k();
+    o();
   }
   
-  private void i()
+  private void g()
   {
-    AETouchNotifyRelativeLayout localAETouchNotifyRelativeLayout = this.jdField_a_of_type_ComTencentAelightCameraAeViewAETouchNotifyRelativeLayout;
+    AETouchNotifyRelativeLayout localAETouchNotifyRelativeLayout = this.i;
     if (localAETouchNotifyRelativeLayout == null) {
       return;
     }
     localAETouchNotifyRelativeLayout.setIaeTouchNotify(new AECircleMultiUnit.2(this));
   }
   
-  private void j()
+  private void h()
   {
-    AELaunchRecorder.a().b();
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.setCurrentItem(1, true);
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.I();
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.e();
+    AELaunchRecorder.d().b();
+    this.c.setCurrentItem(1, true);
+    this.f.ai();
+    this.f.k();
   }
   
-  private void k()
+  private QIMCameraLifeCycleBaseUnit i()
+  {
+    int m = this.c.getCurrentItem();
+    return AECircleMultiUnit.PageData.a((AECircleMultiUnit.PageData)this.e.get(m));
+  }
+  
+  private boolean n()
+  {
+    Activity localActivity = this.a.getActivity();
+    if (Build.VERSION.SDK_INT < 23) {
+      return true;
+    }
+    int m = localActivity.checkSelfPermission("android.permission.CAMERA");
+    int n = localActivity.checkSelfPermission("android.permission.RECORD_AUDIO");
+    return (m == 0) && (n == 0);
+  }
+  
+  private void o()
   {
     if (Build.VERSION.SDK_INT < 23) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a() instanceof QIMCameraCaptureActivity))
+    if ((this.a.getActivity() instanceof QIMCameraCaptureActivity))
     {
-      QIMCameraCaptureActivity localQIMCameraCaptureActivity = (QIMCameraCaptureActivity)this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a();
-      int i;
+      QIMCameraCaptureActivity localQIMCameraCaptureActivity = (QIMCameraCaptureActivity)this.a.getActivity();
+      int m;
       if (localQIMCameraCaptureActivity.checkSelfPermission("android.permission.CAMERA") != 0) {
-        i = 1;
+        m = 1;
       } else {
-        i = 0;
+        m = 0;
       }
-      int j;
+      int n;
       if (localQIMCameraCaptureActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {
-        j = 1;
+        n = 1;
       } else {
-        j = 0;
+        n = 0;
       }
       LinkedList localLinkedList = new LinkedList();
-      if (i != 0) {
+      if (m != 0) {
         localLinkedList.add("android.permission.CAMERA");
       }
-      if (j != 0) {
+      if (n != 0) {
         localLinkedList.add("android.permission.RECORD_AUDIO");
       }
       if (localLinkedList.size() > 0) {
-        localQIMCameraCaptureActivity.requestPermissions(this, 1, (String[])localLinkedList.toArray(new String[0]));
+        localQIMCameraCaptureActivity.requestPermissions(new AECircleMultiUnit.3(this, localQIMCameraCaptureActivity), 1, (String[])localLinkedList.toArray(new String[0]));
       }
     }
   }
   
-  private void l()
+  private void p()
   {
     Intent localIntent = new Intent();
     AEQLog.b("[AEEditor2]AECircleMultiUnit", "[sendMobileQQPeakCreate]");
@@ -309,45 +316,10 @@ public class AECircleMultiUnit
     BaseApplicationImpl.getContext().sendBroadcast(localIntent);
   }
   
-  public void I()
-  {
-    super.I();
-    a().I();
-  }
-  
-  public void J()
-  {
-    super.J();
-    a().J();
-  }
-  
-  public View a()
-  {
-    View localView = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getLayoutInflater().inflate(2064318509, null);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager = ((NoScrollViewPager)localView.findViewById(2064122836));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout = ((TabLayout)localView.findViewById(2064122668));
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAETouchNotifyRelativeLayout = ((AETouchNotifyRelativeLayout)localView.findViewById(2064122225));
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$AEEditorUIBroadCast.a(this.jdField_a_of_type_ComTencentAelightCameraAeViewTabLayout);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$PhotoCameraViewPagerAdapter = new AECircleMultiUnit.PhotoCameraViewPagerAdapter(null);
-    long l = System.currentTimeMillis();
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    AECirclePhotoUnit localAECirclePhotoUnit = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoUnit;
-    ((List)localObject).add(new AECircleMultiUnit.PageData(localAECirclePhotoUnit, localAECirclePhotoUnit.a()));
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("onCreateView... aeCirclePhotoUnit cost:");
-    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
-    QLog.d("[AEEditor2]AECircleMultiUnit", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$PhotoCameraViewPagerAdapter.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$PhotoCameraViewPagerAdapter);
-    d();
-    i();
-    return localView;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    a().a(paramInt1, paramInt2);
+    i().a(paramInt1, paramInt2);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -355,74 +327,82 @@ public class AECircleMultiUnit
     AEQLog.b("[AEEditor2]AECircleMultiUnit", "on activity result.");
     super.a(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 203) {
-      a().a(paramInt1, paramInt2, paramIntent);
+      i().a(paramInt1, paramInt2, paramIntent);
     }
-    if (paramInt2 == -1) {
-      if ((a() != null) && (paramIntent != null))
-      {
-        String str1;
-        String str2;
-        ArrayList localArrayList;
-        Object localObject;
-        if (paramIntent.getBooleanExtra("h5_key_flag", false))
-        {
-          str1 = paramIntent.getStringExtra("h5_key_video_path");
-          str2 = paramIntent.getStringExtra("h5_key_thumb_path");
-          localArrayList = new ArrayList();
-          localArrayList.add(str1);
-          localObject = new HashMap();
-          ((HashMap)localObject).put(str1, AELocalMediaInfoUtil.a(AELocalMediaInfoUtil.a(str1, str2), paramIntent.getStringExtra("widgetinfo"), "", null, 1, null));
-          AEEditorJumpUtil.a(a(), localArrayList, (HashMap)localObject, AECameraEntryManager.a(a().getIntent()));
-        }
-        else if (paramIntent.getBooleanExtra("ae_editor_video_flag", false))
-        {
-          str1 = paramIntent.getStringExtra("ae_editor_video_path");
-          str2 = paramIntent.getStringExtra("ae_editor_video_thumb_path");
-          paramInt2 = paramIntent.getIntExtra("ae_editor_video_export_size_height", 0);
-          int i = paramIntent.getIntExtra("ae_editor_video_export_size_width", 0);
-          localArrayList = paramIntent.getStringArrayListExtra("ae_editor_video_text_cache");
-          int j = paramIntent.getIntExtra("editorFrom", AECameraEntry.a.a());
-          localObject = (LocalMediaInfo)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
-          AEEditorJumpUtil.a(a(), str1, str2, new Size(i, paramInt2), localArrayList, (LocalMediaInfo)localObject, j, (HashMap)paramIntent.getSerializableExtra("key_image_sucai_info"));
-        }
-        else
-        {
-          AEEditorJumpUtil.a(a(), paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"), (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap"), paramIntent.getIntExtra("editorFrom", AECameraEntry.y.a()), (HashMap)paramIntent.getSerializableExtra("key_image_sucai_info"));
-        }
-        if (paramInt1 != 203) {
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().finish();
-        }
+    if ((paramInt2 == -1) && (d() != null))
+    {
+      if (paramIntent == null) {
+        return;
       }
-      else {}
+      Object localObject1;
+      String str;
+      ArrayList localArrayList;
+      Object localObject2;
+      if (paramIntent.getBooleanExtra("h5_key_flag", false))
+      {
+        localObject1 = paramIntent.getStringExtra("h5_key_video_path");
+        str = paramIntent.getStringExtra("h5_key_thumb_path");
+        localArrayList = new ArrayList();
+        localArrayList.add(localObject1);
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put(localObject1, AELocalMediaInfoUtil.a(AELocalMediaInfoUtil.a((String)localObject1, str), paramIntent.getStringExtra("widgetinfo"), "", null, 1, null));
+        AEEditorJumpUtil.a(d(), localArrayList, (HashMap)localObject2, AECameraEntryManager.a(d().getIntent()));
+      }
+      else if (paramIntent.getBooleanExtra("ae_editor_video_flag", false))
+      {
+        localObject1 = paramIntent.getStringExtra("ae_editor_video_path");
+        str = paramIntent.getStringExtra("ae_editor_video_thumb_path");
+        paramInt2 = paramIntent.getIntExtra("ae_editor_video_export_size_height", 0);
+        int m = paramIntent.getIntExtra("ae_editor_video_export_size_width", 0);
+        localArrayList = paramIntent.getStringArrayListExtra("ae_editor_video_text_cache");
+        int n = paramIntent.getIntExtra("editorFrom", AECameraEntry.a.a());
+        localObject2 = (LocalMediaInfo)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
+        AEEditorJumpUtil.a(d(), (String)localObject1, str, new Size(m, paramInt2), localArrayList, (LocalMediaInfo)localObject2, n, (HashMap)paramIntent.getSerializableExtra("key_image_sucai_info"));
+      }
+      else
+      {
+        if (paramIntent.getBooleanExtra("key_qcircle_is_back_from_image_edit", false))
+        {
+          localObject1 = this.g;
+          if (localObject1 != null) {
+            ((AECirclePhotoUnit)localObject1).a(paramInt1, paramInt2, paramIntent);
+          }
+          return;
+        }
+        AEEditorJumpUtil.a(d(), paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"), (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap"), paramIntent.getIntExtra("editorFrom", AECameraEntry.y.a()), (HashMap)paramIntent.getSerializableExtra("key_image_sucai_info"));
+      }
+      if (paramInt1 != 203) {
+        this.a.getActivity().finish();
+      }
     }
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    new AEEditorRecordRecoveryHelper(a()).a();
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit = new AEPituCameraUnit(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer, this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingICameraEntrance);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoUnit = new AECirclePhotoUnit(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer, this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingICameraEntrance);
+    new AEEditorRecordRecoveryHelper(d()).a();
+    this.f = new AEPituCameraUnit(this.a, this.b);
+    this.g = new AECirclePhotoUnit(this.a, this.b);
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit.a(paramBundle);
+    this.f.a(paramBundle);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onCreate... aePituCameraUnit cost:");
     ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
     QLog.d("[AEEditor2]AECircleMultiUnit", 1, ((StringBuilder)localObject).toString());
     l = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoUnit.a(paramBundle);
+    this.g.a(paramBundle);
     paramBundle = new StringBuilder();
     paramBundle.append("onCreate... aeCirclePhotoUnit cost:");
     paramBundle.append(System.currentTimeMillis() - l);
     QLog.d("[AEEditor2]AECircleMultiUnit", 1, paramBundle.toString());
-    LiuHaiUtils.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a());
-    a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a(), this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().getResources().getColor(2131167333), true);
+    LiuHaiUtils.g(this.a.getActivity());
+    a(this.a.getActivity(), this.a.getActivity().getResources().getColor(2131168376), true);
     paramBundle = new IntentFilter();
     paramBundle.addAction("ae_editor_bottom_tab_show_hide");
     paramBundle.addAction("ae_editor_bottom_tab_change_style");
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a();
+    localObject = this.a.getActivity();
     AECircleMultiUnit.AEEditorUIBroadCast localAEEditorUIBroadCast = new AECircleMultiUnit.AEEditorUIBroadCast(null);
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$AEEditorUIBroadCast = localAEEditorUIBroadCast;
+    this.j = localAEEditorUIBroadCast;
     ((Activity)localObject).registerReceiver(localAEEditorUIBroadCast, paramBundle);
     SimpleEventBus.getInstance().registerReceiver(this);
   }
@@ -430,76 +410,47 @@ public class AECircleMultiUnit
   public boolean a(int paramInt, KeyEvent paramKeyEvent, boolean paramBoolean)
   {
     if (paramInt == 4) {
-      i();
+      ak();
     }
     return super.a(paramInt, paramKeyEvent, paramBoolean);
+  }
+  
+  public void ai()
+  {
+    super.ai();
+    i().ai();
+  }
+  
+  public void aj()
+  {
+    super.aj();
+    i().aj();
+  }
+  
+  public boolean ak()
+  {
+    i().ak();
+    return super.ak();
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    a().b(paramBundle);
+    i().b(paramBundle);
   }
   
-  public void d(boolean paramBoolean)
+  public void e(boolean paramBoolean)
   {
-    super.d(paramBoolean);
+    super.e(paramBoolean);
     a();
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
+    Object localObject = this.f;
     if (localObject != null) {
-      ((AEPituCameraUnit)localObject).d(paramBoolean);
+      ((AEPituCameraUnit)localObject).e(paramBoolean);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECirclePhotoUnit;
+    localObject = this.g;
     if (localObject != null) {
-      ((AECirclePhotoUnit)localObject).d(paramBoolean);
+      ((AECirclePhotoUnit)localObject).e(paramBoolean);
     }
-  }
-  
-  @QQPermissionDenied(1)
-  public void denied() {}
-  
-  public void e()
-  {
-    super.e();
-    a().e();
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeViewNoScrollViewPager.getCurrentItem() == 0) {
-      AEBaseDataReporter.a().ah();
-    } else {
-      AEBaseDataReporter.a().ai();
-    }
-    l();
-    AEQLog.b("[AEEditor2]AECircleMultiUnit", "onResume.");
-    AEPituCameraUnit localAEPituCameraUnit = this.jdField_a_of_type_ComTencentAelightCameraAeAEPituCameraUnit;
-    if (localAEPituCameraUnit != null) {
-      localAEPituCameraUnit.H();
-    }
-  }
-  
-  public void f()
-  {
-    super.f();
-    a().f();
-  }
-  
-  public void g()
-  {
-    super.g();
-    AEQLog.b("[AEEditor2]AECircleMultiUnit", "on destroy");
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorSettingIQIMCameraContainer.a().unregisterReceiver(this.jdField_a_of_type_ComTencentAelightCameraAeBizCircleAECircleMultiUnit$AEEditorUIBroadCast);
-    this.jdField_a_of_type_ComTencentAelightCameraAeViewAETouchNotifyRelativeLayout.setIaeTouchNotify(null);
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        AECircleMultiUnit.PageData localPageData = (AECircleMultiUnit.PageData)((Iterator)localObject).next();
-        if ((localPageData != null) && (AECircleMultiUnit.PageData.a(localPageData) != null)) {
-          AECircleMultiUnit.PageData.a(localPageData).g();
-        }
-      }
-    }
-    SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
   
   public ArrayList<Class> getEventClass()
@@ -510,33 +461,88 @@ public class AECircleMultiUnit
     return localArrayList;
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public View j()
   {
-    j();
+    View localView = this.a.getActivity().getLayoutInflater().inflate(2064056377, null);
+    this.c = ((NoScrollViewPager)localView.findViewById(2063991610));
+    this.h = ((TabLayout)localView.findViewById(2063991465));
+    this.i = ((AETouchNotifyRelativeLayout)localView.findViewById(2063991107));
+    this.j.a(this.h);
+    this.d = new AECircleMultiUnit.PhotoCameraViewPagerAdapter(null);
+    long l = System.currentTimeMillis();
+    Object localObject = this.e;
+    AECirclePhotoUnit localAECirclePhotoUnit = this.g;
+    ((List)localObject).add(new AECircleMultiUnit.PageData(localAECirclePhotoUnit, localAECirclePhotoUnit.j()));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCreateView... aeCirclePhotoUnit cost:");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    QLog.d("[AEEditor2]AECircleMultiUnit", 1, ((StringBuilder)localObject).toString());
+    this.d.a(this.e);
+    this.c.setAdapter(this.d);
+    e();
+    g();
+    return localView;
   }
   
-  public boolean i()
+  public void k()
   {
-    a().i();
-    return super.i();
+    super.k();
+    i().k();
+    if (this.c.getCurrentItem() == 0) {
+      AEBaseDataReporter.a().am();
+    } else {
+      AEBaseDataReporter.a().an();
+    }
+    p();
+    AEQLog.b("[AEEditor2]AECircleMultiUnit", "onResume.");
+    AEPituCameraUnit localAEPituCameraUnit = this.f;
+    if (localAEPituCameraUnit != null) {
+      localAEPituCameraUnit.ah();
+    }
+  }
+  
+  public void l()
+  {
+    super.l();
+    i().l();
+  }
+  
+  public void m()
+  {
+    super.m();
+    AEQLog.b("[AEEditor2]AECircleMultiUnit", "on destroy");
+    this.a.getActivity().unregisterReceiver(this.j);
+    this.i.setIaeTouchNotify(null);
+    Object localObject = this.e;
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = this.e.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AECircleMultiUnit.PageData localPageData = (AECircleMultiUnit.PageData)((Iterator)localObject).next();
+        if ((localPageData != null) && (AECircleMultiUnit.PageData.a(localPageData) != null)) {
+          AECircleMultiUnit.PageData.a(localPageData).m();
+        }
+      }
+    }
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)
   {
     if ((paramSimpleBaseEvent instanceof AECircleJumpCameraPageEvent))
     {
-      h();
+      f();
       return;
     }
     if ((paramSimpleBaseEvent instanceof AECircleChangeBottomTabVisibleEvent)) {
-      a(a(a()), a());
+      a(a(i()), d());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.AECircleMultiUnit
  * JD-Core Version:    0.7.0.1
  */

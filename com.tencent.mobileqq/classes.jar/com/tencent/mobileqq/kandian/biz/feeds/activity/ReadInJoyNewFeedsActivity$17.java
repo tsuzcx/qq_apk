@@ -19,16 +19,16 @@ class ReadInJoyNewFeedsActivity$17
   
   public void b_(int paramInt1, int paramInt2) {}
   
-  public void c(int paramInt)
+  public void m_(int paramInt)
   {
-    this.a.c(paramInt);
+    this.a.d(paramInt);
   }
   
-  public void d(int paramInt) {}
+  public void n_(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyNewFeedsActivity.17
  * JD-Core Version:    0.7.0.1
  */

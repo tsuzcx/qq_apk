@@ -13,15 +13,15 @@ import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class GetUserGroupMemberListHandler
 {
-  final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
+  final QQAppInterface a;
+  String b;
   
   private static void b(String paramString, List<oidb_0x899.memberlist> paramList)
   {
     GetUserGroupMemberListHandler.GetUserGroupMemberListEvent localGetUserGroupMemberListEvent = new GetUserGroupMemberListHandler.GetUserGroupMemberListEvent();
-    localGetUserGroupMemberListEvent.jdField_a_of_type_JavaLangString = String.valueOf(paramString);
+    localGetUserGroupMemberListEvent.a = String.valueOf(paramString);
     paramString = new ArrayList();
-    localGetUserGroupMemberListEvent.jdField_a_of_type_JavaUtilList = paramString;
+    localGetUserGroupMemberListEvent.b = paramString;
     UserManager localUserManager = (UserManager)SuperManager.a(2);
     new ArrayList();
     paramList = paramList.iterator();

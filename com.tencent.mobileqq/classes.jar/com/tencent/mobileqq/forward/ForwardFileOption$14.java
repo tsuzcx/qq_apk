@@ -11,15 +11,15 @@ class ForwardFileOption$14
   
   public void onClick(View paramView)
   {
-    ForwardFileOption localForwardFileOption = this.jdField_a_of_type_ComTencentMobileqqForwardForwardFileOption;
-    localForwardFileOption.m = true;
-    ForwardFileOption.a(localForwardFileOption, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    ForwardFileOption localForwardFileOption = this.d;
+    localForwardFileOption.am = true;
+    ForwardFileOption.a(localForwardFileOption, this.a, this.b, this.c);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardFileOption.14
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.av.business.manager;
 
 import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.avatar2d.EffectAvatar2dManager;
 import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.magicface.EffectFaceManager;
 import com.tencent.av.business.manager.makeup.MakeupMng;
@@ -18,13 +19,13 @@ import com.tencent.av.wtogether.WTogetherMng;
 
 public class BusinessManagerFactory
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private BusinessManager[] jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager = new BusinessManager[18];
+  private Object a = new Object();
+  private VideoAppInterface b;
+  private BusinessManager[] c = new BusinessManager[19];
   
   public BusinessManagerFactory(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.b = paramVideoAppInterface;
     a(4);
     a(5);
     a(12);
@@ -33,21 +34,21 @@ public class BusinessManagerFactory
   
   public BusinessManager a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager[paramInt];
+    Object localObject1 = this.c[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a)
     {
-      BusinessManager localBusinessManager = this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager[paramInt];
+      BusinessManager localBusinessManager = this.c[paramInt];
       localObject1 = localBusinessManager;
       if (localBusinessManager == null)
       {
-        localBusinessManager = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localBusinessManager = a(this.b, paramInt);
         localObject1 = localBusinessManager;
         if (localBusinessManager != null)
         {
-          this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager[paramInt] = localBusinessManager;
+          this.c[paramInt] = localBusinessManager;
           localObject1 = localBusinessManager;
         }
       }
@@ -70,11 +71,14 @@ public class BusinessManagerFactory
       AVLog.printColorLog("BusinessManagerFactory", paramVideoAppInterface.toString());
       paramVideoAppInterface = null;
       break;
-    case 17: 
+    case 18: 
       paramVideoAppInterface = new ScreenShareManager(paramVideoAppInterface);
       break;
-    case 16: 
+    case 17: 
       paramVideoAppInterface = new WTogetherMng(paramVideoAppInterface);
+      break;
+    case 16: 
+      paramVideoAppInterface = new EffectAvatar2dManager(paramVideoAppInterface);
       break;
     case 15: 
       paramVideoAppInterface = new EffectMaterialManager(paramVideoAppInterface);
@@ -126,32 +130,32 @@ public class BusinessManagerFactory
     return paramVideoAppInterface;
   }
   
-  public void a(int paramInt) {}
-  
   public void a(int paramInt, String paramString)
   {
-    if ((paramInt >= 0) && (paramInt < 18) && (!BusinessManager.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
-      BusinessManager.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
+    if ((paramInt >= 0) && (paramInt < 19) && (!BusinessManager.a("BusinessManagerFactory", this.b, paramInt)) && (a(paramInt).a(paramString))) {
+      BusinessManager.a("BusinessManagerFactory", this.b.getApplication(), paramInt, true);
     }
   }
   
-  public boolean a(int paramInt)
+  public boolean b(int paramInt)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramInt >= 0)
     {
       bool1 = bool2;
-      if (paramInt < 18)
+      if (paramInt < 19)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager[paramInt] != null) {
+        if (this.c[paramInt] != null) {
           bool1 = true;
         }
       }
     }
     return bool1;
   }
+  
+  public void c(int paramInt) {}
 }
 
 

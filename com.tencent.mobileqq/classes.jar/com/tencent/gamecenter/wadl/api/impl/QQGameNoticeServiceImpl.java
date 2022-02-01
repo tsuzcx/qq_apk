@@ -213,7 +213,7 @@ public class QQGameNoticeServiceImpl
   
   private boolean handleTaskChange(WadlResult paramWadlResult)
   {
-    Object localObject1 = getByAppId(paramWadlResult.a.a);
+    Object localObject1 = getByAppId(paramWadlResult.a.e);
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("processTaskInfo find info=");
     ((StringBuilder)localObject2).append(localObject1);
@@ -222,7 +222,7 @@ public class QQGameNoticeServiceImpl
     localObject2 = ((StringBuilder)localObject2).toString();
     boolean bool2 = true;
     QLog.d("Wadl_QQGameNoticeServiceImpl", 1, (String)localObject2);
-    int i = paramWadlResult.b;
+    int i = paramWadlResult.d;
     if ((i != 6) && (i != 9)) {
       i = 0;
     } else {
@@ -238,7 +238,7 @@ public class QQGameNoticeServiceImpl
       return false;
     }
     boolean bool1;
-    if ((localObject1 != null) && ((((GameNoticeInfo)localObject1).bannerType != i) || (((GameNoticeInfo)localObject1).createTime != paramWadlResult.c)))
+    if ((localObject1 != null) && ((((GameNoticeInfo)localObject1).bannerType != i) || (((GameNoticeInfo)localObject1).createTime != paramWadlResult.h)))
     {
       remove(localObject1);
       QLog.d("Wadl_QQGameNoticeServiceImpl", 1, new Object[] { "processTaskInfo: remove GameNoticeInfo: ", localObject1 });
@@ -378,7 +378,7 @@ public class QQGameNoticeServiceImpl
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("REQUEST_ARK_TIME_");
     localStringBuilder.append(paramGameNoticeInfo.appId);
-    long l = GameCenterSpUtils.a(localStringBuilder.toString());
+    long l = GameCenterSpUtils.c(localStringBuilder.toString());
     int i = 0;
     boolean bool;
     if ((paramLong2 - l <= 86400000L) && (l <= paramLong2)) {
@@ -430,7 +430,7 @@ public class QQGameNoticeServiceImpl
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("KEY_RED_POINT_TIME_");
     localStringBuilder.append(paramGameNoticeInfo.appId);
-    long l = GameCenterSpUtils.a(localStringBuilder.toString());
+    long l = GameCenterSpUtils.c(localStringBuilder.toString());
     boolean bool;
     if ((paramLong2 - l <= 604800000L) && (l <= paramLong2)) {
       bool = false;
@@ -483,9 +483,9 @@ public class QQGameNoticeServiceImpl
       if (localObject2 != null) {
         localObject1 = ((WadlCommConfig)localObject2).a(paramGameNoticeInfo.downloadType);
       } else if (paramGameNoticeInfo.downloadType == 1) {
-        localObject1 = CommonDataAdapter.a().a().getString(2131694497);
+        localObject1 = CommonDataAdapter.a().b().getString(2131892180);
       } else if (paramGameNoticeInfo.downloadType == 3) {
-        localObject1 = CommonDataAdapter.a().a().getString(2131694498);
+        localObject1 = CommonDataAdapter.a().b().getString(2131892181);
       }
       localObject2 = str;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
@@ -503,7 +503,7 @@ public class QQGameNoticeServiceImpl
     localObject1 = new Message();
     ((Message)localObject1).what = 1134071;
     ((Message)localObject1).obj = localBundle;
-    BannerManager.a().a(BannerTypeCollections.H, 2, (Message)localObject1);
+    BannerManager.a().a(BannerTypeCollections.I, 2, (Message)localObject1);
     if (paramGameNoticeInfo.bannerType == 1)
     {
       localObject1 = new WadlReportBuilder();
@@ -623,8 +623,8 @@ public class QQGameNoticeServiceImpl
               {
                 ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).reportTianJi("59", paramMessage.expeKey, "", "205432", "1000", "1000", "0", "0");
                 localObject = new WadlParams((String)localObject, paramMessage.packageName);
-                ((WadlParams)localObject).p = "biz_src_zf_games";
-                ((WadlParams)localObject).c(1);
+                ((WadlParams)localObject).A = "biz_src_zf_games";
+                ((WadlParams)localObject).d(1);
                 WadlProxyServiceUtil.a().c((WadlParams)localObject);
               }
               else
@@ -689,7 +689,7 @@ public class QQGameNoticeServiceImpl
     {
       localObject = new Message();
       ((Message)localObject).what = 1134072;
-      BannerManager.a().a(BannerTypeCollections.H, 0, (Message)localObject);
+      BannerManager.a().a(BannerTypeCollections.I, 0, (Message)localObject);
       this.mCurrentBanner = null;
     }
   }
@@ -740,7 +740,7 @@ public class QQGameNoticeServiceImpl
     QLog.d("Wadl_QQGameNoticeServiceImpl", 1, localStringBuilder.toString());
     this.mEntityManager = paramAppRuntime.getEntityManagerFactory().createEntityManager();
     this.mHandler = new MqqHandler(Looper.getMainLooper(), this);
-    GameCenterReceiver.a();
+    GameCenterReceiver.b();
     GameCenterReceiver.a(this);
     ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).addListener(this);
   }
@@ -891,7 +891,7 @@ public class QQGameNoticeServiceImpl
       paramView.setVisibility(8);
       return;
     }
-    paramView.setTipsIcon(MobileQQ.sMobileQQ.getResources().getDrawable(2130838310));
+    paramView.setTipsIcon(MobileQQ.sMobileQQ.getResources().getDrawable(2130838358));
     paramView.setTipsText("");
     paramView.setVisibility(0);
     if ((paramMessage.obj instanceof Bundle))
@@ -933,7 +933,7 @@ public class QQGameNoticeServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameNoticeServiceImpl
  * JD-Core Version:    0.7.0.1
  */

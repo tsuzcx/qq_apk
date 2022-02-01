@@ -37,40 +37,40 @@ class TroopFeedsCenterLogic$1
   public void onAnimationEnd(Animation paramAnimation)
   {
     Object localObject1 = this.a;
-    ((TroopFeedsCenterLogic)localObject1).i = false;
-    ((TroopFeedsCenterLogic)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class).obtainMessage(68).sendToTarget();
-    Object localObject2 = this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation;
+    ((TroopFeedsCenterLogic)localObject1).w = false;
+    ((TroopFeedsCenterLogic)localObject1).a.getHandler(ChatActivity.class).obtainMessage(68).sendToTarget();
+    Object localObject2 = this.a.k;
     localObject1 = Integer.valueOf(123322);
     if (localObject2 == paramAnimation)
     {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
+      this.a.h.setVisibility(4);
+      if (this.a.h != null)
       {
-        paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips;
+        paramAnimation = this.a.g;
         TroopFeedsCenterLogic.a(this.a);
         this.a.notifyObservers(localObject1);
-        this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+        this.a.h.clearAnimation();
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.d = false;
+      if (this.a.g != null) {
+        this.a.g.k = false;
       }
-      if (this.a.jdField_b_of_type_Boolean)
+      if (this.a.o)
       {
         this.a.d(true);
-        this.a.jdField_b_of_type_Boolean = false;
+        this.a.o = false;
       }
-      if (this.a.e)
+      if (this.a.r)
       {
         if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
         {
-          QQToast.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 1, ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getString(2131697612), 1).b(((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), 5.0F));
+          QQToast.makeText((Context)this.a.b.get(), 1, ((BaseActivity)this.a.b.get()).getString(2131895385), 1).show(((BaseActivity)this.a.b.get()).getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a((Context)this.a.b.get(), 5.0F));
           return;
         }
-        localObject1 = (TroopAioADManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_AD_MANAGER);
-        localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+        localObject1 = (TroopAioADManager)this.a.a.getManager(QQManagerFactory.TROOP_AIO_AD_MANAGER);
+        localObject2 = this.a.l.b;
         if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          TroopAioTopADInfo localTroopAioTopADInfo = ((TroopAioADManager)localObject1).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+          TroopAioTopADInfo localTroopAioTopADInfo = ((TroopAioADManager)localObject1).a(this.a.l.b);
           if (localTroopAioTopADInfo != null)
           {
             if (TextUtils.isEmpty(localTroopAioTopADInfo.jumpUrl)) {
@@ -78,57 +78,57 @@ class TroopFeedsCenterLogic$1
             } else {
               paramAnimation = localTroopAioTopADInfo.jumpUrl;
             }
-            Object localObject3 = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), paramAnimation);
+            Object localObject3 = JumpParser.a(this.a.a, (Context)this.a.b.get(), paramAnimation);
             if (localObject3 != null)
             {
               ((JumpAction)localObject3).a();
             }
             else if (paramAnimation.startsWith("http"))
             {
-              localObject3 = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQBrowserActivity.class);
+              localObject3 = new Intent((Context)this.a.b.get(), QQBrowserActivity.class);
               ((Intent)localObject3).putExtra("url", URLUtil.guessUrl(paramAnimation));
-              ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject3);
+              ((BaseActivity)this.a.b.get()).startActivity((Intent)localObject3);
             }
-            paramAnimation = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            localObject3 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+            paramAnimation = this.a.a;
+            localObject3 = this.a.l.b;
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append(localTroopAioTopADInfo.adId);
             localStringBuilder.append("");
             ReportController.b(paramAnimation, "P_CliOper", "Grp_AIO", "", "notice_center", "Clk_Promote", 0, 0, (String)localObject3, localStringBuilder.toString(), "", "");
           }
-          ((TroopAioADManager)localObject1).a((String)localObject2);
-          this.a.d = false;
+          ((TroopAioADManager)localObject1).b((String)localObject2);
+          this.a.q = false;
         }
       }
     }
-    else if (this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation == paramAnimation)
+    else if (this.a.j == paramAnimation)
     {
-      if ((this.a.jdField_a_of_type_AndroidViewView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null))
+      if ((this.a.h != null) && (this.a.g != null))
       {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+        this.a.h.setVisibility(0);
+        this.a.h.clearAnimation();
         TroopFeedsCenterLogic.b(this.a);
         this.a.notifyObservers(localObject1);
-        if ((this.a.c) && (this.a.jdField_a_of_type_AndroidViewView != null) && ((this.a.jdField_a_of_type_AndroidViewView instanceof TroopAioFeedsCenterView))) {
-          if (this.a.d)
+        if ((this.a.p) && (this.a.h != null) && ((this.a.h instanceof TroopAioFeedsCenterView))) {
+          if (this.a.q)
           {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager.b();
+            this.a.m.c();
           }
-          else if (this.a.f)
+          else if (this.a.s)
           {
-            ((TroopAioFeedsCenterView)this.a.jdField_a_of_type_AndroidViewView).a();
-            this.a.f = false;
+            ((TroopAioFeedsCenterView)this.a.h).a();
+            this.a.s = false;
           }
           else
           {
             paramAnimation = this.a;
-            paramAnimation.c = false;
-            ((TroopAioFeedsCenterView)paramAnimation.jdField_a_of_type_AndroidViewView).a(true);
+            paramAnimation.p = false;
+            ((TroopAioFeedsCenterView)paramAnimation.h).a(true);
           }
         }
       }
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        this.a.jdField_a_of_type_AndroidViewView.requestFocus();
+      if (this.a.h != null) {
+        this.a.h.requestFocus();
       }
     }
   }
@@ -137,12 +137,12 @@ class TroopFeedsCenterLogic$1
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.i = true;
+    this.a.w = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic.1
  * JD-Core Version:    0.7.0.1
  */

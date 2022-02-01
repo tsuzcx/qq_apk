@@ -12,7 +12,7 @@ class SdkAuthDialog$3
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    DialogInterface.OnCancelListener localOnCancelListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener;
+    DialogInterface.OnCancelListener localOnCancelListener = this.a;
     if (localOnCancelListener == null)
     {
       QLog.e("SdkAuthDialog", 1, "cancelListener is null");
@@ -24,7 +24,7 @@ class SdkAuthDialog$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.ui.SdkAuthDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -32,7 +32,7 @@ public class QPayHandler
     localIntent.putExtra("TEMPLATE", paramInt2);
     localIntent.putExtra("CONTENT", paramString1);
     BaseActivity.sTopActivity.startActivity(localIntent);
-    BaseActivity.sTopActivity.overridePendingTransition(2130772342, 2130772004);
+    BaseActivity.sTopActivity.overridePendingTransition(2130772434, 2130772007);
     if (QLog.isColorLevel()) {
       QLog.d("QPayHandler", 2, "QPayReminder: lauching popup QPayReminderActivity");
     }
@@ -179,7 +179,7 @@ public class QPayHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.QPayHandler
  * JD-Core Version:    0.7.0.1
  */

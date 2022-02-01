@@ -38,11 +38,6 @@ public class ThemeDiyStyleLogic
     return str;
   }
   
-  private static void a()
-  {
-    ThreadManager.getFileThreadHandler().post(new ThemeDiyStyleLogic.1());
-  }
-  
   public static String b()
   {
     if (a == null)
@@ -64,7 +59,7 @@ public class ThemeDiyStyleLogic
         localStringBuilder.append("custom_background/");
         a = localStringBuilder.toString();
       }
-      a();
+      c();
     }
     return a;
   }
@@ -88,10 +83,15 @@ public class ThemeDiyStyleLogic
       }
     }
   }
+  
+  private static void c()
+  {
+    ThreadManager.getFileThreadHandler().post(new ThemeDiyStyleLogic.1());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.diy.ThemeDiyStyleLogic
  * JD-Core Version:    0.7.0.1
  */

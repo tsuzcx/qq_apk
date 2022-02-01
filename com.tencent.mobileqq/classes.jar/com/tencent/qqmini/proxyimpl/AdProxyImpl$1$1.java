@@ -105,49 +105,49 @@ class AdProxyImpl$1$1
     //   190: pop
     //   191: aload_0
     //   192: getfield 12	com/tencent/qqmini/proxyimpl/AdProxyImpl$1$1:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
-    //   195: getfield 102	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   195: getfield 103	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:n	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
     //   198: ifnull +18 -> 216
     //   201: aload_0
     //   202: getfield 12	com/tencent/qqmini/proxyimpl/AdProxyImpl$1$1:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
-    //   205: getfield 102	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   205: getfield 103	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:n	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
     //   208: iload_1
     //   209: aload 4
-    //   211: invokeinterface 106 3 0
+    //   211: invokeinterface 107 3 0
     //   216: iload_3
     //   217: ifne +129 -> 346
     //   220: aload 6
-    //   222: invokestatic 112	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   222: invokestatic 113	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   225: istore_1
     //   226: iload_1
     //   227: ifne +119 -> 346
     //   230: aload 5
-    //   232: getfield 116	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   232: getfield 117	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   235: ifnull +111 -> 346
     //   238: aload 5
-    //   240: getfield 116	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   243: invokevirtual 122	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   240: getfield 117	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   243: invokevirtual 123	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
     //   246: ifle +100 -> 346
     //   249: aload 5
-    //   251: getfield 126	NS_MINI_AD/MiniAppAd$StGetAdRsp:iPreLoadLevel	Lcom/tencent/mobileqq/pb/PBInt64Field;
-    //   254: invokevirtual 131	com/tencent/mobileqq/pb/PBInt64Field:get	()J
-    //   257: ldc2_w 132
+    //   251: getfield 127	NS_MINI_AD/MiniAppAd$StGetAdRsp:iPreLoadLevel	Lcom/tencent/mobileqq/pb/PBInt64Field;
+    //   254: invokevirtual 132	com/tencent/mobileqq/pb/PBInt64Field:get	()J
+    //   257: ldc2_w 133
     //   260: lcmp
     //   261: ifne +85 -> 346
     //   264: iconst_0
     //   265: istore_3
     //   266: iload_3
     //   267: aload 5
-    //   269: getfield 116	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   272: invokevirtual 122	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
+    //   269: getfield 117	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   272: invokevirtual 123	com/tencent/mobileqq/pb/PBRepeatMessageField:size	()I
     //   275: if_icmpge +71 -> 346
     //   278: aload 5
-    //   280: getfield 116	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   280: getfield 117	NS_MINI_AD/MiniAppAd$StGetAdRsp:vecAppInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
     //   283: iload_3
-    //   284: invokevirtual 136	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   287: checkcast 138	NS_MINI_INTERFACE/INTERFACE$StApiAppInfo
-    //   290: invokestatic 144	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:from	(LNS_MINI_INTERFACE/INTERFACE$StApiAppInfo;)Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
-    //   293: invokestatic 149	com/tencent/qqmini/proxyimpl/MiniSdkUtil:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
-    //   296: invokestatic 155	com/tencent/mobileqq/mini/sdk/MiniAppController:preloadPackage	(Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;)V
+    //   284: invokevirtual 137	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   287: checkcast 139	NS_MINI_INTERFACE/INTERFACE$StApiAppInfo
+    //   290: invokestatic 145	com/tencent/qqmini/sdk/launcher/model/MiniAppInfo:from	(LNS_MINI_INTERFACE/INTERFACE$StApiAppInfo;)Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;
+    //   293: invokestatic 150	com/tencent/qqmini/proxyimpl/MiniSdkUtil:a	(Lcom/tencent/qqmini/sdk/launcher/model/MiniAppInfo;)Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;
+    //   296: invokestatic 156	com/tencent/mobileqq/mini/sdk/MiniAppController:preloadPackage	(Lcom/tencent/mobileqq/mini/apkg/MiniAppInfo;)V
     //   299: iload_3
     //   300: iconst_1
     //   301: iadd
@@ -156,34 +156,34 @@ class AdProxyImpl$1$1
     //   306: astore_2
     //   307: ldc 70
     //   309: iconst_1
-    //   310: ldc 157
+    //   310: ldc 158
     //   312: aload_2
-    //   313: invokestatic 161	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   313: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   316: return
     //   317: astore_2
     //   318: aload_2
-    //   319: invokevirtual 164	org/json/JSONException:printStackTrace	()V
+    //   319: invokevirtual 165	org/json/JSONException:printStackTrace	()V
     //   322: aload_0
     //   323: getfield 12	com/tencent/qqmini/proxyimpl/AdProxyImpl$1$1:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
-    //   326: getfield 102	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   326: getfield 103	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:n	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
     //   329: ifnull +17 -> 346
     //   332: aload_0
     //   333: getfield 12	com/tencent/qqmini/proxyimpl/AdProxyImpl$1$1:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
-    //   336: getfield 102	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   336: getfield 103	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:n	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
     //   339: iconst_0
     //   340: aconst_null
-    //   341: invokeinterface 106 3 0
+    //   341: invokeinterface 107 3 0
     //   346: return
     //   347: aload_0
     //   348: getfield 12	com/tencent/qqmini/proxyimpl/AdProxyImpl$1$1:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
-    //   351: getfield 102	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   351: getfield 103	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:n	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
     //   354: ifnull +17 -> 371
     //   357: aload_0
     //   358: getfield 12	com/tencent/qqmini/proxyimpl/AdProxyImpl$1$1:a	Lcom/tencent/qqmini/proxyimpl/AdProxyImpl$1;
-    //   361: getfield 102	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:a	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
+    //   361: getfield 103	com/tencent/qqmini/proxyimpl/AdProxyImpl$1:n	Lcom/tencent/qqmini/sdk/launcher/core/proxy/AdProxy$ICmdListener;
     //   364: iconst_0
     //   365: aload_2
-    //   366: invokeinterface 106 3 0
+    //   366: invokeinterface 107 3 0
     //   371: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -209,7 +209,7 @@ class AdProxyImpl$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

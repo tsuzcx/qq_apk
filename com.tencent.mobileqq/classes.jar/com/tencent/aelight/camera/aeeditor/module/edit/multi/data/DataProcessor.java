@@ -6,16 +6,16 @@ import com.tencent.aelight.camera.ae.album.data.AEAlbumImageModel;
 import com.tencent.aelight.camera.ae.album.data.AEAlbumMediaBaseModel;
 import com.tencent.aelight.camera.ae.album.data.AEAlbumVideoModel;
 import com.tencent.aelight.camera.aeeditor.module.clip.image.EditorPicInfo;
+import com.tencent.qcircle.tavcut.bean.CropConfig;
+import com.tencent.qcircle.tavcut.bean.Size;
+import com.tencent.qcircle.tavcut.util.BitmapUtil;
+import com.tencent.qcircle.tavcut.util.VideoUtil;
+import com.tencent.qcircle.weseevideo.model.resource.AudioConfigurationModel;
+import com.tencent.qcircle.weseevideo.model.resource.MediaClipModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoConfigurationModel;
+import com.tencent.qcircle.weseevideo.model.resource.VideoResourceModel;
 import com.tencent.tav.decoder.DecoderUtils;
-import com.tencent.tavcut.bean.CropConfig;
-import com.tencent.tavcut.bean.Size;
-import com.tencent.tavcut.util.BitmapUtil;
-import com.tencent.tavcut.util.VideoUtil;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import com.tencent.weseevideo.model.resource.AudioConfigurationModel;
-import com.tencent.weseevideo.model.resource.MediaClipModel;
-import com.tencent.weseevideo.model.resource.VideoConfigurationModel;
-import com.tencent.weseevideo.model.resource.VideoResourceModel;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -131,7 +131,7 @@ public class DataProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.multi.data.DataProcessor
  * JD-Core Version:    0.7.0.1
  */

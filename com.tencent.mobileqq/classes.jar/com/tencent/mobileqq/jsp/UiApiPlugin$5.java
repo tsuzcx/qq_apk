@@ -45,7 +45,7 @@ class UiApiPlugin$5
             ((StringBuilder)localObject).append(ByteBuffer.wrap(paramBundle).getInt());
             ((StringBuilder)localObject).append("");
             paramBundle = TroopInfoUIUtil.a(String.valueOf(((StringBuilder)localObject).toString()), "", 32);
-            TroopUtils.a(this.a.a(), paramBundle, -1);
+            TroopUtils.a(this.a.e(), paramBundle, -1);
             return;
           }
         }
@@ -65,7 +65,7 @@ class UiApiPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.5
  * JD-Core Version:    0.7.0.1
  */

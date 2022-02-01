@@ -11,13 +11,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ConfigManager
   implements IManager
 {
-  protected SharedPreferences a;
-  protected AtomicBoolean a;
-  
-  public ConfigManager()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  protected AtomicBoolean a = new AtomicBoolean(false);
+  protected SharedPreferences b;
   
   private void a(@Nullable String paramString1, @Nullable Object paramObject, @Nullable String paramString2)
   {
@@ -38,7 +33,7 @@ public class ConfigManager
   
   private void c()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+    if (this.a.get()) {
       return;
     }
     throw new IllegalStateException("have not attachContext");
@@ -50,22 +45,22 @@ public class ConfigManager
     Object localObject;
     if (paramV.getClass() == Integer.class)
     {
-      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
+      localObject = Integer.valueOf(this.b.getInt(paramString, ((Integer)paramV).intValue()));
     }
     else if (paramV.getClass() == Long.class)
     {
-      localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+      localObject = Long.valueOf(this.b.getLong(paramString, ((Long)paramV).longValue()));
     }
     else if (paramV.getClass() == String.class)
     {
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+      localObject = this.b.getString(paramString, (String)paramV);
     }
     else
     {
       if (paramV.getClass() != Boolean.class) {
         break label168;
       }
-      localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+      localObject = Boolean.valueOf(this.b.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
     }
     SLog.b("ConfigManager", "get value : K : %s, V : %s", paramString, localObject);
     if ((localObject != null) && (localObject.getClass() == paramV.getClass())) {
@@ -89,13 +84,13 @@ public class ConfigManager
   {
     if (paramContext != null)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
+      if (this.a.compareAndSet(false, true))
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("attachContext, ");
         localStringBuilder.append(paramContext);
         SLog.b("ConfigManager", localStringBuilder.toString());
-        this.jdField_a_of_type_AndroidContentSharedPreferences = paramContext.getSharedPreferences("qqstory_config", 4);
+        this.b = paramContext.getSharedPreferences("qqstory_config", 4);
         return;
       }
       SLog.d("ConfigManager", "attachContext duplicate");
@@ -104,28 +99,33 @@ public class ConfigManager
     throw new IllegalArgumentException("Context should not be null");
   }
   
-  public <V> void a(String paramString, V paramV)
+  public void b()
+  {
+    SLog.b("ConfigManager", "onDestroy");
+  }
+  
+  public <V> void b(String paramString, V paramV)
   {
     c();
     boolean bool;
     if (paramV.getClass() == Integer.class)
     {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
+      bool = this.b.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
     }
     else if (paramV.getClass() == Long.class)
     {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      bool = this.b.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
     }
     else if (paramV.getClass() == String.class)
     {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      bool = this.b.edit().putString(paramString, (String)paramV).commit();
     }
     else
     {
       if (paramV.getClass() != Boolean.class) {
         break label192;
       }
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      bool = this.b.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
     }
     if (!bool)
     {
@@ -140,15 +140,10 @@ public class ConfigManager
     paramString.append(paramV.getClass());
     throw new IllegalArgumentException(paramString.toString());
   }
-  
-  public void b()
-  {
-    SLog.b("ConfigManager", "onDestroy");
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.ConfigManager
  * JD-Core Version:    0.7.0.1
  */

@@ -26,23 +26,23 @@ import java.util.Map;
 public class SignatureHelper
   implements Handler.Callback, ILifeCycleHelper
 {
-  private final BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new SignatureHelper.1(this);
+  private final BaseChatPie a;
+  private final FriendListObserver b = new SignatureHelper.1(this);
   
   public SignatureHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.a = paramBaseChatPie;
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a.i().removeObserver(this.b);
   }
   
   private void a(Message paramMessage)
   {
     paramMessage = (Map)paramMessage.obj;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a((ChatMessage)paramMessage.get("chatMessage"));
+    int i = this.a.V.b((ChatMessage)paramMessage.get("chatMessage"));
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -53,7 +53,7 @@ public class SignatureHelper
     if (i < 0) {
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    Object localObject = this.a.U;
     int j = ((ChatXListView)localObject).getFirstVisiblePosition();
     int k = ((ChatXListView)localObject).getHeaderViewsCount();
     int m = ((ChatXListView)localObject).getLastVisiblePosition();
@@ -64,14 +64,14 @@ public class SignatureHelper
       if ((localObject instanceof LinearLayout))
       {
         paramMessage = (RichStatus.SigZanInfo)paramMessage.get("sigZanInfo");
-        if ((AIOUtils.a((View)localObject) instanceof RichStatItemBuilder.Holder))
+        if ((AIOUtils.b((View)localObject) instanceof RichStatItemBuilder.Holder))
         {
-          localObject = (RichStatItemBuilder.Holder)AIOUtils.a((View)localObject);
-          if ((paramMessage.a != null) && (paramMessage.a.equals(((RichStatItemBuilder.Holder)localObject).a.b)))
+          localObject = (RichStatItemBuilder.Holder)AIOUtils.b((View)localObject);
+          if ((paramMessage.a != null) && (paramMessage.a.equals(((RichStatItemBuilder.Holder)localObject).d.f)))
           {
-            ((RichStatItemBuilder.Holder)localObject).a.d = paramMessage.b;
-            ((RichStatItemBuilder.Holder)localObject).a.f = paramMessage.c;
-            ((RichStatItemBuilder.Holder)localObject).a.j();
+            ((RichStatItemBuilder.Holder)localObject).d.h = paramMessage.c;
+            ((RichStatItemBuilder.Holder)localObject).d.y = paramMessage.d;
+            ((RichStatItemBuilder.Holder)localObject).d.t();
           }
         }
       }
@@ -80,10 +80,10 @@ public class SignatureHelper
   
   private void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.b().c() != 0) {
+    if (this.a.bv().x() != 0) {
       return;
     }
-    if (RichStatItemBuilder.a == 0L) {
+    if (RichStatItemBuilder.e == 0L) {
       return;
     }
     if ((paramObject instanceof RichStatus.SigZanInfo)) {
@@ -93,7 +93,7 @@ public class SignatureHelper
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a.i().addObserver(this.b);
   }
   
   @NonNull
@@ -127,7 +127,7 @@ public class SignatureHelper
         a();
         return;
       }
-      SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().a, null);
+      SignatureManager.a(this.a.i(), this.a.aE().b, null);
       return;
     }
     b();
@@ -135,7 +135,7 @@ public class SignatureHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.SignatureHelper
  * JD-Core Version:    0.7.0.1
  */

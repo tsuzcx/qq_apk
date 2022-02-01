@@ -8,8 +8,8 @@ import java.util.List;
 class FileSelectorSearchEngine$SearchRunnable
   implements Runnable
 {
-  ISearchListener<FileSelectorSearchResultModel> jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
-  SearchRequest jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest;
+  SearchRequest a;
+  ISearchListener<FileSelectorSearchResultModel> b;
   
   private FileSelectorSearchEngine$SearchRunnable(FileSelectorSearchEngine paramFileSelectorSearchEngine) {}
   
@@ -17,18 +17,18 @@ class FileSelectorSearchEngine$SearchRunnable
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest == null)
+      if (this.a == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener.a(new ArrayList(), 6);
+        this.b.a(new ArrayList(), 6);
         return;
       }
-      SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest;
-      String str = this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest.a;
+      SearchRequest localSearchRequest = this.a;
+      String str = this.a.a;
       List localList = this.this$0.a(localSearchRequest);
       try
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchBaseModelSearchRequest.a))) {
-          this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener.a(localList, 1);
+        if ((this.b != null) && (localSearchRequest == this.a) && (str.equals(this.a.a))) {
+          this.b.a(localList, 1);
         }
         return;
       }
@@ -43,7 +43,7 @@ class FileSelectorSearchEngine$SearchRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchEngine.SearchRunnable
  * JD-Core Version:    0.7.0.1
  */

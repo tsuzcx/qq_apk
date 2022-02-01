@@ -42,34 +42,34 @@ public class EditARCakeButton
   extends EditVideoPart
   implements View.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private static final ArrayList<ShareActionSheetBuilder.ActionSheetItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static final String jdField_b_of_type_JavaLangString;
-  private static final String jdField_c_of_type_JavaLangString;
-  private final DialogInterface.OnDismissListener jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new EditARCakeButton.2(this);
-  private View jdField_a_of_type_AndroidViewView;
-  private AIOShareObject jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject;
-  private final IAIOShareHelper.AIOWXShareListener jdField_a_of_type_ComTencentAelightCameraAioeditorShareIAIOShareHelper$AIOWXShareListener = new EditARCakeButton.3(this);
-  private final ShareActionSheet.OnItemClickListener jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener = new EditARCakeButton.4(this);
-  private View jdField_b_of_type_AndroidViewView;
-  private View jdField_c_of_type_AndroidViewView;
-  private View jdField_d_of_type_AndroidViewView;
-  private String jdField_d_of_type_JavaLangString;
+  private static final String a;
+  private static final String b;
+  private static final String c;
+  private static final ArrayList<ShareActionSheetBuilder.ActionSheetItem> d = new ArrayList();
+  private View e;
+  private View f;
+  private View g;
+  private View h;
+  private AIOShareObject i;
+  private String j;
+  private final DialogInterface.OnDismissListener k = new EditARCakeButton.2(this);
+  private final IAIOShareHelper.AIOWXShareListener l = new EditARCakeButton.3(this);
+  private final ShareActionSheet.OnItemClickListener m = new EditARCakeButton.4(this);
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AEPath.CAMERA.CACHE.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(AEPath.CAMERA.CACHE.a);
     localStringBuilder.append("/qq_aio_share");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("/qq_share_video.mp4");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("/qq_share_video_thumb.png");
-    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+    c = localStringBuilder.toString();
   }
   
   public EditARCakeButton(@NonNull EditVideoPartManager paramEditVideoPartManager)
@@ -77,47 +77,9 @@ public class EditARCakeButton
     super(paramEditVideoPartManager);
   }
   
-  @NonNull
-  private EditARCakeButton.ShareVideoMetaInfo a(String paramString)
-  {
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("start decode video meta info, path = ");
-    ((StringBuilder)localObject1).append(paramString);
-    AEQLog.b("EditARCakeButton", ((StringBuilder)localObject1).toString());
-    localObject1 = new EditARCakeButton.ShareVideoMetaInfo(null);
-    Object localObject2 = new MediaMetadataRetriever();
-    ((MediaMetadataRetriever)localObject2).setDataSource(paramString);
-    paramString = ((MediaMetadataRetriever)localObject2).extractMetadata(18);
-    String str1 = ((MediaMetadataRetriever)localObject2).extractMetadata(19);
-    String str2 = ((MediaMetadataRetriever)localObject2).extractMetadata(9);
-    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).jdField_a_of_type_Int = Integer.parseInt(paramString);
-    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).b = Integer.parseInt(str1);
-    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).c = Integer.parseInt(str2);
-    paramString = new StringBuilder();
-    paramString.append("video width = ");
-    paramString.append(((EditARCakeButton.ShareVideoMetaInfo)localObject1).jdField_a_of_type_Int);
-    paramString.append(", height = ");
-    paramString.append(((EditARCakeButton.ShareVideoMetaInfo)localObject1).b);
-    paramString.append(", duration = ");
-    paramString.append(((EditARCakeButton.ShareVideoMetaInfo)localObject1).c);
-    AEQLog.b("EditARCakeButton", paramString.toString());
-    AEQLog.b("EditARCakeButton", "start decode video thumbnail");
-    paramString = ((MediaMetadataRetriever)localObject2).getFrameAtTime();
-    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).jdField_a_of_type_JavaLangString = jdField_c_of_type_JavaLangString;
-    localObject2 = new FileOutputStream(new File(((EditARCakeButton.ShareVideoMetaInfo)localObject1).jdField_a_of_type_JavaLangString));
-    paramString.compress(Bitmap.CompressFormat.PNG, 50, (OutputStream)localObject2);
-    AEQLog.b("EditARCakeButton", "decode video thumbnail success");
-    return localObject1;
-  }
-  
-  private String a()
-  {
-    return String.valueOf(System.currentTimeMillis());
-  }
-  
   private String a(String paramString)
   {
-    String str = jdField_b_of_type_JavaLangString;
+    String str = b;
     if (FileUtil.a(new File(paramString), new File(str)))
     {
       paramString = new StringBuilder();
@@ -133,29 +95,14 @@ public class EditARCakeButton
     return null;
   }
   
-  private List<ShareActionSheetBuilder.ActionSheetItem> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(50));
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c())
-    {
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
-      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
-      return localArrayList;
-    }
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(64));
-    return localArrayList;
-  }
-  
   private void a(@NonNull Activity paramActivity, @NonNull String paramString)
   {
     paramString = new File(paramString);
     Intent localIntent = new Intent("android.intent.action.SEND");
     try
     {
-      int i = Build.VERSION.SDK_INT;
-      if (i >= 24)
+      int n = Build.VERSION.SDK_INT;
+      if (n >= 24)
       {
         localIntent.putExtra("android.intent.extra.STREAM", FileProvider.getUriForFile(paramActivity, "com.tencent.mobileqq.fileprovider", paramString));
         localIntent.addFlags(1);
@@ -180,7 +127,7 @@ public class EditARCakeButton
     AEQLog.b("EditARCakeButton", "build share object");
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject = AIOShareObject.a(paramString);
+      this.i = AIOShareObject.a(paramString);
       return;
     }
     Object localObject5 = null;
@@ -191,7 +138,7 @@ public class EditARCakeButton
     Object localObject4 = localObject6;
     try
     {
-      k();
+      l();
       localObject2 = localObject1;
       localObject3 = localObject5;
       localObject4 = localObject6;
@@ -206,11 +153,11 @@ public class EditARCakeButton
       localObject2 = localObject1;
       localObject3 = localObject1;
       localObject4 = localObject1;
-      paramString = a(paramString);
+      paramString = b(paramString);
       localObject2 = localObject1;
       localObject3 = localObject1;
       localObject4 = localObject1;
-      ((AIOShareObject)localObject1).c(paramString.jdField_a_of_type_JavaLangString).a(paramString.jdField_a_of_type_Int, paramString.b).b(paramString.c);
+      ((AIOShareObject)localObject1).c(paramString.d).a(paramString.a, paramString.b).b(paramString.c);
     }
     catch (Throwable paramString)
     {
@@ -227,7 +174,7 @@ public class EditARCakeButton
       AEQLog.a("EditARCakeButton", "make share video obj error", paramString);
       localObject1 = localObject4;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject = ((AIOShareObject)localObject1);
+    this.i = ((AIOShareObject)localObject1);
   }
   
   private void a(boolean paramBoolean)
@@ -235,21 +182,54 @@ public class EditARCakeButton
     ThreadManager.getUIHandler().post(new EditARCakeButton.5(this, paramBoolean));
   }
   
-  private void b()
+  @NonNull
+  private EditARCakeButton.ShareVideoMetaInfo b(String paramString)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("start decode video meta info, path = ");
+    ((StringBuilder)localObject1).append(paramString);
+    AEQLog.b("EditARCakeButton", ((StringBuilder)localObject1).toString());
+    localObject1 = new EditARCakeButton.ShareVideoMetaInfo(null);
+    Object localObject2 = new MediaMetadataRetriever();
+    ((MediaMetadataRetriever)localObject2).setDataSource(paramString);
+    paramString = ((MediaMetadataRetriever)localObject2).extractMetadata(18);
+    String str1 = ((MediaMetadataRetriever)localObject2).extractMetadata(19);
+    String str2 = ((MediaMetadataRetriever)localObject2).extractMetadata(9);
+    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).a = Integer.parseInt(paramString);
+    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).b = Integer.parseInt(str1);
+    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).c = Integer.parseInt(str2);
+    paramString = new StringBuilder();
+    paramString.append("video width = ");
+    paramString.append(((EditARCakeButton.ShareVideoMetaInfo)localObject1).a);
+    paramString.append(", height = ");
+    paramString.append(((EditARCakeButton.ShareVideoMetaInfo)localObject1).b);
+    paramString.append(", duration = ");
+    paramString.append(((EditARCakeButton.ShareVideoMetaInfo)localObject1).c);
+    AEQLog.b("EditARCakeButton", paramString.toString());
+    AEQLog.b("EditARCakeButton", "start decode video thumbnail");
+    paramString = ((MediaMetadataRetriever)localObject2).getFrameAtTime();
+    ((EditARCakeButton.ShareVideoMetaInfo)localObject1).d = c;
+    localObject2 = new FileOutputStream(new File(((EditARCakeButton.ShareVideoMetaInfo)localObject1).d));
+    paramString.compress(Bitmap.CompressFormat.PNG, 50, (OutputStream)localObject2);
+    AEQLog.b("EditARCakeButton", "decode video thumbnail success");
+    return localObject1;
+  }
+  
+  private void c()
   {
     a(true);
   }
   
-  private void g()
+  private void d()
   {
     a(false);
   }
   
-  private void h()
+  private void i()
   {
-    this.jdField_d_of_type_AndroidViewView.setEnabled(false);
-    String str = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a.a();
-    boolean bool = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.c();
+    this.h.setEnabled(false);
+    String str = this.t.I.e.a();
+    boolean bool = this.t.j();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start share, is photo = ");
     localStringBuilder.append(bool);
@@ -260,24 +240,24 @@ public class EditARCakeButton
   }
   
   @MainThread
-  private void j()
+  private void k()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorShareAIOShareObject == null) {
+    if (this.i == null) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity() != null)
+    if (this.u.getActivity() != null)
     {
-      if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().isFinishing()) {
+      if (this.u.getActivity().isFinishing()) {
         return;
       }
       Object localObject1 = new ShareActionSheetV2.Param();
-      ((ShareActionSheetV2.Param)localObject1).context = a();
+      ((ShareActionSheetV2.Param)localObject1).context = u();
       localObject1 = ShareActionSheetFactory.create((ShareActionSheetV2.Param)localObject1);
-      ((ShareActionSheet)localObject1).setOnDismissListener(this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+      ((ShareActionSheet)localObject1).setOnDismissListener(this.k);
       ((ShareActionSheet)localObject1).setRowVisibility(0, 0, 8);
-      ((ShareActionSheet)localObject1).setActionSheetItems(a(), jdField_a_of_type_JavaUtilArrayList);
-      ((ShareActionSheet)localObject1).setItemClickListenerV2(this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener);
-      Object localObject2 = a();
+      ((ShareActionSheet)localObject1).setActionSheetItems(m(), d);
+      ((ShareActionSheet)localObject1).setItemClickListenerV2(this.m);
+      Object localObject2 = u();
       if ((localObject2 instanceof Activity))
       {
         localObject2 = ((Activity)localObject2).getIntent();
@@ -292,25 +272,45 @@ public class EditARCakeButton
     }
   }
   
-  private void k()
+  private void l()
   {
-    File localFile = new File(jdField_a_of_type_JavaLangString);
+    File localFile = new File(a);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
   }
   
+  private List<ShareActionSheetBuilder.ActionSheetItem> m()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(50));
+    if (this.t.j())
+    {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+      return localArrayList;
+    }
+    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(64));
+    return localArrayList;
+  }
+  
+  private String n()
+  {
+    return String.valueOf(System.currentTimeMillis());
+  }
+  
   public void a()
   {
     super.a();
-    ((ViewStub)a(2064122664)).inflate();
-    this.jdField_a_of_type_AndroidViewView = a(2064121959);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2064122294);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2064121990);
-    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2064121998);
-    this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
+    ((ViewStub)d(2063991461)).inflate();
+    this.e = d(2063990890);
+    this.f = this.e.findViewById(2063991173);
+    this.f.setOnClickListener(this);
+    this.g = this.e.findViewById(2063990917);
+    this.g.setOnClickListener(this);
+    this.h = this.e.findViewById(2063990928);
+    this.h.setOnClickListener(this);
     ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportARVideoExpose();
   }
   
@@ -329,42 +329,42 @@ public class EditARCakeButton
       AEQLog.b("EditARCakeButton", paramIntent.toString());
       if (bool)
       {
-        b();
+        c();
         return;
       }
-      g();
+      d();
     }
   }
   
-  public void e()
+  public void g()
   {
-    super.e();
+    super.g();
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2064122294)
+    int n = paramView.getId();
+    if (n == 2063991173)
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b();
+      this.t.b();
       return;
     }
-    if (i == 2064121990)
+    if (n == 2063990917)
     {
       ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportARVideoDownloadBtn();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.p();
+      this.t.A();
       return;
     }
-    if (i == 2064121998)
+    if (n == 2063990928)
     {
       ((IAEBaseDataReporter)QRoute.api(IAEBaseDataReporter.class)).reportARVideoShareBtn();
-      h();
+      i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditARCakeButton
  * JD-Core Version:    0.7.0.1
  */

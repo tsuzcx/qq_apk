@@ -11,12 +11,12 @@ class ChatHistoryC2CAllFragment$4
   
   public void a(MotionEvent paramMotionEvent)
   {
-    this.a.a.a(paramMotionEvent);
+    this.a.m.a(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -7,104 +7,185 @@ import java.util.ArrayList;
 
 public class UniteGrayTipParam
 {
-  private static UniteGrayTipParam.Callback jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipParam$Callback = new UniteGrayTipParam.1();
-  public static final int[] a;
-  public int a;
-  public long a;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  private ArrayList<GrayTipsMessageConstants.HighlightItem> jdField_a_of_type_JavaUtilArrayList;
-  protected boolean a;
-  public int b;
-  public String b;
-  protected boolean b;
-  public int[] b;
-  public int c;
-  public String c;
-  protected boolean c;
-  public int d;
-  public String d;
-  public boolean d = true;
-  public boolean e;
-  public boolean f = true;
-  public boolean g = false;
-  public boolean h = false;
+  public static final int[] a = { 1, 131073, 131078, 135176, 1376257, 2097153, 2097154, 2097155, 2097156, 1245186, 1245187, 65560, 2359297, 65560, 655362, 2424833, 2490369, 2555907, 1179651, 2686977, 2621441, 2359298, 3145729, 2555906, 3145729, 3211265, 135178, 135179, 655378, 655379, 655369, 655376, 3276801, 3276802, 655377, 1179653, 3342339, 135180, 135181, 655381, 131080, 131081, 655383, 655392, 131082, 655384, 655385, 2359299, 2359300, 3276804, 131090, 131091, 655393, 131083, 655397, 131084, 131085, 131092, 131087, 131086, 131088, 2, 656395, 459802, 459803, 3, 459817, 656396, 656398, 131093, 656397, 4194305 };
+  private static UniteGrayTipParam.Callback v = new UniteGrayTipParam.1();
+  protected boolean b = true;
+  protected boolean c = true;
+  protected boolean d = true;
+  public String e;
+  public String f;
+  public String g;
+  public int h;
+  public int i;
+  public long j;
+  public int k;
+  public boolean l = true;
+  public boolean m;
+  public int n;
+  public int[] o;
+  public String p;
+  public boolean q = true;
+  public boolean r = false;
+  public boolean s = false;
+  private ArrayList<GrayTipsMessageConstants.HighlightItem> t;
+  private final Object u = new Object();
   
-  static
-  {
-    InitMsgModule.a();
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 131073, 131078, 135176, 1376257, 2097153, 2097154, 2097155, 2097156, 1245186, 1245187, 65560, 2359297, 65560, 655362, 2424833, 2490369, 2555907, 1179651, 2686977, 2621441, 2359298, 3145729, 2555906, 3145729, 3211265, 135178, 135179, 655378, 655379, 655369, 655376, 3276801, 3276802, 655377, 1179653, 3342339, 135180, 135181, 655381, 131080, 131081, 655383, 655392, 131082, 655384, 655385, 2359299, 2359300, 3276804, 131090, 131091, 655393, 131083, 655397, 131084, 131085, 131092, 131087, 131086, 131088, 2, 656395, 459802, 459803, 3, 459817, 656396, 656398, 656397 };
-  }
+  static {}
   
   public UniteGrayTipParam(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Long = paramLong;
-    b();
+    this.e = paramString1;
+    this.f = paramString2;
+    this.g = paramString3;
+    this.h = paramInt1;
+    this.k = paramInt2;
+    this.i = paramInt3;
+    this.j = paramLong;
+    d();
   }
   
   public static void a(UniteGrayTipParam.Callback paramCallback)
   {
-    jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipParam$Callback = paramCallback;
+    v = paramCallback;
   }
   
-  private void b()
+  private boolean a(int paramInt)
   {
-    int i = this.jdField_c_of_type_Int;
-    if (i == -5020)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    if (i == -5021)
-    {
-      this.jdField_c_of_type_Boolean = false;
-      return;
-    }
-    if (i == -5022)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      return;
-    }
-    if (i == -5023)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_c_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_c_of_type_Int = -5040;
+    return (paramInt == 39) || (paramInt == 40) || (paramInt == 65) || (paramInt == 11) || (paramInt == 36) || (paramInt == 67);
   }
   
-  public ArrayList<GrayTipsMessageConstants.HighlightItem> a()
+  private boolean b(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 1)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        return null;
+      bool1 = bool2;
+      if (paramInt != 3)
+      {
+        bool1 = bool2;
+        if (paramInt != 2)
+        {
+          bool1 = bool2;
+          if (paramInt != 21)
+          {
+            bool1 = bool2;
+            if (paramInt != 15)
+            {
+              bool1 = bool2;
+              if (paramInt != 16)
+              {
+                bool1 = bool2;
+                if (paramInt != 20)
+                {
+                  bool1 = bool2;
+                  if (paramInt != 23)
+                  {
+                    bool1 = bool2;
+                    if (paramInt != 24)
+                    {
+                      bool1 = bool2;
+                      if (paramInt != 14)
+                      {
+                        bool1 = bool2;
+                        if (paramInt != 13)
+                        {
+                          bool1 = bool2;
+                          if (paramInt != 27)
+                          {
+                            bool1 = bool2;
+                            if (paramInt != 29)
+                            {
+                              bool1 = bool2;
+                              if (paramInt != 30)
+                              {
+                                bool1 = bool2;
+                                if (paramInt != 32)
+                                {
+                                  bool1 = bool2;
+                                  if (paramInt != 44)
+                                  {
+                                    bool1 = bool2;
+                                    if (paramInt != 45)
+                                    {
+                                      bool1 = bool2;
+                                      if (paramInt != 52)
+                                      {
+                                        bool1 = bool2;
+                                        if (paramInt != 53)
+                                        {
+                                          bool1 = bool2;
+                                          if (paramInt != 54)
+                                          {
+                                            bool1 = bool2;
+                                            if (paramInt != 61)
+                                            {
+                                              bool1 = bool2;
+                                              if (paramInt != 58)
+                                              {
+                                                bool1 = bool2;
+                                                if (paramInt != 62)
+                                                {
+                                                  bool1 = bool2;
+                                                  if (paramInt != 63)
+                                                  {
+                                                    if (paramInt == 38) {
+                                                      return true;
+                                                    }
+                                                    bool1 = false;
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-      ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-      return localArrayList;
     }
+    return bool1;
   }
   
-  public void a()
+  private void d()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int i1 = this.k;
+    if (i1 == -5020)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
+      this.b = false;
       return;
     }
+    if (i1 == -5021)
+    {
+      this.d = false;
+      return;
+    }
+    if (i1 == -5022)
+    {
+      this.b = false;
+      this.c = false;
+      return;
+    }
+    if (i1 == -5023)
+    {
+      this.b = false;
+      this.d = false;
+      return;
+    }
+    this.k = -5040;
   }
   
   public void a(int paramInt1, int paramInt2, Bundle paramBundle)
@@ -114,10 +195,10 @@ public class UniteGrayTipParam
   
   public void a(GrayTipsMessageConstants.HighlightItem paramHighlightItem)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.u)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramHighlightItem);
+      if (this.t != null) {
+        this.t.add(paramHighlightItem);
       }
       return;
     }
@@ -125,14 +206,14 @@ public class UniteGrayTipParam
   
   public void a(ArrayList<GrayTipsMessageConstants.HighlightItem> paramArrayList)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject = this.u;
     if (paramArrayList != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      this.t = new ArrayList();
+      this.t.addAll(paramArrayList);
       break label39;
-      this.jdField_a_of_type_JavaUtilArrayList = null;
+      this.t = null;
       label39:
       return;
     }
@@ -141,33 +222,56 @@ public class UniteGrayTipParam
   
   public boolean a()
   {
-    boolean bool3 = jdField_a_of_type_ComTencentMobileqqGraytipUniteGrayTipParam$Callback.a(this.jdField_c_of_type_Int);
-    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
-    int k = arrayOfInt.length;
+    boolean bool3 = v.a(this.k);
+    int[] arrayOfInt = a;
+    int i3 = arrayOfInt.length;
     boolean bool2 = false;
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    int i1 = 0;
+    int i2 = 0;
+    while (i1 < i3)
     {
-      if (arrayOfInt[i] == this.jdField_b_of_type_Int) {
-        j = 1;
+      if (arrayOfInt[i1] == this.i) {
+        i2 = 1;
       }
-      i += 1;
+      i1 += 1;
     }
     boolean bool1 = bool2;
     if (bool3)
     {
       bool1 = bool2;
-      if (j != 0) {
+      if (i2 != 0) {
         bool1 = true;
       }
     }
     return bool1;
   }
+  
+  public ArrayList<GrayTipsMessageConstants.HighlightItem> b()
+  {
+    synchronized (this.u)
+    {
+      if (this.t == null) {
+        return null;
+      }
+      ArrayList localArrayList = new ArrayList(this.t);
+      return localArrayList;
+    }
+  }
+  
+  public void c()
+  {
+    synchronized (this.u)
+    {
+      if (this.t != null) {
+        this.t.clear();
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipParam
  * JD-Core Version:    0.7.0.1
  */

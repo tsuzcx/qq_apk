@@ -10,10 +10,10 @@ final class ReplyTextItemBuilder$12
   
   public void run()
   {
-    if ((AbsDownloader.hasFile(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1)) {}
+    if ((AbsDownloader.hasFile(this.a)) && (this.b.getStatus() != 1)) {}
     try
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+      this.b.startDownload();
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError) {}
@@ -21,7 +21,7 @@ final class ReplyTextItemBuilder$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.12
  * JD-Core Version:    0.7.0.1
  */

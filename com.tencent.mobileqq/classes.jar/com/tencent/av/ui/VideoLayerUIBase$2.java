@@ -11,17 +11,17 @@ class VideoLayerUIBase$2
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
+    if (this.this$0.Z != null) {
       try
       {
-        String str = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c;
-        this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(str);
+        String str = this.this$0.Z.k().s;
+        this.this$0.Z.b(str);
         return;
       }
       catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "pauseVideo Runnable exception", localException);
+          QLog.d(this.this$0.U, 2, "pauseVideo Runnable exception", localException);
         }
       }
     }

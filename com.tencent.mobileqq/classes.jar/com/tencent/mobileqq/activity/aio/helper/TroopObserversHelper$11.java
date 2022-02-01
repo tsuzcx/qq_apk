@@ -22,24 +22,24 @@ class TroopObserversHelper$11
   
   protected void a(boolean paramBoolean, String paramString, List<TroopAIONotifyItem> paramList)
   {
-    if ((TroopObserversHelper.a(this.a) != null) && (!TextUtils.isEmpty(TroopObserversHelper.a(this.a).a)))
+    if ((TroopObserversHelper.b(this.a) != null) && (!TextUtils.isEmpty(TroopObserversHelper.b(this.a).b)))
     {
       if (TextUtils.isEmpty(paramString)) {
         return;
       }
-      if (!TroopObserversHelper.a(this.a).a.equals(paramString)) {
+      if (!TroopObserversHelper.b(this.a).b.equals(paramString)) {
         return;
       }
-      if (TroopObserversHelper.a(this.a).a != null)
+      if (TroopObserversHelper.d(this.a).bp != null)
       {
         Object localObject = TroopObserversHelper.a(this.a);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramString);
         localStringBuilder.append("");
-        localObject = TroopAioNotifyManager.a((QQAppInterface)localObject, localStringBuilder.toString());
+        localObject = TroopAioNotifyManager.b((QQAppInterface)localObject, localStringBuilder.toString());
         localObject = TroopAioNotifyManager.a(TroopObserversHelper.a(this.a), paramList, (List)localObject);
-        boolean bool1 = TroopObserversHelper.a(this.a).a.a();
-        boolean bool2 = TroopObserversHelper.a(this.a).a.d();
+        boolean bool1 = TroopObserversHelper.d(this.a).bp.c();
+        boolean bool2 = TroopObserversHelper.d(this.a).bp.h();
         int j = 0;
         int i = j;
         if (localObject != null)
@@ -47,20 +47,20 @@ class TroopObserversHelper$11
           i = j;
           if (((List)localObject).size() > 0)
           {
-            TroopObserversHelper.a(this.a).a.a((List)localObject);
+            TroopObserversHelper.d(this.a).bp.a((List)localObject);
             i = j;
             if (!bool2)
             {
               i = j;
               if (!bool1)
               {
-                TroopObserversHelper.a(this.a).a.f();
+                TroopObserversHelper.d(this.a).bp.l();
                 i = 1;
               }
             }
           }
         }
-        boolean bool3 = ((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).m(TroopObserversHelper.a(this.a).a);
+        boolean bool3 = ((TroopManager)TroopObserversHelper.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).Z(TroopObserversHelper.b(this.a).b);
         if ((!bool1) && (!bool2) && (i == 0) && (!bool3)) {
           ThreadManager.getUIHandler().postDelayed(new TroopObserversHelper.11.1(this), 500L);
         }
@@ -92,7 +92,7 @@ class TroopObserversHelper$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopObserversHelper.11
  * JD-Core Version:    0.7.0.1
  */

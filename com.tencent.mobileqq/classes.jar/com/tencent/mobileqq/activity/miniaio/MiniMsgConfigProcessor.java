@@ -12,7 +12,7 @@ public class MiniMsgConfigProcessor
 {
   public static MiniMsgConfigData a()
   {
-    return (MiniMsgConfigData)QConfigManager.a().a(470);
+    return (MiniMsgConfigData)QConfigManager.b().b(470);
   }
   
   @NonNull
@@ -28,7 +28,7 @@ public class MiniMsgConfigProcessor
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("parse.configData : ");
-      localStringBuilder.append(paramArrayOfQConfItem[0].a);
+      localStringBuilder.append(paramArrayOfQConfItem[0].b);
       QLog.d("mini_msg_config", 2, localStringBuilder.toString());
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
@@ -77,7 +77,7 @@ public class MiniMsgConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

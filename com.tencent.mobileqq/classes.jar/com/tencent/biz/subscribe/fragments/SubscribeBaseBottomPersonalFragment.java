@@ -16,11 +16,9 @@ public abstract class SubscribeBaseBottomPersonalFragment
   extends BaseFragment
 {
   protected View a;
-  protected SubscribeBaseBottomPersonalFragment.BottomData a;
-  protected BlockContainer a;
-  protected StatusView a;
-  
-  abstract ExtraTypeInfo a();
+  protected BlockContainer b;
+  protected SubscribeBaseBottomPersonalFragment.BottomData c;
+  protected StatusView d;
   
   protected abstract void a();
   
@@ -28,20 +26,22 @@ public abstract class SubscribeBaseBottomPersonalFragment
   
   public abstract void a(String paramString, SubscribeBaseBottomPersonalFragment.BottomData paramBottomData);
   
+  abstract ExtraTypeInfo b();
+  
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558749, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer = ((BlockContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131372478));
-    this.jdField_a_of_type_ComTencentBizSubscribeWidgetStatusView = ((StatusView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377871));
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a().setNestedScrollingEnabled(true);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.a().a(2);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setEnableRefresh(false);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setEnableLoadMore(true);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setExtraTypeInfo(a());
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setParentFragment(this);
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockContainer.setLayoutManagerType(3, 2);
+    this.a = paramLayoutInflater.inflate(2131624369, paramViewGroup, false);
+    this.b = ((BlockContainer)this.a.findViewById(2131440000));
+    this.d = ((StatusView)this.a.findViewById(2131446348));
+    this.b.getRecyclerView().setNestedScrollingEnabled(true);
+    this.b.getBlockMerger().b(2);
+    this.b.setEnableRefresh(false);
+    this.b.setEnableLoadMore(true);
+    this.b.setExtraTypeInfo(b());
+    this.b.setParentFragment(this);
+    this.b.setLayoutManagerType(3, 2);
     a();
-    paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
+    paramLayoutInflater = this.a;
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

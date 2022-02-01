@@ -10,41 +10,36 @@ import com.tencent.qphone.base.util.QLog;
 class TCProgressBar$DeleteImage
   extends TCProgressBar.Draw
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int = 0;
-  boolean jdField_b_of_type_Boolean = false;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = true;
-  int d = 0;
-  int e;
+  boolean a;
+  int b = -1;
+  float c = 0.0F;
+  boolean d = false;
+  int e = 0;
+  int f;
+  boolean g = true;
+  int h = 0;
+  int i;
   
   TCProgressBar$DeleteImage(TCProgressBar paramTCProgressBar)
   {
     super(paramTCProgressBar);
   }
   
-  int a()
-  {
-    return this.f + this.d;
-  }
-  
   void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.j.y.left = this.k;
+    this.j.y.right = (this.k + this.l);
+    int k = this.j.y.top;
+    int m = this.j.y.bottom;
+    this.j.y.top = 0;
+    this.j.y.bottom = this.i;
+    if (this.a) {
+      a(paramCanvas, this.j.f);
     } else {
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
+      a(paramCanvas, this.j.g);
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
+    this.j.y.top = k;
+    this.j.y.bottom = m;
     super.a(paramCanvas);
   }
   
@@ -52,26 +47,26 @@ class TCProgressBar$DeleteImage
   {
     if (paramBitmap == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
+      this.j.i.setColor(-1);
+      if (!this.a) {
+        this.j.i.setColor(-65536);
       }
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawRect(this.j.y, this.j.i);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
+    this.j.i.setFilterBitmap(true);
+    paramCanvas.drawBitmap(paramBitmap, null, this.j.y, this.j.i);
+    this.j.i.setFilterBitmap(false);
   }
   
   boolean a()
   {
-    int j = this.jdField_c_of_type_Int;
-    int i = j;
-    if (j < 0) {
-      i = -j;
+    int m = this.f;
+    int k = m;
+    if (m < 0) {
+      k = -m;
     }
-    return i > 1;
+    return k > 1;
   }
   
   boolean a(float paramFloat)
@@ -82,61 +77,66 @@ class TCProgressBar$DeleteImage
       localStringBuilder.append("checkBounds,x = ");
       localStringBuilder.append(paramFloat);
       localStringBuilder.append(",x_coord = ");
-      localStringBuilder.append(this.f);
+      localStringBuilder.append(this.k);
       localStringBuilder.append(",x_coord + length = ");
-      localStringBuilder.append(this.f + this.g);
+      localStringBuilder.append(this.k + this.l);
       QLog.d("TCProgressBar", 2, localStringBuilder.toString());
     }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
+    return (paramFloat > this.k - 25) && (paramFloat < this.k + this.l + 25);
   }
   
   boolean a(MotionEvent paramMotionEvent)
   {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    if (i != 0)
+    float f1 = paramMotionEvent.getX();
+    int k = paramMotionEvent.getAction();
+    if (k != 0)
     {
-      if (i != 1) {
-        if (i != 2)
+      if (k != 1) {
+        if (k != 2)
         {
-          if (i != 3) {
+          if (k != 3) {
             return true;
           }
         }
         else
         {
-          this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-          this.jdField_a_of_type_Int = i;
-          this.jdField_a_of_type_Float = f;
-          this.jdField_b_of_type_Int += 1;
-          this.jdField_c_of_type_Boolean = false;
+          this.f = ((int)(f1 - this.c));
+          this.b = k;
+          this.c = f1;
+          this.e += 1;
+          this.g = false;
           if (!a()) {
             break label131;
           }
-          this.f += this.jdField_c_of_type_Int;
+          this.k += this.f;
           return true;
         }
       }
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_Float = 0.0F;
-      this.jdField_c_of_type_Boolean = true;
+      this.d = false;
+      this.c = 0.0F;
+      this.g = true;
       return true;
     }
     else
     {
-      this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Float = f;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
+      this.d = true;
+      this.b = k;
+      this.c = f1;
+      this.e = 0;
+      this.a = false;
     }
     label131:
     return true;
   }
+  
+  int b()
+  {
+    return this.k + this.h;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.widget.TCProgressBar.DeleteImage
  * JD-Core Version:    0.7.0.1
  */

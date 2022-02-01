@@ -12,34 +12,33 @@ import java.util.concurrent.TimeUnit;
 
 public class TaskThreadPool
 {
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new TaskThreadPool.2(this);
-  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue = new LinkedList();
-  private final RejectedExecutionHandler jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler = new TaskThreadPool.1(this);
-  private final ScheduledExecutorService jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService = Executors.newScheduledThreadPool(1);
-  protected final ScheduledFuture<?> a;
-  private final ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
+  protected final ScheduledFuture<?> a = this.e.scheduleAtFixedRate(this.d, 0L, 100L, TimeUnit.MILLISECONDS);
+  private final Queue<Runnable> b = new LinkedList();
+  private final RejectedExecutionHandler c = new TaskThreadPool.1(this);
+  private final Runnable d = new TaskThreadPool.2(this);
+  private final ScheduledExecutorService e = Executors.newScheduledThreadPool(1);
+  private final ThreadPoolExecutor f;
   
   public TaskThreadPool(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledExecutorService.scheduleAtFixedRate(this.jdField_a_of_type_JavaLangRunnable, 0L, 100L, TimeUnit.MILLISECONDS);
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(paramInt1, paramInt2, 5000L, TimeUnit.SECONDS, new ArrayBlockingQueue(100), new TaskThreadPool.CustomThreadFactory(paramString), this.jdField_a_of_type_JavaUtilConcurrentRejectedExecutionHandler);
+    this.f = new ThreadPoolExecutor(paramInt1, paramInt2, 5000L, TimeUnit.SECONDS, new ArrayBlockingQueue(100), new TaskThreadPool.CustomThreadFactory(paramString), this.c);
   }
   
   private boolean a()
   {
-    return this.jdField_a_of_type_JavaUtilQueue.isEmpty() ^ true;
+    return this.b.isEmpty() ^ true;
   }
   
   public void a(Runnable paramRunnable)
   {
     if (paramRunnable != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.execute(paramRunnable);
+      this.f.execute(paramRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.task.TaskThreadPool
  * JD-Core Version:    0.7.0.1
  */

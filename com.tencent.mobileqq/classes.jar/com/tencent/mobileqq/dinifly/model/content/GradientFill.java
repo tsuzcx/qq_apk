@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.model.content;
 
 import android.graphics.Path.FillType;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.GradientFillContent;
@@ -100,7 +100,7 @@ public class GradientFill
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.GradientFill
  * JD-Core Version:    0.7.0.1
  */

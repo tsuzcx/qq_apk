@@ -14,7 +14,7 @@ public class MessageForTroopPobing
   
   public static String buildCompatibleText()
   {
-    return HardCodeUtil.a(2131706647);
+    return HardCodeUtil.a(2131904498);
   }
   
   public void doParse()
@@ -32,7 +32,7 @@ public class MessageForTroopPobing
   public String getSummaryMsg()
   {
     if (TextUtils.isEmpty(this.msg)) {
-      return HardCodeUtil.a(2131706606);
+      return HardCodeUtil.a(2131904457);
     }
     return this.msg;
   }
@@ -51,7 +51,7 @@ public class MessageForTroopPobing
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopPobing
  * JD-Core Version:    0.7.0.1
  */

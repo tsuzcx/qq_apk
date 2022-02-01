@@ -77,28 +77,28 @@ public class GameNoticeInfo
   
   public GameNoticeInfo(WadlResult paramWadlResult, Context paramContext)
   {
-    this.appId = paramWadlResult.a.a;
-    this.appName = paramWadlResult.a.j;
-    this.packageName = paramWadlResult.a.f;
-    this.versionCode = paramWadlResult.a.e;
-    this.apkChannel = paramWadlResult.a.c;
-    this.filePath = paramWadlResult.jdField_b_of_type_JavaLangString;
-    this.createTime = paramWadlResult.c;
-    this.downloadType = paramWadlResult.a.d;
+    this.appId = paramWadlResult.a.e;
+    this.appName = paramWadlResult.a.u;
+    this.packageName = paramWadlResult.a.m;
+    this.versionCode = paramWadlResult.a.l;
+    this.apkChannel = paramWadlResult.a.i;
+    this.filePath = paramWadlResult.g;
+    this.createTime = paramWadlResult.h;
+    this.downloadType = paramWadlResult.a.h;
     this.bannerType = convertToBannerType(paramWadlResult);
     setTipsInfo(paramContext);
   }
   
   public static int convertToBannerType(WadlResult paramWadlResult)
   {
-    if (paramWadlResult.jdField_b_of_type_Int == 9)
+    if (paramWadlResult.d == 9)
     {
-      if (PackageUtil.a(MobileQQ.sMobileQQ, paramWadlResult.a.f)) {
+      if (PackageUtil.a(MobileQQ.sMobileQQ, paramWadlResult.a.m)) {
         return 2;
       }
-      paramWadlResult.jdField_b_of_type_Int = 6;
+      paramWadlResult.d = 6;
     }
-    if ((paramWadlResult.jdField_b_of_type_Int == 6) && (FileUtils.fileExists(paramWadlResult.jdField_b_of_type_JavaLangString))) {
+    if ((paramWadlResult.d == 6) && (FileUtils.fileExists(paramWadlResult.g))) {
       return 1;
     }
     return 0;
@@ -203,33 +203,32 @@ public class GameNoticeInfo
   
   public Object clone()
   {
+    Object localObject;
     try
     {
-      localGameNoticeInfo = (GameNoticeInfo)super.clone();
+      GameNoticeInfo localGameNoticeInfo = (GameNoticeInfo)super.clone();
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      GameNoticeInfo localGameNoticeInfo;
-      label11:
-      break label11;
+      QLog.e("Wadl_GameNoticeInfo", 1, "clone exception", localCloneNotSupportedException);
+      localObject = null;
     }
-    localGameNoticeInfo = null;
-    localGameNoticeInfo.appId = this.appId;
-    localGameNoticeInfo.packageName = this.packageName;
-    localGameNoticeInfo.versionCode = this.versionCode;
-    localGameNoticeInfo.apkChannel = this.apkChannel;
-    localGameNoticeInfo.appName = this.appName;
-    localGameNoticeInfo.filePath = this.filePath;
-    localGameNoticeInfo.bannerType = this.bannerType;
-    localGameNoticeInfo.title = this.title;
-    localGameNoticeInfo.jumpUrl = this.jumpUrl;
-    localGameNoticeInfo.startTime = this.startTime;
-    localGameNoticeInfo.endTime = this.endTime;
-    localGameNoticeInfo.createTime = this.createTime;
-    localGameNoticeInfo.infoRequested = this.infoRequested;
-    localGameNoticeInfo.iconUrl = this.iconUrl;
-    localGameNoticeInfo.downloadType = this.downloadType;
-    return localGameNoticeInfo;
+    localObject.appId = this.appId;
+    localObject.packageName = this.packageName;
+    localObject.versionCode = this.versionCode;
+    localObject.apkChannel = this.apkChannel;
+    localObject.appName = this.appName;
+    localObject.filePath = this.filePath;
+    localObject.bannerType = this.bannerType;
+    localObject.title = this.title;
+    localObject.jumpUrl = this.jumpUrl;
+    localObject.startTime = this.startTime;
+    localObject.endTime = this.endTime;
+    localObject.createTime = this.createTime;
+    localObject.infoRequested = this.infoRequested;
+    localObject.iconUrl = this.iconUrl;
+    localObject.downloadType = this.downloadType;
+    return localObject;
   }
   
   public boolean equals(Object paramObject)
@@ -301,7 +300,7 @@ public class GameNoticeInfo
           QLog.w("Wadl_GameNoticeInfo", 1, ((StringBuilder)localObject).toString());
           return false;
         }
-        i = GameCenterUtil.a(this.packageName);
+        i = GameCenterUtil.b(this.packageName);
         if (i > 0)
         {
           int j = this.versionCode;
@@ -319,7 +318,7 @@ public class GameNoticeInfo
         return true;
       }
       if (i == 2) {
-        return GameCenterUtil.a(this.packageName) >= 1;
+        return GameCenterUtil.b(this.packageName) >= 1;
       }
     }
     return false;
@@ -330,8 +329,8 @@ public class GameNoticeInfo
     if (paramContext == null) {
       return;
     }
-    long l2 = GameCenterSpUtils.a("MILLISECONDS_DELAY");
-    long l3 = GameCenterSpUtils.a("MILLISECONDS_INTERVAL");
+    long l2 = GameCenterSpUtils.c("MILLISECONDS_DELAY");
+    long l3 = GameCenterSpUtils.c("MILLISECONDS_INTERVAL");
     long l1 = l2;
     if (l2 < 1L) {
       l1 = 300000L;
@@ -362,7 +361,7 @@ public class GameNoticeInfo
           {
             paramContext = new StringBuilder();
             paramContext.append(this.appName);
-            paramContext.append(HardCodeUtil.a(2131705155));
+            paramContext.append(HardCodeUtil.a(2131903045));
             this.title = paramContext.toString();
             this.jumpUrl = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
           }
@@ -371,7 +370,7 @@ public class GameNoticeInfo
     }
     else if (i == 2)
     {
-      paramContext = GameCenterUtil.a(this.packageName);
+      paramContext = GameCenterUtil.d(this.packageName);
       if (paramContext != null)
       {
         this.startTime = (paramContext.firstInstallTime + l1);
@@ -380,7 +379,7 @@ public class GameNoticeInfo
         {
           paramContext = new StringBuilder();
           paramContext.append(this.appName);
-          paramContext.append(HardCodeUtil.a(2131705154));
+          paramContext.append(HardCodeUtil.a(2131903044));
           this.title = paramContext.toString();
           this.jumpUrl = String.format("https://speed.gamecenter.qq.com/pushgame/v1/detail?appid=%s&_wv=2164260896&_wwv=448&autolaunch=1", new Object[] { this.appId });
         }
@@ -426,7 +425,7 @@ public class GameNoticeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.entity.GameNoticeInfo
  * JD-Core Version:    0.7.0.1
  */

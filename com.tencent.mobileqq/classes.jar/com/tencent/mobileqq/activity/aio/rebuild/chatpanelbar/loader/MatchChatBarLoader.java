@@ -21,42 +21,34 @@ public class MatchChatBarLoader
   
   protected void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie) {}
   
-  public boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
-  {
-    return (paramSessionInfo.a == 1044) || (paramSessionInfo.a == 1045);
-  }
-  
   protected void c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
   {
     if (QLog.isColorLevel()) {
       QLog.d("MatchChatBarLoader", 2, "[loadDefaultAioIcons]");
     }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelChatpanelbarChatPanelBarContext.a().d();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.c);
-    paramBaseChatPie = this.jdField_a_of_type_JavaUtilList;
-    if (bool) {
-      paramSessionInfo = AIOPanelUtiles.r;
-    } else {
-      paramSessionInfo = AIOPanelUtiles.n;
+    boolean bool = this.c.a().i();
+    this.a.clear();
+    if (HotPicManager.a(paramQQAppInterface).j()) {
+      this.a.add(AIOPanelUtiles.O);
     }
-    paramBaseChatPie.add(paramSessionInfo);
-    this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.u);
-    if (HotPicManager.a(paramQQAppInterface).b()) {
-      this.jdField_a_of_type_JavaUtilList.add(AIOPanelUtiles.N);
-    }
-    paramSessionInfo = this.jdField_a_of_type_JavaUtilList;
+    paramSessionInfo = this.a;
     if (bool) {
-      paramQQAppInterface = AIOPanelUtiles.k;
+      paramQQAppInterface = AIOPanelUtiles.l;
     } else {
-      paramQQAppInterface = AIOPanelUtiles.g;
+      paramQQAppInterface = AIOPanelUtiles.h;
     }
     paramSessionInfo.add(paramQQAppInterface);
+    this.a.add(AIOPanelUtiles.x);
+  }
+  
+  public boolean f(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, BaseChatPie paramBaseChatPie)
+  {
+    return (paramSessionInfo.a == 1044) || (paramSessionInfo.a == 1045);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.loader.MatchChatBarLoader
  * JD-Core Version:    0.7.0.1
  */

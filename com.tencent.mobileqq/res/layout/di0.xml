@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/oao" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <com.tencent.xweb.extension.video.ClickableFrameLayout android:id="@id/oam" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.xweb.extension.video.VideoStatusLayout android:layout_gravity="center" android:id="@id/oap" android:layout_width="120.0dip" android:layout_height="120.0dip" />
+        </com.tencent.xweb.extension.video.ClickableFrameLayout>
+        <ProgressBar android:layout_gravity="center" android:id="@id/p2u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/aaz" />
+        <ImageView android:id="@id/nyc" android:visibility="invisible" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/oar" android:background="#66181818" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/nye" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="19.0dip" android:src="@drawable/hxe" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="15.0dip" android:textColor="#ffffffff" android:id="@id/qk5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+            <FrameLayout android:id="@id/p07" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerVertical="true">
+                <ImageView android:id="@id/p03" android:background="#ff9c9a99" style="@style/ab0" />
+                <ImageView android:id="@id/p05" android:background="#ffcdcdcc" style="@style/ab0" />
+                <ImageView android:id="@id/p04" android:background="#ffffffff" style="@style/ab0" />
+                <ImageView android:id="@id/p06" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:paddingBottom="12.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/hvy" />
+            </FrameLayout>
+            <TextView android:textSize="15.0dip" android:textColor="#ffffffff" android:id="@id/qqa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        </LinearLayout>
+        <ImageView android:id="@id/nyb" android:paddingRight="2.0dip" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="14.0dip" android:src="@drawable/hwt" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+    </LinearLayout>
+</LinearLayout>

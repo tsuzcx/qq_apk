@@ -2,25 +2,25 @@ package com.tencent.av.ui.funchat.zimu;
 
 public class IZimuItemView$FontPara
 {
-  public float a;
   public int a;
   public int b;
+  public float c;
   
   IZimuItemView$FontPara(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramInt3;
+    this.c = paramInt3;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("_");
     localStringBuilder.append(this.b);
     localStringBuilder.append("_");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.c);
     return localStringBuilder.toString();
   }
 }

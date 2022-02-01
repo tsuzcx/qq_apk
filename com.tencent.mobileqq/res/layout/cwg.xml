@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="39.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/qcircle_skin_color_bg_default" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="horizontal" android:id="@id/o8l" android:layout_width="wrap_content" android:layout_height="29.0dip" android:layout_marginTop="10.0dip">
-            <TextView android:textSize="14.0dip" android:layout_gravity="center_vertical" android:id="@id/o8o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="5.0dip" android:text="更多" android:singleLine="true" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/o8m" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/i_0" />
-        </LinearLayout>
-        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/o8e" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="-12.0dip" android:layout_marginTop="5.0dip" android:text="7" android:includeFontPadding="false" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/du6" android:padding="14.0dip" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="@dimen/bnw" android:src="@drawable/qcircle_skin_icon_nav_back" android:scaleType="fitCenter" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/qcircle_skin_color_text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/y1p" android:layout_centerInParent="true" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/qcircle_skin_color_text_ghost" android:gravity="center" android:id="@id/ql7" android:background="@drawable/qcircle_skin_btn_small_primary_normal" android:layout_width="81.0dip" android:layout_height="46.0dip" android:layout_marginRight="4.0dip" android:scaleType="fitCenter" android:text="@string/y1n" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/qcircle_skin_color_text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:text="@string/y1m" />
+    <LinearLayout android:background="@drawable/qcircle_skin_bg_input_radius16px" android:layout_width="fill_parent" android:layout_height="201.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="12.0dip">
+        <com.tencent.biz.qqcircle.widgets.comment.CommentEditText android:textSize="16.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:gravity="top" android:id="@id/bys" android:background="@color/ajr" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="13.0dip" android:includeFontPadding="false" />
     </LinearLayout>
+    <RelativeLayout android:id="@id/pwa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="20.0dip">
+        <ImageView android:id="@id/o9g" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/qcircle_skin_icon_general_hashtag_primary" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/qcircle_skin_color_text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/y1o" android:layout_toRightOf="@id/o9g" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/qcircle_skin_icon_general_arrow_right_primary" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/pef" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="20.0dip" />
+    <RelativeLayout android:id="@id/pwf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="20.0dip">
+        <ImageView android:id="@id/o9y" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/qcircle_skin_icon_general_people_primary" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/qcircle_skin_color_text_primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/y1q" android:layout_toRightOf="@id/o9y" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/o9v" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/qcircle_skin_icon_general_add_primary" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/pem" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="20.0dip" />
 </LinearLayout>

@@ -16,30 +16,30 @@ import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.RecommendPerson;
 
 public class RecommendMember
 {
-  public int a;
   public String a;
-  public ArrayList<RecommendLabel> a;
-  public int b;
   public String b;
-  public String c;
+  public int c;
+  public int d;
+  public ArrayList<RecommendLabel> e;
+  public String f;
   
   public static RecommendMember a(oidb_0xe3b.RecommendPerson paramRecommendPerson)
   {
     RecommendMember localRecommendMember = new RecommendMember();
-    localRecommendMember.jdField_a_of_type_JavaLangString = String.valueOf(paramRecommendPerson.uint64_uin.get());
+    localRecommendMember.a = String.valueOf(paramRecommendPerson.uint64_uin.get());
     Object localObject;
     if (paramRecommendPerson.bytes_title.has()) {
       localObject = paramRecommendPerson.bytes_title.get().toStringUtf8();
     } else {
       localObject = "";
     }
-    localRecommendMember.jdField_b_of_type_JavaLangString = ((String)localObject);
+    localRecommendMember.b = ((String)localObject);
     if (paramRecommendPerson.bytes_reason.has()) {
       localObject = paramRecommendPerson.bytes_reason.get().toStringUtf8();
     } else {
       localObject = "";
     }
-    localRecommendMember.c = ((String)localObject);
+    localRecommendMember.f = ((String)localObject);
     boolean bool = paramRecommendPerson.uint32_age.has();
     int j = -1;
     if (bool) {
@@ -47,16 +47,16 @@ public class RecommendMember
     } else {
       i = -1;
     }
-    localRecommendMember.jdField_a_of_type_Int = i;
+    localRecommendMember.c = i;
     int i = j;
     if (paramRecommendPerson.uint32_gender.has()) {
       i = paramRecommendPerson.uint32_gender.get();
     }
-    localRecommendMember.jdField_b_of_type_Int = i;
+    localRecommendMember.d = i;
     if (paramRecommendPerson.rpt_msg_label.has())
     {
       paramRecommendPerson = paramRecommendPerson.rpt_msg_label.get();
-      localRecommendMember.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRecommendPerson.size());
+      localRecommendMember.e = new ArrayList(paramRecommendPerson.size());
       localObject = paramRecommendPerson.iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -75,7 +75,7 @@ public class RecommendMember
         if (localLabel.edging_color.has()) {
           localRecommendLabel.edging_color = Color.rgb(((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_b.get());
         }
-        localRecommendMember.jdField_a_of_type_JavaUtilArrayList.add(localRecommendLabel);
+        localRecommendMember.e.add(localRecommendLabel);
       }
     }
     return localRecommendMember;
@@ -83,7 +83,7 @@ public class RecommendMember
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.recommend.data.RecommendMember
  * JD-Core Version:    0.7.0.1
  */

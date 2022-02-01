@@ -8,8 +8,6 @@ import com.tencent.mobileqq.data.MessageForArkApp;
 public class ArkMsgUpdateCallback
   implements IMsgUpdateCallback
 {
-  public void a(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
-  
   public boolean a(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     return false;
@@ -17,7 +15,9 @@ public class ArkMsgUpdateCallback
   
   public void b(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
   
-  public boolean b(AIOContext paramAIOContext, ChatMessage paramChatMessage)
+  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  
+  public boolean d(AIOContext paramAIOContext, ChatMessage paramChatMessage)
   {
     boolean bool;
     if (((paramChatMessage instanceof MessageForArkApp)) && (((MessageForArkApp)paramChatMessage).getProcessState() == 1002)) {
@@ -29,11 +29,11 @@ public class ArkMsgUpdateCallback
     return false;
   }
   
-  public void c(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
+  public void e(AIOContext paramAIOContext, ChatMessage paramChatMessage) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ArkMsgUpdateCallback
  * JD-Core Version:    0.7.0.1
  */

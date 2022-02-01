@@ -3,6 +3,8 @@ package com.tencent.mobileqq.app;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,12 +28,14 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.mobileqq.widget.QQTabHost;
 import com.tencent.mobileqq.widget.TabDragAnimationView;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,60 +49,49 @@ public class FrameFragment
   extends QBaseFragment
   implements TabHost.OnTabChangeListener, TabHost.TabContentFactory, OnDrawCompleteListener
 {
-  public static int a = 0;
-  public static boolean d = true;
-  public static boolean e = false;
-  public static boolean f = true;
-  long jdField_a_of_type_Long = -1L;
-  public Intent a;
-  public SharedPreferences a;
-  public Handler a;
-  protected Vibrator a;
-  public SparseArray<TabDragAnimationView> a;
-  public View a;
-  public TabFrameControllerImpl.FrameDoubleTapListener a;
-  public DragFrameLayout a;
-  private Frame jdField_a_of_type_ComTencentMobileqqAppFrame;
-  public QQBlurView a;
-  public QQTabHost a;
-  public Runnable a;
-  public HashMap<String, View> a;
-  private final Map<String, Frame> jdField_a_of_type_JavaUtilMap = new HashMap(4);
-  public AppRuntime a;
-  public MqqHandler a;
-  public View[] a;
-  public long b;
-  public Intent b;
-  public SparseArray<TextView> b;
-  String b;
-  public HashMap<String, Object> b;
-  public String c;
-  public HashMap<String, TabHost.TabSpec> c;
-  public String d = "";
-  protected String e;
-  public boolean g = false;
-  public boolean h = true;
-  protected boolean i = false;
-  public boolean j = false;
-  public boolean k = false;
-  protected boolean l = false;
-  public boolean m = false;
-  
-  public FrameFragment()
-  {
-    this.jdField_a_of_type_AndroidContentIntent = null;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = null;
-    this.jdField_a_of_type_AndroidUtilSparseArray = null;
-    this.jdField_b_of_type_AndroidUtilSparseArray = null;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_b_of_type_AndroidContentIntent = null;
-    this.jdField_a_of_type_JavaUtilHashMap = null;
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidContentSharedPreferences = null;
-    this.jdField_b_of_type_JavaUtilHashMap = null;
-    this.jdField_a_of_type_JavaLangRunnable = new FrameFragment.1(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHomeImplTabFrameControllerImpl$FrameDoubleTapListener = new TabFrameControllerImpl.FrameDoubleTapListener(this);
-  }
+  public static boolean m = true;
+  public static int n = 0;
+  public static boolean o = false;
+  public static boolean p = true;
+  public AppRuntime A;
+  public SparseArray<TabDragAnimationView> B = null;
+  public SparseArray<TextView> C = null;
+  long D = -1L;
+  String E = null;
+  public Intent F = null;
+  public HashMap<String, View> G = null;
+  public String H = "";
+  public String I = "";
+  public boolean J = true;
+  public QQBlurView K;
+  protected boolean L = false;
+  public SharedPreferences M = null;
+  public boolean N = false;
+  protected String O;
+  public boolean P = false;
+  public DragFrameLayout Q;
+  public HashMap<String, Object> R = null;
+  public long S;
+  protected Vibrator T;
+  public Runnable U = new FrameFragment.1(this);
+  public HashMap<String, TabHost.TabSpec> V;
+  public View W;
+  protected boolean X = false;
+  public boolean Y = false;
+  public MqqHandler Z;
+  private final Map<String, Frame> a = new HashMap(4);
+  public TabFrameControllerImpl.FrameDoubleTapListener aa = new TabFrameControllerImpl.FrameDoubleTapListener(this);
+  private Frame b;
+  public Handler q;
+  public Intent r = null;
+  public QQTabHost s;
+  public View t;
+  public ArrayList<TabHost.TabSpec> u = new ArrayList();
+  public ArrayList<TabHost.TabSpec> v = new ArrayList();
+  public boolean w = false;
+  public boolean x = false;
+  public boolean y = false;
+  public View[] z = null;
   
   private String a()
   {
@@ -117,58 +110,48 @@ public class FrameFragment
     return ((ITabFrameController)QRoute.api(ITabFrameController.class)).getTabViews(paramLayoutInflater);
   }
   
-  public int a()
+  public void A()
   {
-    QQTabHost localQQTabHost = this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost;
-    if (localQQTabHost != null) {
-      return localQQTabHost.getCurrentTab();
+    QQBlurView localQQBlurView = this.K;
+    if (localQQBlurView != null)
+    {
+      localQQBlurView.b();
+      this.L = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("FrameActivity", 2, "getCurrentTab");
-    }
-    return 0;
   }
   
-  public Frame a()
+  public void B()
   {
-    QQTabHost localQQTabHost = this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost;
-    if (localQQTabHost == null)
+    QQBlurView localQQBlurView = this.K;
+    if (localQQBlurView != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FrameActivity", 2, "mTabHost=null");
-      }
-      return null;
+      localQQBlurView.a();
+      this.L = false;
     }
-    return (Frame)this.jdField_a_of_type_JavaUtilMap.get(localQQTabHost.getCurrentTabTag());
+  }
+  
+  public QBaseActivity C()
+  {
+    return super.getQBaseActivity();
   }
   
   public Frame a(Class<? extends Frame> paramClass)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.a;
     if (localMap != null) {
       return (Frame)localMap.get(paramClass.getName());
     }
     return null;
   }
   
-  public QBaseActivity a()
-  {
-    return super.getQBaseActivity();
-  }
-  
   public RedTouch a(String paramString)
   {
-    return (RedTouch)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public HashMap<String, View> a()
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    return (RedTouch)this.G.get(paramString);
   }
   
   public void a(int paramInt)
   {
-    QQTabHost localQQTabHost = this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost;
+    QQTabHost localQQTabHost = this.s;
     if (localQQTabHost != null) {
       localQQTabHost.setCurrentTab(paramInt);
     }
@@ -176,14 +159,14 @@ public class FrameFragment
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    TabDragAnimationView localTabDragAnimationView = (TabDragAnimationView)this.B.get(paramInt1);
     if (localTabDragAnimationView != null)
     {
-      if (this.h) {
+      if (this.J) {
         paramInt2 = -1;
       }
       localTabDragAnimationView.setFaceDrawable(paramInt2);
-      if (this.h) {
+      if (this.J) {
         paramInt3 = -1;
       }
       localTabDragAnimationView.setFacePressedDrawable(paramInt3);
@@ -192,7 +175,7 @@ public class FrameFragment
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Frame localFrame = a();
+    Frame localFrame = v();
     if (localFrame != null) {
       localFrame.a(paramInt1, paramInt2, paramIntent);
     }
@@ -215,18 +198,18 @@ public class FrameFragment
       QLog.e("FrameActivity", 1, "disableBlur: tabWidget == null");
       return;
     }
-    paramView.setBackgroundResource(2130850362);
-    int n = 0;
+    paramView.setBackgroundResource(2130852153);
+    int i = 0;
     for (;;)
     {
-      paramView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-      if (n >= paramView.length) {
+      paramView = this.z;
+      if (i >= paramView.length) {
         break;
       }
-      if (paramView[n] != null) {
-        paramView[n].setBackgroundResource(2130850909);
+      if (paramView[i] != null) {
+        paramView[i].setBackgroundResource(2130852761);
       }
-      n += 1;
+      i += 1;
     }
   }
   
@@ -238,134 +221,80 @@ public class FrameFragment
       QLog.e("FrameActivity", 1, "enableBlur: tabWidget == null");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(paramView2);
-    paramView2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    this.K.setVisibility(0);
+    this.K.a(paramView2);
+    paramView2 = this.K;
     paramView2.b(paramView2);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c(-1);
-    paramView2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+    this.K.a(8);
+    this.K.c(-1);
+    paramView2 = this.K;
     if (Build.VERSION.SDK_INT < 24) {
       bool = false;
     }
     paramView2.setEnableBlur(bool);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setDisableBlurDrawableRes(2130840680);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(new FrameFragment.2(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.d();
-    if (!this.i) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a();
+    this.K.setDisableBlurDrawableRes(2130841458);
+    if (QQTheme.isSimpleWhite()) {
+      this.K.a(new ColorDrawable(Color.parseColor("#E5FFFFFF")));
+    } else {
+      this.K.a(new ColorDrawable(Color.parseColor("#DAFAFAFC")));
+    }
+    this.K.a(new FrameFragment.2(this));
+    this.K.d();
+    if (!this.L) {
+      this.K.a();
     }
     paramView1.setBackgroundColor(0);
-    int n = 0;
+    int i = 0;
     for (;;)
     {
-      paramView1 = this.jdField_a_of_type_ArrayOfAndroidViewView;
-      if (n >= paramView1.length) {
+      paramView1 = this.z;
+      if (i >= paramView1.length) {
         break;
       }
-      if (paramView1[n] != null) {
-        paramView1[n].setBackgroundColor(0);
+      if (paramView1[i] != null) {
+        paramView1[i].setBackgroundColor(0);
       }
-      n += 1;
+      i += 1;
     }
   }
   
   public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo, IRedTouchManager paramIRedTouchManager) {}
   
-  public void a(Class<? extends Frame> paramClass)
+  public void a(Constants.LogoutReason paramLogoutReason)
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).a(paramLogoutReason);
+    }
+  }
+  
+  public void b(Class<? extends Frame> paramClass)
+  {
+    if (this.a != null)
     {
       Object localObject = a(paramClass);
       if (localObject != null) {
         ((Frame)localObject).d();
       }
       paramClass = paramClass.getName();
-      this.jdField_a_of_type_JavaUtilMap.remove(paramClass);
-      localObject = this.jdField_c_of_type_JavaUtilHashMap;
+      this.a.remove(paramClass);
+      localObject = this.V;
       if (localObject != null) {
         ((HashMap)localObject).remove(paramClass);
       }
     }
   }
   
-  public void a(Constants.LogoutReason paramLogoutReason)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).a(paramLogoutReason);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.h;
-  }
-  
-  public String b()
-  {
-    Frame localFrame = a();
-    if (localFrame != null) {
-      return localFrame.a();
-    }
-    return null;
-  }
-  
-  public void b()
-  {
-    long l1 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-    ((StringBuilder)localObject).append("TabSwitch, cost=");
-    ((StringBuilder)localObject).append(l1);
-    Log.i("AutoMonitor", ((StringBuilder)localObject).toString());
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
-      ((StringBuilder)localObject).append("TabSwitch, cost=");
-      ((StringBuilder)localObject).append(l1);
-      QLog.d("Q.PerfTrace", 2, ((StringBuilder)localObject).toString());
-    }
-    localObject = StatisticCollector.getInstance(BaseApplication.getContext());
-    String str = a();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("actSwitch");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    ((StatisticCollector)localObject).collectPerformance(str, localStringBuilder.toString(), true, l1, 0L, null, null);
-    localObject = a();
-    if (localObject != null) {
-      ((Frame)localObject).q();
-    }
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).onDrawCompleteAfter(this);
-  }
-  
-  public String c()
-  {
-    return this.e;
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameActivity", 2, "onAccountChanged");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((Frame)localIterator.next()).f();
-    }
-  }
-  
   public View createTabContent(String paramString)
   {
-    if (a() == null)
+    if (C() == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("FrameFragment", 2, "FrameFragment.createTabContent getActivity == null");
       }
       return null;
     }
-    if (a().getAppRuntime() == null)
+    if (C().getAppRuntime() == null)
     {
       QLog.e("FrameFragment", 1, "FrameFragment.createTabContent appRuntime == null");
       return null;
@@ -374,51 +303,79 @@ public class FrameFragment
     if (localFrame == null) {
       return null;
     }
-    localFrame.a(a());
-    View localView = localFrame.a(a().getLayoutInflater());
+    localFrame.a(C());
+    View localView = localFrame.a(C().getLayoutInflater());
     localFrame.a(localView);
     localFrame.a();
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, localFrame);
+    this.a.put(paramString, localFrame);
     return localView;
+  }
+  
+  public void d()
+  {
+    long l = SystemClock.uptimeMillis() - this.D;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.E);
+    ((StringBuilder)localObject).append("TabSwitch, cost=");
+    ((StringBuilder)localObject).append(l);
+    Log.i("AutoMonitor", ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.E);
+      ((StringBuilder)localObject).append("TabSwitch, cost=");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("Q.PerfTrace", 2, ((StringBuilder)localObject).toString());
+    }
+    localObject = StatisticCollector.getInstance(BaseApplication.getContext());
+    String str = a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("actSwitch");
+    localStringBuilder.append(this.E);
+    ((StatisticCollector)localObject).collectPerformance(str, localStringBuilder.toString(), true, l, 0L, null, null);
+    localObject = v();
+    if (localObject != null) {
+      ((Frame)localObject).v();
+    }
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).onDrawCompleteAfter(this);
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameActivity", 2, "onAccountChanged");
+    }
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext()) {
+      ((Frame)localIterator.next()).f();
+    }
   }
   
   public String getCIOPageName()
   {
-    if (a() != null) {
-      return a().getClass().getName();
+    if (v() != null) {
+      return v().getClass().getName();
     }
     return super.getCIOPageName();
   }
   
-  protected void h()
+  protected void k()
   {
     ((ITabFrameController)QRoute.api(ITabFrameController.class)).handleThemeChanged(this);
   }
   
-  protected void n()
+  public String l()
   {
-    QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-    if (localQQBlurView != null) {
-      localQQBlurView.b();
+    Frame localFrame = v();
+    if (localFrame != null) {
+      return localFrame.cy_();
     }
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).doFramesPauseAfter(this);
-    ((ITabFrameController)QRoute.api(ITabFrameController.class)).setCurrentIntentParams(this);
-  }
-  
-  protected void o()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-    if (localObject != null) {
-      ((QQBlurView)localObject).c();
-    }
-    localObject = this.jdField_a_of_type_JavaLangRunnable;
-    this.jdField_a_of_type_JavaLangRunnable = null;
-    ThreadManager.getSubThreadHandler().removeCallbacks((Runnable)localObject);
+    return null;
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.a.values().iterator();
     while (localIterator.hasNext()) {
       ((Frame)localIterator.next()).a(paramConfiguration);
     }
@@ -426,7 +383,7 @@ public class FrameFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559323, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131625273, null);
     AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -434,7 +391,7 @@ public class FrameFragment
   public void onDestroy()
   {
     super.onDestroy();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    Iterator localIterator = this.a.values().iterator();
     while (localIterator.hasNext()) {
       ((Frame)localIterator.next()).d();
     }
@@ -443,12 +400,12 @@ public class FrameFragment
   public void onPause()
   {
     super.onPause();
-    if ((((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch()) && (!this.l)) {
+    if ((((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch()) && (!this.X)) {
       return;
     }
-    Frame localFrame = a();
+    Frame localFrame = v();
     if (localFrame != null) {
-      localFrame.ab_();
+      localFrame.bQ_();
     }
   }
   
@@ -458,8 +415,8 @@ public class FrameFragment
     if (((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch()) {
       return;
     }
-    Frame localFrame = a();
-    if ((localFrame != null) && (localFrame.b())) {
+    Frame localFrame = v();
+    if ((localFrame != null) && (localFrame.cz_())) {
       localFrame.a(false);
     }
   }
@@ -470,19 +427,19 @@ public class FrameFragment
     if (((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch()) {
       return;
     }
-    Frame localFrame = a();
+    Frame localFrame = v();
     if (localFrame != null) {
-      localFrame.V_();
+      localFrame.bS_();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if ((((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch()) && (!this.l)) {
+    if ((((ITabFrameController)QRoute.api(ITabFrameController.class)).isFragmentNotMatch()) && (!this.X)) {
       return;
     }
-    Frame localFrame = a();
+    Frame localFrame = v();
     if (localFrame != null) {
       localFrame.c();
     }
@@ -492,70 +449,112 @@ public class FrameFragment
   {
     if (paramString != null)
     {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      int n = paramString.lastIndexOf(".");
-      if (n >= 0) {
-        this.jdField_b_of_type_JavaLangString = paramString.substring(n + 1, paramString.length());
+      this.E = paramString;
+      int i = paramString.lastIndexOf(".");
+      if (i >= 0) {
+        this.E = paramString.substring(i + 1, paramString.length());
       }
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQTabHost;
+      this.D = SystemClock.uptimeMillis();
+      localObject1 = this.s;
       if ((localObject1 instanceof QQTabHost)) {
         ((QQTabHost)localObject1).setFirstDrawTrue();
       }
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFrame;
+    Object localObject1 = this.b;
     if (localObject1 != null)
     {
-      ((Frame)localObject1).ab_();
-      this.jdField_a_of_type_ComTencentMobileqqAppFrame.C();
+      ((Frame)localObject1).bQ_();
+      this.b.S();
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppFrame;
-    this.jdField_a_of_type_ComTencentMobileqqAppFrame = a();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppFrame;
-    if ((localObject2 != null) && (((Frame)localObject2).b())) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFrame.a(true);
+    localObject1 = this.b;
+    this.b = v();
+    Object localObject2 = this.b;
+    if ((localObject2 != null) && (((Frame)localObject2).cz_())) {
+      this.b.a(true);
     }
-    localObject2 = this.e;
-    this.e = paramString;
+    localObject2 = this.O;
+    this.O = paramString;
     ((ITabFrameController)QRoute.api(ITabFrameController.class)).updateUIAfterTabChange(this, paramString, (String)localObject2, (Frame)localObject1);
   }
   
-  protected void p()
+  protected void r()
+  {
+    QQBlurView localQQBlurView = this.K;
+    if (localQQBlurView != null) {
+      localQQBlurView.b();
+    }
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).doFramesPauseAfter(this);
+    ((ITabFrameController)QRoute.api(ITabFrameController.class)).setCurrentIntentParams(this);
+  }
+  
+  protected void s()
+  {
+    Object localObject = this.K;
+    if (localObject != null) {
+      ((QQBlurView)localObject).c();
+    }
+    localObject = this.U;
+    this.U = null;
+    ThreadManager.getSubThreadHandler().removeCallbacks((Runnable)localObject);
+  }
+  
+  protected void t()
   {
     ((ITabFrameController)QRoute.api(ITabFrameController.class)).onResumeUpdateSound(this);
   }
   
-  public void q()
+  public boolean u()
   {
-    Frame localFrame = a();
+    boolean bool = "2971".equals(QQTheme.getCurrentThemeId());
+    return (this.J) || (bool);
+  }
+  
+  public Frame v()
+  {
+    QQTabHost localQQTabHost = this.s;
+    if (localQQTabHost == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FrameActivity", 2, "mTabHost=null");
+      }
+      return null;
+    }
+    return (Frame)this.a.get(localQQTabHost.getCurrentTabTag());
+  }
+  
+  public int w()
+  {
+    QQTabHost localQQTabHost = this.s;
+    if (localQQTabHost != null) {
+      return localQQTabHost.getCurrentTab();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("FrameActivity", 2, "getCurrentTab");
+    }
+    return 0;
+  }
+  
+  public void x()
+  {
+    Frame localFrame = v();
     if (localFrame != null) {
-      localFrame.C();
+      localFrame.S();
     }
   }
   
-  public void r()
+  public HashMap<String, View> y()
   {
-    QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-    if (localQQBlurView != null)
-    {
-      localQQBlurView.b();
-      this.i = true;
-    }
+    return this.G;
   }
   
-  public void s()
+  public String z()
   {
-    QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
-    if (localQQBlurView != null)
-    {
-      localQQBlurView.a();
-      this.i = false;
-    }
+    return this.O;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameFragment
  * JD-Core Version:    0.7.0.1
  */

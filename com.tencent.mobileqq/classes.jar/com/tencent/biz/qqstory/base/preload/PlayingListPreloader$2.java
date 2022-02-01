@@ -14,20 +14,20 @@ class PlayingListPreloader$2
   
   public void a(DownloadUrlManager.DownloadUrlQueryResult paramDownloadUrlQueryResult)
   {
-    if ((paramDownloadUrlQueryResult.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!FileCacheUtils.a(this.jdField_a_of_type_JavaIoFile)))
+    if ((paramDownloadUrlQueryResult.e) && (this.a.exists()) && (!FileCacheUtils.a(this.a)))
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      SLog.d("Q.qqstory.download.preload.PlayingListPreloader", "%s - %d found orphan tmp , delete it", new Object[] { paramDownloadUrlQueryResult.jdField_a_of_type_JavaLangString, Integer.valueOf(paramDownloadUrlQueryResult.jdField_a_of_type_Int) });
+      this.a.delete();
+      SLog.d("Q.qqstory.download.preload.PlayingListPreloader", "%s - %d found orphan tmp , delete it", new Object[] { paramDownloadUrlQueryResult.a, Integer.valueOf(paramDownloadUrlQueryResult.b) });
     }
-    SLog.d("Q.qqstory.download.preload.PlayingListPreloader", "triggerDownload : supportStreamPlay=true : TVK preload : vid=%s, url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramDownloadUrlQueryResult.b });
-    if (paramDownloadUrlQueryResult.b != null) {
-      TVKPreloader.a(new TVKPreloader.PreloadItem(this.jdField_a_of_type_JavaLangString, paramDownloadUrlQueryResult.b, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
+    SLog.d("Q.qqstory.download.preload.PlayingListPreloader", "triggerDownload : supportStreamPlay=true : TVK preload : vid=%s, url=%s", new Object[] { this.b, paramDownloadUrlQueryResult.c });
+    if (paramDownloadUrlQueryResult.c != null) {
+      TVKPreloader.a(new TVKPreloader.PreloadItem(this.b, paramDownloadUrlQueryResult.c, this.a.getAbsolutePath(), ""));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PlayingListPreloader.2
  * JD-Core Version:    0.7.0.1
  */

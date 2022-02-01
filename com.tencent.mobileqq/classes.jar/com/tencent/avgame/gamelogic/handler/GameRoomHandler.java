@@ -150,7 +150,7 @@ public class GameRoomHandler
   
   private void a(AvGameNotify.NotifyMsg paramNotifyMsg, long paramLong1, long paramLong2)
   {
-    if (!a(paramNotifyMsg))
+    if (!c(paramNotifyMsg))
     {
       QLog.d("avgame_logic.GameRoomHandler", 2, "handlePkUserMatchTimeout() poolId or pkId wrong ");
       return;
@@ -171,7 +171,7 @@ public class GameRoomHandler
   
   private void a(boolean paramBoolean, AvGameNotify.NotifyMsg paramNotifyMsg, long paramLong)
   {
-    if (!a(paramNotifyMsg))
+    if (!c(paramNotifyMsg))
     {
       QLog.d("avgame_logic.GameRoomHandler", 2, "handlePkRoomCreateOrEnterPush() poolId or pkId wrong ");
       return;
@@ -181,7 +181,7 @@ public class GameRoomHandler
     if (paramBoolean)
     {
       AvGameNotify.NotifyPKUserCreateRoom localNotifyPKUserCreateRoom = (AvGameNotify.NotifyPKUserCreateRoom)paramNotifyMsg.pk_user_create_room.get();
-      IGameEngine.a().a().b(paramNotifyMsg.realPoolID.get());
+      IGameEngine.I().s().c(paramNotifyMsg.realPoolID.get());
       l2 = 0L;
     }
     else
@@ -192,27 +192,6 @@ public class GameRoomHandler
       GameUtil.a("avgame_logic.GameRoomHandler", "handlePkRoomCreateOrEnterPush", null, new MessageMicro[] { paramNotifyMsg });
     }
     ObserverCenter.a().b(GameRoomObserver.class, 26, true, new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean), Long.valueOf(l1), Boolean.valueOf(true), Long.valueOf(l2) });
-  }
-  
-  private boolean a(AvGameNotify.NotifyMsg paramNotifyMsg)
-  {
-    int i = paramNotifyMsg.poolID.get();
-    int j = paramNotifyMsg.realPoolID.get();
-    int k = paramNotifyMsg.pkID.get();
-    int m = IGameEngine.a().a().jdField_b_of_type_Int;
-    if (((m != i) && (m != j)) || ((IGameEngine.a().a().c != k) && (m != 0)))
-    {
-      paramNotifyMsg = new StringBuilder();
-      paramNotifyMsg.append("checkPkPushValid() ");
-      paramNotifyMsg.append(i);
-      paramNotifyMsg.append(" ");
-      paramNotifyMsg.append(j);
-      paramNotifyMsg.append(" ");
-      paramNotifyMsg.append(m);
-      QLog.d("avgame_logic.GameRoomHandler", 2, paramNotifyMsg.toString());
-      return false;
-    }
-    return true;
   }
   
   private List<Long> b(List<AvGameCommon.UinWrap> paramList)
@@ -227,8 +206,8 @@ public class GameRoomHandler
   
   private void b(AvGameNotify.NotifyMsg paramNotifyMsg)
   {
-    if (paramNotifyMsg.poolID.get() == IGameEngine.a().a().j()) {
-      IGameEngine.a().a().b(paramNotifyMsg.realPoolID.get());
+    if (paramNotifyMsg.poolID.get() == IGameEngine.I().s().P()) {
+      IGameEngine.I().s().c(paramNotifyMsg.realPoolID.get());
     }
   }
   
@@ -239,7 +218,7 @@ public class GameRoomHandler
     AvGameNotify.NotifyPKUserFail localNotifyPKUserFail = null;
     Object localObject1 = null;
     GameUtil.a("avgame_logic.GameRoomHandler", "handlePkEndUserResult", null, new MessageMicro[] { paramNotifyMsg });
-    if (!a(paramNotifyMsg))
+    if (!c(paramNotifyMsg))
     {
       QLog.d("avgame_logic.GameRoomHandler", 2, "handlePkEndUserResult() poolId or pkId wrong ");
       return;
@@ -401,20 +380,6 @@ public class GameRoomHandler
     ObserverCenter.a().b(GameRoomObserver.class, 12, false, new Object[] { Long.valueOf(l), Integer.valueOf(-1), localInteger, null });
   }
   
-  private void c(AvGameNotify.NotifyMsg paramNotifyMsg)
-  {
-    paramNotifyMsg = (AvGameNotify.NotifyPKPoolUserChange)paramNotifyMsg.pk_pool_user_change.get();
-    int i = paramNotifyMsg.opt.get();
-    int j = paramNotifyMsg.total.get();
-    if (paramNotifyMsg.uins.has()) {
-      paramNotifyMsg = paramNotifyMsg.uins.get();
-    } else {
-      paramNotifyMsg = new ArrayList(0);
-    }
-    paramNotifyMsg = b(paramNotifyMsg);
-    ObserverCenter.a().b(GameRoomObserver.class, 29, true, new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramNotifyMsg });
-  }
-  
   private void c(AvGameNotify.NotifyMsg paramNotifyMsg, long paramLong1, long paramLong2)
   {
     paramNotifyMsg = (AvGameNotify.RoomOwnerChangeGameS2CReq)paramNotifyMsg.change_game_req.get();
@@ -426,6 +391,27 @@ public class GameRoomHandler
     }
     GameUtil.a("avgame_logic.GameRoomHandler", "handlerChangeGamePush()", new String[] { "AvGameNotify.RoomOwnerChangeGameS2CReq" }, new MessageMicro[] { paramNotifyMsg });
     ObserverCenter.a().b(GameRoomObserver.class, 24, true, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(i) });
+  }
+  
+  private boolean c(AvGameNotify.NotifyMsg paramNotifyMsg)
+  {
+    int i = paramNotifyMsg.poolID.get();
+    int j = paramNotifyMsg.realPoolID.get();
+    int k = paramNotifyMsg.pkID.get();
+    int m = IGameEngine.I().s().g;
+    if (((m != i) && (m != j)) || ((IGameEngine.I().s().h != k) && (m != 0)))
+    {
+      paramNotifyMsg = new StringBuilder();
+      paramNotifyMsg.append("checkPkPushValid() ");
+      paramNotifyMsg.append(i);
+      paramNotifyMsg.append(" ");
+      paramNotifyMsg.append(j);
+      paramNotifyMsg.append(" ");
+      paramNotifyMsg.append(m);
+      QLog.d("avgame_logic.GameRoomHandler", 2, paramNotifyMsg.toString());
+      return false;
+    }
+    return true;
   }
   
   private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -477,6 +463,20 @@ public class GameRoomHandler
     }
   }
   
+  private void d(AvGameNotify.NotifyMsg paramNotifyMsg)
+  {
+    paramNotifyMsg = (AvGameNotify.NotifyPKPoolUserChange)paramNotifyMsg.pk_pool_user_change.get();
+    int i = paramNotifyMsg.opt.get();
+    int j = paramNotifyMsg.total.get();
+    if (paramNotifyMsg.uins.has()) {
+      paramNotifyMsg = paramNotifyMsg.uins.get();
+    } else {
+      paramNotifyMsg = new ArrayList(0);
+    }
+    paramNotifyMsg = b(paramNotifyMsg);
+    ObserverCenter.a().b(GameRoomObserver.class, 29, true, new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramNotifyMsg });
+  }
+  
   private void d(AvGameNotify.NotifyMsg paramNotifyMsg, long paramLong1, long paramLong2)
   {
     AvGameNotify.RoomUserChangeStatusS2CReq localRoomUserChangeStatusS2CReq = (AvGameNotify.RoomUserChangeStatusS2CReq)paramNotifyMsg.room_user_change_status_req.get();
@@ -506,7 +506,7 @@ public class GameRoomHandler
     //   6: aload_2
     //   7: ifnull +20 -> 27
     //   10: aload_2
-    //   11: invokevirtual 468	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   11: invokevirtual 445	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   14: ifeq +13 -> 27
     //   17: aload_3
     //   18: ifnull +9 -> 27
@@ -516,11 +516,11 @@ public class GameRoomHandler
     //   27: iconst_0
     //   28: istore 6
     //   30: aload_1
-    //   31: ldc_w 596
+    //   31: ldc_w 599
     //   34: aload 11
-    //   36: invokevirtual 600	com/tencent/qphone/base/remote/ToServiceMsg:getAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   36: invokevirtual 603	com/tencent/qphone/base/remote/ToServiceMsg:getAttribute	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   39: checkcast 73	java/lang/Integer
-    //   42: invokevirtual 603	java/lang/Integer:intValue	()I
+    //   42: invokevirtual 606	java/lang/Integer:intValue	()I
     //   45: istore 9
     //   47: iload 9
     //   49: iconst_2
@@ -532,9 +532,9 @@ public class GameRoomHandler
     //   60: istore 10
     //   62: iload 6
     //   64: ifeq +379 -> 443
-    //   67: new 605	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp
+    //   67: new 608	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp
     //   70: dup
-    //   71: invokespecial 606	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:<init>	()V
+    //   71: invokespecial 609	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:<init>	()V
     //   74: astore 11
     //   76: iconst_m1
     //   77: istore 4
@@ -542,39 +542,39 @@ public class GameRoomHandler
     //   81: istore 5
     //   83: aload 11
     //   85: aload_3
-    //   86: checkcast 473	[B
-    //   89: checkcast 473	[B
-    //   92: invokevirtual 607	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   86: checkcast 450	[B
+    //   89: checkcast 450	[B
+    //   92: invokevirtual 610	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   95: pop
     //   96: iload 4
     //   98: istore 5
     //   100: aload 11
-    //   102: getfield 608	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   105: invokevirtual 484	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   108: checkcast 483	trpc/qq_vgame/common/AvGameCommon$Result
-    //   111: getfield 487	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   102: getfield 611	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   105: invokevirtual 461	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   108: checkcast 460	trpc/qq_vgame/common/AvGameCommon$Result
+    //   111: getfield 464	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   114: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   117: istore 4
     //   119: iload 4
     //   121: istore 5
     //   123: aload 11
-    //   125: getfield 608	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   128: invokevirtual 484	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   131: checkcast 483	trpc/qq_vgame/common/AvGameCommon$Result
-    //   134: getfield 490	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   137: invokevirtual 347	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   140: invokevirtual 352	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   125: getfield 611	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   128: invokevirtual 461	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   131: checkcast 460	trpc/qq_vgame/common/AvGameCommon$Result
+    //   134: getfield 467	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   137: invokevirtual 324	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   140: invokevirtual 329	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   143: astore_1
     //   144: aload 11
-    //   146: getfield 611	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:pool_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   146: getfield 614	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:pool_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   149: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   152: istore 5
     //   154: aload 11
-    //   156: getfield 614	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:start_user_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   156: getfield 617	trpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp:start_user_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   159: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   162: istore 7
     //   164: aload 11
-    //   166: invokestatic 620	com/tencent/avgame/gamelogic/data/PkCJOperationData:convertFromPB	(Ltrpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp;)Lcom/tencent/avgame/gamelogic/data/PkCJOperationData;
+    //   166: invokestatic 623	com/tencent/avgame/gamelogic/data/PkCJOperationData:convertFromPB	(Ltrpc/qq_vgame/pk_manager/AvGamePkManager$PKOperationRsp;)Lcom/tencent/avgame/gamelogic/data/PkCJOperationData;
     //   169: astore_2
     //   170: goto +77 -> 247
     //   173: astore_2
@@ -594,23 +594,23 @@ public class GameRoomHandler
     //   197: istore 5
     //   199: iconst_0
     //   200: istore 6
-    //   202: new 225	java/lang/StringBuilder
+    //   202: new 469	java/lang/StringBuilder
     //   205: dup
-    //   206: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   206: invokespecial 470	java/lang/StringBuilder:<init>	()V
     //   209: astore_3
     //   210: aload_3
-    //   211: ldc_w 622
-    //   214: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: ldc_w 625
+    //   214: invokevirtual 476	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: pop
     //   218: aload_3
     //   219: aload_2
-    //   220: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   220: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   223: pop
-    //   224: ldc 119
+    //   224: ldc 120
     //   226: iconst_1
     //   227: aload_3
-    //   228: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 498	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   228: invokevirtual 482	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokestatic 485	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   234: aconst_null
     //   235: astore_2
     //   236: iconst_0
@@ -619,23 +619,23 @@ public class GameRoomHandler
     //   241: istore 7
     //   243: iload 8
     //   245: istore 6
-    //   247: ldc 119
-    //   249: ldc_w 624
+    //   247: ldc 120
+    //   249: ldc_w 627
     //   252: aconst_null
     //   253: iconst_1
-    //   254: anewarray 156	com/tencent/mobileqq/pb/MessageMicro
+    //   254: anewarray 157	com/tencent/mobileqq/pb/MessageMicro
     //   257: dup
     //   258: iconst_0
     //   259: aload 11
     //   261: aastore
-    //   262: invokestatic 161	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
-    //   265: invokestatic 503	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   262: invokestatic 162	com/tencent/avgame/gamelogic/GameUtil:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;[Lcom/tencent/mobileqq/pb/MessageMicro;)V
+    //   265: invokestatic 490	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   268: ifeq +51 -> 319
-    //   271: ldc 119
+    //   271: ldc 120
     //   273: iconst_2
-    //   274: ldc_w 626
+    //   274: ldc_w 629
     //   277: iconst_5
-    //   278: anewarray 136	java/lang/Object
+    //   278: anewarray 137	java/lang/Object
     //   281: dup
     //   282: iconst_0
     //   283: iload 9
@@ -659,22 +659,22 @@ public class GameRoomHandler
     //   310: iconst_4
     //   311: aload_2
     //   312: aastore
-    //   313: invokestatic 511	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   316: invokestatic 514	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   313: invokestatic 498	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   316: invokestatic 501	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   319: iload 6
     //   321: ifeq +65 -> 386
     //   324: iload 4
     //   326: ifne +60 -> 386
-    //   329: invokestatic 132	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
-    //   332: ldc 134
+    //   329: invokestatic 133	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
+    //   332: ldc 135
     //   334: bipush 14
     //   336: iconst_1
     //   337: bipush 6
-    //   339: anewarray 136	java/lang/Object
+    //   339: anewarray 137	java/lang/Object
     //   342: dup
     //   343: iconst_0
     //   344: iload 10
-    //   346: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   346: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   349: aastore
     //   350: dup
     //   351: iconst_1
@@ -699,18 +699,18 @@ public class GameRoomHandler
     //   379: iconst_5
     //   380: aload_2
     //   381: aastore
-    //   382: invokevirtual 140	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
+    //   382: invokevirtual 141	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
     //   385: return
-    //   386: invokestatic 132	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
-    //   389: ldc 134
+    //   386: invokestatic 133	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
+    //   389: ldc 135
     //   391: bipush 14
     //   393: iconst_0
     //   394: bipush 6
-    //   396: anewarray 136	java/lang/Object
+    //   396: anewarray 137	java/lang/Object
     //   399: dup
     //   400: iconst_0
     //   401: iload 10
-    //   403: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   403: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   406: aastore
     //   407: dup
     //   408: iconst_1
@@ -735,23 +735,23 @@ public class GameRoomHandler
     //   436: iconst_5
     //   437: aload_2
     //   438: aastore
-    //   439: invokevirtual 140	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
+    //   439: invokevirtual 141	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
     //   442: return
     //   443: aload_2
     //   444: ifnull +12 -> 456
     //   447: aload_2
-    //   448: invokevirtual 629	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   448: invokevirtual 632	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   451: istore 4
     //   453: goto +6 -> 459
     //   456: iconst_0
     //   457: istore 4
-    //   459: invokestatic 503	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   459: invokestatic 490	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   462: ifeq +35 -> 497
-    //   465: ldc 119
+    //   465: ldc 120
     //   467: iconst_2
-    //   468: ldc_w 631
+    //   468: ldc_w 634
     //   471: iconst_2
-    //   472: anewarray 136	java/lang/Object
+    //   472: anewarray 137	java/lang/Object
     //   475: dup
     //   476: iconst_0
     //   477: iload 9
@@ -762,18 +762,18 @@ public class GameRoomHandler
     //   485: iload 4
     //   487: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   490: aastore
-    //   491: invokestatic 511	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   494: invokestatic 514	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   497: invokestatic 132	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
-    //   500: ldc 134
+    //   491: invokestatic 498	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   494: invokestatic 501	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   497: invokestatic 133	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
+    //   500: ldc 135
     //   502: bipush 14
     //   504: iconst_0
     //   505: bipush 6
-    //   507: anewarray 136	java/lang/Object
+    //   507: anewarray 137	java/lang/Object
     //   510: dup
     //   511: iconst_0
     //   512: iload 10
-    //   514: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   514: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   517: aastore
     //   518: dup
     //   519: iconst_1
@@ -795,7 +795,7 @@ public class GameRoomHandler
     //   538: iconst_5
     //   539: aconst_null
     //   540: aastore
-    //   541: invokevirtual 140	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
+    //   541: invokevirtual 141	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
     //   544: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -833,7 +833,7 @@ public class GameRoomHandler
   {
     // Byte code:
     //   0: iconst_0
-    //   1: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   4: astore_1
     //   5: iconst_0
     //   6: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -841,7 +841,7 @@ public class GameRoomHandler
     //   11: aload_2
     //   12: ifnull +20 -> 32
     //   15: aload_2
-    //   16: invokevirtual 468	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
+    //   16: invokevirtual 445	com/tencent/qphone/base/remote/FromServiceMsg:isSuccess	()Z
     //   19: ifeq +13 -> 32
     //   22: aload_3
     //   23: ifnull +9 -> 32
@@ -852,57 +852,57 @@ public class GameRoomHandler
     //   33: istore 4
     //   35: iload 4
     //   37: ifeq +504 -> 541
-    //   40: new 645	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp
+    //   40: new 648	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp
     //   43: dup
-    //   44: invokespecial 646	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:<init>	()V
+    //   44: invokespecial 649	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:<init>	()V
     //   47: astore_1
     //   48: aload_1
     //   49: aload_3
-    //   50: checkcast 473	[B
-    //   53: checkcast 473	[B
-    //   56: invokevirtual 647	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   50: checkcast 450	[B
+    //   53: checkcast 450	[B
+    //   56: invokevirtual 650	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   59: pop
     //   60: aload_1
-    //   61: getfield 648	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   64: invokevirtual 484	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   67: checkcast 483	trpc/qq_vgame/common/AvGameCommon$Result
-    //   70: getfield 487	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   61: getfield 651	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   64: invokevirtual 461	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   67: checkcast 460	trpc/qq_vgame/common/AvGameCommon$Result
+    //   70: getfield 464	trpc/qq_vgame/common/AvGameCommon$Result:errcode	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   73: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   76: istore 4
     //   78: aload_1
-    //   79: getfield 648	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
-    //   82: invokevirtual 484	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   85: checkcast 483	trpc/qq_vgame/common/AvGameCommon$Result
-    //   88: getfield 490	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   91: invokevirtual 347	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   94: invokevirtual 352	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
+    //   79: getfield 651	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:res	Ltrpc/qq_vgame/common/AvGameCommon$Result;
+    //   82: invokevirtual 461	trpc/qq_vgame/common/AvGameCommon$Result:get	()Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   85: checkcast 460	trpc/qq_vgame/common/AvGameCommon$Result
+    //   88: getfield 467	trpc/qq_vgame/common/AvGameCommon$Result:errmsg	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   91: invokevirtual 324	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   94: invokevirtual 329	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
     //   97: astore_3
     //   98: aload_1
-    //   99: getfield 651	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   99: getfield 654	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:interval	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   102: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   105: istore 8
     //   107: aload_1
-    //   108: getfield 654	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:user_total_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   108: getfield 657	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:user_total_num	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   111: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   114: istore 5
     //   116: aload_1
-    //   117: getfield 657	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:user_in_pk	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   120: invokevirtual 420	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   117: getfield 660	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:user_in_pk	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   120: invokevirtual 397	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   123: astore_2
     //   124: aload_0
     //   125: aload_2
-    //   126: invokespecial 535	com/tencent/avgame/gamelogic/handler/GameRoomHandler:b	(Ljava/util/List;)Ljava/util/List;
+    //   126: invokespecial 566	com/tencent/avgame/gamelogic/handler/GameRoomHandler:b	(Ljava/util/List;)Ljava/util/List;
     //   129: astore_2
     //   130: aload_1
-    //   131: getfield 660	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:change_pool_id	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   131: getfield 663	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:change_pool_id	Lcom/tencent/mobileqq/pb/PBBoolField;
     //   134: invokevirtual 25	com/tencent/mobileqq/pb/PBBoolField:get	()Z
     //   137: istore 9
     //   139: aload_1
-    //   140: getfield 663	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:real_pool_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   140: getfield 666	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:real_pool_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   143: invokevirtual 34	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   146: istore 6
     //   148: aload_1
-    //   149: getfield 666	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:fresh_at_midfield	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   149: getfield 669	trpc/qq_vgame/pk_manager/AvGamePkManager$GetPKInfoRsp:fresh_at_midfield	Lcom/tencent/mobileqq/pb/PBBoolField;
     //   152: invokevirtual 25	com/tencent/mobileqq/pb/PBBoolField:get	()Z
     //   155: istore 10
     //   157: aload_3
@@ -985,23 +985,23 @@ public class GameRoomHandler
     //   285: istore 5
     //   287: aload_2
     //   288: astore 11
-    //   290: new 225	java/lang/StringBuilder
+    //   290: new 469	java/lang/StringBuilder
     //   293: dup
-    //   294: invokespecial 226	java/lang/StringBuilder:<init>	()V
+    //   294: invokespecial 470	java/lang/StringBuilder:<init>	()V
     //   297: astore_2
     //   298: aload_2
-    //   299: ldc_w 668
-    //   302: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: ldc_w 671
+    //   302: invokevirtual 476	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload_2
     //   307: aload 11
-    //   309: invokevirtual 495	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   309: invokevirtual 479	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   312: pop
-    //   313: ldc 119
+    //   313: ldc 120
     //   315: iconst_1
     //   316: aload_2
-    //   317: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: invokestatic 498	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   317: invokevirtual 482	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   320: invokestatic 485	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   323: iconst_0
     //   324: istore 10
     //   326: iload 5
@@ -1010,13 +1010,13 @@ public class GameRoomHandler
     //   332: istore 5
     //   334: aload_3
     //   335: astore_2
-    //   336: invokestatic 503	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   336: invokestatic 490	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   339: ifeq +47 -> 386
-    //   342: ldc 119
+    //   342: ldc 120
     //   344: iconst_2
-    //   345: ldc_w 670
+    //   345: ldc_w 673
     //   348: iconst_4
-    //   349: anewarray 136	java/lang/Object
+    //   349: anewarray 137	java/lang/Object
     //   352: dup
     //   353: iconst_0
     //   354: iload 4
@@ -1036,16 +1036,16 @@ public class GameRoomHandler
     //   377: iconst_3
     //   378: aload_1
     //   379: aastore
-    //   380: invokestatic 511	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   383: invokestatic 514	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   380: invokestatic 498	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   383: invokestatic 501	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   386: iload 7
     //   388: ifne +78 -> 466
-    //   391: invokestatic 132	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
-    //   394: ldc 134
+    //   391: invokestatic 133	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
+    //   394: ldc 135
     //   396: bipush 17
     //   398: iconst_1
     //   399: bipush 8
-    //   401: anewarray 136	java/lang/Object
+    //   401: anewarray 137	java/lang/Object
     //   404: dup
     //   405: iconst_0
     //   406: iload 4
@@ -1063,7 +1063,7 @@ public class GameRoomHandler
     //   424: dup
     //   425: iconst_3
     //   426: iload 9
-    //   428: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   428: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   431: aastore
     //   432: dup
     //   433: iconst_4
@@ -1073,7 +1073,7 @@ public class GameRoomHandler
     //   440: dup
     //   441: iconst_5
     //   442: iload 10
-    //   444: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   444: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   447: aastore
     //   448: dup
     //   449: bipush 6
@@ -1084,14 +1084,14 @@ public class GameRoomHandler
     //   458: bipush 7
     //   460: aload_1
     //   461: aastore
-    //   462: invokevirtual 140	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
+    //   462: invokevirtual 141	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
     //   465: return
-    //   466: invokestatic 132	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
-    //   469: ldc 134
+    //   466: invokestatic 133	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
+    //   469: ldc 135
     //   471: bipush 17
     //   473: iconst_0
     //   474: bipush 8
-    //   476: anewarray 136	java/lang/Object
+    //   476: anewarray 137	java/lang/Object
     //   479: dup
     //   480: iconst_0
     //   481: iload 4
@@ -1109,7 +1109,7 @@ public class GameRoomHandler
     //   499: dup
     //   500: iconst_3
     //   501: iload 9
-    //   503: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   503: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   506: aastore
     //   507: dup
     //   508: iconst_4
@@ -1119,7 +1119,7 @@ public class GameRoomHandler
     //   515: dup
     //   516: iconst_5
     //   517: iload 10
-    //   519: invokestatic 211	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   519: invokestatic 214	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   522: aastore
     //   523: dup
     //   524: bipush 6
@@ -1130,34 +1130,34 @@ public class GameRoomHandler
     //   533: bipush 7
     //   535: aload_1
     //   536: aastore
-    //   537: invokevirtual 140	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
+    //   537: invokevirtual 141	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
     //   540: return
     //   541: aload_2
     //   542: ifnull +12 -> 554
     //   545: aload_2
-    //   546: invokevirtual 629	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
+    //   546: invokevirtual 632	com/tencent/qphone/base/remote/FromServiceMsg:getResultCode	()I
     //   549: istore 4
     //   551: goto +6 -> 557
     //   554: iconst_m1
     //   555: istore 4
-    //   557: ldc 119
+    //   557: ldc 120
     //   559: iconst_2
-    //   560: ldc_w 672
+    //   560: ldc_w 675
     //   563: iconst_1
-    //   564: anewarray 136	java/lang/Object
+    //   564: anewarray 137	java/lang/Object
     //   567: dup
     //   568: iconst_0
     //   569: iload 4
     //   571: invokestatic 77	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   574: aastore
-    //   575: invokestatic 511	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   578: invokestatic 514	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   581: invokestatic 132	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
-    //   584: ldc 134
+    //   575: invokestatic 498	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   578: invokestatic 501	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   581: invokestatic 133	com/tencent/avgame/business/observer/ObserverCenter:a	()Lcom/tencent/avgame/business/observer/ObserverCenter;
+    //   584: ldc 135
     //   586: bipush 17
     //   588: iconst_0
     //   589: bipush 8
-    //   591: anewarray 136	java/lang/Object
+    //   591: anewarray 137	java/lang/Object
     //   594: dup
     //   595: iconst_0
     //   596: aload 11
@@ -1191,7 +1191,7 @@ public class GameRoomHandler
     //   630: bipush 7
     //   632: aconst_null
     //   633: aastore
-    //   634: invokevirtual 140	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
+    //   634: invokevirtual 141	com/tencent/avgame/business/observer/ObserverCenter:b	(Ljava/lang/Class;IZLjava/lang/Object;)V
     //   637: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -1323,8 +1323,8 @@ public class GameRoomHandler
             bool2 = false;
           }
           bool1 &= bool2;
-          if ((IGameEngine.a().f()) && ((localObject3 instanceof Game))) {
-            paramFromServiceMsg = ((Game)localObject3).a();
+          if ((IGameEngine.I().A()) && ((localObject3 instanceof Game))) {
+            paramFromServiceMsg = ((Game)localObject3).i();
           } else {
             paramFromServiceMsg = GameUtil.a(((AvGameRoomManager.CmdRoomInfoRsp)localObject1).game_ranking_info);
           }
@@ -1869,9 +1869,9 @@ public class GameRoomHandler
         if (i == 0)
         {
           paramFromServiceMsg = new GameActivityCenterEntry();
-          paramFromServiceMsg.jdField_a_of_type_JavaLangString = localGetActivitysRsp.icon_url.get();
-          paramFromServiceMsg.b = localGetActivitysRsp.jump_url.get();
-          paramFromServiceMsg.jdField_a_of_type_Int = localGetActivitysRsp.red_point.get();
+          paramFromServiceMsg.b = localGetActivitysRsp.icon_url.get();
+          paramFromServiceMsg.c = localGetActivitysRsp.jump_url.get();
+          paramFromServiceMsg.a = localGetActivitysRsp.red_point.get();
           break label210;
         }
         bool1 = false;
@@ -2174,12 +2174,12 @@ public class GameRoomHandler
     localPKOperationReq.cur_round.set(paramInt4);
     localPKOperationReq.support_cj.set(true);
     localPKOperationReq.local_mod_status.set(paramInt5);
-    Object localObject = IGameEngine.a().a();
+    Object localObject = IGameEngine.I().s();
     if ((paramInt1 == 2) && (localObject != null) && (paramBoolean))
     {
-      if (((EngineData)localObject).o() == 6) {
+      if (((EngineData)localObject).X() == 6) {
         localPKOperationReq.leave_scene.set(2);
-      } else if (((EngineData)localObject).o() == 7) {
+      } else if (((EngineData)localObject).X() == 7) {
         localPKOperationReq.leave_scene.set(1);
       }
       if (QLog.isColorLevel())
@@ -2260,10 +2260,10 @@ public class GameRoomHandler
               QLog.e("avgame_logic.GameRoomHandler", 1, paramString.toString());
             }
           }
-          if ((IGameEngine.a().f()) && (IGameEngine.a().a() != null))
+          if ((IGameEngine.I().A()) && (IGameEngine.I().s() != null))
           {
-            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pk_id.set(IGameEngine.a().a().k());
-            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pool_id.set(IGameEngine.a().a().j());
+            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pk_id.set(IGameEngine.I().s().Q());
+            ((AvGameRoomManager.CmdRoomCreateReq)localObject1).pool_id.set(IGameEngine.I().s().P());
           }
           else if (QLog.isColorLevel())
           {
@@ -2334,8 +2334,8 @@ public class GameRoomHandler
           }
           ((AvGameRoomManager.CmdRoomEnterReq)localObject1).roomid.set(AvGameEntranceUtil.a(paramString1));
           ((AvGameRoomManager.CmdRoomEnterReq)localObject1).invitor_uin.set(AvGameEntranceUtil.a(paramString2));
-          if ((IGameEngine.a().f()) && (IGameEngine.a().a() != null)) {
-            ((AvGameRoomManager.CmdRoomEnterReq)localObject1).pk_opponent_uin.set(IGameEngine.a().a().jdField_b_of_type_Long);
+          if ((IGameEngine.I().A()) && (IGameEngine.I().s() != null)) {
+            ((AvGameRoomManager.CmdRoomEnterReq)localObject1).pk_opponent_uin.set(IGameEngine.I().s().y);
           }
           ((AvGameRoomManager.CmdRoomEnterReq)localObject1).init_status.set(0);
           paramString1 = createToServiceMsg("qqvgame.RoomManager-RoomEnter");
@@ -2362,8 +2362,8 @@ public class GameRoomHandler
     localStringBuilder.append(" isNeedReqGameResult=");
     localStringBuilder.append(paramBoolean);
     QLog.i("avgame_logic.GameRoomHandler", 1, localStringBuilder.toString());
-    if (!IGameEngine.k()) {
-      a(2, IGameEngine.a().a().k(), paramInt, 0, 0, paramBoolean);
+    if (!IGameEngine.J()) {
+      a(2, IGameEngine.I().s().Q(), paramInt, 0, 0, paramBoolean);
     }
   }
   
@@ -2754,8 +2754,8 @@ public class GameRoomHandler
       bool = false;
       QLog.d("avgame_logic.GameRoomHandler", 1, String.format("handleOnlinePush type=%d [%s] seq=%d roomId=%d gameId=%s", new Object[] { Integer.valueOf(i), GameUtil.a(i), Long.valueOf(l1), Long.valueOf(l2), str }));
       localObject = "";
-      if (!IGameEngine.k()) {
-        localObject = IGameEngine.a().a().b();
+      if (!IGameEngine.J()) {
+        localObject = IGameEngine.I().s().n();
       }
       if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject)) || (((String)localObject).equals(str))) {
         break label308;
@@ -2776,7 +2776,7 @@ public class GameRoomHandler
       return;
     }
     b(paramNotifyMsg);
-    c(paramNotifyMsg);
+    d(paramNotifyMsg);
     return;
     b(paramNotifyMsg);
     a(paramNotifyMsg, l1, l2);

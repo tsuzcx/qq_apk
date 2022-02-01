@@ -8,8 +8,8 @@ import java.util.List;
 public class ConcatFilter
   extends BaseFilter
 {
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<Frame> a = new ArrayList();
+  private Frame b = new Frame();
   
   public ConcatFilter()
   {
@@ -18,34 +18,34 @@ public class ConcatFilter
   
   public Frame a()
   {
-    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
+    float f1 = 2.0F / this.a.size();
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.size())
     {
       float f2 = i * f1 - 1.0F;
       float f3 = f2 + f1;
       setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
-      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
-      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      Frame localFrame = (Frame)this.a.get(i);
+      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.a.size() * 64, 64, -1, 0.0D, this.b);
       i += 1;
     }
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    return this.b;
   }
   
   public void a(List<Frame> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramList;
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.b.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.filter.ConcatFilter
  * JD-Core Version:    0.7.0.1
  */

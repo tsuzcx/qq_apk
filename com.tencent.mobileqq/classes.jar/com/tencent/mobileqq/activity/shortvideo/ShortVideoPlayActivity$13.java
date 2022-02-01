@@ -22,7 +22,7 @@ class ShortVideoPlayActivity$13
     ShortVideoPlayActivity.access$1302(this.a, false);
     ShortVideoPlayActivity.access$1402(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.access$1500(this.a));
     Object localObject = this.a;
-    ((ShortVideoPlayActivity)localObject).showErrorDlg(((ShortVideoPlayActivity)localObject).mContext.getResources().getString(2131697737));
+    ((ShortVideoPlayActivity)localObject).showErrorDlg(((ShortVideoPlayActivity)localObject).mContext.getResources().getString(2131895510));
     ShortVideoPlayActivity.access$1602(this.a, 3000);
     ShortVideoPlayActivity.access$1702(this.a, paramInt);
     if (QLog.isColorLevel())
@@ -55,7 +55,7 @@ class ShortVideoPlayActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.13
  * JD-Core Version:    0.7.0.1
  */

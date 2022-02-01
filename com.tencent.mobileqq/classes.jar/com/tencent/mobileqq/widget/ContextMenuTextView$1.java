@@ -13,7 +13,7 @@ class ContextMenuTextView$1
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365311)
+    if (paramView.getId() == 2131431492)
     {
       Context localContext = ContextMenuTextView.a(this.a);
       ContextMenuTextView.a(this.a);
@@ -24,7 +24,7 @@ class ContextMenuTextView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ContextMenuTextView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ class TroopRobotManager$1
   
   protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = (ITroopRobotService)this.a.a.getRuntimeService(ITroopRobotService.class, "all");
+    Object localObject = (ITroopRobotService)this.a.g.getRuntimeService(ITroopRobotService.class, "all");
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
     localStringBuilder.append(paramObject);
@@ -29,20 +29,20 @@ class TroopRobotManager$1
     if (paramBoolean)
     {
       TroopRobotManager.a(this.a, paramObject);
-      if ((this.a.a instanceof QQAppInterface))
+      if ((this.a.g instanceof QQAppInterface))
       {
-        localObject = (QQAppInterface)this.a.a;
-        ((FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).d(paramObject);
+        localObject = (QQAppInterface)this.a.g;
+        ((FriendsManager)this.a.g.getManager(QQManagerFactory.FRIENDS_MANAGER)).s(paramObject);
         IceBreakingUtil.a((QQAppInterface)localObject, paramObject);
         TofuHelper.a((QQAppInterface)localObject, paramObject);
-        ((QQAppInterface)localObject).getProxyManager().a().a(paramObject, true);
+        ((QQAppInterface)localObject).getProxyManager().g().a(paramObject, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopRobotManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,18 +16,18 @@ import java.util.Timer;
 public class QQCustomDialogWtihInput
   extends QQCustomDialog
 {
-  private long jdField_a_of_type_Long;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = null;
-  private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private SoftReference<Context> jdField_a_of_type_JavaLangRefSoftReference;
+  private SoftReference<Context> a;
+  private ClearableEditText b;
+  private TextWatcher c = null;
+  private long d;
   
   public QQCustomDialogWtihInput(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
+    this.a = new SoftReference(paramContext);
   }
   
-  private boolean a()
+  private boolean b()
   {
     if ("VIVO".equalsIgnoreCase(Build.MANUFACTURER))
     {
@@ -43,34 +43,34 @@ public class QQCustomDialogWtihInput
   
   public EditText a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
+    return this.b;
   }
   
   public void a(TextWatcher paramTextWatcher)
   {
     if (paramTextWatcher != null)
     {
-      this.jdField_a_of_type_AndroidTextTextWatcher = paramTextWatcher;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(paramTextWatcher);
+      this.c = paramTextWatcher;
+      this.b.addTextChangedListener(paramTextWatcher);
     }
   }
   
   public void a(String paramString)
   {
     if (paramString != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramString);
+      this.b.setText(paramString);
     }
   }
   
   public String getInputValue()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+    return this.b.getText().toString();
   }
   
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368874));
+    this.b = ((ClearableEditText)findViewById(2131435808));
   }
   
   public QQCustomDialog setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
@@ -90,19 +90,19 @@ public class QQCustomDialogWtihInput
   public void show()
   {
     super.show();
-    Editable localEditable = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+    Editable localEditable = this.b.getText();
     if ((localEditable instanceof Spannable)) {
       Selection.setSelection((Spannable)localEditable, localEditable.length());
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusable()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusableInTouchMode())) {
+    this.d = System.currentTimeMillis();
+    if ((this.b.isFocusable()) || (this.b.isFocusableInTouchMode())) {
       new Timer().schedule(new QQCustomDialogWtihInput.3(this), 200L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihInput
  * JD-Core Version:    0.7.0.1
  */

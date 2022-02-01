@@ -17,7 +17,7 @@ class ShoppingFragment$4
   
   protected BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
   {
-    return ShoppingFragment.a(this.a);
+    return ShoppingFragment.b(this.a);
   }
   
   public void a(Bundle paramBundle) {}
@@ -26,7 +26,7 @@ class ShoppingFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment.4
  * JD-Core Version:    0.7.0.1
  */

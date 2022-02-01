@@ -13,10 +13,10 @@ class MediaBrowserActivity$2$3
   
   public void run()
   {
-    if (MediaBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserImplMediaBrowserActivity$2.a) != null)
+    if (MediaBrowserActivity.a(this.j.a) != null)
     {
       BrowserLogHelper.getInstance().getGalleryLog().d("MediaBrowserActivity", 4, "IAIOImageProviderCallBack.notifyVideoUrl");
-      MediaBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqMediabrowserImplMediaBrowserActivity$2.a).notifyVideoUrl(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.c, this.jdField_a_of_type_AndroidOsBundle);
+      MediaBrowserActivity.a(this.j.a).notifyVideoUrl(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
     }
   }
 }

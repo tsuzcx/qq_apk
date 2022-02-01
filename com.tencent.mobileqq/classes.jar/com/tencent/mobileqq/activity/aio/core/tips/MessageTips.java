@@ -20,16 +20,16 @@ import org.jetbrains.annotations.NotNull;
 
 public class MessageTips
 {
-  private static ArraySet<Integer> jdField_a_of_type_AndroidSupportV4UtilArraySet;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private final TipsController jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private static ArraySet<Integer> d;
+  private final AIOContext a;
+  private final QQAppInterface b;
+  private final TipsController c;
   
   public MessageTips(AIOContext paramAIOContext, TipsController paramTipsController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramAIOContext.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController = paramTipsController;
+    this.a = paramAIOContext;
+    this.b = paramAIOContext.a();
+    this.c = paramTipsController;
   }
   
   @NotNull
@@ -62,23 +62,23 @@ public class MessageTips
   
   private static boolean a(QQAppInterface paramQQAppInterface, Message paramMessage)
   {
-    if (jdField_a_of_type_AndroidSupportV4UtilArraySet == null)
+    if (d == null)
     {
-      jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
-      jdField_a_of_type_AndroidSupportV4UtilArraySet.addAll(Arrays.asList(new Integer[] { Integer.valueOf(1036), Integer.valueOf(10010) }));
+      d = new ArraySet();
+      d.addAll(Arrays.asList(new Integer[] { Integer.valueOf(1036), Integer.valueOf(10010) }));
     }
-    return jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(Integer.valueOf(paramMessage.istroop));
+    return d.contains(Integer.valueOf(paramMessage.istroop));
   }
   
   @NotNull
   private CharSequence b(Intent paramIntent, MessageRecord paramMessageRecord, Message paramMessage)
   {
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a();
+    Object localObject1 = this.c.a().a();
     Object localObject2 = ((List)localObject1).iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = ((IMsgTipsFilter)((Iterator)localObject2).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramIntent, paramMessageRecord, paramMessage);
+      localObject3 = ((IMsgTipsFilter)((Iterator)localObject2).next()).a(this.a, paramIntent, paramMessageRecord, paramMessage);
       if (localObject3 != null) {
         localSpannableStringBuilder.append((CharSequence)localObject3);
       }
@@ -87,7 +87,7 @@ public class MessageTips
     localObject1 = null;
     while (((Iterator)localObject3).hasNext())
     {
-      localObject2 = ((IMsgTipsFilter)((Iterator)localObject3).next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramMessageRecord, paramMessage);
+      localObject2 = ((IMsgTipsFilter)((Iterator)localObject3).next()).b(this.a, paramMessageRecord, paramMessage);
       localObject1 = localObject2;
       if (localObject2 != null) {
         localObject1 = localObject2;
@@ -102,7 +102,7 @@ public class MessageTips
       if (paramMessage.nickName != null)
       {
         localObject1 = paramMessageRecord;
-        if (paramMessage.nickName.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getString(2131693780))) {
+        if (paramMessage.nickName.equals(this.a.b().getString(2131891355))) {
           localObject1 = a(paramMessageRecord);
         }
         paramIntent = paramIntent.getStringExtra("uinname");
@@ -161,9 +161,9 @@ public class MessageTips
       if (paramMessage.isSendFromLocal()) {
         return false;
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTipsTipsController.a().a().iterator();
+      Iterator localIterator = this.c.a().a().iterator();
       while (localIterator.hasNext()) {
-        if (((IMsgTipsFilter)localIterator.next()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext, paramMessageRecord, paramMessage)) {
+        if (((IMsgTipsFilter)localIterator.next()).a(this.a, paramMessageRecord, paramMessage)) {
           return false;
         }
       }
@@ -177,7 +177,7 @@ public class MessageTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.tips.MessageTips
  * JD-Core Version:    0.7.0.1
  */

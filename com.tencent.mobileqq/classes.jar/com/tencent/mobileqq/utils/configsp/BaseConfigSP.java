@@ -10,7 +10,7 @@ public class BaseConfigSP
 {
   public static SharedPreferences a(String paramString1, String paramString2, String paramString3)
   {
-    if ((AudioHelperUtil.b()) && (TextUtils.isEmpty(paramString2)))
+    if ((AudioHelperUtil.c()) && (TextUtils.isEmpty(paramString2)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" getSP, 获取配置需要UIN, uin[");
@@ -32,7 +32,7 @@ public class BaseConfigSP
       localStringBuilder.append(paramString3);
       localStringBuilder.append(paramString2);
       localObject = ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 4);
-      if ((localObject == null) && (AudioHelperUtil.b()))
+      if ((localObject == null) && (AudioHelperUtil.c()))
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getSP, sp为null, uin[");
@@ -44,7 +44,7 @@ public class BaseConfigSP
       }
       return localObject;
     }
-    if (AudioHelperUtil.b())
+    if (AudioHelperUtil.c())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getSP, BaseApplicationImpl为null, uin[");
@@ -59,7 +59,7 @@ public class BaseConfigSP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.configsp.BaseConfigSP
  * JD-Core Version:    0.7.0.1
  */

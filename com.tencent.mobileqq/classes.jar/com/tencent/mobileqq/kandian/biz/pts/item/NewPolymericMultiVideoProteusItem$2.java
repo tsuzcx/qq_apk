@@ -21,13 +21,13 @@ class NewPolymericMultiVideoProteusItem$2
     paramTemplateBean.append("position : ");
     paramTemplateBean.append(paramInt);
     QLog.d("NewPolymericMultiVideoProteusItem", 1, paramTemplateBean.toString());
-    NewPolymericMultiVideoProteusItem.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsItemNewPolymericMultiVideoProteusItem, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramInt);
-    ((ReadInJoyBaseAdapter)this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel.a()).a().a().a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
+    NewPolymericMultiVideoProteusItem.a(this.c, this.a, paramInt);
+    ((ReadInJoyBaseAdapter)this.b.u()).y().b().a(this.a, paramViewBase.getNativeView(), paramInt, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.NewPolymericMultiVideoProteusItem.2
  * JD-Core Version:    0.7.0.1
  */

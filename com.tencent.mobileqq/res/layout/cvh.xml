@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/gf4" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
-        <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_qqcircle" style="@style/bw" />
-        <LinearLayout android:orientation="horizontal" style="@style/by">
-            <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xwa" android:singleLine="true" android:includeFontPadding="false" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/dec" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/skin_tips_newmessage" />
-            <com.tencent.mobileqq.profilecard.bussiness.circle.view.ProfileCircleInfoView android:gravity="center|right" android:orientation="horizontal" android:id="@id/n0u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </LinearLayout>
-        <ImageView android:id="@id/dcv" style="@style/bv" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/n8u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a06" android:layout_marginRight="@dimen/a03" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/n8v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/a03" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_black_item" android:id="@id/p1s" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.5dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="5.0dip" />
+    <TextView android:textSize="14.0sp" android:layout_gravity="center_vertical" android:id="@id/p1t" android:background="@drawable/jjm" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="12.0dip" android:singleLine="true" android:contentDescription="@string/zhm" />
 </LinearLayout>

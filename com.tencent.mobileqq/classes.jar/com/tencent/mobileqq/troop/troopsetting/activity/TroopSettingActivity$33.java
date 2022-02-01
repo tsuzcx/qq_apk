@@ -17,7 +17,7 @@ class TroopSettingActivity$33
     if (paramRspBody.group_id.has())
     {
       String str = String.valueOf(paramRspBody.group_id.get());
-      if ((this.a.a != null) && (!TextUtils.equals(this.a.a.troopUin, str)))
+      if ((this.a.i != null) && (!TextUtils.equals(this.a.i.troopUin, str)))
       {
         if (QLog.isColorLevel())
         {
@@ -25,7 +25,7 @@ class TroopSettingActivity$33
           paramRspBody.append("onGetNewTroopAppList troopUin not match. rsp uin=");
           paramRspBody.append(str);
           paramRspBody.append(", current uin=");
-          paramRspBody.append(this.a.a.troopUin);
+          paramRspBody.append(this.a.i.troopUin);
           QLog.e("Q.chatopttroop", 2, paramRspBody.toString());
         }
         return;
@@ -42,14 +42,14 @@ class TroopSettingActivity$33
     {
       paramRspBody = new StringBuilder();
       paramRspBody.append("onGetNewTroopAppList group_id lost. current uin=");
-      paramRspBody.append(this.a.a.troopUin);
+      paramRspBody.append(this.a.i.troopUin);
       QLog.e("Q.chatopttroop", 2, paramRspBody.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.33
  * JD-Core Version:    0.7.0.1
  */

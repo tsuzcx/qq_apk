@@ -9,29 +9,29 @@ import java.util.Iterator;
 
 public class TroopTokenHandlerProcessorConfig
 {
-  private static TroopTokenHandlerProcessorConfig jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopTokenHandlerProcessorConfig;
-  private static ArrayList<AbsTroopTokenHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<AbsTroopTokenHandlerProcessor> a = new ArrayList();
+  private static TroopTokenHandlerProcessorConfig b;
   
   private TroopTokenHandlerProcessorConfig()
   {
-    a();
+    b();
   }
   
   public static TroopTokenHandlerProcessorConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopTokenHandlerProcessorConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopTokenHandlerProcessorConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopTokenHandlerProcessorConfig = new TroopTokenHandlerProcessorConfig();
+        if (b == null) {
+          b = new TroopTokenHandlerProcessorConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTroopApiConfigTroopTokenHandlerProcessorConfig;
+    return b;
   }
   
-  private static void a()
+  private static void b()
   {
     if (TroopCustomizedProcessorRegister.k != null)
     {
@@ -42,7 +42,7 @@ public class TroopTokenHandlerProcessorConfig
         try
         {
           localObject = (AbsTroopTokenHandlerProcessor)((Class)localObject).newInstance();
-          jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          a.add(localObject);
         }
         catch (Throwable localThrowable)
         {
@@ -54,7 +54,7 @@ public class TroopTokenHandlerProcessorConfig
   
   public void a(@NonNull AppInterface paramAppInterface, @NonNull String paramString, @NonNull Object paramObject)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopTokenHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString, paramObject);
     }
@@ -62,7 +62,7 @@ public class TroopTokenHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopTokenHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

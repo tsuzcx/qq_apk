@@ -14,10 +14,13 @@ import com.tencent.aelight.camera.cmsshow.api.IAECMSShow;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import eipc.EIPCResultCallback;
 import java.util.ArrayList;
+import org.light.gles.GLCapabilities;
 
 public class AECMSShowImpl
   implements IAECMSShow
 {
+  private static final String GLE_VERSION_CONTAINS = "3.";
+  
   public void downloadAEKitResource(@Nullable EIPCResultCallback paramEIPCResultCallback)
   {
     AECMShowQipcModule.a(paramEIPCResultCallback);
@@ -42,12 +45,12 @@ public class AECMSShowImpl
   
   public boolean isAEResReady()
   {
-    return AECMShowUtil.b();
+    return AECMShowUtil.d();
   }
   
   public boolean isCMShowSupported()
   {
-    return AECMShowUtil.a();
+    return AECMShowUtil.b();
   }
   
   public void jumpToMe(Activity paramActivity, Intent paramIntent)
@@ -59,10 +62,15 @@ public class AECMSShowImpl
   {
     AECMShowGuideFragment.a(paramActivity, paramIntent, paramInt);
   }
+  
+  public boolean supportAceEngine()
+  {
+    return (GLCapabilities.getGlesVersion().contains("3.")) && (GLCapabilities.isFilamentShaderCompileSucceed()) && (GLCapabilities.isDeviceSupportAceEngine());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.cmsshow.api.impl.AECMSShowImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -22,24 +22,24 @@ import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 class LocationFaceAdapter$LocationItemLayout
   extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private int a;
   private int b;
-  private int c;
-  private final int d = 5;
+  private float c;
+  private int d;
+  private View.OnClickListener e;
+  private final int f = 5;
   
   public LocationFaceAdapter$LocationItemLayout(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
+    this.e = paramOnClickListener;
+    this.a = paramInt1;
     this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
     paramInt1 = DisplayUtil.b(getContext(), 6.0F);
-    paramInt2 = this.jdField_a_of_type_Int;
+    paramInt2 = this.a;
     int i = this.b;
-    this.c = ((paramInt2 - (i - 1) * 2 * paramInt1) / i);
+    this.d = ((paramInt2 - (i - 1) * 2 * paramInt1) / i);
     a();
   }
   
@@ -48,12 +48,12 @@ class LocationFaceAdapter$LocationItemLayout
     setOrientation(0);
     setGravity(17);
     int j = DisplayUtil.b(getContext(), 12.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
+    int k = (int)((this.d - j * 2) * this.c);
     int i = 0;
     while (i < this.b)
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2131559076, null);
-      int m = this.c;
+      View localView = LayoutInflater.from(getContext()).inflate(2131624736, null);
+      int m = this.d;
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(m, m);
       if (i == 0)
       {
@@ -69,7 +69,7 @@ class LocationFaceAdapter$LocationItemLayout
         localLayoutParams.setMargins(m, j, m, 0);
       }
       localView.setLayoutParams(localLayoutParams);
-      ((ImageView)localView.findViewById(2131370424)).setPadding(k, k, k, k);
+      ((ImageView)localView.findViewById(2131437692)).setPadding(k, k, k, k);
       addView(localView);
       i += 1;
     }
@@ -104,7 +104,7 @@ class LocationFaceAdapter$LocationItemLayout
     int j = this.b;
     int i = paramInt1 * j;
     if (paramInt1 == paramInt2 - 1) {
-      paramInt1 = paramLocationFacePackage.b();
+      paramInt1 = paramLocationFacePackage.d();
     } else {
       paramInt1 = i + j;
     }
@@ -113,10 +113,10 @@ class LocationFaceAdapter$LocationItemLayout
     while (paramInt2 < paramInt1)
     {
       Object localObject1 = getChildAt(paramInt2 - i);
-      Object localObject2 = ((View)localObject1).findViewById(2131370437);
-      URLImageView localURLImageView = (URLImageView)((View)localObject1).findViewById(2131370424);
-      Object localObject3 = (TextView)((View)localObject1).findViewById(2131370438);
-      ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131370436);
+      Object localObject2 = ((View)localObject1).findViewById(2131437705);
+      URLImageView localURLImageView = (URLImageView)((View)localObject1).findViewById(2131437692);
+      Object localObject3 = (TextView)((View)localObject1).findViewById(2131437706);
+      ProgressBar localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131437704);
       String str = paramLocationFacePackage.b(paramInt2);
       localObject1 = paramLocationFacePackage.a(paramInt2);
       if (localObject1 == null)
@@ -126,8 +126,8 @@ class LocationFaceAdapter$LocationItemLayout
       else
       {
         ((TextView)localObject3).setText(str);
-        ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        localURLImageView.setTag(2131378301, Integer.valueOf(paramInt2));
+        ((View)localObject2).setOnClickListener(this.e);
+        localURLImageView.setTag(2131446820, Integer.valueOf(paramInt2));
         if (!paramBoolean)
         {
           localProgressBar.setVisibility(4);
@@ -135,8 +135,8 @@ class LocationFaceAdapter$LocationItemLayout
         }
         else
         {
-          localURLImageView.setTag(2131378314, localObject1);
-          localURLImageView.setTag(2131378280, Boolean.valueOf(false));
+          localURLImageView.setTag(2131446833, localObject1);
+          localURLImageView.setTag(2131446799, Boolean.valueOf(false));
           localProgressBar.setVisibility(0);
           localObject2 = new LocationFaceAdapter.URLDrawableListener((String)localObject1, localURLImageView, localProgressBar);
           localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
@@ -160,7 +160,7 @@ class LocationFaceAdapter$LocationItemLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.LocationFaceAdapter.LocationItemLayout
  * JD-Core Version:    0.7.0.1
  */

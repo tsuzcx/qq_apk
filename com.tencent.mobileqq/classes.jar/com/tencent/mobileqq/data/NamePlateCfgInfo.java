@@ -132,7 +132,7 @@ public class NamePlateCfgInfo
     paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramQQAppInterface != null)
     {
-      paramQQAppInterface = paramQQAppInterface.e(paramString);
+      paramQQAppInterface = paramQQAppInterface.m(paramString);
       if (paramQQAppInterface != null) {
         return paramQQAppInterface.nameplateCfgInfo;
       }
@@ -264,7 +264,7 @@ public class NamePlateCfgInfo
     FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (localFriendsManager != null)
     {
-      paramString = localFriendsManager.e(paramString);
+      paramString = localFriendsManager.m(paramString);
       if (paramString != null)
       {
         l = paramString.bigClubTemplateId;
@@ -278,7 +278,7 @@ public class NamePlateCfgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.NamePlateCfgInfo
  * JD-Core Version:    0.7.0.1
  */

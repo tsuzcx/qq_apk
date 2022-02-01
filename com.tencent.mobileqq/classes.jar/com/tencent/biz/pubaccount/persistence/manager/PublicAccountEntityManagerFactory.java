@@ -96,7 +96,7 @@ public class PublicAccountEntityManagerFactory
       localStringBuilder.append("public_account_database_");
       localStringBuilder.append(paramString);
       localStringBuilder.append(".db");
-      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, localStringBuilder.toString(), 1);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.getHelper(this, localStringBuilder.toString(), 1);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -138,7 +138,7 @@ public class PublicAccountEntityManagerFactory
       }
       else if ((!localVerifyEntity.flags.equals("public_account_database_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
       {
-        this.mInnerDbHelper.a();
+        this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
         localEntityManager.persistOrReplace(localVerifyEntity);
@@ -150,7 +150,7 @@ public class PublicAccountEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

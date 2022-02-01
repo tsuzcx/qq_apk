@@ -2,10 +2,11 @@ package com.tencent.qqmini.sdk.core.generated;
 
 import com.tencent.qqmini.nativePlugins.CMShowJsPlugin;
 import com.tencent.qqmini.nativePlugins.DeviceInfoPlugin;
-import com.tencent.qqmini.nativePlugins.GameBuddyPlugin;
+import com.tencent.qqmini.nativePlugins.ExpandPlugin;
 import com.tencent.qqmini.nativePlugins.GroupCheckInUploadPlugin;
 import com.tencent.qqmini.nativePlugins.GroupPlugin;
 import com.tencent.qqmini.nativePlugins.LaunchAECameraPlugin;
+import com.tencent.qqmini.nativePlugins.LaunchAppPlugin;
 import com.tencent.qqmini.nativePlugins.NowLiveJsPlugin;
 import com.tencent.qqmini.nativePlugins.QQPublicAccountNativePlugin;
 import com.tencent.qqmini.nativePlugins.QzonePublishPlugin;
@@ -15,6 +16,7 @@ import com.tencent.qqmini.nativePlugins.SmsPlugin;
 import com.tencent.qqmini.nativePlugins.TenDocChannelPlugin;
 import com.tencent.qqmini.nativePlugins.TenpayPlugin;
 import com.tencent.qqmini.nativePlugins.TimTeamPlugin;
+import com.tencent.qqmini.nativePlugins.TreasureCardMiniJsPlugin;
 import com.tencent.qqmini.nativePlugins.TroopAlbumPlugin;
 import com.tencent.qqmini.nativePlugins.WebSsoJsPlugin;
 import com.tencent.qqmini.nativePlugins.WeiyunDownloadFilePlugin;
@@ -44,12 +46,14 @@ public final class ExtJsPluginScope
     EVENT_HANDLERS.put("exitMiniProgram", NavigationJsPlugin.class);
     EVENT_HANDLERS.put("navigateBackMiniProgram", NavigationJsPlugin.class);
     EVENT_HANDLERS.put("navigateToMiniProgram", NavigationJsPlugin.class);
+    EVENT_HANDLERS.put("navigateToWeMiniProgram", NavigationJsPlugin.class);
     EVENT_HANDLERS.put("showMiniAIOEntrance", AIOEntryPlugin.class);
     EVENT_HANDLERS.put("hideMiniAIOEntrance", AIOEntryPlugin.class);
     EVENT_HANDLERS.put("getCMShowInfo", CMShowJsPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("requestWebSSO", WebSsoJsPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("getGUID", DeviceInfoPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("sendMsg", SmsPlugin.class);
+    SECONDARY_EVENT_HANDLERS.put("freeTrafficCardModel", TreasureCardMiniJsPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("getMultiMemList", GroupPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("openTenpayView", TenpayPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("qWalletBridge", TenpayPlugin.class);
@@ -77,17 +81,19 @@ public final class ExtJsPluginScope
     SECONDARY_EVENT_HANDLERS.put("miniApp_invokeGYCamera", LaunchAECameraPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("checkin_uploadRes", GroupCheckInUploadPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("setCMShowPetStatus", CMShowJsPlugin.class);
-    SECONDARY_EVENT_HANDLERS.put("invokeGameBuddyAio", GameBuddyPlugin.class);
-    SECONDARY_EVENT_HANDLERS.put("checkGameBuddyType", GameBuddyPlugin.class);
+    SECONDARY_EVENT_HANDLERS.put("getExpandUserInfo", ExpandPlugin.class);
+    SECONDARY_EVENT_HANDLERS.put("openExpandChat", ExpandPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("nowlive", NowLiveJsPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("tav_createObject", WeishiPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("tav_sendMsgToObject", WeishiPlugin.class);
     SECONDARY_EVENT_HANDLERS.put("tav_releaseObject", WeishiPlugin.class);
+    SECONDARY_EVENT_HANDLERS.put("tav_checkInit", WeishiPlugin.class);
+    SECONDARY_EVENT_HANDLERS.put("launchApp", LaunchAppPlugin.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

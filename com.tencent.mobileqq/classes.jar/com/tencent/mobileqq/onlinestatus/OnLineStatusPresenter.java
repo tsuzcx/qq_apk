@@ -24,16 +24,16 @@ import mqq.os.MqqHandler;
 public class OnLineStatusPresenter
   implements IOnLineStatusPresenter
 {
-  private int jdField_a_of_type_Int = 0;
-  private BatteryBroadcastReceiver jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver;
-  private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private StatusInfoCallback jdField_a_of_type_ComTencentMobileqqOnlinestatusStatusInfoCallback;
-  private int b = -2147483548;
+  private QBaseActivity a;
+  private StatusInfoCallback b;
+  private int c = 0;
+  private BatteryBroadcastReceiver d;
+  private int e = -2147483548;
   
   public OnLineStatusPresenter(@NonNull QBaseActivity paramQBaseActivity, @NonNull StatusInfoCallback paramStatusInfoCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusStatusInfoCallback = paramStatusInfoCallback;
+    this.a = paramQBaseActivity;
+    this.b = paramStatusInfoCallback;
   }
   
   private Friends a(boolean paramBoolean)
@@ -66,10 +66,10 @@ public class OnLineStatusPresenter
   {
     paramFriends = OnLineStatusHelper.a().a(paramLong, paramStatus, 0, paramFriends);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(HardCodeUtil.a(2131704962));
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131902853));
     ((StringBuilder)localObject).append(OnLineStatusHelper.a().a(paramLong, paramStatus));
     localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_ComTencentMobileqqOnlinestatusStatusInfoCallback.a(paramFriends, (String)localObject);
+    this.b.a(paramFriends, (String)localObject);
     if (QLog.isColorLevel())
     {
       paramFriends = new StringBuilder();
@@ -82,14 +82,14 @@ public class OnLineStatusPresenter
   private void a(Friends paramFriends, AppRuntime.Status paramStatus, long paramLong, OnlineStatusItem paramOnlineStatusItem)
   {
     Drawable localDrawable = OnLineStatusHelper.a().a(paramLong, paramStatus, 0, paramFriends);
-    TextView localTextView = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusStatusInfoCallback.a();
+    TextView localTextView = this.b.a();
     if (localTextView == null) {
       return;
     }
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     paramFriends = OnLineStatusHelper.a().a(localAppRuntime, paramOnlineStatusItem, paramStatus, paramFriends, localTextView, 4);
     if (!TextUtils.isEmpty(paramFriends)) {
-      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusStatusInfoCallback.a(paramFriends, localDrawable);
+      this.b.a(paramFriends, localDrawable);
     }
   }
   
@@ -106,12 +106,12 @@ public class OnLineStatusPresenter
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver == null)
+      if (this.d == null)
       {
         IntentFilter localIntentFilter = new IntentFilter();
         localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
-        this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver = new BatteryBroadcastReceiver(paramAppRuntime);
-        MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver, localIntentFilter);
+        this.d = new BatteryBroadcastReceiver(paramAppRuntime);
+        MobileQQ.getContext().registerReceiver(this.d, localIntentFilter);
         if (QLog.isColorLevel()) {
           QLog.d("OnLineStatusPresenter", 2, "registerBatteryBroadcastReceiver success");
         }
@@ -133,28 +133,6 @@ public class OnLineStatusPresenter
     }
   }
   
-  public int a()
-  {
-    if (this.b == -2147483548)
-    {
-      this.b = -1;
-      if (a()) {
-        try
-        {
-          this.b = ((BatteryManager)BaseApplication.getContext().getSystemService("batterymanager")).getIntProperty(4);
-          if (QLog.isColorLevel()) {
-            QLog.d("OnLineStatusPresenter", 2, new Object[] { "BatterManager ", Integer.valueOf(this.b) });
-          }
-        }
-        catch (NoSuchMethodError localNoSuchMethodError)
-        {
-          QLog.e("OnLineStatusPresenter", 1, localNoSuchMethodError, new Object[] { "getLocalBatteryCapacity fail" });
-        }
-      }
-    }
-    return this.b;
-  }
-  
   public void a()
   {
     if (QLog.isColorLevel()) {
@@ -162,10 +140,10 @@ public class OnLineStatusPresenter
     }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver != null)
+      if (this.d != null)
       {
-        MobileQQ.getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver);
-        this.jdField_a_of_type_ComTencentMobileqqAppBatteryBroadcastReceiver = null;
+        MobileQQ.getContext().unregisterReceiver(this.d);
+        this.d = null;
         if (QLog.isColorLevel()) {
           QLog.d("OnLineStatusPresenter", 2, "unRegisterBatteryBroadcastReceiver success");
         }
@@ -190,7 +168,7 @@ public class OnLineStatusPresenter
     } else {
       paramInt = 2;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(String paramString)
@@ -231,7 +209,7 @@ public class OnLineStatusPresenter
   {
     if (paramAppRuntime != null)
     {
-      if (a() > 0)
+      if (b() > 0)
       {
         if (QLog.isColorLevel()) {
           QLog.d("OnLineStatusPresenter", 2, "handleBatteryChangeBroadcastReceiver LocalBattery correct");
@@ -247,7 +225,7 @@ public class OnLineStatusPresenter
       if (QLog.isColorLevel()) {
         QLog.d("OnLineStatusPresenter", 2, "handleBatteryChangeBroadcastReceiver LocalBattery wrong");
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       if (i == 0)
       {
         b(paramAppRuntime);
@@ -269,14 +247,36 @@ public class OnLineStatusPresenter
     }
   }
   
-  boolean a()
+  public int b()
+  {
+    if (this.e == -2147483548)
+    {
+      this.e = -1;
+      if (c()) {
+        try
+        {
+          this.e = ((BatteryManager)BaseApplication.getContext().getSystemService("batterymanager")).getIntProperty(4);
+          if (QLog.isColorLevel()) {
+            QLog.d("OnLineStatusPresenter", 2, new Object[] { "BatterManager ", Integer.valueOf(this.e) });
+          }
+        }
+        catch (NoSuchMethodError localNoSuchMethodError)
+        {
+          QLog.e("OnLineStatusPresenter", 1, localNoSuchMethodError, new Object[] { "getLocalBatteryCapacity fail" });
+        }
+      }
+    }
+    return this.e;
+  }
+  
+  boolean c()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnLineStatusPresenter
  * JD-Core Version:    0.7.0.1
  */

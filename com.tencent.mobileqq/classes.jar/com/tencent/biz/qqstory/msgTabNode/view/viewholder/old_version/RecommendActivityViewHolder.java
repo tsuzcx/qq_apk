@@ -20,27 +20,22 @@ public class RecommendActivityViewHolder
     ThreadManager.post(new RecommendActivityViewHolder.1(paramMsgTabNodeInfo), 8, null, true);
   }
   
-  public void a()
-  {
-    this.itemView.setTag(2131374589, null);
-  }
-  
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
     super.a(paramMsgTabNodeInfo);
-    PlayModeUtils.b(this.jdField_a_of_type_AndroidWidgetImageView, paramMsgTabNodeInfo.jdField_b_of_type_JavaLangString, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
-      localObject = HardCodeUtil.a(2131713189);
+    PlayModeUtils.b(this.b, paramMsgTabNodeInfo.k, true, (int)DisplayUtils.a(this.d.getContext(), 50.0F));
+    TextView localTextView = this.d;
+    if (TextUtils.isEmpty(paramMsgTabNodeInfo.l)) {
+      localObject = HardCodeUtil.a(2131910744);
     } else {
-      localObject = paramMsgTabNodeInfo.c;
+      localObject = paramMsgTabNodeInfo.l;
     }
     localTextView.setText((CharSequence)localObject);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.c.setVisibility(0);
+    this.c.setVisibility(8);
+    this.e.setVisibility(0);
+    this.f.setVisibility(0);
     int i;
-    if (paramMsgTabNodeInfo.jdField_b_of_type_Int > 0) {
+    if (paramMsgTabNodeInfo.i > 0) {
       i = 1;
     } else {
       i = 0;
@@ -50,15 +45,15 @@ public class RecommendActivityViewHolder
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("FollowPersonViewHolder userItem = ");
-      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.c);
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.l);
       ((StringBuilder)localObject).append(", faceDrawable = ");
-      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.k);
       QLog.e("zivonchen", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (String)this.itemView.getTag(2131374589);
-    if (!TextUtils.equals(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, (CharSequence)localObject))
+    Object localObject = (String)this.itemView.getTag(2131442759);
+    if (!TextUtils.equals(paramMsgTabNodeInfo.d, (CharSequence)localObject))
     {
-      i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
+      i = paramMsgTabNodeInfo.b;
       if (i != 10)
       {
         if (i != 11) {
@@ -70,14 +65,19 @@ public class RecommendActivityViewHolder
       else {
         localObject = "2";
       }
-      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, localObject });
-      this.itemView.setTag(2131374589, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
+      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.d, localObject });
+      this.itemView.setTag(2131442759, paramMsgTabNodeInfo.d);
     }
+  }
+  
+  public void b()
+  {
+    this.itemView.setTag(2131442759, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder
  * JD-Core Version:    0.7.0.1
  */

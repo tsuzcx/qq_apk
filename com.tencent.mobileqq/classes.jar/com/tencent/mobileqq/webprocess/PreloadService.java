@@ -11,22 +11,15 @@ import java.util.Iterator;
 
 public class PreloadService
 {
-  public static long a;
-  public static HashMap<Integer, PreloadService.ReportStat> a;
-  public static HashMap<Integer, PreloadService.ReportStat> b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    b = new HashMap();
-    jdField_a_of_type_Long = 0L;
-  }
+  public static HashMap<Integer, PreloadService.ReportStat> a = new HashMap();
+  public static HashMap<Integer, PreloadService.ReportStat> b = new HashMap();
+  public static long c = 0L;
   
   public static void a()
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long > 3600000L)
+    if (System.currentTimeMillis() - c > 3600000L)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      Iterator localIterator = a.values().iterator();
       PreloadService.ReportStat localReportStat;
       HashMap localHashMap;
       while (localIterator.hasNext())
@@ -50,9 +43,9 @@ public class PreloadService
         localHashMap.put("noProc", String.valueOf(localReportStat.d));
         StatisticCollector.getInstance(BaseApplication.getContext().getApplicationContext()).collectPerformance(null, "actJumpWebview", true, 0L, 0L, localHashMap, null);
       }
-      jdField_a_of_type_JavaUtilHashMap.clear();
+      a.clear();
       b.clear();
-      jdField_a_of_type_Long = System.currentTimeMillis();
+      c = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("PreloadService", 2, "reportInterval...");
       }
@@ -74,7 +67,7 @@ public class PreloadService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.PreloadService
  * JD-Core Version:    0.7.0.1
  */

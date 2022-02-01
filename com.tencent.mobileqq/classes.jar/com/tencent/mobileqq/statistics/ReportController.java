@@ -30,50 +30,11 @@ public class ReportController
   static
   {
     Object localObject = ReportControllerServiceHolder.a();
-    if ((localObject != null) && (((IReportDataProviderService)localObject).a() != null))
+    if ((localObject != null) && (((IReportDataProviderService)localObject).c() != null))
     {
-      localObject = (ReportController.BusinessDataReporter)((IReportDataProviderService)localObject).a();
+      localObject = (ReportController.BusinessDataReporter)((IReportDataProviderService)localObject).c();
       a.put("dc01160", localObject);
     }
-  }
-  
-  private static String a()
-  {
-    int i = DeviceInfoUtil.b();
-    long l = DeviceInfoUtil.a() / 1024L / 1024L;
-    long[] arrayOfLong = DeviceInfoUtil.a();
-    Object localObject2 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkOperator();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localObject2 = String.format("%.2f", new Object[] { Double.valueOf(DeviceInfoUtil.a()) });
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(i);
-    localStringBuilder.append(";");
-    localStringBuilder.append(l);
-    localStringBuilder.append(";");
-    localStringBuilder.append(arrayOfLong[0]);
-    localStringBuilder.append(";");
-    localStringBuilder.append(arrayOfLong[1]);
-    localStringBuilder.append(";");
-    localStringBuilder.append(((String)localObject1).replaceAll(";", ""));
-    localStringBuilder.append(";");
-    localStringBuilder.append((String)localObject2);
-    localStringBuilder.append(";");
-    localStringBuilder.append(DeviceInfoUtil.i());
-    localStringBuilder.append(";");
-    localStringBuilder.append(DeviceInfoUtil.j());
-    localStringBuilder.append(";");
-    localObject1 = localStringBuilder.toString();
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("getExtraDeviceInfo=");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      QLog.d("ReportController", 2, ((StringBuilder)localObject2).toString());
-    }
-    return localObject1;
   }
   
   private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, int paramInt3, String paramString7, String paramString8, String paramString9, String paramString10)
@@ -127,7 +88,7 @@ public class ReportController
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(NetConnInfoCenter.getServerTime());
     localStringBuilder.append("|");
-    localStringBuilder.append(AppSetting.a());
+    localStringBuilder.append(AppSetting.d());
     localStringBuilder.append("|");
     localStringBuilder.append("android");
     localStringBuilder.append("|");
@@ -145,16 +106,16 @@ public class ReportController
     localStringBuilder.append("|");
     localStringBuilder.append(paramString6);
     localStringBuilder.append("|");
-    localStringBuilder.append(DeviceInfoUtil.a());
+    localStringBuilder.append(DeviceInfoUtil.b());
     localStringBuilder.append("|");
     localStringBuilder.append("|");
-    localStringBuilder.append(DeviceInfoUtil.h());
+    localStringBuilder.append(DeviceInfoUtil.t());
     localStringBuilder.append("|");
-    localStringBuilder.append(DeviceInfoUtil.i());
+    localStringBuilder.append(DeviceInfoUtil.u());
     localStringBuilder.append("|");
     localStringBuilder.append(str);
     localStringBuilder.append("|");
-    localStringBuilder.append(DeviceInfoUtil.e());
+    localStringBuilder.append(DeviceInfoUtil.g());
     localStringBuilder.append("|");
     localStringBuilder.append(ROMUtil.getRomDetailInfo());
     localStringBuilder.append("|");
@@ -187,7 +148,7 @@ public class ReportController
   
   public static void a(MotionEvent paramMotionEvent)
   {
-    ITouchEventService localITouchEventService = ReportControllerServiceHolder.a();
+    ITouchEventService localITouchEventService = ReportControllerServiceHolder.b();
     if (localITouchEventService != null) {
       localITouchEventService.a(paramMotionEvent);
     }
@@ -268,12 +229,12 @@ public class ReportController
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
   {
-    b(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, a(), paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12);
+    b(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, c(), paramString6, paramString7, paramString8, paramString9, paramString10, paramString11, paramString12);
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    IReportService localIReportService = ReportControllerServiceHolder.a();
+    IReportService localIReportService = ReportControllerServiceHolder.c();
     if (localIReportService != null) {
       paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
@@ -294,7 +255,7 @@ public class ReportController
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    IReportService localIReportService = ReportControllerServiceHolder.a();
+    IReportService localIReportService = ReportControllerServiceHolder.c();
     if (localIReportService != null) {
       paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
@@ -347,7 +308,7 @@ public class ReportController
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    IReportService localIReportService = ReportControllerServiceHolder.a();
+    IReportService localIReportService = ReportControllerServiceHolder.c();
     if (localIReportService != null) {
       paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
@@ -409,12 +370,12 @@ public class ReportController
   
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5)
   {
-    a(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, a(), "", "", "", "", "", "", "");
+    a(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, c(), "", "", "", "", "", "", "");
   }
   
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12, String paramString13)
   {
-    IReportService localIReportService = ReportControllerServiceHolder.a();
+    IReportService localIReportService = ReportControllerServiceHolder.c();
     if (localIReportService != null) {
       paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
@@ -435,7 +396,7 @@ public class ReportController
   
   public static void b(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, String paramString9)
   {
-    IReportService localIReportService = ReportControllerServiceHolder.a();
+    IReportService localIReportService = ReportControllerServiceHolder.c();
     if (localIReportService != null) {
       paramAppRuntime = localIReportService.a(paramAppRuntime);
     }
@@ -468,12 +429,43 @@ public class ReportController
     b(paramAppRuntime, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, 1, paramInt2, paramString6, paramString7, paramString8, paramString9);
   }
   
-  protected ReportController.BusinessDataReporter a(String paramString)
+  private static String c()
   {
-    if (a.containsKey(paramString)) {
-      return (ReportController.BusinessDataReporter)a.get(paramString);
+    int i = DeviceInfoUtil.h();
+    long l = DeviceInfoUtil.a() / 1024L / 1024L;
+    long[] arrayOfLong = DeviceInfoUtil.p();
+    Object localObject2 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkOperator();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
     }
-    return null;
+    localObject2 = String.format("%.2f", new Object[] { Double.valueOf(DeviceInfoUtil.T()) });
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append(";");
+    localStringBuilder.append(l);
+    localStringBuilder.append(";");
+    localStringBuilder.append(arrayOfLong[0]);
+    localStringBuilder.append(";");
+    localStringBuilder.append(arrayOfLong[1]);
+    localStringBuilder.append(";");
+    localStringBuilder.append(((String)localObject1).replaceAll(";", ""));
+    localStringBuilder.append(";");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(";");
+    localStringBuilder.append(DeviceInfoUtil.D());
+    localStringBuilder.append(";");
+    localStringBuilder.append(DeviceInfoUtil.E());
+    localStringBuilder.append(";");
+    localObject1 = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getExtraDeviceInfo=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("ReportController", 2, ((StringBuilder)localObject2).toString());
+    }
+    return localObject1;
   }
   
   protected void a()
@@ -500,10 +492,18 @@ public class ReportController
     IReportDataProviderService localIReportDataProviderService = ReportControllerServiceHolder.a();
     return (localIReportDataProviderService != null) && (localIReportDataProviderService.a(paramString));
   }
+  
+  protected ReportController.BusinessDataReporter c(String paramString)
+  {
+    if (a.containsKey(paramString)) {
+      return (ReportController.BusinessDataReporter)a.get(paramString);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportController
  * JD-Core Version:    0.7.0.1
  */

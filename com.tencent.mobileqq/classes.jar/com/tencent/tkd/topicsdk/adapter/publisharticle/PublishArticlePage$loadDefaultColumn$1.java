@@ -25,13 +25,13 @@ final class PublishArticlePage$loadDefaultColumn$1
   {
     Intrinsics.checkParameterIsNotNull(paramList, "list");
     if (paramBoolean1) {
-      PublishArticlePage.a(this.this$0).setSelectedTopic((TopicInfo)paramList.get(0));
+      PublishArticlePage.d(this.this$0).setSelectedTopic((TopicInfo)paramList.get(0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.adapter.publisharticle.PublishArticlePage.loadDefaultColumn.1
  * JD-Core Version:    0.7.0.1
  */

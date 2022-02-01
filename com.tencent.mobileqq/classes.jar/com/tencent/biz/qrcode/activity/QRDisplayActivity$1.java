@@ -29,10 +29,10 @@ class QRDisplayActivity$1
       int j = paramList2.size();
       if ((j > 0) && (paramList1.size() == j))
       {
-        if (this.a.jdField_b_of_type_JavaUtilList == null) {
-          this.a.jdField_b_of_type_JavaUtilList = new ArrayList();
+        if (this.a.B == null) {
+          this.a.B = new ArrayList();
         }
-        this.a.jdField_b_of_type_JavaUtilList.addAll(paramList1);
+        this.a.B.addAll(paramList1);
         int i = 0;
         while (i < j)
         {
@@ -41,20 +41,20 @@ class QRDisplayActivity$1
           }
           i += 1;
         }
-        Collections.sort(this.a.jdField_b_of_type_JavaUtilList, new QRDisplayActivity.DiscussionMemberComparator(this.a));
+        Collections.sort(this.a.B, new QRDisplayActivity.DiscussionMemberComparator(this.a));
       }
     }
     paramList1 = this.a;
-    paramList1.jdField_a_of_type_JavaLangString = paramList1.a(paramList1.jdField_b_of_type_JavaUtilList);
-    if (this.a.jdField_a_of_type_JavaLangString != null)
+    paramList1.l = paramList1.a(paramList1.B);
+    if (this.a.l != null)
     {
-      paramList1 = this.a.jdField_a_of_type_AndroidWidgetImageView;
+      paramList1 = this.a.d;
       paramList2 = new StringBuilder();
-      paramList2.append(this.a.jdField_a_of_type_JavaLangString);
+      paramList2.append(this.a.l);
       paramList2.append(",");
-      paramList2.append(this.a.jdField_b_of_type_JavaLangString);
+      paramList2.append(this.a.m);
       paramList1.setContentDescription(paramList2.toString());
-      this.a.c.post(this.a.jdField_a_of_type_JavaLangRunnable);
+      this.a.c.post(this.a.aG);
     }
   }
 }

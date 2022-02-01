@@ -29,12 +29,12 @@ class TroopNewGuidePopWindow$7
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
     this.a.a(true, "onLoadSuccessed");
-    this.a.b = true;
+    this.a.t = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.feeds.TroopNewGuidePopWindow.7
  * JD-Core Version:    0.7.0.1
  */

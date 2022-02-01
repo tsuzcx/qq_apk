@@ -35,20 +35,14 @@ public class StoryPlayerActivity
   implements StoryPlayerImpl.Ui, IEventReceiver
 {
   public static int a;
-  private static int b;
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  protected Handler a;
-  private StoryPlayerActivity.ClosePlayerAnimationInfoEventReceiver jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity$ClosePlayerAnimationInfoEventReceiver = new StoryPlayerActivity.ClosePlayerAnimationInfoEventReceiver(this);
-  protected StoryPlayerImpl a;
-  protected AnimationParam a;
-  protected boolean a;
-  protected AnimationParam b;
-  
-  public StoryPlayerActivity()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Boolean = false;
-  }
+  private static int g;
+  protected StoryPlayerImpl b;
+  protected Handler c = new Handler(Looper.getMainLooper());
+  protected AnimationParam d;
+  protected AnimationParam e;
+  protected boolean f = false;
+  private AudioManager h;
+  private StoryPlayerActivity.ClosePlayerAnimationInfoEventReceiver i = new StoryPlayerActivity.ClosePlayerAnimationInfoEventReceiver(this);
   
   @NonNull
   public View a()
@@ -59,8 +53,8 @@ public class StoryPlayerActivity
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl = new StoryPlayerImpl();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a(this);
+    this.b = new StoryPlayerImpl();
+    this.b.a(this);
   }
   
   @Override
@@ -75,16 +69,16 @@ public class StoryPlayerActivity
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a(paramInt1, paramInt2, paramIntent);
+    this.b.a(paramInt1, paramInt2, paramIntent);
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
-    jdField_b_of_type_Int += 1;
-    SLog.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate, instance count = %d", Integer.valueOf(jdField_b_of_type_Int));
+    g += 1;
+    SLog.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate, instance count = %d", Integer.valueOf(g));
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
-    LiuHaiUtils.a(this);
+    LiuHaiUtils.f(this);
     if (LiuHaiUtils.c())
     {
       getWindow().clearFlags(1024);
@@ -95,62 +89,62 @@ public class StoryPlayerActivity
     super.doOnCreate(paramBundle);
     if (isInMultiWindow())
     {
-      QQToast.a(this, HardCodeUtil.a(2131714346), 0).a();
+      QQToast.makeText(this, HardCodeUtil.a(2131911860), 0).show();
       finish();
       return false;
     }
     super.getWindow().addFlags(128);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = ((AnimationParam)getIntent().getParcelableExtra("AnimationParam"));
+    this.d = ((AnimationParam)getIntent().getParcelableExtra("AnimationParam"));
     SLog.b("Q.qqstory.playernew.StoryPlayerActivity", "doOnCreate = > StoryPlayerActivity doOnCreate");
-    setContentView(2131561737);
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)getSystemService("audio"));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a(paramBundle, getIntent().getExtras());
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) && (!this.jdField_a_of_type_Boolean))
+    setContentView(2131628116);
+    this.h = ((AudioManager)getSystemService("audio"));
+    this.b.a(paramBundle, getIntent().getExtras());
+    if ((this.d != null) && (!this.f))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.f = true;
       paramBundle = findViewById(16908290);
       paramBundle.getViewTreeObserver().addOnPreDrawListener(new StoryPlayerActivity.1(this, paramBundle));
     }
-    StoryDispatcher.a().registerSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity$ClosePlayerAnimationInfoEventReceiver);
+    StoryDispatcher.a().registerSubscriber(this.i);
     return true;
   }
   
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    jdField_b_of_type_Int -= 1;
-    SLog.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnDestroy, instance count = %d", Integer.valueOf(jdField_b_of_type_Int));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.g();
-    StoryDispatcher.a().unRegisterSubscriber(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerActivity$ClosePlayerAnimationInfoEventReceiver);
-    FeedManager.d();
-    if (jdField_b_of_type_Int == 0) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new StoryPlayerActivity.2(this));
+    g -= 1;
+    SLog.a("Q.qqstory.playernew.StoryPlayerActivity", "doOnDestroy, instance count = %d", Integer.valueOf(g));
+    this.b.h();
+    StoryDispatcher.a().unRegisterSubscriber(this.i);
+    FeedManager.j();
+    if (g == 0) {
+      this.c.post(new StoryPlayerActivity.2(this));
     }
   }
   
   protected void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.e();
+    this.b.f();
     StoryReportor.a(2, this.currentActivityStayTime);
   }
   
   protected void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.d();
+    this.b.e();
   }
   
   protected void doOnStart()
   {
     super.doOnStart();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.c();
+    this.b.d();
   }
   
   protected void doOnStop()
   {
     super.doOnStop();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.f();
+    this.b.g();
   }
   
   protected void doOnWindowFocusChanged(boolean paramBoolean)
@@ -161,31 +155,31 @@ public class StoryPlayerActivity
   public void finish()
   {
     boolean bool;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null) {
+    if (this.d != null) {
       bool = true;
     } else {
       bool = false;
     }
     SLog.a("Q.qqstory.playernew.StoryPlayerActivity", "finish with animation = %s", Boolean.valueOf(bool));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam != null)
+    if (this.d != null)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.f)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.b();
+        this.f = true;
+        this.b.c();
         ViewGroup localViewGroup = (ViewGroup)a();
-        AnimationParam localAnimationParam = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam;
+        AnimationParam localAnimationParam = this.e;
         if (localAnimationParam == null) {
-          localAnimationParam = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam;
+          localAnimationParam = this.d;
         }
         AnimationUtils.a(localViewGroup, localAnimationParam, new StoryPlayerActivity.3(this));
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.b();
+      this.b.c();
       super.finish();
-      overridePendingTransition(2130772002, 2130772003);
+      overridePendingTransition(2130772005, 2130772006);
     }
   }
   
@@ -202,7 +196,7 @@ public class StoryPlayerActivity
   
   protected boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayerImpl.a()) {
+    if (this.b.a()) {
       return true;
     }
     return super.onBackEvent();
@@ -225,10 +219,10 @@ public class StoryPlayerActivity
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       getWindow().addFlags(67108864);
-      int i = getResources().getColor(2131167333);
+      int j = getResources().getColor(2131168376);
       if (this.mSystemBarComp == null)
       {
-        this.mSystemBarComp = new SystemBarCompact(this, true, i);
+        this.mSystemBarComp = new SystemBarCompact(this, true, j);
         this.mSystemBarComp.setStatusDrawable(null);
       }
       if (!isInMultiWindow()) {
@@ -239,7 +233,7 @@ public class StoryPlayerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerActivity
  * JD-Core Version:    0.7.0.1
  */

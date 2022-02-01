@@ -18,24 +18,24 @@ class StructingMsgItemBuilderMenuHelper$3
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     Bundle localBundle = new Bundle();
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin != null) && (!"".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin))) {
-      localBundle.putString("source_puin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.source_puin);
+    if ((this.a.structingMsg.source_puin != null) && (!"".equals(this.a.structingMsg.source_puin))) {
+      localBundle.putString("source_puin", this.a.structingMsg.source_puin);
     }
     localBundle.putInt("forward_type", -3);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mCommentText = null;
-    localBundle.putInt("structmsg_service_id", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.mMsgServiceID);
-    localBundle.putByteArray("stuctmsg_bytes", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.getBytes());
-    localBundle.putLong("structmsg_uniseq", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
-    localBundle.putInt("accostType", this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg.sourceAccoutType);
+    this.a.structingMsg.mCommentText = null;
+    localBundle.putInt("structmsg_service_id", this.a.structingMsg.mMsgServiceID);
+    localBundle.putByteArray("stuctmsg_bytes", this.a.structingMsg.getBytes());
+    localBundle.putLong("structmsg_uniseq", this.a.uniseq);
+    localBundle.putInt("accostType", this.a.structingMsg.sourceAccoutType);
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, 21);
+    ForwardBaseOption.a((Activity)this.b, localIntent, 21);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilderMenuHelper.3
  * JD-Core Version:    0.7.0.1
  */

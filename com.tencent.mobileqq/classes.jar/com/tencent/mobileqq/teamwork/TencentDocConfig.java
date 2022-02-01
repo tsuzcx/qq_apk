@@ -7,26 +7,21 @@ import java.util.HashMap;
 
 public class TencentDocConfig
 {
-  private static volatile TencentDocConfig a;
-  public String a;
-  
-  public TencentDocConfig()
-  {
-    this.jdField_a_of_type_JavaLangString = "doc|.docx|.xls|.xlsx";
-  }
+  private static volatile TencentDocConfig b;
+  public String a = "doc|.docx|.xls|.xlsx";
   
   public static TencentDocConfig a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTeamworkTencentDocConfig == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqTeamworkTencentDocConfig == null) {
-          jdField_a_of_type_ComTencentMobileqqTeamworkTencentDocConfig = new TencentDocConfig();
+        if (b == null) {
+          b = new TencentDocConfig();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqTeamworkTencentDocConfig;
+    return b;
   }
   
   public static HashMap<String, String> a(String paramString)
@@ -51,17 +46,17 @@ public class TencentDocConfig
     return localHashMap;
   }
   
-  public void a()
+  public void b()
   {
-    String str = TencentDocImportFileInfoProcessor.a().c();
+    String str = TencentDocImportFileInfoProcessor.a().d();
     if (!TextUtils.isEmpty(str)) {
-      this.jdField_a_of_type_JavaLangString = str;
+      this.a = str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TencentDocConfig
  * JD-Core Version:    0.7.0.1
  */

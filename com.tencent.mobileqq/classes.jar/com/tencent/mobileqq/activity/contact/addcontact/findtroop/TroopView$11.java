@@ -17,19 +17,19 @@ class TroopView$11
   
   public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a(), SearchContactsActivity.class);
+    Intent localIntent = new Intent(this.a.E.b(), SearchContactsActivity.class);
     localIntent.putExtra("from_key", 1);
     localIntent.putExtra("fromType", 13);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a().startActivity(localIntent);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactContactBaseView$IAddContactContext.a().overridePendingTransition(0, 0);
+    this.a.E.b().startActivity(localIntent);
+    this.a.E.b().overridePendingTransition(0, 0);
     SearchUtils.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
+    ReportController.b(this.a.G, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.11
  * JD-Core Version:    0.7.0.1
  */

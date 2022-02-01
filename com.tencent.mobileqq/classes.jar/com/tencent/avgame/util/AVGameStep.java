@@ -8,40 +8,40 @@ public class AVGameStep
   implements Parcelable
 {
   public static final Parcelable.Creator<AVGameStep> CREATOR = new AVGameStep.1();
-  public int a;
-  public long a;
   public String a;
   public long b;
+  public long c;
+  public int d;
   
   protected AVGameStep(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.c = paramParcel.readLong();
+    this.d = paramParcel.readInt();
   }
   
   public AVGameStep(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    a();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    this.jdField_a_of_type_Int = 0;
+    this.a = paramString;
+    c();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Long != 0L;
+    return this.b != 0L;
   }
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Long != 0L) && (this.b != 0L);
+    return (this.b != 0L) && (this.c != 0L);
+  }
+  
+  public void c()
+  {
+    this.b = 0L;
+    this.c = 0L;
+    this.d = 0;
   }
   
   public int describeContents()
@@ -53,23 +53,23 @@ public class AVGameStep
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AVGameStep{");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(",");
     localStringBuilder.append(this.b);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeString(this.a);
     paramParcel.writeLong(this.b);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeLong(this.c);
+    paramParcel.writeInt(this.d);
   }
 }
 

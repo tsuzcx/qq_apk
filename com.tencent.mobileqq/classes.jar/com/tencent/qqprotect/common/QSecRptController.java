@@ -26,41 +26,6 @@ public class QSecRptController
     return 1;
   }
   
-  protected static String a(int paramInt)
-  {
-    try
-    {
-      Object localObject1 = NetConnInfoCenter.GUID;
-      String str1 = DeviceInfoUtil.e();
-      String str2 = DeviceInfoUtil.a(MobileQQ.sMobileQQ);
-      String str3 = QPMiscUtils.b();
-      String str4 = QPMiscUtils.c();
-      String str5 = Build.CPU_ABI;
-      String str6 = Build.MODEL;
-      String str7 = Build.MANUFACTURER;
-      QSecRptHelper localQSecRptHelper = new QSecRptHelper();
-      localQSecRptHelper.a((byte[])localObject1).a(str1).a(str2).a(str3).a(str4).a(str5).a(str6).a(str7);
-      if (paramInt >= 2) {
-        localQSecRptHelper.a(QPMiscUtils.a()).a(AppSetting.a()).a(DeviceInfoUtil.f()).a("").a("");
-      }
-      localObject1 = localQSecRptHelper.toString();
-      return localObject1;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      Object localObject2 = ",,,,,,,";
-      if (paramInt >= 2)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(",,,,,,,");
-        ((StringBuilder)localObject2).append(",,,,");
-        localObject2 = ((StringBuilder)localObject2).toString();
-      }
-      return localObject2;
-    }
-  }
-  
   public static void a(String paramString, int paramInt)
   {
     a(paramString, paramInt, 0, 1);
@@ -81,7 +46,7 @@ public class QSecRptController
     SafeReport.ReqBody localReqBody = new SafeReport.ReqBody();
     SafeReport.LogItem localLogItem = new SafeReport.LogItem();
     localLogItem.uint32_rpt_id.set(paramInt1);
-    String str = a(a(paramInt1));
+    String str = b(a(paramInt1));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(str);
     localStringBuilder.append(",");
@@ -95,6 +60,41 @@ public class QSecRptController
       QLog.d("QSRPT", 2, paramString);
     }
     ThreadManager.post(new QSecRptController.1(paramQQAppInterface, localReqBody), 5, null, true);
+  }
+  
+  protected static String b(int paramInt)
+  {
+    try
+    {
+      Object localObject1 = NetConnInfoCenter.GUID;
+      String str1 = DeviceInfoUtil.g();
+      String str2 = DeviceInfoUtil.a(MobileQQ.sMobileQQ);
+      String str3 = QPMiscUtils.c();
+      String str4 = QPMiscUtils.d();
+      String str5 = Build.CPU_ABI;
+      String str6 = Build.MODEL;
+      String str7 = Build.MANUFACTURER;
+      QSecRptHelper localQSecRptHelper = new QSecRptHelper();
+      localQSecRptHelper.a((byte[])localObject1).a(str1).a(str2).a(str3).a(str4).a(str5).a(str6).a(str7);
+      if (paramInt >= 2) {
+        localQSecRptHelper.a(QPMiscUtils.a()).a(AppSetting.d()).a(DeviceInfoUtil.j()).a("").a("");
+      }
+      localObject1 = localQSecRptHelper.toString();
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      Object localObject2 = ",,,,,,,";
+      if (paramInt >= 2)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(",,,,,,,");
+        ((StringBuilder)localObject2).append(",,,,");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      return localObject2;
+    }
   }
   
   private static void b(QQAppInterface paramQQAppInterface, SafeReport.ReqBody paramReqBody)
@@ -118,7 +118,7 @@ public class QSecRptController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QSecRptController
  * JD-Core Version:    0.7.0.1
  */

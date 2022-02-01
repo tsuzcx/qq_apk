@@ -2,9 +2,9 @@ package com.tencent.mobileqq.kandian.repo.follow;
 
 public class BatchFollowModel
 {
-  public int a;
   public long a;
-  public boolean a;
+  public int b;
+  public boolean c;
   
   public BatchFollowModel(long paramLong, int paramInt)
   {
@@ -13,27 +13,27 @@ public class BatchFollowModel
   
   public BatchFollowModel(long paramLong, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramLong;
+    this.b = paramInt;
+    this.c = paramBoolean;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("BatchFollowModel{followUin=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", accountType=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", isFollowed=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.follow.BatchFollowModel
  * JD-Core Version:    0.7.0.1
  */

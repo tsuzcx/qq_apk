@@ -13,7 +13,7 @@ class PublicAccountChatPie$15
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.removeHeaderView(PublicAccountChatPie.a(this.a));
+    this.a.U.removeHeaderView(PublicAccountChatPie.k(this.a));
     PublicAccountChatPie.a(this.a, true);
   }
   
@@ -23,7 +23,7 @@ class PublicAccountChatPie$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.15
  * JD-Core Version:    0.7.0.1
  */

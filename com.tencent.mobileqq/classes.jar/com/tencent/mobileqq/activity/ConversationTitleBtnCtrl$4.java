@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcircle.api.IQCircleRedPointService;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
-import com.tencent.mobileqq.qcircle.api.helper.QCircleChatBoxHelper;
+import com.tencent.mobileqq.qcircle.api.constant.QCircleLpReportDc05504DataBuilder;
 import com.tencent.mobileqq.qcircle.api.utils.QCircleHostUtil;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
@@ -38,14 +38,13 @@ class ConversationTitleBtnCtrl$4
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put("ext1", "1");
-    localHashMap.put("ext5", ConversationTitleBtnCtrl.a(this.this$0));
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504("", 2, 1, paramInt, localHashMap, null, null);
+    localHashMap.put("ext5", ConversationTitleBtnCtrl.l(this.this$0));
+    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(new QCircleLpReportDc05504DataBuilder().setActionType(2).setSubActionType(1).setThrActionType(paramInt).setExtras(localHashMap));
   }
   
   public void run()
   {
-    int k = QCircleChatBoxHelper.getInstance().getUnReadChatNum();
-    QQCircleCounter.RedPointInfo localRedPointInfo = QCircleUtils.a().getOuterEntranceRedPointInfoByAppid("circle_entrance");
+    QQCircleCounter.RedPointInfo localRedPointInfo = QCircleUtils.b().getOuterEntranceRedPointInfoByAppid("circle_entrance");
     Object localObject1 = null;
     long l;
     int i;
@@ -90,46 +89,44 @@ class ConversationTitleBtnCtrl$4
       i = 0;
       bool = false;
     }
-    int j = i + k;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("[updateQQCircleRedFlag]");
     ((StringBuilder)localObject2).append("  redDotCombineTypes = ");
     ((StringBuilder)localObject2).append(l);
     ((StringBuilder)localObject2).append("  pushUnReadNum = ");
     ((StringBuilder)localObject2).append(i);
-    ((StringBuilder)localObject2).append(", chatUnReadNum = ");
-    ((StringBuilder)localObject2).append(k);
     ((StringBuilder)localObject2).append(", showActiveRedDot = ");
     ((StringBuilder)localObject2).append(bool);
     ((StringBuilder)localObject2).append(", uinList = ");
     ((StringBuilder)localObject2).append(localObject1);
     QLog.d("QCircleEeveeRedPoint_ConversationTitleBtnCtrl", 1, new Object[] { localObject2 });
+    int j;
     if (localObject1 == null) {
-      i = 0;
+      j = 0;
     } else {
-      i = ((List)localObject1).size();
+      j = ((List)localObject1).size();
     }
-    if (ConversationTitleBtnCtrl.a(this.this$0) != j)
+    if (ConversationTitleBtnCtrl.f(this.this$0) != i)
     {
-      ConversationTitleBtnCtrl.b(this.this$0, j);
+      ConversationTitleBtnCtrl.b(this.this$0, i);
       ConversationTitleBtnCtrl.a(this.this$0, true);
     }
-    if (ConversationTitleBtnCtrl.a(this.this$0) != bool)
+    if (ConversationTitleBtnCtrl.g(this.this$0) != bool)
     {
       ConversationTitleBtnCtrl.b(this.this$0, bool);
       ConversationTitleBtnCtrl.a(this.this$0, true);
     }
-    if (ConversationTitleBtnCtrl.b(this.this$0) != i)
+    if (ConversationTitleBtnCtrl.h(this.this$0) != j)
     {
-      ConversationTitleBtnCtrl.c(this.this$0, i);
+      ConversationTitleBtnCtrl.c(this.this$0, j);
       ConversationTitleBtnCtrl.a(this.this$0, true);
     }
     ConversationTitleBtnCtrl.a(this.this$0).runOnUiThread(new ConversationTitleBtnCtrl.4.1(this));
-    if (ConversationTitleBtnCtrl.b(this.this$0))
+    if (ConversationTitleBtnCtrl.k(this.this$0))
     {
-      if (ConversationTitleBtnCtrl.a(this.this$0) > 0) {
+      if (ConversationTitleBtnCtrl.f(this.this$0) > 0) {
         a(2);
-      } else if (ConversationTitleBtnCtrl.a(this.this$0)) {
+      } else if (ConversationTitleBtnCtrl.g(this.this$0)) {
         a(1);
       } else {
         a(3);
@@ -140,7 +137,7 @@ class ConversationTitleBtnCtrl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ConversationTitleBtnCtrl.4
  * JD-Core Version:    0.7.0.1
  */

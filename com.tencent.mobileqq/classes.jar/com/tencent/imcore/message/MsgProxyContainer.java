@@ -15,34 +15,33 @@ import mqq.app.AppRuntime;
 public class MsgProxyContainer
   extends BaseProxy
 {
-  public static MsgProxyContainer.Callback a;
-  private MsgPool jdField_a_of_type_ComTencentImcoreMessageMsgPool;
-  private final ConcurrentHashMap<Integer, BaseMsgProxy> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private volatile boolean b = false;
+  public static MsgProxyContainer.Callback a = new MsgProxyContainerDummyCallback();
+  private MsgPool b;
+  private volatile boolean c = false;
+  private volatile boolean d = false;
+  private final ConcurrentHashMap<Integer, BaseMsgProxy> e = new ConcurrentHashMap();
   
   static
   {
-    jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback = new MsgProxyContainerDummyCallback();
     InitMsgModule.a();
   }
   
   public MsgProxyContainer(AppRuntime paramAppRuntime, BaseProxyManager paramBaseProxyManager, MsgPool paramMsgPool)
   {
     super(paramAppRuntime, paramBaseProxyManager);
-    this.jdField_a_of_type_ComTencentImcoreMessageMsgPool = paramMsgPool;
-    b();
+    this.b = paramMsgPool;
+    e();
   }
   
   private List<MessageRecord> a(String paramString, int paramInt)
   {
-    Lock localLock = this.jdField_a_of_type_ComTencentImcoreMessageMsgPool.a(paramString, paramInt);
+    Lock localLock = this.b.a(paramString, paramInt);
     localLock.lock();
     try
     {
-      List localList = a(paramInt).f(paramString, paramInt);
+      List localList = a(paramInt).k(paramString, paramInt);
       if ((localList != null) && (!localList.isEmpty())) {
-        this.jdField_a_of_type_ComTencentImcoreMessageMsgPool.b().put(UinTypeUtil.a(paramString, paramInt), localList);
+        this.b.b().put(UinTypeUtil.a(paramString, paramInt), localList);
       }
       return localList;
     }
@@ -52,10 +51,15 @@ public class MsgProxyContainer
     }
   }
   
-  private void a(int paramInt)
+  public static void a(MsgProxyContainer.Callback paramCallback)
+  {
+    a = paramCallback;
+  }
+  
+  private void b(int paramInt)
   {
     long l1 = System.currentTimeMillis();
-    List localList1 = jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback.a(this);
+    List localList1 = a.a(this);
     if (localList1 == null) {
       return;
     }
@@ -90,7 +94,7 @@ public class MsgProxyContainer
             if (((MsgProxyContainer.SessionKey)localObject).a() != 6000)
             {
               m = i;
-              jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback.a(l1, (MsgProxyContainer.SessionKey)localObject, this);
+              a.a(l1, (MsgProxyContainer.SessionKey)localObject, this);
               m = i;
               List localList2 = a(((MsgProxyContainer.SessionKey)localObject).a, ((MsgProxyContainer.SessionKey)localObject).a());
               j = i;
@@ -104,7 +108,7 @@ public class MsgProxyContainer
               m = j;
               QLog.d("Q.msg.BaseMsgProxyContainer", 1, new Object[] { "INIT cost: ", Long.valueOf(System.currentTimeMillis() - l2), " msgSize: ", Integer.valueOf(j), " convSize:", Integer.valueOf(n) });
               m = j;
-              jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback.b(l1, (MsgProxyContainer.SessionKey)localObject, this);
+              a.b(l1, (MsgProxyContainer.SessionKey)localObject, this);
               k = n;
               i = j;
             }
@@ -127,29 +131,24 @@ public class MsgProxyContainer
         ((StringBuilder)localObject).append(j);
         ((StringBuilder)localObject).append("");
         localMsgAutoMonitorUtil.printKeyAndValue("MSG_InitMsgNum", ((StringBuilder)localObject).toString());
-        jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback.a(this);
+        a.b(this);
       }
     }
   }
   
-  public static void a(MsgProxyContainer.Callback paramCallback)
+  private BaseMsgProxy c(int paramInt)
   {
-    jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback = paramCallback;
+    return a.a(paramInt, this);
   }
   
-  private BaseMsgProxy b(int paramInt)
+  private void e()
   {
-    return jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback.a(paramInt, this);
+    a.c(this);
   }
   
-  private void b()
+  private void f()
   {
-    jdField_a_of_type_ComTencentImcoreMessageMsgProxyContainer$Callback.b(this);
-  }
-  
-  private void c()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    Iterator localIterator = this.e.values().iterator();
     while (localIterator.hasNext())
     {
       BaseMsgProxy localBaseMsgProxy = (BaseMsgProxy)localIterator.next();
@@ -159,9 +158,9 @@ public class MsgProxyContainer
     }
   }
   
-  private void d()
+  private void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    Iterator localIterator = this.e.values().iterator();
     while (localIterator.hasNext())
     {
       BaseMsgProxy localBaseMsgProxy = (BaseMsgProxy)localIterator.next();
@@ -173,11 +172,11 @@ public class MsgProxyContainer
   
   public BaseMsgProxy a(int paramInt)
   {
-    Object localObject2 = (BaseMsgProxy)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = (BaseMsgProxy)this.e.get(Integer.valueOf(paramInt));
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = b(paramInt);
+      localObject1 = c(paramInt);
       if (localObject1 == null)
       {
         localObject2 = new StringBuilder();
@@ -185,61 +184,61 @@ public class MsgProxyContainer
         ((StringBuilder)localObject2).append(" onCreateMsgProxy return null");
         QLog.e("Q.msg.BaseMsgProxyContainer", 1, "getMsgProxy: ", new IllegalStateException(((StringBuilder)localObject2).toString()));
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localObject1);
+      this.e.put(Integer.valueOf(paramInt), localObject1);
     }
     return localObject1;
   }
   
-  public MsgPool a()
-  {
-    return this.jdField_a_of_type_ComTencentImcoreMessageMsgPool;
-  }
-  
-  public BaseProxyManager a()
-  {
-    return this.proxyManager;
-  }
-  
-  public AppRuntime a()
-  {
-    return this.app;
-  }
-  
   public void a()
   {
-    if (this.b) {
+    if (this.d) {
       return;
     }
     try
     {
-      if (this.b) {
+      if (this.d) {
         return;
       }
-      a(40);
-      this.b = true;
+      b(40);
+      this.d = true;
       return;
     }
     finally {}
   }
   
+  public AppRuntime b()
+  {
+    return this.app;
+  }
+  
+  public BaseProxyManager c()
+  {
+    return this.proxyManager;
+  }
+  
+  public MsgPool d()
+  {
+    return this.b;
+  }
+  
   public void destroy()
   {
-    d();
+    g();
   }
   
   public void init()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.c) {
       return;
     }
     try
     {
-      if (this.jdField_a_of_type_Boolean) {
+      if (this.c) {
         return;
       }
-      c();
-      a(15);
-      this.jdField_a_of_type_Boolean = true;
+      f();
+      b(15);
+      this.c = true;
       return;
     }
     finally {}
@@ -247,7 +246,7 @@ public class MsgProxyContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyContainer
  * JD-Core Version:    0.7.0.1
  */

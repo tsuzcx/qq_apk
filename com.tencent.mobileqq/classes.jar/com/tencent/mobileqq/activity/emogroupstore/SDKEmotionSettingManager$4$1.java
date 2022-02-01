@@ -16,12 +16,12 @@ class SDKEmotionSettingManager$4$1
   public void b()
   {
     QLog.i("SDKEmotionSettingManager", 1, "setEmotion show self dialog denied");
-    SDKEmotionSettingManager.a(this.a.a, SDKEmotionSettingManager.b(this.a.a));
+    SDKEmotionSettingManager.a(this.a.a, SDKEmotionSettingManager.h(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -65,7 +65,9 @@ class TVideoImpl$TVKPlayerCGICallback
     ((StringBuilder)localObject2).append("  liveInfo.getDefinitionList() == null");
     LogUtil.e((String)localObject1, ((StringBuilder)localObject2).toString());
     localTVideoNetInfo.setDefinitionList(localArrayList);
-    localTVideoNetInfo.setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKLiveVideoInfo.getCurDefinition().getDefn(), paramTVKLiveVideoInfo.getCurDefinition().getDefnName(), paramTVKLiveVideoInfo.getCurDefinition().getDefnRate(), paramTVKLiveVideoInfo.getCurDefinition().getDefnShowName()));
+    if (paramTVKLiveVideoInfo.getCurDefinition() != null) {
+      localTVideoNetInfo.setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKLiveVideoInfo.getCurDefinition().getDefn(), paramTVKLiveVideoInfo.getCurDefinition().getDefnName(), paramTVKLiveVideoInfo.getCurDefinition().getDefnRate(), paramTVKLiveVideoInfo.getCurDefinition().getDefnShowName()));
+    }
     localTVideoNetInfo.setUpdateTimeMillis(System.currentTimeMillis());
     boolean bool1 = bool2;
     if (paramTVKLiveVideoInfo.getWatermarkInfos() != null) {
@@ -105,9 +107,9 @@ class TVideoImpl$TVKPlayerCGICallback
   public void onGetVodInfoSuccess(int paramInt, TVKPlaybackInfo.RequestInfo paramRequestInfo, TVKVideoInfo paramTVKVideoInfo)
   {
     paramRequestInfo = (SuperPlayerVideoInfo)paramRequestInfo.tag();
-    paramInt = paramTVKVideoInfo.getDownloadType();
+    int i = paramTVKVideoInfo.getDownloadType();
     boolean bool2 = true;
-    if ((paramInt != 4) && (paramTVKVideoInfo.getDownloadType() != 5))
+    if ((i != 4) && (paramTVKVideoInfo.getDownloadType() != 5))
     {
       if (paramTVKVideoInfo.getDownloadType() == 1)
       {
@@ -135,14 +137,25 @@ class TVideoImpl$TVKPlayerCGICallback
     localTVideoNetInfo.setVideoDuration(paramTVKVideoInfo.getDuration() * 1000);
     localTVideoNetInfo.setVideoSize(paramTVKVideoInfo.getFileSize());
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramTVKVideoInfo.getDefinitionList().iterator();
-    while (localIterator.hasNext())
+    if (paramTVKVideoInfo.getDefinitionList() != null)
     {
-      TVKNetVideoInfo.DefnInfo localDefnInfo = (TVKNetVideoInfo.DefnInfo)localIterator.next();
-      localArrayList.add(new TVideoNetInfo.DefinitionInfo(localDefnInfo.getDefn(), localDefnInfo.getDefnName(), localDefnInfo.getDefnRate(), localDefnInfo.getDefnShowName()));
+      localObject1 = paramTVKVideoInfo.getDefinitionList().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (TVKNetVideoInfo.DefnInfo)((Iterator)localObject1).next();
+        localArrayList.add(new TVideoNetInfo.DefinitionInfo(((TVKNetVideoInfo.DefnInfo)localObject2).getDefn(), ((TVKNetVideoInfo.DefnInfo)localObject2).getDefnName(), ((TVKNetVideoInfo.DefnInfo)localObject2).getDefnRate(), ((TVKNetVideoInfo.DefnInfo)localObject2).getDefnShowName()));
+      }
     }
+    Object localObject1 = TVideoImpl.TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("onGetVodInfoSuccess() reqType:");
+    ((StringBuilder)localObject2).append(paramInt);
+    ((StringBuilder)localObject2).append("  liveInfo.getDefinitionList() == null");
+    LogUtil.e((String)localObject1, ((StringBuilder)localObject2).toString());
     localTVideoNetInfo.setDefinitionList(localArrayList);
-    localTVideoNetInfo.setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKVideoInfo.getCurDefinition().getDefn(), paramTVKVideoInfo.getCurDefinition().getDefnName(), paramTVKVideoInfo.getCurDefinition().getDefnRate(), paramTVKVideoInfo.getCurDefinition().getDefnShowName()));
+    if (paramTVKVideoInfo.getCurDefinition() != null) {
+      localTVideoNetInfo.setCurrentDefinition(new TVideoNetInfo.DefinitionInfo(paramTVKVideoInfo.getCurDefinition().getDefn(), paramTVKVideoInfo.getCurDefinition().getDefnName(), paramTVKVideoInfo.getCurDefinition().getDefnRate(), paramTVKVideoInfo.getCurDefinition().getDefnShowName()));
+    }
     localTVideoNetInfo.setUpdateTimeMillis(System.currentTimeMillis());
     boolean bool1 = bool2;
     if (paramTVKVideoInfo.getWatermarkInfos() != null) {
@@ -162,7 +175,7 @@ class TVideoImpl$TVKPlayerCGICallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.TVideoImpl.TVKPlayerCGICallback
  * JD-Core Version:    0.7.0.1
  */

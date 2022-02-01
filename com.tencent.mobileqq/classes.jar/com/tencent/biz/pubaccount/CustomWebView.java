@@ -171,23 +171,23 @@ public class CustomWebView
     if (!this.needSetCookies) {
       return false;
     }
-    Object localObject = SwiftWebViewUtils.b(paramLoadUrlInfo.jdField_a_of_type_JavaLangString);
+    Object localObject = SwiftWebViewUtils.b(paramLoadUrlInfo.b);
     if ((!"http".equals(localObject)) && (!"https".equals(localObject))) {
       return false;
     }
     this.cookiesCallback = new CustomWebView.1(this, paramLoadUrlInfo);
-    localObject = SwiftBrowserCookieMonster.a(paramLoadUrlInfo.jdField_a_of_type_JavaLangString);
+    localObject = SwiftBrowserCookieMonster.c(paramLoadUrlInfo.b);
     if (localObject != null)
     {
       this.needSetCookies = false;
       Intent localIntent = getIntent();
       if ((localIntent != null) && (localIntent.getBooleanExtra("avoidLoginWeb", false)))
       {
-        ((SwiftBrowserCookieMonster)localObject).f();
+        ((SwiftBrowserCookieMonster)localObject).g();
         return false;
       }
-      this.cookieUrl = paramLoadUrlInfo.jdField_a_of_type_JavaLangString;
-      ((SwiftBrowserCookieMonster)localObject).a(paramLoadUrlInfo.jdField_a_of_type_JavaLangString, this.cookiesCallback, null, localIntent);
+      this.cookieUrl = paramLoadUrlInfo.b;
+      ((SwiftBrowserCookieMonster)localObject).a(paramLoadUrlInfo.b, this.cookiesCallback, null, localIntent);
       return true;
     }
     return false;
@@ -235,7 +235,7 @@ public class CustomWebView
     }
     if (sCallJsTpl == null)
     {
-      localObject = AuthorizeConfig.a().a("jscallback", null);
+      localObject = AuthorizeConfig.a().c("jscallback", null);
       if ((localObject != null) && (((String)localObject).contains("((0))")) && (((String)localObject).contains("((1))"))) {
         sCallJsTpl = (String)localObject;
       } else {
@@ -259,13 +259,13 @@ public class CustomWebView
       continue;
       ((StringBuilder)localObject).append("void(0)");
     }
-    callJs(sCallJsTpl.replace("((0))", Util.a(paramString)).replace("((1))", (CharSequence)localObject));
+    callJs(sCallJsTpl.replace("((0))", Util.c(paramString)).replace("((1))", (CharSequence)localObject));
   }
   
   public void callJs4OpenApi(JsBridgeListener paramJsBridgeListener, int paramInt, String... paramVarArgs)
   {
     Object localObject;
-    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.jdField_a_of_type_Long != -1L)) {
+    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.b != -1L)) {
       localObject = (String)mMsg4CallbackMap.get(paramInt);
     }
     try
@@ -298,15 +298,15 @@ public class CustomWebView
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("callJs4OpenApi,listener.sn");
-        ((StringBuilder)localObject).append(paramJsBridgeListener.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(paramJsBridgeListener.b);
         ((StringBuilder)localObject).append(" | result:");
         ((StringBuilder)localObject).append(paramVarArgs);
         QLog.d("CustomWebView.troop.openapi", 2, ((StringBuilder)localObject).toString());
       }
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramJsBridgeListener.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(paramJsBridgeListener.b);
       ((StringBuilder)localObject).append("");
-      callJs("(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);".replace("((0))", Util.a(((StringBuilder)localObject).toString())).replace("((1))", paramVarArgs));
+      callJs("(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);".replace("((0))", Util.c(((StringBuilder)localObject).toString())).replace("((1))", paramVarArgs));
       return;
     }
     catch (JSONException paramJsBridgeListener)
@@ -345,10 +345,10 @@ public class CustomWebView
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("serverTime - mOpenApiInfo.expireTime:");
-        ((StringBuilder)localObject).append(l - this.mOpenApiInfo.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(l - this.mOpenApiInfo.d);
         QLog.e("CustomWebView.troop.openapi", 2, ((StringBuilder)localObject).toString());
       }
-      if (l > this.mOpenApiInfo.jdField_a_of_type_Long)
+      if (l > this.mOpenApiInfo.d)
       {
         paramCustomWebView.callJs4OpenApi(paramJsBridgeListener, 2, new String[] { JsBridgeListener.a(2, null, "token_verify_time_out") });
         if (QLog.isColorLevel()) {
@@ -368,15 +368,15 @@ public class CustomWebView
       paramString2.append(paramString3);
       paramString3 = paramString2.toString();
       paramString2 = this.mOpenApiInfo;
-      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.jdField_b_of_type_JavaLangString)) && (paramString1.equals(this.mOpenApiInfo.jdField_b_of_type_JavaLangString))) {
+      if ((paramString2 != null) && (!TextUtils.isEmpty(paramString2.c)) && (paramString1.equals(this.mOpenApiInfo.c))) {
         paramInt = 0;
       } else {
         paramInt = 1;
       }
       int i;
-      if (this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap != null)
+      if (this.mOpenApiInfo.f != null)
       {
-        localObject = this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+        localObject = this.mOpenApiInfo.f.keySet().iterator();
         paramString1 = null;
         do
         {
@@ -396,7 +396,7 @@ public class CustomWebView
       }
       if ((paramInt == 0) && (i != 0))
       {
-        l = ((Long)this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.get(paramString1)).longValue() + this.mOpenApiInfo.jdField_b_of_type_Int;
+        l = ((Long)this.mOpenApiInfo.f.get(paramString1)).longValue() + this.mOpenApiInfo.e;
         if (QLog.isColorLevel())
         {
           paramString2 = new StringBuilder();
@@ -412,7 +412,7 @@ public class CustomWebView
           }
           return false;
         }
-        this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+        this.mOpenApiInfo.f.put(paramString1, Long.valueOf(System.currentTimeMillis()));
         return true;
       }
       paramCustomWebView.callJs4OpenApi(paramJsBridgeListener, 1, new String[] { JsBridgeListener.a(1, null, "permission_denied") });
@@ -433,7 +433,7 @@ public class CustomWebView
     this.isDestroyed = true;
     if ((this.cookiesCallback != null) && (!TextUtils.isEmpty(this.cookieUrl)))
     {
-      localObject = SwiftBrowserCookieMonster.a(this.cookieUrl);
+      localObject = SwiftBrowserCookieMonster.c(this.cookieUrl);
       if (localObject != null) {
         ((SwiftBrowserCookieMonster)localObject).a(this.cookiesCallback);
       }
@@ -564,10 +564,10 @@ public class CustomWebView
     if (isNeedSetCookies())
     {
       localObject = new CustomWebView.LoadUrlInfo(this);
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_a_of_type_Int = 3;
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_a_of_type_JavaLangString = paramString1;
-      ((CustomWebView.LoadUrlInfo)localObject).c = paramString2;
-      ((CustomWebView.LoadUrlInfo)localObject).d = paramString3;
+      ((CustomWebView.LoadUrlInfo)localObject).a = 3;
+      ((CustomWebView.LoadUrlInfo)localObject).b = paramString1;
+      ((CustomWebView.LoadUrlInfo)localObject).d = paramString2;
+      ((CustomWebView.LoadUrlInfo)localObject).e = paramString3;
       if (setCookiesIfNeeded((CustomWebView.LoadUrlInfo)localObject)) {
         return;
       }
@@ -596,12 +596,12 @@ public class CustomWebView
     if (isNeedSetCookies())
     {
       localObject = new CustomWebView.LoadUrlInfo(this);
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_a_of_type_Int = 4;
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_a_of_type_JavaLangString = paramString1;
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_b_of_type_JavaLangString = paramString2;
-      ((CustomWebView.LoadUrlInfo)localObject).c = paramString3;
-      ((CustomWebView.LoadUrlInfo)localObject).d = paramString4;
-      ((CustomWebView.LoadUrlInfo)localObject).e = paramString5;
+      ((CustomWebView.LoadUrlInfo)localObject).a = 4;
+      ((CustomWebView.LoadUrlInfo)localObject).b = paramString1;
+      ((CustomWebView.LoadUrlInfo)localObject).c = paramString2;
+      ((CustomWebView.LoadUrlInfo)localObject).d = paramString3;
+      ((CustomWebView.LoadUrlInfo)localObject).e = paramString4;
+      ((CustomWebView.LoadUrlInfo)localObject).f = paramString5;
       if (setCookiesIfNeeded((CustomWebView.LoadUrlInfo)localObject)) {
         return;
       }
@@ -676,8 +676,8 @@ public class CustomWebView
     if (bool1)
     {
       localObject2 = new CustomWebView.LoadUrlInfo(this);
-      ((CustomWebView.LoadUrlInfo)localObject2).jdField_a_of_type_Int = 1;
-      ((CustomWebView.LoadUrlInfo)localObject2).jdField_a_of_type_JavaLangString = paramString;
+      ((CustomWebView.LoadUrlInfo)localObject2).a = 1;
+      ((CustomWebView.LoadUrlInfo)localObject2).b = paramString;
       if (setCookiesIfNeeded((CustomWebView.LoadUrlInfo)localObject2)) {
         return;
       }
@@ -730,9 +730,9 @@ public class CustomWebView
       ((StringBuilder)localObject1).append(", loadUrl url:");
       ((StringBuilder)localObject1).append(Util.b(paramString, new String[0]));
       QLog.d("WEBVIEWCHECK", 2, ((StringBuilder)localObject1).toString());
-      com.tencent.mobileqq.log.VipWebViewReportLog.d = paramString;
+      com.tencent.mobileqq.log.VipWebViewReportLog.h = paramString;
     }
-    ProxyConfig.a(this, ProxyConfig.jdField_a_of_type_JavaLangString);
+    ProxyConfig.a(this, ProxyConfig.a);
     if (bool1) {
       super.loadUrl(paramString);
     }
@@ -755,8 +755,8 @@ public class CustomWebView
     if (isNeedSetCookies())
     {
       localObject = new CustomWebView.LoadUrlInfo(this);
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_a_of_type_Int = 2;
-      ((CustomWebView.LoadUrlInfo)localObject).jdField_a_of_type_JavaLangString = paramString;
+      ((CustomWebView.LoadUrlInfo)localObject).a = 2;
+      ((CustomWebView.LoadUrlInfo)localObject).b = paramString;
       if (setCookiesIfNeeded((CustomWebView.LoadUrlInfo)localObject)) {
         return;
       }
@@ -856,7 +856,7 @@ public class CustomWebView
     }
     if ((this.cookiesCallback != null) && (!TextUtils.isEmpty(this.cookieUrl)))
     {
-      localObject = SwiftBrowserCookieMonster.a(this.cookieUrl);
+      localObject = SwiftBrowserCookieMonster.c(this.cookieUrl);
       if (localObject != null) {
         ((SwiftBrowserCookieMonster)localObject).a(this.cookiesCallback);
       }
@@ -893,26 +893,26 @@ public class CustomWebView
       this.mOpenApiInfo = new CustomWebView.OpenApiTokenInfo();
     }
     CustomWebView.OpenApiTokenInfo localOpenApiTokenInfo = this.mOpenApiInfo;
-    localOpenApiTokenInfo.jdField_a_of_type_Int = paramInt1;
-    localOpenApiTokenInfo.jdField_a_of_type_JavaLangString = paramString2;
+    localOpenApiTokenInfo.a = paramInt1;
+    localOpenApiTokenInfo.b = paramString2;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString1);
     localStringBuilder.append("_");
     localStringBuilder.append(paramString2);
-    localOpenApiTokenInfo.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localOpenApiTokenInfo.c = localStringBuilder.toString();
     paramString1 = this.mOpenApiInfo;
-    paramString1.jdField_b_of_type_Int = paramInt2;
-    paramString1.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + paramInt3);
+    paramString1.e = paramInt2;
+    paramString1.d = (NetConnInfoCenter.getServerTime() + paramInt3);
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      this.mOpenApiInfo.f = new HashMap();
       paramString1 = paramArrayList.iterator();
       while (paramString1.hasNext())
       {
         paramString2 = (String)paramString1.next();
-        this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.put(paramString2, Long.valueOf(0L));
+        this.mOpenApiInfo.f.put(paramString2, Long.valueOf(0L));
       }
     }
   }
@@ -929,7 +929,7 @@ public class CustomWebView
     if (bool)
     {
       localObject1 = (Activity)localObject1;
-      localObject2 = ((Activity)localObject1).findViewById(2131371886);
+      localObject2 = ((Activity)localObject1).findViewById(2131439329);
     }
     else
     {
@@ -946,7 +946,7 @@ public class CustomWebView
       {
         localObject2 = new View(getContext());
         ((View)localObject2).setBackgroundColor(1711276032);
-        ((View)localObject2).setId(2131371886);
+        ((View)localObject2).setId(2131439329);
         ((Activity)localObject1).addContentView((View)localObject2, new ViewGroup.LayoutParams(-1, -1));
         return;
       }
@@ -981,7 +981,7 @@ public class CustomWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.CustomWebView
  * JD-Core Version:    0.7.0.1
  */

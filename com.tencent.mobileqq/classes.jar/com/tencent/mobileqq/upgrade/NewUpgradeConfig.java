@@ -11,8 +11,8 @@ import org.xmlpull.v1.XmlPullParser;
 public class NewUpgradeConfig
   implements Serializable
 {
-  private static NewUpgradeConfig jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig;
-  private static String jdField_a_of_type_JavaLangString = "NewUpgradeConfig";
+  private static String a = "NewUpgradeConfig";
+  private static NewUpgradeConfig b;
   public NewUpgradeConfig.Dialog dialog;
   
   private NewUpgradeConfig() {}
@@ -23,10 +23,10 @@ public class NewUpgradeConfig
   {
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig == null) {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig = new NewUpgradeConfig();
+      if (b == null) {
+        b = new NewUpgradeConfig();
       }
-      NewUpgradeConfig localNewUpgradeConfig = jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig;
+      NewUpgradeConfig localNewUpgradeConfig = b;
       return localNewUpgradeConfig;
     }
     finally {}
@@ -40,7 +40,7 @@ public class NewUpgradeConfig
         return;
       }
       Object localObject = Xml.newPullParser();
-      jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.prepareDialog();
+      b.prepareDialog();
       try
       {
         ((XmlPullParser)localObject).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
@@ -49,33 +49,33 @@ public class NewUpgradeConfig
           {
             paramString = ((XmlPullParser)localObject).getName();
             if (paramString.equalsIgnoreCase("configId")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Int = Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue();
+              b.dialog.a = Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue();
             } else if (paramString.equalsIgnoreCase("taskName")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject).nextText();
+              b.dialog.b = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("taskTime")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_a_of_type_Long = OlympicUtil.a(((XmlPullParser)localObject).nextText());
+              b.dialog.c = OlympicUtil.a(((XmlPullParser)localObject).nextText());
             } else if (paramString.equalsIgnoreCase("showTime")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Long = OlympicUtil.a(((XmlPullParser)localObject).nextText());
+              b.dialog.d = OlympicUtil.a(((XmlPullParser)localObject).nextText());
             } else if (paramString.equalsIgnoreCase("title")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject).nextText();
+              b.dialog.e = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("content")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.c = ((XmlPullParser)localObject).nextText();
+              b.dialog.f = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("desc")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.d = ((XmlPullParser)localObject).nextText();
+              b.dialog.g = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("installFail")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.e = ((XmlPullParser)localObject).nextText();
+              b.dialog.h = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("info")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.f = ((XmlPullParser)localObject).nextText();
+              b.dialog.i = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("yellowBar")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.jdField_b_of_type_Int = Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue();
+              b.dialog.j = Integer.valueOf(((XmlPullParser)localObject).nextText()).intValue();
             } else if (paramString.equalsIgnoreCase("barContent")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.g = ((XmlPullParser)localObject).nextText();
+              b.dialog.k = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("barContent2")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.h = ((XmlPullParser)localObject).nextText();
+              b.dialog.l = ((XmlPullParser)localObject).nextText();
             } else if (paramString.equalsIgnoreCase("lBtnText")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.i = ((XmlPullParser)localObject).getText();
+              b.dialog.m = ((XmlPullParser)localObject).getText();
             } else if (paramString.equalsIgnoreCase("rBtnText")) {
-              jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog.j = ((XmlPullParser)localObject).getText();
+              b.dialog.n = ((XmlPullParser)localObject).getText();
             }
           }
         }
@@ -84,10 +84,10 @@ public class NewUpgradeConfig
       }
       catch (Exception paramString)
       {
-        jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeConfig.dialog = null;
+        b.dialog = null;
         if (QLog.isDevelopLevel())
         {
-          localObject = jdField_a_of_type_JavaLangString;
+          localObject = a;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("updateDialogParseFail : ");
           localStringBuilder.append(paramString.getMessage());
@@ -105,7 +105,7 @@ public class NewUpgradeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeConfig
  * JD-Core Version:    0.7.0.1
  */

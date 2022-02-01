@@ -3,7 +3,7 @@ package com.tencent.mobileqq.msf.core.net.c;
 import com.qq.jce.wup.UniPacket;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.msf.service.protocol.push.a.b;
 import com.tencent.msf.service.protocol.push.a.d;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -442,7 +442,7 @@ public class k
       paramd = d.getStatReporter();
       long l = paramInt1 + paramInt2;
       paramd.a("evt_net_test_result", paramBoolean, 0L, l, localHashMap, false, false);
-      d.getStatReporter().a("dim.Msf.NetTestResult", paramBoolean, 0L, l, localHashMap, false, false);
+      d.getStatReporter().a("dim_Msf_NetTestResult", paramBoolean, 0L, l, localHashMap, false, false);
     }
   }
   
@@ -486,7 +486,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.k
  * JD-Core Version:    0.7.0.1
  */

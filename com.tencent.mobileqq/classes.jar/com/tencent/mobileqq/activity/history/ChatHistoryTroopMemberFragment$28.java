@@ -15,10 +15,10 @@ class ChatHistoryTroopMemberFragment$28
       QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
     }
     ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
+    if (ChatHistoryTroopMemberFragment.k(this.a))
     {
-      paramString = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramString);
+      paramString = this.a.bn.obtainMessage(12, null);
+      this.a.bn.sendMessage(paramString);
     }
   }
   
@@ -31,16 +31,16 @@ class ChatHistoryTroopMemberFragment$28
     ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
     ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
     ChatHistoryTroopMemberFragment.a(this.a, true);
-    if (ChatHistoryTroopMemberFragment.b(this.a))
+    if (ChatHistoryTroopMemberFragment.k(this.a))
     {
-      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
-      this.a.b.sendMessage(paramArrayOfLong1);
+      paramArrayOfLong1 = this.a.bn.obtainMessage(12, null);
+      this.a.bn.sendMessage(paramArrayOfLong1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.28
  * JD-Core Version:    0.7.0.1
  */

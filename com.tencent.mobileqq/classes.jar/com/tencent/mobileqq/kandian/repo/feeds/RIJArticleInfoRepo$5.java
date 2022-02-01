@@ -18,7 +18,7 @@ class RIJArticleInfoRepo$5
   
   public void run()
   {
-    List localList = RIJArticleInfoRepo.a(this.this$0).query(ArticleExposureInfo.class, true, "channelID = ?", new String[] { String.valueOf(this.a) }, null, null, "exposureTime desc", String.valueOf(100));
+    List localList = RIJArticleInfoRepo.b(this.this$0).query(ArticleExposureInfo.class, true, "channelID = ?", new String[] { String.valueOf(this.a) }, null, null, "exposureTime desc", String.valueOf(100));
     if (localList != null)
     {
       localObject1 = new ConcurrentHashMap();
@@ -30,11 +30,11 @@ class RIJArticleInfoRepo$5
           ((ConcurrentHashMap)localObject1).put(localArticleExposureInfo.rowkey, localArticleExposureInfo);
         }
       }
-      localObject2 = (ConcurrentMap)RIJArticleInfoRepo.a(this.this$0).get(Integer.valueOf(this.a));
+      localObject2 = (ConcurrentMap)RIJArticleInfoRepo.c(this.this$0).get(Integer.valueOf(this.a));
       if ((localObject2 != null) && (((ConcurrentMap)localObject2).size() > 0)) {
         ((ConcurrentHashMap)localObject1).putAll((Map)localObject2);
       }
-      RIJArticleInfoRepo.a(this.this$0).put(Integer.valueOf(this.a), localObject1);
+      RIJArticleInfoRepo.c(this.this$0).put(Integer.valueOf(this.a), localObject1);
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("loadFeedsExposureInfo from db , channelID : ");
@@ -46,7 +46,7 @@ class RIJArticleInfoRepo$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.RIJArticleInfoRepo.5
  * JD-Core Version:    0.7.0.1
  */

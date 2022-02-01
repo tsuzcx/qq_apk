@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import java.util.Locale;
 import java.util.concurrent.CountDownLatch;
 
@@ -51,8 +52,8 @@ final class ea$2
     if (localObject2 != null)
     {
       localdu.a = ((TelephonyManager)localObject2).getPhoneType();
-      localObject1 = fo.a(((TelephonyManager)localObject2).getDeviceId(), fo.a);
-      localObject2 = fo.a(((TelephonyManager)localObject2).getSubscriberId(), fo.b);
+      localObject1 = fo.a(PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject2), fo.a);
+      localObject2 = fo.a(PhoneInfoMonitor.getSubscriberId((TelephonyManager)localObject2), fo.b);
       localea.k = ((String)localObject1);
       localdu.b = ((String)localObject1);
       localdu.c = ((String)localObject2);

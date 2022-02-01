@@ -21,42 +21,42 @@ import mqq.app.AppRuntime;
 
 public class VideoFeedsLikeAnimateManager
 {
-  private static int jdField_a_of_type_Int;
-  private static URLDrawable[] jdField_a_of_type_ArrayOfComTencentImageURLDrawable;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private VideoFeedsLikeAnimateHandler jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateHandler;
-  private VideoFeedsLikeAnimateManager.LikeAnimateObserver jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateManager$LikeAnimateObserver;
-  private LikeAnimationInfo jdField_a_of_type_ComTencentMobileqqKandianBizVideoLikeAnimationInfo;
-  private Random jdField_a_of_type_JavaUtilRandom;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt;
+  private static int a;
+  private static URLDrawable[] h;
+  private int[] b;
+  private Random c;
+  private ViewGroup d;
+  private VideoFeedsLikeAnimateHandler e;
+  private VideoFeedsLikeAnimateManager.LikeAnimateObserver f;
+  private LikeAnimationInfo g;
+  private boolean i;
   
   public VideoFeedsLikeAnimateManager(Activity paramActivity, int paramInt)
   {
     if ((paramActivity != null) && (paramActivity.getWindow() != null) && (paramActivity.getWindow().getDecorView() != null))
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramActivity.getWindow().getDecorView().findViewById(16908290));
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
+      this.d = ((ViewGroup)paramActivity.getWindow().getDecorView().findViewById(16908290));
+      if (this.d == null) {
         return;
       }
-      this.jdField_a_of_type_ArrayOfInt = new int[2];
-      jdField_a_of_type_Int = AIOUtils.b(28.0F, paramActivity.getResources());
-      this.jdField_a_of_type_AndroidViewViewGroup.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      this.jdField_a_of_type_JavaUtilRandom = new Random();
-      paramActivity = a();
+      this.b = new int[2];
+      a = AIOUtils.b(28.0F, paramActivity.getResources());
+      this.d.getLocationInWindow(this.b);
+      this.c = new Random();
+      paramActivity = d();
       if (paramActivity != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateHandler = ((VideoFeedsLikeAnimateHandler)paramActivity.getBusinessHandler(BusinessHandlerFactory.VIDEO_FEEDS_LIKE_ANIMATION_CONFIG));
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateManager$LikeAnimateObserver = new VideoFeedsLikeAnimateManager.LikeAnimateObserver(this);
-        paramActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateManager$LikeAnimateObserver);
+        this.e = ((VideoFeedsLikeAnimateHandler)paramActivity.getBusinessHandler(BusinessHandlerFactory.VIDEO_FEEDS_LIKE_ANIMATION_CONFIG));
+        this.f = new VideoFeedsLikeAnimateManager.LikeAnimateObserver(this);
+        paramActivity.addObserver(this.f);
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoLikeAnimationInfo = ReadInJoyHelper.a();
-      paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoLikeAnimationInfo;
+      this.g = ReadInJoyHelper.g();
+      paramActivity = this.g;
       if (paramActivity != null)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateHandler != null) && (ReadInJoyHelper.a(paramActivity.jdField_a_of_type_Int)))
+        if ((this.e != null) && (ReadInJoyHelper.a(paramActivity.b)))
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateHandler.a(paramInt);
+          this.e.a(paramInt);
           ReadInJoyHelper.a(System.currentTimeMillis());
           if (QLog.isColorLevel()) {
             QLog.d("VideoFeedsLikeAnimateManager", 2, "fetch icon list");
@@ -64,7 +64,7 @@ public class VideoFeedsLikeAnimateManager
         }
         else
         {
-          a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoLikeAnimationInfo, false);
+          a(this.g, false);
           if (QLog.isColorLevel()) {
             QLog.d("VideoFeedsLikeAnimateManager", 2, "use local icon list");
           }
@@ -72,7 +72,7 @@ public class VideoFeedsLikeAnimateManager
       }
       else
       {
-        paramActivity = this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateHandler;
+        paramActivity = this.e;
         if (paramActivity != null)
         {
           paramActivity.a(paramInt);
@@ -86,42 +86,33 @@ public class VideoFeedsLikeAnimateManager
     }
   }
   
-  private QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = ReadInJoyUtils.a();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
   private void a(LikeAnimationInfo paramLikeAnimationInfo, boolean paramBoolean)
   {
-    if ((paramLikeAnimationInfo != null) && (paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString != null))
+    if ((paramLikeAnimationInfo != null) && (paramLikeAnimationInfo.a != null))
     {
-      if (paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString.length == 0) {
+      if (paramLikeAnimationInfo.a.length == 0) {
         return;
       }
-      if ((jdField_a_of_type_ArrayOfComTencentImageURLDrawable != null) && (!paramBoolean))
+      if ((h != null) && (!paramBoolean))
       {
         QLog.d("VideoFeedsLikeAnimateManager", 1, "use cache icon");
         return;
       }
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int i = jdField_a_of_type_Int;
-      localURLDrawableOptions.mRequestWidth = i;
-      localURLDrawableOptions.mRequestHeight = i;
-      jdField_a_of_type_ArrayOfComTencentImageURLDrawable = new URLDrawable[paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString.length];
-      i = 0;
-      while (i < paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString.length)
+      int j = a;
+      localURLDrawableOptions.mRequestWidth = j;
+      localURLDrawableOptions.mRequestHeight = j;
+      h = new URLDrawable[paramLikeAnimationInfo.a.length];
+      j = 0;
+      while (j < paramLikeAnimationInfo.a.length)
       {
-        String str = paramLikeAnimationInfo.jdField_a_of_type_ArrayOfJavaLangString[i];
+        String str = paramLikeAnimationInfo.a[j];
         if (!TextUtils.isEmpty(str)) {}
         try
         {
           localObject = URLDrawable.getDrawable(new URL(str), localURLDrawableOptions);
           ((URLDrawable)localObject).startDownload();
-          jdField_a_of_type_ArrayOfComTencentImageURLDrawable[i] = localObject;
+          h[j] = localObject;
         }
         catch (MalformedURLException localMalformedURLException)
         {
@@ -136,7 +127,7 @@ public class VideoFeedsLikeAnimateManager
           ((StringBuilder)localObject).append(str);
           QLog.d("VideoFeedsLikeAnimateManager", 2, ((StringBuilder)localObject).toString());
         }
-        i += 1;
+        j += 1;
       }
       QLog.d("VideoFeedsLikeAnimateManager", 1, "start download icon");
     }
@@ -146,9 +137,9 @@ public class VideoFeedsLikeAnimateManager
     }
   }
   
-  private boolean a()
+  private boolean c()
   {
-    Object localObject1 = jdField_a_of_type_ArrayOfComTencentImageURLDrawable;
+    Object localObject1 = h;
     boolean bool2 = false;
     boolean bool1 = false;
     if (localObject1 != null)
@@ -156,23 +147,23 @@ public class VideoFeedsLikeAnimateManager
       if (localObject1.length == 0) {
         return false;
       }
-      int m = localObject1.length;
-      int i = 0;
-      int k;
-      for (int j = 0; i < m; j = k)
+      int n = localObject1.length;
+      int j = 0;
+      int m;
+      for (int k = 0; j < n; k = m)
       {
-        Object localObject2 = localObject1[i];
-        k = j;
+        Object localObject2 = localObject1[j];
+        m = k;
         if (localObject2 != null)
         {
-          k = j;
+          m = k;
           if (localObject2.getStatus() == 1) {
-            k = j + 1;
+            m = k + 1;
           }
         }
-        i += 1;
+        j += 1;
       }
-      if (j == jdField_a_of_type_ArrayOfComTencentImageURLDrawable.length) {
+      if (k == h.length) {
         bool1 = true;
       }
       bool2 = bool1;
@@ -188,23 +179,27 @@ public class VideoFeedsLikeAnimateManager
     return bool2;
   }
   
-  public int a()
+  private QQAppInterface d()
   {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    AppRuntime localAppRuntime = ReadInJoyUtils.b();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-    QQAppInterface localQQAppInterface = a();
+    this.d = null;
+    QQAppInterface localQQAppInterface = d();
     if (localQQAppInterface != null) {
-      localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimateManager$LikeAnimateObserver);
+      localQQAppInterface.removeObserver(this.f);
     }
   }
   
   public void a(float paramFloat1, float paramFloat2)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+    Object localObject = this.d;
     if (localObject == null)
     {
       if (QLog.isColorLevel()) {
@@ -212,24 +207,29 @@ public class VideoFeedsLikeAnimateManager
       }
       return;
     }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    localObject = new VideoFeedsLikeAnimate((ViewGroup)localObject, paramFloat1 - arrayOfInt[0], paramFloat2 - arrayOfInt[1], this.jdField_a_of_type_JavaUtilRandom);
-    if (a())
+    int[] arrayOfInt = this.b;
+    localObject = new VideoFeedsLikeAnimate((ViewGroup)localObject, paramFloat1 - arrayOfInt[0], paramFloat2 - arrayOfInt[1], this.c);
+    if (c())
     {
-      ((VideoFeedsLikeAnimate)localObject).a(jdField_a_of_type_ArrayOfComTencentImageURLDrawable, 4, jdField_a_of_type_Int);
-      this.jdField_a_of_type_Boolean = true;
+      ((VideoFeedsLikeAnimate)localObject).a(h, 4, a);
+      this.i = true;
     }
     else
     {
       ((VideoFeedsLikeAnimate)localObject).a(5);
-      this.jdField_a_of_type_Boolean = false;
+      this.i = false;
     }
     ((VideoFeedsLikeAnimate)localObject).a();
+  }
+  
+  public int b()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLikeAnimateManager
  * JD-Core Version:    0.7.0.1
  */

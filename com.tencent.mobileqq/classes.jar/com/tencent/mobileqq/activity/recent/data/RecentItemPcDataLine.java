@@ -150,15 +150,15 @@ public class RecentItemPcDataLine
   protected void a(Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     paramContext = (DataLineHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-    if ((paramContext != null) && (paramContext.a(this.devType)))
+    if ((paramContext != null) && (paramContext.f(this.devType)))
     {
-      this.mDisplayTime = paramContext.a(this.devType);
+      this.mDisplayTime = paramContext.h(this.devType);
       paramMsgSummary.strContent = this.msgDescreption;
       return;
     }
     if ((paramMessage != null) && (paramMessage.msg != null))
     {
-      paramContext = paramQQAppInterface.getMessageFacade().a(this.devType).a(paramMessage.msgId);
+      paramContext = paramQQAppInterface.getMessageFacade().d(this.devType).b(paramMessage.msgId);
       boolean bool1 = b(paramContext);
       boolean bool2 = a(paramContext);
       if ((bool1) && (!paramMessage.isSend())) {
@@ -203,14 +203,14 @@ public class RecentItemPcDataLine
       super.a(paramQQAppInterface, paramContext);
       if (this.mUser.getType() == 6000)
       {
-        this.mTitle = paramContext.getString(2131693779);
-        this.msgDescreption = paramContext.getString(2131693763);
+        this.mTitle = paramContext.getString(2131891354);
+        this.msgDescreption = paramContext.getString(2131891338);
         this.devType = 0;
       }
       else if (this.mUser.getType() == 6003)
       {
-        this.mTitle = paramContext.getString(2131693780);
-        this.msgDescreption = paramContext.getString(2131693762);
+        this.mTitle = paramContext.getString(2131891355);
+        this.msgDescreption = paramContext.getString(2131891337);
         this.devType = 1;
       }
       Message localMessage = null;
@@ -241,7 +241,7 @@ public class RecentItemPcDataLine
       a(paramQQAppInterface);
       a(paramQQAppInterface, (MsgSummary)localObject);
       a(paramQQAppInterface, paramContext, (MsgSummary)localObject);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName);
@@ -279,7 +279,7 @@ public class RecentItemPcDataLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPcDataLine
  * JD-Core Version:    0.7.0.1
  */

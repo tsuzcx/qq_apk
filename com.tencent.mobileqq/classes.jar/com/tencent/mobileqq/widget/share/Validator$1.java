@@ -12,13 +12,13 @@ class Validator$1
   {
     Context localContext = Validator.a(this.this$0).a;
     if (localContext != null) {
-      QQToast.a(localContext, this.a, 0).a();
+      QQToast.makeText(localContext, this.a, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.share.Validator.1
  * JD-Core Version:    0.7.0.1
  */

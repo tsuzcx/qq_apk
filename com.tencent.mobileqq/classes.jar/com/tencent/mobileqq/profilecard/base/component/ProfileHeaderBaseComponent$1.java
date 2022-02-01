@@ -17,7 +17,7 @@ class ProfileHeaderBaseComponent$1
   
   public void notifyUser(int paramInt1, int paramInt2)
   {
-    QQToast.a(BaseApplication.getContext(), paramInt2, paramInt1, 0).a();
+    QQToast.makeText(BaseApplication.getContext(), paramInt2, paramInt1, 0).show();
   }
   
   public void onUploadResult(byte[] paramArrayOfByte)
@@ -54,7 +54,7 @@ class ProfileHeaderBaseComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.component.ProfileHeaderBaseComponent.1
  * JD-Core Version:    0.7.0.1
  */

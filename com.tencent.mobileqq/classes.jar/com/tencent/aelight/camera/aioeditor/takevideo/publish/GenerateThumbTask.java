@@ -10,42 +10,76 @@ import java.io.File;
 
 public class GenerateThumbTask
 {
-  double jdField_a_of_type_Double;
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  double jdField_b_of_type_Double;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  boolean jdField_c_of_type_Boolean;
+  String a;
+  String b;
+  int c;
   int d;
   int e;
-  int f;
+  float f;
+  boolean g;
+  boolean h;
+  double i;
+  double j;
+  int k;
+  int l;
+  String m;
+  int n;
+  boolean o;
+  Bitmap p;
   
   public GenerateThumbTask(@NonNull Bitmap paramBitmap, @NonNull String paramString, int paramInt1, int paramInt2, int paramInt3, float paramFloat, double paramDouble1, double paramDouble2, int paramInt4)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_b_of_type_Double = paramDouble2;
-    this.d = paramInt1;
-    this.e = paramInt2;
-    this.f = paramInt4;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.a = paramString;
+    this.e = paramInt3;
+    this.f = paramFloat;
+    this.i = paramDouble1;
+    this.j = paramDouble2;
+    this.k = paramInt1;
+    this.l = paramInt2;
+    this.n = paramInt4;
+    this.p = paramBitmap;
   }
   
-  private int a()
+  private void a()
   {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.c = 320;
+    this.d = ((int)(this.c / this.f));
+    int i1 = this.d;
+    if (i1 % 2 > 0) {
+      this.d = (i1 - 1);
+    }
+    i1 = this.k;
+    if (i1 > 0) {
+      this.c = i1;
+    }
+    i1 = this.l;
+    if (i1 > 0) {
+      this.d = i1;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FlowSendTask():mFileDir:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", mThumbWidth: ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mThumbHeight:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mThumbOK:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", mShowLastFrameThumb:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", mExistThumbPath:");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", mExistThumbOk:");
+    localStringBuilder.append(this.o);
+    SLog.b("Q.qqstory.publish.edit.GenerateThumbTask", localStringBuilder.toString());
+  }
+  
+  private int b()
+  {
+    Object localObject = this.p;
     if (localObject != null)
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       if (str != null) {
         if (!BitmapUtils.a((Bitmap)localObject, str))
         {
@@ -56,7 +90,7 @@ public class GenerateThumbTask
     }
     try
     {
-      ImageUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double, this.jdField_b_of_type_Double);
+      ImageUtil.a(this.a, this.i, this.j);
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
@@ -64,16 +98,16 @@ public class GenerateThumbTask
       boolean bool;
       break label57;
     }
-    localObject = this.jdField_a_of_type_JavaLangString;
+    localObject = this.a;
     if (localObject != null) {
       bool = new File((String)localObject).exists();
     } else {
       bool = false;
     }
-    StoryReportor.b("video_edit", "update_LBS_exif_failed", 0, 0, new String[] { this.jdField_a_of_type_JavaLangString, String.valueOf(bool) });
-    if (!new File(this.jdField_a_of_type_JavaLangString).exists())
+    StoryReportor.b("video_edit", "update_LBS_exif_failed", 0, 0, new String[] { this.a, String.valueOf(bool) });
+    if (!new File(this.a).exists())
     {
-      SLog.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb, coverFile not exists, vf dir = %s, mThumbPath = %s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString });
+      SLog.e("Q.qqstory.publish.edit.GenerateThumbTask", "saveThumb, coverFile not exists, vf dir = %s, mThumbPath = %s", new Object[] { this.b, this.a });
       return 1;
     }
     return 0;
@@ -81,49 +115,15 @@ public class GenerateThumbTask
     return 1;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_Int = 320;
-    this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / this.jdField_a_of_type_Float));
-    int i = this.jdField_b_of_type_Int;
-    if (i % 2 > 0) {
-      this.jdField_b_of_type_Int = (i - 1);
-    }
-    i = this.d;
-    if (i > 0) {
-      this.jdField_a_of_type_Int = i;
-    }
-    i = this.e;
-    if (i > 0) {
-      this.jdField_b_of_type_Int = i;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FlowSendTask():mFileDir:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mThumbWidth: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mThumbHeight:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mThumbOK:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(", mShowLastFrameThumb:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", mExistThumbPath:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", mExistThumbOk:");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
-    SLog.b("Q.qqstory.publish.edit.GenerateThumbTask", localStringBuilder.toString());
-  }
-  
   public Integer a(Void... paramVarArgs)
   {
     a();
-    return Integer.valueOf(a());
+    return Integer.valueOf(b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.publish.GenerateThumbTask
  * JD-Core Version:    0.7.0.1
  */

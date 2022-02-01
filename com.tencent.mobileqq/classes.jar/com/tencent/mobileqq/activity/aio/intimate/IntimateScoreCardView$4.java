@@ -16,7 +16,7 @@ class IntimateScoreCardView$4
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    IntimateScoreCardView.a(this.a).setAlpha(1.0F);
+    IntimateScoreCardView.e(this.a).setAlpha(1.0F);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -25,7 +25,7 @@ class IntimateScoreCardView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.IntimateScoreCardView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,18 +9,13 @@ public class HippySingleThreadEngineManager
   extends HippyEngineManagerImpl
 {
   private boolean mIsDestroyed = false;
-  private Object mLock = new Object();
+  private final Object mLock = new Object();
   private ThreadExecutor mThreadExecutor = null;
   
   HippySingleThreadEngineManager(HippyEngine.EngineInitParams paramEngineInitParams, HippyBundleLoader paramHippyBundleLoader)
   {
     super(paramEngineInitParams, paramHippyBundleLoader);
     ThreadExecutorManager.getInstance().add(this);
-  }
-  
-  public void destroyEngine()
-  {
-    super.destroyEngine();
   }
   
   public int getBridgeType()
@@ -84,7 +79,7 @@ public class HippySingleThreadEngineManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippySingleThreadEngineManager
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ public class SuperPlayerSdkOption
   public static final boolean DEFAULT_SERVER_CONFIG_ENABLE = true;
   public int configRequestIntervalInHour = 12;
   public String deviceId = "";
+  public boolean isAsyncInit = false;
   public String serverConfig = "{\"EnableUseQuic\":true}";
   public boolean serverConfigEnable = true;
   public String uid = "";
@@ -94,7 +95,7 @@ public class SuperPlayerSdkOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerSdkOption
  * JD-Core Version:    0.7.0.1
  */

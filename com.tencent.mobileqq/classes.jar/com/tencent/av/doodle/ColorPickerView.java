@@ -16,26 +16,32 @@ import android.view.View;
 public class ColorPickerView
   extends View
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int = -65536;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int = 1;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-  private float jdField_c_of_type_Float;
-  private Drawable jdField_c_of_type_AndroidGraphicsDrawableDrawable = null;
-  private float jdField_d_of_type_Float;
-  private Drawable jdField_d_of_type_AndroidGraphicsDrawableDrawable = null;
-  private float jdField_e_of_type_Float;
-  private Drawable jdField_e_of_type_AndroidGraphicsDrawableDrawable = null;
-  private float jdField_f_of_type_Float;
-  private Drawable jdField_f_of_type_AndroidGraphicsDrawableDrawable = null;
+  private Paint a;
+  private float b;
+  private float c;
+  private float d;
+  private float e;
+  private float f;
   private float g;
   private float h;
   private float i;
-  private float j = -1.0F;
+  private float j;
+  private float k;
+  private float l;
+  private float m;
+  private boolean n = false;
+  private boolean o = false;
+  private float p = -1.0F;
+  private Drawable q = null;
+  private Drawable r = null;
+  private Drawable s = null;
+  private Drawable t = null;
+  private Drawable u = null;
+  private Drawable v = null;
+  private Drawable w = null;
+  private int x = -65536;
+  private int y = 1;
+  private ColorPickerView.OnCancelClickListener z = null;
   
   public ColorPickerView(Context paramContext)
   {
@@ -57,104 +63,119 @@ public class ColorPickerView
   
   private void a(Context paramContext)
   {
-    setId(2131373367);
+    setId(2131441040);
     paramContext = paramContext.getResources();
-    this.jdField_a_of_type_Float = paramContext.getDimension(2131297720);
-    this.jdField_b_of_type_Float = paramContext.getDimension(2131297719);
-    this.jdField_c_of_type_Float = paramContext.getDimension(2131297717);
-    this.jdField_d_of_type_Float = paramContext.getDimension(2131297718);
-    this.jdField_e_of_type_Float = paramContext.getDimension(2131297723);
-    this.jdField_f_of_type_Float = paramContext.getDimension(2131297721);
-    this.g = paramContext.getDimension(2131297724);
-    this.h = paramContext.getDimension(2131297722);
-    this.i = paramContext.getDimension(2131297725);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842153);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842154);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842155);
-    this.jdField_d_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842156);
-    this.jdField_f_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842158);
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2130842157);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
-    paramContext = this.jdField_e_of_type_AndroidGraphicsDrawableDrawable;
-    float f1 = this.g;
-    float f2 = this.jdField_e_of_type_Float;
-    int k = (int)(f1 - f2 / 2.0F);
-    float f3 = this.jdField_b_of_type_Float;
-    paramContext.setBounds(k, (int)(f3 / 2.0F), (int)(f1 + f2 / 2.0F), (int)(f3 / 2.0F + this.jdField_f_of_type_Float));
-    paramContext = this.jdField_f_of_type_AndroidGraphicsDrawableDrawable;
-    f1 = this.g;
-    f2 = this.jdField_e_of_type_Float;
-    k = (int)(f1 - f2 / 2.0F);
-    f3 = this.jdField_b_of_type_Float;
+    this.b = paramContext.getDimension(2131298387);
+    this.c = paramContext.getDimension(2131298386);
+    this.d = paramContext.getDimension(2131298384);
+    this.e = paramContext.getDimension(2131298385);
+    this.f = paramContext.getDimension(2131298390);
+    this.g = paramContext.getDimension(2131298388);
+    this.h = paramContext.getDimension(2131298391);
+    this.k = paramContext.getDimension(2131298381);
+    this.l = paramContext.getDimension(2131298381);
+    this.i = paramContext.getDimension(2131298389);
+    this.j = paramContext.getDimension(2131298380);
+    this.m = paramContext.getDimension(2131298392);
+    this.q = paramContext.getDrawable(2130843081);
+    this.r = paramContext.getDrawable(2130843082);
+    this.s = paramContext.getDrawable(2130843083);
+    this.t = paramContext.getDrawable(2130843084);
+    this.v = paramContext.getDrawable(2130843086);
+    this.u = paramContext.getDrawable(2130843085);
+    this.w = paramContext.getDrawable(2130843091);
+    this.a = new Paint(1);
+    this.a.setStyle(Paint.Style.FILL);
+    this.s.setColorFilter(this.x, PorterDuff.Mode.SRC_ATOP);
+    paramContext = this.u;
+    float f1 = this.h;
+    float f2 = this.f;
+    int i1 = (int)(f1 - f2 / 2.0F);
+    float f3 = this.c;
+    paramContext.setBounds(i1, (int)(f3 / 2.0F), (int)(f1 + f2 / 2.0F), (int)(f3 / 2.0F + this.g));
+    paramContext = this.v;
+    f1 = this.h;
+    f2 = this.f;
+    i1 = (int)(f1 - f2 / 2.0F);
+    f3 = this.c;
     float f4 = f3 / 2.0F;
-    float f5 = this.jdField_f_of_type_Float;
-    float f6 = this.h;
-    paramContext.setBounds(k, (int)(f4 + f5 + f6), (int)(f1 + f2 / 2.0F), (int)(f3 / 2.0F + f5 + f6 + f2));
-    paramContext = DoodleLogic.a();
-    this.jdField_a_of_type_Int = paramContext.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramContext.jdField_b_of_type_Int;
-    this.j = paramContext.jdField_a_of_type_Float;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    float f5 = this.g;
+    float f6 = this.i;
+    paramContext.setBounds(i1, (int)(f4 + f5 + f6), (int)(f1 + f2 / 2.0F), (int)(f3 / 2.0F + f5 + f6 + f2));
+    paramContext = this.w;
+    f1 = this.h;
+    f2 = this.k;
+    i1 = (int)(f1 - f2 / 2.0F);
+    f3 = this.c;
+    f4 = f3 / 2.0F;
+    f5 = this.g;
+    f6 = this.i;
+    float f7 = this.j;
+    paramContext.setBounds(i1, (int)(f4 + f5 + f6 + f7), (int)(f1 + f2 / 2.0F), (int)(f3 / 2.0F + f5 + f6 + f7 + this.l));
+    paramContext = DoodleLogic.b();
+    this.x = paramContext.d;
+    this.y = paramContext.e;
+    this.p = paramContext.f;
+    this.a.setColor(this.x);
   }
   
   public void a()
   {
-    float f1 = this.jdField_b_of_type_Float;
-    float f2 = this.jdField_f_of_type_Float;
-    float f3 = this.h;
-    f1 = (this.j - f1 / 2.0F) / f2;
-    Bitmap localBitmap = ((BitmapDrawable)this.jdField_e_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
-    int k = MathUtils.a((int)(f1 * localBitmap.getHeight()), 0, localBitmap.getHeight() - 1);
-    this.jdField_a_of_type_Int = ((BitmapDrawable)this.jdField_e_of_type_AndroidGraphicsDrawableDrawable).getBitmap().getPixel(localBitmap.getWidth() / 2, k);
-    this.jdField_c_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_Int, PorterDuff.Mode.SRC_ATOP);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = 1;
+    float f1 = this.c;
+    float f2 = this.g;
+    float f3 = this.i;
+    f1 = (this.p - f1 / 2.0F) / f2;
+    Bitmap localBitmap = ((BitmapDrawable)this.u).getBitmap();
+    int i1 = MathUtils.a((int)(f1 * localBitmap.getHeight()), 0, localBitmap.getHeight() - 1);
+    this.x = ((BitmapDrawable)this.u).getBitmap().getPixel(localBitmap.getWidth() / 2, i1);
+    this.s.setColorFilter(this.x, PorterDuff.Mode.SRC_ATOP);
+    this.a.setColor(this.x);
+    this.y = 1;
     invalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     getHeight();
-    this.jdField_e_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-    float f1 = this.j;
-    float f2 = this.jdField_b_of_type_Float;
-    f1 = MathUtils.a(f1, f2 / 2.0F, f2 / 2.0F + this.jdField_f_of_type_Float);
-    int k = this.jdField_b_of_type_Int;
+    this.u.draw(paramCanvas);
+    float f1 = this.p;
+    float f2 = this.c;
+    f1 = MathUtils.a(f1, f2 / 2.0F, f2 / 2.0F + this.g);
+    int i1 = this.y;
     Drawable localDrawable1;
     Drawable localDrawable2;
-    if (k != 1)
+    if (i1 != 1)
     {
-      if (k != 3)
+      if (i1 != 3)
       {
-        localDrawable1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localDrawable2 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+        localDrawable1 = this.q;
+        localDrawable2 = this.s;
       }
       else
       {
-        localDrawable1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        localDrawable2 = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
+        localDrawable1 = this.r;
+        localDrawable2 = this.t;
       }
     }
     else
     {
-      localDrawable1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      localDrawable2 = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+      localDrawable1 = this.q;
+      localDrawable2 = this.s;
     }
-    f2 = this.g;
-    float f3 = this.jdField_c_of_type_Float;
+    f2 = this.h;
+    float f3 = this.d;
     localDrawable1.setBounds((int)(f2 - f3 / 2.0F), (int)(f1 - f3 / 2.0F), (int)(f2 + f3 / 2.0F), (int)(f3 / 2.0F + f1));
     localDrawable1.draw(paramCanvas);
-    if (this.jdField_b_of_type_Int == 1) {
-      paramCanvas.drawCircle(this.g, f1, this.jdField_d_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.y == 1) {
+      paramCanvas.drawCircle(this.h, f1, this.e, this.a);
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.n)
     {
-      f2 = this.jdField_b_of_type_Float;
-      localDrawable2.setBounds(0, (int)(f1 - f2 / 2.0F), (int)this.jdField_a_of_type_Float, (int)(f1 + f2 / 2.0F));
+      f2 = this.c;
+      localDrawable2.setBounds(0, (int)(f1 - f2 / 2.0F), (int)this.b, (int)(f1 + f2 / 2.0F));
       localDrawable2.draw(paramCanvas);
     }
+    this.w.draw(paramCanvas);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -166,58 +187,103 @@ public class ColorPickerView
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    float f3 = this.g - this.jdField_c_of_type_Float / 2.0F;
-    boolean bool;
-    if ((f1 > f3) && (f1 < f3 + this.i)) {
-      bool = true;
+    float f3 = this.h - this.d / 2.0F;
+    float f5 = this.c;
+    float f4 = f5 / 2.0F;
+    f5 /= 2.0F;
+    float f6 = this.g;
+    boolean bool3 = true;
+    boolean bool1;
+    if ((f1 > f3) && (f1 < f3 + this.m) && (f2 > f4) && (f2 < f5 + f6)) {
+      bool1 = true;
     } else {
-      bool = false;
+      bool1 = false;
     }
-    int k = paramMotionEvent.getAction();
-    if (k != 0)
+    f3 = this.h;
+    f5 = this.k;
+    f4 = f5 / 2.0F;
+    f5 /= 2.0F;
+    float f10 = this.c;
+    f6 = f10 / 2.0F;
+    float f7 = this.g;
+    float f8 = this.i;
+    float f9 = this.j;
+    f10 /= 2.0F;
+    float f11 = this.l;
+    boolean bool2;
+    if ((f1 > f3 - f4) && (f1 < f3 + f5) && (f2 > f6 + f7 + f8 + f9) && (f2 < f10 + f7 + f8 + f9 + f11)) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-      if (k != 1)
+      if (i1 != 1)
       {
-        if (k != 2) {
-          return bool;
+        if (i1 != 2) {
+          break label389;
         }
       }
       else
       {
-        if (this.jdField_a_of_type_Boolean)
+        if (this.n)
         {
-          this.j = f2;
+          this.p = f2;
           a();
-          paramMotionEvent = (DoodleSurfaceView)((View)getParent()).findViewById(2131373377);
+          paramMotionEvent = (DoodleSurfaceView)((View)getParent()).findViewById(2131441050);
           if (paramMotionEvent != null) {
-            paramMotionEvent.setColor(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.j);
+            paramMotionEvent.setColor(this.x, this.y, this.p);
           }
         }
-        this.jdField_a_of_type_Boolean = false;
-        return bool;
+        if (this.o)
+        {
+          paramMotionEvent = this.z;
+          if (paramMotionEvent != null) {
+            paramMotionEvent.a();
+          }
+        }
+        this.n = false;
+        this.o = false;
+        break label389;
       }
     }
     else
     {
-      this.jdField_a_of_type_Boolean = bool;
-      if (bool)
+      this.n = bool1;
+      if (bool1)
       {
-        this.j = f2;
+        this.p = f2;
         a();
-        return bool;
+        break label389;
       }
+      this.o = bool2;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.n)
     {
-      this.j = f2;
+      this.p = f2;
       a();
     }
-    return bool;
+    this.o = bool2;
+    label389:
+    if (!bool1)
+    {
+      if (bool2) {
+        return true;
+      }
+      bool3 = false;
+    }
+    return bool3;
+  }
+  
+  public void setOnCancelClickListener(ColorPickerView.OnCancelClickListener paramOnCancelClickListener)
+  {
+    this.z = paramOnCancelClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.doodle.ColorPickerView
  * JD-Core Version:    0.7.0.1
  */

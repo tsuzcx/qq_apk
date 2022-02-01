@@ -11,16 +11,16 @@ class ParticleExplodeView$1
   
   public void onAnimationEnd(Animator arg1)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    synchronized (this.a.k)
     {
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.a.d.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qzonevip.gift.particle.ParticleExplodeView.1
  * JD-Core Version:    0.7.0.1
  */

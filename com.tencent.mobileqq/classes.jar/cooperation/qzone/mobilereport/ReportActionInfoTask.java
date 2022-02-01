@@ -30,12 +30,12 @@ public class ReportActionInfoTask
       }
       localArrayList.add(localUserActionReportBuilder.build());
     }
-    MobileReportServlet.a(localAppRuntime, new UserCommReportBuilder().setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(Tools.c()).build(), localArrayList);
+    MobileReportServlet.a(localAppRuntime, new UserCommReportBuilder().setUin(localAppRuntime.getLongAccountUin()).setNetwork_type(Tools.d()).build(), localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.mobilereport.ReportActionInfoTask
  * JD-Core Version:    0.7.0.1
  */

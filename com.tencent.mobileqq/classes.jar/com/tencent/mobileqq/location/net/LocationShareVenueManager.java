@@ -13,41 +13,41 @@ import mqq.app.MobileQQ;
 
 public class LocationShareVenueManager
 {
-  private static volatile LocationShareVenueManager jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager;
-  private LocationShareVenueManager.VenueOptResultCallback jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager$VenueOptResultCallback;
-  private VenueOperateHandler jdField_a_of_type_ComTencentMobileqqLocationNetVenueOperateHandler = new VenueOperateHandler();
+  private static volatile LocationShareVenueManager a;
+  private VenueOperateHandler b = new VenueOperateHandler();
+  private LocationShareVenueManager.VenueOptResultCallback c;
   
   public static LocationShareVenueManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager == null) {
-          jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager = new LocationShareVenueManager();
+        if (a == null) {
+          a = new LocationShareVenueManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager;
+    return a;
   }
   
   public void a(LocationRoom.RoomKey paramRoomKey)
   {
-    if (LocationHandler.a().a(paramRoomKey).b()) {
-      QQToast.a(BaseApplication.getContext(), 2131693831, 0).a();
+    if (LocationHandler.a().b(paramRoomKey).l()) {
+      QQToast.makeText(BaseApplication.getContext(), 2131891407, 0).show();
     }
   }
   
   void a(LocationRoom.RoomKey paramRoomKey, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager$VenueOptResultCallback;
+    Object localObject = this.c;
     if (localObject != null)
     {
       localObject = ((LocationShareVenueManager.VenueOptResultCallback)localObject).a();
       if ((localObject != null) && (paramRoomKey.equals(((Pair)localObject).first)) && (paramVenue.equals(((Pair)localObject).second)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager$VenueOptResultCallback.a(paramRoomKey, paramVenue, paramInt1, paramBoolean, paramInt2);
-        this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager$VenueOptResultCallback = null;
+        this.c.a(paramRoomKey, paramVenue, paramInt1, paramBoolean, paramInt2);
+        this.c = null;
       }
     }
   }
@@ -56,8 +56,8 @@ public class LocationShareVenueManager
   {
     if ((paramRoomKey != null) && ((paramVenue != null) || (paramVenueOptResultCallback == null)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager$VenueOptResultCallback = paramVenueOptResultCallback;
-      this.jdField_a_of_type_ComTencentMobileqqLocationNetVenueOperateHandler.a(paramRoomKey, paramVenue);
+      this.c = paramVenueOptResultCallback;
+      this.b.a(paramRoomKey, paramVenue);
       return;
     }
     paramVenueOptResultCallback.a(paramRoomKey, paramVenue, 1, false, -1);
@@ -65,22 +65,22 @@ public class LocationShareVenueManager
   
   public void a(LocationRoom.RoomKey paramRoomKey, String paramString)
   {
-    paramRoomKey = LocationHandler.a().a(paramRoomKey);
+    paramRoomKey = LocationHandler.a().b(paramRoomKey);
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if ((paramRoomKey.b()) && (!localAppInterface.getAccount().equals(paramString))) {
-      QQToast.a(BaseApplication.getContext(), 2131693829, 0).a();
+    if ((paramRoomKey.l()) && (!localAppInterface.getAccount().equals(paramString))) {
+      QQToast.makeText(BaseApplication.getContext(), 2131891405, 0).show();
     }
   }
   
   void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationNetVenueOperateHandler.a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    this.b.b(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
   
   public void b(LocationRoom.RoomKey paramRoomKey)
   {
-    if (LocationHandler.a().a(paramRoomKey).b()) {
-      QQToast.a(BaseApplication.getContext(), 2131693830, 0).a();
+    if (LocationHandler.a().b(paramRoomKey).l()) {
+      QQToast.makeText(BaseApplication.getContext(), 2131891406, 0).show();
     }
   }
   
@@ -88,8 +88,8 @@ public class LocationShareVenueManager
   {
     if ((paramRoomKey != null) && ((paramVenue != null) || (paramVenueOptResultCallback == null)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqLocationNetLocationShareVenueManager$VenueOptResultCallback = paramVenueOptResultCallback;
-      this.jdField_a_of_type_ComTencentMobileqqLocationNetVenueOperateHandler.b(paramRoomKey, paramVenue);
+      this.c = paramVenueOptResultCallback;
+      this.b.b(paramRoomKey, paramVenue);
       return;
     }
     paramVenueOptResultCallback.a(paramRoomKey, paramVenue, 3, false, -1);
@@ -97,7 +97,7 @@ public class LocationShareVenueManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationShareVenueManager
  * JD-Core Version:    0.7.0.1
  */

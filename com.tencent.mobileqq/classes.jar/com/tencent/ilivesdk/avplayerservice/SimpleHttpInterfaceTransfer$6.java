@@ -11,7 +11,7 @@ class SimpleHttpInterfaceTransfer$6
   
   public void onFail(int paramInt)
   {
-    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback;
+    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.a;
     if (localSimpleCoreDownloadCallback != null) {
       localSimpleCoreDownloadCallback.onFail(paramInt);
     }
@@ -19,7 +19,7 @@ class SimpleHttpInterfaceTransfer$6
   
   public void onProgress(long paramLong1, long paramLong2, int paramInt)
   {
-    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback;
+    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.a;
     if (localSimpleCoreDownloadCallback != null) {
       localSimpleCoreDownloadCallback.onProgress(paramLong1, paramLong2, paramInt);
     }
@@ -27,7 +27,7 @@ class SimpleHttpInterfaceTransfer$6
   
   public void onSuccess(File paramFile)
   {
-    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.jdField_a_of_type_ComTencentIliveOpensdkReporterinterfaceSimpleCoreDownloadCallback;
+    SimpleCoreDownloadCallback localSimpleCoreDownloadCallback = this.a;
     if (localSimpleCoreDownloadCallback != null) {
       localSimpleCoreDownloadCallback.onSuccess(paramFile);
     }
@@ -35,7 +35,7 @@ class SimpleHttpInterfaceTransfer$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.SimpleHttpInterfaceTransfer.6
  * JD-Core Version:    0.7.0.1
  */

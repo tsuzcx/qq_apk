@@ -8,6 +8,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SearchBaseActivity$2
   implements TextView.OnEditorActionListener
@@ -16,28 +17,40 @@ class SearchBaseActivity$2
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt != 3) && ((paramKeyEvent == null) || (paramKeyEvent.getKeyCode() != 66))) {
-      return false;
-    }
-    paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    if ((!TextUtils.isEmpty(paramTextView)) && (!TextUtils.isEmpty(paramTextView.trim())))
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramInt != 3) && ((paramKeyEvent == null) || (paramKeyEvent.getKeyCode() != 66)))
     {
-      if (!TextUtils.isEmpty(paramTextView))
-      {
-        SearchUtils.a("add_page", "search", "clk_search_all", this.a.h + 1, 0, new String[] { "", "", paramTextView, "" });
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-      }
-      return true;
+      bool1 = false;
     }
-    paramTextView = this.a;
-    paramTextView.a(true, paramTextView.jdField_a_of_type_AndroidWidgetEditText);
-    QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713530), 0).a();
-    return true;
+    else
+    {
+      Object localObject = this.a.K.getText().toString();
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(((String)localObject).trim())))
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          SearchUtils.a("add_page", "search", "clk_search_all", this.a.G + 1, 0, new String[] { "", "", localObject, "" });
+          this.a.M.a((String)localObject, false);
+          bool1 = bool2;
+        }
+      }
+      else
+      {
+        localObject = this.a;
+        ((SearchBaseActivity)localObject).a(true, ((SearchBaseActivity)localObject).K);
+        QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131911076), 0).show();
+        bool1 = bool2;
+      }
+    }
+    EventCollector.getInstance().onEditorAction(paramTextView, paramInt, paramKeyEvent);
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

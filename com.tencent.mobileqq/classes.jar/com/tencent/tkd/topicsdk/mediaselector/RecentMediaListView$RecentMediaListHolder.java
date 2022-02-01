@@ -24,29 +24,29 @@ import org.jetbrains.annotations.NotNull;
 public final class RecentMediaListView$RecentMediaListHolder
   extends CommonListAdapter.BaseListViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private ImageView b;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView c;
   @NotNull
-  private ImageLoader jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader;
+  private TextView d;
   @NotNull
-  private TextView b;
+  private ImageLoader e;
   
   public RecentMediaListView$RecentMediaListHolder(View paramView)
   {
-    Object localObject2 = ((View)localObject1).findViewById(R.id.Z);
+    Object localObject2 = ((View)localObject1).findViewById(R.id.E);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.iv_cover)");
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject2);
-    localObject2 = ((View)localObject1).findViewById(R.id.t);
+    this.b = ((ImageView)localObject2);
+    localObject2 = ((View)localObject1).findViewById(R.id.l);
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "itemView.findViewById(R.id.dirNameView)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject2);
-    Object localObject1 = ((View)localObject1).findViewById(R.id.S);
+    this.c = ((TextView)localObject2);
+    Object localObject1 = ((View)localObject1).findViewById(R.id.z);
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "itemView.findViewById(R.id.itemNumView)");
-    this.b = ((TextView)localObject1);
+    this.d = ((TextView)localObject1);
     localObject1 = ImageLoader.a;
     localObject2 = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject2, "context");
-    localObject1 = ((ImageLoader.Companion)localObject1).a((Context)localObject2, TopicSDK.a.a().a().a());
+    localObject1 = ((ImageLoader.Companion)localObject1).a((Context)localObject2, TopicSDK.a.a().b().n());
     localObject2 = DisplayUtils.a;
     Context localContext = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
@@ -57,30 +57,30 @@ public final class RecentMediaListView$RecentMediaListHolder
     localObject1 = ((ImageLoader)localObject1).a(i, ((DisplayUtils)localObject2).a(50.0F, localContext));
     paramView = paramView.getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramView, "context");
-    this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(paramView.getResources().getColor(R.color.i))).a(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.e = ((ImageLoader)localObject1).a((Drawable)new ColorDrawable(paramView.getResources().getColor(R.color.i))).a(this.b);
   }
   
   @NotNull
   public final TextView a()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  @NotNull
-  public final ImageLoader a()
-  {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkFrameworkImageLoader;
+    return this.c;
   }
   
   @NotNull
   public final TextView b()
   {
-    return this.b;
+    return this.d;
+  }
+  
+  @NotNull
+  public final ImageLoader c()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView.RecentMediaListHolder
  * JD-Core Version:    0.7.0.1
  */

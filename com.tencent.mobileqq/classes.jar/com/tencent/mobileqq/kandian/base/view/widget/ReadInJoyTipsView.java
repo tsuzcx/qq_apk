@@ -11,12 +11,12 @@ import android.widget.TextView;
 public class ReadInJoyTipsView
   extends LinearLayout
 {
-  public int a;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public int a = 0;
   private ImageView b;
+  private ImageView c;
+  private TextView d;
+  private RelativeLayout e;
+  private View.OnClickListener f;
   
   public ReadInJoyTipsView(Context paramContext)
   {
@@ -26,16 +26,15 @@ public class ReadInJoyTipsView
   public ReadInJoyTipsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    inflate(paramContext, 2131560296, this);
+    inflate(paramContext, 2131626342, this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376131));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376134));
-    this.b = ((ImageView)findViewById(2131376133));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376132));
+    this.b = ((ImageView)findViewById(2131444334));
+    this.d = ((TextView)findViewById(2131444337));
+    this.c = ((ImageView)findViewById(2131444336));
+    this.e = ((RelativeLayout)findViewById(2131444335));
   }
   
   protected void onFinishInflate()
@@ -48,15 +47,15 @@ public class ReadInJoyTipsView
   {
     if (paramOnClickListener != null)
     {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+      this.f = paramOnClickListener;
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
+    this.e.setOnClickListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyTipsView
  * JD-Core Version:    0.7.0.1
  */

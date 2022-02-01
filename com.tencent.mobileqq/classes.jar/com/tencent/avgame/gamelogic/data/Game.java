@@ -27,38 +27,35 @@ import trpc.qq_vgame.common.AvGameCommon.RoomUserInfo;
 public class Game
   implements IGame
 {
-  public int a;
-  public long a;
-  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
   @Nullable
   public ITopic a;
-  public AnswerInfo a;
-  public GameInfo a;
-  public GameRecordInfo a;
-  @Nullable
-  public Player a;
-  private String jdField_a_of_type_JavaLangString;
-  public CopyOnWriteArrayList<UserScore> a;
-  public int b;
-  private long b;
   @Nullable
   public Player b;
-  private int jdField_c_of_type_Int = 0;
-  private long jdField_c_of_type_Long;
   @Nullable
   public Player c;
-  private int jdField_d_of_type_Int;
-  private long jdField_d_of_type_Long;
   @Nullable
   public Player d;
-  private int e;
+  @Nullable
+  public Player e;
+  public GameInfo f = new GameInfo();
+  public CopyOnWriteArrayList<UserScore> g = new CopyOnWriteArrayList();
+  public GameRecordInfo h = new GameRecordInfo();
+  public int i;
+  public long j;
+  public AnswerInfo k;
+  public int l;
+  private String m;
+  private long n;
+  private int o = 0;
+  private int p;
+  private int q;
+  private long r;
+  private long s;
+  private CountDownTimer t;
   
   public Game()
   {
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo = new GameInfo();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo = new GameRecordInfo();
-    a();
+    b();
   }
   
   private int a(boolean paramBoolean)
@@ -66,14 +63,14 @@ public class Game
     if (paramBoolean) {}
     try
     {
-      d();
-      long l = this.jdField_c_of_type_Long;
-      if (l <= 0L) {
+      q();
+      long l1 = this.r;
+      if (l1 <= 0L) {
         return 0;
       }
-      int i = (int)(SystemClock.elapsedRealtime() - this.jdField_c_of_type_Long);
-      int j = this.jdField_d_of_type_Int;
-      return i + j;
+      int i1 = (int)(SystemClock.elapsedRealtime() - this.r);
+      int i2 = this.p;
+      return i1 + i2;
     }
     finally {}
   }
@@ -81,58 +78,53 @@ public class Game
   public static Game a(long paramLong, String paramString, GameInfo paramGameInfo, Player paramPlayer, ITopic paramITopic)
   {
     Game localGame = new Game();
-    localGame.jdField_a_of_type_JavaLangString = paramString;
-    localGame.jdField_b_of_type_Long = paramLong;
-    localGame.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-    localGame.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramPlayer;
-    localGame.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a(paramGameInfo);
+    localGame.m = paramString;
+    localGame.n = paramLong;
+    localGame.a = paramITopic;
+    localGame.b = paramPlayer;
+    localGame.f.a(paramGameInfo);
     return localGame;
   }
   
   private void a(int paramInt)
   {
-    long l = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_AndroidOsCountDownTimer = new Game.2(this, paramInt, paramInt + 1, l, paramInt);
-    this.jdField_a_of_type_AndroidOsCountDownTimer.start();
+    long l1 = SystemClock.elapsedRealtime();
+    this.t = new Game.2(this, paramInt, paramInt + 1, l1, paramInt);
+    this.t.start();
   }
   
   private void b(int paramInt)
   {
     QLog.d("avgame_logic_Game", 1, new Object[] { "onCountdownFinish left=", Integer.valueOf(paramInt) });
-    this.jdField_c_of_type_Int = 2;
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_d_of_type_Int = (-paramInt);
+    this.o = 2;
+    this.r = SystemClock.elapsedRealtime();
+    this.p = (-paramInt);
   }
   
-  private void d()
+  private void q()
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    CountDownTimer localCountDownTimer = this.t;
     if (localCountDownTimer != null)
     {
       localCountDownTimer.cancel();
-      this.jdField_a_of_type_AndroidOsCountDownTimer = null;
+      this.t = null;
     }
-    if (this.jdField_c_of_type_Int == 1)
+    if (this.o == 1)
     {
-      int i = a(false);
-      i = this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_d_of_type_Int * 1000 - i;
-      if (i <= 0)
+      int i1 = a(false);
+      i1 = this.f.d * 1000 - i1;
+      if (i1 <= 0)
       {
-        b(i);
+        b(i1);
         return;
       }
       if (Looper.myLooper() == Looper.getMainLooper())
       {
-        a(i);
+        a(i1);
         return;
       }
-      new Game.1(this, "CountDownThread", i).start();
+      new Game.1(this, "CountDownThread", i1).start();
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_b_of_type_Int;
   }
   
   public int a(String paramString)
@@ -140,7 +132,7 @@ public class Game
     if (TextUtils.isEmpty(paramString)) {
       return 0;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    Iterator localIterator = this.g.iterator();
     while (localIterator.hasNext())
     {
       UserScore localUserScore = (UserScore)localIterator.next();
@@ -151,109 +143,60 @@ public class Game
     return 0;
   }
   
-  public ITopic a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicITopic;
-  }
-  
-  protected Game a()
-  {
-    Game localGame = new Game();
-    localGame.a(this);
-    return localGame;
-  }
-  
-  public Player a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public CopyOnWriteArrayList<UserScore> a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = null;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    this.jdField_c_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    this.jdField_b_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-    this.jdField_d_of_type_Int = 0;
-    this.e = 0;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.reset();
-    d();
-  }
-  
   public void a(Game paramGame)
   {
     if (paramGame == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramGame.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_Long = paramGame.jdField_b_of_type_Long;
-    this.jdField_c_of_type_Int = paramGame.jdField_c_of_type_Int;
-    Object localObject1 = paramGame.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
+    this.m = paramGame.m;
+    this.n = paramGame.n;
+    this.o = paramGame.o;
+    Object localObject1 = paramGame.b;
     Object localObject2 = null;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
       localObject1 = ((Player)localObject1).clone();
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject1);
-    localObject1 = paramGame.jdField_b_of_type_ComTencentAvgameGamelogicDataPlayer;
+    this.b = ((Player)localObject1);
+    localObject1 = paramGame.c;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
       localObject1 = ((Player)localObject1).clone();
     }
-    this.jdField_b_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject1);
-    localObject1 = paramGame.jdField_c_of_type_ComTencentAvgameGamelogicDataPlayer;
+    this.c = ((Player)localObject1);
+    localObject1 = paramGame.d;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
       localObject1 = ((Player)localObject1).clone();
     }
-    this.jdField_c_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject1);
-    localObject1 = paramGame.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer;
+    this.d = ((Player)localObject1);
+    localObject1 = paramGame.e;
     if (localObject1 == null) {
       localObject1 = null;
     } else {
       localObject1 = ((Player)localObject1).clone();
     }
-    this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject1);
-    localObject1 = paramGame.jdField_a_of_type_ComTencentAvgameGamelogicITopic;
+    this.e = ((Player)localObject1);
+    localObject1 = paramGame.a;
     if (localObject1 == null) {
       localObject1 = localObject2;
     } else {
-      localObject1 = ((ITopic)localObject1).a();
+      localObject1 = ((ITopic)localObject1).j();
     }
-    this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = ((ITopic)localObject1);
-    this.jdField_d_of_type_Int = paramGame.jdField_d_of_type_Int;
-    this.e = paramGame.e;
-    this.jdField_c_of_type_Long = paramGame.jdField_c_of_type_Long;
-    this.jdField_d_of_type_Long = paramGame.jdField_d_of_type_Long;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a(paramGame.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramGame.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-    this.jdField_a_of_type_Int = paramGame.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = paramGame.jdField_b_of_type_Int;
-    this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.copyFrom(paramGame.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo);
+    this.a = ((ITopic)localObject1);
+    this.p = paramGame.p;
+    this.q = paramGame.q;
+    this.r = paramGame.r;
+    this.s = paramGame.s;
+    this.f.a(paramGame.f);
+    this.g.clear();
+    this.g.addAll(paramGame.g);
+    this.i = paramGame.i;
+    this.l = paramGame.l;
+    this.h.copyFrom(paramGame.h);
   }
   
   public void a(GameRecordInfo paramGameRecordInfo)
@@ -262,23 +205,9 @@ public class Game
     try
     {
       a(paramGameRecordInfo.videoFilePath, paramGameRecordInfo.photoFilePath, paramGameRecordInfo.startGameTimeMills);
-      a(paramGameRecordInfo.extraJsonData);
+      b(paramGameRecordInfo.extraJsonData);
     }
     finally {}
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.extraJsonData = paramString;
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
   }
   
   public void a(String paramString, int paramInt)
@@ -286,25 +215,25 @@ public class Game
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    int j = 0;
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    int i2 = 0;
+    Object localObject = this.g.iterator();
     UserScore localUserScore;
     do
     {
-      i = j;
+      i1 = i2;
       if (!((Iterator)localObject).hasNext()) {
         break;
       }
       localUserScore = (UserScore)((Iterator)localObject).next();
     } while ((localUserScore == null) || (!paramString.equalsIgnoreCase(Long.toString(localUserScore.uin))));
     localUserScore.score += paramInt;
-    int i = 1;
-    if (i == 0)
+    int i1 = 1;
+    if (i1 == 0)
     {
       localObject = new UserScore();
       ((UserScore)localObject).score = paramInt;
       ((UserScore)localObject).uin = Long.parseLong(paramString);
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject);
+      this.g.add(localObject);
     }
   }
   
@@ -312,10 +241,10 @@ public class Game
   {
     try
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.gameType = a();
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.videoFilePath = paramString1;
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.photoFilePath = paramString2;
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameRecordInfo.startGameTimeMills = paramLong;
+      this.h.gameType = d();
+      this.h.videoFilePath = paramString1;
+      this.h.photoFilePath = paramString2;
+      this.h.startGameTimeMills = paramLong;
       return;
     }
     finally
@@ -330,35 +259,35 @@ public class Game
     if (paramGameStatusInfo == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramGameStatusInfo.play_game_id.get();
-    this.jdField_c_of_type_Int = paramGameStatusInfo.game_status.get();
+    this.m = paramGameStatusInfo.play_game_id.get();
+    this.o = paramGameStatusInfo.game_status.get();
     Object localObject;
     if ((paramGameStatusInfo.actor_info.has()) && (paramGameStatusInfo.actor_info.get() != null))
     {
       localObject = new Player();
       ((Player)localObject).parseFrom((AvGameCommon.RoomUserInfo)paramGameStatusInfo.actor_info.get());
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject);
+      this.b = ((Player)localObject);
     }
     if ((paramGameStatusInfo.right_actor_info.has()) && (paramGameStatusInfo.right_actor_info.get() != null))
     {
       localObject = new Player();
       ((Player)localObject).parseFrom((AvGameCommon.RoomUserInfo)paramGameStatusInfo.right_actor_info.get());
-      this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = ((Player)localObject);
+      this.e = ((Player)localObject);
     }
     if ((paramGameStatusInfo.question_info.has()) && (paramGameStatusInfo.question_info.get() != null)) {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = GameUtil.b((AvGameCommon.GameQuestionInfo)paramGameStatusInfo.question_info.get(), false);
+      this.a = GameUtil.b((AvGameCommon.GameQuestionInfo)paramGameStatusInfo.question_info.get(), false);
     }
     if ((paramGameStatusInfo.game_info.has()) && (paramGameStatusInfo.game_info.get() != null))
     {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a();
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.a((AvGameCommon.GameInfo)paramGameStatusInfo.game_info.get());
+      this.f.a();
+      this.f.a((AvGameCommon.GameInfo)paramGameStatusInfo.game_info.get());
     }
-    this.jdField_d_of_type_Int = paramGameStatusInfo.status_past_time.get();
-    this.e = paramGameStatusInfo.game_past_time.get();
-    this.jdField_a_of_type_Int = paramGameStatusInfo.score.get();
-    long l = SystemClock.elapsedRealtime();
-    this.jdField_c_of_type_Long = l;
-    this.jdField_d_of_type_Long = l;
+    this.p = paramGameStatusInfo.status_past_time.get();
+    this.q = paramGameStatusInfo.game_past_time.get();
+    this.i = paramGameStatusInfo.score.get();
+    long l1 = SystemClock.elapsedRealtime();
+    this.r = l1;
+    this.s = l1;
     if ((paramGameStatusInfo.score_list.has()) && (paramGameStatusInfo.score_list.get() != null))
     {
       paramGameStatusInfo = paramGameStatusInfo.score_list.get().iterator();
@@ -372,64 +301,64 @@ public class Game
   
   public boolean a()
   {
-    int i = this.jdField_c_of_type_Int;
+    int i1 = this.o;
     boolean bool = true;
-    int m = 1;
-    if (i != 0)
+    int i4 = 1;
+    if (i1 != 0)
     {
-      if ((i != 1) && (i != 2)) {
-        if (i != 3)
+      if ((i1 != 1) && (i1 != 2)) {
+        if (i1 != 3)
         {
-          if (i != 4) {
+          if (i1 != 4) {
             return true;
           }
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentAvgameGamelogicITopic != null) {
-            i = 1;
+          if (this.a != null) {
+            i1 = 1;
           } else {
-            i = 0;
+            i1 = 0;
           }
-          if ((GameUtil.a(a())) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer == null)) {
-            j = 0;
+          if ((GameUtil.c(d())) && (this.b == null)) {
+            i2 = 0;
           } else {
-            j = 1;
+            i2 = 1;
           }
-          j = i & 0x1 & j;
-          i = j;
-          if (this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer == null) {
+          i2 = i1 & 0x1 & i2;
+          i1 = i2;
+          if (this.e == null) {
             break label151;
           }
-          i = j;
-          k = m;
+          i1 = i2;
+          i3 = i4;
           break label153;
         }
       }
-      if (this.jdField_a_of_type_ComTencentAvgameGamelogicITopic != null) {
-        i = 1;
+      if (this.a != null) {
+        i1 = 1;
       } else {
-        i = 0;
+        i1 = 0;
       }
-      int j = i & 0x1;
-      i = j;
-      int k = m;
-      if (GameUtil.a(a()))
+      int i2 = i1 & 0x1;
+      i1 = i2;
+      int i3 = i4;
+      if (GameUtil.c(d()))
       {
-        i = j;
-        if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer != null)
+        i1 = i2;
+        if (this.b != null)
         {
-          i = j;
-          k = m;
+          i1 = i2;
+          i3 = i4;
         }
         else
         {
           label151:
-          k = 0;
+          i3 = 0;
         }
       }
       label153:
-      bool = k & i;
+      bool = i3 & i1;
     }
     return bool;
   }
@@ -439,12 +368,12 @@ public class Game
     if (paramITopic != null) {
       try
       {
-        this.jdField_c_of_type_Int = 2;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-        this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-        this.jdField_d_of_type_Int = 0;
-        this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-        d();
+        this.o = 2;
+        this.a = paramITopic;
+        this.e = null;
+        this.p = 0;
+        this.r = SystemClock.elapsedRealtime();
+        q();
         return true;
       }
       finally
@@ -460,26 +389,26 @@ public class Game
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvgameGamelogicITopic != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicITopic.a(paramITopic)) && (paramPlayer != null))
+      if ((this.a != null) && (this.a.a(paramITopic)) && (paramPlayer != null))
       {
-        this.jdField_c_of_type_Int = 3;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-        this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = paramPlayer;
-        this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_Long = paramLong;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo = paramAnswerInfo;
+        this.o = 3;
+        this.a = paramITopic;
+        this.e = paramPlayer;
+        this.i = paramInt1;
+        this.j = paramLong;
+        this.k = paramAnswerInfo;
         a(paramPlayer.uin, paramInt1);
-        if ((paramITopic.b() == 1) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer != null))
+        if ((paramITopic.b() == 1) && (this.b != null))
         {
-          this.jdField_b_of_type_Int = paramInt2;
-          a(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.uin, paramInt2);
+          this.l = paramInt2;
+          a(this.b.uin, paramInt2);
         }
         if (paramBoolean)
         {
-          this.jdField_d_of_type_Int = 0;
-          this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+          this.p = 0;
+          this.r = SystemClock.elapsedRealtime();
         }
-        d();
+        q();
         return true;
       }
       return false;
@@ -491,18 +420,18 @@ public class Game
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvgameGamelogicITopic != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicITopic.a(paramITopic)))
+      if ((this.a != null) && (this.a.a(paramITopic)))
       {
-        this.jdField_c_of_type_Int = 4;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-        this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicDataAnswerInfo = paramAnswerInfo;
+        this.o = 4;
+        this.a = paramITopic;
+        this.e = null;
+        this.k = paramAnswerInfo;
         if (paramBoolean)
         {
-          this.jdField_d_of_type_Int = 0;
-          this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+          this.p = 0;
+          this.r = SystemClock.elapsedRealtime();
         }
-        d();
+        q();
         return true;
       }
       return false;
@@ -514,17 +443,17 @@ public class Game
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvgameGamelogicITopic != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicITopic.a(paramITopic)))
+      if ((this.a != null) && (this.a.a(paramITopic)))
       {
-        this.jdField_c_of_type_Int = 4;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-        this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = null;
+        this.o = 4;
+        this.a = paramITopic;
+        this.e = null;
         if (paramBoolean)
         {
-          this.jdField_d_of_type_Int = 0;
-          this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+          this.p = 0;
+          this.r = SystemClock.elapsedRealtime();
         }
-        d();
+        q();
         return true;
       }
       return false;
@@ -537,7 +466,7 @@ public class Game
     if (paramPlayer != null) {
       try
       {
-        this.jdField_c_of_type_ComTencentAvgameGamelogicDataPlayer = paramPlayer;
+        this.d = paramPlayer;
         return true;
       }
       finally
@@ -554,20 +483,20 @@ public class Game
     if ((paramPlayer != null) && (paramITopic != null)) {
       try
       {
-        this.jdField_c_of_type_Int = 1;
-        this.jdField_b_of_type_ComTencentAvgameGamelogicDataPlayer = this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer = paramPlayer;
-        this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-        this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = null;
-        if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer != null) {
-          this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer.status = 2;
+        this.o = 1;
+        this.c = this.b;
+        this.b = paramPlayer;
+        this.a = paramITopic;
+        this.e = null;
+        if (this.b != null) {
+          this.b.status = 2;
         }
-        this.jdField_d_of_type_Int = 0;
-        this.e = 0;
-        long l = SystemClock.elapsedRealtime();
-        this.jdField_c_of_type_Long = l;
-        this.jdField_d_of_type_Long = l;
-        d();
+        this.p = 0;
+        this.q = 0;
+        long l1 = SystemClock.elapsedRealtime();
+        this.r = l1;
+        this.s = l1;
+        q();
         return true;
       }
       finally {}
@@ -579,8 +508,8 @@ public class Game
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.addAll(paramList);
+      this.g.clear();
+      this.g.addAll(paramList);
       return true;
     }
     finally
@@ -590,22 +519,26 @@ public class Game
     }
   }
   
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_a_of_type_Int;
-  }
-  
   public void b()
   {
-    this.jdField_c_of_type_Int = 1;
-    long l = SystemClock.elapsedRealtime();
-    this.jdField_c_of_type_Long = l;
-    this.jdField_d_of_type_Long = l;
-    Player localPlayer = this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-    if (localPlayer != null) {
-      localPlayer.status = 2;
-    }
-    d();
+    this.m = "";
+    this.n = 0L;
+    this.o = 0;
+    this.a = null;
+    this.b = null;
+    this.d = null;
+    this.c = null;
+    this.e = null;
+    this.p = 0;
+    this.q = 0;
+    this.r = 0L;
+    this.s = 0L;
+    this.f.a();
+    this.g.clear();
+    this.i = 0;
+    this.l = 0;
+    this.h.reset();
+    q();
   }
   
   public void b(Game paramGame)
@@ -613,7 +546,7 @@ public class Game
     try
     {
       a(paramGame);
-      d();
+      q();
       return;
     }
     finally
@@ -623,23 +556,18 @@ public class Game
     }
   }
   
-  public boolean b()
+  public void b(String paramString)
   {
-    if (this.jdField_c_of_type_Int != 10)
+    try
     {
-      this.jdField_c_of_type_Int = 10;
-      this.jdField_d_of_type_Int = 0;
-      this.e = 0;
-      this.jdField_c_of_type_Long = 0L;
-      this.jdField_d_of_type_Long = 0L;
-      Player localPlayer = this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer;
-      if (localPlayer != null) {
-        localPlayer.status = 0;
-      }
-      d();
-      return true;
+      this.h.extraJsonData = paramString;
+      return;
     }
-    return false;
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
   }
   
   public boolean b(ITopic paramITopic)
@@ -656,39 +584,19 @@ public class Game
     }
   }
   
-  public int c()
+  public String c()
   {
-    d();
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void c()
-  {
-    try
-    {
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_d_of_type_Int = 0;
-      this.jdField_c_of_type_Long = 0L;
-      this.e = 0;
-      this.jdField_d_of_type_Long = 0L;
-      d();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.m;
   }
   
   public boolean c(ITopic paramITopic)
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentAvgameGamelogicITopic != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicITopic.a(paramITopic)))
+      if ((this.a != null) && (this.a.a(paramITopic)))
       {
-        this.jdField_a_of_type_ComTencentAvgameGamelogicITopic = paramITopic;
-        this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer = null;
+        this.a = paramITopic;
+        this.e = null;
         return true;
       }
       return false;
@@ -702,10 +610,85 @@ public class Game
   
   public int d()
   {
+    return this.f.b;
+  }
+  
+  public int e()
+  {
+    return this.f.a;
+  }
+  
+  public int f()
+  {
+    q();
+    return this.o;
+  }
+  
+  public Player g()
+  {
+    return this.b;
+  }
+  
+  public ITopic h()
+  {
+    return this.a;
+  }
+  
+  public CopyOnWriteArrayList<UserScore> i()
+  {
+    return this.g;
+  }
+  
+  protected Game j()
+  {
+    Game localGame = new Game();
+    localGame.a(this);
+    return localGame;
+  }
+  
+  public void k()
+  {
+    this.o = 1;
+    long l1 = SystemClock.elapsedRealtime();
+    this.r = l1;
+    this.s = l1;
+    Player localPlayer = this.b;
+    if (localPlayer != null) {
+      localPlayer.status = 2;
+    }
+    q();
+  }
+  
+  public boolean l()
+  {
+    if (this.o != 10)
+    {
+      this.o = 10;
+      this.p = 0;
+      this.q = 0;
+      this.r = 0L;
+      this.s = 0L;
+      Player localPlayer = this.b;
+      if (localPlayer != null) {
+        localPlayer.status = 0;
+      }
+      q();
+      return true;
+    }
+    return false;
+  }
+  
+  public void m()
+  {
     try
     {
-      int i = a(true);
-      return i;
+      this.o = 0;
+      this.p = 0;
+      this.r = 0L;
+      this.q = 0;
+      this.s = 0L;
+      q();
+      return;
     }
     finally
     {
@@ -714,42 +697,56 @@ public class Game
     }
   }
   
-  public int e()
+  public int n()
   {
     try
     {
-      d();
-      if ((this.jdField_c_of_type_Int != 0) && (this.jdField_c_of_type_Int != 1))
+      int i1 = a(true);
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public int o()
+  {
+    try
+    {
+      q();
+      if ((this.o != 0) && (this.o != 1))
       {
-        long l = this.jdField_d_of_type_Long;
-        if (l <= 0L) {
+        long l1 = this.s;
+        if (l1 <= 0L) {
           return 0;
         }
-        int i = (int)(SystemClock.elapsedRealtime() - this.jdField_d_of_type_Long);
-        int j = this.e;
-        int k = this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.jdField_d_of_type_Int;
-        return i + j - k * 1000;
+        int i1 = (int)(SystemClock.elapsedRealtime() - this.s);
+        int i2 = this.q;
+        int i3 = this.f.d;
+        return i1 + i2 - i3 * 1000;
       }
       return 0;
     }
     finally {}
   }
   
-  public int f()
+  public int p()
   {
     try
     {
-      if (GameUtil.c(a()))
+      if (GameUtil.e(d()))
       {
-        ITopic localITopic = a();
+        ITopic localITopic = h();
         if (localITopic != null)
         {
-          i = localITopic.c();
-          return i * 1000;
+          i1 = localITopic.f();
+          return i1 * 1000;
         }
       }
-      int i = this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo.e;
-      return i * 1000;
+      int i1 = this.f.e;
+      return i1 * 1000;
     }
     finally {}
   }
@@ -759,47 +756,47 @@ public class Game
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("gameId=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.m);
     localStringBuilder.append("\n");
     localStringBuilder.append("status=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.o);
     localStringBuilder.append("\n");
     localStringBuilder.append("statusPastTimeSvr=");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append("\n");
     localStringBuilder.append("gamePastTimeSvr=");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.q);
     localStringBuilder.append("\n");
     localStringBuilder.append("statusPastTime=");
-    localStringBuilder.append(d());
+    localStringBuilder.append(n());
     localStringBuilder.append("\n");
     localStringBuilder.append("gamePastTime=");
-    localStringBuilder.append(e());
+    localStringBuilder.append(o());
     localStringBuilder.append("\n");
     localStringBuilder.append("gameInfo=");
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataGameInfo);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("]");
     localStringBuilder.append("\n");
     localStringBuilder.append("topic=");
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicITopic);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("]");
     localStringBuilder.append("\n");
     localStringBuilder.append("player=");
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentAvgameGamelogicDataPlayer);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("]");
     localStringBuilder.append("\n");
     localStringBuilder.append("score=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.i);
     localStringBuilder.append("\n");
     localStringBuilder.append("actorScore");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.l);
     localStringBuilder.append("\n");
     localStringBuilder.append("rightPlayer=");
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_d_of_type_ComTencentAvgameGamelogicDataPlayer);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }

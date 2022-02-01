@@ -11,11 +11,11 @@ class BaseGuessSongStageView$3
   
   public void run()
   {
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.d);
-    if ((this.this$0.b != null) && (this.this$0.b.getVisibility() == 8)) {
-      this.this$0.b.setVisibility(0);
+    ThreadManager.getUIHandlerV2().removeCallbacks(this.this$0.w);
+    if ((this.this$0.j != null) && (this.this$0.j.getVisibility() == 8)) {
+      this.this$0.j.setVisibility(0);
     }
-    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.d, 1000L);
+    ThreadManager.getUIHandlerV2().postDelayed(this.this$0.w, 1000L);
   }
 }
 

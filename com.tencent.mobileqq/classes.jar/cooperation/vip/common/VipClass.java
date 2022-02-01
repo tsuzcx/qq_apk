@@ -7,11 +7,11 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class VipClass
   extends VipHandler
 {
-  private static VipClass a = new VipClass();
+  private static VipClass b = new VipClass();
   
   public static VipClass getInstance()
   {
-    return a;
+    return b;
   }
   
   public void a(Activity paramActivity, String paramString)
@@ -21,7 +21,7 @@ public class VipClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.common.VipClass
  * JD-Core Version:    0.7.0.1
  */

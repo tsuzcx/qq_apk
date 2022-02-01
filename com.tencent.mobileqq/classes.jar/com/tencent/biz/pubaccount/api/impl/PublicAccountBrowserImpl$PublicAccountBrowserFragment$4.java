@@ -11,12 +11,12 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.jdField_a_of_type_ComTencentBizPubaccountApiImplPublicAccountBrowserImpl$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
+    this.b.a(paramDialogInterface, false, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.4
  * JD-Core Version:    0.7.0.1
  */

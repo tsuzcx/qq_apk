@@ -9,14 +9,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class VExtensionInfoManager
 {
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
-  private EntityManagerFactory jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory;
-  private ConcurrentHashMap<String, Entity> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private EntityManagerFactory a;
+  private EntityManager b;
+  private ConcurrentHashMap<String, Entity> c = new ConcurrentHashMap();
   
   public VExtensionInfoManager(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManagerFactory.createEntityManager();
+    this.a = paramVideoAppInterface.getEntityManagerFactory(paramVideoAppInterface.getCurrentAccountUin());
+    this.b = this.a.createEntityManager();
   }
   
   public ExtensionInfo a(String paramString)
@@ -28,7 +28,7 @@ public class VExtensionInfoManager
       if ("".equals(paramString)) {
         return null;
       }
-      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      ConcurrentHashMap localConcurrentHashMap = this.c;
       localObject = localExtensionInfo;
       if (localConcurrentHashMap != null) {
         localObject = (ExtensionInfo)localConcurrentHashMap.get(paramString);
@@ -36,16 +36,16 @@ public class VExtensionInfoManager
       if (localObject != null) {
         return localObject;
       }
-      localExtensionInfo = (ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(ExtensionInfo.class, paramString);
+      localExtensionInfo = (ExtensionInfo)this.b.find(ExtensionInfo.class, paramString);
       localObject = localExtensionInfo;
       if (localExtensionInfo != null)
       {
-        localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localConcurrentHashMap = this.c;
         localObject = localExtensionInfo;
         if (localConcurrentHashMap != null) {
           try
           {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localExtensionInfo);
+            this.c.put(paramString, localExtensionInfo);
             return localExtensionInfo;
           }
           finally {}

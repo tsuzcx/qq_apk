@@ -16,7 +16,7 @@ class PTSLiteItemViewBuilder$2
     if (this.a == null) {
       return;
     }
-    if ((PTSLiteItemViewBuilder.a(this.this$0).contains(this.a.getItemID())) && ((QLog.isColorLevel()) || (QLog.isDebugVersion())))
+    if ((PTSLiteItemViewBuilder.e(this.this$0).contains(this.a.getItemID())) && ((QLog.isColorLevel()) || (QLog.isDebugVersion())))
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("[reportItemExposure], itemId : ");
@@ -26,12 +26,12 @@ class PTSLiteItemViewBuilder$2
       return;
     }
     PTSReport.a("0X800A9DD", "", "", "", new PTSReport.R5Builder().a("page_name", this.a.getPageName()).a("item_id", this.a.getItemID()).a());
-    PTSLiteItemViewBuilder.a(this.this$0).add(this.a.getItemID());
+    PTSLiteItemViewBuilder.e(this.this$0).add(this.a.getItemID());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteItemViewBuilder.2
  * JD-Core Version:    0.7.0.1
  */

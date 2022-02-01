@@ -1,0 +1,27 @@
+package com.google.protobuf;
+
+import java.util.AbstractList;
+import java.util.List;
+
+class RepeatedFieldBuilder$BuilderExternalList<MType extends GeneratedMessage, BType extends GeneratedMessage.Builder, IType extends MessageOrBuilder>
+  extends AbstractList<BType>
+  implements List<BType>
+{
+  RepeatedFieldBuilder<MType, BType, IType> a;
+  
+  public BType a(int paramInt)
+  {
+    return this.a.b(paramInt);
+  }
+  
+  public int size()
+  {
+    return this.a.b();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
+ * Qualified Name:     com.google.protobuf.RepeatedFieldBuilder.BuilderExternalList
+ * JD-Core Version:    0.7.0.1
+ */

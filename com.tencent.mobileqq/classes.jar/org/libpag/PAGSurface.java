@@ -79,7 +79,23 @@ public class PAGSurface
   
   public static PAGSurface FromTexture(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    long l = SetupFromTexture(paramInt1, paramInt2, paramInt3, paramBoolean);
+    long l = SetupFromTexture(paramInt1, paramInt2, paramInt3, paramBoolean, false);
+    if (l == 0L) {
+      return null;
+    }
+    PAGSurface localPAGSurface = new PAGSurface(l);
+    localPAGSurface.textureID = paramInt1;
+    return localPAGSurface;
+  }
+  
+  public static PAGSurface FromTextureForAsyncThread(int paramInt1, int paramInt2, int paramInt3)
+  {
+    return FromTextureForAsyncThread(paramInt1, paramInt2, paramInt3, false);
+  }
+  
+  public static PAGSurface FromTextureForAsyncThread(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    long l = SetupFromTexture(paramInt1, paramInt2, paramInt3, paramBoolean, true);
     if (l == 0L) {
       return null;
     }
@@ -101,7 +117,7 @@ public class PAGSurface
   
   private static native long SetupFromSurfaceWithGLContext(Surface paramSurface, long paramLong);
   
-  public static native long SetupFromTexture(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
+  public static native long SetupFromTexture(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2);
   
   private native void nativeFinalize();
   
@@ -120,6 +136,7 @@ public class PAGSurface
   
   public native int height();
   
+  @Deprecated
   public native boolean present();
   
   public void release()
@@ -133,7 +150,7 @@ public class PAGSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     org.libpag.PAGSurface
  * JD-Core Version:    0.7.0.1
  */

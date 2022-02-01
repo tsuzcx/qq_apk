@@ -10,27 +10,31 @@ public class VideoConstants
   extends DeprecatedClass.VideoConstants
   implements DavClosedReason, DavRejectReason, AVConstants
 {
-  public static int a = 1;
-  public static String a = "qua_report_current";
   public static boolean a = true;
-  public static int b = 2;
-  public static String b = "qua_report_exception";
   public static boolean b = false;
-  public static int c = 3;
-  public static String c = "qav_score_count";
-  public static final boolean c;
-  public static int d = 4;
-  public static String d = "qav_score_begintime";
-  public static int e = 5;
-  public static String e = "qav_score_endtime";
-  public static int f = 6;
-  public static String f = "qav_sdk_version";
-  public static String g = "qav_peer_sdk_version";
-  public static String h = "qav_ip";
-  public static String i = "qav_business_type";
-  public static String j = "qav_business_flag";
-  public static String k = "qav_touin";
-  public static String l = "qav_commited";
+  public static String c = "qua_report_current";
+  public static String d = "qua_report_exception";
+  public static int e = 1;
+  public static int f = 2;
+  public static int g = 3;
+  public static int h = 4;
+  public static int i = 5;
+  public static int j = 6;
+  public static String k = "qav_score_count";
+  public static String l = "qav_score_begintime";
+  public static String m = "qav_score_endtime";
+  public static String n = "qav_sdk_version";
+  public static String o = "qav_peer_sdk_version";
+  public static String p = "qav_ip";
+  public static String q = "qav_business_type";
+  public static String r = "qav_business_flag";
+  public static String s = "qav_touin";
+  public static String t = "qav_commited";
+  public static int u = 36;
+  public static int v = 20;
+  public static int w = 24;
+  public static int x = 71;
+  public static final boolean y;
   
   static
   {
@@ -40,7 +44,7 @@ public class VideoConstants
     } else {
       bool = true;
     }
-    c = bool;
+    y = bool;
   }
 }
 

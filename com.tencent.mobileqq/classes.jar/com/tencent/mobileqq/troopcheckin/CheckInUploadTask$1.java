@@ -17,7 +17,7 @@ class CheckInUploadTask$1
   {
     if (QLog.isColorLevel())
     {
-      paramArrayOfByte = this.a.jdField_a_of_type_JavaLangString;
+      paramArrayOfByte = this.a.b;
       paramHashMap = new StringBuilder();
       paramHashMap.append("upload onFailed errn:");
       paramHashMap.append(paramInt);
@@ -29,20 +29,20 @@ class CheckInUploadTask$1
   public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "upload onSuccess");
+      QLog.d(this.a.b, 2, "upload onSuccess");
     }
     paramHashMap = new Bdh_extinfo.CommFileExtRsp();
     try
     {
       paramHashMap.mergeFrom(paramArrayOfByte);
-      this.a.b = paramHashMap.bytes_download_url.get().toStringUtf8();
+      this.a.d = paramHashMap.bytes_download_url.get().toStringUtf8();
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
     }
     paramArrayOfByte = this.a;
-    paramArrayOfByte.jdField_a_of_type_Boolean = true;
+    paramArrayOfByte.e = true;
     paramArrayOfByte.b();
   }
   
@@ -54,7 +54,7 @@ class CheckInUploadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInUploadTask.1
  * JD-Core Version:    0.7.0.1
  */

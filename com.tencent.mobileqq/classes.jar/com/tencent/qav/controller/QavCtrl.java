@@ -14,19 +14,33 @@ import com.tencent.qav.monitor.CallingStateMonitor;
 
 public class QavCtrl
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private MultiOperatorImpl jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl;
+  private Context a;
+  private MultiOperatorImpl b;
   
   public QavCtrl(Context paramContext, MultiOperatorImpl paramMultiOperatorImpl)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    CallingStateMonitor.a().a(this.jdField_a_of_type_AndroidContentContext, a());
-    this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl = paramMultiOperatorImpl;
+    this.a = paramContext;
+    CallingStateMonitor.a().a(this.a, a());
+    this.b = paramMultiOperatorImpl;
     ClientLogReport.instance();
     GAClientLogReport.instance();
   }
   
-  public static int a()
+  public static void a(VideoChannelInterface paramVideoChannelInterface)
+  {
+    if (paramVideoChannelInterface != null) {
+      paramVideoChannelInterface.sendGetGatewayMsg();
+    }
+  }
+  
+  public static void a(VideoChannelInterface paramVideoChannelInterface, Context paramContext, long paramLong)
+  {
+    if (paramVideoChannelInterface != null) {
+      paramVideoChannelInterface.sendGetVideoConfig(ConfigSystemImpl.a(paramLong, String.valueOf(AppSetting.d()), paramContext));
+    }
+  }
+  
+  public static int e()
   {
     boolean bool = AppNetConnInfo.isWifiConn();
     int i = 3;
@@ -65,45 +79,31 @@ public class QavCtrl
     return i;
   }
   
-  public static void a(VideoChannelInterface paramVideoChannelInterface)
-  {
-    if (paramVideoChannelInterface != null) {
-      paramVideoChannelInterface.sendGetGatewayMsg();
-    }
-  }
-  
-  public static void a(VideoChannelInterface paramVideoChannelInterface, Context paramContext, long paramLong)
-  {
-    if (paramVideoChannelInterface != null) {
-      paramVideoChannelInterface.sendGetVideoConfig(ConfigSystemImpl.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
-    }
-  }
-  
-  public IMultiOperator a()
-  {
-    return this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl;
-  }
-  
-  public void a()
-  {
-    MultiOperatorImpl localMultiOperatorImpl = this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl;
-    if (localMultiOperatorImpl != null)
-    {
-      localMultiOperatorImpl.g();
-      this.jdField_a_of_type_ComTencentQavControllerMultiMultiOperatorImpl = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    CallingStateMonitor.a().a();
-  }
-  
   protected boolean a()
   {
     return true;
   }
+  
+  public IMultiOperator c()
+  {
+    return this.b;
+  }
+  
+  public void d()
+  {
+    MultiOperatorImpl localMultiOperatorImpl = this.b;
+    if (localMultiOperatorImpl != null)
+    {
+      localMultiOperatorImpl.j();
+      this.b = null;
+    }
+    this.a = null;
+    CallingStateMonitor.a().b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.controller.QavCtrl
  * JD-Core Version:    0.7.0.1
  */

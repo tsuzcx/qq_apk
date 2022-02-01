@@ -12,7 +12,7 @@ import com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyStaticGridView;
 import com.tencent.mobileqq.kandian.biz.feeds.RIJBaseChannelGridViewAdapter;
 import com.tencent.mobileqq.kandian.biz.feeds.RIJBaseChannelGridViewAdapter.AdapterCallback;
 import com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelReporter;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyLogicEngine;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.glue.viola.ViolaAccessHelper;
@@ -20,7 +20,6 @@ import com.tencent.mobileqq.kandian.repo.db.struct.ReportData;
 import com.tencent.mobileqq.kandian.repo.feeds.ChannelCoverInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.RIJChannelHelper;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 import java.net.URLDecoder;
@@ -30,19 +29,19 @@ import org.json.JSONException;
 class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
   implements RIJBaseChannelGridViewAdapter.AdapterCallback
 {
-  private final long jdField_a_of_type_Long;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  private final long b;
+  private final int[] c = new int[2];
   
   public ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   private void a(TabChannelCoverInfo paramTabChannelCoverInfo, ReadInJoyDynamicGridView.BaseDynamicGridAdapter paramBaseDynamicGridAdapter)
   {
     if (RIJChannelHelper.a(paramTabChannelCoverInfo) == 0)
     {
-      ReadInJoyChannelPanelFragment.c(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment, true);
+      ReadInJoyChannelPanelFragment.c(this.a, true);
       paramTabChannelCoverInfo.redPoint.a = false;
       if (paramBaseDynamicGridAdapter != null) {
         paramBaseDynamicGridAdapter.notifyDataSetChanged();
@@ -56,9 +55,9 @@ class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
     localStringBuilder.append(", tab = ");
     localStringBuilder.append(paramTabChannelCoverInfo);
     QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "moveChannelToMine, position = ", Integer.valueOf(paramInt), localStringBuilder.toString() });
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment, paramTabChannelCoverInfo);
+    ReadInJoyChannelPanelFragment.a(this.a, paramTabChannelCoverInfo);
     ((ReadInJoyStaticGridView)paramAdapterView).a(paramInt, paramAdapterView.getCount() - 1);
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment).a(paramTabChannelCoverInfo);
+    ReadInJoyChannelPanelFragment.a(this.a).a(paramTabChannelCoverInfo);
     try
     {
       RIJChannelReporter.a("0X800949D", new RIJTransMergeKanDianReport.ReportR5Builder().addFolderStatus().addChannelId(paramTabChannelCoverInfo.mChannelCoverId).addContentType(RIJChannelHelper.a(paramTabChannelCoverInfo)).addRedDotStatus(RIJChannelHelper.a(paramTabChannelCoverInfo)).addType((int)paramTabChannelCoverInfo.sectionId).build());
@@ -67,11 +66,11 @@ class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
     {
       paramTabChannelCoverInfo.printStackTrace();
     }
-    if (ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment) == null) {
-      ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment, new ReadInJoyChannelPanelFragment.RecommendChannelAdapterCallback.2(this, paramArrayOfInt));
+    if (ReadInJoyChannelPanelFragment.j(this.a) == null) {
+      ReadInJoyChannelPanelFragment.a(this.a, new ReadInJoyChannelPanelFragment.RecommendChannelAdapterCallback.2(this, paramArrayOfInt));
     }
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment).getViewTreeObserver().addOnPreDrawListener(ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment));
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment);
+    ReadInJoyChannelPanelFragment.a(this.a).getViewTreeObserver().addOnPreDrawListener(ReadInJoyChannelPanelFragment.j(this.a));
+    ReadInJoyChannelPanelFragment.c(this.a);
   }
   
   private void a(AdapterView<?> paramAdapterView, int paramInt, int[] paramArrayOfInt, TabChannelCoverInfo paramTabChannelCoverInfo)
@@ -87,10 +86,10 @@ class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
       localStringBuilder.append(localJSONException.getMessage());
       QLog.e("ReadInJoyChannelPanelFragment", 1, localStringBuilder.toString());
     }
-    if (ChannelCoverInfoModule.a(paramTabChannelCoverInfo.mChannelCoverId))
+    if (ChannelCoverInfoModule.e(paramTabChannelCoverInfo.mChannelCoverId))
     {
       a(paramTabChannelCoverInfo, paramAdapterView, paramInt, paramArrayOfInt);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment.getBaseActivity().finish();
+      this.a.getBaseActivity().finish();
       ReadInJoyLogicEngine.a().c(paramTabChannelCoverInfo.mChannelCoverId, 3);
       RIJThreadHandler.b().post(new ReadInJoyChannelPanelFragment.RecommendChannelAdapterCallback.1(this, paramTabChannelCoverInfo));
       return;
@@ -99,7 +98,7 @@ class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
       try
       {
         paramAdapterView = URLDecoder.decode(paramTabChannelCoverInfo.mChannelJumpUrl, "utf-8");
-        ViolaAccessHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverName, paramAdapterView, null);
+        ViolaAccessHelper.a(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverName, paramAdapterView, null);
         return;
       }
       catch (Exception paramAdapterView)
@@ -114,23 +113,23 @@ class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
     }
     if (paramTabChannelCoverInfo.mChannelType == 3)
     {
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoSubChannelActivity(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
+      ReadInJoyActivityHelper.INSTANCE.launchVideoSubChannelActivity(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
       return;
     }
-    ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchChannelActivity(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
+    ReadInJoyActivityHelper.INSTANCE.launchChannelActivity(this.a.getBaseActivity(), paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelType, -1);
   }
   
   public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment).put(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), paramTabChannelCoverInfo);
+    ReadInJoyChannelPanelFragment.d(this.a).put(Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), paramTabChannelCoverInfo);
   }
   
   public void a(TabChannelCoverInfo paramTabChannelCoverInfo, int paramInt)
   {
     ReportData localReportData = new ReportData();
-    localReportData.a = paramTabChannelCoverInfo;
-    localReportData.l = paramInt;
-    RIJChannelReporter.a(localReportData, (int)this.jdField_a_of_type_Long);
+    localReportData.C = paramTabChannelCoverInfo;
+    localReportData.D = paramInt;
+    RIJChannelReporter.a(localReportData, (int)this.b);
   }
   
   public void a(AdapterView<?> paramAdapterView, RIJBaseChannelGridViewAdapter paramRIJBaseChannelGridViewAdapter, int paramInt, TabChannelCoverInfo paramTabChannelCoverInfo)
@@ -139,19 +138,19 @@ class ReadInJoyChannelPanelFragment$RecommendChannelAdapterCallback
     localStringBuilder.append(", tab = ");
     localStringBuilder.append(paramTabChannelCoverInfo);
     QLog.d("ReadInJoyChannelPanelFragment", 1, new Object[] { "onRecommendChannelClick, position = ", Integer.valueOf(paramInt), localStringBuilder.toString() });
-    paramAdapterView.getChildAt(paramInt).getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+    paramAdapterView.getChildAt(paramInt).getLocationOnScreen(this.c);
     a(paramTabChannelCoverInfo, paramRIJBaseChannelGridViewAdapter);
-    if (!ReadInJoyChannelPanelFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsFragmentReadInJoyChannelPanelFragment))
+    if (!ReadInJoyChannelPanelFragment.b(this.a))
     {
-      a(paramAdapterView, paramInt, this.jdField_a_of_type_ArrayOfInt, paramTabChannelCoverInfo);
+      a(paramAdapterView, paramInt, this.c, paramTabChannelCoverInfo);
       return;
     }
-    a(paramTabChannelCoverInfo, paramAdapterView, paramInt, this.jdField_a_of_type_ArrayOfInt);
+    a(paramTabChannelCoverInfo, paramAdapterView, paramInt, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.ReadInJoyChannelPanelFragment.RecommendChannelAdapterCallback
  * JD-Core Version:    0.7.0.1
  */

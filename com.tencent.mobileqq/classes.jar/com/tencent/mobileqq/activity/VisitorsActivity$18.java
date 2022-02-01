@@ -12,13 +12,13 @@ class VisitorsActivity$18
   
   public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.d.setVisibility(0);
-    this.a.a.setClipChildren(false);
+    this.a.H.setVisibility(0);
+    this.a.v.setClipChildren(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.18
  * JD-Core Version:    0.7.0.1
  */

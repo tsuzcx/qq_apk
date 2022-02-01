@@ -14,21 +14,21 @@ final class ShareQQArkHelper$5
   public void run()
   {
     Object localObject;
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener;
+      localObject = this.b;
       if (localObject != null) {
-        ((MiniProgramShareUtils.OnShareListener)localObject).onShared(this.jdField_a_of_type_JavaLangBoolean.booleanValue(), false);
+        ((MiniProgramShareUtils.OnShareListener)localObject).onShared(this.c.booleanValue(), false);
       }
     }
-    if (this.jdField_a_of_type_Long == -100070004L)
+    if (this.d == -100070004L)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMiniShareMiniProgramShareUtils$OnShareListener;
+      localObject = this.b;
       if (localObject != null) {
-        ((MiniProgramShareUtils.OnShareListener)localObject).onShared(this.jdField_a_of_type_JavaLangBoolean.booleanValue(), false);
+        ((MiniProgramShareUtils.OnShareListener)localObject).onShared(this.c.booleanValue(), false);
       }
-      localObject = this.jdField_a_of_type_AndroidAppActivity;
-      DialogUtil.a((Context)localObject, 233, ((Activity)localObject).getString(2131719012), this.jdField_a_of_type_JavaLangString, new ShareQQArkHelper.5.1(this), null).show();
+      localObject = this.e;
+      DialogUtil.a((Context)localObject, 233, ((Activity)localObject).getString(2131916547), this.f, new ShareQQArkHelper.5.1(this), null).show();
       return;
     }
     ShareQQArkHelper.a();
@@ -36,7 +36,7 @@ final class ShareQQArkHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareQQArkHelper.5
  * JD-Core Version:    0.7.0.1
  */

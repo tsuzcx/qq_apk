@@ -11,7 +11,7 @@ final class RIJDanmakuManager$cancelClickRunnable$1
   
   public final void run()
   {
-    RIJBaseDanmaku localRIJBaseDanmaku = this.this$0.a();
+    RIJBaseDanmaku localRIJBaseDanmaku = this.this$0.c();
     if (localRIJBaseDanmaku != null) {
       RIJDanmakuManager.a(this.this$0, localRIJBaseDanmaku);
     }
@@ -19,7 +19,7 @@ final class RIJDanmakuManager$cancelClickRunnable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.danmaku.RIJDanmakuManager.cancelClickRunnable.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ final class DownloadApi$4
   
   public void run()
   {
-    MyAppApi.a().a(this.a);
+    MyAppApi.l().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.4
  * JD-Core Version:    0.7.0.1
  */

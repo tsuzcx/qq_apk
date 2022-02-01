@@ -12,12 +12,12 @@ class WebProteusViewCreator$ProteusItemViewHolder$1$1
   public void onClick(ViewBase paramViewBase)
   {
     int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    WebProteusViewCreator.ProteusItemViewHolder.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebItemWebProteusViewCreator$ProteusItemViewHolder, i).a(paramViewBase, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqKandianRepoPtsEntityProteusItemData);
+    WebProteusViewCreator.ProteusItemViewHolder.a(this.a.c, i).a(paramViewBase, this.a.a, this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.1.1
  * JD-Core Version:    0.7.0.1
  */

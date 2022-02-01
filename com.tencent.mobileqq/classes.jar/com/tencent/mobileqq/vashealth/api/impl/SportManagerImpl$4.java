@@ -24,7 +24,7 @@ class SportManagerImpl$4
       int m = paramMessage.m();
       int j = paramMessage.j();
       int k = paramMessage.k();
-      if ((SSOHttpUtils.a != 0L) && (NetConnInfoCenter.getServerTimeMillis() - SSOHttpUtils.a >= i))
+      if ((SSOHttpUtils.c != 0L) && (NetConnInfoCenter.getServerTimeMillis() - SSOHttpUtils.c >= i))
       {
         if (this.a.mTimer2ReportTimes >= m)
         {
@@ -50,7 +50,7 @@ class SportManagerImpl$4
           paramMessage.set(12, 0);
           paramMessage.set(13, 0);
           paramMessage.set(14, 0);
-          if (SSOHttpUtils.a - paramMessage.getTimeInMillis() > 0L)
+          if (SSOHttpUtils.c - paramMessage.getTimeInMillis() > 0L)
           {
             QLog.i("SportManager", 2, "already report cancel task.");
             this.a.mHandler.removeCallbacksAndMessages(null);
@@ -75,7 +75,7 @@ class SportManagerImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.api.impl.SportManagerImpl.4
  * JD-Core Version:    0.7.0.1
  */

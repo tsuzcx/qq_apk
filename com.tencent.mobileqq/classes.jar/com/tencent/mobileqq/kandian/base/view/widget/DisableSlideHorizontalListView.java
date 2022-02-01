@@ -13,29 +13,29 @@ import com.tencent.widget.HorizontalListView;
 public class DisableSlideHorizontalListView
   extends HorizontalListView
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private BezierSideBarView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBezierSideBarView;
-  private DisableSlideHorizontalListView.OnOverScrollListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnOverScrollListener;
-  private DisableSlideHorizontalListView.OnViewWindowChangedListener jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnViewWindowChangedListener;
-  private boolean jdField_a_of_type_Boolean;
+  private float a;
   private float b;
+  private boolean c;
+  private DisableSlideHorizontalListView.OnOverScrollListener d;
+  private DisableSlideHorizontalListView.OnViewWindowChangedListener e;
+  private BezierSideBarView f;
+  private int g;
   
   public DisableSlideHorizontalListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = ((int)DisplayUtils.a(paramContext, 18.0F));
+    this.g = ((int)DisplayUtils.a(paramContext, 18.0F));
   }
   
   public DisableSlideHorizontalListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ((int)DisplayUtils.a(paramContext, 18.0F));
+    this.g = ((int)DisplayUtils.a(paramContext, 18.0F));
   }
   
   private void a()
   {
-    BezierSideBarView localBezierSideBarView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBezierSideBarView;
+    BezierSideBarView localBezierSideBarView = this.f;
     if (localBezierSideBarView != null) {
       localBezierSideBarView.a();
     }
@@ -43,11 +43,11 @@ public class DisableSlideHorizontalListView
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBezierSideBarView != null)
+    if (this.f != null)
     {
       int i = getMeasuredHeight() / 2;
       int j = AIOUtils.b(18.0F, getResources());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBezierSideBarView.a(paramInt, i - j);
+      this.f.a(paramInt, i - j);
     }
   }
   
@@ -63,13 +63,13 @@ public class DisableSlideHorizontalListView
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("dispatchTouchEvent:ACTION_DOWN. mIsPress=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.d("DisableSlideHorizontalListView", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Float = f1;
+      this.a = f1;
       this.b = f3;
       getParent().requestDisallowInterceptTouchEvent(true);
-      this.jdField_a_of_type_Boolean = true;
+      this.c = true;
       return super.dispatchTouchEvent(paramMotionEvent);
     }
     if (i == 2)
@@ -78,17 +78,17 @@ public class DisableSlideHorizontalListView
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("dispatchTouchEvent:ACTION_MOVE. mIsPress=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.d("DisableSlideHorizontalListView", 2, localStringBuilder.toString());
       }
-      float f2 = this.jdField_a_of_type_Float;
+      float f2 = this.a;
       f3 -= this.b;
-      if ((this.jdField_a_of_type_Boolean) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
+      if ((this.c) && (Math.abs(f3) * 5.0F > Math.abs(f1 - f2) * 4.0F) && (Math.abs(f3) > DisplayUtil.a(getContext(), 5.0F))) {
         getParent().requestDisallowInterceptTouchEvent(false);
       } else {
         getParent().requestDisallowInterceptTouchEvent(true);
       }
-      a(getScrollX() - this.jdField_a_of_type_Int);
+      a(getScrollX() - this.g);
     }
     else if ((i == 3) || (i == 1))
     {
@@ -98,12 +98,12 @@ public class DisableSlideHorizontalListView
         localStringBuilder.append("dispatchTouchEvent:ACTION_CANCEL or UP. action=");
         localStringBuilder.append(i);
         localStringBuilder.append(" mIsPress=");
-        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        localStringBuilder.append(this.c);
         QLog.d("DisableSlideHorizontalListView", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnOverScrollListener != null) && (i == 1) && (getScrollX() > this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnOverScrollListener.a();
+      this.c = false;
+      if ((this.d != null) && (i == 1) && (getScrollX() > this.g)) {
+        this.d.a();
       }
       a();
     }
@@ -113,7 +113,7 @@ public class DisableSlideHorizontalListView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    DisableSlideHorizontalListView.OnViewWindowChangedListener localOnViewWindowChangedListener = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnViewWindowChangedListener;
+    DisableSlideHorizontalListView.OnViewWindowChangedListener localOnViewWindowChangedListener = this.e;
     if (localOnViewWindowChangedListener != null) {
       localOnViewWindowChangedListener.b();
     }
@@ -122,7 +122,7 @@ public class DisableSlideHorizontalListView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    DisableSlideHorizontalListView.OnViewWindowChangedListener localOnViewWindowChangedListener = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnViewWindowChangedListener;
+    DisableSlideHorizontalListView.OnViewWindowChangedListener localOnViewWindowChangedListener = this.e;
     if (localOnViewWindowChangedListener != null) {
       localOnViewWindowChangedListener.c();
     }
@@ -136,27 +136,27 @@ public class DisableSlideHorizontalListView
       a();
       return;
     }
-    a(paramInt1 - this.jdField_a_of_type_Int);
+    a(paramInt1 - this.g);
   }
   
   public void setOnOverScrollListener(DisableSlideHorizontalListView.OnOverScrollListener paramOnOverScrollListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnOverScrollListener = paramOnOverScrollListener;
+    this.d = paramOnOverScrollListener;
   }
   
   public void setOnViewWindowChangedListener(DisableSlideHorizontalListView.OnViewWindowChangedListener paramOnViewWindowChangedListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetDisableSlideHorizontalListView$OnViewWindowChangedListener = paramOnViewWindowChangedListener;
+    this.e = paramOnViewWindowChangedListener;
   }
   
   public void setSideBarView(BezierSideBarView paramBezierSideBarView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetBezierSideBarView = paramBezierSideBarView;
+    this.f = paramBezierSideBarView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.DisableSlideHorizontalListView
  * JD-Core Version:    0.7.0.1
  */

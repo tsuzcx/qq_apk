@@ -10,14 +10,14 @@ class ColorNoteMusicProxy$1
   
   public void onServiceSyncSucc(boolean paramBoolean)
   {
-    if ((ColorNoteMusicProxy.a(this.a)) && (ColorNoteMusicProxy.a(this.a) != null) && (!ColorNoteMusicProxy.a(this.a).isColorNoteExist())) {
-      ColorNoteMusicProxy.a(this.a).insertColorNote();
+    if ((ColorNoteMusicProxy.a(this.a)) && (ColorNoteMusicProxy.b(this.a) != null) && (!ColorNoteMusicProxy.b(this.a).isColorNoteExist())) {
+      ColorNoteMusicProxy.b(this.a).insertColorNote();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.music.ColorNoteMusicProxy.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,7 +33,18 @@ public class UidListToUrlListSegment
     this.a = localStringBuilder.toString();
   }
   
-  private Pair<List<String>, Boolean> a(List<String> paramList)
+  private void b(List<String> paramList)
+  {
+    IconLog.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new QQUserUIItem.UserID(null, (String)paramList.next()));
+    }
+    new GetUserInfoHandler(this).a(1, localArrayList);
+  }
+  
+  private Pair<List<String>, Boolean> c(List<String> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     UserManager localUserManager = (UserManager)SuperManager.a(2);
@@ -55,24 +66,13 @@ public class UidListToUrlListSegment
     return new Pair(localArrayList, Boolean.valueOf(bool));
   }
   
-  private void b(List<String> paramList)
-  {
-    IconLog.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new QQUserUIItem.UserID(null, (String)paramList.next()));
-    }
-    new GetUserInfoHandler(this).a(1, localArrayList);
-  }
-  
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null))
+    if ((paramUpdateUserInfoEvent != null) && (!paramUpdateUserInfoEvent.g.isFail()) && (paramUpdateUserInfoEvent.b != null))
     {
       IconLog.a(this.a, "refresh user info success, let's return the new info");
       ArrayList localArrayList = new ArrayList();
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.iterator();
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.b.iterator();
       while (paramUpdateUserInfoEvent.hasNext()) {
         localArrayList.add(((QQUserUIItem)paramUpdateUserInfoEvent.next()).headUrl);
       }
@@ -83,7 +83,7 @@ public class UidListToUrlListSegment
     if (paramUpdateUserInfoEvent == null) {
       paramUpdateUserInfoEvent = new ErrorMessage(-1, "event is null");
     } else {
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.g;
     }
     notifyError(paramUpdateUserInfoEvent);
   }
@@ -93,7 +93,7 @@ public class UidListToUrlListSegment
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       paramJobContext = Collections.unmodifiableList(paramList);
-      paramList = a(paramJobContext);
+      paramList = c(paramJobContext);
       IconLog.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
       a((List)paramList.first);
       if (!((Boolean)paramList.second).booleanValue())

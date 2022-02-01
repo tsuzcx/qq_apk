@@ -10,6 +10,7 @@ import com.tencent.imcore.message.core.codec.IPBMsgElemDecoder;
 import com.tencent.imcore.message.core.codec.RoutingType;
 import com.tencent.imcore.message.core.codec.RoutingTypeGenerator;
 import com.tencent.imcore.message.core.codec.UinTypeRoutingTypeMap;
+import com.tencent.imcore.message.facade.QQMessageFacadeRefresher;
 import com.tencent.mobileqq.app.BaseMessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.msgnotify.MsgNotifyManager;
@@ -47,7 +48,7 @@ public class MessageFacadeImpl
   
   public void addAIOHeadMessage(String paramString, int paramInt, List<MessageRecord> paramList)
   {
-    this.mApp.getMessageFacade().a(paramString, paramInt, paramList);
+    this.mApp.getMessageFacade().c(paramString, paramInt, paramList);
   }
   
   public void addMessage(MessageRecord paramMessageRecord, String paramString)
@@ -106,7 +107,7 @@ public class MessageFacadeImpl
   
   public void cancelNotificationWhenRevokeMessage(MessageRecord paramMessageRecord)
   {
-    getMessageFacade().jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyManager.a(paramMessageRecord);
+    getMessageFacade().d.a(paramMessageRecord);
   }
   
   public boolean checkAppRuntimeInValid()
@@ -126,27 +127,27 @@ public class MessageFacadeImpl
   
   public int clearHistory(String paramString, int paramInt)
   {
-    return getMessageFacade().a(paramString, paramInt);
+    return getMessageFacade().c(paramString, paramInt);
   }
   
   public int clearHistory(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return getMessageFacade().a(paramString, paramInt, paramBoolean1, paramBoolean2);
+    return getMessageFacade().b(paramString, paramInt, paramBoolean1, paramBoolean2);
   }
   
   public void clearInAioParallerPullMsgMark(String paramString, long paramLong1, long paramLong2)
   {
-    getMessageFacade().a().b(paramString, paramLong1, paramLong2);
+    getMessageFacade().p().b(paramString, paramLong1, paramLong2);
   }
   
   public void clearRecommendTroopMsgByMsgType(int paramInt)
   {
-    this.mApp.getMessageFacade().b(paramInt);
+    this.mApp.getMessageFacade().e(paramInt);
   }
   
   public void clearTransFileInfo(String paramString)
   {
-    getMessageFacade().a(paramString);
+    getMessageFacade().b(paramString);
   }
   
   public MessageRecord constructMessageForText(String paramString1, String paramString2, String paramString3, int paramInt)
@@ -179,17 +180,17 @@ public class MessageFacadeImpl
   
   public MessageRecord findLongMsgHead(MessageRecord paramMessageRecord)
   {
-    return getMessageFacade().a(paramMessageRecord);
+    return getMessageFacade().d(paramMessageRecord);
   }
   
   public List<MessageRecord> getAIOList(String paramString, int paramInt)
   {
-    return new ArrayList(this.mApp.getMessageFacade().b(paramString, paramInt));
+    return new ArrayList(this.mApp.getMessageFacade().o(paramString, paramInt));
   }
   
   public List<ChatMessage> getAIOList(String paramString, int paramInt, long paramLong)
   {
-    return getMessageFacade().a(paramString, paramInt, paramLong);
+    return getMessageFacade().i(paramString, paramInt, paramLong);
   }
   
   public List<MessageRecord> getAllMessages(String paramString, int paramInt, int[] paramArrayOfInt)
@@ -207,17 +208,17 @@ public class MessageFacadeImpl
   
   public ConcurrentHashMap<String, Boolean> getAutoPullCache()
   {
-    return getMessageFacade().jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+    return getMessageFacade().h;
   }
   
   public Map<String, Message> getCachedMsg()
   {
-    return this.mApp.getMessageFacade().jdField_a_of_type_JavaUtilMap;
+    return this.mApp.getMessageFacade().a;
   }
   
   public String getCurrChatUin()
   {
-    return this.mApp.getMessageFacade().a();
+    return this.mApp.getMessageFacade().l();
   }
   
   public DraftSummaryInfo getDraftSummaryInfo(String paramString, int paramInt)
@@ -227,17 +228,27 @@ public class MessageFacadeImpl
   
   public Handler getFacadeHandler()
   {
-    return getMessageFacade().jdField_a_of_type_AndroidOsHandler;
+    return getMessageFacade().c;
   }
   
   public Message getFirstUnreadMessage(String paramString, int paramInt)
   {
-    return this.mApp.getMessageFacade().b(paramString, paramInt);
+    return this.mApp.getMessageFacade().l(paramString, paramInt);
   }
   
   public Message getIncomingMsg()
   {
-    return getMessageFacade().a();
+    return getMessageFacade().B();
+  }
+  
+  public int getIsLastMsgCacheLazyLoad()
+  {
+    return getMessageFacade().m.b();
+  }
+  
+  public boolean getIsLastMsgCacheLoaded()
+  {
+    return getMessageFacade().m.a();
   }
   
   public Message getLastMessage(String paramString, int paramInt)
@@ -247,17 +258,17 @@ public class MessageFacadeImpl
   
   public Message getLastMessage(String paramString, int paramInt1, int paramInt2)
   {
-    return getMessageFacade().a(paramString, paramInt1, paramInt2);
+    return getMessageFacade().b(paramString, paramInt1, paramInt2);
   }
   
   public MessageRecord getLastMsgForMsgTab(String paramString, int paramInt)
   {
-    return getMessageFacade().b(paramString, paramInt);
+    return getMessageFacade().r(paramString, paramInt);
   }
   
   public MessageRecord getLastMsgForMsgTabWithAutoInit(String paramString, int paramInt)
   {
-    return getMessageFacade().a(paramString, paramInt);
+    return getMessageFacade().q(paramString, paramInt);
   }
   
   public List<MessageRecord> getMessages(String paramString, int paramInt1, int paramInt2)
@@ -283,7 +294,7 @@ public class MessageFacadeImpl
     if (checkAppRuntimeInValid()) {
       return null;
     }
-    return getMessageFacade().a(paramString, paramInt);
+    return getMessageFacade().h(paramString, paramInt);
   }
   
   public long getMsgUinSeq(MessageRecord paramMessageRecord)
@@ -293,17 +304,17 @@ public class MessageFacadeImpl
   
   public List<IPBMsgElemDecoder> getPBMsgElemsDecoders()
   {
-    return getMessageFacade().a().a();
+    return getMessageFacade().c().e();
   }
   
   public ConcurrentHashMap<Integer, List<MessageRecord>> getPullCache()
   {
-    return getMessageFacade().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    return getMessageFacade().g;
   }
   
   public AtomicInteger getPullCounter()
   {
-    return getMessageFacade().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    return getMessageFacade().f;
   }
   
   public Object getQQMessageFacadeStub()
@@ -318,22 +329,22 @@ public class MessageFacadeImpl
   
   public List<MessageRecord> getQuickDbMessage(String paramString1, String paramString2)
   {
-    return getMessageFacade().b(paramString1, paramString2);
+    return getMessageFacade().c(paramString1, paramString2);
   }
   
   public Map<String, Boolean> getRefreshActionMap()
   {
-    return getMessageFacade().jdField_b_of_type_JavaUtilMap;
+    return getMessageFacade().b;
   }
   
   public Registry getRegistry()
   {
-    return getMessageFacade().a();
+    return getMessageFacade().c();
   }
   
   public int getRoutingType(int paramInt)
   {
-    return getMessageFacade().a().a().a(paramInt);
+    return getMessageFacade().c().b().a(paramInt);
   }
   
   public MessageRecord getSendingTroopMsgItem(String paramString, int paramInt, MessageRecord paramMessageRecord)
@@ -353,7 +364,7 @@ public class MessageFacadeImpl
   
   public List<MessageRecord> getSlowDbMessage(String paramString1, String paramString2)
   {
-    return getMessageFacade().a(paramString1, paramString2);
+    return getMessageFacade().b(paramString1, paramString2);
   }
   
   public String getSqlStr(String paramString, long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
@@ -363,17 +374,17 @@ public class MessageFacadeImpl
   
   public TinyIdCache getTinyIdCache()
   {
-    return getMessageFacade().a();
+    return getMessageFacade().h();
   }
   
   public int getUinType(int paramInt)
   {
-    return ((RoutingType)getMessageFacade().a().a().a(Integer.valueOf(paramInt))).a();
+    return ((RoutingType)getMessageFacade().c().a().a(Integer.valueOf(paramInt))).a();
   }
   
   public int getUnreadMsgsNum()
   {
-    return this.mApp.getMessageFacade().b();
+    return this.mApp.getMessageFacade().w();
   }
   
   public void handleReceivedMessage(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
@@ -393,7 +404,7 @@ public class MessageFacadeImpl
   
   public boolean isChatting()
   {
-    return this.mApp.getMessageFacade().a();
+    return this.mApp.getMessageFacade().n();
   }
   
   public boolean isMessageForText(MessageRecord paramMessageRecord)
@@ -403,7 +414,7 @@ public class MessageFacadeImpl
   
   public boolean isTheLastTabMsg(MessageRecord paramMessageRecord)
   {
-    return getMessageFacade().a(paramMessageRecord);
+    return getMessageFacade().b(paramMessageRecord);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -426,12 +437,12 @@ public class MessageFacadeImpl
   
   public boolean pullRecentGroupMsg(String paramString)
   {
-    return getMessageFacade().a(paramString);
+    return getMessageFacade().c(paramString);
   }
   
   public void putAioInParallelPullMsgMark(String paramString, long paramLong1, long paramLong2)
   {
-    getMessageFacade().a().a(paramString, paramLong1, paramLong2);
+    getMessageFacade().p().a(paramString, paramLong1, paramLong2);
   }
   
   public void qLogColor(String paramString1, String paramString2)
@@ -441,7 +452,7 @@ public class MessageFacadeImpl
   
   public List<MessageRecord> queryMsgItemByShmsgseq(String paramString, int paramInt, long paramLong1, long paramLong2)
   {
-    return getMessageFacade().a(paramString, paramInt, paramLong1, paramLong2);
+    return getMessageFacade().b(paramString, paramInt, paramLong1, paramLong2);
   }
   
   public MessageRecord queryMsgItemByUniseq(String paramString, int paramInt, long paramLong)
@@ -464,7 +475,7 @@ public class MessageFacadeImpl
     if (checkAppRuntimeInValid()) {
       return;
     }
-    getMessageFacade().b(paramString, paramInt, paramLong);
+    getMessageFacade().h(paramString, paramInt, paramLong);
   }
   
   public void removeMsgByUniseq(String paramString, int paramInt, long paramLong, boolean paramBoolean)
@@ -479,7 +490,7 @@ public class MessageFacadeImpl
   
   public void removeNotification(String paramString, int paramInt)
   {
-    getMessageFacade().jdField_a_of_type_ComTencentMobileqqAppMsgnotifyMsgNotifyManager.a(paramString, paramInt);
+    getMessageFacade().d.a(paramString, paramInt);
   }
   
   public void removeRecentUser(RecentUser paramRecentUser)
@@ -501,7 +512,7 @@ public class MessageFacadeImpl
   
   public void sendSpecialMessage(String paramString)
   {
-    getMessageFacade().b(paramString);
+    getMessageFacade().d(paramString);
   }
   
   public boolean setAutoPullC2CMsgResult(String paramString, int paramInt, List<MessageRecord> paramList, boolean paramBoolean)
@@ -519,12 +530,12 @@ public class MessageFacadeImpl
   
   public void setIncomingMsg(MessageRecord paramMessageRecord)
   {
-    getMessageFacade().b((Message)paramMessageRecord);
+    getMessageFacade().c((Message)paramMessageRecord);
   }
   
   public void setReadFrom(String paramString, int paramInt, long paramLong)
   {
-    getMessageFacade().a(paramString, paramInt, paramLong);
+    getMessageFacade().f(paramString, paramInt, paramLong);
   }
   
   public void setReadFrom(String paramString, int paramInt, long paramLong, boolean paramBoolean)
@@ -544,20 +555,20 @@ public class MessageFacadeImpl
   
   public void setRecommendTroopMsgReaded(int paramInt)
   {
-    this.mApp.getMessageFacade().a(paramInt);
+    this.mApp.getMessageFacade().c(paramInt);
   }
   
   public boolean setRoutingHead(AppInterface paramAppInterface, int paramInt, Object paramObject1, Object paramObject2)
   {
     if (((paramObject2 instanceof MessageRecord)) && ((paramObject1 instanceof msg_svc.RoutingHead)) && ((paramAppInterface instanceof QQAppInterface))) {
-      return ((RoutingType)getMessageFacade().a().a().a(Integer.valueOf(paramInt))).a((msg_svc.RoutingHead)paramObject1, (MessageRecord)paramObject2, (QQAppInterface)paramAppInterface);
+      return ((RoutingType)getMessageFacade().c().a().a(Integer.valueOf(paramInt))).a((msg_svc.RoutingHead)paramObject1, (MessageRecord)paramObject2, (QQAppInterface)paramAppInterface);
     }
     return false;
   }
   
   public void stopHttpProcessorIfNeed(MessageRecord paramMessageRecord)
   {
-    getMessageFacade().c(paramMessageRecord);
+    getMessageFacade().e(paramMessageRecord);
   }
   
   public void updateGroupMsgSeqAndTimeByUniseq(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
@@ -580,7 +591,7 @@ public class MessageFacadeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msg.api.impl.MessageFacadeImpl
  * JD-Core Version:    0.7.0.1
  */

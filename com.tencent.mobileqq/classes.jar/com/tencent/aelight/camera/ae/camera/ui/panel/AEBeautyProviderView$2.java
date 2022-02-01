@@ -17,7 +17,7 @@ class AEBeautyProviderView$2
     if (AEBeautyProviderView.a(this.a) != null)
     {
       AEBeautyProviderView.a(this.a).b(paramInt);
-      paramSeekBar = this.a.b;
+      paramSeekBar = this.a.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("+");
       localStringBuilder.append(String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
@@ -28,23 +28,23 @@ class AEBeautyProviderView$2
   public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
     paramSeekBar = this.a;
-    AEBeautyProviderView.a(paramSeekBar, AEBeautyProviderView.b(paramSeekBar), AEBeautyProviderView.a(this.a));
+    AEBeautyProviderView.a(paramSeekBar, AEBeautyProviderView.c(paramSeekBar), AEBeautyProviderView.b(this.a));
   }
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
+    if ((AEBeautyProviderView.d(this.a) != null) && ((AEBeautyProviderView.d(this.a) instanceof ViewGroup))) {
+      ((ViewGroup)AEBeautyProviderView.d(this.a)).setMotionEventSplittingEnabled(true);
     }
     AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
-    AEBaseReportParam.a().g(paramSeekBar.getProgress());
+    AEBaseReportParam.a().i(paramSeekBar.getProgress());
     paramSeekBar = this.a;
-    AEBeautyProviderView.b(paramSeekBar, AEBeautyProviderView.b(paramSeekBar), AEBeautyProviderView.a(this.a));
+    AEBeautyProviderView.b(paramSeekBar, AEBeautyProviderView.c(paramSeekBar), AEBeautyProviderView.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.panel.AEBeautyProviderView.2
  * JD-Core Version:    0.7.0.1
  */

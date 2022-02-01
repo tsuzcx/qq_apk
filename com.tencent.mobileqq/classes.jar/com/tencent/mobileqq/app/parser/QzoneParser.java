@@ -11,15 +11,15 @@ public class QzoneParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new QzoneAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qzone";
-    paramBaseQQAppInterface.c = "qzone_schema";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qzone";
+    paramBaseQQAppInterface.e = "qzone_schema";
     return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzoneParser
  * JD-Core Version:    0.7.0.1
  */

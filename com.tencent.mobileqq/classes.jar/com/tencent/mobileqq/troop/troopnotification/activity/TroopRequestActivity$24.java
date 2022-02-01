@@ -18,7 +18,7 @@ class TroopRequestActivity$24
   
   public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg != null) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg != null))
+    if ((this.a.W != null) && (this.a.W.msg != null))
     {
       long l = paramInt;
       int i;
@@ -39,20 +39,20 @@ class TroopRequestActivity$24
           QLog.d("Q.systemmsg.TroopRequestActivity", 2, paramStructMsg.toString());
         }
         TroopNotificationUtils.a(this.a, paramString, "");
-        TroopNotificationUtils.a(TroopRequestActivity.a(this.a));
+        TroopNotificationUtils.c(TroopRequestActivity.a(this.a));
         this.a.h();
         ReportController.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
         return;
       }
-      if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 11) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() == 3)) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 7))
+      if (((this.a.W.msg.group_msg_type.get() == 11) && (this.a.W.msg.sub_type.get() == 3)) || (this.a.W.msg.group_msg_type.get() == 7))
       {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopApiHandlerITroopMngHandler != null)
+        if (this.a.aq != null)
         {
           try
           {
-            l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
+            l = Long.parseLong(this.a.c);
             this.a.g();
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopApiHandlerITroopMngHandler.a(l, 8390784);
+            this.a.aq.a(l, 8390784);
             return;
           }
           catch (Exception paramString)
@@ -68,7 +68,7 @@ class TroopRequestActivity$24
       {
         this.a.g();
         TroopRequestActivity.a(this.a, 1);
-        if (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
+        if (this.a.W.msg.group_msg_type.get() == 2)
         {
           ReportController.b(TroopRequestActivity.a(this.a), "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
           ReportController.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
@@ -85,11 +85,11 @@ class TroopRequestActivity$24
     this.a.h();
     paramStructMsg = this.a;
     if (paramInt1 == 72) {
-      paramInt1 = 2131689981;
+      paramInt1 = 2131886623;
     } else {
-      paramInt1 = 2131689980;
+      paramInt1 = 2131886622;
     }
-    QQToast.a(paramStructMsg, paramInt1, 1).a();
+    QQToast.makeText(paramStructMsg, paramInt1, 1).show();
     ReportController.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
     if (QLog.isColorLevel())
     {
@@ -102,7 +102,7 @@ class TroopRequestActivity$24
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.24
  * JD-Core Version:    0.7.0.1
  */

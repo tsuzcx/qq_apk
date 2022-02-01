@@ -64,12 +64,12 @@ public class StoryAtVideoThumbAdapter
   
   public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
   {
-    if (UIUtils.b()) {
+    if (UIUtils.d()) {
       return;
     }
-    a(this.a, paramVideoListFeedItem, paramStoryVideoItem);
+    a(this.d, paramVideoListFeedItem, paramStoryVideoItem);
     StoryReportor.a("home_page", "choose_video", 0, 0, new String[0]);
-    this.a.finish();
+    this.d.finish();
   }
   
   public void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt) {}

@@ -7,12 +7,12 @@ class SimpleDataProvider$2
   
   public void run()
   {
-    SimpleDataProvider.a(this.this$0, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    SimpleDataProvider.a(this.this$0, this.a, this.b, this.c, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.SimpleDataProvider.2
  * JD-Core Version:    0.7.0.1
  */

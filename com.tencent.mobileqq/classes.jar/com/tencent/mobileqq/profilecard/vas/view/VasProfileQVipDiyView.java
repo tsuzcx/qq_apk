@@ -81,21 +81,21 @@ public class VasProfileQVipDiyView
   
   private void attachDiyProfileTemplateTipForGuest(Activity paramActivity, ViewGroup paramViewGroup)
   {
-    if (!QVipDiyTemplateProcessor.c().a) {
+    if (!QVipDiyTemplateProcessor.e().a) {
       return;
     }
     if (!ProfileCardUtil.a(this.mApp, this.mCardInfo.card.uin)) {
       return;
     }
-    ProfileCardUtil.a(this.mApp, this.mCardInfo.card.uin);
-    this.mTipLayout = ((RelativeLayout)LayoutInflater.from(paramActivity).inflate(2131562017, paramViewGroup, false));
+    ProfileCardUtil.b(this.mApp, this.mCardInfo.card.uin);
+    this.mTipLayout = ((RelativeLayout)LayoutInflater.from(paramActivity).inflate(2131628443, paramViewGroup, false));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.b(350.0F, paramActivity.getResources()), AIOUtils.b(44.0F, paramActivity.getResources()));
     localLayoutParams.addRule(14);
-    localLayoutParams.addRule(2, 2131373096);
+    localLayoutParams.addRule(2, 2131440689);
     localLayoutParams.bottomMargin = AIOUtils.b(4.0F, paramActivity.getResources());
     paramViewGroup.addView(this.mTipLayout, localLayoutParams);
-    paramActivity = (TextView)this.mTipLayout.findViewById(2131374931);
-    paramViewGroup = (ImageView)this.mTipLayout.findViewById(2131374930);
+    paramActivity = (TextView)this.mTipLayout.findViewById(2131443116);
+    paramViewGroup = (ImageView)this.mTipLayout.findViewById(2131443115);
     paramActivity.setOnClickListener(this.mClickHandler);
     paramViewGroup.setOnClickListener(this.mClickHandler);
     ReportController.b(this.mApp, "dc00898", "", "", "qvip", "0X8009E7A", 0, 0, "", "", "", "");
@@ -118,21 +118,21 @@ public class VasProfileQVipDiyView
     Object localObject = this.mAvatarContainer;
     if ((localObject instanceof FrameLayout))
     {
-      AvatarLayout localAvatarLayout = (AvatarLayout)((View)localObject).findViewById(2131368780);
+      AvatarLayout localAvatarLayout = (AvatarLayout)((View)localObject).findViewById(2131435701);
       localAvatarLayout.setVisibility(0);
       DataTag localDataTag = new DataTag(1, null);
       if (this.mCardInfo.allInOne.pa == 0) {
-        localObject = this.mActivity.getString(2131691197);
+        localObject = this.mActivity.getString(2131888143);
       } else {
-        localObject = this.mActivity.getString(2131691196);
+        localObject = this.mActivity.getString(2131888142);
       }
       localAvatarLayout.setTag(localDataTag);
       localAvatarLayout.setOnClickListener(this.mOnClickListener);
       localAvatarLayout.setContentDescription((CharSequence)localObject);
-      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131363438), false);
+      localAvatarLayout.a(0, localAvatarLayout.findViewById(2131429335), false);
       this.mHeaderChildMap.put("map_key_face", localAvatarLayout);
-      this.mHeaderChildMap.put("map_key_face_stoke", this.mAvatarContainer.findViewById(2131368782));
-      localObject = (ImageView)this.mAvatarContainer.findViewById(2131368617);
+      this.mHeaderChildMap.put("map_key_face_stoke", this.mAvatarContainer.findViewById(2131435703));
+      localObject = (ImageView)this.mAvatarContainer.findViewById(2131435529);
       this.mHeaderChildMap.put("map_key_avatar_pendant", localObject);
       ((ImageView)localObject).setVisibility(8);
       ((ImageView)localObject).setTag(localDataTag);
@@ -191,9 +191,9 @@ public class VasProfileQVipDiyView
   public int getTitleBarColorResource()
   {
     if (this.mTitleStyle == 0) {
-      return 2131166742;
+      return 2131167662;
     }
-    return 2131166597;
+    return 2131167517;
   }
   
   public void initDiyTemplate()
@@ -230,7 +230,7 @@ public class VasProfileQVipDiyView
   {
     this.mNickNameColor = ((VasDiyData)paramProfileCardInfo.getBusinessInfo(VasDiyData.class)).getMainColor();
     this.mHeaderContainer = new FrameLayout(this.mActivity);
-    int i = getResources().getDimensionPixelSize(2131297080);
+    int i = getResources().getDimensionPixelSize(2131297461);
     int j = ProfileCardUtil.a(getResources());
     j = (int)this.mScreenHeight - ProfileCardUtil.b(this.mActivity, 18) - i - j;
     i = j;
@@ -249,13 +249,13 @@ public class VasProfileQVipDiyView
   public void onPause()
   {
     super.onPause();
-    this.mHeaderViewModel.e();
+    this.mHeaderViewModel.ad_();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.mHeaderViewModel.f();
+    this.mHeaderViewModel.g();
   }
   
   public void onUpdate(ProfileCardInfo paramProfileCardInfo, boolean paramBoolean)
@@ -318,11 +318,11 @@ public class VasProfileQVipDiyView
       if (localObject2 != null) {
         ((ProfileNameView)localObject2).a(this.mApp, paramProfileCardInfo);
       }
-      if ((((ProfileNameView)localObject2).a() != null) && (((ProfileNameView)localObject2).a().getVisibility() == 0))
+      if ((((ProfileNameView)localObject2).getEtNameView() != null) && (((ProfileNameView)localObject2).getEtNameView().getVisibility() == 0))
       {
-        localObject2 = ((ProfileNameView)localObject2).a();
+        localObject2 = ((ProfileNameView)localObject2).getEtNameView();
         localObject3 = paramProfileCardInfo.allInOne;
-        paramProfileCardInfo = paramProfileCardInfo.profileName.a.a;
+        paramProfileCardInfo = paramProfileCardInfo.profileName.a.b;
         if ((paramProfileCardInfo != null) && (paramProfileCardInfo.length() != 0)) {
           break label130;
         }
@@ -334,7 +334,7 @@ public class VasProfileQVipDiyView
         ((ETTextView)localObject2).setText(paramProfileCardInfo);
         ((ETTextView)localObject2).setTextSize(16.0F);
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.mActivity.getString(2131691173));
+        ((StringBuilder)localObject1).append(this.mActivity.getString(2131888119));
         ((StringBuilder)localObject1).append(":");
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject3 = new StringBuilder();
@@ -353,7 +353,7 @@ public class VasProfileQVipDiyView
       {
         localObject2 = (ETTextView)localObject2;
         localObject3 = paramProfileCardInfo.allInOne;
-        paramProfileCardInfo = paramProfileCardInfo.profileName.a.a;
+        paramProfileCardInfo = paramProfileCardInfo.profileName.a.b;
         if ((paramProfileCardInfo != null) && (paramProfileCardInfo.length() != 0)) {
           break label326;
         }
@@ -365,7 +365,7 @@ public class VasProfileQVipDiyView
         ((ETTextView)localObject2).setText(paramProfileCardInfo);
         ((ETTextView)localObject2).setTextSize(16.0F);
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(this.mActivity.getString(2131691173));
+        ((StringBuilder)localObject1).append(this.mActivity.getString(2131888119));
         ((StringBuilder)localObject1).append(":");
         localObject1 = ((StringBuilder)localObject1).toString();
         localObject3 = new StringBuilder();
@@ -385,7 +385,7 @@ public class VasProfileQVipDiyView
   public void updateLike(ProfileCardInfo paramProfileCardInfo)
   {
     Object localObject1 = (TroopManager)this.mApp.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject1).m(paramProfileCardInfo.troopUin))) {
+    if ((paramProfileCardInfo.isTroopMemberCard) && (((TroopManager)localObject1).Z(paramProfileCardInfo.troopUin))) {
       return;
     }
     localObject1 = (View)this.mHeaderChildMap.get("map_key_like");
@@ -402,7 +402,7 @@ public class VasProfileQVipDiyView
         if (paramProfileCardInfo.card == null)
         {
           paramProfileCardInfo = null;
-          localObject1 = this.mActivity.getString(2131691244);
+          localObject1 = this.mActivity.getString(2131888190);
           bool1 = false;
           j = 0;
           i = 0;
@@ -419,21 +419,21 @@ public class VasProfileQVipDiyView
           } else {
             bool1 = false;
           }
-          this.mNewVoteAnimHelper.a = paramProfileCardInfo.card.getLastPraiseInfoList();
-          if (i <= this.mNewVoteAnimHelper.a.size()) {
-            this.mNewVoteAnimHelper.a = this.mNewVoteAnimHelper.a.subList(0, i);
+          this.mNewVoteAnimHelper.g = paramProfileCardInfo.card.getLastPraiseInfoList();
+          if (i <= this.mNewVoteAnimHelper.g.size()) {
+            this.mNewVoteAnimHelper.g = this.mNewVoteAnimHelper.g.subList(0, i);
           }
-          this.mNewVoteAnimHelper.a = PraiseConfigHelper.a(this.mNewVoteAnimHelper.a);
+          this.mNewVoteAnimHelper.g = PraiseConfigHelper.a(this.mNewVoteAnimHelper.g);
           Object localObject2;
           if (bool2)
           {
             localObject2 = new DataTag(10, paramProfileCardInfo.card);
-            localObject1 = String.format(this.mActivity.getString(2131691242), new Object[] { String.valueOf(j) });
+            localObject1 = String.format(this.mActivity.getString(2131888188), new Object[] { String.valueOf(j) });
           }
           else
           {
             DataTag localDataTag = new DataTag(10, paramProfileCardInfo.card);
-            String str = String.format(this.mActivity.getString(2131691155), new Object[] { String.valueOf(j) });
+            String str = String.format(this.mActivity.getString(2131888101), new Object[] { String.valueOf(j) });
             localObject1 = str;
             localObject2 = localDataTag;
             if (paramProfileCardInfo.card.bAvailVoteCnt == 0)
@@ -463,19 +463,19 @@ public class VasProfileQVipDiyView
       localObject = (VoteViewV2)localObject;
       long l = paramLong;
       if (paramLong == -1L) {
-        l = ((VoteViewV2)localObject).e;
+        l = ((VoteViewV2)localObject).m;
       }
       if ((paramProfileCardInfo.card != null) && (paramProfileCardInfo.card.bAvailVoteCnt == 0)) {
         ((VoteViewV2)localObject).a();
       }
       ((VoteViewV2)localObject).a(false, true, (int)l, 0, null, paramBoolean);
-      ((VoteViewV2)localObject).setContentDescription(String.format(this.mActivity.getString(2131691167), new Object[] { String.valueOf(l) }));
+      ((VoteViewV2)localObject).setContentDescription(String.format(this.mActivity.getString(2131888113), new Object[] { String.valueOf(l) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipDiyView
  * JD-Core Version:    0.7.0.1
  */

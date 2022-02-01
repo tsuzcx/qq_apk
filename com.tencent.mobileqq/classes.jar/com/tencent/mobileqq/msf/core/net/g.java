@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.monitor.MsfMonitorCallback;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.quicksend.f;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -84,7 +83,7 @@ public class g
     return false;
   }
   
-  public boolean a(String paramString1, int paramInt, String paramString2, f paramf)
+  public boolean a(String paramString1, int paramInt, String paramString2, com.tencent.mobileqq.msf.core.quicksend.g paramg)
   {
     this.b = paramString1;
     this.c = paramInt;
@@ -125,10 +124,10 @@ public class g
       }
       paramString1.printStackTrace();
       paramString1 = e.a(paramString1.toString().toLowerCase());
-      paramString2 = new StringBuilder(paramf.m);
+      paramString2 = new StringBuilder(paramg.m);
       paramString2.append("|");
       paramString2.append(paramString1);
-      paramf.m = paramString2.toString();
+      paramg.m = paramString2.toString();
       paramString2 = new StringBuilder();
       paramString2.append("connect fail costtime:");
       paramString2.append(SystemClock.elapsedRealtime() - 0L);
@@ -139,7 +138,7 @@ public class g
     return false;
   }
   
-  public byte[] a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, f paramf)
+  public byte[] a(ToServiceMsg paramToServiceMsg, byte[] paramArrayOfByte, String paramString, com.tencent.mobileqq.msf.core.quicksend.g paramg)
   {
     int i2 = paramToServiceMsg.getRequestSsoSeq();
     long l1 = SystemClock.elapsedRealtime();
@@ -149,10 +148,10 @@ public class g
     paramToServiceMsg.append(":");
     paramToServiceMsg.append(this.c);
     paramToServiceMsg = paramToServiceMsg.toString();
-    paramf = new StringBuilder();
-    paramf.append(paramToServiceMsg);
-    paramf.append(a(paramToServiceMsg, i2));
-    this.k = paramf.toString();
+    paramg = new StringBuilder();
+    paramg.append(paramToServiceMsg);
+    paramg.append(a(paramToServiceMsg, i2));
+    this.k = paramg.toString();
     this.k = MsfSdkUtils.insertMtype(paramString, this.k);
     paramToServiceMsg = new StringBuilder();
     paramToServiceMsg.append("try connect ");
@@ -239,8 +238,8 @@ public class g
         i1 = n;
         while (i1 > 0)
         {
-          paramf = MsfCore.sCore;
-          if ((paramf != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("LightSender"))) {
+          paramg = MsfCore.sCore;
+          if ((paramg != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("LightSender"))) {
             MsfCore.sCore.mMsfMonitorCallback.handleEnd(3);
           }
           int i3 = this.e.read(paramArrayOfByte, 0, Math.min(i1, paramArrayOfByte.length));
@@ -365,7 +364,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.g
  * JD-Core Version:    0.7.0.1
  */

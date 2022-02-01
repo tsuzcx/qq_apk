@@ -19,7 +19,7 @@ public class ArkAppManagerAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838612;
+    return 2130838737;
   }
   
   public int getAppID()
@@ -32,17 +32,17 @@ public class ArkAppManagerAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690125);
+    return BaseApplicationImpl.getContext().getString(2131887024);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramBaseChatPie.Z();
+    paramBaseChatPie.aG();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ArkAppManagerAppInfo
  * JD-Core Version:    0.7.0.1
  */

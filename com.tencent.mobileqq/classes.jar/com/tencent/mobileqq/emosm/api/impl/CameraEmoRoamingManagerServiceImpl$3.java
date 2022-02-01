@@ -28,11 +28,11 @@ class CameraEmoRoamingManagerServiceImpl$3
   public void handleMessage(Message paramMessage)
   {
     FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if (CameraEmoRoamingManagerServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl) == null) {
+    if (CameraEmoRoamingManagerServiceImpl.access$000(this.b) == null) {
       return;
     }
     Object localObject3;
-    if ((localFileMsg != null) && (localFileMsg.commandId == this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl.getUploadProcessorID()))
+    if ((localFileMsg != null) && (localFileMsg.commandId == this.b.getUploadProcessorID()))
     {
       localObject3 = new Bdh_extinfo.CommFileExtRsp();
       localObject2 = "";
@@ -62,23 +62,23 @@ class CameraEmoRoamingManagerServiceImpl$3
     default: 
       return;
     case 1005: 
-      ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$400(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getRuntimeService(ITransFileController.class)).removeHandle(this);
+      ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$400(this.b).getRuntimeService(ITransFileController.class)).removeHandle(this);
       paramMessage = new StringBuilder();
       paramMessage.append("upload camera emo error:");
       paramMessage.append(((Bdh_extinfo.CommFileExtRsp)localObject3).int32_retcode.get());
       QLog.i("CameraEmoRoamingManager", 1, paramMessage.toString());
-      ((CameraEmoRoamingHandler)CameraEmoRoamingManagerServiceImpl.access$500(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getBusinessHandler(CameraEmoRoamingHandler.a)).a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, false);
+      ((CameraEmoRoamingHandler)CameraEmoRoamingManagerServiceImpl.access$500(this.b).getBusinessHandler(CameraEmoRoamingHandler.a)).a(this.a, false);
       ((HashMap)localObject2).put("sucFlag", "0");
       ((HashMap)localObject2).put("retCode", String.valueOf(((Bdh_extinfo.CommFileExtRsp)localObject3).int32_retcode.get()));
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CamEmoRealUpload", false, 0L, 0L, (HashMap)localObject2, null);
       return;
     case 1004: 
-      ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$600(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getRuntimeService(ITransFileController.class)).removeHandle(this);
+      ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$600(this.b).getRuntimeService(ITransFileController.class)).removeHandle(this);
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("upload camera emo cancel:");
       ((StringBuilder)localObject3).append((String)localObject1);
       QLog.i("CameraEmoRoamingManager", 1, ((StringBuilder)localObject3).toString());
-      ((CameraEmoRoamingHandler)CameraEmoRoamingManagerServiceImpl.access$700(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getBusinessHandler(CameraEmoRoamingHandler.a)).a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, false);
+      ((CameraEmoRoamingHandler)CameraEmoRoamingManagerServiceImpl.access$700(this.b).getBusinessHandler(CameraEmoRoamingHandler.a)).a(this.a, false);
       ((HashMap)localObject2).put("sucFlag", "0");
       ((HashMap)localObject2).put("retCode", String.valueOf(paramMessage.what));
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CamEmoRealUpload", false, 0L, 0L, (HashMap)localObject2, null);
@@ -91,8 +91,8 @@ class CameraEmoRoamingManagerServiceImpl$3
         ((StringBuilder)localObject3).append((String)localObject1);
         QLog.d("CameraEmoRoamingManager", 2, ((StringBuilder)localObject3).toString());
       }
-      ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$200(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getRuntimeService(ITransFileController.class)).removeHandle(this);
-      ((CameraEmoRoamingHandler)CameraEmoRoamingManagerServiceImpl.access$300(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getBusinessHandler(CameraEmoRoamingHandler.a)).a(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData, true);
+      ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$200(this.b).getRuntimeService(ITransFileController.class)).removeHandle(this);
+      ((CameraEmoRoamingHandler)CameraEmoRoamingManagerServiceImpl.access$300(this.b).getBusinessHandler(CameraEmoRoamingHandler.a)).a(this.a, true);
       ((HashMap)localObject2).put("sucFlag", "1");
       ((HashMap)localObject2).put("retCode", String.valueOf(paramMessage.what));
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "CamEmoRealUpload", true, 0L, 0L, (HashMap)localObject2, null);
@@ -104,12 +104,12 @@ class CameraEmoRoamingManagerServiceImpl$3
       break;
     }
     return;
-    ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$100(this.jdField_a_of_type_ComTencentMobileqqEmosmApiImplCameraEmoRoamingManagerServiceImpl).getRuntimeService(ITransFileController.class)).removeHandle(this);
+    ((ITransFileController)CameraEmoRoamingManagerServiceImpl.access$100(this.b).getRuntimeService(ITransFileController.class)).removeHandle(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.api.impl.CameraEmoRoamingManagerServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

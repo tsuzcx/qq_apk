@@ -26,15 +26,14 @@ import org.json.JSONObject;
 public class WebColorNoteController
   implements IServiceInfo
 {
-  protected QQBrowserActivity a;
-  private IColorNoteController jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-  private ColorNote jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
-  private boolean jdField_a_of_type_Boolean = true;
+  protected QQBrowserActivity a = null;
+  private IColorNoteController b;
+  private ColorNote c;
+  private boolean d = true;
   
   public WebColorNoteController(@NonNull QQBrowserActivity paramQQBrowserActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
+    this.a = paramQQBrowserActivity;
   }
   
   private void a(int paramInt)
@@ -56,37 +55,32 @@ public class WebColorNoteController
       QLog.d("WebColorNoteController", 2, "QQBrowserActivity initColorNote.");
     }
     boolean bool2 = BaseApplicationImpl.getApplication().getRuntime().isLogin();
-    boolean bool1 = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isDisableSwipeByUrl(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl()) ^ true;
-    if (((IQQComicWebViewApi)QRoute.api(IQQComicWebViewApi.class)).isBoodoUrl(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl()))
+    boolean bool1 = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isDisableSwipeByUrl(this.a.getOriginalUrl()) ^ true;
+    if (((IQQComicWebViewApi)QRoute.api(IQQComicWebViewApi.class)).isBoodoUrl(this.a.getOriginalUrl()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("WebColorNoteController", 2, "This is boodo url ,disable swipe.");
       }
       bool1 = false;
     }
-    if ((((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlBlocked(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl())) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl()))) {
+    if ((((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlBlocked(this.a.getOriginalUrl())) || (TextUtils.isEmpty(this.a.getOriginalUrl()))) {
       bool1 = false;
     }
     if (bool2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController = ((IColorNoteController)QRoute.api(IColorNoteController.class));
+      this.b = ((IColorNoteController)QRoute.api(IColorNoteController.class));
       if (bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.init(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, true, false, paramIColorNoteSwipeLayout, true, true, false, 2131165504);
+        this.b.init(this.a, true, false, paramIColorNoteSwipeLayout, true, true, false, 2131165829);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.init(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, false, true, paramIColorNoteSwipeLayout, true, true, false, 2131165504);
+        this.b.init(this.a, false, true, paramIColorNoteSwipeLayout, true, true, false, 2131165829);
       }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.attachToActivity(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity);
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setServiceInfo(this);
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = getColorNote();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnColorNoteAnimFinishListener(new WebColorNoteController.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.setOnPageSwipeListener(new WebColorNoteController.2(this));
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.doSetPropertiesFromWebView(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl());
+      this.b.attachToActivity(this.a);
+      this.b.setServiceInfo(this);
+      this.c = getColorNote();
+      this.b.setOnColorNoteAnimFinishListener(new WebColorNoteController.1(this));
+      this.b.setOnPageSwipeListener(new WebColorNoteController.2(this));
+      this.b.doSetPropertiesFromWebView(this.a.getOriginalUrl());
     }
-  }
-  
-  public IColorNoteController a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
   }
   
   protected void a()
@@ -96,96 +90,70 @@ public class WebColorNoteController
   
   public void a(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.d) {
       a();
     }
   }
   
   public void a(IServiceInfo paramIServiceInfo)
   {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    IColorNoteController localIColorNoteController = this.b;
     if (localIColorNoteController != null) {
       localIColorNoteController.setServiceInfo(paramIServiceInfo);
     }
   }
   
-  public boolean a()
-  {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    return (localIColorNoteController != null) && ((localIColorNoteController.isColorNoteExist()) || (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.isSwipeBackExit()));
-  }
-  
   public boolean a(String paramString)
   {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    return (localIColorNoteController != null) && (localIColorNoteController.shouldDisplayColorNote()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.hasShareEntr()) && (!((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlShareEntranceBlocked(paramString));
+    IColorNoteController localIColorNoteController = this.b;
+    return (localIColorNoteController != null) && (localIColorNoteController.shouldDisplayColorNote()) && (this.b.hasShareEntr()) && (!((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlShareEntranceBlocked(paramString));
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+      IColorNoteController localIColorNoteController = this.b;
       if (localIColorNoteController != null) {
         localIColorNoteController.onDestroy();
       }
     }
   }
   
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-      if (localIColorNoteController != null)
-      {
-        localIColorNoteController.exitAnimation();
-        return true;
-      }
-    }
-    return false;
-  }
-  
   public void c()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+      IColorNoteController localIColorNoteController = this.b;
       if (localIColorNoteController != null) {
         localIColorNoteController.onResume();
       }
     }
-    if (((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlSmallScreenBlocked(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl()))
+    if (((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlSmallScreenBlocked(this.a.getOriginalUrl()))
     {
-      ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 2, false);
+      ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(this.a, 2, false);
       if (QLog.isColorLevel()) {
         QLog.d("WebColorNoteController", 2, "color note small screen invisible by doOnResume");
       }
     }
   }
   
-  public boolean c()
-  {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    return (localIColorNoteController != null) && (localIColorNoteController.isColorNoteExist());
-  }
-  
   public void d()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+      IColorNoteController localIColorNoteController = this.b;
       if (localIColorNoteController != null)
       {
         localIColorNoteController.onPause();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getIntent().getBooleanExtra("isFromFavourite", false)) {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.addHistoryNote();
+        if (this.a.getIntent().getBooleanExtra("isFromFavourite", false)) {
+          this.b.addHistoryNote();
         }
       }
     }
-    if (((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlSmallScreenBlocked(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl()))
+    if (((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).isUrlSmallScreenBlocked(this.a.getOriginalUrl()))
     {
-      ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, 2, true);
+      ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).sendUpdateSmallScreenStateBroadcast(this.a, 2, true);
       if (QLog.isColorLevel()) {
         QLog.d("WebColorNoteController", 2, "color note small screen visible by doOnPause");
       }
@@ -194,38 +162,24 @@ public class WebColorNoteController
   
   protected void e()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.d = true;
   }
   
   protected void f()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.d = false;
   }
   
-  public void g()
+  public boolean g()
   {
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    if (localIColorNoteController != null)
-    {
-      if (!localIColorNoteController.isColorNoteExist())
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.canAddColorNote())
-        {
-          this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.insertColorNote();
-          this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.finish();
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.onCannotAdd();
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.deleteColorNote();
-    }
+    IColorNoteController localIColorNoteController = this.b;
+    return (localIColorNoteController != null) && ((localIColorNoteController.isColorNoteExist()) || (this.b.isSwipeBackExit()));
   }
   
   public ColorNote getColorNote()
   {
-    Object localObject9 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getIntent();
-    Object localObject5 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getCurrentWebViewFragment();
+    Object localObject9 = this.a.getIntent();
+    Object localObject5 = this.a.getCurrentWebViewFragment();
     Object localObject7 = "";
     Object localObject4;
     Object localObject8;
@@ -233,8 +187,8 @@ public class WebColorNoteController
     {
       localObject4 = (Share)((WebViewFragment)localObject5).getShare();
       Object localObject1;
-      if (!TextUtils.isEmpty(((Share)localObject4).a())) {
-        localObject1 = ((Share)localObject4).a();
+      if (!TextUtils.isEmpty(((Share)localObject4).d())) {
+        localObject1 = ((Share)localObject4).d();
       }
       for (;;)
       {
@@ -243,7 +197,7 @@ public class WebColorNoteController
         if (((WebViewFragment)localObject5).getSwiftTitleUI() != null) {
           try
           {
-            localObject1 = ((WebViewFragment)localObject5).getSwiftTitleUI().a();
+            localObject1 = ((WebViewFragment)localObject5).getSwiftTitleUI().h();
           }
           catch (Exception localException1)
           {
@@ -252,11 +206,11 @@ public class WebColorNoteController
           }
         }
       }
-      localObject5 = ((Share)localObject4).b();
-      localObject7 = ((Share)localObject4).c();
+      localObject5 = ((Share)localObject4).e();
+      localObject7 = ((Share)localObject4).f();
       localObject4 = localObject7;
       if (TextUtils.isEmpty((CharSequence)localObject7)) {
-        localObject4 = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).getWebViewIconUrl(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl());
+        localObject4 = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).getWebViewIconUrl(this.a.getOriginalUrl());
       }
       localObject8 = localObject4;
       localObject4 = localObject5;
@@ -267,21 +221,21 @@ public class WebColorNoteController
       localObject4 = null;
       localObject8 = localObject4;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
+    Object localObject2 = this.c;
     if ((localObject2 != null) && (((ColorNote)localObject2).isTitleAndPicValid()))
     {
       if (!TextUtils.isEmpty((CharSequence)localObject7)) {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mMainTitle = ((String)localObject7);
+        this.c.mMainTitle = ((String)localObject7);
       }
       if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mSubTitle = ((String)localObject4);
+        this.c.mSubTitle = ((String)localObject4);
       }
       if (!TextUtils.isEmpty(localObject8)) {
-        this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mPicUrl = localObject8;
+        this.c.mPicUrl = localObject8;
       }
-      return this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
+      return this.c;
     }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getHostWebView();
+    localObject2 = this.a.getHostWebView();
     JSONObject localJSONObject = new JSONObject();
     if (localObject2 != null) {
       try
@@ -293,7 +247,7 @@ public class WebColorNoteController
         QLog.e("WebColorNoteController", 1, localJSONException, new Object[0]);
       }
     }
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl();
+    Object localObject3 = this.a.getOriginalUrl();
     localObject5 = localObject3;
     if (TextUtils.isEmpty((CharSequence)localObject3)) {
       localObject5 = ((Intent)localObject9).getStringExtra("subType");
@@ -309,7 +263,7 @@ public class WebColorNoteController
     }
     if (TextUtils.isEmpty((CharSequence)localObject4))
     {
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl();
+      localObject4 = this.a.getOriginalUrl();
       try
       {
         localObject5 = new URL((String)localObject4);
@@ -332,7 +286,7 @@ public class WebColorNoteController
         QLog.e("WebColorNoteController", 1, localRuntimeException, new Object[0]);
       }
     }
-    Object localObject6 = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getOriginalUrl();
+    Object localObject6 = this.a.getOriginalUrl();
     localObject9 = (IQQComicWebViewApi)QRoute.api(IQQComicWebViewApi.class);
     int i;
     if (((IQQComicWebViewApi)localObject9).isBoodoUrl((String)localObject6))
@@ -354,21 +308,66 @@ public class WebColorNoteController
       i = 16908288;
     }
     a(i);
-    localObject6 = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    localObject6 = this.b;
     if (localObject6 != null)
     {
       localObject3 = ((IColorNoteController)localObject6).onGetColorNote(i, (String)localObject3, (String)localObject7, (String)localObject4, localObject8, localJSONObject.toString().getBytes());
-      this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = ((ColorNote)localObject3);
+      this.c = ((ColorNote)localObject3);
       return localObject3;
     }
     localObject3 = new ColorNote.Builder().a(i).a((String)localObject3).b((String)localObject7).c((String)localObject4).d(localObject8).a(localJSONObject.toString().getBytes()).a();
-    this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = ((ColorNote)localObject3);
+    this.c = ((ColorNote)localObject3);
     return localObject3;
+  }
+  
+  public boolean h()
+  {
+    if (this.d)
+    {
+      IColorNoteController localIColorNoteController = this.b;
+      if (localIColorNoteController != null)
+      {
+        localIColorNoteController.exitAnimation();
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public IColorNoteController i()
+  {
+    return this.b;
+  }
+  
+  public void j()
+  {
+    IColorNoteController localIColorNoteController = this.b;
+    if (localIColorNoteController != null)
+    {
+      if (!localIColorNoteController.isColorNoteExist())
+      {
+        if (this.b.canAddColorNote())
+        {
+          this.b.insertColorNote();
+          this.a.finish();
+          return;
+        }
+        this.b.onCannotAdd();
+        return;
+      }
+      this.b.deleteColorNote();
+    }
+  }
+  
+  public boolean k()
+  {
+    IColorNoteController localIColorNoteController = this.b;
+    return (localIColorNoteController != null) && (localIColorNoteController.isColorNoteExist());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebColorNoteController
  * JD-Core Version:    0.7.0.1
  */

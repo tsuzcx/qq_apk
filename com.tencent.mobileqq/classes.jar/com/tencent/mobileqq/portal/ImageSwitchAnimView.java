@@ -29,9 +29,18 @@ public class ImageSwitchAnimView
     }
     paramBitmap = this.a;
     if (paramBitmap != null) {
-      paramBitmap.a();
+      paramBitmap.b();
     }
     invalidate();
+  }
+  
+  public Bitmap getNowImage()
+  {
+    ImageSwitchAnim localImageSwitchAnim = this.a;
+    if (localImageSwitchAnim != null) {
+      return localImageSwitchAnim.d();
+    }
+    return null;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -94,7 +103,7 @@ public class ImageSwitchAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageSwitchAnimView
  * JD-Core Version:    0.7.0.1
  */

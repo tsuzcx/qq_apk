@@ -9,30 +9,30 @@ class GameRoomChatPie$21
 {
   GameRoomChatPie$21(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt != 0)
     {
       if (paramInt != 1)
       {
-        if ((paramInt == 2) && (this.jdField_a_of_type_Boolean)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ax();
+        if ((paramInt == 2) && (this.a)) {
+          this.c.bN();
         }
       }
-      else if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ay();
+      else if (this.a) {
+        this.c.bO();
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ax();
+        this.c.bN();
       }
     }
-    else if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.aA();
+    else if (this.a) {
+      this.c.bQ();
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ay();
+      this.c.bO();
     }
     try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.b.dismiss();
       return;
     }
     catch (Exception paramView)
@@ -43,7 +43,7 @@ class GameRoomChatPie$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.21
  * JD-Core Version:    0.7.0.1
  */

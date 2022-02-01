@@ -27,19 +27,19 @@ public class MessageForDevShortVideo
           if (i != 1005)
           {
             if (i == 2003) {
-              return HardCodeUtil.a(2131706627);
+              return HardCodeUtil.a(2131904478);
             }
           }
           else {
-            return ((QQAppInterface)localObject).getApp().getString(2131691289);
+            return ((QQAppInterface)localObject).getApp().getString(2131888239);
           }
         }
         else {
-          return ((QQAppInterface)localObject).getApp().getString(2131691289);
+          return ((QQAppInterface)localObject).getApp().getString(2131888239);
         }
       }
       else {
-        return HardCodeUtil.a(2131706622);
+        return HardCodeUtil.a(2131904473);
       }
     }
     return null;
@@ -47,7 +47,7 @@ public class MessageForDevShortVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevShortVideo
  * JD-Core Version:    0.7.0.1
  */

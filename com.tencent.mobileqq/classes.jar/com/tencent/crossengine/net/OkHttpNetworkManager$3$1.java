@@ -10,33 +10,33 @@ class OkHttpNetworkManager$3$1
   
   public void close()
   {
-    this.jdField_a_of_type_JavaIoOutputStream.close();
+    this.a.close();
   }
   
   public void flush()
   {
-    this.jdField_a_of_type_JavaIoOutputStream.flush();
+    this.a.flush();
   }
   
   public void write(int paramInt)
   {
-    this.jdField_a_of_type_JavaIoOutputStream.write(paramInt);
+    this.a.write(paramInt);
   }
   
   public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaIoOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong[0] == 0L) {
-      this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong[0] = this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_Okhttp3RequestBody.contentLength();
+    this.a.write(paramArrayOfByte, paramInt1, paramInt2);
+    if (this.b.b[0] == 0L) {
+      this.b.b[0] = this.b.a.contentLength();
     }
-    paramArrayOfByte = this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong;
+    paramArrayOfByte = this.b.b;
     paramArrayOfByte[1] += paramInt2;
-    this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ComTencentCrossengineNetNetworkManager$Callback.onProgress(this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong[3], this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong[2], this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong[1], this.jdField_a_of_type_ComTencentCrossengineNetOkHttpNetworkManager$3.jdField_a_of_type_ArrayOfLong[0]);
+    this.b.c.onProgress(this.b.b[3], this.b.b[2], this.b.b[1], this.b.b[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.net.OkHttpNetworkManager.3.1
  * JD-Core Version:    0.7.0.1
  */

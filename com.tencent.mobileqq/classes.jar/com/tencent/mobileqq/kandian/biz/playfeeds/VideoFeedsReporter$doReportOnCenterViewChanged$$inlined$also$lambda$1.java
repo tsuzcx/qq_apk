@@ -13,10 +13,10 @@ final class VideoFeedsReporter$doReportOnCenterViewChanged$$inlined$also$lambda$
   public final void run()
   {
     VideoFeedsReporter localVideoFeedsReporter = this.this$0;
-    VideoInfo localVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo;
+    VideoInfo localVideoInfo = this.a;
     if (localVideoInfo != null)
     {
-      VideoFeedsReporter.a(localVideoFeedsReporter, localVideoInfo, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_c_of_type_Boolean, this.d);
+      VideoFeedsReporter.a(localVideoFeedsReporter, localVideoInfo, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo");
@@ -24,7 +24,7 @@ final class VideoFeedsReporter$doReportOnCenterViewChanged$$inlined$also$lambda$
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsReporter.doReportOnCenterViewChanged..inlined.also.lambda.1
  * JD-Core Version:    0.7.0.1
  */

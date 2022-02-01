@@ -13,11 +13,11 @@ class ColorNotePlugin$3
   
   public void run()
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(ColorNotePlugin.a(this.this$0).getAttachedActivity(), 2131756189);
-    localQQCustomDialog.setContentView(2131559373);
+    QQCustomDialog localQQCustomDialog = new QQCustomDialog(ColorNotePlugin.a(this.this$0).getAttachedActivity(), 2131953338);
+    localQQCustomDialog.setContentView(2131625339);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("是否将");
-    localStringBuilder.append(ColorNotePlugin.a(this.this$0).name);
+    localStringBuilder.append(ColorNotePlugin.b(this.this$0).name);
     localStringBuilder.append("添加到彩签？");
     localQQCustomDialog.setMessage(localStringBuilder.toString());
     localQQCustomDialog.setPositiveButton("确定", new ColorNotePlugin.3.1(this));
@@ -28,7 +28,7 @@ class ColorNotePlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.3
  * JD-Core Version:    0.7.0.1
  */

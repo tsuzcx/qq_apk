@@ -38,7 +38,7 @@ public class OCRHandlerImpl
   
   public boolean getUSING_TEST_SERVERT()
   {
-    return OCRHandler.a;
+    return OCRHandler.c;
   }
   
   public void notifyUI(int paramInt, boolean paramBoolean, Object paramObject)
@@ -91,12 +91,12 @@ public class OCRHandlerImpl
   
   public void setUSING_TEST_SERVERT(boolean paramBoolean)
   {
-    OCRHandler.a = paramBoolean;
+    OCRHandler.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.api.impl.OCRHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

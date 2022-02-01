@@ -5,6 +5,7 @@ import com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPProtocolInfo;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 import com.tencent.thumbplayer.utils.TPFutureResult;
+import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.util.Map;
 
 class TPPlayManagerImpl$InnerProxyListener
@@ -126,6 +127,15 @@ class TPPlayManagerImpl$InnerProxyListener
     TPPlayManagerImpl.access$300(this.this$0, 4101, paramInt, 0, null, false, false, 0L);
   }
   
+  public void onPcdnDownloadFailed(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPcdnDownloadFailed: ");
+    localStringBuilder.append(paramString);
+    TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", localStringBuilder.toString());
+    TPPlayManagerImpl.access$400(this.this$0).onPcdnDownloadFailed(paramString);
+  }
+  
   public Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
     TPPlayManagerImpl.TPOnPlayCallBackParams localTPOnPlayCallBackParams = new TPPlayManagerImpl.TPOnPlayCallBackParams(null);
@@ -164,7 +174,7 @@ class TPPlayManagerImpl$InnerProxyListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayManagerImpl.InnerProxyListener
  * JD-Core Version:    0.7.0.1
  */

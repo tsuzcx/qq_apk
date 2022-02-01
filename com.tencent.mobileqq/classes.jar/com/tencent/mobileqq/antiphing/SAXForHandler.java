@@ -8,17 +8,17 @@ import org.xml.sax.helpers.DefaultHandler;
 class SAXForHandler
   extends DefaultHandler
 {
-  private int jdField_a_of_type_Int = 0;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<String> a;
+  private int b = 0;
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
   }
   
-  public ArrayList<String> a()
+  public ArrayList<String> b()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return this.a;
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -51,8 +51,8 @@ class SAXForHandler
   public void startDocument()
   {
     QLog.d("SAXForHandler", 4, "startDocument");
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = null;
+    this.a = new ArrayList();
   }
   
   public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
@@ -71,12 +71,12 @@ class SAXForHandler
     if (bool) {
       while (i < paramAttributes.getLength())
       {
-        this.jdField_a_of_type_Int = Integer.valueOf(paramAttributes.getValue(i)).intValue();
+        this.b = Integer.valueOf(paramAttributes.getValue(i)).intValue();
         paramString1 = new StringBuilder();
         paramString1.append("startElement: localName:");
         paramString1.append(paramString2);
         paramString1.append(" value: ");
-        paramString1.append(this.jdField_a_of_type_Int);
+        paramString1.append(this.b);
         QLog.d("SAXForHandler", 4, paramString1.toString());
         i += 1;
       }
@@ -96,7 +96,7 @@ class SAXForHandler
         localStringBuilder.append(" url: ");
         localStringBuilder.append(paramString1);
         QLog.d("SAXForHandler", 4, localStringBuilder.toString());
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString1);
+        this.a.add(paramString1);
         i += 1;
       }
     }
@@ -104,7 +104,7 @@ class SAXForHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.SAXForHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,10 @@ import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager;
 import com.tencent.mobileqq.kandian.biz.accesslayer.data.RIJDataManager.Builder;
 import com.tencent.mobileqq.kandian.biz.biu.ReadInJoyDeliverBiuActivity;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyBaseViewController;
 import com.tencent.mobileqq.kandian.biz.framework.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsHelper;
 import com.tencent.mobileqq.kandian.biz.playfeeds.VideoReporter;
 import com.tencent.mobileqq.kandian.biz.tab.ReadinjoyTabFrame;
@@ -36,7 +36,6 @@ import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
 import com.tencent.mobileqq.kandian.repo.report.BaseReportData;
 import com.tencent.mobileqq.kandian.repo.report.ReportInfo.VideoExtraRepoerData;
 import com.tencent.mobileqq.kandian.repo.video.entity.VideoColumnInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.Collection;
 import java.util.HashMap;
@@ -53,12 +52,12 @@ public class RIJVideoReportManager
   public static String a(VideoInfo paramVideoInfo, int paramInt)
   {
     VideoR5.Builder localBuilder = new VideoR5.Builder(null, null, null, null);
-    localBuilder.T(ReadinjoyTabFrame.b).U(paramInt);
+    localBuilder.U(ReadinjoyTabFrame.g).V(paramInt);
     if (paramVideoInfo != null)
     {
-      if (paramVideoInfo.jdField_g_of_type_Boolean)
+      if (paramVideoInfo.R)
       {
-        if (paramVideoInfo.jdField_f_of_type_Boolean) {
+        if (paramVideoInfo.P) {
           paramInt = 3;
         } else {
           paramInt = 2;
@@ -67,38 +66,38 @@ public class RIJVideoReportManager
       else {
         paramInt = 4;
       }
-      localBuilder.a("status", Integer.valueOf(paramInt)).j(paramVideoInfo.jdField_g_of_type_JavaLangString).e(paramVideoInfo.jdField_f_of_type_Long).f(paramVideoInfo.a).V(0).a(0);
+      localBuilder.b("status", Integer.valueOf(paramInt)).k(paramVideoInfo.l).e(paramVideoInfo.ah).g(paramVideoInfo.b).W(0).a(0);
     }
     else
     {
-      localBuilder.a("status", Integer.valueOf(1));
+      localBuilder.b("status", Integer.valueOf(1));
     }
-    return localBuilder.a().a();
+    return localBuilder.b().a();
   }
   
   public static String a(BaseReportData paramBaseReportData, String paramString, VideoPlayManager paramVideoPlayManager)
   {
-    paramVideoPlayManager = RIJTransMergeKanDianReport.a(paramString, paramVideoPlayManager.b(), VideoReporter.jdField_a_of_type_Int);
-    if (paramBaseReportData.a == null) {
+    paramVideoPlayManager = RIJTransMergeKanDianReport.b(paramString, paramVideoPlayManager.C(), VideoReporter.b);
+    if (paramBaseReportData.l == null) {
       return paramVideoPlayManager;
     }
     paramString = paramVideoPlayManager;
-    if (paramBaseReportData.a.mVideoColumnInfo != null) {
-      paramString = new VideoR5.Builder(paramVideoPlayManager).c(paramBaseReportData.a).d(paramBaseReportData.a).a(paramBaseReportData.a.videoReportInfo).a().a();
+    if (paramBaseReportData.l.mVideoColumnInfo != null) {
+      paramString = new VideoR5.Builder(paramVideoPlayManager).c(paramBaseReportData.l).d(paramBaseReportData.l).b(paramBaseReportData.l.videoReportInfo).b().a();
     }
-    if (((RIJBaseItemViewType.a(paramBaseReportData.a) == 46) || (paramBaseReportData.a.isTwoItem)) && (paramBaseReportData.a.mVideoDownloadBarInfo != null) && (paramBaseReportData.a.mVideoDownloadBarInfo.weishiUGInfo != null) && (RIJPBFieldUtils.a(paramBaseReportData.a.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url)) && (RIJPBFieldUtils.a(paramBaseReportData.a.mVideoDownloadBarInfo.weishiUGInfo.bytes_exposure_report_tail)))
+    if (((RIJBaseItemViewType.c(paramBaseReportData.l) == 46) || (paramBaseReportData.l.isTwoItem)) && (paramBaseReportData.l.mVideoDownloadBarInfo != null) && (paramBaseReportData.l.mVideoDownloadBarInfo.weishiUGInfo != null) && (RIJPBFieldUtils.c(paramBaseReportData.l.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url)) && (RIJPBFieldUtils.c(paramBaseReportData.l.mVideoDownloadBarInfo.weishiUGInfo.bytes_exposure_report_tail)))
     {
       paramVideoPlayManager = new StringBuilder();
-      paramVideoPlayManager.append(RIJPBFieldUtils.b(paramBaseReportData.a.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url));
-      paramVideoPlayManager.append(RIJPBFieldUtils.b(paramBaseReportData.a.mVideoDownloadBarInfo.weishiUGInfo.bytes_exposure_report_tail));
-      VideoFeedsHelper.a(paramVideoPlayManager.toString());
+      paramVideoPlayManager.append(RIJPBFieldUtils.d(paramBaseReportData.l.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url));
+      paramVideoPlayManager.append(RIJPBFieldUtils.d(paramBaseReportData.l.mVideoDownloadBarInfo.weishiUGInfo.bytes_exposure_report_tail));
+      VideoFeedsHelper.b(paramVideoPlayManager.toString());
     }
     return paramString;
   }
   
   public static void a(VideoPlayParam paramVideoPlayParam, AbsBaseArticleInfo paramAbsBaseArticleInfo, RIJDataManager paramRIJDataManager)
   {
-    String str1 = RIJFeedsType.c(paramAbsBaseArticleInfo);
+    String str1 = RIJFeedsType.k(paramAbsBaseArticleInfo);
     int i;
     if (paramAbsBaseArticleInfo.hasChannelInfo()) {
       i = paramAbsBaseArticleInfo.mChannelInfoId;
@@ -106,119 +105,119 @@ public class RIJVideoReportManager
       i = 0;
     }
     int j = TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleFriendLikeText) ^ true;
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X80066FA", "0X80066FA", 0, 0, "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), paramRIJDataManager.a().b(), i), false);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X80066FA", "", "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), paramRIJDataManager.a().b(), i));
-    VideoR5.Builder localBuilder = new VideoR5.Builder(RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), paramRIJDataManager.a().b(), i, j, NetworkUtil.isWifiConnected(paramRIJDataManager.a().a()), str1, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), 409409, paramAbsBaseArticleInfo));
-    localBuilder.a(paramRIJDataManager.a().a(), paramAbsBaseArticleInfo.mArticleID).a(paramRIJDataManager.a().a()).g(VideoReporter.jdField_a_of_type_Int).h(409409).j(paramAbsBaseArticleInfo.mVideoAdsJumpType).k(paramAbsBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(RIJFeedsType.g(paramAbsBaseArticleInfo))).a(paramAbsBaseArticleInfo.videoReportInfo);
-    if (paramRIJDataManager.a().b() == 0)
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FA", "0X80066FA", 0, 0, "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), paramRIJDataManager.a().B(), i), false);
+    PublicAccountReportUtils.a("0X80066FA", "", "", Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.b(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), paramRIJDataManager.a().B(), i));
+    VideoR5.Builder localBuilder = new VideoR5.Builder(RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), paramRIJDataManager.a().B(), i, j, NetworkUtil.isWifiConnected(paramRIJDataManager.a().A()), str1, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), 409409, paramAbsBaseArticleInfo));
+    localBuilder.a(paramRIJDataManager.a().y(), paramAbsBaseArticleInfo.mArticleID).a(paramRIJDataManager.a().y()).g(VideoReporter.b).h(409409).j(paramAbsBaseArticleInfo.mVideoAdsJumpType).k(paramAbsBaseArticleInfo.mVideoAdsSource).a(Boolean.valueOf(RIJFeedsType.i(paramAbsBaseArticleInfo))).b(paramAbsBaseArticleInfo.videoReportInfo);
+    if (paramRIJDataManager.a().B() == 0)
     {
-      paramVideoPlayParam.l = VideoReporter.b();
-      localBuilder.c(paramVideoPlayParam.l);
+      paramVideoPlayParam.E = VideoReporter.b();
+      localBuilder.d(paramVideoPlayParam.E);
       if (paramAbsBaseArticleInfo.mVideoColumnInfo != null) {
-        localBuilder.Y(paramAbsBaseArticleInfo.mVideoColumnInfo.jdField_a_of_type_Int);
+        localBuilder.Z(paramAbsBaseArticleInfo.mVideoColumnInfo.b);
       }
-      if (RIJBaseItemViewType.a(paramAbsBaseArticleInfo) == 6) {
-        localBuilder.aa(VideoFeedsHelper.f());
+      if (RIJBaseItemViewType.c(paramAbsBaseArticleInfo) == 6) {
+        localBuilder.ab(VideoFeedsHelper.k());
       }
     }
-    else if ((paramRIJDataManager.a().b() == 56) && (paramRIJDataManager.a().a() != null) && (!TextUtils.isEmpty(paramRIJDataManager.a().a().b())))
+    else if ((paramRIJDataManager.a().B() == 56) && (paramRIJDataManager.a().y() != null) && (!TextUtils.isEmpty(paramRIJDataManager.a().z().C())))
     {
-      paramVideoPlayParam.m = paramRIJDataManager.a().a().b();
-      localBuilder.d(paramVideoPlayParam.m);
+      paramVideoPlayParam.F = paramRIJDataManager.a().z().C();
+      localBuilder.e(paramVideoPlayParam.F);
     }
-    if ((paramRIJDataManager.a().a() != null) && (paramRIJDataManager.a().a().a() == paramVideoPlayParam))
+    if ((paramRIJDataManager.a().z() != null) && (paramRIJDataManager.a().z().a() == paramVideoPlayParam))
     {
-      long l = paramRIJDataManager.a().a().b();
+      long l = paramRIJDataManager.a().z().f();
       if (l != 0L) {
         localBuilder.f(l);
       }
     }
-    if (paramRIJDataManager.a().b() == 40677)
+    if (paramRIJDataManager.a().B() == 40677)
     {
-      localBuilder.b(paramAbsBaseArticleInfo.mVideoAdsJumpType).a(WeishiGuideUtils.a(paramRIJDataManager.a().a()));
+      localBuilder.b(paramAbsBaseArticleInfo.mVideoAdsJumpType).c(WeishiGuideUtils.a(paramRIJDataManager.a().A()));
       localBuilder.i(2);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", paramAbsBaseArticleInfo.mSubscribeID, "0X8009293", "0X8009293", 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), localBuilder.a().a(), false);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse("0X8009293", paramAbsBaseArticleInfo.mSubscribeID, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), paramRIJDataManager.a().b(), i, j, NetworkUtil.isWifiConnected(paramRIJDataManager.a().a()), str1, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), 409409, paramAbsBaseArticleInfo));
+      PublicAccountReportUtils.a(null, "CliOper", "", paramAbsBaseArticleInfo.mSubscribeID, "0X8009293", "0X8009293", 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), localBuilder.b().a(), false);
+      PublicAccountReportUtils.a("0X8009293", paramAbsBaseArticleInfo.mSubscribeID, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), paramRIJDataManager.a().B(), i, j, NetworkUtil.isWifiConnected(paramRIJDataManager.a().A()), str1, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), 409409, paramAbsBaseArticleInfo));
       return;
     }
-    localBuilder.a(paramAbsBaseArticleInfo).N((int)paramRIJDataManager.a().a()).c(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, true).d(paramAbsBaseArticleInfo).f(paramAbsBaseArticleInfo);
-    if ((RIJFeedsType.C(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mPolymericInfo != null)) {
-      localBuilder.w(paramAbsBaseArticleInfo.mPolymericInfo.f + 1);
+    localBuilder.a(paramAbsBaseArticleInfo).O((int)paramRIJDataManager.a().x()).c(paramAbsBaseArticleInfo).a(paramAbsBaseArticleInfo, true).d(paramAbsBaseArticleInfo).f(paramAbsBaseArticleInfo);
+    if ((RIJFeedsType.I(paramAbsBaseArticleInfo)) && (paramAbsBaseArticleInfo.mPolymericInfo != null)) {
+      localBuilder.w(paramAbsBaseArticleInfo.mPolymericInfo.q + 1);
     }
-    String str2 = ReadinjoyReportUtils.b(paramRIJDataManager.a().b());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", paramAbsBaseArticleInfo.mSubscribeID, str2, str2, 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), JSONUtils.a(localBuilder.a().a(), paramVideoPlayParam.a), false);
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).reportPAinfoToLighthouse(str2, paramAbsBaseArticleInfo.mSubscribeID, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.a(paramAbsBaseArticleInfo), paramRIJDataManager.a().b(), i, j, NetworkUtil.isWifiConnected(paramRIJDataManager.a().a()), str1, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.e(paramAbsBaseArticleInfo), 409409, paramAbsBaseArticleInfo));
+    String str2 = ReadinjoyReportUtils.e(paramRIJDataManager.a().B());
+    PublicAccountReportUtils.a(null, "CliOper", "", paramAbsBaseArticleInfo.mSubscribeID, str2, str2, 0, 0, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), JSONUtils.a(localBuilder.b().a(), paramVideoPlayParam.V), false);
+    PublicAccountReportUtils.a(str2, paramAbsBaseArticleInfo.mSubscribeID, Long.toString(paramAbsBaseArticleInfo.mFeedId), Long.toString(paramAbsBaseArticleInfo.mArticleID), Integer.toString(paramAbsBaseArticleInfo.mStrategyId), RIJTransMergeKanDianReport.a(paramAbsBaseArticleInfo.mAlgorithmID, RIJFeedsType.g(paramAbsBaseArticleInfo), paramRIJDataManager.a().B(), i, j, NetworkUtil.isWifiConnected(paramRIJDataManager.a().A()), str1, paramAbsBaseArticleInfo.mStrCircleId, paramAbsBaseArticleInfo.innerUniqueID, RIJFeedsType.n(paramAbsBaseArticleInfo), 409409, paramAbsBaseArticleInfo));
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, Context paramContext, int paramInt)
   {
-    if ((paramAbsBaseArticleInfo.isAccountShown) && (paramInt == 0) && (!TextUtils.isEmpty(RIJPBFieldUtils.b(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_head_jump_url)))) {
-      RIJJumpUtils.a(paramContext, RIJPBFieldUtils.b(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_head_jump_url));
+    if ((paramAbsBaseArticleInfo.isAccountShown) && (paramInt == 0) && (!TextUtils.isEmpty(RIJPBFieldUtils.d(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_head_jump_url)))) {
+      RIJJumpUtils.c(paramContext, RIJPBFieldUtils.d(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_head_jump_url));
     }
   }
   
   private static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo1, AbsBaseArticleInfo paramAbsBaseArticleInfo2, Map<String, Object> paramMap, RIJDataManager paramRIJDataManager, VideoPlayParam paramVideoPlayParam)
   {
-    if ((paramRIJDataManager.a().b() == 0) || (paramRIJDataManager.a().b() == 56))
+    if ((paramRIJDataManager.a().B() == 0) || (paramRIJDataManager.a().B() == 56))
     {
-      if (VideoFeedsHelper.a((Activity)paramRIJDataManager.a().a(), paramAbsBaseArticleInfo1))
+      if (VideoFeedsHelper.a((Activity)paramRIJDataManager.a().A(), paramAbsBaseArticleInfo1))
       {
         a(paramVideoPlayParam, paramAbsBaseArticleInfo1, paramRIJDataManager);
-        if ((paramRIJDataManager.a().b() == 56) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo != null) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo != null) && (RIJPBFieldUtils.a(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url)) && (RIJPBFieldUtils.a(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_schema_report_tail)))
+        if ((paramRIJDataManager.a().B() == 56) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo != null) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo != null) && (RIJPBFieldUtils.c(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url)) && (RIJPBFieldUtils.c(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_schema_report_tail)))
         {
           paramAbsBaseArticleInfo2 = new StringBuilder();
-          paramAbsBaseArticleInfo2.append(RIJPBFieldUtils.b(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url));
-          paramAbsBaseArticleInfo2.append(RIJPBFieldUtils.b(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_schema_report_tail));
-          VideoFeedsHelper.a(paramAbsBaseArticleInfo2.toString());
+          paramAbsBaseArticleInfo2.append(RIJPBFieldUtils.d(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url));
+          paramAbsBaseArticleInfo2.append(RIJPBFieldUtils.d(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_schema_report_tail));
+          VideoFeedsHelper.b(paramAbsBaseArticleInfo2.toString());
         }
         return;
       }
-      if ((paramRIJDataManager.a().b() == 56) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo != null) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo != null) && (RIJPBFieldUtils.a(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url)) && (RIJPBFieldUtils.a(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_report_tail)))
+      if ((paramRIJDataManager.a().B() == 56) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo != null) && (paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo != null) && (RIJPBFieldUtils.c(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url)) && (RIJPBFieldUtils.c(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_report_tail)))
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(RIJPBFieldUtils.b(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url));
-        localStringBuilder.append(RIJPBFieldUtils.b(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_report_tail));
-        VideoFeedsHelper.a(localStringBuilder.toString());
+        localStringBuilder.append(RIJPBFieldUtils.d(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_report_base_url));
+        localStringBuilder.append(RIJPBFieldUtils.d(paramAbsBaseArticleInfo1.mVideoDownloadBarInfo.weishiUGInfo.bytes_click_report_tail));
+        VideoFeedsHelper.b(localStringBuilder.toString());
       }
     }
     if (paramAbsBaseArticleInfo1.videoJumpChannelID > 0)
     {
       if (paramAbsBaseArticleInfo1.videoJumpChannelID == 56)
       {
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoChannelActivityForTwoItemVideo(paramRIJDataManager.a().a(), paramAbsBaseArticleInfo2, paramAbsBaseArticleInfo1, true);
+        ReadInJoyActivityHelper.INSTANCE.launchVideoChannelActivityForTwoItemVideo(paramRIJDataManager.a().A(), paramAbsBaseArticleInfo2, paramAbsBaseArticleInfo1, true);
       }
       else
       {
         paramAbsBaseArticleInfo2 = new HashMap();
         paramAbsBaseArticleInfo2.put("param_key_insert_article_id", Long.valueOf(paramAbsBaseArticleInfo1.mArticleID));
-        ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoSubChannelActivity(paramRIJDataManager.a().a(), paramAbsBaseArticleInfo1.videoJumpChannelID, paramAbsBaseArticleInfo1.videoJumpChannelName, paramAbsBaseArticleInfo1.videoJumpChannelType, 5, paramAbsBaseArticleInfo2);
+        ReadInJoyActivityHelper.INSTANCE.launchVideoSubChannelActivity(paramRIJDataManager.a().A(), paramAbsBaseArticleInfo1.videoJumpChannelID, paramAbsBaseArticleInfo1.videoJumpChannelName, paramAbsBaseArticleInfo1.videoJumpChannelType, 5, paramAbsBaseArticleInfo2);
       }
       a(paramVideoPlayParam, paramAbsBaseArticleInfo1, paramRIJDataManager);
       return;
     }
-    if (ReadInJoyHelper.d(BaseApplicationImpl.getApplication().getRuntime()) == 1)
+    if (ReadInJoyHelper.j(BaseApplicationImpl.getApplication().getRuntime()) == 1)
     {
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchVideoChannelActivityForTwoItemVideo(paramRIJDataManager.a().a(), paramAbsBaseArticleInfo2, paramAbsBaseArticleInfo1, true);
+      ReadInJoyActivityHelper.INSTANCE.launchVideoChannelActivityForTwoItemVideo(paramRIJDataManager.a().A(), paramAbsBaseArticleInfo2, paramAbsBaseArticleInfo1, true);
       a(paramVideoPlayParam, paramAbsBaseArticleInfo1, paramRIJDataManager);
       return;
     }
-    paramVideoPlayParam.a = paramMap;
-    paramRIJDataManager.a().a().a(paramVideoPlayParam, paramAbsBaseArticleInfo1);
+    paramVideoPlayParam.V = paramMap;
+    paramRIJDataManager.a().v().a(paramVideoPlayParam, paramAbsBaseArticleInfo1);
   }
   
   public static void a(AbsBaseArticleInfo paramAbsBaseArticleInfo, BaseReportData paramBaseReportData)
   {
     if (paramAbsBaseArticleInfo != null)
     {
-      if (!RIJFeedsType.H(paramAbsBaseArticleInfo)) {
+      if (!RIJFeedsType.N(paramAbsBaseArticleInfo)) {
         return;
       }
-      paramBaseReportData = new VideoR5.Builder(null, null, null, null).W(Integer.valueOf("2007").intValue());
+      paramBaseReportData = new VideoR5.Builder(null, null, null, null).X(Integer.valueOf("2007").intValue());
       AbsBaseArticleInfo localAbsBaseArticleInfo = (AbsBaseArticleInfo)paramAbsBaseArticleInfo.mSubArticleList.get(0);
-      paramBaseReportData.q(paramAbsBaseArticleInfo.mKdLiveInfo.jdField_g_of_type_JavaLangString);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramAbsBaseArticleInfo.mSubscribeID, "0X8007626", "0X8007626", 0, 0, "", "", "", paramBaseReportData.a().a(), false);
-      paramBaseReportData.q(localAbsBaseArticleInfo.mKdLiveInfo.jdField_g_of_type_JavaLangString);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, localAbsBaseArticleInfo.mSubscribeID, "0X8007626", "0X8007626", 0, 0, "", "", "", paramBaseReportData.a().a(), false);
+      paramBaseReportData.r(paramAbsBaseArticleInfo.mKdLiveInfo.h);
+      PublicAccountReportUtils.a(null, paramAbsBaseArticleInfo.mSubscribeID, "0X8007626", "0X8007626", 0, 0, "", "", "", paramBaseReportData.b().a(), false);
+      paramBaseReportData.r(localAbsBaseArticleInfo.mKdLiveInfo.h);
+      PublicAccountReportUtils.a(null, localAbsBaseArticleInfo.mSubscribeID, "0X8007626", "0X8007626", 0, 0, "", "", "", paramBaseReportData.b().a(), false);
     }
   }
   
@@ -235,9 +234,9 @@ public class RIJVideoReportManager
       while (paramMap.hasNext())
       {
         BaseReportData localBaseReportData = (BaseReportData)paramMap.next();
-        localBaseReportData.h = paramVideoRecommendManager.a();
-        if (paramVideoRecommendManager.a(localBaseReportData.a.mArticleID)) {
-          localBaseReportData.jdField_f_of_type_Boolean = true;
+        localBaseReportData.w = paramVideoRecommendManager.a();
+        if (paramVideoRecommendManager.a(localBaseReportData.l.mArticleID)) {
+          localBaseReportData.x = true;
         }
       }
     }
@@ -247,61 +246,58 @@ public class RIJVideoReportManager
   {
     if ((paramAbsBaseArticleInfo.isAccountShown) && (paramInt == 0) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo.mArticleContentUrl)))
     {
-      RIJJumpUtils.a(paramContext, paramAbsBaseArticleInfo.mArticleContentUrl);
-      paramAbsBaseArticleInfo = new VideoR5.Builder(null, null, paramAbsBaseArticleInfo.mVideoVid, paramAbsBaseArticleInfo.innerUniqueID).Z(paramBoolean ^ true).a(paramInt).a(paramAbsBaseArticleInfo.videoReportInfo).a(paramAbsBaseArticleInfo).N((int)paramLong).W(RIJFeedsType.a(paramAbsBaseArticleInfo)).e(paramAbsBaseArticleInfo).R(6).f(paramAbsBaseArticleInfo).a().a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007625", "0X8007625", 0, 0, "", "", "", paramAbsBaseArticleInfo, false);
+      RIJJumpUtils.c(paramContext, paramAbsBaseArticleInfo.mArticleContentUrl);
+      PublicAccountReportUtils.a(null, "", "0X8007625", "0X8007625", 0, 0, "", "", "", new VideoR5.Builder(null, null, paramAbsBaseArticleInfo.mVideoVid, paramAbsBaseArticleInfo.innerUniqueID).aa(paramBoolean ^ true).a(paramInt).b(paramAbsBaseArticleInfo.videoReportInfo).a(paramAbsBaseArticleInfo).O((int)paramLong).X(RIJFeedsType.g(paramAbsBaseArticleInfo)).e(paramAbsBaseArticleInfo).S(6).f(paramAbsBaseArticleInfo).b().a(), false);
     }
   }
   
   public static void a(boolean paramBoolean, AbsBaseArticleInfo paramAbsBaseArticleInfo1, AbsBaseArticleInfo paramAbsBaseArticleInfo2, String paramString, Map<String, Object> paramMap, RIJDataManager paramRIJDataManager)
   {
     VideoPlayParam localVideoPlayParam = RIJConfigVideoItem.a(paramAbsBaseArticleInfo1);
-    localVideoPlayParam.n = paramString;
-    localVideoPlayParam.l = VideoReporter.b();
-    if ((paramRIJDataManager.a().a() != null) && (!TextUtils.isEmpty(paramRIJDataManager.a().a().b()))) {
-      localVideoPlayParam.m = paramRIJDataManager.a().a().b();
+    localVideoPlayParam.H = paramString;
+    localVideoPlayParam.E = VideoReporter.b();
+    if ((paramRIJDataManager.a().z() != null) && (!TextUtils.isEmpty(paramRIJDataManager.a().z().C()))) {
+      localVideoPlayParam.F = paramRIJDataManager.a().z().C();
     }
-    paramString = new VideoR5.Builder(null, null, null, null).Z(paramBoolean ^ true).c(localVideoPlayParam.l).d(localVideoPlayParam.m).a(paramRIJDataManager.a().b()).k(paramAbsBaseArticleInfo1.mVideoAdsSource).j(paramAbsBaseArticleInfo1.mVideoAdsJumpType).a(paramAbsBaseArticleInfo1.videoReportInfo).a(paramAbsBaseArticleInfo1).N((int)paramRIJDataManager.a().a()).a().a();
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8008D33", "0X8008D33", 0, 0, "", "", "", paramString, false);
-    if (VideoFeedsHelper.a(paramAbsBaseArticleInfo1, paramRIJDataManager.a().a()))
+    PublicAccountReportUtils.a(null, "", "0X8008D33", "0X8008D33", 0, 0, "", "", "", new VideoR5.Builder(null, null, null, null).aa(paramBoolean ^ true).d(localVideoPlayParam.E).e(localVideoPlayParam.F).a(paramRIJDataManager.a().B()).k(paramAbsBaseArticleInfo1.mVideoAdsSource).j(paramAbsBaseArticleInfo1.mVideoAdsJumpType).b(paramAbsBaseArticleInfo1.videoReportInfo).a(paramAbsBaseArticleInfo1).O((int)paramRIJDataManager.a().x()).b().a(), false);
+    if (VideoFeedsHelper.a(paramAbsBaseArticleInfo1, paramRIJDataManager.a().A()))
     {
       a(localVideoPlayParam, paramAbsBaseArticleInfo1, paramRIJDataManager);
       return;
     }
-    if ((paramAbsBaseArticleInfo1.isAccountShown) && (paramRIJDataManager.a().b() == 0) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo1.mArticleContentUrl)))
+    if ((paramAbsBaseArticleInfo1.isAccountShown) && (paramRIJDataManager.a().B() == 0) && (!TextUtils.isEmpty(paramAbsBaseArticleInfo1.mArticleContentUrl)))
     {
-      RIJJumpUtils.a(paramRIJDataManager.a().a(), paramAbsBaseArticleInfo1.mArticleContentUrl);
-      paramAbsBaseArticleInfo2 = new VideoR5.Builder(null, null, paramAbsBaseArticleInfo1.mVideoVid, paramAbsBaseArticleInfo1.innerUniqueID).Z(paramBoolean ^ true).c(localVideoPlayParam.l).d(localVideoPlayParam.m).a(paramRIJDataManager.a().b()).k(paramAbsBaseArticleInfo1.mVideoAdsSource).j(paramAbsBaseArticleInfo1.mVideoAdsJumpType).a(paramAbsBaseArticleInfo1.videoReportInfo).a(paramAbsBaseArticleInfo1).N((int)paramRIJDataManager.a().a()).W(RIJFeedsType.a(paramAbsBaseArticleInfo1)).e(paramAbsBaseArticleInfo1).R(7).f(paramAbsBaseArticleInfo2);
+      RIJJumpUtils.c(paramRIJDataManager.a().A(), paramAbsBaseArticleInfo1.mArticleContentUrl);
+      paramAbsBaseArticleInfo2 = new VideoR5.Builder(null, null, paramAbsBaseArticleInfo1.mVideoVid, paramAbsBaseArticleInfo1.innerUniqueID).aa(paramBoolean ^ true).d(localVideoPlayParam.E).e(localVideoPlayParam.F).a(paramRIJDataManager.a().B()).k(paramAbsBaseArticleInfo1.mVideoAdsSource).j(paramAbsBaseArticleInfo1.mVideoAdsJumpType).b(paramAbsBaseArticleInfo1.videoReportInfo).a(paramAbsBaseArticleInfo1).O((int)paramRIJDataManager.a().x()).X(RIJFeedsType.g(paramAbsBaseArticleInfo1)).e(paramAbsBaseArticleInfo1).S(7).f(paramAbsBaseArticleInfo2);
       if ((paramAbsBaseArticleInfo1.columnEntrances != null) && (paramAbsBaseArticleInfo1.columnEntrances.size() > 0))
       {
         paramString = (VideoColumnInfo)paramAbsBaseArticleInfo1.columnEntrances.get(0);
-        if (paramString.jdField_a_of_type_Int != 0)
+        if (paramString.b != 0)
         {
           paramAbsBaseArticleInfo1 = "1";
-          paramAbsBaseArticleInfo2.a("is_column", "1");
-          paramAbsBaseArticleInfo2.a("column_id", String.valueOf(paramString.jdField_a_of_type_Int));
-          if (!paramString.jdField_a_of_type_Boolean) {
+          paramAbsBaseArticleInfo2.b("is_column", "1");
+          paramAbsBaseArticleInfo2.b("column_id", String.valueOf(paramString.b));
+          if (!paramString.h) {
             paramAbsBaseArticleInfo1 = "2";
           }
-          paramAbsBaseArticleInfo2.a("subscribe_flag", paramAbsBaseArticleInfo1);
+          paramAbsBaseArticleInfo2.b("subscribe_flag", paramAbsBaseArticleInfo1);
         }
         else
         {
-          paramAbsBaseArticleInfo2.a("is_column", "0");
+          paramAbsBaseArticleInfo2.b("is_column", "0");
         }
       }
-      paramAbsBaseArticleInfo1 = paramAbsBaseArticleInfo2.a().a();
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X8007625", "0X8007625", 0, 0, "", "", "", JSONUtils.a(paramAbsBaseArticleInfo1, paramMap), false);
+      PublicAccountReportUtils.a(null, "", "0X8007625", "0X8007625", 0, 0, "", "", "", JSONUtils.a(paramAbsBaseArticleInfo2.b().a(), paramMap), false);
       return;
     }
     if (paramAbsBaseArticleInfo1.isVideoItemForAdJump())
     {
-      paramAbsBaseArticleInfo2 = (Activity)paramRIJDataManager.a().a();
+      paramAbsBaseArticleInfo2 = (Activity)paramRIJDataManager.a().A();
       if (paramAbsBaseArticleInfo2 != null)
       {
         paramString = new Intent(paramAbsBaseArticleInfo2, QQBrowserActivity.class);
         paramString.putExtra("url", paramAbsBaseArticleInfo1.mVideoAdsJumpUrl);
-        paramString.putExtra("big_brother_source_key", RIJJumpUtils.a(paramRIJDataManager.a().b()));
+        paramString.putExtra("big_brother_source_key", RIJJumpUtils.a(paramRIJDataManager.a().B()));
         paramAbsBaseArticleInfo2.startActivity(paramString);
       }
       a(localVideoPlayParam, paramAbsBaseArticleInfo1, paramRIJDataManager);
@@ -314,28 +310,28 @@ public class RIJVideoReportManager
   {
     if (paramJSONObject != null)
     {
-      if (paramBaseReportData.a == null) {
+      if (paramBaseReportData.l == null) {
         return;
       }
-      Object localObject = new VideoR5.Builder(null, null, null, null).W(Integer.valueOf("1031").intValue()).r(paramJSONObject.optString("double_videocard_jump_page")).s(paramJSONObject.optString("double_videocard_jump_src")).a((int)paramBaseReportData.a.mChannelID);
-      int i = ReadinjoyReportUtils.b();
+      Object localObject = new VideoR5.Builder(null, null, null, null).X(Integer.valueOf("1031").intValue()).s(paramJSONObject.optString("double_videocard_jump_page")).t(paramJSONObject.optString("double_videocard_jump_src")).a((int)paramBaseReportData.l.mChannelID);
+      int i = ReadinjoyReportUtils.e();
       int j = 0;
       if (i > 0) {
         i = 0;
       } else {
         i = 1;
       }
-      paramBaseReportData = ((VideoR5.Builder)localObject).ag(i).f(paramBaseReportData.a);
+      paramBaseReportData = ((VideoR5.Builder)localObject).ah(i).f(paramBaseReportData.l);
       i = j;
       if (paramBoolean)
       {
         localObject = paramJSONObject.optString("column_id");
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBaseReportData.a("columnId", localObject);
+          paramBaseReportData.b("columnId", localObject);
         }
-        paramBaseReportData.j(paramJSONObject.optString("all_rowkey"));
-        paramBaseReportData.t(paramJSONObject.optString("subscript"));
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X800A5A8", "0X800A5A8", 0, 0, "", "", "", paramBaseReportData.a().a(), false);
+        paramBaseReportData.k(paramJSONObject.optString("all_rowkey"));
+        paramBaseReportData.u(paramJSONObject.optString("subscript"));
+        PublicAccountReportUtils.a(null, null, "0X800A5A8", "0X800A5A8", 0, 0, "", "", "", paramBaseReportData.b().a(), false);
         return;
       }
       while (i < 2)
@@ -346,18 +342,18 @@ public class RIJVideoReportManager
         ((StringBuilder)localObject).append(j);
         localObject = paramJSONObject.optString(((StringBuilder)localObject).toString());
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          paramBaseReportData.a("columnId", localObject);
+          paramBaseReportData.b("columnId", localObject);
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("rowKey_");
         ((StringBuilder)localObject).append(j);
-        paramBaseReportData.j(paramJSONObject.optString(((StringBuilder)localObject).toString()));
+        paramBaseReportData.k(paramJSONObject.optString(((StringBuilder)localObject).toString()));
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("subscript_");
         ((StringBuilder)localObject).append(j);
-        paramBaseReportData.t(paramJSONObject.optString(((StringBuilder)localObject).toString()));
-        paramBaseReportData.Z(i);
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, null, "0X8007626", "0X8007626", 0, 0, "", "", "", paramBaseReportData.a().a(), false);
+        paramBaseReportData.u(paramJSONObject.optString(((StringBuilder)localObject).toString()));
+        paramBaseReportData.aa(i);
+        PublicAccountReportUtils.a(null, null, "0X8007626", "0X8007626", 0, 0, "", "", "", paramBaseReportData.b().a(), false);
         i = j;
       }
     }
@@ -365,8 +361,8 @@ public class RIJVideoReportManager
   
   public static void a(boolean paramBoolean1, boolean paramBoolean2, AbsBaseArticleInfo paramAbsBaseArticleInfo, Activity paramActivity, int paramInt, VideoRecommendManager paramVideoRecommendManager, VideoPlayManager paramVideoPlayManager)
   {
-    if (paramVideoPlayManager.a()) {
-      paramVideoPlayManager.a();
+    if (paramVideoPlayManager.g()) {
+      paramVideoPlayManager.c();
     }
     if (paramVideoRecommendManager != null) {
       paramVideoRecommendManager.a(1, paramAbsBaseArticleInfo, 0L, 0L);
@@ -381,20 +377,19 @@ public class RIJVideoReportManager
     paramActivity.overridePendingTransition(0, 0);
     paramVideoRecommendManager = paramVideoPlayManager.a();
     long l1;
-    if ((paramVideoRecommendManager != null) && (paramVideoRecommendManager.c.equals(paramAbsBaseArticleInfo.mVideoVid))) {
-      l1 = paramVideoPlayManager.b();
+    if ((paramVideoRecommendManager != null) && (paramVideoRecommendManager.d.equals(paramAbsBaseArticleInfo.mVideoVid))) {
+      l1 = paramVideoPlayManager.f();
     } else {
       l1 = 0L;
     }
-    paramVideoPlayManager = new VideoR5.Builder(null, paramAbsBaseArticleInfo.mSubscribeID, paramAbsBaseArticleInfo.mVideoVid, paramAbsBaseArticleInfo.innerUniqueID).a(l1).c(paramAbsBaseArticleInfo.mVideoDuration * 1000).e(paramAbsBaseArticleInfo.mAlgorithmID).c(paramAbsBaseArticleInfo.mStrategyId).a(paramInt).g(paramBoolean1).h(paramBoolean2).a().a();
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
+    paramVideoPlayManager = new VideoR5.Builder(null, paramAbsBaseArticleInfo.mSubscribeID, paramAbsBaseArticleInfo.mVideoVid, paramAbsBaseArticleInfo.innerUniqueID).a(l1).c(paramAbsBaseArticleInfo.mVideoDuration * 1000).e(paramAbsBaseArticleInfo.mAlgorithmID).c(paramAbsBaseArticleInfo.mStrategyId).a(paramInt).i(paramBoolean1).j(paramBoolean2).b().a();
     String str = paramAbsBaseArticleInfo.mSubscribeID;
     if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.innerUniqueID)) {
       paramVideoRecommendManager = paramAbsBaseArticleInfo.innerUniqueID;
     } else {
       paramVideoRecommendManager = "0";
     }
-    localIPublicAccountReportUtils.publicAccountReportClickEvent(null, str, "0X8007B89", "0X8007B89", 0, 0, "1", "", paramVideoRecommendManager, paramVideoPlayManager, false);
+    PublicAccountReportUtils.a(null, str, "0X8007B89", "0X8007B89", 0, 0, "1", "", paramVideoRecommendManager, paramVideoPlayManager, false);
     long l2 = paramActivity.getIntent().getLongExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
     paramActivity = new ReportInfo.VideoExtraRepoerData();
     paramActivity.d = ((int)l1);
@@ -408,7 +403,7 @@ public class RIJVideoReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.report.RIJVideoReportManager
  * JD-Core Version:    0.7.0.1
  */

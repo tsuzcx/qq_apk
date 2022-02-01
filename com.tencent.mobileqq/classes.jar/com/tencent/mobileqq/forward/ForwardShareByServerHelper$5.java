@@ -11,19 +11,19 @@ class ForwardShareByServerHelper$5
   public void run()
   {
     ForwardStatisticsReporter.a("KEY_STAGE_2_TOTAL", false);
-    if (ForwardShareByServerHelper.a(this.this$0) == null)
+    if (ForwardShareByServerHelper.f(this.this$0) == null)
     {
       ForwardShareByServerHelper localForwardShareByServerHelper = this.this$0;
-      ForwardShareByServerHelper.a(localForwardShareByServerHelper, DialogUtil.a(ForwardShareByServerHelper.a(localForwardShareByServerHelper), 230));
+      ForwardShareByServerHelper.a(localForwardShareByServerHelper, DialogUtil.a(ForwardShareByServerHelper.d(localForwardShareByServerHelper), 230));
     }
-    ForwardShareByServerHelper.a(this.this$0).setMessage(this.a);
-    ForwardShareByServerHelper.a(this.this$0).setPositiveButton(2131694583, this.this$0.a);
-    ForwardShareByServerHelper.a(this.this$0).show();
+    ForwardShareByServerHelper.f(this.this$0).setMessage(this.a);
+    ForwardShareByServerHelper.f(this.this$0).setPositiveButton(2131892267, this.this$0.d);
+    ForwardShareByServerHelper.f(this.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareByServerHelper.5
  * JD-Core Version:    0.7.0.1
  */

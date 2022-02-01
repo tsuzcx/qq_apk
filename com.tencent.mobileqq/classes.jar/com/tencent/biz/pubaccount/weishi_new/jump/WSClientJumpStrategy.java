@@ -15,42 +15,42 @@ public class WSClientJumpStrategy
     super(paramIWSStSchemaJumpFactor);
   }
   
-  private void a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
+  private void b(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
     if ((paramIWSStSchemaJumpFactor.a() instanceof Activity))
     {
-      OuterInterceptManager.OnInterceptDialogClickListener localOnInterceptDialogClickListener = paramIWSStSchemaJumpFactor.a();
+      OuterInterceptManager.OnInterceptDialogClickListener localOnInterceptDialogClickListener = paramIWSStSchemaJumpFactor.g();
       OuterInterceptManager.a((Activity)paramIWSStSchemaJumpFactor.a(), new WSClientJumpStrategy.1(this, paramIWSStSchemaJumpFactor, localOnInterceptDialogClickListener));
     }
   }
   
-  private void b(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
+  private void c(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
     String str;
-    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.a().schema)) {
-      str = paramIWSStSchemaJumpFactor.a().schema;
+    if (!TextUtils.isEmpty(paramIWSStSchemaJumpFactor.b().schema)) {
+      str = paramIWSStSchemaJumpFactor.b().schema;
     } else {
       str = "weishi://main";
     }
     WeishiScehmeUtil.a(paramIWSStSchemaJumpFactor.a(), "biz_src_jc_gzh_weishi", str);
-    if (paramIWSStSchemaJumpFactor.a() != null) {
-      paramIWSStSchemaJumpFactor.a().a();
+    if (paramIWSStSchemaJumpFactor.h() != null) {
+      paramIWSStSchemaJumpFactor.h().a();
     }
   }
   
   public boolean a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor)
   {
-    if (paramIWSStSchemaJumpFactor.a()) {
-      a(paramIWSStSchemaJumpFactor);
-    } else {
+    if (paramIWSStSchemaJumpFactor.d()) {
       b(paramIWSStSchemaJumpFactor);
+    } else {
+      c(paramIWSStSchemaJumpFactor);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.WSClientJumpStrategy
  * JD-Core Version:    0.7.0.1
  */

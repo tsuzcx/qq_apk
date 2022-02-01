@@ -16,7 +16,7 @@ class DOMActionContextImpl$2
   {
     if (paramDomObject.hasUpdate())
     {
-      if (DOMActionContextImpl.access$400(this.this$0)) {
+      if (DOMActionContextImpl.access$300(this.this$0)) {
         return;
       }
       if (!Float.isNaN(paramDomObject.flexStyle.minHeight)) {
@@ -46,7 +46,7 @@ class DOMActionContextImpl$2
               arrayOfFloat = paramDomObject.flexLayout.position;
               arrayOfFloat[3] -= paramDomObject.flexStyle.margin.get(3);
             }
-            Layout.layoutNode(DOMActionContextImpl.access$500(this.this$0), paramDomObject, paramDomObject.flexLayout.dimensions[0], null);
+            Layout.layoutNode(DOMActionContextImpl.access$400(this.this$0), paramDomObject, paramDomObject.flexLayout.dimensions[0], null);
           }
         }
       }
@@ -56,7 +56,7 @@ class DOMActionContextImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.2
  * JD-Core Version:    0.7.0.1
  */

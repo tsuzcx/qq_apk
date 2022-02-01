@@ -13,24 +13,24 @@ import java.util.List;
 public class TroopUnclaimedHbList$HbListAdapter
   extends RecyclerView.Adapter<TroopUnclaimedHbList.HbListAdapter.HbItemViewHolder>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<RedPackGrapInfo> jdField_a_of_type_JavaUtilList;
+  private List<RedPackGrapInfo> b;
+  private Context c;
   
   TroopUnclaimedHbList$HbListAdapter(TroopUnclaimedHbList paramTroopUnclaimedHbList, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.c = paramContext;
+    this.b = new ArrayList();
   }
   
   public TroopUnclaimedHbList.HbListAdapter.HbItemViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList;
-    return new TroopUnclaimedHbList.HbListAdapter.HbItemViewHolder(this, new TroopUnclaimedHbList.HbListItem(paramViewGroup, this.jdField_a_of_type_AndroidContentContext, new QQWalletTroopHbItem(TroopUnclaimedHbList.a(paramViewGroup), this.jdField_a_of_type_AndroidContentContext, TroopUnclaimedHbList.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList))));
+    paramViewGroup = this.a;
+    return new TroopUnclaimedHbList.HbListAdapter.HbItemViewHolder(this, new TroopUnclaimedHbList.HbListItem(paramViewGroup, this.c, new QQWalletTroopHbItem(TroopUnclaimedHbList.a(paramViewGroup), this.c, TroopUnclaimedHbList.h(this.a))));
   }
   
   public void a(TroopUnclaimedHbList.HbListAdapter.HbItemViewHolder paramHbItemViewHolder, int paramInt)
   {
-    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(paramHbItemViewHolder.getPosition());
+    RedPackGrapInfo localRedPackGrapInfo = (RedPackGrapInfo)this.b.get(paramHbItemViewHolder.getPosition());
     if (localRedPackGrapInfo == null) {
       return;
     }
@@ -46,37 +46,37 @@ public class TroopUnclaimedHbList$HbListAdapter
     {
       try
       {
-        if (this.jdField_a_of_type_JavaUtilList != null)
+        if (this.b != null)
         {
-          if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          if (!this.b.isEmpty()) {
             break label242;
           }
           return;
           int i = k;
-          if (j < this.jdField_a_of_type_JavaUtilList.size())
+          if (j < this.b.size())
           {
-            localObject = (RedPackGrapInfo)this.jdField_a_of_type_JavaUtilList.get(j);
+            localObject = (RedPackGrapInfo)this.b.get(j);
             if ((localObject == null) || (!((RedPackGrapInfo)localObject).sBiilNo.equals(paramString))) {
               break label250;
             }
             i = j;
           }
           j = i;
-          if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+          if (i == this.b.size()) {
             j = i - 1;
           }
-          this.jdField_a_of_type_JavaUtilList.remove(j);
+          this.b.remove(j);
           notifyItemRemoved(j);
-          notifyItemRangeChanged(j, this.jdField_a_of_type_JavaUtilList.size());
-          if (TroopUnclaimedHbList.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList) != null)
+          notifyItemRangeChanged(j, this.b.size());
+          if (TroopUnclaimedHbList.e(this.a) != null)
           {
-            if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+            if ((this.b != null) && (!this.b.isEmpty()))
             {
-              TroopUnclaimedHbList.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList).postDelayed(new TroopUnclaimedHbList.HbListAdapter.1(this), 300L);
+              TroopUnclaimedHbList.e(this.a).postDelayed(new TroopUnclaimedHbList.HbListAdapter.1(this), 300L);
               return;
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList.a != null) {
-              this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplTroopUnclaimedHbList.a.dismiss();
+            if (this.a.a != null) {
+              this.a.a.dismiss();
             }
           }
         }
@@ -108,7 +108,7 @@ public class TroopUnclaimedHbList$HbListAdapter
   
   void a(List<RedPackGrapInfo> paramList)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if (localList == null) {
       return;
     }
@@ -118,16 +118,16 @@ public class TroopUnclaimedHbList$HbListAdapter
   
   public int getItemCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.b;
     if ((localList != null) && (!localList.isEmpty())) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+      return this.b.size();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.TroopUnclaimedHbList.HbListAdapter
  * JD-Core Version:    0.7.0.1
  */

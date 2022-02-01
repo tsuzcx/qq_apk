@@ -12,7 +12,7 @@ public class WeSeeBeaconReportConfigInfo
     super(paramJSONObject);
   }
   
-  public static WeSeeBeaconReportConfigInfo a(JSONObject paramJSONObject)
+  public static WeSeeBeaconReportConfigInfo b(JSONObject paramJSONObject)
   {
     return new WeSeeBeaconReportConfigInfo(paramJSONObject);
   }
@@ -38,7 +38,7 @@ public class WeSeeBeaconReportConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.WeSeeBeaconReportConfigInfo
  * JD-Core Version:    0.7.0.1
  */

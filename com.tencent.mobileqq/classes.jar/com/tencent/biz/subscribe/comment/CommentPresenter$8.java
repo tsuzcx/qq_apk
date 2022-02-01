@@ -15,25 +15,25 @@ class CommentPresenter$8
   
   public void a()
   {
-    CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, null);
-    if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null)
+    CommentPresenter.a(this.c, null);
+    if (CommentPresenter.B(this.c) != null)
     {
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).b(null);
-      if ((CommentPresenter.d(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)) && (CommentPresenter.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null)) {
-        CommentPresenter.b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).setText(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a());
+      CommentPresenter.B(this.c).b(null);
+      if ((CommentPresenter.O(this.c)) && (CommentPresenter.P(this.c) != null)) {
+        CommentPresenter.P(this.c).setText(CommentPresenter.B(this.c).d());
       }
-      SubscribeCommentHelper.a().a(CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply, CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a());
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).a("");
+      SubscribeCommentHelper.a().a(CommentPresenter.k(this.c), this.a, this.b, CommentPresenter.B(this.c).d());
+      CommentPresenter.B(this.c).a("");
     }
-    if ((CommentPresenter.e(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter)) && (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != 0L))
+    if ((CommentPresenter.Q(this.c)) && (CommentPresenter.J(this.c) != 0L))
     {
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, false);
-      CommentPresenter.d(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter, false);
+      CommentPresenter.e(this.c, false);
+      CommentPresenter.d(this.c, false);
     }
-    if (CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter) != null) {
-      CommentPresenter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter).j();
+    if (CommentPresenter.N(this.c) != null) {
+      CommentPresenter.N(this.c).q();
     }
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter.b != null) && (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentPresenter.b.getVisibility() == 8)) {
+    if ((this.c.h != null) && (this.c.h.getVisibility() == 8)) {
       SimpleEventBus.getInstance().dispatchEvent(new CommentListShowStateEvent(false));
     }
   }

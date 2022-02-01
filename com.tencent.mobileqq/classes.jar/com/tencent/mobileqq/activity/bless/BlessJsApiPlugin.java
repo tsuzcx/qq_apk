@@ -19,12 +19,11 @@ import org.json.JSONObject;
 public class BlessJsApiPlugin
   extends WebViewPlugin
 {
-  private static String a;
-  public BroadcastReceiver a;
+  private static String b;
+  public BroadcastReceiver a = new BlessJsApiPlugin.1(this);
   
   public BlessJsApiPlugin()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new BlessJsApiPlugin.1(this);
     this.mPluginNameSpace = "bless";
   }
   
@@ -137,7 +136,7 @@ public class BlessJsApiPlugin
             if (TextUtils.isEmpty(paramJsBridgeListener)) {
               break label1045;
             }
-            paramString1 = NearbyURLSafeUtil.a(paramString1);
+            paramString1 = NearbyURLSafeUtil.b(paramString1);
             paramString2 = new JSONObject();
             paramString2.put("encoded_string", paramString1);
             callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
@@ -166,7 +165,7 @@ public class BlessJsApiPlugin
             if (TextUtils.isEmpty(paramJsBridgeListener)) {
               break label1045;
             }
-            paramString1 = BlessManager.i();
+            paramString1 = BlessManager.Q();
             paramString2 = new JSONObject();
             paramString2.put("bless_config", paramString1);
             callJs(paramJsBridgeListener, new String[] { paramString2.toString() });
@@ -197,7 +196,7 @@ public class BlessJsApiPlugin
             if (TextUtils.isEmpty(paramJsBridgeListener)) {
               break label1045;
             }
-            BlessJsApiUtils.a(this.mRuntime.a(), paramString1, paramJsBridgeListener);
+            BlessJsApiUtils.a(this.mRuntime.d(), paramString1, paramJsBridgeListener);
             return true;
           }
           catch (JSONException paramJsBridgeListener)
@@ -231,8 +230,8 @@ public class BlessJsApiPlugin
             if (TextUtils.isEmpty(paramJsBridgeListener)) {
               break label1045;
             }
-            Activity localActivity = this.mRuntime.a();
-            jdField_a_of_type_JavaLangString = paramJsBridgeListener;
+            Activity localActivity = this.mRuntime.d();
+            b = paramJsBridgeListener;
             BlessJsApiUtils.a(localActivity, paramString1, paramString2, paramString3, paramVarArgs, str1, str2, (String)localObject, paramJsBridgeListener);
             return true;
           }
@@ -262,7 +261,7 @@ public class BlessJsApiPlugin
               if (TextUtils.isEmpty(paramJsBridgeListener)) {
                 break label1045;
               }
-              bool = BlessJsApiUtils.c(this.mRuntime.a());
+              bool = BlessJsApiUtils.c(this.mRuntime.b());
               paramString1 = new JSONObject();
               paramString1.put("is_support_ptv", bool);
               callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
@@ -291,7 +290,7 @@ public class BlessJsApiPlugin
               if (TextUtils.isEmpty(paramJsBridgeListener)) {
                 break label1045;
               }
-              bool = BlessJsApiUtils.a(this.mRuntime.a());
+              bool = BlessJsApiUtils.a(this.mRuntime.b());
               paramString1 = new JSONObject();
               paramString1.put("is_mobile_support_ptv", bool);
               callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
@@ -319,7 +318,7 @@ public class BlessJsApiPlugin
               paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
               if (!TextUtils.isEmpty(paramJsBridgeListener))
               {
-                bool = BlessJsApiUtils.b(this.mRuntime.a());
+                bool = BlessJsApiUtils.b(this.mRuntime.b());
                 paramString1 = new JSONObject();
                 paramString1.put("is_support_DynamicDecoration", bool);
                 callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
@@ -344,18 +343,18 @@ public class BlessJsApiPlugin
     super.onCreate();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mobileqq.BlessJsApiPlugin");
-    this.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.mRuntime.d().registerReceiver(this.a, localIntentFilter);
   }
   
   protected void onDestroy()
   {
     super.onDestroy();
-    this.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.mRuntime.d().unregisterReceiver(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessJsApiPlugin
  * JD-Core Version:    0.7.0.1
  */

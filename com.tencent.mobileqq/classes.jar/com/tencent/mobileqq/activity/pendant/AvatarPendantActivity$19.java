@@ -46,16 +46,16 @@ class AvatarPendantActivity$19
         while (paramList.hasNext())
         {
           localObject = (CmAvatarFaceInfo)paramList.next();
-          if (((CmAvatarFaceInfo)localObject).getActionId() < ApolloConstant.a) {
-            AvatarPendantActivity.a(this.a).add(localObject);
+          if (((CmAvatarFaceInfo)localObject).getActionId() < ApolloConstant.f) {
+            AvatarPendantActivity.c(this.a).add(localObject);
           }
         }
       }
-      AvatarPendantActivity.a(this.a).addAll(paramList);
-      if (AvatarPendantActivity.a(this.a).size() > 0)
+      AvatarPendantActivity.c(this.a).addAll(paramList);
+      if (AvatarPendantActivity.c(this.a).size() > 0)
       {
         paramList = new StringBuilder();
-        localObject = AvatarPendantActivity.a(this.a).iterator();
+        localObject = AvatarPendantActivity.c(this.a).iterator();
         while (((Iterator)localObject).hasNext())
         {
           paramList.append(((CmAvatarFaceInfo)((Iterator)localObject).next()).getActionId());
@@ -71,8 +71,8 @@ class AvatarPendantActivity$19
       {
         QLog.e("AvatarPendantActivity", 1, "[onGetAvatarCmshowFaceList] avatarCmshowFaceInfoList is empty.");
       }
-      if (AvatarPendantActivity.a(this.a) != 0) {
-        j = AvatarPendantActivity.a(this.a);
+      if (AvatarPendantActivity.f(this.a) != 0) {
+        j = AvatarPendantActivity.f(this.a);
       }
       paramList = this.a;
       Object localObject = new StringBuilder();
@@ -81,11 +81,11 @@ class AvatarPendantActivity$19
       ((StringBuilder)localObject).append(j);
       ((StringBuilder)localObject).append("&_needShow3D=");
       ((StringBuilder)localObject).append(i);
-      AvatarPendantActivity.a(paramList, ((StringBuilder)localObject).toString());
+      AvatarPendantActivity.b(paramList, ((StringBuilder)localObject).toString());
       if (TextUtils.isEmpty(paramString2)) {
-        AvatarPendantActivity.b(this.a, ApolloConstant.o);
+        AvatarPendantActivity.c(this.a, ApolloConstant.w);
       } else {
-        AvatarPendantActivity.b(this.a, paramString2.replace("[client]", "androidQQ").replace("[version]", "8.7.0.5295").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE));
+        AvatarPendantActivity.c(this.a, paramString2.replace("[client]", "androidQQ").replace("[version]", "8.8.17.5770").replace("[device]", Build.DEVICE).replace("[system]", Build.VERSION.RELEASE));
       }
       AvatarPendantActivity.a(this.a, paramInt);
       return;
@@ -114,7 +114,7 @@ class AvatarPendantActivity$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.19
  * JD-Core Version:    0.7.0.1
  */

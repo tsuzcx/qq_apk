@@ -20,7 +20,7 @@ class ShortVideoItemBuilder$8
     ((Calendar)localObject).set(12, 0);
     ((Calendar)localObject).set(13, 0);
     ((Calendar)localObject).set(14, 0);
-    SharedPreferences localSharedPreferences = this.this$0.a.getPreferences();
+    SharedPreferences localSharedPreferences = this.this$0.d.getPreferences();
     long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
     long l2 = ((Calendar)localObject).getTimeInMillis();
     if (l1 < l2) {
@@ -46,7 +46,7 @@ class ShortVideoItemBuilder$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

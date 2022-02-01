@@ -21,26 +21,87 @@ import mqq.os.MqqHandler;
 
 public class DownloadCenterImpl
 {
-  private static DownloadCenterImpl jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl;
-  private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new DownloadCenterImpl.1(this);
-  private DownloadListener jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new DownloadCenterImpl.2(this);
-  private ArrayList<IDownloadCallback> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static DownloadCenterImpl a;
+  private ArrayList<IDownloadCallback> b = new ArrayList();
+  private INetEventHandler c = new DownloadCenterImpl.1(this);
+  private DownloadListener d = new DownloadCenterImpl.2(this);
   
   public DownloadCenterImpl()
   {
-    DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-    AppNetConnInfo.registerNetChangeReceiver(CommonDataAdapter.a().a(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
+    DownloadManager.b().a(this.d);
+    AppNetConnInfo.registerNetChangeReceiver(CommonDataAdapter.a().b(), this.c);
   }
   
   public static DownloadCenterImpl a()
   {
-    if (jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl == null) {
-      jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl = new DownloadCenterImpl();
+    if (a == null) {
+      a = new DownloadCenterImpl();
     }
-    return jdField_a_of_type_ComTencentOpenAppcommonNowDownloadDownloadCenterImpl;
+    return a;
   }
   
-  public int a(DownloadInfo paramDownloadInfo)
+  public int a(ArrayList<DownloadInfo> paramArrayList)
+  {
+    if (paramArrayList == null)
+    {
+      LogUtility.a("DownloadCenterImpl", "getDownloadProgressById infos == null");
+      return -1;
+    }
+    ThreadManager.getSubThreadHandler().post(new DownloadCenterImpl.3(this, paramArrayList));
+    return 0;
+  }
+  
+  public void a(IDownloadCallback paramIDownloadCallback)
+  {
+    if (paramIDownloadCallback != null)
+    {
+      ArrayList localArrayList = this.b;
+      if ((localArrayList != null) && (!localArrayList.contains(paramIDownloadCallback))) {
+        this.b.add(paramIDownloadCallback);
+      }
+    }
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo)
+  {
+    if (((INowUtil)QRoute.api(INowUtil.class)).checkNowApkExist(paramDownloadInfo.c, paramDownloadInfo.e))
+    {
+      paramDownloadInfo.a(4);
+      paramDownloadInfo.q = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
+      DownloadManager.b().f(paramDownloadInfo);
+      this.d.onDownloadFinish(paramDownloadInfo);
+      return;
+    }
+    DownloadManager.b().a(paramDownloadInfo);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo, ApkUpdateDetail paramApkUpdateDetail)
+  {
+    DownloadManager.b().a(paramDownloadInfo, paramApkUpdateDetail);
+  }
+  
+  public void a(String paramString)
+  {
+    DownloadManager.b().g(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    DownloadInfo localDownloadInfo = DownloadManager.b().d(paramString1);
+    paramString1 = localDownloadInfo;
+    if (localDownloadInfo == null) {
+      paramString1 = DownloadManager.b().f(paramString2);
+    }
+    if (paramString1 != null)
+    {
+      paramString1.v = 5;
+      paramString1.o = 0;
+      paramString1.p = 0;
+      DownloadManager.b().d(paramString1);
+    }
+  }
+  
+  public int b(DownloadInfo paramDownloadInfo)
   {
     boolean bool = AppUtil.a(paramDownloadInfo.e);
     int j = 1;
@@ -50,86 +111,86 @@ public class DownloadCenterImpl
     if (bool)
     {
       i = m;
-      if (paramDownloadInfo.jdField_b_of_type_Int != 0)
+      if (paramDownloadInfo.n != 0)
       {
         i = m;
-        if (paramDownloadInfo.jdField_b_of_type_Int > AppUtil.a("com.tencent.now")) {
+        if (paramDownloadInfo.n > AppUtil.d("com.tencent.now")) {
           i = 0;
         }
       }
       paramDownloadInfo.a(13);
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = this.b.iterator();
       while (((Iterator)localObject1).hasNext()) {
         ((IDownloadCallback)((Iterator)localObject1).next()).a(paramDownloadInfo, i);
       }
       return i;
     }
-    DownloadInfo localDownloadInfo = DownloadManager.a().a(paramDownloadInfo.jdField_c_of_type_JavaLangString);
+    DownloadInfo localDownloadInfo = DownloadManager.b().d(paramDownloadInfo.c);
     if ("com.tencent.now".equals(paramDownloadInfo.e))
     {
-      bool = ((INowUtil)QRoute.api(INowUtil.class)).checkNowApkExist(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e);
+      bool = ((INowUtil)QRoute.api(INowUtil.class)).checkNowApkExist(paramDownloadInfo.c, paramDownloadInfo.e);
       if (localDownloadInfo == null)
       {
         i = k;
         if (!bool) {
           break label904;
         }
-        i = AppUtil.b(((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath());
-        if ((paramDownloadInfo.jdField_b_of_type_Int != 0) && (paramDownloadInfo.jdField_b_of_type_Int > i))
+        i = AppUtil.e(((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath());
+        if ((paramDownloadInfo.n != 0) && (paramDownloadInfo.n > i))
         {
           ((INowUtil)QRoute.api(INowUtil.class)).delete(((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath());
           i = 0;
         }
         else
         {
-          localObject1 = new DownloadInfo(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.jdField_d_of_type_JavaLangString, paramDownloadInfo.e, paramDownloadInfo.f, paramDownloadInfo.h, null, paramDownloadInfo.m, paramDownloadInfo.jdField_c_of_type_Boolean);
+          localObject1 = new DownloadInfo(paramDownloadInfo.c, paramDownloadInfo.d, paramDownloadInfo.e, paramDownloadInfo.f, paramDownloadInfo.h, null, paramDownloadInfo.r, paramDownloadInfo.A);
           ((DownloadInfo)localObject1).a(4);
-          ((DownloadInfo)localObject1).l = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
-          ((DownloadInfo)localObject1).jdField_b_of_type_Boolean = paramDownloadInfo.jdField_b_of_type_Boolean;
-          DownloadManager.a().e((DownloadInfo)localObject1);
+          ((DownloadInfo)localObject1).q = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
+          ((DownloadInfo)localObject1).x = paramDownloadInfo.x;
+          DownloadManager.b().f((DownloadInfo)localObject1);
         }
       }
       for (i = j;; i = j)
       {
         break label904;
-        localObject1 = localDownloadInfo.l;
+        localObject1 = localDownloadInfo.q;
         if ((!((INowUtil)QRoute.api(INowUtil.class)).isExists((String)localObject1)) && (!bool))
         {
           i = k;
           if (localDownloadInfo.a() != 4) {
             break label904;
           }
-          DownloadManager.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString, true);
+          DownloadManager.b().a(localDownloadInfo.c, true);
           i = k;
           break label904;
         }
         if (bool) {
-          i = AppUtil.b(((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath());
+          i = AppUtil.e(((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath());
         } else {
-          i = AppUtil.b((String)localObject1);
+          i = AppUtil.e((String)localObject1);
         }
-        if ((paramDownloadInfo.jdField_b_of_type_Int != 0) && (paramDownloadInfo.jdField_b_of_type_Int > i))
+        if ((paramDownloadInfo.n != 0) && (paramDownloadInfo.n > i))
         {
-          DownloadManager.a().a(localDownloadInfo.jdField_c_of_type_JavaLangString, true);
+          DownloadManager.b().a(localDownloadInfo.c, true);
           ((INowUtil)QRoute.api(INowUtil.class)).delete(((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath());
           ((INowUtil)QRoute.api(INowUtil.class)).delete((String)localObject1);
           break;
         }
         if (!bool)
         {
-          if (((INowUtil)QRoute.api(INowUtil.class)).copyNowApkToCommonDir((String)localObject1, paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e))
+          if (((INowUtil)QRoute.api(INowUtil.class)).copyNowApkToCommonDir((String)localObject1, paramDownloadInfo.c, paramDownloadInfo.e))
           {
             ((INowUtil)QRoute.api(INowUtil.class)).delete((String)localObject1);
-            localDownloadInfo.l = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
+            localDownloadInfo.q = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
           }
         }
         else if (!((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath().equals(localObject1))
         {
           ((INowUtil)QRoute.api(INowUtil.class)).delete((String)localObject1);
-          localDownloadInfo.l = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
+          localDownloadInfo.q = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
         }
         localDownloadInfo.a(4);
-        DownloadManager.a().e(localDownloadInfo);
+        DownloadManager.b().f(localDownloadInfo);
       }
     }
     else
@@ -138,14 +199,14 @@ public class DownloadCenterImpl
       if (localDownloadInfo != null)
       {
         Object localObject2 = "";
-        if (TextUtils.isEmpty(localDownloadInfo.l))
+        if (TextUtils.isEmpty(localDownloadInfo.q))
         {
-          i = localDownloadInfo.jdField_c_of_type_Int;
+          i = localDownloadInfo.o;
           TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1 = null;
           TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2;
           if (i == 0)
           {
-            localTMAssistantDownloadTaskInfo2 = DownloadManager.a().a(localDownloadInfo.jdField_d_of_type_JavaLangString);
+            localTMAssistantDownloadTaskInfo2 = DownloadManager.b().h(localDownloadInfo.d);
             localObject1 = localObject2;
             if (localTMAssistantDownloadTaskInfo2 != null)
             {
@@ -157,13 +218,13 @@ public class DownloadCenterImpl
             localObject2 = localObject1;
             if (TextUtils.isEmpty((CharSequence)localObject1))
             {
-              localTMAssistantDownloadTaskInfo1 = DownloadManager.a().a(localDownloadInfo);
+              localTMAssistantDownloadTaskInfo1 = DownloadManager.b().c(localDownloadInfo);
               localObject2 = localObject1;
             }
           }
           else
           {
-            localTMAssistantDownloadTaskInfo2 = DownloadManager.a().a(localDownloadInfo);
+            localTMAssistantDownloadTaskInfo2 = DownloadManager.b().c(localDownloadInfo);
             localObject1 = localObject2;
             if (localTMAssistantDownloadTaskInfo2 != null)
             {
@@ -175,7 +236,7 @@ public class DownloadCenterImpl
             localObject2 = localObject1;
             if (TextUtils.isEmpty((CharSequence)localObject1))
             {
-              localTMAssistantDownloadTaskInfo1 = DownloadManager.a().a(localDownloadInfo.jdField_d_of_type_JavaLangString);
+              localTMAssistantDownloadTaskInfo1 = DownloadManager.b().h(localDownloadInfo.d);
               localObject2 = localObject1;
             }
           }
@@ -190,18 +251,18 @@ public class DownloadCenterImpl
           localObject2 = localObject1;
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localDownloadInfo.l = ((String)localObject1);
+            localDownloadInfo.q = ((String)localObject1);
             localDownloadInfo.a(4);
-            DownloadManager.a().e(localDownloadInfo);
+            DownloadManager.b().f(localDownloadInfo);
             localObject2 = localObject1;
           }
         }
         else
         {
-          localObject2 = localDownloadInfo.l;
+          localObject2 = localDownloadInfo.q;
         }
         i = k;
-        if (!StringUtil.a((String)localObject2))
+        if (!StringUtil.isEmpty((String)localObject2))
         {
           i = k;
           if (((INowUtil)QRoute.api(INowUtil.class)).isExists((String)localObject2)) {
@@ -212,82 +273,16 @@ public class DownloadCenterImpl
     }
     label904:
     paramDownloadInfo.a(13);
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject1 = this.b.iterator();
     while (((Iterator)localObject1).hasNext()) {
       ((IDownloadCallback)((Iterator)localObject1).next()).a(paramDownloadInfo, i);
     }
     return i;
   }
   
-  public int a(ArrayList<DownloadInfo> paramArrayList)
-  {
-    if (paramArrayList == null)
-    {
-      LogUtility.a("DownloadCenterImpl", "getDownloadProgressById infos == null");
-      return -1;
-    }
-    ThreadManager.getSubThreadHandler().post(new DownloadCenterImpl.3(this, paramArrayList));
-    return 0;
-  }
-  
-  public DownloadInfo a(String paramString)
-  {
-    return DownloadManager.a().a(paramString);
-  }
-  
-  public void a(IDownloadCallback paramIDownloadCallback)
-  {
-    if (paramIDownloadCallback != null)
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      if ((localArrayList != null) && (!localArrayList.contains(paramIDownloadCallback))) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramIDownloadCallback);
-      }
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    if (((INowUtil)QRoute.api(INowUtil.class)).checkNowApkExist(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramDownloadInfo.e))
-    {
-      paramDownloadInfo.a(4);
-      paramDownloadInfo.l = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
-      DownloadManager.a().e(paramDownloadInfo);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener.onDownloadFinish(paramDownloadInfo);
-      return;
-    }
-    DownloadManager.a().a(paramDownloadInfo);
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo, ApkUpdateDetail paramApkUpdateDetail)
-  {
-    DownloadManager.a().a(paramDownloadInfo, paramApkUpdateDetail);
-  }
-  
-  public void a(String paramString)
-  {
-    DownloadManager.a().a(paramString);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    DownloadInfo localDownloadInfo = DownloadManager.a().a(paramString1);
-    paramString1 = localDownloadInfo;
-    if (localDownloadInfo == null) {
-      paramString1 = DownloadManager.a().b(paramString2);
-    }
-    if (paramString1 != null)
-    {
-      paramString1.g = 5;
-      paramString1.jdField_c_of_type_Int = 0;
-      paramString1.jdField_d_of_type_Int = 0;
-      DownloadManager.a().c(paramString1);
-    }
-  }
-  
   public void b(IDownloadCallback paramIDownloadCallback)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.b;
     if (localArrayList != null) {
       localArrayList.remove(paramIDownloadCallback);
     }
@@ -295,14 +290,19 @@ public class DownloadCenterImpl
   
   public void b(String paramString)
   {
-    DownloadInfo localDownloadInfo = DownloadManager.a().a(paramString);
-    DownloadManager.a().a(paramString, true);
-    DownloadManager.a().a(10, localDownloadInfo);
+    DownloadInfo localDownloadInfo = DownloadManager.b().d(paramString);
+    DownloadManager.b().a(paramString, true);
+    DownloadManager.b().a(10, localDownloadInfo);
+  }
+  
+  public DownloadInfo c(String paramString)
+  {
+    return DownloadManager.b().d(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.DownloadCenterImpl
  * JD-Core Version:    0.7.0.1
  */

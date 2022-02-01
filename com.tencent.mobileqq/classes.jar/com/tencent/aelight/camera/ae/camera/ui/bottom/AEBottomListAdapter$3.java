@@ -1,5 +1,6 @@
 package com.tencent.aelight.camera.ae.camera.ui.bottom;
 
+import com.tencent.aelight.camera.ae.AEMaterialViewModel;
 import com.tencent.aelight.camera.ae.camera.ui.AECaptureController;
 import com.tencent.aelight.camera.ae.data.AEMaterialManager;
 import com.tencent.aelight.camera.ae.data.AEMaterialMetaData;
@@ -14,19 +15,24 @@ class AEBottomListAdapter$3
   
   public void run()
   {
-    if (AEBottomListAdapter.a(this.this$0).getVisibility() == 0)
+    if (AEBottomListAdapter.b(this.this$0).getVisibility() == 0)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("### [bottom list] visible, select material ");
-      localStringBuilder.append(this.a.k);
+      localStringBuilder.append(this.a.m);
       QLog.d("AEBottomListAdapter", 4, localStringBuilder.toString());
-      AEBottomListAdapter.a(this.this$0).a(this.a, true);
+      AEBottomListAdapter.c(this.this$0).a(this.a, true);
     }
-    if (AEBottomListAdapter.a(this.this$0).getVisibility() == 0)
+    if (AEBottomListAdapter.b(this.this$0).getVisibility() == 0)
     {
-      if (AEBottomListAdapter.a(this.this$0).b())
+      if (AEBottomListAdapter.d(this.this$0).b())
       {
-        AEBottomListAdapter.a(this.this$0).a(this.a);
+        if (AEBottomListAdapter.e(this.this$0) != null)
+        {
+          AEBottomListAdapter.e(this.this$0).a(0, this.a);
+          return;
+        }
+        AEBottomListAdapter.f(this.this$0).a(this.a);
         return;
       }
       AEQLog.d("AEBottomListAdapter", "selectMaterial---but current capture mode is not normal");
@@ -37,7 +43,7 @@ class AEBottomListAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AEBottomListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

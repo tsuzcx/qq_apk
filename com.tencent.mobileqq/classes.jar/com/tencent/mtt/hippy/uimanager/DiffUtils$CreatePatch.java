@@ -3,7 +3,7 @@ package com.tencent.mtt.hippy.uimanager;
 public class DiffUtils$CreatePatch
   extends DiffUtils.Patch
 {
-  RenderNode renderNode;
+  final RenderNode renderNode;
   
   public DiffUtils$CreatePatch(RenderNode paramRenderNode)
   {
@@ -20,7 +20,7 @@ public class DiffUtils$CreatePatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.CreatePatch
  * JD-Core Version:    0.7.0.1
  */

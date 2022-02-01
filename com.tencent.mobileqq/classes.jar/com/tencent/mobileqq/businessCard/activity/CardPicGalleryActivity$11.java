@@ -33,22 +33,22 @@ class CardPicGalleryActivity$11
           paramObject.lastActivity = 1;
           paramObject.profileEntryType = 8;
           ProfileUtils.openProfileCard(this.a, paramObject);
-          QQToast.a(this.a, 0, 2131719973, 0).a();
+          QQToast.makeText(this.a, 0, 2131917578, 0).show();
         }
         this.a.finish();
         return;
       }
-      QQToast.a(this.a, 1, 2131719970, 0).a();
+      QQToast.makeText(this.a, 1, 2131917575, 0).show();
       return;
     }
     if ("profilelogic.setUserProfile".equals(paramObject)) {
-      QQToast.a(this.a, 1, 2131719970, 0).a();
+      QQToast.makeText(this.a, 1, 2131917575, 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity.11
  * JD-Core Version:    0.7.0.1
  */

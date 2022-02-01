@@ -66,13 +66,13 @@ public class ReactivePushHelper
     {
       try
       {
-        int k = ViewUtils.b(16.0F);
+        int k = ViewUtils.dpToPx(16.0F);
         localObject2 = localObject3;
-        Object localObject4 = MutualMarkUtils.a();
+        Object localObject4 = MutualMarkUtils.c();
         localObject2 = localObject3;
         ArrayList localArrayList = new ArrayList();
         localObject2 = localObject3;
-        Object localObject5 = MutualMarkUtils.a((String)localObject3);
+        Object localObject5 = MutualMarkUtils.e((String)localObject3);
         localObject1 = localObject3;
         Object localObject6;
         if (localObject5 != null)
@@ -91,28 +91,28 @@ public class ReactivePushHelper
               localObject6 = (MutualMarkUtils.ImageUrlTemplateInfo)((Iterator)localObject5).next();
               localObject2 = localObject3;
               j = i;
-              if (TextUtils.isEmpty(((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_b_of_type_JavaLangString)) {
+              if (TextUtils.isEmpty(((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).d)) {
                 break label763;
               }
               localObject2 = localObject3;
-              UrlBottomImageSpan localUrlBottomImageSpan = new UrlBottomImageSpan(paramContext, 0, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_b_of_type_JavaLangString, ViewUtils.b(16.0F), null);
+              UrlBottomImageSpan localUrlBottomImageSpan = new UrlBottomImageSpan(paramContext, 0, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).d, ViewUtils.dpToPx(16.0F), null);
               localObject1 = "[icon]";
               localObject2 = localObject3;
-              if (!TextUtils.isEmpty(((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).c))
+              if (!TextUtils.isEmpty(((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).e))
               {
                 localObject2 = localObject3;
-                localObject1 = ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).c;
+                localObject1 = ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).e;
               }
               localObject2 = localObject3;
-              ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_a_of_type_Int += i;
+              ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).a += i;
               localObject2 = localObject3;
-              ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_b_of_type_Int += i;
+              ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).b += i;
               localObject2 = localObject3;
-              paramSpannableStringBuilder.replace(((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_a_of_type_Int, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_b_of_type_Int, (CharSequence)localObject1);
+              paramSpannableStringBuilder.replace(((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).a, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).b, (CharSequence)localObject1);
               localObject2 = localObject3;
-              paramSpannableStringBuilder.setSpan(localUrlBottomImageSpan, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_a_of_type_Int, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_a_of_type_Int + ((String)localObject1).length(), 33);
+              paramSpannableStringBuilder.setSpan(localUrlBottomImageSpan, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).a, ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).a + ((String)localObject1).length(), 33);
               localObject2 = localObject3;
-              j = i + (((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_a_of_type_Int + ((String)localObject1).length() - ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).jdField_b_of_type_Int);
+              j = i + (((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).a + ((String)localObject1).length() - ((MutualMarkUtils.ImageUrlTemplateInfo)localObject6).b);
               break label763;
             }
             localObject2 = localObject3;
@@ -224,11 +224,11 @@ public class ReactivePushHelper
     ((StringBuilder)localObject).append(paramString);
     QLog.i("ReactivePushHelper", 1, ((StringBuilder)localObject).toString());
     paramString = paramString.replaceAll("[icon]", "");
-    localObject = MutualMarkUtils.a(paramString).iterator();
+    localObject = MutualMarkUtils.e(paramString).iterator();
     while (((Iterator)localObject).hasNext()) {
-      paramString = paramString.replaceAll(((MutualMarkUtils.ImageUrlTemplateInfo)((Iterator)localObject).next()).jdField_a_of_type_JavaLangString, "");
+      paramString = paramString.replaceAll(((MutualMarkUtils.ImageUrlTemplateInfo)((Iterator)localObject).next()).c, "");
     }
-    localObject = MutualMarkUtils.a().iterator();
+    localObject = MutualMarkUtils.c().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
@@ -241,48 +241,6 @@ public class ReactivePushHelper
     ((StringBuilder)localObject).append(paramString);
     QLog.i("ReactivePushHelper", 1, ((StringBuilder)localObject).toString());
     return paramString;
-  }
-  
-  private static void a(AppInterface paramAppInterface, long paramLong1, long paramLong2, String paramString)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("saveShowNotificationTime, time:");
-      ((StringBuilder)localObject).append(paramLong1);
-      ((StringBuilder)localObject).append(" localtime:");
-      ((StringBuilder)localObject).append(paramLong2);
-      ((StringBuilder)localObject).append(" frienduin:");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("ReactivePushHelper", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(paramLong1);
-    ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(paramLong2);
-    localObject = ((StringBuilder)localObject).toString();
-    SharedPreUtils.d(BaseApplicationImpl.getContext(), paramAppInterface.getCurrentUin(), (String)localObject, paramString);
-  }
-  
-  private static void a(AppInterface paramAppInterface, long paramLong, String paramString)
-  {
-    if (paramAppInterface == null) {
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("saveShowTipsTime, time:");
-      localStringBuilder.append(paramLong);
-      localStringBuilder.append(" frienduin:");
-      localStringBuilder.append(paramString);
-      QLog.d("ReactivePushHelper", 2, localStringBuilder.toString());
-    }
-    SharedPreUtils.a(BaseApplicationImpl.getContext(), paramAppInterface.getCurrentUin(), paramString, paramLong);
   }
   
   private static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, PushMsg0x210C7Info paramPushMsg0x210C7Info, int paramInt2, int paramInt3, long paramLong, String paramString5)
@@ -310,14 +268,14 @@ public class ReactivePushHelper
     }
     paramString3 = new StringBuilder(paramString2);
     paramString2 = MutualMarkGrayTipsHelper.a(paramAppInterface, paramString5, paramString3);
-    paramString3 = new UniteGrayTipParam(paramString5, paramString5, paramString3.toString(), 0, paramInt1, paramInt2, MessageCache.a());
+    paramString3 = new UniteGrayTipParam(paramString5, paramString5, paramString3.toString(), 0, paramInt1, paramInt2, MessageCache.c());
     paramString5 = new MessageForUniteGrayTip();
     paramString5.hasRead = 0;
     paramString5.subType = paramInt3;
     paramString5.initGrayTipMsg(paramAppInterface, paramString3);
     if (!TextUtils.isEmpty(paramString4))
     {
-      paramString5.tipParam.d = paramString4;
+      paramString5.tipParam.p = paramString4;
     }
     else
     {
@@ -328,7 +286,7 @@ public class ReactivePushHelper
       ((StringBuilder)localObject).append(paramPushMsg0x210C7Info.b);
       ((StringBuilder)localObject).append("_");
       ((StringBuilder)localObject).append(paramLong);
-      paramString4.d = ((StringBuilder)localObject).toString();
+      paramString4.p = ((StringBuilder)localObject).toString();
     }
     MutualMarkGrayTipsHelper.a(paramString3, paramString2);
     paramString5.saveExtInfoToExtStr("mutualmark_WillDowngradeSoon", "true");
@@ -342,7 +300,7 @@ public class ReactivePushHelper
       ((QQAppInterface)paramAppInterface).handleReceivedMessage(1, true, true);
       ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).setIncomingMsg(null);
       ReportController.b(paramAppInterface, "dc00898", "", "", "0X800A1BE", "0X800A1BE", 1, 0, "", "", "", "");
-      a(paramAppInterface, paramLong, l, "0");
+      b(paramAppInterface, paramLong, l, "0");
       if (QLog.isColorLevel())
       {
         paramAppInterface = new StringBuilder();
@@ -381,7 +339,7 @@ public class ReactivePushHelper
         }
         int i = paramRelationalChainChange.uint32_change_type.get();
         FriendsManager localFriendsManager = (FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        Friends localFriends = localFriendsManager.e((String)localObject);
+        Friends localFriends = localFriendsManager.m((String)localObject);
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("decodeC2CMsgPkgSubMsgType0xc7 friend:");
         localStringBuilder.append(localFriends);
@@ -393,7 +351,7 @@ public class ReactivePushHelper
           QLog.i("ReactivePushHelper", 1, "decodeC2CMsgPkgSubMsgType0xc7 is not friend");
           return;
         }
-        if (localFriendsManager.a((String)localObject) == null) {
+        if (localFriendsManager.x((String)localObject) == null) {
           new ExtensionInfo().uin = ((String)localObject);
         }
         if ((i != 1) && (i != 2) && (i != 3)) {
@@ -445,7 +403,7 @@ public class ReactivePushHelper
     }
     if (TextUtils.isEmpty(paramRelationalChainChange))
     {
-      paramRelationalChainChange = ContactUtils.f(paramAppInterface, paramString);
+      paramRelationalChainChange = ContactUtils.g(paramAppInterface, paramString);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -473,7 +431,7 @@ public class ReactivePushHelper
     if ((!TextUtils.isEmpty(str)) && (!MutualMarkUtils.a(paramAppInterface))) {
       a(paramAppInterface, paramString, str, paramRelationalChainChange, i, (String)localObject, paramPushMsg0x210C7Info, 2097155, 0, l, paramString);
     }
-    a(paramAppInterface, l, paramString);
+    b(paramAppInterface, l, paramString);
   }
   
   private static boolean a(AppInterface paramAppInterface, long paramLong1, long paramLong2, String paramString)
@@ -486,7 +444,7 @@ public class ReactivePushHelper
     if (paramAppInterface == null) {
       return false;
     }
-    long l = SharedPreUtils.a(BaseApplicationImpl.getContext(), paramAppInterface.getCurrentUin(), paramString);
+    long l = SharedPreUtils.y(BaseApplicationImpl.getContext(), paramAppInterface.getCurrentUin(), paramString);
     if (QLog.isColorLevel())
     {
       paramAppInterface = new StringBuilder();
@@ -531,7 +489,7 @@ public class ReactivePushHelper
         QLog.i("ReactivePushHelper", 1, "query msg, msg is null");
         return false;
       }
-      if ((paramQQAppInterface.tipParam != null) && (MutualMarkUtils.b(paramQQAppInterface.tipParam.jdField_b_of_type_Int)))
+      if ((paramQQAppInterface.tipParam != null) && (MutualMarkUtils.c(paramQQAppInterface.tipParam.i)))
       {
         QLog.i("ReactivePushHelper", 1, "isReactivePushTips : true");
         return true;
@@ -539,10 +497,52 @@ public class ReactivePushHelper
     }
     return false;
   }
+  
+  private static void b(AppInterface paramAppInterface, long paramLong1, long paramLong2, String paramString)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveShowNotificationTime, time:");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(" localtime:");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(" frienduin:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ReactivePushHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramLong2);
+    localObject = ((StringBuilder)localObject).toString();
+    SharedPreUtils.e(BaseApplicationImpl.getContext(), paramAppInterface.getCurrentUin(), (String)localObject, paramString);
+  }
+  
+  private static void b(AppInterface paramAppInterface, long paramLong, String paramString)
+  {
+    if (paramAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveShowTipsTime, time:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" frienduin:");
+      localStringBuilder.append(paramString);
+      QLog.d("ReactivePushHelper", 2, localStringBuilder.toString());
+    }
+    SharedPreUtils.a(BaseApplicationImpl.getContext(), paramAppInterface.getCurrentUin(), paramString, paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.ReactivePushHelper
  * JD-Core Version:    0.7.0.1
  */

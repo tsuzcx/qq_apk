@@ -16,16 +16,16 @@ public abstract interface IEventPlugin
   @Nullable
   public abstract String a(@NotNull Argument paramArgument);
   
-  @NotNull
-  public abstract List<String> a();
-  
-  public abstract boolean a();
-  
   public abstract boolean a(@NotNull String paramString);
+  
+  @NotNull
+  public abstract List<String> c();
+  
+  public abstract boolean d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.IEventPlugin
  * JD-Core Version:    0.7.0.1
  */

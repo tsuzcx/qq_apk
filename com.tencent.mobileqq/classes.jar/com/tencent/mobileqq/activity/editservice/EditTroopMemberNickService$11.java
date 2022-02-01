@@ -19,19 +19,19 @@ class EditTroopMemberNickService$11
     if ((paramBoolean) && ((paramObject instanceof readItemInfoRsp)))
     {
       paramObject = (readItemInfoRsp)paramObject;
-      EditTroopMemberNickService.b(this.a, paramObject.index);
+      EditTroopMemberNickService.d(this.a, paramObject.index);
       Object localObject1 = paramObject.urlprefix;
       Iterator localIterator;
       Object localObject2;
-      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditTroopMemberNickService.a(this.a).size() == 0))
+      if ((paramObject.emojilist != null) && (paramObject.emojilist.size() > 0) && (EditTroopMemberNickService.j(this.a).size() == 0))
       {
         localIterator = paramObject.emojilist.iterator();
         while (localIterator.hasNext())
         {
           localObject2 = (GroupNickEmoji)localIterator.next();
-          EditTroopMemberNickService.a(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
+          EditTroopMemberNickService.j(this.a).add(Integer.valueOf(((GroupNickEmoji)localObject2).itemid));
         }
-        this.a.a.sendEmptyMessage(260);
+        this.a.L.sendEmptyMessage(260);
       }
       if ((paramObject.itemlist != null) && (paramObject.itemlist.size() > 0))
       {
@@ -44,7 +44,7 @@ class EditTroopMemberNickService$11
           ((StringBuilder)localObject3).append(((GroupNickItem)localObject2).url);
           localObject3 = ((StringBuilder)localObject3).toString();
           localObject2 = new ColorNickColorPanelAdapter.ColorItem(3, null, ((GroupNickItem)localObject2).itemid, (String)localObject3);
-          EditTroopMemberNickService.b(this.a).add(localObject2);
+          EditTroopMemberNickService.k(this.a).add(localObject2);
         }
         localObject1 = this.a;
         int i = paramObject.left;
@@ -52,14 +52,14 @@ class EditTroopMemberNickService$11
         if (i != 1) {
           paramBoolean = false;
         }
-        EditTroopMemberNickService.a((EditTroopMemberNickService)localObject1, paramBoolean);
+        EditTroopMemberNickService.c((EditTroopMemberNickService)localObject1, paramBoolean);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.11
  * JD-Core Version:    0.7.0.1
  */

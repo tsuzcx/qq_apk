@@ -32,26 +32,25 @@ public class SigCommentSessionListAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  public int a;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View jdField_a_of_type_AndroidViewView;
-  private SigCommentListActivity jdField_a_of_type_ComTencentMobileqqActivitySigCommentListActivity;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SignatureManager jdField_a_of_type_ComTencentMobileqqAppSignatureManager = null;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ArrayList<SignatureManager.SigCommentInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private View b;
+  public int a = -1;
+  private QQAppInterface b;
+  private SigCommentListActivity c;
+  private LayoutInflater d;
+  private ArrayList<SignatureManager.SigCommentInfo> e = new ArrayList();
+  private SignatureManager f = null;
+  private XListView g;
+  private View h;
+  private View i;
+  private boolean j;
   
   public SigCommentSessionListAdapter(SigCommentListActivity paramSigCommentListActivity, QQAppInterface paramQQAppInterface, XListView paramXListView, View paramView)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqActivitySigCommentListActivity = paramSigCommentListActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramSigCommentListActivity);
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager = ((SignatureManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SIGNATURE_MANAGER));
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.c = paramSigCommentListActivity;
+    this.d = LayoutInflater.from(paramSigCommentListActivity);
+    this.g = paramXListView;
+    this.b = paramQQAppInterface;
+    this.f = ((SignatureManager)this.b.getManager(QQManagerFactory.SIGNATURE_MANAGER));
+    this.h = paramView;
   }
   
   private void a(String paramString, TextView paramTextView)
@@ -59,7 +58,7 @@ public class SigCommentSessionListAdapter
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Object localObject = (SignatureManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SIGNATURE_MANAGER);
+    Object localObject = (SignatureManager)this.b.getManager(QQManagerFactory.SIGNATURE_MANAGER);
     if (localObject != null)
     {
       paramString = ((SignatureManager)localObject).a(paramString);
@@ -84,50 +83,50 @@ public class SigCommentSessionListAdapter
   
   public SignatureManager.SigCommentInfo a(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
-      return (SignatureManager.SigCommentInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return (SignatureManager.SigCommentInfo)this.e.get(paramInt);
     }
     return null;
   }
   
   public List<SignatureManager.SigCommentInfo> a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+    if (this.e.size() == 0) {
       return null;
     }
-    return (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
-  }
-  
-  public void a(int paramInt)
-  {
-    View localView = this.b;
-    if (localView != null) {
-      ((SigCommentSessionListAdapter.MoreViewHolder)localView.getTag()).jdField_a_of_type_AndroidWidgetTextView.setText(paramInt);
-    }
+    return (ArrayList)this.e.clone();
   }
   
   public void a(List<SignatureManager.SigCommentInfo> paramList, boolean paramBoolean)
   {
-    if (paramList != this.jdField_a_of_type_JavaUtilArrayList) {
-      this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)paramList);
+    if (paramList != this.e) {
+      this.e = ((ArrayList)paramList);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    View localView = this.i;
+    if (localView != null) {
+      ((SigCommentSessionListAdapter.MoreViewHolder)localView.getTag()).a.setText(paramInt);
+    }
   }
   
   public int getCount()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    int i;
+    ArrayList localArrayList = this.e;
+    int k;
     if (localArrayList != null) {
-      i = localArrayList.size();
+      k = localArrayList.size();
     } else {
-      i = 0;
+      k = 0;
     }
-    if (i == 0) {
+    if (k == 0) {
       return 1;
     }
-    return i + (true ^ this.jdField_a_of_type_Boolean);
+    return k + (true ^ this.j);
   }
   
   public long getItemId(int paramInt)
@@ -137,10 +136,10 @@ public class SigCommentSessionListAdapter
   
   public int getItemViewType(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if ((localArrayList != null) && (localArrayList.size() != 0))
     {
-      if (paramInt == this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt == this.e.size()) {
         return 2;
       }
       return 1;
@@ -150,24 +149,24 @@ public class SigCommentSessionListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = getItemViewType(paramInt);
+    int k = getItemViewType(paramInt);
     Object localObject1;
-    if (i == 0)
+    if (k == 0)
     {
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentWidgetXListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetXListView.getHeight()));
-      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      this.h.setLayoutParams(new AbsListView.LayoutParams(this.g.getWidth(), this.g.getHeight()));
+      localObject1 = this.h;
     }
-    else if (1 == i)
+    else if (1 == k)
     {
       if (paramView == null)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562858, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+        paramView = this.d.inflate(2131629309, this.g, false);
         localObject1 = new SigCommentSessionListAdapter.ViewHolder();
-        ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377585));
-        ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377586));
-        ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131377583));
-        ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377584));
-        ((SigCommentSessionListAdapter.ViewHolder)localObject1).c = ((TextView)paramView.findViewById(2131377587));
+        ((SigCommentSessionListAdapter.ViewHolder)localObject1).a = ((ImageView)paramView.findViewById(2131445993));
+        ((SigCommentSessionListAdapter.ViewHolder)localObject1).b = ((TextView)paramView.findViewById(2131445994));
+        ((SigCommentSessionListAdapter.ViewHolder)localObject1).c = ((ImageView)paramView.findViewById(2131445991));
+        ((SigCommentSessionListAdapter.ViewHolder)localObject1).d = ((TextView)paramView.findViewById(2131445992));
+        ((SigCommentSessionListAdapter.ViewHolder)localObject1).e = ((TextView)paramView.findViewById(2131445995));
         paramView.setTag(localObject1);
       }
       else
@@ -176,55 +175,55 @@ public class SigCommentSessionListAdapter
       }
       SignatureManager.SigCommentInfo localSigCommentInfo = a(paramInt);
       Object localObject2 = String.valueOf(localSigCommentInfo.uin);
-      Object localObject3 = FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, (String)localObject2);
+      Object localObject3 = FaceDrawable.getFaceDrawable(this.b, 1, (String)localObject2);
       if (localObject3 != null) {
-        ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject3);
+        ((SigCommentSessionListAdapter.ViewHolder)localObject1).a.setImageDrawable((Drawable)localObject3);
       }
-      localObject2 = ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject2);
-      ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetImageView.setBackgroundResource(2130850370);
+      localObject2 = ContactUtils.g(this.b, (String)localObject2);
+      ((SigCommentSessionListAdapter.ViewHolder)localObject1).b.setText((CharSequence)localObject2);
+      ((SigCommentSessionListAdapter.ViewHolder)localObject1).c.setBackgroundResource(2130852161);
       localObject2 = Calendar.getInstance();
       ((Calendar)localObject2).setTimeInMillis(localSigCommentInfo.time * 1000L);
-      i = ((Calendar)localObject2).get(9);
+      k = ((Calendar)localObject2).get(9);
       localObject2 = new SimpleDateFormat("hh:mm").format(new Date(localSigCommentInfo.time * 1000L));
-      if (i == 0)
+      if (k == 0)
       {
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131713983));
+        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131911514));
         ((StringBuilder)localObject3).append((String)localObject2);
         localObject2 = ((StringBuilder)localObject3).toString();
       }
       else
       {
         localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131713980));
+        ((StringBuilder)localObject3).append(HardCodeUtil.a(2131911511));
         ((StringBuilder)localObject3).append((String)localObject2);
         localObject2 = ((StringBuilder)localObject3).toString();
       }
-      ((SigCommentSessionListAdapter.ViewHolder)localObject1).jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      a(localSigCommentInfo.feedsid, ((SigCommentSessionListAdapter.ViewHolder)localObject1).c);
+      ((SigCommentSessionListAdapter.ViewHolder)localObject1).d.setText((CharSequence)localObject2);
+      a(localSigCommentInfo.feedsid, ((SigCommentSessionListAdapter.ViewHolder)localObject1).e);
       localObject1 = paramView;
     }
     else
     {
       localObject1 = paramView;
-      if (2 == i)
+      if (2 == k)
       {
         if (paramView == null)
         {
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562047, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+          paramView = this.d.inflate(2131628473, this.g, false);
           paramView.setOnClickListener(this);
           localObject1 = new SigCommentSessionListAdapter.MoreViewHolder();
           paramView.setTag(localObject1);
-          paramView.findViewById(2131370354).setVisibility(8);
-          ((SigCommentSessionListAdapter.MoreViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371517));
-          this.b = paramView;
+          paramView.findViewById(2131437616).setVisibility(8);
+          ((SigCommentSessionListAdapter.MoreViewHolder)localObject1).a = ((TextView)paramView.findViewById(2131438894));
+          this.i = paramView;
         }
         else
         {
           paramView = (SigCommentSessionListAdapter.MoreViewHolder)paramView.getTag();
         }
-        localObject1 = this.b;
+        localObject1 = this.i;
       }
     }
     EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
@@ -238,9 +237,9 @@ public class SigCommentSessionListAdapter
   
   public void onClick(View paramView)
   {
-    if (this.b == paramView)
+    if (this.i == paramView)
     {
-      MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SigCommentListActivity.class);
+      MqqHandler localMqqHandler = this.b.getHandler(SigCommentListActivity.class);
       if (localMqqHandler != null) {
         localMqqHandler.sendMessageDelayed(localMqqHandler.obtainMessage(0, 1, 0), 200L);
       }
@@ -250,7 +249,7 @@ public class SigCommentSessionListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.SigCommentSessionListAdapter
  * JD-Core Version:    0.7.0.1
  */

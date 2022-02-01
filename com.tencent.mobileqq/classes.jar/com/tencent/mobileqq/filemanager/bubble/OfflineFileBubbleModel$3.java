@@ -13,15 +13,15 @@ class OfflineFileBubbleModel$3
   
   public void run()
   {
-    FileManagerUtil.c(this.a);
-    if (FileUtil.a(this.a.strLargeThumPath)) {
-      this.this$0.a.getFileManagerDataCenter().c(this.a);
+    FileManagerUtil.g(this.a);
+    if (FileUtil.b(this.a.strLargeThumPath)) {
+      this.this$0.b.getFileManagerDataCenter().c(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.3
  * JD-Core Version:    0.7.0.1
  */

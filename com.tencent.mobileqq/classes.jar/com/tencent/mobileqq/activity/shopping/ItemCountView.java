@@ -14,9 +14,9 @@ import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 public class ItemCountView
   extends FrameLayout
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  private URLImageView a;
+  private DragTextView b;
+  private TextView c;
   
   public ItemCountView(@NonNull Context paramContext)
   {
@@ -31,15 +31,15 @@ public class ItemCountView
   
   private void a(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, 2131559314, this);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramContext.findViewById(2131363496));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramContext.findViewById(2131376319));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131371697));
+    paramContext = View.inflate(paramContext, 2131625263, this);
+    this.a = ((URLImageView)paramContext.findViewById(2131429397));
+    this.b = ((DragTextView)paramContext.findViewById(2131444530));
+    this.c = ((TextView)paramContext.findViewById(2131439121));
   }
   
   public void setBg(Drawable paramDrawable)
   {
-    URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+    URLImageView localURLImageView = this.a;
     if (localURLImageView != null) {
       localURLImageView.setBackgroundDrawable(paramDrawable);
     }
@@ -47,7 +47,7 @@ public class ItemCountView
   
   public void setRedCount(boolean paramBoolean, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+    Object localObject = this.b;
     if (localObject != null)
     {
       if (paramBoolean)
@@ -57,8 +57,8 @@ public class ItemCountView
         } else {
           localObject = String.valueOf(paramInt);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setText((CharSequence)localObject);
+        this.b.setVisibility(0);
+        this.b.setText((CharSequence)localObject);
         return;
       }
       ((DragTextView)localObject).setVisibility(8);
@@ -67,7 +67,7 @@ public class ItemCountView
   
   public void setTitle(String paramString)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.c;
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -75,7 +75,7 @@ public class ItemCountView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ItemCountView
  * JD-Core Version:    0.7.0.1
  */

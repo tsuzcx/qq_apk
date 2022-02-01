@@ -40,7 +40,7 @@ public class HonorRichProcessor
       {
         if ((this.appRuntime instanceof QQAppInterface))
         {
-          if (((ITroopListHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).a())
+          if (((ITroopListHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).c())
           {
             ((ITroopHonorService)this.appRuntime.getRuntimeService(ITroopHonorService.class, "")).saveHostHonorListRichTag(ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get());
             localObject = (ITroopHonorHandler)this.appRuntime.getRuntimeService(ITroopHonorHandler.class, "");
@@ -75,7 +75,7 @@ public class HonorRichProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.HonorRichProcessor
  * JD-Core Version:    0.7.0.1
  */

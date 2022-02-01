@@ -67,7 +67,7 @@ public class QzoneWebViewOfflinePlugin
   {
     try
     {
-      Object localObject = this.mRuntime.a();
+      Object localObject = this.mRuntime.d();
       if (localObject == null) {
         return null;
       }
@@ -93,7 +93,7 @@ public class QzoneWebViewOfflinePlugin
     }
     try
     {
-      long l = paramPluginRuntime.a().getIntent().getLongExtra("preAct_time", 0L);
+      long l = paramPluginRuntime.d().getIntent().getLongExtra("preAct_time", 0L);
       return l;
     }
     catch (Exception paramPluginRuntime)
@@ -223,7 +223,7 @@ public class QzoneWebViewOfflinePlugin
             if (this.mRuntime == null) {
               break label277;
             }
-            paramVarArgs = this.mRuntime.a();
+            paramVarArgs = this.mRuntime.b();
             if (QzoneZipCacheHelper.checkAndDownLoadFileIfNeeded(paramVarArgs, str1, str2, str3, i, new QzoneWebViewOfflinePlugin.2(this, str2, str3, str4))) {
               jsCallback(true, str2, str3, str4);
             }
@@ -258,13 +258,13 @@ public class QzoneWebViewOfflinePlugin
       {
         localObject1 = new JSONObject(paramVarArgs[0]);
         localCgiReqInfo.f = ((JSONObject)localObject1).optString("callback");
-        localCgiReqInfo.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("url");
-        if (!TextUtils.isEmpty(localCgiReqInfo.jdField_a_of_type_JavaLangString))
+        localCgiReqInfo.a = ((JSONObject)localObject1).optString("url");
+        if (!TextUtils.isEmpty(localCgiReqInfo.a))
         {
-          if (isUrlHostEqual(getCurrentUrl(), localCgiReqInfo.jdField_a_of_type_JavaLangString))
+          if (isUrlHostEqual(getCurrentUrl(), localCgiReqInfo.a))
           {
-            localCgiReqInfo.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("method");
-            if ((!"GET".equalsIgnoreCase(localCgiReqInfo.jdField_b_of_type_JavaLangString)) && (!"POST".equalsIgnoreCase(localCgiReqInfo.jdField_b_of_type_JavaLangString))) {
+            localCgiReqInfo.b = ((JSONObject)localObject1).optString("method");
+            if ((!"GET".equalsIgnoreCase(localCgiReqInfo.b)) && (!"POST".equalsIgnoreCase(localCgiReqInfo.b))) {
               throw new Exception("no such method support!!!");
             }
             localObject2 = ((JSONObject)localObject1).opt("body");
@@ -287,26 +287,26 @@ public class QzoneWebViewOfflinePlugin
             if (localObject2 != null) {
               str = localObject2.toString();
             }
-            localCgiReqInfo.jdField_c_of_type_JavaLangString = str;
-            localCgiReqInfo.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("dataNeedBase64", false);
-            localCgiReqInfo.jdField_a_of_type_Int = ((int)(((JSONObject)localObject1).optDouble("timeout", 0.0D) * 1000.0D));
-            localCgiReqInfo.jdField_a_of_type_JavaLangObject = ((JSONObject)localObject1).opt("userinfo");
+            localCgiReqInfo.c = str;
+            localCgiReqInfo.g = ((JSONObject)localObject1).optBoolean("dataNeedBase64", false);
+            localCgiReqInfo.h = ((int)(((JSONObject)localObject1).optDouble("timeout", 0.0D) * 1000.0D));
+            localCgiReqInfo.i = ((JSONObject)localObject1).opt("userinfo");
             if (this.cgiRequestHandler == null) {
               this.cgiRequestHandler = new QzoneWebViewOfflinePlugin.3(this, Looper.getMainLooper());
             }
             if (!WebSoCgiService.a().a(localCgiReqInfo, this.cgiRequestHandler))
             {
               paramVarArgs = new WebSoCgiService.WebSoCgiState();
-              paramVarArgs.jdField_b_of_type_JavaLangString = localCgiReqInfo.jdField_a_of_type_JavaLangString;
-              paramVarArgs.jdField_a_of_type_Int = 1;
-              paramVarArgs.jdField_c_of_type_Int = 101;
-              paramVarArgs.f = "send req fail!";
+              paramVarArgs.b = localCgiReqInfo.a;
+              paramVarArgs.e = 1;
+              paramVarArgs.i = 101;
+              paramVarArgs.j = "send req fail!";
               notifyCgiStatus(paramVarArgs, localCgiReqInfo.f);
             }
             return;
           }
           String str = getUrlHost(getCurrentUrl());
-          localObject1 = getUrlHost(localCgiReqInfo.jdField_a_of_type_JavaLangString);
+          localObject1 = getUrlHost(localCgiReqInfo.a);
           Object localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append("not support for cross-domain request!!! current host=");
           ((StringBuilder)localObject2).append(str);
@@ -323,11 +323,11 @@ public class QzoneWebViewOfflinePlugin
         ((StringBuilder)localObject1).append(paramVarArgs[0]);
         QLog.w("QzoneWebViewOfflinePlugin", 1, ((StringBuilder)localObject1).toString(), localException);
         paramVarArgs = new WebSoCgiService.WebSoCgiState();
-        paramVarArgs.jdField_b_of_type_JavaLangString = localCgiReqInfo.jdField_a_of_type_JavaLangString;
-        paramVarArgs.jdField_a_of_type_Int = 3;
-        paramVarArgs.jdField_c_of_type_Int = 101;
-        paramVarArgs.f = localException.getMessage();
-        paramVarArgs.e = localCgiReqInfo.f;
+        paramVarArgs.b = localCgiReqInfo.a;
+        paramVarArgs.e = 3;
+        paramVarArgs.i = 101;
+        paramVarArgs.j = localException.getMessage();
+        paramVarArgs.h = localCgiReqInfo.f;
         notifyCgiStatus(paramVarArgs, localCgiReqInfo.f);
         return;
       }
@@ -417,7 +417,7 @@ public class QzoneWebViewOfflinePlugin
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      int i = paramWebSoCgiState.jdField_a_of_type_Int;
+      int i = paramWebSoCgiState.e;
       if (i != 1)
       {
         if (i != 2)
@@ -439,18 +439,18 @@ public class QzoneWebViewOfflinePlugin
       else {
         localJSONObject.put("status", 2);
       }
-      if (!TextUtils.isEmpty(paramWebSoCgiState.jdField_b_of_type_JavaLangString)) {
-        localJSONObject.put("url", paramWebSoCgiState.jdField_b_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(paramWebSoCgiState.b)) {
+        localJSONObject.put("url", paramWebSoCgiState.b);
       }
-      localJSONObject.put("code", paramWebSoCgiState.jdField_c_of_type_Int);
-      if (!TextUtils.isEmpty(paramWebSoCgiState.f)) {
-        localJSONObject.put("msg", paramWebSoCgiState.f);
+      localJSONObject.put("code", paramWebSoCgiState.i);
+      if (!TextUtils.isEmpty(paramWebSoCgiState.j)) {
+        localJSONObject.put("msg", paramWebSoCgiState.j);
       }
-      localJSONObject.put("dataIsBase64", paramWebSoCgiState.jdField_a_of_type_Boolean);
+      localJSONObject.put("dataIsBase64", paramWebSoCgiState.g);
       boolean bool = TextUtils.isEmpty(paramWebSoCgiState.d);
       if (!bool)
       {
-        if (paramWebSoCgiState.jdField_a_of_type_Boolean) {
+        if (paramWebSoCgiState.g) {
           localObject = Base64Util.encodeToString(paramWebSoCgiState.d.getBytes(), 0);
         } else {
           localObject = paramWebSoCgiState.d;
@@ -461,21 +461,21 @@ public class QzoneWebViewOfflinePlugin
       {
         localJSONObject.put("data", "");
       }
-      if (paramWebSoCgiState.jdField_b_of_type_Int > 0) {
-        localJSONObject.put("httpStatusCode", paramWebSoCgiState.jdField_b_of_type_Int);
+      if (paramWebSoCgiState.f > 0) {
+        localJSONObject.put("httpStatusCode", paramWebSoCgiState.f);
       }
-      if (!TextUtils.isEmpty(paramWebSoCgiState.jdField_c_of_type_JavaLangString)) {
-        localJSONObject.put("header", new JSONObject(paramWebSoCgiState.jdField_c_of_type_JavaLangString));
+      if (!TextUtils.isEmpty(paramWebSoCgiState.c)) {
+        localJSONObject.put("header", new JSONObject(paramWebSoCgiState.c));
       }
-      if (paramWebSoCgiState.jdField_a_of_type_JavaLangObject != null) {
-        localJSONObject.put("userinfo", paramWebSoCgiState.jdField_a_of_type_JavaLangObject);
+      if (paramWebSoCgiState.k != null) {
+        localJSONObject.put("userinfo", paramWebSoCgiState.k);
       }
       callJs(paramString, new String[] { localJSONObject.toString() });
       long l1 = System.currentTimeMillis();
-      long l2 = paramWebSoCgiState.jdField_a_of_type_Long;
+      long l2 = paramWebSoCgiState.n;
       paramString = new StringBuilder();
       paramString.append("wnscgi@ status=");
-      paramString.append(paramWebSoCgiState.jdField_a_of_type_Int);
+      paramString.append(paramWebSoCgiState.e);
       paramString.append(",total cost ");
       paramString.append(l1 - l2);
       paramString.append(" ms");
@@ -493,7 +493,7 @@ public class QzoneWebViewOfflinePlugin
     Object localObject = this.mRuntime;
     CustomWebView localCustomWebView = null;
     if (localObject != null) {
-      localObject = this.mRuntime.a();
+      localObject = this.mRuntime.d();
     } else {
       localObject = null;
     }
@@ -509,7 +509,7 @@ public class QzoneWebViewOfflinePlugin
     }
     AppInterface localAppInterface;
     if (this.mRuntime != null) {
-      localAppInterface = this.mRuntime.a();
+      localAppInterface = this.mRuntime.b();
     } else {
       localAppInterface = null;
     }
@@ -531,7 +531,7 @@ public class QzoneWebViewOfflinePlugin
       if (this.mRuntime != null)
       {
         QzoneOfflinePluginJsForQQ.mWebView = new WeakReference(this.mRuntime.a());
-        QzoneOfflinePluginJsForQQ.mActivity = new WeakReference(this.mRuntime.a());
+        QzoneOfflinePluginJsForQQ.mActivity = new WeakReference(this.mRuntime.d());
       }
       return shouldInterceptRequest(paramString);
     }
@@ -573,7 +573,7 @@ public class QzoneWebViewOfflinePlugin
           this.proxyUrl = paramJsBridgeListener.optString("proxyUrl");
           boolean bool = paramJsBridgeListener.getBoolean("isCheckCache");
           this.callback = paramJsBridgeListener.getString("callback");
-          if ((bool) && (!TextUtils.isEmpty(WebSoUtils.d(this.proxyUrl))))
+          if ((bool) && (!TextUtils.isEmpty(WebSoUtils.h(this.proxyUrl))))
           {
             if (TextUtils.isEmpty(this.callback)) {
               break label291;
@@ -613,12 +613,12 @@ public class QzoneWebViewOfflinePlugin
   
   protected void onCgiRsp(WebSoCgiService.WebSoCgiState paramWebSoCgiState)
   {
-    notifyCgiStatus(paramWebSoCgiState, paramWebSoCgiState.e);
+    notifyCgiStatus(paramWebSoCgiState, paramWebSoCgiState.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneWebViewOfflinePlugin
  * JD-Core Version:    0.7.0.1
  */

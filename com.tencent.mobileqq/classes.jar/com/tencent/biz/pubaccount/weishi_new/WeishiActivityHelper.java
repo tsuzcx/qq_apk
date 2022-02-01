@@ -9,7 +9,9 @@ import com.tencent.biz.pubaccount.weishi_new.config.WSConfigManager;
 import com.tencent.biz.pubaccount.weishi_new.config.WeSeeConfigBean;
 import com.tencent.biz.pubaccount.weishi_new.config.WeSeeStrategyConfigInfo;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
+import com.tencent.biz.pubaccount.weishi_new.main.WSLauncher.VerticalPageLauncher;
 import com.tencent.biz.pubaccount.weishi_new.miniapp.WSMiniAppHelper;
+import com.tencent.biz.pubaccount.weishi_new.operationh5.WSCommonWebViewFragment;
 import com.tencent.biz.pubaccount.weishi_new.operationh5.WSOperationWebViewFragment;
 import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
 import com.tencent.biz.pubaccount.weishi_new.push.WSBaseStrategyInfo;
@@ -22,7 +24,6 @@ import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
 import com.tencent.biz.pubaccount.weishi_new.util.WSInitializeHelper;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.utils.RouteUtils;
@@ -39,10 +40,10 @@ public class WeishiActivityHelper
 {
   private static WSRedDotPushMsg a()
   {
-    Object localObject = WSConfigManager.a().a();
+    Object localObject = WSConfigManager.a().b();
     if (localObject != null)
     {
-      localObject = ((WeSeeConfigBean)localObject).a;
+      localObject = ((WeSeeConfigBean)localObject).b;
       if (localObject != null)
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -100,7 +101,7 @@ public class WeishiActivityHelper
   
   public static void a(Activity paramActivity, Intent paramIntent, WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    WSVerticalPageFragment.a(new WSVerticalPageOpenParams(paramActivity, "trends", ""));
+    WSLauncher.VerticalPageLauncher.a(new WSVerticalPageOpenParams(paramActivity, "trends", ""));
   }
   
   public static void a(Context paramContext, WSPublicAccLaunchParams paramWSPublicAccLaunchParams)
@@ -109,9 +110,9 @@ public class WeishiActivityHelper
     localStringBuilder.append("外部跳转微视公众号 from=");
     localStringBuilder.append(paramWSPublicAccLaunchParams.a());
     WSLog.d("WeishiActivityHelper", localStringBuilder.toString());
-    WSInitializeHelper.a().a().a();
+    WSInitializeHelper.a().h().a();
     if (!a(paramWSPublicAccLaunchParams.a())) {
-      WSInitializeHelper.a().c();
+      WSInitializeHelper.a().d();
     }
     b(paramContext, paramWSPublicAccLaunchParams);
   }
@@ -123,6 +124,7 @@ public class WeishiActivityHelper
       localIntent.addFlags(268435456);
     }
     localIntent.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+    localIntent.putExtra("fragmentClass", WSCommonWebViewFragment.class);
     localIntent.putExtra("url", paramString);
     paramContext.startActivity(localIntent);
   }
@@ -134,8 +136,8 @@ public class WeishiActivityHelper
   
   public static void a(Context paramContext, String paramString, boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo, Intent paramIntent)
   {
-    WSInitializeHelper.a().c();
-    if ("1".equals(WSExpABTestManager.a().c()))
+    WSInitializeHelper.a().d();
+    if ("1".equals(WSExpABTestManager.a().r()))
     {
       b(paramContext, new WSPublicAccLaunchParams(paramString, 0, true));
       return;
@@ -146,7 +148,7 @@ public class WeishiActivityHelper
   private static void a(Context paramContext, boolean paramBoolean, BusinessInfoCheckUpdate.AppInfo paramAppInfo, Intent paramIntent)
   {
     WeishiUtils.a(paramAppInfo, paramBoolean);
-    WSInitializeHelper.a().b();
+    WSInitializeHelper.a().c();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("handleTrendsTabClick hasRedDot = ");
     localStringBuilder.append(paramBoolean);
@@ -154,7 +156,7 @@ public class WeishiActivityHelper
     if (paramBoolean)
     {
       paramAppInfo = a(paramAppInfo);
-      WSReportDc00898.b();
+      WSReportDc00898.d();
     }
     else
     {
@@ -189,8 +191,8 @@ public class WeishiActivityHelper
   
   public static boolean a(Context paramContext, Map<String, String> paramMap)
   {
-    WSInitializeHelper.a().a();
-    WSInitializeHelper.a().c();
+    WSInitializeHelper.a().b();
+    WSInitializeHelper.a().d();
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
     if (!(paramContext instanceof Activity)) {
       localIntent.addFlags(268435456);
@@ -218,14 +220,14 @@ public class WeishiActivityHelper
       WSLog.d("WSPushLog", "WeishiActivityHelper handleJumpTargetVideoFeed, context is null.");
       return;
     }
-    WSInitializeHelper.a().a();
+    WSInitializeHelper.a().b();
     boolean bool = TextUtils.equals(paramWSPublicAccLaunchParams.a(), "from_home_page");
     int i = 1;
     Object localObject;
     if (bool)
     {
-      localObject = WeishiUtils.a();
-      WSReportDc00898.a((WSRedDotPushMsg)localObject);
+      localObject = WeishiUtils.g();
+      WSReportDc00898.b((WSRedDotPushMsg)localObject);
       if (a(paramContext, (WSRedDotPushMsg)localObject, 2, null))
       {
         paramContext = WSPublicAccReport.getInstance();
@@ -239,15 +241,15 @@ public class WeishiActivityHelper
     if (!a(paramWSPublicAccLaunchParams.a()))
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putString("web_url", paramWSPublicAccLaunchParams.c());
+      ((Bundle)localObject).putString("web_url", paramWSPublicAccLaunchParams.d());
       WSPublicAccReport.getInstance().enterPublicAccReport(null, 1, paramWSPublicAccLaunchParams.a(), (Bundle)localObject);
     }
-    WSHomeFragment.a(new WSHomeLaunchParams(paramContext, 1, paramWSPublicAccLaunchParams.a()).a(paramWSPublicAccLaunchParams.a()).b(paramWSPublicAccLaunchParams.b()).a(paramWSPublicAccLaunchParams.b()));
+    WSHomeFragment.a(new WSHomeLaunchParams(paramContext, 1, paramWSPublicAccLaunchParams.a()).a(paramWSPublicAccLaunchParams.b()).b(paramWSPublicAccLaunchParams.e()).a(paramWSPublicAccLaunchParams.c()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper
  * JD-Core Version:    0.7.0.1
  */

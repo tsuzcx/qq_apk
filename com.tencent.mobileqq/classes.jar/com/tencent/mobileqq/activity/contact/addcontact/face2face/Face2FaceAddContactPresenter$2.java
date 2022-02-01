@@ -9,19 +9,19 @@ class Face2FaceAddContactPresenter$2
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Face2FaceAddContactPresenter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFace2faceFace2FaceAddContactPresenter).i();
+    Face2FaceAddContactPresenter.a(this.d).i();
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      Face2FaceAddContactPresenter.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFace2faceFace2FaceAddContactPresenter, this.jdField_a_of_type_JavaLangString, this.b);
+    if (this.a) {
+      Face2FaceAddContactPresenter.a(this.d, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactPresenter.2
  * JD-Core Version:    0.7.0.1
  */

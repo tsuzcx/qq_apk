@@ -12,23 +12,23 @@ class AEVideoStoryCaptureModePart$AECaptureModeAdapter$1
   
   public void onClick(View paramView)
   {
-    AEVideoStoryCaptureModePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeModeAEVideoStoryCaptureModePart$AECaptureModeAdapter.a, this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode);
-    if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode == AECaptureMode.GIF) {
+    AEVideoStoryCaptureModePart.b(this.c.a, this.a);
+    if (this.a == AECaptureMode.GIF) {
+      AEBaseDataReporter.a().Q();
+    } else if (this.a == AECaptureMode.NORMAL) {
       AEBaseDataReporter.a().P();
-    } else if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode == AECaptureMode.NORMAL) {
-      AEBaseDataReporter.a().O();
-    } else if (this.jdField_a_of_type_ComTencentAelightCameraAeModeAECaptureMode == AECaptureMode.PLAY) {
-      AEBaseDataReporter.a().Y();
+    } else if (this.a == AECaptureMode.PLAY) {
+      AEBaseDataReporter.a().Z();
     }
     paramView = new StringBuilder();
     paramView.append("【AE_CAPTURE_MODE】:");
-    paramView.append(this.jdField_a_of_type_Int);
+    paramView.append(this.b);
     AEQLog.b("AEVideoStoryCaptureModePart", paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModePart.AECaptureModeAdapter.1
  * JD-Core Version:    0.7.0.1
  */

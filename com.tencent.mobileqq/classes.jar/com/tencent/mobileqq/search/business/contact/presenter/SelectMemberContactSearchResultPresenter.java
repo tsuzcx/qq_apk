@@ -38,16 +38,16 @@ public class SelectMemberContactSearchResultPresenter
     if (((paramISearchResultView instanceof ContactSearchResultView)) && ((paramISearchResultModel instanceof ContactSearchModelTroop)))
     {
       Object localObject = (ContactSearchModelTroop)paramISearchResultModel;
-      if ((((ContactSearchModelTroop)localObject).a == 3) && (paramISearchResultView.a() != null))
+      if ((((ContactSearchModelTroop)localObject).a == 3) && (paramISearchResultView.h() != null))
       {
-        paramISearchResultModel = (TextView)paramISearchResultView.a().findViewById(2131376389);
-        localObject = ((ContactSearchModelTroop)localObject).f();
+        paramISearchResultModel = (TextView)paramISearchResultView.h().findViewById(2131444605);
+        localObject = ((ContactSearchModelTroop)localObject).s();
         if ((paramISearchResultModel != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
         {
           paramISearchResultModel.setVisibility(0);
           paramISearchResultModel.setText((CharSequence)localObject);
         }
-        paramISearchResultModel = paramISearchResultView.a();
+        paramISearchResultModel = paramISearchResultView.b();
         if (paramISearchResultModel != null)
         {
           paramISearchResultView = (RelativeLayout.LayoutParams)paramISearchResultModel.getLayoutParams();
@@ -64,16 +64,16 @@ public class SelectMemberContactSearchResultPresenter
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     super.a(paramISearchResultModel, paramISearchResultView);
-    if (paramISearchResultView.c() != null)
+    if (paramISearchResultView.d() != null)
     {
-      localObject = paramISearchResultModel.a();
+      localObject = paramISearchResultModel.c();
       Set localSet = this.b;
       if ((localSet != null) && (localSet.contains(localObject))) {
-        paramISearchResultView.c().setText(HardCodeUtil.a(2131713637));
+        paramISearchResultView.d().setText(HardCodeUtil.a(2131911182));
       }
     }
     Object localObject = (AppInterface)MobileQQ.sMobileQQ.peekAppRuntime();
-    boolean bool = SearchViewUtils.a((AppInterface)localObject, paramISearchResultModel.a());
+    boolean bool = SearchViewUtils.a((AppInterface)localObject, paramISearchResultModel.c());
     if (((ISearchPieceFetcher)QRoute.api(ISearchPieceFetcher.class)).isQQAppInterface((AppRuntime)localObject)) {
       if ((paramISearchResultView instanceof ContactSearchResultView)) {
         ((ContactSearchResultView)paramISearchResultView).a(bool);
@@ -81,20 +81,20 @@ public class SelectMemberContactSearchResultPresenter
         ((TroopAddFrdsSrchResultView)paramISearchResultView).a(bool);
       }
     }
-    if (paramISearchResultView.a() != null) {
+    if (paramISearchResultView.f() != null) {
       if ((!(paramISearchResultModel instanceof ContactSearchModelTroop)) && (!(paramISearchResultModel instanceof ContactSearchModelDiscussion)) && (!(paramISearchResultModel instanceof ContactSearchModelNewTroop)))
       {
-        if (paramISearchResultView.c() != null) {
-          paramISearchResultView.c().setVisibility(0);
+        if (paramISearchResultView.d() != null) {
+          paramISearchResultView.d().setVisibility(0);
         }
-        paramISearchResultView.a().setVisibility(8);
+        paramISearchResultView.f().setVisibility(8);
       }
       else
       {
-        if (paramISearchResultView.c() != null) {
-          paramISearchResultView.c().setVisibility(8);
+        if (paramISearchResultView.d() != null) {
+          paramISearchResultView.d().setVisibility(8);
         }
-        paramISearchResultView.a().setVisibility(0);
+        paramISearchResultView.f().setVisibility(0);
       }
     }
     e(paramISearchResultModel, paramISearchResultView);
@@ -104,7 +104,7 @@ public class SelectMemberContactSearchResultPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.presenter.SelectMemberContactSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

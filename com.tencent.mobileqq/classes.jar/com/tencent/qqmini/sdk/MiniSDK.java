@@ -62,6 +62,12 @@ public class MiniSDK
     sMiniSDKImpl.onHostAppBackground();
   }
   
+  public static void preDownloadPkg(Context paramContext, MiniAppInfo paramMiniAppInfo, ResultReceiver paramResultReceiver)
+  {
+    sMiniSDKImpl.init(paramContext);
+    sMiniSDKImpl.preDownloadPkg(paramMiniAppInfo, paramResultReceiver);
+  }
+  
   public static void preloadMiniApp(Context paramContext)
   {
     QMLog.i("minisdk-start_MiniSDK", "preloadMiniApp");
@@ -204,7 +210,7 @@ public class MiniSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.MiniSDK
  * JD-Core Version:    0.7.0.1
  */

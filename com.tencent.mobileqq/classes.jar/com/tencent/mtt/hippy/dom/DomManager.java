@@ -38,17 +38,17 @@ public class DomManager
   protected final DomManager.a a;
   protected volatile boolean b;
   protected boolean c = false;
-  b d;
-  ArrayList<f> e;
-  ArrayList<f> f;
-  ArrayList<f> g = new ArrayList();
-  Object h = new Object();
-  c i = new c();
-  RenderManager j = null;
+  final b d;
+  final ArrayList<f> e;
+  final ArrayList<f> f;
+  final ArrayList<f> g = new ArrayList();
+  final Object h = new Object();
+  final c i = new c();
+  RenderManager j;
   volatile CopyOnWriteArrayList<a> k;
-  i l = null;
+  i l;
   private final SparseBooleanArray m = new SparseBooleanArray();
-  private HippyEngineContext n;
+  private final HippyEngineContext n;
   private volatile boolean o = false;
   private volatile boolean p = false;
   
@@ -799,7 +799,7 @@ public class DomManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.DomManager
  * JD-Core Version:    0.7.0.1
  */

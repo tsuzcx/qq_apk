@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/jjl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <EditText android:textSize="17.0dip" android:textColor="@color/bp" android:textColorHint="#ffbbbbbb" android:gravity="top" android:id="@id/btq" android:background="@null" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/black" android:id="@id/jjl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <EditText android:textSize="17.0dip" android:textColor="@color/black" android:textColorHint="#ffbbbbbb" android:gravity="top" android:id="@id/btq" android:background="@null" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </RelativeLayout>

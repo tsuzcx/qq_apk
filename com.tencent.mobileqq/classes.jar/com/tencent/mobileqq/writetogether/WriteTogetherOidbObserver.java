@@ -18,7 +18,7 @@ public class WriteTogetherOidbObserver
     localStringBuilder.append(", data: ");
     localStringBuilder.append(paramCreateDocParam.a);
     QLog.d("WriteTogetherOidbObserver", 4, localStringBuilder.toString());
-    WTConstants.d = paramCreateDocParam.a;
+    WTConstants.f = paramCreateDocParam.a;
   }
   
   public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
@@ -102,7 +102,7 @@ public class WriteTogetherOidbObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.WriteTogetherOidbObserver
  * JD-Core Version:    0.7.0.1
  */

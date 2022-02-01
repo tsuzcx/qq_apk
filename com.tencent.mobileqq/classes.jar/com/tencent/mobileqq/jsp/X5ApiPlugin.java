@@ -31,9 +31,9 @@ public class X5ApiPlugin
   
   private int a(Context paramContext, String paramString)
   {
-    if (SwiftWebViewUtils.b())
+    if (SwiftWebViewUtils.e())
     {
-      if ((!TextUtils.isEmpty(paramString)) && (SwiftWebViewUtils.a(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
+      if ((!TextUtils.isEmpty(paramString)) && (SwiftWebViewUtils.d(paramString)) && (!paramString.contains("asyncMode=3")) && (!paramString.contains("sonic=1")))
       {
         if ((paramContext != null) && (QbSdk.getTbsVersion(paramContext) >= 43810)) {
           return 4;
@@ -45,68 +45,13 @@ public class X5ApiPlugin
     return 1;
   }
   
-  private void a(Context paramContext, WebView paramWebView, X5ApiPlugin.PreloadTask paramPreloadTask)
-  {
-    int i = a(paramContext, paramPreloadTask.jdField_a_of_type_JavaLangString);
-    if (i == 4) {
-      a(paramWebView, paramPreloadTask);
-    }
-    b(i, paramPreloadTask.b);
-  }
-  
-  private void a(X5ApiPlugin.PreloadTask paramPreloadTask)
-  {
-    this.b.put(paramPreloadTask.jdField_a_of_type_JavaLangString, paramPreloadTask);
-    b(5, paramPreloadTask.b);
-  }
-  
   private void a(WebView paramWebView, X5ApiPlugin.PreloadTask paramPreloadTask)
   {
-    this.a.put(paramPreloadTask.jdField_a_of_type_JavaLangString, paramPreloadTask);
-    SwiftBrowserTBSHandler.a(paramPreloadTask.jdField_a_of_type_JavaLangString, paramWebView);
+    this.a.put(paramPreloadTask.a, paramPreloadTask);
+    SwiftBrowserTBSHandler.a(paramPreloadTask.a, paramWebView);
   }
   
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Object localObject = this.b;
-      if ((localObject != null) && (this.a != null))
-      {
-        localObject = ((ConcurrentHashMap)localObject).values().iterator();
-        if (((Iterator)localObject).hasNext())
-        {
-          localObject = (X5ApiPlugin.PreloadTask)((Iterator)localObject).next();
-          this.b.remove(((X5ApiPlugin.PreloadTask)localObject).jdField_a_of_type_JavaLangString);
-          this.a.put(((X5ApiPlugin.PreloadTask)localObject).jdField_a_of_type_JavaLangString, localObject);
-          a(this.mRuntime.a(), (X5ApiPlugin.PreloadTask)localObject);
-          b(4, ((X5ApiPlugin.PreloadTask)localObject).b);
-        }
-      }
-    }
-  }
-  
-  private boolean a()
-  {
-    Object localObject = this.mRuntime.a();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (localObject != null)
-    {
-      localObject = (SwiftBrowserStatistics)((WebViewProvider)localObject).getComponentProvider().a(-2);
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (!((SwiftBrowserStatistics)localObject).j) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private void b()
+  private void c()
   {
     if (this.a == null) {
       this.a = new ConcurrentHashMap();
@@ -116,7 +61,7 @@ public class X5ApiPlugin
     }
   }
   
-  private void b(int paramInt, String paramString)
+  protected void a(int paramInt, String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
       try
@@ -133,17 +78,72 @@ public class X5ApiPlugin
     }
   }
   
-  public void a()
+  protected void a(Context paramContext, WebView paramWebView, X5ApiPlugin.PreloadTask paramPreloadTask)
+  {
+    int i = a(paramContext, paramPreloadTask.a);
+    if (i == 4) {
+      a(paramWebView, paramPreloadTask);
+    }
+    a(i, paramPreloadTask.b);
+  }
+  
+  protected void a(X5ApiPlugin.PreloadTask paramPreloadTask)
+  {
+    this.b.put(paramPreloadTask.a, paramPreloadTask);
+    a(5, paramPreloadTask.b);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      Object localObject = this.b;
+      if ((localObject != null) && (this.a != null))
+      {
+        localObject = ((ConcurrentHashMap)localObject).values().iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          localObject = (X5ApiPlugin.PreloadTask)((Iterator)localObject).next();
+          this.b.remove(((X5ApiPlugin.PreloadTask)localObject).a);
+          this.a.put(((X5ApiPlugin.PreloadTask)localObject).a, localObject);
+          a(this.mRuntime.a(), (X5ApiPlugin.PreloadTask)localObject);
+          a(4, ((X5ApiPlugin.PreloadTask)localObject).b);
+        }
+      }
+    }
+  }
+  
+  protected boolean a()
+  {
+    Object localObject = this.mRuntime.f();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
+    {
+      localObject = (SwiftBrowserStatistics)((WebViewProvider)localObject).getComponentProvider().a(-2);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (!((SwiftBrowserStatistics)localObject).au) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public void b()
   {
     a(true);
   }
   
-  public void a(int paramInt, String paramString)
+  public void b(int paramInt, String paramString)
   {
     if (paramInt == 0)
     {
       if (this.a.containsKey(paramString)) {
-        b(0, ((X5ApiPlugin.PreloadTask)this.a.remove(paramString)).b);
+        a(0, ((X5ApiPlugin.PreloadTask)this.a.remove(paramString)).b);
       }
       a(a());
     }
@@ -159,20 +159,20 @@ public class X5ApiPlugin
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         paramString1 = new X5ApiPlugin.PreloadTask();
-        paramString1.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("url");
+        paramString1.a = paramJsBridgeListener.optString("url");
         paramString1.b = paramJsBridgeListener.optString("callback");
-        paramString1.jdField_a_of_type_Boolean = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
-        b();
-        if (paramString1.jdField_a_of_type_Boolean)
+        paramString1.c = paramJsBridgeListener.optBoolean("doWhenPageFinish", false);
+        c();
+        if (paramString1.c)
         {
           if (a()) {
-            a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+            a(this.mRuntime.d(), this.mRuntime.a(), paramString1);
           } else {
             a(paramString1);
           }
         }
         else {
-          a(this.mRuntime.a(), this.mRuntime.a(), paramString1);
+          a(this.mRuntime.d(), this.mRuntime.a(), paramString1);
         }
       }
       catch (JSONException paramJsBridgeListener)
@@ -185,7 +185,7 @@ public class X5ApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.X5ApiPlugin
  * JD-Core Version:    0.7.0.1
  */

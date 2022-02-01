@@ -61,33 +61,28 @@ public class QQSettingMeMiniGameProcessor
     return paramString.toString();
   }
   
-  public String a()
-  {
-    return "d_minigame";
-  }
-  
   public void a(View paramView)
   {
     paramView = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameJumpUrl", "mqqapi://miniapp/open?_atype=0&_mappid=1108291530&_mvid=&_path=pages%2Fgame-list%2Fgame-list.html%3Fmode%3Dchouti&_vt=3&via=2066&_sig=676003338");
     if (!TextUtils.isEmpty(paramView)) {
       if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramView))
       {
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, a(paramView, (BusinessInfoCheckUpdate.AppInfo)this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.getValue()), 2066, null);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(this.d, a(paramView, (BusinessInfoCheckUpdate.AppInfo)this.a.getValue()), 2066, null);
       }
       else
       {
-        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, QQBrowserActivity.class);
+        localObject = new Intent(this.d, QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", paramView);
-        this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity((Intent)localObject);
+        this.d.startActivity((Intent)localObject);
       }
     }
-    paramView = (IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "");
+    paramView = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
     int i = 1;
     Object localObject = paramView.getAppInfo(1, String.valueOf(100077));
     if ((localObject == null) || (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 0)) {
       i = 0;
     }
-    ReportController.b(this.jdField_a_of_type_MqqAppAppRuntime, "dc00898", "", "", "0X800ACDD", "0X800ACDD", 0, i, "", "", "", "");
+    ReportController.b(this.c, "dc00898", "", "", "0X800ACDD", "0X800ACDD", 0, i, "", "", "", "");
     if (i != 0) {
       paramView.reportLevelOneRedInfo(100077, 31);
     }
@@ -96,18 +91,17 @@ public class QQSettingMeMiniGameProcessor
   public void a(QQSettingMe paramQQSettingMe)
   {
     super.a(paramQQSettingMe);
-    this.b.observe(this.jdField_a_of_type_ComTencentMobileqqMvvmLifeCycleAndViewModelStoreOwner, new QQSettingMeMiniGameProcessor.1(this, paramQQSettingMe));
+    this.b.observe(this.e, new QQSettingMeMiniGameProcessor.1(this, paramQQSettingMe));
   }
   
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
   {
-    super.a(((IRedTouchManager)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(1, String.valueOf(100077)), paramBoolean);
+    super.a(((IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(1, String.valueOf(100077)), paramBoolean);
   }
   
-  public void b()
+  public String b()
   {
-    super.b();
-    g();
+    return "d_minigame";
   }
   
   protected void b(BusinessInfoCheckUpdate.AppInfo paramAppInfo, boolean paramBoolean)
@@ -115,23 +109,29 @@ public class QQSettingMeMiniGameProcessor
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void f()
+  public void d()
   {
-    g();
+    super.d();
+    i();
   }
   
-  public void g()
+  public void h()
+  {
+    i();
+  }
+  
+  public void i()
   {
     QQSettingMeMiniGameBean localQQSettingMeMiniGameBean = new QQSettingMeMiniGameBean();
-    localQQSettingMeMiniGameBean.jdField_a_of_type_Int = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1);
-    localQQSettingMeMiniGameBean.jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameIconUrl", "");
-    localQQSettingMeMiniGameBean.b = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameNameText", "");
+    localQQSettingMeMiniGameBean.a = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameEnable", 1);
+    localQQSettingMeMiniGameBean.b = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameIconUrl", "");
+    localQQSettingMeMiniGameBean.c = QzoneConfig.getInstance().getConfig("qqminiapp", "settingMeMiniGameNameText", "");
     this.b.setValue(localQQSettingMeMiniGameBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qqsettingme.QQSettingMeMiniGameProcessor
  * JD-Core Version:    0.7.0.1
  */

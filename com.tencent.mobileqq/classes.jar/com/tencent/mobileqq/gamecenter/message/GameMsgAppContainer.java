@@ -15,52 +15,51 @@ import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.gamecenter.msgInfo.GameDetailInfo;
+import com.tencent.mobileqq.gamecenter.msginfo.GameDetailInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameMsgAppContainer
 {
-  public Context a;
-  protected View.OnClickListener a;
-  private View jdField_a_of_type_AndroidViewView;
-  public GameMsgChatPie a;
-  public BaseActivity a;
-  public QQAppInterface a;
-  private GameMsgAppFragment jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment;
-  private boolean jdField_a_of_type_Boolean = false;
+  private View a;
+  public QQAppInterface b;
+  public BaseActivity c;
+  public Context d;
+  public GameMsgChatPie e;
+  protected View.OnClickListener f = new GameMsgAppContainer.2(this);
+  private boolean g = false;
+  private GameMsgAppFragment h;
   
   public GameMsgAppContainer(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, Context paramContext, GameMsgChatPie paramGameMsgChatPie)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new GameMsgAppContainer.2(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie = paramGameMsgChatPie;
-    this.jdField_a_of_type_AndroidViewView = new FrameLayout(paramBaseActivity);
+    this.b = paramQQAppInterface;
+    this.c = paramBaseActivity;
+    this.d = paramContext;
+    this.e = paramGameMsgChatPie;
+    this.a = new FrameLayout(paramBaseActivity);
     paramQQAppInterface = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewView.setId(2131367459);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidViewView.addOnAttachStateChangeListener(new GameMsgAppContainer.1(this));
+    this.a.setId(2131433965);
+    this.a.setLayoutParams(paramQQAppInterface);
+    this.a.addOnAttachStateChangeListener(new GameMsgAppContainer.1(this));
   }
   
   private String a(String paramString)
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie;
+    Object localObject2 = this.e;
     Object localObject1 = paramString;
     if (localObject2 != null)
     {
       if (paramString == null) {
         return paramString;
       }
-      localObject1 = ((GameMsgChatPie)localObject2).a();
+      localObject1 = ((GameMsgChatPie)localObject2).aE();
       String str = "";
       if (localObject1 != null) {
-        localObject1 = ((SessionInfo)localObject1).a;
+        localObject1 = ((SessionInfo)localObject1).b;
       } else {
         localObject1 = "";
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.b();
-      Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameMsgChatPie.a();
+      localObject2 = this.e.bC();
+      Object localObject4 = this.e.bB();
       Object localObject3;
       if (localObject2 != null)
       {
@@ -102,9 +101,9 @@ public class GameMsgAppContainer
     return localObject1;
   }
   
-  private void e()
+  private void g()
   {
-    Object localObject2 = (IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "");
+    Object localObject2 = (IGameMsgManagerService)this.b.getRuntimeService(IGameMsgManagerService.class, "");
     Object localObject1 = ((IGameMsgManagerService)localObject2).getAioHippyBundleName();
     String str = a(((IGameMsgManagerService)localObject2).getAioHippyParameters());
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -118,56 +117,56 @@ public class GameMsgAppContainer
     ((OpenHippyInfo)localObject2).from = "aio";
     localObject1 = new Bundle();
     ((Bundle)localObject1).putBundle("params", ((OpenHippyInfo)localObject2).toBundle());
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment = new GameMsgAppFragment();
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment.setArguments((Bundle)localObject1);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment.setPageAppeared(false);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment.a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSupportFragmentManager().beginTransaction();
-    ((FragmentTransaction)localObject1).replace(2131367459, this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment);
+    this.h = new GameMsgAppFragment();
+    this.h.setArguments((Bundle)localObject1);
+    this.h.setPageAppeared(false);
+    this.h.a(this.f);
+    localObject1 = this.c.getSupportFragmentManager().beginTransaction();
+    ((FragmentTransaction)localObject1).replace(2131433965, this.h);
     ((FragmentTransaction)localObject1).commit();
   }
   
   public View a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.a;
   }
-  
-  public void a() {}
   
   public void a(boolean paramBoolean) {}
   
-  public boolean a()
-  {
-    a(true);
-    return false;
-  }
-  
-  public void b()
-  {
-    GameMsgAppFragment localGameMsgAppFragment = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment;
-    if (localGameMsgAppFragment != null)
-    {
-      localGameMsgAppFragment.setPageAppeared(true);
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment.onResume();
-    }
-  }
+  public void b() {}
   
   public void c()
   {
-    GameMsgAppFragment localGameMsgAppFragment = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment;
+    GameMsgAppFragment localGameMsgAppFragment = this.h;
     if (localGameMsgAppFragment != null)
     {
-      localGameMsgAppFragment.onPause();
-      this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment.setPageAppeared(false);
+      localGameMsgAppFragment.setPageAppeared(true);
+      this.h.onResume();
     }
   }
   
   public void d()
   {
+    GameMsgAppFragment localGameMsgAppFragment = this.h;
+    if (localGameMsgAppFragment != null)
+    {
+      localGameMsgAppFragment.onPause();
+      this.h.setPageAppeared(false);
+    }
+  }
+  
+  public boolean e()
+  {
+    a(true);
+    return false;
+  }
+  
+  public void f()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("GameMsgAppContainer", 2, "onDestroy");
     }
-    GameMsgAppFragment localGameMsgAppFragment = this.jdField_a_of_type_ComTencentMobileqqGamecenterMessageGameMsgAppFragment;
+    GameMsgAppFragment localGameMsgAppFragment = this.h;
     if (localGameMsgAppFragment != null) {
       localGameMsgAppFragment.a(null);
     }
@@ -175,7 +174,7 @@ public class GameMsgAppContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameMsgAppContainer
  * JD-Core Version:    0.7.0.1
  */

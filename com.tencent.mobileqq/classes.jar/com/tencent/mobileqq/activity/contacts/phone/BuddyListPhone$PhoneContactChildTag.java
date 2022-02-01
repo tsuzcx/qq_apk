@@ -9,20 +9,20 @@ import com.tencent.widget.SingleLineTextView;
 public class BuddyListPhone$PhoneContactChildTag
   extends BuddyListItem.ViewTag
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public StringBuilder a;
-  public SingleLineTextView c;
+  public SingleLineTextView d;
+  public ImageView e;
+  public StringBuilder f;
+  public Button g;
+  public TextView h;
   
   BuddyListPhone$PhoneContactChildTag()
   {
-    this.b = 11;
+    this.q = 11;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.phone.BuddyListPhone.PhoneContactChildTag
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ public class WSFetchLocalDataModule
 {
   private String a()
   {
-    WeishiManager localWeishiManager = WeishiUtils.a();
+    WeishiManager localWeishiManager = WeishiUtils.d();
     if (localWeishiManager != null) {
-      return localWeishiManager.c();
+      return localWeishiManager.d();
     }
     return "";
   }
@@ -32,7 +32,7 @@ public class WSFetchLocalDataModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.module.WSFetchLocalDataModule
  * JD-Core Version:    0.7.0.1
  */

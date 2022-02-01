@@ -1,8 +1,11 @@
 package com.tencent.mobileqq.kandian.glue.viola.adapter.ui;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,11 +13,12 @@ import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
+import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
@@ -31,7 +35,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.viola.adapter.VComponentAdapter;
 import com.tencent.viola.commons.ImageAdapterHolder;
+import com.tencent.viola.commons.ImageAdapterHolder.ImgSpanListener;
 import com.tencent.viola.core.ViolaInstance;
+import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.component.image.ImageAction;
 import com.tencent.viola.ui.view.VImageView;
 import com.tencent.viola.ui.view.VRefreshLayout;
@@ -44,8 +50,8 @@ import java.util.Set;
 public class ComponentAdapter
   implements VComponentAdapter
 {
-  private Set<URLDrawable> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
+  private Set<URLDrawable> a = new HashSet();
+  private boolean b = false;
   
   private Bundle a(URLDrawable paramURLDrawable)
   {
@@ -124,9 +130,9 @@ public class ComponentAdapter
   
   private void a(ImageAction paramImageAction, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((paramImageAction != null) && (paramImageAction.getTarget() != null) && (paramURLDrawable != null))
+    if ((paramImageAction != null) && (paramURLDrawable != null))
     {
-      if (!NetworkUtil.isNetworkAvailable(paramImageAction.getTarget().getContext())) {
+      if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) {
         return;
       }
       Object localObject = paramURLDrawable.getTag();
@@ -161,7 +167,7 @@ public class ComponentAdapter
           localStringBuilder.append(", errorMsg: ");
           localStringBuilder.append(paramThrowable.getMessage());
           paramImageAction.onError();
-          this.jdField_a_of_type_JavaUtilSet.remove(paramURLDrawable);
+          this.a.remove(paramURLDrawable);
         }
         ViolaLogUtils.d("ComponentAdapter", localStringBuilder.toString());
       }
@@ -210,37 +216,25 @@ public class ComponentAdapter
         ((StringBuilder)localObject).append(paramString);
         localObject = ((StringBuilder)localObject).toString();
       }
-      if (a(paramImageAction, (String)localObject, paramBoolean1, paramBoolean2, paramInt1, paramInt2)) {
-        return;
-      }
-      if (!((String)localObject).startsWith("http")) {
-        return;
-      }
-      if (a(paramImageAction, (String)localObject, paramBoolean1)) {
-        return;
-      }
-      paramString = URLDrawable.getDrawable((String)localObject, a(paramBoolean2, paramInt1, paramInt2));
-      this.jdField_a_of_type_JavaUtilSet.add(paramString);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("enqueue action, url: ");
-        localStringBuilder.append((String)localObject);
-        localStringBuilder.append(", ");
-        localStringBuilder.append(paramImageAction.getTarget().hashCode());
-        QLog.d("ComponentAdapter", 2, localStringBuilder.toString());
-      }
-      localObject = paramString.getFileInLocal();
-      if ((localObject != null) && (((File)localObject).exists()))
-      {
-        a(paramImageAction, paramString, paramBoolean1);
-        this.jdField_a_of_type_JavaUtilSet.remove(paramString);
-        return;
-      }
-      paramString.startDownload();
-      paramString.setTag(Integer.valueOf(0));
-      paramString.setURLDrawableListener(new ComponentAdapter.ViolaImageListener(this, paramBoolean1, paramImageAction));
+      ViolaSDKManager.getInstance().postOnThreadPool(new ComponentAdapter.3(this, (String)localObject, paramImageAction, paramBoolean1, paramBoolean2, paramInt1, paramInt2));
     }
+  }
+  
+  private void a(ImageAction paramImageAction, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = a(paramBoolean2, paramInt1, paramInt2);
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    paramString1 = URLDrawable.getFileDrawable(paramString1, localURLDrawableOptions);
+    if (paramString1 != null)
+    {
+      a(paramImageAction, paramString1, paramBoolean1, paramString2);
+      return;
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append("load local file error, url: ");
+    paramString1.append(paramString2);
+    QLog.e("ComponentAdapter", 1, paramString1.toString());
+    paramImageAction.onError();
   }
   
   private boolean a(ImageAction paramImageAction, String paramString, boolean paramBoolean)
@@ -270,13 +264,13 @@ public class ComponentAdapter
         i = Integer.parseInt((String)localObject1);
         j = Integer.parseInt(str);
         localObject1 = new ImageRequest();
-        ((ImageRequest)localObject1).jdField_a_of_type_JavaNetURL = new URL((String)localObject2);
-        ((ImageRequest)localObject1).jdField_a_of_type_Int = i;
-        ((ImageRequest)localObject1).b = j;
+        ((ImageRequest)localObject1).a = new URL((String)localObject2);
+        ((ImageRequest)localObject1).b = i;
+        ((ImageRequest)localObject1).c = j;
         localObject2 = ImageManager.get().getBitmap((ImageRequest)localObject1);
         if (localObject2 != null)
         {
-          if (((ICloseableBitmap)localObject2).a() == null) {
+          if (((ICloseableBitmap)localObject2).b() == null) {
             return false;
           }
           localObject1 = null;
@@ -286,7 +280,7 @@ public class ComponentAdapter
             ((Bundle)localObject1).putInt(ImageAdapterHolder.BUNDLE_WIDTH, i);
             ((Bundle)localObject1).putInt(ImageAdapterHolder.BUNDLE_HEIGHT, j);
           }
-          paramImageAction.onSuccess(((ICloseableBitmap)localObject2).a(), paramString, (Bundle)localObject1);
+          paramImageAction.onSuccess(((ICloseableBitmap)localObject2).b(), paramString, (Bundle)localObject1);
           return true;
         }
         return false;
@@ -306,41 +300,72 @@ public class ComponentAdapter
   {
     if (paramString.startsWith("file://"))
     {
-      Object localObject = paramString.substring(7);
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      String str = paramString.substring(7);
+      if (!TextUtils.isEmpty(str))
       {
-        localObject = URLDrawable.getFileDrawable((String)localObject, a(paramBoolean2, paramInt1, paramInt2));
-        if (localObject != null)
-        {
-          a(paramImageAction, (URLDrawable)localObject, paramBoolean1, paramString);
-          return true;
-        }
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("load local file error, url: ");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.e("ComponentAdapter", 1, ((StringBuilder)localObject).toString());
-        paramImageAction.onError();
+        a(paramImageAction, str, paramString, paramBoolean1, paramBoolean2, paramInt1, paramInt2);
         return true;
       }
     }
     return false;
   }
   
+  private void b(ImageAction paramImageAction, String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    URLDrawable localURLDrawable = URLDrawable.getDrawable(paramString, a(paramBoolean1, paramInt1, paramInt2));
+    this.a.add(localURLDrawable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enqueue action, url: ");
+      localStringBuilder.append(paramString);
+      QLog.d("ComponentAdapter", 2, localStringBuilder.toString());
+    }
+    if (localURLDrawable.getFileInLocal() != null)
+    {
+      a(paramImageAction, localURLDrawable, paramBoolean2);
+      this.a.remove(localURLDrawable);
+      return;
+    }
+    localURLDrawable.startDownload();
+    localURLDrawable.setTag(Integer.valueOf(0));
+    localURLDrawable.setURLDrawableListener(new ComponentAdapter.ViolaImageListener(this, paramBoolean2, paramImageAction));
+  }
+  
   public void a()
   {
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    Set localSet = this.a;
     if ((localSet != null) && (!localSet.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilSet.clear();
+      this.a.clear();
     }
+  }
+  
+  public Bitmap getBitmap(Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof URLDrawable))
+    {
+      paramDrawable = ((URLDrawable)paramDrawable).getCurrDrawable();
+      if ((paramDrawable instanceof RegionDrawable)) {
+        return ((RegionDrawable)paramDrawable).getBitmap();
+      }
+      if ((paramDrawable instanceof BitmapDrawable)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+    }
+    else if ((paramDrawable instanceof BitmapDrawable))
+    {
+      return ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    return null;
   }
   
   public void initKdRefresh(VRefreshLayout paramVRefreshLayout)
   {
-    PullRefreshHeader localPullRefreshHeader = (PullRefreshHeader)LayoutInflater.from(paramVRefreshLayout.getContext()).inflate(2131562705, paramVRefreshLayout, false);
-    RefreshAnimView localRefreshAnimView = (RefreshAnimView)localPullRefreshHeader.findViewById(2131376336);
+    PullRefreshHeader localPullRefreshHeader = (PullRefreshHeader)LayoutInflater.from(paramVRefreshLayout.getContext()).inflate(2131629138, paramVRefreshLayout, false);
+    RefreshAnimView localRefreshAnimView = (RefreshAnimView)localPullRefreshHeader.findViewById(2131444549);
     localRefreshAnimView.setRefreshBarStayTimeMS(Aladdin.getConfig(222).getIntegerFromString("refresh_bar_text_delay_time", 100));
     paramVRefreshLayout.addView(localPullRefreshHeader);
-    paramVRefreshLayout.setonRefreshStateChangeListener(new ComponentAdapter.1(this, localRefreshAnimView, paramVRefreshLayout));
+    paramVRefreshLayout.setonRefreshStateChangeListener(new ComponentAdapter.2(this, localRefreshAnimView, paramVRefreshLayout));
   }
   
   public void onClick(View paramView, Object paramObject)
@@ -358,7 +383,7 @@ public class ComponentAdapter
     ViolaDatongReportUtils.a(paramView, paramObject);
   }
   
-  public void requestImage(String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, ImageAction paramImageAction, boolean paramBoolean2)
+  public void requestImage(String paramString, int paramInt1, int paramInt2, boolean paramBoolean1, ImageAction paramImageAction, boolean paramBoolean2, ImageView.ScaleType paramScaleType)
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramImageAction != null))
     {
@@ -367,17 +392,22 @@ public class ComponentAdapter
       }
       if ((paramInt2 == 0) || (paramInt1 == 0))
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("width: ");
-        localStringBuilder.append(paramInt1);
-        localStringBuilder.append(", height: ");
-        localStringBuilder.append(paramInt2);
-        localStringBuilder.append(", url: ");
-        localStringBuilder.append(paramString);
-        ViolaLogUtils.d("ComponentAdapter", localStringBuilder.toString());
+        paramScaleType = new StringBuilder();
+        paramScaleType.append("width: ");
+        paramScaleType.append(paramInt1);
+        paramScaleType.append(", height: ");
+        paramScaleType.append(paramInt2);
+        paramScaleType.append(", url: ");
+        paramScaleType.append(paramString);
+        ViolaLogUtils.d("ComponentAdapter", paramScaleType.toString());
       }
       a(paramImageAction, paramString, paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     }
+  }
+  
+  public void requestImageSpan(String paramString, int paramInt1, int paramInt2, ImageAdapterHolder.ImgSpanListener paramImgSpanListener)
+  {
+    ViolaSDKManager.getInstance().postOnThreadPool(new ComponentAdapter.1(this, paramImgSpanListener, paramString, paramInt1, paramInt2));
   }
   
   public CharSequence setEmoticonText(@NonNull CharSequence paramCharSequence, int paramInt1, int paramInt2)
@@ -452,7 +482,7 @@ public class ComponentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.adapter.ui.ComponentAdapter
  * JD-Core Version:    0.7.0.1
  */

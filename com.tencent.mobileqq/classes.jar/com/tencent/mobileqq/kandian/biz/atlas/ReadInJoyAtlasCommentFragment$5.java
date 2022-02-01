@@ -16,16 +16,16 @@ class ReadInJoyAtlasCommentFragment$5
   {
     if (!paramBoolean)
     {
-      ReadInJoyAtlasCommentFragment.a(this.a);
+      ReadInJoyAtlasCommentFragment.b(this.a);
       return;
     }
     ReadInJoyAtlasCommentFragment localReadInJoyAtlasCommentFragment = this.a;
-    localReadInJoyAtlasCommentFragment.a(localReadInJoyAtlasCommentFragment.a);
+    localReadInJoyAtlasCommentFragment.a(localReadInJoyAtlasCommentFragment.b);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131364710) {
+    if (paramView.getId() != 2131430816) {
       return;
     }
     ReadInJoyAtlasCommentFragment.a(this.a, true);
@@ -35,7 +35,7 @@ class ReadInJoyAtlasCommentFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoyAtlasCommentFragment.5
  * JD-Core Version:    0.7.0.1
  */

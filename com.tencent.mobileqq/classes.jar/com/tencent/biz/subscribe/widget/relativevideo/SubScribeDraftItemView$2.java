@@ -14,14 +14,14 @@ class SubScribeDraftItemView$2
   
   public void onClick(View paramView)
   {
-    VSReporter.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
-    SubscribeDraftManager.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131719368, new SubScribeDraftItemView.2.1(this));
+    VSReporter.b(SubScribeDraftItemView.c(this.b), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
+    SubscribeDraftManager.a().a(this.b.getContext(), SubScribeDraftItemView.c(this.b), String.valueOf(this.a.getDraftId()), 2131916923, new SubScribeDraftItemView.2.1(this));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView.2
  * JD-Core Version:    0.7.0.1
  */

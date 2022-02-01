@@ -5,10 +5,10 @@ import java.net.URLEncoder;
 
 public class UrlBuilder
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean = true;
+  private String a = "";
   private String b = "utf-8";
+  private StringBuilder c;
+  private boolean d = true;
   
   public UrlBuilder(String paramString)
   {
@@ -17,21 +17,21 @@ public class UrlBuilder
   
   public UrlBuilder(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    a();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
+    b();
+    this.c = new StringBuilder(this.a);
+    this.d = true;
   }
   
-  private void a()
+  private void b()
   {
-    if (!this.jdField_a_of_type_JavaLangString.endsWith("?"))
+    if (!this.a.endsWith("?"))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append("?");
-      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+      this.a = localStringBuilder.toString();
     }
   }
   
@@ -39,13 +39,13 @@ public class UrlBuilder
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("&");
+      if (!this.d) {
+        this.c.append("&");
       }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString1);
-      this.jdField_a_of_type_JavaLangStringBuilder.append("=");
-      this.jdField_a_of_type_JavaLangStringBuilder.append(URLEncoder.encode(paramString2, this.b));
+      this.d = false;
+      this.c.append(paramString1);
+      this.c.append("=");
+      this.c.append(URLEncoder.encode(paramString2, this.b));
       return this;
     }
     catch (UnsupportedEncodingException paramString1)
@@ -57,12 +57,12 @@ public class UrlBuilder
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    return this.c.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.UrlBuilder
  * JD-Core Version:    0.7.0.1
  */

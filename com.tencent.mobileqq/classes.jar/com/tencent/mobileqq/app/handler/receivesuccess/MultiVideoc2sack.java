@@ -21,13 +21,13 @@ public class MultiVideoc2sack
       if (paramFromServiceMsg.type >= 32) {
         return;
       }
-      paramMessageHandler.a.getGAudioHandler().b(paramFromServiceMsg.video_buff);
+      paramMessageHandler.n.getGAudioHandler().b(paramFromServiceMsg.video_buff);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.receivesuccess.MultiVideoc2sack
  * JD-Core Version:    0.7.0.1
  */

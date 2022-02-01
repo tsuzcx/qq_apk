@@ -15,8 +15,8 @@ import com.tencent.mobileqq.qqocr.impl.R.styleable;
 public class OCRBottomTabView
   extends LinearLayout
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView a;
+  private TextView b;
   
   public OCRBottomTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,56 +32,56 @@ public class OCRBottomTabView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131561255, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379469));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369181));
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.aH);
-    paramAttributeSet = paramContext.getString(R.styleable.x);
-    Drawable localDrawable = paramContext.getDrawable(R.styleable.w);
+    LayoutInflater.from(paramContext).inflate(2131627611, this, true);
+    this.b = ((TextView)findViewById(2131448211));
+    this.a = ((ImageView)findViewById(2131436155));
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.be);
+    paramAttributeSet = paramContext.getString(R.styleable.bg);
+    Drawable localDrawable = paramContext.getDrawable(R.styleable.bf);
     paramContext.recycle();
     if (!TextUtils.isEmpty(paramAttributeSet)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAttributeSet);
+      this.b.setText(paramAttributeSet);
     }
     if (localDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
+      this.a.setImageDrawable(localDrawable);
     }
   }
   
-  public CharSequence a()
+  public CharSequence getTabText()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    return this.b.getText();
   }
   
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(paramBoolean);
+    this.a.setEnabled(paramBoolean);
+    this.b.setEnabled(paramBoolean);
   }
   
   public void setTabImage(Drawable paramDrawable)
   {
     if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+      this.a.setImageDrawable(paramDrawable);
     }
   }
   
   public void setTabText(String paramString)
   {
     if (paramString != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.b.setText(paramString);
     }
   }
   
   public void setTabTextColor(int paramInt)
   {
     ColorStateList localColorStateList = ColorStateList.valueOf(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
+    this.b.setTextColor(localColorStateList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.OCRBottomTabView
  * JD-Core Version:    0.7.0.1
  */

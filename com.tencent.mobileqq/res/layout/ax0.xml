@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.FitWindowsLinearLayout android:orientation="vertical" android:id="@id/jsk" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.appcompat.widget.ViewStubCompat android:id="@id/k68" android:layout="@layout/s6" android:inflatedId="@id/k5v" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <include layout="@layout/aur" />
-</androidx.appcompat.widget.FitWindowsLinearLayout>
+    <com.tencent.mobileqq.qqgamepub.view.CornerImageView android:id="@id/mvl" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/csy" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff333333" android:ellipsize="end" android:id="@id/qmk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" />
+</LinearLayout>

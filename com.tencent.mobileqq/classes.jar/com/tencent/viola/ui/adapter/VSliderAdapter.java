@@ -89,7 +89,7 @@ public class VSliderAdapter
         int i = 0;
         while (i < paramArrayList.size())
         {
-          this.mVComponents.add(paramArrayList.get(i));
+          this.mVComponents.add((VComponent)paramArrayList.get(i));
           i += 1;
         }
       }
@@ -98,7 +98,7 @@ public class VSliderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VSliderAdapter
  * JD-Core Version:    0.7.0.1
  */

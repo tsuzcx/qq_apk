@@ -29,9 +29,14 @@ public class DebugInstaller
     b = localStringBuilder.toString();
   }
   
-  public static void a()
+  public static boolean a()
   {
-    if (FileUtil.b(a))
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    if (FileUtil.d(a))
     {
       int i = FileUtils.copyDirectory(a, b, false, true, true);
       if (i == 0)
@@ -46,22 +51,18 @@ public class DebugInstaller
           QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localObject2.getAbsolutePath(), Long.valueOf(localObject2.lastModified()), Long.valueOf(localObject2.length()) }));
           i += 1;
         }
-        b();
+        c();
         localObject1 = QFlutterLauncher.InstallResult.a(b, true);
         QFlutterLauncher.a().a((QFlutterLauncher.InstallResult)localObject1);
-        return;
+        return true;
       }
     }
     Object localObject1 = QFlutterLauncher.InstallResult.a(b, false);
     QFlutterLauncher.a().a((QFlutterLauncher.InstallResult)localObject1);
-  }
-  
-  public static boolean a()
-  {
     return false;
   }
   
-  private static void b()
+  private static void c()
   {
     String str1 = PathUtils.getDataDirectory(BaseApplicationImpl.getContext());
     Object localObject = new File(str1);
@@ -88,7 +89,7 @@ public class DebugInstaller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.launch.DebugInstaller
  * JD-Core Version:    0.7.0.1
  */

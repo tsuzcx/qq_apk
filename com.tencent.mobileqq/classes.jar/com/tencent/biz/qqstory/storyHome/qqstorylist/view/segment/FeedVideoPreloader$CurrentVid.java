@@ -4,23 +4,21 @@ import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class FeedVideoPreloader$CurrentVid
 {
-  public int a;
   public final long a;
-  public final String a;
-  public boolean a;
-  public String b = "";
+  public final String b;
+  public boolean c = false;
+  public String d = "";
+  public int e = 1000;
   
   public FeedVideoPreloader$CurrentVid(String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 1000;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.b = paramString;
+    this.a = System.currentTimeMillis();
   }
   
   public ErrorMessage a()
   {
-    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
+    return new ErrorMessage(this.e, this.d);
   }
 }
 

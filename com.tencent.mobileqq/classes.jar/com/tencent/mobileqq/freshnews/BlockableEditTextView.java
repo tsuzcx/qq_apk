@@ -11,36 +11,27 @@ import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 public class BlockableEditTextView
   extends EditText
 {
-  int jdField_a_of_type_Int = -1;
-  private boolean jdField_a_of_type_Boolean = false;
+  int a = -1;
   int b = -1;
   private int c = 0;
+  private boolean d = false;
   
   public BlockableEditTextView(Context paramContext)
   {
     super(paramContext);
-    a();
+    b();
   }
   
   public BlockableEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
+    b();
   }
   
   public BlockableEditTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
-  }
-  
-  private void a()
-  {
-    setEditableFactory(TroopBarPublishUtils.a);
-    if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new BlockableEditTextView.1(this));
-    }
-    addTextChangedListener(new BlockableEditTextView.2(this));
+    b();
   }
   
   private boolean a()
@@ -60,6 +51,15 @@ public class BlockableEditTextView
       }
     }
     return true;
+  }
+  
+  private void b()
+  {
+    setEditableFactory(TroopBarPublishUtils.c);
+    if (Build.VERSION.SDK_INT >= 11) {
+      setCustomSelectionActionModeCallback(new BlockableEditTextView.1(this));
+    }
+    addTextChangedListener(new BlockableEditTextView.2(this));
   }
   
   protected void onCreateContextMenu(ContextMenu paramContextMenu)
@@ -82,7 +82,7 @@ public class BlockableEditTextView
       int j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
       if ((i > j) && (j >= 0))
       {
-        if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
+        if ((paramInt1 == j) && (paramInt2 == j) && (this.d))
         {
           setSelection(i);
           return;
@@ -114,7 +114,7 @@ public class BlockableEditTextView
   
   public void setBlockFront(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setEditStatus(int paramInt)
@@ -124,7 +124,7 @@ public class BlockableEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.BlockableEditTextView
  * JD-Core Version:    0.7.0.1
  */

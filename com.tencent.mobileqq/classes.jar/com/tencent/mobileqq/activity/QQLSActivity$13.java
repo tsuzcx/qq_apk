@@ -35,34 +35,34 @@ class QQLSActivity$13
         this.a.finish();
         return;
       case 15: 
-        QQLSActivity.f(this.a);
+        QQLSActivity.w(this.a);
         return;
       case 14: 
-        QQLSActivity.a(this.a, false);
+        QQLSActivity.b(this.a, false);
         return;
       case 13: 
-        QQLSActivity.e(this.a);
+        QQLSActivity.v(this.a);
         return;
       case 12: 
         if (QLog.isColorLevel())
         {
           paramMessage = new StringBuilder();
           paramMessage.append("check sensor HasCallBack ====");
-          paramMessage.append(QQLSActivity.c(this.a));
+          paramMessage.append(QQLSActivity.q(this.a));
           QLog.d("QQLSActivity", 2, paramMessage.toString());
         }
-        if (QQLSActivity.c(this.a))
+        if (QQLSActivity.q(this.a))
         {
-          QQLSActivity.d(this.a);
+          QQLSActivity.u(this.a);
           return;
         }
-        if (!QQLSActivity.d(this.a)) {
+        if (!QQLSActivity.r(this.a)) {
           break;
         }
-        QQLSActivity.c(this.a);
+        QQLSActivity.s(this.a);
         return;
       case 11: 
-        boolean bool = QQLSActivity.e(this.a);
+        boolean bool = QQLSActivity.t(this.a);
         if (QLog.isColorLevel())
         {
           paramMessage = new StringBuilder();
@@ -81,37 +81,37 @@ class QQLSActivity$13
         this.a.startActivity(paramMessage);
         return;
       case 9: 
-        if (QQLSActivity.a(this.a)) {
+        if (QQLSActivity.d(this.a)) {
           break;
         }
-        ReportController.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
+        ReportController.b(QQLSActivity.i(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
         paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
         this.a.startActivity(paramMessage);
         return;
       case 8: 
-        this.a.a();
+        this.a.b();
         return;
       case 7: 
-        if ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a))) {
+        if ((QQLSActivity.q(this.a)) || (!QQLSActivity.r(this.a))) {
           break;
         }
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
         }
-        QQLSActivity.c(this.a);
+        QQLSActivity.s(this.a);
         return;
       case 6: 
-        if (QQLSActivity.b(this.a)) {
+        if (QQLSActivity.o(this.a)) {
           break;
         }
         if (hasMessages(6)) {
           removeMessages(6);
         }
-        QQLSActivity.b(this.a);
-        if (QQLSActivity.a(this.a) != null) {
-          ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+        QQLSActivity.p(this.a);
+        if (QQLSActivity.g(this.a) != null) {
+          ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.g(this.a).getWindowToken(), 0);
         }
-        QQLSActivity.a(this.a).setVisibility(0);
+        QQLSActivity.e(this.a).setVisibility(0);
         paramMessage = obtainMessage(4);
         if (hasMessages(4)) {
           removeMessages(4);
@@ -119,17 +119,17 @@ class QQLSActivity$13
         sendMessageDelayed(paramMessage, 1200L);
         return;
       case 5: 
-        if (QQLSActivity.b(this.a)) {
+        if (QQLSActivity.o(this.a)) {
           break;
         }
         if (hasMessages(5)) {
           removeMessages(5);
         }
-        QQLSActivity.b(this.a);
-        if (QQLSActivity.a(this.a) != null) {
-          ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
+        QQLSActivity.p(this.a);
+        if (QQLSActivity.g(this.a) != null) {
+          ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.g(this.a).getWindowToken(), 0);
         }
-        QQLSActivity.b(this.a).setVisibility(0);
+        QQLSActivity.n(this.a).setVisibility(0);
         paramMessage = obtainMessage(3);
         if (hasMessages(3)) {
           removeMessages(3);
@@ -137,10 +137,10 @@ class QQLSActivity$13
         sendMessageDelayed(paramMessage, 1200L);
         return;
       case 4: 
-        QQLSActivity.a(this.a).setVisibility(4);
+        QQLSActivity.e(this.a).setVisibility(4);
         return;
       case 3: 
-        QQLSActivity.b(this.a).setVisibility(4);
+        QQLSActivity.n(this.a).setVisibility(4);
         return;
       case 2: 
         if (QLog.isColorLevel()) {
@@ -149,24 +149,24 @@ class QQLSActivity$13
         this.a.finish();
         return;
       case 1: 
-        this.a.c();
+        this.a.d();
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, "message send finish");
         }
-        QQLSActivity.a(this.a);
+        QQLSActivity.k(this.a);
         return;
       }
     }
     else
     {
-      this.a.a.a(QQLSActivity.a(this.a), (String)paramMessage.obj, 1008, false, -1, false);
-      this.a.b();
+      this.a.n.a(QQLSActivity.i(this.a), (String)paramMessage.obj, 1008, false, -1, false);
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.13
  * JD-Core Version:    0.7.0.1
  */

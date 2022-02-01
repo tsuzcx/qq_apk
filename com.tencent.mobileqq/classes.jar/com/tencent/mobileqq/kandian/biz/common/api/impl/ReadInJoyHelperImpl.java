@@ -50,7 +50,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/common/api/impl/ReadInJoyHelperImpl;", "Lcom/tencent/mobileqq/kandian/biz/common/api/IReadInJoyHelper;", "()V", "adSuperMaskLog", "", "msg", "", "adSuperMaskServiceSetChannelId", "channelID", "", "addExtraInfoInJson", "r5", "Lorg/json/JSONObject;", "applySharedPreferences", "editor", "Landroid/content/SharedPreferences$Editor;", "applyFirst", "", "canFreeTimeRefreshPush", "canInMessageList", "uin", "checkIsVideoFeedsGameAdComBarLocalConfigToday", "checkLastScanTTDate", "findSocialFeedsWebUrlKey", "key", "forwardToReadInJoyFeed", "activity", "Landroid/app/Activity;", "intent", "Landroid/content/Intent;", "requestCode", "dismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "generateSocialCountLess99", "count", "getCameraCaptureMaxDuration", "getCanLoadStartWebRenderModeConfig", "getDynamicBufferConfig", "getDynamicBufferSwitch", "getFFProbesize", "", "getGuideDataClazz", "Ljava/lang/Class;", "getInnerVideoInfoShowSWitcher", "getKDSPValueWithKey", "T", "defaultValue", "isAccountRelated", "(Ljava/lang/String;Ljava/lang/Object;Z)Ljava/lang/Object;", "getKanDianReportTTSwitch", "getKandianConfigAdExposureThreshold", "app", "Lmqq/app/AppRuntime;", "getKandianConfigBadgeSwitch", "getKandianLebaViewItem", "", "getPersonalHomePageWebUrl", "getPreplayTimeLimit", "getProteusOfflineBid", "bidKey", "getReadInJoyActivityDAUInfo", "getReadInJoyMultiVideoChannelInfoVersion", "getReadInJoySP", "Landroid/content/SharedPreferences;", "isSupportMultiProcess", "getReadInJoySharedPreferences", "accessMode", "getReadInJoySpValue", "(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;", "getReadInjoyShareToWxAtSwitch", "getReadinjoyStopFunctionSwitch", "getRemoveKandianFlag", "getSplasDebugSWitcher", "getUserConfigVersion", "()Ljava/lang/Integer;", "getVideoRealTimeLogDebug", "getVideoStructMsgPlaySwitch", "getViolaDebugSWitcher", "getViolaJsDebugBundleSwitcher", "getViolaJsLocalBundleSwitcher", "getViolaPicDetailConfig", "getViolaRecommendSwitcher", "getWebRenderConfig", "hideKandianTab", "isColorLevel", "isDailyChildFeeds", "isDownloadAsyncIo", "isEnableUseNewReportChannel", "isFFProbelistSwitch", "isFromVideoColumn", "videoFromType", "isInReadInJoyNewFeedsActivity", "isInReadinjoyFolderMergerStyle", "isInSplashActivity", "isKandianFavourite", "url", "forWhat", "isOSVersionSupportReadInJoy", "isRIJVideoEnableReprint", "isReadInJoyAdHippyFragment", "fragment", "Landroidx/fragment/app/Fragment;", "isReadInJoyArticleAdapter", "adapter", "Landroid/widget/ListAdapter;", "isReadInJoyBBCircleFragment", "isReadInJoyFragmentWithSubChannel", "isReadInJoyRecommendFeedsFragment", "isReadInJoySubChannelFragment", "isReadInJoyViolaChannelFragment", "isShowKandianRecommendArticleInSubscriptFeeds", "isShowKandianTab", "isShowKandianTabNew", "isShowMainRecommendTab", "isShowMainVideoTab", "isShowRecommendReasonInTitle", "isVideoFeedsTiktokStyle", "isViolaColumnEntryInTest", "isViolaMessageBoxInTest", "isWxArticle", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "articleUrl", "launchReadInJoyPlugin", "fromActivity", "maybeInitializedAladdin", "needUpdateKandianFrame", "kandianFrameStatus", "Lcom/tencent/mobileqq/kandian/repo/tab/KandianFrameStatus;", "currentIsShow", "onKandianFeedsConfigChanged", "config", "onMergeFeedsConfigChanged", "onShareToNewsConfigChanged", "onSynchronizeToQzoneConfigChanged", "preParseArticleJsonParam", "article", "reportArticleByWeb", "source", "sourceArticleId", "operation", "opsource", "setKanDianReportTTSwitch", "reportSwitch", "setLastScanTTDate", "date", "setOperationFlag", "context", "Landroid/content/Context;", "operationBitFlag", "setUserConfigVersion", "value", "synSwitchCache", "updateArkChannelConfig", "updateCUKingCardDlgSwitch", "updateFreeTimeRefreshPush", "can", "updateGallerySubChannelHidden", "updateGallerySubChannelWaterFallHidden", "updateHasSetSwitch", "hasSet", "updateInnerVideoInfoShowSwitcher", "show", "updateKandianConfigDefaultBitRate", "bitRateStr", "updateKandianConfigRedShowNum", "num", "updateKandianConfigRedThreshold", "updateKandianMyTabPage", "updateKandianTabConfigSwitchSp", "switchOpen", "updateKandianVideoSocialSwitch", "updateLocalCacheSwitch", "tabSwitch", "updateOpenSimpleSwitchFm", "updateProteusOfflineBid", "bid", "updateRIJVideoEnableReprint", "enableReprint", "updateReadInJoyFeedsGroupSetting", "setting", "updateReadInJoyIndividualPushSwitchSetting", "flag", "updateReadInJoyInterestedPushSwitch", "interestedSwitch", "updateReadInJoyMultiVideoChannelInfo", "channelName", "channelType", "updateReadInJoyPushMsgSwitch", "updateReadInJoySmartCropSetting", "updateReadInJoySpValue", "(Ljava/lang/String;Ljava/lang/Object;)V", "(Ljava/lang/String;Ljava/lang/Object;Z)V", "updateReadInJoyVideoJumpDefaultValue", "updateReadinjoyFolderMergerConfig", "updateReadinjoyFolderMergerReal", "updateReadinjoyStopFunctionSwtichReal", "updateReadinjoySubscribeListPush", "enable", "updateSelfFragmentFeedBackConf", "updateShowRecommendReasonInTitle", "updateSocialFeedsWebJumpUrl", "updateSplashDebugSwitcher", "updateSupportMultiVideoSwitch", "enableSw", "updateVideoChannelAutoPlaySwitchDefaultValue", "updateVideoChannelAutoPlaySwitchDefaultValueVideoFlow", "updateVideoChannelCoverStyle", "updateVideoChannelFeedsClickSwitchValue", "updateVideoColumnEntrySwitcher", "isTest", "updateVideoDynamicRecommendDurationPercent", "", "updateVideoDynamicRecommendOperator", "updateVideoDynamicRecommmendDurationLimit", "updateVideoDynamicRecommmendStrategy", "updateVideoMessageBoxSwitcher", "updateVideoRealTimeLogDebug", "updateVideoStructMsgPlaySwitch", "updateViolaDebugSwitcher", "updateViolaDiscoverConfig", "updateViolaDynamicConfig", "updateViolaJsDebugBundleSwitcher", "updateViolaJsLocalBundleSwitcher", "updateViolaMessageBoxConfig", "updateViolaRecommendSwitcher", "updateViolaWeishiAdConfig", "updateWebRenderConfig", "updateWebRenderModeConfig", "use0xcbaRefreshCmd", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/common/api/impl/ReadInJoyHelperImpl;", "Lcom/tencent/mobileqq/kandian/biz/common/api/IReadInJoyHelper;", "()V", "adSuperMaskLog", "", "msg", "", "adSuperMaskServiceSetChannelId", "channelID", "", "addExtraInfoInJson", "r5", "Lorg/json/JSONObject;", "addKanDianChatSessionKey", "friendUin", "selfUin", "sig", "", "applySharedPreferences", "editor", "Landroid/content/SharedPreferences$Editor;", "applyFirst", "", "canFreeTimeRefreshPush", "canInMessageList", "uin", "checkIsVideoFeedsGameAdComBarLocalConfigToday", "checkLastScanTTDate", "findSocialFeedsWebUrlKey", "key", "forwardToReadInJoyFeed", "activity", "Landroid/app/Activity;", "intent", "Landroid/content/Intent;", "requestCode", "dismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "generateSocialCountLess99", "count", "getCameraCaptureMaxDuration", "getCanLoadStartWebRenderModeConfig", "getDynamicBufferConfig", "getDynamicBufferSwitch", "getFFProbesize", "", "getGuideDataClazz", "Ljava/lang/Class;", "getInnerVideoInfoShowSWitcher", "getKDSPValueWithKey", "T", "defaultValue", "isAccountRelated", "(Ljava/lang/String;Ljava/lang/Object;Z)Ljava/lang/Object;", "getKanDianChatSessionKey", "getKanDianReportTTSwitch", "getKandianConfigAdExposureThreshold", "app", "Lmqq/app/AppRuntime;", "getKandianConfigBadgeSwitch", "getKandianLebaViewItem", "", "getPersonalHomePageWebUrl", "getPreplayTimeLimit", "getProteusOfflineBid", "bidKey", "getReadInJoyActivityDAUInfo", "getReadInJoyMultiVideoChannelInfoVersion", "getReadInJoySP", "Landroid/content/SharedPreferences;", "isSupportMultiProcess", "getReadInJoySharedPreferences", "accessMode", "getReadInJoySpValue", "(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;", "getReadInjoyShareToWxAtSwitch", "getReadinjoyStopFunctionSwitch", "getRemoveKandianFlag", "getSplasDebugSWitcher", "getUserConfigVersion", "()Ljava/lang/Integer;", "getVideoRealTimeLogDebug", "getVideoStructMsgPlaySwitch", "getViolaDebugSWitcher", "getViolaJsDebugBundleSwitcher", "getViolaJsLocalBundleSwitcher", "getViolaPicDetailConfig", "getViolaRecommendSwitcher", "getWebRenderConfig", "hideKandianTab", "isColorLevel", "isDailyChildFeeds", "isDownloadAsyncIo", "isEnableUseNewReportChannel", "isFFProbelistSwitch", "isFromVideoColumn", "videoFromType", "isInReadInJoyNewFeedsActivity", "isInReadinjoyFolderMergerStyle", "isInSplashActivity", "isKandianFavourite", "url", "forWhat", "isOSVersionSupportReadInJoy", "isRIJVideoEnableReprint", "isReadInJoyAdHippyFragment", "fragment", "Landroidx/fragment/app/Fragment;", "isReadInJoyArticleAdapter", "adapter", "Landroid/widget/ListAdapter;", "isReadInJoyBBCircleFragment", "isReadInJoyFragmentWithSubChannel", "isReadInJoyRecommendFeedsFragment", "isReadInJoySubChannelFragment", "isReadInJoyViolaChannelFragment", "isShowKandianRecommendArticleInSubscriptFeeds", "isShowKandianTab", "isShowKandianTabNew", "isShowMainRecommendTab", "isShowMainVideoTab", "isShowRecommendReasonInTitle", "isVideoFeedsTiktokStyle", "isViolaColumnEntryInTest", "isViolaMessageBoxInTest", "isWxArticle", "articleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "articleUrl", "launchReadInJoyPlugin", "fromActivity", "maybeInitializedAladdin", "needUpdateKandianFrame", "kandianFrameStatus", "Lcom/tencent/mobileqq/kandian/repo/tab/KandianFrameStatus;", "currentIsShow", "onKandianFeedsConfigChanged", "config", "onMergeFeedsConfigChanged", "onShareToNewsConfigChanged", "onSynchronizeToQzoneConfigChanged", "preParseArticleJsonParam", "article", "reportArticleByWeb", "source", "sourceArticleId", "operation", "opsource", "setKanDianReportTTSwitch", "reportSwitch", "setLastScanTTDate", "date", "setOperationFlag", "context", "Landroid/content/Context;", "operationBitFlag", "setUserConfigVersion", "value", "synSwitchCache", "updateArkChannelConfig", "updateCUKingCardDlgSwitch", "updateFreeTimeRefreshPush", "can", "updateGallerySubChannelHidden", "updateGallerySubChannelWaterFallHidden", "updateHasSetSwitch", "hasSet", "updateInnerVideoInfoShowSwitcher", "show", "updateKandianConfigDefaultBitRate", "bitRateStr", "updateKandianConfigRedShowNum", "num", "updateKandianConfigRedThreshold", "updateKandianMyTabPage", "updateKandianTabConfigSwitchSp", "switchOpen", "updateKandianVideoSocialSwitch", "updateLocalCacheSwitch", "tabSwitch", "updateOpenSimpleSwitchFm", "updateProteusOfflineBid", "bid", "updateRIJVideoEnableReprint", "enableReprint", "updateReadInJoyFeedsGroupSetting", "setting", "updateReadInJoyIndividualPushSwitchSetting", "flag", "updateReadInJoyInterestedPushSwitch", "interestedSwitch", "updateReadInJoyMultiVideoChannelInfo", "channelName", "channelType", "updateReadInJoyPushMsgSwitch", "updateReadInJoySmartCropSetting", "updateReadInJoySpValue", "(Ljava/lang/String;Ljava/lang/Object;)V", "(Ljava/lang/String;Ljava/lang/Object;Z)V", "updateReadInJoyVideoJumpDefaultValue", "updateReadinjoyFolderMergerConfig", "updateReadinjoyFolderMergerReal", "updateReadinjoyStopFunctionSwtichReal", "updateReadinjoySubscribeListPush", "enable", "updateSelfFragmentFeedBackConf", "updateShowRecommendReasonInTitle", "updateSocialFeedsWebJumpUrl", "updateSplashDebugSwitcher", "updateSupportMultiVideoSwitch", "enableSw", "updateVideoChannelAutoPlaySwitchDefaultValue", "updateVideoChannelAutoPlaySwitchDefaultValueVideoFlow", "updateVideoChannelCoverStyle", "updateVideoChannelFeedsClickSwitchValue", "updateVideoColumnEntrySwitcher", "isTest", "updateVideoDynamicRecommendDurationPercent", "", "updateVideoDynamicRecommendOperator", "updateVideoDynamicRecommmendDurationLimit", "updateVideoDynamicRecommmendStrategy", "updateVideoMessageBoxSwitcher", "updateVideoRealTimeLogDebug", "updateVideoStructMsgPlaySwitch", "updateViolaDebugSwitcher", "updateViolaDiscoverConfig", "updateViolaDynamicConfig", "updateViolaJsDebugBundleSwitcher", "updateViolaJsLocalBundleSwitcher", "updateViolaMessageBoxConfig", "updateViolaRecommendSwitcher", "updateViolaWeishiAdConfig", "updateWebRenderConfig", "updateWebRenderModeConfig", "use0xcbaRefreshCmd", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class ReadInJoyHelperImpl
   implements IReadInJoyHelper
 {
@@ -72,6 +72,11 @@ public final class ReadInJoyHelperImpl
     ReadInJoyHelper.a(paramJSONObject);
   }
   
+  public void addKanDianChatSessionKey(@Nullable String paramString1, @Nullable String paramString2, @Nullable byte[] paramArrayOfByte)
+  {
+    ReadInJoyHelper.a(paramString1, paramString2, paramArrayOfByte);
+  }
+  
   public void applySharedPreferences(@Nullable SharedPreferences.Editor paramEditor, boolean paramBoolean)
   {
     RIJSPUtils.a(paramEditor, true);
@@ -79,23 +84,23 @@ public final class ReadInJoyHelperImpl
   
   public boolean canFreeTimeRefreshPush()
   {
-    return ReadInJoyHelper.r(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.A(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean canInMessageList(@Nullable String paramString)
   {
-    return ReadInJoyHelper.b(paramString);
+    return ReadInJoyHelper.d(paramString);
   }
   
   public boolean checkIsVideoFeedsGameAdComBarLocalConfigToday()
   {
-    return ReadInJoyHelper.G(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.ay(RIJQQAppInterfaceUtil.e());
   }
   
   @Nullable
   public String checkLastScanTTDate()
   {
-    return ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.B(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean findSocialFeedsWebUrlKey(@Nullable String paramString)
@@ -111,23 +116,23 @@ public final class ReadInJoyHelperImpl
   @Nullable
   public String generateSocialCountLess99(int paramInt)
   {
-    return ReadInJoyHelper.c(paramInt);
+    return ReadInJoyHelper.e(paramInt);
   }
   
   public int getCameraCaptureMaxDuration()
   {
-    return ReadInJoyHelper.f(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.y(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getCanLoadStartWebRenderModeConfig()
   {
-    return ReadInJoyHelper.u(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.W(RIJQQAppInterfaceUtil.e());
   }
   
   @Nullable
   public String getDynamicBufferConfig()
   {
-    return RIJVideoDynamicBufferConfigSp.a();
+    return RIJVideoDynamicBufferConfigSp.b();
   }
   
   public int getDynamicBufferSwitch()
@@ -137,7 +142,7 @@ public final class ReadInJoyHelperImpl
   
   public long getFFProbesize()
   {
-    return ReadInJoyHelper.b();
+    return ReadInJoyHelper.H();
   }
   
   @NotNull
@@ -148,9 +153,9 @@ public final class ReadInJoyHelperImpl
   
   public boolean getInnerVideoInfoShowSWitcher()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return ReadInJoyHelper.j((AppRuntime)localAppRuntime);
+      return ReadInJoyHelper.o((AppRuntime)localAppRuntime);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
@@ -159,30 +164,36 @@ public final class ReadInJoyHelperImpl
   public <T> T getKDSPValueWithKey(@NotNull String paramString, T paramT, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    return RIJSPUtils.a(paramString, paramT, paramBoolean);
+    return RIJSPUtils.d(paramString, paramT, paramBoolean);
+  }
+  
+  @Nullable
+  public byte[] getKanDianChatSessionKey(@Nullable String paramString1, @Nullable String paramString2)
+  {
+    return ReadInJoyHelper.a(paramString1, paramString2);
   }
   
   public boolean getKanDianReportTTSwitch()
   {
-    return ReadInJoyHelper.s(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.C(RIJQQAppInterfaceUtil.e());
   }
   
   public int getKandianConfigAdExposureThreshold(@Nullable AppRuntime paramAppRuntime)
   {
-    return ReadInJoyHelper.A(paramAppRuntime);
+    return ReadInJoyHelper.ax(paramAppRuntime);
   }
   
   public int getKandianConfigBadgeSwitch()
   {
-    return ReadInJoyHelper.x(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.ah(RIJQQAppInterfaceUtil.e());
   }
   
   @Nullable
   public Object getKandianLebaViewItem()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return ReadInJoyHelper.a((QQAppInterface)localAppRuntime);
+      return ReadInJoyHelper.f((QQAppInterface)localAppRuntime);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
@@ -190,7 +201,7 @@ public final class ReadInJoyHelperImpl
   @Nullable
   public String getPersonalHomePageWebUrl()
   {
-    return RIJPersonalHomePageConfigSp.a();
+    return RIJPersonalHomePageConfigSp.b();
   }
   
   public int getPreplayTimeLimit()
@@ -212,9 +223,9 @@ public final class ReadInJoyHelperImpl
   
   public int getReadInJoyMultiVideoChannelInfoVersion()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return ReadInJoyHelper.b((QQAppInterface)localAppRuntime);
+      return ReadInJoyHelper.h((QQAppInterface)localAppRuntime);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
@@ -222,13 +233,13 @@ public final class ReadInJoyHelperImpl
   @Nullable
   public SharedPreferences getReadInJoySP(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), paramBoolean1, paramBoolean2);
+    return RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), paramBoolean1, paramBoolean2);
   }
   
   @Nullable
   public SharedPreferences getReadInJoySharedPreferences(int paramInt)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       return ReadInJoyHelper.a((QQAppInterface)localAppRuntime, paramInt);
     }
@@ -237,17 +248,17 @@ public final class ReadInJoyHelperImpl
   
   public <T> T getReadInJoySpValue(@Nullable String paramString, T paramT)
   {
-    return RIJSPUtils.a(paramString, paramT);
+    return RIJSPUtils.b(paramString, paramT);
   }
   
   public <T> T getReadInJoySpValue(@Nullable String paramString, T paramT, boolean paramBoolean)
   {
-    return RIJSPUtils.a(paramString, paramT, paramBoolean);
+    return RIJSPUtils.d(paramString, paramT, paramBoolean);
   }
   
   public int getReadInjoyShareToWxAtSwitch()
   {
-    return ReadInJoyHelper.n(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.L(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getReadinjoyStopFunctionSwitch()
@@ -262,13 +273,13 @@ public final class ReadInJoyHelperImpl
   
   public boolean getSplasDebugSWitcher()
   {
-    return ReadInJoyHelper.q(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.w(RIJQQAppInterfaceUtil.e());
   }
   
   @Nullable
   public Integer getUserConfigVersion()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localQQAppInterface != null)
     {
       Object localObject = localQQAppInterface.getApp();
@@ -289,46 +300,46 @@ public final class ReadInJoyHelperImpl
   
   public long getVideoRealTimeLogDebug()
   {
-    return ReadInJoyHelper.a();
+    return ReadInJoyHelper.h();
   }
   
   public boolean getVideoStructMsgPlaySwitch()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return ReadInJoyHelper.b((QQAppInterface)localAppRuntime);
+      return ReadInJoyHelper.i((QQAppInterface)localAppRuntime);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
   
   public boolean getViolaDebugSWitcher()
   {
-    return ReadInJoyHelper.k(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.p(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getViolaJsDebugBundleSwitcher()
   {
-    return ReadInJoyHelper.l(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.q(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getViolaJsLocalBundleSwitcher()
   {
-    return ReadInJoyHelper.m(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.r(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getViolaPicDetailConfig()
   {
-    return RIJViolaPicDetailConfigSp.a(RIJQQAppInterfaceUtil.a());
+    return RIJViolaPicDetailConfigSp.a(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getViolaRecommendSwitcher()
   {
-    return ReadInJoyHelper.H(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.az(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean getWebRenderConfig()
   {
-    return ReadInJoyHelper.t(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.V(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean hideKandianTab()
@@ -338,7 +349,7 @@ public final class ReadInJoyHelperImpl
   
   public boolean isColorLevel()
   {
-    return RIJAppSetting.g();
+    return RIJAppSetting.j();
   }
   
   public boolean isDailyChildFeeds(long paramLong)
@@ -348,7 +359,7 @@ public final class ReadInJoyHelperImpl
   
   public boolean isDownloadAsyncIo()
   {
-    return ReadInJoyHelper.u();
+    return ReadInJoyHelper.J();
   }
   
   public boolean isEnableUseNewReportChannel()
@@ -358,12 +369,12 @@ public final class ReadInJoyHelperImpl
   
   public boolean isFFProbelistSwitch()
   {
-    return ReadInJoyHelper.t();
+    return ReadInJoyHelper.I();
   }
   
   public boolean isFromVideoColumn(int paramInt)
   {
-    return ReadInJoyHelper.d(paramInt);
+    return ReadInJoyHelper.n(paramInt);
   }
   
   public boolean isInReadInJoyNewFeedsActivity(@Nullable Activity paramActivity)
@@ -373,7 +384,7 @@ public final class ReadInJoyHelperImpl
   
   public boolean isInReadinjoyFolderMergerStyle()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       return ReadInJoyHelper.a((AppInterface)localAppRuntime);
     }
@@ -392,12 +403,12 @@ public final class ReadInJoyHelperImpl
   
   public boolean isOSVersionSupportReadInJoy()
   {
-    return RIJAppSetting.f();
+    return RIJAppSetting.i();
   }
   
   public boolean isRIJVideoEnableReprint()
   {
-    return ReadInJoyHelper.p(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.u(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean isReadInJoyAdHippyFragment(@NotNull Fragment paramFragment)
@@ -443,9 +454,9 @@ public final class ReadInJoyHelperImpl
   
   public boolean isShowKandianRecommendArticleInSubscriptFeeds()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return ReadInJoyHelper.a((QQAppInterface)localAppRuntime);
+      return ReadInJoyHelper.d((QQAppInterface)localAppRuntime);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
@@ -462,17 +473,17 @@ public final class ReadInJoyHelperImpl
   
   public boolean isShowMainRecommendTab()
   {
-    return ReadInJoyHelper.m();
+    return ReadInJoyHelper.w();
   }
   
   public boolean isShowMainVideoTab()
   {
-    return ReadInJoyHelper.l();
+    return ReadInJoyHelper.v();
   }
   
   public boolean isShowRecommendReasonInTitle()
   {
-    return ReadInJoyHelper.d(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.e(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean isVideoFeedsTiktokStyle()
@@ -482,27 +493,27 @@ public final class ReadInJoyHelperImpl
   
   public boolean isViolaColumnEntryInTest()
   {
-    return ReadInJoyHelper.o(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.t(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean isViolaMessageBoxInTest()
   {
-    return ReadInJoyHelper.n(RIJQQAppInterfaceUtil.a());
+    return ReadInJoyHelper.s(RIJQQAppInterfaceUtil.e());
   }
   
   public boolean isWxArticle(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    return ReadInJoyHelper.a(paramAbsBaseArticleInfo);
+    return ReadInJoyHelper.b(paramAbsBaseArticleInfo);
   }
   
   public boolean isWxArticle(@Nullable String paramString)
   {
-    return ReadInJoyHelper.d(paramString);
+    return ReadInJoyHelper.l(paramString);
   }
   
   public void launchReadInJoyPlugin(@Nullable Activity paramActivity, @Nullable Intent paramIntent)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((QQAppInterface)localAppRuntime, paramActivity, paramIntent);
@@ -520,7 +531,7 @@ public final class ReadInJoyHelperImpl
   
   public void onKandianFeedsConfigChanged(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.e(paramString, (QQAppInterface)localAppRuntime);
@@ -531,7 +542,7 @@ public final class ReadInJoyHelperImpl
   
   public void onMergeFeedsConfigChanged(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.d(paramString, (QQAppInterface)localAppRuntime);
@@ -542,7 +553,7 @@ public final class ReadInJoyHelperImpl
   
   public void onShareToNewsConfigChanged(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a(paramString, (QQAppInterface)localAppRuntime);
@@ -553,7 +564,7 @@ public final class ReadInJoyHelperImpl
   
   public void onSynchronizeToQzoneConfigChanged(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.b(paramString, (QQAppInterface)localAppRuntime);
@@ -569,7 +580,7 @@ public final class ReadInJoyHelperImpl
   
   public void reportArticleByWeb(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((QQAppInterface)localAppRuntime, paramInt1, paramLong, paramInt2, paramInt3);
@@ -580,10 +591,10 @@ public final class ReadInJoyHelperImpl
   
   public void setKanDianReportTTSwitch(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
-      ReadInJoyHelper.s((AppRuntime)localAppRuntime, paramBoolean);
+      ReadInJoyHelper.t((AppRuntime)localAppRuntime, paramBoolean);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -591,7 +602,7 @@ public final class ReadInJoyHelperImpl
   
   public void setLastScanTTDate(@Nullable String paramString)
   {
-    ReadInJoyHelper.c(RIJQQAppInterfaceUtil.a(), paramString);
+    ReadInJoyHelper.d(RIJQQAppInterfaceUtil.e(), paramString);
   }
   
   public void setOperationFlag(@Nullable Context paramContext, int paramInt)
@@ -602,13 +613,13 @@ public final class ReadInJoyHelperImpl
     }
     paramContext = (ReadInJoyNewFeedsActivity)localContext;
     if (paramContext != null) {
-      paramContext.d(8);
+      paramContext.e(8);
     }
   }
   
   public void setUserConfigVersion(int paramInt)
   {
-    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    Object localObject1 = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localObject1 != null)
     {
       Object localObject2 = ((QQAppInterface)localObject1).getApp();
@@ -637,7 +648,7 @@ public final class ReadInJoyHelperImpl
   
   public boolean updateArkChannelConfig(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
       return ReadInJoyHelper.a((AppRuntime)localAppRuntime, paramString);
     }
@@ -646,15 +657,15 @@ public final class ReadInJoyHelperImpl
   
   public void updateCUKingCardDlgSwitch(int paramInt)
   {
-    ReadInJoyHelper.e(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.g(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateFreeTimeRefreshPush(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
-      ReadInJoyHelper.r((AppRuntime)localAppRuntime, paramBoolean);
+      ReadInJoyHelper.s((AppRuntime)localAppRuntime, paramBoolean);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -662,18 +673,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateGallerySubChannelHidden(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
-    if (localAppRuntime != null)
-    {
-      ReadInJoyHelper.w((AppRuntime)localAppRuntime, paramString);
-      return;
-    }
-    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-  }
-  
-  public void updateGallerySubChannelWaterFallHidden(@Nullable String paramString)
-  {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.x((AppRuntime)localAppRuntime, paramString);
@@ -682,27 +682,38 @@ public final class ReadInJoyHelperImpl
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
   
+  public void updateGallerySubChannelWaterFallHidden(@Nullable String paramString)
+  {
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
+    if (localAppRuntime != null)
+    {
+      ReadInJoyHelper.y((AppRuntime)localAppRuntime, paramString);
+      return;
+    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+  }
+  
   public void updateHasSetSwitch(boolean paramBoolean)
   {
-    RIJShowKanDianTabSp.a(paramBoolean);
+    RIJShowKanDianTabSp.b(paramBoolean);
   }
   
   public void updateInnerVideoInfoShowSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.i(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.i(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateKandianConfigDefaultBitRate(@Nullable String paramString)
   {
-    ReadInJoyHelper.v(RIJQQAppInterfaceUtil.a(), paramString);
+    ReadInJoyHelper.w(RIJQQAppInterfaceUtil.e(), paramString);
   }
   
   public void updateKandianConfigRedShowNum(int paramInt)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
-      ReadInJoyHelper.h((AppRuntime)localAppRuntime, paramInt);
+      ReadInJoyHelper.j((AppRuntime)localAppRuntime, paramInt);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -710,10 +721,10 @@ public final class ReadInJoyHelperImpl
   
   public void updateKandianConfigRedThreshold(int paramInt)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
-      ReadInJoyHelper.i((AppRuntime)localAppRuntime, paramInt);
+      ReadInJoyHelper.k((AppRuntime)localAppRuntime, paramInt);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -721,9 +732,9 @@ public final class ReadInJoyHelperImpl
   
   public boolean updateKandianMyTabPage(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null) {
-      return ReadInJoyHelper.c((AppRuntime)localAppRuntime, paramString);
+      return ReadInJoyHelper.H((AppRuntime)localAppRuntime, paramString);
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
   }
@@ -735,7 +746,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateKandianVideoSocialSwitch(boolean paramBoolean)
   {
-    ReadInJoyHelper.q(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.r(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateLocalCacheSwitch(int paramInt)
@@ -745,7 +756,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateOpenSimpleSwitchFm(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.c((AppRuntime)localAppRuntime, paramBoolean);
@@ -761,12 +772,12 @@ public final class ReadInJoyHelperImpl
   
   public void updateRIJVideoEnableReprint(boolean paramBoolean)
   {
-    ReadInJoyHelper.o(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.o(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateReadInJoyFeedsGroupSetting(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((QQAppInterface)localAppRuntime, paramString);
@@ -777,7 +788,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadInJoyIndividualPushSwitchSetting(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((AppRuntime)localAppRuntime, paramBoolean);
@@ -788,7 +799,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadInJoyInterestedPushSwitch(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.c((QQAppInterface)localAppRuntime, paramBoolean);
@@ -799,7 +810,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadInJoyMultiVideoChannelInfo(int paramInt1, @Nullable String paramString, int paramInt2)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((QQAppInterface)localAppRuntime, paramInt1, paramString, paramInt2);
@@ -810,7 +821,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadInJoyPushMsgSwitch(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.b((QQAppInterface)localAppRuntime, paramString);
@@ -821,7 +832,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadInJoySmartCropSetting(@Nullable String paramString)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.c((QQAppInterface)localAppRuntime, paramString);
@@ -842,13 +853,13 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadInJoyVideoJumpDefaultValue(int paramInt)
   {
-    ReadInJoyHelper.d(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.f(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateReadinjoyFolderMergerConfig(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "setting");
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.c(paramString, (QQAppInterface)localAppRuntime);
@@ -859,7 +870,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadinjoyFolderMergerReal()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((QQAppInterface)localAppRuntime);
@@ -870,10 +881,10 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadinjoyStopFunctionSwtichReal()
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
-      ReadInJoyHelper.c((QQAppInterface)localAppRuntime);
+      ReadInJoyHelper.g((QQAppInterface)localAppRuntime);
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -881,7 +892,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateReadinjoySubscribeListPush(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.d((AppRuntime)localAppRuntime, paramBoolean);
@@ -892,7 +903,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateSelfFragmentFeedBackConf(@Nullable String paramString1, @Nullable String paramString2)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.b((AppRuntime)localAppRuntime, paramString1, paramString2);
@@ -903,12 +914,12 @@ public final class ReadInJoyHelperImpl
   
   public void updateShowRecommendReasonInTitle(boolean paramBoolean)
   {
-    ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.b(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateSocialFeedsWebJumpUrl(@Nullable String paramString1, @Nullable String paramString2)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.a((AppRuntime)localAppRuntime, paramString1, paramString2);
@@ -919,12 +930,12 @@ public final class ReadInJoyHelperImpl
   
   public void updateSplashDebugSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.p(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.q(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateSupportMultiVideoSwitch(int paramInt)
   {
-    Object localObject = (QQAppInterface)RIJQQAppInterfaceUtil.a();
+    Object localObject = (QQAppInterface)RIJQQAppInterfaceUtil.e();
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getApp().getSharedPreferences(((QQAppInterface)localObject).getCurrentAccountUin(), 4).edit();
@@ -936,7 +947,7 @@ public final class ReadInJoyHelperImpl
   
   public void updateSupportMultiVideoSwitch(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.b((QQAppInterface)localAppRuntime, paramBoolean);
@@ -947,59 +958,59 @@ public final class ReadInJoyHelperImpl
   
   public void updateVideoChannelAutoPlaySwitchDefaultValue(int paramInt)
   {
-    ReadInJoyHelper.b(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.b(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoChannelAutoPlaySwitchDefaultValueVideoFlow(int paramInt)
   {
-    ReadInJoyHelper.c(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.d(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoChannelCoverStyle(int paramInt)
   {
-    ReadInJoyHelper.l(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.n(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoChannelFeedsClickSwitchValue(int paramInt)
   {
-    ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.a(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoColumnEntrySwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.n(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.n(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateVideoDynamicRecommendDurationPercent(float paramFloat)
   {
-    ReadInJoyHelper.a(RIJQQAppInterfaceUtil.a(), paramFloat);
+    ReadInJoyHelper.a(RIJQQAppInterfaceUtil.e(), paramFloat);
   }
   
   public void updateVideoDynamicRecommendOperator(int paramInt)
   {
-    ReadInJoyHelper.o(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.q(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoDynamicRecommmendDurationLimit(int paramInt)
   {
-    ReadInJoyHelper.n(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.p(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoDynamicRecommmendStrategy(int paramInt)
   {
-    ReadInJoyHelper.m(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.o(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateVideoMessageBoxSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.m(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.m(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateVideoRealTimeLogDebug() {}
   
   public void updateVideoStructMsgPlaySwitch(boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     if (localAppRuntime != null)
     {
       ReadInJoyHelper.d((QQAppInterface)localAppRuntime, paramBoolean);
@@ -1010,52 +1021,52 @@ public final class ReadInJoyHelperImpl
   
   public void updateViolaDebugSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.j(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.j(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateViolaDiscoverConfig(int paramInt)
   {
-    ReadInJoyHelper.t(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.v(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateViolaDynamicConfig(int paramInt)
   {
-    ReadInJoyHelper.r(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.t(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateViolaJsDebugBundleSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.k(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.k(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateViolaJsLocalBundleSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.l(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.l(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateViolaMessageBoxConfig(int paramInt)
   {
-    ReadInJoyHelper.u(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.w(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateViolaRecommendSwitcher(boolean paramBoolean)
   {
-    ReadInJoyHelper.z(RIJQQAppInterfaceUtil.a(), paramBoolean);
+    ReadInJoyHelper.A(RIJQQAppInterfaceUtil.e(), paramBoolean);
   }
   
   public void updateViolaWeishiAdConfig(int paramInt)
   {
-    ReadInJoyHelper.s(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.u(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateWebRenderConfig(int paramInt)
   {
-    ReadInJoyHelper.p(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.r(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public void updateWebRenderModeConfig(int paramInt)
   {
-    ReadInJoyHelper.q(RIJQQAppInterfaceUtil.a(), paramInt);
+    ReadInJoyHelper.s(RIJQQAppInterfaceUtil.e(), paramInt);
   }
   
   public boolean use0xcbaRefreshCmd()
@@ -1065,7 +1076,7 @@ public final class ReadInJoyHelperImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.api.impl.ReadInJoyHelperImpl
  * JD-Core Version:    0.7.0.1
  */

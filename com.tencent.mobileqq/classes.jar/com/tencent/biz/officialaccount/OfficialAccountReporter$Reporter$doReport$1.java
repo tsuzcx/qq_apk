@@ -27,21 +27,21 @@ final class OfficialAccountReporter$Reporter$doReport$1
         localObject = ((BaseApplicationImpl)localObject).getRuntime();
         Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication().runtime");
         String str2 = ((AppRuntime)localObject).getAccount();
-        localObject = (Map)this.jdField_a_of_type_JavaUtilHashMap;
+        localObject = (Map)this.a;
         Intrinsics.checkExpressionValueIsNotNull(str2, "uin");
         ((Map)localObject).put("uin", str2);
-        ((Map)this.jdField_a_of_type_JavaUtilHashMap).put("A8", str2);
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          ((Map)this.jdField_a_of_type_JavaUtilHashMap).put("target_qq", this.jdField_a_of_type_JavaLangString);
+        ((Map)this.a).put("A8", str2);
+        if (this.b != null) {
+          ((Map)this.a).put("target_qq", this.b);
         }
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("doReport ");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilHashMap);
+        ((StringBuilder)localObject).append(this.a);
         QLog.d("OfficialAccountReporter", 2, ((StringBuilder)localObject).toString());
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("code"))
+        if (this.a.containsKey("code"))
         {
-          localObject = String.valueOf(this.jdField_a_of_type_JavaUtilHashMap.get("code"));
-          StatisticCollector.getInstance((Context)BaseApplicationImpl.getContext()).collectPerformance("00000KCQ7Y3ITP3Z", str2, (String)localObject, true, -1L, -1L, this.jdField_a_of_type_JavaUtilHashMap, "");
+          localObject = String.valueOf(this.a.get("code"));
+          StatisticCollector.getInstance((Context)BaseApplicationImpl.getContext()).collectPerformance("00000KCQ7Y3ITP3Z", str2, (String)localObject, true, -1L, -1L, this.a, "");
           return;
         }
       }
@@ -56,7 +56,7 @@ final class OfficialAccountReporter$Reporter$doReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.officialaccount.OfficialAccountReporter.Reporter.doReport.1
  * JD-Core Version:    0.7.0.1
  */

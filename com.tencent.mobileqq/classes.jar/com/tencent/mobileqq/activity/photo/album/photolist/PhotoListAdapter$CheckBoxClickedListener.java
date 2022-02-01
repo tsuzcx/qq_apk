@@ -8,32 +8,32 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class PhotoListAdapter$CheckBoxClickedListener
   implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  int a;
+  CheckBox b;
   
   public PhotoListAdapter$CheckBoxClickedListener(PhotoListAdapter paramPhotoListAdapter) {}
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(CheckBox paramCheckBox)
   {
-    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+    this.b = paramCheckBox;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListAdapter.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
+    if (this.c.g != null) {
+      this.c.g.a(paramView, this.a, this.b);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.PhotoListAdapter.CheckBoxClickedListener
  * JD-Core Version:    0.7.0.1
  */

@@ -19,86 +19,86 @@ import java.util.Set;
 public class AEEditorMusicAdapter
   extends RecyclerView.Adapter<AEEditorMusicAdapter.AEEditorMusicViewHolder>
 {
-  private final int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AEEditorMusicAdapter.ClickCallback jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback;
-  private List<AEEditorMusicAdapter.AEEditorMusicInfo> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Set<AEEditorMusicAdapter.AEEditorMusicViewHolder> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = false;
-  private int b;
-  private int c;
-  private int d;
+  private Context a;
+  private List<AEEditorMusicAdapter.AEEditorMusicInfo> b = new LinkedList();
+  private AEEditorMusicAdapter.ClickCallback c;
+  private final int d;
+  private boolean e = false;
+  private Set<AEEditorMusicAdapter.AEEditorMusicViewHolder> f = new HashSet();
+  private int g;
+  private int h;
+  private int i;
   
   public AEEditorMusicAdapter(@NonNull Context paramContext, @Nullable AEEditorMusicAdapter.ClickCallback paramClickCallback)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback = paramClickCallback;
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2063990871);
-    this.jdField_a_of_type_Boolean = AEThemeUtil.a();
-    this.b = AIOUtils.b(6.0F, paramContext.getResources());
-    this.c = AIOUtils.b(2.0F, paramContext.getResources());
-    this.d = AIOUtils.b(16.0F, paramContext.getResources());
+    this.a = paramContext;
+    this.c = paramClickCallback;
+    this.d = paramContext.getResources().getDimensionPixelSize(2063859798);
+    this.e = AEThemeUtil.b();
+    this.g = AIOUtils.b(6.0F, paramContext.getResources());
+    this.h = AIOUtils.b(2.0F, paramContext.getResources());
+    this.i = AIOUtils.b(16.0F, paramContext.getResources());
   }
   
   @NonNull
   public AEEditorMusicAdapter.AEEditorMusicViewHolder a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = new AEEditorMusicAdapter.AEEditorMusicViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2064318572, paramViewGroup, false), this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicAdapter$ClickCallback, this.jdField_a_of_type_Int);
-    AEEditorMusicAdapter.AEEditorMusicViewHolder.a(paramViewGroup, this.b, this.c, this.d);
+    paramViewGroup = new AEEditorMusicAdapter.AEEditorMusicViewHolder(LayoutInflater.from(this.a).inflate(2064056444, paramViewGroup, false), this.c, this.d);
+    AEEditorMusicAdapter.AEEditorMusicViewHolder.a(paramViewGroup, this.g, this.h, this.i);
     return paramViewGroup;
   }
   
   public List<AEEditorMusicAdapter.AEEditorMusicInfo> a()
   {
-    return new LinkedList(this.jdField_a_of_type_JavaUtilList);
-  }
-  
-  public void a()
-  {
-    if (CollectionUtils.isEmpty(this.jdField_a_of_type_JavaUtilSet)) {
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext()) {
-      ((AEEditorMusicAdapter.AEEditorMusicViewHolder)localIterator.next()).a();
-    }
+    return new LinkedList(this.b);
   }
   
   public void a(AEEditorMusicAdapter.AEEditorMusicViewHolder paramAEEditorMusicViewHolder)
   {
     super.onViewAttachedToWindow(paramAEEditorMusicViewHolder);
-    this.jdField_a_of_type_JavaUtilSet.add(paramAEEditorMusicViewHolder);
+    this.f.add(paramAEEditorMusicViewHolder);
   }
   
   public void a(@NonNull AEEditorMusicAdapter.AEEditorMusicViewHolder paramAEEditorMusicViewHolder, int paramInt)
   {
-    paramAEEditorMusicViewHolder.a((AEEditorMusicAdapter.AEEditorMusicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt, this.jdField_a_of_type_JavaUtilList.size());
+    paramAEEditorMusicViewHolder.a((AEEditorMusicAdapter.AEEditorMusicInfo)this.b.get(paramInt), paramInt, this.b.size());
   }
   
   public void a(@NonNull List<AEEditorMusicAdapter.AEEditorMusicInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.b.clear();
+    this.b.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public void b()
   {
-    Set localSet = this.jdField_a_of_type_JavaUtilSet;
-    if (localSet != null) {
-      localSet.clear();
+    if (CollectionUtils.isEmpty(this.f)) {
+      return;
+    }
+    Iterator localIterator = this.f.iterator();
+    while (localIterator.hasNext()) {
+      ((AEEditorMusicAdapter.AEEditorMusicViewHolder)localIterator.next()).a();
     }
   }
   
   public void b(AEEditorMusicAdapter.AEEditorMusicViewHolder paramAEEditorMusicViewHolder)
   {
     super.onViewDetachedFromWindow(paramAEEditorMusicViewHolder);
-    this.jdField_a_of_type_JavaUtilSet.remove(paramAEEditorMusicViewHolder);
+    this.f.remove(paramAEEditorMusicViewHolder);
   }
   
   public void c()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Set localSet = this.f;
+    if (localSet != null) {
+      localSet.clear();
+    }
+  }
+  
+  public void d()
+  {
+    Object localObject = this.b;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -106,7 +106,7 @@ public class AEEditorMusicAdapter
       {
         AEEditorMusicAdapter.AEEditorMusicInfo localAEEditorMusicInfo = (AEEditorMusicAdapter.AEEditorMusicInfo)((Iterator)localObject).next();
         if (localAEEditorMusicInfo != null) {
-          localAEEditorMusicInfo.jdField_a_of_type_Boolean = false;
+          localAEEditorMusicInfo.c = false;
         }
       }
     }
@@ -114,12 +114,12 @@ public class AEEditorMusicAdapter
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorMusicAdapter
  * JD-Core Version:    0.7.0.1
  */

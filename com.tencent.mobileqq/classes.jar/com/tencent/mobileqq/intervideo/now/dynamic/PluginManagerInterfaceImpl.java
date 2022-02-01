@@ -30,49 +30,35 @@ import java.util.concurrent.Future;
 public class PluginManagerInterfaceImpl
   implements IPluginManagerInterfaceImpl
 {
-  private static volatile PluginManagerInterfaceImpl jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl;
-  private INowDownloadManager jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager;
+  private static volatile PluginManagerInterfaceImpl c;
   public NowDataReporter a;
-  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  private INowDownloadManager d;
   
   public static PluginManagerInterfaceImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl == null) {
+    if (c == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl == null) {
-          jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl = new PluginManagerInterfaceImpl();
+        if (c == null) {
+          c = new PluginManagerInterfaceImpl();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl;
+    return c;
   }
   
-  public static void a()
+  public static void b()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl != null) {
-      jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl.b();
+    if (c != null) {
+      c.c();
     }
   }
   
-  private static QQAppInterface b()
+  private static QQAppInterface g()
   {
     return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  public NowDataReporter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter;
-  }
-  
-  public String a()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return localQQAppInterface.getCurrentAccountUin();
   }
   
   public String a(String paramString)
@@ -102,10 +88,10 @@ public class PluginManagerInterfaceImpl
       paramObject = (DownloadCallback)paramObject;
       String str = paramBundle.getString("url", "");
       paramBundle = paramBundle.getString("path", "");
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager = ((INowDownloadManager)QRoute.api(INowDownloadManager.class)).createObject(true);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager.init(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager.addDownloadListener(str, new PluginManagerInterfaceImpl.2(this, paramObject, str));
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager.addNowDownloadTask(NowDownloadTaskInfo.a(str, "com.tencent.now", paramBundle));
+      this.d = ((INowDownloadManager)QRoute.api(INowDownloadManager.class)).createObject(true);
+      this.d.init(BaseApplicationImpl.getContext());
+      this.d.addDownloadListener(str, new PluginManagerInterfaceImpl.2(this, paramObject, str));
+      this.d.addNowDownloadTask(NowDownloadTaskInfo.a(str, "com.tencent.now", paramBundle));
       return;
     }
     finally
@@ -118,26 +104,14 @@ public class PluginManagerInterfaceImpl
   public void a(AppInterface paramAppInterface)
   {
     paramAppInterface = (QQAppInterface)paramAppInterface;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter == null) {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter = new NowDataReporter(paramAppInterface);
+    if (this.a == null) {
+      this.a = new NowDataReporter(paramAppInterface);
     }
     NowLive.setCustomizedTicket(new PluginManagerInterfaceImpl.1(this));
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl = null;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter = null;
-    INowDownloadManager localINowDownloadManager = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager;
-    if (localINowDownloadManager != null)
-    {
-      localINowDownloadManager.unInit();
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDownloadEngineINowDownloadManager = null;
-    }
+    this.b = true;
   }
   
   public void b(Bundle paramBundle)
@@ -156,7 +130,7 @@ public class PluginManagerInterfaceImpl
   public void b(Bundle paramBundle, Object paramObject)
   {
     paramObject = (CommonCallback)paramObject;
-    QQAppInterface localQQAppInterface = b();
+    QQAppInterface localQQAppInterface = g();
     if (localQQAppInterface == null)
     {
       QLog.i("PluginManagerInterfaceImpl", 1, "sendCsTask(): mApp is null, PluginManagerInterfaceImpl had unInit.");
@@ -168,6 +142,18 @@ public class PluginManagerInterfaceImpl
     ((NowChannerHandlerV2)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.NOW_CHANNEL_HANDLER_V2)).a(str1, str2, paramBundle, paramObject);
   }
   
+  public void c()
+  {
+    c = null;
+    this.a = null;
+    INowDownloadManager localINowDownloadManager = this.d;
+    if (localINowDownloadManager != null)
+    {
+      localINowDownloadManager.unInit();
+      this.d = null;
+    }
+  }
+  
   public void c(Bundle paramBundle)
   {
     Intent localIntent = new Intent();
@@ -175,10 +161,10 @@ public class PluginManagerInterfaceImpl
     if (paramBundle != null) {
       localIntent.putExtras(paramBundle);
     }
-    if (b() == null) {
+    if (g() == null) {
       paramBundle = null;
     } else {
-      paramBundle = b().getCurrentUin();
+      paramBundle = g().getCurrentUin();
     }
     localIntent.putExtra("uin", paramBundle);
     RouteUtils.a(BaseApplicationImpl.getContext(), localIntent, "/share/toqq/activity");
@@ -187,14 +173,14 @@ public class PluginManagerInterfaceImpl
   public void c(Bundle paramBundle, Object paramObject)
   {
     CommonCallback localCommonCallback = (CommonCallback)paramObject;
-    paramObject = b();
+    paramObject = g();
     if (paramObject == null) {
       return;
     }
     NowRecordInfo localNowRecordInfo = (NowRecordInfo)paramObject.getBusinessHandler(BusinessHandlerFactory.NOW_PROXY_HANDLER);
     String str = paramBundle.getString("fromId");
     long l = paramBundle.getLong("roomId");
-    paramObject = a();
+    paramObject = e();
     paramBundle = paramObject;
     if (TextUtils.isEmpty(paramObject))
     {
@@ -202,6 +188,11 @@ public class PluginManagerInterfaceImpl
       paramBundle = "";
     }
     localNowRecordInfo.a(str, l, paramBundle, new PluginManagerInterfaceImpl.3(this, localNowRecordInfo, localCommonCallback));
+  }
+  
+  public NowDataReporter d()
+  {
+    return this.a;
   }
   
   public void d(Bundle paramBundle)
@@ -217,10 +208,19 @@ public class PluginManagerInterfaceImpl
     localIntent.setFlags(268435456);
     BaseApplicationImpl.getContext().startActivity(localIntent);
   }
+  
+  public String e()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    return localQQAppInterface.getCurrentAccountUin();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

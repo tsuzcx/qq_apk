@@ -1,7 +1,6 @@
 package androidx.appcompat.widget;
 
 import android.annotation.SuppressLint;
-import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -29,6 +28,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.id;
 import androidx.core.content.ContextCompat;
 import androidx.cursoradapter.widget.CursorAdapter;
 import androidx.cursoradapter.widget.ResourceCursorAdapter;
@@ -59,7 +60,6 @@ class SuggestionsAdapter
   private final WeakHashMap<String, Drawable.ConstantState> mOutsideDrawablesCache;
   private final Context mProviderContext;
   private int mQueryRefinement = 1;
-  private final SearchManager mSearchManager = (SearchManager)this.mContext.getSystemService("search");
   private final SearchView mSearchView;
   private final SearchableInfo mSearchable;
   private int mText1Col = -1;
@@ -91,7 +91,7 @@ class SuggestionsAdapter
     if (this.mUrlColor == null)
     {
       localObject = new TypedValue();
-      this.mContext.getTheme().resolveAttribute(2131035321, (TypedValue)localObject, true);
+      this.mContext.getTheme().resolveAttribute(R.attr.textColorSearchUrl, (TypedValue)localObject, true);
       this.mUrlColor = this.mContext.getResources().getColorStateList(((TypedValue)localObject).resourceId);
     }
     Object localObject = new SpannableString(paramCharSequence);
@@ -157,11 +157,11 @@ class SuggestionsAdapter
     return getStringOrNull(paramCursor, paramCursor.getColumnIndex(paramString));
   }
   
-  private Drawable getDefaultIcon1(Cursor paramCursor)
+  private Drawable getDefaultIcon1()
   {
-    paramCursor = getActivityIconWithCache(this.mSearchable.getSearchActivity());
-    if (paramCursor != null) {
-      return paramCursor;
+    Drawable localDrawable = getActivityIconWithCache(this.mSearchable.getSearchActivity());
+    if (localDrawable != null) {
+      return localDrawable;
     }
     return this.mContext.getPackageManager().getDefaultActivityIcon();
   }
@@ -301,11 +301,11 @@ class SuggestionsAdapter
     if (i == -1) {
       return null;
     }
-    Drawable localDrawable = getDrawableFromResourceValue(paramCursor.getString(i));
-    if (localDrawable != null) {
-      return localDrawable;
+    paramCursor = getDrawableFromResourceValue(paramCursor.getString(i));
+    if (paramCursor != null) {
+      return paramCursor;
     }
-    return getDefaultIcon1(paramCursor);
+    return getDefaultIcon1();
   }
   
   private Drawable getIcon2(Cursor paramCursor)
@@ -640,7 +640,7 @@ class SuggestionsAdapter
   {
     paramContext = super.newView(paramContext, paramCursor, paramViewGroup);
     paramContext.setTag(new SuggestionsAdapter.ChildViewCache(paramContext));
-    ((ImageView)paramContext.findViewById(2131366071)).setImageResource(this.mCommitIconResId);
+    ((ImageView)paramContext.findViewById(R.id.edit_query)).setImageResource(this.mCommitIconResId);
     return paramContext;
   }
   

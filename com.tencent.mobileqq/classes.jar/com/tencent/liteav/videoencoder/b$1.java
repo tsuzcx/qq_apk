@@ -7,7 +7,7 @@ class b$1
   
   public void run()
   {
-    b.a(this.d, com.tencent.liteav.basic.c.b.a(null, null, null, this.a, this.b));
+    b.a(this.d, com.tencent.liteav.basic.opengl.b.a(null, null, null, this.a, this.b));
     boolean[] arrayOfBoolean = this.c;
     int i;
     if (b.a(this.d) != null) {
@@ -20,7 +20,7 @@ class b$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.b.1
  * JD-Core Version:    0.7.0.1
  */

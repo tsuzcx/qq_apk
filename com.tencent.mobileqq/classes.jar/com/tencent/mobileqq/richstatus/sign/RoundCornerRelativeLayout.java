@@ -13,12 +13,12 @@ import android.widget.RelativeLayout;
 public class RoundCornerRelativeLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private PaintFlagsDrawFilter jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  private int b;
+  private Path a;
+  private RectF b;
+  private float c;
+  private PaintFlagsDrawFilter d;
+  private int e;
+  private int f;
   
   public RoundCornerRelativeLayout(Context paramContext)
   {
@@ -40,42 +40,42 @@ public class RoundCornerRelativeLayout
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.a = new Path();
+    this.b = new RectF();
     if (Build.VERSION.SDK_INT < 18) {
       setLayerType(1, null);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter = new PaintFlagsDrawFilter(0, 3);
+    this.d = new PaintFlagsDrawFilter(0, 3);
   }
   
   public void dispatchDraw(Canvas paramCanvas)
   {
     paramCanvas.save();
-    if ((this.jdField_a_of_type_Int != getMeasuredWidth()) || (this.b != getMeasuredHeight()))
+    if ((this.e != getMeasuredWidth()) || (this.f != getMeasuredHeight()))
     {
-      this.jdField_a_of_type_Int = getMeasuredWidth();
-      this.b = getMeasuredHeight();
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.jdField_a_of_type_Int, this.b);
-      Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      float f = this.jdField_a_of_type_Float;
-      localPath.addRoundRect(localRectF, f, f, Path.Direction.CW);
+      this.e = getMeasuredWidth();
+      this.f = getMeasuredHeight();
+      this.a.reset();
+      this.b.set(0.0F, 0.0F, this.e, this.f);
+      Path localPath = this.a;
+      RectF localRectF = this.b;
+      float f1 = this.c;
+      localPath.addRoundRect(localRectF, f1, f1, Path.Direction.CW);
     }
-    paramCanvas.setDrawFilter(this.jdField_a_of_type_AndroidGraphicsPaintFlagsDrawFilter);
-    paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+    paramCanvas.setDrawFilter(this.d);
+    paramCanvas.clipPath(this.a);
     super.dispatchDraw(paramCanvas);
     paramCanvas.restore();
   }
   
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.c = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.RoundCornerRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

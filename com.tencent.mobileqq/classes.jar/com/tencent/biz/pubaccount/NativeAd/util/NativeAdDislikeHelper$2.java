@@ -32,15 +32,15 @@ class NativeAdDislikeHelper$2
       QLog.d("NativeAdDislikeHelper", 2, "onUninterestConfirm");
     }
     Object localObject1 = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAccount();
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper) != null))
+    if ((this.a != null) && (NativeAdDislikeHelper.a(this.b) != null))
     {
-      paramView = (IReadInJoyLogicManager)NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
+      paramView = (IReadInJoyLogicManager)NativeAdDislikeHelper.a(this.b).getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if (paramView.getReadInJoyLogicEngine() != null)
       {
         paramView = paramView.getReadInJoyLogicEngine();
         l1 = Long.valueOf((String)localObject1).longValue();
         localObject1 = (IArticleInfoHelper)QRoute.api(IArticleInfoHelper.class);
-        localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
+        localObject2 = this.a;
         paramView.a(l1, ((IArticleInfoHelper)localObject1).makeDislikeParam((AbsBaseArticleInfo)localObject2, paramArrayList, String.valueOf(((AdvertisementInfo)localObject2).mArticleID)));
       }
       long l2 = 0L;
@@ -49,7 +49,7 @@ class NativeAdDislikeHelper$2
       {
         l1 = l2;
         if ((paramObject instanceof DislikeInfo)) {
-          l1 = ((DislikeInfo)paramObject).jdField_a_of_type_Long;
+          l1 = ((DislikeInfo)paramObject).e;
         }
       }
       Object localObject2 = "";
@@ -64,11 +64,11 @@ class NativeAdDislikeHelper$2
         {
           paramView = new StringBuilder();
           paramView.append((String)localObject2);
-          paramView.append(localDislikeInfo.jdField_a_of_type_Long);
+          paramView.append(localDislikeInfo.e);
           localObject2 = paramView.toString();
           paramView = new StringBuilder();
           paramView.append((String)localObject1);
-          paramView.append(localDislikeInfo.jdField_a_of_type_JavaLangString);
+          paramView.append(localDislikeInfo.c);
           localObject1 = paramView.toString();
           paramObject = localObject1;
           paramView = (View)localObject2;
@@ -88,16 +88,16 @@ class NativeAdDislikeHelper$2
         localObject1 = paramObject;
         localObject2 = paramView;
       }
-      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper)).a(3).b(10).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo).a(l1).a((String)localObject2).b((String)localObject1));
+      ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(NativeAdDislikeHelper.b(this.b)).a(3).b(10).a(this.a).a(l1).a((String)localObject2).b((String)localObject1));
     }
-    QQToast.a(NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper), -1, NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper).getString(2131699886), 0).b(NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper).getResources().getDimensionPixelSize(2131299168));
-    NativeAdDislikeHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdUtilNativeAdDislikeHelper).dismiss();
+    QQToast.makeText(NativeAdDislikeHelper.b(this.b), -1, NativeAdDislikeHelper.b(this.b).getString(2131897939), 0).show(NativeAdDislikeHelper.b(this.b).getResources().getDimensionPixelSize(2131299920));
+    NativeAdDislikeHelper.c(this.b).dismiss();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.NativeAdDislikeHelper.2
  * JD-Core Version:    0.7.0.1
  */

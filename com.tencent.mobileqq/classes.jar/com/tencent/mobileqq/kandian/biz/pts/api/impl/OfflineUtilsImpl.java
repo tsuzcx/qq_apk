@@ -22,12 +22,12 @@ public final class OfflineUtilsImpl
   @Nullable
   public String readInputStreamAsString(@Nullable InputStream paramInputStream)
   {
-    return OfflineUtils.a(paramInputStream);
+    return OfflineUtils.b(paramInputStream);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.api.impl.OfflineUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

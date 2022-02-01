@@ -10,8 +10,8 @@ class GameListView$8
   
   public void run()
   {
-    if ((GameListView.a(this.this$0) != null) && (IGameEngine.a().a().a() == 0)) {
-      GameListView.a(this.this$0).a(this.this$0.a.a(), this.this$0.a.a(), this.this$0.a.a());
+    if ((GameListView.c(this.this$0) != null) && (IGameEngine.I().s().j() == 0)) {
+      GameListView.c(this.this$0).a(this.this$0.b.a(), this.this$0.b.b(), this.this$0.b.c());
     }
   }
 }

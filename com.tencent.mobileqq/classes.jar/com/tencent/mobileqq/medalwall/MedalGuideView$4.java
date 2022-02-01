@@ -14,15 +14,15 @@ class MedalGuideView$4
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(f);
+    this.a.d.setAlpha(f);
     f = ((Float)paramValueAnimator.getAnimatedValue("translate")).floatValue();
-    this.a.jdField_a_of_type_ComTencentImageURLImageView.setTranslationY(f);
+    this.a.d.setTranslationY(f);
     f = paramValueAnimator.getAnimatedFraction();
-    if ((!this.a.c) && (f >= 0.8857143F))
+    if ((!this.a.o) && (f >= 0.8857143F))
     {
       MedalGuideView localMedalGuideView = this.a;
-      localMedalGuideView.c = true;
-      localMedalGuideView.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
+      localMedalGuideView.o = true;
+      localMedalGuideView.a.sendEmptyMessage(4);
       if (QLog.isDevelopLevel()) {
         QLog.i("MedalWallMng", 4, "send MSG_START_3D_ROTATE");
       }

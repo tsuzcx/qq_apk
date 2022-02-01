@@ -11,15 +11,15 @@ import java.util.Locale;
 
 public class GifEncoder
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int a = 0;
   private static int b = 1;
   private static int c = 2;
   private static int d = 3;
   private static final int e = Runtime.getRuntime().availableProcessors();
-  private long jdField_a_of_type_Long = 0L;
-  private int f = Math.max(2, Math.min(e - 1, 4));
-  private int g;
+  private long f = 0L;
+  private int g = Math.max(2, Math.min(e - 1, 4));
   private int h;
+  private int i;
   
   static
   {
@@ -49,8 +49,8 @@ public class GifEncoder
   
   public void a()
   {
-    nativeClose(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = 0L;
+    nativeClose(this.f);
+    this.f = 0L;
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
@@ -60,14 +60,14 @@ public class GifEncoder
   
   public void a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if (0L != this.jdField_a_of_type_Long) {
+    if (0L != this.f) {
       a();
     }
-    this.g = paramInt1;
-    this.h = paramInt2;
-    QLog.d("GifEncoder", 4, new Object[] { "GifEncoder init, with = ", Integer.valueOf(paramInt1), ", height = ", Integer.valueOf(paramInt2), ", path = ", paramString, ", encodingType = ", Integer.valueOf(paramInt3), ", threadCount = ", Integer.valueOf(this.f) });
-    this.jdField_a_of_type_Long = nativeInit(paramInt1, paramInt2, paramString, paramInt3, this.f);
-    if (0L != this.jdField_a_of_type_Long) {
+    this.h = paramInt1;
+    this.i = paramInt2;
+    QLog.d("GifEncoder", 4, new Object[] { "GifEncoder init, with = ", Integer.valueOf(paramInt1), ", height = ", Integer.valueOf(paramInt2), ", path = ", paramString, ", encodingType = ", Integer.valueOf(paramInt3), ", threadCount = ", Integer.valueOf(this.g) });
+    this.f = nativeInit(paramInt1, paramInt2, paramString, paramInt3, this.g);
+    if (0L != this.f) {
       return;
     }
     throw new FileNotFoundException();
@@ -75,7 +75,7 @@ public class GifEncoder
   
   public void a(boolean paramBoolean)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.f;
     if (0L == l) {
       return;
     }
@@ -84,20 +84,20 @@ public class GifEncoder
   
   public boolean a(Bitmap paramBitmap, int paramInt)
   {
-    if (0L == this.jdField_a_of_type_Long) {
+    if (0L == this.f) {
       return false;
     }
-    if ((paramBitmap.getWidth() == this.g) && (paramBitmap.getHeight() == this.h))
+    if ((paramBitmap.getWidth() == this.h) && (paramBitmap.getHeight() == this.i))
     {
-      nativeEncodeFrame(this.jdField_a_of_type_Long, paramBitmap, paramInt);
+      nativeEncodeFrame(this.f, paramBitmap, paramInt);
       return true;
     }
-    throw new RuntimeException(String.format(Locale.ENGLISH, "The size specified at initialization differs from the size of the image.\n expected:(%d, %d) actual:(%d,%d)", new Object[] { Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) }));
+    throw new RuntimeException(String.format(Locale.ENGLISH, "The size specified at initialization differs from the size of the image.\n expected:(%d, %d) actual:(%d,%d)", new Object[] { Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.video.GifEncoder
  * JD-Core Version:    0.7.0.1
  */

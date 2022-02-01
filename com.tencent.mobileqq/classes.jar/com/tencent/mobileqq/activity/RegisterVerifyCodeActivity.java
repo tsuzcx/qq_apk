@@ -26,7 +26,7 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.PhoneCodeUtils;
 import com.tencent.mobileqq.vip.lianghao.RegisterLHAssistant;
 import com.tencent.mobileqq.widget.VerifyCodeView;
-import com.tencent.mobileqq.widget.VerifyCodeView.OnVerifyCodeCompleteListener;
+import com.tencent.mobileqq.widget.VerifyCodeView.OnVerifyCodeChangedListener;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,61 +37,62 @@ import mqq.os.MqqHandler;
 
 public class RegisterVerifyCodeActivity
   extends RegisterNewBaseActivity
-  implements View.OnClickListener, SMSBodyObserver, VerifyCodeView.OnVerifyCodeCompleteListener
+  implements View.OnClickListener, SMSBodyObserver, VerifyCodeView.OnVerifyCodeChangedListener
 {
-  private int jdField_a_of_type_Int = 60;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private SmsContent jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
-  private RegisterWithNick jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = null;
-  private RegisterWithNickAndPwd jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd = null;
-  private VerifyCodeView jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new RegisterVerifyCodeActivity.1(this);
-  private String jdField_a_of_type_JavaLangString = null;
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new RegisterVerifyCodeActivity.3(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new RegisterVerifyCodeActivity.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 60;
-  private String jdField_b_of_type_JavaLangString = null;
+  private TextView a;
+  private VerifyCodeView b;
+  private SmsContent c;
+  private String d = null;
+  private int e = 60;
+  private int f = 60;
+  private String g = null;
+  private RegisterWithNick h = null;
+  private RegisterWithNickAndPwd i = null;
+  private boolean j;
+  private boolean k;
+  private Runnable l = new RegisterVerifyCodeActivity.1(this);
+  private MqqHandler m = new RegisterVerifyCodeActivity.2(this);
+  private AccountObserver n = new RegisterVerifyCodeActivity.3(this);
   
   private void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
-    this.jdField_a_of_type_Int = paramInt;
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.a.setEnabled(false);
+    this.a.setClickable(false);
+    this.e = paramInt;
+    TextView localTextView = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getString(2131716626));
+    localStringBuilder.append(getString(2131914089));
     localStringBuilder.append(" (");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("s)");
     localTextView.setText(localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-7894119);
-    this.handler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+    this.a.setTextColor(-7894119);
+    this.handler.postDelayed(this.l, 1000L);
   }
   
-  private void b()
+  private void c()
   {
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.e > 0)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onBackEvent second=");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.e);
         localStringBuilder.append(", curTime=");
         localStringBuilder.append(System.currentTimeMillis());
         QLog.d("RegisterVerifyCodeActivity", 2, localStringBuilder.toString());
       }
-      getIntent().putExtra("key_register_left_time", this.jdField_a_of_type_Int);
+      getIntent().putExtra("key_register_left_time", this.e);
       getIntent().putExtra("key_register_exit_time", System.currentTimeMillis());
       setResult(-1, getIntent());
     }
     finish();
   }
   
-  private void c()
+  private void d()
   {
-    setTitleText(2131716657);
+    setTitleText(2131914120);
     setTitleHint();
     setBackListener();
     if (getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false)) {
@@ -99,27 +100,27 @@ public class RegisterVerifyCodeActivity
     } else {
       setBarProgress(66);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364036));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    this.a = ((TextView)findViewById(2131429992));
+    this.a.setOnClickListener(this);
+    TextView localTextView = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getString(2131716626));
+    localStringBuilder.append(getString(2131914089));
     localStringBuilder.append(" (");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append("s)");
     localTextView.setText(localStringBuilder.toString());
-    this.handler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView = ((VerifyCodeView)findViewById(2131380407));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView.a(this);
+    this.handler.postDelayed(this.l, 1000L);
+    this.b = ((VerifyCodeView)findViewById(2131449357));
+    this.b.a(this);
   }
   
-  private void d()
+  private void e()
   {
     try
     {
-      this.jdField_b_of_type_JavaLangString = null;
-      ((AccountManager)this.mRuntime.getManager(0)).sendRegistByResendSms(this.jdField_a_of_type_MqqObserverAccountObserver);
-      createWaitingDialog(2131716637);
+      this.g = null;
+      ((AccountManager)this.mRuntime.getManager(0)).sendRegistByResendSms(this.n);
+      createWaitingDialog(2131914100);
       return;
     }
     catch (Exception localException)
@@ -128,14 +129,14 @@ public class RegisterVerifyCodeActivity
     }
   }
   
-  private void e()
+  protected void a()
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      notifyToast(2131692183, 0);
+      notifyToast(2131889169, 0);
       return;
     }
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView.a();
+    String str2 = this.b.getCode();
     String str1 = str2;
     if (str2 != null) {
       str1 = str2.trim();
@@ -143,8 +144,8 @@ public class RegisterVerifyCodeActivity
     if ((str1 != null) && (str1.length() > 0)) {
       try
       {
-        ((AccountManager)this.mRuntime.getManager(0)).sendRegisterByCommitSmsVerifycode(str1, this.jdField_a_of_type_MqqObserverAccountObserver);
-        createWaitingDialog(2131716559);
+        ((AccountManager)this.mRuntime.getManager(0)).sendRegisterByCommitSmsVerifycode(str1, this.n);
+        createWaitingDialog(2131914022);
         return;
       }
       catch (Exception localException)
@@ -153,38 +154,38 @@ public class RegisterVerifyCodeActivity
         return;
       }
     }
-    notifyToast(2131716570, 0);
+    notifyToast(2131914033, 0);
   }
   
-  public void a()
+  public void b()
   {
     PhoneNumLoginImpl.a().a(this.mRuntime, true);
     boolean bool1 = getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false);
     boolean bool2 = getIntent().getBooleanExtra("key_register_phonenum_bindnewqq", true);
-    boolean bool3 = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
-    String str = this.jdField_a_of_type_ComTencentMobileqqWidgetVerifyCodeView.a();
+    boolean bool3 = TextUtils.isEmpty(this.d);
+    String str = this.b.getCode();
     Object localObject = str;
     if (str != null) {
       localObject = str.trim();
     }
     if (bool1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd == null) {
-        this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd = new RegisterWithNickAndPwd(this);
+      if (this.i == null) {
+        this.i = new RegisterWithNickAndPwd(this);
       }
       getIntent().putExtra("key_register_smscode", (String)localObject);
       getIntent().putExtra("key_register_autologin", true);
       getIntent().putExtra("key_register_phonenum_bindnewqq", bool2);
-      this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd.a(getIntent());
+      this.i.a(getIntent());
       return;
     }
     if ((bool3 ^ true))
     {
-      localObject = new RegisterWithNickAndPwdInfoBuilder().a(this.phoneNum).b(this.countryCode).c((String)localObject).a(false).b(this.mHasPwd).d(this.inviteCode).a(5).e("").f("").c(true).d(false).e(this.jdField_a_of_type_Boolean).a();
-      RegisterLimitHelperImpl.a().a(this, this.jdField_a_of_type_JavaLangString, (RegisterWithNickAndPwdInfo)localObject);
+      localObject = new RegisterWithNickAndPwdInfoBuilder().a(this.phoneNum).b(this.countryCode).c((String)localObject).a(false).b(this.mHasPwd).d(this.inviteCode).a(5).e("").f("").c(true).d(false).e(this.j).a();
+      RegisterLimitHelperImpl.a().a(this, this.d, (RegisterWithNickAndPwdInfo)localObject);
       return;
     }
-    RegisterByNicknameAndPwdActivity.gotoRegisterByNicknameAndPwdActivity(this, this.phoneNum, this.countryCode, (String)localObject, this.mIsPhoneNumRegistered, this.mHasPwd, this.inviteCode, 5, "", "", true, this.jdField_a_of_type_Boolean);
+    RegisterByNicknameAndPwdActivity.gotoRegisterByNicknameAndPwdActivity(this, this.phoneNum, this.countryCode, (String)localObject, this.mIsPhoneNumRegistered, this.mHasPwd, this.inviteCode, 5, "", "", true, this.j);
   }
   
   @Override
@@ -199,15 +200,15 @@ public class RegisterVerifyCodeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131563018);
+    setContentView(2131629626);
     if (QLog.isDevelopLevel()) {
       RegisterLHAssistant.a(getClass().getSimpleName(), getIntent());
     }
     this.phoneNum = getIntent().getStringExtra("phonenum");
     this.inviteCode = getIntent().getStringExtra("invite_code");
     this.countryCode = getIntent().getStringExtra("key");
-    int i = getIntent().getIntExtra("key_register_left_time", 0);
-    long l = getIntent().getLongExtra("key_register_exit_time", 0L);
+    int i1 = getIntent().getIntExtra("key_register_left_time", 0);
+    long l1 = getIntent().getLongExtra("key_register_exit_time", 0L);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -216,9 +217,9 @@ public class RegisterVerifyCodeActivity
       localStringBuilder.append(", phoneNum=");
       localStringBuilder.append(PhoneCodeUtils.a(this.phoneNum));
       localStringBuilder.append(", leftTime=");
-      localStringBuilder.append(i);
+      localStringBuilder.append(i1);
       localStringBuilder.append(", exitTime=");
-      localStringBuilder.append(l);
+      localStringBuilder.append(l1);
       localStringBuilder.append(", inviteCode=");
       if (this.inviteCode == null) {
         paramBundle = "";
@@ -228,29 +229,30 @@ public class RegisterVerifyCodeActivity
       localStringBuilder.append(paramBundle);
       QLog.d("RegisterVerifyCodeActivity", 2, localStringBuilder.toString());
     }
-    if ((i > 0) && (i < 60) && (l > 0L))
+    if ((i1 > 0) && (i1 < 60) && (l1 > 0L))
     {
-      l = System.currentTimeMillis() - l;
-      if ((l > 0L) && (l < i * 1000L)) {
-        this.jdField_a_of_type_Int = (i - (int)(l / 1000L));
+      l1 = System.currentTimeMillis() - l1;
+      if ((l1 > 0L) && (l1 < i1 * 1000L)) {
+        this.e = (i1 - (int)(l1 / 1000L));
       }
       if (QLog.isColorLevel())
       {
         paramBundle = new StringBuilder();
         paramBundle.append("onCreate interval=");
-        paramBundle.append(l);
+        paramBundle.append(l1);
         paramBundle.append(", second=");
-        paramBundle.append(this.jdField_a_of_type_Int);
+        paramBundle.append(this.e);
         QLog.d("RegisterVerifyCodeActivity", 2, paramBundle.toString());
       }
     }
     this.mIsPhoneNumRegistered = getIntent().getBooleanExtra("key_register_is_phone_num_registered", false);
     this.mHasPwd = getIntent().getBooleanExtra("key_register_has_pwd", true);
-    this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("key_register_from_friend_verify", false);
-    LoginUtils.a(this.mRuntime, getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    c();
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = new SmsContent(null, getIntent().getLongExtra("register_verify_code_start_time", 0L));
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent.a(this, this);
+    this.j = getIntent().getBooleanExtra("key_register_from_friend_verify", false);
+    this.k = getIntent().getBooleanExtra("key_register_from_face_verify", false);
+    LoginUtils.a(this.mRuntime, getClass(), this.m);
+    d();
+    this.c = new SmsContent(null, getIntent().getLongExtra("register_verify_code_start_time", 0L));
+    this.c.a(this, this);
     ReportController.b(this.mRuntime, "CliOper", "", "", "0X8006656", "0X8006656", 0, 0, "", "", "", "");
     ReportController.a(this.mRuntime, "dc00898", "", "", "0X8007361", "0X8007361", 0, 0, "", "", "", "");
     if (!this.mIsPhoneNumRegistered) {
@@ -265,14 +267,16 @@ public class RegisterVerifyCodeActivity
     } else {
       ReportController.a(this.mRuntime, "new_reg_805", "msg_page", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
     }
-    if (this.jdField_a_of_type_Boolean) {
-      i = 2;
+    if (this.k) {
+      i1 = 3;
+    } else if (this.j) {
+      i1 = 2;
     } else if (this.mFrom == 7) {
-      i = 1;
+      i1 = 1;
     } else {
-      i = 0;
+      i1 = 0;
     }
-    ReportController.a(this.mRuntime, "dc00898", "", "", "0X8009CEC", "0X8009CEC", i, 0, "", "", this.phoneNum, "");
+    ReportController.a(this.mRuntime, "dc00898", "", "", "0X8009CEC", "0X8009CEC", i1, 0, "", "", this.phoneNum, "");
     getWindow().setSoftInputMode(5);
     return true;
   }
@@ -280,8 +284,8 @@ public class RegisterVerifyCodeActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    RegisterManager.a().a(3);
-    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    RegisterManager.b().a(3);
+    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.i;
     if (localRegisterWithNickAndPwd != null) {
       localRegisterWithNickAndPwd.b();
     }
@@ -300,7 +304,7 @@ public class RegisterVerifyCodeActivity
   protected void onAccountChanged()
   {
     super.onAccountChanged();
-    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    RegisterWithNickAndPwd localRegisterWithNickAndPwd = this.i;
     if (localRegisterWithNickAndPwd != null) {
       localRegisterWithNickAndPwd.d();
     }
@@ -308,7 +312,7 @@ public class RegisterVerifyCodeActivity
   
   protected boolean onBackEvent()
   {
-    b();
+    c();
     return false;
   }
   
@@ -316,11 +320,11 @@ public class RegisterVerifyCodeActivity
   {
     if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      notifyToast(2131692183, 0);
+      notifyToast(2131889169, 0);
     }
-    else if (paramView.getId() == 2131364036)
+    else if (paramView.getId() == 2131429992)
     {
-      d();
+      e();
       ReportController.a(this.mRuntime, "new_reg_805", "msg_page", "resend_clk", "", 1, "", "", "", "", "", "", "", "", "");
       ReportController.a(this.mRuntime, "dc00898", "", "", "0X8009CED", "0X8009CED", 0, 0, "", "", this.phoneNum, "");
     }
@@ -338,22 +342,22 @@ public class RegisterVerifyCodeActivity
   {
     super.onDestroy();
     closeDialog();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent;
+    Object localObject = this.c;
     if (localObject != null) {
       ((SmsContent)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppUtilsSmsContent = null;
-    this.handler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick;
+    this.c = null;
+    this.handler.removeCallbacks(this.l);
+    localObject = this.h;
     if (localObject != null) {
       ((RegisterWithNick)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNick = null;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd;
+    this.h = null;
+    localObject = this.i;
     if (localObject != null) {
       ((RegisterWithNickAndPwd)localObject).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd = null;
+    this.i = null;
   }
   
   protected void onPause()
@@ -365,9 +369,9 @@ public class RegisterVerifyCodeActivity
         this.dialog.dismiss();
       }
       this.dialog = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd != null)
+      if (this.i != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqRegisterRegisterWithNickAndPwd.c();
+        this.i.c();
         return;
       }
     }
@@ -377,14 +381,16 @@ public class RegisterVerifyCodeActivity
     }
   }
   
-  public void onVerifyCodeComplete()
+  public void onVerifyCodeChanged(boolean paramBoolean, String paramString)
   {
-    e();
+    if (paramBoolean) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity
  * JD-Core Version:    0.7.0.1
  */

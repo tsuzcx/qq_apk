@@ -11,13 +11,13 @@ class AvGameManagerImpl$1
   
   public void a(int paramInt, String paramString, AvGameRoomListObserver.BatchGetGroupGameRoomListResult paramBatchGetGroupGameRoomListResult)
   {
-    if ((paramInt == 0) && (paramBatchGetGroupGameRoomListResult != null) && (paramBatchGetGroupGameRoomListResult.jdField_a_of_type_JavaUtilList != null))
+    if ((paramInt == 0) && (paramBatchGetGroupGameRoomListResult != null) && (paramBatchGetGroupGameRoomListResult.b != null))
     {
-      if (paramBatchGetGroupGameRoomListResult.jdField_a_of_type_JavaLangString == null) {
+      if (paramBatchGetGroupGameRoomListResult.a == null) {
         return;
       }
-      if (paramBatchGetGroupGameRoomListResult.jdField_a_of_type_JavaUtilList.size() == 0) {
-        AvGameManagerImpl.access$000(this.a, paramBatchGetGroupGameRoomListResult.jdField_a_of_type_JavaLangString, false);
+      if (paramBatchGetGroupGameRoomListResult.b.size() == 0) {
+        AvGameManagerImpl.access$000(this.a, paramBatchGetGroupGameRoomListResult.a, false);
       }
     }
   }

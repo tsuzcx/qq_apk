@@ -259,7 +259,7 @@ public class PaiYiPaiHandler
       ((StringBuilder)localObject).append(paramLong);
       QLog.d("revokePaiYiPai", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.a.getMsgCache().e())
+    if (!this.a.getMsgCache().D())
     {
       if (QLog.isColorLevel()) {
         QLog.d("revokePaiYiPai", 2, "sendRevokePaiYiPaiReq error, isPaiYiPaiRevoking: false");
@@ -297,7 +297,7 @@ public class PaiYiPaiHandler
   {
     if (!a(paramString1))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694680, 0).a();
+      QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892372, 0).show();
       return;
     }
     Object localObject = new oidb_cmd0xed3.ReqBody();
@@ -352,7 +352,7 @@ public class PaiYiPaiHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.paiyipai.PaiYiPaiHandler
  * JD-Core Version:    0.7.0.1
  */

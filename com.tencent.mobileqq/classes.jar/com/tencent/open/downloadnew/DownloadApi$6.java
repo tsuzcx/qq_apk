@@ -11,26 +11,26 @@ final class DownloadApi$6
   
   public void run()
   {
-    LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
+    LogUtility.a(DownloadApi.a, "getQueryDownloadActionByVia enter");
     try
     {
       new ArrayList();
-      List localList = DownloadManager.a().b(this.jdField_a_of_type_JavaLangString);
-      localObject = DownloadApi.jdField_a_of_type_JavaLangString;
+      List localList = DownloadManager.b().l(this.a);
+      localObject = DownloadApi.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getQueryDownloadActionByVia result = ");
       localStringBuilder.append(localList);
       LogUtility.a((String)localObject, localStringBuilder.toString());
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localList);
+        this.b.a(localList);
         return;
       }
     }
     catch (Exception localException)
     {
-      LogUtility.c(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener;
+      LogUtility.c(DownloadApi.a, "getQueryDownloadActionByVia Exception>>>", localException);
+      Object localObject = this.b;
       if (localObject != null) {
         ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
       }
@@ -39,7 +39,7 @@ final class DownloadApi$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.6
  * JD-Core Version:    0.7.0.1
  */

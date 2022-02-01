@@ -11,18 +11,18 @@ class AssistantSettingFragment$2
   {
     if (!paramBoolean1)
     {
-      AssistantSettingFragment.a(this.a, 2131718834, 1);
+      AssistantSettingFragment.a(this.a, 2131916364, 1);
       localAssistantSettingFragment = this.a;
-      AssistantSettingFragment.b(localAssistantSettingFragment, paramBoolean2 ^ true, AssistantSettingFragment.b(localAssistantSettingFragment));
+      AssistantSettingFragment.b(localAssistantSettingFragment, paramBoolean2 ^ true, AssistantSettingFragment.f(localAssistantSettingFragment));
       return;
     }
     AssistantSettingFragment localAssistantSettingFragment = this.a;
-    AssistantSettingFragment.b(localAssistantSettingFragment, paramBoolean2, AssistantSettingFragment.b(localAssistantSettingFragment));
+    AssistantSettingFragment.b(localAssistantSettingFragment, paramBoolean2, AssistantSettingFragment.f(localAssistantSettingFragment));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

@@ -24,23 +24,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class RecentTabHaloBatchLoader
   implements Destroyable, CmdTaskManger.CommandCallback<RecentTabHaloRequest, RecentTabHaloResponse>
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Queue<MsgTabNodeInfo> jdField_a_of_type_JavaUtilQueue;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private final QQAppInterface a;
   private AtomicBoolean b = new AtomicBoolean(false);
+  private Queue<MsgTabNodeInfo> c;
+  private AtomicBoolean d = new AtomicBoolean(false);
   
   public RecentTabHaloBatchLoader(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    b();
+    this.a = paramQQAppInterface;
+    c();
   }
   
   private void a(RecentTabHaloRequest paramRecentTabHaloRequest, RecentTabHaloResponse paramRecentTabHaloResponse)
   {
-    StoryHaloManager localStoryHaloManager = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STORY_HALO_MANAGER);
-    List localList = paramRecentTabHaloResponse.a();
+    StoryHaloManager localStoryHaloManager = (StoryHaloManager)this.a.getManager(QQManagerFactory.STORY_HALO_MANAGER);
+    List localList = paramRecentTabHaloResponse.b();
     localStoryHaloManager.a(paramRecentTabHaloResponse.a());
-    if (paramRecentTabHaloRequest.a() == 3)
+    if (paramRecentTabHaloRequest.b() == 3)
     {
       paramRecentTabHaloRequest = localList.iterator();
       while (paramRecentTabHaloRequest.hasNext())
@@ -48,25 +48,25 @@ public class RecentTabHaloBatchLoader
         paramRecentTabHaloResponse = (MsgTabNodeInfo)paramRecentTabHaloRequest.next();
         localStoryHaloManager.b(paramRecentTabHaloResponse);
         localStoryHaloManager.c(paramRecentTabHaloResponse);
-        localStoryHaloManager.d(paramRecentTabHaloResponse);
+        localStoryHaloManager.e(paramRecentTabHaloResponse);
       }
     }
-    localStoryHaloManager.a(localList);
+    localStoryHaloManager.b(localList);
     localStoryHaloManager.a(localList, true);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   }
   
   private void c()
   {
-    Object localObject = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STORY_HALO_MANAGER);
-    if (!this.b.get()) {
+    this.c = new ConcurrentLinkedQueue();
+  }
+  
+  private void d()
+  {
+    Object localObject = (StoryHaloManager)this.a.getManager(QQManagerFactory.STORY_HALO_MANAGER);
+    if (!this.d.get()) {
       for (;;)
       {
-        MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilQueue.poll();
+        MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.c.poll();
         if (localMsgTabNodeInfo == null) {
           break;
         }
@@ -79,20 +79,20 @@ public class RecentTabHaloBatchLoader
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.b.set(true);
   }
   
   public void a(@NonNull RecentTabHaloRequest paramRecentTabHaloRequest, @Nullable RecentTabHaloResponse paramRecentTabHaloResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (a()) {
+    if (b()) {
       return;
     }
-    this.b.set(true);
+    this.d.set(true);
     if ((paramRecentTabHaloResponse != null) && (!paramErrorMessage.isFail()))
     {
       a(paramRecentTabHaloRequest, paramRecentTabHaloResponse);
-      this.b.set(false);
-      c();
+      this.d.set(false);
+      d();
       return;
     }
     if (QLog.isColorLevel())
@@ -104,14 +104,14 @@ public class RecentTabHaloBatchLoader
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.b.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloBatchLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.smtt.export.external.DexLoader;
 import com.tencent.smtt.export.external.libwebp;
 import com.tencent.smtt.utils.TbsLog;
 import com.tencent.smtt.utils.b;
-import com.tencent.smtt.utils.l;
+import com.tencent.smtt.utils.m;
 import java.util.Map;
 
 class v
@@ -146,7 +146,7 @@ class v
     Object localObject5 = b.d;
     ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "putInfo", new Class[] { Context.class, String.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject2, localObject3, localObject4, localObject5 });
     localObject2 = this.b;
-    localObject1 = Integer.valueOf(43973);
+    localObject1 = Integer.valueOf(44069);
     String str1;
     String str2;
     String str3;
@@ -160,7 +160,7 @@ class v
       str2 = this.f;
       str3 = QbSdk.a();
       String str4 = TbsShareManager.getHostCorePathAppDefined();
-      localObject1 = ((DexLoader)localObject2).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject3, String.class, String.class }, new Object[] { paramContext, localObject4, localObject5, str1, str2, "4.3.0.73", localObject1, str3, str4 });
+      localObject1 = ((DexLoader)localObject2).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject3, String.class, String.class }, new Object[] { paramContext, localObject4, localObject5, str1, str2, "4.3.0.169", localObject1, str3, str4 });
     }
     else
     {
@@ -183,7 +183,7 @@ class v
       str1 = this.c;
       str2 = this.f;
       str3 = QbSdk.a();
-      localObject1 = ((DexLoader)localObject2).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject3, String.class }, new Object[] { paramContext, localObject4, localObject5, str1, str2, "4.3.0.73", localObject1, str3 });
+      localObject1 = ((DexLoader)localObject2).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject3, String.class }, new Object[] { paramContext, localObject4, localObject5, str1, str2, "4.3.0.169", localObject1, str3 });
     }
     localObject2 = localObject1;
     if (localObject1 == null)
@@ -244,12 +244,12 @@ class v
   
   private void c()
   {
-    this.e.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "setTesSdkVersionName", new Class[] { String.class }, new Object[] { "4.3.0.73" });
+    this.e.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "setTesSdkVersionName", new Class[] { String.class }, new Object[] { "4.3.0.169" });
   }
   
   private void d()
   {
-    this.e.setStaticField("com.tencent.tbs.tbsshell.TBSShell", "VERSION", Integer.valueOf(43973));
+    this.e.setStaticField("com.tencent.tbs.tbsshell.TBSShell", "VERSION", Integer.valueOf(44069));
   }
   
   public String a()
@@ -287,7 +287,7 @@ class v
     boolean bool = true;
     label38:
     if (bool) {
-      l.b(paramContext);
+      m.b(paramContext);
     }
   }
   
@@ -335,7 +335,7 @@ class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.v
  * JD-Core Version:    0.7.0.1
  */

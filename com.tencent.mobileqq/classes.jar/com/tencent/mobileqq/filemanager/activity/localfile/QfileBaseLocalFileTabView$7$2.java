@@ -11,19 +11,19 @@ class QfileBaseLocalFileTabView$7$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$7.a.f();
-    if (!this.jdField_a_of_type_Boolean)
+    this.e.a.e();
+    if (!this.a)
     {
-      QQFileManagerUtil.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileBaseLocalFileTabView$7.a.a, this.jdField_a_of_type_Int);
+      QQFileManagerUtil.a(this.b, this.c, this.d);
+      ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(this.e.a.C, this.c);
       return;
     }
-    QQFileManagerUtil.a(this.jdField_a_of_type_Long);
+    QQFileManagerUtil.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2
  * JD-Core Version:    0.7.0.1
  */

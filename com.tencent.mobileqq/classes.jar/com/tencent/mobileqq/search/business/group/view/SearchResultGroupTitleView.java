@@ -9,34 +9,34 @@ import com.tencent.mobileqq.search.base.view.SearchResultGroupView;
 public class SearchResultGroupTitleView
   extends SearchResultGroupView
 {
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
+  private TextView d;
+  private TextView e;
+  private View f;
   
   public SearchResultGroupTitleView(ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559213, paramViewGroup, false);
+    this.a = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624970, paramViewGroup, false);
     this.a.setOnTouchListener(new SearchResultGroupTitleView.1(this));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131378784));
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.c = ((TextView)this.a.findViewById(2131371472));
+    this.d = ((TextView)this.a.findViewById(2131447463));
+    this.d.setVisibility(0);
+    this.e = ((TextView)this.a.findViewById(2131438844));
     if (paramBoolean2) {
-      this.c.setVisibility(0);
+      this.e.setVisibility(0);
     }
-    this.jdField_b_of_type_AndroidViewView = this.a.findViewById(2131365776);
+    this.f = this.a.findViewById(2131432033);
     if (paramBoolean1) {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.f.setVisibility(0);
     }
   }
   
   public TextView a()
   {
-    return this.jdField_b_of_type_AndroidWidgetTextView;
+    return this.d;
   }
   
   public void a(boolean paramBoolean)
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.f;
     int i;
     if (paramBoolean) {
       i = 0;
@@ -48,12 +48,12 @@ public class SearchResultGroupTitleView
   
   public TextView b()
   {
-    return this.c;
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.group.view.SearchResultGroupTitleView
  * JD-Core Version:    0.7.0.1
  */

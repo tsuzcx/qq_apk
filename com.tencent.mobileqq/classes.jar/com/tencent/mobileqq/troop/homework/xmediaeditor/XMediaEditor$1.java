@@ -13,12 +13,12 @@ class XMediaEditor$1
   
   public void run()
   {
-    this.a.a.requestFocus();
-    this.a.a.findFocus();
-    EditText localEditText = this.a.a;
+    this.a.b.requestFocus();
+    this.a.b.findFocus();
+    EditText localEditText = this.a.b;
     int i;
-    if (XMediaEditor.a(this.this$0).a >= 0) {
-      i = XMediaEditor.a(this.this$0).a;
+    if (XMediaEditor.a(this.this$0).b >= 0) {
+      i = XMediaEditor.a(this.this$0).b;
     } else {
       i = 0;
     }
@@ -28,7 +28,7 @@ class XMediaEditor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,17 +18,17 @@ class PtvTemplateManager$1
   
   public void run()
   {
-    Object localObject1 = PtvTemplateManager.a(this.jdField_a_of_type_JavaIoFile);
+    Object localObject1 = PtvTemplateManager.a(this.a);
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
     localObject1 = PtvTemplateManager.a((String)localObject1);
-    if ((localObject1 != null) && (((PtvTemplateInfo)localObject1).a != null))
+    if ((localObject1 != null) && (((PtvTemplateInfo)localObject1).k != null))
     {
-      if (((PtvTemplateInfo)localObject1).a.isEmpty()) {
+      if (((PtvTemplateInfo)localObject1).k.isEmpty()) {
         return;
       }
-      ??? = ((PtvTemplateInfo)localObject1).a.iterator();
+      ??? = ((PtvTemplateInfo)localObject1).k.iterator();
       int j = 0;
       while (((Iterator)???).hasNext())
       {
@@ -37,10 +37,10 @@ class PtvTemplateManager$1
         {
           PtvTemplateManager localPtvTemplateManager = this.this$0;
           int k = 1;
-          localDoodleInfo.a = localPtvTemplateManager.a(localDoodleInfo, true);
+          localDoodleInfo.e = localPtvTemplateManager.a(localDoodleInfo, true);
           int i = k;
           if (j == 0) {
-            if (localDoodleInfo.a) {
+            if (localDoodleInfo.e) {
               i = k;
             } else {
               i = 0;
@@ -49,17 +49,17 @@ class PtvTemplateManager$1
           j = i;
         }
       }
-      synchronized (PtvTemplateManager.a())
+      synchronized (PtvTemplateManager.e())
       {
         PtvTemplateManager.a(this.this$0, (PtvTemplateInfo)localObject1);
-        localObject1 = this.jdField_a_of_type_ComTencentAelightCameraStructEditorDoodleInfoLoadObserver;
+        localObject1 = this.b;
         if (localObject1 != null) {
           ((DoodleInfoLoadObserver)localObject1).a();
         }
-        if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+        if ((this.c instanceof QQAppInterface))
         {
           if (PtvFilterSoLoad.a()) {
-            PtvTemplateManager.a(this.this$0, (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+            PtvTemplateManager.a(this.this$0, (QQAppInterface)this.c);
           }
         }
         else if (j != 0) {
@@ -72,7 +72,7 @@ class PtvTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.shortvideo.PtvTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

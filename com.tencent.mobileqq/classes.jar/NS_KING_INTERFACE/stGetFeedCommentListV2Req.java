@@ -9,14 +9,17 @@ public final class stGetFeedCommentListV2Req
 {
   public String attach_info = "";
   public String commentId = "";
+  public String contextCommentID = "";
+  public String contextReplyID = "";
   public String feed_id = "";
   public int getRepyListByPage = 0;
+  public int isFirst = 0;
   public String replyId = "";
   public int reqFrom = 0;
   
   public stGetFeedCommentListV2Req() {}
   
-  public stGetFeedCommentListV2Req(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
+  public stGetFeedCommentListV2Req(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5, String paramString6, int paramInt3)
   {
     this.attach_info = paramString1;
     this.feed_id = paramString2;
@@ -24,6 +27,9 @@ public final class stGetFeedCommentListV2Req
     this.reqFrom = paramInt1;
     this.replyId = paramString4;
     this.getRepyListByPage = paramInt2;
+    this.contextCommentID = paramString5;
+    this.contextReplyID = paramString6;
+    this.isFirst = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +40,9 @@ public final class stGetFeedCommentListV2Req
     this.reqFrom = paramJceInputStream.read(this.reqFrom, 3, false);
     this.replyId = paramJceInputStream.readString(4, false);
     this.getRepyListByPage = paramJceInputStream.read(this.getRepyListByPage, 5, false);
+    this.contextCommentID = paramJceInputStream.readString(6, false);
+    this.contextReplyID = paramJceInputStream.readString(7, false);
+    this.isFirst = paramJceInputStream.read(this.isFirst, 8, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -50,6 +59,15 @@ public final class stGetFeedCommentListV2Req
       paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.getRepyListByPage, 5);
+    str = this.contextCommentID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
+    }
+    str = this.contextReplyID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
+    }
+    paramJceOutputStream.write(this.isFirst, 8);
   }
 }
 

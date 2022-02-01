@@ -14,7 +14,7 @@ public class TroopTokenHandlerProcessor
 {
   public void a(@NonNull AppInterface paramAppInterface, @NonNull String paramString, @NonNull Object paramObject)
   {
-    paramAppInterface = ((FriendsManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString);
+    paramAppInterface = ((FriendsManager)((QQAppInterface)paramAppInterface).getManager(QQManagerFactory.FRIENDS_MANAGER)).m(paramString);
     if ((paramAppInterface != null) && (paramAppInterface.isFriend()))
     {
       paramString = new AllInOne(paramString, 1);
@@ -27,7 +27,7 @@ public class TroopTokenHandlerProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopTokenHandlerProcessor
  * JD-Core Version:    0.7.0.1
  */

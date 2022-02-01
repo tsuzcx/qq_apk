@@ -11,10 +11,10 @@ class AECaptureController$1
   public void run()
   {
     Object localObject;
-    if ((AECaptureController.a(this.this$0) == null) && (AECaptureController.a(this.this$0) != null))
+    if ((AECaptureController.a(this.this$0) == null) && (AECaptureController.b(this.this$0) != null))
     {
       localObject = this.this$0;
-      AECaptureController.a((AECaptureController)localObject, AECaptureController.a((AECaptureController)localObject).findViewById(2064122738));
+      AECaptureController.a((AECaptureController)localObject, AECaptureController.b((AECaptureController)localObject).findViewById(2063991510));
     }
     if (AECaptureController.a(this.this$0) != null)
     {
@@ -31,7 +31,7 @@ class AECaptureController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.AECaptureController.1
  * JD-Core Version:    0.7.0.1
  */

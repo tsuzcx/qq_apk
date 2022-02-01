@@ -315,7 +315,7 @@ public class ExperimentClient
     ((AttaEntity)localObject1).setDevicemodel(((DeviceEntity)localObject2).getDeviceVersion());
     ((AttaEntity)localObject1).setEventpage("");
     ((AttaEntity)localObject1).setEventtime(String.valueOf(System.currentTimeMillis()));
-    ((AttaEntity)localObject1).setSdkversion("3.0.14");
+    ((AttaEntity)localObject1).setSdkversion("3.1.1");
     paramString1 = new StringBuilder();
     paramString1.append(((DeviceEntity)localObject2).getDeviceWidth());
     paramString1.append("_");
@@ -339,7 +339,7 @@ public class ExperimentClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.abtest.ExperimentClient
  * JD-Core Version:    0.7.0.1
  */

@@ -24,34 +24,34 @@ class ContactListAdapter$2
   {
     QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
     ContactListAdapter.SelectBuddyChildTag localSelectBuddyChildTag = (ContactListAdapter.SelectBuddyChildTag)paramView.getTag();
-    if ((localSelectBuddyChildTag != null) && (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject != null))
+    if ((localSelectBuddyChildTag != null) && (localSelectBuddyChildTag.g != null) && (localSelectBuddyChildTag.h != null))
     {
       Object localObject;
-      if ((localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject instanceof Friends))
+      if ((localSelectBuddyChildTag.h instanceof Friends))
       {
-        localObject = ((Friends)localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
+        localObject = ((Friends)localSelectBuddyChildTag.h).getFriendNickWithAlias();
       }
-      else if ((localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+      else if ((localSelectBuddyChildTag.h instanceof PhoneContact))
       {
-        localObject = ((PhoneContact)localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject).name;
+        localObject = ((PhoneContact)localSelectBuddyChildTag.h).name;
       }
       else
       {
-        if ((localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity))
+        if ((localSelectBuddyChildTag.h instanceof RelationTroopEntity))
         {
-          localObject = (RelationTroopEntity)localSelectBuddyChildTag.jdField_a_of_type_JavaLangObject;
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.a(((RelationTroopEntity)localObject).troopInfo.troopuin);
+          localObject = (RelationTroopEntity)localSelectBuddyChildTag.h;
+          this.a.a.b(((RelationTroopEntity)localObject).troopInfo.troopuin);
           break label406;
         }
         localObject = "";
       }
-      if (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      if (localSelectBuddyChildTag.g.isEnabled())
       {
         boolean bool;
-        if (localSelectBuddyChildTag.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.a(localSelectBuddyChildTag.jdField_a_of_type_JavaLangString, (String)localObject, 4, "-1");
+        if (localSelectBuddyChildTag.y.startsWith("+")) {
+          bool = this.a.a.b(localSelectBuddyChildTag.y, (String)localObject, 4, "-1");
         } else {
-          bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiNewTroopContactView.a(localSelectBuddyChildTag.jdField_a_of_type_JavaLangString, (String)localObject, 0, "-1");
+          bool = this.a.a.b(localSelectBuddyChildTag.y, (String)localObject, 0, "-1");
         }
         if (QLog.isDevelopLevel())
         {
@@ -60,28 +60,28 @@ class ContactListAdapter$2
           ((StringBuilder)localObject).append(bool);
           QLog.d("createNewTroop.ContactListAdapter", 2, ((StringBuilder)localObject).toString());
         }
-        if (localSelectBuddyChildTag.jdField_a_of_type_Long == 1007L) {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopTroopcreateUiRelationFriendsTroopViewHelper.b();
+        if (localSelectBuddyChildTag.b == 1007L) {
+          this.a.b.b();
         }
-        localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.d) {
-          if (localSelectBuddyChildTag.jdField_a_of_type_AndroidWidgetCheckBox.isChecked())
+        localSelectBuddyChildTag.g.setChecked(bool);
+        if (AppSetting.e) {
+          if (localSelectBuddyChildTag.g.isChecked())
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(localSelectBuddyChildTag.d.getText().toString());
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131702671));
+            ((StringBuilder)localObject).append(localSelectBuddyChildTag.e.getText().toString());
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131900661));
             paramView.setContentDescription(((StringBuilder)localObject).toString());
           }
           else
           {
             localObject = new StringBuilder();
-            ((StringBuilder)localObject).append(localSelectBuddyChildTag.d.getText().toString());
-            ((StringBuilder)localObject).append(HardCodeUtil.a(2131702670));
+            ((StringBuilder)localObject).append(localSelectBuddyChildTag.e.getText().toString());
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131900660));
             paramView.setContentDescription(((StringBuilder)localObject).toString());
           }
         }
         this.a.a();
-        if (AppSetting.d) {
+        if (AppSetting.e) {
           paramView.postDelayed(new ContactListAdapter.2.1(this, paramView), 2000L);
         }
       }
@@ -92,7 +92,7 @@ class ContactListAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,22 +20,22 @@ class EditPicSave$2$1
   {
     try
     {
-      if ((!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromCheckEntry(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().getIntent())) && (!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromMiniApp(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity().getIntent())))
+      if ((!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromCheckEntry(this.b.a.u.getActivity().getIntent())) && (!((IAECameraEntryManager)QRoute.api(IAECameraEntryManager.class)).isFromMiniApp(this.b.a.u.getActivity().getIntent())))
       {
-        EditPicSave.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a, PlusPanelUtils.a());
-        File localFile = new File(EditPicSave.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a));
-        if (FileUtils.copyFile(new File(this.jdField_a_of_type_JavaLangString), localFile))
+        EditPicSave.a(this.b.a, PlusPanelUtils.a());
+        File localFile = new File(EditPicSave.d(this.b.a));
+        if (FileUtils.copyFile(new File(this.a), localFile))
         {
-          if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.a() == 14) {
-            EditPicSave.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a, true);
+          if (this.b.a.t.I.h() == 14) {
+            EditPicSave.a(this.b.a, true);
           }
-          ImageUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getActivity(), localFile);
+          ImageUtil.a(this.b.a.u.getActivity(), localFile);
         }
       }
       else
       {
-        EditPicSave.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a, ((IMiniAppService)QRoute.api(IMiniAppService.class)).getTmpPathFromOut(this.jdField_a_of_type_JavaLangString, EditPicSave.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a, this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoUi.getContext())));
-        FileUtils.copyFile(new File(this.jdField_a_of_type_JavaLangString), new File(EditPicSave.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditPicSave$2.a)));
+        EditPicSave.a(this.b.a, ((IMiniAppService)QRoute.api(IMiniAppService.class)).getTmpPathFromOut(this.a, EditPicSave.a(this.b.a, this.b.a.u.getContext())));
+        FileUtils.copyFile(new File(this.a), new File(EditPicSave.d(this.b.a)));
         return;
       }
     }
@@ -53,7 +53,7 @@ class EditPicSave$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditPicSave.2.1
  * JD-Core Version:    0.7.0.1
  */

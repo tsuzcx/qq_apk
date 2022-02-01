@@ -41,7 +41,7 @@ public class HippyModalHostView
   private View mContentView;
   private Dialog mDialog;
   private boolean mEnterImmersionStatusBar = false;
-  private HippyModalHostView.DialogRootViewGroup mHostView;
+  private final HippyModalHostView.DialogRootViewGroup mHostView;
   HippyModalHostView.OnRequestCloseListener mOnRequestCloseListener;
   private DialogInterface.OnShowListener mOnShowListener;
   private boolean mPropertyRequiresNewDialog;
@@ -134,14 +134,10 @@ public class HippyModalHostView
       return true;
     }
     localObject = ((HippyInstanceContext)localObject).getBaseContext();
-    if (localObject != null)
-    {
-      if (!(localObject instanceof Activity)) {
-        return true;
-      }
-      return ((Activity)localObject).isFinishing();
+    if (!(localObject instanceof Activity)) {
+      return true;
     }
-    return true;
+    return ((Activity)localObject).isFinishing();
   }
   
   private void updateProperties()
@@ -431,7 +427,7 @@ public class HippyModalHostView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostView
  * JD-Core Version:    0.7.0.1
  */

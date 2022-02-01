@@ -11,17 +11,17 @@ class SafeApiImpl$2
   
   protected void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityIDevListView.onRenameAuthDev(paramBoolean, paramInt, paramArrayOfByte, paramString);
+    this.a.onRenameAuthDev(paramBoolean, paramInt, paramArrayOfByte, paramString);
   }
   
   protected void b(int paramInt, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppIdentityIDevListView.onWXSyncQQMsgOption(paramInt, paramBundle);
+    this.a.onWXSyncQQMsgOption(paramInt, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.impl.SafeApiImpl.2
  * JD-Core Version:    0.7.0.1
  */

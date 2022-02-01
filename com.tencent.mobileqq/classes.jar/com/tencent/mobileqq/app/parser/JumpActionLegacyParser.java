@@ -32,7 +32,7 @@ public class JumpActionLegacyParser
         str = URLDecoder.decode(paramString);
       }
     }
-    if ((QQAudioHelper.b()) && (QQAudioHelper.a(8) == 1) && (str.startsWith("mqqconferenceflyticket://"))) {
+    if ((QQAudioHelper.b()) && (QQAudioHelper.b(8) == 1) && (str.startsWith("mqqconferenceflyticket://"))) {
       paramString = "mqqavshare://avshare/forward?url=https%3a%2f%2fwww.baidu.com%2fs%3fwd%3dabc%26rsv_spt%3d1&exp=1566906601";
     } else {
       paramString = str;
@@ -53,9 +53,9 @@ public class JumpActionLegacyParser
       if (paramContext.length != 2) {
         return null;
       }
-      paramBaseQQAppInterface.a = paramString;
-      paramBaseQQAppInterface.b = paramContext[0];
-      paramBaseQQAppInterface.c = paramContext[1];
+      paramBaseQQAppInterface.c = paramString;
+      paramBaseQQAppInterface.d = paramContext[0];
+      paramBaseQQAppInterface.e = paramContext[1];
       paramContext = ((String)localObject).split("&");
       int i = 0;
       while (i < paramContext.length)
@@ -118,6 +118,7 @@ public class JumpActionLegacyParser
     }
     boolean bool10 = paramString2.startsWith("mqqapi://qqcomic/");
     boolean bool11 = a(paramString2);
+    boolean bool12 = paramString2.startsWith("mqqguild://");
     boolean bool1 = paramString2.startsWith("mqqconferenceflyticket://");
     int m;
     if ((paramString2.startsWith("mqqapi://readinjoy")) && (paramString2.contains("readinjoyNotDecodeUrl=1"))) {
@@ -125,7 +126,7 @@ public class JumpActionLegacyParser
     } else {
       m = 0;
     }
-    boolean bool12 = a(new boolean[] { paramString1.startsWith("mqqopensdkapi://bizAgent/") ^ true, bool3 ^ true, bool4 ^ true, bool5 ^ true, bool7 ^ true, bool2 ^ true, j ^ 0x1, bool11 ^ true, bool10 ^ true, k ^ 0x1, m ^ 0x1 });
+    bool12 = a(new boolean[] { paramString1.startsWith("mqqopensdkapi://bizAgent/") ^ true, bool3 ^ true, bool4 ^ true, bool5 ^ true, bool7 ^ true, bool2 ^ true, j ^ 0x1, bool11 ^ true, bool10 ^ true, k ^ 0x1, m ^ 0x1, bool12 ^ true });
     Object localObject = null;
     String str1;
     if (bool12)
@@ -172,7 +173,7 @@ public class JumpActionLegacyParser
     JumpActionLegacy localJumpActionLegacy = new JumpActionLegacy(paramQQAppInterface, paramContext);
     if (paramString2.startsWith("mqqapi://now/openroom"))
     {
-      localJumpActionLegacy.a = paramString2;
+      localJumpActionLegacy.c = paramString2;
       paramContext = paramString2;
       paramArrayOfString = paramString3;
     }
@@ -184,7 +185,7 @@ public class JumpActionLegacyParser
       {
         paramContext = Uri.parse(paramString2).buildUpon().scheme("mqqapi").build().toString();
         paramArrayOfString = Uri.parse(paramString3).buildUpon().scheme("mqqapi").build().toString();
-        localJumpActionLegacy.a = paramContext;
+        localJumpActionLegacy.c = paramContext;
       }
     }
     boolean bool = paramArrayOfString.startsWith("mqqopensdkapi://bizAgent/");
@@ -211,7 +212,7 @@ public class JumpActionLegacyParser
     {
       try
       {
-        paramString1 = new ArrayList(Arrays.asList(new String[] { "mqqapi://", "qqstory://", "mqq://", "mqqflyticket://", "mqqwpa://", "wtloginmqq://", "mqqtribe://", "mqqverifycode://", "mqqconnect://", "mqqdevlock://", "mqqconferenceflyticket://" }));
+        paramString1 = new ArrayList(Arrays.asList(new String[] { "mqqapi://", "qqstory://", "mqq://", "mqqflyticket://", "mqqwpa://", "wtloginmqq://", "mqqtribe://", "mqqverifycode://", "mqqconnect://", "mqqdevlock://", "mqqconferenceflyticket://", "mqqguild://" }));
         i = paramArrayOfString.indexOf("://");
         paramQQAppInterface = paramString2;
         if (i > 0)
@@ -236,9 +237,9 @@ public class JumpActionLegacyParser
     if (paramQQAppInterface.length != 2) {
       return null;
     }
-    localJumpActionLegacy.a = paramContext;
-    localJumpActionLegacy.b = paramQQAppInterface[0];
-    localJumpActionLegacy.c = paramQQAppInterface[1];
+    localJumpActionLegacy.c = paramContext;
+    localJumpActionLegacy.d = paramQQAppInterface[0];
+    localJumpActionLegacy.e = paramQQAppInterface[1];
     if (paramString4 == null) {
       return localJumpActionLegacy;
     }
@@ -323,7 +324,7 @@ public class JumpActionLegacyParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpActionLegacyParser
  * JD-Core Version:    0.7.0.1
  */

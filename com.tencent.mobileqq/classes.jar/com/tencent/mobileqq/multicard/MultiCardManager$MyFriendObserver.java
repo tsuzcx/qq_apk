@@ -23,9 +23,9 @@ class MultiCardManager$MyFriendObserver
       ((StringBuilder)localObject).append(paramString);
       QLog.d("MultiCardManager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((!MultiCardManager.a(this.a)) && (MultiCardManager.a(this.a) != null))
+    if ((!MultiCardManager.c(this.a)) && (MultiCardManager.b(this.a) != null))
     {
-      localObject = (ArrayList)MultiCardManager.a(this.a).get(Long.valueOf(MultiCardManager.a(this.a)));
+      localObject = (ArrayList)MultiCardManager.b(this.a).get(Long.valueOf(MultiCardManager.d(this.a)));
       if (localObject != null) {
         try
         {
@@ -35,11 +35,11 @@ class MultiCardManager$MyFriendObserver
             paramString = new ArrayList(1);
             paramString.add(Long.valueOf(l));
             localObject = new ArrayList(1);
-            ((ArrayList)localObject).add(Long.valueOf(MultiCardManager.a(this.a)));
+            ((ArrayList)localObject).add(Long.valueOf(MultiCardManager.d(this.a)));
             HashMap localHashMap = new HashMap(5);
             localHashMap.put("notRequest", paramString);
             localHashMap.put("groupUin", localObject);
-            ((IntimateInfoHandler)MultiCardManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(MultiCardManager.a(this.a), paramString, localHashMap);
+            ((IntimateInfoHandler)MultiCardManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(MultiCardManager.d(this.a), paramString, localHashMap);
             return;
           }
         }
@@ -59,7 +59,7 @@ class MultiCardManager$MyFriendObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.MyFriendObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -24,24 +24,24 @@ class QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
   {
-    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramDeleteStoryVideoEvent.c)) {
+    if (!paramQQStoryShareGroupProfileActivity.t.equals(paramDeleteStoryVideoEvent.c)) {
       return;
     }
-    if ((paramDeleteStoryVideoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!TextUtils.isEmpty(paramDeleteStoryVideoEvent.d)) && (((MemoryManager)SuperManager.a(19)).a(paramDeleteStoryVideoEvent.d).contains(paramDeleteStoryVideoEvent.jdField_a_of_type_JavaLangString)))
+    if ((paramDeleteStoryVideoEvent.g.isSuccess()) && (!TextUtils.isEmpty(paramDeleteStoryVideoEvent.d)) && (((MemoryManager)SuperManager.a(19)).b(paramDeleteStoryVideoEvent.d).contains(paramDeleteStoryVideoEvent.a)))
     {
       Object localObject;
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("get delete event. groupId=");
-        ((StringBuilder)localObject).append(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(paramQQStoryShareGroupProfileActivity.t);
         ((StringBuilder)localObject).append(", feedId=");
         ((StringBuilder)localObject).append(paramDeleteStoryVideoEvent.d);
         QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, ((StringBuilder)localObject).toString());
       }
-      if (paramQQStoryShareGroupProfileActivity.a != null)
+      if (paramQQStoryShareGroupProfileActivity.u != null)
       {
-        localObject = paramQQStoryShareGroupProfileActivity.a;
+        localObject = paramQQStoryShareGroupProfileActivity.u;
         int i = ((ShareGroupItem)localObject).videoCount - 1;
         ((ShareGroupItem)localObject).videoCount = i;
         if (i == 0)
@@ -52,23 +52,23 @@ class QQStoryShareGroupProfileActivity$DeleteStoryVideoEventReceiver
       }
       if (paramQQStoryShareGroupProfileActivity.isResume())
       {
-        if (paramDeleteStoryVideoEvent.jdField_b_of_type_Boolean)
+        if (paramDeleteStoryVideoEvent.h)
         {
-          localObject = ((ShareGroupManager)SuperManager.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
-          if ((localObject != null) && (((ShareGroupItem)localObject).headerUnionIdList.contains(paramDeleteStoryVideoEvent.jdField_b_of_type_JavaLangString))) {
+          localObject = ((ShareGroupManager)SuperManager.a(7)).a(paramQQStoryShareGroupProfileActivity.t);
+          if ((localObject != null) && (((ShareGroupItem)localObject).headerUnionIdList.contains(paramDeleteStoryVideoEvent.b))) {
             QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
           }
         }
         paramQQStoryShareGroupProfileActivity.b(false);
         return;
       }
-      if (paramDeleteStoryVideoEvent.jdField_b_of_type_Boolean)
+      if (paramDeleteStoryVideoEvent.h)
       {
-        paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
-        paramQQStoryShareGroupProfileActivity.c = true;
+        paramQQStoryShareGroupProfileActivity.B = true;
+        paramQQStoryShareGroupProfileActivity.C = true;
         return;
       }
-      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+      paramQQStoryShareGroupProfileActivity.B = true;
     }
   }
   

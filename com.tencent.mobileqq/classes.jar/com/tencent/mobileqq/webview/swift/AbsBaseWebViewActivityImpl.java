@@ -34,11 +34,6 @@ public class AbsBaseWebViewActivityImpl
     }
   }
   
-  public WebResourceResponse a(String paramString)
-  {
-    return (WebResourceResponse)((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).getWebResponse(paramString);
-  }
-  
   public void a(int paramInt1, int paramInt2, Intent paramIntent, TouchWebView paramTouchWebView)
   {
     if ((paramInt2 == -1) && (paramTouchWebView != null))
@@ -87,6 +82,11 @@ public class AbsBaseWebViewActivityImpl
     return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("mqqpa://resourceid/"));
   }
   
+  public WebResourceResponse b(String paramString)
+  {
+    return (WebResourceResponse)((IPublicAccountH5AbilityPlugin)QRoute.api(IPublicAccountH5AbilityPlugin.class)).getWebResponse(paramString);
+  }
+  
   public void b(QBaseActivity paramQBaseActivity)
   {
     String str = BridgeHelper.a(paramQBaseActivity, paramQBaseActivity.getAppRuntime().getAccount()).a("buscard_registerNFC");
@@ -97,7 +97,7 @@ public class AbsBaseWebViewActivityImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.AbsBaseWebViewActivityImpl
  * JD-Core Version:    0.7.0.1
  */

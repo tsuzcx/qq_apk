@@ -11,16 +11,16 @@ class StructMsgItemLayout20$1
   
   public void run()
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout20$Holder.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout20$Holder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
+    int i = this.a;
+    int j = this.b.c.getWidth();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.b.a.getLayoutParams();
     localLayoutParams.rightMargin = (i + j);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout20$Holder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
+    this.b.a.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20.1
  * JD-Core Version:    0.7.0.1
  */

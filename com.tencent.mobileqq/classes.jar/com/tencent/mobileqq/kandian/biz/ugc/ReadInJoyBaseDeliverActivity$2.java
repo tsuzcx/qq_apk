@@ -3,7 +3,7 @@ package com.tencent.mobileqq.kandian.biz.ugc;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
+import com.tencent.mobileqq.kandian.biz.biu.BiuEditText;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
@@ -17,8 +17,8 @@ class ReadInJoyBaseDeliverActivity$2
   public void onGlobalLayout()
   {
     Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
+    this.a.j.getWindowVisibleDisplayFrame((Rect)localObject);
+    int j = this.a.j.getRootView().getHeight();
     int i = j - ((Rect)localObject).height();
     boolean bool;
     if (i > 100) {
@@ -37,20 +37,20 @@ class ReadInJoyBaseDeliverActivity$2
       ((StringBuilder)localObject).append(bool);
       QLog.d("ReadInJoyBaseDeliverActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (bool != this.a.k)
+    if (bool != this.a.F)
     {
-      if (i > this.a.e) {
-        this.a.e = i;
+      if (i > this.a.D) {
+        this.a.D = i;
       }
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("onGlobalLayout mMAXExternalPanelheight:");
-        ((StringBuilder)localObject).append(this.a.e);
+        ((StringBuilder)localObject).append(this.a.D);
         QLog.d("ReadInJoyBaseDeliverActivity", 2, ((StringBuilder)localObject).toString());
       }
-      i = ViewUtils.b(this.a.f);
-      j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
+      i = ViewUtils.dpToPx(this.a.E);
+      j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.D;
       int k = j - i;
       if (QLog.isColorLevel())
       {
@@ -63,14 +63,14 @@ class ReadInJoyBaseDeliverActivity$2
         ((StringBuilder)localObject).append(k);
         QLog.d("ReadInJoyBaseDeliverActivity", 2, ((StringBuilder)localObject).toString());
       }
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
+      this.a.e.setMaxHeight(k);
     }
-    this.a.k = bool;
+    this.a.F = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyBaseDeliverActivity.2
  * JD-Core Version:    0.7.0.1
  */

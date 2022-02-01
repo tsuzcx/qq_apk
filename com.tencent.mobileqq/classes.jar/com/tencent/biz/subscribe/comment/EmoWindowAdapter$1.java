@@ -11,7 +11,7 @@ class EmoWindowAdapter$1
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoWindowAdapter.a.a(this.jdField_a_of_type_Int, EmoWindowAdapter.a(this.jdField_a_of_type_ComTencentBizSubscribeCommentEmoWindowAdapter));
+    this.b.a.a(this.a, EmoWindowAdapter.a(this.b));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

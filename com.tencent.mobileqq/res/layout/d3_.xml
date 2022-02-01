@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/pgq" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip">
+        <com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout android:id="@id/pgr" android:layout_width="fill_parent" android:layout_height="181.0dip">
+            <ImageView android:id="@id/ngu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <ImageView android:id="@id/pgp" android:background="@drawable/iqu" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" />
+        </com.tencent.biz.qqcircle.richframework.widget.RoundCorneredRelativeLayout>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/fo_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/black" android:layout_gravity="center" android:id="@id/pgs" android:layout_width="wrap_content" android:layout_height="22.0dip" android:layout_marginTop="24.0dip" android:text="@string/zc9" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff585858" android:layout_gravity="center" android:id="@id/pgt" android:layout_width="304.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/y3u" />
+            <Button android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center" android:layout_gravity="center" android:id="@id/ngv" android:background="@drawable/fol" android:layout_width="304.0dip" android:layout_height="40.0dip" android:layout_marginTop="24.0dip" android:layout_marginBottom="24.0dip" android:text="@string/bk1" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

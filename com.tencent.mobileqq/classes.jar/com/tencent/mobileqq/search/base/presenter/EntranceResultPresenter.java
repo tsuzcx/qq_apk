@@ -10,12 +10,12 @@ public class EntranceResultPresenter
   public void a(SearchResultModelForEntrance paramSearchResultModelForEntrance, SearchResultEntranceView paramSearchResultEntranceView)
   {
     paramSearchResultEntranceView.a(paramSearchResultModelForEntrance);
-    paramSearchResultEntranceView.a().setOnClickListener(new EntranceResultPresenter.1(this, paramSearchResultModelForEntrance));
+    paramSearchResultEntranceView.h().setOnClickListener(new EntranceResultPresenter.1(this, paramSearchResultModelForEntrance));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.presenter.EntranceResultPresenter
  * JD-Core Version:    0.7.0.1
  */

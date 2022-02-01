@@ -15,17 +15,17 @@ public class QCircleWXShareListenerProxy
     this.a = new WeakReference(paramQCircleWXShareListener);
   }
   
-  public void a(WXShareRsp paramWXShareRsp)
+  public void onWXShareResp(WXShareRsp paramWXShareRsp)
   {
     QCircleWXShareListener localQCircleWXShareListener = (QCircleWXShareListener)this.a.get();
     if (localQCircleWXShareListener != null) {
-      localQCircleWXShareListener.onWXShareResp(paramWXShareRsp.jdField_a_of_type_Int, paramWXShareRsp.jdField_a_of_type_JavaLangString, paramWXShareRsp.b);
+      localQCircleWXShareListener.onWXShareResp(paramWXShareRsp.errCode, paramWXShareRsp.errStr, paramWXShareRsp.transaction);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.listenerproxy.QCircleWXShareListenerProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.game.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.game.process.data.CmGameOpenIdFinder;
-import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResultCallback;
@@ -13,9 +11,9 @@ import org.json.JSONObject;
 
 public class CmGameToolCmdChannel
 {
-  private static String[] a = { "cs.create_room.local", "cs.game_start.local", "cs.game_tips.local", "cs.check_pubAccount_state.local", "cs.on_get_open_key.local", "general_cmd_ui_show_toast", "cs.get_dress_path.local", "cs.send_game_msg.local", "cs.report_data_2_backstage.local", "cs.report_flow_data.local", "cs.openWebView.local", "cs.openFloatTransparentView.local", "cs.get_server_ip_port.local", "cs.save_recommend_ip.local", "cs.script_get_action_data.local", "cs.game_shell_share_callback.local", "cs.open_cm_aio.local", "cs.show_one_more_page.local" };
-  private static String[] b = { "cs.report_data_2_compass.local", "cs.send_b2c_redpacket.local", "cs.share_game_result.local", "cs.qta_notify_test_result.local", "cs.share_pic.local", "cs.apolloGameWebMessage.local", "cs.openWebViewWithoutUrl.local", "cs.share_game_in_ark.local", "cs.enter_pubAccount_card.local", "cs.fetch_cloud_signature.local", "cs.game_update_score.local", "cs.get_redPacket_result.local", "cs.closeWebview.local", "cs.game_ad_video_jump.local", "cs.xy_ad_banner_jump.local", "cs.game_ad_video_close.local", "cs.get_user_info.local", "cs.get_app_friends.local", "cs.get_location.local", "cs.get_city.local", "cs.apolloGameTargetWebMessage.local", "cs.load_subpackage.local", "sc.load_percentage_nofity.local", "cs.file_correctness_check.local", "cs.game_ad_banner_show.local", "cs.game_ad_banner_close.local", "cs.game_ad_banner_hide.local", "cs.game_ad_banner_resize.local", "cs.game_ad_banner_load.local", "cs.report_event.local" };
-  private static String[] c = { "cs.first_frame_drawn.local", "cs.join_room.local", "cs.make_room_min.local", "cs.close_room.local" };
+  private static String[] a = { "cs.game_start.local", "cs.check_pubAccount_state.local", "general_cmd_ui_show_toast", "cs.get_dress_path.local", "cs.report_data_2_backstage.local", "cs.report_flow_data.local", "cs.openWebView.local", "cs.openFloatTransparentView.local", "cs.get_server_ip_port.local", "cs.save_recommend_ip.local", "cs.script_get_action_data.local" };
+  private static String[] b = { "cs.report_data_2_compass.local", "cs.qta_notify_test_result.local", "cs.apolloGameWebMessage.local", "cs.openWebViewWithoutUrl.local", "cs.enter_pubAccount_card.local", "cs.closeWebview.local", "cs.game_ad_video_jump.local", "cs.game_ad_video_close.local", "cs.get_user_info.local", "cs.get_app_friends.local", "cs.get_location.local", "cs.get_city.local", "cs.apolloGameTargetWebMessage.local", "cs.load_subpackage.local", "sc.load_percentage_nofity.local", "cs.file_correctness_check.local", "cs.report_event.local" };
+  private static String[] c = { "cs.first_frame_drawn.local", "cs.close_room.local" };
   
   public static int a(long paramLong, String paramString1, String paramString2, boolean paramBoolean)
   {
@@ -25,7 +23,7 @@ public class CmGameToolCmdChannel
     CmGameLauncher localCmGameLauncher = CmGameUtil.b(paramLong);
     int i;
     if (localCmGameLauncher != null) {
-      i = localCmGameLauncher.a();
+      i = localCmGameLauncher.g();
     } else {
       i = -1;
     }
@@ -71,15 +69,10 @@ public class CmGameToolCmdChannel
       a(paramString1, paramString2, paramBoolean, new CmGameToolCmdChannel.1(paramLong), paramInt);
       return false;
     }
-    if (paramString1.equals("cs.on_get_open_key.local"))
-    {
-      a(paramString1, paramString2, paramBoolean, new CmGameToolCmdChannel.2(paramLong), paramInt);
-      return false;
-    }
     Object localObject;
     if (paramString1.equals("cs.get_dress_path.local"))
     {
-      CmGameToolCmdChannel.3 local3 = new CmGameToolCmdChannel.3(paramLong, paramString1);
+      CmGameToolCmdChannel.2 local2 = new CmGameToolCmdChannel.2(paramLong, paramString1);
       try
       {
         CmGameLauncher localCmGameLauncher = CmGameUtil.b(paramLong);
@@ -90,7 +83,7 @@ public class CmGameToolCmdChannel
           str = paramString2;
           if (!localJSONObject.has("gameId"))
           {
-            localJSONObject.put("gameId", localCmGameLauncher.a());
+            localJSONObject.put("gameId", localCmGameLauncher.g());
             str = localJSONObject.toString();
           }
         }
@@ -100,7 +93,7 @@ public class CmGameToolCmdChannel
         QLog.e("cmgame_process.CmGameToolCmdChannel", 1, localException, new Object[0]);
         localObject = paramString2;
       }
-      a(paramString1, (String)localObject, paramBoolean, local3, paramInt);
+      a(paramString1, (String)localObject, paramBoolean, local2, paramInt);
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
@@ -116,7 +109,7 @@ public class CmGameToolCmdChannel
       ((Bundle)localObject).putString("cmd", paramString1);
       ((Bundle)localObject).putString("reqData", paramString2);
       ((Bundle)localObject).putBoolean("async", paramBoolean);
-      paramString1 = new CmGameToolCmdChannel.4(paramLong);
+      paramString1 = new CmGameToolCmdChannel.3(paramLong);
       QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_action_data", (Bundle)localObject, paramString1);
       if (QLog.isColorLevel())
       {
@@ -129,33 +122,7 @@ public class CmGameToolCmdChannel
     }
     else
     {
-      if ("cs.show_one_more_page.local".equals(paramString1))
-      {
-        ThreadManagerV2.excute(new CmGameToolCmdChannel.5(paramInt, paramString1, paramString2), 16, null, false);
-        return false;
-      }
       a(paramString1, paramString2, paramBoolean, null, paramInt);
-    }
-    return false;
-  }
-  
-  public static boolean a(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (!CmGameUtil.a()) {
-      return false;
-    }
-    try
-    {
-      CmGameOpenIdFinder localCmGameOpenIdFinder = CmGameUtil.a(paramLong);
-      if (localCmGameOpenIdFinder != null)
-      {
-        paramBoolean = localCmGameOpenIdFinder.a(paramLong, paramBoolean, paramString1, paramString2);
-        return paramBoolean;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("cmgame_process.CmGameToolCmdChannel", 2, "isFetchUinByOpenId failed", paramString1);
     }
     return false;
   }
@@ -181,7 +148,7 @@ public class CmGameToolCmdChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.CmGameToolCmdChannel
  * JD-Core Version:    0.7.0.1
  */

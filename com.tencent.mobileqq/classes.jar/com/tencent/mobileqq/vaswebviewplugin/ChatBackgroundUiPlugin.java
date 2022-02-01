@@ -21,8 +21,8 @@ public class ChatBackgroundUiPlugin
   {
     super.OnActivityCreate();
     this.mReqBundle = new Bundle();
-    this.uin = this.mRuntime.a().getAccount();
-    WebViewProvider localWebViewProvider = this.mRuntime.a();
+    this.uin = this.mRuntime.b().getAccount();
+    WebViewProvider localWebViewProvider = this.mRuntime.f();
     if (localWebViewProvider != null) {
       localWebViewProvider.setCurUrl(super.decodeUrl(localWebViewProvider.getCurrentUrl()));
     }
@@ -52,7 +52,7 @@ public class ChatBackgroundUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundUiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ class TroopWebviewPlugin$5
 {
   TroopWebviewPlugin$5(TroopWebviewPlugin paramTroopWebviewPlugin) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     TroopWebviewPlugin.a(this.a);
     if (paramInt == 0) {
@@ -18,7 +18,7 @@ class TroopWebviewPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.browser.TroopWebviewPlugin.5
  * JD-Core Version:    0.7.0.1
  */

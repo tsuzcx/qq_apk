@@ -32,9 +32,9 @@ import mqq.os.MqqHandler;
 public class ReadInJoyDraftboxFragment
   extends IphoneTitleBarFragment
 {
-  private ReadInJoyDraftboxAdapter jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxAdapter;
-  private ReadInJoyDraftboxModule jdField_a_of_type_ComTencentMobileqqKandianRepoUgcReadInJoyDraftboxModule = ReadInJoyLogicEngine.a().a();
-  private List<ReadInJoyDraftboxItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private ReadInJoyDraftboxAdapter a;
+  private List<ReadInJoyDraftboxItem> b = new ArrayList();
+  private ReadInJoyDraftboxModule c = ReadInJoyLogicEngine.a().Z();
   
   private void b()
   {
@@ -62,7 +62,7 @@ public class ReadInJoyDraftboxFragment
       localBaseActivity.mSystemBarComp.init();
       if (ThemeUtil.isInNightMode(localBaseActivity.app))
       {
-        if ((!SystemUtil.b()) && (!SystemUtil.d()))
+        if ((!SystemUtil.d()) && (!SystemUtil.g()))
         {
           localBaseActivity.mSystemBarComp.setStatusBarColor(-7829368);
         }
@@ -72,12 +72,12 @@ public class ReadInJoyDraftboxFragment
           localBaseActivity.mSystemBarComp.setStatusBarDarkMode(true);
         }
       }
-      else if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+      else if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
       {
         localBaseActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localBaseActivity.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!SystemUtil.d())
+      else if (!SystemUtil.g())
       {
         localBaseActivity.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -90,7 +90,7 @@ public class ReadInJoyDraftboxFragment
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849814);
+      this.leftView.setBackgroundResource(2130851519);
     }
     if (this.centerView != null) {
       this.centerView.setTextColor(-16777216);
@@ -101,26 +101,26 @@ public class ReadInJoyDraftboxFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxAdapter = new ReadInJoyDraftboxAdapter(getBaseActivity(), this.jdField_a_of_type_JavaUtilList);
+    this.a = new ReadInJoyDraftboxAdapter(getBaseActivity(), this.b);
     if (this.mContentView != null)
     {
-      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131365875);
-      paramLayoutInflater.setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcReadInJoyDraftboxAdapter);
+      paramLayoutInflater = (SwipListView)this.mContentView.findViewById(2131432134);
+      paramLayoutInflater.setAdapter(this.a);
       paramLayoutInflater.setDragEnable(true);
       paramLayoutInflater.setDivider(new ColorDrawable(Color.parseColor("#FFF2F2F2")));
-      paramLayoutInflater.setDividerHeight(ViewUtils.a(0.5F));
-      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131365874));
+      paramLayoutInflater.setDividerHeight(ViewUtils.dip2px(0.5F));
+      paramLayoutInflater.setEmptyView(this.mContentView.findViewById(2131432133));
     }
-    setTitle(HardCodeUtil.a(2131712932));
+    setTitle(HardCodeUtil.a(2131910500));
     if (this.leftView != null) {
-      this.leftView.setText(HardCodeUtil.a(2131712933));
+      this.leftView.setText(HardCodeUtil.a(2131901576));
     }
     a();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131560179;
+    return 2131626226;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -137,7 +137,7 @@ public class ReadInJoyDraftboxFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDraftboxFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.kandian.biz.gifvideo.utils;
 
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.util.KotlinUtilKt;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.data.MiniAppData;
 import com.tencent.mobileqq.kandian.biz.pts.data.Util;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
@@ -10,7 +10,6 @@ import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.Repor
 import com.tencent.mobileqq.kandian.repo.aladdin.handlers.DailyModeConfigHandler;
 import com.tencent.mobileqq.kandian.repo.common.RIJItemViewTypeUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function2;
@@ -24,26 +23,13 @@ public final class VideoReportUtil
 {
   public static final VideoReportUtil a = new VideoReportUtil();
   
-  private final int b(AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  private final int c(AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    if (RIJItemViewTypeUtils.B(paramAbsBaseArticleInfo)) {
+    if (RIJItemViewTypeUtils.E(paramAbsBaseArticleInfo)) {
       return 2;
     }
-    if (RIJItemViewTypeUtils.C(paramAbsBaseArticleInfo)) {
+    if (RIJItemViewTypeUtils.F(paramAbsBaseArticleInfo)) {
       return 5;
-    }
-    return -1;
-  }
-  
-  public final int a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
-  {
-    Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    int i = (int)paramAbsBaseArticleInfo.mChannelID;
-    if (i == 0) {
-      return 3;
-    }
-    if (i == DailyModeConfigHandler.b()) {
-      return 24;
     }
     return -1;
   }
@@ -53,7 +39,7 @@ public final class VideoReportUtil
   {
     if (paramMiniAppData != null)
     {
-      RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.a();
+      RIJTransMergeKanDianReport.ReportR5Builder localReportR5Builder = RIJTransMergeKanDianReport.g();
       localReportR5Builder.addStringNotThrow("rowkey", paramMiniAppData.c);
       localReportR5Builder.addStringNotThrow("icon_location", 4);
       return localReportR5Builder;
@@ -71,7 +57,7 @@ public final class VideoReportUtil
   public final String a(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    if (Util.e(paramAbsBaseArticleInfo)) {
+    if (Util.f(paramAbsBaseArticleInfo)) {
       return "10";
     }
     return "6";
@@ -111,7 +97,7 @@ public final class VideoReportUtil
       if (paramAbsBaseArticleInfo != null)
       {
         localReportR5Builder = a(paramAbsBaseArticleInfo, paramLong);
-        localReportR5Builder.addStringNotThrow("icon_location", b(paramAbsBaseArticleInfo));
+        localReportR5Builder.addStringNotThrow("icon_location", c(paramAbsBaseArticleInfo));
         paramMiniAppData = localReportR5Builder;
         if (!TextUtils.isEmpty((CharSequence)paramAbsBaseArticleInfo.videoReportInfo))
         {
@@ -151,7 +137,20 @@ public final class VideoReportUtil
     localStringBuilder.append(", r5= ");
     localStringBuilder.append(paramString3);
     QLog.i("VideoReportUtil", 1, localStringBuilder.toString());
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, paramString1, paramString2, paramString2, 0, 0, "", "", "", paramString3, false);
+    PublicAccountReportUtils.a(null, paramString1, paramString2, paramString2, 0, 0, "", "", "", paramString3, false);
+  }
+  
+  public final int b(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
+    int i = (int)paramAbsBaseArticleInfo.mChannelID;
+    if (i == 0) {
+      return 3;
+    }
+    if (i == DailyModeConfigHandler.j()) {
+      return 24;
+    }
+    return -1;
   }
   
   public final void b(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo, long paramLong, boolean paramBoolean)
@@ -173,7 +172,7 @@ public final class VideoReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.utils.VideoReportUtil
  * JD-Core Version:    0.7.0.1
  */

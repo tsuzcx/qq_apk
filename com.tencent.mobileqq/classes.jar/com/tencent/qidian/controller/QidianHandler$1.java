@@ -19,20 +19,20 @@ class QidianHandler$1
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getString("extUin");
-      long l = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("uinseq");
-      int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getInt("uinType");
+      Object localObject = this.a.extraData.getString("extUin");
+      long l = this.a.extraData.getLong("uinseq");
+      int i = this.a.extraData.getInt("uinType");
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = QidianHandler.a(this.this$0).getMessageFacade().b((String)localObject, i, l);
         if ((localObject != null) && ((localObject instanceof MessageForUniteGrayTip)))
         {
           localObject = (MessageForUniteGrayTip)localObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a() != null))
+          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.b() != null))
           {
-            ((MessageForUniteGrayTip)localObject).tipParam.a();
+            ((MessageForUniteGrayTip)localObject).tipParam.c();
             ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(QidianHandler.a(this.this$0));
-            this.this$0.notifyUI(1005, true, this.jdField_a_of_type_JavaUtilHashMap);
+            this.this$0.notifyUI(1005, true, this.b);
             return;
           }
         }
@@ -48,7 +48,7 @@ class QidianHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianHandler.1
  * JD-Core Version:    0.7.0.1
  */

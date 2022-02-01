@@ -52,9 +52,9 @@ public class MessageSearchUtils
             paramCursor.moveToFirst();
           }
           while (!paramCursor.isAfterLast()) {
-            if (paramFullMessageSearchTask.c != 3)
+            if (paramFullMessageSearchTask.h != 3)
             {
-              if (paramFullMessageSearchTask.c == 2) {
+              if (paramFullMessageSearchTask.h == 2) {
                 return null;
               }
               byte[] arrayOfByte = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
@@ -147,7 +147,7 @@ public class MessageSearchUtils
             paramQQAppInterface.secondPageList = paramString2;
             paramQQAppInterface.secondPageMessageUniseq = localArrayList;
           }
-          paramEntityManager = paramFullMessageSearchTask.a;
+          paramEntityManager = paramFullMessageSearchTask.i;
           localObject1 = paramQQAppInterface;
           if (paramEntityManager != null)
           {
@@ -217,7 +217,7 @@ public class MessageSearchUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.MessageSearchUtils
  * JD-Core Version:    0.7.0.1
  */

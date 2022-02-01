@@ -11,19 +11,6 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 class QUSDragFloatingScreenDialog$1
   extends QUSDragFloatControllerAdapter
 {
-  public int a()
-  {
-    int i = QUSDragFloatingScreenDialog.a(this.a);
-    if ((i != 0) && (i != 2))
-    {
-      if (i != 3) {
-        return 0;
-      }
-      return AIOUtils.b(1000.0F, this.a.getContext().getResources());
-    }
-    return AIOUtils.b(80.0F, this.a.getContext().getResources());
-  }
-  
   public View a()
   {
     FrameLayout localFrameLayout = new FrameLayout(this.a.getContext());
@@ -37,7 +24,20 @@ class QUSDragFloatingScreenDialog$1
     return localFrameLayout;
   }
   
-  public int d()
+  public int b()
+  {
+    int i = QUSDragFloatingScreenDialog.a(this.a);
+    if ((i != 0) && (i != 2))
+    {
+      if (i != 3) {
+        return 0;
+      }
+      return AIOUtils.b(1000.0F, this.a.getContext().getResources());
+    }
+    return AIOUtils.b(80.0F, this.a.getContext().getResources());
+  }
+  
+  public int e()
   {
     if ((QUSDragFloatingScreenDialog.a(this.a) != 0) && (QUSDragFloatingScreenDialog.a(this.a) != 1)) {
       return 1;
@@ -45,14 +45,14 @@ class QUSDragFloatingScreenDialog$1
     return 0;
   }
   
-  public void d()
+  public void i()
   {
     this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenDialog.1
  * JD-Core Version:    0.7.0.1
  */

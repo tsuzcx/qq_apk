@@ -9,8 +9,8 @@ class BaseGuessTextStageView$2
   
   public void run()
   {
-    if (this.this$0.c != null) {
-      this.this$0.c.setVisibility(8);
+    if (this.this$0.o != null) {
+      this.this$0.o.setVisibility(8);
     }
   }
 }

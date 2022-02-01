@@ -37,39 +37,38 @@ public class MemoriesInnerListAdapter
   extends BaseAdapter
   implements AdapterView.OnItemClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  QQUserUIItem jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-  private MyMemoriesListView.OnUIClickListener jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener = null;
-  private MemoriesInnerListAdapter.MemoriesInnerListEventListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter$MemoriesInnerListEventListener = null;
-  private RoundedTransformation jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation;
   public String a;
-  private HashMap<String, VideoCollectionItem.FakeVideoUIItem> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<VideoCollectionItem.FakeVideoUIItem> jdField_a_of_type_JavaUtilList = new ArrayList();
   public String b;
-  private HashMap<String, WeakReference<BaseViewHolder>> b;
+  QQUserUIItem c;
+  private Context d;
+  private List<VideoCollectionItem.FakeVideoUIItem> e = new ArrayList();
+  private HashMap<String, VideoCollectionItem.FakeVideoUIItem> f = new HashMap();
+  private MyMemoriesListView.OnUIClickListener g = null;
+  private MemoriesInnerListAdapter.MemoriesInnerListEventListener h = null;
+  private HashMap<String, WeakReference<BaseViewHolder>> i = new HashMap();
+  private RoundedTransformation j;
   
   public MemoriesInnerListAdapter(Context paramContext)
   {
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageRoundedTransformation = new RoundedTransformation(8, 0, 1.6F, UIUtils.jdField_a_of_type_JavaUtilHashMap, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((UserManager)SuperManager.a(2)).b(QQStoryContext.a().b());
+    this.d = paramContext;
+    this.j = new RoundedTransformation(8, 0, 1.6F, UIUtils.e, null);
+    this.c = ((UserManager)SuperManager.a(2)).b(QQStoryContext.a().i());
   }
   
   private View a(int paramInt, ViewGroup paramViewGroup)
   {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.d);
     if (getItemViewType(paramInt) == 1) {
-      return localLayoutInflater.inflate(2131561700, paramViewGroup, false);
+      return localLayoutInflater.inflate(2131628079, paramViewGroup, false);
     }
-    return localLayoutInflater.inflate(2131561701, paramViewGroup, false);
+    return localLayoutInflater.inflate(2131628080, paramViewGroup, false);
   }
   
   private void a(ImageView paramImageView, String paramString)
   {
     paramString = ThumbnailUrlHelper.a(paramString);
     if (!paramString.equals(paramImageView.getTag())) {
-      UIUtils.a(paramImageView, paramString, 80, 128, 4, UIUtils.b, "QQStoryMemory");
+      UIUtils.a(paramImageView, paramString, 80, 128, 4, UIUtils.h, "QQStoryMemory");
     }
   }
   
@@ -82,96 +81,96 @@ public class MemoriesInnerListAdapter
       if (localFakeVideoUIItem == null) {
         return;
       }
-      localObject = (StoryCoverView)paramBaseViewHolder.a(2131380758);
-      if (localFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+      localObject = (StoryCoverView)paramBaseViewHolder.a(2131449726);
+      if (localFakeVideoUIItem.b == null)
       {
-        ((StoryCoverView)localObject).a.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846843));
+        ((StoryCoverView)localObject).a.setImageDrawable(this.d.getResources().getDrawable(2130848395));
         ((StoryCoverView)localObject).setPollLayout(null, -1, null);
         ((StoryCoverView)localObject).setRateLayout(null, -1, -1L, -1);
       }
-      else if (localFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl != null)
+      else if (localFakeVideoUIItem.b.mVideoThumbnailUrl != null)
       {
-        a(((StoryCoverView)localObject).a, localFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-        ((StoryCoverView)localObject).setPollLayout(localFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
-        ((StoryCoverView)localObject).setRateLayout(localFakeVideoUIItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
+        a(((StoryCoverView)localObject).a, localFakeVideoUIItem.b.mVideoThumbnailUrl);
+        ((StoryCoverView)localObject).setPollLayout(localFakeVideoUIItem.b.getPollLayout(), -1, null);
+        ((StoryCoverView)localObject).setRateLayout(localFakeVideoUIItem.b.getInteractLayout(), -1, -1L, -1);
       }
-      this.jdField_b_of_type_JavaUtilHashMap.put(localFakeVideoUIItem.jdField_a_of_type_JavaLangString, new WeakReference(paramBaseViewHolder));
+      this.i.put(localFakeVideoUIItem.a, new WeakReference(paramBaseViewHolder));
       paramBaseViewHolder = new StringBuilder();
-      paramBaseViewHolder.append(QQStoryConstant.jdField_a_of_type_JavaLangString);
+      paramBaseViewHolder.append(QQStoryConstant.a);
       paramBaseViewHolder.append(" ");
       paramBaseViewHolder.append(paramInt + 1);
       ((StoryCoverView)localObject).setContentDescription(paramBaseViewHolder.toString());
       return;
     }
-    Object localObject = (ImageView)paramBaseViewHolder.a(2131373249);
-    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131373236);
+    Object localObject = (ImageView)paramBaseViewHolder.a(2131440858);
+    paramBaseViewHolder = (ImageView)paramBaseViewHolder.a(2131440845);
     QQStoryContext.a();
-    if (ThemeUtil.isInNightMode(QQStoryContext.a()))
+    if (ThemeUtil.isInNightMode(QQStoryContext.k()))
     {
-      paramBaseViewHolder.setBackgroundResource(2130846844);
-      ((ImageView)localObject).setImageResource(2130846848);
+      paramBaseViewHolder.setBackgroundResource(2130848396);
+      ((ImageView)localObject).setImageResource(2130848400);
     }
     else
     {
-      paramBaseViewHolder.setBackgroundResource(2130846843);
-      ((ImageView)localObject).setImageResource(2130846847);
+      paramBaseViewHolder.setBackgroundResource(2130848395);
+      ((ImageView)localObject).setImageResource(2130848399);
     }
-    ((ImageView)localObject).setContentDescription(HardCodeUtil.a(2131706564));
+    ((ImageView)localObject).setContentDescription(HardCodeUtil.a(2131904418));
   }
   
   public VideoCollectionItem.FakeVideoUIItem a(int paramInt)
   {
-    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-      return (VideoCollectionItem.FakeVideoUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (paramInt < this.e.size()) {
+      return (VideoCollectionItem.FakeVideoUIItem)this.e.get(paramInt);
     }
-    SLog.a("Q.qqstory.memories.MemoriesInnerListAdapter", "position=%s, list size=%s", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
+    SLog.a("Q.qqstory.memories.MemoriesInnerListAdapter", "position=%s, list size=%s", Integer.valueOf(paramInt), Integer.valueOf(this.e.size()));
     return null;
   }
   
   public void a(MyMemoriesListView.OnUIClickListener paramOnUIClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener = paramOnUIClickListener;
+    this.g = paramOnUIClickListener;
   }
   
   public void a(MemoriesInnerListAdapter.MemoriesInnerListEventListener paramMemoriesInnerListEventListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter$MemoriesInnerListEventListener = paramMemoriesInnerListEventListener;
+    this.h = paramMemoriesInnerListEventListener;
   }
   
   public void a(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.e = paramList;
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)paramList.next();
-      this.jdField_a_of_type_JavaUtilHashMap.put(localFakeVideoUIItem.jdField_a_of_type_JavaLangString, localFakeVideoUIItem);
+      this.f.put(localFakeVideoUIItem.a, localFakeVideoUIItem);
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     super.notifyDataSetChanged();
   }
   
   public void b(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString)) {
+    if (!this.a.equals(paramString)) {
       return;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Object localObject = (VideoCollectionItem.FakeVideoUIItem)paramList.next();
-      paramString = (VideoCollectionItem.FakeVideoUIItem)this.jdField_a_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
-      if ((paramString != null) && (((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+      paramString = (VideoCollectionItem.FakeVideoUIItem)this.f.get(((VideoCollectionItem.FakeVideoUIItem)localObject).a);
+      if ((paramString != null) && (((VideoCollectionItem.FakeVideoUIItem)localObject).b != null))
       {
-        paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-        localObject = (WeakReference)this.jdField_b_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
+        paramString.b = ((VideoCollectionItem.FakeVideoUIItem)localObject).b;
+        localObject = (WeakReference)this.i.get(((VideoCollectionItem.FakeVideoUIItem)localObject).a);
         if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-          a(((StoryCoverView)((BaseViewHolder)((WeakReference)localObject).get()).a(2131380758)).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+          a(((StoryCoverView)((BaseViewHolder)((WeakReference)localObject).get()).a(2131449726)).a, paramString.b.mVideoThumbnailUrl);
         }
       }
       else
@@ -183,7 +182,7 @@ public class MemoriesInnerListAdapter
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.e;
     if (localList != null) {
       return localList.size();
     }
@@ -238,24 +237,24 @@ public class MemoriesInnerListAdapter
     if (localObject != null) {
       if (getItemViewType(paramInt) == 0)
       {
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener;
+        localObject = this.g;
         if (localObject != null) {
           ((MyMemoriesListView.OnUIClickListener)localObject).a();
         }
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener != null) {
+        if (this.g != null) {
           if (getItemViewType(0) == 0) {
-            this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener.a(this.jdField_a_of_type_JavaLangString, paramInt - 1, paramView, ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
+            this.g.a(this.a, paramInt - 1, paramView, ((VideoCollectionItem.FakeVideoUIItem)localObject).a);
           } else {
-            this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardViewMyMemoriesListView$OnUIClickListener.a(this.jdField_a_of_type_JavaLangString, paramInt, paramView, ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
+            this.g.a(this.a, paramInt, paramView, ((VideoCollectionItem.FakeVideoUIItem)localObject).a);
           }
         }
-        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter$MemoriesInnerListEventListener != null)
+        if (this.h != null)
         {
-          String str = VideoCollectionEntry.getCollectionKey(1, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewAdapterMemoriesInnerListAdapter$MemoriesInnerListEventListener.a(str, paramInt, paramView, ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
+          String str = VideoCollectionEntry.getCollectionKey(1, this.a, this.b);
+          this.h.a(str, paramInt, paramView, ((VideoCollectionItem.FakeVideoUIItem)localObject).a);
         }
       }
     }

@@ -61,7 +61,7 @@ public class PublicAccountObserverImpl
       paramObject = (IPublicAccountObserver.GetUserFollowListRet)paramObject;
       localOnCallback = this.mOnCallback;
       if (localOnCallback != null) {
-        localOnCallback.onUpdateUserFollowList(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
+        localOnCallback.onUpdateUserFollowList(paramObject.a, paramObject.c);
       }
     }
     else if (101 == paramInt)
@@ -71,7 +71,7 @@ public class PublicAccountObserverImpl
         paramObject = (IPublicAccountObserver.FollowRet)paramObject;
         localOnCallback = this.mOnCallback;
         if (localOnCallback != null) {
-          localOnCallback.onFollowPublicAccount(paramObject.jdField_a_of_type_Int, (PublicAccountInfo)paramObject.jdField_a_of_type_JavaLangObject);
+          localOnCallback.onFollowPublicAccount(paramObject.b, (PublicAccountInfo)paramObject.a);
         }
       }
       else if ((paramObject instanceof Integer))
@@ -96,7 +96,7 @@ public class PublicAccountObserverImpl
         paramObject = (IPublicAccountObserver.FollowRet)paramObject;
         localOnCallback = this.mOnCallback;
         if (localOnCallback != null) {
-          localOnCallback.onUnfollowPublicAccount(paramObject.jdField_a_of_type_Int, (PublicAccountInfo)paramObject.jdField_a_of_type_JavaLangObject);
+          localOnCallback.onUnfollowPublicAccount(paramObject.b, (PublicAccountInfo)paramObject.a);
         }
       }
       else
@@ -191,7 +191,7 @@ public class PublicAccountObserverImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountObserverImpl
  * JD-Core Version:    0.7.0.1
  */

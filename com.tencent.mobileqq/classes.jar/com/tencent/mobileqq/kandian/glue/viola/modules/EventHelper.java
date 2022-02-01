@@ -24,56 +24,43 @@ import org.json.JSONObject;
 
 public class EventHelper
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference = null;
-  private HashMap<String, ArrayList<EventHelper.Event>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b;
+  private BroadcastReceiver a = null;
+  private HashMap<String, ArrayList<EventHelper.Event>> b = new HashMap();
+  private String c;
+  private boolean d = false;
+  private String e;
+  private WeakReference<BridgeModule> f = null;
   
   public EventHelper(BridgeModule paramBridgeModule)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBridgeModule);
-  }
-  
-  private String a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if ((localObject != null) && (((WeakReference)localObject).get() != null))
-    {
-      localObject = (BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((((BridgeModule)localObject).getViolaInstance() != null) && (((BridgeModule)localObject).getViolaInstance().getFragment() != null) && ((((BridgeModule)localObject).getViolaInstance().getFragment() instanceof ViolaFragment))) {
-        return ((ViolaFragment)((BridgeModule)localObject).getViolaInstance().getFragment()).getUrl();
-      }
-    }
-    return "https://qq.com";
+    this.f = new WeakReference(paramBridgeModule);
   }
   
   private void a(String paramString1, String paramString2)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.f;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).invokeErrorCallJS(paramString1, paramString2);
+      ((BridgeModule)this.f.get()).invokeErrorCallJS(paramString1, paramString2);
     }
   }
   
   private void a(String paramString1, String paramString2, String paramString3)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    if ((this.b != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (TextUtils.isEmpty(paramString3)) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+      if (this.b.containsKey(paramString1))
       {
-        localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+        localArrayList = (ArrayList)this.b.get(paramString1);
         localArrayList.add(new EventHelper.Event(this, paramString2, paramString3));
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localArrayList);
+        this.b.put(paramString1, localArrayList);
         return;
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(new EventHelper.Event(this, paramString2, paramString3));
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localArrayList);
+      this.b.put(paramString1, localArrayList);
     }
   }
   
@@ -129,7 +116,7 @@ public class EventHelper
         }
         Object localObject = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
         ((Intent)localObject).putExtra("broadcast", bool2);
-        ((Intent)localObject).putExtra("unique", b());
+        ((Intent)localObject).putExtra("unique", e());
         ((Intent)localObject).putExtra("event", paramString4);
         if (paramJSONObject2 != null) {
           ((Intent)localObject).putExtra("data", paramJSONObject2.toString());
@@ -138,7 +125,7 @@ public class EventHelper
         ((Intent)localObject).putExtra("source", paramJSONObject1.toString());
         if (QLog.isColorLevel())
         {
-          String str = this.jdField_a_of_type_JavaLangRefWeakReference.toString();
+          String str = this.f.toString();
           if (paramJSONObject2 == null) {
             break label420;
           }
@@ -176,52 +163,38 @@ public class EventHelper
   
   private String b()
   {
-    if (this.b == null)
+    Object localObject = this.f;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(String.valueOf(System.currentTimeMillis()));
-      localStringBuilder.append((int)(Math.random() * 1000000.0D));
-      this.b = localStringBuilder.toString();
+      localObject = (BridgeModule)this.f.get();
+      if ((((BridgeModule)localObject).getViolaInstance() != null) && (((BridgeModule)localObject).getViolaInstance().getFragment() != null) && ((((BridgeModule)localObject).getViolaInstance().getFragment() instanceof ViolaFragment))) {
+        return ((ViolaFragment)((BridgeModule)localObject).getViolaInstance().getFragment()).getUrl();
+      }
     }
-    return this.b;
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      c();
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-    BaseApplicationImpl.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return "https://qq.com";
   }
   
   private void b(String paramString1, String paramString2, String paramString3)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    if ((this.b != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (TextUtils.isEmpty(paramString3)) {
         return;
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+      if (this.b.containsKey(paramString1))
       {
-        ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+        ArrayList localArrayList = (ArrayList)this.b.remove(paramString1);
         int i = 0;
         while (i < localArrayList.size())
         {
           EventHelper.Event localEvent = (EventHelper.Event)localArrayList.get(i);
-          if ((localEvent.jdField_a_of_type_JavaLangString.equals(paramString2)) && (localEvent.b.equals(paramString3))) {
+          if ((localEvent.a.equals(paramString2)) && (localEvent.b.equals(paramString3))) {
             localArrayList.remove(localEvent);
           }
           i += 1;
         }
         if (localArrayList.size() > 0) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localArrayList);
+          this.b.put(paramString1, localArrayList);
         }
       }
     }
@@ -229,39 +202,66 @@ public class EventHelper
   
   private void b(String paramString, JSONObject paramJSONObject)
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.f;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).invokeCallJS(paramString, paramJSONObject);
+      ((BridgeModule)this.f.get()).invokeCallJS(paramString, paramJSONObject);
     }
-  }
-  
-  private String c()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return Uri.parse(this.jdField_a_of_type_JavaLangString).getHost();
-    }
-    return null;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new EventHelper.1(this);
+    if (this.d) {
+      return;
+    }
+    if (this.a == null) {
+      d();
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
+    BaseApplicationImpl.getApplication().registerReceiver(this.a, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+    this.d = true;
+    this.b = new HashMap();
+  }
+  
+  private void d()
+  {
+    this.a = new EventHelper.1(this);
+  }
+  
+  private String e()
+  {
+    if (this.e == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(System.currentTimeMillis()));
+      localStringBuilder.append((int)(Math.random() * 1000000.0D));
+      this.e = localStringBuilder.toString();
+    }
+    return this.e;
+  }
+  
+  private String f()
+  {
+    if (!TextUtils.isEmpty(this.c)) {
+      return Uri.parse(this.c).getHost();
+    }
+    return null;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null))
+    if ((this.d) && (this.a != null))
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+      BaseApplicationImpl.getApplication().unregisterReceiver(this.a);
+      this.a = null;
     }
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.f;
     if (localObject != null)
     {
       ((WeakReference)localObject).clear();
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.f = null;
     }
-    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    localObject = this.b;
     if (localObject != null)
     {
       localObject = ((HashMap)localObject).values().iterator();
@@ -272,8 +272,8 @@ public class EventHelper
           localArrayList.clear();
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
+      this.b.clear();
+      this.b = null;
     }
   }
   
@@ -285,98 +285,98 @@ public class EventHelper
     //   1: ifnonnull +4 -> 5
     //   4: return
     //   5: aload_2
-    //   6: ldc 135
+    //   6: ldc 121
     //   8: iconst_1
-    //   9: invokevirtual 356	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
+    //   9: invokevirtual 360	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
     //   12: ifne +4 -> 16
     //   15: return
     //   16: aload_2
-    //   17: ldc 182
-    //   19: invokevirtual 360	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: ldc 169
+    //   19: invokevirtual 364	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore_1
     //   23: aload_1
     //   24: ifnull +15 -> 39
     //   27: aload_1
     //   28: aload_0
-    //   29: invokespecial 184	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:b	()Ljava/lang/String;
-    //   32: invokevirtual 312	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   29: invokespecial 171	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:e	()Ljava/lang/String;
+    //   32: invokevirtual 267	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   35: ifeq +4 -> 39
     //   38: return
     //   39: aload_2
-    //   40: ldc 189
-    //   42: invokevirtual 360	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: ldc 176
+    //   42: invokevirtual 364	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   45: astore 8
     //   47: aload 8
-    //   49: invokestatic 70	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   49: invokestatic 56	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   52: ifeq +4 -> 56
     //   55: return
     //   56: aload_2
-    //   57: ldc 191
-    //   59: invokevirtual 360	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   57: ldc 178
+    //   59: invokevirtual 364	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   62: astore_1
     //   63: aconst_null
     //   64: astore 6
     //   66: aload_1
     //   67: ifnull +15 -> 82
-    //   70: new 123	org/json/JSONObject
+    //   70: new 109	org/json/JSONObject
     //   73: dup
     //   74: aload_1
-    //   75: invokespecial 361	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   75: invokespecial 365	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   78: astore_1
     //   79: goto +5 -> 84
     //   82: aconst_null
     //   83: astore_1
     //   84: aload_2
-    //   85: ldc 137
-    //   87: invokevirtual 365	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   85: ldc 123
+    //   87: invokevirtual 369	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   90: astore 9
     //   92: aload 9
     //   94: ifnonnull +4 -> 98
     //   97: return
     //   98: aload_2
-    //   99: ldc 200
-    //   101: invokevirtual 360	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   99: ldc 187
+    //   101: invokevirtual 364	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   104: astore 7
     //   106: aload 6
     //   108: astore_2
     //   109: aload 7
     //   111: ifnull +16 -> 127
-    //   114: new 123	org/json/JSONObject
+    //   114: new 109	org/json/JSONObject
     //   117: dup
     //   118: aload 7
-    //   120: invokespecial 361	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   120: invokespecial 365	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   123: astore_2
     //   124: goto +3 -> 127
     //   127: aload_0
-    //   128: invokespecial 367	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:c	()Ljava/lang/String;
+    //   128: invokespecial 371	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:f	()Ljava/lang/String;
     //   131: astore 10
-    //   133: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   133: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   136: istore 5
     //   138: iconst_0
     //   139: istore_3
     //   140: iload 5
     //   142: ifeq +87 -> 229
     //   145: aload_0
-    //   146: getfield 29	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   146: getfield 33	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:f	Ljava/lang/ref/WeakReference;
     //   149: astore 6
-    //   151: ldc 238
+    //   151: ldc 224
     //   153: astore 7
     //   155: aload 6
     //   157: ifnull +13 -> 170
     //   160: aload 6
-    //   162: invokevirtual 201	java/lang/Object:toString	()Ljava/lang/String;
+    //   162: invokevirtual 188	java/lang/Object:toString	()Ljava/lang/String;
     //   165: astore 6
     //   167: goto +7 -> 174
-    //   170: ldc 238
+    //   170: ldc 224
     //   172: astore 6
     //   174: aload_1
     //   175: ifnull +9 -> 184
     //   178: aload_1
-    //   179: invokevirtual 194	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   179: invokevirtual 181	org/json/JSONObject:toString	()Ljava/lang/String;
     //   182: astore 7
-    //   184: ldc 111
+    //   184: ldc 97
     //   186: iconst_2
-    //   187: ldc_w 369
+    //   187: ldc_w 373
     //   190: iconst_5
     //   191: anewarray 4	java/lang/Object
     //   194: dup
@@ -393,34 +393,34 @@ public class EventHelper
     //   208: aastore
     //   209: dup
     //   210: iconst_3
-    //   211: ldc 205
+    //   211: ldc 192
     //   213: aload 9
-    //   215: invokestatic 209	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+    //   215: invokestatic 196	android/text/TextUtils:join	(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
     //   218: aastore
     //   219: dup
     //   220: iconst_4
     //   221: aload_2
     //   222: aastore
-    //   223: invokestatic 213	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   226: invokestatic 216	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   223: invokestatic 200	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   226: invokestatic 202	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   229: aload 9
-    //   231: invokevirtual 157	java/util/ArrayList:size	()I
+    //   231: invokevirtual 143	java/util/ArrayList:size	()I
     //   234: istore 4
     //   236: iload_3
     //   237: iload 4
     //   239: if_icmpge +36 -> 275
     //   242: aload 9
     //   244: iload_3
-    //   245: invokevirtual 307	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   248: checkcast 97	java/lang/String
+    //   245: invokevirtual 262	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   248: checkcast 83	java/lang/String
     //   251: aload 10
-    //   253: invokestatic 374	com/tencent/biz/AuthorizeConfig:b	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   253: invokestatic 378	com/tencent/biz/AuthorizeConfig:b	(Ljava/lang/String;Ljava/lang/String;)Z
     //   256: ifeq +12 -> 268
     //   259: aload_0
     //   260: aload 8
     //   262: aload_1
     //   263: aload_2
-    //   264: invokevirtual 233	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:a	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
+    //   264: invokevirtual 219	com/tencent/mobileqq/kandian/glue/viola/modules/EventHelper:a	(Ljava/lang/String;Lorg/json/JSONObject;Lorg/json/JSONObject;)V
     //   267: return
     //   268: iload_3
     //   269: iconst_1
@@ -453,7 +453,7 @@ public class EventHelper
   
   protected void a(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject = this.b;
     if (localObject == null) {
       localObject = null;
     } else {
@@ -485,8 +485,8 @@ public class EventHelper
   public void a(JSONObject paramJSONObject, String paramString)
   {
     String str = paramJSONObject.optString("event", paramJSONObject.optString("eventName", ""));
-    this.jdField_a_of_type_JavaLangString = a();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.c = b();
+    if (TextUtils.isEmpty(this.c))
     {
       if (QLog.isColorLevel()) {
         QLog.w("BridgeModule.event", 2, "source url is null");
@@ -502,10 +502,10 @@ public class EventHelper
       a(paramString, "event name is null");
       return;
     }
-    b();
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    c();
+    WeakReference localWeakReference = this.f;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      a(str, paramJSONObject.optString("identifier", ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getInstanceId()), paramString);
+      a(str, paramJSONObject.optString("identifier", ((BridgeModule)this.f.get()).getViolaInstance().getInstanceId()), paramString);
     }
   }
   
@@ -520,11 +520,11 @@ public class EventHelper
       a(paramString, "event name is null");
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    if (this.b != null)
     {
-      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      WeakReference localWeakReference = this.f;
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        b(str, paramJSONObject.optString("identifier", ((BridgeModule)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getViolaInstance().getInstanceId()), paramString);
+        b(str, paramJSONObject.optString("identifier", ((BridgeModule)this.f.get()).getViolaInstance().getInstanceId()), paramString);
       }
     }
     b(paramString, new JSONObject());
@@ -534,7 +534,7 @@ public class EventHelper
   {
     String str2 = "";
     String str3 = paramJSONObject.optString("event", paramJSONObject.optString("eventName", ""));
-    String str4 = a();
+    String str4 = b();
     if (TextUtils.isEmpty(str3))
     {
       if (QLog.isColorLevel()) {
@@ -547,8 +547,8 @@ public class EventHelper
     if (paramString == null)
     {
       str1 = paramString;
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str3)) {
-        str1 = ((EventHelper.Event)((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(str3)).get(0)).b;
+      if (this.b.containsKey(str3)) {
+        str1 = ((EventHelper.Event)((ArrayList)this.b.get(str3)).get(0)).b;
       }
     }
     JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
@@ -567,7 +567,7 @@ public class EventHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.EventHelper
  * JD-Core Version:    0.7.0.1
  */

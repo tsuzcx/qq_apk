@@ -2,48 +2,41 @@ package com.tencent.mobileqq.kandian.repo.feeds.entity;
 
 public class TabChannelCoverInfo$RedPoint
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
+  public boolean a = false;
   public long b;
-  public int c;
   public long c;
-  
-  public TabChannelCoverInfo$RedPoint()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-  }
+  public long d;
+  public int e;
+  public String f;
+  public int g = 0;
+  public int h = 0;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RedPoint{isShow=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", startTimestamp=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", animationTimestamp=");
-    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", endTimestamp=");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", type=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", titleText=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", titleColor=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(", titleBgColor=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo.RedPoint
  * JD-Core Version:    0.7.0.1
  */

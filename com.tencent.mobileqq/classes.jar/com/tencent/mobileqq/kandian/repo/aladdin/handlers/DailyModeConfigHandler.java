@@ -19,17 +19,76 @@ public class DailyModeConfigHandler
   extends SimpleConfigHandler
 {
   public static int a = 41505;
-  private static String jdField_a_of_type_JavaLangString;
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static int jdField_b_of_type_Int;
-  private static String jdField_b_of_type_JavaLangString;
+  private static String b;
   private static String c;
   private static String d;
+  private static String e;
+  private static boolean f = false;
+  private static int g;
   
-  public static float a()
+  public static int a()
+  {
+    if (b(a))
+    {
+      QLog.d("DailyModeConfigHandler", 1, "[getMode] isDailyUnlimitChannel MODE_LOAD_MORE");
+      return 2;
+    }
+    Integer localInteger = (Integer)RIJSPUtils.b("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[getMode] ");
+    localStringBuilder.append(localInteger);
+    QLog.d("DailyModeConfigHandler", 1, localStringBuilder.toString());
+    if (localInteger.intValue() == 2) {
+      return 2;
+    }
+    if (localInteger.intValue() == 1) {
+      return 1;
+    }
+    return 3;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      b = paramString.optString("bottom_text");
+      c = paramString.optString("jump_url");
+      d = paramString.optString("jump_src");
+      e = paramString.optString("ReadInjoy_daily_footer_pts");
+      if (b != null) {
+        RIJSPUtils.a("readinjoy_daily_mode_bottom_text", b);
+      }
+      if (c != null) {
+        RIJSPUtils.a("readinjoy_daily_mode_bottom_jump", c);
+      }
+      if (d != null) {
+        RIJSPUtils.a("readinjoy_daily_mode_bottom_jump_src", d);
+      }
+      if (e != null)
+      {
+        RIJSPUtils.a("readinjoy_daily_mode_footer_pts", e);
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt == 41505;
+  }
+  
+  public static float b()
   {
     float f2 = 1.0F;
-    Float localFloat = (Float)RIJSPUtils.a("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
+    Float localFloat = (Float)RIJSPUtils.b("readinjoy_daily_mode_drag_threshold", Float.valueOf(1.0F));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[getJumpThreshold] ");
     localStringBuilder.append(localFloat);
@@ -45,49 +104,49 @@ public class DailyModeConfigHandler
     return f1;
   }
   
-  public static int a()
+  public static boolean b(int paramInt)
   {
-    if (b(jdField_a_of_type_Int))
-    {
-      QLog.d("DailyModeConfigHandler", 1, "[getMode] isDailyUnlimitChannel MODE_LOAD_MORE");
-      return 2;
+    boolean bool2 = a(a);
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
     }
-    Integer localInteger = (Integer)RIJSPUtils.a("readinjoy_daily_mode_plan_number", Integer.valueOf(-1));
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[getMode] ");
-    localStringBuilder.append(localInteger);
-    QLog.d("DailyModeConfigHandler", 1, localStringBuilder.toString());
-    if (localInteger.intValue() == 2) {
-      return 2;
+    if (a == paramInt) {
+      bool1 = true;
     }
-    if (localInteger.intValue() == 1) {
-      return 1;
-    }
-    return 3;
+    return bool1;
   }
   
-  public static String a()
+  public static String c()
   {
-    String str = jdField_b_of_type_JavaLangString;
+    String str = c;
     if (str != null) {
       return str;
     }
-    jdField_b_of_type_JavaLangString = (String)RIJSPUtils.a("readinjoy_daily_mode_bottom_jump", "");
-    return jdField_b_of_type_JavaLangString;
+    c = (String)RIJSPUtils.b("readinjoy_daily_mode_bottom_jump", "");
+    return c;
   }
   
-  public static JSONObject a()
+  public static boolean c(int paramInt)
   {
-    if (TextUtils.isEmpty(d)) {
-      d = (String)RIJSPUtils.a("readinjoy_daily_mode_footer_pts", "");
+    if (a(paramInt)) {
+      return true;
+    }
+    return b(paramInt);
+  }
+  
+  public static JSONObject d()
+  {
+    if (TextUtils.isEmpty(e)) {
+      e = (String)RIJSPUtils.b("readinjoy_daily_mode_footer_pts", "");
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getFooterData pts = ");
-    ((StringBuilder)localObject).append(d);
+    ((StringBuilder)localObject).append(e);
     QLog.i("DailyModeConfigHandler", 1, ((StringBuilder)localObject).toString());
     try
     {
-      localObject = new JSONObject(d);
+      localObject = new JSONObject(e);
       return localObject;
     }
     catch (JSONException localJSONException1)
@@ -101,7 +160,7 @@ public class DailyModeConfigHandler
       {
         localJSONObject.put("style_ID", "ReadInjoy_daily_footer");
         localJSONObject.put("title_EN", "TENCENT KANDIAN");
-        localJSONObject.put("title_CN", HardCodeUtil.a(2131702884));
+        localJSONObject.put("title_CN", HardCodeUtil.a(2131900862));
         return localJSONObject;
       }
       catch (JSONException localJSONException2)
@@ -115,106 +174,73 @@ public class DailyModeConfigHandler
     }
   }
   
-  public static void a()
-  {
-    QLog.d("DailyModeConfigHandler", 1, "DailyModeConfigHandler reset.");
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-    c = null;
-    d = null;
-  }
-  
-  public static void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    try
-    {
-      paramString = new JSONObject(paramString);
-      jdField_a_of_type_JavaLangString = paramString.optString("bottom_text");
-      jdField_b_of_type_JavaLangString = paramString.optString("jump_url");
-      c = paramString.optString("jump_src");
-      d = paramString.optString("ReadInjoy_daily_footer_pts");
-      if (jdField_a_of_type_JavaLangString != null) {
-        RIJSPUtils.a("readinjoy_daily_mode_bottom_text", jdField_a_of_type_JavaLangString);
-      }
-      if (jdField_b_of_type_JavaLangString != null) {
-        RIJSPUtils.a("readinjoy_daily_mode_bottom_jump", jdField_b_of_type_JavaLangString);
-      }
-      if (c != null) {
-        RIJSPUtils.a("readinjoy_daily_mode_bottom_jump_src", c);
-      }
-      if (d != null)
-      {
-        RIJSPUtils.a("readinjoy_daily_mode_footer_pts", d);
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return paramInt == 41505;
-  }
-  
-  public static int b()
-  {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String b()
+  public static String e()
   {
     if (a() == 1) {
       return "1";
     }
-    String str = c;
+    String str = d;
     if (str != null) {
       return str;
     }
-    c = (String)RIJSPUtils.a("readinjoy_daily_mode_bottom_jump_src", "0");
-    return c;
+    d = (String)RIJSPUtils.b("readinjoy_daily_mode_bottom_jump_src", "0");
+    return d;
   }
   
-  public static void b()
+  public static void f()
   {
-    jdField_a_of_type_Boolean = "1".equals((String)RIJSPUtils.a("readinjoy_daily_mode_refresh_mode", "0"));
-    jdField_a_of_type_Int = ((Integer)RIJSPUtils.a("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
+    QLog.d("DailyModeConfigHandler", 1, "DailyModeConfigHandler reset.");
+    b = null;
+    c = null;
+    d = null;
+    e = null;
+  }
+  
+  public static boolean g()
+  {
+    return f;
+  }
+  
+  public static void h()
+  {
+    f = "1".equals((String)RIJSPUtils.b("readinjoy_daily_mode_refresh_mode", "0"));
+    a = ((Integer)RIJSPUtils.b("readinjoy_daily_mode_channel_id", Integer.valueOf(41505))).intValue();
     if (!RIJShowKanDianTabSp.a())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("非独立看点->进入无限流 refreshDailyConfig   ");
-      localStringBuilder.append(jdField_a_of_type_Int);
+      localStringBuilder.append(a);
       QLog.i("DailyModeConfigHandler", 1, localStringBuilder.toString());
-      jdField_a_of_type_Int = 41697;
+      a = 41697;
     }
-    if (b(jdField_a_of_type_Int)) {
-      jdField_a_of_type_Boolean = true;
+    if (b(a)) {
+      f = true;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("refreshDailyConfig ");
-    localStringBuilder.append(jdField_a_of_type_Boolean);
+    localStringBuilder.append(f);
     localStringBuilder.append("  ");
-    localStringBuilder.append(jdField_a_of_type_Int);
+    localStringBuilder.append(a);
     QLog.i("DailyModeConfigHandler", 1, localStringBuilder.toString());
-    jdField_b_of_type_Int = jdField_a_of_type_Int;
-    if (RIJTransMergeKanDianReport.jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Int = 41697;
+    g = a;
+    if (RIJTransMergeKanDianReport.b) {
+      a = 41697;
     }
   }
   
-  public static boolean b()
+  public static void i()
   {
-    boolean bool2 = a();
+    a = g;
+  }
+  
+  public static int j()
+  {
+    return a;
+  }
+  
+  public static boolean k()
+  {
+    boolean bool2 = g();
     boolean bool1 = false;
     if (bool2) {
       return false;
@@ -223,32 +249,6 @@ public class DailyModeConfigHandler
       bool1 = true;
     }
     return bool1;
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    boolean bool2 = a(jdField_a_of_type_Int);
-    boolean bool1 = false;
-    if (bool2) {
-      return false;
-    }
-    if (jdField_a_of_type_Int == paramInt) {
-      bool1 = true;
-    }
-    return bool1;
-  }
-  
-  public static void c()
-  {
-    jdField_a_of_type_Int = jdField_b_of_type_Int;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    if (a(paramInt)) {
-      return true;
-    }
-    return b(paramInt);
   }
   
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
@@ -288,7 +288,7 @@ public class DailyModeConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.handlers.DailyModeConfigHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -44,16 +44,16 @@ public class FastWeqAdUtils
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramProteusInnerData)) {
       return 24;
     }
-    if (paramProteusInnerData.a()) {
+    if (paramProteusInnerData.b()) {
       return 21;
     }
-    if (paramProteusInnerData.b()) {
+    if (paramProteusInnerData.c()) {
       return 20;
     }
-    if (paramProteusInnerData.c()) {
+    if (paramProteusInnerData.d()) {
       return 31;
     }
-    if (paramProteusInnerData.d()) {
+    if (paramProteusInnerData.e()) {
       return 31;
     }
     return 20;
@@ -63,16 +63,16 @@ public class FastWeqAdUtils
   {
     if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isGameComponentType(paramAdData))
     {
-      String str1 = paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.m;
-      if (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.n)) {
-        str1 = paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.n;
+      String str1 = paramAdData.as.n;
+      if (!TextUtils.isEmpty(paramAdData.as.o)) {
+        str1 = paramAdData.as.o;
       }
       String str2 = str1;
       if (TextUtils.isEmpty(str1))
       {
         str2 = str1;
-        if (!TextUtils.isEmpty(paramAdData.m)) {
-          str2 = paramAdData.m;
+        if (!TextUtils.isEmpty(paramAdData.p)) {
+          str2 = paramAdData.p;
         }
       }
       paramAdData = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).appendUrlParameter(str2);
@@ -91,22 +91,6 @@ public class FastWeqAdUtils
     }
     paramString1 = ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).appendUrlParameter(paramString1);
     return ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(paramContext, paramString1);
-  }
-  
-  private static String a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.gameAdComData != null) && (paramAdvertisementInfo.gameAdComData.s != null)) {
-      return paramAdvertisementInfo.gameAdComData.s;
-    }
-    return String.valueOf(0);
-  }
-  
-  private static String a(AdData paramAdData)
-  {
-    if ((paramAdData != null) && (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo != null) && (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.x != null)) {
-      return paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.x;
-    }
-    return String.valueOf(0);
   }
   
   public static void a(Context paramContext, ViewBase paramViewBase, String paramString, int paramInt)
@@ -139,7 +123,7 @@ public class FastWeqAdUtils
       localURLDrawableOptions.mRequestHeight = paramInt3;
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       paramString.setTag(URLDrawableDecodeHandler.b(paramInt2, paramInt3, AIOUtils.b(paramInt1, paramContext.getResources())));
-      paramString.setDecodeHandler(URLDrawableDecodeHandler.i);
+      paramString.setDecodeHandler(URLDrawableDecodeHandler.j);
       paramViewBase.setImageDrawable(paramString, true);
       return;
     }
@@ -155,22 +139,12 @@ public class FastWeqAdUtils
     }
   }
   
-  public static void a(Context paramContext, AdData paramAdData)
-  {
-    if (paramAdData == null) {
-      return;
-    }
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).showPopSheetDialog(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
-    paramContext = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
-    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(BaseApplication.getContext()).a(42).b(1).b(Integer.valueOf(21)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(paramAdData)));
-  }
-  
   public static void a(Context paramContext, AdData paramAdData, int paramInt)
   {
     if (paramAdData == null) {
       return;
     }
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).showPopSheetDialog(paramContext, paramAdData.K, paramAdData.m, paramAdData.u);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).showPopSheetDialog(paramContext, paramAdData.ac, paramAdData.p, paramAdData.D);
     paramContext = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
     ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(BaseApplication.getContext()).a(42).b(1).b(Integer.valueOf(21)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).c(paramInt).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(paramAdData)));
   }
@@ -188,7 +162,7 @@ public class FastWeqAdUtils
       if (paramAdvertisementInfo.gameAdComData != null)
       {
         bool1 = bool2;
-        if (!TextUtils.isEmpty(paramAdvertisementInfo.gameAdComData.d)) {
+        if (!TextUtils.isEmpty(paramAdvertisementInfo.gameAdComData.e)) {
           bool1 = true;
         }
       }
@@ -198,62 +172,80 @@ public class FastWeqAdUtils
   
   public static boolean a(AdData paramAdData)
   {
-    return (paramAdData != null) && (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo != null) && (!TextUtils.isEmpty(paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGameComponentInfo.b));
+    return (paramAdData != null) && (paramAdData.as != null) && (!TextUtils.isEmpty(paramAdData.as.c));
+  }
+  
+  public static void b(Context paramContext, AdData paramAdData)
+  {
+    if (paramAdData == null) {
+      return;
+    }
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).showPopSheetDialog(paramContext, paramAdData.ac, paramAdData.p, paramAdData.D);
+    paramContext = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
+    ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramContext).a(BaseApplication.getContext()).a(42).b(1).b(Integer.valueOf(21)).a(((IRIJAdEntityConvertService)QRoute.api(IRIJAdEntityConvertService.class)).convertAdData2AdsInfo(paramAdData)).d(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getBusiJson(paramAdData)));
   }
   
   public static boolean b(AdvertisementInfo paramAdvertisementInfo)
   {
-    return a(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(3));
+    return g(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(3));
   }
   
   public static boolean b(AdData paramAdData)
   {
-    return (paramAdData != null) && (paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdvertisementExtInfo != null) && (5001 == paramAdData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdvertisementExtInfo.i);
+    return (paramAdData != null) && (paramAdData.az != null) && (5001 == paramAdData.az.l);
   }
   
   public static boolean c(AdvertisementInfo paramAdvertisementInfo)
   {
-    return a(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(1));
+    return g(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(1));
   }
   
   public static boolean c(AdData paramAdData)
   {
-    return a(paramAdData).equalsIgnoreCase(String.valueOf(3));
+    return j(paramAdData).equalsIgnoreCase(String.valueOf(3));
   }
   
   public static boolean d(AdvertisementInfo paramAdvertisementInfo)
   {
-    return a(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(2));
+    return g(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(2));
   }
   
   public static boolean d(AdData paramAdData)
   {
-    return a(paramAdData).equalsIgnoreCase(String.valueOf(1));
+    return j(paramAdData).equalsIgnoreCase(String.valueOf(1));
   }
   
   public static boolean e(AdvertisementInfo paramAdvertisementInfo)
   {
-    return a(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(6));
+    return g(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(6));
   }
   
   public static boolean e(AdData paramAdData)
   {
-    return a(paramAdData).equalsIgnoreCase(String.valueOf(2));
+    return j(paramAdData).equalsIgnoreCase(String.valueOf(2));
   }
   
   public static boolean f(AdvertisementInfo paramAdvertisementInfo)
   {
-    return a(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(4));
+    return g(paramAdvertisementInfo).equalsIgnoreCase(String.valueOf(4));
   }
   
   public static boolean f(AdData paramAdData)
   {
-    return a(paramAdData).equalsIgnoreCase(String.valueOf(4));
+    return j(paramAdData).equalsIgnoreCase(String.valueOf(4));
+  }
+  
+  private static String g(AdvertisementInfo paramAdvertisementInfo)
+  {
+    if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.gameAdComData != null) && (paramAdvertisementInfo.gameAdComData.t != null)) {
+      return paramAdvertisementInfo.gameAdComData.t;
+    }
+    return String.valueOf(0);
   }
   
   public static boolean g(AdData paramAdData)
   {
-    return a(paramAdData).equalsIgnoreCase(String.valueOf(6));
+    return j(paramAdData).equalsIgnoreCase(String.valueOf(6));
   }
   
   public static boolean h(AdData paramAdData)
@@ -263,10 +255,10 @@ public class FastWeqAdUtils
       return false;
     }
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramAdData.K))
+    if (!TextUtils.isEmpty(paramAdData.ac))
     {
       bool1 = bool2;
-      if (paramAdData.d)
+      if (paramAdData.ab)
       {
         bool1 = bool2;
         if (((IRIJAdSwitchService)QRoute.api(IRIJAdSwitchService.class)).isAmsSubcribeEnabled(paramAdData)) {
@@ -280,14 +272,22 @@ public class FastWeqAdUtils
   public static boolean i(AdData paramAdData)
   {
     if ((paramAdData instanceof ProteusInnerData)) {
-      return ((ProteusInnerData)paramAdData).d();
+      return ((ProteusInnerData)paramAdData).e();
     }
     return false;
+  }
+  
+  private static String j(AdData paramAdData)
+  {
+    if ((paramAdData != null) && (paramAdData.as != null) && (paramAdData.as.y != null)) {
+      return paramAdData.as.y;
+    }
+    return String.valueOf(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.utils.FastWeqAdUtils
  * JD-Core Version:    0.7.0.1
  */

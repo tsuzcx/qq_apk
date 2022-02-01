@@ -1,9 +1,9 @@
 package com.tencent.liteav.videoencoder;
 
-import com.tencent.liteav.basic.c.h.a;
+import com.tencent.liteav.basic.opengl.j.a;
 
 class TXCSWVideoEncoder$1
-  implements h.a
+  implements j.a
 {
   TXCSWVideoEncoder$1(TXCSWVideoEncoder paramTXCSWVideoEncoder, boolean paramBoolean, int paramInt) {}
   
@@ -25,7 +25,7 @@ class TXCSWVideoEncoder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXCSWVideoEncoder.1
  * JD-Core Version:    0.7.0.1
  */

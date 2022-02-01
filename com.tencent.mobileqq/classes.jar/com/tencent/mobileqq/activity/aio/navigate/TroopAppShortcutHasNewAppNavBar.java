@@ -30,22 +30,22 @@ public class TroopAppShortcutHasNewAppNavBar
   extends NavigateBar
   implements Animation.AnimationListener
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QQAppInterface b;
+  private ImageView g;
+  private Animation h;
+  private TextView i;
+  private QQAppInterface j;
+  private long k = 0L;
   
   public TroopAppShortcutHasNewAppNavBar(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
     super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
-    this.b = paramQQAppInterface;
-    paramBaseChatPie = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if ((paramBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    this.j = paramQQAppInterface;
+    paramBaseChatPie = (TroopManager)this.a.d.getManager(QQManagerFactory.TROOP_MANAGER);
+    if ((paramBaseChatPie != null) && (this.a.ah != null))
     {
-      paramBaseChatPie = paramBaseChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      paramBaseChatPie = paramBaseChatPie.g(this.a.ah.b);
       if (paramBaseChatPie != null) {
-        this.jdField_a_of_type_Long = paramBaseChatPie.dwGroupClassExt;
+        this.k = paramBaseChatPie.dwGroupClassExt;
       }
     }
   }
@@ -70,26 +70,21 @@ public class TroopAppShortcutHasNewAppNavBar
     return paramQQAppInterface.toString();
   }
   
-  public long a()
-  {
-    return 15000L;
-  }
-  
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560952, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362982));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378743));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("管理员新增了应用");
+    View localView = LayoutInflater.from(this.c).inflate(2131627293, null);
+    this.g = ((ImageView)localView.findViewById(2131428783));
+    this.i = ((TextView)localView.findViewById(2131447416));
+    this.i.setText("管理员新增了应用");
     return localView;
   }
   
-  public void a()
+  public void b()
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    if (this.a != null)
     {
-      localObject = ((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a;
+      localObject = ((ChatDrawerHelper)this.a.q(124)).b;
       if (localObject != null)
       {
         ((BaseChatDrawer)localObject).a();
@@ -99,50 +94,55 @@ public class TroopAppShortcutHasNewAppNavBar
         }
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b;
+    if ((this.a != null) && (this.a.ah != null)) {
+      localObject = this.a.ah.c;
     } else {
       localObject = "";
     }
-    ReportController.b(null, "dc00898", "", (String)localObject, "0X800AFB9", "0X800AFB9", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
+    ReportController.b(null, "dc00898", "", (String)localObject, "0X800AFB9", "0X800AFB9", 0, 0, String.valueOf(this.k), "", "", "");
   }
   
-  public boolean a()
+  public boolean c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null)
+    if (this.a == null)
     {
       QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 1, "mChatPie == null");
       return false;
     }
-    int i = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getInt(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 0);
+    int m = PreferenceManager.getDefaultSharedPreferences(this.c).getInt(a(this.b), 0);
     if (QLog.isColorLevel()) {
-      QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
+      QLog.d("NavigateBarManager.TroopAppShortcutHasNewAppNavBar", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(m) }));
     }
-    return (((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).getTroopHasNewApp(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d())) && (i >= 3);
+    return (((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).getTroopHasNewApp(this.a.d, this.a.ag())) && (m >= 3);
   }
-  
-  public void b()
-  {
-    ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, "0X800AFB8", "0X800AFB8", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-    {
-      ((ITroopRedDotHandler)this.b.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 101872323);
-      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp(this.b, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new TroopAppShortcutHasNewAppNavBar.1(this), 500L);
-  }
-  
-  public void c() {}
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    ReportController.b(null, "dc00898", "", this.a.ah.c, "0X800AFB8", "0X800AFB8", 0, 0, String.valueOf(this.k), "", "", "");
+    if (this.a.ah != null)
+    {
+      ((ITroopRedDotHandler)this.j.getBusinessHandler(BusinessHandlerFactory.TROOP_RED_DOT_HANDLER)).a(this.a.ah.b, 101872323);
+      ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setTroopHasNewApp(this.j, this.a.ah.b, false);
+    }
+    this.g.postDelayed(new TroopAppShortcutHasNewAppNavBar.1(this), 500L);
+  }
+  
+  public void e() {}
+  
+  public void f()
+  {
+    this.g.clearAnimation();
+  }
+  
+  public long g()
+  {
+    return 15000L;
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.g.clearAnimation();
+    this.g.startAnimation(this.h);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -151,7 +151,7 @@ public class TroopAppShortcutHasNewAppNavBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.TroopAppShortcutHasNewAppNavBar
  * JD-Core Version:    0.7.0.1
  */

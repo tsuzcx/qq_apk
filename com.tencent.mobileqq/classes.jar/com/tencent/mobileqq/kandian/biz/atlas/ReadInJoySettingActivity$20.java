@@ -16,15 +16,15 @@ class ReadInJoySettingActivity$20
     if (paramInt == 4)
     {
       ReadInJoySettingActivity.a(this.a, true);
-      ReadInJoySettingActivity.a(this.a).setChecked(true ^ ReadInJoySettingActivity.a(this.a));
-      ReadInJoySettingActivity.a(this.a).cancel();
+      ReadInJoySettingActivity.b(this.a).setChecked(true ^ ReadInJoySettingActivity.a(this.a));
+      ReadInJoySettingActivity.f(this.a).cancel();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.atlas.ReadInJoySettingActivity.20
  * JD-Core Version:    0.7.0.1
  */

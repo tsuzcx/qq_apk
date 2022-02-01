@@ -18,52 +18,42 @@ import java.util.List;
 public class WSDramaPageAdapter
   extends BaseAdapter<WSDramaItemData, BaseViewHolder<WSDramaItemData>>
 {
-  private final WSDramaPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment;
-  private AbsWSDramaVideoHolder jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHolderAbsWSDramaVideoHolder;
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean a;
+  private final WSDramaPageFragment b;
+  private WSPlayerManager c;
+  private AbsWSDramaVideoHolder d;
   
   public WSDramaPageAdapter(Context paramContext, WSDramaPageFragment paramWSDramaPageFragment)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment = paramWSDramaPageFragment;
-  }
-  
-  public AbsWSDramaVideoHolder a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHolderAbsWSDramaVideoHolder;
+    this.b = paramWSDramaPageFragment;
   }
   
   public WSPlayerManager a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.d();
+    return this.c;
   }
   
   public void a(AbsWSDramaVideoHolder paramAbsWSDramaVideoHolder)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHolderAbsWSDramaVideoHolder = paramAbsWSDramaVideoHolder;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHolderAbsWSDramaVideoHolder.a(), false);
-    WSDramaDataManager.a().a(paramAbsWSDramaVideoHolder.a());
-    WSDramaDataManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHolderAbsWSDramaVideoHolder.a);
+    this.d = paramAbsWSDramaVideoHolder;
+    this.c.b(this.d.e(), false);
+    WSDramaDataManager.a().a(paramAbsWSDramaVideoHolder.e());
+    WSDramaDataManager.a().a(this.d.c);
   }
   
   public void a(WSPlayerManager paramWSPlayerManager)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = paramWSPlayerManager;
+    this.c = paramWSPlayerManager;
     WSDramaPlayerStatusListenerImpl localWSDramaPlayerStatusListenerImpl = new WSDramaPlayerStatusListenerImpl();
-    localWSDramaPlayerStatusListenerImpl.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment);
+    localWSDramaPlayerStatusListenerImpl.a(this.b);
     paramWSPlayerManager.a(localWSDramaPlayerStatusListenerImpl);
   }
   
   public void a(BaseViewHolder<WSDramaItemData> paramBaseViewHolder, int paramInt)
   {
     if ((paramBaseViewHolder instanceof AbsWSDramaHolder)) {
-      ((AbsWSDramaHolder)paramBaseViewHolder).a(paramInt);
+      ((AbsWSDramaHolder)paramBaseViewHolder).b(paramInt);
     }
     if ((paramBaseViewHolder instanceof AbsWSDramaVideoHolder)) {
       b((AbsWSDramaVideoHolder)paramBaseViewHolder);
@@ -78,15 +68,25 @@ public class WSDramaPageAdapter
     }
   }
   
+  public void b()
+  {
+    this.c.n();
+  }
+  
   public void b(AbsWSDramaVideoHolder paramAbsWSDramaVideoHolder)
   {
-    a();
+    b();
     a(paramAbsWSDramaVideoHolder);
+  }
+  
+  public AbsWSDramaVideoHolder c()
+  {
+    return this.d;
   }
   
   public void c(AbsWSDramaVideoHolder paramAbsWSDramaVideoHolder)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaHolderAbsWSDramaVideoHolder = paramAbsWSDramaVideoHolder;
+    this.d = paramAbsWSDramaVideoHolder;
   }
   
   public int getCustomItemViewType(int paramInt)
@@ -107,16 +107,16 @@ public class WSDramaPageAdapter
       return;
     }
     paramBaseViewHolder.bindData(localObject);
-    if ((!this.jdField_a_of_type_Boolean) && (paramInt == 0))
+    if ((!this.a) && (paramInt == 0))
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment.a(paramBaseViewHolder);
+      this.a = true;
+      this.b.a(paramBaseViewHolder);
     }
   }
   
   public BaseViewHolder<WSDramaItemData> onCreateCustomViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    return WSDramaHolderFactory.a(paramViewGroup, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment);
+    return WSDramaHolderFactory.a(paramViewGroup, paramInt, this.b);
   }
   
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
@@ -128,7 +128,7 @@ public class WSDramaPageAdapter
     {
       AbsWSDramaHolder localAbsWSDramaHolder = (AbsWSDramaHolder)paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
       if (localAbsWSDramaHolder != null) {
-        localAbsWSDramaHolder.a.a();
+        localAbsWSDramaHolder.b.a();
       }
       i += 1;
     }
@@ -136,7 +136,7 @@ public class WSDramaPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.WSDramaPageAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -19,6 +19,7 @@ class DTCommonParams
     put(localHashMap, "dt_wxunionid", paramIDTParamProvider.getWxUnionID());
     put(localHashMap, "dt_wbopenid", paramIDTParamProvider.getWbOpenID());
     put(localHashMap, "dt_mainlogin", paramIDTParamProvider.getMainLogin());
+    put(localHashMap, "dt_accountid", paramIDTParamProvider.getAccountID());
     DTAdditionalReportHandler localDTAdditionalReportHandler = DTAdditionalReportHandler.getInstance();
     put(localHashMap, "dt_starttype", String.valueOf(localDTAdditionalReportHandler.getStartType()));
     put(localHashMap, "dt_callfrom", localDTAdditionalReportHandler.getCallFrom());
@@ -31,7 +32,7 @@ class DTCommonParams
     put(localHashMap, "dt_tid", paramIDTParamProvider.getTid());
     put(localHashMap, "dt_oaid", paramIDTParamProvider.getOaid());
     put(localHashMap, "dt_guid", paramIDTParamProvider.getGuid());
-    put(localHashMap, "dt_sdkversion", String.valueOf(2200));
+    put(localHashMap, "dt_sdkversion", String.valueOf(2225));
     return localHashMap;
   }
   
@@ -42,7 +43,7 @@ class DTCommonParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTCommonParams
  * JD-Core Version:    0.7.0.1
  */

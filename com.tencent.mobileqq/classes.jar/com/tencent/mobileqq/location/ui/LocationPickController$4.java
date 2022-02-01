@@ -21,15 +21,15 @@ class LocationPickController$4
     if (QLog.isColorLevel()) {
       QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
     }
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setClickable(false);
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840630));
-    LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).a(true);
-    LocationPickController localLocationPickController = this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController;
-    LocationPickController.a(localLocationPickController, LocationPickController.a(localLocationPickController).a());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    LocationPickController.e(this.c).setClickable(false);
+    LocationPickController.e(this.c).setImageDrawable(this.a.getResources().getDrawable(2130841403));
+    LocationPickController.c(this.c).a(true);
+    LocationPickController localLocationPickController = this.c;
+    LocationPickController.a(localLocationPickController, LocationPickController.c(localLocationPickController).getSelfLatlng());
+    if (this.b.getText().length() > 0) {
+      this.b.setText("");
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController.a("");
+      this.c.a("");
     }
     ReportController.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -37,7 +37,7 @@ class LocationPickController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.4
  * JD-Core Version:    0.7.0.1
  */

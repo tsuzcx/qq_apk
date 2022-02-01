@@ -8,6 +8,8 @@ import com.tencent.mobileqq.qroute.annotation.QAPI;
 public abstract interface IStructmsgApi
   extends QRouteApi
 {
+  public abstract String getBirthdayReminder(MessageRecord paramMessageRecord);
+  
   public abstract void handleStructMsgElement(MessageRecord paramMessageRecord);
   
   public abstract boolean instanceofMessageForStructing(Object paramObject);

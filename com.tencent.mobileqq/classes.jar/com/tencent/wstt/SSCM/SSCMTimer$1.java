@@ -16,7 +16,7 @@ class SSCMTimer$1
       }
       else
       {
-        i = (int)(l - SSCMTimer.a(this.this$0));
+        i = (int)(l - SSCMTimer.b(this.this$0));
         SSCMTimer.a(this.this$0, l);
         break label62;
       }
@@ -29,20 +29,20 @@ class SSCMTimer$1
       return;
     }
     SSCMTimer localSSCMTimer = this.this$0;
-    SSCMTimer.a(localSSCMTimer, SSCMTimer.a(localSSCMTimer) + SSCMTimer.b(this.this$0));
-    if (SSCMTimer.a(this.this$0) >= 120000)
+    SSCMTimer.a(localSSCMTimer, SSCMTimer.c(localSSCMTimer) + SSCMTimer.d(this.this$0));
+    if (SSCMTimer.c(this.this$0) >= 120000)
     {
       SSCMTimer.b(this.this$0, 1);
       cancel();
-      if (SSCMTimer.a(this.this$0) != null) {
-        SSCMTimer.a(this.this$0).a(SSCMTimer.a(this.this$0));
+      if (SSCMTimer.e(this.this$0) != null) {
+        SSCMTimer.e(this.this$0).a(SSCMTimer.f(this.this$0));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.wstt.SSCM.SSCMTimer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class FraudTipsBar$1
   
   public void run()
   {
-    FraudTipsBar.a(this.this$0).post(new FraudTipsBar.1.1(this));
+    FraudTipsBar.b(this.this$0).post(new FraudTipsBar.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FraudTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

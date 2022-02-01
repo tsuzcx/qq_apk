@@ -29,7 +29,7 @@ public class PushOpenNotificationProcessor
     int i = 0;
     while (i < j)
     {
-      String str = paramArrayOfQConfItem[i].a;
+      String str = paramArrayOfQConfItem[i].b;
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
@@ -77,7 +77,7 @@ public class PushOpenNotificationProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.config.business.qvip.PushOpenNotificationProcessor
  * JD-Core Version:    0.7.0.1
  */

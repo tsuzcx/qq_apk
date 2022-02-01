@@ -18,17 +18,16 @@ import com.google.android.material.theme.overlay.MaterialThemeOverlay;
 public class MaterialCheckBox
   extends AppCompatCheckBox
 {
-  private static final int jdField_a_of_type_Int = R.style.y;
-  private static final int[][] jdField_a_of_type_Array2dOfInt;
+  private static final int a = R.style.A;
+  private static final int[][] b;
   @Nullable
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private boolean jdField_a_of_type_Boolean;
+  private ColorStateList c;
+  private boolean d;
   
   static
   {
-    int[] arrayOfInt1 = { -16842910, 16842912 };
-    int[] arrayOfInt2 = { -16842910, -16842912 };
-    jdField_a_of_type_Array2dOfInt = new int[][] { { 16842910, 16842912 }, { 16842910, -16842912 }, arrayOfInt1, arrayOfInt2 };
+    int[] arrayOfInt = { -16842910, -16842912 };
+    b = new int[][] { { 16842910, 16842912 }, { 16842910, -16842912 }, { -16842910, 16842912 }, arrayOfInt };
   }
   
   public MaterialCheckBox(Context paramContext)
@@ -38,52 +37,52 @@ public class MaterialCheckBox
   
   public MaterialCheckBox(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, R.attr.checkboxStyle);
+    this(paramContext, paramAttributeSet, R.attr.i);
   }
   
   public MaterialCheckBox(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
-    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, jdField_a_of_type_Int), paramAttributeSet, paramInt);
+    super(MaterialThemeOverlay.a(paramContext, paramAttributeSet, paramInt, a), paramAttributeSet, paramInt);
     paramContext = getContext();
-    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.U, paramInt, jdField_a_of_type_Int, new int[0]);
-    if (paramAttributeSet.hasValue(R.styleable.de)) {
-      CompoundButtonCompat.setButtonTintList(this, MaterialResources.a(paramContext, paramAttributeSet, R.styleable.de));
+    paramAttributeSet = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.eF, paramInt, a, new int[0]);
+    if (paramAttributeSet.hasValue(R.styleable.eG)) {
+      CompoundButtonCompat.setButtonTintList(this, MaterialResources.a(paramContext, paramAttributeSet, R.styleable.eG));
     }
-    this.jdField_a_of_type_Boolean = paramAttributeSet.getBoolean(R.styleable.df, false);
+    this.d = paramAttributeSet.getBoolean(R.styleable.eH, false);
     paramAttributeSet.recycle();
   }
   
-  private ColorStateList a()
+  private ColorStateList getMaterialThemeColorsTintList()
   {
-    if (this.jdField_a_of_type_AndroidContentResColorStateList == null)
+    if (this.c == null)
     {
-      int[] arrayOfInt = new int[jdField_a_of_type_Array2dOfInt.length];
-      int i = MaterialColors.a(this, R.attr.colorControlActivated);
-      int j = MaterialColors.a(this, R.attr.n);
-      int k = MaterialColors.a(this, R.attr.l);
+      int[] arrayOfInt = new int[b.length];
+      int i = MaterialColors.a(this, R.attr.n);
+      int j = MaterialColors.a(this, R.attr.t);
+      int k = MaterialColors.a(this, R.attr.q);
       arrayOfInt[0] = MaterialColors.a(j, i, 1.0F);
       arrayOfInt[1] = MaterialColors.a(j, k, 0.54F);
       arrayOfInt[2] = MaterialColors.a(j, k, 0.38F);
       arrayOfInt[3] = MaterialColors.a(j, k, 0.38F);
-      this.jdField_a_of_type_AndroidContentResColorStateList = new ColorStateList(jdField_a_of_type_Array2dOfInt, arrayOfInt);
+      this.c = new ColorStateList(b, arrayOfInt);
     }
-    return this.jdField_a_of_type_AndroidContentResColorStateList;
+    return this.c;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.jdField_a_of_type_Boolean) && (CompoundButtonCompat.getButtonTintList(this) == null)) {
+    if ((this.d) && (CompoundButtonCompat.getButtonTintList(this) == null)) {
       setUseMaterialThemeColors(true);
     }
   }
   
   public void setUseMaterialThemeColors(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     if (paramBoolean)
     {
-      CompoundButtonCompat.setButtonTintList(this, a());
+      CompoundButtonCompat.setButtonTintList(this, getMaterialThemeColorsTintList());
       return;
     }
     CompoundButtonCompat.setButtonTintList(this, null);
@@ -91,7 +90,7 @@ public class MaterialCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.checkbox.MaterialCheckBox
  * JD-Core Version:    0.7.0.1
  */

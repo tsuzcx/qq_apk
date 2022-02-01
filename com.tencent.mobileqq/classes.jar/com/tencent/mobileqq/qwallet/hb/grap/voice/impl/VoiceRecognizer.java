@@ -14,44 +14,30 @@ import mqq.app.AppRuntime;
 
 public class VoiceRecognizer
 {
-  private static volatile VoiceRecognizer jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRecognizer;
-  private int jdField_a_of_type_Int = -1;
-  private IGrammarNativeTemp jdField_a_of_type_ComQwalletTempIGrammarNativeTemp = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).newGrammarNativeTemp();
+  private static volatile VoiceRecognizer a;
+  private IGrammarNativeTemp b = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).newGrammarNativeTemp();
+  private int c = -1;
   
   public static VoiceRecognizer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRecognizer == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRecognizer == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRecognizer = new VoiceRecognizer();
+        if (a == null) {
+          a = new VoiceRecognizer();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplVoiceRecognizer;
-  }
-  
-  public float a()
-  {
-    try
-    {
-      float f = this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.a();
-      return f;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return 1.0F;
+    return a;
   }
   
   public int a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 1) {
+    if (this.c == 1) {
       try
       {
-        int i = this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.a(paramArrayOfByte, paramInt);
+        int i = this.b.a(paramArrayOfByte, paramInt);
         if (i < 0) {
           return -1;
         }
@@ -59,7 +45,7 @@ public class VoiceRecognizer
         if (i != 1) {
           return paramInt;
         }
-        this.jdField_a_of_type_Int = 0;
+        this.c = 0;
         return 1;
       }
       catch (Throwable paramArrayOfByte)
@@ -73,64 +59,12 @@ public class VoiceRecognizer
     return paramInt;
   }
   
-  public String a(AppRuntime paramAppRuntime)
-  {
-    localStringBuilder = new StringBuilder();
-    try
-    {
-      paramAppRuntime = ((IPreloadService)paramAppRuntime.getRuntimeService(IPreloadService.class, "")).getModuleByMID("2017112200");
-      if (paramAppRuntime != null)
-      {
-        paramAppRuntime = paramAppRuntime.getResApiList();
-        if (paramAppRuntime != null)
-        {
-          int i = 0;
-          while (i < paramAppRuntime.size())
-          {
-            IPreloadResource localIPreloadResource = (IPreloadResource)paramAppRuntime.get(i);
-            if (i != 0) {
-              localStringBuilder.append("&");
-            }
-            localStringBuilder.append(localIPreloadResource.getResId());
-            i += 1;
-          }
-        }
-      }
-      return localStringBuilder.toString();
-    }
-    catch (Throwable paramAppRuntime)
-    {
-      paramAppRuntime.printStackTrace();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Int = 1;
-      try
-      {
-        int i = this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.a();
-        if (i < 0) {
-          return false;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        return false;
-      }
-    }
-    return true;
-  }
-  
   public boolean a(String paramString)
   {
     try
     {
       paramString = paramString.getBytes("GBK");
-      int i = this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.a(paramString);
+      int i = this.b.a(paramString);
       return i == 0;
     }
     catch (Throwable paramString)
@@ -151,10 +85,10 @@ public class VoiceRecognizer
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("init is call");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(this.c);
           QLog.d("VoiceRecognizer", 2, ((StringBuilder)localObject).toString());
         }
-        i = this.jdField_a_of_type_Int;
+        i = this.c;
         if (i != -1) {
           return true;
         }
@@ -186,11 +120,11 @@ public class VoiceRecognizer
           try
           {
             System.load(paramAppRuntime.getAbsolutePath());
-            i = this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.a(str.getBytes(), "libwxvoiceembed.bin".getBytes(), null);
+            i = this.b.a(str.getBytes(), "libwxvoiceembed.bin".getBytes(), null);
             if (i < 0) {
               return false;
             }
-            this.jdField_a_of_type_Int = 0;
+            this.c = 0;
             return true;
           }
           catch (Throwable paramAppRuntime)
@@ -207,14 +141,45 @@ public class VoiceRecognizer
     }
   }
   
+  public String b(AppRuntime paramAppRuntime)
+  {
+    localStringBuilder = new StringBuilder();
+    try
+    {
+      paramAppRuntime = ((IPreloadService)paramAppRuntime.getRuntimeService(IPreloadService.class, "")).getModuleByMID("2017112200");
+      if (paramAppRuntime != null)
+      {
+        paramAppRuntime = paramAppRuntime.getResApiList();
+        if (paramAppRuntime != null)
+        {
+          int i = 0;
+          while (i < paramAppRuntime.size())
+          {
+            IPreloadResource localIPreloadResource = (IPreloadResource)paramAppRuntime.get(i);
+            if (i != 0) {
+              localStringBuilder.append("&");
+            }
+            localStringBuilder.append(localIPreloadResource.getResId());
+            i += 1;
+          }
+        }
+      }
+      return localStringBuilder.toString();
+    }
+    catch (Throwable paramAppRuntime)
+    {
+      paramAppRuntime.printStackTrace();
+    }
+  }
+  
   public boolean b()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.c == 0)
     {
-      this.jdField_a_of_type_Int = 0;
+      this.c = 1;
       try
       {
-        int i = this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.b();
+        int i = this.b.a();
         if (i < 0) {
           return false;
         }
@@ -230,22 +195,57 @@ public class VoiceRecognizer
   
   public boolean c()
   {
+    if (this.c == 1)
+    {
+      this.c = 0;
+      try
+      {
+        int i = this.b.b();
+        if (i < 0) {
+          return false;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public float d()
+  {
+    try
+    {
+      float f = this.b.c();
+      return f;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return 1.0F;
+  }
+  
+  public boolean e()
+  {
     try
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("destroy is call");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.c);
         QLog.d("VoiceRecognizer", 2, localStringBuilder.toString());
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.c;
       if (i != -1) {
         try
         {
-          if (this.jdField_a_of_type_ComQwalletTempIGrammarNativeTemp.c() == 0)
+          if (this.b.d() == 0)
           {
-            this.jdField_a_of_type_Int = -1;
+            this.c = -1;
             return true;
           }
         }
@@ -261,7 +261,7 @@ public class VoiceRecognizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.VoiceRecognizer
  * JD-Core Version:    0.7.0.1
  */

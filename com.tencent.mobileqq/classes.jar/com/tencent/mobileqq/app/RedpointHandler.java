@@ -7,6 +7,7 @@ import android.os.Build.VERSION;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.mobileqq.app.guard.GuardManager;
 import com.tencent.mobileqq.leba.ILebaHelperService;
 import com.tencent.mobileqq.leba.entity.LebaPluginInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -60,15 +61,15 @@ public class RedpointHandler
   extends BusinessHandler
   implements BusinessInfoCheckUpdateItem
 {
-  private static final HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private int jdField_a_of_type_Int;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private LbsManagerServiceOnLocationChangeListener jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener = new RedpointHandler.1(this, "vas_red_point", false);
+  private static final HashSet<String> a = new HashSet();
+  private int b;
+  private QQAppInterface c;
+  private LbsManagerServiceOnLocationChangeListener d = new RedpointHandler.1(this, "vas_red_point", false);
   
   protected RedpointHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.c = paramQQAppInterface;
   }
   
   private BusinessInfoCheckUpdate.LbsInfo a(SosoLocation paramSosoLocation)
@@ -108,8 +109,8 @@ public class RedpointHandler
     while (i < paramAppRuntime.size())
     {
       RedPointHolder localRedPointHolder = new RedPointHolder();
-      localRedPointHolder.jdField_a_of_type_Long = ((LebaPluginInfo)paramAppRuntime.get(i)).uiResId;
-      localRedPointHolder.jdField_a_of_type_Int = ((int)((LebaPluginInfo)paramAppRuntime.get(i)).uiResId);
+      localRedPointHolder.a = ((LebaPluginInfo)paramAppRuntime.get(i)).uiResId;
+      localRedPointHolder.b = ((int)((LebaPluginInfo)paramAppRuntime.get(i)).uiResId);
       localArrayList.add(localRedPointHolder);
       i += 1;
     }
@@ -128,26 +129,26 @@ public class RedpointHandler
   
   private void a(long paramLong)
   {
-    HashSet localHashSet = jdField_a_of_type_JavaUtilHashSet;
+    HashSet localHashSet = a;
     if (localHashSet == null) {
       return;
     }
     if (paramLong == 1113L)
     {
       localHashSet.add("1113.100800");
-      jdField_a_of_type_JavaUtilHashSet.add("1113.100801");
-      jdField_a_of_type_JavaUtilHashSet.add("1113.100802");
-      jdField_a_of_type_JavaUtilHashSet.add("1113.100803");
-      jdField_a_of_type_JavaUtilHashSet.add("1113.100804");
+      a.add("1113.100801");
+      a.add("1113.100802");
+      a.add("1113.100803");
+      a.add("1113.100804");
       return;
     }
     if (paramLong == 100001113L)
     {
       localHashSet.add("100600.100001113.100100800");
-      jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100801");
-      jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100802");
-      jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100803");
-      jdField_a_of_type_JavaUtilHashSet.add("100600.100001113.100100804");
+      a.add("100600.100001113.100100801");
+      a.add("100600.100001113.100100802");
+      a.add("100600.100001113.100100803");
+      a.add("100600.100001113.100100804");
     }
   }
   
@@ -236,10 +237,10 @@ public class RedpointHandler
       while (j < paramList.size())
       {
         Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(((RedPointHolder)paramList.get(j)).jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(((RedPointHolder)paramList.get(j)).a);
         ((StringBuilder)localObject).append("");
         localObject = ((StringBuilder)localObject).toString();
-        int m = ((RedPointHolder)paramList.get(j)).jdField_a_of_type_Int;
+        int m = ((RedPointHolder)paramList.get(j)).b;
         int k = 0;
         while (k < i)
         {
@@ -257,20 +258,7 @@ public class RedpointHandler
         localAppSetting.setting.set(true);
         localAppSetting.modify_ts.set(0L);
         label210:
-        if (!localAppSetting.setting.get())
-        {
-          long l = ((RedPointHolder)paramList.get(j)).jdField_a_of_type_Long + 100000000L;
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("100600.");
-          ((StringBuilder)localObject).append(l);
-          ((StringBuilder)localObject).append("");
-          localObject = ((StringBuilder)localObject).toString();
-          a(l);
-        }
-        else
-        {
-          a(((RedPointHolder)paramList.get(j)).jdField_a_of_type_Long);
-        }
+        a(((RedPointHolder)paramList.get(j)).a);
         paramTimeReqBody.rptSetting.add(localAppSetting);
         paramList2.add(localObject);
         j += 1;
@@ -406,11 +394,11 @@ public class RedpointHandler
     }
     QLog.i("RedPointLog.RedpointHandler", 1, "handleResponse");
     b((BusinessInfoCheckUpdate.TimeRspBody)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    this.c.getEntityManagerFactory().createEntityManager();
+    paramObject = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
     try
     {
-      if (!a((BusinessInfoCheckUpdate.TimeRspBody)localObject, paramObject)) {
+      if (!b((BusinessInfoCheckUpdate.TimeRspBody)localObject, paramObject)) {
         return;
       }
       a((BusinessInfoCheckUpdate.TimeRspBody)localObject, paramObject);
@@ -424,7 +412,7 @@ public class RedpointHandler
     c((BusinessInfoCheckUpdate.TimeRspBody)localObject);
     paramObject.resetFlag();
     paramObject.reportRedTouchsArrived((BusinessInfoCheckUpdate.TimeRspBody)localObject);
-    a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    b(this.c);
   }
   
   static boolean a(QQAppInterface paramQQAppInterface, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
@@ -443,21 +431,21 @@ public class RedpointHandler
       i = 0;
       while (i < j)
       {
-        long l = ((RedPointHolder)((List)localObject1).get(i)).jdField_a_of_type_Long;
+        long l = ((RedPointHolder)((List)localObject1).get(i)).a;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("100600.");
         ((StringBuilder)localObject2).append(l + 100000000L);
         ((StringBuilder)localObject2).append("");
         localObject2 = ((StringBuilder)localObject2).toString();
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(((RedPointHolder)((List)localObject1).get(i)).jdField_a_of_type_Long);
+        localStringBuilder.append(((RedPointHolder)((List)localObject1).get(i)).a);
         localStringBuilder.append("");
         if (!localStringBuilder.toString().equals(paramAppInfo.path.get()))
         {
           if (((String)localObject2).equals(paramAppInfo.path.get())) {
             return true;
           }
-          localObject2 = jdField_a_of_type_JavaUtilHashSet;
+          localObject2 = a;
           if ((localObject2 != null) && (((HashSet)localObject2).contains(paramAppInfo.path.get()))) {
             return true;
           }
@@ -497,7 +485,157 @@ public class RedpointHandler
     return false;
   }
   
-  private boolean a(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody, IRedTouchManager paramIRedTouchManager)
+  private void b(int paramInt1, SosoLbsInfo paramSosoLbsInfo, int paramInt2)
+  {
+    QLog.d("RedPointLog.RedpointHandler", 1, "sendReq start");
+    BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
+    localTimeReqBody.iProtocolVer.set(1);
+    localTimeReqBody.uiClientPlatID.set(109);
+    localTimeReqBody.sClientVer.set("8.8.17.5770");
+    localTimeReqBody.uiUin.set(Long.parseLong(this.c.getCurrentAccountUin()));
+    localTimeReqBody.uReqType.set(paramInt2);
+    paramInt2 = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    localTimeReqBody.uiNetType.set(paramInt2);
+    if ((paramInt1 == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      paramSosoLbsInfo = a(paramSosoLbsInfo.mLocation);
+      if (paramSosoLbsInfo != null) {
+        localTimeReqBody.lbs.set(paramSosoLbsInfo);
+      }
+    }
+    Object localObject1 = a(this.c);
+    paramSosoLbsInfo = (IRedTouchManager)this.c.getRuntimeService(IRedTouchManager.class, "");
+    Object localObject2 = paramSosoLbsInfo.requestSettingInfoList();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList3 = new ArrayList();
+    a(localTimeReqBody, (List)localObject1, (List)localObject2, localArrayList1);
+    localArrayList1.addAll(a);
+    localObject1 = paramSosoLbsInfo.getRegisterInterfaces().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)((Iterator)localObject1).next();
+      if (localObject2 != null) {
+        try
+        {
+          if (((BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localObject2).getRedPointPaths(this.c) != null) {
+            localArrayList1.addAll(((BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localObject2).getRedPointPaths(this.c));
+          }
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("add exception error");
+          localStringBuilder.append(localException);
+          QLog.e("RedPointLog.RedpointHandler", 1, localStringBuilder.toString());
+        }
+      }
+    }
+    paramInt2 = 0;
+    paramInt1 = 0;
+    while (paramInt1 < ALL_PLUGITEM.length)
+    {
+      localArrayList1.add(ALL_PLUGITEM[paramInt1][1]);
+      paramInt1 += 1;
+    }
+    localObject1 = paramSosoLbsInfo.requestAppInfoListByAppSet(3);
+    if (localObject1 != null)
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext()) {
+        localArrayList1.add(((BusinessInfoCheckUpdate.AppInfo)((Iterator)localObject1).next()).path.get());
+      }
+    }
+    if (paramSosoLbsInfo.getLocalTimeRspBody() == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPointLog.RedpointHandler", 2, "BusinessInfoCheckUpdateItem pb file does not exist");
+      }
+      localArrayList2.addAll(localArrayList1);
+    }
+    else
+    {
+      a(paramSosoLbsInfo, localArrayList1, localArrayList2, localArrayList3);
+    }
+    localTimeReqBody.rptMsgAppInfo.set(localArrayList3);
+    localTimeReqBody.rptNoRedPath.set(localArrayList2);
+    localTimeReqBody.sQimei.set(String.valueOf(UserAction.getQIMEI()));
+    paramSosoLbsInfo = (TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER);
+    localTimeReqBody.rptIdList.set(paramSosoLbsInfo.i());
+    if (this.c.mIsShowNewLeba) {
+      localTimeReqBody.bHebaFlag.set(true);
+    } else {
+      localTimeReqBody.bHebaFlag.set(false);
+    }
+    if ((!((IFontManagerService)this.c.getRuntimeService(IFontManagerService.class, "")).isSupportFont()) && (localTimeReqBody.rptMsgAppInfo.has()))
+    {
+      paramInt1 = paramInt2;
+      while (paramInt1 < localTimeReqBody.rptMsgAppInfo.size())
+      {
+        if ("100005.100011".equals(((BusinessInfoCheckUpdate.AppInfo)localTimeReqBody.rptMsgAppInfo.get(paramInt1)).path.get()))
+        {
+          localTimeReqBody.rptMsgAppInfo.remove(paramInt1);
+          break;
+        }
+        paramInt1 += 1;
+      }
+    }
+    a(localTimeReqBody);
+    QLog.d("RedPointLog.RedpointHandler", 1, "getNewFlagOp local message ok");
+    try
+    {
+      paramSosoLbsInfo = new ToServiceMsg("mobileqq.service", this.c.getCurrentAccountUin(), MessageConstants.D);
+      paramSosoLbsInfo.putWupBuffer(localTimeReqBody.toByteArray());
+      sendPbReq(paramSosoLbsInfo);
+      return;
+    }
+    catch (Exception paramSosoLbsInfo)
+    {
+      QLog.e("RedPointLog.RedpointHandler", 1, "error send request ", paramSosoLbsInfo);
+    }
+  }
+  
+  private void b(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
+  {
+    Object localObject1 = this.c.getApp();
+    int i = 0;
+    localObject1 = ((BaseApplication)localObject1).getSharedPreferences("check_update_sp_key", 0).edit();
+    if (paramTimeRspBody.iInterval.has())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("businessinfo_check_update_interval_");
+      ((StringBuilder)localObject2).append(this.c.getCurrentAccountUin());
+      localObject2 = ((StringBuilder)localObject2).toString();
+      if (paramTimeRspBody.iInterval.get() > 0) {
+        i = paramTimeRspBody.iInterval.get();
+      }
+      ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, i);
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("businessinfo_check_update_interval_");
+      ((StringBuilder)localObject2).append(this.c.getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject1).remove(((StringBuilder)localObject2).toString());
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("businessinfo_check_update_interval_lbsinfo_");
+    ((StringBuilder)localObject2).append(this.c.getCurrentAccountUin());
+    ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), paramTimeRspBody.iLbsInterval.get());
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("handleResponse, iInterval = ");
+    ((StringBuilder)localObject2).append(paramTimeRspBody.iInterval.get());
+    ((StringBuilder)localObject2).append("; lbsInterval = ");
+    ((StringBuilder)localObject2).append(paramTimeRspBody.iLbsInterval.get());
+    QLog.d("RedPointLog.RedpointHandler", 1, ((StringBuilder)localObject2).toString());
+    paramTimeRspBody = new StringBuilder();
+    paramTimeRspBody.append("businessinfo_last_check_update_timestamp_");
+    paramTimeRspBody.append(this.c.getCurrentAccountUin());
+    ((SharedPreferences.Editor)localObject1).putInt(paramTimeRspBody.toString(), (int)(System.currentTimeMillis() / 1000L));
+    ((SharedPreferences.Editor)localObject1).apply();
+  }
+  
+  private boolean b(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody, IRedTouchManager paramIRedTouchManager)
   {
     if (paramTimeRspBody.rptMsgAppInfo.has())
     {
@@ -508,7 +646,7 @@ public class RedpointHandler
         if (localAppInfo != null)
         {
           Object localObject;
-          if ((!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localAppInfo)) && (1 == localAppInfo.iNewFlag.get()))
+          if ((!a(this.c, localAppInfo)) && (1 == localAppInfo.iNewFlag.get()))
           {
             localAppInfo.modify_ts.set((int)(NetConnInfoCenter.getServerTimeMillis() / 1000L));
             localAppInfo.iNewFlag.set(0);
@@ -554,156 +692,6 @@ public class RedpointHandler
     return true;
   }
   
-  private void b(int paramInt1, SosoLbsInfo paramSosoLbsInfo, int paramInt2)
-  {
-    QLog.d("RedPointLog.RedpointHandler", 1, "sendReq start");
-    BusinessInfoCheckUpdate.TimeReqBody localTimeReqBody = new BusinessInfoCheckUpdate.TimeReqBody();
-    localTimeReqBody.iProtocolVer.set(1);
-    localTimeReqBody.uiClientPlatID.set(109);
-    localTimeReqBody.sClientVer.set("8.7.0.5295");
-    localTimeReqBody.uiUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    localTimeReqBody.uReqType.set(paramInt2);
-    paramInt2 = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
-    localTimeReqBody.uiNetType.set(paramInt2);
-    if ((paramInt1 == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
-    {
-      paramSosoLbsInfo = a(paramSosoLbsInfo.mLocation);
-      if (paramSosoLbsInfo != null) {
-        localTimeReqBody.lbs.set(paramSosoLbsInfo);
-      }
-    }
-    Object localObject1 = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramSosoLbsInfo = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
-    Object localObject2 = paramSosoLbsInfo.requestSettingInfoList();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    a(localTimeReqBody, (List)localObject1, (List)localObject2, localArrayList1);
-    localArrayList1.addAll(jdField_a_of_type_JavaUtilHashSet);
-    localObject1 = paramSosoLbsInfo.getRegisterInterfaces().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)((Iterator)localObject1).next();
-      if (localObject2 != null) {
-        try
-        {
-          if (((BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localObject2).getRedPointPaths(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != null) {
-            localArrayList1.addAll(((BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface)localObject2).getRedPointPaths(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-          }
-        }
-        catch (Exception localException)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("add exception error");
-          localStringBuilder.append(localException);
-          QLog.e("RedPointLog.RedpointHandler", 1, localStringBuilder.toString());
-        }
-      }
-    }
-    paramInt2 = 0;
-    paramInt1 = 0;
-    while (paramInt1 < ALL_PLUGITEM.length)
-    {
-      localArrayList1.add(ALL_PLUGITEM[paramInt1][1]);
-      paramInt1 += 1;
-    }
-    localObject1 = paramSosoLbsInfo.requestAppInfoListByAppSet(3);
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        localArrayList1.add(((BusinessInfoCheckUpdate.AppInfo)((Iterator)localObject1).next()).path.get());
-      }
-    }
-    if (paramSosoLbsInfo.getLocalTimeRspBody() == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RedPointLog.RedpointHandler", 2, "BusinessInfoCheckUpdateItem pb file does not exist");
-      }
-      localArrayList2.addAll(localArrayList1);
-    }
-    else
-    {
-      a(paramSosoLbsInfo, localArrayList1, localArrayList2, localArrayList3);
-    }
-    localTimeReqBody.rptMsgAppInfo.set(localArrayList3);
-    localTimeReqBody.rptNoRedPath.set(localArrayList2);
-    localTimeReqBody.sQimei.set(String.valueOf(UserAction.getQIMEI()));
-    paramSosoLbsInfo = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    localTimeReqBody.rptIdList.set(paramSosoLbsInfo.c());
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.mIsShowNewLeba) {
-      localTimeReqBody.bHebaFlag.set(true);
-    } else {
-      localTimeReqBody.bHebaFlag.set(false);
-    }
-    if ((!((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "")).isSupportFont()) && (localTimeReqBody.rptMsgAppInfo.has()))
-    {
-      paramInt1 = paramInt2;
-      while (paramInt1 < localTimeReqBody.rptMsgAppInfo.size())
-      {
-        if ("100005.100011".equals(((BusinessInfoCheckUpdate.AppInfo)localTimeReqBody.rptMsgAppInfo.get(paramInt1)).path.get()))
-        {
-          localTimeReqBody.rptMsgAppInfo.remove(paramInt1);
-          break;
-        }
-        paramInt1 += 1;
-      }
-    }
-    a(localTimeReqBody);
-    QLog.d("RedPointLog.RedpointHandler", 1, "getNewFlagOp local message ok");
-    try
-    {
-      paramSosoLbsInfo = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), MessageConstants.D);
-      paramSosoLbsInfo.putWupBuffer(localTimeReqBody.toByteArray());
-      sendPbReq(paramSosoLbsInfo);
-      return;
-    }
-    catch (Exception paramSosoLbsInfo)
-    {
-      QLog.e("RedPointLog.RedpointHandler", 1, "error send request ", paramSosoLbsInfo);
-    }
-  }
-  
-  private void b(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
-  {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
-    int i = 0;
-    localObject1 = ((BaseApplication)localObject1).getSharedPreferences("check_update_sp_key", 0).edit();
-    if (paramTimeRspBody.iInterval.has())
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("businessinfo_check_update_interval_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      localObject2 = ((StringBuilder)localObject2).toString();
-      if (paramTimeRspBody.iInterval.get() > 0) {
-        i = paramTimeRspBody.iInterval.get();
-      }
-      ((SharedPreferences.Editor)localObject1).putInt((String)localObject2, i);
-    }
-    else
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("businessinfo_check_update_interval_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      ((SharedPreferences.Editor)localObject1).remove(((StringBuilder)localObject2).toString());
-    }
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("businessinfo_check_update_interval_lbsinfo_");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), paramTimeRspBody.iLbsInterval.get());
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append("handleResponse, iInterval = ");
-    ((StringBuilder)localObject2).append(paramTimeRspBody.iInterval.get());
-    ((StringBuilder)localObject2).append("; lbsInterval = ");
-    ((StringBuilder)localObject2).append(paramTimeRspBody.iLbsInterval.get());
-    QLog.d("RedPointLog.RedpointHandler", 1, ((StringBuilder)localObject2).toString());
-    paramTimeRspBody = new StringBuilder();
-    paramTimeRspBody.append("businessinfo_last_check_update_timestamp_");
-    paramTimeRspBody.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    ((SharedPreferences.Editor)localObject1).putInt(paramTimeRspBody.toString(), (int)(System.currentTimeMillis() / 1000L));
-    ((SharedPreferences.Editor)localObject1).apply();
-  }
-  
   private void c(BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody)
   {
     Object localObject1;
@@ -720,10 +708,10 @@ public class RedpointHandler
           ((BusinessInfoCheckUpdate.AppInfo)localObject1).path.get();
           if (((BusinessInfoCheckUpdate.AppInfo)localObject1).uiAppId.get() == 769)
           {
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("check_update_sp_key", 0).edit();
+            localObject1 = this.c.getApp().getSharedPreferences("check_update_sp_key", 0).edit();
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("reader_zone_appinfo_last_pull_timestamp_");
-            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            ((StringBuilder)localObject2).append(this.c.getCurrentAccountUin());
             ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), (int)(NetConnInfoCenter.getServerTimeMillis() / 1000L)).apply();
           }
         }
@@ -746,7 +734,7 @@ public class RedpointHandler
           ((List)localObject1).add(localObject3);
         }
       }
-      ((INearbyNewRedDotManager)QRoute.api(INearbyNewRedDotManager.class)).queryNearbyMsgInfos(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (List)localObject1);
+      ((INearbyNewRedDotManager)QRoute.api(INearbyNewRedDotManager.class)).queryNearbyMsgInfos(this.c, (List)localObject1);
     }
     if (QLog.isColorLevel()) {
       QLog.d("RedPointLog.RedpointHandler", 2, "individuation jump open");
@@ -787,7 +775,7 @@ public class RedpointHandler
         }
       }
       QLog.i("RedPointLog.RedpointHandler", 1, ((StringBuilder)localObject3).toString());
-      localObject1 = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "");
+      localObject1 = (ILebaHelperService)this.c.getRuntimeService(ILebaHelperService.class, "");
       if (localObject1 != null) {
         ((ILebaHelperService)localObject1).updateAllLebaListFlag(paramTimeRspBody.rptSetting.get());
       } else {
@@ -797,7 +785,7 @@ public class RedpointHandler
     if (QLog.isColorLevel()) {
       QLog.i("RedPointLog.RedpointHandler", 2, "update NearbyNumAppinfo");
     }
-    ((INearbyMineHelper)QRoute.api(INearbyMineHelper.class)).updateNearbyNumAppinfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    ((INearbyMineHelper)QRoute.api(INearbyMineHelper.class)).updateNearbyNumAppinfo(this.c, true);
   }
   
   public void a(int paramInt)
@@ -876,35 +864,26 @@ public class RedpointHandler
     }
   }
   
-  public void a(AppRuntime paramAppRuntime)
-  {
-    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), GameCenterServlet.class);
-    localNewIntent.setAction("gc_refresh_ui");
-    localNewIntent.putExtra("gc_notify_type", 6);
-    paramAppRuntime.startServlet(localNewIntent);
-    notifyUI(3, true, null);
-  }
-  
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     QLog.d("RedPointLog.RedpointHandler", 2, "getNewFlagOp:send redInfo start");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("check_update_sp_key", 0);
+    Object localObject = this.c.getApp().getSharedPreferences("check_update_sp_key", 0);
     SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("businessinfo_check_update_interval_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.c.getCurrentAccountUin());
     int i = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 600);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("businessinfo_check_update_interval_lbsinfo_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.c.getCurrentAccountUin());
     int j = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 43200000);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("businessinfo_last_check_update_timestamp_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.c.getCurrentAccountUin());
     int k = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("businessinfo_last_check_lbsinfo_timestamp_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append(this.c.getCurrentAccountUin());
     int m = ((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0);
     int n = (int)(System.currentTimeMillis() / 1000L);
     boolean bool = ((SharedPreferences)localObject).getBoolean("redtouch_force", false);
@@ -927,31 +906,40 @@ public class RedpointHandler
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("businessinfo_last_check_update_timestamp_");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.c.getCurrentAccountUin());
     localEditor.putInt(((StringBuilder)localObject).toString(), n);
     localEditor.putBoolean("redtouch_force", false);
     localEditor.apply();
-    this.jdField_a_of_type_Int = paramInt;
-    if ((BaseActivity.mAppForground) && (paramBoolean2) && ((n - m > j) || (n < k)))
+    this.b = paramInt;
+    if ((GuardManager.sInstance.isApplicationForeground()) && (paramBoolean2) && ((n - m > j) || (n < k)))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("businessinfo_last_check_lbsinfo_timestamp_");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject).append(this.c.getCurrentAccountUin());
       localEditor.putInt(((StringBuilder)localObject).toString(), (int)(System.currentTimeMillis() / 1000L)).commit();
       if (Build.VERSION.SDK_INT >= 23)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
+        if (this.c.getApplication().getApplicationContext().checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)
         {
           a(-1, null, paramInt);
           return;
         }
-        ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
+        ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this.d);
         return;
       }
-      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this.jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
+      ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(this.d);
       return;
     }
     a(-1, null, paramInt);
+  }
+  
+  public void b(AppRuntime paramAppRuntime)
+  {
+    NewIntent localNewIntent = new NewIntent(paramAppRuntime.getApplication(), GameCenterServlet.class);
+    localNewIntent.setAction("gc_refresh_ui");
+    localNewIntent.putExtra("gc_notify_type", 6);
+    paramAppRuntime.startServlet(localNewIntent);
+    notifyUI(3, true, null);
   }
   
   protected Class<? extends BusinessObserver> observerClass()
@@ -962,7 +950,7 @@ public class RedpointHandler
   public void onDestroy()
   {
     super.onDestroy();
-    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.jdField_a_of_type_ComTencentMobileqqSosoLocationLbsManagerServiceOnLocationChangeListener);
+    ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).removeListener(this.d);
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -980,7 +968,7 @@ public class RedpointHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RedpointHandler
  * JD-Core Version:    0.7.0.1
  */

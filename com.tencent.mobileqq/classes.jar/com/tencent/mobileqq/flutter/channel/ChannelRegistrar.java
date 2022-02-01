@@ -20,15 +20,15 @@ import java.util.List;
 
 public class ChannelRegistrar
 {
-  IExpandChannelRegister jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelIExpandChannelRegister = (IExpandChannelRegister)QRoute.api(IExpandChannelRegister.class);
-  private List<BaseChannel> jdField_a_of_type_JavaUtilList = new LinkedList();
+  IExpandChannelRegister a = (IExpandChannelRegister)QRoute.api(IExpandChannelRegister.class);
+  private List<BaseChannel> b = new LinkedList();
   
   private void a(BinaryMessenger paramBinaryMessenger, BaseMethodChannel paramBaseMethodChannel)
   {
-    MethodCodec localMethodCodec = paramBaseMethodChannel.a();
+    MethodCodec localMethodCodec = paramBaseMethodChannel.b();
     String str = paramBaseMethodChannel.a();
-    new MethodChannel(paramBinaryMessenger, str, localMethodCodec).setMethodCallHandler(paramBaseMethodChannel.a());
-    this.jdField_a_of_type_JavaUtilList.add(paramBaseMethodChannel);
+    new MethodChannel(paramBinaryMessenger, str, localMethodCodec).setMethodCallHandler(paramBaseMethodChannel.c());
+    this.b.add(paramBaseMethodChannel);
     if (QLog.isColorLevel())
     {
       paramBinaryMessenger = new StringBuilder();
@@ -40,14 +40,14 @@ public class ChannelRegistrar
   
   public void a()
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = this.b.iterator();
       while (((Iterator)localObject).hasNext())
       {
         BaseChannel localBaseChannel = (BaseChannel)((Iterator)localObject).next();
-        localBaseChannel.a();
+        localBaseChannel.f();
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
@@ -57,7 +57,7 @@ public class ChannelRegistrar
           QLog.d("QFlutter.ChannelRegistrar", 2, localStringBuilder.toString());
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelIExpandChannelRegister.unRegisterChannel();
+      this.a.unRegisterChannel();
       return;
     }
     QLog.d("QFlutter.ChannelRegistrar", 1, "unregister, channel is empty");
@@ -76,12 +76,12 @@ public class ChannelRegistrar
     a(paramFlutterEngine, new ReportChannel());
     a(paramFlutterEngine, new RIJMethodChannel(paramFlutterEngine));
     a(paramFlutterEngine, new QQGameChannel());
-    this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelIExpandChannelRegister.registerChannel(paramFlutterEngine, this.jdField_a_of_type_JavaUtilList);
+    this.a.registerChannel(paramFlutterEngine, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.ChannelRegistrar
  * JD-Core Version:    0.7.0.1
  */

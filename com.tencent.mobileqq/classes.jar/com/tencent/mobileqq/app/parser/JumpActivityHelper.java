@@ -96,54 +96,6 @@ public class JumpActivityHelper
     }
   }
   
-  public static int a(JumpActivity paramJumpActivity, Bundle paramBundle)
-  {
-    try
-    {
-      QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|beg");
-      Uri localUri = (Uri)paramBundle.getParcelable("android.intent.extra.STREAM");
-      if ((localUri != null) && ("file".equals(localUri.getScheme())) && (localUri.getPath().startsWith("/storage"))) {
-        return 4;
-      }
-      String str1 = paramBundle.getString("android.intent.extra.TITLE");
-      String str3 = paramBundle.getString("android.intent.extra.TEXT");
-      String str2 = paramJumpActivity.getIntent().getType();
-      if (TextUtils.isEmpty(str2))
-      {
-        QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|type null");
-        return 1;
-      }
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("src_type", "app");
-      localHashMap.put("version", "1");
-      localHashMap.put("cflag", Base64Util.encodeToString("1".getBytes(), 0));
-      if (TextUtils.isEmpty(str1)) {
-        str1 = "";
-      } else {
-        str1 = Base64Util.encodeToString(str1.getBytes(), 0);
-      }
-      localHashMap.put("title", str1);
-      if (str2.startsWith("text")) {
-        return paramJumpActivity.qqFavHandleTypeTxt(paramBundle, localHashMap, localUri, str3);
-      }
-      if (str2.startsWith("image")) {
-        return paramJumpActivity.qqFavHandleTypeImage(paramBundle, localHashMap);
-      }
-      paramJumpActivity = new StringBuilder();
-      paramJumpActivity.append("startSystemShareToQQFav|unknown type. type=");
-      paramJumpActivity.append(str2);
-      QLog.d("JumpActivityHelper", 1, paramJumpActivity.toString());
-      return 1;
-    }
-    catch (OutOfMemoryError paramJumpActivity)
-    {
-      label240:
-      break label240;
-    }
-    QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|outofmemoryerror");
-    return 1;
-  }
-  
   public static int a(JumpActivity paramJumpActivity, Bundle paramBundle, HashMap<String, String> paramHashMap)
   {
     paramHashMap.put("req_type", Base64Util.encodeToString("5".getBytes(), 0));
@@ -305,7 +257,7 @@ public class JumpActivityHelper
           if (TextUtils.isEmpty(str))
           {
             if (!QLog.isColorLevel()) {
-              break label235;
+              break label229;
             }
             QLog.d("JumpActivityHelper", 2, "startSystemShareToQQFav|text, extra_stream, empty");
             return 1;
@@ -343,7 +295,7 @@ public class JumpActivityHelper
       return 1;
     }
     return paramJumpActivity.qqFavDoAction(paramHashMap);
-    label235:
+    label229:
     return 1;
   }
   
@@ -378,26 +330,6 @@ public class JumpActivityHelper
     paramJumpActivity.a();
     QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|end");
     return 0;
-  }
-  
-  public static Intent a(JumpActivity paramJumpActivity, boolean paramBoolean)
-  {
-    Intent localIntent = paramJumpActivity.getIntent();
-    Object localObject2 = localIntent.getExtras();
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new Bundle();
-    }
-    if ((paramBoolean) && (!paramJumpActivity.getAppRuntime().isLogin()))
-    {
-      localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("isActionSend", true);
-      ((Intent)localObject2).putExtras((Bundle)localObject1);
-      ((Intent)localObject2).putExtras(localIntent);
-      RouteUtils.a(paramJumpActivity, (Intent)localObject2, "/base/login", 20);
-      return null;
-    }
-    return localIntent;
   }
   
   private static Uri a(Uri paramUri)
@@ -449,16 +381,16 @@ public class JumpActivityHelper
     //   0: aload_0
     //   1: iconst_0
     //   2: aaload
-    //   3: checkcast 412	android/content/Context
+    //   3: checkcast 327	android/content/Context
     //   6: astore 12
     //   8: aload_0
     //   9: iconst_1
     //   10: aaload
-    //   11: checkcast 70	android/net/Uri
+    //   11: checkcast 113	android/net/Uri
     //   14: astore 13
-    //   16: ldc_w 414
+    //   16: ldc_w 329
     //   19: astore_2
-    //   20: getstatic 420	com/tencent/mobileqq/app/AppConstants:SDCARD_SHARE_VCARD	Ljava/lang/String;
+    //   20: getstatic 335	com/tencent/mobileqq/app/AppConstants:SDCARD_SHARE_VCARD	Ljava/lang/String;
     //   23: astore 11
     //   25: aconst_null
     //   26: astore 8
@@ -471,18 +403,18 @@ public class JumpActivityHelper
     //   37: aconst_null
     //   38: astore 10
     //   40: aload 12
-    //   42: invokevirtual 421	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   42: invokevirtual 336	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   45: aload 13
     //   47: iconst_1
-    //   48: anewarray 78	java/lang/String
+    //   48: anewarray 64	java/lang/String
     //   51: dup
     //   52: iconst_0
-    //   53: ldc_w 423
+    //   53: ldc_w 338
     //   56: aastore
     //   57: aconst_null
     //   58: aconst_null
     //   59: aconst_null
-    //   60: invokevirtual 427	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   60: invokevirtual 342	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   63: astore 5
     //   65: aload_2
     //   66: astore_0
@@ -495,7 +427,7 @@ public class JumpActivityHelper
     //   76: aload_2
     //   77: astore 4
     //   79: aload 5
-    //   81: invokeinterface 432 1 0
+    //   81: invokeinterface 347 1 0
     //   86: ifeq +29 -> 115
     //   89: aload_2
     //   90: astore_3
@@ -503,38 +435,38 @@ public class JumpActivityHelper
     //   92: astore 4
     //   94: aload 5
     //   96: iconst_0
-    //   97: invokeinterface 435 2 0
+    //   97: invokeinterface 351 2 0
     //   102: astore_0
     //   103: aload_0
     //   104: astore_3
     //   105: aload_0
     //   106: astore 4
     //   108: aload 5
-    //   110: invokeinterface 436 1 0
+    //   110: invokeinterface 352 1 0
     //   115: aload_0
     //   116: astore_3
     //   117: aload_0
     //   118: astore 4
     //   120: aload 11
-    //   122: invokestatic 441	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   122: invokestatic 357	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
     //   125: ifne +21 -> 146
     //   128: aload_0
     //   129: astore_3
     //   130: aload_0
     //   131: astore 4
-    //   133: new 214	java/io/File
+    //   133: new 137	java/io/File
     //   136: dup
     //   137: aload 11
-    //   139: invokespecial 217	java/io/File:<init>	(Ljava/lang/String;)V
-    //   142: invokevirtual 444	java/io/File:mkdirs	()Z
+    //   139: invokespecial 140	java/io/File:<init>	(Ljava/lang/String;)V
+    //   142: invokevirtual 360	java/io/File:mkdirs	()Z
     //   145: pop
     //   146: aload_0
     //   147: astore_3
     //   148: aload_0
     //   149: astore 4
-    //   151: new 163	java/lang/StringBuilder
+    //   151: new 155	java/lang/StringBuilder
     //   154: dup
-    //   155: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   155: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   158: astore_2
     //   159: aload_0
     //   160: astore_3
@@ -542,7 +474,7 @@ public class JumpActivityHelper
     //   162: astore 4
     //   164: aload_2
     //   165: aload 11
-    //   167: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   170: pop
     //   171: aload_0
     //   172: astore_3
@@ -550,30 +482,30 @@ public class JumpActivityHelper
     //   174: astore 4
     //   176: aload_2
     //   177: aload_0
-    //   178: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: pop
     //   182: aload_0
     //   183: astore_3
     //   184: aload_0
     //   185: astore 4
-    //   187: new 446	java/io/FileOutputStream
+    //   187: new 362	java/io/FileOutputStream
     //   190: dup
-    //   191: new 214	java/io/File
+    //   191: new 137	java/io/File
     //   194: dup
     //   195: aload_2
-    //   196: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: invokespecial 217	java/io/File:<init>	(Ljava/lang/String;)V
-    //   202: invokespecial 449	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   196: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   199: invokespecial 140	java/io/File:<init>	(Ljava/lang/String;)V
+    //   202: invokespecial 365	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   205: astore 6
     //   207: aload 8
     //   209: astore_2
     //   210: aload 9
     //   212: astore_3
     //   213: aload 12
-    //   215: invokevirtual 421	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   215: invokevirtual 336	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   218: aload 13
-    //   220: ldc_w 451
-    //   223: invokevirtual 455	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   220: ldc_w 367
+    //   223: invokevirtual 371	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   226: astore 7
     //   228: aload 10
     //   230: astore 4
@@ -584,7 +516,7 @@ public class JumpActivityHelper
     //   240: aload 9
     //   242: astore_3
     //   243: aload 7
-    //   245: invokevirtual 461	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
+    //   245: invokevirtual 377	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
     //   248: astore 4
     //   250: aload 4
     //   252: astore_2
@@ -599,7 +531,7 @@ public class JumpActivityHelper
     //   268: astore_3
     //   269: aload 4
     //   271: aload 7
-    //   273: invokevirtual 465	java/io/InputStream:read	([B)I
+    //   273: invokevirtual 381	java/io/InputStream:read	([B)I
     //   276: istore_1
     //   277: iload_1
     //   278: iconst_m1
@@ -612,35 +544,35 @@ public class JumpActivityHelper
     //   290: aload 7
     //   292: iconst_0
     //   293: iload_1
-    //   294: invokevirtual 469	java/io/FileOutputStream:write	([BII)V
+    //   294: invokevirtual 385	java/io/FileOutputStream:write	([BII)V
     //   297: goto -34 -> 263
     //   300: aload 4
     //   302: astore_2
     //   303: aload 4
     //   305: astore_3
     //   306: aload 6
-    //   308: invokevirtual 472	java/io/FileOutputStream:flush	()V
+    //   308: invokevirtual 388	java/io/FileOutputStream:flush	()V
     //   311: aload 5
     //   313: ifnull +10 -> 323
     //   316: aload 5
-    //   318: invokeinterface 436 1 0
+    //   318: invokeinterface 352 1 0
     //   323: aload 4
     //   325: ifnull +16 -> 341
     //   328: aload 4
-    //   330: invokevirtual 290	java/io/InputStream:close	()V
+    //   330: invokevirtual 226	java/io/InputStream:close	()V
     //   333: goto +8 -> 341
     //   336: astore_2
     //   337: aload_2
-    //   338: invokevirtual 296	java/io/IOException:printStackTrace	()V
+    //   338: invokevirtual 232	java/io/IOException:printStackTrace	()V
     //   341: aload 6
-    //   343: invokevirtual 473	java/io/FileOutputStream:close	()V
+    //   343: invokevirtual 389	java/io/FileOutputStream:close	()V
     //   346: goto +8 -> 354
     //   349: astore_2
     //   350: aload_2
-    //   351: invokevirtual 296	java/io/IOException:printStackTrace	()V
-    //   354: new 163	java/lang/StringBuilder
+    //   351: invokevirtual 232	java/io/IOException:printStackTrace	()V
+    //   354: new 155	java/lang/StringBuilder
     //   357: dup
-    //   358: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   358: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   361: astore_3
     //   362: goto +146 -> 508
     //   365: astore_3
@@ -695,48 +627,48 @@ public class JumpActivityHelper
     //   444: aload 6
     //   446: astore 5
     //   448: aload_0
-    //   449: invokevirtual 242	java/lang/Exception:printStackTrace	()V
+    //   449: invokevirtual 175	java/lang/Exception:printStackTrace	()V
     //   452: aload 5
     //   454: ifnull +10 -> 464
     //   457: aload 5
-    //   459: invokeinterface 436 1 0
+    //   459: invokeinterface 352 1 0
     //   464: aload_3
     //   465: ifnull +15 -> 480
     //   468: aload_3
-    //   469: invokevirtual 290	java/io/InputStream:close	()V
+    //   469: invokevirtual 226	java/io/InputStream:close	()V
     //   472: goto +8 -> 480
     //   475: astore_0
     //   476: aload_0
-    //   477: invokevirtual 296	java/io/IOException:printStackTrace	()V
+    //   477: invokevirtual 232	java/io/IOException:printStackTrace	()V
     //   480: aload 4
     //   482: ifnull +16 -> 498
     //   485: aload 4
-    //   487: invokevirtual 473	java/io/FileOutputStream:close	()V
+    //   487: invokevirtual 389	java/io/FileOutputStream:close	()V
     //   490: goto +8 -> 498
     //   493: astore_0
     //   494: aload_0
-    //   495: invokevirtual 296	java/io/IOException:printStackTrace	()V
-    //   498: new 163	java/lang/StringBuilder
+    //   495: invokevirtual 232	java/io/IOException:printStackTrace	()V
+    //   498: new 155	java/lang/StringBuilder
     //   501: dup
-    //   502: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   502: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   505: astore_3
     //   506: aload_2
     //   507: astore_0
     //   508: aload_3
-    //   509: ldc_w 409
-    //   512: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: ldc_w 324
+    //   512: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   515: pop
     //   516: aload_3
     //   517: aload 11
-    //   519: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   519: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   522: pop
     //   523: aload_3
     //   524: aload_0
-    //   525: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   525: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: pop
     //   529: aload_3
-    //   530: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   533: invokestatic 200	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   530: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   533: invokestatic 117	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   536: areturn
     //   537: astore_0
     //   538: aload_3
@@ -748,42 +680,42 @@ public class JumpActivityHelper
     //   545: aload 5
     //   547: ifnull +10 -> 557
     //   550: aload 5
-    //   552: invokeinterface 436 1 0
+    //   552: invokeinterface 352 1 0
     //   557: aload 6
     //   559: ifnull +16 -> 575
     //   562: aload 6
-    //   564: invokevirtual 290	java/io/InputStream:close	()V
+    //   564: invokevirtual 226	java/io/InputStream:close	()V
     //   567: goto +8 -> 575
     //   570: astore_2
     //   571: aload_2
-    //   572: invokevirtual 296	java/io/IOException:printStackTrace	()V
+    //   572: invokevirtual 232	java/io/IOException:printStackTrace	()V
     //   575: aload 4
     //   577: ifnull +16 -> 593
     //   580: aload 4
-    //   582: invokevirtual 473	java/io/FileOutputStream:close	()V
+    //   582: invokevirtual 389	java/io/FileOutputStream:close	()V
     //   585: goto +8 -> 593
     //   588: astore_2
     //   589: aload_2
-    //   590: invokevirtual 296	java/io/IOException:printStackTrace	()V
-    //   593: new 163	java/lang/StringBuilder
+    //   590: invokevirtual 232	java/io/IOException:printStackTrace	()V
+    //   593: new 155	java/lang/StringBuilder
     //   596: dup
-    //   597: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   597: invokespecial 156	java/lang/StringBuilder:<init>	()V
     //   600: astore_2
     //   601: aload_2
-    //   602: ldc_w 409
-    //   605: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   602: ldc_w 324
+    //   605: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   608: pop
     //   609: aload_2
     //   610: aload 11
-    //   612: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   615: pop
     //   616: aload_2
     //   617: aload_0
-    //   618: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   618: invokevirtual 162	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   621: pop
     //   622: aload_2
-    //   623: invokevirtual 173	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   626: invokestatic 200	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   623: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   626: invokestatic 117	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
     //   629: pop
     //   630: goto +5 -> 635
     //   633: aload_3
@@ -863,7 +795,7 @@ public class JumpActivityHelper
   
   public static String a(Context paramContext)
   {
-    return a.a(paramContext);
+    return a.c(paramContext);
   }
   
   private static String a(InputStream paramInputStream)
@@ -882,39 +814,17 @@ public class JumpActivityHelper
     return new String(localByteArrayOutputStream.toByteArray(), "UTF-8");
   }
   
-  private static String a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramString != null)
-    {
-      localObject1 = localObject2;
-      if (!"".equals(paramString)) {
-        if (paramString.length() == 0) {
-          return null;
-        }
-      }
-    }
-    try
-    {
-      localObject1 = new String(Base64Util.decode(paramString, 0));
-      return localObject1;
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
   public static void a(Context paramContext, int paramInt1, int paramInt2)
   {
-    QQToast localQQToast = QQToast.a(paramContext, paramInt2, paramInt1, 2000);
-    paramInt1 = paramContext.getResources().getDimensionPixelSize(2131299168) - (int)DisplayUtils.a(paramContext, 5.0F);
+    QQToast localQQToast = QQToast.makeText(paramContext, paramInt2, paramInt1, 2000);
+    paramInt1 = paramContext.getResources().getDimensionPixelSize(2131299920) - (int)DisplayUtils.a(paramContext, 5.0F);
     paramContext = Looper.getMainLooper();
     if (Thread.currentThread() != paramContext.getThread())
     {
       new Handler(paramContext).post(new JumpActivityHelper.2(localQQToast, paramInt1));
       return;
     }
-    localQQToast.b(paramInt1);
+    localQQToast.show(paramInt1);
   }
   
   public static void a(Context paramContext, Intent paramIntent)
@@ -1063,7 +973,7 @@ public class JumpActivityHelper
     if (QLog.isColorLevel()) {
       QLog.d("JumpActivityHelper", 2, "JumpActivity is finish");
     }
-    if ((paramJumpAction.b != null) && (paramJumpAction.c != null))
+    if ((paramJumpAction.d != null) && (paramJumpAction.e != null))
     {
       if (a(paramJumpAction, "gav", "request"))
       {
@@ -1079,7 +989,7 @@ public class JumpActivityHelper
             paramJumpActivity.finish();
           }
         }
-        else if (paramJumpAction.g())
+        else if (paramJumpAction.m())
         {
           if (paramBoolean) {
             paramJumpActivity.finish();
@@ -1092,6 +1002,12 @@ public class JumpActivityHelper
             paramJumpActivity.finish();
             return;
           }
+          if (a(paramJumpAction, "readinjoy", "open"))
+          {
+            QLog.i("JumpActivityHelper", 1, "[beforeFinish] kd open.");
+            paramJumpActivity.finish();
+            return;
+          }
           if (b(paramJumpActivity, paramJumpAction))
           {
             QLog.d("JumpActivityHelper", 1, "asynShareJumpAction wait for finishing");
@@ -1099,7 +1015,7 @@ public class JumpActivityHelper
           }
           if (!c(paramJumpActivity, paramJumpAction))
           {
-            if (paramJumpAction.f)
+            if (paramJumpAction.v)
             {
               paramJumpActivity.finish();
               paramJumpActivity.overridePendingTransition(0, 0);
@@ -1291,8 +1207,8 @@ public class JumpActivityHelper
     JumpActivity.sIsStartFromThirdParty = false;
     localObject = ((Intent)localObject).getDataString();
     localObject = JumpParser.a((BaseQQAppInterface)paramJumpActivity.getAppRuntime(), paramJumpActivity, (String)localObject);
-    ((JumpAction)localObject).b(paramString);
-    ((JumpAction)localObject).c(paramJumpActivity.mPackageName);
+    ((JumpAction)localObject).c(paramString);
+    ((JumpAction)localObject).d(paramJumpActivity.mPackageName);
     if (((JumpAction)localObject).a()) {
       paramJumpActivity.finish();
     }
@@ -1328,91 +1244,41 @@ public class JumpActivityHelper
     JumpActivity.sSwitchInited = true;
   }
   
-  public static boolean a(JumpActivity paramJumpActivity)
-  {
-    try
-    {
-      if (!JumpForwardPkgUtil.a(paramJumpActivity, true))
-      {
-        paramJumpActivity.finish();
-        return true;
-      }
-    }
-    catch (Throwable paramJumpActivity)
-    {
-      label14:
-      break label14;
-    }
-    return false;
-  }
-  
-  public static boolean a(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    if (("android.intent.action.VIEW".equals(paramIntent.getAction())) && (paramIntent.getIntExtra("MINI_CONFIG_SCENE", -1) > 0) && (!TextUtils.isEmpty(paramIntent.getStringExtra("CONFIG_APPID"))))
-    {
-      JumpActivity.doJumpToMiniApp(paramJumpActivity, true);
-      return false;
-    }
-    if ("from_nearby_pb".equals(paramIntent.getStringExtra("from")))
-    {
-      h(paramJumpActivity, paramIntent);
-      return false;
-    }
-    if ("from_gesturemgr_download".equals(paramIntent.getAction()))
-    {
-      paramJumpActivity.finish();
-      return false;
-    }
-    if ("from_webtool_launchshortvideo".equals(paramIntent.getAction()))
-    {
-      i(paramJumpActivity, paramIntent);
-      return false;
-    }
-    if ((!"android.intent.action.SEND".equals(paramIntent.getAction())) && (!"android.intent.action.SEND_MULTIPLE".equals(paramIntent.getAction())))
-    {
-      if (("android.intent.action.VIEW".equals(paramIntent.getAction())) && (("file".equals(paramIntent.getScheme())) || ("content".equals(paramIntent.getScheme()))))
-      {
-        JumpActivity.doView(paramJumpActivity, true);
-        return false;
-      }
-      return true;
-    }
-    JumpActivity.doShare(paramJumpActivity, true);
-    return false;
-  }
-  
   private static boolean a(JumpActivity paramJumpActivity, Intent paramIntent, JumpAction paramJumpAction, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     boolean bool2 = a(paramJumpAction, "ptlogin", "qlogin");
     boolean bool1 = true;
     int i;
-    if ((!bool2) && (!paramJumpAction.b.equals("qqreg")) && (!"invite_register".equals(paramJumpAction.c))) {
+    if ((!bool2) && (!paramJumpAction.d.equals("qqreg")) && (!"invite_register".equals(paramJumpAction.e))) {
       i = 1;
     } else {
       i = 0;
     }
     if ((!paramJumpActivity.getAppRuntime().isLogin()) && (i != 0))
     {
-      paramString2 = new StringBuilder();
-      paramString2.append(paramString1);
+      paramString2 = new Intent();
+      paramString2.putExtra("scheme_content_original", paramString1);
+      paramString4 = new StringBuilder();
+      paramString4.append(paramString1);
       paramIntent = "?";
       if (paramString1.contains("?")) {
         paramIntent = "&";
       }
-      paramString2.append(paramIntent);
-      paramIntent = paramString2.toString();
+      paramString4.append(paramIntent);
+      paramIntent = paramString4.toString();
       paramString1 = new StringBuilder();
       paramString1.append(paramIntent);
       paramString1.append("jfrom=login");
-      paramIntent = paramString1.toString();
-      paramString1 = new Intent();
-      paramString1.putExtra("scheme_content", paramIntent);
-      paramString1.putExtra("pkg_name", paramString3);
-      paramString1.setFlags(268435456);
-      if (VersionUtils.e()) {
-        paramString1.addFlags(32768);
+      paramString2.putExtra("scheme_content", paramString1.toString());
+      paramString2.putExtra("pkg_name", paramString3);
+      paramString2.setFlags(268435456);
+      if (a(paramJumpAction, "profile", "sdk_face_collection")) {
+        paramString2.putParcelableArrayListExtra("android.intent.extra.STREAM", paramJumpActivity.getIntent().getParcelableArrayListExtra("android.intent.extra.STREAM"));
       }
-      RouteUtils.a(paramJumpActivity, paramString1, "/base/login");
+      if (VersionUtils.e()) {
+        paramString2.addFlags(32768);
+      }
+      RouteUtils.a(paramJumpActivity, paramString2, "/base/login");
     }
     else if (a.a(paramJumpActivity, paramString1))
     {
@@ -1429,7 +1295,7 @@ public class JumpActivityHelper
       {
         if (!NetworkUtil.isNetSupport(paramJumpActivity))
         {
-          QQToast.a(paramJumpActivity, paramJumpActivity.getString(2131692183), 0).b(paramJumpActivity.getTitleBarHeight());
+          QQToast.makeText(paramJumpActivity, paramJumpActivity.getString(2131889169), 0).show(paramJumpActivity.getTitleBarHeight());
           return false;
         }
         ((IQJumpApi)QRoute.api(IQJumpApi.class)).checkDevLockStatus(paramJumpActivity);
@@ -1443,7 +1309,7 @@ public class JumpActivityHelper
       }
       if (a(paramJumpAction, "nearby_videochat", "open_plugin"))
       {
-        a.d(paramJumpActivity, paramIntent);
+        a.e(paramJumpActivity, paramIntent);
         return false;
       }
       if (a(paramJumpAction, "qwerewolf", "enterHomePage"))
@@ -1459,63 +1325,14 @@ public class JumpActivityHelper
           paramJumpAction.a("url_app_info", paramIntent);
         }
       }
-      paramJumpAction.c(paramString3);
-      paramJumpAction.d(paramString4);
-      if ((paramJumpAction.b != null) && (paramJumpAction.c != null)) {
+      paramJumpAction.d(paramString3);
+      paramJumpAction.e(paramString4);
+      if ((paramJumpAction.d != null) && (paramJumpAction.e != null)) {
         paramJumpAction.a(paramJumpActivity);
       }
       bool1 = paramJumpAction.a();
     }
     a(paramJumpActivity, paramJumpAction, bool1);
-    return false;
-  }
-  
-  private static boolean a(JumpActivity paramJumpActivity, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtra("forward_from_jump", true);
-    localIntent.putExtra("k_favorites", true);
-    localIntent.putExtra("system_share", true);
-    localIntent.putExtra("selection_mode", 2);
-    localIntent.putExtras(new Bundle());
-    localIntent.putExtra("forward_type", 1);
-    if (paramJumpActivity.getIntent().getAction().equals("android.intent.action.SEND"))
-    {
-      Object localObject = paramBundle.get("android.intent.extra.STREAM");
-      if (localObject != null)
-      {
-        if ((localObject instanceof Uri))
-        {
-          localIntent.setData((Uri)localObject);
-        }
-        else
-        {
-          if (!(localObject instanceof String)) {
-            break label150;
-          }
-          localIntent.setData(Uri.parse((String)localObject));
-        }
-        localIntent.putExtra("sendMultiple", false);
-        break label186;
-        label150:
-        paramJumpActivity.finish();
-        return true;
-      }
-      else
-      {
-        paramJumpActivity.finish();
-        return true;
-      }
-    }
-    else
-    {
-      localIntent.putExtra("sendMultiple", true);
-      localIntent.putExtra("forward_text", paramJumpActivity.getString(2131691073));
-    }
-    label186:
-    localIntent.putExtras(paramBundle);
-    RouteUtils.a(paramJumpActivity, localIntent, "/base/forwardRecent");
     return false;
   }
   
@@ -1563,13 +1380,13 @@ public class JumpActivityHelper
         else
         {
           if (!(localObject instanceof String)) {
-            break label314;
+            break label315;
           }
           localIntent.setData(Uri.parse((String)localObject));
         }
         localIntent.putExtra("sendMultiple", false);
-        break label350;
-        label314:
+        break label351;
+        label315:
         paramJumpActivity.finish();
         return true;
       }
@@ -1582,9 +1399,9 @@ public class JumpActivityHelper
     else
     {
       localIntent.putExtra("sendMultiple", true);
-      localIntent.putExtra("forward_text", paramJumpActivity.getString(2131691073));
+      localIntent.putExtra("forward_text", paramJumpActivity.getString(2131888019));
     }
-    label350:
+    label351:
     localIntent.putExtras(paramBundle);
     a.a(localIntent, paramJumpActivity);
     return false;
@@ -1606,7 +1423,7 @@ public class JumpActivityHelper
     int i;
     try
     {
-      str = a(str);
+      str = b(str);
       if (!TextUtils.isEmpty(str)) {
         i = Integer.valueOf(str).intValue();
       }
@@ -1616,7 +1433,7 @@ public class JumpActivityHelper
       QLog.d("JumpActivityHelper", 1, "needToStartQZoneProcess catch NumberFormatException. ", localNumberFormatException);
       i = 1;
     }
-    if (((i == 3) || (i == 4)) && ("qzone".equals(paramJumpAction.b)) && ("publish".equals(paramJumpAction.c)))
+    if (((i == 3) || (i == 4)) && ("qzone".equals(paramJumpAction.d)) && ("publish".equals(paramJumpAction.e)))
     {
       QLog.i("JumpActivityHelper", 1, "ShareShuoshuoOrVideoToQZone and the JumpActivity has not finish.");
       return true;
@@ -1627,7 +1444,7 @@ public class JumpActivityHelper
     int j;
     try
     {
-      paramJumpActivity = a(paramJumpActivity);
+      paramJumpActivity = b(paramJumpActivity);
       if (!TextUtils.isEmpty(paramJumpActivity)) {
         j = Integer.valueOf(paramJumpActivity).intValue();
       }
@@ -1655,10 +1472,10 @@ public class JumpActivityHelper
         return false;
       }
       bool1 = bool2;
-      if (paramString1.equals(paramJumpAction.b))
+      if (paramString1.equals(paramJumpAction.d))
       {
         bool1 = bool2;
-        if (paramString2.equals(paramJumpAction.c)) {
+        if (paramString2.equals(paramJumpAction.e)) {
           bool1 = true;
         }
       }
@@ -1695,7 +1512,7 @@ public class JumpActivityHelper
   {
     if (paramJumpAction != null)
     {
-      if (paramJumpAction.jdField_a_of_type_JavaUtilHashMap == null) {
+      if (paramJumpAction.f == null) {
         return false;
       }
       try
@@ -1717,6 +1534,96 @@ public class JumpActivityHelper
     return false;
   }
   
+  public static int b(JumpActivity paramJumpActivity, Bundle paramBundle)
+  {
+    try
+    {
+      QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|beg");
+      Uri localUri = (Uri)paramBundle.getParcelable("android.intent.extra.STREAM");
+      if ((localUri != null) && ("file".equals(localUri.getScheme())) && (localUri.getPath().startsWith("/storage"))) {
+        return 4;
+      }
+      String str1 = paramBundle.getString("android.intent.extra.TITLE");
+      String str3 = paramBundle.getString("android.intent.extra.TEXT");
+      String str2 = paramJumpActivity.getIntent().getType();
+      if (TextUtils.isEmpty(str2))
+      {
+        QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|type null");
+        return 1;
+      }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("src_type", "app");
+      localHashMap.put("version", "1");
+      localHashMap.put("cflag", Base64Util.encodeToString("1".getBytes(), 0));
+      if (TextUtils.isEmpty(str1)) {
+        str1 = "";
+      } else {
+        str1 = Base64Util.encodeToString(str1.getBytes(), 0);
+      }
+      localHashMap.put("title", str1);
+      if (str2.startsWith("text")) {
+        return paramJumpActivity.qqFavHandleTypeTxt(paramBundle, localHashMap, localUri, str3);
+      }
+      if (str2.startsWith("image")) {
+        return paramJumpActivity.qqFavHandleTypeImage(paramBundle, localHashMap);
+      }
+      paramJumpActivity = new StringBuilder();
+      paramJumpActivity.append("startSystemShareToQQFav|unknown type. type=");
+      paramJumpActivity.append(str2);
+      QLog.d("JumpActivityHelper", 1, paramJumpActivity.toString());
+      return 1;
+    }
+    catch (OutOfMemoryError paramJumpActivity)
+    {
+      label256:
+      break label256;
+    }
+    QLog.d("JumpActivityHelper", 1, "startSystemShareToQQFav|outofmemoryerror");
+    return 1;
+  }
+  
+  public static Intent b(JumpActivity paramJumpActivity, boolean paramBoolean)
+  {
+    Intent localIntent = paramJumpActivity.getIntent();
+    Object localObject2 = localIntent.getExtras();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new Bundle();
+    }
+    if ((paramBoolean) && (!paramJumpActivity.getAppRuntime().isLogin()))
+    {
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("isActionSend", true);
+      ((Intent)localObject2).putExtras((Bundle)localObject1);
+      ((Intent)localObject2).putExtras(localIntent);
+      RouteUtils.a(paramJumpActivity, (Intent)localObject2, "/base/login", 20);
+      return null;
+    }
+    return localIntent;
+  }
+  
+  private static String b(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramString != null)
+    {
+      localObject1 = localObject2;
+      if (!"".equals(paramString)) {
+        if (paramString.length() == 0) {
+          return null;
+        }
+      }
+    }
+    try
+    {
+      localObject1 = new String(Base64Util.decode(paramString, 0));
+      return localObject1;
+    }
+    catch (Exception paramString) {}
+    return null;
+  }
+  
   public static void b(Intent paramIntent)
   {
     String str = paramIntent.getAction();
@@ -1734,12 +1641,6 @@ public class JumpActivityHelper
     ((HashMap)localObject).put("action", str);
     ((HashMap)localObject).put("data", paramIntent);
     QQBeaconReport.a("", "JA_ARGUMENTS", (Map)localObject);
-  }
-  
-  public static void b(JumpActivity paramJumpActivity)
-  {
-    a.b(paramJumpActivity);
-    paramJumpActivity.finish();
   }
   
   public static void b(JumpActivity paramJumpActivity, Intent paramIntent)
@@ -1760,54 +1661,6 @@ public class JumpActivityHelper
         ((ActivityURIRequest)localObject).extra().putAll(paramIntent.getExtras());
         QRoute.startUri((URIRequest)localObject, null);
       }
-    }
-    paramJumpActivity.finish();
-  }
-  
-  public static void b(JumpActivity paramJumpActivity, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("android.intent.extra.TEXT");
-    String str2 = paramJumpActivity.getIntent().getType();
-    Object localObject = paramBundle.getString("pkg_name");
-    if (paramJumpActivity.qserIsOn().booleanValue()) {
-      a.a(paramJumpActivity);
-    }
-    if ("cn.wps.moffice_eng".equals(localObject)) {
-      ReportController.b(paramJumpActivity.getAppRuntime(), "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
-    }
-    if (TextUtils.isEmpty(str2)) {
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("forward form JumpActivity doShare type=");
-      ((StringBuilder)localObject).append(str2);
-      QLog.d("JumpActivityHelper", 2, ((StringBuilder)localObject).toString());
-    }
-    if ((str2.startsWith("text")) && (!paramBundle.containsKey("android.intent.extra.STREAM"))) {
-      b(paramJumpActivity, str1);
-    } else if (str2.startsWith("message")) {
-      c(paramJumpActivity, paramBundle);
-    } else if (str2.startsWith("image"))
-    {
-      if (!a(paramJumpActivity, paramBundle)) {}
-    }
-    else if (a(paramJumpActivity, paramBundle, str2)) {
-      return;
-    }
-    paramBundle = paramJumpActivity.getIntent().getScheme();
-    if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.equals("geo")))
-    {
-      paramBundle = new Intent();
-      paramBundle.putExtras(new Bundle());
-      paramBundle.putExtra("isFromShare", true);
-      paramBundle.putExtra("forward_from_jump", true);
-      paramBundle.putExtra("forward_type", -2);
-      paramBundle.setData(paramJumpActivity.getIntent().getData());
-      a.a(paramBundle, paramJumpActivity);
-      paramJumpActivity.finish();
-      return;
     }
     paramJumpActivity.finish();
   }
@@ -1864,40 +1717,8 @@ public class JumpActivityHelper
       RouteUtils.a(paramJumpActivity, localIntent, "/base/safe/authDevOpenActivity");
     }
     if (localIntent.getBooleanExtra("open_devlock_from_roam", false)) {
-      paramJumpActivity.overridePendingTransition(2130771993, 2130771991);
+      paramJumpActivity.overridePendingTransition(2130771996, 2130771994);
     }
-  }
-  
-  public static void b(JumpActivity paramJumpActivity, boolean paramBoolean)
-  {
-    Intent localIntent = paramJumpActivity.getIntent();
-    if (localIntent == null)
-    {
-      QLog.i("JumpActivityHelper", 1, "system share.doShare error intent is null");
-      paramJumpActivity.finish();
-      return;
-    }
-    if (localIntent.getExtras() == null)
-    {
-      QLog.i("JumpActivityHelper", 1, "system share.doShare error extra is null");
-      paramJumpActivity.finish();
-      return;
-    }
-    if (BaseForwardUtil.a(paramJumpActivity))
-    {
-      c(paramJumpActivity, paramBoolean);
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShare", true, 0L, 0L, localHashMap, "");
-    boolean bool = e(paramJumpActivity, localIntent);
-    QLog.d("JumpActivityHelper", 1, new Object[] { "system share.doShare needGrantSDPermission=", Boolean.valueOf(bool) });
-    if ((bool) && (Build.VERSION.SDK_INT >= 23))
-    {
-      a.a(paramJumpActivity, paramBoolean);
-      return;
-    }
-    c(paramJumpActivity, paramBoolean);
   }
   
   public static void b(JumpActivity paramJumpActivity, boolean paramBoolean1, String paramString, boolean paramBoolean2)
@@ -1921,12 +1742,255 @@ public class JumpActivityHelper
     JumpActivity.sIsStartFromWpa = false;
     localObject = ((Intent)localObject).getDataString();
     localObject = JumpParser.a((BaseQQAppInterface)paramJumpActivity.getAppRuntime(), paramJumpActivity, (String)localObject);
-    ((JumpAction)localObject).b(paramString);
+    ((JumpAction)localObject).c(paramString);
     ((JumpAction)localObject).a();
     paramJumpActivity.finish();
   }
   
   public static boolean b(JumpActivity paramJumpActivity)
+  {
+    try
+    {
+      if (!JumpForwardPkgUtil.a(paramJumpActivity, true))
+      {
+        paramJumpActivity.finish();
+        return true;
+      }
+    }
+    catch (Throwable paramJumpActivity)
+    {
+      label14:
+      break label14;
+    }
+    return false;
+  }
+  
+  private static boolean b(JumpActivity paramJumpActivity, Intent paramIntent, JumpAction paramJumpAction, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if ((paramJumpAction.d.equals("qqidentifier")) && (paramString3 == null))
+    {
+      QLog.e("JumpActivityHelper", 1, "can not get caller");
+      paramJumpActivity.finish();
+      return false;
+    }
+    if ((paramJumpAction.d.equals("puzzle_verify_code")) && (paramJumpAction.e != null))
+    {
+      paramIntent = new Intent(paramJumpActivity.getIntent());
+      if (paramJumpAction.e.equals("PUZZLEVERIFYCODE"))
+      {
+        a.a(paramJumpActivity);
+        RouteUtils.a(paramJumpActivity, paramIntent, "/base/browser");
+      }
+      else if (paramJumpAction.e.equals("VERIFYCODE"))
+      {
+        RouteUtils.a(paramJumpActivity, paramIntent, "/base/verifyCode");
+      }
+      else if (paramJumpAction.e.equals("DEVLOCK_CODE"))
+      {
+        QPublicFragmentActivity.start(paramJumpActivity, paramIntent, ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getNewAuthDevUgFragment());
+      }
+      else if (paramJumpAction.e.equals("GATEVERIFY"))
+      {
+        QPublicFragmentActivity.start(paramJumpActivity, paramIntent, ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getNewAuthDevUgFragment());
+      }
+      paramJumpActivity.finish();
+      return false;
+    }
+    if ((!paramString1.startsWith("mqqwpa://im")) && (!paramString1.startsWith("mqqwpaopenid://im")))
+    {
+      if ((paramString1.startsWith("mqqapi:")) && ((paramString3 == null) || ("com.tencent.mobileqq".equals(paramString3)))) {
+        paramString3 = paramJumpActivity.getIntent().getStringExtra("pkg_name");
+      }
+      if ((!paramString1.startsWith("mqqapi://im")) && (!paramString1.startsWith("mqqapi://connect_miniapp"))) {
+        return a(paramJumpActivity, paramIntent, paramJumpAction, paramString1, paramString2, paramString3, paramString4);
+      }
+      paramJumpActivity.mPackageName = paramString3;
+      JumpActivity.doThirdPartyCheckLoginAndGesture(paramJumpActivity, true, paramString2, true);
+      return false;
+    }
+    JumpActivity.dowpa(paramJumpActivity, true, paramString2, true);
+    return false;
+  }
+  
+  public static boolean b(JumpActivity paramJumpActivity, JumpAction paramJumpAction)
+  {
+    return a(paramJumpActivity.getAppRuntime(), paramJumpAction);
+  }
+  
+  public static void c(JumpActivity paramJumpActivity)
+  {
+    a.b(paramJumpActivity);
+    paramJumpActivity.finish();
+  }
+  
+  public static void c(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    Intent localIntent;
+    if (!paramJumpActivity.getAppRuntime().isLogin())
+    {
+      localIntent = new Intent();
+      localIntent.addFlags(67371008);
+      localIntent.putExtra("QQCOMIC_SHORTCUT_JUMP_KEY", paramIntent);
+      localIntent.putExtras(paramIntent.getExtras());
+      RouteUtils.a(paramJumpActivity, localIntent, "/base/login");
+      paramJumpActivity.finish();
+      return;
+    }
+    if ((((IQJumpApi)QRoute.api(IQJumpApi.class)).gestureGetJumpLock(paramJumpActivity, paramJumpActivity.getAppRuntime().getCurrentAccountUin())) && (!BaseGesturePWDUtil.getAppForground(paramJumpActivity)))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("key_gesture_from_jumpactivity", true);
+      paramJumpActivity.gotoQQComic = new Intent();
+      paramJumpActivity.gotoQQComic.putExtras(paramIntent);
+      RouteUtils.a(paramJumpActivity, localIntent, "/base/gesturePwdUnlock", 572);
+      return;
+    }
+    b(paramJumpActivity, paramIntent);
+  }
+  
+  public static void c(JumpActivity paramJumpActivity, Bundle paramBundle)
+  {
+    String str1 = paramBundle.getString("android.intent.extra.TEXT");
+    String str2 = paramJumpActivity.getIntent().getType();
+    Object localObject = paramBundle.getString("pkg_name");
+    if (paramJumpActivity.qserIsOn().booleanValue()) {
+      a.a(paramJumpActivity);
+    }
+    if ("cn.wps.moffice_eng".equals(localObject)) {
+      ReportController.b(paramJumpActivity.getAppRuntime(), "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
+    }
+    if (TextUtils.isEmpty(str2)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("forward form JumpActivity doShare type=");
+      ((StringBuilder)localObject).append(str2);
+      QLog.d("JumpActivityHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((str2.startsWith("text")) && (!paramBundle.containsKey("android.intent.extra.STREAM"))) {
+      b(paramJumpActivity, str1);
+    } else if (str2.startsWith("message")) {
+      e(paramJumpActivity, paramBundle);
+    } else if (str2.startsWith("image"))
+    {
+      if (!d(paramJumpActivity, paramBundle)) {}
+    }
+    else if (a(paramJumpActivity, paramBundle, str2)) {
+      return;
+    }
+    paramBundle = paramJumpActivity.getIntent().getScheme();
+    if ((!TextUtils.isEmpty(paramBundle)) && (paramBundle.equals("geo")))
+    {
+      paramBundle = new Intent();
+      paramBundle.putExtras(new Bundle());
+      paramBundle.putExtra("isFromShare", true);
+      paramBundle.putExtra("forward_from_jump", true);
+      paramBundle.putExtra("forward_type", -2);
+      paramBundle.setData(paramJumpActivity.getIntent().getData());
+      a.a(paramBundle, paramJumpActivity);
+      paramJumpActivity.finish();
+      return;
+    }
+    paramJumpActivity.finish();
+  }
+  
+  public static void c(JumpActivity paramJumpActivity, boolean paramBoolean)
+  {
+    Intent localIntent = paramJumpActivity.getIntent();
+    if (localIntent == null)
+    {
+      QLog.i("JumpActivityHelper", 1, "system share.doShare error intent is null");
+      paramJumpActivity.finish();
+      return;
+    }
+    if (localIntent.getExtras() == null)
+    {
+      QLog.i("JumpActivityHelper", 1, "system share.doShare error extra is null");
+      paramJumpActivity.finish();
+      return;
+    }
+    if (BaseForwardUtil.a(paramJumpActivity))
+    {
+      d(paramJumpActivity, paramBoolean);
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "noSDPermissionShare", true, 0L, 0L, localHashMap, "");
+    boolean bool = l(paramJumpActivity, localIntent);
+    QLog.d("JumpActivityHelper", 1, new Object[] { "system share.doShare needGrantSDPermission=", Boolean.valueOf(bool) });
+    if ((bool) && (Build.VERSION.SDK_INT >= 23))
+    {
+      a.a(paramJumpActivity, paramBoolean);
+      return;
+    }
+    d(paramJumpActivity, paramBoolean);
+  }
+  
+  public static boolean c(JumpActivity paramJumpActivity, JumpAction paramJumpAction)
+  {
+    return a(paramJumpActivity, paramJumpAction);
+  }
+  
+  public static void d(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    Intent localIntent;
+    if (!paramJumpActivity.getAppRuntime().isLogin())
+    {
+      localIntent = new Intent();
+      localIntent.addFlags(67371008);
+      localIntent.putExtra("QFILE_SHORTCUT_JUMP_KEY", paramIntent);
+      localIntent.putExtras(paramIntent.getExtras());
+      RouteUtils.a(paramJumpActivity, localIntent, "/base/login");
+      paramJumpActivity.finish();
+      return;
+    }
+    if ((((IQJumpApi)QRoute.api(IQJumpApi.class)).gestureGetJumpLock(paramJumpActivity, paramJumpActivity.getAppRuntime().getCurrentAccountUin())) && (!BaseGesturePWDUtil.getAppForground(paramJumpActivity)))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("key_gesture_from_jumpactivity", true);
+      localIntent.putExtras(paramIntent.getExtras());
+      RouteUtils.a(paramJumpActivity, localIntent, "/base/gesturePwdUnlock", 570);
+      return;
+    }
+    c(paramJumpActivity);
+  }
+  
+  public static void d(JumpActivity paramJumpActivity, boolean paramBoolean)
+  {
+    Intent localIntent = paramJumpActivity.getIntent();
+    Bundle localBundle = localIntent.getExtras();
+    if (localBundle == null)
+    {
+      QLog.i("JumpActivityHelper", 1, "system share.doShare error extra is null");
+      paramJumpActivity.finish();
+      return;
+    }
+    if ((paramBoolean) && (!paramJumpActivity.getAppRuntime().isLogin()))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("isActionSend", true);
+      localIntent.putExtras(localBundle);
+      localIntent.putExtras(localIntent);
+      RouteUtils.a(paramJumpActivity, localIntent, "/base/login", 19);
+      return;
+    }
+    if (localBundle.getBoolean("qqfav_extra_from_system_share", false))
+    {
+      int i = paramJumpActivity.doQfavShare(localBundle);
+      if (i == 4) {
+        a(paramJumpActivity, 2131896047, 1);
+      } else if (i != 0) {
+        a(paramJumpActivity, 2131896043, 1);
+      }
+      paramJumpActivity.finish();
+      return;
+    }
+    a(paramJumpActivity, localIntent, 0);
+  }
+  
+  public static boolean d(JumpActivity paramJumpActivity)
   {
     Intent localIntent = paramJumpActivity.getIntent();
     if ((localIntent != null) && (!TextUtils.isEmpty(localIntent.getScheme())) && (localIntent.getScheme().equals("mqqdatamigration"))) {
@@ -1947,9 +2011,280 @@ public class JumpActivityHelper
     return false;
   }
   
-  public static boolean b(JumpActivity paramJumpActivity, Intent paramIntent)
+  private static boolean d(JumpActivity paramJumpActivity, Bundle paramBundle)
   {
-    if (a(paramJumpActivity)) {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isFromShare", true);
+    localIntent.putExtra("forward_from_jump", true);
+    localIntent.putExtra("k_favorites", true);
+    localIntent.putExtra("system_share", true);
+    localIntent.putExtra("selection_mode", 2);
+    localIntent.putExtras(new Bundle());
+    localIntent.putExtra("forward_type", 1);
+    if (paramJumpActivity.getIntent().getAction().equals("android.intent.action.SEND"))
+    {
+      Object localObject = paramBundle.get("android.intent.extra.STREAM");
+      if (localObject != null)
+      {
+        if ((localObject instanceof Uri))
+        {
+          localIntent.setData((Uri)localObject);
+        }
+        else
+        {
+          if (!(localObject instanceof String)) {
+            break label150;
+          }
+          localIntent.setData(Uri.parse((String)localObject));
+        }
+        localIntent.putExtra("sendMultiple", false);
+        break label186;
+        label150:
+        paramJumpActivity.finish();
+        return true;
+      }
+      else
+      {
+        paramJumpActivity.finish();
+        return true;
+      }
+    }
+    else
+    {
+      localIntent.putExtra("sendMultiple", true);
+      localIntent.putExtra("forward_text", paramJumpActivity.getString(2131888019));
+    }
+    label186:
+    localIntent.putExtras(paramBundle);
+    RouteUtils.a(paramJumpActivity, localIntent, "/base/forwardRecent");
+    return false;
+  }
+  
+  public static void e(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    if (!paramJumpActivity.getAppRuntime().isLogin())
+    {
+      f(paramJumpActivity);
+      return;
+    }
+    if ((((IQJumpApi)QRoute.api(IQJumpApi.class)).gestureGetJumpLock(paramJumpActivity, paramJumpActivity.getAppRuntime().getCurrentAccountUin())) && (!BaseGesturePWDUtil.getAppForground(paramJumpActivity)))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_gesture_from_jumpactivity", true);
+      localIntent.putExtras(paramIntent.getExtras());
+      RouteUtils.a(paramJumpActivity, localIntent, "/base/gesturePwdUnlock", 573);
+      return;
+    }
+    a(paramJumpActivity, paramIntent.getExtras());
+  }
+  
+  private static void e(JumpActivity paramJumpActivity, Bundle paramBundle)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtras(new Bundle());
+    localIntent.putExtra("isFromShare", true);
+    localIntent.putExtra("forward_from_jump", true);
+    localIntent.putExtra("k_favorites", true);
+    localIntent.putExtra("forward_type", -1);
+    localIntent.putExtra("forward_text", (SpannableString)paramBundle.get("android.intent.extra.TEXT"));
+    RouteUtils.a(paramJumpActivity, localIntent, "/base/forwardRecent");
+    paramJumpActivity.finish();
+  }
+  
+  private static void f(JumpActivity paramJumpActivity)
+  {
+    Intent localIntent = new Intent();
+    localIntent.addFlags(67371008);
+    RouteUtils.a(paramJumpActivity, localIntent, "/base/login");
+    paramJumpActivity.finish();
+  }
+  
+  public static void f(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    Object localObject = paramIntent.getData();
+    String str;
+    if (localObject != null)
+    {
+      str = new String(Base64Util.decode(((Uri)localObject).getQueryParameter("param"), 0));
+      paramIntent = ((Uri)localObject).getQueryParameter("appname");
+      ((Uri)localObject).getQueryParameter("src_type");
+      ((Uri)localObject).getQueryParameter("version");
+      localObject = ((Uri)localObject).getQueryParameter("share_id");
+    }
+    try
+    {
+      l = Long.parseLong((String)localObject);
+    }
+    catch (Exception localException)
+    {
+      long l;
+      label78:
+      break label78;
+    }
+    l = 0L;
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (l != 0L))
+    {
+      if (!"wangzhe".equals(paramIntent))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpActivityHelper", 2, "app name is not wangzhe");
+        }
+        return;
+      }
+      paramIntent = null;
+      try
+      {
+        str = new JSONObject(str).getString("url");
+        paramIntent = str;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if ((!paramJumpActivity.getAppRuntime().isLogin()) && (!TextUtils.isEmpty(paramIntent)))
+      {
+        a.b(paramJumpActivity, l, paramIntent);
+        return;
+      }
+      a.a(paramJumpActivity, l, paramIntent);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("JumpActivityHelper", 2, "app id is null,can not share");
+    }
+  }
+  
+  private static void g(JumpActivity paramJumpActivity)
+  {
+    Intent localIntent = new Intent();
+    localIntent.addFlags(268435456);
+    RouteUtils.a(paramJumpActivity, localIntent, "/base/start/splash");
+    paramJumpActivity.finish();
+  }
+  
+  public static void g(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    try
+    {
+      Object localObject = paramIntent.getParcelableExtra(((IQJumpApi)QRoute.api(IQJumpApi.class)).getSecurityVerifyPluginDataKey());
+      if ((!TextUtils.isEmpty(paramIntent.getStringExtra("url"))) && (((localObject instanceof InviteToGroupInfo)) || ((localObject instanceof JoinGroupInfo))))
+      {
+        localObject = new Intent();
+        ((Intent)localObject).putExtras(paramIntent);
+        RouteUtils.a(paramJumpActivity, (Intent)localObject, "/base/browser", 25);
+        return;
+      }
+      QLog.d("Q.security_verify", 1, "goToWebSecVerify, error param!");
+    }
+    catch (Exception paramIntent)
+    {
+      QLog.d("Q.security_verify", 1, "goToWebSecVerify", paramIntent);
+    }
+    paramJumpActivity.finish();
+  }
+  
+  private static void h(JumpActivity paramJumpActivity)
+  {
+    Object localObject2 = JumpForwardPkgManager.c(paramJumpActivity);
+    Object localObject1 = new StringBuilder();
+    if ((localObject2 != null) && (!((HashSet)localObject2).isEmpty()))
+    {
+      localObject2 = ((HashSet)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Iterator)localObject2).next();
+        if (((StringBuilder)localObject1).length() > 0) {
+          ((StringBuilder)localObject1).append("|");
+        }
+        ((StringBuilder)localObject1).append(str);
+      }
+    }
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (((String)localObject1).contains("com.tencent.mm"))
+      {
+        i = 1;
+        break label148;
+      }
+      if (((String)localObject1).contains("com.alibaba.android.rimet"))
+      {
+        i = 2;
+        break label148;
+      }
+      if (((String)localObject1).contains("com.tencent.wework"))
+      {
+        i = 3;
+        break label148;
+      }
+      if (((String)localObject1).contains("com.ss.android.lark.lite"))
+      {
+        i = 4;
+        break label148;
+      }
+    }
+    int i = 5;
+    label148:
+    ReportController.b(paramJumpActivity.getAppRuntime(), "dc00898", "", "", "0X800B008", "0X800B008", i, 0, "", "", "", "");
+  }
+  
+  public static boolean h(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    if (("android.intent.action.VIEW".equals(paramIntent.getAction())) && (paramIntent.getIntExtra("MINI_CONFIG_SCENE", -1) > 0) && (!TextUtils.isEmpty(paramIntent.getStringExtra("CONFIG_APPID"))))
+    {
+      JumpActivity.doJumpToMiniApp(paramJumpActivity, true);
+      return false;
+    }
+    if ("from_nearby_pb".equals(paramIntent.getStringExtra("from")))
+    {
+      m(paramJumpActivity, paramIntent);
+      return false;
+    }
+    if ("from_gesturemgr_download".equals(paramIntent.getAction()))
+    {
+      paramJumpActivity.finish();
+      return false;
+    }
+    if ("from_webtool_launchshortvideo".equals(paramIntent.getAction()))
+    {
+      n(paramJumpActivity, paramIntent);
+      return false;
+    }
+    if ((!"android.intent.action.SEND".equals(paramIntent.getAction())) && (!"android.intent.action.SEND_MULTIPLE".equals(paramIntent.getAction())))
+    {
+      if (("android.intent.action.VIEW".equals(paramIntent.getAction())) && (("file".equals(paramIntent.getScheme())) || ("content".equals(paramIntent.getScheme()))))
+      {
+        JumpActivity.doView(paramJumpActivity, true);
+        return false;
+      }
+      return true;
+    }
+    JumpActivity.doShare(paramJumpActivity, true);
+    return false;
+  }
+  
+  private static void i(JumpActivity paramJumpActivity)
+  {
+    try
+    {
+      ((IQJumpApi)QRoute.api(IQJumpApi.class)).buildMapActivityProxy(paramJumpActivity.getAppRuntime().getAccount());
+      RouteUtils.a(paramJumpActivity, new Intent().putExtra("uin", paramJumpActivity.getAppRuntime().getAccount()), "/base/qqmap", 18);
+      return;
+    }
+    catch (Exception localException)
+    {
+      label50:
+      break label50;
+    }
+    if (paramJumpActivity.doCallBack) {
+      a(paramJumpActivity, "Google Map not exist");
+    }
+    paramJumpActivity.finish();
+  }
+  
+  public static boolean i(JumpActivity paramJumpActivity, Intent paramIntent)
+  {
+    if (b(paramJumpActivity)) {
       return false;
     }
     if (("android.intent.action.SENDTO".equals(paramIntent.getAction())) && ("imto".equals(paramIntent.getScheme())))
@@ -1958,7 +2293,7 @@ public class JumpActivityHelper
       return false;
     }
     if ("thridapp".equals(paramIntent.getStringExtra("share_from"))) {
-      return a.a(paramJumpActivity, paramIntent);
+      return a.c(paramJumpActivity, paramIntent);
     }
     if ((("android.intent.action.MAIN".equals(paramIntent.getAction())) && (paramIntent.getBooleanExtra("_is_from_qlink_shortcut", false))) || (paramIntent.getBooleanExtra("_goto_qlink_when_login_suc_", false)))
     {
@@ -1988,150 +2323,27 @@ public class JumpActivityHelper
     }
     if (("android.intent.action.MAIN".equals(paramIntent.getAction())) && (paramIntent.getBooleanExtra("_is_from_kandian_shortcut", false)))
     {
-      j(paramJumpActivity, paramIntent);
+      o(paramJumpActivity, paramIntent);
       return false;
     }
     if ("mqqdatamigration".equals(paramIntent.getScheme()))
     {
-      k(paramJumpActivity, paramIntent);
+      p(paramJumpActivity, paramIntent);
       return false;
     }
     return true;
   }
   
-  private static boolean b(JumpActivity paramJumpActivity, Intent paramIntent, JumpAction paramJumpAction, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ((paramJumpAction.b.equals("qqidentifier")) && (paramString3 == null))
-    {
-      QLog.e("JumpActivityHelper", 1, "can not get caller");
-      paramJumpActivity.finish();
-      return false;
-    }
-    if ((paramJumpAction.b.equals("puzzle_verify_code")) && (paramJumpAction.c != null))
-    {
-      paramIntent = new Intent(paramJumpActivity.getIntent());
-      if (paramJumpAction.c.equals("PUZZLEVERIFYCODE"))
-      {
-        a.a(paramJumpActivity);
-        RouteUtils.a(paramJumpActivity, paramIntent, "/base/browser");
-      }
-      else if (paramJumpAction.c.equals("VERIFYCODE"))
-      {
-        RouteUtils.a(paramJumpActivity, paramIntent, "/base/verifyCode");
-      }
-      else if (paramJumpAction.c.equals("DEVLOCK_CODE"))
-      {
-        QPublicFragmentActivity.start(paramJumpActivity, paramIntent, ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getNewAuthDevUgFragment());
-      }
-      else if (paramJumpAction.c.equals("GATEVERIFY"))
-      {
-        QPublicFragmentActivity.start(paramJumpActivity, paramIntent, ((ILoginRegisterApi)QRoute.api(ILoginRegisterApi.class)).getNewAuthDevUgFragment());
-      }
-      paramJumpActivity.finish();
-      return false;
-    }
-    if ((!paramString1.startsWith("mqqwpa://im")) && (!paramString1.startsWith("mqqwpaopenid://im")))
-    {
-      if ((paramString1.startsWith("mqqapi:")) && ((paramString3 == null) || ("com.tencent.mobileqq".equals(paramString3)))) {
-        paramString3 = paramJumpActivity.getIntent().getStringExtra("pkg_name");
-      }
-      if ((!paramString1.startsWith("mqqapi://im")) && (!paramString1.startsWith("mqqapi://connect_miniapp"))) {
-        return a(paramJumpActivity, paramIntent, paramJumpAction, paramString1, paramString2, paramString3, paramString4);
-      }
-      paramJumpActivity.mPackageName = paramString3;
-      JumpActivity.doThirdPartyCheckLoginAndGesture(paramJumpActivity, true, paramString2, true);
-      return false;
-    }
-    JumpActivity.dowpa(paramJumpActivity, true, paramString2, true);
-    return false;
-  }
-  
-  public static boolean b(JumpActivity paramJumpActivity, JumpAction paramJumpAction)
-  {
-    return a(paramJumpActivity.getAppRuntime(), paramJumpAction);
-  }
-  
-  public static void c(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    Intent localIntent;
-    if (!paramJumpActivity.getAppRuntime().isLogin())
-    {
-      localIntent = new Intent();
-      localIntent.addFlags(67371008);
-      localIntent.putExtra("QQCOMIC_SHORTCUT_JUMP_KEY", paramIntent);
-      localIntent.putExtras(paramIntent.getExtras());
-      RouteUtils.a(paramJumpActivity, localIntent, "/base/login");
-      paramJumpActivity.finish();
-      return;
-    }
-    if ((((IQJumpApi)QRoute.api(IQJumpApi.class)).gestureGetJumpLock(paramJumpActivity, paramJumpActivity.getAppRuntime().getCurrentAccountUin())) && (!BaseGesturePWDUtil.getAppForground(paramJumpActivity)))
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("key_gesture_from_jumpactivity", true);
-      paramJumpActivity.gotoQQComic = new Intent();
-      paramJumpActivity.gotoQQComic.putExtras(paramIntent);
-      RouteUtils.a(paramJumpActivity, localIntent, "/base/gesturePwdUnlock", 572);
-      return;
-    }
-    b(paramJumpActivity, paramIntent);
-  }
-  
-  private static void c(JumpActivity paramJumpActivity, Bundle paramBundle)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtras(new Bundle());
-    localIntent.putExtra("isFromShare", true);
-    localIntent.putExtra("forward_from_jump", true);
-    localIntent.putExtra("k_favorites", true);
-    localIntent.putExtra("forward_type", -1);
-    localIntent.putExtra("forward_text", (SpannableString)paramBundle.get("android.intent.extra.TEXT"));
-    RouteUtils.a(paramJumpActivity, localIntent, "/base/forwardRecent");
-    paramJumpActivity.finish();
-  }
-  
-  public static void c(JumpActivity paramJumpActivity, boolean paramBoolean)
-  {
-    Intent localIntent = paramJumpActivity.getIntent();
-    Bundle localBundle = localIntent.getExtras();
-    if (localBundle == null)
-    {
-      QLog.i("JumpActivityHelper", 1, "system share.doShare error extra is null");
-      paramJumpActivity.finish();
-      return;
-    }
-    if ((paramBoolean) && (!paramJumpActivity.getAppRuntime().isLogin()))
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("isActionSend", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtras(localIntent);
-      RouteUtils.a(paramJumpActivity, localIntent, "/base/login", 19);
-      return;
-    }
-    if (localBundle.getBoolean("qqfav_extra_from_system_share", false))
-    {
-      int i = paramJumpActivity.doQfavShare(localBundle);
-      if (i == 4) {
-        a(paramJumpActivity, 2131698146, 1);
-      } else if (i != 0) {
-        a(paramJumpActivity, 2131698142, 1);
-      }
-      paramJumpActivity.finish();
-      return;
-    }
-    a(paramJumpActivity, localIntent, 0);
-  }
-  
-  public static boolean c(JumpActivity paramJumpActivity, Intent paramIntent)
+  public static boolean j(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     if (("mqq".equals(paramIntent.getScheme())) && ("mqq://".equals(paramIntent.getDataString())))
     {
-      e(paramJumpActivity);
+      g(paramJumpActivity);
       return false;
     }
     if ("mqqaudioassistant".equals(paramIntent.getScheme()))
     {
-      l(paramJumpActivity, paramIntent);
+      q(paramJumpActivity, paramIntent);
       return false;
     }
     if ("com.tencent.security.VERIFY_WEB".equals(paramIntent.getAction()))
@@ -2139,7 +2351,7 @@ public class JumpActivityHelper
       paramJumpActivity.goToWebSecVerify(paramIntent);
       return false;
     }
-    if (a.b(paramJumpActivity, paramIntent))
+    if (a.f(paramJumpActivity, paramIntent))
     {
       paramJumpActivity.finish();
       return false;
@@ -2147,44 +2359,7 @@ public class JumpActivityHelper
     return true;
   }
   
-  public static boolean c(JumpActivity paramJumpActivity, JumpAction paramJumpAction)
-  {
-    return a(paramJumpActivity, paramJumpAction);
-  }
-  
-  private static void d(JumpActivity paramJumpActivity)
-  {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(67371008);
-    RouteUtils.a(paramJumpActivity, localIntent, "/base/login");
-    paramJumpActivity.finish();
-  }
-  
-  public static void d(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    Intent localIntent;
-    if (!paramJumpActivity.getAppRuntime().isLogin())
-    {
-      localIntent = new Intent();
-      localIntent.addFlags(67371008);
-      localIntent.putExtra("QFILE_SHORTCUT_JUMP_KEY", paramIntent);
-      localIntent.putExtras(paramIntent.getExtras());
-      RouteUtils.a(paramJumpActivity, localIntent, "/base/login");
-      paramJumpActivity.finish();
-      return;
-    }
-    if ((((IQJumpApi)QRoute.api(IQJumpApi.class)).gestureGetJumpLock(paramJumpActivity, paramJumpActivity.getAppRuntime().getCurrentAccountUin())) && (!BaseGesturePWDUtil.getAppForground(paramJumpActivity)))
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("key_gesture_from_jumpactivity", true);
-      localIntent.putExtras(paramIntent.getExtras());
-      RouteUtils.a(paramJumpActivity, localIntent, "/base/gesturePwdUnlock", 570);
-      return;
-    }
-    b(paramJumpActivity);
-  }
-  
-  public static boolean d(JumpActivity paramJumpActivity, Intent paramIntent)
+  public static boolean k(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     String str1 = paramJumpActivity.getIntent().getDataString();
     String str2 = paramJumpActivity.getIntent().getStringExtra("from");
@@ -2331,11 +2506,11 @@ public class JumpActivityHelper
       }
       localObject2 = JumpParser.a((BaseQQAppInterface)paramJumpActivity.getAppRuntime(), paramJumpActivity, str1);
       if (("webview".equals(str2)) && (localObject2 != null)) {
-        ((JumpAction)localObject2).b(str2);
+        ((JumpAction)localObject2).c(str2);
       }
-      if ((localObject2 != null) && (((JumpAction)localObject2).b != null))
+      if ((localObject2 != null) && (((JumpAction)localObject2).d != null))
       {
-        ((JumpAction)localObject2).jdField_a_of_type_Boolean = true;
+        ((JumpAction)localObject2).g = true;
         return b(paramJumpActivity, paramIntent, (JumpAction)localObject2, str1, str2, (String)localObject1, (String)localObject3);
       }
     }
@@ -2358,38 +2533,12 @@ public class JumpActivityHelper
       return false;
     }
     if (paramJumpActivity.isActionSelectLocation) {
-      g(paramJumpActivity);
+      i(paramJumpActivity);
     }
     return false;
   }
   
-  private static void e(JumpActivity paramJumpActivity)
-  {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    RouteUtils.a(paramJumpActivity, localIntent, "/base/start/splash");
-    paramJumpActivity.finish();
-  }
-  
-  public static void e(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    if (!paramJumpActivity.getAppRuntime().isLogin())
-    {
-      d(paramJumpActivity);
-      return;
-    }
-    if ((((IQJumpApi)QRoute.api(IQJumpApi.class)).gestureGetJumpLock(paramJumpActivity, paramJumpActivity.getAppRuntime().getCurrentAccountUin())) && (!BaseGesturePWDUtil.getAppForground(paramJumpActivity)))
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_gesture_from_jumpactivity", true);
-      localIntent.putExtras(paramIntent.getExtras());
-      RouteUtils.a(paramJumpActivity, localIntent, "/base/gesturePwdUnlock", 573);
-      return;
-    }
-    a(paramJumpActivity, paramIntent.getExtras());
-  }
-  
-  public static boolean e(JumpActivity paramJumpActivity, Intent paramIntent)
+  public static boolean l(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     if (paramIntent == null) {
       return false;
@@ -2460,147 +2609,7 @@ public class JumpActivityHelper
     }
   }
   
-  private static void f(JumpActivity paramJumpActivity)
-  {
-    Object localObject2 = JumpForwardPkgManager.a(paramJumpActivity);
-    Object localObject1 = new StringBuilder();
-    if ((localObject2 != null) && (!((HashSet)localObject2).isEmpty()))
-    {
-      localObject2 = ((HashSet)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        String str = (String)((Iterator)localObject2).next();
-        if (((StringBuilder)localObject1).length() > 0) {
-          ((StringBuilder)localObject1).append("|");
-        }
-        ((StringBuilder)localObject1).append(str);
-      }
-    }
-    localObject1 = ((StringBuilder)localObject1).toString();
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      if (((String)localObject1).contains("com.tencent.mm"))
-      {
-        i = 1;
-        break label148;
-      }
-      if (((String)localObject1).contains("com.alibaba.android.rimet"))
-      {
-        i = 2;
-        break label148;
-      }
-      if (((String)localObject1).contains("com.tencent.wework"))
-      {
-        i = 3;
-        break label148;
-      }
-      if (((String)localObject1).contains("com.ss.android.lark.lite"))
-      {
-        i = 4;
-        break label148;
-      }
-    }
-    int i = 5;
-    label148:
-    ReportController.b(paramJumpActivity.getAppRuntime(), "dc00898", "", "", "0X800B008", "0X800B008", i, 0, "", "", "", "");
-  }
-  
-  public static void f(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    Object localObject = paramIntent.getData();
-    String str;
-    if (localObject != null)
-    {
-      str = new String(Base64Util.decode(((Uri)localObject).getQueryParameter("param"), 0));
-      paramIntent = ((Uri)localObject).getQueryParameter("appname");
-      ((Uri)localObject).getQueryParameter("src_type");
-      ((Uri)localObject).getQueryParameter("version");
-      localObject = ((Uri)localObject).getQueryParameter("share_id");
-    }
-    try
-    {
-      l = Long.parseLong((String)localObject);
-    }
-    catch (Exception localException)
-    {
-      long l;
-      label76:
-      break label76;
-    }
-    l = 0L;
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (l != 0L))
-    {
-      if (!"wangzhe".equals(paramIntent))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("JumpActivityHelper", 2, "app name is not wangzhe");
-        }
-        return;
-      }
-      paramIntent = null;
-      try
-      {
-        str = new JSONObject(str).getString("url");
-        paramIntent = str;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      if ((!paramJumpActivity.getAppRuntime().isLogin()) && (!TextUtils.isEmpty(paramIntent)))
-      {
-        a.b(paramJumpActivity, l, paramIntent);
-        return;
-      }
-      a.a(paramJumpActivity, l, paramIntent);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("JumpActivityHelper", 2, "app id is null,can not share");
-    }
-  }
-  
-  private static void g(JumpActivity paramJumpActivity)
-  {
-    try
-    {
-      ((IQJumpApi)QRoute.api(IQJumpApi.class)).buildMapActivityProxy(paramJumpActivity.getAppRuntime().getAccount());
-      RouteUtils.a(paramJumpActivity, new Intent().putExtra("uin", paramJumpActivity.getAppRuntime().getAccount()), "/base/qqmap", 18);
-      return;
-    }
-    catch (Exception localException)
-    {
-      label50:
-      break label50;
-    }
-    if (paramJumpActivity.doCallBack) {
-      a(paramJumpActivity, "Google Map not exist");
-    }
-    paramJumpActivity.finish();
-  }
-  
-  public static void g(JumpActivity paramJumpActivity, Intent paramIntent)
-  {
-    try
-    {
-      Object localObject = paramIntent.getParcelableExtra(((IQJumpApi)QRoute.api(IQJumpApi.class)).getSecurityVerifyPluginDataKey());
-      if ((!TextUtils.isEmpty(paramIntent.getStringExtra("url"))) && (((localObject instanceof InviteToGroupInfo)) || ((localObject instanceof JoinGroupInfo))))
-      {
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(paramIntent);
-        RouteUtils.a(paramJumpActivity, (Intent)localObject, "/base/browser", 25);
-        return;
-      }
-      QLog.d("Q.security_verify", 1, "goToWebSecVerify, error param!");
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.d("Q.security_verify", 1, "goToWebSecVerify", paramIntent);
-    }
-    paramJumpActivity.finish();
-  }
-  
-  private static void h(JumpActivity paramJumpActivity, Intent paramIntent)
+  private static void m(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     try
     {
@@ -2609,7 +2618,7 @@ public class JumpActivityHelper
       {
         paramIntent = JumpParser.a((BaseQQAppInterface)paramJumpActivity.getAppRuntime(), paramJumpActivity, paramIntent);
         if (paramIntent != null) {
-          paramIntent.f();
+          paramIntent.l();
         }
       }
     }
@@ -2626,24 +2635,24 @@ public class JumpActivityHelper
     paramJumpActivity.finish();
   }
   
-  private static void i(JumpActivity paramJumpActivity, Intent paramIntent)
+  private static void n(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     paramIntent = paramIntent.getExtras();
     ((IQJumpApi)QRoute.api(IQJumpApi.class)).qzoneLaunchForPreview(paramJumpActivity, paramIntent);
     paramJumpActivity.finish();
   }
   
-  private static void j(JumpActivity paramJumpActivity, Intent paramIntent)
+  private static void o(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     a.b(paramJumpActivity, paramIntent);
   }
   
-  private static void k(JumpActivity paramJumpActivity, Intent paramIntent)
+  private static void p(JumpActivity paramJumpActivity, Intent paramIntent)
   {
-    a.c(paramJumpActivity, paramIntent);
+    a.d(paramJumpActivity, paramIntent);
   }
   
-  private static void l(JumpActivity paramJumpActivity, Intent paramIntent)
+  private static void q(JumpActivity paramJumpActivity, Intent paramIntent)
   {
     QLog.d("JumpActivityHelper", 1, "get mqqaudioassistant Jump");
     Uri localUri = paramIntent.getData();
@@ -2653,7 +2662,7 @@ public class JumpActivityHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.JumpActivityHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -12,12 +12,12 @@ class QzoneWebMusicJsPlugin$24
   
   public void run()
   {
-    RemoteHandleManager.getInstance().getSender().setPlayMode(this.this$0.mRuntime.a().getLongAccountUin(), this.val$random, this.val$auto, this.val$_loopPlay);
+    RemoteHandleManager.getInstance().getSender().setPlayMode(this.this$0.mRuntime.b().getLongAccountUin(), this.val$random, this.val$auto, this.val$_loopPlay);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.24
  * JD-Core Version:    0.7.0.1
  */

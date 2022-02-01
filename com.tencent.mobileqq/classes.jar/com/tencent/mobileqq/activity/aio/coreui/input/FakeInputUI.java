@@ -18,25 +18,25 @@ public class FakeInputUI
   implements View.OnClickListener
 {
   protected float a;
-  public View a;
-  RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
   public View b;
-  RelativeLayout.LayoutParams b;
+  RelativeLayout.LayoutParams c;
+  public View d;
+  RelativeLayout.LayoutParams e;
+  private final AIOContext f;
   
   public FakeInputUI(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
-    this.jdField_a_of_type_Float = paramAIOContext.a().getApplication().getResources().getDisplayMetrics().density;
+    this.f = paramAIOContext;
+    this.a = paramAIOContext.a().getApplication().getResources().getDisplayMetrics().density;
   }
   
   public void a()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView != null) {
       localView.setVisibility(0);
     }
-    localView = this.jdField_a_of_type_AndroidViewView;
+    localView = this.b;
     if (localView != null) {
       localView.setVisibility(0);
     }
@@ -44,7 +44,7 @@ public class FakeInputUI
   
   public void a(int paramInt)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.b;
     if (localView != null) {
       if (paramInt >= 1) {
         localView.setVisibility(8);
@@ -52,7 +52,7 @@ public class FakeInputUI
         localView.setVisibility(0);
       }
     }
-    localView = this.jdField_b_of_type_AndroidViewView;
+    localView = this.d;
     if (localView != null)
     {
       if (paramInt >= 1)
@@ -66,11 +66,11 @@ public class FakeInputUI
   
   public void b()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView != null) {
       localView.setVisibility(8);
     }
-    localView = this.jdField_a_of_type_AndroidViewView;
+    localView = this.b;
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -78,11 +78,11 @@ public class FakeInputUI
   
   public void c()
   {
-    View localView = this.jdField_b_of_type_AndroidViewView;
+    View localView = this.d;
     if (localView != null) {
       localView.setVisibility(4);
     }
-    localView = this.jdField_a_of_type_AndroidViewView;
+    localView = this.b;
     if (localView != null) {
       localView.setVisibility(4);
     }
@@ -90,53 +90,72 @@ public class FakeInputUI
   
   protected void d()
   {
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.b == null)
     {
-      this.jdField_a_of_type_AndroidViewView = new View(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, (int)(this.jdField_a_of_type_Float * 15.0F + 0.5F));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(3, 2131368875);
-      this.jdField_a_of_type_AndroidViewView.setId(2131362363);
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
+      this.b = new View(this.f.b());
+      this.c = new RelativeLayout.LayoutParams(-1, (int)(this.a * 15.0F + 0.5F));
+      this.c.addRule(3, 2131435809);
+      this.b.setId(2131427963);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.f.d(2131430542);
       if (localRelativeLayout != null) {
-        localRelativeLayout.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+        localRelativeLayout.addView(this.b, this.c);
       }
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    if (AppSetting.d) {
-      AccessibilityUtil.a(this.jdField_a_of_type_AndroidViewView, false);
+    this.b.setVisibility(0);
+    this.b.setOnClickListener(this);
+    if (AppSetting.e) {
+      AccessibilityUtil.a(this.b, false);
     }
   }
   
   protected void e()
   {
-    if (this.jdField_b_of_type_AndroidViewView == null)
+    if (this.d == null)
     {
-      this.jdField_b_of_type_AndroidViewView = new View(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a());
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-1, (int)(this.jdField_a_of_type_Float * 12.0F + 0.5F));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(6, 2131368875);
-      this.jdField_b_of_type_AndroidViewView.setId(2131362364);
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(2131364485);
+      this.d = new View(this.f.b());
+      this.e = new RelativeLayout.LayoutParams(-1, (int)(this.a * 12.0F + 0.5F));
+      this.e.addRule(6, 2131435809);
+      this.d.setId(2131427964);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.f.d(2131430542);
       if (localRelativeLayout != null) {
-        localRelativeLayout.addView(this.jdField_b_of_type_AndroidViewView, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+        localRelativeLayout.addView(this.d, this.e);
       }
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    if (AppSetting.d) {
-      AccessibilityUtil.a(this.jdField_b_of_type_AndroidViewView, false);
+    this.d.setVisibility(0);
+    this.d.setOnClickListener(this);
+    if (AppSetting.e) {
+      AccessibilityUtil.a(this.d, false);
+    }
+  }
+  
+  public void f()
+  {
+    RelativeLayout localRelativeLayout;
+    if (this.b != null)
+    {
+      localRelativeLayout = (RelativeLayout)this.f.d(2131430542);
+      if (localRelativeLayout != null) {
+        localRelativeLayout.removeView(this.b);
+      }
+    }
+    if (this.d != null)
+    {
+      localRelativeLayout = (RelativeLayout)this.f.d(2131430542);
+      if (localRelativeLayout != null) {
+        localRelativeLayout.removeView(this.d);
+      }
     }
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(1, true);
+    this.f.q().a(1, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.input.FakeInputUI
  * JD-Core Version:    0.7.0.1
  */

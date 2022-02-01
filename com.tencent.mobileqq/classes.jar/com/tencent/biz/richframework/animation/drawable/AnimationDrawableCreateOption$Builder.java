@@ -4,34 +4,34 @@ import com.tencent.biz.richframework.download.RFWDownloadStrategy;
 
 public class AnimationDrawableCreateOption$Builder
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private RFWDownloadStrategy jdField_a_of_type_ComTencentBizRichframeworkDownloadRFWDownloadStrategy;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
+  private String a;
+  private boolean b;
+  private long c;
+  private int d;
+  private int e;
+  private boolean f;
+  private RFWDownloadStrategy g;
   
   public AnimationDrawableCreateOption$Builder(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public Builder a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
     return this;
   }
   
   public Builder a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramLong;
     return this;
   }
   
   public Builder a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
     return this;
   }
   
@@ -40,9 +40,15 @@ public class AnimationDrawableCreateOption$Builder
     return new AnimationDrawableCreateOption(this, null);
   }
   
+  public Builder b(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
+  }
+  
   public Builder b(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
     return this;
   }
 }

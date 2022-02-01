@@ -11,7 +11,7 @@ class PushBroadcastReceiver$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("classname");
+    Object localObject = this.a.getStringExtra("classname");
     Class localClass;
     if (localObject != null) {
       try
@@ -27,12 +27,12 @@ class PushBroadcastReceiver$1
     } else {
       localClass = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.showIdleNotification(BaseApplication.getContext(), localClass);
+    this.b.showIdleNotification(BaseApplication.getContext(), localClass);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.PushBroadcastReceiver.1
  * JD-Core Version:    0.7.0.1
  */

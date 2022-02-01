@@ -13,10 +13,10 @@ class RMVideoInitState$2
   
   public void run()
   {
-    boolean bool = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeature(CameraCompatibleConstants.y);
+    boolean bool = ((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProductFeature(CameraCompatibleConstants.z);
     if (bool)
     {
-      RMVideoStateMgr.a().a(1102, HardCodeUtil.a(2131713376), true);
+      RMVideoStateMgr.a().a(1102, HardCodeUtil.a(2131910929), true);
       return;
     }
     try
@@ -26,7 +26,7 @@ class RMVideoInitState$2
       {
         localRMVideoStateMgr = RMVideoStateMgr.a();
         localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131713382));
+        localStringBuilder.append(HardCodeUtil.a(2131910935));
         localStringBuilder.append(1102);
         localRMVideoStateMgr.a(1102, localStringBuilder.toString(), true);
       }
@@ -41,9 +41,9 @@ class RMVideoInitState$2
         localStringBuilder.append(" black=");
         localStringBuilder.append(bool);
         localStringBuilder.append(" rmStateMgr.mIsAudioReady=");
-        localStringBuilder.append(localRMVideoStateMgr.d);
+        localStringBuilder.append(localRMVideoStateMgr.q);
         localStringBuilder.append(" rmStateMgr.mVideoFileDir=");
-        localStringBuilder.append(localRMVideoStateMgr.a);
+        localStringBuilder.append(localRMVideoStateMgr.s);
         QLog.e("RMVideoInitState", 2, localStringBuilder.toString());
       }
       RMVideoStateMgr.b(null);
@@ -57,7 +57,7 @@ class RMVideoInitState$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public final class ScreenCaptureHelper$saveBitmapAndUpload$1
   
   public void onFileDownloadFailed(int paramInt)
   {
-    IImageUploadListener localIImageUploadListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIImageUploadListener;
+    IImageUploadListener localIImageUploadListener = this.c;
     if (localIImageUploadListener != null) {
       localIImageUploadListener.a(2, "");
     }
@@ -23,15 +23,15 @@ public final class ScreenCaptureHelper$saveBitmapAndUpload$1
   
   public void onFileDownloadSucceed(long paramLong)
   {
-    ScreenCaptureHelper.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedbackScreenCaptureHelper, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcUploadIImageUploadListener);
-    if (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    ScreenCaptureHelper.a(this.a, this.b, this.c);
+    if (!this.d.isRecycled()) {
+      this.d.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeedback.ScreenCaptureHelper.saveBitmapAndUpload.1
  * JD-Core Version:    0.7.0.1
  */

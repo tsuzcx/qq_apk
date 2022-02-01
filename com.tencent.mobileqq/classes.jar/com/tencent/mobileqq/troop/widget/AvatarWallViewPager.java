@@ -25,26 +25,26 @@ import mqq.app.MobileQQ;
 public class AvatarWallViewPager
   extends RelativeLayout
 {
-  protected float a;
   protected int a;
-  protected Context a;
-  protected Drawable a;
-  protected Handler a;
-  protected LinearLayout.LayoutParams a;
-  protected LinearLayout a;
-  protected ViewPager.SimpleOnPageChangeListener a;
-  protected AvatarWallViewPager.RollViewPager a;
-  protected AvatarWallViewPagerAdapter a;
-  protected boolean a;
-  protected View[] a;
-  protected float b;
-  protected int b;
-  protected Drawable b;
-  protected boolean b;
-  protected float c;
-  private boolean c = true;
-  protected float d;
-  private boolean d = false;
+  protected Context b;
+  protected AvatarWallViewPager.RollViewPager c;
+  protected boolean d = true;
+  protected AvatarWallViewPagerAdapter e;
+  protected LinearLayout f;
+  protected LinearLayout.LayoutParams g;
+  protected View[] h;
+  protected Drawable i;
+  protected Drawable j;
+  protected boolean k = false;
+  protected float l;
+  protected float m;
+  protected float n;
+  protected float o;
+  protected int p;
+  protected ViewPager.SimpleOnPageChangeListener q;
+  protected Handler r = new AvatarWallViewPager.1(this, Looper.getMainLooper());
+  private boolean s = true;
+  private boolean t = false;
   
   public AvatarWallViewPager(Context paramContext)
   {
@@ -54,122 +54,128 @@ public class AvatarWallViewPager
   public AvatarWallViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new AvatarWallViewPager.1(this, Looper.getMainLooper());
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
-  }
-  
-  protected View a()
-  {
-    View localView = new View(this.jdField_a_of_type_AndroidContentContext);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
-    {
-      int i = ViewUtils.a(6.0F);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(i, i);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = ViewUtils.a(7.0F);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BizTroopUtil.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130843874));
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = BizTroopUtil.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130843874));
-      if (ThemeUtil.isInNightMode(MobileQQ.sMobileQQ.waitAppRuntime(null)))
-      {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
-    }
-    localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
-    localView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    return localView;
-  }
-  
-  protected LinearLayout a()
-  {
-    return new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
   }
   
   protected void a()
   {
-    this.jdField_a_of_type_Int = ViewConfiguration.get(this.jdField_a_of_type_AndroidContentContext).getScaledTouchSlop();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager = new AvatarWallViewPager.RollViewPager(this, this.jdField_a_of_type_AndroidContentContext);
-    addView(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager, new RelativeLayout.LayoutParams(-1, -1));
+    this.a = ViewConfiguration.get(this.b).getScaledTouchSlop();
+    this.c = new AvatarWallViewPager.RollViewPager(this, this.b);
+    addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    localLayoutParams.rightMargin = ViewUtils.a(13.0F);
-    localLayoutParams.bottomMargin = ViewUtils.a(10.0F);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = a();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(getResources().getColor(17170445));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(5);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setOnPageChangeListener(new AvatarWallViewPager.RollerChangeListener(this));
-    new AvatarWallViewPager.RollScroller(this, this.jdField_a_of_type_AndroidContentContext, new LinearInterpolator()).a();
+    localLayoutParams.rightMargin = ViewUtils.dip2px(13.0F);
+    localLayoutParams.bottomMargin = ViewUtils.dip2px(10.0F);
+    this.f = e();
+    this.f.setBackgroundColor(getResources().getColor(17170445));
+    this.f.setGravity(5);
+    addView(this.f, localLayoutParams);
+    this.c.setOnPageChangeListener(new AvatarWallViewPager.RollerChangeListener(this));
+    new AvatarWallViewPager.RollScroller(this, this.b, new LinearInterpolator()).a();
   }
   
-  public void b()
+  protected View b()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a();
-    if (j == 0)
+    View localView = new View(this.b);
+    if (this.g == null)
+    {
+      int i1 = ViewUtils.dip2px(6.0F);
+      this.g = new LinearLayout.LayoutParams(i1, i1);
+      this.g.leftMargin = ViewUtils.dip2px(7.0F);
+      this.i = BizTroopUtil.a(getResources(), Color.parseColor("#80ffffff"), getResources().getDrawable(2130844829));
+      this.j = BizTroopUtil.a(getResources(), Color.parseColor("#ffffffff"), getResources().getDrawable(2130844829));
+      if (ThemeUtil.isInNightMode(MobileQQ.sMobileQQ.waitAppRuntime(null)))
+      {
+        this.i.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+        this.j.setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
+      }
+    }
+    localView.setLayoutParams(this.g);
+    localView.setBackgroundDrawable(this.i);
+    return localView;
+  }
+  
+  public void c()
+  {
+    int i2 = this.e.a();
+    if (i2 == 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AvatarWallViewPager", 2, "startRoll error, the count of avatars is 0...");
       }
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    if (j > 1)
+    this.f.removeAllViews();
+    if (i2 > 1)
     {
-      this.jdField_a_of_type_ArrayOfAndroidViewView = new View[j];
-      int i = 0;
-      while (i < j)
+      this.h = new View[i2];
+      int i1 = 0;
+      while (i1 < i2)
       {
-        this.jdField_a_of_type_ArrayOfAndroidViewView[i] = a();
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ArrayOfAndroidViewView[i]);
-        i += 1;
+        this.h[i1] = b();
+        this.f.addView(this.h[i1]);
+        i1 += 1;
       }
-      this.jdField_a_of_type_ArrayOfAndroidViewView[0].setBackgroundDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-      this.jdField_b_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.jdField_b_of_type_Int, false);
-      d();
+      this.h[0].setBackgroundDrawable(this.j);
+      this.p = 1;
+      this.c.setCurrentItem(this.p, false);
+      f();
     }
     else
     {
-      e();
+      g();
     }
     if (QLog.isColorLevel()) {
       QLog.d("AvatarWallViewPager", 2, "startRoll is called successfully");
     }
   }
   
-  public void c()
+  public void d()
   {
-    e();
+    g();
   }
   
-  protected void d()
+  protected LinearLayout e()
   {
-    this.c = false;
-    if (this.d)
+    return new LinearLayout(this.b);
+  }
+  
+  protected void f()
+  {
+    this.s = false;
+    if (this.t)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      this.r.removeCallbacksAndMessages(null);
+      Handler localHandler = this.r;
       localHandler.sendMessageDelayed(localHandler.obtainMessage(), 4000L);
     }
   }
   
-  protected void e()
+  protected void g()
   {
-    this.c = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.s = true;
+    this.r.removeCallbacksAndMessages(null);
+  }
+  
+  public int getCurrentItem()
+  {
+    int i1 = this.p;
+    if (i1 > 0) {
+      return i1 - 1;
+    }
+    return 0;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.d = true;
-    if (!this.c)
+    this.t = true;
+    if (!this.s)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      this.r.removeCallbacksAndMessages(null);
+      Handler localHandler = this.r;
       localHandler.sendMessageDelayed(localHandler.obtainMessage(), 4000L);
     }
   }
@@ -177,27 +183,27 @@ public class AvatarWallViewPager
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.d = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.t = false;
+    this.r.removeCallbacksAndMessages(null);
   }
   
   public void setAdapter(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter)
   {
     if (paramAvatarWallViewPagerAdapter != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter = paramAvatarWallViewPagerAdapter;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setAdapter(paramAvatarWallViewPagerAdapter);
+      this.e = paramAvatarWallViewPagerAdapter;
+      this.c.setAdapter(paramAvatarWallViewPagerAdapter);
     }
   }
   
   public void setOnPageChangeListener(ViewPager.SimpleOnPageChangeListener paramSimpleOnPageChangeListener)
   {
-    this.jdField_a_of_type_AndroidxViewpagerWidgetViewPager$SimpleOnPageChangeListener = paramSimpleOnPageChangeListener;
+    this.q = paramSimpleOnPageChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ class HotChatManager$3
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(BaseApplicationImpl.getContext().getFilesDir());
     ((StringBuilder)localObject1).append(File.separator);
-    ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    ((StringBuilder)localObject1).append(this.this$0.d.getAccount());
     ((StringBuilder)localObject1).append("_nearby_hotchat_v_list");
     localObject1 = new File(((StringBuilder)localObject1).toString());
     String str = null;
@@ -45,7 +45,7 @@ class HotChatManager$3
       localIOException.printStackTrace();
       localObject2 = null;
     }
-    this.this$0.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.this$0.q = new ArrayList();
     if (localObject2 != null)
     {
       try
@@ -64,22 +64,22 @@ class HotChatManager$3
         {
           str = ((JSONArray)localObject3).optString(i);
           if (!TextUtils.isEmpty(str)) {
-            this.this$0.jdField_a_of_type_JavaUtilList.add(str);
+            this.this$0.q.add(str);
           }
           i += 1;
         }
       }
     }
     Object localObject3 = this.this$0;
-    ((HotChatManager)localObject3).f = false;
-    if (((HotChatManager)localObject3).jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener.a();
+    ((HotChatManager)localObject3).s = false;
+    if (((HotChatManager)localObject3).r != null) {
+      this.this$0.r.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.3
  * JD-Core Version:    0.7.0.1
  */

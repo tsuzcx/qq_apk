@@ -9,14 +9,14 @@ class ReadInJoyCommentListFragment$6
   
   public void a()
   {
-    if (ReadInJoyCommentListFragment.a(this.a) != null) {
-      ReadInJoyCommentListFragment.a(this.a).a();
+    if (ReadInJoyCommentListFragment.j(this.a) != null) {
+      ReadInJoyCommentListFragment.j(this.a).a();
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131364710) {
+    if (paramView.getId() != 2131430816) {
       return;
     }
     this.a.a(false, null, null);
@@ -24,7 +24,7 @@ class ReadInJoyCommentListFragment$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentListFragment.6
  * JD-Core Version:    0.7.0.1
  */

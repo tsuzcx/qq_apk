@@ -20,25 +20,9 @@ public class ShortVideoMsgTailHelper
     return paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).getInt("short_video_msg_config_version", 0);
   }
   
-  public static String a(Context paramContext, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("short_video_msg_tail_jumping_url_");
-    localStringBuilder.append(paramInt);
-    return paramContext.getString(localStringBuilder.toString(), "");
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
-    paramContext.putInt("short_video_msg_config_version", paramInt);
-    paramContext.apply();
-  }
-  
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    Object localObject = a(paramContext, paramInt);
+    Object localObject = b(paramContext, paramInt);
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
       paramString = ((String)localObject).replace("$GCODE$", paramString);
@@ -131,14 +115,30 @@ public class ShortVideoMsgTailHelper
   {
     paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0);
     StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("short_video_msg_tail_jumping_url_");
+    localStringBuilder.append(paramInt);
+    return paramContext.getString(localStringBuilder.toString(), "");
+  }
+  
+  public static String c(Context paramContext, int paramInt)
+  {
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("short_video_msg_tail_wording_");
     localStringBuilder.append(paramInt);
     return paramContext.getString(localStringBuilder.toString(), "");
   }
+  
+  public static void d(Context paramContext, int paramInt)
+  {
+    paramContext = paramContext.getSharedPreferences("shortVideoMsgTailSp", 0).edit();
+    paramContext.putInt("short_video_msg_config_version", paramInt);
+    paramContext.apply();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoMsgTailHelper
  * JD-Core Version:    0.7.0.1
  */

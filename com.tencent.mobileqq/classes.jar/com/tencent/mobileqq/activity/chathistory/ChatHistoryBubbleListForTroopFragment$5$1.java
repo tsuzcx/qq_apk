@@ -13,21 +13,21 @@ class ChatHistoryBubbleListForTroopFragment$5$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_Int)
+    if (this.b.a != this.b.this$0.j)
     {
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("loadingContext changed, ignored result local=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.b.a);
         ((StringBuilder)localObject).append(", global=");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(this.b.this$0.j);
         QLog.d("chatHistory.troop.msgList", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    Object localObject = this.b.this$0.c;
+    List localList = this.a;
     int k = localList.size();
     int j = 1;
     int i = 0;
@@ -38,23 +38,23 @@ class ChatHistoryBubbleListForTroopFragment$5$1
       bool = false;
     }
     int i1 = ((ChatHistoryBubbleListAdapter)localObject).a(localList, bool);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
+    if (this.b.this$0.c.getCount() > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.b = ((MessageRecord)this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
+      this.b.this$0.e = ((MessageRecord)this.b.this$0.c.getItem(0)).shmsgseq;
+      this.b.this$0.f = ((MessageRecord)this.b.this$0.c.getItem(this.b.this$0.c.getCount() - 1)).shmsgseq;
     }
-    if ((i1 == 0) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() <= 0)) {
+    if ((i1 == 0) || (this.b.this$0.b.getChildCount() <= 0)) {
       j = 0;
     }
     if (j != 0)
     {
-      int m = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
-      int n = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
+      int m = this.b.this$0.b.getFirstVisiblePosition();
+      int n = this.b.this$0.b.getChildAt(0).getTop();
       k = m;
       i = n;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getScrollY() < 0)
+      if (this.b.this$0.b.getScrollY() < 0)
       {
-        i = n - this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getScrollY();
+        i = n - this.b.this$0.b.getScrollY();
         k = m;
       }
     }
@@ -62,12 +62,12 @@ class ChatHistoryBubbleListForTroopFragment$5$1
     {
       k = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.hideOverScrollHeaderView();
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
+    this.b.this$0.b.hideOverScrollHeaderView();
+    this.b.this$0.a(this.b.this$0.c.s, this.b.this$0.c.t);
+    this.b.this$0.c.notifyDataSetChanged();
     if (j != 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment$5.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setSelectionFromTop(k + i1, i);
+      this.b.this$0.b.setSelectionFromTop(k + i1, i);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -84,7 +84,7 @@ class ChatHistoryBubbleListForTroopFragment$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import mqq.app.MobileQQ;
 class FavoriteSearchEngine$QueryRunnable
   implements Runnable
 {
-  protected int a;
-  protected long a;
-  protected Cursor a;
   protected String a;
-  protected boolean a;
+  protected long b;
+  protected int c;
+  protected boolean d;
+  protected Cursor e;
   
   private FavoriteSearchEngine$QueryRunnable(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
@@ -27,18 +27,18 @@ class FavoriteSearchEngine$QueryRunnable
     Object localObject2;
     try
     {
-      String str = this.jdField_a_of_type_JavaLangString;
+      String str = this.a;
       Object localObject5 = new StringBuilder();
       ((StringBuilder)localObject5).append("");
-      ((StringBuilder)localObject5).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject5).append(this.c);
       localObject5 = ((StringBuilder)localObject5).toString();
       Object localObject6 = new StringBuilder();
       ((StringBuilder)localObject6).append("");
-      ((StringBuilder)localObject6).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject6).append(this.b);
       localObject6 = ((StringBuilder)localObject6).toString();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(this.d);
       localObject1 = ((ContentResolver)localObject1).query((Uri)???, null, null, new String[] { str, localObject5, localObject6, localStringBuilder.toString() }, null);
     }
     catch (Exception localException)
@@ -46,12 +46,12 @@ class FavoriteSearchEngine$QueryRunnable
       localException.printStackTrace();
       localObject2 = null;
     }
-    synchronized (FavoriteSearchEngine.a(this.this$0))
+    synchronized (FavoriteSearchEngine.b(this.this$0))
     {
-      if (FavoriteSearchEngine.a(this.this$0) == Thread.currentThread())
+      if (FavoriteSearchEngine.c(this.this$0) == Thread.currentThread())
       {
-        this.jdField_a_of_type_AndroidDatabaseCursor = localObject2;
-        FavoriteSearchEngine.a(this.this$0).notify();
+        this.e = localObject2;
+        FavoriteSearchEngine.b(this.this$0).notify();
       }
       else if (localObject2 != null)
       {
@@ -63,7 +63,7 @@ class FavoriteSearchEngine$QueryRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchEngine.QueryRunnable
  * JD-Core Version:    0.7.0.1
  */

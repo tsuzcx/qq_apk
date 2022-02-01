@@ -13,7 +13,7 @@ class BusinessCardManager$1
   
   public void run()
   {
-    Object localObject1 = this.this$0.a();
+    Object localObject1 = this.this$0.d();
     int i;
     if (localObject1 != null) {
       i = ((List)localObject1).size();
@@ -28,21 +28,21 @@ class BusinessCardManager$1
       ((StringBuilder)localObject2).append(i);
       QLog.d("BusinessCard_Manager", 2, ((StringBuilder)localObject2).toString());
     }
-    this.this$0.a.clear();
+    this.this$0.c.clear();
     if (i > 0)
     {
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (BusinessCard)((Iterator)localObject1).next();
-        this.this$0.a.put(((BusinessCard)localObject2).cardId, localObject2);
+        this.this$0.c.put(((BusinessCard)localObject2).cardId, localObject2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.BusinessCardManager.1
  * JD-Core Version:    0.7.0.1
  */

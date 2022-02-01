@@ -12,44 +12,24 @@ import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 public class WSVerticalCommonVideoHolder
   extends WSVerticalVideoHolder
 {
-  private static final int a;
-  
-  static
-  {
-    jdField_a_of_type_Int = ScreenUtil.dip2px(45.0F);
-  }
+  private static final int a = ScreenUtil.dip2px(45.0F);
   
   public WSVerticalCommonVideoHolder(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramViewGroup, 2131560028, paramInt, paramWSVerticalPageFragment);
+    super(paramViewGroup, 2131626071, paramInt, paramWSVerticalPageFragment);
   }
-  
-  public FrameLayout a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView instanceof AbsWSVideoItemView)) {
-      return ((AbsWSVideoItemView)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView).a();
-    }
-    return null;
-  }
-  
-  public AbsWSVideoItemView a(int paramInt)
-  {
-    return new WSVerticalVideoItemView(getContext(), this);
-  }
-  
-  public void a() {}
   
   public void a(boolean paramBoolean) {}
   
   protected boolean a()
   {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && (((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).b())) {
+    if ((this.e != null) && (((WSVerticalItemData)this.e).c())) {
       return true;
     }
-    if (((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).d()) {
+    if (((WSVerticalPageContract.Presenter)this.d.aO_()).p()) {
       return false;
     }
-    boolean bool = WSExpABTestManager.a().d();
+    boolean bool = WSExpABTestManager.a().j();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[WSVerticalCommonVideoHolder.java][isPlayLoop] isLoop:");
     localStringBuilder.append(bool);
@@ -57,30 +37,45 @@ public class WSVerticalCommonVideoHolder
     return bool;
   }
   
-  public int b()
+  public FrameLayout b()
   {
-    return jdField_a_of_type_Int;
+    if ((this.c instanceof AbsWSVideoItemView)) {
+      return ((AbsWSVideoItemView)this.c).i();
+    }
+    return null;
   }
   
-  public void b() {}
+  public AbsWSVideoItemView b(int paramInt)
+  {
+    return new WSVerticalVideoItemView(getContext(), this);
+  }
   
   public void b(boolean paramBoolean) {}
   
-  protected boolean b()
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  protected boolean g()
   {
     return true;
   }
   
-  public void c() {}
-  
-  protected boolean c()
+  protected boolean h()
   {
     return true;
+  }
+  
+  public int i()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalCommonVideoHolder
  * JD-Core Version:    0.7.0.1
  */

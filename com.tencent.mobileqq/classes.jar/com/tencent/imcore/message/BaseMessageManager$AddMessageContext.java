@@ -13,28 +13,30 @@ import mqq.manager.Manager;
 
 public class BaseMessageManager$AddMessageContext
 {
-  public RecentUserProxy a;
-  public IConversationFacade a;
-  public Map<String, RecentUser> a;
-  public Manager a;
+  public Map<String, RecentUser> a = new HashMap();
   public Map<String, MessageRecord> b = new HashMap();
   public Map<String, MessageRecord> c = new HashMap();
   public Map<String, MessageRecord> d = new HashMap();
   public Map<String, MessageRecord> e = new HashMap();
   public Map<String, List<MessageRecord>> f = new HashMap();
   public Map<String, List<MessageRecord>> g = new HashMap();
+  public Map<String, MessageRecord> h = new HashMap();
+  public Manager i;
+  public Manager j;
+  public RecentUserProxy k;
+  public IConversationFacade l;
   
   public BaseMessageManager$AddMessageContext(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_MqqManagerManager = BaseMessageManager.a.a(paramAppRuntime);
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy = ((IRecentUserProxyService)paramAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-    this.jdField_a_of_type_ComTencentMobileqqMsgApiIConversationFacade = ((IConversationFacade)paramAppRuntime.getRuntimeService(IConversationFacade.class, ""));
+    this.i = BaseMessageManager.e.a(paramAppRuntime);
+    this.j = BaseMessageManager.e.b(paramAppRuntime);
+    this.k = ((IRecentUserProxyService)paramAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+    this.l = ((IConversationFacade)paramAppRuntime.getRuntimeService(IConversationFacade.class, ""));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageManager.AddMessageContext
  * JD-Core Version:    0.7.0.1
  */

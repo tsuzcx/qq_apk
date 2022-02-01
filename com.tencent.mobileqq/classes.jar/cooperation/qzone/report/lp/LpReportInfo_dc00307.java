@@ -22,8 +22,10 @@ public class LpReportInfo_dc00307
   public static final int PAGE_ID_ACTIVE_TAB_VIEW = 160;
   public static final int PAGE_ID_CONTACTS_TAB = 161;
   public static final int PAGE_ID_HEALTH_ACCOUNT_DETAIL = 162;
+  public static final int PAGE_ID_HEALTH_CONTACT = 165;
   public static final int PAGE_ID_HEALTH_NEW_WEB_VIEW = 159;
   public static final int PAGE_ID_HEALTH_PUSH_MESSAGE = 158;
+  public static final int PAGE_ID_HEALTH_SEARCH = 164;
   public static final int PAGE_ID_MESSAGE_TAB = 157;
   public static final int PAGE_ID_MESSAGE_TAB_HEALTH_BANER = 163;
   public static int SUB_ACTION_TYPE_RED_PACK_CLICK = 27;
@@ -76,7 +78,7 @@ public class LpReportInfo_dc00307
     LpReportUtils.safePut(localHashMap, "act_id", this.act_id);
     LpReportUtils.safePut(localHashMap, "act_type", this.act_type);
     LpReportUtils.safePut(localHashMap, "platform_id", 2);
-    LpReportUtils.safePut(localHashMap, "qq_version", "8.7.0.5295");
+    LpReportUtils.safePut(localHashMap, "qq_version", "8.8.17.5770");
     LpReportUtils.safePut(localHashMap, "imei", QQDeviceInfo.getIMEI("52b7f2"));
     LpReportUtils.safePut(localHashMap, "module_id", this.module_id);
     LpReportUtils.safePut(localHashMap, "data_timestamp", String.valueOf(System.currentTimeMillis()));
@@ -95,7 +97,7 @@ public class LpReportInfo_dc00307
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc00307
  * JD-Core Version:    0.7.0.1
  */

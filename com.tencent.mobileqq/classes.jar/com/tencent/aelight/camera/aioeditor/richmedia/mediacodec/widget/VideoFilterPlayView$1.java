@@ -10,12 +10,12 @@ class VideoFilterPlayView$1
   public void run()
   {
     VideoFilterPlayView.a(this.this$0).init();
-    VideoFilterPlayView.a(this.this$0).onOutputSizeChanged(this.this$0.c, this.this$0.d);
+    VideoFilterPlayView.a(this.this$0).onOutputSizeChanged(this.this$0.e, this.this$0.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.mediacodec.widget.VideoFilterPlayView.1
  * JD-Core Version:    0.7.0.1
  */

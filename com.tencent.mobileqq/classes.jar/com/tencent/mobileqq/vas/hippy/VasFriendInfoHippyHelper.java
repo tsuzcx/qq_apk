@@ -21,6 +21,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,151 +29,91 @@ import org.json.JSONObject;
 public class VasFriendInfoHippyHelper
 {
   Activity a;
-  protected VasFriendInfoHippyHelper.ChooseFriendReceiver a;
+  protected VasFriendInfoHippyHelper.ChooseFriendReceiver b;
   
   public VasFriendInfoHippyHelper(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   private Context a()
   {
-    for (Activity localActivity = this.jdField_a_of_type_AndroidAppActivity; (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    for (Activity localActivity = this.a; (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
     return localActivity;
+  }
+  
+  @NotNull
+  private static JSONArray a(List<String> paramList1, List<String> paramList2, List<Integer> paramList3, List<Integer> paramList4)
+  {
+    JSONArray localJSONArray = new JSONArray();
+    int i = 0;
+    while ((i < paramList1.size()) && (i < paramList2.size()) && (i < paramList3.size()) && (i < paramList4.size()))
+    {
+      boolean bool = TextUtils.isEmpty((CharSequence)paramList1.get(i));
+      String str2 = "";
+      String str1;
+      if (!bool) {
+        str1 = (String)paramList1.get(i);
+      } else {
+        str1 = "";
+      }
+      if (!TextUtils.isEmpty((CharSequence)paramList2.get(i))) {
+        str2 = (String)paramList2.get(i);
+      }
+      int j;
+      if (paramList3.get(i) != null) {
+        j = ((Integer)paramList3.get(i)).intValue();
+      } else {
+        j = 0;
+      }
+      int k;
+      if (paramList4.get(i) != null) {
+        k = ((Integer)paramList4.get(i)).intValue();
+      } else {
+        k = 0;
+      }
+      if ((k == 4) || (k == 8))
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("uin", str1);
+        localJSONObject.put("name", str2);
+        localJSONObject.put("type", k);
+        localJSONObject.put("count", j);
+        localJSONArray.put(localJSONObject);
+      }
+      i += 1;
+    }
+    return localJSONArray;
   }
   
   protected static JSONObject a(Intent paramIntent, List<String> paramList1, List<String> paramList2, List<String> paramList3, List<Integer> paramList4, List<String> paramList5, List<String> paramList6, List<Integer> paramList7, List<Integer> paramList8)
   {
     for (;;)
     {
-      int i;
       try
       {
-        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject = new JSONObject();
         JSONArray localJSONArray = new JSONArray();
-        if ((paramList1 != null) && (paramList2 != null) && (paramList3 != null))
+        a(paramList1, paramList2, paramList3, paramList4, localJSONArray);
+        if ((paramList5 != null) && (paramList6 != null) && (paramList7 != null) && (paramList8 != null))
         {
-          i = 0;
-          localObject2 = paramList3;
-          localObject1 = paramList2;
-          paramIntent = paramList1;
-          if ((i < paramList1.size()) && (i < paramList2.size()) && (i < paramList3.size()))
-          {
-            if (TextUtils.isEmpty((CharSequence)paramIntent.get(i))) {
-              break label605;
-            }
-            paramIntent = (String)paramIntent.get(i);
-            if (TextUtils.isEmpty((CharSequence)((List)localObject1).get(i))) {
-              break label611;
-            }
-            localObject1 = (String)((List)localObject1).get(i);
-            if (TextUtils.isEmpty((CharSequence)((List)localObject2).get(i))) {
-              break label618;
-            }
-            localObject2 = (String)((List)localObject2).get(i);
-            JSONObject localJSONObject2 = new JSONObject();
-            localJSONObject2.put("uin", paramIntent);
-            localJSONObject2.put("phone", localObject1);
-            localJSONObject2.put("name", localObject2);
-            if ((paramList4 != null) && (paramList4.size() > i)) {
-              localJSONObject2.put("type", paramList4.get(i));
-            } else {
-              localJSONObject2.put("type", 1);
-            }
-            localJSONArray.put(localJSONObject2);
-            i += 1;
-            continue;
+          paramIntent = a(paramList5, paramList6, paramList7, paramList8);
+          localJSONObject.put("friends", localJSONArray);
+          if ((paramIntent != null) && (paramIntent.length() > 0)) {
+            localJSONObject.put("groups", paramIntent);
           }
-        }
-        if ((paramList5 == null) || (paramList6 == null) || (paramList7 == null) || (paramList8 == null)) {
-          break label671;
-        }
-        paramList2 = new JSONArray();
-        i = 0;
-        paramList1 = paramList5;
-        paramIntent = paramList2;
-        if (i < paramList5.size())
-        {
-          paramIntent = paramList2;
-          if (i < paramList6.size())
-          {
-            paramIntent = paramList2;
-            if (i < paramList7.size())
-            {
-              paramIntent = paramList2;
-              if (i < paramList8.size())
-              {
-                if (TextUtils.isEmpty((CharSequence)paramList1.get(i))) {
-                  break label625;
-                }
-                paramIntent = (String)paramList1.get(i);
-                if (TextUtils.isEmpty((CharSequence)paramList6.get(i))) {
-                  break label631;
-                }
-                paramList1 = (String)paramList6.get(i);
-                if (paramList7.get(i) == null) {
-                  break label637;
-                }
-                j = ((Integer)paramList7.get(i)).intValue();
-                if (paramList8.get(i) == null) {
-                  break label643;
-                }
-                k = ((Integer)paramList8.get(i)).intValue();
-                break label646;
-                paramList3 = new JSONObject();
-                paramList3.put("uin", paramIntent);
-                paramList3.put("name", paramList1);
-                paramList3.put("type", k);
-                paramList3.put("count", j);
-                paramList2.put(paramList3);
-                break label662;
-              }
-            }
+          if (QLog.isColorLevel()) {
+            QLog.i("VasFriendInfoHippyHelper", 2, localJSONObject.toString());
           }
+          return localJSONObject;
         }
-        localJSONObject1.put("friends", localJSONArray);
-        if ((paramIntent != null) && (paramIntent.length() > 0)) {
-          localJSONObject1.put("groups", paramIntent);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("VasFriendInfoHippyHelper", 2, localJSONObject1.toString());
-        }
-        return localJSONObject1;
       }
       catch (JSONException paramIntent)
       {
         paramIntent.printStackTrace();
         return null;
       }
-      label605:
-      paramIntent = "";
-      continue;
-      label611:
-      Object localObject1 = "";
-      continue;
-      label618:
-      Object localObject2 = "";
-      continue;
-      label625:
-      paramIntent = "";
-      continue;
-      label631:
-      paramList1 = "";
-      continue;
-      label637:
-      int j = 0;
-      continue;
-      label643:
-      int k = 0;
-      label646:
-      if ((k != 4) && (k != 8))
-      {
-        label662:
-        i += 1;
-        continue;
-        label671:
-        paramIntent = null;
-      }
+      paramIntent = null;
     }
   }
   
@@ -292,19 +233,19 @@ public class VasFriendInfoHippyHelper
     }
     paramPromise = ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).getStartSelectMemberActivityIntentForJsPlugin(paramContext);
     a(i2, paramHippyMap, k, localArrayList, m, n, i, j, paramPromise);
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramPromise, 49);
+    this.a.startActivityForResult(paramPromise, 49);
   }
   
   private void a(Promise paramPromise, Context paramContext, HippyMap paramHippyMap)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasHippyVasFriendInfoHippyHelper$ChooseFriendReceiver;
+    Object localObject = this.b;
     if (localObject == null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasHippyVasFriendInfoHippyHelper$ChooseFriendReceiver = new VasFriendInfoHippyHelper.ChooseFriendReceiver(paramPromise, new Handler());
+      this.b = new VasFriendInfoHippyHelper.ChooseFriendReceiver(paramPromise, new Handler());
     } else {
       ((VasFriendInfoHippyHelper.ChooseFriendReceiver)localObject).a(paramPromise);
     }
     Parcel localParcel = Parcel.obtain();
-    paramPromise = this.jdField_a_of_type_ComTencentMobileqqVasHippyVasFriendInfoHippyHelper$ChooseFriendReceiver;
+    paramPromise = this.b;
     boolean bool4 = false;
     paramPromise.writeToParcel(localParcel, 0);
     localParcel.setDataPosition(0);
@@ -312,7 +253,7 @@ public class VasFriendInfoHippyHelper
     localObject = paramHippyMap.getString("title");
     paramPromise = (Promise)localObject;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramPromise = HardCodeUtil.a(2131715789);
+      paramPromise = HardCodeUtil.a(2131913247);
     }
     localObject = paramHippyMap.getString("dialog_sub_title");
     String str = paramHippyMap.getString("dialog_input");
@@ -353,7 +294,46 @@ public class VasFriendInfoHippyHelper
     paramContext.putExtra("choose_friend_callback", paramHippyMap);
     paramContext.putExtra("choose_friend_businessType", i);
     paramContext.putExtra("choose_friend_businessSubType", j);
-    this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(paramContext, 50);
+    this.a.startActivityForResult(paramContext, 50);
+  }
+  
+  private static void a(List<String> paramList1, List<String> paramList2, List<String> paramList3, List<Integer> paramList, JSONArray paramJSONArray)
+  {
+    if ((paramList1 != null) && (paramList2 != null) && (paramList3 != null))
+    {
+      int i = 0;
+      while ((i < paramList1.size()) && (i < paramList2.size()) && (i < paramList3.size()))
+      {
+        boolean bool = TextUtils.isEmpty((CharSequence)paramList1.get(i));
+        String str3 = "";
+        String str1;
+        if (!bool) {
+          str1 = (String)paramList1.get(i);
+        } else {
+          str1 = "";
+        }
+        String str2;
+        if (!TextUtils.isEmpty((CharSequence)paramList2.get(i))) {
+          str2 = (String)paramList2.get(i);
+        } else {
+          str2 = "";
+        }
+        if (!TextUtils.isEmpty((CharSequence)paramList3.get(i))) {
+          str3 = (String)paramList3.get(i);
+        }
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("uin", str1);
+        localJSONObject.put("phone", str2);
+        localJSONObject.put("name", str3);
+        if ((paramList != null) && (paramList.size() > i)) {
+          localJSONObject.put("type", paramList.get(i));
+        } else {
+          localJSONObject.put("type", 1);
+        }
+        paramJSONArray.put(localJSONObject);
+        i += 1;
+      }
+    }
   }
   
   public void a(Intent paramIntent, Promise paramPromise)
@@ -443,7 +423,7 @@ public class VasFriendInfoHippyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.hippy.VasFriendInfoHippyHelper
  * JD-Core Version:    0.7.0.1
  */

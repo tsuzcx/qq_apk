@@ -2,13 +2,12 @@ package com.tencent.mobileqq.ar.ARPromotion;
 
 class ARPromotionSoundPlayer$ARSoundModel
 {
-  public int a;
+  public int a = 0;
   public int b = 0;
   public int c = 0;
   
   public ARPromotionSoundPlayer$ARSoundModel(ARPromotionSoundPlayer paramARPromotionSoundPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = 0;
     this.b = paramInt1;
     this.c = paramInt2;
   }
@@ -30,7 +29,7 @@ class ARPromotionSoundPlayer$ARSoundModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARPromotionSoundPlayer.ARSoundModel
  * JD-Core Version:    0.7.0.1
  */

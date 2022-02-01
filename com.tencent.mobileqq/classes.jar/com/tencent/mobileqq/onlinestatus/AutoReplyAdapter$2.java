@@ -16,12 +16,12 @@ class AutoReplyAdapter$2
     if ((paramCharSequence instanceof QQTextBuilder)) {
       return (Editable)paramCharSequence;
     }
-    return new QQTextBuilder(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
+    return new QQTextBuilder(paramCharSequence, 3, (int)(this.a.getTextSize() / this.a.getPaint().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyAdapter.2
  * JD-Core Version:    0.7.0.1
  */

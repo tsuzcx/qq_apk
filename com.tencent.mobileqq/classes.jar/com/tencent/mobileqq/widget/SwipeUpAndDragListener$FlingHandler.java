@@ -42,38 +42,38 @@ class SwipeUpAndDragListener$FlingHandler
   
   private boolean a(int paramInt)
   {
-    Object localObject1 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.getWidth() - (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 2.0F + 0.5F), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.getHeight() - (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 2.0F + 0.5F) * 2);
-    ((RelativeLayout.LayoutParams)localObject1).leftMargin = (this.jdField_c_of_type_ArrayOfInt[0] + (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 2.0F + 0.5F));
-    this.jdField_a_of_type_AndroidViewViewGroup.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
-    ((RelativeLayout.LayoutParams)localObject1).topMargin = (this.jdField_c_of_type_ArrayOfInt[1] - this.jdField_b_of_type_ArrayOfInt[1] - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.c + (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 2.0F + 0.5F));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
+    Object localObject1 = new RelativeLayout.LayoutParams(this.w.itemView.getWidth() - (int)(this.a.u * 2.0F + 0.5F), this.w.itemView.getHeight() - (int)(this.a.u * 2.0F + 0.5F) * 2);
+    ((RelativeLayout.LayoutParams)localObject1).leftMargin = (this.x[0] + (int)(this.a.u * 2.0F + 0.5F));
+    this.q.getLocationInWindow(this.r);
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = (this.x[1] - this.r[1] - this.a.h + (int)(this.a.u * 2.0F + 0.5F));
+    this.w.itemView.startAnimation(this.z);
+    if (this.s.getParent() != null) {
       return false;
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, this.d);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject1);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentWidgetRoundRectImageView, (ViewGroup.LayoutParams)localObject1);
-    float f = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.a(paramInt, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.getWidth() - (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 4.0F), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.getHeight() - (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 4.0F));
+    this.q.addView(this.s, this.t);
+    this.s.addView(this.u, (ViewGroup.LayoutParams)localObject1);
+    this.s.addView(this.B, (ViewGroup.LayoutParams)localObject1);
+    float f = this.a.a(paramInt, this.w.itemView.getWidth() - (int)(this.a.u * 4.0F), this.w.itemView.getHeight() - (int)(this.a.u * 4.0F));
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("f scale = ");
     ((StringBuilder)localObject2).append(f);
     Logger.a("PhotoListPanel", "startFlingAnim", ((StringBuilder)localObject2).toString());
-    int j = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ArrayOfInt[0];
-    int k = (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 65.0F + 0.5F + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.getWidth() * f + 0.5F);
-    int m = this.jdField_c_of_type_ArrayOfInt[0];
-    paramInt = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ArrayOfInt[1];
-    int i1 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getHeight();
-    int i2 = (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 13.0F + 0.5F + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter$RecyclerHolder.itemView.getHeight() * f + 0.5F);
-    int i3 = this.jdField_c_of_type_ArrayOfInt[1];
-    int n = ((RelativeLayout.LayoutParams)localObject1).topMargin - (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 30.0F);
+    int j = this.a.g[0];
+    int k = (int)(this.a.u * 65.0F + 0.5F + this.w.itemView.getWidth() * f + 0.5F);
+    int m = this.x[0];
+    paramInt = this.q.getHeight();
+    int i = this.a.g[1];
+    int i1 = this.a.i.getHeight();
+    int i2 = (int)(this.a.u * 13.0F + 0.5F + this.w.itemView.getHeight() * f + 0.5F);
+    int i3 = this.x[1];
+    int n = ((RelativeLayout.LayoutParams)localObject1).topMargin - (int)(this.a.u * 30.0F);
     i = paramInt + i - i1 - i2 - i3 + n;
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Int);
+    localObject1 = this.a.i.f.a(this.a.r);
     paramInt = ((LocalMediaInfo)localObject1).mediaHeight;
     paramInt = ((LocalMediaInfo)localObject1).mediaWidth;
     paramInt = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.getItemViewType(this.g) == 1) {
-      paramInt = i - (int)(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_e_of_type_Float * 70.0F + 0.5F);
+    if (this.a.i.f.getItemViewType(this.y) == 1) {
+      paramInt = i - (int)(this.a.u * 70.0F + 0.5F);
     }
     localObject1 = new AnimationSet(false);
     localObject2 = new ScaleAnimation(1.0F, f, 1.0F, f);
@@ -98,14 +98,14 @@ class SwipeUpAndDragListener$FlingHandler
     ((AlphaAnimation)localObject2).setStartOffset(400L);
     ((AlphaAnimation)localObject2).setDuration(200L);
     ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
-    this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation((Animation)localObject1);
+    this.B.startAnimation((Animation)localObject1);
     ((AnimationSet)localObject1).setAnimationListener(new SwipeUpAndDragListener.FlingHandler.1(this));
     return true;
   }
   
   boolean a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
+    this.a.t.addMovement(paramMotionEvent);
     return true;
   }
   
@@ -117,11 +117,11 @@ class SwipeUpAndDragListener$FlingHandler
     Logger.a("PhotoListPanel", "handleUp", ((StringBuilder)localObject1).toString());
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    float f3 = f2 - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.b;
-    float f4 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_Float;
+    float f3 = f2 - this.a.k;
+    float f4 = this.a.j;
     int i = paramMotionEvent.getPointerId(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    float f5 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
+    this.a.t.computeCurrentVelocity(1000);
+    float f5 = this.a.t.getYVelocity(i);
     paramMotionEvent = new StringBuilder();
     paramMotionEvent.append("@@handleUp,x = ");
     paramMotionEvent.append(f1);
@@ -132,58 +132,58 @@ class SwipeUpAndDragListener$FlingHandler
     paramMotionEvent.append(",velocityY = ");
     paramMotionEvent.append(f5);
     paramMotionEvent.append(",SWIPE_THRESHOLD = ");
-    paramMotionEvent.append(SwipeUpAndDragListener.b());
+    paramMotionEvent.append(SwipeUpAndDragListener.d());
     Logger.a("PhotoListPanel", "FlingHandler", paramMotionEvent.toString());
-    if ((-f3 > SwipeUpAndDragListener.b()) && (Math.abs(f5) > 100.0F) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_Long < 500L) && ((this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) || (this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 0)) && (Math.abs(f3) > Math.abs(f1 - f4)))
+    if ((-f3 > SwipeUpAndDragListener.d()) && (Math.abs(f5) > 100.0F) && (SystemClock.elapsedRealtime() - this.a.p < 500L) && ((this.a.i.ao == 1) || (this.a.i.ao == 0)) && (Math.abs(f3) > Math.abs(f1 - f4)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a.size() == 0)
+      if (this.a.i.f.b.size() == 0)
       {
         paramMotionEvent = new StringBuilder();
         paramMotionEvent.append("handler = ");
         paramMotionEvent.append(this);
         paramMotionEvent.append("mInfos is null!!!!!! targetPosition=");
-        paramMotionEvent.append(this.g);
+        paramMotionEvent.append(this.y);
         Logger.a("PhotoListPanel", "handleUp", paramMotionEvent.toString());
         return false;
       }
       bool = false;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean = true;
-      if (!a(this.g))
+      this.a.i.e = true;
+      if (!a(this.y))
       {
         Logger.a("PhotoListPanel", "handleUp", "handler  animLayout already hasparent= ");
         return false;
       }
-      i = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.getItemViewType(this.g);
+      i = this.a.i.f.getItemViewType(this.y);
       paramMotionEvent = new ArrayList();
-      paramMotionEvent.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a(this.g).path);
-      ReportController.b(null, "dc00898", "", "", "0X800A7B0", "0X800A7B0", this.g + 1, 0, "1", "", "", "");
-      int j = PhotoUtils.getTypeforReport2(this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      paramMotionEvent.add(this.a.i.f.a(this.y).path);
+      ReportController.b(null, "dc00898", "", "", "0X800A7B0", "0X800A7B0", this.y + 1, 0, "1", "", "", "");
+      int j = PhotoUtils.getTypeforReport2(this.a.i.l);
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(this.g + 1);
+      ((StringBuilder)localObject1).append(this.y + 1);
       ReportController.b(null, "dc00898", "", "", "0X800A914", "0X800A914", j, 0, ((StringBuilder)localObject1).toString(), "", "", "");
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$SwipeUpAndDragCallBack != null)
+      if (this.a.w != null)
       {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$SwipeUpAndDragCallBack;
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$PhotoPanelAdapter.a(this.g).path;
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.c == 2) {
+        paramMotionEvent = this.a.w;
+        localObject1 = this.a.i.f.a(this.y).path;
+        if (this.a.i.c == 2) {
           bool = true;
         }
         paramMotionEvent.a((String)localObject1, bool);
         return true;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      if (QFileAssistantUtils.a(((SessionInfo)localObject1).jdField_a_of_type_JavaLangString))
+      localObject1 = this.a.i.l;
+      if (QFileAssistantUtils.a(((SessionInfo)localObject1).b))
       {
         paramMotionEvent = paramMotionEvent.iterator();
         while (paramMotionEvent.hasNext())
         {
           localObject2 = (String)paramMotionEvent.next();
-          this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a((String)localObject2, ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString, ((SessionInfo)localObject1).jdField_a_of_type_Int, true);
+          this.a.i.i.getFileManagerEngine().a((String)localObject2, ((SessionInfo)localObject1).b, ((SessionInfo)localObject1).b, ((SessionInfo)localObject1).a, true);
         }
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel;
-      j = this.g;
+      localObject1 = this.a.i;
+      j = this.y;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(i);
       ((StringBuilder)localObject2).append("");
@@ -195,9 +195,9 @@ class SwipeUpAndDragListener$FlingHandler
     paramMotionEvent.append("@handleUp,return false. velocityY = ");
     paramMotionEvent.append(f5);
     paramMotionEvent.append(",dely = ");
-    paramMotionEvent.append(f2 - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.b);
+    paramMotionEvent.append(f2 - this.a.k);
     Logger.a("PhotoListPanel", "FlingHandler", paramMotionEvent.toString());
-    if ((SystemClock.elapsedRealtime() - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_Long >= 200L) || (Math.abs(f2 - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.b) >= this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.d) || (Math.abs(f1 - this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.jdField_a_of_type_Float) >= this.jdField_a_of_type_ComTencentMobileqqWidgetSwipeUpAndDragListener.d)) {
+    if ((SystemClock.elapsedRealtime() - this.a.p >= 200L) || (Math.abs(f2 - this.a.k) >= this.a.q) || (Math.abs(f1 - this.a.j) >= this.a.q)) {
       bool = true;
     }
     return bool;
@@ -205,7 +205,7 @@ class SwipeUpAndDragListener$FlingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SwipeUpAndDragListener.FlingHandler
  * JD-Core Version:    0.7.0.1
  */

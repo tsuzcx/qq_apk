@@ -5,7 +5,7 @@
     <Button android:id="@id/el1" android:background="@drawable/fo2" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="24.0dip" android:layout_marginLeft="9.0dip" android:layout_marginTop="9.0dip" />
     <LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
         <ImageView android:id="@id/el3" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/bu3" />
-        <TextView android:textSize="@dimen/ayq" android:textColor="@color/bp" android:id="@id/el4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/ayq" android:textColor="@color/black" android:id="@id/el4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_centerHorizontal="true" />
     </LinearLayout>
     <Button android:id="@id/ekz" android:background="@drawable/bty" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
 </RelativeLayout>

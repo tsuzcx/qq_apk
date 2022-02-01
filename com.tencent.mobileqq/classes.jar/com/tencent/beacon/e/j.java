@@ -345,7 +345,7 @@ public final class j
   public static boolean c()
   {
     b localb = ((StrategyModule)com.tencent.beacon.a.c.c.d().a(ModuleName.STRATEGY)).b();
-    boolean bool2 = localb.l();
+    boolean bool2 = localb.m();
     boolean bool1 = false;
     if (bool2)
     {
@@ -370,7 +370,7 @@ public final class j
   public static void d()
   {
     Object localObject = ((StrategyModule)com.tencent.beacon.a.c.c.d().a(ModuleName.STRATEGY)).b();
-    if ((localObject != null) && (((b)localObject).l()))
+    if ((localObject != null) && (((b)localObject).m()))
     {
       localObject = com.tencent.beacon.a.d.a.a();
       int i = ((com.tencent.beacon.a.d.a)localObject).getInt("today_success_strategy_query_times", 0);

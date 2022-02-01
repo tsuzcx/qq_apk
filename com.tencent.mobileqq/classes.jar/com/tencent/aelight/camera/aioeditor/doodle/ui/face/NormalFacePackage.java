@@ -13,73 +13,55 @@ import java.util.List;
 public class NormalFacePackage
   extends FacePackage
 {
-  public final List<NormalFacePackage.PackageInfo> a;
-  public boolean b;
-  public int c;
-  public int d = 0;
-  public String f;
-  public String g;
+  public String k;
+  public String l;
+  public final List<NormalFacePackage.PackageInfo> m = new ArrayList();
+  public boolean n;
+  public int o = 100;
+  public int p = 0;
   
   public NormalFacePackage(@NonNull String paramString)
   {
     super(paramString);
-    this.jdField_c_of_type_Int = 100;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public int a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((NormalFacePackage.PackageInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    if (!StringUtil.a(paramString))
-    {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          NormalFacePackage.PackageInfo localPackageInfo = (NormalFacePackage.PackageInfo)((Iterator)localObject).next();
-          if (paramString.equals(localPackageInfo.jdField_a_of_type_JavaLangString)) {
-            return localPackageInfo.jdField_a_of_type_Int;
-          }
-        }
-      }
-    }
-    return 0;
-  }
-  
-  public String a()
-  {
-    return "NormalFacePackage";
   }
   
   public String a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((NormalFacePackage.PackageInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).b;
+    if ((paramInt >= 0) && (paramInt < this.m.size())) {
+      return ((NormalFacePackage.PackageInfo)this.m.get(paramInt)).b;
     }
     return null;
   }
   
-  public String a(String paramString)
+  public void a(List<NormalFacePackage.PackageInfo> paramList)
   {
-    if (!StringUtil.a(paramString))
+    if (paramList == null) {
+      return;
+    }
+    this.m.clear();
+    this.m.addAll(paramList);
+  }
+  
+  public String b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.m.size())) {
+      return ((NormalFacePackage.PackageInfo)this.m.get(paramInt)).d;
+    }
+    return null;
+  }
+  
+  public String b(String paramString)
+  {
+    if (!StringUtil.isEmpty(paramString))
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.m;
       if (localObject != null)
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           NormalFacePackage.PackageInfo localPackageInfo = (NormalFacePackage.PackageInfo)((Iterator)localObject).next();
-          if (paramString.equals(localPackageInfo.jdField_a_of_type_JavaLangString)) {
+          if (paramString.equals(localPackageInfo.a)) {
             return localPackageInfo.b;
           }
         }
@@ -88,13 +70,51 @@ public class NormalFacePackage
     return null;
   }
   
-  public List<NormalFacePackage.PackageInfo> a()
+  public int c(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.m.size())) {
+      return ((NormalFacePackage.PackageInfo)this.m.get(paramInt)).c;
+    }
+    return 0;
+  }
+  
+  public int c(String paramString)
+  {
+    if (!StringUtil.isEmpty(paramString))
+    {
+      Object localObject = this.m;
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          NormalFacePackage.PackageInfo localPackageInfo = (NormalFacePackage.PackageInfo)((Iterator)localObject).next();
+          if (paramString.equals(localPackageInfo.a)) {
+            return localPackageInfo.c;
+          }
+        }
+      }
+    }
+    return 0;
+  }
+  
+  public String c()
+  {
+    return "NormalFacePackage";
+  }
+  
+  public int d()
+  {
+    return this.m.size();
+  }
+  
+  public List<NormalFacePackage.PackageInfo> e()
   {
     ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(this.g)) {
+    if (TextUtils.isEmpty(this.l)) {
       return null;
     }
-    Object localObject1 = new File(this.g);
+    Object localObject1 = new File(this.l);
     if (!((File)localObject1).exists()) {
       return null;
     }
@@ -103,12 +123,12 @@ public class NormalFacePackage
       File[] arrayOfFile = ((File)localObject1).listFiles(new NormalFacePackage.1(this));
       if (arrayOfFile != null)
       {
-        int k = arrayOfFile.length;
+        int i1 = arrayOfFile.length;
         int j = 0;
-        while (j < k)
+        while (j < i1)
         {
           File localFile = arrayOfFile[j];
-          if (this.jdField_a_of_type_JavaUtilList.size() >= 100) {
+          if (this.m.size() >= 100) {
             return localArrayList;
           }
           String str = localFile.getName();
@@ -151,59 +171,37 @@ public class NormalFacePackage
     return localArrayList;
   }
   
-  public void a(List<NormalFacePackage.PackageInfo> paramList)
-  {
-    if (paramList == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return ((NormalFacePackage.PackageInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("NormalFacePackage{");
     localStringBuffer.append("id='");
-    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(this.a);
     localStringBuffer.append('\'');
     localStringBuffer.append("logoUrl='");
-    localStringBuffer.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuffer.append(this.c);
     localStringBuffer.append('\'');
     localStringBuffer.append("logoDrawable='");
-    localStringBuffer.append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    localStringBuffer.append(this.e);
     localStringBuffer.append('\'');
     localStringBuffer.append(", zipDownloadUrl='");
-    localStringBuffer.append(this.f);
+    localStringBuffer.append(this.k);
     localStringBuffer.append('\'');
     localStringBuffer.append(", facePkgPath='");
-    localStringBuffer.append(this.g);
+    localStringBuffer.append(this.l);
     localStringBuffer.append('\'');
     localStringBuffer.append(", isDownloading=");
-    localStringBuffer.append(this.b);
+    localStringBuffer.append(this.n);
     localStringBuffer.append(", maxProgress=");
-    localStringBuffer.append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(this.o);
     localStringBuffer.append(", currentProgress=");
-    localStringBuffer.append(this.d);
+    localStringBuffer.append(this.p);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.doodle.ui.face.NormalFacePackage
  * JD-Core Version:    0.7.0.1
  */

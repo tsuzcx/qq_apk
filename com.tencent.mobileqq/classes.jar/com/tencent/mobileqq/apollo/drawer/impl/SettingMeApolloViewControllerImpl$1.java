@@ -19,16 +19,18 @@ class SettingMeApolloViewControllerImpl$1
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow][SettingMeApolloViewController]", 2, new Object[] { "[updateCmshowStatus] isApolloUser=", Boolean.valueOf(bool) });
     }
-    if (bool) {
+    if (bool)
+    {
       SettingMeApolloViewControllerImpl.access$100(this.this$0);
+      SettingMeApolloViewControllerImpl.access$200(this.this$0);
     }
-    SettingMeApolloViewControllerImpl.access$200(this.this$0);
     SettingMeApolloViewControllerImpl.access$300(this.this$0);
+    SettingMeApolloViewControllerImpl.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.drawer.impl.SettingMeApolloViewControllerImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,20 @@ class OpenCardContainer$VirtualAccountAdapter$1
   
   public void onClick(View paramView)
   {
-    if ((OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter) != null) && (this.jdField_a_of_type_Int < OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).size()) && (this.jdField_a_of_type_Int >= 0))
+    if ((OpenCardContainer.VirtualAccountAdapter.a(this.b) != null) && (this.a < OpenCardContainer.VirtualAccountAdapter.a(this.b).size()) && (this.a >= 0))
     {
-      if ((this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a.a != null) && (OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a) != null)) {
-        OpenCardContainer.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.a).a(((VirtualAccountInfo)OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).get(this.jdField_a_of_type_Int)).a, QQLiteStatusUtil.a());
+      if ((this.b.d.a != null) && (OpenCardContainer.VirtualAccountAdapter.a(this.b).get(this.a) != null) && (OpenCardContainer.a(this.b.d) != null)) {
+        OpenCardContainer.a(this.b.d).a(((VirtualAccountInfo)OpenCardContainer.VirtualAccountAdapter.a(this.b).get(this.a)).c, QQLiteStatusUtil.a());
       }
-      OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).remove(OpenCardContainer.VirtualAccountAdapter.a(this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter).get(this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer$VirtualAccountAdapter.notifyDataSetChanged();
+      OpenCardContainer.VirtualAccountAdapter.a(this.b).remove(OpenCardContainer.VirtualAccountAdapter.a(this.b).get(this.a));
+      this.b.notifyDataSetChanged();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.OpenCardContainer.VirtualAccountAdapter.1
  * JD-Core Version:    0.7.0.1
  */

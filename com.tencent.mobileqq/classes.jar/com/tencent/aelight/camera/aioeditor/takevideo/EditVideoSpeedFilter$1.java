@@ -16,39 +16,39 @@ class EditVideoSpeedFilter$1
     if (!EditVideoSpeedFilter.a(this.this$0)) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a() == null) {
+    if (this.this$0.t.M() == null) {
       return;
     }
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a().getActivity();
+    Object localObject = this.this$0.t.M().getActivity();
     if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
       if ((Build.VERSION.SDK_INT > 16) && (((Activity)localObject).isDestroyed())) {
         return;
       }
       localObject = this.this$0;
-      EditVideoSpeedFilter.a((EditVideoSpeedFilter)localObject, (ViewStub)((EditVideoSpeedFilter)localObject).a(2064122500));
-      if (this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer == null)
+      EditVideoSpeedFilter.a((EditVideoSpeedFilter)localObject, (ViewStub)((EditVideoSpeedFilter)localObject).d(2063991314));
+      if (this.this$0.m == null)
       {
-        localObject = EditVideoSpeedFilter.a(this.this$0).getParent();
+        localObject = EditVideoSpeedFilter.b(this.this$0).getParent();
         if ((localObject != null) && ((localObject instanceof ViewGroup)))
         {
           localObject = this.this$0;
-          ((EditVideoSpeedFilter)localObject).jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer = ((PickerContainer)EditVideoSpeedFilter.a((EditVideoSpeedFilter)localObject).inflate());
+          ((EditVideoSpeedFilter)localObject).m = ((PickerContainer)EditVideoSpeedFilter.b((EditVideoSpeedFilter)localObject).inflate());
         }
         else
         {
           localObject = this.this$0;
-          ((EditVideoSpeedFilter)localObject).jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer = ((PickerContainer)((EditVideoSpeedFilter)localObject).a(2131376742));
+          ((EditVideoSpeedFilter)localObject).m = ((PickerContainer)((EditVideoSpeedFilter)localObject).d(2131445030));
         }
-        this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer.a(this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a, this.this$0);
-        this.this$0.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSpeedpickerPickerContainer.a(2, false);
+        this.this$0.m.a(this.this$0.t.I, this.this$0);
+        this.this$0.m.a(2, false);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.EditVideoSpeedFilter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ class UserStateMachineController$9
   
   public void a(UserState paramUserState)
   {
-    UserStateMachineController.a(this.a).a();
+    UserStateMachineController.b(this.a).c();
   }
   
-  public boolean a()
+  public boolean b()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.UserStateMachineController.9
  * JD-Core Version:    0.7.0.1
  */

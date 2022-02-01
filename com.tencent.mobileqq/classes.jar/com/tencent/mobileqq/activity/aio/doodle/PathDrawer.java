@@ -20,58 +20,52 @@ import java.util.List;
 public class PathDrawer
   implements MyParcelable
 {
-  public static final MyParcelable.Creator<PathDrawer> a;
-  public int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private PathAlgorithm jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = null;
-  private PathData.PointData jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData = null;
-  private ArrayList<PathDrawer.PathSegment> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<PathData.PointData> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int jdField_b_of_type_Int = -1;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator = new PathDrawer.1();
-  }
+  public static final MyParcelable.Creator<PathDrawer> b = new PathDrawer.1();
+  public int a = -1;
+  private Path c = new Path();
+  private ArrayList<PathDrawer.PathSegment> d = new ArrayList();
+  private Paint e = new Paint();
+  private int f = -1;
+  private Rect g = new Rect();
+  private Rect h = new Rect();
+  private List<PathData.PointData> i = new ArrayList();
+  private PathData.PointData j = null;
+  private PathAlgorithm k = null;
   
   public PathDrawer(MyParcel paramMyParcel)
   {
-    this.jdField_a_of_type_Int = -1;
-    paramMyParcel.a();
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    paramMyParcel.b();
+    List localList = this.i;
     if (localList != null) {
-      paramMyParcel.a(localList, PathData.PointData.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator);
+      paramMyParcel.a(localList, PathData.PointData.a);
     }
-    paramMyParcel.a(this.jdField_a_of_type_JavaUtilArrayList, PathDrawer.PathSegment.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator);
-    int i = paramMyParcel.a();
-    a(paramMyParcel.a(), i);
-    this.jdField_a_of_type_AndroidGraphicsRect = paramMyParcel.a();
-    this.jdField_b_of_type_AndroidGraphicsRect = paramMyParcel.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData = ((PathData.PointData)paramMyParcel.a(PathData.PointData.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleMyParcelable$Creator));
-    this.jdField_a_of_type_Int = paramMyParcel.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = new HalfAlgorithm();
-    paramMyParcel = this.jdField_a_of_type_JavaUtilList;
+    paramMyParcel.a(this.d, PathDrawer.PathSegment.a);
+    int m = paramMyParcel.b();
+    a(paramMyParcel.b(), m);
+    this.g = paramMyParcel.c();
+    this.h = paramMyParcel.c();
+    this.j = ((PathData.PointData)paramMyParcel.a(PathData.PointData.a));
+    this.a = paramMyParcel.b();
+    this.k = new HalfAlgorithm();
+    paramMyParcel = this.i;
     if (paramMyParcel != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm.a(paramMyParcel, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_JavaUtilList = null;
+      this.k.a(paramMyParcel, this.c, this.d);
+      this.i = null;
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.c.reset();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = null;
-    if ((!this.jdField_b_of_type_AndroidGraphicsRect.equals(this.jdField_a_of_type_AndroidGraphicsRect)) && (this.jdField_b_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsRect != null))
+    this.k = null;
+    if ((!this.h.equals(this.g)) && (this.h != null) && (this.g != null))
     {
-      float f = a();
+      float f1 = g();
       paramMyParcel = new StringBuilder();
       paramMyParcel.append("scale:");
-      paramMyParcel.append(f);
+      paramMyParcel.append(f1);
       QLog.d("PathDrawer", 2, paramMyParcel.toString());
-      a(f, false);
+      a(f1, false);
       return;
     }
     QLog.d("PathDrawer", 2, "data area equal draw area, no scale.");
@@ -79,51 +73,40 @@ public class PathDrawer
   
   public PathDrawer(PathData paramPathData, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, float paramFloat)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramPathData.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramPathData.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = new HalfAlgorithm();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm.a(paramInt5, paramInt6, paramFloat);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm.a(paramPathData.a(), this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilArrayList, 1000);
+    this.a = paramPathData.a;
+    this.g.set(0, 0, paramInt1, paramInt2);
+    this.i.addAll(paramPathData.e());
+    this.k = new HalfAlgorithm();
+    this.k.a(paramInt5, paramInt6, paramFloat);
+    this.k.a(paramPathData.e(), this.c, this.d, 1000);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("after transPath, segments count:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+    localStringBuilder.append(this.d.size());
     QLog.d("PathDrawer", 2, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = null;
-    if (paramPathData.c() > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData = new PathData.PointData(paramPathData.a());
+    this.k = null;
+    if (paramPathData.d() > 0) {
+      this.j = new PathData.PointData(paramPathData.g());
     }
-    a(paramPathData.b(), paramPathData.a());
+    a(paramPathData.c(), paramPathData.b());
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
       a(0, 0, paramInt3, paramInt4);
       return;
     }
-    this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect);
-  }
-  
-  private float a()
-  {
-    float f1 = this.jdField_b_of_type_AndroidGraphicsRect.width() * 1.0F / this.jdField_a_of_type_AndroidGraphicsRect.width();
-    float f2 = this.jdField_b_of_type_AndroidGraphicsRect.height() * 1.0F / this.jdField_a_of_type_AndroidGraphicsRect.height();
-    if (f1 < f2) {
-      return f1;
-    }
-    return f2;
+    this.h.set(this.g);
   }
   
   private int a(long paramLong, boolean paramBoolean)
   {
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (k == 0) {
+    int i1 = this.d.size();
+    if (i1 == 0) {
       return -1;
     }
-    int j = 0;
+    int n = 0;
     long l;
-    if (k == 1)
+    if (i1 == 1)
     {
-      l = ((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(0)).a();
+      l = ((PathDrawer.PathSegment)this.d.get(0)).d();
       if (paramBoolean)
       {
         if (l >= paramLong) {
@@ -136,44 +119,44 @@ public class PathDrawer
       }
       return -1;
     }
-    int i = k;
-    if (((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(k - 1)).a() < paramLong) {
+    int m = i1;
+    if (((PathDrawer.PathSegment)this.d.get(i1 - 1)).d() < paramLong) {
       return -1;
     }
-    while (i > j)
+    while (m > n)
     {
-      k = (i + j) / 2;
-      l = ((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
+      i1 = (m + n) / 2;
+      l = ((PathDrawer.PathSegment)this.d.get(i1)).d();
       if (l == paramLong)
       {
         if (paramBoolean) {
-          return k - ((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
+          return i1 - ((PathDrawer.PathSegment)this.d.get(i1)).e();
         }
-        i = k + 1;
-        while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (l >= ((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a())) {
-          i += 1;
+        m = i1 + 1;
+        while ((m < this.d.size()) && (l >= ((PathDrawer.PathSegment)this.d.get(m)).d())) {
+          m += 1;
         }
-        if (i == this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        if (m == this.d.size()) {
           return -1;
         }
-        return i;
+        return m;
       }
       if (l < paramLong) {
-        j = k + 1;
+        n = i1 + 1;
       } else if (l > paramLong) {
-        i = k - ((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(k)).a();
+        m = i1 - ((PathDrawer.PathSegment)this.d.get(i1)).e();
       }
     }
-    return i - ((PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a();
+    return m - ((PathDrawer.PathSegment)this.d.get(m)).e();
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+    this.e.setAntiAlias(true);
+    this.e.setStyle(Paint.Style.STROKE);
+    this.e.setStrokeJoin(Paint.Join.ROUND);
+    this.e.setStrokeCap(Paint.Cap.ROUND);
+    this.e.setXfermode(null);
     a(paramInt1);
     b(paramInt2);
   }
@@ -182,11 +165,11 @@ public class PathDrawer
   {
     if ((paramCanvas != null) && (paramPointData != null))
     {
-      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+      Paint localPaint = this.e;
       if (localPaint != null)
       {
         localPaint.setStrokeWidth(paramPointData.c() / 2.0F);
-        paramCanvas.drawCircle(paramPointData.a(), paramPointData.b(), paramPointData.c() / 4.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawCircle(paramPointData.a(), paramPointData.b(), paramPointData.c() / 4.0F, this.e);
       }
     }
   }
@@ -195,72 +178,62 @@ public class PathDrawer
   {
     if (paramCanvas != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(paramPathSegment.a());
-      paramCanvas.drawPath(paramPathSegment.a(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.e.setStrokeWidth(paramPathSegment.b());
+      paramCanvas.drawPath(paramPathSegment.a(), this.e);
     }
+  }
+  
+  private float g()
+  {
+    float f1 = this.h.width() * 1.0F / this.g.width();
+    float f2 = this.h.height() * 1.0F / this.g.height();
+    if (f1 < f2) {
+      return f1;
+    }
+    return f2;
   }
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-      return ((PathDrawer.PathSegment)localArrayList.get(localArrayList.size() - 1)).a();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData != null) {}
-    return 0L;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData = null;
-    this.jdField_b_of_type_Int = -1;
+    return this.f;
   }
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData = new PathData.PointData(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = new HalfAlgorithm();
+    this.j = new PathData.PointData(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    if (this.k == null) {
+      this.k = new HalfAlgorithm();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm.a(paramFloat1, paramFloat2, paramFloat3, 0L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilArrayList);
+    this.k.a(paramFloat1, paramFloat2, paramFloat3, 0L, this.c, this.d);
   }
   
   public void a(float paramFloat, boolean paramBoolean)
   {
     Object localObject1;
     Object localObject2;
-    if (!this.jdField_a_of_type_AndroidGraphicsPath.isEmpty())
+    if (!this.c.isEmpty())
     {
       localObject1 = new Matrix();
       ((Matrix)localObject1).postScale(paramFloat, paramFloat);
       localObject2 = new Path();
-      ((Path)localObject2).addPath(this.jdField_a_of_type_AndroidGraphicsPath, (Matrix)localObject1);
-      this.jdField_a_of_type_AndroidGraphicsPath = ((Path)localObject2);
+      ((Path)localObject2).addPath(this.c, (Matrix)localObject1);
+      this.c = ((Path)localObject2);
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    if (this.d.size() > 0)
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = this.d.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (PathDrawer.PathSegment)((Iterator)localObject1).next();
         ((PathDrawer.PathSegment)localObject2).c(paramFloat);
         if (paramBoolean) {
-          ((PathDrawer.PathSegment)localObject2).a(((PathDrawer.PathSegment)localObject2).a() * paramFloat);
+          ((PathDrawer.PathSegment)localObject2).a(((PathDrawer.PathSegment)localObject2).b() * paramFloat);
         }
       }
     }
     if (paramBoolean)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData;
+      localObject1 = this.j;
       if (localObject1 != null) {
         ((PathData.PointData)localObject1).d(paramFloat);
       }
@@ -270,38 +243,38 @@ public class PathDrawer
   public void a(int paramInt)
   {
     b(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.e.setColor(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i = paramInt3 - paramInt1;
-    if (i != 0)
+    int m = paramInt3 - paramInt1;
+    if (m != 0)
     {
-      int j = paramInt4 - paramInt2;
-      if (j == 0) {
+      int n = paramInt4 - paramInt2;
+      if (n == 0) {
         return;
       }
-      Object localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+      Object localObject = this.h;
       if (localObject == null) {
         return;
       }
-      if ((((Rect)localObject).width() == i) && (this.jdField_b_of_type_AndroidGraphicsRect.height() == j))
+      if ((((Rect)localObject).width() == m) && (this.h.height() == n))
       {
         QLog.d("PathDrawer", 2, "draw area not change.");
         return;
       }
-      if ((!this.jdField_b_of_type_AndroidGraphicsRect.isEmpty()) && (!this.jdField_a_of_type_AndroidGraphicsRect.isEmpty()) && (!this.jdField_b_of_type_AndroidGraphicsRect.equals(this.jdField_a_of_type_AndroidGraphicsRect))) {
-        f1 = a();
+      if ((!this.h.isEmpty()) && (!this.g.isEmpty()) && (!this.h.equals(this.g))) {
+        f1 = g();
       } else {
         f1 = 1.0F;
       }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
+      this.h.set(paramInt1, paramInt2, paramInt3, paramInt4);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("setArea:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidGraphicsRect);
+      ((StringBuilder)localObject).append(this.h);
       QLog.d("PathDrawer", 2, ((StringBuilder)localObject).toString());
-      float f2 = a();
+      float f2 = g();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("scale:");
       ((StringBuilder)localObject).append(f2);
@@ -309,8 +282,8 @@ public class PathDrawer
       ((StringBuilder)localObject).append(f1);
       QLog.d("PathDrawer", 2, ((StringBuilder)localObject).toString());
       float f1 = f2 / f1;
-      double d = f1 - 1.0F;
-      if ((d < 1.0E-006D) && (d > -1.0E-006D)) {
+      double d1 = f1 - 1.0F;
+      if ((d1 < 1.0E-006D) && (d1 > -1.0E-006D)) {
         QLog.d("PathDrawer", 2, "scale no change, return:");
       }
       a(f1, true);
@@ -319,15 +292,15 @@ public class PathDrawer
   
   public void a(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    if (this.d.size() == 0)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData;
+      localObject = this.j;
       if (localObject != null) {
         a(paramCanvas, (PathData.PointData)localObject);
       }
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject = this.d.iterator();
     while (((Iterator)localObject).hasNext()) {
       a(paramCanvas, (PathDrawer.PathSegment)((Iterator)localObject).next());
     }
@@ -336,34 +309,29 @@ public class PathDrawer
   public void a(MyParcel paramMyParcel, int paramInt)
   {
     paramMyParcel.a(1);
-    paramMyParcel.a(this.jdField_a_of_type_JavaUtilList);
-    paramMyParcel.a(this.jdField_a_of_type_JavaUtilArrayList);
-    paramMyParcel.a(this.jdField_b_of_type_Int);
-    paramMyParcel.a(this.jdField_a_of_type_AndroidGraphicsPaint.getColor());
-    paramMyParcel.a(this.jdField_a_of_type_AndroidGraphicsRect);
-    paramMyParcel.a(this.jdField_b_of_type_AndroidGraphicsRect);
-    paramMyParcel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData);
-    paramMyParcel.a(this.jdField_a_of_type_Int);
+    paramMyParcel.a(this.i);
+    paramMyParcel.a(this.d);
+    paramMyParcel.a(this.f);
+    paramMyParcel.a(this.e.getColor());
+    paramMyParcel.a(this.g);
+    paramMyParcel.a(this.h);
+    paramMyParcel.a(this.j);
+    paramMyParcel.a(this.a);
   }
   
   public void a(boolean paramBoolean)
   {
-    PathAlgorithm localPathAlgorithm = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm;
+    PathAlgorithm localPathAlgorithm = this.k;
     if (localPathAlgorithm != null)
     {
       if (!paramBoolean)
       {
-        localPathAlgorithm.a(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilArrayList);
+        localPathAlgorithm.a(this.c, this.d);
         return;
       }
-      localPathAlgorithm.a(this.jdField_a_of_type_JavaUtilArrayList, 0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm = null;
+      localPathAlgorithm.a(this.d, 0);
+      this.k = null;
     }
-  }
-  
-  public boolean a()
-  {
-    return ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (!this.jdField_a_of_type_AndroidGraphicsPath.isEmpty())) || ((this.jdField_a_of_type_JavaUtilArrayList.size() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData != null));
   }
   
   public boolean a(Canvas paramCanvas, int paramInt1, int paramInt2)
@@ -374,43 +342,43 @@ public class PathDrawer
     if (paramInt1 > paramInt2) {
       return false;
     }
-    int i = paramInt1;
+    int m = paramInt1;
     if (paramInt1 < 0) {
-      i = 0;
+      m = 0;
     }
     PathData.PointData localPointData;
-    if ((paramInt2 == 0) && (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    if ((paramInt2 == 0) && (this.d.size() == 0))
     {
-      localPointData = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData;
+      localPointData = this.j;
       if (localPointData != null) {
         a(paramCanvas, localPointData);
       }
       return true;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    if (this.d.size() == 0)
     {
-      if (i == 0)
+      if (m == 0)
       {
-        localPointData = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData;
+        localPointData = this.j;
         if (localPointData != null) {
           a(paramCanvas, localPointData);
         }
       }
       return false;
     }
-    int j = i;
+    int n = m;
     paramInt1 = paramInt2;
-    if (paramInt2 > this.jdField_a_of_type_JavaUtilArrayList.size())
+    if (paramInt2 > this.d.size())
     {
-      paramInt1 = this.jdField_a_of_type_JavaUtilArrayList.size();
-      j = i;
+      paramInt1 = this.d.size();
+      n = m;
     }
-    while (j < paramInt1)
+    while (n < paramInt1)
     {
-      a(paramCanvas, (PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(j));
-      j += 1;
+      a(paramCanvas, (PathDrawer.PathSegment)this.d.get(n));
+      n += 1;
     }
-    return paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size();
+    return paramInt1 < this.d.size();
   }
   
   public boolean a(Canvas paramCanvas, long paramLong1, long paramLong2)
@@ -426,82 +394,75 @@ public class PathDrawer
       l = 0L;
     }
     PathData.PointData localPointData;
-    if ((paramLong2 == 0L) && (this.jdField_a_of_type_JavaUtilArrayList.size() == 0))
+    if ((paramLong2 == 0L) && (this.d.size() == 0))
     {
-      localPointData = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData;
+      localPointData = this.j;
       if (localPointData != null) {
         a(paramCanvas, localPointData);
       }
       return true;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+    if (this.d.size() == 0)
     {
       if (l == 0L)
       {
-        localPointData = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData;
+        localPointData = this.j;
         if (localPointData != null) {
           a(paramCanvas, localPointData);
         }
       }
       return false;
     }
-    if ((paramLong2 == 0L) && (this.jdField_a_of_type_JavaUtilArrayList.size() != 0)) {
+    if ((paramLong2 == 0L) && (this.d.size() != 0)) {
       return true;
     }
-    int k = a(l, true);
-    int m = a(paramLong2, false);
-    if (k < 0) {
+    int i1 = a(l, true);
+    int i2 = a(paramLong2, false);
+    if (i1 < 0) {
       return true;
     }
-    int j;
-    int i;
-    if (m < 0)
+    int n;
+    int m;
+    if (i2 < 0)
     {
-      j = this.jdField_a_of_type_JavaUtilArrayList.size();
-      i = k;
+      n = this.d.size();
+      m = i1;
     }
     else
     {
-      i = k;
-      j = m;
-      if (m == k)
+      m = i1;
+      n = i2;
+      if (i2 == i1)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= m) {
+        if (this.d.size() <= i2) {
           return true;
         }
-        a(paramCanvas, (PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(k));
+        a(paramCanvas, (PathDrawer.PathSegment)this.d.get(i1));
         return false;
       }
     }
-    while (i < j)
+    while (m < n)
     {
-      a(paramCanvas, (PathDrawer.PathSegment)this.jdField_a_of_type_JavaUtilArrayList.get(i));
-      i += 1;
+      a(paramCanvas, (PathDrawer.PathSegment)this.d.get(m));
+      m += 1;
     }
-    return j < this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathData$PointData != null) {
-      return 1;
-    }
-    return 0;
+    return n < this.d.size();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilList = null;
+    this.e.reset();
+    this.c.reset();
+    this.d.clear();
+    this.j = null;
+    this.f = -1;
   }
   
   public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    PathAlgorithm localPathAlgorithm = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathAlgorithm;
+    PathAlgorithm localPathAlgorithm = this.k;
     if (localPathAlgorithm != null) {
-      localPathAlgorithm.b(paramFloat1, paramFloat2, paramFloat3, paramLong, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilArrayList);
+      localPathAlgorithm.b(paramFloat1, paramFloat2, paramFloat3, paramLong, this.c, this.d);
     }
   }
   
@@ -509,24 +470,56 @@ public class PathDrawer
   {
     if (paramInt > 0)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
-      Object localObject = DoodleResHelper.a().a(0, paramInt);
+      this.e.setShader(null);
+      Object localObject = DoodleResHelper.a().e(0, paramInt);
       if (localObject != null)
       {
         localObject = new BitmapShader((Bitmap)localObject, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject);
+        this.e.setShader((Shader)localObject);
       }
     }
     else
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
+      this.e.setShader(null);
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
+  }
+  
+  public int c()
+  {
+    if (this.d.size() > 0) {
+      return this.d.size();
+    }
+    if (this.j != null) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public long d()
+  {
+    if (this.d.size() > 0)
+    {
+      ArrayList localArrayList = this.d;
+      return ((PathDrawer.PathSegment)localArrayList.get(localArrayList.size() - 1)).d();
+    }
+    if (this.j != null) {}
+    return 0L;
+  }
+  
+  public void e()
+  {
+    this.i = null;
+  }
+  
+  public boolean f()
+  {
+    return ((this.d.size() > 0) && (!this.c.isEmpty())) || ((this.d.size() == 0) && (this.j != null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PathDrawer
  * JD-Core Version:    0.7.0.1
  */

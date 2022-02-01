@@ -17,7 +17,7 @@ class MiniAppProxyImpl$4
   {
     if ((paramInt1 == 1002) && (paramInt2 == -1))
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+      this.a.removeActivityResultListener(this);
       String str = paramIntent.getStringExtra("uin");
       paramIntent = paramIntent.getStringExtra("uinname");
       StringBuilder localStringBuilder = new StringBuilder();
@@ -26,14 +26,14 @@ class MiniAppProxyImpl$4
       localStringBuilder.append(", group name: ");
       localStringBuilder.append(paramIntent);
       QLog.d("MiniAppProxyImpl", 1, localStringBuilder.toString());
-      TroopApplicationListUtil.addMiniAppToTroopApplicationList(str, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext.getMiniAppInfo().appId, null);
+      TroopApplicationListUtil.addMiniAppToTroopApplicationList(str, this.b.getMiniAppInfo().appId, null);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

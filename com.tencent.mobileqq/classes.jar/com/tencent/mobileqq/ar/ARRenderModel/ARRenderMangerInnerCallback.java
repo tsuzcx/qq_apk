@@ -9,13 +9,7 @@ public abstract interface ARRenderMangerInnerCallback
 {
   public abstract Context a();
   
-  public abstract ARRenerArumentManager a();
-  
-  public abstract UniformGLRenderManager a();
-  
   public abstract Object a(int paramInt);
-  
-  public abstract void a();
   
   public abstract void a(ARBaseRender paramARBaseRender, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
   
@@ -27,11 +21,17 @@ public abstract interface ARRenderMangerInnerCallback
   
   public abstract void a(String paramString);
   
+  public abstract void b();
+  
   public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract ARRenerArumentManager c();
+  
+  public abstract UniformGLRenderManager d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback
  * JD-Core Version:    0.7.0.1
  */

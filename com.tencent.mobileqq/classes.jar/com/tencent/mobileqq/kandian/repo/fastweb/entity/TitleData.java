@@ -25,12 +25,12 @@ public class TitleData
       {
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("style_ID", "ReadInjoy_article_title_cell");
-        localJSONObject.put("id_attribute_text", this.jdField_a_of_type_JavaLangString);
-        Object localObject1 = this.ad;
+        localJSONObject.put("id_attribute_text", this.a);
+        Object localObject1 = this.bc;
         if (localObject1 != null) {
           try
           {
-            localObject1 = new JSONObject(this.ad);
+            localObject1 = new JSONObject(this.bc);
             Iterator localIterator = ((JSONObject)localObject1).keys();
             if (localIterator != null) {
               if (localIterator.hasNext())
@@ -57,8 +57,8 @@ public class TitleData
         localObject2 = ((TemplateFactory)localObject2).getTemplateBean(localJSONObject);
         if (localObject2 != null)
         {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ((TemplateBean)localObject2);
-          this.c = localJSONObject;
+          this.bd = ((TemplateBean)localObject2);
+          this.bb = localJSONObject;
           return;
         }
       }
@@ -74,7 +74,7 @@ public class TitleData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.fastweb.entity.TitleData
  * JD-Core Version:    0.7.0.1
  */

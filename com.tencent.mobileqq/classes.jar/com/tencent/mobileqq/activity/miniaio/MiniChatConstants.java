@@ -98,6 +98,7 @@ public class MiniChatConstants
   public static final String MINI_TAG = "mini_msg_";
   public static final int MINi_AIO_MINMUN_HEIGHT = 300;
   public static final int MSG_EFRESH_FONT_BUBBLE = 8;
+  public static final int MSG_EFRESH_FOR_ITEM = 9;
   public static final int MSG_EFRESH_FOR_LIST = 6;
   public static final int MSG_EFRESH_MAGIC_FONT = 7;
   public static final int MSG_REFRESH_LIST_UNREAD = 5;
@@ -122,7 +123,7 @@ public class MiniChatConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatConstants
  * JD-Core Version:    0.7.0.1
  */

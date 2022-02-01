@@ -8,7 +8,7 @@ public class QCallRecordInterceptor
 {
   public Class a(Interceptor.Chain<Class> paramChain)
   {
-    if (a(paramChain).startsWith("qc_")) {
+    if (b(paramChain).startsWith("qc_")) {
       return QCallRecord.class;
     }
     return (Class)paramChain.proceed();
@@ -16,7 +16,7 @@ public class QCallRecordInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.bridge.verify.interceptor.QCallRecordInterceptor
  * JD-Core Version:    0.7.0.1
  */

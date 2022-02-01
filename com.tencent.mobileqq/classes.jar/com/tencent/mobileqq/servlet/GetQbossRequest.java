@@ -38,27 +38,6 @@ public class GetQbossRequest
     return paramArrayOfByte;
   }
   
-  public static Boolean a(String paramString)
-  {
-    boolean bool = PackageUtil.a(MobileQQ.sMobileQQ.getApplicationContext(), paramString);
-    if (QZLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("QBoss filter : ");
-      String str;
-      if (bool) {
-        str = "";
-      } else {
-        str = "not ";
-      }
-      localStringBuilder.append(str);
-      localStringBuilder.append("install PkgName = ");
-      localStringBuilder.append(paramString);
-      QZLog.d("GetQbossRequest", 4, localStringBuilder.toString());
-    }
-    return Boolean.valueOf(bool);
-  }
-  
   public static String a(String paramString)
   {
     boolean bool = TextUtils.isEmpty(paramString);
@@ -102,7 +81,7 @@ public class GetQbossRequest
       {
         tAdvDesc localtAdvDesc = (tAdvDesc)localIterator.next();
         String str = a(localtAdvDesc.res_data);
-        if ((str != null) && (a(str).booleanValue()))
+        if ((str != null) && (b(str).booleanValue()))
         {
           localIterator.remove();
           ((IQbossReportManager)QRoute.api(IQbossReportManager.class)).reportIntercept(localtAdvDesc.res_traceinfo, null);
@@ -112,6 +91,27 @@ public class GetQbossRequest
         paramMobileQbossAdvRsp.remove();
       }
     }
+  }
+  
+  public static Boolean b(String paramString)
+  {
+    boolean bool = PackageUtil.d(MobileQQ.sMobileQQ.getApplicationContext(), paramString);
+    if (QZLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QBoss filter : ");
+      String str;
+      if (bool) {
+        str = "";
+      } else {
+        str = "not ";
+      }
+      localStringBuilder.append(str);
+      localStringBuilder.append("install PkgName = ");
+      localStringBuilder.append(paramString);
+      QZLog.d("GetQbossRequest", 4, localStringBuilder.toString());
+    }
+    return Boolean.valueOf(bool);
   }
   
   public String getCmdString()
@@ -131,7 +131,7 @@ public class GetQbossRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.GetQbossRequest
  * JD-Core Version:    0.7.0.1
  */

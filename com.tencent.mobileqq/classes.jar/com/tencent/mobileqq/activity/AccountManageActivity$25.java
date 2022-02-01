@@ -1,28 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.utils.RouteUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-
 class AccountManageActivity$25
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   AccountManageActivity$25(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    RouteUtils.a(this.a, paramDialogInterface, "/base/subAccount/bind");
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
-    this.a.d();
+    this.this$0.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.25
  * JD-Core Version:    0.7.0.1
  */

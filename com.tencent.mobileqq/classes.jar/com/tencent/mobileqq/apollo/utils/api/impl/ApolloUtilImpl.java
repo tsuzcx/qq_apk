@@ -5,15 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.SparseArray;
@@ -24,7 +18,6 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -38,24 +31,21 @@ import com.tencent.mobileqq.apollo.aio.panel.ApolloPanel;
 import com.tencent.mobileqq.apollo.aio.panel.api.impl.ApolloPanelProviderImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
-import com.tencent.mobileqq.apollo.config.ApolloConfigUtils;
 import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
 import com.tencent.mobileqq.apollo.emotionview.EmoticonPanelCmShowHelper;
-import com.tencent.mobileqq.apollo.game.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.model.Apollo3DMessage;
 import com.tencent.mobileqq.apollo.model.ApolloActionData;
 import com.tencent.mobileqq.apollo.model.ApolloActionPackage;
 import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
 import com.tencent.mobileqq.apollo.model.ApolloBattleGameInfo;
 import com.tencent.mobileqq.apollo.model.ApolloDrawableExtraInfo;
-import com.tencent.mobileqq.apollo.model.ApolloGameData;
 import com.tencent.mobileqq.apollo.model.ApolloMessage;
 import com.tencent.mobileqq.apollo.model.App3DConfig;
 import com.tencent.mobileqq.apollo.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.model.StartCheckParam;
 import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
 import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
 import com.tencent.mobileqq.apollo.script.ISpriteContext;
+import com.tencent.mobileqq.apollo.script.SpriteUtil;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloConstant;
 import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
@@ -63,14 +53,12 @@ import com.tencent.mobileqq.apollo.utils.VersionUtil;
 import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloRender;
 import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloTextureView;
-import com.tencent.mobileqq.cmshow.engine.util.CMGetResPathUtil;
-import com.tencent.mobileqq.cmshow.engine.util.CMResUtil;
+import com.tencent.mobileqq.cmshow.engine.resource.IApolloResManager;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -81,38 +69,24 @@ import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
 import com.tencent.mobileqq.emoticonview.EmoticonImageView;
 import com.tencent.mobileqq.emoticonview.SystemEmoticonInfo;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
-import com.tencent.mobileqq.graytip.UniteGrayTipParam;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.pic.api.ICompressOperator;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
 import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.mobileqq.vas.VasH5PayUtil;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.pb.apollousertrace.ApolloUserTrace.STClickInfo;
-import com.tencent.pb.apollousertrace.ApolloUserTrace.STUserClickTrack;
-import com.tencent.pb.apollousertrace.ApolloUserTrace.STUserTrackReq;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 import cooperation.vip.manager.QZoneVipInfoManager;
 import java.io.File;
 import java.net.URL;
@@ -124,7 +98,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
@@ -132,7 +105,6 @@ import java.util.regex.Pattern;
 import javax.net.ssl.SSLContext;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import trpc.cmshow.game.OpenGameBox.StBoxItem;
 
@@ -141,8 +113,6 @@ public class ApolloUtilImpl
 {
   public static final String APOLLO_EMOTICON_MSG_CHECKED_FLAG = "1";
   public static final String APOLLO_EMOTICON_MSG_PLAYED_FLAG = "2";
-  public static final String APOLLO_GAME_RES_SP = "apollo_game_res";
-  public static final String APOLLO_JSON_PATH = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/action/action_v730.json";
   public static final String APOLLO_JSON_URL = "https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipList_apollo_data/tab_list_android_v730.json";
   public static final String APOLLO_REPORT_CONFIG_PAT = "/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/apollo_report_config.json";
   public static final String APOLLO_REPORT_CONFIG_URL = "https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json";
@@ -152,8 +122,7 @@ public class ApolloUtilImpl
   private static final int NEW_ICON_MAX_SHOW_TIMES = 3;
   public static final String TAG = "[cmshow]ApolloUtil";
   private static HashMap<String, String> dressTypeMap;
-  private static boolean mNeedGrayTip = true;
-  public static Comparator<File> mResPriorityComparator = new ApolloUtilImpl.6();
+  public static Comparator<File> mResPriorityComparator = new ApolloUtilImpl.5();
   public static long sCurrentTimeStamp;
   public static ApolloUtilImpl.HardwareInfo sHardwareInfo;
   private static SharedPreferences sHttpProxyPreferences;
@@ -164,37 +133,6 @@ public class ApolloUtilImpl
   private static boolean sPopupGuideShown;
   public static long sRenderRunnableTimeOut = 100L;
   private static int sShownNewEmoticonSize;
-  
-  public static void addWhiteFaceUnSupportTips(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
-  {
-    if ((paramQQAppInterface != null) && (paramSessionInfo != null))
-    {
-      if (!mNeedGrayTip) {
-        return;
-      }
-      mNeedGrayTip = false;
-      Object localObject2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      String str = paramQQAppInterface.getCurrentUin();
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("apollo_white_face_unsupport_gray_tip");
-      ((StringBuilder)localObject1).append(str);
-      localObject1 = ((StringBuilder)localObject1).toString();
-      SharedPreferences localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-      if (!localSharedPreferences.getBoolean((String)localObject1, true)) {
-        return;
-      }
-      long l = MessageCache.a();
-      paramSessionInfo = new UniteGrayTipParam((String)localObject2, str, HardCodeUtil.a(2131700756), paramSessionInfo.jdField_a_of_type_Int, -5040, 2359299, l);
-      localObject2 = new MessageForUniteGrayTip();
-      ((MessageForUniteGrayTip)localObject2).initGrayTipMsg(paramQQAppInterface, paramSessionInfo);
-      UniteGrayTipMsgUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]ApolloUtil", 2, "addWhiteFaceUnSupportTips send white face unsupport gray tip");
-      }
-      localSharedPreferences.edit().putBoolean((String)localObject1, false).commit();
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "graystripe_3Demotion_view", 0, 0, new String[] { "" });
-    }
-  }
   
   public static String autoSplitText(Paint paramPaint, float paramFloat, String paramString, int paramInt)
   {
@@ -280,10 +218,10 @@ public class ApolloUtilImpl
   public static String calcMd5FromAccess(String paramString)
   {
     // Byte code:
-    //   0: invokestatic 274	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   3: invokevirtual 278	com/tencent/common/app/BaseApplicationImpl:getAssets	()Landroid/content/res/AssetManager;
+    //   0: invokestatic 171	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: invokevirtual 175	com/tencent/common/app/BaseApplicationImpl:getAssets	()Landroid/content/res/AssetManager;
     //   6: aload_0
-    //   7: invokevirtual 284	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   7: invokevirtual 181	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   10: astore_1
     //   11: aload_1
     //   12: ifnull +45 -> 57
@@ -291,23 +229,23 @@ public class ApolloUtilImpl
     //   16: astore_0
     //   17: aload_1
     //   18: aload_1
-    //   19: invokevirtual 289	java/io/InputStream:available	()I
+    //   19: invokevirtual 186	java/io/InputStream:available	()I
     //   22: i2l
-    //   23: invokestatic 295	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   26: invokestatic 301	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   23: invokestatic 192	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   26: invokestatic 198	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   29: astore_2
     //   30: aload_1
     //   31: ifnull +20 -> 51
     //   34: aload_1
-    //   35: invokevirtual 304	java/io/InputStream:close	()V
+    //   35: invokevirtual 201	java/io/InputStream:close	()V
     //   38: aload_2
     //   39: areturn
     //   40: astore_0
-    //   41: ldc 38
+    //   41: ldc 32
     //   43: iconst_1
     //   44: aload_0
-    //   45: invokevirtual 307	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   48: invokestatic 310	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: invokevirtual 204	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   48: invokestatic 210	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   51: aload_2
     //   52: areturn
     //   53: astore_2
@@ -315,15 +253,15 @@ public class ApolloUtilImpl
     //   57: aload_1
     //   58: ifnull +51 -> 109
     //   61: aload_1
-    //   62: invokevirtual 304	java/io/InputStream:close	()V
+    //   62: invokevirtual 201	java/io/InputStream:close	()V
     //   65: aconst_null
     //   66: areturn
     //   67: astore_0
-    //   68: ldc 38
+    //   68: ldc 32
     //   70: iconst_1
     //   71: aload_0
-    //   72: invokevirtual 307	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   75: invokestatic 310	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   72: invokevirtual 204	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   75: invokestatic 210	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   78: aconst_null
     //   79: areturn
     //   80: astore_0
@@ -335,15 +273,15 @@ public class ApolloUtilImpl
     //   88: astore_1
     //   89: aload_1
     //   90: astore_0
-    //   91: ldc 38
+    //   91: ldc 32
     //   93: iconst_1
     //   94: aload_2
-    //   95: invokevirtual 307	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   98: invokestatic 310	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   95: invokevirtual 204	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   98: invokestatic 210	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   101: aload_1
     //   102: ifnull +7 -> 109
     //   105: aload_1
-    //   106: invokevirtual 304	java/io/InputStream:close	()V
+    //   106: invokevirtual 201	java/io/InputStream:close	()V
     //   109: aconst_null
     //   110: areturn
     //   111: astore_2
@@ -354,14 +292,14 @@ public class ApolloUtilImpl
     //   116: aload_1
     //   117: ifnull +21 -> 138
     //   120: aload_1
-    //   121: invokevirtual 304	java/io/InputStream:close	()V
+    //   121: invokevirtual 201	java/io/InputStream:close	()V
     //   124: goto +14 -> 138
     //   127: astore_1
-    //   128: ldc 38
+    //   128: ldc 32
     //   130: iconst_1
     //   131: aload_1
-    //   132: invokevirtual 307	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   135: invokestatic 310	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   132: invokevirtual 204	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   135: invokestatic 210	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   138: aload_0
     //   139: athrow
     // Local variable table:
@@ -388,26 +326,7 @@ public class ApolloUtilImpl
   
   public static void checkJsonParse(AppRuntime paramAppRuntime)
   {
-    ThreadManager.getFileThreadHandler().post(new ApolloUtilImpl.10(paramAppRuntime));
-  }
-  
-  public static boolean checkNotFullScreen()
-  {
-    String str = Build.MODEL;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("checkNotFullScreen model:");
-      localStringBuilder.append(str);
-      QLog.d("[cmshow]ApolloUtil", 2, localStringBuilder.toString());
-    }
-    if (android.text.TextUtils.isEmpty(str)) {
-      return false;
-    }
-    if (!android.text.TextUtils.isEmpty(ApolloConfigUtils.jdField_a_of_type_JavaLangString)) {
-      return ApolloConfigUtils.jdField_a_of_type_JavaLangString.contains(str);
-    }
-    return str.contains("SM-G8870");
+    ThreadManager.getFileThreadHandler().post(new ApolloUtilImpl.9(paramAppRuntime));
   }
   
   public static void clearFlag()
@@ -418,7 +337,6 @@ public class ApolloUtilImpl
     sPopupGuideFlagLoaded = false;
     sPopupGuideShown = false;
     EmoticonImageView.disableNewIcon(false);
-    mNeedGrayTip = true;
   }
   
   public static int colorParse(String paramString)
@@ -460,102 +378,6 @@ public class ApolloUtilImpl
       return convertEmoticonActionId(paramInt1);
     }
     return paramApolloDaoManagerServiceImpl.getWhiteFaceIdMapping(paramInt1, paramInt2);
-  }
-  
-  public static ApolloUserTrace.STUserTrackReq convertJson2JavaObj(String paramString)
-  {
-    ApolloUserTrace.STUserTrackReq localSTUserTrackReq = new ApolloUserTrace.STUserTrackReq();
-    if (android.text.TextUtils.isEmpty(paramString)) {
-      return localSTUserTrackReq;
-    }
-    for (;;)
-    {
-      try
-      {
-        long l1 = System.currentTimeMillis();
-        paramString = new JSONObject(paramString);
-        localSTUserTrackReq.strFrom.set(paramString.optString("from"));
-        localSTUserTrackReq.playts.set(paramString.optInt("playts"));
-        localSTUserTrackReq.roomId.set(paramString.optLong("roomId"));
-        localSTUserTrackReq.gameId.set(paramString.optInt("gameId"));
-        if (paramString.has("userTrack"))
-        {
-          localObject = paramString.getJSONObject("userTrack");
-          paramString = new ApolloUserTrace.STUserClickTrack();
-          paramString.name.set(((JSONObject)localObject).optString("name"));
-          paramString.screenScale.set(((JSONObject)localObject).optInt("screenscale"));
-          paramString.screenX.set(((JSONObject)localObject).optInt("screenwidth"));
-          paramString.screenY.set(((JSONObject)localObject).optInt("screenheight"));
-          paramString.time.set(((JSONObject)localObject).optInt("time"));
-          if (((JSONObject)localObject).has("record"))
-          {
-            localObject = ((JSONObject)localObject).getJSONArray("record");
-            if (localObject == null) {
-              break;
-            }
-            if (((JSONArray)localObject).length() != 0) {
-              break label569;
-            }
-            return localSTUserTrackReq;
-            if (i < ((JSONArray)localObject).length())
-            {
-              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-              ApolloUserTrace.STClickInfo localSTClickInfo = new ApolloUserTrace.STClickInfo();
-              localSTClickInfo.posx.set(localJSONObject.optInt("posx"));
-              localSTClickInfo.angularvel.set(localJSONObject.optInt("angularvel"));
-              localSTClickInfo.btnstate.set(localJSONObject.optInt("btnstate"));
-              localSTClickInfo.time.set(localJSONObject.optInt("time"));
-              localSTClickInfo.rotx.set(localJSONObject.optInt("rotx"));
-              localSTClickInfo.velx.set(localJSONObject.optInt("velx"));
-              localSTClickInfo.vely.set(localJSONObject.optInt("vely"));
-              localSTClickInfo.roty.set(localJSONObject.optInt("roty"));
-              localSTClickInfo.posy.set(localJSONObject.optInt("posy"));
-              paramString.list.add(localSTClickInfo);
-              i += 1;
-              continue;
-            }
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder();
-              ((StringBuilder)localObject).append("trace.len:");
-              ((StringBuilder)localObject).append(paramString.list.size());
-              QLog.d("[cmshow]ApolloUtil", 2, ((StringBuilder)localObject).toString());
-            }
-          }
-          localSTUserTrackReq.userClick.set(paramString);
-        }
-        long l2 = System.currentTimeMillis();
-        if (QLog.isColorLevel())
-        {
-          paramString = new StringBuilder();
-          paramString.append("trace parsing cost:");
-          paramString.append(l2 - l1);
-          QLog.d("[cmshow]ApolloUtil", 2, paramString.toString());
-          return localSTUserTrackReq;
-        }
-      }
-      catch (Exception paramString)
-      {
-        Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("errInfo->");
-        ((StringBuilder)localObject).append(paramString.getMessage());
-        QLog.e("[cmshow]ApolloUtil", 1, ((StringBuilder)localObject).toString());
-      }
-      return localSTUserTrackReq;
-      label569:
-      int i = 0;
-    }
-    return localSTUserTrackReq;
-  }
-  
-  public static void deleteGameResIfNeed()
-  {
-    ThreadManager.post(new ApolloUtilImpl.5(), 5, null, true);
-  }
-  
-  public static final int dp2px(float paramFloat1, float paramFloat2)
-  {
-    return (int)(paramFloat1 * paramFloat2 + 0.5F);
   }
   
   public static String encodeURL(String paramString)
@@ -610,7 +432,7 @@ public class ApolloUtilImpl
         str = ImageUtil.a(paramActivity, paramString1);
         try
         {
-          if ((((ICompressOperator)QRoute.api(ICompressOperator.class)).decodeJpegByTrubo()) && (ImageUtil.c(paramString1))) {
+          if ((((ICompressOperator)QRoute.api(ICompressOperator.class)).decodeJpegByTrubo()) && (ImageUtil.e(paramString1))) {
             ((ICompressOperator)QRoute.api(ICompressOperator.class)).compressAIOThumbnailWithTrubo(paramString1, str, true, "", 0);
           } else {
             ((ICompressOperator)QRoute.api(ICompressOperator.class)).compressAIOThumbnail(paramString1, str, true, "", 0);
@@ -717,9 +539,9 @@ public class ApolloUtilImpl
     return bool1;
   }
   
-  public static ArrayList<Integer> getAddedFaceList(QQAppInterface paramQQAppInterface)
+  public static ArrayList<Integer> getAddedFaceList(AppInterface paramAppInterface)
   {
-    if (paramQQAppInterface == null) {
+    if (paramAppInterface == null) {
       return null;
     }
     localArrayList = new ArrayList();
@@ -728,56 +550,28 @@ public class ApolloUtilImpl
     localObject = ((BaseApplication)localObject).getSharedPreferences("apollo_sp", 0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("sp_key_apollo_game_life");
-    localStringBuilder.append(paramQQAppInterface.getCurrentUin());
-    paramQQAppInterface = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "");
-    if (!android.text.TextUtils.isEmpty(paramQQAppInterface))
+    localStringBuilder.append(paramAppInterface.getCurrentUin());
+    paramAppInterface = ((SharedPreferences)localObject).getString(localStringBuilder.toString(), "");
+    if (!android.text.TextUtils.isEmpty(paramAppInterface))
     {
-      paramQQAppInterface = paramQQAppInterface.split(",");
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+      paramAppInterface = paramAppInterface.split(",");
+      if ((paramAppInterface != null) && (paramAppInterface.length > 0)) {
         try
         {
-          int j = paramQQAppInterface.length;
+          int j = paramAppInterface.length;
           while (i < j)
           {
-            localArrayList.add(Integer.valueOf(Integer.parseInt(paramQQAppInterface[i])));
+            localArrayList.add(Integer.valueOf(Integer.parseInt(paramAppInterface[i])));
             i += 1;
           }
           return localArrayList;
         }
-        catch (Exception paramQQAppInterface)
+        catch (Exception paramAppInterface)
         {
-          QLog.e("[cmshow]ApolloUtil", 1, "[getAddedFaceList] exception=", paramQQAppInterface);
+          QLog.e("[cmshow]ApolloUtil", 1, "[getAddedFaceList] exception=", paramAppInterface);
         }
       }
     }
-  }
-  
-  public static String getApolloGameLuaPath(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    if ((paramInt != 1) && (paramInt != 2))
-    {
-      localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("main.js");
-    }
-    else
-    {
-      localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("main.lua");
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String getApolloGameResPath(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-    localStringBuilder.append(paramInt);
-    return localStringBuilder.toString();
   }
   
   public static String getApolloId(int paramInt)
@@ -802,11 +596,11 @@ public class ApolloUtilImpl
     if (paramBaseChatPie == null) {
       return null;
     }
-    paramBaseChatPie = paramBaseChatPie.a();
+    paramBaseChatPie = paramBaseChatPie.bq();
     if (paramBaseChatPie == null) {
       return null;
     }
-    return (ApolloPanel)paramBaseChatPie.b(21);
+    return (ApolloPanel)paramBaseChatPie.d(21);
   }
   
   public static long getApolloPanelBattleGameLastRequestTime(AppRuntime paramAppRuntime, int paramInt)
@@ -844,103 +638,113 @@ public class ApolloUtilImpl
     if (paramBaseChatPie == null) {
       return null;
     }
-    paramBaseChatPie = paramBaseChatPie.a();
+    paramBaseChatPie = paramBaseChatPie.bq();
     if (paramBaseChatPie == null) {
       return null;
     }
-    return (ApolloPanelProviderImpl)paramBaseChatPie.a(21);
+    return (ApolloPanelProviderImpl)paramBaseChatPie.f(21);
   }
   
-  public static String getAudioPathForAction(int paramInt)
+  public static int getApolloUserStatus(AppRuntime paramAppRuntime)
   {
-    Object localObject1 = CMGetResPathUtil.a(3, paramInt);
-    Object localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append("music.amr");
-    localObject2 = ((StringBuilder)localObject2).toString();
-    if (FileUtil.b((String)localObject2))
+    return ((IApolloManagerService)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all")).getApolloUserStatus();
+  }
+  
+  public static String getAudioPathForAction(int paramInt, IApolloResManager paramIApolloResManager)
+  {
+    if (paramIApolloResManager == null)
+    {
+      QLog.i("[cmshow]ApolloUtil", 2, "[getAudioPathForAction] failed, apolloResManager is null!");
+      return null;
+    }
+    paramIApolloResManager = paramIApolloResManager.d(3, paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramIApolloResManager);
+    ((StringBuilder)localObject).append("music.amr");
+    localObject = ((StringBuilder)localObject).toString();
+    if (FileUtil.d((String)localObject))
     {
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("[getAudioPathForAction] from root dir. actionId:");
-        ((StringBuilder)localObject1).append(paramInt);
-        ((StringBuilder)localObject1).append(", result:");
-        ((StringBuilder)localObject1).append((String)localObject2);
-        QLog.i("[cmshow]ApolloUtil", 2, ((StringBuilder)localObject1).toString());
+        paramIApolloResManager = new StringBuilder();
+        paramIApolloResManager.append("[getAudioPathForAction] from root dir. actionId:");
+        paramIApolloResManager.append(paramInt);
+        paramIApolloResManager.append(", result:");
+        paramIApolloResManager.append((String)localObject);
+        QLog.i("[cmshow]ApolloUtil", 2, paramIApolloResManager.toString());
       }
-      return localObject2;
+      return localObject;
     }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append("action/");
-    ((StringBuilder)localObject2).append("music.amr");
-    localObject2 = ((StringBuilder)localObject2).toString();
-    if (FileUtils.fileExists((String)localObject2))
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramIApolloResManager);
+    ((StringBuilder)localObject).append("action/");
+    ((StringBuilder)localObject).append("music.amr");
+    localObject = ((StringBuilder)localObject).toString();
+    if (FileUtils.fileExists((String)localObject))
     {
       if (QLog.isColorLevel())
       {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("[getAudioPathForAction] from action dir. actionId:");
-        ((StringBuilder)localObject1).append(paramInt);
-        ((StringBuilder)localObject1).append(", result:");
-        ((StringBuilder)localObject1).append((String)localObject2);
-        QLog.i("[cmshow]ApolloUtil", 2, ((StringBuilder)localObject1).toString());
+        paramIApolloResManager = new StringBuilder();
+        paramIApolloResManager.append("[getAudioPathForAction] from action dir. actionId:");
+        paramIApolloResManager.append(paramInt);
+        paramIApolloResManager.append(", result:");
+        paramIApolloResManager.append((String)localObject);
+        QLog.i("[cmshow]ApolloUtil", 2, paramIApolloResManager.toString());
       }
-      return localObject2;
+      return localObject;
     }
-    localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append((String)localObject1);
-    ((StringBuilder)localObject2).append("action/music/");
-    localObject1 = ((StringBuilder)localObject2).toString();
-    if (FileUtils.fileExists((String)localObject1))
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramIApolloResManager);
+    ((StringBuilder)localObject).append("action/music/");
+    paramIApolloResManager = ((StringBuilder)localObject).toString();
+    if (FileUtils.fileExists(paramIApolloResManager))
     {
-      localObject2 = new File((String)localObject1).list(new ApolloUtilImpl.4());
-      if ((localObject2 != null) && (localObject2.length > 0))
+      localObject = new File(paramIApolloResManager).list(new ApolloUtilImpl.4());
+      if ((localObject != null) && (localObject.length > 0))
       {
         StringBuilder localStringBuilder;
-        if (localObject2.length != 1)
+        if (localObject.length != 1)
         {
-          Arrays.sort((Object[])localObject2);
-          int i = getPositiveRandomInteger(localObject2.length);
-          if ((i >= 0) && (i < localObject2.length))
+          Arrays.sort((Object[])localObject);
+          int i = getPositiveRandomInteger(localObject.length);
+          if ((i >= 0) && (i < localObject.length))
           {
             localStringBuilder = new StringBuilder();
-            localStringBuilder.append((String)localObject1);
-            localStringBuilder.append(localObject2[i]);
-            localObject1 = localStringBuilder.toString();
+            localStringBuilder.append(paramIApolloResManager);
+            localStringBuilder.append(localObject[i]);
+            paramIApolloResManager = localStringBuilder.toString();
           }
           else
           {
-            localObject1 = "";
+            paramIApolloResManager = "";
           }
         }
         else
         {
           localStringBuilder = new StringBuilder();
-          localStringBuilder.append((String)localObject1);
-          localStringBuilder.append(localObject2[0]);
-          localObject1 = localStringBuilder.toString();
+          localStringBuilder.append(paramIApolloResManager);
+          localStringBuilder.append(localObject[0]);
+          paramIApolloResManager = localStringBuilder.toString();
         }
-        if (FileUtil.b((String)localObject1))
+        if (FileUtil.d(paramIApolloResManager))
         {
           if (QLog.isColorLevel())
           {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("[getAudioPathForAction] from action/music dir. actionId:");
-            ((StringBuilder)localObject2).append(paramInt);
-            ((StringBuilder)localObject2).append(", result:");
-            ((StringBuilder)localObject2).append((String)localObject1);
-            QLog.i("[cmshow]ApolloUtil", 2, ((StringBuilder)localObject2).toString());
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[getAudioPathForAction] from action/music dir. actionId:");
+            ((StringBuilder)localObject).append(paramInt);
+            ((StringBuilder)localObject).append(", result:");
+            ((StringBuilder)localObject).append(paramIApolloResManager);
+            QLog.i("[cmshow]ApolloUtil", 2, ((StringBuilder)localObject).toString());
           }
-          return localObject1;
+          return paramIApolloResManager;
         }
       }
     }
-    localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("[getAudioPathForAction] find no audio for actionId: ");
-    ((StringBuilder)localObject1).append(paramInt);
-    QLog.w("[cmshow]ApolloUtil", 1, ((StringBuilder)localObject1).toString());
+    paramIApolloResManager = new StringBuilder();
+    paramIApolloResManager.append("[getAudioPathForAction] find no audio for actionId: ");
+    paramIApolloResManager.append(paramInt);
+    QLog.w("[cmshow]ApolloUtil", 1, paramIApolloResManager.toString());
     return "";
   }
   
@@ -949,7 +753,7 @@ public class ApolloUtilImpl
     if (paramBaseChatPie == null) {
       return null;
     }
-    paramBaseChatPie = (IApolloAIOHelper)paramBaseChatPie.a(8);
+    paramBaseChatPie = (IApolloAIOHelper)paramBaseChatPie.q(8);
     if (paramBaseChatPie == null) {
       return null;
     }
@@ -978,18 +782,9 @@ public class ApolloUtilImpl
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return ((QQAppInterface)localAppRuntime).getCurrentUin();
+      return localAppRuntime.getCurrentUin();
     }
     return localAppRuntime.getAccount();
-  }
-  
-  public static Bitmap getDefaultGameIcon()
-  {
-    Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130838470);
-    if ((localDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)localDrawable).getBitmap();
-    }
-    return null;
   }
   
   public static int getDeviceMSAALevel()
@@ -1034,7 +829,7 @@ public class ApolloUtilImpl
   {
     try
     {
-      byte[] arrayOfByte = HardCodeUtil.a(2131700760).getBytes();
+      byte[] arrayOfByte = HardCodeUtil.a(2131898786).getBytes();
       return arrayOfByte;
     }
     catch (Throwable localThrowable)
@@ -1111,78 +906,6 @@ public class ApolloUtilImpl
     return 0L;
   }
   
-  public static Bitmap getGameIcon(AppInterface paramAppInterface, StartCheckParam paramStartCheckParam)
-  {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
-    if (paramStartCheckParam != null)
-    {
-      if (paramAppInterface == null) {
-        return null;
-      }
-      if (paramStartCheckParam.game != null) {
-        localObject1 = paramStartCheckParam.game.logoUrl;
-      } else {
-        localObject1 = null;
-      }
-      Object localObject2 = localObject1;
-      if (android.text.TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = String.format(Locale.getDefault(), "https://i.hudongcdn.com/%1$d/sp_main_1_1.png", new Object[] { Integer.valueOf(paramStartCheckParam.gameId) });
-      }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("/sdcard/Android/data/com.tencent.mobileqq/Tencent/MobileQQ/.apollo/game/");
-      ((StringBuilder)localObject1).append(paramStartCheckParam.gameId);
-      ((StringBuilder)localObject1).append(File.separator);
-      ((StringBuilder)localObject1).append("apollo_dwonload_game_icon.png");
-      File localFile = new File(((StringBuilder)localObject1).toString());
-      if (!localFile.exists())
-      {
-        localFile.getParentFile().mkdir();
-        localObject1 = new DownloadTask((String)localObject2, localFile);
-        ((DownloadTask)localObject1).p = false;
-        ((DownloadTask)localObject1).n = true;
-        ((DownloadTask)localObject1).f = "apollo_res";
-        ((DownloadTask)localObject1).b = 1;
-        ((DownloadTask)localObject1).q = true;
-        ((DownloadTask)localObject1).r = true;
-        int i = DownloaderFactory.a((DownloadTask)localObject1, paramAppInterface);
-        paramAppInterface = new StringBuilder();
-        paramAppInterface.append("getGameIcon onDone gameId:");
-        paramAppInterface.append(paramStartCheckParam.gameId);
-        paramAppInterface.append(" result:");
-        paramAppInterface.append(i);
-        QLog.i("[cmshow]ApolloUtil", 1, paramAppInterface.toString());
-        localObject1 = localObject3;
-        if (i == 0) {
-          return BitmapFactory.decodeFile(localFile.getAbsolutePath());
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel())
-        {
-          paramAppInterface = new StringBuilder();
-          paramAppInterface.append("getGameIcon file exists gameId:");
-          paramAppInterface.append(paramStartCheckParam.gameId);
-          QLog.i("[cmshow]ApolloUtil", 1, paramAppInterface.toString());
-        }
-        localObject1 = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-      }
-    }
-    return localObject1;
-  }
-  
-  public static SharedPreferences getGameResSp()
-  {
-    int i;
-    if (BaseApplicationImpl.sProcessId != 1) {
-      i = 4;
-    } else {
-      i = 0;
-    }
-    return BaseApplicationImpl.getApplication().getSharedPreferences("apollo_game_res", i);
-  }
-  
   public static ApolloUtilImpl.HardwareInfo getHardwareInfo()
   {
     try
@@ -1190,9 +913,9 @@ public class ApolloUtilImpl
       if (sHardwareInfo == null) {
         sHardwareInfo = new ApolloUtilImpl.HardwareInfo();
       }
-      sHardwareInfo.d = Runtime.getRuntime().freeMemory();
-      sHardwareInfo.b = Runtime.getRuntime().maxMemory();
-      sHardwareInfo.c = Runtime.getRuntime().totalMemory();
+      sHardwareInfo.h = Runtime.getRuntime().freeMemory();
+      sHardwareInfo.f = Runtime.getRuntime().maxMemory();
+      sHardwareInfo.g = Runtime.getRuntime().totalMemory();
       ApolloUtilImpl.HardwareInfo localHardwareInfo = sHardwareInfo;
       return localHardwareInfo;
     }
@@ -1362,9 +1085,9 @@ public class ApolloUtilImpl
   
   private static String getNewIconShowFlagKey()
   {
-    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.7.0"))
+    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.8.17"))
     {
-      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.7.0");
+      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.8.17");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
@@ -1451,9 +1174,9 @@ public class ApolloUtilImpl
   
   private static String getPopupShowFlagKey()
   {
-    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.7.0"))
+    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.8.17"))
     {
-      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.7.0");
+      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.8.17");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         String str = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
@@ -1560,7 +1283,7 @@ public class ApolloUtilImpl
         j = i;
         try
         {
-          if (i <= ApolloConstant.jdField_a_of_type_Int) {
+          if (i <= ApolloConstant.f) {
             break label166;
           }
           j = i;
@@ -1614,7 +1337,7 @@ public class ApolloUtilImpl
   
   public static float getSurfaceScale(float paramFloat)
   {
-    long l = DeviceInfoUtil.j();
+    long l = DeviceInfoUtil.E();
     if (Float.compare(0.0F, paramFloat) == 0) {
       return (float)(l / 5L) / 368.0F;
     }
@@ -1798,46 +1521,14 @@ public class ApolloUtilImpl
     return 24;
   }
   
-  public static boolean isAllowDisplayGame(AppRuntime paramAppRuntime, MessageForApollo paramMessageForApollo)
-  {
-    if (paramMessageForApollo != null)
-    {
-      if (paramAppRuntime == null) {
-        return false;
-      }
-      Object localObject1 = (ApolloDaoManagerServiceImpl)paramAppRuntime.getRuntimeService(IApolloDaoManagerService.class, "all");
-      boolean bool = ApolloGameUtil.a(paramMessageForApollo.msgType);
-      Object localObject2 = null;
-      if (bool) {
-        localObject1 = ((ApolloDaoManagerServiceImpl)localObject1).findGameById(paramMessageForApollo.gameId);
-      } else {
-        localObject1 = null;
-      }
-      IApolloManagerService localIApolloManagerService = (IApolloManagerService)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all");
-      if ((localIApolloManagerService.queryApolloSwitchSet("gameSwitch") == 1) && ((localObject1 == null) || (VersionUtil.a("8.7.0", ((ApolloGameData)localObject1).minVer, ((ApolloGameData)localObject1).maxVer))))
-      {
-        if (paramAppRuntime.getApp() == null) {
-          paramAppRuntime = localObject2;
-        } else {
-          paramAppRuntime = paramAppRuntime.getApp().getApplicationContext();
-        }
-        return (!localIApolloManagerService.isApolloSupport(paramAppRuntime)) || (paramMessageForApollo.istroop != 3000) || (localIApolloManagerService.queryApolloSwitchSet("discuss") != 0);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("[cmshow]ApolloUtil", 2, "play apollo game msg but switch is 0 or version is incorrect");
-      }
-    }
-    return false;
-  }
-  
   public static boolean isApollo3DUser(AppRuntime paramAppRuntime)
   {
-    return ApolloGameUtil.a(paramAppRuntime) == 2;
+    return getApolloUserStatus(paramAppRuntime) == 2;
   }
   
   public static boolean isApolloAnimationBubble(int paramInt)
   {
-    return paramInt == 10;
+    return (paramInt == 10) || (paramInt == 12);
   }
   
   public static boolean isApolloPanelCacheExpired(AppRuntime paramAppRuntime, int paramInt)
@@ -1901,7 +1592,7 @@ public class ApolloUtilImpl
     }
     if (paramInt1 == 0)
     {
-      localObject1 = ApolloConstant.jdField_a_of_type_JavaLangString;
+      localObject1 = ApolloConstant.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("/def/role/");
       ((StringBuilder)localObject2).append(paramInt1);
@@ -2007,11 +1698,16 @@ public class ApolloUtilImpl
     return true;
   }
   
+  private static boolean isHideKeyWordAnimation()
+  {
+    return QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowHideKeyWordAnimation", 1) > 0;
+  }
+  
   public static boolean isNewApolloEmotion(int paramInt)
   {
-    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.7.0"))
+    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.8.17"))
     {
-      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.7.0");
+      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.8.17");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -2032,21 +1728,6 @@ public class ApolloUtilImpl
       bool = true;
     }
     return bool;
-  }
-  
-  public static boolean isResExist(ApolloActionData paramApolloActionData, int paramInt)
-  {
-    if (paramApolloActionData == null) {
-      return false;
-    }
-    if ((paramInt & 0x1) == 1) {
-      paramApolloActionData = CMGetResPathUtil.a(paramApolloActionData, 0);
-    } else if ((paramInt & 0x2) == 2) {
-      paramApolloActionData = CMGetResPathUtil.a(paramApolloActionData, 2);
-    } else {
-      paramApolloActionData = "";
-    }
-    return FileUtil.b(paramApolloActionData);
   }
   
   public static boolean isSameDress(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
@@ -2083,14 +1764,6 @@ public class ApolloUtilImpl
     return false;
   }
   
-  public static boolean isTabExist(ApolloActionPackage paramApolloActionPackage)
-  {
-    if (paramApolloActionPackage == null) {
-      return false;
-    }
-    return FileUtil.b(CMGetResPathUtil.a(paramApolloActionPackage));
-  }
-  
   public static boolean isValideToDoAction(long paramLong1, long paramLong2)
   {
     return Math.abs(paramLong2 - paramLong1) > 500L;
@@ -2099,30 +1772,6 @@ public class ApolloUtilImpl
   public static void jumpToH5PreviewAction(Activity paramActivity, String paramString1, String paramString2)
   {
     QZoneVipInfoManager.b(paramActivity, paramString1, paramString2);
-  }
-  
-  public static void launchGameDetailView(int paramInt, String paramString, Activity paramActivity)
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("CMShow.GameId", String.valueOf(paramInt));
-      localJSONObject2.put("extraInfo", paramString);
-      localJSONObject1.put("CMShow.Game", localJSONObject2);
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("[cmshow]ApolloUtil", 1, "[launchGameDetailView] error:", paramString);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString = new StringBuilder();
-      paramString.append("[launchGameDetailView] mate:");
-      paramString.append(localJSONObject1.toString());
-      QLog.d("[cmshow]ApolloUtil", 2, paramString.toString());
-    }
-    ArkFullScreenAppActivity.a(paramActivity, "com.tencent.cmgame.intent", "GameCard", localJSONObject1.toString());
   }
   
   public static String logFilter(String paramString)
@@ -2172,7 +1821,7 @@ public class ApolloUtilImpl
   public static void openCollectCard(Context paramContext, String paramString1, String paramString2)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ApolloConstant.t);
+    localStringBuilder.append(ApolloConstant.B);
     localStringBuilder.append(paramString1);
     localStringBuilder.append("&adtag=");
     localStringBuilder.append(paramString2);
@@ -2184,42 +1833,9 @@ public class ApolloUtilImpl
     }
   }
   
-  public static void openStoreByTabScheme(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    if ((paramQQAppInterface != null) && (paramContext != null))
-    {
-      IApolloUtil localIApolloUtil = (IApolloUtil)QRoute.api(IApolloUtil.class);
-      String str = localIApolloUtil.getStoreTabUrl(paramString1, true);
-      if (!android.text.TextUtils.isEmpty(str))
-      {
-        paramString2 = new Intent();
-        if ("interact".equals(paramString1))
-        {
-          paramString1 = new StringBuilder();
-          paramString1.append("&tab=interactive&suin=");
-          paramString1.append(paramQQAppInterface.getCurrentAccountUin());
-          paramString2.putExtra("extra_key_url_append", paramString1.toString());
-        }
-        localIApolloUtil.openApolloStore(paramContext, paramString2, paramString3, str, null);
-        return;
-      }
-      if (!android.text.TextUtils.isEmpty(paramString2))
-      {
-        paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
-        paramQQAppInterface.putExtra("url", paramString2);
-        paramQQAppInterface.putExtra("startOpenPageTime", System.currentTimeMillis());
-        paramContext.startActivity(paramQQAppInterface);
-        return;
-      }
-      QLog.w("[cmshow]ApolloUtil", 1, "openStoreByTabScheme params is error");
-      return;
-    }
-    QLog.e("[cmshow]ApolloUtil", 1, "openStoreByTabScheme context is null");
-  }
-  
   public static void openVipPage(Context paramContext)
   {
-    VasH5PayUtil.a(paramContext, "mvip.c.a.cs_limix", 3, "1450000515", "CJCLUBT", paramContext.getString(2131719393), "", false, true);
+    VasH5PayUtil.a(paramContext, "mvip.c.a.cs_limix", 3, "1450000515", "CJCLUBT", paramContext.getString(2131916948), "", false, true);
   }
   
   public static void openYellowPage(Activity paramActivity, String paramString1, String paramString2)
@@ -2244,33 +1860,16 @@ public class ApolloUtilImpl
     return 0;
   }
   
-  public static long parseToLong(String paramString)
-  {
-    try
-    {
-      if (!android.text.TextUtils.isEmpty(paramString))
-      {
-        long l = Long.parseLong(paramString);
-        return l;
-      }
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("[cmshow]ApolloUtil", 1, paramString, new Object[0]);
-    }
-    return 0L;
-  }
-  
   private static void reportKeywordsAction(int paramInt, String paramString, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
   {
     if ((paramQQAppInterface != null) && (paramSessionInfo != null)) {
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "eggaction", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(paramInt), paramString });
+      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "eggaction", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a), 0, new String[] { String.valueOf(paramInt), paramString });
     }
   }
   
-  public static void saveAddedFaceList(QQAppInterface paramQQAppInterface, ArrayList<Integer> paramArrayList)
+  public static void saveAddedFaceList(AppInterface paramAppInterface, ArrayList<Integer> paramArrayList)
   {
-    if ((paramQQAppInterface != null) && (paramArrayList != null))
+    if ((paramAppInterface != null) && (paramArrayList != null))
     {
       if (paramArrayList.size() == 0) {
         return;
@@ -2289,7 +1888,7 @@ public class ApolloUtilImpl
       paramArrayList = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0).edit();
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("sp_key_apollo_game_life");
-      localStringBuilder2.append(paramQQAppInterface.getCurrentUin());
+      localStringBuilder2.append(paramAppInterface.getCurrentUin());
       paramArrayList.putString(localStringBuilder2.toString(), localStringBuilder1.toString()).commit();
     }
   }
@@ -2349,12 +1948,12 @@ public class ApolloUtilImpl
     if (paramImageView == null) {
       return;
     }
-    paramImageView.setImageResource(2130838577);
+    paramImageView.setImageResource(2130838636);
   }
   
   public static void setApolloVipIcon(ImageView paramImageView, boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramImageView.setImageResource(2130838537);
+    paramImageView.setImageResource(2130838596);
   }
   
   public static void setBackgroundSafety(View paramView, int paramInt)
@@ -2367,14 +1966,32 @@ public class ApolloUtilImpl
       paramView.setBackgroundResource(paramInt);
       return;
     }
-    catch (Exception|OutOfMemoryError paramView) {}
+    catch (Exception paramView)
+    {
+      QLog.e("[cmshow]ApolloUtil", 1, paramView, new Object[0]);
+    }
+  }
+  
+  private boolean shouldHideEasterEgg(AppRuntime paramAppRuntime)
+  {
+    boolean bool;
+    if (isHideKeyWordAnimation()) {
+      bool = SpriteUtil.d(paramAppRuntime);
+    } else {
+      bool = false;
+    }
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("[shouldShowEasterEgg] isSpriteHidden: ");
+    paramAppRuntime.append(bool);
+    QLog.i("[cmshow]ApolloUtil", 1, paramAppRuntime.toString());
+    return bool;
   }
   
   public static void showDebugTipsToast(String paramString) {}
   
   public static void showTipsToast(String paramString)
   {
-    ThreadManager.getUIHandler().post(new ApolloUtilImpl.8(paramString));
+    ThreadManager.getUIHandler().post(new ApolloUtilImpl.7(paramString));
   }
   
   public static ArrayList sparseArrayToList(SparseArray paramSparseArray)
@@ -2473,18 +2090,18 @@ public class ApolloUtilImpl
   {
     if (paramDownloadTask != null)
     {
-      if (paramDownloadTask.a == null) {
+      if (paramDownloadTask.f == null) {
         return;
       }
       int i = 0;
-      while (i < paramDownloadTask.a.size())
+      while (i < paramDownloadTask.f.size())
       {
-        String str = (String)paramDownloadTask.a.get(i);
+        String str = (String)paramDownloadTask.f.get(i);
         if (!android.text.TextUtils.isEmpty(str)) {
           if (str.contains("http://cmshow.qq.com")) {
-            paramDownloadTask.a.set(i, str.replace("http://cmshow.qq.com", "https://cmshow.qq.com"));
+            paramDownloadTask.f.set(i, str.replace("http://cmshow.qq.com", "https://cmshow.qq.com"));
           } else if (str.contains("http://cmshow.gtimg.com")) {
-            paramDownloadTask.a.set(i, str.replace("http://cmshow.gtimg.com", "https://cmshow.gtimg.com"));
+            paramDownloadTask.f.set(i, str.replace("http://cmshow.gtimg.com", "https://cmshow.gtimg.com"));
           }
         }
         i += 1;
@@ -2583,7 +2200,7 @@ public class ApolloUtilImpl
   
   public void deleteApolloResource(boolean paramBoolean, AppRuntime paramAppRuntime)
   {
-    ThreadManager.getSubThreadHandler().post(new ApolloUtilImpl.9(this, paramBoolean));
+    ThreadManager.getSubThreadHandler().post(new ApolloUtilImpl.8(this, paramBoolean));
   }
   
   public String getApolloImageUrl(String paramString)
@@ -2716,7 +2333,7 @@ public class ApolloUtilImpl
       if (!android.text.TextUtils.isEmpty(paramString2)) {
         paramURLDrawableOptions.mDownloadUrl = paramString2;
       }
-      if (paramURLDrawableOptions.mDrawableType != ApolloConstant.g)
+      if (paramURLDrawableOptions.mDrawableType != ApolloConstant.ad)
       {
         paramBoolean1 = paramBoolean2;
         if (!paramURLDrawableOptions.mNoUseFileDrawable) {}
@@ -2783,47 +2400,7 @@ public class ApolloUtilImpl
     return 0;
   }
   
-  public int getReportSessionTypeByContext(Object paramObject, AppRuntime paramAppRuntime)
-  {
-    boolean bool = paramObject instanceof SessionInfo;
-    int i = 0;
-    if (!bool) {
-      return 0;
-    }
-    paramObject = (SessionInfo)paramObject;
-    int k = paramObject.jdField_a_of_type_Int;
-    int j = 1;
-    if (k != 0)
-    {
-      if (k != 1)
-      {
-        if (k != 1036)
-        {
-          if (k != 3000) {
-            return 0;
-          }
-          return 2;
-        }
-        return 4;
-      }
-      if (paramAppRuntime != null)
-      {
-        paramAppRuntime = (HotChatManager)paramAppRuntime.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
-        if (paramAppRuntime != null)
-        {
-          i = j;
-          if (paramAppRuntime.b(paramObject.b)) {
-            i = 3;
-          }
-          return i;
-        }
-      }
-      i = 1;
-    }
-    return i;
-  }
-  
-  public int getReportSessiontype(int paramInt)
+  public int getReportSessionType(int paramInt)
   {
     int i = 0;
     if (paramInt != 0)
@@ -2857,29 +2434,29 @@ public class ApolloUtilImpl
   {
     String str1;
     if ("mall".equals(paramString)) {
-      str1 = ApolloConstant.z;
+      str1 = ApolloConstant.H;
     } else if ((!"interact".equals(paramString)) && (!"interactive".equals(paramString)))
     {
       if ("3d_mall".equals(paramString)) {
-        str1 = ApolloConstant.F;
+        str1 = ApolloConstant.N;
       } else if ((!"3d_interact".equals(paramString)) && (!"3d_interactive".equals(paramString))) {
         str1 = "";
       } else {
-        str1 = ApolloConstant.G;
+        str1 = ApolloConstant.O;
       }
     }
     else {
-      str1 = ApolloConstant.A;
+      str1 = ApolloConstant.I;
     }
     String str2 = str1;
     if (paramBoolean)
     {
       if ("game_city".equals(paramString)) {
-        return ApolloConstant.E;
+        return ApolloConstant.M;
       }
       str2 = str1;
       if ("3d_game_city".equals(paramString)) {
-        str2 = ApolloConstant.H;
+        str2 = ApolloConstant.P;
       }
     }
     return str2;
@@ -2905,11 +2482,6 @@ public class ApolloUtilImpl
     return 2000;
   }
   
-  public boolean is3DFaceResExist(String paramString)
-  {
-    return CMResUtil.a(paramString);
-  }
-  
   public boolean isApolloProxyEnable()
   {
     if (QLog.isColorLevel()) {
@@ -2918,14 +2490,9 @@ public class ApolloUtilImpl
     return false;
   }
   
-  public boolean isDressResExist(int paramInt)
-  {
-    return CMResUtil.a(paramInt);
-  }
-  
   public boolean isFemale(@NonNull AppRuntime paramAppRuntime, String paramString)
   {
-    paramAppRuntime = ((FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramString);
+    paramAppRuntime = ((FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramString);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramAppRuntime != null)
@@ -2938,35 +2505,14 @@ public class ApolloUtilImpl
     return bool1;
   }
   
-  public boolean isRoleResExist(int paramInt)
-  {
-    return CMResUtil.b(paramInt);
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if ((paramIntent != null) && (paramInt1 == 14002) && (paramInt2 == -1))
-    {
-      AbsStructMsg localAbsStructMsg = StructMsgFactory.a(paramIntent.getByteArrayExtra("stuctmsg_bytes"));
-      if (localAbsStructMsg == null) {
-        return;
-      }
-      String str = paramIntent.getStringExtra("uin");
-      paramInt1 = paramIntent.getIntExtra("uintype", -1);
-      paramInt2 = paramIntent.getIntExtra("cmshow_game_id", -1);
-      ShareMsgHelper.a(getQQApp(), str, paramInt1, localAbsStructMsg, null);
-      VipUtils.a(getQQApp(), "cmshow", "Apollo", "share_url_succeed", getReportSessiontype(paramInt1), 0, new String[] { Integer.toString(paramInt2) });
-    }
-  }
-  
   public void onEmoticonNewIconShown(int paramInt)
   {
     if (!isNewApolloEmotion(paramInt)) {
       return;
     }
-    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.7.0"))
+    if (SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.8.17"))
     {
-      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.7.0");
+      Object localObject = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.8.17");
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         sShownNewEmoticonSize += 1;
@@ -3037,8 +2583,8 @@ public class ApolloUtilImpl
     if (((paramAppRuntime instanceof QQAppInterface)) && ((paramObject instanceof SessionInfo)) && (paramMessageRecord != null) && (paramCharSequence != null))
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
-      paramObject = (SessionInfo)paramObject;
-      if (!CmShowAioMatcherImpl.judgeSupported(paramObject.jdField_a_of_type_Int)) {
+      SessionInfo localSessionInfo = (SessionInfo)paramObject;
+      if (!CmShowAioMatcherImpl.judgeSupported(localSessionInfo.a)) {
         return;
       }
       if (paramBoolean)
@@ -3046,21 +2592,21 @@ public class ApolloUtilImpl
         if (!android.text.TextUtils.isEmpty(paramMessageRecord.extStr)) {
           try
           {
-            paramAppRuntime = new JSONObject(paramMessageRecord.extStr).optString("is_apollo_emoticon_action_checked");
+            paramObject = new JSONObject(paramMessageRecord.extStr).optString("is_apollo_emoticon_action_checked");
           }
-          catch (Exception paramAppRuntime)
+          catch (Exception paramObject)
           {
-            QLog.e("[cmshow]ApolloUtil", 1, "[playApolloEmoticonAction] json error, ", paramAppRuntime);
+            QLog.e("[cmshow]ApolloUtil", 1, "[playApolloEmoticonAction] json error, ", paramObject);
           }
         } else {
-          paramAppRuntime = null;
+          paramObject = null;
         }
       }
       else {
-        paramAppRuntime = paramMessageRecord.getExtInfoFromExtStr("is_apollo_emoticon_action_checked");
+        paramObject = paramMessageRecord.getExtInfoFromExtStr("is_apollo_emoticon_action_checked");
       }
       boolean bool;
-      if ((!android.text.TextUtils.isEmpty(paramAppRuntime)) && ("1".equals(paramAppRuntime))) {
+      if ((!android.text.TextUtils.isEmpty(paramObject)) && ("1".equals(paramObject))) {
         bool = true;
       } else {
         bool = false;
@@ -3075,14 +2621,11 @@ public class ApolloUtilImpl
         QLog.d("[cmshow]ApolloUtil", 2, "[playApolloEmoticonAction] set apollo emoticon action play status true");
       }
       paramMessageRecord.saveExtInfoToExtStr("is_apollo_emoticon_action_checked", "1");
-      ThreadManager.post(new ApolloUtilImpl.1(this, paramMessageRecord), 5, null, false);
+      ThreadManager.post(new ApolloUtilImpl.1(this, paramAppRuntime, paramMessageRecord), 5, null, false);
       if (paramInt1 != paramInt2 - 1) {
         return;
       }
-      paramAppRuntime = (ApolloManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
-      if (paramAppRuntime == null) {
-        return;
-      }
+      paramObject = (ApolloManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
       paramBoolean = CmShowWnsUtils.a();
       paramInt1 = getWhiteFacePlayModel(localQQAppInterface, paramMessageRecord);
       if (paramInt1 == 0) {
@@ -3096,7 +2639,7 @@ public class ApolloUtilImpl
         return;
       }
       paramMessageRecord.saveExtInfoToExtStr("is_apollo_emoticon_action_played", "2");
-      ThreadManager.post(new ApolloUtilImpl.2(this, paramInt1, paramBoolean, paramCharSequence, localApolloDaoManagerServiceImpl, localQQAppInterface, paramObject, paramAppRuntime, paramMessageRecord), 5, null, false);
+      ThreadManager.post(new ApolloUtilImpl.2(this, paramInt1, paramBoolean, paramCharSequence, localApolloDaoManagerServiceImpl, paramObject, paramAppRuntime, localQQAppInterface, localSessionInfo, paramMessageRecord), 5, null, false);
       return;
     }
     QLog.e("[cmshow]ApolloUtil", 1, "[playApolloEmoticonAction] param null, abort");
@@ -3107,7 +2650,7 @@ public class ApolloUtilImpl
     if (((paramAppRuntime instanceof QQAppInterface)) && ((paramObject instanceof SessionInfo)) && (paramMessageRecord != null))
     {
       paramAppRuntime = (QQAppInterface)paramAppRuntime;
-      if (!CmShowAioMatcherImpl.judgeSupported(((SessionInfo)paramObject).jdField_a_of_type_Int)) {
+      if (!CmShowAioMatcherImpl.judgeSupported(((SessionInfo)paramObject).a)) {
         return;
       }
       paramObject = paramMessageRecord.getExtInfoFromExtStr("is_share_ark_message_action_checked");
@@ -3135,54 +2678,54 @@ public class ApolloUtilImpl
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 212	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 94	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifne +1184 -> 1188
-    //   7: new 608	java/io/File
+    //   7: new 324	java/io/File
     //   10: dup
     //   11: aload_1
-    //   12: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
-    //   15: invokevirtual 612	java/io/File:exists	()Z
+    //   12: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   15: invokevirtual 329	java/io/File:exists	()Z
     //   18: ifne +6 -> 24
     //   21: goto +1167 -> 1188
-    //   24: ldc 38
+    //   24: ldc 32
     //   26: iconst_1
     //   27: iconst_2
     //   28: anewarray 4	java/lang/Object
     //   31: dup
     //   32: iconst_0
-    //   33: ldc_w 2338
+    //   33: ldc_w 1905
     //   36: aastore
     //   37: dup
     //   38: iconst_1
     //   39: aload_1
     //   40: aastore
-    //   41: invokestatic 1220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   44: new 608	java/io/File
+    //   41: invokestatic 868	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   44: new 324	java/io/File
     //   47: dup
-    //   48: ldc_w 2340
-    //   51: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
+    //   48: ldc_w 1907
+    //   51: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   54: astore 13
     //   56: aload 13
-    //   58: invokevirtual 612	java/io/File:exists	()Z
+    //   58: invokevirtual 329	java/io/File:exists	()Z
     //   61: ifeq +9 -> 70
     //   64: aload 13
-    //   66: invokestatic 2343	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/io/File;)Z
+    //   66: invokestatic 1910	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/io/File;)Z
     //   69: pop
-    //   70: new 608	java/io/File
+    //   70: new 324	java/io/File
     //   73: dup
     //   74: aload_1
-    //   75: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
-    //   78: ldc_w 2340
-    //   81: invokestatic 2348	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
+    //   75: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   78: ldc_w 1907
+    //   81: invokestatic 1915	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
     //   84: aload 13
-    //   86: invokevirtual 1037	java/io/File:listFiles	()[Ljava/io/File;
+    //   86: invokevirtual 752	java/io/File:listFiles	()[Ljava/io/File;
     //   89: astore_1
     //   90: aload_1
     //   91: ifnull +1168 -> 1259
     //   94: aload_1
     //   95: arraylength
     //   96: ifle +1163 -> 1259
-    //   99: ldc2_w 837
+    //   99: ldc2_w 556
     //   102: lstore 6
     //   104: iconst_0
     //   105: istore_3
@@ -3201,36 +2744,36 @@ public class ApolloUtilImpl
     //   123: aaload
     //   124: astore 14
     //   126: aload 14
-    //   128: invokevirtual 1040	java/io/File:isFile	()Z
+    //   128: invokevirtual 755	java/io/File:isFile	()Z
     //   131: ifeq +81 -> 212
     //   134: aload 14
-    //   136: invokevirtual 2351	java/io/File:getName	()Ljava/lang/String;
-    //   139: ldc_w 2353
-    //   142: invokevirtual 1048	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   136: invokevirtual 1918	java/io/File:getName	()Ljava/lang/String;
+    //   139: ldc_w 1920
+    //   142: invokevirtual 763	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   145: ifeq +67 -> 212
-    //   148: new 105	java/lang/StringBuilder
+    //   148: new 112	java/lang/StringBuilder
     //   151: dup
-    //   152: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   152: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   155: astore 15
     //   157: aload 15
-    //   159: ldc_w 1559
-    //   162: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: ldc_w 1173
+    //   162: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: pop
     //   166: aload 15
-    //   168: ldc2_w 2354
-    //   171: invokevirtual 570	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   168: ldc2_w 1921
+    //   171: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload 15
-    //   177: ldc_w 2357
-    //   180: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: ldc_w 1924
+    //   180: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: pop
     //   184: aload 14
-    //   186: new 608	java/io/File
+    //   186: new 324	java/io/File
     //   189: dup
     //   190: aload 15
-    //   192: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
-    //   198: invokestatic 2361	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   192: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   195: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   198: invokestatic 1928	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/io/File;Ljava/io/File;)Z
     //   201: pop
     //   202: iconst_1
     //   203: istore 4
@@ -3238,33 +2781,33 @@ public class ApolloUtilImpl
     //   207: lstore 8
     //   209: goto +1036 -> 1245
     //   212: aload 14
-    //   214: invokevirtual 1033	java/io/File:isDirectory	()Z
+    //   214: invokevirtual 748	java/io/File:isDirectory	()Z
     //   217: ifeq +75 -> 292
     //   220: aload 14
-    //   222: invokevirtual 2351	java/io/File:getName	()Ljava/lang/String;
-    //   225: ldc_w 2363
-    //   228: invokevirtual 1048	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   222: invokevirtual 1918	java/io/File:getName	()Ljava/lang/String;
+    //   225: ldc_w 1930
+    //   228: invokevirtual 763	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   231: ifeq +61 -> 292
-    //   234: new 608	java/io/File
+    //   234: new 324	java/io/File
     //   237: dup
     //   238: aload 14
-    //   240: ldc_w 2365
-    //   243: invokespecial 1564	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   240: ldc_w 1932
+    //   243: invokespecial 1178	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   246: astore 14
-    //   248: new 608	java/io/File
+    //   248: new 324	java/io/File
     //   251: dup
-    //   252: ldc_w 2367
-    //   255: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
+    //   252: ldc_w 1934
+    //   255: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   258: astore 15
     //   260: aload 15
-    //   262: invokevirtual 612	java/io/File:exists	()Z
+    //   262: invokevirtual 329	java/io/File:exists	()Z
     //   265: ifeq +9 -> 274
     //   268: aload 15
-    //   270: invokevirtual 1579	java/io/File:delete	()Z
+    //   270: invokevirtual 1193	java/io/File:delete	()Z
     //   273: pop
     //   274: aload 14
     //   276: aload 15
-    //   278: invokestatic 2361	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   278: invokestatic 1928	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/io/File;Ljava/io/File;)Z
     //   281: pop
     //   282: iload_2
     //   283: istore 4
@@ -3276,23 +2819,23 @@ public class ApolloUtilImpl
     //   295: lload 6
     //   297: lstore 8
     //   299: aload 14
-    //   301: invokevirtual 1033	java/io/File:isDirectory	()Z
+    //   301: invokevirtual 748	java/io/File:isDirectory	()Z
     //   304: ifeq +941 -> 1245
-    //   307: new 608	java/io/File
+    //   307: new 324	java/io/File
     //   310: dup
     //   311: aload 14
-    //   313: ldc_w 2369
-    //   316: invokespecial 1564	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   313: ldc_w 1936
+    //   316: invokespecial 1178	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   319: astore 14
     //   321: iload_2
     //   322: istore 4
     //   324: lload 6
     //   326: lstore 8
     //   328: aload 14
-    //   330: invokevirtual 612	java/io/File:exists	()Z
+    //   330: invokevirtual 329	java/io/File:exists	()Z
     //   333: ifeq +912 -> 1245
     //   336: aload 14
-    //   338: invokevirtual 1037	java/io/File:listFiles	()[Ljava/io/File;
+    //   338: invokevirtual 752	java/io/File:listFiles	()[Ljava/io/File;
     //   341: astore 14
     //   343: iload_2
     //   344: istore 4
@@ -3324,142 +2867,142 @@ public class ApolloUtilImpl
     //   393: lload 6
     //   395: lstore 8
     //   397: aload 15
-    //   399: invokevirtual 1040	java/io/File:isFile	()Z
+    //   399: invokevirtual 755	java/io/File:isFile	()Z
     //   402: ifeq +830 -> 1232
     //   405: lload 6
     //   407: lstore 8
     //   409: aload 15
-    //   411: invokevirtual 2351	java/io/File:getName	()Ljava/lang/String;
-    //   414: ldc_w 2371
-    //   417: invokevirtual 249	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   411: invokevirtual 1918	java/io/File:getName	()Ljava/lang/String;
+    //   414: ldc_w 1938
+    //   417: invokevirtual 142	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   420: ifeq +812 -> 1232
     //   423: aload 15
-    //   425: invokevirtual 2351	java/io/File:getName	()Ljava/lang/String;
-    //   428: ldc_w 2373
-    //   431: invokevirtual 1048	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   425: invokevirtual 1918	java/io/File:getName	()Ljava/lang/String;
+    //   428: ldc_w 1940
+    //   431: invokevirtual 763	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   434: istore 12
     //   436: iload 12
     //   438: ifeq +768 -> 1206
-    //   441: new 105	java/lang/StringBuilder
+    //   441: new 112	java/lang/StringBuilder
     //   444: dup
-    //   445: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   445: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   448: astore 16
     //   450: aload 16
-    //   452: ldc_w 1559
-    //   455: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   452: ldc_w 1173
+    //   455: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: pop
     //   459: aload 16
-    //   461: ldc2_w 2354
-    //   464: invokevirtual 570	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   461: ldc2_w 1921
+    //   464: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   467: pop
     //   468: aload 16
-    //   470: ldc_w 2375
-    //   473: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   470: ldc_w 1942
+    //   473: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   476: pop
     //   477: aload 15
     //   479: aload 16
-    //   481: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   484: invokestatic 2348	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
+    //   481: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   484: invokestatic 1915	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
     //   487: lload 6
     //   489: lstore 8
     //   491: goto +741 -> 1232
-    //   494: new 105	java/lang/StringBuilder
+    //   494: new 112	java/lang/StringBuilder
     //   497: dup
-    //   498: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   498: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   501: astore 16
     //   503: aload 16
-    //   505: ldc_w 2377
-    //   508: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   505: ldc_w 1944
+    //   508: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   511: pop
     //   512: aload 16
     //   514: lload 6
-    //   516: invokevirtual 570	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   516: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   519: pop
     //   520: aload 16
-    //   522: ldc_w 2375
-    //   525: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: ldc_w 1942
+    //   525: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   528: pop
     //   529: aload 15
     //   531: aload 16
-    //   533: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   536: invokestatic 2348	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
+    //   533: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   536: invokestatic 1915	com/tencent/biz/common/util/ZipUtils:unZipFile	(Ljava/io/File;Ljava/lang/String;)V
     //   539: lload 6
     //   541: lstore 8
     //   543: goto +689 -> 1232
     //   546: aload 13
-    //   548: invokestatic 2343	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/io/File;)Z
+    //   548: invokestatic 1910	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/io/File;)Z
     //   551: pop
     //   552: iload 4
     //   554: ifne +21 -> 575
-    //   557: getstatic 2383	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   560: ldc_w 2384
-    //   563: invokestatic 146	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   557: getstatic 1950	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   560: ldc_w 1951
+    //   563: invokestatic 738	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   566: iconst_0
-    //   567: invokestatic 2389	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   570: invokevirtual 2392	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   567: invokestatic 1957	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   570: invokevirtual 1961	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   573: pop
     //   574: return
     //   575: lload 10
-    //   577: ldc2_w 837
+    //   577: ldc2_w 556
     //   580: lcmp
     //   581: ifeq +548 -> 1129
-    //   584: ldc 38
+    //   584: ldc 32
     //   586: iconst_1
     //   587: iconst_2
     //   588: anewarray 4	java/lang/Object
     //   591: dup
     //   592: iconst_0
-    //   593: ldc_w 2394
+    //   593: ldc_w 1963
     //   596: aastore
     //   597: dup
     //   598: iconst_1
     //   599: lload 10
-    //   601: invokestatic 1213	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   601: invokestatic 861	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   604: aastore
-    //   605: invokestatic 1220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   608: invokestatic 274	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   611: invokevirtual 952	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   614: checkcast 99	com/tencent/mobileqq/app/QQAppInterface
+    //   605: invokestatic 868	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   608: invokestatic 171	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   611: invokevirtual 680	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   614: checkcast 422	com/tencent/mobileqq/app/QQAppInterface
     //   617: astore 14
     //   619: aload 14
-    //   621: ldc_w 718
-    //   624: ldc_w 702
-    //   627: invokevirtual 706	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   630: checkcast 382	com/tencent/mobileqq/apollo/persistence/api/impl/ApolloDaoManagerServiceImpl
+    //   621: ldc_w 438
+    //   624: ldc_w 420
+    //   627: invokevirtual 426	com/tencent/mobileqq/app/QQAppInterface:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   630: checkcast 266	com/tencent/mobileqq/apollo/persistence/api/impl/ApolloDaoManagerServiceImpl
     //   633: astore 15
     //   635: aload 14
-    //   637: invokevirtual 1256	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   637: invokevirtual 904	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   640: astore 17
     //   642: aload 15
     //   644: aload 17
-    //   646: invokevirtual 2397	com/tencent/mobileqq/apollo/persistence/api/impl/ApolloDaoManagerServiceImpl:getApolloBaseInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/apollo/model/ApolloBaseInfo;
+    //   646: invokevirtual 1966	com/tencent/mobileqq/apollo/persistence/api/impl/ApolloDaoManagerServiceImpl:getApolloBaseInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/apollo/model/ApolloBaseInfo;
     //   649: astore 16
     //   651: aload 16
     //   653: ifnull +534 -> 1187
     //   656: aload 16
-    //   658: getfield 2400	com/tencent/mobileqq/apollo/model/ApolloBaseInfo:mApollo3DDataBuffer	Ljava/lang/String;
+    //   658: getfield 1969	com/tencent/mobileqq/apollo/model/ApolloBaseInfo:mApollo3DDataBuffer	Ljava/lang/String;
     //   661: astore_1
     //   662: aload_1
     //   663: ifnull +55 -> 718
-    //   666: new 409	org/json/JSONObject
+    //   666: new 816	org/json/JSONObject
     //   669: dup
     //   670: aload 16
-    //   672: getfield 2400	com/tencent/mobileqq/apollo/model/ApolloBaseInfo:mApollo3DDataBuffer	Ljava/lang/String;
-    //   675: invokespecial 412	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   672: getfield 1969	com/tencent/mobileqq/apollo/model/ApolloBaseInfo:mApollo3DDataBuffer	Ljava/lang/String;
+    //   675: invokespecial 817	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   678: astore_1
     //   679: aload_1
-    //   680: ldc_w 2402
-    //   683: invokevirtual 448	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   680: ldc_w 1971
+    //   683: invokevirtual 820	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   686: lstore 6
     //   688: aload_1
-    //   689: ldc_w 2404
-    //   692: invokevirtual 1352	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   689: ldc_w 1973
+    //   692: invokevirtual 1001	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   695: astore_1
     //   696: aload_1
     //   697: ifnull +15 -> 712
     //   700: aload_1
-    //   701: ldc_w 2405
-    //   704: invokevirtual 448	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   701: ldc_w 1974
+    //   704: invokevirtual 820	org/json/JSONObject:optLong	(Ljava/lang/String;)J
     //   707: lstore 8
     //   709: goto +16 -> 725
     //   712: lconst_0
@@ -3473,128 +3016,128 @@ public class ApolloUtilImpl
     //   727: lconst_0
     //   728: lcmp
     //   729: ifeq +379 -> 1108
-    //   732: new 105	java/lang/StringBuilder
+    //   732: new 112	java/lang/StringBuilder
     //   735: dup
-    //   736: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   736: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   739: astore_1
     //   740: aload_1
-    //   741: ldc_w 1559
-    //   744: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   741: ldc_w 1173
+    //   744: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   747: pop
     //   748: aload_1
     //   749: lload 8
-    //   751: invokevirtual 570	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   751: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   754: pop
     //   755: aload_1
-    //   756: ldc_w 2407
-    //   759: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   756: ldc_w 1976
+    //   759: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   762: pop
-    //   763: new 608	java/io/File
+    //   763: new 324	java/io/File
     //   766: dup
     //   767: aload_1
-    //   768: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   771: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
+    //   768: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   771: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   774: astore 18
-    //   776: new 105	java/lang/StringBuilder
+    //   776: new 112	java/lang/StringBuilder
     //   779: dup
-    //   780: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   780: invokespecial 113	java/lang/StringBuilder:<init>	()V
     //   783: astore 19
     //   785: aload 19
-    //   787: ldc_w 1559
-    //   790: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   787: ldc_w 1173
+    //   790: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   793: pop
-    //   794: ldc 38
+    //   794: ldc 32
     //   796: astore 13
     //   798: aload 13
     //   800: astore_1
     //   801: aload 19
-    //   803: ldc2_w 2354
-    //   806: invokevirtual 570	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   803: ldc2_w 1921
+    //   806: invokevirtual 308	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   809: pop
     //   810: aload 13
     //   812: astore_1
     //   813: aload 19
-    //   815: ldc_w 2407
-    //   818: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   815: ldc_w 1976
+    //   818: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   821: pop
     //   822: aload 13
     //   824: astore_1
     //   825: aload 18
-    //   827: new 608	java/io/File
+    //   827: new 324	java/io/File
     //   830: dup
     //   831: aload 19
-    //   833: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   836: invokespecial 609	java/io/File:<init>	(Ljava/lang/String;)V
-    //   839: invokestatic 2361	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   833: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   836: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
+    //   839: invokestatic 1928	com/tencent/mobileqq/utils/FileUtils:copyFile	(Ljava/io/File;Ljava/io/File;)Z
     //   842: pop
     //   843: aload 13
     //   845: astore_1
-    //   846: new 409	org/json/JSONObject
+    //   846: new 816	org/json/JSONObject
     //   849: dup
-    //   850: invokespecial 1622	org/json/JSONObject:<init>	()V
+    //   850: invokespecial 1977	org/json/JSONObject:<init>	()V
     //   853: astore 18
     //   855: aload 13
     //   857: astore_1
-    //   858: invokestatic 407	java/lang/System:currentTimeMillis	()J
-    //   861: ldc2_w 2027
+    //   858: invokestatic 299	java/lang/System:currentTimeMillis	()J
+    //   861: ldc2_w 1638
     //   864: ldiv
     //   865: lstore 8
     //   867: aload 13
     //   869: astore_1
     //   870: aload 18
-    //   872: ldc_w 2215
+    //   872: ldc_w 1979
     //   875: aload 17
-    //   877: invokestatic 1059	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   880: invokevirtual 2410	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   877: invokestatic 781	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   880: invokevirtual 1982	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   883: pop
     //   884: aload 13
     //   886: astore_1
     //   887: aload 18
-    //   889: ldc_w 2402
+    //   889: ldc_w 1971
     //   892: lload 6
-    //   894: invokevirtual 2410	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   894: invokevirtual 1982	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   897: pop
     //   898: aload 13
     //   900: astore_1
     //   901: aload 18
-    //   903: ldc_w 2412
+    //   903: ldc_w 1984
     //   906: iconst_0
-    //   907: invokevirtual 2415	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   907: invokevirtual 1987	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   910: pop
     //   911: aload 13
     //   913: astore_1
-    //   914: new 409	org/json/JSONObject
+    //   914: new 816	org/json/JSONObject
     //   917: dup
-    //   918: invokespecial 1622	org/json/JSONObject:<init>	()V
+    //   918: invokespecial 1977	org/json/JSONObject:<init>	()V
     //   921: astore 17
     //   923: aload 13
     //   925: astore_1
     //   926: aload 17
-    //   928: ldc_w 2405
-    //   931: ldc2_w 2354
-    //   934: invokevirtual 2410	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   928: ldc_w 1974
+    //   931: ldc2_w 1921
+    //   934: invokevirtual 1982	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   937: pop
     //   938: aload 13
     //   940: astore_1
     //   941: aload 17
-    //   943: ldc_w 2402
+    //   943: ldc_w 1971
     //   946: lload 6
-    //   948: invokevirtual 2410	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   948: invokevirtual 1982	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   951: pop
     //   952: aload 13
     //   954: astore_1
     //   955: aload 18
-    //   957: ldc_w 2404
+    //   957: ldc_w 1973
     //   960: aload 17
-    //   962: invokevirtual 1629	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   962: invokevirtual 1270	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   965: pop
     //   966: aload 13
     //   968: astore_1
-    //   969: new 504	org/json/JSONArray
+    //   969: new 1989	org/json/JSONArray
     //   972: dup
-    //   973: invokespecial 2416	org/json/JSONArray:<init>	()V
+    //   973: invokespecial 1990	org/json/JSONArray:<init>	()V
     //   976: astore 17
-    //   978: ldc2_w 2417
+    //   978: ldc2_w 1991
     //   981: lstore 8
     //   983: lload 8
     //   985: lload 10
@@ -3602,29 +3145,29 @@ public class ApolloUtilImpl
     //   988: ifgt +63 -> 1051
     //   991: aload 13
     //   993: astore_1
-    //   994: new 409	org/json/JSONObject
+    //   994: new 816	org/json/JSONObject
     //   997: dup
-    //   998: invokespecial 1622	org/json/JSONObject:<init>	()V
+    //   998: invokespecial 1977	org/json/JSONObject:<init>	()V
     //   1001: astore 19
     //   1003: aload 13
     //   1005: astore_1
     //   1006: aload 19
-    //   1008: ldc_w 2405
+    //   1008: ldc_w 1974
     //   1011: lload 8
-    //   1013: invokevirtual 2410	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   1013: invokevirtual 1982	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   1016: pop
     //   1017: aload 13
     //   1019: astore_1
     //   1020: aload 19
-    //   1022: ldc_w 2402
+    //   1022: ldc_w 1971
     //   1025: lload 6
-    //   1027: invokevirtual 2410	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   1027: invokevirtual 1982	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   1030: pop
     //   1031: aload 13
     //   1033: astore_1
     //   1034: aload 17
     //   1036: aload 19
-    //   1038: invokevirtual 2421	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   1038: invokevirtual 1995	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   1041: pop
     //   1042: lload 8
     //   1044: lconst_1
@@ -3634,82 +3177,82 @@ public class ApolloUtilImpl
     //   1051: aload 13
     //   1053: astore_1
     //   1054: aload 18
-    //   1056: ldc_w 2423
+    //   1056: ldc_w 1997
     //   1059: aload 17
-    //   1061: invokevirtual 1629	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1061: invokevirtual 1270	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   1064: pop
     //   1065: aload 13
     //   1067: astore_1
     //   1068: aload 16
     //   1070: aload 14
     //   1072: aload 18
-    //   1074: invokevirtual 2427	com/tencent/mobileqq/apollo/model/ApolloBaseInfo:setApolloDress3D	(Lcom/tencent/common/app/AppInterface;Lorg/json/JSONObject;)V
+    //   1074: invokevirtual 2001	com/tencent/mobileqq/apollo/model/ApolloBaseInfo:setApolloDress3D	(Lcom/tencent/common/app/AppInterface;Lorg/json/JSONObject;)V
     //   1077: aload 13
     //   1079: astore_1
     //   1080: aload 15
     //   1082: aload 16
-    //   1084: invokevirtual 2431	com/tencent/mobileqq/apollo/persistence/api/impl/ApolloDaoManagerServiceImpl:saveOrUpdateApolloBaseInfo	(Lcom/tencent/mobileqq/apollo/model/ApolloBaseInfo;)V
+    //   1084: invokevirtual 2005	com/tencent/mobileqq/apollo/persistence/api/impl/ApolloDaoManagerServiceImpl:saveOrUpdateApolloBaseInfo	(Lcom/tencent/mobileqq/apollo/model/ApolloBaseInfo;)V
     //   1087: aload 13
     //   1089: astore_1
-    //   1090: getstatic 2383	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1093: ldc_w 2432
-    //   1096: invokestatic 146	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1090: getstatic 1950	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1093: ldc_w 2006
+    //   1096: invokestatic 738	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1099: iconst_0
-    //   1100: invokestatic 2389	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1103: invokevirtual 2392	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1100: invokestatic 1957	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1103: invokevirtual 1961	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   1106: pop
     //   1107: return
-    //   1108: ldc 38
+    //   1108: ldc 32
     //   1110: astore_1
-    //   1111: getstatic 2383	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1114: ldc_w 2433
-    //   1117: invokestatic 146	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1111: getstatic 1950	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1114: ldc_w 2007
+    //   1117: invokestatic 738	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1120: iconst_0
-    //   1121: invokestatic 2389	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1124: invokevirtual 2392	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1121: invokestatic 1957	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1124: invokevirtual 1961	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   1127: pop
     //   1128: return
-    //   1129: ldc 38
+    //   1129: ldc 32
     //   1131: astore_1
-    //   1132: getstatic 2383	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1135: ldc_w 2434
-    //   1138: invokestatic 146	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1132: getstatic 1950	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1135: ldc_w 2008
+    //   1138: invokestatic 738	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1141: iconst_0
-    //   1142: invokestatic 2389	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1145: invokevirtual 2392	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1142: invokestatic 1957	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1145: invokevirtual 1961	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   1148: pop
     //   1149: return
     //   1150: astore 13
     //   1152: goto +8 -> 1160
     //   1155: astore 13
-    //   1157: ldc 38
+    //   1157: ldc 32
     //   1159: astore_1
     //   1160: aload_1
     //   1161: iconst_1
-    //   1162: ldc_w 2436
+    //   1162: ldc_w 2010
     //   1165: aload 13
-    //   1167: invokestatic 787	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   1170: getstatic 2383	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1173: ldc_w 2437
-    //   1176: invokestatic 146	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1167: invokestatic 518	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1170: getstatic 1950	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1173: ldc_w 2011
+    //   1176: invokestatic 738	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1179: iconst_0
-    //   1180: invokestatic 2389	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1183: invokevirtual 2392	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1180: invokestatic 1957	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1183: invokevirtual 1961	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   1186: pop
     //   1187: return
-    //   1188: getstatic 2383	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   1191: ldc_w 2438
-    //   1194: invokestatic 146	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
+    //   1188: getstatic 1950	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   1191: ldc_w 2012
+    //   1194: invokestatic 738	com/tencent/mobileqq/app/HardCodeUtil:a	(I)Ljava/lang/String;
     //   1197: iconst_1
-    //   1198: invokestatic 2389	com/tencent/mobileqq/widget/QQToast:a	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
-    //   1201: invokevirtual 2392	com/tencent/mobileqq/widget/QQToast:a	()Landroid/widget/Toast;
+    //   1198: invokestatic 1957	com/tencent/mobileqq/widget/QQToast:makeText	(Landroid/content/Context;Ljava/lang/CharSequence;I)Lcom/tencent/mobileqq/widget/QQToast;
+    //   1201: invokevirtual 1961	com/tencent/mobileqq/widget/QQToast:show	()Landroid/widget/Toast;
     //   1204: pop
     //   1205: return
     //   1206: lload 6
-    //   1208: ldc2_w 837
+    //   1208: ldc2_w 556
     //   1211: lcmp
     //   1212: ifne +11 -> 1223
-    //   1215: ldc2_w 2417
+    //   1215: ldc2_w 1991
     //   1218: lstore 6
     //   1220: goto -726 -> 494
     //   1223: lload 6
@@ -3735,11 +3278,11 @@ public class ApolloUtilImpl
     //   1256: goto -1148 -> 108
     //   1259: iconst_0
     //   1260: istore 4
-    //   1262: ldc2_w 837
+    //   1262: ldc2_w 556
     //   1265: lstore 10
     //   1267: goto -721 -> 546
     //   1270: astore 13
-    //   1272: ldc 38
+    //   1272: ldc 32
     //   1274: astore_1
     //   1275: goto -115 -> 1160
     // Local variable table:
@@ -3880,12 +3423,12 @@ public class ApolloUtilImpl
   
   public boolean shouldShowPopupGuide()
   {
-    boolean bool3 = SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.7.0");
+    boolean bool3 = SystemEmoticonInfo.sNewApolloEmoticonMap.containsKey("8.8.17");
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (bool3)
     {
-      List localList = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.7.0");
+      List localList = (List)SystemEmoticonInfo.sNewApolloEmoticonMap.get("8.8.17");
       bool1 = bool2;
       if (localList != null)
       {
@@ -3903,26 +3446,10 @@ public class ApolloUtilImpl
     }
     return bool1;
   }
-  
-  public String wrapLogUin(String paramString)
-  {
-    Object localObject = paramString;
-    if (!android.text.TextUtils.isEmpty(paramString))
-    {
-      if (paramString.length() < 4) {
-        return paramString;
-      }
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString.substring(0, 4));
-      ((StringBuilder)localObject).append("*");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    return localObject;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl
  * JD-Core Version:    0.7.0.1
  */

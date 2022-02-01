@@ -4,7 +4,7 @@ import android.media.MediaCodec.BufferInfo;
 
 public class TAVReportUtils
 {
-  public static String a(MediaCodec.BufferInfo paramBufferInfo)
+  public static String toString(MediaCodec.BufferInfo paramBufferInfo)
   {
     if (paramBufferInfo == null) {
       return "null";
@@ -24,7 +24,7 @@ public class TAVReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.report.TAVReportUtils
  * JD-Core Version:    0.7.0.1
  */

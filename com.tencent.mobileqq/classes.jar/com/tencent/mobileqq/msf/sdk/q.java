@@ -9,8 +9,8 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.util.StringBuilderPrinter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.mobileqq.msf.core.c.e.a;
+import com.tencent.mobileqq.msf.core.d.e;
+import com.tencent.mobileqq.msf.core.d.e.a;
 import com.tencent.mobileqq.msf.core.p;
 import com.tencent.mobileqq.msf.sdk.b.c;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
@@ -714,7 +714,7 @@ public class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.q
  * JD-Core Version:    0.7.0.1
  */

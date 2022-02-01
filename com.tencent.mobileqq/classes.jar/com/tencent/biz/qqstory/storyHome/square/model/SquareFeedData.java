@@ -8,8 +8,8 @@ import java.util.List;
 public class SquareFeedData
   extends FeedListPageLoaderBase.FeedData
 {
-  public List<SquareFeed> b = new ArrayList();
-  public List<SquareBannerItem> c = new ArrayList();
+  public List<SquareFeed> f = new ArrayList();
+  public List<SquareBannerItem> h = new ArrayList();
   
   public SquareFeedData(ErrorMessage paramErrorMessage)
   {
@@ -22,7 +22,7 @@ public class SquareFeedData
     localStringBuilder.append("FeedData{");
     localStringBuilder.append(super.toString());
     localStringBuilder.append("mFeedItems=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

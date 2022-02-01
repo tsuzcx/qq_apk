@@ -9,12 +9,11 @@ import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
 import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
 import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.kandian.biz.detail.web.api.IReadInJoyWebRenderEngine;
-import com.tencent.mobileqq.kandian.biz.viola.api.IReadInJoyWebRenderSoLoader;
 import com.tencent.mobileqq.kandian.biz.viola.constants.IViolaBizLibHandlerConst;
+import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInJoyWebRenderEngine;
+import com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInjoyWebRenderSoLoader;
 import com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoaderManager;
 import com.tencent.mobileqq.kandian.glue.viola.so.ViolaSoLoaderManager.Companion;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -27,7 +26,7 @@ public class ViolaBizLibHandler
     super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
   }
   
-  public static void f()
+  public static void w()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
@@ -45,9 +44,9 @@ public class ViolaBizLibHandler
     }
   }
   
-  public static boolean i()
+  public static boolean x()
   {
-    String str = ((IReadInJoyWebRenderSoLoader)QRoute.api(IReadInJoyWebRenderSoLoader.class)).getSoLibPath();
+    String str = ReadInjoyWebRenderSoLoader.a();
     int i = 0;
     while (i < IViolaBizLibHandlerConst.a.length)
     {
@@ -67,19 +66,9 @@ public class ViolaBizLibHandler
     return true;
   }
   
-  public int a()
-  {
-    return 10079;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return ViolaBizLibData.class;
-  }
-  
-  public String a()
-  {
-    return "viola.ViolaBizLibHandler";
   }
   
   public void a(String paramString)
@@ -88,7 +77,7 @@ public class ViolaBizLibHandler
     ((StringBuilder)localObject).append("[doOnDownloadSuccess]:");
     ((StringBuilder)localObject).append(paramString);
     QLog.i("viola.ViolaBizLibHandler", 1, ((StringBuilder)localObject).toString());
-    localObject = a();
+    localObject = h();
     if (localObject != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -98,7 +87,7 @@ public class ViolaBizLibHandler
     }
     if (new File(paramString).exists())
     {
-      if (!((IReadInJoyWebRenderSoLoader)QRoute.api(IReadInJoyWebRenderSoLoader.class)).unzip(paramString))
+      if (!ReadInjoyWebRenderSoLoader.a(paramString))
       {
         if (localObject != null)
         {
@@ -113,25 +102,35 @@ public class ViolaBizLibHandler
       if (paramString != null) {
         paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
       }
-      if ((ViolaLibHandler.i()) && (ViolaSoLoaderManager.a.a().b())) {
-        ((IReadInJoyWebRenderEngine)QRoute.api(IReadInJoyWebRenderEngine.class)).loadLibrary("biz doOnDownloadSuccess");
+      if ((ViolaLibHandler.w()) && (ViolaSoLoaderManager.a.a().e())) {
+        ReadInJoyWebRenderEngine.a("biz doOnDownloadSuccess");
       }
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "viola.ViolaBizLibHandler";
+  }
+  
+  public int c()
+  {
+    return 10079;
+  }
+  
+  public String d()
+  {
     return null;
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaBizLibHandler
  * JD-Core Version:    0.7.0.1
  */

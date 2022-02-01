@@ -10,18 +10,18 @@ import com.tencent.mobileqq.tofumsg.handlers.NicePicsDataHandler;
 
 public class TofuDataHandlerFactory
 {
-  SparseArray<ITofuDataHandler> jdField_a_of_type_AndroidUtilSparseArray;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  QQAppInterface a;
+  SparseArray<ITofuDataHandler> b;
   
   TofuDataHandlerFactory(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(TofuConst.a.length);
+    this.a = paramQQAppInterface;
+    this.b = new SparseArray(TofuConst.a.length);
   }
   
   ITofuDataHandler a(int paramInt)
   {
-    Object localObject = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (ITofuDataHandler)this.b.get(paramInt);
     if (localObject != null) {
       return localObject;
     }
@@ -34,31 +34,31 @@ public class TofuDataHandlerFactory
           if (paramInt != 3)
           {
             if (paramInt == 4) {
-              localObject = new AskAnonymouslyHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+              localObject = new AskAnonymouslyHandler(this.a);
             }
           }
           else {
-            localObject = new NewFrdMiniCardHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            localObject = new NewFrdMiniCardHandler(this.a);
           }
         }
         else {
-          localObject = new NicePicsDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          localObject = new NicePicsDataHandler(this.a);
         }
       }
       else {
-        localObject = new BaseProfileDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        localObject = new BaseProfileDataHandler(this.a);
       }
     }
     else {
-      localObject = new IntimateAnniversaryDataHandler(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject = new IntimateAnniversaryDataHandler(this.a);
     }
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) && (localObject != null)) {
-      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    if ((this.b.get(paramInt) == null) && (localObject != null)) {
+      synchronized (this.b)
       {
-        if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject);
+        if (this.b.get(paramInt) == null) {
+          this.b.put(paramInt, localObject);
         } else {
-          localObject = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+          localObject = (ITofuDataHandler)this.b.get(paramInt);
         }
         return localObject;
       }
@@ -69,20 +69,20 @@ public class TofuDataHandlerFactory
   void a()
   {
     int i;
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    synchronized (this.b)
     {
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int j = this.b.size();
       i = 0;
       if (i < j)
       {
-        ITofuDataHandler localITofuDataHandler = (ITofuDataHandler)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+        ITofuDataHandler localITofuDataHandler = (ITofuDataHandler)this.b.valueAt(i);
         if (localITofuDataHandler != null) {
-          localITofuDataHandler.a();
+          localITofuDataHandler.b();
         }
       }
       else
       {
-        this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+        this.b.clear();
         return;
       }
     }
@@ -90,7 +90,7 @@ public class TofuDataHandlerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tofumsg.TofuDataHandlerFactory
  * JD-Core Version:    0.7.0.1
  */

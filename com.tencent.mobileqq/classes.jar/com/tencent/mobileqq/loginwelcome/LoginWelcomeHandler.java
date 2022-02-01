@@ -170,7 +170,7 @@ public class LoginWelcomeHandler
             break label861;
           }
           bool1 = true;
-          paramObject.jdField_b_of_type_Boolean = bool1;
+          paramObject.b = bool1;
           if (!localRspBody.msg_guidelines808.has()) {
             break label867;
           }
@@ -181,7 +181,7 @@ public class LoginWelcomeHandler
               break label872;
             }
             bool1 = true;
-            paramObject.jdField_a_of_type_Boolean = bool1;
+            paramObject.a = bool1;
             if (!paramToServiceMsg.msg_guidelines_web.has()) {
               break label878;
             }
@@ -193,18 +193,18 @@ public class LoginWelcomeHandler
               }
               paramFromServiceMsg = paramToServiceMsg.str_web_url.get();
               if (!TextUtils.isEmpty(paramFromServiceMsg)) {
-                paramObject.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+                paramObject.c = paramFromServiceMsg;
               }
               if (!paramToServiceMsg.uint32_friends_recomm_flag.has()) {
                 break label890;
               }
               i = paramToServiceMsg.uint32_friends_recomm_flag.get();
-              paramObject.jdField_a_of_type_Int = i;
+              paramObject.d = i;
               if (!paramToServiceMsg.uint32_groups_recomm_flag.has()) {
                 break label896;
               }
               i = paramToServiceMsg.uint32_groups_recomm_flag.get();
-              paramObject.jdField_b_of_type_Int = i;
+              paramObject.e = i;
             }
           }
           paramToServiceMsg = new Object[3];
@@ -228,28 +228,28 @@ public class LoginWelcomeHandler
                 if (paramFromServiceMsg.str_web_url.has()) {
                   paramObject = paramFromServiceMsg.str_web_url.get();
                 }
-                localCommonGuideInfo.jdField_a_of_type_JavaLangString = paramObject;
+                localCommonGuideInfo.b = paramObject;
                 if ((paramFromServiceMsg.uint32_groups_recomm_flag.has()) && (paramFromServiceMsg.uint32_groups_recomm_flag.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 1;
+                  localCommonGuideInfo.a = 1;
                 } else if ((paramFromServiceMsg.uint32_set_gender.has()) && (paramFromServiceMsg.uint32_set_gender.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 2;
+                  localCommonGuideInfo.a = 2;
                 } else if ((paramFromServiceMsg.uint32_set_birthday.has()) && (paramFromServiceMsg.uint32_set_birthday.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 3;
+                  localCommonGuideInfo.a = 3;
                 } else if ((paramFromServiceMsg.uint32_set_head.has()) && (paramFromServiceMsg.uint32_set_head.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 4;
+                  localCommonGuideInfo.a = 4;
                 } else if ((paramFromServiceMsg.uint32_set_school.has()) && (paramFromServiceMsg.uint32_set_school.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 5;
+                  localCommonGuideInfo.a = 5;
                 } else if ((paramFromServiceMsg.uint32_set_region.has()) && (paramFromServiceMsg.uint32_set_region.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 6;
+                  localCommonGuideInfo.a = 6;
                 } else if ((paramFromServiceMsg.uint32_set_company.has()) && (paramFromServiceMsg.uint32_set_company.get() == 1)) {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 7;
+                  localCommonGuideInfo.a = 7;
                 } else {
-                  localCommonGuideInfo.jdField_a_of_type_Int = 0;
+                  localCommonGuideInfo.a = 0;
                 }
               }
             }
             if (QLog.isColorLevel()) {
-              QLog.d("LoginWelcomeManager", 2, String.format("813 guide :type %s, url %s", new Object[] { Integer.valueOf(localCommonGuideInfo.jdField_a_of_type_Int), localCommonGuideInfo.jdField_a_of_type_JavaLangString }));
+              QLog.d("LoginWelcomeManager", 2, String.format("813 guide :type %s, url %s", new Object[] { Integer.valueOf(localCommonGuideInfo.a), localCommonGuideInfo.b }));
             }
             paramToServiceMsg[1] = localCommonGuideInfo;
             if ((localRspBody.uint32_need_not_req_nexttime.has()) && (localRspBody.uint32_need_not_req_nexttime.get() == 1)) {
@@ -343,7 +343,7 @@ public class LoginWelcomeHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeHandler
  * JD-Core Version:    0.7.0.1
  */

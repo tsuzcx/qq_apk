@@ -27,10 +27,12 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
 import com.tencent.mobileqq.emosm.IEmoticonPanelHotPicSearchHelper;
 import com.tencent.mobileqq.emosm.IEmotionSearchPanel;
 import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.guild.api.IGuildTempApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -116,6 +118,14 @@ public class EmotionSearchPanel
     ((IEmosmService)QRoute.api(IEmosmService.class)).showEmoticonPanel(this.aioContext, 12);
   }
   
+  private int getBgColor()
+  {
+    if (needSkin()) {
+      return getContext().getResources().getColor(2131166015);
+    }
+    return -1;
+  }
+  
   private int getEnterTextAnimStartPos()
   {
     return this.exitWidth / 2 - getHalfInputTextLen() - ScreenUtil.dip2px(24.0F);
@@ -130,7 +140,7 @@ public class EmotionSearchPanel
   {
     Object localObject2 = this.emotionInput.getText().toString();
     Object localObject1 = localObject2;
-    if (StringUtil.a((String)localObject2)) {
+    if (StringUtil.isEmpty((String)localObject2)) {
       localObject1 = this.emotionInput.getHint().toString();
     }
     localObject2 = new Rect();
@@ -159,7 +169,7 @@ public class EmotionSearchPanel
     this.hasSetVisisble = false;
     this.isExitNeedSearch = false;
     this.isDestory = false;
-    if (!StringUtil.a(paramString))
+    if (!StringUtil.isEmpty(paramString))
     {
       this.emotionInput.setText(paramString);
       this.emotionInput.setSelection(paramString.length());
@@ -207,29 +217,35 @@ public class EmotionSearchPanel
   
   private void initView()
   {
-    this.emotionInput = ((EditText)findViewById(2131366197));
-    this.emotionCancelBtn = ((TextView)findViewById(2131366196));
-    this.emotionSearchRoot = ((RelativeLayout)findViewById(2131366198));
-    this.emotionSearchBar = ((RelativeLayout)findViewById(2131366195));
-    this.maskBtmView = findViewById(2131370705);
-    this.maskBtmView.setBackgroundColor(getContext().getResources().getColor(2131165620));
-    this.emotionSearchBar.setBackgroundColor(getContext().getResources().getColor(2131165620));
-    this.emotionInputAnimLayout = ((RelativeLayout)findViewById(2131366184));
-    this.searchCleanImg = ((ImageView)findViewById(2131369487));
+    this.emotionInput = ((EditText)findViewById(2131432485));
+    this.emotionCancelBtn = ((TextView)findViewById(2131432484));
+    this.emotionSearchRoot = ((RelativeLayout)findViewById(2131432486));
+    this.emotionSearchBar = ((RelativeLayout)findViewById(2131432483));
+    this.maskBtmView = findViewById(2131437982);
+    this.maskBtmView.setBackgroundColor(getBgColor());
+    this.emotionSearchBar.setBackgroundColor(getBgColor());
+    this.emotionInputAnimLayout = ((RelativeLayout)findViewById(2131432472));
+    this.searchCleanImg = ((ImageView)findViewById(2131436558));
     this.searchCleanImg.setOnClickListener(this);
-    this.mask = ((FrameLayout)findViewById(2131370699));
+    this.mask = ((FrameLayout)findViewById(2131437976));
     this.emotionCancelBtn.setOnClickListener(this);
     this.mask.setOnClickListener(this);
     this.decorView = ((Activity)getContext()).getWindow().getDecorView();
     this.emotionInput.setBackgroundDrawable(getShapeDrawable(18));
     this.emotionInputAnimLayout.setBackgroundDrawable(getShapeDrawable(18));
-    if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
+    if ((needSkin()) && (ThemeUtil.isNowThemeIsNight(this.app, false, null))) {
       this.emotionInput.setTextColor(Color.parseColor("#B0B3BF"));
     } else {
       this.emotionInput.setTextColor(Color.parseColor("#03081A"));
     }
     this.emotionInput.setOnEditorActionListener(new EmotionSearchPanel.1(this));
     this.emotionInput.addTextChangedListener(new EmotionSearchPanel.2(this));
+    if ((this.interactionListener != null) && (((IGuildTempApi)QRoute.api(IGuildTempApi.class)).checkChatPie(this.interactionListener.getBaseChatPie())))
+    {
+      this.emotionInput.setBackgroundDrawable(ViewUtils.getShapeDrawable(Color.parseColor("#2F3033"), ViewUtils.dip2px(18.0F)));
+      this.emotionInput.setHintTextColor(Color.parseColor("#C1C1C1"));
+      this.maskBtmView.setBackgroundColor(Color.parseColor("#18191C"));
+    }
   }
   
   private boolean isNeedDoCenterMove(boolean paramBoolean)
@@ -288,7 +304,7 @@ public class EmotionSearchPanel
   
   private void reportCancel(int paramInt)
   {
-    if (StringUtil.a(this.emotionInput.getText().toString()))
+    if (StringUtil.isEmpty(this.emotionInput.getText().toString()))
     {
       EmoticonUtils.report("0X800AE27", paramInt);
       return;
@@ -380,12 +396,12 @@ public class EmotionSearchPanel
   protected Drawable getShapeDrawable(int paramInt)
   {
     String str;
-    if (ThemeUtil.isNowThemeIsNight(this.app, false, null)) {
+    if ((needSkin()) && (ThemeUtil.isNowThemeIsNight(this.app, false, null))) {
       str = "#1C1C1C";
     } else {
       str = "#F5F6FA";
     }
-    return ViewUtils.a(Color.parseColor(str), ViewUtils.a(paramInt));
+    return ViewUtils.getShapeDrawable(Color.parseColor(str), ViewUtils.dip2px(paramInt));
   }
   
   public void init(BaseQQAppInterface paramBaseQQAppInterface, IPanelInteractionListener paramIPanelInteractionListener, int paramInt1, boolean paramBoolean, String paramString, int paramInt2, int paramInt3, IEmoticonPanelHotPicSearchHelper paramIEmoticonPanelHotPicSearchHelper)
@@ -421,22 +437,31 @@ public class EmotionSearchPanel
     startEntryAinm();
   }
   
+  protected boolean needSkin()
+  {
+    BaseAIOContext localBaseAIOContext = this.aioContext;
+    if (localBaseAIOContext == null) {
+      return true;
+    }
+    return localBaseAIOContext.O().a != 10014;
+  }
+  
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131366196)
+    if (i == 2131432484)
     {
       reportCancel(1);
       this.isExitNeedSearch = false;
       doExit();
     }
-    else if (i == 2131370699)
+    else if (i == 2131437976)
     {
       reportCancel(2);
       this.isExitNeedSearch = false;
       doExit();
     }
-    else if (i == 2131369487)
+    else if (i == 2131436558)
     {
       this.emotionInput.setText("");
       this.searchCleanImg.setVisibility(8);
@@ -590,7 +615,7 @@ public class EmotionSearchPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel
  * JD-Core Version:    0.7.0.1
  */

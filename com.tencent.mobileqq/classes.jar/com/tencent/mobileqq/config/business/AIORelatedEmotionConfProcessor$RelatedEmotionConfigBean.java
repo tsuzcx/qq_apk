@@ -26,7 +26,7 @@ public class AIORelatedEmotionConfProcessor$RelatedEmotionConfigBean
       StringBuilder localStringBuilder;
       QLog.d("AIORelatedEmotionConfProcessor", 2, "parse S$EConfBean failed!", paramArrayOfQConfItem);
     }
-    Object localObject = ((QConfItem)localObject).a;
+    Object localObject = ((QConfItem)localObject).b;
     bool = TextUtils.isEmpty((CharSequence)localObject);
     if (!bool)
     {
@@ -78,7 +78,7 @@ public class AIORelatedEmotionConfProcessor$RelatedEmotionConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AIORelatedEmotionConfProcessor.RelatedEmotionConfigBean
  * JD-Core Version:    0.7.0.1
  */

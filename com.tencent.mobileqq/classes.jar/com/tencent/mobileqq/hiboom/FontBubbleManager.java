@@ -37,42 +37,42 @@ import mqq.app.AppRuntime;
 public class FontBubbleManager
   implements Handler.Callback
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new FontBubbleManager.5(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private SetFontBubble jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble;
-  private long[] jdField_a_of_type_ArrayOfLong;
-  private SetFontBubble b;
+  private Handler a;
+  private QQAppInterface b;
+  private SetFontBubble c;
+  private SetFontBubble d;
+  private long[] e;
+  private MessageObserver f = new FontBubbleManager.5(this);
   
   public FontBubbleManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    this.b = paramQQAppInterface;
+    this.a = new Handler(Looper.getMainLooper(), this);
+    this.b.addObserver(this.f);
   }
   
   public static FontBubbleManager a(QQAppInterface paramQQAppInterface)
   {
-    return ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).a;
+    return ((VasExtensionManager)paramQQAppInterface.getManager(QQManagerFactory.VAS_EXTENSION_MANAGER)).g;
   }
   
   private void a(Context paramContext)
   {
-    QQToast.a(paramContext, 0, HardCodeUtil.a(2131704774), 2000).a();
-    if (this.b != null)
+    QQToast.makeText(paramContext, 0, HardCodeUtil.a(2131902676), 2000).show();
+    if (this.d != null)
     {
       paramContext = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      int j = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType;
+      int j = this.d.b.panelType;
       int i;
       if (j == 3) {
-        i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId;
+        i = this.d.b.fontId;
       } else {
-        i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId;
+        i = this.d.b.bubbleId;
       }
       VasWebviewUtil.a(paramContext, "aio_iconA", "Send", "", 1, 0, 0, "", Integer.toString(i), FontBubblePanelView.a(j), "1", "", "", "", 0, 0, 0, 0);
     }
-    this.b = null;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble = null;
+    this.d = null;
+    this.c = null;
   }
   
   private void a(BaseChatPie paramBaseChatPie)
@@ -80,7 +80,7 @@ public class FontBubbleManager
     if (QLog.isColorLevel()) {
       QLog.d("FontBubbleManager", 2, "sendMsg");
     }
-    Object localObject = paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+    Object localObject = paramBaseChatPie.Y.getText().toString();
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       QLog.e("FontBubbleManager", 1, "sendMsg fail input is empty");
@@ -88,39 +88,39 @@ public class FontBubbleManager
     }
     ChatActivityFacade.SendMsgParams localSendMsgParams = new ChatActivityFacade.SendMsgParams();
     paramBaseChatPie.a(localSendMsgParams);
-    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)paramBaseChatPie.a(52);
+    AIOShortcutBarHelper localAIOShortcutBarHelper = (AIOShortcutBarHelper)paramBaseChatPie.q(52);
     if (localAIOShortcutBarHelper != null)
     {
       AIOShortcutBarHelper.AIOShortcutBarEvent localAIOShortcutBarEvent = new AIOShortcutBarHelper.AIOShortcutBarEvent(18);
       localAIOShortcutBarEvent.a().putBoolean("isSendToRobotServer", false);
       localAIOShortcutBarHelper.a(localAIOShortcutBarEvent);
-      localSendMsgParams.i = localAIOShortcutBarEvent.a().getBoolean("result", false);
+      localSendMsgParams.y = localAIOShortcutBarEvent.a().getBoolean("result", false);
     }
-    this.jdField_a_of_type_ArrayOfLong = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseChatPie.a(), paramBaseChatPie.a(), (String)localObject, new ArrayList(), localSendMsgParams);
-    paramBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-    paramBaseChatPie.Y();
-    localObject = this.b;
+    this.e = ChatActivityFacade.a(this.b, paramBaseChatPie.aX(), paramBaseChatPie.aE(), (String)localObject, new ArrayList(), localSendMsgParams);
+    paramBaseChatPie.Y.setText("");
+    paramBaseChatPie.aF();
+    localObject = this.d;
     if (localObject != null)
     {
-      int j = ((SetFontBubble)localObject).jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType;
+      int j = ((SetFontBubble)localObject).b.panelType;
       int i;
       if (j == 3) {
-        i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId;
+        i = this.d.b.fontId;
       } else {
-        i = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId;
+        i = this.d.b.bubbleId;
       }
-      VasWebviewUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "aio_iconA", "Send", "", 1, 0, 0, "", Integer.toString(i), FontBubblePanelView.a(j), "0", "", "", "", 0, 0, 0, 0);
-      this.b = null;
+      VasWebviewUtil.a(paramBaseChatPie.d.getCurrentUin(), "aio_iconA", "Send", "", 1, 0, 0, "", Integer.toString(i), FontBubblePanelView.a(j), "0", "", "", "", 0, 0, 0, 0);
+      this.d = null;
     }
   }
   
   private void a(BaseChatPie paramBaseChatPie, long paramLong, int paramInt)
   {
-    Object localObject5 = this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble;
+    Object localObject5 = this.d.b;
     Object localObject2 = ((FontBubble)localObject5).title;
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = HardCodeUtil.a(2131704775);
+      localObject1 = HardCodeUtil.a(2131902677);
     }
     Object localObject3 = ((FontBubble)localObject5).msg;
     localObject2 = localObject3;
@@ -151,25 +151,25 @@ public class FontBubbleManager
       ((StringBuilder)localObject5).append((String)localObject4);
       QLog.d("FontBubbleManager", 2, ((StringBuilder)localObject5).toString());
     }
-    DialogUtil.a(paramBaseChatPie.a(), 230, (String)localObject1, (CharSequence)localObject2, HardCodeUtil.a(2131704776), (String)localObject3, new FontBubbleManager.3(this, paramBaseChatPie, (String)localObject4), new FontBubbleManager.4(this)).show();
+    DialogUtil.a(paramBaseChatPie.aX(), 230, (String)localObject1, (CharSequence)localObject2, HardCodeUtil.a(2131898212), (String)localObject3, new FontBubbleManager.3(this, paramBaseChatPie, (String)localObject4), new FontBubbleManager.4(this)).show();
   }
   
   private boolean a(int paramInt1, int paramInt2)
   {
-    Object localObject = this.b;
+    Object localObject = this.d;
     boolean bool2 = false;
     boolean bool1 = false;
     if (localObject != null)
     {
       if (paramInt1 == 5L)
       {
-        if (paramInt2 == ((SetFontBubble)localObject).jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.fontId) {
+        if (paramInt2 == ((SetFontBubble)localObject).b.fontId) {
           bool1 = true;
         }
         return bool1;
       }
       bool1 = bool2;
-      if (paramInt2 == ((SetFontBubble)localObject).jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.bubbleId) {
+      if (paramInt2 == ((SetFontBubble)localObject).b.bubbleId) {
         bool1 = true;
       }
       return bool1;
@@ -179,11 +179,11 @@ public class FontBubbleManager
     localStringBuilder.append(", ");
     localStringBuilder.append(paramInt2);
     localStringBuilder.append(" is not currentSelect: ");
-    localObject = this.b;
+    localObject = this.d;
     if (localObject == null) {
       localObject = "null";
     } else {
-      localObject = ((SetFontBubble)localObject).jdField_a_of_type_ComTencentMobileqqHiboomFontBubble;
+      localObject = ((SetFontBubble)localObject).b;
     }
     localStringBuilder.append(localObject);
     QLog.e("FontBubbleManager", 1, localStringBuilder.toString());
@@ -192,12 +192,12 @@ public class FontBubbleManager
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+    this.b.removeObserver(this.f);
   }
   
   public void a(long paramLong)
   {
-    Object localObject = this.jdField_a_of_type_ArrayOfLong;
+    Object localObject = this.e;
     if (localObject != null)
     {
       int j = localObject.length;
@@ -206,12 +206,12 @@ public class FontBubbleManager
       {
         if (localObject[i] == paramLong)
         {
-          this.jdField_a_of_type_ArrayOfLong = null;
-          localObject = this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble;
+          this.e = null;
+          localObject = this.c;
           if (localObject == null) {
             break;
           }
-          ((SetFontBubble)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          ((SetFontBubble)localObject).a(this.b);
           return;
         }
         i += 1;
@@ -235,13 +235,13 @@ public class FontBubbleManager
       paramBundle.append(bool);
       QLog.d("FontBubbleManager", 2, paramBundle.toString());
     }
-    paramBundle = this.b;
+    paramBundle = this.d;
     if (paramBundle != null)
     {
-      i = paramBundle.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType;
-      VasWebviewUtil.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), "aio_iconA", "OpenSvip", "", 1, 0, 0, "", "", FontBubblePanelView.a(i));
-      this.b = new SetFontBubble(this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
-      this.b.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      i = paramBundle.b.panelType;
+      VasWebviewUtil.a(paramBaseChatPie.d.getCurrentUin(), "aio_iconA", "OpenSvip", "", 1, 0, 0, "", "", FontBubblePanelView.a(i));
+      this.d = new SetFontBubble(this.d.b);
+      this.d.a(this.b);
     }
   }
   
@@ -249,16 +249,16 @@ public class FontBubbleManager
   {
     if ((paramBoolean) && (paramSetFontBubbleRsp.stRet != null) && (paramSetFontBubbleRsp.stRet.ret == 0))
     {
-      localObject = this.b;
-      if ((localObject != null) && (((SetFontBubble)localObject).jdField_a_of_type_Int == paramInt))
+      localObject = this.d;
+      if ((localObject != null) && (((SetFontBubble)localObject).a == paramInt))
       {
-        if (((this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType == 3) && (paramSetFontBubbleRsp.stFontRsp.authRet == 0)) || ((this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType == 4) && (paramSetFontBubbleRsp.stBubbleRsp.authRet == 0)))
+        if (((this.d.b.panelType == 3) && (paramSetFontBubbleRsp.stFontRsp.authRet == 0)) || ((this.d.b.panelType == 4) && (paramSetFontBubbleRsp.stBubbleRsp.authRet == 0)))
         {
           if (QLog.isColorLevel())
           {
             paramSetFontBubbleRsp = new StringBuilder();
             paramSetFontBubbleRsp.append("onSetFontBubble mClick success: ");
-            paramSetFontBubbleRsp.append(this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+            paramSetFontBubbleRsp.append(this.d.b);
             QLog.d("FontBubbleManager", 2, paramSetFontBubbleRsp.toString());
           }
           ThreadManagerV2.excute(new FontBubbleManager.2(this, paramBaseChatPie), 32, null, true);
@@ -269,11 +269,11 @@ public class FontBubbleManager
         ((StringBuilder)localObject).append(paramSetFontBubbleRsp.stFontRsp.authRet);
         ((StringBuilder)localObject).append(",");
         ((StringBuilder)localObject).append(paramSetFontBubbleRsp.stBubbleRsp.authRet);
-        ((StringBuilder)localObject).append(this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+        ((StringBuilder)localObject).append(this.d.b);
         QLog.e("FontBubbleManager", 1, ((StringBuilder)localObject).toString());
         if ((paramSetFontBubbleRsp.stFontRsp.authRet >= 0) && (paramSetFontBubbleRsp.stBubbleRsp.authRet >= 0))
         {
-          if (this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble.panelType == 3)
+          if (this.d.b.panelType == 3)
           {
             a(paramBaseChatPie, 5L, paramSetFontBubbleRsp.stFontRsp.fontID);
             return;
@@ -281,11 +281,11 @@ public class FontBubbleManager
           a(paramBaseChatPie, 2L, paramSetFontBubbleRsp.stBubbleRsp.bubbleID);
           return;
         }
-        a(paramBaseChatPie.a());
+        a(paramBaseChatPie.aX());
         return;
       }
-      paramBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble;
-      if ((paramBaseChatPie != null) && (paramBaseChatPie.jdField_a_of_type_Int == paramInt))
+      paramBaseChatPie = this.c;
+      if ((paramBaseChatPie != null) && (paramBaseChatPie.a == paramInt))
       {
         if ((paramSetFontBubbleRsp.stFontRsp.authRet == 0) && (paramSetFontBubbleRsp.stBubbleRsp.authRet == 0))
         {
@@ -293,7 +293,7 @@ public class FontBubbleManager
           {
             paramBaseChatPie = new StringBuilder();
             paramBaseChatPie.append("onSetFontBubble mRestore success: ");
-            paramBaseChatPie.append(this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+            paramBaseChatPie.append(this.c.b);
             QLog.d("FontBubbleManager", 2, paramBaseChatPie.toString());
           }
         }
@@ -305,10 +305,10 @@ public class FontBubbleManager
           paramBaseChatPie.append(paramSetFontBubbleRsp.stFontRsp.authRet);
           paramBaseChatPie.append(" bubbleAuth:");
           paramBaseChatPie.append(paramSetFontBubbleRsp.stBubbleRsp.authRet);
-          paramBaseChatPie.append(this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+          paramBaseChatPie.append(this.c.b);
           QLog.e("FontBubbleManager", 1, paramBaseChatPie.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble = null;
+        this.c = null;
         return;
       }
       paramBaseChatPie = AIOUtils.a();
@@ -336,23 +336,23 @@ public class FontBubbleManager
       ((StringBuilder)localObject).append(paramSetFontBubbleRsp.stRet.err);
     }
     QLog.e("FontBubbleManager", 1, ((StringBuilder)localObject).toString());
-    paramSetFontBubbleRsp = this.b;
-    if ((paramSetFontBubbleRsp != null) && (paramSetFontBubbleRsp.jdField_a_of_type_Int == paramInt))
+    paramSetFontBubbleRsp = this.d;
+    if ((paramSetFontBubbleRsp != null) && (paramSetFontBubbleRsp.a == paramInt))
     {
       paramSetFontBubbleRsp = new StringBuilder();
       paramSetFontBubbleRsp.append("click failed: ");
-      paramSetFontBubbleRsp.append(this.b.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+      paramSetFontBubbleRsp.append(this.d.b);
       QLog.e("FontBubbleManager", 1, paramSetFontBubbleRsp.toString());
     }
-    paramSetFontBubbleRsp = this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble;
-    if ((paramSetFontBubbleRsp != null) && (paramSetFontBubbleRsp.jdField_a_of_type_Int == paramInt))
+    paramSetFontBubbleRsp = this.c;
+    if ((paramSetFontBubbleRsp != null) && (paramSetFontBubbleRsp.a == paramInt))
     {
       paramSetFontBubbleRsp = new StringBuilder();
       paramSetFontBubbleRsp.append("restore failed: ");
-      paramSetFontBubbleRsp.append(this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble.jdField_a_of_type_ComTencentMobileqqHiboomFontBubble);
+      paramSetFontBubbleRsp.append(this.c.b);
       QLog.e("FontBubbleManager", 1, paramSetFontBubbleRsp.toString());
     }
-    a(paramBaseChatPie.a());
+    a(paramBaseChatPie.aX());
   }
   
   public void a(FontBubble paramFontBubble)
@@ -372,15 +372,15 @@ public class FontBubbleManager
       return true;
     }
     paramMessage = (Object[])paramMessage.obj;
-    this.jdField_a_of_type_ComTencentMobileqqHiboomSetFontBubble = new SetFontBubble((FontBubble)paramMessage[0]);
-    this.b = new SetFontBubble((FontBubble)paramMessage[1]);
-    this.b.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.c = new SetFontBubble((FontBubble)paramMessage[0]);
+    this.d = new SetFontBubble((FontBubble)paramMessage[1]);
+    this.d.a(this.b);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager
  * JD-Core Version:    0.7.0.1
  */

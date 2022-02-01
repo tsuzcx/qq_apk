@@ -6,54 +6,47 @@ import java.util.List;
 
 public class ReadInJoyRequestParams$Request0x68bParams
 {
+  public int A;
+  public boolean B;
+  public LebaKDCellInfo C;
+  public int D;
+  public List<InsertArticleInfo> E = new ArrayList();
+  public int F = 1;
+  public int G = 0;
+  public Bundle H;
+  public ReadUnRead I = null;
+  public List<ReadInJoyRequestParams.PkgInstallInfo> J;
+  public PositionData K;
   public int a;
-  public long a;
-  public Bundle a;
-  public LebaKDCellInfo a;
-  public PositionData a;
-  public ReadUnRead a = null;
-  public String a;
-  public List<Long> a;
-  public boolean a;
-  public byte[] a;
   public int b;
-  public long b;
-  public String b;
-  public List<Long> b;
-  public boolean b;
-  public byte[] b;
-  public int c;
   public long c;
-  public String c;
-  public List<InsertArticleInfo> c;
-  public boolean c;
-  public int d;
   public long d;
-  public List<ReadInJoyRequestParams.PkgInstallInfo> d;
-  public boolean d;
-  public int e = 1;
-  public long e;
   public boolean e;
-  public int f;
   public boolean f;
-  public int g;
-  public boolean g;
-  public int h;
-  public boolean h = false;
-  public int i = 1;
-  public boolean i;
-  public int j = 0;
-  
-  public ReadInJoyRequestParams$Request0x68bParams()
-  {
-    this.jdField_c_of_type_Int = 1;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<Long> g;
+  public boolean h;
+  public List<Long> i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public byte[] m;
+  public boolean n;
+  public byte[] o;
+  public int p = 1;
+  public long q = -1L;
+  public int r;
+  public String s;
+  public String t;
+  public long u;
+  public long v;
+  public int w = 1;
+  public String x;
+  public int y;
+  public boolean z = false;
   
   public static int a(InsertArticleInfo paramInsertArticleInfo)
   {
-    if (paramInsertArticleInfo.a == 13) {
+    if (paramInsertArticleInfo.b == 13) {
       return 11;
     }
     return 1;
@@ -61,7 +54,7 @@ public class ReadInJoyRequestParams$Request0x68bParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyRequestParams.Request0x68bParams
  * JD-Core Version:    0.7.0.1
  */

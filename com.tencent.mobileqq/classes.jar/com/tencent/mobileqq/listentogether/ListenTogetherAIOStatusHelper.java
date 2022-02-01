@@ -37,7 +37,7 @@ public class ListenTogetherAIOStatusHelper
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       if (paramQQAppInterface != null)
       {
-        paramString = paramQQAppInterface.b(paramString);
+        paramString = paramQQAppInterface.f(paramString);
         if (paramString != null)
         {
           paramString.setIsListenTogether(paramBoolean);
@@ -96,11 +96,11 @@ public class ListenTogetherAIOStatusHelper
       FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
       if (localFriendsManager != null)
       {
-        Friends localFriends = localFriendsManager.e(paramString);
+        Friends localFriends = localFriendsManager.m(paramString);
         if ((localFriends == null) || (!localFriends.isFriend())) {
           paramBoolean = false;
         }
-        localObject2 = localFriendsManager.a(paramString);
+        localObject2 = localFriendsManager.x(paramString);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
@@ -137,7 +137,7 @@ public class ListenTogetherAIOStatusHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherAIOStatusHelper
  * JD-Core Version:    0.7.0.1
  */

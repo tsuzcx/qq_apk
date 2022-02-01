@@ -8,7 +8,7 @@ public class StoryPlayerCommentDialog
   extends ReportDialog
 {
   public StoryInputBarView a;
-  public StoryPlayerCommentDialog.CommentDialogListener a;
+  public StoryPlayerCommentDialog.CommentDialogListener b;
   
   public void show()
   {

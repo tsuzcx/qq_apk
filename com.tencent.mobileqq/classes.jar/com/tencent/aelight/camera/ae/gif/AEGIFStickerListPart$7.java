@@ -14,7 +14,7 @@ import com.tencent.aelight.camera.ae.gif.giftext.adapter.AEGIFStickerAdapter;
 import com.tencent.aelight.camera.ae.mode.AEVideoStoryCaptureModeViewModel;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.ae.report.AEBaseReportParam;
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator;
+import com.tencent.mobileqq.widget.SimpleSlidingIndicator;
 import java.util.List;
 
 class AEGIFStickerListPart$7
@@ -29,7 +29,7 @@ class AEGIFStickerListPart$7
       if (!paramBoolean.booleanValue()) {
         return;
       }
-      AEGIFStickerListPart.b(this.a);
+      AEGIFStickerListPart.m(this.a);
       paramBoolean = AEGifMaterialManager.a().a(2);
       if (paramBoolean.size() > 0)
       {
@@ -50,38 +50,38 @@ class AEGIFStickerListPart$7
           }
         }
         AEGIFStickerListPart.b(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).categoryId);
-        AEGIFStickerListPart.a(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).fontId);
-        if (AEGIFStickerListPart.b(this.a))
+        AEGIFStickerListPart.c(this.a, ((AEGifCategoryWrapper)paramBoolean.get(i)).fontId);
+        if (AEGIFStickerListPart.n(this.a))
         {
-          if ((i == 0) && (j == 0) && (!AEGIFStickerListPart.c(this.a))) {
-            Toast.makeText(AEGIFStickerListPart.a(this.a).a(), 2064515088, 1).show();
+          if ((i == 0) && (j == 0) && (!AEGIFStickerListPart.o(this.a))) {
+            Toast.makeText(AEGIFStickerListPart.e(this.a).s(), 2064187418, 1).show();
           }
           AEGIFStickerListPart.a(this.a, true);
         }
-        AEGIFStickerListPart.b(this.a).clear();
-        AEGIFStickerListPart.b(this.a).addAll(paramBoolean);
+        AEGIFStickerListPart.l(this.a).clear();
+        AEGIFStickerListPart.l(this.a).addAll(paramBoolean);
         localObject = this.a;
         AEGIFStickerListPart.a((AEGIFStickerListPart)localObject, AEGIFStickerListPart.b((AEGIFStickerListPart)localObject, paramBoolean));
-        AEGIFStickerListPart.a(this.a).setTabData((String[])AEGIFStickerListPart.a(this.a).first, (int[])AEGIFStickerListPart.a(this.a).second);
+        AEGIFStickerListPart.a(this.a).setTabData((String[])AEGIFStickerListPart.p(this.a).first, (int[])AEGIFStickerListPart.p(this.a).second);
         AEGIFStickerListPart.a(this.a).post(new AEGIFStickerListPart.7.1(this, i));
-        AEGIFStickerListPart.a(this.a).clear();
-        AEGIFStickerListPart.a(this.a).addAll(((AEGifCategoryWrapper)AEGIFStickerListPart.b(this.a).get(i)).materialWrapperList);
-        AEGIFStickerListPart.a(this.a).notifyDataSetChanged();
-        AEGIFStickerListPart.a(this.a).post(new AEGIFStickerListPart.7.2(this, j));
-        paramBoolean = (AEMaterialWrapper)((AEGifCategoryWrapper)AEGIFStickerListPart.b(this.a).get(i)).materialWrapperList.get(j);
-        if (paramBoolean.b == 1) {
+        AEGIFStickerListPart.h(this.a).clear();
+        AEGIFStickerListPart.h(this.a).addAll(((AEGifCategoryWrapper)AEGIFStickerListPart.l(this.a).get(i)).materialWrapperList);
+        AEGIFStickerListPart.i(this.a).notifyDataSetChanged();
+        AEGIFStickerListPart.b(this.a).post(new AEGIFStickerListPart.7.2(this, j));
+        paramBoolean = (AEMaterialWrapper)((AEGifCategoryWrapper)AEGIFStickerListPart.l(this.a).get(i)).materialWrapperList.get(j);
+        if (paramBoolean.g == 1) {
           AEGIFStickerListPart.a(this.a, null);
         } else {
           AEGIFStickerListPart.a(this.a, paramBoolean);
         }
-        if ((TextUtils.isEmpty(AEGIFStickerListPart.a(this.a))) && (i == 0))
+        if ((TextUtils.isEmpty(AEGIFStickerListPart.d(this.a))) && (i == 0))
         {
           paramBoolean = this.a;
-          AEGIFStickerListPart.c(paramBoolean, ((AEGifCategoryWrapper)AEGIFStickerListPart.b(paramBoolean).get(i)).categoryId);
-          if ((AEGIFStickerListPart.a(this.a) != null) && (AEGIFStickerListPart.a(this.a).a()))
+          AEGIFStickerListPart.d(paramBoolean, ((AEGifCategoryWrapper)AEGIFStickerListPart.l(paramBoolean).get(i)).categoryId);
+          if ((AEGIFStickerListPart.f(this.a) != null) && (AEGIFStickerListPart.f(this.a).a()))
           {
-            AEBaseReportParam.a().s(AEGIFStickerListPart.a(this.a));
-            AEBaseDataReporter.a().am();
+            AEBaseReportParam.a().D(AEGIFStickerListPart.d(this.a));
+            AEBaseDataReporter.a().ar();
           }
         }
       }
@@ -90,7 +90,7 @@ class AEGIFStickerListPart$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.AEGIFStickerListPart.7
  * JD-Core Version:    0.7.0.1
  */

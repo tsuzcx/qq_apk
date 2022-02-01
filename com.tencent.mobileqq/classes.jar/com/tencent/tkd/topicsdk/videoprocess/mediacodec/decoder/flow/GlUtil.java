@@ -192,12 +192,6 @@ public class GlUtil
     //   51	65	237	java/io/IOException
   }
   
-  public static void a(int paramInt)
-  {
-    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
-    a("glDeleteTextures");
-  }
-  
   public static void a(String paramString)
   {
     int i = GLES20.glGetError();
@@ -210,10 +204,16 @@ public class GlUtil
       TLog.d("FlowEdit_GlUtil", localStringBuilder.toString());
     }
   }
+  
+  public static void b(int paramInt)
+  {
+    GLES20.glDeleteTextures(1, new int[] { paramInt }, 0);
+    a("glDeleteTextures");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.decoder.flow.GlUtil
  * JD-Core Version:    0.7.0.1
  */

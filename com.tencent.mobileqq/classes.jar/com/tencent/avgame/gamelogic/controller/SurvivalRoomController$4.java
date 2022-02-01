@@ -12,7 +12,7 @@ class SurvivalRoomController$4
   
   public void run()
   {
-    boolean bool = IAVGameBusinessCtrl.a().c();
+    boolean bool = IAVGameBusinessCtrl.p().g();
     AVGamePerfReporter localAVGamePerfReporter = AVGamePerfReporter.a();
     int i;
     if (bool) {
@@ -20,7 +20,7 @@ class SurvivalRoomController$4
     } else {
       i = 2;
     }
-    localAVGamePerfReporter.a(i, IGameEngine.a().a().a(), IGameEngine.a().a().b(), System.currentTimeMillis() - this.a);
+    localAVGamePerfReporter.a(i, IGameEngine.I().s().i(), IGameEngine.I().s().n(), System.currentTimeMillis() - this.a);
   }
 }
 

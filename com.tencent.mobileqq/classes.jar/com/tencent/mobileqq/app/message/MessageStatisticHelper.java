@@ -15,26 +15,26 @@ import java.util.Random;
 
 public class MessageStatisticHelper
 {
-  private static List<MessageStatisticHelper.DelayMsgReportItem> jdField_a_of_type_JavaUtilList = new ArrayList(32);
-  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private static Random a = new Random();
+  private static List<MessageStatisticHelper.DelayMsgReportItem> b = new ArrayList(32);
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaUtilList)
+    synchronized (b)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = b.iterator();
       while (localIterator.hasNext())
       {
         MessageStatisticHelper.DelayMsgReportItem localDelayMsgReportItem = (MessageStatisticHelper.DelayMsgReportItem)localIterator.next();
         HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", String.valueOf(localDelayMsgReportItem.jdField_a_of_type_Int));
+        localHashMap.put("param_FailCode", String.valueOf(localDelayMsgReportItem.a));
         localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-        localHashMap.put("msgType", String.valueOf(localDelayMsgReportItem.b));
-        localHashMap.put("uinType", String.valueOf(localDelayMsgReportItem.c));
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(localDelayMsgReportItem.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localDelayMsgReportItem.jdField_a_of_type_Long, 0L, localHashMap, "");
+        localHashMap.put("msgType", String.valueOf(localDelayMsgReportItem.d));
+        localHashMap.put("uinType", String.valueOf(localDelayMsgReportItem.e));
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(localDelayMsgReportItem.b, "actBelatedMsg", false, localDelayMsgReportItem.c, 0L, localHashMap, "");
       }
-      MessageStatisticHelper.DelayMsgReportItem.a(jdField_a_of_type_JavaUtilList);
-      jdField_a_of_type_JavaUtilList.clear();
+      MessageStatisticHelper.DelayMsgReportItem.a(b);
+      b.clear();
       return;
     }
     for (;;)
@@ -75,10 +75,10 @@ public class MessageStatisticHelper
       i = 2;
     }
     paramAppInterface = MessageStatisticHelper.DelayMsgReportItem.a(i, paramAppInterface.getCurrentUin(), l, ???.msgtype, ???.istroop);
-    synchronized (jdField_a_of_type_JavaUtilList)
+    synchronized (b)
     {
-      jdField_a_of_type_JavaUtilList.add(paramAppInterface);
-      if (jdField_a_of_type_JavaUtilList.size() >= 32) {
+      b.add(paramAppInterface);
+      if (b.size() >= 32) {
         a();
       }
       return;
@@ -87,7 +87,7 @@ public class MessageStatisticHelper
   
   public static void a(String paramString, long paramLong)
   {
-    if (Math.abs(jdField_a_of_type_JavaUtilRandom.nextInt() % 10000) < 10)
+    if (Math.abs(a.nextInt() % 10000) < 10)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
@@ -97,7 +97,7 @@ public class MessageStatisticHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.MessageStatisticHelper
  * JD-Core Version:    0.7.0.1
  */

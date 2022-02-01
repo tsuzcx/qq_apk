@@ -16,12 +16,12 @@ class ConfigHandler$5
     File localFile = new File(AppConstants.PATH_SYSTEM_BACKGROUND_CONFIG);
     try
     {
-      if (HttpDownloadUtil.download(this.this$0.a, new URL(this.jdField_a_of_type_JavaLangString), localFile))
+      if (HttpDownloadUtil.download(this.this$0.c, new URL(this.a), localFile))
       {
-        this.this$0.notifyUI(1, true, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+        this.this$0.notifyUI(1, true, this.b);
         return;
       }
-      this.this$0.notifyUI(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+      this.this$0.notifyUI(1, false, this.b);
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -29,12 +29,12 @@ class ConfigHandler$5
       label64:
       break label64;
     }
-    this.this$0.notifyUI(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+    this.this$0.notifyUI(1, false, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.5
  * JD-Core Version:    0.7.0.1
  */

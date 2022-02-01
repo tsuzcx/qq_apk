@@ -10,14 +10,14 @@ public class LiteLiveSDKFactory
   public static ILiveSDK a()
   {
     if (BaseApplicationImpl.getApplication().getQQProcessName().equals("com.tencent.mobileqq")) {
-      return LiteSDKForCrossProcess.a();
+      return LiteSDKForCrossProcess.f();
     }
-    return LiteSDKForImmutableProcess.a();
+    return LiteSDKForImmutableProcess.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.LiteLiveSDKFactory
  * JD-Core Version:    0.7.0.1
  */

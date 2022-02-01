@@ -9,20 +9,20 @@ import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
 public class TextItem$TextViewHolder
   extends EditorViewHolderManager.EditViewHolderBase<TextInfo>
 {
-  public TextWatcher a;
-  public EditText a;
   public TextView a;
+  public EditText b;
+  public TextWatcher c;
   
   public TextItem$TextViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378624));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131366088));
+    this.a = ((TextView)paramView.findViewById(2131447263));
+    this.b = ((EditText)paramView.findViewById(2131432368));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder
  * JD-Core Version:    0.7.0.1
  */

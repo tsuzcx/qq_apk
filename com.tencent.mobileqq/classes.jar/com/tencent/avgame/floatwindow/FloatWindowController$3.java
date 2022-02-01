@@ -13,15 +13,15 @@ class FloatWindowController$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    if (!this.a.isFinishing())
     {
-      Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+      Activity localActivity = this.a;
       if ((localActivity instanceof IAVGameRootContainer))
       {
         ((IAVGameRootContainer)localActivity).notifyExitGamed();
-        IGameEngine.a().f();
-        IGameEngine.a().a(false, 1);
-        this.jdField_a_of_type_AndroidAppActivity.finish();
+        IGameEngine.I().w();
+        IGameEngine.I().a(false, 1);
+        this.a.finish();
         return;
       }
     }

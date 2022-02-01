@@ -13,34 +13,21 @@ import java.lang.reflect.Method;
 
 public class ImmersionBar
 {
-  private int jdField_a_of_type_Int;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private View jdField_a_of_type_AndroidViewView;
-  private Window jdField_a_of_type_AndroidViewWindow;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private Activity a;
+  private Window b;
+  private View c;
+  private boolean d;
+  private int e;
+  private int f;
   
   public ImmersionBar(Activity paramActivity, int paramInt, View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewWindow = this.jdField_a_of_type_AndroidAppActivity.getWindow();
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = 0;
+    this.a = paramActivity;
+    this.b = this.a.getWindow();
+    this.c = paramView;
+    this.e = paramInt;
+    this.f = 0;
     a(paramInt);
-  }
-  
-  private int a(int paramInt)
-  {
-    int i = paramInt;
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      i = paramInt;
-      if (this.jdField_a_of_type_Boolean) {
-        i = paramInt | 0x2000;
-      }
-    }
-    return i;
   }
   
   private void a(int paramInt)
@@ -56,27 +43,27 @@ public class ImmersionBar
           boolean bool2 = false;
           if ((j >= 21) && (!OSUtils.isEMUI3_1()))
           {
-            if (this.jdField_a_of_type_AndroidViewView != null) {
+            if (this.c != null) {
               i = 1280;
             }
-            i = a(i);
-            this.jdField_a_of_type_AndroidViewWindow.clearFlags(67108864);
-            this.jdField_a_of_type_AndroidViewWindow.addFlags(-2147483648);
-            this.jdField_a_of_type_AndroidViewWindow.setStatusBarColor(0);
+            i = b(i);
+            this.b.clearFlags(67108864);
+            this.b.addFlags(-2147483648);
+            this.b.setStatusBarColor(0);
           }
           else
           {
-            this.jdField_a_of_type_AndroidViewWindow.addFlags(4194304);
+            this.b.addFlags(4194304);
           }
-          this.jdField_a_of_type_AndroidViewWindow.getDecorView().setSystemUiVisibility(i);
+          this.b.getDecorView().setSystemUiVisibility(i);
           if (Build.VERSION.SDK_INT < 24) {
             break label156;
           }
-          bool2 = this.jdField_a_of_type_AndroidAppActivity.isInMultiWindowMode();
-          bool1 = this.jdField_a_of_type_AndroidAppActivity.isInPictureInPictureMode();
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (!bool2) && (!bool1))
+          bool2 = this.a.isInMultiWindowMode();
+          bool1 = this.a.isInPictureInPictureMode();
+          if ((this.c != null) && (!bool2) && (!bool1))
           {
-            b(paramInt);
+            c(paramInt);
             return;
           }
         }
@@ -121,34 +108,47 @@ public class ImmersionBar
     return (OSUtils.isMIUI6More()) || (OSUtils.isFlymeOS4More()) || (Build.VERSION.SDK_INT >= 23);
   }
   
-  private void b(int paramInt)
+  private int b(int paramInt)
   {
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.height = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    int i = this.b;
+    int i = paramInt;
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      i = paramInt;
+      if (this.d) {
+        i = paramInt | 0x2000;
+      }
+    }
+    return i;
+  }
+  
+  private void c(int paramInt)
+  {
+    ViewGroup.LayoutParams localLayoutParams = this.c.getLayoutParams();
+    localLayoutParams.height = ImmersiveUtils.getStatusBarHeight(this.a);
+    this.c.setLayoutParams(localLayoutParams);
+    int i = this.f;
     if (i != 0)
     {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(i);
+      this.c.setBackgroundResource(i);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(paramInt);
+    this.c.setBackgroundColor(paramInt);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     try
     {
       if (a())
       {
-        a(this.jdField_a_of_type_Int);
+        a(this.e);
         if (OSUtils.isMIUI6More()) {
-          a(this.jdField_a_of_type_AndroidViewWindow, paramBoolean);
+          a(this.b, paramBoolean);
         }
         if (OSUtils.isFlymeOS4More())
         {
-          FlymeOSStatusBarFontUtils.a(this.jdField_a_of_type_AndroidAppActivity, paramBoolean);
+          FlymeOSStatusBarFontUtils.a(this.a, paramBoolean);
           return;
         }
       }
@@ -161,7 +161,7 @@ public class ImmersionBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.widget.ImmersionBar
  * JD-Core Version:    0.7.0.1
  */

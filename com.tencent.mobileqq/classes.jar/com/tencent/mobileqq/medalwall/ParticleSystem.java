@@ -17,50 +17,49 @@ import java.util.ArrayList;
 public class ParticleSystem
   implements ValueAnimator.AnimatorUpdateListener
 {
-  protected float a;
-  private final int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   protected Paint a;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private View jdField_a_of_type_AndroidViewView;
-  private final ArrayList<ParticleSystem.Particle> jdField_a_of_type_JavaUtilArrayList;
-  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-  private float jdField_b_of_type_Float = 0.0005F;
-  private final int jdField_b_of_type_Int;
-  private final ArrayList<ParticleSystem.Particle> jdField_b_of_type_JavaUtilArrayList;
-  private int jdField_c_of_type_Int;
-  private final ArrayList<ParticleSystem.Particle> jdField_c_of_type_JavaUtilArrayList;
-  private int d;
-  private int e;
-  private int f = 60;
-  private int g = 35;
-  private int h = 160;
-  private int i = 20;
-  private int j = 150;
+  protected float b = 1.0F;
+  private final int c;
+  private final int d;
+  private final ArrayList<ParticleSystem.Particle> e;
+  private final ArrayList<ParticleSystem.Particle> f;
+  private final ArrayList<ParticleSystem.Particle> g;
+  private int h;
+  private int i;
+  private int j;
+  private long k;
+  private Bitmap[] l;
+  private float m = 0.0005F;
+  private int n = 60;
+  private int o = 35;
+  private int p = 160;
+  private int q = 20;
+  private int r = 150;
+  private final Rect s = new Rect();
+  private ValueAnimator t;
+  private View u;
   
   public ParticleSystem(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    paramView = this.jdField_a_of_type_AndroidViewView.getResources();
+    this.u = paramView;
+    this.a = new Paint();
+    paramView = this.u.getResources();
     float f1 = paramView.getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2);
-    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(150);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = new ArrayList(this.d / 2);
+    if ((this.c & 0x1) == 1) {
+      this.g = new ArrayList(150);
     } else {
-      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(1);
+      this.g = new ArrayList(1);
     }
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 3);
+    this.f = new ArrayList(this.d / 3);
     paramInt1 = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[paramArrayOfInt.length];
+    this.h = 0;
+    this.l = new Bitmap[paramArrayOfInt.length];
     for (;;)
     {
-      Bitmap[] arrayOfBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+      Bitmap[] arrayOfBitmap = this.l;
       if (paramInt1 >= arrayOfBitmap.length) {
         break;
       }
@@ -74,11 +73,11 @@ public class ParticleSystem
       }
       paramInt1 += 1;
     }
-    this.f = ((int)(this.f * f1));
-    this.g = ((int)(this.g * f1));
-    this.h = ((int)(this.h * f1));
-    this.i = ((int)(this.i * f1));
-    this.j = ((int)(f1 * this.j));
+    this.n = ((int)(this.n * f1));
+    this.o = ((int)(this.o * f1));
+    this.p = ((int)(this.p * f1));
+    this.q = ((int)(this.q * f1));
+    this.r = ((int)(f1 * this.r));
   }
   
   public static double a(double paramDouble1, double paramDouble2)
@@ -88,75 +87,75 @@ public class ParticleSystem
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    if (this.t == null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
+      this.t = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(1000L);
+      this.t.setRepeatCount(-1);
     }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    this.t.addUpdateListener(this);
+    this.t.start();
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
   }
   
   public void a(float paramFloat1, float paramFloat2, ParticleSystem.Particle paramParticle)
   {
     if (paramParticle != null)
     {
-      double d1 = a(this.i, this.j);
+      double d1 = a(this.q, this.r);
       double d3 = a(0.0D, 6.283185307179586D);
       double d2 = Math.cos(d3);
       d3 = Math.sin(d3);
       double d4 = Math.random();
-      double d5 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
+      double d5 = this.l.length;
       Double.isNaN(d5);
-      int k = (int)(d4 * d5);
+      int i1 = (int)(d4 * d5);
       d4 = paramFloat1;
       Double.isNaN(d4);
-      paramParticle.jdField_a_of_type_Float = ((float)(d2 * d1 + d4));
+      paramParticle.d = ((float)(d2 * d1 + d4));
       d4 = paramFloat2;
       Double.isNaN(d4);
-      paramParticle.jdField_b_of_type_Float = ((float)(d1 * d3 + d4));
-      paramParticle.jdField_c_of_type_Float = ((float)(d2 * a(5.0D, 10.0D)));
-      paramParticle.jdField_d_of_type_Float = ((float)(d3 * a(5.0D, 10.0D)));
-      paramParticle.jdField_c_of_type_Int = k;
-      paramParticle.jdField_d_of_type_Int = ((int)a(this.g, this.f));
-      paramParticle.e = ((float)a(0.9800000190734863D, 0.9900000095367432D));
-      paramParticle.f = ((float)a(0.5D, 1.0D));
-      paramParticle.g = ((float)a(0.9800000190734863D, 0.9900000095367432D));
+      paramParticle.e = ((float)(d1 * d3 + d4));
+      paramParticle.f = ((float)(d2 * a(5.0D, 10.0D)));
+      paramParticle.g = ((float)(d3 * a(5.0D, 10.0D)));
+      paramParticle.h = i1;
+      paramParticle.i = ((int)a(this.o, this.n));
+      paramParticle.j = ((float)a(0.9800000190734863D, 0.9900000095367432D));
+      paramParticle.k = ((float)a(0.5D, 1.0D));
+      paramParticle.l = ((float)a(0.9800000190734863D, 0.9900000095367432D));
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_d_of_type_Int = paramInt1;
-    this.e = paramInt2;
-    this.h = ((int)(Math.min(this.jdField_d_of_type_Int, this.e) * 0.4F));
-    paramInt1 = this.h;
-    this.i = ((int)(paramInt1 * 0.6F));
-    this.j = ((int)(paramInt1 * 0.8F));
+    this.i = paramInt1;
+    this.j = paramInt2;
+    this.p = ((int)(Math.min(this.i, this.j) * 0.4F));
+    paramInt1 = this.p;
+    this.q = ((int)(paramInt1 * 0.6F));
+    this.r = ((int)(paramInt1 * 0.8F));
     paramInt2 = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_c_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    if ((this.jdField_a_of_type_Int & 0x1) == 1)
+    this.h = 0;
+    this.e.clear();
+    this.g.clear();
+    this.f.clear();
+    if ((this.c & 0x1) == 1)
     {
-      float f1 = this.jdField_d_of_type_Int;
-      float f2 = this.e;
+      float f1 = this.i;
+      float f2 = this.j;
       paramInt1 = 0;
       while (paramInt1 < 150)
       {
         ParticleSystem.Particle localParticle = new ParticleSystem.Particle();
         a(f1 * 0.5F, f2 * 0.4F, localParticle);
-        this.jdField_c_of_type_JavaUtilArrayList.add(localParticle);
+        this.g.add(localParticle);
         paramInt1 += 1;
       }
     }
-    if ((this.jdField_a_of_type_Int & 0x2) == 2)
+    if ((this.c & 0x2) == 2)
     {
       paramInt1 = paramInt2;
       while (paramInt1 < 40)
@@ -170,53 +169,53 @@ public class ParticleSystem
   
   public void a(Canvas paramCanvas)
   {
-    int k = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
-    while (k >= 0)
+    int i1 = this.g.size() - 1;
+    while (i1 >= 0)
     {
-      localObject = (ParticleSystem.Particle)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+      localObject = (ParticleSystem.Particle)this.g.get(i1);
       if (!a((ParticleSystem.Particle)localObject))
       {
-        this.jdField_c_of_type_JavaUtilArrayList.remove(k);
-        if ((localObject != null) && (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int))
+        this.g.remove(i1);
+        if ((localObject != null) && (this.h < this.d))
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-          this.jdField_c_of_type_Int += 1;
+          this.e.add(localObject);
+          this.h += 1;
         }
       }
-      k -= 1;
+      i1 -= 1;
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-    k = 0;
-    while (k < this.jdField_c_of_type_JavaUtilArrayList.size())
+    Object localObject = this.s;
+    i1 = 0;
+    while (i1 < this.g.size())
     {
-      ParticleSystem.Particle localParticle = (ParticleSystem.Particle)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+      ParticleSystem.Particle localParticle = (ParticleSystem.Particle)this.g.get(i1);
       if (localParticle != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * localParticle.f * 2.0F * 255.0F) % 256);
-        ((Rect)localObject).left = ((int)(localParticle.jdField_a_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F));
-        ((Rect)localObject).top = ((int)(localParticle.jdField_b_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F));
-        ((Rect)localObject).bottom = (((Rect)localObject).top + localParticle.jdField_d_of_type_Int);
-        ((Rect)localObject).right = (((Rect)localObject).left + localParticle.jdField_d_of_type_Int);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localParticle.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
-        localParticle.jdField_a_of_type_Float += localParticle.jdField_c_of_type_Float;
-        localParticle.jdField_b_of_type_Float += localParticle.jdField_d_of_type_Float;
-        localParticle.jdField_c_of_type_Float *= 0.98F;
-        localParticle.jdField_d_of_type_Float = (localParticle.jdField_d_of_type_Float * 0.98F + this.jdField_b_of_type_Float);
-        localParticle.f *= localParticle.g;
+        this.a.setAlpha((int)(this.b * localParticle.k * 2.0F * 255.0F) % 256);
+        ((Rect)localObject).left = ((int)(localParticle.d - localParticle.i * 0.5F));
+        ((Rect)localObject).top = ((int)(localParticle.e - localParticle.i * 0.5F));
+        ((Rect)localObject).bottom = (((Rect)localObject).top + localParticle.i);
+        ((Rect)localObject).right = (((Rect)localObject).left + localParticle.i);
+        paramCanvas.drawBitmap(this.l[localParticle.h], null, (Rect)localObject, this.a);
+        localParticle.d += localParticle.f;
+        localParticle.e += localParticle.g;
+        localParticle.f *= 0.98F;
+        localParticle.g = (localParticle.g * 0.98F + this.m);
+        localParticle.k *= localParticle.l;
       }
-      k += 1;
+      i1 += 1;
     }
   }
   
   public void a(Canvas paramCanvas, int paramInt)
   {
-    if (this.jdField_a_of_type_Float <= 0.05F) {
+    if (this.b <= 0.05F) {
       return;
     }
-    if ((paramInt == 1) && ((this.jdField_a_of_type_Int & 0x1) == 1) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0)) {
+    if ((paramInt == 1) && ((this.c & 0x1) == 1) && (this.g.size() > 0)) {
       a(paramCanvas);
     }
-    if ((paramInt == 2) && ((this.jdField_a_of_type_Int & 0x2) == 2)) {
+    if ((paramInt == 2) && ((this.c & 0x2) == 2)) {
       b(paramCanvas);
     }
   }
@@ -227,22 +226,22 @@ public class ParticleSystem
     if (paramParticle == null) {
       return false;
     }
-    if (paramParticle.jdField_d_of_type_Int < 1) {
+    if (paramParticle.i < 1) {
       return false;
     }
-    if (paramParticle.f <= 0.05F) {
+    if (paramParticle.k <= 0.05F) {
       return false;
     }
     boolean bool1 = bool2;
-    if (paramParticle.jdField_a_of_type_Float + paramParticle.jdField_d_of_type_Int * 0.5F >= 0.0F)
+    if (paramParticle.d + paramParticle.i * 0.5F >= 0.0F)
     {
       bool1 = bool2;
-      if (paramParticle.jdField_b_of_type_Float + paramParticle.jdField_d_of_type_Int * 0.5F >= 0.0F)
+      if (paramParticle.e + paramParticle.i * 0.5F >= 0.0F)
       {
         bool1 = bool2;
-        if (paramParticle.jdField_a_of_type_Float - paramParticle.jdField_d_of_type_Int * 0.5F <= this.jdField_d_of_type_Int)
+        if (paramParticle.d - paramParticle.i * 0.5F <= this.i)
         {
-          if (paramParticle.jdField_b_of_type_Float - paramParticle.jdField_d_of_type_Int * 0.5F > this.e) {
+          if (paramParticle.e - paramParticle.i * 0.5F > this.j) {
             return false;
           }
           bool1 = true;
@@ -254,67 +253,67 @@ public class ParticleSystem
   
   public void b()
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.t;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
+      this.t.removeUpdateListener(this);
+      this.t.removeAllUpdateListeners();
     }
   }
   
   public void b(Canvas paramCanvas)
   {
-    int k = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
-    while (k >= 0)
+    int i1 = this.f.size() - 1;
+    while (i1 >= 0)
     {
-      localObject = (ParticleSystem.Particle)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      localObject = (ParticleSystem.Particle)this.f.get(i1);
       if (!a((ParticleSystem.Particle)localObject))
       {
-        this.jdField_b_of_type_JavaUtilArrayList.remove(k);
+        this.f.remove(i1);
         if (localObject != null) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+          this.e.add(localObject);
         }
       }
-      k -= 1;
+      i1 -= 1;
     }
-    if (Math.abs(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long) > 64L)
+    if (Math.abs(SystemClock.elapsedRealtime() - this.k) > 64L)
     {
-      this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.k = SystemClock.elapsedRealtime();
       d();
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
-    k = 0;
-    while (k < this.jdField_b_of_type_JavaUtilArrayList.size())
+    Object localObject = this.s;
+    i1 = 0;
+    while (i1 < this.f.size())
     {
-      ParticleSystem.Particle localParticle = (ParticleSystem.Particle)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      ParticleSystem.Particle localParticle = (ParticleSystem.Particle)this.f.get(i1);
       if (localParticle != null)
       {
-        double d1 = Math.cos(localParticle.h);
-        double d2 = localParticle.f;
+        double d1 = Math.cos(localParticle.m);
+        double d2 = localParticle.k;
         Double.isNaN(d2);
         float f1 = (float)Math.abs(d1 * d2);
         if (f1 >= 0.01F)
         {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * f1 * 255.0F));
-          d1 = Math.cos(localParticle.k);
-          d2 = localParticle.j;
+          this.a.setAlpha((int)(this.b * f1 * 255.0F));
+          d1 = Math.cos(localParticle.p);
+          d2 = localParticle.o;
           Double.isNaN(d2);
-          double d3 = localParticle.jdField_a_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F;
+          double d3 = localParticle.d - localParticle.i * 0.5F;
           Double.isNaN(d3);
           ((Rect)localObject).left = ((int)(d3 + d1 * d2));
-          ((Rect)localObject).top = ((int)(localParticle.jdField_b_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F));
-          ((Rect)localObject).bottom = (((Rect)localObject).top + localParticle.jdField_d_of_type_Int);
-          ((Rect)localObject).right = (((Rect)localObject).left + localParticle.jdField_d_of_type_Int);
-          paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localParticle.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+          ((Rect)localObject).top = ((int)(localParticle.e - localParticle.i * 0.5F));
+          ((Rect)localObject).bottom = (((Rect)localObject).top + localParticle.i);
+          ((Rect)localObject).right = (((Rect)localObject).left + localParticle.i);
+          paramCanvas.drawBitmap(this.l[localParticle.h], null, (Rect)localObject, this.a);
         }
-        localParticle.jdField_a_of_type_Float += localParticle.jdField_c_of_type_Float;
-        localParticle.jdField_b_of_type_Float += localParticle.jdField_d_of_type_Float;
-        localParticle.f *= localParticle.g;
-        localParticle.h += localParticle.i;
-        localParticle.k += localParticle.l;
+        localParticle.d += localParticle.f;
+        localParticle.e += localParticle.g;
+        localParticle.k *= localParticle.l;
+        localParticle.m += localParticle.n;
+        localParticle.p += localParticle.q;
       }
-      k += 1;
+      i1 += 1;
     }
   }
   
@@ -324,30 +323,30 @@ public class ParticleSystem
       QLog.i("ParticleSystem", 2, "destroy");
     }
     b();
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.u = null;
   }
   
   public void d()
   {
-    int k = this.h;
-    double d2 = a(k, -k);
-    k = this.h;
-    double d1 = a(k, -k);
+    int i1 = this.p;
+    double d2 = a(i1, -i1);
+    i1 = this.p;
+    double d1 = a(i1, -i1);
     double d3 = Math.random();
-    double d4 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
+    double d4 = this.l.length;
     Double.isNaN(d4);
-    k = (int)(d3 * d4);
-    float f1 = this.jdField_d_of_type_Int;
-    float f2 = this.e;
+    i1 = (int)(d3 * d4);
+    float f1 = this.i;
+    float f2 = this.j;
     Object localObject;
-    if (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int)
+    if (this.h < this.d)
     {
       localObject = new ParticleSystem.Particle();
-      this.jdField_c_of_type_Int += 1;
+      this.h += 1;
     }
-    else if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    else if (this.e.size() > 0)
     {
-      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = this.e;
       localObject = (ParticleSystem.Particle)((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);
     }
     else
@@ -358,30 +357,30 @@ public class ParticleSystem
     {
       d3 = f1 * 0.5F;
       Double.isNaN(d3);
-      ((ParticleSystem.Particle)localObject).jdField_a_of_type_Float = ((float)(d2 + d3));
+      ((ParticleSystem.Particle)localObject).d = ((float)(d2 + d3));
       d2 = f2 * 0.4F;
       Double.isNaN(d2);
-      ((ParticleSystem.Particle)localObject).jdField_b_of_type_Float = ((float)(d1 + d2));
-      ((ParticleSystem.Particle)localObject).jdField_c_of_type_Float = 0.0F;
-      ((ParticleSystem.Particle)localObject).jdField_d_of_type_Float = ((float)a(-1.0D, -2.0D));
-      ((ParticleSystem.Particle)localObject).jdField_c_of_type_Int = k;
-      ((ParticleSystem.Particle)localObject).jdField_d_of_type_Int = ((int)a(this.g, this.f));
-      ((ParticleSystem.Particle)localObject).e = ((float)a(0.9950000047683716D, 0.9980000257492065D));
-      ((ParticleSystem.Particle)localObject).f = ((float)a(1.0D, 1.0D));
-      ((ParticleSystem.Particle)localObject).g = ((float)a(0.9900000095367432D, 0.9800000190734863D));
-      ((ParticleSystem.Particle)localObject).h = ((float)a(0.0D, 3.141592653589793D));
-      ((ParticleSystem.Particle)localObject).i = ((float)a(0.01D, 0.001D));
-      ((ParticleSystem.Particle)localObject).j = ((float)a(20.0D, 5.0D));
-      ((ParticleSystem.Particle)localObject).k = ((float)a(0.0D, 3.141592653589793D));
-      ((ParticleSystem.Particle)localObject).l = ((float)a(0.01D, 0.1D));
-      ((ParticleSystem.Particle)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
+      ((ParticleSystem.Particle)localObject).e = ((float)(d1 + d2));
+      ((ParticleSystem.Particle)localObject).f = 0.0F;
+      ((ParticleSystem.Particle)localObject).g = ((float)a(-1.0D, -2.0D));
+      ((ParticleSystem.Particle)localObject).h = i1;
+      ((ParticleSystem.Particle)localObject).i = ((int)a(this.o, this.n));
+      ((ParticleSystem.Particle)localObject).j = ((float)a(0.9950000047683716D, 0.9980000257492065D));
+      ((ParticleSystem.Particle)localObject).k = ((float)a(1.0D, 1.0D));
+      ((ParticleSystem.Particle)localObject).l = ((float)a(0.9900000095367432D, 0.9800000190734863D));
+      ((ParticleSystem.Particle)localObject).m = ((float)a(0.0D, 3.141592653589793D));
+      ((ParticleSystem.Particle)localObject).n = ((float)a(0.01D, 0.001D));
+      ((ParticleSystem.Particle)localObject).o = ((float)a(20.0D, 5.0D));
+      ((ParticleSystem.Particle)localObject).p = ((float)a(0.0D, 3.141592653589793D));
+      ((ParticleSystem.Particle)localObject).q = ((float)a(0.01D, 0.1D));
+      ((ParticleSystem.Particle)localObject).c = SystemClock.elapsedRealtime();
+      this.f.add(localObject);
     }
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView;
+    paramValueAnimator = this.u;
     if (paramValueAnimator != null) {
       paramValueAnimator.postInvalidate();
     }

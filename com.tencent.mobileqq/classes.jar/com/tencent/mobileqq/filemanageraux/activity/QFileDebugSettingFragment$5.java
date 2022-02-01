@@ -13,17 +13,17 @@ class QFileDebugSettingFragment$5
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QFileDebugSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxActivityQFileDebugSettingFragment).setHarcodeIP(paramBoolean);
-    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(paramBoolean);
+    QFileDebugSettingFragment.a(this.b).setHarcodeIP(paramBoolean);
+    this.a.setEnabled(paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+      this.a.setText("");
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

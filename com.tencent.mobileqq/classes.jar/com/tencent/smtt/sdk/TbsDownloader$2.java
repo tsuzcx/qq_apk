@@ -50,7 +50,7 @@ final class TbsDownloader$2
         if (TbsShareManager.isThirdPartyApp(TbsDownloader.a())) {
           i = TbsShareManager.a(TbsDownloader.a(), false);
         } else {
-          i = p.a().m(TbsDownloader.a());
+          i = p.a().n(TbsDownloader.a());
         }
         paramMessage = new StringBuilder();
         paramMessage.append("[TbsDownloader.handleMessage] localTbsVersion=");
@@ -164,13 +164,30 @@ final class TbsDownloader$2
       } else {
         bool2 = false;
       }
-      if (TbsDownloader.a(false, bool1, bool2, true))
+      boolean bool4 = TbsDownloader.a(false, bool1, bool2, true);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("needStartDownload is ");
+      localStringBuilder.append(bool4);
+      localStringBuilder.append(" forDecoupleCore is ");
+      if (108 == paramMessage.what) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      localStringBuilder.append(bool2);
+      TbsLog.i("TbsDownload", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("idownloadConfig.mPreferences.getBoolean(TbsConfigKey.KEY_NEEDDOWNLOAD, false) is ");
+      localStringBuilder.append(((TbsDownloadConfig)localObject3).mPreferences.getBoolean("tbs_needdownload", false));
+      TbsLog.i("TbsDownload", localStringBuilder.toString());
+      if (bool4)
       {
         if ((bool1) && (p.a().b(TbsDownloader.a(), TbsDownloadConfig.getInstance(TbsDownloader.a()).mPreferences.getInt("tbs_download_version", 0))))
         {
+          TbsLog.i("TbsDownload", "in needStartDownload true #1");
           QbSdk.m.onDownloadFinish(122);
           ((TbsDownloadConfig)localObject3).setDownloadInterruptCode(-213);
-          break label842;
+          break label968;
         }
         if (((TbsDownloadConfig)localObject3).mPreferences.getBoolean("tbs_needdownload", false))
         {
@@ -182,11 +199,11 @@ final class TbsDownloader$2
             bool2 = false;
           }
           ((l)localObject3).b(bool1, bool2);
-          break label842;
+          break label968;
         }
       }
       QbSdk.m.onDownloadFinish(110);
-      label842:
+      label968:
       TbsLog.i("TbsDownload", "------freeFileLock called :");
       FileUtil.a(localObject2, (FileOutputStream)localObject1);
     }
@@ -194,7 +211,7 @@ final class TbsDownloader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloader.2
  * JD-Core Version:    0.7.0.1
  */

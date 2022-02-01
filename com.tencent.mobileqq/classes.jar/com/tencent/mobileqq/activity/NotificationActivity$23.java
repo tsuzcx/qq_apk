@@ -21,22 +21,22 @@ class NotificationActivity$23
     {
       paramDialogInterface = new AlertReport.ButtonAction();
       paramDialogInterface.uint32_cmd.set(1);
-      paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+      paramDialogInterface.uint32_button_id.set(this.a);
       paramDialogInterface.str_package_name.set(BaseQPMiscUtils.a());
-      paramDialogInterface.uint32_app_id.set(AppSetting.a());
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.getAppRuntime(), paramDialogInterface.toByteArray(), "SecuritySvc.AlertReport");
-      ReportController.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.jdField_a_of_type_Int, 0, this.jdField_a_of_type_JavaLangString, "", "", "");
+      paramDialogInterface.uint32_app_id.set(AppSetting.d());
+      ProtoUtils.a(this.c.getAppRuntime(), paramDialogInterface.toByteArray(), "SecuritySvc.AlertReport");
+      ReportController.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007535", "0X8007535", this.a, 0, this.b, "", "", "");
     }
     catch (Exception paramDialogInterface)
     {
       paramDialogInterface.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+    this.c.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.23
  * JD-Core Version:    0.7.0.1
  */

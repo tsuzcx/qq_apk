@@ -16,29 +16,29 @@ class ReadInJoyFeedsActivity$7
   {
     if (ReadInJoyFeedsActivity.a(this.a) == 1)
     {
-      ((KandianMergeManager)this.a.app.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).b(1);
+      ((KandianMergeManager)this.a.app.getManager(QQManagerFactory.KANDIAN_MERGE_MANAGER)).c(1);
       return;
     }
     ReadInJoyFeedsActivity.b(this.a, paramInt1);
-    ((KanDianViewController)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).d();
+    ((KanDianViewController)this.a.p.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).m();
   }
   
-  public void c(int paramInt)
+  public void m_(int paramInt)
   {
     this.a.a(paramInt);
   }
   
-  public void d(int paramInt)
+  public void n_(int paramInt)
   {
     ReadInJoyFeedsActivity.a(this.a, paramInt);
     if ((paramInt > 0) && (ReadInJoyFeedsActivity.a(this.a) == 0)) {
-      ((KanDianViewController)this.a.a.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).d();
+      ((KanDianViewController)this.a.p.get(Integer.valueOf(ReadInJoyFeedsActivity.a(this.a)))).m();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.activity.ReadInJoyFeedsActivity.7
  * JD-Core Version:    0.7.0.1
  */

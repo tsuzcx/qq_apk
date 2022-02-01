@@ -41,69 +41,67 @@ import tencent.im.oidb.cmd0x6f5.TaskInfo;
 public class LocalRedTouchManager
   implements Handler.Callback, Manager
 {
-  public static Map<Integer, Integer> a;
+  public static Map<Integer, Integer> c = new HashMap(5);
   @Deprecated
-  public static final int[] a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private RedPointNode jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode;
-  RedPointPrePostHandleObserver jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointPrePostHandleObserver;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = null;
-  private Vector<RedTouchItem> jdField_a_of_type_JavaUtilVector = new Vector();
-  private ConcurrentHashMap<Integer, RedPointConfig> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getFileThreadLooper(), this);
-  boolean jdField_a_of_type_Boolean = false;
-  private ConcurrentHashMap<Integer, RedPointNode> b = new ConcurrentHashMap();
-  private ConcurrentHashMap<Integer, RedTouchItem> c = new ConcurrentHashMap();
+  public static final int[] d = { 10001 };
+  boolean a = false;
+  final Object b = new Object();
+  RedPointPrePostHandleObserver e;
+  private QQAppInterface f;
+  private MqqHandler g = new MqqHandler(ThreadManager.getFileThreadLooper(), this);
+  private String h = null;
+  private ConcurrentHashMap<Integer, RedPointConfig> i = new ConcurrentHashMap();
+  private RedPointNode j;
+  private ConcurrentHashMap<Integer, RedPointNode> k = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, RedTouchItem> l = new ConcurrentHashMap();
+  private Vector<RedTouchItem> m = new Vector();
   
   static
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap(5);
-    jdField_a_of_type_ArrayOfInt = new int[] { 10001 };
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(10005), Integer.valueOf(100601));
+    c.put(Integer.valueOf(10005), Integer.valueOf(100601));
   }
   
   public LocalRedTouchManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointPrePostHandleObserver = new DefaultRedPointPrePostHandler(paramQQAppInterface, this);
-    d();
+    this.f = paramQQAppInterface;
+    this.e = new DefaultRedPointPrePostHandler(paramQQAppInterface, this);
+    f();
   }
   
   private void a(RedTouchItem paramRedTouchItem, int paramInt)
   {
-    RedTouchItem localRedTouchItem = (RedTouchItem)this.c.get(Integer.valueOf(paramInt));
-    int i = 0;
-    int k = 0;
-    int j = 0;
+    RedTouchItem localRedTouchItem = (RedTouchItem)this.l.get(Integer.valueOf(paramInt));
+    int n = 0;
+    int i2 = 0;
+    int i1 = 0;
     if (localRedTouchItem == null)
     {
       localRedTouchItem = new RedTouchItem();
       RedTouchUtil.a(localRedTouchItem, paramRedTouchItem);
-      i = j;
+      n = i1;
       if (paramRedTouchItem.passThroughLevel - 1 >= 0) {
-        i = paramRedTouchItem.passThroughLevel - 1;
+        n = paramRedTouchItem.passThroughLevel - 1;
       }
-      localRedTouchItem.passThroughLevel = i;
-      this.c.put(Integer.valueOf(paramInt), localRedTouchItem);
+      localRedTouchItem.passThroughLevel = n;
+      this.l.put(Integer.valueOf(paramInt), localRedTouchItem);
       return;
     }
     if (localRedTouchItem.unReadFlag)
     {
-      j = RedTouchUtil.a(localRedTouchItem.redtouchType);
-      k = RedTouchUtil.a(paramRedTouchItem.redtouchType);
-      if (k > j)
+      i1 = RedTouchUtil.a(localRedTouchItem.redtouchType);
+      i2 = RedTouchUtil.a(paramRedTouchItem.redtouchType);
+      if (i2 > i1)
       {
         localRedTouchItem = new RedTouchItem();
         RedTouchUtil.a(localRedTouchItem, paramRedTouchItem);
         if (paramRedTouchItem.passThroughLevel - 1 >= 0) {
-          i = paramRedTouchItem.passThroughLevel - 1;
+          n = paramRedTouchItem.passThroughLevel - 1;
         }
-        localRedTouchItem.passThroughLevel = i;
-        this.c.put(Integer.valueOf(paramInt), localRedTouchItem);
+        localRedTouchItem.passThroughLevel = n;
+        this.l.put(Integer.valueOf(paramInt), localRedTouchItem);
         return;
       }
-      if ((k == j) && (paramRedTouchItem.redtouchType == 2)) {
+      if ((i2 == i1) && (paramRedTouchItem.redtouchType == 2)) {
         localRedTouchItem.count += paramRedTouchItem.count;
       }
     }
@@ -111,79 +109,70 @@ public class LocalRedTouchManager
     {
       localRedTouchItem = new RedTouchItem();
       RedTouchUtil.a(localRedTouchItem, paramRedTouchItem);
-      i = k;
+      n = i2;
       if (paramRedTouchItem.passThroughLevel - 1 >= 0) {
-        i = paramRedTouchItem.passThroughLevel - 1;
+        n = paramRedTouchItem.passThroughLevel - 1;
       }
-      localRedTouchItem.passThroughLevel = i;
-      this.c.put(Integer.valueOf(paramInt), localRedTouchItem);
+      localRedTouchItem.passThroughLevel = n;
+      this.l.put(Integer.valueOf(paramInt), localRedTouchItem);
     }
   }
   
-  private void a(RedTouchItem paramRedTouchItem, boolean paramBoolean)
+  private void b(RedTouchItem paramRedTouchItem, boolean paramBoolean)
   {
     boolean bool = QLog.isColorLevel();
-    int j = 1;
+    int i1 = 1;
     if (bool) {
       QLog.d("LocalRedTouchManager", 2, String.format(Locale.getDefault(), "handleRedPoint item=%s saveToFile=%s", new Object[] { paramRedTouchItem, Boolean.valueOf(paramBoolean) }));
     }
-    RedPointConfig localRedPointConfig1 = (RedPointConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramRedTouchItem.taskId));
+    RedPointConfig localRedPointConfig1 = (RedPointConfig)this.i.get(Integer.valueOf(paramRedTouchItem.taskId));
     if (localRedPointConfig1 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointPrePostHandleObserver.a(paramRedTouchItem, localRedPointConfig1.redPointId);
+      this.e.a(paramRedTouchItem, localRedPointConfig1.redPointId);
       RedTouchItem localRedTouchItem = a(localRedPointConfig1.redPointId);
-      int i = j;
+      int n = i1;
       if (localRedTouchItem != null)
       {
-        RedPointConfig localRedPointConfig2 = (RedPointConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(localRedTouchItem.taskId));
-        i = j;
+        RedPointConfig localRedPointConfig2 = (RedPointConfig)this.i.get(Integer.valueOf(localRedTouchItem.taskId));
+        n = i1;
         if (localRedPointConfig2 != null)
         {
-          i = j;
+          n = i1;
           if (localRedPointConfig2.priority > localRedPointConfig1.priority)
           {
-            i = j;
+            n = i1;
             if (localRedTouchItem.unReadFlag)
             {
               if (QLog.isColorLevel()) {
                 QLog.i("LocalRedTouchManager", 2, "handleRedPoint, ignore lower priority");
               }
-              i = 0;
+              n = 0;
             }
           }
         }
       }
-      if (i == 0) {
+      if (n == 0) {
         return;
       }
-      if (this.b.containsKey(Integer.valueOf(localRedPointConfig1.redPointId)))
+      if (this.k.containsKey(Integer.valueOf(localRedPointConfig1.redPointId)))
       {
-        localRedTouchItem = (RedTouchItem)this.c.get(Integer.valueOf(localRedPointConfig1.redPointId));
+        localRedTouchItem = (RedTouchItem)this.l.get(Integer.valueOf(localRedPointConfig1.redPointId));
         if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (localRedTouchItem.redtouchType == 2) && (paramRedTouchItem.redtouchType == 2)) {
           paramRedTouchItem.count += localRedTouchItem.count;
         }
         paramRedTouchItem.passThroughLevel = localRedPointConfig1.passThroughLevel;
-        this.c.put(Integer.valueOf(localRedPointConfig1.redPointId), paramRedTouchItem);
-        e(localRedPointConfig1.redPointId);
+        this.l.put(Integer.valueOf(localRedPointConfig1.redPointId), paramRedTouchItem);
+        f(localRedPointConfig1.redPointId);
         if (paramBoolean) {
-          c();
+          e();
         }
       }
-    }
-  }
-  
-  private boolean a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
     }
   }
   
   private boolean c(RedTouchItem paramRedTouchItem)
   {
-    long l = System.currentTimeMillis();
+    long l1 = System.currentTimeMillis();
     if ((paramRedTouchItem != null) && (paramRedTouchItem.unReadFlag))
     {
       if (paramRedTouchItem.isClosed) {
@@ -196,26 +185,26 @@ public class LocalRedTouchManager
         }
         return false;
       }
-      int i = (int)((l - paramRedTouchItem.receiveTime) / 1000L);
+      int n = (int)((l1 - paramRedTouchItem.receiveTime) / 1000L);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("isOutOfDate,remain:");
         localStringBuilder.append(paramRedTouchItem.validTimeRemained);
         localStringBuilder.append(" consume:");
-        localStringBuilder.append(i);
+        localStringBuilder.append(n);
         QLog.i("LocalRedTouchManager", 2, localStringBuilder.toString());
       }
-      if (i >= paramRedTouchItem.validTimeRemained)
+      if (n >= paramRedTouchItem.validTimeRemained)
       {
         if (paramRedTouchItem.unReadFlag)
         {
           paramRedTouchItem.unReadFlag = false;
-          paramRedTouchItem = (RedPointConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramRedTouchItem.taskId));
+          paramRedTouchItem = (RedPointConfig)this.i.get(Integer.valueOf(paramRedTouchItem.taskId));
           if (paramRedTouchItem != null) {
-            e(paramRedTouchItem.redPointId);
+            f(paramRedTouchItem.redPointId);
           }
-          c();
+          e();
         }
         return true;
       }
@@ -224,173 +213,216 @@ public class LocalRedTouchManager
     return true;
   }
   
-  private void d()
+  private void f()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = new RedPointNode();
-    RedPointNode localRedPointNode1 = this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode;
-    localRedPointNode1.jdField_a_of_type_Int = -1;
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode);
+    this.j = new RedPointNode();
+    RedPointNode localRedPointNode1 = this.j;
+    localRedPointNode1.a = -1;
+    this.k.put(Integer.valueOf(localRedPointNode1.a), this.j);
     localRedPointNode1 = new RedPointNode();
-    localRedPointNode1.jdField_a_of_type_Int = 10018;
-    localRedPointNode1.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode;
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), localRedPointNode1);
+    localRedPointNode1.a = 10018;
+    localRedPointNode1.b = this.j;
+    this.k.put(Integer.valueOf(localRedPointNode1.a), localRedPointNode1);
     localRedPointNode1 = new RedPointNode();
-    localRedPointNode1.jdField_a_of_type_Int = -3;
-    localRedPointNode1.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode;
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), localRedPointNode1);
-    localRedPointNode1.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localRedPointNode1.a = -3;
+    localRedPointNode1.b = this.j;
+    this.k.put(Integer.valueOf(localRedPointNode1.a), localRedPointNode1);
+    localRedPointNode1.c = new ArrayList();
     Object localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = -7;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode1;
-    localRedPointNode1.jdField_a_of_type_JavaUtilList.add(localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_JavaUtilList = new ArrayList();
+    ((RedPointNode)localObject1).a = -7;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    ((RedPointNode)localObject1).b = localRedPointNode1;
+    localRedPointNode1.c.add(localObject1);
+    ((RedPointNode)localObject1).c = new ArrayList();
     RedPointNode localRedPointNode2 = new RedPointNode();
-    localRedPointNode2.jdField_a_of_type_Int = -4;
-    this.b.put(Integer.valueOf(localRedPointNode2.jdField_a_of_type_Int), localRedPointNode2);
-    localRedPointNode2.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode1;
-    localRedPointNode1.jdField_a_of_type_JavaUtilList.add(localRedPointNode2);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localRedPointNode2.a = -4;
+    this.k.put(Integer.valueOf(localRedPointNode2.a), localRedPointNode2);
+    localRedPointNode2.b = localRedPointNode1;
+    localRedPointNode1.c.add(localRedPointNode2);
+    localRedPointNode2.c = new ArrayList();
     Object localObject2 = new RedPointNode();
-    ((RedPointNode)localObject2).jdField_a_of_type_Int = 10015;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject2).jdField_a_of_type_Int), localObject2);
-    ((RedPointNode)localObject2).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = ((RedPointNode)localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_JavaUtilList.add(localObject2);
+    ((RedPointNode)localObject2).a = 10015;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject2).a), localObject2);
+    ((RedPointNode)localObject2).b = ((RedPointNode)localObject1);
+    ((RedPointNode)localObject1).c.add(localObject2);
     localObject2 = new RedPointNode();
-    ((RedPointNode)localObject2).jdField_a_of_type_Int = 10016;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject2).jdField_a_of_type_Int), localObject2);
-    ((RedPointNode)localObject2).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = ((RedPointNode)localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_JavaUtilList.add(localObject2);
+    ((RedPointNode)localObject2).a = 10016;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject2).a), localObject2);
+    ((RedPointNode)localObject2).b = ((RedPointNode)localObject1);
+    ((RedPointNode)localObject1).c.add(localObject2);
     localObject2 = new RedPointNode();
-    ((RedPointNode)localObject2).jdField_a_of_type_Int = 100601;
-    ((RedPointNode)localObject2).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = ((RedPointNode)localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_JavaUtilList.add(localObject2);
-    this.b.put(Integer.valueOf(100601), localObject2);
+    ((RedPointNode)localObject2).a = 100601;
+    ((RedPointNode)localObject2).b = ((RedPointNode)localObject1);
+    ((RedPointNode)localObject1).c.add(localObject2);
+    this.k.put(Integer.valueOf(100601), localObject2);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10019;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10019;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10020;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10020;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10022;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10022;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10021;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10021;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10023;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10023;
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10024;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10024;
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10025;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10025;
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10026;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10026;
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10027;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10027;
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    localRedPointNode2.c.add(localObject1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10028;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 10028;
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    localRedPointNode2.c.add(localObject1);
     localRedPointNode2 = new RedPointNode();
-    localRedPointNode2.jdField_a_of_type_Int = -2;
-    localRedPointNode2.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode;
-    this.b.put(Integer.valueOf(localRedPointNode2.jdField_a_of_type_Int), localRedPointNode2);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_JavaUtilList = Arrays.asList(new RedPointNode[] { localRedPointNode1, localRedPointNode2 });
-    localRedPointNode2.jdField_a_of_type_JavaUtilList = new ArrayList();
+    localRedPointNode2.a = -2;
+    localRedPointNode2.b = this.j;
+    this.k.put(Integer.valueOf(localRedPointNode2.a), localRedPointNode2);
+    this.j.c = Arrays.asList(new RedPointNode[] { localRedPointNode1, localRedPointNode2 });
+    localRedPointNode2.c = new ArrayList();
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 100510;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localObject1);
+    ((RedPointNode)localObject1).a = 100510;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
+    ((RedPointNode)localObject1).b = localRedPointNode2;
+    localRedPointNode2.c.add(localObject1);
     localRedPointNode1 = new RedPointNode();
-    localRedPointNode1.jdField_a_of_type_Int = 10011;
-    localRedPointNode1.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = ((RedPointNode)localObject1);
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), localRedPointNode1);
+    localRedPointNode1.a = 10011;
+    localRedPointNode1.b = ((RedPointNode)localObject1);
+    this.k.put(Integer.valueOf(localRedPointNode1.a), localRedPointNode1);
     localObject2 = new ArrayList();
     ((List)localObject2).add(localRedPointNode1);
-    ((RedPointNode)localObject1).jdField_a_of_type_JavaUtilList = ((List)localObject2);
+    ((RedPointNode)localObject1).c = ((List)localObject2);
     localObject1 = new ArrayList();
     localObject2 = new RedPointNode();
-    ((RedPointNode)localObject2).jdField_a_of_type_Int = 100523;
-    ((RedPointNode)localObject2).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode1;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject2).jdField_a_of_type_Int), localObject2);
+    ((RedPointNode)localObject2).a = 100523;
+    ((RedPointNode)localObject2).b = localRedPointNode1;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject2).a), localObject2);
     ((List)localObject1).add(localObject2);
     localObject2 = new RedPointNode();
-    ((RedPointNode)localObject2).jdField_a_of_type_Int = 100517;
-    ((RedPointNode)localObject2).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode1;
-    this.b.put(Integer.valueOf(((RedPointNode)localObject2).jdField_a_of_type_Int), localObject2);
+    ((RedPointNode)localObject2).a = 100517;
+    ((RedPointNode)localObject2).b = localRedPointNode1;
+    this.k.put(Integer.valueOf(((RedPointNode)localObject2).a), localObject2);
     ((List)localObject1).add(localObject2);
-    localRedPointNode1.jdField_a_of_type_JavaUtilList = ((List)localObject1);
+    localRedPointNode1.c = ((List)localObject1);
     localRedPointNode1 = new RedPointNode();
-    localRedPointNode1.jdField_a_of_type_Int = -5;
-    localRedPointNode1.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localRedPointNode1);
-    localRedPointNode1.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), localRedPointNode1);
+    localRedPointNode1.a = -5;
+    localRedPointNode1.b = localRedPointNode2;
+    localRedPointNode2.c.add(localRedPointNode1);
+    localRedPointNode1.c = new ArrayList();
+    this.k.put(Integer.valueOf(localRedPointNode1.a), localRedPointNode1);
     localRedPointNode1 = new RedPointNode();
-    localRedPointNode1.jdField_a_of_type_Int = -6;
-    localRedPointNode1.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localRedPointNode1);
-    localRedPointNode1.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), localRedPointNode1);
+    localRedPointNode1.a = -6;
+    localRedPointNode1.b = localRedPointNode2;
+    localRedPointNode2.c.add(localRedPointNode1);
+    localRedPointNode1.c = new ArrayList();
+    this.k.put(Integer.valueOf(localRedPointNode1.a), localRedPointNode1);
     localObject1 = new RedPointNode();
-    ((RedPointNode)localObject1).jdField_a_of_type_Int = 10014;
-    ((RedPointNode)localObject1).jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode1;
-    localRedPointNode1.jdField_a_of_type_JavaUtilList.add(localObject1);
-    this.b.put(Integer.valueOf(((RedPointNode)localObject1).jdField_a_of_type_Int), localObject1);
+    ((RedPointNode)localObject1).a = 10014;
+    ((RedPointNode)localObject1).b = localRedPointNode1;
+    localRedPointNode1.c.add(localObject1);
+    this.k.put(Integer.valueOf(((RedPointNode)localObject1).a), localObject1);
     localRedPointNode1 = new RedPointNode();
-    localRedPointNode1.jdField_a_of_type_Int = 10013;
-    localRedPointNode1.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode = localRedPointNode2;
-    localRedPointNode2.jdField_a_of_type_JavaUtilList.add(localRedPointNode1);
-    this.b.put(Integer.valueOf(localRedPointNode1.jdField_a_of_type_Int), localRedPointNode1);
+    localRedPointNode1.a = 10013;
+    localRedPointNode1.b = localRedPointNode2;
+    localRedPointNode2.c.add(localRedPointNode1);
+    this.k.put(Integer.valueOf(localRedPointNode1.a), localRedPointNode1);
   }
   
-  private void e()
+  private void f(int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateParents:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("LocalRedTouchManager", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (RedTouchItem)this.l.get(Integer.valueOf(paramInt));
+    if ((localObject != null) && (((RedTouchItem)localObject).passThroughLevel > 0))
+    {
+      int n = paramInt;
+      paramInt = 0;
+      while (paramInt < ((RedTouchItem)localObject).passThroughLevel)
+      {
+        RedPointNode localRedPointNode = (RedPointNode)this.k.get(Integer.valueOf(n));
+        if ((localRedPointNode == null) || (localRedPointNode.b == null)) {
+          break;
+        }
+        RedTouchItem localRedTouchItem = (RedTouchItem)this.l.get(Integer.valueOf(localRedPointNode.b.a));
+        if (localRedTouchItem != null) {
+          localRedTouchItem.unReadFlag = false;
+        }
+        if (localRedPointNode.b.c != null)
+        {
+          n = 0;
+          while (n < localRedPointNode.b.c.size())
+          {
+            int i1 = ((RedPointNode)localRedPointNode.b.c.get(n)).a;
+            localRedTouchItem = (RedTouchItem)this.l.get(Integer.valueOf(i1));
+            if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (!localRedTouchItem.isClosed) && (localRedTouchItem.passThroughLevel > 0)) {
+              a(localRedTouchItem, localRedPointNode.b.a);
+            }
+            n += 1;
+          }
+        }
+        n = localRedPointNode.b.a;
+        paramInt += 1;
+      }
+    }
+  }
+  
+  private void g()
+  {
+    if (this.a) {
       return;
     }
     a();
     ??? = new StringBuilder();
     ((StringBuilder)???).append("red_point_configs_");
-    ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    ((StringBuilder)???).append(this.f.getCurrentAccountUin());
     ??? = (ConcurrentHashMap)FileUtils.readObject(((StringBuilder)???).toString());
     if (??? != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll((Map)???);
+      this.i.clear();
+      this.i.putAll((Map)???);
     }
     ??? = null;
     try
     {
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("red_point_info_");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append(this.f.getCurrentAccountUin());
       localObject2 = (ConcurrentHashMap)FileUtils.readObject(((StringBuilder)localObject2).toString());
       ??? = localObject2;
     }
@@ -400,74 +432,40 @@ public class LocalRedTouchManager
     }
     if (??? != null)
     {
-      this.c.clear();
-      this.c.putAll((Map)???);
+      this.l.clear();
+      this.l.putAll((Map)???);
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.b)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
   }
   
-  private void e(int paramInt)
+  private boolean h()
   {
-    if (QLog.isColorLevel())
+    synchronized (this.b)
     {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("updateParents:");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.i("LocalRedTouchManager", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = (RedTouchItem)this.c.get(Integer.valueOf(paramInt));
-    if ((localObject != null) && (((RedTouchItem)localObject).passThroughLevel > 0))
-    {
-      int i = paramInt;
-      paramInt = 0;
-      while (paramInt < ((RedTouchItem)localObject).passThroughLevel)
-      {
-        RedPointNode localRedPointNode = (RedPointNode)this.b.get(Integer.valueOf(i));
-        if ((localRedPointNode == null) || (localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode == null)) {
-          break;
-        }
-        RedTouchItem localRedTouchItem = (RedTouchItem)this.c.get(Integer.valueOf(localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_Int));
-        if (localRedTouchItem != null) {
-          localRedTouchItem.unReadFlag = false;
-        }
-        if (localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_JavaUtilList != null)
-        {
-          i = 0;
-          while (i < localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_JavaUtilList.size())
-          {
-            int j = ((RedPointNode)localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int;
-            localRedTouchItem = (RedTouchItem)this.c.get(Integer.valueOf(j));
-            if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (!localRedTouchItem.isClosed) && (localRedTouchItem.passThroughLevel > 0)) {
-              a(localRedTouchItem, localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_Int);
-            }
-            i += 1;
-          }
-        }
-        i = localRedPointNode.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointNode.jdField_a_of_type_Int;
-        paramInt += 1;
-      }
+      boolean bool = this.a;
+      return bool;
     }
   }
   
-  private void f()
+  private void i()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("red_point_info_");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    FileUtils.writeObject(localStringBuilder.toString(), this.c);
+    localStringBuilder.append(this.f.getCurrentAccountUin());
+    FileUtils.writeObject(localStringBuilder.toString(), this.l);
   }
   
-  private void g()
+  private void j()
   {
-    if (!a()) {
-      e();
+    if (!h()) {
+      g();
     }
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    localConcurrentHashMap.putAll(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    localConcurrentHashMap.putAll(this.i);
     if (localConcurrentHashMap.size() > 0)
     {
       QLog.d("LocalRedTouchManager", 1, "pullRedPointInfo using config");
@@ -492,9 +490,9 @@ public class LocalRedTouchManager
       }
       if (localArrayList.size() > 0)
       {
-        ((RedtouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a(localArrayList, false);
-        long l = SystemClock.elapsedRealtime();
-        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "pull_red_touch_time2", Long.valueOf(l));
+        ((RedtouchHandler)this.f.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a(localArrayList, false);
+        long l1 = SystemClock.elapsedRealtime();
+        ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.f.getAccount(), "pull_red_touch_time2", Long.valueOf(l1));
       }
     }
     else
@@ -502,57 +500,13 @@ public class LocalRedTouchManager
       if (QLog.isColorLevel()) {
         QLog.i("LocalRedTouchManager", 2, "pull config on null");
       }
-      ((RedtouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a();
+      ((RedtouchHandler)this.f.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a();
     }
-  }
-  
-  public int a()
-  {
-    Object localObject = a(10016);
-    RedTouchItem localRedTouchItem = a(10015);
-    int i = 3;
-    if ((localObject != null) && (localRedTouchItem != null)) {
-      if (((RedTouchItem)localObject).curSeq <= localRedTouchItem.curSeq) {
-        break label58;
-      }
-    } else {
-      if (localObject == null) {
-        break label53;
-      }
-    }
-    i = 4;
-    break label68;
-    label53:
-    if (localRedTouchItem != null)
-    {
-      label58:
-      localObject = localRedTouchItem;
-    }
-    else
-    {
-      localObject = null;
-      i = 1;
-    }
-    label68:
-    if ((localObject != null) && (((RedTouchItem)localObject).bytes != null) && (((RedTouchItem)localObject).bytes.length > 0)) {
-      try
-      {
-        int j = new JSONObject(new String(((RedTouchItem)localObject).bytes, "utf-8")).optInt("type", 1);
-        return j;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LocalRedTouchManager", 2, localException, new Object[0]);
-        }
-      }
-    }
-    return i;
   }
   
   public RedTouchItem a(int paramInt)
   {
-    Object localObject = this.c;
+    Object localObject = this.l;
     if (localObject != null) {
       localObject = (RedTouchItem)((ConcurrentHashMap)localObject).get(Integer.valueOf(paramInt));
     } else {
@@ -585,37 +539,17 @@ public class LocalRedTouchManager
   
   public String a()
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "red_point_config_version", ""));
+    if (this.h == null) {
+      this.h = ((String)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.f.getAccount(), "red_point_config_version", ""));
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("getRedPointConfigVersion, version = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.h);
       QLog.i("LocalRedTouchManager", 2, localStringBuilder.toString());
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilVector.size() > 0)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilVector.iterator();
-      while (localIterator.hasNext()) {
-        a((RedTouchItem)localIterator.next(), false);
-      }
-      f();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointPrePostHandleObserver.a(this.jdField_a_of_type_JavaUtilVector);
-      this.jdField_a_of_type_JavaUtilVector.clear();
-      ((IRedTouchServer)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, false, 0L, false, true);
+    return this.h;
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -640,7 +574,7 @@ public class LocalRedTouchManager
       ((StringBuilder)localObject1).append(paramBoolean3);
       QLog.i("LocalRedTouchManager", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = this.c;
+    Object localObject1 = this.l;
     if (localObject1 == null) {
       return;
     }
@@ -668,12 +602,12 @@ public class LocalRedTouchManager
         ((StringBuilder)localObject2).append(((RedTouchItem)localObject1).unReadFlag);
         QLog.d("LocalRedTouchManager", 2, ((StringBuilder)localObject2).toString());
       }
-      e(paramInt);
-      c();
-      if (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1)) {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+      f(paramInt);
+      e();
+      if (this.g.hasMessages(1)) {
+        this.g.removeMessages(1);
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+      this.g.sendEmptyMessage(1);
       if (paramBoolean3)
       {
         localObject1 = new cmd0x6ce.ReadRedpointReq();
@@ -683,7 +617,7 @@ public class LocalRedTouchManager
         }
         localObject2 = new ArrayList(1);
         ((List)localObject2).add(localObject1);
-        ((RedtouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a((List)localObject2);
+        ((RedtouchHandler)this.f.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a((List)localObject2);
       }
     }
   }
@@ -699,8 +633,8 @@ public class LocalRedTouchManager
     }
     if (!TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "red_point_config_version", paramString);
+      this.h = paramString;
+      ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setValue(this.f.getAccount(), "red_point_config_version", paramString);
     }
   }
   
@@ -723,23 +657,23 @@ public class LocalRedTouchManager
       if (paramList.size() == 0) {
         return;
       }
-      this.jdField_a_of_type_JavaUtilVector.addAll(paramList);
+      this.m.addAll(paramList);
       if (!paramBoolean)
       {
-        int i = this.jdField_a_of_type_JavaUtilVector.size() - 1;
-        while (i >= 0)
+        int n = this.m.size() - 1;
+        while (n >= 0)
         {
-          if (((RedTouchItem)this.jdField_a_of_type_JavaUtilVector.get(i)).taskId == 10001) {
-            this.jdField_a_of_type_JavaUtilVector.remove(i);
+          if (((RedTouchItem)this.m.get(n)).taskId == 10001) {
+            this.m.remove(n);
           }
-          i -= 1;
+          n -= 1;
         }
-        if (((RedTouchItem)paramList.get(0)).configVersion.equals(this.jdField_a_of_type_JavaLangString))
+        if (((RedTouchItem)paramList.get(0)).configVersion.equals(this.h))
         {
-          a();
+          b();
           return;
         }
-        ((RedtouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a();
+        ((RedtouchHandler)this.f.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a();
       }
     }
   }
@@ -749,8 +683,8 @@ public class LocalRedTouchManager
     if (QLog.isColorLevel()) {
       QLog.i("LocalRedTouchManager", 2, "saveRedPointConfigs");
     }
-    if (!a()) {
-      e();
+    if (!h()) {
+      g();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     if ((paramRspBody != null) && (paramRspBody.rpt_task_info != null) && (paramRspBody.rpt_task_info.has()))
@@ -774,8 +708,8 @@ public class LocalRedTouchManager
           localStringBuilder.append(localRedPointConfig.toString());
         }
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localConcurrentHashMap);
+      this.i.clear();
+      this.i.putAll(localConcurrentHashMap);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -787,7 +721,7 @@ public class LocalRedTouchManager
       }
       paramRspBody = new StringBuilder();
       paramRspBody.append("red_point_configs_");
-      paramRspBody.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      paramRspBody.append(this.f.getCurrentAccountUin());
       FileUtils.writeObject(paramRspBody.toString(), localConcurrentHashMap);
     }
   }
@@ -801,10 +735,10 @@ public class LocalRedTouchManager
       localStringBuilder.append(paramShort);
       QLog.i("LocalRedTouchManager", 2, localStringBuilder.toString());
     }
-    long l1 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "pull_red_touch_time2", Long.valueOf(0L))).longValue();
+    long l1 = ((Long)((INearbySPUtil)QRoute.api(INearbySPUtil.class)).getValue(this.f.getAccount(), "pull_red_touch_time2", Long.valueOf(0L))).longValue();
     long l2 = SystemClock.elapsedRealtime();
     if ((paramShort > 0) || (l2 - l1 > 43200000L)) {
-      b();
+      c();
     }
   }
   
@@ -817,27 +751,27 @@ public class LocalRedTouchManager
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.i("LocalRedTouchManager", 2, ((StringBuilder)localObject).toString());
     }
-    a(100601);
+    b(100601);
     if (paramBoolean)
     {
-      b(10016);
-      b(10015);
+      c(10016);
+      c(10015);
     }
-    Object localObject = (IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
+    Object localObject = (IRedTouchManager)this.f.getRuntimeService(IRedTouchManager.class, "");
     if (localObject == null) {
       return;
     }
     ((IRedTouchManager)localObject).dismissRedTouch("100510");
     ((IRedTouchManager)localObject).dismissRedTouch("100460");
-    a(100510);
-    a(-7);
+    b(100510);
+    b(-7);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
     QLog.i("LocalRedTouchManager", 1, "onLinePush");
-    if (!a()) {
-      e();
+    if (!h()) {
+      g();
     }
     cmd0x6cd.RedpointInfo localRedpointInfo = new cmd0x6cd.RedpointInfo();
     try
@@ -854,29 +788,24 @@ public class LocalRedTouchManager
     }
     if (QLog.isColorLevel())
     {
-      RedPointConfig localRedPointConfig = (RedPointConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramArrayOfByte.taskId));
-      int i;
+      RedPointConfig localRedPointConfig = (RedPointConfig)this.i.get(Integer.valueOf(paramArrayOfByte.taskId));
+      int n;
       if (localRedPointConfig == null) {
-        i = 0;
+        n = 0;
       } else {
-        i = localRedPointConfig.redPointId;
+        n = localRedPointConfig.redPointId;
       }
-      QLog.i("LocalRedTouchManager", 2, String.format("onLinePush item:%s appid=%d version=%s", new Object[] { paramArrayOfByte, Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
+      QLog.i("LocalRedTouchManager", 2, String.format("onLinePush item:%s appid=%d version=%s", new Object[] { paramArrayOfByte, Integer.valueOf(n), this.h }));
     }
-    if (localRedpointInfo.str_config_version.get().equals(this.jdField_a_of_type_JavaLangString))
+    if (localRedpointInfo.str_config_version.get().equals(this.h))
     {
-      a(paramArrayOfByte, true);
-      ((IRedTouchServer)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyRedtouchRedPointPrePostHandleObserver.a(Collections.singletonList(paramArrayOfByte));
+      b(paramArrayOfByte, true);
+      ((IRedTouchServer)this.f.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.f);
+      this.e.a(Collections.singletonList(paramArrayOfByte));
       return;
     }
-    this.jdField_a_of_type_JavaUtilVector.add(paramArrayOfByte);
-    ((RedtouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a();
-  }
-  
-  public boolean a(int paramInt, boolean paramBoolean)
-  {
-    return a(a(paramInt), paramBoolean);
+    this.m.add(paramArrayOfByte);
+    ((RedtouchHandler)this.f.getBusinessHandler(BusinessHandlerFactory.REDTOUCH_HANDLER)).a();
   }
   
   public boolean a(RedTouchItem paramRedTouchItem)
@@ -899,42 +828,27 @@ public class LocalRedTouchManager
   
   public void b()
   {
-    ThreadManager.excute(new LocalRedTouchManager.1(this), 64, null, true);
+    if (this.m.size() > 0)
+    {
+      Iterator localIterator = this.m.iterator();
+      while (localIterator.hasNext()) {
+        b((RedTouchItem)localIterator.next(), false);
+      }
+      i();
+      this.e.a(this.m);
+      this.m.clear();
+      ((IRedTouchServer)this.f.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.f);
+    }
   }
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("clearParentsButSelf, redPointId=");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.i("LocalRedTouchManager", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.c;
-    if (localObject == null) {
-      return;
-    }
-    localObject = (RedTouchItem)((ConcurrentHashMap)localObject).get(Integer.valueOf(paramInt));
-    if ((localObject != null) && (((RedTouchItem)localObject).unReadFlag) && (((RedTouchItem)localObject).passThroughLevel > 0))
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("rt=");
-        localStringBuilder.append(((RedTouchItem)localObject).toString());
-        QLog.d("LocalRedTouchManager", 2, localStringBuilder.toString());
-      }
-      ((RedTouchItem)localObject).unReadFlag = false;
-      e(paramInt);
-      ((RedTouchItem)localObject).passThroughLevel = 0;
-      ((RedTouchItem)localObject).unReadFlag = true;
-      c();
-      if (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1)) {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-      }
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
-    }
+    a(paramInt, false, 0L, false, true);
+  }
+  
+  public boolean b(int paramInt, boolean paramBoolean)
+  {
+    return a(a(paramInt), paramBoolean);
   }
   
   public boolean b(RedTouchItem paramRedTouchItem)
@@ -953,11 +867,11 @@ public class LocalRedTouchManager
           break;
         }
         paramRedTouchItem.unReadFlag = false;
-        RedPointConfig localRedPointConfig = (RedPointConfig)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramRedTouchItem.taskId));
+        RedPointConfig localRedPointConfig = (RedPointConfig)this.i.get(Integer.valueOf(paramRedTouchItem.taskId));
         if (localRedPointConfig != null) {
-          e(localRedPointConfig.redPointId);
+          f(localRedPointConfig.redPointId);
         }
-        c();
+        e();
         boolean bool1 = false;
         if (paramRedTouchItem.redtouchType == 2)
         {
@@ -981,18 +895,102 @@ public class LocalRedTouchManager
   
   public void c()
   {
-    if (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(0)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(0);
-    }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(0);
+    ThreadManager.excute(new LocalRedTouchManager.1(this), 64, null, true);
   }
   
   public void c(int paramInt)
   {
-    if (paramInt != 1) {}
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("clearParentsButSelf, redPointId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("LocalRedTouchManager", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.l;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (RedTouchItem)((ConcurrentHashMap)localObject).get(Integer.valueOf(paramInt));
+    if ((localObject != null) && (((RedTouchItem)localObject).unReadFlag) && (((RedTouchItem)localObject).passThroughLevel > 0))
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("rt=");
+        localStringBuilder.append(((RedTouchItem)localObject).toString());
+        QLog.d("LocalRedTouchManager", 2, localStringBuilder.toString());
+      }
+      ((RedTouchItem)localObject).unReadFlag = false;
+      f(paramInt);
+      ((RedTouchItem)localObject).passThroughLevel = 0;
+      ((RedTouchItem)localObject).unReadFlag = true;
+      e();
+      if (this.g.hasMessages(1)) {
+        this.g.removeMessages(1);
+      }
+      this.g.sendEmptyMessage(1);
+    }
+  }
+  
+  public int d()
+  {
+    Object localObject = a(10016);
+    RedTouchItem localRedTouchItem = a(10015);
+    int n = 3;
+    if ((localObject != null) && (localRedTouchItem != null)) {
+      if (((RedTouchItem)localObject).curSeq <= localRedTouchItem.curSeq) {
+        break label58;
+      }
+    } else {
+      if (localObject == null) {
+        break label53;
+      }
+    }
+    n = 4;
+    break label68;
+    label53:
+    if (localRedTouchItem != null)
+    {
+      label58:
+      localObject = localRedTouchItem;
+    }
+    else
+    {
+      localObject = null;
+      n = 1;
+    }
+    label68:
+    if ((localObject != null) && (((RedTouchItem)localObject).bytes != null) && (((RedTouchItem)localObject).bytes.length > 0)) {
+      try
+      {
+        int i1 = new JSONObject(new String(((RedTouchItem)localObject).bytes, "utf-8")).optInt("type", 1);
+        return i1;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("LocalRedTouchManager", 2, localException, new Object[0]);
+        }
+      }
+    }
+    return n;
   }
   
   public void d(int paramInt)
+  {
+    if (paramInt != 1) {}
+  }
+  
+  public void e()
+  {
+    if (this.g.hasMessages(0)) {
+      this.g.removeMessages(0);
+    }
+    this.g.sendEmptyMessage(0);
+  }
+  
+  public void e(int paramInt)
   {
     if (QLog.isColorLevel())
     {
@@ -1001,12 +999,12 @@ public class LocalRedTouchManager
       localStringBuilder.append(paramInt);
       QLog.i("LocalRedTouchManager", 2, localStringBuilder.toString());
     }
-    e(paramInt);
-    c();
-    if (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
+    f(paramInt);
+    e();
+    if (this.g.hasMessages(1)) {
+      this.g.removeMessages(1);
     }
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+    this.g.sendEmptyMessage(1);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1014,16 +1012,16 @@ public class LocalRedTouchManager
     if (paramMessage == null) {
       return false;
     }
-    int i = paramMessage.what;
-    if (i != 0)
+    int n = paramMessage.what;
+    if (n != 0)
     {
-      if (i != 1) {
+      if (n != 1) {
         return false;
       }
-      ((IRedTouchServer)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      ((IRedTouchServer)this.f.getRuntimeService(IRedTouchServer.class, "")).notifyRedTouchUpdate(this.f);
       return false;
     }
-    f();
+    i();
     return false;
   }
   
@@ -1031,7 +1029,7 @@ public class LocalRedTouchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager
  * JD-Core Version:    0.7.0.1
  */

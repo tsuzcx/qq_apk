@@ -2,37 +2,28 @@ package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
+import com.tencent.av.screenshare.ScreenShareTipsHelper;
+import com.tencent.av.tips.TipsUtil;
 
 class AVActivity$13
   implements Runnable
 {
-  AVActivity$13(AVActivity paramAVActivity, long paramLong) {}
+  AVActivity$13(AVActivity paramAVActivity) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null) {
+    if (this.this$0.I == null) {
       return;
     }
-    SessionInfo localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-    if (localSessionInfo.b())
+    SessionInfo localSessionInfo = this.this$0.I.k();
+    if ((localSessionInfo.p()) || ((localSessionInfo.u()) && (localSessionInfo.am)))
     {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 229);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(229);
-      int i = localSessionInfo.d;
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.c, 21);
-      if (i == 1) {
-        localSessionInfo.a(this.a, "av.onResume.1", 3);
-      } else if (i == 2) {
-        localSessionInfo.a(this.a, "av.onResume.2", 4);
+      TipsUtil.a(VideoController.f().e, 1070, 0L, true);
+      if (!ScreenShareTipsHelper.a)
+      {
+        TipsUtil.a(VideoController.f().e, 1072, 3000L);
+        ScreenShareTipsHelper.a = true;
       }
-      if (localSessionInfo.c()) {
-        localSessionInfo.k = 1;
-      } else {
-        localSessionInfo.k = 3000;
-      }
-      localSessionInfo.c(this.a, false);
-      localSessionInfo.d("AVActivity.onResume", 0);
-      this.this$0.jdField_a_of_type_ComTencentAvUiControlUIObserver.a(this.a);
     }
   }
 }

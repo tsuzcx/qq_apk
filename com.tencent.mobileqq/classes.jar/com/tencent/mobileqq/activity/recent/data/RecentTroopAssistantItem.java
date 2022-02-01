@@ -51,7 +51,7 @@ public class RecentTroopAssistantItem
   
   private void a()
   {
-    if (AppSetting.d)
+    if (AppSetting.e)
     {
       StringBuilder localStringBuilder1 = new StringBuilder(24);
       localStringBuilder1.append(this.mTitleName);
@@ -107,7 +107,7 @@ public class RecentTroopAssistantItem
         localObject = paramMsgSummary.suffix.toString();
       }
       if (!TextUtils.isEmpty(paramMsgSummary.strPrefix)) {
-        localSpannableString = new ColorNickText(paramMsgSummary.strPrefix, 16).a();
+        localSpannableString = new ColorNickText(paramMsgSummary.strPrefix, 16).b();
       }
       paramMessage = ColorNickManager.a((String)localObject, paramMessage, 16, 3);
       Object localObject = new SpannableStringBuilder();
@@ -131,8 +131,8 @@ public class RecentTroopAssistantItem
     }
     if ((this.mIsGroupVideoNotify) && (TextUtils.isEmpty(this.mMsgExtroInfo)))
     {
-      this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131697810);
-      this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167170);
+      this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131895583);
+      this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131168153);
     }
     if ((this.mIsGroupVideoNotify) && (!paramBoolean))
     {
@@ -158,6 +158,7 @@ public class RecentTroopAssistantItem
   {
     String str;
     int i;
+    Object localObject1;
     Message localMessage;
     TroopInfo localTroopInfo;
     MsgSummary localMsgSummary;
@@ -168,7 +169,7 @@ public class RecentTroopAssistantItem
       }
       str = getRecentUserUin();
       i = getRecentUserType();
-      Object localObject1 = paramQQAppInterface.getMessageFacade();
+      localObject1 = paramQQAppInterface.getMessageFacade();
       Object localObject2 = null;
       if (localObject1 != null) {
         localMessage = ((QQMessageFacade)localObject1).getLastMessage(str, i);
@@ -190,18 +191,18 @@ public class RecentTroopAssistantItem
         this.mDisplayTime = 0L;
         this.mUnreadNum = 0;
       }
-      if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.b(str)))
+      if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.c(str)))
       {
         if (QLog.isColorLevel()) {
           QLog.d(TAG, 2, "show TroopNotification orange mark.");
         }
-        this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131719645);
-        this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+        this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131917246);
+        this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
       }
       j = this.mMenuFlag;
       localObject1 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
       if (localObject1 != null) {
-        localTroopInfo = ((TroopManager)localObject1).b(str);
+        localTroopInfo = ((TroopManager)localObject1).f(str);
       } else {
         localTroopInfo = null;
       }
@@ -249,12 +250,12 @@ public class RecentTroopAssistantItem
       break label390;
     }
     l = 0L;
-    this.mIsGroupVideo = paramQQAppInterface.getAVNotifyCenter().c(l);
+    this.mIsGroupVideo = paramQQAppInterface.getAVNotifyCenter().d(l);
     bool = this.mIsGroupVideoNotify;
-    this.mIsGroupVideoNotify = paramQQAppInterface.getAVNotifyCenter().b(l);
+    this.mIsGroupVideoNotify = paramQQAppInterface.getAVNotifyCenter().c(l);
     a(paramQQAppInterface, l, bool);
-    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localMsgSummary != null) && (AnonymousChatHelper.a(localMessage))) {
-      this.mLastMsg = localMsgSummary.a(paramContext, AnonymousChatHelper.a(localMessage), -1);
+    if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localMsgSummary != null) && (AnonymousChatHelper.c(localMessage))) {
+      this.mLastMsg = localMsgSummary.a(paramContext, AnonymousChatHelper.d(localMessage), -1);
     }
     if (localTroopInfo != null)
     {
@@ -264,24 +265,25 @@ public class RecentTroopAssistantItem
       }
       if (QLog.isColorLevel())
       {
-        paramContext = new StringBuilder();
-        paramContext.append("RecentTroopAssistantItem->update,");
-        paramContext.append(str);
-        paramContext.append(",");
-        paramContext.append(this.mTroopCreditLevel);
-        QLog.i("troop.credit.act", 2, paramContext.toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("RecentTroopAssistantItem->update,");
+        ((StringBuilder)localObject1).append(str);
+        ((StringBuilder)localObject1).append(",");
+        ((StringBuilder)localObject1).append(this.mTroopCreditLevel);
+        QLog.i("troop.credit.act", 2, ((StringBuilder)localObject1).toString());
       }
     }
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     this.mMenuFlag &= 0xFFFFFF0F;
     int j = this.mMenuFlag;
-    if (paramQQAppInterface.a(str)) {
+    if (paramQQAppInterface.o(str)) {
       i = 32;
     } else {
       i = 16;
     }
     this.mMenuFlag = (i | j);
     a();
+    processUnReadNum(paramContext.getResources().getColor(2131168122), 999);
   }
   
   public long getFaceExtraFlag()
@@ -314,6 +316,14 @@ public class RecentTroopAssistantItem
     return false;
   }
   
+  protected void processUnReadNum(int paramInt1, int paramInt2)
+  {
+    if (!TextUtils.isEmpty(this.mMsgExtroInfo)) {
+      return;
+    }
+    super.processUnReadNum(paramInt1, paramInt2);
+  }
+  
   public void update(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext)
   {
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
@@ -323,7 +333,7 @@ public class RecentTroopAssistantItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,18 @@ class FileTransferHandler$3
   
   public void run()
   {
-    FileManagerEntity localFileManagerEntity = this.this$0.a.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    FileManagerEntity localFileManagerEntity = this.this$0.a.getFileManagerDataCenter().a(this.a, this.b);
     if (localFileManagerEntity != null)
     {
-      localFileManagerEntity.msgSeq = this.jdField_a_of_type_Short;
-      localFileManagerEntity.msgUid = this.jdField_a_of_type_Long;
-      localFileManagerEntity.msgTime = this.b;
+      localFileManagerEntity.msgSeq = this.c;
+      localFileManagerEntity.msgUid = this.d;
+      localFileManagerEntity.msgTime = this.e;
       this.this$0.a.getFileManagerProxy().f(localFileManagerEntity);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("online change to offline, update offline msg seq , uid and msgTime");
-        localStringBuilder.append(FileManagerUtil.a(localFileManagerEntity));
+        localStringBuilder.append(FileManagerUtil.c(localFileManagerEntity));
         QLog.d("FileTransferHandler<FileAssistant>", 2, localStringBuilder.toString());
       }
     }
@@ -33,7 +33,7 @@ class FileTransferHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.3
  * JD-Core Version:    0.7.0.1
  */

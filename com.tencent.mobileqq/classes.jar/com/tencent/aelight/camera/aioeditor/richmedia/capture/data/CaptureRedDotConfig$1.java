@@ -11,72 +11,72 @@ final class CaptureRedDotConfig$1
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 29	java/io/File
+    //   2: new 30	java/io/File
     //   5: dup
     //   6: aload_0
-    //   7: getfield 14	com/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   10: ldc 31
-    //   12: invokespecial 34	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: getfield 15	com/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig$1:a	Ljava/lang/String;
+    //   10: ldc 32
+    //   12: invokespecial 35	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   15: astore 4
     //   17: aload 4
-    //   19: invokevirtual 38	java/io/File:exists	()Z
+    //   19: invokevirtual 39	java/io/File:exists	()Z
     //   22: ifeq +9 -> 31
     //   25: aload 4
-    //   27: invokevirtual 41	java/io/File:delete	()Z
+    //   27: invokevirtual 42	java/io/File:delete	()Z
     //   30: pop
-    //   31: new 43	java/io/ObjectOutputStream
+    //   31: new 44	java/io/ObjectOutputStream
     //   34: dup
-    //   35: new 45	java/io/BufferedOutputStream
+    //   35: new 46	java/io/BufferedOutputStream
     //   38: dup
-    //   39: new 47	java/io/FileOutputStream
+    //   39: new 48	java/io/FileOutputStream
     //   42: dup
     //   43: aload 4
-    //   45: invokespecial 50	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   48: invokespecial 53	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   51: invokespecial 54	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   45: invokespecial 51	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   48: invokespecial 54	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   51: invokespecial 55	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   54: astore_1
     //   55: aload_1
     //   56: astore_2
     //   57: aload_1
     //   58: aload_0
-    //   59: getfield 16	com/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig$1:jdField_a_of_type_ComTencentAelightCameraAioeditorRichmediaCaptureDataCaptureRedDotConfig	Lcom/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig;
-    //   62: invokevirtual 58	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   59: getfield 17	com/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig$1:b	Lcom/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig;
+    //   62: invokevirtual 59	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   65: aload_1
     //   66: astore_3
     //   67: aload_1
     //   68: astore_2
-    //   69: invokestatic 63	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   69: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   72: ifeq +47 -> 119
     //   75: aload_1
     //   76: astore_2
-    //   77: new 65	java/lang/StringBuilder
+    //   77: new 66	java/lang/StringBuilder
     //   80: dup
-    //   81: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   81: invokespecial 67	java/lang/StringBuilder:<init>	()V
     //   84: astore_3
     //   85: aload_1
     //   86: astore_2
     //   87: aload_3
-    //   88: ldc 68
-    //   90: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: ldc 69
+    //   90: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: pop
     //   94: aload_1
     //   95: astore_2
     //   96: aload_3
     //   97: aload_0
-    //   98: getfield 18	com/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig$1:b	Ljava/lang/String;
-    //   101: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: getfield 19	com/tencent/aelight/camera/aioeditor/richmedia/capture/data/CaptureRedDotConfig$1:c	Ljava/lang/String;
+    //   101: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: pop
     //   105: aload_1
     //   106: astore_2
     //   107: aload_3
-    //   108: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   108: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   111: iconst_2
-    //   112: ldc 78
-    //   114: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   112: ldc 79
+    //   114: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   117: aload_1
     //   118: astore_3
     //   119: aload_3
-    //   120: invokevirtual 85	java/io/ObjectOutputStream:close	()V
+    //   120: invokevirtual 86	java/io/ObjectOutputStream:close	()V
     //   123: goto +95 -> 218
     //   126: astore_3
     //   127: goto +12 -> 139
@@ -90,42 +90,42 @@ final class CaptureRedDotConfig$1
     //   139: aload_1
     //   140: astore_2
     //   141: aload_3
-    //   142: invokevirtual 88	java/lang/Exception:printStackTrace	()V
+    //   142: invokevirtual 89	java/lang/Exception:printStackTrace	()V
     //   145: aload_1
     //   146: astore_2
-    //   147: new 65	java/lang/StringBuilder
+    //   147: new 66	java/lang/StringBuilder
     //   150: dup
-    //   151: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   151: invokespecial 67	java/lang/StringBuilder:<init>	()V
     //   154: astore 5
     //   156: aload_1
     //   157: astore_2
     //   158: aload 5
-    //   160: ldc 90
-    //   162: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: ldc 91
+    //   162: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: pop
     //   166: aload_1
     //   167: astore_2
     //   168: aload 5
     //   170: aload_3
-    //   171: invokevirtual 93	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   174: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   171: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   174: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload_1
     //   179: astore_2
-    //   180: ldc 68
+    //   180: ldc 69
     //   182: iconst_2
     //   183: aload 5
-    //   185: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   185: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   188: invokestatic 97	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   191: aload_1
     //   192: astore_2
     //   193: aload 4
-    //   195: invokevirtual 38	java/io/File:exists	()Z
+    //   195: invokevirtual 39	java/io/File:exists	()Z
     //   198: ifeq +11 -> 209
     //   201: aload_1
     //   202: astore_2
     //   203: aload 4
-    //   205: invokevirtual 41	java/io/File:delete	()Z
+    //   205: invokevirtual 42	java/io/File:delete	()Z
     //   208: pop
     //   209: aload_1
     //   210: ifnull +8 -> 218
@@ -139,7 +139,7 @@ final class CaptureRedDotConfig$1
     //   222: aload_2
     //   223: ifnull +7 -> 230
     //   226: aload_2
-    //   227: invokevirtual 85	java/io/ObjectOutputStream:close	()V
+    //   227: invokevirtual 86	java/io/ObjectOutputStream:close	()V
     //   230: aload_1
     //   231: athrow
     //   232: astore_1
@@ -205,7 +205,7 @@ final class CaptureRedDotConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.richmedia.capture.data.CaptureRedDotConfig.1
  * JD-Core Version:    0.7.0.1
  */

@@ -33,21 +33,21 @@ public class NearbyZanAnimLayout
   {
     if (Build.VERSION.SDK_INT < 11)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
       return;
     }
-    this.c = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * 5);
-    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator = new NearbyZanAnimator(this);
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.a(this);
+    this.o = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * 5);
+    this.e = new Random(System.currentTimeMillis());
+    this.d = new NearbyZanAnimator(this);
+    this.d.a(this);
   }
   
   public void a(Bitmap paramBitmap, float paramFloat1, float paramFloat2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.h) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator != null)
+    if (this.d != null)
     {
       if (paramBitmap == null) {
         return;
@@ -55,13 +55,13 @@ public class NearbyZanAnimLayout
       ImageView localImageView = new ImageView(getContext());
       localImageView.setImageBitmap(paramBitmap);
       localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator.a(localImageView, paramFloat1, paramFloat2, this);
+      this.d.a(localImageView, paramFloat1, paramFloat2, this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NearbyZanAnimLayout
  * JD-Core Version:    0.7.0.1
  */

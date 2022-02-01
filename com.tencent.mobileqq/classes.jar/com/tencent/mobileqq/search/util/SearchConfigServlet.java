@@ -11,7 +11,7 @@ public class SearchConfigServlet
 {
   public static void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig)
   {
-    SearchEntryConfigManager.a = paramQQAppInterface.getCurrentAccountUin();
+    SearchEntryConfigManager.b = paramQQAppInterface.getCurrentAccountUin();
     int i = paramConfig.version.get();
     int j = SearchEntryConfigManager.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
     StringBuilder localStringBuilder = new StringBuilder();
@@ -39,7 +39,7 @@ public class SearchConfigServlet
   
   public static void a(ConfigurationService.ConfigSeq paramConfigSeq)
   {
-    int i = SearchConfigUtils.a();
+    int i = SearchConfigUtils.b();
     paramConfigSeq.version.set(i);
     paramConfigSeq = new StringBuilder();
     paramConfigSeq.append("onGetSearchUrlSearchConfig v=");
@@ -49,7 +49,7 @@ public class SearchConfigServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SearchConfigServlet
  * JD-Core Version:    0.7.0.1
  */

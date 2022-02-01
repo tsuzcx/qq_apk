@@ -14,15 +14,15 @@ class VideoTrackContainerView$10
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    ((VideoTrackTimeLineView)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewDragdropIDragView).c(i);
-    VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView).scrollTo(this.jdField_a_of_type_Int + VideoTrackContainerView.a(this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView).a(-(this.b - i)), 0);
-    paramValueAnimator = this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewVideotrackVideoTrackContainerView;
-    paramValueAnimator.scrollTo(this.jdField_a_of_type_Int + VideoTrackContainerView.a(paramValueAnimator).a(-(this.b - i)), 0);
+    ((VideoTrackTimeLineView)this.a).c(i);
+    VideoTrackContainerView.i(this.d).scrollTo(this.b + VideoTrackContainerView.g(this.d).c(-(this.c - i)), 0);
+    paramValueAnimator = this.d;
+    paramValueAnimator.scrollTo(this.b + VideoTrackContainerView.g(paramValueAnimator).c(-(this.c - i)), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.videotrack.VideoTrackContainerView.10
  * JD-Core Version:    0.7.0.1
  */

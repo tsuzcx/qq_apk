@@ -22,30 +22,18 @@ import java.util.Arrays;
 
 public class AtUtil
 {
-  public static int a(EditText paramEditText)
-  {
-    Editable localEditable = paramEditText.getEditableText();
-    paramEditText = (AtTroopMemberSpan[])localEditable.getSpans(0, paramEditText.getSelectionStart(), AtTroopMemberSpan.class);
-    if ((paramEditText != null) && (paramEditText.length != 0))
-    {
-      Arrays.sort(paramEditText, new AtUtil.2(localEditable));
-      return localEditable.getSpanEnd(paramEditText[(paramEditText.length - 1)]);
-    }
-    return -1;
-  }
-  
   public static ChatHistoryTroopMemberFragment.ATroopMember a(QQAppInterface paramQQAppInterface, TroopMemberInfo paramTroopMemberInfo)
   {
     Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
     ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = new ChatHistoryTroopMemberFragment.ATroopMember();
-    localATroopMember.jdField_a_of_type_JavaLangString = paramTroopMemberInfo.memberuin.trim();
+    localATroopMember.a = paramTroopMemberInfo.memberuin.trim();
     if (localObject != null) {
-      localObject = ((FriendsManager)localObject).b(paramTroopMemberInfo.memberuin);
+      localObject = ((FriendsManager)localObject).c(paramTroopMemberInfo.memberuin);
     } else {
       localObject = null;
     }
-    localATroopMember.jdField_b_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, paramTroopMemberInfo.troopuin, localATroopMember.jdField_a_of_type_JavaLangString, true);
-    localATroopMember.jdField_a_of_type_Short = paramTroopMemberInfo.faceid;
+    localATroopMember.c = ContactUtils.a(paramQQAppInterface, paramTroopMemberInfo.troopuin, localATroopMember.a, true);
+    localATroopMember.b = paramTroopMemberInfo.faceid;
     if ((paramTroopMemberInfo.friendnick != null) && (paramTroopMemberInfo.friendnick.length() > 0))
     {
       localATroopMember.b(paramTroopMemberInfo.friendnick);
@@ -55,8 +43,8 @@ public class AtUtil
     if ((localObject != null) && (((Friends)localObject).isFriend()) && (((Friends)localObject).remark != null) && (((Friends)localObject).remark.length() > 0) && (!((Friends)localObject).remark.equals(((Friends)localObject).name)))
     {
       localATroopMember.e(((Friends)localObject).remark);
-      localATroopMember.h(ChnToSpell.a(localATroopMember.jdField_j_of_type_JavaLangString, 1));
-      localATroopMember.f(ChnToSpell.a(localATroopMember.jdField_j_of_type_JavaLangString, 2));
+      localATroopMember.h(ChnToSpell.b(localATroopMember.k, 1));
+      localATroopMember.f(ChnToSpell.b(localATroopMember.k, 2));
       localATroopMember.g(((Friends)localObject).remark);
     }
     else if ((paramTroopMemberInfo.autoremark != null) && (paramTroopMemberInfo.autoremark.length() > 0) && (QLog.isColorLevel()))
@@ -67,17 +55,17 @@ public class AtUtil
     localATroopMember.a(paramTroopMemberInfo.troopColorNickId);
     localATroopMember.k(paramTroopMemberInfo.pyAll_troopnick);
     localATroopMember.j(paramTroopMemberInfo.pyFirst_troopnick);
-    localATroopMember.jdField_b_of_type_Long = paramTroopMemberInfo.last_active_time;
-    localATroopMember.jdField_a_of_type_Long = paramTroopMemberInfo.join_time;
-    localATroopMember.jdField_b_of_type_Int = paramTroopMemberInfo.level;
-    localATroopMember.jdField_d_of_type_Int = paramTroopMemberInfo.realLevel;
-    localATroopMember.e = paramTroopMemberInfo.newRealLevel;
-    localATroopMember.jdField_d_of_type_Long = paramTroopMemberInfo.credit_level;
-    localATroopMember.jdField_a_of_type_Boolean = paramTroopMemberInfo.isTroopFollowed;
-    localATroopMember.jdField_c_of_type_Long = paramTroopMemberInfo.active_point;
-    localATroopMember.jdField_b_of_type_Boolean = paramTroopMemberInfo.mIsShielded;
-    localATroopMember.f = paramTroopMemberInfo.globalTroopLevel;
-    double d1 = ((IBizTroopMemberInfoService)paramQQAppInterface.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberDiatanceToSelf(paramTroopMemberInfo.troopuin, localATroopMember.jdField_a_of_type_JavaLangString);
+    localATroopMember.u = paramTroopMemberInfo.last_active_time;
+    localATroopMember.s = paramTroopMemberInfo.join_time;
+    localATroopMember.x = paramTroopMemberInfo.level;
+    localATroopMember.F = paramTroopMemberInfo.realLevel;
+    localATroopMember.G = paramTroopMemberInfo.newRealLevel;
+    localATroopMember.z = paramTroopMemberInfo.credit_level;
+    localATroopMember.A = paramTroopMemberInfo.isTroopFollowed;
+    localATroopMember.y = paramTroopMemberInfo.active_point;
+    localATroopMember.I = paramTroopMemberInfo.mIsShielded;
+    localATroopMember.H = paramTroopMemberInfo.globalTroopLevel;
+    double d1 = ((IBizTroopMemberInfoService)paramQQAppInterface.getRuntimeService(IBizTroopMemberInfoService.class, "")).getTroopMemberDiatanceToSelf(paramTroopMemberInfo.troopuin, localATroopMember.a);
     if ((d1 != -1000.0D) && (d1 != -100.0D))
     {
       double d2 = d1 / 1000.0D;
@@ -90,7 +78,7 @@ public class AtUtil
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append((int)d1);
         paramQQAppInterface.append("km");
-        localATroopMember.t = paramQQAppInterface.toString();
+        localATroopMember.C = paramQQAppInterface.toString();
       }
       else
       {
@@ -98,29 +86,29 @@ public class AtUtil
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append(paramQQAppInterface.format(d1));
         ((StringBuilder)localObject).append("km");
-        localATroopMember.t = ((StringBuilder)localObject).toString();
+        localATroopMember.C = ((StringBuilder)localObject).toString();
       }
     }
     else
     {
-      localATroopMember.t = "";
+      localATroopMember.C = "";
     }
     if ((paramTroopMemberInfo.mUniqueTitleExpire - NetConnInfoCenter.getServerTime() > 0L) || (paramTroopMemberInfo.mUniqueTitleExpire == -1))
     {
-      localATroopMember.u = paramTroopMemberInfo.mUniqueTitle;
-      localATroopMember.jdField_c_of_type_Int = paramTroopMemberInfo.mUniqueTitleExpire;
+      localATroopMember.D = paramTroopMemberInfo.mUniqueTitle;
+      localATroopMember.E = paramTroopMemberInfo.mUniqueTitleExpire;
     }
-    localATroopMember.jdField_g_of_type_Int = paramTroopMemberInfo.mVipType;
-    localATroopMember.jdField_h_of_type_Int = paramTroopMemberInfo.mVipLevel;
-    localATroopMember.jdField_i_of_type_Int = paramTroopMemberInfo.mBigClubTemplateId;
-    localATroopMember.jdField_j_of_type_Int = paramTroopMemberInfo.mBigClubVipType;
-    localATroopMember.jdField_k_of_type_Int = paramTroopMemberInfo.mBigClubVipLevel;
-    localATroopMember.jdField_l_of_type_Int = paramTroopMemberInfo.mBigClubTemplateId;
-    localATroopMember.jdField_c_of_type_JavaLangString = ChnToSpell.a(c(localATroopMember), 2);
-    localATroopMember.a(ChnToSpell.a(c(localATroopMember), 1));
-    localATroopMember.v = c(localATroopMember);
-    localATroopMember.x = localATroopMember.jdField_c_of_type_JavaLangString;
-    localATroopMember.w = localATroopMember.jdField_d_of_type_JavaLangString;
+    localATroopMember.L = paramTroopMemberInfo.mVipType;
+    localATroopMember.M = paramTroopMemberInfo.mVipLevel;
+    localATroopMember.N = paramTroopMemberInfo.mBigClubTemplateId;
+    localATroopMember.O = paramTroopMemberInfo.mBigClubVipType;
+    localATroopMember.P = paramTroopMemberInfo.mBigClubVipLevel;
+    localATroopMember.Q = paramTroopMemberInfo.mBigClubTemplateId;
+    localATroopMember.d = ChnToSpell.b(c(localATroopMember), 2);
+    localATroopMember.a(ChnToSpell.b(c(localATroopMember), 1));
+    localATroopMember.S = c(localATroopMember);
+    localATroopMember.U = localATroopMember.d;
+    localATroopMember.T = localATroopMember.e;
     return localATroopMember;
   }
   
@@ -138,13 +126,13 @@ public class AtUtil
   
   public static String a(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
   {
-    if (!TextUtils.isEmpty(paramATroopMember.m)) {
-      return paramATroopMember.m;
+    if (!TextUtils.isEmpty(paramATroopMember.n)) {
+      return paramATroopMember.n;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_g_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_g_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.h)) {
+      return paramATroopMember.h;
     }
-    return paramATroopMember.jdField_a_of_type_JavaLangString;
+    return paramATroopMember.a;
   }
   
   public static boolean a(EditText paramEditText, QQAppInterface paramQQAppInterface)
@@ -211,27 +199,27 @@ public class AtUtil
     paramEditText = (AtTroopMemberSpan[])localEditable.getSpans(0, paramEditText.getSelectionStart(), AtTroopMemberSpan.class);
     if ((paramEditText != null) && (paramEditText.length != 0))
     {
-      Arrays.sort(paramEditText, new AtUtil.3(localEditable));
-      return localEditable.getSpanStart(paramEditText[(paramEditText.length - 1)]);
+      Arrays.sort(paramEditText, new AtUtil.2(localEditable));
+      return localEditable.getSpanEnd(paramEditText[(paramEditText.length - 1)]);
     }
     return -1;
   }
   
   public static String b(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
   {
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_j_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_j_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.n)) {
+      return paramATroopMember.n;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_b_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_b_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.k)) {
+      return paramATroopMember.k;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.m)) {
-      return paramATroopMember.m;
+    if (!TextUtils.isEmpty(paramATroopMember.c)) {
+      return paramATroopMember.c;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_g_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_g_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.h)) {
+      return paramATroopMember.h;
     }
-    return paramATroopMember.jdField_a_of_type_JavaLangString;
+    return paramATroopMember.a;
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
@@ -247,51 +235,63 @@ public class AtUtil
     return false;
   }
   
-  public static String c(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
+  public static int c(EditText paramEditText)
   {
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_j_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_j_of_type_JavaLangString;
+    Editable localEditable = paramEditText.getEditableText();
+    paramEditText = (AtTroopMemberSpan[])localEditable.getSpans(0, paramEditText.getSelectionStart(), AtTroopMemberSpan.class);
+    if ((paramEditText != null) && (paramEditText.length != 0))
+    {
+      Arrays.sort(paramEditText, new AtUtil.3(localEditable));
+      return localEditable.getSpanStart(paramEditText[(paramEditText.length - 1)]);
     }
-    if (!TextUtils.isEmpty(paramATroopMember.m)) {
-      return paramATroopMember.m;
-    }
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_g_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_g_of_type_JavaLangString;
-    }
-    return paramATroopMember.jdField_a_of_type_JavaLangString;
+    return -1;
   }
   
-  public static String d(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
+  public static String c(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
   {
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_k_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_k_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.k)) {
+      return paramATroopMember.k;
     }
     if (!TextUtils.isEmpty(paramATroopMember.n)) {
       return paramATroopMember.n;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_h_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_h_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.h)) {
+      return paramATroopMember.h;
+    }
+    return paramATroopMember.a;
+  }
+  
+  public static String d(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
+  {
+    if (!TextUtils.isEmpty(paramATroopMember.l)) {
+      return paramATroopMember.l;
+    }
+    if (!TextUtils.isEmpty(paramATroopMember.p)) {
+      return paramATroopMember.p;
+    }
+    if (!TextUtils.isEmpty(paramATroopMember.i)) {
+      return paramATroopMember.i;
     }
     return null;
   }
   
   public static String e(ChatHistoryTroopMemberFragment.ATroopMember paramATroopMember)
   {
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_l_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_l_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.m)) {
+      return paramATroopMember.m;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.o)) {
-      return paramATroopMember.o;
+    if (!TextUtils.isEmpty(paramATroopMember.q)) {
+      return paramATroopMember.q;
     }
-    if (!TextUtils.isEmpty(paramATroopMember.jdField_i_of_type_JavaLangString)) {
-      return paramATroopMember.jdField_i_of_type_JavaLangString;
+    if (!TextUtils.isEmpty(paramATroopMember.j)) {
+      return paramATroopMember.j;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtUtil
  * JD-Core Version:    0.7.0.1
  */

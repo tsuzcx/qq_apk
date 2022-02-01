@@ -94,7 +94,7 @@ public class MainService
   
   private void notifyCostTooLongIfDebug(FromServiceMsg paramFromServiceMsg, AppRuntime paramAppRuntime, long paramLong)
   {
-    if ((isDebugVersion) && (paramLong >= 5000L) && (paramAppRuntime != null) && (!AppSetting.c())) {
+    if ((isDebugVersion) && (paramLong >= 5000L) && (paramAppRuntime != null) && (!AppSetting.k())) {
       paramAppRuntime.runOnUiThread(new MainService.1(this, paramFromServiceMsg, paramLong));
     }
   }
@@ -497,7 +497,7 @@ public class MainService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     mqq.app.MainService
  * JD-Core Version:    0.7.0.1
  */

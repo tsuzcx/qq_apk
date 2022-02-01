@@ -14,20 +14,20 @@ import java.util.HashMap;
 
 public class TimeManager
 {
-  private static TimeManager jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private long jdField_a_of_type_Long;
+  private static TimeManager b;
+  private static final Object c = new Object();
   public CountDownTimer a;
-  private String jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer(25);
-  private HashMap<String, HashMap<String, String>> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, Boolean> b = new HashMap();
+  private long d;
+  private HashMap<String, HashMap<String, String>> e;
+  private String f = "yyyy-MM-dd";
+  private HashMap<String, Boolean> g = new HashMap();
+  private StringBuffer h = new StringBuffer(25);
   
   private TimeManager()
   {
     Object localObject = BaseApplication.getContext();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    d();
+    this.e = new HashMap();
+    f();
     if (localObject != null) {
       localObject = ((Context)localObject).getContentResolver();
     }
@@ -42,63 +42,58 @@ public class TimeManager
     }
     localObject = null;
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      this.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.f = ((String)localObject);
     } else {
-      this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
+      this.f = "yyyy-MM-dd";
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer = new CountDownTimer(Looper.getMainLooper());
+    this.a = new CountDownTimer(Looper.getMainLooper());
   }
   
   public static TimeManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager = new TimeManager();
+        if (b == null) {
+          b = new TimeManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityRecentTimeManager;
+    return b;
   }
   
-  private boolean a()
-  {
-    if (System.currentTimeMillis() >= this.jdField_a_of_type_Long)
-    {
-      d();
-      synchronized (jdField_a_of_type_JavaLangObject)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  private void d()
+  private void f()
   {
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.add(5, 1);
     localCalendar.set(10, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
-    this.jdField_a_of_type_Long = localCalendar.getTimeInMillis();
+    this.d = localCalendar.getTimeInMillis();
   }
   
-  public String a()
+  private boolean g()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (System.currentTimeMillis() >= this.d)
+    {
+      f();
+      synchronized (c)
+      {
+        this.e.clear();
+        return false;
+      }
+    }
+    return true;
   }
   
   public String a(String paramString, long paramLong)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      Object localObject2 = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      Object localObject2 = (HashMap)this.e.get(paramString);
       Object localObject3;
-      if ((localObject2 != null) && (a()))
+      if ((localObject2 != null) && (g()))
       {
         localObject3 = (String)((HashMap)localObject2).get(String.valueOf(paramLong));
         paramString = (String)localObject2;
@@ -113,19 +108,19 @@ public class TimeManager
       else
       {
         localObject2 = new HashMap();
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject2);
+        this.e.put(paramString, localObject2);
         ??? = null;
         paramString = (String)localObject2;
       }
       if (??? == null) {
-        synchronized (this.jdField_a_of_type_JavaLangStringBuffer)
+        synchronized (this.h)
         {
-          localObject2 = TimeFormatterUtilsProxy.a(this.jdField_a_of_type_JavaLangStringBuffer, 1000L * paramLong, true, this.jdField_a_of_type_JavaLangString);
+          localObject2 = TimeFormatterUtilsProxy.a(this.h, 1000L * paramLong, true, this.f);
           if (QLog.isDevelopLevel())
           {
             localObject3 = new StringBuilder();
             ((StringBuilder)localObject3).append("getMsgDisplayTime, ");
-            ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaLangStringBuffer.toString());
+            ((StringBuilder)localObject3).append(this.h.toString());
             ((StringBuilder)localObject3).append(",");
             ((StringBuilder)localObject3).append((String)localObject2);
             QLog.i("Q.recent", 4, ((StringBuilder)localObject3).toString());
@@ -138,28 +133,20 @@ public class TimeManager
     }
   }
   
-  public void a()
-  {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
-    if (localCountDownTimer != null) {
-      localCountDownTimer.g();
-    }
-  }
-  
   public void a(String paramString, boolean paramBoolean)
   {
-    this.b.put(paramString, Boolean.valueOf(paramBoolean));
+    this.g.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
   public boolean a(String arg1)
   {
     boolean bool;
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ???))
+    if (!TextUtils.equals(this.f, ???))
     {
       if (!TextUtils.isEmpty(???)) {
-        this.jdField_a_of_type_JavaLangString = ???;
+        this.f = ???;
       } else {
-        this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
+        this.f = "yyyy-MM-dd";
       }
       bool = true;
     }
@@ -167,31 +154,44 @@ public class TimeManager
     {
       bool = false;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (c)
     {
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
+      if (this.e != null) {
+        this.e.clear();
       }
       return bool;
     }
   }
   
-  public void b()
+  public String b()
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    return this.f;
+  }
+  
+  public boolean b(String paramString)
+  {
+    return this.g.containsKey(paramString);
+  }
+  
+  public void c()
+  {
+    CountDownTimer localCountDownTimer = this.a;
+    if (localCountDownTimer != null) {
+      localCountDownTimer.g();
+    }
+  }
+  
+  public void d()
+  {
+    CountDownTimer localCountDownTimer = this.a;
     if (localCountDownTimer != null) {
       localCountDownTimer.d();
     }
   }
   
-  public boolean b(String paramString)
+  public void e()
   {
-    return this.b.containsKey(paramString);
-  }
-  
-  public void c()
-  {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    CountDownTimer localCountDownTimer = this.a;
     if (localCountDownTimer != null) {
       localCountDownTimer.e();
     }
@@ -199,7 +199,7 @@ public class TimeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.TimeManager
  * JD-Core Version:    0.7.0.1
  */

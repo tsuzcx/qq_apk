@@ -7,12 +7,12 @@ class EditTextDialog$10
   
   public void run()
   {
-    this.this$0.a.b(this.a, this.b);
+    this.this$0.g.b(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.EditTextDialog.10
  * JD-Core Version:    0.7.0.1
  */

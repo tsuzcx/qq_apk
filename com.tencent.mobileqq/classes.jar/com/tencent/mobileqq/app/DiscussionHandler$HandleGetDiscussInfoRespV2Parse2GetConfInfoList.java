@@ -17,26 +17,36 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
 {
-  private ArrayList<Object> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<String, DiscussionHandler.ReqDiscussInfo> jdField_a_of_type_JavaUtilHashMap;
-  private List<cmd0x58b.GetConfInfoRsp> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private boolean b;
+  private byte[] c;
+  private ArrayList<Object> d;
+  private HashMap<String, DiscussionHandler.ReqDiscussInfo> e;
+  private List<cmd0x58b.GetConfInfoRsp> f;
   
   public DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList(byte[] paramArrayOfByte, ArrayList<Object> paramArrayList, HashMap<String, DiscussionHandler.ReqDiscussInfo> paramHashMap)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayList;
-    this.jdField_a_of_type_JavaUtilArrayList = paramHashMap;
+    this.c = paramArrayList;
+    this.d = paramHashMap;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilHashMap = localObject;
+    this.e = localObject;
   }
   
-  public HandleGetDiscussInfoRespV2Parse2GetConfInfoList a()
+  boolean a()
+  {
+    return this.b;
+  }
+  
+  public List<cmd0x58b.GetConfInfoRsp> b()
+  {
+    return this.f;
+  }
+  
+  public HandleGetDiscussInfoRespV2Parse2GetConfInfoList c()
   {
     Object localObject1 = new oidb_sso.OIDBSSOPkg();
     try
     {
-      localObject1 = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom(this.jdField_a_of_type_ArrayOfByte);
+      localObject1 = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom(this.c);
       if ((((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.has()) && (((oidb_sso.OIDBSSOPkg)localObject1).uint32_result.get() == 0) && (((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.has()) && (((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.get() != null))
       {
         cmd0x58b.RspBody localRspBody = new cmd0x58b.RspBody();
@@ -45,9 +55,9 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
           localRspBody.mergeFrom(((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.get().toByteArray());
           if (localRspBody.msg_cmd_error_code.uint32_code.get() != 0)
           {
-            this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.jdField_a_of_type_JavaUtilHashMap.values());
-            this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
-            this.jdField_a_of_type_Boolean = true;
+            this.a.a(this.e.values());
+            this.a.notifyUI(1001, false, this.d);
+            this.b = true;
             return this;
           }
           boolean bool = localRspBody.msg_get_multi_conf_info.has();
@@ -62,13 +72,13 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
             if (((cmd0x58b.GetMultiConfInfoRsp)localObject1).msg_get_conf_info.has()) {
               localObject2 = ((cmd0x58b.GetMultiConfInfoRsp)localObject1).msg_get_conf_info.get();
             }
-            this.jdField_a_of_type_JavaUtilList = ((List)localObject2);
+            this.f = ((List)localObject2);
           }
           else
           {
-            this.jdField_a_of_type_JavaUtilList = null;
+            this.f = null;
           }
-          this.jdField_a_of_type_Boolean = false;
+          this.b = false;
           return this;
         }
         catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
@@ -80,8 +90,8 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
             ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException1.toString());
             QLog.e("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
-          this.jdField_a_of_type_Boolean = true;
+          this.a.notifyUI(1001, false, this.d);
+          this.b = true;
           return this;
         }
       }
@@ -92,8 +102,8 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
         ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException1.uint32_result.get());
         QLog.e("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Boolean = true;
+      this.a.notifyUI(1001, false, this.d);
+      this.b = true;
       return this;
     }
     catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
@@ -106,25 +116,15 @@ class DiscussionHandler$HandleGetDiscussInfoRespV2Parse2GetConfInfoList
         ((StringBuilder)localObject2).append(localInvalidProtocolBufferMicroException2.toString());
         QLog.e("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.notifyUI(1001, false, this.jdField_a_of_type_JavaUtilArrayList);
-      this.jdField_a_of_type_Boolean = true;
+      this.a.notifyUI(1001, false, this.d);
+      this.b = true;
     }
     return this;
-  }
-  
-  public List<cmd0x58b.GetConfInfoRsp> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiscussionHandler.HandleGetDiscussInfoRespV2Parse2GetConfInfoList
  * JD-Core Version:    0.7.0.1
  */

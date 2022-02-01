@@ -33,21 +33,21 @@ class TenDocMessageSearchDialog$2
         return;
       }
       paramAdapterView = (MessageItem)TenDocMessageSearchDialog.a(this.a).getItem(paramInt - 1);
-      if ((paramAdapterView != null) && (paramAdapterView.a != null))
+      if ((paramAdapterView != null) && (paramAdapterView.b != null))
       {
-        paramAdapterView = paramAdapterView.a;
+        paramAdapterView = paramAdapterView.b;
         paramView = new StringBuilder();
         paramView.append("jump to mr: ");
         paramView.append(paramAdapterView.msgseq);
         paramView.append(" ");
         paramView.append(paramAdapterView.shmsgseq);
         QLog.d("TenDocMessageSearchDialog", 4, paramView.toString());
-        if (UinTypeUtil.g(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
-          ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAdapterView.shmsgseq, 0, 2);
+        if (UinTypeUtil.h(this.a.g.a)) {
+          ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.c, this.a.g.b, paramAdapterView.shmsgseq, 0, 2);
         } else {
-          ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
+          ChatHistoryActivity.a((Activity)this.a.c, this.a.g.b, this.a.g.a, this.a.g.w, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
         }
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A175", "0X800A175", TenDocMessageSearchDialog.a(this.a), 0, "", "", "s_qq_history_tab", "");
+        ReportController.b(this.a.f, "dc00898", "", "", "0X800A175", "0X800A175", TenDocMessageSearchDialog.b(this.a), 0, "", "", "s_qq_history_tab", "");
         this.a.a(true);
         return;
       }
@@ -60,7 +60,7 @@ class TenDocMessageSearchDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.TenDocMessageSearchDialog.2
  * JD-Core Version:    0.7.0.1
  */

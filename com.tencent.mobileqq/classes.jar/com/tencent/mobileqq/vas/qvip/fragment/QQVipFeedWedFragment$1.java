@@ -23,8 +23,8 @@ class QQVipFeedWedFragment$1
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    QQVipFeedWedFragment.a(this.a).onPageFinish(paramString);
-    paramWebView = ObjectAnimator.ofFloat(QQVipFeedWedFragment.a(this.a), "alpha", new float[] { 0.0F, 1.0F });
+    QQVipFeedWedFragment.d(this.a).onPageFinish(paramString);
+    paramWebView = ObjectAnimator.ofFloat(QQVipFeedWedFragment.d(this.a), "alpha", new float[] { 0.0F, 1.0F });
     paramWebView.setDuration(300L);
     paramWebView.start();
     paramWebView = new StringBuilder();
@@ -42,7 +42,7 @@ class QQVipFeedWedFragment$1
     ((StringBuilder)localObject).append("mLoadUrlTime : ");
     ((StringBuilder)localObject).append(QQVipFeedWedFragment.c(this.a));
     QLog.d("QQVipFeedWedFragment", 1, ((StringBuilder)localObject).toString());
-    QQVipFeedWedFragment.a(this.a).setVisibility(0);
+    QQVipFeedWedFragment.d(this.a).setVisibility(0);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
   
@@ -53,7 +53,7 @@ class QQVipFeedWedFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.1
  * JD-Core Version:    0.7.0.1
  */

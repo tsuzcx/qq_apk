@@ -12,16 +12,16 @@ class DynamicAvatarRecordActivity$11
   
   public void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.this$0.getString(2131699201);
+    String str = this.a;
+    if (this.b == 2002) {
+      str = this.this$0.getString(2131897217);
     }
     DynamicAvatarRecordActivity localDynamicAvatarRecordActivity = this.this$0;
-    localDynamicAvatarRecordActivity.a = DialogUtil.a(localDynamicAvatarRecordActivity, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693890), new DynamicAvatarRecordActivity.11.1(this));
+    localDynamicAvatarRecordActivity.S = DialogUtil.a(localDynamicAvatarRecordActivity, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131891511), new DynamicAvatarRecordActivity.11.1(this));
     try
     {
-      this.this$0.a.setCancelable(false);
-      this.this$0.a.show();
+      this.this$0.S.setCancelable(false);
+      this.this$0.S.show();
       return;
     }
     catch (WindowManager.BadTokenException localBadTokenException)
@@ -34,7 +34,7 @@ class DynamicAvatarRecordActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -27,37 +27,37 @@ class BaseChatPie$MyOnGestureListener
   public void onLongPress(MotionEvent paramMotionEvent)
   {
     super.onLongPress(paramMotionEvent);
-    ((MultiWindowAIOHelper)this.a.a(26)).a();
+    ((MultiWindowAIOHelper)this.a.q(26)).a();
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((BaseChatPie.f() == 1) && (!BaseChatPie.a(this.a).booleanValue()))
+    if ((BaseChatPie.by() == 1) && (!BaseChatPie.d(this.a).booleanValue()))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() == 0) {
+      if (this.a.U.getCount() == 0) {
         return false;
       }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
+      if ((this.a.U != null) && (this.a.U.getLastVisiblePosition() >= this.a.U.getCount() - 1))
       {
         paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
+        this.a.U.getChildAt(this.a.U.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
         int i = paramMotionEvent1[1];
-        if (BaseChatPie.a(this.a) == i)
+        if (BaseChatPie.e(this.a) == i)
         {
-          this.a.k(1);
+          this.a.p(1);
           BaseChatPie.a(this.a, Boolean.valueOf(true));
           BaseChatPie.a(this.a, -1);
         }
         BaseChatPie.a(this.a, i);
       }
     }
-    if (BaseChatPie.a(this.a))
+    if (BaseChatPie.f(this.a))
     {
       paramMotionEvent1 = this.a;
-      paramMotionEvent1.a(true, paramMotionEvent1.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+      paramMotionEvent1.a(true, paramMotionEvent1.e, this.a.Y);
     }
     if (paramFloat2 < 0.0F) {
-      this.a.w = false;
+      this.a.aK = false;
     }
     return false;
   }
@@ -65,32 +65,32 @@ class BaseChatPie$MyOnGestureListener
   public void onShowPress(MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onShowPress");
+      QLog.d(this.a.c, 2, "onShowPress");
     }
-    this.a.f(false);
+    this.a.i(false);
     BaseChatPie localBaseChatPie = this.a;
-    localBaseChatPie.a(true, localBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    localBaseChatPie.a(true, localBaseChatPie.e, this.a.Y);
     super.onShowPress(paramMotionEvent);
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = (LeftSwipeReplyHelper)this.a.a(50);
+    paramMotionEvent = (LeftSwipeReplyHelper)this.a.q(50);
     if (paramMotionEvent != null) {
-      paramMotionEvent.a(true);
+      paramMotionEvent.b(true);
     }
-    this.a.f(false);
+    this.a.i(false);
     BaseChatPie localBaseChatPie = this.a;
-    localBaseChatPie.a(true, localBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    localBaseChatPie.a(true, localBaseChatPie.e, this.a.Y);
     if (paramMotionEvent != null) {
-      paramMotionEvent.a(false);
+      paramMotionEvent.b(false);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.MyOnGestureListener
  * JD-Core Version:    0.7.0.1
  */

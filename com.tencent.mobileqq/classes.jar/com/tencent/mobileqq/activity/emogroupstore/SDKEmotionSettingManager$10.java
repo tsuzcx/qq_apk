@@ -14,15 +14,15 @@ class SDKEmotionSettingManager$10
     if (paramInt == 4)
     {
       paramDialogInterface = this.a;
-      SDKEmotionSettingManager.a(paramDialogInterface, SDKEmotionSettingManager.a(paramDialogInterface), Long.valueOf(SDKEmotionSettingManager.a(this.a)).longValue());
-      SDKEmotionSettingManager.a(this.a);
+      SDKEmotionSettingManager.a(paramDialogInterface, SDKEmotionSettingManager.a(paramDialogInterface), Long.valueOf(SDKEmotionSettingManager.b(this.a)).longValue());
+      SDKEmotionSettingManager.c(this.a);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKEmotionSettingManager.10
  * JD-Core Version:    0.7.0.1
  */

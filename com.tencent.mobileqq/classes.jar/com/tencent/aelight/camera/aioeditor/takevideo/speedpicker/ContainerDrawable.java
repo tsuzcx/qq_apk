@@ -18,78 +18,78 @@ public class ContainerDrawable
   extends Drawable
   implements Animatable
 {
-  private int jdField_a_of_type_Int = 127;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  Property<ContainerDrawable, Integer> jdField_a_of_type_AndroidUtilProperty = new ContainerDrawable.1(this, Integer.class, "backAlpha");
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
-  
-  private int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  Property<ContainerDrawable, Integer> a = new ContainerDrawable.1(this, Integer.class, "backAlpha");
+  private int b = 127;
+  private boolean c = false;
+  private Paint d;
+  private RectF e = new RectF();
+  private int f = 0;
+  private ValueAnimator g;
+  private boolean h = false;
   
   private void a(int paramInt1, int paramInt2)
   {
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    ValueAnimator localValueAnimator = this.g;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.g.removeAllUpdateListeners();
+      this.g = null;
     }
     if (paramInt1 == 1)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_a_of_type_AndroidUtilProperty, new int[] { 0, 127 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      this.g = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.a, new int[] { 0, 127 }) });
+      this.g.setDuration(paramInt2);
     }
     else if (paramInt1 == 2)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.jdField_a_of_type_AndroidUtilProperty, new int[] { 127, 0 }) });
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramInt2);
+      this.g = ObjectAnimator.ofPropertyValuesHolder(this, new PropertyValuesHolder[] { PropertyValuesHolder.ofInt(this.a, new int[] { 127, 0 }) });
+      this.g.setDuration(paramInt2);
     }
-    localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    localValueAnimator = this.g;
     if (localValueAnimator != null)
     {
       localValueAnimator.setRepeatMode(1);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ContainerDrawable.2(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ContainerDrawable.3(this));
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+      this.g.setRepeatCount(0);
+      this.g.setStartDelay(0L);
+      this.g.addUpdateListener(new ContainerDrawable.2(this));
+      this.g.addListener(new ContainerDrawable.3(this));
+      this.g.start();
     }
+  }
+  
+  private int b()
+  {
+    return this.b;
   }
   
   private void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    this.c = false;
+    this.d = null;
+    ValueAnimator localValueAnimator = this.g;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.g.removeAllUpdateListeners();
+      this.g = null;
     }
-    this.jdField_a_of_type_AndroidUtilProperty = null;
+    this.a = null;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.f = paramInt;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public boolean a(Context paramContext)
@@ -97,22 +97,22 @@ public class ContainerDrawable
     if (paramContext == null) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    if (this.d == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      this.d = new Paint();
+      this.d.setAntiAlias(true);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
+    this.d.setColor(0);
     return true;
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_Int == 0) {
+    if (this.f == 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.jdField_a_of_type_Int);
-    paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.d.setAlpha(this.b);
+    paramCanvas.drawRect(this.e, this.d);
   }
   
   public int getOpacity()
@@ -122,20 +122,20 @@ public class ContainerDrawable
   
   public boolean isRunning()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.c;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRect);
+    this.e.set(paramRect);
   }
   
   public void setAlpha(int paramInt) {}
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+    Paint localPaint = this.d;
     if (localPaint != null) {
       localPaint.setColorFilter(paramColorFilter);
     }
@@ -146,19 +146,19 @@ public class ContainerDrawable
     if (isRunning()) {
       stop();
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start :");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.f);
       QLog.d("HintDrawable", 2, localStringBuilder.toString());
     }
-    int j = this.jdField_b_of_type_Int;
+    int j = this.f;
     if (j == 1)
     {
       int i;
-      if (this.jdField_b_of_type_Boolean) {
+      if (this.h) {
         i = 150;
       } else {
         i = 300;
@@ -173,23 +173,23 @@ public class ContainerDrawable
   
   public void stop()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.c) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    this.c = false;
+    ValueAnimator localValueAnimator = this.g;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
-      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      this.g.removeAllUpdateListeners();
+      this.g = null;
     }
-    this.jdField_b_of_type_Int = 0;
+    this.f = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.ContainerDrawable
  * JD-Core Version:    0.7.0.1
  */

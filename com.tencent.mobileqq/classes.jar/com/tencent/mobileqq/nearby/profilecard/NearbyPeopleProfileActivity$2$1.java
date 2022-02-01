@@ -11,12 +11,12 @@ class NearbyPeopleProfileActivity$2$1
   public void run()
   {
     this.a.this$0.dismissWaittingDialog();
-    QQToast.a(this.a.this$0, 1, HardCodeUtil.a(2131707276), 0).a();
+    QQToast.makeText(this.a.this$0, 1, HardCodeUtil.a(2131905102), 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

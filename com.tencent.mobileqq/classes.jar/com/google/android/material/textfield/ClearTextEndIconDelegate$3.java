@@ -10,7 +10,7 @@ class ClearTextEndIconDelegate$3
   
   public void a(@NonNull TextInputLayout paramTextInputLayout)
   {
-    EditText localEditText = paramTextInputLayout.a();
+    EditText localEditText = paramTextInputLayout.getEditText();
     boolean bool;
     if ((localEditText.hasFocus()) && (ClearTextEndIconDelegate.a(localEditText.getText()))) {
       bool = true;
@@ -20,13 +20,13 @@ class ClearTextEndIconDelegate$3
     paramTextInputLayout.setEndIconVisible(bool);
     paramTextInputLayout.setEndIconCheckable(false);
     localEditText.setOnFocusChangeListener(ClearTextEndIconDelegate.a(this.a));
-    localEditText.removeTextChangedListener(ClearTextEndIconDelegate.a(this.a));
-    localEditText.addTextChangedListener(ClearTextEndIconDelegate.a(this.a));
+    localEditText.removeTextChangedListener(ClearTextEndIconDelegate.b(this.a));
+    localEditText.addTextChangedListener(ClearTextEndIconDelegate.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.ClearTextEndIconDelegate.3
  * JD-Core Version:    0.7.0.1
  */

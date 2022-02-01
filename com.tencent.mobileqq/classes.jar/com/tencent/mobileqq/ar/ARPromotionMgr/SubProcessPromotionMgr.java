@@ -12,18 +12,18 @@ import com.tencent.qphone.base.util.QLog;
 public class SubProcessPromotionMgr
   extends PromotionMgr
 {
-  static PromotionConfigInfo b;
-  final String c;
+  static PromotionConfigInfo g;
+  final String f;
   
   public SubProcessPromotionMgr(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SubProcessPromotionMgr_");
-    localStringBuilder.append(QQAudioHelper.b());
-    this.c = localStringBuilder.toString();
-    a(paramAppInterface);
-    paramAppInterface = this.c;
+    localStringBuilder.append(QQAudioHelper.d());
+    this.f = localStringBuilder.toString();
+    d(paramAppInterface);
+    paramAppInterface = this.f;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("SubProcessPromotionMgr, sProcessId[");
     localStringBuilder.append(BaseApplicationImpl.sProcessId);
@@ -51,17 +51,10 @@ public class SubProcessPromotionMgr
     super.a(paramPromotionConfigInfo);
     try
     {
-      jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+      g = paramPromotionConfigInfo;
       return;
     }
     finally {}
-  }
-  
-  boolean a(AppInterface paramAppInterface)
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
-    return paramAppInterface.getApp().registerReceiver(new SubProcessPromotionMgr.1(this), localIntentFilter) != null;
   }
   
   void b(AppInterface paramAppInterface) {}
@@ -70,12 +63,12 @@ public class SubProcessPromotionMgr
   {
     try
     {
-      paramString = ARPromotionConfigSP.a(this.jdField_b_of_type_JavaLangString, paramString);
+      paramString = ARPromotionConfigSP.b(this.b, paramString);
       a(paramString);
-      String str = this.c;
+      String str = this.f;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("reloadConfigInfo, Uin[");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("] configInfo[");
       localStringBuilder.append(paramString);
       localStringBuilder.append("]");
@@ -85,15 +78,22 @@ public class SubProcessPromotionMgr
     finally {}
   }
   
+  boolean d(AppInterface paramAppInterface)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.businessnotify.qq.to.subprocess");
+    return paramAppInterface.getApp().registerReceiver(new SubProcessPromotionMgr.1(this), localIntentFilter) != null;
+  }
+  
   public void onDestroy()
   {
     super.onDestroy();
-    jdField_b_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+    g = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.SubProcessPromotionMgr
  * JD-Core Version:    0.7.0.1
  */

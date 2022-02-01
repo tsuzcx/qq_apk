@@ -12,27 +12,11 @@ public class DelayReportUtils
 {
   private static Map<String, HashMap<String, String>> a;
   
-  private static void a()
-  {
-    try
-    {
-      if (a == null) {
-        a = new HashMap();
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   public static void a(String paramString1, String paramString2, String paramString3)
   {
     try
     {
-      a();
+      b();
       HashMap localHashMap2 = (HashMap)a.get(paramString1);
       HashMap localHashMap1 = localHashMap2;
       if (localHashMap2 == null)
@@ -111,10 +95,26 @@ public class DelayReportUtils
     }
     finally {}
   }
+  
+  private static void b()
+  {
+    try
+    {
+      if (a == null) {
+        a = new HashMap();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.DelayReportUtils
  * JD-Core Version:    0.7.0.1
  */

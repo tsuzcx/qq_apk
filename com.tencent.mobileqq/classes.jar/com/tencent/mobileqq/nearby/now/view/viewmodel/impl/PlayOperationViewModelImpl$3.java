@@ -24,9 +24,9 @@ class PlayOperationViewModelImpl$3
       int i = (int)paramMotionEvent.getRawX();
       int j = (int)paramMotionEvent.getRawY();
       if ((this.a.mVideoData != null) && (this.a.mVideoData.b != VideoData.a)) {
-        ((LikeAniView)this.a.mBinding.findViewById(2131370024)).a(i, j);
+        ((LikeAniView)this.a.mBinding.findViewById(2131437180)).a(i, j);
       }
-      if ((!PlayOperationViewModelImpl.access$500(this.a)) && (!PlayOperationViewModelImpl.access$600(this.a)) && (this.a.mBinding.findViewById(2131370024).getVisibility() == 0))
+      if ((!PlayOperationViewModelImpl.access$500(this.a)) && (!PlayOperationViewModelImpl.access$600(this.a)) && (this.a.mBinding.findViewById(2131437180).getVisibility() == 0))
       {
         PlayOperationViewModelImpl.access$702(this.a, false);
         this.a.onClickLike(null);
@@ -50,7 +50,7 @@ class PlayOperationViewModelImpl$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.3
  * JD-Core Version:    0.7.0.1
  */

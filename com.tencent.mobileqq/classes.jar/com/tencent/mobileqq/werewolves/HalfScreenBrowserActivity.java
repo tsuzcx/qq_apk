@@ -25,10 +25,10 @@ import com.tencent.smtt.sdk.WebView;
 public class HalfScreenBrowserActivity
   extends AbsBaseWebViewActivity
 {
-  private static final int jdField_a_of_type_Int = Color.argb(63, 0, 0, 0);
-  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private CustomWebView jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+  private static final int a = Color.argb(63, 0, 0, 0);
+  private RelativeLayout b;
+  private ProgressBar c;
+  private CustomWebView d;
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -43,15 +43,15 @@ public class HalfScreenBrowserActivity
   {
     setImmersiveStatus(0);
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new HalfScreenBrowserActivity.1(this));
+    this.b = new RelativeLayout(this);
+    this.b.setOnClickListener(new HalfScreenBrowserActivity.1(this));
     paramBundle = getIntent().getStringExtra("url");
     FrameLayout localFrameLayout = new FrameLayout(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130840486));
+    this.c = new ProgressBar(this);
+    this.c.setIndeterminateDrawable(getResources().getDrawable(2130841248));
     Object localObject = new FrameLayout.LayoutParams(AIOUtils.b(25.0F, getResources()), AIOUtils.b(25.0F, getResources()));
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
-    localFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject);
+    localFrameLayout.addView(this.c, (ViewGroup.LayoutParams)localObject);
     int i;
     if (paramBundle.indexOf("https://nearby.qq.com/werewolf/gift.html") >= 0) {
       i = 1;
@@ -66,16 +66,16 @@ public class HalfScreenBrowserActivity
     }
     localObject = new RelativeLayout.LayoutParams(-1, j);
     ((RelativeLayout.LayoutParams)localObject).addRule(12);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = getWebView(localFrameLayout);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setVisibility(4);
-    setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.b.addView(localFrameLayout, (ViewGroup.LayoutParams)localObject);
+    this.d = getWebView(localFrameLayout);
+    this.d.setVisibility(4);
+    setContentView(this.b);
     if (i != 0) {}
     try
     {
-      findViewById(2131376636).setVisibility(8);
+      findViewById(2131444897).setVisibility(8);
       label236:
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
+      this.d.loadUrl(paramBundle);
       AlbumUtil.anim(this, false, true);
       return true;
     }
@@ -116,15 +116,15 @@ public class HalfScreenBrowserActivity
   protected void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    this.d.setVisibility(0);
+    this.c.setVisibility(8);
     runOnUiThread(new HalfScreenBrowserActivity.2(this));
   }
   
   protected void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(jdField_a_of_type_Int);
+    this.b.setBackgroundColor(a);
   }
   
   protected void requestWindowFeature(Intent paramIntent)
@@ -134,7 +134,7 @@ public class HalfScreenBrowserActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

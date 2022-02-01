@@ -8,38 +8,38 @@ import java.util.List;
 class TavMixerEffect
   implements TAVVideoMixEffect
 {
-  private PagMixerEffect jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyPagMixerEffect;
-  private List<BaseEffectNode> jdField_a_of_type_JavaUtilList;
+  private PagMixerEffect a;
   private List<BaseEffectNode> b;
+  private List<BaseEffectNode> c;
   
   PagMixerEffect a()
   {
-    return this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyPagMixerEffect;
-  }
-  
-  List<BaseEffectNode> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   void a(PagMixerEffect paramPagMixerEffect)
   {
-    this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyPagMixerEffect = paramPagMixerEffect;
+    this.a = paramPagMixerEffect;
   }
   
   void a(List<BaseEffectNode> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.b = paramList;
   }
   
-  public List<BaseEffectNode> b()
+  List<BaseEffectNode> b()
   {
     return this.b;
   }
   
   public void b(List<BaseEffectNode> paramList)
   {
-    this.b = paramList;
+    this.c = paramList;
+  }
+  
+  public List<BaseEffectNode> c()
+  {
+    return this.c;
   }
   
   public TAVVideoMixEffect.Filter createFilter()
@@ -58,7 +58,7 @@ class TavMixerEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavMixerEffect
  * JD-Core Version:    0.7.0.1
  */

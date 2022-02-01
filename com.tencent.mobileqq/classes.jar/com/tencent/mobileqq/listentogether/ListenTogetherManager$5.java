@@ -15,8 +15,8 @@ class ListenTogetherManager$5
     if (paramISong != null)
     {
       ListenTogetherManager.a(this.a, paramISong);
-      this.a.a(paramISong.a());
-      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
+      this.a.b(paramISong.a());
+      String str = (String)ListenTogetherManager.m(this.a).get(paramISong.a());
       if (!TextUtils.isEmpty(str))
       {
         ListenTogetherManager.a(this.a, paramISong.a(), str);
@@ -28,7 +28,7 @@ class ListenTogetherManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.5
  * JD-Core Version:    0.7.0.1
  */

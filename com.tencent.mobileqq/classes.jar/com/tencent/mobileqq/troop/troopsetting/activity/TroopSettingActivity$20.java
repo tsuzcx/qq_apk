@@ -31,14 +31,14 @@ class TroopSettingActivity$20
         localITroopAppService.addTroopAppInfo(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
         localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
       }
-      localITroopAppService.setTroopCardAppListCache(this.a.a.troopUin, localArrayList);
-      boolean bool = this.a.j;
+      localITroopAppService.setTroopCardAppListCache(this.a.i.troopUin, localArrayList);
+      boolean bool = this.a.Y;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.20
  * JD-Core Version:    0.7.0.1
  */

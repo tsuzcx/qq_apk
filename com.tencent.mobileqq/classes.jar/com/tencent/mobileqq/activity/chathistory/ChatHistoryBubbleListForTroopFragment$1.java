@@ -11,12 +11,12 @@ class ChatHistoryBubbleListForTroopFragment$1
   
   public void a(MotionEvent paramMotionEvent)
   {
-    this.a.a.a(paramMotionEvent);
+    this.a.n.a(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment.1
  * JD-Core Version:    0.7.0.1
  */

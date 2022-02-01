@@ -24,52 +24,52 @@ class TroopZipInnerFileDownloadWorker$1
   {
     if (!paramBoolean)
     {
-      paramInt2 = TroopFileTransferUtil.Log.a;
+      paramInt2 = TroopFileTransferUtil.Log.b;
       paramString1 = new StringBuilder();
       paramString1.append("[");
-      paramString1.append(this.a.jdField_a_of_type_JavaLangString);
+      paramString1.append(this.a.f);
       paramString1.append("] onReqDownloadResult isSuccess:false  errCode:");
       paramString1.append(paramInt1);
       TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", paramInt2, paramString1.toString());
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 2;
+      this.a.q.k = 2;
       this.a.a(true, TroopTechReportUtils.TroopFileReportResultCode.b, TroopTechReportUtils.TroopFileReportResultCode.A, 103);
       return;
     }
-    int i = TroopFileTransferUtil.Log.a;
+    int i = TroopFileTransferUtil.Log.b;
     paramString1 = new StringBuilder();
     paramString1.append("[");
-    paramString1.append(this.a.jdField_a_of_type_JavaLangString);
+    paramString1.append(this.a.f);
     paramString1.append("] onReqDownloadResult isSuccess:true  int32_ret_code:");
     paramString1.append(paramInt1);
     TroopFileTransferUtil.Log.c("TroopZipInnerFileDownloadWorker", i, paramString1.toString());
     if ((TextUtils.isEmpty(paramString3)) && (paramInt2 == 0))
     {
-      paramInt1 = TroopFileTransferUtil.Log.a;
+      paramInt1 = TroopFileTransferUtil.Log.b;
       paramString1 = new StringBuilder();
       paramString1.append("[");
-      paramString1.append(this.a.jdField_a_of_type_JavaLangString);
+      paramString1.append(this.a.f);
       paramString1.append("] onReqDownloadResult. no host");
       TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", paramInt1, paramString1.toString());
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 1;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.d = 101;
+      this.a.q.k = 1;
+      this.a.q.l = 101;
       this.a.a(true, TroopTechReportUtils.TroopFileReportResultCode.c, TroopTechReportUtils.TroopFileReportResultCode.x, 1);
       return;
     }
     paramString1 = FileManagerUtil.a(paramByteStringMicro1);
     if (TextUtils.isEmpty(paramString1))
     {
-      paramInt1 = TroopFileTransferUtil.Log.a;
+      paramInt1 = TroopFileTransferUtil.Log.b;
       paramString1 = new StringBuilder();
       paramString1.append("[");
-      paramString1.append(this.a.jdField_a_of_type_JavaLangString);
+      paramString1.append(this.a.f);
       paramString1.append("] onReqDownloadResult. no string_download_url");
       TroopFileTransferUtil.Log.a("TroopZipInnerFileDownloadWorker", paramInt1, paramString1.toString());
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.c = 1;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerTroopFileDataReporter$ReportTransferItem.d = 102;
+      this.a.q.k = 1;
+      this.a.q.l = 102;
       this.a.a(true, TroopTechReportUtils.TroopFileReportResultCode.b, TroopTechReportUtils.TroopFileReportResultCode.w, 1);
       return;
     }
-    paramString2 = URLUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipInnerPath);
+    paramString2 = URLUtil.c(this.a.e.zipInnerPath);
     paramByteStringMicro1 = (QQAppInterface)this.mApp.get();
     if ((paramByteStringMicro1 != null) && (TroopFileUtils.a(paramByteStringMicro1)) && (TroopFileUtils.b(paramByteStringMicro1)) && (paramBundle != null))
     {
@@ -77,8 +77,8 @@ class TroopZipInnerFileDownloadWorker$1
       if (!TextUtils.isEmpty(paramByteStringMicro1))
       {
         paramString4 = this.a;
-        paramString4.jdField_a_of_type_Boolean = true;
-        paramString4.g = paramByteStringMicro1;
+        paramString4.c = true;
+        paramString4.A = paramByteStringMicro1;
         i = (short)paramBundle.getInt("httpsPort", 0);
         paramInt1 = i;
         if (i != 0) {
@@ -90,7 +90,7 @@ class TroopZipInnerFileDownloadWorker$1
     }
     paramInt1 = 0;
     label461:
-    if (!this.a.jdField_a_of_type_Boolean) {
+    if (!this.a.c) {
       paramInt1 = paramInt3;
     }
     paramByteStringMicro1 = this.a;
@@ -98,17 +98,17 @@ class TroopZipInnerFileDownloadWorker$1
     paramString4.append("/ftn_compress_getfile/rkey=");
     paramString4.append(paramString1);
     paramString4.append("&filetype=");
-    paramString4.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.zipType);
+    paramString4.append(this.a.e.zipType);
     paramString4.append("&path=");
     paramString4.append(paramString2);
     paramString4.append("&mType=Other");
-    paramByteStringMicro1.f = paramString4.toString();
+    paramByteStringMicro1.b = paramString4.toString();
     paramString1 = new StringBuilder();
     paramString1.append(paramString3);
     paramString1.append(":");
     paramString1.append(paramInt1);
     paramString1 = paramString1.toString();
-    this.a.jdField_a_of_type_JavaUtilList.add(paramString1);
+    this.a.a.add(paramString1);
     if (paramInt2 != 0)
     {
       paramString2 = new StringBuilder();
@@ -116,14 +116,14 @@ class TroopZipInnerFileDownloadWorker$1
       paramString2.append(":");
       paramString2.append(paramInt1);
       paramString2 = paramString2.toString();
-      this.a.jdField_a_of_type_JavaUtilList.add(paramString2);
+      this.a.a.add(paramString2);
     }
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.c)
     {
       paramString2 = new StringBuilder();
       paramString2.append("https://");
       paramString2.append(paramString1);
-      paramString2.append(this.a.f);
+      paramString2.append(this.a.b);
       paramString1 = paramString2.toString();
     }
     else
@@ -131,23 +131,23 @@ class TroopZipInnerFileDownloadWorker$1
       paramString2 = new StringBuilder();
       paramString2.append("http://");
       paramString2.append(paramString1);
-      paramString2.append(this.a.f);
+      paramString2.append(this.a.b);
       paramString1 = paramString2.toString();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.PreviewUrl = paramString1;
+    this.a.e.PreviewUrl = paramString1;
     try
     {
       paramString1 = new URL(paramString1);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramString1.getHost();
+      this.a.e.DownloadIp = paramString1.getHost();
     }
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
     }
-    i = TroopFileTransferUtil.Log.a;
+    i = TroopFileTransferUtil.Log.b;
     paramString1 = new StringBuilder();
     paramString1.append("[");
-    paramString1.append(this.a.jdField_a_of_type_JavaLangString);
+    paramString1.append(this.a.f);
     paramString1.append("] onReqDownloadResult. str_download_dns:");
     paramString1.append(paramString3);
     paramString1.append(" int32_server_ip:");
@@ -155,20 +155,20 @@ class TroopZipInnerFileDownloadWorker$1
     paramString1.append(" int32_server_port:");
     paramString1.append(paramInt3);
     paramString1.append(" mUrlParm:");
-    paramString1.append(this.a.f);
+    paramString1.append(this.a.b);
     paramString1.append(" port:");
     paramString1.append(paramInt1);
     paramString1.append(" isHttps:");
-    paramString1.append(this.a.jdField_a_of_type_Boolean);
+    paramString1.append(this.a.c);
     paramString1.append(" httpsDomain:");
-    paramString1.append(this.a.g);
+    paramString1.append(this.a.A);
     TroopFileTransferUtil.Log.c("TroopZipInnerFileDownloadWorker", i, paramString1.toString());
-    this.a.g();
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.download.TroopZipInnerFileDownloadWorker.1
  * JD-Core Version:    0.7.0.1
  */

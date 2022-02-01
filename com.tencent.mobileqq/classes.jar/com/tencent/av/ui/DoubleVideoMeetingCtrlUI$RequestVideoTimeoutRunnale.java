@@ -12,18 +12,18 @@ class DoubleVideoMeetingCtrlUI$RequestVideoTimeoutRunnale
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController == null)
+    if (this.this$0.am == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(this.this$0.d, 2, "RequestVideoTimeoutRunnale-->VideoControl is null");
+        QLog.d(this.this$0.X, 2, "RequestVideoTimeoutRunnale-->VideoControl is null");
       }
       return;
     }
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a("Meeting_RequestVideoTimeoutRunnale");
+    this.this$0.am.f("Meeting_RequestVideoTimeoutRunnale");
     this.this$0.e(true);
-    TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1036);
-    TipsUtil.a(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1037);
-    this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().b(this.this$0.b, true, true);
+    TipsUtil.b(this.this$0.al, 1036);
+    TipsUtil.b(this.this$0.al, 1037);
+    this.this$0.am.k().b(this.this$0.k, true, true);
   }
 }
 

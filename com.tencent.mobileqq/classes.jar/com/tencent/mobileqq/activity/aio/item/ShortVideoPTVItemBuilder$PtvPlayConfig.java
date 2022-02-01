@@ -8,15 +8,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class ShortVideoPTVItemBuilder$PtvPlayConfig
 {
-  public static int a = 15;
   public static boolean a = false;
-  public static int b = 20;
   public static boolean b = true;
+  public static int c = 15;
+  public static int d = 20;
   
   public static void a()
   {
     Object localObject;
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.PtvConfig.name(), null);
       if (QLog.isColorLevel())
@@ -35,7 +35,7 @@ public class ShortVideoPTVItemBuilder$PtvPlayConfig
     label150:
     try
     {
-      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
+      d = Integer.parseInt(localObject[0]);
     }
     catch (Exception localException2)
     {
@@ -43,41 +43,41 @@ public class ShortVideoPTVItemBuilder$PtvPlayConfig
       break label109;
     }
     if (!TextUtils.isEmpty(localObject[1])) {
-      jdField_b_of_type_Boolean = localObject[1].equals("1");
+      b = localObject[1].equals("1");
     }
     if (!TextUtils.isEmpty(localObject[2])) {}
     try
     {
-      jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+      c = Integer.parseInt(localObject[2]);
     }
     catch (Exception localException1)
     {
       break label150;
     }
-    jdField_a_of_type_Int = 15;
-    jdField_a_of_type_Boolean = true;
+    c = 15;
+    a = true;
     break label171;
-    jdField_b_of_type_Boolean = true;
-    jdField_a_of_type_Int = 15;
+    b = true;
+    c = 15;
     label171:
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("initConfig(), sReadFromDPC=");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(a);
       ((StringBuilder)localObject).append(", sAutoPlayInAIO:");
-      ((StringBuilder)localObject).append(jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(b);
       ((StringBuilder)localObject).append(", sRequestedFPS:");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(c);
       ((StringBuilder)localObject).append(",sPtvMaxTime:");
-      ((StringBuilder)localObject).append(jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(d);
       QLog.d("ShortVideo.PtvPlayConfig", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.PtvPlayConfig
  * JD-Core Version:    0.7.0.1
  */

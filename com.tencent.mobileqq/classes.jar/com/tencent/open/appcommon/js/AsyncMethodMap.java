@@ -5,24 +5,22 @@ import java.util.HashMap;
 
 public class AsyncMethodMap
 {
-  public static ArrayList<String> a;
-  public static HashMap<String, Class<?>> a;
+  public static ArrayList<String> a = new ArrayList();
+  public static HashMap<String, Class<?>> b = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_a_of_type_JavaUtilArrayList.add("getQueryDownloadAction");
-    jdField_a_of_type_JavaUtilArrayList.add("checkUpdate");
-    jdField_a_of_type_JavaUtilArrayList.add("picUpload");
-    jdField_a_of_type_JavaUtilArrayList.add("gSetPackageScanSetting");
-    jdField_a_of_type_JavaUtilArrayList.add("getAllSDKDownloadInfos");
-    jdField_a_of_type_JavaUtilArrayList.add("queryInstalledAppInfo");
+    a.add("getQueryDownloadAction");
+    a.add("checkUpdate");
+    a.add("picUpload");
+    a.add("gSetPackageScanSetting");
+    a.add("getAllSDKDownloadInfos");
+    a.add("queryInstalledAppInfo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.appcommon.js.AsyncMethodMap
  * JD-Core Version:    0.7.0.1
  */

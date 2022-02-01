@@ -16,19 +16,19 @@ public class TroopManageProxyActivity
   public static void a(String paramString1, String paramString2, Class paramClass, Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString3, String paramString4, int paramInt)
   {
     IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(1);
-    localPluginParams.b = paramString1;
-    localPluginParams.e = paramString2;
-    localPluginParams.jdField_a_of_type_JavaLangString = paramString4;
-    localPluginParams.f = paramString3;
-    localPluginParams.jdField_a_of_type_JavaLangClass = paramClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localPluginParams.jdField_a_of_type_AndroidAppDialog = paramDialog;
+    localPluginParams.d = paramString1;
+    localPluginParams.g = paramString2;
+    localPluginParams.c = paramString4;
+    localPluginParams.h = paramString3;
+    localPluginParams.i = paramClass;
+    localPluginParams.j = paramIntent;
+    localPluginParams.l = paramDialog;
     paramIntent.putExtra("userQqResources", 1);
     paramIntent.putExtra("param_plugin_gesturelock", true);
-    localPluginParams.jdField_a_of_type_AndroidContentIntent.putExtra("useSkinEngine", true);
-    localPluginParams.c = paramInt;
-    localPluginParams.d = 10000;
-    localPluginParams.g = null;
+    localPluginParams.j.putExtra("useSkinEngine", true);
+    localPluginParams.k = paramInt;
+    localPluginParams.r = 10000;
+    localPluginParams.q = null;
     IPluginManager.a(paramActivity, localPluginParams);
     ReportController.b(null, "P_CliOper", "BizTechReport", "", "troop_manage_plugin", "load_plugin_v2", 0, 0, null, null, null, null);
   }
@@ -56,7 +56,7 @@ public class TroopManageProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.troop.TroopManageProxyActivity
  * JD-Core Version:    0.7.0.1
  */

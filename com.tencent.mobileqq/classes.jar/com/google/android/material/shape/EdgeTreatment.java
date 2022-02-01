@@ -9,14 +9,14 @@ public class EdgeTreatment
     paramShapePath.b(paramFloat1, 0.0F);
   }
   
-  boolean a()
+  boolean f()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.shape.EdgeTreatment
  * JD-Core Version:    0.7.0.1
  */

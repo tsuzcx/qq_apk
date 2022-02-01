@@ -14,22 +14,22 @@ public class ShareGroupCardShareMode
   public static final String a;
   public static final String b;
   public static final String c;
-  private final int[] a;
   protected String d;
+  private final int[] o;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("src_type=app&version=1&unionid=%s&fromId=%s&storysharefrom=%s&fromuid=%s&one_page=0");
-    localStringBuilder.append(StoryApi.a(2131699903));
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(StoryApi.b(2131897956));
+    a = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("mqqapi://qstory/sharegroupcard?");
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     b = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("https://story.now.qq.com/mobile/transfer.html?");
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(a);
     localStringBuilder.append("&actionnamekey=4");
     c = localStringBuilder.toString();
   }
@@ -37,9 +37,9 @@ public class ShareGroupCardShareMode
   protected String a(int paramInt)
   {
     if (paramInt == 1) {
-      return String.format(b, new Object[] { this.d, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt), this.i });
+      return String.format(b, new Object[] { this.d, Integer.valueOf(this.o[paramInt]), b(paramInt), this.i });
     }
-    return String.format(c, new Object[] { this.d, Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[paramInt]), b(paramInt), this.i });
+    return String.format(c, new Object[] { this.d, Integer.valueOf(this.o[paramInt]), b(paramInt), this.i });
   }
   
   protected void a()
@@ -52,7 +52,7 @@ public class ShareGroupCardShareMode
       ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(".png");
       localObject = ((StringBuilder)localObject).toString();
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor.a(new ShareGroupAvatarSaveFileJob(this.d, (String)localObject)).a(new ShareGroupCardShareMode.1(this, (String)localObject)).a(new JobExecutor.OnDataInitBeforePrepareCallBack(this));
+      this.r.a(new ShareGroupAvatarSaveFileJob(this.d, (String)localObject)).a(new ShareGroupCardShareMode.1(this, (String)localObject)).a(new JobExecutor.OnDataInitBeforePrepareCallBack(this));
       return;
     }
     super.a();
@@ -60,7 +60,7 @@ public class ShareGroupCardShareMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.ShareGroupCardShareMode
  * JD-Core Version:    0.7.0.1
  */

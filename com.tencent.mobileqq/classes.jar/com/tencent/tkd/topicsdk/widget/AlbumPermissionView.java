@@ -28,43 +28,38 @@ import org.jetbrains.annotations.Nullable;
 public final class AlbumPermissionView
   extends LinearLayout
 {
-  public static final AlbumPermissionView.Companion a;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  public static final AlbumPermissionView.Companion a = new AlbumPermissionView.Companion(null);
+  private View b;
+  private TextView c;
   @Nullable
-  private IPermission.ISimpleCallback jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission$ISimpleCallback;
-  private final AlbumPermissionView.storagePermissionObserver.1 jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView$storagePermissionObserver$1;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView$Companion = new AlbumPermissionView.Companion(null);
-  }
+  private IPermission.ISimpleCallback d;
+  private final AlbumPermissionView.storagePermissionObserver.1 e;
   
   public AlbumPermissionView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     boolean bool = false;
     if (paramAttributeSet != null) {
-      bool = paramAttributeSet.getAttributeBooleanValue(R.styleable.a, false);
+      bool = paramAttributeSet.getAttributeBooleanValue(R.styleable.b, false);
     }
     if (!bool) {
-      LayoutInflater.from(paramContext).inflate(R.layout.y, (ViewGroup)this, true);
+      LayoutInflater.from(paramContext).inflate(R.layout.t, (ViewGroup)this, true);
     } else {
-      LayoutInflater.from(paramContext).inflate(R.layout.x, (ViewGroup)this, true);
+      LayoutInflater.from(paramContext).inflate(R.layout.s, (ViewGroup)this, true);
     }
     setOrientation(1);
     setGravity(17);
-    paramContext = findViewById(R.id.aY);
+    paramContext = findViewById(R.id.az);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_enable_album_permission)");
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    paramContext = findViewById(R.id.bh);
+    this.b = paramContext;
+    paramContext = findViewById(R.id.aG);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_tips)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener((View.OnClickListener)new AlbumPermissionView.2(this));
-    this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView$storagePermissionObserver$1 = new AlbumPermissionView.storagePermissionObserver.1(this);
+    this.c = ((TextView)paramContext);
+    this.b.setOnClickListener((View.OnClickListener)new AlbumPermissionView.2(this));
+    this.e = new AlbumPermissionView.storagePermissionObserver.1(this);
   }
   
-  private final Activity a()
+  private final Activity getActivity()
   {
     Context localContext = getContext();
     Object localObject = localContext;
@@ -84,37 +79,37 @@ public final class AlbumPermissionView
     }
   }
   
-  @Nullable
-  public final IPermission.ISimpleCallback a()
+  public final boolean getNeedShowContentView()
   {
-    return this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission$ISimpleCallback;
+    return PermissionUtils.a.a(getActivity());
   }
   
-  public final boolean a()
+  @Nullable
+  public final IPermission.ISimpleCallback getOnPermissionCallback()
   {
-    return PermissionUtils.a.a(a());
+    return this.d;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    DispatchManager.a.a(StoragePermissionEvent.class, (IEventObserver)this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView$storagePermissionObserver$1);
+    DispatchManager.a.a(StoragePermissionEvent.class, (IEventObserver)this.e);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    DispatchManager.a.b(StoragePermissionEvent.class, (IEventObserver)this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetAlbumPermissionView$storagePermissionObserver$1);
+    DispatchManager.a.b(StoragePermissionEvent.class, (IEventObserver)this.e);
   }
   
   public final void setOnPermissionCallback(@Nullable IPermission.ISimpleCallback paramISimpleCallback)
   {
-    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIPermission$ISimpleCallback = paramISimpleCallback;
+    this.d = paramISimpleCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AlbumPermissionView
  * JD-Core Version:    0.7.0.1
  */

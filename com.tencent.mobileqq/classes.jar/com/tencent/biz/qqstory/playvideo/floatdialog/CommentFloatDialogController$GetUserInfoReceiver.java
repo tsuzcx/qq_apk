@@ -16,10 +16,10 @@ public class CommentFloatDialogController$GetUserInfoReceiver
   
   public void a(@NonNull CommentFloatDialogController paramCommentFloatDialogController, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (paramUpdateUserInfoEvent.a.isSuccess())
+    if (paramUpdateUserInfoEvent.g.isSuccess())
     {
       SLog.a(this.TAG, "receive user info event. %s.", paramUpdateUserInfoEvent.toString());
-      paramCommentFloatDialogController = paramCommentFloatDialogController.a();
+      paramCommentFloatDialogController = paramCommentFloatDialogController.c();
       if (paramCommentFloatDialogController != null) {
         paramCommentFloatDialogController.a();
       }
@@ -33,7 +33,7 @@ public class CommentFloatDialogController$GetUserInfoReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogController.GetUserInfoReceiver
  * JD-Core Version:    0.7.0.1
  */

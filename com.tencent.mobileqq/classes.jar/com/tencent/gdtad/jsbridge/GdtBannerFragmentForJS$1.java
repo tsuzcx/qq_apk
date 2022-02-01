@@ -18,13 +18,13 @@ class GdtBannerFragmentForJS$1
     try
     {
       int i = GdtUIUtils.a(300.0F, this.this$0.getResources());
-      int j = GdtBannerViewBuilder.b(GdtBannerFragmentForJS.a(this.this$0).a, i);
+      int j = GdtBannerViewBuilder.b(GdtBannerFragmentForJS.a(this.this$0).c, i);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, j);
       localLayoutParams.gravity = 1;
       localLayoutParams.topMargin = 100;
       localLayoutParams.bottomMargin = 100;
-      GdtBannerFragmentForJS.a(this.this$0).a().setLayoutParams(localLayoutParams);
-      GdtBannerFragmentForJS.a(this.this$0).setSize(i, j);
+      GdtBannerFragmentForJS.b(this.this$0).getView().setLayoutParams(localLayoutParams);
+      GdtBannerFragmentForJS.b(this.this$0).setSize(i, j);
       this.this$0.a.invalidate();
       return;
     }
@@ -36,7 +36,7 @@ class GdtBannerFragmentForJS$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS.1
  * JD-Core Version:    0.7.0.1
  */

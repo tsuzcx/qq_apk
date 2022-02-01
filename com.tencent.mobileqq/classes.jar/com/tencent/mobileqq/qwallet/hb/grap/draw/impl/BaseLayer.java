@@ -8,27 +8,18 @@ import android.view.MotionEvent;
 public abstract class BaseLayer
 {
   protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  protected DoodleView b;
+  protected Rect c = new Rect();
   
   public BaseLayer(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     if (paramDoodleView != null)
     {
-      this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDoodleView = paramDoodleView;
+      this.a = paramDoodleView.getContext();
+      this.b = paramDoodleView;
       return;
     }
     throw new IllegalStateException("DoodleView can not be null.");
-  }
-  
-  public void a()
-  {
-    DoodleView localDoodleView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapDrawImplDoodleView;
-    if (localDoodleView != null) {
-      localDoodleView.invalidate();
-    }
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -38,7 +29,7 @@ public abstract class BaseLayer
       if (paramInt2 <= 0) {
         return;
       }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+      this.c.set(0, 0, paramInt1, paramInt2);
     }
   }
   
@@ -49,27 +40,35 @@ public abstract class BaseLayer
   
   public boolean a()
   {
-    return b();
+    return c();
   }
   
   public final boolean a(MotionEvent paramMotionEvent)
   {
-    a();
+    b();
     return b(paramMotionEvent);
+  }
+  
+  public void b()
+  {
+    DoodleView localDoodleView = this.b;
+    if (localDoodleView != null) {
+      localDoodleView.invalidate();
+    }
   }
   
   protected abstract void b(Canvas paramCanvas);
   
-  public boolean b()
+  protected abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public boolean c()
   {
     return true;
   }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.draw.impl.BaseLayer
  * JD-Core Version:    0.7.0.1
  */

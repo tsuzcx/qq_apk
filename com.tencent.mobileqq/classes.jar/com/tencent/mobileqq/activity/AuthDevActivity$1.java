@@ -12,11 +12,11 @@ class AuthDevActivity$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton == AuthDevActivity.access$000(this.a).a()) {
+    if (paramCompoundButton == AuthDevActivity.access$000(this.a).getSwitch()) {
       AuthDevActivity.access$100(this.a);
-    } else if (paramCompoundButton == AuthDevActivity.access$200(this.a).a()) {
+    } else if (paramCompoundButton == AuthDevActivity.access$200(this.a).getSwitch()) {
       AuthDevActivity.access$300(this.a);
-    } else if (paramCompoundButton == AuthDevActivity.access$400(this.a).a()) {
+    } else if (paramCompoundButton == AuthDevActivity.access$400(this.a).getSwitch()) {
       AuthDevActivity.access$500(this.a, paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -24,7 +24,7 @@ class AuthDevActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevActivity.1
  * JD-Core Version:    0.7.0.1
  */

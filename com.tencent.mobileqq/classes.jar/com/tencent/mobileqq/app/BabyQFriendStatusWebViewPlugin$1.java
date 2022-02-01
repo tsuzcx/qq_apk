@@ -32,15 +32,15 @@ class BabyQFriendStatusWebViewPlugin$1
       }
       if (i == 0)
       {
-        if (BabyQFriendStatusWebViewPlugin.a(this.a) != null)
+        if (BabyQFriendStatusWebViewPlugin.b(this.a) != null)
         {
-          paramContext = new Intent(BabyQFriendStatusWebViewPlugin.a(this.a), ChatActivity.class);
+          paramContext = new Intent(BabyQFriendStatusWebViewPlugin.b(this.a), ChatActivity.class);
           paramContext.putExtra("uin", AppConstants.BABY_Q_UIN);
           paramContext.putExtra("uintype", 0);
           paramContext.putExtra("uinname", "babyQ");
-          paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.a(this.a).getString(2131690706));
-          BabyQFriendStatusWebViewPlugin.a(this.a).startActivity(paramContext);
-          BabyQFriendStatusWebViewPlugin.a(this.a).finish();
+          paramContext.putExtra("selfSet_leftViewText", BabyQFriendStatusWebViewPlugin.b(this.a).getString(2131887625));
+          BabyQFriendStatusWebViewPlugin.b(this.a).startActivity(paramContext);
+          BabyQFriendStatusWebViewPlugin.b(this.a).finish();
         }
       }
       else
@@ -58,7 +58,7 @@ class BabyQFriendStatusWebViewPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

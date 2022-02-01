@@ -13,20 +13,20 @@ class PublicAccountChatPie$13
   {
     if (paramValueAnimator != null)
     {
-      if (this.jdField_a_of_type_AndroidViewView == null) {
+      if (this.a == null) {
         return;
       }
       float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-      paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      int i = this.jdField_a_of_type_Int;
-      paramValueAnimator.height = ((int)(i + f * (this.b - i)));
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
+      paramValueAnimator = this.a.getLayoutParams();
+      int i = this.b;
+      paramValueAnimator.height = ((int)(i + f * (this.c - i)));
+      this.a.requestLayout();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.13
  * JD-Core Version:    0.7.0.1
  */

@@ -13,19 +13,19 @@ class PluginManagerInterfaceImpl$3
   
   public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicPluginManagerInterfaceImpl.a.a(this.jdField_a_of_type_ComTencentBizNowNowRecordInfo.a(), this.jdField_a_of_type_ComTencentBizNowNowRecordInfo.a(), paramLong, 0);
+    this.c.a.a(this.a.a(), this.a.b(), paramLong, 0);
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("isOnline", paramBoolean);
     localBundle.putString("videoUrl", paramString1);
     localBundle.putString("vid", paramString2);
     localBundle.putLong("timeConsume", paramLong);
     localBundle.putString("mqqApi", paramString3);
-    this.jdField_a_of_type_ComTencentQqinterfaceCommonCallback.onResult(localBundle);
+    this.b.onResult(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.PluginManagerInterfaceImpl.3
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ final class DownloadApi$1
   
   public void run()
   {
-    Object localObject1 = DownloadApi.jdField_a_of_type_JavaLangString;
+    Object localObject1 = DownloadApi.a;
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append("doDownloadAction pParams=");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_AndroidOsBundle);
+    ((StringBuilder)localObject2).append(this.a);
     ((StringBuilder)localObject2).append(" source=");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(this.b);
     ((StringBuilder)localObject2).append(" myAppConfig=");
-    ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject2).append(this.c);
     ((StringBuilder)localObject2).append(" ac==null is");
-    Object localObject3 = this.jdField_a_of_type_AndroidAppActivity;
+    Object localObject3 = this.d;
     boolean bool2 = false;
     boolean bool1;
     if (localObject3 == null) {
@@ -34,60 +34,60 @@ final class DownloadApi$1
     }
     ((StringBuilder)localObject2).append(bool1);
     LogUtility.a((String)localObject1, ((StringBuilder)localObject2).toString());
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
+    if (this.a == null)
     {
-      LogUtility.e(DownloadApi.jdField_a_of_type_JavaLangString, "doDownloadAction pParams == null return");
+      LogUtility.e(DownloadApi.a, "doDownloadAction pParams == null return");
       return;
     }
-    DownloadManager.a().a();
-    localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.b);
-    this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.t, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putInt(DownloadConstants.G, 1);
-    localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.D);
-    localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
+    DownloadManager.b().a();
+    localObject2 = this.a.getString(DownloadConstants.b);
+    this.a.putString(DownloadConstants.t, this.b);
+    this.a.putInt(DownloadConstants.G, 1);
+    localObject3 = this.a.getString(DownloadConstants.D);
+    localObject1 = this.a.getString(DownloadConstants.i);
     if ((TextUtils.isEmpty((CharSequence)localObject3)) || (((String)localObject3).equals("0"))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.D, "");
+      this.a.putString(DownloadConstants.D, "");
     }
-    localObject2 = DownloadManager.a().a((String)localObject2);
-    if ((localObject2 == null) && ("biz_src_yyb".equals(this.jdField_a_of_type_JavaLangString)) && (ControlPolicyUtil.e()))
+    localObject2 = DownloadManager.b().d((String)localObject2);
+    if ((localObject2 == null) && ("biz_src_yyb".equals(this.b)) && (ControlPolicyUtil.h()))
     {
-      int i = this.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.k);
-      localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.f);
+      int i = this.a.getInt(DownloadConstants.k);
+      localObject1 = this.a.getString(DownloadConstants.f);
       if ((i == 5) && (((String)localObject1).equals("com.tencent.android.qqdownloader"))) {
-        DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle);
+        DownloadApi.c(this.a);
       }
     }
     else if ((localObject2 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
     {
       ((DownloadInfo)localObject2).h = ((String)localObject1);
     }
-    if (DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle))
+    if (DownloadApi.c(this.a))
     {
-      LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "doDownloadAction installApp");
+      LogUtility.a(DownloadApi.a, "doDownloadAction installApp");
       return;
     }
-    localObject1 = this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail;
-    if ((localObject1 != null) && (((ApkUpdateDetail)localObject1).updatemethod == 2) && (TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.j))) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url))) {
-      this.jdField_a_of_type_AndroidOsBundle.putString(DownloadConstants.j, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail.url);
+    localObject1 = this.e;
+    if ((localObject1 != null) && (((ApkUpdateDetail)localObject1).updatemethod == 2) && (TextUtils.isEmpty(this.a.getString(DownloadConstants.j))) && (!TextUtils.isEmpty(this.e.url))) {
+      this.a.putString(DownloadConstants.j, this.e.url);
     }
-    if (this.jdField_a_of_type_Int == 0)
+    if (this.c == 0)
     {
-      if ((localObject2 != null) && (((DownloadInfo)localObject2).c == 1))
+      if ((localObject2 != null) && (((DownloadInfo)localObject2).o == 1))
       {
-        DownloadApi.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+        DownloadApi.b(this.d, this.a, this.b, this.e, this.c);
         return;
       }
-      boolean bool3 = APNUtil.d(CommonDataAdapter.a().a());
-      boolean bool4 = APNUtil.c(CommonDataAdapter.a().a());
+      boolean bool3 = APNUtil.k(CommonDataAdapter.a().b());
+      boolean bool4 = APNUtil.j(CommonDataAdapter.a().b());
       if ((localObject2 != null) && (((DownloadInfo)localObject2).a() != 1)) {
         bool1 = false;
       } else {
         bool1 = true;
       }
-      if (this.jdField_a_of_type_AndroidAppActivity == null) {
+      if (this.d == null) {
         bool2 = true;
       }
-      localObject1 = DownloadApi.jdField_a_of_type_JavaLangString;
+      localObject1 = DownloadApi.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("check wifi dialog isWifiActive=");
       ((StringBuilder)localObject2).append(bool4);
@@ -96,25 +96,25 @@ final class DownloadApi$1
       ((StringBuilder)localObject2).append(" acIsNull=");
       ((StringBuilder)localObject2).append(bool2);
       LogUtility.a((String)localObject1, ((StringBuilder)localObject2).toString());
-      if ((bool3) && (!bool2) && (!bool4) && (bool1) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.s)))
+      if ((bool3) && (!bool2) && (!bool4) && (bool1) && (this.a.getBoolean(DownloadConstants.s)))
       {
-        DownloadManager.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+        DownloadManager.b().a(this.d, this.a, this.b, this.e, this.c);
         return;
       }
-      DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+      DownloadApi.a(this.a, this.b, this.e);
       return;
     }
-    if ((localObject2 != null) && (((DownloadInfo)localObject2).c != 1))
+    if ((localObject2 != null) && (((DownloadInfo)localObject2).o != 1))
     {
-      DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+      DownloadApi.a(this.a, this.b, this.e);
       return;
     }
-    DownloadApi.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.jdField_a_of_type_Int);
+    DownloadApi.b(this.d, this.a, this.b, this.e, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.1
  * JD-Core Version:    0.7.0.1
  */

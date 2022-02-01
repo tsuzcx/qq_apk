@@ -11,8 +11,8 @@ import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
 public class XRecyclerView
   extends FrameLayout
 {
-  private LoadingMoreHelper jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper;
-  private RecyclerViewWithHeaderFooter jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter;
+  private RecyclerViewWithHeaderFooter a;
+  private LoadingMoreHelper b;
   
   public XRecyclerView(Context paramContext)
   {
@@ -35,15 +35,25 @@ public class XRecyclerView
   private void a()
   {
     LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper = new LoadingMoreHelper(localLoadMoreLayout, getContext());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.a(localLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter.setOnScrollListener(new XRecyclerView.1(this));
+    this.b = new LoadingMoreHelper(localLoadMoreLayout, getContext());
+    this.a.a(localLoadMoreLayout);
+    this.a.setOnScrollListener(new XRecyclerView.1(this));
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewXrecyclerviewRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)LayoutInflater.from(paramContext).inflate(2131561754, this).findViewById(2131376836));
+    this.a = ((RecyclerViewWithHeaderFooter)LayoutInflater.from(paramContext).inflate(2131628133, this).findViewById(2131445167));
     a();
+  }
+  
+  public LoadingMoreHelper getLoadMoreLayoutHelper()
+  {
+    return this.b;
+  }
+  
+  public RecyclerViewWithHeaderFooter getRecyclerView()
+  {
+    return this.a;
   }
 }
 

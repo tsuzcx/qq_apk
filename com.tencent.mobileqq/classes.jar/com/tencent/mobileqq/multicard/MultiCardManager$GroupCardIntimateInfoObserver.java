@@ -33,17 +33,17 @@ class MultiCardManager$GroupCardIntimateInfoObserver
       ((StringBuilder)localObject2).append((String)???);
       QLog.d("MultiCardManager", 2, ((StringBuilder)localObject2).toString());
     }
-    if ((paramLong == MultiCardManager.a(this.a)) && (MultiCardManager.d(this.a) != null))
+    if ((paramLong == MultiCardManager.d(this.a)) && (MultiCardManager.g(this.a) != null))
     {
       if (paramArrayList != null) {
-        synchronized (MultiCardManager.a(this.a))
+        synchronized (MultiCardManager.b(this.a))
         {
-          MultiCardManager.a(this.a).put(Long.valueOf(paramLong), (ArrayList)paramArrayList.clone());
+          MultiCardManager.b(this.a).put(Long.valueOf(paramLong), (ArrayList)paramArrayList.clone());
         }
       }
-      synchronized (MultiCardManager.d(this.a))
+      synchronized (MultiCardManager.g(this.a))
       {
-        localObject2 = (WeakReference)MultiCardManager.d(this.a).get(Long.valueOf(paramLong));
+        localObject2 = (WeakReference)MultiCardManager.g(this.a).get(Long.valueOf(paramLong));
         if (localObject2 != null)
         {
           ??? = (MultiCardManager.GetGroupRecommendUinListsListener)((WeakReference)localObject2).get();
@@ -119,23 +119,23 @@ class MultiCardManager$GroupCardIntimateInfoObserver
             ((StringBuilder)???).append(???.toString());
             QLog.d("MultiCardManager", 2, ((StringBuilder)???).toString());
           }
-          synchronized (MultiCardManager.e(this.a))
+          synchronized (MultiCardManager.h(this.a))
           {
             ??? = ???.iterator();
             while (???.hasNext())
             {
               localObject2 = (Long)???.next();
-              MultiCardManager.e(this.a).remove(localObject2);
+              MultiCardManager.h(this.a).remove(localObject2);
             }
             l3 = l1;
           }
         }
       }
     }
-    if ((l3 == MultiCardManager.a(this.a)) && (MultiCardManager.f(this.a) != null)) {
-      synchronized (MultiCardManager.f(this.a))
+    if ((l3 == MultiCardManager.d(this.a)) && (MultiCardManager.i(this.a) != null)) {
+      synchronized (MultiCardManager.i(this.a))
       {
-        ??? = (WeakReference)MultiCardManager.f(this.a).get(Long.valueOf(l3));
+        ??? = (WeakReference)MultiCardManager.i(this.a).get(Long.valueOf(l3));
         if (??? != null)
         {
           ??? = (MultiCardManager.GetGroupIntimateInfoListListener)((WeakReference)???).get();
@@ -151,7 +151,7 @@ class MultiCardManager$GroupCardIntimateInfoObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.GroupCardIntimateInfoObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -21,33 +21,33 @@ class RIJSkinOperationPopupStep$4
   
   public void onClick(View paramView)
   {
-    paramView = (ReadInJoyRefreshManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
-    if (paramView.a() == 1)
+    paramView = (ReadInJoyRefreshManager)this.a.getManager(QQManagerFactory.READ_INJOY_REFRESH_MANAGER);
+    if (paramView.d() == 1)
     {
       paramView.a(false);
-      paramView = paramView.a(RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep), 0);
+      paramView = paramView.a(RIJSkinOperationPopupStep.a(this.d), 0);
       if (paramView != null)
       {
         paramView.isShown = false;
-        SharedPreUtils.f(RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramView.toJson().toString(), 0);
+        SharedPreUtils.f(RIJSkinOperationPopupStep.a(this.d), this.a.getCurrentAccountUin(), paramView.toJson().toString(), 0);
       }
     }
-    RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep));
-    RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep, null);
-    SharedPreUtils.o(RIJSkinOperationPopupStep.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedspopupRIJSkinOperationPopupStep), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinGuideData.skinData.toJson().toString());
+    RIJSkinOperationPopupStep.b(this.d).a();
+    this.b.removeView(RIJSkinOperationPopupStep.b(this.d));
+    RIJSkinOperationPopupStep.a(this.d, null);
+    SharedPreUtils.u(RIJSkinOperationPopupStep.a(this.d), this.a.getCurrentAccountUin(), this.c.skinData.toJson().toString());
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
       paramView.append("set skin: id = ");
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizSkinGuideData.skinData.id);
+      paramView.append(this.c.skinData.id);
       QLog.d("RIJSkinOperationPopupStep", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feedspopup.RIJSkinOperationPopupStep.4
  * JD-Core Version:    0.7.0.1
  */

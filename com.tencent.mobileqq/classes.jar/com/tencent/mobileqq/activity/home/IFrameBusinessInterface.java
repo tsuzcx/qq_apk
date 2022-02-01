@@ -16,9 +16,9 @@ public abstract interface IFrameBusinessInterface
 {
   public abstract void a();
   
-  public abstract void a(int paramInt);
-  
   public abstract void a(FrameFragment paramFrameFragment);
+  
+  public abstract void a(FrameFragment paramFrameFragment, int paramInt);
   
   public abstract void a(FrameFragment paramFrameFragment, int paramInt1, int paramInt2);
   
@@ -34,7 +34,7 @@ public abstract interface IFrameBusinessInterface
   
   public abstract void a(AppRuntime paramAppRuntime, SparseArray<TabDragAnimationView> paramSparseArray, int paramInt);
   
-  public abstract boolean a(FrameFragment paramFrameFragment);
+  public abstract void a(boolean paramBoolean);
   
   public abstract boolean a(AppRuntime paramAppRuntime);
   
@@ -48,15 +48,17 @@ public abstract interface IFrameBusinessInterface
   
   public abstract void d(FrameFragment paramFrameFragment);
   
-  public abstract void e(FrameFragment paramFrameFragment);
+  public abstract boolean e(FrameFragment paramFrameFragment);
   
   public abstract void f(FrameFragment paramFrameFragment);
   
   public abstract void g(FrameFragment paramFrameFragment);
+  
+  public abstract void h(FrameFragment paramFrameFragment);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.IFrameBusinessInterface
  * JD-Core Version:    0.7.0.1
  */

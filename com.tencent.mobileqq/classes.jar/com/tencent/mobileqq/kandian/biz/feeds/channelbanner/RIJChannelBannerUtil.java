@@ -13,16 +13,10 @@ import kotlin.text.StringsKt;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/feeds/channelbanner/RIJChannelBannerUtil;", "", "()V", "KEY_REQUEST_FREQUENCY_LIMIT", "", "KEY_SHOW_BANNER_CHANNEL_IDS", "TAG", "bannerSwitchMap", "", "", "getRequestFrequencyLimit", "init", "", "isAbleToRequestBanner", "", "lastRequestTimeStamp", "", "isAbleToShowBanner", "channelId", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJChannelBannerUtil
 {
-  public static final RIJChannelBannerUtil a;
-  private static final List<Integer> a;
+  public static final RIJChannelBannerUtil a = new RIJChannelBannerUtil();
+  private static final List<Integer> b = (List)new ArrayList();
   
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsChannelbannerRIJChannelBannerUtil = new RIJChannelBannerUtil();
-    jdField_a_of_type_JavaUtilList = (List)new ArrayList();
-  }
-  
-  private final int a()
+  private final int b()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(344);
     int i = 1;
@@ -72,7 +66,7 @@ public final class RIJChannelBannerUtil
         QLog.i("RIJChannelBannerUtil", 1, localStringBuilder1.toString());
         try
         {
-          jdField_a_of_type_JavaUtilList.add(Integer.valueOf(Integer.parseInt((String)localObject1)));
+          b.add(Integer.valueOf(Integer.parseInt((String)localObject1)));
         }
         catch (NumberFormatException localNumberFormatException)
         {
@@ -89,17 +83,17 @@ public final class RIJChannelBannerUtil
   
   public final boolean a(int paramInt)
   {
-    boolean bool = StudyModeManager.a();
+    boolean bool = StudyModeManager.h();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[isAbleToShowBanner], isStudyMode = ");
     localStringBuilder.append(bool);
     QLog.i("RIJChannelBannerUtil", 1, localStringBuilder.toString());
-    return (jdField_a_of_type_JavaUtilList.contains(Integer.valueOf(paramInt))) && (!bool);
+    return (b.contains(Integer.valueOf(paramInt))) && (!bool);
   }
   
   public final boolean a(long paramLong)
   {
-    int i = a() * 60 * 1000;
+    int i = b() * 60 * 1000;
     long l = System.currentTimeMillis() - paramLong;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[isAbleToRequestBanner], timeInterval = ");
@@ -114,7 +108,7 @@ public final class RIJChannelBannerUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.channelbanner.RIJChannelBannerUtil
  * JD-Core Version:    0.7.0.1
  */

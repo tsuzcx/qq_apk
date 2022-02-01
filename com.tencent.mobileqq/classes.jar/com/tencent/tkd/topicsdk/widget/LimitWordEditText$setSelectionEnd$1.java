@@ -12,12 +12,12 @@ final class LimitWordEditText$setSelectionEnd$1
   
   public final void run()
   {
-    this.this$0.a().setSelection(this.this$0.a().getText().length());
+    this.this$0.getContentView().setSelection(this.this$0.getContentView().getText().length());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.LimitWordEditText.setSelectionEnd.1
  * JD-Core Version:    0.7.0.1
  */

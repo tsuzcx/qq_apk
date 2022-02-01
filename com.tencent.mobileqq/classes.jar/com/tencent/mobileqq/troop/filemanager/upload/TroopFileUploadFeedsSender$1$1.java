@@ -18,41 +18,41 @@ class TroopFileUploadFeedsSender$1$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b;
+    Object localObject = this.a;
+    if (!TextUtils.isEmpty(this.b.c)) {
+      localObject = this.b.c;
     }
     QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
     if (localQQAppInterface == null)
     {
-      i = TroopFileTransferUtil.Log.a;
+      i = TroopFileTransferUtil.Log.b;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("[");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.c.a.d);
       ((StringBuilder)localObject).append("] addToSendCache app=null");
       TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", i, ((StringBuilder)localObject).toString());
       return;
     }
-    localObject = (MessageForTroopFile)FileOperaterUtils.a(localQQAppInterface.getMessageFacade(), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.jdField_a_of_type_Long), 1, (String)localObject);
+    localObject = (MessageForTroopFile)FileOperaterUtils.a(localQQAppInterface.getMessageFacade(), String.valueOf(this.c.a.b), 1, (String)localObject);
     if (localObject != null)
     {
       ((AIOMessageSpreadManager)localQQAppInterface.getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a((MessageRecord)localObject);
       return;
     }
-    int i = TroopFileTransferUtil.Log.a;
+    int i = TroopFileTransferUtil.Log.b;
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.c.a.d);
     ((StringBuilder)localObject).append("] addToSendCache can't find troopFile Msg, troop[");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadFeedsSender$1.a.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.c.a.b);
     ((StringBuilder)localObject).append("], id:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+    ((StringBuilder)localObject).append(this.b.c);
     TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", i, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.1.1
  * JD-Core Version:    0.7.0.1
  */

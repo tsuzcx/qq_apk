@@ -24,9 +24,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ReadInJoyCGIDynamicChannelFragment
   extends ReadInJoyDynamicChannelBaseFragment
 {
-  private DataObserver jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataObserver = new ReadInJoyCGIDynamicChannelFragment.1(this);
-  private ReadInJoyCGIDynamicChannelAdapter jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter;
-  private XRecyclerView.RefreshCallback jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback = new ReadInJoyCGIDynamicChannelFragment.2(this);
+  private ReadInJoyCGIDynamicChannelAdapter s;
+  private DataObserver t = new ReadInJoyCGIDynamicChannelFragment.1(this);
+  private XRecyclerView.RefreshCallback u = new ReadInJoyCGIDynamicChannelFragment.2(this);
   
   public static ReadInJoyCGIDynamicChannelFragment a(int paramInt1, int paramInt2, String paramString)
   {
@@ -41,10 +41,10 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   private void a(int paramInt, List<HeaderDataModel> paramList)
   {
-    if (paramInt != this.c) {
+    if (paramInt != this.d) {
       return;
     }
-    i();
+    x();
     if (paramList != null)
     {
       if (paramList.size() == 0) {
@@ -57,8 +57,8 @@ public class ReadInJoyCGIDynamicChannelFragment
         QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "channelID = ", Integer.valueOf(paramInt), ", styleID = ", localHeaderDataModel.a, ", proteusData = ", localHeaderDataModel.b });
         if ((!TextUtils.isEmpty(localHeaderDataModel.a)) && (!TextUtils.isEmpty(localHeaderDataModel.b)))
         {
-          ProteusItemView localProteusItemView = ProteusSupportUtilBase.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a(), b(), ProteusSupportUtilBase.a(localHeaderDataModel.b));
-          ProteusSupportUtilBase.a(localProteusItemView, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a(), b(), localHeaderDataModel.b);
+          ProteusItemView localProteusItemView = ProteusSupportUtilBase.a(this.s.a(), w(), ProteusSupportUtilBase.a(localHeaderDataModel.b));
+          ProteusSupportUtilBase.a(localProteusItemView, this.s.a(), w(), localHeaderDataModel.b);
           a(localProteusItemView);
         }
       }
@@ -72,54 +72,54 @@ public class ReadInJoyCGIDynamicChannelFragment
   
   public void a()
   {
-    if (!this.e)
+    if (!this.o)
     {
-      this.e = true;
+      this.o = true;
       Object localObject = DynamicChannelDataModule.a();
       if (localObject != null) {
-        ((DynamicChannelDataModule)localObject).a(this.c, 10);
+        ((DynamicChannelDataModule)localObject).a(this.d, 10);
       }
       localObject = DynamicChannelHeaderModule.a();
       if (localObject != null)
       {
-        ((DynamicChannelHeaderModule)localObject).a(this.c);
-        a(this.c, ((DynamicChannelHeaderModule)localObject).a(this.c));
-        ((DynamicChannelHeaderModule)localObject).b(this.c);
+        ((DynamicChannelHeaderModule)localObject).a(this.d);
+        a(this.d, ((DynamicChannelHeaderModule)localObject).c(this.d));
+        ((DynamicChannelHeaderModule)localObject).b(this.d);
       }
     }
     else
     {
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "has loaded data, mChannelID = ", Integer.valueOf(this.c) });
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "has loaded data, mChannelID = ", Integer.valueOf(this.d) });
     }
   }
   
-  public void aB_()
+  public void cX_()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.notifyDataSetChanged();
+    this.s = new ReadInJoyCGIDynamicChannelAdapter(v(), this.c.getRecyclerView(), this.d);
+    this.c.getRecyclerView().setAdapter(this.s);
   }
   
-  public void c()
+  public void cY_()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter = new ReadInJoyCGIDynamicChannelAdapter(a(), this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.getRecyclerView(), this.c);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.getRecyclerView().setAdapter(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter);
+    this.c.setRefreshCallback(this.u);
   }
   
-  public void g()
+  public void cZ_()
   {
-    super.g();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter != null)
+    this.s.notifyDataSetChanged();
+  }
+  
+  public void n()
+  {
+    super.n();
+    if (this.s != null)
     {
-      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "reportExposureAndClear, mChannelID = ", Integer.valueOf(this.c) });
-      a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a());
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a();
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "reportExposureAndClear, mChannelID = ", Integer.valueOf(this.d) });
+      a(this.s.d());
+      this.s.c();
       return;
     }
     QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "mAdapter is null.");
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView.setRefreshCallback(this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback);
   }
   
   public void onBindHeader(RecyclerView.ViewHolder paramViewHolder, int paramInt)
@@ -127,13 +127,13 @@ public class ReadInJoyCGIDynamicChannelFragment
     Object localObject = DynamicChannelHeaderModule.a();
     if (localObject != null)
     {
-      localObject = ((DynamicChannelHeaderModule)localObject).a(this.c);
+      localObject = ((DynamicChannelHeaderModule)localObject).c(this.d);
       if ((paramInt >= 0) && (paramInt < ((List)localObject).size()))
       {
         localObject = (HeaderDataModel)((List)localObject).get(paramInt);
         paramViewHolder = (ProteusItemView)paramViewHolder.itemView;
         if ((localObject != null) && (paramViewHolder != null)) {
-          ProteusSupportUtilBase.a(paramViewHolder, this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsCgiReadInJoyCGIDynamicChannelAdapter.a(), b(), ((HeaderDataModel)localObject).b);
+          ProteusSupportUtilBase.a(paramViewHolder, this.s.a(), w(), ((HeaderDataModel)localObject).b);
         }
       }
     }
@@ -142,18 +142,18 @@ public class ReadInJoyCGIDynamicChannelFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    DataEventDispatcher.a().a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataObserver);
+    DataEventDispatcher.a().a(this.t);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    DataEventDispatcher.a().b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsDynamicfeedsDataObserver);
+    DataEventDispatcher.a().b(this.t);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/root" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="@dimen/8w"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="left" android:id="@id/2t" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="@dimen/91" android:layout_alignParentLeft="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/2s" android:background="@drawable/0p" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/91" android:layout_marginRight="@dimen/93">
+            <ImageView android:id="@id/2u" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/pu_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView android:layout_gravity="center|right" android:id="@id/2m" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/9a" android:layout_height="@dimen/9_" android:layout_marginRight="@dimen/8u" />
+        <ViewStub android:layout_gravity="center|right" android:id="@id/n1o" android:layout="@layout/27" android:layout_width="@dimen/92" android:layout_height="@dimen/92" android:layout_marginRight="16.0dip" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/2w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/pu_" android:layout_toRightOf="@id/2t">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/2x" android:paddingRight="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/0" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        </LinearLayout>
+        <ProgressBar android:id="@id/2r" android:padding="3.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignRight="@id/2x" android:layout_centerInParent="true" style="@android:style/Widget.ProgressBar" />
+    </RelativeLayout>
+</RelativeLayout>

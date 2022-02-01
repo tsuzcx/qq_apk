@@ -7,7 +7,7 @@ final class AVSoundHelper$2
   
   public void run()
   {
-    AVSoundHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, 1.0F, 0.0F, 1.0F);
+    AVSoundHelper.k().a(this.a, this.b, 1.0F, 0.0F, 1.0F);
   }
 }
 

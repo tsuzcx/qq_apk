@@ -9,14 +9,14 @@ class TaskManager$14$1
 {
   public void onResp(NetResp paramNetResp)
   {
-    TaskManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager$14.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager, paramNetResp, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskJSContext, this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTaskManager$14.jdField_a_of_type_ComTencentMobileqqKandianGlueReportTaskTask);
+    TaskManager.a(this.c.b, paramNetResp, this.a, this.b, this.c.a);
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.task.TaskManager.14.1
  * JD-Core Version:    0.7.0.1
  */

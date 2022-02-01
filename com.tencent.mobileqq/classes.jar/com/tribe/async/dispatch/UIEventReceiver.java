@@ -48,7 +48,7 @@ public abstract class UIEventReceiver<T extends IEventReceiver, EVENT extends Di
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tribe.async.dispatch.UIEventReceiver
  * JD-Core Version:    0.7.0.1
  */

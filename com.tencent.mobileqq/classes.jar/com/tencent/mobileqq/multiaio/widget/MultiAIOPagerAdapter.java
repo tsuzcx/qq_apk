@@ -15,16 +15,16 @@ import java.util.List;
 public class MultiAIOPagerAdapter
   extends FragmentStatePagerAdapter
 {
-  private Fragment jdField_a_of_type_AndroidxFragmentAppFragment;
-  private List<RecentBaseData> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private List<RecentBaseData> a;
+  private Fragment b;
+  private boolean c;
   
   public MultiAIOPagerAdapter(FragmentManager paramFragmentManager)
   {
     super(paramFragmentManager);
   }
   
-  private ArrayList<Fragment> a()
+  private ArrayList<Fragment> b()
   {
     try
     {
@@ -42,12 +42,12 @@ public class MultiAIOPagerAdapter
   
   public List<RecentBaseData> a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    ArrayList localArrayList = a();
+    ArrayList localArrayList = b();
     if (localArrayList == null)
     {
       QLog.e("MultiAIOPagerAdapter", 1, "updateMsgRead: mFragments == null");
@@ -66,16 +66,16 @@ public class MultiAIOPagerAdapter
   
   public void a(List<RecentBaseData> paramList)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (this.a == null) {
+      this.a = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
   }
   
   public void b(int paramInt)
   {
-    ArrayList localArrayList = a();
+    ArrayList localArrayList = b();
     if (localArrayList == null)
     {
       QLog.e("MultiAIOPagerAdapter", 1, "scrollToNewMsg: mFragments == null");
@@ -112,12 +112,12 @@ public class MultiAIOPagerAdapter
   public void finishUpdate(ViewGroup paramViewGroup)
   {
     super.finishUpdate(paramViewGroup);
-    this.jdField_a_of_type_Boolean = true;
+    this.c = true;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.a.size();
   }
   
   public Fragment getItem(int paramInt)
@@ -152,7 +152,7 @@ public class MultiAIOPagerAdapter
   public void setPrimaryItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     super.setPrimaryItem(paramViewGroup, paramInt, paramObject);
-    this.jdField_a_of_type_AndroidxFragmentAppFragment = ((Fragment)paramObject);
+    this.b = ((Fragment)paramObject);
   }
   
   public void startUpdate(ViewGroup paramViewGroup)
@@ -162,7 +162,7 @@ public class MultiAIOPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -33,23 +33,6 @@ public class SubscribeLaucher
 {
   private static long a;
   
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 4: 
-    default: 
-      return 0;
-    case 2: 
-    case 7: 
-      return 7001;
-    case 1: 
-    case 8: 
-      return 8001;
-    }
-    return 7000;
-  }
-  
   public static CertifiedAccountMeta.StFeed a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
@@ -71,15 +54,6 @@ public class SubscribeLaucher
       localStFeed.video.set(paramString1);
     }
     return localStFeed;
-  }
-  
-  private static String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "0";
-    }
-    return str;
   }
   
   private static void a()
@@ -206,7 +180,7 @@ public class SubscribeLaucher
       if (paramString.startsWith("opendetail"))
       {
         QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema detail");
-        paramContext = a(a((String)paramHashMap.get("feedid")), a((String)paramHashMap.get("uin")), Integer.parseInt(b((String)paramHashMap.get("type"))), Integer.parseInt(b((String)paramHashMap.get("width"))), Integer.parseInt(b((String)paramHashMap.get("height"))), Long.parseLong(b((String)paramHashMap.get("createtime"))));
+        paramContext = a(b((String)paramHashMap.get("feedid")), b((String)paramHashMap.get("uin")), Integer.parseInt(c((String)paramHashMap.get("type"))), Integer.parseInt(c((String)paramHashMap.get("width"))), Integer.parseInt(c((String)paramHashMap.get("height"))), Long.parseLong(c((String)paramHashMap.get("createtime"))));
         paramString = (String)paramHashMap.get("commentid");
         if (TextUtils.isEmpty(paramString))
         {
@@ -222,7 +196,7 @@ public class SubscribeLaucher
       if (paramString.startsWith("openhomepage"))
       {
         QLog.i("SubscribeLauncher", 2, "launchSubscribeBySchema personal page");
-        a(paramContext, a((String)paramHashMap.get("uid")));
+        a(paramContext, b((String)paramHashMap.get("uid")));
         return;
       }
       if (paramString.startsWith("opendiscoverpage"))
@@ -264,7 +238,7 @@ public class SubscribeLaucher
       localExtraTypeInfo = new ExtraTypeInfo();
     }
     if ((localExtraTypeInfo.pageType == 0) && (paramStFeed != null)) {
-      localExtraTypeInfo.pageType = a(paramStFeed.type.get());
+      localExtraTypeInfo.pageType = d(paramStFeed.type.get());
     }
     int j = localExtraTypeInfo.pageType;
     int i = 1;
@@ -318,7 +292,7 @@ public class SubscribeLaucher
       if ((k != 0) && ((paramContext instanceof Activity)) && (Build.VERSION.SDK_INT >= 16))
       {
         paramContext = (Activity)paramContext;
-        paramContext.startActivity(paramIntent, TransitionAnimHelper.a());
+        paramContext.startActivity(paramIntent, TransitionAnimHelper.b());
         paramContext.overridePendingTransition(0, 0);
         return bool1;
       }
@@ -332,15 +306,24 @@ public class SubscribeLaucher
   
   private static String b(String paramString)
   {
-    if ((paramString != null) && (paramString.length() != 0)) {
-      return paramString;
+    String str = paramString;
+    if (paramString == null) {
+      str = "0";
     }
-    return "0";
+    return str;
   }
   
   public static boolean b(int paramInt)
   {
     return (paramInt == 2) || (paramInt == 7);
+  }
+  
+  private static String c(String paramString)
+  {
+    if ((paramString != null) && (paramString.length() != 0)) {
+      return paramString;
+    }
+    return "0";
   }
   
   public static boolean c(int paramInt)
@@ -354,6 +337,23 @@ public class SubscribeLaucher
       bool = false;
     }
     return bool;
+  }
+  
+  public static int d(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      return 0;
+    case 2: 
+    case 7: 
+      return 7001;
+    case 1: 
+    case 8: 
+      return 8001;
+    }
+    return 7000;
   }
 }
 

@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 public class VideoFeedsLikeAnimate$LikeExplosionCenterView
   extends View
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private Bitmap b;
+  private Paint c = new Paint();
   
   public VideoFeedsLikeAnimate$LikeExplosionCenterView(VideoFeedsLikeAnimate paramVideoFeedsLikeAnimate, Context paramContext)
   {
@@ -27,8 +27,8 @@ public class VideoFeedsLikeAnimate$LikeExplosionCenterView
   private void b()
   {
     setAlpha(0.0F);
-    if (VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimate) != null) {
-      VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimate).removeView(this);
+    if (VideoFeedsLikeAnimate.a(this.a) != null) {
+      VideoFeedsLikeAnimate.a(this.a).removeView(this);
     }
   }
   
@@ -46,22 +46,22 @@ public class VideoFeedsLikeAnimate$LikeExplosionCenterView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimate) - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, VideoFeedsLikeAnimate.b(this.jdField_a_of_type_ComTencentMobileqqKandianBizPlayfeedsVideoFeedsLikeAnimate) - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawBitmap(this.b, VideoFeedsLikeAnimate.b(this.a) - this.b.getWidth() / 2, VideoFeedsLikeAnimate.c(this.a) - this.b.getHeight() / 2, this.c);
   }
   
   public void setBitmap(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.b = paramBitmap;
   }
   
   public void setDrawableId(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), paramInt);
+    this.b = BitmapFactory.decodeResource(getResources(), paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLikeAnimate.LikeExplosionCenterView
  * JD-Core Version:    0.7.0.1
  */

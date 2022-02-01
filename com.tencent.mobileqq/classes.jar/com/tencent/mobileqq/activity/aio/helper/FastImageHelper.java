@@ -36,47 +36,42 @@ public class FastImageHelper
   implements Handler.Callback, View.OnClickListener, ILifeCycleHelper
 {
   public static String a = "FastImageHelper";
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  RelativeLayout.LayoutParams jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public FastImagePreviewLayout a;
-  private final boolean jdField_a_of_type_Boolean = true;
-  private boolean b = true;
+  public FastImagePreviewLayout b;
+  RelativeLayout.LayoutParams c;
+  private QQAppInterface d;
+  private Context e;
+  private Activity f;
+  private BaseChatPie g;
+  private SessionInfo h;
+  private final boolean i = true;
+  private boolean j = true;
   
   public FastImageHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    paramBaseChatPie.b().a().a(this);
-  }
-  
-  public void a()
-  {
-    this.b = true;
+    this.d = paramBaseChatPie.d;
+    this.e = paramBaseChatPie.e;
+    this.f = paramBaseChatPie.f;
+    this.g = paramBaseChatPie;
+    this.h = paramBaseChatPie.ah;
+    paramBaseChatPie.bv().d().a(this);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.j = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.b;
+    return this.j;
   }
   
   public boolean a(Message paramMessage)
   {
-    int i = paramMessage.what;
-    if (i != 32)
+    int k = paramMessage.what;
+    if (k != 32)
     {
-      if (i != 33) {
+      if (k != 33) {
         return false;
       }
       b(true);
@@ -86,88 +81,93 @@ public class FastImageHelper
     {
       paramMessage = new StringBuilder();
       paramMessage.append("MSG_SHOW_FASTIMAGE,  mAllowFastImage = ");
-      paramMessage.append(this.b);
+      paramMessage.append(this.j);
       QLog.d("fastimage", 2, paramMessage.toString());
     }
-    if (!this.b) {
+    if (!this.j) {
       return true;
     }
-    paramMessage = (StickerRecHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(14);
-    if ((paramMessage != null) && (paramMessage.a()))
+    paramMessage = (StickerRecHelper)this.g.q(14);
+    if ((paramMessage != null) && (paramMessage.c()))
     {
       paramMessage.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeMessages(67);
+      this.g.j().removeMessages(67);
     }
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout;
+    paramMessage = this.b;
     if ((paramMessage != null) && (paramMessage.getVisibility() == 0)) {
       b(false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().addView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D91", "0X8004D91", 0, 0, "", "", "", "");
-    paramMessage = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout;
+    this.g.bl().addView(this.b, this.c);
+    ReportController.b(this.d, "CliOper", "", "", "0X8004D91", "0X8004D91", 0, 0, "", "", "", "");
+    paramMessage = this.b;
     if (paramMessage != null)
     {
       paramMessage.showFastImage();
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      this.b.setOnClickListener(this.g);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().sendMessageDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().obtainMessage(33), 5000L);
+    this.g.j().sendMessageDelayed(this.g.j().obtainMessage(33), 5000L);
     return false;
   }
   
   public void b()
   {
-    float f = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getDisplayMetrics().density;
-    if (QLog.isColorLevel()) {
-      QLog.d("fastimage", 2, "initAndQueryFastImage start! ");
-    }
-    Object localObject;
-    if (!this.b)
-    {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("initAndQueryFastImage return!,  mAllowFastImage = ");
-        ((StringBuilder)localObject).append(this.b);
-        QLog.d("fastimage", 2, ((StringBuilder)localObject).toString());
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout = ((FastImagePreviewLayout)this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131558542, null));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(2, 2131368875);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(7, 2131368875);
-      localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams;
-      double d = f;
-      Double.isNaN(d);
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(d * 10.5D + 0.5D));
-      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(f * 4.0F + 0.5F));
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setId(2131362365);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setHandler(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.queryFastImage();
-    if (QLog.isColorLevel()) {
-      QLog.d("fastimage", 2, "initAndQueryFastImage end! ");
-    }
+    this.j = true;
   }
   
   public void b(boolean paramBoolean)
   {
-    FastImagePreviewLayout localFastImagePreviewLayout = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout;
+    FastImagePreviewLayout localFastImagePreviewLayout = this.b;
     if ((localFastImagePreviewLayout != null) && (localFastImagePreviewLayout.getVisibility() == 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("fastimage", 2, "onPanelIconClick  removeFastImage");
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeMessages(33);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.removeFastImage(paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout.setOnClickListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout);
+      this.g.j().removeMessages(33);
+      this.b.removeFastImage(paramBoolean);
+      this.b.setOnClickListener(null);
+      this.g.bl().removeView(this.b);
     }
   }
   
   public void c()
+  {
+    float f1 = this.d.getApplication().getResources().getDisplayMetrics().density;
+    if (QLog.isColorLevel()) {
+      QLog.d("fastimage", 2, "initAndQueryFastImage start! ");
+    }
+    Object localObject;
+    if (!this.j)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("initAndQueryFastImage return!,  mAllowFastImage = ");
+        ((StringBuilder)localObject).append(this.j);
+        QLog.d("fastimage", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if (this.b == null)
+    {
+      this.b = ((FastImagePreviewLayout)this.f.getLayoutInflater().inflate(2131624095, null));
+      this.c = new RelativeLayout.LayoutParams(-2, -2);
+      this.c.addRule(2, 2131435809);
+      this.c.addRule(7, 2131435809);
+      localObject = this.c;
+      double d1 = f1;
+      Double.isNaN(d1);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = ((int)(d1 * 10.5D + 0.5D));
+      ((RelativeLayout.LayoutParams)localObject).bottomMargin = ((int)(f1 * 4.0F + 0.5F));
+      this.b.setId(2131427965);
+      this.b.setHandler(this.g.j());
+    }
+    this.b.queryFastImage();
+    if (QLog.isColorLevel()) {
+      QLog.d("fastimage", 2, "initAndQueryFastImage end! ");
+    }
+  }
+  
+  public void d()
   {
     if (QLog.isColorLevel())
     {
@@ -176,10 +176,10 @@ public class FastImageHelper
       ((StringBuilder)localObject).append(PlusPanelUtils.b);
       QLog.d("fastimage", 2, ((StringBuilder)localObject).toString());
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004D92", "0X8004D92", 0, 0, "", "", "", "");
-    PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", PlusPanelUtils.b).commit();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if ((localObject != null) && (((SessionInfo)localObject).jdField_a_of_type_Int == 1) && (((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)))
+    ReportController.b(this.d, "CliOper", "", "", "0X8004D92", "0X8004D92", 0, 0, "", "", "", "");
+    PreferenceManager.getDefaultSharedPreferences(this.e).edit().putString("camera_photo_path", PlusPanelUtils.b).commit();
+    Object localObject = this.h;
+    if ((localObject != null) && (((SessionInfo)localObject).a == 1) && (((HotChatManager)this.d.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(this.h.b)))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_MODE", true);
@@ -188,25 +188,25 @@ public class FastImageHelper
     {
       localObject = null;
     }
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    SessionInfo localSessionInfo = this.h;
     if (localSessionInfo != null) {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, localSessionInfo, 1, (Intent)localObject, 8);
+      ChatActivityUtils.a(this.d, this.f, localSessionInfo, 1, (Intent)localObject, 8);
     }
     if (QLog.isColorLevel()) {
       QLog.d("fastimage", 2, "BaseCHatPie onClick call removeFastImage");
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeMessages(33);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout;
+    this.g.j().removeMessages(33);
+    localObject = this.b;
     if (localObject != null)
     {
       ((FastImagePreviewLayout)localObject).setOnClickListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().removeView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFastImagePreviewLayout);
+      this.g.bl().removeView(this.b);
     }
   }
   
   public String getTag()
   {
-    return jdField_a_of_type_JavaLangString;
+    return a;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -221,26 +221,26 @@ public class FastImageHelper
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if ((i != 2131362365) && (i != 2131372878)) {
+    int k = paramView.getId();
+    if ((k != 2131427965) && (k != 2131440441)) {
       b(true);
     }
-    if (i == 2131362365) {
-      c();
+    if (k == 2131427965) {
+      d();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onMoveToState(int paramInt)
   {
-    if ((paramInt == 6) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie))) {
-      a();
+    if ((paramInt == 6) && ((this.g instanceof TroopChatPie))) {
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FastImageHelper
  * JD-Core Version:    0.7.0.1
  */

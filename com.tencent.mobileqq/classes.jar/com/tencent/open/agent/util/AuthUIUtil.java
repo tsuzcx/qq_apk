@@ -52,17 +52,17 @@ public class AuthUIUtil
   {
     paramBundle = paramBundle.getString("sdkp");
     if ("web".equals(paramBundle)) {
-      return HardCodeUtil.a(2131701017);
+      return HardCodeUtil.a(2131899038);
     }
     if ("android".equals(paramBundle)) {
-      return HardCodeUtil.a(2131701023);
+      return HardCodeUtil.a(2131899044);
     }
-    return HardCodeUtil.a(2131701022);
+    return HardCodeUtil.a(2131899043);
   }
   
   public static void a(Activity paramActivity, int paramInt)
   {
-    QQToast.a(paramActivity, 1, HardCodeUtil.a(paramInt), 0).a();
+    QQToast.makeText(paramActivity, 1, HardCodeUtil.a(paramInt), 0).show();
   }
   
   public static void a(Activity paramActivity, Dialog paramDialog)
@@ -92,7 +92,7 @@ public class AuthUIUtil
   {
     if ((paramActivity != null) && (!paramActivity.isFinishing()) && ((Build.VERSION.SDK_INT < 17) || (!paramActivity.isDestroyed())))
     {
-      DialogUtil.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131718407)).setPositiveButton(17039370, paramOnClickListener).show();
+      DialogUtil.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131915899)).setPositiveButton(17039370, paramOnClickListener).show();
       return;
     }
     paramActivity = new StringBuilder();
@@ -134,7 +134,7 @@ public class AuthUIUtil
     }
     paramContext = new AlertDialog.Builder(paramContext);
     paramContext.setMessage(paramString);
-    paramContext.setNegativeButton(HardCodeUtil.a(2131707863), new AuthUIUtil.3());
+    paramContext.setNegativeButton(HardCodeUtil.a(2131905677), new AuthUIUtil.3());
     paramContext.show();
   }
   
@@ -153,7 +153,7 @@ public class AuthUIUtil
         SSOLog.a("AuthUIUtil", new Object[] { "activity isDestroyed" });
         return;
       }
-      DialogUtil.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131718407)).setPositiveButton(17039370, paramOnClickListener).show();
+      DialogUtil.b(paramActivity, 230).setMessageWithUrl(paramString).setTitle(paramActivity.getString(2131915899)).setPositiveButton(17039370, paramOnClickListener).show();
       return;
     }
     SSOLog.a("AuthUIUtil", new Object[] { "activity invalid" });
@@ -161,7 +161,7 @@ public class AuthUIUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.util.AuthUIUtil
  * JD-Core Version:    0.7.0.1
  */

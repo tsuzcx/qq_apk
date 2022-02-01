@@ -9,8 +9,8 @@ class DetailBaseBlock$6
   
   public void run()
   {
-    if (this.this$0.a != null) {
-      this.this$0.a.d();
+    if (this.this$0.b != null) {
+      this.this$0.b.f();
     }
   }
 }

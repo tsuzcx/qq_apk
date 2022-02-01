@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class HorizontalRvInnerView
   extends RecyclerViewCompat
 {
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private HorizontalRVBlock jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRVBlock;
-  private HorizontalRvInnerView.HorizontalRvAdapter jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter;
+  private HorizontalRVBlock a;
+  private LinearLayoutManager b;
+  private HorizontalRvInnerView.HorizontalRvAdapter c;
   
   public HorizontalRvInnerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,26 +22,31 @@ public class HorizontalRvInnerView
   public HorizontalRvInnerView(Context paramContext, HorizontalRVBlock paramHorizontalRVBlock)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRVBlock = paramHorizontalRVBlock;
+    this.a = paramHorizontalRVBlock;
     setDescendantFocusability(393216);
-    this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter = new HorizontalRvInnerView.HorizontalRvAdapter(this);
-    setAdapter(this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new SafeLinearLayoutManager(getContext(), 0, false);
-    setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
+    this.c = new HorizontalRvInnerView.HorizontalRvAdapter(this);
+    setAdapter(this.c);
+    this.b = new SafeLinearLayoutManager(getContext(), 0, false);
+    setLayoutManager(this.b);
     setOverScrollMode(2);
+  }
+  
+  public HorizontalRvInnerView.HorizontalRvAdapter getHorizontalRvAdapter()
+  {
+    return this.c;
   }
   
   public void setData(ArrayList paramArrayList)
   {
-    HorizontalRvInnerView.HorizontalRvAdapter localHorizontalRvAdapter = this.jdField_a_of_type_ComTencentBizSubscribePartExtendsblockHorizontalRvInnerView$HorizontalRvAdapter;
+    HorizontalRvInnerView.HorizontalRvAdapter localHorizontalRvAdapter = this.c;
     if (localHorizontalRvAdapter != null) {
-      localHorizontalRvAdapter.a(paramArrayList);
+      localHorizontalRvAdapter.b(paramArrayList);
     }
   }
   
   public void setOrientation(int paramInt)
   {
-    LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    LinearLayoutManager localLinearLayoutManager = this.b;
     if (localLinearLayoutManager != null) {
       localLinearLayoutManager.setOrientation(paramInt);
     }

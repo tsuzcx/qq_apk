@@ -10,10 +10,10 @@ class ReadinjoyCommentListBaseAdapter$1
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.a != null)
+    if (this.a.q != null)
     {
       paramInt1 = ReadinjoyCommentListBaseAdapter.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
+      this.a.q.onScroll(paramInt1);
     }
   }
   
@@ -21,7 +21,7 @@ class ReadinjoyCommentListBaseAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadinjoyCommentListBaseAdapter.1
  * JD-Core Version:    0.7.0.1
  */

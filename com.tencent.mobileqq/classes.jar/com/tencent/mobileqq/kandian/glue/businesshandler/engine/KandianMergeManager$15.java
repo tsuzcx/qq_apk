@@ -11,12 +11,12 @@ class KandianMergeManager$15
   protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
-    this.a.a();
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianMergeManager.15
  * JD-Core Version:    0.7.0.1
  */

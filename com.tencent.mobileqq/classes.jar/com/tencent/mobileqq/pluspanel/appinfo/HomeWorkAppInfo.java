@@ -17,7 +17,7 @@ public class HomeWorkAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130843931;
+    return 2130844886;
   }
   
   public int getAppID()
@@ -38,23 +38,23 @@ public class HomeWorkAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131690837);
+    return BaseApplicationImpl.getContext().getString(2131887772);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramPlusPanelViewModel = new Intent(paramBaseChatPie.a(), QQBrowserActivity.class);
+    paramPlusPanelViewModel = new Intent(paramBaseChatPie.aX(), QQBrowserActivity.class);
     if (TextUtils.isEmpty(this.url)) {
       return;
     }
-    paramPlusPanelViewModel.putExtra("url", this.url.replace("$GCODE$", paramSessionInfo.jdField_a_of_type_JavaLangString));
-    paramBaseChatPie.a().startActivity(paramPlusPanelViewModel);
-    AIOPanelUtiles.a(paramBaseChatPie.a, "0X8005CBA", paramSessionInfo.jdField_a_of_type_Int);
+    paramPlusPanelViewModel.putExtra("url", this.url.replace("$GCODE$", paramSessionInfo.b));
+    paramBaseChatPie.aX().startActivity(paramPlusPanelViewModel);
+    AIOPanelUtiles.a(paramBaseChatPie.d, "0X8005CBA", paramSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.HomeWorkAppInfo
  * JD-Core Version:    0.7.0.1
  */

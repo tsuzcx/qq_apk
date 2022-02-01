@@ -15,14 +15,14 @@ class ArkAdapterItemForTextMsg$2
   
   public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg.a.mArkContainer.getAppName();
+    String str = this.b.b.mArkContainer.getAppName();
     ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(str, new ArkAdapterItemForTextMsg.2.1(this));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg.2
  * JD-Core Version:    0.7.0.1
  */

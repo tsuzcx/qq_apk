@@ -13,24 +13,23 @@ import android.view.animation.Transformation;
 class HeartAnimator$FloatAnimation
   extends Animation
 {
-  public float a;
-  public int a;
   public PathMeasure a;
-  public View a;
-  public Interpolator a;
-  public HeartAnimator.Config a;
-  public HeartAnimator.HeartAnimatorListener a;
-  public float b;
+  public View b;
+  public float c;
+  public float d;
+  public HeartAnimator.Config e;
+  public int f = 0;
+  public HeartAnimator.HeartAnimatorListener g;
+  public Interpolator h;
   
   @TargetApi(11)
   public HeartAnimator$FloatAnimation(Path paramPath, float paramFloat, View paramView1, View paramView2, HeartAnimator.Config paramConfig)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(paramPath, false);
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
-    this.jdField_a_of_type_AndroidViewView = paramView2;
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config = paramConfig;
+    this.a = new PathMeasure(paramPath, false);
+    this.c = this.a.getLength();
+    this.b = paramView2;
+    this.d = paramFloat;
+    this.e = paramConfig;
     paramView1.setLayerType(2, null);
   }
   
@@ -53,27 +52,27 @@ class HeartAnimator$FloatAnimation
   protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     Object localObject = paramTransformation.getMatrix();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getMatrix(this.jdField_a_of_type_Float * paramFloat, (Matrix)localObject, 1);
-    float f;
+    this.a.getMatrix(this.c * paramFloat, (Matrix)localObject, 1);
+    float f1;
     if (Build.VERSION.SDK_INT >= 11)
     {
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      f = this.jdField_b_of_type_Float;
-      HeartAnimator.Config localConfig = this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config;
-      ((View)localObject).setRotation(f * paramFloat * HeartAnimator.Config.jdField_b_of_type_Float);
+      localObject = this.b;
+      f1 = this.d;
+      HeartAnimator.Config localConfig = this.e;
+      ((View)localObject).setRotation(f1 * paramFloat * HeartAnimator.Config.l);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.jdField_b_of_type_Boolean)
+    if (this.e.q)
     {
-      f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(paramFloat);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.c * f);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(f * this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartAnimator$Config.c);
+      f1 = this.h.getInterpolation(paramFloat);
+      this.b.setScaleX(this.e.p * f1);
+      this.b.setScaleY(f1 * this.e.p);
     }
-    paramTransformation.setAlpha(1.0F - a(this.jdField_a_of_type_Int, paramFloat));
+    paramTransformation.setAlpha(1.0F - a(this.f, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.anim.HeartAnimator.FloatAnimation
  * JD-Core Version:    0.7.0.1
  */

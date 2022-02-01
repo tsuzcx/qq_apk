@@ -31,7 +31,7 @@ public class ArkInfoMsg
       if (paramMessageRecord != null) {
         paramObject.a(paramMessageRecord);
       }
-      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramObject.h.b(paramMessageInfo.c);
       return paramObject;
     }
     paramObject = BaseApplication.getContext();
@@ -39,7 +39,7 @@ public class ArkInfoMsg
       paramMessageRecord = "";
     }
     paramObject = new ArkInfoMsg(paramObject, paramMessageRecord);
-    paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+    paramObject.h = new MessageNavInfo(paramMessageInfo.c);
     return paramObject;
   }
   
@@ -57,13 +57,13 @@ public class ArkInfoMsg
       localStringBuilder.append(']');
       paramString = localStringBuilder.toString();
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = this.jdField_a_of_type_JavaLangString;
+    this.c = paramString;
+    this.d = this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.ArkInfoMsg
  * JD-Core Version:    0.7.0.1
  */

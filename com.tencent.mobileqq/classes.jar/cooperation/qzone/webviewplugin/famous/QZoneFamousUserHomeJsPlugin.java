@@ -37,12 +37,12 @@ public class QZoneFamousUserHomeJsPlugin
       long l = new JSONObject(paramVarArgs[0]).getLong("uin");
       paramVarArgs = new Intent();
       QzonePluginProxyActivity.setActivityNameToIntent(paramVarArgs, "com.qzone.album.business.albumlist.activity.QZonePersonalAlbumActivity");
-      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.a().getString(2131717063));
-      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.a().getString(2131717144));
+      paramVarArgs.putExtra("key_left_tab_title", this.mRuntime.d().getString(2131914536));
+      paramVarArgs.putExtra("key_right_tab_title", this.mRuntime.d().getString(2131914617));
       paramVarArgs.putExtra("key_album_owner_uin", l);
       paramVarArgs.putExtra("key_selected_tab", 0);
       paramVarArgs.putExtra("refer", REFER);
-      QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), paramVarArgs, 0);
+      QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), paramVarArgs, 0);
       return;
     }
     catch (JSONException paramVarArgs)
@@ -81,7 +81,7 @@ public class QZoneFamousUserHomeJsPlugin
           localObject = ((JSONObject)localObject).optString("autoShowTimeLine");
           bool = "1".equals(localObject);
           Intent localIntent = new Intent();
-          Activity localActivity = this.mRuntime.a();
+          Activity localActivity = this.mRuntime.d();
           localObject = "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity";
           if ((35 == i) && (paramVarArgs != null) && (paramVarArgs.length() > 0))
           {
@@ -114,7 +114,7 @@ public class QZoneFamousUserHomeJsPlugin
             localActivity.startActivity(localIntent);
             return;
           }
-          QzonePluginProxyActivity.launchPluingActivityForResult(localActivity, this.mRuntime.a().getAccount(), localIntent, 0);
+          QzonePluginProxyActivity.launchPluingActivityForResult(localActivity, this.mRuntime.b().getAccount(), localIntent, 0);
           return;
         }
       }
@@ -150,7 +150,7 @@ public class QZoneFamousUserHomeJsPlugin
         localIntent.putExtra(KEY_NICKNAME, paramVarArgs);
       }
       localIntent.putExtra("refer", REFER);
-      QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.a(), this.mRuntime.a().getAccount(), localIntent, 0);
+      QzonePluginProxyActivity.launchPluingActivityForResult(this.mRuntime.d(), this.mRuntime.b().getAccount(), localIntent, 0);
       return;
     }
     catch (JSONException paramVarArgs)
@@ -201,12 +201,12 @@ public class QZoneFamousUserHomeJsPlugin
         }
         if (l != 0L)
         {
-          this.mRuntime.a();
+          this.mRuntime.d();
           paramJsBridgeListener = new Intent();
           paramJsBridgeListener.setAction("qzoneGrapRedPocket");
           paramJsBridgeListener.putExtra("uin", l);
-          if (this.mRuntime.a() != null) {
-            this.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+          if (this.mRuntime.d() != null) {
+            this.mRuntime.d().sendBroadcast(paramJsBridgeListener);
           }
         }
       }
@@ -217,7 +217,7 @@ public class QZoneFamousUserHomeJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QZoneFamousUserHomeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

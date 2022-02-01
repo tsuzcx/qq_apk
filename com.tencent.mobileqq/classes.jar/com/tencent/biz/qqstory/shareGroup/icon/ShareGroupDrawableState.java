@@ -16,29 +16,29 @@ import java.util.concurrent.atomic.AtomicBoolean;
 class ShareGroupDrawableState
   extends Drawable.ConstantState
 {
-  private long jdField_a_of_type_Long;
-  @NonNull
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  @NonNull
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  @NonNull
-  private ShareGroupDrawableState.StreamCreator<Bitmap> jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState$StreamCreator;
-  private Error jdField_a_of_type_JavaLangError;
   @NonNull
   public final String a;
-  private final CopyOnWriteArraySet<ShareGroupDrawableState.CallBackWeakWrapper> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private volatile boolean jdField_a_of_type_Boolean = false;
   private String b = "story.icon.ShareGroupDrawableState";
+  @NonNull
+  private Context c;
+  @NonNull
+  private ShareGroupDrawableState.StreamCreator<Bitmap> d;
+  @NonNull
+  private Drawable e;
+  private AtomicBoolean f = new AtomicBoolean(false);
+  private Bitmap g;
+  private Error h;
+  private long i;
+  private volatile boolean j = false;
+  private final CopyOnWriteArraySet<ShareGroupDrawableState.CallBackWeakWrapper> k = new CopyOnWriteArraySet();
   
   public ShareGroupDrawableState(String paramString, Context paramContext, Drawable paramDrawable)
   {
     if ((paramString != null) && (paramContext != null) && (paramDrawable != null))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      this.a = paramString;
+      this.c = paramContext;
+      this.e = paramDrawable;
       paramString = new StringBuilder();
       paramString.append(this.b);
       paramString.append("[");
@@ -54,7 +54,7 @@ class ShareGroupDrawableState
   {
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      localObject = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      localObject = this.k.iterator();
       while (((Iterator)localObject).hasNext())
       {
         ShareGroupDrawableState.CallBackWeakWrapper localCallBackWeakWrapper = (ShareGroupDrawableState.CallBackWeakWrapper)((Iterator)localObject).next();
@@ -68,8 +68,8 @@ class ShareGroupDrawableState
         }
         else
         {
-          IconLog.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localCallBackWeakWrapper);
+          IconLog.a(this.b, "remove invalid callback %s", this.k);
+          this.k.remove(localCallBackWeakWrapper);
         }
       }
       return;
@@ -83,59 +83,59 @@ class ShareGroupDrawableState
   
   private void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) && (!paramBoolean))
+    if ((this.f.getAndSet(true)) && (!paramBoolean))
     {
-      if ((this.jdField_a_of_type_JavaLangError != null) && (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) > 10000L))
+      if ((this.h != null) && (Math.abs(this.i - SystemClock.uptimeMillis()) > 10000L))
       {
-        IconLog.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
-        this.jdField_a_of_type_JavaLangError = null;
+        IconLog.b(this.b, "load again, oldError=%s", this.h);
+        this.h = null;
         b(true);
       }
     }
     else
     {
       IconLog.a(this.b, "startLoad");
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState$StreamCreator.a(this).subscribe(new ShareGroupDrawableState.1(this));
+      this.d.a(this).subscribe(new ShareGroupDrawableState.1(this));
     }
   }
   
   Bitmap a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public Drawable a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    return null;
-  }
-  
-  Error a()
-  {
-    return this.jdField_a_of_type_JavaLangError;
-  }
-  
-  public void a()
-  {
-    IconLog.b(this.b, "recycle");
-    this.jdField_a_of_type_Boolean = true;
+    return this.g;
   }
   
   public void a(ShareGroupDrawableState.CallBack paramCallBack)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new ShareGroupDrawableState.CallBackWeakWrapper(paramCallBack));
+    this.k.add(new ShareGroupDrawableState.CallBackWeakWrapper(paramCallBack));
   }
   
   void a(@NonNull ShareGroupDrawableState.StreamCreator<Bitmap> paramStreamCreator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupDrawableState$StreamCreator = paramStreamCreator;
+    this.d = paramStreamCreator;
   }
   
-  public void b()
+  Error b()
+  {
+    return this.h;
+  }
+  
+  public void c()
+  {
+    IconLog.b(this.b, "recycle");
+    this.j = true;
+  }
+  
+  public void d()
   {
     b(false);
+  }
+  
+  public Drawable e()
+  {
+    if (this.g != null) {
+      return new BitmapDrawable(this.c.getResources(), this.g);
+    }
+    return null;
   }
   
   public int getChangingConfigurations()
@@ -146,7 +146,7 @@ class ShareGroupDrawableState
   @NonNull
   public Drawable newDrawable()
   {
-    return new ShareGroupIconDrawable(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    return new ShareGroupIconDrawable(this, this.e);
   }
 }
 

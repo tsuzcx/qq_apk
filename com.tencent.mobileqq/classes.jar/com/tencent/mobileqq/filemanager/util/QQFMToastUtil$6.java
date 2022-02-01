@@ -10,12 +10,12 @@ final class QQFMToastUtil$6
   
   public void run()
   {
-    QQToast.a(BaseApplication.getContext(), 0, this.a, 0).b(QQFMToastUtil.a());
+    QQToast.makeText(BaseApplication.getContext(), 0, this.a, 0).show(QQFMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QQFMToastUtil.6
  * JD-Core Version:    0.7.0.1
  */

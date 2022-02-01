@@ -11,12 +11,12 @@ final class QidianManager$10
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getBaseContext(), this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
+    this.a.b(this.b.getApp().getBaseContext(), this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qidian.QidianManager.10
  * JD-Core Version:    0.7.0.1
  */

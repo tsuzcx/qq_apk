@@ -23,52 +23,52 @@ public class AudioTransitionAnimManager
 {
   public static final String a;
   public static final String b;
-  private static Map<Integer, String> jdField_b_of_type_JavaUtilMap;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private Cancellable jdField_a_of_type_ComTencentMobileqqDiniflyCancellable;
-  private Map<String, LottieDrawable> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  private Set<AudioTransitionAnimManager.TransitionAnimListener> jdField_a_of_type_JavaUtilSet;
-  private boolean jdField_a_of_type_Boolean = false;
-  private Set<Integer> jdField_b_of_type_JavaUtilSet;
+  private static Map<Integer, String> e;
+  private Map<String, LottieDrawable> c = new HashMap(20);
+  private Set<AudioTransitionAnimManager.TransitionAnimListener> d;
+  private Set<Integer> f;
+  private Cancellable g;
+  private boolean h = false;
+  private HandlerThread i;
+  private Handler j;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
     localStringBuilder.append("/Tencent/MobileQQ/pttPanelAnimations/");
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
     localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_ROOT);
     localStringBuilder.append("/Tencent/MobileQQ/pttPanelAnimations/qq_android_ptt_transition_anim_res/");
-    jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    b = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   private AudioTransitionAnimManager()
   {
-    jdField_b_of_type_JavaUtilMap = new HashMap(20);
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_b_of_type_JavaUtilSet = new CopyOnWriteArraySet();
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(1), "ptt_voicechange_to_press_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(2), "ptt_press_to_voicechange_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(3), "ptt_press_to_record_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(4), "ptt_record_to_press_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(5), "ptt_record_to_stop_record_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(201), "ptt_recordstop_to_play_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(202), "ptt_play_to_stop_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(203), "ptt_stop_to_play_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(6), "ptt_record_to_voicechange_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(7), "ptt_voicechange_to_record_anim/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(101), "ptt_voicechange_to_press_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(102), "ptt_press_to_voicechange_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(103), "ptt_press_to_record_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(104), "ptt_record_to_press_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(105), "ptt_record_to_stop_record_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(301), "ptt_recordstop_to_play_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(302), "ptt_play_to_stop_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(303), "ptt_stop_to_play_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(106), "ptt_record_to_voicechange_anim_night/");
-    jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(107), "ptt_voicechange_to_record_anim_night/");
+    e = new HashMap(20);
+    this.d = new HashSet();
+    this.f = new CopyOnWriteArraySet();
+    e.put(Integer.valueOf(1), "ptt_voicechange_to_press_anim/");
+    e.put(Integer.valueOf(2), "ptt_press_to_voicechange_anim/");
+    e.put(Integer.valueOf(3), "ptt_press_to_record_anim/");
+    e.put(Integer.valueOf(4), "ptt_record_to_press_anim/");
+    e.put(Integer.valueOf(5), "ptt_record_to_stop_record_anim/");
+    e.put(Integer.valueOf(201), "ptt_recordstop_to_play_anim/");
+    e.put(Integer.valueOf(202), "ptt_play_to_stop_anim/");
+    e.put(Integer.valueOf(203), "ptt_stop_to_play_anim/");
+    e.put(Integer.valueOf(6), "ptt_record_to_voicechange_anim/");
+    e.put(Integer.valueOf(7), "ptt_voicechange_to_record_anim/");
+    e.put(Integer.valueOf(101), "ptt_voicechange_to_press_anim_night/");
+    e.put(Integer.valueOf(102), "ptt_press_to_voicechange_anim_night/");
+    e.put(Integer.valueOf(103), "ptt_press_to_record_anim_night/");
+    e.put(Integer.valueOf(104), "ptt_record_to_press_anim_night/");
+    e.put(Integer.valueOf(105), "ptt_record_to_stop_record_anim_night/");
+    e.put(Integer.valueOf(301), "ptt_recordstop_to_play_anim_night/");
+    e.put(Integer.valueOf(302), "ptt_play_to_stop_anim_night/");
+    e.put(Integer.valueOf(303), "ptt_stop_to_play_anim_night/");
+    e.put(Integer.valueOf(106), "ptt_record_to_voicechange_anim_night/");
+    e.put(Integer.valueOf(107), "ptt_voicechange_to_record_anim_night/");
   }
   
   public static AudioTransitionAnimManager a()
@@ -78,12 +78,12 @@ public class AudioTransitionAnimManager
   
   private void a(int paramInt, String paramString, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new AudioTransitionAnimManager.1(this, paramString, paramContext, paramInt));
+    this.j.post(new AudioTransitionAnimManager.1(this, paramString, paramContext, paramInt));
   }
   
   private void a(Animator paramAnimator, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext())
     {
       AudioTransitionAnimManager.TransitionAnimListener localTransitionAnimListener = (AudioTransitionAnimManager.TransitionAnimListener)localIterator.next();
@@ -107,18 +107,18 @@ public class AudioTransitionAnimManager
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("AudioTransitionAnimManager", 2, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_JavaUtilSet.remove(Integer.valueOf(paramInt));
+    this.f.remove(Integer.valueOf(paramInt));
     Object localObject = new LottieDrawable();
     paramContext = new AuidoTransitionAssetDelegate(paramContext, paramString);
     ((LottieDrawable)localObject).setComposition(paramLottieComposition);
     ((LottieDrawable)localObject).setImageAssetDelegate(paramContext);
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+    this.c.put(paramString, localObject);
     a((LottieDrawable)localObject, paramInt);
   }
   
   private void a(LottieDrawable paramLottieDrawable, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    Iterator localIterator = this.d.iterator();
     while (localIterator.hasNext())
     {
       AudioTransitionAnimManager.TransitionAnimListener localTransitionAnimListener = (AudioTransitionAnimManager.TransitionAnimListener)localIterator.next();
@@ -128,39 +128,39 @@ public class AudioTransitionAnimManager
     }
   }
   
-  private void b()
+  private void e()
   {
-    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
+    if (this.i == null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("AudioTransitionAnimManager");
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.i = new HandlerThread("AudioTransitionAnimManager");
+      this.i.start();
+      this.j = new Handler(this.i.getLooper());
     }
   }
   
-  private void c()
+  private void f()
   {
-    Object localObject = this.jdField_a_of_type_AndroidOsHandler;
+    Object localObject = this.j;
     if (localObject != null)
     {
       ((Handler)localObject).removeCallbacks(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
+      this.j = null;
     }
-    localObject = this.jdField_a_of_type_AndroidOsHandlerThread;
+    localObject = this.i;
     if (localObject != null)
     {
       ((HandlerThread)localObject).quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.i = null;
     }
   }
   
-  private void d()
+  private void g()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      LottieDrawable localLottieDrawable = (LottieDrawable)this.jdField_a_of_type_JavaUtilMap.get(str);
+      LottieDrawable localLottieDrawable = (LottieDrawable)this.c.get(str);
       localLottieDrawable.cancelAnimation();
       localLottieDrawable.removeAllAnimatorListeners();
       localLottieDrawable.recycleBitmaps();
@@ -170,7 +170,7 @@ public class AudioTransitionAnimManager
       localLottieDrawable.clearCompositionAndCache(localStringBuilder.toString());
       localLottieDrawable.setImageAssetDelegate(null);
     }
-    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.c.clear();
   }
   
   public LottieDrawable a(Context paramContext, int paramInt)
@@ -182,15 +182,15 @@ public class AudioTransitionAnimManager
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("AudioTransitionAnimManager", 2, ((StringBuilder)localObject).toString());
     }
-    b();
-    Object localObject = jdField_b_of_type_JavaUtilMap;
+    e();
+    Object localObject = e;
     if ((localObject != null) && (((Map)localObject).containsKey(Integer.valueOf(paramInt))))
     {
-      localObject = (String)jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if ((this.jdField_a_of_type_JavaUtilMap.containsKey(localObject)) && (this.jdField_a_of_type_JavaUtilMap.get(localObject) != null)) {
-        return (LottieDrawable)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+      localObject = (String)e.get(Integer.valueOf(paramInt));
+      if ((this.c.containsKey(localObject)) && (this.c.get(localObject) != null)) {
+        return (LottieDrawable)this.c.get(localObject);
       }
-      if (this.jdField_b_of_type_JavaUtilSet.contains(Integer.valueOf(paramInt)))
+      if (this.f.contains(Integer.valueOf(paramInt)))
       {
         if (QLog.isColorLevel())
         {
@@ -201,28 +201,12 @@ public class AudioTransitionAnimManager
         }
         return null;
       }
-      this.jdField_b_of_type_JavaUtilSet.add(Integer.valueOf(paramInt));
+      this.f.add(Integer.valueOf(paramInt));
       a(paramInt, (String)localObject, paramContext);
       return null;
     }
     QLog.e("AudioTransitionAnimManager", 1, "getDrawable mResPathMap error.");
     return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilSet.clear();
-    this.jdField_b_of_type_JavaUtilSet.clear();
-    Cancellable localCancellable = this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable;
-    if (localCancellable != null)
-    {
-      localCancellable.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyCancellable = null;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      d();
-    }
-    c();
   }
   
   public void a(Context paramContext)
@@ -244,7 +228,7 @@ public class AudioTransitionAnimManager
   
   public void a(AudioTransitionAnimManager.TransitionAnimListener paramTransitionAnimListener)
   {
-    this.jdField_a_of_type_JavaUtilSet.add(paramTransitionAnimListener);
+    this.d.add(paramTransitionAnimListener);
   }
   
   public void a(LottieDrawable paramLottieDrawable)
@@ -269,11 +253,11 @@ public class AudioTransitionAnimManager
       if (paramFloat < 0.0F) {
         return;
       }
-      float f = paramFloat;
+      float f1 = paramFloat;
       if (AudioTransitionAnimUtils.a(paramInt)) {
-        f = 1.0F - paramFloat;
+        f1 = 1.0F - paramFloat;
       }
-      paramLottieDrawable.setProgress(f);
+      paramLottieDrawable.setProgress(f1);
     }
   }
   
@@ -304,32 +288,48 @@ public class AudioTransitionAnimManager
     }
   }
   
-  public boolean a()
+  public void b()
   {
-    return this.jdField_a_of_type_Boolean;
+    this.d.clear();
+    this.f.clear();
+    Cancellable localCancellable = this.g;
+    if (localCancellable != null)
+    {
+      localCancellable.cancel();
+      this.g = null;
+    }
+    if (this.c != null) {
+      g();
+    }
+    f();
   }
   
-  public boolean a(LottieDrawable paramLottieDrawable)
+  public boolean b(LottieDrawable paramLottieDrawable)
   {
     return paramLottieDrawable.isAnimating();
   }
   
-  public boolean b()
+  public boolean c()
+  {
+    return this.h;
+  }
+  
+  public boolean d()
   {
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("isFileExsit fileExsit = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.h);
       QLog.d("AudioTransitionAnimManager", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.h) {
       return true;
     }
-    Object localObject = new File(jdField_b_of_type_JavaLangString);
-    if ((((File)localObject).exists()) && (jdField_b_of_type_JavaUtilMap != null) && (((File)localObject).listFiles() != null) && (((File)localObject).listFiles().length == jdField_b_of_type_JavaUtilMap.size()))
+    Object localObject = new File(b);
+    if ((((File)localObject).exists()) && (e != null) && (((File)localObject).listFiles() != null) && (((File)localObject).listFiles().length == e.size()))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
       return true;
     }
     return false;
@@ -337,7 +337,7 @@ public class AudioTransitionAnimManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ class MsgTabStoryManager$1
   
   public void run()
   {
-    MsgTabStoryManager.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean);
+    MsgTabStoryManager.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class LSRecordPanel$9
   
   public void run()
   {
-    LSRecordPanel.a(this.this$0, false);
+    LSRecordPanel.b(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LSRecordPanel.9
  * JD-Core Version:    0.7.0.1
  */

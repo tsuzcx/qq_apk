@@ -1,23 +1,52 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.view.View;
-import java.util.Iterator;
+import android.content.Context;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
-public final class ComaBerenices
-  implements Cassiopeia
+public class ComaBerenices
 {
-  public void a(String paramString, View paramView)
+  public static final public<ComaBerenices> a = new ComaBerenices.do();
+  public Map<String, ComaBerenices.for> b = new HashMap();
+  public Map<String, ComaBerenices.if> c = new HashMap();
+  public Crux d;
+  
+  public static ComaBerenices a()
   {
-    Iterator localIterator = Crux.mh.iterator();
-    while (localIterator.hasNext()) {
-      ((Cassiopeia)localIterator.next()).a(paramString, paramView);
+    return (ComaBerenices)a.b();
+  }
+  
+  public void a(Context paramContext, String paramString, int paramInt, Crux paramCrux)
+  {
+    this.d = paramCrux;
+    if (this.b.get(paramString) == null)
+    {
+      paramContext = new ComaBerenices.for(this, paramString, paramInt);
+      this.b.put(paramString, paramContext);
+      Draco.c.add(paramContext);
     }
+    if (this.c.get(paramString) == null)
+    {
+      paramContext = new ComaBerenices.if(this, paramInt);
+      this.c.put(paramString, paramContext);
+      Draco.d.add(paramContext);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = (ComaBerenices.for)this.b.get(paramString);
+    Draco.c.remove(localObject);
+    this.b.remove(paramString);
+    localObject = (ComaBerenices.if)this.c.get(paramString);
+    Draco.d.remove(localObject);
+    this.c.remove(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.ComaBerenices
  * JD-Core Version:    0.7.0.1
  */

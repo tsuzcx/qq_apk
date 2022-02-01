@@ -15,8 +15,8 @@ class QQInputView$1
     String str = null;
     if (localObject != null)
     {
-      str = QQInputView.a(this.this$0).a();
-      localObject = QQInputView.a(this.this$0).b();
+      str = QQInputView.a(this.this$0).b();
+      localObject = QQInputView.a(this.this$0).c();
     }
     else
     {
@@ -24,23 +24,23 @@ class QQInputView$1
     }
     if (!TextUtils.isEmpty(str))
     {
-      QQInputView.a(this.this$0).setText(str);
-      QQInputView.a(this.this$0).setSelection(str.length());
-      QQInputView.a(this.this$0).setEnabled(true);
-      QQInputView.a(this.this$0).setSelected(true);
+      QQInputView.b(this.this$0).setText(str);
+      QQInputView.b(this.this$0).setSelection(str.length());
+      QQInputView.c(this.this$0).setEnabled(true);
+      QQInputView.c(this.this$0).setSelected(true);
       return;
     }
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      QQInputView.a(this.this$0).setHint((CharSequence)localObject);
-      QQInputView.a(this.this$0).setEnabled(false);
-      QQInputView.a(this.this$0).setSelected(false);
+      QQInputView.b(this.this$0).setHint((CharSequence)localObject);
+      QQInputView.c(this.this$0).setEnabled(false);
+      QQInputView.c(this.this$0).setSelected(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.QQInputView.1
  * JD-Core Version:    0.7.0.1
  */

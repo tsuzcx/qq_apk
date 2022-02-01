@@ -20,14 +20,14 @@ import com.tencent.mobileqq.widget.VoteViewV2;
 public class TemplateLikeView
   extends VoteViewV2
 {
-  protected int a;
-  protected ViewGroup a;
-  protected TextView a;
-  protected URLDrawable a;
-  protected int b;
-  protected ViewGroup b;
-  protected int c;
-  protected int d;
+  protected ViewGroup a = (ViewGroup)findViewById(2131449992);
+  protected ViewGroup b = (ViewGroup)findViewById(2131436857);
+  protected TextView c = (TextView)findViewById(2131449999);
+  protected int d = 0;
+  protected int e = 0;
+  protected int f;
+  protected int g;
+  protected URLDrawable h;
   
   public TemplateLikeView(Context paramContext)
   {
@@ -42,38 +42,28 @@ public class TemplateLikeView
   public TemplateLikeView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380997));
-    this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369739));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131381004));
-  }
-  
-  protected int a()
-  {
-    return 2131562036;
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
     TextView localTextView;
-    if (this.g == 1)
+    if (this.o == 1)
     {
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      localTextView = this.c;
       if (localTextView != null)
       {
-        localTextView.setTextColor(getContext().getResources().getColor(2131167138));
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167138));
+        localTextView.setTextColor(getContext().getResources().getColor(2131168118));
+        this.l.setTextColor(getContext().getResources().getColor(2131168118));
       }
     }
     else
     {
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      localTextView = this.c;
       if (localTextView != null)
       {
-        localTextView.setTextColor(getContext().getResources().getColor(2131167222));
-        this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getContext().getResources().getColor(2131167222));
+        localTextView.setTextColor(getContext().getResources().getColor(2131168212));
+        this.l.setTextColor(getContext().getResources().getColor(2131168212));
       }
     }
   }
@@ -81,26 +71,31 @@ public class TemplateLikeView
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, NewVoteAnimHelper paramNewVoteAnimHelper, boolean paramBoolean3)
   {
     super.a(paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramNewVoteAnimHelper, paramBoolean3);
-    paramNewVoteAnimHelper = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
-    float f = this.jdField_a_of_type_Int + this.jdField_b_of_type_Int;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    paramNewVoteAnimHelper = this.a.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
+    float f1 = this.d + this.e;
+    TextPaint localTextPaint = this.c.getPaint();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131714619));
-    localStringBuilder.append(this.jdField_b_of_type_AndroidWidgetTextView.getText().toString());
-    this.jdField_c_of_type_Int = ((int)(f + localTextPaint.measureText(localStringBuilder.toString()) + UIUtils.a(getContext(), 30.0F)));
-    paramInt1 = this.jdField_c_of_type_Int;
+    localStringBuilder.append(HardCodeUtil.a(2131912128));
+    localStringBuilder.append(this.j.getText().toString());
+    this.f = ((int)(f1 + localTextPaint.measureText(localStringBuilder.toString()) + UIUtils.a(getContext(), 30.0F)));
+    paramInt1 = this.f;
     paramNewVoteAnimHelper.width = paramInt1;
     localLayoutParams.width = paramInt1;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramNewVoteAnimHelper);
-    this.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    this.a.setLayoutParams(paramNewVoteAnimHelper);
+    this.b.setLayoutParams(localLayoutParams);
     paramNewVoteAnimHelper = super.getLayoutParams();
-    paramNewVoteAnimHelper.width = this.jdField_c_of_type_Int;
+    paramNewVoteAnimHelper.width = this.f;
     super.setLayoutParams(paramNewVoteAnimHelper);
-    paramNewVoteAnimHelper = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    paramNewVoteAnimHelper = this.h;
     if (paramNewVoteAnimHelper != null) {
       paramNewVoteAnimHelper.invalidateSelf();
     }
+  }
+  
+  protected int getLayout()
+  {
+    return 2131628462;
   }
   
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
@@ -117,44 +112,44 @@ public class TemplateLikeView
   
   public void setContainerLayoutParams(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Int = paramInt3;
-    ViewGroup.LayoutParams localLayoutParams1 = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    ViewGroup.LayoutParams localLayoutParams2 = this.jdField_b_of_type_AndroidViewViewGroup.getLayoutParams();
-    float f = this.jdField_a_of_type_Int + this.jdField_b_of_type_Int;
-    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    this.e = paramInt4;
+    this.d = paramInt3;
+    ViewGroup.LayoutParams localLayoutParams1 = this.a.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams2 = this.b.getLayoutParams();
+    float f1 = this.d + this.e;
+    TextPaint localTextPaint = this.c.getPaint();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(HardCodeUtil.a(2131714621));
-    localStringBuilder.append(this.e);
-    this.jdField_c_of_type_Int = ((int)(f + localTextPaint.measureText(localStringBuilder.toString()) + UIUtils.a(getContext(), 30.0F)));
-    this.d = paramInt2;
-    paramInt1 = this.jdField_c_of_type_Int;
+    localStringBuilder.append(HardCodeUtil.a(2131912130));
+    localStringBuilder.append(this.m);
+    this.f = ((int)(f1 + localTextPaint.measureText(localStringBuilder.toString()) + UIUtils.a(getContext(), 30.0F)));
+    this.g = paramInt2;
+    paramInt1 = this.f;
     localLayoutParams1.width = paramInt1;
-    paramInt2 = this.d;
+    paramInt2 = this.g;
     localLayoutParams1.height = paramInt2;
     localLayoutParams2.width = paramInt1;
     localLayoutParams2.height = paramInt2;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams1);
-    this.jdField_b_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams2);
+    this.a.setLayoutParams(localLayoutParams1);
+    this.b.setLayoutParams(localLayoutParams2);
   }
   
   public void setVoteContainerBackground(URLDrawable paramURLDrawable)
   {
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    URLDrawable localURLDrawable = this.h;
     if (localURLDrawable != null) {
       localURLDrawable.setURLDrawableListener(null);
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.h = paramURLDrawable;
     if ((paramURLDrawable != null) && (paramURLDrawable.getStatus() != 1)) {
       paramURLDrawable.setURLDrawableListener(new TemplateLikeView.1(this));
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable(paramURLDrawable);
-    this.jdField_b_of_type_AndroidViewViewGroup.setBackgroundDrawable(paramURLDrawable);
+    this.a.setBackgroundDrawable(paramURLDrawable);
+    this.b.setBackgroundDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.TemplateLikeView
  * JD-Core Version:    0.7.0.1
  */

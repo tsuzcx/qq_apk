@@ -7,24 +7,23 @@ import java.util.List;
 public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
   extends HeaderAndFooterAdapter<M, VH>
 {
-  private List<M> a;
+  private List<M> f = new ArrayList();
   
   public BaseAdapter(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public abstract int a(int paramInt);
   
   public int a(M paramM)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    int i = this.f.indexOf(paramM);
     if (i < 0) {
       return i;
     }
-    this.jdField_a_of_type_JavaUtilList.set(i, paramM);
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    this.f.set(i, paramM);
+    if (this.a == null)
     {
       notifyItemChanged(i);
       return i;
@@ -33,60 +32,22 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
     return i;
   }
   
-  public M a(int paramInt)
-  {
-    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + b())) {
-      return null;
-    }
-    List localList;
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      localList = this.jdField_a_of_type_JavaUtilList;
-    }
-    else
-    {
-      localList = this.jdField_a_of_type_JavaUtilList;
-      paramInt -= 1;
-    }
-    return localList.get(paramInt);
-  }
-  
-  public List<M> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.f.clear();
     notifyDataSetChanged();
-  }
-  
-  public void a(M paramM)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
-    if (i < 0) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilList.remove(i);
-    if (this.jdField_a_of_type_AndroidViewView == null)
-    {
-      notifyItemRemoved(i);
-      return;
-    }
-    notifyItemRemoved(i + 1);
   }
   
   public void a(M paramM, int paramInt)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    int i = this.f.indexOf(paramM);
     if (i != -1) {
-      this.jdField_a_of_type_JavaUtilList.remove(i);
+      this.f.remove(i);
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramM);
+    this.f.add(paramInt, paramM);
     if (i != -1)
     {
-      if (this.jdField_a_of_type_AndroidViewView == null)
+      if (this.a == null)
       {
         notifyItemMoved(i, paramInt);
         notifyItemChanged(paramInt);
@@ -97,7 +58,7 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
       notifyItemChanged(paramInt);
       return;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null)
+    if (this.a == null)
     {
       notifyItemInserted(paramInt);
       return;
@@ -107,18 +68,56 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
   
   public boolean a(List<M> paramList)
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList) | bool ^ true;
+    boolean bool = this.f.isEmpty();
+    this.f.clear();
+    bool = this.f.addAll(paramList) | bool ^ true;
     if (bool) {
       notifyDataSetChanged();
     }
     return bool;
   }
   
+  public M b(int paramInt)
+  {
+    if (((this.a != null) && (paramInt == 0)) || (paramInt >= this.f.size() + d())) {
+      return null;
+    }
+    List localList;
+    if (this.a == null)
+    {
+      localList = this.f;
+    }
+    else
+    {
+      localList = this.f;
+      paramInt -= 1;
+    }
+    return localList.get(paramInt);
+  }
+  
+  public List<M> b()
+  {
+    return this.f;
+  }
+  
+  public void b(M paramM)
+  {
+    int i = this.f.indexOf(paramM);
+    if (i < 0) {
+      return;
+    }
+    this.f.remove(i);
+    if (this.a == null)
+    {
+      notifyItemRemoved(i);
+      return;
+    }
+    notifyItemRemoved(i + 1);
+  }
+  
   public boolean b(List<M> paramList)
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    boolean bool = this.f.addAll(paramList);
     if (bool) {
       notifyDataSetChanged();
     }
@@ -127,7 +126,7 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
   
   public int getItemCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size() + a();
+    return this.f.size() + c();
   }
   
   public long getItemId(int paramInt)
@@ -137,10 +136,10 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
   
   public final int getItemViewType(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
+    if ((this.a != null) && (paramInt == 0)) {
       return 1024;
     }
-    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + b())) {
+    if ((this.b != null) && (paramInt == this.f.size() + d())) {
       return 1025;
     }
     return a(paramInt);
@@ -148,7 +147,7 @@ public abstract class BaseAdapter<M, VH extends BaseViewHolder<M>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.common.recyclerview.BaseAdapter
  * JD-Core Version:    0.7.0.1
  */

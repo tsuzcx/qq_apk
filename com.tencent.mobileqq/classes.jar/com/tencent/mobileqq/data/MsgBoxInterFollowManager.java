@@ -33,15 +33,15 @@ public class MsgBoxInterFollowManager
   public MsgBoxInterFollowManager(QQAppInterface paramQQAppInterface)
   {
     this.app = paramQQAppInterface;
-    this.msgboxUnreadCount = SharedPreUtils.W(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    this.msgboxUnreadCount = SharedPreUtils.ap(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
   private void addMessage(MessageForInteractAndFollow paramMessageForInteractAndFollow)
   {
-    MessageRecord localMessageRecord = this.app.getMessageFacade().b(paramMessageForInteractAndFollow.senderuin, paramMessageForInteractAndFollow.istroop);
+    MessageRecord localMessageRecord = this.app.getMessageFacade().r(paramMessageForInteractAndFollow.senderuin, paramMessageForInteractAndFollow.istroop);
     if (localMessageRecord != null)
     {
-      this.app.getMessageFacade().b(localMessageRecord.senderuin, localMessageRecord.istroop, localMessageRecord.uniseq);
+      this.app.getMessageFacade().h(localMessageRecord.senderuin, localMessageRecord.istroop, localMessageRecord.uniseq);
       this.app.getMessageFacade().a(paramMessageForInteractAndFollow, this.app.getCurrentAccountUin());
       return;
     }
@@ -106,11 +106,11 @@ public class MsgBoxInterFollowManager
     paramInt2 = localMessageForInteractAndFollow.unReadCount;
     paramInt1 = 0;
     if (paramInt2 > 0) {
-      if (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 1) {
+      if (SharedPreUtils.j(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 1) {
         SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
       }
     }
-    while (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
+    while (SharedPreUtils.j(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
     {
       paramInt1 = 1;
       break;
@@ -162,11 +162,11 @@ public class MsgBoxInterFollowManager
     paramInt2 = localMessageForInteractAndFollow.unReadCount;
     paramInt1 = 0;
     if (paramInt2 > 0) {
-      if (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 1) {
+      if (SharedPreUtils.j(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 1) {
         SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
       }
     }
-    while (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
+    while (SharedPreUtils.j(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
     {
       paramInt1 = 1;
       break;
@@ -182,7 +182,7 @@ public class MsgBoxInterFollowManager
     {
       this.msgboxUnreadCount = 0;
       MsgBoxProtocol.a(this.app, 0, null);
-      SharedPreUtils.v(this.app.getApp(), this.app.getCurrentAccountUin(), 0);
+      SharedPreUtils.y(this.app.getApp(), this.app.getCurrentAccountUin(), 0);
     }
   }
   
@@ -217,7 +217,7 @@ public class MsgBoxInterFollowManager
     if (localMsgBody.uint32_msgbox_unread_count.has())
     {
       this.msgboxUnreadCount = localMsgBody.uint32_msgbox_unread_count.get();
-      SharedPreUtils.v(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_msgbox_unread_count.get());
+      SharedPreUtils.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_msgbox_unread_count.get());
     }
     addMessage(paramArrayOfByte.toString(), localMsgBody.uint32_msgbox_unread_count.get(), localMsgBody.uint32_unread_count.get(), localMsgBody.uint64_timestamp.get(), localMsgBody.uint32_type.get());
   }
@@ -242,7 +242,7 @@ public class MsgBoxInterFollowManager
     if (localMsgBody.uint32_box_unread_num.has())
     {
       this.msgboxUnreadCount = localMsgBody.uint32_box_unread_num.get();
-      SharedPreUtils.v(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_box_unread_num.get());
+      SharedPreUtils.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_box_unread_num.get());
     }
     addMomentMessage(localMsgBody.bytes_wording.get().toStringUtf8(), localMsgBody.uint32_box_unread_num.get(), localMsgBody.uint32_inner_unread_num.get(), localMsgBody.uint32_update_time.get());
   }
@@ -265,7 +265,7 @@ public class MsgBoxInterFollowManager
       }
       return false;
     }
-    Object localObject = this.app.getMessageProxy(paramInt).b(paramString, paramInt);
+    Object localObject = this.app.getMessageProxy(paramInt).c(paramString, paramInt);
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -285,7 +285,7 @@ public class MsgBoxInterFollowManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MsgBoxInterFollowManager
  * JD-Core Version:    0.7.0.1
  */

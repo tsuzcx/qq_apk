@@ -12,7 +12,7 @@ public class TencentDocAIOPlusPanelEntryConfigProcessor
 {
   public static TencentDocAIOPlusPanelEntryConfigBean a()
   {
-    return (TencentDocAIOPlusPanelEntryConfigBean)QConfigManager.a().a(334);
+    return (TencentDocAIOPlusPanelEntryConfigBean)QConfigManager.b().b(334);
   }
   
   @NonNull
@@ -67,7 +67,7 @@ public class TencentDocAIOPlusPanelEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOPlusPanelEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

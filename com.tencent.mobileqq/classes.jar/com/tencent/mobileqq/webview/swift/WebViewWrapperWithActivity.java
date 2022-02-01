@@ -3,45 +3,44 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.open.temp.api.IWebViewOpenSdkApi;
+import com.tencent.open.api.WebViewOpenSdkApi;
 import com.tencent.smtt.sdk.DownloadListener;
 import mqq.app.AppRuntime;
 
 public class WebViewWrapperWithActivity
   extends WebViewWrapper
 {
-  protected Activity a;
+  protected Activity i;
   
   public WebViewWrapperWithActivity(AppRuntime paramAppRuntime, Activity paramActivity, WebViewCallback paramWebViewCallback, Intent paramIntent, TouchWebView paramTouchWebView)
   {
     super(paramAppRuntime, paramWebViewCallback, paramIntent, paramTouchWebView);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    c();
+    this.i = paramActivity;
+    f();
   }
   
   public WebViewWrapperWithActivity(AppRuntime paramAppRuntime, Activity paramActivity, WebViewCallback paramWebViewCallback, Intent paramIntent, boolean paramBoolean)
   {
     super(paramAppRuntime, paramWebViewCallback, paramIntent, paramActivity, paramBoolean);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    c();
+    this.i = paramActivity;
+    f();
   }
   
-  protected boolean a()
+  protected boolean e()
   {
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.i;
     return (localActivity != null) && (localActivity.isFinishing());
   }
   
-  public void c()
+  public void f()
   {
-    DownloadListener localDownloadListener = (DownloadListener)((IWebViewOpenSdkApi)QRoute.api(IWebViewOpenSdkApi.class)).createDownloadListener(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setDownloadListener(localDownloadListener);
+    DownloadListener localDownloadListener = (DownloadListener)WebViewOpenSdkApi.a().a(this.i, this.b, this.d, this.e);
+    this.d.setDownloadListener(localDownloadListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewWrapperWithActivity
  * JD-Core Version:    0.7.0.1
  */

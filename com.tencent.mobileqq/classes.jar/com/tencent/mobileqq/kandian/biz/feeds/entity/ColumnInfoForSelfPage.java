@@ -3,29 +3,29 @@ package com.tencent.mobileqq.kandian.biz.feeds.entity;
 public class ColumnInfoForSelfPage
 {
   public int a;
-  public String a;
   public int b;
-  public String b;
   public int c;
-  public String c;
+  public String d;
+  public String e;
+  public String f;
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ColumnInfoForSelfPage{myVideoCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", myColumnCount=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mySubscribeCount=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", myVideoJumpUrl='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", myColumnJumpUrl='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mySubscribeJumpUrl='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -33,7 +33,7 @@ public class ColumnInfoForSelfPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.entity.ColumnInfoForSelfPage
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public class OpenWereWolfParser
   public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
     paramBaseQQAppInterface = new OpenWereWolfAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
-    paramBaseQQAppInterface.a = paramString;
-    paramBaseQQAppInterface.b = "qwerewolf";
-    paramBaseQQAppInterface.c = "enterHomePage";
+    paramBaseQQAppInterface.c = paramString;
+    paramBaseQQAppInterface.d = "qwerewolf";
+    paramBaseQQAppInterface.e = "enterHomePage";
     paramContext = paramString.split("\\?");
     if (paramContext.length != 2) {
       return paramBaseQQAppInterface;
@@ -36,7 +36,7 @@ public class OpenWereWolfParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.OpenWereWolfParser
  * JD-Core Version:    0.7.0.1
  */

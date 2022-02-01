@@ -18,7 +18,7 @@ class EditTextDialog$2
   {
     if (EditTextDialog.access$300(this.this$0).getText().length() > EditTextDialog.access$000(this.this$0))
     {
-      QQToast.a(this.this$0.getContext(), this.this$0.getContext().getString(2064515246, new Object[] { Integer.valueOf(EditTextDialog.access$000(this.this$0)) }), 1).a();
+      QQToast.makeText(this.this$0.getContext(), this.this$0.getContext().getString(2064187593, new Object[] { Integer.valueOf(EditTextDialog.access$000(this.this$0)) }), 1).show();
       return;
     }
     if (EditTextDialog.access$400(this.this$0) != null) {
@@ -52,7 +52,7 @@ class EditTextDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.EditTextDialog.2
  * JD-Core Version:    0.7.0.1
  */

@@ -18,17 +18,17 @@ import mqq.os.MqqHandler;
 class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
   implements Runnable
 {
-  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  RecentUserProxy jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
+  TroopManager a;
+  RecentUserProxy b;
   
   private ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
   public void run()
   {
-    TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    RecentUserProxy localRecentUserProxy = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
-    ArrayList localArrayList1 = localTroopManager.b();
-    Object localObject1 = ((DiscussionManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a();
+    TroopManager localTroopManager = (TroopManager)this.this$0.a.getManager(QQManagerFactory.TROOP_MANAGER);
+    RecentUserProxy localRecentUserProxy = this.this$0.a.getProxyManager().g();
+    ArrayList localArrayList1 = localTroopManager.h();
+    Object localObject1 = ((DiscussionManager)this.this$0.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).b();
     ArrayList localArrayList2 = new ArrayList();
     Object localObject2 = ((List)localObject1).iterator();
     int i = 0;
@@ -53,7 +53,7 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
         {
           localArrayList2.add(localDiscussionInfo);
         }
-        else if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppDiscussionManager.a(localDiscussionInfo.uin) > 0)
+        else if (this.this$0.m.c(localDiscussionInfo.uin) > 0)
         {
           localArrayList2.add(localDiscussionInfo);
           i += 1;
@@ -77,16 +77,16 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
     ((StringBuilder)localObject2).append(localArrayList2.size());
     QLog.d("ContactsTroopAdapter", 1, ((StringBuilder)localObject2).toString());
     localObject1 = new ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable(this.this$0);
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_ComTencentMobileqqAppTroopManager = localTroopManager;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy = localRecentUserProxy;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_JavaUtilArrayList = localArrayList1;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).jdField_a_of_type_JavaUtilList = localArrayList2;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).a = localTroopManager;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).b = localRecentUserProxy;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).c = localArrayList1;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject1).d = localArrayList2;
     ThreadManager.getUIHandler().post((Runnable)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter.LoadTroopDiscussInfoSubRunnable
  * JD-Core Version:    0.7.0.1
  */

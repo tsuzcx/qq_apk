@@ -14,7 +14,7 @@ public class TroopClassChoiceActivity$GetClassChoiceCallBack
   {
     if (paramBoolean)
     {
-      this.a.a = GroupCatalogTool.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
+      this.a.b = GroupCatalogTool.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
       this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
       return;
     }
@@ -23,7 +23,7 @@ public class TroopClassChoiceActivity$GetClassChoiceCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack
  * JD-Core Version:    0.7.0.1
  */

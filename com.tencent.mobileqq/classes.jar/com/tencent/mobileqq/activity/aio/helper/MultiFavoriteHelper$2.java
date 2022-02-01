@@ -11,12 +11,12 @@ class MultiFavoriteHelper$2
   
   public void run()
   {
-    QQToast.a(MultiFavoriteHelper.a(this.this$0).getApp(), 2131692186, 0).b(MultiFavoriteHelper.a(this.this$0).a());
+    QQToast.makeText(MultiFavoriteHelper.b(this.this$0).getApp(), 2131889173, 0).show(MultiFavoriteHelper.a(this.this$0).A());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.MultiFavoriteHelper.2
  * JD-Core Version:    0.7.0.1
  */

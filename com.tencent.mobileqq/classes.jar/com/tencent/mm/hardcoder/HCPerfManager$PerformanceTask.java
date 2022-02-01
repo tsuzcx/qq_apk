@@ -1,71 +1,73 @@
 package com.tencent.mm.hardcoder;
 
+import android.util.Log;
 import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class HCPerfManager$PerformanceTask
   extends RecyclablePool.Recyclable
 {
-  public int a;
-  public long a;
-  public String a;
-  public int[] a;
-  public long[] a;
-  public int b;
-  public long b;
-  public int[] b;
-  public long[] b;
-  public int c;
-  public long c;
-  public int[] c;
-  public int d;
-  public long d;
-  public int e;
-  long e;
-  public int f;
-  public long f;
-  public int g;
-  public long g;
-  int h;
-  public long h;
-  int i;
-  public long i;
-  public int j = 0;
+  public long action = 0L;
+  public long averageCoreFreq = 0L;
+  public int[] bindCoreThreadIdArray = null;
+  public int bindTid = 0;
+  public int callerTid = 0;
+  public int cpuLevel = 0;
+  public int[] cpuLevelTimeArray = new int[HCPerfManager.access$000().length];
+  public int delay = 0;
+  public long initTime = 0L;
+  public int ioLevel = 0;
+  public int[] ioLevelTimeArray = new int[HCPerfManager.access$100().length];
+  int lastCpuLevel = 0;
+  int lastIoLevel = 0;
+  long lastUpdateTime = 0L;
+  public int scene = 0;
+  public long sceneStartTime = 0L;
+  public long sceneStopTime = 0L;
+  public long[] startProcessJiffies = null;
+  public long[] startThreadJiffies = null;
+  public long startTime = 0L;
+  public long stopTime = 0L;
+  public long sumProcessJiffies = 0L;
+  public int sumThreadJiffies = 0;
+  public String tag;
+  public int timeout = 0;
   
-  public HCPerfManager$PerformanceTask()
+  public String toString(long paramLong)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_h_of_type_Int = 0;
-    this.jdField_i_of_type_Int = 0;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_ArrayOfInt = new int[HCPerfManager.a().length];
-    this.jdField_b_of_type_ArrayOfInt = new int[HCPerfManager.b().length];
-    this.jdField_c_of_type_ArrayOfInt = null;
-    this.jdField_a_of_type_ArrayOfLong = null;
-    this.jdField_b_of_type_ArrayOfLong = null;
-    this.jdField_f_of_type_Long = 0L;
-    this.jdField_g_of_type_Long = 0L;
-    this.jdField_h_of_type_Long = 0L;
-    this.jdField_i_of_type_Long = 0L;
+    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.initTime - paramLong), Long.valueOf(this.startTime - paramLong), Long.valueOf(this.stopTime - paramLong), Integer.valueOf(this.delay), Integer.valueOf(this.timeout), Integer.valueOf(this.scene), Long.valueOf(this.action), Integer.valueOf(this.callerTid), Integer.valueOf(this.cpuLevel), Integer.valueOf(this.ioLevel), Integer.valueOf(this.bindTid), this.tag });
   }
   
-  public String a(long paramLong)
+  void update(long paramLong, long[] paramArrayOfLong1, long[] paramArrayOfLong2)
   {
-    return String.format("h:%x[%d,%d,%d][%d,%d][%d,%d,%d][%d,%d,%d][%s]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.jdField_c_of_type_Long - paramLong), Long.valueOf(this.jdField_b_of_type_Long - paramLong), Long.valueOf(this.jdField_d_of_type_Long - paramLong), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_f_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Integer.valueOf(this.jdField_g_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_d_of_type_Int), Integer.valueOf(this.jdField_e_of_type_Int), this.jdField_a_of_type_JavaLangString });
+    this.averageCoreFreq = ((this.averageCoreFreq + paramLong) / 2L);
+    if ((paramArrayOfLong1 != null) && (this.bindTid > 0))
+    {
+      paramLong = paramArrayOfLong1[0];
+      paramArrayOfLong2 = this.startThreadJiffies;
+      this.sumThreadJiffies = ((int)(paramLong - paramArrayOfLong2[0] + (paramArrayOfLong1[1] - paramArrayOfLong2[1])));
+      if (HardCoderJNI.hcDebug)
+      {
+        paramArrayOfLong2 = new StringBuilder();
+        paramArrayOfLong2.append("thread id:");
+        paramArrayOfLong2.append(this.bindTid);
+        paramArrayOfLong2.append(",start jiffies:[");
+        paramArrayOfLong2.append(this.startThreadJiffies[0]);
+        paramArrayOfLong2.append(",");
+        paramArrayOfLong2.append(this.startThreadJiffies[1]);
+        paramArrayOfLong2.append("], end jiffies:[");
+        paramArrayOfLong2.append(paramArrayOfLong1[0]);
+        paramArrayOfLong2.append(",");
+        paramArrayOfLong2.append(paramArrayOfLong1[1]);
+        paramArrayOfLong2.append("],sum thread jiffies:");
+        paramArrayOfLong2.append(this.sumThreadJiffies);
+        Log.d("HardCoder.HCPerfManager", paramArrayOfLong2.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HCPerfManager.PerformanceTask
  * JD-Core Version:    0.7.0.1
  */

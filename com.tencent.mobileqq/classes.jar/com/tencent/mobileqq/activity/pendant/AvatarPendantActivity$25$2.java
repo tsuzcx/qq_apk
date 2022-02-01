@@ -7,16 +7,16 @@ class AvatarPendantActivity$25$2
   
   public void run()
   {
-    if (AvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$25.a))
+    if (AvatarPendantActivity.h(this.b.a))
     {
-      AvatarPendantActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$25.a, this.jdField_a_of_type_JavaLangString);
-      AvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity$25.a, false);
+      AvatarPendantActivity.d(this.b.a, this.a);
+      AvatarPendantActivity.b(this.b.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.25.2
  * JD-Core Version:    0.7.0.1
  */

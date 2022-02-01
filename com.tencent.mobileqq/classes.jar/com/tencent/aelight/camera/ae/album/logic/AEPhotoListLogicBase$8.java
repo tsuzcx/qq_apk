@@ -13,15 +13,15 @@ class AEPhotoListLogicBase$8
   public void run()
   {
     if (this.a) {
-      QQToast.a(((AEAbstractPhotoListFragment)this.this$0.a.get()).getActivity(), "暂无媒体文件", 1000).a();
+      QQToast.makeText(((AEAbstractPhotoListFragment)this.this$0.b.get()).getActivity(), "暂无媒体文件", 1000).show();
     }
-    ((AEAbstractPhotoListFragment)this.this$0.a.get()).jdField_a_of_type_ComTencentAelightCameraAeAlbumFragmentAEAbstractPhotoListFragment$PhotoGridAdapter.notifyDataSetChanged();
-    ((AEAbstractPhotoListFragment)this.this$0.a.get()).jdField_a_of_type_ComTencentAelightCameraAeAlbumLogicAEPhotoListLogic.d();
+    ((AEAbstractPhotoListFragment)this.this$0.b.get()).d.notifyDataSetChanged();
+    ((AEAbstractPhotoListFragment)this.this$0.b.get()).a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.8
  * JD-Core Version:    0.7.0.1
  */

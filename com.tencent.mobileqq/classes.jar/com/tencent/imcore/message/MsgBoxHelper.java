@@ -21,7 +21,7 @@ public class MsgBoxHelper
     paramString3 = paramIMessageFacade.getLastMessage(paramString1, paramInt1);
     if ((paramString3.senderuin != null) && (paramString3.senderuin.equals(paramString2)) && ((paramInt2 == 0) || ((paramInt2 != 0) && (paramInt2 == paramString3.getExtraKey()))))
     {
-      paramString2 = paramQQAppInterface.getMessageProxy(paramInt1).b(paramString1, paramInt1);
+      paramString2 = paramQQAppInterface.getMessageProxy(paramInt1).c(paramString1, paramInt1);
       if ((paramString2 != null) && (!paramString2.isEmpty()))
       {
         MessageRecord.copyMessageRecordBaseField(paramString3, (MessageRecord)paramString2.get(paramString2.size() - 1));
@@ -44,10 +44,10 @@ public class MsgBoxHelper
       {
         paramString3.emoRecentMsg = null;
         paramString3.msg = null;
-        ConfessMsgUtil.a(paramString3);
+        ConfessMsgUtil.d(paramString3);
         if (paramBoolean)
         {
-          paramQQAppInterface = paramQQAppInterface.getProxyManager().a().a(paramString1, paramInt1);
+          paramQQAppInterface = paramQQAppInterface.getProxyManager().g().b(paramString1, paramInt1);
           if (paramQQAppInterface != null) {
             paramIMessageFacade.removeRecentUser(paramQQAppInterface);
           }
@@ -79,7 +79,7 @@ public class MsgBoxHelper
     if ((localMessage.senderuin != null) && (localMessage.senderuin.equals(paramString2)))
     {
       paramQQAppInterface.getMessageProxy(paramInt).a(str, paramInt, paramString1, paramString3, 0);
-      paramString2 = paramQQAppInterface.getMessageProxy(paramInt).b(paramString1, paramInt);
+      paramString2 = paramQQAppInterface.getMessageProxy(paramInt).c(paramString1, paramInt);
       if ((paramString2 != null) && (!paramString2.isEmpty()))
       {
         paramString2 = (MessageRecord)paramString2.get(paramString2.size() - 1);
@@ -107,7 +107,7 @@ public class MsgBoxHelper
       paramString2 = paramIMessageFacade.getLastMessage(str, paramInt);
       if ((paramString2.senderuin != null) && (paramString2.senderuin.equals(paramString1)))
       {
-        paramString1 = paramQQAppInterface.getMessageProxy(paramInt).b(str, paramInt);
+        paramString1 = paramQQAppInterface.getMessageProxy(paramInt).c(str, paramInt);
         if ((paramString1 != null) && (!paramString1.isEmpty()))
         {
           MessageRecord.copyMessageRecordBaseField(paramString2, (MessageRecord)paramString1.get(paramString1.size() - 1));
@@ -132,7 +132,7 @@ public class MsgBoxHelper
           paramString2.msg = null;
           if (paramBoolean)
           {
-            paramQQAppInterface = paramQQAppInterface.getProxyManager().a().a(str, paramInt);
+            paramQQAppInterface = paramQQAppInterface.getProxyManager().g().b(str, paramInt);
             if (paramQQAppInterface != null) {
               paramIMessageFacade.removeRecentUser(paramQQAppInterface);
             }
@@ -144,7 +144,7 @@ public class MsgBoxHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgBoxHelper
  * JD-Core Version:    0.7.0.1
  */

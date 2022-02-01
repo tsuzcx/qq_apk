@@ -95,7 +95,7 @@ public class TKDTuWenSubCommentFragment
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
   {
-    this.mPresenter.a().a(false);
+    this.mPresenter.i().a(false);
     super.initAfterVisible(paramBundle, paramViewGroup);
     paramViewGroup.setBackgroundColor(0);
     initEventDispatcher();
@@ -223,7 +223,7 @@ public class TKDTuWenSubCommentFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.subcomment.TKDTuWenSubCommentFragment
  * JD-Core Version:    0.7.0.1
  */

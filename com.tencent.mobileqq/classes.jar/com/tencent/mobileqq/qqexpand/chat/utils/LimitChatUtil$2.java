@@ -12,15 +12,15 @@ final class LimitChatUtil$2
   
   public void run()
   {
-    IExpandHandler localIExpandHandler = (IExpandHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
+    IExpandHandler localIExpandHandler = (IExpandHandler)this.a.getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER);
     if (localIExpandHandler != null) {
-      localIExpandHandler.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      localIExpandHandler.a(this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.chat.utils.LimitChatUtil.2
  * JD-Core Version:    0.7.0.1
  */

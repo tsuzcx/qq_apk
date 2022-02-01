@@ -15,32 +15,32 @@ class DefaultFileModel$1$1
   
   public void a(List<ZipFilePresenter.FileData> paramList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+    if (this.d.b.n != null) {
       if ((paramList != null) && (!paramList.isEmpty())) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramList, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.b, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.c, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+        this.d.b.n.a(paramList, this.d.b.d, this.d.b.e, this.d.b.f, this.d.b.g, this.a, this.b, this.c);
       } else {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(-1000L);
+        this.d.b.n.a(-1000L);
       }
     }
     if (paramList != null)
     {
-      paramList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramList = this.d.b.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin);
-      ReportController.b(paramList, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, localStringBuilder.toString(), "", FileManagerUtil.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.c()), "1");
+      localStringBuilder.append(this.d.b.c.r().TroopUin);
+      ReportController.b(paramList, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, localStringBuilder.toString(), "", FileManagerUtil.t(this.d.b.v()), "1");
       return;
     }
-    paramList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramList = this.d.b.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a().TroopUin);
-    ReportController.b(paramList, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, localStringBuilder.toString(), "-1", FileManagerUtil.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelDefaultFileModel$1.a.c()), "1");
+    localStringBuilder.append(this.d.b.c.r().TroopUin);
+    ReportController.b(paramList, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, localStringBuilder.toString(), "-1", FileManagerUtil.t(this.d.b.v()), "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel.1.1
  * JD-Core Version:    0.7.0.1
  */

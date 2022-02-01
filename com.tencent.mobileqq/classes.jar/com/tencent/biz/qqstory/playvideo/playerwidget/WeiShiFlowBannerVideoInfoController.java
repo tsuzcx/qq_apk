@@ -21,10 +21,10 @@ import java.util.Map;
 public class WeiShiFlowBannerVideoInfoController
   extends BannerVideoInfoWidget3.BannerVideoInfoController
 {
-  private VideoLinkInfo jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo;
-  private StoryPlayerVideoData jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean c = false;
+  private StoryPlayerVideoData f;
+  private VideoLinkInfo g;
+  private boolean h = false;
+  private String i = "";
   
   public Map<Subscriber, String> a()
   {
@@ -38,13 +38,13 @@ public class WeiShiFlowBannerVideoInfoController
     if (!super.a(paramView)) {
       return false;
     }
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData;
+    paramView = this.f;
     if (paramView == null) {
       return false;
     }
-    StoryVideoItem localStoryVideoItem = paramView.a();
-    paramView = WeShiGuideDialog.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b(), localStoryVideoItem.mOwnerUid, "4", localStoryVideoItem.mVid, 3, localStoryVideoItem.mWsSchema);
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.a()).a();
+    StoryVideoItem localStoryVideoItem = paramView.e();
+    paramView = WeShiGuideDialog.a(this.a.y(), localStoryVideoItem.mOwnerUid, "4", localStoryVideoItem.mVid, 3, localStoryVideoItem.mWsSchema);
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)this.a.d()).r();
     if (paramView != null)
     {
       if (localVideoViewVideoHolder != null) {
@@ -52,7 +52,7 @@ public class WeiShiFlowBannerVideoInfoController
       }
       paramView.setOnDismissListener(new WeiShiFlowBannerVideoInfoController.1(this, localVideoViewVideoHolder));
     }
-    if (WeishiGuideUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b())) {
+    if (WeishiGuideUtils.a(this.a.y())) {
       paramView = "1";
     } else {
       paramView = "2";
@@ -63,39 +63,39 @@ public class WeiShiFlowBannerVideoInfoController
   
   public void b(BannerVideoInfoWidget3.BannerViewHolder paramBannerViewHolder, StoryPlayerVideoData paramStoryPlayerVideoData)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData = paramStoryPlayerVideoData;
-    StoryVideoItem localStoryVideoItem = paramStoryPlayerVideoData.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo = localStoryVideoItem.getOALinkInfo();
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo;
-    if ((localObject != null) && (((VideoLinkInfo)localObject).jdField_a_of_type_Int == 6))
+    this.f = paramStoryPlayerVideoData;
+    StoryVideoItem localStoryVideoItem = paramStoryPlayerVideoData.e();
+    this.g = localStoryVideoItem.getOALinkInfo();
+    Object localObject = this.g;
+    if ((localObject != null) && (((VideoLinkInfo)localObject).a == 6))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.j();
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString))
+      this.a.z();
+      if (TextUtils.equals(this.i, paramStoryPlayerVideoData.b))
       {
-        this.c = false;
+        this.h = false;
       }
       else
       {
-        this.c = true;
-        this.jdField_a_of_type_JavaLangString = paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
+        this.h = true;
+        this.i = paramStoryPlayerVideoData.b;
       }
-      paramStoryPlayerVideoData = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.b;
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.c;
-      String str = this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.d;
+      paramStoryPlayerVideoData = this.g.c;
+      localObject = this.g.d;
+      String str = this.g.e;
       SLog.a("WeiShiFlowBannerVideoInfoController", "WeiShiFlowBannerVideoInfoController doOnBind, title:%s, body:%s, picUrl:%s", paramStoryPlayerVideoData, localObject, str);
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       paramBannerViewHolder.b.setVisibility(0);
-      paramBannerViewHolder.b.setTypeface(null, 0);
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      BannerVideoInfoWidget3.a(str, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
-      paramBannerViewHolder.b.setText(paramStoryPlayerVideoData);
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      if (this.c) {
+      paramBannerViewHolder.d.setVisibility(0);
+      paramBannerViewHolder.d.setTypeface(null, 0);
+      paramBannerViewHolder.c.setVisibility(0);
+      BannerVideoInfoWidget3.a(str, paramBannerViewHolder.b, paramBannerViewHolder.h, paramBannerViewHolder.g, paramBannerViewHolder.g);
+      paramBannerViewHolder.d.setText(paramStoryPlayerVideoData);
+      paramBannerViewHolder.c.setText((CharSequence)localObject);
+      if (this.h) {
         StoryReportor.a("weishi_share", "link_exp", 0, 0, new String[] { "", localStoryVideoItem.mOwnerUid, "", localStoryVideoItem.mVid });
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.k();
+    this.a.A();
   }
 }
 

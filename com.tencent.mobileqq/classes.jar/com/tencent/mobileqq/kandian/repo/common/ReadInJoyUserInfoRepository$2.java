@@ -11,7 +11,7 @@ class ReadInJoyUserInfoRepository$2
 {
   public void run()
   {
-    Object localObject = ReadInJoyUserInfoRepository.a(this.this$0);
+    Object localObject = ReadInJoyUserInfoRepository.b(this.this$0);
     int i = 0;
     int j = this.a;
     localObject = ((EntityManager)localObject).query(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(j));
@@ -38,7 +38,7 @@ class ReadInJoyUserInfoRepository$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoRepository.2
  * JD-Core Version:    0.7.0.1
  */

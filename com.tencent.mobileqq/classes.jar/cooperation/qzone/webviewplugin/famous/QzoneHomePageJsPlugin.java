@@ -33,8 +33,8 @@ public class QzoneHomePageJsPlugin
       QZLog.i("QzoneHomePageJsPlugin", 4, paramJsBridgeListener.toString());
       paramJsBridgeListener = new Intent("JsCallReflushNavigationBar");
       paramJsBridgeListener.putExtra("navigationBar", paramVarArgs[0]);
-      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.a() != null)) {
-        this.parentPlugin.mRuntime.a().sendBroadcast(paramJsBridgeListener);
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null) && (this.parentPlugin.mRuntime.d() != null)) {
+        this.parentPlugin.mRuntime.d().sendBroadcast(paramJsBridgeListener);
       }
       return true;
     }
@@ -43,7 +43,7 @@ public class QzoneHomePageJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.famous.QzoneHomePageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

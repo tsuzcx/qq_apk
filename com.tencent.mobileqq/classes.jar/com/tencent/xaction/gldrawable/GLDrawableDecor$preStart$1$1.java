@@ -2,7 +2,6 @@ package com.tencent.xaction.gldrawable;
 
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import com.tencent.android.gldrawable.api.IGLDrawable;
 import com.tencent.xaction.api.IDecorView;
 import com.tencent.xaction.api.IView;
 import com.tencent.xaction.api.base.DecorDrawable;
@@ -16,7 +15,7 @@ import kotlin.jvm.internal.Intrinsics;
 final class GLDrawableDecor$preStart$1$1
   implements Runnable
 {
-  GLDrawableDecor$preStart$1$1(GLDrawableDecor.preStart.1 param1, IGLDrawable paramIGLDrawable) {}
+  GLDrawableDecor$preStart$1$1(GLDrawableDecor.preStart.1 param1) {}
   
   public final void run()
   {
@@ -34,13 +33,13 @@ final class GLDrawableDecor$preStart$1$1
       i = 0;
     }
     if (Build.VERSION.SDK_INT >= 16) {
-      DecorDrawable.Companion.a(DecorDrawable.Companion, i, this.this$0.a, (Drawable)this.a, false, 8, null);
+      DecorDrawable.Companion.a(DecorDrawable.Companion, i, this.this$0.a, (Drawable)this.this$0.this$0.a(), false, 8, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.gldrawable.GLDrawableDecor.preStart.1.1
  * JD-Core Version:    0.7.0.1
  */

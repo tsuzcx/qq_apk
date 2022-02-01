@@ -16,13 +16,13 @@ class FriendChooser$1
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Friend localFriend = (Friend)this.a.jdField_a_of_type_ComTencentOpenAgentFriendChooser$GridViewAdapter.getItem(paramInt);
-    if ((localFriend != null) && (this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.a(localFriend.a)))
+    Friend localFriend = (Friend)this.a.x.getItem(paramInt);
+    if ((localFriend != null) && (this.a.C.b(localFriend.a)))
     {
-      this.a.jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager.b(localFriend.a);
-      this.a.b.remove(localFriend);
-      this.a.e();
-      ((OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).g();
+      this.a.C.d(localFriend.a);
+      this.a.B.remove(localFriend);
+      this.a.f();
+      ((OpenFrame)this.a.h.getCurrentView()).g();
       this.a.b(false);
     }
     EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
@@ -30,7 +30,7 @@ class FriendChooser$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.FriendChooser.1
  * JD-Core Version:    0.7.0.1
  */

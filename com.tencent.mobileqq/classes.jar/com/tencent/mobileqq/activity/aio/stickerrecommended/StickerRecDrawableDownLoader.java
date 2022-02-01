@@ -34,36 +34,36 @@ public class StickerRecDrawableDownLoader
   extends ProtocolDownloader.Adapter
 {
   public static final String a;
-  public Handler a;
-  public EntityManager a;
+  public EntityManager b;
+  public Handler c;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("keyword_emotion/");
-    jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+    a = VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
   public StickerRecDrawableDownLoader()
   {
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if ((localObject instanceof BaseQQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = ((AppRuntime)localObject).getEntityManagerFactory().createEntityManager();
+      this.b = ((AppRuntime)localObject).getEntityManagerFactory().createEntityManager();
     }
     localObject = ThreadManager.getFileThreadLooper();
     if (localObject != null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler((Looper)localObject);
+      this.c = new Handler((Looper)localObject);
     }
   }
   
   public static String a(IStickerRecEmoticon paramIStickerRecEmoticon)
   {
-    if (!TextUtils.isEmpty(paramIStickerRecEmoticon.b())) {
-      return paramIStickerRecEmoticon.b();
+    if (!TextUtils.isEmpty(paramIStickerRecEmoticon.f())) {
+      return paramIStickerRecEmoticon.f();
     }
-    if (!TextUtils.isEmpty(paramIStickerRecEmoticon.a())) {
-      return paramIStickerRecEmoticon.a();
+    if (!TextUtils.isEmpty(paramIStickerRecEmoticon.e())) {
+      return paramIStickerRecEmoticon.e();
     }
     return null;
   }
@@ -182,14 +182,14 @@ public class StickerRecDrawableDownLoader
       return localFile1;
     }
     localFile1.getParentFile().mkdirs();
-    if ((Utils.a()) && (Utils.b() < 31457280L))
+    if ((Utils.b()) && (Utils.c() < 31457280L))
     {
       paramDownloadParams = new StringBuilder();
       paramDownloadParams.append("SD card free space is ");
-      paramDownloadParams.append(Utils.b());
+      paramDownloadParams.append(Utils.c());
       throw new IOException(paramDownloadParams.toString());
     }
-    File localFile2 = new File(jdField_a_of_type_JavaLangString);
+    File localFile2 = new File(a);
     if (!localFile2.exists()) {
       localFile2.mkdir();
     }
@@ -198,7 +198,7 @@ public class StickerRecDrawableDownLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecDrawableDownLoader
  * JD-Core Version:    0.7.0.1
  */

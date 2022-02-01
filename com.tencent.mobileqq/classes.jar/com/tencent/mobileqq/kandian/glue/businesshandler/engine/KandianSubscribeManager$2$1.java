@@ -8,13 +8,13 @@ class KandianSubscribeManager$2$1
   public void run()
   {
     if (this.a.a.a()) {
-      KandianSubscribeManager.a(this.a.a);
+      KandianSubscribeManager.b(this.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianSubscribeManager.2.1
  * JD-Core Version:    0.7.0.1
  */

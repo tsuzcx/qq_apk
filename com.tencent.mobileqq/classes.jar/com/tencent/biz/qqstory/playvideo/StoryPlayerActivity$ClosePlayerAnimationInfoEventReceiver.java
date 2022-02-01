@@ -13,7 +13,7 @@ public class StoryPlayerActivity$ClosePlayerAnimationInfoEventReceiver
   
   public void a(@NonNull StoryPlayerActivity paramStoryPlayerActivity, @NonNull StoryPlayerActivity.ClosePlayerAnimationInfoEvent paramClosePlayerAnimationInfoEvent)
   {
-    paramStoryPlayerActivity.b = paramClosePlayerAnimationInfoEvent.a;
+    paramStoryPlayerActivity.e = paramClosePlayerAnimationInfoEvent.a;
   }
   
   public Class acceptEventClass()
@@ -23,7 +23,7 @@ public class StoryPlayerActivity$ClosePlayerAnimationInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerActivity.ClosePlayerAnimationInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

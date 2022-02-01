@@ -28,7 +28,7 @@ public class QFileFileReaderConfigProcessor
   {
     QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, "onParsed");
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return (QFileFileReaderConfigBean)QStorage.a(paramArrayOfQConfItem[0].a, QFileFileReaderConfigBean.class);
+      return (QFileFileReaderConfigBean)QStorage.a(paramArrayOfQConfItem[0].b, QFileFileReaderConfigBean.class);
     }
     return null;
   }
@@ -45,7 +45,7 @@ public class QFileFileReaderConfigProcessor
     ((StringBuilder)localObject1).append(paramQFileFileReaderConfigBean.strConfigContent);
     ((StringBuilder)localObject1).append("]");
     QLog.i("QFileFileReaderConfigProcessor<QFile>", 1, ((StringBuilder)localObject1).toString());
-    localObject1 = QQFileManagerUtilImpl.a();
+    localObject1 = QQFileManagerUtilImpl.l();
     if (localObject1 != null)
     {
       Object localObject2 = ((BaseQQAppInterface)localObject1).getApplicationContext();
@@ -93,7 +93,7 @@ public class QFileFileReaderConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileFileReaderConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

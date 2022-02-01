@@ -29,15 +29,15 @@ public class TroopGiftPanel$GiftNumInputDialog
   implements View.OnClickListener, InputMethodLinearLayout.onSizeChangeListenner
 {
   protected Dialog a;
-  protected EditText a;
-  protected TextView a;
   protected TextView b;
+  protected TextView c;
+  protected EditText d;
   
   @TargetApi(11)
   public TroopGiftPanel$GiftNumInputDialog(TroopGiftPanel paramTroopGiftPanel, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(paramContext, 2131755332);
-    Window localWindow = this.jdField_a_of_type_AndroidAppDialog.getWindow();
+    this.a = new Dialog(paramContext, 2131952026);
+    Window localWindow = this.a.getWindow();
     localWindow.setSoftInputMode(16);
     View localView = localWindow.getDecorView();
     if (localView != null) {
@@ -45,44 +45,44 @@ public class TroopGiftPanel$GiftNumInputDialog
     }
     localWindow.setGravity(80);
     localWindow.setLayout(-1, -2);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560656, null);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(paramContext);
-    this.jdField_a_of_type_AndroidAppDialog.setCancelable(true);
-    paramContext = (InputMethodLinearLayout)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367703);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131626701, null);
+    this.a.setContentView(paramContext);
+    this.a.setCancelable(true);
+    paramContext = (InputMethodLinearLayout)this.a.findViewById(2131434255);
     paramContext.setOnSizeChangedListenner(this);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131365086));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131364265));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131367709));
+    this.c = ((TextView)this.a.findViewById(2131431227));
+    this.b = ((TextView)this.a.findViewById(2131430281));
+    this.d = ((EditText)this.a.findViewById(2131434264));
     if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setCustomSelectionActionModeCallback(new TroopGiftPanel.GiftNumInputDialog.1(this, paramTroopGiftPanel));
+      this.d.setCustomSelectionActionModeCallback(new TroopGiftPanel.GiftNumInputDialog.1(this, paramTroopGiftPanel));
     }
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new TroopGiftPanel.GiftNumInputDialog.2(this, paramTroopGiftPanel));
+    this.d.setOnEditorActionListener(new TroopGiftPanel.GiftNumInputDialog.2(this, paramTroopGiftPanel));
+    this.c.setOnClickListener(this);
     this.b.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramContext.setOnClickListener(new TroopGiftPanel.GiftNumInputDialog.3(this, paramTroopGiftPanel));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidAppDialog.setOnShowListener(new TroopGiftPanel.GiftNumInputDialog.4(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setFilters(new InputFilter[] { new TroopGiftPanel.GiftInputFilter(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, 5) });
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.setOnShowListener(new TroopGiftPanel.GiftNumInputDialog.4(this));
+    this.d.setFilters(new InputFilter[] { new TroopGiftPanel.GiftInputFilter(this.e, 5) });
+    this.a.show();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnShowOrHideListerner.a();
+    if (this.e.F) {
+      this.e.G.a();
     } else {
-      ((GiftPanelHelper)((BaseChatPie)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).a(136)).a(false);
+      ((GiftPanelHelper)((BaseChatPie)this.e.C.get()).q(136)).b(false);
     }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    this.a.dismiss();
   }
   
   public void c()
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method");
-    View localView = this.jdField_a_of_type_AndroidAppDialog.getWindow().peekDecorView();
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.e.getContext().getSystemService("input_method");
+    View localView = this.a.getWindow().peekDecorView();
     if ((localView != null) && (localView.getWindowToken() != null)) {
       localInputMethodManager.hideSoftInputFromWindow(localView.getWindowToken(), 0);
     }
@@ -91,7 +91,7 @@ public class TroopGiftPanel$GiftNumInputDialog
   public void onClick(View paramView)
   {
     int i;
-    if (AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
+    if (AnonymousChatHelper.a().a(this.e.getTroopUin())) {
       i = 2;
     } else {
       i = 1;
@@ -100,31 +100,31 @@ public class TroopGiftPanel$GiftNumInputDialog
     String str;
     Object localObject;
     StringBuilder localStringBuilder;
-    if (j != 2131364265)
+    if (j != 2131430281)
     {
-      if (j == 2131365086)
+      if (j == 2131431227)
       {
         c();
-        str = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+        str = this.d.getEditableText().toString();
         if (!TextUtils.isEmpty(str)) {
-          this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(str);
+          this.e.a(str);
         }
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.6(this), 100L);
-        if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+        this.e.postDelayed(new TroopGiftPanel.GiftNumInputDialog.6(this), 100L);
+        if (this.e.V >= 4)
         {
-          str = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+          str = this.e.getTroopUin();
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a());
+          ((StringBuilder)localObject).append(this.e.getComeFrom());
           ((StringBuilder)localObject).append("");
           NearbyFlowerManager.a("gift_store", "sure_num", str, ((StringBuilder)localObject).toString(), "", "");
         }
         else
         {
-          str = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
-          localObject = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString;
+          str = this.e.getTroopUin();
+          localObject = this.e.H;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+          localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.e.l.get(), ((AppInterface)this.e.l.get()).getCurrentAccountUin(), this.e.getTroopUin()));
           ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", i, 0, str, "", (String)localObject, localStringBuilder.toString());
         }
       }
@@ -132,22 +132,22 @@ public class TroopGiftPanel$GiftNumInputDialog
     else
     {
       c();
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.postDelayed(new TroopGiftPanel.GiftNumInputDialog.5(this), 100L);
-      if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.k >= 4)
+      this.e.postDelayed(new TroopGiftPanel.GiftNumInputDialog.5(this), 100L);
+      if (this.e.V >= 4)
       {
-        str = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
+        str = this.e.getTroopUin();
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a());
+        ((StringBuilder)localObject).append(this.e.getComeFrom());
         ((StringBuilder)localObject).append("");
         NearbyFlowerManager.a("gift_store", "cancel_num", str, ((StringBuilder)localObject).toString(), "", "");
       }
       else
       {
-        str = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a();
-        localObject = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_c_of_type_JavaLangString;
+        str = this.e.getTroopUin();
+        localObject = this.e.H;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("");
-        localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        localStringBuilder.append(TroopMemberUtil.a((AppInterface)this.e.l.get(), ((AppInterface)this.e.l.get()).getCurrentAccountUin(), this.e.getTroopUin()));
         ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numcancel", i, 0, str, "", (String)localObject, localStringBuilder.toString());
       }
     }
@@ -163,7 +163,7 @@ public class TroopGiftPanel$GiftNumInputDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog
  * JD-Core Version:    0.7.0.1
  */

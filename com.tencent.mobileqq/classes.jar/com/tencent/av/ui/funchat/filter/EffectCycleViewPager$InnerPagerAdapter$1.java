@@ -9,12 +9,12 @@ class EffectCycleViewPager$InnerPagerAdapter$1
   
   public void onChanged()
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerPagerAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
   }
   
   public void onInvalidated()
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager$InnerPagerAdapter.notifyDataSetChanged();
+    this.b.notifyDataSetChanged();
   }
 }
 

@@ -7,6 +7,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.view.ActionMode;
 import androidx.appcompat.view.ActionMode.Callback;
@@ -130,7 +131,7 @@ public class WindowDecorActionBar$ActionModeImpl
   
   public void onCloseSubMenu(SubMenuBuilder paramSubMenuBuilder) {}
   
-  public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+  public boolean onMenuItemSelected(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
     paramMenuBuilder = this.mCallback;
     if (paramMenuBuilder != null) {
@@ -139,7 +140,7 @@ public class WindowDecorActionBar$ActionModeImpl
     return false;
   }
   
-  public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+  public void onMenuModeChange(@NonNull MenuBuilder paramMenuBuilder)
   {
     if (this.mCallback == null) {
       return;

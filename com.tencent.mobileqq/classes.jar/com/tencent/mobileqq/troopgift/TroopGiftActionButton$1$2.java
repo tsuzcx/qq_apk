@@ -11,7 +11,7 @@ class TroopGiftActionButton$1$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton$1.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.b.b.removeView(this.a);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +20,7 @@ class TroopGiftActionButton$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftActionButton.1.2
  * JD-Core Version:    0.7.0.1
  */

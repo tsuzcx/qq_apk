@@ -17,24 +17,24 @@ class OnShareClickListener$1
   {
     if (OnShareClickListener.a(this.a) != null)
     {
-      OnShareClickListener.a(this.a).b();
+      OnShareClickListener.a(this.a).c();
       OnShareClickListener.a(this.a, null);
     }
-    if (OnShareClickListener.a(this.a) != null)
+    if (OnShareClickListener.b(this.a) != null)
     {
-      OnShareClickListener.a(this.a).a();
+      OnShareClickListener.b(this.a).a();
       OnShareClickListener.a(this.a, null);
     }
-    if (OnShareClickListener.a(this.a) != null)
+    if (OnShareClickListener.c(this.a) != null)
     {
-      OnShareClickListener.a(this.a).a();
+      OnShareClickListener.c(this.a).b();
       OnShareClickListener.a(this.a, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnShareClickListener.1
  * JD-Core Version:    0.7.0.1
  */

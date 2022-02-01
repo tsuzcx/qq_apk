@@ -7,23 +7,17 @@ import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 
 public class KandianOx210MsgInfo$Biu0x210Msg
 {
-  public int a;
-  public long a;
+  public long a = -1L;
   public long b = -1L;
-  
-  public KandianOx210MsgInfo$Biu0x210Msg()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = -1;
-  }
+  public int c = -1;
   
   public static Biu0x210Msg a()
   {
     Biu0x210Msg localBiu0x210Msg = new Biu0x210Msg();
     SharedPreferences localSharedPreferences = RIJSPUtils.a(true, false);
-    localBiu0x210Msg.jdField_a_of_type_Long = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
+    localBiu0x210Msg.a = localSharedPreferences.getLong("kandian_biu_0x210_seq", -1L);
     localBiu0x210Msg.b = localSharedPreferences.getLong("kandian_biu_0x210_uin", -1L);
-    localBiu0x210Msg.jdField_a_of_type_Int = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
+    localBiu0x210Msg.c = localSharedPreferences.getInt("kandian_biu_0x210_status", -1);
     return localBiu0x210Msg;
   }
   
@@ -34,7 +28,7 @@ public class KandianOx210MsgInfo$Biu0x210Msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.db.struct.KandianOx210MsgInfo.Biu0x210Msg
  * JD-Core Version:    0.7.0.1
  */

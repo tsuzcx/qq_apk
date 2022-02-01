@@ -8,23 +8,23 @@ import org.jetbrains.annotations.NotNull;
 public class ActionItem
 {
   @JvmField
-  public int a;
-  @JvmField
   @NotNull
   public String a;
   @JvmField
-  public boolean a;
+  public int b;
+  @JvmField
+  public boolean c;
   
   public ActionItem(@NotNull String paramString, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramString;
+    this.b = paramInt;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.share.ActionItem
  * JD-Core Version:    0.7.0.1
  */

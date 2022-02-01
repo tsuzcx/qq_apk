@@ -7,35 +7,30 @@ import com.tencent.mobileqq.surfaceviewaction.Point;
 public class Node
   extends BaseNode
 {
-  protected Point a;
-  protected SpriteNativeView a;
+  protected SpriteNativeView t;
+  protected Point u = new Point(0.0F, 0.0F);
   
-  public Node()
+  public void g() {}
+  
+  public void h() {}
+  
+  public ISpriteView<Node> j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionPoint = new Point(0.0F, 0.0F);
+    return this.t;
   }
   
-  public ISpriteView<Node> a()
+  public boolean k()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView;
+    this.q = this.t.getWidth();
+    this.r = this.t.getHeight();
+    return i();
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public boolean c()
-  {
-    this.e = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getWidth();
-    this.f = this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getHeight();
-    return b();
-  }
-  
-  public void d() {}
+  public void l() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.nv.Node
  * JD-Core Version:    0.7.0.1
  */

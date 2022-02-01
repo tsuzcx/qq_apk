@@ -98,15 +98,15 @@ public abstract class AbstractImageDownloader
         {
           i = RichMediaUtil.getFileType(((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType((String)localObject, false));
           paramObject = paramObject.getPicUploadInfo();
-          RichMediaUtil.log(paramObject.b, false, i, String.valueOf(paramObject.a), paramString1, paramString2);
+          RichMediaUtil.log(paramObject.c, false, i, String.valueOf(paramObject.g), paramString1, paramString2);
           return;
         }
         paramObject = paramObject.getPicDownloadInfo();
-        if (paramObject.e == 1) {
+        if (paramObject.t == 1) {
           bool1 = true;
         }
         int i = RichMediaUtil.getFileType(((IPicHelper)QRoute.api(IPicHelper.class)).getFileSizeType((String)localObject, bool1));
-        RichMediaUtil.log(paramObject.b, false, i, String.valueOf(paramObject.a), paramString1, paramString2);
+        RichMediaUtil.log(paramObject.c, false, i, String.valueOf(paramObject.g), paramString1, paramString2);
         return;
       }
     }
@@ -332,7 +332,7 @@ public abstract class AbstractImageDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AbstractImageDownloader
  * JD-Core Version:    0.7.0.1
  */

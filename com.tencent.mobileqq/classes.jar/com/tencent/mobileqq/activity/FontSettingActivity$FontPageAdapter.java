@@ -12,18 +12,18 @@ class FontSettingActivity$FontPageAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
+    ((ViewPager)paramView).removeView((View)this.a.d.get(paramInt));
   }
   
   public int getCount()
   {
-    return this.a.a.size();
+    return this.a.d.size();
   }
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
-    return this.a.a.get(paramInt);
+    ((ViewPager)paramView).addView((View)this.a.d.get(paramInt), 0);
+    return this.a.d.get(paramInt);
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -33,7 +33,7 @@ class FontSettingActivity$FontPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.FontPageAdapter
  * JD-Core Version:    0.7.0.1
  */

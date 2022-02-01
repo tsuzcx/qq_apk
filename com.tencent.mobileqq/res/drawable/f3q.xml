@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ifl" />
-    <item android:state_enabled="false" android:drawable="@drawable/ifl" />
-    <item android:state_enabled="true" android:drawable="@drawable/ifk" />
-    <item android:drawable="@drawable/ifk" />
-</selector>
+    <item>
+        <shape>
+            <gradient android:startColor="#ffff7fab" android:endColor="#ffff0a0a" android:angle="0.0" android:type="linear" android:centerColor="#ff9169ff" />
+            <corners android:radius="12.0dip" />
+        </shape>
+    </item>
+    <item android:left="1.0dip" android:top="1.0dip" android:right="1.0dip" android:bottom="1.0dip">
+        <shape>
+            <solid android:color="#ffe9ecf8" />
+            <corners android:radius="10.5dip" />
+        </shape>
+    </item>
+</layer-list>

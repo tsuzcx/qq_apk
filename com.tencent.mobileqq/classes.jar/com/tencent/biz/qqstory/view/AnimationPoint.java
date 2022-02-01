@@ -16,21 +16,21 @@ import android.view.animation.Animation.AnimationListener;
 public class AnimationPoint
   extends View
 {
-  protected int a;
   protected long a;
-  protected Paint a;
-  protected Handler a;
-  AccelerateDecelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
-  protected Animation.AnimationListener a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new AnimationPoint.1(this);
-  protected boolean a;
-  protected int b;
   protected long b;
-  protected boolean b;
   protected int c;
-  protected long c;
-  protected int d;
   protected long d;
+  protected long e;
+  protected Paint f = new Paint();
+  protected boolean g = false;
+  protected int h;
+  protected int i;
+  AccelerateDecelerateInterpolator j;
+  protected int k;
+  protected Animation.AnimationListener l;
+  protected Handler m = new Handler(Looper.getMainLooper());
+  protected boolean n = false;
+  private Runnable o = new AnimationPoint.1(this);
   
   public AnimationPoint(Context paramContext)
   {
@@ -45,221 +45,217 @@ public class AnimationPoint
   public AnimationPoint(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_d_of_type_Long = 1000L;
-    this.jdField_a_of_type_Long = (this.jdField_d_of_type_Long * 2L);
-    this.jdField_b_of_type_Long = 2000L;
-    this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator = new AccelerateDecelerateInterpolator();
-  }
-  
-  protected float a(long paramLong)
-  {
-    long l = this.jdField_d_of_type_Long;
-    paramLong %= l;
-    float f;
-    if (paramLong < l * 16L / 100L) {
-      f = (float)paramLong * 1.0F;
-    }
-    for (paramLong = l * 16L / 100L;; paramLong = l * 40L / 100L)
-    {
-      return f / (float)paramLong;
-      if (paramLong < 60L * l / 100L) {
-        return 1.0F;
-      }
-      f = (float)(l - paramLong) * 1.0F;
-    }
+    this.f.setStyle(Paint.Style.FILL);
+    this.f.setColor(-1);
+    this.e = 1000L;
+    this.a = (this.e * 2L);
+    this.b = 2000L;
+    this.j = new AccelerateDecelerateInterpolator();
   }
   
   protected int a(long paramLong)
   {
-    AccelerateDecelerateInterpolator localAccelerateDecelerateInterpolator = this.jdField_a_of_type_AndroidViewAnimationAccelerateDecelerateInterpolator;
-    long l = this.jdField_d_of_type_Long;
-    float f = localAccelerateDecelerateInterpolator.getInterpolation((float)(paramLong % l) / (float)l);
-    int i;
-    if (this.jdField_a_of_type_Boolean) {
-      i = this.jdField_c_of_type_Int;
+    AccelerateDecelerateInterpolator localAccelerateDecelerateInterpolator = this.j;
+    long l1 = this.e;
+    float f1 = localAccelerateDecelerateInterpolator.getInterpolation((float)(paramLong % l1) / (float)l1);
+    int i1;
+    if (this.g) {
+      i1 = this.i;
     } else {
-      i = this.jdField_b_of_type_Int;
+      i1 = this.h;
     }
-    i -= this.jdField_a_of_type_Int * 2;
-    if (paramLong > this.jdField_d_of_type_Long) {
-      this.jdField_d_of_type_Int = (this.jdField_a_of_type_Int + (int)(i * f));
+    i1 -= this.c * 2;
+    if (paramLong > this.e) {
+      this.k = (this.c + (int)(i1 * f1));
     } else {
-      this.jdField_d_of_type_Int = (this.jdField_a_of_type_Int + i - (int)(i * f));
+      this.k = (this.c + i1 - (int)(i1 * f1));
     }
-    return this.jdField_d_of_type_Int;
+    return this.k;
   }
   
   public void a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_b_of_type_Int = super.getWidth();
-    this.jdField_c_of_type_Int = super.getHeight();
-    Animation.AnimationListener localAnimationListener = this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener;
+    this.n = false;
+    this.d = SystemClock.uptimeMillis();
+    this.h = super.getWidth();
+    this.i = super.getHeight();
+    Animation.AnimationListener localAnimationListener = this.l;
     if (localAnimationListener != null) {
       localAnimationListener.onAnimationStart(null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  protected float b(long paramLong)
-  {
-    long l = this.jdField_d_of_type_Long;
-    paramLong %= l;
-    if (paramLong < l * 16L / 100L) {
-      return 0.0F;
-    }
-    float f;
-    if (paramLong < 24L * l / 100L) {
-      f = (float)(paramLong - 16L * l / 100L) * 0.4F;
-    }
-    for (paramLong = l * 8L / 100L;; paramLong = l * 36L / 100L)
-    {
-      return f / (float)paramLong;
-      if (paramLong >= l * 60L / 100L) {
-        break;
-      }
-      f = (float)(60L * l / 100L - paramLong) * 0.4F;
-    }
-    return 0.0F;
+    this.m.post(this.o);
   }
   
   protected int b(long paramLong)
   {
-    if (paramLong < this.jdField_d_of_type_Long) {
-      return this.jdField_d_of_type_Int + this.jdField_a_of_type_Int / 2;
+    if (paramLong < this.e) {
+      return this.k + this.c / 2;
     }
-    return this.jdField_d_of_type_Int - this.jdField_a_of_type_Int / 2;
+    return this.k - this.c / 2;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  protected float c(long paramLong)
-  {
-    long l = this.jdField_d_of_type_Long;
-    paramLong %= l;
-    if (paramLong < l * 24L / 100L) {
-      return 0.0F;
-    }
-    float f;
-    if (paramLong < 36L * l / 100L) {
-      f = (float)(paramLong - 24L * l / 100L) * 0.2F;
-    }
-    for (paramLong = l * 12L / 100L;; paramLong = l * 24L / 100L)
-    {
-      return f / (float)paramLong;
-      if (paramLong >= l * 60L / 100L) {
-        break;
-      }
-      f = (float)(60L * l / 100L - paramLong) * 0.2F;
-    }
-    return 0.0F;
+    this.m.removeCallbacks(this.o);
+    this.n = true;
   }
   
   protected int c(long paramLong)
   {
-    if (paramLong < this.jdField_d_of_type_Long) {
-      return this.jdField_d_of_type_Int + this.jdField_a_of_type_Int;
+    if (paramLong < this.e) {
+      return this.k + this.c;
     }
-    return this.jdField_d_of_type_Int - this.jdField_a_of_type_Int;
+    return this.k - this.c;
+  }
+  
+  protected float d(long paramLong)
+  {
+    long l1 = this.e;
+    paramLong %= l1;
+    float f1;
+    if (paramLong < l1 * 16L / 100L) {
+      f1 = (float)paramLong * 1.0F;
+    }
+    for (paramLong = l1 * 16L / 100L;; paramLong = l1 * 40L / 100L)
+    {
+      return f1 / (float)paramLong;
+      if (paramLong < 60L * l1 / 100L) {
+        return 1.0F;
+      }
+      f1 = (float)(l1 - paramLong) * 1.0F;
+    }
+  }
+  
+  protected float e(long paramLong)
+  {
+    long l1 = this.e;
+    paramLong %= l1;
+    if (paramLong < l1 * 16L / 100L) {
+      return 0.0F;
+    }
+    float f1;
+    if (paramLong < 24L * l1 / 100L) {
+      f1 = (float)(paramLong - 16L * l1 / 100L) * 0.4F;
+    }
+    for (paramLong = l1 * 8L / 100L;; paramLong = l1 * 36L / 100L)
+    {
+      return f1 / (float)paramLong;
+      if (paramLong >= l1 * 60L / 100L) {
+        break;
+      }
+      f1 = (float)(60L * l1 / 100L - paramLong) * 0.4F;
+    }
+    return 0.0F;
+  }
+  
+  protected float f(long paramLong)
+  {
+    long l1 = this.e;
+    paramLong %= l1;
+    if (paramLong < l1 * 24L / 100L) {
+      return 0.0F;
+    }
+    float f1;
+    if (paramLong < 36L * l1 / 100L) {
+      f1 = (float)(paramLong - 24L * l1 / 100L) * 0.2F;
+    }
+    for (paramLong = l1 * 12L / 100L;; paramLong = l1 * 24L / 100L)
+    {
+      return f1 / (float)paramLong;
+      if (paramLong >= l1 * 60L / 100L) {
+        break;
+      }
+      f1 = (float)(60L * l1 / 100L - paramLong) * 0.2F;
+    }
+    return 0.0F;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_b_of_type_Int = super.getWidth();
-    this.jdField_c_of_type_Int = super.getHeight();
-    int j = this.jdField_b_of_type_Int / 2;
-    int k = this.jdField_c_of_type_Int / 2;
-    long l = (SystemClock.uptimeMillis() - this.jdField_c_of_type_Long) % this.jdField_a_of_type_Long;
-    int m = a(l);
-    int n = b(l);
-    int i1 = c(l);
-    float f1 = a(l);
-    float f2 = b(l);
-    float f3 = c(l);
-    if (this.jdField_a_of_type_Int == 0)
+    this.h = super.getWidth();
+    this.i = super.getHeight();
+    int i2 = this.h / 2;
+    int i3 = this.i / 2;
+    long l1 = (SystemClock.uptimeMillis() - this.d) % this.a;
+    int i4 = a(l1);
+    int i5 = b(l1);
+    int i6 = c(l1);
+    float f1 = d(l1);
+    float f2 = e(l1);
+    float f3 = f(l1);
+    if (this.c == 0)
     {
-      int i;
-      if (this.jdField_a_of_type_Boolean) {
-        i = this.jdField_b_of_type_Int;
+      int i1;
+      if (this.g) {
+        i1 = this.h;
       } else {
-        i = this.jdField_c_of_type_Int;
+        i1 = this.i;
       }
-      this.jdField_a_of_type_Int = (i / 2);
+      this.c = (i1 / 2);
     }
     if (f3 != 0.0F)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f3 * 255.0F));
-      if (this.jdField_a_of_type_Boolean) {
-        paramCanvas.drawCircle(j, i1, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.f.setAlpha((int)(f3 * 255.0F));
+      if (this.g) {
+        paramCanvas.drawCircle(i2, i6, this.c, this.f);
       } else {
-        paramCanvas.drawCircle(i1, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawCircle(i6, i3, this.c, this.f);
       }
     }
     if (f2 != 0.0F)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f2 * 255.0F));
-      if (this.jdField_a_of_type_Boolean) {
-        paramCanvas.drawCircle(j, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.f.setAlpha((int)(f2 * 255.0F));
+      if (this.g) {
+        paramCanvas.drawCircle(i2, i5, this.c, this.f);
       } else {
-        paramCanvas.drawCircle(n, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawCircle(i5, i3, this.c, this.f);
       }
     }
     if (f1 != 0.0F)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f1 * 255.0F));
-      if (this.jdField_a_of_type_Boolean)
+      this.f.setAlpha((int)(f1 * 255.0F));
+      if (this.g)
       {
-        paramCanvas.drawCircle(j, m, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawCircle(i2, i4, this.c, this.f);
         return;
       }
-      paramCanvas.drawCircle(m, k, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(i4, i3, this.c, this.f);
     }
   }
   
   public void setDuration(long paramLong)
   {
-    this.jdField_b_of_type_Long = paramLong;
+    this.b = paramLong;
   }
   
   public void setIsVertical(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.g = paramBoolean;
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     if (localLayoutParams != null)
     {
-      int i = localLayoutParams.width;
+      int i1 = localLayoutParams.width;
       localLayoutParams.width = localLayoutParams.height;
-      localLayoutParams.height = i;
+      localLayoutParams.height = i1;
       setLayoutParams(localLayoutParams);
     }
   }
   
   public void setLoopTime(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_d_of_type_Long = (paramLong / 2L);
+    this.a = paramLong;
+    this.e = (paramLong / 2L);
   }
   
   public void setOnAnimationListener(Animation.AnimationListener paramAnimationListener)
   {
-    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = paramAnimationListener;
+    this.l = paramAnimationListener;
   }
   
   public void setRadius(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
 }
 

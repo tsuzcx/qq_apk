@@ -24,8 +24,8 @@ public class HotGiftPanelHelper
   extends GiftPanelHelper
   implements PanelProvider<View>
 {
-  public INearbyGiftPanelDialog a;
-  public ITroopGiftPanelForNearby a;
+  public INearbyGiftPanelDialog g;
+  public ITroopGiftPanelForNearby h;
   
   public HotGiftPanelHelper(BaseChatPie paramBaseChatPie)
   {
@@ -34,39 +34,39 @@ public class HotGiftPanelHelper
   
   protected void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a(this);
+    this.b.d().a(this);
+    this.b.d().a(this);
+    this.b.d().a(this);
   }
   
   public void a(boolean paramBoolean, int paramInt)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method");
-    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().peekDecorView();
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.c.getSystemService("input_method");
+    View localView = this.c.getWindow().peekDecorView();
     if ((localView != null) && (localView.getWindowToken() != null)) {
       localInputMethodManager.hideSoftInputFromWindow(localView.getWindowToken(), 0);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGiftINearbyGiftPanelDialog == null)
+    if (this.g == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGiftITroopGiftPanelForNearby = ((IFactoryApi)QRoute.api(IFactoryApi.class)).getTroopGiftPanelForNearby(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), new HotGiftPanelHelper.1(this), false, false, false, this);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGiftINearbyGiftPanelDialog = ((IFactoryApi)QRoute.api(IFactoryApi.class)).getNearbyGiftPanelDialog(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(), this.jdField_a_of_type_ComTencentMobileqqNearbyGiftITroopGiftPanelForNearby, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c, true, false);
+      this.h = ((IFactoryApi)QRoute.api(IFactoryApi.class)).getTroopGiftPanelForNearby(this.d, this.b.b(), new HotGiftPanelHelper.1(this), false, false, false, this);
+      this.g = ((IFactoryApi)QRoute.api(IFactoryApi.class)).getNearbyGiftPanelDialog(this.d, this.c, this.b.O(), this.h, this.a.aZ, true, false);
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGiftITroopGiftPanelForNearby.setIsPttRoom(false);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGiftINearbyGiftPanelDialog.a(paramBoolean, false, 4);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.Q();
-  }
-  
-  public void b()
-  {
-    INearbyGiftPanelDialog localINearbyGiftPanelDialog = this.jdField_a_of_type_ComTencentMobileqqNearbyGiftINearbyGiftPanelDialog;
-    if (localINearbyGiftPanelDialog != null) {
-      localINearbyGiftPanelDialog.a();
-    }
+    this.h.setIsPttRoom(false);
+    this.g.a(paramBoolean, false, 4);
+    this.a.aw();
   }
   
   public View createPanel(Context paramContext)
   {
     return null;
+  }
+  
+  public void e()
+  {
+    INearbyGiftPanelDialog localINearbyGiftPanelDialog = this.g;
+    if (localINearbyGiftPanelDialog != null) {
+      localINearbyGiftPanelDialog.a();
+    }
   }
   
   public View getPanel()
@@ -90,14 +90,14 @@ public class HotGiftPanelHelper
   
   public void onPanelIconClick(XPanelContainer paramXPanelContainer)
   {
-    a(true);
-    paramXPanelContainer = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHotChatMng(true).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a);
+    b(true);
+    paramXPanelContainer = this.d.getHotChatMng(true).c(this.b.O().b);
     if ((paramXPanelContainer != null) && (paramXPanelContainer.isBuLuoHotChat())) {
       paramXPanelContainer = "507";
     } else {
       paramXPanelContainer = "503";
     }
-    NearbyFlowerManager.a("gift_aio", "clk_icon", this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d(), paramXPanelContainer, "", "");
+    NearbyFlowerManager.a("gift_aio", "clk_icon", this.a.ag(), paramXPanelContainer, "", "");
   }
   
   public void onPanelIconClickBeforeCreate(int paramInt) {}
@@ -106,7 +106,7 @@ public class HotGiftPanelHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.HotGiftPanelHelper
  * JD-Core Version:    0.7.0.1
  */

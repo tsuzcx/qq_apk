@@ -84,7 +84,7 @@ public class MQPSecJsPlugin
   
   private void showProgressDialog()
   {
-    this.mRuntime.a().runOnUiThread(new MQPSecJsPlugin.2(this));
+    this.mRuntime.d().runOnUiThread(new MQPSecJsPlugin.2(this));
   }
   
   public void changeEquipLockMobile(String paramString1, String paramString2, String paramString3)
@@ -172,7 +172,7 @@ public class MQPSecJsPlugin
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("title", paramString2);
         localJSONObject.put("wording", paramString3);
-        localJSONObject.put("image_res_id", 2130845085);
+        localJSONObject.put("image_res_id", 2130846522);
         localJSONObject.put("btn_text", paramVarArgs);
         localJSONObject.put("jump_text", localObject);
         localJSONObject.put("jump_url", "");
@@ -244,9 +244,9 @@ public class MQPSecJsPlugin
   protected void onCreate()
   {
     super.onCreate();
-    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.d());
     if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.QQBrowserBaseActivityInterface))) {
-      this.activity = this.mRuntime.a();
+      this.activity = this.mRuntime.d();
     }
   }
   
@@ -351,7 +351,7 @@ public class MQPSecJsPlugin
             }
             return;
           }
-          localObject2 = Util.b((String)localObject1);
+          localObject2 = Util.d((String)localObject1);
           if (TextUtils.isEmpty((CharSequence)localObject2))
           {
             if (QLog.isColorLevel()) {
@@ -548,7 +548,7 @@ public class MQPSecJsPlugin
         {
           paramCustomWebView.printStackTrace();
         }
-        paramCustomWebView = (TextView)this.activity.findViewById(2131369202);
+        paramCustomWebView = (TextView)this.activity.findViewById(2131436180);
         if (paramCustomWebView != null) {
           paramCustomWebView.setOnClickListener(new MQPSecJsPlugin.1(this));
         }
@@ -721,7 +721,7 @@ public class MQPSecJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin
  * JD-Core Version:    0.7.0.1
  */

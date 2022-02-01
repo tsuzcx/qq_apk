@@ -10,19 +10,19 @@ class TroopInviteStatusFragment$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null))
+    if ((this.this$0.x != null) && (!this.this$0.x.isShowing()) && (this.this$0.l != null))
     {
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {
+      if (this.this$0.l.isFinishing()) {
         return;
       }
-      this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131718170);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.this$0.x.c(2131915649);
+      this.this$0.x.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.1
  * JD-Core Version:    0.7.0.1
  */

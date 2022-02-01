@@ -13,13 +13,13 @@ import java.util.List;
 
 public class NickWrapper$NickString
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<NickWrapper.TextUnit> jdField_a_of_type_JavaUtilList;
+  private String a;
+  private List<NickWrapper.TextUnit> b;
   
   private NickWrapper$NickString()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = "";
+    this.b = new ArrayList();
   }
   
   public NickWrapper$NickString(String paramString, int paramInt)
@@ -28,24 +28,24 @@ public class NickWrapper$NickString
     if (paramString == null) {
       str = "";
     }
-    this.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    a(new StringBuilder(this.jdField_a_of_type_JavaLangString), paramInt);
+    this.a = str;
+    this.b = new ArrayList();
+    a(new StringBuilder(this.a), paramInt);
   }
   
   private NickString a(NickWrapper.TextUnit paramTextUnit)
   {
     if (paramTextUnit != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramTextUnit);
+      this.b.add(paramTextUnit);
     }
-    this.jdField_a_of_type_JavaLangString = b();
+    this.a = c();
     return this;
   }
   
   private void a(StringBuilder paramStringBuilder, int paramInt)
   {
-    int m = this.jdField_a_of_type_JavaLangString.length();
-    int n = this.jdField_a_of_type_JavaLangString.length();
+    int m = this.a.length();
+    int n = this.a.length();
     int i1 = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
     int i = 0;
     while (i < n)
@@ -184,7 +184,7 @@ public class NickWrapper$NickString
       }
       else
       {
-        if ((!Character.isHighSurrogate(paramStringBuilder.charAt(i))) || (i > m - 2) || (!Character.isSurrogatePair(paramStringBuilder.charAt(i), paramStringBuilder.charAt(i + 1))) || (!a(paramStringBuilder.toString().codePointAt(i)))) {
+        if ((!Character.isHighSurrogate(paramStringBuilder.charAt(i))) || (i > m - 2) || (!Character.isSurrogatePair(paramStringBuilder.charAt(i), paramStringBuilder.charAt(i + 1))) || (!d(paramStringBuilder.toString().codePointAt(i)))) {
           break label829;
         }
         paramInt = i + 2;
@@ -199,7 +199,7 @@ public class NickWrapper$NickString
     }
   }
   
-  private static boolean a(int paramInt)
+  private static boolean d(int paramInt)
   {
     return ((paramInt >= 9728) && (paramInt <= 10175)) || (paramInt == 12349) || (paramInt == 8265) || (paramInt == 8252) || ((paramInt >= 8192) && (paramInt <= 8207)) || ((paramInt >= 8232) && (paramInt <= 8239)) || (paramInt == 8287) || ((paramInt >= 8293) && (paramInt <= 8303)) || ((paramInt >= 8448) && (paramInt <= 8527)) || ((paramInt >= 8960) && (paramInt <= 9215)) || ((paramInt >= 11008) && (paramInt <= 11263)) || ((paramInt >= 10496) && (paramInt <= 10623)) || ((paramInt >= 12800) && (paramInt <= 13055)) || ((paramInt >= 55296) && (paramInt <= 57343)) || ((paramInt >= 57344) && (paramInt <= 63743)) || ((paramInt >= 65024) && (paramInt <= 65039)) || (paramInt >= 65536);
   }
@@ -218,54 +218,26 @@ public class NickWrapper$NickString
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public NickString a(int paramInt)
-  {
-    NickString localNickString = new NickString();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      NickWrapper.TextUnit localTextUnit = (NickWrapper.TextUnit)localIterator.next();
-      if (localTextUnit.a() == paramInt) {
-        localNickString.a(localTextUnit);
-      }
-    }
-    return localNickString;
+    return this.b.size();
   }
   
   @NonNull
   public NickWrapper.TextUnit a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (NickWrapper.TextUnit)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return (NickWrapper.TextUnit)this.b.get(paramInt);
     }
     throw new IndexOutOfBoundsException("NickString index error");
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      NickWrapper.TextUnit localTextUnit = (NickWrapper.TextUnit)localIterator.next();
-      if ((localTextUnit.a() == 0) || (localTextUnit.a() == 1)) {
-        localStringBuilder.append(localTextUnit.a());
-      }
-    }
-    return localStringBuilder.toString();
   }
   
   public NickString b(int paramInt)
   {
     NickString localNickString = new NickString();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       NickWrapper.TextUnit localTextUnit = (NickWrapper.TextUnit)localIterator.next();
-      if (localTextUnit.a() != paramInt) {
+      if (localTextUnit.b() == paramInt) {
         localNickString.a(localTextUnit);
       }
     }
@@ -275,7 +247,35 @@ public class NickWrapper$NickString
   public String b()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      NickWrapper.TextUnit localTextUnit = (NickWrapper.TextUnit)localIterator.next();
+      if ((localTextUnit.b() == 0) || (localTextUnit.b() == 1)) {
+        localStringBuilder.append(localTextUnit.a());
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public NickString c(int paramInt)
+  {
+    NickString localNickString = new NickString();
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext())
+    {
+      NickWrapper.TextUnit localTextUnit = (NickWrapper.TextUnit)localIterator.next();
+      if (localTextUnit.b() != paramInt) {
+        localNickString.a(localTextUnit);
+      }
+    }
+    return localNickString;
+  }
+  
+  public String c()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext()) {
       localStringBuilder.append(((NickWrapper.TextUnit)localIterator.next()).a());
     }
@@ -284,12 +284,12 @@ public class NickWrapper$NickString
   
   public String toString()
   {
-    return a();
+    return b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.NickWrapper.NickString
  * JD-Core Version:    0.7.0.1
  */

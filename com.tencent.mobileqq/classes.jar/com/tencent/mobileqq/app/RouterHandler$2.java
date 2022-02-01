@@ -13,13 +13,13 @@ class RouterHandler$2
   
   public void run()
   {
-    MsgCSBody localMsgCSBody = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.MsgCSBodyFromFTNNotify(0, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x7SubMsgType0x7$MsgBody$MsgHeader, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean);
-    this.this$0.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.OnPbMsgReceive(localMsgCSBody);
+    MsgCSBody localMsgCSBody = this.this$0.k.MsgCSBodyFromFTNNotify(0, this.a, this.b, this.c);
+    this.this$0.j.OnPbMsgReceive(localMsgCSBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RouterHandler.2
  * JD-Core Version:    0.7.0.1
  */

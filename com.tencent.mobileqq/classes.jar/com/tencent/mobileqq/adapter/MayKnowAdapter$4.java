@@ -15,27 +15,27 @@ class MayKnowAdapter$4
     double d2 = Math.sqrt(d1) / 2.0D;
     Double.isNaN(d1);
     paramFloat = (float)(d1 * (d2 + 0.5D));
-    paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    int i = this.jdField_a_of_type_Int;
+    paramTransformation = this.a.getLayoutParams();
+    int i = this.b;
     paramTransformation.width = (i - (int)(i * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    this.a.requestLayout();
     if (paramFloat <= 0.4F)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
+      this.a.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
       return;
     }
     if (paramFloat <= 0.99F)
     {
-      if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 4)
+      if (this.a.getVisibility() != 4)
       {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+        this.a.setVisibility(4);
+        this.a.setAlpha(0.0F);
       }
     }
-    else if (this.jdField_a_of_type_AndroidViewView.getVisibility() != 8)
+    else if (this.a.getVisibility() != 8)
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.a.setVisibility(8);
+      this.a.setAlpha(0.0F);
     }
   }
   
@@ -46,7 +46,7 @@ class MayKnowAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ public class NetSearchTemplateNetSeaEntranceItem
   extends NetSearchTemplateBaseItem
 {
   public static final String a = "NetSearchTemplateNetSeaEntranceItem";
-  public List<NetSearchSubItem> a;
   public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public List<NetSearchSubItem> t;
   
   public NetSearchTemplateNetSeaEntranceItem(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
@@ -30,26 +30,26 @@ public class NetSearchTemplateNetSeaEntranceItem
     super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  public void a(String paramString)
+  public void o_(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString);
       this.b = paramString.optString("leftIconUrl");
-      this.j = paramString.optString("title");
-      this.k = paramString.optString("summary");
-      this.l = paramString.optString("rightIconUrl");
-      this.m = paramString.optString("jumpUrl");
+      this.c = paramString.optString("title");
+      this.d = paramString.optString("summary");
+      this.e = paramString.optString("rightIconUrl");
+      this.f = paramString.optString("jumpUrl");
       paramString = paramString.optJSONArray("pageInfo");
       if (paramString != null)
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        this.t = new ArrayList(paramString.length());
         int i = 0;
         while (i < paramString.length())
         {
           Object localObject = paramString.optJSONObject(i);
           localObject = new NetSearchSubItem(((JSONObject)localObject).optString("leftIconUrl"), ((JSONObject)localObject).optString("wording"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          this.t.add(localObject);
           i += 1;
         }
       }
@@ -58,14 +58,14 @@ public class NetSearchTemplateNetSeaEntranceItem
     catch (JSONException paramString)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+        QLog.d(a, 2, QLog.getStackTraceString(paramString));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.net.model.NetSearchTemplateNetSeaEntranceItem
  * JD-Core Version:    0.7.0.1
  */

@@ -29,11 +29,11 @@ class ReadInJoyAdIMAXBrowserFragment$1
   {
     if (this.a.getUIStyleHandler() != null)
     {
-      this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.D = true;
-      this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.f = true;
-      this.a.getUIStyle().n = true;
+      this.a.getUIStyleHandler().f.O = true;
+      this.a.getUIStyleHandler().f.m = true;
+      this.a.getUIStyle().w = true;
     }
-    VideoFeedsHelper.b(this.a.getHostActivity());
+    VideoFeedsHelper.h(this.a.getHostActivity());
     super.onDataInit(paramBundle);
   }
   
@@ -45,20 +45,20 @@ class ReadInJoyAdIMAXBrowserFragment$1
     }
     this.a.getWebView().setVerticalScrollBarEnabled(false);
     this.a.getWebView().setHorizontalScrollBarEnabled(false);
-    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController != null)) {
-      this.a.getUIStyleHandler().jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBarController.a(false);
+    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().w != null)) {
+      this.a.getUIStyleHandler().w.a(false);
     }
-    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().d != null))
+    if ((this.a.getUIStyleHandler() != null) && (this.a.getUIStyleHandler().x != null))
     {
-      paramBundle = this.a.getUIStyleHandler().d.findViewById(2131365199);
+      paramBundle = this.a.getUIStyleHandler().x.findViewById(2131431363);
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
-    if (this.a.getWebTitleBarInterface().a() != null) {
-      this.a.getWebTitleBarInterface().a().setVisibility(8);
+    if (this.a.getWebTitleBarInterface().l() != null) {
+      this.a.getWebTitleBarInterface().l().setVisibility(8);
     }
-    VideoFeedsHelper.b(this.a.getHostActivity());
+    VideoFeedsHelper.h(this.a.getHostActivity());
     paramBundle = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramBundle instanceof ToolAppRuntime)) {
       ReadInJoyAdIMAXBrowserFragment.a(this.a, paramBundle.getAppRuntime("modular_web"));
@@ -71,7 +71,7 @@ class ReadInJoyAdIMAXBrowserFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ad.ReadInJoyAdIMAXBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.guild.api.IQQGuildService;
 import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 import java.util.ArrayList;
@@ -29,41 +30,42 @@ public class SelectedAndSearchBar
   extends RelativeLayout
   implements DecodeTaskCompletionListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
-  private CustomGridView jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView;
-  private final ResultRecord.DefaultComparator jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord$DefaultComparator = new ResultRecord.DefaultComparator();
-  private SelectedAndSearchBar.GridViewAdapter jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar$GridViewAdapter;
-  private SelectedAndSearchBar.ISelectedAndSearchBarCallback jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar$ISelectedAndSearchBarCallback;
-  private CustomHorizontalScrollView jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private ImageView b;
+  private View a;
+  private CustomGridView b;
+  private EditText c;
+  private ImageView d;
+  private ImageView e;
+  private CustomHorizontalScrollView f;
+  private float g;
+  private List<ResultRecord> h = new ArrayList();
+  private SelectedAndSearchBar.GridViewAdapter i;
+  private IFaceDecoder j;
+  private Context k;
+  private SelectedAndSearchBar.ISelectedAndSearchBarCallback l;
+  private boolean m;
+  private final ResultRecord.DefaultComparator n = new ResultRecord.DefaultComparator();
+  private IQQGuildService o;
+  private int p;
   
   public SelectedAndSearchBar(Context paramContext)
   {
     super(paramContext);
-    e();
     f();
+    g();
   }
   
   public SelectedAndSearchBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    e();
     f();
+    g();
   }
   
   public SelectedAndSearchBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    e();
     f();
+    g();
   }
   
   public static final int a(float paramFloat, Resources paramResources)
@@ -74,47 +76,37 @@ public class SelectedAndSearchBar
     return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
   
-  private void e()
-  {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562831, this);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView = ((CustomGridView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377178));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131377068));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368721));
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377063));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView = ((CustomHorizontalScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377006));
-    AccessibilityUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView, false);
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.setOverScrollMode(2);
-      this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.setOverScrollMode(2);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.setOnItemClickListener(new SelectedAndSearchBar.1(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(new SelectedAndSearchBar.2(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new SelectedAndSearchBar.3(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new SelectedAndSearchBar.4(this));
-  }
-  
   private void f()
   {
-    this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidContentContext = getContext();
+    this.a = LayoutInflater.from(getContext()).inflate(2131629276, this);
+    this.b = ((CustomGridView)this.a.findViewById(2131445556));
+    this.c = ((EditText)this.a.findViewById(2131445437));
+    this.d = ((ImageView)this.a.findViewById(2131435634));
+    this.e = ((ImageView)this.a.findViewById(2131445432));
+    this.f = ((CustomHorizontalScrollView)this.a.findViewById(2131445370));
+    AccessibilityUtil.a(this.f, false);
+    if (Build.VERSION.SDK_INT >= 9)
+    {
+      this.f.setOverScrollMode(2);
+      this.b.setOverScrollMode(2);
+    }
+    this.b.setOnItemClickListener(new SelectedAndSearchBar.1(this));
+    this.c.setOnKeyListener(new SelectedAndSearchBar.2(this));
+    this.c.addTextChangedListener(new SelectedAndSearchBar.3(this));
+    this.c.setOnFocusChangeListener(new SelectedAndSearchBar.4(this));
   }
   
-  public Editable a()
+  private void g()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText.getText();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    this.g = getResources().getDisplayMetrics().density;
+    this.k = getContext();
   }
   
   public void a(long paramLong)
   {
-    int i = a(60.0F, getResources());
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -i, 0 });
+    int i1 = a(60.0F, getResources());
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -i1, 0 });
     localValueAnimator.setDuration(paramLong);
     localValueAnimator.addUpdateListener(new SelectedAndSearchBar.7(this, localLayoutParams));
     localValueAnimator.start();
@@ -122,57 +114,63 @@ public class SelectedAndSearchBar
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new SelectedAndSearchBar.5(this, paramOnClickListener));
+    this.c.setOnClickListener(new SelectedAndSearchBar.5(this, paramOnClickListener));
   }
   
   public void a(List<ResultRecord> paramList, IFaceDecoder paramIFaceDecoder, SelectedAndSearchBar.ISelectedAndSearchBarCallback paramISelectedAndSearchBarCallback)
   {
     if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList = paramList;
+      this.h = paramList;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar$ISelectedAndSearchBarCallback = paramISelectedAndSearchBarCallback;
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar$GridViewAdapter = new SelectedAndSearchBar.GridViewAdapter(this);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar$GridViewAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.setSmoothScrollbarEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
+    this.j = paramIFaceDecoder;
+    this.l = paramISelectedAndSearchBarCallback;
+    this.i = new SelectedAndSearchBar.GridViewAdapter(this);
+    this.b.setAdapter(this.i);
+    this.b.setSmoothScrollbarEnabled(false);
+    this.j.setDecodeTaskCompletionListener(this);
+  }
+  
+  public void a(List<ResultRecord> paramList, IFaceDecoder paramIFaceDecoder, SelectedAndSearchBar.ISelectedAndSearchBarCallback paramISelectedAndSearchBarCallback, IQQGuildService paramIQQGuildService)
+  {
+    this.o = paramIQQGuildService;
+    a(paramList, paramIFaceDecoder, paramISelectedAndSearchBarCallback);
   }
   
   public void a(List<ResultRecord> paramList, boolean paramBoolean)
   {
-    Collections.sort(paramList, this.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord$DefaultComparator);
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    Collections.sort(paramList, this.n);
+    this.h = paramList;
     a(paramBoolean);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.setNumColumns(this.jdField_a_of_type_JavaUtilList.size());
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.getLayoutParams();
-    localLayoutParams.width = ((int)((this.jdField_a_of_type_JavaUtilList.size() * 40 + this.jdField_a_of_type_JavaUtilList.size() * 10) * this.jdField_a_of_type_Float));
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.setLayoutParams(localLayoutParams);
-    d();
+    this.b.setNumColumns(this.h.size());
+    ViewGroup.LayoutParams localLayoutParams = this.b.getLayoutParams();
+    localLayoutParams.width = ((int)((this.h.size() * 40 + this.h.size() * 10) * this.g));
+    this.b.setLayoutParams(localLayoutParams);
+    e();
     if (paramBoolean) {
       postDelayed(new SelectedAndSearchBar.6(this), 200L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqSelectmemberSelectedAndSearchBar$GridViewAdapter.notifyDataSetChanged();
+    this.i.notifyDataSetChanged();
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_AndroidWidgetEditText.hasFocus();
+    return this.c.hasFocus();
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    this.c.setText("");
   }
   
   public void b(long paramLong)
   {
-    int i = a(60.0F, getResources());
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -i });
+    int i1 = a(60.0F, getResources());
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -i1 });
     localValueAnimator.setDuration(paramLong);
     localValueAnimator.addUpdateListener(new SelectedAndSearchBar.8(this, localLayoutParams));
     localValueAnimator.start();
@@ -180,53 +178,63 @@ public class SelectedAndSearchBar
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.getLayoutParams().width, 0);
+    this.c.clearFocus();
   }
   
   public void d()
   {
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)(this.jdField_a_of_type_Float * 40.0F));
-    float f1 = this.jdField_a_of_type_Float;
-    int i = (int)(40.0F * f1);
-    int j = (int)(f1 * 10.0F);
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    this.f.scrollTo(this.b.getLayoutParams().width, 0);
+  }
+  
+  public void e()
+  {
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)(this.g * 40.0F));
+    float f1 = this.g;
+    int i1 = (int)(40.0F * f1);
+    int i2 = (int)(f1 * 10.0F);
+    if (this.h.size() > 0)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() < 5)
+      if (this.h.size() < 5)
       {
-        f1 = this.jdField_a_of_type_JavaUtilList.size() * 40 + this.jdField_a_of_type_JavaUtilList.size() * 10;
-        float f2 = this.jdField_a_of_type_Float;
-        i = (int)(f1 * f2) + (int)(f2 * 10.0F);
+        f1 = this.h.size() * 40 + this.h.size() * 10;
+        float f2 = this.g;
+        i1 = (int)(f1 * f2) + (int)(f2 * 10.0F);
       }
       else
       {
-        i = (int)(this.jdField_a_of_type_Float * 230.0F);
+        i1 = (int)(this.g * 230.0F);
       }
-      this.b.setVisibility(8);
+      this.e.setVisibility(8);
     }
     else
     {
-      this.b.setVisibility(0);
+      this.e.setVisibility(0);
     }
     localLayoutParams.addRule(15);
-    localLayoutParams.setMargins(i, 0, j, 0);
-    this.jdField_a_of_type_AndroidWidgetEditText.setLayoutParams(localLayoutParams);
+    localLayoutParams.setMargins(i1, 0, i2, 0);
+    this.c.setLayoutParams(localLayoutParams);
+  }
+  
+  public Editable getEditTextContent()
+  {
+    return this.c.getText();
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView == null) {
+    if (this.b == null) {
       return;
     }
     paramInt1 = 0;
-    while (paramInt1 < this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.getChildCount())
+    while (paramInt1 < this.b.getChildCount())
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqSelectmemberCustomGridView.getChildAt(paramInt1);
+      View localView = this.b.getChildAt(paramInt1);
       Object localObject = localView.getTag();
       if ((localObject != null) && ((localObject instanceof ResultRecord)))
       {
         localObject = (ResultRecord)localObject;
         if ((paramString.equals(((ResultRecord)localObject).uin)) && (((ResultRecord)localObject).type == paramInt2)) {
-          ((ImageView)localView.findViewById(2131366401)).setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap));
+          ((ImageView)localView.findViewById(2131432714)).setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap));
         }
       }
       paramInt1 += 1;
@@ -235,12 +243,12 @@ public class SelectedAndSearchBar
   
   public void setIsFrom(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.p = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectedAndSearchBar
  * JD-Core Version:    0.7.0.1
  */

@@ -20,15 +20,15 @@ final class RecentMediaListView$onAttachedToWindow$1
     paramAdapterView = RecentMediaListView.a(this.a).get(paramInt);
     Intrinsics.checkExpressionValueIsNotNull(paramAdapterView, "mMediaMapList[position]");
     paramAdapterView = (RecentMediaListView.Album)paramAdapterView;
-    paramView = this.a.a();
+    paramView = this.a.getOnSelectCallback();
     if (paramView != null) {
-      paramAdapterView = (Unit)paramView.invoke(paramAdapterView.a(), paramAdapterView.b(), paramAdapterView.a());
+      paramAdapterView = (Unit)paramView.invoke(paramAdapterView.a(), paramAdapterView.b(), paramAdapterView.c());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.RecentMediaListView.onAttachedToWindow.1
  * JD-Core Version:    0.7.0.1
  */

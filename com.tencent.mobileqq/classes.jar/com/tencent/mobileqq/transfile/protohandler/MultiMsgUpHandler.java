@@ -3,7 +3,6 @@ package com.tencent.mobileqq.transfile.protohandler;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.StatictisInfo;
-import com.tencent.mobileqq.multimsg.MultiMsgUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
@@ -45,7 +44,7 @@ public class MultiMsgUpHandler
     if (paramReqCommon.multiMsgType == 1) {
       paramReqBody.uint32_bu_type.set(1);
     }
-    if ((paramReqCommon.multiMsgType == 0) && (MultiMsgUtil.b)) {
+    if (paramReqCommon.multiMsgType == 0) {
       paramReqBody.uint32_bu_type.set(2);
     }
   }
@@ -123,6 +122,16 @@ public class MultiMsgUpHandler
     return i;
   }
   
+  void handleSSORespError(FromServiceMsg paramFromServiceMsg, RichProto.RichProtoResp paramRichProtoResp, StatictisInfo paramStatictisInfo, int paramInt)
+  {
+    if ((paramInt != 1002) && (paramInt != 1013))
+    {
+      setResult(-1, 9044, BaseMessageHandler.a(paramFromServiceMsg), "", paramStatictisInfo, paramRichProtoResp.resps);
+      return;
+    }
+    setResult(-1, 9311, BaseMessageHandler.a(paramFromServiceMsg), "", paramStatictisInfo, paramRichProtoResp.resps);
+  }
+  
   void initResps(RichProto.RichProtoReq paramRichProtoReq)
   {
     RichProto.RichProtoResp localRichProtoResp = paramRichProtoReq.resp;
@@ -143,221 +152,71 @@ public class MultiMsgUpHandler
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
-    int i;
-    if (((FromServiceMsg)localObject1).getResultCode() != 1000)
-    {
-      i = ((FromServiceMsg)localObject1).getResultCode();
-      if ((i != 1002) && (i != 1013)) {
-        setResult(-1, 9044, BaseMessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
-      } else {
-        setResult(-1, 9311, BaseMessageHandler.a((FromServiceMsg)localObject1), "", localStatictisInfo, localRichProtoResp.resps);
-      }
-    }
-    for (;;)
-    {
-      label813:
-      label829:
-      StringBuilder localStringBuilder;
+    if (((FromServiceMsg)localObject1).getResultCode() != 1000) {
+      handleSSORespError((FromServiceMsg)localObject1, localRichProtoResp, localStatictisInfo, ((FromServiceMsg)localObject1).getResultCode());
+    } else {
       try
       {
-        paramProtoResp = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte1)).rpt_multimsg_applyup_rsp.get();
-        if ((paramProtoResp != null) && (paramProtoResp.size() != 0))
+        List localList = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte1)).rpt_multimsg_applyup_rsp.get();
+        int i = 0;
+        while (i < localList.size())
         {
-          i = 0;
-          if (i >= paramProtoResp.size()) {
-            break label984;
-          }
-          MultiMsg.MultiMsgApplyUpRsp localMultiMsgApplyUpRsp = (MultiMsg.MultiMsgApplyUpRsp)paramProtoResp.get(i);
-          try
+          MultiMsg.MultiMsgApplyUpRsp localMultiMsgApplyUpRsp = (MultiMsg.MultiMsgApplyUpRsp)localList.get(i);
+          RichProto.RichProtoResp.MultiMsgUpResp localMultiMsgUpResp = (RichProto.RichProtoResp.MultiMsgUpResp)localRichProtoResp.resps.get(i);
+          int j = localMultiMsgApplyUpRsp.uint32_result.get();
+          if (j == 0)
           {
-            localObject5 = (RichProto.RichProtoResp.MultiMsgUpResp)localRichProtoResp.resps.get(i);
-            int j;
-            Object localObject3;
-            byte[] arrayOfByte2;
-            byte[] arrayOfByte3;
-            try
+            paramProtoResp = localMultiMsgApplyUpRsp.bytes_msg_resid.get().toByteArray();
+            localObject1 = localMultiMsgApplyUpRsp.bytes_msg_ukey.get().toByteArray();
+            Object localObject2 = localMultiMsgApplyUpRsp.bytes_msg_key.get().toByteArray();
+            byte[] arrayOfByte2 = localMultiMsgApplyUpRsp.bytes_msg_sig.get().toByteArray();
+            localMultiMsgUpResp.resId = paramProtoResp;
+            localMultiMsgUpResp.ukey = ((byte[])localObject1);
+            localMultiMsgUpResp.msgKey = ((byte[])localObject2);
+            localMultiMsgUpResp.msgSig = arrayOfByte2;
+            localObject1 = localMultiMsgApplyUpRsp.rpt_uint32_up_ip.get();
+            paramProtoResp = localMultiMsgApplyUpRsp.rpt_uint32_up_port.get();
+            j = 0;
+            while (j < ((List)localObject1).size())
             {
-              j = localMultiMsgApplyUpRsp.uint32_result.get();
-              if (j == 0) {
-                if (localMultiMsgApplyUpRsp.bytes_msg_resid.has())
-                {
-                  localObject3 = localMultiMsgApplyUpRsp.bytes_msg_resid.get().toByteArray();
-                  if ((localObject3 != null) && (localObject3.length > 0)) {
-                    if (localMultiMsgApplyUpRsp.bytes_msg_ukey.has())
-                    {
-                      localObject6 = localMultiMsgApplyUpRsp.bytes_msg_ukey.get().toByteArray();
-                      if ((localObject6 != null) && (localObject6.length > 0)) {
-                        if (localMultiMsgApplyUpRsp.bytes_msg_key.has())
-                        {
-                          arrayOfByte2 = localMultiMsgApplyUpRsp.bytes_msg_key.get().toByteArray();
-                          if ((arrayOfByte2 != null) && (arrayOfByte2.length > 0)) {
-                            if (localMultiMsgApplyUpRsp.bytes_msg_sig.has())
-                            {
-                              arrayOfByte3 = localMultiMsgApplyUpRsp.bytes_msg_sig.get().toByteArray();
-                              if (arrayOfByte3 == null) {
-                                break label1011;
-                              }
-                              localObject1 = paramProtoResp;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
+              long l1 = ((Integer)((List)localObject1).get(j)).intValue();
+              long l2 = ((Integer)paramProtoResp.get(j)).intValue();
+              localObject2 = new ServerAddr();
+              ((ServerAddr)localObject2).mIp = PkgTools.int2IPNet(l1 & 0xFFFFFFFF);
+              ((ServerAddr)localObject2).port = ((int)l2);
+              localMultiMsgUpResp.ipList.add(j, localObject2);
+              j += 1;
+            }
+            localMultiMsgUpResp.blockSize = ((int)localMultiMsgApplyUpRsp.uint64_block_size.get());
+            localMultiMsgUpResp.transferedSize = ((int)localMultiMsgApplyUpRsp.uint64_up_offset.get());
+            setResult(0, 0, "", "", localStatictisInfo, localMultiMsgUpResp);
+          }
+          else
+          {
+            if (shouldRetryByRetCodeForGroup(j))
+            {
+              this.mReqUrlCount += 1;
+              if (this.mReqUrlCount < 2)
+              {
+                localRichProtoReq.protoReqMgr.sendProtoReq(paramProtoReq);
+                return;
               }
             }
-            catch (Exception localException5) {}
+            setResult(-1, -9527, ProcessorReport.getUrlReason(j), "", localStatictisInfo, localMultiMsgUpResp);
           }
-          catch (Exception localException3)
-          {
-            Object localObject2;
-            localObject4 = null;
-          }
+          i += 1;
         }
+        RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
       }
       catch (Exception paramProtoResp)
       {
-        Object localObject5;
-        Object localObject6;
-        Object localObject4;
         paramProtoReq = ProcessorReport.getServerReason("P", -9529L);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramProtoResp.getMessage());
-        localStringBuilder.append(" hex:");
-        localStringBuilder.append(HexUtil.bytes2HexStr(arrayOfByte1));
-        setResult(-1, -9527, paramProtoReq, localStringBuilder.toString(), localStatictisInfo, localRichProtoResp.resps);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramProtoResp.getMessage());
+        ((StringBuilder)localObject1).append(" hex:");
+        ((StringBuilder)localObject1).append(HexUtil.bytes2HexStr(arrayOfByte1));
+        setResult(-1, -9527, paramProtoReq, ((StringBuilder)localObject1).toString(), localStatictisInfo, localRichProtoResp.resps);
       }
-      for (;;)
-      {
-        try
-        {
-          if (arrayOfByte3.length <= 0) {
-            continue;
-          }
-          localObject1 = paramProtoResp;
-          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).resId = ((byte[])localObject3);
-          localObject1 = paramProtoResp;
-          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).ukey = ((byte[])localObject6);
-          localObject1 = paramProtoResp;
-          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).msgKey = arrayOfByte2;
-          localObject1 = paramProtoResp;
-          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).msgSig = arrayOfByte3;
-          localObject1 = paramProtoResp;
-          localObject3 = localMultiMsgApplyUpRsp.rpt_uint32_up_ip.get();
-          localObject1 = paramProtoResp;
-          localObject6 = localMultiMsgApplyUpRsp.rpt_uint32_up_port.get();
-          if (localObject3 != null)
-          {
-            localObject1 = paramProtoResp;
-            if (((List)localObject3).size() != 0)
-            {
-              j = 0;
-              for (;;)
-              {
-                localObject1 = paramProtoResp;
-                int k = ((List)localObject3).size();
-                if (j < k) {
-                  try
-                  {
-                    long l1 = ((Integer)((List)localObject3).get(j)).intValue();
-                    k = ((Integer)((List)localObject6).get(j)).intValue();
-                    long l2 = k;
-                    try
-                    {
-                      localObject1 = new ServerAddr();
-                      ((ServerAddr)localObject1).mIp = PkgTools.int2IPNet(l1 & 0xFFFFFFFF);
-                      ((ServerAddr)localObject1).port = ((int)l2);
-                      ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).ipList.add(j, localObject1);
-                      j += 1;
-                    }
-                    catch (Exception localException1)
-                    {
-                      localObject3 = localObject5;
-                      break label829;
-                    }
-                    localObject2 = paramProtoResp;
-                  }
-                  catch (Exception localException2)
-                  {
-                    localObject3 = localObject5;
-                  }
-                }
-              }
-            }
-          }
-        }
-        catch (Exception localException7)
-        {
-          paramProtoResp = localStringBuilder;
-          break label813;
-        }
-        try
-        {
-          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).blockSize = ((int)localMultiMsgApplyUpRsp.uint64_block_size.get());
-          ((RichProto.RichProtoResp.MultiMsgUpResp)localObject5).transferedSize = ((int)localMultiMsgApplyUpRsp.uint64_up_offset.get());
-          paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-          try
-          {
-            setResult(0, 0, "", "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject5);
-            paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-          }
-          catch (Exception localException4)
-          {
-            break label813;
-          }
-          throw new Exception("check iplist");
-        }
-        catch (Exception localException6)
-        {
-          paramProtoResp = localStringBuilder;
-          break label813;
-        }
-      }
-      throw new Exception("msgsig_bs == null || empty");
-      throw new Exception("bytes_msg_sig NOT exists");
-      throw new Exception("msgkey_bs == null || empty");
-      throw new Exception("bytes_msg_key NOT exists");
-      throw new Exception("ukey_bs == null || empty");
-      throw new Exception("bytes_msg_ukey NOT exists");
-      throw new Exception("resid_bs == null || empty");
-      throw new Exception("bytes_msg_resid NOT exists");
-      localObject2 = paramProtoResp;
-      paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-      if (shouldRetryByRetCodeForGroup(j))
-      {
-        paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-        this.mReqUrlCount += 1;
-        paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-        if (this.mReqUrlCount < 2)
-        {
-          paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-          localRichProtoReq.protoReqMgr.sendProtoReq(paramProtoReq);
-          return;
-        }
-      }
-      paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-      setResult(-1, -9527, ProcessorReport.getUrlReason(j), "", localStatictisInfo, (RichProto.RichProtoResp.RespCommon)localObject5);
-      paramProtoResp = (ProtoReqManagerImpl.ProtoResp)localObject2;
-      break label1014;
-      localObject2 = localException5;
-      localObject4 = localObject5;
-      localObject5 = ProcessorReport.getServerReason("P", -9529L);
-      localObject6 = new StringBuilder();
-      ((StringBuilder)localObject6).append(localException3.getMessage());
-      ((StringBuilder)localObject6).append(" hex:");
-      ((StringBuilder)localObject6).append(HexUtil.bytes2HexStr(arrayOfByte1));
-      setResult(-1, -9527, (String)localObject5, ((StringBuilder)localObject6).toString(), localStatictisInfo, localObject4);
-      break label1014;
-      throw new Exception("resps null");
-      label984:
-      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
-      return;
-      continue;
-      label1011:
-      continue;
-      label1014:
-      i += 1;
     }
   }
   
@@ -376,7 +235,7 @@ public class MultiMsgUpHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.MultiMsgUpHandler
  * JD-Core Version:    0.7.0.1
  */

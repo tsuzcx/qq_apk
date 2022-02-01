@@ -9,13 +9,13 @@ public abstract interface ICallBack
 {
   public abstract Bundle a(int paramInt, Bundle paramBundle);
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
   public abstract void a(CompressInfo paramCompressInfo);
+  
+  public abstract void b(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ICallBack
  * JD-Core Version:    0.7.0.1
  */

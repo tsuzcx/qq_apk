@@ -14,20 +14,20 @@ class AEGIFTextEditFragment$12
   {
     Log.d("AEGIFTextEditFragment", "onGlobalLayout");
     Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - localRect.bottom;
-    int j = AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment);
+    this.a.getWindowVisibleDisplayFrame(localRect);
+    int i = this.a.getRootView().getHeight() - localRect.bottom;
+    int j = AEGIFTextEditFragment.i(this.b);
     if (i > j)
     {
-      AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment, i - j);
+      AEGIFTextEditFragment.a(this.b, i - j);
       return;
     }
-    AEGIFTextEditFragment.a(this.jdField_a_of_type_ComTencentAelightCameraAeGifGiftextFragmentAEGIFTextEditFragment, 0);
+    AEGIFTextEditFragment.a(this.b, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFTextEditFragment.12
  * JD-Core Version:    0.7.0.1
  */

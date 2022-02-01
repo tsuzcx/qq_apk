@@ -13,38 +13,38 @@ import java.io.UnsupportedEncodingException;
 class BaseDefaultHeadIconController$ProcessMemberNickTask
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  Context jdField_a_of_type_AndroidContentContext;
-  View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  View jdField_a_of_type_AndroidViewView;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  QQAppInterface a;
+  Context b;
+  View c;
+  String d;
+  String e;
+  int f;
+  View.OnLongClickListener g;
   
   public BaseDefaultHeadIconController$ProcessMemberNickTask(QQAppInterface paramQQAppInterface, Context paramContext, View paramView, String paramString1, String paramString2, int paramInt, View.OnLongClickListener paramOnLongClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+    this.a = paramQQAppInterface;
+    this.b = paramContext;
+    this.c = paramView;
+    this.d = paramString1;
+    this.e = paramString2;
+    this.f = paramInt;
+    this.g = paramOnLongClickListener;
   }
   
   public void run()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((localObject1 != null) && (this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    Object localObject1 = this.a;
+    if ((localObject1 != null) && (this.b != null) && (this.c != null))
     {
-      if (this.jdField_a_of_type_AndroidViewView$OnLongClickListener == null) {
+      if (this.g == null) {
         return;
       }
-      int i = this.jdField_a_of_type_Int;
+      int i = this.f;
       if (i == 1) {
-        localObject1 = ContactUtils.b((AppInterface)localObject1, this.jdField_a_of_type_JavaLangString, this.b);
+        localObject1 = ContactUtils.b((AppInterface)localObject1, this.d, this.e);
       } else if (i == 3000) {
-        localObject1 = ContactUtils.a((BaseQQAppInterface)localObject1, this.jdField_a_of_type_JavaLangString, this.b);
+        localObject1 = ContactUtils.a((BaseQQAppInterface)localObject1, this.d, this.e);
       } else {
         localObject1 = null;
       }
@@ -81,7 +81,7 @@ class BaseDefaultHeadIconController$ProcessMemberNickTask
           }
         }
       }
-      localObject1 = this.jdField_a_of_type_AndroidContentContext;
+      localObject1 = this.b;
       if ((localObject1 instanceof Activity)) {
         ((Activity)localObject1).runOnUiThread(new BaseDefaultHeadIconController.ProcessMemberNickTask.1(this, localObject3));
       }
@@ -90,7 +90,7 @@ class BaseDefaultHeadIconController$ProcessMemberNickTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.basebubblebuilderheadicon.BaseDefaultHeadIconController.ProcessMemberNickTask
  * JD-Core Version:    0.7.0.1
  */

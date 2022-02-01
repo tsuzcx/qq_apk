@@ -23,8 +23,8 @@ class C2CShortcutBarStoreView$1
       C2CShortcutBarStoreView.b(this.a, paramMotionEvent.getY());
       if (C2CShortcutBarStoreView.a(this.a) - C2CShortcutBarStoreView.b(this.a) > 50.0F)
       {
-        if (C2CShortcutBarStoreView.a(this.a) != null) {
-          C2CShortcutBarStoreView.a(this.a).c();
+        if (C2CShortcutBarStoreView.c(this.a) != null) {
+          C2CShortcutBarStoreView.c(this.a).c();
         }
         return true;
       }
@@ -38,7 +38,7 @@ class C2CShortcutBarStoreView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreView.1
  * JD-Core Version:    0.7.0.1
  */

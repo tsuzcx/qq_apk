@@ -21,7 +21,7 @@ public class OpenSdkD55Bean
         int i = 0;
         if (i < j)
         {
-          String str = paramArrayOfQConfItem[i].a;
+          String str = paramArrayOfQConfItem[i].b;
           QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
           JSONObject localJSONObject = new JSONObject(str);
           if (localJSONObject.has("enable_d55"))
@@ -73,7 +73,7 @@ public class OpenSdkD55Bean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkD55Bean
  * JD-Core Version:    0.7.0.1
  */

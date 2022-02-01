@@ -7,7 +7,7 @@ import com.tencent.widget.AbsListView.OnScrollListener;
 class LocationPickController$1
   implements AbsListView.OnScrollListener
 {
-  private int jdField_a_of_type_Int;
+  private int b;
   
   LocationPickController$1(LocationPickController paramLocationPickController) {}
   
@@ -16,25 +16,25 @@ class LocationPickController$1
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     paramInt = paramAbsListView.getFirstVisiblePosition();
-    if (paramInt > this.jdField_a_of_type_Int)
+    if (paramInt > this.b)
     {
-      if (!LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).b()) {
-        LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).a();
+      if (!LocationPickController.a(this.a).h()) {
+        LocationPickController.a(this.a).a();
       }
       if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
       {
         if (QLog.isDevelopLevel()) {
           QLog.i("LocationShareController", 4, "onScrollStateChanged");
         }
-        LocationPickController.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickController).a();
+        LocationPickController.b(this.a).a();
       }
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickController.1
  * JD-Core Version:    0.7.0.1
  */

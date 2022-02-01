@@ -36,7 +36,7 @@ class ArConfigService$1
       {
         localRemoteException.printStackTrace();
       }
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.get();
       if (localQQAppInterface == null)
       {
         QLog.d("ArConfig_ArConfigService", 1, "onDownloadError,mApp is null! ");
@@ -144,7 +144,7 @@ class ArConfigService$1
     for (;;)
     {
       int i;
-      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      synchronized (this.a.c)
       {
         if (QLog.isColorLevel()) {
           QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync start");
@@ -176,7 +176,7 @@ class ArConfigService$1
         if (QLog.isColorLevel()) {
           QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess after sync");
         }
-        ??? = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        ??? = (QQAppInterface)this.a.a.get();
         if (??? == null)
         {
           QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess,mApp is null! ");
@@ -192,7 +192,7 @@ class ArConfigService$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.1
  * JD-Core Version:    0.7.0.1
  */

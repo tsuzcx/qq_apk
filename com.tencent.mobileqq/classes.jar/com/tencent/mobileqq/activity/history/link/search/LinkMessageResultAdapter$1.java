@@ -20,24 +20,24 @@ class LinkMessageResultAdapter$1
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(this.a);
       ((StringBuilder)???).append(", loadType = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)???).append(this.b);
       QLog.i("LinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     ??? = null;
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     boolean bool1 = true;
     if (i == 1)
     {
       ??? = this.this$0;
-      ??? = ((LinkMessageResultAdapter)???).a(LinkMessageResultAdapter.a((LinkMessageResultAdapter)???), this.jdField_a_of_type_JavaLangString);
-      HistoryChatMsgSearchKeyUtil.a(LinkMessageResultAdapter.a(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = ((LinkMessageResultAdapter)???).a(LinkMessageResultAdapter.a((LinkMessageResultAdapter)???), this.a);
+      HistoryChatMsgSearchKeyUtil.a(LinkMessageResultAdapter.b(this.this$0).getCurrentAccountUin(), this.a);
     }
     else if (i == 2)
     {
       ??? = this.this$0;
-      ??? = ((LinkMessageResultAdapter)???).a(LinkMessageResultAdapter.b((LinkMessageResultAdapter)???), "");
+      ??? = ((LinkMessageResultAdapter)???).a(LinkMessageResultAdapter.c((LinkMessageResultAdapter)???), "");
     }
     Object localObject2 = new ArrayList();
     Object localObject4 = LinkMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
@@ -52,9 +52,9 @@ class LinkMessageResultAdapter$1
     {
       synchronized (this.this$0.a)
       {
-        if (LinkMessageResultAdapter.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (LinkMessageResultAdapter.d(this.this$0).equals(this.a))
         {
-          i = this.jdField_a_of_type_Int;
+          i = this.b;
           boolean bool2 = false;
           LinkMessageResultAdapter localLinkMessageResultAdapter;
           if (i == 1)
@@ -66,15 +66,15 @@ class LinkMessageResultAdapter$1
             }
             LinkMessageResultAdapter.a(localLinkMessageResultAdapter, bool1);
             LinkMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = LinkMessageResultAdapter.a(this.this$0).obtainMessage(2, localObject2);
+            localObject2 = LinkMessageResultAdapter.e(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
-          else if (this.jdField_a_of_type_Int == 2)
+          else if (this.b == 2)
           {
             localLinkMessageResultAdapter = this.this$0;
             if (((ArrayList)localObject2).size() >= 20) {
@@ -82,11 +82,11 @@ class LinkMessageResultAdapter$1
             }
             LinkMessageResultAdapter.b(localLinkMessageResultAdapter, bool1);
             LinkMessageResultAdapter.b(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = LinkMessageResultAdapter.b(this.this$0).obtainMessage(2, localObject2);
+            localObject2 = LinkMessageResultAdapter.f(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 2;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
           }
         }
@@ -99,7 +99,7 @@ class LinkMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

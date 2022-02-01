@@ -40,9 +40,9 @@ final class QQSettingUtil$4
                 QLog.d("QQSetting", 2, ((StringBuilder)localObject).toString());
               }
               localEditor.putString("vip_qqsetting_title_vip", paramNetResp.optString("vip", "我的QQ会员"));
-              localEditor.putString("vip_qqsetting_title_svip", paramNetResp.optString("svip", HardCodeUtil.a(2131710688)));
-              localEditor.putString("vip_qqsetting_title_notvip", paramNetResp.optString("notVip", HardCodeUtil.a(2131710700)));
-              localEditor.putString("vip_qqsetting_title_expired_vip", paramNetResp.optString("outdatedVip", HardCodeUtil.a(2131710699)));
+              localEditor.putString("vip_qqsetting_title_svip", paramNetResp.optString("svip", HardCodeUtil.a(2131908369)));
+              localEditor.putString("vip_qqsetting_title_notvip", paramNetResp.optString("notVip", HardCodeUtil.a(2131908381)));
+              localEditor.putString("vip_qqsetting_title_expired_vip", paramNetResp.optString("outdatedVip", HardCodeUtil.a(2131908380)));
               break;
             }
             i += 1;
@@ -61,7 +61,7 @@ final class QQSettingUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.QQSettingUtil.4
  * JD-Core Version:    0.7.0.1
  */

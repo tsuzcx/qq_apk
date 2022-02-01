@@ -15,155 +15,52 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public abstract class GalleryManager
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  AbstractAnimationManager jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager;
-  protected AbstractGalleryScene a;
-  protected AbstractImageListModel a;
-  public AbstractImageListScene a;
-  private ImageScene jdField_a_of_type_ComTencentCommonGalleryactivityImageScene;
-  public boolean a;
-  public boolean b = false;
-  private boolean c;
+  private boolean a;
+  protected AbstractGalleryScene b;
+  public AbstractImageListScene c;
+  protected AbstractImageListModel d;
+  AbstractAnimationManager e;
+  public boolean f = false;
+  public boolean g = false;
+  ViewGroup h;
+  private Activity i;
+  private ImageScene j;
   
-  public GalleryManager()
+  private void l()
   {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void d()
-  {
-    GalleryImage localGalleryImage = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    GalleryImage localGalleryImage = this.d.d();
     if (localGalleryImage != null) {
-      localGalleryImage.thubmRect = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a();
+      localGalleryImage.thubmRect = this.c.a();
     }
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.o();
+    this.b.v();
     if (QLog.isColorLevel()) {
       QLog.d("GalleryComponent", 2, "startImageListScene");
     }
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.q();
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a.setSelectionToNothing();
-    QQLiveImage.releaseAll(this.jdField_a_of_type_AndroidAppActivity);
-  }
-  
-  public RelativeLayout a()
-  {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidAppActivity.addContentView(localRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
-    return localRelativeLayout;
+    this.b.y();
+    this.b.q.setSelectionToNothing();
+    QQLiveImage.releaseAll(this.i);
   }
   
   public AbstractAnimationManager a()
   {
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager;
-  }
-  
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return new AnimationManager(paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractGalleryScene a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene;
+    return this.e;
   }
   
   public abstract AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel);
   
   public abstract AbstractImageListModel a(Activity paramActivity);
   
-  public AbstractImageListScene a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene;
-  }
-  
-  public abstract AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel);
-  
-  public AnimationView a()
-  {
-    AnimationView localAnimationView = new AnimationView(this.jdField_a_of_type_AndroidAppActivity, null);
-    localAnimationView.setId(2131362696);
-    localAnimationView.setVisibility(4);
-    return localAnimationView;
-  }
-  
-  public ImageScene a()
-  {
-    return this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene;
-  }
-  
-  public void a()
-  {
-    if (!a()) {
-      return;
-    }
-    if (a().a()) {
-      return;
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene;
-    AbstractGalleryScene localAbstractGalleryScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene;
-    if (localObject == localAbstractGalleryScene)
-    {
-      if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene == null)
-      {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene = a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel);
-        localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene;
-        if (localObject == null) {
-          return;
-        }
-        ((AbstractImageListScene)localObject).a(this);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a(this.jdField_a_of_type_AndroidViewViewGroup);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a(this);
-      }
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.m();
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a().post(new GalleryManager.1(this));
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene;
-      return;
-    }
-    if (localObject == this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene) {
-      localAbstractGalleryScene.a().post(new GalleryManager.2(this));
-    }
-  }
-  
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ImageScene localImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene;
+    ImageScene localImageScene = this.j;
     if (localImageScene != null) {
       localImageScene.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = a(paramActivity);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager = a(paramActivity, this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel);
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene == null)
-    {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene = a(paramActivity, this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel);
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a(this);
-    }
-    if (a()) {
-      this.jdField_a_of_type_AndroidViewViewGroup = a();
-    }
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a(this.jdField_a_of_type_AndroidViewViewGroup);
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.a();
-    }
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-    if (localViewGroup != null) {
-      localViewGroup.addView(a());
-    }
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene;
-    this.b = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.jdField_a_of_type_AndroidViewViewGroup != null) && (!this.b) && (Build.VERSION.SDK_INT >= 16)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(4);
-    }
-  }
-  
   public void a(Configuration paramConfiguration)
   {
-    ImageScene localImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene;
+    ImageScene localImageScene = this.j;
     if (localImageScene != null) {
       localImageScene.a(paramConfiguration);
     }
@@ -171,7 +68,7 @@ public abstract class GalleryManager
   
   protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.m();
+    this.b.t();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -179,88 +76,186 @@ public abstract class GalleryManager
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("GalleryComponent", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    Object localObject = this.d.d();
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.p();
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a();
+      this.b.w();
+      this.c.b();
       if (localObject != null) {
-        ((GalleryImage)localObject).thubmRect = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene.a();
+        ((GalleryImage)localObject).thubmRect = this.c.a();
       }
     }
     else
     {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.k();
+      this.b.m();
     }
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.b(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return false;
+    this.b.b(paramBoolean);
   }
   
   public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    ImageScene localImageScene = this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene;
+    ImageScene localImageScene = this.j;
     if (localImageScene != null) {
       return localImageScene.a(paramInt, paramKeyEvent);
     }
     return false;
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene.c();
-  }
+  public abstract AbstractImageListScene b(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel);
   
   public void b(Activity paramActivity)
   {
-    if ((!this.c) && (this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene == this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene)) {
-      a(false);
+    this.i = paramActivity;
+    this.d = a(paramActivity);
+    this.e = c(paramActivity, this.d);
+    if (this.b == null)
+    {
+      this.b = a(paramActivity, this.d);
+      this.b.a(this);
     }
-    this.c = true;
+    if (b()) {
+      this.h = h();
+    }
+    this.b.a(this.h);
+    if (this.h == null) {
+      this.h = this.b.C();
+    }
+    ViewGroup localViewGroup = this.h;
+    if (localViewGroup != null) {
+      localViewGroup.addView(g());
+    }
+    this.j = this.b;
+    this.g = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.h != null) && (!this.g) && (Build.VERSION.SDK_INT >= 16)) {
+      this.h.setSystemUiVisibility(4);
+    }
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene != null)
+    return false;
+  }
+  
+  public AbstractAnimationManager c(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  {
+    return new AnimationManager(paramActivity, paramAbstractImageListModel);
+  }
+  
+  public AbstractGalleryScene c()
+  {
+    return this.b;
+  }
+  
+  public void c(Activity paramActivity)
+  {
+    if ((!this.a) && (this.j == this.b)) {
+      a(false);
+    }
+    this.a = true;
+  }
+  
+  public AbstractImageListScene d()
+  {
+    return this.c;
+  }
+  
+  public void d(Activity paramActivity)
+  {
+    paramActivity = this.b;
+    if (paramActivity != null) {
+      paramActivity.k();
+    }
+    paramActivity = this.c;
+    if (paramActivity != null) {
+      paramActivity.k();
+    }
+  }
+  
+  public ImageScene e()
+  {
+    return this.j;
+  }
+  
+  public void f()
+  {
+    if (!b()) {
+      return;
+    }
+    if (a().a()) {
+      return;
+    }
+    Object localObject = this.j;
+    AbstractGalleryScene localAbstractGalleryScene = this.b;
+    if (localObject == localAbstractGalleryScene)
+    {
+      if (this.c == null)
+      {
+        this.c = b(this.i, this.d);
+        localObject = this.c;
+        if (localObject == null) {
+          return;
+        }
+        ((AbstractImageListScene)localObject).a(this);
+        this.c.a(this.h);
+        this.c.a(this);
+      }
+      this.c.t();
+      this.b.C().post(new GalleryManager.1(this));
+      this.j = this.c;
+      return;
+    }
+    if (localObject == this.c) {
+      localAbstractGalleryScene.C().post(new GalleryManager.2(this));
+    }
+  }
+  
+  public AnimationView g()
+  {
+    AnimationView localAnimationView = new AnimationView(this.i, null);
+    localAnimationView.setId(2131428368);
+    localAnimationView.setVisibility(4);
+    return localAnimationView;
+  }
+  
+  public RelativeLayout h()
+  {
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.i);
+    this.i.addContentView(localRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
+    return localRelativeLayout;
+  }
+  
+  public boolean i()
+  {
+    if (this.j != null)
     {
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onBackEvent, isAnimating: ");
-        localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractAnimationManager.a());
+        localStringBuilder.append(this.e.a());
         QLog.d("GalleryManager", 2, localStringBuilder.toString());
       }
       if (!a().a()) {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene.e();
+        this.j.x();
       }
       return true;
     }
     return false;
   }
   
-  public void c()
+  public void j()
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityImageScene.h_();
+    this.j.d();
   }
   
-  public void c(Activity paramActivity)
+  public void k()
   {
-    paramActivity = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene;
-    if (paramActivity != null) {
-      paramActivity.j();
-    }
-    paramActivity = this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene;
-    if (paramActivity != null) {
-      paramActivity.j();
-    }
+    this.j.L_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryManager
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ class StoryQQ2UidConverter$1$1
   
   public void run()
   {
-    if (StoryQQ2UidConverter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter$1.this$0) != null) {
-      StoryQQ2UidConverter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelStoryQQ2UidConverter$1.this$0).a(this.jdField_a_of_type_JavaLangString, false);
+    if (StoryQQ2UidConverter.a(this.b.this$0) != null) {
+      StoryQQ2UidConverter.a(this.b.this$0).a(this.a, false);
     }
   }
 }

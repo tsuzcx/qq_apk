@@ -23,28 +23,28 @@ class AddRequestActivity$12
   
   protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+    if ((this.a.g != null) && (this.a.g.isShowing())) {
       this.a.dismissDialog(2);
     }
     paramString = this.a;
-    paramString.showToast(2130839588, paramString.getString(2131719059));
+    paramString.showToast(2130839806, paramString.getString(2131916595));
   }
   
   protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+    if ((this.a.g != null) && (this.a.g.isShowing())) {
       this.a.dismissDialog(2);
     }
     paramString = this.a;
-    paramString.showToast(2130839588, paramString.getString(2131719045));
+    paramString.showToast(2130839806, paramString.getString(2131916581));
   }
   
   protected void onSendSystemMsgActionError(String paramString)
   {
-    if (AddRequestActivity.d(this.a))
+    if (AddRequestActivity.j(this.a))
     {
-      paramString = this.a.getString(2131719418);
-      QQToast.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+      paramString = this.a.getString(2131916977);
+      QQToast.makeText(this.a, 1, paramString, 0).show(this.a.getTitleBarHeight());
     }
     else if (QLog.isColorLevel())
     {
@@ -55,7 +55,7 @@ class AddRequestActivity$12
   
   protected void onSendSystemMsgActionFin(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
   {
-    if (!AddRequestActivity.b(this.a))
+    if (!AddRequestActivity.h(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.systemmsg.AddRequestActivity", 2, "onSendSystemMsgActionFin");
@@ -84,9 +84,9 @@ class AddRequestActivity$12
     if (!paramBoolean)
     {
       if (TextUtils.isEmpty(paramString3)) {
-        paramString3 = this.a.getResources().getString(2131718739);
+        paramString3 = this.a.getResources().getString(2131916242);
       }
-      QQToast.a(this.a, 1, paramString3, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 1, paramString3, 0).show(this.a.getTitleBarHeight());
       if (SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4)) {
         this.a.finish();
       }
@@ -94,7 +94,7 @@ class AddRequestActivity$12
     else
     {
       SystemMsgUtils.a(localStructMsg, paramInt1, paramString2, paramInt2);
-      if ((AddRequestActivity.c(this.a)) && (localStructMsg != null)) {
+      if ((AddRequestActivity.i(this.a)) && (localStructMsg != null)) {
         localStructMsg.msg.friend_info.msg_blacklist.setHasFlag(false);
       }
       paramString2 = null;
@@ -102,7 +102,7 @@ class AddRequestActivity$12
       {
         this.a.setResult(-1);
         this.a.finish();
-        paramString1 = this.a.getResources().getString(2131692662);
+        paramString1 = this.a.getResources().getString(2131889687);
       }
       else
       {
@@ -112,16 +112,16 @@ class AddRequestActivity$12
           paramString1 = paramString2;
           if (localStructMsg != null)
           {
-            paramString2 = this.a.getResources().getString(2131692656);
+            paramString2 = this.a.getResources().getString(2131889681);
             paramString3 = new Bundle();
             paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
-            paramString1 = this.a.b;
-            if (TextUtils.isEmpty(this.a.b)) {
-              paramString1 = this.a.jdField_a_of_type_JavaLangString;
+            paramString1 = this.a.l;
+            if (TextUtils.isEmpty(this.a.l)) {
+              paramString1 = this.a.a;
             }
             paramString3.putString("base_nick", paramString1);
-            paramString3.putInt("verfy_type", AddRequestActivity.b(this.a));
-            paramString3.putString("verfy_msg", AddRequestActivity.a(this.a));
+            paramString3.putInt("verfy_type", AddRequestActivity.f(this.a));
+            paramString3.putString("verfy_msg", AddRequestActivity.g(this.a));
             if (AddRequestActivity.a(this.a) != null) {
               paramBoolean = bool1;
             } else {
@@ -133,14 +133,14 @@ class AddRequestActivity$12
           }
         }
       }
-      QQToast.a(this.a, 2, paramString1, 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a, 2, paramString1, 0).show(this.a.getTitleBarHeight());
     }
     AddRequestActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.12
  * JD-Core Version:    0.7.0.1
  */

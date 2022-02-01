@@ -11,22 +11,22 @@ public class QimMusicPlayerImpl
 {
   public boolean checkMusicCanPlay(MusicItemInfo paramMusicItemInfo)
   {
-    return ((QimMusicPlayer)QIMManager.a().c(8)).b(paramMusicItemInfo);
+    return ((QimMusicPlayer)QIMManager.a().d(8)).b(paramMusicItemInfo);
   }
   
   public void clearMusic()
   {
-    ((QimMusicPlayer)QIMManager.a().c(8)).e();
+    ((QimMusicPlayer)QIMManager.a().d(8)).e();
   }
   
   public boolean requestDownLoadMusicInfo(MusicItemInfo paramMusicItemInfo, MusicDownloadListener paramMusicDownloadListener)
   {
-    return ((QimMusicPlayer)QIMManager.a().c(8)).a(paramMusicItemInfo, paramMusicDownloadListener);
+    return ((QimMusicPlayer)QIMManager.a().d(8)).a(paramMusicItemInfo, paramMusicDownloadListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.QimMusicPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

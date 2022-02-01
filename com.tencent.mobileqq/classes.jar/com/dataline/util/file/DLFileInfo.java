@@ -8,21 +8,21 @@ public class DLFileInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<DLFileInfo> CREATOR = new DLFileInfo.1();
-  public int a;
   public long a;
-  public String a;
-  public long b;
-  public String b;
+  public int b;
+  public String c;
+  public String d;
+  public long e;
   
   public DLFileInfo() {}
   
   private DLFileInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Long = paramParcel.readLong();
+    this.a = paramParcel.readLong();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
+    this.e = paramParcel.readLong();
   }
   
   public int describeContents()
@@ -32,11 +32,11 @@ public class DLFileInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_b_of_type_Long);
+    paramParcel.writeLong(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
+    paramParcel.writeLong(this.e);
   }
 }
 

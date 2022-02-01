@@ -46,78 +46,81 @@ import org.json.JSONObject;
 public class ArkAppContainer
   extends ArkViewModel
 {
-  private static final ark.ApplicationCallback jdField_a_of_type_ComTencentArkArk$ApplicationCallback = new ArkAppContainer.1();
-  public static String a;
-  protected static ArrayList<WeakReference<ArkAppContainer>> a;
-  public static String c = "";
-  int jdField_a_of_type_Int = -1;
-  protected ArkViewModelBase.Size a;
-  public ArkAppInfo.TimeRecord a;
-  public ArkAppMessage.Config a;
-  public String b;
-  protected boolean b;
-  protected WeakReference<ArkAppContainer> c;
-  private String d;
-  protected WeakReference<ArkAppContainer.ArkAppModuleCallback> d;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
+  private static final ark.ApplicationCallback b = new ArkAppContainer.1();
+  public static String e;
+  public static String l = "";
+  protected static final ArrayList<WeakReference<ArkAppContainer>> m = new ArrayList();
+  private String a = "";
+  public ArkAppMessage.Config d = null;
+  public ArkAppInfo.TimeRecord f = new ArkAppInfo.TimeRecord(this.mTimeRecord);
+  protected WeakReference<ArkAppContainer> g;
+  protected ArkViewModelBase.Size h;
+  public String i = "";
+  protected boolean j = false;
+  int k = -1;
+  protected WeakReference<ArkAppContainer.ArkAppModuleCallback> n = new WeakReference(null);
   
   public ArkAppContainer()
   {
-    super(jdField_a_of_type_ComTencentArkArk$ApplicationCallback, ArkAiAppCenter.jdField_b_of_type_Boolean ^ true);
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config = null;
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord = new ArkAppInfo.TimeRecord(this.mTimeRecord);
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_b_of_type_Boolean = false;
+    super(b, ArkAiAppCenter.b ^ true);
     ((IArkEnvironment)QRoute.api(IArkEnvironment.class)).setScriptLeakCheckEnabled(true);
-    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(this);
-    jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_JavaLangRefWeakReference);
+    this.g = new WeakReference(this);
+    synchronized (m)
+    {
+      m.add(this.g);
+      return;
+    }
   }
   
   public ArkAppContainer(boolean paramBoolean)
   {
-    super(localApplicationCallback, paramBoolean);
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config = null;
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord = new ArkAppInfo.TimeRecord(this.mTimeRecord);
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_d_of_type_JavaLangRefWeakReference = new WeakReference(null);
-    this.jdField_b_of_type_Boolean = false;
+    super((ark.ApplicationCallback)???, paramBoolean);
     ArkMultiProcUtil.a();
-    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(this);
-    jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_JavaLangRefWeakReference);
-  }
-  
-  protected static QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return (QQAppInterface)localAppRuntime;
+    this.g = new WeakReference(this);
+    synchronized (m)
+    {
+      m.add(this.g);
+      return;
     }
-    QLog.i("ArkApp.ArkAppContainer", 1, "getAppInterface, return null");
-    return null;
   }
   
   public static WeakReference<ArkAppContainer> a(ark.Container paramContainer)
   {
-    int i = 0;
-    while (i < jdField_a_of_type_JavaUtilArrayList.size())
+    ArrayList localArrayList = m;
+    int i1 = 0;
+    for (;;)
     {
-      WeakReference localWeakReference = (WeakReference)jdField_a_of_type_JavaUtilArrayList.get(i);
-      ArkAppContainer localArkAppContainer = (ArkAppContainer)localWeakReference.get();
-      if ((localArkAppContainer != null) && (localArkAppContainer.getContainer() == paramContainer)) {
-        return localWeakReference;
+      try
+      {
+        if (i1 < m.size())
+        {
+          WeakReference localWeakReference = (WeakReference)m.get(i1);
+          ArkAppContainer localArkAppContainer = (ArkAppContainer)localWeakReference.get();
+          if ((localArkAppContainer != null) && (localArkAppContainer.getContainer() == paramContainer)) {
+            return localWeakReference;
+          }
+        }
+        else
+        {
+          return new WeakReference(null);
+        }
       }
-      i += 1;
+      finally
+      {
+        continue;
+        throw paramContainer;
+        continue;
+        i1 += 1;
+      }
     }
-    return new WeakReference(null);
+  }
+  
+  private static void a(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
   }
   
   private static void b(ArkAppMgr.AppPathInfo paramAppPathInfo)
@@ -125,7 +128,7 @@ public class ArkAppContainer
     if (paramAppPathInfo == null) {
       return;
     }
-    QQAppInterface localQQAppInterface = a();
+    QQAppInterface localQQAppInterface = f();
     if (localQQAppInterface != null)
     {
       boolean bool;
@@ -138,62 +141,32 @@ public class ArkAppContainer
     }
   }
   
-  private static void b(String paramString)
+  protected static QQAppInterface f()
   {
-    paramString = new File(paramString);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
     }
-  }
-  
-  public ArkViewModelBase.Size a()
-  {
-    return this.jdField_a_of_type_ComTencentArkArkViewModelBase$Size;
-  }
-  
-  public String a()
-  {
-    return "";
-  }
-  
-  public String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
+    QLog.i("ArkApp.ArkAppContainer", 1, "getAppInterface, return null");
+    return null;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentArkArkViewModelBase$Size = new ArkViewModelBase.Size(paramInt1, paramInt2);
+    this.h = new ArkViewModelBase.Size(paramInt1, paramInt2);
   }
   
   public void a(SessionInfo paramSessionInfo, String paramString)
   {
-    jdField_c_of_type_JavaLangString = "";
-    if ((paramSessionInfo.jdField_a_of_type_Int == 0) || (paramSessionInfo.jdField_a_of_type_Int == 1008)) {
-      jdField_c_of_type_JavaLangString = paramString;
+    l = "";
+    if ((paramSessionInfo.a == 0) || (paramSessionInfo.a == 1008)) {
+      l = paramString;
     }
   }
   
   public void a(ArkAppContainer.ArkAppModuleCallback paramArkAppModuleCallback)
   {
-    this.jdField_d_of_type_JavaLangRefWeakReference = new WeakReference(paramArkAppModuleCallback);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      new JSONObject(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ArkAppCenter.a("ArkApp.ArkAppContainer", String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
-    }
+    this.n = new WeakReference(paramArkAppModuleCallback);
   }
   
   protected void a(String paramString1, int paramInt, String paramString2)
@@ -213,9 +186,9 @@ public class ArkAppContainer
     String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
     String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
     String str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
-    b(str1);
-    b(str2);
-    b(str3);
+    a(str1);
+    a(str2);
+    a(str3);
     if (TextUtils.isEmpty(paramString1)) {
       QLog.d("ArkApp.ArkAppContainer", 1, String.format("ArkTemp.loadArkApp app=null mAppInfo.appName=%s, mAppInfo.appView=%s, appPath=%s", new Object[] { this.mAppInfo.name, this.mAppInfo.view, paramString1 }), new RuntimeException());
     }
@@ -224,7 +197,7 @@ public class ArkAppContainer
   
   public void a(String paramString1, String paramString2)
   {
-    ArkAppContainer.ArkAppModuleCallback localArkAppModuleCallback = (ArkAppContainer.ArkAppModuleCallback)this.jdField_d_of_type_JavaLangRefWeakReference.get();
+    ArkAppContainer.ArkAppModuleCallback localArkAppModuleCallback = (ArkAppContainer.ArkAppModuleCallback)this.n.get();
     if (localArkAppModuleCallback != null) {
       localArkAppModuleCallback.a(this, paramString1, paramString2);
     }
@@ -232,27 +205,27 @@ public class ArkAppContainer
   
   public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, SessionInfo paramSessionInfo)
   {
-    jdField_a_of_type_JavaLangString = null;
-    if (paramSessionInfo.jdField_a_of_type_Int == 1) {
-      jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    e = null;
+    if (paramSessionInfo.a == 1) {
+      e = paramSessionInfo.b;
     }
-    this.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config = new ArkAppMessage.Config();
-    paramSessionInfo = a();
-    this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config.fromString(paramSessionInfo);
+    this.k = paramSessionInfo.a;
+    this.d = new ArkAppMessage.Config();
+    paramSessionInfo = c();
+    this.d.fromString(paramSessionInfo);
     boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config.round != null) && (this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config.round.intValue() == 0)) {
+    if ((this.d.round != null) && (this.d.round.intValue() == 0)) {
       bool = false;
     } else {
       bool = true;
     }
     this.mRoundCorner = bool;
     if (!TextUtils.isEmpty(paramString4)) {
-      a(paramString4);
+      c(paramString4);
     }
-    String str = ArkAppCenterUtil.a();
+    String str = ArkAppCenterUtil.c();
     DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-    ArkAppCenter.a("ArkApp.ArkAppContainer", String.format(Locale.CHINA, "ArkSafe.init appName=%s, appView=%s, appMinVersion=%s, senderuin=%s, scale=%f, res-scale=%f-%f, system-scale=%f-%f, config=%s, metaData=%s, appconfig=%s", new Object[] { paramString1, paramString2, paramString3, jdField_c_of_type_JavaLangString, Float.valueOf(paramFloat), Float.valueOf(localDisplayMetrics.density), Float.valueOf(localDisplayMetrics.scaledDensity), Float.valueOf(FontSettingManager.systemMetrics.density), Float.valueOf(FontSettingManager.systemMetrics.scaledDensity), paramSessionInfo, paramString4, str }));
+    ArkAppCenter.a("ArkApp.ArkAppContainer", String.format(Locale.CHINA, "ArkSafe.init appName=%s, appView=%s, appMinVersion=%s, senderuin=%s, scale=%f, res-scale=%f-%f, system-scale=%f-%f, config=%s, metaData=%s, appconfig=%s", new Object[] { paramString1, paramString2, paramString3, l, Float.valueOf(paramFloat), Float.valueOf(localDisplayMetrics.density), Float.valueOf(localDisplayMetrics.scaledDensity), Float.valueOf(FontSettingManager.systemMetrics.density), Float.valueOf(FontSettingManager.systemMetrics.scaledDensity), paramSessionInfo, paramString4, str }));
     return super.init(paramString1, paramString2, paramString3, paramString4, str, paramFloat);
   }
   
@@ -260,24 +233,66 @@ public class ArkAppContainer
   {
     super.applicationCreate(paramApplication);
     if (paramApplication != null) {
-      this.jdField_d_of_type_JavaLangString = paramApplication.GetVersion();
+      this.a = paramApplication.GetVersion();
     }
   }
   
-  public String b()
+  public String b(String paramString)
   {
-    return this.jdField_d_of_type_JavaLangString;
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
   }
   
-  public void c()
+  public String c()
   {
-    ArkAppContainer.ArkAppModuleCallback localArkAppModuleCallback = (ArkAppContainer.ArkAppModuleCallback)this.jdField_d_of_type_JavaLangRefWeakReference.get();
+    return "";
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      new JSONObject(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ArkAppCenter.a("ArkApp.ArkAppContainer", String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
+    }
+  }
+  
+  protected void destroy()
+  {
+    synchronized (m)
+    {
+      m.remove(this.g);
+      super.destroy();
+      return;
+    }
+  }
+  
+  public String e()
+  {
+    return this.a;
+  }
+  
+  public void g()
+  {
+    ArkAppContainer.ArkAppModuleCallback localArkAppModuleCallback = (ArkAppContainer.ArkAppModuleCallback)this.n.get();
     if (localArkAppModuleCallback != null) {
       localArkAppModuleCallback.a(this);
     }
   }
   
-  public void d()
+  public ark.Container getContainer()
+  {
+    return this.mContainer;
+  }
+  
+  public void h()
   {
     if (this.mViewImpl != null)
     {
@@ -288,20 +303,14 @@ public class ArkAppContainer
     }
   }
   
-  protected void destroy()
+  public ArkViewModelBase.Size i()
   {
-    jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_c_of_type_JavaLangRefWeakReference);
-    super.destroy();
-  }
-  
-  public ark.Container getContainer()
-  {
-    return this.mContainer;
+    return this.h;
   }
   
   protected void initLibrary()
   {
-    ark.MediaSetStub(ArkMediaPlayer.a);
+    ark.MediaSetStub(ArkMediaPlayer.b);
   }
   
   protected void onFirstDrawEnd()
@@ -312,7 +321,7 @@ public class ArkAppContainer
   
   public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
   {
-    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
+    this.f.beginOfGetApp = System.currentTimeMillis();
     Object localObject = ArkAppMgr.getInstance().getAppInfoFromCache(this.mAppInfo.name, this.mAppInfo.appMinVersion);
     if ((localObject != null) && (!TextUtils.isEmpty(((ArkAppMgr.AppPathInfo)localObject).path)))
     {
@@ -323,14 +332,14 @@ public class ArkAppContainer
     if (TextUtils.isEmpty(paramAppInfo.name))
     {
       QLog.w("ArkApp.ArkAppContainer", 1, "onLoadApp, name is empty");
-      a(null, -1, HardCodeUtil.a(2131690166));
+      a(null, -1, HardCodeUtil.a(2131887065));
       return true;
     }
     localObject = this.mViewImpl;
     if (localObject != null) {
       ((ArkViewImplement)localObject).onLoading();
     }
-    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.appMinVersion, new ArkAppContainer.AppPathCallback(this.jdField_c_of_type_JavaLangRefWeakReference));
+    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.appMinVersion, new ArkAppContainer.AppPathCallback(this.g));
     return false;
   }
   
@@ -340,8 +349,8 @@ public class ArkAppContainer
     if (localObject != null) {
       if ((this.mApplication != null) && (this.mApplication.GetScriptType() == 2) && (!ark.Application.JSCLoaded()))
       {
-        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131693634);
-        this.mErrorInfo.msg = a((String)localObject);
+        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131891209);
+        this.mErrorInfo.msg = b((String)localObject);
         this.mErrorInfo.canRetry = true;
         if (((IArkEnvironment)QRoute.api(IArkEnvironment.class)).isJSCLibExist())
         {
@@ -355,8 +364,8 @@ public class ArkAppContainer
       }
       else
       {
-        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131693635);
-        this.mErrorInfo.msg = a((String)localObject);
+        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131891210);
+        this.mErrorInfo.msg = b((String)localObject);
         this.mErrorInfo.canRetry = false;
       }
     }
@@ -365,7 +374,7 @@ public class ArkAppContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainer
  * JD-Core Version:    0.7.0.1
  */

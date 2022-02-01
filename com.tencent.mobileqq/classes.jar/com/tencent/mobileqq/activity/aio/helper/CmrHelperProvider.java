@@ -20,7 +20,7 @@ public class CmrHelperProvider
   
   public void a(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie)
   {
-    CmrAddFriendHelper localCmrAddFriendHelper = new CmrAddFriendHelper(paramBusinessCmrTmpChatPie.b());
+    CmrAddFriendHelper localCmrAddFriendHelper = new CmrAddFriendHelper(paramBusinessCmrTmpChatPie.bv());
     a(113, localCmrAddFriendHelper);
     a(95, new TempMsgBoxAIOHelper(paramBusinessCmrTmpChatPie));
     a(localCmrAddFriendHelper);
@@ -28,7 +28,7 @@ public class CmrHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.CmrHelperProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class VerifyFileUtil
     VerifyFileUtil.QSecSigData localQSecSigData = new VerifyFileUtil.QSecSigData(null);
     try
     {
-      localQSecSigData.jdField_a_of_type_Int = paramDataInputStream.readInt();
+      localQSecSigData.a = paramDataInputStream.readInt();
       localQSecSigData.b = paramDataInputStream.readInt();
       localQSecSigData.c = paramDataInputStream.readInt();
       if (localQSecSigData.c > 0)
@@ -23,8 +23,8 @@ public class VerifyFileUtil
         if (localQSecSigData.c > 256) {
           return null;
         }
-        localQSecSigData.jdField_a_of_type_ArrayOfByte = new byte[localQSecSigData.c];
-        paramDataInputStream.read(localQSecSigData.jdField_a_of_type_ArrayOfByte);
+        localQSecSigData.d = new byte[localQSecSigData.c];
+        paramDataInputStream.read(localQSecSigData.d);
         return localQSecSigData;
       }
       return null;
@@ -97,7 +97,7 @@ public class VerifyFileUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 102	java/io/File:exists	()Z
+    //   1: invokevirtual 103	java/io/File:exists	()Z
     //   4: ifne +5 -> 9
     //   7: iconst_0
     //   8: ireturn
@@ -107,25 +107,25 @@ public class VerifyFileUtil
     //   13: astore 7
     //   15: new 20	java/io/DataInputStream
     //   18: dup
-    //   19: new 104	java/io/FileInputStream
+    //   19: new 105	java/io/FileInputStream
     //   22: dup
     //   23: aload_0
-    //   24: invokespecial 107	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   27: invokespecial 110	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   24: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   27: invokespecial 111	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   30: astore 5
     //   32: aload 5
-    //   34: invokevirtual 113	java/io/DataInputStream:available	()I
+    //   34: invokevirtual 114	java/io/DataInputStream:available	()I
     //   37: istore_2
     //   38: iload_2
     //   39: sipush 140
     //   42: if_icmpgt +17 -> 59
     //   45: aload 5
-    //   47: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   47: invokevirtual 117	java/io/DataInputStream:close	()V
     //   50: iconst_0
     //   51: ireturn
     //   52: astore_0
     //   53: aload_0
-    //   54: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   54: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   57: iconst_0
     //   58: ireturn
     //   59: iload_2
@@ -134,35 +134,35 @@ public class VerifyFileUtil
     //   64: istore_2
     //   65: aload 5
     //   67: iload_2
-    //   68: invokevirtual 120	java/io/DataInputStream:skipBytes	(I)I
+    //   68: invokevirtual 121	java/io/DataInputStream:skipBytes	(I)I
     //   71: pop
     //   72: aload 5
-    //   74: invokestatic 122	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;)Lcom/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData;
+    //   74: invokestatic 123	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;)Lcom/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData;
     //   77: astore 7
     //   79: aload 7
     //   81: ifnonnull +17 -> 98
     //   84: aload 5
-    //   86: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   86: invokevirtual 117	java/io/DataInputStream:close	()V
     //   89: iconst_0
     //   90: ireturn
     //   91: astore_0
     //   92: aload_0
-    //   93: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   93: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   96: iconst_0
     //   97: ireturn
     //   98: aload 7
-    //   100: getfield 27	com/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData:jdField_a_of_type_Int	I
+    //   100: getfield 27	com/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData:a	I
     //   103: istore_3
     //   104: iload_3
-    //   105: ldc 123
+    //   105: ldc 124
     //   107: if_icmpeq +17 -> 124
     //   110: aload 5
-    //   112: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   112: invokevirtual 117	java/io/DataInputStream:close	()V
     //   115: iconst_0
     //   116: ireturn
     //   117: astore_0
     //   118: aload_0
-    //   119: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   119: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   122: iconst_0
     //   123: ireturn
     //   124: aload 7
@@ -170,7 +170,7 @@ public class VerifyFileUtil
     //   129: ifle +133 -> 262
     //   132: aload 7
     //   134: getfield 30	com/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData:b	I
-    //   137: ldc 124
+    //   137: ldc 125
     //   139: if_icmple +6 -> 145
     //   142: goto +120 -> 262
     //   145: aload 7
@@ -180,57 +180,57 @@ public class VerifyFileUtil
     //   152: iload_3
     //   153: if_icmpeq +17 -> 170
     //   156: aload 5
-    //   158: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   158: invokevirtual 117	java/io/DataInputStream:close	()V
     //   161: iconst_0
     //   162: ireturn
     //   163: astore_0
     //   164: aload_0
-    //   165: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   165: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   168: iconst_0
     //   169: ireturn
     //   170: aload_1
-    //   171: invokestatic 126	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/lang/String;)Ljava/security/PublicKey;
+    //   171: invokestatic 127	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/lang/String;)Ljava/security/PublicKey;
     //   174: astore_1
     //   175: aload_1
     //   176: ifnonnull +17 -> 193
     //   179: aload 5
-    //   181: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   181: invokevirtual 117	java/io/DataInputStream:close	()V
     //   184: iconst_0
     //   185: ireturn
     //   186: astore_0
     //   187: aload_0
-    //   188: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   188: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   191: iconst_0
     //   192: ireturn
     //   193: new 20	java/io/DataInputStream
     //   196: dup
-    //   197: new 104	java/io/FileInputStream
+    //   197: new 105	java/io/FileInputStream
     //   200: dup
     //   201: aload_0
-    //   202: invokespecial 107	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   205: invokespecial 110	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   202: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   205: invokespecial 111	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   208: astore_0
     //   209: aload_0
     //   210: aload 7
     //   212: getfield 30	com/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData:b	I
     //   215: aload 7
-    //   217: getfield 36	com/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData:jdField_a_of_type_ArrayOfByte	[B
+    //   217: getfield 37	com/tencent/qqprotect/singleupdate/VerifyFileUtil$QSecSigData:d	[B
     //   220: aload_1
-    //   221: invokestatic 128	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;I[BLjava/security/PublicKey;)Z
+    //   221: invokestatic 129	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;I[BLjava/security/PublicKey;)Z
     //   224: istore 4
     //   226: aload 5
-    //   228: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   228: invokevirtual 117	java/io/DataInputStream:close	()V
     //   231: goto +8 -> 239
     //   234: astore_1
     //   235: aload_1
-    //   236: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   236: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   239: aload_0
-    //   240: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   240: invokevirtual 117	java/io/DataInputStream:close	()V
     //   243: iload 4
     //   245: ireturn
     //   246: astore_0
     //   247: aload_0
-    //   248: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   248: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   251: iload 4
     //   253: ireturn
     //   254: astore_1
@@ -238,12 +238,12 @@ public class VerifyFileUtil
     //   258: astore_1
     //   259: goto +27 -> 286
     //   262: aload 5
-    //   264: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   264: invokevirtual 117	java/io/DataInputStream:close	()V
     //   267: iconst_0
     //   268: ireturn
     //   269: astore_0
     //   270: aload_0
-    //   271: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   271: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   274: iconst_0
     //   275: ireturn
     //   276: astore_0
@@ -266,24 +266,24 @@ public class VerifyFileUtil
     //   302: aload 7
     //   304: astore 5
     //   306: aload_1
-    //   307: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   307: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   310: aload 5
     //   312: ifnull +16 -> 328
     //   315: aload 5
-    //   317: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   317: invokevirtual 117	java/io/DataInputStream:close	()V
     //   320: goto +8 -> 328
     //   323: astore_1
     //   324: aload_1
-    //   325: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   325: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   328: aload_0
     //   329: ifnull +14 -> 343
     //   332: aload_0
-    //   333: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   333: invokevirtual 117	java/io/DataInputStream:close	()V
     //   336: iconst_0
     //   337: ireturn
     //   338: astore_0
     //   339: aload_0
-    //   340: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   340: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   343: iconst_0
     //   344: ireturn
     //   345: astore_1
@@ -296,19 +296,19 @@ public class VerifyFileUtil
     //   354: aload 5
     //   356: ifnull +18 -> 374
     //   359: aload 5
-    //   361: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   361: invokevirtual 117	java/io/DataInputStream:close	()V
     //   364: goto +10 -> 374
     //   367: astore 5
     //   369: aload 5
-    //   371: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   371: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   374: aload_1
     //   375: ifnull +15 -> 390
     //   378: aload_1
-    //   379: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   379: invokevirtual 117	java/io/DataInputStream:close	()V
     //   382: goto +8 -> 390
     //   385: astore_1
     //   386: aload_1
-    //   387: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   387: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   390: aload_0
     //   391: athrow
     // Local variable table:
@@ -375,27 +375,27 @@ public class VerifyFileUtil
   }
   
   /* Error */
-  public static byte[] a(java.io.File paramFile, String paramString)
+  public static byte[] b(java.io.File paramFile, String paramString)
   {
     // Byte code:
     //   0: new 20	java/io/DataInputStream
     //   3: dup
-    //   4: new 104	java/io/FileInputStream
+    //   4: new 105	java/io/FileInputStream
     //   7: dup
     //   8: aload_0
-    //   9: invokespecial 107	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   12: invokespecial 110	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   9: invokespecial 108	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   12: invokespecial 111	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   15: astore 5
     //   17: aload 5
     //   19: astore_0
     //   20: aload 5
-    //   22: invokevirtual 113	java/io/DataInputStream:available	()I
+    //   22: invokevirtual 114	java/io/DataInputStream:available	()I
     //   25: istore_2
     //   26: iload_2
     //   27: bipush 8
     //   29: if_icmplt +193 -> 222
     //   32: iload_2
-    //   33: ldc 124
+    //   33: ldc 125
     //   35: if_icmple +6 -> 41
     //   38: goto +184 -> 222
     //   41: aload 5
@@ -404,15 +404,15 @@ public class VerifyFileUtil
     //   46: invokevirtual 24	java/io/DataInputStream:readInt	()I
     //   49: istore_3
     //   50: iload_3
-    //   51: ldc 123
+    //   51: ldc 124
     //   53: if_icmpeq +17 -> 70
     //   56: aload 5
-    //   58: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   58: invokevirtual 117	java/io/DataInputStream:close	()V
     //   61: aconst_null
     //   62: areturn
     //   63: astore_0
     //   64: aload_0
-    //   65: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   65: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   68: aconst_null
     //   69: areturn
     //   70: aload 5
@@ -436,17 +436,17 @@ public class VerifyFileUtil
     //   103: aload 5
     //   105: astore_0
     //   106: aload_1
-    //   107: invokestatic 126	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/lang/String;)Ljava/security/PublicKey;
+    //   107: invokestatic 127	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/lang/String;)Ljava/security/PublicKey;
     //   110: astore 6
     //   112: aload 6
     //   114: ifnonnull +17 -> 131
     //   117: aload 5
-    //   119: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   119: invokevirtual 117	java/io/DataInputStream:close	()V
     //   122: aconst_null
     //   123: areturn
     //   124: astore_0
     //   125: aload_0
-    //   126: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   126: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   129: aconst_null
     //   130: areturn
     //   131: aload 5
@@ -465,52 +465,52 @@ public class VerifyFileUtil
     //   150: astore_0
     //   151: aload 5
     //   153: aload 7
-    //   155: invokevirtual 40	java/io/DataInputStream:read	([B)I
+    //   155: invokevirtual 41	java/io/DataInputStream:read	([B)I
     //   158: pop
     //   159: aload 5
     //   161: astore_0
     //   162: aload 5
     //   164: aload_1
-    //   165: invokevirtual 40	java/io/DataInputStream:read	([B)I
+    //   165: invokevirtual 41	java/io/DataInputStream:read	([B)I
     //   168: pop
     //   169: aload 5
     //   171: astore_0
     //   172: aload_1
     //   173: aload 7
     //   175: aload 6
-    //   177: invokestatic 134	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	([B[BLjava/security/PublicKey;)Z
+    //   177: invokestatic 135	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	([B[BLjava/security/PublicKey;)Z
     //   180: istore 4
     //   182: iload 4
     //   184: ifeq +17 -> 201
     //   187: aload 5
-    //   189: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   189: invokevirtual 117	java/io/DataInputStream:close	()V
     //   192: aload_1
     //   193: areturn
     //   194: astore_0
     //   195: aload_0
-    //   196: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   196: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   199: aload_1
     //   200: areturn
     //   201: aload 5
-    //   203: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   203: invokevirtual 117	java/io/DataInputStream:close	()V
     //   206: aconst_null
     //   207: areturn
     //   208: aload 5
-    //   210: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   210: invokevirtual 117	java/io/DataInputStream:close	()V
     //   213: aconst_null
     //   214: areturn
     //   215: astore_0
     //   216: aload_0
-    //   217: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   217: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   220: aconst_null
     //   221: areturn
     //   222: aload 5
-    //   224: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   224: invokevirtual 117	java/io/DataInputStream:close	()V
     //   227: aconst_null
     //   228: areturn
     //   229: astore_0
     //   230: aload_0
-    //   231: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   231: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   234: aconst_null
     //   235: areturn
     //   236: astore_0
@@ -529,27 +529,27 @@ public class VerifyFileUtil
     //   256: aload_1
     //   257: astore_0
     //   258: aload 5
-    //   260: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   260: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   263: aload_1
     //   264: ifnull +14 -> 278
     //   267: aload_1
-    //   268: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   268: invokevirtual 117	java/io/DataInputStream:close	()V
     //   271: aconst_null
     //   272: areturn
     //   273: astore_0
     //   274: aload_0
-    //   275: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   275: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   278: aconst_null
     //   279: areturn
     //   280: astore_1
     //   281: aload_0
     //   282: ifnull +15 -> 297
     //   285: aload_0
-    //   286: invokevirtual 116	java/io/DataInputStream:close	()V
+    //   286: invokevirtual 117	java/io/DataInputStream:close	()V
     //   289: goto +8 -> 297
     //   292: astore_0
     //   293: aload_0
-    //   294: invokevirtual 43	java/io/IOException:printStackTrace	()V
+    //   294: invokevirtual 44	java/io/IOException:printStackTrace	()V
     //   297: aload_1
     //   298: athrow
     // Local variable table:
@@ -598,7 +598,7 @@ public class VerifyFileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.VerifyFileUtil
  * JD-Core Version:    0.7.0.1
  */

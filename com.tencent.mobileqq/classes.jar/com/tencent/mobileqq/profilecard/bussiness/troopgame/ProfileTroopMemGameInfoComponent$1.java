@@ -59,7 +59,7 @@ class ProfileTroopMemGameInfoComponent$1
       }
       ProfileTroopMemGameInfoComponent.access$302(this.this$0, paramProfileGameInfo);
       ProfileTroopMemGameInfoComponent.access$402(this.this$0, true);
-      if (!TextUtils.isEmpty(TroopGameCardResDownloadManager.a())) {
+      if (!TextUtils.isEmpty(TroopGameCardResDownloadManager.b())) {
         ProfileTroopMemGameInfoComponent.access$500(this.this$0);
       }
     }
@@ -67,7 +67,7 @@ class ProfileTroopMemGameInfoComponent$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troopgame.ProfileTroopMemGameInfoComponent.1
  * JD-Core Version:    0.7.0.1
  */

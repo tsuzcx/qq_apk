@@ -17,11 +17,11 @@ final class LebaIconDownloader$1
   {
     try
     {
-      Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), this.jdField_a_of_type_JavaLangString);
-      String str = this.jdField_a_of_type_JavaLangString;
+      Object localObject = new File(this.a.getFilesDir(), this.b);
+      String str = this.b;
       boolean bool = false;
       localObject = new DownloadInfo(str, (File)localObject, 0);
-      if (HttpDownloadUtil.downloadData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (DownloadInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqUtilsHttpDownloadUtil$HttpDownloadListener) == 0) {
+      if (HttpDownloadUtil.downloadData(this.c, (DownloadInfo)localObject, this.d) == 0) {
         bool = true;
       }
       if (bool)
@@ -49,7 +49,7 @@ final class LebaIconDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LebaIconDownloader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +59,7 @@ class QCircleHybirdFragment$QCircleHybirdBroadcastReceiver
         }
         catch (Exception paramContext)
         {
-          RFLog.e(QCircleHybirdFragment.a(), RFLog.USR, new Object[] { "update tag follow state error.", paramContext });
+          QLog.e(QCircleHybirdFragment.b(), 1, "update tag follow state error.", paramContext);
         }
       }
     }
@@ -67,7 +67,7 @@ class QCircleHybirdFragment$QCircleHybirdBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleHybirdFragment.QCircleHybirdBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -15,31 +15,31 @@ import tencent.im.oidb.cmd0xd4b.oidb_0xd4b.SubscribeVideoColumnRsp;
 class ColumnTwoVideoProteusItem$ColumnSubscriptionCallback
   extends ProtoUtils.TroopProtocolObserver
 {
-  private int jdField_a_of_type_Int;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private AbsBaseArticleInfo a;
+  private int b;
   
   ColumnTwoVideoProteusItem$ColumnSubscriptionCallback(AbsBaseArticleInfo paramAbsBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramAbsBaseArticleInfo;
+    this.b = paramInt;
   }
   
   private void a()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.multiVideoColumnInfo.d;
-    int j = this.jdField_a_of_type_Int;
+    int i = this.a.multiVideoColumnInfo.i;
+    int j = this.b;
     boolean bool = true;
     if (j == 1) {
       i += 1;
     } else {
       i -= 1;
     }
-    MultiVideoColumnInfo localMultiVideoColumnInfo = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.multiVideoColumnInfo;
-    if (this.jdField_a_of_type_Int != 1) {
+    MultiVideoColumnInfo localMultiVideoColumnInfo = this.a.multiVideoColumnInfo;
+    if (this.b != 1) {
       bool = false;
     }
-    localMultiVideoColumnInfo.jdField_a_of_type_Boolean = bool;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.multiVideoColumnInfo.d = i;
+    localMultiVideoColumnInfo.j = bool;
+    this.a.multiVideoColumnInfo.i = i;
     ThreadManager.getUIHandler().post(new ColumnTwoVideoProteusItem.ColumnSubscriptionCallback.1(this));
   }
   
@@ -73,15 +73,15 @@ class ColumnTwoVideoProteusItem$ColumnSubscriptionCallback
     }
     paramArrayOfByte = new StringBuilder();
     paramArrayOfByte.append("ColumnTwoVideoProteusItem subscribe column fail. columnId:");
-    paramArrayOfByte.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.multiVideoColumnInfo.jdField_a_of_type_Int);
+    paramArrayOfByte.append(this.a.multiVideoColumnInfo.a);
     paramArrayOfByte.append(" subscribeAction:");
-    paramArrayOfByte.append(this.jdField_a_of_type_Int);
+    paramArrayOfByte.append(this.b);
     QLog.e("ColumnTwoVideoProteusItem", 1, paramArrayOfByte.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.ColumnTwoVideoProteusItem.ColumnSubscriptionCallback
  * JD-Core Version:    0.7.0.1
  */

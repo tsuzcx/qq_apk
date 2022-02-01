@@ -19,19 +19,14 @@ import java.util.Queue;
 public class PagerIndicator
   extends LinearLayout
 {
-  public static final int[] a;
-  protected int a;
-  protected Drawable a;
-  protected EmptySupportViewPager a;
-  public final PagerIndicator.PageListener a;
-  protected WeakReference<PagerIndicator.IndicatorAdapter> a;
-  protected Queue<PagerIndicator.InnerImageView> a;
-  protected int b;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 16843161, 16843327, 16843245 };
-  }
+  public static final int[] a = { 16843161, 16843327, 16843245 };
+  protected EmptySupportViewPager b;
+  protected Queue<PagerIndicator.InnerImageView> c = new LinkedList();
+  protected Drawable d;
+  protected int e;
+  protected int f;
+  protected WeakReference<PagerIndicator.IndicatorAdapter> g;
+  public final PagerIndicator.PageListener h = new PagerIndicator.PageListener(this, null);
   
   public PagerIndicator(Context paramContext)
   {
@@ -41,20 +36,18 @@ public class PagerIndicator
   public PagerIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener = new PagerIndicator.PageListener(this, null);
     super.setOrientation(0);
     super.setGravity(17);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a);
     if (paramContext.hasValue(0)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(0);
+      this.d = paramContext.getDrawable(0);
     } else {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(-7829368);
+      this.d = new ColorDrawable(-7829368);
     }
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(1, this.jdField_a_of_type_Int);
-    this.b = paramContext.getInt(2, this.b);
+    this.e = paramContext.getDimensionPixelSize(1, this.e);
+    this.f = paramContext.getInt(2, this.f);
     paramContext.recycle();
-    a(0, this.b);
+    a(0, this.f);
     Log.d("PagerIndicator", "init");
   }
   
@@ -80,7 +73,7 @@ public class PagerIndicator
           break;
         }
         super.removeView((View)localObject);
-        this.jdField_a_of_type_JavaUtilQueue.offer((PagerIndicator.InnerImageView)localObject);
+        this.c.offer((PagerIndicator.InnerImageView)localObject);
         i -= 1;
       }
       throw new AndroidRuntimeException("find illegal child view, all child view should be InnerImageView");
@@ -89,13 +82,13 @@ public class PagerIndicator
       while (i < paramInt2)
       {
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-        localLayoutParams.setMargins(this.jdField_a_of_type_Int, 0, 0, 0);
-        PagerIndicator.InnerImageView localInnerImageView = (PagerIndicator.InnerImageView)this.jdField_a_of_type_JavaUtilQueue.poll();
+        localLayoutParams.setMargins(this.e, 0, 0, 0);
+        PagerIndicator.InnerImageView localInnerImageView = (PagerIndicator.InnerImageView)this.c.poll();
         localObject = localInnerImageView;
         if (localInnerImageView == null)
         {
           localObject = new PagerIndicator.InnerImageView(getContext());
-          ((PagerIndicator.InnerImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
+          ((PagerIndicator.InnerImageView)localObject).setImageDrawable(this.d.getConstantState().newDrawable());
         }
         super.addView((View)localObject, i, localLayoutParams);
         i += 1;
@@ -131,25 +124,25 @@ public class PagerIndicator
   
   public void setViewPager(@Nullable EmptySupportViewPager paramEmptySupportViewPager)
   {
-    EmptySupportViewPager localEmptySupportViewPager = this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager;
+    EmptySupportViewPager localEmptySupportViewPager = this.b;
     if (localEmptySupportViewPager != paramEmptySupportViewPager)
     {
       if (localEmptySupportViewPager != null)
       {
-        localEmptySupportViewPager.removeOnPageChangeListener(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = null;
+        localEmptySupportViewPager.removeOnPageChangeListener(this.h);
+        this.b = null;
       }
       if (paramEmptySupportViewPager != null)
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager = paramEmptySupportViewPager;
-        this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager.addOnPageChangeListener(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
+        this.b = paramEmptySupportViewPager;
+        this.b.addOnPageChangeListener(this.h);
       }
     }
   }
   
   public void setViewPagerAdapter(@Nullable PagerIndicator.IndicatorAdapter paramIndicatorAdapter)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.g;
     if (localObject != null) {
       localObject = (PagerIndicator.IndicatorAdapter)((WeakReference)localObject).get();
     } else {
@@ -159,15 +152,15 @@ public class PagerIndicator
     {
       if (localObject != null)
       {
-        ((PagerIndicator.IndicatorAdapter)localObject).unregisterDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+        ((PagerIndicator.IndicatorAdapter)localObject).unregisterDataSetObserver(this.h);
+        this.g = null;
       }
       if (paramIndicatorAdapter != null)
       {
-        paramIndicatorAdapter.registerDataSetObserver(this.jdField_a_of_type_ComTencentBizQqstoryViewPagerIndicator$PageListener);
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIndicatorAdapter);
+        paramIndicatorAdapter.registerDataSetObserver(this.h);
+        this.g = new WeakReference(paramIndicatorAdapter);
       }
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewEmptySupportViewPager;
+      localObject = this.b;
       if (localObject != null) {
         a(((EmptySupportViewPager)localObject).getCurrentItem(), paramIndicatorAdapter);
       }

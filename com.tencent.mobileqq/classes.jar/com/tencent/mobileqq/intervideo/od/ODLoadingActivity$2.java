@@ -14,12 +14,12 @@ class ODLoadingActivity$2
   public IVPluginManager a()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    return Shadow.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoOdODLoadingActivity, this.jdField_a_of_type_JavaLangString, localQQAppInterface.getCurrentUin());
+    return Shadow.b(this.b, this.a, localQQAppInterface.getCurrentUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadingActivity.2
  * JD-Core Version:    0.7.0.1
  */

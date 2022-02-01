@@ -9,13 +9,13 @@ import com.tencent.qphone.base.util.QLog;
 public class LocationColorNoteServiceInfo
   implements IServiceInfo
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Long jdField_a_of_type_JavaLangLong;
+  private Long a;
+  private Context b;
   
   public LocationColorNoteServiceInfo(Context paramContext, Long paramLong)
   {
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramLong;
+    this.b = paramContext;
   }
   
   public ColorNote getColorNote()
@@ -29,23 +29,23 @@ public class LocationColorNoteServiceInfo
       ((StringBuilder)localObject).append("]");
       QLog.i("FavColorNoteServiceInfo", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131689603);
-    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131692184);
+    Object localObject = this.b.getString(2131886213);
+    String str = this.b.getString(2131889171);
     localBuilder.a(17104896);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("-4");
     localBuilder.a(localStringBuilder.toString());
     localBuilder.b((String)localObject);
     localBuilder.c(str);
-    localBuilder.d("resdrawable://2130844227");
+    localBuilder.d("resdrawable://2130845544");
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

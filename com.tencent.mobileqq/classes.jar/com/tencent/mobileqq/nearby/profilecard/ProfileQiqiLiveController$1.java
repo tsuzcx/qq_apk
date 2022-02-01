@@ -68,10 +68,10 @@ class ProfileQiqiLiveController$1
   {
     if (paramBundle != null)
     {
-      this.a.b = paramBundle.getString("DownPackage");
-      this.a.d = paramBundle.getString("DownUrl");
-      this.a.c = paramBundle.getString("DownAppId");
-      if ((!TextUtils.isEmpty(this.a.b)) && (!TextUtils.isEmpty(this.a.c)) && (!TextUtils.isEmpty(this.a.d))) {
+      this.a.e = paramBundle.getString("DownPackage");
+      this.a.g = paramBundle.getString("DownUrl");
+      this.a.f = paramBundle.getString("DownAppId");
+      if ((!TextUtils.isEmpty(this.a.e)) && (!TextUtils.isEmpty(this.a.f)) && (!TextUtils.isEmpty(this.a.g))) {
         this.a.a(paramBundle.getInt("downloadcode"));
       }
     }
@@ -79,7 +79,7 @@ class ProfileQiqiLiveController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController.1
  * JD-Core Version:    0.7.0.1
  */

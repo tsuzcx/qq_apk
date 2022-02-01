@@ -13,7 +13,7 @@ class RIJDislikeManager$1$1
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizDislikeRIJDislikeManager$1.a.g.post(new RIJDislikeManager.1.1.1(this));
+    this.c.c.Q.post(new RIJDislikeManager.1.1.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -22,7 +22,7 @@ class RIJDislikeManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.dislike.RIJDislikeManager.1.1
  * JD-Core Version:    0.7.0.1
  */

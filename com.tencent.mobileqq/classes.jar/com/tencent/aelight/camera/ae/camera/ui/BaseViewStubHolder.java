@@ -7,21 +7,21 @@ import java.util.Queue;
 
 public abstract class BaseViewStubHolder
 {
-  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
-  private boolean jdField_a_of_type_Boolean = false;
+  private final ViewStub a;
+  private boolean b = false;
+  private Queue<Runnable> c;
   
   public BaseViewStubHolder(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
+    this.a = paramViewStub;
+    this.c = new LinkedList();
   }
   
-  private void b()
+  private void d()
   {
     for (;;)
     {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      Runnable localRunnable = (Runnable)this.c.poll();
       if (localRunnable != null) {
         try
         {
@@ -36,39 +36,44 @@ public abstract class BaseViewStubHolder
     }
   }
   
-  protected final void a()
+  public ViewStub a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_Boolean = true;
-    a(localView);
-    b();
+    return this.a;
   }
   
   protected abstract void a(View paramView);
   
   protected void a(Runnable paramRunnable)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.b)
     {
       paramRunnable.run();
       return;
     }
     if (paramRunnable != null) {
-      this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
+      this.c.add(paramRunnable);
     }
   }
   
-  public boolean a()
+  public boolean ap_()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
+  }
+  
+  protected final void c()
+  {
+    if (this.b) {
+      return;
+    }
+    View localView = this.a.inflate();
+    this.b = true;
+    a(localView);
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.BaseViewStubHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ public class VideoFilterToolsImpl
   
   public int getQQShortVideoFilterConfigVersion(Context paramContext)
   {
-    return VideoFilterTools.a(paramContext);
+    return VideoFilterTools.d(paramContext);
   }
   
   public void handleQQShortVideoCommonConfig(String paramString)
   {
-    VideoFilterTools.a(paramString);
+    VideoFilterTools.e(paramString);
   }
   
   public void updateQQShortVideoFilterConfig(Context paramContext, String paramString)
@@ -29,7 +29,7 @@ public class VideoFilterToolsImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.qqstory.api.impl.VideoFilterToolsImpl
  * JD-Core Version:    0.7.0.1
  */

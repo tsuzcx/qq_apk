@@ -10,12 +10,12 @@ class WebProteusViewCreator$ProteusItemViewHolder$2$2
   
   public void onDismiss()
   {
-    this.a.a.a.setSelected(false);
+    this.a.b.f.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.WebProteusViewCreator.ProteusItemViewHolder.2.2
  * JD-Core Version:    0.7.0.1
  */

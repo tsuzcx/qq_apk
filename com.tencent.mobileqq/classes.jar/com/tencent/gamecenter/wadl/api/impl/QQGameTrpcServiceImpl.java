@@ -25,6 +25,9 @@ import com.tencent.gamecenter.wadl.biz.entity.TrpcProxy.TrpcMetaData;
 import com.tencent.gamecenter.wadl.biz.entity.TrpcProxy.TrpcMsg;
 import com.tencent.gamecenter.wadl.biz.entity.TrpcProxy.TrpcOptions;
 import com.tencent.gamecenter.wadl.biz.entity.WadlReportBuilder;
+import com.tencent.gamecenter.wadl.biz.entity.WadlTrpcReport.DcRecord;
+import com.tencent.gamecenter.wadl.biz.entity.WadlTrpcReport.DcReportRequest;
+import com.tencent.gamecenter.wadl.biz.entity.WadlTrpcReport.KV;
 import com.tencent.gamecenter.wadl.biz.entity.WebSSOAgent.UniSsoServerReq;
 import com.tencent.gamecenter.wadl.biz.entity.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.gamecenter.wadl.biz.entity.WebSSOAgent.UniSsoServerRsp;
@@ -76,6 +79,58 @@ public class QQGameTrpcServiceImpl
     paramString2.key.set(paramString1);
     paramString2.value.set(str);
     return paramString2;
+  }
+  
+  private WadlTrpcReport.KV createDcRecord(String paramString1, String paramString2)
+  {
+    String str = paramString2;
+    if (paramString2 == null)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("createDcRecord key=");
+      paramString2.append(paramString1);
+      paramString2.append(",value is null");
+      QLog.w("Wadl_QQGameTrpcServiceImpl", 1, paramString2.toString());
+      str = "";
+    }
+    paramString2 = new WadlTrpcReport.KV();
+    paramString2.key.set(paramString1);
+    paramString2.value.set(str);
+    return paramString2;
+  }
+  
+  private WadlTrpcReport.DcReportRequest getDcReportReq(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optJSONObject("req").optJSONArray("report_list");
+    WadlTrpcReport.DcReportRequest localDcReportRequest = new WadlTrpcReport.DcReportRequest();
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      Object localObject = paramJSONObject.optJSONObject(i);
+      if (localObject != null)
+      {
+        JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("data");
+        if (localJSONObject == null)
+        {
+          QLog.w("Wadl_QQGameTrpcServiceImpl", 1, "requestTrpc data is null");
+        }
+        else
+        {
+          WadlTrpcReport.DcRecord localDcRecord = new WadlTrpcReport.DcRecord();
+          localDcRecord.dcId.set(((JSONObject)localObject).optString("dc_id"));
+          localObject = localJSONObject.keys();
+          while (((Iterator)localObject).hasNext())
+          {
+            String str1 = (String)((Iterator)localObject).next();
+            String str2 = localJSONObject.optString(str1);
+            localDcRecord.data.add(createDcRecord(str1, str2));
+          }
+          localDcReportRequest.record.add(localDcRecord);
+        }
+      }
+      i += 1;
+    }
+    return localDcReportRequest;
   }
   
   private void notifyListeners(Intent paramIntent, String paramString, long paramLong, TrpcProxy.TrpcInovkeRsp paramTrpcInovkeRsp)
@@ -340,11 +395,11 @@ public class QQGameTrpcServiceImpl
           {
             TrpcAttaProxy.AttaItem localAttaItem = new TrpcAttaProxy.AttaItem();
             localAttaItem.attaId.set(((JSONObject)localObject3).optString("dc_id"));
-            localAttaItem.valueList.add(createAttaValue("uin", GameCenterUtil.a()));
+            localAttaItem.valueList.add(createAttaValue("uin", GameCenterUtil.b()));
             long l = NetConnInfoCenter.getServerTime();
             localAttaItem.valueList.add(createAttaValue("itimestamp", String.valueOf(l)));
             localAttaItem.valueList.add(createAttaValue("domain", "1"));
-            localAttaItem.valueList.add(createAttaValue("sq_ver", "8.7.0"));
+            localAttaItem.valueList.add(createAttaValue("sq_ver", "8.8.17"));
             localAttaItem.valueList.add(createAttaValue("gamecenter_ver", ""));
             localAttaItem.valueList.add(createAttaValue("gamecenter_ver_type", "2"));
             localAttaItem.valueList.add(createAttaValue("device_type", Build.BRAND));
@@ -359,7 +414,7 @@ public class QQGameTrpcServiceImpl
               k = 0;
             }
             localAttaItem.valueList.add(createAttaValue("net_type", AppConstants.NET_TYPE_NAME[k]));
-            localAttaItem.valueList.add(createAttaValue("resolution", GameCenterUtil.c()));
+            localAttaItem.valueList.add(createAttaValue("resolution", GameCenterUtil.d()));
             localAttaItem.valueList.add(createAttaValue("is_red_point", "0"));
             localAttaItem.valueList.add(createAttaValue("is_new_status", "0"));
             localAttaItem.valueList.add(createAttaValue("gamecenter_src", "1"));
@@ -431,29 +486,55 @@ public class QQGameTrpcServiceImpl
     localObject = new ExpeDataAcc.AppInfo();
     ((ExpeDataAcc.AppInfo)localObject).appid.set(paramString1);
     paramString1 = new ExpeDataAcc.AccountInfo();
-    paramString1.account_type.set(1L);
-    paramString1.uid.set(GameCenterUtil.a());
+    paramString1.accountType.set(1L);
+    paramString1.uid.set(GameCenterUtil.b());
     ExpeDataAcc.ExpeInfo localExpeInfo = new ExpeDataAcc.ExpeInfo();
-    localExpeInfo.expe_sys_transfer.set(paramString2);
+    localExpeInfo.expeSysTransfer.set(paramString2);
     paramString2 = new ExpeDataAcc.EventInfo();
-    paramString2.event_id.set(paramString3);
-    paramString2.event_type.set(paramString4);
-    paramString2.event_type2.set(paramString5);
-    paramString2.event_type3.set(paramString6);
-    paramString2.event_err_code.set(paramString8);
-    paramString2.event_result.set(paramString7);
+    paramString2.eventId.set(paramString3);
+    paramString2.eventType.set(paramString4);
+    paramString2.eventType2.set(paramString5);
+    paramString2.eventType3.set(paramString6);
+    paramString2.eventErrCode.set(paramString8);
+    paramString2.eventResult.set(paramString7);
     paramString3 = new ExpeDataAcc.UserActionInfo();
-    paramString3.app_info.set((MessageMicro)localObject);
-    paramString3.account_info.set(paramString1);
-    paramString3.expe_info.set(localExpeInfo);
-    paramString3.event_info.set(paramString2);
+    paramString3.appInfo.set((MessageMicro)localObject);
+    paramString3.accountInfo.set(paramString1);
+    paramString3.expeInfo.set(localExpeInfo);
+    paramString3.eventInfo.set(paramString2);
     paramString1 = new ExpeDataAcc.ExpeEventReportReq();
     paramString1.noNeedRsp.set(1);
-    paramString1.action_infos.add(paramString3);
+    paramString1.actionInfos.add(paramString3);
     paramString1 = createTrpcInvokeReq("/v1/2", true, paramString1.toByteArray());
     paramString2 = new TrpcProxy.TrpcListReq();
     paramString2.list.add(paramString1);
     requestTrpc(paramString2, null);
+  }
+  
+  public void reportToDcByTrpc(JSONObject paramJSONObject)
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reportToDcByTrpc reportData= ");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append(",appRuntime:");
+    ((StringBuilder)localObject).append(localAppRuntime);
+    QLog.d("Wadl_QQGameTrpcServiceImpl", 1, ((StringBuilder)localObject).toString());
+    if (localAppRuntime == null) {
+      return;
+    }
+    if ((paramJSONObject != null) && (paramJSONObject.optJSONObject("req") != null))
+    {
+      if (paramJSONObject.optJSONObject("req").optJSONArray("report_list") == null) {
+        return;
+      }
+      paramJSONObject = getDcReportReq(paramJSONObject);
+      localObject = new NewIntent(MobileQQ.getContext(), WadlBusinessServlet.class);
+      ((NewIntent)localObject).putExtra("extra_cmd", "trpc.down.report.Report.DcReport");
+      ((NewIntent)localObject).putExtra("webssoReq", paramJSONObject.toByteArray());
+      ((NewIntent)localObject).putExtra("wadl_sso_type", 2);
+      localAppRuntime.startServlet((NewIntent)localObject);
+    }
   }
   
   public void requestTrpc(TrpcProxy.TrpcListReq paramTrpcListReq, Bundle paramBundle)
@@ -477,7 +558,7 @@ public class QQGameTrpcServiceImpl
         localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.7.0.5295");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.8.17.5770");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(paramTrpcListReq.toByteArray()));
@@ -511,7 +592,7 @@ public class QQGameTrpcServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.impl.QQGameTrpcServiceImpl
  * JD-Core Version:    0.7.0.1
  */

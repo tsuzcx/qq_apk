@@ -14,16 +14,16 @@ class SearchResultFragment$2
   
   public void onPageSelected(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.setCurrentTab(paramInt);
-    if (this.a.jdField_a_of_type_Int != paramInt) {
-      this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultViewPagerAdapter.a(paramInt);
+    this.a.d.setCurrentTab(paramInt);
+    if (this.a.f != paramInt) {
+      this.a.e.a(paramInt);
     }
-    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.f = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.ui.SearchResultFragment.2
  * JD-Core Version:    0.7.0.1
  */

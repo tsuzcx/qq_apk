@@ -28,16 +28,16 @@ final class RIJCommentNetworkHelper$createFirstComment$1$2
     if (localRIJCreateCommentObserver != null)
     {
       CreateCommentResult localCreateCommentResult = new CreateCommentResult();
-      localCreateCommentResult.jdField_a_of_type_Long = this.this$0.$commentSeq;
-      localCreateCommentResult.jdField_a_of_type_Boolean = paramBoolean;
-      localCreateCommentResult.jdField_a_of_type_Int = paramInt;
-      localCreateCommentResult.jdField_b_of_type_Int = 1;
-      localCreateCommentResult.jdField_a_of_type_JavaLangString = this.$commentId;
-      localCreateCommentResult.jdField_b_of_type_JavaLangString = this.this$0.$commentJsonStr;
-      localCreateCommentResult.jdField_c_of_type_JavaLangString = this.$response.actual_create_content.get();
-      localCreateCommentResult.d = this.$response.share_url.get();
-      localCreateCommentResult.jdField_c_of_type_Int = this.this$0.$feedsType;
-      localCreateCommentResult.jdField_b_of_type_Boolean = this.this$0.$isFeeds;
+      localCreateCommentResult.a = this.this$0.$commentSeq;
+      localCreateCommentResult.b = paramBoolean;
+      localCreateCommentResult.c = paramInt;
+      localCreateCommentResult.d = 1;
+      localCreateCommentResult.e = this.$commentId;
+      localCreateCommentResult.f = this.this$0.$commentJsonStr;
+      localCreateCommentResult.g = this.$response.actual_create_content.get();
+      localCreateCommentResult.h = this.$response.share_url.get();
+      localCreateCommentResult.i = this.this$0.$feedsType;
+      localCreateCommentResult.j = this.this$0.$isFeeds;
       localCreateCommentResult.a((Collection)this.$response.rpt_data.get());
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("createFirstComment: result=");
@@ -49,7 +49,7 @@ final class RIJCommentNetworkHelper$createFirstComment$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.helper.RIJCommentNetworkHelper.createFirstComment.1.2
  * JD-Core Version:    0.7.0.1
  */

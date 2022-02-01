@@ -8,12 +8,12 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class QQGameResFlowControl$DSLPermitReq
   extends MessageMicro<DSLPermitReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "active_id" }, new Object[] { "" }, DSLPermitReq.class);
-  public final PBStringField active_id = PBField.initString("");
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "activeId" }, new Object[] { "" }, DSLPermitReq.class);
+  public final PBStringField activeId = PBField.initString("");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.data.QQGameResFlowControl.DSLPermitReq
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,10 @@ class EditTroopMemberNickService$7
   {
     if (paramBoolean)
     {
-      if ((paramString1 != null) && (paramString1.equals(this.a.d)) && (!TextUtils.isEmpty(paramString2)) && (this.a.jdField_a_of_type_AndroidWidgetEditText != null))
+      if ((paramString1 != null) && (paramString1.equals(this.a.k)) && (!TextUtils.isEmpty(paramString2)) && (this.a.a != null))
       {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString2);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString2.length());
+        this.a.a.setText(paramString2);
+        this.a.a.setSelection(paramString2.length());
       }
       if (QLog.isColorLevel()) {
         QLog.d("EditTroopMemberNickService", 2, new Object[] { paramString1, paramString2 });
@@ -37,12 +37,12 @@ class EditTroopMemberNickService$7
   
   protected void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
   {
-    if (!this.a.jdField_c_of_type_Boolean) {
+    if (!this.a.m) {
       return;
     }
     EditTroopMemberNickService localEditTroopMemberNickService = this.a;
-    localEditTroopMemberNickService.jdField_c_of_type_Boolean = false;
-    EditTroopMemberNickService.a(localEditTroopMemberNickService).loadingProgress(false);
+    localEditTroopMemberNickService.m = false;
+    EditTroopMemberNickService.d(localEditTroopMemberNickService).loadingProgress(false);
     if (paramBoolean) {}
     do
     {
@@ -52,7 +52,7 @@ class EditTroopMemberNickService$7
         long l = ((Long)paramObject[0]).longValue();
         ((Integer)paramObject[1]).intValue();
         paramObject = (TroopMemberCard)paramObject[2];
-        if (l == Long.parseLong(this.a.jdField_c_of_type_JavaLangString)) {
+        if (l == Long.parseLong(this.a.j)) {
           continue;
         }
         return;
@@ -61,29 +61,29 @@ class EditTroopMemberNickService$7
       {
         return;
       }
-      if (paramObject.memberUin != Long.parseLong(this.a.d)) {
+      if (paramObject.memberUin != Long.parseLong(this.a.k)) {
         return;
       }
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditTroopMemberNickService.7.2(this, paramObject), 700L);
+      this.a.L.postDelayed(new EditTroopMemberNickService.7.2(this, paramObject), 700L);
       return;
     } while (paramObject != null);
   }
   
   protected void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
   {
-    if (!this.a.jdField_c_of_type_Boolean) {
+    if (!this.a.m) {
       return;
     }
-    this.a.jdField_c_of_type_Boolean = false;
+    this.a.m = false;
     if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() != 0))
     {
-      ReportController.b(EditTroopMemberNickService.a(this.a), "dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_success", 0, 0, String.valueOf(this.a.jdField_c_of_type_JavaLangString), "", "", "");
-      paramArrayList = (ITroopMemberCardHandler)EditTroopMemberNickService.a(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
+      ReportController.b(EditTroopMemberNickService.b(this.a), "dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_success", 0, 0, String.valueOf(this.a.j), "", "", "");
+      paramArrayList = (ITroopMemberCardHandler)EditTroopMemberNickService.b(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER);
     }
     try
     {
-      paramArrayList.a(Long.parseLong(this.a.jdField_c_of_type_JavaLangString), Long.parseLong(this.a.d));
-      this.a.jdField_c_of_type_Boolean = true;
+      paramArrayList.a(Long.parseLong(this.a.j), Long.parseLong(this.a.k));
+      this.a.m = true;
       return;
     }
     catch (Exception paramArrayList)
@@ -91,21 +91,21 @@ class EditTroopMemberNickService$7
       label127:
       break label127;
     }
-    EditTroopMemberNickService.a(this.a).loadingProgress(false);
+    EditTroopMemberNickService.d(this.a).loadingProgress(false);
     return;
-    EditTroopMemberNickService.a(this.a).loadingProgress(false);
-    paramArrayList = EditTroopMemberNickService.a(this.a);
+    EditTroopMemberNickService.d(this.a).loadingProgress(false);
+    paramArrayList = EditTroopMemberNickService.f(this.a);
     if (TextUtils.isEmpty(paramString)) {
-      paramString = EditTroopMemberNickService.a(this.a, 2131694199);
+      paramString = EditTroopMemberNickService.a(this.a, 2131891837);
     }
-    QQToast.a(paramArrayList, 1, paramString, 0).b(EditTroopMemberNickService.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditTroopMemberNickService.7.1(this), 1500L);
-    ReportController.b(EditTroopMemberNickService.a(this.a), "dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_failure", 0, 0, String.valueOf(this.a.jdField_c_of_type_JavaLangString), "1", "", "");
+    QQToast.makeText(paramArrayList, 1, paramString, 0).show(EditTroopMemberNickService.g(this.a));
+    this.a.L.postDelayed(new EditTroopMemberNickService.7.1(this), 1500L);
+    ReportController.b(EditTroopMemberNickService.b(this.a), "dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_failure", 0, 0, String.valueOf(this.a.j), "1", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.editservice.EditTroopMemberNickService.7
  * JD-Core Version:    0.7.0.1
  */

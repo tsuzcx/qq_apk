@@ -8,18 +8,12 @@ import org.xml.sax.helpers.DefaultHandler;
 class MessageForStarLeague$TroopStarLeagueHandler
   extends DefaultHandler
 {
-  MessageForStarLeague a;
-  public String a;
-  
-  MessageForStarLeague$TroopStarLeagueHandler()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)MessageRecordFactory.a(-2069));
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  MessageForStarLeague a = (MessageForStarLeague)MessageRecordFactory.a(-2069);
+  public String b = "";
   
   public MessageForStarLeague a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+    return this.a;
   }
   
   public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
@@ -29,24 +23,24 @@ class MessageForStarLeague$TroopStarLeagueHandler
       return;
     }
     MessageForStarLeague localMessageForStarLeague;
-    if (this.jdField_a_of_type_JavaLangString.equals("title"))
+    if (this.b.equals("title"))
     {
-      localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+      localMessageForStarLeague = this.a;
       if (localMessageForStarLeague.starName != null) {
-        paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
+        paramArrayOfChar = this.a.starName.concat(paramArrayOfChar);
       }
       localMessageForStarLeague.starName = paramArrayOfChar;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
+      this.a.starName.trim();
       return;
     }
-    if (this.jdField_a_of_type_JavaLangString.equals("summary"))
+    if (this.b.equals("summary"))
     {
-      localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+      localMessageForStarLeague = this.a;
       if (localMessageForStarLeague.subTitle != null) {
-        paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
+        paramArrayOfChar = this.a.subTitle.concat(paramArrayOfChar);
       }
       localMessageForStarLeague.subTitle = paramArrayOfChar;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
+      this.a.subTitle.trim();
     }
   }
   
@@ -54,36 +48,36 @@ class MessageForStarLeague$TroopStarLeagueHandler
   {
     if (paramString3.equals("msg"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
+      this.a.actionUrl = paramAttributes.getValue("url");
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
+        this.a.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
       }
       catch (Exception paramString1)
       {
         QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
       }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
+      this.a.brief = paramAttributes.getValue("brief");
       return;
     }
     if (paramString3.equals("picture"))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
+      this.a.starAvatar = paramAttributes.getValue("cover");
       return;
     }
     if (paramString3.equals("title"))
     {
-      this.jdField_a_of_type_JavaLangString = "title";
+      this.b = "title";
       return;
     }
     if (paramString3.equals("summary")) {
-      this.jdField_a_of_type_JavaLangString = "summary";
+      this.b = "summary";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForStarLeague.TroopStarLeagueHandler
  * JD-Core Version:    0.7.0.1
  */

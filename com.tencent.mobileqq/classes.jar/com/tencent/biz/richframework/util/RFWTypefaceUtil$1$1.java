@@ -10,7 +10,7 @@ class RFWTypefaceUtil$1$1
   
   public void run()
   {
-    this.this$0.a.setTypeface(this.a);
+    this.this$0.b.setTypeface(this.a);
   }
 }
 

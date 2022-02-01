@@ -12,11 +12,11 @@ class ReadInJoyTabTopSearchHeaderController$5
   
   public void run()
   {
-    if (!DateUtils.isToday(SharedPreUtils.b("search_word_prefix_last_change_hotword_time")))
+    if (!DateUtils.isToday(SharedPreUtils.k("search_word_prefix_last_change_hotword_time")))
     {
       SharedPreUtils.a("search_word_prefix_last_change_hotword_time", System.currentTimeMillis());
-      SharedPreUtils.a(this.this$0.a, 0);
-      SharedPreUtils.a(this.this$0.b, 0);
+      SharedPreUtils.c(this.this$0.f, 0);
+      SharedPreUtils.c(this.this$0.g, 0);
     }
     AladdinConfig localAladdinConfig = Aladdin.getConfig(204);
     int j = 100;
@@ -36,32 +36,32 @@ class ReadInJoyTabTopSearchHeaderController$5
       k = 1;
       m = 1;
     }
-    if (SharedPreUtils.a(this.this$0.a) < j) {
+    if (SharedPreUtils.l(this.this$0.f) < j) {
       if (this.a == 6)
       {
-        SharedPreUtils.a(this.this$0.a, SharedPreUtils.a(this.this$0.a) + 1);
+        SharedPreUtils.c(this.this$0.f, SharedPreUtils.l(this.this$0.f) + 1);
         this.this$0.b(true, this.a, this.b);
       }
-      else if (SharedPreUtils.a(this.this$0.b) < i)
+      else if (SharedPreUtils.l(this.this$0.g) < i)
       {
-        if ((m > 0) && ((SharedPreUtils.a(this.this$0.b) + 1) % m == 0))
+        if ((m > 0) && ((SharedPreUtils.l(this.this$0.g) + 1) % m == 0))
         {
-          SharedPreUtils.a(this.this$0.a, SharedPreUtils.a(this.this$0.a) + 1);
+          SharedPreUtils.c(this.this$0.f, SharedPreUtils.l(this.this$0.f) + 1);
           this.this$0.b(true, this.a, this.b);
         }
       }
-      else if ((k > 0) && ((SharedPreUtils.a(this.this$0.b) + 1 - i) % k == 0))
+      else if ((k > 0) && ((SharedPreUtils.l(this.this$0.g) + 1 - i) % k == 0))
       {
-        SharedPreUtils.a(this.this$0.a, SharedPreUtils.a(this.this$0.a) + 1);
+        SharedPreUtils.c(this.this$0.f, SharedPreUtils.l(this.this$0.f) + 1);
         this.this$0.b(true, this.a, this.b);
       }
     }
-    SharedPreUtils.a(this.this$0.b, SharedPreUtils.a(this.this$0.b) + 1);
+    SharedPreUtils.c(this.this$0.g, SharedPreUtils.l(this.this$0.g) + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyTabTopSearchHeaderController.5
  * JD-Core Version:    0.7.0.1
  */

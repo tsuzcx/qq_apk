@@ -24,7 +24,7 @@ class GrayTipsItemBuilder$11
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     Object localObject;
     switch (i)
     {
@@ -34,67 +34,67 @@ class GrayTipsItemBuilder$11
       default: 
         paramView = new StringBuilder();
         paramView.append("handle renewal gray tips click, action not support yet, action=");
-        paramView.append(this.jdField_a_of_type_Int);
+        paramView.append(this.a);
         QLog.e("GrayTipsItemBuilder", 1, paramView.toString());
         break;
       case 103: 
       case 104: 
-        VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "mvip.gexinghua.android.aio_pay", "CJCLUBT", 3, false, false);
-        VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.c), "");
+        VasH5PayUtil.a(this.e.c, "mvip.gexinghua.android.aio_pay", "CJCLUBT", 3, false, false);
+        VasWebviewUtil.a(this.e.d.b, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.d), "");
         break;
       case 101: 
       case 102: 
-        VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "mvip.gexinghua.android.aio_pay", "LTMCLUB", 3, false, false);
-        VasWebviewUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.c), "");
+        VasH5PayUtil.a(this.e.c, "mvip.gexinghua.android.aio_pay", "LTMCLUB", 3, false, false);
+        VasWebviewUtil.a(this.e.d.b, "aio_pay", "aio_payclk", "", 1, 0, 0, "", String.valueOf(this.d), "");
         break;
       case 100: 
-        GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder, this.jdField_a_of_type_JavaLangString);
+        GrayTipsItemBuilder.a(this.e, this.c);
       }
       break;
     case 12: 
       paramView = new Intent();
       paramView.putExtra("individuation_url_type", 40100);
-      localObject = IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "backgroundDetail", String.valueOf(this.b), "");
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, (String)localObject, 33554432L, paramView, false, -1);
+      localObject = IndividuationUrlHelper.a(this.e.c, "backgroundDetail", String.valueOf(this.b), "");
+      VasWebviewUtil.b(this.e.c, (String)localObject, 33554432L, paramView, false, -1);
       VasWebviewUtil.a("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
       break;
     case 11: 
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView = new Intent(this.e.c, QQBrowserActivity.class);
       paramView.putExtra("individuation_url_type", 40302);
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "fontDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, paramView, false, -1);
+      VasWebviewUtil.b(this.e.c, IndividuationUrlHelper.a(this.e.c, "fontDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, paramView, false, -1);
       VasWebviewUtil.a("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
       break;
     case 10: 
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView = new Intent(this.e.c, QQBrowserActivity.class);
       paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
       paramView.putExtra("hide_left_button", false);
       paramView.putExtra("show_right_close_button", false);
-      paramView.putExtra("url", IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "pendantDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.faceaddon.client_tab_store"));
+      paramView.putExtra("url", IndividuationUrlHelper.a(this.e.c, "pendantDetailDialog", String.valueOf(this.b), "mvip.gexinghua.mobile.faceaddon.client_tab_store"));
       paramView.putExtra("business", 512L);
       paramView.putExtra("individuation_url_type", 40100);
       VasWebviewUtil.a(512L, paramView);
       paramView.putExtra("isShowAd", false);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      this.e.c.startActivity(paramView);
       VasWebviewUtil.a("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
       break;
     case 9: 
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView = new Intent(this.e.c, QQBrowserActivity.class);
       paramView.putExtra("individuation_url_type", 40302);
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "bubbleDetailDialog", String.valueOf(this.b), "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
+      VasWebviewUtil.b(this.e.c, IndividuationUrlHelper.a(this.e.c, "bubbleDetailDialog", String.valueOf(this.b), "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
       VasWebviewUtil.a("", "aio_pay", "aio_detail", "", 1, 0, 0, "", "", "");
       break;
     case 8: 
-      paramView = IndividualRedPacketManager.a(2, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramView = IndividualRedPacketManager.a(2, this.e.a);
       if (TextUtils.isEmpty(paramView)) {
         return;
       }
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localObject = new Intent(this.e.c, QQBrowserActivity.class);
       ((Intent)localObject).putExtra("individuation_url_type", 40100);
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, paramView, 134217728L, (Intent)localObject, true, -1);
+      VasWebviewUtil.b(this.e.c, paramView, 134217728L, (Intent)localObject, true, -1);
       VasWebviewUtil.a("", "aio_pay", "aio_redbag", "", 1, 0, 0, "", "", "");
       break;
     case 7: 
-      ProfileCardUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "inside.myIndividuation", 1, 2, 1, "", false, false, "", 0);
+      ProfileCardUtil.a((Activity)this.e.c, this.e.a.getCurrentAccountUin(), "inside.myIndividuation", 1, 2, 1, "", false, false, "", 0);
       VasWebviewUtil.a("", "aio_pay", "aio_card", "", 1, 0, 0, "", "", "");
       break;
     case 6: 
@@ -104,36 +104,36 @@ class GrayTipsItemBuilder$11
       paramView.putExtra("hide_left_button", false);
       paramView.putExtra("show_right_close_button", false);
       paramView.putExtra("individuation_url_type", 40306);
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "background", ""), 33554432L, paramView, false, -1);
+      VasWebviewUtil.b(this.e.c, IndividuationUrlHelper.a(this.e.c, "background", ""), 33554432L, paramView, false, -1);
       VasWebviewUtil.a("", "aio_pay", "aio_background", "", 1, 0, 0, "", "", "");
       break;
     case 5: 
-      GrayTipsItemBuilder.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder);
+      GrayTipsItemBuilder.e(this.e);
       break;
     case 4: 
-      GrayTipsItemBuilder.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder);
+      GrayTipsItemBuilder.d(this.e);
       break;
     case 3: 
-      GrayTipsItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder);
+      GrayTipsItemBuilder.c(this.e);
       break;
     case 2: 
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView = new Intent(this.e.c, QQBrowserActivity.class);
       paramView.putExtra("individuation_url_type", 40306);
-      VasWebviewUtil.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_AndroidContentContext, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
+      VasWebviewUtil.b(this.e.c, IndividuationUrlHelper.a(this.e.c, "bubble", "mvip.gongneng.android.bubble.index_dynamic_tab"), 64L, paramView, false, -1);
       VasWebviewUtil.a("", "aio_pay", "aio_bubble", "", 1, 0, 0, "", "", "");
       break;
     case 1: 
-      GrayTipsItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder);
+      GrayTipsItemBuilder.b(this.e);
       break;
     case 0: 
-      GrayTipsItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder);
+      GrayTipsItemBuilder.a(this.e);
     }
-    FileManagerDataCenter.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -4020);
+    FileManagerDataCenter.b(this.e.a, this.e.d.b, this.e.d.a, -4020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.11
  * JD-Core Version:    0.7.0.1
  */

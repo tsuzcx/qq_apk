@@ -31,20 +31,20 @@ class SignatureHistoryFragment$MySignatureObserver
       localObject1 = ???.getString("feedid");
       boolean bool = ???.getBoolean("overFlag", true);
       localObject3 = ???.getStringArrayList("uins");
-      SignatureHistoryFragment.a(this.a).put(localObject1, Boolean.valueOf(bool));
-      ??? = (ArrayList)SignatureHistoryFragment.b(this.a).get(localObject1);
+      SignatureHistoryFragment.p(this.a).put(localObject1, Boolean.valueOf(bool));
+      ??? = (ArrayList)SignatureHistoryFragment.q(this.a).get(localObject1);
       if (localObject3 == null) {
         return;
       }
-      SignatureHistoryFragment.b(this.a).put(localObject1, ???);
+      SignatureHistoryFragment.q(this.a).put(localObject1, ???);
     }
     for (;;)
     {
-      synchronized (SignatureHistoryFragment.a(this.a))
+      synchronized (SignatureHistoryFragment.g(this.a))
       {
-        if (i < SignatureHistoryFragment.a(this.a).size())
+        if (i < SignatureHistoryFragment.g(this.a).size())
         {
-          RichStatus localRichStatus = ((HistorySignItem)SignatureHistoryFragment.a(this.a).get(i)).richStatus;
+          RichStatus localRichStatus = ((HistorySignItem)SignatureHistoryFragment.g(this.a).get(i)).richStatus;
           if (!localRichStatus.feedsId.equals(localObject1)) {
             break label303;
           }
@@ -69,11 +69,11 @@ class SignatureHistoryFragment$MySignatureObserver
             localRichStatus.mUins = ((List)localObject3);
           }
         }
-        if (SignatureHistoryFragment.a(this.a) != null)
+        if (SignatureHistoryFragment.d(this.a) != null)
         {
-          SignatureHistoryFragment.a(this.a).removeMessages(1);
-          localObject1 = SignatureHistoryFragment.a(this.a).obtainMessage(1);
-          SignatureHistoryFragment.a(this.a).sendMessageDelayed((Message)localObject1, 500L);
+          SignatureHistoryFragment.d(this.a).removeMessages(1);
+          localObject1 = SignatureHistoryFragment.d(this.a).obtainMessage(1);
+          SignatureHistoryFragment.d(this.a).sendMessageDelayed((Message)localObject1, 500L);
         }
         return;
       }
@@ -86,96 +86,96 @@ class SignatureHistoryFragment$MySignatureObserver
   protected void g(boolean paramBoolean, Object paramObject)
   {
     int i = ((Integer)paramObject).intValue();
-    if (SignatureHistoryFragment.a(this.a) != null)
+    if (SignatureHistoryFragment.d(this.a) != null)
     {
-      SignatureHistoryFragment.a(this.a).removeMessages(3);
-      paramObject = SignatureHistoryFragment.a(this.a).obtainMessage(3);
+      SignatureHistoryFragment.d(this.a).removeMessages(3);
+      paramObject = SignatureHistoryFragment.d(this.a).obtainMessage(3);
       paramObject.arg1 = i;
-      SignatureHistoryFragment.a(this.a).sendMessageDelayed(paramObject, 500L);
+      SignatureHistoryFragment.d(this.a).sendMessageDelayed(paramObject, 500L);
     }
   }
   
   protected void h(boolean paramBoolean, Object paramObject)
   {
-    if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
-      SignatureHistoryFragment.a(this.a).dismiss();
+    if ((SignatureHistoryFragment.e(this.a) != null) && (SignatureHistoryFragment.e(this.a).isShowing())) {
+      SignatureHistoryFragment.e(this.a).dismiss();
     }
     if (paramBoolean)
     {
       long l = ((Long)paramObject).longValue();
-      if (SignatureHistoryFragment.a(this.a) != null)
+      if (SignatureHistoryFragment.n(this.a) != null)
       {
-        SignatureHistoryFragment.a(this.a).id = l;
-        SignatureHistoryFragment.a(this.a).timeStamp = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+        SignatureHistoryFragment.n(this.a).id = l;
+        SignatureHistoryFragment.n(this.a).timeStamp = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
         paramObject = this.a;
-        SignatureHistoryFragment.a(paramObject, SignatureHistoryFragment.a(paramObject));
+        SignatureHistoryFragment.c(paramObject, SignatureHistoryFragment.n(paramObject));
         SignatureHistoryFragment.a(this.a, null);
-        if (SignatureHistoryFragment.a(this.a) != null) {
-          SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+        if (SignatureHistoryFragment.t(this.a) != null) {
+          SignatureHistoryFragment.t(this.a).notifyDataSetChanged();
         }
       }
     }
     else
     {
-      paramObject = SignatureHistoryFragment.a(this.a).obtainMessage();
+      paramObject = SignatureHistoryFragment.d(this.a).obtainMessage();
       paramObject.what = 4;
       paramObject.arg1 = 1;
-      SignatureHistoryFragment.a(this.a).sendMessage(paramObject);
+      SignatureHistoryFragment.d(this.a).sendMessage(paramObject);
     }
   }
   
   protected void i(boolean paramBoolean, Object paramObject)
   {
-    if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
-      SignatureHistoryFragment.a(this.a).dismiss();
+    if ((SignatureHistoryFragment.e(this.a) != null) && (SignatureHistoryFragment.e(this.a).isShowing())) {
+      SignatureHistoryFragment.e(this.a).dismiss();
     }
     if (paramBoolean)
     {
       paramObject = this.a;
-      paramBoolean = SignatureHistoryFragment.a(paramObject, SignatureHistoryFragment.a(paramObject));
+      paramBoolean = SignatureHistoryFragment.b(paramObject, SignatureHistoryFragment.n(paramObject));
       SignatureHistoryFragment.a(this.a, null);
-      if ((SignatureHistoryFragment.a(this.a) != null) && (paramBoolean)) {
-        SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+      if ((SignatureHistoryFragment.t(this.a) != null) && (paramBoolean)) {
+        SignatureHistoryFragment.t(this.a).notifyDataSetChanged();
       }
     }
     else
     {
-      paramObject = SignatureHistoryFragment.a(this.a).obtainMessage();
+      paramObject = SignatureHistoryFragment.d(this.a).obtainMessage();
       paramObject.what = 4;
       paramObject.arg1 = 2;
-      SignatureHistoryFragment.a(this.a).sendMessage(paramObject);
+      SignatureHistoryFragment.d(this.a).sendMessage(paramObject);
     }
   }
   
   protected void j(boolean paramBoolean, Object paramObject)
   {
-    SignatureHistoryFragment.c(this.a, paramBoolean);
+    SignatureHistoryFragment.d(this.a, paramBoolean);
     int i = 3;
     if (paramBoolean) {
       SignatureHistoryFragment.a(this.a, (SignatureHandler.RspGetHistorySig)paramObject);
-    } else if (SignatureHistoryFragment.c(this.a)) {
+    } else if (SignatureHistoryFragment.r(this.a)) {
       SignatureHistoryFragment.a(this.a, 3);
     }
-    if (SignatureHistoryFragment.a(this.a).size() == 0)
+    if (SignatureHistoryFragment.g(this.a).size() == 0)
     {
       paramObject = this.a;
       if (!paramBoolean) {
         i = 2;
       }
-      SignatureHistoryFragment.a(paramObject, i);
+      SignatureHistoryFragment.b(paramObject, i);
     }
     else
     {
-      SignatureHistoryFragment.a(this.a).setVisible(false, false);
+      SignatureHistoryFragment.s(this.a).setVisible(false, false);
     }
-    if (SignatureHistoryFragment.a(this.a) != null) {
-      SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+    if (SignatureHistoryFragment.t(this.a) != null) {
+      SignatureHistoryFragment.t(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.MySignatureObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ public final class VideoCompressModule$Companion
   @NotNull
   public final VideoCompressModule a()
   {
-    Lazy localLazy = VideoCompressModule.a();
+    Lazy localLazy = VideoCompressModule.b();
     Companion localCompanion = VideoCompressModule.a;
     return (VideoCompressModule)localLazy.getValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.video.compress.VideoCompressModule.Companion
  * JD-Core Version:    0.7.0.1
  */

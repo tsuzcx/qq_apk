@@ -30,24 +30,24 @@ public class HippyErrorViewWrapper
   {
     if (this.mRootView == null)
     {
-      this.mRootView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131563030, null);
-      this.mNetworkErrorText = ((TextView)this.mRootView.findViewById(2131371773));
-      this.mNetworkErrorIcon = ((ImageView)this.mRootView.findViewById(2131371771));
+      this.mRootView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131629641, null);
+      this.mNetworkErrorText = ((TextView)this.mRootView.findViewById(2131439208));
+      this.mNetworkErrorIcon = ((ImageView)this.mRootView.findViewById(2131439206));
       i = this.mErrorViewColor;
       if (i != -1) {
         this.mRootView.setBackgroundColor(i);
       }
     }
     if (this.mErrorViewColor == -1) {
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839274));
+      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839454));
     } else {
-      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839481));
+      this.mNetworkErrorIcon.setImageDrawable(paramViewGroup.getResources().getDrawable(2130839671));
     }
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mNetworkErrorText.getLayoutParams();
     localLayoutParams.topMargin = Utils.a(10.0F, paramViewGroup.getResources());
     this.mNetworkErrorText.setLayoutParams(localLayoutParams);
-    this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131165628));
-    this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131692074));
+    this.mNetworkErrorText.setTextColor(paramViewGroup.getResources().getColor(2131166024));
+    this.mNetworkErrorText.setText(paramViewGroup.getResources().getString(2131889044));
     this.mRootView.setOnClickListener(paramOnClickListener);
     paramOnClickListener = this.mRootView;
     int i = 0;
@@ -65,7 +65,7 @@ public class HippyErrorViewWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.fragment.HippyErrorViewWrapper
  * JD-Core Version:    0.7.0.1
  */

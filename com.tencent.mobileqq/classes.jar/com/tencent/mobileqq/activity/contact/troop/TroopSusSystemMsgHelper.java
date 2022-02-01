@@ -30,7 +30,7 @@ public class TroopSusSystemMsgHelper
         }
       }
       Object localObject = paramIMessageFacade.getLastMessage(paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      int k = GroupSystemMsgController.a().b(paramQQAppInterface);
+      int k = GroupSystemMsgController.a().c(paramQQAppInterface);
       if (k > 0)
       {
         int j = 0;
@@ -69,7 +69,7 @@ public class TroopSusSystemMsgHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopSusSystemMsgHelper
  * JD-Core Version:    0.7.0.1
  */

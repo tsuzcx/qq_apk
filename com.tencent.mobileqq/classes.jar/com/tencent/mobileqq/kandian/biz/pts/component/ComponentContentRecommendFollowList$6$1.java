@@ -18,27 +18,27 @@ class ComponentContentRecommendFollowList$6$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onUpdateAfterAccountFollow uin = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(this.a);
       ((StringBuilder)localObject).append(" isFollow = ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("ComponentContentRecommendFollowList", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList$6.a).mRecommendFollowInfos.a.iterator();
+    Object localObject = ComponentContentRecommendFollowList.b(this.c.a).mRecommendFollowInfos.c.iterator();
     while (((Iterator)localObject).hasNext())
     {
       RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)((Iterator)localObject).next();
-      if (this.jdField_a_of_type_Long == localRecommendFollowInfo.uin)
+      if (this.a == localRecommendFollowInfo.uin)
       {
-        localRecommendFollowInfo.isFollowed = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList$6.a.a(localRecommendFollowInfo);
+        localRecommendFollowInfo.isFollowed = this.b;
+        this.c.a.a(localRecommendFollowInfo);
       }
     }
-    ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentContentRecommendFollowList$6.a).notifyDataSetChanged();
+    ComponentContentRecommendFollowList.a(this.c.a).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommendFollowList.6.1
  * JD-Core Version:    0.7.0.1
  */

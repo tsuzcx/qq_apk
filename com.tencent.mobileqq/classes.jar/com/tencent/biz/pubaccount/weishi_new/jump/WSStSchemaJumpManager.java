@@ -13,115 +13,127 @@ import com.tencent.mobileqq.mini.api.MiniAppLaunchListener;
 public class WSStSchemaJumpManager
   implements IWSStSchemaJumpFactor
 {
-  private stSchema jdField_a_of_type_UserGrowthStSchema;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-  private IJumpListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpIJumpListener;
-  private IWSJumpFactory jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
-  private OuterInterceptManager.OnInterceptDialogClickListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilOuterInterceptManager$OnInterceptDialogClickListener;
-  private MiniAppLaunchListener jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener;
-  private Object jdField_a_of_type_JavaLangObject;
-  private boolean jdField_a_of_type_Boolean = false;
-  private IWSJumpFactory jdField_b_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c;
+  private Context a;
+  private stSchema b;
+  private WSDownloadParams c;
+  private IJumpListener d;
+  private MiniAppLaunchListener e;
+  private OuterInterceptManager.OnInterceptDialogClickListener f;
+  private IWSJumpFactory g;
+  private IWSJumpFactory h;
+  private Object i;
+  private boolean j = false;
+  private boolean k = false;
+  private boolean l;
   
   public WSStSchemaJumpManager(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory = new WSJumpStrategyByPriorityFactory();
-    this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory = new WSJumpStrategyByTypeFactory();
-  }
-  
-  public stSchema a()
-  {
-    return this.jdField_a_of_type_UserGrowthStSchema;
+    this.a = paramContext;
+    this.g = new WSJumpStrategyByPriorityFactory();
+    this.h = new WSJumpStrategyByTypeFactory();
   }
   
   public Context a()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public WSDownloadParams a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
-  }
-  
-  public IJumpListener a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpIJumpListener;
+    return this.a;
   }
   
   public WSStSchemaJumpManager a(stSchema paramstSchema)
   {
-    this.jdField_a_of_type_UserGrowthStSchema = paramstSchema;
+    this.b = paramstSchema;
     return this;
   }
   
   public WSStSchemaJumpManager a(WSDownloadParams paramWSDownloadParams)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramWSDownloadParams;
+    this.c = paramWSDownloadParams;
     return this;
   }
   
   public WSStSchemaJumpManager a(IJumpListener paramIJumpListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpIJumpListener = paramIJumpListener;
+    this.d = paramIJumpListener;
+    return this;
+  }
+  
+  public WSStSchemaJumpManager a(OuterInterceptManager.OnInterceptDialogClickListener paramOnInterceptDialogClickListener)
+  {
+    this.f = paramOnInterceptDialogClickListener;
     return this;
   }
   
   public WSStSchemaJumpManager a(Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.i = paramObject;
     return this;
   }
   
   public WSStSchemaJumpManager a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
     return this;
   }
   
-  public OuterInterceptManager.OnInterceptDialogClickListener a()
+  public stSchema b()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilOuterInterceptManager$OnInterceptDialogClickListener;
-  }
-  
-  public MiniAppLaunchListener a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniApiMiniAppLaunchListener;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public WSStSchemaJumpManager b(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.j = paramBoolean;
     return this;
   }
   
-  public boolean b()
+  public WSDownloadParams c()
   {
     return this.c;
   }
   
-  public boolean c()
+  public WSStSchemaJumpManager c(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_UserGrowthStSchema != null))
+    this.l = paramBoolean;
+    return this;
+  }
+  
+  public boolean d()
+  {
+    return this.j;
+  }
+  
+  public boolean e()
+  {
+    return this.l;
+  }
+  
+  public MiniAppLaunchListener f()
+  {
+    return this.e;
+  }
+  
+  public OuterInterceptManager.OnInterceptDialogClickListener g()
+  {
+    return this.f;
+  }
+  
+  public IJumpListener h()
+  {
+    return this.d;
+  }
+  
+  public Object i()
+  {
+    return this.i;
+  }
+  
+  public boolean j()
+  {
+    if ((this.a != null) && (this.b != null))
     {
-      if (this.jdField_b_of_type_Boolean) {
-        localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
+      if (this.k) {
+        localObject = this.g;
       } else {
-        localObject = this.jdField_b_of_type_ComTencentBizPubaccountWeishi_newJumpFactoryIWSJumpFactory;
+        localObject = this.h;
       }
       localObject = ((IWSJumpFactory)localObject).a(this);
       if (localObject != null) {
@@ -131,16 +143,16 @@ public class WSStSchemaJumpManager
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[WSStSchemaJumpManager.java][processStSchemaClickAction] mContext:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidContentContext);
+    ((StringBuilder)localObject).append(this.a);
     ((StringBuilder)localObject).append(", mStSchema");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_UserGrowthStSchema);
+    ((StringBuilder)localObject).append(this.b);
     WSLog.d("WSStSchemaJumpManager", ((StringBuilder)localObject).toString());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.WSStSchemaJumpManager
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public class AvGameConfProcessor
 {
   private final List<AvGameConfProcessor.OnGetConfigListener> a = new LinkedList();
   
-  private void a(int paramInt)
+  private void b(int paramInt)
   {
     if (QLog.isColorLevel())
     {
@@ -104,7 +104,7 @@ public class AvGameConfProcessor
         return;
       }
       this.a.add(paramOnGetConfigListener);
-      QConfigManager.a().a(new int[] { 642 });
+      QConfigManager.b().a(new int[] { 642 });
       ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
       ThreadManager.getSubThreadHandler().postAtTime(new AvGameConfProcessor.1(this), this, SystemClock.uptimeMillis() + 10000L);
       return;
@@ -125,7 +125,7 @@ public class AvGameConfProcessor
       localStringBuilder.append(paramAvGameConfBean);
       QLog.d("AvGameConfProcessor", 2, localStringBuilder.toString());
     }
-    a(0);
+    b(0);
   }
   
   public Class clazz()
@@ -162,7 +162,7 @@ public class AvGameConfProcessor
       localStringBuilder.append(paramInt);
       QLog.e("AvGameConfProcessor", 2, localStringBuilder.toString());
     }
-    a(paramInt);
+    b(paramInt);
   }
   
   public int type()

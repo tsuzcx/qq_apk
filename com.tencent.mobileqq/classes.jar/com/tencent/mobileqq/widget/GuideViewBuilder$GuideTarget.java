@@ -7,16 +7,16 @@ import java.util.ArrayList;
 
 class GuideViewBuilder$GuideTarget
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<Pair<View, GuideViewBuilder.GuideLayoutParams>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  int[] jdField_a_of_type_ArrayOfInt;
+  View a;
+  int[] b;
+  ArrayList<Pair<View, GuideViewBuilder.GuideLayoutParams>> c = new ArrayList();
+  View.OnClickListener d = null;
   
   private GuideViewBuilder$GuideTarget(GuideViewBuilder paramGuideViewBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GuideViewBuilder.GuideTarget
  * JD-Core Version:    0.7.0.1
  */

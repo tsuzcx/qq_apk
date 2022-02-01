@@ -16,12 +16,12 @@ import mqq.os.MqqHandler;
 public class GuessPictureGamePaintLogic
 {
   public int a;
-  private GameImageData jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private volatile boolean jdField_a_of_type_Boolean;
   public int b;
-  private int c;
-  private int d;
+  private GameImageData c;
+  private Object d = new Object();
+  private volatile boolean e;
+  private int f;
+  private int g;
   
   public int a(ArrayList<GameImageData> paramArrayList)
   {
@@ -30,29 +30,29 @@ public class GuessPictureGamePaintLogic
     Canvas localCanvas;
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      if (((GameImageData)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      if (((GameImageData)paramArrayList.get(0)).a == null) {
         return 0;
       }
-      localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_Int, this.b, Bitmap.Config.ARGB_8888);
+      localBitmap = Bitmap.createBitmap(this.a, this.b, Bitmap.Config.ARGB_8888);
       localCanvas = new Canvas(localBitmap);
       a(localCanvas, (GameImageData)paramArrayList.get(0), true);
     }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.d)
       {
         if (QLog.isColorLevel())
         {
-          if (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData == null) {
+          if (this.c == null) {
             bool = true;
           }
           QLog.d("GuessPictureGamePaintLogic", 2, new Object[] { "generateTexture, AnswerImageDataIsNull:", Boolean.valueOf(bool) });
         }
-        if (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData == null) {
+        if (this.c == null) {
           break label207;
         }
-        localCanvas.drawColor(this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.e);
-        b(localCanvas, this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData, true);
+        localCanvas.drawColor(this.c.f);
+        b(localCanvas, this.c, true);
         continue;
         if (i < paramArrayList.size())
         {
@@ -70,26 +70,21 @@ public class GuessPictureGamePaintLogic
     }
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.jdField_a_of_type_Int = paramInt3;
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.a = paramInt3;
     this.b = paramInt4;
   }
   
   public void a(Canvas paramCanvas, GameImageData paramGameImageData, boolean paramBoolean)
   {
-    paramGameImageData = paramGameImageData.jdField_a_of_type_AndroidGraphicsBitmap;
+    paramGameImageData = paramGameImageData.a;
     Matrix localMatrix = new Matrix();
-    localMatrix.setRectToRect(new RectF(0.0F, 0.0F, paramGameImageData.getWidth(), paramGameImageData.getHeight()), new RectF(0.0F, 0.0F, this.jdField_a_of_type_Int, this.b), Matrix.ScaleToFit.FILL);
+    localMatrix.setRectToRect(new RectF(0.0F, 0.0F, paramGameImageData.getWidth(), paramGameImageData.getHeight()), new RectF(0.0F, 0.0F, this.a, this.b), Matrix.ScaleToFit.FILL);
     if (paramBoolean) {
-      localMatrix.postScale(1.0F, -1.0F, this.jdField_a_of_type_Int / 2, this.b / 2);
+      localMatrix.postScale(1.0F, -1.0F, this.a / 2, this.b / 2);
     }
     if (!paramGameImageData.isRecycled()) {
       paramCanvas.drawBitmap(paramGameImageData, localMatrix, null);
@@ -98,13 +93,13 @@ public class GuessPictureGamePaintLogic
   
   public void a(View arg1)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.d)
     {
-      if ((this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData != null) && (!this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-        this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      if ((this.c != null) && (!this.c.a.isRecycled())) {
+        this.c.a.recycle();
       }
-      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData = null;
-      this.jdField_a_of_type_Boolean = true;
+      this.c = null;
+      this.e = true;
       return;
     }
   }
@@ -116,32 +111,37 @@ public class GuessPictureGamePaintLogic
   
   public boolean a()
   {
-    GameImageData localGameImageData = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData;
-    return (localGameImageData != null) && (localGameImageData.jdField_a_of_type_Boolean);
+    GameImageData localGameImageData = this.c;
+    return (localGameImageData != null) && (localGameImageData.i);
   }
   
   public void b(Canvas paramCanvas, GameImageData paramGameImageData, boolean paramBoolean)
   {
-    if (paramGameImageData.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+    if (paramGameImageData.a == null) {
       return;
     }
-    int i = paramGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = paramGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    float f1 = this.c / this.jdField_a_of_type_Int;
-    float f2 = this.d / this.b;
+    int i = paramGameImageData.a.getWidth();
+    int j = paramGameImageData.a.getHeight();
+    float f1 = this.f / this.a;
+    float f2 = this.g / this.b;
     Matrix localMatrix = new Matrix();
-    localMatrix.setRectToRect(new RectF(0.0F, 0.0F, i, j), new RectF(paramGameImageData.c / f1, paramGameImageData.d / f2, (paramGameImageData.c + i) / f1, (paramGameImageData.d + j) / f2), Matrix.ScaleToFit.CENTER);
+    localMatrix.setRectToRect(new RectF(0.0F, 0.0F, i, j), new RectF(paramGameImageData.d / f1, paramGameImageData.e / f2, (paramGameImageData.d + i) / f1, (paramGameImageData.e + j) / f2), Matrix.ScaleToFit.CENTER);
     if (paramBoolean) {
-      localMatrix.postScale(1.0F, -1.0F, this.jdField_a_of_type_Int / 2, this.b / 2);
+      localMatrix.postScale(1.0F, -1.0F, this.a / 2, this.b / 2);
     }
-    if (!paramGameImageData.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) {
-      paramCanvas.drawBitmap(paramGameImageData.jdField_a_of_type_AndroidGraphicsBitmap, localMatrix, null);
+    if (!paramGameImageData.a.isRecycled()) {
+      paramCanvas.drawBitmap(paramGameImageData.a, localMatrix, null);
     }
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
+  }
+  
+  public void c()
+  {
+    this.e = false;
   }
 }
 

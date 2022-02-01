@@ -13,28 +13,27 @@ import android.widget.TextView;
 public class CommentMovementMethod
   extends BaseMovementMethod
 {
-  private int jdField_a_of_type_Int;
-  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
-  public final String a;
-  private boolean jdField_a_of_type_Boolean = true;
-  private ClickableSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan;
+  public final String a = "CommentMovementMethod";
   private int b;
+  private int c;
+  private BackgroundColorSpan d;
+  private ClickableSpan[] e;
+  private boolean f = true;
   
   public CommentMovementMethod(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "CommentMovementMethod";
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    this.c = paramInt1;
+    this.b = paramInt2;
   }
   
   private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.f;
   }
   
   public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
@@ -51,48 +50,48 @@ public class CommentMovementMethod
       int i1 = paramTextView.getScrollY();
       localObject = paramTextView.getLayout();
       i = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(j - m + i1), i - k + n);
-      this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan = ((ClickableSpan[])paramSpannable.getSpans(i, i, ClickableSpan.class));
-      if (this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan.length > 0)
+      this.e = ((ClickableSpan[])paramSpannable.getSpans(i, i, ClickableSpan.class));
+      if (this.e.length > 0)
       {
         a(false);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]));
-        this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(this.b);
-        paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), paramSpannable.getSpanEnd(this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan[0]), 33);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.e[0]), paramSpannable.getSpanEnd(this.e[0]));
+        this.d = new BackgroundColorSpan(this.c);
+        paramSpannable.setSpan(this.d, paramSpannable.getSpanStart(this.e[0]), paramSpannable.getSpanEnd(this.e[0]), 33);
       }
       else
       {
         a(true);
-        paramTextView.setBackgroundColor(this.jdField_a_of_type_Int);
+        paramTextView.setBackgroundColor(this.b);
       }
     }
     else if (i == 1)
     {
-      localObject = this.jdField_a_of_type_ArrayOfAndroidTextStyleClickableSpan;
+      localObject = this.e;
       if (localObject.length > 0)
       {
         localObject[0].onClick(paramTextView);
-        localObject = this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+        localObject = this.d;
         if (localObject != null) {
           paramSpannable.removeSpan(localObject);
         }
       }
       Selection.removeSelection(paramSpannable);
-      paramTextView.setBackgroundResource(2131167333);
+      paramTextView.setBackgroundResource(2131168376);
     }
     else if (i != 2)
     {
-      localObject = this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
+      localObject = this.d;
       if (localObject != null) {
         paramSpannable.removeSpan(localObject);
       }
-      paramTextView.setBackgroundResource(2131167333);
+      paramTextView.setBackgroundResource(2131168376);
     }
     return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.spannable.CommentMovementMethod
  * JD-Core Version:    0.7.0.1
  */

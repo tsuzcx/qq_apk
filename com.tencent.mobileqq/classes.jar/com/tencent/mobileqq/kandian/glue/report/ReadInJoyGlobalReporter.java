@@ -6,10 +6,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.repo.feeds.ArticleInfoModule;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,64 +17,51 @@ import org.json.JSONObject;
 
 public class ReadInJoyGlobalReporter
 {
-  private static volatile ReadInJoyGlobalReporter jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter;
-  public static String a = "readinjoy_report";
-  public static String b = "readinjoy_entertime";
-  public static String c = "readinjoy_folderstatus";
-  public static String d = "readinjoy_kandianmode";
-  public static String e = "readinjoy_hearttime";
-  private static volatile int f;
-  public int a;
-  public long a;
-  ReadInJoyGlobalReporter.ScreenBroadcastReceiver jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter$ScreenBroadcastReceiver = null;
-  final Object jdField_a_of_type_JavaLangObject = new Object();
-  Timer jdField_a_of_type_JavaUtilTimer = null;
-  TimerTask jdField_a_of_type_JavaUtilTimerTask = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = -1L;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 2;
-  private long jdField_c_of_type_Long = 0L;
-  private int d;
-  private int e;
-  private int g = 0;
+  private static volatile ReadInJoyGlobalReporter a;
+  public static String b = "readinjoy_report";
+  public static String c = "readinjoy_entertime";
+  public static String d = "readinjoy_folderstatus";
+  public static String e = "readinjoy_kandianmode";
+  public static String f = "readinjoy_hearttime";
+  private static volatile int u;
+  final Object g = new Object();
+  public int h = 0;
+  public long i = 0L;
+  ReadInJoyGlobalReporter.ScreenBroadcastReceiver j = null;
+  Timer k = null;
+  TimerTask l = null;
+  private long m = -1L;
+  private int n = 0;
+  private int o = 2;
+  private long p = 0L;
+  private int q = 0;
+  private int r = 0;
+  private boolean s = false;
+  private boolean t;
+  private int v = 0;
   
-  public ReadInJoyGlobalReporter()
+  public static void c(int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_e_of_type_Int = 0;
+    u = paramInt;
   }
   
-  public static ReadInJoyGlobalReporter a()
+  public static ReadInJoyGlobalReporter e()
   {
-    if (jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter == null) {
-          jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter = new ReadInJoyGlobalReporter();
+        if (a == null) {
+          a = new ReadInJoyGlobalReporter();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter;
+    return a;
   }
   
-  public static boolean a()
+  public static boolean f()
   {
-    return jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter != null;
-  }
-  
-  public static void c(int paramInt)
-  {
-    f = paramInt;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
+    return a != null;
   }
   
   public long a(QQAppInterface paramQQAppInterface)
@@ -83,27 +69,14 @@ public class ReadInJoyGlobalReporter
     paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append(paramQQAppInterface);
     paramQQAppInterface = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
-    long l = -1L;
+    long l1 = -1L;
     if (paramQQAppInterface != null) {
-      l = paramQQAppInterface.getLong(jdField_e_of_type_JavaLangString, -1L);
+      l1 = paramQQAppInterface.getLong(f, -1L);
     }
-    return l;
-  }
-  
-  protected String a()
-  {
-    double d1 = NetConnInfoCenter.getServerTimeMillis() - this.jdField_b_of_type_Long;
-    Double.isNaN(d1);
-    return String.valueOf(d1 / 1000.0D);
-  }
-  
-  @NotNull
-  protected JSONObject a()
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+    return l1;
   }
   
   public void a()
@@ -113,49 +86,46 @@ public class ReadInJoyGlobalReporter
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("report time is =");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(this.m);
       ((StringBuilder)localObject).append(",isWeishi:");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.t);
       QLog.i("ReadInJoyGlobalReporter", 2, ((StringBuilder)localObject).toString());
     }
-    if (NetConnInfoCenter.getServerTimeMillis() - this.jdField_a_of_type_Long < 3000L)
+    if (NetConnInfoCenter.getServerTimeMillis() - this.i < 3000L)
     {
       QLog.d("ReadInJoyGlobalReporter", 1, "too often");
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.s)
     {
       QLog.d("ReadInJoyGlobalReporter", 1, "has report");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    this.s = true;
+    this.i = NetConnInfoCenter.getServerTimeMillis();
     try
     {
-      localObject = a();
-      IPublicAccountReportUtils localIPublicAccountReportUtils;
+      localObject = h();
       long l1;
       long l2;
       double d1;
-      if (this.jdField_b_of_type_Boolean)
+      if (this.t)
       {
-        localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
         l1 = NetConnInfoCenter.getServerTimeMillis();
-        l2 = this.jdField_b_of_type_Long;
+        l2 = this.m;
         d1 = l1 - l2;
         Double.isNaN(d1);
         d1 /= 1000.0D;
-        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X8009296", "0X8009296", 0, 0, String.valueOf(d1), "", "", ((JSONObject)localObject).toString(), false);
+        PublicAccountReportUtils.a(null, "", "0X8009296", "0X8009296", 0, 0, String.valueOf(d1), "", "", ((JSONObject)localObject).toString(), false);
       }
       else
       {
-        localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
         l1 = NetConnInfoCenter.getServerTimeMillis();
-        l2 = this.jdField_b_of_type_Long;
+        l2 = this.m;
         d1 = l1 - l2;
         Double.isNaN(d1);
         d1 /= 1000.0D;
-        localIPublicAccountReportUtils.publicAccountReportClickEvent(null, "", "0X80089D1", "0X80089D1", 0, 0, String.valueOf(d1), "", "", ((JSONObject)localObject).toString(), false);
+        PublicAccountReportUtils.a(null, "", "0X80089D1", "0X80089D1", 0, 0, String.valueOf(d1), "", "", ((JSONObject)localObject).toString(), false);
       }
     }
     catch (Exception localException)
@@ -163,24 +133,7 @@ public class ReadInJoyGlobalReporter
       QLog.d("ReadInJoyGlobalReporter", 1, localException.getMessage());
     }
     ArticleInfoModule.a(false);
-    ArticleInfoModule.a();
-  }
-  
-  protected void a(QQAppInterface arg1)
-  {
-    f();
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilTimerTask == null) {
-        this.jdField_a_of_type_JavaUtilTimerTask = new ReadInJoyGlobalReporter.1(this);
-      }
-      if (this.jdField_a_of_type_JavaUtilTimer == null)
-      {
-        this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_JavaUtilTimerTask, 1000L, 10000L);
-      }
-      return;
-    }
+    ArticleInfoModule.d();
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -191,14 +144,14 @@ public class ReadInJoyGlobalReporter
       localStringBuilder.append("setEnterTime(QQAppInterface app , long time) , time =");
       localStringBuilder.append(paramLong);
       localStringBuilder.append(",isWeishi:");
-      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(this.t);
       QLog.i("ReadInJoyGlobalReporter", 2, localStringBuilder.toString());
     }
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = false;
-    c(paramQQAppInterface, paramLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    a(paramQQAppInterface);
-    g();
+    this.m = paramLong;
+    this.s = false;
+    c(paramQQAppInterface, paramLong, this.h, this.n);
+    c(paramQQAppInterface);
+    l();
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
@@ -211,61 +164,23 @@ public class ReadInJoyGlobalReporter
       paramQQAppInterface.append("   local time = ");
       paramQQAppInterface.append(System.currentTimeMillis());
       paramQQAppInterface.append(",isWeishi:");
-      paramQQAppInterface.append(this.jdField_b_of_type_Boolean);
+      paramQQAppInterface.append(this.t);
       QLog.i("ReadInJoyGlobalReporter", 2, paramQQAppInterface.toString());
     }
-    this.jdField_b_of_type_Long = paramLong;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = false;
+    this.m = paramLong;
+    this.n = paramInt2;
+    this.h = paramInt1;
+    this.s = false;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    String str = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(str);
-    str = localStringBuilder.toString();
-    boolean bool = false;
-    paramQQAppInterface = paramQQAppInterface.getSharedPreferences(str, 0);
-    if (paramQQAppInterface != null)
-    {
-      this.jdField_c_of_type_Long = paramQQAppInterface.getLong(jdField_b_of_type_JavaLangString, -1L);
-      this.jdField_d_of_type_Int = paramQQAppInterface.getInt(jdField_d_of_type_JavaLangString, -1);
-      this.jdField_e_of_type_Int = paramQQAppInterface.getInt(jdField_c_of_type_JavaLangString, -1);
-    }
-    if (QLog.isColorLevel())
-    {
-      paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append("Load report time from sharedpreferences, time =");
-      paramQQAppInterface.append(this.jdField_c_of_type_Long);
-      QLog.i("ReadInJoyGlobalReporter", 2, paramQQAppInterface.toString());
-    }
-    if (this.jdField_c_of_type_Long != -1L) {
-      bool = true;
-    }
-    return bool;
+    this.t = paramBoolean;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    e();
-    c(paramQQAppInterface, -1L, -1, -1);
-    b(paramQQAppInterface, -1L);
-    jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter = null;
-    this.jdField_b_of_type_Boolean = false;
+    this.o = paramInt;
   }
   
   public void b(QQAppInterface paramQQAppInterface, long paramLong)
@@ -275,10 +190,10 @@ public class ReadInJoyGlobalReporter
       paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
       BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(b);
       localStringBuilder.append(paramQQAppInterface);
       paramQQAppInterface = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit();
-      paramQQAppInterface.putLong(jdField_e_of_type_JavaLangString, paramLong);
+      paramQQAppInterface.putLong(f, paramLong);
       paramQQAppInterface.commit();
       return;
     }
@@ -291,7 +206,7 @@ public class ReadInJoyGlobalReporter
   public void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
   {
     a(paramQQAppInterface, paramLong, paramInt1, paramInt2);
-    if (a(paramQQAppInterface))
+    if (b(paramQQAppInterface))
     {
       paramLong = a(paramQQAppInterface);
       StringBuilder localStringBuilder;
@@ -303,19 +218,19 @@ public class ReadInJoyGlobalReporter
         localStringBuilder.append("  currect time=");
         localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis());
         localStringBuilder.append("  last entertime=");
-        localStringBuilder.append(this.jdField_b_of_type_Long);
+        localStringBuilder.append(this.m);
         QLog.i("ReadInJoyGlobalReporter", 2, localStringBuilder.toString());
       }
       if ((paramLong != -1L) && (Math.abs(NetConnInfoCenter.getServerTimeMillis() - paramLong) < 15000L))
       {
-        this.jdField_b_of_type_Long = this.jdField_c_of_type_Long;
-        this.jdField_b_of_type_Int = this.jdField_e_of_type_Int;
-        this.jdField_a_of_type_Int = this.jdField_d_of_type_Int;
+        this.m = this.p;
+        this.n = this.r;
+        this.h = this.q;
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("quite error,set enter time =");
-          localStringBuilder.append(this.jdField_b_of_type_Long);
+          localStringBuilder.append(this.m);
           QLog.i("ReadInJoyGlobalReporter", 2, localStringBuilder.toString());
         }
       }
@@ -324,10 +239,56 @@ public class ReadInJoyGlobalReporter
         QLog.i("ReadInJoyGlobalReporter", 2, "report error , time is out ");
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-    a(paramQQAppInterface);
-    c(paramQQAppInterface, this.jdField_b_of_type_Long, paramInt1, paramInt2);
-    g();
+    this.s = false;
+    c(paramQQAppInterface);
+    c(paramQQAppInterface, this.m, paramInt1, paramInt2);
+    l();
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
+  {
+    String str = paramQQAppInterface.getCurrentAccountUin();
+    paramQQAppInterface = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b);
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
+    boolean bool = false;
+    paramQQAppInterface = paramQQAppInterface.getSharedPreferences(str, 0);
+    if (paramQQAppInterface != null)
+    {
+      this.p = paramQQAppInterface.getLong(c, -1L);
+      this.q = paramQQAppInterface.getInt(e, -1);
+      this.r = paramQQAppInterface.getInt(d, -1);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("Load report time from sharedpreferences, time =");
+      paramQQAppInterface.append(this.p);
+      QLog.i("ReadInJoyGlobalReporter", 2, paramQQAppInterface.toString());
+    }
+    if (this.p != -1L) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  protected void c(QQAppInterface arg1)
+  {
+    k();
+    synchronized (this.g)
+    {
+      if (this.l == null) {
+        this.l = new ReadInJoyGlobalReporter.1(this);
+      }
+      if (this.k == null)
+      {
+        this.k = new Timer();
+        this.k.schedule(this.l, 1000L, 10000L);
+      }
+      return;
+    }
   }
   
   public void c(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
@@ -335,46 +296,73 @@ public class ReadInJoyGlobalReporter
     paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(b);
     localStringBuilder.append(paramQQAppInterface);
     paramQQAppInterface = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit();
-    paramQQAppInterface.putLong(jdField_b_of_type_JavaLangString, paramLong);
-    paramQQAppInterface.putInt(jdField_c_of_type_JavaLangString, paramInt2);
-    paramQQAppInterface.putInt(jdField_d_of_type_JavaLangString, paramInt1);
+    paramQQAppInterface.putLong(c, paramLong);
+    paramQQAppInterface.putInt(d, paramInt2);
+    paramQQAppInterface.putInt(e, paramInt1);
     paramQQAppInterface.commit();
   }
   
-  public void e()
+  public void d(QQAppInterface paramQQAppInterface)
   {
-    f();
-    h();
+    j();
+    c(paramQQAppInterface, -1L, -1, -1);
+    b(paramQQAppInterface, -1L);
+    a = null;
+    this.t = false;
   }
   
-  public void f()
+  public long g()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    return this.m;
+  }
+  
+  @NotNull
+  protected JSONObject h()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  protected String i()
+  {
+    double d1 = NetConnInfoCenter.getServerTimeMillis() - this.m;
+    Double.isNaN(d1);
+    return String.valueOf(d1 / 1000.0D);
+  }
+  
+  public void j()
+  {
+    k();
+    m();
+  }
+  
+  public void k()
+  {
+    synchronized (this.g)
     {
-      if (this.jdField_a_of_type_JavaUtilTimerTask != null)
+      if (this.l != null)
       {
-        this.jdField_a_of_type_JavaUtilTimerTask.cancel();
-        this.jdField_a_of_type_JavaUtilTimerTask = null;
+        this.l.cancel();
+        this.l = null;
       }
-      if (this.jdField_a_of_type_JavaUtilTimer != null)
+      if (this.k != null)
       {
-        this.jdField_a_of_type_JavaUtilTimer.cancel();
-        this.jdField_a_of_type_JavaUtilTimer = null;
+        this.k.cancel();
+        this.k = null;
       }
       return;
     }
   }
   
-  public void g()
+  public void l()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter$ScreenBroadcastReceiver == null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianGlueReportReadInJoyGlobalReporter$ScreenBroadcastReceiver = new ReadInJoyGlobalReporter.ScreenBroadcastReceiver(this, null);
+    if (this.j == null) {
+      this.j = new ReadInJoyGlobalReporter.ScreenBroadcastReceiver(this, null);
     }
     ReadInJoyGlobalReporter.2 local2 = new ReadInJoyGlobalReporter.2(this);
-    if (AppSetting.f)
+    if (AppSetting.g)
     {
       ThreadManager.executeOnSubThread(local2, true);
       return;
@@ -382,10 +370,10 @@ public class ReadInJoyGlobalReporter
     local2.run();
   }
   
-  public void h()
+  public void m()
   {
     ReadInJoyGlobalReporter.3 local3 = new ReadInJoyGlobalReporter.3(this);
-    if (AppSetting.f)
+    if (AppSetting.g)
     {
       ThreadManager.executeOnSubThread(local3, true);
       return;
@@ -395,7 +383,7 @@ public class ReadInJoyGlobalReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.report.ReadInJoyGlobalReporter
  * JD-Core Version:    0.7.0.1
  */

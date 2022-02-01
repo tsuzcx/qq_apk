@@ -44,19 +44,19 @@ public class UFTPbProtoRequestor
     paramInt = a;
     a = paramInt + 1;
     ((PBUInt32Field)localObject).set(paramInt);
-    if (paramUFTC2CUploadBaseInfo.a()) {
+    if (paramUFTC2CUploadBaseInfo.e()) {
       localReqBody.uint32_flag_support_mediaplatform.set(1);
     }
-    if (paramUFTC2CUploadBaseInfo.c() > 0L)
+    if (paramUFTC2CUploadBaseInfo.f() > 0L)
     {
       localObject = new cmd0x346.ExtensionReq();
       ((cmd0x346.ExtensionReq)localObject).uint64_id.set(3L);
-      ((cmd0x346.ExtensionReq)localObject).uint64_type.set(paramUFTC2CUploadBaseInfo.c());
-      if ((paramUFTC2CUploadBaseInfo.b() != null) && (paramUFTC2CUploadBaseInfo.b().length > 0)) {
-        ((cmd0x346.ExtensionReq)localObject).bytes_sig.set(ByteStringMicro.copyFrom(paramUFTC2CUploadBaseInfo.b()));
+      ((cmd0x346.ExtensionReq)localObject).uint64_type.set(paramUFTC2CUploadBaseInfo.f());
+      if ((paramUFTC2CUploadBaseInfo.g() != null) && (paramUFTC2CUploadBaseInfo.g().length > 0)) {
+        ((cmd0x346.ExtensionReq)localObject).bytes_sig.set(ByteStringMicro.copyFrom(paramUFTC2CUploadBaseInfo.g()));
       }
-      if ((paramUFTC2CUploadBaseInfo.b() != null) && (paramUFTC2CUploadBaseInfo.b().length() > 0)) {
-        ((cmd0x346.ExtensionReq)localObject).str_dst_phonenum.set(paramUFTC2CUploadBaseInfo.b());
+      if ((paramUFTC2CUploadBaseInfo.h() != null) && (paramUFTC2CUploadBaseInfo.h().length() > 0)) {
+        ((cmd0x346.ExtensionReq)localObject).str_dst_phonenum.set(paramUFTC2CUploadBaseInfo.h());
       }
       localReqBody.msg_extension_req.set((MessageMicro)localObject);
     }
@@ -171,7 +171,7 @@ public class UFTPbProtoRequestor
   public boolean b(AppRuntime paramAppRuntime, UFTC2CUploadReq paramUFTC2CUploadReq, UFTProtoRequestor.C2CReqUploadResponseCallback paramC2CReqUploadResponseCallback)
   {
     cmd0x346.ReqBody localReqBody = a(1800, paramUFTC2CUploadReq);
-    paramUFTC2CUploadReq = UFTPbProtoHelper.a(paramUFTC2CUploadReq);
+    paramUFTC2CUploadReq = UFTPbProtoHelper.b(paramUFTC2CUploadReq);
     localReqBody.msg_apply_upload_hit_req_v2.set(paramUFTC2CUploadReq);
     return a(paramAppRuntime, "OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_HIT_V2-1800", localReqBody.toByteArray(), null, new UFTPbProtoRequestor.2(this, paramC2CReqUploadResponseCallback));
   }
@@ -179,14 +179,14 @@ public class UFTPbProtoRequestor
   public boolean c(AppRuntime paramAppRuntime, UFTC2CUploadReq paramUFTC2CUploadReq, UFTProtoRequestor.C2CReqUploadResponseCallback paramC2CReqUploadResponseCallback)
   {
     cmd0x346.ReqBody localReqBody = a(1700, paramUFTC2CUploadReq);
-    paramUFTC2CUploadReq = UFTPbProtoHelper.a(paramUFTC2CUploadReq);
+    paramUFTC2CUploadReq = UFTPbProtoHelper.c(paramUFTC2CUploadReq);
     localReqBody.msg_apply_upload_req_v3.set(paramUFTC2CUploadReq);
     return a(paramAppRuntime, "OfflineFilleHandleSvr.pb_ftn_CMD_REQ_APPLY_UPLOAD_V3-1700", localReqBody.toByteArray(), null, new UFTPbProtoRequestor.3(this, localReqBody, paramC2CReqUploadResponseCallback));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.depend.proto.UFTPbProtoRequestor
  * JD-Core Version:    0.7.0.1
  */

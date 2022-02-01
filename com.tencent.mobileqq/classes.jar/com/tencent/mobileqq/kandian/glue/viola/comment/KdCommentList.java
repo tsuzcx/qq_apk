@@ -230,13 +230,13 @@ public class KdCommentList
     if (localObject == null) {
       return;
     }
-    localObject = ((ReadInJoyCommentListFragment)localObject).a();
+    localObject = ((ReadInJoyCommentListFragment)localObject).d();
     if (localObject == null) {
       return;
     }
     this.readInJoyCommentListFragment.a(this);
     this.readInJoyCommentListFragment.a(this);
-    this.readInJoyCommentListFragment.a();
+    this.readInJoyCommentListFragment.e();
     ((ListView)localObject).addHeaderView(this.kdHeaderView);
     localObject = this.kdHeaderView.getComponent();
     if (localObject != null)
@@ -265,7 +265,7 @@ public class KdCommentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.comment.KdCommentList
  * JD-Core Version:    0.7.0.1
  */

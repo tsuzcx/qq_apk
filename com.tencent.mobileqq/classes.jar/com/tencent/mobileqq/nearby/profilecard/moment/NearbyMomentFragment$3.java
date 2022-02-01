@@ -13,18 +13,14 @@ class NearbyMomentFragment$3
   public void a(boolean paramBoolean1, List<MomentFeedInfo> paramList, boolean paramBoolean2, int paramInt)
   {
     NearbyMomentFragment.a(this.a, false);
+    NearbyMomentFragment.c(this.a).setText(HardCodeUtil.a(2131905079));
     if (paramBoolean1)
     {
       NearbyMomentFragment.b(this.a, paramBoolean2);
-      if (paramBoolean2) {
-        NearbyMomentFragment.a(this.a).setText(HardCodeUtil.a(2131707252));
-      }
       NearbyMomentFragment.a(this.a, paramInt);
       if ((paramList != null) && (paramList.size() > 0))
       {
-        paramList = NearbyMomentFragment.a(this.a, paramList);
-        NearbyMomentFragment.a(this.a).addAll(paramList);
-        NearbyMomentFragment.a(this.a).b(paramList);
+        paramList = NearbyMomentFragment.b(this.a, paramList);
         NearbyMomentFragment.a(this.a, paramList);
       }
     }
@@ -32,7 +28,7 @@ class NearbyMomentFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment.3
  * JD-Core Version:    0.7.0.1
  */

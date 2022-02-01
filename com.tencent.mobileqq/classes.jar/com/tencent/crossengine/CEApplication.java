@@ -25,15 +25,17 @@ public class CEApplication
   private String mAssetsPath;
   private CEJSEventListener mCEJSEventListener;
   private CELifeCycle mCELifeCycle;
-  private CESurfaceView mCESurfaceView;
+  private CERenderView mCERenderView;
   private Context mContext;
   private int mDefaultFPS;
   private DisplayInfo mDisplayInfo;
   private boolean mEnableDebugJS = false;
+  private boolean mEnableGPUSkinning = false;
   private FrameCallback mFrameCallback;
   private GameMainThread mGameMainThread;
   private long mNativeHandle;
   private OffscreenWorldCallback mOffscreenWorldCallback;
+  private boolean mOptimizeSpineUpdate = false;
   private RenderContext mRenderContext;
   private String mStartUpWorld;
   private TouchProcessor mTouchProcessor;
@@ -47,7 +49,7 @@ public class CEApplication
     this.mTouchProcessor = new TouchProcessor(this);
   }
   
-  private native long nCreateNativeCEApp(long paramLong, String paramString1, String paramString2, InspectorBridge paramInspectorBridge, int paramInt);
+  private native long nCreateNativeCEApp(long paramLong, String paramString1, String paramString2, InspectorBridge paramInspectorBridge, int paramInt, boolean paramBoolean);
   
   private native void nCreateOffScreenWorld(long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean, InspectorBridge paramInspectorBridge);
   
@@ -70,6 +72,8 @@ public class CEApplication
   private native void nRunScriptFile(long paramLong, String paramString);
   
   private native void nRunWorldScriptFile(long paramLong, String paramString1, String paramString2);
+  
+  private native void nSetOptimizeSpineUpdate(long paramLong, boolean paramBoolean);
   
   private native void nSetTimeScaleForWorld(long paramLong, String paramString, int paramInt, float paramFloat);
   
@@ -102,6 +106,14 @@ public class CEApplication
     CELifeCycle localCELifeCycle = this.mCELifeCycle;
     if (localCELifeCycle != null) {
       localCELifeCycle.onInit();
+    }
+  }
+  
+  private void onOffscreenSurfaceReady(String paramString)
+  {
+    OffscreenWorldCallback localOffscreenWorldCallback = this.mOffscreenWorldCallback;
+    if (localOffscreenWorldCallback != null) {
+      localOffscreenWorldCallback.b(paramString);
     }
   }
   
@@ -151,12 +163,12 @@ public class CEApplication
     nCreateOffScreenWorld(this.mNativeHandle, paramString1, paramString2, paramInt1, paramInt2, paramBoolean, localInspectorBridge);
   }
   
-  public CESurfaceView createSurfaceView(Context paramContext)
+  public CERenderView createRenderView(Context paramContext)
   {
-    if (this.mCESurfaceView == null) {
-      this.mCESurfaceView = new CESurfaceView(paramContext, this.mRenderContext, this.mTouchProcessor);
+    if (this.mCERenderView == null) {
+      this.mCERenderView = new CERenderView(paramContext, this.mRenderContext, this.mTouchProcessor);
     }
-    return this.mCESurfaceView;
+    return this.mCERenderView;
   }
   
   public void destoryWorld(String paramString)
@@ -263,7 +275,7 @@ public class CEApplication
     nRunWorldScriptFile(this.mNativeHandle, paramString1, paramString2);
   }
   
-  void setAssetsPath(String paramString)
+  public void setAssetsPath(String paramString)
   {
     this.mAssetsPath = paramString;
   }
@@ -288,6 +300,11 @@ public class CEApplication
     this.mEnableDebugJS = paramBoolean;
   }
   
+  public void setEnableGPUSkinning(boolean paramBoolean)
+  {
+    this.mEnableGPUSkinning = paramBoolean;
+  }
+  
   public void setFontPixelsFactory(FontPixelsFactory paramFontPixelsFactory)
   {
     SpineTextPainter.setFontPixelsFactory(paramFontPixelsFactory);
@@ -308,6 +325,11 @@ public class CEApplication
   public void setOffscreenWorldCallback(OffscreenWorldCallback paramOffscreenWorldCallback)
   {
     this.mOffscreenWorldCallback = paramOffscreenWorldCallback;
+  }
+  
+  public void setOptimizeSpineUpdate(boolean paramBoolean)
+  {
+    this.mOptimizeSpineUpdate = paramBoolean;
   }
   
   public void setStartUpWorld(String paramString)
@@ -332,13 +354,21 @@ public class CEApplication
     {
       localInspectorBridge = null;
     }
-    this.mNativeHandle = nCreateNativeCEApp(this.mRenderContext.getNativeHandle(), this.mAssetsPath, this.mStartUpWorld, localInspectorBridge, this.mDefaultFPS);
+    this.mNativeHandle = nCreateNativeCEApp(this.mRenderContext.getNativeHandle(), this.mAssetsPath, this.mStartUpWorld, localInspectorBridge, this.mDefaultFPS, this.mEnableGPUSkinning);
+    try
+    {
+      nSetOptimizeSpineUpdate(this.mNativeHandle, this.mOptimizeSpineUpdate);
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
     this.mGameMainThread.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.crossengine.CEApplication
  * JD-Core Version:    0.7.0.1
  */

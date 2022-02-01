@@ -26,11 +26,11 @@ public class QueryNextTask
     if (paramVarArgs == null) {
       return null;
     }
-    List localList = paramVarArgs.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mMediaQueryHelper.mediaList;
+    List localList = paramVarArgs.e.mMediaQueryHelper.mediaList;
     int i = localList.size();
-    if (paramVarArgs.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.a.compareAndSet(false, true))
+    if (paramVarArgs.g.L.compareAndSet(false, true))
     {
-      paramVarArgs.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.mMediaQueryHelper.queryNext();
+      paramVarArgs.e.mMediaQueryHelper.queryNext();
       paramVarArgs.a(localList, i);
       if (QLog.isColorLevel())
       {
@@ -39,7 +39,7 @@ public class QueryNextTask
         localStringBuilder.append(localList.size());
         QLog.d("QQAlbum", 2, localStringBuilder.toString());
       }
-      paramVarArgs.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListBaseData.a.set(false);
+      paramVarArgs.g.L.set(false);
     }
     return new Pair(localList, Integer.valueOf(i));
   }
@@ -50,8 +50,8 @@ public class QueryNextTask
     if (localPhotoListCustomization == null) {
       return;
     }
-    localPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.a((List)paramPair.first);
-    localPhotoListCustomization.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.notifyItemRangeInserted(((Integer)paramPair.second).intValue(), ((List)paramPair.first).size() - ((Integer)paramPair.second).intValue());
+    localPhotoListCustomization.h.t.a((List)paramPair.first);
+    localPhotoListCustomization.h.t.notifyItemRangeInserted(((Integer)paramPair.second).intValue(), ((List)paramPair.first).size() - ((Integer)paramPair.second).intValue());
   }
   
   protected void onPreExecute()
@@ -61,7 +61,7 @@ public class QueryNextTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.photolist.QueryNextTask
  * JD-Core Version:    0.7.0.1
  */

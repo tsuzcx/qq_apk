@@ -9,13 +9,7 @@ import com.tencent.avgame.gameroom.festivalstage.questionoption.IQuestionOptionP
 
 public abstract interface IStagePresenter
 {
-  public abstract RectF a();
-  
-  public abstract Drawable a();
-  
   public abstract IGameRoomPresenter a();
-  
-  public abstract void a();
   
   public abstract void a(ImageView paramImageView, long paramLong1, long paramLong2);
   
@@ -35,11 +29,7 @@ public abstract interface IStagePresenter
   
   public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean a(EngineData paramEngineData);
-  
-  public abstract Drawable b();
-  
-  public abstract void b();
+  public abstract RectF b();
   
   public abstract void b(EngineData paramEngineData);
   
@@ -53,11 +43,21 @@ public abstract interface IStagePresenter
   
   public abstract void c(IGameStagePresenter paramIGameStagePresenter);
   
+  public abstract boolean c(EngineData paramEngineData);
+  
   public abstract void d();
   
   public abstract void d(IGameStagePresenter paramIGameStagePresenter);
   
+  public abstract Drawable e();
+  
   public abstract void e(IGameStagePresenter paramIGameStagePresenter);
+  
+  public abstract Drawable f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

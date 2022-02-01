@@ -29,12 +29,7 @@ public class PhoneContactAddBuilder
   public PhoneContactAddBuilder(Context paramContext, AppInterface paramAppInterface, SystemMsgListAdapter paramSystemMsgListAdapter, NewFriendMessage paramNewFriendMessage)
   {
     super(paramContext, paramAppInterface, paramSystemMsgListAdapter, paramNewFriendMessage);
-    this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(paramContext);
-  }
-  
-  protected int a()
-  {
-    return 1;
+    this.f = a(paramContext);
   }
   
   public View a(int paramInt, View paramView)
@@ -47,47 +42,47 @@ public class PhoneContactAddBuilder
     else
     {
       localPhoneContactAddHolder = new PhoneContactAddBuilder.PhoneContactAddHolder();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561509, localPhoneContactAddHolder);
-      localPhoneContactAddHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361799));
-      localPhoneContactAddHolder.h = ((TextView)paramView.findViewById(2131371877));
-      localPhoneContactAddHolder.i = ((TextView)paramView.findViewById(2131376487));
-      localPhoneContactAddHolder.l = ((TextView)paramView.findViewById(2131362299));
-      localPhoneContactAddHolder.j = ((TextView)paramView.findViewById(2131377726));
-      localPhoneContactAddHolder.k = ((TextView)paramView.findViewById(2131376485));
-      localPhoneContactAddHolder.a = ((Button)paramView.findViewById(2131376477));
-      b(localPhoneContactAddHolder.jdField_f_of_type_AndroidWidgetImageView);
+      paramView = a(this.c, 2131627870, localPhoneContactAddHolder);
+      localPhoneContactAddHolder.w = ((ImageView)paramView.findViewById(2131427337));
+      localPhoneContactAddHolder.x = ((TextView)paramView.findViewById(2131439320));
+      localPhoneContactAddHolder.y = ((TextView)paramView.findViewById(2131444728));
+      localPhoneContactAddHolder.C = ((TextView)paramView.findViewById(2131427898));
+      localPhoneContactAddHolder.z = ((TextView)paramView.findViewById(2131446184));
+      localPhoneContactAddHolder.B = ((TextView)paramView.findViewById(2131444726));
+      localPhoneContactAddHolder.A = ((Button)paramView.findViewById(2131444718));
+      b(localPhoneContactAddHolder.w);
       paramView.setTag(localPhoneContactAddHolder);
     }
     localPhoneContactAddHolder.leftView.setTag(localPhoneContactAddHolder);
     localPhoneContactAddHolder.leftView.setOnClickListener(this);
-    a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage, localPhoneContactAddHolder, this);
+    a(this.c, paramView, paramInt, this.g, localPhoneContactAddHolder, this);
     NewFriendUtil.a(localPhoneContactAddHolder.leftView, false);
-    PhoneContactAdd localPhoneContactAdd = ((PhoneContactAddMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a;
+    PhoneContactAdd localPhoneContactAdd = ((PhoneContactAddMessage)this.g).a;
     if (!TextUtils.isEmpty(localPhoneContactAdd.name))
     {
-      localPhoneContactAddHolder.h.setVisibility(0);
-      localPhoneContactAddHolder.h.setText(localPhoneContactAdd.name);
+      localPhoneContactAddHolder.x.setVisibility(0);
+      localPhoneContactAddHolder.x.setText(localPhoneContactAdd.name);
     }
     else
     {
-      localPhoneContactAddHolder.h.setVisibility(8);
+      localPhoneContactAddHolder.x.setVisibility(8);
     }
-    localPhoneContactAddHolder.l.setVisibility(8);
-    localPhoneContactAddHolder.j.setVisibility(8);
+    localPhoneContactAddHolder.C.setVisibility(8);
+    localPhoneContactAddHolder.z.setVisibility(8);
     if (!TextUtils.isEmpty(localPhoneContactAdd.remindInfo))
     {
-      localPhoneContactAddHolder.i.setVisibility(0);
-      localPhoneContactAddHolder.i.setText(localPhoneContactAdd.remindInfo);
+      localPhoneContactAddHolder.y.setVisibility(0);
+      localPhoneContactAddHolder.y.setText(localPhoneContactAdd.remindInfo);
     }
     else
     {
-      localPhoneContactAddHolder.i.setVisibility(8);
+      localPhoneContactAddHolder.y.setVisibility(8);
     }
-    localPhoneContactAddHolder.k.setVisibility(0);
-    localPhoneContactAddHolder.a.setVisibility(8);
-    localPhoneContactAddHolder.k.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131718222));
-    localPhoneContactAddHolder.jdField_f_of_type_JavaLangString = localPhoneContactAdd.unifiedCode;
-    localPhoneContactAddHolder.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqNewfriendUiAdapterSystemMsgListBaseAdapter.a(11, localPhoneContactAdd.unifiedCode));
+    localPhoneContactAddHolder.B.setVisibility(0);
+    localPhoneContactAddHolder.A.setVisibility(8);
+    localPhoneContactAddHolder.B.setText(this.c.getString(2131915704));
+    localPhoneContactAddHolder.D = localPhoneContactAdd.unifiedCode;
+    localPhoneContactAddHolder.w.setImageBitmap(this.e.a(11, localPhoneContactAdd.unifiedCode));
     return paramView;
   }
   
@@ -96,16 +91,21 @@ public class PhoneContactAddBuilder
     ThreadManager.postImmediately(new PhoneContactAddBuilder.1(this), null, true);
   }
   
+  protected int b()
+  {
+    return 1;
+  }
+  
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131376644)
+    if (paramView.getId() == 2131444905)
     {
       if ((paramView.getTag() instanceof PhoneContactAddBuilder.PhoneContactAddHolder))
       {
-        PhoneContactAdd localPhoneContactAdd = ((PhoneContactAddMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendMsgNewFriendMessage).a;
+        PhoneContactAdd localPhoneContactAdd = ((PhoneContactAddMessage)this.g).a;
         if (localPhoneContactAdd != null)
         {
-          Object localObject = (IPhoneContactService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IPhoneContactService.class, "");
+          Object localObject = (IPhoneContactService)this.d.getRuntimeService(IPhoneContactService.class, "");
           if (((IPhoneContactService)localObject).queryContactByCodeNumber(localPhoneContactAdd.unifiedCode) == null) {
             localObject = new AllInOne(localPhoneContactAdd.unifiedCode, 29);
           } else if (((IPhoneContactService)localObject).isBindedIgnoreUpload()) {
@@ -114,8 +114,8 @@ public class PhoneContactAddBuilder
             localObject = new AllInOne(localPhoneContactAdd.unifiedCode, 29);
           }
           ((AllInOne)localObject).nickname = localPhoneContactAdd.name;
-          ProfileUtils.openProfileCardForResult((Activity)this.jdField_a_of_type_AndroidContentContext, (AllInOne)localObject, 227);
-          ((INewFriendService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(INewFriendService.class, "")).markSystemMsgReaded();
+          ProfileUtils.openProfileCardForResult((Activity)this.c, (AllInOne)localObject, 227);
+          ((INewFriendService)this.d.getRuntimeService(INewFriendService.class, "")).markSystemMsgReaded();
         }
       }
     }
@@ -127,7 +127,7 @@ public class PhoneContactAddBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.ui.builder.PhoneContactAddBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -50,7 +50,7 @@ public abstract class FaceDrawable
     label62:
     this.mFaceInfo = new FaceInfo(paramInt1, paramString, false, paramByte, AvatarUtil.a((byte)paramInt3), paramBoolean1, paramInt2, paramBoolean2, paramInt4);
     if ((paramInt1 == 4) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(paramString))) {
-      this.mFaceInfo.a = 113;
+      this.mFaceInfo.b = 113;
     }
     if ((this instanceof NearByFaceDrawable)) {
       paramAppInterface = getBitmapFromCache();
@@ -99,7 +99,7 @@ public abstract class FaceDrawable
       if (paramInt2 == 1) {
         return new ColorDrawable(Color.parseColor("#ebe9e9"));
       }
-      return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultFaceDrawable(false);
+      return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultFaceDrawable(true);
     }
     return ((IQQAvatarUtilApi)QRoute.api(IQQAvatarUtilApi.class)).getDefaultDiscusionFaceDrawable();
   }
@@ -308,7 +308,7 @@ public abstract class FaceDrawable
     {
       this.tempRectF.set(getBounds());
       Object localObject = this.mFaceInfo;
-      if ((localObject != null) && (((FaceInfo)localObject).c == 1))
+      if ((localObject != null) && (((FaceInfo)localObject).e == 1))
       {
         super.draw(paramCanvas);
         paramCanvas.drawRoundRect(this.tempRectF, 10.0F, 10.0F, this.mMaskPaint);
@@ -440,7 +440,7 @@ public abstract class FaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawable
  * JD-Core Version:    0.7.0.1
  */

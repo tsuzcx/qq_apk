@@ -59,7 +59,7 @@ class EngineInstaller$2
     paramString = new File(this.val$tmpZipFile);
     long l1 = paramString.length();
     long l2 = this.val$engineFileSize;
-    if ((l1 != l2) && (l2 >= 0L))
+    if ((l1 != l2) && (l2 > 0L))
     {
       paramDownloadResult = new StringBuilder();
       paramDownloadResult.append("[MiniEng]refuse to unzip ");
@@ -108,7 +108,7 @@ class EngineInstaller$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineInstaller.2
  * JD-Core Version:    0.7.0.1
  */

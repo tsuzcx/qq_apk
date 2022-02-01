@@ -71,8 +71,8 @@ public class GroupFileElemDecoder
     long l3 = paramStringBuilder.from_uin.get();
     long l5 = paramStringBuilder.msg_time.get();
     long l6 = paramStringBuilder.msg_seq.get();
-    long l4 = ((MessageHandler)localObject1).a.getLongAccountUin();
-    if (MessageHandlerUtils.a(((MessageHandler)localObject1).a, 3000, String.valueOf(l1), String.valueOf(l3), l5, l6)) {
+    long l4 = ((MessageHandler)localObject1).n.getLongAccountUin();
+    if (MessageHandlerUtils.a(((MessageHandler)localObject1).n, 3000, String.valueOf(l1), String.valueOf(l3), l5, l6)) {
       return;
     }
     try
@@ -120,7 +120,7 @@ public class GroupFileElemDecoder
     int j = 0;
     int i = 0;
     label439:
-    paramMsg.uniseq = ((MessageHandler)localObject1).a.getFileTransferHandler().a(paramMsg.uniseq, l1, l3, l6, l2, l5, paramList, j, i);
+    paramMsg.uniseq = ((MessageHandler)localObject1).n.getFileTransferHandler().a(paramMsg.uniseq, l1, l3, l6, l2, l5, paramList, j, i);
     long l1 = paramList.uint64_file_size.get();
     boolean bool;
     if (l3 == l4) {
@@ -172,7 +172,7 @@ public class GroupFileElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.GroupFileElemDecoder
  * JD-Core Version:    0.7.0.1
  */

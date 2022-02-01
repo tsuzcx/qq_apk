@@ -16,16 +16,16 @@ class WSFollowFriendFeedHolder$1
   {
     if (!NetworkUtil.a(WSFollowFriendFeedHolder.a(this.a)))
     {
-      ToastUtil.a().a(2131720447);
+      ToastUtil.a().a(2131918123);
       return;
     }
-    WSFollowFriendFeedHolder.a(this.a);
-    WSFollowBeaconReport.b(WSFollowFriendFeedHolder.a(this.a) + 1, 1004001, WSFollowFriendFeedHolder.a(this.a), WSFollowFriendFeedHolder.a(this.a).a(), WSFollowFriendFeedHolder.a(this.a).a());
+    WSFollowFriendFeedHolder.b(this.a);
+    WSFollowBeaconReport.b(WSFollowFriendFeedHolder.c(this.a) + 1, 1004001, WSFollowFriendFeedHolder.d(this.a), WSFollowFriendFeedHolder.e(this.a).c(), WSFollowFriendFeedHolder.e(this.a).d());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedHolder.1
  * JD-Core Version:    0.7.0.1
  */

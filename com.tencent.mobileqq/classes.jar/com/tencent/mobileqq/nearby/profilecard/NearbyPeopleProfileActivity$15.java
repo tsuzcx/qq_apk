@@ -7,12 +7,12 @@ class NearbyPeopleProfileActivity$15
   
   public void run()
   {
-    NearbyPeopleProfileActivity.access$500(this.this$0).i();
+    NearbyPeopleProfileActivity.access$400(this.this$0).m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.15
  * JD-Core Version:    0.7.0.1
  */

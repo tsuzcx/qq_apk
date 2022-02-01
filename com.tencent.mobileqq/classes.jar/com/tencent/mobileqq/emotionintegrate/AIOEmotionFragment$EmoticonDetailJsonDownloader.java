@@ -18,23 +18,23 @@ import com.tencent.util.WeakReferenceHandler;
 public class AIOEmotionFragment$EmoticonDetailJsonDownloader
   extends EmotionJsonDownloadListener
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IPicEmoticonInfo jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private int b;
+  private Context c;
+  private IPicEmoticonInfo d;
+  private QQAppInterface e;
+  private SessionInfo f;
+  private QQProgressDialog g;
   
   public AIOEmotionFragment$EmoticonDetailJsonDownloader(AIOEmotionFragment paramAIOEmotionFragment) {}
   
   public void a(int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, IPicEmoticonInfo paramIPicEmoticonInfo, SessionInfo paramSessionInfo, QQProgressDialog paramQQProgressDialog)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo = paramIPicEmoticonInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = paramQQProgressDialog;
+    this.b = paramInt;
+    this.e = paramQQAppInterface;
+    this.c = paramContext;
+    this.d = paramIPicEmoticonInfo;
+    this.f = paramSessionInfo;
+    this.g = paramQQProgressDialog;
   }
   
   public void onJsonComplete(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
@@ -45,39 +45,39 @@ public class AIOEmotionFragment$EmoticonDetailJsonDownloader
       paramBundle.append("onJsonComplete:");
       paramBundle.append(paramEmoticonPackage.epId);
       paramBundle.append(" ,currEpid:");
-      paramBundle.append(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId);
+      paramBundle.append(this.d.getEmoticon().epId);
       QLog.d("AIOEmotionFragment", 2, paramBundle.toString());
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     if (i == 32)
     {
       boolean bool;
-      if ((paramInt == 0) && (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId))) {
+      if ((paramInt == 0) && (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.d.getEmoticon().epId))) {
         bool = true;
       } else {
         bool = false;
       }
-      AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, bool);
+      AIOEmotionFragment.a(this.a, bool);
       return;
     }
     if (paramInt == 0)
     {
-      if (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId)) {
+      if (Long.parseLong(paramEmoticonPackage.epId) != Long.parseLong(this.d.getEmoticon().epId)) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
-      MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, true);
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.obtainMessage(1000);
+      this.e.getPreferences().edit().putInt("emosm_json_last_download_timestamp", (int)(System.currentTimeMillis() / 1000L)).commit();
+      MarketFaceItemBuilder.a(this.b, this.c, this.e, paramEmoticonPackage, this.d, this.f, this.g, true);
+      paramBundle = this.a.f.obtainMessage(1000);
       paramBundle.obj = paramEmoticonPackage.name;
-      this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a.sendMessage(paramBundle);
+      this.a.f.sendMessage(paramBundle);
       return;
     }
-    MarketFaceItemBuilder.a(1000 + i, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog, true);
+    MarketFaceItemBuilder.a(1000 + i, this.c, this.e, paramEmoticonPackage, this.d, this.f, this.g, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment.EmoticonDetailJsonDownloader
  * JD-Core Version:    0.7.0.1
  */

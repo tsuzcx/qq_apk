@@ -7,63 +7,63 @@ import java.util.NoSuchElementException;
 abstract class SoftHashMap$HashIterator<T>
   implements Iterator<T>
 {
-  int jdField_a_of_type_Int;
-  SoftHashMap.Entry<K, V> jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = null;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
-  SoftHashMap.Entry<K, V> jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = null;
-  Object jdField_b_of_type_JavaLangObject = null;
+  int b;
+  SoftHashMap.Entry<K, V> c = null;
+  SoftHashMap.Entry<K, V> d = null;
+  int e = SoftHashMap.a(this.h);
+  Object f = null;
+  Object g = null;
   
   SoftHashMap$HashIterator(SoftHashMap paramSoftHashMap)
   {
     int i;
     if (paramSoftHashMap.size() != 0) {
-      i = SoftHashMap.a(paramSoftHashMap).length;
+      i = SoftHashMap.b(paramSoftHashMap).length;
     } else {
       i = 0;
     }
-    this.jdField_a_of_type_Int = i;
+    this.b = i;
   }
   
-  protected SoftHashMap.Entry<K, V> a()
+  protected SoftHashMap.Entry<K, V> b()
   {
-    if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) == this.jdField_b_of_type_Int)
+    if (SoftHashMap.a(this.h) == this.e)
     {
-      if ((this.jdField_a_of_type_JavaLangObject == null) && (!hasNext())) {
+      if ((this.f == null) && (!hasNext())) {
         throw new NoSuchElementException();
       }
-      SoftHashMap.Entry localEntry = this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry;
-      this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = localEntry;
-      this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = SoftHashMap.Entry.a(localEntry);
-      this.jdField_b_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-      this.jdField_a_of_type_JavaLangObject = null;
-      return this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry;
+      SoftHashMap.Entry localEntry = this.c;
+      this.d = localEntry;
+      this.c = SoftHashMap.Entry.c(localEntry);
+      this.g = this.f;
+      this.f = null;
+      return this.d;
     }
     throw new ConcurrentModificationException();
   }
   
   public boolean hasNext()
   {
-    SoftHashMap.Entry[] arrayOfEntry = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
-    while (this.jdField_a_of_type_JavaLangObject == null)
+    SoftHashMap.Entry[] arrayOfEntry = SoftHashMap.b(this.h);
+    while (this.f == null)
     {
-      SoftHashMap.Entry localEntry = this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry;
-      int i = this.jdField_a_of_type_Int;
+      SoftHashMap.Entry localEntry = this.c;
+      int i = this.b;
       while ((localEntry == null) && (i > 0))
       {
         i -= 1;
         localEntry = arrayOfEntry[i];
       }
-      this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = localEntry;
-      this.jdField_a_of_type_Int = i;
+      this.c = localEntry;
+      this.b = i;
       if (localEntry == null)
       {
-        this.jdField_b_of_type_JavaLangObject = null;
+        this.g = null;
         return false;
       }
-      this.jdField_a_of_type_JavaLangObject = localEntry.get();
-      if (this.jdField_a_of_type_JavaLangObject == null) {
-        this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = SoftHashMap.Entry.a(this.jdField_a_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry);
+      this.f = localEntry.get();
+      if (this.f == null) {
+        this.c = SoftHashMap.Entry.c(this.c);
       }
     }
     return true;
@@ -71,14 +71,14 @@ abstract class SoftHashMap$HashIterator<T>
   
   public void remove()
   {
-    if (this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry != null)
+    if (this.d != null)
     {
-      if (SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap) == this.jdField_b_of_type_Int)
+      if (SoftHashMap.a(this.h) == this.e)
       {
-        this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap.remove(this.jdField_b_of_type_JavaLangObject);
-        this.jdField_b_of_type_Int = SoftHashMap.a(this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap);
-        this.jdField_b_of_type_CommonQzoneComponentCacheCommonSoftHashMap$Entry = null;
-        this.jdField_b_of_type_JavaLangObject = null;
+        this.h.remove(this.g);
+        this.e = SoftHashMap.a(this.h);
+        this.d = null;
+        this.g = null;
         return;
       }
       throw new ConcurrentModificationException();
@@ -88,7 +88,7 @@ abstract class SoftHashMap$HashIterator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     common.qzone.component.cache.common.SoftHashMap.HashIterator
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,11 @@ class WatermarkDataManager$1
       if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
       {
         SosoLocation localSosoLocation = paramSosoLbsInfo.mLocation;
-        WatermarkDataManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager, paramSosoLbsInfo.mLocation);
+        WatermarkDataManager.a(this.b, paramSosoLbsInfo.mLocation);
         double d1 = localSosoLocation.mLat02;
         double d2 = localSosoLocation.mLon02;
         AEQLog.b("WaterMarkManager", "LbsManagerService.startLocation: success");
-        WatermarkDataManager.a(this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager, d1, d2, this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiWatermarkWatermarkDataManager$IWatermarkDictCallback);
+        WatermarkDataManager.a(this.b, d1, d2, this.a);
         return;
       }
       AEQLog.d("WaterMarkManager", "LbsManagerService.startLocation: location is null");
@@ -35,7 +35,7 @@ class WatermarkDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkDataManager.1
  * JD-Core Version:    0.7.0.1
  */

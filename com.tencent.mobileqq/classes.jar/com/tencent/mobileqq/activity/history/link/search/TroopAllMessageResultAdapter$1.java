@@ -22,22 +22,22 @@ class TroopAllMessageResultAdapter$1
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("loadMessageResult, run(), keyword = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)???).append(this.a);
       ((StringBuilder)???).append(", loadType = ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)???).append(this.b);
       QLog.i("LinkMessageResultAdapter", 2, ((StringBuilder)???).toString());
     }
     ??? = null;
-    int i = this.jdField_a_of_type_Int;
+    int i = this.b;
     boolean bool1 = true;
     if (i == 1)
     {
-      ??? = TroopAllMessageResultAdapter.a(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.a(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.b(this.this$0).jdField_a_of_type_Int, TroopAllMessageResultAdapter.c(this.this$0).d);
-      HistoryChatMsgSearchKeyUtil.a(TroopAllMessageResultAdapter.b(this.this$0).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
+      ??? = TroopAllMessageResultAdapter.d(this.this$0).getMessageFacade().a(this.a, TroopAllMessageResultAdapter.a(this.this$0).b, TroopAllMessageResultAdapter.b(this.this$0).a, TroopAllMessageResultAdapter.c(this.this$0).e);
+      HistoryChatMsgSearchKeyUtil.a(TroopAllMessageResultAdapter.e(this.this$0).getCurrentAccountUin(), this.a);
     }
     else if (i == 2)
     {
-      ??? = TroopAllMessageResultAdapter.c(this.this$0).getMessageFacade().a("", TroopAllMessageResultAdapter.d(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.e(this.this$0).jdField_a_of_type_Int, TroopAllMessageResultAdapter.f(this.this$0).d);
+      ??? = TroopAllMessageResultAdapter.i(this.this$0).getMessageFacade().a("", TroopAllMessageResultAdapter.f(this.this$0).b, TroopAllMessageResultAdapter.g(this.this$0).a, TroopAllMessageResultAdapter.h(this.this$0).e);
     }
     Object localObject2 = new ArrayList();
     Object localObject4 = TroopAllMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)???, (ArrayList)localObject2);
@@ -52,9 +52,9 @@ class TroopAllMessageResultAdapter$1
     {
       synchronized (this.this$0.a)
       {
-        if (TroopAllMessageResultAdapter.a(this.this$0).equals(this.jdField_a_of_type_JavaLangString))
+        if (TroopAllMessageResultAdapter.j(this.this$0).equals(this.a))
         {
-          i = this.jdField_a_of_type_Int;
+          i = this.b;
           boolean bool2 = false;
           TroopAllMessageResultAdapter localTroopAllMessageResultAdapter;
           if (i == 1)
@@ -66,15 +66,15 @@ class TroopAllMessageResultAdapter$1
             }
             TroopAllMessageResultAdapter.a(localTroopAllMessageResultAdapter, bool1);
             TroopAllMessageResultAdapter.a(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = TroopAllMessageResultAdapter.a(this.this$0).obtainMessage(2, localObject2);
+            localObject2 = TroopAllMessageResultAdapter.k(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 1;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
-          else if (this.jdField_a_of_type_Int == 2)
+          else if (this.b == 2)
           {
             localTroopAllMessageResultAdapter = this.this$0;
             if (((ArrayList)localObject2).size() >= 20) {
@@ -82,11 +82,11 @@ class TroopAllMessageResultAdapter$1
             }
             TroopAllMessageResultAdapter.b(localTroopAllMessageResultAdapter, bool1);
             TroopAllMessageResultAdapter.b(this.this$0, (ChatHistorySearchData)localObject4);
-            localObject2 = TroopAllMessageResultAdapter.b(this.this$0).obtainMessage(2, localObject2);
+            localObject2 = TroopAllMessageResultAdapter.l(this.this$0).obtainMessage(2, localObject2);
             ((Message)localObject2).arg1 = 2;
             localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
+            ((Bundle)localObject4).putLong("searchSequence", this.c);
+            ((Bundle)localObject4).putString("searchKeyword", this.a);
             ((Message)localObject2).setData((Bundle)localObject4);
             ((Message)localObject2).sendToTarget();
           }
@@ -100,7 +100,7 @@ class TroopAllMessageResultAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.1
  * JD-Core Version:    0.7.0.1
  */

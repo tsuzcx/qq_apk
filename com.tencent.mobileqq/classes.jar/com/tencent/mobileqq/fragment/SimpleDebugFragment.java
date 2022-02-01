@@ -7,24 +7,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.simpleui.SimpleUIProtocolUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
+import com.tencent.qzonehub.api.IQZoneApiProxy;
 
 public class SimpleDebugFragment
   extends IphoneTitleBarFragment
 {
+  void a()
+  {
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.mContentView.findViewById(2131446685);
+    localFormSwitchItem.setChecked(((IQZoneApiProxy)QRoute.api(IQZoneApiProxy.class)).getShowQzoneInSimpleUI());
+    localFormSwitchItem.setOnCheckedChangeListener(new SimpleDebugFragment.3(this));
+  }
+  
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131369865);
+    a();
+    paramLayoutInflater = (RadioGroup)this.mContentView.findViewById(2131437002);
     int k = SimpleUIProtocolUtil.a();
-    int j = 2131381110;
+    int j = 2131450128;
     int i = j;
     if (k != 0) {
       if (k != 1) {
         i = j;
       } else {
-        i = 2131367785;
+        i = 2131434356;
       }
     }
     paramLayoutInflater.check(i);
@@ -35,7 +46,7 @@ public class SimpleDebugFragment
   
   protected int getContentLayoutId()
   {
-    return 2131558492;
+    return 2131624042;
   }
   
   public boolean onBackEvent()
@@ -47,7 +58,7 @@ public class SimpleDebugFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SimpleDebugFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -49,6 +49,8 @@ public abstract interface IPasswdRedBagService
   
   public abstract String getRandomPasswd();
   
+  public abstract String hanleShengpiziGrayTips(String paramString1, int paramInt, String paramString2);
+  
   public abstract boolean isFirstInAio();
   
   public abstract void loadConfigs();
@@ -77,10 +79,6 @@ public abstract interface IPasswdRedBagService
   
   public abstract void reportPasswdTipsClick(String paramString);
   
-  public abstract void requestPasswdRedBagByDisgroups();
-  
-  public abstract void requestPasswdRedBagByGroups();
-  
   public abstract void saveDisGroupInfos(HashMap<String, String> paramHashMap);
   
   public abstract void saveGroupInfos(HashMap<String, String> paramHashMap);
@@ -107,7 +105,7 @@ public abstract interface IPasswdRedBagService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService
  * JD-Core Version:    0.7.0.1
  */

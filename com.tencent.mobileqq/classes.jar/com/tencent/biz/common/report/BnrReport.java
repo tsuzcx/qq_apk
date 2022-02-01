@@ -40,89 +40,9 @@ import org.json.JSONObject;
 public class BnrReport
 {
   protected static long a = 0L;
-  protected static ArrayList<Integer> a;
-  protected static boolean a = false;
   protected static boolean b = false;
-  
-  protected static int a(int paramInt)
-  {
-    ArrayList localArrayList = jdField_a_of_type_JavaUtilArrayList;
-    if (localArrayList == null) {
-      return -1;
-    }
-    int i = 0;
-    int j = localArrayList.size();
-    while (i < j)
-    {
-      if (((Integer)jdField_a_of_type_JavaUtilArrayList.get(i)).intValue() == paramInt) {
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
-  }
-  
-  protected static SparseIntArray a()
-  {
-    new ArrayList();
-    Object localObject1 = a();
-    if (localObject1 == null) {
-      return null;
-    }
-    SparseIntArray localSparseIntArray = new SparseIntArray();
-    try
-    {
-      localObject1 = ((JSONObject)localObject1).getJSONArray("ls");
-      int j = ((JSONArray)localObject1).length();
-      int i = 0;
-      while (i < j)
-      {
-        try
-        {
-          localSparseIntArray.put(((JSONArray)localObject1).getJSONObject(i).getInt("id"), 0);
-        }
-        catch (JSONException localJSONException2)
-        {
-          localJSONException2.printStackTrace();
-        }
-        i += 1;
-      }
-      localObject1 = BaseApplication.getContext().getSharedPreferences("pref_bnr_report", 0).getString("bnr_group_update_ver", "");
-      Object localObject2;
-      if (QLog.isDevelopLevel())
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("local ver:");
-        ((StringBuilder)localObject2).append((String)localObject1);
-        QLog.d("BnrReport", 4, ((StringBuilder)localObject2).toString());
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject1 = ((String)localObject1).split("\\|");
-        j = localObject1.length;
-        i = 0;
-        while (i < j)
-        {
-          try
-          {
-            localObject2 = localObject1[i].split("\\-");
-            localSparseIntArray.put(Integer.valueOf(localObject2[0]).intValue(), Integer.valueOf(localObject2[1]).intValue());
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            localNumberFormatException.printStackTrace();
-          }
-          i += 1;
-        }
-      }
-      return localSparseIntArray;
-    }
-    catch (JSONException localJSONException1)
-    {
-      localJSONException1.printStackTrace();
-    }
-    return null;
-  }
+  protected static ArrayList<Integer> c;
+  protected static boolean d = false;
   
   protected static BnrReport.BNRConfigMsg a(String paramString)
   {
@@ -158,7 +78,7 @@ public class BnrReport
       ((BnrReport.ExtInfo)localObject1).app_ver.set(paramString);
       ((BnrReport.ExtInfo)localObject1).sys_ver.set(((StringBuffer)localObject2).toString());
       paramString = new BnrReport.BNReportConfigReq();
-      localObject2 = a();
+      localObject2 = f();
       if (localObject2 != null)
       {
         int j = ((SparseIntArray)localObject2).size();
@@ -189,48 +109,13 @@ public class BnrReport
     return null;
   }
   
-  protected static JSONObject a()
-  {
-    try
-    {
-      InputStream localInputStream = BaseApplication.getContext().getAssets().open("qb_report_config.json");
-      Object localObject = Util.a(localInputStream);
-      try
-      {
-        localInputStream.close();
-      }
-      catch (IOException localIOException2)
-      {
-        localIOException2.printStackTrace();
-      }
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return null;
-      }
-      try
-      {
-        localObject = new JSONObject((String)localObject);
-        return localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.i("BnrReport", 2, "error : loadAllConfig");
-        }
-        return null;
-      }
-      return null;
-    }
-    catch (IOException localIOException1) {}
-  }
-  
   public static void a()
   {
     
     if (QLog.isColorLevel()) {
       QLog.d("BnrReport", 2, "BnrReport init");
     }
-    b = true;
+    d = true;
   }
   
   protected static void a(SparseIntArray paramSparseIntArray)
@@ -297,11 +182,11 @@ public class BnrReport
       if (localList == null) {
         return;
       }
-      JSONObject localJSONObject = a();
+      JSONObject localJSONObject = c();
       if (localJSONObject == null) {
         return;
       }
-      SparseIntArray localSparseIntArray = a();
+      SparseIntArray localSparseIntArray = f();
       paramBNReportConfigRsp = localSparseIntArray;
       if (localSparseIntArray == null) {
         paramBNReportConfigRsp = new SparseIntArray();
@@ -323,7 +208,7 @@ public class BnrReport
         i += 1;
       }
       a(localSparseIntArray);
-      d();
+      e();
       b();
     }
   }
@@ -332,7 +217,7 @@ public class BnrReport
   {
     if ((paramJSONObject != null) && (paramInt >= 1))
     {
-      Object localObject = jdField_a_of_type_JavaUtilArrayList;
+      Object localObject = c;
       if (localObject != null)
       {
         if (((ArrayList)localObject).size() == 0) {
@@ -341,8 +226,8 @@ public class BnrReport
         try
         {
           int i = paramJSONObject.getInt("id");
-          if (a(i) > -1) {
-            jdField_a_of_type_JavaUtilArrayList.remove(a(i));
+          if (b(i) > -1) {
+            c.remove(b(i));
           }
           localObject = null;
           try
@@ -391,8 +276,8 @@ public class BnrReport
       if (paramList.size() == 0) {
         return;
       }
-      if (jdField_a_of_type_JavaUtilArrayList == null) {
-        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      if (c == null) {
+        c = new ArrayList();
       }
       try
       {
@@ -431,7 +316,7 @@ public class BnrReport
           }
         }
         if ((paramBoolean) && (!a(j))) {
-          jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
+          c.add(Integer.valueOf(j));
         }
         return;
       }
@@ -447,15 +332,68 @@ public class BnrReport
     return true;
   }
   
+  protected static int b(int paramInt)
+  {
+    ArrayList localArrayList = c;
+    if (localArrayList == null) {
+      return -1;
+    }
+    int i = 0;
+    int j = localArrayList.size();
+    while (i < j)
+    {
+      if (((Integer)c.get(i)).intValue() == paramInt) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
   protected static void b()
   {
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("pref_bnr_report", 0).edit();
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    localEditor.putLong("bnr_last_up_time", jdField_a_of_type_Long);
+    a = System.currentTimeMillis();
+    localEditor.putLong("bnr_last_up_time", a);
     localEditor.commit();
   }
   
-  protected static void c()
+  protected static JSONObject c()
+  {
+    try
+    {
+      InputStream localInputStream = BaseApplication.getContext().getAssets().open("qb_report_config.json");
+      Object localObject = Util.a(localInputStream);
+      try
+      {
+        localInputStream.close();
+      }
+      catch (IOException localIOException2)
+      {
+        localIOException2.printStackTrace();
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return null;
+      }
+      try
+      {
+        localObject = new JSONObject((String)localObject);
+        return localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.i("BnrReport", 2, "error : loadAllConfig");
+        }
+        return null;
+      }
+      return null;
+    }
+    catch (IOException localIOException1) {}
+  }
+  
+  protected static void d()
   {
     Object localObject = BaseApplication.getContext();
     int i = 0;
@@ -464,14 +402,14 @@ public class BnrReport
       return;
     }
     localObject = ((String)localObject).split("\\|");
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    c = new ArrayList();
     int j = localObject.length;
     while (i < j)
     {
       try
       {
         int k = Integer.valueOf(localObject[i]).intValue();
-        jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(k));
+        c.add(Integer.valueOf(k));
       }
       catch (NumberFormatException localNumberFormatException)
       {
@@ -481,30 +419,92 @@ public class BnrReport
     }
   }
   
-  protected static void d()
+  protected static void e()
   {
     StringBuffer localStringBuffer = new StringBuffer("");
-    if (jdField_a_of_type_JavaUtilArrayList == null) {
-      jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (c == null) {
+      c = new ArrayList();
     }
-    int j = jdField_a_of_type_JavaUtilArrayList.size();
+    int j = c.size();
     int i = 0;
     while (i < j)
     {
       if (i > 0) {
         localStringBuffer.append("|");
       }
-      localStringBuffer.append(jdField_a_of_type_JavaUtilArrayList.get(i));
+      localStringBuffer.append(c.get(i));
       i += 1;
     }
     SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("pref_bnr_report", 0).edit();
     localEditor.putString("bnr_open_report_id", localStringBuffer.toString());
     localEditor.commit();
   }
+  
+  protected static SparseIntArray f()
+  {
+    new ArrayList();
+    Object localObject1 = c();
+    if (localObject1 == null) {
+      return null;
+    }
+    SparseIntArray localSparseIntArray = new SparseIntArray();
+    try
+    {
+      localObject1 = ((JSONObject)localObject1).getJSONArray("ls");
+      int j = ((JSONArray)localObject1).length();
+      int i = 0;
+      while (i < j)
+      {
+        try
+        {
+          localSparseIntArray.put(((JSONArray)localObject1).getJSONObject(i).getInt("id"), 0);
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
+        i += 1;
+      }
+      localObject1 = BaseApplication.getContext().getSharedPreferences("pref_bnr_report", 0).getString("bnr_group_update_ver", "");
+      Object localObject2;
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("local ver:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("BnrReport", 4, ((StringBuilder)localObject2).toString());
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = ((String)localObject1).split("\\|");
+        j = localObject1.length;
+        i = 0;
+        while (i < j)
+        {
+          try
+          {
+            localObject2 = localObject1[i].split("\\-");
+            localSparseIntArray.put(Integer.valueOf(localObject2[0]).intValue(), Integer.valueOf(localObject2[1]).intValue());
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            localNumberFormatException.printStackTrace();
+          }
+          i += 1;
+        }
+      }
+      return localSparseIntArray;
+    }
+    catch (JSONException localJSONException1)
+    {
+      localJSONException1.printStackTrace();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.report.BnrReport
  * JD-Core Version:    0.7.0.1
  */

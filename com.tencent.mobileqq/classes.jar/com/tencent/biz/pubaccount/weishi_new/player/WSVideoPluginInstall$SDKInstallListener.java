@@ -22,7 +22,7 @@ class WSVideoPluginInstall$SDKInstallListener
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("version", "8.7.0");
+      localJSONObject.put("version", "8.8.17");
     }
     catch (JSONException localJSONException)
     {
@@ -37,18 +37,6 @@ class WSVideoPluginInstall$SDKInstallListener
     }
   }
   
-  public void a(float paramFloat)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[WSVideoPluginInstall.java][onInstallProgress] percent:");
-    ((StringBuilder)localObject).append(paramFloat);
-    WSLog.e("WS_VIDEO_WSVideoPluginInstall", ((StringBuilder)localObject).toString());
-    localObject = this.a;
-    if (localObject != null) {
-      ((Handler)localObject).sendEmptyMessage(2);
-    }
-  }
-  
   public void a(int paramInt)
   {
     Object localObject = new StringBuilder();
@@ -58,7 +46,7 @@ class WSVideoPluginInstall$SDKInstallListener
     localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("version", "8.7.0");
+      ((JSONObject)localObject).put("version", "8.8.17");
       ((JSONObject)localObject).put("error_code", paramInt);
     }
     catch (Exception localException)
@@ -76,7 +64,7 @@ class WSVideoPluginInstall$SDKInstallListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSVideoPluginInstall.SDKInstallListener
  * JD-Core Version:    0.7.0.1
  */

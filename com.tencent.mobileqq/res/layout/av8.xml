@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dg5" android:layout_width="@dimen/bcx" android:layout_height="@dimen/bcw" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <ImageView android:id="@id/dg6" android:layout_width="@dimen/bcz" android:layout_height="@dimen/bcy" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/dg5" android:layout_width="@dimen/be8" android:layout_height="@dimen/be7" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/dg6" android:layout_width="@dimen/be_" android:layout_height="@dimen/be9" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
     <TextView android:textSize="16.0dip" android:textColor="#fffcd383" android:id="@id/aec" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="97.0dip" android:text="@null" android:layout_centerHorizontal="true" />
     <ImageView android:id="@id/i0l" android:visibility="gone" android:layout_width="165.0dip" android:layout_height="35.0dip" android:layout_marginTop="130.0dip" android:src="@drawable/euq" android:layout_centerHorizontal="true" />
     <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/jli" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="99.0dip" android:layout_centerHorizontal="true">
@@ -30,5 +30,5 @@
     <com.tencent.mobileqq.portal.StrokeTextView android:textSize="120.0dip" android:textColor="#ff772b0d" android:gravity="center" android:id="@id/d7o" android:padding="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="110.0dip" android:text="@string/bpo" android:layout_centerHorizontal="true" />
     <com.tencent.mobileqq.portal.StrokeTextView android:textSize="18.0dip" android:textColor="#ff9f2400" android:ellipsize="end" android:gravity="center" android:id="@id/i0k" android:padding="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-25.0dip" android:text="@null" android:singleLine="true" android:layout_below="@id/d7o" android:layout_centerHorizontal="true" />
     <ImageView android:id="@id/d7e" android:visibility="gone" android:layout_width="210.0dip" android:layout_height="100.0dip" android:layout_marginTop="180.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/n6z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="237.0dip" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/nwb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="237.0dip" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
 </merge>

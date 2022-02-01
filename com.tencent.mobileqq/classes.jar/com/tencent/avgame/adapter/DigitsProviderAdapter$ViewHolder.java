@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 public class DigitsProviderAdapter$ViewHolder
   extends RecyclerView.ViewHolder
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView a;
+  private TextView b;
   
   public DigitsProviderAdapter$ViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369338));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379621));
+    this.a = ((ImageView)paramView.findViewById(2131436344));
+    this.b = ((TextView)paramView.findViewById(2131448387));
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.ad.tangram.protocol;
 
 public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$VideoInfo
 {
+  public String bottom_card_url;
   public String endcard;
   public int endcard_direction = 0;
   public int endcard_load_time = 0;

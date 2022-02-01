@@ -4,15 +4,27 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Debug;
 import android.os.Debug.MemoryInfo;
+import com.tencent.rainbow.common.TaskThreadPool;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MemoryTools
 {
+  public static final String TAG = "MemoryTools";
+  private int mLastMemorySize = 0;
+  private final MemoryTools.MemoryQueryRunnable mMemoryRunnable = new MemoryTools.MemoryQueryRunnable(this);
+  private final AtomicBoolean mNeedCanceled = new AtomicBoolean(false);
+  
+  public void cancelMemoryQuery()
+  {
+    this.mNeedCanceled.compareAndSet(false, true);
+  }
+  
   public long getApplicationMemory()
   {
     if (Build.VERSION.SDK_INT >= 14) {
       return Debug.getPss();
     }
-    long l = -1L;
+    long l = 0L;
     try
     {
       Context localContext = RainbowPlugin.sContext;
@@ -27,17 +39,19 @@ public class MemoryTools
     {
       localException.printStackTrace();
     }
-    return -1L;
+    return 0L;
   }
   
-  public long getUsedMemory()
+  public void startMemoryQuery(MemoryInfoCallback paramMemoryInfoCallback)
   {
-    return getApplicationMemory() / 1024L;
+    this.mNeedCanceled.compareAndSet(true, false);
+    this.mMemoryRunnable.a(paramMemoryInfoCallback);
+    TaskThreadPool.getInstance().execute(this.mMemoryRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.rainbow.MemoryTools
  * JD-Core Version:    0.7.0.1
  */

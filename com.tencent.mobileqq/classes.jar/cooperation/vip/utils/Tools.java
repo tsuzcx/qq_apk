@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -80,24 +81,24 @@ public class Tools
   {
     TianShuReport.UserActionReport localUserActionReport = new TianShuReport.UserActionReport();
     a(localUserActionReport, paramTianShuReportData);
-    localUserActionReport.appid.set(String.valueOf(paramTianShuReportData.jdField_e_of_type_JavaLangString));
-    localUserActionReport.to_uid.set(String.valueOf(paramTianShuReportData.jdField_a_of_type_JavaLangString));
-    localUserActionReport.trace_detail.set(String.valueOf(paramTianShuReportData.jdField_c_of_type_JavaLangString));
-    localUserActionReport.trace_index.set(String.valueOf(paramTianShuReportData.jdField_d_of_type_JavaLangString));
-    localUserActionReport.page_id.set(String.valueOf(paramTianShuReportData.jdField_f_of_type_JavaLangString));
-    localUserActionReport.item_id.set(String.valueOf(paramTianShuReportData.g));
-    localUserActionReport.sub_item_id.set(String.valueOf(paramTianShuReportData.h));
-    localUserActionReport.module_id.set(String.valueOf(paramTianShuReportData.i));
-    localUserActionReport.sub_module_id.set(String.valueOf(paramTianShuReportData.j));
-    localUserActionReport.position_id.set(String.valueOf(paramTianShuReportData.k));
-    localUserActionReport.test_id.set(paramTianShuReportData.jdField_b_of_type_Int);
-    localUserActionReport.rule_id.set(paramTianShuReportData.jdField_c_of_type_Int);
-    localUserActionReport.oper_time.set(paramTianShuReportData.jdField_a_of_type_Long);
-    localUserActionReport.action_id.set(paramTianShuReportData.jdField_d_of_type_Int);
-    localUserActionReport.action_value.set(paramTianShuReportData.jdField_e_of_type_Int);
-    localUserActionReport.action_attr.set(paramTianShuReportData.jdField_f_of_type_Int);
-    localUserActionReport.busi_info.set(String.valueOf(paramTianShuReportData.m));
-    localUserActionReport.item_type.set(String.valueOf(paramTianShuReportData.n));
+    localUserActionReport.appid.set(String.valueOf(paramTianShuReportData.f));
+    localUserActionReport.to_uid.set(String.valueOf(paramTianShuReportData.a));
+    localUserActionReport.trace_detail.set(String.valueOf(paramTianShuReportData.d));
+    localUserActionReport.trace_index.set(String.valueOf(paramTianShuReportData.e));
+    localUserActionReport.page_id.set(String.valueOf(paramTianShuReportData.g));
+    localUserActionReport.item_id.set(String.valueOf(paramTianShuReportData.h));
+    localUserActionReport.sub_item_id.set(String.valueOf(paramTianShuReportData.i));
+    localUserActionReport.module_id.set(String.valueOf(paramTianShuReportData.j));
+    localUserActionReport.sub_module_id.set(String.valueOf(paramTianShuReportData.k));
+    localUserActionReport.position_id.set(String.valueOf(paramTianShuReportData.l));
+    localUserActionReport.test_id.set(paramTianShuReportData.m);
+    localUserActionReport.rule_id.set(paramTianShuReportData.n);
+    localUserActionReport.oper_time.set(paramTianShuReportData.o);
+    localUserActionReport.action_id.set(paramTianShuReportData.p);
+    localUserActionReport.action_value.set(paramTianShuReportData.q);
+    localUserActionReport.action_attr.set(paramTianShuReportData.r);
+    localUserActionReport.busi_info.set(String.valueOf(paramTianShuReportData.t));
+    localUserActionReport.item_type.set(String.valueOf(paramTianShuReportData.u));
     return localUserActionReport;
   }
   
@@ -106,41 +107,31 @@ public class Tools
     TianShuReport.UserCommReport localUserCommReport = new TianShuReport.UserCommReport();
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     localUserCommReport.uid.set(str);
-    localUserCommReport.guid.set(String.valueOf(b()));
+    localUserCommReport.guid.set(String.valueOf(c()));
     str = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCityCode();
     localUserCommReport.city_code.set(String.valueOf(str));
     localUserCommReport.platform.set("AND");
     localUserCommReport.client_type.set("SQ");
-    localUserCommReport.app_version.set(AppSetting.f());
+    localUserCommReport.app_version.set(AppSetting.h());
     localUserCommReport.qua.set(String.valueOf(QUA.getQUA3()));
-    localUserCommReport.network_type.set(c());
-    localUserCommReport.mobile_type.set(String.valueOf(Build.MODEL));
-    localUserCommReport.os_version.set(String.valueOf(DeviceInfoUtil.e()));
-    localUserCommReport.qimei.set(String.valueOf(a()));
+    localUserCommReport.network_type.set(d());
+    if (PrivacyPolicyHelper.d())
+    {
+      localUserCommReport.mobile_type.set(String.valueOf(Build.MODEL));
+      localUserCommReport.os_version.set(String.valueOf(DeviceInfoUtil.g()));
+    }
+    else
+    {
+      localUserCommReport.mobile_type.set("");
+      localUserCommReport.os_version.set("");
+    }
+    localUserCommReport.qimei.set(String.valueOf(b()));
     return localUserCommReport;
-  }
-  
-  public static String a()
-  {
-    String str = jdField_b_of_type_JavaLangString;
-    if ((str != null) && (str.length() > 0)) {
-      return jdField_b_of_type_JavaLangString;
-    }
-    try
-    {
-      jdField_b_of_type_JavaLangString = UserAction.getQIMEI();
-      label25:
-      return jdField_b_of_type_JavaLangString;
-    }
-    catch (Exception localException)
-    {
-      break label25;
-    }
   }
   
   private static void a(TianShuReport.UserActionReport paramUserActionReport, TianShuReportData paramTianShuReportData)
   {
-    Object localObject = paramTianShuReportData.jdField_b_of_type_JavaLangString;
+    Object localObject = paramTianShuReportData.b;
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
       localObject = BaseApplicationImpl.getApplication().getRuntime();
@@ -163,10 +154,10 @@ public class Tools
     {
       paramUserActionReport.trace_id.set(String.valueOf(localObject));
     }
-    localObject = String.valueOf(paramTianShuReportData.l);
+    localObject = String.valueOf(paramTianShuReportData.s);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = TianShuManager.getInstance().getTraceInfoFromCache(String.valueOf(paramTianShuReportData.g));
+      localObject = TianShuManager.getInstance().getTraceInfoFromCache(String.valueOf(paramTianShuReportData.h));
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         paramUserActionReport.trigger_info.set((String)localObject);
       }
@@ -175,7 +166,7 @@ public class Tools
     {
       paramUserActionReport.trigger_info.set((String)localObject);
     }
-    int j = paramTianShuReportData.jdField_a_of_type_Int;
+    int j = paramTianShuReportData.c;
     int i = j;
     if (j == -1) {
       i = 1;
@@ -185,15 +176,33 @@ public class Tools
   
   public static String b()
   {
-    String str = jdField_a_of_type_JavaLangString;
+    String str = b;
     if ((str != null) && (str.length() > 0)) {
-      return jdField_a_of_type_JavaLangString;
+      return b;
     }
     try
     {
-      jdField_a_of_type_JavaLangString = QQDeviceInfo.getIMEI("07aa5e");
+      b = UserAction.getQIMEI();
+      label25:
+      return b;
+    }
+    catch (Exception localException)
+    {
+      break label25;
+    }
+  }
+  
+  public static String c()
+  {
+    String str = a;
+    if ((str != null) && (str.length() > 0)) {
+      return a;
+    }
+    try
+    {
+      a = QQDeviceInfo.getIMEI("07aa5e");
       label28:
-      return jdField_a_of_type_JavaLangString;
+      return a;
     }
     catch (Exception localException)
     {
@@ -201,7 +210,7 @@ public class Tools
     }
   }
   
-  public static String c()
+  public static String d()
   {
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
     if (i != 1)
@@ -224,7 +233,7 @@ public class Tools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.vip.utils.Tools
  * JD-Core Version:    0.7.0.1
  */

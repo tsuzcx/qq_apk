@@ -38,7 +38,7 @@ public class FriendsManagerImpl
     if (checkAppRuntimeInValid()) {
       return null;
     }
-    return getManager().e(paramString);
+    return getManager().m(paramString);
   }
   
   public boolean isFriend(String paramString)
@@ -46,7 +46,7 @@ public class FriendsManagerImpl
     if (checkAppRuntimeInValid()) {
       return false;
     }
-    return getManager().b(paramString);
+    return getManager().n(paramString);
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -60,7 +60,7 @@ public class FriendsManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.qwallet.temp.impl.FriendsManagerImpl
  * JD-Core Version:    0.7.0.1
  */

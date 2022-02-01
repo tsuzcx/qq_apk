@@ -16,8 +16,8 @@ public class SystemEmoticonMiniPanel
   
   protected void initUI(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131375962));
-    this.viewPager = ((ViewPager)this.root.findViewById(2131380822));
+    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131444153));
+    this.viewPager = ((ViewPager)this.root.findViewById(2131449793));
     this.pageRadioGroup.setViewPager(this.viewPager);
     this.pageAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
@@ -30,7 +30,7 @@ public class SystemEmoticonMiniPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonMiniPanel
  * JD-Core Version:    0.7.0.1
  */

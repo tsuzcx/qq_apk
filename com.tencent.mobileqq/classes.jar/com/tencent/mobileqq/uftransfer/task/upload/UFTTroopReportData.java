@@ -14,7 +14,7 @@ public class UFTTroopReportData
   public UFTTroopReportData(AppRuntime paramAppRuntime, String paramString1, String paramString2)
   {
     super(paramString1, paramString2);
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = paramAppRuntime;
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -47,67 +47,67 @@ public class UFTTroopReportData
   
   private void a(String paramString)
   {
-    if ((this.jdField_c_of_type_JavaLangString != null) && (this.jdField_c_of_type_JavaLangString.length() > 0))
+    if ((this.r != null) && (this.r.length() > 0))
     {
-      if (this.jdField_c_of_type_JavaLangString.indexOf("Network is unreachable") > 0) {}
-      while ((this.jdField_c_of_type_JavaLangString.indexOf("No route to host") > 0) || (this.jdField_c_of_type_JavaLangString.indexOf("MalformedURLException") > 0))
+      if (this.r.indexOf("Network is unreachable") > 0) {}
+      while ((this.r.indexOf("No route to host") > 0) || (this.r.indexOf("MalformedURLException") > 0))
       {
         i = 1;
         break;
       }
     }
     int i = 0;
-    if ((!UFTDependFeatureApi.a()) || (i != 0))
+    if ((!UFTDependFeatureApi.c()) || (i != 0))
     {
-      this.jdField_c_of_type_Int = 9;
-      this.jdField_d_of_type_Int = 901;
+      this.l = 9;
+      this.m = 901;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("NotNetWork_");
-      ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+      ((StringBuilder)localObject1).append(this.r);
+      this.r = ((StringBuilder)localObject1).toString();
     }
-    if (!this.jdField_a_of_type_MqqAppAppRuntime.isLogin())
+    if (!this.a.isLogin())
     {
-      this.jdField_c_of_type_Int = 9;
-      this.jdField_d_of_type_Int = 901;
+      this.l = 9;
+      this.m = 901;
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("NotLogin_");
-      ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_c_of_type_JavaLangString = ((StringBuilder)localObject1).toString();
+      ((StringBuilder)localObject1).append(this.r);
+      this.r = ((StringBuilder)localObject1).toString();
     }
-    Object localObject2 = UFTDependFeatureApi.a();
+    Object localObject2 = UFTDependFeatureApi.b();
     Object localObject1 = new HashMap();
-    ((HashMap)localObject1).put("param_group_code", this.jdField_e_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_self_uin", this.jdField_f_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_file_name", this.jdField_g_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_suffix", UFTDependFeatureApi.b(this.jdField_g_of_type_JavaLangString));
-    ((HashMap)localObject1).put("param_file_size", String.valueOf(this.jdField_i_of_type_Long));
-    ((HashMap)localObject1).put("param_uuid", this.jdField_h_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_store_type", String.valueOf(this.l));
-    ((HashMap)localObject1).put("param_result", String.valueOf(this.jdField_c_of_type_Int));
-    ((HashMap)localObject1).put("param_sub_reason", String.valueOf(this.jdField_d_of_type_Int));
-    ((HashMap)localObject1).put("param_http_status_code", String.valueOf(this.jdField_e_of_type_Int));
-    ((HashMap)localObject1).put("param_server_return_code", String.valueOf(this.jdField_f_of_type_Int));
-    ((HashMap)localObject1).put("param_err_msg", this.jdField_c_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_retry_count", String.valueOf(this.k));
-    ((HashMap)localObject1).put("param_proxy_type", String.valueOf(this.jdField_b_of_type_Int));
+    ((HashMap)localObject1).put("param_group_code", this.z);
+    ((HashMap)localObject1).put("param_self_uin", this.A);
+    ((HashMap)localObject1).put("param_file_name", this.B);
+    ((HashMap)localObject1).put("param_suffix", UFTDependFeatureApi.f(this.B));
+    ((HashMap)localObject1).put("param_file_size", String.valueOf(this.C));
+    ((HashMap)localObject1).put("param_uuid", this.E);
+    ((HashMap)localObject1).put("param_store_type", String.valueOf(this.D));
+    ((HashMap)localObject1).put("param_result", String.valueOf(this.l));
+    ((HashMap)localObject1).put("param_sub_reason", String.valueOf(this.m));
+    ((HashMap)localObject1).put("param_http_status_code", String.valueOf(this.n));
+    ((HashMap)localObject1).put("param_server_return_code", String.valueOf(this.o));
+    ((HashMap)localObject1).put("param_err_msg", this.r);
+    ((HashMap)localObject1).put("param_retry_count", String.valueOf(this.y));
+    ((HashMap)localObject1).put("param_proxy_type", String.valueOf(this.e));
     ((HashMap)localObject1).put("param_net_type", localObject2);
-    ((HashMap)localObject1).put("param_security_time", String.valueOf(this.jdField_f_of_type_Long));
-    ((HashMap)localObject1).put("param_check_time", String.valueOf(this.jdField_g_of_type_Long));
-    ((HashMap)localObject1).put("param_server_ip", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    ((HashMap)localObject1).put("param_server_port", String.valueOf(this.jdField_a_of_type_Int));
-    ((HashMap)localObject1).put("param_file_url", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject1).put("param_start_size", String.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject1).put("param_transfer_size", String.valueOf(this.jdField_b_of_type_Long));
-    ((HashMap)localObject1).put("param_transfer_time", String.valueOf(this.jdField_c_of_type_Long));
-    ((HashMap)localObject1).put("param_transfer_speed", String.valueOf(this.jdField_e_of_type_Long));
-    ((HashMap)localObject1).put("param_fromType", String.valueOf(this.jdField_g_of_type_Int));
-    ((HashMap)localObject1).put("param_V6SelectType", String.valueOf(this.jdField_h_of_type_Int));
-    ((HashMap)localObject1).put("param_ipAddrType", String.valueOf(this.jdField_i_of_type_Int));
-    ((HashMap)localObject1).put("param_stackType", String.valueOf(UFTDependFeatureApi.d()));
-    ((HashMap)localObject1).put("param_loginType", String.valueOf(UFTDependFeatureApi.e()));
-    ((HashMap)localObject1).put("param_ishttps", String.valueOf(this.j));
-    long l3 = this.jdField_d_of_type_Long;
+    ((HashMap)localObject1).put("param_security_time", String.valueOf(this.p));
+    ((HashMap)localObject1).put("param_check_time", String.valueOf(this.q));
+    ((HashMap)localObject1).put("param_server_ip", String.valueOf(this.c));
+    ((HashMap)localObject1).put("param_server_port", String.valueOf(this.d));
+    ((HashMap)localObject1).put("param_file_url", this.b);
+    ((HashMap)localObject1).put("param_start_size", String.valueOf(this.f));
+    ((HashMap)localObject1).put("param_transfer_size", String.valueOf(this.g));
+    ((HashMap)localObject1).put("param_transfer_time", String.valueOf(this.h));
+    ((HashMap)localObject1).put("param_transfer_speed", String.valueOf(this.j));
+    ((HashMap)localObject1).put("param_fromType", String.valueOf(this.u));
+    ((HashMap)localObject1).put("param_V6SelectType", String.valueOf(this.v));
+    ((HashMap)localObject1).put("param_ipAddrType", String.valueOf(this.w));
+    ((HashMap)localObject1).put("param_stackType", String.valueOf(UFTDependFeatureApi.h()));
+    ((HashMap)localObject1).put("param_loginType", String.valueOf(UFTDependFeatureApi.i()));
+    ((HashMap)localObject1).put("param_ishttps", String.valueOf(this.x));
+    long l3 = this.i;
     long l2 = System.currentTimeMillis();
     long l1 = l3;
     if (l3 == 0L) {
@@ -127,44 +127,44 @@ public class UFTTroopReportData
     ((StringBuilder)localObject2).append("] ");
     ((StringBuilder)localObject2).append(((HashMap)localObject1).toString());
     UFTLog.d("[UFTTransfer] UFTToopReportData", 1, ((StringBuilder)localObject2).toString());
-    UFTDependFeatureApi.a(this.jdField_f_of_type_JavaLangString, paramString, false, l1, 1, (HashMap)localObject1, "");
+    UFTDependFeatureApi.a(this.A, paramString, false, l1, 1, (HashMap)localObject1, "");
   }
   
   private void b(String paramString)
   {
-    Object localObject = UFTDependFeatureApi.a();
+    Object localObject = UFTDependFeatureApi.b();
     HashMap localHashMap = new HashMap();
-    localHashMap.put("param_group_code", this.jdField_e_of_type_JavaLangString);
-    localHashMap.put("param_self_uin", this.jdField_f_of_type_JavaLangString);
-    localHashMap.put("param_file_name", this.jdField_g_of_type_JavaLangString);
-    localHashMap.put("param_suffix", UFTDependFeatureApi.b(this.jdField_g_of_type_JavaLangString));
-    localHashMap.put("param_file_size", String.valueOf(this.jdField_i_of_type_Long));
-    localHashMap.put("param_uuid", this.jdField_h_of_type_JavaLangString);
-    localHashMap.put("param_store_type", String.valueOf(this.l));
+    localHashMap.put("param_group_code", this.z);
+    localHashMap.put("param_self_uin", this.A);
+    localHashMap.put("param_file_name", this.B);
+    localHashMap.put("param_suffix", UFTDependFeatureApi.f(this.B));
+    localHashMap.put("param_file_size", String.valueOf(this.C));
+    localHashMap.put("param_uuid", this.E);
+    localHashMap.put("param_store_type", String.valueOf(this.D));
     localHashMap.put("param_result", String.valueOf(0));
     localHashMap.put("param_sub_reason", String.valueOf(0));
-    localHashMap.put("param_http_status_code", String.valueOf(this.jdField_e_of_type_Int));
+    localHashMap.put("param_http_status_code", String.valueOf(this.n));
     localHashMap.put("param_err_msg", "");
-    localHashMap.put("param_flash_transfer", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("param_retry_count", String.valueOf(this.k));
-    localHashMap.put("param_proxy_type", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_flash_transfer", String.valueOf(this.k));
+    localHashMap.put("param_retry_count", String.valueOf(this.y));
+    localHashMap.put("param_proxy_type", String.valueOf(this.e));
     localHashMap.put("param_net_type", localObject);
-    localHashMap.put("param_security_time", String.valueOf(this.jdField_f_of_type_Long));
-    localHashMap.put("param_check_time", String.valueOf(this.jdField_g_of_type_Long));
-    localHashMap.put("param_server_ip", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("param_server_port", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_file_url", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_start_size", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_transfer_size", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_transfer_time", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_transfer_speed", String.valueOf(this.jdField_e_of_type_Long));
-    localHashMap.put("param_fromType", String.valueOf(this.jdField_g_of_type_Int));
-    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_h_of_type_Int));
-    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_i_of_type_Int));
-    localHashMap.put("param_stackType", String.valueOf(UFTDependFeatureApi.d()));
-    localHashMap.put("param_loginType", String.valueOf(UFTDependFeatureApi.e()));
-    localHashMap.put("param_ishttps", String.valueOf(this.j));
-    long l4 = this.jdField_d_of_type_Long;
+    localHashMap.put("param_security_time", String.valueOf(this.p));
+    localHashMap.put("param_check_time", String.valueOf(this.q));
+    localHashMap.put("param_server_ip", String.valueOf(this.c));
+    localHashMap.put("param_server_port", String.valueOf(this.d));
+    localHashMap.put("param_file_url", this.b);
+    localHashMap.put("param_start_size", String.valueOf(this.f));
+    localHashMap.put("param_transfer_size", String.valueOf(this.g));
+    localHashMap.put("param_transfer_time", String.valueOf(this.h));
+    localHashMap.put("param_transfer_speed", String.valueOf(this.j));
+    localHashMap.put("param_fromType", String.valueOf(this.u));
+    localHashMap.put("param_V6SelectType", String.valueOf(this.v));
+    localHashMap.put("param_ipAddrType", String.valueOf(this.w));
+    localHashMap.put("param_stackType", String.valueOf(UFTDependFeatureApi.h()));
+    localHashMap.put("param_loginType", String.valueOf(UFTDependFeatureApi.i()));
+    localHashMap.put("param_ishttps", String.valueOf(this.x));
+    long l4 = this.i;
     long l3 = System.currentTimeMillis();
     long l2 = 0L;
     long l1 = l4;
@@ -185,7 +185,7 @@ public class UFTTroopReportData
     ((StringBuilder)localObject).append("] ");
     ((StringBuilder)localObject).append(localHashMap.toString());
     UFTLog.b("[UFTTransfer] UFTToopReportData", 1, ((StringBuilder)localObject).toString());
-    UFTDependFeatureApi.a(this.jdField_f_of_type_JavaLangString, paramString, true, l1, 1, localHashMap, "");
+    UFTDependFeatureApi.a(this.A, paramString, true, l1, 1, localHashMap, "");
   }
   
   public void a()
@@ -210,7 +210,7 @@ public class UFTTroopReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.task.upload.UFTTroopReportData
  * JD-Core Version:    0.7.0.1
  */

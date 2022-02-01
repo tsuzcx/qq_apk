@@ -36,133 +36,26 @@ import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class TroopNotifyHelper
 {
-  private static HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean = false;
+  private static boolean a = false;
+  private static HashSet<Integer> b = new HashSet();
   
   static
   {
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(1));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(2));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(10));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(12));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(22));
-    jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(13));
+    b.add(Integer.valueOf(1));
+    b.add(Integer.valueOf(2));
+    b.add(Integer.valueOf(10));
+    b.add(Integer.valueOf(12));
+    b.add(Integer.valueOf(22));
+    b.add(Integer.valueOf(13));
   }
   
   public static int a()
   {
-    SharedPreferences localSharedPreferences = a();
+    SharedPreferences localSharedPreferences = i();
     if (localSharedPreferences == null) {
       return 0;
     }
     return localSharedPreferences.getInt("lastshowtime_weak", 0);
-  }
-  
-  public static long a()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return 0L;
-    }
-    return localSharedPreferences.getLong("lastundealmsgseq", 0L);
-  }
-  
-  private static SharedPreferences a()
-  {
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localAppRuntime != null)
-    {
-      String str = localAppRuntime.getAccount();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("notify_redpoint");
-      localStringBuilder.append(str);
-      str = localStringBuilder.toString();
-      return localAppRuntime.getApp().getSharedPreferences(str, 0);
-    }
-    return null;
-  }
-  
-  public static List<Integer> a()
-  {
-    Object localObject = a();
-    ArrayList localArrayList = new ArrayList();
-    if (localObject == null) {
-      return localArrayList;
-    }
-    int i = ((SharedPreferences)localObject).getInt("lastshowtime_year", 0);
-    localArrayList.add(0, Integer.valueOf(i));
-    int j = ((SharedPreferences)localObject).getInt("lastshowtime_day", 0);
-    localArrayList.add(1, Integer.valueOf(j));
-    int k = ((SharedPreferences)localObject).getInt("lastshowtime_weak", 0);
-    localArrayList.add(2, Integer.valueOf(k));
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("getLastShowTimeyear = ");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append(" day");
-      ((StringBuilder)localObject).append(j);
-      ((StringBuilder)localObject).append("week");
-      ((StringBuilder)localObject).append(k);
-      QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject).toString());
-    }
-    return localArrayList;
-  }
-  
-  public static void a()
-  {
-    Object localObject2 = MobileQQ.sMobileQQ;
-    Object localObject1 = null;
-    localObject2 = ((MobileQQ)localObject2).waitAppRuntime(null);
-    if (localObject2 == null) {
-      return;
-    }
-    localObject2 = (IMessageFacade)((AppRuntime)localObject2).getRuntimeService(IMessageFacade.class, "");
-    if (localObject2 != null) {
-      localObject1 = ((IMessageFacade)localObject2).getAllMessages(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, null);
-    }
-    if (localObject1 != null)
-    {
-      if (((List)localObject1).isEmpty()) {
-        return;
-      }
-      long l1 = a();
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (MessageRecord)((Iterator)localObject1).next();
-        if ((localObject2 instanceof MessageForSystemMsg))
-        {
-          localObject2 = ((MessageForSystemMsg)localObject2).getSystemMsg();
-          if ((localObject2 != null) && (((structmsg.StructMsg)localObject2).msg.has()) && (((structmsg.SystemMsg)((structmsg.StructMsg)localObject2).msg.get()).sub_type.get() == 1))
-          {
-            long l2 = ((structmsg.StructMsg)localObject2).msg_seq.get();
-            if (l2 > l1) {
-              l1 = l2;
-            }
-          }
-        }
-      }
-      a(l1);
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("updateLastUndealMsgSeqnewLastSeq = ");
-        ((StringBuilder)localObject1).append(l1);
-        QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject1).toString());
-      }
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopNotifyHelper", 2, new Object[] { "updateRemindCntOfOneWeak", "count =", Integer.valueOf(paramInt) });
-    }
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putInt("remindcntofoneweak", paramInt).apply();
-    }
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3)
@@ -177,7 +70,7 @@ public class TroopNotifyHelper
       ((StringBuilder)localObject).append(paramInt3);
       QLog.d("TroopNotifyHelper", 2, new Object[] { "updateLastShowTime:", "year =", ((StringBuilder)localObject).toString() });
     }
-    Object localObject = a();
+    Object localObject = i();
     if (localObject != null)
     {
       ((SharedPreferences)localObject).edit().putInt("lastshowtime_year", paramInt1).apply();
@@ -195,7 +88,7 @@ public class TroopNotifyHelper
       ((StringBuilder)localObject).append(paramLong);
       QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a();
+    Object localObject = i();
     if (localObject != null) {
       ((SharedPreferences)localObject).edit().putLong("lastundealmsgseq", paramLong).apply();
     }
@@ -206,7 +99,7 @@ public class TroopNotifyHelper
     if (paramContext == null) {
       return;
     }
-    DialogUtil.a(paramContext, paramContext.getString(2131720007), paramContext.getString(2131720006), null, 2131690728, 2131694839, new TroopNotifyHelper.1(paramOnTroopSafeDialogClickConfirm, paramVarArgs), new TroopNotifyHelper.2()).show();
+    DialogUtil.a(paramContext, paramContext.getString(2131917612), paramContext.getString(2131917611), null, 2131887648, 2131892542, new TroopNotifyHelper.1(paramOnTroopSafeDialogClickConfirm, paramVarArgs), new TroopNotifyHelper.2()).show();
   }
   
   public static void a(structmsg.StructMsg paramStructMsg, long paramLong, String paramString)
@@ -219,7 +112,7 @@ public class TroopNotifyHelper
       ((StringBuilder)localObject).append(((structmsg.StructMsg)paramStructMsg.get()).msg_type.get());
       localObject = ((StringBuilder)localObject).toString();
       GroupSystemMsgController.a().a((String)localObject, (structmsg.StructMsg)paramStructMsg.get());
-      GroupSystemMsgController.a().b((String)localObject);
+      GroupSystemMsgController.a().c((String)localObject);
       GroupSystemMsgController.a().a(paramLong);
       GroupSystemMsgController.a().a(paramString);
     }
@@ -227,17 +120,12 @@ public class TroopNotifyHelper
   
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Boolean;
+    a = paramBoolean;
   }
   
   public static boolean a(int paramInt)
   {
-    TroopNotificationConfig localTroopNotificationConfig = (TroopNotificationConfig)QConfigManager.a().a(634);
+    TroopNotificationConfig localTroopNotificationConfig = (TroopNotificationConfig)QConfigManager.b().b(634);
     if (localTroopNotificationConfig == null)
     {
       if (QLog.isColorLevel()) {
@@ -253,16 +141,16 @@ public class TroopNotifyHelper
       ((StringBuilder)localObject).append(localTroopNotificationConfig.toString());
       QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", ((StringBuilder)localObject).toString() });
     }
-    if (!localTroopNotificationConfig.jdField_a_of_type_Boolean)
+    if (!localTroopNotificationConfig.a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotifyHelper", 2, "isGlobalOpen is false");
       }
       return false;
     }
-    if ((paramInt >= localTroopNotificationConfig.c) && (localTroopNotificationConfig.c != 0))
+    if ((paramInt >= localTroopNotificationConfig.e) && (localTroopNotificationConfig.e != 0))
     {
-      if (a())
+      if (h())
       {
         if (QLog.isColorLevel()) {
           QLog.d("TroopNotifyHelper", 2, "isShowUndealTipsInTabRecent: undealRedPoint is Showing!");
@@ -270,7 +158,7 @@ public class TroopNotifyHelper
         return true;
       }
       Calendar.getInstance();
-      localObject = a();
+      localObject = b();
       int i;
       int j;
       if (localObject != null)
@@ -292,7 +180,7 @@ public class TroopNotifyHelper
           if (QLog.isColorLevel()) {
             QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "Day is changed, The day update" });
           }
-          b(0);
+          c(0);
           a(1, 6, 3);
         }
       }
@@ -301,35 +189,35 @@ public class TroopNotifyHelper
         if (QLog.isColorLevel()) {
           QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "Year is changed, The time update" });
         }
-        a(0);
         b(0);
+        c(0);
         a(1, 6, 3);
       }
-      if ((System.currentTimeMillis() - b()) / 1000L < localTroopNotificationConfig.jdField_a_of_type_Long)
+      if ((System.currentTimeMillis() - e()) / 1000L < localTroopNotificationConfig.c)
       {
         if (QLog.isColorLevel()) {
           QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "The TimeIntervel is  little" });
         }
         return false;
       }
-      if ((1 == i) && (6 == j) && (b() >= localTroopNotificationConfig.b))
+      if ((1 == i) && (6 == j) && (c() >= localTroopNotificationConfig.d))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "RemindCntOfOneDay =", Integer.valueOf(b()), "totalRemindCntOfOneDay =", Integer.valueOf(localTroopNotificationConfig.b) });
+          QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "RemindCntOfOneDay =", Integer.valueOf(c()), "totalRemindCntOfOneDay =", Integer.valueOf(localTroopNotificationConfig.d) });
         }
         return false;
       }
-      if ((1 == i) && (3 == paramInt) && (a() >= localTroopNotificationConfig.jdField_a_of_type_Int))
+      if ((1 == i) && (3 == paramInt) && (a() >= localTroopNotificationConfig.b))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "RemindCntOfOneWeak =", Integer.valueOf(b()), "totalRemindCntOfOneWeak =", Integer.valueOf(localTroopNotificationConfig.jdField_a_of_type_Int) });
+          QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "RemindCntOfOneWeak =", Integer.valueOf(c()), "totalRemindCntOfOneWeak =", Integer.valueOf(localTroopNotificationConfig.b) });
         }
         return false;
       }
       return true;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "undealMsgCount =", Integer.valueOf(paramInt), "todoGroupVerifyMsgLevel =", Integer.valueOf(localTroopNotificationConfig.c) });
+      QLog.d("TroopNotifyHelper", 2, new Object[] { "isShowUndealTipsInTabRecent", "undealMsgCount =", Integer.valueOf(paramInt), "todoGroupVerifyMsgLevel =", Integer.valueOf(localTroopNotificationConfig.e) });
     }
     return false;
   }
@@ -363,36 +251,41 @@ public class TroopNotifyHelper
     return false;
   }
   
-  public static int b()
+  public static List<Integer> b()
   {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return 0;
+    Object localObject = i();
+    ArrayList localArrayList = new ArrayList();
+    if (localObject == null) {
+      return localArrayList;
     }
-    return localSharedPreferences.getInt("remindcntofoneday", 0);
-  }
-  
-  public static long b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return 0L;
+    int i = ((SharedPreferences)localObject).getInt("lastshowtime_year", 0);
+    localArrayList.add(0, Integer.valueOf(i));
+    int j = ((SharedPreferences)localObject).getInt("lastshowtime_day", 0);
+    localArrayList.add(1, Integer.valueOf(j));
+    int k = ((SharedPreferences)localObject).getInt("lastshowtime_weak", 0);
+    localArrayList.add(2, Integer.valueOf(k));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getLastShowTimeyear = ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" day");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append("week");
+      ((StringBuilder)localObject).append(k);
+      QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject).toString());
     }
-    return localSharedPreferences.getLong("intervelshowtime", 0L);
+    return localArrayList;
   }
   
   public static void b(int paramInt)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("updateRemindCntOfOneDaycount = ");
-      ((StringBuilder)localObject).append(paramInt);
-      QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopNotifyHelper", 2, new Object[] { "updateRemindCntOfOneWeak", "count =", Integer.valueOf(paramInt) });
     }
-    Object localObject = a();
-    if (localObject != null) {
-      ((SharedPreferences)localObject).edit().putInt("remindcntofoneday", paramInt).apply();
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences != null) {
+      localSharedPreferences.edit().putInt("remindcntofoneweak", paramInt).apply();
     }
   }
   
@@ -405,18 +298,105 @@ public class TroopNotifyHelper
       ((StringBuilder)localObject).append(paramLong);
       QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = a();
+    Object localObject = i();
     if (localObject != null) {
       ((SharedPreferences)localObject).edit().putLong("intervelshowtime", paramLong).apply();
     }
   }
   
-  public static boolean b(int paramInt)
+  public static int c()
   {
-    return jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(paramInt));
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return 0;
+    }
+    return localSharedPreferences.getInt("remindcntofoneday", 0);
   }
   
-  public static int c()
+  public static void c(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateRemindCntOfOneDaycount = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = i();
+    if (localObject != null) {
+      ((SharedPreferences)localObject).edit().putInt("remindcntofoneday", paramInt).apply();
+    }
+  }
+  
+  public static long d()
+  {
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return 0L;
+    }
+    return localSharedPreferences.getLong("lastundealmsgseq", 0L);
+  }
+  
+  public static boolean d(int paramInt)
+  {
+    return b.contains(Integer.valueOf(paramInt));
+  }
+  
+  public static long e()
+  {
+    SharedPreferences localSharedPreferences = i();
+    if (localSharedPreferences == null) {
+      return 0L;
+    }
+    return localSharedPreferences.getLong("intervelshowtime", 0L);
+  }
+  
+  public static void f()
+  {
+    Object localObject2 = MobileQQ.sMobileQQ;
+    Object localObject1 = null;
+    localObject2 = ((MobileQQ)localObject2).waitAppRuntime(null);
+    if (localObject2 == null) {
+      return;
+    }
+    localObject2 = (IMessageFacade)((AppRuntime)localObject2).getRuntimeService(IMessageFacade.class, "");
+    if (localObject2 != null) {
+      localObject1 = ((IMessageFacade)localObject2).getAllMessages(AppConstants.TROOP_SYSTEM_MSG_UIN, 0, null);
+    }
+    if (localObject1 != null)
+    {
+      if (((List)localObject1).isEmpty()) {
+        return;
+      }
+      long l1 = d();
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (MessageRecord)((Iterator)localObject1).next();
+        if ((localObject2 instanceof MessageForSystemMsg))
+        {
+          localObject2 = ((MessageForSystemMsg)localObject2).getSystemMsg();
+          if ((localObject2 != null) && (((structmsg.StructMsg)localObject2).msg.has()) && (((structmsg.SystemMsg)((structmsg.StructMsg)localObject2).msg.get()).sub_type.get() == 1))
+          {
+            long l2 = ((structmsg.StructMsg)localObject2).msg_seq.get();
+            if (l2 > l1) {
+              l1 = l2;
+            }
+          }
+        }
+      }
+      a(l1);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("updateLastUndealMsgSeqnewLastSeq = ");
+        ((StringBuilder)localObject1).append(l1);
+        QLog.d("TroopNotifyHelper", 2, ((StringBuilder)localObject1).toString());
+      }
+    }
+  }
+  
+  public static int g()
   {
     Object localObject2 = MobileQQ.sMobileQQ;
     Object localObject1 = null;
@@ -429,7 +409,7 @@ public class TroopNotifyHelper
     if (localObject3 != null) {
       localObject1 = ((ITroopNotificationService)localObject3).getMessageRecordListFromCache();
     }
-    long l = a();
+    long l = d();
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -454,10 +434,30 @@ public class TroopNotifyHelper
     }
     return ((List)localObject2).size();
   }
+  
+  public static boolean h()
+  {
+    return a;
+  }
+  
+  private static SharedPreferences i()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localAppRuntime != null)
+    {
+      String str = localAppRuntime.getAccount();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notify_redpoint");
+      localStringBuilder.append(str);
+      str = localStringBuilder.toString();
+      return localAppRuntime.getApp().getSharedPreferences(str, 0);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNotifyHelper
  * JD-Core Version:    0.7.0.1
  */

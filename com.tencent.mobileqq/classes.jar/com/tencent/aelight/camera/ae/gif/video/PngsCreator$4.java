@@ -9,16 +9,16 @@ class PngsCreator$4
   
   public void run()
   {
-    if (PngsCreator.a(this.this$0) != null)
+    if (PngsCreator.c(this.this$0) != null)
     {
-      PngsCreator.a(this.this$0).a(true);
-      PngsCreator.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_d_of_type_Float);
+      PngsCreator.c(this.this$0).a(true);
+      PngsCreator.c(this.this$0).a(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreator.4
  * JD-Core Version:    0.7.0.1
  */

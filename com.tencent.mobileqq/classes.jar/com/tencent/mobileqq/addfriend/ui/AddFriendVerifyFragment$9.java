@@ -10,24 +10,24 @@ class AddFriendVerifyFragment$9
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 3004)
+    if (this.a == 3004)
     {
       int i = this.b;
       if ((i == 5) || (i == 6) || (i == 7) || (i == 8))
       {
         String str1;
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.c) {
           str1 = "multiMode_send";
         } else {
           str1 = "singleMode_send";
         }
-        AppInterface localAppInterface = AddFriendVerifyFragment.a(this.this$0);
-        String str3 = this.jdField_a_of_type_JavaLangString;
+        AppInterface localAppInterface = AddFriendVerifyFragment.f(this.this$0);
+        String str3 = this.d;
         String str2;
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.c) {
           str2 = "1";
         } else {
-          str2 = String.valueOf(this.c);
+          str2 = String.valueOf(this.e);
         }
         ReportController.b(localAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
       }
@@ -36,7 +36,7 @@ class AddFriendVerifyFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.9
  * JD-Core Version:    0.7.0.1
  */

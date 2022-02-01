@@ -1,13 +1,9 @@
 package com.tencent.viola.ui.dom;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint.Align;
 import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -30,7 +26,6 @@ import android.text.TextUtils.TruncateAt;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import com.tencent.viola.adapter.VComponentAdapter;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.dom.style.FlexAlign;
@@ -42,11 +37,11 @@ import com.tencent.viola.ui.dom.style.FlexStyle;
 import com.tencent.viola.ui.dom.style.FloatUtils;
 import com.tencent.viola.ui.dom.style.StyleSpace;
 import com.tencent.viola.ui.dom.style.font.TextDecoration;
-import com.tencent.viola.ui.view.VTextView;
 import com.tencent.viola.utils.ColorParseUtils;
 import com.tencent.viola.utils.ViolaLogUtils;
 import com.tencent.viola.utils.ViolaUtils;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -63,6 +58,7 @@ public class DomObjectText
   public FlexNode.MeasureFunction TEXT_MEASURE_FUNCTION = new DomObjectText.1(this);
   private AtomicReference<Layout> atomicReference = new AtomicReference();
   private boolean hasBeenMeasured = false;
+  private ImageSpanLoadListener imageSpanLoadListener;
   public boolean isRichClickable = false;
   private boolean isRichText = false;
   @Nullable
@@ -158,7 +154,7 @@ public class DomObjectText
       if (paramSpanText.events.contains("click"))
       {
         this.isRichClickable = true;
-        localSpannableString.setSpan(new DomObjectText.2(this, paramSpanText), 0, localSpannableString.length(), 33);
+        localSpannableString.setSpan(new ClickableSpanText(paramSpanText), 0, localSpannableString.length(), 33);
       }
       if ((localObject1 != null) && (((Style)localObject1).containsKey("fontSize")))
       {
@@ -202,31 +198,35 @@ public class DomObjectText
       ((Style)localObject1).getTextPaintAlign();
       return localSpannableString;
     }
-    Object localObject1 = Uri.parse(paramSpanText.src);
-    Object localObject2 = paramSpanText.style;
+    Object localObject1 = paramSpanText.style;
     try
     {
-      Object localObject3 = new ColorDrawable(Color.parseColor("#00000000"));
-      ((Drawable)localObject3).setBounds(0, 0, (int)((Style)localObject2).getWidth(getViewPortWidth()), (int)((Style)localObject2).getHeight(getViewPortWidth()));
-      localObject3 = new VImgSpan(this, (Drawable)localObject3, paramSpanText.src, 1);
-      this.mVImgSpanArr.add(localObject3);
-      localSpannableString.setSpan(localObject3, 0, 1, 33);
-      ((VImgSpan)localObject3).loadUrl(paramSpanText.src, (int)((Style)localObject2).getWidth(getViewPortWidth()), (int)((Style)localObject2).getHeight(getViewPortWidth()));
-      return localSpannableString;
+      localObject2 = getImgSpanSize((Style)localObject1);
+      localObject1 = new VImgSpan(1, localObject2[0], localObject2[1], paramSpanText.resize, (Style)localObject1, this.imageSpanLoadListener);
+      this.mVImgSpanArr.add(localObject1);
+      localSpannableString.setSpan(localObject1, 0, localSpannableString.length(), 33);
+      ((VImgSpan)localObject1).loadImageSpan(paramSpanText.src);
     }
-    catch (Exception paramSpanText)
+    catch (Exception localException)
     {
-      localObject2 = new StringBuilder();
+      Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("Failed to loaded content ");
-      ((StringBuilder)localObject2).append(localObject1);
-      Log.e("DomObjectText", ((StringBuilder)localObject2).toString(), paramSpanText);
+      ((StringBuilder)localObject2).append(paramSpanText.src);
+      ((StringBuilder)localObject2).append(", e: ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      ViolaLogUtils.e("DomObjectText", ((StringBuilder)localObject2).toString());
+    }
+    if (paramSpanText.events.contains("click"))
+    {
+      this.isRichClickable = true;
+      localSpannableString.setSpan(new ClickableSpanText(paramSpanText), 0, localSpannableString.length(), 33);
     }
     return localSpannableString;
   }
   
   private void applyTextDecoration()
   {
-    int i = DomObjectText.3.$SwitchMap$com$tencent$viola$ui$dom$style$font$TextDecoration[this.mTextDecoration.ordinal()];
+    int i = DomObjectText.2.$SwitchMap$com$tencent$viola$ui$dom$style$font$TextDecoration[this.mTextDecoration.ordinal()];
     if (i != 1)
     {
       if (i != 2)
@@ -360,6 +360,7 @@ public class DomObjectText
         else if ("image".equals(localSpanText.spanType))
         {
           localSpanText.src = paramJSONObject.getString("src");
+          localSpanText.resize = ViolaUtils.getString(paramJSONObject.opt("resize"), "");
         }
         if (paramJSONObject.has("style")) {
           localSpanText.style = new Style(paramJSONObject.getJSONObject("style"));
@@ -385,6 +386,21 @@ public class DomObjectText
     }
     catch (JSONException paramJSONObject) {}
     return null;
+  }
+  
+  private int[] getImgSpanSize(Style paramStyle)
+  {
+    int j = (int)paramStyle.getWidth(getViewPortWidth());
+    int k = (int)paramStyle.getHeight(getViewPortWidth());
+    int i = j;
+    if (j <= 0) {
+      i = getStyle().getFontSize(getViewPortWidth());
+    }
+    j = k;
+    if (k <= 0) {
+      j = getStyle().getFontSize(getViewPortWidth());
+    }
+    return new int[] { i, j };
   }
   
   public static Typeface getOrCreateTypeface(String paramString, int paramInt)
@@ -727,20 +743,6 @@ public class DomObjectText
     return f1;
   }
   
-  public void imgSpanSetTv(VTextView paramVTextView)
-  {
-    List localList = this.mVImgSpanArr;
-    if ((localList != null) && (localList.size() > 0))
-    {
-      int i = 0;
-      while (i < this.mVImgSpanArr.size())
-      {
-        ((VImgSpan)this.mVImgSpanArr.get(i)).setTv(paramVTextView);
-        i += 1;
-      }
-    }
-  }
-  
   public boolean isRichText()
   {
     return this.isRichText;
@@ -795,6 +797,16 @@ public class DomObjectText
       this.layout = createLayout(f, true, this.layout);
       this.previousWidth = this.layout.getWidth();
     }
+  }
+  
+  public void setImageSpanLoadListener(ImageSpanLoadListener paramImageSpanLoadListener)
+  {
+    this.imageSpanLoadListener = paramImageSpanLoadListener;
+    Iterator localIterator = this.mVImgSpanArr.iterator();
+    while (localIterator.hasNext()) {
+      ((VImgSpan)localIterator.next()).setImageSpanListener(paramImageSpanLoadListener);
+    }
+    this.mVImgSpanArr.clear();
   }
   
   public void swap()
@@ -959,7 +971,7 @@ public class DomObjectText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectText
  * JD-Core Version:    0.7.0.1
  */

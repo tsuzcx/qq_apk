@@ -16,26 +16,26 @@ import java.io.PipedInputStream;
 public class VoiceChange
   extends AudioComponentProcessor
 {
-  private static boolean jdField_a_of_type_Boolean = false;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long;
-  private int jdField_c_of_type_Int;
-  private long jdField_c_of_type_Long;
+  private static boolean j = false;
+  private long k;
+  private int l = 0;
+  private long m;
+  private int n;
+  private long o;
+  private String p;
   
   public VoiceChange(Context paramContext, int paramInt, String paramString)
   {
     super(paramContext);
-    if (!jdField_a_of_type_Boolean)
+    if (!j)
     {
       SilkSoLoader.a(paramContext, "codecsilk");
-      jdField_a_of_type_Boolean = true;
+      j = true;
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.l = paramInt;
     try
     {
-      this.jdField_a_of_type_JavaLangString = new File(paramString).getCanonicalPath();
+      this.p = new File(paramString).getCanonicalPath();
       return;
     }
     catch (Exception paramContext) {}
@@ -49,34 +49,34 @@ public class VoiceChange
   
   public IAudioProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    long l = SystemClock.uptimeMillis();
+    long l1 = SystemClock.uptimeMillis();
     paramArrayOfByte = super.a(paramArrayOfByte, paramInt1, paramInt2);
-    l = SystemClock.uptimeMillis() - l;
-    if (l > this.jdField_c_of_type_Long) {
-      this.jdField_c_of_type_Long = l;
+    l1 = SystemClock.uptimeMillis() - l1;
+    if (l1 > this.o) {
+      this.o = l1;
     }
-    this.jdField_b_of_type_Long += l;
-    this.jdField_c_of_type_Int += 1;
+    this.m += l1;
+    this.n += 1;
     return paramArrayOfByte;
   }
   
   public void a()
   {
-    if ((this.jdField_b_of_type_Long > 0L) && (this.jdField_c_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0)) {
-      ((IPttInfoCollector)QRoute.api(IPttInfoCollector.class)).reportSoundProcessCost(this.jdField_b_of_type_Long, this.jdField_c_of_type_Int, this.jdField_c_of_type_Long, this.jdField_b_of_type_Int + 2);
+    if ((this.m > 0L) && (this.n > 0) && (this.l > 0)) {
+      ((IPttInfoCollector)QRoute.api(IPttInfoCollector.class)).reportSoundProcessCost(this.m, this.n, this.o, this.l + 2);
     }
-    Release(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Long = 0L;
+    Release(this.k);
+    this.k = 0L;
     super.a();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
     super.a(paramInt1, paramInt2, paramInt3);
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt1);
+    this.m = 0L;
+    this.n = 0;
+    this.o = 0L;
+    this.i = QQAudioUtils.a(paramInt1);
     Object localObject = ((IQavTemp)QRoute.api(IQavTemp.class)).getAudio3ALicenseFilename();
     boolean bool = QLog.isColorLevel();
     paramInt2 = 1;
@@ -87,15 +87,15 @@ public class VoiceChange
       localStringBuilder.append((String)localObject);
       QLog.e("QQVoiceChanger", 1, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_Long = Create(this.jdField_a_of_type_JavaLangString, (String)localObject);
-    if (this.jdField_a_of_type_Long == 0L)
+    this.k = Create(this.p, (String)localObject);
+    if (this.k == 0L)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("Create voiceChanger error with:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.p);
       QLog.e("QQVoiceChanger", 1, ((StringBuilder)localObject).toString());
     }
-    paramInt3 = this.jdField_b_of_type_Int;
+    paramInt3 = this.l;
     if (paramInt3 == 1) {}
     for (;;)
     {
@@ -194,42 +194,42 @@ public class VoiceChange
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("Init Error type=");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.l);
     QLog.e("QQVoiceChanger", 1, ((StringBuilder)localObject).toString());
     paramInt2 = 0;
     paramInt3 = 0;
     label405:
-    Init(this.jdField_a_of_type_Long, paramInt1, 1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-    this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int * 10];
-    this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_b_of_type_ArrayOfByte.length * 2];
-    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData = new IAudioProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
+    Init(this.k, paramInt1, 1, paramInt2, paramInt3);
+    this.d = new byte[this.i];
+    this.e = new byte[this.i * 10];
+    this.f = new byte[this.e.length * 2];
+    this.g = new IAudioProcessor.ProcessData(this.f, 0);
   }
   
   public native int doChange(long paramLong, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_JavaIoPipedInputStream.read(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_Int) == -1) {
+    if (this.c.read(this.d, 0, this.i) == -1) {
       return -1;
     }
-    paramInt2 = doChange(this.jdField_a_of_type_Long, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
+    paramInt2 = doChange(this.k, this.d, this.e);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("change voice type=");
-      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append(this.l);
       localStringBuilder.append(" changedSize=");
       localStringBuilder.append(paramInt2);
       QLog.d("QQVoiceChanger", 2, localStringBuilder.toString());
     }
-    System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1, paramInt2);
+    System.arraycopy(this.e, 0, paramArrayOfByte, paramInt1, paramInt2);
     return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.voicechange.VoiceChange
  * JD-Core Version:    0.7.0.1
  */

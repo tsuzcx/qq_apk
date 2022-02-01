@@ -116,9 +116,9 @@ class WXTRTCCloud$10
         i = 3;
         label557:
         k = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 2007);
-        m = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 6010, i);
-        j = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 6011, i);
-        n = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 6012, i);
+        m = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 6104, i);
+        j = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 6105, i);
+        n = TXCStatus.c(((TRTCRoomInfo.UserInfo)localObject6).userID, 6106, i);
         i = j;
         j = n;
       }

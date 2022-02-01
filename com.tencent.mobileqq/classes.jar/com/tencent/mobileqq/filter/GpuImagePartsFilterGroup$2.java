@@ -9,14 +9,14 @@ class GpuImagePartsFilterGroup$2
   {
     GPUDrawPartFilter localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.a(this.this$0);
     GPUDrawPartFilter localGPUDrawPartFilter2 = null;
-    if ((localGPUDrawPartFilter1 != null) && (GpuImagePartsFilterGroup.a(this.this$0).getFilterType() == this.jdField_a_of_type_Int))
+    if ((localGPUDrawPartFilter1 != null) && (GpuImagePartsFilterGroup.a(this.this$0).getFilterType() == this.a))
     {
       localGPUDrawPartFilter1 = null;
     }
     else
     {
       localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.a(this.this$0);
-      GpuImagePartsFilterGroup.a(this.this$0, (GPUDrawPartFilter)FilterFactory.a(this.jdField_a_of_type_Int));
+      GpuImagePartsFilterGroup.a(this.this$0, (GPUDrawPartFilter)FilterFactory.a(this.a));
       GpuImagePartsFilterGroup.a(this.this$0).init();
       GpuImagePartsFilterGroup.a(this.this$0).onOutputSizeChanged(this.b, this.c);
     }
@@ -38,8 +38,8 @@ class GpuImagePartsFilterGroup$2
       GpuImagePartsFilterGroup.a(this.this$0).a(false);
       GpuImagePartsFilterGroup.b(this.this$0).a(false);
     }
-    GpuImagePartsFilterGroup.a(this.this$0).a(true, this.jdField_a_of_type_Float + 0.1F);
-    GpuImagePartsFilterGroup.b(this.this$0).a(false, this.jdField_a_of_type_Float - 0.1F);
+    GpuImagePartsFilterGroup.a(this.this$0).a(true, this.f + 0.1F);
+    GpuImagePartsFilterGroup.b(this.this$0).a(false, this.f - 0.1F);
     if (localGPUDrawPartFilter1 != null) {
       localGPUDrawPartFilter1.destroy();
     }
@@ -50,7 +50,7 @@ class GpuImagePartsFilterGroup$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filter.GpuImagePartsFilterGroup.2
  * JD-Core Version:    0.7.0.1
  */

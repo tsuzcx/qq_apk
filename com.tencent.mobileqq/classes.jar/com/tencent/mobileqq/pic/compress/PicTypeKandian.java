@@ -13,14 +13,14 @@ public class PicTypeKandian
     super(paramCompressInfo);
   }
   
-  protected int a()
+  protected int c()
   {
     return 80;
   }
   
-  protected final int[] a()
+  protected final int[] g()
   {
-    if (this.a.g == 2) {
+    if (this.l.p == 2) {
       return null;
     }
     int[] arrayOfInt = new int[2];
@@ -35,7 +35,7 @@ public class PicTypeKandian
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.compress.PicTypeKandian
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ import android.widget.ViewSwitcher;
 public class PttTipSwitchView
   extends ViewSwitcher
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
+  private Context a;
   private AnimationSet b;
   private AnimationSet c;
   private AnimationSet d;
+  private AnimationSet e;
   
   public PttTipSwitchView(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class PttTipSwitchView
   public PttTipSwitchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     b();
   }
   
@@ -42,23 +42,23 @@ public class PttTipSwitchView
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = a(1.0F, 0.0F);
-    this.b = a(0.0F, -1.0F);
-    this.c = a(-1.0F, 0.0F);
-    this.d = a(0.0F, 1.0F);
-    setInAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
-    setOutAnimation(this.b);
+    this.b = a(1.0F, 0.0F);
+    this.c = a(0.0F, -1.0F);
+    this.d = a(-1.0F, 0.0F);
+    this.e = a(0.0F, 1.0F);
+    setInAnimation(this.b);
+    setOutAnimation(this.c);
   }
   
   public void a()
   {
     Animation localAnimation = getInAnimation();
-    AnimationSet localAnimationSet = this.jdField_a_of_type_AndroidViewAnimationAnimationSet;
+    AnimationSet localAnimationSet = this.b;
     if (localAnimation != localAnimationSet) {
       setInAnimation(localAnimationSet);
     }
     localAnimation = getOutAnimation();
-    localAnimationSet = this.b;
+    localAnimationSet = this.c;
     if (localAnimation != localAnimationSet) {
       setOutAnimation(localAnimationSet);
     }
@@ -67,7 +67,7 @@ public class PttTipSwitchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PttTipSwitchView
  * JD-Core Version:    0.7.0.1
  */

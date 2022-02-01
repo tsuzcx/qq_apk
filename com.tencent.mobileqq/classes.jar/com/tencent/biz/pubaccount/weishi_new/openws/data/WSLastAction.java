@@ -6,8 +6,8 @@ import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 
 public class WSLastAction
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  private int a;
+  private long b;
   
   public static WSLastAction a(@Nullable String paramString)
   {
@@ -35,27 +35,27 @@ public class WSLastAction
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    return this.a;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   public void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
+  }
+  
+  public long b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.openws.data.WSLastAction
  * JD-Core Version:    0.7.0.1
  */

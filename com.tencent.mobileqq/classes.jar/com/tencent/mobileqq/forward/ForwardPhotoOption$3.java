@@ -11,21 +11,21 @@ class ForwardPhotoOption$3
   
   public void run()
   {
-    if ((this.this$0.a.isShowing()) && (ForwardPhotoOption.a(this.this$0) != null))
+    if ((this.this$0.A.isShowing()) && (ForwardPhotoOption.a(this.this$0) != null))
     {
-      ForwardPhotoOption.a(this.this$0).a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, false);
-      if (ForwardPhotoOption.a(this.this$0))
+      ForwardPhotoOption.a(this.this$0).a(this.a, this.b, this.c, false);
+      if (ForwardPhotoOption.b(this.this$0))
       {
-        this.this$0.u();
+        this.this$0.X();
         return;
       }
-      ForwardPhotoOption.a(this.this$0).a.setOnTouchListener(new ForwardPhotoOption.3.1(this));
+      ForwardPhotoOption.a(this.this$0).d.setOnTouchListener(new ForwardPhotoOption.3.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPhotoOption.3
  * JD-Core Version:    0.7.0.1
  */

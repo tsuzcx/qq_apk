@@ -54,10 +54,10 @@ public enum C2CPlusPanelAppConfigHelper
     try
     {
       Object localObject;
-      if (StudyModeManager.a())
+      if (StudyModeManager.h())
       {
         QLog.d("PlusPanelHelper", 1, "getAppInfoOrder study mode");
-        localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.a().a(611);
+        localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.b().b(611);
         if (localObject != null) {
           return ((AIOPlusPanelAppInfoOrderConfigProcessor.Config)localObject).a;
         }
@@ -65,8 +65,8 @@ public enum C2CPlusPanelAppConfigHelper
       else
       {
         QLog.d("PlusPanelHelper", 1, "getAppInfoOrder normal mode");
-        boolean bool = SimpleUIUtil.a();
-        localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.a().a(495);
+        boolean bool = SimpleUIUtil.e();
+        localObject = (AIOPlusPanelAppInfoOrderConfigProcessor.Config)QConfigManager.b().b(495);
         if (localObject != null)
         {
           if (bool) {
@@ -146,7 +146,7 @@ public enum C2CPlusPanelAppConfigHelper
         {
           Object localObject2 = localObject1[i];
           if ((localObject2 != null) && (localObject2.getManageConfigID() > 0)) {
-            QConfigManager.a().a(localObject2.getManageConfigID());
+            QConfigManager.b().b(localObject2.getManageConfigID());
           }
         }
         else
@@ -242,7 +242,7 @@ public enum C2CPlusPanelAppConfigHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.C2CPlusPanelAppConfigHelper
  * JD-Core Version:    0.7.0.1
  */

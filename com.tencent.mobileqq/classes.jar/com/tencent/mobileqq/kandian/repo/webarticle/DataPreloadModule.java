@@ -69,8 +69,8 @@ public final class DataPreloadModule
   
   private final String getUrlWithToken(String paramString)
   {
-    Object localObject2 = RIJQQAppInterfaceUtil.a();
-    Object localObject1 = RIJQQAppInterfaceUtil.a();
+    Object localObject2 = RIJQQAppInterfaceUtil.e();
+    Object localObject1 = RIJQQAppInterfaceUtil.d();
     localObject2 = ((AppRuntime)localObject2).getManager(2);
     if (localObject2 != null)
     {
@@ -297,7 +297,7 @@ public final class DataPreloadModule
   public void preloadArticle(@NotNull AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAbsBaseArticleInfo, "articleInfo");
-    if (!RIJWebArticleUtil.a.g()) {
+    if (!RIJWebArticleUtil.a.h()) {
       return;
     }
     if (RIJFeedsType.a(paramAbsBaseArticleInfo))
@@ -335,7 +335,7 @@ public final class DataPreloadModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.webarticle.DataPreloadModule
  * JD-Core Version:    0.7.0.1
  */

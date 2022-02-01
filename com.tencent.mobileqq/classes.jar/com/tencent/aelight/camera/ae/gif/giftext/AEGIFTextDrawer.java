@@ -14,23 +14,23 @@ import com.tencent.aelight.camera.ae.font.AEFontManager;
 
 public class AEGIFTextDrawer
 {
-  private int jdField_a_of_type_Int = 0;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
+  private TextPaint a = new TextPaint();
+  private TextPaint b = new TextPaint();
+  private int c = 0;
+  private Rect d = new Rect();
+  private String e = "";
+  private Bitmap f;
+  private Canvas g;
+  private String h;
+  private int i;
+  private int j;
   
   public AEGIFTextDrawer(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.i = paramInt1;
+    this.j = paramInt2;
+    this.f = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    this.g = new Canvas(this.f);
   }
   
   private void a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, Paint paramPaint)
@@ -52,108 +52,108 @@ public class AEGIFTextDrawer
     }
   }
   
-  private void c()
+  private void d()
   {
-    Typeface localTypeface = AEFontManager.a().a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(localTypeface);
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Typeface localTypeface = AEFontManager.a().a(this.h);
+    this.a.setTypeface(localTypeface);
+    this.b.setTypeface(localTypeface);
   }
   
   public void a()
   {
-    c();
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_AndroidTextTextPaint.getTextSize());
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    Object localObject = this.jdField_a_of_type_AndroidTextTextPaint;
-    String str = this.jdField_a_of_type_JavaLangString;
-    ((TextPaint)localObject).getTextBounds(str, 0, str.length(), this.jdField_a_of_type_AndroidGraphicsRect);
-    float f1 = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    int i = this.jdField_a_of_type_JavaLangString.indexOf("\r\n");
+    d();
+    this.b.setTextSize(this.a.getTextSize());
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeWidth(this.c);
+    this.a.setAntiAlias(true);
+    this.b.setAntiAlias(true);
+    Object localObject = this.a;
+    String str = this.e;
+    ((TextPaint)localObject).getTextBounds(str, 0, str.length(), this.d);
+    float f1 = this.d.height();
+    int k = this.e.indexOf("\r\n");
     float f2;
-    if (i < 0)
+    if (k < 0)
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(this.e)) {
         return;
       }
-      a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
-      f2 = f1 / 2.0F + (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F;
-      localObject = this.jdField_a_of_type_AndroidGraphicsCanvas;
-      str = this.jdField_a_of_type_JavaLangString;
-      a((Canvas)localObject, str, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      localObject = this.jdField_a_of_type_AndroidGraphicsCanvas;
-      str = this.jdField_a_of_type_JavaLangString;
-      a((Canvas)localObject, str, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)) / 2.0F, (this.c - f1) / 2.0F + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+      a(this.e, this.b, this.i, this.j, this.c);
+      this.a.setTextSize(this.b.getTextSize());
+      f2 = f1 / 2.0F + (Math.abs(this.a.ascent()) - this.a.descent()) / 2.0F;
+      localObject = this.g;
+      str = this.e;
+      a((Canvas)localObject, str, (this.i - this.b.measureText(str)) / 2.0F, (this.j - f1) / 2.0F + f2, this.b);
+      localObject = this.g;
+      str = this.e;
+      a((Canvas)localObject, str, (this.i - this.a.measureText(str)) / 2.0F, (this.j - f1) / 2.0F + f2, this.a);
     }
     else
     {
-      localObject = this.jdField_a_of_type_JavaLangString.substring(0, i);
-      str = this.jdField_a_of_type_JavaLangString.substring(i + 2);
-      a((String)localObject, this.jdField_b_of_type_AndroidTextTextPaint, this.jdField_b_of_type_Int, this.c / 2, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_b_of_type_AndroidTextTextPaint.getTextSize());
+      localObject = this.e.substring(0, k);
+      str = this.e.substring(k + 2);
+      a((String)localObject, this.b, this.i, this.j / 2, this.c);
+      this.a.setTextSize(this.b.getTextSize());
       f1 /= 2.0F;
-      f2 = (Math.abs(this.jdField_a_of_type_AndroidTextTextPaint.ascent()) - this.jdField_a_of_type_AndroidTextTextPaint.descent()) / 2.0F + f1;
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, (String)localObject, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText((String)localObject)) / 2.0F, this.c * 0.25F - f1 + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, (String)localObject, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)) / 2.0F, this.c * 0.25F - f1 + f2, this.jdField_a_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str, (this.jdField_b_of_type_Int - this.jdField_b_of_type_AndroidTextTextPaint.measureText(str)) / 2.0F, this.c * 0.65F - f1 + f2, this.jdField_b_of_type_AndroidTextTextPaint);
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, str, (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidTextTextPaint.measureText(str)) / 2.0F, this.c * 0.65F - f1 + f2, this.jdField_a_of_type_AndroidTextTextPaint);
+      f2 = (Math.abs(this.a.ascent()) - this.a.descent()) / 2.0F + f1;
+      a(this.g, (String)localObject, (this.i - this.b.measureText((String)localObject)) / 2.0F, this.j * 0.25F - f1 + f2, this.b);
+      a(this.g, (String)localObject, (this.i - this.a.measureText((String)localObject)) / 2.0F, this.j * 0.25F - f1 + f2, this.a);
+      a(this.g, str, (this.i - this.b.measureText(str)) / 2.0F, this.j * 0.65F - f1 + f2, this.b);
+      a(this.g, str, (this.i - this.a.measureText(str)) / 2.0F, this.j * 0.65F - f1 + f2, this.a);
     }
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.g.drawBitmap(this.f, 0.0F, 0.0F, this.a);
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
+    this.a.setTextSize(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString.trim();
-    paramString = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.e = paramString.trim();
+    paramString = this.f;
     if (paramString != null) {
       paramString.eraseColor(0);
     }
   }
   
-  public void b()
+  public Bitmap b()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-    }
+    return this.f;
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
+    this.a.setColor(Color.parseColor(paramString));
+  }
+  
+  public void c()
+  {
+    Bitmap localBitmap = this.f;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      this.f.recycle();
+    }
   }
   
   public void c(String paramString)
   {
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(Color.parseColor(paramString));
+    this.b.setColor(Color.parseColor(paramString));
   }
   
   public void d(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.h = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.AEGIFTextDrawer
  * JD-Core Version:    0.7.0.1
  */

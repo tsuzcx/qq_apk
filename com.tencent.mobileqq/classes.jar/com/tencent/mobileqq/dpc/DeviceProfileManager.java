@@ -113,31 +113,31 @@ public class DeviceProfileManager
     Object localObject1 = new ConfigurationService.OS();
     ((ConfigurationService.OS)localObject1).setHasFlag(true);
     ((ConfigurationService.OS)localObject1).type.set(2);
-    ((ConfigurationService.OS)localObject1).kernel.set(DeviceInfoUtil.m());
-    ((ConfigurationService.OS)localObject1).sdk.set(String.valueOf(DeviceInfoUtil.a()));
-    ((ConfigurationService.OS)localObject1).version.set(DeviceInfoUtil.e());
-    ((ConfigurationService.OS)localObject1).rom.set(DeviceInfoUtil.j());
+    ((ConfigurationService.OS)localObject1).kernel.set(DeviceInfoUtil.I());
+    ((ConfigurationService.OS)localObject1).sdk.set(String.valueOf(DeviceInfoUtil.d()));
+    ((ConfigurationService.OS)localObject1).version.set(DeviceInfoUtil.g());
+    ((ConfigurationService.OS)localObject1).rom.set(DeviceInfoUtil.v());
     ConfigurationService.CPU localCPU = new ConfigurationService.CPU();
     localCPU.setHasFlag(true);
-    localCPU.model.set(DeviceInfoUtil.g());
-    localCPU.cores.set(DeviceInfoUtil.b());
-    localCPU.frequency.set((int)DeviceInfoUtil.b());
+    localCPU.model.set(DeviceInfoUtil.m());
+    localCPU.cores.set(DeviceInfoUtil.h());
+    localCPU.frequency.set((int)DeviceInfoUtil.k());
     ConfigurationService.Memory localMemory = new ConfigurationService.Memory();
     localMemory.setHasFlag(true);
     localMemory.total.set(DeviceInfoUtil.a());
-    localMemory.process.set(DeviceInfoUtil.f());
+    localMemory.process.set(DeviceInfoUtil.s());
     ConfigurationService.Storage localStorage = new ConfigurationService.Storage();
     localStorage.setHasFlag(true);
-    localStorage.builtin.set(DeviceInfoUtil.d());
-    Object localObject2 = DeviceInfoUtil.b();
+    localStorage.builtin.set(DeviceInfoUtil.o());
+    Object localObject2 = DeviceInfoUtil.q();
     localStorage.external.set(localObject2[0] * 1048576L + localObject2[1] * 1024L * 1024L);
     localObject2 = new ConfigurationService.Screen();
     ((ConfigurationService.Screen)localObject2).setHasFlag(true);
     ((ConfigurationService.Screen)localObject2).model.set("");
-    ((ConfigurationService.Screen)localObject2).width.set((int)DeviceInfoUtil.g());
-    ((ConfigurationService.Screen)localObject2).height.set((int)DeviceInfoUtil.h());
-    ((ConfigurationService.Screen)localObject2).dpi.set(DeviceInfoUtil.e());
-    ((ConfigurationService.Screen)localObject2).multi_touch.set(DeviceInfoUtil.c());
+    ((ConfigurationService.Screen)localObject2).width.set((int)DeviceInfoUtil.B());
+    ((ConfigurationService.Screen)localObject2).height.set((int)DeviceInfoUtil.C());
+    ((ConfigurationService.Screen)localObject2).dpi.set(DeviceInfoUtil.J());
+    ((ConfigurationService.Screen)localObject2).multi_touch.set(DeviceInfoUtil.K());
     ConfigurationService.Camera localCamera = new ConfigurationService.Camera();
     localCamera.setHasFlag(true);
     localCamera.primary.set(0L);
@@ -174,8 +174,8 @@ public class DeviceProfileManager
     paramAppRuntime.add(localObject3);
     localObject3 = new ConfigurationService.DeviceInfo();
     ((ConfigurationService.DeviceInfo)localObject3).setHasFlag(true);
-    ((ConfigurationService.DeviceInfo)localObject3).brand.set(DeviceInfoUtil.h());
-    ((ConfigurationService.DeviceInfo)localObject3).model.set(DeviceInfoUtil.d());
+    ((ConfigurationService.DeviceInfo)localObject3).brand.set(DeviceInfoUtil.t());
+    ((ConfigurationService.DeviceInfo)localObject3).model.set(DeviceInfoUtil.f());
     ((ConfigurationService.DeviceInfo)localObject3).os = ((ConfigurationService.OS)localObject1);
     ((ConfigurationService.DeviceInfo)localObject3).cpu = localCPU;
     ((ConfigurationService.DeviceInfo)localObject3).memory = localMemory;
@@ -421,10 +421,10 @@ public class DeviceProfileManager
     new DeviceProfileManager.DPCConfigInfo().featureValue = "1";
     this.mFeatureDefaultMap.put(DPCNames.aio_eggs.name(), localObject);
     localObject = new DeviceProfileManager.DPCConfigInfo();
-    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = HardCodeUtil.a(2131698756);
+    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = HardCodeUtil.a(2131896714);
     this.mFeatureDefaultMap.put(DPCNames.OneyWayDateMsgNotifyCfg.name(), localObject);
     localObject = new DeviceProfileManager.DPCConfigInfo();
-    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = HardCodeUtil.a(2131698755);
+    ((DeviceProfileManager.DPCConfigInfo)localObject).featureValue = HardCodeUtil.a(2131896713);
     this.mFeatureDefaultMap.put(DPCNames.OneyWayLBSFriendMsgNotifyCfg.name(), localObject);
   }
   
@@ -1010,7 +1010,7 @@ public class DeviceProfileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dpc.DeviceProfileManager
  * JD-Core Version:    0.7.0.1
  */

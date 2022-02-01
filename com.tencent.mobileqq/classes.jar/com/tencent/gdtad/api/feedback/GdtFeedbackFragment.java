@@ -39,47 +39,39 @@ import java.lang.ref.WeakReference;
 public final class GdtFeedbackFragment
   extends ReportDialogFragment
 {
-  private static final int jdField_a_of_type_Int = Color.parseColor("#FFFFFF");
-  private static final String jdField_a_of_type_JavaLangString = "GdtFeedbackFragment";
-  private static final int jdField_b_of_type_Int = Color.parseColor("#2B2B2B");
-  private static final int c = Color.parseColor("#282828");
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.myLooper());
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private static final String b = "GdtFeedbackFragment";
+  private static final int c = Color.parseColor("#FFFFFF");
+  private static final int d = Color.parseColor("#2B2B2B");
+  private static final int e = Color.parseColor("#282828");
   protected GdtFeedbackModel a;
-  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private WeakReference<GdtFeedbackListener> jdField_b_of_type_JavaLangRefWeakReference;
-  
-  private int a()
-  {
-    if (b()) {
-      return 2131559184;
-    }
-    return 2131559185;
-  }
+  private Handler f = new Handler(Looper.getMainLooper());
+  private WeakReference<Activity> g;
+  private WeakReference<GdtFeedbackListener> h;
+  private View.OnClickListener i;
+  private boolean j;
   
   private View a(Context paramContext, int paramInt)
   {
-    GdtFeedbackFragment.GdtFeedbackItemView localGdtFeedbackItemView = new GdtFeedbackFragment.GdtFeedbackItemView(paramContext, b());
-    localGdtFeedbackItemView.jdField_a_of_type_Int = paramInt;
-    localGdtFeedbackItemView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    ((ImageView)localGdtFeedbackItemView.findViewById(2131367557)).setImageDrawable(this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.a(paramInt));
-    Object localObject = (TextView)localGdtFeedbackItemView.findViewById(2131367559);
-    ((TextView)localObject).setText(this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.a(paramInt));
+    GdtFeedbackFragment.GdtFeedbackItemView localGdtFeedbackItemView = new GdtFeedbackFragment.GdtFeedbackItemView(paramContext, f());
+    localGdtFeedbackItemView.a = paramInt;
+    localGdtFeedbackItemView.setOnClickListener(this.i);
+    ((ImageView)localGdtFeedbackItemView.findViewById(2131434099)).setImageDrawable(this.a.c(paramInt));
+    Object localObject = (TextView)localGdtFeedbackItemView.findViewById(2131434101);
+    ((TextView)localObject).setText(this.a.d(paramInt));
     if (localGdtFeedbackItemView.getBackground() == null) {
       paramContext = new GradientDrawable();
     } else {
       paramContext = localGdtFeedbackItemView.getBackground();
     }
-    if (a())
+    if (e())
     {
-      ((TextView)localObject).setTextColor(jdField_a_of_type_Int);
-      localObject = getResources().getColorStateList(2131165670);
+      ((TextView)localObject).setTextColor(c);
+      localObject = getResources().getColorStateList(2131166133);
     }
     else
     {
-      ((TextView)localObject).setTextColor(jdField_b_of_type_Int);
-      localObject = getResources().getColorStateList(2131165671);
+      ((TextView)localObject).setTextColor(d);
+      localObject = getResources().getColorStateList(2131166134);
     }
     DrawableCompat.setTintList(paramContext.mutate(), (ColorStateList)localObject);
     if (Build.VERSION.SDK_INT >= 16) {
@@ -87,48 +79,26 @@ public final class GdtFeedbackFragment
     } else {
       localGdtFeedbackItemView.setBackgroundDrawable(paramContext);
     }
-    paramContext = (ImageView)localGdtFeedbackItemView.findViewById(2131367558);
-    if (this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.b(paramInt) != null)
+    paramContext = (ImageView)localGdtFeedbackItemView.findViewById(2131434100);
+    if (this.a.e(paramInt) != null)
     {
       paramContext.setVisibility(0);
-      paramContext.setImageDrawable(this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.b(paramInt));
+      paramContext.setImageDrawable(this.a.g(paramInt));
     }
     return localGdtFeedbackItemView;
   }
   
-  private AdError a(StartGdtFeedbackParams paramStartGdtFeedbackParams)
-  {
-    if (paramStartGdtFeedbackParams == null) {
-      return new AdError(4);
-    }
-    this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel = new GdtFeedbackModel();
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramStartGdtFeedbackParams.jdField_a_of_type_JavaLangRefWeakReference;
-    this.jdField_b_of_type_JavaLangRefWeakReference = paramStartGdtFeedbackParams.jdField_b_of_type_JavaLangRefWeakReference;
-    this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.b(paramStartGdtFeedbackParams.jdField_a_of_type_Boolean);
-    GdtFeedbackModel localGdtFeedbackModel = this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel;
-    boolean bool;
-    if (paramStartGdtFeedbackParams.jdField_a_of_type_Int != 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localGdtFeedbackModel.a(bool);
-    paramStartGdtFeedbackParams = a(paramStartGdtFeedbackParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new GdtFeedbackFragment.3(this);
-    return paramStartGdtFeedbackParams;
-  }
-  
   private void a(int paramInt, @Nullable String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new GdtFeedbackFragment.4(this, paramInt, paramString));
+    this.f.post(new GdtFeedbackFragment.4(this, paramInt, paramString));
   }
   
   private void a(Window paramWindow)
   {
     paramWindow.getDecorView().setPadding(0, 0, 0, 0);
     WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
-    paramWindow.setWindowAnimations(b());
-    if (b())
+    paramWindow.setWindowAnimations(d());
+    if (f())
     {
       localLayoutParams.gravity = 17;
       localLayoutParams.width = -2;
@@ -144,9 +114,9 @@ public final class GdtFeedbackFragment
   
   private void a(GdtFeedbackResultParams paramGdtFeedbackResultParams)
   {
-    WeakReference localWeakReference = this.jdField_b_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.h;
     if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((GdtFeedbackListener)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(paramGdtFeedbackResultParams);
+      ((GdtFeedbackListener)this.h.get()).a(paramGdtFeedbackResultParams);
     }
   }
   
@@ -155,30 +125,60 @@ public final class GdtFeedbackFragment
     new GdtFeedbackFragment().b(paramStartGdtFeedbackParams);
   }
   
-  private boolean a()
+  private int c()
   {
-    GdtFeedbackModel localGdtFeedbackModel = this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel;
-    return (localGdtFeedbackModel != null) && (localGdtFeedbackModel.b());
-  }
-  
-  private int b()
-  {
-    if (b()) {
-      return 2131755330;
+    if (f()) {
+      return 2131624939;
     }
-    return 2131755331;
+    return 2131624940;
   }
   
-  private boolean b()
+  private AdError c(StartGdtFeedbackParams paramStartGdtFeedbackParams)
   {
-    GdtFeedbackModel localGdtFeedbackModel = this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel;
-    return (localGdtFeedbackModel != null) && (localGdtFeedbackModel.a());
+    if (paramStartGdtFeedbackParams == null) {
+      return new AdError(4);
+    }
+    this.a = new GdtFeedbackModel();
+    this.g = paramStartGdtFeedbackParams.a;
+    this.h = paramStartGdtFeedbackParams.b;
+    this.a.b(paramStartGdtFeedbackParams.e);
+    GdtFeedbackModel localGdtFeedbackModel = this.a;
+    boolean bool;
+    if (paramStartGdtFeedbackParams.d != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localGdtFeedbackModel.a(bool);
+    paramStartGdtFeedbackParams = a(paramStartGdtFeedbackParams.c);
+    this.i = new GdtFeedbackFragment.3(this);
+    return paramStartGdtFeedbackParams;
+  }
+  
+  private int d()
+  {
+    if (f()) {
+      return 2131952024;
+    }
+    return 2131952025;
+  }
+  
+  private boolean e()
+  {
+    GdtFeedbackModel localGdtFeedbackModel = this.a;
+    return (localGdtFeedbackModel != null) && (localGdtFeedbackModel.d());
+  }
+  
+  private boolean f()
+  {
+    GdtFeedbackModel localGdtFeedbackModel = this.a;
+    return (localGdtFeedbackModel != null) && (localGdtFeedbackModel.c());
   }
   
   public AdError a(GdtAd paramGdtAd)
   {
-    this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.a(paramGdtAd);
-    return this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.a();
+    this.a.a(paramGdtAd);
+    return this.a.a();
   }
   
   public void a()
@@ -186,43 +186,43 @@ public final class GdtFeedbackFragment
     Object localObject1 = getView();
     if (localObject1 != null)
     {
-      if (a())
+      if (e())
       {
         localObject2 = ((View)localObject1).getBackground();
-        ((Drawable)localObject2).setColorFilter(c, PorterDuff.Mode.MULTIPLY);
+        ((Drawable)localObject2).setColorFilter(e, PorterDuff.Mode.MULTIPLY);
         if (Build.VERSION.SDK_INT >= 16) {
           ((View)localObject1).setBackground((Drawable)localObject2);
         } else {
           ((View)localObject1).setBackgroundDrawable((Drawable)localObject2);
         }
       }
-      Object localObject2 = (LinearLayout)((View)localObject1).findViewById(2131367556);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ComTencentGdtadApiFeedbackGdtFeedbackModel.a())
+      Object localObject2 = (LinearLayout)((View)localObject1).findViewById(2131434098);
+      int k = 0;
+      while (k < this.a.b())
       {
-        if (i != 0)
+        if (k != 0)
         {
           localObject3 = new View(((View)localObject1).getContext());
           ((View)localObject3).setLayoutParams(new ViewGroup.LayoutParams(-1, 1));
           ((View)localObject3).setBackgroundColor(Color.parseColor("#66979797"));
           ((LinearLayout)localObject2).addView((View)localObject3);
         }
-        ((LinearLayout)localObject2).addView(a(((View)localObject1).getContext(), i));
-        i += 1;
+        ((LinearLayout)localObject2).addView(a(((View)localObject1).getContext(), k));
+        k += 1;
       }
-      localObject2 = (TextView)((View)localObject1).findViewById(2131367555);
+      localObject2 = (TextView)((View)localObject1).findViewById(2131434097);
       ((TextView)localObject2).setOnClickListener(new GdtFeedbackFragment.2(this));
-      if (a())
+      if (e())
       {
-        ((TextView)localObject2).setTextColor(jdField_a_of_type_Int);
-        localObject1 = getResources().getColorStateList(2131165668);
+        ((TextView)localObject2).setTextColor(c);
+        localObject1 = getResources().getColorStateList(2131166131);
       }
       else
       {
-        ((TextView)localObject2).setTextColor(jdField_b_of_type_Int);
-        localObject1 = getResources().getColorStateList(2131165669);
+        ((TextView)localObject2).setTextColor(d);
+        localObject1 = getResources().getColorStateList(2131166132);
       }
-      Object localObject3 = ContextCompat.getDrawable((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2130840259);
+      Object localObject3 = ContextCompat.getDrawable((Context)this.g.get(), 2130840577);
       if (localObject3 != null)
       {
         DrawableCompat.setTintList(((Drawable)localObject3).mutate(), (ColorStateList)localObject1);
@@ -238,21 +238,21 @@ public final class GdtFeedbackFragment
   
   public void b(StartGdtFeedbackParams paramStartGdtFeedbackParams)
   {
-    paramStartGdtFeedbackParams = a(paramStartGdtFeedbackParams);
+    paramStartGdtFeedbackParams = c(paramStartGdtFeedbackParams);
     if (!paramStartGdtFeedbackParams.isSuccess())
     {
       GdtFeedbackResultParams localGdtFeedbackResultParams = new GdtFeedbackResultParams();
-      localGdtFeedbackResultParams.jdField_a_of_type_ComTencentAdTangramAdError = paramStartGdtFeedbackParams;
-      localGdtFeedbackResultParams.jdField_a_of_type_Int = 0;
+      localGdtFeedbackResultParams.a = paramStartGdtFeedbackParams;
+      localGdtFeedbackResultParams.b = 0;
       a(localGdtFeedbackResultParams);
       return;
     }
-    show(((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getFragmentManager(), null);
+    show(((Activity)this.g.get()).getFragmentManager(), null);
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    paramBundle = new ReportDialog(getActivity(), 2131755369);
+    paramBundle = new ReportDialog(getActivity(), 2131952074);
     if (paramBundle.getWindow() != null) {
       a(paramBundle.getWindow());
     }
@@ -261,7 +261,7 @@ public final class GdtFeedbackFragment
   
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(a(), paramViewGroup);
+    paramLayoutInflater = paramLayoutInflater.inflate(c(), paramViewGroup);
     FragmentCollector.onFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -269,7 +269,7 @@ public final class GdtFeedbackFragment
   public void onDestroy()
   {
     super.onDestroy();
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.f;
     if (localHandler != null) {
       localHandler.removeCallbacksAndMessages(null);
     }
@@ -278,21 +278,21 @@ public final class GdtFeedbackFragment
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     super.onDismiss(paramDialogInterface);
-    this.jdField_a_of_type_Boolean = false;
+    this.j = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtFeedbackFragment.1(this), 200L);
+    this.f.postDelayed(new GdtFeedbackFragment.1(this), 200L);
   }
   
   public void onStart()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.j)
     {
       a();
-      this.jdField_a_of_type_Boolean = true;
+      this.j = true;
     }
     super.onStart();
   }
@@ -307,7 +307,7 @@ public final class GdtFeedbackFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.api.feedback.GdtFeedbackFragment
  * JD-Core Version:    0.7.0.1
  */

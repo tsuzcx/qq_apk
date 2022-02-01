@@ -11,17 +11,17 @@ class PublicAccountAdvertisementActivity$5
   
   public boolean a(int paramInt)
   {
-    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+    return (PublicAccountAdvertisementActivity.s(this.a)) && (PublicAccountAdvertisementActivity.f(this.a));
   }
   
   public boolean b(int paramInt)
   {
-    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
+    return (PublicAccountAdvertisementActivity.s(this.a)) && (!PublicAccountAdvertisementActivity.f(this.a)) && (PublicAccountAdvertisementActivity.t(this.a) != null) && (PublicAccountAdvertisementActivity.t(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.t(this.a).getWebView().getWebScrollY() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.5
  * JD-Core Version:    0.7.0.1
  */

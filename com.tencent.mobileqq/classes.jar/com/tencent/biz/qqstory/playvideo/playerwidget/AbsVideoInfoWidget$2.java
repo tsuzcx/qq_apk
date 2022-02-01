@@ -13,22 +13,22 @@ class AbsVideoInfoWidget$2
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)
+    if (this.this$0.j == null)
     {
-      this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$ProgressView = new AbsVideoInfoWidget.ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_AndroidAppDialog = new ReportDialog(this.jdField_a_of_type_AndroidContentContext);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      this.this$0.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.this$0.jdField_a_of_type_AndroidAppDialog.setContentView(this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$ProgressView);
+      this.this$0.k = new AbsVideoInfoWidget.ProgressView(this.a);
+      this.this$0.j = new ReportDialog(this.a);
+      this.this$0.j.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+      this.this$0.j.setCanceledOnTouchOutside(false);
+      this.this$0.j.requestWindowFeature(1);
+      this.this$0.j.setContentView(this.this$0.k);
     }
     else
     {
-      this.this$0.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.this$0.j.dismiss();
     }
-    this.this$0.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetAbsVideoInfoWidget$ProgressView.setProgressText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.this$0.jdField_a_of_type_AndroidAppDialog.show();
+    this.this$0.j.setCancelable(this.b);
+    this.this$0.k.setProgressText(this.c);
+    this.this$0.j.show();
   }
 }
 

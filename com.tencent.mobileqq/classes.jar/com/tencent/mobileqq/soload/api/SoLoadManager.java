@@ -75,7 +75,12 @@ public class SoLoadManager
   
   public boolean isExist(String paramString)
   {
-    return loadSync(paramString, new LoadOptions.LoadOptionsBuilder().setIsNoNeedLoad(true).setIsNoNeedCRC(true).setCloseRetry(true).setCloseReport(true).build()).isSucc();
+    LoadExtResult localLoadExtResult = loadSync(paramString, new LoadOptions.LoadOptionsBuilder().setIsNoNeedLoad(true).setIsNoNeedCRC(true).setCloseRetry(true).setCloseReport(true).build());
+    paramString = localLoadExtResult;
+    if (localLoadExtResult == null) {
+      paramString = new LoadExtResult();
+    }
+    return paramString.isSucc();
   }
   
   public boolean isExist(String[] paramArrayOfString)
@@ -154,7 +159,7 @@ public class SoLoadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.SoLoadManager
  * JD-Core Version:    0.7.0.1
  */

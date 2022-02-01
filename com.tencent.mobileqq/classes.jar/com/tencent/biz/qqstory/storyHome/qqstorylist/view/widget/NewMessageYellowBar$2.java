@@ -10,8 +10,8 @@ class NewMessageYellowBar$2
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.a) }));
-    this.this$0.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.this$0.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    this.this$0.a.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.a) }));
+    this.this$0.a.startAnimation(this.this$0.e);
   }
 }
 

@@ -19,14 +19,13 @@ import com.tencent.mobileqq.transfile.api.ITransFileController;
 public class StoryVideoFileObject
   extends UploadObject
 {
-  public UploadResult a;
   public String a;
   public String b;
+  public UploadResult c = new UploadResult();
   
   public StoryVideoFileObject(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadUploadResult = new UploadResult();
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
   }
   
@@ -38,27 +37,27 @@ public class StoryVideoFileObject
     localTransferRequest.mIsUp = true;
     localTransferRequest.mFileType = 196609;
     QQStoryContext.a();
-    localTransferRequest.mSelfUin = QQStoryContext.a().getCurrentUin();
+    localTransferRequest.mSelfUin = QQStoryContext.j().getCurrentUin();
     localTransferRequest.mPeerUin = "";
     localTransferRequest.mUniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
     QQStoryContext.a();
-    ((ITransFileController)QQStoryContext.a().getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+    ((ITransFileController)QQStoryContext.j().getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
   }
   
   protected void a()
   {
-    if ((TextUtils.isEmpty(this.b)) || (!FileUtils.c(this.b)))
+    if ((TextUtils.isEmpty(this.b)) || (!FileUtils.d(this.b)))
     {
-      localObject = ((VideoCompositeManager)SuperManager.a(14)).a(this.jdField_a_of_type_JavaLangString);
-      if (!((VideoCompositeManager.CompositeResult)localObject).a.isSuccess()) {
+      localObject = ((VideoCompositeManager)SuperManager.a(14)).b(this.a);
+      if (!((VideoCompositeManager.CompositeResult)localObject).g.isSuccess()) {
         break label148;
       }
       this.b = ((VideoCompositeManager.CompositeResult)localObject).b;
-      if ((TextUtils.isEmpty(this.b)) || (!FileUtils.c(this.b))) {}
+      if ((TextUtils.isEmpty(this.b)) || (!FileUtils.d(this.b))) {}
     }
     else
     {
-      StoryVideoUploadProgressManager.a().b(this.jdField_a_of_type_JavaLangString);
+      StoryVideoUploadProgressManager.a().b(this.a);
       c();
       return;
     }
@@ -68,13 +67,13 @@ public class StoryVideoFileObject
     super.notifyResult(localObject);
     return;
     label148:
-    ((VideoCompositeManager.CompositeResult)localObject).a.extraMsg = "composite";
-    super.notifyResult(((VideoCompositeManager.CompositeResult)localObject).a);
+    ((VideoCompositeManager.CompositeResult)localObject).g.extraMsg = "composite";
+    super.notifyResult(((VideoCompositeManager.CompositeResult)localObject).g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.StoryVideoFileObject
  * JD-Core Version:    0.7.0.1
  */

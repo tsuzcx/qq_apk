@@ -9,65 +9,65 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/feeds/dynamicfeeds/RIJFeedsInsertModule$ReqParams;", "", "()V", "channelId", "", "getChannelId", "()J", "setChannelId", "(J)V", "followPuin", "", "getFollowPuin", "()Ljava/lang/String;", "setFollowPuin", "(Ljava/lang/String;)V", "lastClickArticleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "getLastClickArticleInfo", "()Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "setLastClickArticleInfo", "(Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;)V", "reqRecommendFlag", "", "getReqRecommendFlag", "()I", "setReqRecommendFlag", "(I)V", "updateTimes", "getUpdateTimes", "setUpdateTimes", "toString", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJFeedsInsertModule$ReqParams
 {
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  @Nullable
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private long a;
   @NotNull
-  private String jdField_a_of_type_JavaLangString = "";
-  private int b = 1;
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  private String b = "";
+  private int c = 1;
+  private int d = 1;
+  @Nullable
+  private AbsBaseArticleInfo e;
   
   public final long a()
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  @Nullable
-  public final AbsBaseArticleInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
-  }
-  
-  @NotNull
-  public final String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public final void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
   }
   
   public final void a(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.a = paramLong;
   }
   
   public final void a(@Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
+    this.e = paramAbsBaseArticleInfo;
   }
   
   public final void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
-  public final int b()
+  @NotNull
+  public final String b()
   {
     return this.b;
   }
   
   public final void b(int paramInt)
   {
-    this.b = paramInt;
+    this.d = paramInt;
+  }
+  
+  public final int c()
+  {
+    return this.c;
+  }
+  
+  public final int d()
+  {
+    return this.d;
+  }
+  
+  @Nullable
+  public final AbsBaseArticleInfo e()
+  {
+    return this.e;
   }
   
   @NotNull
@@ -75,15 +75,15 @@ public final class RIJFeedsInsertModule$ReqParams
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("channelId = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", followPuin = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", updateTimes = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", reqRecommendFlag = ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", updateTimes = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", reqRecommendFlag = ");
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", lastClickArticleInfo = ");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+    Object localObject = this.e;
     if (localObject != null) {
       localObject = RIJFeedsInsertUtil.a.a((AbsBaseArticleInfo)localObject);
     } else {
@@ -96,7 +96,7 @@ public final class RIJFeedsInsertModule$ReqParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.dynamicfeeds.RIJFeedsInsertModule.ReqParams
  * JD-Core Version:    0.7.0.1
  */

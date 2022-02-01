@@ -34,10 +34,7 @@ public class TroopGameCardServiceImpl
     this.mAppRuntime = paramAppRuntime;
   }
   
-  public void onDestroy()
-  {
-    this.mAppRuntime = null;
-  }
+  public void onDestroy() {}
   
   public void saveMemberGradeLevelInfo(MemberGradeLevelInfo paramMemberGradeLevelInfo)
   {
@@ -49,7 +46,7 @@ public class TroopGameCardServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.api.impl.TroopGameCardServiceImpl
  * JD-Core Version:    0.7.0.1
  */

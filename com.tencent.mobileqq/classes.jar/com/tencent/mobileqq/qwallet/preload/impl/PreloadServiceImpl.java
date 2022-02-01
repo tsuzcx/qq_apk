@@ -283,7 +283,7 @@ public class PreloadServiceImpl
   
   private boolean isDiskEnoughToDownload()
   {
-    String str = PreloadStaticApi.a();
+    String str = PreloadStaticApi.b();
     Object localObject = new File(str);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
@@ -368,7 +368,7 @@ public class PreloadServiceImpl
           i += 1;
         }
       }
-      VACDReportUtil.a("preload_crash", "qqwallet", "crash", "Catch", null, 668814, localStringBuilder.toString());
+      VACDReportUtil.b("preload_crash", "qqwallet", "crash", "Catch", null, 668814, localStringBuilder.toString());
     }
   }
   
@@ -668,7 +668,7 @@ public class PreloadServiceImpl
         QLog.d("PreloadService", 2, ((StringBuilder)localObject1).toString());
       }
       paramDownloadParam.standardlize();
-      Object localObject1 = PreloadStaticApi.a(paramDownloadParam.url, paramDownloadParam.isForceUnzip, paramDownloadParam.filePos);
+      Object localObject1 = PreloadStaticApi.b(paramDownloadParam.url, paramDownloadParam.isForceUnzip, paramDownloadParam.filePos);
       boolean bool = PreloadStaticApi.a((ResourceInfo)localObject1, paramDownloadParam);
       Object localObject2;
       if (QLog.isColorLevel())
@@ -696,9 +696,9 @@ public class PreloadServiceImpl
       {
         if (localObject1 != null)
         {
-          ResUtil.b(paramDownloadParam.url, paramDownloadParam.filePos);
-          QWalletTools.a(((ResourceInfo)localObject1).filePath);
-          QWalletTools.a(((ResourceInfo)localObject1).folderPath);
+          ResUtil.d(paramDownloadParam.url, paramDownloadParam.filePos);
+          QWalletTools.b(((ResourceInfo)localObject1).filePath);
+          QWalletTools.b(((ResourceInfo)localObject1).folderPath);
         }
         realTimeDownload(paramDownloadParam, paramOnGetPathListener);
       }
@@ -987,7 +987,7 @@ public class PreloadServiceImpl
     }
     if (i < k)
     {
-      localObject = paramPreloadConfBean[i].jdField_a_of_type_JavaLangString;
+      localObject = paramPreloadConfBean[i].b;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -1042,21 +1042,21 @@ public class PreloadServiceImpl
     try
     {
       JSONArray localJSONArray = new JSONArray();
-      if ((paramConfigInfo != null) && ("preload".equals(paramConfigInfo.jdField_a_of_type_JavaLangString)))
+      if ((paramConfigInfo != null) && ("preload".equals(paramConfigInfo.a)))
       {
         Object localObject;
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("replaceConfigFromMoggy:");
-          ((StringBuilder)localObject).append(paramConfigInfo.jdField_a_of_type_Long);
+          ((StringBuilder)localObject).append(paramConfigInfo.c);
           ((StringBuilder)localObject).append("|");
           ((StringBuilder)localObject).append(this.mPreloadConfig.moggyConfigVersion);
           ((StringBuilder)localObject).append("|");
           ((StringBuilder)localObject).append(paramConfigInfo.b);
           QLog.d("PreloadService", 2, ((StringBuilder)localObject).toString());
         }
-        long l1 = paramConfigInfo.jdField_a_of_type_Long;
+        long l1 = paramConfigInfo.c;
         long l2 = this.mPreloadConfig.moggyConfigVersion;
         if (l1 <= l2) {
           return;
@@ -1075,7 +1075,7 @@ public class PreloadServiceImpl
         {
           localThrowable.printStackTrace();
           this.mPreloadConfig.innerReplaceConfig(localJSONArray, this, 1);
-          this.mPreloadConfig.moggyConfigVersion = paramConfigInfo.jdField_a_of_type_Long;
+          this.mPreloadConfig.moggyConfigVersion = paramConfigInfo.c;
           if (QLog.isColorLevel())
           {
             paramConfigInfo = new StringBuilder();
@@ -1137,7 +1137,7 @@ public class PreloadServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl
  * JD-Core Version:    0.7.0.1
  */

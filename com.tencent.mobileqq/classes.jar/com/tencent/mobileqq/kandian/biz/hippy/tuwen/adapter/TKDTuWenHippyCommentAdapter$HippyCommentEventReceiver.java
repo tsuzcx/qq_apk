@@ -20,16 +20,16 @@ class TKDTuWenHippyCommentAdapter$HippyCommentEventReceiver
   
   private void doExposureReport()
   {
-    if (TKDTuWenHippyCommentAdapter.access$900(this.this$0) != null)
+    if (TKDTuWenHippyCommentAdapter.access$800(this.this$0) != null)
     {
-      int i = TKDTuWenHippyCommentAdapter.access$900(this.this$0).getScrollState();
-      TKDTuWenHippyCommentAdapter.access$900(this.this$0).onScrollStateChanged(i, i);
+      int i = TKDTuWenHippyCommentAdapter.access$800(this.this$0).getScrollState();
+      TKDTuWenHippyCommentAdapter.access$800(this.this$0).onScrollStateChanged(i, i);
     }
   }
   
   public void biuComment(@NotNull ParamsFetcher paramParamsFetcher)
   {
-    paramParamsFetcher.onGetParams(this.this$0.mArticleInfo, TKDTuWenHippyCommentAdapter.access$600(this.this$0), TKDTuWenHippyCommentAdapter.access$700(this.this$0), "");
+    paramParamsFetcher.onGetParams(this.this$0.mArticleInfo, TKDTuWenHippyCommentAdapter.access$500(this.this$0), TKDTuWenHippyCommentAdapter.access$600(this.this$0), "");
   }
   
   public void forbidScroll(boolean paramBoolean)
@@ -41,19 +41,19 @@ class TKDTuWenHippyCommentAdapter$HippyCommentEventReceiver
   
   public void onCommentNumChanged(long paramLong)
   {
-    if (TKDTuWenHippyCommentAdapter.access$500(this.this$0) != null) {
-      TKDTuWenHippyCommentAdapter.access$500(this.this$0).onCommentNumChanged(paramLong);
+    if (TKDTuWenHippyCommentAdapter.access$400(this.this$0) != null) {
+      TKDTuWenHippyCommentAdapter.access$400(this.this$0).onCommentNumChanged(paramLong);
     }
   }
   
   public void onCommentViewLayout()
   {
-    if (TKDTuWenHippyCommentAdapter.access$900(this.this$0) == null)
+    if (TKDTuWenHippyCommentAdapter.access$800(this.this$0) == null)
     {
       TKDTuWenHippyCommentAdapter localTKDTuWenHippyCommentAdapter = this.this$0;
-      TKDTuWenHippyCommentAdapter.access$902(localTKDTuWenHippyCommentAdapter, (NSHippyListView)TKDTuWenCommentUtil.rFindView(TKDTuWenHippyCommentAdapter.access$800(localTKDTuWenHippyCommentAdapter), NSHippyListView.class, true));
-      if ((TKDTuWenHippyCommentAdapter.access$900(this.this$0) != null) && (TKDTuWenHippyCommentAdapter.access$1000(this.this$0) != null)) {
-        TKDTuWenHippyCommentAdapter.access$900(this.this$0).addOnListScrollListener(TKDTuWenHippyCommentAdapter.access$1000(this.this$0));
+      TKDTuWenHippyCommentAdapter.access$802(localTKDTuWenHippyCommentAdapter, (NSHippyListView)TKDTuWenCommentUtil.rFindView(TKDTuWenHippyCommentAdapter.access$700(localTKDTuWenHippyCommentAdapter), NSHippyListView.class, true));
+      if ((TKDTuWenHippyCommentAdapter.access$800(this.this$0) != null) && (TKDTuWenHippyCommentAdapter.access$900(this.this$0) != null)) {
+        TKDTuWenHippyCommentAdapter.access$800(this.this$0).addOnListScrollListener(TKDTuWenHippyCommentAdapter.access$900(this.this$0));
       }
     }
     doExposureReport();
@@ -61,21 +61,21 @@ class TKDTuWenHippyCommentAdapter$HippyCommentEventReceiver
   
   public void onHippyForbiddenChanged(int paramInt)
   {
-    if (TKDTuWenHippyCommentAdapter.access$500(this.this$0) == null) {
+    if (TKDTuWenHippyCommentAdapter.access$400(this.this$0) == null) {
       return;
     }
-    TKDTuWenHippyCommentAdapter.access$500(this.this$0).onHippyForbiddenChanged(paramInt);
+    TKDTuWenHippyCommentAdapter.access$400(this.this$0).onHippyForbiddenChanged(paramInt);
   }
   
   public void onHippyLoadStatusChanged(int paramInt)
   {
-    if ((TKDTuWenHippyCommentAdapter.access$800(this.this$0) != null) && ((this.this$0.vList instanceof NSRIJCommentListView)))
+    if ((TKDTuWenHippyCommentAdapter.access$700(this.this$0) != null) && ((this.this$0.vList instanceof NSRIJCommentListView)))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("onHippyLoadStatusChanged: status=");
       localStringBuilder.append(paramInt);
       QLog.d("TKDTuWenHippyCommentAdapter", 1, localStringBuilder.toString());
-      TKDTuWenHippyCommentAdapter.access$800(this.this$0).setStatus(paramInt);
+      TKDTuWenHippyCommentAdapter.access$700(this.this$0).setStatus(paramInt);
       if (paramInt == 1) {
         doExposureReport();
       }
@@ -89,7 +89,7 @@ class TKDTuWenHippyCommentAdapter$HippyCommentEventReceiver
   
   public void openSubCommentPage(String paramString1, String paramString2)
   {
-    TKDTuWenHippyCommentAdapter.access$500(this.this$0).openSubCommentPage(paramString1, paramString2);
+    TKDTuWenHippyCommentAdapter.access$400(this.this$0).openSubCommentPage(paramString1, paramString2);
   }
   
   public void scrollToNew()
@@ -99,7 +99,7 @@ class TKDTuWenHippyCommentAdapter$HippyCommentEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.tuwen.adapter.TKDTuWenHippyCommentAdapter.HippyCommentEventReceiver
  * JD-Core Version:    0.7.0.1
  */

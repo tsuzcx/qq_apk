@@ -36,24 +36,6 @@ import mqq.app.AppRuntime;
 
 public class SubscribeUtils
 {
-  public static CertifiedAccountMeta.StFeed a(CertifiedAccountMeta.StFeed paramStFeed)
-  {
-    CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
-    if (paramStFeed == null) {
-      return localStFeed;
-    }
-    try
-    {
-      localStFeed.mergeFrom(paramStFeed.toByteArray());
-      return localStFeed;
-    }
-    catch (InvalidProtocolBufferMicroException paramStFeed)
-    {
-      paramStFeed.printStackTrace();
-    }
-    return localStFeed;
-  }
-  
   public static Bitmap a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     Object localObject;
@@ -122,69 +104,6 @@ public class SubscribeUtils
     }
   }
   
-  public static String a()
-  {
-    return SubscribeConstants.c("certified_account_download_pics");
-  }
-  
-  public static String a(int paramInt)
-  {
-    return b(paramInt);
-  }
-  
-  public static String a(long paramLong)
-  {
-    Object localObject2 = new SimpleDateFormat("yyyy年MM月dd日");
-    if (paramLong == 0L) {
-      localObject1 = new Date();
-    } else {
-      localObject1 = new Date(paramLong);
-    }
-    localObject2 = ((SimpleDateFormat)localObject2).format((Date)localObject1);
-    Time localTime1 = new Time();
-    localTime1.set(paramLong);
-    paramLong = System.currentTimeMillis();
-    Time localTime2 = new Time();
-    localTime2.set(paramLong);
-    int i = localTime2.yearDay;
-    Object localObject1 = localObject2;
-    if (localTime1.year == localTime2.year)
-    {
-      if (localTime2.yearDay < localTime1.yearDay) {
-        return localObject2;
-      }
-      if (localTime2.yearDay == localTime1.yearDay)
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(localTime1.hour);
-        ((StringBuilder)localObject2).append(":");
-        if (localTime1.minute < 10)
-        {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("0");
-          ((StringBuilder)localObject1).append(localTime1.minute);
-          localObject1 = ((StringBuilder)localObject1).toString();
-        }
-        else
-        {
-          localObject1 = Integer.valueOf(localTime1.minute);
-        }
-        ((StringBuilder)localObject2).append(localObject1);
-        return ((StringBuilder)localObject2).toString();
-      }
-      if (localTime1.yearDay == i - 1) {
-        return BaseApplicationImpl.getApplication().getString(2131720491);
-      }
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(localTime1.month + 1);
-      ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getString(2131694201));
-      ((StringBuilder)localObject1).append(localTime1.monthDay);
-      ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getString(2131691450));
-      localObject1 = ((StringBuilder)localObject1).toString();
-    }
-    return localObject1;
-  }
-  
   /* Error */
   public static String a(Bitmap paramBitmap)
   {
@@ -193,25 +112,25 @@ public class SubscribeUtils
     //   1: astore_1
     //   2: aload_0
     //   3: ifnull +107 -> 110
-    //   6: new 207	java/io/ByteArrayOutputStream
+    //   6: new 99	java/io/ByteArrayOutputStream
     //   9: dup
     //   10: sipush 1024
-    //   13: invokespecial 210	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   13: invokespecial 102	java/io/ByteArrayOutputStream:<init>	(I)V
     //   16: astore_2
     //   17: aload_2
     //   18: astore_1
     //   19: aload_0
-    //   20: getstatic 216	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   20: getstatic 108	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   23: bipush 100
     //   25: aload_2
-    //   26: invokevirtual 220	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   26: invokevirtual 112	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   29: pop
     //   30: aload_2
     //   31: astore_1
     //   32: aload_2
-    //   33: invokevirtual 221	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   33: invokevirtual 116	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   36: iconst_2
-    //   37: invokestatic 227	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
+    //   37: invokestatic 122	com/tencent/mobileqq/utils/Base64Util:encodeToString	([BI)Ljava/lang/String;
     //   40: astore_0
     //   41: aload_2
     //   42: astore_1
@@ -228,30 +147,30 @@ public class SubscribeUtils
     //   59: aload_2
     //   60: astore_1
     //   61: aload_0
-    //   62: invokevirtual 228	java/lang/Exception:printStackTrace	()V
+    //   62: invokevirtual 123	java/lang/Exception:printStackTrace	()V
     //   65: aload_2
     //   66: ifnull +19 -> 85
     //   69: aload_2
-    //   70: invokevirtual 231	java/io/ByteArrayOutputStream:flush	()V
+    //   70: invokevirtual 126	java/io/ByteArrayOutputStream:flush	()V
     //   73: aload_2
-    //   74: invokevirtual 234	java/io/ByteArrayOutputStream:close	()V
+    //   74: invokevirtual 129	java/io/ByteArrayOutputStream:close	()V
     //   77: goto +8 -> 85
     //   80: astore_0
     //   81: aload_0
-    //   82: invokevirtual 235	java/io/IOException:printStackTrace	()V
+    //   82: invokevirtual 130	java/io/IOException:printStackTrace	()V
     //   85: aconst_null
     //   86: areturn
     //   87: astore_0
     //   88: aload_1
     //   89: ifnull +19 -> 108
     //   92: aload_1
-    //   93: invokevirtual 231	java/io/ByteArrayOutputStream:flush	()V
+    //   93: invokevirtual 126	java/io/ByteArrayOutputStream:flush	()V
     //   96: aload_1
-    //   97: invokevirtual 234	java/io/ByteArrayOutputStream:close	()V
+    //   97: invokevirtual 129	java/io/ByteArrayOutputStream:close	()V
     //   100: goto +8 -> 108
     //   103: astore_1
     //   104: aload_1
-    //   105: invokevirtual 235	java/io/IOException:printStackTrace	()V
+    //   105: invokevirtual 130	java/io/IOException:printStackTrace	()V
     //   108: aload_0
     //   109: athrow
     //   110: aconst_null
@@ -259,14 +178,14 @@ public class SubscribeUtils
     //   112: aload_1
     //   113: ifnull +18 -> 131
     //   116: aload_1
-    //   117: invokevirtual 231	java/io/ByteArrayOutputStream:flush	()V
+    //   117: invokevirtual 126	java/io/ByteArrayOutputStream:flush	()V
     //   120: aload_1
-    //   121: invokevirtual 234	java/io/ByteArrayOutputStream:close	()V
+    //   121: invokevirtual 129	java/io/ByteArrayOutputStream:close	()V
     //   124: aload_0
     //   125: areturn
     //   126: astore_1
     //   127: aload_1
-    //   128: invokevirtual 235	java/io/IOException:printStackTrace	()V
+    //   128: invokevirtual 130	java/io/IOException:printStackTrace	()V
     //   131: aload_0
     //   132: areturn
     // Local variable table:
@@ -370,7 +289,103 @@ public class SubscribeUtils
     return paramStFeed.poster.followState.get() == 1;
   }
   
-  public static String b(long paramLong)
+  public static CertifiedAccountMeta.StFeed b(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+    if (paramStFeed == null) {
+      return localStFeed;
+    }
+    try
+    {
+      localStFeed.mergeFrom(paramStFeed.toByteArray());
+      return localStFeed;
+    }
+    catch (InvalidProtocolBufferMicroException paramStFeed)
+    {
+      paramStFeed.printStackTrace();
+    }
+    return localStFeed;
+  }
+  
+  public static String b()
+  {
+    return SubscribeConstants.c("certified_account_download_pics");
+  }
+  
+  public static String b(int paramInt)
+  {
+    return f(paramInt);
+  }
+  
+  public static boolean b(long paramLong)
+  {
+    return a(paramLong, 4);
+  }
+  
+  public static boolean c(long paramLong)
+  {
+    return (a(paramLong)) && (b(paramLong));
+  }
+  
+  public static boolean d(long paramLong)
+  {
+    return a(paramLong, 5);
+  }
+  
+  public static String e(long paramLong)
+  {
+    Object localObject2 = new SimpleDateFormat("yyyy年MM月dd日");
+    if (paramLong == 0L) {
+      localObject1 = new Date();
+    } else {
+      localObject1 = new Date(paramLong);
+    }
+    localObject2 = ((SimpleDateFormat)localObject2).format((Date)localObject1);
+    Time localTime1 = new Time();
+    localTime1.set(paramLong);
+    paramLong = System.currentTimeMillis();
+    Time localTime2 = new Time();
+    localTime2.set(paramLong);
+    int i = localTime2.yearDay;
+    Object localObject1 = localObject2;
+    if (localTime1.year == localTime2.year)
+    {
+      if (localTime2.yearDay < localTime1.yearDay) {
+        return localObject2;
+      }
+      if (localTime2.yearDay == localTime1.yearDay)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(localTime1.hour);
+        ((StringBuilder)localObject2).append(":");
+        if (localTime1.minute < 10)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("0");
+          ((StringBuilder)localObject1).append(localTime1.minute);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = Integer.valueOf(localTime1.minute);
+        }
+        ((StringBuilder)localObject2).append(localObject1);
+        return ((StringBuilder)localObject2).toString();
+      }
+      if (localTime1.yearDay == i - 1) {
+        return BaseApplicationImpl.getApplication().getString(2131918208);
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(localTime1.month + 1);
+      ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getString(2131891839));
+      ((StringBuilder)localObject1).append(localTime1.monthDay);
+      ((StringBuilder)localObject1).append(BaseApplicationImpl.getApplication().getString(2131888405));
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    return localObject1;
+  }
+  
+  public static String f(long paramLong)
   {
     DecimalFormat localDecimalFormat;
     StringBuilder localStringBuilder;
@@ -396,21 +411,6 @@ public class SubscribeUtils
       return localStringBuilder.toString();
     }
     return String.valueOf(paramLong);
-  }
-  
-  public static boolean b(long paramLong)
-  {
-    return a(paramLong, 4);
-  }
-  
-  public static boolean c(long paramLong)
-  {
-    return (a(paramLong)) && (b(paramLong));
-  }
-  
-  public static boolean d(long paramLong)
-  {
-    return a(paramLong, 5);
   }
 }
 

@@ -22,14 +22,8 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/module/autotemplate/ExtractUtil;", "", "()V", "TAG", "", "VERBOSE", "", "doExtract", "Landroid/graphics/Bitmap;", "extractor", "Landroid/media/MediaExtractor;", "trackIndex", "", "decoder", "Landroid/media/MediaCodec;", "outputSurface", "Ldov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface;", "seekTimeUs", "", "getFrameAtTime", "videoPath", "timeUs", "maxSize", "getFrameAtTimeInner", "selectTrack", "aelight_impl_release"}, k=1, mv={1, 1, 16})
 public final class ExtractUtil
 {
-  public static final ExtractUtil a;
-  private static final boolean a;
-  
-  static
-  {
-    jdField_a_of_type_DovComQqImAeeditorModuleAutotemplateExtractUtil = new ExtractUtil();
-    jdField_a_of_type_Boolean = BuildConfig.jdField_a_of_type_Boolean;
-  }
+  public static final ExtractUtil a = new ExtractUtil();
+  private static final boolean b = BuildConfig.a;
   
   @RequiresApi(16)
   private final int a(MediaExtractor paramMediaExtractor)
@@ -42,7 +36,7 @@ public final class ExtractUtil
       String str = localMediaFormat.getString("mime");
       if ((str != null) && (StringsKt.startsWith$default(str, "video/", false, 2, null)))
       {
-        if (jdField_a_of_type_Boolean)
+        if (b)
         {
           paramMediaExtractor = new StringBuilder();
           paramMediaExtractor.append("Extractor selected track ");
@@ -72,7 +66,7 @@ public final class ExtractUtil
     int m = 0;
     while (i == 0)
     {
-      if (jdField_a_of_type_Boolean) {
+      if (b) {
         Log.d("ExtractUtil", "loop");
       }
       int k;
@@ -88,7 +82,7 @@ public final class ExtractUtil
           if (n < 0)
           {
             paramMediaCodec.queueInputBuffer(k, 0, 0, 0L, 4);
-            if (jdField_a_of_type_Boolean) {
+            if (b) {
               Log.d("ExtractUtil", "sent input EOS");
             }
             m = 1;
@@ -106,7 +100,7 @@ public final class ExtractUtil
               Log.w((String)localObject2, localStringBuilder.toString());
             }
             paramMediaCodec.queueInputBuffer(k, 0, n, paramMediaExtractor.getSampleTime(), 0);
-            if (jdField_a_of_type_Boolean)
+            if (b)
             {
               localStringBuilder = new StringBuilder();
               localStringBuilder.append("submitted frame ");
@@ -119,7 +113,7 @@ public final class ExtractUtil
             paramMediaExtractor.advance();
           }
         }
-        else if (jdField_a_of_type_Boolean)
+        else if (b)
         {
           Log.d("ExtractUtil", "input buffer not available");
         }
@@ -132,7 +126,7 @@ public final class ExtractUtil
         if (k == -1)
         {
           k = i;
-          if (jdField_a_of_type_Boolean)
+          if (b)
           {
             Log.d("ExtractUtil", "no output from decoder available");
             k = i;
@@ -141,7 +135,7 @@ public final class ExtractUtil
         else if (k == -3)
         {
           k = i;
-          if (jdField_a_of_type_Boolean)
+          if (b)
           {
             Log.d("ExtractUtil", "decoder output buffers changed");
             k = i;
@@ -151,7 +145,7 @@ public final class ExtractUtil
         {
           localObject2 = paramMediaCodec.getOutputFormat();
           k = i;
-          if (jdField_a_of_type_Boolean)
+          if (b)
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("decoder output format changed: ");
@@ -170,7 +164,7 @@ public final class ExtractUtil
         }
         else
         {
-          if (jdField_a_of_type_Boolean)
+          if (b)
           {
             localStringBuilder = new StringBuilder();
             localStringBuilder.append("surface decoder given buffer ");
@@ -182,7 +176,7 @@ public final class ExtractUtil
           }
           if ((localBufferInfo.flags & 0x4) != 0)
           {
-            if (jdField_a_of_type_Boolean) {
+            if (b) {
               Log.d("ExtractUtil", "output EOS");
             }
             i = 1;
@@ -197,17 +191,17 @@ public final class ExtractUtil
           k = i;
           if (bool)
           {
-            if (jdField_a_of_type_Boolean)
+            if (b)
             {
               localObject1 = new StringBuilder();
               ((StringBuilder)localObject1).append("awaiting decode of frame ");
               ((StringBuilder)localObject1).append(0);
               Log.d("ExtractUtil", ((StringBuilder)localObject1).toString());
             }
-            paramCodecOutputSurface.c();
+            paramCodecOutputSurface.d();
             paramCodecOutputSurface.a(false);
-            localObject1 = paramCodecOutputSurface.a(true);
-            if (jdField_a_of_type_Boolean)
+            localObject1 = paramCodecOutputSurface.b(true);
+            if (b)
             {
               localObject2 = new StringBuilder();
               ((StringBuilder)localObject2).append("result bitmap: ");
@@ -237,13 +231,13 @@ public final class ExtractUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: checkcast 119	android/media/MediaCodec
+    //   1: checkcast 121	android/media/MediaCodec
     //   4: astore 12
     //   6: aconst_null
-    //   7: checkcast 212	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface
+    //   7: checkcast 214	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface
     //   10: astore 13
     //   12: aconst_null
-    //   13: checkcast 57	android/media/MediaExtractor
+    //   13: checkcast 59	android/media/MediaExtractor
     //   16: astore 15
     //   18: new 230	java/io/File
     //   21: dup
@@ -253,7 +247,7 @@ public final class ExtractUtil
     //   27: aload_1
     //   28: invokevirtual 236	java/io/File:canRead	()Z
     //   31: ifeq +336 -> 367
-    //   34: new 57	android/media/MediaExtractor
+    //   34: new 59	android/media/MediaExtractor
     //   37: dup
     //   38: invokespecial 237	android/media/MediaExtractor:<init>	()V
     //   41: astore 14
@@ -272,7 +266,7 @@ public final class ExtractUtil
     //   69: invokevirtual 246	android/media/MediaExtractor:selectTrack	(I)V
     //   72: aload 14
     //   74: iload 11
-    //   76: invokevirtual 65	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   76: invokevirtual 67	android/media/MediaExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   79: astore 16
     //   81: aload 16
     //   83: ldc 248
@@ -337,15 +331,15 @@ public final class ExtractUtil
     //   210: f2i
     //   211: istore 6
     //   213: goto +3 -> 216
-    //   216: new 212	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface
+    //   216: new 214	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface
     //   219: dup
     //   220: iload 4
     //   222: iload 6
     //   224: invokespecial 263	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface:<init>	(II)V
     //   227: astore 15
     //   229: aload 16
-    //   231: ldc 67
-    //   233: invokevirtual 73	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   231: ldc 69
+    //   233: invokevirtual 75	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   236: invokestatic 267	android/media/MediaCodec:createDecoderByType	(Ljava/lang/String;)Landroid/media/MediaCodec;
     //   239: astore_1
     //   240: aload_1
@@ -369,7 +363,7 @@ public final class ExtractUtil
     //   273: invokespecial 286	dov/com/qq/im/aeeditor/module/autotemplate/ExtractUtil:a	(Landroid/media/MediaExtractor;ILandroid/media/MediaCodec;Ldov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface;J)Landroid/graphics/Bitmap;
     //   276: astore 12
     //   278: aload 15
-    //   280: invokevirtual 288	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface:a	()V
+    //   280: invokevirtual 288	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface:b	()V
     //   283: aload_1
     //   284: invokevirtual 291	android/media/MediaCodec:stop	()V
     //   287: aload_1
@@ -388,22 +382,22 @@ public final class ExtractUtil
     //   311: aload 15
     //   313: astore 13
     //   315: goto +102 -> 417
-    //   318: new 83	java/lang/StringBuilder
+    //   318: new 85	java/lang/StringBuilder
     //   321: dup
-    //   322: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   322: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   325: astore 15
     //   327: aload 15
     //   329: ldc_w 297
-    //   332: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   332: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: pop
     //   336: aload 15
     //   338: aload_1
-    //   339: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   339: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   342: pop
     //   343: new 299	java/lang/RuntimeException
     //   346: dup
     //   347: aload 15
-    //   349: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   349: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   352: invokespecial 300	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
     //   355: checkcast 302	java/lang/Throwable
     //   358: athrow
@@ -411,22 +405,22 @@ public final class ExtractUtil
     //   360: goto +57 -> 417
     //   363: astore_1
     //   364: goto +53 -> 417
-    //   367: new 83	java/lang/StringBuilder
+    //   367: new 85	java/lang/StringBuilder
     //   370: dup
-    //   371: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   371: invokespecial 86	java/lang/StringBuilder:<init>	()V
     //   374: astore 14
     //   376: aload 14
     //   378: ldc_w 304
-    //   381: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   381: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: pop
     //   385: aload 14
     //   387: aload_1
-    //   388: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   388: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   391: pop
     //   392: new 306	java/io/FileNotFoundException
     //   395: dup
     //   396: aload 14
-    //   398: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   398: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   401: invokespecial 307	java/io/FileNotFoundException:<init>	(Ljava/lang/String;)V
     //   404: checkcast 302	java/lang/Throwable
     //   407: athrow
@@ -438,7 +432,7 @@ public final class ExtractUtil
     //   417: aload 13
     //   419: ifnull +8 -> 427
     //   422: aload 13
-    //   424: invokevirtual 288	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface:a	()V
+    //   424: invokevirtual 288	dov/com/qq/im/aeeditor/module/autotemplate/CodecOutputSurface:b	()V
     //   427: aload 12
     //   429: ifnull +8 -> 437
     //   432: aload 12
@@ -512,7 +506,7 @@ public final class ExtractUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     dov.com.qq.im.aeeditor.module.autotemplate.ExtractUtil
  * JD-Core Version:    0.7.0.1
  */

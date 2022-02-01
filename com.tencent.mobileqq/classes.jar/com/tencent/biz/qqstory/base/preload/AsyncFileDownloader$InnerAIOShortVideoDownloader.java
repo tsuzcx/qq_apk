@@ -18,22 +18,22 @@ class AsyncFileDownloader$InnerAIOShortVideoDownloader
   public void a(DownloadTask paramDownloadTask)
   {
     QQStoryContext.a();
-    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.j();
     ShortVideoReq localShortVideoReq = SVBusiUtil.a(2, 2);
-    MessageForShortVideo localMessageForShortVideo = paramDownloadTask.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    MessageForShortVideo localMessageForShortVideo = paramDownloadTask.v;
     ShortVideoDownloadInfo localShortVideoDownloadInfo = localMessageForShortVideo.getDownloadInfo(localShortVideoReq.b);
-    if (paramDownloadTask.jdField_a_of_type_Int == 2)
+    if (paramDownloadTask.c == 2)
     {
-      localShortVideoDownloadInfo.i = SVUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localShortVideoDownloadInfo.p = SVUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
       localShortVideoDownloadInfo.a(localMessageForShortVideo.istroop, 1);
     }
     else
     {
-      localShortVideoDownloadInfo.h = SVUtils.a(localMessageForShortVideo, "mp4");
+      localShortVideoDownloadInfo.o = SVUtils.a(localMessageForShortVideo, "mp4");
       localShortVideoDownloadInfo.a(localMessageForShortVideo.istroop, 0);
     }
     localShortVideoReq.a(localShortVideoDownloadInfo);
-    localShortVideoReq.a(new AsyncFileDownloader.InnerAIOShortVideoDownloader.1(this, paramDownloadTask.jdField_a_of_type_JavaLangString));
+    localShortVideoReq.a(new AsyncFileDownloader.InnerAIOShortVideoDownloader.1(this, paramDownloadTask.a));
     ShortVideoBusiManager.a(localShortVideoReq, localQQAppInterface);
     SLog.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramDownloadTask }));
   }
@@ -47,7 +47,7 @@ class AsyncFileDownloader$InnerAIOShortVideoDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerAIOShortVideoDownloader
  * JD-Core Version:    0.7.0.1
  */

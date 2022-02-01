@@ -13,24 +13,24 @@ import com.tencent.qphone.base.util.QLog;
 public class GdtMvNewTitleFactory
   implements IGdtMvTitleFactory
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "GdtMvNewTitleFactory";
+  private final String a = "GdtMvNewTitleFactory";
+  private TextView b;
+  private ImageView c;
   
   public void a(long paramLong1, long paramLong2, long paramLong3)
   {
     String str;
     if (paramLong1 > 0L) {
-      str = String.format(HardCodeUtil.a(2131692853), new Object[] { Long.valueOf(paramLong2) });
+      str = String.format(HardCodeUtil.a(2131889962), new Object[] { Long.valueOf(paramLong2) });
     } else {
-      str = HardCodeUtil.a(2131692852);
+      str = HardCodeUtil.a(2131889961);
     }
-    GdtMvTitleUtil.a(this.jdField_a_of_type_AndroidWidgetTextView, str, 0);
+    GdtMvTitleUtil.a(this.b, str, 0);
   }
   
   public void a(Context paramContext, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+    if (this.c == null)
     {
       QLog.i("GdtMvNewTitleFactory", 1, "refreshVoiceIconDrawableInner return");
       return;
@@ -41,28 +41,28 @@ public class GdtMvNewTitleFactory
     QLog.i("GdtMvNewTitleFactory", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      paramContext = paramContext.getResources().getDrawable(2130838445);
-      GdtMvTitleUtil.a(this.jdField_a_of_type_AndroidWidgetImageView, paramContext, 2131692869);
+      paramContext = paramContext.getResources().getDrawable(2130838503);
+      GdtMvTitleUtil.a(this.c, paramContext, 2131889980);
       return;
     }
-    paramContext = paramContext.getResources().getDrawable(2130838446);
-    GdtMvTitleUtil.a(this.jdField_a_of_type_AndroidWidgetImageView, paramContext, 2131692868);
+    paramContext = paramContext.getResources().getDrawable(2130838504);
+    GdtMvTitleUtil.a(this.c, paramContext, 2131889979);
   }
   
   public void a(ViewGroup paramViewGroup, GdtMvTitleHelper paramGdtMvTitleHelper)
   {
-    paramViewGroup.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559195, paramViewGroup, false));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367788));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367789));
-    paramGdtMvTitleHelper.jdField_a_of_type_AndroidWidgetImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    paramGdtMvTitleHelper.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramGdtMvTitleHelper);
-    paramGdtMvTitleHelper.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131367787);
-    paramGdtMvTitleHelper.jdField_a_of_type_AndroidViewView.setOnClickListener(paramGdtMvTitleHelper);
+    paramViewGroup.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131624951, paramViewGroup, false));
+    this.b = ((TextView)paramViewGroup.findViewById(2131434359));
+    this.c = ((ImageView)paramViewGroup.findViewById(2131434360));
+    paramGdtMvTitleHelper.a = this.c;
+    paramGdtMvTitleHelper.a.setOnClickListener(paramGdtMvTitleHelper);
+    paramGdtMvTitleHelper.b = paramViewGroup.findViewById(2131434358);
+    paramGdtMvTitleHelper.b.setOnClickListener(paramGdtMvTitleHelper);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.title.GdtMvNewTitleFactory
  * JD-Core Version:    0.7.0.1
  */

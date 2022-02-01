@@ -75,7 +75,7 @@ class StoryMessageListActivity$1
       QLog.i("Q.qqstory.msgList", 2, paramArrayOfByte.toString());
     }
     if (k == 0) {
-      QQToast.a(this.a.getApplicationContext(), 1, HardCodeUtil.a(2131714311), 0).a();
+      QQToast.makeText(this.d.getApplicationContext(), 1, HardCodeUtil.a(2131911825), 0).show();
     }
     return paramBundle;
   }

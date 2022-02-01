@@ -9,25 +9,25 @@ import com.tencent.qphone.base.util.QLog;
 class InformationFaceAdapter$DownloadProgressCallback
   implements QIMInformationPasterManager.IInformationPasterResDownloaderCallback
 {
-  private QIMCommonLoadingView jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
+  private QIMCommonLoadingView b;
+  private Boolean c;
   
   InformationFaceAdapter$DownloadProgressCallback(InformationFaceAdapter paramInformationFaceAdapter, QIMCommonLoadingView paramQIMCommonLoadingView, ImageView paramImageView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView = paramQIMCommonLoadingView;
-    this.jdField_a_of_type_JavaLangBoolean = ((Boolean)paramImageView.getTag(2131378280));
+    this.b = paramQIMCommonLoadingView;
+    this.c = ((Boolean)paramImageView.getTag(2131446799));
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView = null;
-    this.jdField_a_of_type_JavaLangBoolean = null;
+    this.b = null;
+    this.c = null;
   }
   
   public void a(float paramFloat, String paramString, int paramInt)
   {
     paramInt = (int)paramFloat;
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
+    this.b.post(new InformationFaceAdapter.DownloadProgressCallback.1(this, paramInt));
   }
   
   public void a(boolean paramBoolean, String paramString, InformationFacePackage.Item paramItem)
@@ -39,12 +39,12 @@ class InformationFaceAdapter$DownloadProgressCallback
       paramString.append(paramBoolean);
       QLog.d("InformationFaceAdapter", 2, paramString.toString());
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureViewQIMCommonLoadingView.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, paramItem));
+    this.b.post(new InformationFaceAdapter.DownloadProgressCallback.2(this, paramBoolean, paramItem));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback
  * JD-Core Version:    0.7.0.1
  */

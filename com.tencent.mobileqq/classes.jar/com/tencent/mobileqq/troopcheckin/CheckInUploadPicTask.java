@@ -13,7 +13,7 @@ public class CheckInUploadPicTask
   
   public void a()
   {
-    if (a(this.jdField_a_of_type_ComTencentMobileqqTroopcheckinCheckInResEntity.a)) {
+    if (a(this.a.a)) {
       return;
     }
     e();
@@ -21,7 +21,7 @@ public class CheckInUploadPicTask
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       c();
     }
   }
@@ -31,10 +31,10 @@ public class CheckInUploadPicTask
     Bundle localBundle = new Bundle();
     boolean bool = false;
     localBundle.putInt("isVideo", 0);
-    if (this.b != null)
+    if (this.d != null)
     {
       localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
+      localBundle.putString("url", this.d);
       bool = true;
     }
     else
@@ -42,19 +42,19 @@ public class CheckInUploadPicTask
       localBundle.putInt("result", 0);
       localBundle.putString("error", "");
     }
-    CheckInServer.a().a(bool, this.jdField_a_of_type_Int, localBundle);
+    CheckInServer.a().a(bool, this.c, localBundle);
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    if (this.f != null) {
+      this.f.cancelTransaction();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInUploadPicTask
  * JD-Core Version:    0.7.0.1
  */

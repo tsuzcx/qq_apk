@@ -8,24 +8,24 @@ public class EditUserHistory
   implements Parcelable
 {
   public static final Parcelable.Creator<EditUserHistory> CREATOR = new EditUserHistory.1();
-  public long a;
   public String a;
-  public String b;
+  public long b;
+  public String c;
   
   public EditUserHistory() {}
   
   protected EditUserHistory(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.b = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.readLong();
+    this.c = paramParcel.readString();
   }
   
   public EditUserHistory(String paramString1, long paramLong, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
+    this.a = paramString1;
+    this.b = paramLong;
+    this.c = paramString2;
   }
   
   public int describeContents()
@@ -35,14 +35,14 @@ public class EditUserHistory
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.a);
+    paramParcel.writeLong(this.b);
+    paramParcel.writeString(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.EditUserHistory
  * JD-Core Version:    0.7.0.1
  */

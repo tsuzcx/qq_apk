@@ -99,9 +99,9 @@ public class BitmapCache
     if (paramImageRequest != null) {
       try
       {
-        if (paramImageRequest.a())
+        if (paramImageRequest.e())
         {
-          CloseableBitmap localCloseableBitmap = paramImageRequest.a();
+          CloseableBitmap localCloseableBitmap = paramImageRequest.d();
           return localCloseableBitmap;
         }
         return null;
@@ -257,7 +257,7 @@ public class BitmapCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.image.imageloader.BitmapCache
  * JD-Core Version:    0.7.0.1
  */

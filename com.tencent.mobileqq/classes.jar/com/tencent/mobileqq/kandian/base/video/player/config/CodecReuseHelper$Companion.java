@@ -34,13 +34,13 @@ public final class CodecReuseHelper$Companion
       if (paramTPMediaCodecInfo.infoType == TPPlayerMsg.TPMediaCodecInfo.TP_INFO_MEDIA_CODEC_READY)
       {
         paramTPMediaCodecInfo = paramTPMediaCodecInfo.msg;
-        paramAbsReadInJoyVideoReportData.o = paramTPMediaCodecInfo;
+        paramAbsReadInJoyVideoReportData.as = paramTPMediaCodecInfo;
         try
         {
           paramTPMediaCodecInfo = new JSONObject(paramTPMediaCodecInfo);
-          paramAbsReadInJoyVideoReportData.j = paramTPMediaCodecInfo.optBoolean("reuseEnable");
-          paramAbsReadInJoyVideoReportData.k = paramTPMediaCodecInfo.optBoolean("isReuse");
-          paramAbsReadInJoyVideoReportData.u = paramTPMediaCodecInfo.optInt("totalCodec");
+          paramAbsReadInJoyVideoReportData.ap = paramTPMediaCodecInfo.optBoolean("reuseEnable");
+          paramAbsReadInJoyVideoReportData.aq = paramTPMediaCodecInfo.optBoolean("isReuse");
+          paramAbsReadInJoyVideoReportData.ar = paramTPMediaCodecInfo.optInt("totalCodec");
           return;
         }
         catch (Throwable paramTPMediaCodecInfo)
@@ -57,8 +57,8 @@ public final class CodecReuseHelper$Companion
     try
     {
       String str = new JSONObject(paramTPMediaCodecInfo.msg).optString("errorCode");
-      paramAbsReadInJoyVideoReportData.p = ((Companion)this).a(paramAbsReadInJoyVideoReportData.p, str, ";");
-      paramAbsReadInJoyVideoReportData.q = ((Companion)this).a(paramAbsReadInJoyVideoReportData.q, paramTPMediaCodecInfo.msg, ";");
+      paramAbsReadInJoyVideoReportData.aw = ((Companion)this).a(paramAbsReadInJoyVideoReportData.aw, str, ";");
+      paramAbsReadInJoyVideoReportData.ax = ((Companion)this).a(paramAbsReadInJoyVideoReportData.ax, paramTPMediaCodecInfo.msg, ";");
       return;
     }
     catch (Throwable paramAbsReadInJoyVideoReportData)
@@ -85,7 +85,7 @@ public final class CodecReuseHelper$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.config.CodecReuseHelper.Companion
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,7 @@ package com.tencent.mobileqq.kandian.biz.common;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.base.utils.RIJSPUtils;
 import java.util.List;
 
 class ReadInJoyManager$2
@@ -44,13 +43,13 @@ class ReadInJoyManager$2
     localObject2 = ReadInJoyManager.a(this.this$0).edit();
     ((SharedPreferences.Editor)localObject2).putString("config_new_channel_id_list", (String)localObject1);
     ((SharedPreferences.Editor)localObject2).putInt("config_new_channel_notify_flag", 1);
-    ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).applySharedPreferences((SharedPreferences.Editor)localObject2, true);
-    ReadInJoyManager.b(this.this$0);
+    RIJSPUtils.a((SharedPreferences.Editor)localObject2, true);
+    ReadInJoyManager.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyManager.2
  * JD-Core Version:    0.7.0.1
  */

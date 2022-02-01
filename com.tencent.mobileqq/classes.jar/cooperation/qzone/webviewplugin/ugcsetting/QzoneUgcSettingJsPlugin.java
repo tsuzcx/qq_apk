@@ -23,7 +23,7 @@ public class QzoneUgcSettingJsPlugin
   
   private void getLiveUgcSetting(String paramString1, String paramString2)
   {
-    paramString1 = this.parentPlugin.mRuntime.a();
+    paramString1 = this.parentPlugin.mRuntime.d();
     if ((paramString1 != null) && (!paramString1.isFinishing()))
     {
       if (TextUtils.isEmpty(paramString2)) {
@@ -44,7 +44,7 @@ public class QzoneUgcSettingJsPlugin
   
   private void getUgcSetting(String paramString)
   {
-    Object localObject = this.parentPlugin.mRuntime.a();
+    Object localObject = this.parentPlugin.mRuntime.d();
     if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
       if (TextUtils.isEmpty(paramString)) {
@@ -72,7 +72,7 @@ public class QzoneUgcSettingJsPlugin
     {
       if (new JSONObject(paramString).getInt("result") == 1)
       {
-        QZoneUnreadServletLogic.a(0, paramPluginRuntime.a().getLongAccountUin());
+        QZoneUnreadServletLogic.a(0, paramPluginRuntime.b().getLongAccountUin());
         return;
       }
     }
@@ -84,7 +84,7 @@ public class QzoneUgcSettingJsPlugin
   
   private void setLiveUgcSetting(String paramString1, String paramString2)
   {
-    Object localObject = this.parentPlugin.mRuntime.a();
+    Object localObject = this.parentPlugin.mRuntime.d();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
@@ -115,7 +115,7 @@ public class QzoneUgcSettingJsPlugin
   
   private void setUgcSetting(String paramString1, String paramString2)
   {
-    Object localObject = this.parentPlugin.mRuntime.a();
+    Object localObject = this.parentPlugin.mRuntime.d();
     if (localObject != null)
     {
       if (((Activity)localObject).isFinishing()) {
@@ -239,7 +239,7 @@ public class QzoneUgcSettingJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.ugcsetting.QzoneUgcSettingJsPlugin
  * JD-Core Version:    0.7.0.1
  */

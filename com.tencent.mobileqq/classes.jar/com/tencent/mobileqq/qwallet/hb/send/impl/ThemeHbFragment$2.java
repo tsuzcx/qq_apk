@@ -17,7 +17,7 @@ class ThemeHbFragment$2
   
   public void a(Object paramObject)
   {
-    if (ThemeHbFragment.a(this.a) == null)
+    if (ThemeHbFragment.e(this.a) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
@@ -36,13 +36,13 @@ class ThemeHbFragment$2
       if (QLog.isColorLevel()) {
         QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
       }
-      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
+      ThemeHbFragment.e(this.a).post(new ThemeHbFragment.2.1(this, paramObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ThemeHbFragment.2
  * JD-Core Version:    0.7.0.1
  */

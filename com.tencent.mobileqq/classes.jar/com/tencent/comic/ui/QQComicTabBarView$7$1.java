@@ -19,32 +19,32 @@ class QQComicTabBarView$7$1
       QLog.d("WebViewTabBarView", 2, "start show red touch");
     }
     Object localObject2 = null;
-    int i = this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0.a();
+    int i = this.d.this$0.getSelectedTabIndex();
     Object localObject1 = localObject2;
     if (i >= 0)
     {
       localObject1 = localObject2;
-      if (i < QQComicTabBarView.a(this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0))
+      if (i < QQComicTabBarView.d(this.d.this$0))
       {
-        localObject3 = QQComicTabBarView.a(this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0, i).getTag(-3);
+        localObject3 = QQComicTabBarView.a(this.d.this$0, i).getTag(-3);
         localObject1 = localObject2;
         if ((localObject3 instanceof QQComicTabBarView.ViewHolder)) {
-          localObject1 = ((QQComicTabBarView.ViewHolder)localObject3).a;
+          localObject1 = ((QQComicTabBarView.ViewHolder)localObject3).d;
         }
       }
     }
-    Object localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject3 = this.a.iterator();
     while (((Iterator)localObject3).hasNext())
     {
       String str = (String)((Iterator)localObject3).next();
-      if (this.jdField_a_of_type_Boolean) {
-        localObject2 = (RedTouchUI)this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0.a.get(str);
+      if (this.b) {
+        localObject2 = (RedTouchUI)this.d.this$0.e.get(str);
       } else {
-        localObject2 = (RedTouchUI)this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0.a.get(this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0.b.a(str));
+        localObject2 = (RedTouchUI)this.d.this$0.e.get(this.d.this$0.f.a(str));
       }
       if ((localObject2 != null) && (!localObject2.equals(localObject1)))
       {
-        this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0.a((RedTouchUI)localObject2, (RedAppInfo)this.jdField_a_of_type_JavaUtilMap.get(str), false);
+        this.d.this$0.a((RedTouchUI)localObject2, (RedAppInfo)this.c.get(str), false);
       }
       else if (QLog.isColorLevel())
       {
@@ -54,7 +54,7 @@ class QQComicTabBarView$7$1
         QLog.d("WebViewTabBarView", 2, ((StringBuilder)localObject2).toString());
       }
     }
-    this.jdField_a_of_type_ComTencentComicUiQQComicTabBarView$7.this$0.b();
+    this.d.this$0.b();
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "end show red touch");
     }
@@ -62,7 +62,7 @@ class QQComicTabBarView$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ui.QQComicTabBarView.7.1
  * JD-Core Version:    0.7.0.1
  */

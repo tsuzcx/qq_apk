@@ -4,22 +4,15 @@ import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.mobileqq.kandian.base.image.RIJImageOptConfig;
 import com.tencent.mobileqq.kandian.base.image.imageloader.IRIJImageOptReport;
-import com.tencent.mobileqq.kandian.glue.report.api.IReadInJoyReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.glue.report.api.impl.RIJImageOptReportImpl;
 import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/baseconfig/RIJImageAladdinConfig;", "", "()V", "TAG", "", "updateConfig", "", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJImageAladdinConfig
 {
-  public static final RIJImageAladdinConfig a;
-  private static final String a = "RIJImageOptConfig";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianGlueBaseconfigRIJImageAladdinConfig = new RIJImageAladdinConfig();
-    jdField_a_of_type_JavaLangString = "RIJImageOptConfig";
-  }
+  public static final RIJImageAladdinConfig a = new RIJImageAladdinConfig();
+  private static final String b = "RIJImageOptConfig";
   
   public final void a()
   {
@@ -32,7 +25,8 @@ public final class RIJImageAladdinConfig
     int i1 = Aladdin.getConfig(323).getIntegerFromString("image_flow_optimization_config", 0);
     int i2 = Aladdin.getConfig(323).getIntegerFromString("use_ip", 0);
     int i3 = Aladdin.getConfig(293).getIntegerFromString("use_kandian_ip_connect", 0);
-    String str = jdField_a_of_type_JavaLangString;
+    int i4 = Aladdin.getConfig(293).getIntegerFromString("rollback_to_domain_connect", 0);
+    String str = b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("reportOn:");
     localStringBuilder.append(i);
@@ -52,6 +46,8 @@ public final class RIJImageAladdinConfig
     localStringBuilder.append(i2);
     localStringBuilder.append(", use_ip_connect:");
     localStringBuilder.append(i3);
+    localStringBuilder.append(", isRollbackToDomainConnect:");
+    localStringBuilder.append(i4);
     QLog.d(str, 1, localStringBuilder.toString());
     RIJImageOptConfig.INSTANCE.setReportOn(i);
     RIJImageOptConfig.INSTANCE.setLifoOn(j);
@@ -62,12 +58,13 @@ public final class RIJImageAladdinConfig
     RIJImageOptConfig.INSTANCE.setFileTypeOpt(i1);
     RIJImageOptConfig.INSTANCE.setUseInnerDns(i2);
     RIJImageOptConfig.INSTANCE.setUseKanDianIpConnect(i3);
-    com.tencent.mobileqq.kandian.base.image.imageloader.RIJImageOptReport.a = (IRIJImageOptReport)QRoute.api(IReadInJoyReportUtils.class);
+    RIJImageOptConfig.INSTANCE.setRollbackToDomainConnect(i4);
+    com.tencent.mobileqq.kandian.base.image.imageloader.RIJImageOptReport.h = (IRIJImageOptReport)RIJImageOptReportImpl.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.baseconfig.RIJImageAladdinConfig
  * JD-Core Version:    0.7.0.1
  */

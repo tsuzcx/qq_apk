@@ -34,8 +34,8 @@ class ETTextView$DecorationHandler
       paramMessage = (ETTextView.DecorationHolder)paramMessage.obj;
       if (paramMessage != null)
       {
-        int k = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-        int m = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+        int k = paramMessage.f.getWidth();
+        int m = paramMessage.f.getHeight();
         if ((ETTextView.access$300() != null) && ((ETTextView.access$300().getWidth() < k) || (ETTextView.access$300().getHeight() < m)))
         {
           ETTextView.access$300().recycle();
@@ -50,25 +50,25 @@ class ETTextView$DecorationHandler
           ETTextView.access$300().eraseColor(0);
         }
         localObject1 = ETEngine.getInstanceForAnimation();
-        Object localObject2 = paramMessage.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a((ETEngine)localObject1, false);
+        Object localObject2 = paramMessage.e.a((ETEngine)localObject1, false);
         if (localObject2 != null) {
-          ((ETDecoration)localObject2).gotoFrame(paramMessage.jdField_a_of_type_Int);
+          ((ETDecoration)localObject2).gotoFrame(paramMessage.d);
         }
-        paramMessage.jdField_a_of_type_ComEtrumpMixlayoutETLayout.a((ETEngine)localObject1, ETTextView.access$300(), (ETDecoration)localObject2, true);
+        paramMessage.e.a((ETEngine)localObject1, ETTextView.access$300(), (ETDecoration)localObject2, true);
         if (localObject2 != null) {
           ((ETDecoration)localObject2).deleteDescriptor();
         }
-        Bitmap localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+        Bitmap localBitmap = paramMessage.f;
+        if (paramMessage.a.get() != null)
         {
-          localObject2 = ETTextView.access$400((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get());
+          localObject2 = ETTextView.access$400((ETTextView)paramMessage.a.get());
           i = j;
           try
           {
             if (!localBitmap.isRecycled())
             {
               i = j;
-              if (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).mMsgId == paramMessage.jdField_a_of_type_Long)
+              if (((ETTextView)paramMessage.a.get()).mMsgId == paramMessage.b)
               {
                 localBitmap.eraseColor(0);
                 ((ETEngine)localObject1).native_cloneBitmap(ETTextView.access$300(), localBitmap);

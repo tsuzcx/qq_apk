@@ -5,7 +5,7 @@ import android.media.MediaPlayer.OnCompletionListener;
 public abstract class VideoController$OnCustomCompletionListener
   implements MediaPlayer.OnCompletionListener
 {
-  public long a = 0L;
+  public long b = 0L;
   
   public VideoController$OnCustomCompletionListener(VideoController paramVideoController) {}
   
@@ -13,7 +13,7 @@ public abstract class VideoController$OnCustomCompletionListener
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Custom.");
-    localStringBuilder.append(this.a);
+    localStringBuilder.append(this.b);
     return localStringBuilder.toString();
   }
 }

@@ -8,40 +8,40 @@ public class MediaFocusStackItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaFocusStackItem> CREATOR = new MediaFocusStackItem.1();
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
+  private int a;
+  private long b;
+  private String c;
+  private String d;
   
   public MediaFocusStackItem(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    this.a = paramInt;
+    this.b = paramLong;
+    this.c = paramString1;
+    this.d = paramString2;
   }
   
   protected MediaFocusStackItem(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readLong();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readString();
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public String b()
   {
-    return this.b;
+    return this.c;
+  }
+  
+  public String c()
+  {
+    return this.d;
   }
   
   public int describeContents()
@@ -53,16 +53,16 @@ public class MediaFocusStackItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MediaFocusStackItem{type='");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append('\'');
     localStringBuilder.append(", time='");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", id='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", pname='");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -70,15 +70,15 @@ public class MediaFocusStackItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeLong(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusStackItem
  * JD-Core Version:    0.7.0.1
  */

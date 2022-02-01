@@ -23,12 +23,12 @@ class HeadsPanelAnimationView$2
     int i = 0;
     while (i < 3)
     {
-      paramAnimation = (ImageView)this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a.get(i);
+      paramAnimation = (ImageView)this.b.b.get(i);
       paramAnimation.clearAnimation();
       Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.b.size()))
+      if ((localObject1 != null) && (i < this.b.g.size()))
       {
-        Object localObject2 = (String)this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.b.get(i);
+        Object localObject2 = (String)this.b.g.get(i);
         Drawable localDrawable = ImageUtil.a(true);
         localObject1 = FaceDrawable.getFaceDrawable((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
         localObject2 = paramAnimation.getDrawable();
@@ -39,15 +39,15 @@ class HeadsPanelAnimationView$2
       }
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.d.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.c.setTranslationX(0.0F);
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.c.setAlpha(1.0F);
+    this.b.i.clearAnimation();
+    this.a.cancel();
+    this.b.e.setTranslationX(0.0F);
+    this.b.e.setAlpha(1.0F);
     paramAnimation = new AlphaAnimation(1.0F, 0.0F);
     paramAnimation.setFillAfter(true);
     paramAnimation.setDuration(200L);
     paramAnimation.setAnimationListener(new HeadsPanelAnimationView.2.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.d.startAnimation(paramAnimation);
+    this.b.i.startAnimation(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -56,7 +56,7 @@ class HeadsPanelAnimationView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.HeadsPanelAnimationView.2
  * JD-Core Version:    0.7.0.1
  */

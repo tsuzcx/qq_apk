@@ -22,15 +22,9 @@ public final class ConstellationLauncher
 {
   @JvmField
   public static final int a = 1040;
-  public static final ConstellationLauncher a;
   @JvmField
   public static final int b = 0;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqOnlinestatusConstellationConstellationLauncher = new ConstellationLauncher();
-    jdField_a_of_type_Int = 1040;
-  }
+  public static final ConstellationLauncher c = new ConstellationLauncher();
   
   public final void a(@NotNull Activity paramActivity, @NotNull String paramString)
   {
@@ -52,7 +46,7 @@ public final class ConstellationLauncher
       }
       localIntent.putExtra("param_birthday", i);
       localIntent.putExtra("param_launch_from", paramString);
-      ((IAgeSelectionApi)QRoute.api(IAgeSelectionApi.class)).startAgeSelectionActivity(paramActivity, localIntent, jdField_a_of_type_Int);
+      ((IAgeSelectionApi)QRoute.api(IAgeSelectionApi.class)).startAgeSelectionActivity(paramActivity, localIntent, a);
     }
   }
   
@@ -73,7 +67,7 @@ public final class ConstellationLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.constellation.ConstellationLauncher
  * JD-Core Version:    0.7.0.1
  */

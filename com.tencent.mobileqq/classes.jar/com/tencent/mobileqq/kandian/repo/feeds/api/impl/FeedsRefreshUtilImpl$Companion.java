@@ -10,9 +10,9 @@ import kotlin.Metadata;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/repo/feeds/api/impl/FeedsRefreshUtilImpl$Companion;", "", "()V", "CLEAR_TIME_HOUR", "", "SP_KEY_CONTENT_FLUSH_NUM_DAY", "", "SP_KEY_CONTENT_FLUSH_NUM_DAY_UPDATE_DATE", "TAG", "contentFlushNumProcess", "isNeedToResetData", "", "currentTimeMillis", "", "recordChannelRefreshTimes", "", "channelId", "storeUpdateDate", "updateContentFlushNum", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class FeedsRefreshUtilImpl$Companion
 {
-  private final boolean a(long paramLong)
+  private final boolean b(long paramLong)
   {
-    String str1 = (String)RIJSPUtils.a("sp_key_rij_content_flush_num_day_update_date", "");
+    String str1 = (String)RIJSPUtils.b("sp_key_rij_content_flush_num_day_update_date", "");
     long l = 14400000;
     String str2 = new SimpleDateFormat("yyyy-MM-dd").format(new Date(paramLong - l));
     StringBuilder localStringBuilder = new StringBuilder();
@@ -24,7 +24,7 @@ public final class FeedsRefreshUtilImpl$Companion
     return TextUtils.equals((CharSequence)str1, (CharSequence)str2) ^ true;
   }
   
-  private final void b(long paramLong)
+  private final void c(long paramLong)
   {
     long l = 14400000;
     RIJSPUtils.a("sp_key_rij_content_flush_num_day_update_date", new SimpleDateFormat("yyyy-MM-dd").format(new Date(paramLong - l)));
@@ -40,7 +40,7 @@ public final class FeedsRefreshUtilImpl$Companion
   public final void a(long paramLong)
   {
     Object localObject = (Companion)this;
-    boolean bool = ((Companion)localObject).a(paramLong);
+    boolean bool = ((Companion)localObject).b(paramLong);
     Integer localInteger = Integer.valueOf(0);
     if (bool)
     {
@@ -48,8 +48,8 @@ public final class FeedsRefreshUtilImpl$Companion
       RIJSPUtils.a("sp_key_rij_content_flush_num_day", localInteger);
     }
     FeedsRefreshUtilImpl.access$setContentFlushNumProcess$cp(FeedsRefreshUtilImpl.access$getContentFlushNumProcess$cp() + 1);
-    RIJSPUtils.a("sp_key_rij_content_flush_num_day", Integer.valueOf(((Integer)RIJSPUtils.a("sp_key_rij_content_flush_num_day", localInteger)).intValue() + 1));
-    ((Companion)localObject).b(paramLong);
+    RIJSPUtils.a("sp_key_rij_content_flush_num_day", Integer.valueOf(((Integer)RIJSPUtils.b("sp_key_rij_content_flush_num_day", localInteger)).intValue() + 1));
+    ((Companion)localObject).c(paramLong);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("[updateContentFlushNum] timeStamp = ");
     ((StringBuilder)localObject).append(System.currentTimeMillis());
@@ -57,13 +57,13 @@ public final class FeedsRefreshUtilImpl$Companion
     ((StringBuilder)localObject).append(FeedsRefreshUtilImpl.access$getContentFlushNumProcess$cp());
     ((StringBuilder)localObject).append(", ");
     ((StringBuilder)localObject).append(", contentFlushNumDay = ");
-    ((StringBuilder)localObject).append((Integer)RIJSPUtils.a("sp_key_rij_content_flush_num_day", localInteger));
+    ((StringBuilder)localObject).append((Integer)RIJSPUtils.b("sp_key_rij_content_flush_num_day", localInteger));
     QLog.i("FeedsRefreshUtilImpl", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.api.impl.FeedsRefreshUtilImpl.Companion
  * JD-Core Version:    0.7.0.1
  */

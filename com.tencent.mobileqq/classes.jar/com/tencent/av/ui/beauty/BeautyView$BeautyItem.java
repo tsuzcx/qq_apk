@@ -3,12 +3,12 @@ package com.tencent.av.ui.beauty;
 class BeautyView$BeautyItem
 {
   public int a;
-  public String a;
   public int b;
-  public int c;
+  public String c;
   public int d;
   public int e;
   public int f;
+  public int g;
 }
 
 

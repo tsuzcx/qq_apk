@@ -184,7 +184,7 @@ public class TroopInfoServiceImpl
   
   private void updateRecentUser(RecentUserProxy paramRecentUserProxy, CommonlyUsedTroop paramCommonlyUsedTroop, boolean paramBoolean)
   {
-    RecentUser localRecentUser = paramRecentUserProxy.b(paramCommonlyUsedTroop.troopUin, 1);
+    RecentUser localRecentUser = paramRecentUserProxy.c(paramCommonlyUsedTroop.troopUin, 1);
     if (localRecentUser != null)
     {
       localRecentUser.showUpTime = paramCommonlyUsedTroop.addedTimestamp;
@@ -428,7 +428,7 @@ public class TroopInfoServiceImpl
     //   0: aload_1
     //   1: ifnull +313 -> 314
     //   4: aload_1
-    //   5: invokeinterface 448 1 0
+    //   5: invokeinterface 449 1 0
     //   10: ifne +6 -> 16
     //   13: goto +301 -> 314
     //   16: aconst_null
@@ -450,21 +450,21 @@ public class TroopInfoServiceImpl
     //   43: aload 4
     //   45: astore_2
     //   46: aload_1
-    //   47: invokeinterface 298 1 0
+    //   47: invokeinterface 299 1 0
     //   52: astore 5
     //   54: aload 4
     //   56: astore_3
     //   57: aload 4
     //   59: astore_2
     //   60: aload 5
-    //   62: invokeinterface 303 1 0
+    //   62: invokeinterface 304 1 0
     //   67: ifeq +101 -> 168
     //   70: aload 4
     //   72: astore_3
     //   73: aload 4
     //   75: astore_2
     //   76: aload 5
-    //   78: invokeinterface 307 1 0
+    //   78: invokeinterface 308 1 0
     //   83: checkcast 154	java/lang/String
     //   86: astore 6
     //   88: aload 4
@@ -473,7 +473,7 @@ public class TroopInfoServiceImpl
     //   93: astore_2
     //   94: aload_0
     //   95: aload 6
-    //   97: invokevirtual 451	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:findTroopInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/troop/TroopInfo;
+    //   97: invokevirtual 452	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:findTroopInfo	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/troop/TroopInfo;
     //   100: astore 7
     //   102: aload 7
     //   104: ifnull +22 -> 126
@@ -484,7 +484,7 @@ public class TroopInfoServiceImpl
     //   113: aload_0
     //   114: getfield 81	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   117: aload 7
-    //   119: invokevirtual 422	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   119: invokevirtual 423	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
     //   122: pop
     //   123: goto -69 -> 54
     //   126: aload 4
@@ -499,14 +499,14 @@ public class TroopInfoServiceImpl
     //   143: astore_2
     //   144: ldc 10
     //   146: iconst_2
-    //   147: ldc_w 453
+    //   147: ldc_w 454
     //   150: iconst_1
     //   151: anewarray 4	java/lang/Object
     //   154: dup
     //   155: iconst_0
     //   156: aload 6
     //   158: aastore
-    //   159: invokestatic 390	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   159: invokestatic 391	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   162: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   165: goto -111 -> 54
     //   168: aload 4
@@ -528,7 +528,7 @@ public class TroopInfoServiceImpl
     //   200: aload_2
     //   201: astore_3
     //   202: aload 4
-    //   204: invokevirtual 456	java/lang/Exception:printStackTrace	()V
+    //   204: invokevirtual 457	java/lang/Exception:printStackTrace	()V
     //   207: aload_2
     //   208: astore_3
     //   209: new 108	java/lang/StringBuilder
@@ -538,14 +538,14 @@ public class TroopInfoServiceImpl
     //   218: aload_2
     //   219: astore_3
     //   220: aload 5
-    //   222: ldc_w 458
+    //   222: ldc_w 459
     //   225: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   228: pop
     //   229: aload_2
     //   230: astore_3
     //   231: aload 5
     //   233: aload 4
-    //   235: invokevirtual 461	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   235: invokevirtual 462	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   238: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   241: pop
     //   242: aload_2
@@ -554,18 +554,18 @@ public class TroopInfoServiceImpl
     //   246: iconst_1
     //   247: aload 5
     //   249: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: invokestatic 248	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   252: invokestatic 249	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   255: aload_2
     //   256: ifnull +6 -> 262
     //   259: goto -72 -> 187
     //   262: aload_1
-    //   263: invokeinterface 298 1 0
+    //   263: invokeinterface 299 1 0
     //   268: astore_1
     //   269: aload_1
-    //   270: invokeinterface 303 1 0
+    //   270: invokeinterface 304 1 0
     //   275: ifeq +28 -> 303
     //   278: aload_1
-    //   279: invokeinterface 307 1 0
+    //   279: invokeinterface 308 1 0
     //   284: checkcast 154	java/lang/String
     //   287: astore_2
     //   288: aload_2
@@ -573,7 +573,7 @@ public class TroopInfoServiceImpl
     //   292: ifne -23 -> 269
     //   295: aload_0
     //   296: aload_2
-    //   297: invokevirtual 446	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:deleteTroopWithoutDB	(Ljava/lang/String;)V
+    //   297: invokevirtual 447	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:deleteTroopWithoutDB	(Ljava/lang/String;)V
     //   300: goto -31 -> 269
     //   303: return
     //   304: aload_3
@@ -586,7 +586,7 @@ public class TroopInfoServiceImpl
     //   317: ifeq +12 -> 329
     //   320: ldc 10
     //   322: iconst_2
-    //   323: ldc_w 463
+    //   323: ldc_w 464
     //   326: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   329: return
     // Local variable table:
@@ -852,7 +852,7 @@ public class TroopInfoServiceImpl
       }
     }
     if (QLog.isColorLevel()) {
-      QLog.d("TroopInfoServiceImpl", 2, StringUtil.a(new Object[] { "TroopManger getTroopInfo()", paramString, Long.valueOf(((TroopInfo)localObject2).dwGroupFlagExt) }));
+      QLog.d("TroopInfoServiceImpl", 2, StringUtil.makeLogMsg(new Object[] { "TroopManger getTroopInfo()", paramString, Long.valueOf(((TroopInfo)localObject2).dwGroupFlagExt) }));
     }
     return localObject2;
   }
@@ -1157,7 +1157,7 @@ public class TroopInfoServiceImpl
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 250	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:getCommonlyUsedTroopLazyCache	()Ljava/util/concurrent/ConcurrentHashMap;
+    //   1: invokespecial 251	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:getCommonlyUsedTroopLazyCache	()Ljava/util/concurrent/ConcurrentHashMap;
     //   4: astore 7
     //   6: aconst_null
     //   7: astore 4
@@ -1180,7 +1180,7 @@ public class TroopInfoServiceImpl
     //   43: aload 6
     //   45: astore 4
     //   47: aload_0
-    //   48: getfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   48: getfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
     //   51: ifnonnull +22 -> 73
     //   54: aload 6
     //   56: astore 5
@@ -1189,29 +1189,29 @@ public class TroopInfoServiceImpl
     //   62: aload_0
     //   63: new 62	java/util/HashMap
     //   66: dup
-    //   67: invokespecial 711	java/util/HashMap:<init>	()V
-    //   70: putfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   67: invokespecial 713	java/util/HashMap:<init>	()V
+    //   70: putfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
     //   73: aload 6
     //   75: astore 5
     //   77: aload 6
     //   79: astore 4
     //   81: aload 7
-    //   83: invokevirtual 520	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
-    //   86: invokeinterface 523 1 0
+    //   83: invokevirtual 521	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   86: invokeinterface 524 1 0
     //   91: astore 8
     //   93: aload 6
     //   95: astore 5
     //   97: aload 6
     //   99: astore 4
     //   101: aload 8
-    //   103: invokeinterface 303 1 0
+    //   103: invokeinterface 304 1 0
     //   108: ifeq +220 -> 328
     //   111: aload 6
     //   113: astore 5
     //   115: aload 6
     //   117: astore 4
     //   119: aload 8
-    //   121: invokeinterface 307 1 0
+    //   121: invokeinterface 308 1 0
     //   126: checkcast 154	java/lang/String
     //   129: astore 9
     //   131: aload 6
@@ -1219,14 +1219,14 @@ public class TroopInfoServiceImpl
     //   135: aload 6
     //   137: astore 4
     //   139: aload_0
-    //   140: getfield 255	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
-    //   143: invokevirtual 715	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
-    //   146: invokevirtual 720	mqq/app/MobileQQ:getBaseContext	()Landroid/content/Context;
+    //   140: getfield 256	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
+    //   143: invokevirtual 717	mqq/app/AppRuntime:getApplication	()Lmqq/app/MobileQQ;
+    //   146: invokevirtual 722	mqq/app/MobileQQ:getBaseContext	()Landroid/content/Context;
     //   149: aload_0
-    //   150: getfield 255	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
-    //   153: invokevirtual 723	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   150: getfield 256	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
+    //   153: invokevirtual 725	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
     //   156: aload 9
-    //   158: invokestatic 726	com/tencent/mobileqq/troop/api/config/TroopCommonConfig:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Z
+    //   158: invokestatic 728	com/tencent/mobileqq/troop/api/config/TroopCommonConfig:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Z
     //   161: ifeq -68 -> 93
     //   164: aload 6
     //   166: astore 5
@@ -1234,7 +1234,7 @@ public class TroopInfoServiceImpl
     //   170: astore 4
     //   172: aload 7
     //   174: aload 9
-    //   176: invokevirtual 253	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   176: invokevirtual 254	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   179: checkcast 83	com/tencent/mobileqq/data/troop/CommonlyUsedTroop
     //   182: getfield 219	com/tencent/mobileqq/data/troop/CommonlyUsedTroop:addedTimestamp	J
     //   185: lstore_2
@@ -1243,11 +1243,11 @@ public class TroopInfoServiceImpl
     //   190: aload 6
     //   192: astore 4
     //   194: aload_0
-    //   195: getfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   195: getfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
     //   198: aload 9
     //   200: lload_2
-    //   201: invokestatic 574	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   204: invokeinterface 337 3 0
+    //   201: invokestatic 575	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   204: invokeinterface 338 3 0
     //   209: pop
     //   210: aload 6
     //   212: astore 5
@@ -1268,7 +1268,7 @@ public class TroopInfoServiceImpl
     //   245: aload 6
     //   247: astore 4
     //   249: aload 10
-    //   251: ldc_w 728
+    //   251: ldc_w 730
     //   254: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   257: pop
     //   258: aload 6
@@ -1284,7 +1284,7 @@ public class TroopInfoServiceImpl
     //   278: aload 6
     //   280: astore 4
     //   282: aload 10
-    //   284: ldc_w 730
+    //   284: ldc_w 732
     //   287: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   290: pop
     //   291: aload 6
@@ -1293,7 +1293,7 @@ public class TroopInfoServiceImpl
     //   297: astore 4
     //   299: aload 10
     //   301: lload_2
-    //   302: invokevirtual 276	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 277	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   305: pop
     //   306: aload 6
     //   308: astore 5
@@ -1310,27 +1310,27 @@ public class TroopInfoServiceImpl
     //   332: aload 6
     //   334: astore 4
     //   336: aload_0
-    //   337: getfield 255	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
-    //   340: ldc_w 257
-    //   343: ldc_w 259
-    //   346: invokevirtual 265	mqq/app/AppRuntime:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
-    //   349: checkcast 257	com/tencent/mobileqq/proxy/api/IRecentUserProxyService
-    //   352: invokeinterface 269 1 0
+    //   337: getfield 256	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
+    //   340: ldc_w 258
+    //   343: ldc_w 260
+    //   346: invokevirtual 266	mqq/app/AppRuntime:getRuntimeService	(Ljava/lang/Class;Ljava/lang/String;)Lmqq/app/api/IRuntimeService;
+    //   349: checkcast 258	com/tencent/mobileqq/proxy/api/IRecentUserProxyService
+    //   352: invokeinterface 270 1 0
     //   357: astore 8
     //   359: aload 6
     //   361: astore 5
     //   363: aload 6
     //   365: astore 4
     //   367: aload 7
-    //   369: invokevirtual 520	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
-    //   372: invokeinterface 523 1 0
+    //   369: invokevirtual 521	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   372: invokeinterface 524 1 0
     //   377: astore 9
     //   379: aload 6
     //   381: astore 5
     //   383: aload 6
     //   385: astore 4
     //   387: aload 9
-    //   389: invokeinterface 303 1 0
+    //   389: invokeinterface 304 1 0
     //   394: ifeq +65 -> 459
     //   397: aload 6
     //   399: astore 5
@@ -1338,9 +1338,9 @@ public class TroopInfoServiceImpl
     //   403: astore 4
     //   405: aload 7
     //   407: aload 9
-    //   409: invokeinterface 307 1 0
+    //   409: invokeinterface 308 1 0
     //   414: checkcast 154	java/lang/String
-    //   417: invokevirtual 253	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   417: invokevirtual 254	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   420: checkcast 83	com/tencent/mobileqq/data/troop/CommonlyUsedTroop
     //   423: astore 10
     //   425: aload 6
@@ -1358,7 +1358,7 @@ public class TroopInfoServiceImpl
     //   448: aload 8
     //   450: aload 10
     //   452: iconst_0
-    //   453: invokespecial 279	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:updateRecentUser	(Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;Lcom/tencent/mobileqq/data/troop/CommonlyUsedTroop;Z)V
+    //   453: invokespecial 280	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:updateRecentUser	(Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;Lcom/tencent/mobileqq/data/troop/CommonlyUsedTroop;Z)V
     //   456: goto -77 -> 379
     //   459: aload 6
     //   461: astore 5
@@ -1367,7 +1367,7 @@ public class TroopInfoServiceImpl
     //   467: aload_0
     //   468: getfield 81	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
     //   471: ldc 83
-    //   473: invokevirtual 734	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
+    //   473: invokevirtual 736	com/tencent/mobileqq/persistence/EntityManager:drop	(Ljava/lang/Class;)Z
     //   476: pop
     //   477: aload 6
     //   479: astore 5
@@ -1376,43 +1376,43 @@ public class TroopInfoServiceImpl
     //   485: new 69	java/util/concurrent/ConcurrentHashMap
     //   488: dup
     //   489: aload 7
-    //   491: invokespecial 736	java/util/concurrent/ConcurrentHashMap:<init>	(Ljava/util/Map;)V
+    //   491: invokespecial 738	java/util/concurrent/ConcurrentHashMap:<init>	(Ljava/util/Map;)V
     //   494: astore 9
     //   496: aload 6
     //   498: astore 5
     //   500: aload 6
     //   502: astore 4
     //   504: aload 7
-    //   506: invokevirtual 737	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   506: invokevirtual 739	java/util/concurrent/ConcurrentHashMap:clear	()V
     //   509: aload 6
     //   511: astore 5
     //   513: aload 6
     //   515: astore 4
     //   517: aload_0
-    //   518: getfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   518: getfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
     //   521: ifnull +426 -> 947
     //   524: aload 6
     //   526: astore 5
     //   528: aload 6
     //   530: astore 4
     //   532: aload_0
-    //   533: getfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
-    //   536: invokeinterface 738 1 0
-    //   541: invokeinterface 523 1 0
+    //   533: getfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   536: invokeinterface 740 1 0
+    //   541: invokeinterface 524 1 0
     //   546: astore 10
     //   548: aload 6
     //   550: astore 5
     //   552: aload 6
     //   554: astore 4
     //   556: aload 10
-    //   558: invokeinterface 303 1 0
+    //   558: invokeinterface 304 1 0
     //   563: ifeq +384 -> 947
     //   566: aload 6
     //   568: astore 5
     //   570: aload 6
     //   572: astore 4
     //   574: aload 10
-    //   576: invokeinterface 307 1 0
+    //   576: invokeinterface 308 1 0
     //   581: checkcast 154	java/lang/String
     //   584: astore 11
     //   586: aload 6
@@ -1434,7 +1434,7 @@ public class TroopInfoServiceImpl
     //   621: aload 6
     //   623: astore 4
     //   625: aload 12
-    //   627: ldc_w 740
+    //   627: ldc_w 742
     //   630: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   633: pop
     //   634: aload 6
@@ -1450,7 +1450,7 @@ public class TroopInfoServiceImpl
     //   654: aload 6
     //   656: astore 4
     //   658: aload 12
-    //   660: ldc_w 742
+    //   660: ldc_w 744
     //   663: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   666: pop
     //   667: aload 6
@@ -1459,10 +1459,10 @@ public class TroopInfoServiceImpl
     //   673: astore 4
     //   675: aload 12
     //   677: aload_0
-    //   678: getfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   678: getfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
     //   681: aload 11
-    //   683: invokeinterface 320 2 0
-    //   688: invokevirtual 745	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   683: invokeinterface 321 2 0
+    //   688: invokevirtual 747	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   691: pop
     //   692: aload 6
     //   694: astore 5
@@ -1479,7 +1479,7 @@ public class TroopInfoServiceImpl
     //   717: astore 4
     //   719: new 83	com/tencent/mobileqq/data/troop/CommonlyUsedTroop
     //   722: dup
-    //   723: invokespecial 277	com/tencent/mobileqq/data/troop/CommonlyUsedTroop:<init>	()V
+    //   723: invokespecial 278	com/tencent/mobileqq/data/troop/CommonlyUsedTroop:<init>	()V
     //   726: astore 12
     //   728: aload 6
     //   730: astore 5
@@ -1494,11 +1494,11 @@ public class TroopInfoServiceImpl
     //   749: astore 4
     //   751: aload 12
     //   753: aload_0
-    //   754: getfield 681	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
+    //   754: getfield 683	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:prepareCommonlyUsedTroop	Ljava/util/Map;
     //   757: aload 11
-    //   759: invokeinterface 320 2 0
-    //   764: checkcast 571	java/lang/Long
-    //   767: invokevirtual 749	java/lang/Long:longValue	()J
+    //   759: invokeinterface 321 2 0
+    //   764: checkcast 572	java/lang/Long
+    //   767: invokevirtual 751	java/lang/Long:longValue	()J
     //   770: putfield 219	com/tencent/mobileqq/data/troop/CommonlyUsedTroop:addedTimestamp	J
     //   773: aload 6
     //   775: astore 5
@@ -1514,22 +1514,22 @@ public class TroopInfoServiceImpl
     //   795: aload 6
     //   797: astore 4
     //   799: aload 9
-    //   801: invokevirtual 520	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
-    //   804: invokeinterface 523 1 0
+    //   801: invokevirtual 521	java/util/concurrent/ConcurrentHashMap:keySet	()Ljava/util/Set;
+    //   804: invokeinterface 524 1 0
     //   809: astore 13
     //   811: aload 6
     //   813: astore 5
     //   815: aload 6
     //   817: astore 4
     //   819: aload 13
-    //   821: invokeinterface 303 1 0
+    //   821: invokeinterface 304 1 0
     //   826: ifeq +210 -> 1036
     //   829: aload 6
     //   831: astore 5
     //   833: aload 6
     //   835: astore 4
     //   837: aload 13
-    //   839: invokeinterface 307 1 0
+    //   839: invokeinterface 308 1 0
     //   844: checkcast 154	java/lang/String
     //   847: astore 14
     //   849: aload 6
@@ -1538,7 +1538,7 @@ public class TroopInfoServiceImpl
     //   855: astore 4
     //   857: aload 14
     //   859: aload 11
-    //   861: invokevirtual 312	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   861: invokevirtual 313	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   864: ifeq -53 -> 811
     //   867: aload 6
     //   869: astore 5
@@ -1546,7 +1546,7 @@ public class TroopInfoServiceImpl
     //   873: astore 4
     //   875: aload 9
     //   877: aload 14
-    //   879: invokevirtual 424	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   879: invokevirtual 425	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   882: pop
     //   883: iconst_1
     //   884: istore_1
@@ -1561,7 +1561,7 @@ public class TroopInfoServiceImpl
     //   901: aload 8
     //   903: aload 12
     //   905: iconst_0
-    //   906: invokespecial 279	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:updateRecentUser	(Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;Lcom/tencent/mobileqq/data/troop/CommonlyUsedTroop;Z)V
+    //   906: invokespecial 280	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:updateRecentUser	(Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;Lcom/tencent/mobileqq/data/troop/CommonlyUsedTroop;Z)V
     //   909: goto +20 -> 929
     //   912: aload 6
     //   914: astore 5
@@ -1571,7 +1571,7 @@ public class TroopInfoServiceImpl
     //   921: aload 8
     //   923: aload 12
     //   925: iconst_1
-    //   926: invokespecial 279	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:updateRecentUser	(Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;Lcom/tencent/mobileqq/data/troop/CommonlyUsedTroop;Z)V
+    //   926: invokespecial 280	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:updateRecentUser	(Lcom/tencent/mobileqq/app/proxy/RecentUserProxy;Lcom/tencent/mobileqq/data/troop/CommonlyUsedTroop;Z)V
     //   929: aload 6
     //   931: astore 5
     //   933: aload 6
@@ -1608,7 +1608,7 @@ public class TroopInfoServiceImpl
     //   999: aload 6
     //   1001: iconst_0
     //   1002: anewarray 4	java/lang/Object
-    //   1005: invokestatic 752	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   1005: invokestatic 754	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   1008: aload 4
     //   1010: ifnull +6 -> 1016
     //   1013: goto -44 -> 969
@@ -1794,7 +1794,7 @@ public class TroopInfoServiceImpl
         QLog.d("TroopInfoServiceImpl", 2, "saveTroopInfo failed.");
       }
       localObject = ((IRecentUserProxyService)this.app.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      RecentUser localRecentUser = ((RecentUserProxy)localObject).a(paramTroopInfo.troopuin, 1);
+      RecentUser localRecentUser = ((RecentUserProxy)localObject).b(paramTroopInfo.troopuin, 1);
       localRecentUser.displayName = paramTroopInfo.getTroopDisplayName();
       if (localRecentUser.getStatus() == 1001) {
         ((RecentUserProxy)localObject).b(localRecentUser);
@@ -1872,25 +1872,25 @@ public class TroopInfoServiceImpl
     //   40: ifnonnull +4 -> 44
     //   43: return
     //   44: aload_1
-    //   45: invokevirtual 631	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   45: invokevirtual 633	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   48: astore 4
     //   50: aload 4
-    //   52: invokeinterface 303 1 0
+    //   52: invokeinterface 304 1 0
     //   57: ifeq +45 -> 102
     //   60: aload 4
-    //   62: invokeinterface 307 1 0
+    //   62: invokeinterface 308 1 0
     //   67: checkcast 148	com/tencent/mobileqq/data/troop/TroopInfo
     //   70: astore 5
     //   72: aload 5
     //   74: ifnull +18 -> 92
     //   77: aload_0
-    //   78: getfield 255	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
+    //   78: getfield 256	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:app	Lmqq/app/AppRuntime;
     //   81: aload 5
     //   83: getfield 170	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
-    //   86: invokestatic 775	com/tencent/mobileqq/troop/api/config/TroopCommonConfig:a	(Lmqq/app/AppRuntime;Ljava/lang/String;)Z
+    //   86: invokestatic 777	com/tencent/mobileqq/troop/api/config/TroopCommonConfig:a	(Lmqq/app/AppRuntime;Ljava/lang/String;)Z
     //   89: ifeq -39 -> 50
     //   92: aload 4
-    //   94: invokeinterface 777 1 0
+    //   94: invokeinterface 779 1 0
     //   99: goto -49 -> 50
     //   102: aload_0
     //   103: getfield 81	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:em	Lcom/tencent/mobileqq/persistence/EntityManager;
@@ -1916,14 +1916,14 @@ public class TroopInfoServiceImpl
     //   146: getfield 170	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
     //   149: ifnonnull +14 -> 163
     //   152: aload 5
-    //   154: getfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   154: getfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
     //   157: ifnonnull +6 -> 163
     //   160: goto +163 -> 323
     //   163: aload 5
-    //   165: getfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   165: getfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
     //   168: ifnull +15 -> 183
     //   171: aload 5
-    //   173: getfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   173: getfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
     //   176: invokevirtual 157	java/lang/String:length	()I
     //   179: iconst_1
     //   180: if_icmpgt +78 -> 258
@@ -1934,7 +1934,7 @@ public class TroopInfoServiceImpl
     //   192: getfield 47	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:troopListCache	Ljava/util/concurrent/ConcurrentHashMap;
     //   195: aload 5
     //   197: getfield 170	com/tencent/mobileqq/data/troop/TroopInfo:troopuin	Ljava/lang/String;
-    //   200: invokevirtual 253	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   200: invokevirtual 254	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   203: checkcast 187	com/tencent/mobileqq/persistence/Entity
     //   206: astore 6
     //   208: aload 6
@@ -1946,17 +1946,17 @@ public class TroopInfoServiceImpl
     //   223: checkcast 148	com/tencent/mobileqq/data/troop/TroopInfo
     //   226: astore 6
     //   228: aload 6
-    //   230: getfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   230: getfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
     //   233: ifnull +25 -> 258
     //   236: aload 6
-    //   238: getfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   238: getfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
     //   241: invokevirtual 157	java/lang/String:length	()I
     //   244: iconst_1
     //   245: if_icmple +13 -> 258
     //   248: aload 5
     //   250: aload 6
-    //   252: getfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
-    //   255: putfield 516	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   252: getfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
+    //   255: putfield 517	com/tencent/mobileqq/data/troop/TroopInfo:troopcode	Ljava/lang/String;
     //   258: aload_0
     //   259: getfield 47	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:troopListCache	Ljava/util/concurrent/ConcurrentHashMap;
     //   262: aload 5
@@ -1976,11 +1976,11 @@ public class TroopInfoServiceImpl
     //   292: goto +18 -> 310
     //   295: astore_1
     //   296: aload_1
-    //   297: invokevirtual 456	java/lang/Exception:printStackTrace	()V
+    //   297: invokevirtual 457	java/lang/Exception:printStackTrace	()V
     //   300: aload 4
     //   302: invokevirtual 197	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
     //   305: aload_0
-    //   306: invokevirtual 290	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:buildTroopUI	()V
+    //   306: invokevirtual 291	com/tencent/mobileqq/troop/api/impl/TroopInfoServiceImpl:buildTroopUI	()V
     //   309: return
     //   310: aload 4
     //   312: invokevirtual 197	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
@@ -2131,7 +2131,7 @@ public class TroopInfoServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopInfoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

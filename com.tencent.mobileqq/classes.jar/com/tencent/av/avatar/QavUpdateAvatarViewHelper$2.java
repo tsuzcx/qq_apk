@@ -10,7 +10,7 @@ class QavUpdateAvatarViewHelper$2
   
   public void run()
   {
-    QavAvatarHelper.a().a(QavUpdateAvatarViewHelper.a(this.this$0), this.a, new WeakReference(QavUpdateAvatarViewHelper.a(this.this$0)));
+    QavAvatarHelper.a().a(QavUpdateAvatarViewHelper.a(this.this$0), this.a, new WeakReference(QavUpdateAvatarViewHelper.c(this.this$0)));
   }
 }
 

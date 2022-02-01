@@ -13,15 +13,15 @@ class SubscriptionInfoModule$1
   {
     ((IPublicAccountDataManager)((QQAppInterface)SubscriptionInfoModule.a(this.this$0)).getRuntimeService(IPublicAccountDataManager.class, "all")).initPublicAccountDataManager();
     TroopBarAssistantManager localTroopBarAssistantManager = TroopBarAssistantManager.a();
-    localTroopBarAssistantManager.c((QQAppInterface)SubscriptionInfoModule.b(this.this$0));
-    if (localTroopBarAssistantManager.a((QQAppInterface)SubscriptionInfoModule.c(this.this$0))) {
-      localTroopBarAssistantManager.a(SubscriptionInfoModule.a(this.this$0), (QQAppInterface)SubscriptionInfoModule.d(this.this$0));
+    localTroopBarAssistantManager.d((QQAppInterface)SubscriptionInfoModule.b(this.this$0));
+    if (localTroopBarAssistantManager.g((QQAppInterface)SubscriptionInfoModule.c(this.this$0))) {
+      localTroopBarAssistantManager.a(SubscriptionInfoModule.d(this.this$0), (QQAppInterface)SubscriptionInfoModule.e(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.SubscriptionInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

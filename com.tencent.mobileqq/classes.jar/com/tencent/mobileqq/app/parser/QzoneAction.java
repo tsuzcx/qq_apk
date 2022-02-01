@@ -25,30 +25,11 @@ public class QzoneAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private String a(String paramString)
-  {
-    try
-    {
-      paramString = Uri.parse(paramString).getQueryParameter("request_from");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return "";
-  }
-  
-  private boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("mqzone://arouse/normalvideolayer")) && (TextUtils.equals(a(paramString), "6"));
-  }
-  
   private boolean c()
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (this.c != null)
     {
-      if (!QzoneAuthorizeConfig.getInstance().hasSchemeRight(this.e, this.jdField_a_of_type_JavaLangString))
+      if (!QzoneAuthorizeConfig.getInstance().hasSchemeRight(this.i, this.c))
       {
         QLog.e("QzoneAction", 1, "has no right to handle this schema");
         return false;
@@ -56,16 +37,16 @@ public class QzoneAction
       Intent localIntent2 = null;
       Object localObject;
       Intent localIntent1;
-      if (this.jdField_a_of_type_JavaLangString.startsWith("mqqzone"))
+      if (this.c.startsWith("mqqzone"))
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("mqzone");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(7));
+        ((StringBuilder)localObject).append(this.c.substring(7));
         localObject = ((StringBuilder)localObject).toString();
       }
       else
       {
-        String str = (String)URLUtil.a(this.jdField_a_of_type_JavaLangString).get("schema");
+        String str = (String)URLUtil.a(this.c).get("schema");
         localObject = localIntent2;
         if (!TextUtils.isEmpty(str)) {
           try
@@ -84,18 +65,37 @@ public class QzoneAction
         localIntent2 = new Intent();
         localIntent2.putExtra("cmd", "Schema");
         localIntent2.putExtra("schema", localIntent1);
-        if (a(localIntent1))
+        if (i(localIntent1))
         {
-          ((IWSManager)QRoute.api(IWSManager.class)).enterTrendsTabWs(this.jdField_a_of_type_AndroidContentContext, "from_trends_tab", this.d, this.jdField_a_of_type_ComTencentMobileqqTianshuPbBusinessInfoCheckUpdate$AppInfo, localIntent2);
+          ((IWSManager)QRoute.api(IWSManager.class)).enterTrendsTabWs(this.b, "from_trends_tab", this.p, this.x, localIntent2);
           return true;
         }
-        QZoneHelper.forwardToQzoneTransluentActivity((Activity)this.jdField_a_of_type_AndroidContentContext, QZoneHelper.UserInfo.getInstance(), localIntent2);
+        QZoneHelper.forwardToQzoneTransluentActivity((Activity)this.b, QZoneHelper.UserInfo.getInstance(), localIntent2);
         return true;
       }
       QLog.e("QzoneAction", 1, "gotoQzoneHandleSchema,schema=null");
       return true;
     }
     return false;
+  }
+  
+  private boolean i(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("mqzone://arouse/normalvideolayer")) && (TextUtils.equals(j(paramString), "6"));
+  }
+  
+  private String j(String paramString)
+  {
+    try
+    {
+      paramString = Uri.parse(paramString).getQueryParameter("request_from");
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
   }
   
   public boolean a()
@@ -111,14 +111,14 @@ public class QzoneAction
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QzoneAction", 1, localStringBuilder.toString());
-      b_("QzoneAction");
+      h_("QzoneAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzoneAction
  * JD-Core Version:    0.7.0.1
  */

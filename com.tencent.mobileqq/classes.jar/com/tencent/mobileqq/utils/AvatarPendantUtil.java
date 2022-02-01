@@ -36,49 +36,43 @@ import mqq.os.MqqHandler;
 
 public final class AvatarPendantUtil
 {
-  public static int a;
-  private static long jdField_a_of_type_Long = -1L;
-  public static String a;
-  static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  public static ConcurrentHashMap<Long, Integer> a;
-  static volatile boolean jdField_a_of_type_Boolean;
-  public static final String b;
-  public static ConcurrentHashMap<Long, Integer> b;
-  public static String c;
+  public static ConcurrentHashMap<Long, Integer> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<Long, Integer> b = new ConcurrentHashMap();
+  public static String c = "https://i.gtimg.cn/qqshow/admindata/comdata/AndroidIconZip/icon.zip";
+  public static final String d;
+  public static String e;
+  static final ArrayList<String> f = new ArrayList();
+  static volatile boolean g = false;
+  public static int h = 5000;
+  private static long i = -1L;
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_JavaLangString = "https://i.gtimg.cn/qqshow/admindata/comdata/AndroidIconZip/icon.zip";
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
     localStringBuilder.append("avatarPendantIcons");
-    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    d = localStringBuilder.toString();
     localStringBuilder = new StringBuilder();
-    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(d);
     localStringBuilder.append("/icon");
-    c = localStringBuilder.toString();
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Int = 5000;
+    e = localStringBuilder.toString();
   }
   
   public static float a(Paint paramPaint, Rect paramRect, String paramString)
   {
-    int i = paramRect.width();
-    if (i <= 0) {
+    int j = paramRect.width();
+    if (j <= 0) {
       return 0.0F;
     }
     paramPaint = new TextPaint(paramPaint);
-    float f = paramRect.height();
-    paramPaint.setTextSize(f);
-    while (((paramPaint.measureText(paramString) > i) || (Math.ceil(paramPaint.getFontMetrics().descent - paramPaint.getFontMetrics().ascent) > paramRect.height())) && (f > 0.0F))
+    float f1 = paramRect.height();
+    paramPaint.setTextSize(f1);
+    while (((paramPaint.measureText(paramString) > j) || (Math.ceil(paramPaint.getFontMetrics().descent - paramPaint.getFontMetrics().ascent) > paramRect.height())) && (f1 > 0.0F))
     {
-      f -= 1.0F;
-      paramPaint.setTextSize(f);
+      f1 -= 1.0F;
+      paramPaint.setTextSize(f1);
     }
-    return f;
+    return f1;
   }
   
   public static String a(long paramLong, int paramInt)
@@ -117,32 +111,20 @@ public final class AvatarPendantUtil
     try
     {
       paramFile = new String(FileUtils.fileToBytes(paramFile));
-      int i = paramFile.indexOf("\"seriesID\":");
+      int j = paramFile.indexOf("\"seriesID\":");
       str1 = str2;
-      if (i != -1)
+      if (j != -1)
       {
-        int j = paramFile.indexOf(",", i + 10);
+        int k = paramFile.indexOf(",", j + 10);
         str1 = str2;
-        if (j != -1) {
-          str1 = paramFile.substring(i + 11, j);
+        if (k != -1) {
+          str1 = paramFile.substring(j + 11, k);
         }
       }
       return str1;
     }
     catch (Exception paramFile) {}
     return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
-    localStringBuilder.append("font_info/");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".ttf");
-    return localStringBuilder.toString();
   }
   
   public static void a()
@@ -187,7 +169,7 @@ public final class AvatarPendantUtil
   {
     if (paramQQAppInterface != null)
     {
-      if (jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+      if (f.size() == 0) {
         return;
       }
       StringBuilder localStringBuilder;
@@ -195,20 +177,20 @@ public final class AvatarPendantUtil
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("bulkGetStrangerPendantId, size=");
-        localStringBuilder.append(jdField_a_of_type_JavaUtilArrayList.size());
+        localStringBuilder.append(f.size());
         QLog.i("AvatarPendantUtil", 2, localStringBuilder.toString());
       }
       long l = 0L;
       boolean bool1;
-      if (jdField_a_of_type_JavaUtilArrayList.size() >= 5) {
+      if (f.size() >= 5) {
         bool1 = true;
       } else {
         bool1 = false;
       }
-      if (jdField_a_of_type_Long != -1L)
+      if (i != -1L)
       {
-        l = System.currentTimeMillis() - jdField_a_of_type_Long;
-        if (l < jdField_a_of_type_Int)
+        l = System.currentTimeMillis() - i;
+        if (l < h)
         {
           bool2 = false;
           break label118;
@@ -225,7 +207,7 @@ public final class AvatarPendantUtil
         localStringBuilder.append(bool2);
         QLog.i("AvatarPendantUtil", 2, localStringBuilder.toString());
       }
-      if ((!bool1) && (!bool2) && (jdField_a_of_type_Boolean))
+      if ((!bool1) && (!bool2) && (g))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, condition unavailable, abort");
@@ -235,8 +217,8 @@ public final class AvatarPendantUtil
       paramQQAppInterface = new AvatarPendantUtil.1(paramQQAppInterface);
       if ((!bool1) && (!bool2))
       {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.getUIHandler().postDelayed(paramQQAppInterface, jdField_a_of_type_Int - l);
+        g = true;
+        ThreadManager.getUIHandler().postDelayed(paramQQAppInterface, h - l);
         return;
       }
       ThreadManagerV2.excute(paramQQAppInterface, 128, null, false);
@@ -306,8 +288,8 @@ public final class AvatarPendantUtil
         localIntent = new Intent(paramContext, QQBrowserActivity.class);
       }
       GameCenterManagerImp localGameCenterManagerImp = (GameCenterManagerImp)paramQQAppInterface.getManager(QQManagerFactory.GAMECENTER_MANAGER);
-      int i = localGameCenterManagerImp.a("100005.100006");
-      if ((i == 1) || (i == 0))
+      int j = localGameCenterManagerImp.a("100005.100006");
+      if ((j == 1) || (j == 0))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AvatarPendantUtil", 2, "Clear pendant red flag");
@@ -316,47 +298,47 @@ public final class AvatarPendantUtil
         IRedTouchManager localIRedTouchManager = (IRedTouchManager)paramQQAppInterface.getRuntimeService(IRedTouchManager.class, "");
         localIRedTouchManager.onRedTouchItemClick("100005.100006");
         if (localGameCenterManagerImp.a("100005.100003") != -1) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-        int j;
-        if (localGameCenterManagerImp.a("100005.100002") != -1) {
           j = 1;
         } else {
           j = 0;
         }
         int k;
-        if (localGameCenterManagerImp.a("100005.100001") != -1) {
+        if (localGameCenterManagerImp.a("100005.100002") != -1) {
           k = 1;
         } else {
           k = 0;
         }
         int m;
-        if (localGameCenterManagerImp.a("100005.100018") != -1) {
+        if (localGameCenterManagerImp.a("100005.100001") != -1) {
           m = 1;
         } else {
           m = 0;
         }
         int n;
-        if (localGameCenterManagerImp.a("100005.100020") != -1) {
+        if (localGameCenterManagerImp.a("100005.100018") != -1) {
           n = 1;
         } else {
           n = 0;
         }
         int i1;
-        if (localGameCenterManagerImp.a("100005.100021") != -1) {
+        if (localGameCenterManagerImp.a("100005.100020") != -1) {
           i1 = 1;
         } else {
           i1 = 0;
         }
         int i2;
-        if ((((IFontManagerService)paramQQAppInterface.getRuntimeService(IFontManagerService.class, "")).isSupportFont()) && (localGameCenterManagerImp.a("100005.100011") != -1)) {
+        if (localGameCenterManagerImp.a("100005.100021") != -1) {
           i2 = 1;
         } else {
           i2 = 0;
         }
-        if ((i == 0) && (j == 0) && (k == 0) && (m == 0) && (i2 == 0) && (n == 0) && (i1 == 0))
+        int i3;
+        if ((((IFontManagerService)paramQQAppInterface.getRuntimeService(IFontManagerService.class, "")).isSupportFont()) && (localGameCenterManagerImp.a("100005.100011") != -1)) {
+          i3 = 1;
+        } else {
+          i3 = 0;
+        }
+        if ((j == 0) && (k == 0) && (m == 0) && (n == 0) && (i3 == 0) && (i1 == 0) && (i2 == 0))
         {
           if (QLog.isColorLevel()) {
             QLog.d("AvatarPendantUtil", 2, "Clear parent red flag");
@@ -372,11 +354,11 @@ public final class AvatarPendantUtil
         localIntent.putExtra("url", IndividuationUrlHelper.a(paramContext, "pendant", ""));
         localIntent.putExtra("business", 512L);
         if (paramBoolean) {
-          i = 40202;
+          j = 40202;
         } else {
-          i = 40201;
+          j = 40201;
         }
-        localIntent.putExtra("individuation_url_type", i);
+        localIntent.putExtra("individuation_url_type", j);
         VasWebviewUtil.a(512L, localIntent);
         localIntent.putExtra("isShowAd", false);
       }
@@ -395,28 +377,23 @@ public final class AvatarPendantUtil
     if (paramString == null) {
       return;
     }
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    synchronized (f)
     {
-      if (jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
+      if (f.contains(paramString)) {
         return;
       }
-      jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      f.add(paramString);
       return;
     }
   }
   
   public static boolean a(long paramLong)
   {
-    Integer localInteger = (Integer)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    Integer localInteger = (Integer)a.get(Long.valueOf(paramLong));
     if (localInteger == null) {
       return true;
     }
     return localInteger.intValue() == 1;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return new File(a(paramString)).exists();
   }
   
   public static String b(long paramLong, int paramInt)
@@ -456,19 +433,9 @@ public final class AvatarPendantUtil
     return localStringBuilder.toString();
   }
   
-  public static String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
-    localStringBuilder.append("font_info/");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("/");
-    return localStringBuilder.toString();
-  }
-  
   public static boolean b(long paramLong)
   {
-    Integer localInteger = (Integer)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    Integer localInteger = (Integer)b.get(Long.valueOf(paramLong));
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -492,11 +459,7 @@ public final class AvatarPendantUtil
   
   public static boolean b(String paramString)
   {
-    paramString = paramString.replace("faceAddon.sticker.", "");
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
-    localStringBuilder.append("sticker_info");
-    return new File(localStringBuilder.toString(), paramString).exists();
+    return new File(c(paramString)).exists();
   }
   
   public static String c(long paramLong, int paramInt)
@@ -537,6 +500,37 @@ public final class AvatarPendantUtil
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
+    localStringBuilder.append("font_info/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".ttf");
+    return localStringBuilder.toString();
+  }
+  
+  public static String d(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
+    localStringBuilder.append("font_info/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
+  }
+  
+  public static boolean e(String paramString)
+  {
+    paramString = paramString.replace("faceAddon.sticker.", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
+    localStringBuilder.append("sticker_info");
+    return new File(localStringBuilder.toString(), paramString).exists();
+  }
+  
+  public static String f(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PENDANT_ROOT);
     localStringBuilder.append("sticker_info/");
     localStringBuilder.append(paramString);
     localStringBuilder.append(".png");
@@ -545,7 +539,7 @@ public final class AvatarPendantUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AvatarPendantUtil
  * JD-Core Version:    0.7.0.1
  */

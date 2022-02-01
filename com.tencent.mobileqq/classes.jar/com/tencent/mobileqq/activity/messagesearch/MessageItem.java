@@ -15,7 +15,7 @@ import java.util.Locale;
 public class MessageItem
 {
   public static String a;
-  public MessageRecord a;
+  public MessageRecord b;
   
   public MessageItem(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
@@ -26,7 +26,7 @@ public class MessageItem
       paramQQAppInterface.append(paramMessageRecord.senderuin);
       QLog.i("MessageItem", 2, paramQQAppInterface.toString());
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.b = paramMessageRecord;
   }
   
   public static String a(CharSequence paramCharSequence)
@@ -80,13 +80,64 @@ public class MessageItem
       QLog.i("MessageItem", 2, localStringBuilder.toString());
     }
     if ((paramString != null) && (paramString.length() > 0)) {
-      jdField_a_of_type_JavaLangString = paramString.toLowerCase(Locale.US);
+      a = paramString.toLowerCase(Locale.US);
     }
   }
   
-  public SpannableString a(String paramString)
+  public CharSequence a(String paramString, int paramInt)
   {
-    int i = a(paramString).toLowerCase(Locale.US).indexOf(jdField_a_of_type_JavaLangString);
+    if (paramString == null) {
+      return "";
+    }
+    paramString = new QQText(b(paramString), 3, 16);
+    a(paramString, paramInt);
+    return paramString;
+  }
+  
+  public String a(long paramLong)
+  {
+    return TimeFormatterUtils.a(paramLong * 1000L, true, "yyyy-MM-dd");
+  }
+  
+  public void a(Spannable paramSpannable, int paramInt)
+  {
+    String str = a(paramSpannable.toString()).toString().toLowerCase(Locale.US);
+    int k = a.length();
+    int m = paramSpannable.length();
+    int i = 0;
+    int j = 0;
+    String[] arrayOfString = (String[])paramSpannable.getSpans(0, m, String.class);
+    if (arrayOfString != null)
+    {
+      m = arrayOfString.length;
+      i = 0;
+      while (j < m)
+      {
+        if ("...".equals(arrayOfString[j])) {
+          i = 3;
+        }
+        j += 1;
+      }
+    }
+    do
+    {
+      j = str.indexOf(a, i);
+      if ((j >= 0) && (j < str.length()))
+      {
+        i = j + k;
+        paramSpannable.setSpan(new ForegroundColorSpan(paramInt), j, i, 33);
+        j = i;
+      }
+      if (j < 0) {
+        break;
+      }
+      i = j;
+    } while (j < str.length());
+  }
+  
+  public SpannableString b(String paramString)
+  {
+    int i = a(paramString).toLowerCase(Locale.US).indexOf(a);
     if (i > 20)
     {
       int j = i - 20;
@@ -114,70 +165,19 @@ public class MessageItem
     return new SpannableString(paramString);
   }
   
-  public CharSequence a(String paramString, int paramInt)
-  {
-    if (paramString == null) {
-      return "";
-    }
-    paramString = new QQText(a(paramString), 3, 16);
-    a(paramString, paramInt);
-    return paramString;
-  }
-  
-  public String a(long paramLong)
-  {
-    return TimeFormatterUtils.a(paramLong * 1000L, true, "yyyy-MM-dd");
-  }
-  
-  public void a(Spannable paramSpannable, int paramInt)
-  {
-    String str = a(paramSpannable.toString()).toString().toLowerCase(Locale.US);
-    int k = jdField_a_of_type_JavaLangString.length();
-    int m = paramSpannable.length();
-    int i = 0;
-    int j = 0;
-    String[] arrayOfString = (String[])paramSpannable.getSpans(0, m, String.class);
-    if (arrayOfString != null)
-    {
-      m = arrayOfString.length;
-      i = 0;
-      while (j < m)
-      {
-        if ("...".equals(arrayOfString[j])) {
-          i = 3;
-        }
-        j += 1;
-      }
-    }
-    do
-    {
-      j = str.indexOf(jdField_a_of_type_JavaLangString, i);
-      if ((j >= 0) && (j < str.length()))
-      {
-        i = j + k;
-        paramSpannable.setSpan(new ForegroundColorSpan(paramInt), j, i, 33);
-        j = i;
-      }
-      if (j < 0) {
-        break;
-      }
-      i = j;
-    } while (j < str.length());
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("uniseq = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+    localStringBuilder.append(this.b.uniseq);
     localStringBuilder.append(", msg = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msg);
+    localStringBuilder.append(this.b.msg);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.MessageItem
  * JD-Core Version:    0.7.0.1
  */

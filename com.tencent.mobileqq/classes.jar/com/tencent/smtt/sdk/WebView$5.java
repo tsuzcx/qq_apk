@@ -1,37 +1,21 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import com.tencent.smtt.sdk.stat.MttLoader;
+import android.graphics.Picture;
 
 class WebView$5
-  implements android.webkit.DownloadListener
+  implements android.webkit.WebView.PictureListener
 {
-  WebView$5(WebView paramWebView, DownloadListener paramDownloadListener) {}
+  WebView$5(WebView paramWebView, WebView.PictureListener paramPictureListener) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public void onNewPicture(android.webkit.WebView paramWebView, Picture paramPicture)
   {
-    DownloadListener localDownloadListener = this.a;
-    if (localDownloadListener == null)
-    {
-      if (WebView.a(this.b) == null) {
-        paramString2 = null;
-      } else {
-        paramString2 = WebView.a(this.b).getApplicationInfo();
-      }
-      if ((paramString2 == null) || (!"com.tencent.mm".equals(paramString2.packageName))) {
-        MttLoader.loadUrl(WebView.a(this.b), paramString1, null, null);
-      }
-    }
-    else
-    {
-      localDownloadListener.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
-    }
+    this.b.a(paramWebView);
+    this.a.onNewPicture(this.b, paramPicture);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.5
  * JD-Core Version:    0.7.0.1
  */

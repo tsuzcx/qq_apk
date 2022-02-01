@@ -5,25 +5,19 @@ import java.util.Date;
 
 public class HotChatNote
 {
-  static SimpleDateFormat a;
-  static SimpleDateFormat b;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  
-  static
-  {
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    jdField_b_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-  }
+  static SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+  static SimpleDateFormat b = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+  public String c;
+  public String d;
+  public long e;
+  public long f;
+  public boolean g;
   
   public static long a(String paramString)
   {
     try
     {
-      l = jdField_a_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
+      l = a.parse(paramString).getTime();
       return l;
     }
     catch (Exception localException)
@@ -32,7 +26,7 @@ public class HotChatNote
       localException.printStackTrace();
       try
       {
-        l = jdField_b_of_type_JavaTextSimpleDateFormat.parse(paramString).getTime();
+        l = b.parse(paramString).getTime();
         return l;
       }
       catch (Exception paramString)
@@ -47,20 +41,20 @@ public class HotChatNote
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("[");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(",");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.HotChatNote
  * JD-Core Version:    0.7.0.1
  */

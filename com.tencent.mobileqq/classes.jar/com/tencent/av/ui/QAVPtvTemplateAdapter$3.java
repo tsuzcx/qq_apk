@@ -14,7 +14,7 @@ class QAVPtvTemplateAdapter$3
     super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
     boolean bool = true;
     paramAccessibilityNodeInfoCompat.setCheckable(true);
-    if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.d) {
+    if (this.a != this.b.j) {
       bool = false;
     }
     paramAccessibilityNodeInfoCompat.setChecked(bool);

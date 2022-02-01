@@ -38,7 +38,7 @@ public class NickNameExtraExtender
         if (paramBoolean1)
         {
           d1 = paramInt;
-          d2 = Math.ceil(BaseChatItemLayout.d * 13.0F);
+          d2 = Math.ceil(BaseChatItemLayout.w * 13.0F);
           Double.isNaN(d1);
           i = (int)(d1 - d2);
         }
@@ -46,7 +46,7 @@ public class NickNameExtraExtender
         if (paramBoolean2)
         {
           d1 = i;
-          d2 = Math.ceil(BaseChatItemLayout.d * 15.0F);
+          d2 = Math.ceil(BaseChatItemLayout.w * 15.0F);
           Double.isNaN(d1);
           paramInt = (int)(d1 - d2);
         }
@@ -65,8 +65,8 @@ public class NickNameExtraExtender
       }
       if (paramBoolean1)
       {
-        paramTextView = this.mContext.getResources().getDrawable(2130847652);
-        paramTextView.setBounds(0, 0, (int)(BaseChatItemLayout.d * 13.0F), (int)(BaseChatItemLayout.d * 13.0F));
+        paramTextView = this.mContext.getResources().getDrawable(2130849312);
+        paramTextView.setBounds(0, 0, (int)(BaseChatItemLayout.w * 13.0F), (int)(BaseChatItemLayout.w * 13.0F));
         paramTextView = new ImageSpan(paramTextView, 0);
         paramColorStateList = new SpannableString(" ");
         paramColorStateList.setSpan(paramTextView, 0, 1, 33);
@@ -89,7 +89,7 @@ public class NickNameExtraExtender
     if (this.a == null)
     {
       this.a = new TextView(this.mContext);
-      this.a.setId(2131364512);
+      this.a.setId(2131430569);
       this.a.setGravity(48);
       this.a.setTextSize(2, 12.0F);
       this.a.setIncludeFontPadding(false);
@@ -115,7 +115,7 @@ public class NickNameExtraExtender
   
   public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
   {
-    paramNickNameLayoutData = a("", this.a, BaseChatItemLayout.f, paramNickNameLayoutData.jdField_b_of_type_Boolean, paramNickNameLayoutData.c, paramNickNameLayoutData.d, paramNickNameLayoutData.jdField_b_of_type_JavaLangCharSequence, paramNickNameLayoutData.jdField_b_of_type_AndroidContentResColorStateList, paramNickNameLayoutData.a);
+    paramNickNameLayoutData = a("", this.a, BaseChatItemLayout.f, paramNickNameLayoutData.d, paramNickNameLayoutData.e, paramNickNameLayoutData.f, paramNickNameLayoutData.g, paramNickNameLayoutData.h, paramNickNameLayoutData.c);
     if (paramNickNameLayoutData != null)
     {
       this.a.setText(paramNickNameLayoutData);
@@ -127,7 +127,7 @@ public class NickNameExtraExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtraExtender
  * JD-Core Version:    0.7.0.1
  */

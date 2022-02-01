@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.dinifly.model.content;
 
 import android.graphics.PointF;
-import android.support.annotation.FloatRange;
-import com.tencent.mobileqq.dinifly.L;
+import androidx.annotation.FloatRange;
 import com.tencent.mobileqq.dinifly.model.CubicCurveData;
+import com.tencent.mobileqq.dinifly.utils.Logger;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +63,7 @@ public class ShapeData
       ((StringBuilder)localObject1).append(paramShapeData1.getCurves().size());
       ((StringBuilder)localObject1).append("\tShape 2: ");
       ((StringBuilder)localObject1).append(paramShapeData2.getCurves().size());
-      L.warn(((StringBuilder)localObject1).toString());
+      Logger.warning(((StringBuilder)localObject1).toString());
     }
     int j = Math.min(paramShapeData1.getCurves().size(), paramShapeData2.getCurves().size());
     if (this.curves.size() < j)
@@ -124,7 +124,7 @@ public class ShapeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.ShapeData
  * JD-Core Version:    0.7.0.1
  */

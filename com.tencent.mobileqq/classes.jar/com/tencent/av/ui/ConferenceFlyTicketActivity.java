@@ -48,46 +48,46 @@ import mqq.manager.TicketManager;
 public class ConferenceFlyTicketActivity
   extends BaseActivity
 {
-  int jdField_a_of_type_Int = -1;
-  Handler jdField_a_of_type_AndroidOsHandler = null;
-  ConferenceFlyTicketActivity.MyDiscussionObserver jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver;
-  ConferenceFlyTicketActivity.OnAfterCreateDiscussionAsyncTask jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnAfterCreateDiscussionAsyncTask;
-  ConferenceFlyTicketActivity.OnGetDiscNameCardTask jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnGetDiscNameCardTask;
-  ConferenceFlyTicketActivity.OnReportHrSelfNickNameTask jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnReportHrSelfNickNameTask;
-  DiscussionHandler jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler;
-  final String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean = false;
-  String jdField_b_of_type_JavaLangString = null;
-  boolean jdField_b_of_type_Boolean = false;
+  final String a;
+  String b = null;
   String c = null;
   String d = null;
   String e = null;
   String f = null;
   String g = null;
   String h = null;
-  String i = null;
+  int i = -1;
   String j = null;
+  String k = null;
+  boolean l = false;
+  ConferenceFlyTicketActivity.MyDiscussionObserver m;
+  DiscussionHandler n;
+  ConferenceFlyTicketActivity.OnAfterCreateDiscussionAsyncTask o;
+  ConferenceFlyTicketActivity.OnReportHrSelfNickNameTask p;
+  ConferenceFlyTicketActivity.OnGetDiscNameCardTask q;
+  Handler r = null;
+  boolean s = false;
   
   public ConferenceFlyTicketActivity()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ConferenceFlyTicketActivity.");
-    localStringBuilder.append(AudioHelper.b());
-    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder.append(AudioHelper.c());
+    this.a = localStringBuilder.toString();
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    long l = MessageCache.a();
+    long l1 = MessageCache.c();
     ArrayList localArrayList = new ArrayList();
     MessageRecord localMessageRecord = MessageRecordFactory.a(-7003);
     String str;
-    if (QAVHrMeeting.a(this.jdField_a_of_type_Int)) {
-      str = this.app.getApp().getString(2131691797);
+    if (QAVHrMeeting.a(this.i)) {
+      str = this.app.getApp().getString(2131888759);
     } else {
-      str = this.app.getApp().getString(2131691796);
+      str = this.app.getApp().getString(2131888758);
     }
-    localMessageRecord.init(paramString2, paramString1, paramString3, str, l, -7003, 3000, l);
+    localMessageRecord.init(paramString2, paramString1, paramString3, str, l1, -7003, 3000, l1);
     localMessageRecord.isread = true;
     localMessageRecord.saveExtInfoToExtStr("troop_msg_nickname", paramString4);
     boolean bool1 = localMessageRecord instanceof MessageForNewGrayTips;
@@ -98,7 +98,7 @@ public class ConferenceFlyTicketActivity
     if (!bool2) {
       localArrayList.add(localMessageRecord);
     }
-    paramString1 = this.jdField_a_of_type_JavaLangString;
+    paramString1 = this.a;
     paramString3 = new StringBuilder();
     paramString3.append("showHRMeetingTip, friendUin[");
     paramString3.append(localMessageRecord.frienduin);
@@ -119,8 +119,13 @@ public class ConferenceFlyTicketActivity
     }
   }
   
+  static boolean a(String paramString)
+  {
+    return (paramString.startsWith("https:")) || (paramString.startsWith("http:"));
+  }
+  
   @TargetApi(9)
-  private boolean a()
+  private boolean d()
   {
     AudioHelper.b("上传SelfNickName");
     Object localObject1 = (TicketManager)this.app.getManager(2);
@@ -133,7 +138,7 @@ public class ConferenceFlyTicketActivity
       if (((String)localObject1).isEmpty()) {
         return false;
       }
-      this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnReportHrSelfNickNameTask = new ConferenceFlyTicketActivity.OnReportHrSelfNickNameTask(this);
+      this.p = new ConferenceFlyTicketActivity.OnReportHrSelfNickNameTask(this);
       ArrayList localArrayList = new ArrayList();
       DownloadParams localDownloadParams = new DownloadParams();
       String str = this.app.getCurrentAccountUin();
@@ -143,10 +148,10 @@ public class ConferenceFlyTicketActivity
       ((StringBuilder)localObject2).append("&uin=");
       ((StringBuilder)localObject2).append(str);
       ((StringBuilder)localObject2).append("&name=");
-      ((StringBuilder)localObject2).append(URLEncoder.encode(this.j));
-      localDownloadParams.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
-      localDownloadParams.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      localObject2 = localDownloadParams.jdField_a_of_type_JavaUtilHashMap;
+      ((StringBuilder)localObject2).append(URLEncoder.encode(this.k));
+      localDownloadParams.a = ((StringBuilder)localObject2).toString();
+      localDownloadParams.b = new HashMap();
+      localObject2 = localDownloadParams.b;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("uin=o");
       localStringBuilder.append(str);
@@ -154,41 +159,36 @@ public class ConferenceFlyTicketActivity
       localStringBuilder.append((String)localObject1);
       ((HashMap)localObject2).put("Cookie", localStringBuilder.toString());
       localArrayList.add(localDownloadParams);
-      this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnReportHrSelfNickNameTask.execute(new ArrayList[] { localArrayList });
+      this.p.execute(new ArrayList[] { localArrayList });
       return true;
     }
     return false;
   }
   
-  static boolean a(String paramString)
-  {
-    return (paramString.startsWith("https:")) || (paramString.startsWith("http:"));
-  }
-  
   void a()
   {
     Object localObject1 = super.getIntent();
-    this.jdField_b_of_type_JavaLangString = ((Intent)localObject1).getStringExtra("confid");
+    this.b = ((Intent)localObject1).getStringExtra("confid");
     this.c = ((Intent)localObject1).getStringExtra("subject");
     this.d = ((Intent)localObject1).getStringExtra("ticket");
     this.e = ((Intent)localObject1).getStringExtra("ticket_f");
     Object localObject2 = ((Intent)localObject1).getStringExtra("stask");
     if (localObject2 != null) {
-      this.jdField_a_of_type_Int = Integer.valueOf((String)localObject2).intValue();
+      this.i = Integer.valueOf((String)localObject2).intValue();
     } else {
-      this.jdField_a_of_type_Int = 0;
+      this.i = 0;
     }
     this.f = ((Intent)localObject1).getStringExtra("confidshort");
     this.g = ((Intent)localObject1).getStringExtra("callphonenum");
     this.h = ((Intent)localObject1).getStringExtra("discid");
-    this.j = ((Intent)localObject1).getStringExtra("user");
-    this.i = ((Intent)localObject1).getStringExtra("businesstype");
+    this.k = ((Intent)localObject1).getStringExtra("user");
+    this.j = ((Intent)localObject1).getStringExtra("businesstype");
     if (QLog.isColorLevel())
     {
-      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject1 = this.a;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("processExtraData, mConfid[");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append("], mSubject[");
       ((StringBuilder)localObject2).append(this.c);
       ((StringBuilder)localObject2).append("], mTicket[");
@@ -202,11 +202,11 @@ public class ConferenceFlyTicketActivity
       ((StringBuilder)localObject2).append("], mDiscID[");
       ((StringBuilder)localObject2).append(this.h);
       ((StringBuilder)localObject2).append("], mStasks[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject2).append("], mHrMeetingNickName[");
-      ((StringBuilder)localObject2).append(this.j);
-      ((StringBuilder)localObject2).append("], mBusinessType[");
       ((StringBuilder)localObject2).append(this.i);
+      ((StringBuilder)localObject2).append("], mHrMeetingNickName[");
+      ((StringBuilder)localObject2).append(this.k);
+      ((StringBuilder)localObject2).append("], mBusinessType[");
+      ((StringBuilder)localObject2).append(this.j);
       ((StringBuilder)localObject2).append("]");
       QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
@@ -214,7 +214,7 @@ public class ConferenceFlyTicketActivity
   
   void a(int paramInt1, int paramInt2)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("showFailMessage, type[");
     localStringBuilder.append(paramInt1);
@@ -235,76 +235,46 @@ public class ConferenceFlyTicketActivity
               if (paramInt2 != 8)
               {
                 if (paramInt1 == 1) {
-                  str = HardCodeUtil.a(2131702571);
+                  str = HardCodeUtil.a(2131900564);
                 } else if (paramInt1 == 0) {
-                  str = HardCodeUtil.a(2131702564);
+                  str = HardCodeUtil.a(2131900557);
                 } else {
                   str = "";
                 }
               }
               else {
-                str = HardCodeUtil.a(2131702570);
+                str = HardCodeUtil.a(2131900563);
               }
             }
             else {
-              str = HardCodeUtil.a(2131702567);
+              str = HardCodeUtil.a(2131900560);
             }
           }
           else {
-            str = HardCodeUtil.a(2131702562);
+            str = HardCodeUtil.a(2131900555);
           }
         }
         else {
-          str = HardCodeUtil.a(2131702560);
+          str = HardCodeUtil.a(2131900553);
         }
       }
       else {
-        str = HardCodeUtil.a(2131702569);
+        str = HardCodeUtil.a(2131900562);
       }
     }
     else {
-      str = HardCodeUtil.a(2131702565);
+      str = HardCodeUtil.a(2131900558);
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ConferenceFlyTicketActivity.1(this, str));
-  }
-  
-  @TargetApi(9)
-  void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnGetDiscNameCardTask = new ConferenceFlyTicketActivity.OnGetDiscNameCardTask(this, paramString);
-    paramString = new ArrayList();
-    DownloadParams localDownloadParams = new DownloadParams();
-    String str = this.app.getCurrentAccountUin();
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_namecard_by_discid?discid=");
-    ((StringBuilder)localObject).append(this.h);
-    localDownloadParams.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-    localDownloadParams.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    localObject = ((TicketManager)this.app.getManager(2)).getSkey(this.app.getAccount());
-    if (localObject != null)
-    {
-      if (((String)localObject).isEmpty()) {
-        return;
-      }
-      HashMap localHashMap = localDownloadParams.jdField_a_of_type_JavaUtilHashMap;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("uin=o");
-      localStringBuilder.append(str);
-      localStringBuilder.append(";skey=");
-      localStringBuilder.append((String)localObject);
-      localHashMap.put("Cookie", localStringBuilder.toString());
-      paramString.add(localDownloadParams);
-      this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$OnGetDiscNameCardTask.execute(new ArrayList[] { paramString });
-    }
+    this.r.post(new ConferenceFlyTicketActivity.1(this, str));
   }
   
   void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.l) {
       return;
     }
-    boolean bool = AVNotifyCenter.d();
-    String str = this.jdField_a_of_type_JavaLangString;
+    boolean bool = AVNotifyCenter.f();
+    String str = this.a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startGAudioOnCreateDiscussion, discID[");
     localStringBuilder.append(paramString1);
@@ -316,28 +286,28 @@ public class ConferenceFlyTicketActivity
     QLog.w(str, 1, localStringBuilder.toString());
     if (bool)
     {
-      QQToast.a(getApplicationContext(), 2131695889, 1).b(getApplicationContext().getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(getApplicationContext(), 2131893650, 1).show(getApplicationContext().getResources().getDimensionPixelSize(2131299920));
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.l = true;
     paramString2 = new Bundle();
     paramString2.putInt("MultiAVType", 1);
     paramString2.putBoolean("disableInvite", true);
-    if ((this.i.equals("video_hr")) || ((this.jdField_a_of_type_Int & 0x4) != 0))
+    if ((this.j.equals("video_hr")) || ((this.i & 0x4) != 0))
     {
       paramString2.putBoolean("isVideo", true);
-      paramString2.putInt("MeetingStasks", this.jdField_a_of_type_Int);
-      str = this.jdField_a_of_type_JavaLangString;
+      paramString2.putInt("MeetingStasks", this.i);
+      str = this.a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("ShowNameCard, mBusinessType[");
-      localStringBuilder.append(this.i);
+      localStringBuilder.append(this.j);
       localStringBuilder.append("], mStasks[");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.i);
       localStringBuilder.append("]");
       QLog.w(str, 1, localStringBuilder.toString());
-      a(paramString1);
+      b(paramString1);
     }
-    AudioHelper.b(HardCodeUtil.a(2131702563));
+    AudioHelper.b(HardCodeUtil.a(2131900556));
     ChatActivityUtils.a(this.app, this.app.getApp(), 3000, paramString1, true, true, null, paramString2);
   }
   
@@ -374,7 +344,7 @@ public class ConferenceFlyTicketActivity
   @TargetApi(9)
   void b()
   {
-    AudioHelper.b(HardCodeUtil.a(2131702561));
+    AudioHelper.b(HardCodeUtil.a(2131900554));
     if (NetworkUtil.isNetSupport(this))
     {
       StringBuilder localStringBuilder;
@@ -382,26 +352,26 @@ public class ConferenceFlyTicketActivity
       {
         if (a(this.e))
         {
-          b(this.e);
+          c(this.e);
           return;
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("https://q.url.cn/s/");
         localStringBuilder.append(this.e);
-        b(localStringBuilder.toString());
+        c(localStringBuilder.toString());
         return;
       }
       if (!TextUtils.isEmpty(this.d))
       {
         if (a(this.d))
         {
-          b(this.d);
+          c(this.d);
           return;
         }
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("https://url.cn/");
         localStringBuilder.append(this.d);
-        b(localStringBuilder.toString());
+        c(localStringBuilder.toString());
         return;
       }
       finish();
@@ -412,29 +382,53 @@ public class ConferenceFlyTicketActivity
     a(0, -160);
   }
   
+  @TargetApi(9)
   void b(String paramString)
   {
-    AudioHelper.b("加入讨论组_delay_获取讨论组签名");
-    ThreadManager.post(new ConferenceFlyTicketActivity.2(this, paramString), 5, null, false);
+    this.q = new ConferenceFlyTicketActivity.OnGetDiscNameCardTask(this, paramString);
+    paramString = new ArrayList();
+    DownloadParams localDownloadParams = new DownloadParams();
+    String str = this.app.getCurrentAccountUin();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("https://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/get_namecard_by_discid?discid=");
+    ((StringBuilder)localObject).append(this.h);
+    localDownloadParams.a = ((StringBuilder)localObject).toString();
+    localDownloadParams.b = new HashMap();
+    localObject = ((TicketManager)this.app.getManager(2)).getSkey(this.app.getAccount());
+    if (localObject != null)
+    {
+      if (((String)localObject).isEmpty()) {
+        return;
+      }
+      HashMap localHashMap = localDownloadParams.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uin=o");
+      localStringBuilder.append(str);
+      localStringBuilder.append(";skey=");
+      localStringBuilder.append((String)localObject);
+      localHashMap.put("Cookie", localStringBuilder.toString());
+      paramString.add(localDownloadParams);
+      this.q.execute(new ArrayList[] { paramString });
+    }
   }
   
   void c()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.s) {
       return;
     }
     Object localObject = (DiscussionManager)this.app.getManager(QQManagerFactory.DISCUSSION_MANAGER);
-    DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject).a(this.h);
+    DiscussionInfo localDiscussionInfo = ((DiscussionManager)localObject).d(this.h);
     if (localDiscussionInfo != null)
     {
-      int k = localDiscussionInfo.mSelfRight;
-      int m = this.jdField_a_of_type_Int;
-      if (k != m)
+      int i1 = localDiscussionInfo.mSelfRight;
+      int i2 = this.i;
+      if (i1 != i2)
       {
-        localDiscussionInfo.mSelfRight = m;
+        localDiscussionInfo.mSelfRight = i2;
         ((DiscussionManager)localObject).a(localDiscussionInfo);
       }
-      localObject = this.jdField_a_of_type_JavaLangString;
+      localObject = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("gotoAIO, DiscussionInfo_");
       localStringBuilder.append(localDiscussionInfo);
@@ -447,9 +441,15 @@ public class ConferenceFlyTicketActivity
         ((Intent)localObject).putExtra("uinname", localDiscussionInfo.discussionName);
         ((Intent)localObject).putExtra("entrance", 8);
         BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
-        this.jdField_b_of_type_Boolean = true;
+        this.s = true;
       }
     }
+  }
+  
+  void c(String paramString)
+  {
+    AudioHelper.b("加入讨论组_delay_获取讨论组签名");
+    ThreadManager.post(new ConferenceFlyTicketActivity.2(this, paramString), 5, null, false);
   }
   
   @Override
@@ -466,27 +466,27 @@ public class ConferenceFlyTicketActivity
     AudioHelper.b("ConferenceFlyTicketActivity.doOnCreate.begin");
     boolean bool = super.doOnCreate(paramBundle);
     a();
-    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler = ((DiscussionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
-    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver = new ConferenceFlyTicketActivity.MyDiscussionObserver(this);
-    addObserver(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver);
-    if (this.i.equals("video_hr"))
+    this.n = ((DiscussionHandler)this.app.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER));
+    this.m = new ConferenceFlyTicketActivity.MyDiscussionObserver(this);
+    addObserver(this.m);
+    if (this.j.equals("video_hr"))
     {
-      if (!a()) {
+      if (!d()) {
         return false;
       }
     }
     else {
       b();
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
+    this.r = new Handler();
     AudioHelper.b("ConferenceFlyTicketActivity.doOnCreate.end");
     return bool;
   }
   
   protected void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity$MyDiscussionObserver);
-    this.jdField_a_of_type_AndroidOsHandler = null;
+    removeObserver(this.m);
+    this.r = null;
     super.doOnDestroy();
   }
   

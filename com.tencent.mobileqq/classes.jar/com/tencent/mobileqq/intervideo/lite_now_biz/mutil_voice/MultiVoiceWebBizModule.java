@@ -27,30 +27,25 @@ public class MultiVoiceWebBizModule
   extends NowCustomWebModule
   implements OnGetRoomExtInfoListener
 {
-  private Observer<AudioChangeEvent> jdField_a_of_type_AndroidxLifecycleObserver = new MultiVoiceWebBizModule.1(this);
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Observer<MultiVoicePageEvent> b = new MultiVoiceWebBizModule.2(this);
+  private Map<String, String> b = new HashMap();
+  private Observer<AudioChangeEvent> n = new MultiVoiceWebBizModule.1(this);
+  private Observer<MultiVoicePageEvent> o = new MultiVoiceWebBizModule.2(this);
   
   public MultiVoiceWebBizModule()
   {
-    c();
+    m();
   }
   
-  private void h()
+  private void t()
   {
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().observe(AudioChangeEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().observe(MultiVoicePageEvent.class, this.b);
+    this.l.getModuleEvent().observe(AudioChangeEvent.class, this.n);
+    this.l.getModuleEvent().observe(MultiVoicePageEvent.class, this.o);
   }
   
-  private void i()
+  private void u()
   {
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().removeObserver(AudioChangeEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().removeObserver(MultiVoicePageEvent.class, this.b);
-  }
-  
-  public RoomExtInfo a()
-  {
-    return null;
+    this.l.getModuleEvent().removeObserver(AudioChangeEvent.class, this.n);
+    this.l.getModuleEvent().removeObserver(MultiVoicePageEvent.class, this.o);
   }
   
   public String a()
@@ -62,7 +57,7 @@ public class MultiVoiceWebBizModule
   {
     String str = Build.VERSION.RELEASE;
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    if ((!StringUtil.a(paramString)) && (paramString.contains("NowSDK/"))) {
+    if ((!StringUtil.isEmpty(paramString)) && (paramString.contains("NowSDK/"))) {
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -77,58 +72,19 @@ public class MultiVoiceWebBizModule
     return localStringBuilder.toString();
   }
   
-  protected void a()
+  public RoomExtInfo c()
   {
-    super.a();
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new SsoJavascriptInterface(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowQQApiJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new MultiVoiceAppJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowAppJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowUIJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.roomBizContext));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowQbizApiJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
-    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowEventJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.jdField_a_of_type_JavaUtilMap));
-  }
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "https://now.qq.com/qq/qun-jiaoyou/index.html";
-  }
-  
-  protected void b()
-  {
-    MultiVoiceWebCookieManager.a().a(this.jdField_a_of_type_JavaLangString);
-    MultiVoiceWebCookieManager.a().a("https://yutang.qq.com/");
-    MultiVoiceWebCookieManager.a().a("https://ilive.qq.com/");
-    MultiVoiceWebCookieManager.a().a("https://now.qq.com/");
-    MultiVoiceWebCookieManager.a().a("https://fastest.now.qq.com/");
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
-  }
-  
-  public String c()
-  {
-    return "https://fastest.now.qq.com/qq/qun-jiaoyou/index.html";
-  }
-  
-  protected void c()
-  {
-    MultiVoiceWebCookieManager.a().b("https://now.qq.com/");
-    MultiVoiceWebCookieManager.a().b("https://fastest.now.qq.com/");
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
+    return null;
   }
   
   public String d()
   {
-    return null;
+    return "https://now.qq.com/qq/qun-jiaoyou/index.html";
   }
   
   public String e()
   {
-    return null;
+    return "https://fastest.now.qq.com/qq/qun-jiaoyou/index.html";
   }
   
   public String f()
@@ -141,21 +97,65 @@ public class MultiVoiceWebBizModule
     return null;
   }
   
+  public String h()
+  {
+    return null;
+  }
+  
+  public String i()
+  {
+    return null;
+  }
+  
+  protected void j()
+  {
+    super.j();
+    this.k.registerJsModule(new SsoJavascriptInterface(this.f, this.context, this.l));
+    this.k.registerJsModule(new NowQQApiJs(this.f, this.context, this.l));
+    this.k.registerJsModule(new MultiVoiceAppJs(this.f, this.context, this.l));
+    this.k.registerJsModule(new NowAppJs(this.f, this.context, this.l));
+    this.k.registerJsModule(new NowUIJs(this.f, this.context, this.l, this.roomBizContext));
+    this.k.registerJsModule(new NowQbizApiJs(this.f, this.context, this.l));
+    this.k.registerJsModule(new NowEventJs(this.f, this.context, this.l, this.b));
+  }
+  
+  protected boolean k()
+  {
+    return false;
+  }
+  
+  protected void l()
+  {
+    MultiVoiceWebCookieManager.a().a(this.h);
+    MultiVoiceWebCookieManager.a().a("https://yutang.qq.com/");
+    MultiVoiceWebCookieManager.a().a("https://ilive.qq.com/");
+    MultiVoiceWebCookieManager.a().a("https://now.qq.com/");
+    MultiVoiceWebCookieManager.a().a("https://fastest.now.qq.com/");
+    this.l.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
+  }
+  
+  protected void m()
+  {
+    MultiVoiceWebCookieManager.a().b("https://now.qq.com/");
+    MultiVoiceWebCookieManager.a().b("https://fastest.now.qq.com/");
+    this.l.callJsFunctionByNative("__WEBVIEW_RELOADCOOKIES", null, null);
+  }
+  
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    h();
+    t();
   }
   
   public void onExitRoom(boolean paramBoolean)
   {
     super.onExitRoom(paramBoolean);
-    i();
+    u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceWebBizModule
  * JD-Core Version:    0.7.0.1
  */

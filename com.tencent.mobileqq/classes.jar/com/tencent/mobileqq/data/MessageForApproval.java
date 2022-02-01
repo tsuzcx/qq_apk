@@ -82,8 +82,8 @@ public class MessageForApproval
       {
         str = ((String)localObject2).substring(3);
         localObject2 = str;
-        if (HardCodeUtil.a(2131706644).equalsIgnoreCase(str)) {
-          localObject2 = HardCodeUtil.a(2131706604);
+        if (HardCodeUtil.a(2131904495).equalsIgnoreCase(str)) {
+          localObject2 = HardCodeUtil.a(2131904455);
         }
         localStringBuilder.append((String)localObject2);
       }
@@ -111,7 +111,7 @@ public class MessageForApproval
         }
       }
       localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706623));
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904474));
       ((StringBuilder)localObject1).append(localStringBuilder.toString());
       return ((StringBuilder)localObject1).toString();
     }
@@ -119,12 +119,12 @@ public class MessageForApproval
   
   public String getSummaryMsg()
   {
-    return HardCodeUtil.a(2131706639);
+    return HardCodeUtil.a(2131904490);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForApproval
  * JD-Core Version:    0.7.0.1
  */

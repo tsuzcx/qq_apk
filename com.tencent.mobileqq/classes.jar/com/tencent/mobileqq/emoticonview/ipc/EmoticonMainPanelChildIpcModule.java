@@ -81,7 +81,7 @@ public class EmoticonMainPanelChildIpcModule
     } else if ("emojilistener_package_progress".equals(paramAppRuntime)) {
       EmojiListenerManager.a().notifyPackageProgress((EmoticonPackage)paramBundle.getSerializable("paramter_one"), paramBundle.getInt("paramter_two"), paramBundle.getInt("paramter_three"));
     } else if ("emojilistener_destory".equals(paramAppRuntime)) {
-      EmojiListenerManager.a().a();
+      EmojiListenerManager.a().b();
     }
     return EIPCResult.createSuccessResult(null);
   }
@@ -97,7 +97,7 @@ public class EmoticonMainPanelChildIpcModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.EmoticonMainPanelChildIpcModule
  * JD-Core Version:    0.7.0.1
  */

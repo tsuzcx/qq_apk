@@ -13,42 +13,42 @@ import java.util.List;
 public class SelectCityAdapter
   extends BaseAdapter
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<CityData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<CityData> a = new ArrayList();
+  private Context b;
   
   public SelectCityAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
   }
   
   private void a(int paramInt, SelectCityAdapter.ViewHolder paramViewHolder)
   {
     String str;
-    if (((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2) {
-      str = ((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).b;
-    } else if (((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 1) {
-      str = ((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString;
+    if (((CityData)this.a.get(paramInt)).a == 2) {
+      str = ((CityData)this.a.get(paramInt)).c;
+    } else if (((CityData)this.a.get(paramInt)).a == 1) {
+      str = ((CityData)this.a.get(paramInt)).b;
     } else {
       str = "";
     }
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    paramViewHolder.a.setText(str);
   }
   
   public void a(List<CityData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.a.clear();
+    this.a.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.a.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.a.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -58,23 +58,23 @@ public class SelectCityAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramView != null) && (((SelectCityAdapter.ViewHolder)paramView.getTag()).jdField_a_of_type_Int == ((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int))
+    if ((paramView != null) && (((SelectCityAdapter.ViewHolder)paramView.getTag()).b == ((CityData)this.a.get(paramInt)).a))
     {
       paramViewGroup = (SelectCityAdapter.ViewHolder)paramView.getTag();
     }
     else
     {
       SelectCityAdapter.ViewHolder localViewHolder = new SelectCityAdapter.ViewHolder(this, null);
-      localViewHolder.jdField_a_of_type_Int = ((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int;
-      if (((CityData)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == 2)
+      localViewHolder.b = ((CityData)this.a.get(paramInt)).a;
+      if (((CityData)this.a.get(paramInt)).a == 2)
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560275, paramViewGroup, false);
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364647));
+        paramView = LayoutInflater.from(this.b).inflate(2131626322, paramViewGroup, false);
+        localViewHolder.a = ((TextView)paramView.findViewById(2131430734));
       }
       else
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560278, paramViewGroup, false);
-        localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368755));
+        paramView = LayoutInflater.from(this.b).inflate(2131626325, paramViewGroup, false);
+        localViewHolder.a = ((TextView)paramView.findViewById(2131435672));
       }
       paramView.setTag(localViewHolder);
       paramViewGroup = localViewHolder;
@@ -85,7 +85,7 @@ public class SelectCityAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.SelectCityAdapter
  * JD-Core Version:    0.7.0.1
  */

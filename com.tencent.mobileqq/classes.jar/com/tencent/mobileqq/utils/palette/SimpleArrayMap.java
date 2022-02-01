@@ -6,15 +6,15 @@ import java.util.Map;
 
 public class SimpleArrayMap<K, V>
 {
-  static int jdField_a_of_type_Int;
   @Nullable
-  static Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  static int jdField_b_of_type_Int;
+  static Object[] a;
+  static int b;
   @Nullable
-  static Object[] jdField_b_of_type_ArrayOfJavaLangObject;
-  int[] jdField_a_of_type_ArrayOfInt = ContainerHelpers.jdField_a_of_type_ArrayOfInt;
-  int jdField_c_of_type_Int = 0;
-  Object[] jdField_c_of_type_ArrayOfJavaLangObject = ContainerHelpers.jdField_a_of_type_ArrayOfJavaLangObject;
+  static Object[] c;
+  static int d;
+  int[] e = ContainerHelpers.a;
+  Object[] f = ContainerHelpers.c;
+  int g = 0;
   
   private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
@@ -31,58 +31,19 @@ public class SimpleArrayMap<K, V>
     throw new ConcurrentModificationException();
   }
   
-  private void a(int paramInt)
-  {
-    if (paramInt == 8) {
-      try
-      {
-        if (jdField_b_of_type_ArrayOfJavaLangObject != null)
-        {
-          Object[] arrayOfObject1 = jdField_b_of_type_ArrayOfJavaLangObject;
-          this.jdField_c_of_type_ArrayOfJavaLangObject = arrayOfObject1;
-          jdField_b_of_type_ArrayOfJavaLangObject = (Object[])arrayOfObject1[0];
-          this.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject1[1]);
-          arrayOfObject1[1] = null;
-          arrayOfObject1[0] = null;
-          jdField_b_of_type_Int -= 1;
-          return;
-        }
-      }
-      finally {}
-    } else if (paramInt == 4) {
-      try
-      {
-        if (jdField_a_of_type_ArrayOfJavaLangObject != null)
-        {
-          Object[] arrayOfObject2 = jdField_a_of_type_ArrayOfJavaLangObject;
-          this.jdField_c_of_type_ArrayOfJavaLangObject = arrayOfObject2;
-          jdField_a_of_type_ArrayOfJavaLangObject = (Object[])arrayOfObject2[0];
-          this.jdField_a_of_type_ArrayOfInt = ((int[])arrayOfObject2[1]);
-          arrayOfObject2[1] = null;
-          arrayOfObject2[0] = null;
-          jdField_a_of_type_Int -= 1;
-          return;
-        }
-      }
-      finally {}
-    }
-    this.jdField_a_of_type_ArrayOfInt = new int[paramInt];
-    this.jdField_c_of_type_ArrayOfJavaLangObject = new Object[paramInt << 1];
-  }
-  
   private static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
   {
     if (paramArrayOfInt.length == 8) {
       try
       {
-        if (jdField_b_of_type_Int < 10)
+        if (d < 10)
         {
-          paramArrayOfObject[0] = jdField_b_of_type_ArrayOfJavaLangObject;
+          paramArrayOfObject[0] = c;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt = (paramInt << 1) - 1;
           break label118;
-          jdField_b_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-          jdField_b_of_type_Int += 1;
+          c = paramArrayOfObject;
+          d += 1;
         }
         return;
       }
@@ -92,14 +53,14 @@ public class SimpleArrayMap<K, V>
     {
       try
       {
-        if (jdField_a_of_type_Int < 10)
+        if (b < 10)
         {
-          paramArrayOfObject[0] = jdField_a_of_type_ArrayOfJavaLangObject;
+          paramArrayOfObject[0] = a;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt = (paramInt << 1) - 1;
           break label134;
-          jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-          jdField_a_of_type_Int += 1;
+          a = paramArrayOfObject;
+          b += 1;
         }
         return;
       }
@@ -121,31 +82,111 @@ public class SimpleArrayMap<K, V>
     }
   }
   
+  private boolean a(Map<?, ?> paramMap)
+  {
+    if (c() != paramMap.size()) {
+      return false;
+    }
+    int i = 0;
+    try
+    {
+      while (i < this.g)
+      {
+        Object localObject1 = a(i);
+        Object localObject2 = b(i);
+        Object localObject3 = paramMap.get(localObject1);
+        if (localObject2 == null)
+        {
+          if (localObject3 != null) {
+            break label98;
+          }
+          if (!paramMap.containsKey(localObject1)) {
+            return false;
+          }
+        }
+        else
+        {
+          boolean bool = localObject2.equals(localObject3);
+          if (!bool) {
+            return false;
+          }
+        }
+        i += 1;
+      }
+      return true;
+    }
+    catch (NullPointerException|ClassCastException paramMap)
+    {
+      return false;
+    }
+    label98:
+    return false;
+  }
+  
+  private void c(int paramInt)
+  {
+    if (paramInt == 8) {
+      try
+      {
+        if (c != null)
+        {
+          Object[] arrayOfObject1 = c;
+          this.f = arrayOfObject1;
+          c = (Object[])arrayOfObject1[0];
+          this.e = ((int[])arrayOfObject1[1]);
+          arrayOfObject1[1] = null;
+          arrayOfObject1[0] = null;
+          d -= 1;
+          return;
+        }
+      }
+      finally {}
+    } else if (paramInt == 4) {
+      try
+      {
+        if (a != null)
+        {
+          Object[] arrayOfObject2 = a;
+          this.f = arrayOfObject2;
+          a = (Object[])arrayOfObject2[0];
+          this.e = ((int[])arrayOfObject2[1]);
+          arrayOfObject2[1] = null;
+          arrayOfObject2[0] = null;
+          b -= 1;
+          return;
+        }
+      }
+      finally {}
+    }
+    this.e = new int[paramInt];
+    this.f = new Object[paramInt << 1];
+  }
+  
   int a()
   {
-    int j = this.jdField_c_of_type_Int;
+    int j = this.g;
     if (j == 0) {
       return -1;
     }
-    int k = a(this.jdField_a_of_type_ArrayOfInt, j, 0);
+    int k = a(this.e, j, 0);
     if (k < 0) {
       return k;
     }
-    if (this.jdField_c_of_type_ArrayOfJavaLangObject[(k << 1)] == null) {
+    if (this.f[(k << 1)] == null) {
       return k;
     }
     int i = k + 1;
-    while ((i < j) && (this.jdField_a_of_type_ArrayOfInt[i] == 0))
+    while ((i < j) && (this.e[i] == 0))
     {
-      if (this.jdField_c_of_type_ArrayOfJavaLangObject[(i << 1)] == null) {
+      if (this.f[(i << 1)] == null) {
         return i;
       }
       i += 1;
     }
     j = k - 1;
-    while ((j >= 0) && (this.jdField_a_of_type_ArrayOfInt[j] == 0))
+    while ((j >= 0) && (this.e[j] == 0))
     {
-      if (this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)] == null) {
+      if (this.f[(j << 1)] == null) {
         return j;
       }
       j -= 1;
@@ -153,39 +194,31 @@ public class SimpleArrayMap<K, V>
     return i ^ 0xFFFFFFFF;
   }
   
-  public int a(@Nullable Object paramObject)
-  {
-    if (paramObject == null) {
-      return a();
-    }
-    return a(paramObject, paramObject.hashCode());
-  }
-  
   int a(Object paramObject, int paramInt)
   {
-    int j = this.jdField_c_of_type_Int;
+    int j = this.g;
     if (j == 0) {
       return -1;
     }
-    int k = a(this.jdField_a_of_type_ArrayOfInt, j, paramInt);
+    int k = a(this.e, j, paramInt);
     if (k < 0) {
       return k;
     }
-    if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(k << 1)])) {
+    if (paramObject.equals(this.f[(k << 1)])) {
       return k;
     }
     int i = k + 1;
-    while ((i < j) && (this.jdField_a_of_type_ArrayOfInt[i] == paramInt))
+    while ((i < j) && (this.e[i] == paramInt))
     {
-      if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(i << 1)])) {
+      if (paramObject.equals(this.f[(i << 1)])) {
         return i;
       }
       i += 1;
     }
     j = k - 1;
-    while ((j >= 0) && (this.jdField_a_of_type_ArrayOfInt[j] == paramInt))
+    while ((j >= 0) && (this.e[j] == paramInt))
     {
-      if (paramObject.equals(this.jdField_c_of_type_ArrayOfJavaLangObject[(j << 1)])) {
+      if (paramObject.equals(this.f[(j << 1)])) {
         return j;
       }
       j -= 1;
@@ -195,48 +228,40 @@ public class SimpleArrayMap<K, V>
   
   public K a(int paramInt)
   {
-    return this.jdField_c_of_type_ArrayOfJavaLangObject[(paramInt << 1)];
-  }
-  
-  @Nullable
-  public V a(Object paramObject)
-  {
-    return a(paramObject, null);
+    return this.f[(paramInt << 1)];
   }
   
   public V a(Object paramObject, V paramV)
   {
-    int i = a(paramObject);
+    int i = b(paramObject);
     if (i >= 0) {
-      paramV = this.jdField_c_of_type_ArrayOfJavaLangObject[((i << 1) + 1)];
+      paramV = this.f[((i << 1) + 1)];
     }
     return paramV;
   }
   
-  public boolean a()
-  {
-    return this.jdField_c_of_type_Int <= 0;
-  }
-  
   public boolean a(@Nullable Object paramObject)
   {
-    return a(paramObject) >= 0;
+    return b(paramObject) >= 0;
   }
   
-  public int b()
+  public int b(@Nullable Object paramObject)
   {
-    return this.jdField_c_of_type_Int;
+    if (paramObject == null) {
+      return a();
+    }
+    return a(paramObject, paramObject.hashCode());
   }
   
   public V b(int paramInt)
   {
-    return this.jdField_c_of_type_ArrayOfJavaLangObject[((paramInt << 1) + 1)];
+    return this.f[((paramInt << 1) + 1)];
   }
   
   @Nullable
   public V b(K paramK, V paramV)
   {
-    int k = this.jdField_c_of_type_Int;
+    int k = this.g;
     int j;
     if (paramK == null)
     {
@@ -252,13 +277,13 @@ public class SimpleArrayMap<K, V>
     if (i >= 0)
     {
       i = (i << 1) + 1;
-      paramK = this.jdField_c_of_type_ArrayOfJavaLangObject;
+      paramK = this.f;
       localObject = paramK[i];
       paramK[i] = paramV;
       return localObject;
     }
     int m = i ^ 0xFFFFFFFF;
-    if (k >= this.jdField_a_of_type_ArrayOfInt.length)
+    if (k >= this.e.length)
     {
       i = 4;
       if (k >= 8) {
@@ -266,16 +291,16 @@ public class SimpleArrayMap<K, V>
       } else if (k >= 4) {
         i = 8;
       }
-      localObject = this.jdField_a_of_type_ArrayOfInt;
-      Object[] arrayOfObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-      a(i);
-      if (k == this.jdField_c_of_type_Int)
+      localObject = this.e;
+      Object[] arrayOfObject = this.f;
+      c(i);
+      if (k == this.g)
       {
-        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        int[] arrayOfInt = this.e;
         if (arrayOfInt.length > 0)
         {
           System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
-          System.arraycopy(arrayOfObject, 0, this.jdField_c_of_type_ArrayOfJavaLangObject, 0, arrayOfObject.length);
+          System.arraycopy(arrayOfObject, 0, this.f, 0, arrayOfObject.length);
         }
         a((int[])localObject, arrayOfObject, k);
       }
@@ -286,28 +311,44 @@ public class SimpleArrayMap<K, V>
     }
     if (m < k)
     {
-      localObject = this.jdField_a_of_type_ArrayOfInt;
+      localObject = this.e;
       i = m + 1;
       System.arraycopy(localObject, m, localObject, i, k - m);
-      localObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-      System.arraycopy(localObject, m << 1, localObject, i << 1, this.jdField_c_of_type_Int - m << 1);
+      localObject = this.f;
+      System.arraycopy(localObject, m << 1, localObject, i << 1, this.g - m << 1);
     }
-    int i = this.jdField_c_of_type_Int;
+    int i = this.g;
     if (k == i)
     {
-      localObject = this.jdField_a_of_type_ArrayOfInt;
+      localObject = this.e;
       if (m < localObject.length)
       {
         localObject[m] = j;
-        localObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
+        localObject = this.f;
         j = m << 1;
         localObject[j] = paramK;
         localObject[(j + 1)] = paramV;
-        this.jdField_c_of_type_Int = (i + 1);
+        this.g = (i + 1);
         return null;
       }
     }
     throw new ConcurrentModificationException();
+  }
+  
+  public boolean b()
+  {
+    return this.g <= 0;
+  }
+  
+  public int c()
+  {
+    return this.g;
+  }
+  
+  @Nullable
+  public V c(Object paramObject)
+  {
+    return a(paramObject, null);
   }
   
   public boolean equals(Object paramObject)
@@ -319,22 +360,22 @@ public class SimpleArrayMap<K, V>
     if ((paramObject instanceof SimpleArrayMap))
     {
       paramObject = (SimpleArrayMap)paramObject;
-      if (b() != paramObject.b()) {
+      if (c() != paramObject.c()) {
         return false;
       }
       i = 0;
     }
     try
     {
-      while (i < this.jdField_c_of_type_Int)
+      while (i < this.g)
       {
-        localObject1 = a(i);
-        localObject2 = b(i);
-        localObject3 = paramObject.a(localObject1);
+        Object localObject1 = a(i);
+        Object localObject2 = b(i);
+        Object localObject3 = paramObject.c(localObject1);
         if (localObject2 == null)
         {
           if (localObject3 != null) {
-            break label223;
+            break label129;
           }
           if (!paramObject.a(localObject1)) {
             return false;
@@ -342,50 +383,7 @@ public class SimpleArrayMap<K, V>
         }
         else
         {
-          bool = localObject2.equals(localObject3);
-          if (!bool) {
-            return false;
-          }
-        }
-        i += 1;
-      }
-      return true;
-    }
-    catch (NullPointerException|ClassCastException paramObject)
-    {
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      boolean bool;
-      return false;
-    }
-    if ((paramObject instanceof Map))
-    {
-      paramObject = (Map)paramObject;
-      if (b() != paramObject.size()) {
-        return false;
-      }
-      i = 0;
-    }
-    try
-    {
-      while (i < this.jdField_c_of_type_Int)
-      {
-        localObject1 = a(i);
-        localObject2 = b(i);
-        localObject3 = paramObject.get(localObject1);
-        if (localObject2 == null)
-        {
-          if (localObject3 != null) {
-            break label225;
-          }
-          if (!paramObject.containsKey(localObject1)) {
-            return false;
-          }
-        }
-        else
-        {
-          bool = localObject2.equals(localObject3);
+          boolean bool = localObject2.equals(localObject3);
           if (!bool) {
             return false;
           }
@@ -398,18 +396,19 @@ public class SimpleArrayMap<K, V>
     {
       return false;
     }
+    if ((paramObject instanceof Map)) {
+      return a((Map)paramObject);
+    }
     return false;
-    label223:
-    return false;
-    label225:
+    label129:
     return false;
   }
   
   public int hashCode()
   {
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    Object[] arrayOfObject = this.jdField_c_of_type_ArrayOfJavaLangObject;
-    int n = this.jdField_c_of_type_Int;
+    int[] arrayOfInt = this.e;
+    Object[] arrayOfObject = this.f;
+    int n = this.g;
     int j = 0;
     int k = 0;
     int i = 1;
@@ -432,13 +431,13 @@ public class SimpleArrayMap<K, V>
   
   public String toString()
   {
-    if (a()) {
+    if (b()) {
       return "{}";
     }
-    StringBuilder localStringBuilder = new StringBuilder(this.jdField_c_of_type_Int * 28);
+    StringBuilder localStringBuilder = new StringBuilder(this.g * 28);
     localStringBuilder.append('{');
     int i = 0;
-    while (i < this.jdField_c_of_type_Int)
+    while (i < this.g)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
@@ -464,7 +463,7 @@ public class SimpleArrayMap<K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.SimpleArrayMap
  * JD-Core Version:    0.7.0.1
  */

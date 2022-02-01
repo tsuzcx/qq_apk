@@ -57,7 +57,7 @@ public class ImageLoaderImpl
       localURLDrawableOptions.mUseAutoScaleParams = false;
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
       if (paramBoolean) {
-        paramString.setDecodeHandler(URLDrawableDecodeHandler.a);
+        paramString.setDecodeHandler(URLDrawableDecodeHandler.b);
       }
       if (paramURLDrawableListener != null)
       {
@@ -95,7 +95,7 @@ public class ImageLoaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.utils.impl.ImageLoaderImpl
  * JD-Core Version:    0.7.0.1
  */

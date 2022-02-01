@@ -27,10 +27,10 @@ import java.util.Set;
 public class AddGroupVideoRequest
   extends NetworkRequest<AddGroupVideoResponse>
 {
-  private final HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final List<Long> jdField_a_of_type_JavaUtilList;
-  private final List<Integer> b;
-  private final int c;
+  private final HashMap<String, List<String>> e = new HashMap();
+  private final List<Long> f;
+  private final List<Integer> g;
+  private final int h;
   
   public AddGroupVideoRequest(String paramString, List<String> paramList, List<Long> paramList1, List<Integer> paramList2, int paramInt)
   {
@@ -38,10 +38,10 @@ public class AddGroupVideoRequest
     {
       if ((paramList != null) && (!paramList.isEmpty()))
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
-        this.jdField_a_of_type_JavaUtilList = paramList1;
-        this.b = paramList2;
-        this.c = paramInt;
+        this.e.put(paramString, Collections.unmodifiableList(paramList));
+        this.f = paramList1;
+        this.g = paramList2;
+        this.h = paramInt;
         return;
       }
       throw new IllegalArgumentException("vidList is empty");
@@ -49,7 +49,12 @@ public class AddGroupVideoRequest
     throw new IllegalArgumentException("union_id should not be empty");
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return StoryApi.a("StoryGroupSvc.add_video");
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_group.RspAddGroupVideo localRspAddGroupVideo = new qqstory_group.RspAddGroupVideo();
     try
@@ -63,20 +68,15 @@ public class AddGroupVideoRequest
     return new AddGroupVideoResponse(localRspAddGroupVideo);
   }
   
-  public String a()
-  {
-    return StoryApi.a("StoryGroupSvc.add_video");
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_group.ReqAddGroupVideo localReqAddGroupVideo = new qqstory_group.ReqAddGroupVideo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    Iterator localIterator = this.e.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
       qqstory_group.GroupVideo localGroupVideo = new qqstory_group.GroupVideo();
-      localGroupVideo.source.set(this.c);
+      localGroupVideo.source.set(this.h);
       localGroupVideo.union_id.set(ByteStringMicro.copyFromUtf8((String)((Map.Entry)localObject).getKey()));
       int i = 0;
       localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
@@ -85,8 +85,8 @@ public class AddGroupVideoRequest
         String str = (String)((Iterator)localObject).next();
         qqstory_group.VideoObject localVideoObject = new qqstory_group.VideoObject();
         localVideoObject.vid.set(ByteStringMicro.copyFromUtf8(str));
-        localVideoObject.ts.set(((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue() / 1000L);
-        localVideoObject.time_zone.set(((Integer)this.b.get(i)).intValue());
+        localVideoObject.ts.set(((Long)this.f.get(i)).longValue() / 1000L);
+        localVideoObject.time_zone.set(((Integer)this.g.get(i)).intValue());
         localGroupVideo.video_obj_list.add(localVideoObject);
         i += 1;
       }
@@ -97,7 +97,7 @@ public class AddGroupVideoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.AddGroupVideoRequest
  * JD-Core Version:    0.7.0.1
  */

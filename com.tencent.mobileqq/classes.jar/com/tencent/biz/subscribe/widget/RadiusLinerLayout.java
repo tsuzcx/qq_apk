@@ -34,6 +34,12 @@ public class RadiusLinerLayout
     setWillNotDraw(false);
   }
   
+  private void setRadius(int paramInt)
+  {
+    this.b = paramInt;
+    invalidate();
+  }
+  
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
@@ -41,7 +47,7 @@ public class RadiusLinerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.RadiusLinerLayout
  * JD-Core Version:    0.7.0.1
  */

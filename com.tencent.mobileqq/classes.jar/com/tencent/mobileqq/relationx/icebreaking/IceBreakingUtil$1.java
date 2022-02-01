@@ -10,36 +10,41 @@ final class IceBreakingUtil$1
   
   public void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if ((str != null) && (str.length() > 4))
     {
-      if (!PortalUtils.a(this.jdField_a_of_type_JavaLangString)) {
+      if (!PortalUtils.b(this.a)) {
         return;
       }
-      if (IceBreakingUtil.b(this.jdField_a_of_type_Int))
+      if (IceBreakingUtil.b(this.b))
       {
-        IceBreakingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+        IceBreakingUtil.a(this.c, this.a, this.d);
         return;
       }
-      if (IceBreakingUtil.c(this.jdField_a_of_type_Int))
+      if (IceBreakingUtil.c(this.b))
       {
-        IceBreakingUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        IceBreakingUtil.b(this.c, this.a);
         return;
       }
-      if (IceBreakingUtil.d(this.jdField_a_of_type_Int))
+      if (IceBreakingUtil.d(this.b))
       {
-        IceBreakingUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        IceBreakingUtil.c(this.c, this.a);
         return;
       }
-      if (IceBreakingUtil.e(this.jdField_a_of_type_Int)) {
-        IceBreakingUtil.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+      if (IceBreakingUtil.e(this.b))
+      {
+        IceBreakingUtil.d(this.c, this.a);
+        return;
+      }
+      if (IceBreakingUtil.f(this.b)) {
+        IceBreakingUtil.e(this.c, this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.IceBreakingUtil.1
  * JD-Core Version:    0.7.0.1
  */

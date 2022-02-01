@@ -9,37 +9,39 @@ public abstract class InputStreamAdapter
   
   public InputStream a()
   {
-    a();
+    c();
     this.a = b();
     return this.a;
   }
   
+  public abstract InputStream b();
+  
   /* Error */
-  public void a()
+  public void c()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 21	com/tencent/tkd/topicsdk/imagecompress/InputStreamAdapter:a	Ljava/io/InputStream;
+    //   1: getfield 22	com/tencent/tkd/topicsdk/imagecompress/InputStreamAdapter:a	Ljava/io/InputStream;
     //   4: astore_1
     //   5: aload_1
     //   6: ifnull +37 -> 43
     //   9: aload_1
-    //   10: invokevirtual 28	java/io/InputStream:close	()V
+    //   10: invokevirtual 29	java/io/InputStream:close	()V
     //   13: aload_0
     //   14: aconst_null
-    //   15: putfield 21	com/tencent/tkd/topicsdk/imagecompress/InputStreamAdapter:a	Ljava/io/InputStream;
+    //   15: putfield 22	com/tencent/tkd/topicsdk/imagecompress/InputStreamAdapter:a	Ljava/io/InputStream;
     //   18: return
     //   19: astore_1
     //   20: goto +16 -> 36
     //   23: astore_1
-    //   24: ldc 30
+    //   24: ldc 31
     //   26: aload_1
-    //   27: invokevirtual 34	java/io/IOException:toString	()Ljava/lang/String;
-    //   30: invokestatic 40	com/tencent/tkd/topicsdk/framework/TLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokevirtual 35	java/io/IOException:toString	()Ljava/lang/String;
+    //   30: invokestatic 41	com/tencent/tkd/topicsdk/framework/TLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: goto -20 -> 13
     //   36: aload_0
     //   37: aconst_null
-    //   38: putfield 21	com/tencent/tkd/topicsdk/imagecompress/InputStreamAdapter:a	Ljava/io/InputStream;
+    //   38: putfield 22	com/tencent/tkd/topicsdk/imagecompress/InputStreamAdapter:a	Ljava/io/InputStream;
     //   41: aload_1
     //   42: athrow
     //   43: return
@@ -56,20 +58,18 @@ public abstract class InputStreamAdapter
     //   9	13	23	java/io/IOException
   }
   
-  public boolean a()
+  public boolean d()
   {
-    String str = a();
+    String str = e();
     if (str == null) {
       return false;
     }
     return str.toLowerCase().endsWith("gif");
   }
-  
-  public abstract InputStream b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.InputStreamAdapter
  * JD-Core Version:    0.7.0.1
  */

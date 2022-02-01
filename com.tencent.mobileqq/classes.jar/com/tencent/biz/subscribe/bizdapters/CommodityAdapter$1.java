@@ -18,12 +18,12 @@ class CommodityAdapter$1
   
   public void onClick(View paramView)
   {
-    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get();
+    String str = this.a.id.get();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("auth_");
-    localStringBuilder.append(SubscribeShareHelper.a(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersCommodityAdapter.a()));
+    localStringBuilder.append(SubscribeShareHelper.a(this.b.K()));
     VSReporter.a(str, localStringBuilder.toString(), "clk_shop", 0, 0, new String[0]);
-    SubscribeLaucher.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    SubscribeLaucher.a(((CertifiedAccountMeta.StYouZanShop)this.a.youZhan.get(0)).schema.get());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

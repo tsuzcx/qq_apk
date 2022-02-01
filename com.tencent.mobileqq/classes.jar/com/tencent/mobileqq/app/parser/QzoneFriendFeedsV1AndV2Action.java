@@ -26,7 +26,7 @@ public class QzoneFriendFeedsV1AndV2Action
   {
     try
     {
-      boolean bool = i_();
+      boolean bool = bY_();
       return bool;
     }
     catch (Exception localException)
@@ -35,25 +35,25 @@ public class QzoneFriendFeedsV1AndV2Action
       localStringBuilder.append("doAction error: ");
       localStringBuilder.append(localException.getMessage());
       QLog.e("QzoneFriendFeedsV1AndV2Action", 1, localStringBuilder.toString());
-      b_("QzoneFriendFeedsV1AndV2Action");
+      h_("QzoneFriendFeedsV1AndV2Action");
     }
     return false;
   }
   
-  public boolean i_()
+  public boolean bY_()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
+    Object localObject = this.a;
     boolean bool2 = false;
     if (localObject == null) {
       return false;
     }
-    localObject = (QZoneManagerImp)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+    localObject = (QZoneManagerImp)this.a.getManager(QQManagerFactory.QZONE_MANAGER);
     boolean bool1 = bool2;
     if (localObject != null) {
-      if (((QZoneManagerImp)localObject).a(2) <= 0)
+      if (((QZoneManagerImp)localObject).d(2) <= 0)
       {
         bool1 = bool2;
-        if (((QZoneManagerImp)localObject).a(1) <= 0) {}
+        if (((QZoneManagerImp)localObject).d(1) <= 0) {}
       }
       else
       {
@@ -65,15 +65,15 @@ public class QzoneFriendFeedsV1AndV2Action
     ((Intent)localObject).putExtra("refer", "schemeActiveFeeds");
     QzonePluginProxyActivity.setActivityNameToIntent((Intent)localObject, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
     ((Intent)localObject).addFlags(805306368);
-    String str = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("push_trans_channel");
-    QZoneHelper.forwardToFriendFeed((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin(), (Intent)localObject, str, -1);
-    LpReportInfo_dc02880.report(this.jdField_a_of_type_JavaLangString);
+    String str = Uri.parse(this.c).getQueryParameter("push_trans_channel");
+    QZoneHelper.forwardToFriendFeed((Activity)this.b, this.a.getCurrentAccountUin(), (Intent)localObject, str, -1);
+    LpReportInfo_dc02880.report(this.c);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzoneFriendFeedsV1AndV2Action
  * JD-Core Version:    0.7.0.1
  */

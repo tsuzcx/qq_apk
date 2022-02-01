@@ -67,6 +67,8 @@ public abstract interface IMessageFacadeService
   
   public abstract String getUinByPhoneNum(AppInterface paramAppInterface, String paramString);
   
+  public abstract int getUnReadMsg(BaseQQAppInterface paramBaseQQAppInterface);
+  
   public abstract boolean isBelongServiceAccountFolder(BaseQQAppInterface paramBaseQQAppInterface, String paramString);
   
   public abstract boolean isTroopMark(AppRuntime paramAppRuntime, String paramString, int paramInt);
@@ -83,7 +85,7 @@ public abstract interface IMessageFacadeService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.api.IMessageFacadeService
  * JD-Core Version:    0.7.0.1
  */

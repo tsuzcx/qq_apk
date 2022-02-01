@@ -13,41 +13,36 @@ import org.jetbrains.annotations.Nullable;
 public final class CmShowCrossEngineLoader
   extends TaskFlowEngine
 {
-  public static final CmShowCrossEngineLoader.Companion a;
+  public static final CmShowCrossEngineLoader.Companion h = new CmShowCrossEngineLoader.Companion(null);
   @NotNull
-  private static final String b = "CmShowCrossEngineLoader";
-  @NotNull
-  public CmShowCrossEngineLoader.AEKitEssentialResDownloadTask a;
-  @NotNull
-  public CmShowCrossEngineLoader.AEKitResDownloadTask a;
+  private static final String k = "CmShowCrossEngineLoader";
   @NotNull
   public CmShowCrossEngineLoader.CEInitListener a;
   @NotNull
-  private CmShowCrossEngineLoader.CEInitResult jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitResult = new CmShowCrossEngineLoader.CEInitResult();
+  public CmShowCrossEngineLoader.DownloadRoleTask b;
   @NotNull
-  public CmShowCrossEngineLoader.CmShowResDownloadTask a;
+  public CmShowCrossEngineLoader.InitCEEngineTask c;
   @NotNull
-  public CmShowCrossEngineLoader.DownloadRoleTask a;
+  public CmShowCrossEngineLoader.CmShowResDownloadTask d;
   @NotNull
-  public CmShowCrossEngineLoader.InitAEEngineTask a;
+  public CmShowCrossEngineLoader.InitAEEngineTask e;
   @NotNull
-  public CmShowCrossEngineLoader.InitCEEngineTask a;
-  private final String jdField_a_of_type_JavaLangString;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$Companion = new CmShowCrossEngineLoader.Companion(null);
-  }
+  public CmShowCrossEngineLoader.AEKitResDownloadTask f;
+  @NotNull
+  public CmShowCrossEngineLoader.AEKitEssentialResDownloadTask g;
+  private final String i;
+  @NotNull
+  private CmShowCrossEngineLoader.CEInitResult j = new CmShowCrossEngineLoader.CEInitResult();
   
   public CmShowCrossEngineLoader(@NotNull String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.i = paramString;
   }
   
   @NotNull
   public final CmShowCrossEngineLoader.CEInitListener a()
   {
-    CmShowCrossEngineLoader.CEInitListener localCEInitListener = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitListener;
+    CmShowCrossEngineLoader.CEInitListener localCEInitListener = this.a;
     if (localCEInitListener == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initListener");
     }
@@ -57,57 +52,57 @@ public final class CmShowCrossEngineLoader
   public final void a(@NotNull Context paramContext)
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$DownloadRoleTask = new CmShowCrossEngineLoader.DownloadRoleTask(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$InitCEEngineTask = new CmShowCrossEngineLoader.InitCEEngineTask(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CmShowResDownloadTask = new CmShowCrossEngineLoader.CmShowResDownloadTask(paramContext, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$AEKitResDownloadTask = new CmShowCrossEngineLoader.AEKitResDownloadTask(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$AEKitEssentialResDownloadTask = new CmShowCrossEngineLoader.AEKitEssentialResDownloadTask(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$InitAEEngineTask = new CmShowCrossEngineLoader.InitAEEngineTask(paramContext);
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$InitAEEngineTask;
+    this.b = new CmShowCrossEngineLoader.DownloadRoleTask(paramContext);
+    this.c = new CmShowCrossEngineLoader.InitCEEngineTask(paramContext);
+    this.d = new CmShowCrossEngineLoader.CmShowResDownloadTask(paramContext, this.i);
+    this.f = new CmShowCrossEngineLoader.AEKitResDownloadTask(paramContext);
+    this.g = new CmShowCrossEngineLoader.AEKitEssentialResDownloadTask(paramContext);
+    this.e = new CmShowCrossEngineLoader.InitAEEngineTask(paramContext);
+    paramContext = this.e;
     if (paramContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initAEEngineTask");
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$AEKitResDownloadTask;
+    Object localObject1 = this.f;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("aEKitResDownloadTask");
     }
     paramContext.a((BaseTask)localObject1);
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$InitAEEngineTask;
+    paramContext = this.e;
     if (paramContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initAEEngineTask");
     }
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$AEKitEssentialResDownloadTask;
+    localObject1 = this.g;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("aEKitEssentialResDownloadTask");
     }
     paramContext.a((BaseTask)localObject1);
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$DownloadRoleTask;
+    paramContext = this.b;
     if (paramContext == null) {
       Intrinsics.throwUninitializedPropertyAccessException("downloadRoleTask");
     }
     paramContext = (BaseTask)paramContext;
-    localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$InitCEEngineTask;
+    localObject1 = this.c;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initCEEngineTask");
     }
     localObject1 = (BaseTask)localObject1;
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CmShowResDownloadTask;
+    Object localObject2 = this.d;
     if (localObject2 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("cmShowResDownloadTask");
     }
     localObject2 = (BaseTask)localObject2;
-    CmShowCrossEngineLoader.InitAEEngineTask localInitAEEngineTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$InitAEEngineTask;
+    CmShowCrossEngineLoader.InitAEEngineTask localInitAEEngineTask = this.e;
     if (localInitAEEngineTask == null) {
       Intrinsics.throwUninitializedPropertyAccessException("initAEEngineTask");
     }
     a(new BaseTask[] { paramContext, localObject1, localObject2, (BaseTask)localInitAEEngineTask });
-    a();
+    c();
   }
   
   public final void a(@NotNull CmShowCrossEngineLoader.CEInitListener paramCEInitListener)
   {
     Intrinsics.checkParameterIsNotNull(paramCEInitListener, "<set-?>");
-    this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitListener = paramCEInitListener;
+    this.a = paramCEInitListener;
   }
   
   public void a(@Nullable BaseTask paramBaseTask)
@@ -115,7 +110,7 @@ public final class CmShowCrossEngineLoader
     super.a(paramBaseTask);
     if ((paramBaseTask instanceof CmShowCrossEngineLoader.DownloadRoleTask))
     {
-      if (((CmShowCrossEngineLoader.DownloadRoleTask)paramBaseTask).b())
+      if (((CmShowCrossEngineLoader.DownloadRoleTask)paramBaseTask).h())
       {
         if (a() != null) {
           a().a(3, 0, null);
@@ -127,44 +122,44 @@ public final class CmShowCrossEngineLoader
     }
     else
     {
-      int i;
+      int m;
       if ((paramBaseTask instanceof CmShowCrossEngineLoader.CmShowResDownloadTask))
       {
         Object localObject = (CmShowCrossEngineLoader.CmShowResDownloadTask)paramBaseTask;
-        if (((CmShowCrossEngineLoader.CmShowResDownloadTask)localObject).b())
+        if (((CmShowCrossEngineLoader.CmShowResDownloadTask)localObject).h())
         {
-          paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitResult;
-          localObject = ((CmShowCrossEngineLoader.CmShowResDownloadTask)localObject).a();
+          paramBaseTask = this.j;
+          localObject = ((CmShowCrossEngineLoader.CmShowResDownloadTask)localObject).b();
           if (localObject == null) {
             Intrinsics.throwNpe();
           }
           paramBaseTask.a((CmShowAssetsData)localObject);
-          paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitListener;
+          paramBaseTask = this.a;
           if (paramBaseTask == null) {
             Intrinsics.throwUninitializedPropertyAccessException("initListener");
           }
-          paramBaseTask.a(2, 0, this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitResult);
+          paramBaseTask.a(2, 0, this.j);
           return;
         }
-        i = paramBaseTask.a;
+        m = paramBaseTask.e;
         if (a() != null) {
-          a().a(2, i, null);
+          a().a(2, m, null);
         }
       }
       else if ((paramBaseTask instanceof CmShowCrossEngineLoader.InitCEEngineTask))
       {
-        if (((CmShowCrossEngineLoader.InitCEEngineTask)paramBaseTask).b())
+        if (((CmShowCrossEngineLoader.InitCEEngineTask)paramBaseTask).h())
         {
-          paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowCrossEngineLoader$CEInitResult;
+          paramBaseTask = this.j;
           if (a() != null) {
             a().a(1, 0, paramBaseTask);
           }
         }
         else
         {
-          i = paramBaseTask.a;
+          m = paramBaseTask.e;
           if (a() != null) {
-            a().a(1, i, null);
+            a().a(1, m, null);
           }
         }
       }
@@ -173,7 +168,7 @@ public final class CmShowCrossEngineLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowCrossEngineLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import java.util.List;
 class QQStoryBaseActivity$OutOfMemoryHandler
   implements Subscriber
 {
-  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQStoryBaseActivity> b;
   
   public QQStoryBaseActivity$OutOfMemoryHandler(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+    this.b = new WeakReference(paramQQStoryBaseActivity2);
   }
   
   public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
@@ -23,7 +23,7 @@ class QQStoryBaseActivity$OutOfMemoryHandler
   
   public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
   {
-    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramDispatchable = (QQStoryBaseActivity)this.b.get();
     if (paramDispatchable != null) {
       paramDispatchable.onOutOfMemory();
     }

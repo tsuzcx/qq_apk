@@ -14,26 +14,26 @@ class LimitChatPie$9
 {
   LimitChatPie$9(LimitChatPie paramLimitChatPie) {}
   
-  public void a(@Nullable ExpandReqInfo paramExpandReqInfo, @NotNull ExpandResponse paramExpandResponse)
+  public void onProtocol(@Nullable ExpandReqInfo paramExpandReqInfo, @NotNull ExpandResponse paramExpandResponse)
   {
-    if ((paramExpandResponse.a() == 0) && (paramExpandResponse.a() != null))
+    if ((paramExpandResponse.b() == 0) && (paramExpandResponse.a() != null))
     {
       ThreadManager.getUIHandler().post(new LimitChatPie.9.1(this, paramExpandResponse));
       return;
     }
     paramExpandReqInfo = new StringBuilder();
-    paramExpandReqInfo.append(this.a.b);
+    paramExpandReqInfo.append(this.a.c);
     paramExpandReqInfo.append("expand.chat.");
     paramExpandReqInfo = paramExpandReqInfo.toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("requestAbleToGreet. error ");
-    localStringBuilder.append(paramExpandResponse.a());
+    localStringBuilder.append(paramExpandResponse.b());
     QLog.w(paramExpandReqInfo, 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.9
  * JD-Core Version:    0.7.0.1
  */

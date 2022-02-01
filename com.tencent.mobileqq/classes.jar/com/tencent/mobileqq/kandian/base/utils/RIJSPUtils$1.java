@@ -11,22 +11,22 @@ final class RIJSPUtils$1
   
   public void run()
   {
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), this.jdField_a_of_type_Boolean, true);
+    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), this.a, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).remove(this.jdField_a_of_type_JavaLangString);
+      ((SharedPreferences.Editor)localObject).remove(this.b);
       ((SharedPreferences.Editor)localObject).apply();
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("delete data in sp successful ! key : ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.b);
       QLog.d("RIJSPUtils", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.utils.RIJSPUtils.1
  * JD-Core Version:    0.7.0.1
  */

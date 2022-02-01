@@ -19,35 +19,35 @@ class AvGameManagerImpl$5
     if (paramInt == 1)
     {
       paramDialogInterface.cancel();
-      if (this.jdField_a_of_type_AndroidAppActivity != null)
+      if (this.a != null)
       {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.getAvGameRoomId();
-        if (this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl.isCurrentPkSurvivalEmptyRoom())
+        paramDialogInterface = this.b.getAvGameRoomId();
+        if (this.b.isCurrentPkSurvivalEmptyRoom())
         {
-          AvGameManagerImpl.access$100(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl);
-          AvGameLoadingActivity.a(false, this.jdField_a_of_type_AndroidAppActivity, null, paramDialogInterface, null, "", false, true, null);
+          AvGameManagerImpl.access$100(this.b);
+          AvGameLoadingActivity.a(false, this.a, null, paramDialogInterface, null, "", false, true, null);
         }
         else if (TextUtils.isEmpty(paramDialogInterface))
         {
           QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying roomPlayingId empty");
-          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131690457, 0).a();
+          QQToast.makeText(this.a, 2131887368, 0).show();
         }
         else
         {
-          AvGameManagerImpl.access$100(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl);
-          AvGameLoadingActivity.a(false, this.jdField_a_of_type_AndroidAppActivity, null, paramDialogInterface, null, "", false, false, null);
+          AvGameManagerImpl.access$100(this.b);
+          AvGameLoadingActivity.a(false, this.a, null, paramDialogInterface, null, "", false, false, null);
         }
       }
       else
       {
         QLog.e("AvGameManager", 1, "alertDialogWithRetCode createAvGameRoom context  null ");
       }
-      ReportController.b(AvGameManagerImpl.access$200(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl), "dc00898", "", "", "0X800B016", "0X800B016", 0, 0, "", "", "", "");
+      ReportController.b(AvGameManagerImpl.access$200(this.b), "dc00898", "", "", "0X800B016", "0X800B016", 0, 0, "", "", "", "");
       return;
     }
     paramDialogInterface.cancel();
     QLog.d("AvGameManager", 2, "showInPlayDialog dialog cancel");
-    ReportController.b(AvGameManagerImpl.access$200(this.jdField_a_of_type_ComTencentAvgameBusinessApiImplAvGameManagerImpl), "dc00898", "", "", "0X800B017", "0X800B017", 0, 0, "", "", "", "");
+    ReportController.b(AvGameManagerImpl.access$200(this.b), "dc00898", "", "", "0X800B017", "0X800B017", 0, 0, "", "", "", "");
   }
 }
 

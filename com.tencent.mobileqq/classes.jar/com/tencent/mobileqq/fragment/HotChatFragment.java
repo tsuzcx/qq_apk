@@ -38,33 +38,32 @@ public class HotChatFragment
   extends NearbyBaseFragment
   implements Handler.Callback, IHotChatFragment
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new HotChatFragment.1(this);
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  public View a;
-  public RefreshView a;
   public NearbyActivity a;
-  public HotChatFragment.HotChatWebView a;
-  ArrayList<Rect> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  BroadcastReceiver b;
+  public HotChatFragment.HotChatWebView b;
+  public RefreshView c;
+  public View d;
+  ArrayList<Rect> e = new ArrayList();
+  boolean f = false;
+  View.OnClickListener g;
+  BroadcastReceiver h = new HotChatFragment.1(this);
+  BroadcastReceiver i = new HotChatFragment.2(this);
   
   public HotChatFragment()
   {
-    this.jdField_b_of_type_AndroidContentBroadcastReceiver = new HotChatFragment.2(this);
-    this.e = 2;
+    this.ah = 2;
     if (QLog.isColorLevel()) {
       NearbyUtils.a("HotChatFragment", new Object[] { "HotChatFragment" });
     }
   }
   
-  private void c()
+  private void d()
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a(getString(2131699035)).a(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (this.g != null) {
+      this.aj.a(getString(2131897044)).a(this.g);
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a("").a(null);
+      this.aj.a("").a(null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+    this.aj.a();
   }
   
   void a(Activity paramActivity, INearbyAppInterface paramINearbyAppInterface)
@@ -72,18 +71,18 @@ public class HotChatFragment
     try
     {
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("HotChatFragment", "createWebView", new Object[] { this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView, paramActivity, paramINearbyAppInterface });
+        NearbyUtils.a("HotChatFragment", "createWebView", new Object[] { this.b, paramActivity, paramINearbyAppInterface });
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) && ((paramActivity instanceof NearbyActivity))) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity = ((NearbyActivity)paramActivity);
+      if ((this.a == null) && ((paramActivity instanceof NearbyActivity))) {
+        this.a = ((NearbyActivity)paramActivity);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView == null) && (paramActivity != null) && (paramINearbyAppInterface != null))
+      if ((this.b == null) && (paramActivity != null) && (paramINearbyAppInterface != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView = new HotChatFragment.HotChatWebView(this, paramActivity.getBaseContext(), paramActivity, (AppInterface)paramINearbyAppInterface);
+        this.b = new HotChatFragment.HotChatWebView(this, paramActivity.getBaseContext(), paramActivity, (AppInterface)paramINearbyAppInterface);
         if (!WebAccelerateHelper.isWebViewCache)
         {
           Intent localIntent = new Intent();
-          localIntent.putExtra("url", SharedPreUtils.e(paramActivity, this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin()));
+          localIntent.putExtra("url", SharedPreUtils.ah(paramActivity, this.k.getCurrentAccountUin()));
           WebAccelerateHelper.getInstance().preGetKey(localIntent, (AppRuntime)paramINearbyAppInterface);
         }
       }
@@ -94,39 +93,39 @@ public class HotChatFragment
   
   public void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    if ((this.m) && (this.o)) {
-      c();
+    this.g = paramOnClickListener;
+    if ((this.ai) && (this.al)) {
+      d();
     }
   }
   
-  void b()
+  void c()
   {
-    if (!this.c)
+    if (!this.n)
     {
-      if (this.f == null) {
+      if (this.am == null) {
         return;
       }
       long l = 0L;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {
+      if (this.a != null) {
         l = System.currentTimeMillis();
       }
-      this.c = true;
-      if (!this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.jdField_a_of_type_Boolean)
+      this.n = true;
+      if (!this.b.b)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.a();
+        this.l.removeMessages(2);
+        this.b.a();
       }
-      Object localObject = this.jdField_a_of_type_ComTencentBizUiRefreshView;
+      Object localObject = this.c;
       if (localObject != null)
       {
         ((RefreshView)localObject).setDelayBeforeScrollBack(800L);
-        this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.mWebview.setOnOverScrollHandler(this.jdField_a_of_type_ComTencentBizUiRefreshView);
-        this.jdField_a_of_type_ComTencentBizUiRefreshView.addView(this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.mWebview, 0, new ViewGroup.LayoutParams(-1, -1));
+        this.b.mWebview.setOnOverScrollHandler(this.c);
+        this.c.addView(this.b.mWebview, 0, new ViewGroup.LayoutParams(-1, -1));
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.jdField_b_of_type_Boolean)
+      if (this.b.c)
       {
-        localObject = this.jdField_a_of_type_AndroidViewView;
+        localObject = this.d;
         if (localObject != null) {
           ((View)localObject).setVisibility(8);
         }
@@ -135,21 +134,21 @@ public class HotChatFragment
       {
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("com.tencent.mobileqq.refresh_hot_chat_list");
-        this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+        this.ag.registerReceiver(this.h, (IntentFilter)localObject);
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("com.tencent.mobileqq.get_banner_rect");
-        this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
+        this.ag.registerReceiver(this.i, (IntentFilter)localObject);
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      NearbyActivity localNearbyActivity = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity;
+      NearbyActivity localNearbyActivity = this.a;
       if (localNearbyActivity != null)
       {
         localNearbyActivity.mInitTime = (System.currentTimeMillis() - l);
         if (QLog.isDevelopLevel()) {
-          NearbyUtils.a("WebSpeedTrace", "mInitTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mInitTime) });
+          NearbyUtils.a("WebSpeedTrace", "mInitTime", new Object[] { Long.valueOf(this.a.mInitTime) });
         }
       }
     }
@@ -158,7 +157,7 @@ public class HotChatFragment
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      b();
+      c();
     }
     return false;
   }
@@ -166,30 +165,30 @@ public class HotChatFragment
   public void onAttach(Activity paramActivity)
   {
     super.onAttach(paramActivity);
-    a(paramActivity, this.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface);
+    a(paramActivity, this.k);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    NearbyActivity localNearbyActivity = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity;
+    NearbyActivity localNearbyActivity = this.a;
     if ((localNearbyActivity != null) && (localNearbyActivity.mOnCreateMilliTimeStamp == 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mOnCreateMilliTimeStamp = System.currentTimeMillis();
+      this.a.mOnCreateMilliTimeStamp = System.currentTimeMillis();
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mOnCreateMilliTimeStamp", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mOnCreateMilliTimeStamp) });
+        NearbyUtils.a("WebSpeedTrace", "mOnCreateMilliTimeStamp", new Object[] { Long.valueOf(this.a.mOnCreateMilliTimeStamp) });
       }
     }
     super.onCreate(paramBundle);
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView;
+    paramBundle = this.b;
     if (paramBundle != null) {
-      paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getIntent());
+      paramBundle.a(this.ag.getIntent());
     }
-    paramBundle = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity;
+    paramBundle = this.a;
     if ((paramBundle != null) && (paramBundle.onCreateTime == 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.onCreateTime = (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mOnCreateMilliTimeStamp);
+      this.a.onCreateTime = (System.currentTimeMillis() - this.a.mOnCreateMilliTimeStamp);
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "onCreateTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.onCreateTime) });
+        NearbyUtils.a("WebSpeedTrace", "onCreateTime", new Object[] { Long.valueOf(this.a.onCreateTime) });
       }
     }
   }
@@ -197,7 +196,7 @@ public class HotChatFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     long l;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {
+    if (this.a != null) {
       l = System.currentTimeMillis();
     } else {
       l = 0L;
@@ -206,77 +205,77 @@ public class HotChatFragment
       NearbyUtils.a("HotChatFragment", new Object[] { "onCreateView", Long.valueOf(l) });
     }
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if (this.f == null)
+    if (this.am == null)
     {
-      this.f = paramLayoutInflater.inflate(2131559479, null);
-      this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.f.findViewById(2131381056));
-      this.jdField_a_of_type_AndroidViewView = this.f.findViewById(2131368285);
+      this.am = paramLayoutInflater.inflate(2131625499, null);
+      this.c = ((RefreshView)this.am.findViewById(2131450066));
+      this.d = this.am.findViewById(2131435158);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(getString(2131694387)).a(false);
-    c();
-    if ((this.jdField_b_of_type_Boolean) && (!this.c)) {
-      b();
+    this.aj.b(getString(2131892066)).a(false);
+    d();
+    if ((this.m) && (!this.n)) {
+      c();
     }
-    paramLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity;
+    paramLayoutInflater = this.a;
     if ((paramLayoutInflater != null) && (paramLayoutInflater.mViewInflateTime == 0L))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mViewInflateTime = (System.currentTimeMillis() - l);
+      this.a.mViewInflateTime = (System.currentTimeMillis() - l);
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "mViewInflateTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.mViewInflateTime) });
+        NearbyUtils.a("WebSpeedTrace", "mViewInflateTime", new Object[] { Long.valueOf(this.a.mViewInflateTime) });
       }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.f)
     {
       paramLayoutInflater = new Rect();
       paramLayoutInflater.top = 0;
-      paramLayoutInflater.bottom = ((int)(this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDisplayMetrics().density * 315.0F));
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramLayoutInflater);
+      paramLayoutInflater.bottom = ((int)(this.ag.getResources().getDisplayMetrics().density * 315.0F));
+      this.e.add(paramLayoutInflater);
     }
-    return this.f;
+    return this.am;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (!this.c) {
+    if (!this.n) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
+      this.ag.unregisterReceiver(this.h);
+      this.ag.unregisterReceiver(this.i);
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.d();
+    this.b.d();
   }
   
   public void onPause()
   {
     super.onPause();
-    if (!this.c) {
+    if (!this.n) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.c();
+    this.b.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    if (!this.c) {
+    if (!this.n) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment$HotChatWebView.b();
+    this.b.b();
     if (!NetworkUtil.isNetworkAvailable(getBaseActivity())) {
-      QQToast.a(getBaseActivity(), 1, HardCodeUtil.a(2131705635), 0).b(getBaseActivity().getTitleBarHeight());
+      QQToast.makeText(getBaseActivity(), 1, HardCodeUtil.a(2131903521), 0).show(getBaseActivity().getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.HotChatFragment
  * JD-Core Version:    0.7.0.1
  */

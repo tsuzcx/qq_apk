@@ -15,8 +15,8 @@ class NativeAwesomeCommentView$2
   public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
     paramDrawable = new CenteredImageSpan(paramDrawable);
-    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
-    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
+    this.a.setSpan(paramDrawable, 0, 1, 17);
+    NativeAwesomeCommentView.b(this.b).setText(this.a);
   }
   
   public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
@@ -25,7 +25,7 @@ class NativeAwesomeCommentView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.impl.NativeAwesomeCommentView.2
  * JD-Core Version:    0.7.0.1
  */

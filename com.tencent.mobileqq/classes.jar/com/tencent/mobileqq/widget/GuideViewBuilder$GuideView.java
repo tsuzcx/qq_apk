@@ -19,8 +19,8 @@ import java.util.Iterator;
 class GuideViewBuilder$GuideView
   extends FrameLayout
 {
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  RectF a = new RectF();
+  int[] b = new int[2];
   
   public GuideViewBuilder$GuideView(GuideViewBuilder paramGuideViewBuilder, Context paramContext)
   {
@@ -31,20 +31,20 @@ class GuideViewBuilder$GuideView
   private FrameLayout.LayoutParams a(GuideViewBuilder.GuideTarget paramGuideTarget, GuideViewBuilder.GuideLayoutParams paramGuideLayoutParams)
   {
     if (paramGuideLayoutParams.width == -9) {
-      paramGuideLayoutParams.width = (paramGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredWidth() + -paramGuideLayoutParams.a * 2);
+      paramGuideLayoutParams.width = (paramGuideTarget.a.getMeasuredWidth() + -paramGuideLayoutParams.a * 2);
     }
     if (paramGuideLayoutParams.height == -9) {
-      paramGuideLayoutParams.height = (paramGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredHeight() + -paramGuideLayoutParams.b * 2);
+      paramGuideLayoutParams.height = (paramGuideTarget.a.getMeasuredHeight() + -paramGuideLayoutParams.b * 2);
     }
     if (paramGuideLayoutParams.a != 2147483647)
     {
       paramGuideLayoutParams.gravity |= 0x3;
-      paramGuideLayoutParams.leftMargin = (paramGuideTarget.jdField_a_of_type_ArrayOfInt[0] + paramGuideLayoutParams.a - this.jdField_a_of_type_ArrayOfInt[0]);
+      paramGuideLayoutParams.leftMargin = (paramGuideTarget.b[0] + paramGuideLayoutParams.a - this.b[0]);
     }
     if (paramGuideLayoutParams.b != 2147483647)
     {
       paramGuideLayoutParams.gravity |= 0x30;
-      paramGuideLayoutParams.topMargin = (paramGuideTarget.jdField_a_of_type_ArrayOfInt[1] + paramGuideLayoutParams.b - this.jdField_a_of_type_ArrayOfInt[1]);
+      paramGuideLayoutParams.topMargin = (paramGuideTarget.b[1] + paramGuideLayoutParams.b - this.b[1]);
     }
     return paramGuideLayoutParams;
   }
@@ -54,15 +54,15 @@ class GuideViewBuilder$GuideView
     super.onAttachedToWindow();
     try
     {
-      getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+      getLocationOnScreen(this.b);
       int i = 0;
-      while (i < GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).size())
+      while (i < GuideViewBuilder.a(this.c).size())
       {
-        GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).valueAt(i);
-        if (localGuideTarget.jdField_a_of_type_ArrayOfInt == null)
+        GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.c).valueAt(i);
+        if (localGuideTarget.b == null)
         {
-          localGuideTarget.jdField_a_of_type_ArrayOfInt = new int[2];
-          localGuideTarget.jdField_a_of_type_AndroidViewView.getLocationOnScreen(localGuideTarget.jdField_a_of_type_ArrayOfInt);
+          localGuideTarget.b = new int[2];
+          localGuideTarget.a.getLocationOnScreen(localGuideTarget.b);
         }
         i += 1;
       }
@@ -81,16 +81,16 @@ class GuideViewBuilder$GuideView
   protected void onDraw(Canvas paramCanvas)
   {
     int i = 0;
-    while (i < GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).size())
+    while (i < GuideViewBuilder.a(this.c).size())
     {
-      GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).valueAt(i);
+      GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.c).valueAt(i);
       int j = paramCanvas.save();
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(localGuideTarget.jdField_a_of_type_ArrayOfInt[0], localGuideTarget.jdField_a_of_type_ArrayOfInt[1], localGuideTarget.jdField_a_of_type_ArrayOfInt[0] + localGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), localGuideTarget.jdField_a_of_type_ArrayOfInt[1] + localGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      this.a.set(localGuideTarget.b[0], localGuideTarget.b[1], localGuideTarget.b[0] + localGuideTarget.a.getMeasuredWidth(), localGuideTarget.b[1] + localGuideTarget.a.getMeasuredHeight());
+      RectF localRectF = this.a;
+      int[] arrayOfInt = this.b;
       localRectF.offset(-arrayOfInt[0], -arrayOfInt[1]);
-      paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF);
-      localGuideTarget.jdField_a_of_type_AndroidViewView.getRootView().draw(paramCanvas);
+      paramCanvas.clipRect(this.a);
+      localGuideTarget.a.getRootView().draw(paramCanvas);
       paramCanvas.restoreToCount(j);
       i += 1;
     }
@@ -100,10 +100,10 @@ class GuideViewBuilder$GuideView
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = 0;
-    while (paramInt1 < GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).size())
+    while (paramInt1 < GuideViewBuilder.a(this.c).size())
     {
-      GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).valueAt(paramInt1);
-      Iterator localIterator = localGuideTarget.jdField_a_of_type_JavaUtilArrayList.iterator();
+      GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.c).valueAt(paramInt1);
+      Iterator localIterator = localGuideTarget.c.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();
@@ -127,13 +127,13 @@ class GuideViewBuilder$GuideView
     if (paramMotionEvent.getAction() == 0)
     {
       int i = 0;
-      while (i < GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).size())
+      while (i < GuideViewBuilder.a(this.c).size())
       {
-        GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).valueAt(i);
-        if ((paramMotionEvent.getX() > localGuideTarget.jdField_a_of_type_ArrayOfInt[0]) && (paramMotionEvent.getX() < localGuideTarget.jdField_a_of_type_ArrayOfInt[0] + localGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredWidth()) && (paramMotionEvent.getY() > localGuideTarget.jdField_a_of_type_ArrayOfInt[1]) && (paramMotionEvent.getY() < localGuideTarget.jdField_a_of_type_ArrayOfInt[1] + localGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredHeight()) && (localGuideTarget.jdField_a_of_type_AndroidViewView$OnClickListener != null))
+        GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.c).valueAt(i);
+        if ((paramMotionEvent.getX() > localGuideTarget.b[0]) && (paramMotionEvent.getX() < localGuideTarget.b[0] + localGuideTarget.a.getMeasuredWidth()) && (paramMotionEvent.getY() > localGuideTarget.b[1]) && (paramMotionEvent.getY() < localGuideTarget.b[1] + localGuideTarget.a.getMeasuredHeight()) && (localGuideTarget.d != null))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder.a.dismiss();
-          localGuideTarget.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(localGuideTarget.jdField_a_of_type_AndroidViewView);
+          this.c.c.dismiss();
+          localGuideTarget.d.onClick(localGuideTarget.a);
           return true;
         }
         i += 1;
@@ -144,7 +144,7 @@ class GuideViewBuilder$GuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GuideViewBuilder.GuideView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.aio.panel.viewbinder;
 
-import com.tencent.mobileqq.apollo.aio.panel.ApolloPanelListAdapter;
 import com.tencent.mobileqq.apollo.model.ApolloTagButtonData;
 import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -25,12 +24,11 @@ class ApolloTagActionViewBinder$2
           localApolloTagButtonData.isSelected = false;
         }
       }
-      ApolloDtReportUtil.a.remove(Integer.valueOf(this.this$0.d));
-      if (ApolloTagActionViewBinder.a(this.this$0) != null) {
-        ApolloTagActionViewBinder.a(this.this$0).notifyDataSetChanged();
+      ApolloDtReportUtil.a.remove(Integer.valueOf(this.this$0.n));
+      if (ApolloTagActionViewBinder.c(this.this$0) != null) {
+        ApolloTagActionViewBinder.c(this.this$0).notifyDataSetChanged();
       }
-      this.this$0.b(ApolloTagActionViewBinder.c(this.this$0));
-      this.this$0.a.notifyDataSetChanged();
+      ApolloTagActionViewBinder.b(this.this$0, ApolloTagActionViewBinder.e(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -41,7 +39,7 @@ class ApolloTagActionViewBinder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloTagActionViewBinder.2
  * JD-Core Version:    0.7.0.1
  */

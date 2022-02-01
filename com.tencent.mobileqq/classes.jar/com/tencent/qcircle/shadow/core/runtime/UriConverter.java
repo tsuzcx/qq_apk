@@ -43,7 +43,7 @@ public class UriConverter
   
   public static Uri parse(String paramString)
   {
-    DelegateProvider localDelegateProvider = DelegateProviderHolder.getDelegateProvider();
+    DelegateProvider localDelegateProvider = DelegateProviderHolder.getDelegateProvider("");
     if ((localDelegateProvider != null) && (localDelegateProvider.getUriParseDelegate() != null)) {
       return localDelegateProvider.getUriParseDelegate().parse(paramString);
     }
@@ -52,7 +52,7 @@ public class UriConverter
   
   public static Uri parseCall(String paramString, Bundle paramBundle)
   {
-    DelegateProvider localDelegateProvider = DelegateProviderHolder.getDelegateProvider();
+    DelegateProvider localDelegateProvider = DelegateProviderHolder.getDelegateProvider("");
     if ((localDelegateProvider != null) && (localDelegateProvider.getUriParseDelegate() != null)) {
       return localDelegateProvider.getUriParseDelegate().parseCall(paramString, paramBundle);
     }
@@ -61,7 +61,7 @@ public class UriConverter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qcircle.shadow.core.runtime.UriConverter
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ class AVActivity$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.b;
+      String str = this.a.i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("call IdleHandler mPeerUin:=");
-      localStringBuilder.append(this.a.c);
+      localStringBuilder.append(this.a.j);
       QLog.w(str, 1, localStringBuilder.toString());
     }
     ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);

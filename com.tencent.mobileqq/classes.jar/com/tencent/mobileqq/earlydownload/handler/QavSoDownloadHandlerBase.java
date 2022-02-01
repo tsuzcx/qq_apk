@@ -75,16 +75,6 @@ public abstract class QavSoDownloadHandlerBase
     return true;
   }
   
-  public int a()
-  {
-    return 10048;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadSoDuration";
-  }
-  
   public void a(XmlData paramXmlData)
   {
     if (QLog.isColorLevel())
@@ -107,7 +97,7 @@ public abstract class QavSoDownloadHandlerBase
   
   public void a(String paramString)
   {
-    XmlData localXmlData = a();
+    XmlData localXmlData = h();
     if (localXmlData != null)
     {
       Object localObject2 = new StringBuilder();
@@ -130,7 +120,7 @@ public abstract class QavSoDownloadHandlerBase
         ((StringBuilder)localObject2).append("|");
         ((StringBuilder)localObject2).append(localXmlData);
         QLog.d("QavSoDownloadHandlerBase", 1, ((StringBuilder)localObject2).toString());
-        if (((!TextUtils.isEmpty(localXmlData.MD5)) && (!localXmlData.MD5.equalsIgnoreCase((String)localObject3))) || (!a(this.a.getApp().getApplicationContext(), Boolean.valueOf(true))))
+        if (((!TextUtils.isEmpty(localXmlData.MD5)) && (!localXmlData.MD5.equalsIgnoreCase((String)localObject3))) || (!a(this.c.getApp().getApplicationContext(), Boolean.valueOf(true))))
         {
           try
           {
@@ -183,14 +173,24 @@ public abstract class QavSoDownloadHandlerBase
     super.a(paramString);
   }
   
-  public boolean a()
+  public String b()
+  {
+    return "qavDownloadSoDuration";
+  }
+  
+  public int c()
+  {
+    return 10048;
+  }
+  
+  public boolean e()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandlerBase
  * JD-Core Version:    0.7.0.1
  */

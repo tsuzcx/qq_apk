@@ -10,17 +10,17 @@ import mqq.app.MobileQQ;
 class PluginCrashReceiver$StartPluginFailedReported
   extends AsyncTask<String, String, String>
 {
-  private IStatisticsUploader jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
   private String c;
   private String d;
   private String e;
   private String f;
+  private IStatisticsUploader g;
   
   public PluginCrashReceiver$StartPluginFailedReported(Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("pluginsdk_selfuin");
+    this.a = paramIntent.getStringExtra("pluginsdk_selfuin");
     this.b = paramIntent.getStringExtra("pluginsdk_pluginName");
     this.c = paramIntent.getStringExtra("pluginsdk_pluginLocation");
     this.d = paramIntent.getStringExtra("pluginsdk_pluginpath");
@@ -30,7 +30,7 @@ class PluginCrashReceiver$StartPluginFailedReported
     if (paramIntent != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = ((IStatisticsUploader)Class.forName(paramIntent).newInstance());
+      this.g = ((IStatisticsUploader)Class.forName(paramIntent).newInstance());
       return;
     }
     catch (Exception paramIntent)
@@ -38,12 +38,12 @@ class PluginCrashReceiver$StartPluginFailedReported
       label90:
       break label90;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader = null;
+    this.g = null;
   }
   
   protected String a(String... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader != null)
+    if (this.g != null)
     {
       paramVarArgs = this.f;
       if (paramVarArgs == null) {}
@@ -77,14 +77,14 @@ class PluginCrashReceiver$StartPluginFailedReported
     localStringBuilder.append(this.f);
     this.f = localStringBuilder.toString();
     label163:
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkIStatisticsUploader.uploadStartupFailure(MobileQQ.getContext(), this.jdField_a_of_type_JavaLangString, this.b, this.c, this.e, this.f);
+    this.g.uploadStartupFailure(MobileQQ.getContext(), this.a, this.b, this.c, this.e, this.f);
     return null;
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver.StartPluginFailedReported
  * JD-Core Version:    0.7.0.1
  */

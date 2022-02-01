@@ -6,74 +6,74 @@ import java.util.regex.Pattern;
 
 public abstract class TextMatcher
 {
-  private int jdField_a_of_type_Int;
-  protected String a;
-  private Matcher jdField_a_of_type_JavaUtilRegexMatcher;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString;
+  private int a;
+  protected String b;
+  private boolean c = true;
+  private int d = -1;
+  private Matcher e;
+  private Pattern f;
+  private String g;
   
   protected TextMatcher(Pattern paramPattern)
   {
-    this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
+    this.f = paramPattern;
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_JavaUtilRegexMatcher.find();
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilRegexMatcher.start();
+      this.c = this.e.find();
+      if (this.c) {
+        this.d = this.e.start();
       }
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public abstract HashMap<String, Object> a(int paramInt, boolean paramBoolean, CharSequence paramCharSequence);
   
-  public void a(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilRegexMatcher = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString);
-    a();
-  }
-  
   public boolean a(int paramInt)
   {
-    if (this.jdField_b_of_type_JavaLangString != null)
+    if (this.g != null)
     {
-      Matcher localMatcher = this.jdField_a_of_type_JavaUtilRegexMatcher;
+      Matcher localMatcher = this.e;
       if (localMatcher == null) {
         return false;
       }
-      int i = this.jdField_b_of_type_Int;
+      int i = this.d;
       if (i <= paramInt)
       {
-        if (!this.jdField_a_of_type_Boolean) {
+        if (!this.c) {
           return false;
         }
         if (i == paramInt)
         {
-          this.jdField_a_of_type_JavaLangString = localMatcher.group();
-          this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilRegexMatcher.end();
-          a();
+          this.b = localMatcher.group();
+          this.a = this.e.end();
+          b();
           return true;
         }
-        a();
+        b();
       }
     }
     return false;
   }
+  
+  public void b(String paramString)
+  {
+    this.g = paramString;
+    this.e = this.f.matcher(paramString);
+    b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.matcher.TextMatcher
  * JD-Core Version:    0.7.0.1
  */

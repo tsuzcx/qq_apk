@@ -13,55 +13,55 @@ class VideoViewVideoHolder$13
 {
   VideoViewVideoHolder$13(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void d()
+  public void e()
   {
-    super.d();
-    String str1 = this.a.jdField_a_of_type_JavaLangString;
-    String str2 = VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)];
+    super.e();
+    String str1 = this.a.a;
+    String str2 = VideoViewVideoHolder.j[VideoViewVideoHolder.n(this.a)];
     boolean bool = false;
-    if (this.a.a().getVisibility() == 0) {
+    if (this.a.r().getVisibility() == 0) {
       bool = true;
     }
     SLog.d(str1, "onResume, current state = %s, startBtn show = %s", new Object[] { str2, Boolean.valueOf(bool) });
-    if (this.a.c()) {
+    if (this.a.f()) {
       this.a.a(10, "onResume");
     }
   }
   
-  public void e()
+  public void f()
   {
-    super.e();
+    super.f();
     VideoViewVideoHolder.a(this.a, false);
-    SLog.d(this.a.jdField_a_of_type_JavaLangString, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[VideoViewVideoHolder.f(this.a)] });
+    SLog.d(this.a.a, "onPause, current state = %s", new Object[] { VideoViewVideoHolder.j[VideoViewVideoHolder.n(this.a)] });
     this.a.a(0, true, "onPause");
   }
   
-  public void g()
+  public void h()
   {
-    super.g();
-    VideoViewVideoHolder.a(this.a).removeCallbacksAndMessages(null);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder$SingleFileDownloaderHolder.a();
+    super.h();
+    VideoViewVideoHolder.k(this.a).removeCallbacksAndMessages(null);
+    this.a.l.b();
     this.a.a(0, true, "onDestroy");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.a();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.e();
-    BatchGetVideoInfo localBatchGetVideoInfo = VideoViewVideoHolder.a(this.a);
+    this.a.p.c();
+    this.a.p.l();
+    BatchGetVideoInfo localBatchGetVideoInfo = VideoViewVideoHolder.e(this.a);
     VideoViewVideoHolder.a(this.a, null);
     if (localBatchGetVideoInfo != null) {
       localBatchGetVideoInfo.a();
     }
-    if (VideoViewVideoHolder.a(this.a) != null)
+    if (VideoViewVideoHolder.l(this.a) != null)
     {
-      VideoViewVideoHolder.a(this.a).recycle();
+      VideoViewVideoHolder.l(this.a).recycle();
       VideoViewVideoHolder.a(this.a, null);
     }
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog.dismiss();
+    if ((this.a.w != null) && (this.a.w.isShowing())) {
+      this.a.w.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.13
  * JD-Core Version:    0.7.0.1
  */

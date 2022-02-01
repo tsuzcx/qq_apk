@@ -14,12 +14,12 @@ public class ArkNodeView
   extends RichNodeViewBase
   implements ArkAppView.ArkAppViewEvent
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private ArkAppView jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
-  private WeakReference<IArkNodeViewEvent> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = false;
+  private View b;
+  private ArkAppView c;
+  private LinearLayout d;
+  private boolean e = true;
+  private boolean f = false;
+  private WeakReference<IArkNodeViewEvent> g;
   
   public ArkNodeView(IRichNode paramIRichNode, Context paramContext)
   {
@@ -28,23 +28,23 @@ public class ArkNodeView
   
   public View a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561418, null, false);
-    this.jdField_a_of_type_AndroidViewView = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = ((ArkAppView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362961));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131627774, null, false);
+    this.b = paramContext;
+    this.c = ((ArkAppView)this.b.findViewById(2131428760));
+    this.d = null;
     ((ArkAppRootLayout)paramContext).setDisableParentReturn(false);
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.b;
   }
   
   public void a()
   {
-    this.b = false;
+    this.f = false;
     a(1);
-    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    Object localObject = this.b;
     if (localObject != null) {
       ((View)localObject).setVisibility(0);
     }
-    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    localObject = this.d;
     if (localObject != null) {
       ((LinearLayout)localObject).setVisibility(8);
     }
@@ -52,7 +52,7 @@ public class ArkNodeView
   
   public void a(int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.g;
     if (localObject == null) {
       return;
     }
@@ -65,7 +65,7 @@ public class ArkNodeView
   
   public void a(ArkNodeContainer paramArkNodeContainer)
   {
-    ArkAppView localArkAppView = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+    ArkAppView localArkAppView = this.c;
     if (localArkAppView != null)
     {
       if (paramArkNodeContainer == null) {
@@ -77,47 +77,47 @@ public class ArkNodeView
   
   public void a(IArkNodeViewEvent paramIArkNodeViewEvent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIArkNodeViewEvent);
+    this.g = new WeakReference(paramIArkNodeViewEvent);
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    this.b = true;
+    this.f = true;
     a(1);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    Object localObject = this.d;
     if (localObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.e)
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArkNodeView", 2, "onLoadFailed, show no result");
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.b.setVisibility(8);
       a(false);
       return;
     }
     ((LinearLayout)localObject).setVisibility(0);
     if (paramBoolean) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ArkNodeView.1(this));
+      this.d.setOnClickListener(new ArkNodeView.1(this));
     } else {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+      this.d.setOnClickListener(null);
     }
-    localObject = (TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376349);
+    localObject = (TextView)this.d.findViewById(2131444564);
     if (localObject != null) {
       if (paramString == null) {
-        ((TextView)localObject).setText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext().getResources().getString(2131690168));
+        ((TextView)localObject).setText(this.d.getContext().getResources().getString(2131887067));
       } else {
         ((TextView)localObject).setText(paramString);
       }
     }
-    paramString = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131376342);
+    paramString = this.d.findViewById(2131444557);
     if (paramString != null)
     {
       if (paramBoolean) {
-        paramInt = 2130838629;
+        paramInt = 2130838754;
       } else {
-        paramInt = 2130838628;
+        paramInt = 2130838753;
       }
       paramString.setBackgroundDrawable(paramString.getResources().getDrawable(paramInt));
     }
@@ -129,10 +129,10 @@ public class ArkNodeView
     if (paramBoolean)
     {
       bool = paramBoolean;
-      if (this.b)
+      if (this.f)
       {
         bool = paramBoolean;
-        if (this.jdField_a_of_type_Boolean) {
+        if (this.e) {
           bool = false;
         }
       }
@@ -140,39 +140,39 @@ public class ArkNodeView
     super.a(bool);
   }
   
-  public View b()
+  public void dn_()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
-  }
-  
-  public void b()
-  {
-    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    LinearLayout localLinearLayout = this.d;
     if (localLinearLayout != null) {
       localLinearLayout.setVisibility(0);
     }
   }
   
-  public void c() {}
+  public void do_() {}
   
-  public void d()
+  public void i()
   {
-    this.jdField_a_of_type_AndroidViewView = null;
-    ArkAppView localArkAppView = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView;
+    this.b = null;
+    ArkAppView localArkAppView = this.c;
     if (localArkAppView != null)
     {
       localArkAppView.a();
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichArkAppView = null;
+      this.c = null;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    super.d();
+    this.d = null;
+    super.i();
   }
   
-  public void e() {}
+  public void j() {}
+  
+  public View k()
+  {
+    return this.c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeView
  * JD-Core Version:    0.7.0.1
  */

@@ -16,24 +16,24 @@ public class UsingTimeReportManager
   extends BroadcastReceiver
   implements Manager
 {
-  private IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private List<UsingTimeReportManager.IStateChangeCallBack> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private AppInterface a;
+  private List<UsingTimeReportManager.IStateChangeCallBack> b = new ArrayList();
+  private IntentFilter c;
   
   public UsingTimeReportManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentIntentFilter = new IntentFilter();
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("mqq.intent.action.QQ_BACKGROUND");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("mqq.intent.action.QQ_FOREGROUND");
-    this.jdField_a_of_type_AndroidContentIntentFilter.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    this.a = paramAppInterface;
+    this.c = new IntentFilter();
+    this.c.addAction("android.intent.action.SCREEN_OFF");
+    this.c.addAction("mqq.intent.action.QQ_BACKGROUND");
+    this.c.addAction("mqq.intent.action.QQ_FOREGROUND");
+    this.c.addAction("mqq.intent.action.ACCOUNT_KICKED");
     try
     {
       paramAppInterface = paramAppInterface.getApp();
       if (paramAppInterface != null)
       {
-        paramAppInterface.registerReceiver(this, this.jdField_a_of_type_AndroidContentIntentFilter);
+        paramAppInterface.registerReceiver(this, this.c);
         return;
       }
     }
@@ -51,10 +51,10 @@ public class UsingTimeReportManager
     try
     {
       Object localObject1 = new ArrayList();
-      ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject1).addAll(this.b);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).c();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).d();
       }
       return;
     }
@@ -70,10 +70,10 @@ public class UsingTimeReportManager
     try
     {
       Object localObject1 = new ArrayList();
-      ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject1).addAll(this.b);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).d();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).e();
       }
       return;
     }
@@ -89,10 +89,10 @@ public class UsingTimeReportManager
     try
     {
       Object localObject1 = new ArrayList();
-      ((List)localObject1).addAll(this.jdField_a_of_type_JavaUtilList);
+      ((List)localObject1).addAll(this.b);
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).e();
+        ((UsingTimeReportManager.IStateChangeCallBack)((Iterator)localObject1).next()).f();
       }
       return;
     }
@@ -107,8 +107,8 @@ public class UsingTimeReportManager
   {
     try
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramIStateChangeCallBack)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramIStateChangeCallBack);
+      if (!this.b.contains(paramIStateChangeCallBack)) {
+        this.b.add(paramIStateChangeCallBack);
       }
       return;
     }
@@ -123,8 +123,8 @@ public class UsingTimeReportManager
   {
     try
     {
-      if (this.jdField_a_of_type_JavaUtilList.contains(paramIStateChangeCallBack)) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramIStateChangeCallBack);
+      if (this.b.contains(paramIStateChangeCallBack)) {
+        this.b.remove(paramIStateChangeCallBack);
       }
       return;
     }
@@ -139,10 +139,10 @@ public class UsingTimeReportManager
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.b.clear();
       try
       {
-        BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+        BaseApplication localBaseApplication = this.a.getApp();
         if (localBaseApplication != null) {
           localBaseApplication.unregisterReceiver(this);
         }
@@ -189,7 +189,7 @@ public class UsingTimeReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.UsingTimeReportManager
  * JD-Core Version:    0.7.0.1
  */

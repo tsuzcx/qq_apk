@@ -35,35 +35,26 @@ import mqq.os.MqqHandler;
 public class CustomizeStrategyFactory
   implements Handler.Callback, IQWalletConfigService.ConfigUpdateListener, ICustomizeStrategyFactory
 {
-  public static float a;
-  private static volatile CustomizeStrategyFactory jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemImplCustomizeStrategyFactory;
-  public static byte[] a;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<CustomizeStrategyFactory.HBCustomizeStrategy> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
-  private QQLruCache<String, InterfaceRedPkgElem> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new CustomizeStrategyFactory.1(this, 1020, 30, 10000);
-  public IQWalletConfigService a;
-  private HashMap<Object, ICustomizeStrategyFactory.OnCustomizeListener> jdField_a_of_type_JavaUtilHashMap;
-  public boolean a;
-  public boolean b;
-  private byte[] b;
-  private boolean c = false;
-  private boolean d = false;
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfByte = new byte[0];
-    jdField_a_of_type_Float = 1.0F;
-  }
+  public static byte[] a = new byte[0];
+  public static float d = 1.0F;
+  private static volatile CustomizeStrategyFactory f;
+  public boolean b = true;
+  public IQWalletConfigService c;
+  public boolean e = false;
+  private SparseArray<CustomizeStrategyFactory.HBCustomizeStrategy> g = new SparseArray(5);
+  private QQLruCache<String, InterfaceRedPkgElem> h = new CustomizeStrategyFactory.1(this, 1020, 30, 10000);
+  private Handler i;
+  private HashMap<Object, ICustomizeStrategyFactory.OnCustomizeListener> j;
+  private boolean k = false;
+  private byte[] l = new byte[0];
+  private boolean m = false;
   
   public CustomizeStrategyFactory()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_ArrayOfByte = new byte[0];
-    c();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(8);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
-    jdField_a_of_type_Float = MobileQQ.getContext().getResources().getDisplayMetrics().density;
+    f();
+    this.j = new HashMap(8);
+    this.i = new Handler(Looper.getMainLooper(), this);
+    d = MobileQQ.getContext().getResources().getDisplayMetrics().density;
   }
   
   private CustomizeStrategyFactory.HBCustomizeStrategy a(int paramInt, BaseQQAppInterface paramBaseQQAppInterface)
@@ -75,7 +66,7 @@ public class CustomizeStrategyFactory
       ((StringBuilder)localObject).append(paramInt);
       QLog.i("CustomizeStrategyFactory", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (CustomizeStrategyFactory.HBCustomizeStrategy)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (CustomizeStrategyFactory.HBCustomizeStrategy)this.g.get(paramInt);
     if (localObject != null) {
       return localObject;
     }
@@ -94,29 +85,15 @@ public class CustomizeStrategyFactory
     } else {
       paramBaseQQAppInterface = null;
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, paramBaseQQAppInterface);
+    this.g.append(paramInt, paramBaseQQAppInterface);
     return paramBaseQQAppInterface;
-  }
-  
-  public static CustomizeStrategyFactory a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemImplCustomizeStrategyFactory == null) {
-      try
-      {
-        if (jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemImplCustomizeStrategyFactory == null) {
-          jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemImplCustomizeStrategyFactory = new CustomizeStrategyFactory();
-        }
-      }
-      finally {}
-    }
-    return jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemImplCustomizeStrategyFactory;
   }
   
   private void b(RedPacketInfo paramRedPacketInfo)
   {
-    if ((paramRedPacketInfo != null) && (paramRedPacketInfo.jdField_b_of_type_Boolean) && (paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig != null))
+    if ((paramRedPacketInfo != null) && (paramRedPacketInfo.g) && (paramRedPacketInfo.h != null))
     {
-      if (TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemICustomizeStrategyFactory$AnimConfig.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.isEmpty(paramRedPacketInfo.h.a)) {
         return;
       }
       paramRedPacketInfo = new CustomizeStrategyFactory.3(this, paramRedPacketInfo);
@@ -129,7 +106,21 @@ public class CustomizeStrategyFactory
     }
   }
   
-  private void c()
+  public static CustomizeStrategyFactory d()
+  {
+    if (f == null) {
+      try
+      {
+        if (f == null) {
+          f = new CustomizeStrategyFactory();
+        }
+      }
+      finally {}
+    }
+    return f;
+  }
+  
+  private void f()
   {
     ThreadManager.post(new CustomizeStrategyFactory.2(this), 5, null, true);
   }
@@ -153,21 +144,21 @@ public class CustomizeStrategyFactory
       {
         ((StringBuilder)localObject).append("_");
         ((StringBuilder)localObject).append(paramRedPacketInfo.templateId);
-        if ((paramRedPacketInfo.type == 2) && (!TextUtils.isEmpty(paramRedPacketInfo.jdField_a_of_type_JavaLangString)))
+        if ((paramRedPacketInfo.type == 2) && (!TextUtils.isEmpty(paramRedPacketInfo.d)))
         {
           ((StringBuilder)localObject).append("_");
-          ((StringBuilder)localObject).append(paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramRedPacketInfo.d);
         }
       }
-      paramRedPacketInfo.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+      paramRedPacketInfo.k = ((StringBuilder)localObject).toString();
       paramBaseQQAppInterface = a(paramRedPacketInfo.type, paramBaseQQAppInterface);
       if (paramBaseQQAppInterface == null) {
         return paramRedPacketInfo;
       }
-      localObject = (InterfaceRedPkgElem)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramRedPacketInfo.jdField_b_of_type_JavaLangString);
+      localObject = (InterfaceRedPkgElem)this.h.get(paramRedPacketInfo.k);
       if (localObject == null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramRedPacketInfo, paramOnCustomizeListener);
+        this.j.put(paramRedPacketInfo, paramOnCustomizeListener);
         paramBaseQQAppInterface.a(paramRedPacketInfo);
         return paramRedPacketInfo;
       }
@@ -177,17 +168,9 @@ public class CustomizeStrategyFactory
     return null;
   }
   
-  public void a()
-  {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    if (localHashMap != null) {
-      localHashMap.clear();
-    }
-  }
-  
   public void a(RedPacketInfo paramRedPacketInfo)
   {
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (paramRedPacketInfo != null))
+    if ((this.i != null) && (paramRedPacketInfo != null))
     {
       if (QLog.isColorLevel())
       {
@@ -195,49 +178,49 @@ public class CustomizeStrategyFactory
         ((StringBuilder)localObject).append("notifyCustomizeFinish-type:");
         ((StringBuilder)localObject).append(paramRedPacketInfo.type);
         ((StringBuilder)localObject).append(" isAnimation:");
-        ((StringBuilder)localObject).append(paramRedPacketInfo.jdField_b_of_type_Boolean);
+        ((StringBuilder)localObject).append(paramRedPacketInfo.g);
         QLog.d("CustomizeStrategyFactory", 2, ((StringBuilder)localObject).toString());
       }
-      if ((paramRedPacketInfo.type == 2) && (paramRedPacketInfo.jdField_b_of_type_Boolean) && (!paramRedPacketInfo.c))
+      if ((paramRedPacketInfo.type == 2) && (paramRedPacketInfo.g) && (!paramRedPacketInfo.j))
       {
         b(paramRedPacketInfo);
         return;
       }
-      Object localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      Object localObject = this.i.obtainMessage();
       ((Message)localObject).what = 1;
       ((Message)localObject).obj = paramRedPacketInfo;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+      this.i.sendMessage((Message)localObject);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
     if (QLog.isColorLevel())
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("setInAIO isInAIO=");
       ((StringBuilder)???).append(paramBoolean);
       ((StringBuilder)???).append(",refreshListView=");
-      ((StringBuilder)???).append(this.c);
+      ((StringBuilder)???).append(this.k);
       QLog.d("CustomizeStrategyFactory", 2, ((StringBuilder)???).toString());
     }
     if (paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = false;
-      synchronized (jdField_a_of_type_ArrayOfByte)
+      this.b = false;
+      synchronized (a)
       {
-        jdField_a_of_type_ArrayOfByte.notifyAll();
+        a.notifyAll();
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("setLockFlag lockFlag");
-          localStringBuilder.append(this.jdField_a_of_type_Boolean);
+          localStringBuilder.append(this.b);
           QLog.d("CustomizeStrategyFactory", 2, localStringBuilder.toString());
         }
-        if (this.c)
+        if (this.k)
         {
-          this.c = false;
+          this.k = false;
           ??? = QWalletHelperImpl.getAppRuntime();
           if ((??? instanceof BaseQQAppInterface))
           {
@@ -255,44 +238,14 @@ public class CustomizeStrategyFactory
   
   public boolean a()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.e;
   }
   
   public void b()
   {
-    a();
-    ??? = this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
-    if (??? != null) {
-      ((QQLruCache)???).evictAll();
-    }
-    ??? = this.jdField_a_of_type_AndroidUtilSparseArray;
-    if (??? != null)
-    {
-      int j = ((SparseArray)???).size();
-      int i = 0;
-      while (i < j)
-      {
-        ((CustomizeStrategyFactory.HBCustomizeStrategy)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a();
-        i += 1;
-      }
-      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    }
-    synchronized (this.jdField_b_of_type_ArrayOfByte)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletConfigIQWalletConfigService.unRegisterUpdateListener("redPack", this);
-      }
-      this.d = true;
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler = null;
-      jdField_a_of_type_ComTencentMobileqqQwalletHbAioElemImplCustomizeStrategyFactory = null;
-      this.jdField_b_of_type_Boolean = false;
-      this.c = false;
-      return;
-    }
-    for (;;)
-    {
-      throw localObject2;
+    HashMap localHashMap = this.j;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -305,12 +258,50 @@ public class CustomizeStrategyFactory
       localStringBuilder.append(paramBoolean);
       QLog.d("CustomizeStrategyFactory", 2, localStringBuilder.toString());
     }
-    this.c = paramBoolean;
+    this.k = paramBoolean;
   }
   
-  public boolean b()
+  public void c()
   {
-    return this.jdField_a_of_type_Boolean;
+    b();
+    ??? = this.h;
+    if (??? != null) {
+      ((QQLruCache)???).evictAll();
+    }
+    ??? = this.g;
+    if (??? != null)
+    {
+      int i1 = ((SparseArray)???).size();
+      int n = 0;
+      while (n < i1)
+      {
+        ((CustomizeStrategyFactory.HBCustomizeStrategy)this.g.valueAt(n)).a();
+        n += 1;
+      }
+      this.g.clear();
+    }
+    synchronized (this.l)
+    {
+      if (this.c != null) {
+        this.c.unRegisterUpdateListener("redPack", this);
+      }
+      this.m = true;
+      this.b = true;
+      this.i = null;
+      f = null;
+      this.e = false;
+      this.k = false;
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  public boolean e()
+  {
+    return this.b;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -318,7 +309,7 @@ public class CustomizeStrategyFactory
     if (paramMessage.what == 1)
     {
       RedPacketInfo localRedPacketInfo = (RedPacketInfo)paramMessage.obj;
-      ICustomizeStrategyFactory.OnCustomizeListener localOnCustomizeListener = (ICustomizeStrategyFactory.OnCustomizeListener)this.jdField_a_of_type_JavaUtilHashMap.remove(localRedPacketInfo);
+      ICustomizeStrategyFactory.OnCustomizeListener localOnCustomizeListener = (ICustomizeStrategyFactory.OnCustomizeListener)this.j.remove(localRedPacketInfo);
       if (QLog.isColorLevel())
       {
         paramMessage = new StringBuilder();
@@ -329,19 +320,19 @@ public class CustomizeStrategyFactory
         paramMessage.append("| templateId=");
         paramMessage.append(localRedPacketInfo.templateId);
         paramMessage.append("| content=");
-        paramMessage.append(localRedPacketInfo.jdField_a_of_type_JavaLangString);
+        paramMessage.append(localRedPacketInfo.d);
         paramMessage.append("| info=");
         paramMessage.append(localRedPacketInfo);
         paramMessage.append("|");
         paramMessage.append(System.currentTimeMillis());
         QLog.d("CustomizeStrategyFactory", 2, paramMessage.toString());
       }
-      if (!this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.containsKey(localRedPacketInfo.jdField_b_of_type_JavaLangString))
+      if (!this.h.containsKey(localRedPacketInfo.k))
       {
         paramMessage = null;
         if (localRedPacketInfo.type == 2)
         {
-          paramMessage = new VipRedPkgElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+          paramMessage = new VipRedPkgElem(localRedPacketInfo.k);
           paramMessage.a(localRedPacketInfo);
         }
         else if ((localRedPacketInfo.type != 1) && (localRedPacketInfo.type != 4))
@@ -350,42 +341,42 @@ public class CustomizeStrategyFactory
           {
             if (localRedPacketInfo.skinType == 1)
             {
-              paramMessage = new SkinRedPkgElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+              paramMessage = new SkinRedPkgElem(localRedPacketInfo.k);
               paramMessage.a(localRedPacketInfo);
-              localRedPacketInfo.icon = paramMessage.a(localRedPacketInfo);
+              localRedPacketInfo.icon = paramMessage.b(localRedPacketInfo);
             }
             else if ((localRedPacketInfo.skinType != 2) && (localRedPacketInfo.skinType != 4))
             {
               if (localRedPacketInfo.skinType == 3)
               {
-                paramMessage = new BigAnimRedPkgElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+                paramMessage = new BigAnimRedPkgElem(localRedPacketInfo.k);
                 paramMessage.a(localRedPacketInfo);
               }
             }
             else
             {
-              paramMessage = new ResPathRedPkgElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+              paramMessage = new ResPathRedPkgElem(localRedPacketInfo.k);
               paramMessage.a(localRedPacketInfo);
             }
           }
           else if (localRedPacketInfo.type == 6)
           {
-            paramMessage = new VoiceResElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+            paramMessage = new VoiceResElem(localRedPacketInfo.k);
             paramMessage.a(localRedPacketInfo);
           }
           else if (localRedPacketInfo.type == 7)
           {
-            paramMessage = new PanelRedPkgElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+            paramMessage = new PanelRedPkgElem(localRedPacketInfo.k);
             paramMessage.a(localRedPacketInfo);
           }
         }
         else
         {
-          paramMessage = new ThemeRedPkgElem(localRedPacketInfo.jdField_b_of_type_JavaLangString);
+          paramMessage = new ThemeRedPkgElem(localRedPacketInfo.k);
           paramMessage.a(localRedPacketInfo);
         }
         if ((paramMessage != null) && (paramMessage.a())) {
-          this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localRedPacketInfo.jdField_b_of_type_JavaLangString, paramMessage);
+          this.h.put(localRedPacketInfo.k, paramMessage);
         }
       }
       if (localOnCustomizeListener != null) {
@@ -397,7 +388,7 @@ public class CustomizeStrategyFactory
   
   public void onUpdate(String paramString1, String paramString2, ConfigInfo paramConfigInfo)
   {
-    paramString1 = this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
+    paramString1 = this.h;
     if (paramString1 == null) {
       return;
     }
@@ -414,7 +405,7 @@ public class CustomizeStrategyFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.elem.impl.CustomizeStrategyFactory
  * JD-Core Version:    0.7.0.1
  */

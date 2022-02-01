@@ -17,19 +17,19 @@ class PrinterSubOptionActivity$PrinterItemAdapter$1
   
   public void onClick(View paramView)
   {
-    Object localObject = (TextView)paramView.findViewById(2131364362);
+    Object localObject = (TextView)paramView.findViewById(2131430390);
     if (localObject != null)
     {
-      PrinterSubOptionActivity.CloudPrinter localCloudPrinter = (PrinterSubOptionActivity.CloudPrinter)this.a.a.b.get(((Integer)((TextView)localObject).getTag()).intValue());
-      if (localCloudPrinter.jdField_a_of_type_Long != 0L) {
-        localObject = this.a.a.a.a.a(localCloudPrinter.jdField_a_of_type_Long);
+      PrinterSubOptionActivity.CloudPrinter localCloudPrinter = (PrinterSubOptionActivity.CloudPrinter)this.a.a.h.get(((Integer)((TextView)localObject).getTag()).intValue());
+      if (localCloudPrinter.a != 0L) {
+        localObject = this.a.a.c.h.a(localCloudPrinter.a);
       } else {
-        localObject = this.a.a.a.a.b(localCloudPrinter.jdField_a_of_type_JavaLangString);
+        localObject = this.a.a.c.h.b(localCloudPrinter.b);
       }
-      this.a.a.a.a.a = ((PrinterEntity)localObject);
+      this.a.a.c.h.a = ((PrinterEntity)localObject);
       localObject = new Intent();
-      ((Intent)localObject).putExtra("sPrinterName", localCloudPrinter.jdField_a_of_type_JavaLangString);
-      ((Intent)localObject).putExtra("sPrintDin", localCloudPrinter.jdField_a_of_type_Long);
+      ((Intent)localObject).putExtra("sPrinterName", localCloudPrinter.b);
+      ((Intent)localObject).putExtra("sPrintDin", localCloudPrinter.a);
       this.a.a.setResult(-1, (Intent)localObject);
       this.a.a.finish();
     }

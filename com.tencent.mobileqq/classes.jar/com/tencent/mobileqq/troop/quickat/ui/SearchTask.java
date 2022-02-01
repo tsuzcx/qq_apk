@@ -19,32 +19,29 @@ import java.util.Set;
 
 public class SearchTask
 {
-  public int a;
-  private LinkedHashMap<String, List<ChatHistoryTroopMemberFragment.ATroopMember>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  private List<ChatHistoryTroopMemberFragment.ATroopMember> jdField_a_of_type_JavaUtilList;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-  public int b;
-  private List<ChatHistoryTroopMemberFragment.ATroopMember> b;
-  public int c;
-  private List<ChatHistoryTroopMemberFragment.ATroopMember> c;
+  public int a = 0;
+  public int b = 0;
+  public int c = 0;
+  private int[] d = new int[0];
+  private String[] e = new String[0];
+  private List<ChatHistoryTroopMemberFragment.ATroopMember> f;
+  private List<ChatHistoryTroopMemberFragment.ATroopMember> g;
+  private LinkedHashMap<String, List<ChatHistoryTroopMemberFragment.ATroopMember>> h = new LinkedHashMap();
+  private List<ChatHistoryTroopMemberFragment.ATroopMember> i;
   
   public SearchTask(List<ChatHistoryTroopMemberFragment.ATroopMember> paramList)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+    this.f = paramList;
+    this.i = new ArrayList();
   }
   
   private SearchTask.SearchResult a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo, String paramString, SearchTask.SearchResult paramSearchResult, boolean paramBoolean)
   {
     if (((AtUtil.a(paramQQAppInterface, paramTroopInfo)) || (AtUtil.b(paramQQAppInterface, paramTroopInfo))) && (!paramBoolean))
     {
-      paramQQAppInterface = QuickAtListHelper.a();
+      paramQQAppInterface = QuickAtListHelper.d();
       if ((TextUtils.isEmpty(paramString)) || (QuickAtListHelper.a(paramString, paramQQAppInterface))) {
-        paramSearchResult.jdField_a_of_type_JavaUtilList.add(0, paramQQAppInterface);
+        paramSearchResult.c.add(0, paramQQAppInterface);
       }
     }
     return paramSearchResult;
@@ -55,23 +52,23 @@ public class SearchTask
     paramTroopInfo = a(paramString, paramTroopInfo);
     if (paramTroopInfo.length >= 3)
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap = ((LinkedHashMap)paramTroopInfo[0]);
-      this.jdField_a_of_type_ArrayOfInt = ((int[])paramTroopInfo[1]);
-      this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])paramTroopInfo[2]);
+      this.h = ((LinkedHashMap)paramTroopInfo[0]);
+      this.d = ((int[])paramTroopInfo[1]);
+      this.e = ((String[])paramTroopInfo[2]);
     }
     else
     {
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-      this.jdField_a_of_type_ArrayOfInt = new int[0];
-      this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+      this.h.clear();
+      this.d = new int[0];
+      this.e = new String[0];
     }
-    this.jdField_c_of_type_JavaUtilList = a(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.i = a(this.h);
     paramTroopInfo = new SearchTask.SearchResult();
-    paramTroopInfo.jdField_a_of_type_JavaLangString = paramString;
-    paramTroopInfo.jdField_a_of_type_Boolean = paramBoolean;
-    paramTroopInfo.jdField_a_of_type_ArrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    paramTroopInfo.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ArrayOfJavaLangString;
-    paramTroopInfo.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+    paramTroopInfo.a = paramString;
+    paramTroopInfo.b = paramBoolean;
+    paramTroopInfo.d = this.d;
+    paramTroopInfo.e = this.e;
+    paramTroopInfo.c = this.i;
     return paramTroopInfo;
   }
   
@@ -92,20 +89,20 @@ public class SearchTask
     {
       try
       {
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_c_of_type_Int = 0;
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        this.b = 0;
+        this.a = 0;
+        this.c = 0;
+        Iterator localIterator = this.g.iterator();
         boolean bool = localIterator.hasNext();
         c2 = 'A';
         if (!bool) {
           continue;
         }
         localATroopMember = (ChatHistoryTroopMemberFragment.ATroopMember)localIterator.next();
-        if ((localATroopMember.jdField_a_of_type_Boolean) || ((!TextUtils.isEmpty(paramString)) && (AtUtil.a(localATroopMember.jdField_a_of_type_JavaLangString, paramTroopInfo))) || ((!TextUtils.isEmpty(paramString)) && (AtUtil.b(localATroopMember.jdField_a_of_type_JavaLangString, paramTroopInfo)))) {
+        if ((localATroopMember.A) || ((!TextUtils.isEmpty(paramString)) && (AtUtil.a(localATroopMember.a, paramTroopInfo))) || ((!TextUtils.isEmpty(paramString)) && (AtUtil.b(localATroopMember.a, paramTroopInfo)))) {
           continue;
         }
-        localObject1 = localATroopMember.x;
+        localObject1 = localATroopMember.U;
         if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
           continue;
         }
@@ -115,7 +112,7 @@ public class SearchTask
       {
         char c2;
         ChatHistoryTroopMemberFragment.ATroopMember localATroopMember;
-        int i;
+        int j;
         long l;
         continue;
         throw paramString;
@@ -124,7 +121,7 @@ public class SearchTask
         continue;
         localObject1 = "★";
         continue;
-        if ((97 <= i) && (i <= 122)) {
+        if ((97 <= j) && (j <= 122)) {
           continue;
         }
         Object localObject2 = "#";
@@ -135,11 +132,11 @@ public class SearchTask
       localObject2 = localObject1;
       if (((String)localObject1).length() == 1)
       {
-        i = ((String)localObject1).charAt(0);
+        j = ((String)localObject1).charAt(0);
         localObject2 = localObject1;
         if (!((String)localObject1).equals("★"))
         {
-          if ((65 > i) || (i > 90)) {
+          if ((65 > j) || (j > 90)) {
             continue;
           }
           localObject2 = ((String)localObject1).toUpperCase();
@@ -148,7 +145,7 @@ public class SearchTask
       if (localLinkedHashMap.get(localObject2) == null) {
         localLinkedHashMap.put(localObject2, new ArrayList());
       }
-      this.jdField_b_of_type_Int += 1;
+      this.b += 1;
       ((List)localLinkedHashMap.get(localObject2)).add(localATroopMember);
     }
     paramTroopInfo = new AtUtil.AlphabetComparator(paramTroopInfo);
@@ -157,7 +154,7 @@ public class SearchTask
     c1 = c2;
     if (localLinkedHashMap.get("★") != null)
     {
-      this.jdField_a_of_type_Int += 1;
+      this.a += 1;
       Collections.sort((List)localLinkedHashMap.get("★"), paramTroopInfo);
       paramString.put("★", localLinkedHashMap.get("★"));
       c1 = c2;
@@ -166,7 +163,7 @@ public class SearchTask
     {
       if (localLinkedHashMap.get(String.valueOf(c1)) != null)
       {
-        this.jdField_a_of_type_Int += 1;
+        this.a += 1;
         Collections.sort((List)localLinkedHashMap.get(String.valueOf(c1)), paramTroopInfo);
         paramString.put(String.valueOf(c1), localLinkedHashMap.get(String.valueOf(c1)));
       }
@@ -175,7 +172,7 @@ public class SearchTask
     {
       if (localLinkedHashMap.get("#") != null)
       {
-        this.jdField_a_of_type_Int += 1;
+        this.a += 1;
         Collections.sort((List)localLinkedHashMap.get("#"), paramTroopInfo);
         paramString.put("#", localLinkedHashMap.get("#"));
       }
@@ -194,18 +191,18 @@ public class SearchTask
         return new Object[0];
       }
       paramTroopInfo[0] = 0;
-      i = 1;
-      while (i < paramTroopInfo.length)
+      j = 1;
+      while (j < paramTroopInfo.length)
       {
-        paramTroopInfo[i] += paramTroopInfo[(i - 1)] + ((List)paramString.get(((Iterator)localObject2).next())).size();
-        i += 1;
+        paramTroopInfo[j] += paramTroopInfo[(j - 1)] + ((List)paramString.get(((Iterator)localObject2).next())).size();
+        j += 1;
       }
       localObject2 = paramString.keySet().iterator();
-      i = 0;
+      j = 0;
       while (((Iterator)localObject2).hasNext())
       {
-        localObject1[i] = ((String)((Iterator)localObject2).next());
-        i += 1;
+        localObject1[j] = ((String)((Iterator)localObject2).next());
+        j += 1;
       }
       return new Object[] { paramString, paramTroopInfo, localObject1 };
     }
@@ -213,19 +210,19 @@ public class SearchTask
   
   public SearchTask.SearchResult a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean1, SessionInfo paramSessionInfo, boolean paramBoolean2)
   {
-    paramSessionInfo = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    paramSessionInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramSessionInfo);
+    paramSessionInfo = paramSessionInfo.b;
+    paramSessionInfo = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).f(paramSessionInfo);
     if (TextUtils.isEmpty(paramString)) {
-      this.jdField_b_of_type_JavaUtilList = QuickAtListHelper.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1);
+      this.g = QuickAtListHelper.a(paramQQAppInterface, this.f, paramBoolean1);
     } else {
-      this.jdField_b_of_type_JavaUtilList = new ArrayList(QuickAtListHelper.a(paramString, QuickAtListHelper.a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList, paramBoolean1), paramQQAppInterface, paramSessionInfo));
+      this.g = new ArrayList(QuickAtListHelper.a(paramString, QuickAtListHelper.a(paramQQAppInterface, this.f, paramBoolean1), paramQQAppInterface, paramSessionInfo));
     }
     return a(paramQQAppInterface, paramSessionInfo, paramString, a(paramString, paramBoolean1, paramSessionInfo), paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.SearchTask
  * JD-Core Version:    0.7.0.1
  */

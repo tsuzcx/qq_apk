@@ -11,7 +11,7 @@ public abstract interface IShortVideoGuideUtil
 {
   public static final String TAG = "ShortVideoGuideUtil";
   
-  public abstract boolean isAllResourceReady(AppInterface paramAppInterface);
+  public abstract boolean isAllResourceReady();
   
   public abstract boolean isResourceReady(AppInterface paramAppInterface);
   

@@ -17,17 +17,17 @@ import java.util.Locale;
 public class SearchHistoryAdapter
   extends BaseAdapter
 {
-  private static final String jdField_a_of_type_JavaLangString = "SearchHistoryAdapter";
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  private List<HistoryItem> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private static final String a = "SearchHistoryAdapter";
+  private Context b;
+  private MqqWeakReferenceHandler c;
+  private QQAppInterface d;
+  private List<HistoryItem> e = new ArrayList();
   
   public SearchHistoryAdapter(Context paramContext, MqqWeakReferenceHandler paramMqqWeakReferenceHandler, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = paramMqqWeakReferenceHandler;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.b = paramContext;
+    this.c = paramMqqWeakReferenceHandler;
+    this.d = paramQQAppInterface;
   }
   
   public void a(String paramString)
@@ -35,7 +35,7 @@ public class SearchHistoryAdapter
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("loadHistory, keyword = ");
       localStringBuilder.append(paramString);
@@ -44,8 +44,8 @@ public class SearchHistoryAdapter
     if (paramString == null) {
       return;
     }
-    Object localObject = HistoryChatMsgSearchKeyUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    this.jdField_a_of_type_JavaUtilList.clear();
+    Object localObject = HistoryChatMsgSearchKeyUtil.a(this.d.getCurrentAccountUin());
+    this.e.clear();
     if (localObject != null)
     {
       int j = localObject.length;
@@ -54,7 +54,7 @@ public class SearchHistoryAdapter
       {
         localStringBuilder = localObject[i];
         if (a(localStringBuilder, paramString)) {
-          this.jdField_a_of_type_JavaUtilList.add(new HistoryItem(localStringBuilder));
+          this.e.add(new HistoryItem(localStringBuilder));
         }
         i += 1;
       }
@@ -62,15 +62,15 @@ public class SearchHistoryAdapter
     notifyDataSetChanged();
     if (QLog.isColorLevel())
     {
-      localObject = jdField_a_of_type_JavaLangString;
+      localObject = a;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("loadHistory, keyword = ");
       localStringBuilder.append(paramString);
       localStringBuilder.append(", histories = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.toString());
+      localStringBuilder.append(this.e.toString());
       QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(3);
+    this.c.sendEmptyMessage(3);
   }
   
   boolean a(String paramString1, String paramString2)
@@ -80,12 +80,12 @@ public class SearchHistoryAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.e.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.e.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -99,9 +99,9 @@ public class SearchHistoryAdapter
     View localView;
     if (paramView == null)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559334, null);
+      localView = View.inflate(this.b, 2131625300, null);
       paramView = new SearchHistoryAdapter.HistoryHolder(null);
-      paramView.a = ((TextView)localView.findViewById(2131378460));
+      paramView.a = ((TextView)localView.findViewById(2131447062));
       localView.setTag(paramView);
     }
     else
@@ -110,14 +110,14 @@ public class SearchHistoryAdapter
       localView = paramView;
       paramView = localHistoryHolder;
     }
-    paramView.a.setText(localHistoryItem.jdField_a_of_type_JavaLangString);
+    paramView.a.setText(localHistoryItem.a);
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.SearchHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

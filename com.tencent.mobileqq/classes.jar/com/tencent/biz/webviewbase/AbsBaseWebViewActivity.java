@@ -129,7 +129,7 @@ public abstract class AbsBaseWebViewActivity
   public final SwiftBrowserStatistics mStatistics = (SwiftBrowserStatistics)this.mComponentsProvider.a(-2);
   public SwiftIphoneTitleBarUI mSwiftTitleUI = null;
   private Drawable mTitleLeftDrawable;
-  public final SwiftBrowserUIStyle mUIStyle = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle;
+  public final SwiftBrowserUIStyle mUIStyle = this.mUIStyleHandler.f;
   public final SwiftBrowserUIStyleHandler mUIStyleHandler = (SwiftBrowserUIStyleHandler)this.mComponentsProvider.a(2);
   public long mWWVRulesFromUrl = 0L;
   private WebViewClient mWebViewClient;
@@ -139,15 +139,20 @@ public abstract class AbsBaseWebViewActivity
   protected SonicClientImpl sonicClient;
   public String uin;
   
+  private CustomWebChromeClient getChromeClient()
+  {
+    return new AbsBaseWebViewActivity.4(this);
+  }
+  
   private void initPluginEngine()
   {
     if (this.mPluginEngine != null) {
       return;
     }
-    if ((this.mPluginEngine == null) && (WebViewPluginEngine.a != null))
+    if ((this.mPluginEngine == null) && (WebViewPluginEngine.f != null))
     {
-      this.mPluginEngine = WebViewPluginEngine.a;
-      WebViewPluginEngine.a = null;
+      this.mPluginEngine = WebViewPluginEngine.f;
+      WebViewPluginEngine.f = null;
       WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, this);
       return;
     }
@@ -180,6 +185,111 @@ public abstract class AbsBaseWebViewActivity
       ((StringBuilder)localObject).append(paramString);
       QLog.d("WebLog_WebViewBase", 1, ((StringBuilder)localObject).toString());
     }
+  }
+  
+  private void processIdNotNull(String paramString1, String paramString2, int paramInt1, int paramInt2, JsBridgeListener paramJsBridgeListener, View.OnClickListener paramOnClickListener, boolean paramBoolean)
+  {
+    this.rightViewText.setVisibility(8);
+    this.rightViewImg.setVisibility(0);
+    Object localObject = this.mUIStyle;
+    boolean bool;
+    if (paramInt1 != 4) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((SwiftBrowserUIStyle)localObject).l = bool;
+    switch (paramInt1)
+    {
+    case 6: 
+    default: 
+      this.rightViewImg.setVisibility(8);
+      break;
+    case 10: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130852467, 2130852467);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889657));
+      break;
+    case 9: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130839015, 2130839015);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889657));
+      break;
+    case 8: 
+    case 11: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130852265, 2130852269);
+      this.rightViewImg.setContentDescription(getResources().getString(2131886199));
+      break;
+    case 7: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130843565, 2130843568);
+      this.rightViewImg.setContentDescription(getResources().getString(2131886199));
+      break;
+    case 5: 
+      this.rightViewImg.setImageResource(2130845007);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889659));
+      ((AnimationDrawable)this.rightViewImg.getDrawable()).start();
+      break;
+    case 4: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130839550, 2130839542);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889658));
+      break;
+    case 3: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130841091, 2130841087);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889656));
+      break;
+    case 2: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130844962, 2130844962);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889653));
+      break;
+    case 1: 
+      this.mUIStyleHandler.a(this.rightViewImg, false, 2130844963, 2130844963);
+      this.rightViewImg.setContentDescription(getResources().getString(2131889654));
+    }
+    if (paramInt2 != 0)
+    {
+      if (this.mRightCornerIcon == null)
+      {
+        this.mRightCornerIcon = new ImageView(this);
+        localObject = (RelativeLayout)findViewById(2131445049);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        localLayoutParams.addRule(7, 2131436194);
+        localLayoutParams.addRule(6, 2131436194);
+        localLayoutParams.setMargins(0, 0, 0, 0);
+        this.mRightCornerIcon.setLayoutParams(localLayoutParams);
+        ((RelativeLayout)localObject).addView(this.mRightCornerIcon);
+      }
+      this.mRightCornerIcon.setVisibility(0);
+      if (paramInt2 != 6) {
+        this.mRightCornerIcon.setVisibility(8);
+      } else {
+        this.mRightCornerIcon.setImageResource(2130844798);
+      }
+    }
+    else
+    {
+      localObject = this.mRightCornerIcon;
+      if (localObject != null) {
+        ((ImageView)localObject).setVisibility(8);
+      }
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      this.rightViewImg.setContentDescription(paramString2);
+    }
+    if (paramOnClickListener != null)
+    {
+      this.rightViewImg.setOnClickListener(paramOnClickListener);
+    }
+    else if ((paramString1 != null) && (!paramBoolean))
+    {
+      this.rightViewImg.setOnClickListener(this);
+      this.rightViewText.setOnClickListener(this);
+      this.mRightButtonCallback = paramString1.trim();
+    }
+    else
+    {
+      this.mRightButtonCallback = null;
+      this.mRightButtonListener = paramJsBridgeListener;
+    }
+    this.isRecordTitleLeftDrawable = false;
+    this.isRecordTitleRightDrawable = false;
   }
   
   public static int switchRequestCodeImpl(WebViewPlugin paramWebViewPlugin, byte paramByte)
@@ -215,11 +325,11 @@ public abstract class AbsBaseWebViewActivity
   
   public final TouchWebView createWebViewInstance(ViewGroup paramViewGroup)
   {
-    Util.a("Web_qqbrowser_init_only_webview");
+    Util.f("Web_qqbrowser_init_only_webview");
     Object localObject2 = getIntent();
     long l = System.currentTimeMillis();
     if (0L != (this.mWWVRulesFromUrl & 0x40)) {
-      localObject1 = SwiftReuseTouchWebView.a(this);
+      localObject1 = SwiftReuseTouchWebView.b(this);
     } else {
       localObject1 = new TouchWebView(this);
     }
@@ -232,7 +342,7 @@ public abstract class AbsBaseWebViewActivity
       } else {
         bool = false;
       }
-      ((SwiftBrowserStatistics)localObject3).r = bool;
+      ((SwiftBrowserStatistics)localObject3).aF = bool;
     }
     if (QLog.isColorLevel())
     {
@@ -242,7 +352,7 @@ public abstract class AbsBaseWebViewActivity
       QLog.d("webviewinit", 2, ((StringBuilder)localObject3).toString());
     }
     ((TouchWebView)localObject1).setIntent((Intent)localObject2);
-    Util.b("Web_qqbrowser_init_only_webview");
+    Util.g("Web_qqbrowser_init_only_webview");
     if ((this.mApp == null) && (QLog.isColorLevel())) {
       QLog.w("WebLog_WebViewBase", 2, "Caution! AppRuntime is null!");
     }
@@ -254,21 +364,21 @@ public abstract class AbsBaseWebViewActivity
     }
     System.currentTimeMillis();
     if (this.mChromeClient == null) {
-      this.mChromeClient = new AbsBaseWebViewActivity.1(this);
+      this.mChromeClient = getChromeClient();
     }
     ((TouchWebView)localObject1).setWebChromeClient(this.mChromeClient);
     if (this.mWebViewClient == null) {
       if (Build.VERSION.SDK_INT >= 21) {
-        this.mWebViewClient = new AbsBaseWebViewActivity.2(this);
+        this.mWebViewClient = new AbsBaseWebViewActivity.1(this);
       } else {
-        this.mWebViewClient = new AbsBaseWebViewActivity.3(this);
+        this.mWebViewClient = new AbsBaseWebViewActivity.2(this);
       }
     }
     ((TouchWebView)localObject1).setWebViewClient(this.mWebViewClient);
     ((TouchWebView)localObject1).setScrollBarStyle(0);
-    Util.a("Web_AdjustSettings");
+    Util.f("Web_AdjustSettings");
     Object localObject3 = ((TouchWebView)localObject1).getSettings();
-    Util.a("Web_SetUserAgent");
+    Util.f("Web_SetUserAgent");
     localObject2 = ((WebSettings)localObject3).getUserAgentString();
     Object localObject4 = getUAMark();
     if (((TouchWebView)localObject1).getX5WebViewExtension() != null) {
@@ -277,7 +387,7 @@ public abstract class AbsBaseWebViewActivity
       bool = false;
     }
     ((WebSettings)localObject3).setUserAgentString(SwiftWebViewUtils.a((String)localObject2, (String)localObject4, bool));
-    Util.b("Web_SetUserAgent");
+    Util.g("Web_SetUserAgent");
     ((WebSettings)localObject3).setSavePassword(false);
     ((WebSettings)localObject3).setSaveFormData(false);
     ((WebSettings)localObject3).setBuiltInZoomControls(true);
@@ -288,7 +398,7 @@ public abstract class AbsBaseWebViewActivity
     try
     {
       if (((PackageManager)localObject2).hasSystemFeature("android.hardware.touchscreen.multitouch")) {
-        break label439;
+        break label435;
       }
       bool = ((PackageManager)localObject2).hasSystemFeature("android.hardware.faketouch.multitouch.distinct");
       if (!bool) {}
@@ -301,24 +411,24 @@ public abstract class AbsBaseWebViewActivity
         StringBuilder localStringBuilder;
         ((TouchWebView)localObject1).requestFocus();
         ((TouchWebView)localObject1).setFocusableInTouchMode(true);
-        ((TouchWebView)localObject1).setDownloadListener(new AbsBaseWebViewActivity.4(this, (TouchWebView)localObject1));
+        ((TouchWebView)localObject1).setDownloadListener(new AbsBaseWebViewActivity.3(this, (TouchWebView)localObject1));
         CookieSyncManager.createInstance(getApplicationContext());
         if (((TouchWebView)localObject1).getX5WebViewExtension() == null) {
-          break label765;
+          break label761;
         }
         this.mX5CoreActive = true;
         ((TouchWebView)localObject1).getX5WebViewExtension().setWebViewClientExtension(new AbsBaseWebViewActivity.DownloadQQBrowserExtension(this, (TouchWebView)localObject1));
         BaseOpenWebMonitor.b(getIntent(), "use_x5", "1");
-        break label778;
+        break label774;
         BaseOpenWebMonitor.b(getIntent(), "use_x5", "2");
         ((TouchWebView)localObject1).getView().setOnTouchListener(this);
         if (!this.mNightMode) {
-          break label800;
+          break label796;
         }
         ((TouchWebView)localObject1).setMask(true);
-        Util.b("Web_AdjustSettings");
+        Util.g("Web_AdjustSettings");
         if (paramViewGroup == null) {
-          break label815;
+          break label811;
         }
         paramViewGroup.addView((View)localObject1);
         return localObject1;
@@ -326,14 +436,14 @@ public abstract class AbsBaseWebViewActivity
       }
       catch (Exception localException)
       {
-        break label687;
+        break label683;
       }
     }
     i = 0;
-    break label441;
-    label439:
+    break label437;
+    label435:
     i = 1;
-    label441:
+    label437:
     ((WebSettings)localObject3).setDisplayZoomControls(i ^ 0x1);
     ((WebSettings)localObject3).setPluginsEnabled(true);
     ((WebSettings)localObject3).setJavaScriptEnabled(true);
@@ -351,11 +461,11 @@ public abstract class AbsBaseWebViewActivity
         ((StringBuilder)localObject4).append("_");
         ((StringBuilder)localObject4).append(((String)localObject2).substring(i + 1));
         localObject2 = ((StringBuilder)localObject4).toString();
-        break label557;
+        break label553;
       }
     }
     localObject2 = "";
-    label557:
+    label553:
     localObject4 = getApplicationContext();
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("database");
@@ -478,13 +588,13 @@ public abstract class AbsBaseWebViewActivity
     }
     QQBrowserActivity.sQQBrowserActivityCounter += 1;
     this.mNightMode = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-    setTheme(2131755316);
+    setTheme(2131952009);
     this.authConfig = AuthorizeConfig.a();
     WebAccelerateHelper.isWebViewCache = true;
     QLog.d("WebLog_WebViewBase", 1, "doOnCreate, WebAccelerateHelper.isWebViewCache = true");
     paramBundle = this.mStatistics;
     this.isDestroyed = false;
-    paramBundle.k = false;
+    paramBundle.av = false;
     this.uin = this.mApp.getAccount();
     this.injector = AbsBaseWebViewActivityInjectorUtil.a();
     paramBundle = this.injector;
@@ -504,7 +614,7 @@ public abstract class AbsBaseWebViewActivity
     QQBrowserActivity.sQQBrowserActivityCounter -= 1;
     Object localObject = this.mStatistics;
     this.isDestroyed = true;
-    ((SwiftBrowserStatistics)localObject).k = true;
+    ((SwiftBrowserStatistics)localObject).av = true;
     localObject = this.mChromeClient;
     if (localObject != null) {
       ((CustomWebChromeClient)localObject).a();
@@ -514,7 +624,7 @@ public abstract class AbsBaseWebViewActivity
     {
       localObject = ((TouchWebView)localObject).getPluginEngine();
       if (localObject != null) {
-        ((WebViewPluginEngine)localObject).b();
+        ((WebViewPluginEngine)localObject).d();
       }
       if (this.mWebViewInstance.getParent() == null) {}
     }
@@ -660,7 +770,7 @@ public abstract class AbsBaseWebViewActivity
     }
     super.finish();
     if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
-      overridePendingTransition(0, 2130771992);
+      overridePendingTransition(0, 2130771995);
     }
   }
   
@@ -727,24 +837,24 @@ public abstract class AbsBaseWebViewActivity
       this.vg.setOnTouchListener(new AbsBaseWebViewActivity.7(this));
     }
     removeWebViewLayerType();
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView = this.leftView;
-    this.mSwiftTitleUI.b = this.centerView;
-    this.mSwiftTitleUI.c = this.rightViewText;
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView = this.rightViewImg;
-    this.mSwiftTitleUI.jdField_a_of_type_AndroidViewViewGroup = this.vg;
+    this.mSwiftTitleUI.d = this.leftView;
+    this.mSwiftTitleUI.e = this.centerView;
+    this.mSwiftTitleUI.f = this.rightViewText;
+    this.mSwiftTitleUI.h = this.rightViewImg;
+    this.mSwiftTitleUI.o = this.vg;
   }
   
   public final void initPluginEngineOnActivityCreated()
   {
-    if ((this.mPluginEngine == null) && (WebViewPluginEngine.a != null))
+    if ((this.mPluginEngine == null) && (WebViewPluginEngine.f != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AbsBaseWebViewActivity", 2, "-->web engine and plugin initialized at process preload!");
       }
-      this.mPluginEngine = WebViewPluginEngine.a;
-      WebViewPluginEngine.a = null;
+      this.mPluginEngine = WebViewPluginEngine.f;
+      WebViewPluginEngine.f = null;
       WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.mPluginEngine, this.mApp, this);
-      this.mPluginEngine.a();
+      this.mPluginEngine.b();
       return;
     }
     if (this.mPluginEngine == null) {
@@ -825,13 +935,13 @@ public abstract class AbsBaseWebViewActivity
   
   protected void onCreate(Bundle paramBundle)
   {
-    SwiftWebAccelerator.a().a();
+    SwiftWebAccelerator.a().b();
     String str = SwiftWebViewUtils.a(getIntent());
     WebAccelerateHelper.getInstance().preGetKey(str, getIntent(), this.mApp);
     WebAccelerateHelper.getInstance().preCheckOffline(str);
     WebAccelerateHelper.getInstance().preFetchResource(str);
     this.mUIStyleHandler.b();
-    this.mSwiftTitleUI = this.mUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI;
+    this.mSwiftTitleUI = this.mUIStyleHandler.g;
     boolean bool = WebAccelerateHelper.isWebViewCache;
     initSonicSession(str);
     ThreadManager.getFileThreadHandler().post(new AbsBaseWebViewActivity.6(this, bool));
@@ -853,7 +963,7 @@ public abstract class AbsBaseWebViewActivity
     paramBundle.append("_");
     paramBundle.append(Build.MODEL);
     paramBundle = paramBundle.toString();
-    if ((Build.VERSION.SDK_INT > 10) && (!WebViewComUtils.a.contains(paramBundle))) {
+    if ((Build.VERSION.SDK_INT > 10) && (!WebViewComUtils.b.contains(paramBundle))) {
       getWindow().addFlags(16777216);
     }
     getWindow().setFormat(-3);
@@ -870,9 +980,9 @@ public abstract class AbsBaseWebViewActivity
       this.mNightMode = ThemeUtil.isInNightMode(this.mApp);
       dispatchPluginEvent(8589934604L, null);
     }
-    if ((this.mSystemBarComp != null) && (!this.mUIStyle.i))
+    if ((this.mSystemBarComp != null) && (!this.mUIStyle.r))
     {
-      int i = getResources().getColor(2131167114);
+      int i = getResources().getColor(2131168092);
       this.mSystemBarComp.setStatusColor(i);
       this.mSystemBarComp.setStatusBarColor(i);
     }
@@ -916,7 +1026,7 @@ public abstract class AbsBaseWebViewActivity
     if (this.mWebViewInstance != null)
     {
       JsBridgeListener localJsBridgeListener = this.mRightButtonListener;
-      if ((localJsBridgeListener != null) && (localJsBridgeListener.a))
+      if ((localJsBridgeListener != null) && (localJsBridgeListener.c))
       {
         this.mWebViewInstance.callJs4OpenApi(this.mRightButtonListener, 0, new String[] { "" });
         return true;
@@ -932,15 +1042,15 @@ public abstract class AbsBaseWebViewActivity
   
   public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, JsBridgeListener paramJsBridgeListener, View.OnClickListener paramOnClickListener)
   {
-    int i;
-    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.a)) {
-      i = 1;
+    boolean bool;
+    if ((paramJsBridgeListener != null) && (paramJsBridgeListener.c)) {
+      bool = true;
     } else {
-      i = 0;
+      bool = false;
     }
     if (paramBoolean)
     {
-      this.mUIStyle.e = true;
+      this.mUIStyle.l = true;
       this.rightViewText.setVisibility(8);
       this.rightViewImg.setVisibility(8);
       paramString1 = this.mRightCornerIcon;
@@ -969,13 +1079,12 @@ public abstract class AbsBaseWebViewActivity
     catch (Exception paramString2)
     {
       label149:
-      RelativeLayout.LayoutParams localLayoutParams;
-      label910:
+      label227:
       break label149;
     }
     paramInt1 = 0;
     this.rightViewImg.setBackgroundColor(paramInt1);
-    if ((paramString1 != null) && (i == 0))
+    if ((paramString1 != null) && (!bool))
     {
       this.rightViewImg.setOnClickListener(this);
       this.rightViewText.setOnClickListener(this);
@@ -985,111 +1094,12 @@ public abstract class AbsBaseWebViewActivity
     {
       this.mRightButtonListener = paramJsBridgeListener;
       this.mRightButtonCallback = null;
-      break label910;
-      this.rightViewText.setVisibility(8);
-      this.rightViewImg.setVisibility(0);
-      paramString3 = this.mUIStyle;
-      if (paramInt1 != 4) {
-        paramBoolean = true;
-      } else {
-        paramBoolean = false;
-      }
-      paramString3.e = paramBoolean;
-      switch (paramInt1)
-      {
-      case 6: 
-      default: 
-        this.rightViewImg.setVisibility(8);
-        break;
-      case 10: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130850663, 2130850663);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692634));
-        break;
-      case 9: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130838831, 2130838831);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692634));
-        break;
-      case 8: 
-      case 11: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130850469, 2130850473);
-        this.rightViewImg.setContentDescription(getResources().getString(2131689589));
-        break;
-      case 7: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130842612, 2130842615);
-        this.rightViewImg.setContentDescription(getResources().getString(2131689589));
-        break;
-      case 5: 
-        this.rightViewImg.setImageResource(2130844052);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692636));
-        ((AnimationDrawable)this.rightViewImg.getDrawable()).start();
-        break;
-      case 4: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130839368, 2130839360);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692635));
-        break;
-      case 3: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130840351, 2130840347);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692633));
-        break;
-      case 2: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130844007, 2130844007);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692630));
-        break;
-      case 1: 
-        this.mUIStyleHandler.a(this.rightViewImg, false, 2130844008, 2130844008);
-        this.rightViewImg.setContentDescription(getResources().getString(2131692631));
-      }
-      if (paramInt2 != 0)
-      {
-        if (this.mRightCornerIcon == null)
-        {
-          this.mRightCornerIcon = new ImageView(this);
-          paramString3 = (RelativeLayout)findViewById(2131376756);
-          localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams.addRule(7, 2131369216);
-          localLayoutParams.addRule(6, 2131369216);
-          localLayoutParams.setMargins(0, 0, 0, 0);
-          this.mRightCornerIcon.setLayoutParams(localLayoutParams);
-          paramString3.addView(this.mRightCornerIcon);
-        }
-        this.mRightCornerIcon.setVisibility(0);
-        if (paramInt2 != 6) {
-          this.mRightCornerIcon.setVisibility(8);
-        } else {
-          this.mRightCornerIcon.setImageResource(2130843844);
-        }
-      }
-      else
-      {
-        paramString3 = this.mRightCornerIcon;
-        if (paramString3 != null) {
-          paramString3.setVisibility(8);
-        }
-      }
-      if (!TextUtils.isEmpty(paramString2)) {
-        this.rightViewImg.setContentDescription(paramString2);
-      }
-      if (paramOnClickListener != null)
-      {
-        this.rightViewImg.setOnClickListener(paramOnClickListener);
-      }
-      else if ((paramString1 != null) && (i == 0))
-      {
-        this.rightViewImg.setOnClickListener(this);
-        this.rightViewText.setOnClickListener(this);
-        this.mRightButtonCallback = paramString1.trim();
-      }
-      else
-      {
-        this.mRightButtonCallback = null;
-        this.mRightButtonListener = paramJsBridgeListener;
-      }
-      this.isRecordTitleLeftDrawable = false;
-      this.isRecordTitleRightDrawable = false;
+      break label227;
+      processIdNotNull(paramString1, paramString2, paramInt1, paramInt2, paramJsBridgeListener, paramOnClickListener, bool);
     }
-    if ((this.mUIStyle.a != null) && (this.mUIStyle.a.has("txtclr")))
+    if ((this.mUIStyle.I != null) && (this.mUIStyle.I.has("txtclr")))
     {
-      paramString2 = this.mUIStyle.a.optString("txtclr", "");
+      paramString2 = this.mUIStyle.I.optString("txtclr", "");
       if (!TextUtils.isEmpty(paramString2))
       {
         paramString1 = paramString2;
@@ -1123,7 +1133,7 @@ public abstract class AbsBaseWebViewActivity
     ImageView localImageView;
     if (paramBoolean)
     {
-      this.mUIStyle.e = true;
+      this.mUIStyle.l = true;
       if (this.rightViewText != null) {
         this.rightViewText.setVisibility(8);
       }
@@ -1162,8 +1172,8 @@ public abstract class AbsBaseWebViewActivity
       this.mSystemBarComp.init();
     }
     overridePendingTransition(0, 0);
-    setContentViewNoTitle(2131558724);
-    ((TextView)findViewById(2131371534)).setText(2131692119);
+    setContentViewNoTitle(2131624344);
+    ((TextView)findViewById(2131438913)).setText(2131889100);
     return true;
   }
   
@@ -1194,7 +1204,7 @@ public abstract class AbsBaseWebViewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewbase.AbsBaseWebViewActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="false" android:drawable="@drawable/gg8" />
-    <item android:drawable="@drawable/gg9" />
+    <item android:state_pressed="true" android:drawable="@drawable/icc" />
+    <item android:drawable="@drawable/icb" />
 </selector>

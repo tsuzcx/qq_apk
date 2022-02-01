@@ -24,75 +24,76 @@ import org.jetbrains.annotations.Nullable;
 public abstract class BasePopupView<BEAN>
   extends LinearLayout
 {
-  public static final BasePopupView.Companion a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  private final ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  public static final BasePopupView.Companion b = new BasePopupView.Companion(null);
   @Nullable
-  private Function2<? super BEAN, ? super Bundle, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction2;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdWeiboFrameworkBasePopupView$Companion = new BasePopupView.Companion(null);
-  }
+  private Function2<? super BEAN, ? super Bundle, Unit> a;
+  private Bundle c;
+  private final ViewGroup d;
+  private HashMap e;
   
   public BasePopupView(@NotNull ViewGroup paramViewGroup, @Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.d = paramViewGroup;
     setOnClickListener((View.OnClickListener)BasePopupView.1.a);
     setFocusable(true);
     setFocusableInTouchMode(true);
     requestFocus();
   }
   
-  public final int a(int paramInt)
-  {
-    Context localContext = getContext();
-    Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
-    return localContext.getResources().getColor(paramInt);
-  }
-  
   public View a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (this.e == null) {
+      this.e = new HashMap();
     }
-    View localView2 = (View)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    View localView2 = (View)this.e.get(Integer.valueOf(paramInt));
     View localView1 = localView2;
     if (localView2 == null)
     {
       localView1 = findViewById(paramInt);
-      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localView1);
+      this.e.put(Integer.valueOf(paramInt), localView1);
     }
     return localView1;
   }
   
   public final void a(@Nullable Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    paramBundle = (Animation)new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
+    this.c = paramBundle;
+    paramBundle = (Animation)new TranslateAnimation(0.0F, 0.0F, this.d.getHeight(), 0.0F);
     paramBundle.setDuration(200L);
     paramBundle.setFillEnabled(true);
     paramBundle.setFillAfter(true);
     setAnimation(paramBundle);
     paramBundle.startNow();
-    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)this, new ViewGroup.LayoutParams(-1, -1));
+    this.d.addView((View)this, new ViewGroup.LayoutParams(-1, -1));
   }
   
   public final void a(@Nullable BEAN paramBEAN)
   {
-    Object localObject = (Animation)new TranslateAnimation(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidViewViewGroup.getHeight());
+    Object localObject = (Animation)new TranslateAnimation(0.0F, 0.0F, 0.0F, this.d.getHeight());
     ((Animation)localObject).setDuration(200L);
     ((Animation)localObject).setFillEnabled(true);
     ((Animation)localObject).setFillAfter(true);
     setAnimation((Animation)localObject);
     ((Animation)localObject).startNow();
-    localObject = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
+    localObject = this.a;
     if (localObject != null) {
-      paramBEAN = (Unit)((Function2)localObject).invoke(paramBEAN, this.jdField_a_of_type_AndroidOsBundle);
+      paramBEAN = (Unit)((Function2)localObject).invoke(paramBEAN, this.c);
     }
-    this.jdField_a_of_type_AndroidViewViewGroup.removeView((View)this);
+    this.d.removeView((View)this);
+  }
+  
+  public final int b(int paramInt)
+  {
+    Context localContext = getContext();
+    Intrinsics.checkExpressionValueIsNotNull(localContext, "context");
+    return localContext.getResources().getColor(paramInt);
+  }
+  
+  @Nullable
+  public final Function2<BEAN, Bundle, Unit> getDismissListener()
+  {
+    return this.a;
   }
   
   public boolean onKeyDown(int paramInt, @Nullable KeyEvent paramKeyEvent)
@@ -106,12 +107,12 @@ public abstract class BasePopupView<BEAN>
   
   public final void setDismissListener(@Nullable Function2<? super BEAN, ? super Bundle, Unit> paramFunction2)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction2 = paramFunction2;
+    this.a = paramFunction2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.BasePopupView
  * JD-Core Version:    0.7.0.1
  */

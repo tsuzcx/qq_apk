@@ -5,46 +5,46 @@ import com.tencent.mobileqq.kandian.biz.common.widget.ReadInJoyXListView;
 
 public final class RIJTipMessageManager$Builder
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  ReadInJoyXListView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
+  ReadInJoyXListView a;
+  Activity b;
+  int c;
   
   public ReadInJoyXListView a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView;
+    return this.a;
   }
   
   public Builder a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     return this;
   }
   
   public Builder a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramActivity;
     return this;
   }
   
   public Builder a(ReadInJoyXListView paramReadInJoyXListView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView = paramReadInJoyXListView;
+    this.a = paramReadInJoyXListView;
     return this;
+  }
+  
+  public Activity b()
+  {
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.message.RIJTipMessageManager.Builder
  * JD-Core Version:    0.7.0.1
  */

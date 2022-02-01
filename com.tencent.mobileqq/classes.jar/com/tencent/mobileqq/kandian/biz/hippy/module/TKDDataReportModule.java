@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.kandian.biz.hippy.module;
 
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -22,19 +21,13 @@ public class TKDDataReportModule
   @HippyMethod(name="dataReport")
   public void dataReport(HippyMap paramHippyMap)
   {
-    Object localObject = (HippyMap)paramHippyMap.get("qq");
-    paramHippyMap = ((HippyMap)localObject).getString("subAction");
-    String str1 = ((HippyMap)localObject).getString("actionName");
-    String str2 = ((HippyMap)localObject).getString("r2");
-    String str3 = ((HippyMap)localObject).getString("r3");
-    String str4 = ((HippyMap)localObject).getString("r4");
-    localObject = ((HippyMap)localObject).getString("r5");
-    ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "dc01160", "Pb_account_lifeservice", "", paramHippyMap, str1, 0, 0, str2, str3, str4, (String)localObject, false);
+    paramHippyMap = (HippyMap)paramHippyMap.get("qq");
+    PublicAccountReportUtils.a(null, "", paramHippyMap.getString("subAction"), paramHippyMap.getString("actionName"), 0, 0, paramHippyMap.getString("r2"), paramHippyMap.getString("r3"), paramHippyMap.getString("r4"), paramHippyMap.getString("r5"), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDDataReportModule
  * JD-Core Version:    0.7.0.1
  */

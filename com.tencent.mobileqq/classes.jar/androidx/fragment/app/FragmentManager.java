@@ -26,6 +26,7 @@ import androidx.annotation.RestrictTo;
 import androidx.collection.ArraySet;
 import androidx.core.os.CancellationSignal;
 import androidx.core.util.LogWriter;
+import androidx.fragment.R.id;
 import androidx.lifecycle.Lifecycle.State;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelStore;
@@ -565,7 +566,7 @@ public abstract class FragmentManager
   @Nullable
   static Fragment getViewFragment(@NonNull View paramView)
   {
-    paramView = paramView.getTag(2131367214);
+    paramView = paramView.getTag(R.id.fragment_container_view_tag);
     if ((paramView instanceof Fragment)) {
       return (Fragment)paramView;
     }
@@ -775,10 +776,10 @@ public abstract class FragmentManager
     ViewGroup localViewGroup = getFragmentContainer(paramFragment);
     if (localViewGroup != null)
     {
-      if (localViewGroup.getTag(2131380961) == null) {
-        localViewGroup.setTag(2131380961, paramFragment);
+      if (localViewGroup.getTag(R.id.visible_removing_fragment_view_tag) == null) {
+        localViewGroup.setTag(R.id.visible_removing_fragment_view_tag, paramFragment);
       }
-      ((Fragment)localViewGroup.getTag(2131380961)).setNextAnim(paramFragment.getNextAnim());
+      ((Fragment)localViewGroup.getTag(R.id.visible_removing_fragment_view_tag)).setNextAnim(paramFragment.getNextAnim());
     }
   }
   

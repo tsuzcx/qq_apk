@@ -23,49 +23,49 @@ public class EGLScreenCaptureThread
   extends GLContextThread
   implements SurfaceTexture.OnFrameAvailableListener
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private final int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 0L;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private final EGLScreenCaptureThread.PerfData jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData = new EGLScreenCaptureThread.PerfData();
-  private EGLScreenCaptureThread.onVideoFrameAvailableListener jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$onVideoFrameAvailableListener;
-  private RGBToI420Filter jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = null;
-  private final RecordParam jdField_a_of_type_ComTencentAvcoreDataRecordParam = new RecordParam();
-  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private byte[] jdField_a_of_type_ArrayOfByte = null;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private final int jdField_b_of_type_Int = 2;
-  private long jdField_b_of_type_Long = 0L;
-  private final RecordParam jdField_b_of_type_ComTencentAvcoreDataRecordParam = new RecordParam();
-  private RenderBuffer jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
-  private boolean jdField_b_of_type_Boolean = true;
-  private float[] jdField_b_of_type_ArrayOfFloat;
-  private final int jdField_c_of_type_Int = 3;
-  private long jdField_c_of_type_Long = 0L;
-  private int d;
-  private int e;
+  private long A = 0L;
+  private long B = 0L;
+  private final int a = 1;
+  private final int b = 2;
+  private final int c = 3;
+  private boolean d = false;
+  private Surface e;
   private int f;
-  private int g = 100;
+  private SurfaceTexture g;
+  private float[] h;
+  private float j = -1.0F;
+  private int k;
+  private int l;
+  private RenderBuffer m;
+  private TextureRender n;
+  private float[] o;
+  private RenderBuffer p = null;
+  private ByteBuffer q = null;
+  private byte[] r = null;
+  private RGBToI420Filter s = null;
+  private boolean t = true;
+  private int u = 100;
+  private EGLScreenCaptureThread.onVideoFrameAvailableListener v;
+  private final RecordParam w = new RecordParam();
+  private final RecordParam x = new RecordParam();
+  private final EGLScreenCaptureThread.PerfData y = new EGLScreenCaptureThread.PerfData();
+  private long z = 0L;
   
   @RequiresApi(api=21)
   private void d()
   {
-    this.d = GlUtil.createTexture(36197);
+    this.f = GlUtil.createTexture(36197);
     GLES20.glBindTexture(36197, 0);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.d);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this, a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setDefaultBufferSize(this.e, this.f);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData.a();
+    this.g = new SurfaceTexture(this.f);
+    this.g.setOnFrameAvailableListener(this, b());
+    this.g.setDefaultBufferSize(this.k, this.l);
+    this.e = new Surface(this.g);
+    this.n = new TextureRender();
+    this.d = true;
+    this.A = 0L;
+    this.z = 0L;
+    this.B = 0L;
+    this.y.a();
     if (QLog.isColorLevel()) {
       QLog.i("EGLScreenCaptureThread", 2, "initGLEnv");
     }
@@ -73,130 +73,130 @@ public class EGLScreenCaptureThread
   
   private void e()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    this.d = false;
+    this.i.removeMessages(3);
+    Object localObject = this.n;
     if (localObject != null)
     {
       ((TextureRender)localObject).release();
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+      this.n = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.m;
     if (localObject != null) {
       ((RenderBuffer)localObject).destroy();
     }
-    localObject = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    localObject = this.p;
     if (localObject != null)
     {
       ((RenderBuffer)localObject).destroy();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+      this.p = null;
     }
-    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter;
+    localObject = this.s;
     if (localObject != null)
     {
       ((RGBToI420Filter)localObject).c();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = null;
+      this.s = null;
     }
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData.b();
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
+    this.y.b();
+    this.A = 0L;
+    this.z = 0L;
+    this.B = 0L;
     if (QLog.isColorLevel()) {
       QLog.i("EGLScreenCaptureThread", 2, "releaseGLEnv");
     }
   }
   
-  private void g()
+  private void f()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    if ((!this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.isValid()) && (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.isValid()))
+    if ((!this.x.isValid()) && (!this.w.isValid()))
     {
       if (QLog.isDevelopLevel()) {
         QLog.i("EGLScreenCaptureThread", 4, "check, param not valid.");
       }
     }
     else {
-      i();
+      j();
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 2000L);
-  }
-  
-  private void h()
-  {
-    boolean bool = this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(this.jdField_b_of_type_ComTencentAvcoreDataRecordParam);
-    RenderBuffer localRenderBuffer;
-    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
-    {
-      localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-      if (localRenderBuffer != null) {
-        localRenderBuffer.destroy();
-      }
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height, 33984);
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if ((this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
-      {
-        localRenderBuffer = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
-        if (localRenderBuffer != null) {
-          localRenderBuffer.destroy();
-        }
-        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height, 33985);
-      }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter == null)
-      {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = new RGBToI420Filter();
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.b();
-      }
-      if (bool) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.a(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height);
-      }
-      if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (bool)) {
-        this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width * this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height * 3 / 2);
-      }
-    }
-    if ((this.jdField_a_of_type_ArrayOfByte == null) || (bool)) {
-      this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width * this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height * 3 / 2];
-    }
+    this.i.removeMessages(3);
+    this.i.sendEmptyMessageDelayed(3, 2000L);
   }
   
   private void i()
   {
-    long l5 = SystemClock.elapsedRealtime();
-    h();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-    if (this.jdField_b_of_type_ArrayOfFloat == null)
+    boolean bool = this.w.update(this.x);
+    RenderBuffer localRenderBuffer;
+    if ((this.m == null) || (bool))
     {
-      this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateCenterCropMvpMatrix(this.e, this.f, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height);
-      Matrix.scaleM(this.jdField_b_of_type_ArrayOfFloat, 0, 1.0F, -1.0F, 1.0F);
+      localRenderBuffer = this.m;
+      if (localRenderBuffer != null) {
+        localRenderBuffer.destroy();
+      }
+      this.m = new RenderBuffer(this.w.width, this.w.height, 33984);
     }
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.d, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+    if (this.t)
+    {
+      if ((this.p == null) || (bool))
+      {
+        localRenderBuffer = this.p;
+        if (localRenderBuffer != null) {
+          localRenderBuffer.destroy();
+        }
+        this.p = new RenderBuffer(this.w.width, this.w.height, 33985);
+      }
+      if (this.s == null)
+      {
+        this.s = new RGBToI420Filter();
+        this.s.b();
+      }
+      if (bool) {
+        this.s.a(this.w.width, this.w.height);
+      }
+      if ((this.q == null) || (bool)) {
+        this.q = ByteBuffer.allocate(this.w.width * this.w.height * 3 / 2);
+      }
+    }
+    if ((this.r == null) || (bool)) {
+      this.r = new byte[this.w.width * this.w.height * 3 / 2];
+    }
+  }
+  
+  private void j()
+  {
+    long l5 = SystemClock.elapsedRealtime();
+    i();
+    this.m.bind();
+    if (this.o == null)
+    {
+      this.o = GPUBaseFilter.caculateCenterCropMvpMatrix(this.k, this.l, this.w.width, this.w.height);
+      Matrix.scaleM(this.o, 0, 1.0F, -1.0F, 1.0F);
+    }
+    this.n.drawTexture(36197, this.f, this.h, this.o);
+    this.m.unbind();
     long l6 = Math.abs(SystemClock.elapsedRealtime() - l5);
     long l1;
     long l2;
     Object localObject;
     long l3;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.t)
     {
       l1 = SystemClock.elapsedRealtime();
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
+      this.p.bind();
+      this.s.a(this.m.getTexId());
       l2 = Math.abs(SystemClock.elapsedRealtime() - l1);
       l1 = SystemClock.elapsedRealtime();
-      GLES20.glReadPixels(0, 0, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height * 3 / 8, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
+      GLES20.glReadPixels(0, 0, this.w.width, this.w.height * 3 / 8, 6408, 5121, this.q);
+      this.p.unbind();
       l4 = Math.abs(SystemClock.elapsedRealtime() - l1);
-      this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width * this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height * 3 / 2);
-      this.jdField_a_of_type_JavaNioByteBuffer.clear();
-      localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$onVideoFrameAvailableListener;
+      this.q.get(this.r, 0, this.w.width * this.w.height * 3 / 2);
+      this.q.clear();
+      localObject = this.v;
       if (localObject != null)
       {
         l1 = SystemClock.elapsedRealtime();
-        ((EGLScreenCaptureThread.onVideoFrameAvailableListener)localObject).a(this.jdField_a_of_type_ArrayOfByte, this.g, 2, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
+        ((EGLScreenCaptureThread.onVideoFrameAvailableListener)localObject).a(this.r, this.u, 2, this.w);
         l1 = SystemClock.elapsedRealtime() - l1;
       }
       else
@@ -209,12 +209,12 @@ public class EGLScreenCaptureThread
     }
     else
     {
-      localObject = GlUtil.captureFrame(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height, 0);
-      EGLScreenCaptureThread.onVideoFrameAvailableListener localonVideoFrameAvailableListener = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$onVideoFrameAvailableListener;
+      localObject = GlUtil.captureFrame(this.m.getTexId(), this.w.width, this.w.height, 0);
+      EGLScreenCaptureThread.onVideoFrameAvailableListener localonVideoFrameAvailableListener = this.v;
       if (localonVideoFrameAvailableListener != null)
       {
         l1 = SystemClock.elapsedRealtime();
-        localonVideoFrameAvailableListener.a((Bitmap)localObject, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
+        localonVideoFrameAvailableListener.a((Bitmap)localObject, this.w);
         l3 = SystemClock.elapsedRealtime() - l1;
         l1 = 0L;
         l2 = l1;
@@ -226,30 +226,20 @@ public class EGLScreenCaptureThread
         l3 = l2;
       }
     }
-    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-    long l4 = this.jdField_c_of_type_Long;
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData.a(l6, l1, l2, l3, l4 - l5);
-  }
-  
-  public Handler a()
-  {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public Surface a()
-  {
-    return this.jdField_a_of_type_AndroidViewSurface;
+    this.B = SystemClock.elapsedRealtime();
+    long l4 = this.B;
+    this.y.a(l6, l1, l2, l3, l4 - l5);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    this.i.sendEmptyMessage(1);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
+    this.k = paramInt1;
+    this.l = paramInt2;
   }
   
   @RequiresApi(api=21)
@@ -263,20 +253,20 @@ public class EGLScreenCaptureThread
         if (i != 3) {
           return;
         }
-        g();
+        f();
         return;
       }
       e();
-      f();
+      n();
       return;
     }
-    b();
+    g();
     d();
   }
   
   public void a(EGLScreenCaptureThread.onVideoFrameAvailableListener paramonVideoFrameAvailableListener)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$onVideoFrameAvailableListener = paramonVideoFrameAvailableListener;
+    this.v = paramonVideoFrameAvailableListener;
   }
   
   public void a(RecordParam paramRecordParam)
@@ -290,13 +280,13 @@ public class EGLScreenCaptureThread
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("updateRecordParam cur[");
-        localStringBuilder.append(this.jdField_b_of_type_ComTencentAvcoreDataRecordParam);
+        localStringBuilder.append(this.x);
         localStringBuilder.append("], come[");
         localStringBuilder.append(paramRecordParam);
         localStringBuilder.append("]");
         QLog.i("EGLScreenCaptureThread", 4, localStringBuilder.toString());
       }
-      this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
+      this.x.update(paramRecordParam);
     }
   }
   
@@ -306,62 +296,72 @@ public class EGLScreenCaptureThread
     if (QLog.isDevelopLevel()) {
       QLog.i("EGLScreenCaptureThread", 4, "quit");
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    if (this.i != null) {
+      this.i.sendEmptyMessage(2);
     }
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidOsHandler != null)) {
-      this.jdField_a_of_type_AndroidOsHandler.getLooper().quitSafely();
+    if ((paramBoolean) && (this.i != null)) {
+      this.i.getLooper().quitSafely();
     }
+  }
+  
+  public Handler b()
+  {
+    return this.i;
+  }
+  
+  public Surface c()
+  {
+    return this.e;
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.d) {
       return;
     }
-    this.jdField_b_of_type_Long += 1L;
+    this.A += 1L;
     long l1 = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Long = l1;
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    this.z = l1;
+    if (this.h == null) {
+      this.h = new float[16];
     }
     paramSurfaceTexture.updateTexImage();
-    paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-    this.jdField_a_of_type_Float = ((float)paramSurfaceTexture.getTimestamp());
-    if (this.jdField_a_of_type_Float == 0.0F)
+    paramSurfaceTexture.getTransformMatrix(this.h);
+    this.j = ((float)paramSurfaceTexture.getTimestamp());
+    if (this.j == 0.0F)
     {
       if (QLog.isDevelopLevel())
       {
         paramSurfaceTexture = new StringBuilder();
         paramSurfaceTexture.append("onFrameAvailable, time[");
-        paramSurfaceTexture.append(this.jdField_a_of_type_Float);
+        paramSurfaceTexture.append(this.j);
         paramSurfaceTexture.append("]");
         QLog.i("EGLScreenCaptureThread", 4, paramSurfaceTexture.toString());
       }
       return;
     }
-    long l2 = Math.abs(l1 - this.jdField_c_of_type_Long);
-    l1 = this.jdField_c_of_type_Long;
-    int j = 0;
-    int i = j;
+    long l2 = Math.abs(l1 - this.B);
+    l1 = this.B;
+    int i1 = 0;
+    int i = i1;
     if (l1 != 0L)
     {
-      i = j;
-      if (l2 < this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.intervalTime) {
+      i = i1;
+      if (l2 < this.w.intervalTime) {
         i = 1;
       }
     }
     l1 = 2000L;
     if (i != 0) {
-      l1 = Math.min(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.intervalTime - l2, 2000L);
+      l1 = Math.min(this.w.intervalTime - l2, 2000L);
     }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, l1);
+    this.i.removeMessages(3);
+    this.i.sendEmptyMessageDelayed(3, l1);
     if (i != 0) {
       return;
     }
-    if ((this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.isValid()) || (this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.isValid())) {
-      i();
+    if ((this.x.isValid()) || (this.w.isValid())) {
+      j();
     }
   }
 }

@@ -10,14 +10,14 @@ class TabLayoutCompat$SlidingTabStrip$2
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    paramAnimator = this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$SlidingTabStrip;
-    paramAnimator.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    paramAnimator.jdField_a_of_type_Float = 0.0F;
+    paramAnimator = this.b;
+    paramAnimator.a = this.a;
+    paramAnimator.b = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabLayoutCompat.SlidingTabStrip.2
  * JD-Core Version:    0.7.0.1
  */

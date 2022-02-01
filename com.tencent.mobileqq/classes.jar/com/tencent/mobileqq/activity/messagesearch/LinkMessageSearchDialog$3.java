@@ -12,14 +12,14 @@ class LinkMessageSearchDialog$3
   public void onClick(View paramView)
   {
     LinkMessageSearchDialog localLinkMessageSearchDialog = this.a;
-    localLinkMessageSearchDialog.a = null;
+    localLinkMessageSearchDialog.l = null;
     localLinkMessageSearchDialog.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.LinkMessageSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

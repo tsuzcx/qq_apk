@@ -11,12 +11,13 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.launch.MiniAppStartUtils;
 import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppException;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.util.QQToastUtil;
 
 public class WXShareHelperFromQQMiniApp
   extends BroadcastReceiver
@@ -29,7 +30,7 @@ public class WXShareHelperFromQQMiniApp
   private static final byte[] lock = new byte[0];
   private static WXShareHelperFromQQMiniApp mWxShareHelperFromQQMiniApp;
   private IWXAPI api = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), this.mWxAppId, true);
-  private LaunchParam launchParamFromQQ;
+  private com.tencent.mobileqq.mini.sdk.LaunchParam launchParamFromQQ;
   private String mWxAppId = "wxf0a80d0ac2e82aa7";
   private com.tencent.mobileqq.mini.apkg.MiniAppInfo miniAppInfoFromQQ;
   private com.tencent.qqmini.sdk.launcher.model.MiniAppInfo miniAppInfoFromSDK;
@@ -68,7 +69,7 @@ public class WXShareHelperFromQQMiniApp
     paramIntent = this.miniAppInfoFromQQ;
     if (paramIntent != null)
     {
-      LaunchParam localLaunchParam = this.launchParamFromQQ;
+      com.tencent.mobileqq.mini.sdk.LaunchParam localLaunchParam = this.launchParamFromQQ;
       if (localLaunchParam != null)
       {
         try
@@ -87,7 +88,21 @@ public class WXShareHelperFromQQMiniApp
     paramIntent = this.miniAppInfoFromSDK;
     if (paramIntent != null)
     {
-      MiniSDK.startMiniApp(paramActivity, paramIntent);
+      if (paramIntent.launchParam != null) {
+        paramIntent = String.valueOf(this.miniAppInfoFromSDK.launchParam.scene);
+      } else {
+        paramIntent = "";
+      }
+      if (MiniAppStartUtils.shouldInterceptStartMiniApp(this.miniAppInfoFromSDK.appId, paramIntent))
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("study mode, can't start in current scene = ");
+        paramActivity.append(paramIntent);
+        QLog.i("WXShareHelperFromQQMiniApp", 1, paramActivity.toString());
+        QQToastUtil.a(0, 2131891806);
+        return;
+      }
+      MiniSDK.startMiniApp(paramActivity, this.miniAppInfoFromSDK);
       this.miniAppInfoFromSDK = null;
     }
   }
@@ -98,7 +113,7 @@ public class WXShareHelperFromQQMiniApp
   
   public void onResp(BaseResp paramBaseResp) {}
   
-  public void recordMiniAppInfoFromQQ(com.tencent.mobileqq.mini.apkg.MiniAppInfo paramMiniAppInfo, LaunchParam paramLaunchParam)
+  public void recordMiniAppInfoFromQQ(com.tencent.mobileqq.mini.apkg.MiniAppInfo paramMiniAppInfo, com.tencent.mobileqq.mini.sdk.LaunchParam paramLaunchParam)
   {
     this.miniAppInfoFromQQ = paramMiniAppInfo;
     this.launchParamFromQQ = paramLaunchParam;
@@ -131,7 +146,7 @@ public class WXShareHelperFromQQMiniApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.WXShareHelperFromQQMiniApp
  * JD-Core Version:    0.7.0.1
  */

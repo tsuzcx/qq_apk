@@ -14,11 +14,11 @@ final class AdDownloadStateHandler$doCallBack$1
   
   public final void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView;
+    Object localObject = this.a;
     String str = null;
     if (localObject != null)
     {
-      localObject = ((RIJDownloadView)localObject).a();
+      localObject = ((RIJDownloadView)localObject).getDownloadData();
       if (localObject != null)
       {
         localObject = ((ADVideoAppDownloadData)localObject).d;
@@ -29,27 +29,27 @@ final class AdDownloadStateHandler$doCallBack$1
     label30:
     if (localObject != null)
     {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadDataAdDownloadInfo;
+      localObject = this.b;
       if (localObject != null) {
         localObject = ((AdDownloadInfo)localObject).a();
       } else {
         localObject = null;
       }
-      ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.a();
+      ADVideoAppDownloadData localADVideoAppDownloadData = this.a.getDownloadData();
       if (localADVideoAppDownloadData != null) {
         str = localADVideoAppDownloadData.d;
       }
       if (Intrinsics.areEqual(localObject, str))
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView.f();
-        this.this$0.onCallBack(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadViewRIJDownloadView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdCommon_ad_downloadDataAdDownloadInfo);
+        this.a.i();
+        this.this$0.onCallBack(this.a, this.b);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler.doCallBack.1
  * JD-Core Version:    0.7.0.1
  */

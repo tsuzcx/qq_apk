@@ -9,12 +9,12 @@ class MsgBackupNotifier$10
   
   public void run()
   {
-    MsgBackupManager.a().a().a(this.a, this.b, this.c);
+    MsgBackupManager.a().d().a(this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupNotifier.10
  * JD-Core Version:    0.7.0.1
  */

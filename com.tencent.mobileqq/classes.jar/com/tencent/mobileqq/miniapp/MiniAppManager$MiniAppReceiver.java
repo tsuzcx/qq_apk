@@ -28,7 +28,7 @@ class MiniAppManager$MiniAppReceiver
       ((StringBuilder)localObject).append(paramMiniAppEvent.toString());
       QLog.d("MiniAppManager", 2, ((StringBuilder)localObject).toString());
     }
-    int i = paramMiniAppEvent.jdField_a_of_type_Int;
+    int i = paramMiniAppEvent.c;
     if (i != 1)
     {
       if (i != 2)
@@ -38,30 +38,30 @@ class MiniAppManager$MiniAppReceiver
           if (i != 4) {
             return;
           }
-          if (!paramMiniAppEvent.jdField_a_of_type_Boolean) {
-            MiniAppManager.a(paramMiniAppManager, paramMiniAppEvent.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_JavaLangString, paramMiniAppEvent.jdField_a_of_type_ComTencentMobileqqMiniappMiniAppInfo.jdField_a_of_type_Int, 1004);
+          if (!paramMiniAppEvent.b) {
+            MiniAppManager.a(paramMiniAppManager, paramMiniAppEvent.a.a, paramMiniAppEvent.a.b, 1004);
           }
         }
         else
         {
-          MiniAppManager.a(paramMiniAppManager, MiniAppInfo.a((String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[0], ((Integer)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[1]).intValue()));
+          MiniAppManager.a(paramMiniAppManager, MiniAppInfo.a((String)paramMiniAppEvent.e[0], ((Integer)paramMiniAppEvent.e[1]).intValue()));
         }
       }
       else {
-        MiniAppManager.a(paramMiniAppManager, (MiniAppActivity)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[0], (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[1], ((Integer)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue(), (MiniAppOptions)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[3]);
+        MiniAppManager.a(paramMiniAppManager, (MiniAppActivity)paramMiniAppEvent.e[0], (String)paramMiniAppEvent.e[1], ((Integer)paramMiniAppEvent.e[2]).intValue(), (MiniAppOptions)paramMiniAppEvent.e[3]);
       }
     }
-    else if (("MiniAppLauncher".equals(paramMiniAppEvent.jdField_a_of_type_JavaLangString)) && (IDownloader.a((String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[0]) == 1) && (((Integer)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[2]).intValue() != 2))
+    else if (("MiniAppLauncher".equals(paramMiniAppEvent.d)) && (IDownloader.a((String)paramMiniAppEvent.e[0]) == 1) && (((Integer)paramMiniAppEvent.e[2]).intValue() != 2))
     {
-      localObject = (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[1];
-      if (paramMiniAppEvent.jdField_a_of_type_Boolean)
+      localObject = (String)paramMiniAppEvent.e[1];
+      if (paramMiniAppEvent.b)
       {
-        QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131706859), 0).a();
-        MiniAppInfo localMiniAppInfo = MiniAppManager.a(paramMiniAppManager).a((String)localObject, 2, 0, false);
+        QQToast.makeText(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131904706), 0).show();
+        MiniAppInfo localMiniAppInfo = MiniAppManager.c(paramMiniAppManager).a((String)localObject, 2, 0, false);
         if (localMiniAppInfo != null)
         {
-          localMiniAppInfo.jdField_a_of_type_AndroidOsBundle.putString("unzipped_path", (String)paramMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject[3]);
-          MiniAppManager.b(paramMiniAppManager, (IApp)MiniAppManager.a(paramMiniAppManager).get(localMiniAppInfo.h));
+          localMiniAppInfo.q.putString("unzipped_path", (String)paramMiniAppEvent.e[3]);
+          MiniAppManager.b(paramMiniAppManager, (IApp)MiniAppManager.b(paramMiniAppManager).get(localMiniAppInfo.p));
           return;
         }
       }
@@ -77,7 +77,7 @@ class MiniAppManager$MiniAppReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.MiniAppManager.MiniAppReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package androidx.appcompat.widget;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.R.id;
 
 final class SuggestionsAdapter$ChildViewCache
 {
@@ -18,7 +19,7 @@ final class SuggestionsAdapter$ChildViewCache
     this.mText2 = ((TextView)paramView.findViewById(16908309));
     this.mIcon1 = ((ImageView)paramView.findViewById(16908295));
     this.mIcon2 = ((ImageView)paramView.findViewById(16908296));
-    this.mIconRefine = ((ImageView)paramView.findViewById(2131366071));
+    this.mIconRefine = ((ImageView)paramView.findViewById(R.id.edit_query));
   }
 }
 

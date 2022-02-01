@@ -52,6 +52,16 @@ public class QQBeaconReport
     a(paramString1, paramString2, new HashMap());
   }
   
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    a(paramString1, paramString2, paramString3, new HashMap());
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, Map<String, String> paramMap)
+  {
+    a(paramString1, paramString2, paramString3, true, paramMap, false);
+  }
+  
   public static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, Map<String, String> paramMap, boolean paramBoolean2)
   {
     c(paramString1, paramString2, paramString3, paramBoolean1, paramMap, paramBoolean2);
@@ -72,17 +82,6 @@ public class QQBeaconReport
     c("", paramString1, paramString2, paramBoolean1, paramMap, paramBoolean2);
   }
   
-  private static boolean a()
-  {
-    return false;
-  }
-  
-  private static void b()
-  {
-    QQBeaconReport.2 local2 = new QQBeaconReport.2();
-    BeaconReport.getInstance().setLogger(local2);
-  }
-  
   public static void b(String paramString)
   {
     if (a.compareAndSet(false, true))
@@ -90,22 +89,38 @@ public class QQBeaconReport
       BaseApplication localBaseApplication = BaseApplication.getContext();
       BeaconConfig localBeaconConfig = BeaconConfig.builder().auditEnable(false).setNormalPollingTime(30000L).qmspEnable(false).build();
       BeaconReport localBeaconReport = BeaconReport.getInstance();
-      if (a())
+      if (b())
       {
         localBeaconReport.setLogAble(true);
-        b();
+        c();
       }
       else
       {
         localBeaconReport.setLogAble(false);
       }
-      localBeaconReport.setChannelID(AppSetting.c());
+      localBeaconReport.setChannelID(AppSetting.e());
       if (!TextUtils.isEmpty(paramString)) {
         localBeaconReport.setAppVersion(paramString);
       }
       localBeaconReport.start(localBaseApplication, "0S200MNJT807V3GE", localBeaconConfig);
       QLog.d("QQBeaconReport", 1, new Object[] { "start: isDebugVersion = ", Boolean.valueOf(false) });
     }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a(paramString1, "", paramString2);
+  }
+  
+  private static boolean b()
+  {
+    return false;
+  }
+  
+  private static void c()
+  {
+    QQBeaconReport.2 local2 = new QQBeaconReport.2();
+    BeaconReport.getInstance().setLogger(local2);
   }
   
   public static void c(String paramString)
@@ -154,7 +169,7 @@ public class QQBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.QQBeaconReport
  * JD-Core Version:    0.7.0.1
  */

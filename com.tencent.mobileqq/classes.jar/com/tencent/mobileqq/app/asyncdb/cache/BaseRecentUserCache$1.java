@@ -21,7 +21,7 @@ class BaseRecentUserCache$1
   
   public void run()
   {
-    Object localObject3 = RecentDataListManager.a().a(this.jdField_a_of_type_JavaLangString);
+    Object localObject3 = RecentDataListManager.a().a(this.a);
     Object localObject1;
     Object localObject2;
     if (localObject3 == null)
@@ -29,11 +29,11 @@ class BaseRecentUserCache$1
       if (QLog.isColorLevel()) {
         QLog.d("Q.db.Cache.RecentUserCache", 2, "getBaseItemDataFromCache is null!");
       }
-      localObject3 = ConversationDataFactory.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser, this.this$0.a, this.this$0.a.getApp());
+      localObject3 = ConversationDataFactory.a(this.b, this.this$0.b, this.this$0.b.getApp());
       localObject1 = localObject3;
       if (localObject3 != null)
       {
-        RecentDataListManager.a().a((RecentBaseData)localObject3, this.jdField_a_of_type_JavaLangString);
+        RecentDataListManager.a().a((RecentBaseData)localObject3, this.a);
         localObject1 = localObject3;
       }
     }
@@ -42,15 +42,15 @@ class BaseRecentUserCache$1
       localObject1 = localObject3;
       if ((localObject3 instanceof RecentUserBaseData))
       {
-        ((RecentUserBaseData)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+        ((RecentUserBaseData)localObject3).a(this.b);
         try
         {
-          ((RecentBaseData)localObject3).update(this.this$0.a, this.this$0.a.getApp());
+          ((RecentBaseData)localObject3).update(this.this$0.b, this.this$0.b.getApp());
           localObject1 = localObject3;
         }
         catch (Throwable localThrowable1)
         {
-          RecentParcelUtil.a(this.this$0.a.getApp(), false, localThrowable1);
+          RecentParcelUtil.a(this.this$0.b.getApp(), false, localThrowable1);
           throw new RuntimeException(localThrowable1);
         }
         catch (ConcurrentModificationException localConcurrentModificationException)
@@ -67,7 +67,7 @@ class BaseRecentUserCache$1
       {
         localObject3 = ParcelHelper.a(localObject2);
         if (localObject3 != null) {
-          this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.parceledRecentBaseData = ((byte[])localObject3);
+          this.b.parceledRecentBaseData = ((byte[])localObject3);
         } else {
           QLog.d("Q.db.Cache.RecentUserCache", 1, new Object[] { "saveRecentUserData, ignore data because result is null, class=", localObject2.getClass().getName() });
         }
@@ -75,7 +75,7 @@ class BaseRecentUserCache$1
       catch (Throwable localThrowable2)
       {
         QLog.e("Q.db.Cache.RecentUserCache", 1, "saveParcelDataToRecentData fail, 请对应的开发检查是否使用了不该使用的字段", localThrowable2);
-        RecentParcelUtil.a(this.this$0.a.getApp(), false, localThrowable2);
+        RecentParcelUtil.a(this.this$0.b.getApp(), false, localThrowable2);
       }
     }
     catch (ParcelHelper.UnsupportedFieldTypeException localUnsupportedFieldTypeException)
@@ -84,16 +84,16 @@ class BaseRecentUserCache$1
       break label239;
     }
     QLog.d("Q.db.Cache.RecentUserCache", 1, new Object[] { "saveRecentUserData, ignore data because UnsupportedFieldTypeException, class=", localThrowable2.getClass().getName() });
-    BaseRecentUserCache.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long));
+    BaseRecentUserCache.a(this.this$0).put(this.a, Long.valueOf(this.c));
     if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, new Object[] { "saveParcelDataToRecentData success, key=", this.jdField_a_of_type_JavaLangString, " lastRealOPTime=", Long.valueOf(this.jdField_a_of_type_Long) });
+      QLog.d("Q.db.Cache.RecentUserCache", 2, new Object[] { "saveParcelDataToRecentData success, key=", this.a, " lastRealOPTime=", Long.valueOf(this.c) });
     }
-    this.this$0.b(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser);
+    this.this$0.b(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.asyncdb.cache.BaseRecentUserCache.1
  * JD-Core Version:    0.7.0.1
  */

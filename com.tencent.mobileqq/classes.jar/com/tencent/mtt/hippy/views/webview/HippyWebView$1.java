@@ -16,11 +16,11 @@ import java.net.URLDecoder;
 class HippyWebView$1
   extends WebViewClient
 {
-  HippyViewEvent mEventOnError = new HippyViewEvent("onError");
-  HippyViewEvent mEventonLoad = new HippyViewEvent("onLoad");
-  HippyViewEvent mEventonLoadEnd = new HippyViewEvent("onLoadEnd");
-  HippyViewEvent mEventonLoadStart = new HippyViewEvent("onLoadStart");
-  String mMessageUrlPre = "hippy://postMessage?data=";
+  final HippyViewEvent mEventOnError = new HippyViewEvent("onError");
+  final HippyViewEvent mEventonLoad = new HippyViewEvent("onLoad");
+  final HippyViewEvent mEventonLoadEnd = new HippyViewEvent("onLoadEnd");
+  final HippyViewEvent mEventonLoadStart = new HippyViewEvent("onLoadStart");
+  final String mMessageUrlPre = "hippy://postMessage?data=";
   
   HippyWebView$1(HippyWebView paramHippyWebView) {}
   
@@ -76,9 +76,9 @@ class HippyWebView$1
   {
     if (paramString != null)
     {
-      if (paramString.startsWith(this.mMessageUrlPre))
+      if (paramString.startsWith("hippy://postMessage?data="))
       {
-        this.this$0.postMessage(URLDecoder.decode(paramString.substring(this.mMessageUrlPre.length())));
+        this.this$0.postMessage(URLDecoder.decode(paramString.substring(25)));
         return true;
       }
       if ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString)))
@@ -92,7 +92,7 @@ class HippyWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.webview.HippyWebView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,18 @@ public class MsgTabNodeRecommendActivityReadEntity
   
   public MsgTabNodeRecommendActivityReadEntity(MsgTabNodeInfo paramMsgTabNodeInfo, int paramInt)
   {
-    this.nodeType = paramMsgTabNodeInfo.jdField_a_of_type_Int;
-    this.unionId = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
+    this.nodeType = paramMsgTabNodeInfo.b;
+    this.unionId = paramMsgTabNodeInfo.d;
     this.hasRead = paramInt;
   }
   
   public static String[] getArgs(MsgTabNodeInfo paramMsgTabNodeInfo)
   {
-    int i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
-    if (paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString == null) {
+    int i = paramMsgTabNodeInfo.b;
+    if (paramMsgTabNodeInfo.d == null) {
       paramMsgTabNodeInfo = "";
     } else {
-      paramMsgTabNodeInfo = paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString;
+      paramMsgTabNodeInfo = paramMsgTabNodeInfo.d;
     }
     return new String[] { String.valueOf(i), paramMsgTabNodeInfo };
   }
@@ -54,7 +54,7 @@ public class MsgTabNodeRecommendActivityReadEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeRecommendActivityReadEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ public class SelectableLinearLayout
   extends LinearLayout
   implements SelectableComponent
 {
-  private int jdField_a_of_type_Int;
-  private SelectableComponent jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
-  private SelectableDelegate jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[2];
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = -5250572;
-  private boolean jdField_c_of_type_Boolean = true;
+  private SelectableDelegate a;
+  private int b;
+  private int c;
+  private int d = -5250572;
+  private boolean e = false;
+  private boolean f = false;
+  private boolean g = true;
+  private SelectableComponent h;
+  private final int[] i = new int[2];
   
   public SelectableLinearLayout(Context paramContext)
   {
@@ -40,21 +40,21 @@ public class SelectableLinearLayout
   
   public void bind(@Nullable SelectableDelegate paramSelectableDelegate)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate = paramSelectableDelegate;
+    this.a = paramSelectableDelegate;
   }
   
   public void clearHighlightContent()
   {
-    int i = 0;
-    this.jdField_a_of_type_Boolean = false;
-    int j = getChildCount();
-    while (i < j)
+    int j = 0;
+    this.e = false;
+    int k = getChildCount();
+    while (j < k)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(j);
       if ((localView instanceof SelectableComponent)) {
         ((SelectableComponent)localView).clearHighlightContent();
       }
-      i += 1;
+      j += 1;
     }
   }
   
@@ -62,40 +62,40 @@ public class SelectableLinearLayout
   public CharSequence content()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int k = getChildCount();
+    int j = 0;
+    while (j < k)
     {
-      View localView = getChildAt(i);
+      View localView = getChildAt(j);
       if ((localView instanceof SelectableComponent)) {
         localStringBuilder.append(((SelectableComponent)localView).content());
       }
-      i += 1;
+      j += 1;
     }
     return localStringBuilder.toString();
   }
   
   public int contentLength()
   {
-    int m = getChildCount();
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
+    int n = getChildCount();
+    int j = 0;
+    int m;
+    for (int k = 0; j < n; k = m)
     {
-      View localView = getChildAt(i);
-      k = j;
+      View localView = getChildAt(j);
+      m = k;
       if ((localView instanceof SelectableComponent)) {
-        k = j + ((SelectableComponent)localView).contentLength();
+        m = k + ((SelectableComponent)localView).contentLength();
       }
-      i += 1;
+      j += 1;
     }
-    return j;
+    return k;
   }
   
   @Nullable
   public SelectableDelegate delegate()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+    return this.a;
   }
   
   public void doSelecting(ChatMessage paramChatMessage)
@@ -107,7 +107,7 @@ public class SelectableLinearLayout
       }
       return;
     }
-    SelectableDelegate localSelectableDelegate = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableDelegate;
+    SelectableDelegate localSelectableDelegate = this.a;
     if (localSelectableDelegate != null) {
       localSelectableDelegate.a(paramChatMessage);
     }
@@ -115,26 +115,26 @@ public class SelectableLinearLayout
   
   public boolean hasSelected()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.f;
   }
   
   public boolean hasTouchSelectableArea(int paramInt1, int paramInt2)
   {
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    int i = paramInt1 - localObject[0];
+    getLocationInWindow(this.i);
+    Object localObject = this.i;
+    int j = paramInt1 - localObject[0];
     paramInt2 = paramInt2 - localObject[1] - getPaddingTop();
-    int j = getChildCount();
+    int k = getChildCount();
     paramInt1 = 0;
-    while (paramInt1 < j)
+    while (paramInt1 < k)
     {
       localObject = getChildAt(paramInt1);
       if ((localObject instanceof SelectableComponent))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(((View)localObject).getLeft()), " right=", Integer.valueOf(((View)localObject).getRight()), " top=", Integer.valueOf(((View)localObject).getTop()), " bottom=", Integer.valueOf(((View)localObject).getBottom()), " relativeX=", Integer.valueOf(i), " relativeY=", Integer.valueOf(paramInt2) });
+          QLog.d("SelectableLinearLayout", 2, new Object[] { "left=", Integer.valueOf(((View)localObject).getLeft()), " right=", Integer.valueOf(((View)localObject).getRight()), " top=", Integer.valueOf(((View)localObject).getTop()), " bottom=", Integer.valueOf(((View)localObject).getBottom()), " relativeX=", Integer.valueOf(j), " relativeY=", Integer.valueOf(paramInt2) });
         }
-        if ((i > ((View)localObject).getLeft()) && (i < ((View)localObject).getRight()) && (paramInt2 > ((View)localObject).getTop()) && (paramInt2 < ((View)localObject).getBottom())) {
+        if ((j > ((View)localObject).getLeft()) && (j < ((View)localObject).getRight()) && (paramInt2 > ((View)localObject).getTop()) && (paramInt2 < ((View)localObject).getBottom())) {
           return true;
         }
       }
@@ -145,7 +145,7 @@ public class SelectableLinearLayout
   
   public void highlightBackgroundColor(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.d = paramInt;
   }
   
   public void highlightContent()
@@ -155,17 +155,17 @@ public class SelectableLinearLayout
       clearHighlightContent();
       return;
     }
-    int j = getChildCount();
-    int i = 0;
-    while (i < j)
+    int k = getChildCount();
+    int j = 0;
+    while (j < k)
     {
-      Object localObject = getChildAt(i);
+      Object localObject = getChildAt(j);
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
         if (((SelectableComponent)localObject).hasSelected())
         {
-          ((SelectableComponent)localObject).highlightBackgroundColor(this.jdField_c_of_type_Int);
+          ((SelectableComponent)localObject).highlightBackgroundColor(this.d);
           ((SelectableComponent)localObject).highlightContent();
         }
         else
@@ -173,36 +173,36 @@ public class SelectableLinearLayout
           ((SelectableComponent)localObject).clearHighlightContent();
         }
       }
-      i += 1;
+      j += 1;
     }
   }
   
   public void locationByIndex(int paramInt, @NonNull int[] paramArrayOfInt, boolean paramBoolean)
   {
-    int k = getChildCount();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < k)
+    int m = getChildCount();
+    int k = 0;
+    int j = paramInt;
+    paramInt = k;
+    while (paramInt < m)
     {
       Object localObject = getChildAt(paramInt);
-      j = i;
+      k = j;
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
-        j = ((SelectableComponent)localObject).contentLength();
-        if (i > j)
+        k = ((SelectableComponent)localObject).contentLength();
+        if (j > k)
         {
-          j = i - j;
+          k = j - k;
         }
         else
         {
-          ((SelectableComponent)localObject).locationByIndex(i, paramArrayOfInt, paramBoolean);
+          ((SelectableComponent)localObject).locationByIndex(j, paramArrayOfInt, paramBoolean);
           return;
         }
       }
       paramInt += 1;
-      i = j;
+      j = k;
     }
   }
   
@@ -211,7 +211,7 @@ public class SelectableLinearLayout
   {
     CharSequence localCharSequence = content();
     if (localCharSequence != null) {
-      return localCharSequence.subSequence(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      return localCharSequence.subSequence(this.b, this.c);
     }
     return null;
   }
@@ -222,133 +222,133 @@ public class SelectableLinearLayout
     {
       if (paramInt1 > paramInt2)
       {
-        this.jdField_a_of_type_Int = paramInt2;
-        this.jdField_b_of_type_Int = paramInt1;
+        this.b = paramInt2;
+        this.c = paramInt1;
       }
       else
       {
-        this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_b_of_type_Int = paramInt2;
+        this.b = paramInt1;
+        this.c = paramInt2;
       }
-      if (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int > 0) {
-        this.jdField_b_of_type_Boolean = true;
+      if (this.c - this.b > 0) {
+        this.f = true;
       }
     }
     else
     {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      this.jdField_b_of_type_Boolean = false;
+      this.b = -1;
+      this.c = -1;
+      this.f = false;
     }
-    int i = this.jdField_a_of_type_Int;
-    paramInt1 = this.jdField_b_of_type_Int;
-    int i1 = getChildCount();
-    int m = 0;
-    int j;
-    for (paramInt2 = 0; m < i1; paramInt2 = j)
+    int j = this.b;
+    paramInt1 = this.c;
+    int i2 = getChildCount();
+    int n = 0;
+    int k;
+    for (paramInt2 = 0; n < i2; paramInt2 = k)
     {
-      View localView = getChildAt(m);
-      int n = i;
-      int k = paramInt1;
-      j = paramInt2;
+      View localView = getChildAt(n);
+      int i1 = j;
+      int m = paramInt1;
+      k = paramInt2;
       if ((localView instanceof SelectableComponent))
       {
         SelectableComponent localSelectableComponent = (SelectableComponent)localView;
         if (paramInt2 == 0)
         {
-          n = localSelectableComponent.contentLength();
-          if (i >= n)
+          i1 = localSelectableComponent.contentLength();
+          if (j >= i1)
           {
-            i -= n;
-            paramInt1 -= n;
+            j -= i1;
+            paramInt1 -= i1;
             localSelectableComponent.selectContent(-1, -1);
-            k = paramInt2;
+            m = paramInt2;
             paramInt2 = paramInt1;
           }
           else
           {
-            if (paramInt1 > n)
+            if (paramInt1 > i1)
             {
-              j = paramInt2;
-              paramInt2 = n;
+              k = paramInt2;
+              paramInt2 = i1;
             }
             else
             {
               paramInt2 = paramInt1;
-              j = 1;
+              k = 1;
             }
-            localSelectableComponent.selectContent(i, paramInt2);
+            localSelectableComponent.selectContent(j, paramInt2);
             paramInt2 = paramInt1;
-            k = j;
-            if (j == 0)
+            m = k;
+            if (k == 0)
             {
-              paramInt2 = paramInt1 - n;
-              i = 0;
-              k = j;
+              paramInt2 = paramInt1 - i1;
+              j = 0;
+              m = k;
             }
           }
           paramInt1 = paramInt2;
-          paramInt2 = k;
+          paramInt2 = m;
         }
         else
         {
           localSelectableComponent.selectContent(-1, -1);
         }
         localView.invalidate();
-        j = paramInt2;
-        k = paramInt1;
-        n = i;
+        k = paramInt2;
+        m = paramInt1;
+        i1 = j;
       }
-      m += 1;
-      i = n;
-      paramInt1 = k;
+      n += 1;
+      j = i1;
+      paramInt1 = m;
     }
   }
   
   public int touchIndex(int paramInt1, int paramInt2)
   {
-    getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    int m = 0;
-    int i1 = paramInt1 - localObject[0] - getPaddingLeft();
-    int i2 = paramInt2 - this.jdField_a_of_type_ArrayOfInt[1] - getPaddingTop();
-    int n = getChildCount();
-    int i = 0;
-    int k;
+    getLocationInWindow(this.i);
+    Object localObject = this.i;
+    int n = 0;
+    int i2 = paramInt1 - localObject[0] - getPaddingLeft();
+    int i3 = paramInt2 - this.i[1] - getPaddingTop();
+    int i1 = getChildCount();
+    int j = 0;
+    int m;
     SelectableComponent localSelectableComponent;
-    for (int j = 0; i < n; j = k)
+    for (int k = 0; j < i1; k = m)
     {
-      localObject = getChildAt(i);
-      k = j;
+      localObject = getChildAt(j);
+      m = k;
       if ((localObject instanceof SelectableComponent))
       {
         localSelectableComponent = (SelectableComponent)localObject;
-        if ((i1 > ((View)localObject).getLeft()) && (i1 < ((View)localObject).getRight()) && (i2 > ((View)localObject).getTop()) && (i2 < ((View)localObject).getBottom()))
+        if ((i2 > ((View)localObject).getLeft()) && (i2 < ((View)localObject).getRight()) && (i3 > ((View)localObject).getTop()) && (i3 < ((View)localObject).getBottom()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = localSelectableComponent;
-          return j + localSelectableComponent.touchIndex(paramInt1, paramInt2);
+          this.h = localSelectableComponent;
+          return k + localSelectableComponent.touchIndex(paramInt1, paramInt2);
         }
-        k = j + localSelectableComponent.contentLength();
+        m = k + localSelectableComponent.contentLength();
       }
-      i += 1;
+      j += 1;
     }
-    j = 0;
-    i = m;
-    while (i < n)
+    k = 0;
+    j = n;
+    while (j < i1)
     {
-      localObject = getChildAt(i);
-      k = j;
+      localObject = getChildAt(j);
+      m = k;
       if ((localObject instanceof SelectableComponent))
       {
         localObject = (SelectableComponent)localObject;
-        localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+        localSelectableComponent = this.h;
         if (localSelectableComponent == localObject) {
-          return j + localSelectableComponent.touchIndex(paramInt1, paramInt2);
+          return k + localSelectableComponent.touchIndex(paramInt1, paramInt2);
         }
-        k = j + ((SelectableComponent)localObject).contentLength();
+        m = k + ((SelectableComponent)localObject).contentLength();
       }
-      i += 1;
-      j = k;
+      j += 1;
+      k = m;
     }
     return -1;
   }
@@ -361,7 +361,7 @@ public class SelectableLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.SelectableLinearLayout
  * JD-Core Version:    0.7.0.1
  */

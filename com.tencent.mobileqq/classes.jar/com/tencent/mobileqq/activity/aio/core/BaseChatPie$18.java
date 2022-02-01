@@ -13,18 +13,18 @@ class BaseChatPie$18
   
   public void run()
   {
-    ChatActivityFacade.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    ChatActivityFacade.c(this.this$0.d, this.this$0.ah, false);
     try
     {
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847348);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847349);
-      this.this$0.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130837978);
-      SystemAndEmojiEmoticonInfo.preload(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.this$0.e.getResources().getDrawable(2130848999);
+      this.this$0.e.getResources().getDrawable(2130849000);
+      this.this$0.e.getResources().getDrawable(2130838002);
+      SystemAndEmojiEmoticonInfo.preload(this.this$0.d);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      str = this.this$0.b;
+      str = this.this$0.c;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("emo qvip_emoji_aio_face oom, e= ");
       localStringBuilder.append(localOutOfMemoryError);
@@ -37,7 +37,7 @@ class BaseChatPie$18
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
-        str = this.this$0.b;
+        str = this.this$0.c;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("emo qvip_emoji_aio_face_new_default_fail, e=");
         localStringBuilder.append(localException.getMessage());
@@ -48,7 +48,7 @@ class BaseChatPie$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.18
  * JD-Core Version:    0.7.0.1
  */

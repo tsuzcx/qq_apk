@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="78.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/a7v" android:layout_width="310.0dip" android:layout_height="fill_parent" android:src="@drawable/j42" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/ccr" android:layout_width="310.0dip" android:layout_height="fill_parent" android:src="@drawable/j41" />
+    <com.tencent.mobileqq.widget.RoundImageView android:id="@id/nvd" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="18.0dip" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.widget.RoundImageView android:id="@id/nvc" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="164.0dip" android:layout_marginTop="30.0dip" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:id="@id/ou3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="54.0dip" android:layout_marginBottom="2.5dip" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="10.0dip" android:textColor="#ffffe99f" android:id="@id/nlq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.5dip" android:layout_toRightOf="@id/ou3" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/al3" android:id="@id/ou2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.5dip" android:layout_toRightOf="@id/nlq" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.qqgift.mvvm.business.banner.HitNumberView android:id="@id/fca" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="200.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

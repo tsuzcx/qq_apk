@@ -11,11 +11,11 @@ class AIOFileVideoData$1
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.e = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO.f();
+      this.c.q = true;
+      this.b.c();
+      this.b.h();
     }
   }
   
@@ -23,7 +23,7 @@ class AIOFileVideoData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData.1
  * JD-Core Version:    0.7.0.1
  */

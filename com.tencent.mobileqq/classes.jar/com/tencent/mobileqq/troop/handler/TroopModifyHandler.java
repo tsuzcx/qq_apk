@@ -90,13 +90,13 @@ public class TroopModifyHandler
         paramFromServiceMsg.mRichFingerMemo = paramToServiceMsg;
         paramFromServiceMsg.setOnlyTroopMemberInviteOption(false);
         localITroopInfoService.saveTroopInfo(paramFromServiceMsg);
-        notifyUI(TroopModifyObserver.a, true, new Object[] { Long.valueOf(l), Integer.valueOf(i), paramFromServiceMsg });
+        notifyUI(TroopModifyObserver.b, true, new Object[] { Long.valueOf(l), Integer.valueOf(i), paramFromServiceMsg });
         return;
       }
-      notifyUI(TroopModifyObserver.a, false, new Object[] { Long.valueOf(l), Integer.valueOf(i), localTroopInfo });
+      notifyUI(TroopModifyObserver.b, false, new Object[] { Long.valueOf(l), Integer.valueOf(i), localTroopInfo });
       return;
     }
-    notifyUI(TroopModifyObserver.a, false, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null });
+    notifyUI(TroopModifyObserver.b, false, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null });
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -126,7 +126,7 @@ public class TroopModifyHandler
       paramToServiceMsg[3] = Integer.valueOf(0);
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopModifyObserver.d, false, paramToServiceMsg);
+        notifyUI(TroopModifyObserver.e, false, paramToServiceMsg);
         return;
       }
       paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -136,7 +136,7 @@ public class TroopModifyHandler
       paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom((byte[])paramObject);
       if (paramFromServiceMsg == null)
       {
-        notifyUI(TroopModifyObserver.d, false, paramToServiceMsg);
+        notifyUI(TroopModifyObserver.e, false, paramToServiceMsg);
         return;
       }
       paramObject = new oidb_0x89a.RspBody();
@@ -158,14 +158,14 @@ public class TroopModifyHandler
           paramToServiceMsg[2] = paramObject.str_errorinfo.get().toStringUtf8();
         }
         if (i == 1328) {
-          paramToServiceMsg[2] = HardCodeUtil.a(2131693266);
+          paramToServiceMsg[2] = HardCodeUtil.a(2131890814);
         }
         paramToServiceMsg[3] = Integer.valueOf(i);
-        notifyUI(TroopModifyObserver.d, false, paramToServiceMsg);
+        notifyUI(TroopModifyObserver.e, false, paramToServiceMsg);
         return;
       }
       l = paramObject.uint64_group_code.get();
-      i = TroopModifyObserver.d;
+      i = TroopModifyObserver.e;
       paramToServiceMsg = new StringBuilder();
       paramToServiceMsg.append("");
       paramToServiceMsg.append(l);
@@ -176,17 +176,12 @@ public class TroopModifyHandler
     {
       break label290;
     }
-    notifyUI(TroopModifyObserver.d, false, paramToServiceMsg);
+    notifyUI(TroopModifyObserver.e, false, paramToServiceMsg);
     return;
     label300:
-    notifyUI(TroopModifyObserver.d, false, paramToServiceMsg);
+    notifyUI(TroopModifyObserver.e, false, paramToServiceMsg);
     return;
-    notifyUI(TroopModifyObserver.d, false, null);
-  }
-  
-  protected String a()
-  {
-    return "TroopModifyHandler";
+    notifyUI(TroopModifyObserver.e, false, null);
   }
   
   public void a(int paramInt, boolean paramBoolean, Object paramObject)
@@ -233,18 +228,15 @@ public class TroopModifyHandler
       paramString1.add(ByteStringMicro.copyFrom("".getBytes()));
     }
     ((oidb_0x89a.groupinfo)localObject).rpt_string_group_tag.set(paramString1);
-    if ((paramLong3 != 0L) || (paramLong4 != 0L))
-    {
-      paramString1 = new oidb_0x89a.GroupGeoInfo();
-      paramString1.uint32_city_id.set(paramInt2);
-      paramString1.uint64_latitude.set(paramLong3);
-      paramString1.uint64_longtitude.set(paramLong4);
-      if (paramString2 != null) {
-        paramString1.string_geo_content.set(ByteStringMicro.copyFromUtf8(paramString2));
-      }
-      paramString1.uint64_poi_id.set(paramLong5);
-      ((oidb_0x89a.groupinfo)localObject).msg_group_geo_info.set(paramString1);
+    paramString1 = new oidb_0x89a.GroupGeoInfo();
+    paramString1.uint32_city_id.set(paramInt2);
+    paramString1.uint64_latitude.set(paramLong3);
+    paramString1.uint64_longtitude.set(paramLong4);
+    if (paramString2 != null) {
+      paramString1.string_geo_content.set(ByteStringMicro.copyFromUtf8(paramString2));
     }
+    paramString1.uint64_poi_id.set(paramLong5);
+    ((oidb_0x89a.groupinfo)localObject).msg_group_geo_info.set(paramString1);
     if (paramString3 != null)
     {
       ((oidb_0x89a.groupinfo)localObject).string_group_finger_memo.set(ByteStringMicro.copyFromUtf8(paramString3));
@@ -330,7 +322,7 @@ public class TroopModifyHandler
     if (paramFromServiceMsg == null)
     {
       QLog.e("TroopModifyHandler", 2, "handle0x89a failed. resp is NULL!");
-      notifyUI(TroopModifyObserver.b, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
+      notifyUI(TroopModifyObserver.c, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
       return;
     }
     paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -358,10 +350,10 @@ public class TroopModifyHandler
         if (paramFromServiceMsg.str_errorinfo.has()) {
           paramToServiceMsg = new String(paramFromServiceMsg.str_errorinfo.get().toByteArray());
         }
-        notifyUI(TroopModifyObserver.b, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(i), paramToServiceMsg });
+        notifyUI(TroopModifyObserver.c, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(i), paramToServiceMsg });
         return;
       }
-      notifyUI(TroopModifyObserver.b, true, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
+      notifyUI(TroopModifyObserver.c, true, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
       return;
     }
     catch (InvalidProtocolBufferMicroException paramToServiceMsg)
@@ -369,10 +361,10 @@ public class TroopModifyHandler
       break label275;
     }
     QLog.e("TroopModifyHandler", 2, "handle0x89a failed. InvalidProtocolBufferMicroException!");
-    notifyUI(TroopModifyObserver.b, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
+    notifyUI(TroopModifyObserver.c, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
     return;
     QLog.e("TroopModifyHandler", 2, "handle0x89a failed. InvalidProtocolBufferMicroException!");
-    notifyUI(TroopModifyObserver.b, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
+    notifyUI(TroopModifyObserver.c, false, new Object[] { Long.valueOf(l), str, Integer.valueOf(0), "" });
   }
   
   public void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -419,6 +411,11 @@ public class TroopModifyHandler
     }
   }
   
+  protected String dv_()
+  {
+    return "TroopModifyHandler";
+  }
+  
   public Set<String> getCommandList()
   {
     if (this.allowCmdSet == null)
@@ -456,7 +453,7 @@ public class TroopModifyHandler
       }
       return;
     }
-    if (!a().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
+    if (!dv_().equals(paramToServiceMsg.extraData.getString("REQ_TAG")))
     {
       if (QLog.isColorLevel())
       {
@@ -480,7 +477,7 @@ public class TroopModifyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopModifyHandler
  * JD-Core Version:    0.7.0.1
  */

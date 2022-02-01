@@ -21,99 +21,99 @@ import java.util.Set;
 public class VideoSetSpeedDialog
   extends Dialog
 {
-  float jdField_a_of_type_Float = 1.0F;
-  private final int jdField_a_of_type_Int = getContext().getResources().getColor(2131165327);
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  VideoSetSpeedDialog.OnSpeedChangeListener jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog$OnSpeedChangeListener;
-  HashMap<Float, TextView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final int jdField_b_of_type_Int = getContext().getResources().getColor(2131165467);
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int jdField_c_of_type_Int = DisplayUtil.b(getContext(), 212.0F);
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private int jdField_d_of_type_Int = DisplayUtil.b(getContext(), 12.0F);
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private int jdField_e_of_type_Int = 85;
-  private TextView jdField_e_of_type_AndroidWidgetTextView;
+  HashMap<Float, TextView> a = new HashMap();
+  float b = 1.0F;
+  VideoSetSpeedDialog.OnSpeedChangeListener c;
+  private final int d = getContext().getResources().getColor(2131165564);
+  private final int e = getContext().getResources().getColor(2131165781);
+  private TextView f;
+  private TextView g;
+  private TextView h;
+  private TextView i;
+  private TextView j;
+  private int k = DisplayUtil.b(getContext(), 212.0F);
+  private int l = DisplayUtil.b(getContext(), 12.0F);
+  private int m = 85;
+  private View n;
   
   public VideoSetSpeedDialog(Context paramContext, int paramInt)
   {
-    super(paramContext, 2131755358);
+    super(paramContext, 2131952062);
     a();
   }
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2064318592, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122800));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122790));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122792));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122786));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2064122799));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_d_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_e_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 0.5F));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 0.75F));
-    this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 1.0F));
-    this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 1.5F));
-    this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 2.0F));
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(0.5F), this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(0.75F), this.jdField_b_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(1.0F), this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(1.5F), this.jdField_d_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Float.valueOf(2.0F), this.jdField_e_of_type_AndroidWidgetTextView);
+    this.n = LayoutInflater.from(getContext()).inflate(2064056464, null);
+    this.f = ((TextView)this.n.findViewById(2063991575));
+    this.g = ((TextView)this.n.findViewById(2063991565));
+    this.h = ((TextView)this.n.findViewById(2063991567));
+    this.i = ((TextView)this.n.findViewById(2063991561));
+    this.j = ((TextView)this.n.findViewById(2063991574));
+    this.f.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.g.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.h.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.i.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.j.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(getContext(), "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.f.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 0.5F));
+    this.g.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 0.75F));
+    this.h.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 1.0F));
+    this.i.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 1.5F));
+    this.j.setOnClickListener(new VideoSetSpeedDialog.OnItemSelectListener(this, 2.0F));
+    this.a.put(Float.valueOf(0.5F), this.f);
+    this.a.put(Float.valueOf(0.75F), this.g);
+    this.a.put(Float.valueOf(1.0F), this.h);
+    this.a.put(Float.valueOf(1.5F), this.i);
+    this.a.put(Float.valueOf(2.0F), this.j);
   }
   
   private void b()
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    Object localObject1 = this.a;
     if (localObject1 != null)
     {
       localObject1 = ((HashMap)localObject1).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        boolean bool = SpeedFloatUtil.a(((Float)((Map.Entry)localObject2).getKey()).floatValue(), this.jdField_a_of_type_Float);
+        boolean bool = SpeedFloatUtil.a(((Float)((Map.Entry)localObject2).getKey()).floatValue(), this.b);
         ((TextView)((Map.Entry)localObject2).getValue()).setSelected(bool);
         localObject2 = (TextView)((Map.Entry)localObject2).getValue();
-        int i;
+        int i1;
         if (bool) {
-          i = this.jdField_b_of_type_Int;
+          i1 = this.e;
         } else {
-          i = this.jdField_a_of_type_Int;
+          i1 = this.d;
         }
-        ((TextView)localObject2).setTextColor(i);
+        ((TextView)localObject2).setTextColor(i1);
       }
     }
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
     b();
   }
   
   public void a(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
+    this.k = paramInt;
   }
   
   public void a(VideoSetSpeedDialog.OnSpeedChangeListener paramOnSpeedChangeListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleClipVideoVideoSetSpeedDialog$OnSpeedChangeListener = paramOnSpeedChangeListener;
+    this.c = paramOnSpeedChangeListener;
   }
   
   public void b(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.l = paramInt;
   }
   
   public void c(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
+    this.m = paramInt;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -128,18 +128,18 @@ public class VideoSetSpeedDialog
     super.show();
     Window localWindow = getWindow();
     WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localWindow.setGravity(this.jdField_e_of_type_Int);
-    localLayoutParams.y = this.jdField_c_of_type_Int;
-    localLayoutParams.x = this.jdField_d_of_type_Int;
+    localWindow.setGravity(this.m);
+    localLayoutParams.y = this.k;
+    localLayoutParams.x = this.l;
     localLayoutParams.dimAmount = 0.1F;
     localWindow.setAttributes(localLayoutParams);
     localWindow.setLayout(DisplayUtil.b(getContext(), 65.0F), -2);
-    localWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+    localWindow.setContentView(this.n);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.clip.video.VideoSetSpeedDialog
  * JD-Core Version:    0.7.0.1
  */

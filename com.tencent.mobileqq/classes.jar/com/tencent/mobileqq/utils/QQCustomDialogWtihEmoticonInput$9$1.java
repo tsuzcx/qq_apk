@@ -20,8 +20,8 @@ class QQCustomDialogWtihEmoticonInput$9$1
   public void run()
   {
     int k = this.a.this$0.a(this.a.a);
-    int m = this.a.this$0.a(this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    int n = this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+    int m = this.a.this$0.a(this.a.this$0.x);
+    int n = this.a.this$0.x.getHeight();
     int i = m + n;
     int j;
     if (k - i > 0)
@@ -30,7 +30,7 @@ class QQCustomDialogWtihEmoticonInput$9$1
     }
     else
     {
-      if (this.a.this$0.jdField_a_of_type_Boolean)
+      if (this.a.this$0.m)
       {
         j = ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext());
         j = (k - n - j) / 2 + j;
@@ -40,12 +40,12 @@ class QQCustomDialogWtihEmoticonInput$9$1
           break label162;
         }
         i -= k;
-        j = ViewUtils.a(10.0F);
+        j = ViewUtils.dip2px(10.0F);
       }
       else
       {
         i -= k;
-        j = ViewUtils.a(10.0F);
+        j = ViewUtils.dip2px(10.0F);
       }
       i += j;
     }
@@ -55,16 +55,16 @@ class QQCustomDialogWtihEmoticonInput$9$1
     this.a.this$0.getWindow().setAttributes((WindowManager.LayoutParams)localObject);
     if (i > m)
     {
-      localObject = this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      localObject = this.a.this$0.x.getLayoutParams();
       if (localObject != null)
       {
-        ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - ViewUtils.a(10.0F));
-        this.a.this$0.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+        ((ViewGroup.LayoutParams)localObject).height = (k - ImmersiveUtils.getStatusBarHeight(this.a.this$0.getContext()) - ViewUtils.dip2px(10.0F));
+        this.a.this$0.x.requestLayout();
       }
     }
     if (QLog.isColorLevel())
     {
-      localObject = (Context)this.a.this$0.jdField_a_of_type_JavaLangRefSoftReference.get();
+      localObject = (Context)this.a.this$0.k.get();
       j = 0;
       if (localObject != null) {
         j = ((Context)localObject).getResources().getDisplayMetrics().heightPixels;
@@ -91,7 +91,7 @@ class QQCustomDialogWtihEmoticonInput$9$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput.9.1
  * JD-Core Version:    0.7.0.1
  */

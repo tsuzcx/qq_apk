@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 public class DoutuReportData
 {
-  public DoutuReportData.Data a;
   public String a;
+  public DoutuReportData.Data b;
   
   public JSONObject a()
   {
@@ -17,27 +17,27 @@ public class DoutuReportData
     try
     {
       JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("user_id", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("source_md5", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.jdField_b_of_type_JavaLangString);
-      localJSONObject2.put("source_url", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.c);
+      localJSONObject2.put("user_id", this.b.a);
+      localJSONObject2.put("source_md5", this.b.b);
+      localJSONObject2.put("source_url", this.b.c);
       localObject = new JSONArray();
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.d.iterator();
       while (localIterator.hasNext()) {
         ((JSONArray)localObject).put((String)localIterator.next());
       }
       localJSONObject2.put("expose_md5s", localObject);
       localObject = new JSONArray();
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.jdField_b_of_type_JavaUtilArrayList.iterator();
+      localIterator = this.b.e.iterator();
       while (localIterator.hasNext()) {
         ((JSONArray)localObject).put((String)localIterator.next());
       }
       localJSONObject2.put("expose_urls", localObject);
-      localJSONObject2.put("click_md5", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.d);
-      localJSONObject2.put("click_url", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.e);
-      localJSONObject2.put("aio_type", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.f);
-      localJSONObject2.put("mobile_type", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.g);
-      localJSONObject2.put("to_user_id", this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuReportData$Data.h);
-      localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("click_md5", this.b.f);
+      localJSONObject2.put("click_url", this.b.g);
+      localJSONObject2.put("aio_type", this.b.h);
+      localJSONObject2.put("mobile_type", this.b.i);
+      localJSONObject2.put("to_user_id", this.b.j);
+      localJSONObject1.put("dcId", this.a);
       localJSONObject1.put("data", localJSONObject2);
       return localJSONObject1;
     }
@@ -57,7 +57,7 @@ public class DoutuReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuReportData
  * JD-Core Version:    0.7.0.1
  */

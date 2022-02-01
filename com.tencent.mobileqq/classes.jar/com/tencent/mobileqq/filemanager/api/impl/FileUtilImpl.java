@@ -23,17 +23,17 @@ public class FileUtilImpl
   
   public boolean deleteFile(File paramFile)
   {
-    return QQFileUtil.a(paramFile);
+    return QQFileUtil.b(paramFile);
   }
   
   public boolean deleteFile(String paramString)
   {
-    return QQFileUtil.c(paramString);
+    return QQFileUtil.d(paramString);
   }
   
   public void deleteSubFile(File paramFile)
   {
-    QQFileUtil.a(paramFile);
+    QQFileUtil.c(paramFile);
   }
   
   public boolean fileExistsAndNotEmpty(String paramString)
@@ -53,17 +53,17 @@ public class FileUtilImpl
   
   public Bitmap getBitmapByPath(String paramString)
   {
-    return QQFileUtil.a(paramString);
+    return QQFileUtil.i(paramString);
   }
   
   public String getExtension(String paramString)
   {
-    return QQFileUtil.a(paramString);
+    return QQFileUtil.f(paramString);
   }
   
   public String getFileDirectoryOf(String paramString)
   {
-    return QQFileUtil.c(paramString);
+    return QQFileUtil.h(paramString);
   }
   
   public FileInfo getFileInfo(File paramFile)
@@ -73,12 +73,12 @@ public class FileUtilImpl
   
   public String getFileNameNoEx(String paramString)
   {
-    return QQFileUtil.b(paramString);
+    return QQFileUtil.g(paramString);
   }
   
   public long getFileSize(String paramString)
   {
-    return QQFileUtil.a(paramString);
+    return QQFileUtil.c(paramString);
   }
   
   public ArrayList<FileInfo> getFiles(String paramString, boolean paramBoolean, int paramInt)
@@ -108,7 +108,7 @@ public class FileUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FileUtilImpl
  * JD-Core Version:    0.7.0.1
  */

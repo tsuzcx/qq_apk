@@ -126,13 +126,13 @@ public class ScreenShotImageUtil
         localCanvas.drawRect(0.0F, f1, f2, f3, localPaint);
         localPaint.setColor(-1);
         localCanvas.drawRect(0.0F, f3, f2, m, localPaint);
-        localCanvas.drawBitmap(BitmapFactory.decodeResource(localResources, 2130841729), AIOUtils.b(13.0F, localResources), AIOUtils.b(25.0F, localResources) + n, localPaint);
+        localCanvas.drawBitmap(BitmapFactory.decodeResource(localResources, 2130842646), AIOUtils.b(13.0F, localResources), AIOUtils.b(25.0F, localResources) + n, localPaint);
         localPaint.setColor(-16777216);
         localPaint.setTextSize(AIOUtils.a(2, 18, localResources));
         localCanvas.drawText("QQ看点", AIOUtils.b(60.0F, localResources), AIOUtils.b(42.0F, localResources) + n, localPaint);
         localPaint.setColor(Color.parseColor("#777777"));
         localPaint.setTextSize(AIOUtils.a(2, 14, localResources));
-        localCanvas.drawText(localResources.getString(2131695243), AIOUtils.b(60.0F, localResources), AIOUtils.b(61.0F, localResources) + n, localPaint);
+        localCanvas.drawText(localResources.getString(2131892977), AIOUtils.b(60.0F, localResources), AIOUtils.b(61.0F, localResources) + n, localPaint);
         paramString1 = new StringBuilder();
         paramString1.append("https://post.mp.qq.com/tmpl/default/client/article/html/jump.html?action=openUrl&url=");
         paramString1.append(URLEncoder.encode(paramString2, "UTF-8"));
@@ -227,7 +227,7 @@ public class ScreenShotImageUtil
           if (QLog.isColorLevel()) {
             QLog.d("ScreenShotImageUtil", 2, "generateScreenShotImageWithQRCode->use old kandian qrCode!");
           }
-          paramString2 = BitmapFactory.decodeResource(localResources, 2130841736);
+          paramString2 = BitmapFactory.decodeResource(localResources, 2130842653);
         }
         localCanvas.drawBitmap(paramString2, k - AIOUtils.b(5.0F, localResources) - paramString2.getWidth(), n + AIOUtils.b(5.0F, localResources), localPaint);
         paramString1 = localBitmap;
@@ -383,7 +383,7 @@ public class ScreenShotImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.util.ScreenShotImageUtil
  * JD-Core Version:    0.7.0.1
  */

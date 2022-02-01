@@ -43,7 +43,7 @@ class AdvertisementCoverPreloadManager$1
         }
       }
       AdvertisementCoverPreloadManager.a(this.a, null);
-      AdvertisementCoverPreloadManager.a(this.a);
+      AdvertisementCoverPreloadManager.c(this.a);
       return;
     }
   }
@@ -67,14 +67,14 @@ class AdvertisementCoverPreloadManager$1
         QLog.d("AdvertisementCoverPreloadManager", 2, localStringBuilder.toString());
       }
       AdvertisementCoverPreloadManager.a(this.a, null);
-      AdvertisementCoverPreloadManager.a(this.a);
+      AdvertisementCoverPreloadManager.c(this.a);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementCoverPreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

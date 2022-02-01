@@ -20,12 +20,12 @@ import com.tencent.qphone.base.util.QLog;
 public class NormalStageView
   extends BaseStageView
 {
-  protected ImageView a;
-  protected RelativeLayout.LayoutParams a;
-  protected TextView a;
-  Runnable a;
-  protected RelativeLayout.LayoutParams b;
-  Runnable b;
+  protected TextView j;
+  protected ImageView k;
+  protected RelativeLayout.LayoutParams l;
+  protected RelativeLayout.LayoutParams m;
+  Runnable n = new NormalStageView.1(this);
+  Runnable o = new NormalStageView.2(this);
   
   public NormalStageView(Context paramContext)
   {
@@ -40,27 +40,25 @@ public class NormalStageView
   public NormalStageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaLangRunnable = new NormalStageView.1(this);
-    this.jdField_b_of_type_JavaLangRunnable = new NormalStageView.2(this);
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = new StagePresenterImp(this);
+    this.p = new StagePresenterImp(this);
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
   {
     super.a(paramIGameRoomPresenter);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(12);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(14);
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin = ViewUtils.b(33.0F);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(ViewUtils.b(190.0F), ViewUtils.b(40.0F));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(12);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(14);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.bottomMargin = ViewUtils.b(20.0F);
+    this.j = new TextView(getContext());
+    this.j.setTextColor(-1);
+    this.j.setTextSize(1, 17.0F);
+    this.j.setGravity(17);
+    this.m = new RelativeLayout.LayoutParams(-2, -2);
+    this.m.addRule(12);
+    this.m.addRule(14);
+    this.m.bottomMargin = ViewUtils.dpToPx(33.0F);
+    this.k = new ImageView(getContext());
+    this.l = new RelativeLayout.LayoutParams(ViewUtils.dpToPx(190.0F), ViewUtils.dpToPx(40.0F));
+    this.l.addRule(12);
+    this.l.addRule(14);
+    this.l.bottomMargin = ViewUtils.dpToPx(20.0F);
   }
   
   public void a(String paramString)
@@ -68,12 +66,12 @@ public class NormalStageView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView.getParent() != null) {
-      removeView(this.jdField_a_of_type_AndroidWidgetTextView);
+    if (this.j.getParent() != null) {
+      removeView(this.j);
     }
-    addView(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+    addView(this.j, this.m);
+    this.j.setText(paramString);
+    postDelayed(this.n, 3000L);
   }
   
   public void b(String paramString)
@@ -88,22 +86,22 @@ public class NormalStageView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getParent() != null) {
-      removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    if (this.k.getParent() != null) {
+      removeView(this.k);
     }
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(AvGameResDownloadUtil.a(paramString));
-    postDelayed(this.jdField_b_of_type_JavaLangRunnable, 1500L);
+    addView(this.k, this.l);
+    this.k.setBackgroundDrawable(AvGameResDownloadUtil.a(paramString));
+    postDelayed(this.o, 1500L);
   }
   
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessactionBaseGuessActionStageView = new GuessActionStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView = new GuessPictureStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesssongBaseGuessSongStageView = new GuessSongStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesstextBaseGuessTextStageView = new GuessTextStageView(getContext());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarBaseGuessStarStageView = new GuessStarStageView(getContext());
+    this.r = new GuessActionStageView(getContext());
+    this.t = new GuessPictureStageView(getContext());
+    this.u = new GuessSongStageView(getContext());
+    this.v = new GuessTextStageView(getContext());
+    this.s = new GuessStarStageView(getContext());
   }
 }
 

@@ -20,14 +20,14 @@ public class QCircleLpReportDc010001
     return 10001;
   }
   
-  public static void report(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt4)
+  public static void report(QCircleLpReportDc010001.DataBuilder paramDataBuilder)
   {
-    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc010001.1(paramInt1, paramInt2, paramInt3, paramString1, paramString2, paramString3, paramString4, paramInt4));
+    QCircleReporter.getInstance().getReportHandler().post(new QCircleLpReportDc010001.1(paramDataBuilder));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc010001
  * JD-Core Version:    0.7.0.1
  */

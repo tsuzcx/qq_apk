@@ -5,98 +5,82 @@ import java.util.HashMap;
 public abstract class AbsReadInJoyVideoReportData
 {
   public static int a = -1;
-  public static String a;
-  public static int[] a;
-  public float a;
-  public long a;
-  public Long a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public boolean b = false;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c = false;
-  public int d;
-  public long d;
-  public String d;
-  public boolean d;
-  public int e;
-  public long e;
+  public static int[] b;
+  public static String c;
+  public long A;
+  public long B;
+  public int C = 0;
+  public boolean D = false;
+  public long E;
+  public int F;
+  public int G;
+  public boolean H = false;
+  public long I = -1L;
+  public int J = -1;
+  public int K = -1;
+  public long L;
+  public long M;
+  public long N;
+  public int O;
+  public int P;
+  public long Q;
+  public int R;
+  public int S;
+  public boolean T = false;
+  public String U;
+  public int V = 0;
+  public int W = 0;
+  public int X = 0;
+  public int Y = 0;
+  public boolean Z;
+  public boolean aa;
+  public String ab = "";
+  public String ac = "";
+  public String ad = "";
+  public int ae = 0;
+  public String af = "";
+  public String ag = "";
+  public String ah = "";
+  public boolean ai;
+  public boolean aj;
+  public int ak = -1;
+  public boolean al;
+  public String am;
+  public long an = 0L;
+  public String ao;
+  public boolean ap;
+  public boolean aq;
+  public long ar;
+  public String as;
+  public boolean at;
+  public long au;
+  public long av;
+  public String aw;
+  public String ax;
+  public int ay = -1;
+  public Long d;
   public String e;
-  public boolean e;
-  public int f;
-  public long f;
   public String f;
-  public boolean f;
   public int g;
-  public long g;
-  public String g;
-  public boolean g;
-  public int h;
   public long h;
-  public String h = "";
-  public boolean h;
   public int i;
-  public long i;
-  public String i = "";
-  public boolean i;
-  public int j;
-  public long j;
-  public String j;
   public boolean j;
-  public int k;
-  public long k;
-  public String k;
-  public boolean k;
-  public int l;
-  public long l;
+  public String k = "";
   public String l = "";
-  public boolean l;
-  public int m;
   public long m;
-  public String m;
-  public int n;
   public long n;
-  public String n;
-  public int o;
-  public long o = -1L;
-  public String o;
-  public int p = 0;
+  public long o;
   public long p;
-  public String p;
-  public int q = 0;
   public long q;
-  public String q;
-  public int r = 0;
-  public long r;
-  public int s = 0;
-  public long s;
-  public int t;
-  public long t;
-  public int u = -1;
+  public float r;
+  public int s;
+  public int t = 0;
   public long u;
-  public int v = -1;
   public long v;
   public long w;
-  
-  public AbsReadInJoyVideoReportData()
-  {
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_g_of_type_Int = 0;
-    this.jdField_j_of_type_Int = -1;
-    this.jdField_k_of_type_Int = -1;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_g_of_type_JavaLangString = "";
-    this.jdField_t_of_type_Int = 0;
-    this.jdField_j_of_type_JavaLangString = "";
-    this.jdField_k_of_type_JavaLangString = "";
-    this.jdField_t_of_type_Long = 0L;
-  }
+  public long x;
+  public int y;
+  public long z;
   
   public abstract HashMap<String, String> a();
   
@@ -104,7 +88,7 @@ public abstract class AbsReadInJoyVideoReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.data.AbsReadInJoyVideoReportData
  * JD-Core Version:    0.7.0.1
  */

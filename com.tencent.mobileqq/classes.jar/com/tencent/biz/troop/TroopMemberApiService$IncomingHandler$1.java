@@ -15,10 +15,10 @@ class TroopMemberApiService$IncomingHandler$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidOsBundle.remove("data");
+    this.a.remove("data");
     if (!paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      this.b.a.a(16, this.a);
       return;
     }
     paramBundle = paramBundle.getByteArray("data");
@@ -28,17 +28,17 @@ class TroopMemberApiService$IncomingHandler$1
       localRspBody.mergeFrom(paramBundle);
       if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
       {
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        this.b.a.a(16, this.a);
         return;
       }
       paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
       if (!paramBundle.rpt_banner_info.has())
       {
-        this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        this.b.a.a(16, this.a);
         return;
       }
-      this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      this.a.putByteArray("data", paramBundle.toByteArray());
+      this.b.a.a(16, this.a);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramBundle)
@@ -51,14 +51,14 @@ class TroopMemberApiService$IncomingHandler$1
       label178:
       break label161;
     }
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+    this.b.a.a(16, this.a);
     return;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+    this.b.a.a(16, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.1
  * JD-Core Version:    0.7.0.1
  */

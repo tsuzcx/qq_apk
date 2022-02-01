@@ -10,8 +10,8 @@ class QuestionOptionsPresenterImpl$1
   
   public void onGlobalLayout()
   {
-    QuestionOptionsPresenterImpl.a(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsPresenterImpl).a(QuestionOptionsPresenterImpl.b(), QuestionOptionsPresenterImpl.a(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsPresenterImpl), this.jdField_a_of_type_Boolean, true);
-    QuestionOptionsPresenterImpl.a(this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsPresenterImpl).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    QuestionOptionsPresenterImpl.b(this.b).a(QuestionOptionsPresenterImpl.c(), QuestionOptionsPresenterImpl.a(this.b), this.a, true);
+    QuestionOptionsPresenterImpl.b(this.b).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

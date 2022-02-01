@@ -15,18 +15,18 @@ class DocFileBrowserView$GestureRelativeLayout$1
   {
     if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
     {
-      paramMotionEvent1 = this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.a();
+      paramMotionEvent1 = this.b.a.d();
       if (paramFloat2 > 0.0F)
       {
         if (paramMotionEvent1 != null) {
           paramMotionEvent1.setVisibility(8);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner.b(true);
+        if (this.b.a.a != null) {
+          this.b.a.a.b(true);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner != null)
+        if (this.b.a.b != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner.b(true);
+          this.b.a.b.b(true);
           return true;
         }
       }
@@ -35,11 +35,11 @@ class DocFileBrowserView$GestureRelativeLayout$1
         if (paramMotionEvent1 != null) {
           paramMotionEvent1.setVisibility(0);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCooperationBanner.a(true);
+        if (this.b.a.a != null) {
+          this.b.a.a.a(true);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView$GestureRelativeLayout.jdField_a_of_type_ComTencentMobileqqFilebrowserViewDocFileBrowserView.jdField_a_of_type_ComTencentMobileqqFilemanagerauxWidgetDocCollectFormBanner.a(true);
+        if (this.b.a.b != null) {
+          this.b.a.b.a(true);
         }
       }
       return true;
@@ -49,7 +49,7 @@ class DocFileBrowserView$GestureRelativeLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.DocFileBrowserView.GestureRelativeLayout.1
  * JD-Core Version:    0.7.0.1
  */

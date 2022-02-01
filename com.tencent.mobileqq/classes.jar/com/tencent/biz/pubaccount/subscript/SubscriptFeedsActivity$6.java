@@ -20,7 +20,7 @@ class SubscriptFeedsActivity$6
       int j = arrayOfInt[0];
       int k = this.b;
       int m = AIOUtils.b(2.0F, this.this$0.getResources());
-      SubscriptFeedsActivity.a(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -AIOUtils.b(5.0F, this.this$0.getResources()));
+      SubscriptFeedsActivity.c(this.this$0).showAsDropDown(this.this$0.rightViewText, i - j - k - m, -AIOUtils.b(5.0F, this.this$0.getResources()));
       return;
     }
     catch (Exception localException)
@@ -37,7 +37,7 @@ class SubscriptFeedsActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.6
  * JD-Core Version:    0.7.0.1
  */

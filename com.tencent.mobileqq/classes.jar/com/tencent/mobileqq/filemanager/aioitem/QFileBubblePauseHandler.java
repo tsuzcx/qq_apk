@@ -20,15 +20,14 @@ import java.util.ArrayList;
 public abstract class QFileBubblePauseHandler
 {
   protected Context a;
-  protected View.OnClickListener a;
-  protected QQAppInterface a;
-  protected ActionSheet a;
+  protected QQAppInterface b;
+  protected ActionSheet c;
+  protected View.OnClickListener d = new QFileBubblePauseHandler.1(this);
   
   public QFileBubblePauseHandler(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new QFileBubblePauseHandler.1(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramContext;
+    this.b = paramQQAppInterface;
   }
   
   private void a(BaseBubbleBuilder.ViewHolder paramViewHolder, boolean paramBoolean)
@@ -39,7 +38,7 @@ public abstract class QFileBubblePauseHandler
       if (paramViewHolder != null)
       {
         paramViewHolder.setVisibility(0);
-        paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramViewHolder.setOnClickListener(this.d);
       }
     }
     else if (paramViewHolder != null)
@@ -53,9 +52,9 @@ public abstract class QFileBubblePauseHandler
   
   protected void a()
   {
-    ActionSheet localActionSheet = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    ActionSheet localActionSheet = this.c;
     if ((localActionSheet != null) && (localActionSheet.isShowing())) {
-      ActionSheetHelper.b((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentWidgetActionSheet);
+      ActionSheetHelper.b((Activity)this.a, this.c);
     }
   }
   
@@ -69,14 +68,14 @@ public abstract class QFileBubblePauseHandler
       paramChatMessage = a(paramViewHolder);
       if (paramChatMessage == null)
       {
-        paramChatMessage = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        paramChatMessage.setImageResource(2130838222);
-        paramChatMessage.setId(2131364540);
+        paramChatMessage = new ImageView(this.a);
+        paramChatMessage.setImageResource(2130838287);
+        paramChatMessage.setId(2131430598);
         a(paramViewHolder, paramChatMessage);
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.bottomMargin = AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams.addRule(8, 2131364521);
-        localLayoutParams.addRule(0, 2131364521);
+        localLayoutParams.bottomMargin = AIOUtils.b(16.0F, this.a.getResources());
+        localLayoutParams.addRule(8, 2131430578);
+        localLayoutParams.addRule(0, 2131430578);
         localLayoutParams.addRule(1, 0);
         if ((paramView instanceof ViewGroup)) {
           ((ViewGroup)paramView).addView(paramChatMessage, localLayoutParams);
@@ -84,7 +83,7 @@ public abstract class QFileBubblePauseHandler
       }
       else
       {
-        paramChatMessage.setImageResource(2130838222);
+        paramChatMessage.setImageResource(2130838287);
       }
       a(paramViewHolder, true);
       return;
@@ -94,14 +93,14 @@ public abstract class QFileBubblePauseHandler
       paramChatMessage = a(paramViewHolder);
       if (paramChatMessage == null)
       {
-        paramChatMessage = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-        paramChatMessage.setImageResource(2130838217);
-        paramChatMessage.setId(2131364540);
+        paramChatMessage = new ImageView(this.a);
+        paramChatMessage.setImageResource(2130838271);
+        paramChatMessage.setId(2131430598);
         a(paramViewHolder, paramChatMessage);
         localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-        localLayoutParams.bottomMargin = AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        localLayoutParams.addRule(8, 2131364521);
-        localLayoutParams.addRule(0, 2131364521);
+        localLayoutParams.bottomMargin = AIOUtils.b(16.0F, this.a.getResources());
+        localLayoutParams.addRule(8, 2131430578);
+        localLayoutParams.addRule(0, 2131430578);
         localLayoutParams.addRule(1, 0);
         if ((paramView instanceof ViewGroup)) {
           ((ViewGroup)paramView).addView(paramChatMessage, localLayoutParams);
@@ -109,7 +108,7 @@ public abstract class QFileBubblePauseHandler
       }
       else
       {
-        paramChatMessage.setImageResource(2130838217);
+        paramChatMessage.setImageResource(2130838271);
       }
       a(paramViewHolder, true);
       return;
@@ -122,13 +121,13 @@ public abstract class QFileBubblePauseHandler
   protected void a(ActionSheet.OnButtonClickListener paramOnButtonClickListener)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new ActionMenuItem(0, ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, 2131718226), 0, 0, 2));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, localArrayList, paramOnButtonClickListener);
-    paramOnButtonClickListener = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    localArrayList.add(new ActionMenuItem(0, ActionSheetHelper.a(this.a, 2131915708), 0, 0, 2));
+    this.c = ActionSheetHelper.b(this.a, localArrayList, paramOnButtonClickListener);
+    paramOnButtonClickListener = this.c;
     if (paramOnButtonClickListener != null)
     {
-      paramOnButtonClickListener.addCancelButton(2131690728);
-      ActionSheetHelper.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentWidgetActionSheet);
+      paramOnButtonClickListener.addCancelButton(2131887648);
+      ActionSheetHelper.a((Activity)this.a, this.c);
     }
   }
   
@@ -144,7 +143,7 @@ public abstract class QFileBubblePauseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.QFileBubblePauseHandler
  * JD-Core Version:    0.7.0.1
  */

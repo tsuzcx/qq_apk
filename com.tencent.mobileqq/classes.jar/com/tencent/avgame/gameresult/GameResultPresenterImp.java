@@ -27,8 +27,8 @@ public class GameResultPresenterImp
   
   private void a()
   {
-    EngineData localEngineData = GameEngine.a().a();
-    GameEngine.a().a(localEngineData.b());
+    EngineData localEngineData = GameEngine.a().s();
+    GameEngine.a().a(localEngineData.n());
   }
   
   private void a(GameRecordInfo paramGameRecordInfo)
@@ -125,7 +125,7 @@ public class GameResultPresenterImp
       localStringBuilder.append(paramString);
       QLog.d("GameResultPresenterImp", 2, localStringBuilder.toString());
     }
-    if ((paramString.equals(GameEngine.a().a().getAccount())) && (paramInt == 1)) {
+    if ((paramString.equals(GameEngine.a().f().getAccount())) && (paramInt == 1)) {
       this.a.b(paramEngineData);
     }
   }
@@ -148,15 +148,10 @@ public class GameResultPresenterImp
     }
   }
   
-  public boolean a()
-  {
-    return GameEngine.a().d();
-  }
-  
   public void b()
   {
     GameEngine.a().a(this);
-    GameRecordInfo localGameRecordInfo = GameEngine.a().a().a();
+    GameRecordInfo localGameRecordInfo = GameEngine.a().s().v();
     if (localGameRecordInfo.gameType == 5)
     {
       a(localGameRecordInfo);
@@ -184,50 +179,55 @@ public class GameResultPresenterImp
   
   public void d()
   {
-    EngineData localEngineData = GameEngine.a().a();
-    GameEngine.a().a(localEngineData.a(), GameEngine.a().a().getAccount(), 1, 4);
+    EngineData localEngineData = GameEngine.a().s();
+    GameEngine.a().a(localEngineData.i(), GameEngine.a().f().getAccount(), 1, 4);
     a();
-    GameEngine.a().a().a(null, null, 0L);
-    GameEngine.a().a().a(null);
-    if ((localEngineData.j()) && (localEngineData.e(GameEngine.a().a().getCurrentAccountUin())) && (AVGameUtil.b() == 2))
+    GameEngine.a().s().a(null, null, 0L);
+    GameEngine.a().s().a(null);
+    if ((localEngineData.ab()) && (localEngineData.g(GameEngine.a().f().getCurrentAccountUin())) && (AVGameUtil.b() == 2))
     {
       GameEngine.a().c(0);
-      localEngineData.e(true);
+      localEngineData.f(true);
     }
     AVGameNodeReportUtil.f();
   }
   
-  public void e()
+  public boolean f()
   {
-    if (this.a != null) {
-      FloatWindowController.a().a(this.a.a(), false, true);
-    }
-  }
-  
-  public void f()
-  {
-    a();
-    QLog.i("GameResultPresenterImp", 1, "exitGameRoom from result.");
-    GameEngine.a().a(false, 1);
-    if (this.a.a() != null) {
-      this.a.a().finish();
-    }
+    return GameEngine.a().r();
   }
   
   public void g()
   {
-    GameEngine.a().d();
-    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().a();
+    if (this.a != null) {
+      FloatWindowController.c().a(this.a.d(), false, true);
+    }
+  }
+  
+  public void h()
+  {
+    a();
+    QLog.i("GameResultPresenterImp", 1, "exitGameRoom from result.");
+    GameEngine.a().a(false, 1);
+    if (this.a.d() != null) {
+      this.a.d().finish();
+    }
+  }
+  
+  public void i()
+  {
+    GameEngine.a().q();
+    BaseAVGameAppInterface localBaseAVGameAppInterface = GameEngine.a().f();
     String str1 = localBaseAVGameAppInterface.getCurrentAccountUin();
-    EngineData localEngineData = GameEngine.a().a();
-    long l = localEngineData.a();
-    String str2 = localEngineData.a().getNick(str1);
-    String str3 = localEngineData.b();
-    int i = localEngineData.c();
-    int j = localEngineData.d();
+    EngineData localEngineData = GameEngine.a().s();
+    long l = localEngineData.i();
+    String str2 = localEngineData.e().getNick(str1);
+    String str3 = localEngineData.n();
+    int i = localEngineData.o();
+    int j = localEngineData.p();
     if ((i != 2) && (i != 4) && (i != 5))
     {
-      AVGameShareUtil.a().a(localBaseAVGameAppInterface, this.a.a(), l, Long.valueOf(str1).longValue(), str2, str3, j);
+      AVGameShareUtil.a().a(localBaseAVGameAppInterface, this.a.d(), l, Long.valueOf(str1).longValue(), str2, str3, j);
       return;
     }
     this.a.a(localBaseAVGameAppInterface, l, str1, j, str2, str3);

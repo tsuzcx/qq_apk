@@ -29,8 +29,10 @@ import com.tencent.aelight.camera.ae.AEPath.PLAY.FILES;
 import com.tencent.aelight.camera.ae.entry.AECameraEntryManager;
 import com.tencent.aelight.camera.ae.report.AEBaseDataReporter;
 import com.tencent.aelight.camera.ae.util.AEFastClickThrottle;
+import com.tencent.aelight.camera.aebase.QIMCameraCaptureActivity;
 import com.tencent.aelight.camera.aioeditor.shortvideo.util.HwVideoMerge;
 import com.tencent.aelight.camera.aioeditor.takevideo.ShortVideoForwardManager;
+import com.tencent.aelight.camera.entry.api.AECameraEntry;
 import com.tencent.aelight.camera.log.AEQLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
@@ -64,6 +66,7 @@ public class AEVideoShelfPreviewFragment
 {
   private static final int AUDIO_UPDATE_PROGRESS_TIME = 200;
   public static final String FROM = "from";
+  public static final String FROM_FLAG_BACK_FROM_QUDONG_TO_AIO = "FROM_FLAG_BACK_FROM_QUDONG_TO_AIO";
   private static final long INTERVAL_UPDATE_PROGRESS = 200L;
   public static final String IS_NEED_EDIT_BTN = "isNeedEditButton";
   private static final double PROCESS_STEP = 0.3D;
@@ -151,12 +154,12 @@ public class AEVideoShelfPreviewFragment
     localProgressPieDrawable.a(AIOUtils.b(50.0F, getBaseActivity().getResources()));
     localProgressPieDrawable.a(true);
     localProgressPieDrawable.c(false);
-    localProgressPieDrawable.g(-1);
-    localProgressPieDrawable.f(0);
-    localProgressPieDrawable.d(-15550475);
-    localProgressPieDrawable.i(3);
-    localProgressPieDrawable.jdField_f_of_type_Boolean = true;
-    localProgressPieDrawable.jdField_f_of_type_Int = 2;
+    localProgressPieDrawable.h(-1);
+    localProgressPieDrawable.g(0);
+    localProgressPieDrawable.e(-15550475);
+    localProgressPieDrawable.j(3);
+    localProgressPieDrawable.D = true;
+    localProgressPieDrawable.A = 2;
     localProgressPieDrawable.e(true);
     localProgressPieDrawable.a(new AEVideoShelfPreviewFragment.3(this));
     return localProgressPieDrawable;
@@ -286,17 +289,17 @@ public class AEVideoShelfPreviewFragment
       }
     }
     this.mDialog.requestWindowFeature(1);
-    this.mDialog.setContentView(2131561828);
-    localObject = (ImageView)this.mDialog.findViewById(2131373123);
+    this.mDialog.setContentView(2131628207);
+    localObject = (ImageView)this.mDialog.findViewById(2131440726);
     this.ppd = createProgressPie();
     if (localObject != null) {
       ((ImageView)localObject).setImageDrawable(this.ppd);
     }
-    ((TextView)this.mDialog.findViewById(2131371529)).setText(2064515252);
+    ((TextView)this.mDialog.findViewById(2131438908)).setText(2064187599);
     this.mDialog.setCancelable(true);
     this.mDialog.setCanceledOnTouchOutside(false);
     this.mDialog.setOnCancelListener(new AEVideoShelfPreviewFragment.2(this));
-    this.ppd.c(0);
+    this.ppd.d(0);
   }
   
   private void initView()
@@ -308,21 +311,21 @@ public class AEVideoShelfPreviewFragment
         ((Window)localObject).setStatusBarColor(-16777216);
       }
     }
-    this.mPlayerRateView = ((TextView)getBaseActivity().findViewById(2064122505));
+    this.mPlayerRateView = ((TextView)getBaseActivity().findViewById(2063991318));
     this.mPlayerRateView.setText("0(fps)");
     this.mPlayerRateView.setTextColor(-65536);
-    this.videoGroup = getBaseActivity().findViewById(2064122806);
+    this.videoGroup = getBaseActivity().findViewById(2063991580);
     this.videoGroup.setOnClickListener(this);
-    this.videoView = ((VideoShelfPlayView)this.videoGroup.findViewById(2064122809));
+    this.videoView = ((VideoShelfPlayView)this.videoGroup.findViewById(2063991583));
     this.videoView.setOnPlayerListener(this);
-    this.playButton = this.videoGroup.findViewById(2064122502);
-    this.editButton = ((Button)getBaseActivity().findViewById(2064122133));
+    this.playButton = this.videoGroup.findViewById(2063991315);
+    this.editButton = ((Button)getBaseActivity().findViewById(2063991023));
     this.editButton.setOnClickListener(this);
     this.videoView.getViewTreeObserver().addOnGlobalLayoutListener(new AEVideoShelfPreviewFragment.1(this));
-    getBaseActivity().findViewById(2064121970).setOnClickListener(this);
-    Object localObject = (TextView)getBaseActivity().findViewById(2064121996);
+    getBaseActivity().findViewById(2063990900).setOnClickListener(this);
+    Object localObject = (TextView)getBaseActivity().findViewById(2063990925);
     ((TextView)localObject).setOnClickListener(this);
-    ((TextView)localObject).setText(2064515239);
+    ((TextView)localObject).setText(2064187586);
     initProgressDialog();
   }
   
@@ -508,6 +511,25 @@ public class AEVideoShelfPreviewFragment
     }
   }
   
+  private void sendVideo()
+  {
+    if (AETemplateInfoFragment.getFromType(getContext()) == AECameraEntry.e.a())
+    {
+      AEQLog.b(TAG, "sendVideo--aio case");
+      Intent localIntent = new Intent(getContext(), QIMCameraCaptureActivity.class);
+      localIntent.putExtra("FROM_FLAG_BACK_FROM_QUDONG_TO_AIO", "");
+      localIntent.addFlags(67108864);
+      localIntent.addFlags(536870912);
+      localIntent.putExtra("thumbfile_send_path", getThumbPath());
+      localIntent.putExtra("file_send_path", this.mVideoPath);
+      ShortVideoForwardManager.a(getActivity(), localIntent);
+      startActivity(localIntent);
+      return;
+    }
+    AEQLog.b(TAG, "sendVideo--non aio case");
+    ShortVideoForwardManager.a(getBaseActivity(), this.mVideoPath, getThumbPath(), AECameraEntryManager.c(getBaseActivity()), "caller_aecamera");
+  }
+  
   private void showDialogIfNeed()
   {
     UiThreadUtil.a(new AEVideoShelfPreviewFragment.6(this));
@@ -537,8 +559,8 @@ public class AEVideoShelfPreviewFragment
     if (localProgressPieDrawable == null) {
       return;
     }
-    localProgressPieDrawable.a();
-    this.ppd.c(paramInt);
+    localProgressPieDrawable.b();
+    this.ppd.d(paramInt);
     this.ppd.b(true);
     this.ppd.d(false);
     localProgressPieDrawable = this.ppd;
@@ -613,7 +635,7 @@ public class AEVideoShelfPreviewFragment
       AEBaseDataReporter.a().a(this.mMaterialId);
       if (paramInt2 == -1)
       {
-        if ((!AECameraEntryManager.b(getBaseActivity())) && (!AECameraEntryManager.d(getBaseActivity().getIntent()))) {
+        if ((!AECameraEntryManager.c(getBaseActivity())) && (!AECameraEntryManager.g(getBaseActivity().getIntent()))) {
           paramIntent = new Intent(getBaseActivity(), SplashActivity.class);
         } else {
           paramIntent = new Intent(getBaseActivity(), QzoneFeedsPluginProxyActivity.class);
@@ -628,7 +650,7 @@ public class AEVideoShelfPreviewFragment
   public void onBackPressed()
   {
     getBaseActivity().finish();
-    AEBaseDataReporter.a().d();
+    AEBaseDataReporter.a().e();
   }
   
   public void onChangVideoSize(int paramInt1, int paramInt2) {}
@@ -642,14 +664,14 @@ public class AEVideoShelfPreviewFragment
     {
     default: 
       return;
-    case 2064122806: 
+    case 2063991580: 
       toggleVideoStatus();
       return;
-    case 2064122133: 
+    case 2063991023: 
       jumpToEditFragment();
-      AEBaseDataReporter.a().l();
+      AEBaseDataReporter.a().m();
       return;
-    case 2064121996: 
+    case 2063990925: 
       if (!this.mIsVideoComplete)
       {
         pauseVideo();
@@ -662,7 +684,7 @@ public class AEVideoShelfPreviewFragment
         showDialogIfNeed();
         return;
       }
-      ShortVideoForwardManager.a(getBaseActivity(), this.mVideoPath, getThumbPath(), AECameraEntryManager.b(getBaseActivity()), "caller_aecamera");
+      sendVideo();
       return;
     }
     onBackPressed();
@@ -686,7 +708,7 @@ public class AEVideoShelfPreviewFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    return paramLayoutInflater.inflate(2064318499, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2064056366, paramViewGroup, false);
   }
   
   public void onDestroy()
@@ -831,7 +853,7 @@ public class AEVideoShelfPreviewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEVideoShelfPreviewFragment
  * JD-Core Version:    0.7.0.1
  */

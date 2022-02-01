@@ -13,7 +13,7 @@ class AnimatedImageSpan$1
     {
       AnimatedImageDrawable localAnimatedImageDrawable = (AnimatedImageDrawable)AnimatedImageSpan.a(this.this$0);
       localAnimatedImageDrawable.a();
-      this.a.postDelayed(this, localAnimatedImageDrawable.a());
+      this.a.postDelayed(this, localAnimatedImageDrawable.b());
     }
   }
 }

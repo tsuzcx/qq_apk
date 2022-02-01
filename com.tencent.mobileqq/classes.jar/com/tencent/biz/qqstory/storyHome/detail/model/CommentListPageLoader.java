@@ -23,31 +23,31 @@ public class CommentListPageLoader
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback<GetFeedCommentRequest, GetFeedCommentRequest.GetFeedCommentResponse>
 {
-  private final CommentListPageLoader.CommentListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$CommentListener;
-  private final FeedCommentSync jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync;
-  private final String b;
-  private boolean c;
+  private boolean g;
+  private final CommentListPageLoader.CommentListener h;
+  private final String i;
+  private final FeedCommentSync j;
   
   public CommentListPageLoader(FeedCommentSync paramFeedCommentSync, @NonNull CommentListPageLoader.CommentListener paramCommentListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync = paramFeedCommentSync;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$CommentListener = paramCommentListener;
-    this.jdField_b_of_type_JavaLangString = null;
+    this.j = paramFeedCommentSync;
+    this.h = paramCommentListener;
+    this.i = null;
   }
   
   public CommentListPageLoader(FeedCommentSync paramFeedCommentSync, @NonNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync = paramFeedCommentSync;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$CommentListener = null;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.j = paramFeedCommentSync;
+    this.h = null;
+    this.i = paramString;
   }
   
   private void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    CommentListPageLoader.CommentListener localCommentListener = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$CommentListener;
+    CommentListPageLoader.CommentListener localCommentListener = this.h;
     if (localCommentListener == null)
     {
-      StoryDispatcher.a().dispatch(this.jdField_b_of_type_JavaLangString, paramGetFeedCommentEvent);
+      StoryDispatcher.a().dispatch(this.i, paramGetFeedCommentEvent);
       return;
     }
     localCommentListener.a(paramGetFeedCommentEvent);
@@ -56,39 +56,39 @@ public class CommentListPageLoader
   private void e()
   {
     GetFeedCommentRequest localGetFeedCommentRequest = new GetFeedCommentRequest();
-    localGetFeedCommentRequest.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync;
+    localGetFeedCommentRequest.f = this.j;
     CmdTaskManger.a().a(localGetFeedCommentRequest, this);
   }
   
   public void a(@NonNull GetFeedCommentRequest paramGetFeedCommentRequest, @Nullable GetFeedCommentRequest.GetFeedCommentResponse paramGetFeedCommentResponse, @NonNull ErrorMessage paramErrorMessage)
   {
     SLog.a("Q.qqstory.detail:CommentListPageLoader", "get comment list return:%s", paramErrorMessage.toString());
-    if (this.c)
+    if (this.g)
     {
       SLog.c("Q.qqstory.detail:CommentListPageLoader", "don't nothing after terminate");
       return;
     }
-    CommentListPageLoader.GetFeedCommentEvent localGetFeedCommentEvent = new CommentListPageLoader.GetFeedCommentEvent(paramErrorMessage, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_Int);
-    localGetFeedCommentEvent.d = this.jdField_a_of_type_Boolean;
-    localGetFeedCommentEvent.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_Int;
+    CommentListPageLoader.GetFeedCommentEvent localGetFeedCommentEvent = new CommentListPageLoader.GetFeedCommentEvent(paramErrorMessage, this.j.a, this.j.c);
+    localGetFeedCommentEvent.d = this.a;
+    localGetFeedCommentEvent.f = this.j.d;
     if ((paramGetFeedCommentResponse != null) && (!paramErrorMessage.isFail()))
     {
-      SLog.a("Q.qqstory.detail:CommentListPageLoader", "comment respond from cookie:%s to %s", paramGetFeedCommentRequest.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString, paramGetFeedCommentResponse.jdField_a_of_type_JavaLangString);
-      boolean bool = TextUtils.isEmpty(paramGetFeedCommentRequest.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString = paramGetFeedCommentResponse.jdField_a_of_type_JavaLangString;
-      localGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList;
-      localGetFeedCommentEvent.jdField_b_of_type_Int = paramGetFeedCommentResponse.jdField_b_of_type_Int;
+      SLog.a("Q.qqstory.detail:CommentListPageLoader", "comment respond from cookie:%s to %s", paramGetFeedCommentRequest.f.b, paramGetFeedCommentResponse.b);
+      boolean bool = TextUtils.isEmpty(paramGetFeedCommentRequest.f.b);
+      this.j.b = paramGetFeedCommentResponse.b;
+      localGetFeedCommentEvent.k = paramGetFeedCommentResponse.e;
+      localGetFeedCommentEvent.i = paramGetFeedCommentResponse.f;
       localGetFeedCommentEvent.c = bool;
-      localGetFeedCommentEvent.jdField_a_of_type_Boolean = paramGetFeedCommentResponse.jdField_a_of_type_Boolean;
-      localGetFeedCommentEvent.jdField_b_of_type_JavaLangString = paramGetFeedCommentResponse.jdField_a_of_type_JavaLangString;
-      if ((!paramGetFeedCommentResponse.jdField_a_of_type_Boolean) && (paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList.size() == 0))
+      localGetFeedCommentEvent.a = paramGetFeedCommentResponse.a;
+      localGetFeedCommentEvent.h = paramGetFeedCommentResponse.b;
+      if ((!paramGetFeedCommentResponse.a) && (paramGetFeedCommentResponse.e.size() == 0))
       {
-        localGetFeedCommentEvent.jdField_a_of_type_Boolean = true;
+        localGetFeedCommentEvent.a = true;
         SLog.d("Q.qqstory.detail:CommentListPageLoader", "comment pull should be end!!!!!!!!!!!!");
       }
       try
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.e = true;
         a(localGetFeedCommentEvent);
         SLog.a("Q.qqstory.detail:CommentListPageLoader", "dispatch comment list return from network: %s", localGetFeedCommentEvent);
         paramGetFeedCommentRequest = new CommentListPageLoader.2(this, "Q.qqstory.detail:CommentListPageLoader", localGetFeedCommentEvent, bool);
@@ -103,22 +103,22 @@ public class CommentListPageLoader
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
     super.a(paramTencentLocation, paramInt);
-    if (this.c) {
+    if (this.g) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString = "";
+    this.j.b = "";
     e();
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString = paramString;
+    this.j.b = paramString;
   }
   
   public void c()
   {
     super.c();
-    if (this.c)
+    if (this.g)
     {
       AssertUtils.fail("don't call this method after terminate", new Object[0]);
       return;
@@ -128,7 +128,7 @@ public class CommentListPageLoader
   
   public void d()
   {
-    this.c = true;
+    this.g = true;
   }
 }
 

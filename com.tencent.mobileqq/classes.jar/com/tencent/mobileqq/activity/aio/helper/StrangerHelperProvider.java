@@ -17,11 +17,11 @@ public class StrangerHelperProvider
   {
     a(42, new AIOPushDialogHelper(paramStrangerChatPie));
     a(95, new TempMsgBoxAIOHelper(paramStrangerChatPie));
-    a(61, new StrangerQidianHelper(paramStrangerChatPie.b()));
-    StrangerAddFriendHelper localStrangerAddFriendHelper = new StrangerAddFriendHelper(paramStrangerChatPie.b());
+    a(61, new StrangerQidianHelper(paramStrangerChatPie.bv()));
+    StrangerAddFriendHelper localStrangerAddFriendHelper = new StrangerAddFriendHelper(paramStrangerChatPie.bv());
     a(113, localStrangerAddFriendHelper);
     a(localStrangerAddFriendHelper);
-    a(130, new StrangerOnlineStatusHelper(paramStrangerChatPie.b()));
+    a(130, new StrangerOnlineStatusHelper(paramStrangerChatPie.bv()));
   }
   
   public void a(BaseChatPie paramBaseChatPie)
@@ -32,7 +32,7 @@ public class StrangerHelperProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.StrangerHelperProvider
  * JD-Core Version:    0.7.0.1
  */

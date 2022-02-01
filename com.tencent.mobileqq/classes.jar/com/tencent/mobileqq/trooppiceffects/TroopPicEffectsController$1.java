@@ -7,7 +7,7 @@ import com.tencent.mobileqq.data.MessageForTroopEffectPic;
 import com.tencent.mobileqq.pic.PicDownloadInfo;
 import com.tencent.mobileqq.pic.PicResult;
 import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.utils.AIOAnimationControlManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -21,14 +21,14 @@ class TroopPicEffectsController$1
     if (QLog.isColorLevel()) {
       QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
     }
-    paramPicResult = new File(this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.c());
-    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
+    paramPicResult = new File(this.a.f());
+    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.b.d.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER);
     if ((paramPicResult.exists()) && (localAIOAnimationControlManager != null))
     {
       localAIOAnimationControlManager.a = 1;
-      localAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie);
-      localAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
-      localAIOAnimationControlManager.f();
+      localAIOAnimationControlManager.a(this.b);
+      localAIOAnimationControlManager.a(this.c, this.d);
+      localAIOAnimationControlManager.j();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -45,7 +45,7 @@ class TroopPicEffectsController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.1
  * JD-Core Version:    0.7.0.1
  */

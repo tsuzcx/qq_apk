@@ -6,106 +6,101 @@ import android.text.StaticLayout;
 
 public class Barrage
 {
-  public float a;
-  public int a;
-  public long a;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
-  public StaticLayout a;
-  private AbsBarrageCache jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
+  private RectF A;
+  private AbsBarrageCache B;
   public CharSequence a;
-  public String a;
-  public boolean a;
-  public float b;
-  public int b;
-  public long b;
-  public String b;
   public boolean b;
-  public float c;
-  public int c;
-  private boolean c;
-  public float d;
+  public String c;
   public int d;
   public float e;
-  public int e;
   public float f;
-  public int f;
   public float g;
-  public int g;
   public float h;
-  public int h;
+  public float i;
+  public float j;
+  public int k = -16777216;
+  public float l = 24.0F;
+  public long m;
+  public long n;
+  public int o = 20000;
+  public int p = 255;
+  public int q;
+  public int r;
+  public int s;
+  public int t;
+  public float u = 1.0F;
+  public boolean v;
+  public StaticLayout w;
+  public String x;
+  private boolean y;
+  private Bitmap z;
   
   public Barrage(AbsBarrageCache paramAbsBarrageCache, float paramFloat1, float paramFloat2, float paramFloat3, String paramString1, String paramString2)
   {
-    this.jdField_b_of_type_Int = -16777216;
-    this.jdField_g_of_type_Float = 24.0F;
-    this.jdField_c_of_type_Int = 20000;
-    this.jdField_d_of_type_Int = 255;
-    this.jdField_h_of_type_Float = 1.0F;
-    this.jdField_a_of_type_JavaLangCharSequence = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_g_of_type_Int = ((int)(12.0F * paramFloat1));
-    this.jdField_h_of_type_Int = ((int)(paramFloat1 * 6.0F));
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, paramFloat2, paramFloat3);
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = l;
-    this.jdField_b_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache = paramAbsBarrageCache;
-  }
-  
-  public Bitmap a()
-  {
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
-    if (localObject != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ((AbsBarrageCache)localObject).a(this);
-    }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a()
-  {
-    AbsBarrageCache localAbsBarrageCache = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache;
-    if (localAbsBarrageCache != null)
-    {
-      localAbsBarrageCache.a(this);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqApolloBarrageAbsBarrageCache.a(this);
-    }
+    this.a = paramString2;
+    this.c = paramString1;
+    this.y = true;
+    this.s = ((int)(12.0F * paramFloat1));
+    this.t = ((int)(paramFloat1 * 6.0F));
+    this.A = new RectF(0.0F, 0.0F, paramFloat2, paramFloat3);
+    long l1 = System.currentTimeMillis();
+    this.m = l1;
+    this.n = l1;
+    this.B = paramAbsBarrageCache;
   }
   
   public boolean a()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.y;
   }
   
   public void b()
   {
-    long l1 = System.currentTimeMillis();
-    float f1 = this.jdField_e_of_type_Float;
-    float f2 = this.jdField_c_of_type_Float;
-    long l2 = this.jdField_b_of_type_Long;
-    this.jdField_e_of_type_Float = (f1 + f2 * (float)(l1 - l2));
-    this.jdField_f_of_type_Float += this.jdField_d_of_type_Float * (float)(l1 - l2);
-    this.jdField_b_of_type_Long = l1;
-    if (this.jdField_e_of_type_Float + this.jdField_e_of_type_Int >= 0.0F)
+    AbsBarrageCache localAbsBarrageCache = this.B;
+    if (localAbsBarrageCache != null)
     {
-      this.jdField_c_of_type_Boolean = true;
+      localAbsBarrageCache.a(this);
+      this.z = this.B.b(this);
     }
-    else if (this.jdField_b_of_type_Boolean)
+  }
+  
+  public Bitmap c()
+  {
+    Object localObject = this.z;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+      return this.z;
+    }
+    localObject = this.B;
+    if (localObject != null) {
+      this.z = ((AbsBarrageCache)localObject).b(this);
+    }
+    return this.z;
+  }
+  
+  public void d()
+  {
+    long l1 = System.currentTimeMillis();
+    float f1 = this.i;
+    float f2 = this.g;
+    long l2 = this.n;
+    this.i = (f1 + f2 * (float)(l1 - l2));
+    this.j += this.h * (float)(l1 - l2);
+    this.n = l1;
+    if (this.i + this.q >= 0.0F)
     {
-      this.jdField_e_of_type_Float = this.jdField_a_of_type_AndroidGraphicsRectF.width();
-      this.jdField_c_of_type_Boolean = true;
+      this.y = true;
+    }
+    else if (this.v)
+    {
+      this.i = this.A.width();
+      this.y = true;
     }
     else
     {
-      this.jdField_c_of_type_Boolean = false;
+      this.y = false;
     }
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= this.jdField_c_of_type_Int) {
-      this.jdField_c_of_type_Boolean = false;
+    if (System.currentTimeMillis() - this.m >= this.o) {
+      this.y = false;
     }
   }
   
@@ -113,51 +108,51 @@ public class Barrage
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mIsAlive: ");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.y);
     localStringBuilder.append(" mText: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" mMeasured: ");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(" mBgFilePath: ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(" mActionId: ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(" mStartX: ");
-    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(" mStartY: ");
-    localStringBuilder.append(this.jdField_b_of_type_Float);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(" mSpeedX: ");
-    localStringBuilder.append(this.jdField_c_of_type_Float);
+    localStringBuilder.append(this.g);
     localStringBuilder.append(" mSpeedY: ");
-    localStringBuilder.append(this.jdField_d_of_type_Float);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(" mCurrentX: ");
-    localStringBuilder.append(this.jdField_e_of_type_Float);
+    localStringBuilder.append(this.i);
     localStringBuilder.append(" mCurrentY: ");
-    localStringBuilder.append(this.jdField_f_of_type_Float);
+    localStringBuilder.append(this.j);
     localStringBuilder.append(" mTextColor: ");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.k);
     localStringBuilder.append(" mTextSize: ");
-    localStringBuilder.append(this.jdField_g_of_type_Float);
+    localStringBuilder.append(this.l);
     localStringBuilder.append(" mStartTime: ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.m);
     localStringBuilder.append(" mAlpha: ");
-    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(this.p);
     localStringBuilder.append(" mWidth: ");
-    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(this.q);
     localStringBuilder.append(" mHeight: ");
-    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(this.r);
     localStringBuilder.append(" mLeftPadding: ");
-    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(this.s);
     localStringBuilder.append(" mTopPadding: ");
-    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(" mViewRect: ");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsRectF);
+    localStringBuilder.append(this.A);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.barrage.Barrage
  * JD-Core Version:    0.7.0.1
  */

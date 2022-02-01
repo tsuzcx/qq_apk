@@ -15,20 +15,20 @@ class AudioPanelProvider$3
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.a(AudioPanelProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelProvider).a());
-    ((SimpleUIAIOHelper)AudioPanelProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelProvider).a(29)).a(2);
+    DialogUtil.a(AudioPanelProvider.a(this.b).aX());
+    ((SimpleUIAIOHelper)AudioPanelProvider.a(this.b).q(29)).f(2);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AudioTransitionAnimManager.a().a(AudioPanelProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelProvider).jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
-    AIOPanelUtiles.a(AudioPanelProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelProvider), "0X8005CAC", AudioPanelProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanelProvider).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    AudioTransitionAnimManager.a().a(AudioPanelProvider.a(this.b).e);
+    this.a.a(2);
+    AIOPanelUtiles.a(AudioPanelProvider.b(this.b), "0X8005CAC", AudioPanelProvider.a(this.b).ah.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelProvider.3
  * JD-Core Version:    0.7.0.1
  */

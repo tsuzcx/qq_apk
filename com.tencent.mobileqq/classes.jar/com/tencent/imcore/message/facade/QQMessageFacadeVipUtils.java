@@ -11,7 +11,7 @@ public class QQMessageFacadeVipUtils
 {
   public static long a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject1 = paramQQAppInterface.getMessageProxy(0).b(paramString, 0);
+    Object localObject1 = paramQQAppInterface.getMessageProxy(0).c(paramString, 0);
     if (localObject1 != null)
     {
       int i = ((List)localObject1).size() - 1;
@@ -60,7 +60,7 @@ public class QQMessageFacadeVipUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.QQMessageFacadeVipUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -15,23 +15,23 @@ import java.util.Set;
 public class AECirclePartManager
   implements Application.ActivityLifecycleCallbacks
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private AECircleBasePartFragment jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment;
-  private final LinkedHashMap<String, AECircleBasePart> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  private AECircleBasePartFragment a;
+  private View b;
+  private final LinkedHashMap<String, AECircleBasePart> c = new LinkedHashMap();
   
   public AECirclePartManager(AECircleBasePartFragment paramAECircleBasePartFragment, View paramView)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment = paramAECircleBasePartFragment;
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.a = paramAECircleBasePartFragment;
+    this.b = paramView;
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
         ((AECircleBasePart)localObject).a(paramInt1, paramInt2, paramIntent);
       }
@@ -40,11 +40,11 @@ public class AECirclePartManager
   
   public void a(Configuration paramConfiguration)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
         ((AECircleBasePart)localObject).a(paramConfiguration);
       }
@@ -53,7 +53,7 @@ public class AECirclePartManager
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.b = paramView;
   }
   
   public void a(List<AECircleBasePart> paramList)
@@ -62,19 +62,19 @@ public class AECirclePartManager
     while (paramList.hasNext())
     {
       AECircleBasePart localAECircleBasePart = (AECircleBasePart)paramList.next();
-      localAECircleBasePart.a(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment, this.jdField_a_of_type_AndroidViewView, this);
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localAECircleBasePart.getClass().getSimpleName(), localAECircleBasePart);
+      localAECircleBasePart.a(this.a, this.b, this);
+      this.c.put(localAECircleBasePart.getClass().getSimpleName(), localAECircleBasePart);
     }
   }
   
   public boolean a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if ((localObject != null) && (((AECircleBasePart)localObject).b())) {
+      localObject = (AECircleBasePart)this.c.get(localObject);
+      if ((localObject != null) && (((AECircleBasePart)localObject).am_())) {
         return true;
       }
     }
@@ -83,11 +83,11 @@ public class AECirclePartManager
   
   public boolean b()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if ((localObject != null) && (!((AECircleBasePart)localObject).a())) {
         return false;
       }
@@ -98,15 +98,15 @@ public class AECirclePartManager
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null)
       {
         ((AECircleBasePart)localObject).onActivityCreated(paramActivity, paramBundle);
-        ((AECircleBasePart)localObject).a(this.jdField_a_of_type_AndroidViewView);
+        ((AECircleBasePart)localObject).a(this.b);
       }
     }
     paramActivity = new StringBuilder();
@@ -117,26 +117,26 @@ public class AECirclePartManager
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
         ((AECircleBasePart)localObject).onActivityDestroyed(paramActivity);
       }
     }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment = null;
+    this.c.clear();
+    this.a = null;
   }
   
   public void onActivityPaused(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
         ((AECircleBasePart)localObject).onActivityPaused(paramActivity);
       }
@@ -145,13 +145,13 @@ public class AECirclePartManager
   
   public void onActivityResumed(Activity paramActivity)
   {
-    paramActivity = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    paramActivity = this.c.keySet().iterator();
     while (paramActivity.hasNext())
     {
       Object localObject = (String)paramActivity.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
-        ((AECircleBasePart)localObject).onActivityResumed(this.jdField_a_of_type_ComTencentAelightCameraAeBizCirclePartBaseAECircleBasePartFragment.getActivity());
+        ((AECircleBasePart)localObject).onActivityResumed(this.a.getActivity());
       }
     }
   }
@@ -160,11 +160,11 @@ public class AECirclePartManager
   
   public void onActivityStarted(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
         ((AECircleBasePart)localObject).onActivityStarted(paramActivity);
       }
@@ -173,11 +173,11 @@ public class AECirclePartManager
   
   public void onActivityStopped(Activity paramActivity)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+    Iterator localIterator = this.c.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (AECircleBasePart)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
+      localObject = (AECircleBasePart)this.c.get(localObject);
       if (localObject != null) {
         ((AECircleBasePart)localObject).onActivityStopped(paramActivity);
       }
@@ -186,7 +186,7 @@ public class AECirclePartManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.biz.circle.part.base.AECirclePartManager
  * JD-Core Version:    0.7.0.1
  */

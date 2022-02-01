@@ -8,7 +8,6 @@ import com.tencent.mobileqq.kandian.base.video.player.api.IPlayer;
 import com.tencent.mobileqq.kandian.base.video.player.api.IVideoView;
 import com.tencent.mobileqq.kandian.base.video.player.wrapper.PlayerVideoInfo;
 import com.tencent.mobileqq.kandian.base.video.player.wrapper.PlayerVideoInfoKtKt;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.superplayer.api.ISuperPlayer;
 import com.tencent.superplayer.api.ISuperPlayer.OnCaptureImageListener;
 import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
@@ -30,78 +29,28 @@ import org.jetbrains.annotations.Nullable;
 public final class SuperPlayer
   implements IPlayer, ISuperPlayer.OnCaptureImageListener, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnSeekCompleteListener, ISuperPlayer.OnVideoPreparedListener
 {
-  private float jdField_a_of_type_Float;
-  private IEventListener jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
-  private IVideoView jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView;
-  private final ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private IEventListener b;
+  private IVideoView c;
+  private float d;
+  private final ISuperPlayer e;
   
   public SuperPlayer(@Nullable ISuperPlayer paramISuperPlayer)
   {
-    this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = paramISuperPlayer;
-    this.jdField_a_of_type_Float = 1.0F;
+    this.e = paramISuperPlayer;
+    this.d = 1.0F;
   }
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      return localISuperPlayer.getVideoWidth();
-    }
-    return 0;
-  }
-  
-  public long a()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      return localISuperPlayer.getDurationMs();
-    }
-    return 0L;
-  }
-  
-  @Nullable
-  public IVideoView a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localObject != null)
-    {
-      localObject = ((ISuperPlayer)localObject).getVideoView();
-      if (localObject != null) {
-        return (IVideoView)new SuperPlayerVideoView((ISPlayerVideoView)localObject);
-      }
-    }
-    return null;
-  }
-  
-  @Nullable
-  public String a()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      return localISuperPlayer.getStreamDumpInfo();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      localISuperPlayer.start();
-    }
+    return this.d;
   }
   
   public void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    this.d = paramFloat;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
-      localISuperPlayer.setPlaySpeedRatio(this.jdField_a_of_type_Float);
+      localISuperPlayer.setPlaySpeedRatio(this.d);
     }
   }
   
@@ -128,7 +77,7 @@ public final class SuperPlayer
         i = 1;
       }
     }
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.setXYaxis(i);
     }
@@ -151,7 +100,7 @@ public final class SuperPlayer
         i = 2;
       }
     }
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.seekTo(paramInt1, i);
     }
@@ -159,7 +108,7 @@ public final class SuperPlayer
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt3);
     }
@@ -169,7 +118,7 @@ public final class SuperPlayer
   {
     Intrinsics.checkParameterIsNotNull(paramPlayerVideoInfo, "videoInfo");
     Intrinsics.checkParameterIsNotNull(paramSuperPlayerOption, "playerOption");
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null)
     {
       if (paramContext != null) {
@@ -183,28 +132,28 @@ public final class SuperPlayer
   
   public void a(@Nullable IEventListener paramIEventListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener = paramIEventListener;
-    paramIEventListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    this.b = paramIEventListener;
+    paramIEventListener = this.e;
     if (paramIEventListener != null) {
       paramIEventListener.setOnVideoPreparedListener((ISuperPlayer.OnVideoPreparedListener)this);
     }
-    paramIEventListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    paramIEventListener = this.e;
     if (paramIEventListener != null) {
       paramIEventListener.setOnCompletionListener((ISuperPlayer.OnCompletionListener)this);
     }
-    paramIEventListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    paramIEventListener = this.e;
     if (paramIEventListener != null) {
       paramIEventListener.setOnErrorListener((ISuperPlayer.OnErrorListener)this);
     }
-    paramIEventListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    paramIEventListener = this.e;
     if (paramIEventListener != null) {
       paramIEventListener.setOnInfoListener((ISuperPlayer.OnInfoListener)this);
     }
-    paramIEventListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    paramIEventListener = this.e;
     if (paramIEventListener != null) {
       paramIEventListener.setOnCaptureImageListener((ISuperPlayer.OnCaptureImageListener)this);
     }
-    paramIEventListener = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    paramIEventListener = this.e;
     if (paramIEventListener != null) {
       paramIEventListener.setOnSeekCompleteListener((ISuperPlayer.OnSeekCompleteListener)this);
     }
@@ -212,8 +161,8 @@ public final class SuperPlayer
   
   public void a(@Nullable IVideoView paramIVideoView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView = paramIVideoView;
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    this.c = paramIVideoView;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null)
     {
       if (paramIVideoView != null) {
@@ -231,7 +180,7 @@ public final class SuperPlayer
   
   public void a(@Nullable String paramString)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.setReportContentId(paramString);
     }
@@ -240,7 +189,7 @@ public final class SuperPlayer
   public void a(@NotNull Map<String, String> paramMap)
   {
     Intrinsics.checkParameterIsNotNull(paramMap, "data");
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.addExtReportData(paramMap);
     }
@@ -248,61 +197,15 @@ public final class SuperPlayer
   
   public void a(boolean paramBoolean)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.setOutputMute(paramBoolean);
     }
   }
   
-  public boolean a()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    return (localISuperPlayer != null) && (localISuperPlayer.isOutputMute() == true);
-  }
-  
-  public int b()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      return localISuperPlayer.getVideoHeight();
-    }
-    return 0;
-  }
-  
-  public long b()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      return localISuperPlayer.getCurrentPositionMs();
-    }
-    return 0L;
-  }
-  
-  @NotNull
-  public String b()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localObject != null)
-    {
-      localObject = ((ISuperPlayer)localObject).getToken();
-      if (localObject != null) {
-        return localObject;
-      }
-    }
-    return "";
-  }
-  
-  public void b()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      localISuperPlayer.pause();
-    }
-  }
-  
   public void b(boolean paramBoolean)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.setLoopback(paramBoolean);
     }
@@ -310,35 +213,13 @@ public final class SuperPlayer
   
   public boolean b()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    return (localISuperPlayer != null) && (localISuperPlayer.isPlaying() == true);
-  }
-  
-  public void c()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localObject != null) {
-      ((ISuperPlayer)localObject).reset();
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIVideoView;
-    if (localObject != null)
-    {
-      ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-      if (localISuperPlayer != null)
-      {
-        View localView = ((IVideoView)localObject).a();
-        localObject = localView;
-        if (!(localView instanceof ISPlayerVideoView)) {
-          localObject = null;
-        }
-        localISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localObject);
-      }
-    }
+    ISuperPlayer localISuperPlayer = this.e;
+    return (localISuperPlayer != null) && (localISuperPlayer.isOutputMute() == true);
   }
   
   public void c(boolean paramBoolean)
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
       localISuperPlayer.setLoopback(paramBoolean);
     }
@@ -346,25 +227,19 @@ public final class SuperPlayer
   
   public boolean c()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    return (localISuperPlayer != null) && (localISuperPlayer.isBuffering() == true);
-  }
-  
-  public void d()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      localISuperPlayer.stop();
-    }
-    localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      localISuperPlayer.release();
-    }
+    ISuperPlayer localISuperPlayer = this.e;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPlaying() == true);
   }
   
   public boolean d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
+    return (localISuperPlayer != null) && (localISuperPlayer.isBuffering() == true);
+  }
+  
+  public boolean e()
+  {
+    Object localObject = this.e;
     if (localObject != null) {
       localObject = Integer.valueOf(((ISuperPlayer)localObject).getCurrentPlayerState());
     } else {
@@ -392,53 +267,105 @@ public final class SuperPlayer
     return bool1;
   }
   
-  public void e()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      localISuperPlayer.pauseDownload();
-    }
-  }
-  
-  public boolean e()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    return (localISuperPlayer != null) && (localISuperPlayer.getCurrentPlayerState() == 4);
-  }
-  
-  public void f()
-  {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    if (localISuperPlayer != null) {
-      localISuperPlayer.resumeDownload();
-    }
-  }
-  
   public boolean f()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
-    return (localISuperPlayer != null) && (localISuperPlayer.isPausing() == true);
+    ISuperPlayer localISuperPlayer = this.e;
+    return (localISuperPlayer != null) && (localISuperPlayer.getCurrentPlayerState() == 4);
   }
   
   public void g()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
-      localISuperPlayer.onPrePlayViewShow();
+      localISuperPlayer.start();
     }
   }
   
   public void h()
   {
-    ISuperPlayer localISuperPlayer = this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+    ISuperPlayer localISuperPlayer = this.e;
     if (localISuperPlayer != null) {
-      localISuperPlayer.setPlayerActive();
+      localISuperPlayer.pause();
     }
+  }
+  
+  public void i()
+  {
+    Object localObject = this.e;
+    if (localObject != null) {
+      ((ISuperPlayer)localObject).reset();
+    }
+    localObject = this.c;
+    if (localObject != null)
+    {
+      ISuperPlayer localISuperPlayer = this.e;
+      if (localISuperPlayer != null)
+      {
+        View localView = ((IVideoView)localObject).a();
+        localObject = localView;
+        if (!(localView instanceof ISPlayerVideoView)) {
+          localObject = null;
+        }
+        localISuperPlayer.updatePlayerVideoView((ISPlayerVideoView)localObject);
+      }
+    }
+  }
+  
+  public boolean j()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    return (localISuperPlayer != null) && (localISuperPlayer.isPausing() == true);
+  }
+  
+  public void k()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.stop();
+    }
+    localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.release();
+    }
+  }
+  
+  public void l()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.pauseDownload();
+    }
+  }
+  
+  public void m()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.resumeDownload();
+    }
+  }
+  
+  public long n()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getDurationMs();
+    }
+    return 0L;
+  }
+  
+  public long o()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getCurrentPositionMs();
+    }
+    return 0L;
   }
   
   public void onCaptureImageFailed(@Nullable ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.a((IPlayer)this, paramInt1, paramInt2);
     }
@@ -446,7 +373,7 @@ public final class SuperPlayer
   
   public void onCaptureImageSucceed(@Nullable ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, @Nullable Bitmap paramBitmap)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.a((IPlayer)this, paramInt1, paramInt2, paramInt3, paramBitmap);
     }
@@ -454,7 +381,7 @@ public final class SuperPlayer
   
   public void onCompletion(@Nullable ISuperPlayer paramISuperPlayer)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.b((IPlayer)this);
     }
@@ -462,7 +389,7 @@ public final class SuperPlayer
   
   public boolean onError(@Nullable ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, @Nullable String paramString)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramISuperPlayer = this.b;
     return (paramISuperPlayer != null) && (paramISuperPlayer.a((IPlayer)this, paramInt1, paramInt2, paramInt3, paramString) == true);
   }
   
@@ -495,39 +422,26 @@ public final class SuperPlayer
     } else {
       paramISuperPlayer = paramObject;
     }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onInfo: what=");
-      localStringBuilder.append(paramInt);
-      localStringBuilder.append(", arg1=");
-      localStringBuilder.append(paramLong1);
-      localStringBuilder.append(", arg2=");
-      localStringBuilder.append(paramLong2);
-      localStringBuilder.append(", extra=");
-      localStringBuilder.append(paramObject);
-      QLog.d("SuperPlayer", 2, localStringBuilder.toString());
-    }
     if (paramInt == 207)
     {
       if (paramObject != null)
       {
         paramISuperPlayer = (TPPlayerMsg.TPDownLoadProgressInfo)paramObject;
-        paramObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+        paramObject = this.b;
         if (paramObject != null) {
-          paramObject.a(paramISuperPlayer.currentDownloadSize, paramISuperPlayer.totalFileSize);
+          paramObject.a(paramISuperPlayer.currentDownloadSize, paramISuperPlayer.totalFileSize, paramISuperPlayer.extraInfo);
         }
         return true;
       }
       throw new TypeCastException("null cannot be cast to non-null type com.tencent.thumbplayer.api.TPPlayerMsg.TPDownLoadProgressInfo");
     }
-    paramObject = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramObject = this.b;
     return (paramObject != null) && (paramObject.a((IPlayer)this, i, paramISuperPlayer) == true);
   }
   
   public void onSeekComplete(@Nullable ISuperPlayer paramISuperPlayer)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.c((IPlayer)this);
     }
@@ -535,15 +449,87 @@ public final class SuperPlayer
   
   public void onVideoPrepared(@Nullable ISuperPlayer paramISuperPlayer)
   {
-    paramISuperPlayer = this.jdField_a_of_type_ComTencentMobileqqKandianBaseVideoPlayerApiIEventListener;
+    paramISuperPlayer = this.b;
     if (paramISuperPlayer != null) {
       paramISuperPlayer.a((IPlayer)this);
+    }
+  }
+  
+  public int p()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoWidth();
+    }
+    return 0;
+  }
+  
+  public int q()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getVideoHeight();
+    }
+    return 0;
+  }
+  
+  @Nullable
+  public String r()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      return localISuperPlayer.getStreamDumpInfo();
+    }
+    return null;
+  }
+  
+  public void s()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.onPrePlayViewShow();
+    }
+  }
+  
+  @NotNull
+  public String t()
+  {
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      localObject = ((ISuperPlayer)localObject).getToken();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return "";
+  }
+  
+  @Nullable
+  public IVideoView u()
+  {
+    Object localObject = this.e;
+    if (localObject != null)
+    {
+      localObject = ((ISuperPlayer)localObject).getVideoView();
+      if (localObject != null) {
+        return (IVideoView)new SuperPlayerVideoView((ISPlayerVideoView)localObject);
+      }
+    }
+    return null;
+  }
+  
+  public void v()
+  {
+    ISuperPlayer localISuperPlayer = this.e;
+    if (localISuperPlayer != null) {
+      localISuperPlayer.setPlayerActive();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.wrapper.superplayer.SuperPlayer
  * JD-Core Version:    0.7.0.1
  */

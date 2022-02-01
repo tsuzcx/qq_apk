@@ -2,16 +2,16 @@ package com.tencent.mobileqq.activity;
 
 public class ChatActivityFacade$HongbaoParams
 {
-  public int a;
   public long a;
-  public byte[] a;
-  public int b;
   public long b;
-  public long c;
+  public byte[] c;
+  public long d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.HongbaoParams
  * JD-Core Version:    0.7.0.1
  */

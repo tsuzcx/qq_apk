@@ -42,7 +42,7 @@ public class AEOldResDownload
       while (i < paramList.size())
       {
         localObject = (AEOldShortVideoResManager.SVConfigItem)paramList.get(i);
-        if ((((AEOldShortVideoResManager.SVConfigItem)localObject).name.startsWith(paramAEOldResInfo.b)) && (((AEOldShortVideoResManager.SVConfigItem)localObject).versionCode == paramAEOldResInfo.c))
+        if ((((AEOldShortVideoResManager.SVConfigItem)localObject).name.startsWith(paramAEOldResInfo.g)) && (((AEOldShortVideoResManager.SVConfigItem)localObject).versionCode == paramAEOldResInfo.i))
         {
           paramList = (List<AEOldShortVideoResManager.SVConfigItem>)localObject;
           break label81;
@@ -57,8 +57,8 @@ public class AEOldResDownload
         paramINet_ShortVideoResource.a("", -101, null);
         return;
       }
-      int j = AEOldResUtil.a(paramAEOldResInfo.a);
-      int k = Integer.valueOf(paramList.name.substring(paramAEOldResInfo.b.length())).intValue();
+      int j = AEOldResUtil.a(paramAEOldResInfo.e);
+      int k = Integer.valueOf(paramList.name.substring(paramAEOldResInfo.g.length())).intValue();
       i = 1;
       if (j >= k) {
         if (TextUtils.isEmpty(AEOldResUtil.a(paramAEOldResInfo)))
@@ -74,7 +74,7 @@ public class AEOldResDownload
           AEQLog.d("AEOldResDownload", "[realDownloadResource info] local exist");
           paramList = paramList.name;
           localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramAEOldResInfo.b);
+          ((StringBuilder)localObject).append(paramAEOldResInfo.g);
           ((StringBuilder)localObject).append(j);
           paramINet_ShortVideoResource.a(paramList, 1, AEOldResUtil.a(((StringBuilder)localObject).toString()));
           return;
@@ -121,7 +121,7 @@ public class AEOldResDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.download.old.AEOldResDownload
  * JD-Core Version:    0.7.0.1
  */

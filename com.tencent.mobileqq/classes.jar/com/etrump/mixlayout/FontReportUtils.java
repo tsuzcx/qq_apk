@@ -12,41 +12,34 @@ import mqq.app.MobileQQ;
 
 public class FontReportUtils
 {
-  public static int a;
-  private static ConcurrentHashMap<String, AtomicInteger> a;
-  public static AtomicBoolean a;
-  public static AtomicInteger a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public static AtomicBoolean a = new AtomicBoolean(false);
+  public static AtomicInteger b = new AtomicInteger(1);
+  public static int c;
+  private static ConcurrentHashMap<String, AtomicInteger> d = new ConcurrentHashMap();
   
   public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, double paramDouble)
   {
-    if (!jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (!a.get())
     {
       if (QLog.isColorLevel()) {
         QLog.d("FontManagerConstants.Report", 2, "report not enable");
       }
       return;
     }
-    AtomicInteger localAtomicInteger2 = (AtomicInteger)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    AtomicInteger localAtomicInteger2 = (AtomicInteger)d.get(paramString);
     AtomicInteger localAtomicInteger1 = localAtomicInteger2;
     if (localAtomicInteger2 == null)
     {
       localAtomicInteger1 = new AtomicInteger();
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localAtomicInteger1);
+      d.put(paramString, localAtomicInteger1);
     }
     long l1 = MobileQQ.sMobileQQ.getApplicationContext().getSharedPreferences("font_report_sp", 0).getLong(paramString, 0L);
-    long l2 = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() * 60 * 60 * 1000;
+    long l2 = b.get() * 60 * 60 * 1000;
     long l3 = System.currentTimeMillis();
     if (l3 - l1 > l2)
     {
       int i = localAtomicInteger1.incrementAndGet();
-      if (i == jdField_a_of_type_Int)
+      if (i == c)
       {
         VasWebviewUtil.a(paramString, paramInt1, paramInt2, paramInt3, paramDouble, i);
         MobileQQ.sMobileQQ.getApplicationContext().getSharedPreferences("font_report_sp", 0).edit().putLong(paramString, l3).commit();

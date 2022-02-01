@@ -19,12 +19,12 @@ import com.google.android.material.R.styleable;
 public class ScrimInsetsFrameLayout
   extends FrameLayout
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect;
   @Nullable
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean = true;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_b_of_type_Boolean = true;
+  Drawable a;
+  Rect b;
+  private Rect c = new Rect();
+  private boolean d = true;
+  private boolean e = true;
   
   public ScrimInsetsFrameLayout(@NonNull Context paramContext)
   {
@@ -39,8 +39,8 @@ public class ScrimInsetsFrameLayout
   public ScrimInsetsFrameLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.an, paramInt, R.style.n, new int[0]);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(R.styleable.dR);
+    paramContext = ThemeEnforcement.a(paramContext, paramAttributeSet, R.styleable.fS, paramInt, R.style.p, new int[0]);
+    this.a = paramContext.getDrawable(R.styleable.fT);
     paramContext.recycle();
     setWillNotDraw(true);
     ViewCompat.setOnApplyWindowInsetsListener(this, new ScrimInsetsFrameLayout.1(this));
@@ -53,28 +53,28 @@ public class ScrimInsetsFrameLayout
     super.draw(paramCanvas);
     int i = getWidth();
     int j = getHeight();
-    if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    if ((this.b != null) && (this.a != null))
     {
       int k = paramCanvas.save();
       paramCanvas.translate(getScrollX(), getScrollY());
-      if (this.jdField_a_of_type_Boolean)
+      if (this.d)
       {
-        this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, i, this.jdField_a_of_type_AndroidGraphicsRect.top);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        this.c.set(0, 0, i, this.b.top);
+        this.a.setBounds(this.c);
+        this.a.draw(paramCanvas);
       }
-      if (this.jdField_b_of_type_Boolean)
+      if (this.e)
       {
-        this.jdField_b_of_type_AndroidGraphicsRect.set(0, j - this.jdField_a_of_type_AndroidGraphicsRect.bottom, i, j);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        this.c.set(0, j - this.b.bottom, i, j);
+        this.a.setBounds(this.c);
+        this.a.draw(paramCanvas);
       }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.left, j - this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      this.jdField_b_of_type_AndroidGraphicsRect.set(i - this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, i, j - this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_b_of_type_AndroidGraphicsRect);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      this.c.set(0, this.b.top, this.b.left, j - this.b.bottom);
+      this.a.setBounds(this.c);
+      this.a.draw(paramCanvas);
+      this.c.set(i - this.b.right, this.b.top, i, j - this.b.bottom);
+      this.a.setBounds(this.c);
+      this.a.draw(paramCanvas);
       paramCanvas.restoreToCount(k);
     }
   }
@@ -82,7 +82,7 @@ public class ScrimInsetsFrameLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.a;
     if (localDrawable != null) {
       localDrawable.setCallback(this);
     }
@@ -91,7 +91,7 @@ public class ScrimInsetsFrameLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.a;
     if (localDrawable != null) {
       localDrawable.setCallback(null);
     }
@@ -99,22 +99,22 @@ public class ScrimInsetsFrameLayout
   
   public void setDrawBottomInsetForeground(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = paramBoolean;
   }
   
   public void setDrawTopInsetForeground(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
   }
   
   public void setScrimInsetForeground(@Nullable Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.a = paramDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.ScrimInsetsFrameLayout
  * JD-Core Version:    0.7.0.1
  */

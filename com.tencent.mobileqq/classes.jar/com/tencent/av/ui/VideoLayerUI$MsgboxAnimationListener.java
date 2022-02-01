@@ -11,7 +11,7 @@ class VideoLayerUI$MsgboxAnimationListener
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    VideoLayerUI.a(this.a).setVisibility(4);
+    VideoLayerUI.j(this.a).setVisibility(4);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}

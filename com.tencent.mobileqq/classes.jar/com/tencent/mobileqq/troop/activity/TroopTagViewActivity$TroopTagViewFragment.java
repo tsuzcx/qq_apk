@@ -13,32 +13,26 @@ import mqq.app.AppRuntime;
 public class TroopTagViewActivity$TroopTagViewFragment
   extends WebViewFragment
 {
-  protected int a;
   protected String a;
-  protected boolean a;
-  public int b;
   protected String b;
   protected String c;
-  
-  public TroopTagViewActivity$TroopTagViewFragment()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 1;
-  }
+  protected int d;
+  protected boolean e = false;
+  public int f = 1;
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     Bundle localBundle = this.intent.getExtras();
-    this.jdField_a_of_type_Int = localBundle.getInt("act_type", 3);
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("tags");
+    this.d = localBundle.getInt("act_type", 3);
+    this.b = localBundle.getString("tags");
     if (localBundle.containsKey("subclass")) {
       this.c = localBundle.getString("subclass");
     } else {
       this.c = "";
     }
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("troopuin");
-    this.jdField_a_of_type_Boolean = localBundle.getBoolean("isAdmin");
-    this.jdField_b_of_type_Int = localBundle.getInt("modifyToSrv", 1);
+    this.a = localBundle.getString("troopuin");
+    this.e = localBundle.getBoolean("isAdmin");
+    this.f = localBundle.getInt("modifyToSrv", 1);
     return super.doOnCreate(paramBundle);
   }
   
@@ -49,15 +43,15 @@ public class TroopTagViewActivity$TroopTagViewFragment
   
   public void onClick(View paramView)
   {
-    if (paramView == getSwiftTitleUI().c)
+    if (paramView == getSwiftTitleUI().f)
     {
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_Boolean))
+      if ((this.d == 1) && (this.e))
       {
         Intent localIntent = new Intent(super.getActivity(), TroopTagViewActivity.class);
-        localIntent.putExtra("troopuin", this.jdField_a_of_type_JavaLangString);
-        localIntent.putExtra("tags", this.jdField_b_of_type_JavaLangString);
+        localIntent.putExtra("troopuin", this.a);
+        localIntent.putExtra("tags", this.b);
         localIntent.putExtra("act_type", 2);
-        localIntent.putExtra("modifyToSrv", this.jdField_b_of_type_Int);
+        localIntent.putExtra("modifyToSrv", this.f);
         localIntent.putExtra("uin", getAppRuntime().getCurrentAccountUin());
         super.getActivity().startActivity(localIntent);
       }
@@ -74,7 +68,7 @@ public class TroopTagViewActivity$TroopTagViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity.TroopTagViewFragment
  * JD-Core Version:    0.7.0.1
  */

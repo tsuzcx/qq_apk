@@ -22,12 +22,12 @@ import java.util.List;
 public class ODRoomSwitchService
   implements RoomSwitchInterface
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RoomSwitchInterface.IRoomList jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$IRoomList;
-  private RoomSwitchInterface.QueryRoomListTrigger jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$QueryRoomListTrigger;
-  private RoomSwitchServiceAdapter jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter;
-  private ODRoomSwitchService.IGetNeighborRoomListener jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odServicesODRoomSwitchService$IGetNeighborRoomListener = new ODRoomSwitchService.2(this);
-  private List<SwitchRoomInfo> jdField_a_of_type_JavaUtilList;
+  private Context a;
+  private RoomSwitchServiceAdapter b;
+  private RoomSwitchInterface.QueryRoomListTrigger c;
+  private RoomSwitchInterface.IRoomList d;
+  private List<SwitchRoomInfo> e;
+  private ODRoomSwitchService.IGetNeighborRoomListener f = new ODRoomSwitchService.2(this);
   
   private List<SwitchRoomInfo> a(ODRoomSwitchProto.RcmdRoomSwitchRsp paramRcmdRoomSwitchRsp)
   {
@@ -78,7 +78,7 @@ public class ODRoomSwitchService
     localRcmdRoomSwitchReq.source.set(10015);
     localRcmdRoomSwitchReq.latitude.set(0.0F);
     localRcmdRoomSwitchReq.longitude.set(0.0F);
-    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getChannel().send(21857, 1, localRcmdRoomSwitchReq.toByteArray(), new ODRoomSwitchService.1(this, paramIGetNeighborRoomListener));
+    this.b.getChannel().send(21857, 1, localRcmdRoomSwitchReq.toByteArray(), new ODRoomSwitchService.1(this, paramIGetNeighborRoomListener));
   }
   
   private boolean a(List<SwitchRoomInfo> paramList, int paramInt)
@@ -89,7 +89,7 @@ public class ODRoomSwitchService
   
   public void a(RoomSwitchServiceAdapter paramRoomSwitchServiceAdapter)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter = paramRoomSwitchServiceAdapter;
+    this.b = paramRoomSwitchServiceAdapter;
   }
   
   public void clearEventOutput() {}
@@ -101,35 +101,35 @@ public class ODRoomSwitchService
   
   public RoomSwitchInterface.QueryRoomListTrigger getQueryRoomListTrigger()
   {
-    return this.jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$QueryRoomListTrigger;
+    return this.c;
   }
   
   public void onCreate(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
   }
   
   public void onDestroy() {}
   
   public void queryRoomList(List<SwitchRoomInfo> paramList, int paramInt1, int paramInt2, RoomSwitchInterface.IRoomList paramIRoomList)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$IRoomList = paramIRoomList;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramIRoomList;
+    this.e = paramList;
     if (!a(paramList, paramInt2)) {
       return;
     }
-    BusinessManager.a.a();
-    a((int)((SwitchRoomInfo)paramList.get(paramInt2)).roomId, this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizNow_odServicesODRoomSwitchService$IGetNeighborRoomListener);
+    BusinessManager.a.b();
+    a((int)((SwitchRoomInfo)paramList.get(paramInt2)).roomId, this.f);
   }
   
   public void setQueryRoomListTrigger(RoomSwitchInterface.QueryRoomListTrigger paramQueryRoomListTrigger)
   {
-    this.jdField_a_of_type_ComTencentIlivesdkRoomswitchservice_interfaceRoomSwitchInterface$QueryRoomListTrigger = paramQueryRoomListTrigger;
+    this.c = paramQueryRoomListTrigger;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.services.ODRoomSwitchService
  * JD-Core Version:    0.7.0.1
  */

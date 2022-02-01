@@ -25,12 +25,12 @@ class LoginInfoActivity$7
     if (j == 1)
     {
       paramRspBody = this.a;
-      i = 2131692145;
+      i = 2131889128;
     }
     else
     {
       paramRspBody = this.a;
-      i = 2131692151;
+      i = 2131889137;
     }
     localTextView.setText(paramRspBody.getString(i));
     LoginInfoActivity.access$2100(this.a).setVisibility(4);
@@ -45,7 +45,7 @@ class LoginInfoActivity$7
   
   public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    QQToast.a(this.a, paramString2, 0).a();
+    QQToast.makeText(this.a, paramString2, 0).show();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cmd : ");
     localStringBuilder.append(paramString1);
@@ -59,7 +59,7 @@ class LoginInfoActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.7
  * JD-Core Version:    0.7.0.1
  */

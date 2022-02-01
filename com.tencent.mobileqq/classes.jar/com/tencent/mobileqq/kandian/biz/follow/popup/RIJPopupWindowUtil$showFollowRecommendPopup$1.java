@@ -20,21 +20,21 @@ final class RIJPopupWindowUtil$showFollowRecommendPopup$1
   
   public final void run()
   {
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject1 = this.a;
     if (localObject1 != null)
     {
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mRecommendFollowInfos;
+      Object localObject2 = this.b.mRecommendFollowInfos;
       int i;
       if (localObject2 != null) {
-        i = ((RecommendFollowInfos)localObject2).b;
+        i = ((RecommendFollowInfos)localObject2).j;
       } else {
         i = 1;
       }
       int j;
       if (i == 2) {
-        j = 2131560321;
+        j = 2131626367;
       } else {
-        j = 2131560207;
+        j = 2131626254;
       }
       localObject2 = LayoutInflater.from((Context)localObject1).inflate(j, null);
       if (localObject2 != null)
@@ -42,9 +42,9 @@ final class RIJPopupWindowUtil$showFollowRecommendPopup$1
         localObject2 = (LinearLayout)localObject2;
         localObject1 = new RIJBottomDialog((Context)localObject1, i);
         ((RIJBottomDialog)localObject1).setContentView((View)localObject2);
-        RIJFollowPackUtils.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, (ViewGroup)localObject2, (RIJBottomDialog)localObject1);
+        RIJFollowPackUtils.a.a(this.a, this.b, (ViewGroup)localObject2, (RIJBottomDialog)localObject1);
         RIJPopupWindowUtil.a(RIJPopupWindowUtil.a, (RIJBottomDialog)localObject1);
-        RIJPopupWindowUtil.a(RIJPopupWindowUtil.a, this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, (RIJBottomDialog)localObject1);
+        RIJPopupWindowUtil.a(RIJPopupWindowUtil.a, this.b, (RIJBottomDialog)localObject1);
         ((RIJBottomDialog)localObject1).setOnShowListener((DialogInterface.OnShowListener)RIJPopupWindowUtil.showFollowRecommendPopup.1.1.1.a);
         ((RIJBottomDialog)localObject1).setOnDismissListener((DialogInterface.OnDismissListener)RIJPopupWindowUtil.showFollowRecommendPopup.1.1.2.a);
         ((RIJBottomDialog)localObject1).show();
@@ -56,7 +56,7 @@ final class RIJPopupWindowUtil$showFollowRecommendPopup$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.follow.popup.RIJPopupWindowUtil.showFollowRecommendPopup.1
  * JD-Core Version:    0.7.0.1
  */

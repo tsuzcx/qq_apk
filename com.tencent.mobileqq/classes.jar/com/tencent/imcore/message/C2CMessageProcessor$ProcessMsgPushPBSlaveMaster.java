@@ -10,23 +10,23 @@ import msf.msgcomm.msg_comm.Msg;
 
 public class C2CMessageProcessor$ProcessMsgPushPBSlaveMaster
 {
-  public C2CMessageProcessor a;
-  public String a;
-  private ArrayList<MessageRecord> a;
   public msg_comm.Msg a;
-  public boolean a;
-  private ArrayList<DelMsgInfo> b;
-  private ArrayList<MessageRecord> c;
+  public boolean b;
+  public String c;
+  public C2CMessageProcessor d;
+  private ArrayList<MessageRecord> e;
+  private ArrayList<DelMsgInfo> f;
+  private ArrayList<MessageRecord> g;
   
   public C2CMessageProcessor$ProcessMsgPushPBSlaveMaster(C2CMessageProcessor paramC2CMessageProcessor, msg_comm.Msg paramMsg, ArrayList<MessageRecord> paramArrayList1, boolean paramBoolean, String paramString, ArrayList<DelMsgInfo> paramArrayList, ArrayList<MessageRecord> paramArrayList2)
   {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramArrayList;
-    this.c = paramArrayList2;
-    this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor = paramC2CMessageProcessor;
+    this.a = paramMsg;
+    this.e = paramArrayList1;
+    this.b = paramBoolean;
+    this.c = paramString;
+    this.f = paramArrayList;
+    this.g = paramArrayList2;
+    this.d = paramC2CMessageProcessor;
   }
   
   private void a(MessageRecord paramMessageRecord)
@@ -56,31 +56,31 @@ public class C2CMessageProcessor$ProcessMsgPushPBSlaveMaster
       }
       paramMessageRecord.isread = true;
       paramMessageRecord.issend = 2;
-      if (!C2CMessageProcessor.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor$Callback.a(paramMessageRecord, this, this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor)) {
-        ((IMessageFacade)this.jdField_a_of_type_ComTencentImcoreMessageC2CMessageProcessor.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IMessageFacade.class, "")).setReadFrom(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.time);
+      if (!C2CMessageProcessor.u.a(paramMessageRecord, this, this.d)) {
+        ((IMessageFacade)this.d.q.getRuntimeService(IMessageFacade.class, "")).setReadFrom(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.time);
       }
-      this.c.add(paramMessageRecord);
+      this.g.add(paramMessageRecord);
       localObject = new DelMsgInfo();
       ((DelMsgInfo)localObject).lFromUin = Long.parseLong(paramMessageRecord.senderuin);
       ((DelMsgInfo)localObject).shMsgSeq = ((short)(int)paramMessageRecord.shmsgseq);
       ((DelMsgInfo)localObject).uMsgTime = paramMessageRecord.time;
-      this.b.add(localObject);
+      this.f.add(localObject);
     }
   }
   
   public ProcessMsgPushPBSlaveMaster a()
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if (localArrayList != null)
     {
       if (localArrayList.size() <= 0) {
         return this;
       }
-      int j = this.jdField_a_of_type_JavaUtilArrayList.size();
+      int j = this.e.size();
       int i = 0;
       while (i < j)
       {
-        a((MessageRecord)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+        a((MessageRecord)this.e.get(i));
         i += 1;
       }
     }
@@ -89,7 +89,7 @@ public class C2CMessageProcessor$ProcessMsgPushPBSlaveMaster
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor.ProcessMsgPushPBSlaveMaster
  * JD-Core Version:    0.7.0.1
  */

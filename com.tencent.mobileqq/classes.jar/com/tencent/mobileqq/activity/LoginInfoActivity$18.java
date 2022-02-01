@@ -65,7 +65,7 @@ class LoginInfoActivity$18
     //   94: aload 8
     //   96: getfield 64	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_sec_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   99: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   102: ifeq +841 -> 943
+    //   102: ifeq +842 -> 944
     //   105: aload 8
     //   107: getfield 64	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_sec_cmd	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   110: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
@@ -155,7 +155,7 @@ class LoginInfoActivity$18
     //   300: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   303: iconst_1
     //   304: if_icmpne +6 -> 310
-    //   307: goto +642 -> 949
+    //   307: goto +643 -> 950
     //   310: new 125	com/tencent/mobileqq/activity/RiskInfoItem
     //   313: dup
     //   314: invokespecial 126	com/tencent/mobileqq/activity/RiskInfoItem:<init>	()V
@@ -164,26 +164,26 @@ class LoginInfoActivity$18
     //   319: aload_2
     //   320: getfield 129	com/tencent/ims/QQProtectRisks$RiskInfo:str_left_text	Lcom/tencent/mobileqq/pb/PBStringField;
     //   323: invokevirtual 82	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   326: putfield 132	com/tencent/mobileqq/activity/RiskInfoItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   326: putfield 132	com/tencent/mobileqq/activity/RiskInfoItem:a	Ljava/lang/String;
     //   329: aload_3
     //   330: aload_2
     //   331: getfield 135	com/tencent/ims/QQProtectRisks$RiskInfo:str_jump_target	Lcom/tencent/mobileqq/pb/PBStringField;
     //   334: invokevirtual 82	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   337: putfield 138	com/tencent/mobileqq/activity/RiskInfoItem:d	Ljava/lang/String;
     //   340: aload_3
-    //   341: getfield 132	com/tencent/mobileqq/activity/RiskInfoItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   341: getfield 132	com/tencent/mobileqq/activity/RiskInfoItem:a	Ljava/lang/String;
     //   344: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   347: ifne +602 -> 949
+    //   347: ifne +603 -> 950
     //   350: aload_3
     //   351: getfield 138	com/tencent/mobileqq/activity/RiskInfoItem:d	Ljava/lang/String;
     //   354: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   357: ifeq +6 -> 363
-    //   360: goto +589 -> 949
+    //   360: goto +590 -> 950
     //   363: aload_3
     //   364: aload_2
     //   365: getfield 141	com/tencent/ims/QQProtectRisks$RiskInfo:str_right_text	Lcom/tencent/mobileqq/pb/PBStringField;
     //   368: invokevirtual 82	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   371: putfield 144	com/tencent/mobileqq/activity/RiskInfoItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   371: putfield 144	com/tencent/mobileqq/activity/RiskInfoItem:b	Ljava/lang/String;
     //   374: aload_3
     //   375: aload_2
     //   376: getfield 147	com/tencent/ims/QQProtectRisks$RiskInfo:str_desc_text	Lcom/tencent/mobileqq/pb/PBStringField;
@@ -193,49 +193,49 @@ class LoginInfoActivity$18
     //   386: aload_2
     //   387: getfield 153	com/tencent/ims/QQProtectRisks$RiskInfo:uint32_click_report_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   390: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   393: putfield 156	com/tencent/mobileqq/activity/RiskInfoItem:jdField_a_of_type_Int	I
+    //   393: putfield 157	com/tencent/mobileqq/activity/RiskInfoItem:e	I
     //   396: aload_2
-    //   397: getfield 159	com/tencent/ims/QQProtectRisks$RiskInfo:uint32_item_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   397: getfield 160	com/tencent/ims/QQProtectRisks$RiskInfo:uint32_item_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   400: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   403: ifeq +14 -> 417
     //   406: aload_3
     //   407: aload_2
-    //   408: getfield 159	com/tencent/ims/QQProtectRisks$RiskInfo:uint32_item_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   408: getfield 160	com/tencent/ims/QQProtectRisks$RiskInfo:uint32_item_id	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   411: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   414: putfield 161	com/tencent/mobileqq/activity/RiskInfoItem:jdField_b_of_type_Int	I
+    //   414: putfield 163	com/tencent/mobileqq/activity/RiskInfoItem:f	I
     //   417: aload_2
-    //   418: getfield 164	com/tencent/ims/QQProtectRisks$RiskInfo:str_right_text_open	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   418: getfield 166	com/tencent/ims/QQProtectRisks$RiskInfo:str_right_text_open	Lcom/tencent/mobileqq/pb/PBStringField;
     //   421: invokevirtual 80	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   424: ifeq +14 -> 438
     //   427: aload_3
     //   428: aload_2
-    //   429: getfield 164	com/tencent/ims/QQProtectRisks$RiskInfo:str_right_text_open	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   429: getfield 166	com/tencent/ims/QQProtectRisks$RiskInfo:str_right_text_open	Lcom/tencent/mobileqq/pb/PBStringField;
     //   432: invokevirtual 82	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   435: putfield 167	com/tencent/mobileqq/activity/RiskInfoItem:e	Ljava/lang/String;
+    //   435: putfield 169	com/tencent/mobileqq/activity/RiskInfoItem:g	Ljava/lang/String;
     //   438: aload_0
     //   439: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   442: invokestatic 171	com/tencent/mobileqq/activity/LoginInfoActivity:access$3200	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Z
+    //   442: invokestatic 173	com/tencent/mobileqq/activity/LoginInfoActivity:access$3200	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Z
     //   445: ifne +15 -> 460
     //   448: aload_0
     //   449: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   452: invokestatic 175	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
+    //   452: invokestatic 177	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
     //   455: aload_3
-    //   456: invokevirtual 181	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   456: invokevirtual 183	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   459: pop
     //   460: ldc 45
     //   462: iconst_1
-    //   463: ldc 183
+    //   463: ldc 185
     //   465: bipush 7
-    //   467: anewarray 185	java/lang/Object
+    //   467: anewarray 187	java/lang/Object
     //   470: dup
     //   471: iconst_0
     //   472: aload_3
-    //   473: getfield 132	com/tencent/mobileqq/activity/RiskInfoItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   473: getfield 132	com/tencent/mobileqq/activity/RiskInfoItem:a	Ljava/lang/String;
     //   476: aastore
     //   477: dup
     //   478: iconst_1
     //   479: aload_3
-    //   480: getfield 144	com/tencent/mobileqq/activity/RiskInfoItem:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   480: getfield 144	com/tencent/mobileqq/activity/RiskInfoItem:b	Ljava/lang/String;
     //   483: aastore
     //   484: dup
     //   485: iconst_2
@@ -250,54 +250,54 @@ class LoginInfoActivity$18
     //   498: dup
     //   499: iconst_4
     //   500: aload_3
-    //   501: getfield 156	com/tencent/mobileqq/activity/RiskInfoItem:jdField_a_of_type_Int	I
-    //   504: invokestatic 191	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   501: getfield 157	com/tencent/mobileqq/activity/RiskInfoItem:e	I
+    //   504: invokestatic 193	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   507: aastore
     //   508: dup
     //   509: iconst_5
     //   510: aload_3
-    //   511: getfield 161	com/tencent/mobileqq/activity/RiskInfoItem:jdField_b_of_type_Int	I
-    //   514: invokestatic 191	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   511: getfield 163	com/tencent/mobileqq/activity/RiskInfoItem:f	I
+    //   514: invokestatic 193	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   517: aastore
     //   518: dup
     //   519: bipush 6
     //   521: aload_3
-    //   522: getfield 167	com/tencent/mobileqq/activity/RiskInfoItem:e	Ljava/lang/String;
+    //   522: getfield 169	com/tencent/mobileqq/activity/RiskInfoItem:g	Ljava/lang/String;
     //   525: aastore
-    //   526: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   529: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   532: goto +417 -> 949
+    //   526: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   529: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   532: goto +418 -> 950
     //   535: aload 8
-    //   537: getfield 202	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_qpim_switches	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   537: getfield 204	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_qpim_switches	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   540: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   543: ifeq +22 -> 565
     //   546: aload 8
-    //   548: getfield 202	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_qpim_switches	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   548: getfield 204	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_qpim_switches	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   551: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   554: istore 4
     //   556: aload_0
     //   557: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
     //   560: iload 4
-    //   562: invokestatic 206	com/tencent/mobileqq/activity/LoginInfoActivity:access$3700	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;I)V
-    //   565: ldc2_w 207
+    //   562: invokestatic 208	com/tencent/mobileqq/activity/LoginInfoActivity:access$3700	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;I)V
+    //   565: ldc2_w 209
     //   568: lstore 6
-    //   570: ldc 210
+    //   570: ldc 212
     //   572: astore_2
     //   573: aload 8
-    //   575: getfield 213	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_cache_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   575: getfield 215	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_cache_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   578: invokevirtual 69	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
     //   581: ifeq +14 -> 595
     //   584: aload 8
-    //   586: getfield 213	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_cache_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   586: getfield 215	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:uint32_cache_time	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   589: invokevirtual 73	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   592: i2l
     //   593: lstore 6
     //   595: aload 8
-    //   597: getfield 216	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:str_risk_exist	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   597: getfield 218	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:str_risk_exist	Lcom/tencent/mobileqq/pb/PBStringField;
     //   600: invokevirtual 80	com/tencent/mobileqq/pb/PBStringField:has	()Z
     //   603: ifeq +12 -> 615
     //   606: aload 8
-    //   608: getfield 216	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:str_risk_exist	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   608: getfield 218	com/tencent/ims/QQProtectRisks$QQProtectRisksResponse:str_risk_exist	Lcom/tencent/mobileqq/pb/PBStringField;
     //   611: invokevirtual 82	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
     //   614: astore_2
     //   615: aload_2
@@ -319,66 +319,66 @@ class LoginInfoActivity$18
     //   647: ifne +13 -> 660
     //   650: aload_0
     //   651: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   654: ldc 217
-    //   656: invokevirtual 221	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
+    //   654: ldc 219
+    //   656: invokevirtual 223	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
     //   659: astore_3
     //   660: aload_0
     //   661: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
     //   664: lload 6
     //   666: aload_3
-    //   667: invokestatic 225	com/tencent/mobileqq/activity/LoginInfoActivity:access$3800	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;JLjava/lang/String;)V
+    //   667: invokestatic 227	com/tencent/mobileqq/activity/LoginInfoActivity:access$3800	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;JLjava/lang/String;)V
     //   670: iload_1
     //   671: istore 4
     //   673: goto +25 -> 698
     //   676: astore_2
     //   677: aload_2
-    //   678: invokevirtual 228	java/lang/Throwable:printStackTrace	()V
+    //   678: invokevirtual 230	java/lang/Throwable:printStackTrace	()V
     //   681: iload_1
     //   682: istore 4
     //   684: goto +14 -> 698
     //   687: ldc 45
     //   689: iconst_1
-    //   690: ldc 230
-    //   692: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   690: ldc 232
+    //   692: invokestatic 201	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   695: iconst_0
     //   696: istore 4
     //   698: aload_0
     //   699: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   702: invokestatic 175	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
+    //   702: invokestatic 177	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
     //   705: ifnull +106 -> 811
     //   708: aload_0
     //   709: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   712: invokestatic 175	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
-    //   715: invokevirtual 231	java/util/ArrayList:isEmpty	()Z
+    //   712: invokestatic 177	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
+    //   715: invokevirtual 233	java/util/ArrayList:isEmpty	()Z
     //   718: ifne +93 -> 811
     //   721: aload_0
     //   722: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   725: invokestatic 235	com/tencent/mobileqq/activity/LoginInfoActivity:access$3500	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
+    //   725: invokestatic 237	com/tencent/mobileqq/activity/LoginInfoActivity:access$3500	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
     //   728: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   731: ifeq +69 -> 800
     //   734: aload_0
     //   735: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   738: invokestatic 175	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
+    //   738: invokestatic 177	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
     //   741: iconst_0
-    //   742: invokevirtual 238	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   742: invokevirtual 240	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   745: checkcast 125	com/tencent/mobileqq/activity/RiskInfoItem
-    //   748: getfield 132	com/tencent/mobileqq/activity/RiskInfoItem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   748: getfield 132	com/tencent/mobileqq/activity/RiskInfoItem:a	Ljava/lang/String;
     //   751: astore_2
     //   752: aload_0
     //   753: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   756: invokestatic 175	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
-    //   759: invokevirtual 239	java/util/ArrayList:size	()I
+    //   756: invokestatic 177	com/tencent/mobileqq/activity/LoginInfoActivity:access$3600	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/util/ArrayList;
+    //   759: invokevirtual 241	java/util/ArrayList:size	()I
     //   762: istore_1
     //   763: aload_0
     //   764: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   767: ldc 240
-    //   769: invokevirtual 221	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
+    //   767: ldc 242
+    //   769: invokevirtual 223	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
     //   772: astore_3
     //   773: aload_0
     //   774: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
     //   777: aload_3
     //   778: iconst_2
-    //   779: anewarray 185	java/lang/Object
+    //   779: anewarray 187	java/lang/Object
     //   782: dup
     //   783: iconst_0
     //   784: aload_2
@@ -386,19 +386,19 @@ class LoginInfoActivity$18
     //   786: dup
     //   787: iconst_1
     //   788: iload_1
-    //   789: invokestatic 191	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   789: invokestatic 193	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   792: aastore
-    //   793: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   793: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   796: invokestatic 102	com/tencent/mobileqq/activity/LoginInfoActivity:access$3502	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;Ljava/lang/String;)Ljava/lang/String;
     //   799: pop
     //   800: aload_0
     //   801: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   804: invokestatic 235	com/tencent/mobileqq/activity/LoginInfoActivity:access$3500	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
+    //   804: invokestatic 237	com/tencent/mobileqq/activity/LoginInfoActivity:access$3500	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
     //   807: astore_2
     //   808: goto +43 -> 851
     //   811: aload_0
     //   812: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   815: invokestatic 243	com/tencent/mobileqq/activity/LoginInfoActivity:access$3400	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
+    //   815: invokestatic 245	com/tencent/mobileqq/activity/LoginInfoActivity:access$3400	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
     //   818: invokestatic 88	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   821: ifeq +19 -> 840
     //   824: aload_0
@@ -406,13 +406,13 @@ class LoginInfoActivity$18
     //   828: astore_2
     //   829: aload_2
     //   830: aload_2
-    //   831: ldc 244
-    //   833: invokevirtual 221	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
+    //   831: ldc 246
+    //   833: invokevirtual 223	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
     //   836: invokestatic 94	com/tencent/mobileqq/activity/LoginInfoActivity:access$3402	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;Ljava/lang/String;)Ljava/lang/String;
     //   839: pop
     //   840: aload_0
     //   841: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   844: invokestatic 243	com/tencent/mobileqq/activity/LoginInfoActivity:access$3400	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
+    //   844: invokestatic 245	com/tencent/mobileqq/activity/LoginInfoActivity:access$3400	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Ljava/lang/String;
     //   847: astore_2
     //   848: iconst_1
     //   849: istore 5
@@ -420,63 +420,63 @@ class LoginInfoActivity$18
     //   853: ifne +13 -> 866
     //   856: aload_0
     //   857: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   860: ldc 245
-    //   862: invokevirtual 221	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
+    //   860: ldc 247
+    //   862: invokevirtual 223	com/tencent/mobileqq/activity/LoginInfoActivity:getString	(I)Ljava/lang/String;
     //   865: astore_2
     //   866: aload_0
     //   867: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
     //   870: iload 5
-    //   872: invokestatic 249	com/tencent/mobileqq/activity/LoginInfoActivity:access$3902	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;Z)Z
+    //   872: invokestatic 251	com/tencent/mobileqq/activity/LoginInfoActivity:access$3902	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;Z)Z
     //   875: pop
     //   876: aload_0
     //   877: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   880: invokestatic 253	com/tencent/mobileqq/activity/LoginInfoActivity:access$1700	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Lmqq/os/MqqHandler;
-    //   883: ldc 254
-    //   885: invokevirtual 260	mqq/os/MqqHandler:obtainMessage	(I)Landroid/os/Message;
-    //   888: astore_3
-    //   889: new 262	android/os/Bundle
-    //   892: dup
-    //   893: invokespecial 263	android/os/Bundle:<init>	()V
-    //   896: astore 8
-    //   898: aload 8
-    //   900: ldc_w 265
-    //   903: iload 5
-    //   905: invokevirtual 269	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
-    //   908: aload 8
-    //   910: ldc_w 271
-    //   913: aload_2
-    //   914: invokevirtual 275	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-    //   917: aload_3
-    //   918: aload 8
-    //   920: invokevirtual 281	android/os/Message:setData	(Landroid/os/Bundle;)V
-    //   923: aload_0
-    //   924: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
-    //   927: invokestatic 253	com/tencent/mobileqq/activity/LoginInfoActivity:access$1700	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Lmqq/os/MqqHandler;
-    //   930: aload_3
-    //   931: ldc2_w 282
-    //   934: invokevirtual 287	mqq/os/MqqHandler:sendMessageDelayed	(Landroid/os/Message;J)Z
-    //   937: pop
-    //   938: return
-    //   939: astore_2
-    //   940: goto -253 -> 687
-    //   943: iconst_0
-    //   944: istore 4
-    //   946: goto -828 -> 118
-    //   949: iload 4
-    //   951: iconst_1
-    //   952: iadd
-    //   953: istore 4
-    //   955: goto -704 -> 251
+    //   880: invokestatic 255	com/tencent/mobileqq/activity/LoginInfoActivity:access$1700	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Lmqq/os/MqqHandler;
+    //   883: ldc_w 256
+    //   886: invokevirtual 262	mqq/os/MqqHandler:obtainMessage	(I)Landroid/os/Message;
+    //   889: astore_3
+    //   890: new 264	android/os/Bundle
+    //   893: dup
+    //   894: invokespecial 265	android/os/Bundle:<init>	()V
+    //   897: astore 8
+    //   899: aload 8
+    //   901: ldc_w 267
+    //   904: iload 5
+    //   906: invokevirtual 271	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   909: aload 8
+    //   911: ldc_w 273
+    //   914: aload_2
+    //   915: invokevirtual 277	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   918: aload_3
+    //   919: aload 8
+    //   921: invokevirtual 283	android/os/Message:setData	(Landroid/os/Bundle;)V
+    //   924: aload_0
+    //   925: getfield 10	com/tencent/mobileqq/activity/LoginInfoActivity$18:a	Lcom/tencent/mobileqq/activity/LoginInfoActivity;
+    //   928: invokestatic 255	com/tencent/mobileqq/activity/LoginInfoActivity:access$1700	(Lcom/tencent/mobileqq/activity/LoginInfoActivity;)Lmqq/os/MqqHandler;
+    //   931: aload_3
+    //   932: ldc2_w 284
+    //   935: invokevirtual 289	mqq/os/MqqHandler:sendMessageDelayed	(Landroid/os/Message;J)Z
+    //   938: pop
+    //   939: return
+    //   940: astore_2
+    //   941: goto -254 -> 687
+    //   944: iconst_0
+    //   945: istore 4
+    //   947: goto -829 -> 118
+    //   950: iload 4
+    //   952: iconst_1
+    //   953: iadd
+    //   954: istore 4
+    //   956: goto -705 -> 251
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	958	0	this	18
-    //   0	958	1	paramInt	int
-    //   0	958	2	paramArrayOfByte	byte[]
-    //   0	958	3	paramBundle	android.os.Bundle
-    //   72	882	4	i	int
-    //   1	903	5	bool	boolean
+    //   0	959	0	this	18
+    //   0	959	1	paramInt	int
+    //   0	959	2	paramArrayOfByte	byte[]
+    //   0	959	3	paramBundle	android.os.Bundle
+    //   72	883	4	i	int
+    //   1	904	5	bool	boolean
     //   568	97	6	l	long
-    //   85	834	8	localObject	java.lang.Object
+    //   85	835	8	localObject	java.lang.Object
     //   199	19	9	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
@@ -497,28 +497,28 @@ class LoginInfoActivity$18
     //   626	637	676	java/lang/Throwable
     //   639	660	676	java/lang/Throwable
     //   660	670	676	java/lang/Throwable
-    //   78	115	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   124	160	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   160	226	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   226	248	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   251	307	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   310	360	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   363	417	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   417	438	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   438	460	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   460	532	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   535	565	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   573	595	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   595	615	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   617	624	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   626	637	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   639	660	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   660	670	939	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   78	115	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   124	160	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   160	226	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   226	248	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   251	307	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   310	360	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   363	417	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   417	438	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   438	460	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   460	532	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   535	565	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   573	595	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   595	615	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   617	624	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   626	637	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   639	660	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   660	670	940	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.18
  * JD-Core Version:    0.7.0.1
  */

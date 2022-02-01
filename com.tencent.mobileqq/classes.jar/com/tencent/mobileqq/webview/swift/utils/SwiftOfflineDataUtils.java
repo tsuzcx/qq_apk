@@ -3,25 +3,398 @@ package com.tencent.mobileqq.webview.swift.utils;
 import android.text.TextUtils;
 import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.util.LRULinkedHashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.util.WeakReference;
 
 public class SwiftOfflineDataUtils
 {
-  private static final LRULinkedHashMap<String, SwiftOfflineDataUtils.OfflineData> jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
-  private static WeakReference<OfflineWebResManager> jdField_a_of_type_MqqUtilWeakReference = null;
+  private static final LRULinkedHashMap<String, SwiftOfflineDataUtils.OfflineData> a = new LRULinkedHashMap(4);
+  private static WeakReference<OfflineWebResManager> b = null;
   
-  public static SwiftOfflineDataUtils.OfflineData a(String paramString)
+  private static OfflineWebResManager a(OfflineWebResManager paramOfflineWebResManager)
   {
-    if (AppSetting.g) {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (MobileQQ.sProcessId == 7)
+    {
+      localAppRuntime = localAppRuntime.getAppRuntime("modular_web");
+      if ((localAppRuntime instanceof AppInterface)) {
+        return new OfflineWebResManager((AppInterface)localAppRuntime);
+      }
+    }
+    else if ((localAppRuntime instanceof AppInterface))
+    {
+      paramOfflineWebResManager = new OfflineWebResManager((AppInterface)localAppRuntime);
+    }
+    return paramOfflineWebResManager;
+  }
+  
+  /* Error */
+  public static boolean a(String paramString)
+  {
+    // Byte code:
+    //   0: getstatic 66	com/tencent/common/config/AppSetting:h	Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: invokestatic 69	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils$OfflineData;
+    //   12: ifnull +19 -> 31
+    //   15: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   18: ifeq +11 -> 29
+    //   21: ldc 77
+    //   23: iconst_2
+    //   24: ldc 79
+    //   26: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   29: iconst_1
+    //   30: ireturn
+    //   31: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   34: ifeq +11 -> 45
+    //   37: ldc 77
+    //   39: iconst_2
+    //   40: ldc 85
+    //   42: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   45: aload_0
+    //   46: invokestatic 91	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   49: ldc 93
+    //   51: invokevirtual 97	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
+    //   54: astore 11
+    //   56: aload 11
+    //   58: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   61: ifeq +5 -> 66
+    //   64: iconst_0
+    //   65: ireturn
+    //   66: invokestatic 109	java/lang/System:currentTimeMillis	()J
+    //   69: lstore_2
+    //   70: aload 11
+    //   72: invokestatic 112	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   75: astore 11
+    //   77: invokestatic 109	java/lang/System:currentTimeMillis	()J
+    //   80: lstore 4
+    //   82: aload 11
+    //   84: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   87: ifeq +5 -> 92
+    //   90: iconst_0
+    //   91: ireturn
+    //   92: new 114	org/json/JSONObject
+    //   95: dup
+    //   96: aload 11
+    //   98: invokespecial 117	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   101: astore 11
+    //   103: aload_0
+    //   104: invokestatic 122	com/tencent/biz/common/offline/HtmlOffline:g	(Ljava/lang/String;)Ljava/lang/String;
+    //   107: astore 13
+    //   109: aload 13
+    //   111: ifnonnull +5 -> 116
+    //   114: iconst_0
+    //   115: ireturn
+    //   116: aload 11
+    //   118: aload 13
+    //   120: invokevirtual 125	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   123: astore 12
+    //   125: invokestatic 109	java/lang/System:currentTimeMillis	()J
+    //   128: lstore 6
+    //   130: getstatic 22	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:b	Lmqq/util/WeakReference;
+    //   133: ifnull +29 -> 162
+    //   136: getstatic 22	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:b	Lmqq/util/WeakReference;
+    //   139: invokevirtual 131	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   142: ifnonnull +6 -> 148
+    //   145: goto +17 -> 162
+    //   148: getstatic 22	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:b	Lmqq/util/WeakReference;
+    //   151: invokevirtual 131	mqq/util/WeakReference:get	()Ljava/lang/Object;
+    //   154: checkcast 52	com/tencent/biz/webviewplugin/OfflineWebResManager
+    //   157: astore 11
+    //   159: goto +429 -> 588
+    //   162: aconst_null
+    //   163: invokestatic 133	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:a	(Lcom/tencent/biz/webviewplugin/OfflineWebResManager;)Lcom/tencent/biz/webviewplugin/OfflineWebResManager;
+    //   166: astore 11
+    //   168: new 127	mqq/util/WeakReference
+    //   171: dup
+    //   172: aload 11
+    //   174: invokespecial 136	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   177: putstatic 22	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:b	Lmqq/util/WeakReference;
+    //   180: goto +408 -> 588
+    //   183: aload 11
+    //   185: aload 12
+    //   187: invokevirtual 139	com/tencent/biz/webviewplugin/OfflineWebResManager:b	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/OfflineWebRes;
+    //   190: astore 11
+    //   192: invokestatic 109	java/lang/System:currentTimeMillis	()J
+    //   195: lstore 8
+    //   197: aload 11
+    //   199: ifnonnull +5 -> 204
+    //   202: iconst_0
+    //   203: ireturn
+    //   204: new 141	java/io/File
+    //   207: dup
+    //   208: invokestatic 147	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   211: invokevirtual 151	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
+    //   214: ldc 153
+    //   216: invokespecial 156	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   219: astore 12
+    //   221: aload 12
+    //   223: invokevirtual 159	java/io/File:exists	()Z
+    //   226: ifne +5 -> 231
+    //   229: iconst_0
+    //   230: ireturn
+    //   231: new 141	java/io/File
+    //   234: dup
+    //   235: aload 12
+    //   237: aload 11
+    //   239: getfield 165	com/tencent/mobileqq/data/OfflineWebRes:hashName	Ljava/lang/String;
+    //   242: invokespecial 156	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   245: astore 11
+    //   247: aload 11
+    //   249: invokevirtual 159	java/io/File:exists	()Z
+    //   252: ifne +5 -> 257
+    //   255: iconst_0
+    //   256: ireturn
+    //   257: aload 13
+    //   259: invokestatic 167	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   262: astore 14
+    //   264: new 169	java/io/FileInputStream
+    //   267: dup
+    //   268: aload 11
+    //   270: invokespecial 172	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   273: astore 11
+    //   275: aload 11
+    //   277: astore 12
+    //   279: aload 11
+    //   281: invokevirtual 178	java/io/InputStream:available	()I
+    //   284: istore_1
+    //   285: iload_1
+    //   286: ifne +10 -> 296
+    //   289: aload 11
+    //   291: invokevirtual 181	java/io/InputStream:close	()V
+    //   294: iconst_0
+    //   295: ireturn
+    //   296: aload 11
+    //   298: astore 12
+    //   300: iload_1
+    //   301: newarray byte
+    //   303: astore 15
+    //   305: aload 11
+    //   307: astore 12
+    //   309: iload_1
+    //   310: aload 11
+    //   312: aload 15
+    //   314: invokevirtual 185	java/io/InputStream:read	([B)I
+    //   317: if_icmpne +52 -> 369
+    //   320: aload 11
+    //   322: astore 12
+    //   324: new 187	java/lang/String
+    //   327: dup
+    //   328: aload 15
+    //   330: ldc 189
+    //   332: invokespecial 192	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   335: astore 15
+    //   337: aload 11
+    //   339: astore 12
+    //   341: getstatic 20	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:a	Lcom/tencent/util/LRULinkedHashMap;
+    //   344: aload 13
+    //   346: new 194	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils$OfflineData
+    //   349: dup
+    //   350: aload 14
+    //   352: aload 15
+    //   354: ldc 189
+    //   356: invokespecial 197	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils$OfflineData:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   359: invokevirtual 201	com/tencent/util/LRULinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   362: pop
+    //   363: iconst_1
+    //   364: istore 10
+    //   366: goto +6 -> 372
+    //   369: iconst_0
+    //   370: istore 10
+    //   372: aload 11
+    //   374: invokevirtual 181	java/io/InputStream:close	()V
+    //   377: goto +67 -> 444
+    //   380: astore_0
+    //   381: goto +51 -> 432
+    //   384: astore 13
+    //   386: goto +18 -> 404
+    //   389: goto +209 -> 598
+    //   392: astore_0
+    //   393: aconst_null
+    //   394: astore 12
+    //   396: goto +36 -> 432
+    //   399: astore 13
+    //   401: aconst_null
+    //   402: astore 11
+    //   404: aload 11
+    //   406: astore 12
+    //   408: ldc 77
+    //   410: iconst_1
+    //   411: aload 13
+    //   413: invokevirtual 205	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   416: invokestatic 208	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   419: aload 11
+    //   421: ifnull +185 -> 606
+    //   424: aload 11
+    //   426: invokevirtual 181	java/io/InputStream:close	()V
+    //   429: goto +177 -> 606
+    //   432: aload 12
+    //   434: ifnull +8 -> 442
+    //   437: aload 12
+    //   439: invokevirtual 181	java/io/InputStream:close	()V
+    //   442: aload_0
+    //   443: athrow
+    //   444: invokestatic 75	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   447: ifeq +116 -> 563
+    //   450: new 210	java/lang/StringBuilder
+    //   453: dup
+    //   454: invokespecial 211	java/lang/StringBuilder:<init>	()V
+    //   457: astore 11
+    //   459: aload 11
+    //   461: ldc 213
+    //   463: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   466: pop
+    //   467: aload 11
+    //   469: lload 4
+    //   471: lload_2
+    //   472: lsub
+    //   473: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   476: pop
+    //   477: aload 11
+    //   479: ldc 222
+    //   481: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   484: pop
+    //   485: aload 11
+    //   487: lload 6
+    //   489: lload 4
+    //   491: lsub
+    //   492: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   495: pop
+    //   496: aload 11
+    //   498: ldc 224
+    //   500: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   503: pop
+    //   504: aload 11
+    //   506: lload 8
+    //   508: lload 6
+    //   510: lsub
+    //   511: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   514: pop
+    //   515: aload 11
+    //   517: ldc 226
+    //   519: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: pop
+    //   523: aload 11
+    //   525: invokestatic 109	java/lang/System:currentTimeMillis	()J
+    //   528: lload_2
+    //   529: lsub
+    //   530: invokevirtual 220	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   533: pop
+    //   534: aload 11
+    //   536: ldc 228
+    //   538: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   541: pop
+    //   542: aload 11
+    //   544: aload_0
+    //   545: invokestatic 122	com/tencent/biz/common/offline/HtmlOffline:g	(Ljava/lang/String;)Ljava/lang/String;
+    //   548: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   551: pop
+    //   552: ldc 77
+    //   554: iconst_2
+    //   555: aload 11
+    //   557: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   560: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   563: iload 10
+    //   565: ireturn
+    //   566: astore_0
+    //   567: ldc 77
+    //   569: iconst_1
+    //   570: ldc 233
+    //   572: aload_0
+    //   573: invokestatic 236	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   576: iconst_0
+    //   577: ireturn
+    //   578: astore 11
+    //   580: goto +15 -> 595
+    //   583: astore 12
+    //   585: goto -196 -> 389
+    //   588: aload 11
+    //   590: ifnonnull -407 -> 183
+    //   593: iconst_0
+    //   594: ireturn
+    //   595: aconst_null
+    //   596: astore 11
+    //   598: aload 11
+    //   600: ifnull +6 -> 606
+    //   603: goto -179 -> 424
+    //   606: iconst_0
+    //   607: istore 10
+    //   609: goto -165 -> 444
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	612	0	paramString	String
+    //   284	34	1	i	int
+    //   69	460	2	l1	long
+    //   80	410	4	l2	long
+    //   128	381	6	l3	long
+    //   195	312	8	l4	long
+    //   364	244	10	bool	boolean
+    //   54	502	11	localObject1	Object
+    //   578	11	11	localException1	java.lang.Exception
+    //   596	3	11	localObject2	Object
+    //   123	315	12	localObject3	Object
+    //   583	1	12	localException2	java.lang.Exception
+    //   107	238	13	str1	String
+    //   384	1	13	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   399	13	13	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   262	89	14	str2	String
+    //   303	50	15	localObject4	Object
+    // Exception table:
+    //   from	to	target	type
+    //   279	285	380	finally
+    //   300	305	380	finally
+    //   309	320	380	finally
+    //   324	337	380	finally
+    //   341	363	380	finally
+    //   408	419	380	finally
+    //   279	285	384	java/lang/OutOfMemoryError
+    //   300	305	384	java/lang/OutOfMemoryError
+    //   309	320	384	java/lang/OutOfMemoryError
+    //   324	337	384	java/lang/OutOfMemoryError
+    //   341	363	384	java/lang/OutOfMemoryError
+    //   264	275	392	finally
+    //   264	275	399	java/lang/OutOfMemoryError
+    //   31	45	566	java/lang/Exception
+    //   45	64	566	java/lang/Exception
+    //   66	90	566	java/lang/Exception
+    //   92	109	566	java/lang/Exception
+    //   116	145	566	java/lang/Exception
+    //   148	159	566	java/lang/Exception
+    //   162	180	566	java/lang/Exception
+    //   183	197	566	java/lang/Exception
+    //   204	229	566	java/lang/Exception
+    //   231	255	566	java/lang/Exception
+    //   257	264	566	java/lang/Exception
+    //   289	294	566	java/lang/Exception
+    //   372	377	566	java/lang/Exception
+    //   424	429	566	java/lang/Exception
+    //   437	442	566	java/lang/Exception
+    //   442	444	566	java/lang/Exception
+    //   444	563	566	java/lang/Exception
+    //   264	275	578	java/lang/Exception
+    //   279	285	583	java/lang/Exception
+    //   300	305	583	java/lang/Exception
+    //   309	320	583	java/lang/Exception
+    //   324	337	583	java/lang/Exception
+    //   341	363	583	java/lang/Exception
+  }
+  
+  public static SwiftOfflineDataUtils.OfflineData b(String paramString)
+  {
+    if (AppSetting.h) {
       return null;
     }
-    paramString = HtmlOffline.d(paramString);
+    paramString = HtmlOffline.g(paramString);
     if (TextUtils.isEmpty(paramString)) {
       paramString = null;
     } else {
-      paramString = (SwiftOfflineDataUtils.OfflineData)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
+      paramString = (SwiftOfflineDataUtils.OfflineData)a.get(paramString);
     }
     String str;
     if (paramString != null)
@@ -37,540 +410,133 @@ public class SwiftOfflineDataUtils
   }
   
   /* Error */
-  public static boolean a(String paramString)
+  private static String c(String paramString)
   {
     // Byte code:
-    //   0: getstatic 31	com/tencent/common/config/AppSetting:g	Z
-    //   3: ifeq +5 -> 8
-    //   6: iconst_0
-    //   7: ireturn
-    //   8: aload_0
-    //   9: invokestatic 59	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils$OfflineData;
-    //   12: ifnull +19 -> 31
-    //   15: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   18: ifeq +11 -> 29
-    //   21: ldc 66
-    //   23: iconst_2
-    //   24: ldc 68
-    //   26: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   29: iconst_1
-    //   30: ireturn
-    //   31: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   34: ifeq +11 -> 45
-    //   37: ldc 66
-    //   39: iconst_2
-    //   40: ldc 73
-    //   42: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   45: aload_0
-    //   46: invokestatic 79	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   49: ldc 81
-    //   51: invokevirtual 84	android/net/Uri:getQueryParameter	(Ljava/lang/String;)Ljava/lang/String;
-    //   54: astore 13
-    //   56: aload 13
-    //   58: invokestatic 43	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   61: ifeq +5 -> 66
-    //   64: iconst_0
-    //   65: ireturn
-    //   66: invokestatic 90	java/lang/System:currentTimeMillis	()J
-    //   69: lstore_2
-    //   70: getstatic 93	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   73: astore 11
-    //   75: aconst_null
-    //   76: astore 12
-    //   78: aload 11
-    //   80: ifnull +30 -> 110
-    //   83: getstatic 93	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   86: aload 13
-    //   88: invokevirtual 99	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
-    //   91: ifeq +19 -> 110
-    //   94: getstatic 93	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   97: aload 13
-    //   99: invokevirtual 100	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   102: checkcast 102	java/lang/String
-    //   105: astore 11
-    //   107: goto +140 -> 247
-    //   110: new 104	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   117: astore 11
-    //   119: aload 11
-    //   121: aload 13
-    //   123: invokestatic 109	com/tencent/biz/common/offline/OfflineEnvHelper:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   126: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: pop
-    //   130: aload 11
-    //   132: aload 13
-    //   134: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: pop
-    //   138: aload 11
-    //   140: ldc 115
-    //   142: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: pop
-    //   146: aload 11
-    //   148: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: astore 11
-    //   153: new 121	java/io/File
-    //   156: dup
-    //   157: aload 11
-    //   159: invokespecial 124	java/io/File:<init>	(Ljava/lang/String;)V
-    //   162: invokevirtual 127	java/io/File:exists	()Z
-    //   165: istore 10
-    //   167: iload 10
-    //   169: ifne +5 -> 174
-    //   172: iconst_0
-    //   173: ireturn
-    //   174: new 129	java/io/BufferedInputStream
-    //   177: dup
-    //   178: new 131	java/io/FileInputStream
-    //   181: dup
-    //   182: aload 11
-    //   184: invokespecial 132	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   187: invokespecial 135	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   190: astore 11
-    //   192: aload 11
-    //   194: invokestatic 140	com/tencent/biz/common/util/OfflineSecurity:a	(Ljava/io/BufferedInputStream;)Ljava/lang/String;
-    //   197: astore 12
-    //   199: getstatic 93	com/tencent/biz/common/offline/HtmlOffline:a	Ljava/util/concurrent/ConcurrentHashMap;
-    //   202: aload 13
-    //   204: aload 12
-    //   206: invokevirtual 144	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   209: pop
-    //   210: aload 11
-    //   212: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   215: aload 12
-    //   217: astore 11
-    //   219: goto +28 -> 247
-    //   222: aload 11
-    //   224: ifnull +8 -> 232
-    //   227: aload 11
-    //   229: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   232: aload_0
-    //   233: athrow
-    //   234: aload 11
-    //   236: ifnull +708 -> 944
-    //   239: aload 11
-    //   241: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   244: goto +700 -> 944
-    //   247: invokestatic 90	java/lang/System:currentTimeMillis	()J
-    //   250: lstore 4
-    //   252: aload 11
-    //   254: invokestatic 43	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   257: ifeq +5 -> 262
-    //   260: iconst_0
-    //   261: ireturn
-    //   262: new 149	org/json/JSONObject
-    //   265: dup
-    //   266: aload 11
-    //   268: invokespecial 150	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   271: astore 11
-    //   273: aload_0
-    //   274: invokestatic 37	com/tencent/biz/common/offline/HtmlOffline:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   277: astore 14
-    //   279: aload 14
-    //   281: ifnonnull +5 -> 286
-    //   284: iconst_0
-    //   285: ireturn
-    //   286: aload 11
-    //   288: aload 14
-    //   290: invokevirtual 153	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   293: astore 12
-    //   295: invokestatic 90	java/lang/System:currentTimeMillis	()J
-    //   298: lstore 6
-    //   300: getstatic 21	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   303: ifnull +29 -> 332
-    //   306: getstatic 21	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   309: invokevirtual 158	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   312: ifnonnull +6 -> 318
-    //   315: goto +17 -> 332
-    //   318: getstatic 21	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   321: invokevirtual 158	mqq/util/WeakReference:get	()Ljava/lang/Object;
-    //   324: checkcast 160	com/tencent/biz/webviewplugin/OfflineWebResManager
-    //   327: astore 11
-    //   329: goto +633 -> 962
-    //   332: getstatic 166	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   335: aconst_null
-    //   336: invokevirtual 170	mqq/app/MobileQQ:waitAppRuntime	(Lmqq/app/BaseActivity;)Lmqq/app/AppRuntime;
-    //   339: astore 11
-    //   341: getstatic 174	mqq/app/MobileQQ:sProcessId	I
-    //   344: bipush 7
-    //   346: if_icmpne +37 -> 383
-    //   349: aload 11
-    //   351: ldc 176
-    //   353: invokevirtual 182	mqq/app/AppRuntime:getAppRuntime	(Ljava/lang/String;)Lmqq/app/AppRuntime;
-    //   356: astore 11
-    //   358: aload 11
-    //   360: instanceof 184
-    //   363: ifeq +587 -> 950
-    //   366: new 160	com/tencent/biz/webviewplugin/OfflineWebResManager
-    //   369: dup
-    //   370: aload 11
-    //   372: checkcast 184	com/tencent/common/app/AppInterface
-    //   375: invokespecial 187	com/tencent/biz/webviewplugin/OfflineWebResManager:<init>	(Lcom/tencent/common/app/AppInterface;)V
-    //   378: astore 11
-    //   380: goto +573 -> 953
-    //   383: aload 11
-    //   385: instanceof 184
-    //   388: ifeq +568 -> 956
-    //   391: new 160	com/tencent/biz/webviewplugin/OfflineWebResManager
-    //   394: dup
-    //   395: aload 11
-    //   397: checkcast 184	com/tencent/common/app/AppInterface
-    //   400: invokespecial 187	com/tencent/biz/webviewplugin/OfflineWebResManager:<init>	(Lcom/tencent/common/app/AppInterface;)V
-    //   403: astore 11
-    //   405: goto +548 -> 953
-    //   408: new 155	mqq/util/WeakReference
-    //   411: dup
-    //   412: aload 11
-    //   414: invokespecial 190	mqq/util/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   417: putstatic 21	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:jdField_a_of_type_MqqUtilWeakReference	Lmqq/util/WeakReference;
-    //   420: goto +542 -> 962
-    //   423: aload 11
-    //   425: aload 12
-    //   427: invokevirtual 193	com/tencent/biz/webviewplugin/OfflineWebResManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/OfflineWebRes;
-    //   430: astore 11
-    //   432: invokestatic 90	java/lang/System:currentTimeMillis	()J
-    //   435: lstore 8
-    //   437: aload 11
-    //   439: ifnonnull +5 -> 444
-    //   442: iconst_0
-    //   443: ireturn
-    //   444: new 121	java/io/File
-    //   447: dup
-    //   448: invokestatic 199	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   451: invokevirtual 203	com/tencent/qphone/base/util/BaseApplication:getFilesDir	()Ljava/io/File;
-    //   454: ldc 205
-    //   456: invokespecial 208	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   459: astore 12
-    //   461: aload 12
-    //   463: invokevirtual 127	java/io/File:exists	()Z
-    //   466: ifne +5 -> 471
-    //   469: iconst_0
-    //   470: ireturn
-    //   471: new 121	java/io/File
-    //   474: dup
-    //   475: aload 12
-    //   477: aload 11
-    //   479: getfield 214	com/tencent/mobileqq/data/OfflineWebRes:hashName	Ljava/lang/String;
-    //   482: invokespecial 208	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   485: astore 12
-    //   487: aload 12
-    //   489: invokevirtual 127	java/io/File:exists	()Z
-    //   492: ifne +5 -> 497
-    //   495: iconst_0
-    //   496: ireturn
-    //   497: ldc 216
-    //   499: astore 11
-    //   501: aload 14
-    //   503: ldc 218
-    //   505: invokevirtual 221	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   508: ifeq +10 -> 518
-    //   511: ldc 223
-    //   513: astore 11
-    //   515: goto +64 -> 579
-    //   518: aload 14
-    //   520: ldc 225
-    //   522: invokevirtual 221	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   525: ifeq +10 -> 535
-    //   528: ldc 227
-    //   530: astore 11
-    //   532: goto +47 -> 579
-    //   535: aload 14
-    //   537: ldc 229
-    //   539: invokevirtual 221	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   542: ifne +33 -> 575
-    //   545: aload 14
-    //   547: ldc 231
-    //   549: invokevirtual 221	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   552: ifne +23 -> 575
-    //   555: aload 14
-    //   557: ldc 233
-    //   559: invokevirtual 221	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   562: ifne +13 -> 575
-    //   565: aload 14
-    //   567: ldc 235
-    //   569: invokevirtual 221	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   572: ifeq +7 -> 579
-    //   575: ldc 237
-    //   577: astore 11
-    //   579: new 131	java/io/FileInputStream
-    //   582: dup
-    //   583: aload 12
-    //   585: invokespecial 240	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   588: astore 13
-    //   590: aload 13
-    //   592: astore 12
-    //   594: aload 13
-    //   596: invokevirtual 246	java/io/InputStream:available	()I
-    //   599: istore_1
-    //   600: iload_1
-    //   601: ifne +10 -> 611
-    //   604: aload 13
-    //   606: invokevirtual 247	java/io/InputStream:close	()V
-    //   609: iconst_0
-    //   610: ireturn
-    //   611: aload 13
-    //   613: astore 12
-    //   615: iload_1
-    //   616: newarray byte
-    //   618: astore 15
-    //   620: aload 13
-    //   622: astore 12
-    //   624: iload_1
-    //   625: aload 13
-    //   627: aload 15
-    //   629: invokevirtual 251	java/io/InputStream:read	([B)I
-    //   632: if_icmpne +52 -> 684
-    //   635: aload 13
-    //   637: astore 12
-    //   639: new 102	java/lang/String
-    //   642: dup
-    //   643: aload 15
-    //   645: ldc 253
-    //   647: invokespecial 256	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   650: astore 15
-    //   652: aload 13
-    //   654: astore 12
-    //   656: getstatic 19	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
-    //   659: aload 14
-    //   661: new 49	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils$OfflineData
-    //   664: dup
-    //   665: aload 11
-    //   667: aload 15
-    //   669: ldc 253
-    //   671: invokespecial 259	com/tencent/mobileqq/webview/swift/utils/SwiftOfflineDataUtils$OfflineData:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   674: invokevirtual 260	com/tencent/util/LRULinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   677: pop
-    //   678: iconst_1
-    //   679: istore 10
-    //   681: goto +6 -> 687
-    //   684: iconst_0
-    //   685: istore 10
-    //   687: aload 13
-    //   689: invokevirtual 247	java/io/InputStream:close	()V
-    //   692: goto +71 -> 763
-    //   695: astore_0
-    //   696: goto +55 -> 751
-    //   699: astore 14
-    //   701: aload 13
-    //   703: astore 11
-    //   705: goto +18 -> 723
-    //   708: goto +264 -> 972
-    //   711: astore_0
-    //   712: aconst_null
-    //   713: astore 12
-    //   715: goto +36 -> 751
-    //   718: astore 14
-    //   720: aconst_null
-    //   721: astore 11
-    //   723: aload 11
-    //   725: astore 12
-    //   727: ldc 66
-    //   729: iconst_1
-    //   730: aload 14
-    //   732: invokevirtual 263	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   735: invokestatic 266	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   738: aload 11
-    //   740: ifnull +244 -> 984
-    //   743: aload 11
-    //   745: invokevirtual 247	java/io/InputStream:close	()V
-    //   748: goto +236 -> 984
-    //   751: aload 12
-    //   753: ifnull +8 -> 761
-    //   756: aload 12
-    //   758: invokevirtual 247	java/io/InputStream:close	()V
-    //   761: aload_0
-    //   762: athrow
-    //   763: invokestatic 64	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   766: ifeq +121 -> 887
-    //   769: new 104	java/lang/StringBuilder
-    //   772: dup
-    //   773: invokespecial 105	java/lang/StringBuilder:<init>	()V
-    //   776: astore 11
-    //   778: aload 11
-    //   780: ldc_w 268
-    //   783: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   786: pop
-    //   787: aload 11
-    //   789: lload 4
-    //   791: lload_2
-    //   792: lsub
-    //   793: invokevirtual 271	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   796: pop
-    //   797: aload 11
-    //   799: ldc_w 273
-    //   802: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   805: pop
-    //   806: aload 11
-    //   808: lload 6
-    //   810: lload 4
-    //   812: lsub
-    //   813: invokevirtual 271	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   816: pop
-    //   817: aload 11
-    //   819: ldc_w 275
-    //   822: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   825: pop
-    //   826: aload 11
-    //   828: lload 8
-    //   830: lload 6
-    //   832: lsub
-    //   833: invokevirtual 271	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   836: pop
-    //   837: aload 11
-    //   839: ldc_w 277
-    //   842: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   845: pop
-    //   846: aload 11
-    //   848: invokestatic 90	java/lang/System:currentTimeMillis	()J
-    //   851: lload_2
-    //   852: lsub
-    //   853: invokevirtual 271	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   856: pop
-    //   857: aload 11
-    //   859: ldc_w 279
-    //   862: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   865: pop
-    //   866: aload 11
-    //   868: aload_0
-    //   869: invokestatic 37	com/tencent/biz/common/offline/HtmlOffline:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   872: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   875: pop
-    //   876: ldc 66
-    //   878: iconst_2
-    //   879: aload 11
-    //   881: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   884: invokestatic 71	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   887: iload 10
-    //   889: ireturn
-    //   890: astore_0
-    //   891: ldc 66
-    //   893: iconst_1
-    //   894: ldc_w 281
-    //   897: aload_0
-    //   898: invokestatic 284	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   901: iconst_0
-    //   902: ireturn
-    //   903: astore 11
-    //   905: goto +33 -> 938
-    //   908: astore 12
-    //   910: goto +17 -> 927
-    //   913: astore 11
-    //   915: goto +54 -> 969
-    //   918: astore 11
-    //   920: goto -212 -> 708
-    //   923: astore_0
-    //   924: goto -702 -> 222
-    //   927: goto -693 -> 234
-    //   930: astore_0
-    //   931: aload 12
-    //   933: astore 11
-    //   935: goto -713 -> 222
-    //   938: aconst_null
-    //   939: astore 11
-    //   941: goto -707 -> 234
-    //   944: aconst_null
-    //   945: astore 11
-    //   947: goto -700 -> 247
-    //   950: aconst_null
-    //   951: astore 11
-    //   953: goto -545 -> 408
-    //   956: aconst_null
-    //   957: astore 11
-    //   959: goto -551 -> 408
-    //   962: aload 11
-    //   964: ifnonnull -541 -> 423
-    //   967: iconst_0
-    //   968: ireturn
-    //   969: aconst_null
-    //   970: astore 13
-    //   972: aload 13
-    //   974: ifnull +10 -> 984
-    //   977: aload 13
-    //   979: astore 11
-    //   981: goto -238 -> 743
-    //   984: iconst_0
-    //   985: istore 10
-    //   987: goto -224 -> 763
+    //   0: getstatic 244	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   3: astore_1
+    //   4: aconst_null
+    //   5: astore_2
+    //   6: aload_1
+    //   7: ifnull +24 -> 31
+    //   10: getstatic 244	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   13: aload_0
+    //   14: invokevirtual 250	java/util/concurrent/ConcurrentHashMap:containsKey	(Ljava/lang/Object;)Z
+    //   17: ifeq +14 -> 31
+    //   20: getstatic 244	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   23: aload_0
+    //   24: invokevirtual 251	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   27: checkcast 187	java/lang/String
+    //   30: areturn
+    //   31: new 210	java/lang/StringBuilder
+    //   34: dup
+    //   35: invokespecial 211	java/lang/StringBuilder:<init>	()V
+    //   38: astore_1
+    //   39: aload_1
+    //   40: aload_0
+    //   41: invokestatic 255	com/tencent/biz/common/offline/OfflineEnvHelper:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload_1
+    //   49: aload_0
+    //   50: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload_1
+    //   55: ldc_w 257
+    //   58: invokevirtual 217	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: aload_1
+    //   63: invokevirtual 231	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   66: astore_1
+    //   67: new 141	java/io/File
+    //   70: dup
+    //   71: aload_1
+    //   72: invokespecial 258	java/io/File:<init>	(Ljava/lang/String;)V
+    //   75: invokevirtual 159	java/io/File:exists	()Z
+    //   78: ifne +5 -> 83
+    //   81: aconst_null
+    //   82: areturn
+    //   83: new 260	java/io/BufferedInputStream
+    //   86: dup
+    //   87: new 169	java/io/FileInputStream
+    //   90: dup
+    //   91: aload_1
+    //   92: invokespecial 261	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   95: invokespecial 264	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokestatic 269	com/tencent/biz/common/util/OfflineSecurity:a	(Ljava/io/BufferedInputStream;)Ljava/lang/String;
+    //   103: astore_2
+    //   104: getstatic 244	com/tencent/biz/common/offline/HtmlOffline:g	Ljava/util/concurrent/ConcurrentHashMap;
+    //   107: aload_0
+    //   108: aload_2
+    //   109: invokevirtual 270	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   112: pop
+    //   113: aload_1
+    //   114: invokevirtual 271	java/io/BufferedInputStream:close	()V
+    //   117: aload_2
+    //   118: areturn
+    //   119: astore_2
+    //   120: aload_1
+    //   121: astore_0
+    //   122: aload_2
+    //   123: astore_1
+    //   124: goto +9 -> 133
+    //   127: goto +18 -> 145
+    //   130: astore_1
+    //   131: aload_2
+    //   132: astore_0
+    //   133: aload_0
+    //   134: ifnull +7 -> 141
+    //   137: aload_0
+    //   138: invokevirtual 271	java/io/BufferedInputStream:close	()V
+    //   141: aload_1
+    //   142: athrow
+    //   143: aconst_null
+    //   144: astore_1
+    //   145: aload_1
+    //   146: ifnull +7 -> 153
+    //   149: aload_1
+    //   150: invokevirtual 271	java/io/BufferedInputStream:close	()V
+    //   153: aconst_null
+    //   154: areturn
+    //   155: astore_0
+    //   156: goto -13 -> 143
+    //   159: astore_0
+    //   160: goto -33 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	990	0	paramString	String
-    //   599	34	1	i	int
-    //   69	783	2	l1	long
-    //   250	561	4	l2	long
-    //   298	533	6	l3	long
-    //   435	394	8	l4	long
-    //   165	821	10	bool	boolean
-    //   73	807	11	localObject1	Object
-    //   903	1	11	localException1	java.lang.Exception
-    //   913	1	11	localException2	java.lang.Exception
-    //   918	1	11	localException3	java.lang.Exception
-    //   933	47	11	localObject2	Object
-    //   76	681	12	localObject3	Object
-    //   908	24	12	localException4	java.lang.Exception
-    //   54	924	13	localObject4	Object
-    //   277	383	14	str	String
-    //   699	1	14	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   718	13	14	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   618	50	15	localObject5	Object
+    //   0	163	0	paramString	String
+    //   3	121	1	localObject1	Object
+    //   130	12	1	localObject2	Object
+    //   144	6	1	localObject3	Object
+    //   5	113	2	str	String
+    //   119	13	2	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   594	600	695	finally
-    //   615	620	695	finally
-    //   624	635	695	finally
-    //   639	652	695	finally
-    //   656	678	695	finally
-    //   727	738	695	finally
-    //   594	600	699	java/lang/OutOfMemoryError
-    //   615	620	699	java/lang/OutOfMemoryError
-    //   624	635	699	java/lang/OutOfMemoryError
-    //   639	652	699	java/lang/OutOfMemoryError
-    //   656	678	699	java/lang/OutOfMemoryError
-    //   579	590	711	finally
-    //   579	590	718	java/lang/OutOfMemoryError
-    //   31	45	890	java/lang/Exception
-    //   45	64	890	java/lang/Exception
-    //   66	75	890	java/lang/Exception
-    //   83	107	890	java/lang/Exception
-    //   110	167	890	java/lang/Exception
-    //   210	215	890	java/lang/Exception
-    //   227	232	890	java/lang/Exception
-    //   232	234	890	java/lang/Exception
-    //   239	244	890	java/lang/Exception
-    //   247	260	890	java/lang/Exception
-    //   262	279	890	java/lang/Exception
-    //   286	315	890	java/lang/Exception
-    //   318	329	890	java/lang/Exception
-    //   332	380	890	java/lang/Exception
-    //   383	405	890	java/lang/Exception
-    //   408	420	890	java/lang/Exception
-    //   423	437	890	java/lang/Exception
-    //   444	469	890	java/lang/Exception
-    //   471	495	890	java/lang/Exception
-    //   501	511	890	java/lang/Exception
-    //   518	528	890	java/lang/Exception
-    //   535	565	890	java/lang/Exception
-    //   565	575	890	java/lang/Exception
-    //   604	609	890	java/lang/Exception
-    //   687	692	890	java/lang/Exception
-    //   743	748	890	java/lang/Exception
-    //   756	761	890	java/lang/Exception
-    //   761	763	890	java/lang/Exception
-    //   763	887	890	java/lang/Exception
-    //   174	192	903	java/lang/Exception
-    //   192	210	908	java/lang/Exception
-    //   579	590	913	java/lang/Exception
-    //   594	600	918	java/lang/Exception
-    //   615	620	918	java/lang/Exception
-    //   624	635	918	java/lang/Exception
-    //   639	652	918	java/lang/Exception
-    //   656	678	918	java/lang/Exception
-    //   192	210	923	finally
-    //   174	192	930	finally
+    //   99	113	119	finally
+    //   83	99	130	finally
+    //   83	99	155	java/lang/Exception
+    //   99	113	159	java/lang/Exception
+  }
+  
+  private static String d(String paramString)
+  {
+    if (paramString.endsWith(".css")) {
+      return "text/css";
+    }
+    if (paramString.endsWith(".js")) {
+      return "application/x-javascript";
+    }
+    if ((!paramString.endsWith(".jpg")) && (!paramString.endsWith(".gif")) && (!paramString.endsWith(".png")) && (!paramString.endsWith(".jpeg"))) {
+      return "text/html";
+    }
+    return "image/*";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils
  * JD-Core Version:    0.7.0.1
  */

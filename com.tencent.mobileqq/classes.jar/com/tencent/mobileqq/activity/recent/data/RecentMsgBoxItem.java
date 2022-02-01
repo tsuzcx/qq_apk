@@ -43,9 +43,9 @@ public class RecentMsgBoxItem
   {
     String str;
     if ((paramMessage != null) && (paramMessage.istroop == 1001) && (MiniCardManagerUtils.a(getRecentUserUin()))) {
-      str = MiniCardManagerUtils.a(getRecentUserUin()).nick.get();
+      str = MiniCardManagerUtils.b(getRecentUserUin()).nick.get();
     } else {
-      str = ContactUtils.g(paramQQAppInterface, getRecentUserUin());
+      str = ContactUtils.h(paramQQAppInterface, getRecentUserUin());
     }
     paramMessage = str;
     if (TextUtils.isEmpty(str)) {
@@ -56,11 +56,6 @@ public class RecentMsgBoxItem
       paramQQAppInterface = getRecentUserUin();
     }
     return paramQQAppInterface;
-  }
-  
-  public String a()
-  {
-    return this.mData.senderuin;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -98,7 +93,7 @@ public class RecentMsgBoxItem
         this.mUnreadNum = 0;
         this.mDisplayTime = 0L;
       }
-      if ((localObject1 != null) && (UinTypeUtil.a(localObject1))) {
+      if ((localObject1 != null) && (UinTypeUtil.c(localObject1))) {
         this.mUnreadFlag = 3;
       }
       localObject2 = getMsgSummaryTemp();
@@ -106,10 +101,10 @@ public class RecentMsgBoxItem
       if (localObject1 != null) {
         if (DatingUtil.a(paramQQAppInterface, localObject1.senderuin, localObject1.istroop))
         {
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131693169);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131890709);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
           if (localObject3 != null) {
-            ((MsgSummary)localObject2).strContent = ((ConversationFacade)localObject3).a(getRecentUserUin(), 1001, paramContext.getResources().getString(2131693168), 0);
+            ((MsgSummary)localObject2).strContent = ((ConversationFacade)localObject3).b(getRecentUserUin(), 1001, paramContext.getResources().getString(2131890708), 0);
           }
           if (QLog.isColorLevel())
           {
@@ -125,8 +120,8 @@ public class RecentMsgBoxItem
         else if (DatingUtil.b(paramQQAppInterface, localObject1.senderuin, localObject1.istroop))
         {
           this.mHasFlowerMsg = true;
-          this.mMsgExtroInfo = paramContext.getResources().getString(2131694301);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131167170);
+          this.mMsgExtroInfo = paramContext.getResources().getString(2131891939);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131168153);
           if (QLog.isColorLevel())
           {
             localObject3 = new StringBuilder();
@@ -160,7 +155,7 @@ public class RecentMsgBoxItem
       dealStatus(paramQQAppInterface);
       a(paramQQAppInterface, (MsgSummary)localObject2);
       extraUpdate(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-      if (AppSetting.d)
+      if (AppSetting.e)
       {
         paramQQAppInterface = new StringBuilder(24);
         paramQQAppInterface.append(this.mTitleName);
@@ -222,6 +217,11 @@ public class RecentMsgBoxItem
     }
   }
   
+  public String bW_()
+  {
+    return this.mData.senderuin;
+  }
+  
   public void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
   {
     if ((paramBaseQQAppInterface instanceof QQAppInterface)) {
@@ -258,7 +258,7 @@ public class RecentMsgBoxItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentMsgBoxItem
  * JD-Core Version:    0.7.0.1
  */

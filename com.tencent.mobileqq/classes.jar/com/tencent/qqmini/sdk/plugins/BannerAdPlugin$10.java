@@ -16,9 +16,9 @@ class BannerAdPlugin$10
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("state", "error");
-      localJSONObject.put("errMsg", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("errCode", this.jdField_a_of_type_Int);
-      BannerAdPlugin.access$600(this.this$0, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent, localJSONObject, "onBannerAdStateChange");
+      localJSONObject.put("errMsg", this.a);
+      localJSONObject.put("errCode", this.b);
+      BannerAdPlugin.access$600(this.this$0, this.c, localJSONObject, "onBannerAdStateChange");
       return;
     }
     catch (JSONException localJSONException)
@@ -29,7 +29,7 @@ class BannerAdPlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin.10
  * JD-Core Version:    0.7.0.1
  */

@@ -11,16 +11,16 @@ import com.tencent.mobileqq.widget.CircleFileStateView;
 public class ItemHolder$NewFileItemHolder
 {
   public View a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public CircleFileStateView a;
-  public ImageView b;
-  public TextView b;
   public CircleFileStateView b;
-  public TextView c;
+  public CircleFileStateView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public ProgressBar g;
+  public RelativeLayout h;
+  public AsyncImageView i;
+  public ImageView j;
+  public ImageView k;
   
   public ItemHolder$NewFileItemHolder(ItemHolder paramItemHolder) {}
 }

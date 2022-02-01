@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.biz.pubaccount.weishi_new.drama.cache.IFetchDataListener;
 import com.tencent.mobileqq.widget.QQToast;
@@ -12,10 +12,10 @@ class WSEpisodeChoicePanel$8
   
   public void a(int paramInt, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.a)
     {
-      paramString = WSEpisodeChoicePanel.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSEpisodeChoicePanel).getResources().getString(1929707525);
-      QQToast.a(WSEpisodeChoicePanel.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSEpisodeChoicePanel), 1, paramString, 0).a();
+      paramString = WSEpisodeChoicePanel.g(this.b).getResources().getString(1929838607);
+      QQToast.makeText(WSEpisodeChoicePanel.g(this.b), 1, paramString, 0).show();
     }
   }
   
@@ -26,12 +26,12 @@ class WSEpisodeChoicePanel$8
     if (i != 1) {
       bool = false;
     }
-    WSEpisodeChoicePanel.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoChoicepanelWSEpisodeChoicePanel, bool);
+    WSEpisodeChoicePanel.b(this.b, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.choicepanel.WSEpisodeChoicePanel.8
  * JD-Core Version:    0.7.0.1
  */

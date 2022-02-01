@@ -14,54 +14,54 @@ import java.util.List;
 public abstract class BaseMvpFTSEntityAdapter<M extends IFaceModel, V extends IFaceView>
   extends BaseMvpFaceAdapter<M, V>
 {
-  FTSEntitySearchDetailActivity jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity;
-  private String jdField_a_of_type_JavaLangString;
-  private List<FTSEntitySearchResultDetailModel> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int;
-  private List<FTSEntity> jdField_b_of_type_JavaUtilList;
-  private int c;
-  private int d = 0;
+  FTSEntitySearchDetailActivity a;
+  private int d;
+  private int e;
+  private int f = 0;
+  private List<FTSEntitySearchResultDetailModel> g;
+  private List<FTSEntity> h;
+  private String i;
   
   public BaseMvpFTSEntityAdapter(ListView paramListView, IFaceDecoder paramIFaceDecoder, List<FTSEntity> paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
     super(paramListView, paramIFaceDecoder);
-    this.jdField_b_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity = paramFTSEntitySearchDetailActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.h = paramList;
+    this.i = paramString;
+    this.a = paramFTSEntitySearchDetailActivity;
+    this.g = new ArrayList();
   }
   
   private void b()
   {
-    if ((this.d - this.c == this.jdField_b_of_type_Int) && (this.jdField_a_of_type_Int == 0)) {
+    if ((this.f - this.e == this.d) && (this.c == 0)) {
       a();
     }
   }
   
   public void a()
   {
-    ArrayList localArrayList = SQLiteFTSUtils.a(this.jdField_a_of_type_JavaLangString);
-    int j = this.jdField_a_of_type_JavaUtilList.size();
-    int i = j + 50;
-    if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
-      i = this.jdField_b_of_type_JavaUtilList.size();
+    ArrayList localArrayList = SQLiteFTSUtils.b(this.i);
+    int k = this.g.size();
+    int j = k + 50;
+    if (j >= this.h.size()) {
+      j = this.h.size();
     }
-    while (j < i)
+    while (k < j)
     {
-      FTSEntitySearchResultDetailModel localFTSEntitySearchResultDetailModel = FTSEntitySearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqSearchFtsentityFTSEntitySearchDetailActivity.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localArrayList, (FTSEntity)this.jdField_b_of_type_JavaUtilList.get(j));
+      FTSEntitySearchResultDetailModel localFTSEntitySearchResultDetailModel = FTSEntitySearchUtils.a(this.a.app, this.a.a, this.i, localArrayList, (FTSEntity)this.h.get(k));
       if (localFTSEntitySearchResultDetailModel != null) {
-        this.jdField_a_of_type_JavaUtilList.add(localFTSEntitySearchResultDetailModel);
+        this.g.add(localFTSEntitySearchResultDetailModel);
       }
-      j += 1;
+      k += 1;
     }
-    a(this.jdField_a_of_type_JavaUtilList);
+    a(this.g);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.c = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = paramInt3;
+    this.e = paramInt1;
+    this.d = paramInt2;
+    this.f = paramInt3;
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
@@ -72,7 +72,7 @@ public abstract class BaseMvpFTSEntityAdapter<M extends IFaceModel, V extends IF
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsentity.BaseMvpFTSEntityAdapter
  * JD-Core Version:    0.7.0.1
  */

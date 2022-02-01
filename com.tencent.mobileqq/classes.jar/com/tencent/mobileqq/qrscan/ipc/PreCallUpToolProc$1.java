@@ -21,18 +21,18 @@ class PreCallUpToolProc$1
     }
     if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), PreCallUpToolProc.a(this.a))))
     {
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).removeMessages(108);
+      if (PreCallUpToolProc.b(this.a) != null) {
+        PreCallUpToolProc.b(this.a).removeMessages(108);
       }
-      if (PreCallUpToolProc.a(this.a) != null) {
-        PreCallUpToolProc.a(this.a).a();
+      if (PreCallUpToolProc.c(this.a) != null) {
+        PreCallUpToolProc.c(this.a).a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ipc.PreCallUpToolProc.1
  * JD-Core Version:    0.7.0.1
  */

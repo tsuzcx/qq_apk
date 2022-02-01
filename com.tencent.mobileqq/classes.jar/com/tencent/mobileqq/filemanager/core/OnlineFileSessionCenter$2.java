@@ -29,9 +29,9 @@ class OnlineFileSessionCenter$2
       QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    ((OnlineFileSessionWorker)localObject).h();
-    if (((OnlineFileSessionWorker)localObject).c()) {
-      this.a.c(paramLong);
+    ((OnlineFileSessionWorker)localObject).l();
+    if (((OnlineFileSessionWorker)localObject).g()) {
+      this.a.e(paramLong);
     }
   }
   
@@ -56,9 +56,9 @@ class OnlineFileSessionCenter$2
       QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    ((OnlineFileSessionWorker)localObject).j();
-    if (((OnlineFileSessionWorker)localObject).c()) {
-      this.a.c(paramLong);
+    ((OnlineFileSessionWorker)localObject).n();
+    if (((OnlineFileSessionWorker)localObject).g()) {
+      this.a.e(paramLong);
     }
   }
   
@@ -83,15 +83,15 @@ class OnlineFileSessionCenter$2
       QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, ((StringBuilder)localObject).toString());
       return;
     }
-    ((OnlineFileSessionWorker)localObject).l();
-    if (((OnlineFileSessionWorker)localObject).c()) {
-      this.a.c(paramLong);
+    ((OnlineFileSessionWorker)localObject).p();
+    if (((OnlineFileSessionWorker)localObject).g()) {
+      this.a.e(paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter.2
  * JD-Core Version:    0.7.0.1
  */

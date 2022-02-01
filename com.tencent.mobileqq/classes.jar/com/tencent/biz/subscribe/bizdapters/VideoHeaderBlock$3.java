@@ -14,13 +14,13 @@ class VideoHeaderBlock$3
   
   public void onClick(View paramView)
   {
-    if (this.a.a() != null)
+    if (this.a.w() != null)
     {
-      CertifiedAccountMeta.StFeed localStFeed = this.a.a().a();
+      CertifiedAccountMeta.StFeed localStFeed = this.a.w().j();
       if (localStFeed != null) {
         this.a.d(localStFeed);
       } else {
-        QQToast.a(VideoHeaderBlock.a(this.a), 1, HardCodeUtil.a(2131714449), 0).a();
+        QQToast.makeText(VideoHeaderBlock.c(this.a), 1, HardCodeUtil.a(2131911959), 0).show();
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

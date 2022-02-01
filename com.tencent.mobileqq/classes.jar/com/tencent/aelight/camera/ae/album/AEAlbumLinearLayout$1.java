@@ -13,7 +13,7 @@ class AEAlbumLinearLayout$1
     if ((paramValueAnimator.getAnimatedValue() instanceof Integer))
     {
       if (AEAlbumLinearLayout.a(this.a) != null) {
-        AEAlbumLinearLayout.a(this.a).a(((Integer)paramValueAnimator.getAnimatedValue()).intValue() / (AEAlbumLinearLayout.a(this.a) * 1.0F));
+        AEAlbumLinearLayout.a(this.a).a(((Integer)paramValueAnimator.getAnimatedValue()).intValue() / (AEAlbumLinearLayout.b(this.a) * 1.0F));
       }
       this.a.scrollTo(0, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     }
@@ -21,7 +21,7 @@ class AEAlbumLinearLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.AEAlbumLinearLayout.1
  * JD-Core Version:    0.7.0.1
  */

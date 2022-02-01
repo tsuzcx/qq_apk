@@ -27,28 +27,28 @@ import eipc.EIPCClient;
 public class IliveMiniAIOEntryView
   implements IMiniMsgUnreadCallback, MiniMsgUser.IMiniMsgActionCallback
 {
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ModuleEvent jdField_a_of_type_ComTencentIliveBaseEventModuleEvent;
-  private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+  private RelativeLayout a;
+  private TextView b;
+  private MiniMsgUser c;
+  private Activity d;
+  private long e;
+  private ModuleEvent f;
   
   public IliveMiniAIOEntryView(Context paramContext, long paramLong, RelativeLayout paramRelativeLayout, ModuleEvent paramModuleEvent)
   {
     if ((paramContext instanceof Activity)) {
-      this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
+      this.d = ((Activity)paramContext);
     }
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent = paramModuleEvent;
+    this.e = paramLong;
+    this.a = paramRelativeLayout;
+    this.f = paramModuleEvent;
     a();
   }
   
-  private Intent a()
+  private Intent g()
   {
     Intent localIntent1 = new Intent();
-    if (this.jdField_a_of_type_AndroidAppActivity == null) {
+    if (this.d == null) {
       return localIntent1;
     }
     localIntent1.setFlags(67108864);
@@ -57,18 +57,18 @@ public class IliveMiniAIOEntryView
     localIntent1.putExtra("banner_businessCategory", "LiveRoom");
     localIntent1.putExtra("banner_activityName", JumpActivity.class);
     localIntent1.putExtra("banner_plguinType", 1);
-    localIntent1.putExtra("banner_wording", "正在观看 开播啦鹅");
+    localIntent1.putExtra("banner_wording", "正在观看 QQ直播");
     localIntent1.putExtra("banner_iconIdx", 15);
-    Intent localIntent2 = new Intent(this.jdField_a_of_type_AndroidAppActivity, JumpActivity.class);
-    localIntent2.setData(Uri.parse("mqqapi://vaslive/watch?roomid={roomid}".replace("{roomid}", String.valueOf(this.jdField_a_of_type_Long))));
+    Intent localIntent2 = new Intent(this.d, JumpActivity.class);
+    localIntent2.setData(Uri.parse("mqqapi://vaslive/watch?roomid={roomid}".replace("{roomid}", String.valueOf(this.e))));
     localIntent2.addFlags(268435456);
-    localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(this.jdField_a_of_type_AndroidAppActivity, 0, new Intent[] { localIntent2 }, 134217728));
+    localIntent1.putExtra("banner_pendingIntent", PendingIntent.getActivities(this.d, 0, new Intent[] { localIntent2 }, 134217728));
     return localIntent1;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371244));
+    this.b = ((TextView)this.a.findViewById(2131438588));
     b();
   }
   
@@ -81,18 +81,18 @@ public class IliveMiniAIOEntryView
     localMiniMsgUserParam.isNeedBackConversation = true;
     localMiniMsgUserParam.unreadCallback = this;
     localMiniMsgUserParam.actionCallback = this;
-    localMiniMsgUserParam.entryView = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    localMiniMsgUserParam.unreadView = this.jdField_a_of_type_AndroidWidgetTextView;
+    localMiniMsgUserParam.entryView = this.a;
+    localMiniMsgUserParam.unreadView = this.b;
     localMiniMsgUserParam.filterMsgType = 1;
-    localMiniMsgUserParam.backConversationIntent = a();
+    localMiniMsgUserParam.backConversationIntent = g();
     if (QLog.isColorLevel()) {
       QLog.d("MiniAIOEntryView", 2, "initMiniMsgUse");
     }
-    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    Activity localActivity = this.d;
     if (localActivity != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = new MiniMsgUser(localActivity, localMiniMsgUserParam);
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.showEntry();
+      this.c = new MiniMsgUser(localActivity, localMiniMsgUserParam);
+      this.c.showEntry();
     }
   }
   
@@ -103,26 +103,26 @@ public class IliveMiniAIOEntryView
   
   public void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    Object localObject = this.c;
     if (localObject != null)
     {
       ((MiniMsgUser)localObject).onForeground();
-      localObject = MiniMsgIPCClient.getInstance().getBusinessInfo(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser.getParam().businessName);
-      if ((localObject != null) && (((MiniMsgBusinessInfo)localObject).a)) {
-        show(((MiniMsgBusinessInfo)localObject).b);
+      localObject = MiniMsgIPCClient.getInstance().getBusinessInfo(this.c.getParam().businessName);
+      if ((localObject != null) && (((MiniMsgBusinessInfo)localObject).b)) {
+        show(((MiniMsgBusinessInfo)localObject).d);
       }
     }
   }
   
   public void destroy()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    this.b = null;
+    this.a = null;
   }
   
   public void e()
   {
-    MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    MiniMsgUser localMiniMsgUser = this.c;
     if (localMiniMsgUser != null) {
       localMiniMsgUser.onBackground();
     }
@@ -130,19 +130,19 @@ public class IliveMiniAIOEntryView
   
   public void f()
   {
-    MiniMsgUser localMiniMsgUser = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
+    MiniMsgUser localMiniMsgUser = this.c;
     if (localMiniMsgUser != null)
     {
       localMiniMsgUser.destroy();
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser = null;
+      this.c = null;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    this.b = null;
+    this.a = null;
   }
   
   public void hide()
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout != null) {
       localRelativeLayout.setVisibility(8);
     }
@@ -150,7 +150,7 @@ public class IliveMiniAIOEntryView
   
   public void hideUnread()
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.b;
     if (localTextView != null) {
       localTextView.setVisibility(8);
     }
@@ -161,10 +161,10 @@ public class IliveMiniAIOEntryView
   public void onGoToConversation()
   {
     QIPCClientHelper.getInstance().getClient().callServer("VasLiveIPCModule", "action_close_drawer", null, null);
-    if (this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent != null)
+    if (this.f != null)
     {
-      IliveLiteHelper.b();
-      this.jdField_a_of_type_ComTencentIliveBaseEventModuleEvent.post(new RoomCloseEvent((short)1005));
+      IliveLiteHelper.c();
+      this.f.post(new RoomCloseEvent((short)1005));
     }
   }
   
@@ -175,7 +175,7 @@ public class IliveMiniAIOEntryView
   
   public boolean show(int paramInt)
   {
-    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    RelativeLayout localRelativeLayout = this.a;
     if (localRelativeLayout != null)
     {
       localRelativeLayout.setVisibility(0);
@@ -188,7 +188,7 @@ public class IliveMiniAIOEntryView
   
   public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    TextView localTextView = this.b;
     if (localTextView == null) {
       return;
     }
@@ -210,7 +210,7 @@ public class IliveMiniAIOEntryView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.mini.IliveMiniAIOEntryView
  * JD-Core Version:    0.7.0.1
  */

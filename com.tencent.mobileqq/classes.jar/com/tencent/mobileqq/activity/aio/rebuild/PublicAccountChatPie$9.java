@@ -10,13 +10,13 @@ class PublicAccountChatPie$9
   
   public void run()
   {
-    int i = UIUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, 80.0F);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setPadding(this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingLeft(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingTop(), this.this$0.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getPaddingRight(), i);
+    int i = UIUtils.a(this.this$0.e, 80.0F);
+    this.this$0.U.setPadding(this.this$0.U.getPaddingLeft(), this.this$0.U.getPaddingTop(), this.this$0.U.getPaddingRight(), i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.9
  * JD-Core Version:    0.7.0.1
  */

@@ -21,16 +21,16 @@ class MobileUnityBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    ReportController.b(MobileUnityBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorMobileUnityBannerProcessor).getAppRuntime(), "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    ReportController.b(MobileUnityBannerProcessor.a(this.b).getAppRuntime(), "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
     BaseActivity localBaseActivity = BaseActivity.sTopActivity;
     if (localBaseActivity != null)
     {
       Intent localIntent;
-      if (URLUtil.isValidUrl(this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityBannerData.a))
+      if (URLUtil.isValidUrl(this.a.a))
       {
         localIntent = new Intent(localBaseActivity, QQBrowserActivity.class);
         localIntent.putExtra("hide_operation_bar", true);
-        localIntent.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneUnityBannerData.a);
+        localIntent.putExtra("url", this.a.a);
         localIntent.putExtra("hideRightButton", true);
         localBaseActivity.startActivity(localIntent);
       }
@@ -42,13 +42,13 @@ class MobileUnityBannerProcessor$1
       }
     }
     BannerManager.a().a(MobileUnityBannerProcessor.a, 0);
-    ReportController.a(MobileUnityBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorMobileUnityBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
+    ReportController.a(MobileUnityBannerProcessor.b(this.b).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MobileUnityBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

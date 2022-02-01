@@ -62,59 +62,21 @@ public final class SpriteAioPlugin
   implements IEventPlugin
 {
   @Deprecated
-  public static final SpriteAioPlugin.Companion a;
+  public static final SpriteAioPlugin.Companion a = new SpriteAioPlugin.Companion(null);
   @NotNull
-  private static final List<String> jdField_a_of_type_JavaUtilList = CollectionsKt.listOf(new String[] { "cs.script_get_dress_data.local", "cs.script_action_status_notify.local", "cs.script_get_show_action.local", "cs.script_is_allow_play_audio.local", "cs.script_send_action_msg.local", "cs.script_get_config.local", "cs.script_update_boundinglist.local", "cs.get_cm3D_state.local", "cs.script_play_action.local" });
-  private final SpriteAioScript jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript;
-  private final SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private final ISpriteActionCallback jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback;
+  private static final List<String> g = CollectionsKt.listOf(new String[] { "cs.script_get_dress_data.local", "cs.script_action_status_notify.local", "cs.script_get_show_action.local", "cs.script_is_allow_play_audio.local", "cs.script_send_action_msg.local", "cs.script_get_config.local", "cs.script_update_boundinglist.local", "cs.get_cm3D_state.local", "cs.script_play_action.local" });
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginSpriteAioPlugin$Companion = new SpriteAioPlugin.Companion(null);
-  }
+  private final PluginCmdConstant.PlugPriority c;
+  private final SpriteContext d;
+  private final SpriteAioScript e;
+  private final ISpriteActionCallback f;
   
   public SpriteAioPlugin(@NotNull SpriteContext paramSpriteContext, @NotNull SpriteAioScript paramSpriteAioScript, @Nullable ISpriteActionCallback paramISpriteActionCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript = paramSpriteAioScript;
-    this.jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback = paramISpriteActionCallback;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.DATA;
-  }
-  
-  private final void a()
-  {
-    Object localObject1 = ApolloUtilImpl.getQQApp();
-    if (localObject1 != null)
-    {
-      ISpriteContext localISpriteContext = SpriteUtil.a((AppRuntime)localObject1);
-      if (localISpriteContext != null)
-      {
-        Object localObject2 = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("audio_tips_times");
-        localStringBuilder.append(localISpriteContext.a());
-        int i = ((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 0);
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("totalTimes:");
-        localStringBuilder.append(i);
-        QLog.d("[cmshow][SpriteAioPlugin]", 2, localStringBuilder.toString());
-        if (3 != i)
-        {
-          localObject2 = ((SharedPreferences)localObject2).edit();
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("audio_tips_times");
-          localStringBuilder.append(localISpriteContext.a());
-          ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), i + 1).commit();
-          localObject1 = ((QQAppInterface)localObject1).getHandler(ChatActivity.class);
-          if (localObject1 != null) {
-            ((MqqHandler)localObject1).post((Runnable)SpriteAioPlugin.showAudioTips.1.a);
-          }
-        }
-      }
-    }
+    this.d = paramSpriteContext;
+    this.e = paramSpriteAioScript;
+    this.f = paramISpriteActionCallback;
+    this.c = PluginCmdConstant.PlugPriority.DATA;
   }
   
   private final void a(int paramInt1, int paramInt2)
@@ -132,7 +94,7 @@ public final class SpriteAioPlugin
       Intrinsics.checkExpressionValueIsNotNull(localObject2, "app.getRuntimeService(IS…ava, ProcessConstant.ALL)");
       localObject2 = ((ISpriteScriptManager)localObject2).getTaskHandler();
       boolean bool;
-      if ((!((ISpriteTaskHandler)localObject2).a()) && (((ISpriteTaskHandler)localObject2).a() <= 0)) {
+      if ((!((ISpriteTaskHandler)localObject2).c()) && (((ISpriteTaskHandler)localObject2).a() <= 0)) {
         bool = false;
       } else {
         bool = true;
@@ -147,7 +109,7 @@ public final class SpriteAioPlugin
       QLog.i("[cmshow][SpriteAioPlugin]", 1, ((StringBuilder)localObject2).toString());
       if ((paramInt1 > 0) && (!bool) && ((2 == paramInt2) || (3 == paramInt2)))
       {
-        localObject1 = SpriteUtil.a((AppRuntime)localObject1);
+        localObject1 = SpriteUtil.i((AppRuntime)localObject1);
         if (localObject1 != null) {
           ((SpriteActionScript)localObject1).a(ApolloPanelUtil.a(), "actionStatusChange");
         }
@@ -161,7 +123,7 @@ public final class SpriteAioPlugin
   {
     try
     {
-      paramArgument = new JSONObject(paramArgument.b()).optString("uinList");
+      paramArgument = new JSONObject(paramArgument.e()).optString("uinList");
       if (TextUtils.isEmpty((CharSequence)paramArgument)) {
         return null;
       }
@@ -171,7 +133,7 @@ public final class SpriteAioPlugin
       while (i < j)
       {
         String str = paramArgument.optString(i);
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript.a(str, true);
+        this.e.a(str, true);
         i += 1;
       }
       return null;
@@ -189,7 +151,7 @@ public final class SpriteAioPlugin
     boolean bool1 = bool2;
     if (localObject1 != null)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a;
+      int i = this.d.a;
       Object localObject2 = (MediaPlayerManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.MGR_MEDIA_PLAYER);
       bool1 = bool2;
       if (((QQAppInterface)localObject1).getALLGeneralSettingRing() == 1) {
@@ -211,14 +173,14 @@ public final class SpriteAioPlugin
                 if (localObject2 != null)
                 {
                   bool1 = bool2;
-                  if (((MediaPlayerManager)localObject2).a()) {}
+                  if (((MediaPlayerManager)localObject2).g()) {}
                 }
                 else if (((QQAppInterface)localObject1).getCheckPttListener() != null)
                 {
                   localObject2 = ((QQAppInterface)localObject1).getCheckPttListener();
                   Intrinsics.checkExpressionValueIsNotNull(localObject2, "app.checkPttListener");
                   bool1 = bool2;
-                  if (((CheckPttListener)localObject2).f()) {}
+                  if (((CheckPttListener)localObject2).ac()) {}
                 }
                 else
                 {
@@ -251,7 +213,7 @@ public final class SpriteAioPlugin
     int j;
     try
     {
-      localObject = new JSONObject(paramArgument.b());
+      localObject = new JSONObject(paramArgument.e());
       i = ((JSONObject)localObject).optInt("taskId");
       j = ((JSONObject)localObject).optInt("status");
       localObject = ((JSONObject)localObject).optString("uin");
@@ -260,7 +222,7 @@ public final class SpriteAioPlugin
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("handleActionStatus, ");
-      localStringBuilder.append(paramArgument.b());
+      localStringBuilder.append(paramArgument.e());
       QLog.d("[cmshow][SpriteAioPlugin]", 2, localStringBuilder.toString());
     }
     catch (Throwable paramArgument)
@@ -269,13 +231,13 @@ public final class SpriteAioPlugin
       int i;
       QLog.e("[cmshow][SpriteAioPlugin]", 1, paramArgument, new Object[0]);
     }
-    paramArgument = this.jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback;
+    paramArgument = this.f;
     if (paramArgument != null)
     {
       paramArgument.a((String)localObject, i, j);
       break label129;
       label111:
-      paramArgument = this.jdField_a_of_type_ComTencentMobileqqApolloScriptCallbackISpriteActionCallback;
+      paramArgument = this.f;
       if (paramArgument != null) {
         paramArgument.a((String)localObject, i);
       }
@@ -299,10 +261,10 @@ public final class SpriteAioPlugin
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d != 0) {
+      if (this.d.i != 0) {
         return null;
       }
-      JSONObject localJSONObject1 = new JSONObject(paramArgument.b());
+      JSONObject localJSONObject1 = new JSONObject(paramArgument.e());
       paramArgument = localJSONObject1.optString("uinList");
       if (TextUtils.isEmpty((CharSequence)paramArgument)) {
         paramArgument = new JSONArray();
@@ -315,7 +277,7 @@ public final class SpriteAioPlugin
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow][SpriteAioPlugin]", 2, new Object[] { "[handleGetShowAction] type:", Integer.valueOf(j) });
       }
-      SpriteRscBuilder localSpriteRscBuilder = SpriteUtil.a((AppRuntime)ApolloUtilImpl.getQQApp());
+      SpriteRscBuilder localSpriteRscBuilder = SpriteUtil.h((AppRuntime)ApolloUtilImpl.getQQApp());
       if (localSpriteRscBuilder != null)
       {
         int k = paramArgument.length();
@@ -364,11 +326,14 @@ public final class SpriteAioPlugin
       }
       else
       {
-        a();
+        e();
         i = 0;
       }
       paramArgument.put("isAllowed", i);
-      QLog.d("[cmshow][SpriteAioPlugin]", 2, new Object[] { "isAllowPlayAudio:", Integer.valueOf(i) });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isAllowPlayAudio:");
+      localStringBuilder.append(i);
+      QLog.w("[cmshow][SpriteAioPlugin]", 1, localStringBuilder.toString());
       paramArgument = paramArgument.toString();
       return paramArgument;
     }
@@ -379,14 +344,47 @@ public final class SpriteAioPlugin
     return null;
   }
   
+  private final void e()
+  {
+    Object localObject1 = ApolloUtilImpl.getQQApp();
+    if (localObject1 != null)
+    {
+      ISpriteContext localISpriteContext = SpriteUtil.a((AppRuntime)localObject1);
+      if (localISpriteContext != null)
+      {
+        Object localObject2 = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("audio_tips_times");
+        localStringBuilder.append(localISpriteContext.g());
+        int i = ((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 0);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("totalTimes:");
+        localStringBuilder.append(i);
+        QLog.d("[cmshow][SpriteAioPlugin]", 2, localStringBuilder.toString());
+        if (3 != i)
+        {
+          localObject2 = ((SharedPreferences)localObject2).edit();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("audio_tips_times");
+          localStringBuilder.append(localISpriteContext.g());
+          ((SharedPreferences.Editor)localObject2).putInt(localStringBuilder.toString(), i + 1).commit();
+          localObject1 = ((QQAppInterface)localObject1).getHandler(ChatActivity.class);
+          if (localObject1 != null) {
+            ((MqqHandler)localObject1).post((Runnable)SpriteAioPlugin.showAudioTips.1.a);
+          }
+        }
+      }
+    }
+  }
+  
   private final String f(Argument paramArgument)
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d != 0) {
+      if (this.d.i != 0) {
         return null;
       }
-      paramArgument = SpriteUtil.a(paramArgument.b(), this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext);
+      paramArgument = SpriteUtil.a(paramArgument.e(), this.d);
       Object localObject1 = ApolloUtilImpl.getQQApp();
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "ApolloUtilImpl.getQQApp()");
       if (paramArgument != null)
@@ -400,14 +398,15 @@ public final class SpriteAioPlugin
           localObject2 = ((SpriteScriptManagerImpl)localObject2).getSpriteActionMessage();
           if ((localObject2 != null) && (!((SpriteActionMessage)localObject2).a(paramArgument)))
           {
-            QLog.d("[cmshow][SpriteAioPlugin]", 2, "Message can't be sent out without any slave.");
+            QLog.w("[cmshow][SpriteAioPlugin]", 1, "Message can't be sent out without any slave.");
             return null;
           }
           ((QQAppInterface)localObject1).getMessageFacade().a((MessageRecord)paramArgument, null);
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append(this);
           ((StringBuilder)localObject1).append(" send an action msg, actionId:");
-          QLog.d("[cmshow][SpriteAioPlugin]", 2, new Object[] { ((StringBuilder)localObject1).toString(), Integer.valueOf(paramArgument.mApolloMessage.id) });
+          ((StringBuilder)localObject1).append(paramArgument.mApolloMessage.id);
+          QLog.w("[cmshow][SpriteAioPlugin]", 1, ((StringBuilder)localObject1).toString());
           return null;
         }
         throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl");
@@ -425,7 +424,7 @@ public final class SpriteAioPlugin
   {
     try
     {
-      paramArgument = new JSONObject(paramArgument.b());
+      paramArgument = new JSONObject(paramArgument.e());
       JSONObject localJSONObject = new JSONObject();
       if (Intrinsics.areEqual("pet", paramArgument.getString("config_name")))
       {
@@ -462,10 +461,10 @@ public final class SpriteAioPlugin
       int i;
       try
       {
-        Object localObject = new JSONObject(paramArgument.b());
+        Object localObject = new JSONObject(paramArgument.e());
         int j = ((JSONObject)localObject).optInt("from");
         i = 0;
-        QLog.d("[cmshow][SpriteAioPlugin]", 1, new Object[] { "handlePlayAction params:", paramArgument.b() });
+        QLog.d("[cmshow][SpriteAioPlugin]", 1, new Object[] { "handlePlayAction params:", paramArgument.e() });
         if ((j != 1) && (j != 2))
         {
           if (j == 0)
@@ -481,16 +480,16 @@ public final class SpriteAioPlugin
             {
               String str = ((JSONArray)localObject).optString(i);
               if (TextUtils.isEmpty((CharSequence)str)) {
-                break label227;
+                break label226;
               }
               Intrinsics.checkExpressionValueIsNotNull(str, "uin");
               paramArgument.add(str);
-              break label227;
+              break label226;
             }
             if (paramArgument.size() == 0) {
               return null;
             }
-            localObject = SpriteUtil.a((AppRuntime)ApolloUtilImpl.getQQApp());
+            localObject = SpriteUtil.h((AppRuntime)ApolloUtilImpl.getQQApp());
             if (localObject != null)
             {
               ((SpriteRscBuilder)localObject).a(paramArgument);
@@ -500,7 +499,7 @@ public final class SpriteAioPlugin
         }
         else
         {
-          paramArgument = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+          paramArgument = this.d.u();
           if (paramArgument != null)
           {
             paramArgument.a();
@@ -513,7 +512,7 @@ public final class SpriteAioPlugin
         QLog.e("[cmshow][SpriteAioPlugin]", 1, "handlePlayAction error:", (Throwable)paramArgument);
       }
       return null;
-      label227:
+      label226:
       i += 1;
     }
   }
@@ -523,7 +522,7 @@ public final class SpriteAioPlugin
     Object localObject;
     try
     {
-      paramArgument = new JSONObject(paramArgument.b());
+      paramArgument = new JSONObject(paramArgument.e());
       float f1 = (float)paramArgument.optDouble("x");
       float f2 = (float)paramArgument.optDouble("y");
       float f3 = (float)paramArgument.optDouble("w");
@@ -546,7 +545,7 @@ public final class SpriteAioPlugin
       QLog.d("[cmshow][SpriteAioPlugin]", 1, ((StringBuilder)localObject).toString());
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().a().a().getTouchManager().a(paramArgument, i);
+        this.d.n().c().a().getTouchManager().a(paramArgument, i);
       }
       catch (Exception paramArgument) {}
       localObject = new StringBuilder();
@@ -563,7 +562,7 @@ public final class SpriteAioPlugin
     try
     {
       paramArgument = new JSONObject();
-      paramArgument.put("is3DBetaTester", SpriteUtil.a((AppRuntime)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a()));
+      paramArgument.put("is3DBetaTester", SpriteUtil.k((AppRuntime)this.d.l()));
       paramArgument = paramArgument.toString();
       return paramArgument;
     }
@@ -577,14 +576,14 @@ public final class SpriteAioPlugin
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
+    return this.c;
   }
   
   @Nullable
   public String a(@NotNull Argument paramArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramArgument, "argument");
-    String str = paramArgument.c();
+    String str = paramArgument.f();
     switch (str.hashCode())
     {
     default: 
@@ -638,26 +637,26 @@ public final class SpriteAioPlugin
     return null;
   }
   
-  @NotNull
-  public List<String> a()
-  {
-    return jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return IEventPlugin.DefaultImpls.a(this);
-  }
-  
   public boolean a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public List<String> c()
+  {
+    return g;
+  }
+  
+  public boolean d()
+  {
+    return IEventPlugin.DefaultImpls.a(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.engine.script.plugin.SpriteAioPlugin
  * JD-Core Version:    0.7.0.1
  */

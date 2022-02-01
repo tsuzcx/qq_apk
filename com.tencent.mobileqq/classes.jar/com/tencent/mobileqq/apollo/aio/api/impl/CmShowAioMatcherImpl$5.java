@@ -18,7 +18,7 @@ final class CmShowAioMatcherImpl$5
       QLog.i("[cmshow]CmShowAioMatcher", 1, "cmshow NOT support hot chat right now.");
       return false;
     }
-    if (((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).m(paramString))
+    if (((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).Z(paramString))
     {
       QLog.i("[cmshow]CmShowAioMatcher", 1, "cmshow NOT support isQidianPrivateTroop now.");
       return false;
@@ -28,7 +28,7 @@ final class CmShowAioMatcherImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl.5
  * JD-Core Version:    0.7.0.1
  */

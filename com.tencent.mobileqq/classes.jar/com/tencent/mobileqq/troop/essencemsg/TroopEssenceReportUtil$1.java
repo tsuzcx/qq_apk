@@ -12,13 +12,13 @@ final class TroopEssenceReportUtil$1
   
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    int i = TroopEssenceReportUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, paramTroopMemberInfo);
-    this.jdField_a_of_type_JavaUtilHashMap.put("uin_type", String.valueOf(i));
+    int i = TroopEssenceReportUtil.a(this.a, paramTroopMemberInfo);
+    this.b.put("uin_type", String.valueOf(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,14 +20,14 @@ class QQGamePreDownloadServiceImpl$6
       localStringBuilder.append(paramInt);
       QLog.d("QQGamePub_QQGamePreDownloadServiceImpl", 1, localStringBuilder.toString());
     }
-    QQGamePreDownloadServiceImpl.reportSceneDownloadResult(this.jdField_a_of_type_OrgJsonJSONArray.toString(), paramInt, 2);
+    QQGamePreDownloadServiceImpl.reportSceneDownloadResult(this.a.toString(), paramInt, 2);
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.api.impl.QQGamePreDownloadServiceImpl.6
  * JD-Core Version:    0.7.0.1
  */

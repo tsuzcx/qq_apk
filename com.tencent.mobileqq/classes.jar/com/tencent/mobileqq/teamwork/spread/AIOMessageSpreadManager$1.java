@@ -28,7 +28,7 @@ class AIOMessageSpreadManager$1
     if ((localObject1 instanceof MessageForText))
     {
       localObject1 = this.this$0;
-      AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1, new TeamWorkTextMsgTipsProcessor(AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1), this.a, AIOMessageSpreadManager.a(this.this$0)));
+      AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1, new TeamWorkTextMsgTipsProcessor(AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1), this.a, AIOMessageSpreadManager.b(this.this$0)));
       if (QLog.isDebugVersion()) {
         QLog.i("AIOMessageSpreadManager", 1, "message is MessageForText");
       }
@@ -39,7 +39,7 @@ class AIOMessageSpreadManager$1
         QLog.i("AIOMessageSpreadManager", 1, "message is MessageForFile");
       }
       localObject1 = this.this$0;
-      AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1, new BuddyFileAIOMsgTips(AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1), this.a, AIOMessageSpreadManager.a(this.this$0)));
+      AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1, new BuddyFileAIOMsgTips(AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1), this.a, AIOMessageSpreadManager.b(this.this$0)));
     }
     else
     {
@@ -50,21 +50,21 @@ class AIOMessageSpreadManager$1
         QLog.i("AIOMessageSpreadManager", 1, "message is MessageForTroopFile");
       }
       localObject1 = this.this$0;
-      AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1, new TroopFileAIOMsgTips(AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1), this.a, AIOMessageSpreadManager.a(this.this$0)));
+      AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1, new TroopFileAIOMsgTips(AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject1), this.a, AIOMessageSpreadManager.b(this.this$0)));
     }
-    if (!AIOMessageSpreadManager.a(this.this$0).a())
+    if (!AIOMessageSpreadManager.c(this.this$0).b())
     {
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("file[");
-        ((StringBuilder)localObject1).append(AIOMessageSpreadManager.a(this.this$0).a());
+        ((StringBuilder)localObject1).append(AIOMessageSpreadManager.c(this.this$0).a());
         ((StringBuilder)localObject1).append("] is not support!");
         QLog.i("AIOMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
       }
       return;
     }
-    Object localObject2 = AIOMessageSpreadManager.a(this.this$0).a();
+    Object localObject2 = AIOMessageSpreadManager.c(this.this$0).a();
     if (QLog.isColorLevel())
     {
       localObject1 = new StringBuilder();
@@ -72,7 +72,7 @@ class AIOMessageSpreadManager$1
       ((StringBuilder)localObject1).append((String)localObject2);
       QLog.i("AIOMessageSpreadManager", 1, ((StringBuilder)localObject1).toString());
     }
-    Object localObject3 = AIOMessageSpreadManager.a(this.this$0).a(AIOMessageSpreadManager.a(this.this$0));
+    Object localObject3 = AIOMessageSpreadManager.b(this.this$0).a(AIOMessageSpreadManager.c(this.this$0));
     boolean bool = QLog.isDebugVersion();
     int j = 0;
     Object localObject4;
@@ -120,8 +120,8 @@ class AIOMessageSpreadManager$1
         ((StringBuilder)localObject2).append("] find!");
         QLog.i("AIOMessageSpreadManager", 1, ((StringBuilder)localObject2).toString());
       }
-      localObject3 = AIOMessageSpreadManager.a(this.this$0).a(AIOMessageSpreadManager.a(this.this$0));
-      localObject2 = AIOMessageSpreadManager.a(this.this$0).b(AIOMessageSpreadManager.a(this.this$0));
+      localObject3 = AIOMessageSpreadManager.b(this.this$0).b(AIOMessageSpreadManager.c(this.this$0));
+      localObject2 = AIOMessageSpreadManager.b(this.this$0).c(AIOMessageSpreadManager.c(this.this$0));
       if ((TextUtils.isEmpty((CharSequence)localObject3)) && (QLog.isColorLevel()))
       {
         localObject4 = new StringBuilder();
@@ -137,12 +137,12 @@ class AIOMessageSpreadManager$1
       ((StringBuilder)localObject4).append("。");
       ((StringBuilder)localObject4).append((String)localObject2);
       localObject3 = ((StringBuilder)localObject4).toString();
-      if ((!(AIOMessageSpreadManager.a(this.this$0) instanceof BuddyFileAIOMsgTips)) && (!(AIOMessageSpreadManager.a(this.this$0) instanceof TroopFileAIOMsgTips)))
+      if ((!(AIOMessageSpreadManager.c(this.this$0) instanceof BuddyFileAIOMsgTips)) && (!(AIOMessageSpreadManager.c(this.this$0) instanceof TroopFileAIOMsgTips)))
       {
-        if ((AIOMessageSpreadManager.a(this.this$0) instanceof TeamWorkTextMsgTipsProcessor))
+        if ((AIOMessageSpreadManager.c(this.this$0) instanceof TeamWorkTextMsgTipsProcessor))
         {
           localObject4 = this.this$0;
-          AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject4, this.a, (String)localObject3, (String)localObject2, "text_keyword", AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject4).a((String)localObject1));
+          AIOMessageSpreadManager.a((AIOMessageSpreadManager)localObject4, this.a, (String)localObject3, (String)localObject2, "text_keyword", AIOMessageSpreadManager.b((AIOMessageSpreadManager)localObject4).a((String)localObject1));
         }
       }
       else {
@@ -153,8 +153,8 @@ class AIOMessageSpreadManager$1
     if (QLog.isColorLevel()) {
       QLog.i("AIOMessageSpreadManager", 1, "keyWords not find!");
     }
-    if (!(AIOMessageSpreadManager.a(this.this$0) instanceof TeamWorkTextMsgTipsProcessor)) {
-      AIOMessageSpreadManager.a(this.this$0).a(new AIOMessageSpreadManager.1.1(this, (String)localObject2));
+    if (!(AIOMessageSpreadManager.c(this.this$0) instanceof TeamWorkTextMsgTipsProcessor)) {
+      AIOMessageSpreadManager.c(this.this$0).a(new AIOMessageSpreadManager.1.1(this, (String)localObject2));
     }
     return;
     label880:
@@ -165,7 +165,7 @@ class AIOMessageSpreadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1
  * JD-Core Version:    0.7.0.1
  */

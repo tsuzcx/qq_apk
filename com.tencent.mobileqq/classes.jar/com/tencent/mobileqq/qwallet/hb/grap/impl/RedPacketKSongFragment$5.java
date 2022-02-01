@@ -19,16 +19,16 @@ class RedPacketKSongFragment$5
     if (QLog.isColorLevel()) {
       QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
     }
-    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment, true);
-    QQAudioUtils.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment.getQBaseActivity(), true);
-    ((IQwTemp)QRoute.api(IQwTemp.class)).mediaPlayer_doStop(true, this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment.getQBaseActivity().getAppRuntime());
+    RedPacketKSongFragment.a(this.b, true);
+    QQAudioUtils.a(this.b.getQBaseActivity(), true);
+    ((IQwTemp)QRoute.api(IQwTemp.class)).mediaPlayer_doStop(true, this.b.getQBaseActivity().getAppRuntime());
     paramMediaPlayer.start();
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapImplRedPacketKSongFragment.a.a(this.jdField_a_of_type_Boolean);
+    this.b.n.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.impl.RedPacketKSongFragment.5
  * JD-Core Version:    0.7.0.1
  */

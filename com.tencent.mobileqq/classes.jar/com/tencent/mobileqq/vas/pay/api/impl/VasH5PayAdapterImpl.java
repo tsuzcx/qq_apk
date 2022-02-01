@@ -22,7 +22,7 @@ public class VasH5PayAdapterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.pay.api.impl.VasH5PayAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

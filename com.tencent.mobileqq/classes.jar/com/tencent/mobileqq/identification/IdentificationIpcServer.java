@@ -26,13 +26,13 @@ import mqq.app.MobileQQ;
 public class IdentificationIpcServer
   extends QIPCModule
 {
-  private static volatile IdentificationIpcServer jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer;
-  private static final List<String> jdField_a_of_type_JavaUtilList = Arrays.asList(new String[] { "setFaceData", "identify", "deleteFace", "changeSecureMobile" });
-  private int jdField_a_of_type_Int;
-  private VideoProxy jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplVideoProxy;
-  private String jdField_a_of_type_JavaLangString;
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
-  private int b;
+  private static final List<String> a = Arrays.asList(new String[] { "setFaceData", "identify", "deleteFace", "changeSecureMobile", "studyModeIdentify" });
+  private static volatile IdentificationIpcServer b;
+  private int c;
+  private int d;
+  private AtomicBoolean e = new AtomicBoolean();
+  private String f;
+  private VideoProxy g;
   
   private IdentificationIpcServer(String paramString)
   {
@@ -46,21 +46,16 @@ public class IdentificationIpcServer
   
   public static IdentificationIpcServer a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer == null) {
-          jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer = new IdentificationIpcServer("IdentificationIpcServer_Model");
+        if (b == null) {
+          b = new IdentificationIpcServer("IdentificationIpcServer_Model");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqIdentificationIdentificationIpcServer;
-  }
-  
-  private AppRuntime a()
-  {
-    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+    return b;
   }
   
   private void a(Bundle paramBundle)
@@ -82,14 +77,14 @@ public class IdentificationIpcServer
           localEIPCResult.code = -102;
           localBundle.putString("subError", "no md5");
           localBundle.putBoolean("reset_null", true);
-          callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+          callbackResult(this.c, localEIPCResult);
           return;
         }
         int i = paramBundle.getInt("serviceType", -1);
-        Object localObject2 = a();
+        Object localObject2 = c();
         int j = paramBundle.getInt("srcAppId", 0);
         int k = paramBundle.getInt("key_identification_type", 2);
-        this.jdField_a_of_type_JavaLangString = paramBundle.getString("method", null);
+        this.f = paramBundle.getString("method", null);
         Object localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(i);
         ((StringBuilder)localObject3).append("");
@@ -102,8 +97,8 @@ public class IdentificationIpcServer
         localStringBuilder.append(j);
         localStringBuilder.append("");
         ReportController.b((AppRuntime)localObject2, "dc00898", "", "", "0X80097EB", "0X80097EB", 0, 0, (String)localObject3, (String)localObject4, localStringBuilder.toString(), "");
-        localObject3 = this.jdField_a_of_type_JavaLangString;
-        if ((localObject3 != null) && (!jdField_a_of_type_JavaUtilList.contains(localObject3)))
+        localObject3 = this.f;
+        if ((localObject3 != null) && (!a.contains(localObject3)))
         {
           localObject3 = paramBundle.getString("uin", "");
           localObject4 = paramBundle.getString("ticket", "");
@@ -117,7 +112,7 @@ public class IdentificationIpcServer
           localObject1 = new Transaction(((AppRuntime)localObject2).getCurrentAccountUin(), 61, (String)localObject1, 0, arrayOfByte, a(localFile, localEIPCResult, (AppRuntime)localObject2, j, i, k), null, false);
         }
         localObject2 = ((AppInterface)localObject2).getHwEngine();
-        if (IdentificationConstant.d.contains(this.jdField_a_of_type_JavaLangString)) {
+        if (IdentificationConstant.d.contains(this.f)) {
           ((HwEngine)localObject2).currentUin = paramBundle.getString("uin", "");
         }
         i = ((HwEngine)localObject2).submitTransactionTask((Transaction)localObject1);
@@ -133,7 +128,7 @@ public class IdentificationIpcServer
           paramBundle.append("UPLOAD submitTransaction retCode=");
           paramBundle.append(i);
           localBundle.putString("subError", paramBundle.toString());
-          callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+          callbackResult(this.c, localEIPCResult);
         }
         return;
       }
@@ -142,7 +137,7 @@ public class IdentificationIpcServer
     localEIPCResult.code = -102;
     localBundle.putString("subError", "no file");
     localBundle.putBoolean("reset_null", true);
-    callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
+    callbackResult(this.c, localEIPCResult);
   }
   
   private void a(Bundle paramBundle, int paramInt)
@@ -165,8 +160,8 @@ public class IdentificationIpcServer
         QLog.d("qqidentification_server", 1, "method is loginVerify but uin is empty");
         return;
       }
-      paramBundle = a();
-      FaceDetectForThirdPartyServlet.a(paramBundle, str3, str4, i, AppSetting.a(), str2, str1, l, new IdentificationIpcServer.3(this, paramInt, paramBundle));
+      paramBundle = c();
+      FaceDetectForThirdPartyServlet.a(paramBundle, str3, str4, i, AppSetting.b(), str2, str1, l, new IdentificationIpcServer.3(this, paramInt, paramBundle));
       return;
     }
     QLog.d("qqidentification_server", 1, " KEY_APP_ID not exist or temKey is empty");
@@ -184,39 +179,44 @@ public class IdentificationIpcServer
   {
     Object localObject = new EIPCResult();
     ((EIPCResult)localObject).code = (paramBoolean ^ true);
-    callbackResult(this.b, (EIPCResult)localObject);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    callbackResult(this.d, (EIPCResult)localObject);
+    this.e.set(false);
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("downloadFinish download result = ");
     ((StringBuilder)localObject).append(paramBoolean);
     QLog.d("qqidentification_server", 1, ((StringBuilder)localObject).toString());
   }
   
-  public void a()
+  private AppRuntime c()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    return MobileQQ.sMobileQQ.waitAppRuntime(null);
+  }
+  
+  public void b()
+  {
+    if (this.e.get())
     {
       QLog.e("qqidentification_server", 1, "downloadRes, is downloading now");
       return;
     }
-    if (!FaceConfigManager.b())
+    if (!FaceConfigManager.c())
     {
       QLog.e("qqidentification_server", 1, "downloadRes, do not need update");
       a(true);
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.e.set(true);
     String str = FaceConfigManager.a();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("start download , config content.....");
     localStringBuilder.append(str);
     QLog.d("qqidentification_server", 1, localStringBuilder.toString());
-    FaceConfigManager.a(a(), str, new IdentificationIpcServer.5(this));
+    FaceConfigManager.a(c(), str, new IdentificationIpcServer.5(this));
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.c = paramInt;
     boolean bool = QLog.isColorLevel();
     int i = 2;
     if (bool)
@@ -251,13 +251,13 @@ public class IdentificationIpcServer
     }
     if ("action_is_video_chatting".equals(paramString))
     {
-      paramString = a();
-      if (this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplVideoProxy == null) {
-        this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplVideoProxy = new VideoProxy();
+      paramString = c();
+      if (this.g == null) {
+        this.g = new VideoProxy();
       }
       paramBundle = new EIPCResult();
       paramInt = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqQqconnectfaceImplVideoProxy.a(paramString)) {
+      if (this.g.a(paramString)) {
         paramInt = 1;
       }
       paramBundle.code = paramInt;
@@ -265,18 +265,18 @@ public class IdentificationIpcServer
     }
     if ("action_res_download".equals(paramString))
     {
-      this.b = paramInt;
-      a();
+      this.d = paramInt;
+      b();
       return null;
     }
     if ("action_face_usable".equals(paramString))
     {
-      a(a(), paramBundle, paramInt);
+      a(c(), paramBundle, paramInt);
       return null;
     }
     if ("action_app_conf".equals(paramString))
     {
-      paramString = a();
+      paramString = c();
       a(paramBundle, paramInt);
       FaceConfigManager.a(paramString, null);
     }
@@ -285,7 +285,7 @@ public class IdentificationIpcServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationIpcServer
  * JD-Core Version:    0.7.0.1
  */

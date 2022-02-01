@@ -9,17 +9,17 @@ class VoiceChangeChooseDialog$1
 {
   public void run()
   {
-    if ((VoiceChangeChooseDialog.a(this.this$0) == 1) && (!this.this$0.jdField_a_of_type_Boolean))
+    if ((VoiceChangeChooseDialog.a(this.this$0) == 1) && (!this.this$0.g))
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131695975);
+      this.this$0.f.setText(2131893737);
       VoiceChangeChooseDialog.a(this.this$0, 2);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aq = true;
-      this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 10000L);
+      this.this$0.a.k().bW = true;
+      this.this$0.k.postDelayed(this.this$0.l, 10000L);
       return;
     }
     if (VoiceChangeChooseDialog.a(this.this$0) == 2)
     {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131695977);
+      this.this$0.f.setText(2131893739);
       VoiceChangeChooseDialog.a(this.this$0, 0);
     }
   }

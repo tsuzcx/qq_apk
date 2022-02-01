@@ -21,15 +21,15 @@ final class ImageLoaderImpl$loadImageFromFile$runnable$1$1
   
   public final void invoke()
   {
-    ImageLoaderImpl.a(this.this$0.this$0).put(this.this$0.jdField_a_of_type_JavaLangString, (Bitmap)this.$bitmap.element);
-    if (Intrinsics.areEqual(this.this$0.jdField_a_of_type_AndroidWidgetImageView.getTag(), this.this$0.jdField_a_of_type_JavaLangString)) {
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)this.$bitmap.element);
+    ImageLoaderImpl.a(this.this$0.this$0).put(this.this$0.c, (Bitmap)this.$bitmap.element);
+    if (Intrinsics.areEqual(this.this$0.b.getTag(), this.this$0.c)) {
+      this.this$0.b.setImageBitmap((Bitmap)this.$bitmap.element);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.ImageLoaderImpl.loadImageFromFile.runnable.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -26,47 +26,47 @@ public class CommentLinkItemView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseCommentData.CommentLinkData jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData;
-  private BaseCommentData jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData;
-  private NativeReadInjoyImageView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
-  private AbsBaseArticleInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo;
+  private BaseCommentData.CommentLinkData a;
+  private Context b;
+  private NativeReadInjoyImageView c;
+  private TextView d;
+  private AbsBaseArticleInfo e;
+  private BaseCommentData f;
   
   public CommentLinkItemView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
   }
   
   public CommentLinkItemView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
   }
   
   public CommentLinkItemView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramContext;
     a();
   }
   
   private void a()
   {
-    inflate(this.jdField_a_of_type_AndroidContentContext, 2131562700, this);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView = ((NativeReadInjoyImageView)findViewById(2131369410));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379758));
+    inflate(this.b, 2131629131, this);
+    this.c = ((NativeReadInjoyImageView)findViewById(2131436444));
+    this.d = ((TextView)findViewById(2131448566));
   }
   
-  private void a(int paramInt)
+  private void setDefaultIcon(int paramInt)
   {
-    NativeReadInjoyImageView localNativeReadInjoyImageView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+    NativeReadInjoyImageView localNativeReadInjoyImageView = this.c;
     if (localNativeReadInjoyImageView != null)
     {
-      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      Context localContext = this.b;
       if (localContext == null) {
         return;
       }
@@ -78,43 +78,43 @@ public class CommentLinkItemView
           {
             if (paramInt != 5)
             {
-              localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130842913));
+              localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130843869));
               return;
             }
-            localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2097479708));
+            localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2097479705));
             return;
           }
-          localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130842917));
+          localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130843873));
           return;
         }
-        localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130842914));
+        localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130843870));
         return;
       }
-      localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130842916));
+      localNativeReadInjoyImageView.setImageDrawable(localContext.getResources().getDrawable(2130843872));
     }
   }
   
-  private void a(BaseCommentData.CommentLinkData paramCommentLinkData)
+  private void setLinkIcon(BaseCommentData.CommentLinkData paramCommentLinkData)
   {
     if (TextUtils.isEmpty(paramCommentLinkData.iconUrl))
     {
       QLog.d("CommentLinkItemView", 2, "createLinkItemView | mLinkData setDefaultIcon");
-      a(paramCommentLinkData.type);
+      setDefaultIcon(paramCommentLinkData.type);
       return;
     }
-    NativeReadInjoyImageView localNativeReadInjoyImageView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetNativeReadInjoyImageView;
+    NativeReadInjoyImageView localNativeReadInjoyImageView = this.c;
     if (localNativeReadInjoyImageView != null) {
       localNativeReadInjoyImageView.setImageSrc(paramCommentLinkData.iconUrl);
     }
   }
   
-  private void b(BaseCommentData.CommentLinkData paramCommentLinkData)
+  private void setLinkWord(BaseCommentData.CommentLinkData paramCommentLinkData)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramCommentLinkData != null))
+    if ((this.d != null) && (paramCommentLinkData != null))
     {
       paramCommentLinkData = new SpannableString(paramCommentLinkData.wording);
-      paramCommentLinkData.setSpan(new LeadingMarginSpan.Standard(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 19.0F), 0), 0, paramCommentLinkData.length(), 18);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCommentLinkData);
+      paramCommentLinkData.setSpan(new LeadingMarginSpan.Standard(DisplayUtil.a(this.b, 19.0F), 0), 0, paramCommentLinkData.length(), 18);
+      this.d.setText(paramCommentLinkData);
     }
   }
   
@@ -125,42 +125,42 @@ public class CommentLinkItemView
       if (paramAbsBaseArticleInfo == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo = paramAbsBaseArticleInfo;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData = paramBaseCommentData;
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData = paramCommentLinkData;
+      this.e = paramAbsBaseArticleInfo;
+      this.f = paramBaseCommentData;
+      this.a = paramCommentLinkData;
       paramAbsBaseArticleInfo = new StringBuilder();
       paramAbsBaseArticleInfo.append("createLinkItemView | mLinkData ");
-      paramAbsBaseArticleInfo.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData);
+      paramAbsBaseArticleInfo.append(this.a);
       QLog.d("CommentLinkItemView", 2, paramAbsBaseArticleInfo.toString());
-      a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData);
-      b(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData);
+      setLinkIcon(this.a);
+      setLinkWord(this.a);
       setOnClickListener(this);
     }
   }
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData;
+    paramView = this.a;
     if ((paramView != null) && (!TextUtils.isEmpty(paramView.linkUrl)))
     {
       paramView = new StringBuilder();
       paramView.append("linkItemView click url ");
-      paramView.append(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.linkUrl);
+      paramView.append(this.a.linkUrl);
       QLog.d("CommentLinkItemView", 2, paramView.toString());
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.type == 4) {
-        RIJJumpUtils.a(getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.linkUrl, 2104, new CommentLinkItemView.1(this));
-      } else if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.type == 5) {
-        ReadInJoyCommentUtils.a(getContext(), this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.linkUrl, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo.mFeedType));
+      if (this.a.type == 4) {
+        RIJJumpUtils.a(getContext(), this.a.linkUrl, 2104, new CommentLinkItemView.1(this));
+      } else if (this.a.type == 5) {
+        ReadInJoyCommentUtils.a(getContext(), this.a.linkUrl, String.valueOf(this.e.mFeedType));
       } else {
-        ReadInJoyUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.linkUrl);
+        ReadInJoyUtils.a(this.b, this.a.linkUrl);
       }
-      ReadInJoyCommentReportManager.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityAbsBaseArticleInfo, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentEntityBaseCommentData$CommentLinkData.type);
+      ReadInJoyCommentReportManager.a(this.e, this.f, this.a.type);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ui.CommentLinkItemView
  * JD-Core Version:    0.7.0.1
  */

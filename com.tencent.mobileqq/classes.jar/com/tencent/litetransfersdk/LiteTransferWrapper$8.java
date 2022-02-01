@@ -10,13 +10,13 @@ class LiteTransferWrapper$8
     if (LiteTransferWrapper.access$200(this.this$0) != 0L)
     {
       LiteTransferWrapper localLiteTransferWrapper = this.this$0;
-      localLiteTransferWrapper.DoGetThumbFilePathReplyToJNI(LiteTransferWrapper.access$200(localLiteTransferWrapper), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      localLiteTransferWrapper.DoGetThumbFilePathReplyToJNI(LiteTransferWrapper.access$200(localLiteTransferWrapper), this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper.8
  * JD-Core Version:    0.7.0.1
  */

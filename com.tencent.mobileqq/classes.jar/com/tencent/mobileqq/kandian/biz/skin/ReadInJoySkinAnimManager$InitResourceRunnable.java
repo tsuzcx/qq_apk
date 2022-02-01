@@ -6,18 +6,18 @@ import java.lang.ref.WeakReference;
 class ReadInJoySkinAnimManager$InitResourceRunnable
   implements Runnable
 {
-  private WeakReference<ReadInJoySkinAnimManager> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = false;
+  private WeakReference<ReadInJoySkinAnimManager> a;
+  private boolean b = false;
   
   public ReadInJoySkinAnimManager$InitResourceRunnable(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoySkinAnimManager);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = new WeakReference(paramReadInJoySkinAnimManager);
+    this.b = paramBoolean;
   }
   
   public void run()
   {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
     if (localReadInJoySkinAnimManager != null)
     {
       if (QLog.isColorLevel())
@@ -27,13 +27,13 @@ class ReadInJoySkinAnimManager$InitResourceRunnable
         localStringBuilder.append(ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager));
         QLog.d("ReadInJoySkinAnimManager", 1, localStringBuilder.toString());
       }
-      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, this.jdField_a_of_type_Boolean);
+      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinAnimManager.InitResourceRunnable
  * JD-Core Version:    0.7.0.1
  */

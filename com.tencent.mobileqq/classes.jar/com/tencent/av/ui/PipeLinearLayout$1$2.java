@@ -12,20 +12,20 @@ class PipeLinearLayout$1$2
   
   public void run()
   {
-    if (!PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0))
+    if (!PipeLinearLayout.e(this.b.this$0))
     {
       int i = 0;
-      while ((i < this.jdField_a_of_type_JavaUtilArrayList.size()) && (i < PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).length))
+      while ((i < this.a.size()) && (i < PipeLinearLayout.g(this.b.this$0).length))
       {
-        localObject = (ImageView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0)[i]);
-        ((ImageView)localObject).setImageBitmap(PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0, ((Long)PipeLinearLayout.a(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).get(i)).longValue()));
+        localObject = (ImageView)this.b.this$0.findViewById(PipeLinearLayout.g(this.b.this$0)[i]);
+        ((ImageView)localObject).setImageBitmap(PipeLinearLayout.a(this.b.this$0, ((Long)PipeLinearLayout.b(this.b.this$0).get(i)).longValue()));
         ((ImageView)localObject).setVisibility(0);
         i += 1;
       }
-      Object localObject = (TextView)this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0.findViewById(2131370747);
+      Object localObject = (TextView)this.b.this$0.findViewById(2131438048);
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(PipeLinearLayout.b(this.jdField_a_of_type_ComTencentAvUiPipeLinearLayout$1.this$0).size());
-      localStringBuilder.append(HardCodeUtil.a(2131708182));
+      localStringBuilder.append(PipeLinearLayout.h(this.b.this$0).size());
+      localStringBuilder.append(HardCodeUtil.a(2131905977));
       ((TextView)localObject).setText(localStringBuilder.toString());
     }
   }

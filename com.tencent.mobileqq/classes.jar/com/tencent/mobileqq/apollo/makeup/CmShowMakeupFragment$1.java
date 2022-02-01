@@ -43,7 +43,7 @@ class CmShowMakeupFragment$1
       TraceReportUtil.a(126, 5, paramInt1, new Object[0]);
       if (paramInt2 == 0)
       {
-        CmShowMakeupFragment.a(this.a, paramInitResult.jdField_a_of_type_ComTencentAelightCameraCmsshowApiCmShowAssetsData);
+        CmShowMakeupFragment.a(this.a, paramInitResult.a);
         this.a.b();
       }
     }
@@ -60,9 +60,9 @@ class CmShowMakeupFragment$1
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("[cmShowResPreLoad][onComplete] step = STEP_INIT_ENGINE success, path = ");
-        localStringBuilder.append(paramInitResult.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(paramInitResult.b);
         QLog.d("[cmshow]CmShowMakeupFragment", 0, localStringBuilder.toString());
-        CmShowMakeupFragment.a(this.a, paramInitResult.jdField_a_of_type_JavaLangString);
+        CmShowMakeupFragment.a(this.a, paramInitResult.b);
         CmShowMakeupFragment.a(this.a).post(new CmShowMakeupFragment.1.3(this));
         return;
       }
@@ -72,7 +72,7 @@ class CmShowMakeupFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupFragment.1
  * JD-Core Version:    0.7.0.1
  */

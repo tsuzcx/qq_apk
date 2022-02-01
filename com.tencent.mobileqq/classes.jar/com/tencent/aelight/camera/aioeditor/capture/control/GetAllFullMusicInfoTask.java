@@ -25,26 +25,26 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)QIMManager.a(2);
-  private List<FlowMusic> jdField_a_of_type_JavaUtilList = null;
-  private String jdField_b_of_type_JavaLangString;
-  private List<FlowMusic> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private List<FlowMusic> c = new ArrayList();
+  private QIMMusicConfigManager f = (QIMMusicConfigManager)QIMManager.a(2);
+  private String g;
+  private List<FlowMusic> h = null;
+  private List<FlowMusic> i = new ArrayList();
+  private List<FlowMusic> j = new ArrayList();
   
-  private void a()
+  private void b()
   {
     Object localObject1 = this.mParams;
-    int k = 0;
-    this.jdField_b_of_type_JavaLangString = ((String)localObject1[0]);
-    localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a.query(FlowMusic.class);
+    int n = 0;
+    this.g = ((String)localObject1[0]);
+    localObject1 = this.f.d.query(FlowMusic.class);
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList((Collection)localObject1);
-      i = this.jdField_a_of_type_JavaUtilList.size();
+      this.h = new ArrayList((Collection)localObject1);
+      k = this.h.size();
     }
     else
     {
-      i = 0;
+      k = 0;
     }
     Object localObject2;
     Object localObject3;
@@ -52,9 +52,9 @@ public class GetAllFullMusicInfoTask
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("load db, has load local, size=");
-      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(k);
       QLog.d("GetAllFullMusicInfoTask", 2, ((StringBuilder)localObject1).toString());
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
+      localObject1 = this.h;
       if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
@@ -70,7 +70,7 @@ public class GetAllFullMusicInfoTask
     }
     try
     {
-      localObject1 = new JSONObject(this.jdField_b_of_type_JavaLangString);
+      localObject1 = new JSONObject(this.g);
       if (((JSONObject)localObject1).optInt("ret", -1) != 0) {
         break label581;
       }
@@ -79,10 +79,10 @@ public class GetAllFullMusicInfoTask
         break label581;
       }
       localObject2 = new HashSet();
-      if (this.jdField_a_of_type_JavaUtilList == null) {
+      if (this.h == null) {
         break label582;
       }
-      i = this.jdField_a_of_type_JavaUtilList.size();
+      k = this.h.size();
     }
     catch (JSONException localJSONException)
     {
@@ -92,20 +92,20 @@ public class GetAllFullMusicInfoTask
       }
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("can not parse json, json = ");
-      ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.g);
       QLog.e("GetAllFullMusicInfoTask", 2, ((StringBuilder)localObject2).toString(), localJSONException);
     }
-    int j = i;
-    if (((JSONArray)localObject1).length() < i) {
-      j = ((JSONArray)localObject1).length();
+    int m = k;
+    if (((JSONArray)localObject1).length() < k) {
+      m = ((JSONArray)localObject1).length();
     }
     l = System.currentTimeMillis();
-    int i = k;
+    int k = n;
     for (;;)
     {
-      if (i < j)
+      if (k < m)
       {
-        localObject3 = ((JSONArray)localObject1).optJSONObject(i);
+        localObject3 = ((JSONArray)localObject1).optJSONObject(k);
         if (localObject3 != null)
         {
           FlowMusic localFlowMusic = new FlowMusic();
@@ -121,57 +121,57 @@ public class GetAllFullMusicInfoTask
           localFlowMusic.songPlayTime = ((JSONObject)localObject3).optInt("song_play_time");
           localFlowMusic.userOwnRule = ((JSONObject)localObject3).optInt("user_own_rule");
           localFlowMusic.sourceType = 1;
-          localFlowMusic.storeTimeStamp = (j + l - i);
-          if ((!TextUtils.isEmpty(localFlowMusic.songMid)) && ((this.jdField_a_of_type_JavaUtilList == null) || (!this.jdField_a_of_type_JavaUtilList.contains(localFlowMusic)))) {
+          localFlowMusic.storeTimeStamp = (m + l - k);
+          if ((!TextUtils.isEmpty(localFlowMusic.songMid)) && ((this.h == null) || (!this.h.contains(localFlowMusic)))) {
             ((Set)localObject2).add(localFlowMusic);
           }
         }
       }
       else
       {
-        this.c.addAll((Collection)localObject2);
+        this.j.addAll((Collection)localObject2);
         return;
         label581:
         return;
         label582:
-        i = 0;
-        j = 40 - i;
-        i = j;
-        if (j <= 20) {
+        k = 0;
+        m = 40 - k;
+        k = m;
+        if (m <= 20) {
           break;
         }
-        i = 20;
+        k = 20;
         break;
       }
-      i += 1;
+      k += 1;
     }
   }
   
-  private void b()
+  private void c()
   {
-    if (!this.jdField_b_of_type_JavaUtilList.isEmpty())
+    if (!this.i.isEmpty())
     {
-      localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a.getTransaction();
+      localObject1 = this.f.d.getTransaction();
       try
       {
         ((EntityTransaction)localObject1).begin();
-        Iterator localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        Iterator localIterator = this.i.iterator();
         while (localIterator.hasNext())
         {
           FlowMusic localFlowMusic = (FlowMusic)localIterator.next();
-          this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a.persistOrReplace(localFlowMusic);
+          this.f.d.persistOrReplace(localFlowMusic);
         }
         ((EntityTransaction)localObject1).commit();
         ((EntityTransaction)localObject1).end();
-        this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager.a(4, true, this.jdField_b_of_type_JavaUtilList);
+        this.f.a(4, true, this.i);
       }
       finally
       {
         ((EntityTransaction)localObject1).end();
       }
     }
-    Object localObject1 = this.jdField_a_of_type_ComTencentAelightCameraAioeditorCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(CaptureContext.a().getCurrentAccountUin());
+    Object localObject1 = this.f;
+    QIMMusicConfigManager.c(CaptureContext.a().getCurrentAccountUin());
   }
   
   public void a(AsyncStep paramAsyncStep, int paramInt)
@@ -194,17 +194,17 @@ public class GetAllFullMusicInfoTask
           localFlowMusic.sourceType = 1;
           paramAsyncStep = localFlowMusic;
         }
-        this.jdField_b_of_type_JavaUtilList.add(paramAsyncStep);
+        this.i.add(paramAsyncStep);
       }
-      paramInt = this.jdField_a_of_type_Int - 1;
-      this.jdField_a_of_type_Int = paramInt;
+      paramInt = this.a - 1;
+      this.a = paramInt;
       if (paramInt == 0)
       {
-        b();
+        c();
         setResult(7);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep = null;
+        this.b = null;
       }
-      this.mAutomator.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqAppAutomatorAsyncStep);
+      this.mAutomator.a(this.b);
       return;
     }
     finally {}
@@ -212,10 +212,10 @@ public class GetAllFullMusicInfoTask
   
   protected int doStep()
   {
-    this.jdField_a_of_type_Int = this.c.size();
-    if (!this.c.isEmpty())
+    this.a = this.j.size();
+    if (!this.j.isEmpty())
     {
-      Iterator localIterator = this.c.iterator();
+      Iterator localIterator = this.j.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (FlowMusic)localIterator.next();
@@ -228,18 +228,18 @@ public class GetAllFullMusicInfoTask
       }
       return 2;
     }
-    b();
+    c();
     return 7;
   }
   
   public void onCreate()
   {
-    a();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.control.GetAllFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

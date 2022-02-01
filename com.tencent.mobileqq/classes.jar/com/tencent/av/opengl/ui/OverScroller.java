@@ -6,11 +6,11 @@ import android.view.animation.Interpolator;
 
 public class OverScroller
 {
-  private int jdField_a_of_type_Int;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final OverScroller.SplineOverScroller jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller;
-  private final boolean jdField_a_of_type_Boolean;
+  private int a;
   private final OverScroller.SplineOverScroller b;
+  private final OverScroller.SplineOverScroller c;
+  private Interpolator d;
+  private final boolean e;
   
   public OverScroller(Context paramContext)
   {
@@ -24,37 +24,26 @@ public class OverScroller
   
   public OverScroller(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller = new OverScroller.SplineOverScroller();
+    this.d = paramInterpolator;
+    this.e = paramBoolean;
     this.b = new OverScroller.SplineOverScroller();
+    this.c = new OverScroller.SplineOverScroller();
     OverScroller.SplineOverScroller.a(paramContext);
-  }
-  
-  public final int a()
-  {
-    return OverScroller.SplineOverScroller.a(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.a();
-    this.b.a();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.a(paramInt1, paramInt3, paramInt5);
-    this.b.a(paramInt2, paramInt4, paramInt5);
+    this.a = 0;
+    this.b.a(paramInt1, paramInt3, paramInt5);
+    this.c.a(paramInt2, paramInt4, paramInt5);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    if ((this.jdField_a_of_type_Boolean) && (!a()))
+    if ((this.e) && (!a()))
     {
-      float f1 = OverScroller.SplineOverScroller.a(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller);
-      float f2 = OverScroller.SplineOverScroller.a(this.b);
+      float f1 = OverScroller.SplineOverScroller.c(this.b);
+      float f2 = OverScroller.SplineOverScroller.c(this.c);
       float f3 = paramInt3;
       if (Math.signum(f3) == Math.signum(f1))
       {
@@ -66,66 +55,77 @@ public class OverScroller
         }
       }
     }
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
-    this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+    this.a = 1;
+    this.b.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+    this.c.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
   }
   
   public final void a(boolean paramBoolean)
   {
-    OverScroller.SplineOverScroller.a(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller, OverScroller.SplineOverScroller.a(this.b, paramBoolean));
+    OverScroller.SplineOverScroller.a(this.b, OverScroller.SplineOverScroller.a(this.c, paramBoolean));
   }
   
   public final boolean a()
   {
-    return (OverScroller.SplineOverScroller.a(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller)) && (OverScroller.SplineOverScroller.a(this.b));
+    return (OverScroller.SplineOverScroller.a(this.b)) && (OverScroller.SplineOverScroller.a(this.c));
   }
   
   public final int b()
   {
-    return OverScroller.SplineOverScroller.b(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller);
+    return OverScroller.SplineOverScroller.b(this.b);
   }
   
-  public boolean b()
+  public final int c()
+  {
+    return OverScroller.SplineOverScroller.d(this.b);
+  }
+  
+  public boolean d()
   {
     if (a()) {
       return false;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i != 0)
     {
       if (i != 1) {
         return true;
       }
-      if ((!OverScroller.SplineOverScroller.a(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller)) && (!this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.b()) && (!this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.a())) {
-        this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.a();
-      }
-      if ((!OverScroller.SplineOverScroller.a(this.b)) && (!this.b.b()) && (!this.b.a()))
-      {
+      if ((!OverScroller.SplineOverScroller.a(this.b)) && (!this.b.c()) && (!this.b.b())) {
         this.b.a();
+      }
+      if ((!OverScroller.SplineOverScroller.a(this.c)) && (!this.c.c()) && (!this.c.b()))
+      {
+        this.c.a();
         return true;
       }
     }
     else
     {
-      long l = AnimationUtils.currentAnimationTimeMillis() - OverScroller.SplineOverScroller.a(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller);
-      i = OverScroller.SplineOverScroller.c(this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller);
+      long l = AnimationUtils.currentAnimationTimeMillis() - OverScroller.SplineOverScroller.f(this.b);
+      i = OverScroller.SplineOverScroller.e(this.b);
       if (l < i)
       {
         float f = (float)l / i;
-        Interpolator localInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+        Interpolator localInterpolator = this.d;
         if (localInterpolator == null) {
           f = Scroller.a(f);
         } else {
           f = localInterpolator.getInterpolation(f);
         }
-        this.jdField_a_of_type_ComTencentAvOpenglUiOverScroller$SplineOverScroller.a(f);
         this.b.a(f);
+        this.c.a(f);
         return true;
       }
-      a();
+      e();
     }
     return true;
+  }
+  
+  public void e()
+  {
+    this.b.a();
+    this.c.a();
   }
 }
 

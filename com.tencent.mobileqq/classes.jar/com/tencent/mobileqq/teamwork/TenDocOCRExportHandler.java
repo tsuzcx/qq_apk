@@ -15,22 +15,22 @@ public class TenDocOCRExportHandler
   implements Handler.Callback
 {
   public static final String a = "com.tencent.mobileqq.teamwork.TenDocOCRExportHandler";
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString = { "docs.qq.com" };
+  private String[] b = { "docs.qq.com" };
+  private AppInterface c;
   
   public TenDocOCRExportHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.c = paramAppInterface;
   }
   
   private void a(Runnable paramRunnable)
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    AppInterface localAppInterface = this.c;
     if (localAppInterface == null) {
       return;
     }
-    if (((TicketManager)localAppInterface.getManager(2)).getPskey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfJavaLangString, new TenDocOCRExportHandler.2(this, paramRunnable)) != null) {
+    if (((TicketManager)localAppInterface.getManager(2)).getPskey(this.c.getCurrentAccountUin(), 16L, this.b, new TenDocOCRExportHandler.2(this, paramRunnable)) != null) {
       ThreadManager.executeOnNetWorkThread(paramRunnable);
     }
   }
@@ -54,7 +54,7 @@ public class TenDocOCRExportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TenDocOCRExportHandler
  * JD-Core Version:    0.7.0.1
  */

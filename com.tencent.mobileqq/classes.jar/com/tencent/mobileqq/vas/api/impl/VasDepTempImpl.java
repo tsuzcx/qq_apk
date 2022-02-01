@@ -13,7 +13,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.QzoneMainRuntime;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.hippy.qq.api.IHippyAccessHelper;
-import com.tencent.hippy.qq.api.OpenHippyInfo;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
@@ -78,7 +77,7 @@ public class VasDepTempImpl
   
   public String convert2SharpPFilePath(File paramFile)
   {
-    return QQSharpPUtil.a(paramFile);
+    return QQSharpPUtil.b(paramFile);
   }
   
   public Card findAndCreateCardByUin(String paramString)
@@ -90,7 +89,7 @@ public class VasDepTempImpl
   {
     paramAppRuntime = (FriendsManager)paramAppRuntime.getManager(QQManagerFactory.FRIENDS_MANAGER);
     if (paramAppRuntime != null) {
-      return paramAppRuntime.e(paramString);
+      return paramAppRuntime.m(paramString);
     }
     return null;
   }
@@ -143,7 +142,7 @@ public class VasDepTempImpl
   
   public void guanjiaReport(String paramString1, String paramString2, boolean paramBoolean, int paramInt, String paramString3)
   {
-    VipInfoHandler localVipInfoHandler = (VipInfoHandler)VasUtil.a().getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
+    VipInfoHandler localVipInfoHandler = (VipInfoHandler)VasUtil.d().getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
     if (localVipInfoHandler != null) {
       localVipInfoHandler.a(paramString1, paramString2, paramBoolean, paramInt, paramString3);
     }
@@ -151,7 +150,7 @@ public class VasDepTempImpl
   
   public boolean isBelongServiceAccountFolderInner(String paramString)
   {
-    return ServiceAccountFolderManager.a(VasUtil.a(), paramString);
+    return ServiceAccountFolderManager.a(VasUtil.c(), paramString);
   }
   
   public boolean isCanOpenGxhHippyPage()
@@ -159,14 +158,24 @@ public class VasDepTempImpl
     return QVipHippyConfig.isCanOpenGxhHippyPage();
   }
   
+  public boolean isCanOpenHippyPage(String paramString)
+  {
+    return QVipHippyConfig.isCanOpenHippyPage(paramString);
+  }
+  
   public boolean isCanOpenQQVipHippyPage()
   {
     return QVipHippyConfig.isCanOpenQQVipHippyPage();
   }
   
+  public boolean isContainsModule(String paramString)
+  {
+    return QVipHippyConfig.isContainsModule(paramString);
+  }
+  
   public boolean isEnable()
   {
-    return ((IPreDownloadController)VasUtil.a().getRuntimeService(IPreDownloadController.class, "")).isEnable();
+    return ((IPreDownloadController)VasUtil.c().getRuntimeService(IPreDownloadController.class, "")).isEnable();
   }
   
   public boolean isEnableGetAuth(String paramString1, String paramString2)
@@ -184,30 +193,36 @@ public class VasDepTempImpl
     return paramActivity instanceof QQBrowserActivity;
   }
   
-  public void openGxhHippyPage()
+  public void openGxhHippyPage(String paramString)
   {
-    Object localObject = QVipHippyProcessor.a().getHippyInfoFromKey("qqgxh");
+    QVipHippyConfig.HippyInfo localHippyInfo = QVipHippyProcessor.a().getHippyInfoFromKey("qqgxh");
+    if ((localHippyInfo != null) && (localHippyInfo.openParams != null)) {
+      localHippyInfo.openParams.url = paramString;
+    }
     IHippyAccessHelper localIHippyAccessHelper = (IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class);
     BaseApplication localBaseApplication = MobileQQ.getContext();
-    if (localObject != null) {
-      localObject = ((QVipHippyConfig.HippyInfo)localObject).openParams;
+    if (localHippyInfo != null) {
+      paramString = localHippyInfo.openParams;
     } else {
-      localObject = null;
+      paramString = null;
     }
-    localIHippyAccessHelper.openHippyPage(localBaseApplication, (OpenHippyInfo)localObject);
+    localIHippyAccessHelper.openHippyPage(localBaseApplication, paramString);
   }
   
-  public void openQQVipHippyPage()
+  public void openQQVipHippyPage(String paramString)
   {
-    Object localObject = QVipHippyProcessor.a().getHippyInfoFromKey("QQVip");
+    QVipHippyConfig.HippyInfo localHippyInfo = QVipHippyProcessor.a().getHippyInfoFromKey("QQVip");
+    if ((localHippyInfo != null) && (localHippyInfo.openParams != null)) {
+      localHippyInfo.openParams.url = paramString;
+    }
     IHippyAccessHelper localIHippyAccessHelper = (IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class);
     BaseApplication localBaseApplication = MobileQQ.getContext();
-    if (localObject != null) {
-      localObject = ((QVipHippyConfig.HippyInfo)localObject).openParams;
+    if (localHippyInfo != null) {
+      paramString = localHippyInfo.openParams;
     } else {
-      localObject = null;
+      paramString = null;
     }
-    localIHippyAccessHelper.openHippyPage(localBaseApplication, (OpenHippyInfo)localObject);
+    localIHippyAccessHelper.openHippyPage(localBaseApplication, paramString);
   }
   
   public void registerSeqKey(IJce paramIJce, String paramString)
@@ -224,7 +239,7 @@ public class VasDepTempImpl
   {
     try
     {
-      ((IPreDownloadController)VasUtil.a().getRuntimeService(IPreDownloadController.class, "")).requestPreDownload(paramInt1, paramString2, "vas_special_remind", 0, paramString1, paramFile.getCanonicalPath(), paramInt2, paramInt3, false, paramRunnableTask);
+      ((IPreDownloadController)VasUtil.c().getRuntimeService(IPreDownloadController.class, "")).requestPreDownload(paramInt1, paramString2, "vas_special_remind", 0, paramString1, paramFile.getCanonicalPath(), paramInt2, paramInt3, false, paramRunnableTask);
       return;
     }
     catch (IOException paramFile)
@@ -237,7 +252,7 @@ public class VasDepTempImpl
   
   public void sendGetBaseVipInfoReq(String paramString1, String paramString2)
   {
-    VipInfoHandler localVipInfoHandler = (VipInfoHandler)VasUtil.a().getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
+    VipInfoHandler localVipInfoHandler = (VipInfoHandler)VasUtil.d().getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
     if (localVipInfoHandler != null) {
       localVipInfoHandler.a(paramString1, paramString2);
     }
@@ -276,7 +291,7 @@ public class VasDepTempImpl
   
   public int specialSoundDownload(DownloadTask paramDownloadTask)
   {
-    AppRuntime localAppRuntime = VasUtil.a();
+    AppRuntime localAppRuntime = VasUtil.c();
     Object localObject = localAppRuntime;
     if (localAppRuntime == null) {
       localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
@@ -306,7 +321,7 @@ public class VasDepTempImpl
   
   public void updateDisPlayInteval(long paramLong)
   {
-    ((ICommercialDrainageManagerService)VasUtil.a().getRuntimeService(ICommercialDrainageManagerService.class, "")).updateDisPlayInteval(paramLong);
+    ((ICommercialDrainageManagerService)VasUtil.c().getRuntimeService(ICommercialDrainageManagerService.class, "")).updateDisPlayInteval(paramLong);
   }
   
   public void vipFuncallReport(String paramString, boolean paramBoolean, int paramInt, long paramLong)
@@ -350,7 +365,7 @@ public class VasDepTempImpl
   
   public String websoGetCookie4WebSoOrSonic(String paramString)
   {
-    return SwiftBrowserCookieMonster.c(paramString);
+    return SwiftBrowserCookieMonster.d(paramString);
   }
   
   public String websoGetQUA()
@@ -377,7 +392,7 @@ public class VasDepTempImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.api.impl.VasDepTempImpl
  * JD-Core Version:    0.7.0.1
  */

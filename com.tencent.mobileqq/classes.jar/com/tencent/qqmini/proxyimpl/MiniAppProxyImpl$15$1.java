@@ -10,12 +10,12 @@ class MiniAppProxyImpl$15$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), "下载完成", 1).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), "下载完成", 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.15.1
  * JD-Core Version:    0.7.0.1
  */

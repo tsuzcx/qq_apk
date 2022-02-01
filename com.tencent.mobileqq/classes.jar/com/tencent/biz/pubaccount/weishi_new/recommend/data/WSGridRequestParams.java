@@ -6,125 +6,125 @@ import java.util.ArrayList;
 
 public class WSGridRequestParams
 {
-  private final long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<stExposureFeedInfo> jdField_a_of_type_JavaUtilArrayList;
-  private final boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private final boolean jdField_b_of_type_Boolean;
-  private String jdField_c_of_type_JavaLangString;
-  private final boolean jdField_c_of_type_Boolean;
-  private String d;
+  private final boolean a;
+  private final boolean b;
+  private final boolean c;
+  private final long d;
+  private String e;
+  private String f;
+  private String g;
+  private String h;
+  private ArrayList<stExposureFeedInfo> i;
   
   public WSGridRequestParams(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = System.currentTimeMillis();
   }
   
   public WSGridRequestParams a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.e = paramString;
     return this;
   }
   
   public WSGridRequestParams a(ArrayList<stExposureFeedInfo> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.i = paramArrayList;
     return this;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ArrayList<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(this.d)) {
-      localArrayList.add(this.d);
-    }
-    return localArrayList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return this.e;
   }
   
   public WSGridRequestParams b(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.f = paramString;
     return this;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public ArrayList<stExposureFeedInfo> b()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
   }
   
   public boolean b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return this.a;
   }
   
   public WSGridRequestParams c(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.g = paramString;
     return this;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
   }
   
   public boolean c()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.b;
   }
   
   public WSGridRequestParams d(String paramString)
   {
-    this.d = paramString;
+    this.h = paramString;
     return this;
+  }
+  
+  public boolean d()
+  {
+    return this.c;
+  }
+  
+  public String e()
+  {
+    return this.f;
+  }
+  
+  public String f()
+  {
+    return this.g;
+  }
+  
+  public ArrayList<String> g()
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (!TextUtils.isEmpty(this.h)) {
+      localArrayList.add(this.h);
+    }
+    return localArrayList;
+  }
+  
+  public long h()
+  {
+    return this.d;
+  }
+  
+  public ArrayList<stExposureFeedInfo> i()
+  {
+    return this.i;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WSGridRequestParams{mIsRefresh=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", mIsFirstFromService=");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", mIsRedDotCacheValid=");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", mStartLoadTimestamp=");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", mSubTabId='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.e);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mPushInfo='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mRowKey='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", mLastFeedId='");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -132,7 +132,7 @@ public class WSGridRequestParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.data.WSGridRequestParams
  * JD-Core Version:    0.7.0.1
  */

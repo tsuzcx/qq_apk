@@ -45,21 +45,16 @@ import org.json.JSONObject;
 public final class QQShopPAHippyFragment
   extends CommonHippyFragment
 {
-  public static final QQShopPAHippyFragment.Companion a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  private final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = (BroadcastReceiver)new QQShopPAHippyFragment.mExtiReceiver.1(this);
-  private TabLayoutController jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController;
-  private NavBarCommon jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c = true;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqEcshopWidgetQQShopPAHippyFragment$Companion = new QQShopPAHippyFragment.Companion(null);
-  }
+  public static final QQShopPAHippyFragment.Companion a = new QQShopPAHippyFragment.Companion(null);
+  private int b;
+  private TabLayoutController c;
+  private boolean d;
+  private long e = SystemClock.elapsedRealtime();
+  private boolean f;
+  private boolean g = true;
+  private NavBarCommon h;
+  private final BroadcastReceiver i = (BroadcastReceiver)new QQShopPAHippyFragment.mExtiReceiver.1(this);
+  private HashMap j;
   
   private final void a(Intent paramIntent)
   {
@@ -67,41 +62,41 @@ public final class QQShopPAHippyFragment
     boolean bool1 = true;
     if (paramIntent != null)
     {
-      this.jdField_a_of_type_Int = paramIntent.getIntExtra("tab_id", 1);
-      this.c = paramIntent.getBooleanExtra("req_qgg_title", true);
-      this.b = paramIntent.getBooleanExtra("req_qgg_hide_tab", false);
+      this.b = paramIntent.getIntExtra("tab_id", 1);
+      this.g = paramIntent.getBooleanExtra("req_qgg_title", true);
+      this.f = paramIntent.getBooleanExtra("req_qgg_hide_tab", false);
     }
     else
     {
       paramIntent = getArguments();
-      int i;
+      int k;
       if (paramIntent != null) {
-        i = paramIntent.getInt("tab_id");
+        k = paramIntent.getInt("tab_id");
       } else {
-        i = 0;
+        k = 0;
       }
-      this.jdField_a_of_type_Int = i;
+      this.b = k;
       paramIntent = getArguments();
       if (paramIntent != null) {
         bool1 = paramIntent.getBoolean("req_qgg_title", true);
       }
-      this.c = bool1;
+      this.g = bool1;
       paramIntent = getArguments();
       bool1 = bool2;
       if (paramIntent != null) {
         bool1 = paramIntent.getBoolean("req_qgg_hide_tab", false);
       }
-      this.b = bool1;
+      this.f = bool1;
     }
-    paramIntent = this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController;
+    paramIntent = this.c;
     if (paramIntent != null) {
-      paramIntent.a(this.jdField_a_of_type_Int);
+      paramIntent.a(this.b);
     }
   }
   
   private final void a(View paramView)
   {
-    paramView = paramView.findViewById(2131365354);
+    paramView = paramView.findViewById(2131431540);
     if (paramView != null)
     {
       Object localObject1 = (LinearLayout)paramView;
@@ -111,18 +106,18 @@ public final class QQShopPAHippyFragment
         Intrinsics.checkExpressionValueIsNotNull(paramView, "EcshopConfProcessor.loadConfig() ?: return");
         if (QQShopConfigUtil.a(paramView))
         {
-          QQShopRedPointUtil.a(this.c);
+          QQShopRedPointUtil.a(this.g);
           localObject1 = new TabLayoutController((LinearLayout)localObject1);
-          ((TabLayoutController)localObject1).a(this.b ^ true);
-          Object localObject2 = paramView.a;
+          ((TabLayoutController)localObject1).a(this.f ^ true);
+          Object localObject2 = paramView.k;
           Intrinsics.checkExpressionValueIsNotNull(localObject2, "ecshopConfBean.tabConfs");
           localObject2 = (List)localObject2;
-          String str = paramView.b;
+          String str = paramView.e;
           Intrinsics.checkExpressionValueIsNotNull(str, "ecshopConfBean.tabBg");
           ((TabLayoutController)localObject1).a((List)localObject2, str);
-          ((TabLayoutController)localObject1).a(this.jdField_a_of_type_Int);
-          ((TabLayoutController)localObject1).a(this.jdField_a_of_type_Int, (Function1)new QQShopPAHippyFragment.initCustomTab..inlined.apply.lambda.1(this, paramView));
-          this.jdField_a_of_type_ComTencentMobileqqEcshopViewControllerTabLayoutController = ((TabLayoutController)localObject1);
+          ((TabLayoutController)localObject1).a(this.b);
+          ((TabLayoutController)localObject1).a(this.b, (Function1)new QQShopPAHippyFragment.initCustomTab..inlined.apply.lambda.1(this, paramView));
+          this.c = ((TabLayoutController)localObject1);
         }
       }
       return;
@@ -132,20 +127,20 @@ public final class QQShopPAHippyFragment
   
   private final void b()
   {
-    View localView = this.mRootView.findViewById(2131374337);
+    View localView = this.mRootView.findViewById(2131442500);
     Intrinsics.checkExpressionValueIsNotNull(localView, "mRootView.findViewById(R…qq_shop_pa_hippy_nav_bar)");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)localView);
+    this.h = ((NavBarCommon)localView);
     c();
   }
   
   private final void c()
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
+    Object localObject1 = this.h;
     if (localObject1 == null) {
       Intrinsics.throwUninitializedPropertyAccessException("navBar");
     }
     ((NavBarCommon)localObject1).setTitle((CharSequence)"QQ购物");
-    ((NavBarCommon)localObject1).setRightImage(((NavBarCommon)localObject1).getResources().getDrawable(2130850470));
+    ((NavBarCommon)localObject1).setRightImage(((NavBarCommon)localObject1).getResources().getDrawable(2130852266));
     ((NavBarCommon)localObject1).setOnItemSelectListener((OnItemSelectListener)new QQShopPAHippyFragment.setNavBar..inlined.run.lambda.1(this));
     Object localObject2 = ((NavBarCommon)localObject1).getLayoutParams();
     if (localObject2 != null)
@@ -156,8 +151,8 @@ public final class QQShopPAHippyFragment
       this.mRootView.setBackgroundColor(-1);
       localObject1 = this.mRootView;
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "mRootView");
-      localObject1 = (LinearLayout)((View)localObject1).findViewById(2131374338);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon;
+      localObject1 = (LinearLayout)((View)localObject1).findViewById(2131442501);
+      localObject2 = this.h;
       if (localObject2 == null) {
         Intrinsics.throwUninitializedPropertyAccessException("navBar");
       }
@@ -169,13 +164,13 @@ public final class QQShopPAHippyFragment
   
   private final void d()
   {
-    ReportUtil.a("gouwu.aio.stay", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(SystemClock.elapsedRealtime()), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    ReportUtil.b("gouwu_aio_stay", String.valueOf(this.jdField_a_of_type_Int), String.valueOf(SystemClock.elapsedRealtime()), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    ReportUtil.a("gouwu.aio.stay", String.valueOf(this.b), String.valueOf(SystemClock.elapsedRealtime()), String.valueOf(SystemClock.elapsedRealtime() - this.e));
+    ReportUtil.b("gouwu_aio_stay", String.valueOf(this.b), String.valueOf(SystemClock.elapsedRealtime()), String.valueOf(SystemClock.elapsedRealtime() - this.e));
   }
   
   public void a()
   {
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    HashMap localHashMap = this.j;
     if (localHashMap != null) {
       localHashMap.clear();
     }
@@ -211,7 +206,7 @@ public final class QQShopPAHippyFragment
   
   protected int getLayoutResId()
   {
-    return 2131561479;
+    return 2131627836;
   }
   
   protected boolean gotoErrorUrl()
@@ -220,7 +215,7 @@ public final class QQShopPAHippyFragment
     String str = getParameters().getString("errorUrl");
     if ((!TextUtils.isEmpty((CharSequence)str)) && (!isFragmentDestroyed()) && (localQBaseActivity != null))
     {
-      PageSwitchUtil.a.a((Context)localQBaseActivity, this.jdField_a_of_type_Int, str);
+      PageSwitchUtil.a.a((Context)localQBaseActivity, this.b, str);
       localQBaseActivity.finish();
       return true;
     }
@@ -243,13 +238,13 @@ public final class QQShopPAHippyFragment
     try
     {
       paramBundle = getActivity();
-      if ((!this.jdField_a_of_type_Boolean) && (paramBundle != null))
+      if ((!this.d) && (paramBundle != null))
       {
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("com.tencent.mobileqq.ecshop.finish");
         ((IntentFilter)localObject).addAction("action_notify_view_update");
-        paramBundle.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-        this.jdField_a_of_type_Boolean = true;
+        paramBundle.registerReceiver(this.i, (IntentFilter)localObject);
+        this.d = true;
         return;
       }
     }
@@ -268,10 +263,10 @@ public final class QQShopPAHippyFragment
     try
     {
       FragmentActivity localFragmentActivity = getActivity();
-      if ((this.jdField_a_of_type_Boolean) && (localFragmentActivity != null))
+      if ((this.d) && (localFragmentActivity != null))
       {
-        localFragmentActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-        this.jdField_a_of_type_Boolean = false;
+        localFragmentActivity.unregisterReceiver(this.i);
+        this.d = false;
       }
       return;
     }
@@ -288,12 +283,12 @@ public final class QQShopPAHippyFragment
   {
     super.onResume();
     getQBaseActivity().adjustSimpleStatusBar();
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.e = SystemClock.elapsedRealtime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.widget.QQShopPAHippyFragment
  * JD-Core Version:    0.7.0.1
  */

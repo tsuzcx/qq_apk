@@ -15,12 +15,12 @@ class ShareChat$SharePanel$1
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      if (this.a != null)
       {
-        Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopFaceBitmap(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, (byte)3, false, false);
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("face", localBitmap);
+        Bitmap localBitmap = this.a.getTroopFaceBitmap(this.b.troopUin, (byte)3, false, false);
+        this.c.putExtra("face", localBitmap);
       }
-      this.jdField_a_of_type_AndroidContentContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+      this.d.startActivity(this.c);
       return;
     }
     catch (Exception localException)
@@ -28,12 +28,12 @@ class ShareChat$SharePanel$1
       label48:
       break label48;
     }
-    this.this$0.a(5, this.jdField_a_of_type_Int, 3);
+    this.this$0.a(5, this.e, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.1
  * JD-Core Version:    0.7.0.1
  */

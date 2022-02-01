@@ -23,29 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CommonUtil
 {
   public static final String a = "CommonUtil";
-  private static AtomicInteger a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1000);
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (SuperPlayerSDKMgr.getPlatform() <= 0) {
-      return 0;
-    }
-    String str = String.valueOf(SuperPlayerSDKMgr.getPlatform());
-    Object localObject = str;
-    if (paramInt >= 0)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append(String.valueOf(paramInt));
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    return Integer.valueOf((String)localObject).intValue();
-  }
+  private static AtomicInteger b = new AtomicInteger(1000);
   
   public static int a(String paramString, int paramInt)
   {
@@ -60,7 +38,7 @@ public class CommonUtil
   
   public static String a()
   {
-    return String.valueOf(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(1));
+    return String.valueOf(b.getAndAdd(1));
   }
   
   public static String a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo)
@@ -111,7 +89,7 @@ public class CommonUtil
             return localObject1;
           }
           catch (NoSuchAlgorithmException localNoSuchAlgorithmException1) {}
-          LogUtil.e(jdField_a_of_type_JavaLangString, "calculateMD5ForInput error", localNoSuchAlgorithmException2);
+          LogUtil.e(a, "calculateMD5ForInput error", localNoSuchAlgorithmException2);
         }
         catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
         {
@@ -121,44 +99,6 @@ public class CommonUtil
       }
     }
     return str;
-  }
-  
-  private static void a(String paramString)
-  {
-    paramString = new File(paramString, ".nomedia");
-    if (!paramString.exists()) {}
-    try
-    {
-      boolean bool = paramString.createNewFile();
-      paramString = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(".nomedia file create result:");
-      localStringBuilder.append(bool);
-      LogUtil.d(paramString, localStringBuilder.toString());
-      return;
-    }
-    catch (IOException paramString)
-    {
-      label57:
-      break label57;
-    }
-    LogUtil.w(jdField_a_of_type_JavaLangString, ".nomedia file create failed.");
-    return;
-    LogUtil.d(jdField_a_of_type_JavaLangString, ".nomedia file exists");
-  }
-  
-  public static boolean a()
-  {
-    try
-    {
-      boolean bool = SuperPlayerSDKMgr.getContext().getPackageName().equals(b());
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      LogUtil.e(jdField_a_of_type_JavaLangString, "isMainProcess happen error.", localThrowable);
-    }
-    return false;
   }
   
   public static boolean a(int paramInt)
@@ -177,7 +117,7 @@ public class CommonUtil
       if (!((File)localObject2).exists())
       {
         ((File)localObject2).mkdirs();
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("业务缓存目录创建成功，path = ");
         ((StringBuilder)localObject3).append((String)localObject1);
@@ -185,19 +125,19 @@ public class CommonUtil
       }
       else
       {
-        localObject2 = jdField_a_of_type_JavaLangString;
+        localObject2 = a;
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append("业务缓存目录已存在，path = ");
         ((StringBuilder)localObject3).append((String)localObject1);
         LogUtil.d((String)localObject2, ((StringBuilder)localObject3).toString());
       }
-      a(SuperPlayerSDKMgr.getDataCacheFolder());
+      b(SuperPlayerSDKMgr.getDataCacheFolder());
       TPPlayerMgr.setProxyConfigsWithServiceType(paramInt, (String)localObject1, (String)localObject1, TPPlayerConfig.getProxyConfigStr());
       return true;
     }
     catch (Exception localException)
     {
-      Object localObject3 = jdField_a_of_type_JavaLangString;
+      Object localObject3 = a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("业务缓存目录创建失败，path = ");
       localStringBuilder.append((String)localObject1);
@@ -208,7 +148,62 @@ public class CommonUtil
     return false;
   }
   
-  public static String b()
+  public static int b(int paramInt)
+  {
+    if (SuperPlayerSDKMgr.getPlatform() <= 0) {
+      return 0;
+    }
+    String str = String.valueOf(SuperPlayerSDKMgr.getPlatform());
+    Object localObject = str;
+    if (paramInt >= 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(String.valueOf(paramInt));
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return Integer.valueOf((String)localObject).intValue();
+  }
+  
+  private static void b(String paramString)
+  {
+    paramString = new File(paramString, ".nomedia");
+    if (!paramString.exists()) {}
+    try
+    {
+      boolean bool = paramString.createNewFile();
+      paramString = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(".nomedia file create result:");
+      localStringBuilder.append(bool);
+      LogUtil.d(paramString, localStringBuilder.toString());
+      return;
+    }
+    catch (IOException paramString)
+    {
+      label57:
+      break label57;
+    }
+    LogUtil.w(a, ".nomedia file create failed.");
+    return;
+    LogUtil.d(a, ".nomedia file exists");
+  }
+  
+  public static boolean b()
+  {
+    try
+    {
+      boolean bool = SuperPlayerSDKMgr.getContext().getPackageName().equals(c());
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      LogUtil.e(a, "isMainProcess happen error.", localThrowable);
+    }
+    return false;
+  }
+  
+  public static String c()
   {
     if (SuperPlayerSDKMgr.getContext() == null) {
       return "unknown";
@@ -226,14 +221,14 @@ public class CommonUtil
     return str;
   }
   
-  public static boolean b(int paramInt)
+  public static boolean c(int paramInt)
   {
     return (paramInt == 401) || (paramInt == 402) || (paramInt == 403) || (paramInt == 201) || (paramInt == 202) || (paramInt == 203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.superplayer.utils.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

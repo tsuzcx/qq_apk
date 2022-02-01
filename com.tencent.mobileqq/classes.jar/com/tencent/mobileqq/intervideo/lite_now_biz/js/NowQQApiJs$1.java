@@ -13,20 +13,20 @@ class NowQQApiJs$1
   
   public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
+    if (!TextUtils.equals(this.a, paramBaseResp.transaction)) {
       return;
     }
     if (paramBaseResp.errCode != 0) {
-      QRUtils.a(1, 2131719009);
+      QRUtils.a(1, 2131916544);
     } else {
-      QRUtils.a(2, 2131719027);
+      QRUtils.a(2, 2131916563);
     }
     WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.js.NowQQApiJs.1
  * JD-Core Version:    0.7.0.1
  */

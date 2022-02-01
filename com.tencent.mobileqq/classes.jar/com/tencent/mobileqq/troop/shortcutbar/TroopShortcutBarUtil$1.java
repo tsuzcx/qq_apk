@@ -23,18 +23,18 @@ final class TroopShortcutBarUtil$1
     if (paramInt == 0) {}
     try
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        ReportController.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B448", "0X800B448", 0, 0, String.valueOf(TroopShortcutBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString)), String.valueOf(this.jdField_a_of_type_Long), "1", "");
+      if (!this.a) {
+        ReportController.b(null, "dc00898", "", this.b, "0X800B448", "0X800B448", 0, 0, String.valueOf(TroopShortcutBarUtil.b(this.c, this.b)), String.valueOf(this.d), "1", "");
       } else {
-        ReportController.b(null, "dc00898", "", this.jdField_a_of_type_JavaLangString, "0X800B448", "0X800B448", 0, 0, String.valueOf(TroopShortcutBarUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString)), String.valueOf(this.jdField_a_of_type_Long), "2", "");
+        ReportController.b(null, "dc00898", "", this.b, "0X800B448", "0X800B448", 0, 0, String.valueOf(TroopShortcutBarUtil.b(this.c, this.b)), String.valueOf(this.d), "2", "");
       }
       if ((paramInt == 0) || (BaseActivity.sTopActivity == null)) {
         break label207;
       }
       if (paramInt == 41005)
       {
-        if (this.jdField_a_of_type_Boolean) {
-          QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131720037), 0).a();
+        if (this.a) {
+          QQToast.makeText(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131917658), 0).show();
         }
       }
       else
@@ -42,7 +42,7 @@ final class TroopShortcutBarUtil$1
         if (paramInt != 41020) {
           break label296;
         }
-        QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131720038), 0).a();
+        QQToast.makeText(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131917659), 0).show();
       }
     }
     catch (Exception paramString)
@@ -56,21 +56,21 @@ final class TroopShortcutBarUtil$1
         }
       }
     }
-    QQToast.a(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131720039), 0).a();
+    QQToast.makeText(BaseActivity.sTopActivity, 1, BaseApplicationImpl.getContext().getResources().getString(2131917660), 0).show();
     label207:
-    paramString = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+    paramString = (TroopShortcutBarHandler)this.c.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
     if (paramString == null) {
       return;
     }
-    localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    localObject = (TroopManager)this.c.getManager(QQManagerFactory.TROOP_MANAGER);
     if (localObject == null) {
       return;
     }
-    localObject = ((TroopManager)localObject).b(this.jdField_a_of_type_JavaLangString);
+    localObject = ((TroopManager)localObject).f(this.b);
     if (localObject == null) {
       return;
     }
-    paramString.a(Long.parseLong(this.jdField_a_of_type_JavaLangString), (int)((TroopInfo)localObject).dwGroupClassExt, new Long(this.jdField_a_of_type_Long));
+    paramString.a(Long.parseLong(this.b), (int)((TroopInfo)localObject).dwGroupClassExt, new Long(this.d));
     return;
     paramString.printStackTrace();
   }
@@ -87,7 +87,7 @@ final class TroopShortcutBarUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarUtil.1
  * JD-Core Version:    0.7.0.1
  */

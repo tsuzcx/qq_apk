@@ -15,13 +15,13 @@ class BottomVideoInfoWidget$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      BottomVideoInfoWidget.a(this.this$0).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+    if (this.a) {
+      BottomVideoInfoWidget.c(this.this$0).b(this.b);
     } else {
-      BottomVideoInfoWidget.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
+      BottomVideoInfoWidget.c(this.this$0).a(this.b);
     }
-    BottomVideoInfoWidget.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-    FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(1, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+    BottomVideoInfoWidget.d(this.this$0).a(this.c);
+    FeedInfoChangeEvent localFeedInfoChangeEvent = new FeedInfoChangeEvent(1, this.c.feedId, 3, this.c);
     StoryDispatcher.a().dispatch(localFeedInfoChangeEvent);
   }
 }

@@ -9,31 +9,23 @@ public class VideoInfo$AdTagInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<AdTagInfo> CREATOR = new VideoInfo.AdTagInfo.1();
-  public int a;
-  public VideoInfo.ClassInfo a;
-  public String a;
-  public ArrayList<VideoInfo.KdTagItem> a;
-  public int b;
-  public String b;
+  public String a = "";
+  public ArrayList<VideoInfo.KdTagItem> b;
+  public int c = 0;
+  public int d;
+  public VideoInfo.ClassInfo e;
+  public String f = "";
   
-  public VideoInfo$AdTagInfo()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public VideoInfo$AdTagInfo() {}
   
   protected VideoInfo$AdTagInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createTypedArrayList(VideoInfo.KdTagItem.CREATOR);
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo = ((VideoInfo.ClassInfo)paramParcel.readParcelable(VideoInfo.ClassInfo.class.getClassLoader()));
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
+    this.b = paramParcel.createTypedArrayList(VideoInfo.KdTagItem.CREATOR);
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readInt();
+    this.e = ((VideoInfo.ClassInfo)paramParcel.readParcelable(VideoInfo.ClassInfo.class.getClassLoader()));
+    this.f = paramParcel.readString();
   }
   
   public int describeContents()
@@ -43,17 +35,17 @@ public class VideoInfo$AdTagInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilArrayList);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityVideoInfo$ClassInfo, paramInt);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
+    paramParcel.writeTypedList(this.b);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeInt(this.d);
+    paramParcel.writeParcelable(this.e, paramInt);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo.AdTagInfo
  * JD-Core Version:    0.7.0.1
  */

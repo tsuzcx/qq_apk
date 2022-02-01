@@ -12,14 +12,14 @@ class TroopRequestActivity$16$1
   
   public void run()
   {
-    if (TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$16.a) != null)
+    if (TroopRequestActivity.a(this.b.a) != null)
     {
-      Object localObject = (IProfileDataService)TroopRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$16.a).getRuntimeService(IProfileDataService.class, "");
+      Object localObject = (IProfileDataService)TroopRequestActivity.a(this.b.a).getRuntimeService(IProfileDataService.class, "");
       if (localObject != null)
       {
-        localObject = ((IProfileDataService)localObject).getProfileCard(this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, false);
+        localObject = ((IProfileDataService)localObject).getProfileCard(this.a.uin, false);
         if (localObject != null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopTroopnotificationActivityTroopRequestActivity$16.a.runOnUiThread(new TroopRequestActivity.16.1.1(this, (Card)localObject));
+          this.b.a.runOnUiThread(new TroopRequestActivity.16.1.1(this, (Card)localObject));
         }
       }
     }
@@ -31,7 +31,7 @@ class TroopRequestActivity$16$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.activity.TroopRequestActivity.16.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ public class AVGameLobbyViewHolderContext
     return this.a;
   }
   
-  public void a()
-  {
-    super.a();
-  }
-  
   public void a(AppInterface paramAppInterface)
   {
     this.a = paramAppInterface;
+  }
+  
+  public void b()
+  {
+    super.b();
   }
 }
 

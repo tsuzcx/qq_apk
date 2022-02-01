@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 public class VoicePanelContainer
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private WindowManager a;
+  private int b;
   
   public VoicePanelContainer(@NonNull Context paramContext)
   {
@@ -28,20 +28,20 @@ public class VoicePanelContainer
   public VoicePanelContainer(@NonNull Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.a = ((WindowManager)paramContext.getSystemService("window"));
     if (Build.VERSION.SDK_INT >= 26) {
-      this.jdField_a_of_type_Int = 2038;
+      this.b = 2038;
     } else {
-      this.jdField_a_of_type_Int = 2002;
+      this.b = 2002;
     }
-    setId(2131380984);
-    setBackgroundColor(paramContext.getResources().getColor(2131167333));
+    setId(2131449975);
+    setBackgroundColor(paramContext.getResources().getColor(2131168376));
   }
   
-  private WindowManager.LayoutParams a()
+  private WindowManager.LayoutParams c()
   {
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    localLayoutParams.type = this.jdField_a_of_type_Int;
+    localLayoutParams.type = this.b;
     localLayoutParams.format = 1;
     localLayoutParams.gravity = 80;
     localLayoutParams.flags = 16777384;
@@ -59,10 +59,10 @@ public class VoicePanelContainer
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+      if (this.a != null)
       {
-        WindowManager.LayoutParams localLayoutParams = a();
-        this.jdField_a_of_type_AndroidViewWindowManager.addView(this, localLayoutParams);
+        WindowManager.LayoutParams localLayoutParams = c();
+        this.a.addView(this, localLayoutParams);
         return;
       }
     }
@@ -76,9 +76,9 @@ public class VoicePanelContainer
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+      if (this.a != null)
       {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
+        this.a.removeView(this);
         return;
       }
     }
@@ -90,7 +90,7 @@ public class VoicePanelContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoicePanelContainer
  * JD-Core Version:    0.7.0.1
  */

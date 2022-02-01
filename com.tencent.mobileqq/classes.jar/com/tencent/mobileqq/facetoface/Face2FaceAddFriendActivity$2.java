@@ -11,7 +11,26 @@ class Face2FaceAddFriendActivity$2
 {
   Face2FaceAddFriendActivity$2(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  private int a(String paramString)
+  private String a(String paramString)
+  {
+    while (b(paramString) > 32)
+    {
+      int i = paramString.length();
+      if (i >= 2)
+      {
+        int j = i - 2;
+        if (Character.isHighSurrogate(paramString.charAt(j)))
+        {
+          paramString = paramString.substring(0, j);
+          continue;
+        }
+      }
+      paramString = paramString.substring(0, i - 1);
+    }
+    return paramString;
+  }
+  
+  private int b(String paramString)
   {
     byte[] arrayOfByte = new byte[0];
     try
@@ -29,41 +48,22 @@ class Face2FaceAddFriendActivity$2
     return paramString.length / 3 + 1;
   }
   
-  private String a(String paramString)
-  {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if (i >= 2)
-      {
-        int j = i - 2;
-        if (Character.isHighSurrogate(paramString.charAt(j)))
-        {
-          paramString = paramString.substring(0, j);
-          continue;
-        }
-      }
-      paramString = paramString.substring(0, i - 1);
-    }
-    return paramString;
-  }
-  
   public void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = this.a.a.getText().toString();
-    if (a(paramEditable) > 32)
+    paramEditable = this.a.Q.getText().toString();
+    if (b(paramEditable) > 32)
     {
-      int i = this.a.a.getSelectionStart();
+      int i = this.a.Q.getSelectionStart();
       paramEditable = a(paramEditable);
-      this.a.a.setText(paramEditable);
+      this.a.Q.setText(paramEditable);
       if (i >= paramEditable.length()) {
-        this.a.a.setSelection(paramEditable.length());
+        this.a.Q.setSelection(paramEditable.length());
       }
     }
-    if (this.a.h)
+    if (this.a.F)
     {
       ReportController.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
-      this.a.h = false;
+      this.a.F = false;
     }
   }
   
@@ -73,7 +73,7 @@ class Face2FaceAddFriendActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,30 +20,30 @@ class TroopMemberDataProvider$4
   
   public void run()
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(this.this$0.jdField_a_of_type_JavaLangString))
+    if (!this.a.equals(this.this$0.c))
     {
       if (QLog.isColorLevel())
       {
         ??? = new StringBuilder();
         ((StringBuilder)???).append("subThread, curTroopUin != mTroopUin, return, ");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)???).append(this.a);
         ((StringBuilder)???).append(",");
-        ((StringBuilder)???).append(this.this$0.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)???).append(this.this$0.c);
         QLog.d("TroopMemberDataProvider", 2, ((StringBuilder)???).toString());
       }
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.b);
-    synchronized (this.this$0.jdField_a_of_type_JavaUtilArrayList)
+    Object localObject2 = this.b.subList(this.c, this.d);
+    synchronized (this.this$0.e)
     {
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject2).next();
-        if ((Utils.d(localTroopMemberInfo.memberuin)) && ((TextUtils.isEmpty(localTroopMemberInfo.memberuin)) || (!localTroopMemberInfo.memberuin.equals("50000000"))))
+        if ((Utils.e(localTroopMemberInfo.memberuin)) && ((TextUtils.isEmpty(localTroopMemberInfo.memberuin)) || (!localTroopMemberInfo.memberuin.equals("50000000"))))
         {
-          localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.a(ContactUtils.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
-          this.this$0.jdField_a_of_type_JavaUtilArrayList.add(localTroopMemberInfo);
+          localTroopMemberInfo.displayedNamePinyinFirst = ChnToSpell.b(ContactUtils.b(this.this$0.a, localTroopMemberInfo.troopuin, localTroopMemberInfo.memberuin), 2);
+          this.this$0.e.add(localTroopMemberInfo);
         }
       }
       if (QLog.isColorLevel())
@@ -52,15 +52,15 @@ class TroopMemberDataProvider$4
         ((StringBuilder)???).append("subThread end, id=");
         ((StringBuilder)???).append(Thread.currentThread().getId());
         ((StringBuilder)???).append(", threadCnt=");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+        ((StringBuilder)???).append(this.e.get());
         ((StringBuilder)???).append(", curTroopUin=");
-        ((StringBuilder)???).append(this.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)???).append(this.a);
         QLog.d("TroopMemberDataProvider", 2, ((StringBuilder)???).toString());
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndDecrement() <= 1)
+      if (this.e.getAndDecrement() <= 1)
       {
-        ??? = this.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-        this.this$0.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)???);
+        ??? = this.this$0.k.obtainMessage(2);
+        this.this$0.k.sendMessage((Message)???);
       }
       return;
     }
@@ -72,7 +72,7 @@ class TroopMemberDataProvider$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.selecttroopmember.TroopMemberDataProvider.4
  * JD-Core Version:    0.7.0.1
  */

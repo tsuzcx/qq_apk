@@ -17,20 +17,20 @@ class ExpandChatRepository$2$1
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onUpdateFriendInfo uin =");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(this.a);
       QLog.d("expand.chat.ExpandChatRepository", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (RecentMatchChatListItem)ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$2.a).get(this.jdField_a_of_type_JavaLangString);
+    Object localObject = (RecentMatchChatListItem)ExpandChatRepository.c(this.b.a).get(this.a);
     if (localObject != null)
     {
-      ((RecentMatchChatListItem)localObject).mTitleName = ContactUtils.a(ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$2.a), ((RecentMatchChatListItem)localObject).messageRecord.senderuin, true);
-      ExpandChatRepository.a(this.jdField_a_of_type_ComTencentMobileqqQqexpandFlutterChannelChatExpandChatRepository$2.a, this.jdField_a_of_type_JavaLangString);
+      ((RecentMatchChatListItem)localObject).mTitleName = ContactUtils.a(ExpandChatRepository.d(this.b.a), ((RecentMatchChatListItem)localObject).messageRecord.senderuin, true);
+      ExpandChatRepository.a(this.b.a, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.flutter.channel.chat.ExpandChatRepository.2.1
  * JD-Core Version:    0.7.0.1
  */

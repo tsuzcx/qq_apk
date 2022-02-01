@@ -30,33 +30,6 @@ public class ArCoreNativeSoManager
     }
   }
   
-  public static int a(IArCoreNativeSoLoader paramIArCoreNativeSoLoader, String paramString)
-  {
-    if (paramIArCoreNativeSoLoader != null) {
-      try
-      {
-        if (!StringUtil.a(paramString))
-        {
-          String str = paramIArCoreNativeSoLoader.a();
-          paramIArCoreNativeSoLoader = paramIArCoreNativeSoLoader.b();
-          int i = ArNativeSoLoaderBase.a(str, paramIArCoreNativeSoLoader, ArNativeSoLoaderBase.b(str, paramIArCoreNativeSoLoader, str), paramString);
-          if (QLog.isColorLevel())
-          {
-            paramIArCoreNativeSoLoader = new StringBuilder();
-            paramIArCoreNativeSoLoader.append("loadArNativeSo soName=");
-            paramIArCoreNativeSoLoader.append(paramString);
-            paramIArCoreNativeSoLoader.append(" result=");
-            paramIArCoreNativeSoLoader.append(i);
-            QLog.d("ArCoreNativeSoManager", 2, paramIArCoreNativeSoLoader.toString());
-          }
-          return i;
-        }
-      }
-      finally {}
-    }
-    return -4;
-  }
-  
   public static int a(IArCoreNativeSoLoader paramIArCoreNativeSoLoader, String paramString1, String paramString2)
   {
     label690:
@@ -69,12 +42,12 @@ public class ArCoreNativeSoManager
       label639:
       try
       {
-        if ((!StringUtil.a(paramString1)) && (!StringUtil.a(paramString2)))
+        if ((!StringUtil.isEmpty(paramString1)) && (!StringUtil.isEmpty(paramString2)))
         {
           str1 = paramIArCoreNativeSoLoader.a();
           str2 = paramIArCoreNativeSoLoader.b();
           localObject1 = paramIArCoreNativeSoLoader.c();
-          localList = paramIArCoreNativeSoLoader.a();
+          localList = paramIArCoreNativeSoLoader.d();
           if ((localList != null) && (localList.size() != 0))
           {
             paramIArCoreNativeSoLoader = new StringBuilder();
@@ -273,7 +246,7 @@ public class ArCoreNativeSoManager
     if (paramIArCoreNativeSoLoader == null) {
       return false;
     }
-    Object localObject = paramIArCoreNativeSoLoader.a();
+    Object localObject = paramIArCoreNativeSoLoader.d();
     if (localObject != null)
     {
       if (((List)localObject).size() == 0) {
@@ -296,7 +269,7 @@ public class ArCoreNativeSoManager
     if (paramIArCoreNativeSoLoader != null) {
       try
       {
-        if (!StringUtil.a(paramString))
+        if (!StringUtil.isEmpty(paramString))
         {
           String str = paramIArCoreNativeSoLoader.a();
           Object localObject = paramIArCoreNativeSoLoader.b();
@@ -351,6 +324,33 @@ public class ArCoreNativeSoManager
     return false;
   }
   
+  public static int b(IArCoreNativeSoLoader paramIArCoreNativeSoLoader, String paramString)
+  {
+    if (paramIArCoreNativeSoLoader != null) {
+      try
+      {
+        if (!StringUtil.isEmpty(paramString))
+        {
+          String str = paramIArCoreNativeSoLoader.a();
+          paramIArCoreNativeSoLoader = paramIArCoreNativeSoLoader.b();
+          int i = ArNativeSoLoaderBase.b(str, paramIArCoreNativeSoLoader, ArNativeSoLoaderBase.b(str, paramIArCoreNativeSoLoader, str), paramString);
+          if (QLog.isColorLevel())
+          {
+            paramIArCoreNativeSoLoader = new StringBuilder();
+            paramIArCoreNativeSoLoader.append("loadArNativeSo soName=");
+            paramIArCoreNativeSoLoader.append(paramString);
+            paramIArCoreNativeSoLoader.append(" result=");
+            paramIArCoreNativeSoLoader.append(i);
+            QLog.d("ArCoreNativeSoManager", 2, paramIArCoreNativeSoLoader.toString());
+          }
+          return i;
+        }
+      }
+      finally {}
+    }
+    return -4;
+  }
+  
   public static boolean b(IArCoreNativeSoLoader paramIArCoreNativeSoLoader)
   {
     if (paramIArCoreNativeSoLoader == null) {
@@ -358,7 +358,7 @@ public class ArCoreNativeSoManager
     }
     String str1 = paramIArCoreNativeSoLoader.a();
     String str2 = paramIArCoreNativeSoLoader.b();
-    paramIArCoreNativeSoLoader = paramIArCoreNativeSoLoader.a();
+    paramIArCoreNativeSoLoader = paramIArCoreNativeSoLoader.d();
     if (paramIArCoreNativeSoLoader != null)
     {
       if (paramIArCoreNativeSoLoader.size() == 0) {
@@ -386,7 +386,7 @@ public class ArCoreNativeSoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcore.ArCoreNativeSoManager
  * JD-Core Version:    0.7.0.1
  */

@@ -61,8 +61,8 @@ class VasProfileTemplateController$DownloadTemplateRunnable
           ((File)localObject1).delete();
         }
         localObject2 = new DownloadTask("https://imgcache.gtimg.cn/club/mobile/profile/template/android_common_583.zip", (File)localObject1);
-        ((DownloadTask)localObject2).f = "profileCardDownload";
-        ((DownloadTask)localObject2).e = "VIP_profilecard";
+        ((DownloadTask)localObject2).L = "profileCardDownload";
+        ((DownloadTask)localObject2).K = "VIP_profilecard";
         int j = DownloaderFactory.a((DownloadTask)localObject2, paramAppRuntime);
         int i;
         if (j == 0) {
@@ -123,19 +123,19 @@ class VasProfileTemplateController$DownloadTemplateRunnable
               break label365;
             }
           }
-          bool1 = ProfileCardUtil.a(this.mBackgroundUrl);
+          bool1 = ProfileCardUtil.b(this.mBackgroundUrl);
           if (QLog.isColorLevel()) {
             QLog.d("ProfileTemplateCheckController", 2, String.format("DownloadTemplateRunnable start isExistsTemplateDir=%s isExistBgResource=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) }));
           }
           bool2 = bool1;
           if (!bool1)
           {
-            localObject = new File(ProfileCardUtil.a(this.mBackgroundUrl));
+            localObject = new File(ProfileCardUtil.c(this.mBackgroundUrl));
             localObject = new DownloadTask(this.mBackgroundUrl, (File)localObject);
-            ((DownloadTask)localObject).f = "profileCardDownload";
-            ((DownloadTask)localObject).e = "VIP_profilecard";
+            ((DownloadTask)localObject).L = "profileCardDownload";
+            ((DownloadTask)localObject).K = "VIP_profilecard";
             int i = DownloaderFactory.a((DownloadTask)localObject, localAppRuntime);
-            if ((i != 0) || (!ProfileCardUtil.a(this.mBackgroundUrl))) {
+            if ((i != 0) || (!ProfileCardUtil.b(this.mBackgroundUrl))) {
               break label371;
             }
             bool1 = true;
@@ -178,7 +178,7 @@ class VasProfileTemplateController$DownloadTemplateRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.VasProfileTemplateController.DownloadTemplateRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,14 @@ class AppBrandPageContainer$1$1
     }
     else
     {
-      QQToast.a(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).a();
+      QQToast.makeText(this.this$1.val$dialog.getContext(), "页面不存在，请稍后重试", 1).show();
     }
     this.this$1.val$dialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPageContainer.1.1
  * JD-Core Version:    0.7.0.1
  */

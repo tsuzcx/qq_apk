@@ -5,20 +5,14 @@ import java.util.Iterator;
 
 public class Observable
 {
-  private Observable.TCHashMap<Integer, Observer> a;
-  protected String a;
-  
-  public Observable()
-  {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable$TCHashMap = new Observable.TCHashMap(this);
-  }
+  protected String a = getClass().getSimpleName();
+  private Observable.TCHashMap<Integer, Observer> b = new Observable.TCHashMap(this);
   
   public void a(int paramInt)
   {
     try
     {
-      ArrayList localArrayList = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable$TCHashMap.a(Integer.valueOf(paramInt));
+      ArrayList localArrayList = this.b.b(Integer.valueOf(paramInt));
       if (localArrayList != null) {
         localArrayList.clear();
       }
@@ -31,7 +25,7 @@ public class Observable
   {
     try
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable$TCHashMap.a(Integer.valueOf(paramInt));
+      Object localObject = this.b.b(Integer.valueOf(paramInt));
       if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
       {
         localObject = ((ArrayList)localObject).iterator();
@@ -56,7 +50,7 @@ public class Observable
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable$TCHashMap.a(paramObserver);
+      this.b.a(paramObserver);
       return;
     }
     finally
@@ -75,7 +69,7 @@ public class Observable
       while (i < j)
       {
         int k = paramVarArgs[i];
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoCommonObservable$TCHashMap.a(Integer.valueOf(k), paramObserver);
+        this.b.a(Integer.valueOf(k), paramObserver);
         i += 1;
       }
       return;
@@ -89,7 +83,7 @@ public class Observable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.common.Observable
  * JD-Core Version:    0.7.0.1
  */

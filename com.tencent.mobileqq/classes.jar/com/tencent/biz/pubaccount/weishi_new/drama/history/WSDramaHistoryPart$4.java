@@ -13,14 +13,14 @@ class WSDramaHistoryPart$4
   
   public void startLoadMore(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    WSDramaHistoryPart.a(this.a).a(new FetcherParams(false, false));
+    WSDramaHistoryPart.d(this.a).a(new FetcherParams(false, false));
   }
   
   public void startTopRefresh(XRecyclerView paramXRecyclerView, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryPart.4
  * JD-Core Version:    0.7.0.1
  */

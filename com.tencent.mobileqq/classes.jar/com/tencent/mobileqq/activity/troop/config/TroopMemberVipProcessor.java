@@ -15,7 +15,7 @@ public class TroopMemberVipProcessor
       return;
     }
     paramTroopMemberInfo.mVipType = ((int)paramstTroopMemberInfo.dwVipType);
-    paramTroopMemberInfo.mVipLevel = VipUtils.c((int)paramstTroopMemberInfo.dwVipLevel);
+    paramTroopMemberInfo.mVipLevel = VipUtils.d((int)paramstTroopMemberInfo.dwVipLevel);
     paramTroopMemberInfo.mVipTemplateId = ((int)paramstTroopMemberInfo.dwNameplate);
     paramTroopMemberInfo.mBigClubVipType = ((int)paramstTroopMemberInfo.dwBigClubFlag);
     paramTroopMemberInfo.mBigClubVipLevel = ((int)paramstTroopMemberInfo.dwBigClubLevel);
@@ -27,7 +27,7 @@ public class TroopMemberVipProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMemberVipProcessor
  * JD-Core Version:    0.7.0.1
  */

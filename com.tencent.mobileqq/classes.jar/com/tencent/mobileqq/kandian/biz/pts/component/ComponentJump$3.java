@@ -12,13 +12,13 @@ class ComponentJump$3
   
   public void onClick(View paramView)
   {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentJump.getContext(), this.b);
+    ReadInJoyFooterPresenter.a(2, this.a);
+    ReadInJoyUtils.a(this.c.getContext(), this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentJump.3
  * JD-Core Version:    0.7.0.1
  */

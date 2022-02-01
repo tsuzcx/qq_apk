@@ -26,13 +26,13 @@ class LoginWelcomeManager$5
         {
           Object localObject = LoginWelcomeManager.a(this.a).getBundle("request");
           String str = ((Bundle)localObject).getString("uin");
-          long l1 = Long.parseLong(LoginWelcomeManager.a(this.a).getCurrentAccountUin());
+          long l1 = Long.parseLong(LoginWelcomeManager.b(this.a).getCurrentAccountUin());
           long l2 = Long.parseLong(str);
           localObject = ((Bundle)localObject).getString("authSig");
-          LoginWelcomeManager.a(this.a).addObserver(this.a.a);
-          ITroopMngHandler localITroopMngHandler = (ITroopMngHandler)LoginWelcomeManager.a(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
-          paramObject = TroopUtils.a(LoginWelcomeManager.a(this.a), (Card)paramObject);
-          localITroopMngHandler.a(str, paramObject, 1, null, (String)localObject, TroopUtils.a(LoginWelcomeManager.a(this.a), paramObject, l1, l2), null);
+          LoginWelcomeManager.b(this.a).addObserver(this.a.d);
+          ITroopMngHandler localITroopMngHandler = (ITroopMngHandler)LoginWelcomeManager.b(this.a).getBusinessHandler(BusinessHandlerFactory.TROOP_MNG_HANDLER);
+          paramObject = TroopUtils.a(LoginWelcomeManager.b(this.a), (Card)paramObject);
+          localITroopMngHandler.a(str, paramObject, 1, null, (String)localObject, TroopUtils.a(LoginWelcomeManager.b(this.a), paramObject, l1, l2), null);
         }
         catch (Exception paramObject)
         {
@@ -41,13 +41,13 @@ class LoginWelcomeManager$5
       } else {
         this.a.b();
       }
-      LoginWelcomeManager.a(this.a).removeObserver(LoginWelcomeManager.a(this.a));
+      LoginWelcomeManager.b(this.a).removeObserver(LoginWelcomeManager.e(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -7,53 +7,53 @@ import java.util.Map;
 public abstract class TimeAdapter
   extends BaseAdapter
 {
-  long jdField_a_of_type_Long = 0L;
-  private Map<Long, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  public abstract int a();
-  
-  public abstract long a(int paramInt);
+  private Map<Long, Long> a = new HashMap();
+  long g = 0L;
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong));
+    return this.a.containsKey(Long.valueOf(paramLong));
   }
   
   public abstract long b(int paramInt);
   
-  public void b()
+  public abstract int c();
+  
+  public abstract long c(int paramInt);
+  
+  public void d()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    int j = a();
+    this.g = 0L;
+    this.a.clear();
+    int j = c();
     if (j > 0)
     {
       int i = 0;
       while (i < j)
       {
-        long l = a(i);
-        if (l > this.jdField_a_of_type_Long + 180L)
+        long l = b(i);
+        if (l > this.g + 180L)
         {
-          this.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i)), Long.valueOf(this.jdField_a_of_type_Long));
+          this.g = l;
+          this.a.put(Long.valueOf(c(i)), Long.valueOf(this.g));
         }
         i += 1;
       }
     }
   }
   
-  public void c()
+  public void e()
   {
-    int i = a();
+    int i = c();
     if (i == 0) {
       return;
     }
     i -= 1;
-    long l = a(i);
-    if (l > this.jdField_a_of_type_Long + 180L)
+    long l = b(i);
+    if (l > this.g + 180L)
     {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i)), Long.valueOf(this.jdField_a_of_type_Long));
+      this.g = l;
+      this.a.put(Long.valueOf(c(i)), Long.valueOf(this.g));
     }
   }
 }

@@ -24,13 +24,13 @@ class QQSpecialFriendSettingActivity$5
       if ((i != 2) && (i != 3) && (i != 4)) {
         return;
       }
-      QQSpecialFriendSettingActivity.a(this.a);
+      QQSpecialFriendSettingActivity.f(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity.5
  * JD-Core Version:    0.7.0.1
  */

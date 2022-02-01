@@ -16,7 +16,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.DirectForwardActivity;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.video.VideoStructMsgHelper;
@@ -48,9 +47,9 @@ import org.json.JSONObject;
 public class QShareUtils
 {
   public static String a = "QShareUtils";
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
-  private String b;
+  private QQProgressDialog b;
+  private String c;
+  private WXShareHelper.WXShareListener d;
   
   public static Bitmap a(Bitmap paramBitmap)
   {
@@ -133,21 +132,21 @@ public class QShareUtils
   
   private void a(Activity paramActivity)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramActivity);
+    if (this.b == null) {
+      this.b = new QQProgressDialog(paramActivity);
     }
   }
   
   private void a(Activity paramActivity, Intent paramIntent, long paramLong)
   {
-    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.a();
+    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.b();
     if (localAppInterface != null)
     {
       a(paramActivity);
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())
+      if (!this.b.isShowing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131693895);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.b.c(2131891516);
+        this.b.show();
       }
       paramIntent.putExtra("struct_share_key_source_name", Long.toString(paramLong));
       Share.a(localAppInterface, paramActivity, localAppInterface.getAccount(), paramLong, 3000L, new QShareUtils.4(this, paramIntent, paramActivity));
@@ -157,18 +156,18 @@ public class QShareUtils
   private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start!");
+      QLog.d(a, 2, "shareMsgToSina start!");
     }
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina installSinaWeibo:false");
+        QLog.d(a, 2, "shareMsgToSina installSinaWeibo:false");
       }
       try
       {
         paramString1 = URLEncoder.encode(paramString1, "UTF-8");
         Object localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("https://v.t.sina.com.cn/share/share.php?");
+        ((StringBuilder)localObject).append("https://service.weibo.com/share/share.php?");
         ((StringBuilder)localObject).append("title=");
         ((StringBuilder)localObject).append(paramString1);
         localObject = ((StringBuilder)localObject).toString();
@@ -200,23 +199,23 @@ public class QShareUtils
         paramString2.putExtra("url", paramString1);
         paramActivity.startActivity(paramString2);
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina start webview!");
+          QLog.d(a, 2, "shareMsgToSina start webview!");
         }
       }
       catch (Exception paramActivity)
       {
-        QQToast.a(BaseApplication.getContext(), 0, 2131719009, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+        QQToast.makeText(BaseApplication.getContext(), 0, 2131916544, 0).show(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299920));
         paramActivity.printStackTrace();
       }
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina end!");
+        QLog.d(a, 2, "shareMsgToSina end!");
       }
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "shareMsgToSina empty title or share_url");
+      QLog.d(a, 2, "shareMsgToSina empty title or share_url");
     }
-    QQToast.a(QBaseActivity.sTopActivity, 0, 2131719009, 0).b(QBaseActivity.sTopActivity.getResources().getDimensionPixelSize(2131299168));
+    QQToast.makeText(BridgeModuleHelper.e(), 0, 2131916544, 0).show(BridgeModuleHelper.e().getResources().getDimensionPixelSize(2131299920));
   }
   
   private void a(Activity paramActivity, JSONObject paramJSONObject, Intent paramIntent)
@@ -229,15 +228,15 @@ public class QShareUtils
     String str3;
     if (!TextUtils.isEmpty(str2))
     {
-      localObject1 = (AppInterface)ReadInJoyUtils.a();
+      localObject1 = (AppInterface)ReadInJoyUtils.b();
       localObject1 = ((AppInterface)localObject1).getEntityManagerFactory(((AppInterface)localObject1).getAccount()).createEntityManager();
       localObject2 = (IPublicAccountDetail)((EntityManager)localObject1).find(((IPublicAccountProxy)QRoute.api(IPublicAccountProxy.class)).getImplClass(IPublicAccountDetail.class), str2);
       ((EntityManager)localObject1).close();
       localObject1 = paramJSONObject.optString("src_action", "");
       localObject3 = a(paramJSONObject, str2, (IPublicAccountDetail)localObject2, (String)localObject1, null);
-      if (((String)localObject3).equalsIgnoreCase(paramActivity.getString(2131699864)))
+      if (((String)localObject3).equalsIgnoreCase(paramActivity.getString(2131897917)))
       {
-        boolean bool = ((String)localObject3).equalsIgnoreCase(paramActivity.getString(2131699864));
+        boolean bool = ((String)localObject3).equalsIgnoreCase(paramActivity.getString(2131897917));
         if (bool) {
           localObject1 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=cooperation.readinjoy.ReadInJoyProxyActivity";
         } else {
@@ -351,7 +350,7 @@ public class QShareUtils
     }
     break label779;
     label756:
-    paramIntent.putExtra("app_name", paramActivity.getString(2131696418));
+    paramIntent.putExtra("app_name", paramActivity.getString(2131894190));
     Object localObject1 = str2;
     Object localObject2 = str1;
     label779:
@@ -365,7 +364,7 @@ public class QShareUtils
     if (paramJSONObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "build struct msg fail");
+        QLog.d(a, 2, "build struct msg fail");
       }
       return;
     }
@@ -437,7 +436,7 @@ public class QShareUtils
     localIntent.putExtra("req_share_id", paramJSONObject.optLong("app_id", -1L));
     localIntent.putExtra("pkg_name", "com.tencent.mobileqq");
     localIntent.putExtra("image_url_remote", paramString4);
-    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131696401, new Object[] { localObject }));
+    localIntent.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131894173, new Object[] { localObject }));
     localIntent.putExtra("flag", paramJSONObject.optInt("flag", 0));
     localIntent.putExtra("is_need_show_toast", paramBoolean);
     if (paramJSONObject.has("contentAction")) {
@@ -518,10 +517,10 @@ public class QShareUtils
   {
     HashMap localHashMap = new HashMap(1);
     int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720478;
-    } else if (!WXShareHelper.a().b()) {
-      i = 2131720479;
+    if (!WXShareHelper.a().b()) {
+      i = 2131918154;
+    } else if (!WXShareHelper.a().c()) {
+      i = 2131918155;
     } else {
       i = -1;
     }
@@ -569,9 +568,9 @@ public class QShareUtils
     localBundle.putStringArrayList("image_url", paramJSONObject);
     localBundle.putLong("req_share_id", 0L);
     localBundle.putInt("iUrlInfoFrm", 1);
-    localBundle.putLong("share_begin_time", SwiftBrowserShareMenuHandler.b);
+    localBundle.putLong("share_begin_time", SwiftBrowserShareMenuHandler.x);
     if (!QZoneShareManager.jumpToQzoneShare(paramAppInterface, paramActivity, localBundle, null, 125)) {
-      QRUtils.a(1, 2131689486);
+      QRUtils.a(1, 2131886094);
     }
   }
   
@@ -639,28 +638,28 @@ public class QShareUtils
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
+    if (this.d != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new QShareUtils.3(this);
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    this.d = new QShareUtils.3(this);
+    WXShareHelper.a().a(this.d);
   }
   
   private void c()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    Object localObject = this.b;
     if ((localObject != null) && (((QQProgressDialog)localObject).isShowing()))
     {
       long l = System.currentTimeMillis();
       if (QLog.isColorLevel())
       {
-        localObject = jdField_a_of_type_JavaLangString;
+        localObject = a;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("dialog dimiss time :");
         localStringBuilder.append(l);
         QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.b.dismiss();
     }
   }
   
@@ -707,12 +706,12 @@ public class QShareUtils
   
   public void a()
   {
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    WXShareHelper.a().b(this.d);
   }
   
   public void a(JSONObject paramJSONObject, int paramInt1, Activity paramActivity, String paramString1, int paramInt2, String paramString2)
   {
-    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.a();
+    AppInterface localAppInterface = (AppInterface)ReadInJoyUtils.b();
     for (;;)
     {
       try
@@ -750,10 +749,10 @@ public class QShareUtils
           if (paramInt1 == 12)
           {
             a(paramActivity, str1, str3, str4, str6);
-            ReadInJoyLogicEngine.a().o();
+            ReadInJoyLogicEngine.a().O();
             return;
             a(paramJSONObject, paramInt1, localAppInterface, str1, str2, a(paramJSONObject, str3, paramInt1), str6, str8, str9, bool2, bool3);
-            ReadInJoyLogicEngine.a().o();
+            ReadInJoyLogicEngine.a().O();
           }
         }
         else
@@ -785,7 +784,7 @@ public class QShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.QShareUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -13,41 +13,40 @@ import mqq.app.MobileQQ;
 public class SwiftReuseTouchWebView
   extends TouchWebView
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static SwiftReuseTouchWebView b;
   public static int c = 0;
-  private SwiftReuseTouchWebView jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-  public int b;
-  private int d = 0;
+  private static final Object e = new Object();
+  private static SwiftReuseTouchWebView f;
+  public int b = 0;
+  private SwiftReuseTouchWebView d;
+  private int g = 0;
   
   private SwiftReuseTouchWebView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_Int = 0;
   }
   
-  public static SwiftReuseTouchWebView a(Context paramContext)
+  public static SwiftReuseTouchWebView b(Context paramContext)
   {
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (e)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("sPool acquire:");
-        ((StringBuilder)localObject1).append(jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView);
+        ((StringBuilder)localObject1).append(f);
         QLog.i("SwiftReuseTouchWebView", 1, ((StringBuilder)localObject1).toString());
-        if (jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView != null)
+        if (f != null)
         {
-          localObject1 = jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-          jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = ((SwiftReuseTouchWebView)localObject1).jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-          ((SwiftReuseTouchWebView)localObject1).jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = null;
+          localObject1 = f;
+          f = ((SwiftReuseTouchWebView)localObject1).d;
+          ((SwiftReuseTouchWebView)localObject1).d = null;
           c -= 1;
           if (localObject1 == null) {
             return new SwiftReuseTouchWebView(new MutableContextWrapper(paramContext));
           }
           ((SwiftReuseTouchWebView)localObject1).clearHistory();
-          ((SwiftReuseTouchWebView)localObject1).jdField_b_of_type_Int = 1;
-          ((SwiftReuseTouchWebView)localObject1).d += 1;
+          ((SwiftReuseTouchWebView)localObject1).b = 1;
+          ((SwiftReuseTouchWebView)localObject1).g += 1;
           ((SwiftReuseTouchWebView)localObject1).onResume();
           ((MutableContextWrapper)((SwiftReuseTouchWebView)localObject1).getContext()).setBaseContext(paramContext);
           return localObject1;
@@ -61,14 +60,14 @@ public class SwiftReuseTouchWebView
   {
     for (;;)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      synchronized (e)
       {
         int j = c;
         i = 1;
         if (j < 4)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-          jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = this;
+          this.d = f;
+          f = this;
           c += 1;
           if (i != 0)
           {
@@ -90,7 +89,7 @@ public class SwiftReuseTouchWebView
   
   public boolean canGoBack()
   {
-    if (1 == this.jdField_b_of_type_Int)
+    if (1 == this.b)
     {
       Object localObject = copyBackForwardList();
       if ((localObject != null) && (((WebBackForwardList)localObject).getSize() > 0))
@@ -107,7 +106,7 @@ public class SwiftReuseTouchWebView
   
   public void destroy()
   {
-    if (this.d > 3)
+    if (this.g > 3)
     {
       super.destroy();
       return;
@@ -133,7 +132,7 @@ public class SwiftReuseTouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView
  * JD-Core Version:    0.7.0.1
  */

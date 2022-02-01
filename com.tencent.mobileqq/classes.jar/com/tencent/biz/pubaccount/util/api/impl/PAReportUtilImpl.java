@@ -109,7 +109,7 @@ public class PAReportUtilImpl
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      String str = AppSetting.e();
+      String str = AppSetting.g();
       localJSONObject.put("puin", paramString3);
       localJSONObject.put("q_user_agent", str);
       localJSONObject.put("gdt_imp_data", paramString4);
@@ -134,7 +134,7 @@ public class PAReportUtilImpl
     Object localObject = new JSONObject();
     try
     {
-      String str1 = AppSetting.e();
+      String str1 = AppSetting.g();
       String str2 = MobileInfoUtil.getLocalMacAddress();
       String str3 = MobileInfoUtil.getImsi();
       String str4 = Settings.Secure.getString(paramAppInterface.getApp().getContentResolver(), "android_id");
@@ -211,7 +211,7 @@ public class PAReportUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PAReportUtilImpl
  * JD-Core Version:    0.7.0.1
  */

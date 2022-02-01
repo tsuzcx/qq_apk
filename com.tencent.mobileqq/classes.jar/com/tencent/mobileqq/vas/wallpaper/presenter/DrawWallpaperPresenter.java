@@ -8,45 +8,45 @@ import com.tencent.mobileqq.vas.wallpaper.contract.DrawWallpaperContract.View;
 public class DrawWallpaperPresenter
   implements DrawWallpaperContract.Presenter
 {
-  private DrawWallpaperContract.Model jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$Model;
-  private DrawWallpaperContract.View jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$View;
+  private DrawWallpaperContract.Model a;
+  private DrawWallpaperContract.View b;
   
   public DrawWallpaperPresenter(DrawWallpaperContract.Model paramModel, DrawWallpaperContract.View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$Model = paramModel;
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$View = paramView;
+    this.a = paramModel;
+    this.b = paramView;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$Model.a(new DrawWallpaperPresenter.1(this));
+    this.a.a(new DrawWallpaperPresenter.1(this));
     b();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$View.a(new Rect(0, 0, paramInt1, paramInt2));
+    this.b.a(new Rect(0, 0, paramInt1, paramInt2));
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$Model.a();
+    this.a.a();
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$Model.b();
+    this.a.b();
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$Model.a(null);
-    this.jdField_a_of_type_ComTencentMobileqqVasWallpaperContractDrawWallpaperContract$View.a();
+    this.a.a(null);
+    this.b.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.presenter.DrawWallpaperPresenter
  * JD-Core Version:    0.7.0.1
  */

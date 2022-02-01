@@ -3,9 +3,9 @@ package com.tencent.mtt.hippy.uimanager;
 public class DiffUtils$ExtraPatch
   extends DiffUtils.Patch
 {
-  String mClassName;
-  int mID;
-  Object mText;
+  final String mClassName;
+  final int mID;
+  final Object mText;
   
   public DiffUtils$ExtraPatch(int paramInt, Object paramObject, String paramString)
   {
@@ -21,7 +21,7 @@ public class DiffUtils$ExtraPatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.ExtraPatch
  * JD-Core Version:    0.7.0.1
  */

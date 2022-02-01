@@ -31,15 +31,15 @@ class WebViewSurfaceInjectorImpl$5
       QLog.d("WebViewSurfaceInjectorImpl", 2, ((StringBuilder)localObject).toString());
     }
     AppUrlOpenGroup.RspBody localRspBody;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity() != null)
+    if (this.a.getHostActivity() != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getHostActivity().isFinishing()) {
+      if (this.a.getHostActivity().isFinishing()) {
         return;
       }
       if (paramBoolean)
       {
-        localObject = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getComponentProvider().a(4);
-        ((SwiftBrowserStatistics)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getComponentProvider().a(-2)).l = true;
+        localObject = (SwiftBrowserShareMenuHandler)this.a.getComponentProvider().a(4);
+        ((SwiftBrowserStatistics)this.a.getComponentProvider().a(-2)).ay = true;
         paramBundle = paramBundle.getByteArray("data");
         localRspBody = new AppUrlOpenGroup.RspBody();
       }
@@ -47,21 +47,21 @@ class WebViewSurfaceInjectorImpl$5
     try
     {
       localRspBody.mergeFrom(paramBundle);
-      ((SwiftBrowserShareMenuHandler)localObject).e = localRspBody.bytes_company.get().toStringUtf8();
-      ((SwiftBrowserShareMenuHandler)localObject).g = localRspBody.bytes_info_url.get().toStringUtf8();
-      ((SwiftBrowserShareMenuHandler)localObject).f = localRspBody.bytes_share_url.get().toStringUtf8();
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      ((SwiftBrowserShareMenuHandler)localObject).r = localRspBody.bytes_company.get().toStringUtf8();
+      ((SwiftBrowserShareMenuHandler)localObject).t = localRspBody.bytes_info_url.get().toStringUtf8();
+      ((SwiftBrowserShareMenuHandler)localObject).s = localRspBody.bytes_share_url.get().toStringUtf8();
+      if (this.b.e.getVisibility() != 8) {
+        this.b.e.setVisibility(8);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidViewViewGroup.getVisibility() != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidViewViewGroup.setVisibility(0);
+      if (this.b.p.getVisibility() != 0) {
+        this.b.p.setVisibility(0);
       }
-      paramBundle = (TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131378880);
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131378814);
-      paramBundle.setText(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_b_of_type_AndroidWidgetTextView.getText());
-      ((TextView)localObject).setText(2131719767);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setImageResource(2130840347);
+      paramBundle = (TextView)this.b.p.findViewById(2131447581);
+      localObject = (TextView)this.b.p.findViewById(2131447497);
+      paramBundle.setText(this.b.e.getText());
+      ((TextView)localObject).setText(2131917371);
+      this.b.h.setVisibility(0);
+      this.b.h.setImageResource(2130841087);
       return;
     }
     catch (InvalidProtocolBufferMicroException|Exception paramBundle) {}
@@ -69,7 +69,7 @@ class WebViewSurfaceInjectorImpl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewSurfaceInjectorImpl.5
  * JD-Core Version:    0.7.0.1
  */

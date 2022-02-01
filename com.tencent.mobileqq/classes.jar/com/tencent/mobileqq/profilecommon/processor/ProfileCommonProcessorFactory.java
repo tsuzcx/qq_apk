@@ -2,6 +2,7 @@ package com.tencent.mobileqq.profilecommon.processor;
 
 import com.tencent.mobileqq.addfriend.processor.switchprocessor.AddFriendSettingProcessor;
 import com.tencent.mobileqq.apollo.push.ApolloPushControlProcessor;
+import com.tencent.mobileqq.guild.profilecard.GuildProfileRequestProcessor;
 import com.tencent.mobileqq.qassistant.setting.AssistantSwitchImpl;
 import com.tencent.mobileqq.qqexpand.config.profile.ExpandProfileProcessor;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
@@ -33,6 +34,7 @@ public class ProfileCommonProcessorFactory
     a.add(VipProcessor.class);
     a.add(AssistantSwitchImpl.class);
     a.add(ExpandProfileProcessor.class);
+    a.add(GuildProfileRequestProcessor.class);
     a.add(AddFriendSettingProcessor.class);
   }
   
@@ -99,7 +101,7 @@ public class ProfileCommonProcessorFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.ProfileCommonProcessorFactory
  * JD-Core Version:    0.7.0.1
  */

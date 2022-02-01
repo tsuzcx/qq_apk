@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.StyleRes;
@@ -43,12 +44,12 @@ public class ActionMenuView
   private ActionMenuPresenter mPresenter;
   private boolean mReserveOverflow;
   
-  public ActionMenuView(Context paramContext)
+  public ActionMenuView(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public ActionMenuView(Context paramContext, AttributeSet paramAttributeSet)
+  public ActionMenuView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     setBaselineAligned(false);

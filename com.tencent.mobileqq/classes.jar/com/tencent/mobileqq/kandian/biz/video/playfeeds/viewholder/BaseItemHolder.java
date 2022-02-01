@@ -11,21 +11,21 @@ import com.tencent.mobileqq.qroute.QRoute;
 public class BaseItemHolder
   extends RecyclerView.ViewHolder
 {
-  public final int a;
-  public VideoFeedsAlphaMaskView a;
-  public int b;
-  public int c;
+  public VideoFeedsAlphaMaskView W;
+  public final int X;
+  public int Y;
+  public int Z;
   
   public BaseItemHolder(View paramView, int paramInt)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramView.findViewById(((IResourceId)QRoute.api(IResourceId.class)).getCommonMaskView()));
-    this.jdField_a_of_type_Int = paramInt;
+    this.W = ((VideoFeedsAlphaMaskView)paramView.findViewById(((IResourceId)QRoute.api(IResourceId.class)).getCommonMaskView()));
+    this.X = paramInt;
   }
   
   public void a(IVideoFeedsAdapter paramIVideoFeedsAdapter, LinearLayoutManager paramLinearLayoutManager, boolean paramBoolean)
   {
-    paramIVideoFeedsAdapter = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView;
+    paramIVideoFeedsAdapter = this.W;
     if (paramIVideoFeedsAdapter != null)
     {
       if (paramIVideoFeedsAdapter.getVisibility() != 0) {
@@ -47,13 +47,13 @@ public class BaseItemHolder
         j = Math.abs(paramLinearLayoutManager.getDecoratedLeft(this.itemView) - (paramLinearLayoutManager.getWidth() / 2 - i / 2));
       }
       float f = Math.min(Math.round(j / i * 100.0F) / 100.0F, 1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetVideoFeedsAlphaMaskView.setAlpha(f);
+      this.W.setAlpha(f);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.playfeeds.viewholder.BaseItemHolder
  * JD-Core Version:    0.7.0.1
  */

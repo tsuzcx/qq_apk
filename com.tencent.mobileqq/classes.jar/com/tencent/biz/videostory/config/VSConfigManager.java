@@ -23,35 +23,30 @@ import mqq.manager.Manager;
 public class VSConfigManager
   implements Manager
 {
-  private static VSConfigManager jdField_a_of_type_ComTencentBizVideostoryConfigVSConfigManager = null;
   public static String a = "0";
   public static String b = "1";
-  public static final String c = HardCodeUtil.a(2131716346);
-  protected SharedPreferences a;
-  private ConcurrentHashMap<String, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static final String c = HardCodeUtil.a(2131913788);
+  private static VSConfigManager f = null;
+  protected SharedPreferences d;
+  private ConcurrentHashMap<String, Object> e = new ConcurrentHashMap();
   
   private VSConfigManager()
   {
-    c();
+    f();
   }
   
   public static VSConfigManager a()
   {
-    if (jdField_a_of_type_ComTencentBizVideostoryConfigVSConfigManager == null) {
+    if (f == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentBizVideostoryConfigVSConfigManager == null) {
-          jdField_a_of_type_ComTencentBizVideostoryConfigVSConfigManager = new VSConfigManager();
+        if (f == null) {
+          f = new VSConfigManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentBizVideostoryConfigVSConfigManager;
-  }
-  
-  private String a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    return f;
   }
   
   private void a(List<CONFIG.StIntConf> paramList)
@@ -66,7 +61,7 @@ public class VSConfigManager
         {
           String str = localStIntConf.key.get();
           if ((!TextUtils.isEmpty(str)) && (("SmartMatchMusicSwitch".equals(str)) || ("SmartCutPicSpacing".equals(str)) || ("SmartCutPicWidth".equals(str)) || ("SmartCutPicMaxByte".equals(str)) || ("ShootingResolution".equals(str)) || ("SmartCutPicCount".equals(str)) || ("SmartCutPicQuality_And".equals(str)))) {
-            a(str, Long.valueOf(localStIntConf.value.get()));
+            b(str, Long.valueOf(localStIntConf.value.get()));
           }
         }
         i += 1;
@@ -74,27 +69,27 @@ public class VSConfigManager
     }
   }
   
-  private <V> V b(@NonNull String paramString, @NonNull V paramV)
+  private <V> V c(@NonNull String paramString, @NonNull V paramV)
   {
     Object localObject;
     if (paramV.getClass() == Integer.class)
     {
-      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
+      localObject = Integer.valueOf(this.d.getInt(paramString, ((Integer)paramV).intValue()));
     }
     else if (paramV.getClass() == Long.class)
     {
-      localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+      localObject = Long.valueOf(this.d.getLong(paramString, ((Long)paramV).longValue()));
     }
     else if (paramV.getClass() == String.class)
     {
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+      localObject = this.d.getString(paramString, (String)paramV);
     }
     else
     {
       if (paramV.getClass() != Boolean.class) {
         break label202;
       }
-      localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+      localObject = Boolean.valueOf(this.d.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("get value from sp success : K:");
@@ -104,7 +99,7 @@ public class VSConfigManager
     QLog.i("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     if ((localObject != null) && (localObject.getClass() == paramV.getClass()))
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+      this.e.put(paramString, localObject);
       return localObject;
     }
     return paramV;
@@ -115,27 +110,27 @@ public class VSConfigManager
     throw new IllegalArgumentException(paramString.toString());
   }
   
-  private <V> void b(String paramString, V paramV)
+  private <V> void d(String paramString, V paramV)
   {
     boolean bool;
     if (paramV.getClass() == Integer.class)
     {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
+      bool = this.d.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
     }
     else if (paramV.getClass() == Long.class)
     {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      bool = this.d.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
     }
     else if (paramV.getClass() == String.class)
     {
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      bool = this.d.edit().putString(paramString, (String)paramV).commit();
     }
     else
     {
       if (paramV.getClass() != Boolean.class) {
         break label260;
       }
-      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      bool = this.d.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
     }
     if (!bool)
     {
@@ -161,10 +156,15 @@ public class VSConfigManager
     throw new IllegalArgumentException(paramString.toString());
   }
   
-  private void c()
+  private void f()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("videostory_config", 4);
+    this.d = BaseApplicationImpl.getApplication().getSharedPreferences("videostory_config", 4);
     ThreadManager.executeOnSubThread(new VSConfigManager.1(this));
+  }
+  
+  private String g()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
   }
   
   public <V> V a(@NonNull String paramString, @NonNull V paramV)
@@ -172,29 +172,29 @@ public class VSConfigManager
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramString);
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(a());
+    ((StringBuilder)localObject).append(g());
     localObject = ((StringBuilder)localObject).toString();
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject)) {
-      return b((String)localObject, paramV);
+    if (!this.e.containsKey(localObject)) {
+      return c((String)localObject, paramV);
     }
     if (paramV.getClass() == Integer.class)
     {
-      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      paramString = (Integer)this.e.get(localObject);
     }
     else if (paramV.getClass() == Long.class)
     {
-      paramString = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      paramString = (Long)this.e.get(localObject);
     }
     else if (paramV.getClass() == String.class)
     {
-      paramString = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      paramString = (String)this.e.get(localObject);
     }
     else
     {
       if (paramV.getClass() != Boolean.class) {
         break label229;
       }
-      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      paramString = (Boolean)this.e.get(localObject);
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("get value : K : ");
@@ -211,74 +211,6 @@ public class VSConfigManager
     paramString.append("defValue class is not support : ");
     paramString.append(paramV.getClass());
     throw new IllegalArgumentException(paramString.toString());
-  }
-  
-  public void a()
-  {
-    VSNetworkHelper.getInstance().sendRequest(new GetStoryConfigRequest(), new VSConfigManager.2(this));
-  }
-  
-  public <V> void a(String paramString, V paramV)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("_");
-    localStringBuilder.append(a());
-    paramString = localStringBuilder.toString();
-    if (paramV.getClass() == Integer.class)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Integer)paramV);
-    }
-    else if (paramV.getClass() == Long.class)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Long)paramV);
-    }
-    else if (paramV.getClass() == String.class)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (String)paramV);
-    }
-    else
-    {
-      if (paramV.getClass() != Boolean.class) {
-        break label229;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Boolean)paramV);
-    }
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("set value into map success :  K:");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", V : ");
-    localStringBuilder.append(paramV);
-    QLog.i("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("set value into map success :  K:");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", V : ");
-    localStringBuilder.append(paramV);
-    AEQLog.b("Q.videostory.config.VSConfigManager", localStringBuilder.toString());
-    b(paramString, paramV);
-    return;
-    label229:
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("set value into map error : K:");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(", V : ");
-    localStringBuilder.append(paramV);
-    QLog.e("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
-    paramString = new StringBuilder();
-    paramString.append("value class is not support : ");
-    paramString.append(paramV.getClass());
-    throw new IllegalArgumentException(paramString.toString());
-  }
-  
-  public boolean a()
-  {
-    boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(false))).booleanValue();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isApplyStyleConfig:");
-    localStringBuilder.append(bool);
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, localStringBuilder.toString());
-    return bool;
   }
   
   public boolean a(String paramString)
@@ -300,11 +232,73 @@ public class VSConfigManager
   
   public void b()
   {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "resetApplyWidgetConfig");
-    a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false));
+    VSNetworkHelper.getInstance().sendRequest(new GetStoryConfigRequest(), new VSConfigManager.2(this));
   }
   
-  public boolean b()
+  public <V> void b(String paramString, V paramV)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(g());
+    paramString = localStringBuilder.toString();
+    if (paramV.getClass() == Integer.class)
+    {
+      this.e.put(paramString, (Integer)paramV);
+    }
+    else if (paramV.getClass() == Long.class)
+    {
+      this.e.put(paramString, (Long)paramV);
+    }
+    else if (paramV.getClass() == String.class)
+    {
+      this.e.put(paramString, (String)paramV);
+    }
+    else
+    {
+      if (paramV.getClass() != Boolean.class) {
+        break label229;
+      }
+      this.e.put(paramString, (Boolean)paramV);
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set value into map success :  K:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", V : ");
+    localStringBuilder.append(paramV);
+    QLog.i("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set value into map success :  K:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", V : ");
+    localStringBuilder.append(paramV);
+    AEQLog.b("Q.videostory.config.VSConfigManager", localStringBuilder.toString());
+    d(paramString, paramV);
+    return;
+    label229:
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set value into map error : K:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", V : ");
+    localStringBuilder.append(paramV);
+    QLog.e("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
+    paramString = new StringBuilder();
+    paramString.append("value class is not support : ");
+    paramString.append(paramV.getClass());
+    throw new IllegalArgumentException(paramString.toString());
+  }
+  
+  public boolean c()
+  {
+    boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(false))).booleanValue();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isApplyStyleConfig:");
+    localStringBuilder.append(bool);
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, localStringBuilder.toString());
+    return bool;
+  }
+  
+  public boolean d()
   {
     boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false))).booleanValue();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -314,6 +308,12 @@ public class VSConfigManager
     return bool;
   }
   
+  public void e()
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "resetApplyWidgetConfig");
+    a().b("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false));
+  }
+  
   public void onDestroy()
   {
     QLog.i("Q.videostory.config.VSConfigManager", 2, "onDestory");
@@ -321,7 +321,7 @@ public class VSConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.videostory.config.VSConfigManager
  * JD-Core Version:    0.7.0.1
  */

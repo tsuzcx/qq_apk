@@ -15,25 +15,25 @@ class BaseTransientBottomBar$7
   {
     if (Build.VERSION.SDK_INT >= 29)
     {
-      paramView = this.a.jdField_a_of_type_ComGoogleAndroidMaterialSnackbarBaseTransientBottomBar$SnackbarBaseLayout.getRootWindowInsets();
+      paramView = this.a.b.getRootWindowInsets();
       if (paramView != null)
       {
         BaseTransientBottomBar.e(this.a, paramView.getMandatorySystemGestureInsets().bottom);
-        BaseTransientBottomBar.a(this.a);
+        BaseTransientBottomBar.c(this.a);
       }
     }
   }
   
   public void b(View paramView)
   {
-    if (this.a.a()) {
-      BaseTransientBottomBar.jdField_a_of_type_AndroidOsHandler.post(new BaseTransientBottomBar.7.1(this));
+    if (this.a.b()) {
+      BaseTransientBottomBar.a.post(new BaseTransientBottomBar.7.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.snackbar.BaseTransientBottomBar.7
  * JD-Core Version:    0.7.0.1
  */

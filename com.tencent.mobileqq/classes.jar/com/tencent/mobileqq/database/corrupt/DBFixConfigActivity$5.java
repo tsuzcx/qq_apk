@@ -16,13 +16,13 @@ class DBFixConfigActivity$5
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getSharedPreferences(CacheConstants.a, 0).edit().putBoolean(CacheConstants.c, paramBoolean).commit();
+    this.a.getApplication().getSharedPreferences(CacheConstants.a, 0).edit().putBoolean(CacheConstants.c, paramBoolean).commit();
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixConfigActivity.5
  * JD-Core Version:    0.7.0.1
  */

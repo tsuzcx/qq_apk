@@ -6,7 +6,6 @@ import android.os.Build.VERSION;
 import android.os.PowerManager;
 import android.text.TextUtils;
 import com.tencent.biz.richframework.delegate.impl.RFApplication;
-import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.mobileqq.config.api.IAppSettingApi;
@@ -52,6 +51,7 @@ public class QCircleReportHelper
   public static final int SCENE_PAGE_ID_BACK_FLOW_SPLASH_PAGE = 94;
   public static final int SCENE_PAGE_ID_COMMENT_PAGE = 61;
   public static final int SCENE_PAGE_ID_CONTENT_PAGE = 57;
+  public static final int SCENE_PAGE_ID_DRAFT_PAGE = 33;
   public static final int SCENE_PAGE_ID_FEED_DETAIL_PAGE = 69;
   public static final int SCENE_PAGE_ID_FOLLOW = 1;
   public static final int SCENE_PAGE_ID_FRIEND_PUBLIC_ACCOUNTS_PAGE = 86;
@@ -79,6 +79,7 @@ public class QCircleReportHelper
   private boolean mHasLaunchReport = false;
   private final ConcurrentHashMap<Long, String> mInviteIdMap = new ConcurrentHashMap();
   private final ConcurrentHashMap<Long, String> mInviteUinMap = new ConcurrentHashMap();
+  private boolean mIsActivate = true;
   private boolean mIsForeground = false;
   private long mLastActiveTimestamp;
   private String mLaunchFrom;
@@ -96,7 +97,7 @@ public class QCircleReportHelper
   
   private QCircleReportHelper()
   {
-    RFLog.d("QCircleReportHelper", RFLog.USR, "newInstance");
+    QLog.d("QCircleReportHelper", 1, "newInstance");
   }
   
   private void checkNeedReportHeartBeat()
@@ -120,11 +121,10 @@ public class QCircleReportHelper
       if (this.mSession == null) {
         return;
       }
-      int i = RFLog.USR;
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("reportLaunch launchFrom:");
       ((StringBuilder)localObject1).append(this.mLaunchFrom);
-      RFLog.w("QCircleReportHelper", i, ((StringBuilder)localObject1).toString());
+      QLog.w("QCircleReportHelper", 1, ((StringBuilder)localObject1).toString());
       localObject1 = this.mSchemeAttrs;
       Object localObject2;
       if (localObject1 != null)
@@ -213,11 +213,10 @@ public class QCircleReportHelper
           this.mSession = paramStGetSessionInfoRsp.sessonID.get().toByteArray();
           this.mSessionLifeCircle = paramStGetSessionInfoRsp.expireTime.get();
           this.mLastActiveTimestamp = System.currentTimeMillis();
-          paramInt = RFLog.USR;
           paramStGetSessionInfoRsp = new StringBuilder();
           paramStGetSessionInfoRsp.append("handleReportSessionRsp scene:EXPIRED，Session:");
           paramStGetSessionInfoRsp.append(new String(this.mSession));
-          RFLog.d("QCircleReportHelper", paramInt, paramStGetSessionInfoRsp.toString());
+          QLog.d("QCircleReportHelper", 1, paramStGetSessionInfoRsp.toString());
         }
       }
       else if (1 == paramStGetSessionInfoRsp.sessionType.get())
@@ -230,11 +229,10 @@ public class QCircleReportHelper
         checkNeedReportLaunch();
         if (this.mSession != null)
         {
-          paramInt = RFLog.USR;
           paramStGetSessionInfoRsp = new StringBuilder();
           paramStGetSessionInfoRsp.append("handleReportSessionRsp scene:ENTRY_APP，Session:");
           paramStGetSessionInfoRsp.append(new String(this.mSession));
-          RFLog.d("QCircleReportHelper", paramInt, paramStGetSessionInfoRsp.toString());
+          QLog.d("QCircleReportHelper", 1, paramStGetSessionInfoRsp.toString());
           QCircleReporter.getInstance().reportCacheDataListToServerWithSession(this.mSession);
         }
       }
@@ -252,7 +250,7 @@ public class QCircleReportHelper
   
   public static boolean isQQCircleActive()
   {
-    return getInstance().mPageStack.size() > 0;
+    return (getInstance().mPageStack.size() > 0) && (getInstance().mIsActivate);
   }
   
   public static FeedCloudCommon.BytesEntry newEntry(String paramString, byte[] paramArrayOfByte)
@@ -341,14 +339,13 @@ public class QCircleReportHelper
           localObject = "0";
         }
         QCircleLpReportDc05503.report(l1, l2 - l3, l4, (String)localObject, "", "", "", "", "", paramInt);
-        int i = RFLog.USR;
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("recordPageEndShow:scene:");
         ((StringBuilder)localObject).append(paramInt);
         ((StringBuilder)localObject).append(",cost:");
         ((StringBuilder)localObject).append(System.currentTimeMillis() - localLong.longValue());
         ((StringBuilder)localObject).append("ms");
-        RFLog.d("QCircleReportHelper", i, ((StringBuilder)localObject).toString());
+        QLog.d("QCircleReportHelper", 1, ((StringBuilder)localObject).toString());
         this.mPageLifeMap.remove(Integer.valueOf(paramInt));
       }
     }
@@ -360,13 +357,12 @@ public class QCircleReportHelper
     {
       long l = System.currentTimeMillis() - this.mLastActiveTimestamp;
       this.mLastActiveTimestamp = 0L;
-      int i = RFLog.USR;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("reportQCircleActiveIntervalTime intervalTime:");
       ((StringBuilder)localObject).append(l);
       ((StringBuilder)localObject).append("ms,signalOptType:");
       ((StringBuilder)localObject).append(paramInt);
-      RFLog.w("QCircleReportHelper", i, ((StringBuilder)localObject).toString());
+      QLog.w("QCircleReportHelper", 1, ((StringBuilder)localObject).toString());
       if (this.mSession == null) {
         localObject = this.mOldSession;
       } else {
@@ -378,7 +374,7 @@ public class QCircleReportHelper
       checkNeedReportLaunch();
       return;
     }
-    RFLog.d("QCircleReportHelper", RFLog.USR, "reportQCircleActiveIntervalTime invalid intervalTime,direct return!");
+    QLog.d("QCircleReportHelper", 1, "reportQCircleActiveIntervalTime invalid intervalTime,direct return!");
   }
   
   private void requestReportSession(int paramInt)
@@ -389,11 +385,12 @@ public class QCircleReportHelper
   
   private void retireSession()
   {
-    RFLog.w("QCircleReportHelper", RFLog.USR, "retireSession");
+    QLog.w("QCircleReportHelper", 1, "retireSession");
     this.mOldSession = this.mSession;
     this.mSession = null;
     this.mSceneSubSessionMap.clear();
     this.mIsForeground = false;
+    this.mIsActivate = true;
   }
   
   public String getInviteId()
@@ -413,24 +410,22 @@ public class QCircleReportHelper
     {
       if (this.mPageStack.size() > 0)
       {
-        i = ((Integer)this.mPageStack.peek()).intValue();
-        int j = RFLog.DEV;
+        int i = ((Integer)this.mPageStack.peek()).intValue();
         StringBuilder localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("getPageId:");
         localStringBuilder1.append(i);
-        RFLog.d("QCircleReportHelper", j, localStringBuilder1.toString());
+        QLog.d("QCircleReportHelper", 4, localStringBuilder1.toString());
         return i;
       }
-      RFLog.e("QCircleReportHelper", RFLog.USR, "getPageId error!");
+      QLog.e("QCircleReportHelper", 1, "getPageId error!");
       return 0;
     }
     catch (Exception localException)
     {
-      int i = RFLog.USR;
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("getPageId exception:");
       localStringBuilder2.append(localException.toString());
-      RFLog.e("QCircleReportHelper", i, localStringBuilder2.toString());
+      QLog.e("QCircleReportHelper", 1, localStringBuilder2.toString());
     }
     return -1;
   }
@@ -467,6 +462,28 @@ public class QCircleReportHelper
     return localArrayList;
   }
   
+  void handleInActivatedState()
+  {
+    if (isQQCircleActive())
+    {
+      QLog.d("QCircleReportHelper", 1, "onQCircle enter activate state!");
+      checkSessionRetired();
+      QCircleHostStubUtil.setIsUnLockSuccess(true);
+      this.mIsForeground = true;
+    }
+  }
+  
+  void handleInDeactivatedState()
+  {
+    if (isQQCircleActive())
+    {
+      QLog.d("QCircleReportHelper", 1, "onQCircle enter deactivate state!");
+      reportQCircleActiveIntervalTime(2);
+      QCircleReporter.getInstance().flush();
+      this.mIsForeground = false;
+    }
+  }
+  
   boolean hasFolderPageLeak(int paramInt)
   {
     return (this.mPageStack.contains(Integer.valueOf(paramInt))) && ((1 == paramInt) || (3 == paramInt) || (91 == paramInt) || (paramInt == 0));
@@ -479,7 +496,7 @@ public class QCircleReportHelper
   
   public void initReportSession()
   {
-    RFLog.w("QCircleReportHelper", RFLog.USR, "initReportSession");
+    QLog.w("QCircleReportHelper", 1, "initReportSession");
     this.mOldSession = null;
     requestReportSession(1);
   }
@@ -549,11 +566,11 @@ public class QCircleReportHelper
     else if (this.mOldSession != null)
     {
       localArrayList.add(newEntry("SessionID", this.mOldSession));
-      RFLog.w("QCircleReportHelper", RFLog.USR, "newSessionEntries mSession retired!try use oldSession");
+      QLog.w("QCircleReportHelper", 1, "newSessionEntries mSession retired!try use oldSession");
     }
     else
     {
-      RFLog.e("QCircleReportHelper", RFLog.USR, "newSessionEntries mSession is null!");
+      QLog.e("QCircleReportHelper", 1, "newSessionEntries mSession is null!");
     }
     if (getSubSession(paramInt) != null) {
       localArrayList.add(newEntry("SubSessionID", getSubSession(paramInt)));
@@ -590,53 +607,42 @@ public class QCircleReportHelper
   
   public void onEnterBackground()
   {
-    RFLog.d("QCircleReportHelper", RFLog.USR, "onQQEnterBackground!");
-    if (isQQCircleActive())
-    {
-      RFLog.d("QCircleReportHelper", RFLog.USR, "onQCircleEnterBackground!");
-      reportQCircleActiveIntervalTime(2);
-      QCircleReporter.getInstance().flush();
-      this.mIsForeground = false;
-    }
+    QLog.d("QCircleReportHelper", 1, "onQQEnterBackground!");
+    handleInDeactivatedState();
   }
   
   public void onEnterForeground()
   {
-    RFLog.d("QCircleReportHelper", RFLog.USR, "onQQEnterForeground!");
-    if (isQQCircleActive())
-    {
-      RFLog.d("QCircleReportHelper", RFLog.USR, "onQCircleEnterForeground!");
-      checkSessionRetired();
-      QCircleHostStubUtil.setIsUnLockSuccess(true);
-      this.mIsForeground = true;
-    }
+    QLog.d("QCircleReportHelper", 1, "onQQEnterForeground!");
+    handleInActivatedState();
   }
   
   public void popPageScene(int paramInt)
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("popPageScene scene:");
     localStringBuilder.append(paramInt);
-    RFLog.d("QCircleReportHelper", i, localStringBuilder.toString());
+    QLog.d("QCircleReportHelper", 1, localStringBuilder.toString());
+    if (paramInt < 0) {
+      return;
+    }
     if (this.mPageStack.contains(Integer.valueOf(paramInt))) {
       if (((Integer)this.mPageStack.peek()).intValue() == paramInt)
       {
         this.mPageStack.pop();
-        RFLog.d("QCircleReportHelper", RFLog.USR, "popPageScene success");
+        QLog.d("QCircleReportHelper", 1, "popPageScene success");
       }
       else
       {
-        paramInt = RFLog.USR;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("popPageScene error!mismatch scene,current Page:");
         localStringBuilder.append(this.mPageStack);
-        RFLog.e("QCircleReportHelper", paramInt, localStringBuilder.toString());
+        QLog.e("QCircleReportHelper", 1, localStringBuilder.toString());
       }
     }
     if (this.mPageStack.size() == 0)
     {
-      RFLog.w("QCircleReportHelper", RFLog.USR, "no QQCircle Page Alive,exit QQCircle");
+      QLog.w("QCircleReportHelper", 1, "no QQCircle Page Alive,exit QQCircle");
       retireSession();
       this.mPageLifeMap.clear();
       reportQCircleActiveIntervalTime(1);
@@ -646,21 +652,22 @@ public class QCircleReportHelper
   
   public void pushPageScene(int paramInt)
   {
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("pushPageScene scene:");
     localStringBuilder.append(paramInt);
-    RFLog.d("QCircleReportHelper", i, localStringBuilder.toString());
+    QLog.d("QCircleReportHelper", 1, localStringBuilder.toString());
+    if (paramInt < 0) {
+      return;
+    }
     if ((this.mPageStack.size() > 0) && (hasFolderPageLeak(paramInt)))
     {
-      i = RFLog.USR;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("pushPageScene scene:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(",PageStack leak:");
       localStringBuilder.append(this.mPageStack);
       localStringBuilder.append(",force clear");
-      RFLog.e("QCircleReportHelper", i, localStringBuilder.toString());
+      QLog.e("QCircleReportHelper", 1, localStringBuilder.toString());
       printPageStack();
       reportPageLeakEvent();
       this.mPageStack.clear();
@@ -670,30 +677,28 @@ public class QCircleReportHelper
     }
     this.mPageStack.push(Integer.valueOf(paramInt));
     QCircleReporter.getInstance().flush();
-    RFLog.d("QCircleReportHelper", RFLog.USR, "pushPageScene success");
+    QLog.d("QCircleReportHelper", 1, "pushPageScene success");
     printPageStack();
   }
   
   public void recordPageEndShow(int paramInt, boolean paramBoolean)
   {
     reportPageStayTime(paramInt, paramBoolean);
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("recordPageEndShow:scene:");
     localStringBuilder.append(paramInt);
     localStringBuilder.append(",hasActiveAction:");
     localStringBuilder.append(paramBoolean);
-    RFLog.d("QCircleReportHelper", i, localStringBuilder.toString());
+    QLog.d("QCircleReportHelper", 1, localStringBuilder.toString());
   }
   
   public void recordPageStartShow(int paramInt)
   {
     this.mPageLifeMap.put(Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()));
-    int i = RFLog.USR;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("recordPageStartShow:scene:");
     localStringBuilder.append(paramInt);
-    RFLog.d("QCircleReportHelper", i, localStringBuilder.toString());
+    QLog.d("QCircleReportHelper", 1, localStringBuilder.toString());
   }
   
   public void setInviteId(String paramString)
@@ -727,21 +732,32 @@ public class QCircleReportHelper
       this.mLaunchScene = paramLaunchParam.launchScene;
       this.mSchemeAttrs = paramLaunchParam.schemeAttrs;
       if (TextUtils.isEmpty(this.mLaunchFrom)) {
-        RFLog.e("QCircleReportHelper", RFLog.USR, "setLaunchParms invalid launchfrom params");
+        QLog.e("QCircleReportHelper", 1, "setLaunchParms invalid launchfrom params");
       }
       initReportSession();
-      int i = RFLog.USR;
       paramLaunchParam = new StringBuilder();
       paramLaunchParam.append("launchPageScene:");
       paramLaunchParam.append(this.mLaunchScene);
-      RFLog.w("QCircleReportHelper", i, paramLaunchParam.toString());
+      QLog.w("QCircleReportHelper", 1, paramLaunchParam.toString());
       checkNeedReportLaunch();
     }
   }
   
+  public void setQCircleIsActivate(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.mIsActivate = true;
+      handleInActivatedState();
+      return;
+    }
+    handleInDeactivatedState();
+    this.mIsActivate = false;
+  }
+  
   public void updateReportSessionWhenExpired()
   {
-    RFLog.d("QCircleReportHelper", RFLog.USR, "updateReportSessionWhenExpired");
+    QLog.d("QCircleReportHelper", 1, "updateReportSessionWhenExpired");
     requestReportSession(2);
   }
   
@@ -752,7 +768,7 @@ public class QCircleReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleReportHelper
  * JD-Core Version:    0.7.0.1
  */

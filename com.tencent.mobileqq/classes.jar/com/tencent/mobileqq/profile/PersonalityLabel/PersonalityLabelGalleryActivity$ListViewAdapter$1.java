@@ -44,7 +44,7 @@ class PersonalityLabelGalleryActivity$ListViewAdapter$1
       paramRecyclerView = paramRecyclerView.findLastVisibleItemPositions(null);
       paramInt2 = 0;
       int k = paramRecyclerView[0];
-      paramRecyclerView = PersonalityLabelGalleryActivity.c(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id));
+      paramRecyclerView = PersonalityLabelGalleryActivity.l(this.b.a).get(Long.valueOf(this.a.id));
       paramInt1 = paramInt2;
       if (paramRecyclerView != null)
       {
@@ -53,24 +53,24 @@ class PersonalityLabelGalleryActivity$ListViewAdapter$1
           paramInt1 = 1;
         }
       }
-      if ((!PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a)) && (paramInt1 == 0) && (i > 0) && (k >= j - 1))
+      if ((!PersonalityLabelGalleryActivity.n(this.b.a)) && (paramInt1 == 0) && (i > 0) && (k >= j - 1))
       {
-        PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a, true);
+        PersonalityLabelGalleryActivity.a(this.b.a, true);
         QLog.i("PersonalityLabelGalleryActivity", 2, "load more photos");
-        localObject = (PersonalityLabelHandler)this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a.app.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL);
-        if (PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a)) {
-          paramRecyclerView = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a.app.getCurrentAccountUin();
+        localObject = (PersonalityLabelHandler)this.b.a.app.getBusinessHandler(BusinessHandlerFactory.PROFILE_PERSONALITY_LABEL);
+        if (PersonalityLabelGalleryActivity.i(this.b.a)) {
+          paramRecyclerView = this.b.a.app.getCurrentAccountUin();
         } else {
-          paramRecyclerView = PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a);
+          paramRecyclerView = PersonalityLabelGalleryActivity.h(this.b.a);
         }
-        ((PersonalityLabelHandler)localObject).a(paramRecyclerView, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id, 20, (byte[])PersonalityLabelGalleryActivity.b(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$ListViewAdapter.a).get(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id)));
+        ((PersonalityLabelHandler)localObject).a(paramRecyclerView, this.a.id, 20, (byte[])PersonalityLabelGalleryActivity.k(this.b.a).get(Long.valueOf(this.a.id)));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.ListViewAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -48,21 +48,6 @@ public class QQFileAssistantUtils
     a.put(68104, 2);
   }
   
-  public static int a()
-  {
-    return 65799;
-  }
-  
-  public static int a(int paramInt)
-  {
-    int i = a.get(paramInt, 0);
-    paramInt = i;
-    if (i == 0) {
-      paramInt = 3;
-    }
-    return paramInt;
-  }
-  
   public static int a(msg_comm.Msg paramMsg)
   {
     boolean bool = paramMsg.msg_body.has();
@@ -101,37 +86,22 @@ public class QQFileAssistantUtils
     }
   }
   
-  public static long a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return a(paramBaseQQAppInterface).b();
-  }
-  
-  private static IQFileDatalineConfigBean a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return ((IQFileConfigManager)paramBaseQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getDatalineConfig();
-  }
-  
   public static String a(Context paramContext, int paramInt)
   {
-    paramInt = a(paramInt);
-    String str = paramContext.getString(2131698278);
+    paramInt = b(paramInt);
+    String str = paramContext.getString(2131896179);
     if (paramInt == 3) {
-      return paramContext.getString(2131698280);
+      return paramContext.getString(2131896181);
     }
     if (paramInt == 2) {
-      str = paramContext.getString(2131698279);
+      str = paramContext.getString(2131896180);
     }
     return str;
   }
   
-  public static String a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return "3636666661";
-  }
-  
   public static void a(int paramInt)
   {
-    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setDefaultTarget(localBaseQQAppInterface, paramInt);
   }
   
@@ -142,7 +112,7 @@ public class QQFileAssistantUtils
   
   public static void a(Context paramContext, Intent paramIntent)
   {
-    String str = ((IQFileConfigManager)QQFileManagerUtilImpl.a().getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin();
+    String str = ((IQFileConfigManager)QQFileManagerUtilImpl.m().getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin();
     Intent localIntent = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getChatActivityIntent(paramContext);
     localIntent.putExtra("uin", str);
     localIntent.putExtra("uintype", 0);
@@ -155,16 +125,6 @@ public class QQFileAssistantUtils
     }
     localIntent.putExtra("entrance", 1);
     paramContext.startActivity(localIntent);
-  }
-  
-  public static void a(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    if (a(paramBaseQQAppInterface)) {
-      return;
-    }
-    IQFileDatalineConfigBean localIQFileDatalineConfigBean = a(paramBaseQQAppInterface);
-    localIQFileDatalineConfigBean.a(true);
-    ThreadManagerV2.executeOnFileThread(new QQFileAssistantUtils.1(localIQFileDatalineConfigBean, paramBaseQQAppInterface));
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt, boolean paramBoolean)
@@ -182,7 +142,7 @@ public class QQFileAssistantUtils
     {
       paramBundle.putString("uin", "3636666661");
       paramBundle.putInt("uintype", 0);
-      paramBundle.putString("uinname", paramBaseQQAppInterface.getApp().getString(2131698288));
+      paramBundle.putString("uinname", paramBaseQQAppInterface.getApp().getString(2131896189));
     }
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).setForwardBundle(paramIntent, paramBundle);
   }
@@ -215,7 +175,7 @@ public class QQFileAssistantUtils
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("");
-      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(b());
       paramMessageRecord.saveExtInfoToExtStr("dataline_msg_device_type", ((StringBuilder)localObject).toString());
       if (QLog.isColorLevel())
       {
@@ -230,7 +190,7 @@ public class QQFileAssistantUtils
   
   public static boolean a()
   {
-    Object localObject2 = QQFileManagerUtilImpl.a();
+    Object localObject2 = QQFileManagerUtilImpl.m();
     if ((localObject2 instanceof BaseQQAppInterface)) {
       localObject1 = (BaseQQAppInterface)localObject2;
     } else {
@@ -274,12 +234,12 @@ public class QQFileAssistantUtils
     if (paramBaseQQAppInterface == null) {
       return false;
     }
-    return a(paramBaseQQAppInterface).a();
+    return j(paramBaseQQAppInterface).a();
   }
   
   public static boolean a(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
   {
-    return a(paramBaseQQAppInterface).a() >= paramLong;
+    return j(paramBaseQQAppInterface).b() >= paramLong;
   }
   
   public static boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser)
@@ -320,7 +280,7 @@ public class QQFileAssistantUtils
     }
     boolean bool = paramString.equals(((IQFileConfigManager)paramBaseQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin());
     if (bool) {
-      a(paramBaseQQAppInterface);
+      b(paramBaseQQAppInterface);
     }
     return bool;
   }
@@ -338,7 +298,7 @@ public class QQFileAssistantUtils
     if (!TextUtils.equals(paramString, AppConstants.FILE_ASSISTANT_UIN)) {
       return false;
     }
-    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.l();
     if (localBaseQQAppInterface == null) {
       return false;
     }
@@ -347,30 +307,22 @@ public class QQFileAssistantUtils
   
   public static int b()
   {
-    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)QQFileManagerUtilImpl.a();
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getDefaultTarget(localBaseQQAppInterface);
+    return 65799;
   }
   
   public static int b(int paramInt)
   {
-    paramInt = a(paramInt);
-    if (paramInt == 3) {
-      return 2130844282;
+    int i = a.get(paramInt, 0);
+    paramInt = i;
+    if (i == 0) {
+      paramInt = 3;
     }
-    if (paramInt == 2) {
-      return 2130844277;
-    }
-    return 2130844288;
-  }
-  
-  public static long b(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return a(paramBaseQQAppInterface).c();
+    return paramInt;
   }
   
   public static void b(Context paramContext, Intent paramIntent)
   {
-    Object localObject = ((IQFileConfigManager)QQFileManagerUtilImpl.a().getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin();
+    Object localObject = ((IQFileConfigManager)QQFileManagerUtilImpl.m().getRuntimeService(IQFileConfigManager.class, "")).getDebugDatalineSettingUin();
     localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getSplashActivityIntent(paramContext, (String)localObject);
     if (paramIntent != null)
     {
@@ -384,22 +336,22 @@ public class QQFileAssistantUtils
   
   public static void b(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).resetFileAssistantOnlineMark(paramBaseQQAppInterface);
-  }
-  
-  public static boolean b(BaseQQAppInterface paramBaseQQAppInterface)
-  {
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getIsOnline(paramBaseQQAppInterface);
+    if (a(paramBaseQQAppInterface)) {
+      return;
+    }
+    IQFileDatalineConfigBean localIQFileDatalineConfigBean = j(paramBaseQQAppInterface);
+    localIQFileDatalineConfigBean.a(true);
+    ThreadManagerV2.executeOnFileThread(new QQFileAssistantUtils.1(localIQFileDatalineConfigBean, paramBaseQQAppInterface));
   }
   
   public static boolean b(BaseQQAppInterface paramBaseQQAppInterface, long paramLong)
   {
-    return a(paramBaseQQAppInterface) >= paramLong;
+    return c(paramBaseQQAppInterface) >= paramLong;
   }
   
   public static boolean b(MessageRecord paramMessageRecord)
   {
-    int i = a();
+    int i = b();
     Object localObject = paramMessageRecord.getExtInfoFromExtStr("dataline_msg_device_type");
     boolean bool2 = TextUtils.isEmpty((CharSequence)localObject);
     boolean bool1 = false;
@@ -412,25 +364,73 @@ public class QQFileAssistantUtils
       QLog.i("QFileAssistantUtils", 1, ((StringBuilder)localObject).toString());
       return false;
     }
-    if (a(i) == a(Integer.valueOf((String)localObject).intValue())) {
+    if (b(i) == b(Integer.valueOf((String)localObject).intValue())) {
       bool1 = true;
     }
     return bool1;
   }
   
-  public static void c(BaseQQAppInterface paramBaseQQAppInterface)
+  public static int c()
+  {
+    BaseQQAppInterface localBaseQQAppInterface = (BaseQQAppInterface)QQFileManagerUtilImpl.m();
+    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getDefaultTarget(localBaseQQAppInterface);
+  }
+  
+  public static int c(int paramInt)
+  {
+    paramInt = b(paramInt);
+    if (paramInt == 3) {
+      return 2130845599;
+    }
+    if (paramInt == 2) {
+      return 2130845594;
+    }
+    return 2130845605;
+  }
+  
+  public static long c(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return j(paramBaseQQAppInterface).c();
+  }
+  
+  public static long d(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return j(paramBaseQQAppInterface).d();
+  }
+  
+  public static boolean e(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getIsOnline(paramBaseQQAppInterface);
+  }
+  
+  public static String f(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return "3636666661";
+  }
+  
+  public static void g(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).resetFileAssistantOnlineMark(paramBaseQQAppInterface);
+  }
+  
+  public static boolean h(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkNotifyDeviceOnline(paramBaseQQAppInterface);
+  }
+  
+  public static void i(BaseQQAppInterface paramBaseQQAppInterface)
   {
     ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).notifyUpdateRecentFileAssistant(paramBaseQQAppInterface);
   }
   
-  public static boolean c(BaseQQAppInterface paramBaseQQAppInterface)
+  private static IQFileDatalineConfigBean j(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).checkNotifyDeviceOnline(paramBaseQQAppInterface);
+    return ((IQFileConfigManager)paramBaseQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getDatalineConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.util.QQFileAssistantUtils
  * JD-Core Version:    0.7.0.1
  */

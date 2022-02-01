@@ -28,38 +28,41 @@ public class DiscussListUI
     if (QLog.isColorLevel()) {
       QLog.d("DiscussListUI", 2, "troop chatPie listView onViewCompleteVisableAndReleased");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.getCount() > 0)
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a();
-      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      ((ChatContext)this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.a).a(this.jdField_a_of_type_Long);
-      paramListView = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a().a();
-      if (paramListView != null)
-      {
-        if (paramListView.jdField_b_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = true;
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, paramListView.jdField_a_of_type_Long, paramListView.jdField_b_of_type_Long, paramListView.c, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
-          paramListView.j();
-          return true;
-        }
-        this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = false;
-        this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, 20, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
-        return true;
-      }
-      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.e = false;
-      this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext.f = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().getMessageFacade().a(paramView.jdField_a_of_type_JavaLangString, paramView.jdField_a_of_type_Int, 20, this.jdField_a_of_type_ComTencentImcoreMessageRefreshMessageContext);
+    if (paramInt == 1) {
       return true;
     }
-    a(false);
+    if (this.f.getCount() > 0)
+    {
+      paramView = this.b.O();
+      this.i = SystemClock.uptimeMillis();
+      ((ChatContext)this.h.a).a(this.i);
+      paramListView = (TroopAioTips)this.b.e().d().f();
+      if (paramListView != null)
+      {
+        if (paramListView.g)
+        {
+          this.h.g = true;
+          this.b.a().getMessageFacade().q().a(paramView.b, paramView.a, paramListView.h, paramListView.i, paramListView.j, this.h);
+          paramListView.x();
+          return true;
+        }
+        this.h.g = false;
+        this.h.h = true;
+        this.b.a().getMessageFacade().a(paramView.b, paramView.a, 20, this.h);
+        return true;
+      }
+      this.h.g = false;
+      this.h.h = true;
+      this.b.a().getMessageFacade().a(paramView.b, paramView.a, 20, this.h);
+      return true;
+    }
+    b(false);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.DiscussListUI
  * JD-Core Version:    0.7.0.1
  */

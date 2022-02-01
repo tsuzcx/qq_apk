@@ -6,15 +6,15 @@ public abstract interface ResDownloadHandler$RDHandler
 {
   public abstract String a(IResDownloadManager.DownloadParam paramDownloadParam);
   
-  public abstract boolean a(IResDownloadManager.DownloadParam paramDownloadParam);
-  
   public abstract boolean a(IResDownloadManager.DownloadParam paramDownloadParam, boolean paramBoolean);
   
   public abstract String b(IResDownloadManager.DownloadParam paramDownloadParam);
   
-  public abstract boolean b(IResDownloadManager.DownloadParam paramDownloadParam);
-  
   public abstract boolean c(IResDownloadManager.DownloadParam paramDownloadParam);
+  
+  public abstract boolean d(IResDownloadManager.DownloadParam paramDownloadParam);
+  
+  public abstract boolean e(IResDownloadManager.DownloadParam paramDownloadParam);
 }
 
 

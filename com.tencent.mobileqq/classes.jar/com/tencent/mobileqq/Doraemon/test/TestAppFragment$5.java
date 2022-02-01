@@ -10,12 +10,12 @@ class TestAppFragment$5
   {
     super.a(paramJSONObject);
     paramJSONObject = paramJSONObject.optString("openid", "");
-    this.a.a.a("getAppFriends", null, new TestAppFragment.5.1(this, paramJSONObject));
+    this.a.c.a("getAppFriends", null, new TestAppFragment.5.1(this, paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.5
  * JD-Core Version:    0.7.0.1
  */

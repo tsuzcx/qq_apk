@@ -72,7 +72,7 @@ public class NotificationReportControllerImpl
       {
         NotificationReportControllerImpl.ReportEntry localReportEntry = (NotificationReportControllerImpl.ReportEntry)localIterator.next();
         boolean bool = shouldReportNetInfo(localBaseQQAppInterface, localReportEntry.b);
-        int i = localReportEntry.jdField_a_of_type_Int;
+        int i = localReportEntry.a;
         if (i != 1)
         {
           if (i != 2)
@@ -97,7 +97,7 @@ public class NotificationReportControllerImpl
           localObject1 = "info_arr";
         }
         Object localObject2;
-        if ((localReportEntry.c != 7200) && (localReportEntry.c != 1008) && (localReportEntry.c != 7220))
+        if ((localReportEntry.d != 7200) && (localReportEntry.d != 1008) && (localReportEntry.d != 7220))
         {
           localObject2 = new StringBuilder();
           ((StringBuilder)localObject2).append(localReportEntry.b);
@@ -107,25 +107,25 @@ public class NotificationReportControllerImpl
         else
         {
           localObject2 = localReportEntry;
-          String str = ((NotificationReportControllerImpl.ReportEntry)localObject2).jdField_a_of_type_JavaLangString;
+          String str = ((NotificationReportControllerImpl.ReportEntry)localObject2).c;
           Object localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append(((NotificationReportControllerImpl.ReportEntry)localObject2).b);
           ((StringBuilder)localObject3).append("");
           localObject3 = ((StringBuilder)localObject3).toString();
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("");
-          localStringBuilder.append(((NotificationReportControllerImpl.ReportEntry)localObject2).c);
+          localStringBuilder.append(((NotificationReportControllerImpl.ReportEntry)localObject2).d);
           ReportController.a(localBaseQQAppInterface, bool, "tech_push", "push", (String)localObject1, "", 0, "", "", str, (String)localObject3, localStringBuilder.toString(), "", "", "", "");
         }
         if (QLog.isDevelopLevel())
         {
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("report real msgType:");
-          ((StringBuilder)localObject1).append(localReportEntry.jdField_a_of_type_Int);
+          ((StringBuilder)localObject1).append(localReportEntry.a);
           ((StringBuilder)localObject1).append("    frienduin:");
-          ((StringBuilder)localObject1).append(localReportEntry.jdField_a_of_type_JavaLangString);
-          ((StringBuilder)localObject1).append("   uinType:");
           ((StringBuilder)localObject1).append(localReportEntry.c);
+          ((StringBuilder)localObject1).append("   uinType:");
+          ((StringBuilder)localObject1).append(localReportEntry.d);
           ((StringBuilder)localObject1).append("    nId:");
           ((StringBuilder)localObject1).append(localReportEntry.b);
           QLog.d("NotificationReportControllerImpl", 2, ((StringBuilder)localObject1).toString());
@@ -246,7 +246,7 @@ public class NotificationReportControllerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.notification.NotificationReportControllerImpl
  * JD-Core Version:    0.7.0.1
  */

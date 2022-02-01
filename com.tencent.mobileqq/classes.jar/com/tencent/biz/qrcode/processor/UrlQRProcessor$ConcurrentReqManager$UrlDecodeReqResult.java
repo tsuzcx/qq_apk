@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 class UrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult
 {
-  int jdField_a_of_type_Int;
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  boolean jdField_a_of_type_Boolean;
+  int a;
+  boolean b;
+  Bundle c;
   
   public UrlQRProcessor$ConcurrentReqManager$UrlDecodeReqResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.a = paramInt;
+    this.b = paramBoolean;
+    this.c = paramBundle;
   }
 }
 

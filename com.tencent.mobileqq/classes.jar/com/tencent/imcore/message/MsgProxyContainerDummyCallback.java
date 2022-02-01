@@ -17,15 +17,15 @@ public class MsgProxyContainerDummyCallback
   
   public void a(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer) {}
   
-  public void a(MsgProxyContainer paramMsgProxyContainer) {}
-  
   public void b(long paramLong, MsgProxyContainer.SessionKey paramSessionKey, MsgProxyContainer paramMsgProxyContainer) {}
   
   public void b(MsgProxyContainer paramMsgProxyContainer) {}
+  
+  public void c(MsgProxyContainer paramMsgProxyContainer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyContainerDummyCallback
  * JD-Core Version:    0.7.0.1
  */

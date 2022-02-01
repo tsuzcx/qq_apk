@@ -17,19 +17,19 @@ class SubScribeDraftItemView$2$1
   {
     if (paramBoolean1)
     {
-      VSReporter.b(SubScribeDraftItemView.b(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "delete_draft", 0, 0, new String[0]);
+      VSReporter.b(SubScribeDraftItemView.c(this.a.b), "auth_pubish", "delete_draft", 0, 0, new String[0]);
       paramString = new SubDraftChangeEvent();
-      paramString.setDraftID(String.valueOf(this.a.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()));
+      paramString.setDraftID(String.valueOf(this.a.a.getDraftId()));
       SimpleEventBus.getInstance().dispatchEvent(paramString);
       QLog.d(SubScribeDraftItemView.a(), 4, "delete draft success");
       return;
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), "delete failed", 1).a();
+    QQToast.makeText(this.a.b.getContext(), "delete failed", 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView.2.1
  * JD-Core Version:    0.7.0.1
  */

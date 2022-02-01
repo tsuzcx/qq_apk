@@ -13,13 +13,13 @@ class ClearTextEndIconDelegate$9
   public void onAnimationUpdate(@NonNull ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.setScaleX(f);
-    this.a.a.setScaleY(f);
+    this.a.c.setScaleX(f);
+    this.a.c.setScaleY(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.textfield.ClearTextEndIconDelegate.9
  * JD-Core Version:    0.7.0.1
  */

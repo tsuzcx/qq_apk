@@ -1,7 +1,7 @@
 package com.tencent.biz.richframework.animation.recyclerview;
 
-import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import androidx.core.view.ViewPropertyAnimatorCompat;
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 public abstract interface EnhanceHolderAnimationInterface
 {

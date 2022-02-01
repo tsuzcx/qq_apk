@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip android:gravity="bottom" android:drawable="@drawable/gg7" android:clipOrientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="4.0dip" />
+            <solid android:color="#fff5f5f5" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/bwt" />
+</selector>

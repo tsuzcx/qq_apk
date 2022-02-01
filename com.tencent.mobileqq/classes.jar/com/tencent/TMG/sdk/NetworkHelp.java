@@ -5,6 +5,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 
 public class NetworkHelp
 {
@@ -46,7 +47,7 @@ public class NetworkHelp
     NetworkHelp.MobileCarrier localMobileCarrier = NetworkHelp.MobileCarrier.UNKNOWN;
     try
     {
-      localObject = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
+      localObject = PhoneInfoMonitor.getSubscriberId((TelephonyManager)paramContext.getSystemService("phone"));
     }
     catch (Exception paramContext)
     {

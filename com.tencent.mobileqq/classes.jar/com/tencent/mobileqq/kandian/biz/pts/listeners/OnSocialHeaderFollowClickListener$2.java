@@ -26,24 +26,24 @@ class OnSocialHeaderFollowClickListener$2
     QLog.d("OnSocialHeaderFollowClickListener", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
-      if ((OnSocialHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnSocialHeaderFollowClickListener) != null) && (OnSocialHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnSocialHeaderFollowClickListener).mSocialFeedInfo != null))
+      if ((OnSocialHeaderFollowClickListener.a(this.b) != null) && (OnSocialHeaderFollowClickListener.a(this.b).mSocialFeedInfo != null))
       {
-        OnSocialHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnSocialHeaderFollowClickListener).mSocialFeedInfo.h = paramInt;
-        ReadInJoyLogicEngine.a().c(OnSocialHeaderFollowClickListener.a(OnSocialHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnSocialHeaderFollowClickListener)), paramInt);
-        if (this.jdField_a_of_type_Boolean) {
-          OnSocialHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnSocialHeaderFollowClickListener);
+        OnSocialHeaderFollowClickListener.a(this.b).mSocialFeedInfo.o = paramInt;
+        ReadInJoyLogicEngine.a().c(OnSocialHeaderFollowClickListener.b(OnSocialHeaderFollowClickListener.a(this.b)), paramInt);
+        if (this.a) {
+          OnSocialHeaderFollowClickListener.b(this.b);
         }
         ThreadManager.getUIHandler().post(new OnSocialHeaderFollowClickListener.2.1(this));
       }
     }
     else {
-      QQToast.a(OnSocialHeaderFollowClickListener.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsListenersOnSocialHeaderFollowClickListener), HardCodeUtil.a(2131707846), 0).a();
+      QQToast.makeText(OnSocialHeaderFollowClickListener.c(this.b), HardCodeUtil.a(2131905660), 0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.listeners.OnSocialHeaderFollowClickListener.2
  * JD-Core Version:    0.7.0.1
  */

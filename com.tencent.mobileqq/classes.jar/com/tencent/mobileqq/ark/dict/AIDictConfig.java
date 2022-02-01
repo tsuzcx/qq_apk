@@ -12,12 +12,7 @@ public class AIDictConfig
   extends DictConfig
   implements IQStorageSafable<String>
 {
-  protected String a;
-  
-  public AIDictConfig()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  protected String a = "";
   
   private static DictInfo a(JSONObject paramJSONObject)
   {
@@ -25,42 +20,42 @@ public class AIDictConfig
       return null;
     }
     DictInfo localDictInfo = new DictInfo();
-    localDictInfo.jdField_a_of_type_Int = paramJSONObject.optInt("type", -1);
-    localDictInfo.d = paramJSONObject.optString("md5", null);
-    localDictInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url", null);
-    localDictInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name", null);
-    localDictInfo.c = paramJSONObject.optString("identifier", null);
+    localDictInfo.a = paramJSONObject.optInt("type", -1);
+    localDictInfo.e = paramJSONObject.optString("md5", null);
+    localDictInfo.c = paramJSONObject.optString("url", null);
+    localDictInfo.b = paramJSONObject.optString("name", null);
+    localDictInfo.d = paramJSONObject.optString("identifier", null);
     if (!localDictInfo.a())
     {
       QLog.i("AIDictConfig", 1, "getDictInfoFromJSON, invalid dict info");
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder("onParse getDictInfoFromJSON  info.type=");
-    localStringBuilder.append(localDictInfo.jdField_a_of_type_Int);
+    localStringBuilder.append(localDictInfo.a);
     localStringBuilder.append(", info.md5=");
-    localStringBuilder.append(localDictInfo.d);
+    localStringBuilder.append(localDictInfo.e);
     localStringBuilder.append(", info.url=");
-    localStringBuilder.append(localDictInfo.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(",  info.name =");
-    localStringBuilder.append(localDictInfo.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",  info.identifier =");
     localStringBuilder.append(localDictInfo.c);
+    localStringBuilder.append(",  info.name =");
+    localStringBuilder.append(localDictInfo.b);
+    localStringBuilder.append(",  info.identifier =");
+    localStringBuilder.append(localDictInfo.d);
     QLog.i("AIDictConfig", 1, localStringBuilder.toString());
     paramJSONObject = paramJSONObject.optJSONObject("diff");
     if (paramJSONObject != null)
     {
-      localDictInfo.e = paramJSONObject.optString("url");
-      localDictInfo.f = paramJSONObject.optString("diff-md5");
-      localDictInfo.g = paramJSONObject.optString("source-md5");
+      localDictInfo.f = paramJSONObject.optString("url");
+      localDictInfo.g = paramJSONObject.optString("diff-md5");
+      localDictInfo.h = paramJSONObject.optString("source-md5");
       if (!localDictInfo.b()) {
-        localDictInfo.a();
+        localDictInfo.c();
       }
       paramJSONObject = new StringBuilder("onParse getDictInfoFromJSON info.diffURL=");
-      paramJSONObject.append(localDictInfo.e);
-      paramJSONObject.append(", info.diffMD5=");
       paramJSONObject.append(localDictInfo.f);
-      paramJSONObject.append(", info.diffSourceMD5=");
+      paramJSONObject.append(", info.diffMD5=");
       paramJSONObject.append(localDictInfo.g);
+      paramJSONObject.append(", info.diffSourceMD5=");
+      paramJSONObject.append(localDictInfo.h);
       QLog.i("AIDictConfig", 1, paramJSONObject.toString());
     }
     return localDictInfo;
@@ -68,7 +63,7 @@ public class AIDictConfig
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void a(String paramString)
@@ -78,7 +73,7 @@ public class AIDictConfig
       QLog.i("AIDictConfig", 1, "onParse,fileOrRes is null");
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
     for (;;)
     {
       int i;
@@ -87,7 +82,7 @@ public class AIDictConfig
       {
         Object localObject1 = new JSONObject(paramString);
         this.c = ((JSONObject)localObject1).optString("environment");
-        this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("timestamp");
+        this.b = ((JSONObject)localObject1).optString("timestamp");
         this.d = ((JSONObject)localObject1).optString("ark_dict_init");
         this.e = ((JSONObject)localObject1).optString("netType", "");
         paramString = ((JSONObject)localObject1).optJSONArray("conditional_dict_list");
@@ -107,23 +102,23 @@ public class AIDictConfig
             }
             localObject2 = new ConditionalDict();
             Object localObject5 = new ConditionalDict.Condition();
-            ((ConditionalDict.Condition)localObject5).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("date", "");
-            ((ConditionalDict)localObject2).jdField_a_of_type_ComTencentMobileqqArkDictConditionalDict$Condition = ((ConditionalDict.Condition)localObject5);
+            ((ConditionalDict.Condition)localObject5).a = ((JSONObject)localObject3).optString("date", "");
+            ((ConditionalDict)localObject2).b = ((ConditionalDict.Condition)localObject5);
             localObject3 = new DictConfig();
             ((DictConfig)localObject3).c = ((JSONObject)localObject4).optString("environment");
-            ((DictConfig)localObject3).jdField_b_of_type_JavaLangString = ((JSONObject)localObject4).optString("timestamp");
+            ((DictConfig)localObject3).b = ((JSONObject)localObject4).optString("timestamp");
             ((DictConfig)localObject3).d = ((JSONObject)localObject4).optString("ark_dict_init");
             ((DictConfig)localObject3).e = ((JSONObject)localObject4).optString("netType", "");
             Object localObject6 = new StringBuilder("onParse conditional_dict_list tDict.environment=");
             ((StringBuilder)localObject6).append(((DictConfig)localObject3).c);
             ((StringBuilder)localObject6).append(", tDict.mTimestamp =");
-            ((StringBuilder)localObject6).append(((DictConfig)localObject3).jdField_b_of_type_JavaLangString);
+            ((StringBuilder)localObject6).append(((DictConfig)localObject3).b);
             ((StringBuilder)localObject6).append(", tDict.mArkDictInit =");
             ((StringBuilder)localObject6).append(((DictConfig)localObject3).d);
             ((StringBuilder)localObject6).append(", tDict.mNetType =");
             ((StringBuilder)localObject6).append(((DictConfig)localObject3).e);
             ((StringBuilder)localObject6).append(", tCondition.mData =");
-            ((StringBuilder)localObject6).append(((ConditionalDict.Condition)localObject5).jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject6).append(((ConditionalDict.Condition)localObject5).a);
             QLog.i("AIDictConfig", 1, ((StringBuilder)localObject6).toString());
             localObject4 = ((JSONObject)localObject4).optJSONArray("word_dict_list");
             if (localObject4 != null)
@@ -139,17 +134,17 @@ public class AIDictConfig
                 ((ArrayList)localObject5).add(a((JSONObject)localObject6));
                 break label551;
               }
-              ((DictConfig)localObject3).jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject5);
+              ((DictConfig)localObject3).f = ((ArrayList)localObject5);
             }
-            ((ConditionalDict)localObject2).jdField_a_of_type_ComTencentMobileqqArkDictDictConfig = ((DictConfig)localObject3);
-            this.jdField_b_of_type_JavaUtilArrayList.add(localObject2);
+            ((ConditionalDict)localObject2).a = ((DictConfig)localObject3);
+            this.g.add(localObject2);
             break label558;
           }
         }
         paramString = ((JSONObject)localObject1).optJSONArray("word_dict_list");
         if (paramString != null)
         {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+          this.f = new ArrayList();
           i = 0;
           if (i < paramString.length())
           {
@@ -158,11 +153,11 @@ public class AIDictConfig
               break label565;
             }
             localObject1 = a((JSONObject)localObject1);
-            this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+            this.f.add(localObject1);
             break label565;
           }
         }
-        QLog.d("AIDictConfig", 1, new Object[] { "mWordDictList list size =", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+        QLog.d("AIDictConfig", 1, new Object[] { "mWordDictList list size =", Integer.valueOf(this.f.size()) });
         return;
       }
       catch (JSONException paramString)
@@ -185,7 +180,7 @@ public class AIDictConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.dict.AIDictConfig
  * JD-Core Version:    0.7.0.1
  */

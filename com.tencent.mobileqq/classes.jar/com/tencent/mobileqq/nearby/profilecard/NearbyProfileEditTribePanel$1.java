@@ -13,25 +13,25 @@ class NearbyProfileEditTribePanel$1
   
   public void onConfirmBtClicked()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    Object localObject = this.b;
     if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel;
-      NearbyProfileEditTribePanel.a((NearbyProfileEditTribePanel)localObject, ((NearbyProfileEditTribePanel)localObject).b, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localObject = this.c;
+      NearbyProfileEditTribePanel.a((NearbyProfileEditTribePanel)localObject, ((NearbyProfileEditTribePanel)localObject).o, false);
+      this.b.dismiss();
     }
   }
   
   public void onItemSelected(int paramInt1, int paramInt2)
   {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b.setText(NearbyProfileEditTribePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel).getText(0, paramInt1));
+    paramInt1 = this.a.b(0);
+    this.c.o.setTag(Byte.valueOf((byte)paramInt1));
+    this.c.o.setText(NearbyProfileEditTribePanel.a(this.c).getText(0, paramInt1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel.1
  * JD-Core Version:    0.7.0.1
  */

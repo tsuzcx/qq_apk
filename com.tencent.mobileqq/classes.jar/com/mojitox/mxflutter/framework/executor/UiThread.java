@@ -22,10 +22,20 @@ public class UiThread
   {
     a.postAtFrontOfQueue(paramRunnable);
   }
+  
+  public static void c(@NonNull Runnable paramRunnable)
+  {
+    if (a())
+    {
+      paramRunnable.run();
+      return;
+    }
+    a.post(paramRunnable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.mojitox.mxflutter.framework.executor.UiThread
  * JD-Core Version:    0.7.0.1
  */

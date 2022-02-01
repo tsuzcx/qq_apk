@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
@@ -14,6 +15,8 @@ import mqq.app.AppRuntime;
 public abstract interface IAddFriendApi
   extends QRouteApi
 {
+  public abstract void addOpenId(String paramString, OpenID paramOpenID, AppRuntime paramAppRuntime);
+  
   public abstract boolean couldAddFriendSuccessDirectly(int paramInt1, int paramInt2, boolean paramBoolean);
   
   public abstract int countByByte(String paramString);
@@ -50,7 +53,7 @@ public abstract interface IAddFriendApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.api.IAddFriendApi
  * JD-Core Version:    0.7.0.1
  */

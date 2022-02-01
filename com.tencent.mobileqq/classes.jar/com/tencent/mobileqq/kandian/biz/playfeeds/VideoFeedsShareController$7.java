@@ -17,16 +17,16 @@ class VideoFeedsShareController$7
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((VideoFeedsShareController.a(this.a) != null) && (VideoFeedsShareController.a(this.a).getStatus() == 1) && ((VideoFeedsShareController.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    if ((VideoFeedsShareController.j(this.a) != null) && (VideoFeedsShareController.j(this.a).getStatus() == 1) && ((VideoFeedsShareController.j(this.a).getCurrDrawable() instanceof RegionDrawable)))
     {
-      paramURLDrawable = (RegionDrawable)VideoFeedsShareController.a(this.a).getCurrDrawable();
+      paramURLDrawable = (RegionDrawable)VideoFeedsShareController.j(this.a).getCurrDrawable();
       VideoFeedsShareController.a(this.a, paramURLDrawable.getBitmap());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsShareController.7
  * JD-Core Version:    0.7.0.1
  */

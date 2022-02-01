@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:id="@id/na2" android:background="@drawable/a8e" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/nyx" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/c2q" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <com.tencent.mobileqq.activity.aio.item.PttAudioWaveView android:id="@id/ox" android:layout_width="130.0dip" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:layout_toRightOf="@id/nyx" android:layout_centerVertical="true" />
+    <TextView android:textColor="@color/al3" android:id="@id/qj4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_toRightOf="@id/ox" android:layout_centerVertical="true" />
+</RelativeLayout>

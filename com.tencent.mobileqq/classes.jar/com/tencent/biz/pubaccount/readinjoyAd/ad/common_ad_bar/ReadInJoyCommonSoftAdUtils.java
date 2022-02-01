@@ -82,9 +82,9 @@ public class ReadInJoyCommonSoftAdUtils
     if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementSoftInfo != null))
     {
       Object localObject1 = new GdtDeviceInfoHelper.Params();
-      ((GdtDeviceInfoHelper.Params)localObject1).jdField_a_of_type_JavaLangString = "ce2d9f";
+      ((GdtDeviceInfoHelper.Params)localObject1).a = "ce2d9f";
       Object localObject2 = GdtDeviceInfoHelper.a(BaseApplication.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
-      int i = paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_c_of_type_Int;
+      int i = paramAdvertisementInfo.mAdvertisementSoftInfo.o;
       int j = b(paramAdvertisementInfo);
       localObject1 = new JSONObject();
       try
@@ -95,20 +95,20 @@ public class ReadInJoyCommonSoftAdUtils
           localJSONObject.put("imei", AdDeviceInfoUtil.b());
           localJSONObject.put("oaid", ((GdtDeviceInfoHelper.Result)localObject2).a.aid_ticket.get());
         }
-        localJSONObject.put("source_id", paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_c_of_type_Int);
-        localJSONObject.put("platform_id", paramAdvertisementInfo.mAdvertisementSoftInfo.d);
-        localJSONObject.put("goods_type", paramAdvertisementInfo.mAdvertisementSoftInfo.e);
-        localJSONObject.put("goods_id", paramAdvertisementInfo.mAdvertisementSoftInfo.i);
-        localJSONObject.put("goods_name", paramAdvertisementInfo.mAdvertisementSoftInfo.j);
-        localJSONObject.put("account_id", paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_f_of_type_Int);
-        localJSONObject.put("content_type", paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_a_of_type_Int);
+        localJSONObject.put("source_id", paramAdvertisementInfo.mAdvertisementSoftInfo.o);
+        localJSONObject.put("platform_id", paramAdvertisementInfo.mAdvertisementSoftInfo.p);
+        localJSONObject.put("goods_type", paramAdvertisementInfo.mAdvertisementSoftInfo.q);
+        localJSONObject.put("goods_id", paramAdvertisementInfo.mAdvertisementSoftInfo.r);
+        localJSONObject.put("goods_name", paramAdvertisementInfo.mAdvertisementSoftInfo.s);
+        localJSONObject.put("account_id", paramAdvertisementInfo.mAdvertisementSoftInfo.t);
+        localJSONObject.put("content_type", paramAdvertisementInfo.mAdvertisementSoftInfo.m);
         localJSONObject.put("rowkey", paramAdvertisementInfo.mRowKey);
-        localJSONObject.put("cmsid", paramAdvertisementInfo.mAdvertisementSoftInfo.x);
+        localJSONObject.put("cmsid", paramAdvertisementInfo.mAdvertisementSoftInfo.H);
         try
         {
-          localObject2 = new JSONObject(new JSONObject(paramAdvertisementInfo.mAdvertisementSoftInfo.n).optString("reportExt"));
+          localObject2 = new JSONObject(new JSONObject(paramAdvertisementInfo.mAdvertisementSoftInfo.x).optString("reportExt"));
           if (paramSoftAdReportData != null) {
-            ((JSONObject)localObject2).put("subjectIndex", paramSoftAdReportData.jdField_a_of_type_Int);
+            ((JSONObject)localObject2).put("subjectIndex", paramSoftAdReportData.a);
           }
           localJSONObject.put("reportExt", ((JSONObject)localObject2).toString());
         }
@@ -119,7 +119,7 @@ public class ReadInJoyCommonSoftAdUtils
         if (paramInt3 != -1) {
           localJSONObject.put("button_state", paramInt3);
         }
-        localJSONObject.put("adid", paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("adid", paramAdvertisementInfo.mAdvertisementSoftInfo.e);
         localJSONObject.put("position", paramInt5);
         localJSONObject.put("card_style", paramInt4);
         if ((paramInt1 == 2) && (i == 0) && (paramBoolean)) {
@@ -128,7 +128,7 @@ public class ReadInJoyCommonSoftAdUtils
           localJSONObject.put("is_ams_reported", 1);
         }
         if (i == 3) {
-          localJSONObject.put("author_id", paramAdvertisementInfo.mAdvertisementSoftInfo.Q);
+          localJSONObject.put("author_id", paramAdvertisementInfo.mAdvertisementSoftInfo.aa);
         }
         if (paramInt1 == 1)
         {
@@ -170,16 +170,16 @@ public class ReadInJoyCommonSoftAdUtils
       if (paramInt3 == 0)
       {
         localURLDrawable.setTag(new int[] { 0, 0, paramInt1, 1 });
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
+        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.k);
       }
       else if (paramInt3 == 1)
       {
         localURLDrawable.setTag(new int[] { 0, 0, paramInt1, 3 });
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
+        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.k);
       }
       else
       {
-        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.i);
+        localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.j);
       }
       paramImageView.setImageDrawable(localURLDrawable);
       return;
@@ -202,22 +202,45 @@ public class ReadInJoyCommonSoftAdUtils
   {
     if (paramSimpleRoundProgress != null)
     {
-      paramSimpleRoundProgress.jdField_a_of_type_Int = Color.parseColor("#CCE5E5E5");
-      paramSimpleRoundProgress.jdField_b_of_type_Int = Color.parseColor("#FF00CAFC");
-      paramSimpleRoundProgress.jdField_a_of_type_Float = AIOUtils.b(1.5F, paramSimpleRoundProgress.getContext().getResources());
-      paramSimpleRoundProgress.jdField_b_of_type_Float = AIOUtils.b(1.5F, paramSimpleRoundProgress.getContext().getResources());
-      paramSimpleRoundProgress.jdField_c_of_type_Float = AIOUtils.b(7.0F, paramSimpleRoundProgress.getContext().getResources());
-      paramSimpleRoundProgress.jdField_c_of_type_Int = 100;
-      paramSimpleRoundProgress.e = 270;
-      paramSimpleRoundProgress.d = 0;
-      paramSimpleRoundProgress.jdField_f_of_type_Int = 1;
+      paramSimpleRoundProgress.b = Color.parseColor("#CCE5E5E5");
+      paramSimpleRoundProgress.d = Color.parseColor("#FF00CAFC");
+      paramSimpleRoundProgress.c = AIOUtils.b(1.5F, paramSimpleRoundProgress.getContext().getResources());
+      paramSimpleRoundProgress.e = AIOUtils.b(1.5F, paramSimpleRoundProgress.getContext().getResources());
+      paramSimpleRoundProgress.f = AIOUtils.b(7.0F, paramSimpleRoundProgress.getContext().getResources());
+      paramSimpleRoundProgress.g = 100;
+      paramSimpleRoundProgress.i = 270;
+      paramSimpleRoundProgress.h = 0;
+      paramSimpleRoundProgress.j = 1;
     }
   }
   
-  private static boolean a(AdvertisementInfo paramAdvertisementInfo)
+  public static int b(AdvertisementInfo paramAdvertisementInfo)
+  {
+    int i;
+    if ((TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.l)) && (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.k)))
+    {
+      i = 1;
+      if (c(paramAdvertisementInfo)) {
+        return 1;
+      }
+    }
+    else
+    {
+      i = 2;
+    }
+    if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.l)) {
+      return 0;
+    }
+    if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.j)) {
+      return 2;
+    }
+    return i;
+  }
+  
+  private static boolean c(AdvertisementInfo paramAdvertisementInfo)
   {
     if ((paramAdvertisementInfo != null) && (paramAdvertisementInfo.mAdvertisementSoftInfo != null)) {
-      if (paramAdvertisementInfo.mAdvertisementSoftInfo.g == null) {
+      if (paramAdvertisementInfo.mAdvertisementSoftInfo.k == null) {
         return false;
       }
     }
@@ -225,7 +248,7 @@ public class ReadInJoyCommonSoftAdUtils
     {
       Intent localIntent = new Intent();
       localIntent.setAction("android.intent.action.VIEW");
-      localIntent.setData(Uri.parse(paramAdvertisementInfo.mAdvertisementSoftInfo.g));
+      localIntent.setData(Uri.parse(paramAdvertisementInfo.mAdvertisementSoftInfo.k));
       paramAdvertisementInfo = localIntent.resolveActivityInfo(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication().getPackageManager(), 0);
       if (paramAdvertisementInfo != null)
       {
@@ -237,33 +260,10 @@ public class ReadInJoyCommonSoftAdUtils
     catch (Exception paramAdvertisementInfo) {}
     return false;
   }
-  
-  public static int b(AdvertisementInfo paramAdvertisementInfo)
-  {
-    int i;
-    if ((TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.h)) && (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.g)))
-    {
-      i = 1;
-      if (a(paramAdvertisementInfo)) {
-        return 1;
-      }
-    }
-    else
-    {
-      i = 2;
-    }
-    if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.h)) {
-      return 0;
-    }
-    if (!TextUtils.isEmpty(paramAdvertisementInfo.mAdvertisementSoftInfo.jdField_f_of_type_JavaLangString)) {
-      return 2;
-    }
-    return i;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.ReadInJoyCommonSoftAdUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -142,7 +142,7 @@ public class LiveRoomHelper
     if (localIPluginManager == null) {
       return null;
     }
-    return localIPluginManager.a("LiveRoomPlugin.apk");
+    return localIPluginManager.d("LiveRoomPlugin.apk");
   }
   
   public static boolean getPluginInstalledInTool()
@@ -198,8 +198,8 @@ public class LiveRoomHelper
       localJSONObject.put("time", NetConnInfoCenter.getServerTimeMillis());
       localJSONObject.put("cost", paramLong);
       localJSONObject.put("platform", "androidqq");
-      localJSONObject.put("platVersion", AppSetting.f());
-      boolean bool = "com.tencent.mobileqq:tool".equals(Common.r());
+      localJSONObject.put("platVersion", AppSetting.h());
+      boolean bool = "com.tencent.mobileqq:tool".equals(Common.x());
       Object localObject = "";
       if (bool)
       {
@@ -220,11 +220,11 @@ public class LiveRoomHelper
       localJSONObject.put("from", paramString1);
       localJSONObject.put("action", paramString2);
       localJSONObject.put("result", paramString3);
-      localJSONObject.put("imei", DeviceInfoUtil.a());
-      localJSONObject.put("device", DeviceInfoUtil.i());
+      localJSONObject.put("imei", DeviceInfoUtil.b());
+      localJSONObject.put("device", DeviceInfoUtil.u());
       localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
       localJSONObject.put("network", NetworkUtil.getNetworkType(BaseApplicationImpl.getContext()));
-      localJSONObject.put("os", DeviceInfoUtil.e());
+      localJSONObject.put("os", DeviceInfoUtil.g());
       reportJson.put(localJSONObject);
       return;
     }
@@ -247,7 +247,7 @@ public class LiveRoomHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomHelper
  * JD-Core Version:    0.7.0.1
  */

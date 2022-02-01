@@ -30,10 +30,7 @@ public class PTSLiteDataParser
       QLog.i("PTSLiteDataParser", 1, "[preHandlePtsLiteData], articleInfo is null or proteusItemsData is null.");
       return;
     }
-    if (!PTSLiteSwitchManager.a().a()) {
-      return;
-    }
-    if (PTSLiteSwitchManager.a().b()) {
+    if (PTSLiteSwitchManager.a().c()) {
       d(paramAbsBaseArticleInfo);
     }
     PTSLiteDataFactory.a.a(paramAbsBaseArticleInfo);
@@ -268,7 +265,7 @@ public class PTSLiteDataParser
     {
       paramJSONObject = (ReadInJoyLogicManager)paramJSONObject.getManager(QQManagerFactory.READINJOY_LOGIC_MANAGER);
       if (paramJSONObject != null) {
-        paramJSONObject.getReadInJoyLogicEngine().b(paramAbsBaseArticleInfo);
+        paramJSONObject.getReadInJoyLogicEngine().c(paramAbsBaseArticleInfo);
       }
     }
   }
@@ -301,7 +298,7 @@ public class PTSLiteDataParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteDataParser
  * JD-Core Version:    0.7.0.1
  */

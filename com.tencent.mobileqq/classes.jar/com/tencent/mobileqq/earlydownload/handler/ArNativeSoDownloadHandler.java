@@ -24,19 +24,9 @@ public class ArNativeSoDownloadHandler
     super("qq.android.ar.native.so_v8.3.6", paramQQAppInterface);
   }
   
-  public int a()
-  {
-    return 10024;
-  }
-  
   public Class<? extends XmlData> a()
   {
     return ArNativeSoData.class;
-  }
-  
-  public String a()
-  {
-    return "ArConfig_NativeSoDownloadHandler";
   }
   
   public void a(XmlData paramXmlData)
@@ -98,7 +88,7 @@ public class ArNativeSoDownloadHandler
   
   public void a(String paramString)
   {
-    int i = ArNativeSoLoader.b(paramString);
+    int i = ArNativeSoLoader.d(paramString);
     Object localObject1;
     if (QLog.isColorLevel())
     {
@@ -111,13 +101,13 @@ public class ArNativeSoDownloadHandler
     }
     if (i == 0)
     {
-      BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", b()).commit();
+      BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit().putInt("ar_native_so_version", f()).commit();
     }
     else
     {
-      a().loadState = 0;
-      a().Version = 0;
-      EarlyDataFactory.a(a(), new String[0]);
+      h().loadState = 0;
+      h().Version = 0;
+      EarlyDataFactory.a(h(), new String[0]);
     }
     for (;;)
     {
@@ -127,18 +117,18 @@ public class ArNativeSoDownloadHandler
         str = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine836", "");
         if (!TextUtils.isEmpty(str))
         {
-          AppRuntime localAppRuntime = this.a;
-          i = a().Version;
+          AppRuntime localAppRuntime = this.c;
+          i = h().Version;
           if (!TextUtils.isEmpty(str)) {
             break label293;
           }
           localObject1 = "0";
           ReportController.b(localAppRuntime, "dc01440", "", "", "0X8007A3D", "0X8007A3D", 0, 0, "", String.valueOf(i), (String)localObject1, "qq.android.ar.native.so_v8.3.6");
           localObject1 = new HashMap();
-          ((HashMap)localObject1).put("config_version", String.valueOf(a().Version));
+          ((HashMap)localObject1).put("config_version", String.valueOf(h().Version));
           ((HashMap)localObject1).put("md5", str);
           ((HashMap)localObject1).put("res_name", "qq.android.ar.native.so_v8.3.6");
-          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "armap_so_update_rate", true, 0L, 0L, (HashMap)localObject1, "", false);
+          StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(this.c.getCurrentAccountUin(), "armap_so_update_rate", true, 0L, 0L, (HashMap)localObject1, "", false);
         }
       }
       catch (Exception localException)
@@ -173,7 +163,7 @@ public class ArNativeSoDownloadHandler
       super.a(paramBoolean2);
       return;
     }
-    if ((a() != null) && (a().loadState == 2))
+    if ((h() != null) && (h().loadState == 2))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ArConfig_NativeSoDownloadHandler", 2, "restartDownloadForce is in downloading");
@@ -184,19 +174,29 @@ public class ArNativeSoDownloadHandler
     }
   }
   
-  public boolean a()
-  {
-    return true;
-  }
-  
   public String b()
   {
+    return "ArConfig_NativeSoDownloadHandler";
+  }
+  
+  public int c()
+  {
+    return 10024;
+  }
+  
+  public String d()
+  {
     return "prd";
+  }
+  
+  public boolean e()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.ArNativeSoDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

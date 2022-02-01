@@ -39,7 +39,7 @@ final class AdDownloadStateHandler$OnReplaceUrl
     localStringBuilder.append(paramRIJDownloadView);
     localStringBuilder.append(" url = ");
     if (paramAdDownloadInfo != null) {
-      paramRIJDownloadView = paramAdDownloadInfo.e();
+      paramRIJDownloadView = paramAdDownloadInfo.h();
     } else {
       paramRIJDownloadView = null;
     }
@@ -47,7 +47,7 @@ final class AdDownloadStateHandler$OnReplaceUrl
     QLog.d("AD_DOWNLOAD_TAG", 1, localStringBuilder.toString());
     paramRIJDownloadView = localObject;
     if (paramAdDownloadInfo != null) {
-      paramRIJDownloadView = paramAdDownloadInfo.e();
+      paramRIJDownloadView = paramAdDownloadInfo.h();
     }
     if (TextUtils.isEmpty((CharSequence)paramRIJDownloadView)) {
       paramRIJDownloadView = "replaceUrlFail";
@@ -59,7 +59,7 @@ final class AdDownloadStateHandler$OnReplaceUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.event.AdDownloadStateHandler.OnReplaceUrl
  * JD-Core Version:    0.7.0.1
  */

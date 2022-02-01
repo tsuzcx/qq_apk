@@ -9,11 +9,11 @@ class SecurityPolicyChecker$CheckCameraTask
 {
   public void run()
   {
-    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.a();
+    IAVGameBusinessCtrl localIAVGameBusinessCtrl = IAVGameBusinessCtrl.p();
     if (localIAVGameBusinessCtrl == null) {
       return;
     }
-    AVGameSession localAVGameSession = localIAVGameBusinessCtrl.a();
+    AVGameSession localAVGameSession = localIAVGameBusinessCtrl.j();
     if (localAVGameSession == null) {
       return;
     }
@@ -22,18 +22,18 @@ class SecurityPolicyChecker$CheckCameraTask
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("CheckCameraTask, player[");
-      localStringBuilder.append(SecurityPolicyChecker.a(localSecurityPolicyChecker));
+      localStringBuilder.append(SecurityPolicyChecker.c(localSecurityPolicyChecker));
       localStringBuilder.append("], self[");
-      localStringBuilder.append(localAVGameSession.b);
+      localStringBuilder.append(localAVGameSession.l);
       localStringBuilder.append("], auto[");
-      localStringBuilder.append(localAVGameSession.g);
+      localStringBuilder.append(localAVGameSession.o);
       localStringBuilder.append("], hasLocalVideo[");
-      localStringBuilder.append(localAVGameSession.a(1));
+      localStringBuilder.append(localAVGameSession.c(1));
       localStringBuilder.append("]");
       QLog.i("SecurityPolicyChecker", 2, localStringBuilder.toString());
     }
-    if ((localAVGameSession.g) && (localAVGameSession.a(1)) && (!TextUtils.equals(SecurityPolicyChecker.a(localSecurityPolicyChecker), String.valueOf(localAVGameSession.b)))) {
-      localIAVGameBusinessCtrl.c();
+    if ((localAVGameSession.o) && (localAVGameSession.c(1)) && (!TextUtils.equals(SecurityPolicyChecker.c(localSecurityPolicyChecker), String.valueOf(localAVGameSession.l)))) {
+      localIAVGameBusinessCtrl.l();
     }
   }
 }

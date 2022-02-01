@@ -15,12 +15,12 @@ class AECMShowQipcModule$2
     Bundle localBundle = new Bundle();
     localBundle.putBoolean("key_resource_download_all_succeeded", paramBoolean);
     localBundle.putSerializable("key_resource_download_result", paramHashMap);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCmshowAECMShowQipcModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    this.b.callbackResult(this.a, EIPCResult.createSuccessResult(localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.cmshow.AECMShowQipcModule.2
  * JD-Core Version:    0.7.0.1
  */

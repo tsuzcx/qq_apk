@@ -1,16 +1,10 @@
 package com.tencent.qqlive.module.videoreport.trace;
 
 import android.support.v4.util.ArrayMap;
-import com.tencent.qqlive.module.videoreport.Log;
-import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class Tracer
 {
-  private static final String TAG = "VRTracer";
   private static Map<String, Tracer.TraceData> sDataMap = new ArrayMap();
   
   public static void begin(String paramString)
@@ -49,41 +43,10 @@ public class Tracer
     }
     return localTraceData1;
   }
-  
-  public static void trace()
-  {
-    if (VideoReportInner.getInstance().isDebugMode())
-    {
-      Log.d("VRTracer", "begin trace output:");
-      Iterator localIterator = sDataMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        Tracer.TraceData localTraceData = (Tracer.TraceData)localEntry.getValue();
-        if (localTraceData.count != 0)
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("    ");
-          localStringBuilder.append((String)localEntry.getKey());
-          localStringBuilder.append(": average = ");
-          localStringBuilder.append(localTraceData.totalNano / localTraceData.count / 1000L);
-          localStringBuilder.append(" us, total = ");
-          localStringBuilder.append(localTraceData.totalNano / 1000L);
-          localStringBuilder.append(" us, count = ");
-          localStringBuilder.append(localTraceData.count);
-          Log.d("VRTracer", localStringBuilder.toString());
-        }
-        else
-        {
-          Log.d("VRTracer", "    no data found");
-        }
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.trace.Tracer
  * JD-Core Version:    0.7.0.1
  */

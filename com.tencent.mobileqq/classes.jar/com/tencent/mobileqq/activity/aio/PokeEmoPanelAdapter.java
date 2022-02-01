@@ -32,15 +32,15 @@ import java.util.List;
 public class PokeEmoPanelAdapter
   extends BaseAdapter
 {
-  private float jdField_a_of_type_Float = 1.25F;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private ArrayList<PEItemData> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Context a;
+  private Drawable b;
+  private ArrayList<PEItemData> c = new ArrayList();
+  private float d = 1.25F;
   
   public PokeEmoPanelAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841546);
+    this.a = paramContext;
+    this.b = paramContext.getResources().getDrawable(2130842390);
   }
   
   private int a()
@@ -51,7 +51,7 @@ public class PokeEmoPanelAdapter
   public Drawable a(String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.b;
     localURLDrawableOptions.mLoadingDrawable = localDrawable;
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mPlayGifImage = true;
@@ -60,28 +60,28 @@ public class PokeEmoPanelAdapter
   
   public void a(List<PEItemData> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.c.clear();
     if ((paramList != null) && (paramList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+      this.c.addAll(paramList);
     }
     notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.c != null)
     {
       int i = a();
-      return (this.jdField_a_of_type_JavaUtilArrayList.size() + i - 1) / i;
+      return (this.c.size() + i - 1) / i;
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.c;
     if ((localArrayList != null) && (localArrayList.size() > paramInt)) {
-      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return this.c.get(paramInt);
     }
     return null;
   }
@@ -94,40 +94,40 @@ public class PokeEmoPanelAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int m = a();
-    int i = (XPanelContainer.jdField_a_of_type_Int - AIOUtils.b(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2) / 3;
+    int i = (XPanelContainer.a - AIOUtils.b(70.0F, this.a.getResources()) - AIOUtils.b(64.0F, this.a.getResources()) * 2) / 3;
     if (i < 0) {
       i = 0;
     }
-    int k = AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = AIOUtils.b(10.0F, this.a.getResources());
     int j = i;
     if (i < k) {
       j = k;
     }
-    i = (this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4) / 8;
+    i = (this.a.getResources().getDisplayMetrics().widthPixels - AIOUtils.b(64.0F, this.a.getResources()) * 4) / 8;
     Object localObject2;
     Object localObject3;
     Object localObject4;
     if (paramView == null)
     {
-      paramView = new StickerBubbleLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setMinimumHeight(AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + j);
+      paramView = new StickerBubbleLinearLayout(this.a);
+      paramView.setMinimumHeight(AIOUtils.b(64.0F, this.a.getResources()) + j);
       paramView.setOrientation(0);
       i = 0;
       while (i < m)
       {
-        localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+        localObject1 = new LinearLayout(this.a);
         ((LinearLayout)localObject1).setGravity(17);
         localObject2 = new LinearLayout.LayoutParams(-2, -2);
         ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-        localObject2 = new LinearLayout.LayoutParams(AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        localObject2 = new LinearLayout.LayoutParams(AIOUtils.b(64.0F, this.a.getResources()), AIOUtils.b(64.0F, this.a.getResources()));
         k = j / 2;
         ((LinearLayout.LayoutParams)localObject2).topMargin = k;
         ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
-        localObject3 = new StickerBubbleImageView(this.jdField_a_of_type_AndroidContentContext);
+        localObject3 = new StickerBubbleImageView(this.a);
         ((View)localObject3).setPadding(14, 14, 14, 14);
-        k = AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-        int n = AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        k = AIOUtils.b(64.0F, this.a.getResources());
+        int n = AIOUtils.b(64.0F, this.a.getResources());
         localObject4 = new ShapeDrawable(new OvalShape());
         ((ShapeDrawable)localObject4).setIntrinsicHeight(k);
         ((ShapeDrawable)localObject4).setIntrinsicWidth(n);
@@ -150,19 +150,19 @@ public class PokeEmoPanelAdapter
     {
       j = m * paramInt + i;
       localObject2 = ((ViewGroup)((ViewGroup)localObject1).getChildAt(i)).getChildAt(0);
-      if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
+      if (j < this.c.size())
       {
         ((View)localObject2).setVisibility(0);
-        localObject3 = (PEItemData)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+        localObject3 = (PEItemData)this.c.get(j);
         if (localObject3 != null) {
-          ((ImageView)localObject2).setImageDrawable(a(((PEItemData)localObject3).jdField_a_of_type_JavaLangString));
+          ((ImageView)localObject2).setImageDrawable(a(((PEItemData)localObject3).b));
         }
         ((View)localObject2).setTag(Integer.valueOf(j));
-        if (AppSetting.d)
+        if (AppSetting.e)
         {
           localObject4 = new StringBuilder();
-          ((StringBuilder)localObject4).append(PEPanelHelper.a(((PEItemData)localObject3).jdField_a_of_type_Int));
-          ((StringBuilder)localObject4).append(HardCodeUtil.a(2131708315));
+          ((StringBuilder)localObject4).append(PEPanelHelper.a(((PEItemData)localObject3).a));
+          ((StringBuilder)localObject4).append(HardCodeUtil.a(2131906105));
           ((View)localObject2).setContentDescription(((StringBuilder)localObject4).toString());
         }
       }
@@ -180,7 +180,7 @@ public class PokeEmoPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokeEmoPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

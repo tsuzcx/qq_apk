@@ -12,10 +12,10 @@ class RIJCommentInLikeFeedUpvoteArticleHandler$1
   
   public void a(ReadInJoyObserver paramReadInJoyObserver)
   {
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     int j = this.b;
     boolean bool;
-    if (RIJPBFieldUtils.a(this.jdField_a_of_type_TencentImOidbCmd0x83eOidb_cmd0x83e$RspBody.uint32_operation) == 2) {
+    if (RIJPBFieldUtils.a(this.c.uint32_operation) == 2) {
       bool = true;
     } else {
       bool = false;
@@ -25,7 +25,7 @@ class RIJCommentInLikeFeedUpvoteArticleHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.handler.RIJCommentInLikeFeedUpvoteArticleHandler.1
  * JD-Core Version:    0.7.0.1
  */

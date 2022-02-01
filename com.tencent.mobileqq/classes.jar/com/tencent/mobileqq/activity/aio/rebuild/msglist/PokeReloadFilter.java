@@ -18,16 +18,16 @@ public class PokeReloadFilter
   {
     if ((paramList != null) && (paramList.size() != 0))
     {
-      Object localObject = paramAIOContext.a();
+      Object localObject = paramAIOContext.O();
       QQAppInterface localQQAppInterface = paramAIOContext.a();
       ChatMessage localChatMessage = (ChatMessage)paramList.get(paramList.size() - 1);
-      if ((!localChatMessage.isSend()) && (((BaseSessionInfo)localObject).jdField_a_of_type_Int == 0) && (!((FullScreenInputHelper)paramAIOContext.a(24)).c())) {
+      if ((!localChatMessage.isSend()) && (((BaseSessionInfo)localObject).a == 0) && (!((FullScreenInputHelper)paramAIOContext.a(24)).e())) {
         if ((localChatMessage instanceof MessageForPoke))
         {
           paramAIOContext = (MessageForPoke)localChatMessage;
           if (!paramAIOContext.isPlayed)
           {
-            PokeItemAnimationManager.a().a(localQQAppInterface, ((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString, paramAIOContext.interactType, 0, paramAIOContext.strength);
+            PokeItemAnimationManager.c().a(localQQAppInterface, ((BaseSessionInfo)localObject).b, paramAIOContext.interactType, 0, paramAIOContext.strength);
             if (QLog.isColorLevel())
             {
               localObject = new StringBuilder();
@@ -42,7 +42,7 @@ public class PokeReloadFilter
         }
         else
         {
-          PokeItemAnimationManager.a().a(localQQAppInterface, ((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString, -1, 0, -1);
+          PokeItemAnimationManager.c().a(localQQAppInterface, ((BaseSessionInfo)localObject).b, -1, 0, -1);
           if (QLog.isColorLevel())
           {
             paramAIOContext = new StringBuilder();
@@ -58,7 +58,7 @@ public class PokeReloadFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.PokeReloadFilter
  * JD-Core Version:    0.7.0.1
  */

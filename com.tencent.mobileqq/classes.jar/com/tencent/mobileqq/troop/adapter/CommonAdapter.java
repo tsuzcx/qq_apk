@@ -8,16 +8,16 @@ import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
 public abstract class CommonAdapter<T>
   extends QuickRecyclerAdapter<T>
 {
-  protected int a;
-  protected Context a;
-  protected LayoutInflater a;
+  protected Context b;
+  protected int c;
+  protected LayoutInflater d;
   
   public CommonAdapter(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramContext;
+    this.d = LayoutInflater.from(paramContext);
+    this.c = paramInt;
     a(new CommonAdapter.1(this, paramInt));
   }
   
@@ -32,7 +32,7 @@ public abstract class CommonAdapter<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.adapter.CommonAdapter
  * JD-Core Version:    0.7.0.1
  */

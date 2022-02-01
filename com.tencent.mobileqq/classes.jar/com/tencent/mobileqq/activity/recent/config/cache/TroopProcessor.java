@@ -33,7 +33,7 @@ public class TroopProcessor
       paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
       if (paramRecentUser.getType() == 1)
       {
-        paramBaseQQAppInterface = ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramRecentUser.uin);
+        paramBaseQQAppInterface = ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).n(paramRecentUser.uin);
         if (paramBaseQQAppInterface != null) {
           paramRecentUser.showUpTime = paramBaseQQAppInterface.addedTimestamp;
         }
@@ -48,7 +48,7 @@ public class TroopProcessor
     return "TroopProcessor";
   }
   
-  public boolean a(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
+  public boolean b(@NonNull BaseQQAppInterface paramBaseQQAppInterface, @NonNull RecentUser paramRecentUser, boolean paramBoolean)
   {
     if (TextUtils.equals(paramRecentUser.uin, String.valueOf(9915)))
     {
@@ -68,7 +68,7 @@ public class TroopProcessor
           return false;
         }
       }
-      else if ((paramRecentUser.getType() == 9000) && (TroopNotificationUtils.a((QQAppInterface)paramBaseQQAppInterface))) {
+      else if ((paramRecentUser.getType() == 9000) && (TroopNotificationUtils.b((QQAppInterface)paramBaseQQAppInterface))) {
         return false;
       }
     }
@@ -77,7 +77,7 @@ public class TroopProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.TroopProcessor
  * JD-Core Version:    0.7.0.1
  */

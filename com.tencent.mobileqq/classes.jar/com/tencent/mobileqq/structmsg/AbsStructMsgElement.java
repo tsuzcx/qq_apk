@@ -21,7 +21,7 @@ public abstract class AbsStructMsgElement
   public String C;
   public String D;
   public String E;
-  public String F;
+  public int F;
   public String G;
   public String H;
   public String I;
@@ -31,71 +31,63 @@ public abstract class AbsStructMsgElement
   public String M;
   public String N;
   public String O;
-  public String P;
+  public int P;
   public String Q;
   public String R;
   public String S;
   public String T;
   public String U;
-  public String V;
-  public String W;
+  public int V;
+  public int W;
   public String X;
   public String Y;
-  public String Z = "";
-  public int a;
-  public long a;
-  public AbsStructMsg a;
-  public String a;
-  public WeakReference<OnLongClickAndTouchListener> a;
-  public String aa = null;
-  public String ab;
-  int jdField_b_of_type_Int;
-  long jdField_b_of_type_Long = -1L;
+  public String Z;
+  public int a = 18;
+  public int aa;
+  public int ab;
+  public int ac;
+  public int ad;
+  public String ae;
+  public String af;
+  public String ag;
+  public String ah;
+  public String ai;
+  public String aj;
+  public String ak;
+  public int al;
+  public String am = "";
+  public String an = null;
+  public long ao = 0L;
+  public String ap;
+  public int aq = -1;
+  public WeakReference<OnLongClickAndTouchListener> ar = null;
+  public AbsStructMsg as = null;
+  long at = -1L;
   public String b;
-  public int c;
-  public String c = null;
-  public int d;
-  public String d = null;
-  public int e;
+  int c;
+  public String d;
   public String e = null;
-  public int f;
   public String f = null;
-  public int g;
   public String g = null;
-  public int h;
   public String h = null;
-  public int i;
   public String i = null;
-  public int j;
-  public String j;
-  public int k;
-  public String k;
-  public int l;
+  public String j = null;
+  public String k = null;
   public String l;
-  public int m;
   public String m;
-  public int n = -1;
   public String n;
   public String o;
   public String p;
   public String q;
   public String r;
   public String s;
-  public String t;
+  public int t;
   public String u;
   public String v;
   public String w;
   public String x;
   public String y;
-  public String z;
-  
-  public AbsStructMsgElement()
-  {
-    this.jdField_a_of_type_Int = 18;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = null;
-  }
+  public int z;
   
   public static String a(String paramString)
   {
@@ -103,7 +95,7 @@ public abstract class AbsStructMsgElement
       return "";
     }
     Object localObject = paramString;
-    if (!URLUtil.a(paramString))
+    if (!URLUtil.e(paramString))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("https://");
@@ -121,904 +113,904 @@ public abstract class AbsStructMsgElement
   
   public int a()
   {
-    return this.jdField_b_of_type_Int;
+    return this.c;
   }
   
   public abstract View a(Context paramContext, View paramView, Bundle paramBundle);
-  
-  public abstract String a();
-  
-  public void a(int paramInt)
-  {
-    int i1 = this.jdField_b_of_type_Int;
-    if ((i1 & paramInt) == 0) {
-      this.jdField_b_of_type_Int = (paramInt | i1);
-    }
-  }
   
   public void a(AbsShareMsg paramAbsShareMsg) {}
   
   public void a(ObjectInput paramObjectInput)
   {
-    this.jdField_a_of_type_Int = paramObjectInput.readInt();
+    this.a = paramObjectInput.readInt();
   }
   
   public void a(ObjectOutput paramObjectOutput)
   {
-    paramObjectOutput.writeUTF(this.jdField_a_of_type_JavaLangString);
-    paramObjectOutput.writeInt(this.jdField_a_of_type_Int);
+    paramObjectOutput.writeUTF(this.b);
+    paramObjectOutput.writeInt(this.a);
   }
   
   public abstract void a(XmlSerializer paramXmlSerializer);
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_b_of_type_Int & paramInt) == paramInt;
+    return (this.c & paramInt) == paramInt;
   }
   
   public abstract boolean a(StructMsgNode paramStructMsgNode);
+  
+  public abstract String b();
+  
+  public void b(int paramInt)
+  {
+    int i1 = this.c;
+    if ((i1 & paramInt) == 0) {
+      this.c = (paramInt | i1);
+    }
+  }
   
   /* Error */
   public void onClick(View paramView)
   {
     // Byte code:
-    //   0: invokestatic 176	android/os/SystemClock:uptimeMillis	()J
+    //   0: invokestatic 194	android/os/SystemClock:uptimeMillis	()J
     //   3: aload_0
-    //   4: getfield 104	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_Long	J
+    //   4: getfield 122	com/tencent/mobileqq/structmsg/AbsStructMsgElement:at	J
     //   7: lsub
-    //   8: ldc2_w 177
+    //   8: ldc2_w 195
     //   11: lcmp
     //   12: ifge +6 -> 18
-    //   15: goto +1853 -> 1868
+    //   15: goto +1854 -> 1869
     //   18: aload_0
-    //   19: invokestatic 176	android/os/SystemClock:uptimeMillis	()J
-    //   22: putfield 104	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_Long	J
+    //   19: invokestatic 194	android/os/SystemClock:uptimeMillis	()J
+    //   22: putfield 122	com/tencent/mobileqq/structmsg/AbsStructMsgElement:at	J
     //   25: aload_1
-    //   26: invokevirtual 184	android/view/View:getTag	()Ljava/lang/Object;
+    //   26: invokevirtual 202	android/view/View:getTag	()Ljava/lang/Object;
     //   29: astore 6
     //   31: aload_0
-    //   32: invokevirtual 188	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   32: invokevirtual 206	java/lang/Object:getClass	()Ljava/lang/Class;
     //   35: aload 6
-    //   37: invokevirtual 194	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
+    //   37: invokevirtual 212	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
     //   40: ifne +6 -> 46
-    //   43: goto +1825 -> 1868
+    //   43: goto +1826 -> 1869
     //   46: aload 6
     //   48: checkcast 2	com/tencent/mobileqq/structmsg/AbsStructMsgElement
     //   51: astore 9
     //   53: aload_1
-    //   54: invokevirtual 198	android/view/View:getContext	()Landroid/content/Context;
+    //   54: invokevirtual 216	android/view/View:getContext	()Landroid/content/Context;
     //   57: astore 10
-    //   59: ldc 200
+    //   59: ldc 218
     //   61: aload 10
-    //   63: invokevirtual 194	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
+    //   63: invokevirtual 212	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
     //   66: ifne +13 -> 79
-    //   69: ldc 202
+    //   69: ldc 220
     //   71: aload 10
-    //   73: invokevirtual 194	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
-    //   76: ifeq +1792 -> 1868
+    //   73: invokevirtual 212	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
+    //   76: ifeq +1793 -> 1869
     //   79: aload 10
-    //   81: checkcast 204	com/tencent/mobileqq/app/BaseActivity
+    //   81: checkcast 222	com/tencent/mobileqq/app/BaseActivity
     //   84: astore 11
     //   86: aload 11
-    //   88: invokevirtual 208	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
+    //   88: invokevirtual 226	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
     //   91: ifnonnull +6 -> 97
-    //   94: goto +1774 -> 1868
+    //   94: goto +1775 -> 1869
     //   97: aload 11
-    //   99: invokevirtual 208	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
-    //   102: invokevirtual 213	com/tencent/mobileqq/activity/ChatFragment:a	()Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   99: invokevirtual 226	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
+    //   102: invokevirtual 231	com/tencent/mobileqq/activity/ChatFragment:j	()Lcom/tencent/mobileqq/app/QQAppInterface;
     //   105: astore 6
     //   107: aload 9
-    //   109: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
+    //   109: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
     //   112: lconst_0
     //   113: lcmp
     //   114: ifle +57 -> 171
     //   117: aload 9
-    //   119: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:aa	Ljava/lang/String;
-    //   122: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   119: getfield 110	com/tencent/mobileqq/structmsg/AbsStructMsgElement:an	Ljava/lang/String;
+    //   122: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   125: ifne +46 -> 171
     //   128: aload 6
-    //   130: ldc 221
-    //   132: ldc 223
+    //   130: ldc 239
+    //   132: ldc 241
     //   134: aload 9
-    //   136: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   139: ldc 227
-    //   141: ldc 229
+    //   136: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   139: ldc 245
+    //   141: ldc 247
     //   143: aload_0
-    //   144: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:aa	Ljava/lang/String;
-    //   147: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   144: getfield 110	com/tencent/mobileqq/structmsg/AbsStructMsgElement:an	Ljava/lang/String;
+    //   147: invokestatic 253	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   150: iconst_0
-    //   151: ldc 88
-    //   153: ldc 88
+    //   151: ldc 106
+    //   153: ldc 106
     //   155: aload 9
-    //   157: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   160: invokestatic 240	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   163: ldc 88
-    //   165: invokestatic 245	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   157: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   160: invokestatic 258	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   163: ldc 106
+    //   165: invokestatic 263	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   168: goto +3 -> 171
-    //   171: ldc 247
-    //   173: invokestatic 253	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   176: checkcast 247	com/tencent/mobileqq/kandian/biz/common/api/IReadInJoySPEventReport
-    //   179: aload 9
-    //   181: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   184: aload 9
-    //   186: invokeinterface 257 3 0
-    //   191: aload 11
-    //   193: invokevirtual 208	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
-    //   196: invokevirtual 260	com/tencent/mobileqq/activity/ChatFragment:a	()Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;
-    //   199: instanceof 262
-    //   202: ifeq +195 -> 397
-    //   205: aload 9
-    //   207: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:aa	Ljava/lang/String;
-    //   210: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   213: ifne +14 -> 227
-    //   216: aload_0
-    //   217: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:aa	Ljava/lang/String;
-    //   220: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   223: istore_2
-    //   224: goto +5 -> 229
-    //   227: iconst_m1
-    //   228: istore_2
-    //   229: aload 9
-    //   231: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   234: astore 7
-    //   236: aload 7
-    //   238: ifnull +47 -> 285
-    //   241: aload 7
-    //   243: getfield 268	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   246: ifnull +39 -> 285
-    //   249: aload 9
-    //   251: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   254: getfield 268	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   257: getfield 274	com/tencent/mobileqq/data/MessageRecord:mExJsonObject	Lorg/json/JSONObject;
-    //   260: ifnull +25 -> 285
-    //   263: aload 9
-    //   265: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   268: getfield 268	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   271: getfield 274	com/tencent/mobileqq/data/MessageRecord:mExJsonObject	Lorg/json/JSONObject;
-    //   274: ldc_w 276
-    //   277: invokevirtual 281	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   280: astore 7
-    //   282: goto +7 -> 289
-    //   285: ldc 88
-    //   287: astore 7
-    //   289: aload 6
-    //   291: aload 9
-    //   293: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   296: iconst_0
-    //   297: iconst_4
-    //   298: aload 9
-    //   300: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   303: iload_2
-    //   304: i2l
-    //   305: ladd
-    //   306: aload 7
-    //   308: invokestatic 286	com/tencent/mobileqq/applets/PublicAccountEventReport:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;IIJLjava/lang/String;)V
-    //   311: getstatic 291	com/tencent/biz/officialaccount/OfficialAccountReporter:a	Lcom/tencent/biz/officialaccount/OfficialAccountReporter$Reporter;
-    //   314: aload 9
-    //   316: aload 7
-    //   318: invokevirtual 296	com/tencent/biz/officialaccount/OfficialAccountReporter$Reporter:a	(Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Ljava/lang/String;)V
-    //   321: ldc_w 298
-    //   324: aload 9
-    //   326: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   329: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   332: ifeq +65 -> 397
-    //   335: aload 6
-    //   337: getstatic 308	com/tencent/mobileqq/app/BusinessHandlerFactory:APOLLO_EXTENSION_HANDLER	Ljava/lang/String;
-    //   340: invokevirtual 314	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   343: checkcast 316	com/tencent/mobileqq/apollo/handler/IApolloExtensionHandler
-    //   346: astore 7
-    //   348: new 115	java/lang/StringBuilder
-    //   351: dup
-    //   352: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   355: astore 8
-    //   357: aload 8
-    //   359: aload 9
-    //   361: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   364: invokevirtual 319	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   367: pop
-    //   368: aload 8
-    //   370: ldc 88
-    //   372: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   375: pop
-    //   376: aload 7
-    //   378: iconst_3
-    //   379: aload 8
-    //   381: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   384: aload 9
-    //   386: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   389: invokeinterface 324 4 0
-    //   394: goto +3 -> 397
-    //   397: aload 6
-    //   399: astore 8
-    //   401: aload 9
-    //   403: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   406: lconst_0
-    //   407: lcmp
-    //   408: ifle +23 -> 431
-    //   411: invokestatic 330	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   414: new 332	com/tencent/mobileqq/structmsg/AbsStructMsgElement$1
-    //   417: dup
-    //   418: aload_0
-    //   419: aload 9
-    //   421: aload 8
-    //   423: invokespecial 335	com/tencent/mobileqq/structmsg/AbsStructMsgElement$1:<init>	(Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Lcom/tencent/mobileqq/app/QQAppInterface;)V
-    //   426: lconst_0
-    //   427: invokevirtual 341	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   430: pop
-    //   431: aconst_null
-    //   432: astore 7
-    //   434: aload_1
-    //   435: invokestatic 346	com/tencent/mobileqq/activity/aio/AIOUtils:a	(Landroid/view/View;)Lcom/tencent/mobileqq/data/ChatMessage;
-    //   438: astore 6
-    //   440: aload 6
-    //   442: astore 7
-    //   444: aload 7
-    //   446: ifnull +276 -> 722
-    //   449: aload 9
-    //   451: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   454: ifnull +268 -> 722
-    //   457: ldc_w 348
-    //   460: aload 7
-    //   462: ldc_w 350
-    //   465: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   468: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   471: ifeq +251 -> 722
-    //   474: new 278	org/json/JSONObject
-    //   477: dup
-    //   478: invokespecial 356	org/json/JSONObject:<init>	()V
-    //   481: astore 13
-    //   483: aload 13
-    //   485: ldc_w 358
-    //   488: aload 7
-    //   490: getfield 361	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
-    //   493: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   496: pop
-    //   497: aload 13
-    //   499: ldc_w 367
-    //   502: aload 9
-    //   504: getfield 369	com/tencent/mobileqq/structmsg/AbsStructMsgElement:l	Ljava/lang/String;
-    //   507: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   510: pop
-    //   511: aload 13
-    //   513: ldc_w 371
-    //   516: aload 9
-    //   518: getfield 373	com/tencent/mobileqq/structmsg/AbsStructMsgElement:j	Ljava/lang/String;
-    //   521: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   524: pop
-    //   525: aload 13
-    //   527: ldc_w 375
-    //   530: aload 9
-    //   532: getfield 377	com/tencent/mobileqq/structmsg/AbsStructMsgElement:k	Ljava/lang/String;
-    //   535: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   538: pop
-    //   539: aload 13
-    //   541: ldc_w 379
-    //   544: invokestatic 384	com/tencent/biz/common/util/HttpUtil:getNetWorkType	()I
-    //   547: invokestatic 388	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   550: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   553: pop
-    //   554: aload 13
-    //   556: ldc_w 390
-    //   559: invokestatic 394	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()Ljava/lang/String;
-    //   562: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   565: pop
-    //   566: aload 13
-    //   568: ldc_w 396
-    //   571: ldc 88
-    //   573: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   576: pop
-    //   577: aload 13
-    //   579: ldc_w 398
-    //   582: aload 7
-    //   584: ldc_w 400
-    //   587: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   590: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   593: pop
-    //   594: aload 13
-    //   596: ldc_w 402
-    //   599: aload 7
-    //   601: ldc_w 404
-    //   604: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   607: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   610: pop
-    //   611: ldc_w 406
-    //   614: invokestatic 253	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
-    //   617: checkcast 406	com/tencent/biz/pubaccount/util/api/IPAReportUtil
-    //   620: astore 6
-    //   622: aload 7
-    //   624: getfield 409	com/tencent/mobileqq/data/ChatMessage:selfuin	Ljava/lang/String;
-    //   627: astore 12
-    //   629: aload 13
-    //   631: invokevirtual 410	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   634: astore 13
-    //   636: new 115	java/lang/StringBuilder
-    //   639: dup
-    //   640: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   643: astore 14
-    //   645: aload 14
-    //   647: ldc 88
-    //   649: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   652: pop
-    //   653: aload 9
-    //   655: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   658: astore 15
-    //   660: aload 14
-    //   662: aload 15
-    //   664: getfield 413	com/tencent/mobileqq/structmsg/AbsStructMsg:msgId	J
-    //   667: invokevirtual 319	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   670: pop
-    //   671: aload 6
-    //   673: aload 8
-    //   675: aload 12
-    //   677: aload 13
-    //   679: aload 14
-    //   681: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   684: invokeinterface 417 5 0
-    //   689: goto +33 -> 722
-    //   692: astore 6
-    //   694: goto +20 -> 714
-    //   697: astore 6
-    //   699: goto +15 -> 714
-    //   702: astore 6
-    //   704: goto +10 -> 714
-    //   707: astore 6
-    //   709: goto +5 -> 714
-    //   712: astore 6
-    //   714: aload 6
-    //   716: invokevirtual 420	org/json/JSONException:printStackTrace	()V
-    //   719: goto +3 -> 722
-    //   722: new 422	com/tencent/mobileqq/structmsg/StructMsgClickHandler
-    //   725: dup
-    //   726: aload 8
-    //   728: aload_1
-    //   729: aload 7
-    //   731: invokespecial 425	com/tencent/mobileqq/structmsg/StructMsgClickHandler:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/view/View;Lcom/tencent/mobileqq/data/MessageRecord;)V
-    //   734: astore 6
-    //   736: aload 11
-    //   738: invokevirtual 208	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
-    //   741: astore 11
-    //   743: aload 11
-    //   745: ifnull +63 -> 808
-    //   748: aload 11
-    //   750: invokevirtual 260	com/tencent/mobileqq/activity/ChatFragment:a	()Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;
-    //   753: astore 11
-    //   755: aload 11
-    //   757: instanceof 262
-    //   760: ifeq +48 -> 808
-    //   763: aload 11
-    //   765: checkcast 262	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie
-    //   768: astore 11
-    //   770: aload 11
-    //   772: aload 11
-    //   774: getfield 426	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:n	I
-    //   777: iconst_1
-    //   778: iadd
-    //   779: putfield 426	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:n	I
-    //   782: ldc_w 428
-    //   785: aload 9
-    //   787: getfield 74	com/tencent/mobileqq/structmsg/AbsStructMsgElement:c	Ljava/lang/String;
-    //   790: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   793: ifeq +15 -> 808
-    //   796: aload 11
-    //   798: aload 11
-    //   800: getfield 430	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:p	I
-    //   803: iconst_1
-    //   804: iadd
-    //   805: putfield 430	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:p	I
-    //   808: aload 7
-    //   810: ifnull +23 -> 833
-    //   813: aload 9
-    //   815: aload 7
-    //   817: getfield 361	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
-    //   820: aload 9
-    //   822: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   825: aload 8
-    //   827: invokestatic 435	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
-    //   830: putfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   833: aload 8
-    //   835: aload_0
-    //   836: aload 10
-    //   838: checkcast 437	android/app/Activity
-    //   841: invokestatic 443	com/tencent/mobileqq/ecshop/temp/api/impl/EcshopMessageApiImpl:enterGdtCanvasActivity	(Lcom/tencent/common/app/business/BaseQQAppInterface;Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Landroid/app/Activity;)Z
-    //   844: istore 5
-    //   846: iload 5
-    //   848: istore 4
-    //   850: iload 5
-    //   852: ifne +147 -> 999
-    //   855: aload 9
-    //   857: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   860: lconst_0
-    //   861: lcmp
-    //   862: ifle +110 -> 972
-    //   865: aload 7
-    //   867: ifnull +66 -> 933
-    //   870: ldc_w 348
-    //   873: aload 7
-    //   875: ldc_w 350
-    //   878: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   881: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   884: ifeq +49 -> 933
-    //   887: aload 6
-    //   889: aload 9
-    //   891: getfield 74	com/tencent/mobileqq/structmsg/AbsStructMsgElement:c	Ljava/lang/String;
-    //   894: aload 9
-    //   896: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   899: aload 9
-    //   901: getfield 76	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
-    //   904: aload 9
-    //   906: getfield 78	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
-    //   909: aload 9
-    //   911: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   914: iconst_1
-    //   915: anewarray 4	java/lang/Object
-    //   918: dup
-    //   919: iconst_0
-    //   920: iconst_1
-    //   921: invokestatic 448	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   924: aastore
-    //   925: invokevirtual 451	com/tencent/mobileqq/structmsg/StructMsgClickHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J[Ljava/lang/Object;)Z
-    //   928: istore 4
-    //   930: goto +69 -> 999
-    //   933: aload 6
-    //   935: aload 9
-    //   937: getfield 74	com/tencent/mobileqq/structmsg/AbsStructMsgElement:c	Ljava/lang/String;
-    //   940: aload 9
-    //   942: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   945: aload 9
-    //   947: getfield 76	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
-    //   950: aload 9
-    //   952: getfield 78	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
-    //   955: aload 9
-    //   957: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   960: iconst_0
-    //   961: anewarray 4	java/lang/Object
-    //   964: invokevirtual 451	com/tencent/mobileqq/structmsg/StructMsgClickHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J[Ljava/lang/Object;)Z
-    //   967: istore 4
-    //   969: goto +30 -> 999
-    //   972: aload 6
-    //   974: aload 9
-    //   976: getfield 74	com/tencent/mobileqq/structmsg/AbsStructMsgElement:c	Ljava/lang/String;
-    //   979: aload 9
-    //   981: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   984: aload 9
-    //   986: getfield 76	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
-    //   989: aload 9
-    //   991: getfield 78	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
-    //   994: invokevirtual 454	com/tencent/mobileqq/structmsg/StructMsgClickHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   997: istore 4
-    //   999: aload 9
-    //   1001: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1004: astore 6
-    //   1006: aload 6
-    //   1008: ifnull +229 -> 1237
-    //   1011: aload 6
-    //   1013: getfield 268	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   1016: ifnull +221 -> 1237
-    //   1019: aload 9
-    //   1021: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1024: getfield 457	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
-    //   1027: bipush 92
-    //   1029: if_icmpne +208 -> 1237
-    //   1032: aload 9
-    //   1034: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1037: getfield 460	com/tencent/mobileqq/structmsg/AbsStructMsg:mQidianBulkTaskId	Ljava/lang/String;
-    //   1040: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   1043: istore_2
-    //   1044: aload 9
-    //   1046: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1049: astore 6
-    //   1051: invokestatic 466	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1054: ifeq +847 -> 1901
-    //   1057: ldc_w 468
-    //   1060: iconst_2
-    //   1061: ldc_w 470
-    //   1064: iconst_2
-    //   1065: anewarray 4	java/lang/Object
-    //   1068: dup
-    //   1069: iconst_0
-    //   1070: iload_2
-    //   1071: invokestatic 473	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1074: aastore
-    //   1075: dup
-    //   1076: iconst_1
-    //   1077: aload 6
-    //   1079: aastore
-    //   1080: invokestatic 477	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1083: invokestatic 480	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1086: goto +3 -> 1089
-    //   1089: iload_2
-    //   1090: ifeq +147 -> 1237
-    //   1093: new 278	org/json/JSONObject
-    //   1096: dup
-    //   1097: invokespecial 356	org/json/JSONObject:<init>	()V
-    //   1100: astore 10
-    //   1102: aload 10
-    //   1104: ldc_w 482
-    //   1107: ldc_w 484
-    //   1110: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1113: pop
-    //   1114: aload 10
-    //   1116: ldc_w 486
-    //   1119: aload 9
-    //   1121: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1124: getfield 268	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   1127: getfield 487	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   1130: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1133: pop
-    //   1134: aload 10
-    //   1136: ldc_w 489
-    //   1139: aload 8
-    //   1141: invokevirtual 492	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   1144: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1147: pop
-    //   1148: aload 10
-    //   1150: ldc_w 494
-    //   1153: aload 9
-    //   1155: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1158: getfield 460	com/tencent/mobileqq/structmsg/AbsStructMsg:mQidianBulkTaskId	Ljava/lang/String;
-    //   1161: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1164: pop
-    //   1165: aload 10
-    //   1167: ldc_w 496
-    //   1170: aload 6
-    //   1172: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1175: pop
-    //   1176: aload 10
-    //   1178: ldc_w 498
-    //   1181: invokestatic 503	java/lang/System:currentTimeMillis	()J
-    //   1184: ldc2_w 177
-    //   1187: ldiv
-    //   1188: invokestatic 505	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1191: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1194: pop
-    //   1195: aload 8
-    //   1197: getstatic 508	com/tencent/mobileqq/app/BusinessHandlerFactory:QIDIAN_HANDLER	Ljava/lang/String;
-    //   1200: invokevirtual 314	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   1203: checkcast 510	com/tencent/qidian/controller/QidianHandler
-    //   1206: aload 10
-    //   1208: invokevirtual 410	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1211: aload 9
-    //   1213: getfield 100	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   1216: getfield 268	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
-    //   1219: getfield 487	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
-    //   1222: ldc 88
-    //   1224: sipush 10009
-    //   1227: iconst_0
-    //   1228: invokevirtual 513	com/tencent/qidian/controller/QidianHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V
-    //   1231: goto +6 -> 1237
-    //   1234: goto +3 -> 1237
-    //   1237: aload 9
-    //   1239: getfield 78	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
-    //   1242: aload 9
-    //   1244: getfield 76	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
-    //   1247: aload 9
-    //   1249: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1252: invokestatic 518	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   1255: ifeq +123 -> 1378
-    //   1258: aload 8
-    //   1260: getstatic 523	com/tencent/mobileqq/app/QQManagerFactory:QIDIAN_MANAGER	I
-    //   1263: invokevirtual 527	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1266: checkcast 515	com/tencent/qidian/QidianManager
-    //   1269: astore 10
-    //   1271: aload 9
-    //   1273: instanceof 529
-    //   1276: ifeq +70 -> 1346
-    //   1279: aload 9
-    //   1281: checkcast 529	com/tencent/mobileqq/structmsg/StructMsgGroupItemElement
-    //   1284: getfield 532	com/tencent/mobileqq/structmsg/StructMsgGroupItemElement:a	Ljava/util/List;
-    //   1287: astore 6
-    //   1289: aload 6
-    //   1291: ifnull +55 -> 1346
-    //   1294: aload 6
-    //   1296: invokeinterface 538 1 0
-    //   1301: astore 6
-    //   1303: aload 6
-    //   1305: invokeinterface 543 1 0
-    //   1310: ifeq +36 -> 1346
-    //   1313: aload 6
-    //   1315: invokeinterface 546 1 0
-    //   1320: checkcast 2	com/tencent/mobileqq/structmsg/AbsStructMsgElement
-    //   1323: astore 11
-    //   1325: aload 11
-    //   1327: instanceof 548
-    //   1330: ifeq -27 -> 1303
-    //   1333: aload 11
-    //   1335: checkcast 548	com/tencent/mobileqq/structmsg/view/StructMsgItemSummary
-    //   1338: getfield 551	com/tencent/mobileqq/structmsg/view/StructMsgItemSummary:ai	Ljava/lang/String;
-    //   1341: astore 6
-    //   1343: goto +7 -> 1350
-    //   1346: ldc 88
-    //   1348: astore 6
-    //   1350: aload 10
-    //   1352: aload 9
-    //   1354: getfield 74	com/tencent/mobileqq/structmsg/AbsStructMsgElement:c	Ljava/lang/String;
-    //   1357: aload 9
-    //   1359: getfield 78	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
-    //   1362: aload 9
-    //   1364: getfield 76	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
-    //   1367: aload 9
-    //   1369: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1372: iconst_2
-    //   1373: aload 6
-    //   1375: invokevirtual 554	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
-    //   1378: iload 4
-    //   1380: ifeq +8 -> 1388
-    //   1383: iconst_1
-    //   1384: istore_2
-    //   1385: goto +5 -> 1390
-    //   1388: iconst_0
-    //   1389: istore_2
-    //   1390: aload 9
-    //   1392: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:aa	Ljava/lang/String;
-    //   1395: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   1398: istore_3
-    //   1399: goto +5 -> 1404
-    //   1402: iconst_m1
-    //   1403: istore_3
-    //   1404: aload 9
-    //   1406: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   1409: astore 6
-    //   1411: new 115	java/lang/StringBuilder
-    //   1414: dup
-    //   1415: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   1418: astore 10
-    //   1420: aload 10
-    //   1422: ldc 88
-    //   1424: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1427: pop
-    //   1428: aload 10
-    //   1430: aload 9
-    //   1432: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   1435: invokevirtual 319	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1438: pop
-    //   1439: aload 8
-    //   1441: ldc 221
-    //   1443: ldc 223
-    //   1445: aload 6
-    //   1447: ldc_w 556
-    //   1450: ldc_w 556
-    //   1453: iload_3
-    //   1454: iload_2
-    //   1455: aload 10
-    //   1457: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1460: aload 9
-    //   1462: getfield 90	com/tencent/mobileqq/structmsg/AbsStructMsgElement:Z	Ljava/lang/String;
-    //   1465: ldc 88
-    //   1467: aload 9
-    //   1469: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1472: invokestatic 245	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1475: new 115	java/lang/StringBuilder
-    //   1478: dup
-    //   1479: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   1482: astore 6
-    //   1484: aload 6
-    //   1486: ldc_w 558
-    //   1489: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1492: pop
-    //   1493: aload 6
-    //   1495: aload 9
-    //   1497: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   1500: invokestatic 240	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   1503: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1506: pop
-    //   1507: aload 6
-    //   1509: ldc_w 560
-    //   1512: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1515: pop
-    //   1516: aload 6
-    //   1518: aload 9
-    //   1520: getfield 90	com/tencent/mobileqq/structmsg/AbsStructMsgElement:Z	Ljava/lang/String;
-    //   1523: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1526: pop
-    //   1527: aload 6
-    //   1529: ldc_w 562
-    //   1532: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1535: pop
-    //   1536: aload 6
-    //   1538: ldc 88
-    //   1540: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1543: pop
-    //   1544: aload 6
-    //   1546: ldc_w 564
-    //   1549: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1552: pop
-    //   1553: aload 6
-    //   1555: aload 9
-    //   1557: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1560: invokestatic 566	com/tencent/mobileqq/structmsg/AbsStructMsgElement:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   1563: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1566: pop
-    //   1567: aload 8
-    //   1569: ldc 221
-    //   1571: ldc 223
-    //   1573: aload 9
-    //   1575: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   1578: ldc_w 568
-    //   1581: ldc_w 568
-    //   1584: iload_3
-    //   1585: iload_2
-    //   1586: aload 6
-    //   1588: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1591: ldc 88
-    //   1593: ldc 88
-    //   1595: ldc 88
-    //   1597: invokestatic 245	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   1600: aload 7
-    //   1602: ifnonnull +6 -> 1608
-    //   1605: goto +263 -> 1868
-    //   1608: aload 7
-    //   1610: ldc_w 400
-    //   1613: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   1616: astore 6
-    //   1618: aload 6
-    //   1620: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1623: ifne +177 -> 1800
-    //   1626: new 278	org/json/JSONObject
-    //   1629: dup
-    //   1630: invokespecial 356	org/json/JSONObject:<init>	()V
-    //   1633: astore 10
-    //   1635: aload 9
-    //   1637: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   1640: invokestatic 219	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   1643: ifne +20 -> 1663
-    //   1646: aload 10
-    //   1648: ldc_w 358
-    //   1651: aload 9
-    //   1653: getfield 225	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ab	Ljava/lang/String;
-    //   1656: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1659: pop
-    //   1660: goto +17 -> 1677
-    //   1663: aload 10
-    //   1665: ldc_w 358
-    //   1668: aload 7
-    //   1670: getfield 361	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
-    //   1673: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1676: pop
-    //   1677: aload 10
-    //   1679: ldc_w 371
-    //   1682: iload_3
-    //   1683: i2l
-    //   1684: invokestatic 240	java/lang/Long:toString	(J)Ljava/lang/String;
-    //   1687: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1690: pop
-    //   1691: aload 10
-    //   1693: ldc_w 398
-    //   1696: aload 6
-    //   1698: invokevirtual 365	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   1701: pop
-    //   1702: goto +10 -> 1712
-    //   1705: astore 6
-    //   1707: aload 6
-    //   1709: invokevirtual 420	org/json/JSONException:printStackTrace	()V
-    //   1712: new 570	java/util/ArrayList
-    //   1715: dup
-    //   1716: invokespecial 571	java/util/ArrayList:<init>	()V
-    //   1719: aload 9
-    //   1721: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_a_of_type_Long	J
-    //   1724: invokestatic 505	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   1727: invokeinterface 574 2 0
-    //   1732: pop
-    //   1733: aload 7
-    //   1735: ldc_w 576
-    //   1738: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   1741: astore 6
-    //   1743: aload 7
-    //   1745: ldc_w 578
-    //   1748: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   1751: astore 10
-    //   1753: aload 7
-    //   1755: ldc_w 580
-    //   1758: invokevirtual 355	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   1761: astore 11
-    //   1763: aload 6
-    //   1765: ldc_w 348
-    //   1768: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1771: ifeq +6 -> 1777
-    //   1774: goto +26 -> 1800
-    //   1777: aload 10
-    //   1779: ldc_w 348
-    //   1782: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1785: ifeq +6 -> 1791
-    //   1788: goto +12 -> 1800
-    //   1791: aload 11
-    //   1793: ldc_w 348
-    //   1796: invokevirtual 303	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   1799: pop
-    //   1800: aload 8
-    //   1802: getstatic 583	com/tencent/mobileqq/app/QQManagerFactory:EC_SHOP_ASSISTANT_MANAGER	I
-    //   1805: invokevirtual 527	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   1808: checkcast 432	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager
-    //   1811: astore 6
-    //   1813: aload 8
-    //   1815: getstatic 586	com/tencent/mobileqq/app/BusinessHandlerFactory:EC_SHOP_REPORT_HANDLER	Ljava/lang/String;
-    //   1818: invokevirtual 314	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
-    //   1821: checkcast 588	com/tencent/biz/pubaccount/ecshopassit/EcshopReportHandler
-    //   1824: astore 8
-    //   1826: aload 7
-    //   1828: ifnull +40 -> 1868
-    //   1831: aload 6
-    //   1833: ifnull +35 -> 1868
-    //   1836: aload 8
-    //   1838: ifnull +30 -> 1868
-    //   1841: aload 6
-    //   1843: aload 7
-    //   1845: getfield 591	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
-    //   1848: invokevirtual 592	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:a	(Ljava/lang/String;)Z
-    //   1851: ifeq +17 -> 1868
-    //   1854: aload 8
-    //   1856: iconst_0
-    //   1857: aload 7
-    //   1859: iload_3
-    //   1860: aload 9
-    //   1862: getfield 321	com/tencent/mobileqq/structmsg/AbsStructMsgElement:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1865: invokevirtual 595	com/tencent/biz/pubaccount/ecshopassit/EcshopReportHandler:a	(ZLcom/tencent/mobileqq/data/MessageRecord;ILjava/lang/String;)V
-    //   1868: invokestatic 601	com/tencent/qqlive/module/videoreport/collect/EventCollector:getInstance	()Lcom/tencent/qqlive/module/videoreport/collect/EventCollector;
-    //   1871: aload_1
-    //   1872: invokevirtual 604	com/tencent/qqlive/module/videoreport/collect/EventCollector:onViewClicked	(Landroid/view/View;)V
-    //   1875: return
-    //   1876: astore 7
-    //   1878: goto -1651 -> 227
-    //   1881: astore 6
-    //   1883: goto -1439 -> 444
-    //   1886: astore 6
-    //   1888: goto -651 -> 1237
-    //   1891: astore 6
-    //   1893: goto -659 -> 1234
-    //   1896: astore 6
-    //   1898: goto -496 -> 1402
-    //   1901: goto -812 -> 1089
+    //   171: ldc_w 265
+    //   174: invokestatic 271	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   177: checkcast 265	com/tencent/mobileqq/kandian/biz/common/api/IReadInJoySPEventReport
+    //   180: aload 9
+    //   182: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   185: aload 9
+    //   187: invokeinterface 275 3 0
+    //   192: aload 11
+    //   194: invokevirtual 226	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
+    //   197: invokevirtual 278	com/tencent/mobileqq/activity/ChatFragment:k	()Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;
+    //   200: instanceof 280
+    //   203: ifeq +195 -> 398
+    //   206: aload 9
+    //   208: getfield 110	com/tencent/mobileqq/structmsg/AbsStructMsgElement:an	Ljava/lang/String;
+    //   211: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   214: ifne +14 -> 228
+    //   217: aload_0
+    //   218: getfield 110	com/tencent/mobileqq/structmsg/AbsStructMsgElement:an	Ljava/lang/String;
+    //   221: invokestatic 253	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   224: istore_2
+    //   225: goto +5 -> 230
+    //   228: iconst_m1
+    //   229: istore_2
+    //   230: aload 9
+    //   232: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   235: astore 7
+    //   237: aload 7
+    //   239: ifnull +47 -> 286
+    //   242: aload 7
+    //   244: getfield 286	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   247: ifnull +39 -> 286
+    //   250: aload 9
+    //   252: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   255: getfield 286	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   258: getfield 292	com/tencent/mobileqq/data/MessageRecord:mExJsonObject	Lorg/json/JSONObject;
+    //   261: ifnull +25 -> 286
+    //   264: aload 9
+    //   266: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   269: getfield 286	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   272: getfield 292	com/tencent/mobileqq/data/MessageRecord:mExJsonObject	Lorg/json/JSONObject;
+    //   275: ldc_w 294
+    //   278: invokevirtual 299	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   281: astore 7
+    //   283: goto +7 -> 290
+    //   286: ldc 106
+    //   288: astore 7
+    //   290: aload 6
+    //   292: aload 9
+    //   294: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   297: iconst_0
+    //   298: iconst_4
+    //   299: aload 9
+    //   301: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   304: iload_2
+    //   305: i2l
+    //   306: ladd
+    //   307: aload 7
+    //   309: invokestatic 304	com/tencent/mobileqq/applets/PublicAccountEventReport:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;IIJLjava/lang/String;)V
+    //   312: getstatic 309	com/tencent/biz/officialaccount/OfficialAccountReporter:a	Lcom/tencent/biz/officialaccount/OfficialAccountReporter$Reporter;
+    //   315: aload 9
+    //   317: aload 7
+    //   319: invokevirtual 314	com/tencent/biz/officialaccount/OfficialAccountReporter$Reporter:a	(Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Ljava/lang/String;)V
+    //   322: ldc_w 316
+    //   325: aload 9
+    //   327: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   330: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   333: ifeq +65 -> 398
+    //   336: aload 6
+    //   338: getstatic 326	com/tencent/mobileqq/app/BusinessHandlerFactory:APOLLO_EXTENSION_HANDLER	Ljava/lang/String;
+    //   341: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   344: checkcast 334	com/tencent/mobileqq/apollo/handler/IApolloExtensionHandler
+    //   347: astore 7
+    //   349: new 133	java/lang/StringBuilder
+    //   352: dup
+    //   353: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   356: astore 8
+    //   358: aload 8
+    //   360: aload 9
+    //   362: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   365: invokevirtual 337	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   368: pop
+    //   369: aload 8
+    //   371: ldc 106
+    //   373: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   376: pop
+    //   377: aload 7
+    //   379: iconst_3
+    //   380: aload 8
+    //   382: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   385: aload 9
+    //   387: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   390: invokeinterface 342 4 0
+    //   395: goto +3 -> 398
+    //   398: aload 6
+    //   400: astore 8
+    //   402: aload 9
+    //   404: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   407: lconst_0
+    //   408: lcmp
+    //   409: ifle +23 -> 432
+    //   412: invokestatic 348	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   415: new 350	com/tencent/mobileqq/structmsg/AbsStructMsgElement$1
+    //   418: dup
+    //   419: aload_0
+    //   420: aload 9
+    //   422: aload 8
+    //   424: invokespecial 353	com/tencent/mobileqq/structmsg/AbsStructMsgElement$1:<init>	(Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Lcom/tencent/mobileqq/app/QQAppInterface;)V
+    //   427: lconst_0
+    //   428: invokevirtual 359	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   431: pop
+    //   432: aconst_null
+    //   433: astore 7
+    //   435: aload_1
+    //   436: invokestatic 364	com/tencent/mobileqq/activity/aio/AIOUtils:a	(Landroid/view/View;)Lcom/tencent/mobileqq/data/ChatMessage;
+    //   439: astore 6
+    //   441: aload 6
+    //   443: astore 7
+    //   445: aload 7
+    //   447: ifnull +276 -> 723
+    //   450: aload 9
+    //   452: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   455: ifnull +268 -> 723
+    //   458: ldc_w 366
+    //   461: aload 7
+    //   463: ldc_w 368
+    //   466: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   469: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   472: ifeq +251 -> 723
+    //   475: new 296	org/json/JSONObject
+    //   478: dup
+    //   479: invokespecial 374	org/json/JSONObject:<init>	()V
+    //   482: astore 13
+    //   484: aload 13
+    //   486: ldc_w 376
+    //   489: aload 7
+    //   491: getfield 379	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
+    //   494: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   497: pop
+    //   498: aload 13
+    //   500: ldc_w 385
+    //   503: aload 9
+    //   505: getfield 387	com/tencent/mobileqq/structmsg/AbsStructMsgElement:n	Ljava/lang/String;
+    //   508: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   511: pop
+    //   512: aload 13
+    //   514: ldc_w 389
+    //   517: aload 9
+    //   519: getfield 391	com/tencent/mobileqq/structmsg/AbsStructMsgElement:l	Ljava/lang/String;
+    //   522: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   525: pop
+    //   526: aload 13
+    //   528: ldc_w 393
+    //   531: aload 9
+    //   533: getfield 395	com/tencent/mobileqq/structmsg/AbsStructMsgElement:m	Ljava/lang/String;
+    //   536: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   539: pop
+    //   540: aload 13
+    //   542: ldc_w 397
+    //   545: invokestatic 402	com/tencent/biz/common/util/HttpUtil:getNetWorkType	()I
+    //   548: invokestatic 406	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   551: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   554: pop
+    //   555: aload 13
+    //   557: ldc_w 408
+    //   560: invokestatic 412	com/tencent/mobileqq/utils/DeviceInfoUtil:b	()Ljava/lang/String;
+    //   563: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   566: pop
+    //   567: aload 13
+    //   569: ldc_w 414
+    //   572: ldc 106
+    //   574: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   577: pop
+    //   578: aload 13
+    //   580: ldc_w 416
+    //   583: aload 7
+    //   585: ldc_w 418
+    //   588: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   591: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   594: pop
+    //   595: aload 13
+    //   597: ldc_w 420
+    //   600: aload 7
+    //   602: ldc_w 422
+    //   605: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   608: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   611: pop
+    //   612: ldc_w 424
+    //   615: invokestatic 271	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   618: checkcast 424	com/tencent/biz/pubaccount/util/api/IPAReportUtil
+    //   621: astore 6
+    //   623: aload 7
+    //   625: getfield 427	com/tencent/mobileqq/data/ChatMessage:selfuin	Ljava/lang/String;
+    //   628: astore 12
+    //   630: aload 13
+    //   632: invokevirtual 428	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   635: astore 13
+    //   637: new 133	java/lang/StringBuilder
+    //   640: dup
+    //   641: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   644: astore 14
+    //   646: aload 14
+    //   648: ldc 106
+    //   650: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   653: pop
+    //   654: aload 9
+    //   656: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   659: astore 15
+    //   661: aload 14
+    //   663: aload 15
+    //   665: getfield 431	com/tencent/mobileqq/structmsg/AbsStructMsg:msgId	J
+    //   668: invokevirtual 337	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   671: pop
+    //   672: aload 6
+    //   674: aload 8
+    //   676: aload 12
+    //   678: aload 13
+    //   680: aload 14
+    //   682: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   685: invokeinterface 435 5 0
+    //   690: goto +33 -> 723
+    //   693: astore 6
+    //   695: goto +20 -> 715
+    //   698: astore 6
+    //   700: goto +15 -> 715
+    //   703: astore 6
+    //   705: goto +10 -> 715
+    //   708: astore 6
+    //   710: goto +5 -> 715
+    //   713: astore 6
+    //   715: aload 6
+    //   717: invokevirtual 438	org/json/JSONException:printStackTrace	()V
+    //   720: goto +3 -> 723
+    //   723: new 440	com/tencent/mobileqq/structmsg/StructMsgClickHandler
+    //   726: dup
+    //   727: aload 8
+    //   729: aload_1
+    //   730: aload 7
+    //   732: invokespecial 443	com/tencent/mobileqq/structmsg/StructMsgClickHandler:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Landroid/view/View;Lcom/tencent/mobileqq/data/MessageRecord;)V
+    //   735: astore 6
+    //   737: aload 11
+    //   739: invokevirtual 226	com/tencent/mobileqq/app/BaseActivity:getChatFragment	()Lcom/tencent/mobileqq/activity/ChatFragment;
+    //   742: astore 11
+    //   744: aload 11
+    //   746: ifnull +63 -> 809
+    //   749: aload 11
+    //   751: invokevirtual 278	com/tencent/mobileqq/activity/ChatFragment:k	()Lcom/tencent/mobileqq/activity/aio/core/BaseChatPie;
+    //   754: astore 11
+    //   756: aload 11
+    //   758: instanceof 280
+    //   761: ifeq +48 -> 809
+    //   764: aload 11
+    //   766: checkcast 280	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie
+    //   769: astore 11
+    //   771: aload 11
+    //   773: aload 11
+    //   775: getfield 446	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:ca	I
+    //   778: iconst_1
+    //   779: iadd
+    //   780: putfield 446	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:ca	I
+    //   783: ldc_w 448
+    //   786: aload 9
+    //   788: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
+    //   791: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   794: ifeq +15 -> 809
+    //   797: aload 11
+    //   799: aload 11
+    //   801: getfield 451	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:cc	I
+    //   804: iconst_1
+    //   805: iadd
+    //   806: putfield 451	com/tencent/mobileqq/activity/aio/rebuild/PublicAccountChatPie:cc	I
+    //   809: aload 7
+    //   811: ifnull +23 -> 834
+    //   814: aload 9
+    //   816: aload 7
+    //   818: getfield 379	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
+    //   821: aload 9
+    //   823: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   826: aload 8
+    //   828: invokestatic 456	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/QQAppInterface;)Ljava/lang/String;
+    //   831: putfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   834: aload 8
+    //   836: aload_0
+    //   837: aload 10
+    //   839: checkcast 458	android/app/Activity
+    //   842: invokestatic 464	com/tencent/mobileqq/ecshop/temp/api/impl/EcshopMessageApiImpl:enterGdtCanvasActivity	(Lcom/tencent/common/app/business/BaseQQAppInterface;Lcom/tencent/mobileqq/structmsg/AbsStructMsgElement;Landroid/app/Activity;)Z
+    //   845: istore 5
+    //   847: iload 5
+    //   849: istore 4
+    //   851: iload 5
+    //   853: ifne +147 -> 1000
+    //   856: aload 9
+    //   858: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   861: lconst_0
+    //   862: lcmp
+    //   863: ifle +110 -> 973
+    //   866: aload 7
+    //   868: ifnull +66 -> 934
+    //   871: ldc_w 366
+    //   874: aload 7
+    //   876: ldc_w 368
+    //   879: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   882: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   885: ifeq +49 -> 934
+    //   888: aload 6
+    //   890: aload 9
+    //   892: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
+    //   895: aload 9
+    //   897: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   900: aload 9
+    //   902: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:f	Ljava/lang/String;
+    //   905: aload 9
+    //   907: getfield 96	com/tencent/mobileqq/structmsg/AbsStructMsgElement:g	Ljava/lang/String;
+    //   910: aload 9
+    //   912: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   915: iconst_1
+    //   916: anewarray 4	java/lang/Object
+    //   919: dup
+    //   920: iconst_0
+    //   921: iconst_1
+    //   922: invokestatic 469	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   925: aastore
+    //   926: invokevirtual 472	com/tencent/mobileqq/structmsg/StructMsgClickHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J[Ljava/lang/Object;)Z
+    //   929: istore 4
+    //   931: goto +69 -> 1000
+    //   934: aload 6
+    //   936: aload 9
+    //   938: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
+    //   941: aload 9
+    //   943: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   946: aload 9
+    //   948: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:f	Ljava/lang/String;
+    //   951: aload 9
+    //   953: getfield 96	com/tencent/mobileqq/structmsg/AbsStructMsgElement:g	Ljava/lang/String;
+    //   956: aload 9
+    //   958: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   961: iconst_0
+    //   962: anewarray 4	java/lang/Object
+    //   965: invokevirtual 472	com/tencent/mobileqq/structmsg/StructMsgClickHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J[Ljava/lang/Object;)Z
+    //   968: istore 4
+    //   970: goto +30 -> 1000
+    //   973: aload 6
+    //   975: aload 9
+    //   977: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
+    //   980: aload 9
+    //   982: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   985: aload 9
+    //   987: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:f	Ljava/lang/String;
+    //   990: aload 9
+    //   992: getfield 96	com/tencent/mobileqq/structmsg/AbsStructMsgElement:g	Ljava/lang/String;
+    //   995: invokevirtual 475	com/tencent/mobileqq/structmsg/StructMsgClickHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   998: istore 4
+    //   1000: aload 9
+    //   1002: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1005: astore 6
+    //   1007: aload 6
+    //   1009: ifnull +229 -> 1238
+    //   1012: aload 6
+    //   1014: getfield 286	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   1017: ifnull +221 -> 1238
+    //   1020: aload 9
+    //   1022: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1025: getfield 478	com/tencent/mobileqq/structmsg/AbsStructMsg:mMsgServiceID	I
+    //   1028: bipush 92
+    //   1030: if_icmpne +208 -> 1238
+    //   1033: aload 9
+    //   1035: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1038: getfield 481	com/tencent/mobileqq/structmsg/AbsStructMsg:mQidianBulkTaskId	Ljava/lang/String;
+    //   1041: invokestatic 253	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   1044: istore_2
+    //   1045: aload 9
+    //   1047: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   1050: astore 6
+    //   1052: invokestatic 487	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1055: ifeq +847 -> 1902
+    //   1058: ldc_w 489
+    //   1061: iconst_2
+    //   1062: ldc_w 491
+    //   1065: iconst_2
+    //   1066: anewarray 4	java/lang/Object
+    //   1069: dup
+    //   1070: iconst_0
+    //   1071: iload_2
+    //   1072: invokestatic 494	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1075: aastore
+    //   1076: dup
+    //   1077: iconst_1
+    //   1078: aload 6
+    //   1080: aastore
+    //   1081: invokestatic 498	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1084: invokestatic 501	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1087: goto +3 -> 1090
+    //   1090: iload_2
+    //   1091: ifeq +147 -> 1238
+    //   1094: new 296	org/json/JSONObject
+    //   1097: dup
+    //   1098: invokespecial 374	org/json/JSONObject:<init>	()V
+    //   1101: astore 10
+    //   1103: aload 10
+    //   1105: ldc_w 503
+    //   1108: ldc_w 505
+    //   1111: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1114: pop
+    //   1115: aload 10
+    //   1117: ldc_w 507
+    //   1120: aload 9
+    //   1122: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1125: getfield 286	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   1128: getfield 508	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1131: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1134: pop
+    //   1135: aload 10
+    //   1137: ldc_w 510
+    //   1140: aload 8
+    //   1142: invokevirtual 513	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1145: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1148: pop
+    //   1149: aload 10
+    //   1151: ldc_w 515
+    //   1154: aload 9
+    //   1156: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1159: getfield 481	com/tencent/mobileqq/structmsg/AbsStructMsg:mQidianBulkTaskId	Ljava/lang/String;
+    //   1162: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1165: pop
+    //   1166: aload 10
+    //   1168: ldc_w 517
+    //   1171: aload 6
+    //   1173: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1176: pop
+    //   1177: aload 10
+    //   1179: ldc_w 519
+    //   1182: invokestatic 524	java/lang/System:currentTimeMillis	()J
+    //   1185: ldc2_w 195
+    //   1188: ldiv
+    //   1189: invokestatic 526	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1192: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1195: pop
+    //   1196: aload 8
+    //   1198: getstatic 529	com/tencent/mobileqq/app/BusinessHandlerFactory:QIDIAN_HANDLER	Ljava/lang/String;
+    //   1201: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   1204: checkcast 531	com/tencent/qidian/controller/QidianHandler
+    //   1207: aload 10
+    //   1209: invokevirtual 428	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   1212: aload 9
+    //   1214: getfield 118	com/tencent/mobileqq/structmsg/AbsStructMsgElement:as	Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   1217: getfield 286	com/tencent/mobileqq/structmsg/AbsStructMsg:message	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   1220: getfield 508	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   1223: ldc 106
+    //   1225: sipush 10009
+    //   1228: iconst_0
+    //   1229: invokevirtual 534	com/tencent/qidian/controller/QidianHandler:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;II)V
+    //   1232: goto +6 -> 1238
+    //   1235: goto +3 -> 1238
+    //   1238: aload 9
+    //   1240: getfield 96	com/tencent/mobileqq/structmsg/AbsStructMsgElement:g	Ljava/lang/String;
+    //   1243: aload 9
+    //   1245: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:f	Ljava/lang/String;
+    //   1248: aload 9
+    //   1250: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   1253: invokestatic 539	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   1256: ifeq +123 -> 1379
+    //   1259: aload 8
+    //   1261: getstatic 544	com/tencent/mobileqq/app/QQManagerFactory:QIDIAN_MANAGER	I
+    //   1264: invokevirtual 548	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1267: checkcast 536	com/tencent/qidian/QidianManager
+    //   1270: astore 10
+    //   1272: aload 9
+    //   1274: instanceof 550
+    //   1277: ifeq +70 -> 1347
+    //   1280: aload 9
+    //   1282: checkcast 550	com/tencent/mobileqq/structmsg/StructMsgGroupItemElement
+    //   1285: getfield 554	com/tencent/mobileqq/structmsg/StructMsgGroupItemElement:au	Ljava/util/List;
+    //   1288: astore 6
+    //   1290: aload 6
+    //   1292: ifnull +55 -> 1347
+    //   1295: aload 6
+    //   1297: invokeinterface 560 1 0
+    //   1302: astore 6
+    //   1304: aload 6
+    //   1306: invokeinterface 565 1 0
+    //   1311: ifeq +36 -> 1347
+    //   1314: aload 6
+    //   1316: invokeinterface 568 1 0
+    //   1321: checkcast 2	com/tencent/mobileqq/structmsg/AbsStructMsgElement
+    //   1324: astore 11
+    //   1326: aload 11
+    //   1328: instanceof 570
+    //   1331: ifeq -27 -> 1304
+    //   1334: aload 11
+    //   1336: checkcast 570	com/tencent/mobileqq/structmsg/view/StructMsgItemSummary
+    //   1339: getfield 573	com/tencent/mobileqq/structmsg/view/StructMsgItemSummary:aA	Ljava/lang/String;
+    //   1342: astore 6
+    //   1344: goto +7 -> 1351
+    //   1347: ldc 106
+    //   1349: astore 6
+    //   1351: aload 10
+    //   1353: aload 9
+    //   1355: getfield 92	com/tencent/mobileqq/structmsg/AbsStructMsgElement:e	Ljava/lang/String;
+    //   1358: aload 9
+    //   1360: getfield 96	com/tencent/mobileqq/structmsg/AbsStructMsgElement:g	Ljava/lang/String;
+    //   1363: aload 9
+    //   1365: getfield 94	com/tencent/mobileqq/structmsg/AbsStructMsgElement:f	Ljava/lang/String;
+    //   1368: aload 9
+    //   1370: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   1373: iconst_2
+    //   1374: aload 6
+    //   1376: invokevirtual 576	com/tencent/qidian/QidianManager:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V
+    //   1379: iload 4
+    //   1381: ifeq +8 -> 1389
+    //   1384: iconst_1
+    //   1385: istore_2
+    //   1386: goto +5 -> 1391
+    //   1389: iconst_0
+    //   1390: istore_2
+    //   1391: aload 9
+    //   1393: getfield 110	com/tencent/mobileqq/structmsg/AbsStructMsgElement:an	Ljava/lang/String;
+    //   1396: invokestatic 253	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   1399: istore_3
+    //   1400: goto +5 -> 1405
+    //   1403: iconst_m1
+    //   1404: istore_3
+    //   1405: aload 9
+    //   1407: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   1410: astore 6
+    //   1412: new 133	java/lang/StringBuilder
+    //   1415: dup
+    //   1416: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   1419: astore 10
+    //   1421: aload 10
+    //   1423: ldc 106
+    //   1425: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1428: pop
+    //   1429: aload 10
+    //   1431: aload 9
+    //   1433: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   1436: invokevirtual 337	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1439: pop
+    //   1440: aload 8
+    //   1442: ldc 239
+    //   1444: ldc 241
+    //   1446: aload 6
+    //   1448: ldc_w 578
+    //   1451: ldc_w 578
+    //   1454: iload_3
+    //   1455: iload_2
+    //   1456: aload 10
+    //   1458: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1461: aload 9
+    //   1463: getfield 108	com/tencent/mobileqq/structmsg/AbsStructMsgElement:am	Ljava/lang/String;
+    //   1466: ldc 106
+    //   1468: aload 9
+    //   1470: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   1473: invokestatic 263	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1476: new 133	java/lang/StringBuilder
+    //   1479: dup
+    //   1480: invokespecial 134	java/lang/StringBuilder:<init>	()V
+    //   1483: astore 6
+    //   1485: aload 6
+    //   1487: ldc_w 580
+    //   1490: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1493: pop
+    //   1494: aload 6
+    //   1496: aload 9
+    //   1498: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   1501: invokestatic 258	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   1504: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1507: pop
+    //   1508: aload 6
+    //   1510: ldc_w 582
+    //   1513: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1516: pop
+    //   1517: aload 6
+    //   1519: aload 9
+    //   1521: getfield 108	com/tencent/mobileqq/structmsg/AbsStructMsgElement:am	Ljava/lang/String;
+    //   1524: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1527: pop
+    //   1528: aload 6
+    //   1530: ldc_w 584
+    //   1533: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1536: pop
+    //   1537: aload 6
+    //   1539: ldc 106
+    //   1541: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1544: pop
+    //   1545: aload 6
+    //   1547: ldc_w 586
+    //   1550: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1553: pop
+    //   1554: aload 6
+    //   1556: aload 9
+    //   1558: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   1561: invokestatic 588	com/tencent/mobileqq/structmsg/AbsStructMsgElement:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1564: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1567: pop
+    //   1568: aload 8
+    //   1570: ldc 239
+    //   1572: ldc 241
+    //   1574: aload 9
+    //   1576: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   1579: ldc_w 590
+    //   1582: ldc_w 590
+    //   1585: iload_3
+    //   1586: iload_2
+    //   1587: aload 6
+    //   1589: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1592: ldc 106
+    //   1594: ldc 106
+    //   1596: ldc 106
+    //   1598: invokestatic 263	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   1601: aload 7
+    //   1603: ifnonnull +6 -> 1609
+    //   1606: goto +263 -> 1869
+    //   1609: aload 7
+    //   1611: ldc_w 418
+    //   1614: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   1617: astore 6
+    //   1619: aload 6
+    //   1621: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1624: ifne +177 -> 1801
+    //   1627: new 296	org/json/JSONObject
+    //   1630: dup
+    //   1631: invokespecial 374	org/json/JSONObject:<init>	()V
+    //   1634: astore 10
+    //   1636: aload 9
+    //   1638: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   1641: invokestatic 237	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1644: ifne +20 -> 1664
+    //   1647: aload 10
+    //   1649: ldc_w 376
+    //   1652: aload 9
+    //   1654: getfield 243	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ap	Ljava/lang/String;
+    //   1657: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1660: pop
+    //   1661: goto +17 -> 1678
+    //   1664: aload 10
+    //   1666: ldc_w 376
+    //   1669: aload 7
+    //   1671: getfield 379	com/tencent/mobileqq/data/ChatMessage:frienduin	Ljava/lang/String;
+    //   1674: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1677: pop
+    //   1678: aload 10
+    //   1680: ldc_w 389
+    //   1683: iload_3
+    //   1684: i2l
+    //   1685: invokestatic 258	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   1688: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1691: pop
+    //   1692: aload 10
+    //   1694: ldc_w 416
+    //   1697: aload 6
+    //   1699: invokevirtual 383	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1702: pop
+    //   1703: goto +10 -> 1713
+    //   1706: astore 6
+    //   1708: aload 6
+    //   1710: invokevirtual 438	org/json/JSONException:printStackTrace	()V
+    //   1713: new 592	java/util/ArrayList
+    //   1716: dup
+    //   1717: invokespecial 593	java/util/ArrayList:<init>	()V
+    //   1720: aload 9
+    //   1722: getfield 112	com/tencent/mobileqq/structmsg/AbsStructMsgElement:ao	J
+    //   1725: invokestatic 526	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   1728: invokeinterface 596 2 0
+    //   1733: pop
+    //   1734: aload 7
+    //   1736: ldc_w 598
+    //   1739: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   1742: astore 6
+    //   1744: aload 7
+    //   1746: ldc_w 600
+    //   1749: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   1752: astore 10
+    //   1754: aload 7
+    //   1756: ldc_w 602
+    //   1759: invokevirtual 373	com/tencent/mobileqq/data/ChatMessage:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   1762: astore 11
+    //   1764: aload 6
+    //   1766: ldc_w 366
+    //   1769: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1772: ifeq +6 -> 1778
+    //   1775: goto +26 -> 1801
+    //   1778: aload 10
+    //   1780: ldc_w 366
+    //   1783: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1786: ifeq +6 -> 1792
+    //   1789: goto +12 -> 1801
+    //   1792: aload 11
+    //   1794: ldc_w 366
+    //   1797: invokevirtual 321	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1800: pop
+    //   1801: aload 8
+    //   1803: getstatic 605	com/tencent/mobileqq/app/QQManagerFactory:EC_SHOP_ASSISTANT_MANAGER	I
+    //   1806: invokevirtual 548	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   1809: checkcast 453	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager
+    //   1812: astore 6
+    //   1814: aload 8
+    //   1816: getstatic 608	com/tencent/mobileqq/app/BusinessHandlerFactory:EC_SHOP_REPORT_HANDLER	Ljava/lang/String;
+    //   1819: invokevirtual 332	com/tencent/mobileqq/app/QQAppInterface:getBusinessHandler	(Ljava/lang/String;)Lcom/tencent/mobileqq/app/BusinessHandler;
+    //   1822: checkcast 610	com/tencent/biz/pubaccount/ecshopassit/EcshopReportHandler
+    //   1825: astore 8
+    //   1827: aload 7
+    //   1829: ifnull +40 -> 1869
+    //   1832: aload 6
+    //   1834: ifnull +35 -> 1869
+    //   1837: aload 8
+    //   1839: ifnull +30 -> 1869
+    //   1842: aload 6
+    //   1844: aload 7
+    //   1846: getfield 613	com/tencent/mobileqq/data/ChatMessage:senderuin	Ljava/lang/String;
+    //   1849: invokevirtual 615	com/tencent/biz/pubaccount/ecshopassit/EcShopAssistantManager:d	(Ljava/lang/String;)Z
+    //   1852: ifeq +17 -> 1869
+    //   1855: aload 8
+    //   1857: iconst_0
+    //   1858: aload 7
+    //   1860: iload_3
+    //   1861: aload 9
+    //   1863: getfield 339	com/tencent/mobileqq/structmsg/AbsStructMsgElement:d	Ljava/lang/String;
+    //   1866: invokevirtual 618	com/tencent/biz/pubaccount/ecshopassit/EcshopReportHandler:a	(ZLcom/tencent/mobileqq/data/MessageRecord;ILjava/lang/String;)V
+    //   1869: invokestatic 624	com/tencent/qqlive/module/videoreport/collect/EventCollector:getInstance	()Lcom/tencent/qqlive/module/videoreport/collect/EventCollector;
+    //   1872: aload_1
+    //   1873: invokevirtual 627	com/tencent/qqlive/module/videoreport/collect/EventCollector:onViewClicked	(Landroid/view/View;)V
+    //   1876: return
+    //   1877: astore 7
+    //   1879: goto -1651 -> 228
+    //   1882: astore 6
+    //   1884: goto -1439 -> 445
+    //   1887: astore 6
+    //   1889: goto -651 -> 1238
+    //   1892: astore 6
+    //   1894: goto -659 -> 1235
+    //   1897: astore 6
+    //   1899: goto -496 -> 1403
+    //   1902: goto -812 -> 1090
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1904	0	this	AbsStructMsgElement
-    //   0	1904	1	paramView	View
-    //   223	1363	2	i1	int
-    //   1398	462	3	i2	int
-    //   848	531	4	bool1	boolean
-    //   844	7	5	bool2	boolean
-    //   29	643	6	localObject1	Object
-    //   692	1	6	localJSONException1	org.json.JSONException
-    //   697	1	6	localJSONException2	org.json.JSONException
-    //   702	1	6	localJSONException3	org.json.JSONException
-    //   707	1	6	localJSONException4	org.json.JSONException
-    //   712	3	6	localJSONException5	org.json.JSONException
-    //   734	963	6	localObject2	Object
-    //   1705	3	6	localJSONException6	org.json.JSONException
-    //   1741	101	6	localObject3	Object
-    //   1881	1	6	localClassCastException	java.lang.ClassCastException
-    //   1886	1	6	localException1	java.lang.Exception
-    //   1891	1	6	localException2	java.lang.Exception
-    //   1896	1	6	localException3	java.lang.Exception
-    //   234	1624	7	localObject4	Object
-    //   1876	1	7	localNumberFormatException	java.lang.NumberFormatException
-    //   355	1500	8	localObject5	Object
-    //   51	1810	9	localAbsStructMsgElement	AbsStructMsgElement
-    //   57	1721	10	localObject6	Object
-    //   84	1708	11	localObject7	Object
-    //   627	49	12	str	String
-    //   481	197	13	localObject8	Object
-    //   643	37	14	localStringBuilder	StringBuilder
-    //   658	5	15	localAbsStructMsg	AbsStructMsg
+    //   0	1905	0	this	AbsStructMsgElement
+    //   0	1905	1	paramView	View
+    //   224	1363	2	i1	int
+    //   1399	462	3	i2	int
+    //   849	531	4	bool1	boolean
+    //   845	7	5	bool2	boolean
+    //   29	644	6	localObject1	Object
+    //   693	1	6	localJSONException1	org.json.JSONException
+    //   698	1	6	localJSONException2	org.json.JSONException
+    //   703	1	6	localJSONException3	org.json.JSONException
+    //   708	1	6	localJSONException4	org.json.JSONException
+    //   713	3	6	localJSONException5	org.json.JSONException
+    //   735	963	6	localObject2	Object
+    //   1706	3	6	localJSONException6	org.json.JSONException
+    //   1742	101	6	localObject3	Object
+    //   1882	1	6	localClassCastException	java.lang.ClassCastException
+    //   1887	1	6	localException1	java.lang.Exception
+    //   1892	1	6	localException2	java.lang.Exception
+    //   1897	1	6	localException3	java.lang.Exception
+    //   235	1624	7	localObject4	Object
+    //   1877	1	7	localNumberFormatException	java.lang.NumberFormatException
+    //   356	1500	8	localObject5	Object
+    //   51	1811	9	localAbsStructMsgElement	AbsStructMsgElement
+    //   57	1722	10	localObject6	Object
+    //   84	1709	11	localObject7	Object
+    //   628	49	12	str	String
+    //   482	197	13	localObject8	Object
+    //   644	37	14	localStringBuilder	StringBuilder
+    //   659	5	15	localAbsStructMsg	AbsStructMsg
     // Exception table:
     //   from	to	target	type
-    //   660	689	692	org/json/JSONException
-    //   653	660	697	org/json/JSONException
-    //   636	653	702	org/json/JSONException
-    //   497	636	707	org/json/JSONException
-    //   474	497	712	org/json/JSONException
-    //   1635	1660	1705	org/json/JSONException
-    //   1663	1677	1705	org/json/JSONException
-    //   1677	1702	1705	org/json/JSONException
-    //   216	224	1876	java/lang/NumberFormatException
-    //   434	440	1881	java/lang/ClassCastException
-    //   1019	1057	1886	java/lang/Exception
-    //   1057	1086	1891	java/lang/Exception
-    //   1093	1231	1891	java/lang/Exception
-    //   1390	1399	1896	java/lang/Exception
+    //   661	690	693	org/json/JSONException
+    //   654	661	698	org/json/JSONException
+    //   637	654	703	org/json/JSONException
+    //   498	637	708	org/json/JSONException
+    //   475	498	713	org/json/JSONException
+    //   1636	1661	1706	org/json/JSONException
+    //   1664	1678	1706	org/json/JSONException
+    //   1678	1703	1706	org/json/JSONException
+    //   217	225	1877	java/lang/NumberFormatException
+    //   435	441	1882	java/lang/ClassCastException
+    //   1020	1058	1887	java/lang/Exception
+    //   1058	1087	1892	java/lang/Exception
+    //   1094	1232	1892	java/lang/Exception
+    //   1391	1400	1897	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgElement
  * JD-Core Version:    0.7.0.1
  */

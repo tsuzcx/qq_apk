@@ -22,8 +22,8 @@ class SensorAPIJavaScript$11
       if (i > 0)
       {
         localObject2 = localObject1;
-        if (this.this$0.a != null) {
-          if (this.this$0.a.get() == null)
+        if (this.this$0.c != null) {
+          if (this.this$0.c.get() == null)
           {
             localObject2 = localObject1;
           }
@@ -36,7 +36,7 @@ class SensorAPIJavaScript$11
               ((StringBuilder)localObject1).append(i);
               QLog.d("SensorApi", 4, ((StringBuilder)localObject1).toString());
             }
-            localObject1 = BizWifiConfigManager.a(this.jdField_a_of_type_AndroidContentContext);
+            localObject1 = BizWifiConfigManager.a(this.a);
             if (!TextUtils.isEmpty((CharSequence)localObject1))
             {
               i = 0;
@@ -62,7 +62,7 @@ class SensorAPIJavaScript$11
     i = 2;
     localObject1 = localObject2;
     label120:
-    this.this$0.c = false;
+    this.this$0.t = false;
     if (QLog.isDevelopLevel())
     {
       localObject2 = new StringBuilder();
@@ -73,15 +73,15 @@ class SensorAPIJavaScript$11
     if (i == 0)
     {
       j = this.this$0.a();
-      this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(Integer.toString(i)), Util.a((String)localObject1), Util.a(Integer.toString(j)) });
+      this.this$0.callJs(this.b, new String[] { Util.c(Integer.toString(i)), Util.c((String)localObject1), Util.c(Integer.toString(j)) });
       return;
     }
-    this.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(Integer.toString(i)) });
+    this.this$0.callJs(this.b, new String[] { Util.c(Integer.toString(i)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.11
  * JD-Core Version:    0.7.0.1
  */

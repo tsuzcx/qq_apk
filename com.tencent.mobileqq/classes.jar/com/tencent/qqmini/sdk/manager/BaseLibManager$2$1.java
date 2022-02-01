@@ -23,7 +23,7 @@ class BaseLibManager$2$1
     {
       ThreadManager.executeOnDiskIOThreadPool(new BaseLibManager.2.1.1(this, paramJSONObject));
       localObject = BaseLibInfo.fromJSON(paramJSONObject.optJSONObject(BaseLibInfo.getKey(1)));
-      if (BaseLibManager.access$300(this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.this$0, (BaseLibInfo)localObject).booleanValue())
+      if (BaseLibManager.access$300(this.c.this$0, (BaseLibInfo)localObject).booleanValue())
       {
         paramJSONObject = ((BaseLibInfo)localObject).baseLibVersion;
         localObject = ((BaseLibInfo)localObject).baseLibUrl;
@@ -33,26 +33,26 @@ class BaseLibManager$2$1
         localStringBuilder.append("; url : ");
         localStringBuilder.append((String)localObject);
         QMLog.i("miniapp-process_BaseLibManager", localStringBuilder.toString());
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.this$0.doDownloadBaselib((String)localObject, paramJSONObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.val$listener);
+        this.c.this$0.doDownloadBaselib((String)localObject, paramJSONObject, this.b, this.a, this.c.val$listener);
         return;
       }
       QMLog.i("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib, no update");
-      if (this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.val$listener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.val$listener.onUpdateResult(1);
+      if (this.c.val$listener != null) {
+        this.c.val$listener.onUpdateResult(1);
       }
     }
     else
     {
       QMLog.e("miniapp-process_BaseLibManager", "[MiniEng] updateBaseLib failed!");
-      if (this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.val$listener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkManagerBaseLibManager$2.val$listener.onUpdateResult(1100);
+      if (this.c.val$listener != null) {
+        this.c.val$listener.onUpdateResult(1100);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.BaseLibManager.2.1
  * JD-Core Version:    0.7.0.1
  */

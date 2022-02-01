@@ -46,7 +46,7 @@ public class OnlineStatusResDownLoader
   
   public void a(AppInterface paramAppInterface)
   {
-    Object localObject = (OnlineStatusBean)QConfigManager.a().a(578);
+    Object localObject = (OnlineStatusBean)QConfigManager.b().b(578);
     if (localObject == null)
     {
       QLog.d("OnlineStatusResDownLoader", 2, "[OnlineStatus] downloadRes OnlineStatusBean is null");
@@ -63,7 +63,7 @@ public class OnlineStatusResDownLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusResDownLoader
  * JD-Core Version:    0.7.0.1
  */

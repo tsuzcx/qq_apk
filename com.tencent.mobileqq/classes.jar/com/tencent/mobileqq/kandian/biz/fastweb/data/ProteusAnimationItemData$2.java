@@ -11,14 +11,14 @@ class ProteusAnimationItemData$2
   {
     ProteusAnimationItemData.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     if (ProteusAnimationItemData.a(this.a).getLayoutParams() != null) {
-      ProteusAnimationItemData.a(this.a).getLayoutParams().height = ProteusAnimationItemData.a(this.a);
+      ProteusAnimationItemData.a(this.a).getLayoutParams().height = ProteusAnimationItemData.b(this.a);
     }
     ProteusAnimationItemData.a(this.a).requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.data.ProteusAnimationItemData.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class FriendFragment$MyMessageObserver
   
   protected void onUpdateFriendsList()
   {
-    if (FriendFragment.b(this.a)) {
+    if (FriendFragment.c(this.a)) {
       FriendFragment.a(this.a, 1400L, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyMessageObserver
  * JD-Core Version:    0.7.0.1
  */

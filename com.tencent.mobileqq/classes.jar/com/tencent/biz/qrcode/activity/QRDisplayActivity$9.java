@@ -20,7 +20,7 @@ class QRDisplayActivity$9
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.d("QRDisplayActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if (!this.a.b)
+    if (!this.a.h)
     {
       if (this.a.isFinishing()) {
         return;
@@ -37,7 +37,7 @@ class QRDisplayActivity$9
       if (paramHashMap != null)
       {
         localObject = this.a;
-        ((QRDisplayActivity)localObject).a = paramHashMap;
+        ((QRDisplayActivity)localObject).e = paramHashMap;
         ((QRDisplayActivity)localObject).h();
         return;
       }

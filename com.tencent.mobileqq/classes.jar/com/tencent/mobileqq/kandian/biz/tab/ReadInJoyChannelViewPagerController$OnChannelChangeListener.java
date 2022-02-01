@@ -6,7 +6,7 @@ public abstract interface ReadInJoyChannelViewPagerController$OnChannelChangeLis
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.tab.ReadInJoyChannelViewPagerController.OnChannelChangeListener
  * JD-Core Version:    0.7.0.1
  */

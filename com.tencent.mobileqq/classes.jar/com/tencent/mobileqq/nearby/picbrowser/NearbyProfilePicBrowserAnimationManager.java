@@ -17,12 +17,12 @@ import com.tencent.util.VersionUtils;
 public class NearbyProfilePicBrowserAnimationManager
   extends AnimationManager
 {
-  private AbstractImageListModel b;
+  private AbstractImageListModel m;
   
   public NearbyProfilePicBrowserAnimationManager(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
   {
     super(paramActivity, paramAbstractImageListModel);
-    this.jdField_b_of_type_ComTencentCommonGalleryactivityAbstractImageListModel = paramAbstractImageListModel;
+    this.m = paramAbstractImageListModel;
   }
   
   private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, GalleryImage paramGalleryImage, boolean paramBoolean)
@@ -38,11 +38,11 @@ public class NearbyProfilePicBrowserAnimationManager
       if (!paramGalleryImage.needAnimation(paramBoolean)) {
         return null;
       }
-      int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-      int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+      int i = this.g.getWidth();
+      int j = this.g.getHeight();
       int k = localDrawable.getIntrinsicWidth();
-      int m = localDrawable.getIntrinsicHeight();
-      paramRect2.set(0, 0, k, m);
+      int n = localDrawable.getIntrinsicHeight();
+      paramRect2.set(0, 0, k, n);
       paramRect3.set(paramRect1);
       if ((paramGalleryImage instanceof AIORichMediaInfo)) {
         paramRect2 = ((AIORichMediaInfo)paramGalleryImage).a;
@@ -57,13 +57,13 @@ public class NearbyProfilePicBrowserAnimationManager
         {
           paramRect1 = localObject;
           if ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable)) {
-            paramRect1 = AnimationUtils.a(k, m, i, j, false, paramRect2);
+            paramRect1 = AnimationUtils.a(k, n, i, j, false, paramRect2);
           }
         }
       }
       paramRect3 = paramRect1;
       if (paramRect1 == null) {
-        paramRect3 = AnimationUtils.a(k, m, i, j, paramRect2);
+        paramRect3 = AnimationUtils.a(k, n, i, j, paramRect2);
       }
       paramRect4.set(paramRect3);
       return localDrawable;
@@ -78,12 +78,12 @@ public class NearbyProfilePicBrowserAnimationManager
     if (bool2) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      b();
+    if (this.g == null) {
+      f();
     }
     Rect localRect1 = new Rect();
     Rect localRect2 = new Rect();
-    GalleryImage localGalleryImage = this.jdField_b_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    GalleryImage localGalleryImage = this.m.d();
     if (localGalleryImage == null) {
       return false;
     }
@@ -95,27 +95,27 @@ public class NearbyProfilePicBrowserAnimationManager
       if (localRect4.bottom == -1) {
         return false;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       if (localDrawable == null) {
         bool1 = false;
       }
-      this.jdField_b_of_type_Boolean = bool1;
-      if (!this.jdField_b_of_type_Boolean)
+      this.d = bool1;
+      if (!this.d)
       {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+        this.h.setVisibility(4);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localGalleryImage.isImgCenterCropMode;
+        this.h.setVisibility(0);
+        this.h.setAnimationListener(this);
+        this.h.a = localGalleryImage.isImgCenterCropMode;
         if (localRect3 == null) {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect1, localRect2, localGalleryImage.getCutValue(), this.jdField_a_of_type_Long);
+          this.h.a(localDrawable, localRect1, localRect2, localGalleryImage.getCutValue(), this.c);
         } else {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
+          this.h.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.c);
         }
       }
-      return this.jdField_b_of_type_Boolean;
+      return this.d;
     }
     return false;
   }
@@ -127,12 +127,12 @@ public class NearbyProfilePicBrowserAnimationManager
     if (bool2) {
       return true;
     }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      b();
+    if (this.g == null) {
+      f();
     }
     Rect localRect2 = new Rect();
     Rect localRect3 = new Rect();
-    GalleryImage localGalleryImage = this.jdField_b_of_type_ComTencentCommonGalleryactivityAbstractImageListModel.a();
+    GalleryImage localGalleryImage = this.m.d();
     Rect localRect1 = null;
     if (localGalleryImage != null) {
       localRect1 = localGalleryImage.getStartSrcRect();
@@ -144,35 +144,35 @@ public class NearbyProfilePicBrowserAnimationManager
       if (localRect4.bottom == -1) {
         return false;
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       if (localDrawable == null) {
         bool1 = false;
       }
-      this.jdField_b_of_type_Boolean = bool1;
-      if (!this.jdField_b_of_type_Boolean)
+      this.d = bool1;
+      if (!this.d)
       {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(4);
+        this.h.setVisibility(4);
       }
       else
       {
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setVisibility(0);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.setAnimationListener(this);
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.jdField_a_of_type_Boolean = localGalleryImage.isImgCenterCropMode;
-        this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.jdField_a_of_type_Long);
+        this.h.setVisibility(0);
+        this.h.setAnimationListener(this);
+        this.h.a = localGalleryImage.isImgCenterCropMode;
+        this.h.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.c);
         if (localRect1 == null) {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.jdField_a_of_type_Long);
+          this.h.a(localDrawable, localRect2, localRect3, localGalleryImage.getCutValue(), localGalleryImage.getStartX(), localGalleryImage.getStartY(), this.c);
         } else {
-          this.jdField_a_of_type_ComTencentCommonGalleryactivityAnimationView.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.jdField_a_of_type_Long);
+          this.h.b(localDrawable, localRect1, localRect4, localRect2, localRect3, this.c);
         }
       }
-      return this.jdField_b_of_type_Boolean;
+      return this.d;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserAnimationManager
  * JD-Core Version:    0.7.0.1
  */

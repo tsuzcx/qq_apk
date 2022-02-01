@@ -17,17 +17,17 @@ class ForwardTroopListFragment$8
   
   public void onAction(View paramView)
   {
-    paramView = (IContactSearchModel)paramView.getTag(2131380884);
+    paramView = (IContactSearchModel)paramView.getTag(2131449867);
     if (paramView == null) {
       return;
     }
-    String str1 = paramView.a();
-    String str2 = paramView.b().toString();
+    String str1 = paramView.c();
+    String str2 = paramView.d().toString();
     boolean bool = paramView instanceof ContactSearchModelDiscussionMember;
     int i = 1;
     if (bool)
     {
-      paramView = ((ContactSearchModelDiscussionMember)paramView).e();
+      paramView = ((ContactSearchModelDiscussionMember)paramView).s();
       i = 3000;
     }
     else if ((paramView instanceof ContactSearchModelNewTroop))
@@ -36,7 +36,7 @@ class ForwardTroopListFragment$8
     }
     else if ((paramView instanceof ContactSearchModelTroop))
     {
-      paramView = ((ContactSearchModelTroop)paramView).a().troopuin;
+      paramView = ((ContactSearchModelTroop)paramView).t().troopuin;
     }
     else if ((paramView instanceof ContactSearchModelFriend))
     {
@@ -55,7 +55,7 @@ class ForwardTroopListFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardTroopListFragment.8
  * JD-Core Version:    0.7.0.1
  */

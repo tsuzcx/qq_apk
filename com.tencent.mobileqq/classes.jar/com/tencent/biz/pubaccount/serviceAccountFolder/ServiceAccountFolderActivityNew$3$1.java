@@ -12,13 +12,13 @@ class ServiceAccountFolderActivityNew$3$1
   
   public void onClick(View paramView)
   {
-    ServiceAccountFolderActivityNew.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivityNew$3.a, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp);
+    ServiceAccountFolderActivityNew.c(this.b.a, this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew.3.1
  * JD-Core Version:    0.7.0.1
  */

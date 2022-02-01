@@ -38,40 +38,41 @@ class AvatarPendantActivity$18
       {
         if (l == 0L)
         {
-          this.a.b.setVisibility(4);
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-          if (this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopSeriesInfo != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopSeriesInfo.c = -1;
+          this.a.F.setVisibility(4);
+          this.a.X.setVisibility(8);
+          AvatarPendantActivity.e(this.a);
+          if (this.a.T != null) {
+            this.a.T.j = -1;
           }
           ReportController.b(this.a.app, "CliOper", "", "", "0X8005FD4", "0X8005FD4", 0, 0, "", "", "", "");
         }
         else
         {
-          this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131718818);
-          this.a.b.setVisibility(0);
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+          this.a.Y.setText(2131916326);
+          this.a.F.setVisibility(0);
+          this.a.X.setVisibility(0);
           localObject = this.a.app;
-          if (this.a.d) {
+          if (this.a.ad) {
             paramObject = "1";
           } else {
             paramObject = "0";
           }
           ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8005FD6", "0X8005FD6", 0, 0, paramObject, "", "", "");
-          if (this.a.d) {
-            this.a.d = false;
+          if (this.a.ad) {
+            this.a.ad = false;
           }
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter != null) && (this.a.jdField_a_of_type_JavaUtilList != null))
+        if ((this.a.B != null) && (this.a.aj != null))
         {
-          paramObject = ((AvatarPendantManager)this.a.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).a();
-          this.a.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a(paramObject, this.a.jdField_a_of_type_JavaUtilList, AvatarPendantActivity.a(this.a));
+          paramObject = ((AvatarPendantManager)this.a.app.getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER)).f();
+          this.a.B.a(paramObject, this.a.aj, AvatarPendantActivity.c(this.a));
         }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopItemInfo.jdField_a_of_type_Boolean))
+        if ((this.a.S != null) && (this.a.S.d))
         {
           localObject = IndividuationUrlHelper.a("linkPendantSet");
           paramObject = localObject;
           if (localObject != null) {
-            paramObject = ((String)localObject).replace("[id]", String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopItemInfo.jdField_a_of_type_Int));
+            paramObject = ((String)localObject).replace("[id]", String.valueOf(this.a.S.a));
           }
           if (QLog.isColorLevel())
           {
@@ -113,7 +114,7 @@ class AvatarPendantActivity$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.18
  * JD-Core Version:    0.7.0.1
  */

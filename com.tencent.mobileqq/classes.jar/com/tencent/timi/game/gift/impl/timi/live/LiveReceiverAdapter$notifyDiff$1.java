@@ -1,0 +1,33 @@
+package com.tencent.timi.game.gift.impl.timi.live;
+
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.internal.Intrinsics;
+import kotlin.jvm.internal.Lambda;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/timi/game/gift/impl/timi/live/LiveReceiverInfoModel;", "invoke"}, k=3, mv={1, 1, 16})
+final class LiveReceiverAdapter$notifyDiff$1
+  extends Lambda
+  implements Function1<LiveReceiverInfoModel, String>
+{
+  public static final 1 INSTANCE = new 1();
+  
+  LiveReceiverAdapter$notifyDiff$1()
+  {
+    super(1);
+  }
+  
+  @NotNull
+  public final String invoke(@NotNull LiveReceiverInfoModel paramLiveReceiverInfoModel)
+  {
+    Intrinsics.checkParameterIsNotNull(paramLiveReceiverInfoModel, "it");
+    return String.valueOf(paramLiveReceiverInfoModel);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+ * Qualified Name:     com.tencent.timi.game.gift.impl.timi.live.LiveReceiverAdapter.notifyDiff.1
+ * JD-Core Version:    0.7.0.1
+ */

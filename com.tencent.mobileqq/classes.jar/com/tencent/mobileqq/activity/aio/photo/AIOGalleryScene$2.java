@@ -13,33 +13,33 @@ class AIOGalleryScene$2
   
   public void run()
   {
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a();
+    Object localObject = this.this$0.c.c();
     if (localObject != null)
     {
       if (((AIORichMediaInfo)localObject).a == null) {
         return;
       }
-      ImageView localImageView = (ImageView)this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131372192);
-      if (((((AIORichMediaInfo)localObject).a instanceof AIOShortVideoData)) && (((AIOShortVideoData)((AIORichMediaInfo)localObject).a).b == 1))
+      ImageView localImageView = (ImageView)this.this$0.h.findViewById(2131439679);
+      if (((((AIORichMediaInfo)localObject).a instanceof AIOShortVideoData)) && (((AIOShortVideoData)((AIORichMediaInfo)localObject).a).d == 1))
       {
-        localObject = AIOGalleryScene.a(this.this$0);
+        localObject = AIOGalleryScene.c(this.this$0);
         if ((localImageView != null) && (localObject != null))
         {
-          localObject = ((AIOGalleryAdapter.GalleryImageStruct)localObject).a();
+          localObject = ((AIOGalleryAdapter.GalleryImageStruct)localObject).getDrawable();
           if ((localObject instanceof URLDrawable))
           {
             if (((URLDrawable)localObject).getPlayState() == 2)
             {
-              localImageView.setImageResource(2130846309);
+              localImageView.setImageResource(2130847780);
               return;
             }
-            localImageView.setImageResource(2130846308);
+            localImageView.setImageResource(2130847779);
           }
         }
       }
-      else if ((localImageView != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO != null))
+      else if ((localImageView != null) && (this.this$0.au != null))
       {
-        int i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO.a();
+        int i = this.this$0.au.o();
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
@@ -49,17 +49,17 @@ class AIOGalleryScene$2
         }
         if ((i != 1) && (i != 2) && (i != 3) && (i != 7))
         {
-          localImageView.setImageResource(2130846308);
+          localImageView.setImageResource(2130847779);
           return;
         }
-        localImageView.setImageResource(2130846309);
+        localImageView.setImageResource(2130847780);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.2
  * JD-Core Version:    0.7.0.1
  */

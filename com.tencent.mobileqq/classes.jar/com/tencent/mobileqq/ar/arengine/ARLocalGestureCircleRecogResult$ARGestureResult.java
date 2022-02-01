@@ -4,54 +4,46 @@ import android.graphics.PointF;
 
 public class ARLocalGestureCircleRecogResult$ARGestureResult
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public PointF[] a;
-  public int b = 0;
-  public int c = 0;
-  public int d = -1;
+  public boolean a = false;
+  public int b = -1;
+  public String c = "";
+  public PointF[] d = null;
+  public int e = 0;
+  public int f = 0;
+  public int g = -1;
   
   public ARLocalGestureCircleRecogResult$ARGestureResult()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = null;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[1000];
+    this.d = new PointF[1000];
     a();
   }
   
   public ARLocalGestureCircleRecogResult$ARGestureResult(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = null;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = new PointF[paramInt];
+    this.d = new PointF[paramInt];
     a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = 0;
-    this.c = 0;
-    this.d = -1;
+    this.a = false;
+    this.b = -1;
+    this.c = "";
+    this.e = 0;
+    this.f = 0;
+    this.g = -1;
   }
   
   public String toString()
   {
     Object localObject;
-    if (this.b > 0)
+    if (this.e > 0)
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("(");
-      ((StringBuilder)localObject).append((int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].x);
+      ((StringBuilder)localObject).append((int)this.d[(this.e - 1)].x);
       ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append((int)this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[(this.b - 1)].y);
+      ((StringBuilder)localObject).append((int)this.d[(this.e - 1)].y);
       ((StringBuilder)localObject).append(")");
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -61,22 +53,22 @@ public class ARLocalGestureCircleRecogResult$ARGestureResult
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARGestureResult{, state = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", type = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", pointCnt = ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", type = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", pointCnt = ");
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", newPoint(x,y) = ");
     localStringBuilder.append((String)localObject);
     localStringBuilder.append(", mode = ");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARGestureResult
  * JD-Core Version:    0.7.0.1
  */

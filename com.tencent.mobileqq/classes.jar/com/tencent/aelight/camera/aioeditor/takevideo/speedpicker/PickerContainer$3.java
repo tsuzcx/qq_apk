@@ -10,7 +10,7 @@ class PickerContainer$3
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    if (PickerContainer.a(this.a))
+    if (PickerContainer.c(this.a))
     {
       if (PickerContainer.b(this.a).floatValue() < 0.01F) {
         this.a.setVisibility(4);
@@ -21,7 +21,7 @@ class PickerContainer$3
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (PickerContainer.a(this.a))
+    if (PickerContainer.c(this.a))
     {
       if (PickerContainer.b(this.a).floatValue() < 0.01F) {
         this.a.setVisibility(4);
@@ -36,7 +36,7 @@ class PickerContainer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.speedpicker.PickerContainer.3
  * JD-Core Version:    0.7.0.1
  */

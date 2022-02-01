@@ -11,9 +11,9 @@ class PopupDialogQQSide$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ResultReceiver localResultReceiver = this.jdField_a_of_type_AndroidOsResultReceiver;
+    ResultReceiver localResultReceiver = this.a;
     if (localResultReceiver != null) {
-      localResultReceiver.send(1, this.jdField_a_of_type_ComTencentAvUtilsPopupDialogQQSide.getArguments());
+      localResultReceiver.send(1, this.b.getArguments());
     }
     paramDialogInterface.dismiss();
   }

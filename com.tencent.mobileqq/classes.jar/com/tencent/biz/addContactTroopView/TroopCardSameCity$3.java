@@ -23,8 +23,8 @@ class TroopCardSameCity$3
 {
   public int getCount()
   {
-    if (this.a.a != null) {
-      return this.a.a.size();
+    if (this.a.e != null) {
+      return this.a.e.size();
     }
     return 0;
   }
@@ -47,10 +47,10 @@ class TroopCardSameCity$3
     if (paramView == null)
     {
       localViewHolder = new TroopCardSameCity.ViewHolder();
-      localView = LayoutInflater.from(this.a.getContext()).inflate(2131559838, paramViewGroup, false);
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368538));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378608));
-      localViewHolder.b = ((TextView)localView.findViewById(2131378490));
+      localView = LayoutInflater.from(this.a.getContext()).inflate(2131625881, paramViewGroup, false);
+      localViewHolder.a = ((ImageView)localView.findViewById(2131435443));
+      localViewHolder.b = ((TextView)localView.findViewById(2131447237));
+      localViewHolder.c = ((TextView)localView.findViewById(2131447105));
       localView.setTag(localViewHolder);
     }
     else
@@ -58,7 +58,7 @@ class TroopCardSameCity$3
       localViewHolder = (TroopCardSameCity.ViewHolder)paramView.getTag();
       localView = paramView;
     }
-    searchtab.Item2 localItem2 = (searchtab.Item2)this.a.a.get(paramInt);
+    searchtab.Item2 localItem2 = (searchtab.Item2)this.a.e.get(paramInt);
     int j = AIOUtils.b(38.0F, this.a.getResources());
     int k = AIOUtils.b(57.0F, this.a.getResources());
     Object localObject = localItem2.str_img_url.get();
@@ -92,7 +92,7 @@ class TroopCardSameCity$3
       try
       {
         localObject = URLDrawable.getDrawable(paramView, j, k);
-        localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        localViewHolder.a.setImageDrawable((Drawable)localObject);
         if ((localObject == null) || (1 == ((URLDrawable)localObject).getStatus())) {
           break label453;
         }
@@ -112,11 +112,11 @@ class TroopCardSameCity$3
     }
     else
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      localViewHolder.a.setImageDrawable(null);
     }
     label453:
-    localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(localItem2.str_name.get());
-    localViewHolder.b.setText(localItem2.str_desc.get());
+    localViewHolder.b.setText(localItem2.str_name.get());
+    localViewHolder.c.setText(localItem2.str_desc.get());
     EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
     return localView;
   }

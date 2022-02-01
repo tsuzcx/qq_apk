@@ -14,13 +14,13 @@ class SpecailCareListActivity$20
   public void onAnimationEnd(Animation paramAnimation)
   {
     this.a.leftView.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.clearAnimation();
+    this.a.f.clearAnimation();
     this.a.leftView.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.f.setVisibility(0);
     this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText(SpecailCareListActivity.jdField_a_of_type_JavaLangString);
-    this.a.rightViewText.setContentDescription(HardCodeUtil.a(2131714108));
-    this.a.c = false;
+    this.a.rightViewText.setText(SpecailCareListActivity.a);
+    this.a.rightViewText.setContentDescription(HardCodeUtil.a(2131911639));
+    this.a.z = false;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -29,7 +29,7 @@ class SpecailCareListActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.20
  * JD-Core Version:    0.7.0.1
  */

@@ -16,13 +16,13 @@ final class RIJConfigVideoItem$2
   public void a(Integer paramInteger)
   {
     if (Objects.equal(paramInteger, Integer.valueOf(5))) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizVideoViewholderVideoFeedsViewHolder.i.setText(this.jdField_a_of_type_ComTencentMobileqqKandianBizAccesslayerDataRIJDataManager.a().a().getString(2131693397));
+      this.a.F.setText(this.b.a().A().getString(2131890946));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.video.RIJConfigVideoItem.2
  * JD-Core Version:    0.7.0.1
  */

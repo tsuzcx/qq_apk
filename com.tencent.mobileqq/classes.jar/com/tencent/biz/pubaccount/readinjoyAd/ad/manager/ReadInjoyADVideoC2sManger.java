@@ -25,10 +25,10 @@ public class ReadInjoyADVideoC2sManger
       return;
     }
     VideoPlayParam localVideoPlayParam = paramIVideoPlayManager.a();
-    paramIVideoPlayManager = paramIVideoPlayManager.a();
-    if ((paramIVideoPlayManager != null) && (localVideoPlayParam != null) && ((localVideoPlayParam.a instanceof AdvertisementInfo)))
+    paramIVideoPlayManager = paramIVideoPlayManager.b();
+    if ((paramIVideoPlayManager != null) && (localVideoPlayParam != null) && ((localVideoPlayParam.D instanceof AdvertisementInfo)))
     {
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localVideoPlayParam.a;
+      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localVideoPlayParam.D;
       if (paramInt >= localAdvertisementInfo.mC2SReportTriggerTime / 1000) {
         a(paramIVideoPlayManager, localAdvertisementInfo, localVideoPlayParam);
       }
@@ -42,7 +42,7 @@ public class ReadInjoyADVideoC2sManger
       if (paramAdvertisementInfo == null) {
         return false;
       }
-      if (((paramVideoPlayParam.a instanceof AdvertisementInfo)) && (paramVideoPlayParam.b) && (!a.contains(paramAdvertisementInfo.mAdTraceId)) && (paramAdvertisementInfo.mC2SVideoPlayUrl != null) && (paramAdvertisementInfo.mC2SVideoPlayUrl.size() > 0))
+      if (((paramVideoPlayParam.D instanceof AdvertisementInfo)) && (paramVideoPlayParam.M) && (!a.contains(paramAdvertisementInfo.mAdTraceId)) && (paramAdvertisementInfo.mC2SVideoPlayUrl != null) && (paramAdvertisementInfo.mC2SVideoPlayUrl.size() > 0))
       {
         ((IRIJAdService)QRoute.api(IRIJAdService.class)).report(new AdReportData().a(paramActivity).a(27).b(3).a(paramAdvertisementInfo));
         a.add(paramAdvertisementInfo.mAdTraceId);
@@ -54,7 +54,7 @@ public class ReadInjoyADVideoC2sManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.manager.ReadInjoyADVideoC2sManger
  * JD-Core Version:    0.7.0.1
  */

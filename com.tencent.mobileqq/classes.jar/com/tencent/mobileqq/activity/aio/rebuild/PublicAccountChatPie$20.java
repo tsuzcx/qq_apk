@@ -14,21 +14,21 @@ class PublicAccountChatPie$20
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null)
+    if (this.a.bq != null)
     {
-      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      QQAppInterface localQQAppInterface = this.a.d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("");
-      localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+      localStringBuilder.append(this.a.bq.msgId);
       ReportController.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", localStringBuilder.toString(), "");
     }
-    this.a.k();
+    this.a.B();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.20
  * JD-Core Version:    0.7.0.1
  */

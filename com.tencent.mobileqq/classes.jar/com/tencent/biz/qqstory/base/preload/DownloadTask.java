@@ -14,39 +14,29 @@ import java.util.Map;
 @TargetApi(14)
 public class DownloadTask
 {
-  public int a;
-  public long a;
-  public AsyncFileDownloader.DownloadResult a;
-  public AsyncFileDownloader.InnerDownloader a;
-  public MessageForShortVideo a;
-  public HttpNetReq a;
   public String a;
-  public Map<String, Object> a;
-  public boolean a;
-  public int b;
-  public long b;
   public String b;
-  public boolean b;
   public int c;
-  public String c;
-  public boolean c;
   public int d;
-  public String d;
-  public int e;
   public String e;
-  public int f;
   public String f;
-  public int g = 1;
-  
-  public DownloadTask()
-  {
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-  }
+  public String g;
+  public String h;
+  public int i;
+  public int j = -1;
+  public boolean k = false;
+  public Map<String, Object> l = new HashMap();
+  public AsyncFileDownloader.DownloadResult m;
+  public AsyncFileDownloader.InnerDownloader n;
+  public int o = 0;
+  public long p;
+  public long q;
+  public int r = 0;
+  public int s = 1;
+  public boolean t = false;
+  public HttpNetReq u;
+  public MessageForShortVideo v;
+  public boolean w;
   
   public static DownloadTask a(String paramString, int paramInt)
   {
@@ -64,34 +54,34 @@ public class DownloadTask
     Object localObject = ((StoryManager)SuperManager.a(5)).a(paramString1);
     if ((localObject != null) && (((StoryVideoItem)localObject).isMine()))
     {
-      localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, ((StoryVideoItem)localObject).mCreateTime, paramInt, false, false);
-      localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, ((StoryVideoItem)localObject).mCreateTime, paramInt, true, false);
+      localDownloadTask.g = FileCacheUtils.a(paramString1, ((StoryVideoItem)localObject).mCreateTime, paramInt, false, false);
+      localDownloadTask.h = FileCacheUtils.a(paramString1, ((StoryVideoItem)localObject).mCreateTime, paramInt, true, false);
     }
     else
     {
-      localDownloadTask.jdField_e_of_type_JavaLangString = FileCacheUtils.a(paramString1, paramInt, false, false);
-      localDownloadTask.jdField_f_of_type_JavaLangString = FileCacheUtils.a(paramString1, paramInt, true, false);
+      localDownloadTask.g = FileCacheUtils.b(paramString1, paramInt, false, false);
+      localDownloadTask.h = FileCacheUtils.b(paramString1, paramInt, true, false);
     }
-    localDownloadTask.jdField_b_of_type_Int = 0;
-    localDownloadTask.jdField_b_of_type_JavaLangString = paramString1;
-    localDownloadTask.jdField_a_of_type_Int = paramInt;
-    localDownloadTask.jdField_a_of_type_JavaLangString = a(paramString1, paramInt);
+    localDownloadTask.d = 0;
+    localDownloadTask.b = paramString1;
+    localDownloadTask.c = paramInt;
+    localDownloadTask.a = b(paramString1, paramInt);
     localObject = "";
     if (paramBoolean) {
       paramString1 = "";
     } else {
       paramString1 = paramString2;
     }
-    localDownloadTask.jdField_c_of_type_JavaLangString = paramString1;
+    localDownloadTask.e = paramString1;
     if (paramBoolean) {
       paramString2 = (String)localObject;
     }
-    localDownloadTask.jdField_d_of_type_JavaLangString = paramString2;
-    localDownloadTask.jdField_c_of_type_Boolean = paramBoolean;
+    localDownloadTask.f = paramString2;
+    localDownloadTask.w = paramBoolean;
     return localDownloadTask;
   }
   
-  public static String a(String paramString, int paramInt)
+  public static String b(String paramString, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt);
@@ -105,7 +95,7 @@ public class DownloadTask
     if ((paramObject instanceof DownloadTask))
     {
       paramObject = (DownloadTask)paramObject;
-      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) {
+      if (TextUtils.equals(this.a, paramObject.a)) {
         return true;
       }
     }
@@ -116,20 +106,20 @@ public class DownloadTask
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("DownloadTask{vid='");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append(", fileType=");
-    localStringBuilder.append(QQStoryConstant.a(this.jdField_a_of_type_Int));
+    localStringBuilder.append(QQStoryConstant.a(this.c));
     localStringBuilder.append(", status=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", downloadUrl='");
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append(", localPath='");
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", localTmpPath='");
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -137,7 +127,7 @@ public class DownloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

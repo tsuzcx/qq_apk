@@ -12,7 +12,7 @@ final class VideoPlayController$executeOnSubThread$1
   
   public final void run()
   {
-    VideoView localVideoView = this.this$0.a();
+    VideoView localVideoView = this.this$0.u();
     if (localVideoView != null) {
       try
       {
@@ -30,7 +30,7 @@ final class VideoPlayController$executeOnSubThread$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.gifvideo.base.video.VideoPlayController.executeOnSubThread.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ class GaInviteLockActivity$1
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.b;
+      String str = this.b.l;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onReceiveMemberList mMemberChangeEventReceiver size:");
       localStringBuilder.append(paramArrayList.size());

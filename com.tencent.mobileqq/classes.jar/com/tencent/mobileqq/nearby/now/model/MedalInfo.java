@@ -11,22 +11,18 @@ public class MedalInfo
 {
   public static final Parcelable.Creator<MedalInfo> CREATOR = new MedalInfo.1();
   public int a;
-  public List<MedalItem> a;
   public int b;
   public int c;
+  public List<MedalItem> d = new ArrayList();
   
-  public MedalInfo()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
+  public MedalInfo() {}
   
   protected MedalInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.a = paramParcel.readInt();
     this.b = paramParcel.readInt();
     this.c = paramParcel.readInt();
-    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, MedalItem.CREATOR);
+    paramParcel.readTypedList(this.d, MedalItem.CREATOR);
   }
   
   public int describeContents()
@@ -42,10 +38,10 @@ public class MedalInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeInt(this.a);
     paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.c);
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    List localList = this.d;
     if (localList != null) {
       paramParcel.writeTypedList(localList);
     }
@@ -53,7 +49,7 @@ public class MedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.MedalInfo
  * JD-Core Version:    0.7.0.1
  */

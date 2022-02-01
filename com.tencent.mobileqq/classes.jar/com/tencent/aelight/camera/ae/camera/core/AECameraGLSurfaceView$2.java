@@ -10,12 +10,12 @@ class AECameraGLSurfaceView$2
   
   public void run()
   {
-    ((AEFilterProcessTex)AECameraGLSurfaceView.access$000(this.this$0)).a().setLightBundle(this.val$bundlePath, this.val$agentType);
+    ((AEFilterProcessTex)AECameraGLSurfaceView.access$000(this.this$0)).h().setLightBundle(this.val$bundlePath, this.val$agentType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.core.AECameraGLSurfaceView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,8 +12,8 @@ import com.tencent.avgame.gameroom.GameRoomViewLayoutParamsDef;
 public class EmptyMemberItemView
   extends RelativeLayout
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private View a;
+  private ImageView b;
   
   public EmptyMemberItemView(Context paramContext)
   {
@@ -32,23 +32,23 @@ public class EmptyMemberItemView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366243);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    this.a = findViewById(2131432535);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
     localLayoutParams.width = GameRoomViewLayoutParamsDef.F;
     localLayoutParams.height = GameRoomViewLayoutParamsDef.F;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165311));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370713));
+    this.a.setLayoutParams(localLayoutParams);
+    this.a.setBackgroundColor(getContext().getResources().getColor(2131165547));
+    this.b = ((ImageView)findViewById(2131437992));
   }
   
   public void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.b.setVisibility(0);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.b.setVisibility(8);
   }
 }
 

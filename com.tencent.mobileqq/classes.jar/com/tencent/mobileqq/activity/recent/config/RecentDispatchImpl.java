@@ -12,22 +12,16 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class RecentDispatchImpl<T extends IRecentBaseDataProcessor>
   implements IRecentDispatch<IRecentBaseDataProcessor>
 {
-  protected ArrayList<T> a;
-  private AtomicBoolean a;
+  protected ArrayList<T> a = new ArrayList(8);
   protected ArrayList<Class<? extends IRecentBaseDataProcessor>> b = new ArrayList();
-  
-  public RecentDispatchImpl()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  private AtomicBoolean c = new AtomicBoolean(false);
   
   public void a() {}
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface, RecentBaseData paramRecentBaseData)
   {
     b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.a.iterator();
     while ((localIterator.hasNext()) && (!((IRecentBaseDataProcessor)localIterator.next()).a(paramBaseQQAppInterface, paramRecentBaseData))) {}
   }
   
@@ -35,8 +29,8 @@ public class RecentDispatchImpl<T extends IRecentBaseDataProcessor>
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramT);
-      Collections.sort(this.jdField_a_of_type_JavaUtilArrayList);
+      this.a.add(paramT);
+      Collections.sort(this.a);
       return;
     }
     finally
@@ -65,9 +59,9 @@ public class RecentDispatchImpl<T extends IRecentBaseDataProcessor>
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("RecentDispatchImpl", 2, new Object[] { "prepare call,sPrepared=", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()), " class=", getClass().getName() });
+        QLog.d("RecentDispatchImpl", 2, new Object[] { "prepare call,sPrepared=", Boolean.valueOf(this.c.get()), " class=", getClass().getName() });
       }
-      boolean bool = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+      boolean bool = this.c.get();
       if (bool) {
         return;
       }
@@ -92,7 +86,7 @@ public class RecentDispatchImpl<T extends IRecentBaseDataProcessor>
           QLog.d("RecentDispatchImpl", 2, "IllegalAccessException=", localIllegalAccessException);
         }
       }
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.c.set(true);
       return;
     }
     finally {}
@@ -104,7 +98,7 @@ public class RecentDispatchImpl<T extends IRecentBaseDataProcessor>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.RecentDispatchImpl
  * JD-Core Version:    0.7.0.1
  */

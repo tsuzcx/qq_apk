@@ -7,26 +7,21 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 public class TroopAioMsgNavigateEffectPic
-  extends BaseTroopAioMsgNavigateBarDelegate
+  extends BaseAioMsgNavigateBarDelegate
 {
   public TroopAioMsgNavigateEffectPic(QQAppInterface paramQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo)
   {
     super(paramQQAppInterface, paramContext, paramBaseSessionInfo);
-    this.a = 7;
+    this.c = 7;
   }
   
   @Nullable
-  public BaseTroopAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
+  public BaseAioMsgNavigateBarDelegate.Entity a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
   {
     return null;
   }
   
   public void a(int paramInt, Object paramObject, String paramString) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
   
   public boolean a(int paramInt1, int paramInt2)
   {
@@ -34,10 +29,15 @@ public class TroopAioMsgNavigateEffectPic
   }
   
   public void b(int paramInt, Object paramObject, String paramString) {}
+  
+  public boolean b(int paramInt)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateEffectPic
  * JD-Core Version:    0.7.0.1
  */

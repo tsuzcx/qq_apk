@@ -10,12 +10,12 @@ public final class WeatherWebViewFragment$requestLocationPermission$1
   public void a()
   {
     super.a();
-    WeatherWebViewFragment.b(this.a);
+    WeatherWebViewFragment.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebViewFragment.requestLocationPermission.1
  * JD-Core Version:    0.7.0.1
  */

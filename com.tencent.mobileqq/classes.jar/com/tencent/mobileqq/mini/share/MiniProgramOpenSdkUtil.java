@@ -44,7 +44,7 @@ public class MiniProgramOpenSdkUtil
   
   public static boolean asyncShareMiniProgram(JumpAction paramJumpAction)
   {
-    return (isSharingMiniProgram(paramJumpAction.a)) && (!"to_qzone".equals(paramJumpAction.c));
+    return (isSharingMiniProgram(paramJumpAction.f)) && (!"to_qzone".equals(paramJumpAction.e));
   }
   
   private static JSONObject buildArkConfig(JSONObject paramJSONObject, String paramString)
@@ -135,7 +135,7 @@ public class MiniProgramOpenSdkUtil
     MiniProgramOpenSdkUtil.1 local1 = new MiniProgramOpenSdkUtil.1(paramContext, localTimeOutInfo);
     MiniProgramOpenSdkUtil.2 local2 = new MiniProgramOpenSdkUtil.2(localTimeOutInfo, paramContext);
     ThreadManager.getUIHandler().postDelayed(local1, 500L);
-    ThreadManager.getUIHandler().postDelayed(local2, 5000L);
+    ThreadManager.getUIHandler().postDelayed(local2, 7000L);
     paramIntent.putExtras(paramBundle);
     String str2 = toBase64Decode((String)paramHashMap.get("mini_program_appid"));
     String str3 = toBase64Decode((String)paramHashMap.get("mini_program_path"));
@@ -303,7 +303,7 @@ public class MiniProgramOpenSdkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramOpenSdkUtil
  * JD-Core Version:    0.7.0.1
  */

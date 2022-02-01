@@ -10,12 +10,12 @@ class ExtendFriendSearchFragment$10
   
   public void run()
   {
-    this.this$0.a.a().a(this.a);
+    this.this$0.l.k().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.fragment.ExtendFriendSearchFragment.10
  * JD-Core Version:    0.7.0.1
  */

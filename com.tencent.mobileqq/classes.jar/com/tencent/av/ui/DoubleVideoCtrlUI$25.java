@@ -1,70 +1,18 @@
 package com.tencent.av.ui;
 
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectOperateManager;
-import com.tencent.av.business.manager.filter.EffectFilterTools.DataReport;
-import com.tencent.av.business.manager.magicface.MagicDataReport;
-import com.tencent.av.business.manager.pendant.EffectPendantTools.DataReport;
-import com.tencent.av.business.manager.zimu.EffectZimuManager.DataReport;
-import com.tencent.av.utils.DataReport;
-import com.tencent.av.utils.TraeHelper;
-
 class DoubleVideoCtrlUI$25
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements Runnable
 {
-  DoubleVideoCtrlUI$25(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong, String paramString) {}
+  DoubleVideoCtrlUI$25(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
   
-  public void a()
+  public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI;
-    ((DoubleVideoCtrlUI)localObject).j = true;
-    ((DoubleVideoCtrlUI)localObject).O();
-    localObject = (EffectOperateManager)this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(8);
-    if (localObject != null) {
-      ((EffectOperateManager)localObject).b(false);
+    if ((!this.this$0.af) && (DoubleVideoCtrlUI.a(this.this$0)))
+    {
+      this.this$0.f(0);
+      this.this$0.I(this.a);
+      DoubleVideoCtrlUI.b(this.this$0);
     }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.Q();
-  }
-  
-  public void b()
-  {
-    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a();
-    TraeHelper.a().b(this.jdField_a_of_type_Long);
-    localSessionInfo.f = false;
-    if (localSessionInfo.z == -1) {
-      localSessionInfo.z = 0;
-    }
-    localSessionInfo.s = true;
-    DataReport.d(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.c) {
-      DataReport.r(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController);
-    }
-    if ((localSessionInfo.j()) && (localSessionInfo.d == 2) && (!localSessionInfo.j)) {
-      DataReport.e();
-    }
-    AVLog.printColorLog(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, "DataReport onClose: ");
-    EffectPendantTools.DataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    EffectZimuManager.DataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    EffectFilterTools.DataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    BeautyToolbar.DataReport.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-    VoiceChangeDataReport.a(localSessionInfo);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(localSessionInfo.b());
-    ((StringBuilder)localObject).append("");
-    localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_JavaLangString, 237);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(237);
-    MagicDataReport.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvAppVideoAppInterface, (String)localObject);
-    MagicDataReport.a(2, (String)localObject);
-    MagicDataReport.a(2);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_JavaLangString, localSessionInfo.z);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
-    localSessionInfo.a("onClick_HangeUP", false);
-    localSessionInfo.c("onClick_HangeUP", 0);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.j = false;
   }
 }
 

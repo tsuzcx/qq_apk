@@ -11,8 +11,8 @@ import android.widget.TextView;
 public class ReadInJoyCardViewCostBall
   extends TextView
 {
-  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
-  private WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  private WindowManager.LayoutParams a;
+  private WindowManager b;
   
   public ReadInJoyCardViewCostBall(Context paramContext)
   {
@@ -32,8 +32,8 @@ public class ReadInJoyCardViewCostBall
   
   private void a(Context paramContext)
   {
-    setId(2131371443);
-    setBackgroundColor(paramContext.getResources().getColor(2131165338));
+    setId(2131438809);
+    setBackgroundColor(paramContext.getResources().getColor(2131165580));
     setText("60.00");
     setTextColor(-16711936);
     setGravity(17);
@@ -42,7 +42,7 @@ public class ReadInJoyCardViewCostBall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyCardViewCostBall
  * JD-Core Version:    0.7.0.1
  */

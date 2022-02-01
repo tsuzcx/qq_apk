@@ -9,26 +9,19 @@ import mqq.app.AppRuntime;
 public final class SmartDeviceReport
 {
   protected static SmartDeviceReport a;
-  private static String b = "smartdevice::smartdevicereport";
-  public int a;
-  public long a;
-  public String a;
-  
-  protected SmartDeviceReport()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-  }
+  private static String e = "smartdevice::smartdevicereport";
+  public String b = "";
+  public int c = 0;
+  public long d = 0L;
   
   public static SmartDeviceReport a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentDeviceUtilsSmartDeviceReport == null) {
-        jdField_a_of_type_ComTencentDeviceUtilsSmartDeviceReport = new SmartDeviceReport();
+      if (a == null) {
+        a = new SmartDeviceReport();
       }
-      SmartDeviceReport localSmartDeviceReport = jdField_a_of_type_ComTencentDeviceUtilsSmartDeviceReport;
+      SmartDeviceReport localSmartDeviceReport = a;
       return localSmartDeviceReport;
     }
     finally {}
@@ -84,7 +77,7 @@ public final class SmartDeviceReport
     }
     if (QLog.isColorLevel())
     {
-      localObject1 = b;
+      localObject1 = e;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("smartdevice datareport, actionname:");
       ((StringBuilder)localObject2).append(paramString1);
@@ -121,29 +114,29 @@ public final class SmartDeviceReport
   
   public void a(int paramInt)
   {
-    long l = this.jdField_a_of_type_Long;
+    long l = this.d;
     if (0L == l) {
-      this.jdField_a_of_type_Long = (new Random().nextInt() & 0xFFFFFFFF);
+      this.d = (new Random().nextInt() & 0xFFFFFFFF);
     } else {
-      this.jdField_a_of_type_Long = (l + 1L);
+      this.d = (l + 1L);
     }
     if (paramInt != 2)
     {
       if (paramInt != 3)
       {
-        this.jdField_a_of_type_Long %= 1431655765L;
-        l = this.jdField_a_of_type_Long;
+        this.d %= 1431655765L;
+        l = this.d;
         if (0L == l) {
-          this.jdField_a_of_type_Long = (l + 1L);
+          this.d = (l + 1L);
         }
       }
       else
       {
-        this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 2863311530L);
+        this.d = (this.d % 1431655765L + 2863311530L);
       }
     }
     else {
-      this.jdField_a_of_type_Long = (this.jdField_a_of_type_Long % 1431655765L + 1431655765L);
+      this.d = (this.d % 1431655765L + 1431655765L);
     }
   }
   
@@ -164,7 +157,7 @@ public final class SmartDeviceReport
     }
     if (QLog.isColorLevel())
     {
-      localObject = b;
+      localObject = e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("smartdevice datareport2, actionname:");
       localStringBuilder.append(paramString1);
@@ -189,22 +182,22 @@ public final class SmartDeviceReport
     } else {
       paramAppRuntime = null;
     }
-    long l = this.jdField_a_of_type_Long & 0xFFFFFFFF;
-    String str2 = this.jdField_a_of_type_JavaLangString;
+    long l = this.d & 0xFFFFFFFF;
+    String str2 = this.b;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
     if (QLog.isColorLevel())
     {
-      str2 = b;
+      str2 = e;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("smartdevice datareport, actionname:");
       localStringBuilder.append(paramString);
       localStringBuilder.append(",result:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(", pid:");
-      localStringBuilder.append(Long.toString(this.jdField_a_of_type_Int));
+      localStringBuilder.append(Long.toString(this.c));
       localStringBuilder.append(",sn:");
       localStringBuilder.append(str1);
       localStringBuilder.append(",seq:");
@@ -213,15 +206,15 @@ public final class SmartDeviceReport
     }
     if ((!"Net_Wifi_Config_Time_Used".equals(paramString)) && (!"Net_Wifi_Config_Ack_Time_Used".equals(paramString)))
     {
-      ReportController.b(paramAppRuntime, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), str1, "");
+      ReportController.b(paramAppRuntime, "CliOper", "", "0", "SmartDevice", paramString, paramInt, 0, Long.toString(this.c), Long.toString(l), str1, "");
       return;
     }
-    ReportController.b(paramAppRuntime, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.jdField_a_of_type_Int), Long.toString(l), str1, "");
+    ReportController.b(paramAppRuntime, "CliOper", "", "0", "SmartDevice", paramString, 0, paramInt, Long.toString(this.c), Long.toString(l), str1, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.utils.SmartDeviceReport
  * JD-Core Version:    0.7.0.1
  */

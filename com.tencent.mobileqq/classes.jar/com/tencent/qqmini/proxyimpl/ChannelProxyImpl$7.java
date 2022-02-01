@@ -15,8 +15,8 @@ class ChannelProxyImpl$7
     boolean bool = false;
     if (paramInt1 == 9)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-      paramIntent = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
+      this.a.removeActivityResultListener(this);
+      paramIntent = this.b;
       if (paramInt2 == 0) {
         bool = true;
       }
@@ -28,7 +28,7 @@ class ChannelProxyImpl$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ChannelProxyImpl.7
  * JD-Core Version:    0.7.0.1
  */

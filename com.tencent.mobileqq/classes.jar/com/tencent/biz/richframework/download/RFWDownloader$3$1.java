@@ -1,6 +1,6 @@
 package com.tencent.biz.richframework.download;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 
 class RFWDownloader$3$1
@@ -13,20 +13,19 @@ class RFWDownloader$3$1
     if ((paramBoolean2) && (!paramBoolean3))
     {
       paramString = this.this$1.this$0.getContentFilePath(this.this$1.val$downloadUrl);
-      int i = RFLog.USR;
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getFile success, the file is exist path:");
       ((StringBuilder)localObject).append(paramString);
-      RFLog.i("RFWDownloader", i, ((StringBuilder)localObject).toString());
+      QLog.i("RFWDownloader", 1, ((StringBuilder)localObject).toString());
       RFWDownloader.access$600(this.this$1.this$0, this.this$1.val$downloadUrl, true, paramString);
       return;
     }
     if (RFWDownloader.access$300(this.this$1.this$0).contains(this.this$1.val$downloadUrl))
     {
-      RFLog.i("RFWDownloader", RFLog.USR, "getFile ..., file is downloading");
+      QLog.i("RFWDownloader", 1, "getFile ..., file is downloading");
       return;
     }
-    RFLog.i("RFWDownloader", RFLog.USR, "getFile ..., start download");
+    QLog.i("RFWDownloader", 1, "getFile ..., start download");
     Object localObject = RFWDownloader.access$200(this.this$1.this$0, this.this$1.val$downloadUrl);
     ((RFWDownloadInfo)localObject).setMD5(paramString);
     RFWDownloader.access$500(this.this$1.this$0, (RFWDownloadInfo)localObject);

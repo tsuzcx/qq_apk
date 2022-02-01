@@ -27,7 +27,7 @@ class ReceiptMessageDetailFragment$TroopSendReadReportCallback
         QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
       }
       ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
       return;
     }
     if (paramInt != 1281)
@@ -36,15 +36,15 @@ class ReceiptMessageDetailFragment$TroopSendReadReportCallback
       paramArrayOfByte.append("mTroopSendReadReportCallback fatal error: ");
       paramArrayOfByte.append(paramInt);
       QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
+      ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
       return;
     }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
+    ReceiptMessageDetailFragment.F((ReceiptMessageDetailFragment)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.TroopSendReadReportCallback
  * JD-Core Version:    0.7.0.1
  */

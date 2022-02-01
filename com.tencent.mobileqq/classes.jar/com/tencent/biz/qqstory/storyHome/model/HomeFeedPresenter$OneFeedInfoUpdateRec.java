@@ -15,21 +15,21 @@ public class HomeFeedPresenter$OneFeedInfoUpdateRec
   public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull OneFeedNodeInfoPullHandler.SingleFeedInfoEvent paramSingleFeedInfoEvent)
   {
     Object localObject = paramSingleFeedInfoEvent.a;
-    paramSingleFeedInfoEvent = paramHomeFeedPresenter.a(((StoryHomeFeed)localObject).a.feedId);
+    paramSingleFeedInfoEvent = paramHomeFeedPresenter.a(((StoryHomeFeed)localObject).f.feedId);
     if (paramSingleFeedInfoEvent == null)
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((StoryHomeFeed)localObject).a.feedId });
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((StoryHomeFeed)localObject).f.feedId });
       return;
     }
     if (((localObject instanceof VideoListHomeFeed)) && ((paramSingleFeedInfoEvent instanceof VideoListHomeFeed)))
     {
       localObject = (VideoListHomeFeed)localObject;
       paramSingleFeedInfoEvent = (VideoListHomeFeed)paramSingleFeedInfoEvent;
-      paramSingleFeedInfoEvent.a = ((VideoListHomeFeed)localObject).a;
-      paramSingleFeedInfoEvent.a(((VideoListHomeFeed)localObject).b(), false);
-      paramSingleFeedInfoEvent.b(((VideoListHomeFeed)localObject).c(), false);
+      paramSingleFeedInfoEvent.f = ((VideoListHomeFeed)localObject).f;
+      paramSingleFeedInfoEvent.a(((VideoListHomeFeed)localObject).d(), false);
+      paramSingleFeedInfoEvent.b(((VideoListHomeFeed)localObject).f(), false);
       paramSingleFeedInfoEvent.c(((VideoListHomeFeed)localObject).a(), false);
-      HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramSingleFeedInfoEvent.a.feedId);
+      HomeFeedPresenter.c(paramHomeFeedPresenter).b(paramSingleFeedInfoEvent.f.feedId);
       SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramSingleFeedInfoEvent);
       return;
     }

@@ -11,12 +11,11 @@ import java.util.List;
 public class GetVidListResponse$UserVidList
 {
   public String a;
-  public List<String> a;
+  public List<String> b = new ArrayList();
   
   public GetVidListResponse$UserVidList(GetVidListResponse paramGetVidListResponse, qqstory_struct.UserVidList paramUserVidList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramUserVidList.union_id.get().toStringUtf8();
+    this.a = paramUserVidList.union_id.get().toStringUtf8();
     paramGetVidListResponse = paramUserVidList.vid_list.get();
     if (paramGetVidListResponse != null)
     {
@@ -24,7 +23,7 @@ public class GetVidListResponse$UserVidList
       while (paramGetVidListResponse.hasNext())
       {
         paramUserVidList = (ByteStringMicro)paramGetVidListResponse.next();
-        this.jdField_a_of_type_JavaUtilList.add(paramUserVidList.toStringUtf8());
+        this.b.add(paramUserVidList.toStringUtf8());
       }
     }
   }
@@ -33,16 +32,16 @@ public class GetVidListResponse$UserVidList
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UserVidList{, uin=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", vidList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.b);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetVidListResponse.UserVidList
  * JD-Core Version:    0.7.0.1
  */

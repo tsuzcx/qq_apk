@@ -22,8 +22,6 @@ public abstract interface IFrameControllerInterface
   
   public abstract void a(TabFrameControllerImpl paramTabFrameControllerImpl, FrameFragment paramFrameFragment, boolean paramBoolean);
   
-  public abstract void a(FrameFragment paramFrameFragment);
-  
   public abstract void a(FrameFragment paramFrameFragment, int paramInt);
   
   public abstract void a(FrameFragment paramFrameFragment, Intent paramIntent);
@@ -34,15 +32,17 @@ public abstract interface IFrameControllerInterface
   
   public abstract boolean a();
   
-  public abstract boolean a(FrameFragment paramFrameFragment);
-  
   public abstract View[] a(TabFrameControllerImpl paramTabFrameControllerImpl, LayoutInflater paramLayoutInflater);
   
   public abstract View[] a(TabFrameControllerImpl paramTabFrameControllerImpl, FrameFragment paramFrameFragment, View paramView);
+  
+  public abstract void b(FrameFragment paramFrameFragment);
+  
+  public abstract boolean c(FrameFragment paramFrameFragment);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.IFrameControllerInterface
  * JD-Core Version:    0.7.0.1
  */

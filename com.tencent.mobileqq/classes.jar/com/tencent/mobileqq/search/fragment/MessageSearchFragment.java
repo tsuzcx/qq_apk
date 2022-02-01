@@ -10,51 +10,51 @@ import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
 public class MessageSearchFragment
   extends BaseSearchFragment
 {
-  protected int a()
-  {
-    return 40;
-  }
-  
-  protected BaseMvpAdapter a()
-  {
-    return new MessageSearchFragment.1(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder);
-  }
-  
-  protected ISearchEngine a()
-  {
-    return new MessageSearchEngine((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-  }
-  
-  protected String a()
-  {
-    return getString(2131718608);
-  }
-  
   public void a(String paramString)
   {
     super.a(paramString, 2);
   }
   
-  protected String b()
+  protected BaseMvpAdapter b()
   {
-    return HardCodeUtil.a(2131701275);
+    return new MessageSearchFragment.1(this, this.l, this.n);
+  }
+  
+  protected ISearchEngine c()
+  {
+    return new MessageSearchEngine((QQAppInterface)this.p);
+  }
+  
+  protected String d()
+  {
+    return getString(2131916109);
+  }
+  
+  protected String e()
+  {
+    return HardCodeUtil.a(2131899285);
+  }
+  
+  protected int l()
+  {
+    return 40;
   }
   
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.c();
+    this.o.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchEngine.d();
+    this.o.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.MessageSearchFragment
  * JD-Core Version:    0.7.0.1
  */

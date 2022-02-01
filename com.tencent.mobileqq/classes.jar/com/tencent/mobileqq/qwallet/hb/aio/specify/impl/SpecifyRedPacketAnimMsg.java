@@ -25,15 +25,15 @@ import mqq.os.MqqHandler;
 public class SpecifyRedPacketAnimMsg
   implements IAnimationMessageProxy, ISpecifyRedPacketAnimMsg
 {
-  WindowManager jdField_a_of_type_AndroidViewWindowManager;
   public MessageForQQWalletMsg a;
-  SpecifyGiftView jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyGiftView;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean = false;
+  WindowManager b;
+  SpecifyGiftView c;
+  private boolean d = false;
+  private Runnable e;
   
   public SpecifyRedPacketAnimMsg(MessageForQQWalletMsg paramMessageForQQWalletMsg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = paramMessageForQQWalletMsg;
+    this.a = paramMessageForQQWalletMsg;
   }
   
   public static boolean a(BaseQQAppInterface paramBaseQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg)
@@ -77,7 +77,7 @@ public class SpecifyRedPacketAnimMsg
     if (paramObject.isRedPackExpired()) {
       return false;
     }
-    if ((!RedPacketConfigManager.a().a()) && (!paramBaseQQAppInterface.getCurrentUin().equals(paramObject.senderuin)))
+    if ((!RedPacketConfigManager.a().b()) && (!paramBaseQQAppInterface.getCurrentUin().equals(paramObject.senderuin)))
     {
       if (paramObject.mQQWalletRedPacketMsg.specifyUinList != null)
       {
@@ -105,63 +105,23 @@ public class SpecifyRedPacketAnimMsg
     return true;
   }
   
-  public long a()
-  {
-    try
-    {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-      return l;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin;
-  }
-  
-  public void a()
-  {
-    SpecifyGiftView localSpecifyGiftView = this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyGiftView;
-    if (localSpecifyGiftView != null) {
-      try
-      {
-        localSpecifyGiftView.removeAllViews();
-        this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyGiftView);
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(".troop.send_gift", 2, "closeRedPackGiftAnimation exception ", localException);
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioSpecifyImplSpecifyGiftView = null;
-    this.jdField_a_of_type_AndroidViewWindowManager = null;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
   public void a(Object paramObject, ISpecifyRedPacketAnimMsg.OnAnimEndListener paramOnAnimEndListener)
   {
     Object localObject = ((IQWalletTemp)QRoute.api(IQWalletTemp.class)).createBaseChatPie(paramObject);
-    QWalletTools.a(QWalletTools.a(), "212", "only.animation.show");
+    QWalletTools.a(QWalletTools.b(), "212", "only.animation.show");
     paramObject = new StringBuilder();
     paramObject.append(SpecifyAnimInfo.a());
-    paramObject.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId);
+    paramObject.append(this.a.mQQWalletRedPacketMsg.body.feedId);
     paramObject.append(".zip");
     paramObject = paramObject.toString();
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
+    WeakReference localWeakReference = new WeakReference(this.a);
     localObject = new WeakReference(localObject);
     if (QLog.isColorLevel()) {
       QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim start");
     }
     paramOnAnimEndListener = new SpecifyRedPacketAnimMsg.1(this, paramOnAnimEndListener);
-    this.jdField_a_of_type_JavaLangRunnable = new SpecifyRedPacketAnimMsg.2(this, paramOnAnimEndListener);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
+    this.e = new SpecifyRedPacketAnimMsg.2(this, paramOnAnimEndListener);
+    ThreadManager.getUIHandler().postDelayed(this.e, 10000L);
     PreloadStaticApi.a().getResPath(paramObject, new SpecifyRedPacketAnimMsg.3(this, localWeakReference, paramOnAnimEndListener, (WeakReference)localObject));
   }
   
@@ -172,17 +132,57 @@ public class SpecifyRedPacketAnimMsg
   
   public long b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.shmsgseq;
+    try
+    {
+      long l = Long.parseLong(this.a.senderuin);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return 0L;
   }
   
-  public String b()
+  public long c()
+  {
+    return this.a.shmsgseq;
+  }
+  
+  public String d()
+  {
+    return this.a.frienduin;
+  }
+  
+  public String e()
   {
     return "LIMIT_TYPE_SPECIFY_RED_PACK";
+  }
+  
+  public void f()
+  {
+    SpecifyGiftView localSpecifyGiftView = this.c;
+    if (localSpecifyGiftView != null) {
+      try
+      {
+        localSpecifyGiftView.removeAllViews();
+        this.b.removeViewImmediate(this.c);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(".troop.send_gift", 2, "closeRedPackGiftAnimation exception ", localException);
+        }
+      }
+    }
+    this.c = null;
+    this.b = null;
+    this.d = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.specify.impl.SpecifyRedPacketAnimMsg
  * JD-Core Version:    0.7.0.1
  */

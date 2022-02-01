@@ -7,7 +7,7 @@ class MultiViewBlock$1$6
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.a().notifyItemMoved(this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.c(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$1.a.c(this.b));
+    this.c.a.B().notifyItemMoved(this.c.a.f(this.a), this.c.a.f(this.b));
   }
 }
 

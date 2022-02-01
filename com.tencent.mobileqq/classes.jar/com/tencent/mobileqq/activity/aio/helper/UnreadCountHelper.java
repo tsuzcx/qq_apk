@@ -13,39 +13,39 @@ import com.tencent.qphone.base.util.QLog;
 public class UnreadCountHelper
   implements ILifeCycleHelper
 {
-  private int jdField_a_of_type_Int = 0;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface a;
+  private Context b;
+  private Activity c;
+  private BaseChatPie d;
+  private SessionInfo e;
+  private int f = 0;
   
   public UnreadCountHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.a = paramBaseChatPie.d;
+    this.b = paramBaseChatPie.e;
+    this.c = paramBaseChatPie.f;
+    this.d = paramBaseChatPie;
+    this.e = paramBaseChatPie.ah;
   }
   
-  private void a()
+  private void b()
   {
-    if (this.jdField_a_of_type_Int > 0)
+    if (this.f > 0)
     {
-      PushNotificationManager localPushNotificationManager = (PushNotificationManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PUSH_NOTIFICATION_MANAGER);
+      PushNotificationManager localPushNotificationManager = (PushNotificationManager)this.a.getManager(QQManagerFactory.PUSH_NOTIFICATION_MANAGER);
       if (localPushNotificationManager != null)
       {
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+        int i = this.e.a;
         if (i != 0)
         {
           if ((i != 1) && (i != 3000)) {
             return;
           }
-          localPushNotificationManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, PushNotificationManager.c);
+          localPushNotificationManager.a(this.e, PushNotificationManager.c);
           return;
         }
-        localPushNotificationManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, PushNotificationManager.b);
+        localPushNotificationManager.a(this.e, PushNotificationManager.b);
         return;
       }
       if (QLog.isColorLevel()) {
@@ -74,13 +74,13 @@ public class UnreadCountHelper
     if (paramInt != 8) {
       return;
     }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    a();
+    this.f = this.a.getConversationFacade().a(this.e.b, this.e.a);
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.UnreadCountHelper
  * JD-Core Version:    0.7.0.1
  */

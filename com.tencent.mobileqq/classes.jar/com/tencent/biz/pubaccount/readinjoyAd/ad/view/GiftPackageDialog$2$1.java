@@ -14,10 +14,10 @@ class GiftPackageDialog$2$1
   
   public void run()
   {
-    if ((GiftPackageDialog.a(this.a.a) != null) && (GiftPackageDialog.b(this.a.a) != null))
+    if ((GiftPackageDialog.i(this.a.a) != null) && (GiftPackageDialog.j(this.a.a) != null))
     {
-      GiftPackageDialog.b(this.a.a, ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).requestRole(GiftPackageDialog.a(this.a.a), GiftPackageDialog.a(this.a.a).v, GiftPackageDialog.b(this.a.a).v, GiftPackageDialog.b(this.a.a).s));
-      if ((GiftPackageDialog.c(this.a.a) == null) || (GiftPackageDialog.c(this.a.a).size() <= 0)) {
+      GiftPackageDialog.b(this.a.a, ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).requestRole(GiftPackageDialog.k(this.a.a), GiftPackageDialog.i(this.a.a).v, GiftPackageDialog.j(this.a.a).v, GiftPackageDialog.j(this.a.a).s));
+      if ((GiftPackageDialog.h(this.a.a) == null) || (GiftPackageDialog.h(this.a.a).size() <= 0)) {
         ThreadManager.getUIHandler().post(new GiftPackageDialog.2.1.1(this));
       }
     }
@@ -25,7 +25,7 @@ class GiftPackageDialog$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageDialog.2.1
  * JD-Core Version:    0.7.0.1
  */

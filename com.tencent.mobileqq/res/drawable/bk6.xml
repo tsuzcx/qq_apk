@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="#ff202124" android:endColor="#ff1c1d1f" android:angle="270.0" />
-</shape>
+    <item android:state_selected="true" android:drawable="@drawable/bk7" />
+    <item android:drawable="@drawable/bk8" />
+</selector>

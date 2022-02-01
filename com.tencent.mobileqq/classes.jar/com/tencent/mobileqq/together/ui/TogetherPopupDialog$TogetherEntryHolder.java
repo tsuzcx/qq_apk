@@ -26,17 +26,17 @@ public class TogetherPopupDialog$TogetherEntryHolder
     if (this.a == null) {
       this.a = new TogetherPopupDialog.TogetherEntryItem();
     }
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369970));
-    this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView = ((RoundRectView)paramView.findViewById(2131369935));
-    this.a.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369969));
-    this.a.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369979));
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView = ((RoundRectUrlImageView)paramView.findViewById(2131369966));
-    this.a.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131369950));
-    this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView = new HeadsPanelAnimationView();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a() != null)
+    this.a.a = ((RelativeLayout)paramView.findViewById(2131437120));
+    this.a.b = ((RoundRectView)paramView.findViewById(2131437084));
+    this.a.c = ((TextView)paramView.findViewById(2131437119));
+    this.a.d = ((TextView)paramView.findViewById(2131437130));
+    this.a.e = ((RoundRectUrlImageView)paramView.findViewById(2131437116));
+    this.a.f = ((RelativeLayout)paramView.findViewById(2131437099));
+    this.a.g = new HeadsPanelAnimationView();
+    if (this.a.g.a() != null)
     {
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a());
+      this.a.f.removeAllViews();
+      this.a.f.addView(this.a.g.a());
     }
   }
   
@@ -47,35 +47,35 @@ public class TogetherPopupDialog$TogetherEntryHolder
       if (paramContext == null) {
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setAllRadius(ViewUtils.b(12.0F));
-      this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setBgColor(paramTogetherEntryData.d);
-      this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setTag(paramTogetherEntryData);
-      this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setOnClickListener(paramOnClickListener);
-      if (AppSetting.d) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setContentDescription(paramTogetherEntryData.jdField_a_of_type_JavaLangString);
+      this.a.b.setAllRadius(ViewUtils.dpToPx(12.0F));
+      this.a.b.setBgColor(paramTogetherEntryData.k);
+      this.a.b.setTag(paramTogetherEntryData);
+      this.a.b.setOnClickListener(paramOnClickListener);
+      if (AppSetting.e) {
+        this.a.b.setContentDescription(paramTogetherEntryData.i);
       }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramTogetherEntryData.jdField_a_of_type_JavaLangString);
-      if (paramTogetherEntryData.jdField_a_of_type_Boolean)
+      this.a.c.setText(paramTogetherEntryData.i);
+      if (paramTogetherEntryData.n)
       {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a(paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList);
+        this.a.f.setVisibility(0);
+        this.a.g.a(paramTogetherEntryData.p);
       }
       else
       {
-        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        this.a.f.setVisibility(8);
       }
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(paramTogetherEntryData.a());
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setAllRadius(ViewUtils.b(12.0F));
-      if (!TextUtils.isEmpty(paramTogetherEntryData.c))
+      this.a.d.setText(paramTogetherEntryData.b());
+      this.a.e.setAllRadius(ViewUtils.dpToPx(12.0F));
+      if (!TextUtils.isEmpty(paramTogetherEntryData.l))
       {
         paramOnClickListener = URLDrawable.URLDrawableOptions.obtain();
         paramOnClickListener.mLoadingDrawable = TogetherEntryData.a(paramContext, paramTogetherEntryData);
         paramOnClickListener.mFailedDrawable = TogetherEntryData.a(paramContext, paramTogetherEntryData);
-        paramTogetherEntryData = URLDrawable.getDrawable(paramTogetherEntryData.c, paramOnClickListener);
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setImageDrawable(paramTogetherEntryData);
+        paramTogetherEntryData = URLDrawable.getDrawable(paramTogetherEntryData.l, paramOnClickListener);
+        this.a.e.setImageDrawable(paramTogetherEntryData);
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setImageResource(paramTogetherEntryData.e);
+      this.a.e.setImageResource(paramTogetherEntryData.m);
     }
   }
   
@@ -87,17 +87,17 @@ public class TogetherPopupDialog$TogetherEntryHolder
     if (this.b == null) {
       this.b = new TogetherPopupDialog.TogetherEntryItem();
     }
-    this.b.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376584));
-    this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView = ((RoundRectView)paramView.findViewById(2131376550));
-    this.b.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376583));
-    this.b.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376595));
-    this.b.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView = ((RoundRectUrlImageView)paramView.findViewById(2131376580));
-    this.b.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376567));
-    this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView = new HeadsPanelAnimationView();
-    if (this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a() != null)
+    this.b.a = ((RelativeLayout)paramView.findViewById(2131444839));
+    this.b.b = ((RoundRectView)paramView.findViewById(2131444801));
+    this.b.c = ((TextView)paramView.findViewById(2131444838));
+    this.b.d = ((TextView)paramView.findViewById(2131444853));
+    this.b.e = ((RoundRectUrlImageView)paramView.findViewById(2131444835));
+    this.b.f = ((RelativeLayout)paramView.findViewById(2131444822));
+    this.b.g = new HeadsPanelAnimationView();
+    if (this.b.g.a() != null)
     {
-      this.b.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.b.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a());
+      this.b.f.removeAllViews();
+      this.b.f.addView(this.b.g.a());
     }
   }
   
@@ -108,41 +108,41 @@ public class TogetherPopupDialog$TogetherEntryHolder
       if (paramContext == null) {
         return;
       }
-      this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setAllRadius(ViewUtils.b(12.0F));
-      this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setBgColor(paramTogetherEntryData.d);
-      this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setTag(paramTogetherEntryData);
-      this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setOnClickListener(paramOnClickListener);
-      if (AppSetting.d) {
-        this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiRoundRectView.setContentDescription(paramTogetherEntryData.jdField_a_of_type_JavaLangString);
+      this.b.b.setAllRadius(ViewUtils.dpToPx(12.0F));
+      this.b.b.setBgColor(paramTogetherEntryData.k);
+      this.b.b.setTag(paramTogetherEntryData);
+      this.b.b.setOnClickListener(paramOnClickListener);
+      if (AppSetting.e) {
+        this.b.b.setContentDescription(paramTogetherEntryData.i);
       }
-      this.b.jdField_a_of_type_AndroidWidgetTextView.setText(paramTogetherEntryData.jdField_a_of_type_JavaLangString);
-      if (paramTogetherEntryData.jdField_a_of_type_Boolean)
+      this.b.c.setText(paramTogetherEntryData.i);
+      if (paramTogetherEntryData.n)
       {
-        this.b.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        this.b.jdField_a_of_type_ComTencentMobileqqTogetherUiHeadsPanelAnimationView.a(paramTogetherEntryData.jdField_a_of_type_JavaUtilArrayList);
+        this.b.f.setVisibility(0);
+        this.b.g.a(paramTogetherEntryData.p);
       }
       else
       {
-        this.b.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        this.b.f.setVisibility(8);
       }
-      this.b.jdField_b_of_type_AndroidWidgetTextView.setText(paramTogetherEntryData.a());
-      this.b.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setAllRadius(ViewUtils.b(12.0F));
-      if (!TextUtils.isEmpty(paramTogetherEntryData.c))
+      this.b.d.setText(paramTogetherEntryData.b());
+      this.b.e.setAllRadius(ViewUtils.dpToPx(12.0F));
+      if (!TextUtils.isEmpty(paramTogetherEntryData.l))
       {
         paramOnClickListener = URLDrawable.URLDrawableOptions.obtain();
         paramOnClickListener.mLoadingDrawable = TogetherEntryData.a(paramContext, paramTogetherEntryData);
         paramOnClickListener.mFailedDrawable = TogetherEntryData.a(paramContext, paramTogetherEntryData);
-        paramTogetherEntryData = URLDrawable.getDrawable(paramTogetherEntryData.c, paramOnClickListener);
-        this.b.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setImageDrawable(paramTogetherEntryData);
+        paramTogetherEntryData = URLDrawable.getDrawable(paramTogetherEntryData.l, paramOnClickListener);
+        this.b.e.setImageDrawable(paramTogetherEntryData);
         return;
       }
-      this.b.jdField_a_of_type_ComTencentMobileqqTroopWidgetRoundRectUrlImageView.setImageResource(paramTogetherEntryData.e);
+      this.b.e.setImageResource(paramTogetherEntryData.m);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPopupDialog.TogetherEntryHolder
  * JD-Core Version:    0.7.0.1
  */

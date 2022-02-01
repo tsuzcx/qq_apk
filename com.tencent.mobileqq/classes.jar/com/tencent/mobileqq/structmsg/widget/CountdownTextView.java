@@ -9,8 +9,8 @@ import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerL
 public class CountdownTextView
   extends TextView
 {
-  private CountDownTimer.CountDownTimerListener jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener;
-  private CountDownTimer jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer = new CountDownTimer();
+  private CountDownTimer a = new CountDownTimer();
+  private CountDownTimer.CountDownTimerListener b;
   
   public CountdownTextView(Context paramContext)
   {
@@ -29,20 +29,25 @@ public class CountdownTextView
   
   public void a()
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    CountDownTimer localCountDownTimer = this.a;
     if (localCountDownTimer != null) {
-      localCountDownTimer.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
+      localCountDownTimer.b(this.b);
     }
   }
   
   public void a(long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
   {
-    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    CountDownTimer localCountDownTimer = this.a;
     if (localCountDownTimer != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener = new CountdownTextView.1(this, paramLong, paramTimerCallback);
-      localCountDownTimer.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer$CountDownTimerListener);
+      this.b = new CountdownTextView.1(this, paramLong, paramTimerCallback);
+      localCountDownTimer.a(this.b);
     }
+  }
+  
+  public CountDownTimer getCountDownTimer()
+  {
+    return this.a;
   }
   
   protected void onDetachedFromWindow()
@@ -53,7 +58,7 @@ public class CountdownTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.widget.CountdownTextView
  * JD-Core Version:    0.7.0.1
  */

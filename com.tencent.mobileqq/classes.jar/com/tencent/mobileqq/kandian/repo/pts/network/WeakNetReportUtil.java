@@ -7,10 +7,9 @@ import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.kandian.base.utils.RIJNetworkUtils;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -29,13 +28,8 @@ import org.json.JSONObject;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/repo/pts/network/WeakNetReportUtil;", "", "()V", "ACTION_FEEDS_REFRESH", "", "ACTION_NETWORK_CHANGED", "TAG", "feedsReportSwitch", "", "report68bFeedsRequest", "", "params", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "report68bRequestNetworkChanged", "req", "Lcom/tencent/qphone/base/remote/ToServiceMsg;", "result", "", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class WeakNetReportUtil
 {
-  public static final WeakNetReportUtil a;
-  private static boolean a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianRepoPtsNetworkWeakNetReportUtil = new WeakNetReportUtil();
-  }
+  public static final WeakNetReportUtil a = new WeakNetReportUtil();
+  private static boolean b;
   
   public final void a(@NotNull ToServiceMsg paramToServiceMsg, int paramInt)
   {
@@ -58,8 +52,8 @@ public final class WeakNetReportUtil
         if (paramToServiceMsg != null)
         {
           k = ((Integer)paramToServiceMsg).intValue();
-          localObject = RIJQQAppInterfaceUtil.a();
-          m = RIJNetworkUtils.b((Context)BaseApplicationImpl.context);
+          localObject = RIJQQAppInterfaceUtil.d();
+          m = RIJNetworkUtils.f((Context)BaseApplicationImpl.context);
           bool2 = NetworkUtil.isNetworkAvailable();
           paramToServiceMsg = new JSONObject();
         }
@@ -72,7 +66,7 @@ public final class WeakNetReportUtil
         paramToServiceMsg.put("sendNetType", i);
         int j = 0;
         if (!bool1) {
-          break label350;
+          break label340;
         }
         i = 1;
         paramToServiceMsg.put("sendIsNetConnected", i);
@@ -99,12 +93,12 @@ public final class WeakNetReportUtil
       localStringBuilder1.append("[report68bRequestNetworkChanged], actionName = 0X800B6B4, r5 = ");
       localStringBuilder1.append(paramToServiceMsg);
       QLog.i("WeakNetReportUtil", 1, localStringBuilder1.toString());
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800B6B4", "0X800B6B4", 0, 0, "", "", "", paramToServiceMsg.toString(), false);
+      PublicAccountReportUtils.a(null, "", "0X800B6B4", "0X800B6B4", 0, 0, "", "", "", paramToServiceMsg.toString(), false);
       return;
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Boolean");
       throw new TypeCastException("null cannot be cast to non-null type kotlin.Int");
-      label350:
+      label340:
       i = 0;
     }
   }
@@ -121,7 +115,7 @@ public final class WeakNetReportUtil
         localObject = Aladdin.getConfig(405);
         bool = false;
         if (localObject == null) {
-          break label262;
+          break label252;
         }
         i = ((AladdinConfig)localObject).getIntegerFromString("feedsReportSwitch", 0);
       }
@@ -134,13 +128,13 @@ public final class WeakNetReportUtil
         QLog.e("WeakNetReportUtil", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      jdField_a_of_type_Boolean = bool;
-      if (!jdField_a_of_type_Boolean)
+      b = bool;
+      if (!b)
       {
         QLog.i("WeakNetReportUtil", 1, "[report68bFeedsRequest] do not report.");
         return;
       }
-      localObject = RIJTransMergeKanDianReport.a();
+      localObject = RIJTransMergeKanDianReport.g();
       paramHashMap = ((Map)paramHashMap).entrySet().iterator();
       if (paramHashMap.hasNext())
       {
@@ -157,9 +151,9 @@ public final class WeakNetReportUtil
         ((StringBuilder)localObject).append("[report68bFeedsRequest], r5String = ");
         ((StringBuilder)localObject).append(paramHashMap);
         QLog.i("WeakNetReportUtil", 1, ((StringBuilder)localObject).toString());
-        ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800B8DE", "0X800B8DE", 0, 0, "", "", "", paramHashMap, false);
+        PublicAccountReportUtils.a(null, "", "0X800B8DE", "0X800B8DE", 0, 0, "", "", "", paramHashMap, false);
         return;
-        label262:
+        label252:
         i = 0;
         if (i == 1) {
           bool = true;
@@ -170,7 +164,7 @@ public final class WeakNetReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.pts.network.WeakNetReportUtil
  * JD-Core Version:    0.7.0.1
  */

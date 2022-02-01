@@ -1,6 +1,6 @@
 package cooperation.qqcircle.report;
 
-import com.tencent.biz.richframework.delegate.impl.RFLog;
+import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
 public class QCircleTaskReportInfo
@@ -12,15 +12,15 @@ public class QCircleTaskReportInfo
   public long backendPicSize;
   public int backendPicWidth;
   public String city_name;
-  public long client_compress_mediaBitrate;
-  public int client_compress_pic_height;
-  public long client_compress_pic_size;
-  public int client_compress_pic_width;
+  public long clientCompressMediaBitrate;
+  public int clientCompressPicHeight;
+  public long clientCompressPicSize;
+  public int clientCompressPicWidth;
   public String country_name;
-  public int edited_pic_height;
-  public long edited_pic_size;
-  public int edited_pic_width;
-  public long edited_video_mediaBitrate;
+  public int editedPicHeight;
+  public long editedPicSize;
+  public int editedPicWidth;
+  public long editedVideoMediaBitrate;
   public String feed_tag;
   public String feedid;
   public boolean hasCompress = false;
@@ -85,7 +85,7 @@ public class QCircleTaskReportInfo
     localStringBuffer.append(this.shooting_time);
     localStringBuffer.append('\'');
     localStringBuffer.append('\n');
-    if (RFLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
       localStringBuffer.append(", place='");
       localStringBuffer.append(this.place);
@@ -156,28 +156,28 @@ public class QCircleTaskReportInfo
     localStringBuffer.append(this.mediaOriginBitrate);
     localStringBuffer.append('\n');
     localStringBuffer.append(", edited_pic_width=");
-    localStringBuffer.append(this.edited_pic_width);
+    localStringBuffer.append(this.editedPicWidth);
     localStringBuffer.append('\n');
     localStringBuffer.append(", edited_pic_height=");
-    localStringBuffer.append(this.edited_pic_height);
+    localStringBuffer.append(this.editedPicHeight);
     localStringBuffer.append('\n');
     localStringBuffer.append(", edited_pic_size=");
-    localStringBuffer.append(this.edited_pic_size);
+    localStringBuffer.append(this.editedPicSize);
     localStringBuffer.append('\n');
     localStringBuffer.append(", edited_video_mediaBitrate=");
-    localStringBuffer.append(this.edited_video_mediaBitrate);
+    localStringBuffer.append(this.editedVideoMediaBitrate);
     localStringBuffer.append('\n');
     localStringBuffer.append(", client_compress_pic_width=");
-    localStringBuffer.append(this.client_compress_pic_width);
+    localStringBuffer.append(this.clientCompressPicWidth);
     localStringBuffer.append('\n');
     localStringBuffer.append(", client_compress_pic_height=");
-    localStringBuffer.append(this.client_compress_pic_height);
+    localStringBuffer.append(this.clientCompressPicHeight);
     localStringBuffer.append('\n');
     localStringBuffer.append(", client_compress_pic_size=");
-    localStringBuffer.append(this.client_compress_pic_size);
+    localStringBuffer.append(this.clientCompressPicSize);
     localStringBuffer.append('\n');
     localStringBuffer.append(", client_compress_mediaBitrate=");
-    localStringBuffer.append(this.client_compress_mediaBitrate);
+    localStringBuffer.append(this.clientCompressMediaBitrate);
     localStringBuffer.append('\n');
     localStringBuffer.append(", backendPicWidth=");
     localStringBuffer.append(this.backendPicWidth);
@@ -197,7 +197,7 @@ public class QCircleTaskReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleTaskReportInfo
  * JD-Core Version:    0.7.0.1
  */

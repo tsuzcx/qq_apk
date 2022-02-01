@@ -16,20 +16,20 @@ class PublicAccountChatPie$61
   {
     if (QLog.isColorLevel())
     {
-      String str = this.a.b;
+      String str = this.a.c;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("mQidianClickListener ... mQidianKefu = ");
-      localStringBuilder.append(this.a.Z);
+      localStringBuilder.append(this.a.cD);
       QLog.d(str, 2, localStringBuilder.toString());
     }
-    this.a.l(2131695275);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager.requestQidiKefu(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.h, this.a.i, this.a.j, new PublicAccountChatPie.61.1(this));
+    this.a.s(2131893010);
+    this.a.bi.requestQidiKefu(this.a.f, this.a.ah.b, this.a.cx, this.a.cy, this.a.cz, new PublicAccountChatPie.61.1(this));
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.61
  * JD-Core Version:    0.7.0.1
  */

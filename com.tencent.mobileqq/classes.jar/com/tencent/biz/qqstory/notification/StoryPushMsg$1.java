@@ -20,7 +20,7 @@ final class StoryPushMsg$1
     String str6 = paramParcel.readString();
     paramParcel = paramParcel.readBundle();
     localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
+    ((StoryPushMsg)localObject).m = paramParcel;
     return localObject;
   }
   
@@ -31,7 +31,7 @@ final class StoryPushMsg$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryPushMsg.1
  * JD-Core Version:    0.7.0.1
  */

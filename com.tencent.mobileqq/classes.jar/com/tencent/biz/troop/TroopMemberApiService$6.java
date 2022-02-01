@@ -11,7 +11,7 @@ class TroopMemberApiService$6
   protected void a(int paramInt1, int paramInt2)
   {
     TroopMemberApiService localTroopMemberApiService = this.a;
-    int i = c;
+    int i = d;
     String str = getClass().getSuperclass().getName();
     TroopMemberApiService.a(localTroopMemberApiService, i, false, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }, str, "");
   }
@@ -19,7 +19,7 @@ class TroopMemberApiService$6
   protected void a(int paramInt1, int paramInt2, String paramString)
   {
     TroopMemberApiService localTroopMemberApiService = this.a;
-    int i = c;
+    int i = d;
     String str = getClass().getSuperclass().getName();
     TroopMemberApiService.a(localTroopMemberApiService, i, true, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString }, str, "");
   }
@@ -27,14 +27,14 @@ class TroopMemberApiService$6
   protected void a(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo)
   {
     TroopMemberApiService localTroopMemberApiService = this.a;
-    int i = f;
+    int i = g;
     String str = getClass().getSuperclass().getName();
     TroopMemberApiService.a(localTroopMemberApiService, i, paramBoolean, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramTroopInfo }, str, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.6
  * JD-Core Version:    0.7.0.1
  */

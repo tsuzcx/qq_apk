@@ -13,89 +13,98 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
 import com.tencent.tkd.topicsdk.common.DisplayUtils;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.Metadata;
+import kotlin.TypeCastException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/RecentTopicLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "maxItemCount", "", "getMaxItemCount", "()I", "setMaxItemCount", "(I)V", "onItemClickListener", "Lkotlin/Function1;", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function1;)V", "recentJoinedTopicContainer", "Landroid/widget/LinearLayout;", "style", "getStyle", "setStyle", "value", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleView", "Landroid/widget/TextView;", "topicItems", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "uiHandler", "Landroid/os/Handler;", "viewDisappearRunnable", "Ljava/lang/Runnable;", "viewDisappearTime", "", "getViewDisappearTime", "()J", "setViewDisappearTime", "(J)V", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "initItemLayoutStyle", "itemLayout", "Landroid/view/View;", "isNightMode", "initTopicTextView", "topicName", "startTimingToDisappear", "updateTweetItems", "tweetItems", "", "Companion", "topicsdk-widget_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/RecentTopicLayout;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attr", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "onItemClickListener", "Lkotlin/Function1;", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function1;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function1;)V", "recentJoinedTopicContainer", "Lcom/tencent/tkd/topicsdk/widget/FlowLayout;", "style", "", "getStyle", "()I", "setStyle", "(I)V", "value", "", "title", "getTitle", "()Ljava/lang/String;", "setTitle", "(Ljava/lang/String;)V", "titleView", "Landroid/widget/TextView;", "viewDisappearTime", "", "getViewDisappearTime", "()J", "setViewDisappearTime", "(J)V", "dispatchTouchEvent", "", "ev", "Landroid/view/MotionEvent;", "initItemLayoutStyle", "itemLayout", "Landroid/view/View;", "isNightMode", "initTopicTextView", "topicName", "startTimingToDisappear", "updateTweetItems", "tweetItems", "", "Companion", "topicsdk-widget_release"}, k=1, mv={1, 1, 16})
 public final class RecentTopicLayout
   extends RelativeLayout
 {
-  public static final RecentTopicLayout.Companion a;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final Runnable jdField_a_of_type_JavaLangRunnable;
+  public static final RecentTopicLayout.Companion a = new RecentTopicLayout.Companion(null);
+  private TextView b;
+  private FlowLayout c;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
-  private final ArrayList<TweetTopicItem> jdField_a_of_type_JavaUtilArrayList;
+  private String d;
+  private int e;
   @Nullable
-  private Function1<? super TweetTopicItem, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  private int b;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentTkdTopicsdkWidgetRecentTopicLayout$Companion = new RecentTopicLayout.Companion(null);
-  }
+  private Function1<? super TweetTopicItem, Unit> f;
+  private long g;
   
   public RecentTopicLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     LayoutInflater.from(paramContext).inflate(R.layout.c, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.i);
+    paramContext = findViewById(R.id.k);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_title)");
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT_BOLD);
-    paramContext = findViewById(R.id.c);
+    this.b = ((TextView)paramContext);
+    this.b.setTypeface(Typeface.DEFAULT_BOLD);
+    paramContext = findViewById(R.id.d);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.ll_recent_joined_topic)");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = ((Runnable)new RecentTopicLayout.viewDisappearRunnable.1(this));
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = 5;
-    this.jdField_a_of_type_Long = -1L;
+    this.c = ((FlowLayout)paramContext);
+    this.d = "";
+    this.e = 1;
+    this.g = -1L;
   }
   
   private final void a(View paramView, String paramString, boolean paramBoolean)
   {
-    paramView = (TextView)paramView.findViewById(R.id.h);
-    paramView.setText((CharSequence)paramString);
-    paramView.setTypeface(Typeface.defaultFromStyle(1));
-    float f;
-    if (this.jdField_a_of_type_Int == 2) {
-      f = 16.0F;
+    TextView localTextView = (TextView)paramView.findViewById(R.id.j);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    int i;
+    if (localCharSequence.length() > 0) {
+      i = 1;
     } else {
-      f = 12.0F;
+      i = 0;
     }
-    paramView.setTextSize(f);
+    paramView = localCharSequence;
+    if (i != 0)
+    {
+      paramView = localCharSequence;
+      if (paramString.charAt(0) == '#') {
+        if (paramString != null)
+        {
+          paramView = paramString.substring(1);
+          Intrinsics.checkExpressionValueIsNotNull(paramView, "(this as java.lang.String).substring(startIndex)");
+          paramView = (CharSequence)paramView;
+        }
+        else
+        {
+          throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+        }
+      }
+    }
+    localTextView.setText(paramView);
+    localTextView.setTypeface(Typeface.defaultFromStyle(1));
+    float f1;
+    if (this.e == 2) {
+      f1 = 16.0F;
+    } else {
+      f1 = 12.0F;
+    }
+    localTextView.setTextSize(f1);
     if (!paramBoolean)
     {
-      paramView.setTextColor(paramView.getResources().getColor(R.color.c));
+      localTextView.setTextColor(localTextView.getResources().getColor(R.color.c));
       return;
     }
-    paramView.setTextColor(paramView.getResources().getColor(R.color.b));
+    localTextView.setTextColor(localTextView.getResources().getColor(R.color.b));
   }
   
   private final void a(View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == 2)
+    if (this.e == 2)
     {
       if (!paramBoolean) {
         paramView.setBackgroundResource(R.drawable.d);
@@ -115,7 +124,7 @@ public final class RecentTopicLayout
     if (!paramBoolean) {
       paramView.setBackgroundResource(R.drawable.c);
     } else {
-      paramView.setBackgroundResource(R.drawable.jdField_a_of_type_Int);
+      paramView.setBackgroundResource(R.drawable.a);
     }
     DisplayUtils localDisplayUtils = DisplayUtils.a;
     Context localContext = getContext();
@@ -127,23 +136,19 @@ public final class RecentTopicLayout
     paramView.setPadding(0, i, 0, localDisplayUtils.a(localContext, 4.0F));
   }
   
-  @Nullable
-  public final Function1<TweetTopicItem, Unit> a()
-  {
-    return this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-  }
-  
   public final void a()
   {
+    Handler localHandler = new Handler(Looper.getMainLooper());
+    Runnable localRunnable = (Runnable)new RecentTopicLayout.startTimingToDisappear.viewDisappearRunnable.1(this);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("RecentJoinedTopicLayout startTimingToDisappear. viewDisappearTime = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.g);
     Log.d("RecentJoinedTopicLayout", localStringBuilder.toString());
     setVisibility(0);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    long l = this.jdField_a_of_type_Long;
+    localHandler.removeCallbacks(localRunnable);
+    long l = this.g;
     if (l >= 0L) {
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, l);
+      localHandler.postDelayed(localRunnable, l);
     }
   }
   
@@ -153,15 +158,8 @@ public final class RecentTopicLayout
     if (paramList.isEmpty()) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    int j = paramList.size();
-    int i = this.b;
-    if (j <= i) {
-      i = paramList.size();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)paramList.subList(0, i));
-    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.c.removeAllViews();
+    paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Object localObject = (TweetTopicItem)paramList.next();
@@ -173,49 +171,66 @@ public final class RecentTopicLayout
       localObject = new LinearLayout.LayoutParams(-2, -2);
       ((LinearLayout.LayoutParams)localObject).setMargins(8, 0, 8, 0);
       localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
+      this.c.addView(localView);
     }
   }
   
   public boolean dispatchTouchEvent(@NotNull MotionEvent paramMotionEvent)
   {
     Intrinsics.checkParameterIsNotNull(paramMotionEvent, "ev");
-    if ((this.jdField_a_of_type_Long >= 0L) && (paramMotionEvent.getAction() == 1)) {
+    if ((this.g >= 0L) && (paramMotionEvent.getAction() == 1)) {
       a();
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public final void setMaxItemCount(int paramInt)
+  @Nullable
+  public final Function1<TweetTopicItem, Unit> getOnItemClickListener()
   {
-    this.b = paramInt;
+    return this.f;
+  }
+  
+  public final int getStyle()
+  {
+    return this.e;
+  }
+  
+  @NotNull
+  public final String getTitle()
+  {
+    return this.d;
+  }
+  
+  public final long getViewDisappearTime()
+  {
+    return this.g;
   }
   
   public final void setOnItemClickListener(@Nullable Function1<? super TweetTopicItem, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
+    this.f = paramFunction1;
   }
   
   public final void setStyle(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public final void setTitle(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramString);
+    this.d = paramString;
+    this.b.setText((CharSequence)paramString);
   }
   
   public final void setViewDisappearTime(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.g = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RecentTopicLayout
  * JD-Core Version:    0.7.0.1
  */

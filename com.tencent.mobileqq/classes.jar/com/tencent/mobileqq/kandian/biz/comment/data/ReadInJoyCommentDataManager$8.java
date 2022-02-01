@@ -15,7 +15,7 @@ class ReadInJoyCommentDataManager$8
     if (paramOnDataChangeListener == null) {
       return;
     }
-    int i = this.jdField_a_of_type_Int;
+    int i = this.a;
     if (i == 1)
     {
       paramOnDataChangeListener.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
@@ -28,7 +28,7 @@ class ReadInJoyCommentDataManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.data.ReadInJoyCommentDataManager.8
  * JD-Core Version:    0.7.0.1
  */

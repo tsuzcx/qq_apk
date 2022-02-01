@@ -10,36 +10,35 @@ import com.tencent.mobileqq.now.widget.RoundedRectImageView;
 public class VideoCardHolder
   extends RecyclerHolder
 {
-  public int a;
   public View a;
-  public FrameLayout a;
-  public TextView a;
-  public FrameAnimationView a;
-  public CircleImageView a;
-  public RoundedRectImageView a;
-  public FrameLayout b;
-  public TextView b;
-  public TextView c;
+  public RoundedRectImageView b;
+  public CircleImageView c;
+  public TextView d;
+  public FrameLayout e;
+  public FrameLayout f;
+  public FrameAnimationView g;
+  public TextView h;
+  public TextView i;
+  public int j = -1;
   
   public VideoCardHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetRoundedRectImageView = ((RoundedRectImageView)paramView.findViewById(2131364301));
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131362677));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362679));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362678));
-    this.jdField_b_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362681));
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131362680));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381025));
-    this.c = ((TextView)paramView.findViewById(2131376806));
+    this.a = paramView;
+    this.b = ((RoundedRectImageView)paramView.findViewById(2131430324));
+    this.c = ((CircleImageView)paramView.findViewById(2131428314));
+    this.d = ((TextView)paramView.findViewById(2131428333));
+    this.e = ((FrameLayout)paramView.findViewById(2131428315));
+    this.f = ((FrameLayout)paramView.findViewById(2131428335));
+    this.g = ((FrameAnimationView)paramView.findViewById(2131428334));
+    this.h = ((TextView)paramView.findViewById(2131450034));
+    this.i = ((TextView)paramView.findViewById(2131445126));
     paramView.setTag(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.now.VideoCardHolder
  * JD-Core Version:    0.7.0.1
  */

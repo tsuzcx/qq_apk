@@ -7,7 +7,7 @@ class LiteActivity$11
   
   public void run()
   {
-    this.this$0.f = true;
+    this.this$0.F = true;
   }
 }
 

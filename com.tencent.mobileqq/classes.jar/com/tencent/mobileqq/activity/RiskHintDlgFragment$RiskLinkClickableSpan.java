@@ -18,22 +18,22 @@ import mqq.app.AppRuntime;
 class RiskHintDlgFragment$RiskLinkClickableSpan
   extends ClickableSpan
 {
-  private final QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<QBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private final String a;
+  private final QQCustomDialog b;
+  private final WeakReference<QBaseActivity> c;
   
   public RiskHintDlgFragment$RiskLinkClickableSpan(String paramString, QQCustomDialog paramQQCustomDialog, WeakReference<QBaseActivity> paramWeakReference)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = paramQQCustomDialog;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    this.a = paramString;
+    this.b = paramQQCustomDialog;
+    this.c = paramWeakReference;
   }
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.b != null) && (!TextUtils.isEmpty(this.a)))
     {
-      paramView = this.jdField_a_of_type_JavaLangRefWeakReference;
+      paramView = this.c;
       if (paramView != null)
       {
         paramView = (QBaseActivity)paramView.get();
@@ -43,12 +43,12 @@ class RiskHintDlgFragment$RiskLinkClickableSpan
           return;
         }
         ((ISafeBlockApi)QRoute.api(ISafeBlockApi.class)).cancelVerifyRiskDialog(paramView.getAppRuntime().getCurrentAccountUin());
-        if (this.jdField_a_of_type_JavaLangString.contains("1108149324")) {
+        if (this.a.contains("1108149324")) {
           ReportController.b(paramView.getAppRuntime(), "dc00898", "", "", "0X800B259", "0X800B259", 0, 0, "", "", "", "");
         }
         QLog.d("RiskHintDlgFragment", 1, "RiskLinkClickableSpan onClick: startMiniApp");
-        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramView, this.jdField_a_of_type_JavaLangString, 4010, null);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramView, this.a, 4010, null);
+        this.b.dismiss();
         return;
       }
     }
@@ -64,7 +64,7 @@ class RiskHintDlgFragment$RiskLinkClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment.RiskLinkClickableSpan
  * JD-Core Version:    0.7.0.1
  */

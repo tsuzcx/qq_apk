@@ -10,11 +10,14 @@ import android.text.style.ReplacementSpan;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.qqemoticon.api.ISysEmoApi;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.text.IEmoticonSpanRefreshCallback;
+import com.tencent.mobileqq.text.ISpanRefreshCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class EmoticonSpan
   extends ReplacementSpan
+  implements IEmoticonSpanRefreshCallback
 {
   public static final int ANIMATION_MASK = -2147483648;
   public float eBottom;
@@ -25,6 +28,7 @@ public class EmoticonSpan
   public int index;
   private WeakReference<Drawable> mDrawableRef;
   protected volatile boolean mIsAPNG;
+  protected ISpanRefreshCallback mSpanCallback;
   int size;
   
   public EmoticonSpan(int paramInt1, int paramInt2, int paramInt3)
@@ -142,6 +146,7 @@ public class EmoticonSpan
     {
       localObject2 = doGetDrwable();
       this.mDrawableRef = new WeakReference(localObject2);
+      setDrawableListenerIfNeed((Drawable)localObject2);
     }
     return localObject2;
   }
@@ -163,6 +168,31 @@ public class EmoticonSpan
     return this.size;
   }
   
+  protected void invlidateEmoticonSpan(Drawable paramDrawable)
+  {
+    if ((this.mSpanCallback != null) && (paramDrawable != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonSpan", 2, " invlidateEmoticonSpan. ");
+      }
+      this.mSpanCallback.invalidateDrawable(paramDrawable);
+    }
+  }
+  
+  protected void setDrawableListenerIfNeed(Drawable paramDrawable)
+  {
+    if (this.mSpanCallback == null) {
+      return;
+    }
+    if ((paramDrawable instanceof URLDrawable))
+    {
+      paramDrawable = (URLDrawable)paramDrawable;
+      if (paramDrawable.getStatus() != 1) {
+        paramDrawable.setURLDrawableListener(new EmoticonSpan.1(this));
+      }
+    }
+  }
+  
   public void setSize(int paramInt)
   {
     this.size = paramInt;
@@ -171,10 +201,15 @@ public class EmoticonSpan
       localDrawable.setBounds(0, 0, paramInt, paramInt);
     }
   }
+  
+  public void setSpanRefreshCallback(ISpanRefreshCallback paramISpanRefreshCallback)
+  {
+    this.mSpanCallback = paramISpanRefreshCallback;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.text.style.EmoticonSpan
  * JD-Core Version:    0.7.0.1
  */

@@ -15,24 +15,24 @@ class MsgTabVideoPreloaderDataProvider$3
   public void a(List<MsgTabVideoData> paramList)
   {
     super.onNext(paramList);
-    paramList = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    paramList = this.a;
     if (paramList != null) {
-      paramList.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, Collections.emptyList());
+      paramList.a(this.b, Collections.emptyList());
     }
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
-    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabVideoPreloaderDataProvider$DataProviderListener;
+    MsgTabVideoPreloaderDataProvider.DataProviderListener localDataProviderListener = this.a;
     if (localDataProviderListener != null) {
-      localDataProviderListener.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramError);
+      localDataProviderListener.a(this.b, paramError);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabVideoPreloaderDataProvider.3
  * JD-Core Version:    0.7.0.1
  */

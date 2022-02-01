@@ -16,11 +16,6 @@ class DocFilePresenter$1
 {
   DocFilePresenter$1(DocFilePresenter paramDocFilePresenter) {}
   
-  public View a()
-  {
-    return DocFilePresenter.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserModel.a());
-  }
-  
   public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
   
   public void a(boolean paramBoolean)
@@ -30,29 +25,34 @@ class DocFilePresenter$1
   
   public boolean a()
   {
-    return DocFilePresenter.a(this.a);
+    return DocFilePresenter.c(this.a);
+  }
+  
+  public View b()
+  {
+    return DocFilePresenter.a(this.a).b(this.a.c.E());
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserListener != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserListener.b();
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.g != null)) {
+      this.a.g.b();
     }
     if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a() == 10) {
-        QBrowserUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.a());
+      if (this.a.d.d() == 10) {
+        QBrowserUtils.a(this.a.d.b());
       }
-      DocFilePresenter.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqFilebrowserIFileBrowserData.b(), this);
-      DocFilePresenter.a(this.a, true);
-      DocFilePresenter.a(this.a);
-      this.a.jdField_a_of_type_Boolean = false;
+      DocFilePresenter.a(this.a).a(this.a.d.c(), this);
+      DocFilePresenter.b(this.a, true);
+      DocFilePresenter.b(this.a);
+      this.a.a = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.presenter.DocFilePresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class NearbyActivityDialog$2
     if (QLog.isColorLevel()) {
       QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadFailed");
     }
-    this.a.a.post(new NearbyActivityDialog.2.2(this));
+    this.a.m.post(new NearbyActivityDialog.2.2(this));
   }
   
   public void onFileDownloadStarted()
@@ -29,12 +29,12 @@ class NearbyActivityDialog$2
     if (QLog.isColorLevel()) {
       QLog.d("NearbyActivityDialog", 2, "loadImage, onFileDownloadSucceed");
     }
-    this.a.a.post(new NearbyActivityDialog.2.1(this));
+    this.a.m.post(new NearbyActivityDialog.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyActivityDialog.2
  * JD-Core Version:    0.7.0.1
  */

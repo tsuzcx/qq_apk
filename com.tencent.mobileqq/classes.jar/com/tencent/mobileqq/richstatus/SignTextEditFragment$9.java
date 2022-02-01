@@ -15,7 +15,7 @@ class SignTextEditFragment$9
     if (QLog.isColorLevel()) {
       QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
     }
-    DialogUtil.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    DialogUtil.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -23,12 +23,12 @@ class SignTextEditFragment$9
     if (QLog.isColorLevel()) {
       QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
+    this.b.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignTextEditFragment.9
  * JD-Core Version:    0.7.0.1
  */

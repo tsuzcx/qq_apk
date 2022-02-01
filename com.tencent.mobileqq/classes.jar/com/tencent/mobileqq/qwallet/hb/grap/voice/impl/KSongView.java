@@ -30,20 +30,20 @@ import org.json.JSONObject;
 public class KSongView
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = -1;
   public long a;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private KSHelper.Config jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config = new KSHelper.Config();
-  private KSHelper.KListener jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$KListener;
-  private KSongProsBar jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongProsBar;
-  private KSongTextView jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView = null;
-  private KSongView.KHandler jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler;
-  private QwAdapter jdField_a_of_type_CooperationQwalletPluginQwAdapter;
-  private List<Sentence> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long = 0L;
-  private KSongTextView jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView;
-  private long c = 0L;
+  private int b = -1;
+  private ListView c;
+  private QwAdapter d;
+  private KSongTextView e = null;
+  private KSongTextView f;
+  private int g = 0;
+  private KSHelper.KListener h;
+  private KSongView.KHandler i;
+  private KSHelper.Config j = new KSHelper.Config();
+  private KSongProsBar k;
+  private List<Sentence> l;
+  private long m = 0L;
+  private long n = 0L;
   
   public KSongView(Context paramContext)
   {
@@ -64,20 +64,20 @@ public class KSongView
   
   private float a(int paramInt, long paramLong)
   {
-    Object localObject2 = (Sentence)this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.getItem(paramInt);
-    if ((localObject2 != null) && (((Sentence)localObject2).jdField_b_of_type_JavaUtilArrayList.size() > 0))
+    Object localObject2 = (Sentence)this.d.getItem(paramInt);
+    if ((localObject2 != null) && (((Sentence)localObject2).g.size() > 0))
     {
-      if (paramLong >= ((Sentence)localObject2).jdField_a_of_type_Long + ((Sentence)localObject2).jdField_b_of_type_Long)
+      if (paramLong >= ((Sentence)localObject2).b + ((Sentence)localObject2).c)
       {
         QLog.i("KSongView", 2, "over the sentence...");
         return 1.0F;
       }
       localObject1 = null;
       paramInt = 0;
-      while (paramInt < ((Sentence)localObject2).jdField_b_of_type_JavaUtilArrayList.size())
+      while (paramInt < ((Sentence)localObject2).g.size())
       {
-        localObject1 = (Character)((Sentence)localObject2).jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-        if (paramLong < ((Character)localObject1).jdField_a_of_type_Long + ((Character)localObject1).jdField_b_of_type_Long) {
+        localObject1 = (Character)((Sentence)localObject2).g.get(paramInt);
+        if (paramLong < ((Character)localObject1).a + ((Character)localObject1).b) {
           break;
         }
         paramInt += 1;
@@ -87,9 +87,9 @@ public class KSongView
         QLog.i("KSongView", 2, "error, charaxter is null...");
         return 0.0F;
       }
-      localObject2 = (Character)((Sentence)localObject2).jdField_b_of_type_JavaUtilArrayList.get(((Sentence)localObject2).jdField_b_of_type_JavaUtilArrayList.size() - 1);
-      float f = (float)(paramLong - ((Character)localObject1).jdField_a_of_type_Long) / (float)((Character)localObject1).jdField_b_of_type_Long;
-      return (((Character)localObject1).jdField_a_of_type_Int + f) / ((Character)localObject2).jdField_b_of_type_Int;
+      localObject2 = (Character)((Sentence)localObject2).g.get(((Sentence)localObject2).g.size() - 1);
+      float f1 = (float)(paramLong - ((Character)localObject1).a) / (float)((Character)localObject1).b;
+      return (((Character)localObject1).c + f1) / ((Character)localObject2).d;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("error, sentence = ");
@@ -98,7 +98,83 @@ public class KSongView
     return 0.0F;
   }
   
-  private KSHelper.Config a(String paramString)
+  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    paramAttributeSet = new FrameLayout.LayoutParams(-1, -1);
+    Object localObject1 = new LinearLayout.LayoutParams(-1, -1);
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    localLinearLayout.setOrientation(1);
+    this.f = new KSongTextView(paramContext);
+    this.f.setText("● ● ● ● ●");
+    this.f.setTextSize(2, 15.0F);
+    Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
+    ((LinearLayout.LayoutParams)localObject2).gravity = 1;
+    this.f.setVisibility(4);
+    localLinearLayout.addView(this.f, (ViewGroup.LayoutParams)localObject2);
+    localObject2 = new ListView(paramContext);
+    this.c = ((ListView)localObject2);
+    localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
+    this.c.setDivider(null);
+    this.c.setVerticalScrollBarEnabled(false);
+    addView(localLinearLayout, paramAttributeSet);
+    localObject1 = new LinearLayout(paramContext);
+    ((LinearLayout)localObject1).setOrientation(1);
+    ((LinearLayout)localObject1).setBackgroundResource(R.drawable.r);
+    ((LinearLayout)localObject1).setClickable(true);
+    addView((View)localObject1, paramAttributeSet);
+    paramAttributeSet = this.c;
+    localObject1 = new ArrayList();
+    this.l = ((List)localObject1);
+    paramContext = new QwAdapter(paramContext, (List)localObject1, R.layout.e, new KSongView.LrcHolder(this));
+    this.d = paramContext;
+    paramAttributeSet.setAdapter(paramContext);
+  }
+  
+  private boolean a(String paramString)
+  {
+    paramString = QWalletTools.g(paramString);
+    Object localObject = LyricParseHelper.a(paramString, true);
+    int i3 = 0;
+    if ((localObject != null) && (((Lyric)localObject).b != null))
+    {
+      int i1 = 0;
+      int i2;
+      for (;;)
+      {
+        i2 = i3;
+        if (i1 >= ((Lyric)localObject).b.size()) {
+          break;
+        }
+        paramString = (Sentence)((Lyric)localObject).b.get(i1);
+        if ((paramString.b >= this.j.d) && (paramString.b + paramString.c <= this.j.e)) {
+          this.l.add(paramString);
+        }
+        if (paramString.b >= this.j.e)
+        {
+          i2 = i3;
+          break;
+        }
+        i1 += 1;
+      }
+      while (i2 < 5)
+      {
+        this.l.add(new Sentence());
+        i2 += 1;
+      }
+      paramString = new StringBuilder();
+      paramString.append("list size = ");
+      paramString.append(this.l.size());
+      QLog.i("KSongView", 2, paramString.toString());
+      return true;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("error, parse Qrc fail, qrc = ");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("KSongView", 2, ((StringBuilder)localObject).toString());
+    return false;
+  }
+  
+  private KSHelper.Config b(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -107,7 +183,7 @@ public class KSongView
     }
     try
     {
-      paramString = QWalletTools.b(paramString);
+      paramString = QWalletTools.g(paramString);
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("config_content = ");
       ((StringBuilder)localObject).append(paramString);
@@ -119,22 +195,22 @@ public class KSongView
       }
       paramString = new JSONObject(paramString);
       localObject = new KSHelper.Config();
-      ((KSHelper.Config)localObject).jdField_a_of_type_JavaLangString = paramString.optString("name");
-      ((KSHelper.Config)localObject).jdField_a_of_type_JavaLangString = paramString.optString("singer");
-      ((KSHelper.Config)localObject).jdField_a_of_type_Long = paramString.optLong("time");
-      ((KSHelper.Config)localObject).jdField_b_of_type_JavaLangString = paramString.optString("ksongId");
+      ((KSHelper.Config)localObject).a = paramString.optString("name");
+      ((KSHelper.Config)localObject).a = paramString.optString("singer");
+      ((KSHelper.Config)localObject).b = paramString.optLong("time");
+      ((KSHelper.Config)localObject).c = paramString.optString("ksongId");
       paramString = paramString.optJSONObject("qrcConfig");
       if (paramString == null) {
         return null;
       }
-      ((KSHelper.Config)localObject).jdField_b_of_type_Long = paramString.optLong("start", 0L);
-      ((KSHelper.Config)localObject).c = paramString.optLong("end", 0L);
-      ((KSHelper.Config)localObject).d = paramString.optLong("pretime", 0L);
-      ((KSHelper.Config)localObject).e = paramString.optLong("total", 0L);
-      if ((0L < ((KSHelper.Config)localObject).jdField_b_of_type_Long) && (0L < ((KSHelper.Config)localObject).c) && (0L < ((KSHelper.Config)localObject).d) && (0L < ((KSHelper.Config)localObject).e))
+      ((KSHelper.Config)localObject).d = paramString.optLong("start", 0L);
+      ((KSHelper.Config)localObject).e = paramString.optLong("end", 0L);
+      ((KSHelper.Config)localObject).f = paramString.optLong("pretime", 0L);
+      ((KSHelper.Config)localObject).g = paramString.optLong("total", 0L);
+      if ((0L < ((KSHelper.Config)localObject).d) && (0L < ((KSHelper.Config)localObject).e) && (0L < ((KSHelper.Config)localObject).f) && (0L < ((KSHelper.Config)localObject).g))
       {
         paramString = (String)localObject;
-        if (((KSHelper.Config)localObject).jdField_b_of_type_Long < ((KSHelper.Config)localObject).c) {}
+        if (((KSHelper.Config)localObject).d < ((KSHelper.Config)localObject).e) {}
       }
       else
       {
@@ -150,180 +226,89 @@ public class KSongView
     return null;
   }
   
-  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  private boolean b(long paramLong)
   {
-    paramAttributeSet = new FrameLayout.LayoutParams(-1, -1);
-    Object localObject1 = new LinearLayout.LayoutParams(-1, -1);
-    LinearLayout localLinearLayout = new LinearLayout(paramContext);
-    localLinearLayout.setOrientation(1);
-    this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView = new KSongTextView(paramContext);
-    this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView.setText("● ● ● ● ●");
-    this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView.setTextSize(2, 15.0F);
-    Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-    ((LinearLayout.LayoutParams)localObject2).gravity = 1;
-    this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView.setVisibility(4);
-    localLinearLayout.addView(this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView, (ViewGroup.LayoutParams)localObject2);
-    localObject2 = new ListView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)localObject2);
-    localLinearLayout.addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_AndroidWidgetListView.setDivider(null);
-    this.jdField_a_of_type_AndroidWidgetListView.setVerticalScrollBarEnabled(false);
-    addView(localLinearLayout, paramAttributeSet);
-    localObject1 = new LinearLayout(paramContext);
-    ((LinearLayout)localObject1).setOrientation(1);
-    ((LinearLayout)localObject1).setBackgroundResource(R.drawable.r);
-    ((LinearLayout)localObject1).setClickable(true);
-    addView((View)localObject1, paramAttributeSet);
-    paramAttributeSet = this.jdField_a_of_type_AndroidWidgetListView;
-    localObject1 = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList = ((List)localObject1);
-    paramContext = new QwAdapter(paramContext, (List)localObject1, R.layout.e, new KSongView.LrcHolder(this));
-    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = paramContext;
-    paramAttributeSet.setAdapter(paramContext);
-  }
-  
-  private boolean a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Int != 1) {
+    if (this.b != 1) {
       return false;
     }
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size())
+    if (this.g >= this.l.size())
     {
       QLog.i("KSongView", 2, "error, out of scrop...");
       return false;
     }
-    paramLong = paramLong + this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.jdField_b_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.d;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$KListener;
+    paramLong = paramLong + this.j.d - this.j.f;
+    Object localObject = this.h;
     if (localObject != null) {
       ((KSHelper.KListener)localObject).a(paramLong);
     }
-    localObject = (Sentence)this.jdField_a_of_type_JavaUtilList.get(this.jdField_b_of_type_Int);
-    long l = ((Sentence)localObject).jdField_a_of_type_Long + ((Sentence)localObject).jdField_b_of_type_Long;
-    b(paramLong);
-    if (paramLong > l)
+    localObject = (Sentence)this.l.get(this.g);
+    long l1 = ((Sentence)localObject).b + ((Sentence)localObject).c;
+    c(paramLong);
+    if (paramLong > l1)
     {
-      if (l >= this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.c)
+      if (l1 >= this.j.e)
       {
         QLog.i("KSongView", 2, "play over, no scroll...");
         return false;
       }
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("scroll to next line = ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append(" duration = ");
       ((StringBuilder)localObject).append(paramLong);
       QLog.i("KSongView", 2, ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_AndroidWidgetListView;
-      int i = this.jdField_b_of_type_Int + 1;
-      this.jdField_b_of_type_Int = i;
-      ((ListView)localObject).smoothScrollToPositionFromTop(i, -1, 50);
+      localObject = this.c;
+      int i1 = this.g + 1;
+      this.g = i1;
+      ((ListView)localObject).smoothScrollToPositionFromTop(i1, -1, 50);
     }
     return true;
   }
   
-  private boolean a(String paramString)
+  private void c(long paramLong)
   {
-    paramString = QWalletTools.b(paramString);
-    Object localObject = LyricParseHelper.a(paramString, true);
-    int k = 0;
-    if ((localObject != null) && (((Lyric)localObject).a != null))
-    {
-      int i = 0;
-      int j;
-      for (;;)
-      {
-        j = k;
-        if (i >= ((Lyric)localObject).a.size()) {
-          break;
-        }
-        paramString = (Sentence)((Lyric)localObject).a.get(i);
-        if ((paramString.jdField_a_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.jdField_b_of_type_Long) && (paramString.jdField_a_of_type_Long + paramString.jdField_b_of_type_Long <= this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.c)) {
-          this.jdField_a_of_type_JavaUtilList.add(paramString);
-        }
-        if (paramString.jdField_a_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.c)
-        {
-          j = k;
-          break;
-        }
-        i += 1;
-      }
-      while (j < 5)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(new Sentence());
-        j += 1;
-      }
-      paramString = new StringBuilder();
-      paramString.append("list size = ");
-      paramString.append(this.jdField_a_of_type_JavaUtilList.size());
-      QLog.i("KSongView", 2, paramString.toString());
-      return true;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("error, parse Qrc fail, qrc = ");
-    ((StringBuilder)localObject).append(paramString);
-    QLog.i("KSongView", 2, ((StringBuilder)localObject).toString());
-    return false;
-  }
-  
-  private void b(long paramLong)
-  {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetListView.getChildAt(0);
+    Object localObject = this.c.getChildAt(0);
     if (localObject == null)
     {
       QLog.i("KSongView", 2, "update sentence v is null...");
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView = ((KSongTextView)((View)localObject).findViewById(R.id.br));
+    this.e = ((KSongTextView)((View)localObject).findViewById(R.id.bB));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("index line = ");
-    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(this.g);
     QLog.i("KSongView", 2, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView != null)
+    if (this.e != null)
     {
-      float f = a(this.jdField_b_of_type_Int, paramLong);
+      float f1 = a(this.g, paramLong);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("show text color rate = ");
-      ((StringBuilder)localObject).append(f);
+      ((StringBuilder)localObject).append(f1);
       QLog.i("KSongView", 2, ((StringBuilder)localObject).toString());
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView.a(f, 15, -1);
+      this.e.a(f1, 15, -1);
     }
-  }
-  
-  public int a()
-  {
-    try
-    {
-      int i = this.jdField_a_of_type_Int;
-      return i;
-    }
-    finally {}
-  }
-  
-  public KSHelper.Config a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config;
   }
   
   public void a()
   {
     QLog.i("KSongView", 2, "start reset...");
-    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter.notifyDataSetChanged();
-    Object localObject = this.jdField_a_of_type_AndroidWidgetListView;
-    this.jdField_b_of_type_Int = 0;
+    this.d.notifyDataSetChanged();
+    Object localObject = this.c;
+    this.g = 0;
     ((ListView)localObject).setSelection(0);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongProsBar;
+    localObject = this.k;
     if (localObject != null) {
       ((KSongProsBar)localObject).a(0L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler.removeMessages(0);
-    if (this.jdField_a_of_type_Int > 0) {
-      this.jdField_a_of_type_Int = 0;
+    this.i.removeMessages(0);
+    if (this.b > 0) {
+      this.b = 0;
     }
   }
   
   public void a(long paramLong)
   {
-    KSongProsBar localKSongProsBar = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongProsBar;
+    KSongProsBar localKSongProsBar = this.k;
     if (localKSongProsBar != null) {
       localKSongProsBar.a(paramLong);
     }
@@ -333,9 +318,9 @@ public class KSongView
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongProsBar = paramKSongProsBar;
+      this.k = paramKSongProsBar;
       setKListener(paramKListener);
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler = new KSongView.KHandler(this);
+      this.i = new KSongView.KHandler(this);
       new KSongView.InitTask(this).execute(new String[] { paramString1, paramString2 });
       return;
     }
@@ -346,37 +331,37 @@ public class KSongView
   {
     try
     {
-      if (this.jdField_a_of_type_Int >= 0)
+      if (this.b >= 0)
       {
-        if (this.jdField_a_of_type_Int == 1)
+        if (this.b == 1)
         {
           QLog.i("KSongView", 2, "error, the playing is going...");
           return;
         }
-        if (this.jdField_a_of_type_Int == 2)
+        if (this.b == 2)
         {
-          this.jdField_a_of_type_Int = 1;
-          this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler.sendEmptyMessage(0);
-          this.jdField_b_of_type_Long += System.currentTimeMillis() - this.c;
+          this.b = 1;
+          this.i.sendEmptyMessage(0);
+          this.m += System.currentTimeMillis() - this.n;
           return;
         }
         QLog.i("KSongView", 2, "start playing...");
-        if (this.jdField_a_of_type_Int == 3) {
+        if (this.b == 3) {
           a();
         }
-        this.jdField_a_of_type_Int = 1;
-        this.jdField_b_of_type_Long = 0L;
-        KSongTextView localKSongTextView = this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView;
-        int i;
+        this.b = 1;
+        this.m = 0L;
+        KSongTextView localKSongTextView = this.f;
+        int i1;
         if (paramBoolean) {
-          i = 0;
+          i1 = 0;
         } else {
-          i = getResources().getColor(R.color.c);
+          i1 = getResources().getColor(R.color.c);
         }
-        localKSongTextView.a(i, 0);
-        this.jdField_b_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongTextView.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$Config.d, null);
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler.sendEmptyMessage(0);
+        localKSongTextView.a(i1, 0);
+        this.f.a(this.j.f, null);
+        this.a = System.currentTimeMillis();
+        this.i.sendEmptyMessage(0);
         return;
       }
       throw new RuntimeException("error! lyric object not initialized...");
@@ -386,33 +371,48 @@ public class KSongView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Int == 1)
+    if (this.b == 1)
     {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler.removeMessages(0);
-      this.c = System.currentTimeMillis();
+      this.b = 2;
+      this.i.removeMessages(0);
+      this.n = System.currentTimeMillis();
     }
   }
   
   public void c()
   {
-    KSongView.KHandler localKHandler = this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSongView$KHandler;
+    KSongView.KHandler localKHandler = this.i;
     if (localKHandler != null) {
       localKHandler.removeMessages(0);
     }
-    if (this.jdField_a_of_type_Int > 0) {
-      this.jdField_a_of_type_Int = 0;
+    if (this.b > 0) {
+      this.b = 0;
     }
+  }
+  
+  public KSHelper.Config getConfig()
+  {
+    return this.j;
+  }
+  
+  public int getState()
+  {
+    try
+    {
+      int i1 = this.b;
+      return i1;
+    }
+    finally {}
   }
   
   public void setKListener(KSHelper.KListener paramKListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQwalletHbGrapVoiceImplKSHelper$KListener = paramKListener;
+    this.h = paramKListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.grap.voice.impl.KSongView
  * JD-Core Version:    0.7.0.1
  */

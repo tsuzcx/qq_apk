@@ -7,12 +7,12 @@ class MaterialContentAdapter$2$1$1
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentAelightCameraAeeditorViewClassifierMaterialContentAdapter.notifyItemChanged(this.a.a.jdField_a_of_type_Int, Integer.valueOf(1));
+    this.a.a.c.notifyItemChanged(this.a.a.b, Integer.valueOf(1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.classifier.MaterialContentAdapter.2.1.1
  * JD-Core Version:    0.7.0.1
  */

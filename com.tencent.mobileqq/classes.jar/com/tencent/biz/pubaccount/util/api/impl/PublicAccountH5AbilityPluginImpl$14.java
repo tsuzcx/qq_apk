@@ -33,10 +33,10 @@ class PublicAccountH5AbilityPluginImpl$14
         localJSONObject.put("firstLevelComment", i + 1);
         localJSONObject.put("parentCommentID", paramBundle);
         localJSONObject.put("result", "success");
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs == null) {
+        if (this.a == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
+        this.a.a(this.b, localJSONObject);
         return;
       }
       catch (JSONException paramBundle)
@@ -56,10 +56,10 @@ class PublicAccountH5AbilityPluginImpl$14
         ((JSONObject)localObject2).put("commentId", localObject1);
         ((JSONObject)localObject2).put("likeStatus", paramBundle);
         ((JSONObject)localObject2).put("result", "success");
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs == null) {
+        if (this.a == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+        this.a.a(this.b, (JSONObject)localObject2);
         return;
       }
       catch (JSONException paramBundle)
@@ -79,10 +79,10 @@ class PublicAccountH5AbilityPluginImpl$14
         paramBundle.put("commentID", localObject1);
         paramBundle.put("rowKey", str);
         paramBundle.put("result", "success");
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs == null) {
+        if (this.a == null) {
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+        this.a.a(this.b, paramBundle);
         return;
       }
       catch (JSONException paramBundle)
@@ -98,9 +98,9 @@ class PublicAccountH5AbilityPluginImpl$14
         ((JSONObject)localObject1).put("type", "onPanelClose");
         ((JSONObject)localObject1).put("rowKey", paramBundle);
         ((JSONObject)localObject1).put("result", "success");
-        if (this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs != null)
+        if (this.a != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallCommentJs.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
+          this.a.a(this.b, (JSONObject)localObject1);
           return;
         }
       }
@@ -113,7 +113,7 @@ class PublicAccountH5AbilityPluginImpl$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.14
  * JD-Core Version:    0.7.0.1
  */

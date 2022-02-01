@@ -11,29 +11,29 @@ class VideoHeaderBlock$ItemTouchHelperGestureListener
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    float f = paramMotionEvent2.getY() - VideoHeaderBlock.a(this.a);
-    if (VideoHeaderBlock.b(this.a) < VideoHeaderBlock.c(this.a)) {
+    float f = paramMotionEvent2.getY() - VideoHeaderBlock.e(this.a);
+    if (VideoHeaderBlock.f(this.a) < VideoHeaderBlock.g(this.a)) {
       return false;
     }
     VideoHeaderBlock localVideoHeaderBlock;
     int i;
-    if ((f > 0.0F) && (VideoHeaderBlock.d(this.a) < VideoHeaderBlock.e(this.a)))
+    if ((f > 0.0F) && (VideoHeaderBlock.h(this.a) < VideoHeaderBlock.i(this.a)))
     {
-      f = VideoHeaderBlock.d(this.a) + Math.abs(f);
+      f = VideoHeaderBlock.h(this.a) + Math.abs(f);
       localVideoHeaderBlock = this.a;
-      if (f > VideoHeaderBlock.e(localVideoHeaderBlock)) {
-        i = VideoHeaderBlock.e(this.a);
+      if (f > VideoHeaderBlock.i(localVideoHeaderBlock)) {
+        i = VideoHeaderBlock.i(this.a);
       } else {
         i = (int)f;
       }
       VideoHeaderBlock.b(localVideoHeaderBlock, i);
     }
-    else if ((f < 0.0F) && (VideoHeaderBlock.d(this.a) > VideoHeaderBlock.f(this.a)))
+    else if ((f < 0.0F) && (VideoHeaderBlock.h(this.a) > VideoHeaderBlock.j(this.a)))
     {
-      f = VideoHeaderBlock.d(this.a) - Math.abs(f);
+      f = VideoHeaderBlock.h(this.a) - Math.abs(f);
       localVideoHeaderBlock = this.a;
-      if (f < VideoHeaderBlock.f(localVideoHeaderBlock)) {
-        i = VideoHeaderBlock.f(this.a);
+      if (f < VideoHeaderBlock.j(localVideoHeaderBlock)) {
+        i = VideoHeaderBlock.j(this.a);
       } else {
         i = (int)f;
       }
@@ -41,7 +41,7 @@ class VideoHeaderBlock$ItemTouchHelperGestureListener
     }
     if (VideoHeaderBlock.a(this.a) != null)
     {
-      VideoHeaderBlock.a(this.a).getLayoutParams().height = VideoHeaderBlock.d(this.a);
+      VideoHeaderBlock.a(this.a).getLayoutParams().height = VideoHeaderBlock.h(this.a);
       VideoHeaderBlock.a(this.a).requestLayout();
     }
     return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);

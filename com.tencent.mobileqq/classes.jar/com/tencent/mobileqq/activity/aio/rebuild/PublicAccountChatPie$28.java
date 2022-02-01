@@ -30,28 +30,28 @@ class PublicAccountChatPie$28
     {
       paramObject = (oidb_cmd0xc96.RspBody)paramObject;
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.b, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
+        QLog.d(this.b.c, 2, new Object[] { "0xc96 responseBody success, wording=", paramObject.wording.get() });
       }
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie;
-      PublicAccountChatPie.a((PublicAccountChatPie)localObject, PublicAccountChatPie.a((PublicAccountChatPie)localObject));
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-      StructLongMessageDownloadProcessor.deleteTask(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-      ((TroopBindPublicAccountMgr)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      PublicAccountChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie, false);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+      Object localObject = this.b;
+      PublicAccountChatPie.a((PublicAccountChatPie)localObject, PublicAccountChatPie.o((PublicAccountChatPie)localObject));
+      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(this.b.d, "P_CliOper", "Pb_account_lifeservice", this.a, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+      StructLongMessageDownloadProcessor.deleteTask(this.b.d, this.a);
+      ((TroopBindPublicAccountMgr)this.b.d.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(this.b.ah.b);
+      PublicAccountChatPie.b(this.b, false);
+      if (this.b.ah != null)
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+        localObject = this.b.ah.b;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramObject.appid.get());
         localStringBuilder.append("");
         if (((String)localObject).equals(localStringBuilder.toString()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.b(1);
+          this.b.f(1);
           return;
         }
       }
-      paramObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie;
-      paramObject.c(paramObject.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent());
+      paramObject = this.b;
+      paramObject.d(paramObject.f.getIntent());
     }
   }
   
@@ -59,20 +59,20 @@ class PublicAccountChatPie$28
   
   public void b(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.m(2131695217);
+    this.b.t(2131892951);
   }
   
   public void b(boolean paramBoolean, Object paramObject)
   {
-    PublicAccountChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie);
-    if (PublicAccountChatPie.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie) == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.ao();
+    PublicAccountChatPie.p(this.b);
+    if (PublicAccountChatPie.q(this.b) == 0) {
+      this.b.bz();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.28
  * JD-Core Version:    0.7.0.1
  */

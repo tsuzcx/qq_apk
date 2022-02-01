@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Corner {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.Corner
  * JD-Core Version:    0.7.0.1
  */

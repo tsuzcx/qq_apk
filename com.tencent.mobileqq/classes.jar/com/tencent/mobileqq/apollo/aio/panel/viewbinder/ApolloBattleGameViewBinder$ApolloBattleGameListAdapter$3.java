@@ -17,7 +17,7 @@ class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter$3
       QLog.d("[cmshow]ApolloBattleGameViewBinder", 1, "createUpdatableMsg success!");
       return;
     }
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.3.1(this, paramJSONObject));
+    this.a.runOnUiThread(new ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.3.1(this, paramJSONObject));
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("createUpdatableMsg failed! ret = ");
     localStringBuilder.append(paramJSONObject);
@@ -26,7 +26,7 @@ class ApolloBattleGameViewBinder$ApolloBattleGameListAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.viewbinder.ApolloBattleGameViewBinder.ApolloBattleGameListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

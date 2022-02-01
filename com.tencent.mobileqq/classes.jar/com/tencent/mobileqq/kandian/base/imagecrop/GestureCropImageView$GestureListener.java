@@ -10,10 +10,10 @@ class GestureCropImageView$GestureListener
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (GestureCropImageView.a(this.a))
+    if (GestureCropImageView.c(this.a))
     {
       GestureCropImageView localGestureCropImageView = this.a;
-      localGestureCropImageView.a(localGestureCropImageView.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
+      localGestureCropImageView.a(localGestureCropImageView.getDoubleTapTargetScale(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
@@ -26,7 +26,7 @@ class GestureCropImageView$GestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.imagecrop.GestureCropImageView.GestureListener
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ class VoiceTimeTraceUtil$1$1
   {
     try
     {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_JavaUtilList.add(VoiceTimeTraceUtil.a(this.a.this$0).get("ZIP"));
-      CommandUtils.b(this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_AndroidAppActivity);
+      this.a.a.clear();
+      this.a.a.add(VoiceTimeTraceUtil.a(this.a.this$0).get("ZIP"));
+      CommandUtils.b(this.a.a, this.a.b);
       return;
     }
     catch (Exception localException)
@@ -26,7 +26,7 @@ class VoiceTimeTraceUtil$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.VoiceTimeTraceUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

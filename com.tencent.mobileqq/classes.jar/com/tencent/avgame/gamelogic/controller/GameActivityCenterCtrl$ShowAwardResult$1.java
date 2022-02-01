@@ -24,8 +24,8 @@ class GameActivityCenterCtrl$ShowAwardResult$1
     QLog.d("GameACCtrl", 1, ((StringBuilder)localObject).toString());
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      localObject = new AVGameLaunchWebHelper((Activity)this.jdField_a_of_type_AndroidContentContext);
-      ((AVGameLaunchWebHelper)localObject).a((Activity)this.jdField_a_of_type_AndroidContentContext, new GameActivityCenterCtrl.ShowAwardResult.1.1(this, paramString, (AVGameLaunchWebHelper)localObject));
+      localObject = new AVGameLaunchWebHelper((Activity)this.a);
+      ((AVGameLaunchWebHelper)localObject).a((Activity)this.a, new GameActivityCenterCtrl.ShowAwardResult.1.1(this, paramString, (AVGameLaunchWebHelper)localObject));
     }
   }
 }

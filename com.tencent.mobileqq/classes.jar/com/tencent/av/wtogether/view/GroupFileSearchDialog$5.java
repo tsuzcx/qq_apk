@@ -16,9 +16,9 @@ class GroupFileSearchDialog$5
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (this.a.e)
+    if (this.a.v)
     {
-      this.a.e = false;
+      this.a.v = false;
       return;
     }
     if (paramEditable == null) {
@@ -28,31 +28,31 @@ class GroupFileSearchDialog$5
     }
     if (paramEditable.trim().equals(""))
     {
-      this.a.c();
+      this.a.d();
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    if (!NetworkUtil.isNetworkAvailable(this.a.jdField_a_of_type_AndroidAppActivity))
+    this.a.f.setVisibility(0);
+    if (!NetworkUtil.isNetworkAvailable(this.a.m))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask != null)
+      if (this.a.o != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.b();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = null;
+        this.a.o.b();
+        this.a.o = null;
       }
       this.a.b();
       return;
     }
     paramEditable = this.a;
-    paramEditable.d = false;
-    if (paramEditable.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask == null)
+    paramEditable.u = false;
+    if (paramEditable.o == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask = new CountdownTimeTask(new GroupFileSearchDialog.5.1(this), 800);
-      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask, 5, null, true);
+      this.a.o = new CountdownTimeTask(new GroupFileSearchDialog.5.1(this), 800);
+      ThreadManager.post(this.a.o, 5, null, true);
       return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a() > 0L)
+    if (this.a.o.c() > 0L)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetCountdownTimeTask.a();
+      this.a.o.a();
       return;
     }
     if (QLog.isColorLevel()) {
@@ -64,17 +64,17 @@ class GroupFileSearchDialog$5
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.a.e) && ((!this.a.e) || (this.a.jdField_b_of_type_Int > 0)))
+    if ((this.a.v) && ((!this.a.v) || (this.a.A > 0)))
     {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.a.e.setVisibility(0);
       return;
     }
-    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.e.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.5
  * JD-Core Version:    0.7.0.1
  */

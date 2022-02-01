@@ -11,20 +11,18 @@ import kotlin.jvm.functions.Function2;
 final class SimpleMessageDialog$onDismissListener$2
   implements DialogInterface.OnCancelListener
 {
-  SimpleMessageDialog$onDismissListener$2(SimpleMessageDialog paramSimpleMessageDialog, Function2 paramFunction2) {}
-  
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface = this.jdField_a_of_type_KotlinJvmFunctionsFunction2;
+    paramDialogInterface = this.b;
     if (paramDialogInterface != null) {
-      paramDialogInterface = (Unit)paramDialogInterface.invoke(SimpleMessageDialog.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSimpleMessageDialog).getText().toString(), Integer.valueOf(1));
+      paramDialogInterface = (Unit)paramDialogInterface.invoke(SimpleMessageDialog.a(this.a).getText().toString(), Integer.valueOf(1));
     }
-    SimpleMessageDialog.a(this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogSimpleMessageDialog).setText((CharSequence)"");
+    SimpleMessageDialog.a(this.a).setText((CharSequence)"");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.SimpleMessageDialog.onDismissListener.2
  * JD-Core Version:    0.7.0.1
  */

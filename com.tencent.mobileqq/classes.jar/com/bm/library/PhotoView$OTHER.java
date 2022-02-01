@@ -9,12 +9,12 @@ public class PhotoView$OTHER
   
   public float a()
   {
-    return (PhotoView.a(this.a).top + PhotoView.a(this.a).bottom) / 2.0F;
+    return (PhotoView.o(this.a).top + PhotoView.o(this.a).bottom) / 2.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.bm.library.PhotoView.OTHER
  * JD-Core Version:    0.7.0.1
  */

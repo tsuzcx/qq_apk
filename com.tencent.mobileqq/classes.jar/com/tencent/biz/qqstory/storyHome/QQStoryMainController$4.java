@@ -15,16 +15,16 @@ class QQStoryMainController$4
       return;
     }
     QQStoryMainController localQQStoryMainController = this.this$0;
-    localQQStoryMainController.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = localQQStoryMainController.a();
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeStoryHomePushYellowBarHandler.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.a(), this.this$0.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
+    localQQStoryMainController.f = localQQStoryMainController.h();
+    this.this$0.f.setInputViewHideListener(this.this$0.b);
+    this.this$0.l.a(this.this$0.d, this.this$0.a(), this.this$0.b);
     localQQStoryMainController = this.this$0;
-    QQStoryMainController.a(localQQStoryMainController, localQQStoryMainController.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
+    QQStoryMainController.a(localQQStoryMainController, localQQStoryMainController.i.c());
     localQQStoryMainController = this.this$0;
-    QQStoryMainController.a(localQQStoryMainController, localQQStoryMainController.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.this$0).setVisibility(8);
-    QQStoryMainController.a(this.this$0).setVisibility(8);
-    QQStoryMainController.a(this.this$0.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.this$0), QQStoryMainController.a(this.this$0));
+    QQStoryMainController.a(localQQStoryMainController, localQQStoryMainController.i.d());
+    QQStoryMainController.b(this.this$0).setVisibility(8);
+    QQStoryMainController.c(this.this$0).setVisibility(8);
+    QQStoryMainController.a(this.this$0.a, "mainHallConfig", QQStoryMainController.b(this.this$0), QQStoryMainController.c(this.this$0));
   }
 }
 

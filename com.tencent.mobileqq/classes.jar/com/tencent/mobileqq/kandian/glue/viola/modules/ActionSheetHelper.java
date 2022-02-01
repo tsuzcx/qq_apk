@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.kandian.glue.viola.modules;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.widget.ActionSheet;
@@ -18,23 +18,22 @@ public class ActionSheetHelper
   implements ActionSheet.WatchDismissActions
 {
   public static String a = "BridgeModule.ActionSheetHelper";
-  private int jdField_a_of_type_Int = 0;
-  private ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet;
-  private WeakReference<BridgeModule> jdField_a_of_type_JavaLangRefWeakReference = null;
-  public boolean a;
+  public boolean b = false;
+  private ActionSheet c;
+  private int d = 0;
+  private WeakReference<BridgeModule> e = null;
   
   public ActionSheetHelper(BridgeModule paramBridgeModule)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBridgeModule);
+    this.e = new WeakReference(paramBridgeModule);
   }
   
-  private void b(JSONObject paramJSONObject, String paramString)
+  private void a(JSONObject paramJSONObject, String paramString)
   {
     Object localObject1;
     if (paramJSONObject != null)
     {
-      localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
+      localObject1 = this.e;
       if (localObject1 == null) {
         return;
       }
@@ -56,12 +55,12 @@ public class ActionSheetHelper
         localObject2 = paramJSONObject.optJSONArray("items");
         int m = paramJSONObject.optInt("selected", -1);
         int k = 0;
-        this.jdField_a_of_type_Boolean = false;
+        this.b = false;
         String str = paramJSONObject.optString("close");
         if (TextUtils.isEmpty(str)) {
           break label388;
         }
-        this.jdField_a_of_type_Boolean = true;
+        this.b = true;
         ((ActionSheet)localObject1).addButton(str, 3);
         i = 1;
         j = i;
@@ -107,16 +106,16 @@ public class ActionSheetHelper
         ((ActionSheet)localObject1).setOnDismissListener(new ActionSheetHelper.3(this, paramString));
         ((ActionSheet)localObject1).setOnCancelListener(new ActionSheetHelper.4(this, paramString));
         ((ActionSheet)localObject1).registerWatchDisMissActionListener(this);
-        this.jdField_a_of_type_ComTencentWidgetActionSheet = ((ActionSheet)localObject1);
-        this.jdField_a_of_type_Int = j;
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
+        this.c = ((ActionSheet)localObject1);
+        this.d = j;
+        this.c.show();
         return;
       }
       catch (JSONException paramJSONObject)
       {
         if (QLog.isColorLevel())
         {
-          paramString = jdField_a_of_type_JavaLangString;
+          paramString = a;
           localObject1 = new StringBuilder();
           ((StringBuilder)localObject1).append("showActionSheet error:");
           ((StringBuilder)localObject1).append(paramJSONObject.getMessage());
@@ -135,22 +134,22 @@ public class ActionSheetHelper
     }
   }
   
-  public void a(JSONObject paramJSONObject, String paramString)
+  public void a(JSONObject paramJSONObject, String paramString, Activity paramActivity)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    if (this.e == null) {
       return;
     }
     if (Looper.myLooper() == null) {
       Looper.prepare();
     }
-    new Handler(QBaseActivity.sTopActivity.getMainLooper()).post(new ActionSheetHelper.1(this, paramJSONObject, paramString));
+    new Handler(paramActivity.getMainLooper()).post(new ActionSheetHelper.1(this, paramJSONObject, paramString));
   }
   
   public void onDismissOperations() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.modules.ActionSheetHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -57,7 +57,7 @@ public class ThemeAndBubbleCommonJsPlugin
   {
     try
     {
-      this.mRuntime.a().finish();
+      this.mRuntime.d().finish();
       return;
     }
     catch (Exception paramJSONObject)
@@ -68,7 +68,7 @@ public class ThemeAndBubbleCommonJsPlugin
   
   public void getNetwork(JSONObject paramJSONObject, String paramString)
   {
-    int i = NetworkUtil.getSystemNetwork(this.mRuntime.a());
+    int i = NetworkUtil.getSystemNetwork(this.mRuntime.d());
     try
     {
       Object localObject = new JSONObject();
@@ -176,7 +176,7 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if ("popup".equals(paramString3))
       {
-        this.mRuntime.a().finish();
+        this.mRuntime.d().finish();
         return true;
       }
       if ("openSettings".equals(paramString3))
@@ -234,7 +234,7 @@ public class ThemeAndBubbleCommonJsPlugin
       Object localObject2 = new Intent();
       ((Intent)localObject2).putExtra("pageTitle", paramJSONObject);
       ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
-      VasWebviewUtil.b(this.mRuntime.a(), (String)localObject1, this.mRuntime.a().getIntent().getIntExtra("business", 0), (Intent)localObject2, false, -1);
+      VasWebviewUtil.b(this.mRuntime.d(), (String)localObject1, this.mRuntime.d().getIntent().getIntExtra("business", 0), (Intent)localObject2, false, -1);
       paramJSONObject = new JSONObject();
       paramJSONObject.put("result", 0);
       paramJSONObject.put("message", "ok");
@@ -275,8 +275,8 @@ public class ThemeAndBubbleCommonJsPlugin
       paramJSONObject.putExtra("url", (String)localObject);
       paramJSONObject.putExtra("pageTitle", str);
       paramJSONObject.putExtra("startOpenPageTime", System.currentTimeMillis());
-      paramJSONObject.setClass(this.mRuntime.a(), QQBrowserActivity.class);
-      this.mRuntime.a().startActivity(paramJSONObject);
+      paramJSONObject.setClass(this.mRuntime.d(), QQBrowserActivity.class);
+      this.mRuntime.d().startActivity(paramJSONObject);
       paramJSONObject = new JSONObject();
       paramJSONObject.put("result", 0);
       paramJSONObject.put("message", "ok");
@@ -314,7 +314,7 @@ public class ThemeAndBubbleCommonJsPlugin
       paramJSONObject = new StringBuilder();
       paramJSONObject.append(str);
       paramJSONObject.append("?client=androidQQ");
-      paramJSONObject.append("&version=8.7.0.5295");
+      paramJSONObject.append("&version=8.8.17.5770");
       paramString = new StringBuilder();
       paramString.append("&system=");
       paramString.append(Build.VERSION.RELEASE);
@@ -325,7 +325,7 @@ public class ThemeAndBubbleCommonJsPlugin
       paramJSONObject.append(paramString.toString());
       paramString = new StringBuilder();
       paramString.append("&uin=");
-      paramString.append(((AppActivity)this.mRuntime.a()).getAppRuntime().getAccount());
+      paramString.append(((AppActivity)this.mRuntime.d()).getAppRuntime().getAccount());
       paramJSONObject.append(paramString.toString());
       paramJSONObject = EmosmUtils.a("VIP_xingying", paramJSONObject.toString());
       if (QLog.isColorLevel())
@@ -369,7 +369,7 @@ public class ThemeAndBubbleCommonJsPlugin
       }
       if (arrayOfString.length >= 1)
       {
-        paramJSONObject = DialogUtil.a(this.mRuntime.a(), 230);
+        paramJSONObject = DialogUtil.c(this.mRuntime.d(), 230);
         paramJSONObject.a(str);
         paramJSONObject.b((String)localObject);
         paramJSONObject.a(arrayOfString[0], new ThemeAndBubbleCommonJsPlugin.1(this, paramString));
@@ -398,7 +398,7 @@ public class ThemeAndBubbleCommonJsPlugin
   
   public void showMyEmotion(String paramString)
   {
-    QRoute.startUri(new ActivityURIRequest(this.mRuntime.a(), "/base/activity/EmosmActivity"));
+    QRoute.startUri(new ActivityURIRequest(this.mRuntime.d(), "/base/activity/EmosmActivity"));
     try
     {
       JSONObject localJSONObject = new JSONObject();
@@ -419,7 +419,7 @@ public class ThemeAndBubbleCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeAndBubbleCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

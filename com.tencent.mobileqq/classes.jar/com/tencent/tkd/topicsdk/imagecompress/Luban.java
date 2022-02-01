@@ -17,34 +17,29 @@ import java.util.concurrent.Executor;
 public class Luban
   implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private CompressionPredicate jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate;
-  private OnCompressListener jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener;
-  private OnRenameListener jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener;
-  private String jdField_a_of_type_JavaLangString;
-  private List<InputStreamProvider> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  private String a;
+  private boolean b;
+  private int c;
+  private OnRenameListener d;
+  private OnCompressListener e;
+  private CompressionPredicate f;
+  private List<InputStreamProvider> g;
+  private Handler h;
   
   private Luban(Luban.Builder paramBuilder)
   {
-    this.jdField_a_of_type_JavaLangString = Luban.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener = Luban.Builder.a(paramBuilder);
-    this.jdField_a_of_type_JavaUtilList = Luban.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener = Luban.Builder.a(paramBuilder);
-    this.jdField_a_of_type_Int = Luban.Builder.a(paramBuilder);
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate = Luban.Builder.a(paramBuilder);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.a = Luban.Builder.a(paramBuilder);
+    this.d = Luban.Builder.b(paramBuilder);
+    this.g = Luban.Builder.c(paramBuilder);
+    this.e = Luban.Builder.d(paramBuilder);
+    this.c = Luban.Builder.e(paramBuilder);
+    this.f = Luban.Builder.f(paramBuilder);
+    this.h = new Handler(Looper.getMainLooper(), this);
   }
   
   public static Luban.Builder a(Context paramContext)
   {
     return new Luban.Builder(paramContext);
-  }
-  
-  private File a(Context paramContext)
-  {
-    return a(paramContext, "luban_disk_cache");
   }
   
   private File a(Context paramContext, InputStreamProvider paramInputStreamProvider)
@@ -56,7 +51,7 @@ public class Luban
     }
     finally
     {
-      paramInputStreamProvider.a();
+      paramInputStreamProvider.c();
     }
   }
   
@@ -77,49 +72,39 @@ public class Luban
     return null;
   }
   
-  private void a(Context paramContext)
+  private File b(Context paramContext)
   {
-    Object localObject = this.jdField_a_of_type_JavaUtilList;
-    if ((localObject == null) || ((((List)localObject).size() == 0) && (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener != null))) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a(new NullPointerException("image file cannot be null"));
-    }
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      InputStreamProvider localInputStreamProvider = (InputStreamProvider)((Iterator)localObject).next();
-      AsyncTask.SERIAL_EXECUTOR.execute(new Luban.1(this, paramContext, localInputStreamProvider));
-      ((Iterator)localObject).remove();
-    }
+    return a(paramContext, "luban_disk_cache");
   }
   
   private File b(Context paramContext, InputStreamProvider paramInputStreamProvider)
   {
     File localFile = b(paramContext, Checker.SINGLE.extSuffix(paramInputStreamProvider));
-    OnRenameListener localOnRenameListener = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnRenameListener;
+    OnRenameListener localOnRenameListener = this.d;
     if (localOnRenameListener != null) {
-      localFile = c(paramContext, localOnRenameListener.a(paramInputStreamProvider.a()));
+      localFile = c(paramContext, localOnRenameListener.a(paramInputStreamProvider.e()));
     }
-    paramContext = this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressCompressionPredicate;
+    paramContext = this.f;
     if (paramContext != null)
     {
-      if ((paramContext.a(paramInputStreamProvider.a())) && (Checker.SINGLE.needCompress(this.jdField_a_of_type_Int, paramInputStreamProvider.a()))) {
-        return new Engine(paramInputStreamProvider, localFile, this.jdField_a_of_type_Boolean).a();
+      if ((paramContext.a(paramInputStreamProvider.e())) && (Checker.SINGLE.needCompress(this.c, paramInputStreamProvider.e()))) {
+        return new Engine(paramInputStreamProvider, localFile, this.b).a();
       }
-      return new File(paramInputStreamProvider.a());
+      return new File(paramInputStreamProvider.e());
     }
-    if (Checker.SINGLE.needCompress(this.jdField_a_of_type_Int, paramInputStreamProvider.a())) {
-      return new Engine(paramInputStreamProvider, localFile, this.jdField_a_of_type_Boolean).a();
+    if (Checker.SINGLE.needCompress(this.c, paramInputStreamProvider.e())) {
+      return new Engine(paramInputStreamProvider, localFile, this.b).a();
     }
-    return new File(paramInputStreamProvider.a());
+    return new File(paramInputStreamProvider.e());
   }
   
   private File b(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = a(paramContext).getAbsolutePath();
+    if (TextUtils.isEmpty(this.a)) {
+      this.a = b(paramContext).getAbsolutePath();
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("/");
     localStringBuilder.append(System.currentTimeMillis());
     localStringBuilder.append((int)(Math.random() * 1000.0D));
@@ -133,19 +118,34 @@ public class Luban
   
   private File c(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = a(paramContext).getAbsolutePath();
+    if (TextUtils.isEmpty(this.a)) {
+      this.a = b(paramContext).getAbsolutePath();
     }
     paramContext = new StringBuilder();
-    paramContext.append(this.jdField_a_of_type_JavaLangString);
+    paramContext.append(this.a);
     paramContext.append("/");
     paramContext.append(paramString);
     return new File(paramContext.toString());
   }
   
+  private void c(Context paramContext)
+  {
+    Object localObject = this.g;
+    if ((localObject == null) || ((((List)localObject).size() == 0) && (this.e != null))) {
+      this.e.a(new NullPointerException("image file cannot be null"));
+    }
+    localObject = this.g.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      InputStreamProvider localInputStreamProvider = (InputStreamProvider)((Iterator)localObject).next();
+      AsyncTask.SERIAL_EXECUTOR.execute(new Luban.1(this, paramContext, localInputStreamProvider));
+      ((Iterator)localObject).remove();
+    }
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener == null) {
+    if (this.e == null) {
       return false;
     }
     int i = paramMessage.what;
@@ -156,19 +156,19 @@ public class Luban
         if (i != 2) {
           return false;
         }
-        this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a((Throwable)paramMessage.obj);
+        this.e.a((Throwable)paramMessage.obj);
         return false;
       }
-      this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a();
+      this.e.a();
       return false;
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkImagecompressOnCompressListener.a((File)paramMessage.obj);
+    this.e.a((File)paramMessage.obj);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.Luban
  * JD-Core Version:    0.7.0.1
  */

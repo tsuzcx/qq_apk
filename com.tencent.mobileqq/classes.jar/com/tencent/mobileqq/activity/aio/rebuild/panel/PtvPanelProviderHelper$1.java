@@ -15,14 +15,14 @@ class PtvPanelProviderHelper$1
     {
       ((IAIOShortVideoUtil)QRoute.api(IAIOShortVideoUtil.class)).setClickCameraTime(System.currentTimeMillis());
       QLog.e("CAM_MONITOR_EVENT", 1, new Object[] { "TIMESTAMP_CLICK_CAMERA ", Long.valueOf(((IAIOShortVideoUtil)QRoute.api(IAIOShortVideoUtil.class)).getClickCameraTime()) });
-      this.this$0.a(false);
+      this.this$0.b(false);
       PtvPanelProviderHelper.a = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.panel.PtvPanelProviderHelper.1
  * JD-Core Version:    0.7.0.1
  */

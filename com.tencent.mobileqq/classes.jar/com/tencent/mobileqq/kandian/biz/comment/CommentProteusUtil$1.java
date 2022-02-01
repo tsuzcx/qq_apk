@@ -21,13 +21,13 @@ final class CommentProteusUtil$1
       }
       SparseArray localSparseArray = new SparseArray();
       int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-      CommentProteusListenerUtil.a.a(i, localSparseArray).a(i, localSparseArray).a(i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadinjoyCommentListBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentDataCommentViewItem, paramViewBase);
+      CommentProteusListenerUtil.a.a(i, localSparseArray).b(i, localSparseArray).a(i, this.a, this.b, this.c, paramViewBase);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.CommentProteusUtil.1
  * JD-Core Version:    0.7.0.1
  */

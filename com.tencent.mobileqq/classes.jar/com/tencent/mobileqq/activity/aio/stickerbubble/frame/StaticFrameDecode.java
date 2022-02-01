@@ -19,28 +19,28 @@ public class StaticFrameDecode
     return 1000000;
   }
   
-  public Bitmap a()
-  {
-    return BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), this.a);
-  }
-  
-  public void a() {}
-  
   public int b()
   {
     return 1;
   }
   
-  public void b() {}
-  
   public int c()
   {
     return 0;
   }
+  
+  public Bitmap d()
+  {
+    return BitmapFactory.decodeResource(BaseApplication.getContext().getResources(), this.a);
+  }
+  
+  public void e() {}
+  
+  public void f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.frame.StaticFrameDecode
  * JD-Core Version:    0.7.0.1
  */

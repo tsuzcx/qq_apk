@@ -11,18 +11,18 @@ public class PanelInputStateChangeCallback
   {
     if (paramInt == 0)
     {
-      paramAIOContext.a().setEnable(8, true);
-      paramAIOContext.d();
+      paramAIOContext.C().setEnable(8, true);
+      paramAIOContext.D();
       return;
     }
     if (paramInt == 2) {
-      paramAIOContext.a().setAllEnable(false);
+      paramAIOContext.C().setAllEnable(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.inputstate.PanelInputStateChangeCallback
  * JD-Core Version:    0.7.0.1
  */

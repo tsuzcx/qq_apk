@@ -23,9 +23,9 @@ import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 class GdtLoadAdJsCallHandler
   implements GdtJsCallHandler
 {
-  private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new GdtLoadAdJsCallHandler.1(this);
-  private WeakReference<GdtAdWebPlugin> jdField_a_of_type_JavaLangRefWeakReference;
-  private Map<GdtAdLoader, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private WeakReference<GdtAdWebPlugin> a;
+  private Map<GdtAdLoader, String> b = new HashMap();
+  private GdtAdLoader.Listener c = new GdtLoadAdJsCallHandler.1(this);
   
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
@@ -43,9 +43,9 @@ class GdtLoadAdJsCallHandler
         GdtLog.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject2).toString());
         paramVarArgs = new GdtAdLoader.Session();
         paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), localObject2)));
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramGdtAdWebPlugin);
-        localObject2 = new GdtAdLoader(paramVarArgs, new WeakReference(this.jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener));
-        this.jdField_a_of_type_JavaUtilMap.put(localObject2, paramString);
+        this.a = new WeakReference(paramGdtAdWebPlugin);
+        localObject2 = new GdtAdLoader(paramVarArgs, new WeakReference(this.c));
+        this.b.put(localObject2, paramString);
         ((GdtAdLoader)localObject2).a(new WeakReference(localActivity));
         paramString = new ArrayList();
         if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
@@ -62,7 +62,7 @@ class GdtLoadAdJsCallHandler
         }
         paramString = localObject1;
         if (paramGdtAdWebPlugin != null) {
-          paramString = paramGdtAdWebPlugin.a();
+          paramString = paramGdtAdWebPlugin.b();
         }
         AdAnalysisHelperForUtil.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramString);
         return true;
@@ -79,7 +79,7 @@ class GdtLoadAdJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtLoadAdJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

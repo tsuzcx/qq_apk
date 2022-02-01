@@ -17,14 +17,14 @@ public class TabJumpHelper$NowFramePlugin
     paramFrameFragment = (Now)paramFrameFragment.a(Now.class);
     if (paramFrameFragment != null)
     {
-      paramFrameFragment.b = paramBundle.getBoolean("extra_from_share");
-      paramFrameFragment.a = paramBundle.getString("new_video_extra_info");
+      paramFrameFragment.k = paramBundle.getBoolean("extra_from_share");
+      paramFrameFragment.l = paramBundle.getString("new_video_extra_info");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.framejumpentry.TabJumpHelper.NowFramePlugin
  * JD-Core Version:    0.7.0.1
  */

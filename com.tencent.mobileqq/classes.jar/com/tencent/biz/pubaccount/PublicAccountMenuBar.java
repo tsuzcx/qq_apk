@@ -38,11 +38,11 @@ import mqq.os.MqqHandler;
 public class PublicAccountMenuBar
   extends LinearLayout
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
-  private boolean jdField_a_of_type_Boolean;
+  private Context a;
+  private QQAppInterface b;
+  private String c;
+  private MqqHandler d;
+  private boolean e;
   
   public PublicAccountMenuBar(Context paramContext)
   {
@@ -74,14 +74,14 @@ public class PublicAccountMenuBar
     if (paramMenuItem == null) {
       return "";
     }
-    Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841693);
+    Object localObject = this.a.getResources().getDrawable(2130842608);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[]");
-    localStringBuilder.append(paramMenuItem.b());
+    localStringBuilder.append(paramMenuItem.d());
     paramMenuItem = new SpannableStringBuilder(localStringBuilder.toString());
     ((Drawable)localObject).setBounds(0, 0, ((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight());
     localObject = new VerticalCenterImageSpan((Drawable)localObject, 0);
-    ((VerticalCenterImageSpan)localObject).setPadding(ViewUtils.a(4.0F), ViewUtils.a(4.0F));
+    ((VerticalCenterImageSpan)localObject).setPadding(ViewUtils.dip2px(4.0F), ViewUtils.dip2px(4.0F));
     paramMenuItem.setSpan(localObject, 0, 2, 18);
     return paramMenuItem;
   }
@@ -122,24 +122,75 @@ public class PublicAccountMenuBar
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.a = paramContext;
     setVisibility(8);
   }
   
-  private void a(MenuItem paramMenuItem)
+  private void a(MenuItem paramMenuItem, mobileqq_mp.ButtonInfo paramButtonInfo, boolean paramBoolean)
+  {
+    if (paramMenuItem == null) {
+      return;
+    }
+    RelativeLayout localRelativeLayout = new RelativeLayout(this.a);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1);
+    localLayoutParams.weight = 1.0F;
+    Object localObject = new TextView(this.a);
+    boolean bool = paramButtonInfo.sub_button.has();
+    if (bool) {
+      ((TextView)localObject).setText(a(paramMenuItem));
+    } else {
+      ((TextView)localObject).setText(paramMenuItem.d());
+    }
+    ((TextView)localObject).setTextSize(17.0F);
+    ((TextView)localObject).setTextColor(-16777216);
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams1.addRule(13, -1);
+    localRelativeLayout.addView((View)localObject, localLayoutParams1);
+    if (!paramBoolean)
+    {
+      localObject = new View(this.a);
+      ((View)localObject).setBackgroundResource(2130851802);
+      localLayoutParams1 = new RelativeLayout.LayoutParams(ViewUtils.dip2px(0.5F), ViewUtils.dip2px(25.0F));
+      localLayoutParams1.addRule(11, -1);
+      localLayoutParams1.addRule(15, -1);
+      localRelativeLayout.addView((View)localObject, localLayoutParams1);
+    }
+    localRelativeLayout.setOnClickListener(new PublicAccountMenuBar.1(this, bool, paramButtonInfo, paramMenuItem));
+    PublicAccountDetailActivityImpl.setDatatongElement(localRelativeLayout, "gzh_ele_enter_subprofile", this.c);
+    addView(localRelativeLayout, localLayoutParams);
+  }
+  
+  private boolean a(mobileqq_mp.ButtonInfo paramButtonInfo)
+  {
+    if (paramButtonInfo != null)
+    {
+      int i;
+      if (paramButtonInfo.type.has()) {
+        i = paramButtonInfo.type.get();
+      } else {
+        i = 0;
+      }
+      if ((i == 2) && (paramButtonInfo.url.has()) && (!TextUtils.isEmpty(paramButtonInfo.url.get()))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private void b(MenuItem paramMenuItem)
   {
     if (paramMenuItem != null) {
       try
       {
-        String str = paramMenuItem.c();
+        String str = paramMenuItem.e();
         int i = paramMenuItem.a();
-        if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_MqqOsMqqHandler != null))
+        if ((this.b != null) && (this.c != null) && (this.d != null))
         {
-          ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).handleButtonEvent(str, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, i, null, this.jdField_a_of_type_MqqOsMqqHandler, 2, new SessionInfo());
-          paramMenuItem = ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getButtonInfoByMenuId(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, i);
+          ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).handleButtonEvent(str, this.a, this.b, this.c, i, null, this.d, 2, new SessionInfo());
+          paramMenuItem = ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).getButtonInfoByMenuId(this.b, this.c, i);
           if (paramMenuItem != null)
           {
-            OfficialAccountReporter.a.d(this.jdField_a_of_type_JavaLangString, paramMenuItem.id.get(), paramMenuItem.name.get());
+            OfficialAccountReporter.a.d(this.c, paramMenuItem.id.get(), paramMenuItem.name.get());
             return;
           }
         }
@@ -151,41 +202,7 @@ public class PublicAccountMenuBar
     }
   }
   
-  private void a(MenuItem paramMenuItem, mobileqq_mp.ButtonInfo paramButtonInfo, boolean paramBoolean)
-  {
-    if (paramMenuItem == null) {
-      return;
-    }
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1);
-    localLayoutParams.weight = 1.0F;
-    Object localObject = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    boolean bool = paramButtonInfo.sub_button.has();
-    if (bool) {
-      ((TextView)localObject).setText(a(paramMenuItem));
-    } else {
-      ((TextView)localObject).setText(paramMenuItem.b());
-    }
-    ((TextView)localObject).setTextSize(17.0F);
-    ((TextView)localObject).setTextColor(-16777216);
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams1.addRule(13, -1);
-    localRelativeLayout.addView((View)localObject, localLayoutParams1);
-    if (!paramBoolean)
-    {
-      localObject = new View(this.jdField_a_of_type_AndroidContentContext);
-      ((View)localObject).setBackgroundResource(2130850035);
-      localLayoutParams1 = new RelativeLayout.LayoutParams(ViewUtils.a(0.5F), ViewUtils.a(25.0F));
-      localLayoutParams1.addRule(11, -1);
-      localLayoutParams1.addRule(15, -1);
-      localRelativeLayout.addView((View)localObject, localLayoutParams1);
-    }
-    localRelativeLayout.setOnClickListener(new PublicAccountMenuBar.1(this, bool, paramButtonInfo, paramMenuItem));
-    PublicAccountDetailActivityImpl.setDatatongElement(localRelativeLayout, "gzh_ele_enter_subprofile", this.jdField_a_of_type_JavaLangString);
-    addView(localRelativeLayout, localLayoutParams);
-  }
-  
-  private void a(mobileqq_mp.ButtonInfo paramButtonInfo)
+  private void b(mobileqq_mp.ButtonInfo paramButtonInfo)
   {
     if (paramButtonInfo == null) {
       return;
@@ -245,58 +262,41 @@ public class PublicAccountMenuBar
         }
       }
     }
-    paramButtonInfo = ((MenuItem)localObject2).a();
+    paramButtonInfo = ((MenuItem)localObject2).h();
     if (paramButtonInfo != null)
     {
       if (paramButtonInfo.size() <= 0) {
         return;
       }
-      localObject1 = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
+      localObject1 = (ActionSheet)ActionSheetHelper.b(this.a, null);
       ((ActionSheet)localObject1).setRoundCornerTop(true);
-      ((ActionSheet)localObject1).addButton(((MenuItem)localObject2).b(), 11);
+      ((ActionSheet)localObject1).addButton(((MenuItem)localObject2).d(), 11);
       localObject2 = paramButtonInfo.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (MenuItem)((Iterator)localObject2).next();
         if (localObject3 != null)
         {
-          localObject4 = ((MenuItem)localObject3).a();
+          localObject4 = ((MenuItem)localObject3).b();
           if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-            ((ActionSheet)localObject1).addButtonWithLeftUrlIcon(((MenuItem)localObject3).b(), (String)localObject4);
+            ((ActionSheet)localObject1).addButtonWithLeftUrlIcon(((MenuItem)localObject3).d(), (String)localObject4);
           } else {
-            ((ActionSheet)localObject1).addButton(((MenuItem)localObject3).b());
+            ((ActionSheet)localObject1).addButton(((MenuItem)localObject3).d());
           }
         }
       }
-      ((ActionSheet)localObject1).addCancelButton(2131690728);
+      ((ActionSheet)localObject1).addCancelButton(2131887648);
       ((ActionSheet)localObject1).setOnButtonClickListener(new PublicAccountMenuBar.2(this, paramButtonInfo, (ActionSheet)localObject1));
       ((ActionSheet)localObject1).setOnDismissListener(new PublicAccountMenuBar.3(this));
       ((ActionSheet)localObject1).show();
     }
   }
   
-  private boolean a(mobileqq_mp.ButtonInfo paramButtonInfo)
-  {
-    if (paramButtonInfo != null)
-    {
-      int i;
-      if (paramButtonInfo.type.has()) {
-        i = paramButtonInfo.type.get();
-      } else {
-        i = 0;
-      }
-      if ((i == 2) && (paramButtonInfo.url.has()) && (!TextUtils.isEmpty(paramButtonInfo.url.get()))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   public void a(QQAppInterface paramQQAppInterface, String paramString, MqqHandler paramMqqHandler)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.b = paramQQAppInterface;
+    this.c = paramString;
+    this.d = paramMqqHandler;
   }
   
   public void setData(List<mobileqq_mp.ButtonInfo> paramList)
@@ -338,7 +338,7 @@ public class PublicAccountMenuBar
           bool = false;
         }
         a(paramList, localButtonInfo, bool);
-        OfficialAccountReporter.a.c(this.jdField_a_of_type_JavaLangString, localButtonInfo.id.get(), localButtonInfo.name.get());
+        OfficialAccountReporter.a.c(this.c, localButtonInfo.id.get(), localButtonInfo.name.get());
         i += 1;
       }
     }
@@ -346,7 +346,7 @@ public class PublicAccountMenuBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountMenuBar
  * JD-Core Version:    0.7.0.1
  */

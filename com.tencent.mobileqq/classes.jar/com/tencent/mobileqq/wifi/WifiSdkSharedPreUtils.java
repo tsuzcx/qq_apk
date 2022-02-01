@@ -7,24 +7,6 @@ import android.preference.PreferenceManager;
 
 public class WifiSdkSharedPreUtils
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kwsjt_");
-    localStringBuilder.append(paramString);
-    return paramContext.getInt(localStringBuilder.toString(), -1);
-  }
-  
-  public static long a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kwslcdt_");
-    localStringBuilder.append(paramString);
-    return paramContext.getLong(localStringBuilder.toString(), -1L);
-  }
-  
   public static String a(Context paramContext)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsbddbw", null);
@@ -37,13 +19,6 @@ public class WifiSdkSharedPreUtils
     localStringBuilder.append("kwsg_");
     localStringBuilder.append(paramString);
     return paramContext.getString(localStringBuilder.toString(), "");
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putString("kwsbddbw", paramString);
-    paramContext.apply();
   }
   
   public static void a(Context paramContext, String paramString, int paramInt)
@@ -94,27 +69,9 @@ public class WifiSdkSharedPreUtils
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kwscdf_");
+    localStringBuilder.append("kwsjt_");
     localStringBuilder.append(paramString);
-    return paramContext.getInt(localStringBuilder.toString(), 24);
-  }
-  
-  public static long b(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kwslftjt_");
-    localStringBuilder.append(paramString);
-    return paramContext.getLong(localStringBuilder.toString(), -1L);
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kwsjhu_");
-    localStringBuilder.append(paramString);
-    return paramContext.getString(localStringBuilder.toString(), null);
+    return paramContext.getInt(localStringBuilder.toString(), -1);
   }
   
   public static void b(Context paramContext, String paramString, long paramLong)
@@ -127,13 +84,13 @@ public class WifiSdkSharedPreUtils
     paramContext.apply();
   }
   
-  public static long c(Context paramContext, String paramString)
+  public static String c(Context paramContext, String paramString)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("kwsrgrt_");
+    localStringBuilder.append("kwsjhu_");
     localStringBuilder.append(paramString);
-    return paramContext.getLong(localStringBuilder.toString(), -1L);
+    return paramContext.getString(localStringBuilder.toString(), null);
   }
   
   public static void c(Context paramContext, String paramString, long paramLong)
@@ -145,10 +102,53 @@ public class WifiSdkSharedPreUtils
     paramContext.putLong(localStringBuilder.toString(), paramLong);
     paramContext.apply();
   }
+  
+  public static long d(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kwslcdt_");
+    localStringBuilder.append(paramString);
+    return paramContext.getLong(localStringBuilder.toString(), -1L);
+  }
+  
+  public static int e(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kwscdf_");
+    localStringBuilder.append(paramString);
+    return paramContext.getInt(localStringBuilder.toString(), 24);
+  }
+  
+  public static long f(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kwslftjt_");
+    localStringBuilder.append(paramString);
+    return paramContext.getLong(localStringBuilder.toString(), -1L);
+  }
+  
+  public static long g(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("kwsrgrt_");
+    localStringBuilder.append(paramString);
+    return paramContext.getLong(localStringBuilder.toString(), -1L);
+  }
+  
+  public static void h(Context paramContext, String paramString)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putString("kwsbddbw", paramString);
+    paramContext.apply();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.WifiSdkSharedPreUtils
  * JD-Core Version:    0.7.0.1
  */

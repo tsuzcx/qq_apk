@@ -19,43 +19,9 @@ public class EquipLockWebEntrance
   public static int c = 3;
   public static int d = 4;
   
-  private static Intent a(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
-  {
-    if (paramActivity == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
-      }
-      return null;
-    }
-    if (paramAppInterface == null)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
-      }
-      return null;
-    }
-    String str = paramAppInterface.getCurrentAccountUin();
-    paramAppInterface = a(a(paramInt), paramAppInterface);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("AuthDevUgAct url=");
-      localStringBuilder.append(paramAppInterface);
-      QLog.d("EquipLockWebEntrance", 2, localStringBuilder.toString());
-    }
-    paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
-    paramActivity.putExtra("portraitOnly", true);
-    paramActivity.putExtra("url", paramAppInterface);
-    paramActivity.putExtra("uin", str);
-    paramActivity.putExtra("hide_operation_bar", true);
-    paramActivity.putExtra("hide_more_button", true);
-    return paramActivity;
-  }
-  
   private static String a(int paramInt)
   {
-    Object localObject2 = EquipmentLockImpl.a().a();
+    Object localObject2 = EquipmentLockImpl.a().g();
     if ((localObject2 != null) && (((String)localObject2).length() > 0))
     {
       localObject1 = localObject2;
@@ -89,7 +55,7 @@ public class EquipLockWebEntrance
     ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
     ((StringBuilder)localObject2).append("&plat=1");
     ((StringBuilder)localObject2).append("&app=1");
-    ((StringBuilder)localObject2).append("&version=8.7.0.5295");
+    ((StringBuilder)localObject2).append("&version=8.8.17.5770");
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("&device=");
     ((StringBuilder)localObject1).append(URLEncoder.encode(Build.DEVICE));
@@ -192,7 +158,7 @@ public class EquipLockWebEntrance
       }
       return;
     }
-    paramAppInterface = a(paramActivity, paramAppInterface, paramInt);
+    paramAppInterface = b(paramActivity, paramAppInterface, paramInt);
     try
     {
       VasWebviewUtil.a(paramActivity, "", 16384L, paramAppInterface, false, -1);
@@ -217,7 +183,7 @@ public class EquipLockWebEntrance
       }
       return;
     }
-    paramAppInterface = a(paramActivity, paramAppInterface, paramInt1);
+    paramAppInterface = b(paramActivity, paramAppInterface, paramInt1);
     if (paramString != null) {
       paramAppInterface.putExtra("tag", paramString);
     }
@@ -339,10 +305,44 @@ public class EquipLockWebEntrance
     }
     catch (SecurityException paramActivity) {}
   }
+  
+  private static Intent b(Activity paramActivity, AppInterface paramAppInterface, int paramInt)
+  {
+    if (paramActivity == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent actCaller is null");
+      }
+      return null;
+    }
+    if (paramAppInterface == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("EquipLockWebEntrance", 4, "getEntranceIntent app is null");
+      }
+      return null;
+    }
+    String str = paramAppInterface.getCurrentAccountUin();
+    paramAppInterface = a(a(paramInt), paramAppInterface);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AuthDevUgAct url=");
+      localStringBuilder.append(paramAppInterface);
+      QLog.d("EquipLockWebEntrance", 2, localStringBuilder.toString());
+    }
+    paramActivity = new Intent(paramActivity, QQBrowserActivity.class);
+    paramActivity.putExtra("portraitOnly", true);
+    paramActivity.putExtra("url", paramAppInterface);
+    paramActivity.putExtra("uin", str);
+    paramActivity.putExtra("hide_operation_bar", true);
+    paramActivity.putExtra("hide_more_button", true);
+    return paramActivity;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance
  * JD-Core Version:    0.7.0.1
  */

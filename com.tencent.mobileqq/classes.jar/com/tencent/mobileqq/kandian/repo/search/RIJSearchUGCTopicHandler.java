@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutorService;
 import tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.ReqBody;
 import tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.ReqSearchTopicInfo;
 import tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.RspBody;
+import tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.RspRecentTopicResult;
 import tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.RspSearchTopicResult;
 import tencent.im.oidb.cmd0xbde.oidb_cmd0xbde.SearchInfo;
 
@@ -40,14 +41,16 @@ public class RIJSearchUGCTopicHandler
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
     paramFromServiceMsg = new ArrayList();
     paramObject = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     if (i == 0)
     {
       QLog.d("RIJSearchUGCTopicHandler", 2, "handle0xbdeGetTopicList: result OK");
       Iterator localIterator = paramToServiceMsg.msg_rsp_search_tag_info.rpt_msg_search_info_list.get().iterator();
       while (localIterator.hasNext()) {
-        paramObject.add(((oidb_cmd0xbde.SearchInfo)localIterator.next()).bytes_key.get().toStringUtf8());
+        localArrayList.add(((oidb_cmd0xbde.SearchInfo)localIterator.next()).bytes_key.get().toStringUtf8());
       }
-      paramFromServiceMsg.addAll(ReadInJoyMSFHandlerUtils.e(paramToServiceMsg.msg_rsp_search_tag_info.rpt_msg_tag_info_list.get()));
+      paramFromServiceMsg.addAll(ReadInJoyMSFHandlerUtils.f(paramToServiceMsg.msg_rsp_search_tag_info.rpt_msg_tag_info_list.get()));
+      paramObject.addAll(ReadInJoyMSFHandlerUtils.f(paramToServiceMsg.msg_rsp_recent_tag_info.rpt_msg_tag_info_list.get()));
     }
     else
     {
@@ -56,7 +59,7 @@ public class RIJSearchUGCTopicHandler
       paramToServiceMsg.append(i);
       QLog.d("RIJSearchUGCTopicHandler", 2, paramToServiceMsg.toString());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new RIJSearchUGCTopicHandler.1(this, paramObject, paramFromServiceMsg));
+    this.b.post(new RIJSearchUGCTopicHandler.1(this, localArrayList, paramFromServiceMsg, paramObject));
   }
   
   public void a(String paramString)
@@ -69,15 +72,20 @@ public class RIJSearchUGCTopicHandler
       paramString = new oidb_cmd0xbde.ReqSearchTopicInfo();
       paramString.rpt_msg_search_info_list.add(localSearchInfo);
       localReqBody.uint32_query_mode.set(1);
+      localReqBody.uint32_need_recent_topics.set(0);
       localReqBody.msg_req_search_tag_info.set(paramString);
     }
+    else
+    {
+      localReqBody.uint32_need_recent_topics.set(1);
+    }
     paramString = ReadInJoyOidbHelper.a("OidbSvc.0xbde", 3038, 0, localReqBody.toByteArray());
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsArticleInfoModule.sendPbReq(paramString);
+    this.a.sendPbReq(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.search.RIJSearchUGCTopicHandler
  * JD-Core Version:    0.7.0.1
  */

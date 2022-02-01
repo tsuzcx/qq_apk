@@ -10,47 +10,47 @@ import eipc.EIPCResult;
 public class PeakIpcModuleClient
   extends QIPCModule
 {
-  private static PeakIpcModuleClient jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcModuleClient;
   public static boolean a = false;
-  private String jdField_a_of_type_JavaLangString;
+  private static PeakIpcModuleClient d;
   private boolean b = false;
+  private String c;
   
   private PeakIpcModuleClient()
   {
     super("PeakIpcModuleClient");
-    b();
+    c();
   }
   
   public static PeakIpcModuleClient a()
   {
     try
     {
-      if (jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcModuleClient == null) {
+      if (d == null) {
         try
         {
-          if (jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcModuleClient == null) {
-            jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcModuleClient = new PeakIpcModuleClient();
+          if (d == null) {
+            d = new PeakIpcModuleClient();
           }
         }
         finally {}
       }
-      PeakIpcModuleClient localPeakIpcModuleClient = jdField_a_of_type_ComTencentAelightCameraAioeditorEditipcPeakIpcModuleClient;
+      PeakIpcModuleClient localPeakIpcModuleClient = d;
       return localPeakIpcModuleClient;
     }
     finally {}
   }
   
-  public static void a()
+  public static void b()
   {
     PeakIpcModuleClient localPeakIpcModuleClient = a();
-    if (!jdField_a_of_type_Boolean)
+    if (!a)
     {
       QIPCClientHelper.getInstance().register(localPeakIpcModuleClient);
-      jdField_a_of_type_Boolean = true;
+      a = true;
     }
   }
   
-  private void b()
+  private void c()
   {
     QIPCClientHelper.getInstance().getClient().connect(new PeakIpcModuleClient.1(this));
     QIPCClientHelper.getInstance().getClient().addListener(new PeakIpcModuleClient.2(this));
@@ -76,7 +76,7 @@ public class PeakIpcModuleClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.editipc.PeakIpcModuleClient
  * JD-Core Version:    0.7.0.1
  */

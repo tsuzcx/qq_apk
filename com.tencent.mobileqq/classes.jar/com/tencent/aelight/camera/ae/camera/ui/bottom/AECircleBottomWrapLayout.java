@@ -12,11 +12,11 @@ import com.tencent.aelight.camera.log.AEQLog;
 public class AECircleBottomWrapLayout
   extends RelativeLayout
 {
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private AEBottomListScrollView jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean a = false;
   private boolean b = false;
+  private View c;
+  private AEBottomListScrollView d;
+  private VelocityTracker e;
   
   public AECircleBottomWrapLayout(Context paramContext)
   {
@@ -35,17 +35,17 @@ public class AECircleBottomWrapLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
+    this.e.addMovement(paramMotionEvent);
+    this.e.computeCurrentVelocity(1000);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.a = false;
       this.b = false;
-      this.jdField_a_of_type_AndroidViewVelocityTracker.clear();
+      this.e.clear();
     }
-    if ((Math.abs(this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity()) > 100.0F) && (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 100L) && (AECommonUtil.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)) && (!this.jdField_a_of_type_Boolean))
+    if ((Math.abs(this.e.getXVelocity()) > 100.0F) && (paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() < 100L) && (AECommonUtil.a(this.c, paramMotionEvent)) && (!this.a))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       this.b = true;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
@@ -54,15 +54,15 @@ public class AECircleBottomWrapLayout
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    this.jdField_a_of_type_AndroidViewView = findViewById(2064122218);
-    this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView = ((AEBottomListScrollView)findViewById(2064122583));
+    this.e = VelocityTracker.obtain();
+    this.c = findViewById(2063991100);
+    this.d = ((AEBottomListScrollView)findViewById(2063991400));
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+    this.e.recycle();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -71,7 +71,7 @@ public class AECircleBottomWrapLayout
     {
       AEQLog.a("AECircleBottomLayout", "in onInterceptTouchEvent true.");
       paramMotionEvent.setAction(0);
-      this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.dispatchTouchEvent(paramMotionEvent);
+      this.d.dispatchTouchEvent(paramMotionEvent);
       this.b = false;
       return true;
     }
@@ -80,15 +80,15 @@ public class AECircleBottomWrapLayout
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.a) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    return this.jdField_a_of_type_ComTencentAelightCameraAeCameraUiBottomAEBottomListScrollView.onTouchEvent(paramMotionEvent);
+    return this.d.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.bottom.AECircleBottomWrapLayout
  * JD-Core Version:    0.7.0.1
  */

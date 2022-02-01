@@ -28,7 +28,7 @@ public abstract class AbsDownloader
   extends ProtocolDownloader.Adapter
   implements ProtocolDownloaderConstants
 {
-  public static final String CHAT_IMAGE_ROOT = VFSSourcePathConfig.a;
+  public static final String CHAT_IMAGE_ROOT = VFSSourcePathConfig.c;
   public static final String PROTOCAL_FAVORITE_IMAGE = "favimage";
   public static final String PROTOCOL_PUB_ACCOUNT = "pubaccountimage";
   protected static final String TAG = "AbsDownloader";
@@ -791,7 +791,7 @@ public abstract class AbsDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AbsDownloader
  * JD-Core Version:    0.7.0.1
  */

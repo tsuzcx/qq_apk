@@ -18,6 +18,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageCache.RegPrxyCache;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
@@ -44,105 +45,72 @@ import org.json.JSONObject;
 public class RegisterProxyHandler
 {
   public static int a = 7;
-  public static boolean a = true;
   public static int b = 2;
-  public static boolean b = true;
-  public static boolean c = false;
-  public long a;
-  public volatile Pair<RegisterPushNotice, Long> a;
-  private BaseMessageHandler jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler;
-  private RegisterProxyHandler.Callback jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler$Callback;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  public ArrayList<MessageObject> a;
-  public HashMap<String, Boolean> a;
-  public List<register_proxy.GroupList> a;
-  public final AtomicBoolean a;
-  private MessageHandleThread[] jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread = null;
-  public String[] a;
-  public ArrayList<MessageObject> b;
-  public HashMap<String, Boolean> b;
-  public String[] b;
-  public int c;
-  public ArrayList<Setting> c;
-  public int d;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
+  public static boolean c = true;
+  public static boolean d = true;
+  public static boolean l = false;
+  private MessageHandleThread[] A = null;
+  private Object B = new Object();
+  private BaseMessageHandler C;
+  private RegisterProxyHandler.Callback D;
+  public ArrayList<MessageObject> e = null;
+  public ArrayList<MessageObject> f = null;
+  public volatile Pair<RegisterPushNotice, Long> g = null;
+  public String[] h = null;
+  public String[] i = null;
+  public int j = 0;
+  public int k = 0;
+  public boolean m = false;
+  public int n = 0;
+  public boolean o = false;
+  public boolean p = false;
+  public final AtomicBoolean q = new AtomicBoolean(false);
+  public int r = 0;
+  public int s = 0;
+  public int t = 0;
+  public int u = 0;
+  public HashMap<String, Boolean> v = new HashMap();
+  public HashMap<String, Boolean> w = new HashMap();
+  public long x = 0L;
+  public ArrayList<Setting> y = null;
+  public List<register_proxy.GroupList> z;
   
   public RegisterProxyHandler(BaseMessageHandler paramBaseMessageHandler)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_b_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_AndroidUtilPair = null;
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_e_of_type_Boolean = false;
-    this.jdField_f_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_f_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_c_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler = paramBaseMessageHandler;
+    this.C = paramBaseMessageHandler;
   }
   
   private ToServiceMsg a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("sendNewRegisterProxy , isGetPassword = ");
-      ((StringBuilder)localObject).append(paramBoolean1);
-      ((StringBuilder)localObject).append(" ,randomSeq");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(", isWakeFromDeepSleep = ");
-      ((StringBuilder)localObject).append(paramBoolean2);
-      QLog.d("MessageHandler", 2, ((StringBuilder)localObject).toString());
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("RegPrxySvc.infoSync");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendNewRegisterProxy , isGetPassword = ");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append(" ,randomSeq");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", isWakeFromDeepSleep = ");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    QLog.d("MessageHandler", 1, ((StringBuilder)localObject).toString());
+    localObject = this.C.createToServiceMsg("RegPrxySvc.infoSync");
     ((ToServiceMsg)localObject).extraData.putLong("requestOptional", 90562L);
     ((ToServiceMsg)localObject).extraData.putInt("endSeq", paramInt);
     ((ToServiceMsg)localObject).extraData.putInt("type", 1);
     ((ToServiceMsg)localObject).extraData.putBoolean("isGetPassword", paramBoolean1);
-    long l;
+    long l1;
     if (paramBoolean2) {
-      l = 1L;
+      l1 = 1L;
     } else {
-      l = 0L;
+      l1 = 0L;
     }
-    ((ToServiceMsg)localObject).extraData.putLong("ulReportFlag", l);
+    ((ToServiceMsg)localObject).extraData.putLong("ulReportFlag", l1);
     if (paramLong != 0L)
     {
       ((ToServiceMsg)localObject).getAttributes().put("_attr_regprxy_random_code", Long.valueOf(paramLong));
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[ReSendProxy] currentRegisterProxyRandom = ");
-        localStringBuilder.append(paramLong);
-        QLog.d("MessageHandler", 2, localStringBuilder.toString());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ReSendProxy] currentRegisterProxyRandom = ");
+      localStringBuilder.append(paramLong);
+      QLog.d("MessageHandler", 1, localStringBuilder.toString());
     }
     return localObject;
-  }
-  
-  private String a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a();
-  }
-  
-  private HashMap<Integer, String[]> a(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler$Callback.a(paramInt);
   }
   
   private register_proxy.SvcRegisterProxyMsgResp a(byte[] paramArrayOfByte)
@@ -161,7 +129,7 @@ public class RegisterProxyHandler
     }
     if ((paramArrayOfByte != null) && (paramArrayOfByte.result.has()))
     {
-      if ((paramArrayOfByte.seq.has()) && (paramArrayOfByte.seq.get() != this.jdField_c_of_type_Int) && (paramArrayOfByte.seq.get() != this.jdField_d_of_type_Int))
+      if ((paramArrayOfByte.seq.has()) && (paramArrayOfByte.seq.get() != this.j) && (paramArrayOfByte.seq.get() != this.k))
       {
         if (QLog.isColorLevel())
         {
@@ -170,9 +138,9 @@ public class RegisterProxyHandler
           ((StringBuilder)localObject).append("handleNewRegisterProxyMsg endSeq wrong! seq=");
           ((StringBuilder)localObject).append(paramArrayOfByte.seq.get());
           ((StringBuilder)localObject).append(" registerProxyEndSeq=");
-          ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+          ((StringBuilder)localObject).append(this.j);
           ((StringBuilder)localObject).append(" registerProxyEndSeq_numTroop=");
-          ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+          ((StringBuilder)localObject).append(this.k);
           QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject).toString());
         }
         return null;
@@ -182,7 +150,7 @@ public class RegisterProxyHandler
     if (QLog.isColorLevel()) {
       QLog.d("RegisterProxyHandler", 2, "handleNewRegisterProxyMsg package error!");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4004, false, null);
+    this.C.notifyUI(4004, false, null);
     return null;
   }
   
@@ -191,14 +159,14 @@ public class RegisterProxyHandler
     a(4, true, 0L, false);
     if (QLog.isColorLevel())
     {
-      MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache();
+      MessageCache localMessageCache = (MessageCache)this.C.b().getMsgCache();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("needPullTroopNum:");
       localStringBuilder.append(paramInt1);
       localStringBuilder.append(" ,needPullDiscNum:");
       localStringBuilder.append(paramInt2);
       localStringBuilder.append(" ,regPrxyError:");
-      localStringBuilder.append(localMessageCache.a(false));
+      localStringBuilder.append(localMessageCache.d(false));
       QLog.d("RegisterProxyHandler", 2, localStringBuilder.toString());
     }
   }
@@ -207,25 +175,24 @@ public class RegisterProxyHandler
   {
     if ((paramInt & 0x8) == 8)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxyHandler", 2, "handleNewRegisterProxyMsg--> handleRestEnding!");
-      }
-      this.jdField_f_of_type_Boolean = true;
-      if ((this.jdField_f_of_type_Boolean) && (a()) && (b())) {
-        synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      QLog.d("RegisterProxyHandler", 1, "handleNewRegisterProxyMsg--> handleRestEnding!");
+      this.p = true;
+      ((IRegisterProxyService)QRoute.api(IRegisterProxyService.class)).onNewRegisterProxyRestPacketEnd();
+      if ((this.p) && (c()) && (d())) {
+        synchronized (this.q)
         {
-          if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+          if (!this.q.get())
           {
-            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-            this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+            this.q.set(true);
+            this.q.notifyAll();
           }
         }
       }
-      long l = ((Long)paramFromServiceMsg.getAttribute("infoSync_timestamp")).longValue();
-      paramFromServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg("RegPrxySvc.PbSyncMsg", null);
-      paramFromServiceMsg.addAttribute("infoSync_timestamp", Long.valueOf(l));
+      long l1 = ((Long)paramFromServiceMsg.getAttribute("infoSync_timestamp")).longValue();
+      paramFromServiceMsg = this.C.createToServiceMsg("RegPrxySvc.PbSyncMsg", null);
+      paramFromServiceMsg.addAttribute("infoSync_timestamp", Long.valueOf(l1));
       paramFromServiceMsg.setMsfCommand(MsfCommand.msf_pbSyncMsg);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.send(paramFromServiceMsg);
+      this.C.send(paramFromServiceMsg);
     }
   }
   
@@ -233,51 +200,46 @@ public class RegisterProxyHandler
   {
     if (paramSvcRegisterProxyMsgResp.group_list.has())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxyHandler", 2, "handleNewRegisterProxyMsg--> handleTroopList!");
-      }
+      QLog.d("RegisterProxyHandler", 1, "handleNewRegisterProxyMsg--> handleTroopList!");
       paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.group_list.get();
-      this.jdField_a_of_type_JavaUtilList = paramSvcRegisterProxyMsgResp;
-      MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache();
-      MessageCache.a.jdField_a_of_type_JavaUtilList = paramSvcRegisterProxyMsgResp;
-      int j = 0;
-      while (j < paramSvcRegisterProxyMsgResp.size())
+      this.z = paramSvcRegisterProxyMsgResp;
+      MessageCache localMessageCache = (MessageCache)this.C.b().getMsgCache();
+      MessageCache.d.a = paramSvcRegisterProxyMsgResp;
+      int i1 = 0;
+      while (i1 < paramSvcRegisterProxyMsgResp.size())
       {
-        register_proxy.GroupList localGroupList = (register_proxy.GroupList)paramSvcRegisterProxyMsgResp.get(j);
+        register_proxy.GroupList localGroupList = (register_proxy.GroupList)paramSvcRegisterProxyMsgResp.get(i1);
         if (localGroupList != null)
         {
           String str = String.valueOf(localGroupList.group_code.get());
-          Object localObject = localMessageCache.b(str);
-          long l2 = localMessageCache.j(str);
+          Object localObject = localMessageCache.B(str);
+          long l2 = localMessageCache.M(str);
           long l1;
           if ((localObject != null) && (localObject.length > 0)) {
             l1 = ((Long)localObject[0]).longValue();
           } else {
             l1 = 0L;
           }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder();
-            ((StringBuilder)localObject).setLength(0);
-            ((StringBuilder)localObject).append("handleNewRegisterProxyMsg getGroupList groupCode=");
-            ((StringBuilder)localObject).append(localGroupList.group_code.get());
-            ((StringBuilder)localObject).append(" groupSeq=");
-            ((StringBuilder)localObject).append(localGroupList.group_seq.get());
-            ((StringBuilder)localObject).append(" memberSeq=");
-            ((StringBuilder)localObject).append(localGroupList.member_seq.get());
-            ((StringBuilder)localObject).append(" mask=");
-            ((StringBuilder)localObject).append(localGroupList.mask.get());
-            ((StringBuilder)localObject).append(" localMemberMsgSeq=");
-            ((StringBuilder)localObject).append(l1);
-            ((StringBuilder)localObject).append(" localLastSeq=");
-            ((StringBuilder)localObject).append(l2);
-            ((StringBuilder)localObject).append(" redpack_time=");
-            ((StringBuilder)localObject).append(localGroupList.redpack_time.get());
-            ((StringBuilder)localObject).append(" hasMsg=");
-            ((StringBuilder)localObject).append(localGroupList.has_msg.get());
-            QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject).toString());
-          }
-          if ((localGroupList.mask.get() == 1L) || (localGroupList.mask.get() == 4L) || ((localGroupList.mask.get() == 3L) && (str.equals(a()))))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).setLength(0);
+          ((StringBuilder)localObject).append("handleNewRegisterProxyMsg getGroupList groupCode=");
+          ((StringBuilder)localObject).append(localGroupList.group_code.get());
+          ((StringBuilder)localObject).append(" groupSeq=");
+          ((StringBuilder)localObject).append(localGroupList.group_seq.get());
+          ((StringBuilder)localObject).append(" memberSeq=");
+          ((StringBuilder)localObject).append(localGroupList.member_seq.get());
+          ((StringBuilder)localObject).append(" mask=");
+          ((StringBuilder)localObject).append(localGroupList.mask.get());
+          ((StringBuilder)localObject).append(" localMemberMsgSeq=");
+          ((StringBuilder)localObject).append(l1);
+          ((StringBuilder)localObject).append(" localLastSeq=");
+          ((StringBuilder)localObject).append(l2);
+          ((StringBuilder)localObject).append(" redpack_time=");
+          ((StringBuilder)localObject).append(localGroupList.redpack_time.get());
+          ((StringBuilder)localObject).append(" hasMsg=");
+          ((StringBuilder)localObject).append(localGroupList.has_msg.get());
+          QLog.d("RegisterProxyHandler", 1, ((StringBuilder)localObject).toString());
+          if ((localGroupList.mask.get() == 1L) || (localGroupList.mask.get() == 4L) || ((localGroupList.mask.get() == 3L) && (str.equals(k()))))
           {
             localMessageCache.c(str, new Object[] { Long.valueOf(localGroupList.member_seq.get()), Long.valueOf(localGroupList.group_seq.get()) });
             if (l1 < localGroupList.member_seq.get()) {
@@ -290,8 +252,8 @@ public class RegisterProxyHandler
           }
           if (localGroupList.mask.get() != 0L)
           {
-            if (this.jdField_c_of_type_JavaUtilArrayList == null) {
-              this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+            if (this.y == null) {
+              this.y = new ArrayList();
             }
             localObject = new Setting();
             StringBuilder localStringBuilder = new StringBuilder();
@@ -299,10 +261,10 @@ public class RegisterProxyHandler
             localStringBuilder.append(str);
             ((Setting)localObject).Path = localStringBuilder.toString();
             ((Setting)localObject).Value = String.valueOf(localGroupList.mask.get());
-            this.jdField_c_of_type_JavaUtilArrayList.add(localObject);
+            this.y.add(localObject);
           }
         }
-        j += 1;
+        i1 += 1;
       }
     }
   }
@@ -313,109 +275,77 @@ public class RegisterProxyHandler
       try
       {
         Object localObject = paramPBBytesField.get().toByteArray();
-        int j = localObject.length - 4;
-        paramPBBytesField = new byte[j];
-        PkgTools.copyData(paramPBBytesField, 0, (byte[])localObject, 4, j);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("handleNewRegisterProxyMsg--> decode ");
-          ((StringBuilder)localObject).append(paramString);
-          ((StringBuilder)localObject).append(", hashCode:");
-          ((StringBuilder)localObject).append(paramPBBytesField.hashCode());
-          QLog.e("RegisterProxyHandler", 2, ((StringBuilder)localObject).toString());
-        }
+        int i1 = localObject.length - 4;
+        paramPBBytesField = new byte[i1];
+        PkgTools.copyData(paramPBBytesField, 0, (byte[])localObject, 4, i1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleNewRegisterProxyMsg--> decode ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", hashCode:");
+        ((StringBuilder)localObject).append(paramPBBytesField.hashCode());
+        QLog.e("RegisterProxyHandler", 1, ((StringBuilder)localObject).toString());
         a(1, paramToServiceMsg, paramFromServiceMsg, paramPBBytesField);
         return;
       }
       catch (Exception paramToServiceMsg)
       {
-        if (QLog.isColorLevel())
-        {
-          paramFromServiceMsg = new StringBuilder();
-          paramFromServiceMsg.append("handleNewRegisterProxyMsg--> decode ");
-          paramFromServiceMsg.append(paramString);
-          paramFromServiceMsg.append("error:");
-          QLog.e("RegisterProxyHandler", 2, paramFromServiceMsg.toString(), paramToServiceMsg);
-        }
-      }
-    }
-  }
-  
-  private void a(register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
-  {
-    if (paramSvcRegisterProxyMsgResp.msg_info.has())
-    {
-      this.jdField_f_of_type_Int = ((register_proxy.SvcResponseMsgInfo)paramSvcRegisterProxyMsgResp.msg_info.get()).group_num.get();
-      this.g = ((register_proxy.SvcResponseMsgInfo)paramSvcRegisterProxyMsgResp.msg_info.get()).discuss_num.get();
-      if (QLog.isColorLevel())
-      {
-        paramSvcRegisterProxyMsgResp = new StringBuilder();
-        paramSvcRegisterProxyMsgResp.append("handleNewRegisterProxyMsg ,groupNum=");
-        paramSvcRegisterProxyMsgResp.append(this.jdField_f_of_type_Int);
-        paramSvcRegisterProxyMsgResp.append(",discussionNum=");
-        paramSvcRegisterProxyMsgResp.append(this.g);
-        QLog.e("RegisterProxyHandler", 2, paramSvcRegisterProxyMsgResp.toString());
-      }
-      int j = this.jdField_f_of_type_Int;
-      if ((j == 0) || (this.h >= j)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4003, true, null);
-      }
-      j = this.g;
-      if ((j == 0) || (this.i >= j)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4002, true, null);
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleNewRegisterProxyMsg--> decode ");
+        paramFromServiceMsg.append(paramString);
+        paramFromServiceMsg.append("error:");
+        QLog.e("RegisterProxyHandler", 1, paramFromServiceMsg.toString(), paramToServiceMsg);
       }
     }
   }
   
   private boolean a(register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
   {
-    int j = paramSvcRegisterProxyMsgResp.result.get();
+    int i1 = paramSvcRegisterProxyMsgResp.result.get();
     if (QLog.isColorLevel())
     {
       paramSvcRegisterProxyMsgResp = new StringBuilder();
       paramSvcRegisterProxyMsgResp.append("handleNewRegisterProxyResultCode resultCode = ");
-      paramSvcRegisterProxyMsgResp.append(j);
+      paramSvcRegisterProxyMsgResp.append(i1);
       QLog.d("RegisterProxyHandler", 2, paramSvcRegisterProxyMsgResp.toString());
     }
-    if (j != 0) {
-      if (j != 1)
+    if (i1 != 0) {
+      if (i1 != 1)
       {
-        switch (j)
+        switch (i1)
         {
         default: 
           return false;
         case 104: 
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(true, 0);
+          this.C.b(false);
+          this.C.a(true, 0);
           break;
         case 103: 
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.b(false);
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(true, 2);
+          this.C.c(false);
+          this.C.a(true, 2);
           break;
         case 102: 
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(false);
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(true, 1);
+          this.C.b(false);
+          this.C.a(true, 1);
           break;
         case 100: 
-          jdField_a_of_type_Boolean = false;
+          c = false;
           BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putBoolean("new_regprxy_switch", false).commit();
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4004, false, null);
+          this.C.notifyUI(4004, false, null);
           return false;
         case 99: 
         case 101: 
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.e();
-          j = new Random().nextInt(3000);
-          ThreadManager.getSubThreadHandler().postDelayed(new RegisterProxyHandler.1(this), j);
+          this.C.h();
+          i1 = new Random().nextInt(3000);
+          ThreadManager.getSubThreadHandler().postDelayed(new RegisterProxyHandler.1(this), i1);
           return false;
         }
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4001, false, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4016, false, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4003, false, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4002, false, null);
+        this.C.notifyUI(4001, false, null);
+        this.C.notifyUI(4016, false, null);
+        this.C.notifyUI(4003, false, null);
+        this.C.notifyUI(4002, false, null);
         return false;
       }
     }
@@ -435,21 +365,21 @@ public class RegisterProxyHandler
       localStringBuilder.append(", list=");
     }
     long[] arrayOfLong = new long[paramArrayOfString.length];
-    MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache();
-    int j = 0;
-    while (j < paramArrayOfString.length)
+    MessageCache localMessageCache = (MessageCache)this.C.b().getMsgCache();
+    int i1 = 0;
+    while (i1 < paramArrayOfString.length)
     {
-      localMessageCache.a(paramArrayOfString[j], 0);
-      localMessageCache.e(paramArrayOfString[j]);
-      arrayOfLong[j] = localMessageCache.j(paramArrayOfString[j]);
+      localMessageCache.a(paramArrayOfString[i1], 0);
+      localMessageCache.P(paramArrayOfString[i1]);
+      arrayOfLong[i1] = localMessageCache.M(paramArrayOfString[i1]);
       if (QLog.isColorLevel())
       {
-        localStringBuilder.append(paramArrayOfString[j]);
+        localStringBuilder.append(paramArrayOfString[i1]);
         localStringBuilder.append(":");
-        localStringBuilder.append(arrayOfLong[j]);
+        localStringBuilder.append(arrayOfLong[i1]);
         localStringBuilder.append(", ");
       }
-      j += 1;
+      i1 += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.d("RegisterProxyHandler", 2, localStringBuilder.toString());
@@ -457,10 +387,187 @@ public class RegisterProxyHandler
     return arrayOfLong;
   }
   
-  private Object[] a()
+  private void b(int paramInt)
   {
-    MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler$Callback.a();
+    if ((paramInt & 0x2) == 2)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleNewRegisterProxyMsg--> handleFirstEnding! isPullCircleStop: ");
+      localStringBuilder.append(this.m);
+      QLog.d("RegisterProxyHandler", 1, localStringBuilder.toString());
+      this.o = true;
+      if (e()) {
+        this.C.notifyUI(4017, true, null);
+      }
+    }
+  }
+  
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
+  {
+    if (paramSvcRegisterProxyMsgResp.gourp_msg.has())
+    {
+      paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.gourp_msg.get();
+      int i2 = paramSvcRegisterProxyMsgResp.size();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleNewRegisterProxyMsg--> handleTroopMsgResp_PB, gourp_msg size:");
+      ((StringBuilder)localObject).append(i2);
+      QLog.d("RegisterProxyHandler", 1, ((StringBuilder)localObject).toString());
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localObject = (register_proxy.SvcResponsePbPullGroupMsgProxy)paramSvcRegisterProxyMsgResp.get(i1);
+        if (this.o) {
+          a(2, paramToServiceMsg, paramFromServiceMsg, localObject, false);
+        } else {
+          a(2, paramToServiceMsg, paramFromServiceMsg, localObject, true);
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  private void b(register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
+  {
+    if (paramSvcRegisterProxyMsgResp.msg_info.has())
+    {
+      this.r = ((register_proxy.SvcResponseMsgInfo)paramSvcRegisterProxyMsgResp.msg_info.get()).group_num.get();
+      this.s = ((register_proxy.SvcResponseMsgInfo)paramSvcRegisterProxyMsgResp.msg_info.get()).discuss_num.get();
+      paramSvcRegisterProxyMsgResp = new StringBuilder();
+      paramSvcRegisterProxyMsgResp.append("handleNewRegisterProxyMsg ,groupNum=");
+      paramSvcRegisterProxyMsgResp.append(this.r);
+      paramSvcRegisterProxyMsgResp.append(",discussionNum=");
+      paramSvcRegisterProxyMsgResp.append(this.s);
+      QLog.e("RegisterProxyHandler", 1, paramSvcRegisterProxyMsgResp.toString());
+      int i1 = this.r;
+      if ((i1 == 0) || (this.t >= i1)) {
+        this.C.notifyUI(4003, true, null);
+      }
+      i1 = this.s;
+      if ((i1 == 0) || (this.u >= i1)) {
+        this.C.notifyUI(4002, true, null);
+      }
+    }
+  }
+  
+  private HashMap<Integer, String[]> c(int paramInt)
+  {
+    return this.D.a(paramInt);
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
+  {
+    if (paramSvcRegisterProxyMsgResp.discuss_msg.has())
+    {
+      paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.discuss_msg.get();
+      int i2 = paramSvcRegisterProxyMsgResp.size();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleNewRegisterProxyMsg--> handleDiscussMsgResp_PB, discuss_msg size:");
+      ((StringBuilder)localObject).append(i2);
+      QLog.d("RegisterProxyHandler", 1, ((StringBuilder)localObject).toString());
+      int i1 = 0;
+      while (i1 < i2)
+      {
+        localObject = (register_proxy.SvcPbResponsePullDisMsgProxy)paramSvcRegisterProxyMsgResp.get(i1);
+        if (this.o) {
+          a(3, paramToServiceMsg, paramFromServiceMsg, localObject, false);
+        } else {
+          a(3, paramToServiceMsg, paramFromServiceMsg, localObject, true);
+        }
+        i1 += 1;
+      }
+    }
+  }
+  
+  private void c(register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
+  {
+    boolean bool;
+    if ((paramSvcRegisterProxyMsgResp.discuss_list_flag.has()) && (paramSvcRegisterProxyMsgResp.discuss_list_flag.get() == 1)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("handleNewRegisterProxyMsg needDealDiscussList=");
+    ((StringBuilder)localObject1).append(bool);
+    QLog.d("RegisterProxyHandler", 1, ((StringBuilder)localObject1).toString());
+    if (bool)
+    {
+      localObject1 = (MessageCache)this.C.b().getMsgCache();
+      if (paramSvcRegisterProxyMsgResp.discuss_list.has())
+      {
+        QLog.d("RegisterProxyHandler", 1, "handleNewRegisterProxyMsg--> handleDiscussList!");
+        paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.discuss_list.get();
+        MessageCache.d.b = paramSvcRegisterProxyMsgResp;
+        int i1 = 0;
+        while (i1 < paramSvcRegisterProxyMsgResp.size())
+        {
+          register_proxy.DiscussList localDiscussList = (register_proxy.DiscussList)paramSvcRegisterProxyMsgResp.get(i1);
+          if (localDiscussList != null)
+          {
+            String str = String.valueOf(localDiscussList.discuss_code.get());
+            Object localObject2 = ((MessageCache)localObject1).A(str);
+            long l3 = ((MessageCache)localObject1).L(str);
+            long l2 = 0L;
+            long l1 = l2;
+            if (localObject2 != null)
+            {
+              l1 = l2;
+              if (localObject2.length > 0) {
+                l1 = ((Long)localObject2[0]).longValue();
+              }
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).setLength(0);
+            ((StringBuilder)localObject2).append("handleNewRegisterProxyMsg getDiscussList discussCode=");
+            ((StringBuilder)localObject2).append(localDiscussList.discuss_code.get());
+            ((StringBuilder)localObject2).append(" discussSeq=");
+            ((StringBuilder)localObject2).append(localDiscussList.discuss_seq.get());
+            ((StringBuilder)localObject2).append(" memberSeq=");
+            ((StringBuilder)localObject2).append(localDiscussList.member_seq.get());
+            ((StringBuilder)localObject2).append(" info_seq=");
+            ((StringBuilder)localObject2).append(localDiscussList.info_seq.get());
+            ((StringBuilder)localObject2).append(" isHotDiscuss=");
+            ((StringBuilder)localObject2).append(localDiscussList.bHotGroup.get());
+            ((StringBuilder)localObject2).append(" localMemberMsgSeq=");
+            ((StringBuilder)localObject2).append(l1);
+            ((StringBuilder)localObject2).append(" localLastSeq=");
+            ((StringBuilder)localObject2).append(l3);
+            ((StringBuilder)localObject2).append(" redpack_time=");
+            ((StringBuilder)localObject2).append(localDiscussList.redpack_time.get());
+            ((StringBuilder)localObject2).append(" hasMsg=");
+            ((StringBuilder)localObject2).append(localDiscussList.has_msg.get());
+            QLog.d("RegisterProxyHandler", 1, ((StringBuilder)localObject2).toString());
+            ((MessageCache)localObject1).b(str, new Object[] { Long.valueOf(localDiscussList.member_seq.get()), Long.valueOf(localDiscussList.discuss_seq.get()) });
+            if (localDiscussList.member_seq.get() > l1) {
+              if (localDiscussList.discuss_seq.get() <= l3) {
+                a(5, null, null, localDiscussList);
+              } else {
+                ((MessageCache)localObject1).c(str, 1);
+              }
+            }
+          }
+          i1 += 1;
+        }
+      }
+      QLog.d("RegisterProxyHandler", 1, "handleNewRegisterProxyMsg--> handleDiscussList! noDiscussList return...");
+      l();
+    }
+  }
+  
+  private String k()
+  {
+    return this.C.i();
+  }
+  
+  private void l()
+  {
+    this.C.j();
+  }
+  
+  private Object[] m()
+  {
+    MessageCache localMessageCache = (MessageCache)this.C.b().getMsgCache();
+    Object localObject = this.D.a();
     String[] arrayOfString = new String[((List)localObject).size()];
     long[] arrayOfLong = new long[((List)localObject).size()];
     StringBuilder localStringBuilder = new StringBuilder(256);
@@ -471,237 +578,71 @@ public class RegisterProxyHandler
       localStringBuilder.append(", discussionUinArray: ");
     }
     localObject = ((List)localObject).iterator();
-    int j = 0;
+    int i1 = 0;
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      arrayOfString[j] = str;
-      arrayOfLong[j] = localMessageCache.i(str);
-      localMessageCache.b(str, 0);
-      localMessageCache.g(str);
-      localMessageCache.c(str);
+      arrayOfString[i1] = str;
+      arrayOfLong[i1] = localMessageCache.L(str);
+      localMessageCache.c(str, 0);
+      localMessageCache.R(str);
+      localMessageCache.C(str);
       if (QLog.isColorLevel())
       {
         localStringBuilder.append(str);
         localStringBuilder.append(":");
-        localStringBuilder.append(arrayOfLong[j]);
+        localStringBuilder.append(arrayOfLong[i1]);
         localStringBuilder.append(", ");
       }
-      j += 1;
+      i1 += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.d("RegisterProxyHandler", 2, localStringBuilder.toString());
     }
-    if (j == 0)
+    if (i1 == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4002, true, null);
+      this.C.notifyUI(4002, true, null);
       if (QLog.isColorLevel()) {
         QLog.d("RegisterProxyHandler", 2, "--->>initBeforGetPullDiscussionMsgNum, get discussionUin is null or length is 0, notifyUI NOTIFY_TYPE_GET_DISCUSSION_MSG_FIN ");
       }
       return null;
     }
-    return new Object[] { arrayOfString, arrayOfLong, Integer.valueOf(j) };
-  }
-  
-  private void b(int paramInt)
-  {
-    if ((paramInt & 0x2) == 2)
-    {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("handleNewRegisterProxyMsg--> handleFirstEnding! isPullCircleStop: ");
-        localStringBuilder.append(this.jdField_d_of_type_Boolean);
-        QLog.d("RegisterProxyHandler", 2, localStringBuilder.toString());
-      }
-      this.jdField_e_of_type_Boolean = true;
-      if (c()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4017, true, null);
-      }
-    }
-  }
-  
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
-  {
-    if (paramSvcRegisterProxyMsgResp.gourp_msg.has())
-    {
-      paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.gourp_msg.get();
-      int k = paramSvcRegisterProxyMsgResp.size();
-      Object localObject;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("handleNewRegisterProxyMsg--> handleTroopMsgResp_PB, gourp_msg size:");
-        ((StringBuilder)localObject).append(k);
-        QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject).toString());
-      }
-      int j = 0;
-      while (j < k)
-      {
-        localObject = (register_proxy.SvcResponsePbPullGroupMsgProxy)paramSvcRegisterProxyMsgResp.get(j);
-        if (this.jdField_e_of_type_Boolean) {
-          a(2, paramToServiceMsg, paramFromServiceMsg, localObject, false);
-        } else {
-          a(2, paramToServiceMsg, paramFromServiceMsg, localObject, true);
-        }
-        j += 1;
-      }
-    }
-  }
-  
-  private void b(register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
-  {
-    boolean bool;
-    if ((paramSvcRegisterProxyMsgResp.discuss_list_flag.has()) && (paramSvcRegisterProxyMsgResp.discuss_list_flag.get() == 1)) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("handleNewRegisterProxyMsg needDealDiscussList=");
-      ((StringBuilder)localObject1).append(bool);
-      QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject1).toString());
-    }
-    if (bool)
-    {
-      localObject1 = (MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache();
-      if (paramSvcRegisterProxyMsgResp.discuss_list.has())
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RegisterProxyHandler", 2, "handleNewRegisterProxyMsg--> handleDiscussList!");
-        }
-        paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.discuss_list.get();
-        MessageCache.a.b = paramSvcRegisterProxyMsgResp;
-        int j = 0;
-        while (j < paramSvcRegisterProxyMsgResp.size())
-        {
-          register_proxy.DiscussList localDiscussList = (register_proxy.DiscussList)paramSvcRegisterProxyMsgResp.get(j);
-          if (localDiscussList != null)
-          {
-            String str = String.valueOf(localDiscussList.discuss_code.get());
-            Object localObject2 = ((MessageCache)localObject1).a(str);
-            long l3 = ((MessageCache)localObject1).i(str);
-            long l2 = 0L;
-            long l1 = l2;
-            if (localObject2 != null)
-            {
-              l1 = l2;
-              if (localObject2.length > 0) {
-                l1 = ((Long)localObject2[0]).longValue();
-              }
-            }
-            if (QLog.isColorLevel())
-            {
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).setLength(0);
-              ((StringBuilder)localObject2).append("handleNewRegisterProxyMsg getDiscussList discussCode=");
-              ((StringBuilder)localObject2).append(localDiscussList.discuss_code.get());
-              ((StringBuilder)localObject2).append(" discussSeq=");
-              ((StringBuilder)localObject2).append(localDiscussList.discuss_seq.get());
-              ((StringBuilder)localObject2).append(" memberSeq=");
-              ((StringBuilder)localObject2).append(localDiscussList.member_seq.get());
-              ((StringBuilder)localObject2).append(" info_seq=");
-              ((StringBuilder)localObject2).append(localDiscussList.info_seq.get());
-              ((StringBuilder)localObject2).append(" isHotDiscuss=");
-              ((StringBuilder)localObject2).append(localDiscussList.bHotGroup.get());
-              ((StringBuilder)localObject2).append(" localMemberMsgSeq=");
-              ((StringBuilder)localObject2).append(l1);
-              ((StringBuilder)localObject2).append(" localLastSeq=");
-              ((StringBuilder)localObject2).append(l3);
-              ((StringBuilder)localObject2).append(" redpack_time=");
-              ((StringBuilder)localObject2).append(localDiscussList.redpack_time.get());
-              ((StringBuilder)localObject2).append(" hasMsg=");
-              ((StringBuilder)localObject2).append(localDiscussList.has_msg.get());
-              QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject2).toString());
-            }
-            ((MessageCache)localObject1).b(str, new Object[] { Long.valueOf(localDiscussList.member_seq.get()), Long.valueOf(localDiscussList.discuss_seq.get()) });
-            if (localDiscussList.member_seq.get() > l1) {
-              if (localDiscussList.discuss_seq.get() <= l3) {
-                a(5, null, null, localDiscussList);
-              } else {
-                ((MessageCache)localObject1).b(str, 1);
-              }
-            }
-          }
-          j += 1;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxyHandler", 2, "handleNewRegisterProxyMsg--> handleDiscussList! noDiscussList return...");
-      }
-      g();
-    }
-  }
-  
-  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, register_proxy.SvcRegisterProxyMsgResp paramSvcRegisterProxyMsgResp)
-  {
-    if (paramSvcRegisterProxyMsgResp.discuss_msg.has())
-    {
-      paramSvcRegisterProxyMsgResp = paramSvcRegisterProxyMsgResp.discuss_msg.get();
-      int k = paramSvcRegisterProxyMsgResp.size();
-      Object localObject;
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("handleNewRegisterProxyMsg--> handleDiscussMsgResp_PB, discuss_msg size:");
-        ((StringBuilder)localObject).append(k);
-        QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject).toString());
-      }
-      int j = 0;
-      while (j < k)
-      {
-        localObject = (register_proxy.SvcPbResponsePullDisMsgProxy)paramSvcRegisterProxyMsgResp.get(j);
-        if (this.jdField_e_of_type_Boolean) {
-          a(3, paramToServiceMsg, paramFromServiceMsg, localObject, false);
-        } else {
-          a(3, paramToServiceMsg, paramFromServiceMsg, localObject, true);
-        }
-        j += 1;
-      }
-    }
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.f();
+    return new Object[] { arrayOfString, arrayOfLong, Integer.valueOf(i1) };
   }
   
   public void a()
   {
-    if (!jdField_b_of_type_Boolean) {
+    if (!d) {
       return;
     }
-    int j;
+    int i1;
     label223:
     label228:
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.B)
     {
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread == null)
+      if (this.A == null)
       {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
-        this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(10);
-        this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread = new MessageHandleThread[jdField_a_of_type_Int];
+        this.e = new ArrayList(20);
+        this.f = new ArrayList(10);
+        this.A = new MessageHandleThread[a];
         break label223;
-        if (j < this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread.length)
+        if (i1 < this.A.length)
         {
-          if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j] != null) && (!this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j].a())) {
+          if ((this.A[i1] != null) && (!this.A[i1].b())) {
             break label228;
           }
-          if (j < jdField_b_of_type_Int) {
-            this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j] = new MessageHandleThread(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler, this.jdField_b_of_type_JavaUtilArrayList);
+          if (i1 < b) {
+            this.A[i1] = new MessageHandleThread(this, this.C, this.f);
           } else {
-            this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j] = new MessageHandleThread(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler, this.jdField_a_of_type_JavaUtilArrayList);
+            this.A[i1] = new MessageHandleThread(this, this.C, this.e);
           }
-          MessageHandleThread localMessageHandleThread = this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j];
+          MessageHandleThread localMessageHandleThread = this.A[i1];
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("MessageHandleThread");
-          localStringBuilder.append(j + 1);
+          localStringBuilder.append(i1 + 1);
           localMessageHandleThread.setName(localStringBuilder.toString());
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j].setPriority(5);
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j].start();
+          this.A[i1].setPriority(5);
+          this.A[i1].start();
           break label228;
         }
         return;
@@ -711,42 +652,42 @@ public class RegisterProxyHandler
   
   public void a(int paramInt)
   {
-    MessageCache localMessageCache = (MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache();
+    MessageCache localMessageCache = (MessageCache)this.C.b().getMsgCache();
     if (paramInt == 1)
     {
-      localObject1 = (String[])a(-2).get(Integer.valueOf(-2));
+      localObject1 = (String[])c(-2).get(Integer.valueOf(-2));
       a((String[])localObject1);
-      this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject1);
+      this.h = ((String[])localObject1);
     }
     else
     {
-      Object localObject2 = a(-1);
+      Object localObject2 = c(-1);
       String[] arrayOfString1 = (String[])((HashMap)localObject2).get(Integer.valueOf(1));
       String[] arrayOfString2 = (String[])((HashMap)localObject2).get(Integer.valueOf(4));
-      int j;
+      int i1;
       if (arrayOfString1 != null) {
-        j = arrayOfString1.length + 0;
+        i1 = arrayOfString1.length + 0;
       } else {
-        j = 0;
+        i1 = 0;
       }
-      int k = j;
+      int i2 = i1;
       if (arrayOfString2 != null) {
-        k = j + arrayOfString2.length;
+        i2 = i1 + arrayOfString2.length;
       }
-      if (k > 0)
+      if (i2 > 0)
       {
-        localObject1 = new String[k];
+        localObject1 = new String[i2];
         if (arrayOfString1 != null)
         {
           System.arraycopy(arrayOfString1, 0, localObject1, 0, arrayOfString1.length);
-          j = arrayOfString1.length;
+          i1 = arrayOfString1.length;
         }
         else
         {
-          j = 0;
+          i1 = 0;
         }
         if (arrayOfString2 != null) {
-          System.arraycopy(arrayOfString2, 0, localObject1, j, arrayOfString2.length);
+          System.arraycopy(arrayOfString2, 0, localObject1, i1, arrayOfString2.length);
         }
         a((String[])localObject1);
       }
@@ -754,7 +695,7 @@ public class RegisterProxyHandler
       {
         localObject1 = null;
       }
-      this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject1);
+      this.h = ((String[])localObject1);
       localObject1 = (String[])((HashMap)localObject2).get(Integer.valueOf(2));
       if ((localObject1 != null) && (localObject1.length > 0) && (localMessageCache != null))
       {
@@ -765,26 +706,26 @@ public class RegisterProxyHandler
           ((StringBuilder)localObject2).append(localObject1[0]);
           QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject2).toString());
         }
-        j = 0;
+        i1 = 0;
       }
-      while (j < localObject1.length)
+      while (i1 < localObject1.length)
       {
-        localMessageCache.a(localObject1[j], 0);
-        j += 1;
+        localMessageCache.a(localObject1[i1], 0);
+        i1 += 1;
         continue;
         if (QLog.isColorLevel()) {
           QLog.w("RegisterProxyHandler", 2, "enableTroopMsgPushCache num troop list is empty!");
         }
       }
     }
-    Object localObject1 = a();
+    Object localObject1 = m();
     if (localObject1 != null) {
-      this.jdField_b_of_type_ArrayOfJavaLangString = ((String[])localObject1[0]);
+      this.i = ((String[])localObject1[0]);
     } else {
-      this.jdField_b_of_type_ArrayOfJavaLangString = null;
+      this.i = null;
     }
     if (paramInt == 1) {
-      f();
+      j();
     }
   }
   
@@ -793,17 +734,17 @@ public class RegisterProxyHandler
     a();
     paramToServiceMsg = new MessageObject(paramInt, paramToServiceMsg, ???, paramObject);
     if (paramInt == 1) {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      synchronized (this.f)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.add(paramToServiceMsg);
-        this.jdField_b_of_type_JavaUtilArrayList.notify();
+        this.f.add(paramToServiceMsg);
+        this.f.notify();
         return;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramToServiceMsg);
-      this.jdField_a_of_type_JavaUtilArrayList.notify();
+      this.e.add(paramToServiceMsg);
+      this.e.notify();
       return;
     }
   }
@@ -813,57 +754,56 @@ public class RegisterProxyHandler
     a();
     paramToServiceMsg = new MessageObject(paramInt, paramToServiceMsg, ???, paramObject, paramBoolean);
     if (paramInt == 1) {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+      synchronized (this.f)
       {
-        this.jdField_b_of_type_JavaUtilArrayList.add(paramToServiceMsg);
-        this.jdField_b_of_type_JavaUtilArrayList.notify();
+        this.f.add(paramToServiceMsg);
+        this.f.notify();
         return;
       }
     }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    synchronized (this.e)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramToServiceMsg);
-      this.jdField_a_of_type_JavaUtilArrayList.notify();
+      this.e.add(paramToServiceMsg);
+      this.e.notify();
       return;
     }
   }
   
   public void a(int paramInt, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
-    c();
-    int j = Math.abs(new Random(System.currentTimeMillis()).nextInt());
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("sendRegisterProxy , type = ");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append(" , needEndPkg = ");
-      ((StringBuilder)localObject).append(paramBoolean1);
-      ((StringBuilder)localObject).append(" , registerProxyRandom = ");
-      ((StringBuilder)localObject).append(paramLong);
-      ((StringBuilder)localObject).append(" , isGetPassword = ");
-      ((StringBuilder)localObject).append(paramBoolean2);
-      QLog.d("MessageHandler", 2, ((StringBuilder)localObject).toString());
-    }
-    long l1 = 128L;
+    f();
+    int i1 = Math.abs(new Random(System.currentTimeMillis()).nextInt());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendRegisterProxy , type = ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" , needEndPkg = ");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append(" , registerProxyRandom = ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" , isGetPassword = ");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    QLog.d("MessageHandler", 1, ((StringBuilder)localObject).toString());
     long l2;
+    long l1;
     if ((paramInt != 1) && (paramInt != 2))
     {
       if ((paramInt == 3) && (paramBoolean1))
       {
-        this.jdField_d_of_type_Int = j;
+        this.k = i1;
       }
       else if (paramInt == 4)
       {
         l2 = 384L;
-        this.jdField_c_of_type_Int = j;
+        this.j = i1;
         l1 = l2;
-        if (((MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache()).a(false))
-        {
-          this.jdField_e_of_type_Int = j;
-          l1 = l2;
+        if (!((MessageCache)this.C.b().getMsgCache()).d(false)) {
+          break label222;
         }
+        this.n = i1;
+        l1 = l2;
+        break label222;
       }
+      l1 = 128L;
     }
     else
     {
@@ -871,61 +811,59 @@ public class RegisterProxyHandler
       l1 = l2;
       if (paramBoolean1)
       {
-        this.jdField_c_of_type_Int = j;
+        this.j = i1;
         l1 = l2;
       }
     }
+    label222:
     if (paramInt == 1) {
       localObject = "RegPrxySvc.infoLogin";
     } else {
       localObject = "RegPrxySvc.getOffMsg";
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.createToServiceMsg((String)localObject);
+    localObject = this.C.createToServiceMsg((String)localObject);
     ((ToServiceMsg)localObject).extraData.putLong("requestOptional", l1);
     if (paramBoolean1) {
-      ((ToServiceMsg)localObject).extraData.putInt("endSeq", j);
+      ((ToServiceMsg)localObject).extraData.putInt("endSeq", i1);
     }
     if (paramLong != 0L)
     {
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("[ReSendProxy] RegisterProxyRandom = ");
-        localStringBuilder.append(paramLong);
-        QLog.d("MessageHandler", 2, localStringBuilder.toString());
-      }
-      this.jdField_a_of_type_Long = paramLong;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[ReSendProxy] RegisterProxyRandom = ");
+      localStringBuilder.append(paramLong);
+      QLog.d("MessageHandler", 1, localStringBuilder.toString());
+      this.x = paramLong;
       ((ToServiceMsg)localObject).getAttributes().put("_attr_regprxy_random_code", Long.valueOf(paramLong));
     }
     ((ToServiceMsg)localObject).extraData.putInt("type", paramInt);
     ((ToServiceMsg)localObject).extraData.putBoolean("isGetPassword", paramBoolean2);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.send((ToServiceMsg)localObject);
+    this.C.send((ToServiceMsg)localObject);
   }
   
   public void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-    c();
-    int j = Math.abs(new Random(System.currentTimeMillis()).nextInt());
-    this.jdField_c_of_type_Int = j;
+    this.q.set(false);
+    f();
+    int i1 = Math.abs(new Random(System.currentTimeMillis()).nextInt());
+    this.j = i1;
     if (paramLong != 0L) {
-      this.jdField_a_of_type_Long = paramLong;
+      this.x = paramLong;
     }
-    ToServiceMsg localToServiceMsg = a(paramBoolean1, j, paramLong, paramBoolean2);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.send(localToServiceMsg);
+    ToServiceMsg localToServiceMsg = a(paramBoolean1, i1, paramLong, paramBoolean2);
+    this.C.send(localToServiceMsg);
   }
   
   public void a(RegisterProxyHandler.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler$Callback = paramCallback;
+    this.D = paramCallback;
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ("RegPrxySvc.PbSyncMsg".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
     {
-      QLog.d("RegisterProxyHandler", 2, "handleNewRegisterProxyMsg begin!");
-      long l = System.currentTimeMillis();
+      QLog.d("RegisterProxyHandler", 1, "handleNewRegisterProxyMsg begin!");
+      long l1 = System.currentTimeMillis();
       paramObject = a((byte[])paramObject);
       if (paramObject == null) {
         return;
@@ -935,61 +873,84 @@ public class RegisterProxyHandler
       }
       if ((paramObject.flag.has()) && (paramObject.flag.get() != 0))
       {
-        int j = paramObject.flag.get();
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("<---handleNewRegisterProxyMsg flag = ");
-          localStringBuilder.append(j);
-          QLog.d("RegisterProxyHandler", 2, localStringBuilder.toString());
+        int i1 = paramObject.flag.get();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<---handleNewRegisterProxyMsg flag = ");
+        localStringBuilder.append(i1);
+        QLog.d("RegisterProxyHandler", 1, localStringBuilder.toString());
+        if (MessageCache.d == null) {
+          MessageCache.d = new MessageCache.RegPrxyCache();
         }
-        if (MessageCache.a == null) {
-          MessageCache.a = new MessageCache.RegPrxyCache();
-        }
-        a(paramObject);
+        b(paramObject);
         a("c2c_msg", paramToServiceMsg, paramFromServiceMsg, paramObject.c2c_msg);
         a("pub_account_msg", paramToServiceMsg, paramFromServiceMsg, paramObject.pub_account_msg);
         a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        b(paramObject);
+        c(paramObject);
         b(paramToServiceMsg, paramFromServiceMsg, paramObject);
         c(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        b(j);
-        a(paramFromServiceMsg, j);
+        b(i1);
+        a(paramFromServiceMsg, i1);
         if (QLog.isColorLevel())
         {
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("handleNewRegisterProxyMsg end! cost :");
-          paramToServiceMsg.append(System.currentTimeMillis() - l);
+          paramToServiceMsg.append(System.currentTimeMillis() - l1);
           QLog.d("RegisterProxyHandler", 2, paramToServiceMsg.toString());
         }
       }
       else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RegisterProxyHandler", 2, "<---handleNewRegisterProxyMsg-->flag error!");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.notifyUI(4004, false, null);
+        QLog.d("RegisterProxyHandler", 1, "<---handleNewRegisterProxyMsg-->flag error!");
+        this.C.notifyUI(4004, false, null);
       }
     }
   }
   
-  public boolean a()
+  public void b()
   {
-    int j;
+    synchronized (this.B)
+    {
+      if (this.A != null)
+      {
+        int i1 = 0;
+        while (i1 < this.A.length)
+        {
+          this.A[i1].a();
+          i1 += 1;
+        }
+        synchronized (this.e)
+        {
+          this.e.notifyAll();
+        }
+      }
+      this.f = null;
+      this.e = null;
+      this.A = null;
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
+    }
+  }
+  
+  public boolean c()
+  {
+    int i1;
     label64:
     label79:
     label84:
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.B)
     {
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread != null)
+      if (this.A != null)
       {
-        if (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread.length > 1) {
+        if (this.A.length > 1) {
           break label79;
         }
         break label64;
-        if (j < this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread.length)
+        if (i1 < this.A.length)
         {
-          if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j] == null) || (!this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j].b())) {
+          if ((this.A[i1] == null) || (!this.A[i1].c())) {
             break label84;
           }
           return false;
@@ -1000,37 +961,9 @@ public class RegisterProxyHandler
     }
   }
   
-  public void b()
+  public boolean d()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread != null)
-      {
-        int j = 0;
-        while (j < this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread.length)
-        {
-          this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread[j].a();
-          j += 1;
-        }
-        synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.notifyAll();
-        }
-      }
-      this.jdField_b_of_type_JavaUtilArrayList = null;
-      this.jdField_a_of_type_JavaUtilArrayList = null;
-      this.jdField_a_of_type_ArrayOfComTencentMobileqqAppHandlerMessageHandleThread = null;
-      return;
-    }
-    for (;;)
-    {
-      throw localObject2;
-    }
-  }
-  
-  public boolean b()
-  {
-    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    ArrayList localArrayList = this.e;
     if (localArrayList == null) {
       return true;
     }
@@ -1040,7 +973,7 @@ public class RegisterProxyHandler
       {
         try
         {
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          if (this.e.size() == 0)
           {
             bool = true;
             return bool;
@@ -1056,20 +989,12 @@ public class RegisterProxyHandler
     }
   }
   
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageHandler", 2, "[ReSendProxy] cleanRegisterProxyRandom");
-    }
-    this.jdField_a_of_type_Long = 0L;
-  }
-  
-  public boolean c()
+  public boolean e()
   {
     Object localObject1;
-    if ((this.jdField_e_of_type_Boolean) && (!this.jdField_d_of_type_Boolean))
+    if ((this.o) && (!this.m))
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject1 = this.e;
       if (localObject1 == null) {
         return true;
       }
@@ -1078,11 +1003,11 @@ public class RegisterProxyHandler
     {
       try
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        Iterator localIterator = this.e.iterator();
         if (!localIterator.hasNext()) {
           break label122;
         }
-        if (!((MessageObject)localIterator.next()).jdField_a_of_type_Boolean) {
+        if (!((MessageObject)localIterator.next()).e) {
           continue;
         }
         bool = true;
@@ -1095,7 +1020,7 @@ public class RegisterProxyHandler
         }
         if (!bool)
         {
-          this.jdField_e_of_type_Boolean = false;
+          this.o = false;
           return true;
         }
       }
@@ -1106,32 +1031,45 @@ public class RegisterProxyHandler
     }
   }
   
-  public void d()
+  public void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageHandler", 2, "[ReSendProxy] cleanRegisterProxyRandom");
+    }
+    this.x = 0L;
+  }
+  
+  public boolean g()
+  {
+    return ((c()) && (d())) || (!d);
+  }
+  
+  public void h()
   {
     try
     {
       if (QLog.isColorLevel()) {
         QLog.d("RegisterProxyHandler", 2, "handlePullLackGroupMsg-> New RegisterProxy End!");
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.g();
-      synchronized (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      this.C.k();
+      synchronized (this.q)
       {
-        if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+        if (!this.q.get())
         {
-          long l = System.currentTimeMillis();
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.wait(10000L);
+          long l1 = System.currentTimeMillis();
+          this.q.wait(10000L);
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("AllMsgThreadEndLock wait = ");
-            localStringBuilder.append(System.currentTimeMillis() - l);
+            localStringBuilder.append(System.currentTimeMillis() - l1);
             QLog.d("RegisterProxyHandler", 2, localStringBuilder.toString());
           }
         }
-        this.jdField_f_of_type_Boolean = false;
-        this.jdField_e_of_type_Boolean = false;
-        e();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.p = false;
+        this.o = false;
+        i();
+        this.q.set(false);
         return;
       }
     }
@@ -1143,77 +1081,72 @@ public class RegisterProxyHandler
     QLog.e("RegisterProxyHandler", 1, "handlePullLackGroupMsg exception!");
   }
   
-  public boolean d()
-  {
-    return ((a()) && (b())) || (!jdField_b_of_type_Boolean);
-  }
-  
-  public void e()
+  public void i()
   {
     Object localObject1 = new StringBuilder();
     if (QLog.isColorLevel())
     {
       ((StringBuilder)localObject1).setLength(0);
       ((StringBuilder)localObject1).append("checkGroupMsgComplete-> troopNum:");
-      ((StringBuilder)localObject1).append(this.jdField_f_of_type_Int);
+      ((StringBuilder)localObject1).append(this.r);
       ((StringBuilder)localObject1).append(" ,discussionNum:");
-      ((StringBuilder)localObject1).append(this.g);
+      ((StringBuilder)localObject1).append(this.s);
       ((StringBuilder)localObject1).append(" ,recvTroopNum:");
-      ((StringBuilder)localObject1).append(this.h);
+      ((StringBuilder)localObject1).append(this.t);
       ((StringBuilder)localObject1).append(" ,recvDiscNum");
-      ((StringBuilder)localObject1).append(this.i);
+      ((StringBuilder)localObject1).append(this.u);
       QLog.d("RegisterProxyHandler", 2, ((StringBuilder)localObject1).toString());
     }
-    if ((!((MessageCache)this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a().getMsgCache()).a(false)) && (this.jdField_f_of_type_Int == 0) && (this.g == 0)) {
+    if ((!((MessageCache)this.C.b().getMsgCache()).d(false)) && (this.r == 0) && (this.s == 0)) {
       return;
     }
-    this.jdField_a_of_type_ArrayOfJavaLangString = null;
-    this.jdField_b_of_type_ArrayOfJavaLangString = null;
-    Object localObject2 = this.jdField_a_of_type_JavaUtilHashMap;
-    int k;
-    int j;
+    this.h = null;
+    this.i = null;
+    Object localObject2 = this.v;
+    int i2;
+    int i1;
     if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
     {
-      localObject2 = new RegisterProxyHandler.CheckTroopMsgComplete(this, (StringBuilder)localObject1, 0).a();
-      k = ((RegisterProxyHandler.CheckTroopMsgComplete)localObject2).a();
-      j = ((RegisterProxyHandler.CheckTroopMsgComplete)localObject2).b();
+      localObject2 = new RegisterProxyHandler.CheckTroopMsgComplete(this, (StringBuilder)localObject1, 0).c();
+      i2 = ((RegisterProxyHandler.CheckTroopMsgComplete)localObject2).a();
+      i1 = ((RegisterProxyHandler.CheckTroopMsgComplete)localObject2).b();
     }
     else
     {
-      j = 0;
-      k = 0;
+      i1 = 0;
+      i2 = 0;
     }
-    localObject2 = this.jdField_b_of_type_JavaUtilHashMap;
-    int n;
-    int m;
+    localObject2 = this.w;
+    int i4;
+    int i3;
     if ((localObject2 != null) && (((HashMap)localObject2).size() > 0))
     {
-      localObject1 = new RegisterProxyHandler.CheckDisMsgComplete(this, (StringBuilder)localObject1, 0).a();
-      n = ((RegisterProxyHandler.CheckDisMsgComplete)localObject1).a();
-      m = ((RegisterProxyHandler.CheckDisMsgComplete)localObject1).b();
+      localObject1 = new RegisterProxyHandler.CheckDisMsgComplete(this, (StringBuilder)localObject1, 0).c();
+      i4 = ((RegisterProxyHandler.CheckDisMsgComplete)localObject1).a();
+      i3 = ((RegisterProxyHandler.CheckDisMsgComplete)localObject1).b();
     }
     else
     {
-      m = 0;
-      n = 0;
+      i3 = 0;
+      i4 = 0;
     }
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) || (this.jdField_b_of_type_ArrayOfJavaLangString != null)) {
-      a(k, n, j, m);
+    if ((this.h != null) || (this.i != null)) {
+      a(i2, i4, i1, i3);
     }
-    this.jdField_f_of_type_Int = 0;
-    this.g = 0;
-    this.h = 0;
-    this.i = 0;
+    this.r = 0;
+    this.s = 0;
+    this.t = 0;
+    this.u = 0;
   }
   
-  public void f()
+  public void j()
   {
-    AppInterface localAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a();
+    AppInterface localAppInterface = this.C.b();
     if (localAppInterface.getCurrentAccountUin() != null)
     {
       Object localObject1 = localAppInterface.getApp();
       Object localObject2 = localAppInterface.getCurrentAccountUin();
-      int j = 0;
+      int i1 = 0;
       localObject1 = ((BaseApplication)localObject1).getSharedPreferences((String)localObject2, 0);
       Object localObject3 = ((SharedPreferences)localObject1).getString("msgSending", null);
       localObject2 = (MessageCache)localAppInterface.getMsgCache();
@@ -1231,25 +1164,25 @@ public class RegisterProxyHandler
         try
         {
           localObject3 = new JSONArray((String)localObject3);
-          while (j < ((JSONArray)localObject3).length())
+          while (i1 < ((JSONArray)localObject3).length())
           {
-            if (!((JSONArray)localObject3).isNull(j))
+            if (!((JSONArray)localObject3).isNull(i1))
             {
-              Object localObject5 = ((JSONArray)localObject3).getJSONObject(j);
+              Object localObject5 = ((JSONArray)localObject3).getJSONObject(i1);
               localObject4 = ((JSONObject)localObject5).getString("uin");
-              int k = ((JSONObject)localObject5).getInt("type");
-              long l = ((JSONObject)localObject5).getLong("uniseq");
-              ((MessageCache)localObject2).b((String)localObject4, k, l);
+              int i2 = ((JSONObject)localObject5).getInt("type");
+              long l1 = ((JSONObject)localObject5).getLong("uniseq");
+              ((MessageCache)localObject2).c((String)localObject4, i2, l1);
               localObject5 = (IMessageFacade)localAppInterface.getRuntimeService(IMessageFacade.class, "");
-              localObject4 = ((IMessageFacade)localObject5).queryMsgItemByUniseq((String)localObject4, k, l);
+              localObject4 = ((IMessageFacade)localObject5).queryMsgItemByUniseq((String)localObject4, i2, l1);
               if (localObject4 != null)
               {
-                ((MessageCache)localObject2).a((MessageRecord)localObject4);
+                ((MessageCache)localObject2).e((MessageRecord)localObject4);
                 ((IMessageFacade)localObject5).setChangeAndNotify(localObject4);
-                this.jdField_a_of_type_ComTencentMobileqqAppHandlerRegisterProxyHandler$Callback.a((MessageRecord)localObject4);
+                this.D.a((MessageRecord)localObject4);
               }
             }
-            j += 1;
+            i1 += 1;
           }
           return;
         }
@@ -1271,7 +1204,7 @@ public class RegisterProxyHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.handler.RegisterProxyHandler
  * JD-Core Version:    0.7.0.1
  */

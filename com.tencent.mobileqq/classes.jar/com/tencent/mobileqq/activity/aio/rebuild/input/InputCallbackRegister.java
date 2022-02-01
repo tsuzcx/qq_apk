@@ -67,226 +67,249 @@ import com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopGIftSendMessage
 import com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopGagMsgSendListener;
 import com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopRobot2MsgSendListener;
 import com.tencent.mobileqq.activity.aio.rebuild.input.send.TroopRobotMsgSendListener;
+import com.tencent.mobileqq.emoticonview.AniStickerSendMessageCallBack;
+import com.tencent.mobileqq.guild.temp.api.IGuildFeatureAdapterApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputCallbackRegister
 {
-  private SparseArray<IMsgSendListener> jdField_a_of_type_AndroidUtilSparseArray;
-  private final AIOContext jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext;
-  private List<IInputBarLayoutChangeCallback> jdField_a_of_type_JavaUtilList;
-  private List<IFunBtnLongClickCallback> b;
-  private List<IEditTextChangeCallback> c;
-  private List<ISendMessageCallback> d;
-  private List<IClearInputCallback> e;
-  private List<IInputStateChangeCallback> f;
-  private List<IFunBtnEnabledCheck> g;
-  private List<IOnRightIconClickListener> h;
-  private List<IOnRightIconTouchListener> i;
+  private final AIOContext a;
+  private List<IInputBarLayoutChangeCallback> b;
+  private List<IFunBtnLongClickCallback> c;
+  private List<IEditTextChangeCallback> d;
+  private List<ISendMessageCallback> e;
+  private SparseArray<IMsgSendListener> f;
+  private List<IClearInputCallback> g;
+  private List<IInputStateChangeCallback> h;
+  private List<IFunBtnEnabledCheck> i;
+  private List<IOnRightIconClickListener> j;
+  private List<IOnRightIconTouchListener> k;
   
   public InputCallbackRegister(AIOContext paramAIOContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext = paramAIOContext;
+    this.a = paramAIOContext;
   }
   
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.add(new InputBarLayoutChangeCallback());
-  }
-  
-  private void b()
+  private void k()
   {
     this.b = new ArrayList();
-    this.b.add(new LocalCrashLongClickCallback());
+    if (((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).judgeIsGuildChatContext(this.a))
+    {
+      this.b.add((IInputBarLayoutChangeCallback)((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getNewGuildInputBarLayoutChangeCallback());
+      return;
+    }
+    this.b.add(new InputBarLayoutChangeCallback());
   }
   
-  private void c()
+  private void l()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a;
     this.c = new ArrayList();
-    this.c.add(new FilterModeTextChangeCallback());
-    this.c.add(new AtTextChangeCallback());
-    this.c.add(new FullScreenTextChangeCallback());
-    this.c.add(new QWalletTextChangeCallback());
-    this.c.add(new SimpleUITextChangeCallback());
-    this.c.add(new ZhituTextChangeCallback());
-    this.c.add(new StickerTextChangeCallback());
-    if ((j == 1043) || (j == 1)) {
-      this.c.add(new RobotTextChangeCallback());
-    }
-    if (j == 1008) {
-      this.c.add(new PATextChangeCallback());
-    }
-    if (j == 1024) {
-      this.c.add(new QidianTextChangeCallback());
-    }
+    this.c.add(new LocalCrashLongClickCallback());
   }
   
-  private void d()
+  private void m()
   {
-    this.h = new ArrayList();
-    this.h.add(new ZhituRightIconClickListener());
-    this.h.add(new ComplexScriptOnclickListener());
-    this.h.add(new HiBoomRightIconClickListener());
-    this.h.add(new EmotionRightIconClickListener());
-    this.h.add(new DoutuRightIconClickListener());
-    this.h.add(new SpriteRightIconClickListener());
+    int m = this.a.O().a;
+    this.d = new ArrayList();
+    this.d.add(new FilterModeTextChangeCallback());
+    this.d.add(new AtTextChangeCallback());
+    this.d.add(new FullScreenTextChangeCallback());
+    this.d.add(new QWalletTextChangeCallback());
+    this.d.add(new SimpleUITextChangeCallback());
+    this.d.add(new ZhituTextChangeCallback());
+    if (!a()) {
+      this.d.add(new StickerTextChangeCallback());
+    }
+    if ((m == 1043) || (m == 1)) {
+      this.d.add(new RobotTextChangeCallback());
+    }
+    if (m == 1008) {
+      this.d.add(new PATextChangeCallback());
+    }
+    if (m == 1024) {
+      this.d.add(new QidianTextChangeCallback());
+    }
+    if (m == 10014) {
+      this.d.add((IEditTextChangeCallback)((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getNewGuildTextChangeCallback());
+    }
   }
   
-  private void e()
+  private void n()
+  {
+    this.j = new ArrayList();
+    this.j.add(new ZhituRightIconClickListener());
+    this.j.add(new ComplexScriptOnclickListener());
+    this.j.add(new HiBoomRightIconClickListener());
+    this.j.add(new EmotionRightIconClickListener());
+    this.j.add(new DoutuRightIconClickListener());
+    this.j.add(new SpriteRightIconClickListener());
+  }
+  
+  private void o()
+  {
+    this.k = new ArrayList();
+    this.k.add(new StickerRightIconTouchListener());
+  }
+  
+  private void p()
+  {
+    int m = this.a.O().a;
+    this.e = new ArrayList();
+    this.e.add(new DatongReportSendButtonClick());
+    this.e.add(new ReplySendMessageCallback());
+    this.e.add(new MixedMsgSendCallback());
+    if ((m == 1) || (m == 3000)) {
+      this.e.add(new TroopGIftSendMessageCallback());
+    }
+    if (m == 10014) {
+      this.e.add((ISendMessageCallback)((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getNewGuildMsgSendCallback());
+    }
+    this.e.add(new AniStickerSendMessageCallBack());
+    this.e.add(new PhotoListMsgCallback());
+    this.e.add(new NotEmptySendMessageCallback());
+    this.e.add(new DebugFilterSendMessageCallback());
+    this.e.add(new GrayTipSendMessageCallback());
+    this.e.add(new LogcatSendMessageCallback());
+    this.e.add(new PreDownMsgSendCallback());
+    this.e.add(new MaxLengthSendMsgCallback());
+    this.e.add(new EssenceMsgSendCallback());
+    this.e.add(new PasteMsgSendCallback());
+    this.e.add(new QWalletMsgSendCallback());
+    this.e.add(new EmotionMsgSendCallback());
+    this.e.add(new HiddenMsgSendCallback());
+    this.e.add(new DBFixMsgSendCallback());
+  }
+  
+  private void q()
   {
     this.i = new ArrayList();
-    this.i.add(new StickerRightIconTouchListener());
+    this.i.add(new PhotoFunBtnEnabledCheck());
   }
   
-  private void f()
+  private void r()
   {
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a;
-    this.d = new ArrayList();
-    this.d.add(new DatongReportSendButtonClick());
-    this.d.add(new ReplySendMessageCallback());
-    this.d.add(new MixedMsgSendCallback());
-    if ((j == 1) || (j == 3000)) {
-      this.d.add(new TroopGIftSendMessageCallback());
-    }
-    this.d.add(new PhotoListMsgCallback());
-    this.d.add(new NotEmptySendMessageCallback());
-    this.d.add(new DebugFilterSendMessageCallback());
-    this.d.add(new GrayTipSendMessageCallback());
-    this.d.add(new LogcatSendMessageCallback());
-    this.d.add(new PreDownMsgSendCallback());
-    this.d.add(new MaxLengthSendMsgCallback());
-    this.d.add(new EssenceMsgSendCallback());
-    this.d.add(new PasteMsgSendCallback());
-    this.d.add(new QWalletMsgSendCallback());
-    this.d.add(new EmotionMsgSendCallback());
-    this.d.add(new HiddenMsgSendCallback());
-    this.d.add(new DBFixMsgSendCallback());
+    this.h = new ArrayList();
+    this.h.add(new FullScreenStateChangeCallback());
+    this.h.add(new GagInputStateChangeCallback());
+    this.h.add(new SimpleUIInputStateChangeCallback());
+    this.h.add(new PanelInputStateChangeCallback());
+    this.h.add(new RightInputStateChangeCallback());
+    this.h.add(new ApollInputStateChangeCallback());
+    this.h.add(new ShortcutBarStateChangeCallback());
   }
   
-  private void g()
+  private void s()
   {
     this.g = new ArrayList();
-    this.g.add(new PhotoFunBtnEnabledCheck());
+    this.g.add(new TroopReplyClearInputCallback());
+    this.g.add(new RichMediaClearInputCallback());
+    this.g.add(new RichTextClearInputCallback());
+    this.g.add(new FullScreenClearInputCallback());
   }
   
-  private void h()
+  private void t()
   {
-    this.f = new ArrayList();
-    this.f.add(new FullScreenStateChangeCallback());
-    this.f.add(new GagInputStateChangeCallback());
-    this.f.add(new SimpleUIInputStateChangeCallback());
-    this.f.add(new PanelInputStateChangeCallback());
-    this.f.add(new RightInputStateChangeCallback());
-    this.f.add(new ApollInputStateChangeCallback());
-    this.f.add(new ShortcutBarStateChangeCallback());
-  }
-  
-  private void i()
-  {
-    this.e = new ArrayList();
-    this.e.add(new TroopReplyClearInputCallback());
-    this.e.add(new RichMediaClearInputCallback());
-    this.e.add(new RichTextClearInputCallback());
-    this.e.add(new FullScreenClearInputCallback());
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(1, new ArkMsgSendListener());
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(2, new SimpleMsgSendListener());
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(3, new TroopRobotMsgSendListener());
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(4, new TroopGagMsgSendListener());
-    TroopEffectHelper localTroopEffectHelper = (TroopEffectHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(134);
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(5, localTroopEffectHelper);
-    this.jdField_a_of_type_AndroidUtilSparseArray.append(6, new TroopRobot2MsgSendListener());
+    this.f = new SparseArray();
+    this.f.append(1, new ArkMsgSendListener());
+    this.f.append(2, new SimpleMsgSendListener());
+    this.f.append(3, new TroopRobotMsgSendListener());
+    this.f.append(4, new TroopGagMsgSendListener());
+    TroopEffectHelper localTroopEffectHelper = (TroopEffectHelper)this.a.a(134);
+    this.f.append(5, localTroopEffectHelper);
+    this.f.append(6, new TroopRobot2MsgSendListener());
+    this.f.append(7, (IMsgSendListener)((IGuildFeatureAdapterApi)QRoute.api(IGuildFeatureAdapterApi.class)).getNewGuildMsgSendListener());
   }
   
   public IMsgSendListener a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
-      j();
-    }
-    return (IMsgSendListener)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public List<IOnRightIconClickListener> a()
-  {
-    if (this.h == null) {
-      d();
-    }
-    return this.h;
-  }
-  
-  public List<IOnRightIconTouchListener> b()
-  {
-    if (this.i == null) {
-      e();
-    }
-    return this.i;
-  }
-  
-  public List<ISendMessageCallback> c()
-  {
-    if (this.d == null) {
-      f();
-    }
-    return this.d;
-  }
-  
-  public List<IFunBtnEnabledCheck> d()
-  {
-    if (this.g == null) {
-      g();
-    }
-    return this.g;
-  }
-  
-  public List<IInputStateChangeCallback> e()
-  {
     if (this.f == null) {
-      h();
+      t();
     }
-    return this.f;
+    return (IMsgSendListener)this.f.get(paramInt);
   }
   
-  public List<IClearInputCallback> f()
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public List<IOnRightIconClickListener> b()
+  {
+    if (this.j == null) {
+      n();
+    }
+    return this.j;
+  }
+  
+  public List<IOnRightIconTouchListener> c()
+  {
+    if (this.k == null) {
+      o();
+    }
+    return this.k;
+  }
+  
+  public List<ISendMessageCallback> d()
   {
     if (this.e == null) {
-      i();
+      p();
     }
     return this.e;
   }
   
-  public List<IInputBarLayoutChangeCallback> g()
+  public List<IFunBtnEnabledCheck> e()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      a();
+    if (this.i == null) {
+      q();
     }
-    return this.jdField_a_of_type_JavaUtilList;
+    return this.i;
   }
   
-  public List<IFunBtnLongClickCallback> h()
+  public List<IInputStateChangeCallback> f()
+  {
+    if (this.h == null) {
+      r();
+    }
+    return this.h;
+  }
+  
+  public List<IClearInputCallback> g()
+  {
+    if (this.g == null) {
+      s();
+    }
+    return this.g;
+  }
+  
+  public List<IInputBarLayoutChangeCallback> h()
   {
     if (this.b == null) {
-      b();
+      k();
     }
     return this.b;
   }
   
-  public List<IEditTextChangeCallback> i()
+  public List<IFunBtnLongClickCallback> i()
   {
     if (this.c == null) {
-      c();
+      l();
     }
     return this.c;
+  }
+  
+  public List<IEditTextChangeCallback> j()
+  {
+    if (this.d == null) {
+      m();
+    }
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.InputCallbackRegister
  * JD-Core Version:    0.7.0.1
  */

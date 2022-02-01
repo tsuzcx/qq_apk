@@ -16,16 +16,16 @@ class TroopSettingActivity$25
   public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
     paramDialog = new TroopSettingActivity.ClearChatRecordTask(this.a);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    if (this.a.aB != null) {
+      this.a.aB.show();
     }
     ThreadManager.post(paramDialog, 5, null, false);
-    TroopReportor.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData.troopUin, TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopInfoData) });
+    TroopReportor.a("Grp_set_new", "grpData_admin", "confirm_delRecord", 0, 0, new String[] { this.a.i.troopUin, TroopReportor.a(this.a.i) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopsetting.activity.TroopSettingActivity.25
  * JD-Core Version:    0.7.0.1
  */

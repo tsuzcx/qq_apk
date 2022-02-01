@@ -13,7 +13,7 @@ public class GetTroopAssisMsg
   
   protected int doStep()
   {
-    this.mAutomator.a.getMsgHandler().a(3, true);
+    this.mAutomator.k.getMsgHandler().a(3, true);
     return 2;
   }
   
@@ -23,7 +23,7 @@ public class GetTroopAssisMsg
     if (this.a == null)
     {
       this.a = new GetTroopAssisMsg.MyMessageObserver(this, null);
-      this.mAutomator.a.addDefaultObservers(this.a);
+      this.mAutomator.k.addDefaultObservers(this.a);
     }
   }
   
@@ -31,14 +31,14 @@ public class GetTroopAssisMsg
   {
     if (this.a != null)
     {
-      this.mAutomator.a.removeObserver(this.a);
+      this.mAutomator.k.removeObserver(this.a);
       this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg
  * JD-Core Version:    0.7.0.1
  */

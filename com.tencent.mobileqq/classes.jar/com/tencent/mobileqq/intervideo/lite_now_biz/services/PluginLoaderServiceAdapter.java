@@ -24,16 +24,16 @@ import org.json.JSONObject;
 public class PluginLoaderServiceAdapter
   implements IPluginLoaderServiceAdapter
 {
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.tencent.ilive.opensdk.plugin.OpenSdkImpl" };
-  private long jdField_a_of_type_Long;
-  private final ServiceAccessor jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor;
-  private final String jdField_a_of_type_JavaLangString;
+  private static final String[] a = { "com.tencent.ilive.opensdk.plugin.OpenSdkImpl" };
+  private final String b;
+  private final ServiceAccessor c;
+  private long d;
   
   public PluginLoaderServiceAdapter(ServiceAccessor paramServiceAccessor, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor = paramServiceAccessor;
-    this.jdField_a_of_type_Long = ((LoginServiceInterface)paramServiceAccessor.getService(LoginServiceInterface.class)).getLoginInfo().uid;
+    this.b = paramString;
+    this.c = paramServiceAccessor;
+    this.d = ((LoginServiceInterface)paramServiceAccessor.getService(LoginServiceInterface.class)).getLoginInfo().uid;
   }
   
   private List<IPlugin> a(JSONObject paramJSONObject)
@@ -44,7 +44,7 @@ public class PluginLoaderServiceAdapter
       paramJSONObject = paramJSONObject.optJSONObject("data").optJSONObject("targetversion");
       if (paramJSONObject == null)
       {
-        a().i("PluginLoaderService", "getToInstallPlugins: not new version.", new Object[0]);
+        d().i("PluginLoaderService", "getToInstallPlugins: not new version.", new Object[0]);
         return localArrayList;
       }
       int j = paramJSONObject.optInt("versionno");
@@ -55,9 +55,9 @@ public class PluginLoaderServiceAdapter
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         Plugin.Builder localBuilder = new Plugin.Builder().d("iLiveOpenSdk").a(localJSONObject.optString("url"));
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append("/iLiveOpenSdk");
-        localArrayList.add(localBuilder.b(localStringBuilder.toString()).c("/data/local/tmp/iLiveOpenSdk.zip").b(6).a(j).e(localJSONObject.optString("hash")).a(new String[] { "lib/armeabi/" }).b(jdField_a_of_type_ArrayOfJavaLangString).a());
+        localArrayList.add(localBuilder.b(localStringBuilder.toString()).c("/data/local/tmp/iLiveOpenSdk.zip").b(6).a(j).e(localJSONObject.optString("hash")).a(new String[] { "lib/armeabi/" }).b(a).a());
         i += 1;
       }
       DataReport.c(String.valueOf(j));
@@ -67,48 +67,28 @@ public class PluginLoaderServiceAdapter
     {
       paramJSONObject = String.format("getToInstallPlugins: NullPointerException[%s]", new Object[] { paramJSONObject.getMessage() });
       DataReport.b(paramJSONObject);
-      a().i("PluginLoaderService", paramJSONObject, new Object[0]);
+      d().i("PluginLoaderService", paramJSONObject, new Object[0]);
       return localArrayList;
     }
     catch (JSONException paramJSONObject)
     {
       paramJSONObject = String.format("getToInstallPlugins: JSONException[%s]", new Object[] { paramJSONObject.getMessage() });
       DataReport.b(paramJSONObject);
-      a().i("PluginLoaderService", paramJSONObject, new Object[0]);
+      d().i("PluginLoaderService", paramJSONObject, new Object[0]);
     }
     return localArrayList;
   }
   
-  public DataReportInterface a()
-  {
-    return (DataReportInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(DataReportInterface.class);
-  }
-  
   public DownLoaderInterface a()
   {
-    return (DownLoaderInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(DownLoaderInterface.class);
-  }
-  
-  public HttpInterface a()
-  {
-    return (HttpInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HttpInterface.class);
-  }
-  
-  public LogInterface a()
-  {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
-  }
-  
-  public ExecutorService a()
-  {
-    return null;
+    return (DownLoaderInterface)this.c.getService(DownLoaderInterface.class);
   }
   
   public void a(IGetInstallPlugins paramIGetInstallPlugins)
   {
     if (paramIGetInstallPlugins == null)
     {
-      a().e("PluginLoaderService", "getInstallPlugins: iGetInstallPlugins is null.", new Object[0]);
+      d().e("PluginLoaderService", "getInstallPlugins: iGetInstallPlugins is null.", new Object[0]);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -117,13 +97,33 @@ public class PluginLoaderServiceAdapter
     localHashMap.put("mode", "1");
     localHashMap.put("frameversion", String.valueOf(6));
     localHashMap.put("cursdkversion", "0");
-    localHashMap.put("uin", String.valueOf(this.jdField_a_of_type_Long));
-    a().post("https://now.qq.com/cgi-bin/now/web/version/now_ver", localHashMap, new PluginLoaderServiceAdapter.1(this, paramIGetInstallPlugins));
+    localHashMap.put("uin", String.valueOf(this.d));
+    e().post("https://now.qq.com/cgi-bin/now/web/version/now_ver", localHashMap, new PluginLoaderServiceAdapter.1(this, paramIGetInstallPlugins));
+  }
+  
+  public ExecutorService b()
+  {
+    return null;
+  }
+  
+  public DataReportInterface c()
+  {
+    return (DataReportInterface)this.c.getService(DataReportInterface.class);
+  }
+  
+  public LogInterface d()
+  {
+    return (LogInterface)this.c.getService(LogInterface.class);
+  }
+  
+  public HttpInterface e()
+  {
+    return (HttpInterface)this.c.getService(HttpInterface.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.PluginLoaderServiceAdapter
  * JD-Core Version:    0.7.0.1
  */

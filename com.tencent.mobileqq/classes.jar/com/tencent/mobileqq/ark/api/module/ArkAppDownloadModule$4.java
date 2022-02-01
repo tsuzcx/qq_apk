@@ -15,15 +15,15 @@ class ArkAppDownloadModule$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl [StartDownload] dialog callback appid=", this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.a, ",name=", this.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.j, ",which:", Integer.valueOf(paramInt) });
+    QLog.d("ark.download.module", 1, new Object[] { "ark.dctrl [StartDownload] dialog callback appid=", this.a.e, ",name=", this.a.u, ",which:", Integer.valueOf(paramInt) });
     if (paramInt == 1) {
-      ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppDownloadModule.d(this.jdField_a_of_type_ComTencentMobileqqArkApiModuleArkAppDownloadModule), new ArkAppDownloadModule.4.1(this));
+      ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(ArkAppDownloadModule.e(this.d), new ArkAppDownloadModule.4.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.api.module.ArkAppDownloadModule.4
  * JD-Core Version:    0.7.0.1
  */

@@ -26,54 +26,51 @@ import java.util.List;
 public class QQStoryWatcherListAdapter
   extends BaseAdapter
 {
-  protected int a;
-  protected Context a;
   View.OnTouchListener a;
-  protected QQStoryContext a;
-  protected ChildViewClickListener a;
-  protected List<QQUserUIItem> a;
+  protected Context b;
+  protected QQStoryContext c = null;
+  protected List<QQUserUIItem> d;
+  protected int e = -1;
+  protected ChildViewClickListener f = null;
   
   public QQStoryWatcherListAdapter(Context paramContext, View.OnTouchListener paramOnTouchListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext = null;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = null;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext = QQStoryContext.a();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = paramOnTouchListener;
+    this.b = paramContext;
+    this.c = QQStoryContext.a();
+    this.d = new ArrayList();
+    this.a = paramOnTouchListener;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramInt;
   }
   
   public void a(ChildViewClickListener paramChildViewClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener = paramChildViewClickListener;
+    this.f = paramChildViewClickListener;
   }
   
   public void a(List<QQUserUIItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.d = paramList;
     super.notifyDataSetChanged();
   }
   
   public void b(List<QQUserUIItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.d.addAll(paramList);
     super.notifyDataSetChanged();
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.d.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return this.d.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -85,11 +82,11 @@ public class QQStoryWatcherListAdapter
   {
     if (paramView == null)
     {
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-      int j = this.jdField_a_of_type_Int;
+      localObject1 = LayoutInflater.from(this.b);
+      int j = this.e;
       int i = j;
       if (j == -1) {
-        i = 2131561834;
+        i = 2131628213;
       }
       localObject1 = new BaseViewHolder(((LayoutInflater)localObject1).inflate(i, null));
     }
@@ -97,8 +94,8 @@ public class QQStoryWatcherListAdapter
     {
       localObject1 = (BaseViewHolder)paramView.getTag();
     }
-    Object localObject2 = (QQUserUIItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject3 = (TextView)((BaseViewHolder)localObject1).a(2131371877);
+    Object localObject2 = (QQUserUIItem)this.d.get(paramInt);
+    Object localObject3 = (TextView)((BaseViewHolder)localObject1).a(2131439320);
     String str = ((QQUserUIItem)localObject2).getUserIconUrl();
     if (!TextUtils.isEmpty(str))
     {
@@ -109,7 +106,7 @@ public class QQStoryWatcherListAdapter
         localStringBuilder.append(str);
         QLog.w("zivonchen", 2, localStringBuilder.toString());
       }
-      PlayModeUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (TextView)localObject3, str, 13.0F, 2.0F);
+      PlayModeUtils.a(this.b.getResources(), (TextView)localObject3, str, 13.0F, 2.0F);
     }
     else
     {
@@ -117,20 +114,20 @@ public class QQStoryWatcherListAdapter
       ((TextView)localObject3).setCompoundDrawables(null, null, null, null);
     }
     ((TextView)localObject3).setText(PlayModeUtils.a((QQUserUIItem)localObject2));
-    localObject3 = (ImageView)((BaseViewHolder)localObject1).a(2131368087);
+    localObject3 = (ImageView)((BaseViewHolder)localObject1).a(2131434940);
     if ((((QQUserUIItem)localObject2).isVip) && (HttpUtil.isValidUrl(((QQUserUIItem)localObject2).headUrl))) {
       UIUtils.a((ImageView)localObject3, ((QQUserUIItem)localObject2).headUrl, 38, 38, 1);
     } else if (!TextUtils.isEmpty(((QQUserUIItem)localObject2).qq)) {
       PlayModeUtils.a((ImageView)localObject3, ((QQUserUIItem)localObject2).qq);
     } else {
-      ((ImageView)localObject3).setImageDrawable(ImageUtil.f());
+      ((ImageView)localObject3).setImageDrawable(ImageUtil.m());
     }
-    ((BaseViewHolder)localObject1).a = localObject2;
-    if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-      ((BaseViewHolder)localObject1).a().setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    ((BaseViewHolder)localObject1).h = localObject2;
+    if (this.a != null) {
+      ((BaseViewHolder)localObject1).a().setOnTouchListener(this.a);
     }
     ((BaseViewHolder)localObject1).a().setOnClickListener((View.OnClickListener)localObject1);
-    localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonChildViewClickListener;
+    localObject2 = this.f;
     if (localObject2 != null) {
       ((BaseViewHolder)localObject1).a((ChildViewClickListener)localObject2);
     }

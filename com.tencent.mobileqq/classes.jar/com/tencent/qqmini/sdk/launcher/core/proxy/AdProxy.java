@@ -2,6 +2,7 @@ package com.tencent.qqmini.sdk.launcher.core.proxy;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
@@ -55,6 +56,8 @@ public abstract class AdProxy
   
   public void downloadRealTimeAdPic(String paramString1, String paramString2, String paramString3, AdProxy.ILoadingAdListener paramILoadingAdListener) {}
   
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
   public void onActivityStart() {}
   
   public void onActivityStop() {}
@@ -71,7 +74,7 @@ public abstract class AdProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy
  * JD-Core Version:    0.7.0.1
  */

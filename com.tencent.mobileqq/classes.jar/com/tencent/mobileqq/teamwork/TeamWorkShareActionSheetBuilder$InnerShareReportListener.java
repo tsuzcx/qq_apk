@@ -14,31 +14,31 @@ import java.lang.ref.WeakReference;
 class TeamWorkShareActionSheetBuilder$InnerShareReportListener
   implements ShareActionSheet.OnItemClickListener
 {
-  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
-  private ShareActionSheet.OnItemClickListener jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener;
-  private WeakReference<QQBrowserActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQBrowserActivity> a;
   private WeakReference<WebView> b;
+  private TeamWorkFileImportInfo c;
+  private ShareActionSheet.OnItemClickListener d;
   
   TeamWorkShareActionSheetBuilder$InnerShareReportListener(QQBrowserActivity paramQQBrowserActivity, WebView paramWebView, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, ShareActionSheet.OnItemClickListener paramOnItemClickListener)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQBrowserActivity);
+    this.a = new WeakReference(paramQQBrowserActivity);
     this.b = new WeakReference(paramWebView);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener = paramOnItemClickListener;
+    this.c = paramTeamWorkFileImportInfo;
+    this.d = paramOnItemClickListener;
   }
   
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
     QLog.w("TeamWorkShareActionSheetBuilder", 1, "inner on item click");
-    ShareActionSheet.OnItemClickListener localOnItemClickListener = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet$OnItemClickListener;
+    ShareActionSheet.OnItemClickListener localOnItemClickListener = this.d;
     if (localOnItemClickListener != null) {
       localOnItemClickListener.onItemClick(paramActionSheetItem, paramShareActionSheet);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo == null) {
+    if (this.c == null) {
       return;
     }
     QLog.w("TeamWorkShareActionSheetBuilder", 1, "info exist");
-    if (!this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d()) {
+    if (!this.c.d()) {
       return;
     }
     QLog.w("TeamWorkShareActionSheetBuilder", 1, "from online preview");
@@ -51,9 +51,9 @@ class TeamWorkShareActionSheetBuilder$InnerShareReportListener
       } else {
         paramActionSheetItem = "";
       }
-      ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, paramActionSheetItem, "0X8009F34");
+      ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(this.c, paramActionSheetItem, "0X8009F34");
     }
-    paramActionSheetItem = (QQBrowserActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    paramActionSheetItem = (QQBrowserActivity)this.a.get();
     if (paramActionSheetItem != null)
     {
       if (i == 1)
@@ -81,7 +81,7 @@ class TeamWorkShareActionSheetBuilder$InnerShareReportListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder.InnerShareReportListener
  * JD-Core Version:    0.7.0.1
  */

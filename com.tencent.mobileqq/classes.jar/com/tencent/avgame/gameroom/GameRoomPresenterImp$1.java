@@ -15,14 +15,14 @@ class GameRoomPresenterImp$1
   public void a()
   {
     int i = MSFNetInfoMonitor.b();
-    if (GameEngine.a().a())
+    if (GameEngine.a().d())
     {
-      this.a.a.sendEmptyMessageDelayed(8, 0L);
+      this.a.j.sendEmptyMessageDelayed(8, 0L);
     }
     else
     {
-      this.a.a.sendEmptyMessageDelayed(8, 3000L);
-      this.a.a.sendEmptyMessageDelayed(9, 6000L);
+      this.a.j.sendEmptyMessageDelayed(8, 3000L);
+      this.a.j.sendEmptyMessageDelayed(9, 6000L);
     }
     if (QLog.isColorLevel())
     {
@@ -57,7 +57,7 @@ class GameRoomPresenterImp$1
       localStringBuilder.append(paramInt);
       QLog.i("GameRoomPresenterImp", 1, localStringBuilder.toString());
     }
-    this.a.a.sendEmptyMessage(2);
+    this.a.j.sendEmptyMessage(2);
     GameRoomPresenterImp.a(this.a);
     this.a.a(250);
   }

@@ -14,9 +14,9 @@ class DefaultCustomHostProxyService$1
   {
     if (paramLoginRequestCallback != null)
     {
-      if (LoginManager.a.a() != null)
+      if (LoginManager.c.d() != null)
       {
-        paramLoginRequestCallback.onGetSuccess(LoginManager.a.a());
+        paramLoginRequestCallback.onGetSuccess(LoginManager.c.d());
         return;
       }
       paramLoginRequestCallback.onGetFail();
@@ -25,19 +25,19 @@ class DefaultCustomHostProxyService$1
   
   public void onLoginInvalid()
   {
-    LoginManager.a.a();
+    LoginManager.c.a();
   }
   
   public void onQQConnectLogin(LoginResultCallback paramLoginResultCallback) {}
   
   public void onReLogin()
   {
-    LoginManager.a.a();
+    LoginManager.c.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.hostproxy.DefaultCustomHostProxyService.1
  * JD-Core Version:    0.7.0.1
  */

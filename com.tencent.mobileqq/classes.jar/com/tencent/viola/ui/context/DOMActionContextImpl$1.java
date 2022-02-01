@@ -12,7 +12,7 @@ class DOMActionContextImpl$1
   {
     if (paramDomObject.hasUpdate())
     {
-      if (DOMActionContextImpl.access$400(this.this$0)) {
+      if (DOMActionContextImpl.access$300(this.this$0)) {
         return;
       }
       paramDomObject.layoutBefore();
@@ -21,7 +21,7 @@ class DOMActionContextImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.1
  * JD-Core Version:    0.7.0.1
  */

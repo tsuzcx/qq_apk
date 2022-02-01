@@ -8,33 +8,27 @@ import java.util.List;
 
 public class FeedListPageLoaderBase$FeedIdListCache
 {
-  private static FeedIdListSeqInfo.HomeComp jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedIdListSeqInfo$HomeComp = new FeedIdListSeqInfo.HomeComp();
-  public int a;
-  private String jdField_a_of_type_JavaLangString = "";
-  public List<FeedIdListSeqInfo> a;
-  public boolean a;
-  private int b = 0;
+  private static FeedIdListSeqInfo.HomeComp d = new FeedIdListSeqInfo.HomeComp();
+  public List<FeedIdListSeqInfo> a = new ArrayList();
+  public boolean b;
+  public int c = 0;
+  private String e = "";
+  private int f = 0;
   
-  public FeedListPageLoaderBase$FeedIdListCache()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = 0;
-  }
+  public FeedListPageLoaderBase$FeedIdListCache() {}
   
   public FeedListPageLoaderBase$FeedIdListCache(FeedIdListCache paramFeedIdListCache)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilList.addAll(paramFeedIdListCache.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_JavaLangString = paramFeedIdListCache.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = paramFeedIdListCache.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = paramFeedIdListCache.jdField_a_of_type_Int;
+    this.a.addAll(paramFeedIdListCache.a);
+    this.e = paramFeedIdListCache.e;
     this.b = paramFeedIdListCache.b;
+    this.c = paramFeedIdListCache.c;
+    this.f = paramFeedIdListCache.f;
   }
   
-  private boolean a()
+  private boolean e()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.b;
   }
   
   public FeedListPageLoaderBase.GetFeedIdListResult a(int paramInt1, int paramInt2)
@@ -64,64 +58,59 @@ public class FeedListPageLoaderBase$FeedIdListCache
         boolean bool = false;
       }
     }
-    localGetFeedIdListResult.jdField_a_of_type_Boolean = bool;
-    if (this.jdField_a_of_type_JavaUtilList.size() > paramInt1)
+    localGetFeedIdListResult.b = bool;
+    if (this.a.size() > paramInt1)
     {
       i = paramInt2;
-      if (paramInt1 + paramInt2 > this.jdField_a_of_type_JavaUtilList.size()) {
-        i = this.jdField_a_of_type_JavaUtilList.size() - paramInt1;
+      if (paramInt1 + paramInt2 > this.a.size()) {
+        i = this.a.size() - paramInt1;
       }
       paramInt2 = i + paramInt1;
-      if ((paramInt2 >= this.jdField_a_of_type_JavaUtilList.size()) && (a())) {
-        localGetFeedIdListResult.b = true;
+      if ((paramInt2 >= this.a.size()) && (e())) {
+        localGetFeedIdListResult.c = true;
       }
-      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-      localGetFeedIdListResult.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt2);
-      if (paramInt2 < this.jdField_a_of_type_JavaUtilList.size())
+      localArrayList = new ArrayList(this.a);
+      localGetFeedIdListResult.a = localArrayList.subList(paramInt1, paramInt2);
+      if (paramInt2 < this.a.size())
       {
-        localFeedIdListSeqInfo1 = (FeedIdListSeqInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt2);
-        localIterator = localGetFeedIdListResult.jdField_a_of_type_JavaUtilList.iterator();
-        if (localFeedIdListSeqInfo1.b)
+        localFeedIdListSeqInfo1 = (FeedIdListSeqInfo)this.a.get(paramInt2);
+        localIterator = localGetFeedIdListResult.a.iterator();
+        if (localFeedIdListSeqInfo1.g)
         {
           while (localIterator.hasNext())
           {
             FeedIdListSeqInfo localFeedIdListSeqInfo2 = (FeedIdListSeqInfo)localIterator.next();
-            if ((localFeedIdListSeqInfo2.b) && (localFeedIdListSeqInfo2.c.equals(localFeedIdListSeqInfo1.c)))
+            if ((localFeedIdListSeqInfo2.g) && (localFeedIdListSeqInfo2.d.equals(localFeedIdListSeqInfo1.d)))
             {
               localIterator.remove();
               SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "remove one fail info:%s", new Object[] { localFeedIdListSeqInfo2 });
             }
           }
-          if (localGetFeedIdListResult.jdField_a_of_type_JavaUtilList.isEmpty())
+          if (localGetFeedIdListResult.a.isEmpty())
           {
-            localGetFeedIdListResult.jdField_a_of_type_JavaUtilList = localArrayList.subList(paramInt1, paramInt2);
-            SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localGetFeedIdListResult.jdField_a_of_type_JavaUtilList });
+            localGetFeedIdListResult.a = localArrayList.subList(paramInt1, paramInt2);
+            SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "bad luck for you have too much fail %s", new Object[] { localGetFeedIdListResult.a });
           }
         }
       }
     }
     else
     {
-      localGetFeedIdListResult.b = a();
+      localGetFeedIdListResult.c = e();
     }
-    this.b = (paramInt1 + localGetFeedIdListResult.jdField_a_of_type_JavaUtilList.size());
+    this.f = (paramInt1 + localGetFeedIdListResult.a.size());
     return localGetFeedIdListResult;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = 0;
-      this.b = 0;
+      this.a.clear();
+      this.e = "";
+      this.b = false;
+      this.c = 0;
+      this.f = 0;
       return;
     }
     finally
@@ -135,9 +124,9 @@ public class FeedListPageLoaderBase$FeedIdListCache
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.a.addAll(paramList);
+      this.e = paramString;
+      this.b = paramBoolean;
       SLog.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId list:set next cookie data count:%d, cookie:%s, isEnd:%b", new Object[] { Integer.valueOf(paramList.size()), paramString, Boolean.valueOf(paramBoolean) });
       SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "add feed list:%s", paramList);
       return;
@@ -153,7 +142,7 @@ public class FeedListPageLoaderBase$FeedIdListCache
   {
     try
     {
-      this.jdField_a_of_type_Int = this.b;
+      this.c = this.f;
       return;
     }
     finally
@@ -163,16 +152,21 @@ public class FeedListPageLoaderBase$FeedIdListCache
     }
   }
   
-  public void c()
+  public String c()
+  {
+    return this.e;
+  }
+  
+  public void d()
   {
     try
     {
       if (SLog.a()) {
-        SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "before sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
+        SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "before sort curpos:%d -- %s", Integer.valueOf(this.c), this.a);
       }
-      Collections.sort(this.jdField_a_of_type_JavaUtilList, jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedIdListSeqInfo$HomeComp);
+      Collections.sort(this.a, d);
       if (SLog.a()) {
-        SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "after* sort curpos:%d -- %s", Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilList);
+        SLog.a("Q.qqstory.home.data.FeedListPageLoaderBase", "after* sort curpos:%d -- %s", Integer.valueOf(this.c), this.a);
       }
       return;
     }
@@ -185,16 +179,16 @@ public class FeedListPageLoaderBase$FeedIdListCache
     {
       Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("FeedIdListCache{mFeedIdListCache=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList);
+      ((StringBuilder)localObject1).append(this.a);
       ((StringBuilder)localObject1).append(", mFeedIdNextCookie='");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append(this.e);
       ((StringBuilder)localObject1).append('\'');
       ((StringBuilder)localObject1).append(", mIsEnd=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
-      ((StringBuilder)localObject1).append(", mCurFeedIdPosition=");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
-      ((StringBuilder)localObject1).append(", mTempFeedIdPosition=");
       ((StringBuilder)localObject1).append(this.b);
+      ((StringBuilder)localObject1).append(", mCurFeedIdPosition=");
+      ((StringBuilder)localObject1).append(this.c);
+      ((StringBuilder)localObject1).append(", mTempFeedIdPosition=");
+      ((StringBuilder)localObject1).append(this.f);
       ((StringBuilder)localObject1).append('}');
       localObject1 = ((StringBuilder)localObject1).toString();
       return localObject1;

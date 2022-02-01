@@ -15,7 +15,7 @@ class PublicCommentWindow$JsEventReceiver
     if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("CommentSendSuccess".equals(paramIntent.getStringExtra("event"))))
     {
       paramContext = this.a;
-      paramContext.a = true;
+      paramContext.l = true;
       paramContext.dismiss();
       if (QLog.isColorLevel()) {
         QLog.d("PublicCommentPopupWindow", 2, "web call finish----------------");
@@ -25,7 +25,7 @@ class PublicCommentWindow$JsEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.PublicCommentWindow.JsEventReceiver
  * JD-Core Version:    0.7.0.1
  */

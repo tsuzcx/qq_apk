@@ -7,7 +7,6 @@ import android.util.Log;
 import com.tencent.viola.bridge.ViolaBridgeManager;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.animation.AnimationBean.Style;
-import com.tencent.viola.ui.dom.style.DrawLayoutStyle;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
 import com.tencent.viola.ui.dom.style.FlexLayout;
 import com.tencent.viola.ui.dom.style.FlexNode;
@@ -50,10 +49,9 @@ public class DomObject
   private boolean mIsLazy = false;
   protected float mLastLayoutHeight;
   protected float mLastLayoutWidth;
-  private DrawLayoutStyle mLayoutStyle;
   public DomObject mParent;
   private Map<String, Object> mState = new ArrayMap();
-  private Style mStyles;
+  private Style mStyles = new Style();
   private String mType;
   private int mViewPortWidth = 750;
   public boolean mYoung = false;
@@ -311,14 +309,6 @@ public class DomObject
         super.addChildAt(paramDomObject, i);
       }
       paramDomObject.mParent = this;
-    }
-  }
-  
-  public void applyDrawLayoutStyle()
-  {
-    Style localStyle = this.mStyles;
-    if (localStyle != null) {
-      this.mLayoutStyle = new DrawLayoutStyle(localStyle);
     }
   }
   
@@ -1159,7 +1149,7 @@ public class DomObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObject
  * JD-Core Version:    0.7.0.1
  */

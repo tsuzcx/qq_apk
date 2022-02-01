@@ -19,13 +19,13 @@ import java.util.List;
 public class ActionSheetAdapter
   extends BaseAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  final List<ActionSheetAdapter.ShareChanelInfo> jdField_a_of_type_JavaUtilList;
+  Context a;
+  final List<ActionSheetAdapter.ShareChanelInfo> b;
   
   public ActionSheetAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.a = paramContext;
+    this.b = new ArrayList();
   }
   
   public static ActionSheet a(Context paramContext, ActionSheetAdapter paramActionSheetAdapter, AdapterView.OnItemClickListener paramOnItemClickListener, DialogInterface.OnDismissListener paramOnDismissListener, ActionSheet.OnButtonClickListener paramOnButtonClickListener, boolean paramBoolean)
@@ -36,13 +36,13 @@ public class ActionSheetAdapter
       if (paramActionSheetAdapter == null) {
         return null;
       }
-      localActionSheet = (ActionSheet)ActionSheetHelper.a(paramContext, null);
-      paramContext = (GridView)View.inflate(paramContext, 2131563001, null);
-      paramContext.setBackgroundResource(2130837675);
+      localActionSheet = (ActionSheet)ActionSheetHelper.b(paramContext, null);
+      paramContext = (GridView)View.inflate(paramContext, 2131629609, null);
+      paramContext.setBackgroundResource(2130837699);
       paramContext.setAdapter(paramActionSheetAdapter);
       paramContext.setOnItemClickListener(paramOnItemClickListener);
       localActionSheet.addView(paramContext);
-      localActionSheet.addCancelButton(2131690728);
+      localActionSheet.addCancelButton(2131887648);
       if (paramBoolean) {
         localActionSheet.setOnDismissListener(new ActionSheetAdapter.CustomDismissListener(paramOnDismissListener));
       } else {
@@ -64,51 +64,51 @@ public class ActionSheetAdapter
         return localShareChanelInfo;
       case 7: 
         localShareChanelInfo.a = 7;
-        localShareChanelInfo.c = 2130839064;
-        localShareChanelInfo.b = 2131719008;
-        localShareChanelInfo.d = 2131719462;
+        localShareChanelInfo.c = 2130839218;
+        localShareChanelInfo.b = 2131916543;
+        localShareChanelInfo.d = 2131917024;
         return localShareChanelInfo;
       case 6: 
         localShareChanelInfo.a = 4;
-        localShareChanelInfo.c = 2130839063;
-        localShareChanelInfo.b = 2131719018;
-        localShareChanelInfo.d = 2131719465;
+        localShareChanelInfo.c = 2130839217;
+        localShareChanelInfo.b = 2131916553;
+        localShareChanelInfo.d = 2131917027;
         return localShareChanelInfo;
       case 5: 
         localShareChanelInfo.a = 5;
-        localShareChanelInfo.b = 2131716658;
-        localShareChanelInfo.c = 2130842548;
-        localShareChanelInfo.d = 2131692105;
+        localShareChanelInfo.b = 2131914121;
+        localShareChanelInfo.c = 2130843501;
+        localShareChanelInfo.d = 2131889086;
         return localShareChanelInfo;
       case 4: 
         localShareChanelInfo.a = 4;
-        localShareChanelInfo.c = 2130839063;
-        localShareChanelInfo.b = 2131719020;
-        localShareChanelInfo.d = 2131719459;
+        localShareChanelInfo.c = 2130839217;
+        localShareChanelInfo.b = 2131916556;
+        localShareChanelInfo.d = 2131917020;
         return localShareChanelInfo;
       case 3: 
         localShareChanelInfo.a = 3;
-        localShareChanelInfo.b = 2131719032;
-        localShareChanelInfo.c = 2130839065;
-        localShareChanelInfo.d = 2131719466;
+        localShareChanelInfo.b = 2131916568;
+        localShareChanelInfo.c = 2130839219;
+        localShareChanelInfo.d = 2131917028;
         return localShareChanelInfo;
       case 2: 
         localShareChanelInfo.a = 2;
-        localShareChanelInfo.b = 2131719041;
-        localShareChanelInfo.c = 2130839071;
-        localShareChanelInfo.d = 2131719484;
+        localShareChanelInfo.b = 2131916577;
+        localShareChanelInfo.c = 2130839225;
+        localShareChanelInfo.d = 2131917047;
         return localShareChanelInfo;
       case 1: 
         localShareChanelInfo.a = 1;
-        localShareChanelInfo.b = 2131719036;
-        localShareChanelInfo.c = 2130839068;
-        localShareChanelInfo.d = 2131719477;
+        localShareChanelInfo.b = 2131916572;
+        localShareChanelInfo.c = 2130839222;
+        localShareChanelInfo.d = 2131917040;
         return localShareChanelInfo;
       }
       localShareChanelInfo.a = 0;
-      localShareChanelInfo.b = 2131692663;
-      localShareChanelInfo.c = 2130839067;
-      localShareChanelInfo.d = 2131719476;
+      localShareChanelInfo.b = 2131889688;
+      localShareChanelInfo.c = 2130839221;
+      localShareChanelInfo.d = 2131917039;
       return localShareChanelInfo;
     }
     return null;
@@ -116,7 +116,7 @@ public class ActionSheetAdapter
   
   public void a(List<ActionSheetAdapter.ShareChanelInfo> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.b.clear();
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
@@ -124,7 +124,7 @@ public class ActionSheetAdapter
       {
         ActionSheetAdapter.ShareChanelInfo localShareChanelInfo = (ActionSheetAdapter.ShareChanelInfo)paramList.next();
         if ((localShareChanelInfo != null) && (localShareChanelInfo.a >= 0)) {
-          this.jdField_a_of_type_JavaUtilList.add(localShareChanelInfo);
+          this.b.add(localShareChanelInfo);
         }
       }
     }
@@ -133,13 +133,13 @@ public class ActionSheetAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return this.b.get(paramInt);
     }
     return null;
   }
@@ -158,10 +158,10 @@ public class ActionSheetAdapter
     ActionSheetAdapter.ShareChanelInfo localShareChanelInfo = (ActionSheetAdapter.ShareChanelInfo)getItem(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562964, null);
+      localView = LayoutInflater.from(this.a).inflate(2131629572, null);
     }
-    paramView = (ImageView)localView.findViewById(2131362839);
-    TextView localTextView = (TextView)localView.findViewById(2131362851);
+    paramView = (ImageView)localView.findViewById(2131428619);
+    TextView localTextView = (TextView)localView.findViewById(2131428632);
     if (localShareChanelInfo != null)
     {
       paramView.setImageResource(localShareChanelInfo.c);
@@ -169,12 +169,12 @@ public class ActionSheetAdapter
     }
     else
     {
-      paramView.setImageResource(2130848460);
+      paramView.setImageResource(2130850126);
       localTextView.setText("");
     }
-    if (AppSetting.d) {
+    if (AppSetting.e) {
       if (localShareChanelInfo != null) {
-        localView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(localShareChanelInfo.d));
+        localView.setContentDescription(this.a.getString(localShareChanelInfo.d));
       } else {
         localView.setContentDescription("");
       }
@@ -185,7 +185,7 @@ public class ActionSheetAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.ActionSheetAdapter
  * JD-Core Version:    0.7.0.1
  */

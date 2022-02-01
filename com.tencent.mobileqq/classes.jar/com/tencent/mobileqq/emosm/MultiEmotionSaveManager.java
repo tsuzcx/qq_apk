@@ -23,68 +23,68 @@ import mqq.os.MqqHandler;
 public class MultiEmotionSaveManager
   implements Handler.Callback, Manager
 {
-  private volatile int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BaseQQAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface;
-  private MultiEmotionSaveManager.ISaveCallBack jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack;
-  private volatile ConcurrentLinkedQueue<EmotionSaveResult> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private volatile CopyOnWriteArrayList<EmotionSaveResult> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private volatile int jdField_b_of_type_Int = 0;
-  private boolean jdField_b_of_type_Boolean = false;
+  private BaseQQAppInterface a;
+  private Handler b;
+  private volatile CopyOnWriteArrayList<EmotionSaveResult> c = new CopyOnWriteArrayList();
+  private volatile ConcurrentLinkedQueue<EmotionSaveResult> d = new ConcurrentLinkedQueue();
+  private volatile int e = 0;
+  private volatile int f = 0;
+  private MultiEmotionSaveManager.ISaveCallBack g;
+  private boolean h = false;
+  private boolean i = false;
+  private long j = 0L;
   
   public MultiEmotionSaveManager(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.a = paramBaseQQAppInterface;
+    this.b = new Handler(Looper.getMainLooper(), this);
   }
   
   private void a(String paramString1, String paramString2, EmotionSaveResult paramEmotionSaveResult)
   {
-    this.jdField_a_of_type_Int += 1;
+    this.e += 1;
     boolean bool = TextUtils.isEmpty(paramString1);
-    int j = 0;
+    int m = 0;
     if (bool) {
-      i = 10001;
+      k = 10001;
     } else if (TextUtils.isEmpty(paramString2)) {
-      i = 10002;
+      k = 10002;
     } else if (!FileUtils.fileExists(paramString1)) {
-      i = 10003;
+      k = 10003;
     } else {
-      i = 0;
+      k = 0;
     }
-    if (i != 0)
+    if (k != 0)
     {
       if (QLog.isColorLevel())
       {
         paramString1 = new StringBuilder();
         paramString1.append("realSaveEmo failed! errorCode = ");
-        paramString1.append(i);
+        paramString1.append(k);
         QLog.d("MultiEmotionSaveManager", 2, paramString1.toString());
       }
       if (paramEmotionSaveResult != null)
       {
-        paramEmotionSaveResult.jdField_a_of_type_Int = -1;
-        paramEmotionSaveResult.jdField_b_of_type_Int = i;
-        paramEmotionSaveResult.c = FileSaveErrorInfo.a(i);
-        paramString1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+        paramEmotionSaveResult.d = -1;
+        paramEmotionSaveResult.e = k;
+        paramEmotionSaveResult.f = FileSaveErrorInfo.a(k);
+        paramString1 = this.b.obtainMessage(2);
         paramString1.obj = paramEmotionSaveResult;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
+        this.b.sendMessage(paramString1);
       }
       return;
     }
     Object localObject1 = paramString2;
-    int i = j;
+    int k = m;
     Object localObject3;
     do
     {
-      if (i > 0)
+      if (k > 0)
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(paramString2);
         ((StringBuilder)localObject1).append("_");
-        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(k);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       Object localObject2 = localObject1;
@@ -97,8 +97,8 @@ public class MultiEmotionSaveManager
         ((StringBuilder)localObject3).append((String)localObject2);
         localObject2 = ((StringBuilder)localObject3).toString();
       }
-      localObject3 = new File(EmotionPathConstants.jdField_a_of_type_JavaLangString, (String)localObject2);
-      i += 1;
+      localObject3 = new File(EmotionPathConstants.a, (String)localObject2);
+      k += 1;
       localObject1 = localObject2;
     } while (((File)localObject3).exists());
     paramString2 = new File(paramString1);
@@ -111,7 +111,7 @@ public class MultiEmotionSaveManager
     ((StringBuilder)localObject).append(System.nanoTime());
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
-    a(paramEmotionSaveResult.jdField_b_of_type_JavaLangString, (String)localObject, paramEmotionSaveResult);
+    a(paramEmotionSaveResult.b, (String)localObject, paramEmotionSaveResult);
   }
   
   private void c()
@@ -119,19 +119,19 @@ public class MultiEmotionSaveManager
     if (QLog.isColorLevel()) {
       QLog.i("MultiEmotionSaveManager", 2, "clearCatch");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.d.clear();
+    this.c.clear();
+    this.j = 0L;
+    this.f = 0;
+    this.h = false;
+    this.i = false;
+    this.e = 0;
+    this.b.removeCallbacksAndMessages(null);
   }
   
   private void d()
   {
-    MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack;
+    MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.g;
     if (localISaveCallBack != null) {
       localISaveCallBack.b();
     }
@@ -139,22 +139,22 @@ public class MultiEmotionSaveManager
   
   private void e()
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    if (this.j != 0L)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack == null) {
+      if (this.g == null) {
         return;
       }
-      double d1 = this.jdField_b_of_type_Int;
+      double d1 = this.f;
       Double.isNaN(d1);
-      double d2 = this.jdField_a_of_type_Long;
+      double d2 = this.j;
       Double.isNaN(d2);
-      int i = (int)(d1 * 100.0D / d2);
-      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Long) {
-        i = 100;
+      int k = (int)(d1 * 100.0D / d2);
+      if (this.f == this.j) {
+        k = 100;
       }
-      MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack;
+      MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.g;
       if (localISaveCallBack != null) {
-        localISaveCallBack.a(i);
+        localISaveCallBack.a(k);
       }
     }
   }
@@ -165,7 +165,7 @@ public class MultiEmotionSaveManager
       QLog.i("MultiEmotionSaveManager", 2, "cancelMultiEmoSave");
     }
     c();
-    MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack;
+    MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.g;
     if (localISaveCallBack != null) {
       localISaveCallBack.a();
     }
@@ -176,7 +176,7 @@ public class MultiEmotionSaveManager
     if (QLog.isColorLevel()) {
       QLog.i("MultiEmotionSaveManager", 2, "saveComplete");
     }
-    MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack;
+    MultiEmotionSaveManager.ISaveCallBack localISaveCallBack = this.g;
     if (localISaveCallBack != null) {
       localISaveCallBack.a(paramEmotionSaveResult);
     }
@@ -185,7 +185,7 @@ public class MultiEmotionSaveManager
   
   public void a(MultiEmotionSaveManager.ISaveCallBack paramISaveCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack = paramISaveCallBack;
+    this.g = paramISaveCallBack;
   }
   
   public void a(List<EmoticonInfo> paramList)
@@ -210,9 +210,9 @@ public class MultiEmotionSaveManager
         {
           localObject1 = (CustomEmoticonInfoBase)localObject1;
           localObject2 = new EmotionSaveResult();
-          ((EmotionSaveResult)localObject2).jdField_a_of_type_JavaLangString = ((CustomEmoticonInfoBase)localObject1).resID;
-          ((EmotionSaveResult)localObject2).jdField_b_of_type_JavaLangString = ((CustomEmoticonInfoBase)localObject1).path;
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject2);
+          ((EmotionSaveResult)localObject2).a = ((CustomEmoticonInfoBase)localObject1).resID;
+          ((EmotionSaveResult)localObject2).b = ((CustomEmoticonInfoBase)localObject1).path;
+          this.c.add(localObject2);
         }
         else if (QLog.isColorLevel())
         {
@@ -222,15 +222,15 @@ public class MultiEmotionSaveManager
           QLog.d("MultiEmotionSaveManager", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() == 0)
+      if (this.c.size() == 0)
       {
         if (QLog.isColorLevel()) {
           QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoReqList is empty!");
         }
         paramList = new EmotionSaveResult();
-        paramList.jdField_a_of_type_Int = -1;
-        paramList.jdField_b_of_type_Int = 10006;
-        paramList.c = FileSaveErrorInfo.a(10006);
+        paramList.d = -1;
+        paramList.e = 10006;
+        paramList.f = FileSaveErrorInfo.a(10006);
         a(paramList);
         return;
       }
@@ -238,19 +238,19 @@ public class MultiEmotionSaveManager
       {
         paramList = new StringBuilder();
         paramList.append("saveMultiRichMedialFile emoReqList count is :");
-        paramList.append(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
+        paramList.append(this.c.size());
         QLog.d("MultiEmotionSaveManager", 2, paramList.toString());
       }
       d();
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-      paramList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+      this.j = this.c.size();
+      paramList = this.c.iterator();
       while (paramList.hasNext())
       {
         localObject1 = (EmotionSaveResult)paramList.next();
-        if (this.jdField_a_of_type_Int < 1) {
+        if (this.e < 1) {
           b((EmotionSaveResult)localObject1);
         } else {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(localObject1);
+          this.d.add(localObject1);
         }
       }
       return;
@@ -259,15 +259,15 @@ public class MultiEmotionSaveManager
       QLog.d("MultiEmotionSaveManager", 2, "saveMultiRichMedialFile emoSaveReqList is empty!");
     }
     paramList = new EmotionSaveResult();
-    paramList.jdField_a_of_type_Int = -1;
-    paramList.jdField_b_of_type_Int = 10006;
-    paramList.c = FileSaveErrorInfo.a(10006);
+    paramList.d = -1;
+    paramList.e = 10006;
+    paramList.f = FileSaveErrorInfo.a(10006);
     a(paramList);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmMultiEmotionSaveManager$ISaveCallBack = null;
+    this.g = null;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -277,48 +277,48 @@ public class MultiEmotionSaveManager
       EmotionSaveResult localEmotionSaveResult = (EmotionSaveResult)paramMessage.obj;
       if (localEmotionSaveResult != null)
       {
-        int i = paramMessage.what;
-        if ((i != 1) && (i != 2)) {
+        int k = paramMessage.what;
+        if ((k != 1) && (k != 2)) {
           return false;
         }
-        this.jdField_a_of_type_Int -= 1;
+        this.e -= 1;
         if (paramMessage.what == 2)
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.h = true;
           if (QLog.isColorLevel())
           {
             paramMessage = new StringBuilder();
             paramMessage.append("MSG_TYPE_SAVE_FAIL errorCode = ");
-            paramMessage.append(localEmotionSaveResult.jdField_b_of_type_Int);
+            paramMessage.append(localEmotionSaveResult.e);
             paramMessage.append(", errorMsg = ");
-            paramMessage.append(localEmotionSaveResult.c);
+            paramMessage.append(localEmotionSaveResult.f);
             QLog.i("MultiEmotionSaveManager", 2, paramMessage.toString());
           }
         }
         else
         {
-          this.jdField_b_of_type_Boolean = true;
+          this.i = true;
         }
-        this.jdField_b_of_type_Int += 1;
+        this.f += 1;
         e();
-        paramMessage = (EmotionSaveResult)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+        paramMessage = (EmotionSaveResult)this.d.poll();
         if (paramMessage != null)
         {
           b(paramMessage);
           return false;
         }
-        if (this.jdField_a_of_type_Int == 0)
+        if (this.e == 0)
         {
           paramMessage = new EmotionSaveResult();
-          if (this.jdField_b_of_type_Boolean)
+          if (this.i)
           {
-            paramMessage.jdField_a_of_type_Int = 0;
+            paramMessage.d = 0;
           }
           else
           {
-            paramMessage.jdField_a_of_type_Int = -1;
-            paramMessage.jdField_b_of_type_Int = localEmotionSaveResult.jdField_b_of_type_Int;
-            paramMessage.c = localEmotionSaveResult.c;
+            paramMessage.d = -1;
+            paramMessage.e = localEmotionSaveResult.e;
+            paramMessage.f = localEmotionSaveResult.f;
           }
           a(paramMessage);
         }
@@ -337,7 +337,7 @@ public class MultiEmotionSaveManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.MultiEmotionSaveManager
  * JD-Core Version:    0.7.0.1
  */

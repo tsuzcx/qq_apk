@@ -7,34 +7,34 @@ import androidx.core.view.ViewCompat;
 class HeaderBehavior$FlingRunnable
   implements Runnable
 {
-  private final V jdField_a_of_type_AndroidViewView;
-  private final CoordinatorLayout jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout;
+  private final CoordinatorLayout a;
+  private final V b;
   
   HeaderBehavior$FlingRunnable(CoordinatorLayout paramCoordinatorLayout, V paramV)
   {
-    this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout = paramV;
+    this.a = paramV;
     Object localObject;
-    this.jdField_a_of_type_AndroidViewView = localObject;
+    this.b = localObject;
   }
   
   public void run()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.this$0.a != null))
+    if ((this.b != null) && (this.this$0.a != null))
     {
       if (this.this$0.a.computeScrollOffset())
       {
         HeaderBehavior localHeaderBehavior = this.this$0;
-        localHeaderBehavior.a(this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout, this.jdField_a_of_type_AndroidViewView, localHeaderBehavior.a.getCurrY());
-        ViewCompat.postOnAnimation(this.jdField_a_of_type_AndroidViewView, this);
+        localHeaderBehavior.a_(this.a, this.b, localHeaderBehavior.a.getCurrY());
+        ViewCompat.postOnAnimation(this.b, this);
         return;
       }
-      this.this$0.a(this.jdField_a_of_type_AndroidxCoordinatorlayoutWidgetCoordinatorLayout, this.jdField_a_of_type_AndroidViewView);
+      this.this$0.a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.appbar.HeaderBehavior.FlingRunnable
  * JD-Core Version:    0.7.0.1
  */

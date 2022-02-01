@@ -11,10 +11,10 @@ class RedTouchWebviewHandler$2
   
   public void run()
   {
-    HashMap localHashMap = RedTouchWebviewHandler.parseGetAppInfoList(RedTouchWebviewHandler.access$000(this.this$0), this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = RedTouchWebviewHandler.parseGetAppInfoList(RedTouchWebviewHandler.access$000(this.this$0), this.a, this.b);
     if (this.this$0.mRuntime != null)
     {
-      Activity localActivity = this.this$0.mRuntime.a();
+      Activity localActivity = this.this$0.mRuntime.d();
       if (localActivity != null) {
         localActivity.runOnUiThread(new RedTouchWebviewHandler.2.1(this, localHashMap));
       }
@@ -23,7 +23,7 @@ class RedTouchWebviewHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler.2
  * JD-Core Version:    0.7.0.1
  */

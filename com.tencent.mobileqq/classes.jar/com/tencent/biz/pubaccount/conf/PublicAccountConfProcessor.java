@@ -20,7 +20,7 @@ public class PublicAccountConfProcessor
     {
       AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
       if ((localAppRuntime instanceof QQAppInterface)) {
-        return PublicAccountConfBean.a(SharedPreUtils.e(((QQAppInterface)localAppRuntime).getApplication()));
+        return PublicAccountConfBean.a(SharedPreUtils.t(((QQAppInterface)localAppRuntime).getApplication()));
       }
     }
     return new PublicAccountConfBean();
@@ -63,7 +63,7 @@ public class PublicAccountConfProcessor
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      return SharedPreUtils.n(((QQAppInterface)localAppRuntime).getApp());
+      return SharedPreUtils.s(((QQAppInterface)localAppRuntime).getApp());
     }
     return 0;
   }
@@ -77,7 +77,7 @@ public class PublicAccountConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountConfProcessor
  * JD-Core Version:    0.7.0.1
  */

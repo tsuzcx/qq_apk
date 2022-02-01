@@ -12,88 +12,41 @@ import mqq.app.MobileQQ;
 public class TtsFileCache
   implements IFileCacheDataSource
 {
-  private static volatile TtsFileCache jdField_a_of_type_ComTencentMobileqqTtsDataTtsFileCache;
   public static final String a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  private static final byte[] b = new byte[0];
+  private static volatile TtsFileCache c;
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(MobileQQ.sMobileQQ.getCacheDir().getAbsolutePath());
     localStringBuilder.append("/tts_cache/");
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("tts_cache: ");
-      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(a);
       QLog.d("TtsFileCache", 2, localStringBuilder.toString());
     }
   }
   
   public static TtsFileCache a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqTtsDataTtsFileCache == null) {
-      synchronized (jdField_a_of_type_ArrayOfByte)
+    if (c == null) {
+      synchronized (b)
       {
-        if (jdField_a_of_type_ComTencentMobileqqTtsDataTtsFileCache == null) {
-          jdField_a_of_type_ComTencentMobileqqTtsDataTtsFileCache = new TtsFileCache();
+        if (c == null) {
+          c = new TtsFileCache();
         }
       }
     }
-    return jdField_a_of_type_ComTencentMobileqqTtsDataTtsFileCache;
+    return c;
   }
   
   public InputStream a(String paramString)
   {
     return b(MD5Coding.encodeHexStr(paramString));
-  }
-  
-  public void a()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = new File(jdField_a_of_type_JavaLangString);
-        if (!((File)localObject).exists()) {
-          return;
-        }
-        File[] arrayOfFile = ((File)localObject).listFiles();
-        int j = arrayOfFile.length;
-        int i = 0;
-        if (i < j)
-        {
-          localObject = arrayOfFile[i];
-          boolean bool = ((File)localObject).delete();
-          if (QLog.isColorLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("delete cache: ");
-            localStringBuilder.append(((File)localObject).getName());
-            if (bool)
-            {
-              localObject = "succ";
-              localStringBuilder.append((String)localObject);
-              QLog.d("TtsFileCache", 1, localStringBuilder.toString());
-            }
-          }
-          else
-          {
-            i += 1;
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("TtsFileCache", 1, "clearCache Exception: ", localException);
-      }
-      String str = "failed";
-    }
   }
   
   /* Error */
@@ -103,12 +56,12 @@ public class TtsFileCache
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 111	com/tencent/mobileqq/tts/data/TtsFileCache:a	()V
+    //   3: invokevirtual 84	com/tencent/mobileqq/tts/data/TtsFileCache:b	()V
     //   6: aload_1
-    //   7: invokestatic 73	com/tencent/commonsdk/util/MD5Coding:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   7: invokestatic 75	com/tencent/commonsdk/util/MD5Coding:encodeHexStr	(Ljava/lang/String;)Ljava/lang/String;
     //   10: astore 7
     //   12: aload 7
-    //   14: invokestatic 117	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   14: invokestatic 90	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   17: istore_3
     //   18: iload_3
     //   19: ifne +209 -> 228
@@ -120,42 +73,42 @@ public class TtsFileCache
     //   29: astore 4
     //   31: aload 4
     //   33: astore_1
-    //   34: new 14	java/lang/StringBuilder
+    //   34: new 16	java/lang/StringBuilder
     //   37: dup
-    //   38: invokespecial 17	java/lang/StringBuilder:<init>	()V
+    //   38: invokespecial 19	java/lang/StringBuilder:<init>	()V
     //   41: astore 8
     //   43: aload 4
     //   45: astore_1
     //   46: aload 8
-    //   48: getstatic 44	com/tencent/mobileqq/tts/data/TtsFileCache:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   51: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: getstatic 46	com/tencent/mobileqq/tts/data/TtsFileCache:a	Ljava/lang/String;
+    //   51: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload 4
     //   57: astore_1
     //   58: aload 8
     //   60: aload 7
-    //   62: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   65: pop
     //   66: aload 4
     //   68: astore_1
-    //   69: new 119	java/io/FileOutputStream
+    //   69: new 92	java/io/FileOutputStream
     //   72: dup
     //   73: aload 8
-    //   75: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokespecial 120	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   75: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokespecial 95	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   81: astore 4
     //   83: aload_2
     //   84: aload 4
-    //   86: invokevirtual 126	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   86: invokevirtual 101	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
     //   89: aload 4
-    //   91: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   91: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   94: goto +134 -> 228
     //   97: astore_1
-    //   98: ldc 54
+    //   98: ldc 56
     //   100: iconst_1
-    //   101: ldc 131
+    //   101: ldc 106
     //   103: aload_1
-    //   104: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   104: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   107: goto +121 -> 228
     //   110: astore_2
     //   111: aload 4
@@ -180,15 +133,15 @@ public class TtsFileCache
     //   145: astore_2
     //   146: aload_2
     //   147: astore_1
-    //   148: ldc 54
+    //   148: ldc 56
     //   150: iconst_1
-    //   151: ldc 131
+    //   151: ldc 106
     //   153: aload 4
-    //   155: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   155: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   158: aload_2
     //   159: ifnull +69 -> 228
     //   162: aload_2
-    //   163: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   163: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   166: goto +62 -> 228
     //   169: astore_1
     //   170: goto -72 -> 98
@@ -197,29 +150,29 @@ public class TtsFileCache
     //   177: astore_2
     //   178: aload_2
     //   179: astore_1
-    //   180: ldc 54
+    //   180: ldc 56
     //   182: iconst_1
-    //   183: ldc 131
+    //   183: ldc 106
     //   185: aload 4
-    //   187: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   187: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   190: aload_2
     //   191: ifnull +37 -> 228
     //   194: aload_2
-    //   195: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   195: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   198: goto +30 -> 228
     //   201: astore_1
     //   202: goto -104 -> 98
     //   205: aload_1
     //   206: ifnull +20 -> 226
     //   209: aload_1
-    //   210: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   210: invokevirtual 104	java/io/FileOutputStream:close	()V
     //   213: goto +13 -> 226
     //   216: astore_1
-    //   217: ldc 54
+    //   217: ldc 56
     //   219: iconst_1
-    //   220: ldc 131
+    //   220: ldc 106
     //   222: aload_1
-    //   223: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   223: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   226: aload_2
     //   227: athrow
     //   228: aload_0
@@ -280,7 +233,7 @@ public class TtsFileCache
   
   public InputStream b(String paramString)
   {
-    Object localObject = new File(jdField_a_of_type_JavaLangString);
+    Object localObject = new File(a);
     if (!((File)localObject).exists())
     {
       if (QLog.isColorLevel()) {
@@ -318,7 +271,7 @@ public class TtsFileCache
     try
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(a);
       ((StringBuilder)localObject).append(paramString);
       paramString = new BufferedInputStream(new FileInputStream(((StringBuilder)localObject).toString()));
       return paramString;
@@ -329,10 +282,57 @@ public class TtsFileCache
     }
     return null;
   }
+  
+  public void b()
+  {
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new File(a);
+        if (!((File)localObject).exists()) {
+          return;
+        }
+        File[] arrayOfFile = ((File)localObject).listFiles();
+        int j = arrayOfFile.length;
+        int i = 0;
+        if (i < j)
+        {
+          localObject = arrayOfFile[i];
+          boolean bool = ((File)localObject).delete();
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("delete cache: ");
+            localStringBuilder.append(((File)localObject).getName());
+            if (bool)
+            {
+              localObject = "succ";
+              localStringBuilder.append((String)localObject);
+              QLog.d("TtsFileCache", 1, localStringBuilder.toString());
+            }
+          }
+          else
+          {
+            i += 1;
+          }
+        }
+        else
+        {
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("TtsFileCache", 1, "clearCache Exception: ", localException);
+      }
+      String str = "failed";
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.tts.data.TtsFileCache
  * JD-Core Version:    0.7.0.1
  */

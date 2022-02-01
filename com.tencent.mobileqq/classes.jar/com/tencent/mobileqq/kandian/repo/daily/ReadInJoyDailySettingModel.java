@@ -24,25 +24,19 @@ import org.json.JSONObject;
 public class ReadInJoyDailySettingModel
 {
   public String a;
-  public List<String> a;
   public String b;
-  public List<String> b;
   public String c = "";
   public String d = "";
-  
-  public ReadInJoyDailySettingModel()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-  }
+  public List<String> e = new ArrayList();
+  public List<String> f = new ArrayList();
   
   public static ReadInJoyDailySettingModel a(JSONObject paramJSONObject)
   {
     ReadInJoyDailySettingModel localReadInJoyDailySettingModel = new ReadInJoyDailySettingModel();
     if (paramJSONObject != null)
     {
-      localReadInJoyDailySettingModel.jdField_a_of_type_JavaLangString = paramJSONObject.optString("key");
-      localReadInJoyDailySettingModel.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+      localReadInJoyDailySettingModel.a = paramJSONObject.optString("key");
+      localReadInJoyDailySettingModel.b = paramJSONObject.optString("name");
       localReadInJoyDailySettingModel.d = paramJSONObject.optString("value");
       localReadInJoyDailySettingModel.c = paramJSONObject.optString("id");
       Object localObject = paramJSONObject.optJSONArray("valuelist");
@@ -50,34 +44,29 @@ public class ReadInJoyDailySettingModel
       int i;
       if (localObject != null)
       {
-        localReadInJoyDailySettingModel.jdField_b_of_type_JavaUtilList = new ArrayList();
+        localReadInJoyDailySettingModel.f = new ArrayList();
         i = 0;
         while (i < ((JSONArray)localObject).length())
         {
           String str = ((JSONArray)localObject).optString(i);
-          localReadInJoyDailySettingModel.jdField_b_of_type_JavaUtilList.add(str);
+          localReadInJoyDailySettingModel.f.add(str);
           i += 1;
         }
       }
       paramJSONObject = paramJSONObject.optJSONArray("idlist");
       if (paramJSONObject != null)
       {
-        localReadInJoyDailySettingModel.jdField_a_of_type_JavaUtilList = new ArrayList();
+        localReadInJoyDailySettingModel.e = new ArrayList();
         i = j;
         while (i < paramJSONObject.length())
         {
           localObject = paramJSONObject.optString(i);
-          localReadInJoyDailySettingModel.jdField_a_of_type_JavaUtilList.add(localObject);
+          localReadInJoyDailySettingModel.e.add(localObject);
           i += 1;
         }
       }
     }
     return localReadInJoyDailySettingModel;
-  }
-  
-  public static String a()
-  {
-    return a(-1);
   }
   
   public static String a(int paramInt)
@@ -97,7 +86,7 @@ public class ReadInJoyDailySettingModel
             localObject1 = new StringBuilder();
             ((StringBuilder)localObject1).append("DAILY_CHILD_FEEDS_REQUEST_CONFIG");
             ((StringBuilder)localObject1).append(paramInt);
-            localObject1 = (String)RIJSPUtils.a(((StringBuilder)localObject1).toString(), "");
+            localObject1 = (String)RIJSPUtils.b(((StringBuilder)localObject1).toString(), "");
           }
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
@@ -109,7 +98,7 @@ public class ReadInJoyDailySettingModel
         else
         {
           localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
-          String str = (String)RIJSPUtils.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
+          String str = (String)RIJSPUtils.b("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break label221;
           }
@@ -119,14 +108,14 @@ public class ReadInJoyDailySettingModel
           }
           a((JSONArray)localObject1, localJSONArray);
           a((JSONArray)localObject3, localJSONArray);
-          if (DailyModeConfigHandler.b()) {
+          if (DailyModeConfigHandler.k()) {
             localJSONArray.put(DailyDynamicHeaderModule.a(true));
           }
         }
-        if (a()) {
-          localJSONArray.put(b());
+        if (c()) {
+          localJSONArray.put(d());
         }
-        localJSONArray.put(c());
+        localJSONArray.put(e());
         localObject1 = localJSONArray.toString();
         return localObject1;
       }
@@ -187,7 +176,12 @@ public class ReadInJoyDailySettingModel
     }
   }
   
-  public static boolean a()
+  public static String b()
+  {
+    return a(-1);
+  }
+  
+  public static boolean c()
   {
     AladdinConfig localAladdinConfig = Aladdin.getConfig(227);
     boolean bool = false;
@@ -197,7 +191,7 @@ public class ReadInJoyDailySettingModel
     return bool;
   }
   
-  private static JSONObject b()
+  private static JSONObject d()
   {
     JSONObject localJSONObject2 = new JSONObject();
     JSONObject localJSONObject1 = new JSONObject();
@@ -211,9 +205,9 @@ public class ReadInJoyDailySettingModel
       localJSONObject2.put("headset_on", UserActionReportUtils.isHasHeadset((Context)localObject));
       localJSONObject2.put("volume", UserActionReportUtils.getDeviceVolume((Context)localObject));
       localObject = ReadinjoySensorUtils.a();
-      localJSONObject2.put("acceleration", a(((ReadinjoySensorUtils)localObject).b()));
-      localJSONObject2.put("gyroscope", a(((ReadinjoySensorUtils)localObject).a()));
-      localObject = RIJSPUtils.a("daily_cba_report_key", "");
+      localJSONObject2.put("acceleration", a(((ReadinjoySensorUtils)localObject).e()));
+      localJSONObject2.put("gyroscope", a(((ReadinjoySensorUtils)localObject).d()));
+      localObject = RIJSPUtils.b("daily_cba_report_key", "");
       if ((localObject != null) && (!TextUtils.isEmpty(localObject.toString()))) {
         localJSONObject2.put("click_articles_list", new JSONArray(localObject.toString()));
       }
@@ -240,10 +234,10 @@ public class ReadInJoyDailySettingModel
     return localJSONObject1;
   }
   
-  private static JSONObject c()
+  private static JSONObject e()
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("daily_location", DailyDynamicHeaderModule.a());
+    localJSONObject.put("daily_location", DailyDynamicHeaderModule.b());
     return localJSONObject;
   }
   
@@ -252,24 +246,24 @@ public class ReadInJoyDailySettingModel
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("key", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("name", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("key", this.a);
+      localJSONObject.put("name", this.b);
       localJSONObject.put("id", this.c);
       localJSONObject.put("value", this.d);
       JSONArray localJSONArray = new JSONArray();
       Iterator localIterator;
-      if (this.jdField_b_of_type_JavaUtilList != null)
+      if (this.f != null)
       {
-        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+        localIterator = this.f.iterator();
         while (localIterator.hasNext()) {
           localJSONArray.put((String)localIterator.next());
         }
       }
       localJSONObject.put("valuelist", localJSONArray);
       localJSONArray = new JSONArray();
-      if (this.jdField_a_of_type_JavaUtilList != null)
+      if (this.e != null)
       {
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        localIterator = this.e.iterator();
         while (localIterator.hasNext()) {
           localJSONArray.put((String)localIterator.next());
         }
@@ -286,7 +280,7 @@ public class ReadInJoyDailySettingModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.daily.ReadInJoyDailySettingModel
  * JD-Core Version:    0.7.0.1
  */

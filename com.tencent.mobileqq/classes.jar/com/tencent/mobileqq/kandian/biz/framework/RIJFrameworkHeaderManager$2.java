@@ -14,24 +14,24 @@ class RIJFrameworkHeaderManager$2
   
   public void run()
   {
-    RIJFrameworkHeaderManager.a(this.this$0).i();
+    RIJFrameworkHeaderManager.a(this.this$0).k();
     if ((ChannelModeConfigHandler.b()) && (ChannelModeConfigHandler.a())) {
       return;
     }
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+    int j = this.a.getHeight();
     StringBuilder localStringBuilder;
-    if ((j != this.jdField_a_of_type_Int) && (QLog.isColorLevel()))
+    if ((j != this.b) && (QLog.isColorLevel()))
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=");
       localStringBuilder.append(j);
       localStringBuilder.append(",heightDef =");
-      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(this.b);
       QLog.d("RIJFrameworkReportManager", 2, localStringBuilder.toString());
     }
     if (ChannelModeConfigHandler.a())
     {
-      int k = this.jdField_b_of_type_Int;
+      int k = this.c;
       int i;
       if (j <= k * 3)
       {
@@ -44,27 +44,27 @@ class RIJFrameworkHeaderManager$2
         localStringBuilder.append("hideWithAnimation");
         localStringBuilder.append(j);
         AIOUtils.a("RIJFrameworkReportManager", "", new IllegalStateException(localStringBuilder.toString()));
-        i = this.jdField_b_of_type_Int;
+        i = this.c;
       }
-      this.jdField_b_of_type_AndroidViewView.setPadding(0, i, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.setPadding(0, i, 0, 0);
+      this.d.setPadding(0, i, 0, 0);
+      this.e.setPadding(0, i, 0, 0);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("initUI 看点 mListView.setPadding error: statusLineHeight not equal heightDef;statusLineHeight=");
         localStringBuilder.append(i);
         localStringBuilder.append(",heightDef =");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.b);
         QLog.d("RIJFrameworkReportManager", 2, localStringBuilder.toString());
       }
-      if (i <= this.jdField_b_of_type_Int) {
-        RIJFrameworkHeaderManager.a(this.this$0).i();
+      if (i <= this.c) {
+        RIJFrameworkHeaderManager.a(this.this$0).k();
       }
     }
-    else if (j > this.jdField_a_of_type_Int)
+    else if (j > this.b)
     {
-      this.jdField_b_of_type_AndroidViewView.setPadding(0, j, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyXListView.setPadding(0, j, 0, 0);
+      this.d.setPadding(0, j, 0, 0);
+      this.e.setPadding(0, j, 0, 0);
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder();
@@ -72,13 +72,13 @@ class RIJFrameworkHeaderManager$2
         localStringBuilder.append(j);
         QLog.d("RIJFrameworkReportManager", 2, localStringBuilder.toString());
       }
-      RIJFrameworkHeaderManager.a(this.this$0).i();
+      RIJFrameworkHeaderManager.a(this.this$0).k();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.framework.RIJFrameworkHeaderManager.2
  * JD-Core Version:    0.7.0.1
  */

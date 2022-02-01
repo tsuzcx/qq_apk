@@ -14,7 +14,7 @@ class QQComicIPCModule$2
   public void run()
   {
     Object localObject1 = new Bundle();
-    Object localObject2 = QQComicConfBean.a();
+    Object localObject2 = QQComicConfBean.c();
     StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
@@ -24,7 +24,7 @@ class QQComicIPCModule$2
       QLog.d("QQComicIPCModule", 2, localStringBuilder.toString());
     }
     ((Bundle)localObject1).putSerializable("ipExpressionConfig", (Serializable)localObject2);
-    localObject2 = QQComicConfBean.a();
+    localObject2 = QQComicConfBean.b();
     if (QLog.isColorLevel())
     {
       localStringBuilder = new StringBuilder();
@@ -39,7 +39,7 @@ class QQComicIPCModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.comic.ipc.QQComicIPCModule.2
  * JD-Core Version:    0.7.0.1
  */

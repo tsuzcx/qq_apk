@@ -13,17 +13,17 @@ class QQLSActivity$20
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.removeMessages(99);
+    this.a.v.removeMessages(99);
     if (VersionUtils.g())
     {
       if (QLog.isColorLevel()) {
         QLog.d("QQLSActivity", 2, "do SmoothFinish");
       }
-      QQLSActivity.g(this.a);
+      QQLSActivity.y(this.a);
       this.a.finish();
       return;
     }
-    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
+    this.a.v.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -32,7 +32,7 @@ class QQLSActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.20
  * JD-Core Version:    0.7.0.1
  */

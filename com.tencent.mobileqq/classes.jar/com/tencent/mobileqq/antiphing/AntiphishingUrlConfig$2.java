@@ -11,22 +11,22 @@ class AntiphishingUrlConfig$2
   
   public void run()
   {
-    if (AntiphishingUrlConfig.a() > 3000000L)
+    if (AntiphishingUrlConfig.c() > 3000000L)
     {
-      if (new DownloadFileHelper(this.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_JavaLangString, AntiphishingUrlConfig.b(this.this$0), this.b, false))
+      if (new DownloadFileHelper(this.a).a(this.b, AntiphishingUrlConfig.d(this.this$0), this.c, false))
       {
-        QLog.d(AntiphishingUrlConfig.a(this.this$0), 1, "Successfully Update Config!");
-        AntiphishingUrlConfig.a(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.a(this.this$0));
+        QLog.d(AntiphishingUrlConfig.b(this.this$0), 1, "Successfully Update Config!");
+        AntiphishingUrlConfig.e(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.a(this.this$0));
         return;
       }
-      AntiphishingUrlConfig.a(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.b(this.this$0));
-      QLog.d(AntiphishingUrlConfig.a(this.this$0), 1, "Update Config Error!");
+      AntiphishingUrlConfig.e(this.this$0).sendEmptyMessage(AntiphishingUrlConfig.c(this.this$0));
+      QLog.d(AntiphishingUrlConfig.b(this.this$0), 1, "Update Config Error!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.antiphing.AntiphishingUrlConfig.2
  * JD-Core Version:    0.7.0.1
  */

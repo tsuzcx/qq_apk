@@ -15,19 +15,19 @@ class ForwardSdkShareOption$5
   {
     if (paramMessage.what == 0)
     {
-      QQToast.a(this.a.a, HardCodeUtil.a(2131704918), 0).a();
+      QQToast.makeText(this.a.s, HardCodeUtil.a(2131902810), 0).show();
       return;
     }
     if (1 == paramMessage.what)
     {
-      this.a.a.setResult(-1);
-      this.a.a.finish();
+      this.a.s.setResult(-1);
+      this.a.s.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.5
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ public class SubscribeReportController
   public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     SubscribeReportController.ReportData localReportData = new SubscribeReportController.ReportData();
-    localReportData.jdField_c_of_type_JavaLangString = paramString1;
-    localReportData.jdField_d_of_type_JavaLangString = paramString2;
-    localReportData.jdField_e_of_type_JavaLangString = paramString3;
-    localReportData.f = paramString4;
-    localReportData.jdField_c_of_type_Long = paramInt1;
-    localReportData.jdField_d_of_type_Long = paramInt2;
-    localReportData.jdField_e_of_type_Long = paramInt3;
-    localReportData.g = paramString5;
-    localReportData.h = paramString6;
-    localReportData.i = paramString7;
-    localReportData.j = paramString8;
+    localReportData.e = paramString1;
+    localReportData.f = paramString2;
+    localReportData.g = paramString3;
+    localReportData.h = paramString4;
+    localReportData.i = paramInt1;
+    localReportData.j = paramInt2;
+    localReportData.k = paramInt3;
+    localReportData.l = paramString5;
+    localReportData.m = paramString6;
+    localReportData.n = paramString7;
+    localReportData.o = paramString8;
     paramString1 = localReportData.a();
     if (QLog.isColorLevel())
     {
@@ -64,7 +64,7 @@ public class SubscribeReportController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.SubscribeReportController
  * JD-Core Version:    0.7.0.1
  */

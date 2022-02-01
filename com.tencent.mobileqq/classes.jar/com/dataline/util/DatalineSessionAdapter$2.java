@@ -33,7 +33,7 @@ class DatalineSessionAdapter$2
   
   public void onClick(View paramView)
   {
-    if (this.a.a())
+    if (this.a.b())
     {
       this.a.a();
       Object localObject1 = (ItemHolder)paramView.getTag();
@@ -44,7 +44,7 @@ class DatalineSessionAdapter$2
         if (-1000 != ((DataLineMsgRecord)localObject2).msgtype)
         {
           FileManagerEntity localFileManagerEntity = FileManagerUtil.a((DataLineMsgRecord)localObject2);
-          if ((((DataLineMsgRecord)localObject2).nOpType != 31) && (!FileManagerUtil.e(localFileManagerEntity)))
+          if ((((DataLineMsgRecord)localObject2).nOpType != 31) && (!FileManagerUtil.j(localFileManagerEntity)))
           {
             if (((DataLineMsgRecord)localObject2).nOpType == 29)
             {
@@ -52,13 +52,13 @@ class DatalineSessionAdapter$2
             }
             else if ((localFileManagerEntity.nFileType != 0) && (localFileManagerEntity.nFileType != 2))
             {
-              localObject1 = new FileModelAdapter(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity, 3);
+              localObject1 = new FileModelAdapter(this.a.d, localFileManagerEntity, 3);
               localObject2 = new FileBrowserParam().a(11);
-              ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.jdField_a_of_type_AndroidContentContext, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
+              ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.b, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
             }
             else
             {
-              localObject3 = new DatalineFileBrowserParams(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity);
+              localObject3 = new DatalineFileBrowserParams(this.a.d, this.a.b, localFileManagerEntity);
               ArrayList localArrayList = new ArrayList();
               if (localFileManagerEntity.nFileType == 0)
               {
@@ -76,7 +76,7 @@ class DatalineSessionAdapter$2
                         break label396;
                       }
                       DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject4).next();
-                      int j = FileManagerUtil.a(localDataLineMsgRecord.filename);
+                      int j = FileManagerUtil.c(localDataLineMsgRecord.filename);
                       int i = j;
                       if (j == -1)
                       {
@@ -101,8 +101,8 @@ class DatalineSessionAdapter$2
                 }
                 ((DatalineFileBrowserParams)localObject3).a(localArrayList);
               }
-              localObject1 = QFileUtils.a(((ItemHolder)localObject1).a().a, localFileManagerEntity.fileName);
-              localObject2 = new FileBrowserCreator(this.a.jdField_a_of_type_AndroidContentContext, (IFileBrowserParams)localObject3);
+              localObject1 = QFileUtils.a(((ItemHolder)localObject1).c().a, localFileManagerEntity.fileName);
+              localObject2 = new FileBrowserCreator(this.a.b, (IFileBrowserParams)localObject3);
               ((FileBrowserCreator)localObject2).a(11);
               ((FileBrowserCreator)localObject2).a((Rect)localObject1);
               ((FileBrowserCreator)localObject2).a();
@@ -115,15 +115,15 @@ class DatalineSessionAdapter$2
       }
       else if (((DataLineMsgSet)localObject3).getGroupType() == -2000)
       {
-        localObject1 = new Intent(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, LiteMutiPicViewerActivity.class);
+        localObject1 = new Intent(this.a.c, LiteMutiPicViewerActivity.class);
         ((Intent)localObject1).putExtra("dataline_group_id", ((DataLineMsgSet)localObject3).getGroupId());
-        this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivity((Intent)localObject1);
+        this.a.c.startActivity((Intent)localObject1);
       }
       else
       {
-        localObject1 = new Intent(this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity, DLFilesViewerActivity.class);
+        localObject1 = new Intent(this.a.c, DLFilesViewerActivity.class);
         ((Intent)localObject1).putExtra("dl_files_groupid", ((DataLineMsgSet)localObject3).getGroupId());
-        this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivityForResult((Intent)localObject1, 102);
+        this.a.c.startActivityForResult((Intent)localObject1, 102);
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);

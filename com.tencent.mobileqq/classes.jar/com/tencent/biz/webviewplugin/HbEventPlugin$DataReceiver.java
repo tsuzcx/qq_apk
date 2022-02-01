@@ -12,9 +12,9 @@ import org.json.JSONObject;
 class HbEventPlugin$DataReceiver
   extends BroadcastReceiver
 {
-  public int a;
   public String a;
   public String b;
+  public int c;
   
   private HbEventPlugin$DataReceiver(HbEventPlugin paramHbEventPlugin) {}
   
@@ -33,7 +33,7 @@ class HbEventPlugin$DataReceiver
       }
       return;
     }
-    if (i != this.jdField_a_of_type_Int)
+    if (i != this.c)
     {
       if (QLog.isColorLevel()) {
         QLog.d("PortalManager.HbEventPlugin", 2, "DataReceive | onReceive sequence != seq | miss hit");
@@ -61,9 +61,9 @@ class HbEventPlugin$DataReceiver
       paramIntent.append("DataReceiver.onReceive | ");
       paramIntent.append(i);
       paramIntent.append(",");
-      paramIntent.append(this.jdField_a_of_type_Int);
+      paramIntent.append(this.c);
       paramIntent.append(",");
-      paramIntent.append(this.jdField_a_of_type_JavaLangString);
+      paramIntent.append(this.a);
       paramIntent.append(",");
       paramIntent.append(paramContext);
       QLog.d("PortalManager.HbEventPlugin", 2, paramIntent.toString());
@@ -73,7 +73,7 @@ class HbEventPlugin$DataReceiver
     default: 
       return;
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_Int);
+    this.d.b(this.c);
     paramIntent = PortalUtils.b(arrayOfByte);
     paramContext = paramIntent;
     if (paramIntent == null)
@@ -90,12 +90,12 @@ class HbEventPlugin$DataReceiver
         paramContext = paramIntent;
       }
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginHbEventPlugin.a(this.jdField_a_of_type_JavaLangString, new String[] { paramContext });
+    this.d.a(this.a, new String[] { paramContext });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HbEventPlugin.DataReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,19 @@ class DatalineForwardHandler$1
   
   public void a()
   {
-    ThreadManagerV2.executeOnSubThread(new DatalineForwardHandler.SendFileTask(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler, this.jdField_a_of_type_JavaUtilArrayList));
+    ThreadManagerV2.executeOnSubThread(new DatalineForwardHandler.SendFileTask(this.b, this.a));
   }
   
   public void b()
   {
-    ThreadManagerV2.executeOnSubThread(new DatalineForwardHandler.SendFileTask(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileassistantForwardDatalineForwardHandler, this.jdField_a_of_type_JavaUtilArrayList));
+    ThreadManagerV2.executeOnSubThread(new DatalineForwardHandler.SendFileTask(this.b, this.a));
   }
   
   public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.forward.DatalineForwardHandler.1
  * JD-Core Version:    0.7.0.1
  */

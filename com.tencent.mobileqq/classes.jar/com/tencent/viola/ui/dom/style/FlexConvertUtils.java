@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.mobileqq.qmethodmonitor.monitor.PhoneInfoMonitor;
 import com.tencent.viola.core.ViolaEnvironment;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.text.DecimalFormat;
@@ -17,7 +18,8 @@ import java.text.DecimalFormatSymbols;
 
 public class FlexConvertUtils
 {
-  public static String TAG = "FlexConvertUtils";
+  public static final String TAG = "FlexConvertUtils";
+  private static DecimalFormat decimalFormat;
   private static String deviceid = "";
   private static int mScreenContentHeight = 0;
   private static int mScreenHeight = 0;
@@ -226,11 +228,10 @@ public class FlexConvertUtils
     }
     catch (Exception localException)
     {
-      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Exception e:");
       localStringBuilder.append(localException.getMessage());
-      ViolaLogUtils.e(str, localStringBuilder.toString());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
       f = 2.0F;
     }
     float f = f * paramFloat + 0.5F;
@@ -251,11 +252,10 @@ public class FlexConvertUtils
     }
     catch (Exception localException)
     {
-      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Exception e:");
       localStringBuilder.append(localException.getMessage());
-      ViolaLogUtils.e(str, localStringBuilder.toString());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
       f = 2.0F;
     }
     float f = paramInt * f;
@@ -277,7 +277,6 @@ public class FlexConvertUtils
         return (0.0F / 0.0F);
       }
       float f;
-      String str;
       StringBuilder localStringBuilder;
       if (paramObject.endsWith("vx")) {
         try
@@ -287,20 +286,18 @@ public class FlexConvertUtils
         }
         catch (Exception paramObject)
         {
-          str = TAG;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("getFloatByViewport Exception e:");
           localStringBuilder.append(paramObject.getMessage());
-          ViolaLogUtils.e(str, localStringBuilder.toString());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
           return (0.0F / 0.0F);
         }
         catch (NumberFormatException paramObject)
         {
-          str = TAG;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("getFloatByViewport NumberFormatException e:");
           localStringBuilder.append(paramObject.getMessage());
-          ViolaLogUtils.e(str, localStringBuilder.toString());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
           return (0.0F / 0.0F);
         }
       }
@@ -313,20 +310,18 @@ public class FlexConvertUtils
         }
         catch (Exception paramObject) {}catch (NumberFormatException paramObject)
         {
-          break label233;
+          break label212;
         }
-        str = TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFloatByViewport Exception e:");
         localStringBuilder.append(paramObject.getMessage());
-        ViolaLogUtils.e(str, localStringBuilder.toString());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
         return (0.0F / 0.0F);
-        label233:
-        str = TAG;
+        label212:
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFloatByViewport NumberFormatException e:");
         localStringBuilder.append(paramObject.getMessage());
-        ViolaLogUtils.e(str, localStringBuilder.toString());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
         return (0.0F / 0.0F);
       }
       if (paramObject.endsWith("dp"))
@@ -338,20 +333,18 @@ public class FlexConvertUtils
         }
         catch (Exception paramObject) {}catch (NumberFormatException paramObject)
         {
-          break label361;
+          break label326;
         }
-        str = TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFloatByViewport Exception e:");
         localStringBuilder.append(paramObject.getMessage());
-        ViolaLogUtils.e(str, localStringBuilder.toString());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
         return (0.0F / 0.0F);
-        label361:
-        str = TAG;
+        label326:
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFloatByViewport NumberFormatException e:");
         localStringBuilder.append(paramObject.getMessage());
-        ViolaLogUtils.e(str, localStringBuilder.toString());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
         return (0.0F / 0.0F);
       }
       if (paramObject.endsWith("vw")) {
@@ -363,11 +356,10 @@ public class FlexConvertUtils
         }
         catch (Exception paramObject)
         {
-          str = TAG;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("getFloatByViewport Exception e:");
           localStringBuilder.append(paramObject.getMessage());
-          ViolaLogUtils.e(str, localStringBuilder.toString());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
           return (0.0F / 0.0F);
         }
       }
@@ -379,11 +371,10 @@ public class FlexConvertUtils
         }
         catch (Exception paramObject)
         {
-          str = TAG;
           localStringBuilder = new StringBuilder();
           localStringBuilder.append("getFloatByViewport Exception e:");
           localStringBuilder.append(paramObject.getMessage());
-          ViolaLogUtils.e(str, localStringBuilder.toString());
+          ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
           return (0.0F / 0.0F);
         }
       }
@@ -394,20 +385,18 @@ public class FlexConvertUtils
       }
       catch (Exception paramObject)
       {
-        str = TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFloatByViewport Exception e:");
         localStringBuilder.append(paramObject.getMessage());
-        ViolaLogUtils.e(str, localStringBuilder.toString());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
         return (0.0F / 0.0F);
       }
       catch (NumberFormatException paramObject)
       {
-        str = TAG;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("getFloatByViewport NumberFormatException e:");
         localStringBuilder.append(paramObject.getMessage());
-        ViolaLogUtils.e(str, localStringBuilder.toString());
+        ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
       }
     }
     return (0.0F / 0.0F);
@@ -426,7 +415,7 @@ public class FlexConvertUtils
       if (Build.VERSION.SDK_INT >= 26) {
         break label63;
       }
-      deviceid = ((TelephonyManager)localObject).getDeviceId();
+      deviceid = PhoneInfoMonitor.getDeviceId((TelephonyManager)localObject);
     }
     catch (SecurityException localSecurityException)
     {
@@ -518,7 +507,6 @@ public class FlexConvertUtils
   {
     float f2 = 2.0F;
     float f1;
-    Object localObject;
     StringBuilder localStringBuilder;
     try
     {
@@ -526,11 +514,10 @@ public class FlexConvertUtils
     }
     catch (Exception localException1)
     {
-      localObject = TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("Exception e:");
       localStringBuilder.append(localException1.getMessage());
-      ViolaLogUtils.e((String)localObject, localStringBuilder.toString());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
       f1 = 2.0F;
     }
     if (f1 == 0.0F) {
@@ -538,20 +525,22 @@ public class FlexConvertUtils
     }
     try
     {
-      DecimalFormat localDecimalFormat = new DecimalFormat("0.00");
-      localObject = new DecimalFormatSymbols();
-      ((DecimalFormatSymbols)localObject).setDecimalSeparator('.');
-      localDecimalFormat.setDecimalFormatSymbols((DecimalFormatSymbols)localObject);
-      f1 = Float.valueOf(localDecimalFormat.format(paramFloat / f1)).floatValue();
+      if (decimalFormat == null)
+      {
+        decimalFormat = new DecimalFormat("0.00");
+        DecimalFormatSymbols localDecimalFormatSymbols = new DecimalFormatSymbols();
+        localDecimalFormatSymbols.setDecimalSeparator('.');
+        decimalFormat.setDecimalFormatSymbols(localDecimalFormatSymbols);
+      }
+      f1 = Float.valueOf(decimalFormat.format(paramFloat / f1)).floatValue();
       return f1;
     }
     catch (Exception localException2)
     {
-      localObject = TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("[px2dip]: ");
       localStringBuilder.append(localException2.getMessage());
-      ViolaLogUtils.e((String)localObject, localStringBuilder.toString());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
     }
     return paramFloat;
   }
@@ -565,11 +554,10 @@ public class FlexConvertUtils
     }
     catch (Exception localException)
     {
-      String str = TAG;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("Exception e:");
       localStringBuilder.append(localException.getMessage());
-      ViolaLogUtils.e(str, localStringBuilder.toString());
+      ViolaLogUtils.e("FlexConvertUtils", localStringBuilder.toString());
       f = 2.0F;
     }
     paramFloat = paramFloat * f + 0.5F;
@@ -598,7 +586,7 @@ public class FlexConvertUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexConvertUtils
  * JD-Core Version:    0.7.0.1
  */

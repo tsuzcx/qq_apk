@@ -11,12 +11,12 @@ class WebFastAdapter$1
   
   public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebEntityBaseItemViewHolder.a.setSelected(false);
+    this.a.f.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.adapter.WebFastAdapter.1
  * JD-Core Version:    0.7.0.1
  */

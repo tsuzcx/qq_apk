@@ -9,72 +9,72 @@ import com.tencent.qphone.base.util.QLog;
 public class PngGifEngine
   implements IMessageHandler
 {
-  int jdField_a_of_type_Int = -1;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  PngGifEngine.PngGifTaskParam jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam;
-  Runnable jdField_a_of_type_JavaLangRunnable = new PngGifEngine.1(this);
-  boolean jdField_a_of_type_Boolean = false;
+  PngGifEngine.PngGifTaskParam a;
+  int b = -1;
+  boolean c = false;
+  Handler d;
+  Runnable e = new PngGifEngine.1(this);
   
   public PngGifEngine()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func PngGifEngine 【Constructor】");
     }
-    this.jdField_a_of_type_AndroidOsHandler = PngFrameManager.a(this);
+    this.d = PngFrameManager.a(this);
   }
   
   /* Error */
-  public static Bitmap a(String paramString)
+  public static Bitmap b(String paramString)
   {
     // Byte code:
-    //   0: new 58	android/graphics/BitmapFactory$Options
+    //   0: new 61	android/graphics/BitmapFactory$Options
     //   3: dup
-    //   4: invokespecial 59	android/graphics/BitmapFactory$Options:<init>	()V
+    //   4: invokespecial 62	android/graphics/BitmapFactory$Options:<init>	()V
     //   7: astore_2
     //   8: aload_2
     //   9: sipush 320
-    //   12: putfield 62	android/graphics/BitmapFactory$Options:inDensity	I
+    //   12: putfield 65	android/graphics/BitmapFactory$Options:inDensity	I
     //   15: aload_2
-    //   16: invokestatic 68	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   19: invokevirtual 72	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
-    //   22: invokevirtual 78	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   25: getfield 83	android/util/DisplayMetrics:densityDpi	I
-    //   28: putfield 86	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   16: invokestatic 71	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   19: invokevirtual 75	com/tencent/common/app/BaseApplicationImpl:getResources	()Landroid/content/res/Resources;
+    //   22: invokevirtual 81	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   25: getfield 86	android/util/DisplayMetrics:densityDpi	I
+    //   28: putfield 89	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   31: aload_2
-    //   32: getfield 62	android/graphics/BitmapFactory$Options:inDensity	I
+    //   32: getfield 65	android/graphics/BitmapFactory$Options:inDensity	I
     //   35: aload_2
-    //   36: getfield 86	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   36: getfield 89	android/graphics/BitmapFactory$Options:inTargetDensity	I
     //   39: if_icmpge +11 -> 50
     //   42: aload_2
     //   43: aload_2
-    //   44: getfield 86	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   47: putfield 62	android/graphics/BitmapFactory$Options:inDensity	I
+    //   44: getfield 89	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   47: putfield 65	android/graphics/BitmapFactory$Options:inDensity	I
     //   50: aconst_null
     //   51: astore_3
-    //   52: new 88	java/io/BufferedInputStream
+    //   52: new 91	java/io/BufferedInputStream
     //   55: dup
-    //   56: new 90	java/io/FileInputStream
+    //   56: new 93	java/io/FileInputStream
     //   59: dup
     //   60: aload_0
-    //   61: invokespecial 93	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   64: invokespecial 96	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   61: invokespecial 96	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   64: invokespecial 99	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   67: astore_1
     //   68: aload_1
     //   69: astore_0
     //   70: aload_1
     //   71: aconst_null
     //   72: aload_2
-    //   73: invokestatic 102	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   73: invokestatic 105	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   76: astore_2
     //   77: aload_2
     //   78: astore_0
     //   79: aload_1
-    //   80: invokevirtual 105	java/io/BufferedInputStream:close	()V
+    //   80: invokevirtual 108	java/io/BufferedInputStream:close	()V
     //   83: aload_2
     //   84: areturn
     //   85: astore_1
     //   86: aload_1
-    //   87: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   87: invokevirtual 111	java/io/IOException:printStackTrace	()V
     //   90: aload_0
     //   91: areturn
     //   92: astore_2
@@ -90,21 +90,21 @@ public class PngGifEngine
     //   108: astore_1
     //   109: aload_1
     //   110: astore_0
-    //   111: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   111: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   114: ifeq +15 -> 129
     //   117: aload_1
     //   118: astore_0
-    //   119: ldc 35
+    //   119: ldc 39
     //   121: iconst_2
     //   122: aload_2
-    //   123: invokevirtual 112	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   126: invokestatic 41	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   123: invokevirtual 115	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   126: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   129: aload_1
     //   130: ifnull +44 -> 174
     //   133: aload_3
     //   134: astore_0
     //   135: aload_1
-    //   136: invokevirtual 105	java/io/BufferedInputStream:close	()V
+    //   136: invokevirtual 108	java/io/BufferedInputStream:close	()V
     //   139: aconst_null
     //   140: areturn
     //   141: astore_2
@@ -112,32 +112,32 @@ public class PngGifEngine
     //   143: astore_1
     //   144: aload_1
     //   145: astore_0
-    //   146: invokestatic 33	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   146: invokestatic 37	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   149: ifeq +15 -> 164
     //   152: aload_1
     //   153: astore_0
-    //   154: ldc 35
+    //   154: ldc 39
     //   156: iconst_2
     //   157: aload_2
-    //   158: invokevirtual 113	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   161: invokestatic 41	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   158: invokevirtual 116	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   161: invokestatic 44	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   164: aload_1
     //   165: ifnull +9 -> 174
     //   168: aload_3
     //   169: astore_0
     //   170: aload_1
-    //   171: invokevirtual 105	java/io/BufferedInputStream:close	()V
+    //   171: invokevirtual 108	java/io/BufferedInputStream:close	()V
     //   174: aconst_null
     //   175: areturn
     //   176: astore_1
     //   177: aload_0
     //   178: ifnull +15 -> 193
     //   181: aload_0
-    //   182: invokevirtual 105	java/io/BufferedInputStream:close	()V
+    //   182: invokevirtual 108	java/io/BufferedInputStream:close	()V
     //   185: goto +8 -> 193
     //   188: astore_0
     //   189: aload_0
-    //   190: invokevirtual 108	java/io/IOException:printStackTrace	()V
+    //   190: invokevirtual 111	java/io/IOException:printStackTrace	()V
     //   193: aload_1
     //   194: athrow
     // Local variable table:
@@ -172,42 +172,15 @@ public class PngGifEngine
     //   181	185	188	java/io/IOException
   }
   
-  String a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return "";
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString == null)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      return this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_JavaLangString;
-    }
-    int i = this.jdField_a_of_type_Int + 1;
-    if (i >= this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      PngGifEngine.PngGifTaskParam localPngGifTaskParam = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam;
-      localPngGifTaskParam.jdField_a_of_type_Int -= 1;
-      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_Int <= 0)
-      {
-        this.jdField_a_of_type_Boolean = true;
-        return this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_JavaLangString;
-      }
-      this.jdField_a_of_type_Int = -1;
-      i = this.jdField_a_of_type_Int;
-      return this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString[(i + 1)];
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString[i];
-  }
-  
   public void a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PngGifEngine", 2, "func start.");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam != null)
+    if (this.a != null)
     {
-      if (!a()) {
-        ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+      if (!b()) {
+        ThreadManager.post(this.e, 5, null, true);
       }
       return;
     }
@@ -216,20 +189,47 @@ public class PngGifEngine
   
   public void a(PngGifEngine.PngGifTaskParam paramPngGifTaskParam)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam = paramPngGifTaskParam;
+    this.a = paramPngGifTaskParam;
   }
   
   public void a(String paramString)
   {
-    PngGifEngine.PngGifTaskParam localPngGifTaskParam = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam;
+    PngGifEngine.PngGifTaskParam localPngGifTaskParam = this.a;
     if (localPngGifTaskParam != null) {
-      localPngGifTaskParam.jdField_a_of_type_JavaLangString = paramString;
+      localPngGifTaskParam.d = paramString;
     }
   }
   
-  public boolean a()
+  public boolean b()
   {
-    return this.jdField_a_of_type_Int > -1;
+    return this.b > -1;
+  }
+  
+  String c()
+  {
+    if (this.c) {
+      return "";
+    }
+    if (this.a.c == null)
+    {
+      this.c = true;
+      return this.a.d;
+    }
+    int i = this.b + 1;
+    if (i >= this.a.c.length)
+    {
+      PngGifEngine.PngGifTaskParam localPngGifTaskParam = this.a;
+      localPngGifTaskParam.a -= 1;
+      if (this.a.a <= 0)
+      {
+        this.c = true;
+        return this.a.d;
+      }
+      this.b = -1;
+      i = this.b;
+      return this.a.c[(i + 1)];
+    }
+    return this.a.c[i];
   }
   
   public void handleMsg(Message paramMessage)
@@ -237,16 +237,16 @@ public class PngGifEngine
     if (paramMessage.what != 1) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine$PngGifTaskParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify.a((Bitmap)paramMessage.obj);
+    if (this.a.e != null) {
+      this.a.e.a((Bitmap)paramMessage.obj);
     }
-    this.jdField_a_of_type_Int += 1;
-    ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, null, true);
+    this.b += 1;
+    ThreadManager.post(this.e, 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngGifEngine
  * JD-Core Version:    0.7.0.1
  */

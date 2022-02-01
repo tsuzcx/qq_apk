@@ -80,7 +80,7 @@ public class MsgBoxUtil
         localObject3 = localObject2;
         ((StringBuilder)localObject1).append((String)localObject2);
         localObject3 = localObject2;
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706976));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904818));
         localObject3 = localObject2;
         localObject1 = ((StringBuilder)localObject1).toString();
         break label496;
@@ -98,7 +98,7 @@ public class MsgBoxUtil
         localObject3 = localObject2;
         ((StringBuilder)localObject1).append((String)localObject2);
         localObject3 = localObject2;
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706977));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904819));
         localObject3 = localObject2;
         localObject1 = ((StringBuilder)localObject1).toString();
         break label496;
@@ -116,7 +116,7 @@ public class MsgBoxUtil
         localObject3 = localObject2;
         ((StringBuilder)localObject1).append((String)localObject2);
         localObject3 = localObject2;
-        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706975));
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904817));
         localObject3 = localObject2;
         localObject1 = ((StringBuilder)localObject1).toString();
         break label496;
@@ -151,7 +151,7 @@ public class MsgBoxUtil
           localObject3 = localObject2;
           ((StringBuilder)localObject1).append((String)localObject2);
           localObject3 = localObject2;
-          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706973));
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904815));
           localObject3 = localObject2;
           localObject1 = ((StringBuilder)localObject1).toString();
         }
@@ -166,7 +166,7 @@ public class MsgBoxUtil
             localObject3 = localObject2;
             ((StringBuilder)localObject1).append((String)localObject2);
             localObject3 = localObject2;
-            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706974));
+            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131904816));
             localObject3 = localObject2;
             localObject1 = ((StringBuilder)localObject1).toString();
           }
@@ -218,7 +218,7 @@ public class MsgBoxUtil
   public static boolean a(Message paramMessage, QQAppInterface paramQQAppInterface)
   {
     if (paramMessage.msgtype == -2011) {
-      paramQQAppInterface = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.NEARBY_LBS_HELLO_UIN, 1001, paramMessage.uniseq);
+      paramQQAppInterface = paramQQAppInterface.getMessageProxy(1001).b(AppConstants.NEARBY_LBS_HELLO_UIN, 1001, paramMessage.uniseq);
     } else {
       paramQQAppInterface = null;
     }
@@ -356,7 +356,7 @@ public class MsgBoxUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxUtil
  * JD-Core Version:    0.7.0.1
  */

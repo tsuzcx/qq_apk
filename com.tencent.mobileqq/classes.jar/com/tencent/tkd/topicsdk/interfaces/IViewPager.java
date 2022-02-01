@@ -11,8 +11,6 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IViewPager
   extends Releasable
 {
-  public abstract int a();
-  
   @NotNull
   public abstract View a(@NotNull Context paramContext);
   
@@ -25,10 +23,12 @@ public abstract interface IViewPager
   public abstract void a(@NotNull OnPageChangeListenerProxy paramOnPageChangeListenerProxy);
   
   public abstract void a(boolean paramBoolean);
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.IViewPager
  * JD-Core Version:    0.7.0.1
  */

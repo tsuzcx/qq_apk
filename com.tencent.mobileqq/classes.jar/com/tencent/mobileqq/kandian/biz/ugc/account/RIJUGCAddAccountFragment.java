@@ -16,16 +16,14 @@ import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.base.utils.RIJStringUtils;
 import com.tencent.mobileqq.kandian.base.utils.ReadInJoyDisplayUtils;
 import com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.kandian.biz.ugc.constant.IRIJUGCAddAccountFragmentConst;
 import com.tencent.mobileqq.kandian.biz.viola.view.ViolaLazyFragment;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
 import com.tencent.mobileqq.kandian.repo.common.ReadInJoyUserInfoModule;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.ReadInJoyUserInfo;
-import com.tencent.mobileqq.kandian.repo.xtab.api.IRIJXTabConfigHandler;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.xtab.api.impl.RIJXTabConfigHandler;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.MalformedURLException;
@@ -37,13 +35,13 @@ public class RIJUGCAddAccountFragment
   extends ViolaLazyFragment
   implements IRIJUGCAddAccountFragmentConst
 {
-  static int jdField_a_of_type_Int = 1;
-  private static String jdField_a_of_type_JavaLangString = "RIJUGCAddAccountFragment";
-  private static boolean jdField_a_of_type_Boolean = false;
-  static int jdField_b_of_type_Int = 2;
-  private static boolean jdField_b_of_type_Boolean = false;
+  static int a = 1;
+  static int b = 2;
   static int c = 3;
-  private RIJUGCPopupPtsLiteBuilder jdField_a_of_type_ComTencentMobileqqKandianBizUgcAccountRIJUGCPopupPtsLiteBuilder;
+  private static String d = "RIJUGCAddAccountFragment";
+  private static boolean f;
+  private static boolean g;
+  private RIJUGCPopupPtsLiteBuilder e;
   
   static ReadInJoyUserInfo a(long paramLong)
   {
@@ -52,48 +50,29 @@ public class RIJUGCAddAccountFragment
   
   static String a()
   {
-    ReadInJoyUserInfo localReadInJoyUserInfo = a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-    String str = ReadInJoyUserInfoModule.a();
+    ReadInJoyUserInfo localReadInJoyUserInfo = a(RIJQQAppInterfaceUtil.c());
+    String str = ReadInJoyUserInfoModule.d();
     if (localReadInJoyUserInfo == null)
     {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "RIJUGCAddAccountFragment getNickName getReadInJoyUserInfoByUin is null! ");
+      QLog.d(d, 2, "RIJUGCAddAccountFragment getNickName getReadInJoyUserInfoByUin is null! ");
       return RIJStringUtils.a(str);
     }
     return RIJStringUtils.a(localReadInJoyUserInfo.nick);
-  }
-  
-  static void a()
-  {
-    try
-    {
-      JSONObject localJSONObject = RIJTransMergeKanDianReport.a();
-      localJSONObject.put("uin", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      String str = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("RIJUGCAddAccountFragment ugcAddAccountExposureReport exception: ");
-      localStringBuilder.append(localJSONException.getMessage());
-      QLog.e(str, 2, localStringBuilder.toString());
-    }
   }
   
   static void a(int paramInt)
   {
     try
     {
-      JSONObject localJSONObject = RIJTransMergeKanDianReport.a();
-      localJSONObject.put("uin", ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin());
+      JSONObject localJSONObject = RIJTransMergeKanDianReport.d();
+      localJSONObject.put("uin", RIJQQAppInterfaceUtil.c());
       localJSONObject.put("click_area", paramInt);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEventForMigrate(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800AD89", "0X800AD89", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (JSONException localJSONException)
     {
-      String str = jdField_a_of_type_JavaLangString;
+      String str = d;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("RIJUGCAddAccountFragment ugcAddAccountClickReport exception: ");
       localStringBuilder.append(localJSONException.getMessage());
@@ -104,37 +83,37 @@ public class RIJUGCAddAccountFragment
   static void a(Context paramContext)
   {
     boolean bool;
-    if (a(((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getLongAccountUin()) != null) {
+    if (a(RIJQQAppInterfaceUtil.c()) != null) {
       bool = true;
     } else {
       bool = false;
     }
-    jdField_a_of_type_Boolean = bool;
+    f = bool;
     c(paramContext);
   }
   
   private void a(ViewGroup paramViewGroup)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131380113);
-    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131380114);
-    Object localObject1 = (KandianUrlImageView)paramViewGroup.findViewById(2131369539);
-    Object localObject2 = (KandianUrlImageView)paramViewGroup.findViewById(2131369540);
+    ViewGroup localViewGroup1 = (ViewGroup)paramViewGroup.findViewById(2131449027);
+    ViewGroup localViewGroup2 = (ViewGroup)paramViewGroup.findViewById(2131449028);
+    Object localObject1 = (KandianUrlImageView)paramViewGroup.findViewById(2131436639);
+    Object localObject2 = (KandianUrlImageView)paramViewGroup.findViewById(2131436640);
     paramViewGroup = ((KandianUrlImageView)localObject2).getLayoutParams();
     if ((paramViewGroup instanceof ViewGroup.MarginLayoutParams))
     {
-      ((ViewGroup.MarginLayoutParams)paramViewGroup).topMargin = (ImmersiveUtils.getStatusBarHeight(getQBaseActivity()) + (getResources().getDimensionPixelSize(2131299168) - AIOUtils.b(19.5F, getResources())) / 2);
+      ((ViewGroup.MarginLayoutParams)paramViewGroup).topMargin = (ImmersiveUtils.getStatusBarHeight(getQBaseActivity()) + (getResources().getDimensionPixelSize(2131299920) - AIOUtils.b(19.5F, getResources())) / 2);
       ((KandianUrlImageView)localObject2).setLayoutParams(paramViewGroup);
     }
     paramViewGroup = (ViewGroup.MarginLayoutParams)((KandianUrlImageView)localObject1).getLayoutParams();
     int i;
-    if (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) {
+    if (RIJXTabConfigHandler.INSTANCE.isXTabMode()) {
       i = paramViewGroup.leftMargin + AIOUtils.b(6.0F, getResources());
     } else {
       i = paramViewGroup.leftMargin;
     }
     paramViewGroup.leftMargin = i;
     ((KandianUrlImageView)localObject1).setLayoutParams(paramViewGroup);
-    if (((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) {
+    if (RIJXTabConfigHandler.INSTANCE.isXTabMode()) {
       i = 8;
     } else {
       i = 0;
@@ -144,8 +123,8 @@ public class RIJUGCAddAccountFragment
     {
       try
       {
-        if (!((IRIJXTabConfigHandler)QRoute.api(IRIJXTabConfigHandler.class)).isXTabMode()) {
-          break label318;
+        if (!RIJXTabConfigHandler.INSTANCE.isXTabMode()) {
+          break label297;
         }
         paramViewGroup = "https://pub.idqqimg.com/pc/misc/files/20201030/894f73da508f4e45b4defab92dfa40c2.png";
         ReadInJoyDisplayUtils.a((KandianUrlImageView)localObject1, new URL(paramViewGroup), getQBaseActivity());
@@ -153,34 +132,48 @@ public class RIJUGCAddAccountFragment
       }
       catch (MalformedURLException paramViewGroup)
       {
-        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject1 = d;
         localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("[initView] error, e = ");
         ((StringBuilder)localObject2).append(paramViewGroup);
         QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcAccountRIJUGCPopupPtsLiteBuilder = new RIJUGCPopupPtsLiteBuilder(getQBaseActivity(), localViewGroup2);
+      this.e = new RIJUGCPopupPtsLiteBuilder(getQBaseActivity(), localViewGroup2);
       localViewGroup1.setOnClickListener(new RIJUGCAddAccountFragment.1(this));
       return;
-      label318:
+      label297:
       paramViewGroup = "https://pub.idqqimg.com/pc/misc/files/20200430/21b88f2ba3bd43919173a767982d649d.png";
     }
   }
   
-  public static void b()
+  static void b()
   {
-    ThreadManager.executeOnFileThread(new RIJUGCAddAccountFragment.2());
+    try
+    {
+      JSONObject localJSONObject = RIJTransMergeKanDianReport.d();
+      localJSONObject.put("uin", RIJQQAppInterfaceUtil.c());
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800AD87", "0X800AD87", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      String str = d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RIJUGCAddAccountFragment ugcAddAccountExposureReport exception: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      QLog.e(str, 2, localStringBuilder.toString());
+    }
   }
   
   static void b(Context paramContext)
   {
-    if (TextUtils.isEmpty(RIJQQAppInterfaceUtil.a()))
+    if (TextUtils.isEmpty(RIJQQAppInterfaceUtil.d()))
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "editUGCAccount , but uin is empty !");
-      b = false;
+      QLog.e(d, 2, "editUGCAccount , but uin is empty !");
+      g = false;
       return;
     }
-    b = true;
+    g = true;
     Bundle localBundle = new Bundle();
     localBundle.putString("url", "https://kandian.qq.com/mqq/vue/mainProfile?_wv=3&_bid=3302&source=2");
     localBundle.putBoolean("hide_operation_bar", true);
@@ -192,33 +185,38 @@ public class RIJUGCAddAccountFragment
     }
   }
   
-  private void c()
+  public static void c()
   {
-    a(jdField_a_of_type_Int);
-    a(getQBaseActivity());
-    getQBaseActivity().finish();
+    ThreadManager.executeOnFileThread(new RIJUGCAddAccountFragment.2());
   }
   
   private static void c(@NonNull Context paramContext)
   {
     Intent localIntent = new Intent();
-    localIntent.putExtra("key_ugc_account_create", jdField_a_of_type_Boolean);
-    localIntent.putExtra("key_ugc_account_edit", b);
+    localIntent.putExtra("key_ugc_account_create", f);
+    localIntent.putExtra("key_ugc_account_edit", g);
     if ((paramContext instanceof Activity)) {
       ((Activity)paramContext).setResult(-1, localIntent);
     }
   }
   
+  private void e()
+  {
+    a(a);
+    a(getQBaseActivity());
+    getQBaseActivity().finish();
+  }
+  
   public void doOnBackPressed()
   {
     if (getQBaseActivity() != null) {
-      c();
+      e();
     }
   }
   
   public int getContentViewId()
   {
-    return 2131560300;
+    return 2131626346;
   }
   
   public void initAfterVisible(Bundle paramBundle, ViewGroup paramViewGroup)
@@ -226,7 +224,7 @@ public class RIJUGCAddAccountFragment
     hideTitleBar();
     setStatusBarImmersive();
     a(paramViewGroup);
-    a();
+    b();
   }
   
   public void initBeforeVisible(Bundle paramBundle) {}
@@ -249,12 +247,12 @@ public class RIJUGCAddAccountFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcAccountRIJUGCPopupPtsLiteBuilder.a();
+    this.e.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.account.RIJUGCAddAccountFragment
  * JD-Core Version:    0.7.0.1
  */

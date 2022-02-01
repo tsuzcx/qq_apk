@@ -22,7 +22,7 @@ public final class oidb_0xd4b$QueryKdVideoColumnReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd4b.oidb_0xd4b.QueryKdVideoColumnReq
  * JD-Core Version:    0.7.0.1
  */

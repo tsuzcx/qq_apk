@@ -45,9 +45,9 @@ public class TroopMemberInfoProcessor
     String str2 = "";
     if ((str1 != null) && (str1.length() > 0))
     {
-      int i = paramToServiceMsg.extraData.getInt(ContactUtils.jdField_a_of_type_JavaLangString, ContactUtils.jdField_a_of_type_Int);
-      long l2 = paramToServiceMsg.extraData.getLong(ContactUtils.jdField_b_of_type_JavaLangString, 0L);
-      if (i == ContactUtils.jdField_b_of_type_Int)
+      int i = paramToServiceMsg.extraData.getInt(ContactUtils.a, ContactUtils.b);
+      long l2 = paramToServiceMsg.extraData.getLong(ContactUtils.e, 0L);
+      if (i == ContactUtils.c)
       {
         paramToServiceMsg = ((QQAppInterface)paramAppInterface).getMessageFacade();
         paramMemberLevelInfo = new StringBuilder();
@@ -55,7 +55,7 @@ public class TroopMemberInfoProcessor
         paramMemberLevelInfo.append("");
         paramToServiceMsg = paramToServiceMsg.a(paramMemberLevelInfo.toString(), 1, l2);
         if ((paramToServiceMsg != null) && ((paramToServiceMsg instanceof MessageForUniteGrayTip))) {
-          ((MessageForUniteGrayTip)paramToServiceMsg).updateUniteGrayTipMsg(paramAppInterface, "".concat(BaseApplicationImpl.getApplication().getString(2131694325)));
+          ((MessageForUniteGrayTip)paramToServiceMsg).updateUniteGrayTipMsg(paramAppInterface, "".concat(BaseApplicationImpl.getApplication().getString(2131891963)));
         }
       }
       paramMemberLevelInfo = ColorNickManager.b(str1);
@@ -77,9 +77,9 @@ public class TroopMemberInfoProcessor
     else
     {
       boolean bool = paramToServiceMsg.extraData.getBoolean("needRemark", false);
-      if ((TextUtils.isEmpty("")) && (bool) && (localObject != null) && (((FriendsManager)localObject).b(str3)))
+      if ((TextUtils.isEmpty("")) && (bool) && (localObject != null) && (((FriendsManager)localObject).n(str3)))
       {
-        paramAppInterface = ((FriendsManager)localObject).e(str3);
+        paramAppInterface = ((FriendsManager)localObject).m(str3);
         if (paramAppInterface != null)
         {
           localObject = paramAppInterface.getFriendNickWithoutUin();
@@ -150,7 +150,7 @@ public class TroopMemberInfoProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopMemberInfoProcessor
  * JD-Core Version:    0.7.0.1
  */

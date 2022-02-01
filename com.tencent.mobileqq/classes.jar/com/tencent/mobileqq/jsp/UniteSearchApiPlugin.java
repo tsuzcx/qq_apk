@@ -9,12 +9,12 @@ public class UniteSearchApiPlugin
   extends WebViewPlugin
 {
   public static final String a = "UniteSearchApiPlugin";
-  protected TroopMemberApiClient a = TroopMemberApiClient.a();
+  protected TroopMemberApiClient b = TroopMemberApiClient.a();
   
   public UniteSearchApiPlugin()
   {
     this.mPluginNameSpace = "ftssearch";
-    this.a.a();
+    this.b.e();
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -31,7 +31,7 @@ public class UniteSearchApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UniteSearchApiPlugin
  * JD-Core Version:    0.7.0.1
  */

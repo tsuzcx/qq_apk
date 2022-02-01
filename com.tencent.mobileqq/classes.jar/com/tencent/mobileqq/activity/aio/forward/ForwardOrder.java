@@ -14,13 +14,13 @@ import java.util.Set;
 
 abstract class ForwardOrder
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  String jdField_a_of_type_JavaLangString;
-  HashMap<Long, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  Set<Long> jdField_a_of_type_JavaUtilSet;
+  int a;
   Set<Long> b;
+  Set<Long> c;
+  String d;
+  SessionInfo e;
+  HashMap<Long, Long> f = new HashMap();
+  long g;
   
   long a(Set<Long> paramSet)
   {
@@ -40,20 +40,20 @@ abstract class ForwardOrder
   
   ForwardOrder a(SessionInfo paramSessionInfo, String paramString, List<Long> paramList, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.e = paramSessionInfo;
+    this.d = paramString;
     if (paramList != null)
     {
-      this.jdField_a_of_type_JavaUtilSet = new HashSet(paramList);
       this.b = new HashSet(paramList);
+      this.c = new HashSet(paramList);
       if (QLog.isColorLevel())
       {
         paramSessionInfo = new StringBuilder();
         paramSessionInfo.append("Forward order onPreForward mChatMsgListAfter.size() -> ");
-        paramSessionInfo.append(this.jdField_a_of_type_JavaUtilSet.size());
-        paramSessionInfo.append(", mChatMsgListBefore.size() -> ");
         paramSessionInfo.append(this.b.size());
+        paramSessionInfo.append(", mChatMsgListBefore.size() -> ");
+        paramSessionInfo.append(this.c.size());
         paramSessionInfo.append(", ForwardID -> ");
         paramSessionInfo.append(paramInt);
         QLog.d("ForwardOrderManager", 2, paramSessionInfo.toString());
@@ -70,26 +70,26 @@ abstract class ForwardOrder
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("ForwardOrder onDestroy forward id -> ");
-        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(this.a);
         QLog.d("ForwardOrderManager", 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-      this.jdField_a_of_type_JavaLangString = "";
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_JavaUtilSet != null)
-      {
-        this.jdField_a_of_type_JavaUtilSet.clear();
-        this.jdField_a_of_type_JavaUtilSet = null;
-      }
+      this.e = null;
+      this.d = "";
+      this.g = 0L;
       if (this.b != null)
       {
         this.b.clear();
         this.b = null;
       }
-      if (this.jdField_a_of_type_JavaUtilHashMap != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilHashMap = null;
+        this.c.clear();
+        this.c = null;
+      }
+      if (this.f != null)
+      {
+        this.f.clear();
+        this.f = null;
       }
       return;
     }
@@ -108,9 +108,9 @@ abstract class ForwardOrder
         localStringBuilder.append(paramLong);
         QLog.d("ForwardOrderManager", 2, localStringBuilder.toString());
       }
-      if (this.jdField_a_of_type_JavaUtilSet != null)
+      if (this.b != null)
       {
-        this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong));
+        this.b.add(Long.valueOf(paramLong));
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -119,9 +119,9 @@ abstract class ForwardOrder
           QLog.d("ForwardOrderManager", 2, localStringBuilder.toString());
         }
       }
-      if (this.b != null)
+      if (this.c != null)
       {
-        this.b.add(Long.valueOf(paramLong));
+        this.c.add(Long.valueOf(paramLong));
         if (QLog.isColorLevel())
         {
           localStringBuilder = new StringBuilder();
@@ -136,36 +136,6 @@ abstract class ForwardOrder
   }
   
   abstract void a(long paramLong1, long paramLong2);
-  
-  void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    try
-    {
-      if ((this.b != null) && (this.b.size() > 0))
-      {
-        Iterator localIterator = this.b.iterator();
-        while (localIterator.hasNext()) {
-          if (((Long)localIterator.next()).longValue() == paramLong) {
-            localIterator.remove();
-          }
-        }
-        if ((this.b.size() <= 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
-        {
-          paramQQAppInterface = ChatActivityFacade.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_JavaLangString = "";
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
-            this.jdField_a_of_type_Long = paramQQAppInterface[0];
-          }
-        }
-      }
-      return;
-    }
-    finally {}
-    for (;;)
-    {
-      throw paramQQAppInterface;
-    }
-  }
   
   abstract void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord);
   
@@ -200,37 +170,67 @@ abstract class ForwardOrder
   {
     try
     {
-      if ((this.jdField_a_of_type_JavaUtilSet != null) && (this.jdField_a_of_type_JavaUtilSet.size() > 0) && (this.jdField_a_of_type_JavaUtilSet.contains(Long.valueOf(paramLong1))))
+      if ((this.b != null) && (this.b.size() > 0) && (this.b.contains(Long.valueOf(paramLong1))))
       {
-        this.jdField_a_of_type_JavaUtilSet.remove(Long.valueOf(paramLong1));
-        this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong2));
+        this.b.remove(Long.valueOf(paramLong1));
+        this.b.add(Long.valueOf(paramLong2));
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("Forward order replaceOriginChatMsg mChatMsgListAfter.size() -> ");
-          localStringBuilder.append(this.jdField_a_of_type_JavaUtilSet.size());
+          localStringBuilder.append(this.b.size());
           localStringBuilder.append(", mChatMsgListAfter remove uniSeq -> ");
           localStringBuilder.append(paramLong1);
           localStringBuilder.append(", mChatMsgListAfter add uniSeq -> ");
           localStringBuilder.append(paramLong2);
           localStringBuilder.append(", ForwardID -> ");
-          localStringBuilder.append(this.jdField_a_of_type_Int);
+          localStringBuilder.append(this.a);
           QLog.d("ForwardOrderManager", 2, localStringBuilder.toString());
         }
       }
-      if ((this.b != null) && (this.b.size() > 0) && (this.b.contains(Long.valueOf(paramLong1))))
+      if ((this.c != null) && (this.c.size() > 0) && (this.c.contains(Long.valueOf(paramLong1))))
       {
-        this.b.remove(Long.valueOf(paramLong1));
-        this.b.add(Long.valueOf(paramLong2));
+        this.c.remove(Long.valueOf(paramLong1));
+        this.c.add(Long.valueOf(paramLong2));
       }
       return;
     }
     finally {}
   }
+  
+  void b(QQAppInterface paramQQAppInterface, long paramLong)
+  {
+    try
+    {
+      if ((this.c != null) && (this.c.size() > 0))
+      {
+        Iterator localIterator = this.c.iterator();
+        while (localIterator.hasNext()) {
+          if (((Long)localIterator.next()).longValue() == paramLong) {
+            localIterator.remove();
+          }
+        }
+        if ((this.c.size() <= 0) && (!TextUtils.isEmpty(this.d)) && (this.e != null))
+        {
+          paramQQAppInterface = ChatActivityFacade.c(paramQQAppInterface, this.e, this.d);
+          this.d = "";
+          if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+            this.g = paramQQAppInterface[0];
+          }
+        }
+      }
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramQQAppInterface;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.forward.ForwardOrder
  * JD-Core Version:    0.7.0.1
  */

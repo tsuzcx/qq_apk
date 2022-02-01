@@ -10,19 +10,19 @@ class QQARSession$26
   
   public void run()
   {
-    ArCloudConfigInfo localArCloudConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
+    ArCloudConfigInfo localArCloudConfigInfo = this.a;
     if ((localArCloudConfigInfo != null) && (localArCloudConfigInfo.a()))
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       if ((i != 100) && (i != 101)) {
-        QQARSession.a(this.this$0).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
+        QQARSession.h(this.this$0).a(null, this.a, this.b, this.c, this.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.26
  * JD-Core Version:    0.7.0.1
  */

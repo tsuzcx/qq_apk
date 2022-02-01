@@ -34,19 +34,19 @@ import tencent.im.msg.im_msg_body.RichText;
 public class DevLittleVideoSendOperator
   implements UpCallBack, IShortVideoOperator
 {
-  protected Handler a;
   public BaseQQAppInterface a;
-  public MessageRecord a;
-  public ShortVideoReq a;
-  protected UiCallBack a;
-  public String a;
-  public String b;
+  public ShortVideoReq b;
+  protected UiCallBack c;
+  public String d;
+  public String e;
+  public MessageRecord f;
+  protected Handler g;
   
   public DevLittleVideoSendOperator() {}
   
   public DevLittleVideoSendOperator(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
   }
   
   public MessageRecord a(ShortVideoForwardInfo paramShortVideoForwardInfo)
@@ -57,46 +57,46 @@ public class DevLittleVideoSendOperator
   public MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo)
   {
     long l = System.currentTimeMillis();
-    MessageForDevLittleVideo localMessageForDevLittleVideo = MessageRecordFactory.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, paramShortVideoUploadInfo.jdField_c_of_type_JavaLangString, paramShortVideoUploadInfo.jdField_d_of_type_JavaLangString, paramShortVideoUploadInfo.b);
-    localMessageForDevLittleVideo.videoFileName = paramShortVideoUploadInfo.h;
-    if (paramShortVideoUploadInfo.jdField_a_of_type_JavaLangString == null) {
-      paramShortVideoUploadInfo.jdField_a_of_type_JavaLangString = "";
+    MessageForDevLittleVideo localMessageForDevLittleVideo = MessageRecordFactory.d((QQAppInterface)this.a, paramShortVideoUploadInfo.e, paramShortVideoUploadInfo.f, paramShortVideoUploadInfo.c);
+    localMessageForDevLittleVideo.videoFileName = paramShortVideoUploadInfo.l;
+    if (paramShortVideoUploadInfo.a == null) {
+      paramShortVideoUploadInfo.a = "";
     }
-    localMessageForDevLittleVideo.uuid = paramShortVideoUploadInfo.jdField_a_of_type_JavaLangString;
-    if (paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString == null) {
-      paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString = "";
+    localMessageForDevLittleVideo.uuid = paramShortVideoUploadInfo.a;
+    if (paramShortVideoUploadInfo.i == null) {
+      paramShortVideoUploadInfo.i = "";
     }
-    localMessageForDevLittleVideo.mediacodecEncode = paramShortVideoUploadInfo.jdField_d_of_type_Boolean;
-    localMessageForDevLittleVideo.md5 = paramShortVideoUploadInfo.jdField_e_of_type_JavaLangString;
+    localMessageForDevLittleVideo.mediacodecEncode = paramShortVideoUploadInfo.A;
+    localMessageForDevLittleVideo.md5 = paramShortVideoUploadInfo.i;
     localMessageForDevLittleVideo.videoFileFormat = 2;
-    localMessageForDevLittleVideo.videoFileSize = paramShortVideoUploadInfo.jdField_e_of_type_Int;
-    localMessageForDevLittleVideo.videoFileTime = paramShortVideoUploadInfo.f;
-    localMessageForDevLittleVideo.thumbWidth = paramShortVideoUploadInfo.jdField_c_of_type_Int;
-    localMessageForDevLittleVideo.thumbHeight = paramShortVideoUploadInfo.jdField_d_of_type_Int;
-    localMessageForDevLittleVideo.mThumbFilePath = paramShortVideoUploadInfo.j;
-    localMessageForDevLittleVideo.mVideoFileSourceDir = paramShortVideoUploadInfo.k;
+    localMessageForDevLittleVideo.videoFileSize = paramShortVideoUploadInfo.q;
+    localMessageForDevLittleVideo.videoFileTime = paramShortVideoUploadInfo.r;
+    localMessageForDevLittleVideo.thumbWidth = paramShortVideoUploadInfo.o;
+    localMessageForDevLittleVideo.thumbHeight = paramShortVideoUploadInfo.p;
+    localMessageForDevLittleVideo.mThumbFilePath = paramShortVideoUploadInfo.n;
+    localMessageForDevLittleVideo.mVideoFileSourceDir = paramShortVideoUploadInfo.u;
     localMessageForDevLittleVideo.videoFileStatus = 1001;
     localMessageForDevLittleVideo.videoFileProgress = 0;
     localMessageForDevLittleVideo.extraflag = 32772;
-    localMessageForDevLittleVideo.thumbMD5 = paramShortVideoUploadInfo.jdField_g_of_type_JavaLangString;
-    if (paramShortVideoUploadInfo.l == null) {
-      paramShortVideoUploadInfo.l = "";
+    localMessageForDevLittleVideo.thumbMD5 = paramShortVideoUploadInfo.k;
+    if (paramShortVideoUploadInfo.v == null) {
+      paramShortVideoUploadInfo.v = "";
     }
-    localMessageForDevLittleVideo.fileSource = paramShortVideoUploadInfo.l;
+    localMessageForDevLittleVideo.fileSource = paramShortVideoUploadInfo.v;
     localMessageForDevLittleVideo.lastModified = 0L;
     localMessageForDevLittleVideo.issend = 1;
     localMessageForDevLittleVideo.uiOperatorFlag = 1;
-    localMessageForDevLittleVideo.msg = HardCodeUtil.a(2131703404);
+    localMessageForDevLittleVideo.msg = HardCodeUtil.a(2131901363);
     localMessageForDevLittleVideo.serial();
-    paramShortVideoUploadInfo.jdField_a_of_type_Long = localMessageForDevLittleVideo.uniseq;
-    paramShortVideoUploadInfo = this.b;
-    String str = this.jdField_a_of_type_JavaLangString;
+    paramShortVideoUploadInfo.g = localMessageForDevLittleVideo.uniseq;
+    paramShortVideoUploadInfo = this.e;
+    String str = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("cost:");
     localStringBuilder.append(System.currentTimeMillis() - l);
     Logger.a(paramShortVideoUploadInfo, str, "packmsg", localStringBuilder.toString());
-    paramShortVideoUploadInfo = this.b;
-    str = this.jdField_a_of_type_JavaLangString;
+    paramShortVideoUploadInfo = this.e;
+    str = this.d;
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("mr: ");
     localStringBuilder.append(localMessageForDevLittleVideo.toLogString());
@@ -108,19 +108,14 @@ public class DevLittleVideoSendOperator
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-  }
-  
-  public ShortVideoForwardInfo a(Object paramObject, ShortVideoReq paramShortVideoReq)
-  {
-    return null;
+    return this.f;
   }
   
   public ShortVideoUploadInfo a(Object paramObject, ShortVideoReq paramShortVideoReq)
   {
     if (paramObject == null)
     {
-      Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "createShortVideoUploadInfo", "unknow obj");
+      Logger.a(this.e, this.d, "createShortVideoUploadInfo", "unknow obj");
       return null;
     }
     boolean bool = paramObject instanceof Intent;
@@ -188,23 +183,23 @@ public class DevLittleVideoSendOperator
       bool = false;
     }
     ShortVideoUploadInfo localShortVideoUploadInfo = new ShortVideoUploadInfo();
-    localShortVideoUploadInfo.jdField_c_of_type_JavaLangString = str2;
-    localShortVideoUploadInfo.h = ((String)localObject1);
-    localShortVideoUploadInfo.j = ((String)localObject2);
-    localShortVideoUploadInfo.b = j;
-    localShortVideoUploadInfo.jdField_d_of_type_JavaLangString = str4;
-    localShortVideoUploadInfo.jdField_e_of_type_Int = ((int)l);
-    localShortVideoUploadInfo.f = i;
-    localShortVideoUploadInfo.jdField_e_of_type_JavaLangString = ((String)localObject3);
-    localShortVideoUploadInfo.jdField_d_of_type_Boolean = bool;
-    localShortVideoUploadInfo.jdField_c_of_type_Int = k;
-    localShortVideoUploadInfo.jdField_d_of_type_Int = m;
-    localShortVideoUploadInfo.jdField_g_of_type_Int = paramShortVideoReq.jdField_a_of_type_Int;
-    localShortVideoUploadInfo.jdField_a_of_type_JavaLangObject = paramObject;
-    localShortVideoUploadInfo.jdField_g_of_type_JavaLangString = str1;
-    localShortVideoUploadInfo.l = str3;
-    localShortVideoUploadInfo.k = ((String)localObject4);
-    Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "createShortVideoUploadInfo", "");
+    localShortVideoUploadInfo.e = str2;
+    localShortVideoUploadInfo.l = ((String)localObject1);
+    localShortVideoUploadInfo.n = ((String)localObject2);
+    localShortVideoUploadInfo.c = j;
+    localShortVideoUploadInfo.f = str4;
+    localShortVideoUploadInfo.q = ((int)l);
+    localShortVideoUploadInfo.r = i;
+    localShortVideoUploadInfo.i = ((String)localObject3);
+    localShortVideoUploadInfo.A = bool;
+    localShortVideoUploadInfo.o = k;
+    localShortVideoUploadInfo.p = m;
+    localShortVideoUploadInfo.t = paramShortVideoReq.a;
+    localShortVideoUploadInfo.s = paramObject;
+    localShortVideoUploadInfo.k = str1;
+    localShortVideoUploadInfo.v = str3;
+    localShortVideoUploadInfo.u = ((String)localObject4);
+    Logger.a(this.e, this.d, "createShortVideoUploadInfo", "");
     return localShortVideoUploadInfo;
   }
   
@@ -214,22 +209,22 @@ public class DevLittleVideoSendOperator
     localMessage.what = paramInt1;
     localMessage.arg1 = paramInt2;
     localMessage.obj = paramObject;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    this.g.sendMessage(localMessage);
   }
   
   protected void a(int paramInt, PicInfoInterface.ErrInfo paramErrInfo)
   {
     ShortVideoResult localShortVideoResult = new ShortVideoResult();
-    localShortVideoResult.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq;
-    localShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = paramErrInfo;
-    localShortVideoResult.jdField_a_of_type_Int = -1;
+    localShortVideoResult.c = this.b;
+    localShortVideoResult.b = paramErrInfo;
+    localShortVideoResult.a = -1;
     a(paramInt, -1, localShortVideoResult);
     if (paramErrInfo != null)
     {
-      Logger.b(this.b, this.jdField_a_of_type_JavaLangString, paramErrInfo.jdField_a_of_type_JavaLangString, paramErrInfo.b);
+      Logger.b(this.e, this.d, paramErrInfo.a, paramErrInfo.b);
       return;
     }
-    Logger.b(this.b, this.jdField_a_of_type_JavaLangString, "handleError", "unkown err,err == null");
+    Logger.b(this.e, this.d, "handleError", "unkown err,err == null");
   }
   
   protected void a(int paramInt, ShortVideoResult paramShortVideoResult)
@@ -238,11 +233,11 @@ public class DevLittleVideoSendOperator
     if (paramShortVideoResult == null) {
       localObject = new ShortVideoResult();
     }
-    ((ShortVideoResult)localObject).jdField_a_of_type_Int = 0;
-    ((ShortVideoResult)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq;
+    ((ShortVideoResult)localObject).a = 0;
+    ((ShortVideoResult)localObject).c = this.b;
     a(paramInt, 0, localObject);
-    paramShortVideoResult = this.b;
-    localObject = this.jdField_a_of_type_JavaLangString;
+    paramShortVideoResult = this.e;
+    localObject = this.d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("what:");
     localStringBuilder.append(paramInt);
@@ -251,7 +246,7 @@ public class DevLittleVideoSendOperator
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface = paramBaseQQAppInterface;
+    this.a = paramBaseQQAppInterface;
   }
   
   public void a(MessageRecord paramMessageRecord)
@@ -259,54 +254,31 @@ public class DevLittleVideoSendOperator
     if (paramMessageRecord == null) {
       return;
     }
-    ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IOrderMediaMsgService.class)).addOrderMsg(paramMessageRecord, ((MessageForShortVideo)paramMessageRecord).videoFileName);
+    ((IOrderMediaMsgService)this.a.getRuntimeService(IOrderMediaMsgService.class)).addOrderMsg(paramMessageRecord, ((MessageForShortVideo)paramMessageRecord).videoFileName);
   }
   
   public void a(UpCallBack.SendResult paramSendResult) {}
   
-  public void a(ShortVideoForwardInfo paramShortVideoForwardInfo) {}
-  
   public void a(ShortVideoReq paramShortVideoReq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq = paramShortVideoReq;
-  }
-  
-  public void a(ShortVideoUploadInfo paramShortVideoUploadInfo)
-  {
-    Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "sendPic.start", "");
-    ThreadManager.getSubThreadHandler().post(new DevLittleVideoSendOperator.1(this, paramShortVideoUploadInfo));
+    this.b = paramShortVideoReq;
   }
   
   public void a(UiCallBack paramUiCallBack)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoUiCallBack = paramUiCallBack;
+    this.c = paramUiCallBack;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.d = paramString;
   }
   
   public void a(ArrayList<ShortVideoForwardInfo> paramArrayList) {}
   
-  boolean a(String paramString)
+  public ShortVideoForwardInfo b(Object paramObject, ShortVideoReq paramShortVideoReq)
   {
-    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
-    DeviceInfo localDeviceInfo = localSmartDeviceProxyMgr.a(Long.parseLong(paramString));
-    if (localDeviceInfo == null) {
-      return false;
-    }
-    if (localSmartDeviceProxyMgr.a(Long.parseLong(paramString)).booleanValue()) {
-      return true;
-    }
-    if (localDeviceInfo.SSOBid_Platform == 1027) {
-      return true;
-    }
-    if ((localDeviceInfo.SSOBid_Platform == 0) && (localDeviceInfo.SSOBid_Version.equals(""))) {
-      return true;
-    }
-    paramString = localDeviceInfo.SSOBid_Version;
-    return (!StringUtil.a(paramString)) && (Double.valueOf(paramString).doubleValue() >= 1.3D);
+    return null;
   }
   
   public void b(UpCallBack.SendResult paramSendResult)
@@ -316,28 +288,56 @@ public class DevLittleVideoSendOperator
       a(2, null);
       return;
     }
-    if (paramSendResult.jdField_a_of_type_Int == 0)
+    if (paramSendResult.a == 0)
     {
       a(paramSendResult);
       localObject = new ShortVideoResult();
-      ((ShortVideoResult)localObject).jdField_a_of_type_Int = 0;
-      ((ShortVideoResult)localObject).jdField_a_of_type_JavaLangObject = paramSendResult;
+      ((ShortVideoResult)localObject).a = 0;
+      ((ShortVideoResult)localObject).d = paramSendResult;
       a(2, (ShortVideoResult)localObject);
       return;
     }
     Object localObject = new PicInfoInterface.ErrInfo();
-    ((PicInfoInterface.ErrInfo)localObject).b = paramSendResult.jdField_a_of_type_JavaLangString;
+    ((PicInfoInterface.ErrInfo)localObject).b = paramSendResult.c;
     a(2, (PicInfoInterface.ErrInfo)localObject);
+  }
+  
+  public void b(ShortVideoForwardInfo paramShortVideoForwardInfo) {}
+  
+  public void b(ShortVideoUploadInfo paramShortVideoUploadInfo)
+  {
+    Logger.a(this.e, this.d, "sendPic.start", "");
+    ThreadManager.getSubThreadHandler().post(new DevLittleVideoSendOperator.1(this, paramShortVideoUploadInfo));
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.e = paramString;
+  }
+  
+  boolean c(String paramString)
+  {
+    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
+    DeviceInfo localDeviceInfo = localSmartDeviceProxyMgr.g(Long.parseLong(paramString));
+    if (localDeviceInfo == null) {
+      return false;
+    }
+    if (localSmartDeviceProxyMgr.f(Long.parseLong(paramString)).booleanValue()) {
+      return true;
+    }
+    if (localDeviceInfo.SSOBid_Platform == 1027) {
+      return true;
+    }
+    if ((localDeviceInfo.SSOBid_Platform == 0) && (localDeviceInfo.SSOBid_Version.equals(""))) {
+      return true;
+    }
+    paramString = localDeviceInfo.SSOBid_Version;
+    return (!StringUtil.isEmpty(paramString)) && (Double.valueOf(paramString).doubleValue() >= 1.3D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.file.DevLittleVideoSendOperator
  * JD-Core Version:    0.7.0.1
  */

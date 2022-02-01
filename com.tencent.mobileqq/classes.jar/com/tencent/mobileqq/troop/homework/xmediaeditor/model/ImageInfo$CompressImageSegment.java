@@ -10,23 +10,23 @@ import cooperation.troop_homework.jsp.TroopHWJsPlugin;
 public class ImageInfo$CompressImageSegment
   extends JobSegment<ImageInfo, ImageInfo>
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
+  private int a;
+  private boolean b;
   
   public ImageInfo$CompressImageSegment(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramInt;
   }
   
   protected void a(JobContext paramJobContext, ImageInfo paramImageInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(paramImageInfo.f) });
+      QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment start. info status=", Integer.valueOf(paramImageInfo.o) });
     }
-    ImageInfo.b();
+    ImageInfo.h();
     try
     {
-      String str = TroopHWJsPlugin.a(-1, paramImageInfo.a, this.jdField_a_of_type_Int, null);
+      String str = TroopHWJsPlugin.a(-1, paramImageInfo.a, this.a, null);
       if (FileUtils.fileExistsAndNotEmpty(str))
       {
         paramImageInfo.c = str;
@@ -43,7 +43,7 @@ public class ImageInfo$CompressImageSegment
         break label234;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(paramImageInfo.f) });
+        QLog.d("CompressImageSegment", 2, new Object[] { "CompressImageSegment notifyResult. info status=", Integer.valueOf(paramImageInfo.o) });
       }
       notifyResult(paramImageInfo);
       return;
@@ -62,9 +62,9 @@ public class ImageInfo$CompressImageSegment
     QLog.e("CompressImageSegment", 1, "CompressImageSegment error. OutOfMemoryError");
     URLDrawable.clearMemoryCache();
     System.gc();
-    if (!this.jdField_a_of_type_Boolean)
+    if (!this.b)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.b = true;
       a(paramJobContext, paramImageInfo);
       return;
     }
@@ -78,7 +78,7 @@ public class ImageInfo$CompressImageSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.CompressImageSegment
  * JD-Core Version:    0.7.0.1
  */

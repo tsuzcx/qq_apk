@@ -19,11 +19,11 @@ class ChatHistoryTroopMemberFragment$50
   {
     try
     {
-      localObject4 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject4 = this.this$0.bc.getEntityManagerFactory().createEntityManager();
       if (localObject4 == null) {
         break label177;
       }
-      localObject1 = ((EntityManager)localObject4).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.c }, null, null, null, null);
+      localObject1 = ((EntityManager)localObject4).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.this$0.w }, null, null, null, null);
       ((EntityManager)localObject4).close();
     }
     finally
@@ -47,16 +47,16 @@ class ChatHistoryTroopMemberFragment$50
       while (((Iterator)localObject1).hasNext()) {
         ((ArrayList)localObject4).add(((TroopMemberInfo)((Iterator)localObject1).next()).memberuin);
       }
-      localObject1 = this.this$0.jdField_b_of_type_AndroidOsHandler.obtainMessage();
+      localObject1 = this.this$0.bn.obtainMessage();
       ((Message)localObject1).what = 8;
-      ((Message)localObject1).obj = new Object[] { Boolean.valueOf(this.this$0.d), localObject4 };
-      this.this$0.jdField_b_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
+      ((Message)localObject1).obj = new Object[] { Boolean.valueOf(this.this$0.t), localObject4 };
+      this.this$0.bn.sendMessage((Message)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.50
  * JD-Core Version:    0.7.0.1
  */

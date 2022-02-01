@@ -14,12 +14,12 @@ class WebStateReporter$2
   public void run()
   {
     int i;
-    if (WebStateReporter.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      i = ((Integer)WebStateReporter.a.get(this.jdField_a_of_type_JavaLangString)).intValue();
+    if (WebStateReporter.a.containsKey(this.a)) {
+      i = ((Integer)WebStateReporter.a.get(this.a)).intValue();
     } else {
       i = 10;
     }
-    if ((1 != i) && (this.jdField_a_of_type_Long % i != WebStateReporter.c)) {
+    if ((1 != i) && (this.b % i != WebStateReporter.i)) {
       i = 0;
     } else {
       i = 1;
@@ -31,7 +31,7 @@ class WebStateReporter$2
     String str2;
     try
     {
-      localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
+      localObject = Uri.parse(this.a);
       String str1 = str3;
       if (localObject != null)
       {
@@ -42,7 +42,7 @@ class WebStateReporter$2
         if (!str1.endsWith("qq.com")) {
           return;
         }
-        str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString);
+        str1 = URLEncoder.encode(this.a);
       }
     }
     catch (Exception localException)
@@ -54,26 +54,26 @@ class WebStateReporter$2
       return;
     }
     Object localObject = new StringBuilder();
-    if (this.this$0.b == 13) {
+    if (this.this$0.d == 13) {
       str3 = "1";
     } else {
       str3 = "0";
     }
     ((StringBuilder)localObject).append(str3);
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(String.valueOf(-this.jdField_a_of_type_Int));
+    ((StringBuilder)localObject).append(String.valueOf(-this.c));
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(str2);
     ((StringBuilder)localObject).append("|");
     ((StringBuilder)localObject).append(str2);
     ((StringBuilder)localObject).append("|");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(this.c);
     DcReportUtil.a(null, "dc00757", ((StringBuilder)localObject).toString(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter.2
  * JD-Core Version:    0.7.0.1
  */

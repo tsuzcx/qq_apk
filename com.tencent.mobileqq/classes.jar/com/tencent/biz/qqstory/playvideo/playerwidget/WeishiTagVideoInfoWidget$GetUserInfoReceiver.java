@@ -16,10 +16,10 @@ public class WeishiTagVideoInfoWidget$GetUserInfoReceiver
   
   public void a(@NonNull WeishiTagVideoInfoWidget paramWeishiTagVideoInfoWidget, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (paramUpdateUserInfoEvent.a.isSuccess())
+    if (paramUpdateUserInfoEvent.g.isSuccess())
     {
       SLog.a(this.TAG, "receive user info event. %s.", paramUpdateUserInfoEvent.toString());
-      paramWeishiTagVideoInfoWidget.i();
+      paramWeishiTagVideoInfoWidget.x();
     }
   }
   

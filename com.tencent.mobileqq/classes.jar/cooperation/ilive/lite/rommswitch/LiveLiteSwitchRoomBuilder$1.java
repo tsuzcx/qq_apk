@@ -13,22 +13,22 @@ class LiveLiteSwitchRoomBuilder$1
   
   public ChannelInterface getChannel()
   {
-    return (ChannelInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(ChannelInterface.class);
+    return (ChannelInterface)this.a.getService(ChannelInterface.class);
   }
   
   public HttpInterface getHttpInterface()
   {
-    return (HttpInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HttpInterface.class);
+    return (HttpInterface)this.a.getService(HttpInterface.class);
   }
   
   public LogInterface getLogger()
   {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
+    return (LogInterface)this.a.getService(LogInterface.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.rommswitch.LiveLiteSwitchRoomBuilder.1
  * JD-Core Version:    0.7.0.1
  */

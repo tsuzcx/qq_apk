@@ -36,17 +36,17 @@ import mqq.os.MqqHandler;
 
 public class AEGifMaterialManager
 {
-  private static final AEGifMaterialManager jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager = new AEGifMaterialManager();
-  private static final Type jdField_a_of_type_JavaLangReflectType = new AEGifMaterialManager.1().getType();
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<AEGifCategoryWrapper> jdField_a_of_type_JavaUtilList = new LinkedList();
-  private Map<String, WeakReference<AEGifMaterialManager.DownloadCallback>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private Map<String, MetaMaterial> b = new HashMap();
+  private static final AEGifMaterialManager a = new AEGifMaterialManager();
+  private static final Type b = new AEGifMaterialManager.1().getType();
+  private String c = "";
+  private final Object d = new Object();
+  private List<AEGifCategoryWrapper> e = new LinkedList();
+  private Map<String, WeakReference<AEGifMaterialManager.DownloadCallback>> f = new ConcurrentHashMap();
+  private Map<String, MetaMaterial> g = new HashMap();
   
   public static AEGifMaterialManager a()
   {
-    return jdField_a_of_type_ComTencentAelightCameraAeDataAEGifMaterialManager;
+    return a;
   }
   
   @Nullable
@@ -56,159 +56,6 @@ public class AEGifMaterialManager
       return null;
     }
     return (String)paramMetaCategory.dynamicFields.get(paramString);
-  }
-  
-  @WorkerThread
-  private List<AEGifCategoryWrapper> a()
-  {
-    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync]");
-    File localFile1 = new File(AEPath.GIF.jdField_a_of_type_JavaLangString);
-    File localFile2 = new File(AEPath.GIF.b);
-    if (!localFile2.exists())
-    {
-      AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], updateConfigFile not exists");
-      if (!localFile1.exists())
-      {
-        AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile not exists");
-        AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqEmoCamera", 4);
-        return new LinkedList();
-      }
-      AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile exists");
-      return a(a(FileUtils.readFileContent(localFile1)));
-    }
-    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], updateConfigFile exists");
-    if (!localFile1.exists())
-    {
-      AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile not exists");
-      localList1 = a(FileUtils.readFileContent(localFile2));
-      a(localList1);
-      FileUtils.moveFile(localFile2.getPath(), localFile1.getPath());
-      return localList1;
-    }
-    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile exists");
-    List localList1 = a(FileUtils.readFileContent(localFile1));
-    List localList2 = a(FileUtils.readFileContent(localFile2));
-    a(localList1, localList2);
-    a(localList2);
-    FileUtils.deleteFile(localFile1.getPath());
-    FileUtils.moveFile(localFile2.getPath(), localFile1.getPath());
-    return localList2;
-  }
-  
-  @NonNull
-  private List<AEGifCategoryWrapper> a(@Nullable String paramString)
-  {
-    AEQLog.a("AEGifMaterialManager", "[parseGifCategoryFromJson]");
-    if (TextUtils.isEmpty(paramString))
-    {
-      AEQLog.d("AEGifMaterialManager", "[parseGifCategoryFromJson] jsonString is empty");
-      return new LinkedList();
-    }
-    GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)GsonUtils.json2Obj(paramString, jdField_a_of_type_JavaLangReflectType);
-    if ((localGetCategoryMaterialRsp != null) && (!CollectionUtils.isEmpty(localGetCategoryMaterialRsp.Categories)))
-    {
-      LinkedList localLinkedList1 = new LinkedList();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      while (i < localGetCategoryMaterialRsp.Categories.size())
-      {
-        MetaCategory localMetaCategory = (MetaCategory)localGetCategoryMaterialRsp.Categories.get(i);
-        if ((localMetaCategory != null) && (!CollectionUtils.isEmpty(localMetaCategory.materials)))
-        {
-          LinkedList localLinkedList2 = new LinkedList();
-          int j = 0;
-          while (j < localMetaCategory.materials.size())
-          {
-            Object localObject = (MetaMaterial)localMetaCategory.materials.get(j);
-            if ((localObject != null) && (!TextUtils.isEmpty(((MetaMaterial)localObject).id)))
-            {
-              Map localMap = ((MetaMaterial)localObject).additionalFields;
-              if (localHashMap.get(((MetaMaterial)localObject).id) == null)
-              {
-                paramString = new AEMaterialWrapper();
-                paramString.jdField_a_of_type_JavaLangString = ((MetaMaterial)localObject).id;
-                paramString.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial = ((MetaMaterial)localObject);
-                if (localMap != null)
-                {
-                  paramString.b = ((String)localMap.get("minimum_device_level"));
-                  paramString.c = ((String)localMap.get("shield_devices"));
-                }
-                paramString.jdField_a_of_type_Boolean = a(paramString);
-                if (paramString.jdField_a_of_type_Boolean)
-                {
-                  localHashMap.put(((MetaMaterial)localObject).id, paramString);
-                }
-                else
-                {
-                  localObject = new StringBuilder();
-                  ((StringBuilder)localObject).append("can not add gif material id: ");
-                  ((StringBuilder)localObject).append(paramString.jdField_a_of_type_JavaLangString);
-                  AEQLog.a("AEGifMaterialManager", ((StringBuilder)localObject).toString());
-                }
-              }
-              else
-              {
-                paramString = (AEMaterialWrapper)localHashMap.get(((MetaMaterial)localObject).id);
-              }
-              if (paramString.jdField_a_of_type_Boolean) {
-                localLinkedList2.add(paramString);
-              }
-            }
-            j += 1;
-          }
-          if (CollectionUtils.isEmpty(localLinkedList2))
-          {
-            paramString = new StringBuilder();
-            paramString.append("[parseGifCategoryFromJson] materialWrapperList is empty, categoryId=");
-            paramString.append(localMetaCategory.id);
-            AEQLog.d("AEGifMaterialManager", paramString.toString());
-          }
-          else
-          {
-            paramString = new AEGifCategoryWrapper();
-            paramString.categoryId = localMetaCategory.id;
-            paramString.categoryName = localMetaCategory.name;
-            paramString.materialWrapperList = localLinkedList2;
-            paramString.showCategory = a(localMetaCategory);
-            paramString.fontId = a(localMetaCategory, "font_id");
-            localLinkedList1.add(paramString);
-          }
-        }
-        i += 1;
-      }
-      return localLinkedList1;
-    }
-    AEQLog.d("AEGifMaterialManager", "[parseGifCategoryFromJson] parsed response is empty");
-    return new LinkedList();
-  }
-  
-  private List<AEGifCategoryWrapper> a(@NonNull List<AEGifCategoryWrapper> paramList)
-  {
-    AEQLog.a("AEGifMaterialManager", "[updateMaterialStatus]");
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (AEGifCategoryWrapper)localIterator.next();
-      if ((localObject != null) && (!CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject).materialWrapperList)))
-      {
-        localObject = ((AEGifCategoryWrapper)localObject).materialWrapperList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          AEMaterialWrapper localAEMaterialWrapper = (AEMaterialWrapper)((Iterator)localObject).next();
-          if ((localAEMaterialWrapper != null) && (!TextUtils.isEmpty(localAEMaterialWrapper.jdField_a_of_type_JavaLangString)) && (localAEMaterialWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null))
-          {
-            int i;
-            if (a(localAEMaterialWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial)) {
-              i = 2;
-            } else {
-              i = 0;
-            }
-            localAEMaterialWrapper.jdField_a_of_type_Int = i;
-          }
-        }
-      }
-    }
-    return paramList;
   }
   
   private Map<String, MetaMaterial> a(@NonNull List<AEGifCategoryWrapper> paramList)
@@ -225,8 +72,8 @@ public class AEGifMaterialManager
         while (((Iterator)localObject).hasNext())
         {
           AEMaterialWrapper localAEMaterialWrapper = (AEMaterialWrapper)((Iterator)localObject).next();
-          if ((localAEMaterialWrapper != null) && (!TextUtils.isEmpty(localAEMaterialWrapper.jdField_a_of_type_JavaLangString)) && (localAEMaterialWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null)) {
-            localHashMap.put(localAEMaterialWrapper.jdField_a_of_type_JavaLangString, localAEMaterialWrapper.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
+          if ((localAEMaterialWrapper != null) && (!TextUtils.isEmpty(localAEMaterialWrapper.a)) && (localAEMaterialWrapper.b != null)) {
+            localHashMap.put(localAEMaterialWrapper.a, localAEMaterialWrapper.b);
           }
         }
       }
@@ -234,27 +81,11 @@ public class AEGifMaterialManager
     return localHashMap;
   }
   
-  private void a(@NonNull MetaMaterial paramMetaMaterial)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[deleteMaterialZipAndDir], metaMaterial.id=");
-    ((StringBuilder)localObject).append(paramMetaMaterial.id);
-    AEQLog.a("AEGifMaterialManager", ((StringBuilder)localObject).toString());
-    localObject = new File(AEPath.CAMERA.FILES.h, paramMetaMaterial.id);
-    paramMetaMaterial = new File(AEPath.CAMERA.FILES.i, paramMetaMaterial.id);
-    if (((File)localObject).exists()) {
-      FileUtils.deleteFile(((File)localObject).getPath());
-    }
-    if (paramMetaMaterial.exists()) {
-      FileUtils.deleteDirectory(paramMetaMaterial.getPath());
-    }
-  }
-  
   private void a(MetaMaterial paramMetaMaterial, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramMetaMaterial.id))
+    if (this.f.containsKey(paramMetaMaterial.id))
     {
-      Object localObject = (WeakReference)this.jdField_a_of_type_JavaUtilMap.get(paramMetaMaterial.id);
+      Object localObject = (WeakReference)this.f.get(paramMetaMaterial.id);
       if (localObject != null)
       {
         localObject = (AEGifMaterialManager.DownloadCallback)((WeakReference)localObject).get();
@@ -293,7 +124,7 @@ public class AEGifMaterialManager
           ((StringBuilder)localObject).append("[diffTwoListAndDeleteOutdatedMaterial] find outdated material id=");
           ((StringBuilder)localObject).append(paramList1.id);
           AEQLog.a("AEGifMaterialManager", ((StringBuilder)localObject).toString());
-          a(paramList1);
+          c(paramList1);
         }
       }
     }
@@ -305,7 +136,7 @@ public class AEGifMaterialManager
     localStringBuilder.append("[notifyGifCategoryListUpdated], validData=");
     localStringBuilder.append(paramBoolean);
     AEQLog.a("AEGifMaterialManager", localStringBuilder.toString());
-    CameraOperationHelper.c().postValue(Boolean.valueOf(paramBoolean));
+    CameraOperationHelper.e().postValue(Boolean.valueOf(paramBoolean));
   }
   
   private boolean a(@NonNull MetaCategory paramMetaCategory)
@@ -314,7 +145,54 @@ public class AEGifMaterialManager
     return (!TextUtils.isEmpty(paramMetaCategory)) && ("true".equals(paramMetaCategory));
   }
   
-  private boolean a(@Nullable MetaMaterial paramMetaMaterial)
+  private boolean a(AEMaterialWrapper paramAEMaterialWrapper)
+  {
+    if (paramAEMaterialWrapper == null) {
+      return true;
+    }
+    if (ParamsUtil.a(paramAEMaterialWrapper.c) > ParamsUtil.b()) {
+      return false;
+    }
+    if (paramAEMaterialWrapper.d != null)
+    {
+      String str = ParamsUtil.c();
+      if (paramAEMaterialWrapper.d.contains(str)) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private List<AEGifCategoryWrapper> b(@NonNull List<AEGifCategoryWrapper> paramList)
+  {
+    AEQLog.a("AEGifMaterialManager", "[updateMaterialStatus]");
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (AEGifCategoryWrapper)localIterator.next();
+      if ((localObject != null) && (!CollectionUtils.isEmpty(((AEGifCategoryWrapper)localObject).materialWrapperList)))
+      {
+        localObject = ((AEGifCategoryWrapper)localObject).materialWrapperList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          AEMaterialWrapper localAEMaterialWrapper = (AEMaterialWrapper)((Iterator)localObject).next();
+          if ((localAEMaterialWrapper != null) && (!TextUtils.isEmpty(localAEMaterialWrapper.a)) && (localAEMaterialWrapper.b != null))
+          {
+            int i;
+            if (b(localAEMaterialWrapper.b)) {
+              i = 2;
+            } else {
+              i = 0;
+            }
+            localAEMaterialWrapper.f = i;
+          }
+        }
+      }
+    }
+    return paramList;
+  }
+  
+  private boolean b(@Nullable MetaMaterial paramMetaMaterial)
   {
     boolean bool = false;
     if ((paramMetaMaterial != null) && (!TextUtils.isEmpty(paramMetaMaterial.id)))
@@ -347,29 +225,151 @@ public class AEGifMaterialManager
     return false;
   }
   
-  private boolean a(AEMaterialWrapper paramAEMaterialWrapper)
+  @NonNull
+  private List<AEGifCategoryWrapper> c(@Nullable String paramString)
   {
-    if (paramAEMaterialWrapper == null) {
-      return true;
-    }
-    if (ParamsUtil.a(paramAEMaterialWrapper.b) > ParamsUtil.a()) {
-      return false;
-    }
-    if (paramAEMaterialWrapper.c != null)
+    AEQLog.a("AEGifMaterialManager", "[parseGifCategoryFromJson]");
+    if (TextUtils.isEmpty(paramString))
     {
-      String str = ParamsUtil.b();
-      if (paramAEMaterialWrapper.c.contains(str)) {
-        return false;
-      }
+      AEQLog.d("AEGifMaterialManager", "[parseGifCategoryFromJson] jsonString is empty");
+      return new LinkedList();
     }
-    return true;
+    GetCategoryMaterialRsp localGetCategoryMaterialRsp = (GetCategoryMaterialRsp)GsonUtils.json2Obj(paramString, b);
+    if ((localGetCategoryMaterialRsp != null) && (!CollectionUtils.isEmpty(localGetCategoryMaterialRsp.Categories)))
+    {
+      LinkedList localLinkedList1 = new LinkedList();
+      HashMap localHashMap = new HashMap();
+      int i = 0;
+      while (i < localGetCategoryMaterialRsp.Categories.size())
+      {
+        MetaCategory localMetaCategory = (MetaCategory)localGetCategoryMaterialRsp.Categories.get(i);
+        if ((localMetaCategory != null) && (!CollectionUtils.isEmpty(localMetaCategory.materials)))
+        {
+          LinkedList localLinkedList2 = new LinkedList();
+          int j = 0;
+          while (j < localMetaCategory.materials.size())
+          {
+            Object localObject = (MetaMaterial)localMetaCategory.materials.get(j);
+            if ((localObject != null) && (!TextUtils.isEmpty(((MetaMaterial)localObject).id)))
+            {
+              Map localMap = ((MetaMaterial)localObject).additionalFields;
+              if (localHashMap.get(((MetaMaterial)localObject).id) == null)
+              {
+                paramString = new AEMaterialWrapper();
+                paramString.a = ((MetaMaterial)localObject).id;
+                paramString.b = ((MetaMaterial)localObject);
+                if (localMap != null)
+                {
+                  paramString.c = ((String)localMap.get("minimum_device_level"));
+                  paramString.d = ((String)localMap.get("shield_devices"));
+                }
+                paramString.e = a(paramString);
+                if (paramString.e)
+                {
+                  localHashMap.put(((MetaMaterial)localObject).id, paramString);
+                }
+                else
+                {
+                  localObject = new StringBuilder();
+                  ((StringBuilder)localObject).append("can not add gif material id: ");
+                  ((StringBuilder)localObject).append(paramString.a);
+                  AEQLog.a("AEGifMaterialManager", ((StringBuilder)localObject).toString());
+                }
+              }
+              else
+              {
+                paramString = (AEMaterialWrapper)localHashMap.get(((MetaMaterial)localObject).id);
+              }
+              if (paramString.e) {
+                localLinkedList2.add(paramString);
+              }
+            }
+            j += 1;
+          }
+          if (CollectionUtils.isEmpty(localLinkedList2))
+          {
+            paramString = new StringBuilder();
+            paramString.append("[parseGifCategoryFromJson] materialWrapperList is empty, categoryId=");
+            paramString.append(localMetaCategory.id);
+            AEQLog.d("AEGifMaterialManager", paramString.toString());
+          }
+          else
+          {
+            paramString = new AEGifCategoryWrapper();
+            paramString.categoryId = localMetaCategory.id;
+            paramString.categoryName = localMetaCategory.name;
+            paramString.materialWrapperList = localLinkedList2;
+            paramString.showCategory = a(localMetaCategory);
+            paramString.fontId = a(localMetaCategory, "font_id");
+            localLinkedList1.add(paramString);
+          }
+        }
+        i += 1;
+      }
+      return localLinkedList1;
+    }
+    AEQLog.d("AEGifMaterialManager", "[parseGifCategoryFromJson] parsed response is empty");
+    return new LinkedList();
   }
   
-  private void b(MetaMaterial paramMetaMaterial)
+  private void c(@NonNull MetaMaterial paramMetaMaterial)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramMetaMaterial.id))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[deleteMaterialZipAndDir], metaMaterial.id=");
+    ((StringBuilder)localObject).append(paramMetaMaterial.id);
+    AEQLog.a("AEGifMaterialManager", ((StringBuilder)localObject).toString());
+    localObject = new File(AEPath.CAMERA.FILES.h, paramMetaMaterial.id);
+    paramMetaMaterial = new File(AEPath.CAMERA.FILES.i, paramMetaMaterial.id);
+    if (((File)localObject).exists()) {
+      FileUtils.deleteFile(((File)localObject).getPath());
+    }
+    if (paramMetaMaterial.exists()) {
+      FileUtils.deleteDirectory(paramMetaMaterial.getPath());
+    }
+  }
+  
+  @WorkerThread
+  private List<AEGifCategoryWrapper> d()
+  {
+    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync]");
+    File localFile1 = new File(AEPath.GIF.a);
+    File localFile2 = new File(AEPath.GIF.b);
+    if (!localFile2.exists())
     {
-      Object localObject = (WeakReference)this.jdField_a_of_type_JavaUtilMap.get(paramMetaMaterial.id);
+      AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], updateConfigFile not exists");
+      if (!localFile1.exists())
+      {
+        AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile not exists");
+        AECameraPrefsUtil.a().a("ShadowBackendSvc.GetCategoryMaterialMqEmoCamera", 4);
+        return new LinkedList();
+      }
+      AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile exists");
+      return b(c(FileUtils.readFileContent(localFile1)));
+    }
+    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], updateConfigFile exists");
+    if (!localFile1.exists())
+    {
+      AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile not exists");
+      localList1 = c(FileUtils.readFileContent(localFile2));
+      b(localList1);
+      FileUtils.moveFile(localFile2.getPath(), localFile1.getPath());
+      return localList1;
+    }
+    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListSync], defaultConfigFile exists");
+    List localList1 = c(FileUtils.readFileContent(localFile1));
+    List localList2 = c(FileUtils.readFileContent(localFile2));
+    a(localList1, localList2);
+    b(localList2);
+    FileUtils.deleteFile(localFile1.getPath());
+    FileUtils.moveFile(localFile2.getPath(), localFile1.getPath());
+    return localList2;
+  }
+  
+  private void d(MetaMaterial paramMetaMaterial)
+  {
+    if (this.f.containsKey(paramMetaMaterial.id))
+    {
+      Object localObject = (WeakReference)this.f.get(paramMetaMaterial.id);
       if (localObject != null)
       {
         localObject = (AEGifMaterialManager.DownloadCallback)((WeakReference)localObject).get();
@@ -378,11 +378,6 @@ public class AEGifMaterialManager
         }
       }
     }
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
   }
   
   public String a(MetaMaterial paramMetaMaterial)
@@ -394,7 +389,7 @@ public class AEGifMaterialManager
   public List<AEGifCategoryWrapper> a(int paramInt)
   {
     if ((paramInt != 2) && (paramInt != 3)) {
-      return new LinkedList(this.jdField_a_of_type_JavaUtilList);
+      return new LinkedList(this.e);
     }
     LinkedList localLinkedList = new LinkedList();
     int i;
@@ -403,7 +398,7 @@ public class AEGifMaterialManager
     } else {
       i = 0;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.e.iterator();
     while (localIterator.hasNext())
     {
       AEGifCategoryWrapper localAEGifCategoryWrapper = (AEGifCategoryWrapper)localIterator.next();
@@ -414,17 +409,11 @@ public class AEGifMaterialManager
     return localLinkedList;
   }
   
-  public void a()
-  {
-    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListAsync]");
-    ThreadManager.excute(new AEGifMaterialManager.2(this), 64, null, true);
-  }
-  
   public void a(AppInterface paramAppInterface, MetaMaterial paramMetaMaterial, AEGifMaterialManager.DownloadCallback paramDownloadCallback)
   {
     if ((paramMetaMaterial != null) && (!TextUtils.isEmpty(paramMetaMaterial.id)))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramMetaMaterial.id, new WeakReference(paramDownloadCallback));
+      this.f.put(paramMetaMaterial.id, new WeakReference(paramDownloadCallback));
       ThreadManager.getFileThreadHandler().post(new AEGifMaterialManager.3(this, paramMetaMaterial, paramAppInterface));
       return;
     }
@@ -433,19 +422,30 @@ public class AEGifMaterialManager
     }
   }
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
   public boolean a(String paramString)
   {
-    return this.b.containsKey(paramString);
+    return this.g.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    AEQLog.a("AEGifMaterialManager", "[updateGifCategoryListAsync]");
+    ThreadManager.excute(new AEGifMaterialManager.2(this), 64, null, true);
+  }
+  
+  public void b(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public String c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.data.AEGifMaterialManager
  * JD-Core Version:    0.7.0.1
  */

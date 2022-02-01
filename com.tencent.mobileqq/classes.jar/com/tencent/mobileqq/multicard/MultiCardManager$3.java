@@ -13,18 +13,18 @@ class MultiCardManager$3
   
   public void run()
   {
-    ArrayList localArrayList1 = MultiCardManager.a(this.this$0, this.jdField_a_of_type_Long);
+    ArrayList localArrayList1 = MultiCardManager.a(this.this$0, this.a);
     if (localArrayList1 != null) {
-      synchronized (MultiCardManager.a(this.this$0))
+      synchronized (MultiCardManager.b(this.this$0))
       {
-        MultiCardManager.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList1.clone());
+        MultiCardManager.b(this.this$0).put(Long.valueOf(this.a), (ArrayList)localArrayList1.clone());
       }
     }
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("callbackWithNativeUinList ");
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(" ");
       if (localArrayList2 != null) {
         ??? = localArrayList2.toString();
@@ -39,7 +39,7 @@ class MultiCardManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ public class CustomOnlineStatusManagerImpl
 {
   public boolean featureEnable()
   {
-    return CustomOnlineStatusManager.a().a();
+    return CustomOnlineStatusManager.a().b();
   }
   
   public String getOwnerOnlineStatus()
   {
-    return CustomOnlineStatusManager.a().a();
+    return CustomOnlineStatusManager.a().c();
   }
   
   public void openH5(Activity paramActivity, String paramString)
@@ -30,7 +30,7 @@ public class CustomOnlineStatusManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.onlinestatus.api.impl.CustomOnlineStatusManagerImpl
  * JD-Core Version:    0.7.0.1
  */

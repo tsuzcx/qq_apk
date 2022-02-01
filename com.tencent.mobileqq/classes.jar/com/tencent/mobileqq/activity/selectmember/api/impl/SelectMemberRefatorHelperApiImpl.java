@@ -40,7 +40,7 @@ public class SelectMemberRefatorHelperApiImpl
 {
   public Object asyncGetGroupListForUI(AppInterface paramAppInterface)
   {
-    return ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
+    return ((FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).h();
   }
   
   public boolean batchAddFriendForTroopMembers(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, List<String> paramList, boolean paramBoolean, int paramInt1, int paramInt2)
@@ -50,7 +50,7 @@ public class SelectMemberRefatorHelperApiImpl
   
   public int changeMask(int paramInt)
   {
-    return TroopListAdapter2.a(paramInt);
+    return TroopListAdapter2.b(paramInt);
   }
   
   public void enterTroopAio(Context paramContext, String paramString, boolean paramBoolean)
@@ -60,7 +60,7 @@ public class SelectMemberRefatorHelperApiImpl
   
   public String getAccountNickName(AppInterface paramAppInterface, String paramString)
   {
-    return ContactUtils.e(paramAppInterface, paramString);
+    return ContactUtils.f(paramAppInterface, paramString);
   }
   
   public Bitmap getFaceBitmap(AppInterface paramAppInterface, int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
@@ -110,12 +110,12 @@ public class SelectMemberRefatorHelperApiImpl
   
   public int getSubSourceId_multi(int paramInt)
   {
-    return Scene.b(paramInt);
+    return Scene.d(paramInt);
   }
   
   public int getSubSourceId_single(int paramInt)
   {
-    return Scene.c(paramInt);
+    return Scene.e(paramInt);
   }
   
   public String getUnitedVerifyMsgEditFragment_VERIFY_MSG_KeyString()
@@ -177,7 +177,7 @@ public class SelectMemberRefatorHelperApiImpl
     localIntent.putExtra("TROOP_UIN", paramString);
     localIntent.putExtra("hide_title_left_arrow", true);
     PublicFragmentActivity.a(paramActivity, localIntent, UnitedVerifyMsgEditFragment.class, paramInt);
-    paramActivity.overridePendingTransition(2130772011, 2130772004);
+    paramActivity.overridePendingTransition(2130772014, 2130772007);
   }
   
   public void updateSelectGradeIcon(ImageView paramImageView, String paramString)
@@ -187,7 +187,7 @@ public class SelectMemberRefatorHelperApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.api.impl.SelectMemberRefatorHelperApiImpl
  * JD-Core Version:    0.7.0.1
  */

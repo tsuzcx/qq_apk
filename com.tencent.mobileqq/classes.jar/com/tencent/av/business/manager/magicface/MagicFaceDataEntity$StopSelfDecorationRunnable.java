@@ -7,23 +7,23 @@ import java.lang.ref.WeakReference;
 class MagicFaceDataEntity$StopSelfDecorationRunnable
   implements Runnable
 {
-  final PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
-  WeakReference<MagicFaceDataEntity> jdField_a_of_type_JavaLangRefWeakReference;
+  final PendantItem a;
+  WeakReference<MagicFaceDataEntity> b;
   
   MagicFaceDataEntity$StopSelfDecorationRunnable(MagicFaceDataEntity paramMagicFaceDataEntity, PendantItem paramPendantItem)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = paramPendantItem;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMagicFaceDataEntity);
+    this.a = paramPendantItem;
+    this.b = new WeakReference(paramMagicFaceDataEntity);
   }
   
   public void run()
   {
-    MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)this.b.get();
     if (localMagicFaceDataEntity != null)
     {
-      PendantItem localPendantItem = (PendantItem)localMagicFaceDataEntity.a.a();
-      if ((localPendantItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getName().equals(localPendantItem.getName()))) {
-        localMagicFaceDataEntity.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem);
+      PendantItem localPendantItem = (PendantItem)localMagicFaceDataEntity.k.c();
+      if ((localPendantItem != null) && (this.a.getName().equals(localPendantItem.getName()))) {
+        localMagicFaceDataEntity.a(this.a);
       }
     }
   }

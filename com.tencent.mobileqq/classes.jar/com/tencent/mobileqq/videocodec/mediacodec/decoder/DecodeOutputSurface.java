@@ -8,21 +8,21 @@ import android.view.Surface;
 @TargetApi(14)
 public class DecodeOutputSurface
 {
-  public int a;
-  public SurfaceTexture a;
   public Surface a;
+  public int b;
+  public SurfaceTexture c;
   
   public DecodeOutputSurface(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.b = paramInt;
+    this.c = new SurfaceTexture(paramInt);
+    this.c.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    this.a = new Surface(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.mediacodec.decoder.DecodeOutputSurface
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,20 @@ class LoginView$24
   
   public void onClick(View paramView)
   {
-    if ((this.a.b != null) && (this.a.b.isShown())) {
-      this.a.b.setVisibility(8);
+    if ((this.a.i != null) && (this.a.i.isShown())) {
+      this.a.i.setVisibility(8);
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText("");
-    LoginView.c(this.a);
+    this.a.p.setText("");
+    this.a.h.setText("");
+    this.a.b();
     libsafeedit.clearPassBuffer();
-    LoginView.d(this.a);
+    LoginView.C(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.24
  * JD-Core Version:    0.7.0.1
  */

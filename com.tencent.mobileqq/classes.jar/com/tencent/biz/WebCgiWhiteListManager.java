@@ -5,65 +5,65 @@ import com.tencent.mobileqq.config.business.WVWhiteListConfBean;
 
 public class WebCgiWhiteListManager
 {
-  public static int a()
-  {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
-    if (localWVWhiteListConfBean != null) {
-      return localWVWhiteListConfBean.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
   public static String a()
   {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
     if (localWVWhiteListConfBean != null) {
-      return localWVWhiteListConfBean.jdField_a_of_type_JavaLangString;
+      return localWVWhiteListConfBean.a;
     }
     return null;
   }
   
-  public static int b()
-  {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
-    if (localWVWhiteListConfBean != null) {
-      return localWVWhiteListConfBean.b;
-    }
-    return -1;
-  }
-  
   public static String b()
   {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
     if (localWVWhiteListConfBean != null) {
       return localWVWhiteListConfBean.c;
     }
     return null;
   }
   
-  public static String c()
+  public static int c()
   {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
     if (localWVWhiteListConfBean != null) {
       return localWVWhiteListConfBean.d;
     }
-    return null;
+    return 0;
   }
   
   public static String d()
   {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
     if (localWVWhiteListConfBean != null) {
       return localWVWhiteListConfBean.e;
     }
     return null;
   }
   
-  public static String e()
+  public static int e()
   {
-    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.a().a(207);
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
     if (localWVWhiteListConfBean != null) {
       return localWVWhiteListConfBean.f;
+    }
+    return -1;
+  }
+  
+  public static String f()
+  {
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
+    if (localWVWhiteListConfBean != null) {
+      return localWVWhiteListConfBean.g;
+    }
+    return null;
+  }
+  
+  public static String g()
+  {
+    WVWhiteListConfBean localWVWhiteListConfBean = (WVWhiteListConfBean)QConfigManager.b().b(207);
+    if (localWVWhiteListConfBean != null) {
+      return localWVWhiteListConfBean.h;
     }
     return null;
   }

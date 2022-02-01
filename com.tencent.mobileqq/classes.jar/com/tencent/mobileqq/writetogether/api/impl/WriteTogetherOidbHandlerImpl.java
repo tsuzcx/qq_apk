@@ -84,9 +84,9 @@ public class WriteTogetherOidbHandlerImpl
     localReqCreatePad.uint32_src_type.set(0);
     ArrayList localArrayList = new ArrayList();
     oidb_cmd0xe89.Atext localAtext = new oidb_cmd0xe89.Atext();
-    localAtext.bytes_text.set(ByteStringMicro.copyFrom(paramCreateDocParam.d.getBytes()));
-    localAtext.bytes_attribs.set(ByteStringMicro.copyFrom(paramCreateDocParam.e.getBytes()));
-    localAtext.bytes_apool.set(ByteStringMicro.copyFrom(paramCreateDocParam.c.getBytes()));
+    localAtext.bytes_text.set(ByteStringMicro.copyFrom(paramCreateDocParam.e.getBytes()));
+    localAtext.bytes_attribs.set(ByteStringMicro.copyFrom(paramCreateDocParam.f.getBytes()));
+    localAtext.bytes_apool.set(ByteStringMicro.copyFrom(paramCreateDocParam.d.getBytes()));
     localArrayList.add(localAtext);
     localReqCreatePad.msg_atext.set(localArrayList);
     paramReqBody.create_pad_req_info.set(localReqCreatePad);
@@ -269,16 +269,16 @@ public class WriteTogetherOidbHandlerImpl
       if ("OidbSvcTcp.0xe89_0".equals(paramToServiceMsg.getServiceCmd()))
       {
         paramObject = new CreateDocParam();
-        paramObject.jdField_a_of_type_Int = i;
+        paramObject.b = i;
         if ((i == 0) && (localRspBody.create_pad_rsp_info.has()))
         {
           paramFromServiceMsg = localRspBody.create_pad_rsp_info.bytes_global_padid.get().toStringUtf8();
-          paramObject.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+          paramObject.a = paramFromServiceMsg;
           notifyUI(1, true, paramObject);
           sendWtMessage(paramFromServiceMsg, "", 0, paramToServiceMsg.extraData.getString("write_together_group_code"));
           return;
         }
-        paramObject.b = paramFromServiceMsg.extraData.getString("str_error_msg");
+        paramObject.c = paramFromServiceMsg.extraData.getString("str_error_msg");
         notifyUI(1, false, paramObject);
         return;
       }
@@ -292,9 +292,9 @@ public class WriteTogetherOidbHandlerImpl
         paramFromServiceMsg = paramToServiceMsg.extraData.getString("write_together_group_code");
         paramToServiceMsg = paramToServiceMsg.extraData.getString("write_together_pad_id");
         paramObject = new OpenDocParam();
-        paramObject.k = paramFromServiceMsg;
+        paramObject.u = paramFromServiceMsg;
         paramObject.f = paramToServiceMsg;
-        paramObject.h = i;
+        paramObject.w = i;
         notifyUI(2, false, paramObject);
       }
       return;
@@ -395,7 +395,7 @@ public class WriteTogetherOidbHandlerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.api.impl.WriteTogetherOidbHandlerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,11 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 public class TroopNotificationShowNewEntryConfigController
   extends TroopNotificationController
 {
-  private List<ITroopNotificationService.INewTroopNotificationUnreadCountOrConfigChangedListener> a;
+  private List<ITroopNotificationService.INewTroopNotificationUnreadCountOrConfigChangedListener> a = new CopyOnWriteArrayList();
   
   public TroopNotificationShowNewEntryConfigController(AppRuntime paramAppRuntime)
   {
     super(paramAppRuntime);
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   }
   
   private void a()
@@ -36,31 +35,31 @@ public class TroopNotificationShowNewEntryConfigController
     if (QLog.isColorLevel()) {
       QLog.d("TroopNotificationShowNewEntryConfigController", 1, "updateRecentUserListWhenNewEntryNotShow, Recent need to create and add");
     }
-    Object localObject = ((ITroopNotificationService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopNotificationService.class, "")).getMessageRecordListFromCache();
+    Object localObject = ((ITroopNotificationService)this.c.getRuntimeService(ITroopNotificationService.class, "")).getMessageRecordListFromCache();
     int k = 0;
     int j = 0;
     int i;
     RecentUser localRecentUser;
     if ((localObject != null) && (!((List)localObject).isEmpty()))
     {
-      localObject = GroupSystemMsgController.a().a();
+      localObject = GroupSystemMsgController.a().e();
       if (localObject != null)
       {
         long l = ((structmsg.StructMsg)localObject).msg_time.get();
-        localObject = ((IRecentUserProxyService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+        localObject = ((IRecentUserProxyService)this.c.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
         i = j;
         if (localObject != null)
         {
           i = j;
-          if (this.jdField_a_of_type_MqqAppAppRuntime.getAccount() != null)
+          if (this.c.getAccount() != null)
           {
-            localRecentUser = ((RecentUserProxy)localObject).a(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
+            localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
             i = j;
             if (localRecentUser != null)
             {
               localRecentUser.uin = AppConstants.TROOP_NOTIFICATION_UIN;
               localRecentUser.setType(9000);
-              localRecentUser.displayName = HardCodeUtil.a(2131691101);
+              localRecentUser.displayName = HardCodeUtil.a(2131888047);
               localRecentUser.lastmsgtime = l;
               localRecentUser.lastmsgdrafttime = l;
               ((RecentUserProxy)localObject).b(localRecentUser);
@@ -70,7 +69,7 @@ public class TroopNotificationShowNewEntryConfigController
         }
         if (i != 0)
         {
-          localObject = (ITroopSysMsgDependApiService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopSysMsgDependApiService.class, "");
+          localObject = (ITroopSysMsgDependApiService)this.c.getRuntimeService(ITroopSysMsgDependApiService.class, "");
           if (localObject != null) {
             ((ITroopSysMsgDependApiService)localObject).refreshConversationList();
           }
@@ -89,14 +88,14 @@ public class TroopNotificationShowNewEntryConfigController
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationShowNewEntryConfigController", 1, "updateRecentUserListWhenNewEntryNotShow, getMessageRecordListFromCache() is null or empty");
       }
-      localObject = ((IRecentUserProxyService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+      localObject = ((IRecentUserProxyService)this.c.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
       i = k;
       if (localObject != null)
       {
         i = k;
-        if (this.jdField_a_of_type_MqqAppAppRuntime.getAccount() != null)
+        if (this.c.getAccount() != null)
         {
-          localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
+          localRecentUser = ((RecentUserProxy)localObject).c(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
           i = k;
           if (localRecentUser != null)
           {
@@ -107,7 +106,7 @@ public class TroopNotificationShowNewEntryConfigController
       }
       if (i != 0)
       {
-        localObject = (ITroopSysMsgDependApiService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopSysMsgDependApiService.class, "");
+        localObject = (ITroopSysMsgDependApiService)this.c.getRuntimeService(ITroopSysMsgDependApiService.class, "");
         if (localObject != null) {
           ((ITroopSysMsgDependApiService)localObject).refreshConversationList();
         }
@@ -139,20 +138,20 @@ public class TroopNotificationShowNewEntryConfigController
         QLog.d("TroopNotificationShowNewEntryConfigController", 1, "updateRecentUserListWhenHasNewConf, newConf is null ");
       }
     }
-    if ((paramTroopNotificationEntryConfig != null) && (paramTroopNotificationEntryConfig.a(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin())))
+    if ((paramTroopNotificationEntryConfig != null) && (paramTroopNotificationEntryConfig.b(this.c.getCurrentAccountUin())))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopNotificationShowNewEntryConfigController", 1, "updateRecentUserListWhenHasNewConf, delete notification entry in recent");
       }
-      paramTroopNotificationEntryConfig = ((IRecentUserProxyService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
-      if ((paramTroopNotificationEntryConfig != null) && (this.jdField_a_of_type_MqqAppAppRuntime.getAccount() != null))
+      paramTroopNotificationEntryConfig = ((IRecentUserProxyService)this.c.getRuntimeService(IRecentUserProxyService.class, "")).getRecentUserCache();
+      if ((paramTroopNotificationEntryConfig != null) && (this.c.getAccount() != null))
       {
-        localObject = paramTroopNotificationEntryConfig.b(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
+        localObject = paramTroopNotificationEntryConfig.c(AppConstants.TROOP_NOTIFICATION_UIN, 9000);
         if (localObject != null) {
           paramTroopNotificationEntryConfig.a((RecentUser)localObject);
         }
       }
-      paramTroopNotificationEntryConfig = (ITroopSysMsgDependApiService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopSysMsgDependApiService.class, "");
+      paramTroopNotificationEntryConfig = (ITroopSysMsgDependApiService)this.c.getRuntimeService(ITroopSysMsgDependApiService.class, "");
       if (paramTroopNotificationEntryConfig != null) {
         paramTroopNotificationEntryConfig.refreshConversationList();
       }
@@ -166,12 +165,6 @@ public class TroopNotificationShowNewEntryConfigController
     }
   }
   
-  @Nullable
-  protected String a()
-  {
-    return "TroopNotificationShowNewEntryConfigController";
-  }
-  
   public void a(int paramInt)
   {
     ThreadManager.getUIHandler().post(new TroopNotificationShowNewEntryConfigController.1(this, paramInt));
@@ -180,7 +173,7 @@ public class TroopNotificationShowNewEntryConfigController
   public void a(ITroopNotificationService.INewTroopNotificationUnreadCountOrConfigChangedListener paramINewTroopNotificationUnreadCountOrConfigChangedListener)
   {
     if (paramINewTroopNotificationUnreadCountOrConfigChangedListener != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramINewTroopNotificationUnreadCountOrConfigChangedListener);
+      this.a.add(paramINewTroopNotificationUnreadCountOrConfigChangedListener);
     }
   }
   
@@ -203,18 +196,24 @@ public class TroopNotificationShowNewEntryConfigController
   public void b(ITroopNotificationService.INewTroopNotificationUnreadCountOrConfigChangedListener paramINewTroopNotificationUnreadCountOrConfigChangedListener)
   {
     if (paramINewTroopNotificationUnreadCountOrConfigChangedListener != null) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramINewTroopNotificationUnreadCountOrConfigChangedListener);
+      this.a.remove(paramINewTroopNotificationUnreadCountOrConfigChangedListener);
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    this.a.clear();
+  }
+  
+  @Nullable
+  protected String d()
+  {
+    return "TroopNotificationShowNewEntryConfigController";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopnotification.TroopNotificationShowNewEntryConfigController
  * JD-Core Version:    0.7.0.1
  */

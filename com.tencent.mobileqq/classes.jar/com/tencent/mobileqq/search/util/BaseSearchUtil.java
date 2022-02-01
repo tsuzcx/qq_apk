@@ -15,9 +15,9 @@ public class BaseSearchUtil
 {
   public static int a()
   {
-    int i = MobileQQ.sMobileQQ.getResources().getColor(2131166969);
+    int i = MobileQQ.sMobileQQ.getResources().getColor(2131167903);
     if (ThemeUtil.isNowThemeIsNight(MobileQQ.sMobileQQ.peekAppRuntime(), false, "")) {
-      i = MobileQQ.sMobileQQ.getResources().getColor(2131166971);
+      i = MobileQQ.sMobileQQ.getResources().getColor(2131167905);
     }
     return i;
   }
@@ -118,18 +118,18 @@ public class BaseSearchUtil
     int[] tmp11_7 = tmp7_5;
     tmp11_7[1] = 0;
     tmp11_7;
-    int j = paramChnSpelling.jdField_a_of_type_JavaLangString.indexOf(paramString);
+    int j = paramChnSpelling.b.indexOf(paramString);
     if (j < 0) {
       return arrayOfInt;
     }
     int i = 0;
-    while (i < paramChnSpelling.jdField_a_of_type_JavaUtilList.size())
+    while (i < paramChnSpelling.c.size())
     {
-      if (j == ((Integer)paramChnSpelling.jdField_a_of_type_JavaUtilList.get(i)).intValue())
+      if (j == ((Integer)paramChnSpelling.c.get(i)).intValue())
       {
         arrayOfInt[0] = i;
         k = i + 1;
-        while ((k < paramChnSpelling.jdField_a_of_type_JavaUtilList.size()) && (paramString.length() + j > ((Integer)paramChnSpelling.jdField_a_of_type_JavaUtilList.get(k)).intValue())) {
+        while ((k < paramChnSpelling.c.size()) && (paramString.length() + j > ((Integer)paramChnSpelling.c.get(k)).intValue())) {
           k += 1;
         }
         arrayOfInt[1] = (k - i);
@@ -137,9 +137,9 @@ public class BaseSearchUtil
       }
       int m = i;
       int k = j;
-      if (j < ((Integer)paramChnSpelling.jdField_a_of_type_JavaUtilList.get(i)).intValue())
+      if (j < ((Integer)paramChnSpelling.c.get(i)).intValue())
       {
-        k = paramChnSpelling.jdField_a_of_type_JavaLangString.indexOf(paramString, ((Integer)paramChnSpelling.jdField_a_of_type_JavaUtilList.get(i)).intValue());
+        k = paramChnSpelling.b.indexOf(paramString, ((Integer)paramChnSpelling.c.get(i)).intValue());
         if (k < 0) {
           return arrayOfInt;
         }
@@ -158,7 +158,7 @@ public class BaseSearchUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.BaseSearchUtil
  * JD-Core Version:    0.7.0.1
  */

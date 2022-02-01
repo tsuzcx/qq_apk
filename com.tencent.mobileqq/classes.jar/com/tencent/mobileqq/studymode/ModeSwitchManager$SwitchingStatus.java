@@ -7,9 +7,9 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$SwitchingStatus;", "", "isSwitching", "", "targetMode", "", "oldMode", "(ZII)V", "()Z", "getOldMode", "()I", "getTargetMode", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class ModeSwitchManager$SwitchingStatus
 {
-  private final int jdField_a_of_type_Int;
-  private final boolean jdField_a_of_type_Boolean;
+  private final boolean a;
   private final int b;
+  private final int c;
   
   public ModeSwitchManager$SwitchingStatus()
   {
@@ -18,24 +18,24 @@ public final class ModeSwitchManager$SwitchingStatus
   
   public ModeSwitchManager$SwitchingStatus(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
+    this.a = paramBoolean;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public final boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public final int b()
   {
     return this.b;
+  }
+  
+  public final int c()
+  {
+    return this.c;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -44,7 +44,7 @@ public final class ModeSwitchManager$SwitchingStatus
       if ((paramObject instanceof SwitchingStatus))
       {
         paramObject = (SwitchingStatus)paramObject;
-        if ((this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b)) {}
+        if ((this.a == paramObject.a) && (this.b == paramObject.b) && (this.c == paramObject.c)) {}
       }
       else
       {
@@ -64,18 +64,18 @@ public final class ModeSwitchManager$SwitchingStatus
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SwitchingStatus(isSwitching=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", targetMode=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", oldMode=");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", oldMode=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append(")");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeSwitchManager.SwitchingStatus
  * JD-Core Version:    0.7.0.1
  */

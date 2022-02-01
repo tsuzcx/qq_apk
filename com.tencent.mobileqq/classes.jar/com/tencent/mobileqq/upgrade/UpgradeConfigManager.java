@@ -82,7 +82,7 @@ public class UpgradeConfigManager
     }
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public static boolean b(String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("UpgradeConfigManager", 2, String.format("deleteUpgradeConfig fileName=%s uin=%s", new Object[] { paramString1, paramString2 }));
@@ -116,7 +116,7 @@ public class UpgradeConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.UpgradeConfigManager
  * JD-Core Version:    0.7.0.1
  */

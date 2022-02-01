@@ -16,13 +16,13 @@ import com.tencent.theme.SkinnableBitmapDrawable;
 public class RoundImageView
   extends ImageView
 {
-  float jdField_a_of_type_Float = 0.0F;
-  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  boolean jdField_a_of_type_Boolean = false;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  boolean jdField_b_of_type_Boolean = false;
+  float p = 0.0F;
+  boolean q = false;
+  boolean r = false;
+  Path s = new Path();
+  RectF t = new RectF();
+  Rect u = new Rect();
+  Rect v = new Rect();
   
   public RoundImageView(Context paramContext)
   {
@@ -46,39 +46,39 @@ public class RoundImageView
     // Byte code:
     //   0: aload_1
     //   1: aload_2
-    //   2: getstatic 56	com/tencent/mobileqq/qqui/R$styleable:aM	[I
+    //   2: getstatic 62	com/tencent/mobileqq/qqui/R$styleable:cV	[I
     //   5: iload_3
     //   6: iconst_0
-    //   7: invokevirtual 62	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   7: invokevirtual 68	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
     //   10: astore_1
     //   11: aload_0
     //   12: aload_1
-    //   13: getstatic 66	com/tencent/mobileqq/qqui/R$styleable:aZ	I
+    //   13: getstatic 72	com/tencent/mobileqq/qqui/R$styleable:cX	I
     //   16: fconst_0
-    //   17: invokevirtual 72	android/content/res/TypedArray:getDimension	(IF)F
+    //   17: invokevirtual 78	android/content/res/TypedArray:getDimension	(IF)F
     //   20: f2i
     //   21: i2f
-    //   22: putfield 23	com/tencent/mobileqq/widget/RoundImageView:jdField_a_of_type_Float	F
+    //   22: putfield 28	com/tencent/mobileqq/widget/RoundImageView:p	F
     //   25: aload_0
     //   26: aload_1
-    //   27: getstatic 75	com/tencent/mobileqq/qqui/R$styleable:aY	I
+    //   27: getstatic 81	com/tencent/mobileqq/qqui/R$styleable:cW	I
     //   30: iconst_0
-    //   31: invokevirtual 79	android/content/res/TypedArray:getBoolean	(IZ)Z
-    //   34: putfield 25	com/tencent/mobileqq/widget/RoundImageView:jdField_a_of_type_Boolean	Z
+    //   31: invokevirtual 85	android/content/res/TypedArray:getBoolean	(IZ)Z
+    //   34: putfield 30	com/tencent/mobileqq/widget/RoundImageView:q	Z
     //   37: goto +17 -> 54
     //   40: astore_2
     //   41: goto +18 -> 59
     //   44: astore_2
-    //   45: ldc 81
+    //   45: ldc 87
     //   47: iconst_1
-    //   48: ldc 83
+    //   48: ldc 89
     //   50: aload_2
-    //   51: invokestatic 89	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   51: invokestatic 95	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   54: aload_1
-    //   55: invokevirtual 92	android/content/res/TypedArray:recycle	()V
+    //   55: invokevirtual 98	android/content/res/TypedArray:recycle	()V
     //   58: return
     //   59: aload_1
-    //   60: invokevirtual 92	android/content/res/TypedArray:recycle	()V
+    //   60: invokevirtual 98	android/content/res/TypedArray:recycle	()V
     //   63: aload_2
     //   64: athrow
     // Local variable table:
@@ -98,7 +98,7 @@ public class RoundImageView
   {
     try
     {
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      paramCanvas.clipPath(this.s);
       return;
     }
     catch (Exception paramCanvas)
@@ -115,24 +115,24 @@ public class RoundImageView
       {
         int i = getMeasuredWidth();
         int j = getMeasuredHeight();
-        if (this.jdField_a_of_type_Float > 0.0F)
+        if (this.p > 0.0F)
         {
-          if (this.jdField_b_of_type_Boolean)
+          if (this.r)
           {
-            this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, i + this.jdField_a_of_type_Float, j);
+            this.t.set(0.0F, 0.0F, i + this.p, j);
           }
           else
           {
-            localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+            localObject = this.t;
             float f2 = i;
             float f3 = j;
-            if (!this.jdField_a_of_type_Boolean) {
+            if (!this.q) {
               break label251;
             }
-            f1 = this.jdField_a_of_type_Float;
+            f1 = this.p;
             ((RectF)localObject).set(0.0F, 0.0F, f2, f3 + f1);
           }
-          this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+          this.s.addRoundRect(this.t, this.p, this.p, Path.Direction.CW);
           a(paramCanvas);
           localObject = getDrawable();
           if (localObject != null)
@@ -150,9 +150,9 @@ public class RoundImageView
             }
             if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
             {
-              this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
-              this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, i, j);
-              paramCanvas.drawBitmap((Bitmap)localObject, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, null);
+              this.u.set(0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+              this.v.set(0, 0, i, j);
+              paramCanvas.drawBitmap((Bitmap)localObject, this.u, this.v, null);
               return;
             }
           }
@@ -175,19 +175,19 @@ public class RoundImageView
   
   public void setRadiusWithoutRight(int paramInt)
   {
-    this.jdField_a_of_type_Float = paramInt;
-    this.jdField_b_of_type_Boolean = true;
+    this.p = paramInt;
+    this.r = true;
   }
   
   public void setmRadius(int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Float = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.p = paramInt;
+    this.q = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

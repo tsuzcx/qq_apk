@@ -14,46 +14,46 @@ import com.tencent.widget.ListView;
 public class ReadInJoyPresenterImpl
   implements IReadInJoyPresenter
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReadInJoyView jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyView;
-  private IReadInJoyPresenter jdField_a_of_type_ComTencentMobileqqKandianBizFeedsPresenterIReadInJoyPresenter;
-  private IReadInJoyModel jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel;
-  private IReadInJoyPresenter b;
+  private ReadInJoyView a;
+  private IReadInJoyModel b;
+  private IReadInJoyPresenter c;
+  private IReadInJoyPresenter d;
+  private Context e;
+  private int f;
   
   public ReadInJoyPresenterImpl(Context paramContext, OnLastReadRefreshListener paramOnLastReadRefreshListener, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, KandianNegativeWindow paramKandianNegativeWindow, ListView paramListView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsPresenterIReadInJoyPresenter = new ReadInJoyHeaderPresenter(this.jdField_a_of_type_AndroidContentContext, paramIFaceDecoder, paramReadInJoyBaseAdapter, paramListView, paramKandianNegativeWindow);
-    this.b = new ReadInJoyFooterPresenter(this.jdField_a_of_type_AndroidContentContext, paramOnLastReadRefreshListener, paramReadInJoyBaseAdapter);
+    this.e = paramContext;
+    this.c = new ReadInJoyHeaderPresenter(this.e, paramIFaceDecoder, paramReadInJoyBaseAdapter, paramListView, paramKandianNegativeWindow);
+    this.d = new ReadInJoyFooterPresenter(this.e, paramOnLastReadRefreshListener, paramReadInJoyBaseAdapter);
   }
   
   public void a(ReadInJoyView paramReadInJoyView, IReadInJoyModel paramIReadInJoyModel, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommonWidgetReadInJoyView = paramReadInJoyView;
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityApiIReadInJoyModel = paramIReadInJoyModel;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsPresenterIReadInJoyPresenter.a(paramReadInJoyView, paramIReadInJoyModel, paramInt);
-    this.b.a(paramReadInJoyView, paramIReadInJoyModel, paramInt);
-    if ((paramReadInJoyView != null) && (paramReadInJoyView.e != null))
+    this.a = paramReadInJoyView;
+    this.b = paramIReadInJoyModel;
+    this.f = paramInt;
+    this.c.a(paramReadInJoyView, paramIReadInJoyModel, paramInt);
+    this.d.a(paramReadInJoyView, paramIReadInJoyModel, paramInt);
+    if ((paramReadInJoyView != null) && (paramReadInJoyView.j != null))
     {
-      if (paramIReadInJoyModel.h())
+      if (paramIReadInJoyModel.j())
       {
-        paramReadInJoyView.e.setVisibility(8);
+        paramReadInJoyView.j.setVisibility(8);
         return;
       }
-      paramReadInJoyView.e.setVisibility(0);
+      paramReadInJoyView.j.setVisibility(0);
     }
   }
   
   public void a(ReadInJoyView paramReadInJoyView, IReadInJoyModel paramIReadInJoyModel, long paramLong, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsPresenterIReadInJoyPresenter.a(paramReadInJoyView, paramIReadInJoyModel, paramLong, paramBitmap);
+    this.c.a(paramReadInJoyView, paramIReadInJoyModel, paramLong, paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.presenter.ReadInJoyPresenterImpl
  * JD-Core Version:    0.7.0.1
  */

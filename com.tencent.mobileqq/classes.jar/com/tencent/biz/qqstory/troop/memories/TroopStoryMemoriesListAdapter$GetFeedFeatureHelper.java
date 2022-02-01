@@ -10,9 +10,9 @@ import java.util.List;
 public class TroopStoryMemoriesListAdapter$GetFeedFeatureHelper
   implements Runnable
 {
-  final int jdField_a_of_type_Int = 500;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
-  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<String> a = new ArrayList();
+  Handler b = new Handler(ThreadManager.getSubThreadLooper());
+  final int c = 500;
   
   public void run()
   {
@@ -20,11 +20,11 @@ public class TroopStoryMemoriesListAdapter$GetFeedFeatureHelper
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("start to send GetFeedFeature request: ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+      localStringBuilder.append(this.a);
       QLog.d("TroopStoryMemoriesListAdapter", 2, localStringBuilder.toString());
     }
-    GetFeedFeatureHandler.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    GetFeedFeatureHandler.a(this.a);
+    this.a = new ArrayList();
   }
 }
 

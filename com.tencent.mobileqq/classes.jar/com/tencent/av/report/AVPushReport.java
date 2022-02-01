@@ -48,8 +48,8 @@ public class AVPushReport
       try
       {
         localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
-        localJSONObject.put("skey", paramVideoAppInterface.b());
-        localJSONObject.put("qqversion", "8.7.0");
+        localJSONObject.put("skey", paramVideoAppInterface.k());
+        localJSONObject.put("qqversion", "8.8.17");
         localJSONObject.put("time", System.currentTimeMillis());
         if (paramString != null) {
           localJSONObject.put("attach", paramString);

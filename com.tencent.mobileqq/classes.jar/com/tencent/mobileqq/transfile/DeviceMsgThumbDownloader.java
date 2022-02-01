@@ -100,7 +100,7 @@ public class DeviceMsgThumbDownloader
       return null;
     }
     paramURLDrawableHandler = BaseApplicationImpl.getContext();
-    if (FileManagerUtil.a(paramFile.path) == 2) {
+    if (FileManagerUtil.c(paramFile.path) == 2) {
       paramFile = new DeviceMsgThumbDownloader.DeviceVideoBitmapDecoder(this);
     } else {
       paramFile = new DeviceMsgThumbDownloader.DeviceImgBitmapDecoder(this);
@@ -194,7 +194,7 @@ public class DeviceMsgThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

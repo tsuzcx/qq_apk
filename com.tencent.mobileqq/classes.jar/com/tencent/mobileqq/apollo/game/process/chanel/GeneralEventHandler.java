@@ -24,17 +24,16 @@ import java.lang.ref.WeakReference;
 public class GeneralEventHandler
   implements Handler.Callback, CmGameCmdChannel.IRequestHandler
 {
-  private int jdField_a_of_type_Int;
-  protected WeakReferenceHandler a;
-  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<QQAppInterface> b;
+  protected WeakReferenceHandler a = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  WeakReference<Activity> b;
+  private WeakReference<QQAppInterface> c;
+  private int d;
   
   public GeneralEventHandler(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.b = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = new WeakReference(paramActivity);
+    this.c = new WeakReference(paramQQAppInterface);
+    this.d = paramInt;
   }
   
   public int a()
@@ -50,7 +49,7 @@ public class GeneralEventHandler
     if (TextUtils.isEmpty(str)) {
       return localHandleResult;
     }
-    paramString = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(255);
+    paramString = this.a.obtainMessage(255);
     paramString.obj = str;
     paramString.arg1 = i;
     paramString.sendToTarget();
@@ -59,14 +58,14 @@ public class GeneralEventHandler
   
   public HandleResult a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    Object localObject = this.b;
+    Object localObject = this.c;
     if (localObject == null) {
       return null;
     }
-    if (this.jdField_a_of_type_Int != paramInt2)
+    if (this.d != paramInt2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
+        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.d), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
       }
       return new HandleResult();
     }
@@ -97,27 +96,27 @@ public class GeneralEventHandler
     }
     if ("cs.openFloatTransparentView.local".equals(paramString1))
     {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      if (this.b.get() != null)
       {
-        ApolloGameBasicEventUtil.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        ApolloGameBasicEventUtil.a((Context)this.b.get(), paramString2);
         return new HandleResult();
       }
     }
     else if ("cs.openWebView.local".equals(paramString1))
     {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      if (this.b.get() != null)
       {
-        ApolloGameBasicEventUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        ApolloGameBasicEventUtil.b((Context)this.b.get(), paramString2);
         return new HandleResult();
       }
     }
     else if ("cs.script_get_nickname.local".equals(paramString1))
     {
       QQMessageFacade localQQMessageFacade = ((QQAppInterface)localObject).getMessageFacade();
-      if ((localQQMessageFacade != null) && (localQQMessageFacade.a()) && (!TextUtils.isEmpty(localQQMessageFacade.a())))
+      if ((localQQMessageFacade != null) && (localQQMessageFacade.n()) && (!TextUtils.isEmpty(localQQMessageFacade.l())))
       {
-        paramString1 = localQQMessageFacade.a();
-        paramInt1 = localQQMessageFacade.a();
+        paramString1 = localQQMessageFacade.l();
+        paramInt1 = localQQMessageFacade.m();
       }
       else
       {
@@ -129,9 +128,9 @@ public class GeneralEventHandler
     return null;
   }
   
-  public void a()
+  public void b()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+    this.a.removeCallbacksAndMessages(null);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -148,14 +147,14 @@ public class GeneralEventHandler
       if (j != 1) {
         i = 0;
       }
-      QQToast.a(localBaseApplication, localCharSequence, i).a();
+      QQToast.makeText(localBaseApplication, localCharSequence, i).show();
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.process.chanel.GeneralEventHandler
  * JD-Core Version:    0.7.0.1
  */

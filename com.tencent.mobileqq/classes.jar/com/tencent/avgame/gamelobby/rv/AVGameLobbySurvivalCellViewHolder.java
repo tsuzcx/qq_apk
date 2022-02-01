@@ -26,45 +26,45 @@ public class AVGameLobbySurvivalCellViewHolder
   extends BaseViewHolder<AVGameLobbySurvivalContentInfo>
   implements View.OnTouchListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "com.tencent.avgame.gamelobby.rv.AVGameLobbySurvivalCellViewHolder";
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AutoResizeAsyncImageView jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView;
-  private OverlappingImgLayout jdField_a_of_type_ComTencentAvgameGamelobbyViewOverlappingImgLayout;
-  private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-  private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private AsyncImageView jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
-  private TextView c;
-  private TextView d;
+  private static final String d = "com.tencent.avgame.gamelobby.rv.AVGameLobbySurvivalCellViewHolder";
+  private AsyncImageView e;
+  private TextView f;
+  private AutoResizeAsyncImageView g;
+  private View h;
+  private LinearLayout i;
+  private OverlappingImgLayout j;
+  private TextView k;
+  private RelativeLayout l;
+  private AsyncImageView m;
+  private TextView n;
+  private TextView o;
+  private View p;
+  private IFaceDecoder q = null;
   
   public AVGameLobbySurvivalCellViewHolder(@NonNull View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363239));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363233));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363231);
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView = ((AutoResizeAsyncImageView)paramView.findViewById(2131363234));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131363229));
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewOverlappingImgLayout = ((OverlappingImgLayout)paramView.findViewById(2131363228));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363230));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131363237));
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131363236));
-    this.c = ((TextView)paramView.findViewById(2131363238));
-    this.d = ((TextView)paramView.findViewById(2131363240));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363232);
+    this.e = ((AsyncImageView)paramView.findViewById(2131429113));
+    this.f = ((TextView)paramView.findViewById(2131429107));
+    this.h = paramView.findViewById(2131429105);
+    this.g = ((AutoResizeAsyncImageView)paramView.findViewById(2131429108));
+    this.i = ((LinearLayout)paramView.findViewById(2131429103));
+    this.j = ((OverlappingImgLayout)paramView.findViewById(2131429102));
+    this.k = ((TextView)paramView.findViewById(2131429104));
+    this.l = ((RelativeLayout)paramView.findViewById(2131429111));
+    this.m = ((AsyncImageView)paramView.findViewById(2131429110));
+    this.n = ((TextView)paramView.findViewById(2131429112));
+    this.o = ((TextView)paramView.findViewById(2131429114));
+    this.p = paramView.findViewById(2131429106);
     paramView.setOnTouchListener(this);
-    this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnTouchListener(this);
-    a(this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView);
+    this.m.setOnTouchListener(this);
+    a(this.m);
     a(paramView);
   }
   
   protected void a()
   {
-    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    IFaceDecoder localIFaceDecoder = this.q;
     if (localIFaceDecoder != null) {
       localIFaceDecoder.destory();
     }
@@ -77,78 +77,78 @@ public class AVGameLobbySurvivalCellViewHolder
     if (paramAVGameLobbySurvivalContentInfo == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbySurvivalContentInfo.b());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramAVGameLobbySurvivalContentInfo.d());
-    if (!TextUtils.isEmpty(paramAVGameLobbySurvivalContentInfo.h()))
+    this.e.setUrlIconAsyncImage(paramAVGameLobbySurvivalContentInfo.g());
+    this.f.setText(paramAVGameLobbySurvivalContentInfo.l());
+    if (!TextUtils.isEmpty(paramAVGameLobbySurvivalContentInfo.s()))
     {
-      paramViewHolderContext = URLDrawable.getDrawable(paramAVGameLobbySurvivalContentInfo.h(), URLDrawableHelperConstants.a, URLDrawableHelperConstants.a);
+      paramViewHolderContext = URLDrawable.getDrawable(paramAVGameLobbySurvivalContentInfo.s(), URLDrawableHelperConstants.a, URLDrawableHelperConstants.a);
     }
     else
     {
-      float f = ViewUtils.a(6.0F);
-      paramInt = paramAVGameLobbySurvivalContentInfo.f();
-      int i = paramAVGameLobbySurvivalContentInfo.g();
-      paramViewHolderContext = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { paramInt | 0xFF000000, i | 0xFF000000 });
-      paramViewHolderContext.setCornerRadius(f);
+      float f1 = ViewUtils.dip2px(6.0F);
+      paramInt = paramAVGameLobbySurvivalContentInfo.p();
+      int i1 = paramAVGameLobbySurvivalContentInfo.q();
+      paramViewHolderContext = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] { paramInt | 0xFF000000, i1 | 0xFF000000 });
+      paramViewHolderContext.setCornerRadius(f1);
       paramViewHolderContext.setGradientType(0);
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(paramViewHolderContext);
-    this.d.setVisibility(0);
-    if (!TextUtils.isEmpty(paramAVGameLobbySurvivalContentInfo.g())) {
-      this.d.setText(paramAVGameLobbySurvivalContentInfo.g());
+    this.h.setBackgroundDrawable(paramViewHolderContext);
+    this.o.setVisibility(0);
+    if (!TextUtils.isEmpty(paramAVGameLobbySurvivalContentInfo.r())) {
+      this.o.setText(paramAVGameLobbySurvivalContentInfo.r());
     } else {
-      this.d.setText(paramAVGameLobbySurvivalContentInfo.a());
+      this.o.setText(paramAVGameLobbySurvivalContentInfo.e());
     }
-    if (paramAVGameLobbySurvivalContentInfo.a())
+    if (paramAVGameLobbySurvivalContentInfo.b())
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(8);
-      if (paramAVGameLobbySurvivalContentInfo.c()) {
-        this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setClickable(true);
+      this.l.setVisibility(0);
+      this.i.setVisibility(8);
+      this.g.setVisibility(8);
+      if (paramAVGameLobbySurvivalContentInfo.o()) {
+        this.m.setClickable(true);
       } else {
-        this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setClickable(false);
+        this.m.setClickable(false);
       }
       if (QLog.isColorLevel())
       {
-        paramViewHolderContext = jdField_a_of_type_JavaLangString;
+        paramViewHolderContext = d;
         localStringBuilder = new StringBuilder();
         localStringBuilder.append("mReserveImageView isClickable:");
-        localStringBuilder.append(this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.isClickable());
+        localStringBuilder.append(this.m.isClickable());
         QLog.d(paramViewHolderContext, 2, localStringBuilder.toString());
       }
-      if (paramAVGameLobbySurvivalContentInfo.b())
+      if (paramAVGameLobbySurvivalContentInfo.i())
       {
-        this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbySurvivalContentInfo.f());
-        this.c.setVisibility(8);
+        this.m.setUrlIconAsyncImage(paramAVGameLobbySurvivalContentInfo.n());
+        this.n.setVisibility(8);
       }
       else
       {
-        this.jdField_b_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setUrlIconAsyncImage(paramAVGameLobbySurvivalContentInfo.e());
-        this.c.setVisibility(0);
-        this.c.setText(String.format(this.itemView.getContext().getString(2131690387), new Object[] { Integer.valueOf(paramAVGameLobbySurvivalContentInfo.e()) }));
+        this.m.setUrlIconAsyncImage(paramAVGameLobbySurvivalContentInfo.m());
+        this.n.setVisibility(0);
+        this.n.setText(String.format(this.itemView.getContext().getString(2131887298), new Object[] { Integer.valueOf(paramAVGameLobbySurvivalContentInfo.j()) }));
       }
-      ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).rightMargin = ViewUtils.a(10.0F);
+      ((RelativeLayout.LayoutParams)this.p.getLayoutParams()).rightMargin = ViewUtils.dip2px(10.0F);
       return;
     }
-    paramViewHolderContext = jdField_a_of_type_JavaLangString;
+    paramViewHolderContext = d;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ApngImage url:");
-    localStringBuilder.append(paramAVGameLobbySurvivalContentInfo.c());
+    localStringBuilder.append(paramAVGameLobbySurvivalContentInfo.h());
     QLog.d(paramViewHolderContext, 2, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.a(paramAVGameLobbySurvivalContentInfo.c());
-    this.jdField_a_of_type_ComTencentAvgameGamelobbyViewAutoResizeAsyncImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    ((RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams()).rightMargin = ViewUtils.a(90.0F);
+    this.g.a(paramAVGameLobbySurvivalContentInfo.h());
+    this.g.setVisibility(0);
+    this.l.setVisibility(8);
+    this.i.setVisibility(8);
+    ((RelativeLayout.LayoutParams)this.p.getLayoutParams()).rightMargin = ViewUtils.dip2px(90.0F);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (i != 0)
+    int i1 = paramMotionEvent.getActionMasked();
+    if (i1 != 0)
     {
-      if ((i == 1) || (i == 3)) {
+      if ((i1 == 1) || (i1 == 3)) {
         paramView.setAlpha(1.0F);
       }
     }

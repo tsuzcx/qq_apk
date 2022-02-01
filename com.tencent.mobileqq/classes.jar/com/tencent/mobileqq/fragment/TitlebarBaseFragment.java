@@ -16,14 +16,14 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCol
 public class TitlebarBaseFragment
   extends BaseFragment
 {
-  protected IphoneTitleBarActivity a;
-  protected TitlebarStatus a;
-  protected QQProgressNotifier a;
-  protected int e;
-  protected View f;
-  protected boolean m = false;
-  protected boolean n = false;
-  protected boolean o = false;
+  protected IphoneTitleBarActivity ag;
+  protected int ah;
+  protected boolean ai = false;
+  protected TitlebarStatus aj;
+  protected boolean ak = false;
+  protected boolean al = false;
+  protected View am;
+  protected QQProgressNotifier an;
   
   public TitlebarBaseFragment()
   {
@@ -38,9 +38,21 @@ public class TitlebarBaseFragment
     }
   }
   
-  public void aR_()
+  public boolean D()
   {
-    t();
+    return false;
+  }
+  
+  public void E()
+  {
+    if ((getActivity() instanceof INearbyActivity)) {
+      ((INearbyActivity)getActivity()).updateTitlebar(this.aj);
+    }
+  }
+  
+  public void dw_()
+  {
+    E();
     onHiddenChanged(false);
     if (QLog.isColorLevel())
     {
@@ -51,12 +63,7 @@ public class TitlebarBaseFragment
     }
   }
   
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public void d() {}
+  public void e() {}
   
   public void onActivityCreated(Bundle paramBundle)
   {
@@ -92,11 +99,11 @@ public class TitlebarBaseFragment
       paramActivity.append(hashCode());
       QLog.d("Fragment", 2, paramActivity.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus = new TitlebarStatus(this);
+    if (this.aj == null) {
+      this.aj = new TitlebarStatus(this);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity = ((IphoneTitleBarActivity)getActivity());
-    this.m = true;
+    this.ag = ((IphoneTitleBarActivity)getActivity());
+    this.ai = true;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -146,7 +153,7 @@ public class TitlebarBaseFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    this.n = false;
+    this.ak = false;
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -156,16 +163,16 @@ public class TitlebarBaseFragment
       ((StringBuilder)localObject).append(hashCode());
       QLog.d("Fragment", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier;
+    Object localObject = this.an;
     if (localObject != null) {
       ((QQProgressNotifier)localObject).b();
     }
-    localObject = this.f;
+    localObject = this.am;
     if (localObject != null)
     {
       localObject = (ViewGroup)((View)localObject).getParent();
       if (localObject != null) {
-        ((ViewGroup)localObject).removeView(this.f);
+        ((ViewGroup)localObject).removeView(this.am);
       }
     }
   }
@@ -173,7 +180,7 @@ public class TitlebarBaseFragment
   public void onDetach()
   {
     super.onDetach();
-    this.m = false;
+    this.ai = false;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -210,7 +217,7 @@ public class TitlebarBaseFragment
   public void onPause()
   {
     super.onPause();
-    this.o = false;
+    this.al = false;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -225,7 +232,7 @@ public class TitlebarBaseFragment
   public void onResume()
   {
     super.onResume();
-    this.o = true;
+    this.al = true;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -264,17 +271,10 @@ public class TitlebarBaseFragment
       QLog.d("Fragment", 2, localStringBuilder.toString());
     }
   }
-  
-  public void t()
-  {
-    if ((getActivity() instanceof INearbyActivity)) {
-      ((INearbyActivity)getActivity()).updateTitlebar(this.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TitlebarBaseFragment
  * JD-Core Version:    0.7.0.1
  */

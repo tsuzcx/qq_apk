@@ -24,19 +24,19 @@ class AddContactViewPagerTroopFragment$2$1
     if (QLog.isColorLevel()) {
       QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a.h.setVisibility(8);
+    this.a.a.a.setVisibility(0);
     if (((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("recommend_troop") == null)
     {
       ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).startLocation(new AddContactViewPagerTroopFragment.2.1.1(this, "recommend_troop"));
       return;
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopRTLW.b(false);
+    this.a.a.b.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactViewPagerTroopFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

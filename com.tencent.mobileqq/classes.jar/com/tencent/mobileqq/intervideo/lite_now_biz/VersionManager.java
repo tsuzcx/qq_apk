@@ -74,7 +74,7 @@ public class VersionManager
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.7.0");
+      paramReqBody.version.set("8.8.17");
       paramReqBody.original_id.set(paramAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -90,8 +90,8 @@ public class VersionManager
     }
     ilive_grey_interface.GreyInterfaceReq localGreyInterfaceReq = new ilive_grey_interface.GreyInterfaceReq();
     localGreyInterfaceReq.uin.set(Long.valueOf(paramAppInterface.getCurrentAccountUin()).longValue());
-    localGreyInterfaceReq.version.set(DeviceInfoUtil.a());
-    localGreyInterfaceReq.strVersion.set(DeviceInfoUtil.c());
+    localGreyInterfaceReq.version.set(DeviceInfoUtil.d());
+    localGreyInterfaceReq.strVersion.set(DeviceInfoUtil.e());
     localGreyInterfaceReq.clientType.set(401);
     localGreyInterfaceReq.key.set(paramInt);
     new CsTask(paramAppInterface).a(974).b(1).a(new VersionManager.3(this, paramIVersionGrayscaleCallback)).a(new VersionManager.2(this, paramIVersionGrayscaleCallback)).a(localGreyInterfaceReq.toByteArray());
@@ -117,7 +117,7 @@ public class VersionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.VersionManager
  * JD-Core Version:    0.7.0.1
  */

@@ -6,23 +6,23 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ThreadRegulator$CpuBusyness
   extends RecyclablePool.Recyclable
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(4);
+  int a;
   long b;
+  long c;
+  ConcurrentHashMap<String, Long> d = new ConcurrentHashMap(4);
   
   public void recycle()
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
+    this.a = 0;
     this.b = 0L;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.c = 0L;
+    this.d.clear();
     super.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.opt.threadpriority.ThreadRegulator.CpuBusyness
  * JD-Core Version:    0.7.0.1
  */

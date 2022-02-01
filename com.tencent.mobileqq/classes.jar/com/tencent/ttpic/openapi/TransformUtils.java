@@ -63,7 +63,7 @@ public class TransformUtils
   public static PTFaceAttr lightFaceToPTFaceAttr(LightFaceData paramLightFaceData)
   {
     Object localObject1 = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
+    ArrayList localArrayList1 = new ArrayList();
     if ((paramLightFaceData != null) && (paramLightFaceData.mLightFaceFeatureList != null))
     {
       Object localObject2 = paramLightFaceData.mLightFaceFeatureList.iterator();
@@ -72,7 +72,7 @@ public class TransformUtils
       {
         localObject3 = (LightFaceFeature)((Iterator)localObject2).next();
         localObject4 = ((LightFaceFeature)localObject3).mTTFaceOriginDataModel;
-        localArrayList.add(localObject4);
+        localArrayList1.add(localObject4);
         localObject5 = new FaceInfo();
         f2 = f1;
         if (paramLightFaceData.imageSize != null)
@@ -93,26 +93,35 @@ public class TransformUtils
         ((FaceInfo)localObject5).pitch = ((TTFaceOriginDataModel)localObject4).pitch;
         ((FaceInfo)localObject5).yaw = ((TTFaceOriginDataModel)localObject4).yaw;
         ((FaceInfo)localObject5).roll = ((TTFaceOriginDataModel)localObject4).roll;
+        if ("female".equals(((LightFaceFeature)localObject3).gender)) {
+          ((FaceInfo)localObject5).gender = GenderType.FEMALE.value;
+        } else if ("male".equals(((LightFaceFeature)localObject3).gender)) {
+          ((FaceInfo)localObject5).gender = GenderType.MALE.value;
+        } else {
+          ((FaceInfo)localObject5).gender = GenderType.DEFAULT.value;
+        }
+        ((FaceInfo)localObject5).age = ((LightFaceFeature)localObject3).age;
         ((FaceInfo)localObject5).scale = 0.0F;
         ((FaceInfo)localObject5).tx = 0.0F;
         ((FaceInfo)localObject5).ty = 0.0F;
         ((FaceInfo)localObject5).denseFaceModel = null;
         ((FaceInfo)localObject5).transform = null;
         ((FaceInfo)localObject5).expressionWeights = null;
-        ((FaceInfo)localObject5).gender = GenderType.FEMALE.value;
         ((List)localObject1).add(localObject5);
       }
-      localArrayList = new ArrayList();
+      localArrayList1 = new ArrayList();
       localObject2 = new ArrayList();
       Object localObject3 = new ArrayList();
       Object localObject4 = new ArrayList();
       Object localObject5 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      ArrayList localArrayList3 = new ArrayList();
       HashSet localHashSet = new HashSet();
       localHashSet.add(Integer.valueOf(1));
       int i = 0;
       while (i < ((List)localObject1).size())
       {
-        localArrayList.add(((FaceInfo)((List)localObject1).get(i)).points);
+        localArrayList1.add(((FaceInfo)((List)localObject1).get(i)).points);
         i += 1;
       }
       i = 0;
@@ -139,8 +148,17 @@ public class TransformUtils
         ((List)localObject5).add(((FaceInfo)((List)localObject1).get(i)).angles);
         i += 1;
       }
+      i = 0;
+      while (i < ((List)localObject1).size())
+      {
+        int j = ((FaceInfo)((List)localObject1).get(i)).gender;
+        int k = ((FaceInfo)((List)localObject1).get(i)).age;
+        localArrayList2.add(Integer.valueOf(j));
+        localArrayList3.add(Integer.valueOf(k));
+        i += 1;
+      }
       localObject1 = new PTFaceAttr.Builder();
-      ((PTFaceAttr.Builder)localObject1).facePoints(localArrayList).facePoint94((List)localObject2).irisPoints((List)localObject3).pointsVis((List)localObject4).faceAngles((List)localObject5).faceDetectScale(f1).triggeredExpression(localHashSet).faceDetWidth(paramLightFaceData.imageSize[0]).faceDetHeight(paramLightFaceData.imageSize[1]).data(paramLightFaceData.imageData).build();
+      ((PTFaceAttr.Builder)localObject1).facePoints(localArrayList1).facePoint94((List)localObject2).irisPoints((List)localObject3).pointsVis((List)localObject4).faceAngles((List)localObject5).genderList(localArrayList2).ageList(localArrayList3).faceDetectScale(f1).triggeredExpression(localHashSet).faceDetWidth(paramLightFaceData.imageSize[0]).faceDetHeight(paramLightFaceData.imageSize[1]).data(paramLightFaceData.imageData).build();
       return new PTFaceAttr((PTFaceAttr.Builder)localObject1);
     }
     return new PTFaceAttr(new PTFaceAttr.Builder());
@@ -190,7 +208,7 @@ public class TransformUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.ttpic.openapi.TransformUtils
  * JD-Core Version:    0.7.0.1
  */

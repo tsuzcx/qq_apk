@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="top" android:id="@id/pfp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/pfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip" android:maxLines="2" android:layout_toLeftOf="@id/pfm" android:layout_alignParentLeft="true" />
+    <ImageView android:id="@id/pfm" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/j68" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pfk" android:background="@drawable/f3w" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_below="@id/pfo">
+        <FrameLayout android:background="@drawable/fo4" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="4.0dip" android:layout_marginRight="8.0dip" android:layout_below="@id/pfo">
+            <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/pfn" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="1.0dip" android:layout_marginTop="1.0dip" android:layout_below="@id/pfo" app:authIconEnable="false" app:avatarRadius="90" />
+        </FrameLayout>
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/pfl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxWidth="180.0dip" android:singleLine="true" />
+        <com.tencent.biz.qqcircle.immersive.views.QFSPlusFollowView android:textSize="14.0sp" android:id="@id/pfj" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" />
+    </LinearLayout>
+</RelativeLayout>

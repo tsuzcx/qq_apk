@@ -26,16 +26,16 @@ final class ThemeFontAdapter$2
       ((StringBuilder)localObject1).append("switchFont  fontPath not exists:");
       ((StringBuilder)localObject1).append(this.a);
       QLog.d("ThemeFontAdapter", 1, ((StringBuilder)localObject1).toString());
-      ThemeFontAdapter.c(this.a, this.b);
+      ThemeFontAdapter.d(this.a, this.b);
       return;
     }
     Object localObject1 = localObject2;
     Object localObject3;
     if (this.b == 1)
     {
-      if ((!ETEngine.isSOLoaded.get()) && (ThemeFontAdapter.a() < ThemeFontAdapter.b()))
+      if ((!ETEngine.isSOLoaded.get()) && (ThemeFontAdapter.d() < ThemeFontAdapter.e()))
       {
-        ThemeFontAdapter.c(this.a, this.b);
+        ThemeFontAdapter.d(this.a, this.b);
         return;
       }
       localObject3 = FontManagerConstants.getStaticTTFPath(this.a, this.b);
@@ -57,15 +57,15 @@ final class ThemeFontAdapter$2
       QLog.e("ThemeFontAdapter", 1, "switchFont  context is null");
       return;
     }
-    if (SimpleUIUtil.a())
+    if (SimpleUIUtil.e())
     {
       ThemeFontAdapter.a((Context)localObject2, (String)localObject1);
       return;
     }
     if (TextHook.getInstance().switchFont((Context)localObject2, (String)localObject1))
     {
-      ThemeFontAdapter.a(0);
-      ThemeFontAdapter.b(this.a);
+      ThemeFontAdapter.c(0);
+      ThemeFontAdapter.d(this.a);
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("switchFont  success:");
       ((StringBuilder)localObject3).append(this.a);
@@ -79,7 +79,7 @@ final class ThemeFontAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adapter.ThemeFontAdapter.2
  * JD-Core Version:    0.7.0.1
  */

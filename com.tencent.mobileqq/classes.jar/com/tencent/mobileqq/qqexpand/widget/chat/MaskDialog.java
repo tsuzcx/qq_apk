@@ -10,8 +10,8 @@ public class MaskDialog
 {
   public MaskDialog(Context paramContext)
   {
-    super(paramContext, 2131756189);
-    setContentView(2131558978);
+    super(paramContext, 2131953338);
+    setContentView(2131624611);
     setTitle(null);
     setCancelable(false);
     setCanceledOnTouchOutside(false);
@@ -28,7 +28,7 @@ public class MaskDialog
     TextView localTextView = this.lBtn;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
-    localStringBuilder.append(getContext().getString(2131691115));
+    localStringBuilder.append(getContext().getString(2131888061));
     localTextView.setContentDescription(localStringBuilder.toString());
     this.lBtn.setVisibility(0);
     this.lBtn.setOnClickListener(new MaskDialog.2(this, paramOnClickListener));
@@ -46,7 +46,7 @@ public class MaskDialog
     TextView localTextView = this.rBtn;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramString);
-    localStringBuilder.append(getContext().getString(2131691115));
+    localStringBuilder.append(getContext().getString(2131888061));
     localTextView.setContentDescription(localStringBuilder.toString());
     this.rBtn.setVisibility(0);
     this.rBtn.setOnClickListener(new MaskDialog.1(this, paramOnClickListener));
@@ -55,7 +55,7 @@ public class MaskDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.chat.MaskDialog
  * JD-Core Version:    0.7.0.1
  */

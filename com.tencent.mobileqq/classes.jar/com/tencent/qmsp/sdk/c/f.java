@@ -162,11 +162,16 @@ public final class f
     } else {
       paramInt = -1;
     }
-    boolean bool = true;
+    boolean bool2 = true;
+    boolean bool1 = bool2;
     if (1 != paramInt) {
-      bool = false;
+      if (!b.b) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
+      }
     }
-    return Boolean.valueOf(bool);
+    return Boolean.valueOf(bool1);
   }
   
   public void a()
@@ -214,16 +219,22 @@ public final class f
     if (!this.c) {
       this.c = true;
     }
-    com.tencent.qmsp.sdk.e.a.a();
-    com.tencent.qmsp.sdk.e.c.a();
+    if (b.b)
+    {
+      com.tencent.qmsp.sdk.e.a.a();
+      com.tencent.qmsp.sdk.e.c.a();
+    }
     com.tencent.qmsp.sdk.e.b.a();
-    this.f.a(new f.e(this));
-    this.f.c();
+    if (b.b)
+    {
+      this.f.a(new f.e(this));
+      this.f.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -22,16 +22,16 @@ public class RIJEmotionTextSpan
     return 0;
   }
   
-  public RIJBaseEmotionInfo a()
+  public RIJBaseEmotionInfo b()
   {
     return this.a;
   }
   
-  public void a() {}
+  public void cO_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.emotion.span.RIJEmotionTextSpan
  * JD-Core Version:    0.7.0.1
  */

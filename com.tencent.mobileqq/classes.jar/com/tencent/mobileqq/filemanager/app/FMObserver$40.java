@@ -7,12 +7,12 @@ class FMObserver$40
   
   public void a(Object[] paramArrayOfObject)
   {
-    FMObserver.x(this.a, paramArrayOfObject);
+    FMObserver.v(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FMObserver.40
  * JD-Core Version:    0.7.0.1
  */

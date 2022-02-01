@@ -10,17 +10,17 @@ class AddFriendLogicActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AddFriendLogicActivity.d(this.a) == 1)
+    if (AddFriendLogicActivity.i(this.a) == 1)
     {
       this.a.finish();
       return;
     }
-    AddFriendLogicActivity.a(this.a);
+    AddFriendLogicActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendLogicActivity.4
  * JD-Core Version:    0.7.0.1
  */

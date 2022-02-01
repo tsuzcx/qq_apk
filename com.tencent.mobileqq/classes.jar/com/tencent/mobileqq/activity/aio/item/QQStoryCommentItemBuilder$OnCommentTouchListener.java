@@ -9,35 +9,35 @@ import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 class QQStoryCommentItemBuilder$OnCommentTouchListener
   implements View.OnTouchListener
 {
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new QQStoryCommentItemBuilder.OnCommentTouchListener.1(this));
-  View jdField_a_of_type_AndroidViewView = null;
-  final OnLongClickAndTouchListener jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener;
+  final OnLongClickAndTouchListener a;
+  View b = null;
+  GestureDetector c = new GestureDetector(new QQStoryCommentItemBuilder.OnCommentTouchListener.1(this));
   
   public QQStoryCommentItemBuilder$OnCommentTouchListener(QQStoryCommentItemBuilder paramQQStoryCommentItemBuilder, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener = paramOnLongClickAndTouchListener;
+    this.a = paramOnLongClickAndTouchListener;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener;
+    Object localObject = this.a;
     if (localObject != null) {
       ((OnLongClickAndTouchListener)localObject).onTouch(paramView, paramMotionEvent);
     }
-    localObject = this.jdField_a_of_type_AndroidViewGestureDetector;
+    localObject = this.c;
     if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
+      this.b = paramView;
       ((GestureDetector)localObject).onTouchEvent(paramMotionEvent);
       return true;
     }
-    this.jdField_a_of_type_AndroidViewView = null;
+    this.b = null;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder.OnCommentTouchListener
  * JD-Core Version:    0.7.0.1
  */

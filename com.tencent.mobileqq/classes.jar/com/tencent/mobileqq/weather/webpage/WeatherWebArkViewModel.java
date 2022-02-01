@@ -22,24 +22,14 @@ import org.json.JSONObject;
 public final class WeatherWebArkViewModel
   extends ViewModel
 {
-  public static final WeatherWebArkViewModel.Companion a;
+  public static final WeatherWebArkViewModel.Companion a = new WeatherWebArkViewModel.Companion(null);
   @NotNull
-  private final MutableLiveData<WebPageData> a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqWeatherWebpageWeatherWebArkViewModel$Companion = new WeatherWebArkViewModel.Companion(null);
-  }
-  
-  public WeatherWebArkViewModel()
-  {
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData = new MutableLiveData();
-  }
+  private final MutableLiveData<WebPageData> b = new MutableLiveData();
   
   @NotNull
   public final MutableLiveData<WebPageData> a()
   {
-    return this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+    return this.b;
   }
   
   public final void a(int paramInt)
@@ -51,7 +41,7 @@ public final class WeatherWebArkViewModel
       localStringBuilder.append(paramInt);
       QLog.d("WeatherWebArkViewModel", 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(new WebPageData(2, null, null, null, paramInt, 0, 46, null));
+    this.b.postValue(new WebPageData(2, null, null, null, paramInt, 0, 46, null));
   }
   
   public final void a(@Nullable String paramString)
@@ -82,7 +72,7 @@ public final class WeatherWebArkViewModel
         QLog.d("WeatherWebArkViewModel", 1, localStringBuilder.toString(), localThrowable);
         i = 0;
       }
-      this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(new WebPageData(0, "receive_ark_msg", paramString, null, 0, i, 24, null));
+      this.b.postValue(new WebPageData(0, "receive_ark_msg", paramString, null, 0, i, 24, null));
     }
   }
   
@@ -148,14 +138,14 @@ public final class WeatherWebArkViewModel
           localObject1 = ((JSONObject)localObject1).optJSONObject("data").optString("bg_url");
           if (!TextUtils.isEmpty((CharSequence)localObject1))
           {
-            localObject2 = this.jdField_a_of_type_AndroidxLifecycleMutableLiveData;
+            localObject2 = this.b;
             Intrinsics.checkExpressionValueIsNotNull(localObject1, "bgUrl");
             ((MutableLiveData)localObject2).postValue(new WebPageData(1, null, null, (String)localObject1, 0, 0, 54, null));
           }
         }
         else if (i == 2)
         {
-          this.jdField_a_of_type_AndroidxLifecycleMutableLiveData.postValue(new WebPageData(4, null, null, null, 0, 0, 62, null));
+          this.b.postValue(new WebPageData(4, null, null, null, 0, 0, 62, null));
           return;
         }
       }
@@ -181,7 +171,7 @@ public final class WeatherWebArkViewModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebArkViewModel
  * JD-Core Version:    0.7.0.1
  */

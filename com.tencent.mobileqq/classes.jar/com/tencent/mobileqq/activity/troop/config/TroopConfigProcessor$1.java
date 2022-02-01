@@ -13,13 +13,13 @@ class TroopConfigProcessor$1
   
   public void run()
   {
-    ((TroopAioKeywordTipManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword), TroopAioKeywordHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword));
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword);
+    ((TroopAioKeywordTipManager)this.a.getManager(QQManagerFactory.TROOP_AIO_KEYWORD_TIP_MANAGER)).a(TroopAioKeywordHelper.a(this.b), TroopAioKeywordHelper.b(this.b));
+    TroopAioKeywordHelper.a(this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.troop.config.TroopConfigProcessor.1
  * JD-Core Version:    0.7.0.1
  */

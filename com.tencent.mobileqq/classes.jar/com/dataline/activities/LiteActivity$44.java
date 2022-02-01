@@ -1,27 +1,11 @@
 package com.dataline.activities;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.SelectLimitListener;
 
 class LiteActivity$44
-  implements DialogInterface.OnClickListener
+  implements PhotoListPanel.SelectLimitListener
 {
-  LiteActivity$44(LiteActivity paramLiteActivity, InputStream paramInputStream) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-    }
-    catch (IOException paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
-  }
+  LiteActivity$44(LiteActivity paramLiteActivity) {}
 }
 
 

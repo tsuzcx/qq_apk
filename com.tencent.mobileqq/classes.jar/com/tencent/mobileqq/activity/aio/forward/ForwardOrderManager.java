@@ -12,16 +12,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class ForwardOrderManager
 {
-  private static ForwardOrderManager jdField_a_of_type_ComTencentMobileqqActivityAioForwardForwardOrderManager;
-  private SparseArray<ForwardOrder> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static ForwardOrderManager a;
+  private AtomicInteger b = new AtomicInteger(0);
+  private SparseArray<ForwardOrder> c = new SparseArray();
   
   private ForwardOrder a(long paramLong, boolean paramBoolean)
   {
-    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size() - 1;
+    int i = this.c.size() - 1;
     while (i >= 0)
     {
-      ForwardOrder localForwardOrder = (ForwardOrder)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      ForwardOrder localForwardOrder = (ForwardOrder)this.c.valueAt(i);
       if ((localForwardOrder != null) && (localForwardOrder.a(paramLong, paramBoolean))) {
         return localForwardOrder;
       }
@@ -32,21 +32,16 @@ public class ForwardOrderManager
   
   public static ForwardOrderManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioForwardForwardOrderManager == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqActivityAioForwardForwardOrderManager == null) {
-          jdField_a_of_type_ComTencentMobileqqActivityAioForwardForwardOrderManager = new ForwardOrderManager();
+        if (a == null) {
+          a = new ForwardOrderManager();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqActivityAioForwardForwardOrderManager;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    return a;
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt)
@@ -62,7 +57,7 @@ public class ForwardOrderManager
       ((StringBuilder)localObject).append(paramInt);
       QLog.d("ForwardOrderManager", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = (ForwardOrder)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    Object localObject = (ForwardOrder)this.c.get(paramInt);
     if (localObject != null) {
       ((ForwardOrder)localObject).a(paramLong1, paramLong2);
     }
@@ -99,7 +94,7 @@ public class ForwardOrderManager
     } else {
       paramList = new MergeForwardOrder();
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
+    this.c.put(paramInt2, paramList.a(paramSessionInfo, paramString, localArrayList, paramInt2));
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -110,20 +105,20 @@ public class ForwardOrderManager
       ((StringBuilder)localObject).append("onSendResult newSeq -> ");
       ((StringBuilder)localObject).append(paramLong);
       ((StringBuilder)localObject).append(", mForwardEntities.size() => ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidUtilSparseArray.size());
+      ((StringBuilder)localObject).append(this.c.size());
       QLog.d("ForwardOrderManager", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = a(paramLong, false);
     if ((localObject != null) && (((ForwardOrder)localObject).a(paramQQAppInterface, paramLong))) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.remove(((ForwardOrder)localObject).a);
+      this.c.remove(((ForwardOrder)localObject).a);
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    ForwardOrder localForwardOrder = (ForwardOrder)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    ForwardOrder localForwardOrder = (ForwardOrder)this.c.get(paramInt);
     if (localForwardOrder != null) {
-      localForwardOrder.a(paramQQAppInterface, paramLong);
+      localForwardOrder.b(paramQQAppInterface, paramLong);
     }
   }
   
@@ -165,15 +160,20 @@ public class ForwardOrderManager
   {
     try
     {
-      ((ForwardOrder)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
+      ((ForwardOrder)this.c.get(paramInt)).b(paramMessageRecord1.uniseq, paramMessageRecord2.uniseq);
       return;
     }
     finally {}
   }
+  
+  public int b()
+  {
+    return this.b.incrementAndGet();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.forward.ForwardOrderManager
  * JD-Core Version:    0.7.0.1
  */

@@ -28,9 +28,9 @@ public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = ViewUtils.a(260.0F);
-  OnTipClickListener jdField_a_of_type_ComTencentMobileqqKandianBizSearchApiOnTipClickListener;
-  private int b = 5;
+  OnTipClickListener a;
+  private int b = ViewUtils.dip2px(260.0F);
+  private int c = 5;
   
   public ReadInJoySearchTipsContainer(Context paramContext)
   {
@@ -46,7 +46,7 @@ public class ReadInJoySearchTipsContainer
   
   private void a()
   {
-    this.jdField_a_of_type_Int = (getResources().getDisplayMetrics().widthPixels / 2);
+    this.b = (getResources().getDisplayMetrics().widthPixels / 2);
   }
   
   private void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
@@ -55,18 +55,18 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130849766);
+    localButton.setBackgroundResource(2130851475);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 == 0) {
       paramInt2 = -3355444;
     }
     localGradientDrawable.setStroke(1, paramInt2);
-    localButton.setPadding(ViewUtils.a(15.0F), ViewUtils.a(5.0F), ViewUtils.a(15.0F), ViewUtils.a(6.0F));
+    localButton.setPadding(ViewUtils.dip2px(15.0F), ViewUtils.dip2px(5.0F), ViewUtils.dip2px(15.0F), ViewUtils.dip2px(6.0F));
     localButton.setText(paramString1);
     localButton.setTextSize(14.0F);
     localButton.setSingleLine();
     localButton.setEllipsize(TextUtils.TruncateAt.valueOf("MIDDLE"));
-    localButton.setMaxWidth(this.jdField_a_of_type_Int);
+    localButton.setMaxWidth(this.b);
     if (paramInt1 == 0) {
       paramInt1 = -16777216;
     }
@@ -113,7 +113,7 @@ public class ReadInJoySearchTipsContainer
       if (k + i11 > paramInt - i9)
       {
         i4 = i2 + 1;
-        j = this.b;
+        j = this.c;
         if ((j > 0) && (i4 > j)) {
           break;
         }
@@ -183,7 +183,7 @@ public class ReadInJoySearchTipsContainer
       {
         i1 = n + (i7 + i2);
         k = j + 1;
-        paramInt2 = this.b;
+        paramInt2 = this.c;
         if ((paramInt2 > 0) && (k > paramInt2)) {
           return;
         }
@@ -224,17 +224,17 @@ public class ReadInJoySearchTipsContainer
   
   public void setMaxLines(int paramInt)
   {
-    this.b = paramInt;
+    this.c = paramInt;
   }
   
   public void setOnTipsClickListener(OnTipClickListener paramOnTipClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizSearchApiOnTipClickListener = paramOnTipClickListener;
+    this.a = paramOnTipClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.search.ReadInJoySearchTipsContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,11 @@ class HotChatManager$2
   
   public void run()
   {
-    CardHandler localCardHandler = (CardHandler)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
+    CardHandler localCardHandler = (CardHandler)this.this$0.d.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER);
     oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
     Oidb_0x66b.ReqBody localReqBody1 = new Oidb_0x66b.ReqBody();
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(Long.parseLong(this.this$0.a.getCurrentAccountUin())));
+    localArrayList.add(Long.valueOf(Long.parseLong(this.this$0.d.getCurrentAccountUin())));
     localReqBody.rpt_uint64_uins.set(localArrayList);
     localReqBody1.bytes_reqbody_5eb.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
     localReqBody1.uint32_req_pansocialinfo.set(1);
@@ -29,7 +29,7 @@ class HotChatManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.2
  * JD-Core Version:    0.7.0.1
  */

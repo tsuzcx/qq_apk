@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/o33" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/mnc" android:background="@drawable/h4c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/g1f" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray3" android:id="@id/txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fbu" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/mnf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/2a" />
+    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/mna" android:paddingLeft="@dimen/1z" android:paddingRight="@dimen/1z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/mou" android:paddingTop="@dimen/25" android:paddingBottom="@dimen/2a" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:id="@id/moj" android:layout_width="@dimen/1l" android:layout_height="@dimen/25" style="@style/6v" />
+            <Button android:id="@id/mok" android:layout_width="@dimen/1l" android:layout_height="@dimen/25" android:layout_marginLeft="@dimen/1w" style="@style/6n" />
+            <Button android:id="@id/mpq" android:layout_width="@dimen/1s" android:layout_height="@dimen/25" style="@style/6m" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/mnb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/1i" />
+    </FrameLayout>
 </LinearLayout>

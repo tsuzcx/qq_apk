@@ -24,59 +24,59 @@ public class NearbyAppDownloadDialog
   extends Dialog
   implements View.OnClickListener
 {
-  protected int a;
   protected Context a;
-  protected Drawable a;
-  protected Button a;
-  protected ImageView a;
-  protected TextView a;
-  protected CikeConfigData a;
-  protected RoundRelativeLayout a;
-  protected int b;
-  protected ImageView b;
-  protected TextView b;
+  protected RoundRelativeLayout b;
+  protected TextView c;
+  protected ImageView d;
+  protected Button e;
+  protected ImageView f;
+  protected TextView g;
+  protected Drawable h;
+  protected int i;
+  protected int j;
+  protected CikeConfigData k;
   
   public NearbyAppDownloadDialog(Context paramContext)
   {
-    super(paramContext, 2131756189);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramContext, 2131953338);
+    this.a = paramContext;
     a();
   }
   
   protected void a()
   {
-    setContentView(2131558971);
-    this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout = ((RoundRelativeLayout)findViewById(2131365196));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363840));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363506));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368624));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378745));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371472));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetRoundRelativeLayout.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
-    this.jdField_a_of_type_Int = (ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(28.0F) * 2);
-    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * 150 / 320);
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).width = this.jdField_a_of_type_Int;
-    ((ViewGroup.LayoutParams)localObject).height = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    setContentView(2131624604);
+    this.b = ((RoundRelativeLayout)findViewById(2131431358));
+    this.e = ((Button)findViewById(2131429786));
+    this.d = ((ImageView)findViewById(2131429408));
+    this.f = ((ImageView)findViewById(2131435536));
+    this.c = ((TextView)findViewById(2131447419));
+    this.g = ((TextView)findViewById(2131438844));
+    this.f.setOnClickListener(this);
+    this.e.setOnClickListener(this);
+    this.g.setOnClickListener(this);
+    this.b.setRoundLayoutRadius(ScreenUtil.dip2px(3.0F));
+    this.i = (ScreenUtil.SCREEN_WIDTH - ScreenUtil.dip2px(28.0F) * 2);
+    this.j = (this.i * 150 / 320);
+    Object localObject = this.d.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).width = this.i;
+    ((ViewGroup.LayoutParams)localObject).height = this.j;
+    this.d.setLayoutParams((ViewGroup.LayoutParams)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("init, w=");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(this.i);
       ((StringBuilder)localObject).append(", h=");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.j);
       QLog.d("NearbyAppDownloadDialog", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   protected void a(ImageView paramImageView, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#f4f4f4"));
+    if (this.h == null) {
+      this.h = new ColorDrawable(Color.parseColor("#f4f4f4"));
     }
     Object localObject1;
     if (QLog.isColorLevel())
@@ -92,10 +92,10 @@ public class NearbyAppDownloadDialog
       if (!TextUtils.isEmpty(paramString))
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.j;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.i;
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.h;
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.h;
         localObject1 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject1);
       }
       else
@@ -122,19 +122,19 @@ public class NearbyAppDownloadDialog
     }
     paramString = (String)localObject1;
     if (localObject1 == null) {
-      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramString = this.h;
     }
     paramImageView.setImageDrawable(paramString);
   }
   
   protected void a(String paramString)
   {
-    new ReportTask(null).a("dc00899").b("grp_lbs").c("home").d(paramString).e(this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData.g).a(new String[] { this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData.f }).a();
+    new ReportTask(null).a("dc00899").b("grp_lbs").c("home").d(paramString).e(this.k.g).a(new String[] { this.k.f }).a();
   }
   
   public boolean a(CikeConfigData paramCikeConfigData)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData = paramCikeConfigData;
+    this.k = paramCikeConfigData;
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -142,67 +142,67 @@ public class NearbyAppDownloadDialog
       localStringBuilder.append(paramCikeConfigData.toString());
       QLog.d("NearbyAppDownloadDialog", 2, localStringBuilder.toString());
     }
-    a(this.jdField_a_of_type_AndroidWidgetImageView, paramCikeConfigData.a);
+    a(this.d, paramCikeConfigData.a);
     if (!TextUtils.isEmpty(paramCikeConfigData.c))
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(paramCikeConfigData.c);
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.e.setText(paramCikeConfigData.c);
+      this.e.setVisibility(0);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      this.e.setVisibility(8);
     }
     if (!TextUtils.isEmpty(paramCikeConfigData.b))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCikeConfigData.b);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setText(paramCikeConfigData.b);
+      this.c.setVisibility(0);
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.c.setVisibility(8);
     }
     if (!TextUtils.isEmpty(paramCikeConfigData.e))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.g.setVisibility(0);
       return false;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.g.setVisibility(8);
     return false;
   }
   
   public void onClick(View paramView)
   {
-    int i = paramView.getId();
-    if (i == 2131368624)
+    int m = paramView.getId();
+    if (m == 2131435536)
     {
       dismiss();
       a("pop_new_quit");
       return;
     }
-    if (i == 2131363840)
+    if (m == 2131429786)
     {
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("btn onClick, jumpUrl=");
-        paramView.append(this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData.d);
+        paramView.append(this.k.d);
         QLog.d("NearbyAppDownloadDialog", 2, paramView.toString());
       }
-      NearbyPublishMenuHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData.d);
+      NearbyPublishMenuHelper.a(this.a, this.k.d);
       dismiss();
       a("pop_new_clk");
       return;
     }
-    if (i == 2131371472)
+    if (m == 2131438844)
     {
       if (QLog.isColorLevel())
       {
         paramView = new StringBuilder();
         paramView.append("more onClick, jumpUrl=");
-        paramView.append(this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData.e);
+        paramView.append(this.k.e);
         QLog.d("NearbyAppDownloadDialog", 2, paramView.toString());
       }
-      NearbyPublishMenuHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqNearbyCikeConfigData.e);
+      NearbyPublishMenuHelper.a(this.a, this.k.e);
     }
   }
   
@@ -214,7 +214,7 @@ public class NearbyAppDownloadDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.NearbyAppDownloadDialog
  * JD-Core Version:    0.7.0.1
  */

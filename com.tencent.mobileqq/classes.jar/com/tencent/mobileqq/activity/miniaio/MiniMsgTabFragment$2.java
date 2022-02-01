@@ -18,19 +18,19 @@ class MiniMsgTabFragment$2
     BaseActivity localBaseActivity = this.a.getBaseActivity();
     if (paramRecentBaseData.getRecentUserUin().equals("0"))
     {
-      MiniMsgTabFragment.a(this.a).findViewById(2131378953).performClick();
+      MiniMsgTabFragment.f(this.a).findViewById(2131447655).performClick();
       return;
     }
-    MiniChatActivity.a(localBaseActivity, paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getTitleName(), false, MiniMsgTabFragment.b(this.a));
+    MiniChatActivity.a(localBaseActivity, paramRecentBaseData.getRecentUserType(), paramRecentBaseData.getRecentUserUin(), paramRecentBaseData.getTitleName(), false, MiniMsgTabFragment.g(this.a));
     MiniChatReportHelper.a("0X8009C2D");
-    if (MiniMsgTabFragment.a(this.a) == null)
+    if (MiniMsgTabFragment.h(this.a) == null)
     {
       MiniMsgTabFragment localMiniMsgTabFragment = this.a;
-      MiniMsgTabFragment.a(localMiniMsgTabFragment, AnimationUtils.loadAnimation(localMiniMsgTabFragment.getBaseActivity(), 2130772009));
+      MiniMsgTabFragment.a(localMiniMsgTabFragment, AnimationUtils.loadAnimation(localMiniMsgTabFragment.getBaseActivity(), 2130772012));
     }
-    MiniMsgTabFragment.b(this.a).startAnimation(MiniMsgTabFragment.a(this.a));
-    MiniMsgTabFragment.a(this.a).setAnimationListener(new MiniMsgTabFragment.2.1(this, localBaseActivity));
-    MiniMsgTabFragment.b(this.a).setVisibility(8);
+    MiniMsgTabFragment.i(this.a).startAnimation(MiniMsgTabFragment.h(this.a));
+    MiniMsgTabFragment.h(this.a).setAnimationListener(new MiniMsgTabFragment.2.1(this, localBaseActivity));
+    MiniMsgTabFragment.i(this.a).setVisibility(8);
     int j = paramRecentBaseData.getRecentUserType();
     int i = 5;
     if (UinTypeUtil.b(j)) {
@@ -40,7 +40,7 @@ class MiniMsgTabFragment$2
     } else if (j == 3000) {
       i = 4;
     }
-    j = MiniMsgTabFragment.b(this.a);
+    j = MiniMsgTabFragment.g(this.a);
     paramRecentBaseData = new StringBuilder();
     paramRecentBaseData.append("");
     paramRecentBaseData.append(i);
@@ -49,7 +49,7 @@ class MiniMsgTabFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMsgTabFragment.2
  * JD-Core Version:    0.7.0.1
  */

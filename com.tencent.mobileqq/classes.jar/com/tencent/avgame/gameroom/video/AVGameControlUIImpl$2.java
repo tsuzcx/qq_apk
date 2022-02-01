@@ -18,7 +18,7 @@ class AVGameControlUIImpl$2
   
   public void a()
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.2.1(this));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.2.1(this));
   }
   
   public void a(int paramInt) {}
@@ -38,7 +38,7 @@ class AVGameControlUIImpl$2
         }
       }
     }
-    AVGameControlUIImpl.a(this.a).post(new AVGameControlUIImpl.2.5(this));
+    AVGameControlUIImpl.d(this.a).post(new AVGameControlUIImpl.2.5(this));
   }
   
   public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
@@ -56,35 +56,35 @@ class AVGameControlUIImpl$2
       localStringBuilder.append(paramBoolean);
       QLog.i("AVGameControlUIImpl", 2, localStringBuilder.toString());
     }
-    if (GameEngine.a().i()) {
+    if (GameEngine.a().D()) {
       return;
     }
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.2.2(this, paramMultiUserInfo, paramBoolean));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.2.2(this, paramMultiUserInfo, paramBoolean));
   }
   
   public void a(List<QavDef.MultiUserInfo> paramList) {}
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (GameEngine.a().f()) && (!GameEngine.a().g())) {
-      CallingStateMonitor.a().c();
+    if ((paramBoolean) && (GameEngine.a().A()) && (!GameEngine.a().B())) {
+      CallingStateMonitor.a().f();
     }
   }
   
   public void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.2.4(this, paramLong, paramBoolean, paramInt));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.2.4(this, paramLong, paramBoolean, paramInt));
   }
   
   public void b(int paramInt)
   {
-    AVGameSession localAVGameSession = AVGameBusinessCtrl.b().a();
+    AVGameSession localAVGameSession = AVGameBusinessCtrl.b().j();
     if (localAVGameSession != null)
     {
-      if (localAVGameSession.e) {
+      if (localAVGameSession.i) {
         return;
       }
-      AVGameHandler.a().b().post(new AVGameControlUIImpl.2.3(this, paramInt));
+      AVGameHandler.a().c().post(new AVGameControlUIImpl.2.3(this, paramInt));
     }
   }
   
@@ -92,14 +92,14 @@ class AVGameControlUIImpl$2
   
   public void b(boolean paramBoolean)
   {
-    if (GameEngine.a().f()) {
-      GameEngine.a().g();
+    if (GameEngine.a().A()) {
+      GameEngine.a().B();
     }
   }
   
   public void b(boolean paramBoolean, long paramLong, int paramInt)
   {
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.2.6(this, paramLong, paramBoolean, paramInt));
+    AVGameHandler.a().c().post(new AVGameControlUIImpl.2.6(this, paramLong, paramBoolean, paramInt));
   }
   
   public void c(int paramInt) {}

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.cmshow.crossengine.script.plugin;
 
+import android.os.Handler;
 import com.tencent.mobileqq.cmshow.crossengine.CEEngineContext;
 import com.tencent.mobileqq.cmshow.crossengine.model.CEArgument;
 import com.tencent.mobileqq.cmshow.engine.model.Argument;
-import com.tencent.mobileqq.cmshow.engine.render.IRecordFrameListener;
 import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
 import com.tencent.mobileqq.cmshow.engine.script.plugin.PluginCmdConstant.PlugPriority;
 import com.tencent.qphone.base.util.QLog;
@@ -20,34 +20,26 @@ import org.json.JSONObject;
 public final class FrameRecorderPlugin
   implements IModuleEventPlugin
 {
-  public static final FrameRecorderPlugin.Companion a;
+  public static final FrameRecorderPlugin.Companion a = new FrameRecorderPlugin.Companion(null);
   @NotNull
-  private CEEngineContext jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext;
+  private final PluginCmdConstant.PlugPriority c;
   @NotNull
-  private final PluginCmdConstant.PlugPriority jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqCmshowCrossengineScriptPluginFrameRecorderPlugin$Companion = new FrameRecorderPlugin.Companion(null);
-  }
+  private CEEngineContext d;
   
   public FrameRecorderPlugin(@NotNull CEEngineContext paramCEEngineContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext = paramCEEngineContext;
-    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority = PluginCmdConstant.PlugPriority.GENERAL;
+    this.d = paramCEEngineContext;
+    this.c = PluginCmdConstant.PlugPriority.GENERAL;
   }
   
   private final JSONObject b(CEArgument paramCEArgument)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("startRecord : ");
-    localStringBuilder.append(paramCEArgument.b());
+    localStringBuilder.append(paramCEArgument.e());
     QLog.d("[cmshow][CECMShowOffscreenEngine]_FrameRecorderPlugin", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().a(true);
-    paramCEArgument = this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().a();
-    if (paramCEArgument != null) {
-      paramCEArgument.a(0.0666667F);
-    }
+    this.d.f().a(true);
+    this.d.b().post((Runnable)new FrameRecorderPlugin.startRecord.1(this));
     return null;
   }
   
@@ -55,26 +47,17 @@ public final class FrameRecorderPlugin
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("stopRecord : ");
-    localStringBuilder.append(paramCEArgument.b());
+    localStringBuilder.append(paramCEArgument.e());
     QLog.d("[cmshow][CECMShowOffscreenEngine]_FrameRecorderPlugin", 1, localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().a(false);
-    paramCEArgument = this.jdField_a_of_type_ComTencentMobileqqCmshowCrossengineCEEngineContext.a().a();
-    if (paramCEArgument != null) {
-      paramCEArgument.a(true);
-    }
+    this.d.f().a(false);
+    this.d.b().post((Runnable)new FrameRecorderPlugin.stopRecord.1(this));
     return null;
   }
   
   @NotNull
   public PluginCmdConstant.PlugPriority a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginPluginCmdConstant$PlugPriority;
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "FrameRecorder";
+    return this.c;
   }
   
   @Deprecated(message="ModuleEventPlugin通过handleModuleEvent进行分发", replaceWith=@ReplaceWith(expression="null", imports={}))
@@ -85,18 +68,11 @@ public final class FrameRecorderPlugin
     return IModuleEventPlugin.DefaultImpls.a(this, paramArgument);
   }
   
-  @Deprecated(message="ModuleEventPlugin依赖moduleName进行分发", replaceWith=@ReplaceWith(expression="emptyList()", imports={}))
-  @NotNull
-  public List<String> a()
-  {
-    return IModuleEventPlugin.DefaultImpls.a(this);
-  }
-  
   @Nullable
   public JSONObject a(@NotNull CEArgument paramCEArgument)
   {
     Intrinsics.checkParameterIsNotNull(paramCEArgument, "argument");
-    String str = paramCEArgument.c();
+    String str = paramCEArgument.f();
     int i = str.hashCode();
     if (i != -241208525)
     {
@@ -110,20 +86,39 @@ public final class FrameRecorderPlugin
     return IModuleEventPlugin.DefaultImpls.a(this, paramCEArgument);
   }
   
-  public boolean a()
-  {
-    return IModuleEventPlugin.DefaultImpls.a(this);
-  }
-  
   public boolean a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "cmd");
     return IModuleEventPlugin.DefaultImpls.a(this, paramString);
   }
+  
+  @NotNull
+  public String b()
+  {
+    return "FrameRecorder";
+  }
+  
+  @Deprecated(message="ModuleEventPlugin依赖moduleName进行分发", replaceWith=@ReplaceWith(expression="emptyList()", imports={}))
+  @NotNull
+  public List<String> c()
+  {
+    return IModuleEventPlugin.DefaultImpls.a(this);
+  }
+  
+  public boolean d()
+  {
+    return IModuleEventPlugin.DefaultImpls.b(this);
+  }
+  
+  @NotNull
+  public final CEEngineContext e()
+  {
+    return this.d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.crossengine.script.plugin.FrameRecorderPlugin
  * JD-Core Version:    0.7.0.1
  */

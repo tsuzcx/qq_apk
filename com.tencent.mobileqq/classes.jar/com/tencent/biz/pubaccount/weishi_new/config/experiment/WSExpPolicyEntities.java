@@ -10,20 +10,21 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.util.LogUtil;
 
 public class WSExpPolicyEntities
 {
-  private stGetAllABTestPolicyRsp jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
   private String c;
+  private stGetAllABTestPolicyRsp d;
   
   public WSExpPolicyEntities(String paramString, stGetAllABTestPolicyRsp paramstGetAllABTestPolicyRsp)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp = paramstGetAllABTestPolicyRsp;
-    this.b = a(this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo);
-    this.c = a(this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp);
+    this.a = paramString;
+    this.d = paramstGetAllABTestPolicyRsp;
+    this.b = a(this.d.policyInfo);
+    this.c = a(this.d);
   }
   
   private String a(stGetAllABTestPolicyRsp paramstGetAllABTestPolicyRsp)
@@ -59,22 +60,17 @@ public class WSExpPolicyEntities
     return "";
   }
   
-  public stGetAllABTestPolicyRsp a()
-  {
-    return this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
-  }
-  
   public stGrayPolicyInfo a(String paramString)
   {
-    if ((this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo != null) && (!this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.isEmpty())) {
-      return (stGrayPolicyInfo)this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.get(paramString);
+    if ((this.d.policyInfo != null) && (!this.d.policyInfo.isEmpty())) {
+      return (stGrayPolicyInfo)this.d.policyInfo.get(paramString);
     }
     return null;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public String b()
@@ -82,7 +78,12 @@ public class WSExpPolicyEntities
     return this.b;
   }
   
-  public String c()
+  public stGetAllABTestPolicyRsp c()
+  {
+    return this.d;
+  }
+  
+  public String d()
   {
     return this.c;
   }
@@ -101,8 +102,8 @@ public class WSExpPolicyEntities
       if (!TextUtils.equals(paramObject.a(), a())) {
         return false;
       }
-      Object localObject = paramObject.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
-      paramObject = this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp;
+      Object localObject = paramObject.d;
+      paramObject = this.d;
       if ((localObject != null) && (paramObject != null))
       {
         localObject = ((stGetAllABTestPolicyRsp)localObject).policyInfo;
@@ -121,18 +122,18 @@ public class WSExpPolicyEntities
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WSExpPolicyEntities{\nmUin='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(LogUtil.getSafePrintUin(this.a));
     localStringBuilder.append('\'');
     localStringBuilder.append("\nmTestIds='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
     localStringBuilder.append("\nserverTime='");
-    localStringBuilder.append(this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.serverTime);
+    localStringBuilder.append(this.d.serverTime);
     localStringBuilder.append('\'');
     localStringBuilder.append("\nmPolicyInfoMap=");
     String str;
-    if (this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo != null) {
-      str = this.jdField_a_of_type_UserGrowthStGetAllABTestPolicyRsp.policyInfo.toString();
+    if (this.d.policyInfo != null) {
+      str = this.d.policyInfo.toString();
     } else {
       str = "null";
     }
@@ -143,7 +144,7 @@ public class WSExpPolicyEntities
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpPolicyEntities
  * JD-Core Version:    0.7.0.1
  */

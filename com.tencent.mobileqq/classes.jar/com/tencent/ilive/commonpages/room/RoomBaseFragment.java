@@ -60,10 +60,10 @@ public abstract class RoomBaseFragment
   {
     if (BizEngineMgr.getInstance().getLiveEngine() != null)
     {
-      localObject = BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().a(this);
+      localObject = BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().b(this);
       if (localObject != null)
       {
-        if (((FloatRoomManager.RoomEventInterceptor)localObject).a()) {
+        if (((FloatRoomManager.RoomEventInterceptor)localObject).b()) {
           return;
         }
         BizEngineMgr.getInstance().getLiveEngine().getFloatRoomManager().a(null);
@@ -188,7 +188,7 @@ public abstract class RoomBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilive.commonpages.room.RoomBaseFragment
  * JD-Core Version:    0.7.0.1
  */

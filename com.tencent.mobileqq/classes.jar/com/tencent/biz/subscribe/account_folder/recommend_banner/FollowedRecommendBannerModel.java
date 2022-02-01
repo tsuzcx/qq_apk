@@ -6,24 +6,24 @@ import com.tencent.biz.richframework.network.request.SubscribeGetRecommendUserLi
 
 public class FollowedRecommendBannerModel
 {
-  private long jdField_a_of_type_Long;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private FollowedRecommendBannerModel.ResultListener jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel$ResultListener;
+  private COMM.StCommonExt a;
+  private FollowedRecommendBannerModel.ResultListener b;
+  private long c;
   
   public COMM.StCommonExt a()
   {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+    return this.a;
   }
   
   public void a(FollowedRecommendBannerModel.ResultListener paramResultListener)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderRecommend_bannerFollowedRecommendBannerModel$ResultListener = paramResultListener;
+    this.b = paramResultListener;
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.jdField_a_of_type_NS_COMMCOMM$StCommonExt, 0, 1);
+    this.c = System.currentTimeMillis();
+    paramString = new SubscribeGetRecommendUserListRequest(paramString, this.a, 0, 1);
     VSNetworkHelper.getInstance().sendRequest(paramString, new FollowedRecommendBannerModel.1(this));
   }
 }

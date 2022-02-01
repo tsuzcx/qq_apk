@@ -14,11 +14,11 @@ class FlakeView$1
   public void run()
   {
     Random localRandom = new Random();
-    Bitmap[] arrayOfBitmap = new Bitmap[this.jdField_a_of_type_ArrayOfJavaLangString.length];
+    Bitmap[] arrayOfBitmap = new Bitmap[this.a.length];
     int i = 0;
     for (;;)
     {
-      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      String[] arrayOfString = this.a;
       if (i >= arrayOfString.length) {
         break;
       }
@@ -37,26 +37,26 @@ class FlakeView$1
       i += 1;
     }
     i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.b)
     {
-      Object localObject = arrayOfBitmap[localRandom.nextInt(this.jdField_a_of_type_ArrayOfJavaLangString.length)];
+      Object localObject = arrayOfBitmap[localRandom.nextInt(this.a.length)];
       if (localObject != null)
       {
         localObject = Flake.a(this.this$0.getWidth(), (Bitmap)localObject, 3, this.this$0.getResources());
         ((Flake)localObject).a = (this.this$0.getWidth() / 2);
         ((Flake)localObject).b = AIOUtils.b(205.0F, this.this$0.getResources());
-        this.this$0.a.add(localObject);
+        this.this$0.j.add(localObject);
         localObject = this.this$0;
-        ((FlakeView)localObject).e += 1;
+        ((FlakeView)localObject).h += 1;
       }
       i += 1;
     }
-    this.this$0.d = false;
+    this.this$0.q = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.FlakeView.1
  * JD-Core Version:    0.7.0.1
  */

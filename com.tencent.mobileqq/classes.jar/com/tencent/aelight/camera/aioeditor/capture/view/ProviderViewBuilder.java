@@ -8,20 +8,15 @@ import java.util.List;
 
 public class ProviderViewBuilder
 {
-  public static final int[] a;
-  public static final int[] b = { 101, 2130849992, 2131374010 };
-  public static final int[] c = { 102, 2130849991, 2131374009 };
-  private int jdField_a_of_type_Int;
-  private ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_ArrayOfInt = new int[] { 100, 2130849990, 2131374008 };
-  }
+  public static final int[] a = { 100, 2130851751, 2131442074 };
+  public static final int[] b = { 101, 2130851753, 2131442076 };
+  public static final int[] c = { 102, 2130851752, 2131442075 };
+  private int d;
+  private ArrayList<int[]> e = new ArrayList();
   
   public ProviderViewBuilder(int paramInt, List<Integer> paramList)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.d = paramInt;
     if (paramList != null)
     {
       if (paramList.isEmpty()) {
@@ -32,11 +27,11 @@ public class ProviderViewBuilder
       {
         paramInt = ((Integer)paramList.next()).intValue();
         if (paramInt == 100) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ArrayOfInt);
+          this.e.add(a);
         } else if (paramInt == 101) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(b);
+          this.e.add(b);
         } else if (paramInt == 102) {
-          this.jdField_a_of_type_JavaUtilArrayList.add(c);
+          this.e.add(c);
         }
       }
     }
@@ -44,13 +39,13 @@ public class ProviderViewBuilder
   
   public int a()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.e.size();
   }
   
   public int a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[1];
+    if ((paramInt >= 0) && (paramInt <= this.e.size())) {
+      return ((int[])this.e.get(paramInt))[1];
     }
     return 0;
   }
@@ -73,17 +68,17 @@ public class ProviderViewBuilder
       else
       {
         paramContext = new StaticStickerProviderView(paramContext);
-        paramContext.setId(2131364294);
+        paramContext.setId(2131430314);
       }
     }
     else
     {
       paramContext = new QIMFilterProviderView(paramContext);
-      paramContext.setId(2131364288);
+      paramContext.setId(2131430308);
     }
     if (paramContext != null)
     {
-      paramContext.setCaptureScene(this.jdField_a_of_type_Int);
+      paramContext.setCaptureScene(this.d);
       paramContext.setTabBarPosition(2);
       paramContext.d(231);
     }
@@ -92,23 +87,23 @@ public class ProviderViewBuilder
   
   public int b(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[2];
+    if ((paramInt >= 0) && (paramInt <= this.e.size())) {
+      return ((int[])this.e.get(paramInt))[2];
     }
     return 0;
   }
   
   public int c(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt <= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return ((int[])this.jdField_a_of_type_JavaUtilArrayList.get(paramInt))[0];
+    if ((paramInt >= 0) && (paramInt <= this.e.size())) {
+      return ((int[])this.e.get(paramInt))[0];
     }
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.ProviderViewBuilder
  * JD-Core Version:    0.7.0.1
  */

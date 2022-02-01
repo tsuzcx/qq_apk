@@ -13,7 +13,7 @@ class StickerRecViewBinder$5
   
   public void touchEventActionChanged(int paramInt)
   {
-    if (StickerRecViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewBinder) == null) {
+    if (StickerRecViewBinder.c(this.b) == null) {
       return;
     }
     if (paramInt != 0)
@@ -21,16 +21,16 @@ class StickerRecViewBinder$5
       if ((paramInt != 1) && (paramInt != 3)) {
         return;
       }
-      StickerRecViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewBinder).a().sendEmptyMessageDelayed(67, 6000L);
+      StickerRecViewBinder.c(this.b).g().sendEmptyMessageDelayed(67, 6000L);
       return;
     }
-    StickerRecViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewBinder).a().removeMessages(67);
-    ReportController.b(StickerRecViewBinder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerrecommendedMvvmStickerRecViewBinder), "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+    StickerRecViewBinder.c(this.b).g().removeMessages(67);
+    ReportController.b(StickerRecViewBinder.e(this.b), "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.getText().toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.mvvm.StickerRecViewBinder.5
  * JD-Core Version:    0.7.0.1
  */

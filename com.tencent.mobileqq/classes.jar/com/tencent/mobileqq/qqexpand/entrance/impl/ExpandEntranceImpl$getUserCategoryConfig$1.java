@@ -23,7 +23,7 @@ final class ExpandEntranceImpl$getUserCategoryConfig$1
     }
     if (localAppInterface != null)
     {
-      new ExpandConfigManager((QQAppInterface)localAppInterface).b();
+      new ExpandConfigManager((QQAppInterface)localAppInterface).k();
       return;
     }
     throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
@@ -31,7 +31,7 @@ final class ExpandEntranceImpl$getUserCategoryConfig$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.entrance.impl.ExpandEntranceImpl.getUserCategoryConfig.1
  * JD-Core Version:    0.7.0.1
  */

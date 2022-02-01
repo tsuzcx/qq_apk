@@ -6,22 +6,19 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyActivityHelper;
+import com.tencent.mobileqq.kandian.biz.framework.api.impl.ReadInJoyActivityHelper;
 import com.tencent.mobileqq.kandian.repo.common.RIJShowKanDianTabSp;
-import com.tencent.mobileqq.qroute.QRoute;
 
 final class ReadInJoyDialogUtil$1
   implements DialogInterface.OnClickListener
 {
-  ReadInJoyDialogUtil$1(Context paramContext) {}
-  
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     if (paramInt == 1)
     {
       RIJShowKanDianTabSp.a(1);
       RIJShowKanDianTabSp.a(true);
-      ((IReadInJoyActivityHelper)QRoute.api(IReadInJoyActivityHelper.class)).launchReadInJoyTab(this.a, 9);
+      ReadInJoyActivityHelper.INSTANCE.launchReadInJoyTab(this.a, 9);
     }
     else
     {
@@ -40,7 +37,7 @@ final class ReadInJoyDialogUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.ReadInJoyDialogUtil.1
  * JD-Core Version:    0.7.0.1
  */

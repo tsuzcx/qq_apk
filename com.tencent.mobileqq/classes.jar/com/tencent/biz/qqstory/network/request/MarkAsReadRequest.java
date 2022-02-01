@@ -11,8 +11,8 @@ import com.tencent.mobileqq.pb.PBBytesField;
 public class MarkAsReadRequest
   extends NetworkRequest<MarkAsReadRequest.Response>
 {
-  public static final String a = StoryApi.a("StorySvc.mark_as_read");
-  public String b;
+  public static final String e = StoryApi.a("StorySvc.mark_as_read");
+  public String f;
   
   public MarkAsReadRequest.Response a(byte[] paramArrayOfByte)
   {
@@ -30,19 +30,19 @@ public class MarkAsReadRequest
   
   public String a()
   {
-    return a;
+    return e;
   }
   
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqMarkAsRead localReqMarkAsRead = new qqstory_service.ReqMarkAsRead();
-    localReqMarkAsRead.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqMarkAsRead.union_id.set(ByteStringMicro.copyFromUtf8(this.f));
     return localReqMarkAsRead.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.MarkAsReadRequest
  * JD-Core Version:    0.7.0.1
  */

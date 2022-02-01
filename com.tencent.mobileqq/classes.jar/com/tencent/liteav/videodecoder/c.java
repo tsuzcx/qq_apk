@@ -105,6 +105,26 @@ class c
     return l;
   }
   
+  public long a(int paramInt, boolean paramBoolean)
+  {
+    if (paramInt <= 64)
+    {
+      long l = 0L;
+      int i = 0;
+      while (i < paramInt)
+      {
+        l = l << 1 | b(paramBoolean);
+        i += 1;
+      }
+      return l;
+    }
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Can not readByte more then 64 bit");
+    for (;;)
+    {
+      throw localIllegalArgumentException;
+    }
+  }
+  
   public void a()
   {
     int i = this.h;
@@ -199,6 +219,21 @@ class c
     i = ((i >> 1) + j) * ((j << 1) - 1);
     a(paramString, String.valueOf(i));
     return i;
+  }
+  
+  public int c(boolean paramBoolean)
+  {
+    int j = 0;
+    int i = 0;
+    while (b(paramBoolean) == 0) {
+      i += 1;
+    }
+    if (i > 0)
+    {
+      long l = a(i, paramBoolean);
+      j = (int)((1 << i) - 1 + l);
+    }
+    return j;
   }
   
   public void c()
@@ -300,7 +335,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.c
  * JD-Core Version:    0.7.0.1
  */

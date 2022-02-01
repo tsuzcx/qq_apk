@@ -14,23 +14,23 @@ class AIOTroopQcircleRedDotManager$9
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.a.iterator();
     while (localIterator.hasNext())
     {
       ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (this.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.containsKey(localChatMessage.senderuin))
+      if (this.b.containsKey(localChatMessage.senderuin))
       {
-        localChatMessage.getChatMsgRedDotInfo().setQzoneRedDotFlag(((QzoneRedDotEntity)this.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.get(localChatMessage.senderuin)).isShowRedDot);
-        localChatMessage.getChatMsgRedDotInfo().setQzoneRedDotJumpSchema(((QzoneRedDotEntity)this.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.get(localChatMessage.senderuin)).jumpSchema);
-        localChatMessage.getChatMsgRedDotInfo().setQzoneJumpIconUrl(((QzoneRedDotEntity)this.jdField_a_of_type_ComTencentMttSupportuiUtilsStructArrayMap.get(localChatMessage.senderuin)).iconUrl);
+        localChatMessage.getChatMsgRedDotInfo().setQzoneRedDotFlag(((QzoneRedDotEntity)this.b.get(localChatMessage.senderuin)).isShowRedDot);
+        localChatMessage.getChatMsgRedDotInfo().setQzoneRedDotJumpSchema(((QzoneRedDotEntity)this.b.get(localChatMessage.senderuin)).jumpSchema);
+        localChatMessage.getChatMsgRedDotInfo().setQzoneJumpIconUrl(((QzoneRedDotEntity)this.b.get(localChatMessage.senderuin)).iconUrl);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.a.notifyDataSetChanged();
+    this.c.V.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTroopQcircleRedDotManager.9
  * JD-Core Version:    0.7.0.1
  */

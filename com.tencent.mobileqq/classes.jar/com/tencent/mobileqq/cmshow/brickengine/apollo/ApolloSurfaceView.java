@@ -11,7 +11,6 @@ import android.view.View;
 import androidx.annotation.Keep;
 import com.tencent.mobileqq.apollo.game.process.CmGameUtil;
 import com.tencent.mobileqq.apollo.listener.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.script.SpriteUtil;
 import com.tencent.mobileqq.apollo.touch.CMActionTouchManager;
 import com.tencent.mobileqq.apollo.touch.ICMTouchManager;
@@ -22,6 +21,7 @@ import com.tencent.mobileqq.apollo.view.opengl.ApolloConfigChooser;
 import com.tencent.mobileqq.apollo.view.opengl.GLSurfaceView;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -66,7 +66,7 @@ public class ApolloSurfaceView
   public ApolloSurfaceView(Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     super(paramContext, paramAttributeSet);
-    int i = CmGameUtil.b();
+    int i = CmGameUtil.j();
     if (!paramBoolean2) {
       i = 3;
     }
@@ -336,7 +336,7 @@ public class ApolloSurfaceView
     if (localObject == null) {
       return false;
     }
-    if ((((ApolloRenderDriver)localObject).jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine != null) && (!this.mApolloWorker.jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine.readyDraw("surface.touch"))) {
+    if ((((ApolloRenderDriver)localObject).b != null) && (!this.mApolloWorker.b.readyDraw("surface.touch"))) {
       return false;
     }
     localObject = this.mTouchManager;
@@ -379,21 +379,21 @@ public class ApolloSurfaceView
     }
   }
   
-  public void runRenderTask(String paramString, int paramInt)
+  public void runRenderTask(Script paramScript)
   {
-    if ((getWorker() != null) && (getWorker().jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine != null))
+    if ((getWorker() != null) && (getWorker().b != null))
     {
-      runRenderTask(SpriteUtil.a(paramString, paramInt, getWorker().jdField_a_of_type_ComTencentMobileqqCmshowBrickengineApolloApolloEngine));
+      runRenderTask(SpriteUtil.a(paramScript, getWorker().b));
       return;
     }
-    QLog.e("[cmshow]ApolloSurfaceView", 1, new Object[] { "runRenderTask error, apolloEngine null, script:", paramString });
+    QLog.e("[cmshow]ApolloSurfaceView", 1, new Object[] { "runRenderTask error, apolloEngine null, script:", paramScript });
   }
   
   public void setFrameNum(int paramInt)
   {
     ApolloRenderDriver localApolloRenderDriver = this.mApolloWorker;
     if (localApolloRenderDriver != null) {
-      localApolloRenderDriver.jdField_a_of_type_Int = paramInt;
+      localApolloRenderDriver.e = paramInt;
     }
   }
   
@@ -488,7 +488,7 @@ public class ApolloSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloSurfaceView
  * JD-Core Version:    0.7.0.1
  */

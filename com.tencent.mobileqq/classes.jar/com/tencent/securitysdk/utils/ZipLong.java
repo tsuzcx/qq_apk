@@ -23,15 +23,15 @@ public final class ZipLong
     this.a += (paramArrayOfByte[paramInt] & 0xFF);
   }
   
-  public long a()
-  {
-    return this.a;
-  }
-  
   public byte[] a()
   {
     long l = this.a;
     return new byte[] { (byte)(int)(0xFF & l), (byte)(int)((0xFF00 & l) >> 8), (byte)(int)((0xFF0000 & l) >> 16), (byte)(int)((l & 0xFF000000) >> 24) };
+  }
+  
+  public long b()
+  {
+    return this.a;
   }
   
   public boolean equals(Object paramObject)
@@ -44,7 +44,7 @@ public final class ZipLong
         return false;
       }
       bool1 = bool2;
-      if (this.a == ((ZipLong)paramObject).a()) {
+      if (this.a == ((ZipLong)paramObject).b()) {
         bool1 = true;
       }
     }
@@ -58,7 +58,7 @@ public final class ZipLong
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.securitysdk.utils.ZipLong
  * JD-Core Version:    0.7.0.1
  */

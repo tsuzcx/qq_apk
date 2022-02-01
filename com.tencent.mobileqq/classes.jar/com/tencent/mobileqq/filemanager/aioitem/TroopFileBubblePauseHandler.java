@@ -28,7 +28,7 @@ public class TroopFileBubblePauseHandler
       return null;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).u;
     }
     return null;
   }
@@ -47,29 +47,29 @@ public class TroopFileBubblePauseHandler
       return;
     }
     paramViewHolder = (MessageForTroopFile)paramChatMessage;
-    paramView = TroopFileTransferManager.a(this.a, Long.parseLong(paramChatMessage.frienduin));
+    paramView = TroopFileTransferManager.a(this.b, Long.parseLong(paramChatMessage.frienduin));
     if (paramView == null) {
       return;
     }
-    paramViewHolder = TroopFileUtils.a(this.a, paramViewHolder);
+    paramViewHolder = TroopFileUtils.a(this.b, paramViewHolder);
     if (paramViewHolder == null) {
       return;
     }
     if (paramInt == 0)
     {
-      if ((paramViewHolder.b != 0) && (paramViewHolder.b != 1)) {
+      if ((paramViewHolder.e != 0) && (paramViewHolder.e != 1)) {
         return;
       }
-      ReportController.b(this.a, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
-      paramView.a(paramViewHolder.a);
+      ReportController.b(this.b, "dc00898", "", "", "0X800A7F1", "0X800A7F1", 2, 0, "", "", "", "");
+      paramView.b(paramViewHolder.a);
       return;
     }
     if (paramInt == 1)
     {
-      if ((paramViewHolder.b != 2) && (paramViewHolder.b != 3)) {
+      if ((paramViewHolder.e != 2) && (paramViewHolder.e != 3)) {
         return;
       }
-      ReportController.b(this.a, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
+      ReportController.b(this.b, "dc00898", "", "", "0X800A7F2", "0X800A7F2", 2, 0, "", "", "", "");
       a(new TroopFileBubblePauseHandler.1(this, paramChatMessage.frienduin, paramViewHolder));
     }
   }
@@ -80,7 +80,7 @@ public class TroopFileBubblePauseHandler
       return;
     }
     if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
-      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramImageView;
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).u = paramImageView;
     }
   }
   
@@ -92,7 +92,7 @@ public class TroopFileBubblePauseHandler
     if ((paramChatMessage instanceof MessageForTroopFile))
     {
       paramChatMessage = (MessageForTroopFile)paramChatMessage;
-      paramChatMessage = TroopFileUtils.a(this.a, paramChatMessage);
+      paramChatMessage = TroopFileUtils.a(this.b, paramChatMessage);
       if (paramChatMessage == null) {
         return false;
       }
@@ -100,11 +100,11 @@ public class TroopFileBubblePauseHandler
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("needShowPauseIcon: current file status[");
-        localStringBuilder.append(paramChatMessage.b);
+        localStringBuilder.append(paramChatMessage.e);
         localStringBuilder.append("]");
         QLog.i("TroopFileBubblePauseHandler", 1, localStringBuilder.toString());
       }
-      if ((paramChatMessage.b == 0) || (paramChatMessage.b == 1)) {
+      if ((paramChatMessage.e == 0) || (paramChatMessage.e == 1)) {
         return true;
       }
     }
@@ -119,7 +119,7 @@ public class TroopFileBubblePauseHandler
     if ((paramChatMessage instanceof MessageForTroopFile))
     {
       paramChatMessage = (MessageForTroopFile)paramChatMessage;
-      paramChatMessage = TroopFileUtils.a(this.a, paramChatMessage);
+      paramChatMessage = TroopFileUtils.a(this.b, paramChatMessage);
       if (paramChatMessage == null) {
         return false;
       }
@@ -127,11 +127,11 @@ public class TroopFileBubblePauseHandler
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("needShowResumeIcon: current file status[");
-        localStringBuilder.append(paramChatMessage.b);
+        localStringBuilder.append(paramChatMessage.e);
         localStringBuilder.append("]");
         QLog.i("TroopFileBubblePauseHandler", 1, localStringBuilder.toString());
       }
-      if ((paramChatMessage.b == 3) || (paramChatMessage.b == 2)) {
+      if ((paramChatMessage.e == 3) || (paramChatMessage.e == 2)) {
         return true;
       }
     }
@@ -140,7 +140,7 @@ public class TroopFileBubblePauseHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.TroopFileBubblePauseHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -28,102 +28,102 @@ public class WSVerticalItemCenterBottomController
   extends AbsWsUIGroup<WSVerticalItemData>
   implements View.OnClickListener
 {
-  private stOpVideo jdField_a_of_type_UserGrowthStOpVideo;
-  private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
+  private KandianUrlImageView g;
+  private TextView h;
+  private stSimpleMetaFeed i;
+  private stOpVideo j;
+  private WSVerticalPageFragment k;
   
   public WSVerticalItemCenterBottomController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
     if (paramWSVerticalVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalVideoHolder.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      this.k = paramWSVerticalVideoHolder.d;
     }
   }
   
   private static WSDownloadParams a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt, String paramString)
   {
     WSDownloadParams localWSDownloadParams = new WSDownloadParams();
-    localWSDownloadParams.mScene = WSVerticalUtils.a(paramWSVerticalPageFragment.a());
-    localWSDownloadParams.mLinkStrategyType = WSGlobalConfig.a().a();
+    localWSDownloadParams.mScene = WSVerticalUtils.a(paramWSVerticalPageFragment.k());
+    localWSDownloadParams.mLinkStrategyType = WSGlobalConfig.a().d();
     localWSDownloadParams.mEventId = paramInt;
     localWSDownloadParams.mTestId = WeishiUtils.a(localWSDownloadParams.mScene);
     localWSDownloadParams.mScheme = paramString;
     return localWSDownloadParams;
   }
   
-  private void f()
+  private void l()
   {
-    if (this.jdField_a_of_type_UserGrowthStOpVideo != null)
+    if (this.j != null)
     {
-      String str2 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
-      String str3 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
-      WSStSchemaJumpManager localWSStSchemaJumpManager = new WSStSchemaJumpManager(a()).a(this.jdField_a_of_type_UserGrowthStOpVideo.jump);
-      WSVerticalPageFragment localWSVerticalPageFragment = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      String str2 = this.k.k();
+      String str3 = this.k.l();
+      WSStSchemaJumpManager localWSStSchemaJumpManager = new WSStSchemaJumpManager(d()).a(this.j.jump);
+      WSVerticalPageFragment localWSVerticalPageFragment = this.k;
       String str1;
-      if (this.jdField_a_of_type_UserGrowthStOpVideo.jump != null) {
-        str1 = this.jdField_a_of_type_UserGrowthStOpVideo.jump.schema;
+      if (this.j.jump != null) {
+        str1 = this.j.jump.schema;
       } else {
         str1 = "";
       }
-      localWSStSchemaJumpManager.a(a(localWSVerticalPageFragment, 17, str1)).a(new WSVerticalItemCenterBottomController.1(this, str2, str3)).c();
+      localWSStSchemaJumpManager.a(a(localWSVerticalPageFragment, 17, str1)).a(new WSVerticalItemCenterBottomController.1(this, str2, str3)).j();
     }
   }
   
   protected void a() {}
   
-  protected int b()
-  {
-    return 2131560039;
-  }
-  
   protected void b()
   {
-    Object localObject = (WSVerticalItemData)a();
+    Object localObject = (WSVerticalItemData)c();
     if (localObject == null) {
       return;
     }
-    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
+    if ((((WSVerticalItemData)localObject).b() instanceof stSimpleMetaFeed))
     {
-      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = ((WSVerticalItemData)localObject).a();
-      this.jdField_a_of_type_UserGrowthStOpVideo = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.opVideo;
-      localObject = this.jdField_a_of_type_UserGrowthStOpVideo;
+      this.i = ((WSVerticalItemData)localObject).b();
+      this.j = this.i.opVideo;
+      localObject = this.j;
       if (localObject != null)
       {
         if (!TextUtils.isEmpty(((stOpVideo)localObject).img_url))
         {
-          localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130841770);
-          WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, this.jdField_a_of_type_UserGrowthStOpVideo.img_url, (Drawable)localObject);
-          WSVerticalBeaconReport.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
+          localObject = BaseApplicationImpl.getContext().getResources().getDrawable(2130842687);
+          WSPicLoader.a().a(this.g, this.j.img_url, (Drawable)localObject);
+          WSVerticalBeaconReport.a(this.i, this.k.k(), this.k.l());
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStOpVideo.text)) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStOpVideo.text);
+        if (!TextUtils.isEmpty(this.j.text)) {
+          this.h.setText(this.j.text);
         }
       }
     }
   }
   
-  protected void c() {}
+  protected void f() {}
   
-  protected void e()
+  protected int i()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)a(2131369561));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131379981));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setOnClickListener(this);
+    return 2131626083;
+  }
+  
+  protected void j()
+  {
+    this.g = ((KandianUrlImageView)c(2131436663));
+    this.h = ((TextView)c(2131448884));
+    this.g.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131369561) {
+    if (paramView.getId() != 2131436663) {
       return;
     }
-    f();
+    l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemCenterBottomController
  * JD-Core Version:    0.7.0.1
  */

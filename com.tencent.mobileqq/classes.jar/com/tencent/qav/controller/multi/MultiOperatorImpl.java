@@ -27,16 +27,16 @@ public class MultiOperatorImpl
   extends MultiOperatorBase
   implements IMultiOperator, CallingStateMonitor.CallingStateListener
 {
-  private int jdField_a_of_type_Int;
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  protected QavDef.MultiParams a;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  protected Map<Long, QavDef.MultiUserInfo> a;
-  protected boolean a;
-  protected boolean b = false;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  protected QavDef.MultiParams f;
+  protected Map<Long, QavDef.MultiUserInfo> g;
+  protected boolean h;
+  protected boolean i = false;
+  private AudioManager j;
+  private boolean k;
+  private boolean l;
+  private int m;
+  private boolean n;
+  private Runnable o;
   
   public MultiOperatorImpl(Context paramContext, long paramLong, VideoChannelInterface paramVideoChannelInterface)
   {
@@ -47,49 +47,44 @@ public class MultiOperatorImpl
   {
     super(paramContext, paramLong, paramVideoChannelInterface, paramBoolean);
     AVLog.c("MultiOperatorImpl", String.format("MultiOperatorImpl context=%s selfUin=%s videoChannel=%s", new Object[] { paramContext, Long.valueOf(paramLong), paramVideoChannelInterface }));
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("audio"));
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.j = ((AudioManager)this.a.getSystemService("audio"));
+    this.g = new HashMap();
     CallingStateMonitor.a().a(this);
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.requestMemPosInfoList();
+    if (this.c != null) {
+      this.c.requestMemPosInfoList();
     }
   }
   
   private void e(boolean paramBoolean)
   {
     AVLog.c("MultiOperatorImpl", String.format("setLocalAudioEnable enable=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+    if (this.c != null)
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startAudioSend(true);
+        this.c.startAudioSend(true);
         return;
       }
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopAudioSend(true);
+      this.c.stopAudioSend(true);
     }
   }
   
   private void f(boolean paramBoolean)
   {
     AVLog.c("MultiOperatorImpl", String.format("setRemoteAudioEnable enable=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+    if (this.c != null)
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startAudioRecv();
+        this.c.startAudioRecv();
         return;
       }
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.stopAudioRecv();
+      this.c.stopAudioRecv();
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
   }
   
   public int a(QavDef.MultiParams paramMultiParams)
@@ -99,51 +94,51 @@ public class MultiOperatorImpl
       try
       {
         AVLog.c("MultiOperatorImpl", String.format("enterRoom param=%s", new Object[] { paramMultiParams }));
-        boolean bool1 = CallingStateMonitor.a().a();
-        boolean bool2 = CallingStateMonitor.a().b();
+        boolean bool1 = CallingStateMonitor.a().c();
+        boolean bool2 = CallingStateMonitor.a().d();
         AVLog.c("MultiOperatorImpl", String.format("enterRoom isVideoChatting=%s isPhoneCalling=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
         if ((!bool1) && (!bool2))
         {
-          if (this.jdField_a_of_type_Boolean)
+          if (this.h)
           {
             AVLog.a("MultiOperatorImpl", "enterRoom duplicate call.");
             return -3;
           }
-          QavCtrl.a(this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface);
-          QavCtrl.a(this.jdField_a_of_type_ComTencentQavChannelVideoChannelInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long);
-          QQGAudioCtrl localQQGAudioCtrl = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
-          int j = -1;
+          QavCtrl.a(this.d);
+          QavCtrl.a(this.d, this.a, this.b);
+          QQGAudioCtrl localQQGAudioCtrl = this.c;
+          int i2 = -1;
           if (localQQGAudioCtrl != null)
           {
-            this.jdField_a_of_type_ComTencentQavQavDef$MultiParams = paramMultiParams;
-            if (paramMultiParams.e == 1)
+            this.f = paramMultiParams;
+            if (paramMultiParams.g == 1)
             {
-              i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.startCommonGAudio(paramMultiParams.jdField_a_of_type_Int, paramMultiParams.b, paramMultiParams.c, paramMultiParams.d, this.jdField_a_of_type_Long, paramMultiParams.jdField_a_of_type_JavaLangString, paramMultiParams.e, paramMultiParams.jdField_a_of_type_ArrayOfByte, 0);
+              i1 = this.c.startCommonGAudio(paramMultiParams.a, paramMultiParams.b, paramMultiParams.c, paramMultiParams.d, this.b, paramMultiParams.f, paramMultiParams.g, paramMultiParams.h, 0);
             }
             else
             {
-              if (paramMultiParams.e != 2) {
-                if (paramMultiParams.e != 4) {
+              if (paramMultiParams.g != 2) {
+                if (paramMultiParams.g != 4) {
                   break label327;
                 }
               }
-              i = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.commonRequest(paramMultiParams.jdField_a_of_type_Int, paramMultiParams.d, paramMultiParams.b, paramMultiParams.c, paramMultiParams.e, 0, 8, "", paramMultiParams.e, paramMultiParams.jdField_a_of_type_ArrayOfByte, paramMultiParams.f);
+              i1 = this.c.commonRequest(paramMultiParams.a, paramMultiParams.d, paramMultiParams.b, paramMultiParams.c, paramMultiParams.g, 0, 8, "", paramMultiParams.g, paramMultiParams.h, paramMultiParams.i);
             }
-            AVLog.c("MultiOperatorImpl", String.format("enterRoom result=%s", new Object[] { Integer.valueOf(i) }));
-            if (i == 0) {
-              h();
+            AVLog.c("MultiOperatorImpl", String.format("enterRoom result=%s", new Object[] { Integer.valueOf(i1) }));
+            if (i1 == 0) {
+              n();
             }
-            this.jdField_a_of_type_Boolean = true;
-            this.b = false;
+            this.h = true;
+            this.i = false;
           }
           else
           {
-            i = -1;
+            i1 = -1;
           }
-          if (i == 0) {
-            j = 0;
+          if (i1 == 0) {
+            i2 = 0;
           }
-          return j;
+          return i2;
         }
         else
         {
@@ -153,45 +148,15 @@ public class MultiOperatorImpl
       }
       finally {}
       label327:
-      int i = -1;
+      int i1 = -1;
     }
   }
   
   protected QavDef.MultiUserInfo a(long paramLong)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.g;
     if (localMap != null) {
       return (QavDef.MultiUserInfo)localMap.get(Long.valueOf(paramLong));
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      try
-      {
-        String str = this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.getNetWorkQualityRTT();
-        return str;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        return "";
-      }
-    }
-    return null;
-  }
-  
-  protected List<QavDef.MultiUserInfo> a()
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilMap;
-    if (localObject != null)
-    {
-      localObject = ((Map)localObject).values();
-      if (!((Collection)localObject).isEmpty()) {
-        return new ArrayList((Collection)localObject);
-      }
     }
     return null;
   }
@@ -200,10 +165,10 @@ public class MultiOperatorImpl
   {
     if (paramBoolean)
     {
-      AVLog.c("MultiOperatorImpl", String.format("checkInterruptCurrentCall callType[%s], enterRoom[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-      if (this.jdField_a_of_type_Boolean)
+      AVLog.c("MultiOperatorImpl", String.format("checkInterruptCurrentCall callType[%s], enterRoom[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.h) }));
+      if (this.h)
       {
-        e();
+        g();
         c(4);
       }
     }
@@ -211,7 +176,7 @@ public class MultiOperatorImpl
   
   protected void a(QavDef.MultiUserInfo paramMultiUserInfo)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.g;
     if (localMap != null) {
       localMap.put(Long.valueOf(paramMultiUserInfo.mUin), paramMultiUserInfo);
     }
@@ -219,18 +184,18 @@ public class MultiOperatorImpl
   
   protected void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)
   {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 5, new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 5, new Object[] { paramMultiUserInfo, Boolean.valueOf(paramBoolean) });
   }
   
   public void a(boolean paramBoolean)
   {
     e(paramBoolean);
-    this.c = paramBoolean;
+    this.k = paramBoolean;
   }
   
   protected QavDef.MultiUserInfo b(long paramLong)
   {
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    Map localMap = this.g;
     if (localMap != null) {
       return (QavDef.MultiUserInfo)localMap.remove(Long.valueOf(paramLong));
     }
@@ -242,15 +207,15 @@ public class MultiOperatorImpl
     if (paramInt == 0) {}
     try
     {
-      this.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
-      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
-      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(false);
+      this.j.stopBluetoothSco();
+      this.j.setBluetoothScoOn(false);
+      this.j.setSpeakerphoneOn(false);
       if (Build.VERSION.SDK_INT >= 21) {
-        this.jdField_a_of_type_AndroidMediaAudioManager.setMode(3);
+        this.j.setMode(3);
       } else {
-        this.jdField_a_of_type_AndroidMediaAudioManager.setMode(2);
+        this.j.setMode(2);
       }
-      this.jdField_a_of_type_Int = paramInt;
+      this.m = paramInt;
       return;
     }
     catch (Exception localException)
@@ -260,33 +225,50 @@ public class MultiOperatorImpl
     }
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
-      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
-      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(true);
-      this.jdField_a_of_type_AndroidMediaAudioManager.setMode(3);
-      this.jdField_a_of_type_Int = paramInt;
+      this.j.stopBluetoothSco();
+      this.j.setBluetoothScoOn(false);
+      this.j.setSpeakerphoneOn(true);
+      this.j.setMode(3);
+      this.m = paramInt;
       return;
     }
     if (paramInt == 2)
     {
-      this.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
-      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(true);
-      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(false);
-      this.jdField_a_of_type_AndroidMediaAudioManager.setMode(3);
-      this.jdField_a_of_type_Int = paramInt;
+      this.j.startBluetoothSco();
+      this.j.setBluetoothScoOn(true);
+      this.j.setSpeakerphoneOn(false);
+      this.j.setMode(3);
+      this.m = paramInt;
       return;
       label144:
       AVLog.a("MultiOperatorImpl", "setAudioRoute fail.", localThrowable);
     }
   }
   
-  public void b(long paramLong, ArrayList<AVUserInfo> paramArrayList)
+  protected void b(QavDef.MultiUserInfo paramMultiUserInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentQavQavDef$MultiParams;
+    ObserverDispatcher.b().a(QavMultiObserver.class, 3, new Object[] { paramMultiUserInfo });
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    f(paramBoolean);
+    this.l = paramBoolean;
+  }
+  
+  protected void c(int paramInt)
+  {
+    AVLog.a("MultiOperatorImpl", String.format("notifyError errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
+    ObserverDispatcher.b().a(QavMultiObserver.class, 2, new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void c(long paramLong, ArrayList<AVUserInfo> paramArrayList)
+  {
+    Object localObject = this.f;
     if (localObject == null) {
       return;
     }
-    if (((QavDef.MultiParams)localObject).jdField_a_of_type_Int == 11)
+    if (((QavDef.MultiParams)localObject).a == 11)
     {
       Iterator localIterator = paramArrayList.iterator();
       while (localIterator.hasNext())
@@ -301,17 +283,17 @@ public class MultiOperatorImpl
           paramArrayList.mMicOn = true;
           a(paramArrayList);
         }
-        int i;
+        int i1;
         if (TextUtils.isEmpty(paramArrayList.mOpenId))
         {
           paramArrayList.mOpenId = localAVUserInfo.openId;
-          i = 1;
+          i1 = 1;
         }
         else
         {
-          i = 0;
+          i1 = 0;
         }
-        if (i != 0)
+        if (i1 != 0)
         {
           b(paramArrayList);
           if (!paramArrayList.mMicOn) {
@@ -320,37 +302,18 @@ public class MultiOperatorImpl
         }
       }
     }
-    if (this.e)
+    if (this.n)
     {
-      paramArrayList = a();
+      paramArrayList = m();
       AVLog.c("MultiOperatorImpl", String.format("onMemberPosChanged groupId=%s userInfos=%s", new Object[] { Long.valueOf(paramLong), paramArrayList }));
-      ObserverDispatcher.a().a(QavMultiObserver.class, 7, new Object[] { paramArrayList });
-      this.e = false;
+      ObserverDispatcher.b().a(QavMultiObserver.class, 7, new Object[] { paramArrayList });
+      this.n = false;
     }
-  }
-  
-  protected void b(QavDef.MultiUserInfo paramMultiUserInfo)
-  {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 3, new Object[] { paramMultiUserInfo });
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    f(paramBoolean);
-    this.d = paramBoolean;
-  }
-  
-  public void c() {}
-  
-  protected void c(int paramInt)
-  {
-    AVLog.a("MultiOperatorImpl", String.format("notifyError errorType=%s", new Object[] { Integer.valueOf(paramInt) }));
-    ObserverDispatcher.a().a(QavMultiObserver.class, 2, new Object[] { Integer.valueOf(paramInt) });
   }
   
   protected void c(QavDef.MultiUserInfo paramMultiUserInfo)
   {
-    ObserverDispatcher.a().a(QavMultiObserver.class, 4, new Object[] { paramMultiUserInfo });
+    ObserverDispatcher.b().a(QavMultiObserver.class, 4, new Object[] { paramMultiUserInfo });
   }
   
   public void c(boolean paramBoolean)
@@ -358,40 +321,42 @@ public class MultiOperatorImpl
     a(1, paramBoolean);
   }
   
-  public void d() {}
-  
   public void d(boolean paramBoolean)
   {
     a(2, paramBoolean);
   }
   
-  public void e()
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g()
   {
     try
     {
       AVLog.c("MultiOperatorImpl", "exitRoom");
-      this.jdField_a_of_type_ComTencentQavQavDef$MultiParams = null;
-      if (this.jdField_a_of_type_JavaUtilMap != null) {
-        this.jdField_a_of_type_JavaUtilMap.clear();
+      this.f = null;
+      if (this.g != null) {
+        this.g.clear();
       }
-      if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null)
+      if (this.c != null)
       {
-        this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.quitRoom(0);
-        i();
-        this.jdField_a_of_type_Boolean = false;
+        this.c.quitRoom(0);
+        o();
+        this.h = false;
       }
       return;
     }
     finally {}
   }
   
-  public void f()
+  public void h()
   {
     try
     {
       AVLog.c("MultiOperatorImpl", "updateRoomInfo");
       a();
-      this.e = true;
+      this.n = true;
       return;
     }
     finally
@@ -401,38 +366,73 @@ public class MultiOperatorImpl
     }
   }
   
-  public void g()
+  public int i()
+  {
+    return this.m;
+  }
+  
+  public void j()
   {
     try
     {
       CallingStateMonitor.a().a(null);
-      if (this.jdField_a_of_type_JavaUtilMap != null)
+      if (this.g != null)
       {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        this.jdField_a_of_type_JavaUtilMap = null;
+        this.g.clear();
+        this.g = null;
       }
-      super.g();
+      super.j();
       return;
     }
     finally {}
   }
   
-  protected void h()
+  public String l()
   {
-    if (this.jdField_a_of_type_JavaLangRunnable == null)
+    if (this.c != null) {
+      try
+      {
+        String str = this.c.getNetWorkQualityRTT();
+        return str;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        localUnsatisfiedLinkError.printStackTrace();
+        return "";
+      }
+    }
+    return null;
+  }
+  
+  protected List<QavDef.MultiUserInfo> m()
+  {
+    Object localObject = this.g;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaLangRunnable = new MultiOperatorImpl.1(this);
-      ThreadManager.a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+      localObject = ((Map)localObject).values();
+      if (!((Collection)localObject).isEmpty()) {
+        return new ArrayList((Collection)localObject);
+      }
+    }
+    return null;
+  }
+  
+  protected void n()
+  {
+    if (this.o == null)
+    {
+      this.o = new MultiOperatorImpl.1(this);
+      ThreadManager.a(this.o, 30000L);
     }
   }
   
-  protected void i()
+  protected void o()
   {
-    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    Runnable localRunnable = this.o;
     if (localRunnable != null)
     {
       ThreadManager.b(localRunnable);
-      this.jdField_a_of_type_JavaLangRunnable = null;
+      this.o = null;
     }
   }
   
@@ -449,7 +449,7 @@ public class MultiOperatorImpl
     if (localMultiUserInfo != null)
     {
       localMultiUserInfo.mMicOn = (paramBoolean ^ true);
-      if ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_Int != 11)) {
+      if ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.f.a != 11)) {
         a(localMultiUserInfo, bool);
       }
     }
@@ -458,8 +458,8 @@ public class MultiOperatorImpl
   public void onGAudioSDKError(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AVLog.a("MultiOperatorImpl", String.format("onGAudioSDKError relationType=%s groupId=%s reason=%s detail=%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
-    e();
-    i();
+    g();
+    o();
     if (paramInt2 == 15)
     {
       c(3);
@@ -471,28 +471,28 @@ public class MultiOperatorImpl
   public void onGroupVideoClosed(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AVLog.c("MultiOperatorImpl", String.format("onGroupVideoClosed relationType=%s groupId=%s reason=%s avtype=%s", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
-    e();
-    i();
+    g();
+    o();
     c(2);
   }
   
   public void onMAVMemberInOrOut(AVUserInfo paramAVUserInfo, long paramLong1, int paramInt1, int paramInt2, long paramLong2, int... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentQavQavDef$MultiParams == null) {
+    if (this.f == null) {
       return;
     }
     if (paramInt1 == 70)
     {
       AVLog.c("MultiOperatorImpl", String.format("onMemberIn uin=%s groupId=%s", new Object[] { Long.valueOf(paramAVUserInfo.account), Long.valueOf(paramLong1) }));
-      if (paramAVUserInfo.account == this.jdField_a_of_type_Long) {
+      if (paramAVUserInfo.account == this.b) {
         paramInt1 = 1;
       } else {
         paramInt1 = 0;
       }
       if (paramInt1 != 0)
       {
-        i();
-        ObserverDispatcher.a().a(QavMultiObserver.class, 1, new Object[0]);
+        o();
+        ObserverDispatcher.b().a(QavMultiObserver.class, 1, new Object[0]);
       }
       paramVarArgs = a(paramAVUserInfo.account);
       if ((paramVarArgs == null) && (paramInt1 == 0))
@@ -501,7 +501,7 @@ public class MultiOperatorImpl
         paramVarArgs.mUin = paramAVUserInfo.account;
         paramVarArgs.mMicOn = true;
         a(paramVarArgs);
-        if (this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_Int == 11)
+        if (this.f.a == 11)
         {
           a();
           return;
@@ -513,8 +513,8 @@ public class MultiOperatorImpl
       if (paramInt1 != 0)
       {
         paramAVUserInfo = new QavDef.MultiUserInfo();
-        paramAVUserInfo.mUin = this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_Long;
-        paramAVUserInfo.mOpenId = this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_JavaLangString;
+        paramAVUserInfo.mUin = this.f.e;
+        paramAVUserInfo.mOpenId = this.f.f;
         paramAVUserInfo.mMicOn = true;
         a(paramAVUserInfo);
       }
@@ -546,19 +546,27 @@ public class MultiOperatorImpl
       while (paramInt1 < paramInt2)
       {
         QavDef.MultiUserInfo localMultiUserInfo = a(paramArrayOfLong[paramInt1]);
-        if ((localMultiUserInfo != null) && ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.jdField_a_of_type_ComTencentQavQavDef$MultiParams.jdField_a_of_type_Int != 11))) {
-          ObserverDispatcher.a().a(QavMultiObserver.class, 6, new Object[] { localMultiUserInfo, Boolean.valueOf(bool), Integer.valueOf(paramInt4) });
+        if ((localMultiUserInfo != null) && ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.f.a != 11))) {
+          ObserverDispatcher.b().a(QavMultiObserver.class, 6, new Object[] { localMultiUserInfo, Boolean.valueOf(bool), Integer.valueOf(paramInt4) });
         }
         paramInt1 += 1;
       }
     }
   }
   
-  public void onSelfAudioVolumeChange(long paramLong) {}
+  public void onSelfAudioVolumeChange(long paramLong)
+  {
+    QavDef.MultiUserInfo localMultiUserInfo = a(this.b);
+    if ((localMultiUserInfo != null) && ((!TextUtils.isEmpty(localMultiUserInfo.mOpenId)) || (this.f.a != 11)))
+    {
+      int i1 = (int)paramLong;
+      ObserverDispatcher.b().a(QavMultiObserver.class, 6, new Object[] { localMultiUserInfo, Boolean.valueOf(true), Integer.valueOf(i1) });
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qav.controller.multi.MultiOperatorImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -28,18 +28,18 @@ class NowLiveFragment$5
         }
         paramMenuItem = new StringBuilder();
         paramMenuItem.append("");
-        paramMenuItem.append(this.a.e);
+        paramMenuItem.append(this.a.t);
         paramMenuItem = paramMenuItem.toString();
         localObject = new Intent(this.a.getBaseActivity(), QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", paramMenuItem);
         ((Intent)localObject).putExtra("reqType", 1);
-        ((Intent)localObject).putExtra("title", HardCodeUtil.a(2131707675));
+        ((Intent)localObject).putExtra("title", HardCodeUtil.a(2131905489));
         this.a.startActivity((Intent)localObject);
         return;
       }
       paramMenuItem = new StringBuilder();
       paramMenuItem.append("");
-      paramMenuItem.append(this.a.d);
+      paramMenuItem.append(this.a.s);
       paramMenuItem = paramMenuItem.toString();
       localObject = new Intent(this.a.getBaseActivity(), QQBrowserActivity.class);
       ((Intent)localObject).putExtra("url", paramMenuItem);
@@ -59,7 +59,7 @@ class NowLiveFragment$5
     }
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("");
-    ((StringBuilder)localObject).append(this.a.c);
+    ((StringBuilder)localObject).append(this.a.r);
     localObject = ((StringBuilder)localObject).toString();
     Intent localIntent = new Intent(this.a.getBaseActivity(), QQBrowserActivity.class);
     localIntent.putExtra("url", (String)localObject);
@@ -72,7 +72,7 @@ class NowLiveFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.5
  * JD-Core Version:    0.7.0.1
  */

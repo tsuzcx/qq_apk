@@ -21,8 +21,8 @@ final class QCC$3
       if (localAppInterface != null)
       {
         XpsReport.XpsClientDataReq localXpsClientDataReq = new XpsReport.XpsClientDataReq();
-        localXpsClientDataReq.scene_id.set(this.jdField_a_of_type_Int);
-        localXpsClientDataReq.ccdata.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+        localXpsClientDataReq.scene_id.set(this.a);
+        localXpsClientDataReq.ccdata.set(ByteStringMicro.copyFrom(this.b));
         ProtoUtils.a(localAppInterface, localXpsClientDataReq.toByteArray(), "trpc.qqxps.gateway.SSOProxy.Forward");
         return;
       }
@@ -35,7 +35,7 @@ final class QCC$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqprotect.common.QCC.3
  * JD-Core Version:    0.7.0.1
  */

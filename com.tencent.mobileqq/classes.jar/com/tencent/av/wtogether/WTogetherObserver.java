@@ -40,7 +40,7 @@ public class WTogetherObserver
       return;
     case 10: 
       paramObject = (ReqComResult)paramObject;
-      a(paramBoolean, paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Long, paramObject.jdField_a_of_type_JavaLangString);
+      a(paramBoolean, paramObject.a, paramObject.b, paramObject.e);
       return;
     case 9: 
       h(paramBoolean, (ReqComResult)paramObject);

@@ -61,7 +61,7 @@ public class MutualMarkProcessor
       ExtensionInfo localExtensionInfo = (ExtensionInfo)((Pair)localObject).first;
       localObject = (FriendInfo)((Pair)localObject).second;
       paramLong = ((FriendInfo)localObject).friendUin;
-      if (paramExtRspData.b == 0) {
+      if (paramExtRspData.c == 0) {
         MutualMarkDataS2CHandleHelper.a(localQQAppInterface, localExtensionInfo, String.valueOf(paramLong), ((FriendInfo)localObject).vecMutualMarkData);
       }
     }
@@ -98,12 +98,12 @@ public class MutualMarkProcessor
     QQProfileItem.a(paramArrayList, "775_hot_friend_new_boat_clear_version");
     QQProfileItem.a(paramArrayList, "top_position_and_disturb_clear_version");
     QQProfileItem.a(paramArrayList, "check_message_preview_version_clear");
-    if (paramExtRspData.c == 0) {
+    if (paramExtRspData.d == 0) {
       paramBoolean = true;
     } else {
       paramBoolean = false;
     }
-    if (paramExtRspData.b != 0) {
+    if (paramExtRspData.c != 0) {
       bool = false;
     }
     a(paramArrayList, paramBoolean, bool, paramExtRspData.a);
@@ -118,7 +118,7 @@ public class MutualMarkProcessor
     }
     QQAppInterface localQQAppInterface = (QQAppInterface)this.mApp;
     FriendIntimateRelationshipHelper.a(localQQAppInterface, paramExtensionInfo, paramFriendInfo.vecIntimateInfo);
-    if (paramExtRspData.b == 0) {
+    if (paramExtRspData.c == 0) {
       MutualMarkDataS2CHandleHelper.a(localQQAppInterface, paramExtensionInfo, paramExtensionInfo.uin, paramFriendInfo.vecMutualMarkData);
     }
   }
@@ -135,7 +135,7 @@ public class MutualMarkProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.friendlist.processor.MutualMarkProcessor
  * JD-Core Version:    0.7.0.1
  */

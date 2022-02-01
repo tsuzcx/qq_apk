@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:gravity="center_vertical" android:background="@drawable/q5" android:layout_width="fill_parent" android:layout_height="42.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/evn" android:background="@drawable/q0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/o69" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/evn" android:background="@drawable/q0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/lr0" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
     <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/evq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/o66" android:layout_centerInParent="true" />
     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/evq" android:layout_centerInParent="true">
         <ImageView android:id="@id/evo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/q1" />

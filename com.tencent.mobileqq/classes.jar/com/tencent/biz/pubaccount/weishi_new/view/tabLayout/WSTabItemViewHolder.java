@@ -18,36 +18,39 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class WSTabItemViewHolder
 {
-  public static float a;
-  public static float b;
-  public static float c;
-  private int jdField_a_of_type_Int = 0;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSTabInfo jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabInfo;
-  private WSTabLayout.TabContentClickListener jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout$TabContentClickListener;
-  private KandianUrlImageView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView;
-  private TabLayoutCompat.Tab jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  
-  static
-  {
-    jdField_a_of_type_Float = ScreenUtil.dip2px(22.0F);
-    jdField_b_of_type_Float = ScreenUtil.dip2px(15.0F);
-    jdField_c_of_type_Float = ScreenUtil.dip2px(2.0F);
-  }
+  public static float a = ScreenUtil.dip2px(22.0F);
+  public static float b = ScreenUtil.dip2px(15.0F);
+  public static float c = ScreenUtil.dip2px(2.0F);
+  private WSTabLayout.TabContentClickListener d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private KandianUrlImageView h;
+  private int i = 0;
+  private WSTabInfo j;
+  private TabLayoutCompat.Tab k;
+  private int l;
   
   public WSTabItemViewHolder(@NonNull View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381252));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381251));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381242));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131381223));
+    this.e = ((TextView)paramView.findViewById(2131450300));
+    this.f = ((TextView)paramView.findViewById(2131450299));
+    this.g = ((TextView)paramView.findViewById(2131450290));
+    this.h = ((KandianUrlImageView)paramView.findViewById(2131450271));
     paramView.setOnClickListener(new WSTabItemViewHolder.1(this));
   }
   
-  private String a(int paramInt)
+  private void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.e.setTypeface(Typeface.defaultFromStyle(1));
+      return;
+    }
+    this.e.setTypeface(Typeface.defaultFromStyle(0));
+  }
+  
+  private String c(int paramInt)
   {
     if (paramInt > 99) {
       return "99+";
@@ -58,30 +61,10 @@ public class WSTabItemViewHolder
     return localStringBuilder.toString();
   }
   
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.defaultFromStyle(1));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.defaultFromStyle(0));
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public TabLayoutCompat.Tab a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab;
-  }
-  
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.rgb(153, 153, 153));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.rgb(153, 153, 153));
+    this.e.setTextColor(Color.rgb(153, 153, 153));
+    this.f.setTextColor(Color.rgb(153, 153, 153));
   }
   
   public void a(float paramFloat)
@@ -89,22 +72,22 @@ public class WSTabItemViewHolder
     if (WeishiUtils.a(paramFloat, 0.0F)) {
       return;
     }
-    float f = paramFloat;
+    float f1 = paramFloat;
     if (paramFloat > 1.0F) {
-      f = 1.0F;
+      f1 = 1.0F;
     }
-    paramFloat = f;
-    if (f < 0.6D) {
+    paramFloat = f1;
+    if (f1 < 0.6D) {
       paramFloat = 0.6F;
     }
-    int i = (int)(paramFloat * 255.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.rgb(i, i, i));
+    int m = (int)(paramFloat * 255.0F);
+    this.e.setTextColor(Color.rgb(m, m, m));
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramInt);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramInt);
+    this.e.setTextColor(paramInt);
+    this.f.setTextColor(paramInt);
   }
   
   public void a(WSTabInfo paramWSTabInfo)
@@ -112,47 +95,52 @@ public class WSTabItemViewHolder
     if (paramWSTabInfo == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabInfo = paramWSTabInfo;
+    this.j = paramWSTabInfo;
     if ((TextUtils.isEmpty(paramWSTabInfo.d())) && (TextUtils.isEmpty(paramWSTabInfo.b())))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
+      this.e.setVisibility(8);
+      this.f.setVisibility(8);
+      this.h.setVisibility(8);
       return;
     }
     if (!TextUtils.isEmpty(paramWSTabInfo.d()))
     {
-      this.jdField_b_of_type_Int = 2;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(0);
-      Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130851261);
-      WSPicLoader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView, paramWSTabInfo.d(), localDrawable);
+      this.l = 2;
+      this.e.setVisibility(8);
+      this.f.setVisibility(8);
+      this.h.setVisibility(0);
+      Drawable localDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130853523);
+      WSPicLoader.a().a(this.h, paramWSTabInfo.d(), localDrawable);
       return;
     }
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetKandianUrlImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramWSTabInfo.b());
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(paramWSTabInfo.a());
-    a(paramWSTabInfo.a());
+    this.l = 1;
+    this.e.setVisibility(0);
+    this.h.setVisibility(8);
+    this.e.setText(paramWSTabInfo.b());
+    this.e.setTextSize(paramWSTabInfo.f());
+    a(paramWSTabInfo.e());
     if (!TextUtils.isEmpty(paramWSTabInfo.c()))
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramWSTabInfo.c());
+      this.f.setVisibility(0);
+      this.f.setText(paramWSTabInfo.c());
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.f.setVisibility(8);
   }
   
   public void a(WSTabLayout.TabContentClickListener paramTabContentClickListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewTabLayoutWSTabLayout$TabContentClickListener = paramTabContentClickListener;
+    this.d = paramTabContentClickListener;
   }
   
   public void a(TabLayoutCompat.Tab paramTab)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabLayoutCompat$Tab = paramTab;
+    this.k = paramTab;
+  }
+  
+  public TabLayoutCompat.Tab b()
+  {
+    return this.k;
   }
   
   public void b(float paramFloat)
@@ -160,34 +148,40 @@ public class WSTabItemViewHolder
     if (WeishiUtils.a(paramFloat, 0.0F)) {
       return;
     }
-    float f = paramFloat;
-    if (paramFloat > 1.0F) {
-      f = 1.0F;
+    float f1 = paramFloat;
+    if (paramFloat > 0.6D) {
+      f1 = 0.6F;
     }
-    paramFloat = f;
-    if (f > 0.6D) {
-      paramFloat = 0.6F;
-    }
-    int i = (int)(paramFloat * 255.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.rgb(i, i, i));
+    int m = (int)(f1 * 255.0F);
+    this.e.setTextColor(Color.rgb(m, m, m));
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.i = paramInt;
     if (paramInt > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      String str = a(paramInt);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(str);
+      this.g.setVisibility(0);
+      String str = c(paramInt);
+      this.g.setText(str);
       return;
     }
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.g.setVisibility(8);
+  }
+  
+  public int c()
+  {
+    return this.i;
+  }
+  
+  public TextView d()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.tabLayout.WSTabItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

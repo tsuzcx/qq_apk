@@ -23,7 +23,7 @@ import com.tencent.widget.AbsListView.LayoutParams;
 public class FeedItemCellTypePolymeric
   extends FeedItemCell
 {
-  private static final String a = "FeedItemCellTypePolymeric";
+  private static final String G = "FeedItemCellTypePolymeric";
   
   public FeedItemCellTypePolymeric(Context paramContext, IFaceDecoder paramIFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter)
   {
@@ -32,35 +32,35 @@ public class FeedItemCellTypePolymeric
   
   private void a(LinearLayout paramLinearLayout, IReadInJoyModel paramIReadInJoyModel)
   {
-    if (paramIReadInJoyModel.c() == 56)
+    if (paramIReadInJoyModel.m() == 56)
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setDividerWidth(AIOUtils.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setPadding(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), 0, DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 15.0F));
+      this.F.setDividerWidth(AIOUtils.b(3.0F, this.e.getResources()));
+      this.F.setPadding(DisplayUtil.a(this.e, 6.0F), 0, DisplayUtil.a(this.e, 6.0F), DisplayUtil.a(this.e, 15.0F));
     }
     else
     {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setDividerWidth(AIOUtils.b(1.5F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setPadding(DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 12.0F), DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
+      this.F.setDividerWidth(AIOUtils.b(1.5F, this.e.getResources()));
+      this.F.setPadding(DisplayUtil.a(this.e, 6.0F), DisplayUtil.a(this.e, 8.0F), DisplayUtil.a(this.e, 12.0F), DisplayUtil.a(this.e, 8.0F));
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setClipToPadding(false);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setClipChildren(false);
-    paramLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView);
+    this.F.setClipToPadding(false);
+    this.F.setClipChildren(false);
+    paramLinearLayout.addView(this.F);
   }
   
-  public static boolean a(int paramInt)
+  public static boolean b(int paramInt)
   {
     return (paramInt == 9) || (paramInt == 10) || (paramInt == 11);
   }
   
-  private void b(View paramView)
+  private void c(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof ReadInJoyNewFeedsActivity)) {
+    if ((this.e instanceof ReadInJoyNewFeedsActivity)) {
       return;
     }
     if (RIJShowKanDianTabSp.c()) {
       try
       {
-        localObject = (ReadinjoyTabFrame)FrameHelperActivity.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext).a(ReadinjoyTabFrame.class);
+        localObject = (ReadinjoyTabFrame)FrameHelperActivity.a((BaseActivity)this.e).a(ReadinjoyTabFrame.class);
         if (localObject != null)
         {
           ((ReadinjoyTabFrame)localObject).b(paramView);
@@ -69,7 +69,7 @@ public class FeedItemCellTypePolymeric
       }
       catch (Exception paramView)
       {
-        Object localObject = jdField_a_of_type_JavaLangString;
+        Object localObject = G;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("readinjoy tab add dispatch touch event view fail ! e : ");
         localStringBuilder.append(paramView);
@@ -79,90 +79,90 @@ public class FeedItemCellTypePolymeric
     }
   }
   
-  public FeedItemCell a()
+  public FeedItemCell b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel)) && (((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).c() == 56))
+    this.h = true;
+    if ((this.b != null) && ((this.b instanceof IReadInJoyModel)) && (((IReadInJoyModel)this.b).m() == 56))
     {
-      if (((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).e() == 53) {
-        return b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder).u().n();
+      if (((IReadInJoyModel)this.b).p() == 53) {
+        return b(this.g, this.f).x().p();
       }
-      return b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder).u().n().l().m();
+      return b(this.g, this.f).x().p().n().o();
     }
-    return b(this.jdField_a_of_type_ComTencentMobileqqKandianBizFrameworkReadInJoyBaseAdapter, this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder).u().n().l();
+    return b(this.g, this.f).x().p().n();
   }
   
-  public FeedItemCell d()
+  public FeedItemCell e()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.h)
     {
-      LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      LinearLayout localLinearLayout = new LinearLayout(this.e);
       localLinearLayout.setOrientation(1);
       localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric);
+      if (this.w != null) {
+        localLinearLayout.addView(this.w);
       }
-      if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof IReadInJoyModel)) && (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView != null))
+      if ((this.b != null) && ((this.b instanceof IReadInJoyModel)) && (this.F != null))
       {
-        Object localObject = ((IReadInJoyModel)this.jdField_a_of_type_JavaLangObject).a();
-        if ((((AbsBaseArticleInfo)localObject).mPolymericInfo != null) && (a(((AbsBaseArticleInfo)localObject).mPolymericInfo.a)))
+        Object localObject = ((IReadInJoyModel)this.b).k();
+        if ((((AbsBaseArticleInfo)localObject).mPolymericInfo != null) && (b(((AbsBaseArticleInfo)localObject).mPolymericInfo.e)))
         {
-          a(localLinearLayout, (IReadInJoyModel)this.jdField_a_of_type_JavaLangObject);
+          a(localLinearLayout, (IReadInJoyModel)this.b);
         }
         else
         {
           localObject = new LinearLayout.LayoutParams(-1, -2);
-          ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
-          ((LinearLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
-          this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.setDividerWidth(AIOUtils.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-          localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView, (ViewGroup.LayoutParams)localObject);
+          ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.e, 12.0F);
+          ((LinearLayout.LayoutParams)localObject).bottomMargin = DisplayUtil.a(this.e, 20.0F);
+          this.F.setDividerWidth(AIOUtils.b(3.0F, this.e.getResources()));
+          localLinearLayout.addView(this.F, (ViewGroup.LayoutParams)localObject);
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentDivider);
+      if (this.r != null) {
+        localLinearLayout.addView(this.r);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentLastRead);
+      if (this.t != null) {
+        localLinearLayout.addView(this.t);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentWhiteSpace != null) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentWhiteSpace);
+      if (this.s != null) {
+        localLinearLayout.addView(this.s);
       }
       a(localLinearLayout);
-      b(a());
+      c(a());
       return this;
     }
     throw new Exception("buildComponent() must after buildComponent()!");
   }
   
-  public FeedItemCell e()
+  public FeedItemCell f()
   {
     return this;
   }
   
-  public FeedItemCell o()
+  public FeedItemCell q()
   {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric.a(this.jdField_a_of_type_JavaLangObject);
+    super.q();
+    if (this.w != null) {
+      this.w.a(this.b);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentPolymericView.a(this.jdField_a_of_type_JavaLangObject);
+    if (this.F != null) {
+      this.F.a(this.b);
     }
     return this;
   }
   
-  public FeedItemCell p()
+  public FeedItemCell r()
   {
-    super.p();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric != null) {
-      this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizPtsComponentFeedItemCell$CellListener);
+    super.r();
+    if (this.w != null) {
+      this.w.a(this.u);
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.FeedItemCellTypePolymeric
  * JD-Core Version:    0.7.0.1
  */

@@ -17,21 +17,21 @@ class RecycleViewAdapterHelper$3$3
   
   public void onClick(ViewBase paramViewBase)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a.a() != null)) {
-      ProteusSupportUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper.a.a(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((this.a.c.e != null) && (this.a.c.e.k() != null)) {
+      ProteusSupportUtil.a(this.a.c.e.k(), this.a.b, paramViewBase);
     }
-    ProteusSupportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
-    if ((RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper) != null) && (this.a.jdField_a_of_type_Int < RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).size()))
+    ProteusSupportUtil.a(this.a.b, paramViewBase);
+    if ((RecycleViewAdapterHelper.c(this.a.c) != null) && (this.a.a < RecycleViewAdapterHelper.c(this.a.c).size()))
     {
-      RIJJumpUtils.a(RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).getContext(), (AbsBaseArticleInfo)RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
+      RIJJumpUtils.a(RecycleViewAdapterHelper.d(this.a.c).getContext(), (AbsBaseArticleInfo)RecycleViewAdapterHelper.c(this.a.c).get(this.a.a), paramViewBase.getEventAttachedData());
       return;
     }
-    ReadInJoyUtils.a(RecycleViewAdapterHelper.a(this.a.jdField_a_of_type_ComTencentMobileqqKandianBizPtsViewPolymericHelperRecycleViewAdapterHelper).getContext(), paramViewBase.getEventAttachedData());
+    ReadInJoyUtils.a(RecycleViewAdapterHelper.d(this.a.c).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.view.polymeric.helper.RecycleViewAdapterHelper.3.3
  * JD-Core Version:    0.7.0.1
  */

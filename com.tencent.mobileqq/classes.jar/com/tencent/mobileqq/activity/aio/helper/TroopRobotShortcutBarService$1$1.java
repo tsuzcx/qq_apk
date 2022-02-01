@@ -9,16 +9,16 @@ class TroopRobotShortcutBarService$1$1
   
   public void run()
   {
-    if (TroopRobotShortcutBarService.a(this.a.a).a())
+    if (TroopRobotShortcutBarService.a(this.a.a).b())
     {
       TroopRobotShortcutBarService.a(this.a.a, false);
-      this.a.a.a(false);
+      this.a.a.b(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopRobotShortcutBarService.1.1
  * JD-Core Version:    0.7.0.1
  */

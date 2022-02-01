@@ -7,15 +7,15 @@ class SoConfigManager$1
   
   public void a(int paramInt)
   {
-    SoConfigManager.OnGetSoInfoListener localOnGetSoInfoListener = this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager$OnGetSoInfoListener;
+    SoConfigManager.OnGetSoInfoListener localOnGetSoInfoListener = this.a;
     if (localOnGetSoInfoListener != null) {
-      localOnGetSoInfoListener.a(paramInt, SoConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfigManager, this.jdField_a_of_type_JavaLangString));
+      localOnGetSoInfoListener.a(paramInt, SoConfigManager.a(this.c, this.b));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

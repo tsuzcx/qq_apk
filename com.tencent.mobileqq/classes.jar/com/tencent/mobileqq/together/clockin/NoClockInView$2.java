@@ -12,8 +12,8 @@ class NoClockInView$2
   public void onAnimationEnd(Animation paramAnimation)
   {
     this.a.b(8);
-    if (NoClockInView.a(this.a) != null) {
-      NoClockInView.a(this.a).setOnClickListener(null);
+    if (NoClockInView.b(this.a) != null) {
+      NoClockInView.b(this.a).setOnClickListener(null);
     }
     this.a.a(2);
   }
@@ -27,7 +27,7 @@ class NoClockInView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.NoClockInView.2
  * JD-Core Version:    0.7.0.1
  */

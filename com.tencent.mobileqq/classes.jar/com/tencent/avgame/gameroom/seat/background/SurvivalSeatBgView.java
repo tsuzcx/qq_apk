@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 public class SurvivalSeatBgView
   extends GridView
 {
-  private ISurvivalSeatBgPresenter jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
-  private SurvivalSeatBgGridAdapter jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter;
+  private SurvivalSeatBgGridAdapter a;
+  private ISurvivalSeatBgPresenter b;
   
   public SurvivalSeatBgView(Context paramContext)
   {
@@ -33,18 +33,13 @@ public class SurvivalSeatBgView
     setNumColumns(12);
     setVerticalScrollBarEnabled(false);
     setClickable(false);
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter = new SurvivalSeatBgPresenterImp();
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter = new SurvivalSeatBgGridAdapter(getContext(), this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter);
-  }
-  
-  public ISurvivalSeatBgPresenter a()
-  {
-    return this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundISurvivalSeatBgPresenter;
+    this.b = new SurvivalSeatBgPresenterImp();
+    this.a = new SurvivalSeatBgGridAdapter(getContext(), this.b);
   }
   
   public void a()
   {
-    setAdapter(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter);
+    setAdapter(this.a);
     if (QLog.isDevelopLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -52,6 +47,11 @@ public class SurvivalSeatBgView
       localStringBuilder.append(GameRoomViewLayoutParamsDef.N);
       QLog.d("SurvivalSeatBgView", 4, localStringBuilder.toString());
     }
+  }
+  
+  public ISurvivalSeatBgPresenter getPresenter()
+  {
+    return this.b;
   }
 }
 

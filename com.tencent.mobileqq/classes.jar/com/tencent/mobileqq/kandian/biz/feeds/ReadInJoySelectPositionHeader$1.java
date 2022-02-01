@@ -16,21 +16,21 @@ class ReadInJoySelectPositionHeader$1
   
   public void onClick(View paramView)
   {
-    Object localObject = ReadInJoyLogicEngine.a().a();
+    Object localObject = ReadInJoyLogicEngine.a().j();
     if (localObject != null)
     {
-      paramView = ((SelectPositionModule)localObject).b();
+      paramView = ((SelectPositionModule)localObject).c();
       if (((SelectPositionModule)localObject).a(paramView))
       {
-        ((SelectPositionModule)localObject).b(paramView);
-        if (ReadInJoySelectPositionHeader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader) != null) {
-          ReadInJoySelectPositionHeader.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizFeedsReadInJoySelectPositionHeader).a(paramView);
+        ((SelectPositionModule)localObject).c(paramView);
+        if (ReadInJoySelectPositionHeader.a(this.b) != null) {
+          ReadInJoySelectPositionHeader.a(this.b).a(paramView);
         }
       }
       else
       {
         if (paramView != null) {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, String.format("你当前在%s，暂无本地频道。", new Object[] { paramView.cityGPS }), 0).a();
+          QQToast.makeText(this.a, String.format("你当前在%s，暂无本地频道。", new Object[] { paramView.cityGPS }), 0).show();
         }
         if (QLog.isColorLevel())
         {
@@ -45,7 +45,7 @@ class ReadInJoySelectPositionHeader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.ReadInJoySelectPositionHeader.1
  * JD-Core Version:    0.7.0.1
  */

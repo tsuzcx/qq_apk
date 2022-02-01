@@ -13,7 +13,7 @@ class WSDramaDataManager$3
   
   public void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    IFetchDataListener localIFetchDataListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener;
+    IFetchDataListener localIFetchDataListener = this.b;
     if (localIFetchDataListener != null) {
       localIFetchDataListener.a(paramInt, paramString);
     }
@@ -23,14 +23,14 @@ class WSDramaDataManager$3
   {
     paramObject = new StringBuilder();
     paramObject.append("[WSDramaDataManager.java][getSingleEpisodeFeed] isPreloadData:");
-    paramObject.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.c());
+    paramObject.append(this.a.i());
     WSLog.a("WSDramaDataManager-nel-log", paramObject.toString());
-    WSDramaDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataManager).a(paramList, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.a());
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.c()) {
+    WSDramaDataManager.a(this.c).a(paramList, this.a.d());
+    if (this.a.i()) {
       return;
     }
-    paramList = (stDramaFeed)WSDramaDataManager.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaDataManager).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.a()).get(Integer.valueOf(Math.max(1, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheWSDramaFeedsParams.a())));
-    paramObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaCacheIFetchDataListener;
+    paramList = (stDramaFeed)WSDramaDataManager.a(this.c).c(this.a.d()).get(Integer.valueOf(Math.max(1, this.a.c())));
+    paramObject = this.b;
     if (paramObject != null) {
       paramObject.a(paramList);
     }
@@ -38,7 +38,7 @@ class WSDramaDataManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaDataManager.3
  * JD-Core Version:    0.7.0.1
  */

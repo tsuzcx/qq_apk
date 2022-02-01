@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RestrictTo;
+import androidx.core.R.dimen;
 import java.util.ArrayList;
 
 public class NotificationCompat$Builder
@@ -107,8 +108,8 @@ public class NotificationCompat$Builder
         return paramBitmap;
       }
       localObject = this.mContext.getResources();
-      int i = ((Resources)localObject).getDimensionPixelSize(2131296808);
-      int j = ((Resources)localObject).getDimensionPixelSize(2131296807);
+      int i = ((Resources)localObject).getDimensionPixelSize(R.dimen.compat_notification_large_icon_max_width);
+      int j = ((Resources)localObject).getDimensionPixelSize(R.dimen.compat_notification_large_icon_max_height);
       if ((paramBitmap.getWidth() <= i) && (paramBitmap.getHeight() <= j)) {
         return paramBitmap;
       }

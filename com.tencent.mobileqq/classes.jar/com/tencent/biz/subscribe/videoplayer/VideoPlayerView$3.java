@@ -15,11 +15,11 @@ class VideoPlayerView$3
   
   public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (VideoPlayerView.a(this.a) != null)
+    if (VideoPlayerView.c(this.a) != null)
     {
-      VSReporter.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
-      VideoPlayerView.a(this.a).poster.followState.set(1);
-      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
+      VSReporter.a(VideoPlayerView.c(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.c(this.a).id.get(), VideoPlayerView.c(this.a).title.get() });
+      VideoPlayerView.c(this.a).poster.followState.set(1);
+      VideoPlayerView.d(this.a).put(VideoPlayerView.c(this.a).poster.id.get(), Boolean.valueOf(true));
     }
   }
 }

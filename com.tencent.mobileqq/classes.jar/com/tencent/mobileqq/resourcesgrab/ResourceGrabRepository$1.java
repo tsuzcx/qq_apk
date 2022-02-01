@@ -18,12 +18,12 @@ class ResourceGrabRepository$1
       localStringBuilder.append(paramResourceGrabSkinData);
       QLog.d("ResourceGrabModel", 2, localStringBuilder.toString());
     }
-    ResourceGrabRepository.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabRepository, paramResourceGrabSkinData, this.jdField_a_of_type_JavaUtilHashSet);
+    ResourceGrabRepository.a(this.b, paramResourceGrabSkinData, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabRepository.1
  * JD-Core Version:    0.7.0.1
  */

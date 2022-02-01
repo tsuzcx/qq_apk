@@ -5,12 +5,11 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyUtils;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity;
 import com.tencent.mobileqq.kandian.biz.pts.lite.PTSLiteEventTypeHandler;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport.ReportR5Builder;
 import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pts.core.PTSComposer;
 import com.tencent.pts.core.lite.DefaultPTSLiteEventListener;
 import com.tencent.qphone.base.util.QLog;
@@ -52,14 +51,13 @@ public final class PtsItemViewEventListener
     boolean bool = localObject1 instanceof FastWebActivity;
     String str1 = null;
     if (bool) {
-      localObject1 = ((FastWebActivity)localObject1).a;
+      localObject1 = ((FastWebActivity)localObject1).g;
     } else {
       localObject1 = null;
     }
     a(paramReportR5Builder, (AbsBaseArticleInfo)localObject1);
-    IPublicAccountReportUtils localIPublicAccountReportUtils = (IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class);
     AppInterface localAppInterface = (AppInterface)RIJQQAppInterfaceUtil.a();
-    String str2 = RIJQQAppInterfaceUtil.a();
+    String str2 = RIJQQAppInterfaceUtil.d();
     if (localObject1 != null) {
       localObject2 = Long.valueOf(((AbsBaseArticleInfo)localObject1).mArticleID);
     } else {
@@ -85,7 +83,7 @@ public final class PtsItemViewEventListener
     if (localObject1 == null) {
       localObject1 = "";
     }
-    localIPublicAccountReportUtils.publicAccountReportClickEventForMigrate(localAppInterface, "P_CliOper", "Pb_account_lifeservice", str2, paramString, paramString, 0, 0, (String)localObject2, (String)localObject3, (String)localObject1, paramReportR5Builder.build(), false);
+    PublicAccountReportUtils.a(localAppInterface, "P_CliOper", "Pb_account_lifeservice", str2, paramString, paramString, 0, 0, (String)localObject2, (String)localObject3, (String)localObject1, paramReportR5Builder.build(), false);
   }
   
   public void onExposureTriggered(@Nullable String paramString, @Nullable HashMap<String, String> paramHashMap, @Nullable View paramView, @Nullable PTSComposer paramPTSComposer)
@@ -144,7 +142,7 @@ public final class PtsItemViewEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.item.PtsItemViewEventListener
  * JD-Core Version:    0.7.0.1
  */

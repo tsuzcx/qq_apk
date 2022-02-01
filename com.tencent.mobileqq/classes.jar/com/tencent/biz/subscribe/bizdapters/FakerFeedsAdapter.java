@@ -31,36 +31,12 @@ public abstract class FakerFeedsAdapter
   implements SimpleEventReceiver, RelativeAdFeedItemView.AdInnerClickListener
 {
   protected RecyclerView.LayoutManager a;
-  private boolean c = true;
-  private boolean d;
+  private boolean b = true;
+  private boolean c;
   
   public FakerFeedsAdapter(Bundle paramBundle)
   {
     super(paramBundle);
-  }
-  
-  private int a(String paramString)
-  {
-    int i = 0;
-    while (i < b().size())
-    {
-      Object localObject = (CertifiedAccountMeta.StFeed)b().get(i);
-      if ((paramString.startsWith("fakeid_")) && (!((CertifiedAccountMeta.StFeed)localObject).id.get().startsWith("fakeid_")))
-      {
-        QLog.d("FakerFeedsAdapter", 2, "has none fakeFeeds");
-        break;
-      }
-      if (paramString.equals(((CertifiedAccountMeta.StFeed)localObject).id.get()))
-      {
-        localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("find fakeid:");
-        ((StringBuilder)localObject).append(paramString);
-        QLog.d("FakerFeedsAdapter", 2, ((StringBuilder)localObject).toString());
-        return i;
-      }
-      i += 1;
-    }
-    return -1;
   }
   
   private void a(SubscribeFeedsEvent paramSubscribeFeedsEvent)
@@ -91,10 +67,10 @@ public abstract class FakerFeedsAdapter
           if (i != 4) {
             return;
           }
-          if (!this.c) {
+          if (!this.b) {
             return;
           }
-          this.c = false;
+          this.b = false;
           if ((paramSubscribeFeedsEvent.mFakeFeedDataList != null) && (paramSubscribeFeedsEvent.mFakeFeedDataList.size() > 0))
           {
             if (SubscribeGlobalInfo.a() != null)
@@ -110,27 +86,27 @@ public abstract class FakerFeedsAdapter
                 }
               }
             }
-            a().post(new FakerFeedsAdapter.4(this, paramSubscribeFeedsEvent));
+            M().post(new FakerFeedsAdapter.4(this, paramSubscribeFeedsEvent));
           }
         }
         else
         {
-          i = a(paramSubscribeFeedsEvent.mTargetId);
+          i = b(paramSubscribeFeedsEvent.mTargetId);
           if (i != -1) {
-            a().post(new FakerFeedsAdapter.3(this, i));
+            M().post(new FakerFeedsAdapter.3(this, i));
           }
         }
       }
       else
       {
-        i = a(paramSubscribeFeedsEvent.mTargetId);
+        i = b(paramSubscribeFeedsEvent.mTargetId);
         if (i != -1)
         {
-          localObject = SubscribeUtils.a((CertifiedAccountMeta.StFeed)b().get(i));
+          localObject = SubscribeUtils.b((CertifiedAccountMeta.StFeed)N().get(i));
           ((CertifiedAccountMeta.StFeed)localObject).id.set(paramSubscribeFeedsEvent.mSingleFakeFeed.id.get());
           ((CertifiedAccountMeta.StFeed)localObject).createTime.set(paramSubscribeFeedsEvent.mSingleFakeFeed.createTime.get());
           ((CertifiedAccountMeta.StFeed)localObject).cover.url.set(paramSubscribeFeedsEvent.mSingleFakeFeed.cover.url.get());
-          a().post(new FakerFeedsAdapter.2(this, (CertifiedAccountMeta.StFeed)localObject, i));
+          M().post(new FakerFeedsAdapter.2(this, (CertifiedAccountMeta.StFeed)localObject, i));
         }
       }
     }
@@ -141,32 +117,56 @@ public abstract class FakerFeedsAdapter
         paramSubscribeFeedsEvent.mSingleFakeFeed.poster.icon.set(SubscribeGlobalInfo.a().icon.get());
         paramSubscribeFeedsEvent.mSingleFakeFeed.poster.nick.set(SubscribeGlobalInfo.a().nick.get());
       }
-      a().post(new FakerFeedsAdapter.1(this, paramSubscribeFeedsEvent));
+      M().post(new FakerFeedsAdapter.1(this, paramSubscribeFeedsEvent));
     }
   }
   
-  protected void a(int paramInt)
+  private int b(String paramString)
   {
-    if (ArrayUtils.a(paramInt, b())) {
-      return;
+    int i = 0;
+    while (i < N().size())
+    {
+      Object localObject = (CertifiedAccountMeta.StFeed)N().get(i);
+      if ((paramString.startsWith("fakeid_")) && (!((CertifiedAccountMeta.StFeed)localObject).id.get().startsWith("fakeid_")))
+      {
+        QLog.d("FakerFeedsAdapter", 2, "has none fakeFeeds");
+        break;
+      }
+      if (paramString.equals(((CertifiedAccountMeta.StFeed)localObject).id.get()))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("find fakeid:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("FakerFeedsAdapter", 2, ((StringBuilder)localObject).toString());
+        return i;
+      }
+      i += 1;
     }
-    b().remove(paramInt);
-    notifyItemRemoved(paramInt);
+    return -1;
   }
   
   protected void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (b() != null) {
-      a(b().indexOf(paramStFeed));
+    if (N() != null) {
+      b(N().indexOf(paramStFeed));
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    this.d = paramBoolean;
+    this.c = paramBoolean;
   }
   
-  protected void b()
+  protected void b(int paramInt)
+  {
+    if (ArrayUtils.isOutOfArrayIndex(paramInt, N())) {
+      return;
+    }
+    N().remove(paramInt);
+    notifyItemRemoved(paramInt);
+  }
+  
+  protected void d()
   {
     RecyclerView.LayoutManager localLayoutManager = this.a;
     if ((localLayoutManager instanceof StaggeredGridLayoutManager)) {
@@ -174,18 +174,18 @@ public abstract class FakerFeedsAdapter
     }
   }
   
-  public void c()
+  public boolean e()
   {
-    if (c())
-    {
-      this.c = true;
-      QzoneIPCModule.getInstance().getCertifiedAccountTaskList();
-    }
+    return this.c;
   }
   
-  public boolean c()
+  public void f()
   {
-    return this.d;
+    if (e())
+    {
+      this.b = true;
+      QzoneIPCModule.getInstance().getCertifiedAccountTaskList();
+    }
   }
   
   public ArrayList<Class> getEventClass()
@@ -200,7 +200,7 @@ public abstract class FakerFeedsAdapter
   {
     super.onAttachedToRecyclerView(paramRecyclerView);
     this.a = paramRecyclerView.getLayoutManager();
-    if (this.d)
+    if (this.c)
     {
       SimpleEventBus.getInstance().registerReceiver(this);
       QzoneIPCModule.getInstance().getCertifiedAccountTaskList();
@@ -210,7 +210,7 @@ public abstract class FakerFeedsAdapter
   public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
     super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.d) {
+    if (this.c) {
       SimpleEventBus.getInstance().unRegisterReceiver(this);
     }
   }

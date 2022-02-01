@@ -9,40 +9,29 @@ import org.json.JSONObject;
 public class QFileAppStorePromoteConfigBean
   implements IQFileAppStorePromoteConfigBean, IQStorageSafable<String>
 {
-  public String a;
-  public boolean a;
+  public boolean a = false;
   public String b = "";
-  public String c = "{}";
-  
-  public QFileAppStorePromoteConfigBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public String c = "";
+  public String d = "{}";
   
   public void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       QLog.e("QFileAppStorePromoteConfigBean<QFile>", 1, "onParse: but configContent is null!");
     }
-    this.c = paramString;
+    this.d = paramString;
     try
     {
       paramString = new JSONObject(paramString);
       if (paramString.has("actionSwitch")) {
-        this.jdField_a_of_type_Boolean = paramString.getBoolean("actionSwitch");
+        this.a = paramString.getBoolean("actionSwitch");
       }
       if (paramString.has("actionHint")) {
-        this.jdField_a_of_type_JavaLangString = paramString.getString("actionHint");
+        this.b = paramString.getString("actionHint");
       }
       if (paramString.has("actionYYBDownloadUrl"))
       {
-        this.b = paramString.getString("actionYYBDownloadUrl");
+        this.c = paramString.getString("actionYYBDownloadUrl");
         return;
       }
     }
@@ -54,17 +43,22 @@ public class QFileAppStorePromoteConfigBean
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteConfigBean
  * JD-Core Version:    0.7.0.1
  */

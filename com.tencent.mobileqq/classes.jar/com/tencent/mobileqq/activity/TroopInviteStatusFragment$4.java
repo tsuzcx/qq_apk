@@ -33,10 +33,10 @@ class TroopInviteStatusFragment$4
         paramStructMsg.append(paramInt);
         QLog.d("TroopInviteStatusFragment", 2, paramStructMsg.toString());
       }
-      TroopNotificationUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, "");
-      TroopNotificationUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      TroopNotificationUtils.a(this.a.l, paramString, "");
+      TroopNotificationUtils.c(this.a.m);
+      if ((this.a.x != null) && (this.a.x.isShowing())) {
+        this.a.x.dismiss();
       }
     }
     else
@@ -57,8 +57,8 @@ class TroopInviteStatusFragment$4
   
   public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((this.a.x != null) && (this.a.x.isShowing())) {
+      this.a.x.dismiss();
     }
     if (QLog.isColorLevel())
     {
@@ -67,18 +67,18 @@ class TroopInviteStatusFragment$4
       paramStructMsg.append(paramString1);
       QLog.e("TroopInviteStatusFragment", 2, paramStructMsg.toString());
     }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+    paramString1 = this.a.l;
     if (paramInt1 == 72) {
-      paramInt1 = 2131689981;
+      paramInt1 = 2131886623;
     } else {
-      paramInt1 = 2131689980;
+      paramInt1 = 2131886622;
     }
-    QQToast.a(paramString1, paramInt1, 1).a();
+    QQToast.makeText(paramString1, paramInt1, 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInviteStatusFragment.4
  * JD-Core Version:    0.7.0.1
  */

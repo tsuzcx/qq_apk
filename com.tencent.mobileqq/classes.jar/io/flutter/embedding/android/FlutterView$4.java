@@ -6,8 +6,6 @@ import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
 class FlutterView$4
   implements FlutterUiDisplayListener
 {
-  FlutterView$4(FlutterView paramFlutterView, FlutterRenderer paramFlutterRenderer, Runnable paramRunnable) {}
-  
   public void onFlutterUiDisplayed()
   {
     this.val$renderer.removeIsDisplayingFlutterUiListener(this);
@@ -19,7 +17,7 @@ class FlutterView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ class SelectMemberActivity$9
       this.a.removeFriendFromResultList(str);
       this.a.updateMultiAddState(paramResultRecord, false);
       this.a.setupDoneBtn();
-      int i = this.a.mInnerFrameManager.a();
+      int i = this.a.mInnerFrameManager.getCurrentPage();
       if ((i == 6) || (i == 7) || (i == 5) || (i == 4) || (i == 1) || (i == 0) || (i == 8) || (i == 9)) {
         ((SelectMemberInnerFrame)this.a.mInnerFrameManager.getCurrentView()).f();
       }
@@ -45,9 +45,9 @@ class SelectMemberActivity$9
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && ((this.a.lastInerFrame == 6) || (this.a.lastInerFrame == 7) || (this.a.lastInerFrame != this.a.mInnerFrameManager.a())))
+    if ((paramBoolean) && ((this.a.lastInerFrame == 6) || (this.a.lastInerFrame == 7) || (this.a.lastInerFrame != this.a.mInnerFrameManager.getCurrentPage())))
     {
-      ContactSearchFragment localContactSearchFragment = ((SelectMemberInnerFrame)this.a.mInnerFrameManager.getCurrentView()).a();
+      ContactSearchFragment localContactSearchFragment = ((SelectMemberInnerFrame)this.a.mInnerFrameManager.getCurrentView()).getContactSearchFragment();
       if (localContactSearchFragment != null)
       {
         localContactSearchFragment.d(this.a.mFilterRobot);
@@ -56,7 +56,7 @@ class SelectMemberActivity$9
         if (this.a.contactSearchFragment != null) {
           localFragmentTransaction.remove(this.a.contactSearchFragment);
         }
-        localFragmentTransaction.add(2131376483, localContactSearchFragment);
+        localFragmentTransaction.add(2131444724, localContactSearchFragment);
         localFragmentTransaction.commitAllowingStateLoss();
         this.a.contactSearchFragment = localContactSearchFragment;
       }
@@ -71,7 +71,7 @@ class SelectMemberActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.SelectMemberActivity.9
  * JD-Core Version:    0.7.0.1
  */

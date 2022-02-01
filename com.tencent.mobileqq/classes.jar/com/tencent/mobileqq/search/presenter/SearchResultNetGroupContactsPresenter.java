@@ -12,12 +12,12 @@ public class SearchResultNetGroupContactsPresenter
   public void a(ISearchResultGroupModel paramISearchResultGroupModel, ISearchResultGroupView paramISearchResultGroupView)
   {
     paramISearchResultGroupModel = (GroupNetSearchModelPeople)paramISearchResultGroupModel;
-    ((SearchResultGroupView)paramISearchResultGroupView).a();
+    ((SearchResultGroupView)paramISearchResultGroupView).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchResultNetGroupContactsPresenter
  * JD-Core Version:    0.7.0.1
  */

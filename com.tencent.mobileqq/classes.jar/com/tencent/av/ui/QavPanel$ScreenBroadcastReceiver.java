@@ -18,12 +18,12 @@ class QavPanel$ScreenBroadcastReceiver
       }
       if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
       {
-        if ((this.a.a != null) && (this.a.b) && (this.a.a.getVisibility() == 0)) {
-          this.a.a.f();
+        if ((this.a.f != null) && (this.a.T) && (this.a.f.getVisibility() == 0)) {
+          this.a.f.f();
         }
       }
-      else if (("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) && (this.a.a != null)) {
-        this.a.a.g();
+      else if (("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) && (this.a.f != null)) {
+        this.a.f.g();
       }
     }
   }

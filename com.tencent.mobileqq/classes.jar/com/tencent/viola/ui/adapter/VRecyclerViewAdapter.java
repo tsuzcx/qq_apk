@@ -13,6 +13,8 @@ import com.tencent.viola.core.ViolaDomManager;
 import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.core.ViolaSDKManager;
 import com.tencent.viola.ui.action.MethodAbsAdd;
+import com.tencent.viola.ui.baseComponent.VComponent;
+import com.tencent.viola.ui.baseComponent.VComponentContainer;
 import com.tencent.viola.ui.component.VCell;
 import com.tencent.viola.ui.component.VRecyclerList;
 import com.tencent.viola.ui.context.DOMActionContext;
@@ -195,6 +197,11 @@ public class VRecyclerViewAdapter
     if (paramVCell == null) {
       return;
     }
+    if (ViolaUtils.isBindDataOpmOpen())
+    {
+      bindData(paramVCell);
+      return;
+    }
     paramVCell.applyLayout();
     paramVCell.applyEvents();
     paramVCell.bindData();
@@ -216,17 +223,30 @@ public class VRecyclerViewAdapter
   
   private VCell onCreateVCell(DomObject paramDomObject)
   {
+    VCell localVCell = null;
     if (paramDomObject == null) {
       return null;
     }
     paramDomObject.lazy(false);
-    paramDomObject = (VCell)MethodAbsAdd.generateComponentTree(this.mDomActionContext, paramDomObject, this.mRecyclerList);
-    if (paramDomObject != null)
+    Object localObject = MethodAbsAdd.generateComponentTree(this.mDomActionContext, paramDomObject, this.mRecyclerList);
+    if ((localObject instanceof VCell))
     {
-      paramDomObject.lazy(false);
-      if (paramDomObject.getHostView() == null) {
-        paramDomObject.createView();
+      localVCell = (VCell)localObject;
+      localVCell.lazy(false);
+      paramDomObject = localVCell;
+      if (localVCell.getHostView() == null)
+      {
+        localVCell.createView();
+        return localVCell;
       }
+    }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cell dom is not vcell, domType: ");
+      ((StringBuilder)localObject).append(paramDomObject.getType());
+      ViolaLogUtils.e("VRecyclerViewAdapter", ((StringBuilder)localObject).toString());
+      paramDomObject = localVCell;
     }
     return paramDomObject;
   }
@@ -244,6 +264,35 @@ public class VRecyclerViewAdapter
     }
     if (this.mHasFooter) {
       this.mLastDataSize -= 1;
+    }
+  }
+  
+  public void bindCell(VCell paramVCell)
+  {
+    if (paramVCell == null) {
+      return;
+    }
+    bindData(paramVCell);
+  }
+  
+  public void bindData(VComponent paramVComponent)
+  {
+    if (paramVComponent == null) {
+      return;
+    }
+    paramVComponent.applyLayoutWithoutRecurse();
+    paramVComponent.applyEventsWithoutRecurse();
+    paramVComponent.bindDataWithoutRecurse();
+    if ((paramVComponent instanceof VComponentContainer))
+    {
+      paramVComponent = (VComponentContainer)paramVComponent;
+      int j = paramVComponent.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        bindData(paramVComponent.getChild(i));
+        i += 1;
+      }
     }
   }
   
@@ -377,10 +426,11 @@ public class VRecyclerViewAdapter
       doNotifyItemDeleteWithAnim(i);
       return;
     }
-    if (i != -1) {
+    if (i != -1)
+    {
       this.mDataList.remove(paramDomObject);
+      notifyItemRemoved(i);
     }
-    notifyItemRemoved(i);
   }
   
   public void notifyWhenRecyclerListReuse(List<DomObject> paramList)
@@ -431,7 +481,9 @@ public class VRecyclerViewAdapter
       }
       this.mCurrentVisPos.put(paramInt, paramInt);
       paramVH.position = paramInt;
-      fixBg(paramVH.itemView);
+      if (!ViolaUtils.isBindDataOpmOpen()) {
+        fixBg(paramVH.itemView);
+      }
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, paramInt, getItemId(paramInt));
   }
@@ -441,6 +493,9 @@ public class VRecyclerViewAdapter
     RecyclerView.LayoutParams localLayoutParams = new RecyclerView.LayoutParams(-2, -2);
     paramViewGroup = new FrameLayout(paramViewGroup.getContext());
     paramViewGroup.setLayoutParams(localLayoutParams);
+    if (ViolaUtils.isBindDataOpmOpen()) {
+      fixBg(paramViewGroup);
+    }
     ViolaLogUtils.d("VRecyclerViewAdapter", "onCreateViewHolder");
     return new VRecyclerViewAdapter.VH(this, paramViewGroup);
   }
@@ -474,7 +529,7 @@ public class VRecyclerViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.viola.ui.adapter.VRecyclerViewAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,8 @@ class OpenDataCommonJsPlugin$16
     try
     {
       paramDialogInterface.dismiss();
-      OpenDataCommonJsPlugin.access$1000(this.jdField_a_of_type_ComTencentQqminiSdkPluginsOpenDataCommonJsPlugin, OpenDataCommonJsPlugin.access$1300(this.jdField_a_of_type_ComTencentQqminiSdkPluginsOpenDataCommonJsPlugin), "share_modifyFriendInteractiveStorage", "success", 1, null);
-      OpenDataCommonJsPlugin.access$1400(this.jdField_a_of_type_ComTencentQqminiSdkPluginsOpenDataCommonJsPlugin, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.f, this.g, this.jdField_a_of_type_JavaLangBoolean, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent, this.h, this.i, this.jdField_b_of_type_Int);
+      OpenDataCommonJsPlugin.access$1000(this.n, OpenDataCommonJsPlugin.access$1300(this.n), "share_modifyFriendInteractiveStorage", "success", 1, null);
+      OpenDataCommonJsPlugin.access$1400(this.n, this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m);
       return;
     }
     catch (Throwable paramDialogInterface)
@@ -26,13 +26,13 @@ class OpenDataCommonJsPlugin$16
       localStringBuilder.append("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error ");
       localStringBuilder.append(paramDialogInterface);
       QMLog.e("OpenDataCommonJsPlugin", localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail(paramDialogInterface.getMessage());
+      this.j.fail(paramDialogInterface.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.16
  * JD-Core Version:    0.7.0.1
  */

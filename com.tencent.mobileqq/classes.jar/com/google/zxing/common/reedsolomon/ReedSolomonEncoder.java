@@ -5,16 +5,16 @@ import java.util.List;
 
 public final class ReedSolomonEncoder
 {
-  private final GenericGF jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF;
-  private final List<GenericGFPoly> jdField_a_of_type_JavaUtilList;
+  private final GenericGF a;
+  private final List<GenericGFPoly> b;
   
   public ReedSolomonEncoder(GenericGF paramGenericGF)
   {
-    if (GenericGF.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF.equals(paramGenericGF))
+    if (GenericGF.a.equals(paramGenericGF))
     {
-      this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF = paramGenericGF;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilList.add(new GenericGFPoly(paramGenericGF, new int[] { 1 }));
+      this.a = paramGenericGF;
+      this.b = new ArrayList();
+      this.b.add(new GenericGFPoly(paramGenericGF, new int[] { 1 }));
       return;
     }
     throw new IllegalArgumentException("Only QR Code is supported at this time");
@@ -22,20 +22,20 @@ public final class ReedSolomonEncoder
   
   private GenericGFPoly a(int paramInt)
   {
-    if (paramInt >= this.jdField_a_of_type_JavaUtilList.size())
+    if (paramInt >= this.b.size())
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilList;
+      Object localObject = this.b;
       localObject = (GenericGFPoly)((List)localObject).get(((List)localObject).size() - 1);
-      int i = this.jdField_a_of_type_JavaUtilList.size();
+      int i = this.b.size();
       while (i <= paramInt)
       {
-        GenericGF localGenericGF = this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF;
+        GenericGF localGenericGF = this.a;
         localObject = ((GenericGFPoly)localObject).b(new GenericGFPoly(localGenericGF, new int[] { 1, localGenericGF.a(i - 1) }));
-        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        this.b.add(localObject);
         i += 1;
       }
     }
-    return (GenericGFPoly)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return (GenericGFPoly)this.b.get(paramInt);
   }
   
   public void a(int[] paramArrayOfInt, int paramInt)
@@ -48,7 +48,7 @@ public final class ReedSolomonEncoder
         Object localObject = a(paramInt);
         int[] arrayOfInt = new int[i];
         System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, i);
-        localObject = new GenericGFPoly(this.jdField_a_of_type_ComGoogleZxingCommonReedsolomonGenericGF, arrayOfInt).a(paramInt, 1).a(localObject)[1].a();
+        localObject = new GenericGFPoly(this.a, arrayOfInt).a(paramInt, 1).c(localObject)[1].a();
         int j = paramInt - localObject.length;
         paramInt = 0;
         while (paramInt < j)
@@ -70,7 +70,7 @@ public final class ReedSolomonEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.zxing.common.reedsolomon.ReedSolomonEncoder
  * JD-Core Version:    0.7.0.1
  */

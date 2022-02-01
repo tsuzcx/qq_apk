@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/qcircle_skin_color_bg_default" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.fragments.QCircleBlockContainer android:id="@id/n1_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/d1e" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/p48" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/qcircle_skin_btn_newpost" android:scaleType="fitCenter" />
+    <ViewStub android:id="@id/p79" android:layout="@layout/cxj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/p_q" android:visibility="gone" android:layout="@layout/cyi" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/myk" android:visibility="gone" android:layout="@layout/cw5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView android:id="@id/pb9" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

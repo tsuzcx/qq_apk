@@ -15,44 +15,44 @@ class LiteActivity$24
 {
   LiteActivity$24(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ItemHolder paramItemHolder, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     if (paramInt == 0) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
+      if (this.a.getGroupType() == -1000)
       {
-        paramView = this.jdField_a_of_type_ComDatalineUtilItemHolder.a().jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramView, this.jdField_a_of_type_ComDatalineUtilItemHolder.a().jdField_a_of_type_Long, -1);
+        paramView = this.b.f().c;
+        this.d.a(paramView, this.b.f().d, -1);
       }
       else
       {
         DataLineMsgRecord localDataLineMsgRecord;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000)
+        if (this.a.getGroupType() == -2000)
         {
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          this.a.setPaused(false);
+          paramView = this.a.values().iterator();
           while (paramView.hasNext())
           {
             localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
             if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
-              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 0);
+              this.d.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 0);
             }
           }
         }
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005) || (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2009))
+        if ((this.a.getGroupType() == -2005) || (this.a.getGroupType() == -2009))
         {
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
+          this.a.setPaused(false);
+          paramView = this.a.values().iterator();
           while (paramView.hasNext())
           {
             localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
             if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
-              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 2);
+              this.d.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 2);
             }
           }
         }
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    this.c.cancel();
   }
 }
 

@@ -17,19 +17,19 @@ import com.tencent.qphone.base.util.QLog;
 public class RedDotImageView
   extends ImageView
 {
-  protected float a;
-  protected int a;
-  protected Paint a;
-  protected Drawable a;
-  private boolean a;
-  private float jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
-  protected int b;
-  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int c = 0;
-  private int d = 13;
-  private int e = 13;
+  protected Drawable a = null;
+  protected int b = 0;
+  protected Paint c = null;
+  protected int d = 0;
+  protected float e = 0.0F;
   private int f = 0;
+  private int g = 13;
+  private int h = 13;
+  private Drawable i = null;
+  private boolean j = false;
+  private boolean k = false;
+  private int l = 0;
+  private float m = getResources().getDisplayMetrics().density;
   
   public RedDotImageView(Context paramContext)
   {
@@ -39,40 +39,28 @@ public class RedDotImageView
   public RedDotImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
   }
   
   public RedDotImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (this.j != paramBoolean)
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850766);
+      this.j = paramBoolean;
+      if ((this.j) && (this.i == null)) {
+        this.i = getResources().getDrawable(2130852588);
       }
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(" showRedDot() : ");
-        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(this.d);
         localStringBuilder.append(",isShownBorder");
-        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        localStringBuilder.append(this.k);
         localStringBuilder.append("，this = ");
         localStringBuilder.append(this);
         QLog.d("Q.recent", 2, localStringBuilder.toString());
@@ -83,7 +71,7 @@ public class RedDotImageView
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.j;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -94,106 +82,106 @@ public class RedDotImageView
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append(" onDraw() : ");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject).append(this.d);
       ((StringBuilder)localObject).append(",isShownBorder");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append("，this = ");
       ((StringBuilder)localObject).append(this);
       QLog.d("Q.recent", 2, ((StringBuilder)localObject).toString());
     }
-    int i;
+    int n;
     double d1;
     double d2;
-    int j;
-    if (this.jdField_a_of_type_Boolean)
+    int i1;
+    if (this.j)
     {
-      localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+      localObject = this.i;
       if (localObject != null)
       {
         ((Drawable)localObject).setState(getDrawableState());
-        i = this.c;
+        n = this.f;
         double d3;
-        if (i == 0)
+        if (n == 0)
         {
           d1 = getWidth();
           Double.isNaN(d1);
-          d2 = this.jdField_b_of_type_Float * this.d;
+          d2 = this.m * this.g;
           Double.isNaN(d2);
-          d3 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+          d3 = this.i.getIntrinsicWidth();
           Double.isNaN(d3);
-          i = (int)Math.ceil(d1 * 0.5D + d2 - d3 * 0.5D);
+          n = (int)Math.ceil(d1 * 0.5D + d2 - d3 * 0.5D);
           d1 = getHeight();
           Double.isNaN(d1);
-          d2 = this.jdField_b_of_type_Float * this.e;
+          d2 = this.m * this.h;
           Double.isNaN(d2);
-          d3 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+          d3 = this.i.getIntrinsicHeight();
           Double.isNaN(d3);
         }
         for (d1 = Math.ceil(d1 * 0.5D - d2 - d3 * 0.5D);; d1 = Math.ceil(d1 - d2 * 0.5D))
         {
-          j = (int)d1;
+          i1 = (int)d1;
           break label386;
-          if (i != 1) {
+          if (n != 1) {
             break;
           }
-          d1 = getWidth() + this.jdField_b_of_type_Float * this.d;
-          d2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+          d1 = getWidth() + this.m * this.g;
+          d2 = this.i.getIntrinsicWidth();
           Double.isNaN(d2);
           Double.isNaN(d1);
-          i = (int)Math.ceil(d1 - d2 * 0.5D);
-          d1 = -this.jdField_b_of_type_Float * this.e;
-          d2 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+          n = (int)Math.ceil(d1 - d2 * 0.5D);
+          d1 = -this.m * this.h;
+          d2 = this.i.getIntrinsicHeight();
           Double.isNaN(d2);
           Double.isNaN(d1);
         }
-        i = 0;
-        j = 0;
+        n = 0;
+        i1 = 0;
         label386:
-        localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-        ((Drawable)localObject).setBounds(i, j, ((Drawable)localObject).getIntrinsicWidth() + i, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() + j);
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+        localObject = this.i;
+        ((Drawable)localObject).setBounds(n, i1, ((Drawable)localObject).getIntrinsicWidth() + n, this.i.getIntrinsicHeight() + i1);
+        this.i.draw(paramCanvas);
       }
     }
-    if (this.jdField_b_of_type_Int > 0)
+    if (this.d > 0)
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localObject = this.a;
       if (localObject != null)
       {
         ((Drawable)localObject).setState(getDrawableState());
-        i = getWidth();
-        j = this.jdField_a_of_type_Int;
-        if (i > j * 2) {
-          d1 = Math.ceil(i / 2);
+        n = getWidth();
+        i1 = this.b;
+        if (n > i1 * 2) {
+          d1 = Math.ceil(n / 2);
         } else {
-          d1 = Math.ceil(i - j - this.f);
+          d1 = Math.ceil(n - i1 - this.l);
         }
-        i = (int)d1;
-        localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        j = this.jdField_a_of_type_Int;
-        ((Drawable)localObject).setBounds(i, 0, i + j, j);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        j = (int)Math.ceil(this.jdField_a_of_type_AndroidGraphicsPaint.measureText(String.valueOf(this.jdField_b_of_type_Int)));
-        int k = this.jdField_b_of_type_Int;
-        d1 = i;
-        i = this.jdField_a_of_type_Int;
-        d2 = i - j;
+        n = (int)d1;
+        localObject = this.a;
+        i1 = this.b;
+        ((Drawable)localObject).setBounds(n, 0, n + i1, i1);
+        this.a.draw(paramCanvas);
+        i1 = (int)Math.ceil(this.c.measureText(String.valueOf(this.d)));
+        int i2 = this.d;
+        d1 = n;
+        n = this.b;
+        d2 = n - i1;
         Double.isNaN(d2);
         Double.isNaN(d1);
         float f1 = (int)(d1 + d2 * 0.5D);
-        d1 = i;
-        d2 = this.jdField_a_of_type_Float;
+        d1 = n;
+        d2 = this.e;
         Double.isNaN(d2);
         Double.isNaN(d1);
-        paramCanvas.drawText(String.valueOf(k), f1, (int)(d1 - d2 * 0.5D), this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawText(String.valueOf(i2), f1, (int)(d1 - d2 * 0.5D), this.c);
       }
     }
   }
   
   public void setRedDotBase(int paramInt)
   {
-    if (this.c != paramInt)
+    if (this.f != paramInt)
     {
-      this.c = paramInt;
+      this.f = paramInt;
       postInvalidate();
     }
   }
@@ -201,31 +189,31 @@ public class RedDotImageView
   public void setRedDotDrawable(Drawable paramDrawable)
   {
     if (paramDrawable != null) {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      this.i = paramDrawable;
     }
   }
   
   public void setReddotXOffsetDp(int paramInt)
   {
-    if (paramInt != this.d)
+    if (paramInt != this.g)
     {
-      this.d = paramInt;
+      this.g = paramInt;
       postInvalidate();
     }
   }
   
   public void setReddotYOffsetDp(int paramInt)
   {
-    if (paramInt != this.e)
+    if (paramInt != this.h)
     {
-      this.e = paramInt;
+      this.h = paramInt;
       postInvalidate();
     }
   }
   
   public void setShowBorder(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.k = paramBoolean;
   }
   
   public void setUnreadNumber(int paramInt)
@@ -237,40 +225,40 @@ public class RedDotImageView
       ((StringBuilder)localObject).append(" setUnreadNumber() : ");
       ((StringBuilder)localObject).append(paramInt);
       ((StringBuilder)localObject).append(",isShownBorder");
-      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.k);
       ((StringBuilder)localObject).append("，this = ");
       ((StringBuilder)localObject).append(this);
       QLog.d("Q.recent", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramInt > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
+    if ((paramInt > 0) && (this.a == null))
     {
-      float f1 = this.jdField_b_of_type_Float;
-      this.jdField_a_of_type_Int = ((int)(20.0F * f1));
-      this.f = ((int)(f1 * 6.0F));
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      float f1 = this.m;
+      this.b = ((int)(20.0F * f1));
+      this.l = ((int)(f1 * 6.0F));
+      this.c = new Paint();
+      this.c.setAntiAlias(true);
+      this.c.setColor(-1);
       if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1509949441);
+        this.c.setColor(-1509949441);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float * 12.0F);
+      this.c.setStyle(Paint.Style.FILL);
+      this.c.setTextSize(this.m * 12.0F);
       localObject = new Paint.FontMetrics();
-      this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics((Paint.FontMetrics)localObject);
-      this.jdField_a_of_type_Float = Math.abs(((Paint.FontMetrics)localObject).ascent);
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845865);
+      this.c.getFontMetrics((Paint.FontMetrics)localObject);
+      this.e = Math.abs(((Paint.FontMetrics)localObject).ascent);
+      if (this.k) {
+        this.a = getResources().getDrawable(2130847335);
       } else {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850140);
+        this.a = getResources().getDrawable(2130851921);
       }
     }
-    this.jdField_b_of_type_Int = paramInt;
+    this.d = paramInt;
     postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotImageView
  * JD-Core Version:    0.7.0.1
  */

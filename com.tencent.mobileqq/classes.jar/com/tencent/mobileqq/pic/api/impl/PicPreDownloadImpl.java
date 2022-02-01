@@ -34,27 +34,27 @@ public class PicPreDownloadImpl
   
   public IPicPreDownload.ConfigInfo getConfigs()
   {
-    return this.picPreDownloader.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.a();
+    return this.picPreDownloader.a.f();
   }
   
   public HashMap<String, String> getDebugPreDownloadReportInfo()
   {
-    return this.picPreDownloader.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.a();
+    return this.picPreDownloader.a.i();
   }
   
   public boolean getPreDownSwitch()
   {
-    return BaseStrategy.jdField_a_of_type_Boolean;
+    return BaseStrategy.d;
   }
   
   public void increaseTroopCountWhenEnterAIO(String paramString)
   {
-    this.picPreDownloader.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.b(paramString);
+    this.picPreDownloader.a.c(paramString);
   }
   
   public boolean isScreenOn()
   {
-    return PicPreDownloader.jdField_a_of_type_Boolean;
+    return PicPreDownloader.b;
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -73,7 +73,7 @@ public class PicPreDownloadImpl
   public void payPicFlow(MessageForPic paramMessageForPic)
   {
     this.picStatisticsManager.c(paramMessageForPic);
-    this.picPreDownloader.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.b(paramMessageForPic, paramMessageForPic.size);
+    this.picPreDownloader.a.b(paramMessageForPic, paramMessageForPic.size);
     this.picPreDownloader.d();
   }
   
@@ -104,12 +104,12 @@ public class PicPreDownloadImpl
   
   public void updateConfigs(IPicPreDownload.ConfigInfo paramConfigInfo)
   {
-    this.picPreDownloader.jdField_a_of_type_ComTencentMobileqqPicPreDownloadStrategyBeta.a(paramConfigInfo);
+    this.picPreDownloader.a.a(paramConfigInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pic.api.impl.PicPreDownloadImpl
  * JD-Core Version:    0.7.0.1
  */

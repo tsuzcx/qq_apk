@@ -21,7 +21,21 @@ public final class YYBDownloadEngine
 {
   public static final YYBDownloadEngine a = new YYBDownloadEngine();
   
-  private final Bundle a(ADVideoAppDownloadData paramADVideoAppDownloadData)
+  private final String a(DownloadInfo paramDownloadInfo)
+  {
+    paramDownloadInfo = DownloadManagerV2.a().g(paramDownloadInfo.d);
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.mState == 4)) {
+      return paramDownloadInfo.mSavePath;
+    }
+    return null;
+  }
+  
+  private final boolean c(ADVideoAppDownloadData paramADVideoAppDownloadData)
+  {
+    return (TextUtils.isEmpty((CharSequence)paramADVideoAppDownloadData.c)) && (!TextUtils.isEmpty((CharSequence)paramADVideoAppDownloadData.b));
+  }
+  
+  private final Bundle d(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
     if (paramADVideoAppDownloadData == null) {
       return new Bundle();
@@ -43,22 +57,8 @@ public final class YYBDownloadEngine
     localStringBuilder.append("_");
     localStringBuilder.append(GlobalUtil.calcMD5AsString(paramADVideoAppDownloadData.c));
     localBundle.putString("sendTime", localStringBuilder.toString());
-    localBundle.putString(DownloadConstants.i, paramADVideoAppDownloadData.f);
+    localBundle.putString(DownloadConstants.i, paramADVideoAppDownloadData.h);
     return localBundle;
-  }
-  
-  private final String a(DownloadInfo paramDownloadInfo)
-  {
-    paramDownloadInfo = DownloadManagerV2.a().a(paramDownloadInfo.d);
-    if ((paramDownloadInfo != null) && (paramDownloadInfo.mState == 4)) {
-      return paramDownloadInfo.mSavePath;
-    }
-    return null;
-  }
-  
-  private final boolean c(ADVideoAppDownloadData paramADVideoAppDownloadData)
-  {
-    return (TextUtils.isEmpty((CharSequence)paramADVideoAppDownloadData.c)) && (!TextUtils.isEmpty((CharSequence)paramADVideoAppDownloadData.b));
   }
   
   public void a(@Nullable RIJDownloadView paramRIJDownloadView, @Nullable ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -98,7 +98,7 @@ public final class YYBDownloadEngine
     }
     if (localObject2 != null)
     {
-      Object localObject4 = ((DownloadInfo)localObject2).l;
+      Object localObject4 = ((DownloadInfo)localObject2).q;
       localObject1 = localObject4;
       if (TextUtils.isEmpty((CharSequence)localObject4)) {
         localObject1 = a((DownloadInfo)localObject2);
@@ -141,12 +141,12 @@ public final class YYBDownloadEngine
       paramADVideoAppDownloadData = null;
     }
     paramADVideoAppDownloadData = localDownloadManagerV2.b(paramADVideoAppDownloadData);
-    return DownloadManagerV2.a().a(paramADVideoAppDownloadData);
+    return DownloadManagerV2.a().d(paramADVideoAppDownloadData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.engine.YYBDownloadEngine
  * JD-Core Version:    0.7.0.1
  */

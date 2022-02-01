@@ -19,20 +19,20 @@ class VipProfileCardPreviewActivity$8
       if (paramInt != 1002) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+      this.b.q();
+      paramVarArgs = this.b.y.obtainMessage(24, b());
+      this.b.y.sendMessage(paramVarArgs);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
+    this.b.q();
     if (a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
+      this.b.a(this.a, (UpsImageUploadResult)a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.8
  * JD-Core Version:    0.7.0.1
  */

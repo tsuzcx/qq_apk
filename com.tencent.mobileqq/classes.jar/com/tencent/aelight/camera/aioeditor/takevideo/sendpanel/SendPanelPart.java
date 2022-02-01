@@ -35,40 +35,31 @@ public class SendPanelPart
   extends EditVideoPart
   implements View.OnClickListener, StoryMediaEditNotifier.IEditListener, IHeaderUpdateListener, IPanelDataListener, ISlidePanelListener
 {
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private SendPanelAdapter jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter;
-  private SlideBottomPanel jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  public boolean a;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private View jdField_c_of_type_AndroidViewView;
-  private volatile boolean jdField_c_of_type_Boolean = false;
+  public boolean a = false;
+  private View b;
+  private SlideBottomPanel c;
   private View d;
+  private XListView e;
+  private View f;
+  private View g;
+  private ImageView h;
+  private SendPanelAdapter i;
+  private Handler j;
+  private ObjectAnimator k;
+  private boolean l = false;
+  private volatile boolean m = false;
   
   public SendPanelPart(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private View a()
-  {
-    View localView = new View(a());
-    localView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(130.0F, a())));
-    localView.setBackgroundResource(2130850703);
-    return localView;
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramInt1, paramInt2);
-    this.jdField_c_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
+    this.f.startAnimation(localAlphaAnimation);
     localAlphaAnimation.setDuration(500L);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(paramInt3);
+    this.f.setVisibility(paramInt3);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -113,99 +104,101 @@ public class SendPanelPart
     }
   }
   
-  private void h()
+  private void i()
   {
-    this.jdField_a_of_type_AndroidViewView = ((ViewStub)a(2064122611)).inflate();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel = ((SlideBottomPanel)this.jdField_a_of_type_AndroidViewView.findViewById(2131377660));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365203);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370110));
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377234);
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131363349);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379075));
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(a());
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter = new SendPanelAdapter(a(), this);
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter.a(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.setSlidePanelListener(this);
-    this.jdField_c_of_type_AndroidViewView.findViewById(2131377187).setOnClickListener(this);
-  }
-  
-  private void j()
-  {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    SendPanelManager.a().a(this);
-    List localList = SendPanelManager.a().a();
-    if ((localList != null) && (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter != null))
-    {
-      b(localList);
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter.a(localList);
-    }
-    StoryMediaEditNotifier.a().a(this);
+    this.b = ((ViewStub)d(2063991422)).inflate();
+    this.c = ((SlideBottomPanel)this.b.findViewById(2131446082));
+    this.d = this.b.findViewById(2131431368);
+    this.e = ((XListView)this.b.findViewById(2131437272));
+    this.f = this.b.findViewById(2131445620);
+    this.g = this.b.findViewById(2131429234);
+    this.h = ((ImageView)this.b.findViewById(2131447802));
+    this.e.addFooterView(l());
+    this.i = new SendPanelAdapter(u(), this);
+    this.i.a(this);
+    this.e.setAdapter(this.i);
+    this.c.setSlidePanelListener(this);
+    this.f.findViewById(2131445568).setOnClickListener(this);
   }
   
   private void k()
   {
-    Object localObject = this.jdField_c_of_type_AndroidViewView;
-    if ((localObject != null) && (((View)localObject).getVisibility() == 8) && (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.b()))
+    this.j = new Handler(Looper.getMainLooper());
+    SendPanelManager.a().a(this);
+    List localList = SendPanelManager.a().b();
+    if ((localList != null) && (this.i != null))
     {
-      localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter;
+      b(localList);
+      this.i.a(localList);
+    }
+    StoryMediaEditNotifier.b().a(this);
+  }
+  
+  private View l()
+  {
+    View localView = new View(u());
+    localView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.b(130.0F, s())));
+    localView.setBackgroundResource(2130852507);
+    return localView;
+  }
+  
+  private void m()
+  {
+    Object localObject = this.f;
+    if ((localObject != null) && (((View)localObject).getVisibility() == 8) && (this.c.h()))
+    {
+      localObject = this.i;
       if ((localObject != null) && (((SendPanelAdapter)localObject).a()))
       {
-        this.jdField_c_of_type_Boolean = true;
+        this.m = true;
         a(0, 1, 0);
-        CaptureReportUtil.b(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager);
+        CaptureReportUtil.b(this.t);
       }
     }
   }
   
-  private void l()
+  private void n()
   {
     PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofKeyframe(View.TRANSLATION_Y, new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.3F, 0.0F), Keyframe.ofFloat(0.45F, -80.0F), Keyframe.ofFloat(0.65F, 50.0F), Keyframe.ofFloat(0.8F, -30.0F), Keyframe.ofFloat(0.9F, 10.0F), Keyframe.ofFloat(1.0F, 0.0F) });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(this.jdField_b_of_type_AndroidViewView, new PropertyValuesHolder[] { localPropertyValuesHolder });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(1600L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setStartDelay(1000L);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(1);
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  @NonNull
-  public Context a()
-  {
-    return super.a();
+    this.k = ObjectAnimator.ofPropertyValuesHolder(this.d, new PropertyValuesHolder[] { localPropertyValuesHolder });
+    this.k.setDuration(1600L);
+    this.k.setStartDelay(1000L);
+    this.k.setRepeatCount(1);
+    this.k.start();
+    this.l = true;
   }
   
   public void a()
   {
     super.a();
-    h();
-    j();
+    i();
+    k();
   }
   
   public void a(int paramInt, SendPanelItemInfo paramSendPanelItemInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter;
+    Object localObject = this.i;
     if (localObject != null)
     {
       ((SendPanelAdapter)localObject).a(paramInt, paramSendPanelItemInfo);
-      localObject = this.jdField_a_of_type_ComTencentWidgetXListView;
+      localObject = this.e;
       if (localObject != null)
       {
-        int i = ((XListView)localObject).getFirstVisiblePosition();
-        int j = this.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition();
-        if ((paramInt >= i) && (paramInt <= j))
+        int n = ((XListView)localObject).getFirstVisiblePosition();
+        int i1 = this.e.getLastVisiblePosition();
+        if ((paramInt >= n) && (paramInt <= i1))
         {
-          localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt - i);
+          localObject = this.e.getChildAt(paramInt - n);
           if ((((View)localObject).getTag() instanceof SendPanelAdapter.SendPanelViewHolder))
           {
             localObject = (SendPanelAdapter.SendPanelViewHolder)((View)localObject).getTag();
-            ((SendPanelAdapter.SendPanelViewHolder)localObject).a = paramSendPanelItemInfo;
-            this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter.a(paramInt, (SendPanelAdapter.SendPanelViewHolder)localObject);
+            ((SendPanelAdapter.SendPanelViewHolder)localObject).d = paramSendPanelItemInfo;
+            this.i.a(paramInt, (SendPanelAdapter.SendPanelViewHolder)localObject);
           }
         }
       }
-      if (!this.jdField_c_of_type_Boolean) {
-        k();
+      if (!this.m) {
+        m();
       }
     }
   }
@@ -219,29 +212,29 @@ public class SendPanelPart
       }
       return;
     }
-    List localList = SendPanelManager.a().a();
-    int j;
-    int i;
+    List localList = SendPanelManager.a().b();
+    int i1;
+    int n;
     if ((localList != null) && (localList.size() > 0))
     {
-      j = localList.size();
-      i = 0;
+      i1 = localList.size();
+      n = 0;
     }
-    while (i < j)
+    while (n < i1)
     {
-      SendPanelItemInfo localSendPanelItemInfo = (SendPanelItemInfo)localList.get(i);
-      if ((!TextUtils.isEmpty(localSendPanelItemInfo.jdField_a_of_type_JavaLangString)) && (localSendPanelItemInfo.jdField_a_of_type_JavaLangString.equals(paramString1)) && (a(paramInt, localSendPanelItemInfo.jdField_a_of_type_Int)))
+      SendPanelItemInfo localSendPanelItemInfo = (SendPanelItemInfo)localList.get(n);
+      if ((!TextUtils.isEmpty(localSendPanelItemInfo.a)) && (localSendPanelItemInfo.a.equals(paramString1)) && (a(paramInt, localSendPanelItemInfo.d)))
       {
-        localSendPanelItemInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-        localSendPanelItemInfo.d = paramString2;
-        paramString1 = this.jdField_a_of_type_AndroidOsHandler;
+        localSendPanelItemInfo.h = paramBitmap;
+        localSendPanelItemInfo.g = paramString2;
+        paramString1 = this.j;
         if (paramString1 != null) {
-          paramString1.post(new SendPanelPart.2(this, i, localSendPanelItemInfo));
+          paramString1.post(new SendPanelPart.2(this, n, localSendPanelItemInfo));
         }
       }
       else
       {
-        i += 1;
+        n += 1;
         continue;
         if (QLog.isColorLevel()) {
           QLog.i("SendPanelPart", 4, "onUpdateIcon itemInfoList is empty");
@@ -252,7 +245,7 @@ public class SendPanelPart
   
   public void a(List<SendPanelItemInfo> paramList)
   {
-    SendPanelAdapter localSendPanelAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter;
+    SendPanelAdapter localSendPanelAdapter = this.i;
     if (localSendPanelAdapter != null) {
       localSendPanelAdapter.a(paramList);
     }
@@ -260,34 +253,34 @@ public class SendPanelPart
   
   public void a(boolean paramBoolean)
   {
-    SlideBottomPanel localSlideBottomPanel = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel;
+    SlideBottomPanel localSlideBottomPanel = this.c;
     if (localSlideBottomPanel != null) {
       if (paramBoolean)
       {
-        if (!localSlideBottomPanel.a()) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.c();
+        if (!localSlideBottomPanel.e()) {
+          this.c.c();
         }
       }
-      else if (localSlideBottomPanel.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetSlideBottomPanel.d();
+      else if (localSlideBottomPanel.e()) {
+        this.c.d();
       }
     }
   }
   
-  public boolean a()
+  public boolean au_()
   {
-    return super.a();
+    return super.au_();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter != null)
+    if (this.i != null)
     {
-      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      Handler localHandler = this.j;
       if (localHandler != null)
       {
         localHandler.post(new SendPanelPart.3(this));
-        this.jdField_c_of_type_Boolean = false;
+        this.m = false;
       }
     }
   }
@@ -296,93 +289,93 @@ public class SendPanelPart
   
   public void cancelAnimator()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.l)
     {
-      ObjectAnimator localObjectAnimator = this.jdField_a_of_type_AndroidAnimationObjectAnimator;
+      ObjectAnimator localObjectAnimator = this.k;
       if (localObjectAnimator != null)
       {
         localObjectAnimator.cancel();
-        this.jdField_b_of_type_Boolean = false;
+        this.l = false;
       }
     }
   }
   
   public void d()
   {
-    super.d();
-    if (SendPanelManager.a().jdField_a_of_type_Boolean)
-    {
-      SendPanelManager.a().jdField_a_of_type_Boolean = false;
-      l();
-      SendPanelManager.a().a(false);
+    SendPanelAdapter localSendPanelAdapter = this.i;
+    if (localSendPanelAdapter != null) {
+      localSendPanelAdapter.c();
     }
   }
   
   public void displayPanel()
   {
-    k();
-    View localView = this.d;
+    m();
+    View localView = this.g;
     if (localView != null) {
       localView.setVisibility(0);
     }
-    CaptureReportUtil.d(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager);
+    CaptureReportUtil.d(this.t);
   }
   
   public void displayPanelFinish()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.h;
     if (localImageView != null) {
-      localImageView.setBackgroundResource(2130850002);
+      localImageView.setBackgroundResource(2130851763);
     }
   }
   
   public void e()
   {
-    SendPanelAdapter localSendPanelAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter;
-    if (localSendPanelAdapter != null) {
-      localSendPanelAdapter.a();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    StoryMediaEditNotifier.a().b(this);
-    super.e();
-  }
-  
-  public void f()
-  {
-    SendPanelAdapter localSendPanelAdapter = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoSendpanelSendPanelAdapter;
-    if (localSendPanelAdapter != null) {
-      localSendPanelAdapter.b();
-    }
-  }
-  
-  public void fadeBackground(float paramFloat)
-  {
-    View localView = this.d;
-    if (localView != null)
-    {
-      localView.setVisibility(0);
-      this.d.setAlpha(paramFloat);
-    }
-  }
-  
-  public void g()
-  {
     if (QLog.isColorLevel()) {
       QLog.i("SendPanelPart", 4, "compositeFail");
     }
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.j;
     if (localHandler != null) {
       localHandler.post(new SendPanelPart.1(this));
     }
   }
   
+  public void f()
+  {
+    super.f();
+    if (SendPanelManager.a().a)
+    {
+      SendPanelManager.a().a = false;
+      n();
+      SendPanelManager.a().a(false);
+    }
+  }
+  
+  public void fadeBackground(float paramFloat)
+  {
+    View localView = this.g;
+    if (localView != null)
+    {
+      localView.setVisibility(0);
+      this.g.setAlpha(paramFloat);
+    }
+  }
+  
+  public void g()
+  {
+    SendPanelAdapter localSendPanelAdapter = this.i;
+    if (localSendPanelAdapter != null) {
+      localSendPanelAdapter.b();
+    }
+    this.m = false;
+    StoryMediaEditNotifier.b().b(this);
+    super.g();
+  }
+  
   public void hidePanel()
   {
-    View localView = this.jdField_c_of_type_AndroidViewView;
+    View localView = this.f;
     if ((localView != null) && (localView.getVisibility() == 0)) {
       a(1, 0, 8);
     }
-    localView = this.d;
+    localView = this.g;
     if (localView != null) {
       localView.setVisibility(8);
     }
@@ -390,28 +383,34 @@ public class SendPanelPart
   
   public void hidePanelFinish()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.h;
     if (localImageView != null) {
-      localImageView.setBackgroundResource(2130850001);
+      localImageView.setBackgroundResource(2130851762);
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131377187) {
+    if (paramView.getId() != 2131445568) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.a.i()) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.t.I.m()) {
+      this.a = true;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager.b();
-    CaptureReportUtil.a(this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoEditVideoPartManager);
+    this.t.b();
+    CaptureReportUtil.a(this.t);
     ((IAEBaseReportParam)QRoute.api(IAEBaseReportParam.class)).clearLatestPostMd5();
+  }
+  
+  @NonNull
+  public Context u()
+  {
+    return super.u();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.sendpanel.SendPanelPart
  * JD-Core Version:    0.7.0.1
  */

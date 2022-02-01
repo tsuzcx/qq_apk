@@ -14,14 +14,14 @@ class LiteActivity$12
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getIntExtra("forward_type", -1) == 11) {
-      ReportCenter.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.getAccount(), "", String.valueOf(this.jdField_a_of_type_Long), "1000", "52", "0", false);
+    if (this.b.getIntent().getIntExtra("forward_type", -1) == 11) {
+      ReportCenter.a().a(this.b.app.getAccount(), "", String.valueOf(this.a), "1000", "52", "0", false);
     }
     if (QLog.isColorLevel()) {
       QLog.i(LiteActivity.a, 2, "qbShowShareResultDialog stay");
     }
-    if (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().getBooleanExtra("MigSdkShareNotDone", false)) {
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.getIntent().putExtra("MigSdkShareNotDone", false);
+    if (this.b.getIntent().getBooleanExtra("MigSdkShareNotDone", false)) {
+      this.b.getIntent().putExtra("MigSdkShareNotDone", false);
     }
   }
 }

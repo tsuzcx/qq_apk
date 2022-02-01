@@ -90,7 +90,7 @@ public class VideoDependImpl
   {
     paramBitmap = ((IScanUtilApi)QRoute.api(IScanUtilApi.class)).decodeQQCodeFromBmp(paramBitmap, 3);
     if (paramBitmap != null) {
-      return new Pair(Boolean.valueOf(paramBitmap.d()), Boolean.valueOf(paramBitmap.c()));
+      return new Pair(Boolean.valueOf(paramBitmap.h()), Boolean.valueOf(paramBitmap.g()));
     }
     return new Pair(Boolean.valueOf(false), Boolean.valueOf(false));
   }
@@ -124,7 +124,7 @@ public class VideoDependImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.api.impl.VideoDependImpl
  * JD-Core Version:    0.7.0.1
  */

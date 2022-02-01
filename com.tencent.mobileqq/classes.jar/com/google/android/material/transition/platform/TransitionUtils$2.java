@@ -13,12 +13,12 @@ final class TransitionUtils$2
   @NonNull
   public CornerSize a(@NonNull CornerSize paramCornerSize1, @NonNull CornerSize paramCornerSize2)
   {
-    return new AbsoluteCornerSize(TransitionUtils.a(paramCornerSize1.a(this.jdField_a_of_type_AndroidGraphicsRectF), paramCornerSize2.a(this.jdField_b_of_type_AndroidGraphicsRectF), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c));
+    return new AbsoluteCornerSize(TransitionUtils.a(paramCornerSize1.a(this.a), paramCornerSize2.a(this.b), this.c, this.d, this.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.transition.platform.TransitionUtils.2
  * JD-Core Version:    0.7.0.1
  */

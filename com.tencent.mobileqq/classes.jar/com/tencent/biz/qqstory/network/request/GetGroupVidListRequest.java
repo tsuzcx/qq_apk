@@ -13,11 +13,16 @@ import com.tencent.mobileqq.pb.PBStringField;
 public class GetGroupVidListRequest
   extends NetworkRequest
 {
-  public static final String a = StoryApi.a("StorySvc.get_group_node_vid_list");
-  public String b;
-  public int c;
+  public static final String e = StoryApi.a("StorySvc.get_group_node_vid_list");
+  public String f;
+  public int g;
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public String a()
+  {
+    return e;
+  }
+  
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspGetGroupVidList localRspGetGroupVidList = new qqstory_service.RspGetGroupVidList();
     try
@@ -31,22 +36,17 @@ public class GetGroupVidListRequest
     return new GetGroupVidListResponse(localRspGetGroupVidList);
   }
   
-  public String a()
-  {
-    return a;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetGroupVidList localReqGetGroupVidList = new qqstory_service.ReqGetGroupVidList();
-    localReqGetGroupVidList.pull_type.set(this.c);
-    localReqGetGroupVidList.union_id.set(this.b);
+    localReqGetGroupVidList.pull_type.set(this.g);
+    localReqGetGroupVidList.union_id.set(this.f);
     return localReqGetGroupVidList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetGroupVidListRequest
  * JD-Core Version:    0.7.0.1
  */

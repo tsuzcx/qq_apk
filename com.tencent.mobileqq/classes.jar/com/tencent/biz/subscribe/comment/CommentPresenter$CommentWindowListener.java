@@ -2,9 +2,9 @@ package com.tencent.biz.subscribe.comment;
 
 public abstract interface CommentPresenter$CommentWindowListener
 {
-  public abstract void h();
+  public abstract void o();
   
-  public abstract void i();
+  public abstract void p();
 }
 
 

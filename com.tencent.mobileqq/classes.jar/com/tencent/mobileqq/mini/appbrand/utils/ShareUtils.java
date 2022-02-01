@@ -147,12 +147,12 @@ public class ShareUtils
   
   public static void startSharePicToWeChat(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    if (!WXShareHelper.a().a())
+    if (!WXShareHelper.a().b())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.2(paramActivity));
       return;
     }
-    if (!WXShareHelper.a().b())
+    if (!WXShareHelper.a().c())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.3(paramActivity));
       return;
@@ -198,12 +198,12 @@ public class ShareUtils
   
   public static void startShareToWeChat(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt, ApkgInfo paramApkgInfo)
   {
-    if (!WXShareHelper.a().a())
+    if (!WXShareHelper.a().b())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.4(paramActivity));
       return;
     }
-    if (!WXShareHelper.a().b())
+    if (!WXShareHelper.a().c())
     {
       ThreadManagerV2.getUIHandlerV2().post(new ShareUtils.5(paramActivity));
       return;
@@ -232,7 +232,7 @@ public class ShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.ShareUtils
  * JD-Core Version:    0.7.0.1
  */

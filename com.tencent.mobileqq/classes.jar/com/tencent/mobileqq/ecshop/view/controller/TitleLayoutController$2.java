@@ -14,13 +14,13 @@ final class TitleLayoutController$2
   
   public final void onClick(View paramView)
   {
-    this.a.a().finish();
+    this.a.c().finish();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ecshop.view.controller.TitleLayoutController.2
  * JD-Core Version:    0.7.0.1
  */

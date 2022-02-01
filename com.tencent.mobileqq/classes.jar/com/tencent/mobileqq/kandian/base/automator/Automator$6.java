@@ -7,24 +7,24 @@ class Automator$6
   
   public void run()
   {
-    this.a.c();
-    StepGroup localStepGroup = this.a.a();
+    this.a.f();
+    StepGroup localStepGroup = this.a.e();
     if ((localStepGroup instanceof AsyncSteps))
     {
-      ((AsyncSteps)localStepGroup).b();
+      ((AsyncSteps)localStepGroup).d();
       return;
     }
     if ((localStepGroup instanceof SyncSteps))
     {
-      ((SyncSteps)localStepGroup).b();
+      ((SyncSteps)localStepGroup).d();
       return;
     }
-    Automator.a(this.this$0);
+    Automator.c(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.automator.Automator.6
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ class QCallDetailActivity$3
   
   protected void a(boolean paramBoolean, Object paramObject)
   {
-    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
+    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.b(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000))
     {
       paramObject = this.a;
-      paramObject.a(QCallDetailActivity.a(paramObject));
+      paramObject.a(QCallDetailActivity.b(paramObject));
     }
   }
   
   protected void a(boolean paramBoolean, String paramString)
   {
-    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
+    if ((QCallDetailActivity.b(this.a) != null) && (QCallDetailActivity.b(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
       this.a.a(paramString);
     }
   }
@@ -41,16 +41,16 @@ class QCallDetailActivity$3
       ((StringBuilder)localObject).append(paramBoolean2);
       QLog.i("QCallDetailActivity", 2, ((StringBuilder)localObject).toString());
     }
-    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.b(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
     {
       localObject = paramString;
-      if (GroupIconHelper.a(paramString)) {
-        localObject = GroupIconHelper.b(paramString);
+      if (GroupIconHelper.i(paramString)) {
+        localObject = GroupIconHelper.h(paramString);
       }
-      if (QCallDetailActivity.a(this.a).equals(localObject))
+      if (QCallDetailActivity.b(this.a).equals(localObject))
       {
         paramString = this.a;
-        paramString.a(QCallDetailActivity.a(paramString));
+        paramString.a(QCallDetailActivity.b(paramString));
         if (QLog.isColorLevel()) {
           QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
         }
@@ -60,14 +60,14 @@ class QCallDetailActivity$3
   
   protected void b(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
+    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.b(this.a))) && (QCallDetailActivity.b(this.a).equals(paramString)) && (!this.a.isFinishing())) {
       this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallDetailActivity.3
  * JD-Core Version:    0.7.0.1
  */

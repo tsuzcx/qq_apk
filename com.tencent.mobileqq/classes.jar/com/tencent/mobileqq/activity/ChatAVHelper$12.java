@@ -11,16 +11,16 @@ final class ChatAVHelper$12
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.a)
+    if (this.a.e)
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.b;
       if (i == 2) {
         ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
       } else if ((i == 3) || (i == 4)) {
         ReportController.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
       }
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
+    paramDialogInterface = this.c;
     if (paramDialogInterface != null) {
       paramDialogInterface.a();
     }
@@ -28,7 +28,7 @@ final class ChatAVHelper$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.12
  * JD-Core Version:    0.7.0.1
  */

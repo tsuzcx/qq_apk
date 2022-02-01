@@ -3,8 +3,10 @@ package com.tencent.mtt.hippy.modules.nativemodules.clipboard;
 import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipboardManager;
+import android.content.Context;
 import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.mtt.hippy.HippyEngineContext;
+import com.tencent.mtt.hippy.HippyGlobalConfigs;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
 import com.tencent.mtt.hippy.modules.Promise;
@@ -14,7 +16,7 @@ import com.tencent.mtt.hippy.modules.nativemodules.HippyNativeModuleBase;
 public class ClipboardModule
   extends HippyNativeModuleBase
 {
-  private ClipboardManager a = null;
+  private ClipboardManager a = (ClipboardManager)this.mContext.getGlobalConfigs().getContext().getSystemService("clipboard");
   
   public ClipboardModule(HippyEngineContext paramHippyEngineContext)
   {
@@ -64,7 +66,7 @@ public class ClipboardModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.clipboard.ClipboardModule
  * JD-Core Version:    0.7.0.1
  */

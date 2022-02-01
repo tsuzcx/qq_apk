@@ -12,18 +12,18 @@ class QQVipFeedWedFragment$7
   
   public void run()
   {
-    if (QQVipFeedWedFragment.a(this.this$0) != null)
+    if (QQVipFeedWedFragment.d(this.this$0) != null)
     {
-      QVipPubAccountProocessor.c();
+      QVipPubAccountProocessor.e();
       String str = QVipPubAccountConfig.a();
       QQVipFeedWedFragment.c(this.this$0, SystemClock.elapsedRealtime());
-      QQVipFeedWedFragment.a(this.this$0).loadUrl(str);
+      QQVipFeedWedFragment.d(this.this$0).loadUrl(str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -2,40 +2,40 @@ package com.tencent.mobileqq.uftransfer.api;
 
 public class UFTTransferConfig
 {
-  private final UFTTransferConfig.DownloadConfig jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig$DownloadConfig = new UFTTransferConfig.DownloadConfig();
-  private final UFTTransferConfig.UploadConfig jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig$UploadConfig = new UFTTransferConfig.UploadConfig();
-  private final boolean jdField_a_of_type_Boolean;
+  private final boolean a;
+  private final UFTTransferConfig.UploadConfig b = new UFTTransferConfig.UploadConfig();
+  private final UFTTransferConfig.DownloadConfig c = new UFTTransferConfig.DownloadConfig();
   
   public UFTTransferConfig(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public UFTTransferConfig.UploadConfig a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig$UploadConfig;
+    return this.b;
   }
   
   public String toString()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.a)
     {
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("UFTTransferConfig{");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig$UploadConfig.toString());
+      localStringBuilder.append(this.b.toString());
       localStringBuilder.append("}");
       return localStringBuilder.toString();
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("UFTTransferConfig{");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqUftransferApiUFTTransferConfig$DownloadConfig.toString());
+    localStringBuilder.append(this.c.toString());
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.uftransfer.api.UFTTransferConfig
  * JD-Core Version:    0.7.0.1
  */

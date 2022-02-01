@@ -12,6 +12,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -24,48 +25,51 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class QFlutterFaceLoader
 {
-  private float jdField_a_of_type_Float;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QFlutterFaceLoader.1(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new QFlutterFaceLoader.4(this);
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  private MQLruCache<String, Bitmap> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(50);
-  private List<QFlutterFaceLoader.FaceObserver> jdField_a_of_type_JavaUtilList = new Vector();
-  private ConcurrentHashMap<Integer, ArrayList<String>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = new QFlutterFaceLoader.2(this);
-  private Handler jdField_b_of_type_AndroidOsHandler;
-  private MQLruCache<String, String> jdField_b_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(100);
-  private ConcurrentHashMap<Integer, ArrayList<String>> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Context a = BaseApplicationImpl.getContext();
+  private float b = this.a.getResources().getDisplayMetrics().density;
+  private List<QFlutterFaceLoader.FaceObserver> c = new Vector();
+  private HandlerThread d;
+  private Handler e;
+  private Handler f;
+  private Bitmap g;
+  private MQLruCache<String, Bitmap> h = new MQLruCache(50);
+  private MQLruCache<String, String> i = new MQLruCache(100);
+  private ConcurrentHashMap<Integer, ArrayList<String>> j = new ConcurrentHashMap();
+  private ConcurrentHashMap<Integer, ArrayList<String>> k = new ConcurrentHashMap();
+  private BroadcastReceiver l = new QFlutterFaceLoader.1(this);
+  private BroadcastReceiver m = new QFlutterFaceLoader.2(this);
+  private Handler.Callback n = new QFlutterFaceLoader.4(this);
   
-  public QFlutterFaceLoader(Context paramContext)
+  private QFlutterFaceLoader()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    c();
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("qflutter_qqface");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler();
+    d();
+    this.d = new HandlerThread("qflutter_qqface");
+    this.d.start();
+    this.e = new Handler(this.d.getLooper(), this.n);
+    this.f = new Handler();
   }
   
   private Bitmap a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
+    if (this.g == null) {
+      this.g = ImageUtil.k();
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return this.g;
+  }
+  
+  public static QFlutterFaceLoader a()
+  {
+    return QFlutterFaceLoader.SingleHolder.a;
   }
   
   private void a(int paramInt, String paramString)
   {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList2 = (ArrayList)this.j.get(Integer.valueOf(paramInt));
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localArrayList1);
+      this.j.put(Integer.valueOf(paramInt), localArrayList1);
     }
     if (!localArrayList1.contains(paramString)) {
       localArrayList1.add(paramString);
@@ -74,9 +78,9 @@ public class QFlutterFaceLoader
   
   private void a(DecodeRequest paramDecodeRequest, Bitmap paramBitmap, String paramString)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      this.jdField_b_of_type_AndroidOsHandler.post(new QFlutterFaceLoader.3(this, paramDecodeRequest, paramBitmap, paramString));
+      this.f.post(new QFlutterFaceLoader.3(this, paramDecodeRequest, paramBitmap, paramString));
       return;
     }
   }
@@ -99,10 +103,10 @@ public class QFlutterFaceLoader
         b(paramInt, str);
       }
       localObject = new Intent("com.tencent.qqhead.getheadreq");
-      ((Intent)localObject).setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
+      ((Intent)localObject).setPackage(this.a.getPackageName());
       ((Intent)localObject).putExtra("faceType", paramInt);
       ((Intent)localObject).putStringArrayListExtra("uinList", paramArrayList);
-      this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.qqhead.permission.getheadresp");
+      this.a.sendBroadcast((Intent)localObject, "com.tencent.qqhead.permission.getheadresp");
     }
   }
   
@@ -120,41 +124,32 @@ public class QFlutterFaceLoader
       while (paramList.hasNext())
       {
         DecodeRequest localDecodeRequest = (DecodeRequest)paramList.next();
-        String str = (String)this.jdField_b_of_type_AndroidSupportV4UtilMQLruCache.get(localDecodeRequest.c);
-        Bitmap localBitmap = DecodeUtils.a(str, localDecodeRequest.jdField_b_of_type_Int, this.jdField_a_of_type_Float);
+        String str = (String)this.i.get(localDecodeRequest.e);
+        Bitmap localBitmap = DecodeUtils.a(str, localDecodeRequest.c, this.b);
         if (localBitmap != null)
         {
           if (QLog.isColorLevel())
           {
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("decodeFaceBitmap addCache ");
-            localStringBuilder.append(localDecodeRequest.jdField_b_of_type_JavaLangString);
+            localStringBuilder.append(localDecodeRequest.d);
             QLog.d("QFlutter.qqface", 2, localStringBuilder.toString());
           }
-          this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(localDecodeRequest.jdField_b_of_type_JavaLangString, localBitmap);
+          this.h.put(localDecodeRequest.d, localBitmap);
           a(localDecodeRequest, localBitmap, str);
         }
       }
     }
   }
   
-  private boolean a(DecodeRequest paramDecodeRequest)
-  {
-    List localList = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramDecodeRequest.jdField_a_of_type_Int));
-    if ((localList != null) && (!localList.isEmpty())) {
-      return localList.contains(paramDecodeRequest.jdField_a_of_type_JavaLangString);
-    }
-    return false;
-  }
-  
   private void b(int paramInt, String paramString)
   {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList2 = (ArrayList)this.k.get(Integer.valueOf(paramInt));
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = new ArrayList();
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localArrayList1);
+      this.k.put(Integer.valueOf(paramInt), localArrayList1);
     }
     if (!localArrayList1.contains(paramString)) {
       localArrayList1.add(paramString);
@@ -163,45 +158,54 @@ public class QFlutterFaceLoader
   
   private boolean b(DecodeRequest paramDecodeRequest)
   {
-    List localList = (List)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramDecodeRequest.jdField_a_of_type_Int));
+    List localList = (List)this.j.get(Integer.valueOf(paramDecodeRequest.b));
     if ((localList != null) && (!localList.isEmpty())) {
-      return localList.contains(paramDecodeRequest.jdField_a_of_type_JavaLangString);
+      return localList.contains(paramDecodeRequest.a);
     }
     return false;
   }
   
-  private void c()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
-    localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.qqhead.changed");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-  }
-  
   private void c(int paramInt, String paramString)
   {
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList = (ArrayList)this.j.get(Integer.valueOf(paramInt));
     if ((localArrayList != null) && (!localArrayList.isEmpty())) {
       localArrayList.remove(paramString);
     }
+  }
+  
+  private boolean c(DecodeRequest paramDecodeRequest)
+  {
+    List localList = (List)this.k.get(Integer.valueOf(paramDecodeRequest.b));
+    if ((localList != null) && (!localList.isEmpty())) {
+      return localList.contains(paramDecodeRequest.a);
+    }
+    return false;
   }
   
   private void d()
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
-    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qqhead.getheadresp");
+    this.a.registerReceiver(this.l, localIntentFilter, "com.tencent.qqhead.permission.getheadresp", null);
+    localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qqhead.changed");
+    this.a.registerReceiver(this.m, localIntentFilter);
   }
   
   private void d(int paramInt, String paramString)
   {
-    ArrayList localArrayList = (ArrayList)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    ArrayList localArrayList = (ArrayList)this.k.get(Integer.valueOf(paramInt));
     if ((localArrayList != null) && (!localArrayList.isEmpty())) {
       localArrayList.remove(paramString);
+    }
+  }
+  
+  private void e()
+  {
+    synchronized (this.c)
+    {
+      this.c.clear();
+      return;
     }
   }
   
@@ -214,10 +218,10 @@ public class QFlutterFaceLoader
       ((StringBuilder)localObject1).append(paramDecodeRequest);
       QLog.d("QFlutter.qqface", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject1 = paramDecodeRequest.jdField_b_of_type_JavaLangString;
-    String str = paramDecodeRequest.c;
-    Object localObject2 = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(localObject1);
-    str = (String)this.jdField_b_of_type_AndroidSupportV4UtilMQLruCache.get(str);
+    Object localObject1 = paramDecodeRequest.d;
+    String str = paramDecodeRequest.e;
+    Object localObject2 = (Bitmap)this.h.get(localObject1);
+    str = (String)this.i.get(str);
     if (localObject2 != null)
     {
       if (QLog.isColorLevel())
@@ -230,7 +234,7 @@ public class QFlutterFaceLoader
       }
       return new Pair(localObject2, Boolean.valueOf(false));
     }
-    if (FileUtil.b(str))
+    if (FileUtil.d(str))
     {
       if (QLog.isColorLevel())
       {
@@ -242,9 +246,9 @@ public class QFlutterFaceLoader
       }
       localObject1 = new ArrayList();
       ((ArrayList)localObject1).add(paramDecodeRequest);
-      localObject2 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0);
+      localObject2 = this.e.obtainMessage(0);
       ((Message)localObject2).obj = localObject1;
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
+      this.e.sendMessage((Message)localObject2);
     }
     else
     {
@@ -256,20 +260,14 @@ public class QFlutterFaceLoader
         ((StringBuilder)localObject2).append(" request");
         QLog.d("QFlutter.qqface", 2, ((StringBuilder)localObject2).toString());
       }
-      if ((!a(paramDecodeRequest)) || (!b(paramDecodeRequest)))
+      if ((!b(paramDecodeRequest)) || (!c(paramDecodeRequest)))
       {
-        a(paramDecodeRequest.jdField_a_of_type_Int, paramDecodeRequest.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
+        a(paramDecodeRequest.b, paramDecodeRequest.a);
+        this.e.removeMessages(1);
+        this.e.sendEmptyMessageDelayed(1, 50L);
       }
     }
-    return new Pair(a(paramDecodeRequest.jdField_b_of_type_Int), Boolean.valueOf(true));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
-    this.jdField_b_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
+    return new Pair(a(paramDecodeRequest.c), Boolean.valueOf(true));
   }
   
   public void a(QFlutterFaceLoader.FaceObserver paramFaceObserver)
@@ -277,10 +275,10 @@ public class QFlutterFaceLoader
     if (paramFaceObserver == null) {
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    synchronized (this.c)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramFaceObserver)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramFaceObserver);
+      if (!this.c.contains(paramFaceObserver)) {
+        this.c.add(paramFaceObserver);
       }
       return;
     }
@@ -288,12 +286,27 @@ public class QFlutterFaceLoader
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
-    d();
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-    a();
+    this.h.evictAll();
+    this.i.evictAll();
+  }
+  
+  public void b(QFlutterFaceLoader.FaceObserver paramFaceObserver)
+  {
+    synchronized (this.c)
+    {
+      this.c.remove(paramFaceObserver);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.unregisterReceiver(this.l);
+    this.a.unregisterReceiver(this.m);
+    e();
+    this.e.removeCallbacksAndMessages(null);
+    this.d.quit();
+    b();
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.qqface", 2, "onDestroy");
     }
@@ -301,7 +314,7 @@ public class QFlutterFaceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader
  * JD-Core Version:    0.7.0.1
  */

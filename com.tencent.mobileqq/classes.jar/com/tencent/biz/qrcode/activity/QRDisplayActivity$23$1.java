@@ -13,46 +13,46 @@ class QRDisplayActivity$23$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.isFinishing()) {
+    if (this.b.this$0.isFinishing()) {
       return;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (TextUtils.isEmpty(this.a))
     {
-      QRUtils.a(1, 2131696479);
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_Int == 2)
+      QRUtils.a(1, 2131894251);
+      if (this.b.this$0.t == 2)
       {
         String str;
-        if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.i == 2) {
+        if (this.b.this$0.aN == 2) {
           str = "qr_wechat";
         } else {
           str = "qr_circle";
         }
-        TroopReportor.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.a), "1" });
+        TroopReportor.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.b.this$0.n, String.valueOf(this.b.this$0.q), "1" });
       }
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.i == 2)
+    if (this.b.this$0.aN == 2)
     {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.b, 0);
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_Int == 2)
+      WXShareHelper.a().a(this.a, this.b.this$0.k, 0);
+      if (this.b.this$0.t == 2)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.a), "");
+        ReportController.b(this.b.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.b.this$0.n, "", String.valueOf(this.b.this$0.q), "");
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_Int == 5) {
-        ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
+      if (this.b.this$0.t == 5) {
+        ReportController.b(this.b.this$0.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
       }
     }
     else
     {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.b, 1);
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_Int == 2)
+      WXShareHelper.a().a(this.a, this.b.this$0.k, 1);
+      if (this.b.this$0.t == 2)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.a), "");
+        ReportController.b(this.b.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.b.this$0.n, "", String.valueOf(this.b.this$0.q), "");
         return;
       }
-      if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.jdField_c_of_type_Int == 5) {
-        ReportController.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$23.this$0.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
+      if (this.b.this$0.t == 5) {
+        ReportController.b(this.b.this$0.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
       }
     }
   }

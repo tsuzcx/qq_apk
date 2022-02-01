@@ -18,9 +18,9 @@ class ForwardSdkBaseOption$3
   {
     this.a.b("KEY_GET_APP_INFO", paramBoolean);
     QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver onReceive isSuccess = ", Boolean.valueOf(paramBoolean) });
-    synchronized (ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject)
+    synchronized (ForwardSdkBaseOption.ap)
     {
-      this.a.m = false;
+      this.a.ao = false;
       Object localObject3 = null;
       Object localObject2 = null;
       Object localObject1 = localObject3;
@@ -34,12 +34,12 @@ class ForwardSdkBaseOption$3
             try
             {
               paramBundle.mergeFrom((byte[])localObject1);
-              this.a.jdField_a_of_type_ComTencentMobileqqForwardAppInfo = AppInfo.a(paramBundle);
+              this.a.aq = AppInfo.a(paramBundle);
               if ((this.a instanceof ForwardSdkShareOption)) {
-                ((ForwardSdkStatusManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SDK_SHARE)).a().a(this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqForwardAppInfo);
+                ((ForwardSdkStatusManager)this.a.q.getManager(QQManagerFactory.SDK_SHARE)).a().a(this.a.a, this.a.aq);
               }
-              QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "get appinfo time=", Long.valueOf(System.currentTimeMillis() - this.a.c), ", ret=", Integer.valueOf(paramBundle.ret.get()) });
-              this.a.e();
+              QLog.d("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "get appinfo time=", Long.valueOf(System.currentTimeMillis() - this.a.an), ", ret=", Integer.valueOf(paramBundle.ret.get()) });
+              this.a.av();
               localObject1 = paramBundle;
             }
             catch (Exception localException)
@@ -62,24 +62,24 @@ class ForwardSdkBaseOption$3
           QLog.e("ForwardOption.ForwardSdkBaseOption", 1, new Object[] { "AppinfoObserver.onReceive ", paramBundle.getMessage() });
         }
       }
-      this.a.A();
+      this.a.ae();
       if ((localObject1 != null) && (((GetAppInfoProto.GetAppinfoResponse)localObject1).ret.get() != 0) && ((this.a instanceof ForwardSdkShareOption)))
       {
-        if (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("enable_d55", false)) {
+        if (this.a.t.getBoolean("enable_d55", false)) {
           this.a.a(((GetAppInfoProto.GetAppinfoResponse)localObject1).msg.get(), true);
         }
       }
       else {
         QLog.d("ForwardOption.ForwardSdkBaseOption", 1, "AppinfoObserver onReceive success, go share");
       }
-      ForwardSdkBaseOption.jdField_a_of_type_JavaLangObject.notify();
+      ForwardSdkBaseOption.ap.notify();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.3
  * JD-Core Version:    0.7.0.1
  */

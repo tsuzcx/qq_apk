@@ -21,27 +21,27 @@ import java.net.URL;
 class ReadInJoyFeedsHeaderViewController$CapsuleViewStateController
   implements URLDrawable.URLDrawableListener, ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster.GifStateListener
 {
-  private static ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster = new ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster(null);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private ReadInJoyCapsuleView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-  private ChannelCoverInfo jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo;
-  private boolean jdField_a_of_type_Boolean;
+  private static ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster a = new ReadInJoyFeedsHeaderViewController.GifPlayOnceEventMultiCaster(null);
+  private ReadInJoyCapsuleView b;
+  private ChannelCoverInfo c;
+  private URLDrawable d;
+  private boolean e;
   
   ReadInJoyFeedsHeaderViewController$CapsuleViewStateController(ReadInJoyCapsuleView paramReadInJoyCapsuleView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView = paramReadInJoyCapsuleView;
+    this.b = paramReadInJoyCapsuleView;
   }
   
   private void a(boolean paramBoolean)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = ReadInJoyFeedsHeaderViewController.a();
-    localURLDrawableOptions.mFailedDrawable = ReadInJoyFeedsHeaderViewController.a();
+    localURLDrawableOptions.mLoadingDrawable = ReadInJoyFeedsHeaderViewController.i();
+    localURLDrawableOptions.mFailedDrawable = ReadInJoyFeedsHeaderViewController.i();
     localURLDrawableOptions.mPlayGifImage = paramBoolean;
     try
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(new URL(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.externalExposureBackgroundUrl), localURLDrawableOptions);
-      this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setBackgroundSrc(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      this.d = URLDrawable.getDrawable(new URL(this.c.externalExposureBackgroundUrl), localURLDrawableOptions);
+      this.b.setBackgroundSrc(this.d);
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -50,111 +50,111 @@ class ReadInJoyFeedsHeaderViewController$CapsuleViewStateController
     }
   }
   
-  private void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.a();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setTextColor(Color.parseColor("#777777"));
-    int i = ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverId, false);
-    if (i != 0)
-    {
-      ReadInJoyCapsuleView localReadInJoyCapsuleView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-      localReadInJoyCapsuleView.setDrawableLeft(localReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    a(true);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setColorFilter(ReadInJoyFeedsHeaderViewController.a());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setTextColor(-1);
-    int i = ReadInJoyFeedsHeaderViewController.a(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverId, true);
-    if (i != 0)
-    {
-      ReadInJoyCapsuleView localReadInJoyCapsuleView = this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView;
-      localReadInJoyCapsuleView.setDrawableLeft(localReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
-    }
-  }
-  
   private void e()
   {
+    this.e = false;
+    this.b.a();
+    this.b.setTextColor(Color.parseColor("#777777"));
+    int i = ReadInJoyFeedsHeaderViewController.a(this.c.mChannelCoverId, false);
+    if (i != 0)
+    {
+      ReadInJoyCapsuleView localReadInJoyCapsuleView = this.b;
+      localReadInJoyCapsuleView.setDrawableLeft(localReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    }
+    this.b.setBackgroundSrc(new ColorDrawable(Color.parseColor("#F1F3F6")));
+  }
+  
+  private void f()
+  {
+    this.e = true;
     a(true);
-    URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    this.b.setColorFilter(ReadInJoyFeedsHeaderViewController.h());
+    this.b.setTextColor(-1);
+    int i = ReadInJoyFeedsHeaderViewController.a(this.c.mChannelCoverId, true);
+    if (i != 0)
+    {
+      ReadInJoyCapsuleView localReadInJoyCapsuleView = this.b;
+      localReadInJoyCapsuleView.setDrawableLeft(localReadInJoyCapsuleView.getContext().getResources().getDrawable(i));
+    }
+  }
+  
+  private void g()
+  {
+    a(true);
+    URLDrawable localURLDrawable = this.d;
     if (localURLDrawable != null)
     {
       localURLDrawable.setURLDrawableListener(this);
-      if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) {
-        onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      if (this.d.getStatus() == 1) {
+        onLoadSuccessed(this.d);
       }
     }
   }
   
   public ChannelCoverInfo a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo;
+    return this.c;
   }
   
-  public void a()
+  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
+  {
+    this.c = paramChannelCoverInfo;
+    this.b.setOnClickListener(new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.1(this, paramOnClickListener));
+    if ((!TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) && (!ReadInJoyHelper.h(paramChannelCoverInfo.mChannelCoverId)))
+    {
+      g();
+      return;
+    }
+    e();
+  }
+  
+  public void b()
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("onPlayOnce: pause the animation - ");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverName);
+    ((StringBuilder)localObject).append(this.c.mChannelCoverName);
     QLog.d("ReadInJoyFeedsHeaderVie", 2, ((StringBuilder)localObject).toString());
-    localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    localObject = this.d;
     if (localObject != null)
     {
       localObject = ((URLDrawable)localObject).getCurrDrawable();
       if ((localObject instanceof GifDrawable))
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setIndividualPause(true);
+        this.d.setIndividualPause(true);
         ((GifDrawable)localObject).getImage().reset();
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setGIFPlayOnceListener(null);
+        this.d.setGIFPlayOnceListener(null);
         a(false);
         QLog.d("ReadInJoyFeedsHeaderVie", 2, "reset gif");
       }
     }
   }
   
-  void a(ChannelCoverInfo paramChannelCoverInfo, View.OnClickListener paramOnClickListener)
+  public boolean c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo = paramChannelCoverInfo;
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetReadInJoyCapsuleView.setOnClickListener(new ReadInJoyFeedsHeaderViewController.CapsuleViewStateController.1(this, paramOnClickListener));
-    if ((!TextUtils.isEmpty(paramChannelCoverInfo.externalExposureBackgroundUrl)) && (!ReadInJoyHelper.b(paramChannelCoverInfo.mChannelCoverId)))
-    {
-      e();
-      return;
-    }
-    c();
+    return this.e;
   }
   
-  public boolean a()
+  public void d()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster.a();
+    a.a();
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     paramURLDrawable = new StringBuilder();
     paramURLDrawable.append("onLoadCanceled: ");
-    paramURLDrawable.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.externalExposureBackgroundUrl);
+    paramURLDrawable.append(this.c.externalExposureBackgroundUrl);
     QLog.d("ReadInJoyFeedsHeaderVie", 2, paramURLDrawable.toString());
-    c();
+    e();
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     paramURLDrawable = new StringBuilder();
     paramURLDrawable.append("onLoadFialed: ");
-    paramURLDrawable.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.externalExposureBackgroundUrl);
+    paramURLDrawable.append(this.c.externalExposureBackgroundUrl);
     QLog.d("ReadInJoyFeedsHeaderVie", 2, paramURLDrawable.toString());
-    c();
+    e();
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
@@ -163,16 +163,16 @@ class ReadInJoyFeedsHeaderViewController$CapsuleViewStateController
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onLoadSuccessed: ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityChannelCoverInfo.mChannelCoverName);
+    localStringBuilder.append(this.c.mChannelCoverName);
     QLog.d("ReadInJoyFeedsHeaderVie", 2, localStringBuilder.toString());
-    d();
+    f();
     AbstractGifImage.resumeAll();
-    jdField_a_of_type_ComTencentMobileqqKandianBizFeedsControllerReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster.a(this, paramURLDrawable);
+    a.a(this, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.controller.ReadInJoyFeedsHeaderViewController.CapsuleViewStateController
  * JD-Core Version:    0.7.0.1
  */

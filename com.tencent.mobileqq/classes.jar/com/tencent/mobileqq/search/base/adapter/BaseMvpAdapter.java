@@ -21,14 +21,6 @@ public abstract class BaseMvpAdapter<M extends IModel, V extends IView>
   
   protected abstract IView a(int paramInt, ViewGroup paramViewGroup);
   
-  public M a(int paramInt)
-  {
-    if (paramInt >= this.a.size()) {
-      return null;
-    }
-    return (IModel)this.a.get(paramInt);
-  }
-  
   public void a(List<M> paramList)
   {
     if (QLog.isColorLevel()) {
@@ -59,10 +51,12 @@ public abstract class BaseMvpAdapter<M extends IModel, V extends IView>
     super.notifyDataSetChanged();
   }
   
-  public void a(List<M> paramList, boolean paramBoolean)
+  public M c(int paramInt)
   {
-    a(paramList);
-    super.notifyDataSetChanged();
+    if (paramInt >= this.a.size()) {
+      return null;
+    }
+    return (IModel)this.a.get(paramInt);
   }
   
   public int getCount()
@@ -77,7 +71,7 @@ public abstract class BaseMvpAdapter<M extends IModel, V extends IView>
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    IModel localIModel = a(paramInt);
+    IModel localIModel = c(paramInt);
     Object localObject;
     IPresenter localIPresenter;
     if (localIModel == null)
@@ -97,21 +91,21 @@ public abstract class BaseMvpAdapter<M extends IModel, V extends IView>
       if (paramView == null)
       {
         localObject = a(paramInt, paramViewGroup);
-        paramView = ((IView)localObject).a();
+        paramView = ((IView)localObject).h();
         localIPresenter = a(paramInt);
-        paramView.setTag(2131380886, localIPresenter);
-        paramView.setTag(2131380889, localObject);
+        paramView.setTag(2131449869, localIPresenter);
+        paramView.setTag(2131449873, localObject);
       }
       else
       {
-        localObject = (IView)paramView.getTag(2131380889);
-        localIPresenter = (IPresenter)paramView.getTag(2131380886);
+        localObject = (IView)paramView.getTag(2131449873);
+        localIPresenter = (IPresenter)paramView.getTag(2131449869);
       }
-      paramView.setTag(2131380884, localIModel);
-      if (((IView)localObject).a() != null)
+      paramView.setTag(2131449867, localIModel);
+      if (((IView)localObject).h() != null)
       {
-        ((IView)localObject).a().setTag(2131380885, Integer.valueOf(paramInt));
-        ((IView)localObject).a().setTag(2131380883, Integer.valueOf(getCount()));
+        ((IView)localObject).h().setTag(2131449868, Integer.valueOf(paramInt));
+        ((IView)localObject).h().setTag(2131449866, Integer.valueOf(getCount()));
       }
       localIPresenter.a(localIModel, (IView)localObject);
       localObject = paramView;
@@ -122,7 +116,7 @@ public abstract class BaseMvpAdapter<M extends IModel, V extends IView>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.base.adapter.BaseMvpAdapter
  * JD-Core Version:    0.7.0.1
  */

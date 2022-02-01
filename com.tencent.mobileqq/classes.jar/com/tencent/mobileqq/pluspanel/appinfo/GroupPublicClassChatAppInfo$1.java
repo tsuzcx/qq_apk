@@ -11,23 +11,23 @@ class GroupPublicClassChatAppInfo$1
 {
   GroupPublicClassChatAppInfo$1(GroupPublicClassChatAppInfo paramGroupPublicClassChatAppInfo, ActionSheet paramActionSheet, PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt != 0)
     {
       if (paramInt != 1) {
         return;
       }
-      GroupPublicClassChatAppInfo.access$100(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoGroupPublicClassChatAppInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+      GroupPublicClassChatAppInfo.access$100(this.d, this.c);
       return;
     }
-    GroupPublicClassChatAppInfo.access$000(this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoGroupPublicClassChatAppInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelPlusPanelViewModel, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    GroupPublicClassChatAppInfo.access$000(this.d, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.GroupPublicClassChatAppInfo.1
  * JD-Core Version:    0.7.0.1
  */

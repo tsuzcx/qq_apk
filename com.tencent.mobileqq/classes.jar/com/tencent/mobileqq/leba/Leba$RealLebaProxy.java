@@ -4,7 +4,6 @@ import android.content.Intent;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.leba.controller.LebaController;
 import com.tencent.mobileqq.leba.core.LebaShowListManager;
-import com.tencent.mobileqq.leba.core.LebaUtil;
 import com.tencent.mobileqq.leba.entity.LebaClickReportInfo;
 import com.tencent.mobileqq.leba.entity.LebaViewItem;
 import com.tencent.mobileqq.leba.proxy.ILebaProxy;
@@ -17,37 +16,9 @@ public class Leba$RealLebaProxy
 {
   Leba a;
   
-  public int a()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null) {
-      return this.a.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController.a();
-    }
-    return 0;
-  }
-  
-  public QBaseActivity a()
-  {
-    return this.a.a();
-  }
-  
-  public HashMap<String, LebaViewItem> a()
-  {
-    return LebaShowListManager.a().jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public List<LebaViewItem> a()
-  {
-    return this.a.jdField_a_of_type_JavaUtilList;
-  }
-  
   public AppRuntime a()
   {
-    return this.a.jdField_a_of_type_MqqAppAppRuntime;
-  }
-  
-  public void a()
-  {
-    this.a.b(new Leba.RealLebaProxy.1(this));
+    return this.a.aF;
   }
   
   public void a(Intent paramIntent)
@@ -70,29 +41,52 @@ public class Leba$RealLebaProxy
     this.a.a(paramBoolean1, paramBoolean2, paramInt);
   }
   
-  public boolean a()
+  public void b()
   {
-    return LebaUtil.c(a());
+    this.a.b(new Leba.RealLebaProxy.1(this));
   }
   
-  public void b()
+  public QBaseActivity c()
+  {
+    return this.a.P();
+  }
+  
+  public int d()
+  {
+    if (this.a.e != null) {
+      return this.a.e.a();
+    }
+    return 0;
+  }
+  
+  public void e()
   {
     this.a.b(new Leba.RealLebaProxy.2(this));
   }
   
-  public void c()
+  public List<LebaViewItem> f()
   {
-    LebaShowListManager.jdField_a_of_type_Int |= 0x1;
+    return this.a.c;
   }
   
-  public void d()
+  public void g()
   {
-    LebaShowListManager.jdField_a_of_type_Int |= 0x2;
+    LebaShowListManager.a |= 0x1;
+  }
+  
+  public void h()
+  {
+    LebaShowListManager.a |= 0x2;
+  }
+  
+  public HashMap<String, LebaViewItem> i()
+  {
+    return LebaShowListManager.a().f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.RealLebaProxy
  * JD-Core Version:    0.7.0.1
  */

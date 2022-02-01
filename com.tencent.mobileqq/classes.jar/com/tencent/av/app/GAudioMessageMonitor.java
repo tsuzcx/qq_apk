@@ -7,29 +7,29 @@ import mqq.app.MobileQQ;
 class GAudioMessageMonitor
 {
   public static String a = "GAudioMsgReceiver";
-  GAudioMessageMonitor.GAudioMsgReceiver jdField_a_of_type_ComTencentAvAppGAudioMessageMonitor$GAudioMsgReceiver;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  boolean jdField_a_of_type_Boolean = false;
+  VideoAppInterface b;
+  GAudioMessageMonitor.GAudioMsgReceiver c;
+  boolean d = false;
   
   public GAudioMessageMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvAppGAudioMessageMonitor$GAudioMsgReceiver = new GAudioMessageMonitor.GAudioMsgReceiver(paramVideoAppInterface);
+    this.b = paramVideoAppInterface;
+    this.c = new GAudioMessageMonitor.GAudioMsgReceiver(paramVideoAppInterface);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.d)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_ComTencentAvAppGAudioMessageMonitor$GAudioMsgReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.b.getApplication().unregisterReceiver(this.c);
+      this.d = false;
     }
   }
   
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
+      QLog.d(a, 2, "regist QQGAudioMsg Receiver");
     }
     IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
     localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
@@ -47,8 +47,8 @@ class GAudioMessageMonitor
     localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
     localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
     localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_ComTencentAvAppGAudioMessageMonitor$GAudioMsgReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.b.getApplication().registerReceiver(this.c, localIntentFilter) != null) {
+      this.d = true;
     }
   }
 }

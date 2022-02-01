@@ -4,23 +4,23 @@ import java.util.List;
 
 public class UploadItem
 {
-  public int a;
-  public long a;
   public String a;
-  public List<String> a;
-  public boolean a;
-  public int b = 0;
-  public String b;
+  public List<String> b;
+  public boolean c;
+  public int d;
+  public int e = 0;
+  public long f;
+  public String g;
   
   public String a(int paramInt)
   {
-    List localList = this.a;
+    List localList = this.b;
     if ((localList != null) && (localList.size() != 0))
     {
-      if (paramInt < this.a.size()) {
-        return (String)this.a.get(paramInt);
+      if (paramInt < this.b.size()) {
+        return (String)this.b.get(paramInt);
       }
-      localList = this.a;
+      localList = this.b;
       return (String)localList.get(localList.size() - 1);
     }
     return "";
@@ -28,7 +28,7 @@ public class UploadItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.avatar.UploadItem
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,15 @@ public class QQComicStep
 {
   protected int doStep()
   {
-    this.mAutomator.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(new QQComicStep.1(this), true);
-    ((IQQComicService)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQComicService.class)).startUp();
+    this.mAutomator.l.addObserver(new QQComicStep.1(this), true);
+    ((IQQComicService)this.mAutomator.k.getRuntimeService(IQQComicService.class)).startUp();
     ((IPatchBundleDataHandler)QRoute.api(IPatchBundleDataHandler.class)).onAppAsyncStepStart();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.QQComicStep
  * JD-Core Version:    0.7.0.1
  */

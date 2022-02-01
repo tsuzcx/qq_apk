@@ -13,14 +13,14 @@ class KandianCompetitiveAdPandentView$3
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    KandianCompetitiveAdPandentView.a(this.a).setScaleX(f);
-    KandianCompetitiveAdPandentView.a(this.a).setScaleY(f);
-    KandianCompetitiveAdPandentView.a(this.a).setAlpha(f);
+    KandianCompetitiveAdPandentView.g(this.a).setScaleX(f);
+    KandianCompetitiveAdPandentView.g(this.a).setScaleY(f);
+    KandianCompetitiveAdPandentView.h(this.a).setAlpha(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.KandianCompetitiveAdPandentView.3
  * JD-Core Version:    0.7.0.1
  */

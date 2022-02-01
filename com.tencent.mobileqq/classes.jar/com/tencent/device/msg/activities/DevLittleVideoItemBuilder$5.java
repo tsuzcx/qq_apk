@@ -14,12 +14,12 @@ class DevLittleVideoItemBuilder$5
   {
     ShortVideoReq localShortVideoReq = SVBusiUtil.a(0, 4);
     localShortVideoReq.a(ShortVideoBusiManager.a(this.a, localShortVideoReq));
-    ShortVideoBusiManager.a(localShortVideoReq, this.this$0.a);
+    ShortVideoBusiManager.a(localShortVideoReq, this.this$0.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

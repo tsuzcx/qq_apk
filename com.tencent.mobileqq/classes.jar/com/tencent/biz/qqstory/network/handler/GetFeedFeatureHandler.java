@@ -30,39 +30,32 @@ public class GetFeedFeatureHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback
 {
-  public static ConcurrentHashMap<String, Long> a;
-  public FeedManager a;
-  public List<String> a;
-  private final boolean a;
-  public List<String> b = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  public static ConcurrentHashMap<String, Long> f = new ConcurrentHashMap();
+  public List<String> c = new ArrayList();
+  public List<String> d = new ArrayList();
+  public FeedManager e;
+  private final boolean g;
   
   public GetFeedFeatureHandler(@NonNull List<String> paramList)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
-    this.jdField_a_of_type_Boolean = false;
+    this.c.addAll(paramList);
+    this.e = ((FeedManager)SuperManager.a(11));
+    this.g = false;
   }
   
   public GetFeedFeatureHandler(@NonNull List<String> paramList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c.addAll(paramList);
+    this.e = ((FeedManager)SuperManager.a(11));
+    this.g = paramBoolean;
   }
   
   public static void a(@NonNull List<String> paramList)
   {
     int k = paramList.size();
-    double d = k;
-    Double.isNaN(d);
-    int m = (int)Math.ceil(d / 5.0D);
+    double d1 = k;
+    Double.isNaN(d1);
+    int m = (int)Math.ceil(d1 / 5.0D);
     int j;
     for (int i = 0; i < m; i = j)
     {
@@ -83,7 +76,7 @@ public class GetFeedFeatureHandler
       while (paramList.hasNext())
       {
         FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)paramList.next();
-        FeedItem localFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(localFeedFeatureItem.a);
+        FeedItem localFeedItem = this.e.b(localFeedFeatureItem.a);
         if (localFeedItem == null)
         {
           if (QLog.isColorLevel()) {
@@ -96,7 +89,7 @@ public class GetFeedFeatureHandler
           localArrayList.add(localFeedItem);
         }
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(localArrayList);
+      this.e.a(localArrayList);
     }
   }
   
@@ -111,23 +104,23 @@ public class GetFeedFeatureHandler
     {
       paramNetworkRequest = (GetFeedFeatureResponse)paramBaseResponse;
       paramBaseResponse = new GetFeedFeatureHandler.GetFeedFeatureEvent();
-      paramBaseResponse.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-      if ((paramErrorMessage.isSuccess()) && (!paramNetworkRequest.jdField_a_of_type_JavaUtilList.isEmpty()))
+      paramBaseResponse.g = paramErrorMessage;
+      if ((paramErrorMessage.isSuccess()) && (!paramNetworkRequest.a.isEmpty()))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedFeature: first=", ((FeedFeatureItem)paramNetworkRequest.jdField_a_of_type_JavaUtilList.get(0)).a });
+          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedFeature: first=", ((FeedFeatureItem)paramNetworkRequest.a.get(0)).a });
         }
-        b(paramNetworkRequest.jdField_a_of_type_JavaUtilList);
-        paramBaseResponse.jdField_a_of_type_JavaUtilList = paramNetworkRequest.jdField_a_of_type_JavaUtilList;
+        b(paramNetworkRequest.a);
+        paramBaseResponse.a = paramNetworkRequest.a;
         StoryDispatcher.a().dispatch(paramBaseResponse);
-        b();
+        c();
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.e("Q.qqstory.home.GetFeedFeatureHandler", 2, "save feedFeature failed.", paramErrorMessage);
       }
       StoryDispatcher.a().dispatch(paramBaseResponse);
-      c();
+      d();
       return;
     }
     if (((paramNetworkRequest instanceof BatchGetFriendStoryFeedInfoRequest)) && ((paramBaseResponse instanceof BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)))
@@ -135,30 +128,30 @@ public class GetFeedFeatureHandler
       paramNetworkRequest = (BatchGetFriendStoryFeedInfoRequest.GetFriendStoryFeedInfoResp)paramBaseResponse;
       if (paramErrorMessage.isSuccess())
       {
-        paramBaseResponse = new ArrayList(paramNetworkRequest.jdField_a_of_type_JavaUtilList.size());
-        paramNetworkRequest = paramNetworkRequest.jdField_a_of_type_JavaUtilList.iterator();
+        paramBaseResponse = new ArrayList(paramNetworkRequest.a.size());
+        paramNetworkRequest = paramNetworkRequest.a.iterator();
         while (paramNetworkRequest.hasNext()) {
-          paramBaseResponse.add(((StoryHomeFeed)paramNetworkRequest.next()).a());
+          paramBaseResponse.add(((StoryHomeFeed)paramNetworkRequest.next()).g());
         }
         if (!paramBaseResponse.isEmpty())
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(paramBaseResponse);
+          this.e.a(paramBaseResponse);
           if (QLog.isColorLevel()) {
             QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "save feedItem: first=", ((FeedItem)paramBaseResponse.get(0)).feedId, ". request FeedFeature." });
           }
           paramNetworkRequest = new GetFeedFeatureRequest();
-          paramNetworkRequest.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList;
+          paramNetworkRequest.f = this.c;
           CmdTaskManger.a().a(paramNetworkRequest, this);
           return;
         }
       }
-      if (!this.b.isEmpty())
+      if (!this.d.isEmpty())
       {
         if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request local FeedFeature after FeedItem. first=", this.b.get(0) });
+          QLog.d("Q.qqstory.home.GetFeedFeatureHandler", 2, new Object[] { "request local FeedFeature after FeedItem. first=", this.d.get(0) });
         }
         paramNetworkRequest = new GetFeedFeatureRequest();
-        paramNetworkRequest.jdField_a_of_type_JavaUtilList = this.b;
+        paramNetworkRequest.f = this.d;
         CmdTaskManger.a().a(paramNetworkRequest, this);
       }
     }
@@ -166,7 +159,7 @@ public class GetFeedFeatureHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetFeedFeatureHandler
  * JD-Core Version:    0.7.0.1
  */

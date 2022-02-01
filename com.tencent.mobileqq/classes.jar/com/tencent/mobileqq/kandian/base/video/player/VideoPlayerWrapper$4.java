@@ -1,23 +1,31 @@
 package com.tencent.mobileqq.kandian.base.video.player;
 
-import com.tencent.mobileqq.kandian.base.video.player.api.IPlayer;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.ViewGroup;
 
 class VideoPlayerWrapper$4
   implements Runnable
 {
-  VideoPlayerWrapper$4(VideoPlayerWrapper paramVideoPlayerWrapper, boolean paramBoolean) {}
+  VideoPlayerWrapper$4(VideoPlayerWrapper paramVideoPlayerWrapper, boolean paramBoolean, View paramView) {}
   
   public void run()
   {
-    if ((VideoPlayerWrapper.a(this.this$0) != null) && (VideoPlayerWrapper.a(this.this$0).get() != 6) && (VideoPlayerWrapper.a(this.this$0).get() != 8)) {
-      VideoPlayerWrapper.a(this.this$0).b(this.a);
+    if (this.a)
+    {
+      Object localObject = this.b;
+      if (localObject != null)
+      {
+        localObject = ((View)localObject).getParent();
+        if ((localObject instanceof ViewGroup)) {
+          ((ViewGroup)localObject).removeView(this.b);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.VideoPlayerWrapper.4
  * JD-Core Version:    0.7.0.1
  */

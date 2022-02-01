@@ -30,7 +30,7 @@ public final class LiveGroupTips$GetLiveGroupTipsRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.pb.LiveGroupTips.GetLiveGroupTipsRsp
  * JD-Core Version:    0.7.0.1
  */

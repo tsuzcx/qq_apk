@@ -38,7 +38,7 @@ class GdtNetTypeJsCallHandler
       }
       paramString = localObject;
       if (paramGdtAdWebPlugin != null) {
-        paramString = paramGdtAdWebPlugin.a();
+        paramString = paramGdtAdWebPlugin.b();
       }
       AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
       return true;
@@ -49,7 +49,7 @@ class GdtNetTypeJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtNetTypeJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

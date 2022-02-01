@@ -49,7 +49,7 @@ class QQDebugWebSocket$3
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       QQDebugWebSocket.access$702(this.this$0, false);
-      localObject2 = this.this$0.TAG;
+      localObject2 = DebugWebSocket.TAG;
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("qq startConnectIDE ");
       localStringBuilder.append((String)localObject1);
@@ -61,7 +61,7 @@ class QQDebugWebSocket$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.QQDebugWebSocket.3
  * JD-Core Version:    0.7.0.1
  */

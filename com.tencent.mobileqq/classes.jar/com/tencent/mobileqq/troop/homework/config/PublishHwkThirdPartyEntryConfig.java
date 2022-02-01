@@ -8,23 +8,23 @@ import org.json.JSONObject;
 
 public class PublishHwkThirdPartyEntryConfig
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = false;
+  private boolean a = false;
+  private boolean b = false;
   private String c = "";
   private String d = "";
+  private String e = "";
+  private String f = "";
   
   public PublishHwkThirdPartyEntryConfig() {}
   
   public PublishHwkThirdPartyEntryConfig(boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2, String paramString3, String paramString4)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.a = paramBoolean1;
+    this.b = paramBoolean2;
+    this.c = paramString1;
+    this.d = paramString2;
+    this.e = paramString3;
+    this.f = paramString4;
   }
   
   public static PublishHwkThirdPartyEntryConfig a(QConfItem[] paramArrayOfQConfItem)
@@ -38,7 +38,7 @@ public class PublishHwkThirdPartyEntryConfig
     int i = 0;
     while (n < paramArrayOfQConfItem.length)
     {
-      Object localObject2 = paramArrayOfQConfItem[n].jdField_a_of_type_JavaLangString;
+      Object localObject2 = paramArrayOfQConfItem[n].b;
       int j;
       Object localObject1;
       Object localObject8;
@@ -161,63 +161,63 @@ public class PublishHwkThirdPartyEntryConfig
     return paramArrayOfQConfItem;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a;
   }
   
   public String b()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    return this.c;
   }
   
   public String c()
   {
-    return this.c;
+    return this.d;
   }
   
-  public String d()
+  public boolean d()
   {
-    return this.d;
+    return this.b;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mIsGlobalOpenWeiKe:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mIsGlobalOpenTXDoc:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.b);
     localStringBuilder.append("\r\n");
     localStringBuilder.append("mStrSelectWeiKeUrl:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\r\n");
-    localStringBuilder.append("mStrDetailWeiKeUrl:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\r\n");
-    localStringBuilder.append("mStrSelectDocUrl:");
     localStringBuilder.append(this.c);
     localStringBuilder.append("\r\n");
-    localStringBuilder.append("mStrDetailDocUrl:");
+    localStringBuilder.append("mStrDetailWeiKeUrl:");
     localStringBuilder.append(this.d);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStrSelectDocUrl:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStrDetailDocUrl:");
+    localStringBuilder.append(this.f);
     localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.config.PublishHwkThirdPartyEntryConfig
  * JD-Core Version:    0.7.0.1
  */

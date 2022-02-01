@@ -13,10 +13,10 @@ class CmShowMakeupFragment$5
   
   public void callback()
   {
-    if (CmShowMakeupFragment.b(this.a))
+    if (CmShowMakeupFragment.h(this.a))
     {
       ApolloDtReportUtil.a("dressup_3d_page", "model", "expose", null);
-      ApolloQualityReportUtil.a("dressup_first_frame", String.valueOf(System.currentTimeMillis() - CmShowMakeupFragment.a(this.a)), null);
+      ApolloQualityReportUtil.a("dressup_first_frame", String.valueOf(System.currentTimeMillis() - CmShowMakeupFragment.i(this.a)), null);
       TraceReportUtil.a(126, 4, 0, new Object[0]);
       CmShowMakeupFragment.a(this.a, false);
       QLog.i("[cmshow]CmShowMakeupFragment", 1, "[doSetCmShowAssetsData] first frame");
@@ -25,7 +25,7 @@ class CmShowMakeupFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowMakeupFragment.5
  * JD-Core Version:    0.7.0.1
  */

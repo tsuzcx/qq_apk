@@ -12,6 +12,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
@@ -26,6 +27,23 @@ public class GetNewBaseLibRequest
   {
     this.req.curVersion.set(paramString);
     this.req.type.set(paramInt);
+  }
+  
+  public String getBaseLibUrl64(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return paramString2;
+      }
+      paramString1 = new JSONObject(paramString1).optString("downloadUrl_64", paramString2);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      QMLog.e("GetNewBaseLibRequest", "Failed to parse downloadUrl_64", paramString1);
+    }
+    return paramString2;
   }
   
   protected byte[] getBusiBuf()
@@ -73,6 +91,9 @@ public class GetNewBaseLibRequest
           localBaseLibInfo.baseLibDesc = "{'file_length':-1}";
         }
         localBaseLibInfo.baseLibType = ((INTERFACE.StBaseLibInfo)localObject).libType.get();
+        if (QUAUtil.isAbi64()) {
+          localBaseLibInfo.baseLibUrl = getBaseLibUrl64(localBaseLibInfo.baseLibDesc, localBaseLibInfo.baseLibUrl);
+        }
         paramJSONObject.put(localBaseLibInfo.getKey(), localBaseLibInfo.toJSONObject());
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("[MiniEng] GetNewBaseLib ");
@@ -95,7 +116,7 @@ public class GetNewBaseLibRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetNewBaseLibRequest
  * JD-Core Version:    0.7.0.1
  */

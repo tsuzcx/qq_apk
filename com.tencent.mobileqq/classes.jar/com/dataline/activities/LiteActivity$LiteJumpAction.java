@@ -12,26 +12,26 @@ import java.util.Iterator;
 
 public class LiteActivity$LiteJumpAction
 {
-  int jdField_a_of_type_Int;
-  LiteActivity jdField_a_of_type_ComDatalineActivitiesLiteActivity;
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  LiteActivity a;
+  ArrayList<String> b;
+  int c;
   
   public LiteActivity$LiteJumpAction(LiteActivity paramLiteActivity1, LiteActivity paramLiteActivity2)
   {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity = paramLiteActivity2;
+    this.a = paramLiteActivity2;
   }
   
   String a(Uri paramUri)
   {
-    return FileProvider7Helper.getRealPathFromContentURI(this.b.getApplicationContext(), paramUri);
+    return FileProvider7Helper.getRealPathFromContentURI(this.d.getApplicationContext(), paramUri);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+    if (this.b == null) {
       return;
     }
-    if (this.jdField_a_of_type_Int == -1) {
+    if (this.c == -1) {
       return;
     }
     if (QLog.isColorLevel())
@@ -39,9 +39,9 @@ public class LiteActivity$LiteJumpAction
       Object localObject1 = LiteActivity.a;
       Object localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("sendMultipleFileWithFileProvider. [fileType] = ");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(this.c);
       QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject1 = this.b.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
@@ -52,9 +52,9 @@ public class LiteActivity$LiteJumpAction
         QLog.i(str, 1, localStringBuilder.toString());
       }
     }
-    this.b.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_JavaUtilArrayList = null;
-    this.jdField_a_of_type_Int = -1;
+    this.d.a(this.b, this.c);
+    this.b = null;
+    this.c = -1;
   }
   
   public void a(Intent paramIntent)
@@ -86,13 +86,13 @@ public class LiteActivity$LiteJumpAction
       if ((bool) && (!((Bundle)localObject2).containsKey("android.intent.extra.STREAM")))
       {
         paramIntent = ((Bundle)localObject2).getString("android.intent.extra.TEXT");
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent);
+        this.a.a(paramIntent);
         return;
       }
       if (((String)localObject1).startsWith("message"))
       {
         paramIntent = (SpannableString)((Bundle)localObject2).get("android.intent.extra.TEXT");
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent.toString());
+        this.a.a(paramIntent.toString());
         return;
       }
       bool = ((String)localObject1).startsWith("image");
@@ -103,7 +103,7 @@ public class LiteActivity$LiteJumpAction
           paramIntent = (Uri)((Bundle)localObject2).get("android.intent.extra.STREAM");
           if (paramIntent == null)
           {
-            LiteActivity.a(this.b);
+            LiteActivity.a(this.d);
             return;
           }
           localObject1 = new ArrayList();
@@ -114,7 +114,7 @@ public class LiteActivity$LiteJumpAction
         paramIntent = (ArrayList)((Bundle)localObject2).get("android.intent.extra.STREAM");
         if (paramIntent.size() > 50)
         {
-          LiteActivity.b(this.b);
+          LiteActivity.b(this.d);
           return;
         }
         a(paramIntent, true);
@@ -125,12 +125,12 @@ public class LiteActivity$LiteJumpAction
         paramIntent = (Uri)((Bundle)localObject2).get("android.intent.extra.STREAM");
         if (paramIntent == null)
         {
-          LiteActivity.a(this.b);
+          LiteActivity.a(this.d);
           return;
         }
         if (((paramIntent instanceof Uri)) && ("text/x-vcard".equals(localObject1)) && ("content".equals(paramIntent.getScheme())))
         {
-          new LiteActivity.ShareTask(this.b).execute(new Object[] { this.b.getApplicationContext(), paramIntent });
+          new LiteActivity.ShareTask(this.d).execute(new Object[] { this.d.getApplicationContext(), paramIntent });
           return;
         }
         localObject1 = new ArrayList();

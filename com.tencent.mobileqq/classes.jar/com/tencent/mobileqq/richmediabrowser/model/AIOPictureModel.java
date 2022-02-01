@@ -28,17 +28,17 @@ public class AIOPictureModel
       if (paramAIOPictureData == null) {
         return 0;
       }
-      if ((paramAIOPictureData.a != null) && (paramString.contains(paramAIOPictureData.a))) {
+      if ((paramAIOPictureData.j != null) && (paramString.contains(paramAIOPictureData.j))) {
         return 1;
       }
-      if ((paramAIOPictureData.b != null) && (paramString.contains(paramAIOPictureData.b))) {
+      if ((paramAIOPictureData.k != null) && (paramString.contains(paramAIOPictureData.k))) {
         return 2;
       }
       i = j;
-      if (paramAIOPictureData.jdField_c_of_type_JavaLangString != null)
+      if (paramAIOPictureData.l != null)
       {
         i = j;
-        if (paramString.contains(paramAIOPictureData.jdField_c_of_type_JavaLangString)) {
+        if (paramString.contains(paramAIOPictureData.l)) {
           i = 4;
         }
       }
@@ -48,30 +48,45 @@ public class AIOPictureModel
   
   public Drawable a(AIOPictureData paramAIOPictureData)
   {
-    File localFile1 = a(paramAIOPictureData, 2);
-    File localFile2 = a(paramAIOPictureData, 4);
+    File localFile1 = c(paramAIOPictureData, 2);
+    File localFile2 = c(paramAIOPictureData, 4);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
     localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
-    if ((localFile1 != null) && (GlobalImageCache.a.get(a(paramAIOPictureData, 2)) != null)) {
-      return URLDrawable.getDrawable(a(paramAIOPictureData, 2), localURLDrawableOptions);
+    if ((localFile1 != null) && (GlobalImageCache.a.get(b(paramAIOPictureData, 2)) != null)) {
+      return URLDrawable.getDrawable(b(paramAIOPictureData, 2), localURLDrawableOptions);
     }
-    if ((localFile2 != null) && (GlobalImageCache.a.get(a(paramAIOPictureData, 4)) != null)) {
-      return URLDrawable.getDrawable(a(paramAIOPictureData, 4), localURLDrawableOptions);
+    if ((localFile2 != null) && (GlobalImageCache.a.get(b(paramAIOPictureData, 4)) != null)) {
+      return URLDrawable.getDrawable(b(paramAIOPictureData, 4), localURLDrawableOptions);
     }
-    if (a(paramAIOPictureData, 1) != null)
+    if (c(paramAIOPictureData, 1) != null)
     {
-      paramAIOPictureData = URLDrawable.getDrawable(a(paramAIOPictureData, 1), localURLDrawableOptions);
+      paramAIOPictureData = URLDrawable.getDrawable(b(paramAIOPictureData, 1), localURLDrawableOptions);
       paramAIOPictureData.downloadImediatly();
       return paramAIOPictureData;
     }
     return null;
   }
   
-  public File a(AIOPictureData paramAIOPictureData, int paramInt)
+  public void a(AIOPictureData paramAIOPictureData, int paramInt, String paramString)
   {
-    if (paramAIOPictureData == null) {
-      return null;
+    if ("I:E".equals(paramString))
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          paramAIOPictureData.p = true;
+          return;
+        }
+        paramAIOPictureData.o = true;
+        return;
+      }
+      paramAIOPictureData.n = true;
+      return;
     }
     if (paramInt != 1)
     {
@@ -80,33 +95,65 @@ public class AIOPictureModel
         if (paramInt != 4)
         {
           if (paramInt != 8) {
-            paramAIOPictureData = null;
-          } else {
-            paramAIOPictureData = paramAIOPictureData.jdField_d_of_type_JavaLangString;
+            return;
           }
+          paramAIOPictureData.m = paramString;
+          return;
         }
-        else {
-          paramAIOPictureData = paramAIOPictureData.jdField_c_of_type_JavaLangString;
+        paramAIOPictureData.l = paramString;
+        return;
+      }
+      paramAIOPictureData.k = paramString;
+      if (!paramAIOPictureData.w)
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramAIOPictureData.j);
+        paramString.append("_hd");
+        if (new File(paramString.toString()).exists())
+        {
+          paramString = new StringBuilder();
+          paramString.append(paramAIOPictureData.j);
+          paramString.append("_hd");
+          paramAIOPictureData.j = paramString.toString();
         }
       }
-      else {
-        paramAIOPictureData = paramAIOPictureData.b;
-      }
     }
-    else {
-      paramAIOPictureData = paramAIOPictureData.a;
-    }
-    if ((paramAIOPictureData != null) && (!paramAIOPictureData.equals("I:N")))
+    else
     {
-      paramAIOPictureData = new File(paramAIOPictureData);
-      if (paramAIOPictureData.exists()) {
-        return paramAIOPictureData;
-      }
+      paramAIOPictureData.j = paramString;
     }
-    return null;
   }
   
-  public String a(AIOPictureData paramAIOPictureData, int paramInt)
+  public void a(IBaseModelBuilder paramIBaseModelBuilder)
+  {
+    if ((paramIBaseModelBuilder instanceof PictureModel)) {
+      this.a = ((PictureModel)paramIBaseModelBuilder);
+    }
+  }
+  
+  public boolean a(AIOPictureData paramAIOPictureData, int paramInt)
+  {
+    if (paramAIOPictureData == null) {
+      return false;
+    }
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
+      {
+        if (paramInt != 4) {
+          return false;
+        }
+        if (paramAIOPictureData.v == 3) {
+          return true;
+        }
+        return paramAIOPictureData.l.equals("I:N") ^ true;
+      }
+      return paramAIOPictureData.k.equals("I:N") ^ true;
+    }
+    return paramAIOPictureData.j.equals("I:N") ^ true;
+  }
+  
+  public String b(AIOPictureData paramAIOPictureData, int paramInt)
   {
     if (paramAIOPictureData == null) {
       return "";
@@ -121,23 +168,23 @@ public class AIOPictureModel
           if (paramInt != 8) {
             str = null;
           } else {
-            str = paramAIOPictureData.jdField_d_of_type_JavaLangString;
+            str = paramAIOPictureData.m;
           }
         }
         else {
-          str = paramAIOPictureData.jdField_c_of_type_JavaLangString;
+          str = paramAIOPictureData.l;
         }
       }
       else {
-        str = paramAIOPictureData.b;
+        str = paramAIOPictureData.k;
       }
     }
     else {
-      str = paramAIOPictureData.a;
+      str = paramAIOPictureData.j;
     }
     if ((str != null) && (!str.equals("I:N")))
     {
-      if (paramAIOPictureData.jdField_c_of_type_Int == 3)
+      if (paramAIOPictureData.v == 3)
       {
         paramAIOPictureData = new File(str);
         try
@@ -173,25 +220,10 @@ public class AIOPictureModel
     return null;
   }
   
-  public void a(AIOPictureData paramAIOPictureData, int paramInt, String paramString)
+  public File c(AIOPictureData paramAIOPictureData, int paramInt)
   {
-    if ("I:E".equals(paramString))
-    {
-      if (paramInt != 1)
-      {
-        if (paramInt != 2)
-        {
-          if (paramInt != 4) {
-            return;
-          }
-          paramAIOPictureData.f = true;
-          return;
-        }
-        paramAIOPictureData.e = true;
-        return;
-      }
-      paramAIOPictureData.jdField_d_of_type_Boolean = true;
-      return;
+    if (paramAIOPictureData == null) {
+      return null;
     }
     if (paramInt != 1)
     {
@@ -200,67 +232,35 @@ public class AIOPictureModel
         if (paramInt != 4)
         {
           if (paramInt != 8) {
-            return;
+            paramAIOPictureData = null;
+          } else {
+            paramAIOPictureData = paramAIOPictureData.m;
           }
-          paramAIOPictureData.jdField_d_of_type_JavaLangString = paramString;
-          return;
         }
-        paramAIOPictureData.jdField_c_of_type_JavaLangString = paramString;
-        return;
+        else {
+          paramAIOPictureData = paramAIOPictureData.l;
+        }
       }
-      paramAIOPictureData.b = paramString;
-      if (!paramAIOPictureData.h)
-      {
-        paramString = new StringBuilder();
-        paramString.append(paramAIOPictureData.a);
-        paramString.append("_hd");
-        if (new File(paramString.toString()).exists())
-        {
-          paramString = new StringBuilder();
-          paramString.append(paramAIOPictureData.a);
-          paramString.append("_hd");
-          paramAIOPictureData.a = paramString.toString();
-        }
+      else {
+        paramAIOPictureData = paramAIOPictureData.k;
       }
     }
-    else
+    else {
+      paramAIOPictureData = paramAIOPictureData.j;
+    }
+    if ((paramAIOPictureData != null) && (!paramAIOPictureData.equals("I:N")))
     {
-      paramAIOPictureData.a = paramString;
-    }
-  }
-  
-  public void a(IBaseModelBuilder paramIBaseModelBuilder)
-  {
-    if ((paramIBaseModelBuilder instanceof PictureModel)) {
-      this.a = ((PictureModel)paramIBaseModelBuilder);
-    }
-  }
-  
-  public boolean a(AIOPictureData paramAIOPictureData, int paramInt)
-  {
-    if (paramAIOPictureData == null) {
-      return false;
-    }
-    if (paramInt != 1)
-    {
-      if (paramInt != 2)
-      {
-        if (paramInt != 4) {
-          return false;
-        }
-        if (paramAIOPictureData.jdField_c_of_type_Int == 3) {
-          return true;
-        }
-        return paramAIOPictureData.jdField_c_of_type_JavaLangString.equals("I:N") ^ true;
+      paramAIOPictureData = new File(paramAIOPictureData);
+      if (paramAIOPictureData.exists()) {
+        return paramAIOPictureData;
       }
-      return paramAIOPictureData.b.equals("I:N") ^ true;
     }
-    return paramAIOPictureData.a.equals("I:N") ^ true;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOPictureModel
  * JD-Core Version:    0.7.0.1
  */

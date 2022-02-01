@@ -18,16 +18,16 @@ class ChatHistoryFileActivity$5
   {
     if (paramInt == 2)
     {
-      FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131692690));
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      FMToastUtil.d(this.c.getString(2131889761));
+      Iterator localIterator = this.a.iterator();
       while (localIterator.hasNext())
       {
         FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
         if (!localFileManagerEntity.sendCloudUnsuccessful()) {
           if (FileUtils.fileExistsAndNotEmpty(localFileManagerEntity.getFilePath())) {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+            this.b.a(localFileManagerEntity.getFilePath(), "", this.c.app.getCurrentAccountUin(), 0, false);
           } else {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+            this.b.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
           }
         }
       }
@@ -36,7 +36,7 @@ class ChatHistoryFileActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,28 @@
 package com.tencent.aelight.camera.ae.view;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.aelight.camera.aebase.view.AnimationQIMCircleProgress;
 
 class AEPituCameraCaptureButtonLayout$5
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
   AEPituCameraCaptureButtonLayout$5(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!AEPituCameraCaptureButtonLayout.a(this.a)) {
-      return this.a.a(paramView, paramMotionEvent);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (!AEPituCameraCaptureButtonLayout.a(this.a))
+    {
+      this.a.B.setCenterScaleValue(f);
+      return;
     }
-    return AEPituCameraCaptureButtonLayout.a(this.a, paramView, paramMotionEvent);
+    this.a.D.setCenterScaleValue(f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.view.AEPituCameraCaptureButtonLayout.5
  * JD-Core Version:    0.7.0.1
  */

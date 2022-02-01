@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:id="@id/i4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.mobileqq.widget.ClearableEditText android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:textColorHint="@color/skin_hint_input_theme_version2" android:id="@id/bz0" android:background="@drawable/jh" android:layout_height="56.0dip" android:layout_marginTop="@dimen/acq" android:hint="@string/fm" android:drawablePadding="6.0dip" android:contentDescription="@string/j3j" style="@style/mu" />
+    <include android:id="@id/duk" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bx4" />
     <LinearLayout android:orientation="vertical" android:id="@id/lgf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/au" />
     <FrameLayout android:layout_width="fill_parent" android:layout_height="10.0dip" />

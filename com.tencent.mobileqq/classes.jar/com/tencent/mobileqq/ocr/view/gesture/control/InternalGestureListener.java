@@ -18,11 +18,6 @@ public class InternalGestureListener
     this.a = paramGestureController;
   }
   
-  public void a(RotationGestureDetector paramRotationGestureDetector)
-  {
-    this.a.a(paramRotationGestureDetector);
-  }
-  
   public boolean a(RotationGestureDetector paramRotationGestureDetector)
   {
     return this.a.b(paramRotationGestureDetector);
@@ -33,6 +28,11 @@ public class InternalGestureListener
     return this.a.a(paramRotationGestureDetector);
   }
   
+  public void c(RotationGestureDetector paramRotationGestureDetector)
+  {
+    this.a.c(paramRotationGestureDetector);
+  }
+  
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
     return false;
@@ -40,7 +40,7 @@ public class InternalGestureListener
   
   public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return this.a.e(paramMotionEvent);
+    return this.a.g(paramMotionEvent);
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -55,7 +55,7 @@ public class InternalGestureListener
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    this.a.b(paramMotionEvent);
+    this.a.e(paramMotionEvent);
   }
   
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
@@ -70,7 +70,7 @@ public class InternalGestureListener
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.a(paramScaleGestureDetector);
+    this.a.c(paramScaleGestureDetector);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -82,17 +82,17 @@ public class InternalGestureListener
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    return this.a.d(paramMotionEvent);
+    return this.a.f(paramMotionEvent);
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    return this.a.c(paramMotionEvent);
+    return this.a.d(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.control.InternalGestureListener
  * JD-Core Version:    0.7.0.1
  */

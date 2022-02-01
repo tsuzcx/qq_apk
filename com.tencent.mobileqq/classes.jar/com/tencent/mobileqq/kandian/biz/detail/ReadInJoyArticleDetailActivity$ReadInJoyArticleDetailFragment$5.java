@@ -14,12 +14,12 @@ class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$5
   public void a(Context paramContext, AbsBaseArticleInfo paramAbsBaseArticleInfo, FastWebArticleInfo paramFastWebArticleInfo)
   {
     paramContext = this.a;
-    ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(paramContext, paramContext.getSwiftTitleUI().a);
+    ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(paramContext, paramContext.getSwiftTitleUI().h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.detail.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.5
  * JD-Core Version:    0.7.0.1
  */

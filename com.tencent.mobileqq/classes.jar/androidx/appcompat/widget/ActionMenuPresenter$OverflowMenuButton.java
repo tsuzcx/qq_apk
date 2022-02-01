@@ -2,17 +2,16 @@ package androidx.appcompat.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import androidx.appcompat.R.attr;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 class ActionMenuPresenter$OverflowMenuButton
   extends AppCompatImageView
   implements ActionMenuView.ActionMenuChildView
 {
-  private final float[] mTempPts = new float[2];
-  
   public ActionMenuPresenter$OverflowMenuButton(ActionMenuPresenter paramActionMenuPresenter, Context paramContext)
   {
-    super(paramContext, null, 2131034146);
+    super(paramContext, null, R.attr.actionOverflowButtonStyle);
     setClickable(true);
     setFocusable(true);
     setVisibility(0);

@@ -16,18 +16,18 @@ import com.tencent.widget.VerticalGallery.LayoutParams;
 class TimeSelectView$InnerAdapter
   extends BaseAdapter
 {
-  private int jdField_a_of_type_Int = 25;
-  private int b;
+  private int b = 25;
+  private int c;
   
   public TimeSelectView$InnerAdapter(TimeSelectView paramTimeSelectView, int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = ((int)TypedValue.applyDimension(1, paramInt2, paramTimeSelectView.getResources().getDisplayMetrics()));
+    this.c = paramInt1;
+    this.b = ((int)TypedValue.applyDimension(1, paramInt2, paramTimeSelectView.getResources().getDisplayMetrics()));
   }
   
   public int getCount()
   {
-    return TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b);
+    return TimeSelectView.b(this.a).a(this.c);
   }
   
   public Object getItem(int paramInt)
@@ -45,8 +45,8 @@ class TimeSelectView$InnerAdapter
     Object localObject1 = paramView;
     if (paramView == null)
     {
-      localObject1 = new WheelTextView(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext());
-      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.jdField_a_of_type_Int));
+      localObject1 = new WheelTextView(this.a.getContext());
+      ((View)localObject1).setLayoutParams(new VerticalGallery.LayoutParams(-1, this.b));
       ((View)localObject1).setFocusable(true);
       ((View)localObject1).setFocusableInTouchMode(true);
     }
@@ -54,14 +54,14 @@ class TimeSelectView$InnerAdapter
     {
       paramView = new StringBuilder();
       paramView.append("getView column:");
-      paramView.append(this.b);
+      paramView.append(this.c);
       paramView.append(", position: ");
       paramView.append(paramInt);
       QLog.d("TimeSelectView", 2, paramView.toString());
     }
-    paramView = TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView).a(this.b, paramInt);
+    paramView = TimeSelectView.b(this.a).a(this.c, paramInt);
     Object localObject2 = ((View)localObject1).getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject2).height = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView.getContext(), 35.0F);
+    ((ViewGroup.LayoutParams)localObject2).height = DisplayUtil.a(this.a.getContext(), 35.0F);
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -73,8 +73,8 @@ class TimeSelectView$InnerAdapter
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     localObject2 = (WheelTextView)localObject1;
     ((WheelTextView)localObject2).setTextSize(20.0F);
-    ((WheelTextView)localObject2).setTextColor(TimeSelectView.jdField_a_of_type_Int);
-    if (TimeSelectView.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetTimeSelectView)[0].getId() == paramViewGroup.getId()) {
+    ((WheelTextView)localObject2).setTextColor(TimeSelectView.a);
+    if (TimeSelectView.c(this.a)[0].getId() == paramViewGroup.getId()) {
       ((WheelTextView)localObject2).setGravity(8388613);
     } else {
       ((WheelTextView)localObject2).setGravity(8388611);
@@ -86,7 +86,7 @@ class TimeSelectView$InnerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.TimeSelectView.InnerAdapter
  * JD-Core Version:    0.7.0.1
  */

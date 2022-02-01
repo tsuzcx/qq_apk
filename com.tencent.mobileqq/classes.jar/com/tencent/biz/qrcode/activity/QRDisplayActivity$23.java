@@ -11,13 +11,13 @@ class QRDisplayActivity$23
   
   public void run()
   {
-    if (QRUtils.a(this.this$0.app, this.this$0.c) == 1) {
+    if (QRUtils.a(this.this$0.app, this.this$0.n) == 1) {
       str = this.a;
     } else {
       str = this.b;
     }
     QRDisplayActivity localQRDisplayActivity = this.this$0;
-    String str = QRUtils.a(localQRDisplayActivity, str, localQRDisplayActivity.b);
+    String str = QRUtils.a(localQRDisplayActivity, str, localQRDisplayActivity.k);
     ThreadManager.getUIHandler().post(new QRDisplayActivity.23.1(this, str));
   }
 }

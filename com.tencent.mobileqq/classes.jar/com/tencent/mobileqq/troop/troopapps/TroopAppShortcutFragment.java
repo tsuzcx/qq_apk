@@ -50,8 +50,8 @@ public class TroopAppShortcutFragment
     paramBundle = this.a;
     if (paramBundle != null)
     {
-      paramBundle.a();
-      this.a.b();
+      paramBundle.b();
+      this.a.c();
     }
   }
   
@@ -90,8 +90,8 @@ public class TroopAppShortcutFragment
     TroopAppShortcutContainer localTroopAppShortcutContainer = this.a;
     if (localTroopAppShortcutContainer != null)
     {
-      localTroopAppShortcutContainer.c();
-      this.a.g();
+      localTroopAppShortcutContainer.d();
+      this.a.j();
     }
   }
   
@@ -112,7 +112,7 @@ public class TroopAppShortcutFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutFragment
  * JD-Core Version:    0.7.0.1
  */

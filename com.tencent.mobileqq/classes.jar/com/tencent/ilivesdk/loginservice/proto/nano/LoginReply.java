@@ -9,8 +9,8 @@ public final class LoginReply
   extends MessageNano
 {
   public AccountBaseInfo a;
-  public ConfigKeyValue a;
-  public TicketInfo a;
+  public TicketInfo b;
+  public ConfigKeyValue c;
   
   public LoginReply()
   {
@@ -24,9 +24,9 @@ public final class LoginReply
   
   public LoginReply a()
   {
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo = null;
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo = null;
-    this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue = null;
+    this.a = null;
+    this.b = null;
+    this.c = null;
     this.cachedSize = -1;
     return this;
   }
@@ -51,26 +51,26 @@ public final class LoginReply
           }
           else
           {
-            if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue == null) {
-              this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue = new ConfigKeyValue();
+            if (this.c == null) {
+              this.c = new ConfigKeyValue();
             }
-            paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue);
+            paramCodedInputByteBufferNano.readMessage(this.c);
           }
         }
         else
         {
-          if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo == null) {
-            this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo = new TicketInfo();
+          if (this.b == null) {
+            this.b = new TicketInfo();
           }
-          paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo);
+          paramCodedInputByteBufferNano.readMessage(this.b);
         }
       }
       else
       {
-        if (this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo == null) {
-          this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo = new AccountBaseInfo();
+        if (this.a == null) {
+          this.a = new AccountBaseInfo();
         }
-        paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo);
+        paramCodedInputByteBufferNano.readMessage(this.a);
       }
     }
     return this;
@@ -79,17 +79,17 @@ public final class LoginReply
   protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
-    Object localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
+    Object localObject = this.a;
     int i = j;
     if (localObject != null) {
       i = j + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
+    localObject = this.b;
     j = i;
     if (localObject != null) {
       j = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue;
+    localObject = this.c;
     i = j;
     if (localObject != null) {
       i = j + CodedOutputByteBufferNano.computeMessageSize(3, (MessageNano)localObject);
@@ -99,15 +99,15 @@ public final class LoginReply
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoAccountBaseInfo;
+    Object localObject = this.a;
     if (localObject != null) {
       paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoTicketInfo;
+    localObject = this.b;
     if (localObject != null) {
       paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentIlivesdkLoginserviceProtoNanoConfigKeyValue;
+    localObject = this.c;
     if (localObject != null) {
       paramCodedOutputByteBufferNano.writeMessage(3, (MessageNano)localObject);
     }
@@ -116,7 +116,7 @@ public final class LoginReply
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.proto.nano.LoginReply
  * JD-Core Version:    0.7.0.1
  */

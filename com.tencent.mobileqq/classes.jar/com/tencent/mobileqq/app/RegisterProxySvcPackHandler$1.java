@@ -23,7 +23,7 @@ class RegisterProxySvcPackHandler$1
         return;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(RegisterProxySvcPackHandler.a(this.a)), " ,devStatus:", Integer.valueOf(RegisterProxySvcPackHandler.b(this.a)), " ,clientType:", Long.valueOf(RegisterProxySvcPackHandler.a(this.a)), " ,appid:", Long.valueOf(RegisterProxySvcPackHandler.b(this.a)) });
+        QLog.d("RegisterProxySvcPack", 2, new Object[] { "real notify pcStatus:", Integer.valueOf(RegisterProxySvcPackHandler.a(this.a)), " ,devStatus:", Integer.valueOf(RegisterProxySvcPackHandler.b(this.a)), " ,clientType:", Long.valueOf(RegisterProxySvcPackHandler.c(this.a)), " ,appid:", Long.valueOf(RegisterProxySvcPackHandler.d(this.a)) });
       }
       paramMessage = this.a;
       paramMessage.notifyUI(2, true, new Object[] { Integer.valueOf(RegisterProxySvcPackHandler.b(paramMessage)) });
@@ -43,7 +43,7 @@ class RegisterProxySvcPackHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.RegisterProxySvcPackHandler.1
  * JD-Core Version:    0.7.0.1
  */

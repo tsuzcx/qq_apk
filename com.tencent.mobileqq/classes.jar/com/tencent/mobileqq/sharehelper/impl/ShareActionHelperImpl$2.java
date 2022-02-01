@@ -1,38 +1,46 @@
 package com.tencent.mobileqq.sharehelper.impl;
 
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 class ShareActionHelperImpl$2
-  implements Runnable
+  implements WXShareHelper.WXShareListener
 {
-  ShareActionHelperImpl$2(ShareActionHelperImpl paramShareActionHelperImpl, String paramString1, int paramInt, QQProgressDialog paramQQProgressDialog, Map paramMap, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  ShareActionHelperImpl$2(ShareActionHelperImpl paramShareActionHelperImpl, String paramString1, WXShareHelper.WXShareListener[] paramArrayOfWXShareListener, String paramString2, int paramInt) {}
   
-  public void run()
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.this$0.dispatchBeforeShareLinkToWX(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-    if ((localObject != null) && (((QQProgressDialog)localObject).isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    if ((paramBaseResp != null) && (paramBaseResp.transaction != null))
+    {
+      if (!paramBaseResp.transaction.equals(this.a))
+      {
+        QLog.e("ShareActionHelperImpl", 1, "onWXShareResp: mWXTransaction is wrong");
+        return;
+      }
+      WXShareHelper.a().b(this.b[0]);
+      this.b[0] = null;
+      int i = paramBaseResp.errCode;
+      if (i != -2)
+      {
+        if (i != 0)
+        {
+          this.e.dispatchHandleWXLinkRespDenied(this.c, this.d);
+          return;
+        }
+        this.e.dispatchHandleWXLinkRespOK(this.c, this.d);
+        return;
+      }
+      this.e.dispatchHandleWXLinkRespCancel(this.c, this.d);
+      return;
     }
-    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    int i;
-    if (this.jdField_a_of_type_Int == 9) {
-      i = 0;
-    } else {
-      i = 1;
-    }
-    WXShareHelper.a().a(this.b, this.c, (Bitmap)localObject, this.d, this.e, i);
-    QLog.d("ShareActionHelperImpl", 1, "shareLinkToWeChat success");
-    this.this$0.dispatchAfterShareLinkToWX(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    QLog.e("ShareActionHelperImpl", 1, "onWXShareResp: respData is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.sharehelper.impl.ShareActionHelperImpl.2
  * JD-Core Version:    0.7.0.1
  */

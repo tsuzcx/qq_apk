@@ -38,11 +38,11 @@ public class FavoritesProxyImpl
       {
         QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
         Object localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(localQQAppInterface.getApplication().getString(2131692218));
+        ((StringBuilder)localObject2).append(localQQAppInterface.getApplication().getString(2131889205));
         ((StringBuilder)localObject2).append(paramInnerFavoritesData.title);
         localObject2 = ((StringBuilder)localObject2).toString();
         String str1 = paramInnerFavoritesData.entryPath;
-        String str2 = localQQAppInterface.getApplication().getString(2131692217);
+        String str2 = localQQAppInterface.getApplication().getString(2131889204);
         String str3 = paramInnerFavoritesData.summary;
         String str4 = paramInnerFavoritesData.picPath;
         JSONObject localJSONObject = new JSONObject(paramInnerFavoritesData.bizDataList);
@@ -110,7 +110,7 @@ public class FavoritesProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.FavoritesProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,24 @@ import java.io.IOException;
 
 public class TranslateCache
 {
-  private static TransDiskCache jdField_a_of_type_ComRookeryTranslateModelTransDiskCache;
-  private static TransMemCache jdField_a_of_type_ComRookeryTranslateModelTransMemCache;
+  private static TransMemCache a;
+  private static TransDiskCache b;
   
-  public static TransDiskCache a(Context paramContext)
+  public static TransMemCache a(Context paramContext)
   {
-    if (jdField_a_of_type_ComRookeryTranslateModelTransDiskCache == null)
+    try
+    {
+      if (a == null) {
+        a = new TransMemCache(65536);
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public static TransDiskCache b(Context paramContext)
+  {
+    if (b == null)
     {
       int i = ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass() * 1048576 / 8;
       Object localObject;
@@ -26,11 +38,11 @@ public class TranslateCache
       }
       try
       {
-        localObject = jdField_a_of_type_ComRookeryTranslateModelTransDiskCache;
+        localObject = b;
         if (localObject == null) {
           try
           {
-            jdField_a_of_type_ComRookeryTranslateModelTransDiskCache = new TransDiskCache(paramContext, 1, i);
+            b = new TransDiskCache(paramContext, 1, i);
           }
           catch (IOException paramContext)
           {
@@ -46,27 +58,15 @@ public class TranslateCache
       }
       finally {}
     }
-    return jdField_a_of_type_ComRookeryTranslateModelTransDiskCache;
+    return b;
   }
   
-  public static TransMemCache a(Context paramContext)
+  public static TransDiskCache c(Context paramContext)
   {
-    try
-    {
-      if (jdField_a_of_type_ComRookeryTranslateModelTransMemCache == null) {
-        jdField_a_of_type_ComRookeryTranslateModelTransMemCache = new TransMemCache(65536);
-      }
-      return jdField_a_of_type_ComRookeryTranslateModelTransMemCache;
-    }
-    finally {}
-  }
-  
-  public static TransDiskCache b(Context paramContext)
-  {
-    if (jdField_a_of_type_ComRookeryTranslateModelTransDiskCache == null) {
+    if (b == null) {
       ThreadManager.post(new TranslateCache.1(paramContext), 5, null, true);
     }
-    return jdField_a_of_type_ComRookeryTranslateModelTransDiskCache;
+    return b;
   }
 }
 

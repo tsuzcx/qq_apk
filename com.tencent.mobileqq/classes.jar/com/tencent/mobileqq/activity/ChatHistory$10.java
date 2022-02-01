@@ -14,30 +14,30 @@ class ChatHistory$10
   
   public void onClick(View paramView)
   {
-    if (this.a.d < this.a.c)
+    if (this.a.s < this.a.r)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839080);
+      this.a.G.setEnabled(true);
+      this.a.G.setImageResource(2130839235);
       ChatHistory localChatHistory = this.a;
-      localChatHistory.d += 1;
-      if (this.a.d >= this.a.c)
+      localChatHistory.s += 1;
+      if (this.a.s >= this.a.r)
       {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130849919);
+        this.a.H.setEnabled(false);
+        this.a.H.setImageResource(2130851647);
       }
       localChatHistory = this.a;
-      localChatHistory.e = ((localChatHistory.d - 1) * 8);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
+      localChatHistory.t = ((localChatHistory.s - 1) * 8);
+      this.a.j.a(this.a.e, this.a.f, this.a.t);
+      this.a.o.setText(String.valueOf(this.a.s));
+      this.a.o.setSelection(this.a.o.getText().length());
+      this.a.v();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.10
  * JD-Core Version:    0.7.0.1
  */

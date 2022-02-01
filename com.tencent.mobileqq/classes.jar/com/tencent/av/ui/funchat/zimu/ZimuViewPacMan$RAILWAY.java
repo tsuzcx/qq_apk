@@ -2,12 +2,12 @@ package com.tencent.av.ui.funchat.zimu;
 
 class ZimuViewPacMan$RAILWAY
 {
-  int jdField_a_of_type_Int;
+  int a;
   int b;
   
   public ZimuViewPacMan$RAILWAY(ZimuViewPacMan paramZimuViewPacMan, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
+    this.a = paramInt1;
     this.b = paramInt2;
   }
 }

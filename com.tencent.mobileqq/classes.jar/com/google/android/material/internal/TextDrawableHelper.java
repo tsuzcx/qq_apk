@@ -12,14 +12,14 @@ import java.lang.ref.WeakReference;
 @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class TextDrawableHelper
 {
-  private float jdField_a_of_type_Float;
-  private final TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
+  private final TextPaint a = new TextPaint(1);
+  private final TextAppearanceFontCallback b = new TextDrawableHelper.1(this);
+  private float c;
+  private boolean d = true;
   @Nullable
-  private TextAppearance jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance;
-  private final TextAppearanceFontCallback jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback = new TextDrawableHelper.1(this);
+  private WeakReference<TextDrawableHelper.TextDrawableDelegate> e = new WeakReference(null);
   @Nullable
-  private WeakReference<TextDrawableHelper.TextDrawableDelegate> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private boolean jdField_a_of_type_Boolean = true;
+  private TextAppearance f;
   
   public TextDrawableHelper(@Nullable TextDrawableHelper.TextDrawableDelegate paramTextDrawableDelegate)
   {
@@ -31,60 +31,54 @@ public class TextDrawableHelper
     if (paramCharSequence == null) {
       return 0.0F;
     }
-    return this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length());
+    return this.a.measureText(paramCharSequence, 0, paramCharSequence.length());
   }
   
   public float a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      return this.jdField_a_of_type_Float;
+    if (!this.d) {
+      return this.c;
     }
-    this.jdField_a_of_type_Float = a(paramString);
-    this.jdField_a_of_type_Boolean = false;
-    return this.jdField_a_of_type_Float;
+    this.c = a(paramString);
+    this.d = false;
+    return this.c;
   }
   
   @NonNull
   public TextPaint a()
   {
-    return this.jdField_a_of_type_AndroidTextTextPaint;
-  }
-  
-  @Nullable
-  public TextAppearance a()
-  {
-    return this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance;
+    return this.a;
   }
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance.b(paramContext, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback);
+    this.f.b(paramContext, this.a, this.b);
   }
   
   public void a(@Nullable TextDrawableHelper.TextDrawableDelegate paramTextDrawableDelegate)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTextDrawableDelegate);
+    this.e = new WeakReference(paramTextDrawableDelegate);
   }
   
   public void a(@Nullable TextAppearance paramTextAppearance, Context paramContext)
   {
-    if (this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance != paramTextAppearance)
+    if (this.f != paramTextAppearance)
     {
-      this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearance = paramTextAppearance;
+      this.f = paramTextAppearance;
       if (paramTextAppearance != null)
       {
-        paramTextAppearance.c(paramContext, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback);
-        TextDrawableHelper.TextDrawableDelegate localTextDrawableDelegate = (TextDrawableHelper.TextDrawableDelegate)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramTextAppearance.c(paramContext, this.a, this.b);
+        TextDrawableHelper.TextDrawableDelegate localTextDrawableDelegate = (TextDrawableHelper.TextDrawableDelegate)this.e.get();
         if (localTextDrawableDelegate != null) {
-          this.jdField_a_of_type_AndroidTextTextPaint.drawableState = localTextDrawableDelegate.getState();
+          this.a.drawableState = localTextDrawableDelegate.getState();
         }
-        paramTextAppearance.b(paramContext, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_ComGoogleAndroidMaterialResourcesTextAppearanceFontCallback);
-        this.jdField_a_of_type_Boolean = true;
+        paramTextAppearance.b(paramContext, this.a, this.b);
+        this.d = true;
       }
-      paramTextAppearance = (TextDrawableHelper.TextDrawableDelegate)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramTextAppearance = (TextDrawableHelper.TextDrawableDelegate)this.e.get();
       if (paramTextAppearance != null)
       {
-        paramTextAppearance.a();
+        paramTextAppearance.f();
         paramTextAppearance.onStateChange(paramTextAppearance.getState());
       }
     }
@@ -92,12 +86,18 @@ public class TextDrawableHelper
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
+  }
+  
+  @Nullable
+  public TextAppearance b()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.internal.TextDrawableHelper
  * JD-Core Version:    0.7.0.1
  */

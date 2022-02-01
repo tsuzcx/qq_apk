@@ -11,12 +11,12 @@ class SSOLoginAction$5
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    SSOLoginAction.a(this.jdField_a_of_type_ComTencentOpenAgentStrategySSOLoginAction, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, "");
+    SSOLoginAction.a(this.c, this.a, this.b, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.strategy.SSOLoginAction.5
  * JD-Core Version:    0.7.0.1
  */

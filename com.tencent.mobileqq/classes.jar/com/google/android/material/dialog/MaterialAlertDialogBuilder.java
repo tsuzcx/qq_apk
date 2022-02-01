@@ -31,16 +31,16 @@ public class MaterialAlertDialogBuilder
   extends AlertDialog.Builder
 {
   @AttrRes
-  private static final int jdField_a_of_type_Int = R.attr.alertDialogStyle;
+  private static final int a = R.attr.a;
   @StyleRes
   private static final int b = R.style.b;
   @AttrRes
-  private static final int c = R.attr.u;
+  private static final int c = R.attr.B;
+  @Nullable
+  private Drawable d;
   @Dimension
   @NonNull
-  private final Rect jdField_a_of_type_AndroidGraphicsRect;
-  @Nullable
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private final Rect e;
   
   @NonNull
   public MaterialAlertDialogBuilder a(@StringRes int paramInt)
@@ -234,12 +234,12 @@ public class MaterialAlertDialogBuilder
     AlertDialog localAlertDialog = super.create();
     Window localWindow = localAlertDialog.getWindow();
     View localView = localWindow.getDecorView();
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.d;
     if ((localDrawable instanceof MaterialShapeDrawable)) {
       ((MaterialShapeDrawable)localDrawable).r(ViewCompat.getElevation(localView));
     }
-    localWindow.setBackgroundDrawable(MaterialDialogs.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsRect));
-    localView.setOnTouchListener(new InsetDialogOnTouchListener(localAlertDialog, this.jdField_a_of_type_AndroidGraphicsRect));
+    localWindow.setBackgroundDrawable(MaterialDialogs.a(this.d, this.e));
+    localView.setOnTouchListener(new InsetDialogOnTouchListener(localAlertDialog, this.e));
     return localAlertDialog;
   }
   
@@ -269,7 +269,7 @@ public class MaterialAlertDialogBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.dialog.MaterialAlertDialogBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,12 @@ public final class VasAdvWebPlugin$getVasRewardAdCallback$1
       localJSONObject.put("request_busi_buff", new String(paramArrayOfByte1, Charsets.UTF_8));
     }
     paramArrayOfByte2.put("data", localJSONObject);
-    this.jdField_a_of_type_ComTencentMobileqqVasAdvWebVasAdvWebPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramArrayOfByte2.toString(0) });
+    this.a.callJs(this.b, new String[] { paramArrayOfByte2.toString(0) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.adv.web.VasAdvWebPlugin.getVasRewardAdCallback.1
  * JD-Core Version:    0.7.0.1
  */

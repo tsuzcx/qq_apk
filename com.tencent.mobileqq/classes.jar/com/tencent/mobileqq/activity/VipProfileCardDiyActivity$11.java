@@ -39,10 +39,10 @@ class VipProfileCardDiyActivity$11
     //   60: aload 9
     //   62: aload_0
     //   63: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   66: getfield 69	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:d	I
+    //   66: getfield 69	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:O	I
     //   69: aload_0
     //   70: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   73: getfield 72	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:e	I
+    //   73: getfield 72	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:P	I
     //   76: invokevirtual 75	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   79: putfield 78	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   82: new 80	java/io/BufferedInputStream
@@ -74,27 +74,27 @@ class VipProfileCardDiyActivity$11
     //   138: iconst_1
     //   139: ldc 104
     //   141: aload 6
-    //   143: invokestatic 109	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   143: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   146: return
     //   147: aload 7
     //   149: astore 6
     //   151: aload 8
-    //   153: invokevirtual 115	android/graphics/Bitmap:getHeight	()I
+    //   153: invokevirtual 116	android/graphics/Bitmap:getHeight	()I
     //   156: istore_2
     //   157: aload 7
     //   159: astore 6
     //   161: aload 8
-    //   163: invokevirtual 118	android/graphics/Bitmap:getWidth	()I
+    //   163: invokevirtual 119	android/graphics/Bitmap:getWidth	()I
     //   166: istore_3
     //   167: aload 7
     //   169: astore 6
     //   171: aload_0
     //   172: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   175: getfield 69	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:d	I
+    //   175: getfield 69	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:O	I
     //   178: i2f
     //   179: aload_0
     //   180: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   183: getfield 72	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:e	I
+    //   183: getfield 72	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:P	I
     //   186: i2f
     //   187: fdiv
     //   188: fstore_1
@@ -106,7 +106,7 @@ class VipProfileCardDiyActivity$11
     //   196: fload_1
     //   197: fmul
     //   198: f2i
-    //   199: invokestatic 124	java/lang/Math:min	(II)I
+    //   199: invokestatic 125	java/lang/Math:min	(II)I
     //   202: istore 4
     //   204: aload 7
     //   206: astore 6
@@ -118,58 +118,58 @@ class VipProfileCardDiyActivity$11
     //   214: istore 5
     //   216: aload 7
     //   218: astore 6
-    //   220: invokestatic 128	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   220: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   223: ifeq +478 -> 701
     //   226: aload 7
     //   228: astore 6
-    //   230: new 130	java/lang/StringBuilder
+    //   230: new 131	java/lang/StringBuilder
     //   233: dup
-    //   234: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   234: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   237: astore 11
     //   239: aload 7
     //   241: astore 6
     //   243: aload 11
-    //   245: ldc 133
-    //   247: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: ldc 134
+    //   247: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   250: pop
     //   251: aload 7
     //   253: astore 6
     //   255: aload 11
     //   257: iload 4
-    //   259: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   259: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   262: pop
     //   263: aload 7
     //   265: astore 6
     //   267: aload 11
-    //   269: ldc 142
-    //   271: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: ldc 143
+    //   271: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   274: pop
     //   275: aload 7
     //   277: astore 6
     //   279: aload 11
     //   281: iload 5
-    //   283: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   283: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   286: pop
     //   287: aload 7
     //   289: astore 6
     //   291: aload 11
-    //   293: ldc 144
-    //   295: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   293: ldc 145
+    //   295: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   298: pop
     //   299: aload 7
     //   301: astore 6
     //   303: aload 11
     //   305: aload 9
     //   307: getfield 78	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   310: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   310: invokevirtual 141	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   313: pop
     //   314: aload 7
     //   316: astore 6
     //   318: ldc 102
     //   320: iconst_2
     //   321: aload 11
-    //   323: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   326: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   323: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   326: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   329: goto +372 -> 701
     //   332: aload 7
     //   334: astore 6
@@ -178,59 +178,59 @@ class VipProfileCardDiyActivity$11
     //   339: iconst_0
     //   340: iload 4
     //   342: iload 5
-    //   344: invokestatic 155	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   344: invokestatic 157	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
     //   347: astore 9
     //   349: aload 7
     //   351: astore 6
     //   353: aload 8
-    //   355: invokevirtual 158	android/graphics/Bitmap:recycle	()V
+    //   355: invokevirtual 160	android/graphics/Bitmap:recycle	()V
     //   358: aload 7
     //   360: astore 6
-    //   362: invokestatic 128	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   362: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   365: ifeq +351 -> 716
     //   368: aload 7
     //   370: astore 6
     //   372: ldc 102
     //   374: iconst_2
-    //   375: ldc 160
-    //   377: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   375: ldc 162
+    //   377: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   380: goto +336 -> 716
     //   383: aload 8
     //   385: ifnull +47 -> 432
     //   388: aload 7
     //   390: astore 6
-    //   392: new 162	android/graphics/drawable/BitmapDrawable
+    //   392: new 164	android/graphics/drawable/BitmapDrawable
     //   395: dup
     //   396: aload 10
     //   398: aload 8
-    //   400: invokespecial 165	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   400: invokespecial 167	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
     //   403: astore 8
     //   405: aload 7
     //   407: astore 6
     //   409: aload 8
     //   411: aload 10
-    //   413: invokevirtual 171	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   416: invokevirtual 175	android/graphics/drawable/BitmapDrawable:setTargetDensity	(Landroid/util/DisplayMetrics;)V
+    //   413: invokevirtual 173	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   416: invokevirtual 177	android/graphics/drawable/BitmapDrawable:setTargetDensity	(Landroid/util/DisplayMetrics;)V
     //   419: aload 7
     //   421: astore 6
     //   423: aload_0
     //   424: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
     //   427: aload 8
-    //   429: putfield 178	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   429: putfield 181	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:ag	Landroid/graphics/drawable/Drawable;
     //   432: aload 7
     //   434: astore 6
     //   436: aload_0
     //   437: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   440: getfield 178	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_AndroidGraphicsDrawableDrawable	Landroid/graphics/drawable/Drawable;
+    //   440: getfield 181	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:ag	Landroid/graphics/drawable/Drawable;
     //   443: ifnull +21 -> 464
     //   446: aload 7
     //   448: astore 6
     //   450: aload_0
     //   451: getfield 14	com/tencent/mobileqq/activity/VipProfileCardDiyActivity$11:this$0	Lcom/tencent/mobileqq/activity/VipProfileCardDiyActivity;
-    //   454: getfield 181	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:jdField_a_of_type_ComTencentUtilWeakReferenceHandler	Lcom/tencent/util/WeakReferenceHandler;
+    //   454: getfield 185	com/tencent/mobileqq/activity/VipProfileCardDiyActivity:ak	Lcom/tencent/util/WeakReferenceHandler;
     //   457: iconst_3
-    //   458: invokevirtual 187	com/tencent/util/WeakReferenceHandler:obtainMessage	(I)Landroid/os/Message;
-    //   461: invokevirtual 192	android/os/Message:sendToTarget	()V
+    //   458: invokevirtual 191	com/tencent/util/WeakReferenceHandler:obtainMessage	(I)Landroid/os/Message;
+    //   461: invokevirtual 196	android/os/Message:sendToTarget	()V
     //   464: aload 7
     //   466: invokevirtual 100	java/io/BufferedInputStream:close	()V
     //   469: return
@@ -247,34 +247,34 @@ class VipProfileCardDiyActivity$11
     //   491: astore 7
     //   493: aload 7
     //   495: astore 6
-    //   497: invokestatic 128	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   497: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   500: ifeq +58 -> 558
     //   503: aload 7
     //   505: astore 6
-    //   507: new 130	java/lang/StringBuilder
+    //   507: new 131	java/lang/StringBuilder
     //   510: dup
-    //   511: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   511: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   514: astore 9
     //   516: aload 7
     //   518: astore 6
     //   520: aload 9
-    //   522: ldc 194
-    //   524: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   522: ldc 198
+    //   524: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   527: pop
     //   528: aload 7
     //   530: astore 6
     //   532: aload 9
     //   534: aload 8
-    //   536: invokevirtual 197	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   539: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   536: invokevirtual 201	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   539: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   542: pop
     //   543: aload 7
     //   545: astore 6
     //   547: ldc 102
     //   549: iconst_2
     //   550: aload 9
-    //   552: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   555: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   552: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   555: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   558: aload 7
     //   560: ifnull +102 -> 662
     //   563: aload 7
@@ -285,34 +285,34 @@ class VipProfileCardDiyActivity$11
     //   572: astore 7
     //   574: aload 7
     //   576: astore 6
-    //   578: invokestatic 128	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   578: invokestatic 129	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   581: ifeq +58 -> 639
     //   584: aload 7
     //   586: astore 6
-    //   588: new 130	java/lang/StringBuilder
+    //   588: new 131	java/lang/StringBuilder
     //   591: dup
-    //   592: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   592: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   595: astore 9
     //   597: aload 7
     //   599: astore 6
     //   601: aload 9
-    //   603: ldc 199
-    //   605: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   603: ldc 203
+    //   605: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   608: pop
     //   609: aload 7
     //   611: astore 6
     //   613: aload 9
     //   615: aload 8
-    //   617: invokevirtual 200	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   620: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   617: invokevirtual 204	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   620: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   623: pop
     //   624: aload 7
     //   626: astore 6
     //   628: ldc 102
     //   630: iconst_2
     //   631: aload 9
-    //   633: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   636: invokestatic 151	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   633: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   636: invokestatic 153	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   639: aload 7
     //   641: ifnull +21 -> 662
     //   644: aload 7
@@ -323,7 +323,7 @@ class VipProfileCardDiyActivity$11
     //   654: iconst_1
     //   655: ldc 104
     //   657: aload 6
-    //   659: invokestatic 109	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   659: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   662: return
     //   663: astore 8
     //   665: aload 6
@@ -340,7 +340,7 @@ class VipProfileCardDiyActivity$11
     //   690: iconst_1
     //   691: ldc 104
     //   693: aload 7
-    //   695: invokestatic 109	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   695: invokestatic 110	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   698: aload 6
     //   700: athrow
     //   701: iload_3
@@ -476,7 +476,7 @@ class VipProfileCardDiyActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -36,8 +36,8 @@ public class FFmpegUtils
   
   private static void clipAudio(PublishVideoEntry paramPublishVideoEntry, ExecuteBinResponseCallback paramExecuteBinResponseCallback, String paramString1, int paramInt1, int paramInt2, String paramString2, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (FileUtils.b(paramString2)) {
-      FileUtils.f(paramString2);
+    if (FileUtils.c(paramString2)) {
+      FileUtils.j(paramString2);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 3;
@@ -65,12 +65,12 @@ public class FFmpegUtils
   {
     long l = System.currentTimeMillis();
     Object localObject1 = getAuidoType(paramString2);
-    Object localObject2 = new File(QQStoryConstant.g);
+    Object localObject2 = new File(QQStoryConstant.h);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
     localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(QQStoryConstant.g);
+    ((StringBuffer)localObject2).append(QQStoryConstant.h);
     ((StringBuffer)localObject2).append(paramString2.hashCode());
     ((StringBuffer)localObject2).append("_");
     ((StringBuffer)localObject2).append(paramInt1);
@@ -336,8 +336,8 @@ public class FFmpegUtils
   
   private static void combineVideoAndAudio(String paramString1, PublishVideoEntry paramPublishVideoEntry, boolean paramBoolean, ExecuteBinResponseCallback paramExecuteBinResponseCallback, int paramInt, long paramLong, String paramString2, ArrayList<FFmpegCommandUnit> paramArrayList, String paramString3, String paramString4, String paramString5)
   {
-    if (FileUtils.b(paramString1)) {
-      FileUtils.f(paramString1);
+    if (FileUtils.c(paramString1)) {
+      FileUtils.j(paramString1);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 4;
@@ -494,8 +494,8 @@ public class FFmpegUtils
   
   private static void getAudioFromMp4(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (FileUtils.b(paramString2)) {
-      FileUtils.f(paramString2);
+    if (FileUtils.c(paramString2)) {
+      FileUtils.j(paramString2);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 18;
@@ -540,8 +540,8 @@ public class FFmpegUtils
   
   private static void getVideoFromMp4(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (FileUtils.b(paramString1)) {
-      FileUtils.f(paramString1);
+    if (FileUtils.c(paramString1)) {
+      FileUtils.j(paramString1);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 19;
@@ -562,8 +562,8 @@ public class FFmpegUtils
   
   private static void mixMusicAndOriginal(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, String paramString3, float paramFloat1, float paramFloat2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (FileUtils.b(paramString3)) {
-      FileUtils.f(paramString3);
+    if (FileUtils.c(paramString3)) {
+      FileUtils.j(paramString3);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 17;
@@ -587,12 +587,12 @@ public class FFmpegUtils
     } else {
       i = 1;
     }
-    Object localObject2 = new File(QQStoryConstant.g);
+    Object localObject2 = new File(QQStoryConstant.h);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
     }
     localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(QQStoryConstant.g);
+    ((StringBuffer)localObject2).append(QQStoryConstant.h);
     ((StringBuffer)localObject2).append(str.hashCode());
     ((StringBuffer)localObject2).append("_");
     ((StringBuffer)localObject2).append(j);
@@ -634,13 +634,13 @@ public class FFmpegUtils
       transcodeAudio(paramPublishVideoEntry, str, (String)localObject4, paramExecuteBinResponseCallback, (ArrayList)localObject3);
     }
     Object localObject5 = new StringBuffer();
-    ((StringBuffer)localObject5).append(QQStoryConstant.g);
+    ((StringBuffer)localObject5).append(QQStoryConstant.h);
     ((StringBuffer)localObject5).append(((String)localObject1).hashCode());
     ((StringBuffer)localObject5).append("_mix_with_music");
     ((StringBuffer)localObject5).append(".mp4");
     localObject5 = new String((StringBuffer)localObject5);
     Object localObject6 = new StringBuilder();
-    ((StringBuilder)localObject6).append(QQStoryConstant.g);
+    ((StringBuilder)localObject6).append(QQStoryConstant.h);
     ((StringBuilder)localObject6).append(paramString1.hashCode());
     ((StringBuilder)localObject6).append("_none_audio_video.mp4");
     localObject6 = ((StringBuilder)localObject6).toString();
@@ -678,8 +678,8 @@ public class FFmpegUtils
   
   private static void transcodeAudio(PublishVideoEntry paramPublishVideoEntry, String paramString1, String paramString2, ExecuteBinResponseCallback paramExecuteBinResponseCallback, ArrayList<FFmpegCommandUnit> paramArrayList)
   {
-    if (FileUtils.b(paramString2)) {
-      FileUtils.f(paramString2);
+    if (FileUtils.c(paramString2)) {
+      FileUtils.j(paramString2);
     }
     FFmpegCommandUnit localFFmpegCommandUnit = new FFmpegCommandUnit();
     localFFmpegCommandUnit.cmdType = 21;
@@ -700,7 +700,7 @@ public class FFmpegUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.ffmpeg.FFmpegUtils
  * JD-Core Version:    0.7.0.1
  */

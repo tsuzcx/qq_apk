@@ -16,7 +16,7 @@ class PlayOperationViewModelImpl$29
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.mHeadBinding.findViewById(2131367073).setVisibility(8);
+    this.a.mHeadBinding.findViewById(2131433526).setVisibility(8);
     this.a.isPlayingAnim = false;
   }
   
@@ -27,12 +27,12 @@ class PlayOperationViewModelImpl$29
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.a.mHeadBinding.findViewById(2131367073).setVisibility(0);
+    this.a.mHeadBinding.findViewById(2131433526).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.viewmodel.impl.PlayOperationViewModelImpl.29
  * JD-Core Version:    0.7.0.1
  */

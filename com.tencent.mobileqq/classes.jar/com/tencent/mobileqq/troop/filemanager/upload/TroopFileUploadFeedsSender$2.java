@@ -35,27 +35,27 @@ class TroopFileUploadFeedsSender$2
         ((StringBuilder)localObject1).append((String)localObject2);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
-      if (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath)) {
+      if (!((String)localObject1).equalsIgnoreCase(this.a.c.FilePath)) {
         return;
       }
-      paramInt = TroopFileTransferUtil.Log.a;
+      paramInt = TroopFileTransferUtil.Log.b;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("[");
-      ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.a.d);
       ((StringBuilder)localObject2).append("] onGetOneFileResult. bus_id:");
       ((StringBuilder)localObject2).append(paramFileInfo.uint32_bus_id.get());
       ((StringBuilder)localObject2).append(" dead_time:");
       ((StringBuilder)localObject2).append(paramFileInfo.uint32_dead_time.get());
       TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", paramInt, ((StringBuilder)localObject2).toString());
-      localObject2 = TroopFileTransferUtil.a(this.a.jdField_a_of_type_Long);
+      localObject2 = TroopFileTransferUtil.a(this.a.b);
       if (localObject2 != null)
       {
         localObject1 = ((TroopFileManager)localObject2).a((String)localObject1);
         if (localObject1 != null)
         {
-          ((TroopFileInfo)localObject1).a = paramFileInfo.uint32_bus_id.get();
-          ((TroopFileInfo)localObject1).c = paramFileInfo.uint32_dead_time.get();
-          ((TroopFileManager)localObject2).d((TroopFileInfo)localObject1);
+          ((TroopFileInfo)localObject1).f = paramFileInfo.uint32_bus_id.get();
+          ((TroopFileInfo)localObject1).j = paramFileInfo.uint32_dead_time.get();
+          ((TroopFileManager)localObject2).e((TroopFileInfo)localObject1);
         }
       }
     }
@@ -63,7 +63,7 @@ class TroopFileUploadFeedsSender$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.2
  * JD-Core Version:    0.7.0.1
  */

@@ -10,36 +10,31 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Cuckoo
 {
-  private static ClassLoadCallback jdField_a_of_type_ComTencentMobileqqCuckooClassLoadCallback;
-  private static String jdField_a_of_type_JavaLangString;
-  private static Map<Integer, MethodCopyOnWriteSet> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private static boolean jdField_a_of_type_Boolean;
-  private static Map<Integer, String> b;
-  private static final Map<String, String> c;
+  private static Map<Integer, MethodCopyOnWriteSet> a = new ConcurrentHashMap();
+  private static ClassLoadCallback b = new Cuckoo.1();
+  private static Map<Integer, String> c = new ConcurrentHashMap();
+  private static String d = "";
+  private static boolean e = false;
+  private static final Map<String, String> f = new HashMap();
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqCuckooClassLoadCallback = new Cuckoo.1();
-    b = new ConcurrentHashMap();
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_Boolean = false;
-    c = new HashMap();
-    c.put("boolean", "Z");
-    c.put("byte", "B");
-    c.put("char", "C");
-    c.put("short", "S");
-    c.put("int", "I");
-    c.put("long", "J");
-    c.put("float", "F");
-    c.put("double", "D");
+    f.put("boolean", "Z");
+    f.put("byte", "B");
+    f.put("char", "C");
+    f.put("short", "S");
+    f.put("int", "I");
+    f.put("long", "J");
+    f.put("float", "F");
+    f.put("double", "D");
   }
   
   private static void a(int paramInt, Callback paramCallback)
   {
     MethodCopyOnWriteSet localMethodCopyOnWriteSet;
-    if (jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+    if (a.containsKey(Integer.valueOf(paramInt)))
     {
-      localMethodCopyOnWriteSet = (MethodCopyOnWriteSet)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      localMethodCopyOnWriteSet = (MethodCopyOnWriteSet)a.get(Integer.valueOf(paramInt));
       if (localMethodCopyOnWriteSet.a(paramCallback) != -1) {
         throw new IllegalArgumentException("Callback has been registered");
       }
@@ -49,7 +44,7 @@ public class Cuckoo
       localMethodCopyOnWriteSet = new MethodCopyOnWriteSet();
     }
     localMethodCopyOnWriteSet.a((MethodCallback)paramCallback);
-    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localMethodCopyOnWriteSet);
+    a.put(Integer.valueOf(paramInt), localMethodCopyOnWriteSet);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, Callback paramCallback)
@@ -57,7 +52,7 @@ public class Cuckoo
     int i = registMethodByClassNameJNI(paramString1, paramString2, paramString3);
     if (i != -1)
     {
-      b.put(Integer.valueOf(i), paramString1);
+      c.put(Integer.valueOf(i), paramString1);
       a(i, paramCallback);
       return;
     }
@@ -68,7 +63,7 @@ public class Cuckoo
   {
     try
     {
-      boolean bool = jdField_a_of_type_Boolean;
+      boolean bool = e;
       if (bool == true) {
         return;
       }
@@ -87,7 +82,7 @@ public class Cuckoo
         localIOException.printStackTrace();
       }
       startCuckoo();
-      jdField_a_of_type_Boolean = true;
+      e = true;
       return;
     }
     finally {}
@@ -117,7 +112,7 @@ public class Cuckoo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.cuckoo.Cuckoo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.datareport.TXCDRExtInfo;
 import com.tencent.liteav.basic.datareport.a;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.h;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,7 +38,7 @@ public class j
   public j(Context paramContext)
   {
     this.a = paramContext.getApplicationContext();
-    this.b = f.b(this.a);
+    this.b = h.b(this.a);
     this.d = "Android";
     i.a().a(this.a);
     a();
@@ -103,7 +103,7 @@ public class j
       localTXCDRExtInfo.report_common = false;
       localTXCDRExtInfo.report_status = false;
       localTXCDRExtInfo.url = this.e;
-      TXCDRApi.InitEvent(this.a, str2, a.T, a.al, localTXCDRExtInfo);
+      TXCDRApi.InitEvent(this.a, str2, a.T, a.am, localTXCDRExtInfo);
       TXCDRApi.txSetEventValue(str2, a.T, "str_user_id", this.b);
       TXCDRApi.txSetEventValue(str2, a.T, "str_stream_id", str1);
       TXCDRApi.txSetEventValue(str2, a.T, "str_access_id", this.c);
@@ -285,7 +285,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.j
  * JD-Core Version:    0.7.0.1
  */

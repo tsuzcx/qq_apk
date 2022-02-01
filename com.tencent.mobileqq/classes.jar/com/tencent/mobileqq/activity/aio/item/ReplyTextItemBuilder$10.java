@@ -19,46 +19,52 @@ final class ReplyTextItemBuilder$10
   
   public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
   {
-    if ((paramView instanceof ChatThumbView))
-    {
+    if ((paramView instanceof ChatThumbView)) {
       if (paramMessageRecord2 != null)
       {
         if (((paramMessageRecord2 instanceof MessageForText)) && (((MessageForText)paramMessageRecord2).msg != null))
         {
-          ReplyTextItemBuilder.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, paramMessageRecord2);
-          paramContext = new StringBuilder();
-          paramContext.append("returned text msg error!");
-          paramContext.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText);
-          QLog.e("ReplyTextItemBuilder", 1, paramContext.toString());
-          return;
-        }
-        if ((paramMessageRecord1 instanceof MessageForReplyText))
-        {
-          paramContext = (MessageForReplyText)paramMessageRecord1;
-          if (paramContext.getSourceMessage() != null) {
-            paramContext.setSourceMessageRecord(paramMessageRecord2);
+          ReplyTextItemBuilder.a(this.a, this.b, 1, this.c.mSourceMsgText, paramMessageRecord2);
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("returned text msg error!");
+            paramContext.append(this.c.mSourceMsgText);
+            QLog.e("ReplyTextItemBuilder", 1, paramContext.toString());
           }
         }
-        ReplyTextItemBuilder.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, paramString);
-        return;
+        else
+        {
+          if ((paramMessageRecord1 instanceof MessageForReplyText))
+          {
+            paramContext = (MessageForReplyText)paramMessageRecord1;
+            if (paramContext.getSourceMessage() != null) {
+              paramContext.setSourceMessageRecord(paramMessageRecord2);
+            }
+          }
+          ReplyTextItemBuilder.a(paramMessageRecord2, this.c, this.d, this.e, this.a, this.b, this.f, this.g, this.h, this.i, paramQQAppInterface, paramString);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReplyTextItemBuilder", 2, "processReplyMsg:source msg has been deleted.");
-      }
-      paramContext = this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
-      if (paramContext != null)
+      else
       {
-        paramContext.setVisibility(0);
-        ReplyTextItemBuilder.a(this.jdField_a_of_type_AndroidWidgetTextView, 0);
-        ReplyTextItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-        ReplyTextItemBuilder.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, null);
+        if (QLog.isColorLevel()) {
+          QLog.w("ReplyTextItemBuilder", 2, "processReplyMsg:source msg has been deleted.");
+        }
+        paramContext = this.d;
+        if (paramContext != null)
+        {
+          paramContext.setVisibility(0);
+          ReplyTextItemBuilder.a(this.e, 0);
+          ReplyTextItemBuilder.a(this.i, paramQQAppInterface, this.d, this.h, null);
+          ReplyTextItemBuilder.a(this.a, this.b, 1, this.c.mSourceMsgText, null);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.10
  * JD-Core Version:    0.7.0.1
  */

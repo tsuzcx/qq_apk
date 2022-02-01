@@ -15,14 +15,14 @@ class ThemeHbFragment$4
   
   public void onAnimationStart(AnimationView paramAnimationView)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
+    if (ThemeHbFragment.f(this.a).getChildCount() > 0) {
+      ThemeHbFragment.f(this.a).removeViewAt(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.send.impl.ThemeHbFragment.4
  * JD-Core Version:    0.7.0.1
  */

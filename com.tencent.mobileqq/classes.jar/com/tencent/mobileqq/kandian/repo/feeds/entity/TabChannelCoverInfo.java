@@ -12,10 +12,16 @@ public class TabChannelCoverInfo
   public long bid = 0L;
   public int boldFont;
   public long channelConfigType;
+  @notColumn
+  public String defaultIcon;
   public int dynamicSort;
   public long endTimestamp;
   public int fontsColor;
   public int frameColor;
+  @notColumn
+  public String iconUrl;
+  @notColumn
+  public boolean isIconTab = false;
   public boolean isImmersive = false;
   public boolean isXTabMode = false;
   @notColumn
@@ -63,14 +69,14 @@ public class TabChannelCoverInfo
     if (this.redPoint != null)
     {
       localTabChannelCoverInfo.redPoint = new TabChannelCoverInfo.RedPoint();
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = this.redPoint.jdField_a_of_type_Boolean;
-      localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long = this.redPoint.jdField_b_of_type_Long;
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long = this.redPoint.jdField_a_of_type_Long;
-      localTabChannelCoverInfo.redPoint.jdField_c_of_type_Long = this.redPoint.jdField_c_of_type_Long;
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_Int = this.redPoint.jdField_a_of_type_Int;
-      localTabChannelCoverInfo.redPoint.jdField_a_of_type_JavaLangString = this.redPoint.jdField_a_of_type_JavaLangString;
-      localTabChannelCoverInfo.redPoint.jdField_b_of_type_Int = this.redPoint.jdField_b_of_type_Int;
-      localTabChannelCoverInfo.redPoint.jdField_c_of_type_Int = this.redPoint.jdField_c_of_type_Int;
+      localTabChannelCoverInfo.redPoint.a = this.redPoint.a;
+      localTabChannelCoverInfo.redPoint.c = this.redPoint.c;
+      localTabChannelCoverInfo.redPoint.b = this.redPoint.b;
+      localTabChannelCoverInfo.redPoint.d = this.redPoint.d;
+      localTabChannelCoverInfo.redPoint.e = this.redPoint.e;
+      localTabChannelCoverInfo.redPoint.f = this.redPoint.f;
+      localTabChannelCoverInfo.redPoint.g = this.redPoint.g;
+      localTabChannelCoverInfo.redPoint.h = this.redPoint.h;
     }
     return localTabChannelCoverInfo;
   }
@@ -96,30 +102,24 @@ public class TabChannelCoverInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("TabChannelCoverInfo{redPoint=");
-    Object localObject = this.redPoint;
-    if (localObject != null) {
-      localObject = ((TabChannelCoverInfo.RedPoint)localObject).toString();
-    } else {
-      localObject = "";
-    }
-    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(this.redPoint);
     localStringBuilder.append(", startTimestamp=");
     localStringBuilder.append(this.startTimestamp);
     localStringBuilder.append(", endTimestamp=");
     localStringBuilder.append(this.endTimestamp);
     localStringBuilder.append(", reason=");
     localStringBuilder.append(this.reason);
-    localStringBuilder.append(", bold_font=");
+    localStringBuilder.append(", boldFont=");
     localStringBuilder.append(this.boldFont);
-    localStringBuilder.append(", show_icon=");
+    localStringBuilder.append(", showIcon=");
     localStringBuilder.append(this.showIcon);
-    localStringBuilder.append(", show_cover=");
+    localStringBuilder.append(", showCover=");
     localStringBuilder.append(this.showCover);
-    localStringBuilder.append(", frame_color=");
+    localStringBuilder.append(", frameColor=");
     localStringBuilder.append(this.frameColor);
-    localStringBuilder.append(", fonts_color=");
+    localStringBuilder.append(", fontsColor=");
     localStringBuilder.append(this.fontsColor);
-    localStringBuilder.append(", web_url='");
+    localStringBuilder.append(", webUrl='");
     localStringBuilder.append(this.webUrl);
     localStringBuilder.append('\'');
     localStringBuilder.append(", proxy='");
@@ -127,85 +127,40 @@ public class TabChannelCoverInfo
     localStringBuilder.append('\'');
     localStringBuilder.append(", channelConfigType=");
     localStringBuilder.append(this.channelConfigType);
-    localStringBuilder.append(", seq=");
-    localStringBuilder.append(this.seq);
-    localStringBuilder.append(", mChannelId=");
-    localStringBuilder.append(this.mChannelId);
-    localStringBuilder.append(", mChannelCoverId=");
-    localStringBuilder.append(this.mChannelCoverId);
-    localStringBuilder.append(", mChannelCoverName='");
-    localStringBuilder.append(this.mChannelCoverName);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mChannelCoverStyle=");
-    localStringBuilder.append(this.mChannelCoverStyle);
-    localStringBuilder.append(", mChannelCoverSummary='");
-    localStringBuilder.append(this.mChannelCoverSummary);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mChannelCoverPicUrl='");
-    localStringBuilder.append(this.mChannelCoverPicUrl);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mChannelJumpUrl='");
-    localStringBuilder.append(this.mChannelJumpUrl);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mArticleId=");
-    localStringBuilder.append(this.mArticleId);
-    localStringBuilder.append(", mChannelType=");
-    localStringBuilder.append(this.mChannelType);
-    localStringBuilder.append(", mChannelCoverSpec='");
-    localStringBuilder.append(this.mChannelCoverSpec);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mFollowType=");
-    localStringBuilder.append(this.mFollowType);
-    localStringBuilder.append(", mColumnType=");
-    localStringBuilder.append(this.mColumnType);
-    localStringBuilder.append(", mTipsType=");
-    localStringBuilder.append(this.mTipsType);
-    localStringBuilder.append(", mTipsText='");
-    localStringBuilder.append(this.mTipsText);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mPreUpdateTime=");
-    localStringBuilder.append(this.mPreUpdateTime);
-    localStringBuilder.append(", mUpdateTime=");
-    localStringBuilder.append(this.mUpdateTime);
-    localStringBuilder.append(", isReport=");
-    localStringBuilder.append(this.isReport);
-    localStringBuilder.append(", mIconUrl='");
-    localStringBuilder.append(this.mIconUrl);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", mFontColor=");
-    localStringBuilder.append(this.mFontColor);
-    localStringBuilder.append(", mFrameColor=");
-    localStringBuilder.append(this.mFrameColor);
-    localStringBuilder.append(", isExternalExposure=");
-    localStringBuilder.append(this.isExternalExposure);
-    localStringBuilder.append(", externalExposureBackgroundUrl='");
-    localStringBuilder.append(this.externalExposureBackgroundUrl);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", isExternalExposurePersist=");
-    localStringBuilder.append(this.isExternalExposurePersist);
-    localStringBuilder.append(", hasFilterColor=");
-    localStringBuilder.append(this.hasFilterColor);
-    localStringBuilder.append(", filterColor=");
-    localStringBuilder.append(this.filterColor);
-    localStringBuilder.append(", mIsTopic=");
-    localStringBuilder.append(this.mIsTopic);
-    localStringBuilder.append(", isSelected=");
-    localStringBuilder.append(this.isSelected);
-    localStringBuilder.append(", sectionId=");
-    localStringBuilder.append(this.sectionId);
+    localStringBuilder.append(", onlyCover=");
+    localStringBuilder.append(this.onlyCover);
     localStringBuilder.append(", bid=");
     localStringBuilder.append(this.bid);
-    localStringBuilder.append(", mChannelCoverIcon=");
-    localStringBuilder.append(this.mChannelCoverIcon);
-    localStringBuilder.append(", mChannelVersion=");
-    localStringBuilder.append(this.mChannelVersion);
+    localStringBuilder.append(", dynamicSort=");
+    localStringBuilder.append(this.dynamicSort);
+    localStringBuilder.append(", sectionId=");
+    localStringBuilder.append(this.sectionId);
+    localStringBuilder.append(", isImmersive=");
+    localStringBuilder.append(this.isImmersive);
+    localStringBuilder.append(", isXTabMode=");
+    localStringBuilder.append(this.isXTabMode);
+    localStringBuilder.append(", isIconTab=");
+    localStringBuilder.append(this.isIconTab);
+    localStringBuilder.append(", iconUrl='");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", defaultIcon='");
+    localStringBuilder.append(this.defaultIcon);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", needBadgeGuide=");
+    localStringBuilder.append(this.needBadgeGuide);
+    localStringBuilder.append(", seq=");
+    localStringBuilder.append(this.seq);
+    localStringBuilder.append(", redPointJson='");
+    localStringBuilder.append(this.redPointJson);
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.feeds.entity.TabChannelCoverInfo
  * JD-Core Version:    0.7.0.1
  */

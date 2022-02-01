@@ -7,20 +7,20 @@ import android.widget.EditText;
 public class LengthInputFilter
   implements InputFilter
 {
-  protected int a;
-  protected EditText a;
+  protected EditText b;
+  protected int c;
   
   public LengthInputFilter(EditText paramEditText, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramEditText;
+    this.c = paramInt;
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramSpanned = new StringBuilder(this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString());
-    paramInt4 = this.jdField_a_of_type_Int - StringAddition.a(paramSpanned.toString());
-    paramInt3 = StringAddition.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
+    paramSpanned = new StringBuilder(this.b.getEditableText().toString());
+    paramInt4 = this.c - StringAddition.c(paramSpanned.toString());
+    paramInt3 = StringAddition.c(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
     if (paramInt4 <= 0) {
       return "";
     }
@@ -34,12 +34,12 @@ public class LengthInputFilter
       int i;
       if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3)))
       {
-        j = StringAddition.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+        j = StringAddition.c(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
         i = 2;
       }
       else
       {
-        j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+        j = StringAddition.c(String.valueOf(paramCharSequence.charAt(paramInt3)));
         i = 1;
       }
       paramInt4 -= j;
@@ -56,7 +56,7 @@ public class LengthInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.base.LengthInputFilter
  * JD-Core Version:    0.7.0.1
  */

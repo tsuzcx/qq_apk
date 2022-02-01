@@ -39,16 +39,16 @@ import java.util.Set;
 public class FaceHandler
   extends BusinessHandler
 {
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Hashtable<Integer, ArrayList<FaceInfo>> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private boolean jdField_a_of_type_Boolean = false;
-  private Hashtable<String, Long> b = new Hashtable();
+  AppInterface a;
+  private Hashtable<Integer, ArrayList<FaceInfo>> b = new Hashtable();
+  private Hashtable<String, Long> c = new Hashtable();
+  private Object d = new Object();
+  private boolean e = false;
   
   public FaceHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.a = paramAppInterface;
   }
   
   private String a(int paramInt, MultiHeadUrl.RspUsrHeadInfo paramRspUsrHeadInfo)
@@ -66,12 +66,12 @@ public class FaceHandler
   {
     try
     {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-      Enumeration localEnumeration = this.jdField_a_of_type_JavaUtilHashtable.keys();
+      this.a.getCurrentAccountUin();
+      Enumeration localEnumeration = this.b.keys();
       while (localEnumeration.hasMoreElements())
       {
         int i = ((Integer)localEnumeration.nextElement()).intValue();
-        Object localObject2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(i));
+        Object localObject2 = (ArrayList)this.b.get(Integer.valueOf(i));
         if ((i != 200) && (i != 202))
         {
           if (QLog.isColorLevel())
@@ -86,7 +86,7 @@ public class FaceHandler
           a(i, (ArrayList)localObject2);
         }
       }
-      this.jdField_a_of_type_JavaUtilHashtable.clear();
+      this.b.clear();
       return;
     }
     finally {}
@@ -137,7 +137,7 @@ public class FaceHandler
       }
       localObject1 = new MultiHeadUrl.MultiBusidUrlReq();
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUidType.set(0);
-      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+      ((MultiHeadUrl.MultiBusidUrlReq)localObject1).srcUin.set(Long.parseLong(this.a.getCurrentAccountUin()));
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(1));
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrType.add(Integer.valueOf(32));
       ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUidType.set(i);
@@ -150,12 +150,12 @@ public class FaceHandler
         if (i == 0) {}
         try
         {
-          ((MultiHeadUrl.ReqUsrInfo)localObject3).dstUin.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
+          ((MultiHeadUrl.ReqUsrInfo)localObject3).dstUin.set(Long.parseLong(((FaceInfo)localObject2).c));
           if (i == 1)
           {
-            ((MultiHeadUrl.ReqUsrInfo)localObject3).dstTid.set(Long.parseLong(((FaceInfo)localObject2).jdField_a_of_type_JavaLangString));
+            ((MultiHeadUrl.ReqUsrInfo)localObject3).dstTid.set(Long.parseLong(((FaceInfo)localObject2).c));
             ((MultiHeadUrl.MultiBusidUrlReq)localObject1).dstUsrInfos.add((MessageMicro)localObject3);
-            ((FaceInfo)localObject2).a(FaceInfo.l);
+            ((FaceInfo)localObject2).a(FaceInfo.x);
           }
         }
         catch (Exception localException)
@@ -174,7 +174,7 @@ public class FaceHandler
         ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
         localObject3 = new StringBuilder();
         ((StringBuilder)localObject3).append(";srcUin=");
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject3).append(this.a.getCurrentAccountUin());
         ((StringBuilder)localObject2).append(((StringBuilder)localObject3).toString());
         ((StringBuilder)localObject2).append("\n\n");
         localObject3 = new StringBuilder();
@@ -347,14 +347,14 @@ public class FaceHandler
     while (localIterator1.hasNext())
     {
       FaceInfo localFaceInfo = (FaceInfo)localIterator1.next();
-      localFaceInfo.a(FaceInfo.m);
+      localFaceInfo.a(FaceInfo.y);
       Iterator localIterator2 = paramList.iterator();
       label529:
       while (localIterator2.hasNext())
       {
         paramArrayList = (MultiHeadUrl.RspUsrHeadInfo)localIterator2.next();
         String str = a(paramInt1, paramArrayList);
-        if (localFaceInfo.jdField_a_of_type_JavaLangString.equals(str))
+        if (localFaceInfo.c.equals(str))
         {
           Iterator localIterator3 = paramArrayList.dstHeadInfos.get().iterator();
           Object localObject1 = null;
@@ -386,9 +386,9 @@ public class FaceHandler
           {
             paramArrayList = new StringBuilder();
             paramArrayList.append("stranger_");
-            paramArrayList.append(String.valueOf(localFaceInfo.b));
+            paramArrayList.append(String.valueOf(localFaceInfo.d));
             paramArrayList.append("_");
-            paramArrayList.append(localFaceInfo.jdField_a_of_type_JavaLangString);
+            paramArrayList.append(localFaceInfo.c);
             paramArrayList = paramIQQAvatarManagerService.getFaceSetting(paramArrayList.toString());
             if (paramIQQAvatarManagerService.isFaceFileExist(localFaceInfo))
             {
@@ -400,7 +400,7 @@ public class FaceHandler
               break label529;
             }
             localObject2 = new QQHeadInfo();
-            ((QQHeadInfo)localObject2).headLevel = localFaceInfo.jdField_a_of_type_Byte;
+            ((QQHeadInfo)localObject2).headLevel = localFaceInfo.f;
             ((QQHeadInfo)localObject2).idType = paramInt2;
             ((QQHeadInfo)localObject2).phoneNum = str;
             ((QQHeadInfo)localObject2).dwTimestamp = ((MultiHeadUrl.RspHeadInfo)localObject1).timestamp.get();
@@ -416,7 +416,7 @@ public class FaceHandler
               paramArrayList = "";
             }
             ((QQHeadInfo)localObject2).headVerify = paramArrayList;
-            localFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo = ((QQHeadInfo)localObject2);
+            localFaceInfo.p = ((QQHeadInfo)localObject2);
             paramList2.add(localFaceInfo);
             continue;
           }
@@ -454,12 +454,12 @@ public class FaceHandler
       return;
     }
     a((String)localObject, true);
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_JavaUtilHashtable.get(Integer.valueOf(paramFaceInfo.b));
+    ArrayList localArrayList = (ArrayList)this.b.get(Integer.valueOf(paramFaceInfo.d));
     localObject = localArrayList;
     if (localArrayList == null)
     {
       localObject = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashtable.put(Integer.valueOf(paramFaceInfo.b), localObject);
+      this.b.put(Integer.valueOf(paramFaceInfo.d), localObject);
     }
     ((ArrayList)localObject).add(paramFaceInfo);
     a();
@@ -506,7 +506,7 @@ public class FaceHandler
       ArrayList localArrayList = new ArrayList();
       i = ((MultiHeadUrl.MultiBusidUrlRsp)localObject1).dstUidType.get();
       int j = paramToServiceMsg.extraData.getInt("idType");
-      paramToServiceMsg = (QQAvatarManagerServiceImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IQQAvatarManagerService.class, "nearby");
+      paramToServiceMsg = (QQAvatarManagerServiceImpl)this.a.getRuntimeService(IQQAvatarManagerService.class, "nearby");
       a(paramObject, paramFromServiceMsg, (ArrayList)localObject2, localArrayList, i, j, paramToServiceMsg);
       i = 0;
       while (i < localArrayList.size())
@@ -526,7 +526,7 @@ public class FaceHandler
             ((StringBuilder)localObject2).append("stranger_");
             ((StringBuilder)localObject2).append(String.valueOf(j));
             ((StringBuilder)localObject2).append("_");
-            ((StringBuilder)localObject2).append(((FaceInfo)localObject1).jdField_a_of_type_JavaLangString);
+            ((StringBuilder)localObject2).append(((FaceInfo)localObject1).c);
             paramObject.add(((StringBuilder)localObject2).toString());
             a(((FaceInfo)localObject1).b(), false);
             i += 1;
@@ -555,11 +555,11 @@ public class FaceHandler
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    localObject1 = this.jdField_a_of_type_JavaLangObject;
+    localObject1 = this.d;
     if (!paramBoolean) {}
     try
     {
-      this.b.remove(paramString);
+      this.c.remove(paramString);
     }
     finally
     {
@@ -575,46 +575,46 @@ public class FaceHandler
         int i = 0;
       }
     }
-    if (this.b.size() > 30)
+    if (this.c.size() > 30)
     {
       l = System.currentTimeMillis();
       localArrayList = new ArrayList();
-      localObject2 = this.b.keys();
+      localObject2 = this.c.keys();
       while (((Enumeration)localObject2).hasMoreElements())
       {
         String str = (String)((Enumeration)localObject2).nextElement();
-        if (Math.abs(l - ((Long)this.b.get(str)).longValue()) > 60000L) {
+        if (Math.abs(l - ((Long)this.c.get(str)).longValue()) > 60000L) {
           localArrayList.add(paramString);
         }
       }
       while (i < localArrayList.size())
       {
         localObject2 = (String)localArrayList.get(i);
-        this.b.remove(paramString);
+        this.c.remove(paramString);
         i += 1;
       }
     }
-    this.b.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    this.c.put(paramString, Long.valueOf(System.currentTimeMillis()));
   }
   
   public boolean a(String paramString)
   {
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.d)
       {
-        if (!this.b.containsKey(paramString)) {
+        if (!this.c.containsKey(paramString)) {
           break label212;
         }
-        long l = ((Long)this.b.get(paramString)).longValue();
+        long l = ((Long)this.c.get(paramString)).longValue();
         if (Math.abs(System.currentTimeMillis() - l) > 60000L)
         {
-          this.b.remove(paramString);
+          this.c.remove(paramString);
           break label212;
           if (!bool1)
           {
             boolean bool2 = SystemUtil.a();
-            if (((bool2) && (SystemUtil.a() < 2048L)) || ((!bool2) && (SystemUtil.b() < 102400L)))
+            if (((bool2) && (SystemUtil.b() < 2048L)) || ((!bool2) && (SystemUtil.c() < 102400L)))
             {
               if (QLog.isColorLevel())
               {
@@ -627,10 +627,10 @@ public class FaceHandler
               }
               return true;
             }
-            if ((!bool2) && (!this.jdField_a_of_type_Boolean))
+            if ((!bool2) && (!this.e))
             {
-              this.jdField_a_of_type_Boolean = true;
-              FaceUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext(), true);
+              this.e = true;
+              FaceUtil.a(this.a.getApp().getApplicationContext(), true);
             }
           }
           return bool1;
@@ -678,7 +678,7 @@ public class FaceHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceHandler
  * JD-Core Version:    0.7.0.1
  */

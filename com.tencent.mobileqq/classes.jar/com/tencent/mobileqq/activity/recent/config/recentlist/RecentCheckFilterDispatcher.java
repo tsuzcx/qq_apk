@@ -12,11 +12,11 @@ public class RecentCheckFilterDispatcher
 {
   public Pair<String, Boolean> a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser, int paramInt)
   {
-    Object localObject3 = jdField_a_of_type_JavaLangObject;
+    Object localObject3 = a;
     Object localObject2 = null;
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Iterator localIterator = this.b.iterator();
       do
       {
         localObject1 = localObject2;
@@ -37,7 +37,7 @@ public class RecentCheckFilterDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.RecentCheckFilterDispatcher
  * JD-Core Version:    0.7.0.1
  */

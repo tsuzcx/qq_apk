@@ -20,12 +20,12 @@ class AppReportReceiver$1
     {
       try
       {
-        str3 = this.jdField_a_of_type_AndroidContentIntent.getAction();
+        str3 = this.a.getAction();
         if (str3 == null) {
           return;
         }
-        bool1 = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);
-        str1 = this.jdField_a_of_type_AndroidContentIntent.getDataString();
+        bool1 = this.a.getBooleanExtra("android.intent.extra.REPLACING", false);
+        str1 = this.a.getDataString();
         if ((str1 != null) && (str1.startsWith("package:")))
         {
           str4 = str1.substring(8);
@@ -63,7 +63,7 @@ class AppReportReceiver$1
       }
       try
       {
-        StaticAnalyz.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), str1);
+        StaticAnalyz.a(this.b.getApplicationContext(), str1);
       }
       catch (Exception localException)
       {
@@ -89,7 +89,7 @@ class AppReportReceiver$1
           if (QLog.isColorLevel()) {
             QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_REPLACED deleteYYBApkPackage");
           }
-          YybHandleUtil.a();
+          YybHandleUtil.b();
           return;
         }
       }
@@ -109,7 +109,7 @@ class AppReportReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppReportReceiver.1
  * JD-Core Version:    0.7.0.1
  */

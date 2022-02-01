@@ -9,21 +9,21 @@ class DatalineFileSaveModel$1
   
   public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
+    if (this.a.c != null) {
+      this.a.c.a(paramInt3);
     }
   }
   
   public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
+    if (this.a.c != null) {
+      this.a.c.a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.DatalineFileSaveModel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,62 +7,52 @@ import android.support.annotation.NonNull;
 
 public class NotificationElement
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private String jdField_a_of_type_JavaLangString = "";
+  private Intent a;
   private String b = "";
   private String c = "";
-  private String d;
+  private String d = "";
+  private Bitmap e;
+  private String f;
   
   public NotificationElement() {}
   
   public NotificationElement(Intent paramIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public Intent a()
-  {
-    return this.jdField_a_of_type_AndroidContentIntent;
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.a = paramIntent;
+    this.b = paramString1;
+    this.c = paramString2;
+    this.d = paramString3;
+    this.e = paramBitmap;
   }
   
   public String a()
   {
-    return this.d;
+    return this.f;
   }
   
   public void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.a = paramIntent;
   }
   
   public void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.e = paramBitmap;
   }
   
   public void a(String paramString)
   {
-    this.d = paramString;
+    this.f = paramString;
   }
   
-  public String b()
+  public Intent b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.a;
   }
   
   public void b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public String c()
@@ -72,7 +62,7 @@ public class NotificationElement
   
   public void c(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
   }
   
   public String d()
@@ -82,21 +72,31 @@ public class NotificationElement
   
   public void d(String paramString)
   {
-    this.c = paramString;
+    this.d = paramString;
+  }
+  
+  public String e()
+  {
+    return this.d;
+  }
+  
+  public Bitmap f()
+  {
+    return this.e;
   }
   
   @NonNull
   public String toString()
   {
     Bundle localBundle;
-    if (a() != null) {
-      localBundle = a().getExtras();
+    if (b() != null) {
+      localBundle = b().getExtras();
     } else {
       localBundle = null;
     }
     String str;
-    if (a() != null) {
-      str = String.valueOf(a().getHeight());
+    if (f() != null) {
+      str = String.valueOf(f().getHeight());
     } else {
       str = "using default bitmap";
     }
@@ -104,18 +104,18 @@ public class NotificationElement
     localStringBuilder.append("NotificationElement{contentIntentExtras=");
     localStringBuilder.append(localBundle);
     localStringBuilder.append(", ticker='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('\'');
-    localStringBuilder.append(", contentTitle='");
     localStringBuilder.append(this.b);
     localStringBuilder.append('\'');
-    localStringBuilder.append(", notificationContentText='");
+    localStringBuilder.append(", contentTitle='");
     localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", notificationContentText='");
+    localStringBuilder.append(this.d);
     localStringBuilder.append('\'');
     localStringBuilder.append(", notificationIconBitmap=");
     localStringBuilder.append(str);
     localStringBuilder.append(", briefOfMessage='");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.f);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -123,7 +123,7 @@ public class NotificationElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.notification.struct.NotificationElement
  * JD-Core Version:    0.7.0.1
  */

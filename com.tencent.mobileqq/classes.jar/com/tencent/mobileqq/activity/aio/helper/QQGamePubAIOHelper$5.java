@@ -14,9 +14,9 @@ class QQGamePubAIOHelper$5
   
   public void run()
   {
-    String str = QQGamePubAIOHelper.a(this.a);
+    String str = QQGamePubAIOHelper.b(this.a);
     QQGamePubAIOHelper.a.add(str);
-    Iterator localIterator = QQGamePubAIOHelper.a().iterator();
+    Iterator localIterator = QQGamePubAIOHelper.c().iterator();
     while (localIterator.hasNext())
     {
       try
@@ -43,7 +43,7 @@ class QQGamePubAIOHelper$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.5
  * JD-Core Version:    0.7.0.1
  */

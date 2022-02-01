@@ -13,35 +13,35 @@ class SmallScreenVideoController$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
+    if (this.this$0.s != null)
     {
-      if (this.this$0.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI == null) {
+      if (this.this$0.u == null) {
         return;
       }
-      SessionInfo localSessionInfo = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
+      SessionInfo localSessionInfo = this.this$0.s.k();
       if (localSessionInfo == null) {
         return;
       }
-      if (localSessionInfo.Q <= 0)
+      if (localSessionInfo.bT <= 0)
       {
-        if (this.this$0.jdField_a_of_type_JavaUtilTimer != null)
+        if (this.this$0.e != null)
         {
-          this.this$0.jdField_a_of_type_JavaUtilTimer.cancel();
-          this.this$0.jdField_a_of_type_JavaUtilTimer = null;
+          this.this$0.e.cancel();
+          this.this$0.e = null;
         }
         return;
       }
-      long l1 = this.this$0.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().c);
+      long l1 = this.this$0.u.c(this.this$0.s.k().s);
       long l2 = System.currentTimeMillis();
-      if ((l1 != 0L) && (l2 - l1 > this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q * 1000)) {
-        this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new SmallScreenVideoController.1.1(this, l2, l1));
+      if ((l1 != 0L) && (l2 - l1 > this.this$0.s.k().bT * 1000)) {
+        this.this$0.r.runOnUiThread(new SmallScreenVideoController.1.1(this, l2, l1));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.1
  * JD-Core Version:    0.7.0.1
  */

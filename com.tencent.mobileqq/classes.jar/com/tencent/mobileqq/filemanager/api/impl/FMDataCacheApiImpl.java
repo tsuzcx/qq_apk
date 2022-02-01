@@ -20,12 +20,12 @@ public class FMDataCacheApiImpl
   
   public void addSelected(FileInfo paramFileInfo)
   {
-    FMDataCache.a(paramFileInfo);
+    FMDataCache.b(paramFileInfo);
   }
   
   public void addSelected(FileManagerEntity paramFileManagerEntity)
   {
-    FMDataCache.a(paramFileManagerEntity);
+    FMDataCache.b(paramFileManagerEntity);
   }
   
   public void addTmpSig(String paramString, byte[] paramArrayOfByte)
@@ -39,7 +39,7 @@ public class FMDataCacheApiImpl
   
   public ArrayList<FavFileInfo> getFavFiles()
   {
-    return FMDataCache.e();
+    return FMDataCache.k();
   }
   
   public ArrayList<FileInfo> getFileViewerLocalFiles()
@@ -49,52 +49,52 @@ public class FMDataCacheApiImpl
   
   public Set<FileInfo> getLocalFiles()
   {
-    return FMDataCache.a();
+    return FMDataCache.g();
   }
   
   public ArrayList<OfflineFileInfo> getOfflineFiles()
   {
-    return FMDataCache.c();
+    return FMDataCache.i();
   }
   
   public ArrayList<FileManagerEntity> getRecentFiles()
   {
-    return FMDataCache.b();
+    return FMDataCache.h();
   }
   
   public long getSelectedCloudFileSize()
   {
-    return FMDataCache.e();
+    return FMDataCache.n();
   }
   
   public long getSelectedCount()
   {
-    return FMDataCache.b();
+    return FMDataCache.e();
   }
   
   public long getSelectedFileSize()
   {
-    return FMDataCache.d();
+    return FMDataCache.m();
   }
   
   public long getSelectedLocalFileSize()
   {
-    return FMDataCache.c();
+    return FMDataCache.l();
   }
   
   public ArrayList<WeiYunFileInfo> getWeiYunFiles()
   {
-    return FMDataCache.d();
+    return FMDataCache.j();
   }
   
   public boolean isDocsFile(FileInfo paramFileInfo)
   {
-    return FMDataCache.b(paramFileInfo);
+    return FMDataCache.d(paramFileInfo);
   }
   
   public boolean isDocsFile(FileManagerEntity paramFileManagerEntity)
   {
-    return FMDataCache.b(paramFileManagerEntity);
+    return FMDataCache.d(paramFileManagerEntity);
   }
   
   public boolean isSelected(FileInfo paramFileInfo)
@@ -109,17 +109,17 @@ public class FMDataCacheApiImpl
   
   public void removeSelected(FileInfo paramFileInfo)
   {
-    FMDataCache.b(paramFileInfo);
+    FMDataCache.c(paramFileInfo);
   }
   
   public void removeSelected(FileManagerEntity paramFileManagerEntity)
   {
-    FMDataCache.b(paramFileManagerEntity);
+    FMDataCache.c(paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.FMDataCacheApiImpl
  * JD-Core Version:    0.7.0.1
  */

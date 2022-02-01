@@ -14,9 +14,9 @@ public class BannerVideoInfoWidget3$BannerActivityLifeCycle
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
     {
-      Iterator localIterator = this.a.a.a.iterator();
+      Iterator localIterator = this.a.t.b.iterator();
       while (localIterator.hasNext()) {
         ((ActivityLifeCycle)localIterator.next()).a(paramInt1, paramInt2, paramIntent);
       }
@@ -25,31 +25,20 @@ public class BannerVideoInfoWidget3$BannerActivityLifeCycle
   
   public void a(Bundle paramBundle1, Bundle paramBundle2)
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
     {
-      Iterator localIterator = this.a.a.a.iterator();
+      Iterator localIterator = this.a.t.b.iterator();
       while (localIterator.hasNext()) {
         ((ActivityLifeCycle)localIterator.next()).a(paramBundle1, paramBundle2);
       }
     }
   }
   
-  public void c()
-  {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
-    {
-      Iterator localIterator = this.a.a.a.iterator();
-      while (localIterator.hasNext()) {
-        ((ActivityLifeCycle)localIterator.next()).c();
-      }
-    }
-  }
-  
   public void d()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
     {
-      Iterator localIterator = this.a.a.a.iterator();
+      Iterator localIterator = this.a.t.b.iterator();
       while (localIterator.hasNext()) {
         ((ActivityLifeCycle)localIterator.next()).d();
       }
@@ -58,9 +47,9 @@ public class BannerVideoInfoWidget3$BannerActivityLifeCycle
   
   public void e()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
     {
-      Iterator localIterator = this.a.a.a.iterator();
+      Iterator localIterator = this.a.t.b.iterator();
       while (localIterator.hasNext()) {
         ((ActivityLifeCycle)localIterator.next()).e();
       }
@@ -69,9 +58,9 @@ public class BannerVideoInfoWidget3$BannerActivityLifeCycle
   
   public void f()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
     {
-      Iterator localIterator = this.a.a.a.iterator();
+      Iterator localIterator = this.a.t.b.iterator();
       while (localIterator.hasNext()) {
         ((ActivityLifeCycle)localIterator.next()).f();
       }
@@ -80,11 +69,22 @@ public class BannerVideoInfoWidget3$BannerActivityLifeCycle
   
   public void g()
   {
-    if ((this.a.a != null) && (this.a.a.a != null) && (!this.a.a.a.isEmpty()))
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
     {
-      Iterator localIterator = this.a.a.a.iterator();
+      Iterator localIterator = this.a.t.b.iterator();
       while (localIterator.hasNext()) {
         ((ActivityLifeCycle)localIterator.next()).g();
+      }
+    }
+  }
+  
+  public void h()
+  {
+    if ((this.a.t != null) && (this.a.t.b != null) && (!this.a.t.b.isEmpty()))
+    {
+      Iterator localIterator = this.a.t.b.iterator();
+      while (localIterator.hasNext()) {
+        ((ActivityLifeCycle)localIterator.next()).h();
       }
     }
   }

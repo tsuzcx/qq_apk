@@ -21,18 +21,18 @@ class MultiEmotionSaveManager$1
     try
     {
       StringBuilder localStringBuilder1;
-      if (this.jdField_a_of_type_JavaIoFile != null)
+      if (this.a != null)
       {
         if (QLog.isColorLevel())
         {
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("savePhotoToSysAlbum...destFile=");
-          localStringBuilder1.append(this.jdField_a_of_type_JavaIoFile);
+          localStringBuilder1.append(this.a);
           QLog.i("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
         }
-        if (!this.jdField_a_of_type_JavaIoFile.getParentFile().exists())
+        if (!this.a.getParentFile().exists())
         {
-          boolean bool = this.jdField_a_of_type_JavaIoFile.getParentFile().mkdir();
+          boolean bool = this.a.getParentFile().mkdir();
           if (QLog.isColorLevel())
           {
             localStringBuilder1 = new StringBuilder();
@@ -42,28 +42,28 @@ class MultiEmotionSaveManager$1
           }
         }
       }
-      if ((this.jdField_a_of_type_JavaIoFile != null) && (FileUtils.copyFile(this.b, this.jdField_a_of_type_JavaIoFile)))
+      if ((this.a != null) && (FileUtils.copyFile(this.b, this.a)))
       {
         if (QLog.isColorLevel())
         {
           localStringBuilder1 = new StringBuilder();
           localStringBuilder1.append("savePhotoToSysAlbum...path=");
-          localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder1.append(this.c);
           QLog.e("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
         }
-        BaseImageUtil.a(MobileQQ.getContext(), this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        BaseImageUtil.b(MobileQQ.getContext(), this.a.getAbsolutePath());
         i = 1;
         break label365;
       }
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_JavaIoFile != null))
+      if ((QLog.isColorLevel()) && (this.a != null))
       {
         localStringBuilder1 = new StringBuilder();
         localStringBuilder1.append("copyFile error destFile = ");
-        localStringBuilder1.append(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+        localStringBuilder1.append(this.a.getAbsolutePath());
         QLog.e("MultiEmotionSaveManager", 2, localStringBuilder1.toString());
       }
-      this.jdField_a_of_type_ComTencentMobileqqEmosmEmotionSaveResult.b = 10004;
-      this.jdField_a_of_type_ComTencentMobileqqEmosmEmotionSaveResult.c = FileSaveErrorInfo.a(this.jdField_a_of_type_ComTencentMobileqqEmosmEmotionSaveResult.b);
+      this.d.e = 10004;
+      this.d.f = FileSaveErrorInfo.a(this.d.e);
     }
     catch (Exception localException)
     {
@@ -74,30 +74,30 @@ class MultiEmotionSaveManager$1
         localStringBuilder2.append(localException.getMessage());
         QLog.e("MultiEmotionSaveManager", 2, localStringBuilder2.toString());
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmEmotionSaveResult;
-      ((EmotionSaveResult)localObject).b = 10005;
-      ((EmotionSaveResult)localObject).c = FileSaveErrorInfo.a(((EmotionSaveResult)localObject).b);
+      localObject = this.d;
+      ((EmotionSaveResult)localObject).e = 10005;
+      ((EmotionSaveResult)localObject).f = FileSaveErrorInfo.a(((EmotionSaveResult)localObject).e);
     }
     int i = 0;
     label365:
     if (i == 0) {
       j = 2;
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqEmosmEmotionSaveResult;
+    Object localObject = this.d;
     if (i != 0) {
       i = k;
     } else {
       i = -1;
     }
-    ((EmotionSaveResult)localObject).a = i;
+    ((EmotionSaveResult)localObject).d = i;
     localObject = MultiEmotionSaveManager.a(this.this$0).obtainMessage(j);
-    ((Message)localObject).obj = this.jdField_a_of_type_ComTencentMobileqqEmosmEmotionSaveResult;
+    ((Message)localObject).obj = this.d;
     MultiEmotionSaveManager.a(this.this$0).sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.MultiEmotionSaveManager.1
  * JD-Core Version:    0.7.0.1
  */

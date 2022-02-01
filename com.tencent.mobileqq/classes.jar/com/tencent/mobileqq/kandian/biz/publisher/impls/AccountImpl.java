@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public final class AccountImpl
   implements IAccount
 {
-  private final QQAppInterface a()
+  private final QQAppInterface b()
   {
     Object localObject = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "BaseApplicationImpl.getApplication()");
@@ -26,14 +26,14 @@ public final class AccountImpl
   @NotNull
   public String a()
   {
-    String str = a().getAccount();
+    String str = b().getAccount();
     Intrinsics.checkExpressionValueIsNotNull(str, "app.account");
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.AccountImpl
  * JD-Core Version:    0.7.0.1
  */

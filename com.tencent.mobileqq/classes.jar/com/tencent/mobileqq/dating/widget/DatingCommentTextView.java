@@ -17,9 +17,9 @@ import com.tencent.qphone.base.util.QLog;
 public class DatingCommentTextView
   extends TextView
 {
-  private int jdField_a_of_type_Int = -1;
-  private ClickableSpan jdField_a_of_type_AndroidTextStyleClickableSpan;
+  private int a = -1;
   private int b = -1;
+  private ClickableSpan c;
   
   public DatingCommentTextView(Context paramContext)
   {
@@ -68,10 +68,10 @@ public class DatingCommentTextView
           {
             if (i == 0)
             {
-              this.jdField_a_of_type_AndroidTextStyleClickableSpan = arrayOfClickableSpan[0];
-              this.jdField_a_of_type_Int = paramMotionEvent.getSpanStart(arrayOfClickableSpan[0]);
+              this.c = arrayOfClickableSpan[0];
+              this.a = paramMotionEvent.getSpanStart(arrayOfClickableSpan[0]);
               this.b = paramMotionEvent.getSpanEnd(arrayOfClickableSpan[0]);
-              if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
+              if ((this.a < 0) || (this.b < this.a)) {
                 break;
               }
               if ((arrayOfClickableSpan[0] instanceof DatingCommentTextView.TouchableSpan))
@@ -79,38 +79,38 @@ public class DatingCommentTextView
                 ((DatingCommentTextView.TouchableSpan)arrayOfClickableSpan[0]).a(true);
                 return true;
               }
-              paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.jdField_a_of_type_Int, this.b, 33);
+              paramMotionEvent.setSpan(new BackgroundColorSpan(Color.parseColor("#d5d5d5")), this.a, this.b, 33);
               return true;
-              this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
-              if ((this.jdField_a_of_type_Int < 0) || (this.b < this.jdField_a_of_type_Int)) {
+              this.c = null;
+              if ((this.a < 0) || (this.b < this.a)) {
                 break;
               }
               if ((arrayOfClickableSpan[0] instanceof DatingCommentTextView.TouchableSpan)) {
                 ((DatingCommentTextView.TouchableSpan)arrayOfClickableSpan[0]).a(false);
               } else {
-                paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.jdField_a_of_type_Int, this.b, 33);
+                paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.a, this.b, 33);
               }
               Selection.removeSelection(paramMotionEvent);
-              this.jdField_a_of_type_Int = -1;
+              this.a = -1;
               this.b = -1;
               return true;
             }
           }
           else
           {
-            if ((this.jdField_a_of_type_Int >= 0) && (this.b >= this.jdField_a_of_type_Int))
+            if ((this.a >= 0) && (this.b >= this.a))
             {
-              if ((this.jdField_a_of_type_AndroidTextStyleClickableSpan != null) && ((this.jdField_a_of_type_AndroidTextStyleClickableSpan instanceof DatingCommentTextView.TouchableSpan)))
+              if ((this.c != null) && ((this.c instanceof DatingCommentTextView.TouchableSpan)))
               {
-                ((DatingCommentTextView.TouchableSpan)this.jdField_a_of_type_AndroidTextStyleClickableSpan).a(false);
-                this.jdField_a_of_type_AndroidTextStyleClickableSpan = null;
+                ((DatingCommentTextView.TouchableSpan)this.c).a(false);
+                this.c = null;
               }
               else
               {
-                paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.jdField_a_of_type_Int, this.b, 33);
+                paramMotionEvent.setSpan(new BackgroundColorSpan(0), this.a, this.b, 33);
               }
               Selection.removeSelection(paramMotionEvent);
-              this.jdField_a_of_type_Int = -1;
+              this.a = -1;
               this.b = -1;
             }
             return false;
@@ -134,7 +134,7 @@ public class DatingCommentTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.DatingCommentTextView
  * JD-Core Version:    0.7.0.1
  */

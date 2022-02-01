@@ -60,7 +60,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
     try
     {
       IntentFilter localIntentFilter = new IntentFilter("com.tencent.qq.syncSecretShuoshuoMsg");
-      this.parentPlugin.mRuntime.a().registerReceiver(this.msgBrocastReceiver, localIntentFilter);
+      this.parentPlugin.mRuntime.d().registerReceiver(this.msgBrocastReceiver, localIntentFilter);
       return;
     }
     catch (Exception localException)
@@ -142,7 +142,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
       }
       if (paramString3.equalsIgnoreCase("didPublishMoodVoice"))
       {
-        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
+        paramJsBridgeListener = this.parentPlugin.mRuntime.d();
         if ((paramJsBridgeListener instanceof QZonePublishVoiceShuoShuoH5PluginInterface)) {
           ((QZonePublishVoiceShuoShuoH5PluginInterface)paramJsBridgeListener).didPushMoodVoice();
         }
@@ -176,7 +176,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
   {
     try
     {
-      this.parentPlugin.mRuntime.a().unregisterReceiver(this.msgBrocastReceiver);
+      this.parentPlugin.mRuntime.d().unregisterReceiver(this.msgBrocastReceiver);
       return;
     }
     catch (Exception localException)
@@ -298,7 +298,7 @@ public class QZonePublishSecretShuoShuoH5Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePublishSecretShuoShuoH5Plugin
  * JD-Core Version:    0.7.0.1
  */

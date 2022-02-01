@@ -10,8 +10,8 @@ import mqq.app.MobileQQ;
 public class GameContentView
   extends LinearLayout
 {
-  GameSessionView jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView;
-  private GameContentView.UiRefresh jdField_a_of_type_ComTencentMobileqqQqgamepubWebViewGameContentView$UiRefresh;
+  GameSessionView a;
+  private GameContentView.UiRefresh b;
   
   public GameContentView(Context paramContext)
   {
@@ -26,57 +26,53 @@ public class GameContentView
   public GameContentView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    d();
+    c();
+  }
+  
+  private void c()
+  {
+    this.a = new GameSessionView(getContext());
+    addView(this.a);
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView = new GameSessionView(getContext());
-    addView(this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView);
-  }
-  
-  private void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView.a(MobileQQ.sMobileQQ.waitAppRuntime(null), this.jdField_a_of_type_ComTencentMobileqqQqgamepubWebViewGameContentView$UiRefresh);
-  }
-  
-  public int a()
-  {
-    return getHeight();
-  }
-  
-  public GameSessionView a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView;
+    this.a.setVisibility(8);
+    this.a.a(MobileQQ.sMobileQQ.waitAppRuntime(null), this.b);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubWebViewGameContentView$UiRefresh = null;
+    d();
   }
   
   public void b()
   {
-    e();
+    GameSessionView localGameSessionView = this.a;
+    if (localGameSessionView != null) {
+      localGameSessionView.b();
+    }
+    this.b = null;
   }
   
-  public void c()
+  public int getContentViewHeight()
   {
-    GameSessionView localGameSessionView = this.jdField_a_of_type_ComTencentMobileqqQqgamepubViewGameSessionView;
-    if (localGameSessionView != null) {
-      localGameSessionView.c();
-    }
+    return getHeight();
+  }
+  
+  public GameSessionView getGameSessionView()
+  {
+    return this.a;
   }
   
   public void setUiRefresh(GameContentView.UiRefresh paramUiRefresh)
   {
-    this.jdField_a_of_type_ComTencentMobileqqQqgamepubWebViewGameContentView$UiRefresh = paramUiRefresh;
+    this.b = paramUiRefresh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.web.view.GameContentView
  * JD-Core Version:    0.7.0.1
  */

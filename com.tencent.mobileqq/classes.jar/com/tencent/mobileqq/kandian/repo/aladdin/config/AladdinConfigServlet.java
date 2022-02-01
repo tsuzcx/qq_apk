@@ -52,22 +52,22 @@ public class AladdinConfigServlet
     oidb_cmd0xbf8.DeviceInfo localDeviceInfo = new oidb_cmd0xbf8.DeviceInfo();
     localDeviceInfo.os.set(new oidb_cmd0xbf8.OS());
     localDeviceInfo.os.type.set(2);
-    localDeviceInfo.os.version.set(DeviceInfoUtil.e());
-    localDeviceInfo.os.sdk.set(String.valueOf(DeviceInfoUtil.a()));
+    localDeviceInfo.os.version.set(DeviceInfoUtil.g());
+    localDeviceInfo.os.sdk.set(String.valueOf(DeviceInfoUtil.d()));
     localDeviceInfo.os.kernel.set(System.getProperty("os.version"));
     localDeviceInfo.cpu.set(new oidb_cmd0xbf8.CPU());
-    localDeviceInfo.cpu.model.set(DeviceInfoUtil.g());
-    localDeviceInfo.cpu.cores.set(DeviceInfoUtil.b());
-    localDeviceInfo.cpu.frequency.set((int)DeviceInfoUtil.b());
+    localDeviceInfo.cpu.model.set(DeviceInfoUtil.m());
+    localDeviceInfo.cpu.cores.set(DeviceInfoUtil.h());
+    localDeviceInfo.cpu.frequency.set((int)DeviceInfoUtil.k());
     localDeviceInfo.memory.set(new oidb_cmd0xbf8.Memory());
     localDeviceInfo.memory.total.set(DeviceInfoUtil.a());
     localDeviceInfo.storage.set(new oidb_cmd0xbf8.Storage());
-    localDeviceInfo.storage.builtin.set(DeviceInfoUtil.a()[0]);
-    localDeviceInfo.storage.external.set(DeviceInfoUtil.b()[0]);
+    localDeviceInfo.storage.builtin.set(DeviceInfoUtil.p()[0]);
+    localDeviceInfo.storage.external.set(DeviceInfoUtil.q()[0]);
     localDeviceInfo.screen.set(new oidb_cmd0xbf8.Screen());
-    localDeviceInfo.screen.dpi.set(DeviceInfoUtil.e());
-    localDeviceInfo.screen.width.set((int)DeviceInfoUtil.i());
-    localDeviceInfo.screen.height.set((int)DeviceInfoUtil.j());
+    localDeviceInfo.screen.dpi.set(DeviceInfoUtil.J());
+    localDeviceInfo.screen.width.set((int)DeviceInfoUtil.D());
+    localDeviceInfo.screen.height.set((int)DeviceInfoUtil.E());
     localDeviceInfo.camera.set(new oidb_cmd0xbf8.Camera());
     return localDeviceInfo;
   }
@@ -100,7 +100,7 @@ public class AladdinConfigServlet
   {
     oidb_cmd0xbf8.ReqBody localReqBody = new oidb_cmd0xbf8.ReqBody();
     oidb_cmd0xbf8.ReqBodyType1 localReqBodyType1 = new oidb_cmd0xbf8.ReqBodyType1();
-    localReqBodyType1.app_version.set("8.7.0");
+    localReqBodyType1.app_version.set("8.8.17");
     localReqBodyType1.device_info.set(a());
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -186,8 +186,8 @@ public class AladdinConfigServlet
     }
     long l = paramIntent.getLongExtra("key_packet_receive_timestamp", 0L) - paramIntent.getLongExtra("key_packet_send_timestamp", 0L);
     localHashMap.put("param_CostTime", String.valueOf(l));
-    paramList = StatisticCollector.getInstance(RIJQQAppInterfaceUtil.a().getApplication());
-    paramIntent = RIJQQAppInterfaceUtil.a();
+    paramList = StatisticCollector.getInstance(RIJQQAppInterfaceUtil.e().getApplication());
+    paramIntent = RIJQQAppInterfaceUtil.d();
     boolean bool;
     if (paramInt == 0) {
       bool = true;
@@ -374,7 +374,7 @@ public class AladdinConfigServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.config.AladdinConfigServlet
  * JD-Core Version:    0.7.0.1
  */

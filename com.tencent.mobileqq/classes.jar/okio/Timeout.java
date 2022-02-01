@@ -2,39 +2,56 @@ package okio;
 
 import java.io.InterruptedIOException;
 import java.util.concurrent.TimeUnit;
+import kotlin.Metadata;
+import kotlin.Unit;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.InlineMarker;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lokio/Timeout;", "", "()V", "deadlineNanoTime", "", "hasDeadline", "", "timeoutNanos", "clearDeadline", "clearTimeout", "deadline", "duration", "unit", "Ljava/util/concurrent/TimeUnit;", "intersectWith", "", "other", "block", "Lkotlin/Function0;", "throwIfReached", "timeout", "waitUntilNotified", "monitor", "Companion", "okio"}, k=1, mv={1, 1, 16})
 public class Timeout
 {
-  public static final Timeout NONE = new Timeout.1();
+  public static final Timeout.Companion Companion = new Timeout.Companion(null);
+  @JvmField
+  @NotNull
+  public static final Timeout NONE = (Timeout)new Timeout.Companion.NONE.1();
   private long deadlineNanoTime;
   private boolean hasDeadline;
   private long timeoutNanos;
   
+  @NotNull
   public Timeout clearDeadline()
   {
     this.hasDeadline = false;
     return this;
   }
   
+  @NotNull
   public Timeout clearTimeout()
   {
     this.timeoutNanos = 0L;
     return this;
   }
   
-  public final Timeout deadline(long paramLong, TimeUnit paramTimeUnit)
+  @NotNull
+  public final Timeout deadline(long paramLong, @NotNull TimeUnit paramTimeUnit)
   {
-    if (paramLong > 0L)
-    {
-      if (paramTimeUnit != null) {
-        return deadlineNanoTime(System.nanoTime() + paramTimeUnit.toNanos(paramLong));
-      }
-      throw new IllegalArgumentException("unit == null");
+    Intrinsics.checkParameterIsNotNull(paramTimeUnit, "unit");
+    int i;
+    if (paramLong > 0L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return deadlineNanoTime(System.nanoTime() + paramTimeUnit.toNanos(paramLong));
     }
     paramTimeUnit = new StringBuilder();
     paramTimeUnit.append("duration <= 0: ");
     paramTimeUnit.append(paramLong);
-    throw new IllegalArgumentException(paramTimeUnit.toString());
+    throw ((Throwable)new IllegalArgumentException(paramTimeUnit.toString().toString()));
   }
   
   public long deadlineNanoTime()
@@ -42,9 +59,10 @@ public class Timeout
     if (this.hasDeadline) {
       return this.deadlineNanoTime;
     }
-    throw new IllegalStateException("No deadline");
+    throw ((Throwable)new IllegalStateException("No deadline".toString()));
   }
   
+  @NotNull
   public Timeout deadlineNanoTime(long paramLong)
   {
     this.hasDeadline = true;
@@ -57,6 +75,52 @@ public class Timeout
     return this.hasDeadline;
   }
   
+  public final void intersectWith(@NotNull Timeout paramTimeout, @NotNull Function0<Unit> paramFunction0)
+  {
+    Intrinsics.checkParameterIsNotNull(paramTimeout, "other");
+    Intrinsics.checkParameterIsNotNull(paramFunction0, "block");
+    long l1 = timeoutNanos();
+    timeout(Companion.minTimeout(paramTimeout.timeoutNanos(), timeoutNanos()), TimeUnit.NANOSECONDS);
+    if (hasDeadline())
+    {
+      long l2 = deadlineNanoTime();
+      if (paramTimeout.hasDeadline()) {
+        deadlineNanoTime(Math.min(deadlineNanoTime(), paramTimeout.deadlineNanoTime()));
+      }
+      try
+      {
+        paramFunction0.invoke();
+        return;
+      }
+      finally
+      {
+        InlineMarker.finallyStart(1);
+        timeout(l1, TimeUnit.NANOSECONDS);
+        if (paramTimeout.hasDeadline()) {
+          deadlineNanoTime(l2);
+        }
+        InlineMarker.finallyEnd(1);
+      }
+    }
+    if (paramTimeout.hasDeadline()) {
+      deadlineNanoTime(paramTimeout.deadlineNanoTime());
+    }
+    try
+    {
+      paramFunction0.invoke();
+      return;
+    }
+    finally
+    {
+      InlineMarker.finallyStart(1);
+      timeout(l1, TimeUnit.NANOSECONDS);
+      if (paramTimeout.hasDeadline()) {
+        clearDeadline();
+      }
+      InlineMarker.finallyEnd(1);
+    }
+  }
+  
   public void throwIfReached()
   {
     if (!Thread.interrupted())
@@ -66,29 +130,33 @@ public class Timeout
         if (this.deadlineNanoTime - System.nanoTime() > 0L) {
           return;
         }
-        throw new InterruptedIOException("deadline reached");
+        throw ((Throwable)new InterruptedIOException("deadline reached"));
       }
       return;
     }
     Thread.currentThread().interrupt();
-    throw new InterruptedIOException("interrupted");
+    throw ((Throwable)new InterruptedIOException("interrupted"));
   }
   
-  public Timeout timeout(long paramLong, TimeUnit paramTimeUnit)
+  @NotNull
+  public Timeout timeout(long paramLong, @NotNull TimeUnit paramTimeUnit)
   {
-    if (paramLong >= 0L)
+    Intrinsics.checkParameterIsNotNull(paramTimeUnit, "unit");
+    int i;
+    if (paramLong >= 0L) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (paramTimeUnit != null)
-      {
-        this.timeoutNanos = paramTimeUnit.toNanos(paramLong);
-        return this;
-      }
-      throw new IllegalArgumentException("unit == null");
+      this.timeoutNanos = paramTimeUnit.toNanos(paramLong);
+      return this;
     }
     paramTimeUnit = new StringBuilder();
     paramTimeUnit.append("timeout < 0: ");
     paramTimeUnit.append(paramLong);
-    throw new IllegalArgumentException(paramTimeUnit.toString());
+    throw ((Throwable)new IllegalArgumentException(paramTimeUnit.toString().toString()));
   }
   
   public long timeoutNanos()
@@ -96,8 +164,9 @@ public class Timeout
     return this.timeoutNanos;
   }
   
-  public final void waitUntilNotified(Object paramObject)
+  public final void waitUntilNotified(@NotNull Object paramObject)
   {
+    Intrinsics.checkParameterIsNotNull(paramObject, "monitor");
     try
     {
       boolean bool = hasDeadline();
@@ -115,7 +184,7 @@ public class Timeout
         l1 = deadlineNanoTime() - l3;
       }
       if (l1 <= 0L) {
-        break label156;
+        break label168;
       }
       l2 = l1 / 1000000L;
       Long.signum(l2);
@@ -127,21 +196,21 @@ public class Timeout
     {
       long l1;
       long l2;
-      label136:
-      label156:
       do
       {
-        break label136;
+        break label145;
       } while (l2 >= l1);
     }
-    throw new InterruptedIOException("timeout");
+    throw ((Throwable)new InterruptedIOException("timeout"));
+    label145:
     Thread.currentThread().interrupt();
-    throw new InterruptedIOException("interrupted");
+    throw ((Throwable)new InterruptedIOException("interrupted"));
+    label168:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     okio.Timeout
  * JD-Core Version:    0.7.0.1
  */

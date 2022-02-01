@@ -1,49 +1,64 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.qwallet.hb.aio.passwd.IPasswdRedBagService;
+import com.tencent.imcore.message.BaseMsgProxy;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XEditTextEx;
 
 class QWalletAIOLifeCycleHelper$1
-  implements View.OnClickListener
+  extends MessageObserver
 {
-  QWalletAIOLifeCycleHelper$1(QWalletAIOLifeCycleHelper paramQWalletAIOLifeCycleHelper, String paramString1, String paramString2) {}
+  QWalletAIOLifeCycleHelper$1(QWalletAIOLifeCycleHelper paramQWalletAIOLifeCycleHelper) {}
   
-  public void onClick(View paramView)
+  public void onNotifyUpdateSelfMsgSeqAndTime(MessageRecord paramMessageRecord)
   {
-    try
-    {
-      if (!this.jdField_a_of_type_JavaLangString.equals("0"))
-      {
-        QWalletAIOLifeCycleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper).a.getText().clear();
-        QWalletAIOLifeCycleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper).reportPasswdTipsClick(QWalletAIOLifeCycleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper));
-      }
-      int i = QWalletAIOLifeCycleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper).a.getSelectionStart();
-      Editable localEditable = QWalletAIOLifeCycleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper).a.getText();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper.a = true;
-      localEditable.insert(i, this.b);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper.a = false;
-      QWalletAIOLifeCycleHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper).a.setSelection(localEditable.length());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperQWalletAIOLifeCycleHelper.a();
-    }
-    catch (Throwable localThrowable)
+    if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onclick  PasswdRedBagTips throw an exception: ");
-      localStringBuilder.append(localThrowable);
-      QLog.e("QWalletAIOLifeCycleHelper", 1, localStringBuilder.toString());
+      localStringBuilder.append("mr == null:");
+      boolean bool;
+      if (paramMessageRecord == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      QLog.d("addQQWalletTips  onNotifyUpdateSelfMsgSeqAndTime", 2, localStringBuilder.toString());
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMessageRecord == null) {
+      return;
+    }
+    if (((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) && (paramMessageRecord.msgtype == -1000)) {
+      this.a.a(paramMessageRecord);
+    }
+  }
+  
+  public void onSendResult(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("isSuccess:");
+      paramString.append(paramBoolean);
+      QLog.d("addQQWalletTips  onSendResult", 2, paramString.toString());
+    }
+    if (paramBoolean)
+    {
+      paramString = QWalletAIOLifeCycleHelper.b(this.a).getMessageProxy(QWalletAIOLifeCycleHelper.a(this.a).a).c(QWalletAIOLifeCycleHelper.a(this.a).b, QWalletAIOLifeCycleHelper.a(this.a).a, paramLong);
+      if (paramString == null) {
+        return;
+      }
+      if ((paramString.istroop == 0) && (paramString.msgtype == -1000)) {
+        this.a.a(paramString);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QWalletAIOLifeCycleHelper.1
  * JD-Core Version:    0.7.0.1
  */

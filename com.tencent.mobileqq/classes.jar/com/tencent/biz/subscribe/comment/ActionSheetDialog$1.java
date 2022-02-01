@@ -11,8 +11,8 @@ class ActionSheetDialog$1
   public void run()
   {
     ActionSheetDialog.a(this.this$0).setVisibility(0);
-    ActionSheetDialog.a(this.this$0).setVisibility(0);
-    ActionSheetDialog.a(this.this$0);
+    ActionSheetDialog.b(this.this$0).setVisibility(0);
+    ActionSheetDialog.c(this.this$0);
   }
 }
 

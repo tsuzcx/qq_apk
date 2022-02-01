@@ -37,28 +37,15 @@ import org.json.JSONObject;
 
 public class TroopBarUtils
 {
-  protected static final String a;
-  protected static SimpleDateFormat a;
-  public static final HashMap<String, TroopBarUtils.PublishDataCacheEntity> a;
-  public static Hashtable<String, TroopBarPublishUtils.Pic_list> a;
-  protected static final String b;
-  public static final HashMap<String, TroopBarUtils.PublishDataCacheEntity> b;
-  protected static final String c;
-  public static final HashMap<String, String> c;
-  protected static final String d;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131715009);
-    jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131715019);
-    jdField_c_of_type_JavaLangString = HardCodeUtil.a(2131715000);
-    d = HardCodeUtil.a(2131714996);
-    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat();
-    jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    jdField_c_of_type_JavaUtilHashMap = new HashMap();
-  }
+  protected static final String a = HardCodeUtil.a(2131912501);
+  protected static final String b = HardCodeUtil.a(2131912510);
+  protected static final String c = HardCodeUtil.a(2131912493);
+  protected static final String d = HardCodeUtil.a(2131912490);
+  protected static SimpleDateFormat e = new SimpleDateFormat();
+  public static Hashtable<String, TroopBarPublishUtils.Pic_list> f = new Hashtable();
+  public static final HashMap<String, TroopBarUtils.PublishDataCacheEntity> g = new HashMap();
+  public static final HashMap<String, TroopBarUtils.PublishDataCacheEntity> h = new HashMap();
+  public static final HashMap<String, String> i = new HashMap();
   
   public static final Uri a(BaseActivity paramBaseActivity, String paramString, int paramInt)
   {
@@ -92,7 +79,7 @@ public class TroopBarUtils
       }
     }
     if ((paramBaseActivity != null) && (!paramBaseActivity.isFinishing())) {
-      QQToast.a(paramBaseActivity, 2131696274, 1).b(paramBaseActivity.getTitleBarHeight());
+      QQToast.makeText(paramBaseActivity, 2131894040, 1).show(paramBaseActivity.getTitleBarHeight());
     }
     return null;
   }
@@ -107,43 +94,43 @@ public class TroopBarUtils
       QQTextBuilder localQQTextBuilder = (QQTextBuilder)paramEditText.getEditableText();
       if (localQQTextBuilder != null)
       {
-        int j = localQQTextBuilder.length();
-        Object localObject1 = new char[j];
-        int i = 0;
-        localQQTextBuilder.getChars(0, j, (char[])localObject1, 0);
+        int k = localQQTextBuilder.length();
+        Object localObject1 = new char[k];
+        int j = 0;
+        localQQTextBuilder.getChars(0, k, (char[])localObject1, 0);
         paramEditText = new StringBuffer();
         paramEditText.append((char[])localObject1);
-        localObject1 = (EmoticonSpan[])localQQTextBuilder.getSpans(0, j, EmoticonSpan.class);
+        localObject1 = (EmoticonSpan[])localQQTextBuilder.getSpans(0, k, EmoticonSpan.class);
         if (((localQQTextBuilder instanceof Spanned)) && (Build.VERSION.SDK_INT >= 24)) {
           Arrays.sort((Object[])localObject1, new TroopBarUtils.1(localQQTextBuilder));
         }
-        int k;
-        for (j = 0; i < localObject1.length; j = k)
+        int m;
+        for (k = 0; j < localObject1.length; k = m)
         {
-          Object localObject2 = localObject1[i];
-          int m;
+          Object localObject2 = localObject1[j];
           int n;
+          int i1;
           if (((EmoticonSpan)localObject2).emojiType == 1)
           {
-            m = localQQTextBuilder.getSpanStart(localObject2);
-            n = localQQTextBuilder.getSpanEnd(localObject2);
+            n = localQQTextBuilder.getSpanStart(localObject2);
+            i1 = localQQTextBuilder.getSpanEnd(localObject2);
             localObject2 = QQSysFaceUtil.getFaceDescription(((EmoticonSpan)localObject2).index & 0x7FFFFFFF);
-            paramEditText.replace(m + j, n + j, (String)localObject2);
+            paramEditText.replace(n + k, i1 + k, (String)localObject2);
           }
-          for (k = ((String)localObject2).length();; k = ((String)localObject2).length())
+          for (m = ((String)localObject2).length();; m = ((String)localObject2).length())
           {
-            k = j + (k - (n - m));
+            m = k + (m - (i1 - n));
             break;
-            k = j;
+            m = k;
             if (((EmoticonSpan)localObject2).emojiType != 2) {
               break;
             }
-            m = localQQTextBuilder.getSpanStart(localObject2);
-            n = localQQTextBuilder.getSpanEnd(localObject2);
+            n = localQQTextBuilder.getSpanStart(localObject2);
+            i1 = localQQTextBuilder.getSpanEnd(localObject2);
             localObject2 = ((EmoticonSpan)localObject2).getDescription();
-            paramEditText.replace(m + j, n + j, (String)localObject2);
+            paramEditText.replace(n + k, i1 + k, (String)localObject2);
           }
-          i += 1;
+          j += 1;
         }
         return paramEditText.toString();
       }
@@ -156,33 +143,33 @@ public class TroopBarUtils
     if (TextUtils.isEmpty(paramString)) {
       return "";
     }
-    int i;
+    int j;
     try
     {
-      boolean bool = a(paramString);
+      boolean bool = b(paramString);
       String str = paramString;
       if (!bool) {
-        break label198;
+        break label199;
       }
-      i = 0;
+      j = 0;
       for (;;)
       {
         str = paramString;
         try
         {
-          if (i >= EmotcationConstants.SYS_EMOTICON_SYMBOL.length) {
-            break label198;
+          if (j >= EmotcationConstants.SYS_EMOTICON_SYMBOL.length) {
+            break label199;
           }
           str = paramString;
-          if (paramString.indexOf(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]) != -1)
+          if (paramString.indexOf(EmotcationConstants.SYS_EMOTICON_SYMBOL[j]) != -1)
           {
-            str = EmotcationConstants.SYS_EMOTICON_SYMBOL[i];
+            str = EmotcationConstants.SYS_EMOTICON_SYMBOL[j];
             StringBuilder localStringBuilder = new StringBuilder();
             localStringBuilder.append("\024");
-            localStringBuilder.append((char)i);
+            localStringBuilder.append((char)j);
             str = paramString.replace(str, localStringBuilder.toString());
           }
-          i += 1;
+          j += 1;
           paramString = str;
         }
         catch (Exception localException1) {}
@@ -195,22 +182,22 @@ public class TroopBarUtils
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("convertFaceStringTextToIndex:");
-      int j = paramString.length();
-      i = 200;
-      if (j <= 200) {
-        i = paramString.length() - 1;
+      int k = paramString.length();
+      j = 200;
+      if (k <= 200) {
+        j = paramString.length() - 1;
       }
-      ((StringBuilder)localObject).append(paramString.substring(0, i));
+      ((StringBuilder)localObject).append(paramString.substring(0, j));
       QLog.e("TroopBar", 2, ((StringBuilder)localObject).toString());
       localObject = paramString;
     }
-    label198:
+    label199:
     return localObject;
   }
   
   public static final JSONObject a(String paramString1, Context paramContext, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap)
   {
-    if (FileUtil.b(paramString2))
+    if (FileUtil.d(paramString2))
     {
       HashMap localHashMap1 = new HashMap();
       localHashMap1.put("Connection", "keep-alive");
@@ -232,7 +219,7 @@ public class TroopBarUtils
         paramContext.append(", path = ");
         paramContext.append(paramString2);
         paramContext.append(", size = ");
-        paramContext.append(FileUtil.a(paramString2));
+        paramContext.append(FileUtil.f(paramString2));
         QLog.d("TroopBar", 2, paramContext.toString());
         paramContext = new StringBuilder();
         paramContext.append("urlResult: ");
@@ -265,7 +252,7 @@ public class TroopBarUtils
   {
     if ((paramBundle1 != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      paramBundle1.putString("version", "8.7.0");
+      paramBundle1.putString("version", "8.8.17");
       paramBundle1.putString("platform", "android");
       paramBundle1.putString("mType", "qb_troop_bar");
       StringBuilder localStringBuilder = new StringBuilder();
@@ -308,19 +295,19 @@ public class TroopBarUtils
     ReportController.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, 0, paramString4, paramString5, paramString6, paramString7);
   }
   
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (-1 != paramString.indexOf('/'));
-  }
-  
   public static final void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     ReportController.b(null, "dc00899", "Grp_tribe", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
   }
+  
+  public static boolean b(String paramString)
+  {
+    return (!TextUtils.isEmpty(paramString)) && (-1 != paramString.indexOf('/'));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopBarUtils
  * JD-Core Version:    0.7.0.1
  */

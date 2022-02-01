@@ -11,14 +11,14 @@ class MiniPie$2
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_AndroidContentContext.startActivity(this.a);
-    this.this$0.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatProvider.a(14);
-    ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
+    this.this$0.b.startActivity(this.a);
+    this.this$0.E.b(14);
+    ((Activity)this.this$0.b).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.2
  * JD-Core Version:    0.7.0.1
  */

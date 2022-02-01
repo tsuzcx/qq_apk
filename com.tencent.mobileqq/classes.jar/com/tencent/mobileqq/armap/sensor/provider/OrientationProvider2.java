@@ -9,71 +9,69 @@ import com.tencent.mobileqq.armap.sensor.rotation.OrientationCalculator;
 public abstract class OrientationProvider2
   extends OrientationProvider
 {
-  public int a;
-  protected Context a;
-  public Matrix4 a;
-  protected OrientationCalculator a;
-  public float[] b = new float[3];
-  public float[] c = new float[3];
+  protected OrientationCalculator h;
+  public Matrix4 i = new Matrix4();
+  protected Context j;
+  public float[] k = new float[3];
+  public float[] l = new float[3];
+  public int m = 2;
   
   public OrientationProvider2(Context paramContext, int paramInt, SensorManager paramSensorManager, ARSensorManager.OnSensorChangeListener paramOnSensorChangeListener)
   {
     super(paramSensorManager, paramOnSensorChangeListener);
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.m = paramInt;
+    this.j = paramContext;
     a(paramContext);
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationOrientationCalculator = new OrientationCalculator();
+    this.i = new Matrix4();
+    this.h = new OrientationCalculator();
   }
   
   protected void a(float[] paramArrayOfFloat)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener != null)
+    if (this.g != null)
     {
       if (paramArrayOfFloat == null) {
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
-      this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationOrientationCalculator.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
-      int i = this.jdField_a_of_type_Int;
-      if (i == 1)
+      this.i.set(paramArrayOfFloat);
+      this.h.a(this.i, 0, this.l);
+      int n = this.m;
+      if (n == 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.updateAzimuth(this.c[0]);
+        this.g.updateAzimuth(this.l[0]);
         return;
       }
-      Object localObject = this.b;
-      float[] arrayOfFloat = this.c;
+      Object localObject = this.k;
+      float[] arrayOfFloat = this.l;
       localObject[0] = arrayOfFloat[1];
       localObject[1] = (-arrayOfFloat[0]);
       localObject[2] = (-arrayOfFloat[2]);
-      if (i == 0)
+      if (n == 0)
       {
-        paramArrayOfFloat = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener;
-        localObject = this.b;
+        paramArrayOfFloat = this.g;
+        localObject = this.k;
         paramArrayOfFloat.updateRotation(localObject[0], localObject[1], localObject[2]);
         return;
       }
-      if ((i != 2) && (i != 3)) {
+      if ((n != 2) && (n != 3)) {
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener;
-      arrayOfFloat = this.b;
+      localObject = this.g;
+      arrayOfFloat = this.k;
       ((ARSensorManager.OnSensorChangeListener)localObject).updateRotation(arrayOfFloat[0], arrayOfFloat[1], arrayOfFloat[2]);
-      if ((this.jdField_a_of_type_Int == 3) && (paramArrayOfFloat.length == 16)) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorARSensorManager$OnSensorChangeListener.onRotationUpdateOriginal(paramArrayOfFloat);
+      if ((this.m == 3) && (paramArrayOfFloat.length == 16)) {
+        this.g.onRotationUpdateOriginal(paramArrayOfFloat);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.OrientationProvider2
  * JD-Core Version:    0.7.0.1
  */

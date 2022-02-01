@@ -12,18 +12,18 @@ class FolderFollowTabFragment$FollowTabBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.a(this.a) != null))
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_refresh_return_page")) && (FolderFollowTabFragment.e(this.a) != null))
     {
       paramContext = this.a;
-      FolderFollowTabFragment.c(paramContext, FolderFollowTabFragment.a(paramContext));
+      FolderFollowTabFragment.c(paramContext, FolderFollowTabFragment.e(paramContext));
       paramContext = this.a;
-      FolderFollowTabFragment.d(paramContext, FolderFollowTabFragment.a(paramContext));
+      FolderFollowTabFragment.d(paramContext, FolderFollowTabFragment.e(paramContext));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment.FollowTabBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

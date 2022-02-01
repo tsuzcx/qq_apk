@@ -12,10 +12,10 @@ class EmotionInputDetector$5
   
   public void onClick(View paramView)
   {
-    if ((EmotionInputDetector.a(this.a) != null) && (EmotionInputDetector.a(this.a).isShown())) {
-      this.a.b();
+    if ((EmotionInputDetector.c(this.a) != null) && (EmotionInputDetector.c(this.a).isShown())) {
+      this.a.c();
     } else {
-      EmotionInputDetector.c(this.a);
+      EmotionInputDetector.d(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

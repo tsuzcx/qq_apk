@@ -7,16 +7,16 @@ import java.util.Set;
 
 public class UniteEntity$Note
 {
-  int jdField_a_of_type_Int;
-  Note jdField_a_of_type_ComTencentMobileqqGraytipUniteEntity$Note;
-  ArrayList<Note> jdField_a_of_type_JavaUtilArrayList;
-  HashMap<Integer, Object> jdField_a_of_type_JavaUtilHashMap;
+  int a;
+  HashMap<Integer, Object> b;
+  Note c;
+  ArrayList<Note> d;
   
   public UniteEntity$Note(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = paramInt;
+    this.b = new HashMap();
+    this.d = new ArrayList();
   }
   
   private String a(int paramInt)
@@ -30,17 +30,17 @@ public class UniteEntity$Note
       i += 1;
     }
     localStringBuilder1.append(localStringBuilder2);
-    localStringBuilder1.append(UniteEntity.a(this.jdField_a_of_type_Int));
+    localStringBuilder1.append(UniteEntity.a(this.a));
     localStringBuilder1.append(":[\n");
     localStringBuilder1.append(localStringBuilder2);
     localStringBuilder1.append("\tfields");
     localStringBuilder1.append(":[\n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Iterator localIterator = this.b.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (Integer)localIterator.next();
       String str = UniteEntity.b(((Integer)localObject).intValue());
-      localObject = this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+      localObject = this.b.get(localObject);
       localStringBuilder1.append(localStringBuilder2);
       localStringBuilder1.append("\t\t");
       localStringBuilder1.append(str);
@@ -51,7 +51,7 @@ public class UniteEntity$Note
     localStringBuilder1.append(localStringBuilder2);
     localStringBuilder1.append("\t]");
     localStringBuilder1.append("\n");
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    localIterator = this.d.iterator();
     while (localIterator.hasNext()) {
       localStringBuilder1.append(((Note)localIterator.next()).a(paramInt + 1));
     }
@@ -61,51 +61,51 @@ public class UniteEntity$Note
     return localStringBuilder1.toString();
   }
   
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Note a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqGraytipUniteEntity$Note;
-  }
-  
-  public Note a(Note paramNote)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqGraytipUniteEntity$Note = paramNote;
-    this.jdField_a_of_type_ComTencentMobileqqGraytipUniteEntity$Note.a(this);
-    return this;
-  }
-  
-  public ArrayList<Note> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
   public HashMap<Integer, Object> a()
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
+    return this.b;
   }
   
   public void a(int paramInt, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), paramObject);
+    this.b.put(Integer.valueOf(paramInt), paramObject);
   }
   
   public void a(Note paramNote)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramNote);
+    this.d.add(paramNote);
   }
   
-  public boolean a()
+  public Note b()
   {
-    return this.jdField_a_of_type_Int == 2;
+    return this.c;
+  }
+  
+  public Note b(Note paramNote)
+  {
+    this.c = paramNote;
+    this.c.a(this);
+    return this;
+  }
+  
+  public boolean c()
+  {
+    return this.a == 2;
+  }
+  
+  public int d()
+  {
+    return this.a;
+  }
+  
+  public ArrayList<Note> e()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteEntity.Note
  * JD-Core Version:    0.7.0.1
  */

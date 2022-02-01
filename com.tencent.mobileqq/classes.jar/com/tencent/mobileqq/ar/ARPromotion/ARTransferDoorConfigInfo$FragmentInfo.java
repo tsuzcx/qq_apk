@@ -2,17 +2,17 @@ package com.tencent.mobileqq.ar.ARPromotion;
 
 public class ARTransferDoorConfigInfo$FragmentInfo
 {
-  public int a = 2;
   public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
-  public int d;
+  public int d = 2;
+  public int e;
+  public int f;
+  public int g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferDoorConfigInfo.FragmentInfo
  * JD-Core Version:    0.7.0.1
  */

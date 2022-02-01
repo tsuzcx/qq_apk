@@ -51,7 +51,7 @@ class NearbyFaceScoreManager$1
           QLog.e("Q..troop.faceScore", 2, paramBundle.toString());
         }
         paramArrayOfByte = new FaceScoreConfig(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
-        this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramArrayOfByte);
+        this.b.a(paramArrayOfByte);
         return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -69,7 +69,7 @@ class NearbyFaceScoreManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyFaceScoreManager.1
  * JD-Core Version:    0.7.0.1
  */

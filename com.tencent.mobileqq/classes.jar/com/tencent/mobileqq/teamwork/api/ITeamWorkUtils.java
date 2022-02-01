@@ -62,7 +62,7 @@ public abstract interface ITeamWorkUtils
   public static final String TD_SOURCE_TAB = "tdsourcetab";
   public static final String TD_SOURCE_TYPE = "tdsourcetype";
   public static final String TENCENT_DOC_MIMI_APPID = "1108338344";
-  public static final String TROOP_FORM_GREY_NICKNAME = HardCodeUtil.a(2131714554);
+  public static final String TROOP_FORM_GREY_NICKNAME = HardCodeUtil.a(2131912063);
   public static final String TROOP_FORM_GREY_PATTERN = "<([^>])+";
   public static final String TROOP_FORM_GREY_TAG_LINK = "isLink";
   public static final String TROOP_FORM_GREY_TAG_TEXT = "text";
@@ -183,7 +183,7 @@ public abstract interface ITeamWorkUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.api.ITeamWorkUtils
  * JD-Core Version:    0.7.0.1
  */

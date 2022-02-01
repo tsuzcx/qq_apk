@@ -19,7 +19,7 @@ import java.util.Map;
 public class MiniChatFragmentForQzone
   extends MiniChatFragment
 {
-  protected void a()
+  protected void c()
   {
     Object localObject1 = a(getBaseActivity());
     if (localObject1 != null)
@@ -78,41 +78,41 @@ public class MiniChatFragmentForQzone
         localObject4 = getBaseActivity().app;
         if (localObject3 != null)
         {
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+          i = this.a.a;
           if ((i != 1000) && (i != 1004) && (i != 1020)) {}
-          for (localObject2 = ((QQAppInterface)localObject4).getCurrentAccountUin();; localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b) {
+          for (localObject2 = ((QQAppInterface)localObject4).getCurrentAccountUin();; localObject2 = this.a.c) {
             break;
           }
           str1 = ((QQAppInterface)localObject4).getCurrentAccountUin();
-          str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+          str2 = this.a.b;
+          i = this.a.a;
           int j = MobileQQService.seq;
           MobileQQService.seq = j + 1;
-          ((ArkAppMessage)localObject1).containStructMsg = MessageRecordFactory.a((QQAppInterface)localObject4, str1, str2, (String)localObject2, i, j, (AbsStructMsg)localObject3);
+          ((ArkAppMessage)localObject1).containStructMsg = MessageRecordFactory.c((QQAppInterface)localObject4, str1, str2, (String)localObject2, i, j, (AbsStructMsg)localObject3);
         }
         int i = localBundle.getInt("KEY_MSG_FORWARD_ID");
-        ChatActivityFacade.a((QQAppInterface)localObject4, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (ArkAppMessage)localObject1, i);
-        b();
+        ChatActivityFacade.a((QQAppInterface)localObject4, this.a, (ArkAppMessage)localObject1, i);
+        d();
       }
     }
   }
   
-  protected void b()
+  protected void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniPie.a(131075, 0L);
+    if (this.b != null) {
+      this.b.a(131075, 0L);
     }
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    a();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatFragmentForQzone
  * JD-Core Version:    0.7.0.1
  */

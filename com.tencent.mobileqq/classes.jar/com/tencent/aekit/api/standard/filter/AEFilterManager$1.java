@@ -20,11 +20,13 @@ class AEFilterManager$1
       {
         for (AudioFrame localAudioFrame = AEFilterManager.access$000(this.this$0).copyNextSample(); localAudioFrame != null; localAudioFrame = AEFilterManager.access$000(this.this$0).copyNextSample())
         {
-          AEFilterManager.access$100(this.this$0).play();
-          AEFilterManager.access$100(this.this$0).write(localAudioFrame.data, (int)localAudioFrame.length, 0);
+          if (!AEFilterManager.access$100(this.this$0)) {
+            AEFilterManager.access$200(this.this$0).play();
+          }
+          AEFilterManager.access$200(this.this$0).write(localAudioFrame.data, (int)localAudioFrame.length, 0);
         }
-        if ((AEFilterManager.access$100(this.this$0) != null) && (AEFilterManager.access$100(this.this$0).getState() == 1)) {
-          AEFilterManager.access$100(this.this$0).stop();
+        if ((AEFilterManager.access$200(this.this$0) != null) && (AEFilterManager.access$200(this.this$0).getState() == 1)) {
+          AEFilterManager.access$200(this.this$0).stop();
         }
       }
       else

@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public abstract class SyncLoadTask
 {
-  public final String TAG;
+  public String mTAG;
   int mTaskStatus = 1;
   
   public SyncLoadTask(String paramString)
@@ -17,7 +17,7 @@ public abstract class SyncLoadTask
     localStringBuilder.append(paramString);
     localStringBuilder.append("_");
     localStringBuilder.append(AudioHelperUtil.a());
-    this.TAG = localStringBuilder.toString();
+    this.mTAG = localStringBuilder.toString();
   }
   
   public static void requestSyncTask(Resources paramResources, ArrayList<SyncLoadTask> paramArrayList, SyncLoadTask.OnSyncTaskListener paramOnSyncTaskListener)
@@ -81,7 +81,7 @@ public abstract class SyncLoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SyncLoadTask
  * JD-Core Version:    0.7.0.1
  */

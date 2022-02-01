@@ -30,33 +30,33 @@ class ARTransferPromotionRenderable$13
       {
         if (this.this$0.b == 3)
         {
-          if (ARTransferPromotionRenderable.a(this.this$0) == null) {
+          if (ARTransferPromotionRenderable.c(this.this$0) == null) {
             break label243;
           }
-          ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          ARTransferPromotionRenderable.c(this.this$0).native_switchGameStatusWithNoParams(this.a);
           break label243;
         }
         localObject = this.this$0;
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(ARTransferPromotionRenderable.a(this.this$0).c);
+        localStringBuilder.append(ARTransferPromotionRenderable.e(this.this$0).o);
         localStringBuilder.append("360Video.mp4");
-        ARTransferPromotionRenderable.a((ARTransferPromotionRenderable)localObject, 4, localStringBuilder.toString(), false, ARTransferPromotionRenderable.a(this.this$0).d, false);
+        ARTransferPromotionRenderable.a((ARTransferPromotionRenderable)localObject, 4, localStringBuilder.toString(), false, ARTransferPromotionRenderable.e(this.this$0).k, false);
         break label243;
       }
     }
-    if ((this.a == 1) && (ARTransferPromotionRenderable.a(this.this$0) != null) && (ARTransferPromotionRenderable.a(this.this$0).a.booleanValue())) {
-      ARTransferPromotionRenderable.a(this.this$0).b(0, 1);
+    if ((this.a == 1) && (ARTransferPromotionRenderable.d(this.this$0) != null) && (ARTransferPromotionRenderable.e(this.this$0).i.booleanValue())) {
+      ARTransferPromotionRenderable.d(this.this$0).b(0, 1);
     }
-    if (ARTransferPromotionRenderable.a(this.this$0) != null) {
-      ARTransferPromotionRenderable.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+    if (ARTransferPromotionRenderable.c(this.this$0) != null) {
+      ARTransferPromotionRenderable.c(this.this$0).native_switchGameStatusWithNoParams(this.a);
     }
     label243:
-    ARTransferPromotionRenderable.e(this.this$0);
+    ARTransferPromotionRenderable.w(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.13
  * JD-Core Version:    0.7.0.1
  */

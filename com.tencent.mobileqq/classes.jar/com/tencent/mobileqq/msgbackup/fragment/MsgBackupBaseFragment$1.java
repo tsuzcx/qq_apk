@@ -16,15 +16,15 @@ class MsgBackupBaseFragment$1
     if (j != 1) {
       i = 0;
     }
-    Message localMessage = this.this$0.a.obtainMessage(10012);
+    Message localMessage = this.this$0.I.obtainMessage(10012);
     localMessage.arg1 = i;
-    this.this$0.a.sendMessage(localMessage);
-    this.this$0.b.postDelayed(this, 800L);
+    this.this$0.I.sendMessage(localMessage);
+    this.this$0.J.postDelayed(this, 800L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

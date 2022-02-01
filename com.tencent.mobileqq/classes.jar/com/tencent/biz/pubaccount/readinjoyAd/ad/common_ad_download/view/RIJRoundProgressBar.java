@@ -25,22 +25,22 @@ public final class RIJRoundProgressBar
   extends View
   implements IProgressView
 {
-  private float jdField_a_of_type_Float = 2.0F;
-  private int jdField_a_of_type_Int = 270;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_a_of_type_JavaLangString = "#CCE5E5E5";
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private float jdField_b_of_type_Float = 2.0F;
-  private int jdField_b_of_type_Int;
-  private final RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_b_of_type_JavaLangString = "#FF00CAFC";
-  private float jdField_c_of_type_Float = 8.0F;
-  private int jdField_c_of_type_Int = ParseUtil.a(this.jdField_a_of_type_JavaLangString, "#CCE5E5E5");
-  private String jdField_c_of_type_JavaLangString = "#FF00CAFC";
-  private int d = ParseUtil.a(this.jdField_b_of_type_JavaLangString, "#FF00CAFC");
-  private int e = ParseUtil.a(this.jdField_c_of_type_JavaLangString, "#FF00CAFC");
-  private int f = -1;
+  private final Paint a = new Paint();
+  private float b = 2.0F;
+  private float c = 2.0F;
+  private float d = 8.0F;
+  private String e = "#CCE5E5E5";
+  private String f = "#FF00CAFC";
+  private String g = "#FF00CAFC";
+  private int h = 270;
+  private int i;
+  private int j = ParseUtil.a(this.e, "#CCE5E5E5");
+  private int k = ParseUtil.a(this.f, "#FF00CAFC");
+  private int l = ParseUtil.a(this.g, "#FF00CAFC");
+  private int m = -1;
+  private final RectF n = new RectF();
+  private final RectF o = new RectF();
+  private final AtomicBoolean p = new AtomicBoolean(false);
   
   public RIJRoundProgressBar(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -50,44 +50,44 @@ public final class RIJRoundProgressBar
   protected void onDraw(@Nullable Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int i = getWidth() / 2;
-    int j = getHeight() / 2;
-    int k = i - ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.jdField_a_of_type_Float, getResources()) / 2;
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
-    ((Paint)localObject).setStrokeWidth(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.jdField_a_of_type_Float, getResources()));
-    ((Paint)localObject).setColor(this.jdField_c_of_type_Int);
+    int i1 = getWidth() / 2;
+    int i2 = getHeight() / 2;
+    int i3 = i1 - ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.b, getResources()) / 2;
+    Object localObject = this.a;
+    ((Paint)localObject).setStrokeWidth(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.b, getResources()));
+    ((Paint)localObject).setColor(this.j);
     ((Paint)localObject).setAntiAlias(true);
     ((Paint)localObject).setStrokeCap(Paint.Cap.ROUND);
     ((Paint)localObject).setStyle(Paint.Style.STROKE);
     if (paramCanvas != null) {
-      paramCanvas.drawCircle(i, j, k, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(i1, i2, i3, this.a);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.jdField_b_of_type_Float, getResources()));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-    ((RectF)localObject).left = (i - k);
-    ((RectF)localObject).top = (j - k);
-    ((RectF)localObject).right = (i + k);
-    ((RectF)localObject).bottom = (k + j);
-    k = this.jdField_b_of_type_Int * 360 / 100;
+    this.a.setStrokeWidth(((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.c, getResources()));
+    this.a.setColor(this.k);
+    localObject = this.n;
+    ((RectF)localObject).left = (i1 - i3);
+    ((RectF)localObject).top = (i2 - i3);
+    ((RectF)localObject).right = (i1 + i3);
+    ((RectF)localObject).bottom = (i3 + i2);
+    i3 = this.i * 360 / 100;
     if (paramCanvas != null) {
-      paramCanvas.drawArc((RectF)localObject, this.jdField_a_of_type_Int, k, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawArc((RectF)localObject, this.h, i3, false, this.a);
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.p.get())
     {
-      localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+      localObject = this.a;
       ((Paint)localObject).setStyle(Paint.Style.FILL);
-      ((Paint)localObject).setColor(this.e);
-      float f1 = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.jdField_c_of_type_Float, getResources()) / 2.0F;
-      localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
-      float f2 = i;
+      ((Paint)localObject).setColor(this.l);
+      float f1 = ((IRIJAdUIService)QRoute.api(IRIJAdUIService.class)).dp2px(this.d, getResources()) / 2.0F;
+      localObject = this.o;
+      float f2 = i1;
       ((RectF)localObject).left = (f2 - f1);
-      float f3 = j;
+      float f3 = i2;
       ((RectF)localObject).top = (f3 - f1);
       ((RectF)localObject).right = (f2 + f1);
       ((RectF)localObject).bottom = (f3 + f1);
       if (paramCanvas != null) {
-        paramCanvas.drawRect((RectF)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawRect((RectF)localObject, this.a);
       }
     }
   }
@@ -104,7 +104,7 @@ public final class RIJRoundProgressBar
   {
     try
     {
-      this.jdField_b_of_type_Int = paramInt;
+      this.i = paramInt;
       postInvalidate();
       return;
     }
@@ -121,24 +121,24 @@ public final class RIJRoundProgressBar
       return;
     }
     paramIDownloadStyle = (RoundProgressStyle)paramIDownloadStyle;
-    this.jdField_a_of_type_Float = paramIDownloadStyle.getProgressWidthNormal();
-    this.jdField_b_of_type_Float = paramIDownloadStyle.getProgressHighLightWidth();
-    this.jdField_c_of_type_Float = paramIDownloadStyle.getPauseRectWidth();
-    this.jdField_a_of_type_JavaLangString = paramIDownloadStyle.getProgressColorNormal();
-    this.jdField_b_of_type_JavaLangString = paramIDownloadStyle.getProgressColorHighLight();
-    this.jdField_c_of_type_JavaLangString = paramIDownloadStyle.getPauseRectColor();
-    this.jdField_c_of_type_Int = ParseUtil.a(this.jdField_a_of_type_JavaLangString, "#CCE5E5E5");
-    this.d = ParseUtil.a(this.jdField_b_of_type_JavaLangString, "#FF00CAFC");
-    this.e = ParseUtil.a(this.jdField_c_of_type_JavaLangString, "#FF00CAFC");
-    this.jdField_a_of_type_Int = paramIDownloadStyle.getStartAngle();
-    this.f = paramIDownloadStyle.getBtnResource();
+    this.b = paramIDownloadStyle.getProgressWidthNormal();
+    this.c = paramIDownloadStyle.getProgressHighLightWidth();
+    this.d = paramIDownloadStyle.getPauseRectWidth();
+    this.e = paramIDownloadStyle.getProgressColorNormal();
+    this.f = paramIDownloadStyle.getProgressColorHighLight();
+    this.g = paramIDownloadStyle.getPauseRectColor();
+    this.j = ParseUtil.a(this.e, "#CCE5E5E5");
+    this.k = ParseUtil.a(this.f, "#FF00CAFC");
+    this.l = ParseUtil.a(this.g, "#FF00CAFC");
+    this.h = paramIDownloadStyle.getStartAngle();
+    this.m = paramIDownloadStyle.getBtnResource();
   }
   
   public void setProgressText(@Nullable String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.view.RIJRoundProgressBar
  * JD-Core Version:    0.7.0.1
  */

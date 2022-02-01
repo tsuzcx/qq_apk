@@ -116,7 +116,7 @@ public class DoubleVideoProteusItem
       } else {
         str = paramAbsBaseArticleInfo.innerUniqueID;
       }
-      VideoReport.setElementParams(localView, localRIJDtParamBuilder.e(str).a());
+      VideoReport.setElementParams(localView, localRIJDtParamBuilder.e(str).c());
       VideoReport.setElementReuseIdentifier(paramViewBase.getNativeView(), paramAbsBaseArticleInfo.innerUniqueID);
     }
   }
@@ -156,11 +156,11 @@ public class DoubleVideoProteusItem
       {
         paramJSONObject.put("right_article_title", paramAbsBaseArticleInfo.mTitle);
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(ReadInJoyHelper.d());
+        ((StringBuilder)localObject).append(ReadInJoyHelper.F());
         ((StringBuilder)localObject).append("");
         paramJSONObject.put("right_title_num", ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(ReadInJoyHelper.d());
+        ((StringBuilder)localObject).append(ReadInJoyHelper.F());
         ((StringBuilder)localObject).append("");
         paramJSONObject.put("title_num", ((StringBuilder)localObject).toString());
       }
@@ -188,7 +188,7 @@ public class DoubleVideoProteusItem
         ((StringBuilder)localObject).append(l);
         ((StringBuilder)localObject).append("");
         paramJSONObject.put("right_account_uin", ((StringBuilder)localObject).toString());
-        localObject = RIJPBFieldUtils.b(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_v_icon_url);
+        localObject = RIJPBFieldUtils.d(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_v_icon_url);
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           paramJSONObject.put("right_account_small_icon_url", localObject);
         }
@@ -206,8 +206,8 @@ public class DoubleVideoProteusItem
       a(paramAbsBaseArticleInfo, paramJSONObject);
       if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.smallGameData))
       {
-        paramJSONObject.put("right_comment_count", ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo.mCommentCount, HardCodeUtil.a(2131702279)));
-        paramJSONObject.put("right_play_count", HardCodeUtil.a(2131700026));
+        paramJSONObject.put("right_comment_count", ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo.mCommentCount, HardCodeUtil.a(2131900284)));
+        paramJSONObject.put("right_play_count", HardCodeUtil.a(2131898073));
         localObject = new JSONObject();
         ((JSONObject)localObject).put("play_icon", "readinjoy_ad_small_game");
         paramJSONObject.put("id_right_play_icon", localObject);
@@ -283,7 +283,7 @@ public class DoubleVideoProteusItem
       } else {
         str = paramAbsBaseArticleInfo.innerUniqueID;
       }
-      VideoReport.setElementParams(localView, localRIJDtParamBuilder.e(str).a());
+      VideoReport.setElementParams(localView, localRIJDtParamBuilder.e(str).c());
       VideoReport.setElementReuseIdentifier(paramViewBase.getNativeView(), paramAbsBaseArticleInfo.innerUniqueID);
     }
   }
@@ -313,9 +313,9 @@ public class DoubleVideoProteusItem
       boolean bool = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideoSingle(paramAbsBaseArticleInfo1);
       if (bool)
       {
-        paramAbsBaseArticleInfo1 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo1.mCommentCount, HardCodeUtil.a(2131702279));
+        paramAbsBaseArticleInfo1 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo1.mCommentCount, HardCodeUtil.a(2131900284));
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(HardCodeUtil.a(2131700026));
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131898073));
         ((StringBuilder)localObject).append(" ");
         ((StringBuilder)localObject).append(paramAbsBaseArticleInfo1);
         paramJSONObject.put("left_play_count", ((StringBuilder)localObject).toString());
@@ -327,9 +327,9 @@ public class DoubleVideoProteusItem
       }
       if (((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).isMiniGameDoubleVideoSingle(paramAbsBaseArticleInfo2))
       {
-        paramAbsBaseArticleInfo1 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo2.mCommentCount, HardCodeUtil.a(2131702279));
+        paramAbsBaseArticleInfo1 = ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo2.mCommentCount, HardCodeUtil.a(2131900284));
         paramAbsBaseArticleInfo2 = new StringBuilder();
-        paramAbsBaseArticleInfo2.append(HardCodeUtil.a(2131700026));
+        paramAbsBaseArticleInfo2.append(HardCodeUtil.a(2131898073));
         paramAbsBaseArticleInfo2.append(" ");
         paramAbsBaseArticleInfo2.append(paramAbsBaseArticleInfo1);
         paramJSONObject.put("right_play_count", paramAbsBaseArticleInfo2.toString());
@@ -385,11 +385,11 @@ public class DoubleVideoProteusItem
       {
         paramJSONObject.put("left_article_title", paramAbsBaseArticleInfo.mTitle);
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(ReadInJoyHelper.d());
+        ((StringBuilder)localObject).append(ReadInJoyHelper.F());
         ((StringBuilder)localObject).append("");
         paramJSONObject.put("left_title_num", ((StringBuilder)localObject).toString());
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append(ReadInJoyHelper.d());
+        ((StringBuilder)localObject).append(ReadInJoyHelper.F());
         ((StringBuilder)localObject).append("");
         paramJSONObject.put("title_num", ((StringBuilder)localObject).toString());
       }
@@ -417,7 +417,7 @@ public class DoubleVideoProteusItem
         ((StringBuilder)localObject).append(l);
         ((StringBuilder)localObject).append("");
         paramJSONObject.put("left_account_uin", ((StringBuilder)localObject).toString());
-        localObject = RIJPBFieldUtils.b(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_v_icon_url);
+        localObject = RIJPBFieldUtils.d(paramAbsBaseArticleInfo.mPartnerAccountInfo.bytes_v_icon_url);
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           paramJSONObject.put("left_account_small_icon_url", localObject);
         }
@@ -435,8 +435,8 @@ public class DoubleVideoProteusItem
       b(paramAbsBaseArticleInfo, paramJSONObject);
       if (!TextUtils.isEmpty(paramAbsBaseArticleInfo.smallGameData))
       {
-        paramJSONObject.put("left_comment_count", ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo.mCommentCount, HardCodeUtil.a(2131702279)));
-        paramJSONObject.put("left_play_count", HardCodeUtil.a(2131700026));
+        paramJSONObject.put("left_comment_count", ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getFormatNum(paramAbsBaseArticleInfo.mCommentCount, HardCodeUtil.a(2131900284)));
+        paramJSONObject.put("left_play_count", HardCodeUtil.a(2131898073));
         localObject = new JSONObject();
         ((JSONObject)localObject).put("play_icon", "readinjoy_ad_small_game");
         paramJSONObject.put("id_left_play_icon", localObject);
@@ -474,7 +474,7 @@ public class DoubleVideoProteusItem
       localAbsBaseArticleInfo = null;
     }
     JSONObject localJSONObject = new JSONObject();
-    boolean bool = ReadInJoyHelper.s();
+    boolean bool = ReadInJoyHelper.G();
     for (;;)
     {
       try
@@ -513,7 +513,7 @@ public class DoubleVideoProteusItem
   
   public void a(int paramInt1, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, int paramInt2)
   {
-    AbsBaseArticleInfo localAbsBaseArticleInfo2 = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo2 = paramIReadInJoyModel.k();
     if (localAbsBaseArticleInfo2 != null)
     {
       AbsBaseArticleInfo localAbsBaseArticleInfo1;
@@ -544,21 +544,21 @@ public class DoubleVideoProteusItem
       paramAbsBaseArticleInfo2 = (VideoColumnInfo)paramAbsBaseArticleInfo2.columnEntrances.get(0);
       if ((localVideoColumnInfo != null) && (paramAbsBaseArticleInfo2 != null))
       {
-        if ((localVideoColumnInfo.a != 0) && (localVideoColumnInfo.a == paramAbsBaseArticleInfo2.a))
+        if ((localVideoColumnInfo.b != 0) && (localVideoColumnInfo.b == paramAbsBaseArticleInfo2.b))
         {
-          Util.an(paramAbsBaseArticleInfo1, paramJSONObject);
+          Util.ao(paramAbsBaseArticleInfo1, paramJSONObject);
           return;
         }
-        if (localVideoColumnInfo.a != 0)
+        if (localVideoColumnInfo.b != 0)
         {
           paramJSONObject.put("column_tips_left", "栏目");
-          paramJSONObject.put("column_name_left", localVideoColumnInfo.b);
+          paramJSONObject.put("column_name_left", localVideoColumnInfo.c);
           paramJSONObject.put("readinjoy_column_icon_left", "readinjoy_column_icon_white");
         }
-        if (paramAbsBaseArticleInfo2.a != 0)
+        if (paramAbsBaseArticleInfo2.b != 0)
         {
           paramJSONObject.put("column_tips_right", "栏目");
-          paramJSONObject.put("column_name_right", paramAbsBaseArticleInfo2.b);
+          paramJSONObject.put("column_name_right", paramAbsBaseArticleInfo2.c);
           paramJSONObject.put("readinjoy_column_icon_right", "readinjoy_column_icon_white");
         }
       }
@@ -568,7 +568,7 @@ public class DoubleVideoProteusItem
   public boolean a(int paramInt, Container paramContainer, IReadInJoyModel paramIReadInJoyModel, ViewBase paramViewBase)
   {
     int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.a();
+    AbsBaseArticleInfo localAbsBaseArticleInfo = paramIReadInJoyModel.k();
     if ((localAbsBaseArticleInfo != null) && (localAbsBaseArticleInfo.mSubArticleList != null) && (localAbsBaseArticleInfo.mSubArticleList.size() > 0)) {
       paramContainer = (AbsBaseArticleInfo)localAbsBaseArticleInfo.mSubArticleList.get(0);
     } else {
@@ -589,7 +589,7 @@ public class DoubleVideoProteusItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.item.DoubleVideoProteusItem
  * JD-Core Version:    0.7.0.1
  */

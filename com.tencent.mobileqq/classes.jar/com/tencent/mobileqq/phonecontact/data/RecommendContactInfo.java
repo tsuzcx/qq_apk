@@ -13,44 +13,36 @@ public class RecommendContactInfo
 {
   public static final Parcelable.Creator<RecommendContactInfo> CREATOR = new RecommendContactInfo.1();
   public int a;
-  public long a;
-  public String a;
   public int b;
-  public String b;
-  public int c;
   public String c;
-  public String d;
-  public String e;
+  public int d;
+  public String e = "";
+  public long f = 0L;
+  public String g;
+  public String h;
+  public String i;
   
-  public RecommendContactInfo()
-  {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-  }
+  public RecommendContactInfo() {}
   
   public RecommendContactInfo(RecommendedContactInfo paramRecommendedContactInfo)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = paramRecommendedContactInfo.age;
-    this.jdField_b_of_type_Int = paramRecommendedContactInfo.sex;
-    this.jdField_a_of_type_JavaLangString = paramRecommendedContactInfo.personalSign;
-    this.jdField_c_of_type_Int = paramRecommendedContactInfo.eNetworkType;
-    this.jdField_b_of_type_JavaLangString = paramRecommendedContactInfo.faceUrl;
-    this.jdField_a_of_type_Long = paramRecommendedContactInfo.faceFlag;
+    this.a = paramRecommendedContactInfo.age;
+    this.b = paramRecommendedContactInfo.sex;
+    this.c = paramRecommendedContactInfo.personalSign;
+    this.d = paramRecommendedContactInfo.eNetworkType;
+    this.e = paramRecommendedContactInfo.faceUrl;
+    this.f = paramRecommendedContactInfo.faceFlag;
   }
   
   public RecommendContactInfo(Parcel paramParcel)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.d = paramParcel.readString();
-    this.e = paramParcel.readString();
+    this.a = paramParcel.readInt();
+    this.b = paramParcel.readInt();
+    this.c = paramParcel.readString();
+    this.d = paramParcel.readInt();
+    this.g = paramParcel.readString();
+    this.h = paramParcel.readString();
+    this.i = paramParcel.readString();
   }
   
   public JSONObject a()
@@ -58,19 +50,19 @@ public class RecommendContactInfo
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("mobile", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("name", this.d);
-      localJSONObject.put("age", this.jdField_a_of_type_Int);
-      localJSONObject.put("sex", this.jdField_b_of_type_Int);
-      localJSONObject.put("signature", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("mobile", this.g);
+      localJSONObject.put("name", this.h);
+      localJSONObject.put("age", this.a);
+      localJSONObject.put("sex", this.b);
+      localJSONObject.put("signature", this.c);
       String str;
-      if (this.jdField_c_of_type_Int != 0) {
-        str = HardCodeUtil.a(2131719230);
+      if (this.d != 0) {
+        str = HardCodeUtil.a(2131916782);
       } else {
-        str = HardCodeUtil.a(2131719229);
+        str = HardCodeUtil.a(2131916781);
       }
       localJSONObject.put("online", str);
-      localJSONObject.put("url", this.e);
+      localJSONObject.put("url", this.i);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -89,22 +81,22 @@ public class RecommendContactInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LoginWelcomeContactInfo{age=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", sex=");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", personalSign='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.c);
     localStringBuilder.append('\'');
     localStringBuilder.append(", eNetworkType=");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(this.d);
     localStringBuilder.append(", unicode='");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('\'');
     localStringBuilder.append(", name='");
-    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.h);
     localStringBuilder.append('\'');
     localStringBuilder.append(", url='");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -112,15 +104,15 @@ public class RecommendContactInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeInt(this.a);
+    paramParcel.writeInt(this.b);
+    paramParcel.writeString(this.c);
+    paramParcel.writeInt(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.data.RecommendContactInfo
  * JD-Core Version:    0.7.0.1
  */

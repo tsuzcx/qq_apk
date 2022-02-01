@@ -10,24 +10,24 @@ import java.util.ArrayList;
 public class ReadInjoyFriendsBiuComponentFragment$FriensBiuAdapter
   extends BaseAdapter
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  Context a;
+  ArrayList<MultiBiuSameContent> b = new ArrayList();
   
   public ReadInjoyFriendsBiuComponentFragment$FriensBiuAdapter(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
+    this.a = paramArrayList;
     Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.b = localObject;
   }
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.b.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -38,17 +38,17 @@ public class ReadInjoyFriendsBiuComponentFragment$FriensBiuAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if (paramView == null) {
-      paramView = new ReadInjoyFriendsBiuComponentFragment.ViewHolder(this.jdField_a_of_type_ComTencentMobileqqKandianBizBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);
+      paramView = new ReadInjoyFriendsBiuComponentFragment.ViewHolder(this.c, this.a);
     } else {
       paramView = (ReadInjoyFriendsBiuComponentFragment.ViewHolder)paramView.getTag();
     }
-    paramView.a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
+    paramView.a((MultiBiuSameContent)this.b.get(paramInt), paramInt);
     return paramView.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.biu.ReadInjoyFriendsBiuComponentFragment.FriensBiuAdapter
  * JD-Core Version:    0.7.0.1
  */

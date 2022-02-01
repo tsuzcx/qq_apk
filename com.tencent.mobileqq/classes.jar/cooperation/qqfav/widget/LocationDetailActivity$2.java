@@ -20,8 +20,8 @@ class LocationDetailActivity$2
     if (LocationDetailActivity.a(this.a))
     {
       QfavUtil.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
+      if (LocationDetailActivity.b(this.a) != null) {
+        LocationDetailActivity.b(this.a).setVisibility(8);
       }
     }
     super.onClick(paramView);
@@ -30,7 +30,7 @@ class LocationDetailActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationDetailActivity.2
  * JD-Core Version:    0.7.0.1
  */

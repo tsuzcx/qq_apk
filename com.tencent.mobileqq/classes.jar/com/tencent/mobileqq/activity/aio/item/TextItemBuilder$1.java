@@ -28,13 +28,13 @@ class TextItemBuilder$1
     else
     {
       localObject = (MessageForText)localObject;
-      if (!this.a.a())
+      if (!this.a.c())
       {
         if (((MessageForText)localObject).msgtype == -1003)
         {
-          AIOUtils.o = true;
+          AIOUtils.q = true;
           localObject = PkgTools.decodeCgi(((MessageForText)localObject).action);
-          localObject = JumpParser.a(this.a.a, paramView.getContext(), (String)localObject);
+          localObject = JumpParser.a(this.a.d, paramView.getContext(), (String)localObject);
           if (localObject != null) {
             ((JumpAction)localObject).a();
           }
@@ -49,7 +49,7 @@ class TextItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

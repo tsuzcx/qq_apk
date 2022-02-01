@@ -14,14 +14,14 @@ final class DownloadApi$13
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    DownloadApi.a(this.a, this.b, this.c);
     ReportController.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
     paramDialogInterface = new StringBuilder();
-    paramDialogInterface.append(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.f));
+    paramDialogInterface.append(this.a.getString(DownloadConstants.f));
     paramDialogInterface.append("_");
-    paramDialogInterface.append(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.c));
+    paramDialogInterface.append(this.a.getString(DownloadConstants.c));
     paramDialogInterface.append("_");
-    paramDialogInterface.append(this.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.d));
+    paramDialogInterface.append(this.a.getString(DownloadConstants.d));
     paramDialogInterface = paramDialogInterface.toString();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(System.currentTimeMillis() / 1000L);
@@ -35,7 +35,7 @@ final class DownloadApi$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.13
  * JD-Core Version:    0.7.0.1
  */

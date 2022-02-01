@@ -19,51 +19,51 @@ final class QWalletTools$3
     StringBuilder localStringBuilder1 = new StringBuilder();
     localStringBuilder1.append("Tenpay_mqq");
     localStringBuilder1.append("|");
-    localStringBuilder1.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(this.a);
     localStringBuilder1.append("||");
-    localStringBuilder1.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(this.b);
     localStringBuilder1.append("|");
-    localStringBuilder1.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(this.c);
     localStringBuilder1.append("|0|1|0|android.");
     try
     {
-      localStringBuilder1.append(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageManager().getPackageInfo(this.jdField_a_of_type_MqqAppAppRuntime.getApplication().getPackageName(), 0).versionName);
+      localStringBuilder1.append(this.d.getApplication().getPackageManager().getPackageInfo(this.d.getApplication().getPackageName(), 0).versionName);
     }
     catch (Throwable localThrowable)
     {
       localThrowable.printStackTrace();
     }
     localStringBuilder1.append("|");
-    localStringBuilder1.append(CommonUtil.a());
+    localStringBuilder1.append(CommonUtil.b());
     localStringBuilder1.append("|");
-    if ((!TextUtils.isEmpty(this.c)) || (!TextUtils.isEmpty(this.d)))
+    if ((!TextUtils.isEmpty(this.e)) || (!TextUtils.isEmpty(this.f)))
     {
-      localStringBuilder1.append(this.c);
+      localStringBuilder1.append(this.e);
       localStringBuilder1.append(".");
-      localStringBuilder1.append(this.d);
+      localStringBuilder1.append(this.f);
     }
     localStringBuilder1.append("|");
-    localStringBuilder1.append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(this.g);
     localStringBuilder1.append(".");
-    if (!TextUtils.isEmpty(this.e)) {
-      localStringBuilder1.append(this.e.replace("|", ","));
+    if (!TextUtils.isEmpty(this.h)) {
+      localStringBuilder1.append(this.h.replace("|", ","));
     }
     localStringBuilder1.append("|");
-    long l = this.jdField_a_of_type_Long;
+    long l = this.i;
     if (0L != l)
     {
-      String str = this.jdField_b_of_type_JavaLangString;
+      String str = this.c;
       StringBuilder localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("op_type=");
-      localStringBuilder2.append(this.jdField_a_of_type_Int);
+      localStringBuilder2.append(this.b);
       VACDReportUtil.a(l, null, str, localStringBuilder2.toString(), 0, "");
     }
-    StatisticCollector.getInstance(MobileQQ.getContext()).reportToPCliOper(this.jdField_a_of_type_MqqAppAppRuntime, localStringBuilder1.toString());
+    StatisticCollector.getInstance(MobileQQ.getContext()).reportToPCliOper(this.d, localStringBuilder1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.impl.QWalletTools.3
  * JD-Core Version:    0.7.0.1
  */

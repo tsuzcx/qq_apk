@@ -13,26 +13,31 @@ import java.util.Set;
 
 class AVBusiness
 {
-  private static long jdField_a_of_type_Long = 0L;
-  private static final String jdField_a_of_type_JavaLangString = "AVBusiness";
-  private final HashMap<Long, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private final long jdField_b_of_type_Long;
-  private final String jdField_b_of_type_JavaLangString;
-  private final long jdField_c_of_type_Long;
-  private final String jdField_c_of_type_JavaLangString;
+  private static long SEQ = 0L;
+  private static final String TAG = "AVBusiness";
+  private final String mName;
+  private final HashMap<Long, Integer> mPriorityMap;
+  private final String mProcessName;
+  private final long mRequestType;
+  private final long mSeq;
   
   AVBusiness(String paramString1, String paramString2)
   {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_c_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Long = ((Long)Constants.jdField_a_of_type_JavaUtilHashMap.get(paramString1)).longValue();
-    this.jdField_a_of_type_JavaUtilHashMap = a(paramString1, this.jdField_b_of_type_Long);
-    long l = jdField_a_of_type_Long;
-    jdField_a_of_type_Long = 1L + l;
-    this.jdField_c_of_type_Long = l;
+    this.mName = paramString1;
+    this.mProcessName = paramString2;
+    this.mRequestType = ((Long)Constants.REQUEST_DEVICE_MAP.get(paramString1)).longValue();
+    this.mPriorityMap = initPriorityMap(paramString1, this.mRequestType);
+    if (("音视频通话".equals(paramString1)) && (paramString2 != null) && (!paramString2.isEmpty()))
+    {
+      this.mSeq = 0L;
+      return;
+    }
+    long l = SEQ;
+    SEQ = 1L + l;
+    this.mSeq = l;
   }
   
-  private static HashMap<Long, Integer> a(String paramString, long paramLong)
+  private static HashMap<Long, Integer> initPriorityMap(String paramString, long paramLong)
   {
     HashMap localHashMap = new HashMap();
     long l2 = 1L;
@@ -42,7 +47,7 @@ class AVBusiness
     {
       if ((l1 & 1L) != 0L)
       {
-        localObject = (List)Constants.Priority.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+        localObject = (List)Constants.Priority.PRIORITY_MAP.get(Long.valueOf(paramLong));
         int i = 0;
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
@@ -63,7 +68,7 @@ class AVBusiness
       while (paramString.hasNext())
       {
         localObject = (Map.Entry)paramString.next();
-        String str = jdField_a_of_type_JavaLangString;
+        String str = TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("mPriorityMap, type[");
         localStringBuilder.append(((Map.Entry)localObject).getKey());
@@ -76,46 +81,9 @@ class AVBusiness
     return localHashMap;
   }
   
-  public long a()
+  public boolean comparePriority(AVBusiness paramAVBusiness)
   {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("lossFocus, business[");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      localStringBuilder.append("], process[");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-      localStringBuilder.append("]");
-      QLog.i((String)localObject, 2, localStringBuilder.toString());
-    }
-    if ("com.tencent.mobileqq".equals(this.jdField_c_of_type_JavaLangString))
-    {
-      localObject = AVBizModuleFactory.a(this.jdField_b_of_type_JavaLangString);
-      if ((localObject instanceof IModule.FocusChangeListener)) {
-        ((IModule.FocusChangeListener)localObject).b();
-      }
-    }
-    else
-    {
-      QIPCServerHelper.getInstance().getServer().callClient(this.jdField_c_of_type_JavaLangString, 1, this.jdField_b_of_type_JavaLangString, "notify_focus_loss", new Bundle(), null);
-    }
-  }
-  
-  public boolean a(AVBusiness paramAVBusiness)
-  {
-    long l2 = a() & paramAVBusiness.a();
+    long l2 = getRequestType() & paramAVBusiness.getRequestType();
     boolean bool2;
     for (long l1 = 1L;; l1 <<= 1)
     {
@@ -126,8 +94,8 @@ class AVBusiness
       }
       if ((l2 & 1L) != 0L)
       {
-        int i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l1))).intValue();
-        int j = ((Integer)paramAVBusiness.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(l1))).intValue();
+        int i = ((Integer)this.mPriorityMap.get(Long.valueOf(l1))).intValue();
+        int j = ((Integer)paramAVBusiness.mPriorityMap.get(Long.valueOf(l1))).intValue();
         if (i < j) {
           return true;
         }
@@ -137,65 +105,98 @@ class AVBusiness
       }
       l2 >>= 1;
     }
-    if ((Constants.jdField_a_of_type_JavaUtilHashSet.contains(a())) && (Constants.jdField_a_of_type_JavaUtilHashSet.contains(paramAVBusiness.a())))
+    if ((Constants.AUDIO_PLAYER_BUSINESS.contains(getName())) && (Constants.AUDIO_PLAYER_BUSINESS.contains(paramAVBusiness.getName())))
     {
-      if (this.jdField_c_of_type_Long > paramAVBusiness.jdField_c_of_type_Long) {
+      if (this.mSeq > paramAVBusiness.mSeq) {
         bool1 = true;
       }
       return bool1;
     }
     boolean bool1 = bool2;
-    if (this.jdField_c_of_type_Long < paramAVBusiness.jdField_c_of_type_Long) {
+    if (this.mSeq < paramAVBusiness.mSeq) {
       bool1 = true;
     }
     return bool1;
-  }
-  
-  public void b()
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = jdField_a_of_type_JavaLangString;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("gainFocus, business[");
-      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-      localStringBuilder.append("], process[");
-      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-      localStringBuilder.append("]");
-      QLog.i((String)localObject, 2, localStringBuilder.toString());
-    }
-    if ("com.tencent.mobileqq".equals(this.jdField_c_of_type_JavaLangString))
-    {
-      localObject = AVBizModuleFactory.a(this.jdField_b_of_type_JavaLangString);
-      if ((localObject instanceof IModule.FocusChangeListener)) {
-        ((IModule.FocusChangeListener)localObject).c();
-      }
-    }
-    else
-    {
-      QIPCServerHelper.getInstance().getServer().callClient(this.jdField_c_of_type_JavaLangString, 1, this.jdField_b_of_type_JavaLangString, "notify_focus_gain", new Bundle(), null);
-    }
   }
   
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof AVBusiness))
     {
-      String str = this.jdField_b_of_type_JavaLangString;
+      String str = this.mName;
       if (str != null)
       {
         paramObject = (AVBusiness)paramObject;
-        if (str.equals(paramObject.jdField_b_of_type_JavaLangString))
+        if (str.equals(paramObject.mName))
         {
-          str = this.jdField_c_of_type_JavaLangString;
-          if ((str != null) && (str.equals(paramObject.jdField_c_of_type_JavaLangString)) && (this.jdField_b_of_type_Long == paramObject.jdField_b_of_type_Long) && (this.jdField_c_of_type_Long == paramObject.jdField_c_of_type_Long)) {
+          str = this.mProcessName;
+          if ((str != null) && (str.equals(paramObject.mProcessName)) && (this.mRequestType == paramObject.mRequestType) && (this.mSeq == paramObject.mSeq)) {
             return true;
           }
         }
       }
     }
     return false;
+  }
+  
+  public void gainFocus()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gainFocus, business[");
+      localStringBuilder.append(this.mName);
+      localStringBuilder.append("], process[");
+      localStringBuilder.append(this.mProcessName);
+      localStringBuilder.append("]");
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
+    }
+    Object localObject = this.mProcessName;
+    if ((localObject != null) && (!((String)localObject).isEmpty()) && (!"com.tencent.mobileqq".equals(this.mProcessName)))
+    {
+      QIPCServerHelper.getInstance().getServer().callClient(this.mProcessName, 1, this.mName, "notify_focus_gain", new Bundle(), null);
+      return;
+    }
+    localObject = AVBizModuleFactory.getModuleByName(this.mName);
+    if ((localObject instanceof IModule.FocusChangeListener)) {
+      ((IModule.FocusChangeListener)localObject).onFocusGain();
+    }
+  }
+  
+  public String getName()
+  {
+    return this.mName;
+  }
+  
+  public long getRequestType()
+  {
+    return this.mRequestType;
+  }
+  
+  public void lossFocus()
+  {
+    if (QLog.isColorLevel())
+    {
+      localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lossFocus, business[");
+      localStringBuilder.append(this.mName);
+      localStringBuilder.append("], process[");
+      localStringBuilder.append(this.mProcessName);
+      localStringBuilder.append("]");
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
+    }
+    Object localObject = this.mProcessName;
+    if ((localObject != null) && (!((String)localObject).isEmpty()) && (!"com.tencent.mobileqq".equals(this.mProcessName)))
+    {
+      QIPCServerHelper.getInstance().getServer().callClient(this.mProcessName, 1, this.mName, "notify_focus_loss", new Bundle(), null);
+      return;
+    }
+    localObject = AVBizModuleFactory.getModuleByName(this.mName);
+    if ((localObject instanceof IModule.FocusChangeListener)) {
+      ((IModule.FocusChangeListener)localObject).onFocusLoss();
+    }
   }
 }
 

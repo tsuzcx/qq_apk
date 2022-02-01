@@ -21,9 +21,9 @@ class MusicFragmentProviderView$1
   
   public void a(String paramString)
   {
-    if ((MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
+    if ((MusicFragmentProviderView.d(this.a) != null) && (MusicFragmentProviderView.d(this.a).getLocalPath().equals(paramString)))
     {
-      MusicFragmentProviderView.a(this.a).mProgress = -1;
+      MusicFragmentProviderView.d(this.a).mProgress = -1;
       if (this.a.a != null) {
         this.a.a.sendEmptyMessage(3);
       }
@@ -31,13 +31,13 @@ class MusicFragmentProviderView$1
     if (QLog.isColorLevel()) {
       QLog.d("MusicFragmentProviderView", 2, "download onCancel");
     }
-    MusicFragmentProviderView.a(this.a).set(false);
+    MusicFragmentProviderView.c(this.a).set(false);
   }
   
   public void a(String paramString, int paramInt)
   {
     this.a.a(paramString, paramInt);
-    MusicFragmentProviderView.a(this.a).set(true);
+    MusicFragmentProviderView.c(this.a).set(true);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -45,27 +45,27 @@ class MusicFragmentProviderView$1
     if (!paramBoolean)
     {
       this.a.b(-115);
-      MusicFragmentProviderView.a(this.a).set(false);
+      MusicFragmentProviderView.c(this.a).set(false);
     }
   }
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
     this.a.b(paramInt);
-    if ((paramBoolean) && (MusicFragmentProviderView.a(this.a) != null) && (MusicFragmentProviderView.a(this.a).getLocalPath().equals(paramString)))
+    if ((paramBoolean) && (MusicFragmentProviderView.d(this.a) != null) && (MusicFragmentProviderView.d(this.a).getLocalPath().equals(paramString)))
     {
-      MusicFragmentProviderView.a(this.a).musicStart = 0;
-      MusicFragmentProviderView.a(this.a).musicEnd = (MusicFragmentProviderView.a(this.a).musicStart + MusicFragmentProviderView.a(this.a));
-      MusicFragmentProviderView.a(this.a).musicDuration = ((int)ShortVideoUtils.a(MusicFragmentProviderView.a(this.a).getLocalPath()));
-      if (MusicFragmentProviderView.a(this.a).musicEnd > MusicFragmentProviderView.a(this.a).musicDuration) {
-        MusicFragmentProviderView.a(this.a).musicEnd = MusicFragmentProviderView.a(this.a).musicDuration;
+      MusicFragmentProviderView.d(this.a).musicStart = 0;
+      MusicFragmentProviderView.d(this.a).musicEnd = (MusicFragmentProviderView.d(this.a).musicStart + MusicFragmentProviderView.e(this.a));
+      MusicFragmentProviderView.d(this.a).musicDuration = ((int)ShortVideoUtils.a(MusicFragmentProviderView.d(this.a).getLocalPath()));
+      if (MusicFragmentProviderView.d(this.a).musicEnd > MusicFragmentProviderView.d(this.a).musicDuration) {
+        MusicFragmentProviderView.d(this.a).musicEnd = MusicFragmentProviderView.d(this.a).musicDuration;
       }
       paramString = this.a;
-      MusicFragmentProviderView.a(paramString, MusicFragmentProviderView.a(paramString).musicStart);
+      MusicFragmentProviderView.a(paramString, MusicFragmentProviderView.d(paramString).musicStart);
       paramString = this.a;
-      MusicFragmentProviderView.b(paramString, MusicFragmentProviderView.a(paramString).musicEnd);
+      MusicFragmentProviderView.b(paramString, MusicFragmentProviderView.d(paramString).musicEnd);
       paramString = (QIMMusicConfigManager)QIMManager.a(2);
-      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.a(this.a).mItemId);
+      MusicItemInfo localMusicItemInfo = paramString.a(MusicFragmentProviderView.d(this.a).mItemId);
       if (localMusicItemInfo != null)
       {
         if (QLog.isColorLevel())
@@ -75,7 +75,7 @@ class MusicFragmentProviderView$1
           localStringBuilder.append(localMusicItemInfo.mMusicName);
           QLog.d("MusicFragmentProviderView", 2, localStringBuilder.toString());
         }
-        paramString.a(MusicFragmentProviderView.a(this.a), false);
+        paramString.a(MusicFragmentProviderView.d(this.a), false);
       }
       if (this.a.a != null) {
         this.a.a.sendEmptyMessage(2);
@@ -83,26 +83,26 @@ class MusicFragmentProviderView$1
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder("onFinish musicStart=");
-        paramString.append(MusicFragmentProviderView.a(this.a).musicStart);
+        paramString.append(MusicFragmentProviderView.d(this.a).musicStart);
         paramString.append(" musicEnd=");
-        paramString.append(MusicFragmentProviderView.a(this.a).musicEnd);
+        paramString.append(MusicFragmentProviderView.d(this.a).musicEnd);
         paramString.append(" musicDuration");
-        paramString.append(MusicFragmentProviderView.a(this.a).musicDuration);
+        paramString.append(MusicFragmentProviderView.d(this.a).musicDuration);
         paramString.append(" premusicStart");
-        paramString.append(MusicFragmentProviderView.b(this.a));
+        paramString.append(MusicFragmentProviderView.f(this.a));
         paramString.append(" premusicEnd");
-        paramString.append(MusicFragmentProviderView.c(this.a));
+        paramString.append(MusicFragmentProviderView.g(this.a));
         paramString.append(" musicName");
-        paramString.append(MusicFragmentProviderView.a(this.a).mMusicName);
+        paramString.append(MusicFragmentProviderView.d(this.a).mMusicName);
         QLog.d("MusicFragmentProviderView", 2, paramString.toString());
       }
     }
-    MusicFragmentProviderView.a(this.a).set(false);
+    MusicFragmentProviderView.c(this.a).set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.view.MusicFragmentProviderView.1
  * JD-Core Version:    0.7.0.1
  */

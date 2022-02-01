@@ -20,34 +20,34 @@ import org.json.JSONObject;
 public class ViolaColorNote
   implements SimpleEventReceiver<MiniPieJumpToAioEvent>
 {
-  private IColorNoteController jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-  private final ColorNote jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
-  private ViolaColorNote.OnEnterMiniAioEvent jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaColorNote$OnEnterMiniAioEvent;
-  private String jdField_a_of_type_JavaLangString;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private boolean jdField_a_of_type_Boolean;
-  private ColorNote jdField_b_of_type_ComTencentMobileqqColornoteDataColorNote;
-  private final String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private final boolean c;
+  private JSONObject a;
+  private String b;
+  private final String c;
+  private boolean d;
+  private IColorNoteController e;
+  private final ColorNote f;
+  private ColorNote g;
+  private ViolaColorNote.OnEnterMiniAioEvent h;
+  private boolean i;
+  private final boolean j;
   
   public ViolaColorNote(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.c = paramString;
     ColorNote.Builder localBuilder = new ColorNote.Builder().a(16908290);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("viola:");
     localStringBuilder.append(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote = localBuilder.a(localStringBuilder.toString()).b("defaultTitle").c("defaultSubTitle").d("https://default").a();
+    this.f = localBuilder.a(localStringBuilder.toString()).b("defaultTitle").c("defaultSubTitle").d("https://default").a();
     paramString = Aladdin.getConfig(417);
     boolean bool = false;
     if (paramString.getIntegerFromString("open_auto_color_ball", 0) == 1) {
       bool = true;
     }
-    this.c = bool;
-    if (this.c)
+    this.j = bool;
+    if (this.j)
     {
-      this.jdField_b_of_type_ComTencentMobileqqColornoteDataColorNote = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).createRecentColorNote(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote);
+      this.g = ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).createRecentColorNote(this.f);
       SimpleEventBus.getInstance().registerReceiver(this);
     }
   }
@@ -82,8 +82,8 @@ public class ViolaColorNote
     if (paramJSONObject == null) {
       return;
     }
-    if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+    if (this.a == null) {
+      this.a = new JSONObject();
     }
     Iterator localIterator = paramJSONObject.keys();
     while (localIterator.hasNext())
@@ -91,7 +91,7 @@ public class ViolaColorNote
       String str = (String)localIterator.next();
       try
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put(str, paramJSONObject.opt(str));
+        this.a.put(str, paramJSONObject.opt(str));
       }
       catch (JSONException localJSONException)
       {
@@ -100,23 +100,23 @@ public class ViolaColorNote
     }
   }
   
-  private void d()
+  private void e()
   {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+    JSONObject localJSONObject = this.a;
     if (localJSONObject != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
+      Object localObject = this.f;
       if (localObject == null) {
         return;
       }
       try
       {
         ((ColorNote)localObject).mMainTitle = localJSONObject.optString("title");
-        this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mSubTitle = this.jdField_a_of_type_OrgJsonJSONObject.optString("subTitle");
-        this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mPicUrl = this.jdField_a_of_type_OrgJsonJSONObject.optString("imageUrl");
-        this.jdField_a_of_type_OrgJsonJSONObject.put("param", this.jdField_a_of_type_JavaLangString).put("url", this.jdField_b_of_type_JavaLangString).put("useTransParentFragment", this.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote.mReserve = this.jdField_a_of_type_OrgJsonJSONObject.toString().getBytes();
-        this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.updateColorNote(this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote);
+        this.f.mSubTitle = this.a.optString("subTitle");
+        this.f.mPicUrl = this.a.optString("imageUrl");
+        this.a.put("param", this.b).put("url", this.c).put("useTransParentFragment", this.d);
+        this.f.mReserve = this.a.toString().getBytes();
+        this.e.updateColorNote(this.f);
         return;
       }
       catch (Exception localException)
@@ -129,17 +129,17 @@ public class ViolaColorNote
     }
   }
   
-  private void e()
+  private void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote != null)
+    if (this.f != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController == null) {
+      if (this.e == null) {
         return;
       }
-      b();
-      d();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.addToRecentNote();
-      if (!this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.shouldDisplayColorNote()) {
+      c();
+      e();
+      this.e.addToRecentNote();
+      if (!this.e.shouldDisplayColorNote()) {
         QLog.e("ViolaColorNote", 1, "ColorNote Not Ready");
       }
     }
@@ -147,57 +147,40 @@ public class ViolaColorNote
   
   public ColorNote a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqColornoteDataColorNote;
+    return this.f;
   }
   
   public ViolaColorNote a(IColorNoteController paramIColorNoteController)
   {
-    this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController = paramIColorNoteController;
+    this.e = paramIColorNoteController;
     return this;
   }
   
   public ViolaColorNote a(ViolaColorNote.OnEnterMiniAioEvent paramOnEnterMiniAioEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaColorNote$OnEnterMiniAioEvent = paramOnEnterMiniAioEvent;
+    this.h = paramOnEnterMiniAioEvent;
     return this;
   }
   
   public ViolaColorNote a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
     return this;
   }
   
   public ViolaColorNote a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = paramBoolean;
     return this;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
-    if (localObject == null) {
-      return;
-    }
-    if (((IColorNoteController)localObject).isColorNoteExist()) {
-      d();
-    }
-    localObject = this.jdField_b_of_type_ComTencentMobileqqColornoteDataColorNote;
-    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.isColorNoteExist((ColorNote)localObject)))
-    {
-      d();
-      this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController.addToRecentNote();
-    }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController == null) {
+    if (this.e == null) {
       return;
     }
     if (1 == paramInt) {
-      d();
+      e();
     }
   }
   
@@ -207,7 +190,7 @@ public class ViolaColorNote
       return;
     }
     c(paramJSONObject);
-    paramJSONObject = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    paramJSONObject = this.e;
     if (paramJSONObject != null) {
       paramJSONObject.enableSwipe();
     }
@@ -215,7 +198,29 @@ public class ViolaColorNote
   
   public void b()
   {
-    JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+    Object localObject = this.e;
+    if (localObject == null) {
+      return;
+    }
+    if (((IColorNoteController)localObject).isColorNoteExist()) {
+      e();
+    }
+    localObject = this.g;
+    if ((localObject != null) && (this.e.isColorNoteExist((ColorNote)localObject)))
+    {
+      e();
+      this.e.addToRecentNote();
+    }
+  }
+  
+  public void b(JSONObject paramJSONObject)
+  {
+    c(paramJSONObject);
+  }
+  
+  public void c()
+  {
+    JSONObject localJSONObject = this.a;
     if (localJSONObject == null) {
       return;
     }
@@ -236,21 +241,16 @@ public class ViolaColorNote
     QLog.e("ViolaColorNote", 1, "changeAddWayToMiniAio error");
   }
   
-  public void b(JSONObject paramJSONObject)
+  public void d()
   {
-    c(paramJSONObject);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      e();
+    if (this.i) {
+      f();
     }
-    if (this.c) {
+    if (this.j) {
       SimpleEventBus.getInstance().unRegisterReceiver(this);
     }
-    this.jdField_b_of_type_Boolean = false;
-    IColorNoteController localIColorNoteController = this.jdField_a_of_type_ComTencentMobileqqColornoteApiIColorNoteController;
+    this.i = false;
+    IColorNoteController localIColorNoteController = this.e;
     if (localIColorNoteController != null) {
       localIColorNoteController.onDestroy();
     }
@@ -267,17 +267,17 @@ public class ViolaColorNote
   {
     if ((paramSimpleBaseEvent instanceof MiniPieJumpToAioEvent))
     {
-      this.jdField_b_of_type_Boolean = true;
-      paramSimpleBaseEvent = this.jdField_a_of_type_ComTencentMobileqqKandianGlueViolaViolaColorNote$OnEnterMiniAioEvent;
+      this.i = true;
+      paramSimpleBaseEvent = this.h;
       if (paramSimpleBaseEvent != null) {
-        paramSimpleBaseEvent.j();
+        paramSimpleBaseEvent.p();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.viola.ViolaColorNote
  * JD-Core Version:    0.7.0.1
  */

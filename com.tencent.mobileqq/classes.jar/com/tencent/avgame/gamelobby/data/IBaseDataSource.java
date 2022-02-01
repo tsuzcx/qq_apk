@@ -7,10 +7,10 @@ public abstract interface IBaseDataSource
   public abstract int a();
   
   @Nullable
-  public abstract int a(int paramInt);
+  public abstract int c(int paramInt);
   
   @Nullable
-  public abstract IBaseData b(int paramInt);
+  public abstract IBaseData d(int paramInt);
 }
 
 

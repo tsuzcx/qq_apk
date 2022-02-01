@@ -15,18 +15,18 @@ public class GetUserGroupUnionIDHandler
   extends BatchNetHandler
   implements CmdTaskManger.CommandCallback<GetUserGroupUnionIDHandler.GetUserGroupUnionIDRequest, GetUserGroupUnionIDHandler.GetUserGroupUnionIDResponse>
 {
-  public List<String> a = new ArrayList();
+  public List<String> c = new ArrayList();
   
   public GetUserGroupUnionIDHandler(String paramString)
   {
-    this.a.add(paramString);
+    this.c.add(paramString);
   }
   
   public void a()
   {
     GetUserGroupUnionIDHandler.GetUserGroupUnionIDRequest localGetUserGroupUnionIDRequest = new GetUserGroupUnionIDHandler.GetUserGroupUnionIDRequest();
-    localGetUserGroupUnionIDRequest.c = 1;
-    localGetUserGroupUnionIDRequest.a = this.a;
+    localGetUserGroupUnionIDRequest.f = 1;
+    localGetUserGroupUnionIDRequest.g = this.c;
     CmdTaskManger.a().a(localGetUserGroupUnionIDRequest, this);
   }
   
@@ -36,18 +36,18 @@ public class GetUserGroupUnionIDHandler
     if ((paramErrorMessage.isSuccess()) && (paramGetUserGroupUnionIDResponse != null) && (paramGetUserGroupUnionIDResponse.a != null))
     {
       paramGetUserGroupUnionIDRequest.a = paramGetUserGroupUnionIDResponse.a;
-      b();
+      c();
     }
     else
     {
-      c();
+      d();
     }
     StoryDispatcher.a().dispatch(paramGetUserGroupUnionIDRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserGroupUnionIDHandler
  * JD-Core Version:    0.7.0.1
  */

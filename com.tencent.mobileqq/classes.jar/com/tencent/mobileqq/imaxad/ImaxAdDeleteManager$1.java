@@ -10,17 +10,17 @@ class ImaxAdDeleteManager$1
   
   public void run()
   {
-    AdvertisementItem localAdvertisementItem2 = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem;
+    AdvertisementItem localAdvertisementItem2 = this.a;
     AdvertisementItem localAdvertisementItem1 = localAdvertisementItem2;
     if (localAdvertisementItem2 == null) {
-      localAdvertisementItem1 = AdvertisementItem.a(ImaxAdUtil.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_JavaLangString));
+      localAdvertisementItem1 = AdvertisementItem.a(ImaxAdUtil.d(this.b.getCurrentUin(), this.c));
     }
-    ImaxAdDeleteManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), localAdvertisementItem1, this.jdField_a_of_type_JavaLangString);
+    ImaxAdDeleteManager.a(this.b.getCurrentUin(), localAdvertisementItem1, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdDeleteManager.1
  * JD-Core Version:    0.7.0.1
  */

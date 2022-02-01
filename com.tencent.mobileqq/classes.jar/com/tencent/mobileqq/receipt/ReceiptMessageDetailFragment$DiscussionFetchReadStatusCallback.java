@@ -43,7 +43,7 @@ class ReceiptMessageDetailFragment$DiscussionFetchReadStatusCallback
       paramArrayOfByte.append("mDiscussionFetchReadStatusCallback fail on code: ");
       paramArrayOfByte.append(paramInt);
       QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+      ReceiptMessageDetailFragment.r((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
@@ -61,7 +61,7 @@ class ReceiptMessageDetailFragment$DiscussionFetchReadStatusCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DiscussionFetchReadStatusCallback
  * JD-Core Version:    0.7.0.1
  */

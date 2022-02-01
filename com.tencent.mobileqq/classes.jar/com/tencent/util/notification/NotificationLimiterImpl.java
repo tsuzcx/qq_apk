@@ -35,7 +35,7 @@ public class NotificationLimiterImpl
       return true;
     }
     boolean bool1;
-    if (MiniChatActivity.a())
+    if (MiniChatActivity.b())
     {
       if (QLog.isColorLevel()) {
         QLog.i("NotificationLimiterImpl", 2, "MiniMsgActForeGround");
@@ -48,7 +48,7 @@ public class NotificationLimiterImpl
     }
     boolean bool2 = bool1;
     if (bool1) {
-      bool2 = StudyModeManager.a(paramInt) ^ true;
+      bool2 = StudyModeManager.c(paramInt) ^ true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("NotificationLimiterImpl", 2, String.format("studymode_fightNotificationLimiterImpl ,shouldNotify1 = %b,", new Object[] { Boolean.valueOf(bool2) }));
@@ -58,7 +58,7 @@ public class NotificationLimiterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.util.notification.NotificationLimiterImpl
  * JD-Core Version:    0.7.0.1
  */

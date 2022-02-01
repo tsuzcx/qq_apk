@@ -22,7 +22,7 @@ class ApolloContentUpdateHandler$1
     {
       int i = Integer.parseInt(paramFile.getName());
       long l = new JSONObject((String)localObject).optLong("version");
-      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
+      this.a.append(i, Long.valueOf(l));
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("getApolloRoleReqInfo roleId: ");
       ((StringBuilder)localObject).append(i);
@@ -47,7 +47,7 @@ class ApolloContentUpdateHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.handler.ApolloContentUpdateHandler.1
  * JD-Core Version:    0.7.0.1
  */

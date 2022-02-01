@@ -20,7 +20,7 @@ class MiniProgramFilter
   
   public boolean b(QQAppInterface paramQQAppInterface, ConversationInfo paramConversationInfo, QQMessageFacade paramQQMessageFacade)
   {
-    RecentUser localRecentUser = paramQQAppInterface.getProxyManager().a().b(paramConversationInfo.uin, paramConversationInfo.type);
+    RecentUser localRecentUser = paramQQAppInterface.getProxyManager().g().c(paramConversationInfo.uin, paramConversationInfo.type);
     paramQQMessageFacade = paramQQMessageFacade.getLastMessage(paramConversationInfo.uin, paramConversationInfo.type);
     if (((AppletsFolderManager)paramQQAppInterface.getManager(QQManagerFactory.APPLETS_ACCOUNT_MANAGER)).a(paramQQMessageFacade, localRecentUser) == 1)
     {
@@ -40,7 +40,7 @@ class MiniProgramFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.unread.filter.MiniProgramFilter
  * JD-Core Version:    0.7.0.1
  */

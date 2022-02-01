@@ -16,7 +16,7 @@ public abstract interface IApolloAvatarFileManager
   
   public abstract String getGifFilePath(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void getSingleFrameFile(int paramInt1, int paramInt2, String paramString, IApolloAvatarFileManager.OnGetFramePathListener paramOnGetFramePathListener);
+  public abstract String getSingleFrameFile(int paramInt1, int paramInt2, String paramString, IApolloAvatarFileManager.OnGetFramePathListener paramOnGetFramePathListener);
   
   public abstract String getVideoFilePath(int paramInt);
   
@@ -32,7 +32,7 @@ public abstract interface IApolloAvatarFileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.api.IApolloAvatarFileManager
  * JD-Core Version:    0.7.0.1
  */

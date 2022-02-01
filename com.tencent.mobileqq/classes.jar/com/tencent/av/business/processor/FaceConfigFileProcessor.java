@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.tencent.av.AVPathUtil;
 import com.tencent.av.business.manager.magicface.FaceItem;
 import com.tencent.av.utils.EffectMaterialUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -19,26 +20,11 @@ import java.util.Map;
 public class FaceConfigFileProcessor
   extends BaseConfigFileProcessor<FaceItem>
 {
-  private String a;
+  private String b;
   
-  public int a(MetaMaterial paramMetaMaterial)
+  public FaceConfigFileProcessor(AppInterface paramAppInterface)
   {
-    if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("vip_level"))) {
-      return 0;
-    }
-    try
-    {
-      int i = Integer.parseInt((String)paramMetaMaterial.additionalFields.get("vip_level"));
-      return i;
-    }
-    catch (Exception paramMetaMaterial)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getVipLevel exception: ");
-      localStringBuilder.append(paramMetaMaterial.getMessage());
-      QLog.e("FaceConfigFileProcessor", 1, localStringBuilder.toString());
-    }
-    return 0;
+    super(paramAppInterface);
   }
   
   public FaceItem a(MetaMaterial paramMetaMaterial)
@@ -52,60 +38,72 @@ public class FaceConfigFileProcessor
     localFaceItem.setResUrl(paramMetaMaterial.packageUrl);
     localFaceItem.setResMd5(paramMetaMaterial.packageMd5);
     boolean bool = TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("text"));
-    String str2 = "";
-    String str1;
+    String str = "";
+    Object localObject;
     if (bool) {
-      str1 = "";
+      localObject = "";
     } else {
-      str1 = (String)paramMetaMaterial.additionalFields.get("text");
+      localObject = (String)paramMetaMaterial.additionalFields.get("text");
     }
-    localFaceItem.setText(str1);
+    localFaceItem.setText((String)localObject);
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("type"))) {
-      str1 = "pendant";
+      localObject = "pendant";
     } else {
-      str1 = (String)paramMetaMaterial.additionalFields.get("type");
+      localObject = (String)paramMetaMaterial.additionalFields.get("type");
     }
-    localFaceItem.setType(str1);
+    localFaceItem.setType((String)localObject);
     localFaceItem.setIsshow(TextUtils.equals("false", (CharSequence)paramMetaMaterial.additionalFields.get("isshow")) ^ true);
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("version"))) {
-      str1 = "";
+      localObject = "";
     } else {
-      str1 = (String)paramMetaMaterial.additionalFields.get("version");
+      localObject = (String)paramMetaMaterial.additionalFields.get("version");
     }
-    localFaceItem.setVersion(str1);
-    localFaceItem.setVipLevel(a(paramMetaMaterial));
+    localFaceItem.setVersion((String)localObject);
+    localFaceItem.setVipLevel(b(paramMetaMaterial));
     localFaceItem.setIsInteract(TextUtils.equals("false", (CharSequence)paramMetaMaterial.additionalFields.get("is_interact")) ^ true);
     localFaceItem.setPredownload(TextUtils.equals("true", (CharSequence)paramMetaMaterial.additionalFields.get("predownload")));
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("peerdeconame1"))) {
-      str1 = "";
+      localObject = "";
     } else {
-      str1 = (String)paramMetaMaterial.additionalFields.get("peerdeconame1");
+      localObject = (String)paramMetaMaterial.additionalFields.get("peerdeconame1");
     }
-    localFaceItem.setPeerdeconame1(str1);
+    localFaceItem.setPeerdeconame1((String)localObject);
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("selfdeconame1"))) {
-      str1 = "";
+      localObject = "";
     } else {
-      str1 = (String)paramMetaMaterial.additionalFields.get("selfdeconame1");
+      localObject = (String)paramMetaMaterial.additionalFields.get("selfdeconame1");
     }
-    localFaceItem.setSelfdeconame1(str1);
+    localFaceItem.setSelfdeconame1((String)localObject);
     if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("attr"))) {
-      paramMetaMaterial = str2;
+      localObject = str;
     } else {
-      paramMetaMaterial = (String)paramMetaMaterial.additionalFields.get("attr");
+      localObject = (String)paramMetaMaterial.additionalFields.get("attr");
     }
-    localFaceItem.setAttr(paramMetaMaterial);
+    localFaceItem.setAttr((String)localObject);
+    paramMetaMaterial = (String)paramMetaMaterial.additionalFields.get("originName");
+    if (!TextUtils.isEmpty(paramMetaMaterial))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("convertFromMetaMaterial originName: ");
+        ((StringBuilder)localObject).append(paramMetaMaterial);
+        QLog.i("FaceConfigFileProcessor", 2, ((StringBuilder)localObject).toString());
+      }
+      localFaceItem.setId(paramMetaMaterial);
+    }
     return localFaceItem;
   }
   
   public String a()
   {
-    return AVPathUtil.j();
+    return AVPathUtil.l();
   }
   
   public List<FaceItem> a(File paramFile)
   {
     ArrayList localArrayList = new ArrayList();
-    paramFile = a(paramFile);
+    paramFile = b(paramFile);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -135,7 +133,7 @@ public class FaceConfigFileProcessor
         return localArrayList;
       }
       paramFile = (MetaCategory)paramFile.Categories.get(0);
-      this.a = ((String)paramFile.dynamicFields.get("black_list"));
+      this.b = ((String)paramFile.dynamicFields.get("black_list"));
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramFile);
       paramFile = a((ArrayList)localObject).iterator();
@@ -163,14 +161,34 @@ public class FaceConfigFileProcessor
     return localArrayList;
   }
   
-  public void a()
+  public int b(MetaMaterial paramMetaMaterial)
   {
-    EffectMaterialUtil.a(BaseApplication.getContext(), "ShadowBackendSvc.GetCatMatTreeQQAVDoublePendant");
+    if (TextUtils.isEmpty((CharSequence)paramMetaMaterial.additionalFields.get("vip_level"))) {
+      return 0;
+    }
+    try
+    {
+      int i = Integer.parseInt((String)paramMetaMaterial.additionalFields.get("vip_level"));
+      return i;
+    }
+    catch (Exception paramMetaMaterial)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getVipLevel exception: ");
+      localStringBuilder.append(paramMetaMaterial.getMessage());
+      QLog.e("FaceConfigFileProcessor", 1, localStringBuilder.toString());
+    }
+    return 0;
   }
   
-  public String b()
+  public void b()
   {
-    return this.a;
+    EffectMaterialUtil.b(BaseApplication.getContext(), "ShadowBackendSvc.GetCatMatTreeQQAVDoublePendantV2");
+  }
+  
+  public String c()
+  {
+    return this.b;
   }
 }
 

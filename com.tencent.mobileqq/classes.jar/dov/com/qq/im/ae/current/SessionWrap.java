@@ -9,34 +9,34 @@ public class SessionWrap
   implements Parcelable
 {
   public static final Parcelable.Creator<SessionWrap> CREATOR = new SessionWrap.1();
-  public int a;
   public String a;
   public String b;
-  public String c;
+  public int c;
+  public String d;
   
   public SessionWrap(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.a = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.c = paramParcel.readString();
+    this.c = paramParcel.readInt();
+    this.d = paramParcel.readString();
   }
   
   public SessionWrap(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.a = paramString1;
     this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.c = paramString3;
+    this.c = paramInt;
+    this.d = paramString3;
   }
   
   public SessionInfo a()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localSessionInfo.d = this.b;
-    localSessionInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localSessionInfo.b = this.c;
+    localSessionInfo.a = this.c;
+    localSessionInfo.e = this.b;
+    localSessionInfo.b = this.a;
+    localSessionInfo.c = this.d;
     return localSessionInfo;
   }
   
@@ -47,15 +47,15 @@ public class SessionWrap
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeString(this.a);
     paramParcel.writeString(this.b);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.c);
+    paramParcel.writeInt(this.c);
+    paramParcel.writeString(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     dov.com.qq.im.ae.current.SessionWrap
  * JD-Core Version:    0.7.0.1
  */

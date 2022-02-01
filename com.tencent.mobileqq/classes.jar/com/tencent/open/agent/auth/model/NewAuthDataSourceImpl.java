@@ -55,10 +55,10 @@ public class NewAuthDataSourceImpl
       while (paramString1.hasNext())
       {
         paramList = (Permission)paramString1.next();
-        if (paramList.jdField_b_of_type_Boolean)
+        if (paramList.f)
         {
-          localAuthRequest.openapi.add(Integer.valueOf(paramList.jdField_b_of_type_Int));
-          SSOLog.a(a, new Object[] { "doAuthorize Permission.id=", Integer.valueOf(paramList.jdField_b_of_type_Int) });
+          localAuthRequest.openapi.add(Integer.valueOf(paramList.e));
+          SSOLog.a(a, new Object[] { "doAuthorize Permission.id=", Integer.valueOf(paramList.e) });
         }
       }
     }
@@ -69,7 +69,7 @@ public class NewAuthDataSourceImpl
       paramString1 = Build.VERSION.RELEASE;
     }
     paramList.set(paramString1);
-    localAuthRequest.qqv.set(CommonDataAdapter.a().d());
+    localAuthRequest.qqv.set(CommonDataAdapter.a().j());
     localAuthRequest.app_type.set(1);
     localAuthRequest.pf.set(AuthParamUtil.a(paramBundle, "pf", "openmobile_android"));
     paramList = paramBundle.getString("sdkp");
@@ -156,10 +156,10 @@ public class NewAuthDataSourceImpl
       while (paramString1.hasNext())
       {
         paramString2 = (Permission)paramString1.next();
-        if (paramString2.jdField_b_of_type_Boolean)
+        if (paramString2.f)
         {
-          localAuthorizeRequest.openapi.add(Integer.valueOf(paramString2.jdField_b_of_type_Int));
-          SSOLog.a(a, new Object[] { "doAuthorize Permission.id=", Integer.valueOf(paramString2.jdField_b_of_type_Int) });
+          localAuthorizeRequest.openapi.add(Integer.valueOf(paramString2.e));
+          SSOLog.a(a, new Object[] { "doAuthorize Permission.id=", Integer.valueOf(paramString2.e) });
         }
       }
     }
@@ -170,7 +170,7 @@ public class NewAuthDataSourceImpl
       paramString1 = Build.VERSION.RELEASE;
     }
     paramString2.set(paramString1);
-    localAuthorizeRequest.qqv.set(CommonDataAdapter.a().d());
+    localAuthorizeRequest.qqv.set(CommonDataAdapter.a().j());
     localAuthorizeRequest.app_type.set(1);
     localAuthorizeRequest.pf.set(AuthParamUtil.a(paramBundle, "pf", "openmobile_android"));
     paramString2 = paramBundle.getString("sdkp");
@@ -250,7 +250,7 @@ public class NewAuthDataSourceImpl
     localPreAuthRequest.appid.set(ParseUtil.a(paramString2));
     localPreAuthRequest.sdkp.set(AuthParamUtil.a(paramBundle, "sdkp", "android"));
     localPreAuthRequest.sdkv.set(AuthParamUtil.a(paramBundle, "sdkv", "1.5.9"));
-    localPreAuthRequest.qqv.set(CommonDataAdapter.a().d());
+    localPreAuthRequest.qqv.set(CommonDataAdapter.a().j());
     PBStringField localPBStringField = localPreAuthRequest.os;
     if (Build.VERSION.RELEASE == null) {
       paramString2 = "";
@@ -306,7 +306,7 @@ public class NewAuthDataSourceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.auth.model.NewAuthDataSourceImpl
  * JD-Core Version:    0.7.0.1
  */

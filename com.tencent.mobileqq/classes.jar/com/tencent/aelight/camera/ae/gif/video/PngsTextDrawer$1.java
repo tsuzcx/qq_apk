@@ -10,22 +10,22 @@ class PngsTextDrawer$1
   public void run()
   {
     PngsTextDrawer localPngsTextDrawer = this.this$0;
-    PngsTextDrawer.a(localPngsTextDrawer, new AEGIFTextDrawer((int)(PngsTextDrawer.a(localPngsTextDrawer) * this.jdField_a_of_type_Float), (int)(PngsTextDrawer.b(this.this$0) * this.jdField_b_of_type_Float)));
-    PngsTextDrawer.a(this.this$0).a(this.jdField_a_of_type_JavaLangString);
-    PngsTextDrawer.a(this.this$0).a(this.jdField_a_of_type_Int);
-    PngsTextDrawer.a(this.this$0).b(this.jdField_b_of_type_JavaLangString);
-    PngsTextDrawer.a(this.this$0).c(this.jdField_c_of_type_JavaLangString);
-    PngsTextDrawer.a(this.this$0).a(this.jdField_b_of_type_Int);
-    PngsTextDrawer.a(this.this$0).d(this.jdField_d_of_type_JavaLangString);
+    PngsTextDrawer.a(localPngsTextDrawer, new AEGIFTextDrawer((int)(PngsTextDrawer.a(localPngsTextDrawer) * this.a), (int)(PngsTextDrawer.b(this.this$0) * this.b)));
+    PngsTextDrawer.c(this.this$0).a(this.c);
+    PngsTextDrawer.c(this.this$0).a(this.d);
+    PngsTextDrawer.c(this.this$0).b(this.e);
+    PngsTextDrawer.c(this.this$0).c(this.f);
+    PngsTextDrawer.c(this.this$0).a(this.g);
+    PngsTextDrawer.c(this.this$0).d(this.h);
     localPngsTextDrawer = this.this$0;
-    PngsTextDrawer.a(localPngsTextDrawer, (int)(PngsTextDrawer.a(localPngsTextDrawer) * this.jdField_c_of_type_Float));
+    PngsTextDrawer.a(localPngsTextDrawer, (int)(PngsTextDrawer.a(localPngsTextDrawer) * this.i));
     localPngsTextDrawer = this.this$0;
-    PngsTextDrawer.b(localPngsTextDrawer, (int)(PngsTextDrawer.b(localPngsTextDrawer) * this.jdField_d_of_type_Float));
+    PngsTextDrawer.b(localPngsTextDrawer, (int)(PngsTextDrawer.b(localPngsTextDrawer) * this.j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsTextDrawer.1
  * JD-Core Version:    0.7.0.1
  */

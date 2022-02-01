@@ -1,47 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 class AccountManageActivity$20
-  implements View.OnClickListener
+  extends AccountObserver
 {
   AccountManageActivity$20(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onClick(View paramView)
+  public void onDeleteAccount(boolean paramBoolean)
   {
-    if (AccountManageActivity.a(this.a) == null)
+    if (QLog.isColorLevel())
     {
-      AccountManageActivity.a(this.a, (ImageView)paramView);
-      AccountManageActivity.a(this.a, paramView);
-      if (AppSetting.d) {
-        paramView.setContentDescription(this.a.getString(2131691116));
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDeleteAccount isSuccess ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Switch_Account", 2, localStringBuilder.toString());
     }
-    else if (AccountManageActivity.a(this.a) == paramView)
-    {
-      AccountManageActivity.b(this.a, paramView);
-      AccountManageActivity.a(this.a, null);
-      if (AppSetting.d) {
-        paramView.setContentDescription(this.a.getString(2131691128));
-      }
-    }
-    else
-    {
-      AccountManageActivity localAccountManageActivity = this.a;
-      AccountManageActivity.b(localAccountManageActivity, AccountManageActivity.a(localAccountManageActivity));
-      AccountManageActivity.a(this.a, paramView);
-      AccountManageActivity.a(this.a, (ImageView)paramView);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.20
  * JD-Core Version:    0.7.0.1
  */

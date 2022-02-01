@@ -13,7 +13,7 @@ class HotChatPie$6
     if (QLog.isColorLevel())
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.a.b);
+      ((StringBuilder)localObject).append(this.a.c);
       ((StringBuilder)localObject).append("Q.hotchat.aio_post_list_plugin");
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder();
@@ -37,7 +37,7 @@ class HotChatPie$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.6
  * JD-Core Version:    0.7.0.1
  */

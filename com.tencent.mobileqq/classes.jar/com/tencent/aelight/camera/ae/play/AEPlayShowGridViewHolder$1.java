@@ -15,8 +15,8 @@ class AEPlayShowGridViewHolder$1
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.val$itemView.getLayoutParams();
     ViewGroup localViewGroup = (ViewGroup)this.val$itemView.getParent();
-    int m = ViewUtils.a(10.0F);
-    int i = ViewUtils.a();
+    int m = ViewUtils.dip2px(10.0F);
+    int i = ViewUtils.getScreenWidth();
     int n = m * 2;
     i -= n;
     int j = localViewGroup.getHeight() - m;
@@ -37,7 +37,7 @@ class AEPlayShowGridViewHolder$1
       localStringBuilder.append(" itemWidth: ");
       localStringBuilder.append(i);
       localStringBuilder.append(" screenWidth: ");
-      localStringBuilder.append(ViewUtils.a());
+      localStringBuilder.append(ViewUtils.getScreenWidth());
       localStringBuilder.append(" viewWidth: ");
       localStringBuilder.append(localViewGroup.getWidth());
       localStringBuilder.append(" padding: ");
@@ -50,7 +50,7 @@ class AEPlayShowGridViewHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.play.AEPlayShowGridViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

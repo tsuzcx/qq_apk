@@ -11,7 +11,7 @@ public class QCircleNativeSessionManager
 {
   private static final String KEY_XSJ_SESSION = "key_xsj_session";
   private static final String TAG = "QCircleNativeSessionManager";
-  private static QCircleNativeSessionManager sSingleton;
+  private static volatile QCircleNativeSessionManager sSingleton;
   
   private boolean checkNeedGenerateSession()
   {
@@ -78,7 +78,7 @@ public class QCircleNativeSessionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleNativeSessionManager
  * JD-Core Version:    0.7.0.1
  */

@@ -15,17 +15,17 @@ import mqq.util.WeakReference;
 public final class BatteryBroadcastReceiver
   extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int = -1;
-  private final WeakReference<AppRuntime> jdField_a_of_type_MqqUtilWeakReference;
+  private final WeakReference<AppRuntime> a;
+  private int b = -1;
   
   public BatteryBroadcastReceiver(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramAppRuntime);
+    this.a = new WeakReference(paramAppRuntime);
   }
   
   private void a()
   {
-    Object localObject = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (AppRuntime)this.a.get();
     if (localObject != null)
     {
       localObject = (IOnlineStatusService)((AppRuntime)localObject).getRuntimeService(IOnlineStatusService.class, "");
@@ -44,7 +44,7 @@ public final class BatteryBroadcastReceiver
     if (paramIntent != null)
     {
       Object localObject = paramIntent.getAction();
-      paramContext = (AppRuntime)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      paramContext = (AppRuntime)this.a.get();
       if (QLog.isColorLevel()) {
         QLog.d("BatteryBroadcastReceiver", 2, new Object[] { "onReceive action:", localObject });
       }
@@ -94,12 +94,12 @@ public final class BatteryBroadcastReceiver
               paramIntent.append("onBatteryChanged curLevel == ");
               paramIntent.append(i);
               paramIntent.append(", lastLevel == ");
-              paramIntent.append(this.jdField_a_of_type_Int);
+              paramIntent.append(this.b);
               QLog.d("BatteryBroadcastReceiver", 2, paramIntent.toString());
             }
-            if (this.jdField_a_of_type_Int != i)
+            if (this.b != i)
             {
-              this.jdField_a_of_type_Int = i;
+              this.b = i;
               paramIntent = new Bundle();
               paramIntent.putInt("KEY_BATTERY", i);
               paramContext.notifyObservers(OnBatteryChangeObserver.class, 26364, true, paramIntent);
@@ -113,7 +113,7 @@ public final class BatteryBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.BatteryBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

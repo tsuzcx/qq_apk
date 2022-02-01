@@ -11,34 +11,34 @@ public class ColorNickColorPanelAdapter$GradientViewHolder
   implements View.OnClickListener
 {
   public int a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ColorNickColorPanelAdapter.OnColorSelectListener jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener;
-  ColorNickColorPanelAdapter jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter;
   ImageView b;
+  ImageView c;
+  ColorNickColorPanelAdapter d;
+  ColorNickColorPanelAdapter.OnColorSelectListener e;
   
   public ColorNickColorPanelAdapter$GradientViewHolder(View paramView, ColorNickColorPanelAdapter paramColorNickColorPanelAdapter, ColorNickColorPanelAdapter.OnColorSelectListener paramOnColorSelectListener)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter = paramColorNickColorPanelAdapter;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364822));
-    this.b = ((ImageView)paramView.findViewById(2131364823));
+    this.d = paramColorNickColorPanelAdapter;
+    this.b = ((ImageView)paramView.findViewById(2131430947));
+    this.c = ((ImageView)paramView.findViewById(2131430948));
     paramView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener = paramOnColorSelectListener;
+    this.e = paramOnColorSelectListener;
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(this.jdField_a_of_type_Int);
-    ColorNickColorPanelAdapter.OnColorSelectListener localOnColorSelectListener = this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$OnColorSelectListener;
+    this.d.a(this.a);
+    ColorNickColorPanelAdapter.OnColorSelectListener localOnColorSelectListener = this.e;
     if (localOnColorSelectListener != null) {
-      localOnColorSelectListener.a(this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter.a(this.jdField_a_of_type_Int));
+      localOnColorSelectListener.a(this.d.b(this.a));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.GradientViewHolder
  * JD-Core Version:    0.7.0.1
  */

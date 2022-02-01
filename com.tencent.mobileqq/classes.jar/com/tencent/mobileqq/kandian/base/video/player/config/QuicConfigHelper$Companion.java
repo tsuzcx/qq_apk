@@ -14,11 +14,6 @@ import org.jetbrains.annotations.Nullable;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/base/video/player/config/QuicConfigHelper$Companion;", "", "()V", "PROTOCOL_QUIC", "", "connectionMigrationEnable", "", "getQuicEnableMode", "", "context", "Landroid/content/Context;", "url", "getQuicHostList", "", "isUrlCanUseQuic", "plainTextEnable", "quicCongestionType", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class QuicConfigHelper$Companion
 {
-  public final int a()
-  {
-    return QuicConfig.a.c();
-  }
-  
   public final int a(@Nullable Context paramContext, @Nullable String paramString)
   {
     int i = 0;
@@ -35,15 +30,9 @@ public final class QuicConfigHelper$Companion
     return i;
   }
   
-  @NotNull
-  public final List<String> a()
-  {
-    return StringsKt.split$default((CharSequence)QuicConfig.a.a(), new String[] { "," }, false, 0, 6, null);
-  }
-  
   public final boolean a()
   {
-    return QuicConfig.a.a();
+    return QuicConfig.a.c();
   }
   
   public final boolean a(@Nullable String paramString)
@@ -52,7 +41,7 @@ public final class QuicConfigHelper$Companion
     if (TextUtils.isEmpty(localCharSequence)) {
       return false;
     }
-    Iterator localIterator = ((Companion)this).a().iterator();
+    Iterator localIterator = ((Companion)this).d().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -72,12 +61,23 @@ public final class QuicConfigHelper$Companion
   
   public final boolean b()
   {
-    return QuicConfig.a.b();
+    return QuicConfig.a.d();
+  }
+  
+  public final int c()
+  {
+    return QuicConfig.a.e();
+  }
+  
+  @NotNull
+  public final List<String> d()
+  {
+    return StringsKt.split$default((CharSequence)QuicConfig.a.f(), new String[] { "," }, false, 0, 6, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.video.player.config.QuicConfigHelper.Companion
  * JD-Core Version:    0.7.0.1
  */

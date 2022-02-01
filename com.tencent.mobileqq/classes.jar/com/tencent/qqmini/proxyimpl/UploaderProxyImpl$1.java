@@ -19,26 +19,26 @@ class UploaderProxyImpl$1
   {
     Object localObject1 = MiniOkHttpClientFactory.getUploadClient();
     Request.Builder localBuilder = new Request.Builder();
-    localBuilder.tag(localObject1).url(this.jdField_a_of_type_JavaLangString).addHeader("Charset", "utf-8").addHeader("connection", "keep-alive");
-    Object localObject2 = this.jdField_a_of_type_JavaUtilMap;
+    localBuilder.tag(localObject1).url(this.a).addHeader("Charset", "utf-8").addHeader("connection", "keep-alive");
+    Object localObject2 = this.b;
     if (localObject2 != null)
     {
       localObject2 = ((Map)localObject2).keySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        localBuilder.addHeader(str, (String)this.jdField_a_of_type_JavaUtilMap.get(str));
+        localBuilder.addHeader(str, (String)this.b.get(str));
       }
     }
-    localBuilder.method("POST", HttpUtil.a(this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_JavaUtilMap, this.c, this.d, this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener));
+    localBuilder.method("POST", HttpUtil.a(this.c, this.d, this.e, this.f, this.g));
     localObject1 = ((OkHttpClient)localObject1).newCall(localBuilder.build());
     ((Call)localObject1).enqueue(new UploaderProxyImpl.1.1(this));
-    this.this$0.a.put(this.jdField_a_of_type_JavaLangString, localObject1);
+    this.this$0.a.put(this.a, localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

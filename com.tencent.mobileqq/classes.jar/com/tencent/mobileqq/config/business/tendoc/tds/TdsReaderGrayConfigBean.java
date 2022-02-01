@@ -8,8 +8,8 @@ import java.util.Map;
 
 final class TdsReaderGrayConfigBean
 {
-  private int jdField_a_of_type_Int = -1;
-  private final Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final Map<String, String> a = new HashMap();
+  private int b = -1;
   
   public static TdsReaderGrayConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
@@ -24,10 +24,10 @@ final class TdsReaderGrayConfigBean
       QLog.w("TdsReaderView_TdsReaderGrayConfigBean", 1, "source error, configBean is null.");
       return;
     }
-    if (!paramTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap.isEmpty()) {
-      TdsReaderGlobal.a(true, paramTdsReaderGrayConfigBean.jdField_a_of_type_JavaUtilMap);
+    if (!paramTdsReaderGrayConfigBean.a.isEmpty()) {
+      TdsReaderGlobal.a(true, paramTdsReaderGrayConfigBean.a);
     }
-    int i = paramTdsReaderGrayConfigBean.jdField_a_of_type_Int;
+    int i = paramTdsReaderGrayConfigBean.b;
     if (i != -1)
     {
       if (i != 1) {
@@ -39,7 +39,7 @@ final class TdsReaderGrayConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderGrayConfigBean
  * JD-Core Version:    0.7.0.1
  */

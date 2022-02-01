@@ -15,13 +15,13 @@ class ReadInJoySelectMemberFragment$2
   {
     if (paramEditable.length() > 0)
     {
-      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
-        this.a.getChildFragmentManager().beginTransaction().add(2131367213, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+      if (!ReadInJoySelectMemberFragment.c(this.a).isVisible()) {
+        this.a.getChildFragmentManager().beginTransaction().add(2131433669, ReadInJoySelectMemberFragment.c(this.a)).addToBackStack(null).commit();
       }
-      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
+      ReadInJoySelectMemberFragment.c(this.a).a(paramEditable.toString());
       return;
     }
-    if (!ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
+    if (!ReadInJoySelectMemberFragment.c(this.a).isDetached()) {
       this.a.getChildFragmentManager().popBackStackImmediate();
     }
   }
@@ -32,7 +32,7 @@ class ReadInJoySelectMemberFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.selectmember.ReadInJoySelectMemberFragment.2
  * JD-Core Version:    0.7.0.1
  */

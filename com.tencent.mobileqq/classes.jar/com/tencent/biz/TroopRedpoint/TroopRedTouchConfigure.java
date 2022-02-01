@@ -1,13 +1,7 @@
 package com.tencent.biz.TroopRedpoint;
 
-import android.text.TextUtils;
 import android.util.SparseIntArray;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONException;
-import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
 public class TroopRedTouchConfigure
@@ -41,35 +35,6 @@ public class TroopRedTouchConfigure
   public static boolean a(int paramInt)
   {
     return (paramInt == 8) || (paramInt == 35) || (paramInt == 11) || (paramInt == 37);
-  }
-  
-  public static boolean a(oidb_0x791.RedDotInfo paramRedDotInfo)
-  {
-    int i = paramRedDotInfo.uint32_appid.get();
-    if (i == 35)
-    {
-      paramRedDotInfo = paramRedDotInfo.str_custom_buffer.get().toStringUtf8();
-      if (!TextUtils.isEmpty(paramRedDotInfo)) {
-        try
-        {
-          long l = new JSONObject(paramRedDotInfo).optLong("image_red_display_780", 1L);
-          if (l != 0L) {
-            break label73;
-          }
-          return false;
-        }
-        catch (JSONException paramRedDotInfo)
-        {
-          SLog.c("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: Error parse json: ", paramRedDotInfo);
-          return true;
-        }
-      } else {
-        SLog.b("TroopRedTouchConfigure", "isStoryDisplayRedDot() APPID_STORY_IMG: str_custom_buffer is null");
-      }
-      label73:
-      return true;
-    }
-    return b(i);
   }
   
   public static boolean b(int paramInt)

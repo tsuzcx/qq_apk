@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 public class U
 {
   public static final String BEACON_ID_VERSION = "4.1";
-  public static final String COMMIT_HASH = "53696f69307f49d899d265c973a58070e24fb305";
+  public static final String COMMIT_HASH = "b52911812533d531642f80363f3bdeec1edae9a5";
   
   static
   {
@@ -104,7 +104,7 @@ public class U
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qmsp.sdk.u.U
  * JD-Core Version:    0.7.0.1
  */

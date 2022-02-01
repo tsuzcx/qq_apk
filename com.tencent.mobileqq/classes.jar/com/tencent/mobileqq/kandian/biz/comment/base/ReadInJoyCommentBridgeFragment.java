@@ -7,98 +7,108 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentComponentFragment;
 import com.tencent.mobileqq.kandian.biz.common.ReadInJoyHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tkd.comment.publisher.qq.QQPublishCommentFragment;
+import org.jetbrains.annotations.NotNull;
 
 public class ReadInJoyCommentBridgeFragment
   extends PublicBaseFragment
 {
-  private ReadInJoyCommentComponentFragment jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
-  private ReadInJoyCommentEntrance jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseReadInJoyCommentEntrance;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  
-  private void a()
-  {
-    BaseActivity localBaseActivity = getBaseActivity();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseReadInJoyCommentEntrance = new ReadInJoyCommentEntrance(localBaseActivity, localBaseActivity.getIntent());
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseReadInJoyCommentEntrance.a();
-  }
+  private ReadInJoyCommentComponentFragment a;
+  private ReadInJoyCommentEntrance b;
+  private Boolean c;
   
   private boolean a()
   {
-    if (this.jdField_a_of_type_JavaLangBoolean == null)
+    if (this.c == null)
     {
       if ((Build.VERSION.SDK_INT != 21) && (Build.VERSION.SDK_INT != 22)) {
-        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(ReadInJoyHelper.h());
+        this.c = Boolean.valueOf(ReadInJoyHelper.o());
       } else {
-        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(ReadInJoyHelper.i());
+        this.c = Boolean.valueOf(ReadInJoyHelper.p());
       }
+      b();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("isUseCommentModule: useCommentModule=");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangBoolean);
+      localStringBuilder.append(this.c);
       QLog.d("ReadInJoyCommentBridgeFragment", 1, localStringBuilder.toString());
     }
-    return this.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    return this.c.booleanValue();
   }
   
   private boolean a(FragmentManager paramFragmentManager)
   {
-    BaseFragment localBaseFragment = (BaseFragment)paramFragmentManager.findFragmentByTag("ReadInJoyCommentComponentFragment");
-    if (localBaseFragment != null)
+    Fragment localFragment = paramFragmentManager.findFragmentByTag("ReadInJoyCommentComponentFragment");
+    if (localFragment != null)
     {
-      if ((localBaseFragment instanceof ReadInJoyCommentComponentFragment))
+      if ((localFragment instanceof ReadInJoyCommentComponentFragment))
       {
-        this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment = ((ReadInJoyCommentComponentFragment)localBaseFragment);
+        this.a = ((ReadInJoyCommentComponentFragment)localFragment);
         return true;
       }
-      paramFragmentManager.beginTransaction().remove(localBaseFragment).commitAllowingStateLoss();
+      paramFragmentManager.beginTransaction().remove(localFragment).commitAllowingStateLoss();
     }
     return false;
   }
   
   private void b()
   {
-    if (a()) {
-      return;
-    }
-    c();
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment.isAdded()) {
-      return;
-    }
-    Object localObject = getBaseActivity();
-    if (localObject != null)
-    {
-      localObject = ((BaseActivity)localObject).getSupportFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject).add(2131367211, this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment, "ReadInJoyCommentComponentFragment");
-      ((FragmentTransaction)localObject).commitAllowingStateLoss();
+    Bundle localBundle = getArguments();
+    if ((localBundle != null) && (localBundle.getInt("comment_editor_scene", 0) != 0)) {
+      this.c = Boolean.valueOf(true);
     }
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment != null) {
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    this.b = new ReadInJoyCommentEntrance(localQBaseActivity, localQBaseActivity.getIntent());
+    this.b.b();
+  }
+  
+  private void d()
+  {
+    if (a()) {
       return;
     }
-    BaseActivity localBaseActivity = getBaseActivity();
-    if ((localBaseActivity != null) && (a(localBaseActivity.getSupportFragmentManager()))) {
+    e();
+    if (this.a.isAdded()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment = new ReadInJoyCommentComponentFragment();
-    this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment.setArguments(getArguments());
+    Object localObject = getQBaseActivity();
+    if (localObject != null)
+    {
+      localObject = ((QBaseActivity)localObject).getSupportFragmentManager().beginTransaction();
+      ((FragmentTransaction)localObject).add(2131433667, this.a, "ReadInJoyCommentComponentFragment");
+      ((FragmentTransaction)localObject).commitAllowingStateLoss();
+    }
+  }
+  
+  private void e()
+  {
+    if (this.a != null) {
+      return;
+    }
+    QBaseActivity localQBaseActivity = getQBaseActivity();
+    if ((localQBaseActivity != null) && (a(localQBaseActivity.getSupportFragmentManager()))) {
+      return;
+    }
+    this.a = new ReadInJoyCommentComponentFragment();
+    this.a.setArguments(getArguments());
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
   {
-    b();
-    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
+    d();
+    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.a;
     if (localReadInJoyCommentComponentFragment != null) {
       localReadInJoyCommentComponentFragment.initWindowStyleAndAnimation(paramActivity);
     }
@@ -106,8 +116,8 @@ public class ReadInJoyCommentBridgeFragment
   
   public boolean isWrapContent()
   {
-    b();
-    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
+    d();
+    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.a;
     if (localReadInJoyCommentComponentFragment != null) {
       return localReadInJoyCommentComponentFragment.isWrapContent();
     }
@@ -116,8 +126,8 @@ public class ReadInJoyCommentBridgeFragment
   
   public boolean needImmersive()
   {
-    b();
-    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
+    d();
+    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.a;
     if (localReadInJoyCommentComponentFragment != null) {
       return localReadInJoyCommentComponentFragment.needImmersive();
     }
@@ -127,11 +137,11 @@ public class ReadInJoyCommentBridgeFragment
   public void onActivityResult(int paramInt1, int paramInt2, @androidx.annotation.Nullable Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
+    Object localObject = this.a;
     if (localObject != null) {
       ((ReadInJoyCommentComponentFragment)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentBaseReadInJoyCommentEntrance;
+    localObject = this.b;
     if (localObject != null) {
       ((ReadInJoyCommentEntrance)localObject).a().onActivityResult(paramInt1, paramInt2, paramIntent);
     }
@@ -139,7 +149,7 @@ public class ReadInJoyCommentBridgeFragment
   
   public boolean onBackEvent()
   {
-    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
+    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.a;
     if (localReadInJoyCommentComponentFragment != null) {
       return localReadInJoyCommentComponentFragment.onBackEvent();
     }
@@ -147,12 +157,12 @@ public class ReadInJoyCommentBridgeFragment
   }
   
   @org.jetbrains.annotations.Nullable
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  public View onCreateView(@NotNull LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     if (a()) {
-      a();
+      c();
     } else {
-      b();
+      d();
     }
     return null;
   }
@@ -160,12 +170,12 @@ public class ReadInJoyCommentBridgeFragment
   public void onDestroy()
   {
     super.onDestroy();
-    ReadInJoyCommentEntrance.e();
+    ReadInJoyCommentEntrance.g();
   }
   
   public void onFinish()
   {
-    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentComponentFragment;
+    ReadInJoyCommentComponentFragment localReadInJoyCommentComponentFragment = this.a;
     if (localReadInJoyCommentComponentFragment != null) {
       localReadInJoyCommentComponentFragment.onFinish();
     }
@@ -175,21 +185,21 @@ public class ReadInJoyCommentBridgeFragment
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && (localFragmentActivity.isFinishing())) {
-      ReadInJoyCommentEntrance.d();
+      ReadInJoyCommentEntrance.f();
     }
     super.onPause();
-    ReadInJoyCommentEntrance.c();
+    ReadInJoyCommentEntrance.e();
   }
   
   public void onResume()
   {
     super.onResume();
-    ReadInJoyCommentEntrance.b();
+    ReadInJoyCommentEntrance.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.ReadInJoyCommentBridgeFragment
  * JD-Core Version:    0.7.0.1
  */

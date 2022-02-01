@@ -25,15 +25,15 @@ import java.util.List;
 public class EffectFilterTextPager$FilterTextAdapter
   extends PagerAdapter
 {
-  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList<FilterItem> jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean;
+  WeakReference<Context> a;
+  ArrayList<FilterItem> b;
+  private boolean c;
+  private ColorDrawable d = new ColorDrawable(0);
   
   public EffectFilterTextPager$FilterTextAdapter(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = new WeakReference(paramContext);
+    this.b = new ArrayList();
   }
   
   public int a(FilterItem paramFilterItem)
@@ -42,7 +42,7 @@ public class EffectFilterTextPager$FilterTextAdapter
     if (paramFilterItem == null) {
       return 0;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.b.iterator();
     while (localIterator.hasNext())
     {
       if (((FilterItem)localIterator.next()).getId().equals(paramFilterItem.getId())) {
@@ -55,21 +55,21 @@ public class EffectFilterTextPager$FilterTextAdapter
   
   FilterItem a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if ((paramInt >= 0) && (paramInt < this.b.size())) {
+      return (FilterItem)this.b.get(paramInt);
     }
     return null;
   }
   
   public void a(List<FilterItem> paramList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+    this.b.addAll(paramList);
     notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramBoolean;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -79,19 +79,19 @@ public class EffectFilterTextPager$FilterTextAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.b.size();
   }
   
   @TargetApi(11)
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject2 = (FilterItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (FilterItem)this.b.get(paramInt);
+    Context localContext = (Context)this.a.get();
     Object localObject1 = null;
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131559776, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131373385);
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131625818, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131441058);
       localImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
       if (localObject2 != null) {
         localObject1 = ((FilterItem)localObject2).getIconUrl();
@@ -106,17 +106,17 @@ public class EffectFilterTextPager$FilterTextAdapter
       else
       {
         localObject2 = URLDrawable.URLDrawableOptions.obtain();
-        ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        ColorDrawable localColorDrawable = this.d;
         ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localColorDrawable;
         ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localColorDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = localContext.getResources().getDimensionPixelSize(2131297769);
-        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = localContext.getResources().getDimensionPixelSize(2131297768);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = localContext.getResources().getDimensionPixelSize(2131298438);
+        ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = localContext.getResources().getDimensionPixelSize(2131298437);
         localImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2));
       }
-      if (this.jdField_a_of_type_Boolean)
+      if (this.c)
       {
         localObject1 = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-        float f = localContext.getResources().getDimension(2131297764);
+        float f = localContext.getResources().getDimension(2131298433);
         ((LinearLayout.LayoutParams)localObject1).setMargins(((LinearLayout.LayoutParams)localObject1).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject1).rightMargin, ((LinearLayout.LayoutParams)localObject1).bottomMargin);
         localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
         localImageView.setScaleX(0.6F);

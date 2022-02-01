@@ -14,8 +14,8 @@ class LocalVideoSelectActivity$2
   public void a_(IMediaPlayer paramIMediaPlayer)
   {
     SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).c();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
+    LocalVideoSelectActivity.g(this.a).c();
+    LocalVideoSelectActivity.h(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 

@@ -9,22 +9,9 @@ import org.json.JSONObject;
 
 public class UUIDUtil
 {
-  public static final UUIDUtil a;
-  private volatile Boolean jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  private volatile JSONObject jdField_a_of_type_OrgJsonJSONObject = null;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentGatherergaCoreInternalUtilUUIDUtil = new UUIDUtil();
-  }
-  
-  private String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (Environment.getExternalStorageDirectory() == null)) {
-      return null;
-    }
-    return new File(Environment.getExternalStorageDirectory(), paramString).getAbsolutePath();
-  }
+  public static final UUIDUtil a = new UUIDUtil();
+  private volatile Boolean b = Boolean.valueOf(false);
+  private volatile JSONObject c = null;
   
   private String a(JSONObject paramJSONObject, String paramString, long paramLong)
   {
@@ -66,7 +53,38 @@ public class UUIDUtil
     return null;
   }
   
-  private JSONObject a(JSONObject paramJSONObject)
+  private boolean a(JSONObject paramJSONObject)
+  {
+    return (paramJSONObject != null) && (paramJSONObject.optInt("version") > 0) && (!TextUtils.isEmpty(paramJSONObject.optString("salt"))) && (paramJSONObject.optInt("maxLength") > 0);
+  }
+  
+  private boolean a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    try
+    {
+      if ((c(paramJSONObject1)) && (UUID.fromString(paramJSONObject1.optString("u")) != null) && (a(paramJSONObject2)) && (paramJSONObject1.optInt("v") == paramJSONObject2.optInt("version")))
+      {
+        paramJSONObject2 = a(paramJSONObject2, paramJSONObject1.optString("u"), paramJSONObject1.optLong("t"));
+        boolean bool = TextUtils.equals(paramJSONObject1.optString("m"), paramJSONObject2);
+        return bool;
+      }
+    }
+    catch (Exception paramJSONObject1)
+    {
+      GLog.d(paramJSONObject1.getMessage());
+    }
+    return false;
+  }
+  
+  private String b(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (Environment.getExternalStorageDirectory() == null)) {
+      return null;
+    }
+    return new File(Environment.getExternalStorageDirectory(), paramString).getAbsolutePath();
+  }
+  
+  private JSONObject b(JSONObject paramJSONObject)
   {
     if ((paramJSONObject != null) && (a(paramJSONObject))) {
       try
@@ -89,37 +107,14 @@ public class UUIDUtil
     return null;
   }
   
-  private boolean a(JSONObject paramJSONObject)
-  {
-    return (paramJSONObject != null) && (paramJSONObject.optInt("version") > 0) && (!TextUtils.isEmpty(paramJSONObject.optString("salt"))) && (paramJSONObject.optInt("maxLength") > 0);
-  }
-  
-  private boolean a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
-  {
-    try
-    {
-      if ((b(paramJSONObject1)) && (UUID.fromString(paramJSONObject1.optString("u")) != null) && (a(paramJSONObject2)) && (paramJSONObject1.optInt("v") == paramJSONObject2.optInt("version")))
-      {
-        paramJSONObject2 = a(paramJSONObject2, paramJSONObject1.optString("u"), paramJSONObject1.optLong("t"));
-        boolean bool = TextUtils.equals(paramJSONObject1.optString("m"), paramJSONObject2);
-        return bool;
-      }
-    }
-    catch (Exception paramJSONObject1)
-    {
-      GLog.d(paramJSONObject1.getMessage());
-    }
-    return false;
-  }
-  
-  private boolean b(JSONObject paramJSONObject)
+  private boolean c(JSONObject paramJSONObject)
   {
     return (paramJSONObject != null) && (paramJSONObject.optInt("v") > 0) && (paramJSONObject.optLong("t") > 0L) && (!TextUtils.isEmpty(paramJSONObject.optString("u"))) && (!TextUtils.isEmpty(paramJSONObject.optString("m")));
   }
   
   public JSONObject a(Context paramContext, String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+    if (this.b.booleanValue()) {
       GLog.b("TangramUUID getUUID already write file");
     }
     for (;;)
@@ -127,7 +122,7 @@ public class UUIDUtil
       Object localObject2;
       try
       {
-        if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
+        if (this.b.booleanValue())
         {
           GLog.b("TangramUUID getUUID already write file");
         }
@@ -148,8 +143,8 @@ public class UUIDUtil
           }
           else
           {
-            AdFile localAdFile1 = new AdFile(a("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
-            AdFile localAdFile2 = new AdFile(a("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
+            AdFile localAdFile1 = new AdFile(b("Tencent/ams/cache"), "meta.dat", "UTF-8", true);
+            AdFile localAdFile2 = new AdFile(b("Android/data/com.tencent.ams/cache"), "meta.dat", "UTF-8", true);
             if (localAdFile1.a())
             {
               boolean bool = localAdFile2.a();
@@ -169,7 +164,7 @@ public class UUIDUtil
                     break label420;
                   }
                   paramString = new JSONObject(str2);
-                  JSONObject localJSONObject1 = a(localJSONObject2);
+                  JSONObject localJSONObject1 = b(localJSONObject2);
                   if (localJSONObject1 == null) {
                     break label425;
                   }
@@ -198,12 +193,12 @@ public class UUIDUtil
                   }
                   if ((localAdFile1.a(paramContext)) && (localAdFile2.a(paramContext)))
                   {
-                    this.jdField_a_of_type_OrgJsonJSONObject = paramString;
+                    this.c = paramString;
                     GLog.b("TangramUUID 正式文件和备份文件写入成功");
                   }
-                  this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-                  localAdFile1.a();
-                  localAdFile2.a();
+                  this.b = Boolean.valueOf(true);
+                  localAdFile1.b();
+                  localAdFile2.b();
                 }
                 catch (Throwable paramContext)
                 {
@@ -212,12 +207,12 @@ public class UUIDUtil
                 continue;
               }
             }
-            localAdFile1.a();
-            localAdFile2.a();
+            localAdFile1.b();
+            localAdFile2.b();
             GLog.b("TangramUUID getUUID failed. FAILED_FILE_LOCK");
           }
         }
-        return this.jdField_a_of_type_OrgJsonJSONObject;
+        return this.c;
       }
       finally {}
       label415:
@@ -237,7 +232,7 @@ public class UUIDUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.util.UUIDUtil
  * JD-Core Version:    0.7.0.1
  */

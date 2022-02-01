@@ -27,7 +27,7 @@ public final class VideoConfig
 {
   public static final VideoConfig a = new VideoConfig();
   
-  private final Set<String> a()
+  private final Set<String> c()
   {
     Object localObject1 = Aladdin.getConfig(314);
     HashSet localHashSet = new HashSet();
@@ -58,7 +58,7 @@ public final class VideoConfig
     return (Set)localHashSet;
   }
   
-  private final boolean a()
+  private final boolean d()
   {
     Object localObject = Aladdin.getConfig(314);
     int i;
@@ -86,10 +86,10 @@ public final class VideoConfig
   
   public void b()
   {
-    ThirdVideoManager.a().a(a(), a());
+    ThirdVideoManager.a().a(d(), c());
     VideoPlayerWrapper.a((ISuperPlayerOptionConfig)new SuperPlayerOptionConfig());
     VideoPlayerWrapper.c(RIJVideoSdkConfigSp.a());
-    VideoPlayerWrapper.f(VideoVolumeControl.getInstance().shouldMute());
+    VideoPlayerWrapper.j(VideoVolumeControl.getInstance().shouldMute());
     BandWidthConfig.a.a(Aladdin.getConfig(288).getString("buffer_range_report_tag", ""));
     BandWidthConfig.a.a(Aladdin.getConfig(230).getIntegerFromString("reset_time_threshold_wifi", 3600));
     BandWidthConfig.a.b(Aladdin.getConfig(230).getIntegerFromString("reset_time_threshold_xg", 600));
@@ -127,7 +127,7 @@ public final class VideoConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.baseconfig.VideoConfig
  * JD-Core Version:    0.7.0.1
  */

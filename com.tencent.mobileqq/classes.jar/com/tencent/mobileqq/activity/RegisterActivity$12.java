@@ -19,7 +19,7 @@ class RegisterActivity$12
     default: 
     case 8: 
       paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Byte = 3;
+      paramMessage.a = 3;
       paramMessage.a();
       return;
     case 7: 
@@ -30,10 +30,10 @@ class RegisterActivity$12
       this.a.a(paramMessage);
       return;
     case 5: 
-      if (this.a.jdField_a_of_type_JavaLangString != null)
+      if (this.a.c != null)
       {
-        Toast.makeText(this.a.getApplicationContext(), this.a.jdField_a_of_type_JavaLangString, 1).show();
-        this.a.jdField_a_of_type_JavaLangString = null;
+        Toast.makeText(this.a.getApplicationContext(), this.a.c, 1).show();
+        this.a.c = null;
         return;
       }
       break;
@@ -45,14 +45,14 @@ class RegisterActivity$12
       return;
     case 1: 
       paramMessage = this.a;
-      paramMessage.jdField_a_of_type_Byte = ((byte)(paramMessage.jdField_a_of_type_Byte + 1));
+      paramMessage.a = ((byte)(paramMessage.a + 1));
       this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.12
  * JD-Core Version:    0.7.0.1
  */

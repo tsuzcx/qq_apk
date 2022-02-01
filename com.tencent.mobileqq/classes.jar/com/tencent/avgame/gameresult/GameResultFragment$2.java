@@ -9,8 +9,8 @@ class GameResultFragment$2
   
   public void run()
   {
-    this.this$0.a.setAsyncClipSize(this.this$0.a.getWidth(), this.this$0.a.getHeight());
-    this.this$0.a.setAsyncImage(this.a);
+    this.this$0.n.setAsyncClipSize(this.this$0.n.getWidth(), this.this$0.n.getHeight());
+    this.this$0.n.setAsyncImage(this.a);
   }
 }
 

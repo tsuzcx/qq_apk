@@ -13,19 +13,19 @@ class SoundAndVibrateActivity$16
   
   public void onClick(View paramView)
   {
-    SoundAndVibrateActivity.a(this.a);
+    SoundAndVibrateActivity.k(this.a);
     VipUtils.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131167064));
+    paramTextPaint.setColor(this.a.getResources().getColor(2131168002));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SoundAndVibrateActivity.16
  * JD-Core Version:    0.7.0.1
  */

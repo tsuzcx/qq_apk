@@ -15,7 +15,7 @@ class QAPMCellingHprofWrapper$1
   
   public void onHprofDumped(@NotNull String paramString)
   {
-    this.jdField_a_of_type_ComTencentQqperfMonitorBaseIDumpMemoryCallback.a();
+    this.a.a();
   }
   
   @NotNull
@@ -25,15 +25,15 @@ class QAPMCellingHprofWrapper$1
     long l2 = Runtime.getRuntime().freeMemory();
     ArrayList localArrayList = new ArrayList(4);
     localArrayList.addAll(DumpMemInfoHandler.b());
-    localArrayList.add(DumpMemInfoHandler.b());
-    localArrayList.add(DumpMemInfoHandler.a());
+    localArrayList.add(DumpMemInfoHandler.d());
+    localArrayList.add(DumpMemInfoHandler.c());
     localArrayList.add(DumpMemInfoHandler.a(paramString, l1 - l2));
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMCellingHprofWrapper.1
  * JD-Core Version:    0.7.0.1
  */

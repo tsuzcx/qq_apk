@@ -14,7 +14,7 @@ class MoreVideoInfoWidget$7
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder;
+    paramDialogInterface = this.a;
     if (paramDialogInterface != null) {
       paramDialogInterface.c(false);
     }
@@ -23,8 +23,8 @@ class MoreVideoInfoWidget$7
       if (paramInt != 1) {
         return;
       }
-      StoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-      StoryReportor.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      StoryVideoUploadManager.a(this.b.mVid);
+      StoryReportor.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.b.mVid });
     }
   }
 }

@@ -27,16 +27,16 @@ import com.tencent.qphone.base.util.QLog;
 
 public class TeamWorkSender
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
-  private AbsStructMsg jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
-  private TeamWorkFileImportObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver;
+  private QQAppInterface a;
+  private TeamWorkFileImportObserver b;
+  private AbsStructMsg c;
+  private MessageForStructing d;
   
   public TeamWorkSender(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramQQAppInterface;
     a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver);
+    this.a.addObserver(this.b);
   }
   
   private AbsStructMsg a(Context paramContext, String paramString)
@@ -53,12 +53,12 @@ public class TeamWorkSender
     }
     if (".doc|.docx".contains(str))
     {
-      paramString = HardCodeUtil.a(2131714599);
+      paramString = HardCodeUtil.a(2131912108);
       str = "https://pub.idqqimg.com/pc/misc/files/20180403/29c998e16c094b10a96b3e0d1589c2f6.png";
     }
     else
     {
-      paramString = HardCodeUtil.a(2131714595);
+      paramString = HardCodeUtil.a(2131912104);
       str = "https://pub.idqqimg.com/pc/misc/files/20180403/da40f07bd79e4796b712b44023911be0.png";
     }
     Intent localIntent = new Intent();
@@ -103,8 +103,8 @@ public class TeamWorkSender
     localIntent.putExtra("struct_share_key_source_action", "web");
     localIntent.putExtra("struct_share_key_source_url", "https://docs.qq.com/desktop/m/index.html?_wv=2");
     localIntent.putExtra("struct_share_key_source_icon", "https://docs.qq.com/desktop/favicon.ico");
-    localIntent.putExtra("app_name", HardCodeUtil.a(2131714618));
-    localIntent.putExtra("brief_key", paramContext.getString(2131696401, new Object[] { localObject1 }));
+    localIntent.putExtra("app_name", HardCodeUtil.a(2131912127));
+    localIntent.putExtra("brief_key", paramContext.getString(2131894173, new Object[] { localObject1 }));
     return StructMsgFactory.a(localIntent.getExtras());
   }
   
@@ -113,26 +113,26 @@ public class TeamWorkSender
     try
     {
       TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-      localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("fileName");
+      localTeamWorkFileImportInfo.c = paramMessageRecord.getExtInfoFromExtStr("fileName");
       QLog.i("TeamWorkSender", 1, "dmytest");
-      localTeamWorkFileImportInfo.c = paramMessageRecord.getExtInfoFromExtStr("filePath");
-      localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("peerUin");
-      localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troopFilePath");
-      localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("troopUin");
-      localTeamWorkFileImportInfo.jdField_d_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("entranceFrom"));
-      localTeamWorkFileImportInfo.jdField_j_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("fileImportType"));
-      localTeamWorkFileImportInfo.jdField_d_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("fileSize"));
-      localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isFromAIO"));
-      localTeamWorkFileImportInfo.f = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isMessageConvert"));
-      localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isNeedDownLoadUrl"));
-      localTeamWorkFileImportInfo.jdField_d_of_type_Boolean = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isOpenTeamWork"));
-      localTeamWorkFileImportInfo.jdField_e_of_type_Boolean = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isUserClick"));
-      localTeamWorkFileImportInfo.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("msgUniseq"));
-      localTeamWorkFileImportInfo.jdField_e_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("nFileType"));
-      localTeamWorkFileImportInfo.jdField_b_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("nSessionId"));
-      localTeamWorkFileImportInfo.jdField_a_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("peerType"));
-      localTeamWorkFileImportInfo.jdField_b_of_type_Int = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troopFileBusId"));
-      localTeamWorkFileImportInfo.jdField_e_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("structUniseq"));
+      localTeamWorkFileImportInfo.d = paramMessageRecord.getExtInfoFromExtStr("filePath");
+      localTeamWorkFileImportInfo.b = paramMessageRecord.getExtInfoFromExtStr("peerUin");
+      localTeamWorkFileImportInfo.g = paramMessageRecord.getExtInfoFromExtStr("troopFilePath");
+      localTeamWorkFileImportInfo.j = paramMessageRecord.getExtInfoFromExtStr("troopUin");
+      localTeamWorkFileImportInfo.n = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("entranceFrom"));
+      localTeamWorkFileImportInfo.J = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("fileImportType"));
+      localTeamWorkFileImportInfo.K = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("fileSize"));
+      localTeamWorkFileImportInfo.o = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isFromAIO"));
+      localTeamWorkFileImportInfo.s = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isMessageConvert"));
+      localTeamWorkFileImportInfo.m = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isNeedDownLoadUrl"));
+      localTeamWorkFileImportInfo.q = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isOpenTeamWork"));
+      localTeamWorkFileImportInfo.r = Boolean.parseBoolean(paramMessageRecord.getExtInfoFromExtStr("isUserClick"));
+      localTeamWorkFileImportInfo.e = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("msgUniseq"));
+      localTeamWorkFileImportInfo.u = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("nFileType"));
+      localTeamWorkFileImportInfo.f = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("nSessionId"));
+      localTeamWorkFileImportInfo.a = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("peerType"));
+      localTeamWorkFileImportInfo.h = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("troopFileBusId"));
+      localTeamWorkFileImportInfo.L = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("structUniseq"));
       return localTeamWorkFileImportInfo;
     }
     catch (Exception paramMessageRecord)
@@ -147,20 +147,20 @@ public class TeamWorkSender
   private TeamWorkFileImportInfo a(FileManagerEntity paramFileManagerEntity)
   {
     TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    localTeamWorkFileImportInfo.c = paramFileManagerEntity.getFilePath();
-    localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = paramFileManagerEntity.fileName;
-    localTeamWorkFileImportInfo.jdField_e_of_type_Int = paramFileManagerEntity.nFileType;
-    localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = false;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Int = 4;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Long = paramFileManagerEntity.fileSize;
-    localTeamWorkFileImportInfo.jdField_a_of_type_Int = paramFileManagerEntity.peerType;
-    localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = paramFileManagerEntity.peerUin;
-    localTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString = String.valueOf(paramFileManagerEntity.TroopUin);
-    localTeamWorkFileImportInfo.jdField_b_of_type_Int = paramFileManagerEntity.busId;
-    localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = paramFileManagerEntity.strTroopFilePath;
-    localTeamWorkFileImportInfo.jdField_a_of_type_Long = paramFileManagerEntity.uniseq;
+    localTeamWorkFileImportInfo.d = paramFileManagerEntity.getFilePath();
+    localTeamWorkFileImportInfo.c = paramFileManagerEntity.fileName;
+    localTeamWorkFileImportInfo.u = paramFileManagerEntity.nFileType;
+    localTeamWorkFileImportInfo.o = false;
+    localTeamWorkFileImportInfo.n = 4;
+    localTeamWorkFileImportInfo.K = paramFileManagerEntity.fileSize;
+    localTeamWorkFileImportInfo.a = paramFileManagerEntity.peerType;
+    localTeamWorkFileImportInfo.b = paramFileManagerEntity.peerUin;
+    localTeamWorkFileImportInfo.j = String.valueOf(paramFileManagerEntity.TroopUin);
+    localTeamWorkFileImportInfo.h = paramFileManagerEntity.busId;
+    localTeamWorkFileImportInfo.g = paramFileManagerEntity.strTroopFilePath;
+    localTeamWorkFileImportInfo.e = paramFileManagerEntity.uniseq;
     if (paramFileManagerEntity.status != 16) {
-      localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
+      localTeamWorkFileImportInfo.m = true;
     }
     return localTeamWorkFileImportInfo;
   }
@@ -168,110 +168,110 @@ public class TeamWorkSender
   private TeamWorkFileImportInfo a(String paramString)
   {
     TeamWorkFileImportInfo localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-    localTeamWorkFileImportInfo.c = paramString;
-    localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = FileManagerUtil.a(paramString);
-    localTeamWorkFileImportInfo.jdField_e_of_type_Int = FileManagerUtil.a(paramString);
-    localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = false;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Int = 4;
-    localTeamWorkFileImportInfo.jdField_d_of_type_Long = FileManagerUtil.a(paramString);
-    localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
+    localTeamWorkFileImportInfo.d = paramString;
+    localTeamWorkFileImportInfo.c = FileManagerUtil.a(paramString);
+    localTeamWorkFileImportInfo.u = FileManagerUtil.c(paramString);
+    localTeamWorkFileImportInfo.o = false;
+    localTeamWorkFileImportInfo.n = 4;
+    localTeamWorkFileImportInfo.K = FileManagerUtil.h(paramString);
+    localTeamWorkFileImportInfo.m = false;
     return localTeamWorkFileImportInfo;
   }
   
   private String a(int paramInt)
   {
-    HardCodeUtil.a(2131714597);
+    HardCodeUtil.a(2131912106);
     switch (paramInt)
     {
     case -109: 
     case -105: 
     case -104: 
     default: 
-      return HardCodeUtil.a(2131714573);
+      return HardCodeUtil.a(2131912082);
     case -102: 
     case -101: 
     case -100: 
-      return HardCodeUtil.a(2131714563);
+      return HardCodeUtil.a(2131912072);
     case -103: 
-      return HardCodeUtil.a(2131714593);
+      return HardCodeUtil.a(2131912102);
     case -107: 
-      return HardCodeUtil.a(2131714555);
+      return HardCodeUtil.a(2131912064);
     case -108: 
-      return HardCodeUtil.a(2131714607);
+      return HardCodeUtil.a(2131912116);
     case -110: 
-      return HardCodeUtil.a(2131714594);
+      return HardCodeUtil.a(2131912103);
     case -111: 
-      return HardCodeUtil.a(2131714576);
+      return HardCodeUtil.a(2131912085);
     case -114: 
-      return HardCodeUtil.a(2131714616);
+      return HardCodeUtil.a(2131912125);
     case -115: 
     case -113: 
     case -112: 
-      return HardCodeUtil.a(2131714560);
+      return HardCodeUtil.a(2131912069);
     }
-    return HardCodeUtil.a(2131714591);
+    return HardCodeUtil.a(2131912100);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportObserver = new TeamWorkSender.1(this);
+    this.b = new TeamWorkSender.1(this);
   }
   
   private void a(MessageRecord paramMessageRecord, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    paramMessageRecord.saveExtInfoToExtStr("fileName", paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("filePath", paramTeamWorkFileImportInfo.c);
-    paramMessageRecord.saveExtInfoToExtStr("peerUin", paramTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("fileName", paramTeamWorkFileImportInfo.c);
+    paramMessageRecord.saveExtInfoToExtStr("filePath", paramTeamWorkFileImportInfo.d);
+    paramMessageRecord.saveExtInfoToExtStr("peerUin", paramTeamWorkFileImportInfo.b);
     String str;
-    if (paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString != null) {
-      str = paramTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString;
+    if (paramTeamWorkFileImportInfo.g != null) {
+      str = paramTeamWorkFileImportInfo.g;
     } else {
       str = "";
     }
     paramMessageRecord.saveExtInfoToExtStr("troopFilePath", str);
-    paramMessageRecord.saveExtInfoToExtStr("troopUin", paramTeamWorkFileImportInfo.jdField_e_of_type_JavaLangString);
-    paramMessageRecord.saveExtInfoToExtStr("entranceFrom", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("fileImportType", String.valueOf(paramTeamWorkFileImportInfo.jdField_j_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("fileSize", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Long));
-    paramMessageRecord.saveExtInfoToExtStr("isFromAIO", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Boolean));
-    paramMessageRecord.saveExtInfoToExtStr("isMessageConvert", String.valueOf(paramTeamWorkFileImportInfo.f));
-    paramMessageRecord.saveExtInfoToExtStr("isNeedDownLoadUrl", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Boolean));
-    paramMessageRecord.saveExtInfoToExtStr("isOpenTeamWork", String.valueOf(paramTeamWorkFileImportInfo.jdField_d_of_type_Boolean));
-    paramMessageRecord.saveExtInfoToExtStr("isUserClick", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Boolean));
-    paramMessageRecord.saveExtInfoToExtStr("msgUniseq", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Long));
-    paramMessageRecord.saveExtInfoToExtStr("nFileType", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("nSessionId", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Long));
-    paramMessageRecord.saveExtInfoToExtStr("peerType", String.valueOf(paramTeamWorkFileImportInfo.jdField_a_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("troopFileBusId", String.valueOf(paramTeamWorkFileImportInfo.jdField_b_of_type_Int));
-    paramMessageRecord.saveExtInfoToExtStr("structUniseq", String.valueOf(paramTeamWorkFileImportInfo.jdField_e_of_type_Long));
-    paramMessageRecord.saveExtInfoToExtStr("strSendUin", paramTeamWorkFileImportInfo.jdField_j_of_type_JavaLangString);
+    paramMessageRecord.saveExtInfoToExtStr("troopUin", paramTeamWorkFileImportInfo.j);
+    paramMessageRecord.saveExtInfoToExtStr("entranceFrom", String.valueOf(paramTeamWorkFileImportInfo.n));
+    paramMessageRecord.saveExtInfoToExtStr("fileImportType", String.valueOf(paramTeamWorkFileImportInfo.J));
+    paramMessageRecord.saveExtInfoToExtStr("fileSize", String.valueOf(paramTeamWorkFileImportInfo.K));
+    paramMessageRecord.saveExtInfoToExtStr("isFromAIO", String.valueOf(paramTeamWorkFileImportInfo.o));
+    paramMessageRecord.saveExtInfoToExtStr("isMessageConvert", String.valueOf(paramTeamWorkFileImportInfo.s));
+    paramMessageRecord.saveExtInfoToExtStr("isNeedDownLoadUrl", String.valueOf(paramTeamWorkFileImportInfo.m));
+    paramMessageRecord.saveExtInfoToExtStr("isOpenTeamWork", String.valueOf(paramTeamWorkFileImportInfo.q));
+    paramMessageRecord.saveExtInfoToExtStr("isUserClick", String.valueOf(paramTeamWorkFileImportInfo.r));
+    paramMessageRecord.saveExtInfoToExtStr("msgUniseq", String.valueOf(paramTeamWorkFileImportInfo.e));
+    paramMessageRecord.saveExtInfoToExtStr("nFileType", String.valueOf(paramTeamWorkFileImportInfo.u));
+    paramMessageRecord.saveExtInfoToExtStr("nSessionId", String.valueOf(paramTeamWorkFileImportInfo.f));
+    paramMessageRecord.saveExtInfoToExtStr("peerType", String.valueOf(paramTeamWorkFileImportInfo.a));
+    paramMessageRecord.saveExtInfoToExtStr("troopFileBusId", String.valueOf(paramTeamWorkFileImportInfo.h));
+    paramMessageRecord.saveExtInfoToExtStr("structUniseq", String.valueOf(paramTeamWorkFileImportInfo.L));
+    paramMessageRecord.saveExtInfoToExtStr("strSendUin", paramTeamWorkFileImportInfo.z);
     paramMessageRecord.saveExtInfoToExtStr("import_file_message_flag", "import_file_message_flag_value");
   }
   
   private void a(AbsStructMsg paramAbsStructMsg, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, String paramString, int paramInt)
   {
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str2 = this.a.getCurrentAccountUin();
     int i = MobileQQService.seq;
     MobileQQService.seq = i + 1;
     long l = i;
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    QQAppInterface localQQAppInterface = this.a;
     String str1;
     if (TextUtils.isEmpty(paramString)) {
       str1 = str2;
     } else {
       str1 = paramString;
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = MessageRecordFactory.a(localQQAppInterface, str2, paramString, str1, paramInt, l, paramAbsStructMsg);
-    paramTeamWorkFileImportInfo.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq;
-    a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, paramTeamWorkFileImportInfo);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+    this.d = MessageRecordFactory.c(localQQAppInterface, str2, paramString, str1, paramInt, l, paramAbsStructMsg);
+    paramTeamWorkFileImportInfo.L = this.d.uniseq;
+    a(this.d, paramTeamWorkFileImportInfo);
+    paramString = this.d;
     paramString.issend = 1;
     paramString.extraflag = 32772;
     paramAbsStructMsg.addFlag(1);
     paramAbsStructMsg.addFlag(2);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, str2);
-    paramAbsStructMsg = (ITeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+    this.a.getMsgCache().a(this.d, 0);
+    this.a.getMessageFacade().a(this.d, str2);
+    paramAbsStructMsg = (ITeamWorkFileImportHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
     if (!TextUtils.isEmpty(paramAbsStructMsg.getUrlFromConvertedMap(paramTeamWorkFileImportInfo))) {
       paramAbsStructMsg.getUrlFromConvertedMap(paramTeamWorkFileImportInfo);
     }
@@ -280,13 +280,13 @@ public class TeamWorkSender
       paramAbsStructMsg.addFileImportJob(paramTeamWorkFileImportInfo);
       paramAbsStructMsg = new StringBuilder();
       paramAbsStructMsg.append("start import file:");
-      paramAbsStructMsg.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
+      paramAbsStructMsg.append(this.d.uniseq);
       QLog.i("TeamWorkSender", 1, paramAbsStructMsg.toString());
       if (QLog.isColorLevel())
       {
         paramAbsStructMsg = new StringBuilder();
         paramAbsStructMsg.append("start Import File: ");
-        paramAbsStructMsg.append(paramTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
+        paramAbsStructMsg.append(paramTeamWorkFileImportInfo.c);
         QLog.i("TeamWorkSender", 1, paramAbsStructMsg.toString());
       }
     }
@@ -294,9 +294,9 @@ public class TeamWorkSender
   
   public void a(FileManagerEntity paramFileManagerEntity, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = a(BaseActivity.sTopActivity, paramFileManagerEntity.fileName);
+    this.c = a(BaseActivity.sTopActivity, paramFileManagerEntity.fileName);
     paramFileManagerEntity = a(paramFileManagerEntity);
-    paramString1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    paramString1 = this.c;
     if (paramString1 != null)
     {
       a(paramString1, paramFileManagerEntity, paramString2, paramInt);
@@ -307,11 +307,11 @@ public class TeamWorkSender
   public void a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     paramString2 = FileManagerUtil.a(paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = a(BaseActivity.sTopActivity, paramString2);
+    this.c = a(BaseActivity.sTopActivity, paramString2);
     paramString1 = a(paramString1);
-    paramString1.jdField_a_of_type_Int = paramInt;
-    paramString1.jdField_a_of_type_JavaLangString = paramString3;
-    paramString2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    paramString1.a = paramInt;
+    paramString1.b = paramString3;
+    paramString2 = this.c;
     if (paramString2 != null)
     {
       a(paramString2, paramString1, paramString3, paramInt);
@@ -321,16 +321,16 @@ public class TeamWorkSender
   
   public boolean a(MessageForStructing paramMessageForStructing, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = paramMessageForStructing.structingMsg;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = paramMessageForStructing;
+    this.c = paramMessageForStructing.structingMsg;
+    this.d = paramMessageForStructing;
     paramSessionInfo = a(paramMessageForStructing);
     if (paramSessionInfo == null) {
       return false;
     }
-    if (paramSessionInfo.jdField_e_of_type_Long == 0L) {
-      paramSessionInfo.jdField_e_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.uniseq;
+    if (paramSessionInfo.L == 0L) {
+      paramSessionInfo.L = this.c.uniseq;
     }
-    ITeamWorkFileImportHandler localITeamWorkFileImportHandler = (ITeamWorkFileImportHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
+    ITeamWorkFileImportHandler localITeamWorkFileImportHandler = (ITeamWorkFileImportHandler)this.a.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_FILE_IMPORT_HANDLER);
     if (!TextUtils.isEmpty(localITeamWorkFileImportHandler.getUrlFromConvertedMap(paramSessionInfo))) {
       localITeamWorkFileImportHandler.getUrlFromConvertedMap(paramSessionInfo);
     }
@@ -346,7 +346,7 @@ public class TeamWorkSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkSender
  * JD-Core Version:    0.7.0.1
  */

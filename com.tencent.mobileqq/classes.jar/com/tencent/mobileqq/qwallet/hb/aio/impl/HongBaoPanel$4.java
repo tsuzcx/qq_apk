@@ -17,29 +17,29 @@ class HongBaoPanel$4
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("templateId = ");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       localStringBuilder.append(",action info.icon = ");
       localStringBuilder.append(paramRedPacketInfo.icon);
       localStringBuilder.append(",imageView.getTag() = ");
-      localStringBuilder.append(this.jdField_a_of_type_AndroidWidgetImageView.getTag());
+      localStringBuilder.append(this.b.getTag());
       localStringBuilder.append(",info.skinType = ");
       localStringBuilder.append(paramRedPacketInfo.skinType);
       QLog.d("HongBaoPanel", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_AndroidWidgetImageView.getTag()))
+    if (this.a.equals(this.b.getTag()))
     {
       if (paramRedPacketInfo.icon != null)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramRedPacketInfo.icon);
+        this.b.setImageBitmap(paramRedPacketInfo.icon);
         return;
       }
-      HongBaoPanel.a(this.jdField_a_of_type_ComTencentMobileqqQwalletHbAioImplHongBaoPanel).add(Integer.valueOf(this.jdField_a_of_type_Int));
+      HongBaoPanel.d(this.d).add(Integer.valueOf(this.c));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.hb.aio.impl.HongBaoPanel.4
  * JD-Core Version:    0.7.0.1
  */

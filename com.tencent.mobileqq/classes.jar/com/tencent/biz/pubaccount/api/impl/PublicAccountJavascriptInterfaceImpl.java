@@ -57,6 +57,8 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
+import com.tencent.mobileqq.vashealth.api.IQQHealthApi;
+import com.tencent.mobileqq.vashealth.api.IQQHealthService;
 import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
@@ -91,6 +93,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppActivity;
+import mqq.util.LogUtil;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -146,7 +149,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   private void deleteHash(String paramString)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.b();
     if (localObject == null) {
       return;
     }
@@ -164,7 +167,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   private void deleteHash(String paramString1, String paramString2)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.b();
     if (localObject == null) {
       return;
     }
@@ -182,7 +185,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   private void deleteHash(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.b();
     if (localObject == null) {
       return;
     }
@@ -542,7 +545,7 @@ public class PublicAccountJavascriptInterfaceImpl
         if ((localObject != null) && (((QQCustomDialog)localObject).isShowing())) {
           this.mDialog.dismiss();
         }
-        localObject = this.mRuntime.a();
+        localObject = this.mRuntime.b();
         String str = "";
         if (localObject != null) {
           localObject = ((AppInterface)localObject).getAccount();
@@ -550,7 +553,7 @@ public class PublicAccountJavascriptInterfaceImpl
           localObject = "";
         }
         if (this.mRuntime.a() != null) {
-          str = Util.b(this.mRuntime.a().getUrl());
+          str = Util.d(this.mRuntime.a().getUrl());
         }
         if (getLocationPermissionGrant((String)localObject, str))
         {
@@ -568,9 +571,9 @@ public class PublicAccountJavascriptInterfaceImpl
           return;
         }
         this.mDialog = DialogUtil.a(this.context, 0);
-        this.mDialog.setMessage(this.context.getString(2131720369, new Object[] { str }));
-        this.mDialog.setPositiveButton(2131720389, new PublicAccountJavascriptInterfaceImpl.7(this, paramBoolean, paramString1, paramString2, (String)localObject, str));
-        this.mDialog.setNegativeButton(this.context.getString(2131720400), new PublicAccountJavascriptInterfaceImpl.8(this, paramString2));
+        this.mDialog.setMessage(this.context.getString(2131918007, new Object[] { str }));
+        this.mDialog.setPositiveButton(2131918065, new PublicAccountJavascriptInterfaceImpl.7(this, paramBoolean, paramString1, paramString2, (String)localObject, str));
+        this.mDialog.setNegativeButton(this.context.getString(2131918076), new PublicAccountJavascriptInterfaceImpl.8(this, paramString2));
         this.mDialog.setOnCancelListener(new PublicAccountJavascriptInterfaceImpl.9(this, paramString2));
         this.mDialog.show();
         return;
@@ -625,7 +628,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   private String readHash(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject2 = this.mRuntime.a();
+    Object localObject2 = this.mRuntime.b();
     Object localObject1 = null;
     if (localObject2 == null) {
       return null;
@@ -655,7 +658,7 @@ public class PublicAccountJavascriptInterfaceImpl
       paramString1.putInt(((StringBuilder)localObject).toString(), paramInt).commit();
       return;
     }
-    QLog.e("PAjs", 1, new Object[] { "uin:", paramString1, " host:", paramString2 });
+    QLog.e("PAjs", 1, new Object[] { "uin:", LogUtil.wrapLogUin(paramString1), " host:", paramString2 });
   }
   
   private void writeDataInMainThread(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -683,13 +686,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   10: return
     //   11: aload_0
     //   12: getfield 181	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   15: invokevirtual 187	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   15: invokevirtual 186	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
     //   18: astore 8
     //   20: aload 8
     //   22: ifnonnull +4 -> 26
     //   25: return
     //   26: aload 8
-    //   28: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   28: invokevirtual 191	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
     //   31: ifnonnull +4 -> 35
     //   34: return
     //   35: new 256	org/json/JSONObject
@@ -698,8 +701,8 @@ public class PublicAccountJavascriptInterfaceImpl
     //   40: invokespecial 267	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   43: astore 10
     //   45: aload 10
-    //   47: ldc_w 723
-    //   50: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   47: ldc_w 728
+    //   50: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   53: astore 6
     //   55: aload 6
     //   57: astore 5
@@ -707,34 +710,34 @@ public class PublicAccountJavascriptInterfaceImpl
     //   61: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   64: ifne +25 -> 89
     //   67: aload 6
-    //   69: ldc_w 728
-    //   72: ldc_w 730
-    //   75: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   78: ldc_w 736
-    //   81: ldc_w 738
-    //   84: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   69: ldc_w 733
+    //   72: ldc_w 735
+    //   75: invokevirtual 739	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   78: ldc_w 741
+    //   81: ldc_w 743
+    //   84: invokevirtual 739	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   87: astore 5
     //   89: aload 4
-    //   91: ldc_w 723
+    //   91: ldc_w 728
     //   94: aload 5
     //   96: invokevirtual 297	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   99: pop
     //   100: getstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
-    //   103: ldc2_w 739
+    //   103: ldc2_w 744
     //   106: lcmp
     //   107: ifle +19 -> 126
-    //   110: new 742	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16
+    //   110: new 747	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16
     //   113: dup
     //   114: aload_0
     //   115: aload_3
     //   116: aload 4
     //   118: aload_2
-    //   119: invokespecial 745	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16:<init>	(Lcom/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
-    //   122: invokestatic 749	com/tencent/mobileqq/app/ThreadManager:executeOnNetWorkThread	(Ljava/lang/Runnable;)V
+    //   119: invokespecial 750	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl$16:<init>	(Lcom/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl;Ljava/lang/String;Lorg/json/JSONObject;Ljava/lang/String;)V
+    //   122: invokestatic 754	com/tencent/mobileqq/app/ThreadManager:executeOnNetWorkThread	(Ljava/lang/Runnable;)V
     //   125: return
     //   126: aload 10
-    //   128: ldc_w 751
-    //   131: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   128: ldc_w 756
+    //   131: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   134: astore 6
     //   136: aload 6
     //   138: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -744,7 +747,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   148: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   151: astore_1
     //   152: aload_1
-    //   153: ldc_w 753
+    //   153: ldc_w 758
     //   156: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload_1
@@ -753,13 +756,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   166: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: pop
     //   170: aload_1
-    //   171: ldc_w 755
+    //   171: ldc_w 760
     //   174: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   177: pop
     //   178: aload_0
     //   179: aload_3
     //   180: iconst_1
-    //   181: anewarray 208	java/lang/String
+    //   181: anewarray 207	java/lang/String
     //   184: dup
     //   185: iconst_0
     //   186: aload_1
@@ -768,8 +771,8 @@ public class PublicAccountJavascriptInterfaceImpl
     //   191: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   194: return
     //   195: aload 10
-    //   197: ldc_w 757
-    //   200: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   197: ldc_w 762
+    //   200: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   203: astore 7
     //   205: aload 7
     //   207: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -779,7 +782,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   217: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   220: astore_1
     //   221: aload_1
-    //   222: ldc_w 759
+    //   222: ldc_w 764
     //   225: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   228: pop
     //   229: aload_1
@@ -788,13 +791,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   235: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   238: pop
     //   239: aload_1
-    //   240: ldc_w 755
+    //   240: ldc_w 760
     //   243: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: pop
     //   247: aload_0
     //   248: aload_3
     //   249: iconst_1
-    //   250: anewarray 208	java/lang/String
+    //   250: anewarray 207	java/lang/String
     //   253: dup
     //   254: iconst_0
     //   255: aload_1
@@ -803,8 +806,8 @@ public class PublicAccountJavascriptInterfaceImpl
     //   260: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   263: return
     //   264: aload 10
-    //   266: ldc_w 761
-    //   269: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   266: ldc_w 766
+    //   269: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   272: astore 9
     //   274: aload 9
     //   276: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -814,7 +817,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   286: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   289: astore_1
     //   290: aload_1
-    //   291: ldc_w 763
+    //   291: ldc_w 768
     //   294: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: pop
     //   298: aload_1
@@ -823,13 +826,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   304: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: pop
     //   308: aload_1
-    //   309: ldc_w 755
+    //   309: ldc_w 760
     //   312: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   315: pop
     //   316: aload_0
     //   317: aload_3
     //   318: iconst_1
-    //   319: anewarray 208	java/lang/String
+    //   319: anewarray 207	java/lang/String
     //   322: dup
     //   323: iconst_0
     //   324: aload_1
@@ -838,11 +841,11 @@ public class PublicAccountJavascriptInterfaceImpl
     //   329: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   332: return
     //   333: aload_1
-    //   334: invokevirtual 766	java/net/URL:getHost	()Ljava/lang/String;
+    //   334: invokevirtual 771	java/net/URL:getHost	()Ljava/lang/String;
     //   337: astore_2
     //   338: aload 10
-    //   340: ldc_w 768
-    //   343: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   340: ldc_w 773
+    //   343: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   346: astore 5
     //   348: aload_2
     //   349: astore_1
@@ -851,7 +854,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   355: ifne +69 -> 424
     //   358: aload 5
     //   360: aload_2
-    //   361: invokestatic 770	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   361: invokestatic 775	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
     //   364: ifeq +9 -> 373
     //   367: aload 5
     //   369: astore_1
@@ -861,7 +864,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   377: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   380: astore_1
     //   381: aload_1
-    //   382: ldc_w 772
+    //   382: ldc_w 777
     //   385: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   388: pop
     //   389: aload_1
@@ -870,13 +873,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   395: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: pop
     //   399: aload_1
-    //   400: ldc_w 755
+    //   400: ldc_w 760
     //   403: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   406: pop
     //   407: aload_0
     //   408: aload_3
     //   409: iconst_1
-    //   410: anewarray 208	java/lang/String
+    //   410: anewarray 207	java/lang/String
     //   413: dup
     //   414: iconst_0
     //   415: aload_1
@@ -889,22 +892,22 @@ public class PublicAccountJavascriptInterfaceImpl
     //   426: aload_1
     //   427: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   430: ifeq +7 -> 437
-    //   433: ldc_w 774
+    //   433: ldc_w 779
     //   436: astore_2
     //   437: aload_0
     //   438: aload 9
-    //   440: invokespecial 776	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:hash	(Ljava/lang/String;)Ljava/lang/String;
+    //   440: invokespecial 781	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:hash	(Ljava/lang/String;)Ljava/lang/String;
     //   443: astore_1
     //   444: aload_0
     //   445: aload_2
     //   446: aload 6
     //   448: aload 7
     //   450: aload_1
-    //   451: invokespecial 780	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:writeHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   451: invokespecial 785	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:writeHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   454: aload_0
     //   455: aload 9
     //   457: aload_1
-    //   458: invokespecial 782	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:encrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   458: invokespecial 787	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:encrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   461: astore 9
     //   463: new 76	java/lang/StringBuilder
     //   466: dup
@@ -915,13 +918,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   475: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   478: pop
     //   479: aload_1
-    //   480: ldc_w 784
+    //   480: ldc_w 789
     //   483: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   486: pop
     //   487: aload_1
     //   488: aload 8
-    //   490: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   493: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   490: invokevirtual 191	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   493: invokestatic 792	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   496: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   499: pop
     //   500: new 447	java/io/File
@@ -934,62 +937,62 @@ public class PublicAccountJavascriptInterfaceImpl
     //   513: invokevirtual 451	java/io/File:exists	()Z
     //   516: ifne +11 -> 527
     //   519: aload_1
-    //   520: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   520: invokevirtual 795	java/io/File:mkdirs	()Z
     //   523: pop
     //   524: goto +20 -> 544
     //   527: aload_1
     //   528: invokevirtual 466	java/io/File:isFile	()Z
     //   531: ifeq +13 -> 544
     //   534: aload_1
-    //   535: invokevirtual 793	java/io/File:delete	()Z
+    //   535: invokevirtual 798	java/io/File:delete	()Z
     //   538: pop
     //   539: aload_1
-    //   540: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   540: invokevirtual 795	java/io/File:mkdirs	()Z
     //   543: pop
     //   544: new 447	java/io/File
     //   547: dup
     //   548: aload_1
     //   549: aload_2
-    //   550: invokespecial 796	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   550: invokespecial 801	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   553: astore_1
     //   554: aload_1
     //   555: invokevirtual 451	java/io/File:exists	()Z
     //   558: ifne +11 -> 569
     //   561: aload_1
-    //   562: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   562: invokevirtual 795	java/io/File:mkdirs	()Z
     //   565: pop
     //   566: goto +20 -> 586
     //   569: aload_1
     //   570: invokevirtual 466	java/io/File:isFile	()Z
     //   573: ifeq +13 -> 586
     //   576: aload_1
-    //   577: invokevirtual 793	java/io/File:delete	()Z
+    //   577: invokevirtual 798	java/io/File:delete	()Z
     //   580: pop
     //   581: aload_1
-    //   582: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   582: invokevirtual 795	java/io/File:mkdirs	()Z
     //   585: pop
     //   586: new 447	java/io/File
     //   589: dup
     //   590: aload_1
     //   591: aload 6
-    //   593: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   596: invokespecial 796	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   593: invokestatic 792	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   596: invokespecial 801	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   599: astore 8
     //   601: aload 8
     //   603: invokevirtual 451	java/io/File:exists	()Z
     //   606: ifne +12 -> 618
     //   609: aload 8
-    //   611: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   611: invokevirtual 795	java/io/File:mkdirs	()Z
     //   614: pop
     //   615: goto +23 -> 638
     //   618: aload 8
     //   620: invokevirtual 466	java/io/File:isFile	()Z
     //   623: ifeq +15 -> 638
     //   626: aload 8
-    //   628: invokevirtual 793	java/io/File:delete	()Z
+    //   628: invokevirtual 798	java/io/File:delete	()Z
     //   631: pop
     //   632: aload 8
-    //   634: invokevirtual 790	java/io/File:mkdirs	()Z
+    //   634: invokevirtual 795	java/io/File:mkdirs	()Z
     //   637: pop
     //   638: aconst_null
     //   639: astore_1
@@ -1005,8 +1008,8 @@ public class PublicAccountJavascriptInterfaceImpl
     //   654: dup
     //   655: aload 8
     //   657: aload 7
-    //   659: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
-    //   662: invokespecial 796	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   659: invokestatic 792	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   662: invokespecial 801	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   665: astore_2
     //   666: aload 6
     //   668: astore 5
@@ -1016,18 +1019,18 @@ public class PublicAccountJavascriptInterfaceImpl
     //   677: aload 6
     //   679: astore 5
     //   681: aload_2
-    //   682: invokevirtual 793	java/io/File:delete	()Z
+    //   682: invokevirtual 798	java/io/File:delete	()Z
     //   685: pop
     //   686: aload 6
     //   688: astore 5
-    //   690: new 798	java/io/FileWriter
+    //   690: new 803	java/io/FileWriter
     //   693: dup
     //   694: aload_2
-    //   695: invokespecial 801	java/io/FileWriter:<init>	(Ljava/io/File;)V
+    //   695: invokespecial 806	java/io/FileWriter:<init>	(Ljava/io/File;)V
     //   698: astore_1
     //   699: aload_1
     //   700: aload 9
-    //   702: invokevirtual 803	java/io/FileWriter:write	(Ljava/lang/String;)V
+    //   702: invokevirtual 808	java/io/FileWriter:write	(Ljava/lang/String;)V
     //   705: getstatic 109	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:sH5DataUsage	J
     //   708: aload_2
     //   709: invokevirtual 468	java/io/File:length	()J
@@ -1040,7 +1043,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   722: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   725: astore_2
     //   726: aload_2
-    //   727: ldc_w 805
+    //   727: ldc_w 810
     //   730: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   733: pop
     //   734: aload_2
@@ -1049,13 +1052,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   740: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   743: pop
     //   744: aload_2
-    //   745: ldc_w 755
+    //   745: ldc_w 760
     //   748: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   751: pop
     //   752: aload_0
     //   753: aload_3
     //   754: iconst_1
-    //   755: anewarray 208	java/lang/String
+    //   755: anewarray 207	java/lang/String
     //   758: dup
     //   759: iconst_0
     //   760: aload_2
@@ -1063,7 +1066,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   764: aastore
     //   765: invokevirtual 613	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   768: aload_1
-    //   769: invokevirtual 806	java/io/FileWriter:close	()V
+    //   769: invokevirtual 811	java/io/FileWriter:close	()V
     //   772: return
     //   773: astore_1
     //   774: aload_1
@@ -1100,7 +1103,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   825: aload_2
     //   826: astore_1
     //   827: aload 5
-    //   829: ldc_w 808
+    //   829: ldc_w 813
     //   832: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   835: pop
     //   836: aload_2
@@ -1113,7 +1116,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   849: aload_2
     //   850: astore_1
     //   851: aload 5
-    //   853: ldc_w 755
+    //   853: ldc_w 760
     //   856: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   859: pop
     //   860: aload_2
@@ -1121,7 +1124,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   862: aload_0
     //   863: aload_3
     //   864: iconst_1
-    //   865: anewarray 208	java/lang/String
+    //   865: anewarray 207	java/lang/String
     //   868: dup
     //   869: iconst_0
     //   870: aload 5
@@ -1131,12 +1134,12 @@ public class PublicAccountJavascriptInterfaceImpl
     //   879: aload_2
     //   880: ifnull +76 -> 956
     //   883: aload_2
-    //   884: invokevirtual 806	java/io/FileWriter:close	()V
+    //   884: invokevirtual 811	java/io/FileWriter:close	()V
     //   887: return
     //   888: aload_1
     //   889: ifnull +15 -> 904
     //   892: aload_1
-    //   893: invokevirtual 806	java/io/FileWriter:close	()V
+    //   893: invokevirtual 811	java/io/FileWriter:close	()V
     //   896: goto +8 -> 904
     //   899: astore_1
     //   900: aload_1
@@ -1148,7 +1151,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   910: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   913: astore_1
     //   914: aload_1
-    //   915: ldc_w 810
+    //   915: ldc_w 815
     //   918: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   921: pop
     //   922: aload_1
@@ -1157,13 +1160,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   928: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   931: pop
     //   932: aload_1
-    //   933: ldc_w 755
+    //   933: ldc_w 760
     //   936: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   939: pop
     //   940: aload_0
     //   941: aload_3
     //   942: iconst_1
-    //   943: anewarray 208	java/lang/String
+    //   943: anewarray 207	java/lang/String
     //   946: dup
     //   947: iconst_0
     //   948: aload_1
@@ -1243,7 +1246,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   private void writeHash(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.b();
     if (localObject == null) {
       return;
     }
@@ -1289,9 +1292,9 @@ public class PublicAccountJavascriptInterfaceImpl
             {
               JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
               IPublicAccountJavascriptInterface.ActionItem localActionItem = new IPublicAccountJavascriptInterface.ActionItem();
-              localActionItem.jdField_a_of_type_Int = localJSONObject.optInt("itemType");
-              localActionItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("itemName");
-              localActionItem.b = localJSONObject.optString("itemActionData");
+              localActionItem.a = localJSONObject.optInt("itemType");
+              localActionItem.b = localJSONObject.optString("itemName");
+              localActionItem.c = localJSONObject.optString("itemActionData");
               localArrayList.add(localActionItem);
               i += 1;
             }
@@ -1299,11 +1302,11 @@ public class PublicAccountJavascriptInterfaceImpl
           if (paramString != null)
           {
             if (j == 1) {
-              paramString.e = true;
+              paramString.y = true;
             } else {
-              paramString.f = true;
+              paramString.z = true;
             }
-            paramString.b = localArrayList;
+            paramString.A = localArrayList;
             return;
           }
         }
@@ -1339,7 +1342,7 @@ public class PublicAccountJavascriptInterfaceImpl
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(PUBACCOUNT_DATA_PATH);
         localStringBuilder.append("/");
-        localStringBuilder.append(HexUtil.String2HexString(paramAppInterface.getAccount()));
+        localStringBuilder.append(HexUtil.string2HexString(paramAppInterface.getAccount()));
         localStringBuilder.append("/");
         localStringBuilder.append(((CouponH5Data)localObject2).mHost);
         localObject2 = new File(localStringBuilder.toString());
@@ -1358,7 +1361,7 @@ public class PublicAccountJavascriptInterfaceImpl
     if (localCustomWebView == null) {
       return;
     }
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null) {
       return;
     }
@@ -1443,11 +1446,11 @@ public class PublicAccountJavascriptInterfaceImpl
         paramString1 = new StringBuilder();
         paramString1.append(PUBACCOUNT_DATA_PATH);
         paramString1.append("/");
-        paramString1.append(HexUtil.String2HexString(localAppInterface.getAccount()));
+        paramString1.append(HexUtil.string2HexString(localAppInterface.getAccount()));
         paramString1.append("/");
         paramString1.append(str1);
         paramString1.append("/");
-        paramString1.append(HexUtil.String2HexString(str2));
+        paramString1.append(HexUtil.string2HexString(str2));
         FileUtil.a(new File(paramString1.toString()));
       }
       else
@@ -1456,13 +1459,13 @@ public class PublicAccountJavascriptInterfaceImpl
         paramString1 = new StringBuilder();
         paramString1.append(PUBACCOUNT_DATA_PATH);
         paramString1.append("/");
-        paramString1.append(HexUtil.String2HexString(localAppInterface.getAccount()));
+        paramString1.append(HexUtil.string2HexString(localAppInterface.getAccount()));
         paramString1.append("/");
         paramString1.append(str1);
         paramString1.append("/");
-        paramString1.append(HexUtil.String2HexString(str2));
+        paramString1.append(HexUtil.string2HexString(str2));
         paramString1.append("/");
-        paramString1.append(HexUtil.String2HexString(str3));
+        paramString1.append(HexUtil.string2HexString(str3));
         FileUtil.a(new File(paramString1.toString()));
       }
       paramString1 = new StringBuilder();
@@ -1486,7 +1489,7 @@ public class PublicAccountJavascriptInterfaceImpl
     if (localCustomWebView == null) {
       return;
     }
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null) {
       return;
     }
@@ -1552,7 +1555,7 @@ public class PublicAccountJavascriptInterfaceImpl
     localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append(PUBACCOUNT_DATA_PATH);
     ((StringBuilder)localObject1).append("/");
-    ((StringBuilder)localObject1).append(HexUtil.String2HexString(localAppInterface.getAccount()));
+    ((StringBuilder)localObject1).append(HexUtil.string2HexString(localAppInterface.getAccount()));
     ((StringBuilder)localObject1).append("/");
     ((StringBuilder)localObject1).append(paramString1);
     FileUtil.a(new File(((StringBuilder)localObject1).toString()));
@@ -1631,7 +1634,7 @@ public class PublicAccountJavascriptInterfaceImpl
         ((SwiftBrowserScreenShotHandler)localObject).b("");
         return;
       }
-      ((SwiftBrowserScreenShotHandler)localObject).b();
+      ((SwiftBrowserScreenShotHandler)localObject).c();
     }
   }
   
@@ -1783,7 +1786,7 @@ public class PublicAccountJavascriptInterfaceImpl
         {
           localObject1 = new AllInOne(str1, 120);
           ((AllInOne)localObject1).troopCode = ((String)localObject2);
-          paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.a(), (AllInOne)localObject1);
+          paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.d(), (AllInOne)localObject1);
           paramString.putExtra("AllInOne", (Parcelable)localObject1);
           localObject1 = new Bundle();
           ((Bundle)localObject1).putString("troop_uin", (String)localObject2);
@@ -1800,7 +1803,7 @@ public class PublicAccountJavascriptInterfaceImpl
           if (TextUtils.isEmpty((CharSequence)localObject2)) {
             break label799;
           }
-          paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.a(), null);
+          paramString = ((IProfileCardApi)QRoute.api(IProfileCardApi.class)).getProfileCardIntentOnly(this.mRuntime.d(), null);
           paramString.putExtra("troopUin", (String)localObject2);
           paramString.putExtra("memberUin", str1);
         }
@@ -1905,7 +1908,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void getJson(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    callJs("clientCallback", new String[] { Util.a("{'r': -102, 'msg': 'no such method'}"), Util.a(paramString4) });
+    callJs("clientCallback", new String[] { Util.c("{'r': -102, 'msg': 'no such method'}"), Util.c(paramString4) });
   }
   
   public void getLocation(String paramString)
@@ -1952,7 +1955,7 @@ public class PublicAccountJavascriptInterfaceImpl
         l = 0L;
         bool = false;
       }
-      Object localObject2 = this.mRuntime.a();
+      Object localObject2 = this.mRuntime.b();
       if (localObject2 != null) {
         localObject1 = ((AppInterface)localObject2).getAccount();
       } else {
@@ -1961,8 +1964,8 @@ public class PublicAccountJavascriptInterfaceImpl
       if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (localObject2 != null))
       {
         localObject1 = ((AppInterface)localObject2).getApp().getSharedPreferences((String)localObject1, 0);
-        double d1 = ((SharedPreferences)localObject1).getFloat(SearchProtocol.c, 0.0F);
-        double d2 = ((SharedPreferences)localObject1).getFloat(SearchProtocol.b, 0.0F);
+        double d1 = ((SharedPreferences)localObject1).getFloat(SearchProtocol.d, 0.0F);
+        double d2 = ((SharedPreferences)localObject1).getFloat(SearchProtocol.c, 0.0F);
         if (QLog.isColorLevel()) {
           QLog.i("EcShopAssistantActivity", 2, String.format("'longitude:%1$1.15f,latitude:%2$1.15f'", new Object[] { Double.valueOf(d1), Double.valueOf(d2) }));
         }
@@ -1998,9 +2001,9 @@ public class PublicAccountJavascriptInterfaceImpl
             return;
           }
           this.mDialog = DialogUtil.a(this.context, 0);
-          this.mDialog.setMessage(this.context.getString(2131720369, new Object[] { localObject2 }));
-          this.mDialog.setPositiveButton(2131720389, new PublicAccountJavascriptInterfaceImpl.3(this, paramString, l, (String)localObject1, (String)localObject2));
-          this.mDialog.setNegativeButton(this.context.getString(2131720400), new PublicAccountJavascriptInterfaceImpl.4(this, paramString));
+          this.mDialog.setMessage(this.context.getString(2131918007, new Object[] { localObject2 }));
+          this.mDialog.setPositiveButton(2131918065, new PublicAccountJavascriptInterfaceImpl.3(this, paramString, l, (String)localObject1, (String)localObject2));
+          this.mDialog.setNegativeButton(this.context.getString(2131918076), new PublicAccountJavascriptInterfaceImpl.4(this, paramString));
           this.mDialog.setOnCancelListener(new PublicAccountJavascriptInterfaceImpl.5(this, paramString));
           this.mDialog.show();
           return;
@@ -2038,7 +2041,7 @@ public class PublicAccountJavascriptInterfaceImpl
       }
       return bool1;
     }
-    QLog.e("PAjs", 1, new Object[] { "uin:", paramString1, " host:", paramString2 });
+    QLog.e("PAjs", 1, new Object[] { "uin:", LogUtil.wrapLogUin(paramString1), " host:", paramString2 });
     return false;
   }
   
@@ -2170,21 +2173,21 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void hideLoading()
   {
-    Object localObject = this.mRuntime.a(this.mRuntime.a());
+    Object localObject = this.mRuntime.a(this.mRuntime.d());
     if ((localObject != null) && ((localObject instanceof WebUiUtils.WebProgressInterface)))
     {
       ((WebUiUtils.WebProgressInterface)localObject).a();
       return;
     }
     localObject = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
-    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).a != null)) {
-      ((SwiftBrowserUIStyleHandler)localObject).a.setVisibility(8);
+    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).B != null)) {
+      ((SwiftBrowserUIStyleHandler)localObject).B.setVisibility(8);
     }
   }
   
   protected String httpRequest(String paramString1, String paramString2)
   {
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null) {
       return "";
     }
@@ -2297,7 +2300,7 @@ public class PublicAccountJavascriptInterfaceImpl
       callJs(paramString2, new String[] { paramString1.toString() });
       return;
     }
-    Object localObject = this.mRuntime.a();
+    Object localObject = this.mRuntime.b();
     if (localObject == null) {
       return;
     }
@@ -2368,7 +2371,7 @@ public class PublicAccountJavascriptInterfaceImpl
             break label278;
           }
           localObject = ((JSONObject)localObject).getString("callback");
-          WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+          WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.d());
           if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebShareInterface))) {
             ((WebUiUtils.WebShareInterface)localWebUiBaseInterface).shareStructMsgForH5(str3, str4, str5, str6, paramString, str1, str2, (String)localObject);
           }
@@ -2399,16 +2402,16 @@ public class PublicAccountJavascriptInterfaceImpl
   protected void onCreate()
   {
     super.onCreate();
-    this.context = this.mRuntime.a();
+    this.context = this.mRuntime.d();
     this.taskList = new ArrayList();
     if (sH5DataUsage == 0L) {
       ThreadManager.executeOnNetWorkThread(new PublicAccountJavascriptInterfaceImpl.1(this));
     }
-    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+    WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.d());
     if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))) {
       this.uiMethodInterface = ((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface);
     }
-    localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+    localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.d());
     if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebviewReportSpeedInterface))) {
       this.reportSpeedInterface = ((WebUiUtils.WebviewReportSpeedInterface)localWebUiBaseInterface);
     }
@@ -2494,7 +2497,7 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void openEmoji()
   {
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null) {
       return;
     }
@@ -2554,7 +2557,7 @@ public class PublicAccountJavascriptInterfaceImpl
     // Byte code:
     //   0: aload_0
     //   1: getfield 181	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   4: invokevirtual 187	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   4: invokevirtual 186	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:b	()Lcom/tencent/common/app/AppInterface;
     //   7: astore 9
     //   9: aload 9
     //   11: ifnonnull +4 -> 15
@@ -2565,8 +2568,8 @@ public class PublicAccountJavascriptInterfaceImpl
     //   20: invokespecial 267	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   23: astore 10
     //   25: aload 10
-    //   27: ldc_w 723
-    //   30: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   27: ldc_w 728
+    //   30: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   33: astore 5
     //   35: aload 5
     //   37: astore_1
@@ -2574,21 +2577,21 @@ public class PublicAccountJavascriptInterfaceImpl
     //   40: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   43: ifne +24 -> 67
     //   46: aload 5
-    //   48: ldc_w 728
-    //   51: ldc_w 730
-    //   54: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   57: ldc_w 736
-    //   60: ldc_w 738
-    //   63: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   48: ldc_w 733
+    //   51: ldc_w 735
+    //   54: invokevirtual 739	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   57: ldc_w 741
+    //   60: ldc_w 743
+    //   63: invokevirtual 739	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   66: astore_1
     //   67: aload_3
-    //   68: ldc_w 723
+    //   68: ldc_w 728
     //   71: aload_1
     //   72: invokevirtual 297	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   75: pop
     //   76: aload 10
-    //   78: ldc_w 751
-    //   81: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   78: ldc_w 756
+    //   81: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   84: astore 11
     //   86: aload 11
     //   88: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -2598,7 +2601,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   98: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   101: astore_1
     //   102: aload_1
-    //   103: ldc_w 753
+    //   103: ldc_w 758
     //   106: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   109: pop
     //   110: aload_1
@@ -2607,13 +2610,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   115: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: pop
     //   119: aload_1
-    //   120: ldc_w 755
+    //   120: ldc_w 760
     //   123: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: pop
     //   127: aload_0
     //   128: aload_2
     //   129: iconst_1
-    //   130: anewarray 208	java/lang/String
+    //   130: anewarray 207	java/lang/String
     //   133: dup
     //   134: iconst_0
     //   135: aload_1
@@ -2631,14 +2634,14 @@ public class PublicAccountJavascriptInterfaceImpl
     //   156: dup
     //   157: aload 4
     //   159: invokespecial 387	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   162: invokevirtual 766	java/net/URL:getHost	()Ljava/lang/String;
+    //   162: invokevirtual 771	java/net/URL:getHost	()Ljava/lang/String;
     //   165: astore 4
     //   167: goto +6 -> 173
     //   170: aconst_null
     //   171: astore 4
     //   173: aload 10
-    //   175: ldc_w 768
-    //   178: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   175: ldc_w 773
+    //   178: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   181: astore 8
     //   183: aload 4
     //   185: astore_1
@@ -2647,7 +2650,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   191: ifne +69 -> 260
     //   194: aload 8
     //   196: aload 4
-    //   198: invokestatic 770	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   198: invokestatic 775	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:isParentDomain	(Ljava/lang/String;Ljava/lang/String;)Z
     //   201: ifeq +9 -> 210
     //   204: aload 8
     //   206: astore_1
@@ -2657,7 +2660,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   214: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   217: astore_1
     //   218: aload_1
-    //   219: ldc_w 772
+    //   219: ldc_w 777
     //   222: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: pop
     //   226: aload_1
@@ -2666,13 +2669,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   231: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: pop
     //   235: aload_1
-    //   236: ldc_w 755
+    //   236: ldc_w 760
     //   239: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   242: pop
     //   243: aload_0
     //   244: aload_2
     //   245: iconst_1
-    //   246: anewarray 208	java/lang/String
+    //   246: anewarray 207	java/lang/String
     //   249: dup
     //   250: iconst_0
     //   251: aload_1
@@ -2685,11 +2688,11 @@ public class PublicAccountJavascriptInterfaceImpl
     //   263: aload_1
     //   264: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   267: ifeq +8 -> 275
-    //   270: ldc_w 774
+    //   270: ldc_w 779
     //   273: astore 4
     //   275: aload 10
-    //   277: ldc_w 757
-    //   280: invokevirtual 726	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   277: ldc_w 762
+    //   280: invokevirtual 731	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   283: astore_1
     //   284: aload_1
     //   285: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -2699,7 +2702,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   295: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   298: astore_1
     //   299: aload_1
-    //   300: ldc_w 759
+    //   300: ldc_w 764
     //   303: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   306: pop
     //   307: aload_1
@@ -2708,13 +2711,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   312: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   315: pop
     //   316: aload_1
-    //   317: ldc_w 755
+    //   317: ldc_w 760
     //   320: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   323: pop
     //   324: aload_0
     //   325: aload_2
     //   326: iconst_1
-    //   327: anewarray 208	java/lang/String
+    //   327: anewarray 207	java/lang/String
     //   330: dup
     //   331: iconst_0
     //   332: aload_1
@@ -2726,7 +2729,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   342: aload 4
     //   344: aload 11
     //   346: aload_1
-    //   347: invokespecial 1557	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:readHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   347: invokespecial 1565	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:readHash	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   350: astore 8
     //   352: aload 8
     //   354: invokestatic 669	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -2736,7 +2739,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   364: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   367: astore_1
     //   368: aload_1
-    //   369: ldc_w 1559
+    //   369: ldc_w 1567
     //   372: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   375: pop
     //   376: aload_1
@@ -2745,13 +2748,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   381: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: pop
     //   385: aload_1
-    //   386: ldc_w 755
+    //   386: ldc_w 760
     //   389: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: pop
     //   393: aload_0
     //   394: aload_2
     //   395: iconst_1
-    //   396: anewarray 208	java/lang/String
+    //   396: anewarray 207	java/lang/String
     //   399: dup
     //   400: iconst_0
     //   401: aload_1
@@ -2768,17 +2771,17 @@ public class PublicAccountJavascriptInterfaceImpl
     //   424: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   427: pop
     //   428: aload 10
-    //   430: ldc_w 784
+    //   430: ldc_w 789
     //   433: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   436: pop
     //   437: aload 10
     //   439: aload 9
-    //   441: invokevirtual 192	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   444: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   441: invokevirtual 191	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
+    //   444: invokestatic 792	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   447: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   450: pop
     //   451: aload 10
-    //   453: ldc_w 784
+    //   453: ldc_w 789
     //   456: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   459: pop
     //   460: aload 10
@@ -2786,21 +2789,21 @@ public class PublicAccountJavascriptInterfaceImpl
     //   464: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   467: pop
     //   468: aload 10
-    //   470: ldc_w 784
+    //   470: ldc_w 789
     //   473: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   476: pop
     //   477: aload 10
     //   479: aload 11
-    //   481: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   481: invokestatic 792	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   484: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   487: pop
     //   488: aload 10
-    //   490: ldc_w 784
+    //   490: ldc_w 789
     //   493: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   496: pop
     //   497: aload 10
     //   499: aload_1
-    //   500: invokestatic 787	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
+    //   500: invokestatic 792	com/tencent/mobileqq/utils/HexUtil:string2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   503: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   506: pop
     //   507: new 447	java/io/File
@@ -2817,7 +2820,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   533: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   536: astore_1
     //   537: aload_1
-    //   538: ldc_w 1559
+    //   538: ldc_w 1567
     //   541: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   544: pop
     //   545: aload_1
@@ -2826,13 +2829,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   550: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   553: pop
     //   554: aload_1
-    //   555: ldc_w 755
+    //   555: ldc_w 760
     //   558: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   561: pop
     //   562: aload_0
     //   563: aload_2
     //   564: iconst_1
-    //   565: anewarray 208	java/lang/String
+    //   565: anewarray 207	java/lang/String
     //   568: dup
     //   569: iconst_0
     //   570: aload_1
@@ -2846,10 +2849,10 @@ public class PublicAccountJavascriptInterfaceImpl
     //   584: astore 4
     //   586: aload_0
     //   587: monitorenter
-    //   588: new 1561	java/io/FileInputStream
+    //   588: new 1569	java/io/FileInputStream
     //   591: dup
     //   592: aload 9
-    //   594: invokespecial 1562	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   594: invokespecial 1570	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   597: astore_1
     //   598: aload 9
     //   600: invokevirtual 468	java/io/File:length	()J
@@ -2861,12 +2864,12 @@ public class PublicAccountJavascriptInterfaceImpl
     //   611: invokevirtual 410	java/io/InputStream:read	([B)I
     //   614: pop
     //   615: aload_0
-    //   616: new 208	java/lang/String
+    //   616: new 207	java/lang/String
     //   619: dup
     //   620: aload 4
     //   622: invokespecial 265	java/lang/String:<init>	([B)V
     //   625: aload 8
-    //   627: invokespecial 1564	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:decrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   627: invokespecial 1572	com/tencent/biz/pubaccount/api/impl/PublicAccountJavascriptInterfaceImpl:decrypt	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   630: astore 4
     //   632: aload 4
     //   634: ifnonnull +70 -> 704
@@ -2875,7 +2878,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   641: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   644: astore 4
     //   646: aload 4
-    //   648: ldc_w 1559
+    //   648: ldc_w 1567
     //   651: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   654: pop
     //   655: aload 4
@@ -2884,13 +2887,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   661: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   664: pop
     //   665: aload 4
-    //   667: ldc_w 755
+    //   667: ldc_w 760
     //   670: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   673: pop
     //   674: aload_0
     //   675: aload_2
     //   676: iconst_1
-    //   677: anewarray 208	java/lang/String
+    //   677: anewarray 207	java/lang/String
     //   680: dup
     //   681: iconst_0
     //   682: aload 4
@@ -2907,14 +2910,14 @@ public class PublicAccountJavascriptInterfaceImpl
     //   700: invokevirtual 435	java/io/IOException:printStackTrace	()V
     //   703: return
     //   704: aload_3
-    //   705: ldc_w 761
+    //   705: ldc_w 766
     //   708: aload 4
-    //   710: ldc_w 728
-    //   713: ldc_w 730
-    //   716: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-    //   719: ldc_w 736
-    //   722: ldc_w 738
-    //   725: invokevirtual 734	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   710: ldc_w 733
+    //   713: ldc_w 735
+    //   716: invokevirtual 739	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   719: ldc_w 741
+    //   722: ldc_w 743
+    //   725: invokevirtual 739	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   728: invokevirtual 297	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   731: pop
     //   732: aload_0
@@ -2924,7 +2927,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   738: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   741: astore 4
     //   743: aload 4
-    //   745: ldc_w 805
+    //   745: ldc_w 810
     //   748: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   751: pop
     //   752: aload 4
@@ -2933,13 +2936,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   758: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   761: pop
     //   762: aload 4
-    //   764: ldc_w 755
+    //   764: ldc_w 760
     //   767: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   770: pop
     //   771: aload_0
     //   772: aload_2
     //   773: iconst_1
-    //   774: anewarray 208	java/lang/String
+    //   774: anewarray 207	java/lang/String
     //   777: dup
     //   778: iconst_0
     //   779: aload 4
@@ -2984,7 +2987,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   853: aload 4
     //   855: astore_1
     //   856: aload 5
-    //   858: ldc_w 808
+    //   858: ldc_w 813
     //   861: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   864: pop
     //   865: aload 4
@@ -2997,7 +3000,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   878: aload 4
     //   880: astore_1
     //   881: aload 5
-    //   883: ldc_w 755
+    //   883: ldc_w 760
     //   886: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   889: pop
     //   890: aload 4
@@ -3005,7 +3008,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   893: aload_0
     //   894: aload_2
     //   895: iconst_1
-    //   896: anewarray 208	java/lang/String
+    //   896: anewarray 207	java/lang/String
     //   899: dup
     //   900: iconst_0
     //   901: aload 5
@@ -3032,7 +3035,7 @@ public class PublicAccountJavascriptInterfaceImpl
     //   944: invokespecial 79	java/lang/StringBuilder:<init>	()V
     //   947: astore_1
     //   948: aload_1
-    //   949: ldc_w 810
+    //   949: ldc_w 815
     //   952: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   955: pop
     //   956: aload_1
@@ -3041,13 +3044,13 @@ public class PublicAccountJavascriptInterfaceImpl
     //   961: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   964: pop
     //   965: aload_1
-    //   966: ldc_w 755
+    //   966: ldc_w 760
     //   969: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   972: pop
     //   973: aload_0
     //   974: aload_2
     //   975: iconst_1
-    //   976: anewarray 208	java/lang/String
+    //   976: anewarray 207	java/lang/String
     //   979: dup
     //   980: iconst_0
     //   981: aload_1
@@ -3148,7 +3151,7 @@ public class PublicAccountJavascriptInterfaceImpl
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    WebViewFragment localWebViewFragment = (WebViewFragment)this.mRuntime.a();
+    WebViewFragment localWebViewFragment = (WebViewFragment)this.mRuntime.f();
     if (localWebViewFragment != null) {
       try
       {
@@ -3244,10 +3247,10 @@ public class PublicAccountJavascriptInterfaceImpl
     paramString3.setMessage(paramString2);
     paramString1 = new PublicAccountJavascriptInterfaceImpl.11(this, paramString6, paramString5);
     if (bool2) {
-      paramString3.setNegativeButton(HardCodeUtil.a(2131708743), paramString1);
+      paramString3.setNegativeButton(HardCodeUtil.a(2131898212), paramString1);
     }
     if (bool1) {
-      paramString3.setPositiveButton(HardCodeUtil.a(2131708779), paramString1);
+      paramString3.setPositiveButton(HardCodeUtil.a(2131899883), paramString1);
     }
     try
     {
@@ -3259,21 +3262,21 @@ public class PublicAccountJavascriptInterfaceImpl
   
   public void showLoading()
   {
-    Object localObject = this.mRuntime.a(this.mRuntime.a());
+    Object localObject = this.mRuntime.a(this.mRuntime.d());
     if ((localObject != null) && ((localObject instanceof WebUiUtils.WebProgressInterface)))
     {
       ((WebUiUtils.WebProgressInterface)localObject).b();
       return;
     }
     localObject = (SwiftBrowserUIStyleHandler)super.getBrowserComponent(2);
-    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).a != null)) {
-      ((SwiftBrowserUIStyleHandler)localObject).a.setVisibility(0);
+    if ((localObject != null) && (((SwiftBrowserUIStyleHandler)localObject).B != null)) {
+      ((SwiftBrowserUIStyleHandler)localObject).B.setVisibility(0);
     }
   }
   
   public void showProfile(String paramString)
   {
-    if (excuteShowProfile(this.mRuntime.a(), this.context, paramString) == 1)
+    if (excuteShowProfile(this.mRuntime.b(), this.context, paramString) == 1)
     {
       paramString = new IntentFilter();
       paramString.addAction("start_recomend_page");
@@ -3345,7 +3348,7 @@ public class PublicAccountJavascriptInterfaceImpl
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null) {
       return;
     }
@@ -3373,6 +3376,14 @@ public class PublicAccountJavascriptInterfaceImpl
     Activity localActivity1 = localActivity2;
     if ((localActivity2 instanceof BasePluginActivity)) {
       localActivity1 = ((BasePluginActivity)localActivity2).getOutActivity();
+    }
+    if (((IQQHealthApi)QRoute.api(IQQHealthApi.class)).isHealthUin(paramString1))
+    {
+      paramString1 = (IQQHealthService)localAppInterface.getRuntimeService(IQQHealthService.class, "");
+      if (paramString1 != null) {
+        paramString1.redirectAIOToMainPageInPA(this.context);
+      }
+      return;
     }
     if ((localObject != null) && ("true".equals(paramString2)))
     {
@@ -3409,7 +3420,7 @@ public class PublicAccountJavascriptInterfaceImpl
     if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    AppInterface localAppInterface = this.mRuntime.a();
+    AppInterface localAppInterface = this.mRuntime.b();
     if (localAppInterface == null) {
       return;
     }
@@ -3490,7 +3501,7 @@ public class PublicAccountJavascriptInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountJavascriptInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

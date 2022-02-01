@@ -9,22 +9,14 @@ import com.tencent.mobileqq.troop.data.MessageNavInfo;
 public abstract class AbstructRecentUserMsg
   implements IRecentUserMsg
 {
-  public int a;
-  public long a;
-  public MessageNavInfo a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
+  public long a = -1L;
+  public long b = -1L;
   public String c;
-  
-  public AbstructRecentUserMsg()
-  {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo();
-  }
+  public String d;
+  public int e;
+  public int f = -35072;
+  public String g;
+  public MessageNavInfo h = new MessageNavInfo();
   
   @Nullable
   public abstract Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface);
@@ -36,7 +28,7 @@ public abstract class AbstructRecentUserMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.AbstructRecentUserMsg
  * JD-Core Version:    0.7.0.1
  */

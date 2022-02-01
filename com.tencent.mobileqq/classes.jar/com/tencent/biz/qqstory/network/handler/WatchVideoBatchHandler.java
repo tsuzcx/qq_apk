@@ -22,19 +22,19 @@ public class WatchVideoBatchHandler
   extends INetPageLoader
   implements CmdTaskManger.CommandCallback<WatchVideoBatchRequest, WatchVideoBatchResponse>
 {
-  public static int a = 20;
-  private long c;
+  public static int g = 20;
+  private long h;
   
   public WatchVideoBatchRequest a(int paramInt, ArrayList<ReportWatchVideoManager.InnerVideoItem> paramArrayList)
   {
-    if (paramArrayList.size() > a) {
+    if (paramArrayList.size() > g) {
       SLog.d("Q.qqstory:WatchVideoBatchHandler", "too much data");
     }
     WatchVideoBatchRequest localWatchVideoBatchRequest = new WatchVideoBatchRequest();
-    localWatchVideoBatchRequest.c = paramInt;
-    localWatchVideoBatchRequest.a = paramArrayList;
+    localWatchVideoBatchRequest.f = paramInt;
+    localWatchVideoBatchRequest.g = paramArrayList;
     CmdTaskManger.a().a(localWatchVideoBatchRequest, this);
-    this.c = System.currentTimeMillis();
+    this.h = System.currentTimeMillis();
     return localWatchVideoBatchRequest;
   }
   
@@ -44,8 +44,8 @@ public class WatchVideoBatchHandler
     if ((paramWatchVideoBatchResponse != null) && (!paramErrorMessage.isFail()))
     {
       localReportWatchVideoManager.a(paramWatchVideoBatchResponse.a);
-      SLog.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramWatchVideoBatchResponse.a.size()), Integer.valueOf(paramWatchVideoBatchRequest.a.size()) });
-      paramErrorMessage = paramWatchVideoBatchRequest.a.iterator();
+      SLog.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. succList.size=%d. requestList.size=%d", new Object[] { Integer.valueOf(paramWatchVideoBatchResponse.a.size()), Integer.valueOf(paramWatchVideoBatchRequest.g.size()) });
+      paramErrorMessage = paramWatchVideoBatchRequest.g.iterator();
       while (paramErrorMessage.hasNext())
       {
         ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = (ReportWatchVideoManager.InnerVideoItem)paramErrorMessage.next();
@@ -53,14 +53,14 @@ public class WatchVideoBatchHandler
           localReportWatchVideoManager.a(localInnerVideoItem, false);
         }
       }
-      if (paramWatchVideoBatchRequest.a.size() > paramWatchVideoBatchResponse.a.size()) {
-        StoryReportor.b("home_page", "batch_watch_video", 0, paramWatchVideoBatchRequest.a.size() - paramWatchVideoBatchResponse.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.c), StoryReportor.a(BaseApplication.getContext()) });
+      if (paramWatchVideoBatchRequest.g.size() > paramWatchVideoBatchResponse.a.size()) {
+        StoryReportor.b("home_page", "batch_watch_video", 0, paramWatchVideoBatchRequest.g.size() - paramWatchVideoBatchResponse.a.size(), new String[] { "", String.valueOf(System.currentTimeMillis() - this.h), StoryReportor.a(BaseApplication.getContext()) });
       }
     }
     else
     {
       SLog.d("Q.qqstory:WatchVideoBatchHandler", "WatchVideoBatchHandler onCmdRespond. errorInfo=%s", new Object[] { paramErrorMessage.toString() });
-      paramWatchVideoBatchResponse = paramWatchVideoBatchRequest.a.iterator();
+      paramWatchVideoBatchResponse = paramWatchVideoBatchRequest.g.iterator();
       while (paramWatchVideoBatchResponse.hasNext()) {
         localReportWatchVideoManager.a((ReportWatchVideoManager.InnerVideoItem)paramWatchVideoBatchResponse.next(), false);
       }
@@ -70,7 +70,7 @@ public class WatchVideoBatchHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.WatchVideoBatchHandler
  * JD-Core Version:    0.7.0.1
  */

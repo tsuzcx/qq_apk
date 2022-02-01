@@ -11,23 +11,23 @@ class ADVideoItemDelegate$1
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if ((ADVideoItemDelegate.a(this.a) != null) && (ADVideoItemDelegate.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityAbsVideoFeedsGestureLayout != null)) {
-      this.a.a.a(ADVideoItemDelegate.a(this.a).jdField_a_of_type_ComTencentMobileqqKandianBizVideoPlayfeedsEntityAbsVideoFeedsGestureLayout, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    if ((ADVideoItemDelegate.a(this.a) != null) && (ADVideoItemDelegate.a(this.a).ac != null)) {
+      this.a.c.a(ADVideoItemDelegate.a(this.a).ac, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
     return true;
   }
   
   public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    if ((ADVideoItemDelegate.a(this.a) != null) && (ADVideoItemDelegate.a(this.a).jdField_a_of_type_AndroidViewView != null)) {
-      this.a.a.onClick(ADVideoItemDelegate.a(this.a).jdField_a_of_type_AndroidViewView);
+    if ((ADVideoItemDelegate.a(this.a) != null) && (ADVideoItemDelegate.a(this.a).h != null)) {
+      this.a.c.onClick(ADVideoItemDelegate.a(this.a).h);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.videofeeds.ADVideoItemDelegate.1
  * JD-Core Version:    0.7.0.1
  */

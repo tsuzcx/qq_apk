@@ -23,8 +23,8 @@ public final class CoverSelectPage$mAdapter$1
     Intrinsics.checkParameterIsNotNull(paramViewGroup, "container");
     if (paramInt == 0)
     {
-      paramViewGroup.addView((View)CoverSelectPage.a(this.a));
-      return (LinearLayout)CoverSelectPage.a(this.a);
+      paramViewGroup.addView((View)CoverSelectPage.b(this.a));
+      return (LinearLayout)CoverSelectPage.b(this.a);
     }
     paramViewGroup.addView((View)CoverSelectPage.a(this.a));
     return (LinearLayout)CoverSelectPage.a(this.a);
@@ -39,7 +39,7 @@ public final class CoverSelectPage$mAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.coverselect.CoverSelectPage.mAdapter.1
  * JD-Core Version:    0.7.0.1
  */

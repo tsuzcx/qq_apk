@@ -16,7 +16,6 @@ import com.tencent.biz.qqstory.network.pb.qqstory_pgc.RspGetSearchFeedList;
 import com.tencent.biz.qqstory.network.pb.qqstory_pgc.RspReport;
 import com.tencent.biz.qqstory.network.pb.qqstory_pgc.RspSubscription;
 import com.tencent.biz.qqstory.network.pb.qqstory_pgc.UserInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetConfig;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetForbiddenStates;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
 import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSetConfig;
@@ -68,7 +67,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,7 +78,7 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xda.SubMsgType0xda.MsgBody;
 public class QQStoryHandler
   extends BusinessHandler
 {
-  public static final String a;
+  public static final String a = StoryApi.a("StorySvc.video_config_get");
   public static final String b = StoryApi.a("StorySvc.video_config_set");
   public static final String c = StoryApi.a("StorySvc.video_get_user_mask_list");
   public static final String d = StoryApi.a("StorySvc.video_set_user_mask");
@@ -94,17 +92,12 @@ public class QQStoryHandler
   public static final String l = StoryApi.a("StorySvc.video_aio_sync_publish");
   public static final String m = StoryApi.a("StorySvc.get_video_reader_config");
   public static final String n = StoryApi.a("StorySvc.msgtab_node_feedback");
-  private QQAppInterface a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.video_config_get");
-  }
+  private QQAppInterface o;
   
   public QQStoryHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.o = paramQQAppInterface;
   }
   
   public static boolean a(Object paramObject)
@@ -190,7 +183,7 @@ public class QQStoryHandler
             localStringBuilder.append(localUserInfo.uid.get());
             localStringBuilder.append("");
             localQQStoryUserInfo.uin = localStringBuilder.toString();
-            localQQStoryUserInfo.setNick(ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQStoryUserInfo.uin));
+            localQQStoryUserInfo.setNick(ContactUtils.g(this.o, localQQStoryUserInfo.uin));
             if (bool2) {
               localQQStoryUserInfo.isAllowed = 1;
             } else {
@@ -225,7 +218,7 @@ public class QQStoryHandler
     QQStoryManager localQQStoryManager;
     if (paramObject != null)
     {
-      localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
+      localQQStoryManager = (QQStoryManager)this.o.getManager(QQManagerFactory.QQSTORY_MANAGER);
       paramToServiceMsg = new qqstory_service.RspGetForbiddenStates();
     }
     try
@@ -260,15 +253,15 @@ public class QQStoryHandler
           {
             paramToServiceMsg = new QQStoryUserInfo();
             paramToServiceMsg.uin = str;
-            paramToServiceMsg.setNick(ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str));
-            localQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramToServiceMsg);
+            paramToServiceMsg.setNick(ContactUtils.g(this.o, str));
+            localQQStoryManager.A.put(str, paramToServiceMsg);
           }
           paramToServiceMsg.isAllowed = i2;
           paramToServiceMsg.isInterested = i1;
           if (paramToServiceMsg.getStatus() == 1000) {
-            localQQStoryManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(paramToServiceMsg);
+            localQQStoryManager.i.persist(paramToServiceMsg);
           } else {
-            localQQStoryManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramToServiceMsg);
+            localQQStoryManager.i.update(paramToServiceMsg);
           }
           notifyUI(1005, true, paramToServiceMsg);
           i1 = 1;
@@ -392,7 +385,7 @@ public class QQStoryHandler
             paramObject.append(null);
             i2 = i1;
             paramFromServiceMsg = paramToServiceMsg;
-            QQStoryManager.c(paramObject.toString());
+            QQStoryManager.d(paramObject.toString());
             paramObject = null;
             i2 = 1;
             if (i2 != 0)
@@ -592,7 +585,7 @@ public class QQStoryHandler
             localStringBuilder.append(localObject2);
             i2 = i1;
             paramFromServiceMsg = paramToServiceMsg;
-            QQStoryManager.c(localStringBuilder.toString());
+            QQStoryManager.d(localStringBuilder.toString());
             i5 = 1;
             continue;
           }
@@ -934,7 +927,7 @@ public class QQStoryHandler
           if (4 <= i5)
           {
             localObject = String.valueOf(PkgTools.getLongData(paramFromServiceMsg, 0));
-            if ((localObject == null) || (!((String)localObject).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+            if ((localObject == null) || (!((String)localObject).equals(this.o.getAccount())))
             {
               if (QLog.isColorLevel()) {
                 QLog.i("QQStoryHandler", 2, "handleGetTlvRsp uin error");
@@ -1001,33 +994,7 @@ public class QQStoryHandler
     return b1;
   }
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.protocol", 2, "getQQStoryConfig");
-    }
-    qqstory_service.ReqGetConfig localReqGetConfig = new qqstory_service.ReqGetConfig();
-    Object localObject = (StoryConfigManager)SuperManager.a(10);
-    long l2 = ((StoryConfigManager)localObject).c();
-    long l1 = ((StoryConfigManager)localObject).d();
-    long l3 = TimeUnit.DAYS.toMillis(1L);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("lastGetConfigTime ");
-    ((StringBuilder)localObject).append(l2);
-    ((StringBuilder)localObject).append(", ");
-    ((StringBuilder)localObject).append(System.currentTimeMillis());
-    SLog.b("Q.qqstory.protocol", ((StringBuilder)localObject).toString());
-    if (Math.abs(System.currentTimeMillis() - l2) > l3) {
-      localReqGetConfig.get_pic_specs.set(1);
-    }
-    l2 = TimeUnit.DAYS.toMillis(1L);
-    if (Math.abs(System.currentTimeMillis() - l1) > l2) {
-      localReqGetConfig.get_video_tag_info.set(1);
-    }
-    localObject = createToServiceMsg(jdField_a_of_type_JavaLangString);
-    ((ToServiceMsg)localObject).putWupBuffer(localReqGetConfig.toByteArray());
-    a((ToServiceMsg)localObject);
-  }
+  public void a() {}
   
   public void a(int paramInt)
   {
@@ -1044,7 +1011,7 @@ public class QQStoryHandler
       localObject1 = new oidb_sso.OIDBSSOPkg();
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1279);
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(9);
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      long l1 = Long.parseLong(this.o.getCurrentAccountUin());
       short s = (short)paramInt;
       Object localObject2 = new byte[19];
       PkgTools.dWord2Byte((byte[])localObject2, 0, l1);
@@ -1088,7 +1055,7 @@ public class QQStoryHandler
       localObject1 = new oidb_sso.OIDBSSOPkg();
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1279);
       ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(9);
-      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      long l1 = Long.parseLong(this.o.getCurrentAccountUin());
       short s = (short)paramInt1;
       localObject2 = new byte[13];
       PkgTools.dWord2Byte((byte[])localObject2, 0, l1);
@@ -1161,10 +1128,10 @@ public class QQStoryHandler
       localStringBuilder.append(paramStoryPushMsg);
       QLog.w("Q.qqstory.protocol", 2, localStringBuilder.toString());
     }
-    if ((paramStoryPushMsg.jdField_a_of_type_Int != 1) && (paramStoryPushMsg.jdField_a_of_type_Int != 2))
+    if ((paramStoryPushMsg.a != 1) && (paramStoryPushMsg.a != 2))
     {
       notifyUI(1012, true, paramStoryPushMsg);
-      StoryMsgNotification.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, paramStoryPushMsg);
+      StoryMsgNotification.a().a(this.o, 2, paramStoryPushMsg);
       return;
     }
     if (QLog.isColorLevel()) {
@@ -1223,7 +1190,7 @@ public class QQStoryHandler
             if (4 <= paramFromServiceMsg.length)
             {
               paramFromServiceMsg = String.valueOf(PkgTools.getLongData(paramFromServiceMsg, 0));
-              if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount())))
+              if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.equals(this.o.getAccount())))
               {
                 paramFromServiceMsg = new StringBuilder();
                 paramFromServiceMsg.append(paramString);
@@ -1324,7 +1291,7 @@ public class QQStoryHandler
                 paramToServiceMsg = new Integer[5];
                 paramToServiceMsg[0] = Integer.valueOf(1);
                 paramToServiceMsg[3] = Integer.valueOf(i1 - 1);
-                this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNowLiveManager().a(paramToServiceMsg, true);
+                this.o.getNowLiveManager().a(paramToServiceMsg, true);
                 return;
               }
               catch (Exception paramToServiceMsg)
@@ -1523,7 +1490,7 @@ public class QQStoryHandler
   public void b(FromServiceMsg paramFromServiceMsg)
   {
     int i1 = a(paramFromServiceMsg, 42215, "reqUserGetEnableAlbumScan");
-    ((StoryConfigManager)SuperManager.a(10)).b("sp_key_user_enable_album_scan", Integer.valueOf(i1));
+    ((StoryConfigManager)SuperManager.a(10)).d("sp_key_user_enable_album_scan", Integer.valueOf(i1));
     if (QLog.isColorLevel())
     {
       paramFromServiceMsg = new StringBuilder();
@@ -1567,7 +1534,7 @@ public class QQStoryHandler
         paramFromServiceMsg = (StoryConfigManager)SuperManager.a(10);
         paramFromServiceMsg.a(System.currentTimeMillis());
         localObject1 = paramToServiceMsg.user_config.get();
-        paramObject = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
+        paramObject = (QQStoryManager)this.o.getManager(QQManagerFactory.QQSTORY_MANAGER);
         localObject1 = ((List)localObject1).iterator();
         i2 = 0;
         for (i1 = 0;; i1 = i4)
@@ -1597,7 +1564,7 @@ public class QQStoryHandler
               } else {
                 bool = false;
               }
-              paramFromServiceMsg.b("story_publish_flag_compress", Boolean.valueOf(bool));
+              paramFromServiceMsg.d("story_publish_flag_compress", Boolean.valueOf(bool));
               i3 = i2;
               i4 = i1;
             }
@@ -1608,7 +1575,7 @@ public class QQStoryHandler
               } else {
                 bool = false;
               }
-              paramFromServiceMsg.b("story_publish_flag_compress_configurable", Boolean.valueOf(bool));
+              paramFromServiceMsg.d("story_publish_flag_compress_configurable", Boolean.valueOf(bool));
               i3 = i2;
               i4 = i1;
             }
@@ -1645,7 +1612,7 @@ public class QQStoryHandler
             else if ("pub_allow_stranger".equals(localObject3))
             {
               ((qqstory_struct.UserConfig)localObject2).config_value.get();
-              paramFromServiceMsg.b("key_last_used_permission", Integer.valueOf(10001));
+              paramFromServiceMsg.d("key_last_used_permission", Integer.valueOf(10001));
               SLog.a("QQStoryHandler", "get default permission from server. type is %d.", Integer.valueOf(10001));
               i3 = i2;
               i4 = i1;
@@ -1654,7 +1621,7 @@ public class QQStoryHandler
             {
               long l1 = ((qqstory_struct.UserConfig)localObject2).config_value.get() * 1000;
               SLog.a("Q.qqstory.home.position", "set disable autorefresh time:%d", Long.valueOf(l1));
-              paramFromServiceMsg.b("key_disable_auto_refresh_time", Long.valueOf(l1));
+              paramFromServiceMsg.d("key_disable_auto_refresh_time", Long.valueOf(l1));
               i3 = i2;
               i4 = i1;
             }
@@ -1720,7 +1687,7 @@ public class QQStoryHandler
                 i4 = i1;
                 if (!TextUtils.isEmpty((CharSequence)localObject2))
                 {
-                  QQStoryContext.a().a().a((String)localObject2);
+                  QQStoryContext.a().f().a((String)localObject2);
                   i4 = i1;
                   i3 = i2;
                 }
@@ -1873,30 +1840,30 @@ public class QQStoryHandler
           paramArrayOfByte = new StoryPushMsg(i1, str1, str2, 0L, "", null, paramArrayOfByte);
           long l1 = ((SubMsgType0xd0.MsgBody)localObject).uint64_hot_topic_id.get();
           if (l1 > 0L) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putLong("hot_topic_id", l1);
+            paramArrayOfByte.m.putLong("hot_topic_id", l1);
           }
           str1 = ((SubMsgType0xd0.MsgBody)localObject).bytes_hot_topic_name.get().toStringUtf8();
           if (!TextUtils.isEmpty(str1)) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putString("hot_topic_name", str1);
+            paramArrayOfByte.m.putString("hot_topic_name", str1);
           }
           l1 = ((SubMsgType0xd0.MsgBody)localObject).uint64_big_v_id.get();
           if (l1 > 0L) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putLong("big_v_id", l1);
+            paramArrayOfByte.m.putLong("big_v_id", l1);
           }
           str1 = ((SubMsgType0xd0.MsgBody)localObject).bytes_big_v_union_id.get().toStringUtf8();
           if (!TextUtils.isEmpty(str1)) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putString("big_v_union_id", str1);
+            paramArrayOfByte.m.putString("big_v_union_id", str1);
           }
           i1 = ((SubMsgType0xd0.MsgBody)localObject).uint32_pgc_type.get();
           if (i1 > 0) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putInt("pgc_type", i1);
+            paramArrayOfByte.m.putInt("pgc_type", i1);
           }
           str1 = ((SubMsgType0xd0.MsgBody)localObject).bytes_pgc_column_union_id.get().toStringUtf8();
           if (!TextUtils.isEmpty(str1)) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putString("pgc_column_union_id", str1);
+            paramArrayOfByte.m.putString("pgc_column_union_id", str1);
           }
           if (!TextUtils.isEmpty(((SubMsgType0xd0.MsgBody)localObject).bytes_link.get().toStringUtf8())) {
-            paramArrayOfByte.jdField_a_of_type_AndroidOsBundle.putString("link", ((SubMsgType0xd0.MsgBody)localObject).bytes_link.get().toStringUtf8());
+            paramArrayOfByte.m.putString("link", ((SubMsgType0xd0.MsgBody)localObject).bytes_link.get().toStringUtf8());
           }
           a(paramArrayOfByte);
           return;
@@ -1931,7 +1898,7 @@ public class QQStoryHandler
     int i1;
     if (paramObject != null)
     {
-      QQStoryManager localQQStoryManager = (QQStoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QQSTORY_MANAGER);
+      QQStoryManager localQQStoryManager = (QQStoryManager)this.o.getManager(QQManagerFactory.QQSTORY_MANAGER);
       paramFromServiceMsg = new qqstory_service.RspForbidStory();
       try
       {
@@ -1950,27 +1917,27 @@ public class QQStoryHandler
               {
                 paramToServiceMsg = new QQStoryUserInfo();
                 paramToServiceMsg.uin = str;
-                paramToServiceMsg.setNick(ContactUtils.f(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str));
-                localQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramToServiceMsg);
+                paramToServiceMsg.setNick(ContactUtils.g(this.o, str));
+                localQQStoryManager.A.put(str, paramToServiceMsg);
               }
               if (bool2)
               {
                 paramToServiceMsg.isAllowed = 1;
-                if (!localQQStoryManager.jdField_b_of_type_JavaUtilList.contains(paramToServiceMsg)) {
-                  localQQStoryManager.jdField_b_of_type_JavaUtilList.add(paramToServiceMsg);
+                if (!localQQStoryManager.z.contains(paramToServiceMsg)) {
+                  localQQStoryManager.z.add(paramToServiceMsg);
                 }
               }
               else
               {
                 paramToServiceMsg.isInterested = 1;
-                if (!localQQStoryManager.jdField_a_of_type_JavaUtilList.contains(paramToServiceMsg)) {
-                  localQQStoryManager.jdField_a_of_type_JavaUtilList.add(paramToServiceMsg);
+                if (!localQQStoryManager.y.contains(paramToServiceMsg)) {
+                  localQQStoryManager.y.add(paramToServiceMsg);
                 }
               }
               if (paramToServiceMsg.getStatus() == 1000) {
-                localQQStoryManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persist(paramToServiceMsg);
+                localQQStoryManager.i.persist(paramToServiceMsg);
               } else {
-                localQQStoryManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramToServiceMsg);
+                localQQStoryManager.i.update(paramToServiceMsg);
               }
             }
             else
@@ -1981,15 +1948,15 @@ public class QQStoryHandler
                 if (bool2)
                 {
                   paramToServiceMsg.isAllowed = 0;
-                  localQQStoryManager.jdField_b_of_type_JavaUtilList.remove(paramToServiceMsg);
+                  localQQStoryManager.z.remove(paramToServiceMsg);
                 }
                 else
                 {
                   paramToServiceMsg.isInterested = 0;
-                  localQQStoryManager.jdField_a_of_type_JavaUtilList.remove(paramToServiceMsg);
+                  localQQStoryManager.y.remove(paramToServiceMsg);
                 }
-                localQQStoryManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramToServiceMsg);
-                localQQStoryManager.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+                localQQStoryManager.i.update(paramToServiceMsg);
+                localQQStoryManager.A.remove(str);
               }
             }
           }
@@ -2092,7 +2059,7 @@ public class QQStoryHandler
         paramArrayOfByte = (byte[])localObject4;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-      if ((!TextUtils.isEmpty(str6)) && (AppSetting.a(str6) >= 0)) {
+      if ((!TextUtils.isEmpty(str6)) && (AppSetting.b(str6) >= 0)) {
         paramArrayOfByte = new StoryPushMsg(i1, str4, str5, 0L, "", (String)localObject3, str1, i2, (String)localObject1, (String)localObject2, paramArrayOfByte);
       }
       try
@@ -2335,7 +2302,7 @@ public class QQStoryHandler
         {
           i2 = i1;
           paramFromServiceMsg = paramToServiceMsg;
-          notifyUI(1017, true, new QQStoryBanInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (qqstory_struct.VideoReaderConf)localRspVideoReaderConf.reader_conf.get()));
+          notifyUI(1017, true, new QQStoryBanInfo(this.o, (qqstory_struct.VideoReaderConf)localRspVideoReaderConf.reader_conf.get()));
           i2 = i1;
           paramFromServiceMsg = paramToServiceMsg;
           if (QLog.isColorLevel())
@@ -2523,7 +2490,7 @@ public class QQStoryHandler
       localStringBuilder.append(str);
       QLog.d("Q.qqstory.protocol", 2, localStringBuilder.toString());
     }
-    if (jdField_a_of_type_JavaLangString.equals(str))
+    if (a.equals(str))
     {
       b(paramToServiceMsg, paramFromServiceMsg, paramObject);
       return;
@@ -2627,7 +2594,7 @@ public class QQStoryHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryHandler
  * JD-Core Version:    0.7.0.1
  */

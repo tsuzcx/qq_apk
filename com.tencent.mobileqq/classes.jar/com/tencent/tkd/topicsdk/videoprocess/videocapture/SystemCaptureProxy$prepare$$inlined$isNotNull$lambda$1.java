@@ -17,12 +17,12 @@ final class SystemCaptureProxy$prepare$$inlined$isNotNull$lambda$1
   
   public final void invoke()
   {
-    SystemCaptureProxy.b(this.this$0);
+    SystemCaptureProxy.e(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.SystemCaptureProxy.prepare..inlined.isNotNull.lambda.1
  * JD-Core Version:    0.7.0.1
  */

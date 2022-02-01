@@ -20,21 +20,21 @@ import com.tencent.qphone.base.util.QLog;
 public class LoginAnimBtnView
   extends ImageView
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private LottieComposition.Factory.ListenerAdapter jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private LottieTask<LottieComposition> jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new LoginAnimBtnView.1(this);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = false;
-  private int jdField_c_of_type_Int = -1446926;
-  private volatile boolean jdField_c_of_type_Boolean = false;
-  private int d = -16725252;
-  private int e = 855638016;
+  private LottieDrawable a;
+  private boolean b = false;
+  private Path c;
+  private int d;
+  private int e;
+  private int f = -1446926;
+  private int g = -16725252;
+  private int h = 855638016;
+  private Paint i;
+  private boolean j = false;
+  private volatile boolean k = false;
+  private Object l = new Object();
+  private LottieTask<LottieComposition> m;
+  private LottieComposition.Factory.ListenerAdapter n;
+  private Runnable o = new LoginAnimBtnView.1(this);
   
   public LoginAnimBtnView(Context paramContext)
   {
@@ -53,17 +53,17 @@ public class LoginAnimBtnView
   
   private void g()
   {
-    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    LottieDrawable localLottieDrawable = this.a;
     if ((localLottieDrawable != null) && (!localLottieDrawable.isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+      this.a.playAnimation();
     }
   }
   
   private void h()
   {
-    LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    LottieDrawable localLottieDrawable = this.a;
     if ((localLottieDrawable != null) && (localLottieDrawable.isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+      this.a.pauseAnimation();
     }
   }
   
@@ -73,10 +73,10 @@ public class LoginAnimBtnView
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("loadLottieAnimation mLottieDrawable:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      localStringBuilder.append(this.a);
       QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
+    if (this.a != null) {
       return;
     }
     ThreadManager.post(new LoginAnimBtnView.2(this), 5, null, true);
@@ -84,12 +84,12 @@ public class LoginAnimBtnView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.i = new Paint();
+    this.i.setColor(-1);
+    this.i.setStyle(Paint.Style.FILL);
+    this.i.setAntiAlias(true);
     setEnabled(false);
-    this.jdField_c_of_type_Boolean = false;
+    this.k = false;
     i();
   }
   
@@ -99,11 +99,11 @@ public class LoginAnimBtnView
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onResume ");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      localStringBuilder.append(this.a);
       QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (isEnabled())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
+    if ((this.a != null) && (isEnabled())) {
+      this.a.resumeAnimation();
     }
   }
   
@@ -113,34 +113,34 @@ public class LoginAnimBtnView
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onPause ");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      ((StringBuilder)localObject).append(this.a);
       QLog.i("LoginAnimBtnView", 2, ((StringBuilder)localObject).toString());
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+    Object localObject = this.a;
     if ((localObject != null) && (((LottieDrawable)localObject).isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+      this.a.pauseAnimation();
     }
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (isEnabled()) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating()) && (this.jdField_b_of_type_Boolean))
+    if ((this.a != null) && (isEnabled()) && (this.a.isAnimating()) && (this.j))
     {
       if (QLog.isColorLevel()) {
         QLog.i("LoginAnimBtnView", 2, "pauseIfAnim");
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
+      this.a.pauseAnimation();
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (isEnabled()) && (!this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating()) && (this.jdField_b_of_type_Boolean))
+    if ((this.a != null) && (isEnabled()) && (!this.a.isAnimating()) && (this.j))
     {
       if (QLog.isColorLevel()) {
         QLog.i("LoginAnimBtnView", 2, "resumeIfAnim");
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
+      this.a.resumeAnimation();
     }
   }
   
@@ -150,29 +150,29 @@ public class LoginAnimBtnView
     {
       ??? = new StringBuilder();
       ((StringBuilder)???).append("onDestroy ");
-      ((StringBuilder)???).append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      ((StringBuilder)???).append(this.a);
       QLog.i("LoginAnimBtnView", 2, ((StringBuilder)???).toString());
     }
-    this.jdField_c_of_type_Boolean = true;
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
+    this.k = true;
+    removeCallbacks(this.o);
+    if (this.a != null)
     {
       setBackgroundDrawable(null);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.clearComposition();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(null);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-      this.jdField_a_of_type_Boolean = false;
+      this.a.cancelAnimation();
+      this.a.recycleBitmaps();
+      this.a.clearComposition();
+      this.a.setImageAssetDelegate(null);
+      this.a = null;
+      this.b = false;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    synchronized (this.l)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask != null)
+      if (this.m != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter.cancel();
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask.removeListener(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter);
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask = null;
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter = null;
+        this.n.cancel();
+        this.m.removeListener(this.n);
+        this.m = null;
+        this.n = null;
       }
       return;
     }
@@ -190,20 +190,20 @@ public class LoginAnimBtnView
       localStringBuilder2.append("onDraw error0:");
       localStringBuilder2.append(localOutOfMemoryError.getMessage());
       QLog.e("LoginAnimBtnView", 1, localStringBuilder2.toString());
-      LottieDrawable localLottieDrawable = this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+      LottieDrawable localLottieDrawable = this.a;
       if (localLottieDrawable != null)
       {
         localLottieDrawable.cancelAnimation();
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.clearComposition();
-        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(null);
+        this.a.recycleBitmaps();
+        this.a.clearComposition();
+        this.a.setImageAssetDelegate(null);
       }
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-      this.jdField_a_of_type_Boolean = false;
+      this.a = null;
+      this.b = false;
       if (isEnabled()) {
-        setBackgroundColor(this.d);
+        setBackgroundColor(this.g);
       } else {
-        setBackgroundColor(this.jdField_c_of_type_Int);
+        setBackgroundColor(this.f);
       }
       try
       {
@@ -219,21 +219,21 @@ public class LoginAnimBtnView
     }
     try
     {
-      int i = getMeasuredWidth();
-      int j = getMeasuredHeight();
-      if ((this.jdField_a_of_type_AndroidGraphicsPath == null) || (i != this.jdField_a_of_type_Int) || (j != this.jdField_b_of_type_Int))
+      int i1 = getMeasuredWidth();
+      int i2 = getMeasuredHeight();
+      if ((this.c == null) || (i1 != this.d) || (i2 != this.e))
       {
-        int k = Math.min(i, j) / 2;
-        this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-        this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.INVERSE_WINDING);
-        this.jdField_a_of_type_AndroidGraphicsPath.addCircle(i / 2, j / 2, k, Path.Direction.CW);
-        this.jdField_a_of_type_Int = i;
-        this.jdField_b_of_type_Int = j;
+        int i3 = Math.min(i1, i2) / 2;
+        this.c = new Path();
+        this.c.setFillType(Path.FillType.INVERSE_WINDING);
+        this.c.addCircle(i1 / 2, i2 / 2, i3, Path.Direction.CW);
+        this.d = i1;
+        this.e = i2;
       }
       if ((isEnabled()) && (isPressed())) {
-        paramCanvas.drawColor(this.e);
+        paramCanvas.drawColor(this.h);
       }
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawPath(this.c, this.i);
       return;
     }
     catch (Throwable paramCanvas)
@@ -258,11 +258,11 @@ public class LoginAnimBtnView
       localStringBuilder.append("setEnabled isEnabled:");
       localStringBuilder.append(isEnabled());
       localStringBuilder.append("  mLottieDrawable:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+      localStringBuilder.append(this.a);
       QLog.i("LoginAnimBtnView", 2, localStringBuilder.toString());
     }
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    post(this.jdField_a_of_type_JavaLangRunnable);
+    removeCallbacks(this.o);
+    post(this.o);
   }
   
   public void setPressed(boolean paramBoolean)
@@ -273,7 +273,7 @@ public class LoginAnimBtnView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView
  * JD-Core Version:    0.7.0.1
  */

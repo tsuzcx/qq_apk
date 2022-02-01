@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.main;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.observer.VipGifObserver;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.guild.message.unread.api.IGuildUnreadCntService;
 
 class MainAssistObserver$1
-  extends VipGifObserver
+  implements Runnable
 {
   MainAssistObserver$1(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      MainAssistObserver.a(this.a);
-    }
+    ((IGuildUnreadCntService)this.this$0.a.app.getRuntimeService(IGuildUnreadCntService.class, "")).addObserver(MainAssistObserver.a(this.this$0));
+    this.this$0.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.1
  * JD-Core Version:    0.7.0.1
  */

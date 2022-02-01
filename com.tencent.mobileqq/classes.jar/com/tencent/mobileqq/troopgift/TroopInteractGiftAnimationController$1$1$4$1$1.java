@@ -10,16 +10,16 @@ class TroopInteractGiftAnimationController$1$1$4$1$1
   
   public void a()
   {
-    this.a.a.a.a.this$0.a();
-    if (this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    this.a.a.f.b.this$0.a();
+    if (this.a.a.f.b.d != null) {
+      this.a.a.f.b.d.a();
     }
-    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
+    this.a.a.f.b.this$0.a(this.a.a.f.b.b, this.a.a.f.b.b.frienduin, this.a.a.f.b.b.interactId, this.a.a.f.b.b.animationPackageId, this.a.a.f.b.this$0.f, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1.4.1.1
  * JD-Core Version:    0.7.0.1
  */

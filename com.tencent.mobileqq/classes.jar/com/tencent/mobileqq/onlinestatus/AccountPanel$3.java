@@ -16,22 +16,22 @@ class AccountPanel$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!NetworkUtil.isNetworkAvailable(AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel)))
+    if (!NetworkUtil.isNetworkAvailable(AccountPanel.a(this.d)))
     {
-      AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel).i().setValue(Boolean.valueOf(true));
-      QQToast.a(AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel), 1, 2131719223, 1).a();
+      AccountPanel.d(this.d).i().setValue(Boolean.valueOf(true));
+      QQToast.makeText(AccountPanel.a(this.d), 1, 2131916775, 1).show();
       return;
     }
-    AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel).a(this.jdField_a_of_type_MqqAppAppRuntime$Status, this.jdField_a_of_type_Long, true);
-    if (AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel) != null) {
-      AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel).a(this.jdField_a_of_type_JavaLangString);
+    AccountPanel.d(this.d).a(this.a, this.b, true);
+    if (AccountPanel.e(this.d) != null) {
+      AccountPanel.e(this.d).a(this.c);
     }
-    ReportController.b(AccountPanel.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAccountPanel), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
+    ReportController.b(AccountPanel.c(this.d), "dc00898", "", "", "0X8009DE1", "0X8009DE1", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AccountPanel.3
  * JD-Core Version:    0.7.0.1
  */

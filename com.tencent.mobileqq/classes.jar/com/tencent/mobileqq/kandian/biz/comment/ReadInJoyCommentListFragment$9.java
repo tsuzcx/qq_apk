@@ -9,10 +9,10 @@ class ReadInJoyCommentListFragment$9
   
   public void a(int paramInt)
   {
-    if (ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListFragment) != null) {
-      ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentReadInJoyCommentListFragment).c();
+    if (ReadInJoyCommentListFragment.g(this.b) != null) {
+      ReadInJoyCommentListFragment.g(this.b).c();
     }
-    GuidePopuppWindow.OnGuideDismissListener localOnGuideDismissListener = this.jdField_a_of_type_ComTencentMobileqqKandianBizCommentGuideGuidePopuppWindow$OnGuideDismissListener;
+    GuidePopuppWindow.OnGuideDismissListener localOnGuideDismissListener = this.a;
     if (localOnGuideDismissListener != null) {
       localOnGuideDismissListener.a(paramInt);
     }
@@ -20,7 +20,7 @@ class ReadInJoyCommentListFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.ReadInJoyCommentListFragment.9
  * JD-Core Version:    0.7.0.1
  */

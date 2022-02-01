@@ -11,7 +11,7 @@ class BeautyView$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     BeautyView localBeautyView = this.a;
-    localBeautyView.onClick(localBeautyView.a);
+    localBeautyView.onClick(localBeautyView.f);
     paramDialogInterface.dismiss();
   }
 }

@@ -11,24 +11,24 @@ class AVPreloadServiceBuilder$1
 {
   AVPreloadServiceBuilder$1(AVPreloadServiceBuilder paramAVPreloadServiceBuilder, ServiceAccessor paramServiceAccessor) {}
   
-  public AppGeneralInfoService a()
-  {
-    return (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
-  }
-  
-  public HttpInterface a()
-  {
-    return (HttpInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HttpInterface.class);
-  }
-  
   public LogInterface a()
   {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
+    return (LogInterface)this.a.getService(LogInterface.class);
+  }
+  
+  public AppGeneralInfoService b()
+  {
+    return (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
+  }
+  
+  public HttpInterface c()
+  {
+    return (HttpInterface)this.a.getService(HttpInterface.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.avplayer.AVPreloadServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

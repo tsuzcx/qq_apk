@@ -19,33 +19,32 @@ import org.json.JSONObject;
 public class ARTransparentWebviewPlugin
   extends WebViewPlugin
 {
-  private static ARTransparentWebviewPlugin jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static boolean jdField_a_of_type_Boolean = false;
-  private static boolean b = false;
-  protected final byte a;
-  protected SensorManager a;
-  protected ARTransparentWebviewPlugin.QQSensorEventListener a;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[4];
+  private static String e = "";
+  private static ARTransparentWebviewPlugin f;
+  private static boolean g = false;
+  private static boolean h = false;
+  protected final byte a = 3;
+  protected SensorManager b;
+  protected ARTransparentWebviewPlugin.QQSensorEventListener c;
+  private float[] d = new float[4];
   
   public ARTransparentWebviewPlugin()
   {
-    this.jdField_a_of_type_Byte = 3;
     if (QLog.isColorLevel()) {
       QLog.d("ARTransparentWebviewPlugin", 2, "init");
     }
-    jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin = this;
+    f = this;
   }
   
   public static final void b()
   {
-    b = true;
+    h = true;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("WebViewTime startRender. isStartRender = ");
-    localStringBuilder.append(b);
+    localStringBuilder.append(h);
     QLog.d("ARTransparentWebviewPlugin", 1, localStringBuilder.toString());
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin.callJs(jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true) });
+    if (!TextUtils.isEmpty(e)) {
+      f.callJs(e, new String[] { String.valueOf(true) });
     }
   }
   
@@ -54,31 +53,18 @@ public class ARTransparentWebviewPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ARTransparentWebviewPlugin", 1, "stop motion");
     }
-    SensorManager localSensorManager = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    SensorManager localSensorManager = this.b;
     if (localSensorManager != null)
     {
-      ARTransparentWebviewPlugin.QQSensorEventListener localQQSensorEventListener = this.jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin$QQSensorEventListener;
+      ARTransparentWebviewPlugin.QQSensorEventListener localQQSensorEventListener = this.c;
       if (localQQSensorEventListener != null)
       {
         localSensorManager.unregisterListener(localQQSensorEventListener);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin$QQSensorEventListener = null;
+        this.c = null;
       }
     }
-    jdField_a_of_type_Boolean = false;
-    b = false;
-  }
-  
-  public void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-    paramString = new StringBuilder();
-    paramString.append("WebViewTime notifyRenderReady. callbackStartRender = ");
-    paramString.append(jdField_a_of_type_JavaLangString);
-    QLog.d("ARTransparentWebviewPlugin", 1, paramString.toString());
-    paramString = this.mRuntime.a();
-    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
-      ((ScanTorchActivity)paramString).c();
-    }
+    g = false;
+    h = false;
   }
   
   public final boolean a(String paramString)
@@ -86,10 +72,10 @@ public class ARTransparentWebviewPlugin
     if (QLog.isColorLevel()) {
       QLog.d("ARTransparentWebviewPlugin", 1, "start motion");
     }
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
+    if (this.b == null) {
+      this.b = ((SensorManager)BaseApplication.getContext().getSystemService("sensor"));
     }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    Object localObject = this.b;
     int i;
     if (SensorTrackManager.a()) {
       i = 15;
@@ -97,18 +83,18 @@ public class ARTransparentWebviewPlugin
       i = 11;
     }
     localObject = ((SensorManager)localObject).getSensorList(i);
-    Sensor localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4);
+    Sensor localSensor = this.b.getDefaultSensor(4);
     if ((((List)localObject).size() > 0) && (localSensor != null))
     {
       localObject = (Sensor)((List)localObject).get(0);
-      if (this.jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin$QQSensorEventListener != null) {
+      if (this.c != null) {
         a();
       }
-      this.jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin$QQSensorEventListener = new ARTransparentWebviewPlugin.QQSensorEventListener(this, (byte)3, paramString);
+      this.c = new ARTransparentWebviewPlugin.QQSensorEventListener(this, (byte)3, paramString);
       if (Build.MODEL.equalsIgnoreCase("Nexus 5X")) {
-        this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin$QQSensorEventListener, (Sensor)localObject, 3);
+        this.b.registerListener(this.c, (Sensor)localObject, 3);
       } else {
-        this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(this.jdField_a_of_type_ComTencentBizWebviewpluginARTransparentWebviewPlugin$QQSensorEventListener, (Sensor)localObject, 1);
+        this.b.registerListener(this.c, (Sensor)localObject, 1);
       }
       if (QLog.isColorLevel()) {
         QLog.d("ARTransparentWebviewPlugin", 2, "support gyroscope");
@@ -121,12 +107,25 @@ public class ARTransparentWebviewPlugin
         QLog.d("ARTransparentWebviewPlugin", 2, "not support gyroscope");
       }
     }
-    jdField_a_of_type_Boolean = true;
+    g = true;
     paramString = new StringBuilder();
     paramString.append("WebViewTime startMotion. isRenderReady = ");
-    paramString.append(jdField_a_of_type_Boolean);
+    paramString.append(g);
     QLog.d("ARTransparentWebviewPlugin", 1, paramString.toString());
     return true;
+  }
+  
+  public void b(String paramString)
+  {
+    e = paramString;
+    paramString = new StringBuilder();
+    paramString.append("WebViewTime notifyRenderReady. callbackStartRender = ");
+    paramString.append(e);
+    QLog.d("ARTransparentWebviewPlugin", 1, paramString.toString());
+    paramString = this.mRuntime.d();
+    if ((paramString != null) && ((paramString instanceof ScanTorchActivity))) {
+      ((ScanTorchActivity)paramString).notifyRenderReady();
+    }
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -165,7 +164,7 @@ public class ARTransparentWebviewPlugin
           paramString1.append("handleJsRequest jsonobject is ");
           paramString1.append(paramJsBridgeListener.toString());
           QLog.d("ARTransparentWebviewPlugin", 2, paramString1.toString());
-          a(paramJsBridgeListener.optString("callback"));
+          b(paramJsBridgeListener.optString("callback"));
           return true;
         }
         catch (JSONException paramJsBridgeListener)
@@ -181,7 +180,7 @@ public class ARTransparentWebviewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.ARTransparentWebviewPlugin
  * JD-Core Version:    0.7.0.1
  */

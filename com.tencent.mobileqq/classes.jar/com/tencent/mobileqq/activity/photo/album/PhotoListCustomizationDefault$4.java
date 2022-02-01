@@ -10,14 +10,14 @@ class PhotoListCustomizationDefault$4
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotolistPhotoListSceneBase.a.scrollToPositionWithOffset(this.a, 0);
+    if (this.this$0.c != null) {
+      this.this$0.h.m.scrollToPositionWithOffset(this.a, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListCustomizationDefault.4
  * JD-Core Version:    0.7.0.1
  */

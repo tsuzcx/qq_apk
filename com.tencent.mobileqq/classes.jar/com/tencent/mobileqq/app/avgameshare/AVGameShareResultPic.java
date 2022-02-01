@@ -24,15 +24,15 @@ import java.util.List;
 public class AVGameShareResultPic
   extends AVGameShareBase
 {
-  private String a;
+  private String b;
   
   public AVGameShareResultPic(Activity paramActivity, String paramString, int paramInt)
   {
     super(paramActivity, null, null, null, paramInt);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
-  private Intent a()
+  private Intent y()
   {
     QLog.d("AVGameShareResultPic", 1, "getImageIntent");
     Intent localIntent = new Intent(a(), ForwardRecentActivity.class);
@@ -41,162 +41,52 @@ public class AVGameShareResultPic
     localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
     localIntent.putExtra("selection_mode", 2);
     localIntent.putExtra("avgame_share_callback_key", true);
-    localIntent.setData(Uri.parse(this.jdField_a_of_type_JavaLangString));
+    localIntent.setData(Uri.parse(this.b));
     return localIntent;
   }
   
-  protected void a(int paramInt)
+  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend");
+    u();
+    ImageShareInfo localImageShareInfo = new ImageShareInfo(this.b, "avgame_share_callback_key");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareImageToQQDirectly("avShareResultPic", a(), localImageShareInfo, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+    v();
+    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend success");
+  }
+  
+  protected void c(int paramInt)
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("shareToWeChat shareType: ");
     ((StringBuilder)localObject).append(paramInt);
     QLog.d("AVGameShareResultPic", 1, ((StringBuilder)localObject).toString());
-    int i = a();
+    int i = e();
     if (paramInt == 9) {
       localObject = "3";
     } else {
       localObject = "4";
     }
     ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", i, 0, (String)localObject, "", "", "");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doSharePicToWX("avShareResultPic", a(), String.valueOf(System.currentTimeMillis()), this.jdField_a_of_type_JavaLangString, paramInt);
-  }
-  
-  public void b()
-  {
-    QLog.d("AVGameShareResultPic", 1, "showActionSheet");
-    if ((a() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet == null)
-      {
-        QLog.e("AVGameShareResultPic", 1, "mShareActionSheet is null");
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.isShowing())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.dismiss();
-        return;
-      }
-      a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
-      List localList1 = a();
-      List localList2 = b();
-      Intent localIntent = a();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setRowVisibility(0, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localList1, localList2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new AVGameShareResultPic.1(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
-      return;
-    }
-    QLog.e("AVGameShareResultPic", 1, "showActionSheet error: params wrong");
-    QQToast.a(a(), 2131690527, 0).a();
-  }
-  
-  protected void b(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend");
-    g();
-    ImageShareInfo localImageShareInfo = new ImageShareInfo(this.jdField_a_of_type_JavaLangString, "avgame_share_callback_key");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareImageToQQDirectly("avShareResultPic", a(), localImageShareInfo, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-    h();
-    QLog.d("AVGameShareResultPic", 1, "shareToSpecifiedFriend success");
-  }
-  
-  protected void c()
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToQQ");
-    e();
-    ImageShareInfo localImageShareInfo = new ImageShareInfo(this.jdField_a_of_type_JavaLangString, "avgame_share_callback_key");
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareImageToQQBySelect("avShareResultPic", a(), localImageShareInfo);
-    f();
-    QLog.d("AVGameShareResultPic", 1, "shareToQQ success");
-  }
-  
-  protected void d()
-  {
-    QLog.d("AVGameShareResultPic", 1, "shareToQzone");
-    i();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jdField_a_of_type_JavaLangString);
-    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareToQZoneWithPics("avShareResultPic", a(), localArrayList, 10000);
-    j();
-  }
-  
-  public void e()
-  {
-    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "1", "", "", "");
-  }
-  
-  public void f()
-  {
-    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "1", "", "", "");
-    if (GameEngine.a().f())
-    {
-      int i;
-      if (GameEngine.a().a().a.gameSur) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, "1", "", "", "");
-    }
-  }
-  
-  public void g()
-  {
-    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "0", "", "", "");
-  }
-  
-  public void g(int paramInt)
-  {
-    AVGameShareUtil.a().a(a(), 2, true);
-  }
-  
-  public void h()
-  {
-    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "0", "", "", "");
-    if (GameEngine.a().f())
-    {
-      int i;
-      if (GameEngine.a().a().a.gameSur) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, "0", "", "", "");
-    }
-  }
-  
-  public void h(int paramInt)
-  {
-    QQToast.a(a(), 1, 2131690526, 0).a();
-  }
-  
-  public void i()
-  {
-    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", a(), 0, "2", "", "", "");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doSharePicToWX("avShareResultPic", a(), String.valueOf(System.currentTimeMillis()), this.b, paramInt);
   }
   
   public void i(int paramInt)
   {
-    QQToast.a(a(), 1, 2131690526, 0).a();
+    AVGameShareUtil.a().a(a(), 2, true);
   }
   
-  public void j()
+  public void j(int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", a(), 0, "2", "", "", "");
-    if (GameEngine.a().f())
-    {
-      int i;
-      if (GameEngine.a().a().a.gameSur) {
-        i = 1;
-      } else {
-        i = 2;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, "2", "", "", "");
-    }
+    QQToast.makeText(a(), 1, 2131887437, 0).show();
   }
   
   public void k(int paramInt)
+  {
+    QQToast.makeText(a(), 1, 2131887437, 0).show();
+  }
+  
+  public void m(int paramInt)
   {
     String str;
     if (paramInt == 9) {
@@ -205,10 +95,10 @@ public class AVGameShareResultPic
       str = "4";
     }
     ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", 0, 0, str, "", "", "");
-    if (GameEngine.a().f())
+    if (GameEngine.a().A())
     {
       int i;
-      if (GameEngine.a().a().a.gameSur) {
+      if (GameEngine.a().s().t.gameSur) {
         i = 1;
       } else {
         i = 2;
@@ -221,10 +111,120 @@ public class AVGameShareResultPic
       ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, str, "", "", "");
     }
   }
+  
+  public void p()
+  {
+    QLog.d("AVGameShareResultPic", 1, "showActionSheet");
+    if ((a() != null) && (!TextUtils.isEmpty(this.b)))
+    {
+      if (this.a == null)
+      {
+        QLog.e("AVGameShareResultPic", 1, "mShareActionSheet is null");
+        return;
+      }
+      if (this.a.isShowing())
+      {
+        this.a.dismiss();
+        return;
+      }
+      a().getIntent().putExtra("big_brother_source_key", "biz_src_jc_av_game");
+      List localList1 = j();
+      List localList2 = k();
+      Intent localIntent = y();
+      this.a.setIntentForStartForwardRecentActivity(localIntent);
+      this.a.setRowVisibility(0, 0, 0);
+      this.a.setActionSheetItems(localList1, localList2);
+      this.a.setItemClickListenerV2(new AVGameShareResultPic.1(this));
+      this.a.show();
+      return;
+    }
+    QLog.e("AVGameShareResultPic", 1, "showActionSheet error: params wrong");
+    QQToast.makeText(a(), 2131887438, 0).show();
+  }
+  
+  protected void q()
+  {
+    QLog.d("AVGameShareResultPic", 1, "shareToQQ");
+    s();
+    ImageShareInfo localImageShareInfo = new ImageShareInfo(this.b, "avgame_share_callback_key");
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareImageToQQBySelect("avShareResultPic", a(), localImageShareInfo);
+    t();
+    QLog.d("AVGameShareResultPic", 1, "shareToQQ success");
+  }
+  
+  protected void r()
+  {
+    QLog.d("AVGameShareResultPic", 1, "shareToQzone");
+    w();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.b);
+    ((IShareActionHelper)QRoute.api(IShareActionHelper.class)).doShareToQZoneWithPics("avShareResultPic", a(), localArrayList, 10000);
+    x();
+  }
+  
+  public void s()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "1", "", "", "");
+  }
+  
+  public void t()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", e(), 0, "1", "", "", "");
+    if (GameEngine.a().A())
+    {
+      int i;
+      if (GameEngine.a().s().t.gameSur) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, "1", "", "", "");
+    }
+  }
+  
+  public void u()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "0", "", "", "");
+  }
+  
+  public void v()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", e(), 0, "0", "", "", "");
+    if (GameEngine.a().A())
+    {
+      int i;
+      if (GameEngine.a().s().t.gameSur) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, "0", "", "", "");
+    }
+  }
+  
+  public void w()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B065", "0X800B065", e(), 0, "2", "", "", "");
+  }
+  
+  public void x()
+  {
+    ReportController.b(null, "dc00898", "", "", "0X800B064", "0X800B064", e(), 0, "2", "", "", "");
+    if (GameEngine.a().A())
+    {
+      int i;
+      if (GameEngine.a().s().t.gameSur) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ReportController.b(null, "dc00898", "", "", "0X800B794", "0X800B794", i, 0, "2", "", "", "");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareResultPic
  * JD-Core Version:    0.7.0.1
  */

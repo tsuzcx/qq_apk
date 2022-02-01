@@ -63,10 +63,10 @@ final class StructMsgForGeneralShare$5
     if (SystemClock.uptimeMillis() - this.a >= 1000L)
     {
       this.a = SystemClock.uptimeMillis();
-      Object localObject5 = paramView.findViewById(2131377989);
+      Object localObject5 = paramView.findViewById(2131446476);
       if (localObject5 != null)
       {
-        Object localObject1 = ((View)localObject5).getTag(2131377989);
+        Object localObject1 = ((View)localObject5).getTag(2131446476);
         if ((localObject1 != null) && (StructMsgForGeneralShare.class.isInstance(localObject1)))
         {
           localStructMsgForGeneralShare = (StructMsgForGeneralShare)localObject1;
@@ -78,13 +78,13 @@ final class StructMsgForGeneralShare$5
               localObject3 = (StructingMsgItemBuilder.StructingMsgViewHolder)localObject1;
               break label146;
             }
-            if (paramView.getTag(2131377986) == null) {
+            if (paramView.getTag(2131446473) == null) {
               break label1853;
             }
           }
           else
           {
-            if (paramView.getTag(2131377986) == null) {
+            if (paramView.getTag(2131446473) == null) {
               break label1853;
             }
           }
@@ -92,7 +92,7 @@ final class StructMsgForGeneralShare$5
           localContext = paramView.getContext();
           localChatFragment = ((BaseActivity)localContext).getChatFragment();
           if (localChatFragment != null) {
-            localObject1 = localChatFragment.a();
+            localObject1 = localChatFragment.j();
           }
           for (;;)
           {
@@ -136,7 +136,7 @@ final class StructMsgForGeneralShare$5
                   ((JSONObject)localObject7).put("index", localStructMsgForGeneralShare.index);
                   ((JSONObject)localObject7).put("name", localStructMsgForGeneralShare.index_name);
                   ((JSONObject)localObject7).put("net", String.valueOf(HttpUtil.getNetWorkType()));
-                  ((JSONObject)localObject7).put("mobile_imei", DeviceInfoUtil.a());
+                  ((JSONObject)localObject7).put("mobile_imei", DeviceInfoUtil.b());
                   ((JSONObject)localObject7).put("obj", "");
                   ((JSONObject)localObject7).put("gdt_cli_data", localStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_msgClick"));
                   ((JSONObject)localObject7).put("view_id", localStructMsgForGeneralShare.message.getExtInfoFromExtStr("gdt_view_id"));
@@ -158,7 +158,7 @@ final class StructMsgForGeneralShare$5
               Object localObject6 = (EcShopAssistantManager)localThrowable.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
               localObject4 = (EcshopReportHandler)localThrowable.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER);
               int i;
-              if ((localStructMsgForGeneralShare.message != null) && (localObject6 != null) && (localObject4 != null) && (((EcShopAssistantManager)localObject6).a(localStructMsgForGeneralShare.message.senderuin)))
+              if ((localStructMsgForGeneralShare.message != null) && (localObject6 != null) && (localObject4 != null) && (((EcShopAssistantManager)localObject6).d(localStructMsgForGeneralShare.message.senderuin)))
               {
                 localObject6 = localStructMsgForGeneralShare.message;
                 if (TextUtils.isEmpty(localStructMsgForGeneralShare.index)) {
@@ -177,8 +177,8 @@ final class StructMsgForGeneralShare$5
               if (QLog.isDevelopLevel()) {
                 QLog.d(StructMsgForGeneralShare.access$000(), 4, "geneal struct msg onclick middle ........");
               }
-              if ((localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a != null)) {
-                Util.a((AppRuntime)localObject4, "", "click", localStructMsgForGeneralShare.mSourceAppid, localStructMsgForGeneralShare.mMsgServiceID, Util.a(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a.jdField_a_of_type_Int));
+              if ((localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d != null)) {
+                Util.a((AppRuntime)localObject4, "", "click", localStructMsgForGeneralShare.mSourceAppid, localStructMsgForGeneralShare.mMsgServiceID, Util.a(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d.a));
               }
               if (localStructMsgForGeneralShare.uinType == 0) {
                 i = 0;
@@ -226,7 +226,7 @@ final class StructMsgForGeneralShare$5
                   if ((localObject2 != null) && ((localObject2 instanceof StructMsgItemLayout2)))
                   {
                     localObject5 = new StringBuilder();
-                    ((StringBuilder)localObject5).append(((StructMsgItemLayout2)localObject2).o);
+                    ((StringBuilder)localObject5).append(((StructMsgItemLayout2)localObject2).au);
                     ((StringBuilder)localObject5).append("");
                     ReportController.b((AppRuntime)localObject4, "dc00898", "", "", "0X8007C38", "0X8007C38", 0, 0, ((StringBuilder)localObject5).toString(), "", "", "");
                   }
@@ -239,7 +239,7 @@ final class StructMsgForGeneralShare$5
                 }
                 ThreadManager.post(new StructMsgForGeneralShare.5.2(this, (StructingMsgItemBuilder.StructingMsgViewHolder)localObject3, (QQAppInterface)localObject4), 2, null, false);
               }
-              if ((localStructMsgForGeneralShare != null) && (localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a != null) && ((((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a.jdField_a_of_type_Int == 1025) || (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a.jdField_a_of_type_Int == 0)) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgAction)) && (BmqqSegmentUtil.c(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a.jdField_a_of_type_JavaLangString)) && ((localStructMsgForGeneralShare.mMsgServiceID != 92) || (localStructMsgForGeneralShare.message == null))) {}
+              if ((localStructMsgForGeneralShare != null) && (localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d != null) && ((((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d.a == 1025) || (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d.a == 0)) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgAction)) && (BmqqSegmentUtil.c(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d.b)) && ((localStructMsgForGeneralShare.mMsgServiceID != 92) || (localStructMsgForGeneralShare.message == null))) {}
             }
           }
         }
@@ -270,24 +270,24 @@ final class StructMsgForGeneralShare$5
     }
     ((QidianManager)((QQAppInterface)localObject4).getManager(QQManagerFactory.QIDIAN_MANAGER)).a(localStructMsgForGeneralShare.mMsgAction, localStructMsgForGeneralShare.mMsg_A_ActionData, localStructMsgForGeneralShare.mMsgActionData, localStructMsgForGeneralShare.mMsgUrl, 0, "");
     break label1627;
-    if ((localStructMsgForGeneralShare != null) && (localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a != null) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgAction)) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a.jdField_a_of_type_Int == 1024)) {
+    if ((localStructMsgForGeneralShare != null) && (localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d != null) && (!TextUtils.isEmpty(localStructMsgForGeneralShare.mMsgAction)) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d.a == 1024)) {
       ((QidianManager)((QQAppInterface)localObject4).getManager(QQManagerFactory.QIDIAN_MANAGER)).a(localStructMsgForGeneralShare.mMsgAction, localStructMsgForGeneralShare.mMsg_A_ActionData, localStructMsgForGeneralShare.mMsgActionData, localStructMsgForGeneralShare.mMsgUrl, 1, "");
     }
-    if ((localObject3 != null) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isQWalletPubAccount(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a)) && (localStructMsgForGeneralShare.message != null))
+    if ((localObject3 != null) && (((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).isQWalletPubAccount(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d)) && (localStructMsgForGeneralShare.message != null))
     {
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localStructMsgForGeneralShare.message.time);
       ((StringBuilder)localObject2).append("");
       ReportController.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "public.message.click", 0, 0, ((StringBuilder)localObject2).toString(), "", "", localStructMsgForGeneralShare.mMsgBrief);
     }
-    if ((paramView != null) && (localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a != null) && (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isQQGamePubAccount(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).a.jdField_a_of_type_JavaLangString)) && (localStructMsgForGeneralShare.message != null)) {
+    if ((paramView != null) && (localObject3 != null) && (((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d != null) && (((IQQGameHelper)QRoute.api(IQQGameHelper.class)).isQQGamePubAccount(((StructingMsgItemBuilder.StructingMsgViewHolder)localObject3).d.b)) && (localStructMsgForGeneralShare.message != null)) {
       ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).reportStructClick(paramView.getContext(), localStructMsgForGeneralShare.message);
     }
     if (localChatFragment != null)
     {
-      localObject2 = localChatFragment.a();
+      localObject2 = localChatFragment.k();
       if ((localObject2 instanceof PublicAccountChatPie)) {
-        ((PublicAccountChatPie)localObject2).a.b();
+        ((PublicAccountChatPie)localObject2).cd.b();
       }
     }
     StructMsgForGeneralShare.onClickEvent((QQAppInterface)localObject4, localContext, localStructMsgForGeneralShare, paramView, new StructMsgForGeneralShare.GeneralClickHandler((QQAppInterface)localObject4, paramView, localStructMsgForGeneralShare));
@@ -297,7 +297,7 @@ final class StructMsgForGeneralShare$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.5
  * JD-Core Version:    0.7.0.1
  */

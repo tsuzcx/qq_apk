@@ -25,7 +25,7 @@ final class SelectKDCommunityView$1
     paramAdapterView = (KDCommunityAdapter.CommunityHolder)paramAdapterView;
     if (paramAdapterView != null)
     {
-      paramView = this.a.a();
+      paramView = this.a.getOnSelectCallback();
       if (paramView != null) {
         paramAdapterView = (Unit)paramView.invoke(paramAdapterView.a());
       }
@@ -34,7 +34,7 @@ final class SelectKDCommunityView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.kdcommunity.SelectKDCommunityView.1
  * JD-Core Version:    0.7.0.1
  */

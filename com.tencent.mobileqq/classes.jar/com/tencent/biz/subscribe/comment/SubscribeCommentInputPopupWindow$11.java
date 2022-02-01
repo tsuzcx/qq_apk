@@ -9,9 +9,9 @@ class SubscribeCommentInputPopupWindow$11
   
   public void run()
   {
-    SubscribeCommentInputPopupWindow.b(this.this$0);
-    SubscribeCommentInputPopupWindow.a(this.this$0).setVisibility(0);
-    SubscribeCommentInputPopupWindow.b(this.this$0).setVisibility(8);
+    SubscribeCommentInputPopupWindow.j(this.this$0);
+    SubscribeCommentInputPopupWindow.k(this.this$0).setVisibility(0);
+    SubscribeCommentInputPopupWindow.l(this.this$0).setVisibility(8);
   }
 }
 

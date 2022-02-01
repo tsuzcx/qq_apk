@@ -15,7 +15,7 @@ class AudioSenorManager$1
       if (AudioSenorManager.b(this.this$0) != null) {
         try
         {
-          AudioSenorManager.a(this.this$0).registerListener(AudioSenorManager.a(this.this$0), AudioSenorManager.b(this.this$0), 3);
+          AudioSenorManager.d(this.this$0).registerListener(AudioSenorManager.c(this.this$0), AudioSenorManager.b(this.this$0), 3);
         }
         catch (Exception localException1)
         {
@@ -24,7 +24,7 @@ class AudioSenorManager$1
       }
       try
       {
-        AudioSenorManager.a(this.this$0).registerListener(AudioSenorManager.a(this.this$0), AudioSenorManager.a(this.this$0), 3);
+        AudioSenorManager.d(this.this$0).registerListener(AudioSenorManager.e(this.this$0), AudioSenorManager.a(this.this$0), 3);
       }
       catch (Exception localException2)
       {
@@ -44,7 +44,7 @@ class AudioSenorManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioplayer.AudioSenorManager.1
  * JD-Core Version:    0.7.0.1
  */

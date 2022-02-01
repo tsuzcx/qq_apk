@@ -31,12 +31,12 @@ class AppBrandLaunchManager$6
       localStringBuilder.append(this.val$activity);
       QLog.e("miniapp-process_AppBrandLaunchManager", 1, localStringBuilder.toString());
     }
-    QQToast.a(AppBrandLaunchManager.access$000(this.this$0), HardCodeUtil.a(2131700821), 2000).a();
+    QQToast.makeText(AppBrandLaunchManager.access$000(this.this$0), HardCodeUtil.a(2131898846), 2000).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.6
  * JD-Core Version:    0.7.0.1
  */

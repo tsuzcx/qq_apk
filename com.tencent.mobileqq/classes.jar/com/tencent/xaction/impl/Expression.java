@@ -13,52 +13,52 @@ import org.jetbrains.annotations.Nullable;
 public final class Expression
   implements IExpression<Float>
 {
+  private String a;
   @Nullable
-  private CurrentState jdField_a_of_type_ComTencentXactionTriggerHelperCurrentState;
-  private String jdField_a_of_type_JavaLangString;
+  private CurrentState b;
   
   public Expression(@Nullable CurrentState paramCurrentState)
   {
-    this.jdField_a_of_type_ComTencentXactionTriggerHelperCurrentState = paramCurrentState;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  @Nullable
-  public CurrentState a()
-  {
-    return this.jdField_a_of_type_ComTencentXactionTriggerHelperCurrentState;
+    this.b = paramCurrentState;
+    this.a = "";
   }
   
   @NotNull
   public Float a()
   {
-    if (a() == null) {
+    if (b() == null) {
       return Float.valueOf(0.0F);
     }
     ScreenUnit.Companion localCompanion = ScreenUnit.a;
-    CurrentState localCurrentState = a();
+    CurrentState localCurrentState = b();
     if (localCurrentState == null) {
       Intrinsics.throwNpe();
     }
-    double d = localCompanion.b(localCurrentState.getCx()) / 100;
+    double d = localCompanion.e(localCurrentState.getCx()) / 100;
     Double.isNaN(d);
     return Float.valueOf((float)Math.abs(Math.round(d * 1.0D) * 100));
   }
   
   public void a(@Nullable CurrentState paramCurrentState)
   {
-    this.jdField_a_of_type_ComTencentXactionTriggerHelperCurrentState = paramCurrentState;
+    this.b = paramCurrentState;
   }
   
   public void a(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "expsString");
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
+  }
+  
+  @Nullable
+  public CurrentState b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.impl.Expression
  * JD-Core Version:    0.7.0.1
  */

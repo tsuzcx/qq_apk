@@ -6,24 +6,14 @@ import org.json.JSONObject;
 
 public class PicShareToWXConfigProcessor$PicShareToWXConifgBean
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c = "分享给你1张图片";
-  public String d = "";
-  
-  public PicShareToWXConfigProcessor$PicShareToWXConifgBean()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 10485760L;
-    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
-    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public boolean a = false;
+  public long b = 10485760L;
+  public String c = "gh_0fc5d8395610";
+  public String d = "/pages/gallery/gallery?";
+  public boolean e = false;
+  public int f = 0;
+  public String g = "分享给你1张图片";
+  public String h = "";
   
   public static PicShareToWXConifgBean a(String paramString)
   {
@@ -44,16 +34,16 @@ public class PicShareToWXConfigProcessor$PicShareToWXConifgBean
             break label212;
           }
           bool1 = true;
-          localPicShareToWXConifgBean.jdField_a_of_type_Boolean = bool1;
+          localPicShareToWXConifgBean.a = bool1;
         }
         if (paramString.has("picShareToWeChatSize")) {
-          localPicShareToWXConifgBean.jdField_a_of_type_Long = paramString.getLong("picShareToWeChatSize");
+          localPicShareToWXConifgBean.b = paramString.getLong("picShareToWeChatSize");
         }
         if (paramString.has("PicShareToWeChatUserName")) {
-          localPicShareToWXConifgBean.jdField_a_of_type_JavaLangString = paramString.getString("PicShareToWeChatUserName");
+          localPicShareToWXConifgBean.c = paramString.getString("PicShareToWeChatUserName");
         }
         if (paramString.has("PicShareToWeChatPath")) {
-          localPicShareToWXConifgBean.jdField_b_of_type_JavaLangString = paramString.getString("PicShareToWeChatPath");
+          localPicShareToWXConifgBean.d = paramString.getString("PicShareToWeChatPath");
         }
         if (paramString.has("PicShareToWeChatShareTicket"))
         {
@@ -61,17 +51,17 @@ public class PicShareToWXConfigProcessor$PicShareToWXConifgBean
           if (paramString.getInt("PicShareToWeChatShareTicket") == 1) {
             bool1 = true;
           }
-          localPicShareToWXConifgBean.jdField_b_of_type_Boolean = bool1;
+          localPicShareToWXConifgBean.e = bool1;
         }
         if (paramString.has("PicShareToWeChatMiniType")) {
-          localPicShareToWXConifgBean.jdField_a_of_type_Int = paramString.getInt("PicShareToWeChatMiniType");
+          localPicShareToWXConifgBean.f = paramString.getInt("PicShareToWeChatMiniType");
         }
         if (paramString.has("PicShareToWeChatTitle")) {
-          localPicShareToWXConifgBean.c = paramString.getString("PicShareToWeChatTitle");
+          localPicShareToWXConifgBean.g = paramString.getString("PicShareToWeChatTitle");
         }
         if (paramString.has("PicShareToWeChatDescription"))
         {
-          localPicShareToWXConifgBean.d = paramString.getString("PicShareToWeChatDescription");
+          localPicShareToWXConifgBean.h = paramString.getString("PicShareToWeChatDescription");
           return localPicShareToWXConifgBean;
         }
       }
@@ -87,7 +77,7 @@ public class PicShareToWXConfigProcessor$PicShareToWXConifgBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicShareToWXConfigProcessor.PicShareToWXConifgBean
  * JD-Core Version:    0.7.0.1
  */

@@ -58,7 +58,7 @@ public class FaceScoreGrayMsgUtils
           }
           if (localObject2 != null)
           {
-            int i = StructMsgItemLayout26.a(paramList.structingMsg.mExtraData);
+            int i = StructMsgItemLayout26.d(paramList.structingMsg.mExtraData);
             paramList = new Random();
             paramList.setSeed(((MessageRecord)localObject1).time);
             boolean bool1;
@@ -119,7 +119,7 @@ public class FaceScoreGrayMsgUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.facade.add.inner.FaceScoreGrayMsgUtils
  * JD-Core Version:    0.7.0.1
  */

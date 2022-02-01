@@ -109,6 +109,8 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
         localObject2 = paramObject;
         localJSONObject1.put("polltime", paramObject.polltime);
         localObject2 = paramObject;
+        localJSONObject1.put("continueFlag", paramObject.continueFlag);
+        localObject2 = paramObject;
         localJSONObject1.put("syncSwitch", paramObject.syncSwitch);
         localObject2 = paramObject;
         localJSONObject1.put("environment", paramObject.environment);
@@ -227,7 +229,7 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
               localObject3 = localObject1;
               localObject1 = paramObject;
               paramObject = paramObject;
-              break label821;
+              break label837;
             }
           }
           localJSONObject2.put("item_list", localObject7);
@@ -259,7 +261,7 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
         localObject1 = "}";
         localObject3 = "{\"cookie\":";
       }
-      label821:
+      label837:
       QLog.e("VasQuickUpdateManager", 1, "onQuickUpdateSync error: ", paramObject);
       if (VasQuickUpdateManager.access$000(this.this$0) != null)
       {
@@ -306,7 +308,7 @@ public class VasQuickUpdateManager$DefaultVasExtensionObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.DefaultVasExtensionObserver
  * JD-Core Version:    0.7.0.1
  */

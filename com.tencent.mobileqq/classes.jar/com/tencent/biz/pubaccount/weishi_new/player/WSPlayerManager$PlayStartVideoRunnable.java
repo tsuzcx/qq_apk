@@ -7,61 +7,62 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 class WSPlayerManager$PlayStartVideoRunnable
   implements Runnable
 {
-  private WSPlayerParam jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam;
-  private WSPlayerWrapper jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper;
-  private boolean jdField_a_of_type_Boolean;
+  private WSPlayerParam a;
+  private WSPlayerWrapper b;
+  private boolean c;
   
   WSPlayerManager$PlayStartVideoRunnable(WSPlayerManager paramWSPlayerManager, WSPlayerParam paramWSPlayerParam, WSPlayerWrapper paramWSPlayerWrapper, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam = paramWSPlayerParam;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper = paramWSPlayerWrapper;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramWSPlayerParam;
+    this.b = paramWSPlayerWrapper;
+    this.c = paramBoolean;
   }
   
   public void run()
   {
     WSLog.e("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] post thread");
-    if ((!this.jdField_a_of_type_Boolean) && (!WSPlayerManager.a(this.this$0, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper))) {
+    if ((!this.c) && (!WSPlayerManager.a(this.this$0, this.b))) {
       return;
     }
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper != null))
+    if ((this.a != null) && (this.b != null))
     {
-      if (WSPlayerManager.f(this.this$0)) {
+      if (WSPlayerManager.o(this.this$0)) {
         return;
       }
-      boolean bool2 = this.jdField_a_of_type_Boolean;
+      boolean bool2 = this.c;
       boolean bool1 = true;
       if (!bool2) {
         WSPlayerManager.a(this.this$0, true);
       }
-      long l = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_Long;
+      long l = this.a.g;
       if (l > 0L) {
         WSPlayerManager.g(this.this$0, true);
       }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b)) {
+      if (TextUtils.isEmpty(this.a.c.e)) {
         return;
       }
-      if ((WSPlayerManager.a(this.this$0) == null) || (!WSPlayerManager.a(this.this$0).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b))) {
+      Object localObject = WSPlayerManager.b(this.this$0);
+      if ((localObject == null) || (!((WSVideoPreDownloadManager)localObject).a(this.a.c.e))) {
         bool1 = false;
       }
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[WSPlayerManager.java][PlayStartVideoRunnable.run] goto playerStartByUrl!! isPreDownload:");
-      localStringBuilder.append(bool1);
-      localStringBuilder.append(", videoUrl:");
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b);
-      WSLog.e("WS_VIDEO_PLAYER", localStringBuilder.toString());
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.e(bool1);
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerWrapper.a("", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.b, 101, l, 0L, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSVideoInfo.c, true, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam.jdField_a_of_type_Boolean))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[WSPlayerManager.java][PlayStartVideoRunnable.run] goto playerStartByUrl!! isPreDownload:");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append(", videoUrl:");
+      ((StringBuilder)localObject).append(this.a.c.e);
+      WSLog.e("WS_VIDEO_PLAYER", ((StringBuilder)localObject).toString());
+      this.b.f(bool1);
+      if (!this.b.a("", this.a.c.e, 101, l, 0L, this.a.c.d, true, this.a.h))
       {
         WSLog.d("WS_VIDEO_PLAYER", "[WSPlayerManager.java][PlayStartVideoRunnable.run] playerStartByUrl failed, sendMsg retry.");
-        WSPlayerManager.a(this.this$0).sendEmptyMessage(-4);
+        WSPlayerManager.h(this.this$0).sendEmptyMessage(-4);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager.PlayStartVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

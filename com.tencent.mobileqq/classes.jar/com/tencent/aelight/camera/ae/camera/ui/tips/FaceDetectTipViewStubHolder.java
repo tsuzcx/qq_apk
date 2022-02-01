@@ -8,8 +8,8 @@ import com.tencent.aelight.camera.ae.camera.ui.BaseViewStubHolder;
 public class FaceDetectTipViewStubHolder
   extends BaseViewStubHolder
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private View a;
+  private TextView b;
   
   public FaceDetectTipViewStubHolder(ViewStub paramViewStub)
   {
@@ -18,38 +18,38 @@ public class FaceDetectTipViewStubHolder
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2064122176);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2064122175));
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2064515324);
-  }
-  
-  public void c()
-  {
-    if (a())
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
+    this.a = paramView.findViewById(2063991060);
+    this.b = ((TextView)paramView.findViewById(2063991059));
   }
   
   public void d()
   {
-    if (!a()) {
+    c();
+    this.a.setVisibility(0);
+    this.b.setVisibility(0);
+    this.b.setText(2064187663);
+  }
+  
+  public void e()
+  {
+    if (ap_())
+    {
+      this.a.setVisibility(8);
+      this.b.setVisibility(8);
+    }
+  }
+  
+  public void f()
+  {
+    if (!ap_()) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.tips.FaceDetectTipViewStubHolder
  * JD-Core Version:    0.7.0.1
  */

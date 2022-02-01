@@ -21,7 +21,7 @@ public class SuperPlayerCreateFactory
   
   public IWSPlayer a(Context paramContext, IWSVideoView paramIWSVideoView)
   {
-    boolean bool = QQVideoPlaySDKManager.a();
+    boolean bool = QQVideoPlaySDKManager.isSDKReady();
     paramIWSVideoView = null;
     if (bool) {
       paramIWSVideoView = SuperPlayerFactory.createMediaPlayer(paramContext, 112, null);
@@ -31,7 +31,7 @@ public class SuperPlayerCreateFactory
   
   public IWSPlayerPreDownloader a(Context paramContext)
   {
-    if (QQVideoPlaySDKManager.a()) {
+    if (QQVideoPlaySDKManager.isSDKReady()) {
       paramContext = SuperPlayerFactory.createPreDownloader(BaseApplicationImpl.getContext(), 112);
     } else {
       paramContext = null;
@@ -41,7 +41,7 @@ public class SuperPlayerCreateFactory
   
   public IWSVideoView a(Context paramContext, boolean paramBoolean)
   {
-    if (QQVideoPlaySDKManager.a()) {
+    if (QQVideoPlaySDKManager.isSDKReady()) {
       paramContext = SuperPlayerFactory.createPlayerVideoView(paramContext);
     } else {
       paramContext = null;
@@ -51,7 +51,7 @@ public class SuperPlayerCreateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerCreateFactory
  * JD-Core Version:    0.7.0.1
  */

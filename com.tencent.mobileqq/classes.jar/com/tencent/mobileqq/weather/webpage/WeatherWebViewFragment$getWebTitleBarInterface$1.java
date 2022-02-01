@@ -22,15 +22,15 @@ public final class WeatherWebViewFragment$getWebTitleBarInterface$1
     this.a.a();
   }
   
-  public void d(boolean paramBoolean)
+  public void e(boolean paramBoolean)
   {
-    super.d(paramBoolean);
+    super.e(paramBoolean);
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebViewFragment.getWebTitleBarInterface.1
  * JD-Core Version:    0.7.0.1
  */

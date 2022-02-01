@@ -1,9 +1,9 @@
 package com.tencent.av.ui.beauty;
 
-import com.tencent.mobileqq.activity.contacts.base.tabs.SimpleSlidingIndicator.OnTabListener;
+import com.tencent.mobileqq.widget.AbsSlidingIndicator.OnTabListener;
 
 class QavBeautyMenuPanel$1
-  implements SimpleSlidingIndicator.OnTabListener
+  implements AbsSlidingIndicator.OnTabListener
 {
   QavBeautyMenuPanel$1(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   

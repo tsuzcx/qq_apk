@@ -88,7 +88,7 @@ public class ReadInJoyDoingSomething
   {
     try
     {
-      paramString = PackageUtil.a(BaseApplicationImpl.getContext(), paramString);
+      paramString = PackageUtil.b(BaseApplicationImpl.getContext(), paramString);
       if (paramString != null)
       {
         paramString = paramString.versionName;
@@ -127,7 +127,7 @@ public class ReadInJoyDoingSomething
   
   private static String getLastScanDate()
   {
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
+    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, true);
     if (localObject == null)
     {
       QLog.d("ReadInJoyDoingSomething", 1, "getLastScanDate failed, can not get config.");
@@ -266,7 +266,7 @@ public class ReadInJoyDoingSomething
           }
         }
       }
-      updateConfig(RIJQQAppInterfaceUtil.a(), localAppConfigInfoList);
+      updateConfig(RIJQQAppInterfaceUtil.e(), localAppConfigInfoList);
       return;
     }
     catch (Throwable paramNode)
@@ -286,14 +286,14 @@ public class ReadInJoyDoingSomething
       {
         AppReportData localAppReportData = (AppReportData)paramList.get(i);
         if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyDoingSomething", 2, new Object[] { "tagName = ", paramString, ", reportDataList [ ", Integer.valueOf(i), " ] : \n", localAppReportData.toString(), "uin = ", RIJQQAppInterfaceUtil.a(), "\n" });
+          QLog.d("ReadInJoyDoingSomething", 2, new Object[] { "tagName = ", paramString, ", reportDataList [ ", Integer.valueOf(i), " ] : \n", localAppReportData.toString(), "uin = ", RIJQQAppInterfaceUtil.d(), "\n" });
         }
         localHashMap.clear();
         localHashMap.put("appCode", localAppReportData.appCode);
         localHashMap.put("appVersion", localAppReportData.appVersion);
         localHashMap.put("appUsedDate", localAppReportData.appUsedDate);
-        localHashMap.put("uin", RIJQQAppInterfaceUtil.a());
-        StatisticCollector.getInstance(RIJQQAppInterfaceUtil.a().getApplication()).collectPerformance(RIJQQAppInterfaceUtil.a(), paramString, true, 1L, 0L, localHashMap, null, false);
+        localHashMap.put("uin", RIJQQAppInterfaceUtil.d());
+        StatisticCollector.getInstance(RIJQQAppInterfaceUtil.e().getApplication()).collectPerformance(RIJQQAppInterfaceUtil.d(), paramString, true, 1L, 0L, localHashMap, null, false);
         i += 1;
       }
       return;
@@ -304,7 +304,7 @@ public class ReadInJoyDoingSomething
   private static void reportInstalledApps(AppConfigInfo paramAppConfigInfo)
   {
     AppReportData localAppReportData = getReportData(paramAppConfigInfo);
-    if ((paramAppConfigInfo != null) && (!TextUtils.isEmpty(paramAppConfigInfo.appPackageName)) && (PackageUtil.a(BaseApplicationImpl.getContext(), paramAppConfigInfo.appPackageName)))
+    if ((paramAppConfigInfo != null) && (!TextUtils.isEmpty(paramAppConfigInfo.appPackageName)) && (PackageUtil.d(BaseApplicationImpl.getContext(), paramAppConfigInfo.appPackageName)))
     {
       if (TextUtils.isEmpty(dateNow))
       {
@@ -315,11 +315,11 @@ public class ReadInJoyDoingSomething
       paramAppConfigInfo.put("appCode", localAppReportData.appCode);
       paramAppConfigInfo.put("appVersion", localAppReportData.appVersion);
       paramAppConfigInfo.put("appScanDate", dateNow);
-      paramAppConfigInfo.put("uin", RIJQQAppInterfaceUtil.a());
+      paramAppConfigInfo.put("uin", RIJQQAppInterfaceUtil.d());
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDoingSomething", 2, new Object[] { "tagName = ", REPORT_TAG_NAME_FOR_INSTALLED, "\n", "reportData = \n", localAppReportData.toString(), "uin = ", RIJQQAppInterfaceUtil.a(), "\n", "appScanDate = ", dateNow, "\n" });
+        QLog.d("ReadInJoyDoingSomething", 2, new Object[] { "tagName = ", REPORT_TAG_NAME_FOR_INSTALLED, "\n", "reportData = \n", localAppReportData.toString(), "uin = ", RIJQQAppInterfaceUtil.d(), "\n", "appScanDate = ", dateNow, "\n" });
       }
-      StatisticCollector.getInstance(RIJQQAppInterfaceUtil.a().getApplication()).collectPerformance(RIJQQAppInterfaceUtil.a(), REPORT_TAG_NAME_FOR_INSTALLED, true, 1L, 0L, paramAppConfigInfo, null, false);
+      StatisticCollector.getInstance(RIJQQAppInterfaceUtil.e().getApplication()).collectPerformance(RIJQQAppInterfaceUtil.d(), REPORT_TAG_NAME_FOR_INSTALLED, true, 1L, 0L, paramAppConfigInfo, null, false);
       return;
     }
     if (QLog.isColorLevel())
@@ -337,7 +337,7 @@ public class ReadInJoyDoingSomething
   {
     try
     {
-      Object localObject = getConfig(RIJQQAppInterfaceUtil.a());
+      Object localObject = getConfig(RIJQQAppInterfaceUtil.e());
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -497,7 +497,7 @@ public class ReadInJoyDoingSomething
   
   private static void setLastScanDate()
   {
-    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.a(), true, true);
+    Object localObject = RIJSPUtils.a(RIJQQAppInterfaceUtil.e(), true, true);
     if (localObject == null)
     {
       QLog.d("ReadInJoyDoingSomething", 1, "setLastScanDate failed, can not get config.");
@@ -525,7 +525,7 @@ public class ReadInJoyDoingSomething
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.report.ReadInJoyDoingSomething
  * JD-Core Version:    0.7.0.1
  */

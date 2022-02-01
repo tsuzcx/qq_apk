@@ -17,13 +17,13 @@ class PicSelectAdapter$2
       paramDialogInterface.dismiss();
     }
     if (paramInt == 1) {
-      VasH5PayUtil.a(PicSelectAdapter.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", PicSelectAdapter.a(this.a).getApp().getString(2131719393), "");
+      VasH5PayUtil.a(PicSelectAdapter.b(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", PicSelectAdapter.c(this.a).getApp().getString(2131916948), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter.2
  * JD-Core Version:    0.7.0.1
  */

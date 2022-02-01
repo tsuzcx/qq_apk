@@ -16,19 +16,19 @@ class ChatHistoryBaseTenDocFragment$2
   
   public void a(View paramView)
   {
-    if (paramView.getId() == 2131366333)
+    if (paramView.getId() == 2131432634)
     {
-      ChatHistoryBaseTenDocFragment.a(this.a);
+      ChatHistoryBaseTenDocFragment.c(this.a);
       return;
     }
     if ((paramView.getTag() instanceof String)) {
       return;
     }
-    Object localObject = ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)paramView.getTag()).a;
-    if (this.a.c)
+    Object localObject = ((ChatHistoryBaseTenDocAdapter.HistoryTenDocItemHolder)paramView.getTag()).e;
+    if (this.a.i)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryHelperChatHistoryItemSelectHelper.a(localObject);
-      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
+      this.a.j.b(localObject);
+      ChatHistoryBaseTenDocFragment.d(this.a).notifyDataSetChanged();
       return;
     }
     if (FMConstants.b(((TencentDocItem)localObject).mUrl)) {
@@ -52,15 +52,15 @@ class ChatHistoryBaseTenDocFragment$2
     localBundle.putString("tdsourcetag", "s_qq_history_tab");
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append(paramView);
-    ((StringBuilder)localObject).append(ChatHistoryBaseTenDocFragment.a(this.a));
+    ((StringBuilder)localObject).append(ChatHistoryBaseTenDocFragment.e(this.a));
     localBundle.putString("tdsourcetype", ((StringBuilder)localObject).toString());
-    TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
+    TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.f(this.a), localBundle, false);
+    ReportController.b(this.a.a, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.e(this.a), 0, "", "", "s_qq_history_tab", paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.2
  * JD-Core Version:    0.7.0.1
  */

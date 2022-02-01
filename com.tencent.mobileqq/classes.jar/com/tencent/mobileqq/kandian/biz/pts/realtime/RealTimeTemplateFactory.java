@@ -14,38 +14,26 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RealTimeTemplateFactory
   extends TemplateFactory
 {
-  private static RealTimeTemplateFactoryCache jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeTemplateFactoryCache = new RealTimeTemplateFactoryCache();
-  private Map<String, RealTimeTemplateFactory.Item> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static RealTimeTemplateFactoryCache b = new RealTimeTemplateFactoryCache();
+  private Map<String, RealTimeTemplateFactory.Item> a = new ConcurrentHashMap();
   
   public RealTimeTemplateFactory()
   {
     this.nameTemplateMap = new ConcurrentHashMap();
   }
   
-  public static RealTimeTemplateFactory a(String paramString, boolean paramBoolean)
+  public static RealTimeTemplateFactory b(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeTemplateFactoryCache.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
+      return b.getAutoCreate(BaseApplicationImpl.getContext(), paramString);
     }
-    return jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeTemplateFactoryCache.get(paramString);
+    return b.get(paramString);
   }
   
-  public static void b()
+  public static void h()
   {
     QLog.d("RealTimeTemplateFactory", 2, "reset: ");
-    jdField_a_of_type_ComTencentMobileqqKandianBizPtsRealtimeRealTimeTemplateFactoryCache.clear();
-  }
-  
-  public Map<String, String> a()
-  {
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      RealTimeTemplateFactory.Item localItem = (RealTimeTemplateFactory.Item)localIterator.next();
-      localHashMap.put(localItem.a, localItem.b);
-    }
-    return localHashMap;
+    b.clear();
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
@@ -56,7 +44,7 @@ public class RealTimeTemplateFactory
         return;
       }
       paramString2 = new RealTimeTemplateFactory.Item(paramString1, paramString2, paramString3);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
+      this.a.put(paramString1, paramString2);
     }
   }
   
@@ -78,7 +66,7 @@ public class RealTimeTemplateFactory
   
   public void d(String paramString)
   {
-    paramString = (RealTimeTemplateFactory.Item)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+    paramString = (RealTimeTemplateFactory.Item)this.a.remove(paramString);
     if (paramString != null)
     {
       paramString = (TemplateBean)this.nameTemplateMap.remove(paramString.c);
@@ -87,6 +75,18 @@ public class RealTimeTemplateFactory
       localStringBuilder.append(paramString);
       QLog.d("RealTimeTemplateFactory", 1, localStringBuilder.toString());
     }
+  }
+  
+  public Map<String, String> g()
+  {
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.a.values().iterator();
+    while (localIterator.hasNext())
+    {
+      RealTimeTemplateFactory.Item localItem = (RealTimeTemplateFactory.Item)localIterator.next();
+      localHashMap.put(localItem.a, localItem.b);
+    }
+    return localHashMap;
   }
   
   public Map<String, TemplateBean> getNameTemplateMap()
@@ -110,7 +110,7 @@ public class RealTimeTemplateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.realtime.RealTimeTemplateFactory
  * JD-Core Version:    0.7.0.1
  */

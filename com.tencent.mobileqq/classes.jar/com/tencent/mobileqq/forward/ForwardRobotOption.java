@@ -12,21 +12,21 @@ import com.tencent.mobileqq.app.face.FaceDrawable;
 public class ForwardRobotOption
   extends ForwardRecommendFriendOption
 {
-  private String h;
-  private String i;
+  private String ae;
+  private String af;
   
   public ForwardRobotOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.h = paramIntent.getStringExtra("uin");
-    this.i = paramIntent.getStringExtra("uinname");
+    this.ae = paramIntent.getStringExtra("uin");
+    this.af = paramIntent.getStringExtra("uinname");
   }
   
   private View a(String paramString, Drawable paramDrawable)
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558977, null);
-    TextView localTextView = (TextView)localView.findViewById(2131380075);
-    ImageView localImageView = (ImageView)localView.findViewById(2131368718);
+    View localView = LayoutInflater.from(this.s).inflate(2131624610, null);
+    TextView localTextView = (TextView)localView.findViewById(2131448988);
+    ImageView localImageView = (ImageView)localView.findViewById(2131435631);
     localTextView.setText(paramString);
     localImageView.setImageDrawable(paramDrawable);
     return localView;
@@ -34,17 +34,17 @@ public class ForwardRobotOption
   
   protected View a()
   {
-    return a(String.format("[%s]%s", new Object[] { HardCodeUtil.a(2131704881), this.i }), FaceDrawable.getFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.h));
+    return a(String.format("[%s]%s", new Object[] { HardCodeUtil.a(2131902774), this.af }), FaceDrawable.getFaceDrawable(this.q, 1, this.ae));
   }
   
-  protected boolean m()
+  protected boolean k()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardRobotOption
  * JD-Core Version:    0.7.0.1
  */

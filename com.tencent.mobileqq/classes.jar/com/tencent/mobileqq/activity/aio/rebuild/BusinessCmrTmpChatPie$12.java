@@ -14,11 +14,11 @@ class BusinessCmrTmpChatPie$12
     if (paramBoolean)
     {
       paramObject = this.a;
-      paramObject.jdField_a_of_type_JavaUtilList = EnterpriseQQManager.a(paramObject.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.b());
+      paramObject.bQ = EnterpriseQQManager.a(paramObject.d).a(this.a.d, this.a.ae());
       paramObject = this.a;
-      paramObject.b(paramObject.jdField_a_of_type_JavaUtilList);
-      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (!this.a.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        this.a.m(false);
+      paramObject.b(paramObject.bQ);
+      if ((this.a.bQ != null) && (!this.a.bQ.isEmpty())) {
+        this.a.p(false);
       }
     }
   }
@@ -27,7 +27,7 @@ class BusinessCmrTmpChatPie$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.12
  * JD-Core Version:    0.7.0.1
  */

@@ -52,15 +52,15 @@ class QzoneMoodPlugin$1
     }
     if (this.val$eventSource == 1)
     {
-      QZoneHelper.forwardToWriteEventShuoShuo(this.val$activity, this.this$0.parentPlugin.mRuntime.a().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
+      QZoneHelper.forwardToWriteEventShuoShuo(this.val$activity, this.this$0.parentPlugin.mRuntime.b().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
       return;
     }
-    QZoneHelper.forwardToWriteMood(this.val$activity, this.this$0.parentPlugin.mRuntime.a().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
+    QZoneHelper.forwardToWriteMood(this.val$activity, this.this$0.parentPlugin.mRuntime.b().getCurrentAccountUin(), this.val$finalSummery, this.val$pics, this.val$finalAtFriendList, this.val$finalEventTag, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneMoodPlugin.1
  * JD-Core Version:    0.7.0.1
  */

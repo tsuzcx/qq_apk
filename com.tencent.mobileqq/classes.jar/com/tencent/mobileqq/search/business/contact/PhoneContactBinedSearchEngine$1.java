@@ -14,9 +14,9 @@ class PhoneContactBinedSearchEngine$1
   
   public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
   {
-    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.a.a.getRuntimeService(IPhoneContactService.class, "");
-    paramIContactSearchModel1 = localIPhoneContactService.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel1).e());
-    paramIContactSearchModel2 = localIPhoneContactService.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel2).e());
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)this.a.b.getRuntimeService(IPhoneContactService.class, "");
+    paramIContactSearchModel1 = localIPhoneContactService.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel1).s());
+    paramIContactSearchModel2 = localIPhoneContactService.queryContactByCodeNumber(((ContactSearchModelPhoneContact)paramIContactSearchModel2).s());
     if ((paramIContactSearchModel1 != null) && (paramIContactSearchModel2 != null))
     {
       if ((paramIContactSearchModel1.uin.equals("0")) && (paramIContactSearchModel2.uin.equals("0")))
@@ -57,7 +57,7 @@ class PhoneContactBinedSearchEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.business.contact.PhoneContactBinedSearchEngine.1
  * JD-Core Version:    0.7.0.1
  */

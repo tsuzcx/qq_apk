@@ -31,10 +31,10 @@ public class RIJCoinInfoModule$CoinRewardRequestHandler
       }
       paramReqBody.meta.type.set(3);
       paramReqBody.reward_req.setHasFlag(true);
-      paramReqBody.reward_req.rowkey.set(paramRequest0xed4Params.jdField_a_of_type_JavaLangString);
-      paramReqBody.reward_req.from_uin.set(RIJQQAppInterfaceUtil.a());
-      paramReqBody.reward_req.to_uin.set(paramRequest0xed4Params.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyRequestParams$Request0xed4Params$CoinRewardReq.jdField_a_of_type_Long);
-      paramReqBody.reward_req.coin_cnt.set(paramRequest0xed4Params.jdField_a_of_type_ComTencentMobileqqKandianRepoFeedsEntityReadInJoyRequestParams$Request0xed4Params$CoinRewardReq.jdField_a_of_type_Int);
+      paramReqBody.reward_req.rowkey.set(paramRequest0xed4Params.b);
+      paramReqBody.reward_req.from_uin.set(RIJQQAppInterfaceUtil.c());
+      paramReqBody.reward_req.to_uin.set(paramRequest0xed4Params.c.a);
+      paramReqBody.reward_req.coin_cnt.set(paramRequest0xed4Params.c.b);
     }
   }
   
@@ -51,7 +51,7 @@ public class RIJCoinInfoModule$CoinRewardRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.reward.RIJCoinInfoModule.CoinRewardRequestHandler
  * JD-Core Version:    0.7.0.1
  */

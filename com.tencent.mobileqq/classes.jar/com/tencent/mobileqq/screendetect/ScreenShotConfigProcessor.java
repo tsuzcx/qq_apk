@@ -24,10 +24,10 @@ public class ScreenShotConfigProcessor
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onParsed : ");
-        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        localStringBuilder.append(paramArrayOfQConfItem[0].b);
         QLog.d("ScreenShotConfigProcessor", 2, localStringBuilder.toString());
       }
-      return ScreenShotConfigProcessor.ScreenShotConfigData.a(paramArrayOfQConfItem[0].a);
+      return ScreenShotConfigProcessor.ScreenShotConfigData.a(paramArrayOfQConfItem[0].b);
     }
     return new ScreenShotConfigProcessor.ScreenShotConfigData();
   }
@@ -87,7 +87,7 @@ public class ScreenShotConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

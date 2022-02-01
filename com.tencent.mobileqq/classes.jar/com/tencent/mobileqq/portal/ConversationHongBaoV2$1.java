@@ -11,33 +11,33 @@ class ConversationHongBaoV2$1
   
   public void run()
   {
-    FrameHelperActivity.a(true);
+    FrameHelperActivity.b(true);
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_ConversationHongBaoV2", 2, "mTouchReleaseRunable  do Run");
     }
-    if (this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.getScrollY() == 0) {
+    if (this.this$0.c.getScrollY() == 0) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_Int == 4)
+    if (this.this$0.e == 4)
     {
-      this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.setSpringbackOffset(-this.this$0.d);
-      if (Math.abs(this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.getScrollY() + this.this$0.d) > this.this$0.d * 1.0F / 13.0F) {
-        this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(-this.this$0.d);
+      this.this$0.c.setSpringbackOffset(-this.this$0.p);
+      if (Math.abs(this.this$0.c.getScrollY() + this.this$0.p) > this.this$0.p * 1.0F / 13.0F) {
+        this.this$0.c.springBackTo(-this.this$0.p);
       }
     }
     else
     {
-      this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.setSpringbackOffset(0);
-      if (this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.getScrollY() != 0) {
-        this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.springBackTo(0);
+      this.this$0.c.setSpringbackOffset(0);
+      if (this.this$0.c.getScrollY() != 0) {
+        this.this$0.c.springBackTo(0);
       }
     }
-    if (!this.this$0.jdField_a_of_type_ComTencentWidgetHongBaoListView.n) {
+    if (!this.this$0.c.E) {
       this.this$0.b(false);
     }
     if (QLog.isColorLevel())
     {
-      int i = ConversationHongBaoV2.a(this.this$0).a();
+      int i = ConversationHongBaoV2.a(this.this$0).getProgressViewAlpha();
       int j = ConversationHongBaoV2.a(this.this$0).getVisibility();
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" [dddd] mTouchReleaseRunable mProgressViewRed alpha = ");
@@ -50,7 +50,7 @@ class ConversationHongBaoV2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.1
  * JD-Core Version:    0.7.0.1
  */

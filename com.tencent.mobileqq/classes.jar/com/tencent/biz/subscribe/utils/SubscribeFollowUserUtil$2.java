@@ -12,8 +12,8 @@ final class SubscribeFollowUserUtil$2
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeFollowUserUtil$ResultListener.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a.a(false, this.b, true);
+    this.c.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

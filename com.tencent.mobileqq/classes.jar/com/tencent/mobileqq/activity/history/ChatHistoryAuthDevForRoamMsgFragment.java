@@ -27,8 +27,8 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ChatHistoryAuthDevForRoamMsgFragment.1(this);
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  QQProgressDialog a;
+  Handler.Callback b = new ChatHistoryAuthDevForRoamMsgFragment.1(this);
   
   private void a()
   {
@@ -39,11 +39,11 @@ public class ChatHistoryAuthDevForRoamMsgFragment
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryAuthDevForRoamMsgFragment", 2, "set_roam_message_auth_mode: 1");
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(HardCodeUtil.a(2131701851));
+      this.a = new QQProgressDialog(getBaseActivity(), getBaseActivity().getTitleBarHeight());
+      this.a.setCancelable(false);
+      this.a.a(HardCodeUtil.a(2131899868));
       if (!getBaseActivity().isFinishing()) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.a.show();
       }
     }
   }
@@ -56,17 +56,17 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131696362));
-    this.mContentView.findViewById(2131380289).setOnClickListener(this);
-    this.mContentView.findViewById(2131380292).setOnClickListener(this);
-    paramLayoutInflater = new MqqWeakReferenceHandler(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    setTitle(getString(2131894134));
+    this.mContentView.findViewById(2131449210).setOnClickListener(this);
+    this.mContentView.findViewById(2131449213).setOnClickListener(this);
+    paramLayoutInflater = new MqqWeakReferenceHandler(this.b);
     getBaseActivity().app.setHandler(getClass(), paramLayoutInflater);
     VipUtils.a(getBaseActivity().app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561865;
+    return 2131628283;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -94,21 +94,21 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   {
     getBaseActivity().setResult(0);
     boolean bool = super.onBackEvent();
-    getBaseActivity().overridePendingTransition(2130771991, 2130771992);
+    getBaseActivity().overridePendingTransition(2130771994, 2130771995);
     return bool;
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131380289)
+    if (paramView.getId() == 2131449210)
     {
-      this.mContentView.findViewById(2131380289).setEnabled(false);
+      this.mContentView.findViewById(2131449210).setEnabled(false);
       Intent localIntent = new Intent(getBaseActivity(), QQBrowserActivity.class);
       localIntent.putExtra("url", "https://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
       VipUtils.a(getBaseActivity().app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
       startActivityForResult(localIntent, 10000);
     }
-    else if (paramView.getId() == 2131380292)
+    else if (paramView.getId() == 2131449213)
     {
       VipUtils.a(getBaseActivity().app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);
       getBaseActivity().setResult(0);
@@ -120,12 +120,12 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   public void onFinish()
   {
     super.onFinish();
-    getBaseActivity().overridePendingTransition(2130771991, 2130771992);
+    getBaseActivity().overridePendingTransition(2130771994, 2130771995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment
  * JD-Core Version:    0.7.0.1
  */

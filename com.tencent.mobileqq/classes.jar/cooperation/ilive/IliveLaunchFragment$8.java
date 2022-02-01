@@ -17,13 +17,13 @@ final class IliveLaunchFragment$8
     ProcessStats.b(false);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("cpu use = ");
-    ((StringBuilder)localObject).append(ProcessStats.a.a);
+    ((StringBuilder)localObject).append(ProcessStats.c.f);
     ((StringBuilder)localObject).append(" cost = ");
     ((StringBuilder)localObject).append(this.a);
     QLog.i("IliveLaunchActivity", 1, ((StringBuilder)localObject).toString());
     localObject = new HashMap();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(ProcessStats.a.a);
+    localStringBuilder.append(ProcessStats.c.f);
     localStringBuilder.append("");
     ((HashMap)localObject).put("cpu", localStringBuilder.toString());
     VasStatisticCollector.a("ilive_preload_monitor", (Map)localObject, this.a);
@@ -31,7 +31,7 @@ final class IliveLaunchFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.8
  * JD-Core Version:    0.7.0.1
  */

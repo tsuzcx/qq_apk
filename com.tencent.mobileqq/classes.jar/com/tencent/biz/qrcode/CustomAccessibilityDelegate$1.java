@@ -7,8 +7,8 @@ class CustomAccessibilityDelegate$1
   
   public void run()
   {
-    if (CustomAccessibilityDelegate.a(this.this$0) != null) {
-      CustomAccessibilityDelegate.a(this.this$0).b();
+    if (CustomAccessibilityDelegate.c(this.this$0) != null) {
+      CustomAccessibilityDelegate.c(this.this$0).b();
     }
   }
 }

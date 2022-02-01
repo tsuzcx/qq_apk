@@ -13,51 +13,51 @@ class ARReport$2
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    String str = this.jdField_a_of_type_JavaLangString;
+    String str = this.a;
     if (str != null) {
       localHashMap.put("cloud_download_imgId", String.valueOf(str));
     }
-    long l = this.jdField_a_of_type_Long;
-    if (l > 0L) {
-      localHashMap.put("cloud_download_feature_size", String.valueOf(l));
+    long l1 = this.b;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_feature_size", String.valueOf(l1));
     }
-    if (ARReport.a(this.this$0, this.jdField_b_of_type_Long)) {
-      localHashMap.put("cloud_download_feature_time", String.valueOf(this.jdField_b_of_type_Long));
+    if (ARReport.a(this.this$0, this.c)) {
+      localHashMap.put("cloud_download_feature_time", String.valueOf(this.c));
     }
-    int i = this.jdField_a_of_type_Int;
-    if (i > -1) {
-      localHashMap.put("cloud_download_feature_code", String.valueOf(i));
+    int m = this.d;
+    if (m > -1) {
+      localHashMap.put("cloud_download_feature_code", String.valueOf(m));
     }
-    l = this.jdField_c_of_type_Long;
-    if (l > 0L) {
-      localHashMap.put("cloud_download_model_size", String.valueOf(l));
+    l1 = this.e;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_model_size", String.valueOf(l1));
     }
-    if (ARReport.a(this.this$0, this.jdField_d_of_type_Long)) {
-      localHashMap.put("cloud_download_model_time", String.valueOf(this.jdField_d_of_type_Long));
+    if (ARReport.a(this.this$0, this.f)) {
+      localHashMap.put("cloud_download_model_time", String.valueOf(this.f));
     }
-    i = this.jdField_b_of_type_Int;
-    if (i > -1) {
-      localHashMap.put("cloud_download_model_code", String.valueOf(i));
+    m = this.g;
+    if (m > -1) {
+      localHashMap.put("cloud_download_model_code", String.valueOf(m));
     }
-    l = this.e;
-    if (l > 0L) {
-      localHashMap.put("cloud_download_unzip_time", String.valueOf(l));
+    l1 = this.h;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_unzip_time", String.valueOf(l1));
     }
-    i = this.jdField_c_of_type_Int;
-    if (i > -1) {
-      localHashMap.put("cloud_download_type", String.valueOf(i));
+    m = this.i;
+    if (m > -1) {
+      localHashMap.put("cloud_download_type", String.valueOf(m));
     }
     localHashMap.put("cloud_download_net_type", String.valueOf(NetworkUtil.getSystemNetwork(BaseApplication.getContext())));
-    if (ARReport.a(this.this$0, this.f)) {
-      localHashMap.put("cloud_download_all_time", String.valueOf(this.f));
+    if (ARReport.a(this.this$0, this.j)) {
+      localHashMap.put("cloud_download_all_time", String.valueOf(this.j));
     }
-    l = this.g;
-    if (l > 0L) {
-      localHashMap.put("cloud_download_net_size", String.valueOf(l));
+    l1 = this.k;
+    if (l1 > 0L) {
+      localHashMap.put("cloud_download_net_size", String.valueOf(l1));
     }
-    i = this.jdField_d_of_type_Int;
-    if (i > -1) {
-      localHashMap.put("cloud_download_all_result", String.valueOf(i));
+    m = this.l;
+    if (m > -1) {
+      localHashMap.put("cloud_download_all_result", String.valueOf(m));
     }
     localHashMap.put("cloud_download_type", "0");
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidactARCloudDownLoad", true, 0L, 0L, localHashMap, "", true);
@@ -65,7 +65,7 @@ class ARReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.2
  * JD-Core Version:    0.7.0.1
  */

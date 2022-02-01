@@ -66,7 +66,7 @@ class TroopAlbumPlugin$1
       if (i == 0)
       {
         paramContext.putBoolean("is_exit_fail_misson", false).apply();
-        TroopAlbumPlugin.c(this.a).getAttachedActivity().unregisterReceiver(TroopAlbumPlugin.a(this.a));
+        TroopAlbumPlugin.d(this.a).getAttachedActivity().unregisterReceiver(TroopAlbumPlugin.c(this.a));
         TroopAlbumPlugin.a(this.a, null);
       }
     }
@@ -90,8 +90,8 @@ class TroopAlbumPlugin$1
       try
       {
         paramContext = new JSONObject(paramIntent.toString());
-        TroopAlbumPlugin.a(this.a).ok(paramContext);
-        TroopAlbumPlugin.d(this.a).getAttachedActivity().unregisterReceiver(TroopAlbumPlugin.a(this.a));
+        TroopAlbumPlugin.e(this.a).ok(paramContext);
+        TroopAlbumPlugin.f(this.a).getAttachedActivity().unregisterReceiver(TroopAlbumPlugin.c(this.a));
         return;
       }
       catch (JSONException paramContext)
@@ -103,7 +103,7 @@ class TroopAlbumPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.1
  * JD-Core Version:    0.7.0.1
  */

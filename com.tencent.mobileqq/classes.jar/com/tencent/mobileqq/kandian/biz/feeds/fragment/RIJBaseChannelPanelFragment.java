@@ -30,44 +30,44 @@ public abstract class RIJBaseChannelPanelFragment
   extends PublicBaseFragment
   implements View.OnClickListener, SlideDownFrameLayout.OnSlideListener
 {
-  protected int a;
-  private View jdField_a_of_type_AndroidViewView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  protected TextView a;
-  private NestedScrollView jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetNestedScrollView;
-  protected SlideDownFrameLayout a;
-  private View b;
-  private View c;
-  
-  public RIJBaseChannelPanelFragment()
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  protected int a = 0;
+  protected SlideDownFrameLayout b;
+  protected TextView c;
+  private LinearLayout d;
+  private NestedScrollView e;
+  private View f;
+  private View g;
+  private View h;
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void a(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131365187));
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetNestedScrollView = ((NestedScrollView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364466));
-    paramLayoutInflater = paramLayoutInflater.inflate(a(), this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetNestedScrollView, false);
+    this.d = ((LinearLayout)this.b.findViewById(2131431349));
+    this.e = ((NestedScrollView)this.b.findViewById(2131430510));
+    paramLayoutInflater = paramLayoutInflater.inflate(a(), this.e, false);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetNestedScrollView.addView(paramLayoutInflater, localLayoutParams);
-    this.c = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131364715);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131371673));
-    ((TextView)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131376045)).setText(a());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131370711);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.setOnSlideListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new RIJBaseChannelPanelFragment.1(this));
+    this.e.addView(paramLayoutInflater, localLayoutParams);
+    this.h = this.b.findViewById(2131430821);
+    this.c = ((TextView)this.b.findViewById(2131439094));
+    ((TextView)this.b.findViewById(2131444245)).setText(b());
+    this.f = this.b.findViewById(2131437989);
+    this.b.setOnSlideListener(this);
+    this.d.setOnTouchListener(new RIJBaseChannelPanelFragment.1(this));
     onPostThemeChanged();
     paramLayoutInflater = ((ViewGroup)((FrameLayout)getBaseActivity().findViewById(16908290)).getParent()).getChildAt(1);
     if (((paramLayoutInflater instanceof FrameLayout)) && (paramLayoutInflater.getId() != 16908290)) {
       paramLayoutInflater.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setAlpha(0.0F);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.post(new RIJBaseChannelPanelFragment.2(this));
+    this.d.setAlpha(0.0F);
+    this.d.post(new RIJBaseChannelPanelFragment.2(this));
   }
   
-  private void b()
+  private void b(View paramView)
+  {
+    this.b.b();
+  }
+  
+  private void f()
   {
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
@@ -78,13 +78,13 @@ public abstract class RIJBaseChannelPanelFragment
         localBaseActivity.mSystemBarComp = new SystemBarCompact(localBaseActivity, true, -1);
       }
       localBaseActivity.mSystemBarComp.init();
-      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.b()) && (!SystemUtil.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.d()) && (!SystemUtil.g()))
       {
         localBaseActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
         localBaseActivity.mSystemBarComp.setStatusBarColor(0);
         return;
       }
-      if (!SystemUtil.d())
+      if (!SystemUtil.g())
       {
         localBaseActivity.mSystemBarComp.setStatusBarColor(-2368549);
         return;
@@ -94,27 +94,30 @@ public abstract class RIJBaseChannelPanelFragment
     }
   }
   
-  private void b(View paramView)
+  private void g()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.b();
-  }
-  
-  private void c()
-  {
+    this.h.setOnClickListener(this);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
   public abstract int a();
   
-  public View a()
+  public void a(float paramFloat, int paramInt)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    ReadInJoyLogicEngineEventDispatcher.a().a(paramFloat, paramInt);
+    this.f.setAlpha(1.0F - paramFloat / paramInt);
   }
   
-  public abstract String a();
+  protected void a(View paramView) {}
   
-  public void a()
+  public abstract String b();
+  
+  public boolean c()
+  {
+    return this.e.getScrollY() == 0;
+  }
+  
+  public void d()
   {
     if (getBaseActivity() != null)
     {
@@ -123,17 +126,9 @@ public abstract class RIJBaseChannelPanelFragment
     }
   }
   
-  public void a(float paramFloat, int paramInt)
+  public View e()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(paramFloat, paramInt);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - paramFloat / paramInt);
-  }
-  
-  protected void a(View paramView) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqKandianBaseViewWidgetNestedScrollView.getScrollY() == 0;
+    return this.d;
   }
   
   public boolean isWrapContent()
@@ -143,16 +138,16 @@ public abstract class RIJBaseChannelPanelFragment
   
   public boolean onBackEvent()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.b();
+    this.b.b();
     return true;
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i != 2131364715)
+    if (i != 2131430821)
     {
-      if (i != 2131371673) {
+      if (i != 2131439094) {
         return;
       }
       a(paramView);
@@ -164,34 +159,34 @@ public abstract class RIJBaseChannelPanelFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Int = AIOUtils.b(8.0F, getResources());
+    this.a = AIOUtils.b(8.0F, getResources());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    getBaseActivity().setTheme(2131755316);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout = ((SlideDownFrameLayout)paramLayoutInflater.inflate(2131562693, paramViewGroup, false));
+    getBaseActivity().setTheme(2131952009);
+    this.b = ((SlideDownFrameLayout)paramLayoutInflater.inflate(2131629124, paramViewGroup, false));
     a(paramLayoutInflater);
-    c();
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout;
+    g();
+    return this.b;
   }
   
   public void onPostThemeChanged()
   {
     View localView;
-    if (ThemeUtil.isNowThemeIsNight(ReadInJoyUtils.a(), false, null))
+    if (ThemeUtil.isNowThemeIsNight(ReadInJoyUtils.b(), false, null))
     {
-      if (this.b == null) {
-        this.b = ((ViewStub)this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDownFrameLayout.findViewById(2131376106)).inflate();
+      if (this.g == null) {
+        this.g = ((ViewStub)this.b.findViewById(2131444309)).inflate();
       }
-      localView = this.b;
+      localView = this.g;
       if (localView != null) {
         localView.setVisibility(0);
       }
     }
     else
     {
-      localView = this.b;
+      localView = this.g;
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -201,12 +196,12 @@ public abstract class RIJBaseChannelPanelFragment
   public void onResume()
   {
     super.onResume();
-    b();
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.feeds.fragment.RIJBaseChannelPanelFragment
  * JD-Core Version:    0.7.0.1
  */

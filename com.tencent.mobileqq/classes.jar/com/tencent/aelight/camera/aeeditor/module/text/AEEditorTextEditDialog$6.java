@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.tavcut.bean.TextEditorData;
+import com.tencent.qcircle.tavcut.bean.TextEditorData;
 
 class AEEditorTextEditDialog$6
   implements TextWatcher
@@ -20,15 +20,15 @@ class AEEditorTextEditDialog$6
     String str = paramEditable.toString();
     if (paramEditable.length() > 120)
     {
-      QQToast.a(this.a.getContext(), AEEditorTextEditDialog.a(this.a), 0).a();
+      QQToast.makeText(this.a.getContext(), AEEditorTextEditDialog.e(this.a), 0).show();
       str = paramEditable.subSequence(0, 120).toString();
-      AEEditorTextEditDialog.a(this.a).setText(str);
-      AEEditorTextEditDialog.a(this.a).setSelection(str.length());
+      AEEditorTextEditDialog.f(this.a).setText(str);
+      AEEditorTextEditDialog.f(this.a).setSelection(str.length());
     }
     if (TextUtils.isEmpty(str.trim())) {
-      AEEditorTextEditDialog.a(this.a).setContent("");
+      AEEditorTextEditDialog.d(this.a).setContent("");
     } else {
-      AEEditorTextEditDialog.a(this.a).setContent(str);
+      AEEditorTextEditDialog.d(this.a).setContent(str);
     }
     AEEditorTextEditDialog.b(this.a);
   }
@@ -39,7 +39,7 @@ class AEEditorTextEditDialog$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.text.AEEditorTextEditDialog.6
  * JD-Core Version:    0.7.0.1
  */

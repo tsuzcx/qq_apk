@@ -13,33 +13,13 @@ import java.util.Map;
 
 public class FTSDatabaseHelper
 {
-  public static int a(FTSDatabase paramFTSDatabase, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("SELECT cursor FROM ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" WHERE id=1;");
-    paramString = localStringBuilder.toString();
-    try
-    {
-      int i = c(paramFTSDatabase, paramString);
-      return i;
-    }
-    catch (SQLiteException paramFTSDatabase)
-    {
-      label41:
-      break label41;
-    }
-    return -1;
-  }
-  
   public static int a(FTSDatabase paramFTSDatabase, ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt)
   {
     String str = "Q.fts.FTSDatabaseHelper";
     if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
       long l1 = System.currentTimeMillis();
-      int j = a(paramFTSDatabase, paramString);
+      int j = c(paramFTSDatabase, paramString);
       Object localObject;
       if (QLog.isColorLevel())
       {
@@ -57,7 +37,7 @@ public class FTSDatabaseHelper
         }
         return -1;
       }
-      if (!paramFTSDatabase.b())
+      if (!paramFTSDatabase.c())
       {
         if (QLog.isColorLevel()) {
           QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: beginTransaction failed");
@@ -130,14 +110,14 @@ public class FTSDatabaseHelper
             paramArrayList.append(" SET cursor=");
             paramArrayList.append(j + i);
             paramArrayList.append(" WHERE id=1;");
-            bool2 = paramFTSDatabase.a(paramArrayList.toString());
+            bool2 = paramFTSDatabase.b(paramArrayList.toString());
           }
         }
       }
       if (bool2)
       {
         l1 = System.currentTimeMillis();
-        bool2 = paramFTSDatabase.c();
+        bool2 = paramFTSDatabase.d();
         l1 = System.currentTimeMillis() - l1;
         if (!QLog.isColorLevel())
         {
@@ -189,7 +169,7 @@ public class FTSDatabaseHelper
       localStringBuilder1.append(paramTroopIndex.ext6);
     }
     localStringBuilder1.append("';");
-    return paramFTSDatabase.a(localStringBuilder1.toString());
+    return paramFTSDatabase.b(localStringBuilder1.toString());
   }
   
   public static boolean a(FTSDatabase paramFTSDatabase, String paramString)
@@ -202,7 +182,45 @@ public class FTSDatabaseHelper
     return (paramFTSDatabase != null) && (paramFTSDatabase.size() > 0);
   }
   
-  public static int b(FTSDatabase paramFTSDatabase, String paramString)
+  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    if (!paramFTSDatabase.c()) {
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
+    paramFTSDatabase.b(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("INSERT INTO ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("(cursor) VALUES(0);");
+    paramFTSDatabase.b(localStringBuilder.toString());
+    return paramFTSDatabase.d();
+  }
+  
+  public static int c(FTSDatabase paramFTSDatabase, String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SELECT cursor FROM ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" WHERE id=1;");
+    paramString = localStringBuilder.toString();
+    try
+    {
+      int i = e(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase)
+    {
+      label41:
+      break label41;
+    }
+    return -1;
+  }
+  
+  public static int d(FTSDatabase paramFTSDatabase, String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("SELECT COUNT(*) FROM ");
@@ -210,7 +228,7 @@ public class FTSDatabaseHelper
     paramString = localStringBuilder.toString();
     try
     {
-      int i = c(paramFTSDatabase, paramString);
+      int i = e(paramFTSDatabase, paramString);
       return i;
     }
     catch (SQLiteException paramFTSDatabase)
@@ -221,25 +239,7 @@ public class FTSDatabaseHelper
     return -1;
   }
   
-  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
-  {
-    if (!paramFTSDatabase.b()) {
-      return false;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
-    paramFTSDatabase.a(localStringBuilder.toString());
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("INSERT INTO ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("(cursor) VALUES(0);");
-    paramFTSDatabase.a(localStringBuilder.toString());
-    return paramFTSDatabase.c();
-  }
-  
-  public static int c(FTSDatabase paramFTSDatabase, String paramString)
+  public static int e(FTSDatabase paramFTSDatabase, String paramString)
   {
     paramFTSDatabase = paramFTSDatabase.a(paramString, new int[] { 1 });
     if ((paramFTSDatabase != null) && (paramFTSDatabase.size() == 1))
@@ -264,7 +264,7 @@ public class FTSDatabaseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v2.FTSDatabaseHelper
  * JD-Core Version:    0.7.0.1
  */

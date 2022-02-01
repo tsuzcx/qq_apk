@@ -25,24 +25,24 @@ import com.tencent.qphone.base.util.QLog;
 public class NavBarQQGamePub
   extends NavBarCommon
 {
-  private static final String jdField_a_of_type_JavaLangString;
-  private int jdField_a_of_type_Int = 0;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private String jdField_b_of_type_JavaLangString;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private String jdField_c_of_type_JavaLangString;
-  private String d = "";
+  private static final String a;
+  private TextView b;
+  private ImageView c;
+  private RelativeLayout d;
+  private LinearLayout e;
+  private TextView f;
+  private TextView g;
+  private String h;
+  private String i;
+  private int j = 0;
+  private String k = "";
   
   static
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("QQGamePub_");
     localStringBuilder.append(NavBarQQGamePub.class.getSimpleName());
-    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    a = localStringBuilder.toString();
   }
   
   public NavBarQQGamePub(Context paramContext)
@@ -65,46 +65,46 @@ public class NavBarQQGamePub
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
+    this.e = new LinearLayout(getContext());
     Object localObject = new RelativeLayout.LayoutParams(-2, -1);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
+    this.e.setOrientation(0);
     ((RelativeLayout.LayoutParams)localObject).rightMargin = UIUtils.a(40.0F, getResources());
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
+    addView(this.e, (ViewGroup.LayoutParams)localObject);
+    this.d = new RelativeLayout(getContext());
     localObject = new LinearLayout.LayoutParams(UIUtils.a(30.0F, getResources()), UIUtils.a(64.0F, getResources()));
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844463);
+    this.e.addView(this.d, (ViewGroup.LayoutParams)localObject);
+    this.c = new ImageView(getContext());
+    this.c.setImageResource(2130845836);
     localObject = new RelativeLayout.LayoutParams(UIUtils.a(24.0F, getResources()), UIUtils.a(24.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846868);
-    int i = UIUtils.a(1.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
+    this.d.addView(this.c, (ViewGroup.LayoutParams)localObject);
+    this.b = new TextView(getContext());
+    this.b.setText("");
+    this.b.setTextColor(-1);
+    this.b.setTextSize(10.0F);
+    this.b.setGravity(17);
+    this.b.setBackgroundResource(2130848420);
+    int m = UIUtils.a(1.0F, getResources());
+    this.b.setPadding(m, m, m, m);
     localObject = new RelativeLayout.LayoutParams(UIUtils.a(6.0F, getResources()), UIUtils.a(6.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(10);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).topMargin = UIUtils.a(16.0F, getResources());
     ((RelativeLayout.LayoutParams)localObject).rightMargin = UIUtils.a(6.0F, getResources());
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.d.addView(this.b, (ViewGroup.LayoutParams)localObject);
+    this.b.setVisibility(4);
+    this.g = new TextView(getContext());
     localObject = new LinearLayout.LayoutParams(-2, -1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
-    this.jdField_c_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new NavBarQQGamePub.1(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.g.setSingleLine();
+    this.g.setTextColor(-1);
+    this.g.setTextSize(10.0F);
+    this.g.setGravity(17);
+    this.e.addView(this.g, (ViewGroup.LayoutParams)localObject);
+    this.e.setOnClickListener(new NavBarQQGamePub.1(this));
+    this.e.setVisibility(8);
   }
   
   private void b(String paramString)
@@ -119,32 +119,14 @@ public class NavBarQQGamePub
     getContext().startActivity(localIntent);
   }
   
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView a()
-  {
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369249));
-    }
-    if (this.jdField_b_of_type_AndroidWidgetTextView == null)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-      QLog.e(jdField_a_of_type_JavaLangString, 2, "[getTitleTextView] titleTv is null");
-    }
-    return this.jdField_b_of_type_AndroidWidgetTextView;
-  }
-  
   public void a()
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.c;
     if (localImageView != null)
     {
       localImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844463);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText("");
+      this.c.setImageResource(2130845836);
+      this.g.setText("");
       setmBubbleid("");
       setCurType(1);
     }
@@ -152,30 +134,30 @@ public class NavBarQQGamePub
   
   public void a(String paramString)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    ImageView localImageView = this.c;
     if (localImageView != null)
     {
       localImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844463);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText("");
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.c.setImageResource(2130845836);
+      this.g.setText("");
+      this.h = paramString;
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
+    if (this.c != null)
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130844222);
-      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130844222);
+      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130845539);
+      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130845539);
       paramString1 = URLDrawable.getDrawable(paramString1, localURLDrawableOptions);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString1);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_b_of_type_JavaLangString = paramString3;
+      this.c.setImageDrawable(paramString1);
+      this.c.setVisibility(0);
+      this.h = paramString3;
       setCurType(2);
     }
-    if (this.jdField_c_of_type_AndroidWidgetTextView != null)
+    if (this.g != null)
     {
       paramString1 = paramString2;
       if (paramString2.length() > 5)
@@ -186,46 +168,64 @@ public class NavBarQQGamePub
         paramString2.append("...");
         paramString1 = paramString2.toString();
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramString1);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.g.setText(paramString1);
+      this.g.setVisibility(0);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    if (this.b != null)
     {
-      int i;
+      int m;
       if (paramBoolean) {
-        i = 0;
+        m = 0;
       } else {
-        i = 4;
+        m = 4;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(i);
+      this.b.setVisibility(m);
     }
+  }
+  
+  public View getRightImg()
+  {
+    return this.c;
+  }
+  
+  public TextView getTitleTextView()
+  {
+    if (this.f == null) {
+      this.f = ((TextView)findViewById(2131436227));
+    }
+    if (this.f == null)
+    {
+      this.f = new TextView(getContext());
+      QLog.e(a, 2, "[getTitleTextView] titleTv is null");
+    }
+    return this.f;
   }
   
   public void setCurType(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0)
+    this.j = paramInt;
+    if (this.j == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.e.setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.e.setVisibility(0);
   }
   
   public void setGamePubType(String paramString)
   {
-    this.d = paramString;
+    this.k = paramString;
   }
   
   public void setRightImage2(Drawable paramDrawable) {}
   
   public void setTitle(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131378784);
+    TextView localTextView = (TextView)findViewById(2131447463);
     if (localTextView != null) {
       localTextView.setText(paramString);
     }
@@ -233,12 +233,12 @@ public class NavBarQQGamePub
   
   public void setmBubbleid(String paramString)
   {
-    this.jdField_c_of_type_JavaLangString = paramString;
+    this.i = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.view.NavBarQQGamePub
  * JD-Core Version:    0.7.0.1
  */

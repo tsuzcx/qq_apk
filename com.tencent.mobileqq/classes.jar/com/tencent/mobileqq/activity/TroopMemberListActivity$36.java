@@ -45,9 +45,9 @@ class TroopMemberListActivity$36
       } else {
         i = 0;
       }
-      if (j == 2131365478)
+      if (j == 2131431693)
       {
-        localObject2 = paramView.findViewById(2131365479);
+        localObject2 = paramView.findViewById(2131431694);
         bool1 = bool2;
         if (((View)localObject2).getTag() != null)
         {
@@ -61,7 +61,7 @@ class TroopMemberListActivity$36
         {
           if (localObject2 != null)
           {
-            localObject1 = ((TroopMemberListActivity.TmViewHolder)localObject2).a.getTag();
+            localObject1 = ((TroopMemberListActivity.TmViewHolder)localObject2).c.getTag();
             if ((localObject1 != null) && ((localObject1 instanceof Integer)))
             {
               i = ((Integer)localObject1).intValue();
@@ -75,10 +75,10 @@ class TroopMemberListActivity$36
         }
         else if (this.a.mIsInMultiDeleteState)
         {
-          if (this.a.mAdapter.b.contains(localObject1)) {
-            this.a.mAdapter.b.remove(localObject1);
+          if (this.a.mAdapter.e.contains(localObject1)) {
+            this.a.mAdapter.e.remove(localObject1);
           } else if (i != 0) {
-            this.a.mAdapter.b.add(localObject1);
+            this.a.mAdapter.e.add(localObject1);
           }
           TroopMemberListActivity.access$200(this.a);
           this.a.mAdapter.notifyDataSetChanged();
@@ -88,14 +88,14 @@ class TroopMemberListActivity$36
           if (!this.a.mSearchSlideLeftUin.equals(localObject1))
           {
             if (localObject2 != null) {
-              ((TroopMemberListActivity.TmViewHolder)localObject2).a.a(true);
+              ((TroopMemberListActivity.TmViewHolder)localObject2).c.a(true);
             }
             if (!TextUtils.isEmpty(this.a.mSearchSlideLeftUin))
             {
               localObject2 = this.a;
               localObject2 = ((TroopMemberListActivity)localObject2).findListItemHolderByUin(((TroopMemberListActivity)localObject2).mSearchSlideLeftUin, bool1);
               if (localObject2 != null) {
-                ((TroopMemberListActivity.TmViewHolder)localObject2).a.b(true);
+                ((TroopMemberListActivity.TmViewHolder)localObject2).c.b(true);
               }
             }
             this.a.mSearchSlideLeftUin = ((String)localObject1);
@@ -104,22 +104,22 @@ class TroopMemberListActivity$36
         else if (!this.a.mSlideLeftUin.equals(localObject1))
         {
           if (localObject2 != null) {
-            ((TroopMemberListActivity.TmViewHolder)localObject2).a.a(true);
+            ((TroopMemberListActivity.TmViewHolder)localObject2).c.a(true);
           }
           if (!TextUtils.isEmpty(this.a.mSlideLeftUin))
           {
             localObject2 = this.a;
             localObject2 = ((TroopMemberListActivity)localObject2).findListItemHolderByUin(((TroopMemberListActivity)localObject2).mSlideLeftUin, bool1);
             if (localObject2 != null) {
-              ((TroopMemberListActivity.TmViewHolder)localObject2).a.b(true);
+              ((TroopMemberListActivity.TmViewHolder)localObject2).c.b(true);
             }
           }
           this.a.mSlideLeftUin = ((String)localObject1);
         }
       }
-      else if (j == 2131377658)
+      else if (j == 2131446080)
       {
-        localObject2 = paramView.findViewById(2131379771);
+        localObject2 = paramView.findViewById(2131448581);
         bool1 = bool3;
         if (((View)localObject2).getTag() != null)
         {
@@ -130,10 +130,10 @@ class TroopMemberListActivity$36
         }
         if (this.a.mIsInMultiDeleteState)
         {
-          if (this.a.mAdapter.b.contains(localObject1)) {
-            this.a.mAdapter.b.remove(localObject1);
+          if (this.a.mAdapter.e.contains(localObject1)) {
+            this.a.mAdapter.e.remove(localObject1);
           } else if (i != 0) {
-            this.a.mAdapter.b.add(localObject1);
+            this.a.mAdapter.e.add(localObject1);
           }
           TroopMemberListActivity.access$200(this.a);
           this.a.mAdapter.notifyDataSetChanged();
@@ -144,7 +144,7 @@ class TroopMemberListActivity$36
           localObject1 = ((TroopMemberListActivity)localObject1).findListItemHolderByUin(((TroopMemberListActivity)localObject1).mSearchSlideLeftUin, bool1);
           if (localObject1 != null)
           {
-            ((TroopMemberListActivity.TmViewHolder)localObject1).a.b(true);
+            ((TroopMemberListActivity.TmViewHolder)localObject1).c.b(true);
             this.a.mSearchSlideLeftUin = "";
           }
           this.a.mSearchResultAdapter.notifyDataSetChanged();
@@ -155,12 +155,12 @@ class TroopMemberListActivity$36
           localObject1 = ((TroopMemberListActivity)localObject1).findListItemHolderByUin(((TroopMemberListActivity)localObject1).mSlideLeftUin, bool1);
           if (localObject1 != null)
           {
-            ((TroopMemberListActivity.TmViewHolder)localObject1).a.b(true);
+            ((TroopMemberListActivity.TmViewHolder)localObject1).c.b(true);
             this.a.mSlideLeftUin = "";
           }
         }
       }
-      else if ((j == 2131363963) && (this.a.mIsInDeleteState))
+      else if ((j == 2131429919) && (this.a.mIsInDeleteState))
       {
         if (QLog.isColorLevel())
         {
@@ -174,7 +174,7 @@ class TroopMemberListActivity$36
           if (this.a.isResume())
           {
             localObject1 = this.a;
-            QQToast.a((Context)localObject1, ((TroopMemberListActivity)localObject1).getString(2131694424), 0).b(this.a.getTitleBarHeight());
+            QQToast.makeText((Context)localObject1, ((TroopMemberListActivity)localObject1).getString(2131892104), 0).show(this.a.getTitleBarHeight());
           }
         }
         else if (this.a.mFrom == 1)
@@ -185,7 +185,7 @@ class TroopMemberListActivity$36
         {
           localObject2 = this.a.removeItem((String)localObject1);
           this.a.mDelList.add(localObject1);
-          this.a.mAdapter.a();
+          this.a.mAdapter.c();
           if (this.a.mSearchDialog.isShowing())
           {
             if (localObject2 != null) {
@@ -198,7 +198,7 @@ class TroopMemberListActivity$36
         {
           localObject2 = this.a.removeItem((String)localObject1);
           this.a.mDelList.add(localObject1);
-          this.a.mAdapter.a();
+          this.a.mAdapter.c();
           if (this.a.mSearchDialog.isShowing())
           {
             if (localObject2 != null) {
@@ -220,7 +220,7 @@ class TroopMemberListActivity$36
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.36
  * JD-Core Version:    0.7.0.1
  */

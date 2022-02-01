@@ -32,7 +32,7 @@ public class WSDramaEpisodeDataFetcher
     ArrayList localArrayList = paramstGetDramaFeedsRsp.dramaFeeds;
     boolean bool2 = paramWSDramaFeedsParams.a();
     boolean bool1;
-    if (paramWSDramaFeedsParams.b() == 0) {
+    if (paramWSDramaFeedsParams.g() == 0) {
       bool1 = true;
     } else {
       bool1 = false;
@@ -42,34 +42,34 @@ public class WSDramaEpisodeDataFetcher
   
   private void a(@NonNull WSDramaEpisodeDataFetcher.ResponseModel paramResponseModel, @NonNull IFetchDataRspListener<stDramaFeed> paramIFetchDataRspListener)
   {
-    WSDramaEpisodeDataFetcher.EpisodeExt localEpisodeExt = WSEpisodeResultUtil.a(paramResponseModel.jdField_a_of_type_JavaLangString, paramResponseModel.jdField_a_of_type_Boolean, paramResponseModel.b, paramResponseModel.c);
-    paramIFetchDataRspListener.a(paramResponseModel.jdField_a_of_type_JavaUtilList, false, paramResponseModel.jdField_a_of_type_Boolean, localEpisodeExt);
+    WSDramaEpisodeDataFetcher.EpisodeExt localEpisodeExt = WSEpisodeResultUtil.a(paramResponseModel.e, paramResponseModel.c, paramResponseModel.d, paramResponseModel.f);
+    paramIFetchDataRspListener.a(paramResponseModel.b, false, paramResponseModel.c, localEpisodeExt);
   }
   
   private void a(@NonNull WSServiceErrorInfo paramWSServiceErrorInfo, @NonNull IFetchDataRspListener<stDramaFeed> paramIFetchDataRspListener, @NonNull WSDramaFeedsParams paramWSDramaFeedsParams)
   {
-    paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.a(), paramWSDramaFeedsParams.a(), paramWSDramaFeedsParams.b());
+    paramIFetchDataRspListener.a(paramWSServiceErrorInfo.a(), paramWSServiceErrorInfo.b(), paramWSDramaFeedsParams.a(), paramWSDramaFeedsParams.b());
   }
   
   public boolean a(@NonNull WSDramaFeedsParams paramWSDramaFeedsParams, @NonNull IFetchDataRspListener<stDramaFeed> paramIFetchDataRspListener)
   {
     boolean bool2 = paramWSDramaFeedsParams.a();
     boolean bool3 = paramWSDramaFeedsParams.b();
-    String str1 = paramWSDramaFeedsParams.a();
-    String str2 = paramWSDramaFeedsParams.b();
+    String str1 = paramWSDramaFeedsParams.d();
+    String str2 = paramWSDramaFeedsParams.e();
     boolean bool1;
-    if (paramWSDramaFeedsParams.b() == 0) {
+    if (paramWSDramaFeedsParams.g() == 0) {
       bool1 = true;
     } else {
       bool1 = false;
     }
-    WSNetService.a(new WSGetDramaFeedsRequest(new WSDramaEpisodeParams(bool2, bool3, str1, str2, bool1), paramWSDramaFeedsParams.c())).a(new WSDramaEpisodeDataFetcher.1(this, paramWSDramaFeedsParams, paramIFetchDataRspListener));
+    WSNetService.a(new WSGetDramaFeedsRequest(new WSDramaEpisodeParams(bool2, bool3, str1, str2, bool1), paramWSDramaFeedsParams.h())).a(new WSDramaEpisodeDataFetcher.1(this, paramWSDramaFeedsParams, paramIFetchDataRspListener));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.cache.WSDramaEpisodeDataFetcher
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:id="@id/bif" android:background="@drawable/iy" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_alignParentTop="true" />
     <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/i8p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:minHeight="100.0dip">
-        <TextView android:textSize="@dimen/rh" android:textColor="@color/bp" android:gravity="center" android:id="@id/i8r" android:layout_width="wrap_content" android:layout_height="@dimen/ard" android:singleLine="true" android:drawablePadding="8.0dip" />
+        <TextView android:textSize="@dimen/rh" android:textColor="@color/black" android:gravity="center" android:id="@id/i8r" android:layout_width="wrap_content" android:layout_height="@dimen/ard" android:singleLine="true" android:drawablePadding="8.0dip" />
         <TextView android:textSize="@dimen/rj" android:textColor="@color/k8" android:ellipsize="end" android:gravity="center" android:id="@id/i8q" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="2.0dip" android:maxLines="2" />
     </LinearLayout>
     <View android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" />

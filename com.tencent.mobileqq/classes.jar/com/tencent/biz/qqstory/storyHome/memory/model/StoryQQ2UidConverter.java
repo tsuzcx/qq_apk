@@ -18,11 +18,6 @@ public class StoryQQ2UidConverter
 {
   private StoryQQ2UidConverter.StoryQQ2UidCallback a;
   
-  public String a(long paramLong)
-  {
-    return ((UserManager)SuperManager.a(2)).b(String.valueOf(paramLong), false);
-  }
-  
   public void a(long paramLong)
   {
     ThreadManager.post(new StoryQQ2UidConverter.1(this, paramLong), 5, null, false);
@@ -30,13 +25,13 @@ public class StoryQQ2UidConverter
   
   public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if (!TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()))) {
+    if (!TextUtils.equals(paramUpdateUserInfoEvent.c, String.valueOf(hashCode()))) {
       return;
     }
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
+    if ((paramUpdateUserInfoEvent.g.isSuccess()) && (paramUpdateUserInfoEvent.a != null))
     {
-      SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid);
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
+      SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramUpdateUserInfoEvent.a.uid);
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.a.uid;
     }
     else
     {
@@ -62,7 +57,12 @@ public class StoryQQ2UidConverter
     new GetUserInfoHandler(this).a(1, paramString, String.valueOf(hashCode()));
   }
   
-  public void b(long paramLong)
+  public String b(long paramLong)
+  {
+    return ((UserManager)SuperManager.a(2)).b(String.valueOf(paramLong), false);
+  }
+  
+  public void c(long paramLong)
   {
     if (paramLong <= 0L)
     {

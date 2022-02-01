@@ -22,11 +22,11 @@ import org.jetbrains.annotations.Nullable;
 public final class SelectableThumbClipView
   extends FrameLayout
 {
-  private final View jdField_a_of_type_AndroidViewView;
+  private final View a;
   @NotNull
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private final ThumbClipView b;
   @NotNull
-  private final ThumbClipView jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderThumbClipView;
+  private TextView c;
   
   @JvmOverloads
   public SelectableThumbClipView(@NotNull Context paramContext)
@@ -44,53 +44,53 @@ public final class SelectableThumbClipView
   public SelectableThumbClipView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidViewView = new View(paramContext);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderThumbClipView = new ThumbClipView(paramContext, null, 0, 6, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(getResources().getDimensionPixelSize(2063990853), getResources().getDimensionPixelSize(2063990851)));
-    this.jdField_a_of_type_AndroidViewView.setBackground(getResources().getDrawable(2064056427));
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    paramAttributeSet = new FrameLayout.LayoutParams(-2, (int)getResources().getDimension(2063990836));
-    paramAttributeSet.leftMargin = ((int)getResources().getDimension(2063990812));
-    paramAttributeSet.bottomMargin = ((int)getResources().getDimension(2063990814));
+    this.a = new View(paramContext);
+    this.b = new ThumbClipView(paramContext, null, 0, 6, null);
+    this.c = new TextView(paramContext);
+    this.a.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(getResources().getDimensionPixelSize(2063859780), getResources().getDimensionPixelSize(2063859778)));
+    this.a.setBackground(getResources().getDrawable(2063925396));
+    this.a.setVisibility(4);
+    paramAttributeSet = new FrameLayout.LayoutParams(-2, (int)getResources().getDimension(2063859763));
+    paramAttributeSet.leftMargin = ((int)getResources().getDimension(2063859739));
+    paramAttributeSet.bottomMargin = ((int)getResources().getDimension(2063859741));
     paramAttributeSet.gravity = 83;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, getResources().getDimension(2063990832));
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    localTextView.setTextColor(localTextView.getResources().getColor(2131167394));
-    this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(2.0F, 1.0F, 1.0F, 2131165336);
-    this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
-    this.jdField_a_of_type_AndroidWidgetTextView.setPadding((int)getResources().getDimension(2063990813), 0, (int)getResources().getDimension(2063990813), 0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(paramContext, "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)paramAttributeSet);
-    addView((View)this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderThumbClipView);
-    addView(this.jdField_a_of_type_AndroidViewView);
-    addView((View)this.jdField_a_of_type_AndroidWidgetTextView);
+    this.c.setTextSize(0, getResources().getDimension(2063859759));
+    TextView localTextView = this.c;
+    localTextView.setTextColor(localTextView.getResources().getColor(2131168464));
+    this.c.setShadowLayer(2.0F, 1.0F, 1.0F, 2131165578);
+    this.c.setIncludeFontPadding(false);
+    this.c.setSingleLine();
+    this.c.setGravity(80);
+    this.c.setPadding((int)getResources().getDimension(2063859740), 0, (int)getResources().getDimension(2063859740), 0);
+    this.c.setTypeface(((IQCircleRFWApi)QRoute.api(IQCircleRFWApi.class)).getTypeface(paramContext, "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf"));
+    this.c.setLayoutParams((ViewGroup.LayoutParams)paramAttributeSet);
+    addView((View)this.b);
+    addView(this.a);
+    addView((View)this.c);
   }
   
   @NotNull
-  public final TextView a()
+  public final TextView getDurationView()
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    return this.c;
   }
   
   @NotNull
-  public final ThumbClipView a()
+  public final ThumbClipView getThumbView()
   {
-    return this.jdField_a_of_type_ComTencentAelightCameraAeeditorViewReorderThumbClipView;
+    return this.b;
   }
   
   public final void setDurationView(@NotNull TextView paramTextView)
   {
     Intrinsics.checkParameterIsNotNull(paramTextView, "<set-?>");
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.c = paramTextView;
   }
   
   public void setSelected(boolean paramBoolean)
   {
     super.setSelected(paramBoolean);
-    View localView = this.jdField_a_of_type_AndroidViewView;
+    View localView = this.a;
     int i;
     if (paramBoolean) {
       i = 0;
@@ -102,7 +102,7 @@ public final class SelectableThumbClipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.view.reorder.SelectableThumbClipView
  * JD-Core Version:    0.7.0.1
  */

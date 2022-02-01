@@ -11,16 +11,16 @@ class GroupAdapter$1
   
   public void onClick(View paramView)
   {
-    if (WeishiUtils.c()) {
+    if (WeishiUtils.o()) {
       return;
     }
-    GroupAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupGroupAdapter, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupGroupEntity);
-    GroupAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupGroupAdapter, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newFollowJoinGroupGroupEntity, this.jdField_a_of_type_Int);
+    GroupAdapter.a(this.c, this.a);
+    GroupAdapter.a(this.c, this.a, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.GroupAdapter.1
  * JD-Core Version:    0.7.0.1
  */

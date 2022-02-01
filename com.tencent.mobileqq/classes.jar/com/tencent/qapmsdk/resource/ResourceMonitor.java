@@ -74,6 +74,11 @@ public class ResourceMonitor
     pid = Process.myPid();
   }
   
+  private ResourceMonitor()
+  {
+    registerForeBack();
+  }
+  
   private void endSceneInMonitorThread(Message paramMessage)
   {
     paramMessage = (TagItem)paramMessage.obj;
@@ -436,7 +441,6 @@ public class ResourceMonitor
       if (BaseInfo.app != null) {
         BaseInfo.app.registerReceiver(new TemperatureCollector(), TemperatureCollector.getFilter());
       }
-      registerForeBack();
       hasInit = true;
     }
     if ((RuntimeConfig.globalMonitorCount == 0) && (RunTimeEnv.isResourceMode())) {
@@ -540,7 +544,7 @@ public class ResourceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qapmsdk.resource.ResourceMonitor
  * JD-Core Version:    0.7.0.1
  */

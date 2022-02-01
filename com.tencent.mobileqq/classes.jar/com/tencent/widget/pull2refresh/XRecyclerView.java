@@ -47,9 +47,9 @@ public class XRecyclerView
   private void init()
   {
     setPullToRefreshListener(this);
-    LayoutInflater.from(getContext()).inflate(2131563086, this, true);
+    LayoutInflater.from(getContext()).inflate(2131629724, this, true);
     this.mLoadMoreLayout = new XLoadMoreLayout(getContext());
-    this.mRecyclerView = ((RecyclerViewWithHeaderFooter)findViewById(2131374304));
+    this.mRecyclerView = ((RecyclerViewWithHeaderFooter)findViewById(2131442467));
     this.mLoadMoreLayoutHelper = new LoadingMoreHelper(this.mLoadMoreLayout, getContext());
     this.mLoadMoreLayoutHelper.setLoadMoreEnabled(true);
     this.mLoadMoreLayoutHelper.setOnLoadMoreListener(this);
@@ -86,7 +86,7 @@ public class XRecyclerView
       setPullHeaderBgDrawable(new ColorDrawable(Color.parseColor("#F7F7F7")));
       return localView;
     }
-    setPullHeaderBgDrawable(getResources().getDrawable(2130839396));
+    setPullHeaderBgDrawable(getResources().getDrawable(2130839580));
     return localView;
   }
   
@@ -210,7 +210,7 @@ public class XRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.XRecyclerView
  * JD-Core Version:    0.7.0.1
  */

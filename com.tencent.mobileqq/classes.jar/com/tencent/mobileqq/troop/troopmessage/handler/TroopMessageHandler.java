@@ -49,7 +49,7 @@ public class TroopMessageHandler
       arrayOfObject[3] = "";
       if (paramFromServiceMsg.getResultCode() != 1000)
       {
-        notifyUI(TroopMessageObserver.a, false, arrayOfObject);
+        notifyUI(TroopMessageObserver.b, false, arrayOfObject);
         return;
       }
       paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
@@ -124,20 +124,15 @@ public class TroopMessageHandler
       }
       bool1 = paramObject.bool_show_at_all_lable.get();
       label413:
-      notifyUI(TroopMessageObserver.a, true, new Object[] { str, Boolean.valueOf(bool2), paramToServiceMsg, paramFromServiceMsg, Boolean.valueOf(bool1) });
+      notifyUI(TroopMessageObserver.b, true, new Object[] { str, Boolean.valueOf(bool2), paramToServiceMsg, paramFromServiceMsg, Boolean.valueOf(bool1) });
       return;
       label455:
-      notifyUI(TroopMessageObserver.a, false, arrayOfObject);
+      notifyUI(TroopMessageObserver.b, false, arrayOfObject);
       return;
-      notifyUI(TroopMessageObserver.a, false, arrayOfObject);
+      notifyUI(TroopMessageObserver.b, false, arrayOfObject);
       return;
-      notifyUI(TroopMessageObserver.a, false, arrayOfObject);
+      notifyUI(TroopMessageObserver.b, false, arrayOfObject);
     }
-  }
-  
-  protected String a()
-  {
-    return "TroopMessageHandler";
   }
   
   public void a(String paramString1, String paramString2)
@@ -175,6 +170,11 @@ public class TroopMessageHandler
       ((StringBuilder)localObject).append(paramString2);
       QLog.d("TroopMessageHandler", 2, ((StringBuilder)localObject).toString());
     }
+  }
+  
+  protected String dv_()
+  {
+    return "TroopMessageHandler";
   }
   
   public Set<String> getCommandList()
@@ -219,7 +219,7 @@ public class TroopMessageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopmessage.handler.TroopMessageHandler
  * JD-Core Version:    0.7.0.1
  */

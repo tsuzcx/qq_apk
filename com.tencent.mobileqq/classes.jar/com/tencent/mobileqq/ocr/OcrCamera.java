@@ -42,189 +42,69 @@ import mqq.os.MqqHandler;
 public class OcrCamera
   implements Handler.Callback
 {
-  int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  public RectF a;
-  Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new OcrCamera.6(this);
-  private Camera jdField_a_of_type_AndroidHardwareCamera;
-  OrientationEventListener jdField_a_of_type_AndroidViewOrientationEventListener;
-  SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  ARCloudImageSelect jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect;
-  CameraHolder jdField_a_of_type_ComTencentMobileqqCameraCameraHolder;
-  OcrCamera.CameraCallback jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback;
-  WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-  volatile boolean jdField_a_of_type_Boolean = true;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  volatile boolean jdField_b_of_type_Boolean = true;
-  byte[] jdField_b_of_type_ArrayOfByte;
-  int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean;
-  int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  public int e;
-  private boolean e;
-  int jdField_f_of_type_Int = 0;
-  private volatile boolean jdField_f_of_type_Boolean;
-  private int jdField_g_of_type_Int;
-  private boolean jdField_g_of_type_Boolean = true;
-  private int h;
-  private int i;
-  private int j;
-  private int k;
-  private int l;
+  private int A;
+  private boolean B;
+  private boolean C;
+  private volatile boolean D;
+  private boolean E = true;
+  private long F;
+  SurfaceHolder a;
+  WeakReferenceHandler b;
+  OcrCamera.CameraCallback c;
+  CameraHolder d;
+  int e;
+  int f;
+  ARCloudImageSelect g;
+  volatile boolean h = true;
+  volatile boolean i = true;
+  OrientationEventListener j;
+  byte[] k;
+  int l;
+  int m;
+  boolean n;
+  public int o = 0;
+  int p = 0;
+  Camera.PreviewCallback q = new OcrCamera.6(this);
+  public RectF r;
+  byte[] s;
+  private long t;
+  private Camera u;
+  private int v;
+  private int w;
+  private int x;
+  private int y;
+  private int z;
   
   public OcrCamera(Context paramContext, OcrCamera.CameraCallback paramCameraCallback, SurfaceHolder paramSurfaceHolder)
   {
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback = paramCameraCallback;
-    this.jdField_a_of_type_AndroidViewSurfaceHolder = paramSurfaceHolder;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqCameraCameraHolder = CameraHolder.a();
-    this.jdField_a_of_type_AndroidViewOrientationEventListener = new OcrCamera.1(this, paramContext);
-    paramContext = OcrDpc.a();
+    this.c = paramCameraCallback;
+    this.a = paramSurfaceHolder;
+    this.b = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.d = CameraHolder.a();
+    this.j = new OcrCamera.1(this, paramContext);
+    paramContext = OcrDpc.b();
     if (paramContext != null)
     {
-      this.c = paramContext.i;
-      this.jdField_d_of_type_Int = (paramContext.jdField_d_of_type_Int * paramContext.jdField_e_of_type_Int);
-      if (this.jdField_d_of_type_Int < 76800) {
-        this.jdField_d_of_type_Int = 921600;
+      this.l = paramContext.k;
+      this.m = (paramContext.f * paramContext.g);
+      if (this.m < 76800) {
+        this.m = 921600;
       }
     }
     else
     {
-      this.c = 100;
-      this.jdField_d_of_type_Int = 921600;
+      this.l = 100;
+      this.m = 921600;
     }
     if (QLog.isColorLevel())
     {
       paramContext = new StringBuilder();
       paramContext.append("OcrCamera mFrameGap:");
-      paramContext.append(this.c);
+      paramContext.append(this.l);
       paramContext.append(",mMaxPreviewPixels:");
-      paramContext.append(this.jdField_d_of_type_Int);
+      paramContext.append(this.m);
       QLog.d("Q.ocr.camera", 2, paramContext.toString());
     }
-  }
-  
-  private int a()
-  {
-    try
-    {
-      if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.ocr.camera", 2, "openCamera take up!");
-        }
-        return -1001;
-      }
-      try
-      {
-        this.jdField_a_of_type_AndroidHardwareCamera = CameraUtil.a();
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-      }
-      if (this.jdField_a_of_type_AndroidHardwareCamera == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.ocr.camera", 2, "openCamera failed!");
-        }
-        return -1002;
-      }
-      this.jdField_a_of_type_Int = CameraAbility.b();
-      CameraParameters.a(this.jdField_a_of_type_AndroidHardwareCamera, 0, 0);
-      int m = 90;
-      if (((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProduct(CameraCompatibleConstants.g)) {
-        m = 270;
-      }
-      this.jdField_a_of_type_AndroidHardwareCamera.setDisplayOrientation(m);
-      Object localObject3 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-      Object localObject1 = new PixelFormat();
-      m = ((Camera.Parameters)localObject3).getPreviewFormat();
-      PixelFormat.getPixelFormatInfo(m, (PixelFormat)localObject1);
-      Object localObject4 = a(this.jdField_a_of_type_AndroidHardwareCamera, ScreenUtil.SCREEN_WIDTH, ScreenUtil.SCREEN_HIGHT, false);
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("openCamera bestPreviewSize:");
-        localStringBuilder.append(((Point)localObject4).x);
-        localStringBuilder.append(",");
-        localStringBuilder.append(((Point)localObject4).y);
-        QLog.d("Q.ocr.camera", 2, localStringBuilder.toString());
-      }
-      Object localObject6;
-      try
-      {
-        ((Camera.Parameters)localObject3).setPreviewSize(((Point)localObject4).x, ((Point)localObject4).y);
-        this.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)localObject3);
-      }
-      catch (Exception localException3)
-      {
-        localException3.printStackTrace();
-        localObject6 = new StringBuilder();
-        ((StringBuilder)localObject6).append("openInternal setCamera Params1 exp ");
-        ((StringBuilder)localObject6).append(localException3.getMessage());
-        QLog.d("Q.ocr.camera", 1, ((StringBuilder)localObject6).toString());
-      }
-      int n = this.jdField_e_of_type_Int;
-      if (n == 1) {
-        try
-        {
-          localObject5 = this.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-          ((Camera.Parameters)localObject5).setPictureFormat(256);
-          ((Camera.Parameters)localObject5).setJpegQuality(100);
-          localObject6 = a(this.jdField_a_of_type_AndroidHardwareCamera, ScreenUtil.SCREEN_WIDTH, ScreenUtil.SCREEN_HIGHT, true);
-          if ((((Point)localObject6).x >= ((Point)localObject4).x) && (((Point)localObject6).y >= ((Point)localObject4).y))
-          {
-            ((Camera.Parameters)localObject5).setPictureSize(((Point)localObject6).x, ((Point)localObject6).y);
-            this.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)localObject5);
-            localObject4 = ((Camera.Parameters)localObject5).getPictureSize();
-            this.i = ((Camera.Size)localObject4).width;
-            this.j = ((Camera.Size)localObject4).height;
-            this.jdField_g_of_type_Boolean = true;
-          }
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          Object localObject5 = new StringBuilder();
-          ((StringBuilder)localObject5).append("openInternal setCamera Params2 exp ");
-          ((StringBuilder)localObject5).append(localException2.getMessage());
-          QLog.d("Q.ocr.camera", 1, ((StringBuilder)localObject5).toString());
-          this.jdField_g_of_type_Boolean = false;
-        }
-      }
-      localObject3 = ((Camera.Parameters)localObject3).getPreviewSize();
-      this.jdField_g_of_type_Int = ((Camera.Size)localObject3).width;
-      this.h = ((Camera.Size)localObject3).height;
-      this.k = m;
-      this.l = ((PixelFormat)localObject1).bitsPerPixel;
-      if (QLog.isColorLevel())
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("openCamera picWidth:");
-        ((StringBuilder)localObject1).append(this.jdField_g_of_type_Int);
-        ((StringBuilder)localObject1).append(",picHeight:");
-        ((StringBuilder)localObject1).append(this.h);
-        ((StringBuilder)localObject1).append(",picFormat:");
-        ((StringBuilder)localObject1).append(this.k);
-        ((StringBuilder)localObject1).append("  mTakePicWidth:");
-        ((StringBuilder)localObject1).append(this.i);
-        ((StringBuilder)localObject1).append("   mTakePicHeight:");
-        ((StringBuilder)localObject1).append(this.j);
-        QLog.d("Q.ocr.camera", 2, ((StringBuilder)localObject1).toString());
-      }
-      boolean bool = b();
-      if (!bool) {
-        return -1003;
-      }
-      this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
-      return 0;
-    }
-    finally {}
   }
   
   private Point a(Camera paramCamera, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -246,50 +126,50 @@ public class OcrCamera
     paramCamera = null;
     float f3 = paramInt1 / paramInt2;
     float f1 = (1.0F / 1.0F);
-    int m = this.jdField_d_of_type_Int;
+    int i1 = this.m;
     if (paramBoolean) {
-      m = 3686400;
+      i1 = 3686400;
     }
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       Camera.Size localSize2 = (Camera.Size)((Iterator)localObject).next();
-      int n = localSize2.width;
-      int i1 = localSize2.height;
-      int i2 = n * i1;
-      if ((i2 >= 76800) && (i2 <= m) && ((n != 980) || (i1 != 800) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"GT-I9220".equalsIgnoreCase(Build.MODEL)) && (!"GT-N7000".equalsIgnoreCase(Build.MODEL)))) && (((n == 1184) && (i1 == 666)) || ((n != 704) || (i1 != 576) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9300".equalsIgnoreCase(Build.MODEL)))))
+      int i2 = localSize2.width;
+      int i3 = localSize2.height;
+      int i4 = i2 * i3;
+      if ((i4 >= 76800) && (i4 <= i1) && ((i2 != 980) || (i3 != 800) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || ((!"GT-I9220".equalsIgnoreCase(Build.MODEL)) && (!"GT-N7000".equalsIgnoreCase(Build.MODEL)))) && (((i2 == 1184) && (i3 == 666)) || ((i2 != 704) || (i3 != 576) || (!"samsung".equalsIgnoreCase(Build.MANUFACTURER)) || (!"GT-I9300".equalsIgnoreCase(Build.MODEL)))))
       {
-        int i3 = 0;
+        int i5 = 0;
         if (paramInt1 > paramInt2) {
-          i2 = 1;
+          i4 = 1;
         } else {
-          i2 = 0;
+          i4 = 0;
         }
-        if (n < i1) {
-          i3 = 1;
+        if (i2 < i3) {
+          i5 = 1;
         }
-        int i4;
-        if (i2 == i3)
+        int i6;
+        if (i4 == i5)
         {
-          i3 = i1;
-          i2 = n;
+          i5 = i3;
           i4 = i2;
+          i6 = i4;
         }
         else
         {
-          i4 = i1;
-          i2 = n;
-          i3 = i2;
+          i6 = i3;
+          i4 = i2;
+          i5 = i4;
         }
-        if ((i3 == paramInt1) && (i4 == paramInt2)) {
-          return new Point(n, i1);
+        if ((i5 == paramInt1) && (i6 == paramInt2)) {
+          return new Point(i2, i3);
         }
-        if ((i3 >= paramInt1 >> 1) && (i3 >> 1 <= paramInt1) && (i4 >= paramInt2 >> 1) && (i4 >> 1 <= paramInt2))
+        if ((i5 >= paramInt1 >> 1) && (i5 >> 1 <= paramInt1) && (i6 >= paramInt2 >> 1) && (i6 >> 1 <= paramInt2))
         {
-          float f2 = Math.abs(i3 / i4 - f3);
+          float f2 = Math.abs(i5 / i6 - f3);
           if (f2 <= f1)
           {
-            paramCamera = new Point(n, i1);
+            paramCamera = new Point(i2, i3);
             f1 = f2;
           }
         }
@@ -305,32 +185,32 @@ public class OcrCamera
   {
     try
     {
-      if (this.jdField_b_of_type_Boolean)
+      if (this.i)
       {
-        this.jdField_b_of_type_Boolean = false;
+        this.i = false;
         if (QLog.isDebugVersion()) {
           ThreadManager.getUIHandler().post(new OcrCamera.4(this));
         }
         ReportController.b(null, "dc00898", "", "", "0X80082C1", "0X80082C1", 0, 0, "", "", "", "");
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        this.F = System.currentTimeMillis();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect == null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect = new ARCloudImageSelect(ARCloudImageSelect.jdField_a_of_type_Int);
+      if (this.g == null) {
+        this.g = new ARCloudImageSelect(ARCloudImageSelect.a);
       }
-      int m = this.jdField_f_of_type_Int;
-      if (m >= 5) {
+      int i1 = this.p;
+      if (i1 >= 5) {
         return;
       }
       boolean bool;
       try
       {
-        bool = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a(paramArrayOfByte, this.jdField_g_of_type_Int, this.h);
+        bool = this.g.a(paramArrayOfByte, this.v, this.w);
         try
         {
-          this.jdField_f_of_type_Int = 0;
+          this.p = 0;
         }
         catch (Throwable paramArrayOfByte) {}
-        this.jdField_f_of_type_Int += 1;
+        this.p += 1;
       }
       catch (Throwable paramArrayOfByte)
       {
@@ -342,7 +222,7 @@ public class OcrCamera
       QLog.d("Q.ocr.camera", 4, localStringBuilder.toString());
       if (bool)
       {
-        long l1 = System.currentTimeMillis() - this.jdField_b_of_type_Long;
+        long l1 = System.currentTimeMillis() - this.F;
         paramArrayOfByte = new StringBuilder();
         paramArrayOfByte.append("select image isBest:");
         paramArrayOfByte.append(bool);
@@ -355,24 +235,24 @@ public class OcrCamera
         if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
         {
           QLog.d("Q.ocr.camera", 1, "selectImage best but error!");
-          QQToast.a(BaseApplicationImpl.getContext(), 1, 2131699079, 0).a();
+          QQToast.makeText(BaseApplicationImpl.getContext(), 1, 2131897088, 0).show();
           return;
         }
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Boolean = true;
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudImageSelect.a();
+        this.h = false;
+        this.i = true;
+        paramArrayOfByte = this.g.a();
         if (paramArrayOfByte == null)
         {
-          this.jdField_a_of_type_Boolean = true;
+          this.h = true;
           QLog.d("Q.ocr.camera", 1, "postUploadTask imageData == null");
           return;
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback.a();
+        if (this.c != null) {
+          this.c.a();
         }
-        paramArrayOfByte = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(paramArrayOfByte, this.jdField_g_of_type_Int, this.h, this.k, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback.a(paramArrayOfByte);
+        paramArrayOfByte = ((IOCR)QRoute.api(IOCR.class)).savePreviewImage(paramArrayOfByte, this.v, this.w, this.z, this.e, this.f);
+        if (this.c != null) {
+          this.c.a(paramArrayOfByte);
         }
       }
       return;
@@ -399,7 +279,7 @@ public class OcrCamera
     //   21: aload_1
     //   22: iload_2
     //   23: newarray byte
-    //   25: invokevirtual 497	android/hardware/Camera:addCallbackBuffer	([B)V
+    //   25: invokevirtual 399	android/hardware/Camera:addCallbackBuffer	([B)V
     //   28: iload 4
     //   30: iconst_1
     //   31: iadd
@@ -409,78 +289,78 @@ public class OcrCamera
     //   39: iconst_1
     //   40: if_icmple +6 -> 46
     //   43: goto +99 -> 142
-    //   46: invokestatic 502	com/tencent/image/URLDrawable:clearMemoryCache	()V
-    //   49: new 107	java/lang/StringBuilder
+    //   46: invokestatic 404	com/tencent/image/URLDrawable:clearMemoryCache	()V
+    //   49: new 129	java/lang/StringBuilder
     //   52: dup
-    //   53: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   53: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   56: astore 5
     //   58: aload 5
-    //   60: ldc_w 504
-    //   63: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: ldc_w 406
+    //   63: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: pop
     //   67: aload 5
     //   69: iload_3
-    //   70: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   70: invokevirtual 139	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   73: pop
-    //   74: ldc 121
+    //   74: ldc 143
     //   76: iconst_1
     //   77: aload 5
-    //   79: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   79: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   85: goto +50 -> 135
     //   88: astore 5
     //   90: aload 5
-    //   92: invokevirtual 155	java/lang/Exception:printStackTrace	()V
-    //   95: new 107	java/lang/StringBuilder
+    //   92: invokevirtual 409	java/lang/Exception:printStackTrace	()V
+    //   95: new 129	java/lang/StringBuilder
     //   98: dup
-    //   99: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   99: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   102: astore 6
     //   104: aload 6
-    //   106: ldc_w 506
-    //   109: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: ldc_w 411
+    //   109: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: pop
     //   113: aload 6
     //   115: aload 5
-    //   117: invokevirtual 243	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   120: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 412	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   120: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   123: pop
-    //   124: ldc 121
+    //   124: ldc 143
     //   126: iconst_1
     //   127: aload 6
-    //   129: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   129: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   132: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   135: iload_3
     //   136: iconst_1
     //   137: iadd
     //   138: istore_3
     //   139: goto -123 -> 16
-    //   142: invokestatic 105	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   142: invokestatic 127	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   145: ifeq +50 -> 195
-    //   148: new 107	java/lang/StringBuilder
+    //   148: new 129	java/lang/StringBuilder
     //   151: dup
-    //   152: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   152: invokespecial 130	java/lang/StringBuilder:<init>	()V
     //   155: astore_1
     //   156: aload_1
-    //   157: ldc_w 508
-    //   160: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: ldc_w 414
+    //   160: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: pop
     //   164: aload_1
     //   165: iload 4
-    //   167: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   167: invokevirtual 139	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   170: pop
     //   171: aload_1
-    //   172: ldc_w 510
-    //   175: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: ldc_w 416
+    //   175: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: pop
     //   179: aload_1
     //   180: iload_2
-    //   181: invokevirtual 117	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 139	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   184: pop
-    //   185: ldc 121
+    //   185: ldc 143
     //   187: iconst_2
     //   188: aload_1
-    //   189: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   192: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   189: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   192: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   195: iload 4
     //   197: iconst_1
     //   198: if_icmple +5 -> 203
@@ -488,10 +368,10 @@ public class OcrCamera
     //   202: ireturn
     //   203: iconst_0
     //   204: ireturn
-    //   205: ldc 121
+    //   205: ldc 143
     //   207: iconst_1
-    //   208: ldc_w 512
-    //   211: invokestatic 128	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   208: ldc_w 418
+    //   211: invokestatic 150	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   214: iconst_0
     //   215: ireturn
     //   216: astore 5
@@ -501,8 +381,8 @@ public class OcrCamera
     //   0	221	0	this	OcrCamera
     //   0	221	1	paramCamera	Camera
     //   0	221	2	paramInt	int
-    //   12	127	3	m	int
-    //   14	185	4	n	int
+    //   12	127	3	i1	int
+    //   14	185	4	i2	int
     //   56	22	5	localStringBuilder1	StringBuilder
     //   88	28	5	localException	Exception
     //   216	1	5	localOutOfMemoryError	java.lang.OutOfMemoryError
@@ -513,30 +393,149 @@ public class OcrCamera
     //   21	28	216	java/lang/OutOfMemoryError
   }
   
-  private boolean b()
+  private int i()
   {
     try
     {
-      Object localObject1 = this.jdField_a_of_type_AndroidHardwareCamera;
+      if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.ocr.camera", 2, "openCamera take up!");
+        }
+        return -1001;
+      }
+      try
+      {
+        this.u = CameraUtil.a();
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+      }
+      if (this.u == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.ocr.camera", 2, "openCamera failed!");
+        }
+        return -1002;
+      }
+      this.e = CameraAbility.f();
+      CameraParameters.a(this.u, 0, 0);
+      int i1 = 90;
+      if (((ICameraCompatible)QRoute.api(ICameraCompatible.class)).isFoundProduct(CameraCompatibleConstants.g)) {
+        i1 = 270;
+      }
+      this.u.setDisplayOrientation(i1);
+      Object localObject3 = this.u.getParameters();
+      Object localObject1 = new PixelFormat();
+      i1 = ((Camera.Parameters)localObject3).getPreviewFormat();
+      PixelFormat.getPixelFormatInfo(i1, (PixelFormat)localObject1);
+      Object localObject4 = a(this.u, ScreenUtil.SCREEN_WIDTH, ScreenUtil.SCREEN_HIGHT, false);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("openCamera bestPreviewSize:");
+        localStringBuilder.append(((Point)localObject4).x);
+        localStringBuilder.append(",");
+        localStringBuilder.append(((Point)localObject4).y);
+        QLog.d("Q.ocr.camera", 2, localStringBuilder.toString());
+      }
+      Object localObject6;
+      try
+      {
+        ((Camera.Parameters)localObject3).setPreviewSize(((Point)localObject4).x, ((Point)localObject4).y);
+        this.u.setParameters((Camera.Parameters)localObject3);
+      }
+      catch (Exception localException3)
+      {
+        localException3.printStackTrace();
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("openInternal setCamera Params1 exp ");
+        ((StringBuilder)localObject6).append(localException3.getMessage());
+        QLog.d("Q.ocr.camera", 1, ((StringBuilder)localObject6).toString());
+      }
+      int i2 = this.o;
+      if (i2 == 1) {
+        try
+        {
+          localObject5 = this.u.getParameters();
+          ((Camera.Parameters)localObject5).setPictureFormat(256);
+          ((Camera.Parameters)localObject5).setJpegQuality(100);
+          localObject6 = a(this.u, ScreenUtil.SCREEN_WIDTH, ScreenUtil.SCREEN_HIGHT, true);
+          if ((((Point)localObject6).x >= ((Point)localObject4).x) && (((Point)localObject6).y >= ((Point)localObject4).y))
+          {
+            ((Camera.Parameters)localObject5).setPictureSize(((Point)localObject6).x, ((Point)localObject6).y);
+            this.u.setParameters((Camera.Parameters)localObject5);
+            localObject4 = ((Camera.Parameters)localObject5).getPictureSize();
+            this.x = ((Camera.Size)localObject4).width;
+            this.y = ((Camera.Size)localObject4).height;
+            this.E = true;
+          }
+        }
+        catch (Exception localException2)
+        {
+          localException2.printStackTrace();
+          Object localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("openInternal setCamera Params2 exp ");
+          ((StringBuilder)localObject5).append(localException2.getMessage());
+          QLog.d("Q.ocr.camera", 1, ((StringBuilder)localObject5).toString());
+          this.E = false;
+        }
+      }
+      localObject3 = ((Camera.Parameters)localObject3).getPreviewSize();
+      this.v = ((Camera.Size)localObject3).width;
+      this.w = ((Camera.Size)localObject3).height;
+      this.z = i1;
+      this.A = ((PixelFormat)localObject1).bitsPerPixel;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("openCamera picWidth:");
+        ((StringBuilder)localObject1).append(this.v);
+        ((StringBuilder)localObject1).append(",picHeight:");
+        ((StringBuilder)localObject1).append(this.w);
+        ((StringBuilder)localObject1).append(",picFormat:");
+        ((StringBuilder)localObject1).append(this.z);
+        ((StringBuilder)localObject1).append("  mTakePicWidth:");
+        ((StringBuilder)localObject1).append(this.x);
+        ((StringBuilder)localObject1).append("   mTakePicHeight:");
+        ((StringBuilder)localObject1).append(this.y);
+        QLog.d("Q.ocr.camera", 2, ((StringBuilder)localObject1).toString());
+      }
+      boolean bool = j();
+      if (!bool) {
+        return -1003;
+      }
+      this.j.enable();
+      return 0;
+    }
+    finally {}
+  }
+  
+  private boolean j()
+  {
+    try
+    {
+      Object localObject1 = this.u;
       boolean bool1 = true;
       if (localObject1 != null)
       {
-        localObject1 = this.jdField_a_of_type_AndroidViewSurfaceHolder;
+        localObject1 = this.a;
         if (localObject1 != null)
         {
           try
           {
-            if (this.jdField_a_of_type_AndroidHardwareCamera$PreviewCallback != null)
+            if (this.q != null)
             {
-              int m = this.jdField_g_of_type_Int * this.h * this.l / 8;
-              boolean bool2 = a(this.jdField_a_of_type_AndroidHardwareCamera, m);
+              int i1 = this.v * this.w * this.A / 8;
+              boolean bool2 = a(this.u, i1);
               if (!bool2) {
                 return false;
               }
-              this.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(this.jdField_a_of_type_AndroidHardwareCamera$PreviewCallback);
+              this.u.setPreviewCallbackWithBuffer(this.q);
             }
-            this.jdField_a_of_type_AndroidHardwareCamera.setPreviewDisplay(this.jdField_a_of_type_AndroidViewSurfaceHolder);
-            this.jdField_a_of_type_AndroidHardwareCamera.startPreview();
+            this.u.setPreviewDisplay(this.a);
+            this.u.startPreview();
             try
             {
               f();
@@ -562,7 +561,7 @@ public class OcrCamera
       bool1 = false;
       label175:
       if (bool1) {
-        this.jdField_e_of_type_Boolean = false;
+        this.C = false;
       }
       if (QLog.isColorLevel())
       {
@@ -576,22 +575,22 @@ public class OcrCamera
     finally {}
   }
   
-  private boolean c()
+  private boolean k()
   {
     boolean bool1 = false;
     boolean bool2 = false;
     try
     {
-      Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+      Camera localCamera = this.u;
       if (localCamera != null)
       {
         try
         {
-          this.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallbackWithBuffer(null);
-          this.jdField_a_of_type_AndroidHardwareCamera.stopPreview();
+          this.u.setPreviewCallbackWithBuffer(null);
+          this.u.stopPreview();
           try
           {
-            this.jdField_a_of_type_AndroidViewOrientationEventListener.disable();
+            this.j.disable();
             g();
             bool1 = true;
           }
@@ -611,7 +610,7 @@ public class OcrCamera
         QLog.d("Q.ocr.camera", 1, localStringBuilder2.toString());
       }
       if (bool1) {
-        this.jdField_e_of_type_Boolean = true;
+        this.C = true;
       }
       if (QLog.isColorLevel())
       {
@@ -625,23 +624,23 @@ public class OcrCamera
     finally {}
   }
   
-  private boolean d()
+  private boolean l()
   {
     boolean bool2 = false;
     try
     {
-      Camera localCamera = this.jdField_a_of_type_AndroidHardwareCamera;
+      Camera localCamera = this.u;
       boolean bool1 = bool2;
       if (localCamera != null) {
         try
         {
-          this.jdField_a_of_type_AndroidHardwareCamera.release();
+          this.u.release();
           bool1 = true;
         }
         catch (Exception localException)
         {
-          this.jdField_a_of_type_AndroidHardwareCamera = null;
-          this.jdField_a_of_type_AndroidViewSurfaceHolder = null;
+          this.u = null;
+          this.a = null;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("closeCamera failed. error msg: ");
           localStringBuilder.append(localException.getMessage());
@@ -649,7 +648,7 @@ public class OcrCamera
           bool1 = bool2;
         }
       }
-      this.jdField_b_of_type_ArrayOfByte = null;
+      this.s = null;
       return bool1;
     }
     finally {}
@@ -657,40 +656,40 @@ public class OcrCamera
   
   public void a()
   {
-    if (this.jdField_d_of_type_Boolean)
+    if (this.B)
     {
-      if (this.jdField_e_of_type_Boolean)
+      if (this.C)
       {
         e();
         b();
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(0);
-    Object localObject = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(0);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject);
+    this.b.removeMessages(0);
+    Object localObject = this.b.obtainMessage(0);
+    this.b.sendMessage((Message)localObject);
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("open isStop:");
-      ((StringBuilder)localObject).append(this.jdField_e_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.C);
       ((StringBuilder)localObject).append(",isOpen:");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
+      ((StringBuilder)localObject).append(this.B);
       QLog.d("Q.ocr.camera", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_e_of_type_Int = paramInt;
-    if (this.jdField_e_of_type_Int == 1)
+    this.o = paramInt;
+    if (this.o == 1)
     {
-      this.jdField_d_of_type_Int = 2073600;
+      this.m = 2073600;
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("setOcrMode device model: ");
-        localStringBuilder.append(DeviceInfoUtil.i());
+        localStringBuilder.append(DeviceInfoUtil.u());
         QLog.i("Q.ocr.camera", 1, localStringBuilder.toString());
       }
     }
@@ -698,84 +697,15 @@ public class OcrCamera
   
   public void a(RectF paramRectF)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramRectF;
-  }
-  
-  public boolean a()
-  {
-    Object localObject;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("takePicture, isOpen:");
-      ((StringBuilder)localObject).append(this.jdField_d_of_type_Boolean);
-      ((StringBuilder)localObject).append(",mNeedSelectImage:");
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
-      ((StringBuilder)localObject).append(",isStop:");
-      ((StringBuilder)localObject).append(this.jdField_e_of_type_Boolean);
-      ((StringBuilder)localObject).append(",picData:");
-      boolean bool;
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      ((StringBuilder)localObject).append(bool);
-      QLog.d("Q.ocr.camera", 2, ((StringBuilder)localObject).toString());
-    }
-    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
-    {
-      QLog.d("Q.ocr.camera", 1, "takePicture but net error!");
-      QQToast.a(BaseApplicationImpl.getContext(), 1, 2131699079, 0).a();
-      return false;
-    }
-    if ((this.jdField_d_of_type_Boolean) && (!this.jdField_e_of_type_Boolean) && ((this.jdField_a_of_type_Boolean) || (this.jdField_e_of_type_Int == 1)) && (this.jdField_a_of_type_ArrayOfByte != null) && (!this.jdField_f_of_type_Boolean))
-    {
-      localObject = this.jdField_a_of_type_AndroidHardwareCamera;
-      if (localObject != null)
-      {
-        this.jdField_f_of_type_Boolean = true;
-        if ((this.jdField_e_of_type_Int == 1) && (this.jdField_g_of_type_Boolean) && (this.i * this.j >= this.jdField_g_of_type_Int * this.h))
-        {
-          ((Camera)localObject).takePicture(null, null, null, new OcrCamera.7(this));
-          return true;
-        }
-        localObject = this.jdField_b_of_type_ArrayOfByte;
-        if ((localObject == null) || (localObject.length != this.jdField_a_of_type_ArrayOfByte.length)) {
-          try
-          {
-            this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_ArrayOfByte.length];
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("Q.ocr.camera", 1, new Object[] { "takePicture error: ", localThrowable.getMessage() });
-            this.jdField_b_of_type_ArrayOfByte = null;
-          }
-        }
-        byte[] arrayOfByte1 = this.jdField_b_of_type_ArrayOfByte;
-        if (arrayOfByte1 != null)
-        {
-          byte[] arrayOfByte2 = this.jdField_a_of_type_ArrayOfByte;
-          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, arrayOfByte2.length);
-          arrayOfByte1 = this.jdField_b_of_type_ArrayOfByte;
-        }
-        else
-        {
-          arrayOfByte1 = this.jdField_a_of_type_ArrayOfByte;
-        }
-        a(arrayOfByte1, false);
-        return true;
-      }
-    }
-    return false;
+    this.r = paramRectF;
   }
   
   public boolean a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
     if (paramArrayOfByte != null)
     {
-      WeakReferenceHandler localWeakReferenceHandler = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
-      if ((localWeakReferenceHandler != null) && (this.jdField_a_of_type_AndroidHardwareCamera != null))
+      WeakReferenceHandler localWeakReferenceHandler = this.b;
+      if ((localWeakReferenceHandler != null) && (this.u != null))
       {
         localWeakReferenceHandler.post(new OcrCamera.8(this, paramBoolean, paramArrayOfByte));
         return true;
@@ -786,9 +716,9 @@ public class OcrCamera
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1);
-    Message localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+    this.b.removeMessages(1);
+    Message localMessage = this.b.obtainMessage(1);
+    this.b.sendMessage(localMessage);
     if (QLog.isColorLevel()) {
       QLog.d("Q.ocr.camera", 2, "startPreview");
     }
@@ -796,9 +726,9 @@ public class OcrCamera
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
-    Message localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(2);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+    this.b.removeMessages(2);
+    Message localMessage = this.b.obtainMessage(2);
+    this.b.sendMessage(localMessage);
     if (QLog.isColorLevel()) {
       QLog.d("Q.ocr.camera", 2, "stopPreview");
     }
@@ -806,9 +736,9 @@ public class OcrCamera
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
-    Message localMessage = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(3);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+    this.b.removeCallbacksAndMessages(null);
+    Message localMessage = this.b.obtainMessage(3);
+    this.b.sendMessage(localMessage);
     if (QLog.isColorLevel()) {
       QLog.d("Q.ocr.camera", 2, "close");
     }
@@ -818,8 +748,8 @@ public class OcrCamera
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
+      this.h = true;
+      this.i = true;
       return;
     }
     finally
@@ -833,7 +763,7 @@ public class OcrCamera
   {
     try
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.h = true;
       return;
     }
     finally
@@ -847,7 +777,7 @@ public class OcrCamera
   {
     try
     {
-      this.jdField_a_of_type_Boolean = false;
+      this.h = false;
       return;
     }
     finally
@@ -857,26 +787,95 @@ public class OcrCamera
     }
   }
   
+  public boolean h()
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("takePicture, isOpen:");
+      ((StringBuilder)localObject).append(this.B);
+      ((StringBuilder)localObject).append(",mNeedSelectImage:");
+      ((StringBuilder)localObject).append(this.h);
+      ((StringBuilder)localObject).append(",isStop:");
+      ((StringBuilder)localObject).append(this.C);
+      ((StringBuilder)localObject).append(",picData:");
+      boolean bool;
+      if (this.k == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("Q.ocr.camera", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
+    {
+      QLog.d("Q.ocr.camera", 1, "takePicture but net error!");
+      QQToast.makeText(BaseApplicationImpl.getContext(), 1, 2131897088, 0).show();
+      return false;
+    }
+    if ((this.B) && (!this.C) && ((this.h) || (this.o == 1)) && (this.k != null) && (!this.D))
+    {
+      localObject = this.u;
+      if (localObject != null)
+      {
+        this.D = true;
+        if ((this.o == 1) && (this.E) && (this.x * this.y >= this.v * this.w))
+        {
+          ((Camera)localObject).takePicture(null, null, null, new OcrCamera.7(this));
+          return true;
+        }
+        localObject = this.s;
+        if ((localObject == null) || (localObject.length != this.k.length)) {
+          try
+          {
+            this.s = new byte[this.k.length];
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("Q.ocr.camera", 1, new Object[] { "takePicture error: ", localThrowable.getMessage() });
+            this.s = null;
+          }
+        }
+        byte[] arrayOfByte1 = this.s;
+        if (arrayOfByte1 != null)
+        {
+          byte[] arrayOfByte2 = this.k;
+          System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, arrayOfByte2.length);
+          arrayOfByte1 = this.s;
+        }
+        else
+        {
+          arrayOfByte1 = this.k;
+        }
+        a(arrayOfByte1, false);
+        return true;
+      }
+    }
+    return false;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    int m = paramMessage.what;
-    if (m != 0)
+    int i1 = paramMessage.what;
+    if (i1 != 0)
     {
       boolean bool;
-      if (m != 1)
+      if (i1 != 1)
       {
-        if (m != 2)
+        if (i1 != 2)
         {
-          if (m != 3) {
+          if (i1 != 3) {
             return false;
           }
-          if (this.jdField_d_of_type_Boolean)
+          if (this.B)
           {
-            bool = d();
+            bool = l();
             if (bool) {
-              this.jdField_d_of_type_Boolean = false;
+              this.B = false;
             }
-            paramMessage = this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback;
+            paramMessage = this.c;
             if (paramMessage != null)
             {
               paramMessage.c(bool);
@@ -886,8 +885,8 @@ public class OcrCamera
         }
         else
         {
-          bool = c();
-          paramMessage = this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback;
+          bool = k();
+          paramMessage = this.c;
           if (paramMessage != null)
           {
             paramMessage.b(bool);
@@ -897,8 +896,8 @@ public class OcrCamera
       }
       else
       {
-        bool = b();
-        paramMessage = this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback;
+        bool = j();
+        paramMessage = this.c;
         if (paramMessage != null)
         {
           paramMessage.a(bool);
@@ -906,23 +905,23 @@ public class OcrCamera
         }
       }
     }
-    else if (!this.jdField_d_of_type_Boolean)
+    else if (!this.B)
     {
       try
       {
-        m = a();
+        i1 = i();
       }
       catch (Exception paramMessage)
       {
         paramMessage.printStackTrace();
-        m = -1004;
+        i1 = -1004;
       }
-      if (m == 0) {
-        this.jdField_d_of_type_Boolean = true;
+      if (i1 == 0) {
+        this.B = true;
       }
-      paramMessage = this.jdField_a_of_type_ComTencentMobileqqOcrOcrCamera$CameraCallback;
+      paramMessage = this.c;
       if (paramMessage != null) {
-        paramMessage.a(m, this.jdField_g_of_type_Int, this.h, this.k);
+        paramMessage.a(i1, this.v, this.w, this.z);
       }
     }
     return false;
@@ -930,7 +929,7 @@ public class OcrCamera
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrCamera
  * JD-Core Version:    0.7.0.1
  */

@@ -40,6 +40,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qqfeatureswitch.IFeatureRuntimeService;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
@@ -52,6 +53,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChainChange;
 import tencent.intimate_relation.intimate_relation.IntimateBestFriend;
 import tencent.intimate_relation.intimate_relation.IntimateBuddy;
@@ -62,10 +64,10 @@ import tencent.intimate_relation_ext.intimate_relation_ext.IntimateRelationExtMs
 
 public class FriendIntimateRelationshipHelper
 {
-  static long jdField_a_of_type_Long = 0L;
-  private static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean = false;
+  static boolean a = false;
   static boolean b = false;
+  static long c;
+  private static String d;
   
   public static int a(QQAppInterface paramQQAppInterface)
   {
@@ -77,7 +79,7 @@ public class FriendIntimateRelationshipHelper
       long l = System.currentTimeMillis();
       try
       {
-        j = paramQQAppInterface.d();
+        j = paramQQAppInterface.A();
         i = j;
       }
       catch (Throwable paramQQAppInterface)
@@ -102,11 +104,6 @@ public class FriendIntimateRelationshipHelper
     return j;
   }
   
-  public static String a()
-  {
-    return FriendIntimateRelationshipConfProcessor.a().jdField_a_of_type_JavaLangString;
-  }
-  
   public static String a(int paramInt1, int paramInt2)
   {
     Object localObject = FriendIntimateRelationshipConfProcessor.a();
@@ -118,22 +115,22 @@ public class FriendIntimateRelationshipHelper
         {
           if (paramInt1 != 26)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).c;
+            localObject = ((FriendIntimateRelationshipBean)localObject).d;
             break label188;
           }
           if (paramInt2 == 0)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).g;
+            localObject = ((FriendIntimateRelationshipBean)localObject).h;
             break label188;
           }
           if (paramInt2 == 1)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).h;
+            localObject = ((FriendIntimateRelationshipBean)localObject).i;
             break label188;
           }
           if (paramInt2 == 2)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).i;
+            localObject = ((FriendIntimateRelationshipBean)localObject).j;
             break label188;
           }
         }
@@ -141,17 +138,17 @@ public class FriendIntimateRelationshipHelper
         {
           if (paramInt2 == 0)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).j;
+            localObject = ((FriendIntimateRelationshipBean)localObject).k;
             break label188;
           }
           if (paramInt2 == 1)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).k;
+            localObject = ((FriendIntimateRelationshipBean)localObject).l;
             break label188;
           }
           if (paramInt2 == 2)
           {
-            localObject = ((FriendIntimateRelationshipBean)localObject).l;
+            localObject = ((FriendIntimateRelationshipBean)localObject).m;
             break label188;
           }
         }
@@ -160,17 +157,17 @@ public class FriendIntimateRelationshipHelper
       {
         if (paramInt2 == 0)
         {
-          localObject = ((FriendIntimateRelationshipBean)localObject).d;
+          localObject = ((FriendIntimateRelationshipBean)localObject).e;
           break label188;
         }
         if (paramInt2 == 1)
         {
-          localObject = ((FriendIntimateRelationshipBean)localObject).e;
+          localObject = ((FriendIntimateRelationshipBean)localObject).f;
           break label188;
         }
         if (paramInt2 == 2)
         {
-          localObject = ((FriendIntimateRelationshipBean)localObject).f;
+          localObject = ((FriendIntimateRelationshipBean)localObject).g;
           break label188;
         }
       }
@@ -179,17 +176,17 @@ public class FriendIntimateRelationshipHelper
     {
       if (paramInt2 == 0)
       {
-        localObject = ((FriendIntimateRelationshipBean)localObject).m;
+        localObject = ((FriendIntimateRelationshipBean)localObject).n;
         break label188;
       }
       if (paramInt2 == 1)
       {
-        localObject = ((FriendIntimateRelationshipBean)localObject).n;
+        localObject = ((FriendIntimateRelationshipBean)localObject).o;
         break label188;
       }
       if (paramInt2 == 2)
       {
-        localObject = ((FriendIntimateRelationshipBean)localObject).o;
+        localObject = ((FriendIntimateRelationshipBean)localObject).p;
         break label188;
       }
     }
@@ -204,21 +201,6 @@ public class FriendIntimateRelationshipHelper
     localStringBuilder.append((String)localObject);
     QLog.i("FriendIntimateRelationshipHelper", 1, localStringBuilder.toString());
     return localObject;
-  }
-  
-  public static String a(String paramString)
-  {
-    Object localObject = Uri.parse(FriendIntimateRelationshipConfProcessor.a().jdField_b_of_type_JavaLangString).buildUpon();
-    ((Uri.Builder)localObject).appendQueryParameter("uin", paramString);
-    paramString = ((Uri.Builder)localObject).toString();
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("bindPageURL url:");
-      ((StringBuilder)localObject).append(paramString);
-      QLog.d("FriendIntimateRelationshipHelper", 2, ((StringBuilder)localObject).toString());
-    }
-    return paramString;
   }
   
   public static List<String> a(AppInterface paramAppInterface, String paramString1, String paramString2, int paramInt)
@@ -257,9 +239,9 @@ public class FriendIntimateRelationshipHelper
     String str3 = MutualMarkConfigHelper.a(paramAppInterface, l, 0L);
     String str2 = MutualMarkConfigHelper.a(paramAppInterface, l, 1L);
     String str1 = MutualMarkConfigHelper.a(paramAppInterface, l, 2L);
-    paramInt = paramFriendsManager.n;
-    int i = paramFriendsManager.o;
-    int j = paramFriendsManager.p;
+    paramInt = paramFriendsManager.o;
+    int i = paramFriendsManager.p;
+    int j = paramFriendsManager.q;
     paramAppInterface = paramString1;
     if (paramString1.contains("#intimateshipday1")) {
       paramAppInterface = paramString1.replace("#intimateshipday1", String.valueOf(paramInt));
@@ -290,7 +272,7 @@ public class FriendIntimateRelationshipHelper
       paramString1 = paramAppInterface.replace("#intimateshipname3", str1);
       localArrayList.add(str1);
     }
-    localArrayList.add(0, paramString1.replace(HardCodeUtil.a(2131704972), paramString2));
+    localArrayList.add(0, paramString1.replace(HardCodeUtil.a(2131902863), paramString2));
     return localArrayList;
   }
   
@@ -310,20 +292,20 @@ public class FriendIntimateRelationshipHelper
       if (MutualMarkUtils.a(paramAppInterface)) {
         return;
       }
-      localObject2 = ContactUtils.f(paramAppInterface, paramString1);
+      localObject2 = ContactUtils.g(paramAppInterface, paramString1);
       paramString2 = (String)localObject1;
       if (paramInt3 == 2097154)
       {
         paramString2 = (String)localObject1;
         if (paramInt4 == 0)
         {
-          localObject3 = QVipFriendTag2Processor.c();
+          localObject3 = QVipFriendTag2Processor.e();
           paramString2 = (String)localObject1;
-          if (((QVipFriendTag2Config)localObject3).jdField_a_of_type_Boolean)
+          if (((QVipFriendTag2Config)localObject3).a)
           {
             paramString2 = new StringBuilder();
             paramString2.append((String)localObject1);
-            paramString2.append(((QVipFriendTag2Config)localObject3).jdField_a_of_type_JavaLangString);
+            paramString2.append(((QVipFriendTag2Config)localObject3).b);
             paramString2 = paramString2.toString();
           }
         }
@@ -333,7 +315,7 @@ public class FriendIntimateRelationshipHelper
       paramFriendsManager = (String)paramString2.get(0);
       paramString2.remove(0);
       ((List)localObject1).remove(0);
-      long l = MessageCache.a();
+      long l = MessageCache.c();
       UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(paramString1, paramString1, paramFriendsManager, 0, -5040, paramInt3, l);
       MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
       localMessageForUniteGrayTip.hasRead = 0;
@@ -343,10 +325,10 @@ public class FriendIntimateRelationshipHelper
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append(paramString1);
       ((StringBuilder)localObject3).append("_intimate_");
-      ((StringBuilder)localObject3).append(String.valueOf(paramPushMsg0x210C7Info.jdField_b_of_type_Long));
+      ((StringBuilder)localObject3).append(String.valueOf(paramPushMsg0x210C7Info.b));
       ((StringBuilder)localObject3).append("_");
-      ((StringBuilder)localObject3).append(String.valueOf(paramPushMsg0x210C7Info.jdField_b_of_type_Int));
-      ((UniteGrayTipParam)localObject2).d = ((StringBuilder)localObject3).toString();
+      ((StringBuilder)localObject3).append(String.valueOf(paramPushMsg0x210C7Info.e));
+      ((UniteGrayTipParam)localObject2).p = ((StringBuilder)localObject3).toString();
       localObject2 = paramFriendsManager;
       localObject3 = paramString2;
       int j;
@@ -428,11 +410,11 @@ public class FriendIntimateRelationshipHelper
                 if ((i1 >= ((Integer)((Pair)localObject1).first).intValue()) && (i1 < ((Integer)((Pair)localObject1).second).intValue()))
                 {
                   i = 1;
-                  break label776;
+                  break label775;
                 }
               }
               i = 0;
-              label776:
+              label775:
               m = ((String)localObject2).length();
               if ((i == 0) && (((List)localObject3).size() > 0) && (i1 >= 0) && (i1 < m) && (n >= 0) && (n < m))
               {
@@ -514,8 +496,8 @@ public class FriendIntimateRelationshipHelper
       }
       if ((paramInt3 == 2097154) && (paramInt4 == 0))
       {
-        paramPushMsg0x210C7Info = QVipFriendTag2Processor.c();
-        if (paramPushMsg0x210C7Info.jdField_a_of_type_Boolean)
+        paramPushMsg0x210C7Info = QVipFriendTag2Processor.e();
+        if (paramPushMsg0x210C7Info.a)
         {
           localObject1 = new Bundle();
           ((Bundle)localObject1).putInt(paramString2, 1);
@@ -550,8 +532,8 @@ public class FriendIntimateRelationshipHelper
           } else {
             paramInt1 = 26;
           }
-          ((Bundle)localObject1).putString(paramFriendsManager, String.format(paramPushMsg0x210C7Info.jdField_b_of_type_JavaLangString, new Object[] { paramString1, Integer.valueOf(paramInt1) }));
-          paramInt2 = ((String)localObject2).length() - paramPushMsg0x210C7Info.jdField_a_of_type_JavaLangString.length();
+          ((Bundle)localObject1).putString(paramFriendsManager, String.format(paramPushMsg0x210C7Info.c, new Object[] { paramString1, Integer.valueOf(paramInt1) }));
+          paramInt2 = ((String)localObject2).length() - paramPushMsg0x210C7Info.b.length();
           if (paramInt2 >= 0)
           {
             localUniteGrayTipParam.a(paramInt2, ((String)localObject2).length(), (Bundle)localObject1);
@@ -582,37 +564,36 @@ public class FriendIntimateRelationshipHelper
       if (paramPushMsg0x210C7Info == null) {
         return;
       }
-      long l1 = paramPushMsg0x210C7Info.jdField_b_of_type_Long;
+      long l1 = paramPushMsg0x210C7Info.b;
       long l2 = paramPushMsg0x210C7Info.c;
-      ExtSnsRelationChainChangePushInfo localExtSnsRelationChainChangePushInfo = ExtSnsRelationChainChangePushInfo.a(paramRelationalChainChange, paramPushMsg0x210C7Info.jdField_a_of_type_Boolean);
-      if (TextUtils.equals(paramAppInterface.getCurrentAccountUin(), localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString))
+      ExtSnsRelationChainChangePushInfo localExtSnsRelationChainChangePushInfo = ExtSnsRelationChainChangePushInfo.a(paramRelationalChainChange, paramPushMsg0x210C7Info.f);
+      if (TextUtils.equals(paramAppInterface.getCurrentAccountUin(), localExtSnsRelationChainChangePushInfo.a))
       {
-        if (TextUtils.isEmpty(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString)) {
+        if (TextUtils.isEmpty(localExtSnsRelationChainChangePushInfo.b)) {
           return;
         }
-        Object localObject2 = (FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        paramRelationalChainChange = ((FriendsManager)localObject2).e(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("decodeC2CMsgPkgSubMsgType0xc7 msginfo:");
-        ((StringBuilder)localObject1).append(paramPushMsg0x210C7Info);
-        ((StringBuilder)localObject1).append("changePushInfo:");
-        ((StringBuilder)localObject1).append(localExtSnsRelationChainChangePushInfo);
-        QLog.i("FriendIntimateRelationshipHelper", 1, ((StringBuilder)localObject1).toString());
-        if ((paramRelationalChainChange != null) && (!paramRelationalChainChange.isFriend())) {
+        Object localObject3 = (FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        localObject1 = ((FriendsManager)localObject3).m(localExtSnsRelationChainChangePushInfo.b);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("decodeC2CMsgPkgSubMsgType0xc7 msginfo:");
+        ((StringBuilder)localObject2).append(paramPushMsg0x210C7Info);
+        ((StringBuilder)localObject2).append("changePushInfo:");
+        ((StringBuilder)localObject2).append(localExtSnsRelationChainChangePushInfo);
+        QLog.i("FriendIntimateRelationshipHelper", 1, ((StringBuilder)localObject2).toString());
+        if ((localObject1 != null) && (!((Friends)localObject1).isFriend())) {
           return;
         }
-        paramRelationalChainChange = ((FriendsManager)localObject2).a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
-        localObject1 = paramRelationalChainChange;
-        if (paramRelationalChainChange == null)
+        localObject1 = ((FriendsManager)localObject3).x(localExtSnsRelationChainChangePushInfo.b);
+        localObject2 = localObject1;
+        if (localObject1 == null)
         {
-          localObject1 = new ExtensionInfo();
-          ((ExtensionInfo)localObject1).uin = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString;
+          localObject2 = new ExtensionInfo();
+          ((ExtensionInfo)localObject2).uin = localExtSnsRelationChainChangePushInfo.b;
         }
-        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+        localObject1 = localObject2;
         Object localObject6 = (IntimateInfoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER);
-        int i = localExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int;
-        Object localObject3 = " intimate_level:";
-        Object localObject4;
+        int i = localExtSnsRelationChainChangePushInfo.c;
+        Object localObject4 = " intimate_level:";
         if (i != 1)
         {
           int j;
@@ -627,14 +608,12 @@ public class FriendIntimateRelationshipHelper
                 switch (i)
                 {
                 default: 
-                  localObject1 = paramRelationalChainChange;
-                  localObject4 = localObject3;
-                  localObject3 = localObject4;
-                  localObject4 = localObject1;
+                  paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                  localObject2 = localObject4;
+                  localObject4 = localObject2;
                 }
                 Object localObject5;
-                label1048:
-                label1967:
+                label1007:
                 do
                 {
                   do
@@ -643,128 +622,124 @@ public class FriendIntimateRelationshipHelper
                     {
                       do
                       {
-                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject4;
-                        localObject1 = localObject3;
-                        break label3893;
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
+                        localObject1 = localObject4;
+                        break label3877;
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
                         if (!a()) {
                           break;
                         }
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
-                        if (!a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString)) {
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        if (!a(localExtSnsRelationChainChangePushInfo.a)) {
                           break;
                         }
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
-                        if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null) {
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        if (localExtSnsRelationChainChangePushInfo.f == null) {
                           break;
                         }
-                        if ((localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int != 0) && (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null))
+                        if ((localExtSnsRelationChainChangePushInfo.f.a != 0) && (localExtSnsRelationChainChangePushInfo.f.b != null))
                         {
-                          if ((!TextUtils.isEmpty(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_JavaLangString)) && (!MutualMarkUtils.a(paramAppInterface)))
+                          if ((!TextUtils.isEmpty(localExtSnsRelationChainChangePushInfo.f.b.f)) && (!MutualMarkUtils.a(paramAppInterface)))
                           {
-                            localObject6 = HotReactiveHelper.a(paramAppInterface, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.jdField_a_of_type_JavaLangString, ContactUtils.f(paramAppInterface, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString), (FriendsManager)localObject2);
-                            Object localObject7 = HotReactiveHelper.a(paramAppInterface, (String)((List)localObject6).get(0), localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
-                            localObject5 = (String)((List)localObject7).get(0);
-                            ((List)localObject6).remove(0);
+                            Object localObject7 = HotReactiveHelper.a(paramAppInterface, localExtSnsRelationChainChangePushInfo.f.b.f, ContactUtils.g(paramAppInterface, localExtSnsRelationChainChangePushInfo.b), (FriendsManager)localObject3);
+                            localObject5 = HotReactiveHelper.a(paramAppInterface, (String)((List)localObject7).get(0), localExtSnsRelationChainChangePushInfo.b);
+                            localObject2 = (String)((List)localObject5).get(0);
                             ((List)localObject7).remove(0);
-                            UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject5, 0, -5020, 2097153, MessageCache.a());
-                            localObject4 = localObject2;
-                            localObject1 = localObject3;
-                            if (localObject7 != null)
+                            ((List)localObject5).remove(0);
+                            UniteGrayTipParam localUniteGrayTipParam = new UniteGrayTipParam(localExtSnsRelationChainChangePushInfo.b, localExtSnsRelationChainChangePushInfo.b, (String)localObject2, 0, -5020, 2097153, MessageCache.c());
+                            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject3;
+                            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject4;
+                            if (localObject5 != null)
                             {
-                              localObject4 = localObject2;
-                              localObject1 = localObject3;
-                              if (((List)localObject7).size() > 0)
+                              paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject3;
+                              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject4;
+                              if (((List)localObject5).size() > 0)
                               {
                                 i = 0;
-                                paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject3;
-                                localObject3 = localObject7;
                                 for (;;)
                                 {
-                                  localObject4 = localObject2;
-                                  localObject1 = paramPushMsg0x210C7Info;
-                                  if (i >= ((List)localObject3).size()) {
+                                  paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject3;
+                                  paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject4;
+                                  if (i >= ((List)localObject5).size()) {
                                     break;
                                   }
-                                  localObject4 = new Bundle();
-                                  localObject1 = (String)((List)localObject3).get(i);
-                                  if (!TextUtils.isEmpty((CharSequence)localObject1))
+                                  paramPushMsg0x210C7Info = new Bundle();
+                                  paramRelationalChainChange = (String)((List)localObject5).get(i);
+                                  if (!TextUtils.isEmpty(paramRelationalChainChange))
                                   {
-                                    ((Bundle)localObject4).putString("image_resource", (String)localObject1);
-                                    j = ((String)localObject5).lastIndexOf((String)localObject1);
+                                    paramPushMsg0x210C7Info.putString("image_resource", paramRelationalChainChange);
+                                    j = ((String)localObject2).lastIndexOf(paramRelationalChainChange);
                                     if (j >= 0) {
-                                      localUniteGrayTipParam.a(j, j + ((String)localObject1).length(), (Bundle)localObject4);
+                                      localUniteGrayTipParam.a(j, j + paramRelationalChainChange.length(), paramPushMsg0x210C7Info);
                                     }
                                     if (QLog.isColorLevel())
                                     {
-                                      localObject4 = new StringBuilder();
-                                      ((StringBuilder)localObject4).append("addHotFriendAIOGrayTips grayStr=");
-                                      ((StringBuilder)localObject4).append((String)localObject5);
-                                      ((StringBuilder)localObject4).append("iconPos=");
-                                      ((StringBuilder)localObject4).append(j);
-                                      ((StringBuilder)localObject4).append("icon=");
-                                      ((StringBuilder)localObject4).append((String)localObject1);
-                                      ((StringBuilder)localObject4).append("grayStr=");
-                                      ((StringBuilder)localObject4).append((String)localObject5);
-                                      QLog.d("reactive", 2, ((StringBuilder)localObject4).toString());
+                                      paramPushMsg0x210C7Info = new StringBuilder();
+                                      paramPushMsg0x210C7Info.append("addHotFriendAIOGrayTips grayStr=");
+                                      paramPushMsg0x210C7Info.append((String)localObject2);
+                                      paramPushMsg0x210C7Info.append("iconPos=");
+                                      paramPushMsg0x210C7Info.append(j);
+                                      paramPushMsg0x210C7Info.append("icon=");
+                                      paramPushMsg0x210C7Info.append(paramRelationalChainChange);
+                                      paramPushMsg0x210C7Info.append("grayStr=");
+                                      paramPushMsg0x210C7Info.append((String)localObject2);
+                                      QLog.d("reactive", 2, paramPushMsg0x210C7Info.toString());
                                     }
                                   }
                                   i += 1;
                                 }
                               }
                             }
-                            localObject3 = localObject1;
-                            localObject2 = localObject5;
-                            localObject1 = paramRelationalChainChange;
-                            if (localObject6 != null)
+                            localObject3 = paramPushMsg0x210C7Info;
+                            localObject4 = paramRelationalChainChange;
+                            localObject6 = localObject2;
+                            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
+                            if (localObject7 != null)
                             {
-                              localObject2 = localObject5;
-                              localObject1 = paramRelationalChainChange;
-                              if (((List)localObject6).size() > 0)
+                              localObject6 = localObject2;
+                              paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
+                              if (((List)localObject7).size() > 0)
                               {
-                                Collections.sort((List)localObject6, new FriendIntimateRelationshipHelper.1());
-                                localObject7 = new ArrayList();
+                                Collections.sort((List)localObject7, new FriendIntimateRelationshipHelper.1());
+                                ArrayList localArrayList = new ArrayList();
                                 i = 0;
-                                paramPushMsg0x210C7Info = paramRelationalChainChange;
-                                paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject5;
-                                localObject5 = localObject6;
+                                paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
+                                localObject5 = localObject7;
                                 for (;;)
                                 {
-                                  localObject2 = paramRelationalChainChange;
-                                  localObject1 = paramPushMsg0x210C7Info;
+                                  localObject6 = paramRelationalChainChange;
+                                  paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
                                   if (i >= ((List)localObject5).size()) {
                                     break;
                                   }
-                                  Bundle localBundle = new Bundle();
-                                  localObject1 = (String)((List)localObject5).get(i);
-                                  if (!TextUtils.isEmpty((CharSequence)localObject1))
+                                  localObject7 = new Bundle();
+                                  paramPushMsg0x210C7Info = (String)((List)localObject5).get(i);
+                                  if (!TextUtils.isEmpty(paramPushMsg0x210C7Info))
                                   {
-                                    localBundle.putInt("key_action", 11);
-                                    localBundle.putString("key_action_DATA", (String)localObject1);
+                                    ((Bundle)localObject7).putInt("key_action", 11);
+                                    ((Bundle)localObject7).putString("key_action_DATA", paramPushMsg0x210C7Info);
                                     j = 0;
                                     localObject2 = paramRelationalChainChange;
                                     for (;;)
                                     {
-                                      m = ((String)localObject2).indexOf((String)localObject1, j);
+                                      m = ((String)localObject2).indexOf(paramPushMsg0x210C7Info, j);
                                       if (m < 0)
                                       {
-                                        paramRelationalChainChange = paramPushMsg0x210C7Info;
-                                        paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
+                                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
                                       }
                                       else
                                       {
-                                        k = ((String)localObject1).length() + m;
-                                        paramRelationalChainChange = ((ArrayList)localObject7).iterator();
+                                        k = paramPushMsg0x210C7Info.length() + m;
+                                        paramRelationalChainChange = localArrayList.iterator();
                                         while (paramRelationalChainChange.hasNext())
                                         {
                                           localObject6 = (Pair)paramRelationalChainChange.next();
                                           if ((m >= ((Integer)((Pair)localObject6).first).intValue()) && (m < ((Integer)((Pair)localObject6).second).intValue()))
                                           {
                                             j = 1;
-                                            break label1048;
+                                            break label1007;
                                           }
                                         }
                                         j = 0;
@@ -772,21 +747,21 @@ public class FriendIntimateRelationshipHelper
                                         if (j != 0)
                                         {
                                           j = k;
-                                          paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject6;
-                                          paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
+                                          paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                                          paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject6;
                                         }
                                         else
                                         {
-                                          ((ArrayList)localObject7).add(new Pair(Integer.valueOf(m), Integer.valueOf(k)));
+                                          localArrayList.add(new Pair(Integer.valueOf(m), Integer.valueOf(k)));
                                           j = k;
-                                          paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject6;
-                                          paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
+                                          paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                                          paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject6;
                                           if (m >= 0)
                                           {
-                                            localUniteGrayTipParam.a(m, k, localBundle);
+                                            localUniteGrayTipParam.a(m, k, (Bundle)localObject7);
                                             j = k;
-                                            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject6;
-                                            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
+                                            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                                            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject6;
                                             if (QLog.isColorLevel())
                                             {
                                               paramRelationalChainChange = new StringBuilder();
@@ -795,8 +770,8 @@ public class FriendIntimateRelationshipHelper
                                               paramRelationalChainChange.append(" fromIndex=");
                                               paramRelationalChainChange.append(k);
                                               QLog.d("FriendIntimateRelationshipHelper", 2, paramRelationalChainChange.toString());
-                                              paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
-                                              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject6;
+                                              paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject6;
+                                              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
                                               j = k;
                                             }
                                           }
@@ -805,34 +780,34 @@ public class FriendIntimateRelationshipHelper
                                       if (m < 0) {
                                         break;
                                       }
-                                      localObject1 = paramPushMsg0x210C7Info;
-                                      paramPushMsg0x210C7Info = paramRelationalChainChange;
+                                      localObject1 = paramRelationalChainChange;
                                     }
                                   }
                                   localObject2 = paramRelationalChainChange;
-                                  paramRelationalChainChange = paramPushMsg0x210C7Info;
+                                  paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
                                   i += 1;
-                                  paramPushMsg0x210C7Info = paramRelationalChainChange;
+                                  localObject1 = paramRelationalChainChange;
                                   paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
                                 }
                               }
                             }
-                            localObject6 = new MessageForUniteGrayTip();
-                            ((MessageForUniteGrayTip)localObject6).hasRead = 0;
-                            ((MessageForUniteGrayTip)localObject6).initGrayTipMsg(paramAppInterface, localUniteGrayTipParam);
+                            localObject1 = paramPushMsg0x210C7Info;
+                            localObject5 = new MessageForUniteGrayTip();
+                            ((MessageForUniteGrayTip)localObject5).hasRead = 0;
+                            ((MessageForUniteGrayTip)localObject5).initGrayTipMsg(paramAppInterface, localUniteGrayTipParam);
                             paramRelationalChainChange = new StringBuilder(21);
                             paramRelationalChainChange.append(l1);
                             paramRelationalChainChange.append("_");
                             paramRelationalChainChange.append(l2);
-                            ((MessageForUniteGrayTip)localObject6).tipParam.d = paramRelationalChainChange.toString();
-                            paramRelationalChainChange = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getMsgList(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, 0);
+                            ((MessageForUniteGrayTip)localObject5).tipParam.p = paramRelationalChainChange.toString();
+                            paramRelationalChainChange = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getMsgList(localExtSnsRelationChainChangePushInfo.b, 0);
                             if ((paramRelationalChainChange != null) && (!paramRelationalChainChange.isEmpty()))
                             {
                               paramRelationalChainChange = (MessageRecord)paramRelationalChainChange.get(paramRelationalChainChange.size() - 1);
                               if ((paramRelationalChainChange instanceof MessageForUniteGrayTip))
                               {
                                 paramRelationalChainChange = (MessageForUniteGrayTip)paramRelationalChainChange;
-                                if ((paramRelationalChainChange.tipParam != null) && (paramRelationalChainChange.subType == ((MessageForUniteGrayTip)localObject6).subType) && (paramRelationalChainChange.tipParam.c.equals(((MessageForUniteGrayTip)localObject6).tipParam.c)) && (((MessageForUniteGrayTip)localObject6).tipParam.jdField_a_of_type_Long - paramRelationalChainChange.tipParam.jdField_a_of_type_Long <= 1L))
+                                if ((paramRelationalChainChange.tipParam != null) && (paramRelationalChainChange.subType == ((MessageForUniteGrayTip)localObject5).subType) && (paramRelationalChainChange.tipParam.g.equals(((MessageForUniteGrayTip)localObject5).tipParam.g)) && (((MessageForUniteGrayTip)localObject5).tipParam.j - paramRelationalChainChange.tipParam.j <= 1L))
                                 {
                                   if (QLog.isColorLevel()) {
                                     QLog.d("FriendReactive", 2, "addHotFriendAIOGray look! backend give repeat push!");
@@ -841,221 +816,221 @@ public class FriendIntimateRelationshipHelper
                                 }
                               }
                             }
-                            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject3;
-                            localObject5 = localObject4;
+                            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject4;
+                            localObject2 = localObject3;
                             paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
-                            if (!TextUtils.isEmpty((CharSequence)localObject2))
+                            if (!TextUtils.isEmpty((CharSequence)localObject6))
                             {
-                              UniteGrayTipMsgUtil.a(paramAppInterface, (MessageForUniteGrayTip)localObject6);
-                              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject3;
-                              localObject5 = localObject4;
+                              UniteGrayTipMsgUtil.a(paramAppInterface, (MessageForUniteGrayTip)localObject5);
+                              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject4;
+                              localObject2 = localObject3;
                               paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
                             }
                           }
                           else
                           {
-                            localObject1 = " intimate_level:";
-                            paramPushMsg0x210C7Info = paramRelationalChainChange;
-                            localObject5 = localObject2;
-                            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                            localObject2 = localObject3;
+                            paramRelationalChainChange = " intimate_level:";
+                            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
                           }
-                          i = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
+                          i = localExtSnsRelationChainChangePushInfo.f.a();
                           paramPushMsg0x210C7Info.intimate_level = i;
-                          if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c > 0L) {
-                            paramPushMsg0x210C7Info.last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c;
+                          if (localExtSnsRelationChainChangePushInfo.f.b.c > 0L) {
+                            paramPushMsg0x210C7Info.last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.f.b.c;
                           }
-                          ((FriendsManager)localObject5).a(paramPushMsg0x210C7Info);
+                          ((FriendsManager)localObject2).a(paramPushMsg0x210C7Info);
                           localObject1 = new ArrayList();
-                          ((ArrayList)localObject1).add(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+                          ((ArrayList)localObject1).add(localExtSnsRelationChainChangePushInfo.b);
                           paramAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER).notifyUI(104, true, localObject1);
                           localObject1 = paramPushMsg0x210C7Info;
-                          paramAppInterface = paramRelationalChainChange;
                         }
                         else
                         {
-                          paramAppInterface = " intimate_level:";
-                          localObject1 = paramRelationalChainChange;
+                          paramRelationalChainChange = " intimate_level:";
                         }
-                        paramRelationalChainChange = new StringBuilder();
-                        paramRelationalChainChange.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Egalitarian_Soon intimate_type:");
-                        paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int);
-                        paramRelationalChainChange.append(paramAppInterface);
-                        paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a());
-                        QLog.i("FriendIntimateRelationshipHelper", 1, paramRelationalChainChange.toString());
-                        localObject4 = paramAppInterface;
+                        paramAppInterface = new StringBuilder();
+                        paramAppInterface.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Egalitarian_Soon intimate_type:");
+                        paramAppInterface.append(localExtSnsRelationChainChangePushInfo.f.a);
+                        paramAppInterface.append(paramRelationalChainChange);
+                        paramAppInterface.append(localExtSnsRelationChainChangePushInfo.f.a());
+                        QLog.i("FriendIntimateRelationshipHelper", 1, paramAppInterface.toString());
+                        localObject2 = paramRelationalChainChange;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
                         break;
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
                         if (!a()) {
                           break;
                         }
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
-                        if (!a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString)) {
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        if (!a(localExtSnsRelationChainChangePushInfo.a)) {
                           break;
                         }
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
-                        if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null) {
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        if (localExtSnsRelationChainChangePushInfo.f == null) {
                           break;
                         }
-                        localObject4 = localObject3;
-                        localObject1 = paramRelationalChainChange;
-                        if (localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null) {
+                        localObject2 = localObject4;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        if (localExtSnsRelationChainChangePushInfo.e == null) {
                           break;
                         }
-                        if ((localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null) && (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c > 0L)) {
-                          paramRelationalChainChange.last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c;
+                        if ((localExtSnsRelationChainChangePushInfo.f.b != null) && (localExtSnsRelationChainChangePushInfo.f.b.c > 0L)) {
+                          ((ExtensionInfo)localObject1).last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.f.b.c;
                         }
-                        j = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
-                        k = localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
-                        if ((IntimateUtil.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)) && (j > k))
+                        j = localExtSnsRelationChainChangePushInfo.f.a();
+                        k = localExtSnsRelationChainChangePushInfo.e.a();
+                        if ((IntimateUtil.a(localExtSnsRelationChainChangePushInfo.f.a)) && (j > k))
                         {
                           if (j == 1)
                           {
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 1)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 1)
                             {
                               i = 150;
-                              break label1967;
+                              break label1925;
                             }
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 2)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 2)
                             {
                               i = 158;
-                              break label1967;
+                              break label1925;
                             }
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 26)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 26)
                             {
                               i = 168;
-                              break label1967;
+                              break label1925;
                             }
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 3)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 3)
                             {
                               i = 154;
-                              break label1967;
+                              break label1925;
                             }
                           }
                           else if (j == 2)
                           {
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 1)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 1)
                             {
                               i = 151;
-                              break label1967;
+                              break label1925;
                             }
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 2)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 2)
                             {
                               i = 159;
-                              break label1967;
+                              break label1925;
                             }
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 26)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 26)
                             {
                               i = 169;
-                              break label1967;
+                              break label1925;
                             }
-                            if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 3)
+                            if (localExtSnsRelationChainChangePushInfo.f.a == 3)
                             {
                               i = 155;
-                              break label1967;
+                              break label1925;
                             }
                           }
                           i = -1;
-                          localObject1 = HotReactiveHelper.a(paramAppInterface.getApp(), i);
-                          paramRelationalChainChange.intimate_type = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
-                          paramRelationalChainChange.intimate_level = j;
-                          ((FriendsManager)localObject2).a(paramRelationalChainChange);
+                          paramRelationalChainChange = HotReactiveHelper.a(paramAppInterface.getApp(), i);
+                          ((ExtensionInfo)localObject1).intimate_type = localExtSnsRelationChainChangePushInfo.f.a;
+                          ((ExtensionInfo)localObject1).intimate_level = j;
+                          ((FriendsManager)localObject3).a((ExtensionInfo)localObject1);
                           i = MutualMarkGrayTipsHelper.a(localExtSnsRelationChainChangePushInfo);
-                          a(paramAppInterface, (FriendsManager)localObject2, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject1, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int, j, paramPushMsg0x210C7Info, 2097153, i);
-                          ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int), Integer.valueOf(k), Integer.valueOf(j) });
-                          paramAppInterface = (AppInterface)localObject1;
+                          a(paramAppInterface, (FriendsManager)localObject3, localExtSnsRelationChainChangePushInfo.b, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.f.a, j, paramPushMsg0x210C7Info, 2097153, i);
+                          ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.b, Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a), Integer.valueOf(k), Integer.valueOf(j) });
+                          paramAppInterface = paramRelationalChainChange;
                         }
                         else
                         {
                           paramAppInterface = null;
                         }
-                        paramPushMsg0x210C7Info = new StringBuilder();
-                        paramPushMsg0x210C7Info.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Upgrade intimate_type:");
-                        paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int);
-                        paramPushMsg0x210C7Info.append(" intimate_level:");
-                        paramPushMsg0x210C7Info.append(j);
-                        paramPushMsg0x210C7Info.append(" old_intimate_level:");
-                        paramPushMsg0x210C7Info.append(k);
-                        QLog.i("FriendIntimateRelationshipHelper", 1, paramPushMsg0x210C7Info.toString());
+                        paramRelationalChainChange = new StringBuilder();
+                        paramRelationalChainChange.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Upgrade intimate_type:");
+                        paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.f.a);
+                        paramRelationalChainChange.append(" intimate_level:");
+                        paramRelationalChainChange.append(j);
+                        paramRelationalChainChange.append(" old_intimate_level:");
+                        paramRelationalChainChange.append(k);
+                        QLog.i("FriendIntimateRelationshipHelper", 1, paramRelationalChainChange.toString());
                         paramPushMsg0x210C7Info = " intimate_level:";
-                        break label3898;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        break label3882;
                         localObject5 = " intimate_level:";
-                        localObject4 = paramRelationalChainChange;
-                        localObject3 = localObject5;
+                        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                        localObject4 = localObject5;
                       } while (!a());
-                      localObject4 = paramRelationalChainChange;
-                      localObject3 = localObject5;
-                    } while (!a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString));
-                    localObject4 = paramRelationalChainChange;
-                    localObject3 = localObject5;
-                  } while (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null);
-                  localObject4 = paramRelationalChainChange;
-                  localObject3 = localObject5;
-                } while (localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null);
-                if ((localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null) && (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c > 0L)) {
-                  paramRelationalChainChange.last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c;
+                      paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                      localObject4 = localObject5;
+                    } while (!a(localExtSnsRelationChainChangePushInfo.a));
+                    paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                    localObject4 = localObject5;
+                  } while (localExtSnsRelationChainChangePushInfo.f == null);
+                  paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                  localObject4 = localObject5;
+                } while (localExtSnsRelationChainChangePushInfo.e == null);
+                label1925:
+                if ((localExtSnsRelationChainChangePushInfo.f.b != null) && (localExtSnsRelationChainChangePushInfo.f.b.c > 0L)) {
+                  ((ExtensionInfo)localObject1).last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.f.b.c;
                 }
-                j = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
-                k = localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
-                if ((IntimateUtil.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int)) && (j < k))
+                j = localExtSnsRelationChainChangePushInfo.f.a();
+                k = localExtSnsRelationChainChangePushInfo.e.a();
+                if ((IntimateUtil.a(localExtSnsRelationChainChangePushInfo.f.a)) && (j < k))
                 {
                   if (k == 1)
                   {
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 1)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 1)
                     {
                       i = 152;
-                      break label2486;
+                      break label2448;
                     }
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 2)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 2)
                     {
                       i = 160;
-                      break label2486;
+                      break label2448;
                     }
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 26)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 26)
                     {
                       i = 170;
-                      break label2486;
+                      break label2448;
                     }
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 3)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 3)
                     {
                       i = 156;
-                      break label2486;
+                      break label2448;
                     }
                   }
                   else if (k == 2)
                   {
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 1)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 1)
                     {
                       i = 153;
-                      break label2486;
+                      break label2448;
                     }
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 2)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 2)
                     {
                       i = 161;
-                      break label2486;
+                      break label2448;
                     }
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 26)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 26)
                     {
                       i = 171;
-                      break label2486;
+                      break label2448;
                     }
-                    if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 3)
+                    if (localExtSnsRelationChainChangePushInfo.f.a == 3)
                     {
                       i = 157;
-                      break label2486;
+                      break label2448;
                     }
                   }
                   i = -1;
-                  label2486:
-                  localObject3 = HotReactiveHelper.a(paramAppInterface.getApp(), i);
-                  paramRelationalChainChange.intimate_type = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
-                  paramRelationalChainChange.intimate_level = j;
-                  ((FriendsManager)localObject2).a(paramRelationalChainChange);
-                  a(paramAppInterface, (FriendsManager)localObject2, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject3, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int, j, paramPushMsg0x210C7Info, 2097154, 0);
-                  ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int), Integer.valueOf(k), Integer.valueOf(j) });
-                  paramAppInterface = (AppInterface)localObject3;
+                  label2448:
+                  paramRelationalChainChange = HotReactiveHelper.a(paramAppInterface.getApp(), i);
+                  ((ExtensionInfo)localObject1).intimate_type = localExtSnsRelationChainChangePushInfo.f.a;
+                  ((ExtensionInfo)localObject1).intimate_level = j;
+                  ((FriendsManager)localObject3).a((ExtensionInfo)localObject1);
+                  a(paramAppInterface, (FriendsManager)localObject3, localExtSnsRelationChainChangePushInfo.b, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.f.a, j, paramPushMsg0x210C7Info, 2097154, 0);
+                  ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.b, Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a), Integer.valueOf(k), Integer.valueOf(j) });
+                  paramAppInterface = paramRelationalChainChange;
                 }
                 else
                 {
@@ -1063,7 +1038,7 @@ public class FriendIntimateRelationshipHelper
                 }
                 paramRelationalChainChange = new StringBuilder();
                 paramRelationalChainChange.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Downgrade intimate_type:");
-                paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int);
+                paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.f.a);
                 paramRelationalChainChange.append((String)localObject5);
                 paramRelationalChainChange.append(j);
                 paramRelationalChainChange.append(" old_intimate_level:");
@@ -1072,62 +1047,62 @@ public class FriendIntimateRelationshipHelper
               }
               else
               {
-                localObject3 = " intimate_level:";
-                if ((!a()) || (!a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString)) || (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null)) {
-                  break label3883;
+                localObject4 = " intimate_level:";
+                if ((!a()) || (!a(localExtSnsRelationChainChangePushInfo.a)) || (localExtSnsRelationChainChangePushInfo.f == null)) {
+                  break label3869;
                 }
-                if (IntimateUtil.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int))
+                if (IntimateUtil.a(localExtSnsRelationChainChangePushInfo.f.a))
                 {
-                  paramRelationalChainChange.isExtinguish = true;
-                  ((FriendsManager)localObject2).a(paramRelationalChainChange);
+                  ((ExtensionInfo)localObject1).isExtinguish = true;
+                  ((FriendsManager)localObject3).a((ExtensionInfo)localObject1);
                   paramRelationalChainChange = HotReactiveHelper.a(paramAppInterface.getApp(), 166);
-                  a(paramAppInterface, (FriendsManager)localObject2, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a(), paramPushMsg0x210C7Info, 2097154, 0);
-                  ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int), Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()), Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) });
-                  ((FriendListHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(3, true, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+                  a(paramAppInterface, (FriendsManager)localObject3, localExtSnsRelationChainChangePushInfo.b, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.f.a, localExtSnsRelationChainChangePushInfo.f.a(), paramPushMsg0x210C7Info, 2097154, 0);
+                  ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.b, Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a), Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a()), Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a()) });
+                  ((FriendListHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(3, true, localExtSnsRelationChainChangePushInfo.b);
                   paramAppInterface = paramRelationalChainChange;
                 }
                 else
                 {
                   paramAppInterface = null;
                 }
-                paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+                paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
                 paramPushMsg0x210C7Info = new StringBuilder();
                 paramPushMsg0x210C7Info.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Icon_Extinguish intimate_type:");
-                paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int);
-                paramPushMsg0x210C7Info.append((String)localObject3);
-                paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a());
+                paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.f.a);
+                paramPushMsg0x210C7Info.append((String)localObject4);
+                paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.f.a());
                 QLog.i("FriendIntimateRelationshipHelper", 1, paramPushMsg0x210C7Info.toString());
-                paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject3;
-                break label3898;
+                paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject4;
+                break label3882;
               }
             }
             else
             {
               localObject4 = " intimate_level:";
-              localObject3 = paramRelationalChainChange;
-              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject3;
+              localObject2 = localObject1;
+              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
               localObject1 = localObject4;
               if (!a()) {
-                break label3893;
+                break label3877;
               }
-              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject3;
+              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
               localObject1 = localObject4;
-              if (!a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString)) {
-                break label3893;
+              if (!a(localExtSnsRelationChainChangePushInfo.a)) {
+                break label3877;
               }
-              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject3;
+              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
               localObject1 = localObject4;
-              if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo == null) {
-                break label3893;
+              if (localExtSnsRelationChainChangePushInfo.f == null) {
+                break label3877;
               }
-              if (IntimateUtil.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int))
+              if (IntimateUtil.a(localExtSnsRelationChainChangePushInfo.f.a))
               {
-                ((ExtensionInfo)localObject3).isExtinguish = false;
-                ((FriendsManager)localObject2).a((ExtensionInfo)localObject3);
+                ((ExtensionInfo)localObject2).isExtinguish = false;
+                ((FriendsManager)localObject3).a((ExtensionInfo)localObject2);
                 paramRelationalChainChange = HotReactiveHelper.a(paramAppInterface.getApp(), 167);
-                a(paramAppInterface, (FriendsManager)localObject2, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a(), paramPushMsg0x210C7Info, 2097153, 0);
-                ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int), Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()), Integer.valueOf(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a()) });
-                ((FriendListHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(3, true, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+                a(paramAppInterface, (FriendsManager)localObject3, localExtSnsRelationChainChangePushInfo.b, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.f.a, localExtSnsRelationChainChangePushInfo.f.a(), paramPushMsg0x210C7Info, 2097153, 0);
+                ((IntimateInfoHandler)localObject6).notifyUI(3, true, new Object[] { localExtSnsRelationChainChangePushInfo.b, Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a), Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a()), Integer.valueOf(localExtSnsRelationChainChangePushInfo.f.a()) });
+                ((FriendListHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).notifyUI(3, true, localExtSnsRelationChainChangePushInfo.b);
                 paramAppInterface = paramRelationalChainChange;
               }
               else
@@ -1136,21 +1111,21 @@ public class FriendIntimateRelationshipHelper
               }
               paramRelationalChainChange = new StringBuilder();
               paramRelationalChainChange.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Icon_Light intimate_type:");
-              paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int);
+              paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.f.a);
               paramRelationalChainChange.append((String)localObject4);
-              paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a());
+              paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.f.a());
               QLog.i("FriendIntimateRelationshipHelper", 1, paramRelationalChainChange.toString());
-              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject3;
+              paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
               paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject4;
-              break label3898;
+              break label3882;
             }
           }
           else
           {
-            if (localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+            if (localExtSnsRelationChainChangePushInfo.e != null)
             {
-              k = localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
-              m = localExtSnsRelationChainChangePushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
+              k = localExtSnsRelationChainChangePushInfo.e.a;
+              m = localExtSnsRelationChainChangePushInfo.e.a();
             }
             else
             {
@@ -1163,89 +1138,104 @@ public class FriendIntimateRelationshipHelper
             {
               i = k;
               j = m;
-              if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+              if (localExtSnsRelationChainChangePushInfo.f != null)
               {
-                i = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
-                j = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
+                i = localExtSnsRelationChainChangePushInfo.f.a;
+                j = localExtSnsRelationChainChangePushInfo.f.a();
               }
             }
             k = i;
             if (i == 0)
             {
-              k = paramRelationalChainChange.intimate_type;
-              j = paramRelationalChainChange.intimate_level;
+              k = ((ExtensionInfo)localObject1).intimate_type;
+              j = ((ExtensionInfo)localObject1).intimate_level;
             }
             if (IntimateUtil.a(k))
             {
-              paramRelationalChainChange.intimate_type = 0;
-              paramRelationalChainChange.intimate_level = 0;
-              paramRelationalChainChange.intimate_chatDays = 0;
-              paramRelationalChainChange.isExtinguish = false;
+              ((ExtensionInfo)localObject1).intimate_type = 0;
+              ((ExtensionInfo)localObject1).intimate_level = 0;
+              ((ExtensionInfo)localObject1).intimate_chatDays = 0;
+              ((ExtensionInfo)localObject1).isExtinguish = false;
               i = 163;
               if (j == 1) {
                 i = 164;
               } else if (j == 2) {
                 i = 165;
               }
-              localObject3 = HotReactiveHelper.a(paramAppInterface.getApp(), i);
-              ((FriendsManager)localObject2).a(paramRelationalChainChange);
-              if (a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString))
+              ((FriendsManager)localObject3).a((ExtensionInfo)localObject1);
+              if (a(localExtSnsRelationChainChangePushInfo.a))
               {
-                a(paramAppInterface, (FriendsManager)localObject2, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, (String)localObject3, k, 0, paramPushMsg0x210C7Info, 2097154, 1);
-                ((IntimateInfoHandler)localObject6).notifyUI(1, true, new Object[] { localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, Boolean.valueOf(true) });
-                ((IntimateInfoManager)paramAppInterface.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+                if (a(paramAppInterface, paramRelationalChainChange))
+                {
+                  paramRelationalChainChange = HotReactiveHelper.a(paramAppInterface.getApp(), i);
+                  a(paramAppInterface, (FriendsManager)localObject3, localExtSnsRelationChainChangePushInfo.b, paramRelationalChainChange, k, 0, paramPushMsg0x210C7Info, 2097154, 1);
+                  paramPushMsg0x210C7Info = paramRelationalChainChange;
+                }
+                else
+                {
+                  paramPushMsg0x210C7Info = null;
+                }
+                ((IntimateInfoHandler)localObject6).notifyUI(1, true, new Object[] { localExtSnsRelationChainChangePushInfo.b, Boolean.valueOf(true) });
+                ((IntimateInfoManager)paramAppInterface.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER)).b(localExtSnsRelationChainChangePushInfo.b);
               }
+              else
+              {
+                paramPushMsg0x210C7Info = null;
+              }
+              paramRelationalChainChange = paramPushMsg0x210C7Info;
               if (k == 1)
               {
                 paramAppInterface = (LoveZoneInfoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.LOVE_STATE_CHANGE_HANDLER);
-                if (paramAppInterface != null) {
+                paramRelationalChainChange = paramPushMsg0x210C7Info;
+                if (paramAppInterface != null)
+                {
                   paramAppInterface.a(0);
+                  paramRelationalChainChange = paramPushMsg0x210C7Info;
                 }
               }
-              paramAppInterface = (AppInterface)localObject3;
             }
             else
             {
-              paramAppInterface = null;
+              paramRelationalChainChange = null;
             }
-            paramRelationalChainChange = new StringBuilder();
-            paramRelationalChainChange.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Del intimate_type:");
-            paramRelationalChainChange.append(k);
-            paramRelationalChainChange.append(" intimate_level:");
-            paramRelationalChainChange.append(j);
-            paramRelationalChainChange.append(" friendUin:");
-            paramRelationalChainChange.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
-            QLog.i("FriendIntimateRelationshipHelper", 1, paramRelationalChainChange.toString());
+            paramAppInterface = new StringBuilder();
+            paramAppInterface.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Del intimate_type:");
+            paramAppInterface.append(k);
+            paramAppInterface.append(" intimate_level:");
+            paramAppInterface.append(j);
+            paramAppInterface.append(" friendUin:");
+            paramAppInterface.append(localExtSnsRelationChainChangePushInfo.b);
+            QLog.i("FriendIntimateRelationshipHelper", 1, paramAppInterface.toString());
+            paramAppInterface = paramRelationalChainChange;
           }
           paramPushMsg0x210C7Info = " intimate_level:";
-          paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
-          break label3898;
+          paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
+          break label3882;
         }
         else
         {
-          localObject3 = " intimate_level:";
-          if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo != null)
+          localObject4 = " intimate_level:";
+          if (localExtSnsRelationChainChangePushInfo.f != null)
           {
-            if (IntimateUtil.a(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int))
+            if (IntimateUtil.a(localExtSnsRelationChainChangePushInfo.f.a))
             {
-              i = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int;
-              localObject4 = paramRelationalChainChange;
-              ((ExtensionInfo)localObject4).intimate_type = i;
-              ((ExtensionInfo)localObject4).intimate_chatDays = 0;
-              ((ExtensionInfo)localObject4).intimate_level = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a();
-              ((ExtensionInfo)localObject4).isExtinguish = false;
-              if ((localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null) && (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c > 0L)) {
-                ((ExtensionInfo)localObject4).last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.c;
+              i = localExtSnsRelationChainChangePushInfo.f.a;
+              ((ExtensionInfo)localObject1).intimate_type = i;
+              ((ExtensionInfo)localObject1).intimate_chatDays = 0;
+              ((ExtensionInfo)localObject1).intimate_level = localExtSnsRelationChainChangePushInfo.f.a();
+              ((ExtensionInfo)localObject1).isExtinguish = false;
+              if ((localExtSnsRelationChainChangePushInfo.f.b != null) && (localExtSnsRelationChainChangePushInfo.f.b.c > 0L)) {
+                ((ExtensionInfo)localObject1).last_intimate_chatTime = localExtSnsRelationChainChangePushInfo.f.b.c;
               }
               paramRelationalChainChange = HotReactiveHelper.a(paramAppInterface.getApp(), 162);
-              ((FriendsManager)localObject2).a((ExtensionInfo)localObject4);
-              if (a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString))
+              ((FriendsManager)localObject3).a((ExtensionInfo)localObject1);
+              if (a(localExtSnsRelationChainChangePushInfo.a))
               {
                 i = MutualMarkGrayTipsHelper.a(localExtSnsRelationChainChangePushInfo);
-                a(paramAppInterface, (FriendsManager)localObject2, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int, localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.a(), paramPushMsg0x210C7Info, 2097153, i);
-                ((IntimateInfoHandler)localObject6).notifyUI(2, true, new Object[] { localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString });
+                a(paramAppInterface, (FriendsManager)localObject3, localExtSnsRelationChainChangePushInfo.b, paramRelationalChainChange, localExtSnsRelationChainChangePushInfo.f.a, localExtSnsRelationChainChangePushInfo.f.a(), paramPushMsg0x210C7Info, 2097153, i);
+                ((IntimateInfoHandler)localObject6).notifyUI(2, true, new Object[] { localExtSnsRelationChainChangePushInfo.b });
               }
-              if (localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo.jdField_a_of_type_Int == 1)
+              if (localExtSnsRelationChainChangePushInfo.f.a == 1)
               {
                 paramAppInterface = (LoveZoneInfoHandler)paramAppInterface.getBusinessHandler(BusinessHandlerFactory.LOVE_STATE_CHANGE_HANDLER);
                 if (paramAppInterface != null) {
@@ -1258,34 +1248,33 @@ public class FriendIntimateRelationshipHelper
             {
               paramAppInterface = null;
             }
-            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
+            paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
             paramPushMsg0x210C7Info = new StringBuilder();
             paramPushMsg0x210C7Info.append("decodeC2CMsgPkgSubMsgType0xc7 Type_Add friendUin:");
-            paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_JavaLangString);
+            paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.b);
             paramPushMsg0x210C7Info.append(" changePushInfo.now:");
-            paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.jdField_b_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo);
+            paramPushMsg0x210C7Info.append(localExtSnsRelationChainChangePushInfo.f);
             QLog.i("FriendIntimateRelationshipHelper", 1, paramPushMsg0x210C7Info.toString());
-            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject3;
-            break label3898;
+            paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject4;
+            break label3882;
           }
         }
-        label3883:
-        paramAppInterface = " intimate_level:";
-        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject1;
-        localObject1 = paramAppInterface;
-        label3893:
+        label3869:
+        localObject1 = " intimate_level:";
+        paramRelationalChainChange = (submsgtype0xc7.RelationalChainChange)localObject2;
+        label3877:
         paramAppInterface = null;
         paramPushMsg0x210C7Info = (PushMsg0x210C7Info)localObject1;
-        label3898:
+        label3882:
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append("decodeC2CMsgPkgSubMsgType0xc7 changeType:");
-        ((StringBuilder)localObject1).append(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(localExtSnsRelationChainChangePushInfo.c);
         ((StringBuilder)localObject1).append(" grayTips:");
         ((StringBuilder)localObject1).append(paramAppInterface);
         ((StringBuilder)localObject1).append(" uin:");
         ((StringBuilder)localObject1).append(paramRelationalChainChange.uin);
         ((StringBuilder)localObject1).append(" isOpen:");
-        ((StringBuilder)localObject1).append(a(localExtSnsRelationChainChangePushInfo.jdField_a_of_type_JavaLangString));
+        ((StringBuilder)localObject1).append(a(localExtSnsRelationChainChangePushInfo.a));
         ((StringBuilder)localObject1).append(" intimate_type:");
         ((StringBuilder)localObject1).append(paramRelationalChainChange.intimate_type);
         ((StringBuilder)localObject1).append(paramPushMsg0x210C7Info);
@@ -1301,45 +1290,6 @@ public class FriendIntimateRelationshipHelper
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, ExtensionInfo paramExtensionInfo, byte[] paramArrayOfByte)
-  {
-    paramQQAppInterface = new intimate_relation_ext.IntimateRelationExtMsg();
-    try
-    {
-      paramQQAppInterface.mergeFrom(paramArrayOfByte);
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-      paramQQAppInterface = null;
-    }
-    if (paramQQAppInterface != null)
-    {
-      boolean bool3 = paramQQAppInterface.uint64_icon_status.has();
-      boolean bool2 = false;
-      boolean bool1 = bool2;
-      if (bool3)
-      {
-        bool1 = bool2;
-        if (paramQQAppInterface.uint64_icon_status.get() == 1L) {
-          bool1 = true;
-        }
-      }
-      if (paramExtensionInfo.isExtinguish != bool1) {
-        paramExtensionInfo.isExtinguish = bool1;
-      }
-      if (QLog.isColorLevel())
-      {
-        paramExtensionInfo = new StringBuilder();
-        paramExtensionInfo.append("handleGetIntimateRelationExtMsgInfo ext_info.uint64_icon_status.has():");
-        paramExtensionInfo.append(paramQQAppInterface.uint64_icon_status.has());
-        paramExtensionInfo.append(" newIsExtinguish:");
-        paramExtensionInfo.append(bool1);
-        QLog.i("FriendIntimateRelationshipHelper", 1, paramExtensionInfo.toString());
-      }
-    }
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, intimate_relation.IntimateInfo paramIntimateInfo)
   {
     if (paramIntimateInfo == null) {
@@ -1350,7 +1300,7 @@ public class FriendIntimateRelationshipHelper
       return;
     }
     FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    ExtensionInfo localExtensionInfo = localFriendsManager.a(Long.toString(l));
+    ExtensionInfo localExtensionInfo = localFriendsManager.x(Long.toString(l));
     Object localObject;
     if (localExtensionInfo == null)
     {
@@ -1397,7 +1347,7 @@ public class FriendIntimateRelationshipHelper
       ((ExtensionInfo)localObject).intimate_level = paramIntimateInfo.lover.level.get();
       ((ExtensionInfo)localObject).intimate_chatDays = paramIntimateInfo.lover.chat_days.get();
       if ((paramIntimateInfo.lover.buffer.has()) && (paramIntimateInfo.lover.buffer.get() != null)) {
-        a(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.lover.buffer.get().toByteArray());
+        b(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.lover.buffer.get().toByteArray());
       }
     }
     for (;;)
@@ -1411,7 +1361,7 @@ public class FriendIntimateRelationshipHelper
         ((ExtensionInfo)localObject).intimate_level = paramIntimateInfo.ladybro.level.get();
         ((ExtensionInfo)localObject).intimate_chatDays = paramIntimateInfo.ladybro.chat_days.get();
         if ((paramIntimateInfo.ladybro.buffer.has()) && (paramIntimateInfo.ladybro.buffer.get() != null)) {
-          a(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.ladybro.buffer.get().toByteArray());
+          b(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.ladybro.buffer.get().toByteArray());
         }
       }
       else if (paramIntimateInfo.bestfriend.has())
@@ -1420,7 +1370,7 @@ public class FriendIntimateRelationshipHelper
         ((ExtensionInfo)localObject).intimate_level = paramIntimateInfo.bestfriend.level.get();
         ((ExtensionInfo)localObject).intimate_chatDays = paramIntimateInfo.bestfriend.chat_days.get();
         if ((paramIntimateInfo.bestfriend.buffer.has()) && (paramIntimateInfo.bestfriend.buffer.get() != null)) {
-          a(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.bestfriend.buffer.get().toByteArray());
+          b(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.bestfriend.buffer.get().toByteArray());
         }
       }
       else
@@ -1432,7 +1382,7 @@ public class FriendIntimateRelationshipHelper
         ((ExtensionInfo)localObject).intimate_level = paramIntimateInfo.buddy.level.get();
         ((ExtensionInfo)localObject).intimate_chatDays = paramIntimateInfo.buddy.chat_days.get();
         if ((paramIntimateInfo.buddy.buffer.has()) && (paramIntimateInfo.buddy.buffer.get() != null)) {
-          a(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.buddy.buffer.get().toByteArray());
+          b(paramQQAppInterface, (ExtensionInfo)localObject, paramIntimateInfo.buddy.buffer.get().toByteArray());
         }
       }
     }
@@ -1462,11 +1412,11 @@ public class FriendIntimateRelationshipHelper
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    boolean bool = jdField_a_of_type_Boolean;
+    boolean bool = a;
     Object localObject;
     if (!TextUtils.isEmpty(paramString))
     {
-      jdField_a_of_type_Boolean = paramBoolean;
+      a = paramBoolean;
       localObject = BaseApplicationImpl.getApplication().getSharedPreferences(paramString, 0).edit();
       ((SharedPreferences.Editor)localObject).putBoolean("friend_intimate_isOpen", paramBoolean);
       ((SharedPreferences.Editor)localObject).commit();
@@ -1479,7 +1429,7 @@ public class FriendIntimateRelationshipHelper
       ((StringBuilder)localObject).append(" isOpen:");
       ((StringBuilder)localObject).append(paramBoolean);
       ((StringBuilder)localObject).append("  sLastIsOpen:");
-      ((StringBuilder)localObject).append(jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append(a);
       ((StringBuilder)localObject).append(" lastOpen:");
       ((StringBuilder)localObject).append(bool);
       QLog.d("FriendIntimateRelationshipHelper", 1, ((StringBuilder)localObject).toString());
@@ -1488,16 +1438,21 @@ public class FriendIntimateRelationshipHelper
   
   public static boolean a()
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long < 1000L) {
+    if (System.currentTimeMillis() - c < 1000L) {
       return b;
     }
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    b = FriendIntimateRelationshipConfProcessor.a().jdField_a_of_type_Boolean;
+    c = System.currentTimeMillis();
+    b = FriendIntimateRelationshipConfProcessor.a().a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("isUpgradeOpen res:");
     localStringBuilder.append(b);
     QLog.i("FriendIntimateRelationshipHelper", 1, localStringBuilder.toString());
     return b;
+  }
+  
+  private static boolean a(AppInterface paramAppInterface, submsgtype0xc7.RelationalChainChange paramRelationalChainChange)
+  {
+    return (!a(paramAppInterface)) || (!a(paramRelationalChainChange));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, ExtensionInfo paramExtensionInfo, byte[] paramArrayOfByte)
@@ -1533,7 +1488,7 @@ public class FriendIntimateRelationshipHelper
           paramExtensionInfo.intimate_level = localStringBuilder.lover.level.get();
           paramExtensionInfo.intimate_chatDays = localStringBuilder.lover.chat_days.get();
           if ((localStringBuilder.lover.buffer.has()) && (localStringBuilder.lover.buffer.get() != null)) {
-            a(paramQQAppInterface, paramExtensionInfo, localStringBuilder.lover.buffer.get().toByteArray());
+            b(paramQQAppInterface, paramExtensionInfo, localStringBuilder.lover.buffer.get().toByteArray());
           }
         }
         for (;;)
@@ -1547,7 +1502,7 @@ public class FriendIntimateRelationshipHelper
             paramExtensionInfo.intimate_level = localStringBuilder.ladybro.level.get();
             paramExtensionInfo.intimate_chatDays = localStringBuilder.ladybro.chat_days.get();
             if ((localStringBuilder.ladybro.buffer.has()) && (localStringBuilder.ladybro.buffer.get() != null)) {
-              a(paramQQAppInterface, paramExtensionInfo, localStringBuilder.ladybro.buffer.get().toByteArray());
+              b(paramQQAppInterface, paramExtensionInfo, localStringBuilder.ladybro.buffer.get().toByteArray());
             }
           }
           else if (localStringBuilder.bestfriend.has())
@@ -1556,7 +1511,7 @@ public class FriendIntimateRelationshipHelper
             paramExtensionInfo.intimate_level = localStringBuilder.bestfriend.level.get();
             paramExtensionInfo.intimate_chatDays = localStringBuilder.bestfriend.chat_days.get();
             if ((localStringBuilder.bestfriend.buffer.has()) && (localStringBuilder.bestfriend.buffer.get() != null)) {
-              a(paramQQAppInterface, paramExtensionInfo, localStringBuilder.bestfriend.buffer.get().toByteArray());
+              b(paramQQAppInterface, paramExtensionInfo, localStringBuilder.bestfriend.buffer.get().toByteArray());
             }
           }
           else
@@ -1568,7 +1523,7 @@ public class FriendIntimateRelationshipHelper
             paramExtensionInfo.intimate_level = localStringBuilder.buddy.level.get();
             paramExtensionInfo.intimate_chatDays = localStringBuilder.buddy.chat_days.get();
             if ((localStringBuilder.buddy.buffer.has()) && (localStringBuilder.buddy.buffer.get() != null)) {
-              a(paramQQAppInterface, paramExtensionInfo, localStringBuilder.buddy.buffer.get().toByteArray());
+              b(paramQQAppInterface, paramExtensionInfo, localStringBuilder.buddy.buffer.get().toByteArray());
             }
           }
         }
@@ -1639,32 +1594,42 @@ public class FriendIntimateRelationshipHelper
   
   public static boolean a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, jdField_a_of_type_JavaLangString)))
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.equals(paramString, d)))
     {
-      boolean bool = jdField_a_of_type_Boolean;
-      String str = jdField_a_of_type_JavaLangString;
-      jdField_a_of_type_JavaLangString = paramString;
-      jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences(paramString, 0).getBoolean("friend_intimate_isOpen", false);
+      boolean bool = a;
+      String str = d;
+      d = paramString;
+      a = BaseApplicationImpl.getApplication().getSharedPreferences(paramString, 0).getBoolean("friend_intimate_isOpen", false);
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
         paramString.append("isOpen oldOpen:");
         paramString.append(bool);
         paramString.append(" sLastIsOpen:");
-        paramString.append(jdField_a_of_type_Boolean);
+        paramString.append(a);
         paramString.append("  oldUin:");
         paramString.append(str);
         paramString.append("  sLastUin:");
-        paramString.append(jdField_a_of_type_JavaLangString);
+        paramString.append(d);
         QLog.d("FriendIntimateRelationshipHelper", 2, paramString.toString());
       }
     }
-    return jdField_a_of_type_Boolean;
+    return a;
+  }
+  
+  protected static boolean a(AppRuntime paramAppRuntime)
+  {
+    return ((IFeatureRuntimeService)paramAppRuntime.getRuntimeService(IFeatureRuntimeService.class, "all")).isFeatureSwitchEnable("AIO_DelIntimate_GrayTips_864145781");
+  }
+  
+  protected static boolean a(submsgtype0xc7.RelationalChainChange paramRelationalChainChange)
+  {
+    return paramRelationalChainChange.uint64_trigger_uin.get() == paramRelationalChainChange.uint64_dst_uin.get();
   }
   
   public static String b()
   {
-    return FriendIntimateRelationshipConfProcessor.a().S;
+    return FriendIntimateRelationshipConfProcessor.a().b;
   }
   
   public static String b(int paramInt1, int paramInt2)
@@ -1679,36 +1644,36 @@ public class FriendIntimateRelationshipHelper
         {
           if (paramInt1 == 26) {
             if (paramInt2 == 0) {
-              str = ((FriendIntimateRelationshipBean)localObject).s;
-            } else if (paramInt2 == 1) {
               str = ((FriendIntimateRelationshipBean)localObject).t;
-            } else if (paramInt2 == 2) {
+            } else if (paramInt2 == 1) {
               str = ((FriendIntimateRelationshipBean)localObject).u;
+            } else if (paramInt2 == 2) {
+              str = ((FriendIntimateRelationshipBean)localObject).v;
             }
           }
         }
         else if (paramInt2 == 0) {
-          str = ((FriendIntimateRelationshipBean)localObject).v;
-        } else if (paramInt2 == 1) {
           str = ((FriendIntimateRelationshipBean)localObject).w;
-        } else if (paramInt2 == 2) {
+        } else if (paramInt2 == 1) {
           str = ((FriendIntimateRelationshipBean)localObject).x;
+        } else if (paramInt2 == 2) {
+          str = ((FriendIntimateRelationshipBean)localObject).y;
         }
       }
       else if (paramInt2 == 0) {
-        str = ((FriendIntimateRelationshipBean)localObject).p;
-      } else if (paramInt2 == 1) {
         str = ((FriendIntimateRelationshipBean)localObject).q;
-      } else if (paramInt2 == 2) {
+      } else if (paramInt2 == 1) {
         str = ((FriendIntimateRelationshipBean)localObject).r;
+      } else if (paramInt2 == 2) {
+        str = ((FriendIntimateRelationshipBean)localObject).s;
       }
     }
     else if (paramInt2 == 0) {
-      str = ((FriendIntimateRelationshipBean)localObject).y;
-    } else if (paramInt2 == 1) {
       str = ((FriendIntimateRelationshipBean)localObject).z;
-    } else if (paramInt2 == 2) {
+    } else if (paramInt2 == 1) {
       str = ((FriendIntimateRelationshipBean)localObject).A;
+    } else if (paramInt2 == 2) {
+      str = ((FriendIntimateRelationshipBean)localObject).B;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getAIOIntimateDarkBG intimateType:");
@@ -1719,6 +1684,65 @@ public class FriendIntimateRelationshipHelper
     ((StringBuilder)localObject).append(str);
     QLog.i("FriendIntimateRelationshipHelper", 1, ((StringBuilder)localObject).toString());
     return str;
+  }
+  
+  public static String b(String paramString)
+  {
+    Object localObject = Uri.parse(FriendIntimateRelationshipConfProcessor.a().c).buildUpon();
+    ((Uri.Builder)localObject).appendQueryParameter("uin", paramString);
+    paramString = ((Uri.Builder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bindPageURL url:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("FriendIntimateRelationshipHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, ExtensionInfo paramExtensionInfo, byte[] paramArrayOfByte)
+  {
+    paramQQAppInterface = new intimate_relation_ext.IntimateRelationExtMsg();
+    try
+    {
+      paramQQAppInterface.mergeFrom(paramArrayOfByte);
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      paramQQAppInterface = null;
+    }
+    if (paramQQAppInterface != null)
+    {
+      boolean bool3 = paramQQAppInterface.uint64_icon_status.has();
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (bool3)
+      {
+        bool1 = bool2;
+        if (paramQQAppInterface.uint64_icon_status.get() == 1L) {
+          bool1 = true;
+        }
+      }
+      if (paramExtensionInfo.isExtinguish != bool1) {
+        paramExtensionInfo.isExtinguish = bool1;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramExtensionInfo = new StringBuilder();
+        paramExtensionInfo.append("handleGetIntimateRelationExtMsgInfo ext_info.uint64_icon_status.has():");
+        paramExtensionInfo.append(paramQQAppInterface.uint64_icon_status.has());
+        paramExtensionInfo.append(" newIsExtinguish:");
+        paramExtensionInfo.append(bool1);
+        QLog.i("FriendIntimateRelationshipHelper", 1, paramExtensionInfo.toString());
+      }
+    }
+  }
+  
+  public static String c()
+  {
+    return FriendIntimateRelationshipConfProcessor.a().T;
   }
   
   public static String c(int paramInt1, int paramInt2)
@@ -1735,40 +1759,40 @@ public class FriendIntimateRelationshipHelper
           {
             if (paramInt1 == 26) {
               if (paramInt2 == 0) {
-                str = ((FriendIntimateRelationshipBean)localObject).F;
-              } else if (paramInt2 == 1) {
                 str = ((FriendIntimateRelationshipBean)localObject).G;
-              } else if (paramInt2 == 2) {
+              } else if (paramInt2 == 1) {
                 str = ((FriendIntimateRelationshipBean)localObject).H;
+              } else if (paramInt2 == 2) {
+                str = ((FriendIntimateRelationshipBean)localObject).I;
               }
             }
           }
           else if (paramInt2 == 0) {
-            str = ((FriendIntimateRelationshipBean)localObject).I;
-          } else if (paramInt2 == 1) {
             str = ((FriendIntimateRelationshipBean)localObject).J;
-          } else if (paramInt2 == 2) {
+          } else if (paramInt2 == 1) {
             str = ((FriendIntimateRelationshipBean)localObject).K;
+          } else if (paramInt2 == 2) {
+            str = ((FriendIntimateRelationshipBean)localObject).L;
           }
         }
         else if (paramInt2 == 0) {
-          str = ((FriendIntimateRelationshipBean)localObject).C;
-        } else if (paramInt2 == 1) {
           str = ((FriendIntimateRelationshipBean)localObject).D;
-        } else if (paramInt2 == 2) {
+        } else if (paramInt2 == 1) {
           str = ((FriendIntimateRelationshipBean)localObject).E;
+        } else if (paramInt2 == 2) {
+          str = ((FriendIntimateRelationshipBean)localObject).F;
         }
       }
       else if (paramInt2 == 0) {
-        str = ((FriendIntimateRelationshipBean)localObject).L;
-      } else if (paramInt2 == 1) {
         str = ((FriendIntimateRelationshipBean)localObject).M;
-      } else if (paramInt2 == 2) {
+      } else if (paramInt2 == 1) {
         str = ((FriendIntimateRelationshipBean)localObject).N;
+      } else if (paramInt2 == 2) {
+        str = ((FriendIntimateRelationshipBean)localObject).O;
       }
     }
     else {
-      str = ((FriendIntimateRelationshipBean)localObject).B;
+      str = ((FriendIntimateRelationshipBean)localObject).C;
     }
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("getAIOIntimateShareBG intimateType:");
@@ -1783,7 +1807,7 @@ public class FriendIntimateRelationshipHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.FriendIntimateRelationshipHelper
  * JD-Core Version:    0.7.0.1
  */

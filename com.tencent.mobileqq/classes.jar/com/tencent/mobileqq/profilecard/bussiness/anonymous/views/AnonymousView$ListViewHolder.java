@@ -29,27 +29,27 @@ public class AnonymousView$ListViewHolder
   public AnonymousView$ListViewHolder(View paramView)
   {
     super(paramView);
-    this.root = ((ViewGroup)paramView.findViewById(2131374156));
-    this.ll = ((ViewGroup)paramView.findViewById(2131374155));
-    this.ivQuesHeadBg = ((ImageView)paramView.findViewById(2131374153));
-    this.ivQues = ((ImageView)paramView.findViewById(2131374152));
-    this.tvQues = ((TextView)paramView.findViewById(2131374167));
-    this.ivQuesHeadCircle = ((ImageView)paramView.findViewById(2131374154));
-    this.ivAnswer = ((ImageView)paramView.findViewById(2131374147));
-    this.ivAnswerHeadCircle = ((ImageView)paramView.findViewById(2131374148));
-    this.tvAnswer = ((TextView)paramView.findViewById(2131374163));
-    this.ivBrowser = ((ImageView)paramView.findViewById(2131374149));
-    this.tvBrowse = ((TextView)paramView.findViewById(2131374164));
-    this.tvLike = ((TextView)paramView.findViewById(2131374166));
-    this.ivLike = ((ImageView)paramView.findViewById(2131374151));
-    this.tvComment = ((TextView)paramView.findViewById(2131374165));
-    this.ivComment = ((ImageView)paramView.findViewById(2131374150));
-    this.rl = ((ViewGroup)paramView.findViewById(2131374157));
+    this.root = ((ViewGroup)paramView.findViewById(2131442251));
+    this.ll = ((ViewGroup)paramView.findViewById(2131442250));
+    this.ivQuesHeadBg = ((ImageView)paramView.findViewById(2131442248));
+    this.ivQues = ((ImageView)paramView.findViewById(2131442247));
+    this.tvQues = ((TextView)paramView.findViewById(2131442262));
+    this.ivQuesHeadCircle = ((ImageView)paramView.findViewById(2131442249));
+    this.ivAnswer = ((ImageView)paramView.findViewById(2131442242));
+    this.ivAnswerHeadCircle = ((ImageView)paramView.findViewById(2131442243));
+    this.tvAnswer = ((TextView)paramView.findViewById(2131442258));
+    this.ivBrowser = ((ImageView)paramView.findViewById(2131442244));
+    this.tvBrowse = ((TextView)paramView.findViewById(2131442259));
+    this.tvLike = ((TextView)paramView.findViewById(2131442261));
+    this.ivLike = ((ImageView)paramView.findViewById(2131442246));
+    this.tvComment = ((TextView)paramView.findViewById(2131442260));
+    this.ivComment = ((ImageView)paramView.findViewById(2131442245));
+    this.rl = ((ViewGroup)paramView.findViewById(2131442252));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.anonymous.views.AnonymousView.ListViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ChatBackground;
 import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer;
 import com.tencent.mobileqq.activity.aio.drawer.TroopAppShortcutDrawer;
 import com.tencent.mobileqq.activity.aio.navigate.NavigateBarManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SimpleModeHelper;
 import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 import com.tencent.qphone.base.util.QLog;
@@ -23,28 +23,28 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopAppShortcutHelper
   implements ILifeCycleHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   public NavigateBarManager a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private QQAppInterface b;
+  private Context c;
+  private Activity d;
+  private BaseChatPie e;
+  private SessionInfo f;
   
   public TroopAppShortcutHelper(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.b = paramBaseChatPie.d;
+    this.c = paramBaseChatPie.e;
+    this.d = paramBaseChatPie.f;
+    this.e = paramBaseChatPie;
+    this.f = paramBaseChatPie.ah;
   }
   
-  private BaseChatDrawer a()
+  private BaseChatDrawer f()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).jdField_a_of_type_JavaLangString)))
+    Object localObject = this.f;
+    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).b)))
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      localObject = this.e;
       if (localObject != null) {
         return new TroopAppShortcutDrawer((BaseChatPie)localObject);
       }
@@ -55,35 +55,35 @@ public class TroopAppShortcutHelper
   
   public void a()
   {
-    NavigateBarManager localNavigateBarManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager;
+    NavigateBarManager localNavigateBarManager = this.a;
     if (localNavigateBarManager != null)
     {
       localNavigateBarManager.b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager = null;
+      this.a = null;
     }
   }
   
   public void b()
   {
-    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    BaseChatPie localBaseChatPie = this.e;
     if ((localBaseChatPie instanceof TroopChatPie)) {
-      ((ChatDrawerHelper)localBaseChatPie.a(124)).a = a();
+      ((ChatDrawerHelper)localBaseChatPie.q(124)).b = f();
     }
-    if ((((ChatDrawerHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(124)).a != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof TroopChatPie)))
+    if ((((ChatDrawerHelper)this.e.q(124)).b != null) && ((this.e instanceof TroopChatPie)))
     {
-      if (!AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
+      if (!AnonymousChatHelper.a().a(this.e.ah.b))
       {
-        AIOUtils.a((InputLinearLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131368875), 2130850177);
+        SimpleModeHelper.a((InputLinearLayout)this.e.aZ.findViewById(2131435809));
         if (!ThemeUtil.isDefaultTheme()) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130850433);
+          this.e.p.setBackgroundResource(2130852228);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130850434);
+          this.e.p.setBackgroundResource(2130852229);
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_ComTencentMobileqqActivityAioChatBackground.a);
+        this.e.ba.setBackgroundDrawable(this.e.ah.H.c);
         return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.d.setBackgroundResource(2130843798);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setBackgroundResource(2130843804);
+      this.e.ba.setBackgroundResource(2130844752);
+      this.e.p.setBackgroundResource(2130844758);
     }
   }
   
@@ -94,19 +94,19 @@ public class TroopAppShortcutHelper
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager == null)
+    if (this.a == null)
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c.findViewById(2131364485);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager = new NavigateBarManager(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localRelativeLayout);
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.e.aZ.findViewById(2131430542);
+      this.a = new NavigateBarManager(this.e, this.b, this.c, this.f, localRelativeLayout);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager.a(3);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager.c(75);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager.a();
+    this.a.a(3);
+    this.a.c(75);
+    this.a.a();
   }
   
   public void e()
   {
-    NavigateBarManager localNavigateBarManager = this.jdField_a_of_type_ComTencentMobileqqActivityAioNavigateNavigateBarManager;
+    NavigateBarManager localNavigateBarManager = this.a;
     if (localNavigateBarManager == null) {
       return;
     }
@@ -143,7 +143,7 @@ public class TroopAppShortcutHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAppShortcutHelper
  * JD-Core Version:    0.7.0.1
  */

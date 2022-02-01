@@ -14,24 +14,24 @@ import java.util.Map;
 public class ShareGroupAvatarSaveFileJob
   extends ShareGroupAvatarJob
 {
-  private final String c;
+  private final String b;
   
   public ShareGroupAvatarSaveFileJob(String paramString1, String paramString2)
   {
     a(false, true);
     this.a = paramString1;
-    this.c = paramString2;
+    this.b = paramString2;
   }
   
-  private boolean a(RestrictedBitmap paramRestrictedBitmap)
+  private boolean b(RestrictedBitmap paramRestrictedBitmap)
   {
     try
     {
       Bitmap localBitmap = Bitmap.createBitmap(paramRestrictedBitmap.a(), paramRestrictedBitmap.b(), Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap);
       localCanvas.drawColor(-1);
-      localCanvas.drawBitmap(paramRestrictedBitmap.a(), 0.0F, 0.0F, null);
-      ImageUtil.a(ImageUtil.a(localBitmap, 100), new File(this.c));
+      localCanvas.drawBitmap(paramRestrictedBitmap.c(), 0.0F, 0.0F, null);
+      ImageUtil.a(ImageUtil.a(localBitmap, 100), new File(this.b));
       return true;
     }
     catch (OutOfMemoryError paramRestrictedBitmap)
@@ -67,13 +67,13 @@ public class ShareGroupAvatarSaveFileJob
   protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
-      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+      this.a = ((String)b("ShareGroupAvatarSaveFileJob_sgi"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob
  * JD-Core Version:    0.7.0.1
  */

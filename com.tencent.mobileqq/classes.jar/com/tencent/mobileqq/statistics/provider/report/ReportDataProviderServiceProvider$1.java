@@ -19,25 +19,6 @@ class ReportDataProviderServiceProvider$1
 {
   ReportDataProviderServiceProvider$1(ReportDataProviderServiceProvider paramReportDataProviderServiceProvider) {}
   
-  public ReportController.BusinessDataReporter a()
-  {
-    return ((IRIJNewReport)QRoute.api(IRIJNewReport.class)).createNewReport();
-  }
-  
-  public ReportController a(AppRuntime paramAppRuntime)
-  {
-    if (ReportDataProviderServiceProvider.a(this.a) == null) {
-      try
-      {
-        if (ReportDataProviderServiceProvider.a(this.a) == null) {
-          ReportDataProviderServiceProvider.a(this.a, ReportControllerImpl.a(paramAppRuntime));
-        }
-      }
-      finally {}
-    }
-    return ReportDataProviderServiceProvider.a(this.a);
-  }
-  
   public String a(AppRuntime paramAppRuntime, ServerConfigManager.ConfigType paramConfigType, String paramString)
   {
     if ((paramAppRuntime instanceof QQAppInterface)) {
@@ -59,14 +40,33 @@ class ReportDataProviderServiceProvider$1
     return false;
   }
   
+  public ReportController b(AppRuntime paramAppRuntime)
+  {
+    if (ReportDataProviderServiceProvider.a(this.a) == null) {
+      try
+      {
+        if (ReportDataProviderServiceProvider.a(this.a) == null) {
+          ReportDataProviderServiceProvider.a(this.a, ReportControllerImpl.b(paramAppRuntime));
+        }
+      }
+      finally {}
+    }
+    return ReportDataProviderServiceProvider.a(this.a);
+  }
+  
   public List<String> b()
   {
     return LoginConstants.a;
   }
+  
+  public ReportController.BusinessDataReporter d()
+  {
+    return ((IRIJNewReport)QRoute.api(IRIJNewReport.class)).createNewReport();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.provider.report.ReportDataProviderServiceProvider.1
  * JD-Core Version:    0.7.0.1
  */

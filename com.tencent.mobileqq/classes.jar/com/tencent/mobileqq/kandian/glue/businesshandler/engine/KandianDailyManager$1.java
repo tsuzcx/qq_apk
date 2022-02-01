@@ -7,12 +7,12 @@ class KandianDailyManager$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentMobileqqKandianGlueBusinesshandlerEngineKandianDailyManager$DailySetTopInfo.trySetTopMsgNode(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.this$0.c.trySetTopMsgNode(this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.KandianDailyManager.1
  * JD-Core Version:    0.7.0.1
  */

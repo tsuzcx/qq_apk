@@ -13,15 +13,15 @@ class LocationDialogUtil$9$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LocationHandler.a().a(new LocationRoom.RoomKey(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString));
+    LocationHandler.a().a(new LocationRoom.RoomKey(this.a.c, this.a.d));
     LocationShareRoomManager.a().a(true);
-    LocationShareRoomManager.a().a(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString);
-    LocationShareFragment.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
+    LocationShareRoomManager.a().a(this.a.c, this.a.d);
+    LocationShareFragment.a(this.a.a, this.a.c, this.a.d, this.a.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.9.1
  * JD-Core Version:    0.7.0.1
  */

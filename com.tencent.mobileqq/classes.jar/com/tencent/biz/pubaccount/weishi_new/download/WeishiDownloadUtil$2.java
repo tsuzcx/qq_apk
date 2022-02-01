@@ -11,7 +11,7 @@ final class WeishiDownloadUtil$2
   public void installSucceed(String paramString1, String paramString2)
   {
     super.installSucceed(paramString1, paramString2);
-    if (!WeishiDownloadUtil.b()) {
+    if (!WeishiDownloadUtil.f()) {
       return;
     }
     WeishiDownloadUtil.a(paramString1, paramString2, true);
@@ -25,9 +25,9 @@ final class WeishiDownloadUtil$2
     WSLog.c("WeishiDownloadUtil", localStringBuilder.toString());
     if (WeishiDownloadUtil.a(paramDownloadInfo))
     {
-      WeishiDownloadUtil.a();
-      int i = WeishiDownloadUtil.b();
-      WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), i, 3, 2, 0, WeishiDownloadUtil.c());
+      WeishiDownloadUtil.h();
+      int i = WeishiDownloadUtil.e();
+      WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.d(), i, 3, 2, 0, WeishiDownloadUtil.k());
     }
   }
   
@@ -39,9 +39,9 @@ final class WeishiDownloadUtil$2
     WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
     if (WeishiDownloadUtil.a(paramDownloadInfo))
     {
-      WeishiDownloadUtil.a();
-      paramInt2 = WeishiDownloadUtil.b();
-      WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.a(), paramInt2, 3, 2, 0, WeishiDownloadUtil.c());
+      WeishiDownloadUtil.h();
+      paramInt2 = WeishiDownloadUtil.e();
+      WSPublicAccReport.getInstance().reportDownload(WeishiDownloadUtil.d(), paramInt2, 3, 2, 0, WeishiDownloadUtil.k());
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("qzone  errorCode:");
       localStringBuilder.append(paramInt1);
@@ -54,16 +54,16 @@ final class WeishiDownloadUtil$2
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    WeishiDownloadUtil.a();
+    WeishiDownloadUtil.h();
     WSLog.a("WeishiDownloadUtil", "qzone onDownloadFinish~~~");
-    int i = WeishiDownloadUtil.a();
-    int j = WeishiDownloadUtil.b();
+    int i = WeishiDownloadUtil.d();
+    int j = WeishiDownloadUtil.e();
     if (j != 3)
     {
       WSLog.c("WeishiDownloadUtil", "onDownloadFinish return!qzone只有主动下载");
       return;
     }
-    if (!WeishiDownloadUtil.b())
+    if (!WeishiDownloadUtil.f())
     {
       paramDownloadInfo = new StringBuilder();
       paramDownloadInfo.append("这是Qzone的监听器，不响应qq onDownloadFinish eventId:");
@@ -84,14 +84,14 @@ final class WeishiDownloadUtil$2
     localStringBuilder.append(paramDownloadInfo);
     WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
     if (WeishiDownloadUtil.a(paramDownloadInfo)) {
-      WeishiDownloadUtil.a();
+      WeishiDownloadUtil.h();
     }
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
     super.onDownloadUpdate(paramList);
-    if (!WeishiDownloadUtil.b()) {
+    if (!WeishiDownloadUtil.f()) {
       return;
     }
     if (paramList != null) {
@@ -121,7 +121,7 @@ final class WeishiDownloadUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil.2
  * JD-Core Version:    0.7.0.1
  */

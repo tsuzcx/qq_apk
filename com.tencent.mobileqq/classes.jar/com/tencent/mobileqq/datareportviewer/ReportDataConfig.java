@@ -6,17 +6,17 @@ import org.json.JSONObject;
 public class ReportDataConfig
   extends BaseReportDataConfig
 {
-  public ReportDataConfigGroup a;
-  public String b;
-  public boolean b;
+  public String c;
+  public ReportDataConfigGroup d;
+  public boolean e;
   
   public static ReportDataConfig a(JSONObject paramJSONObject)
   {
     ReportDataConfig localReportDataConfig = new ReportDataConfig();
-    localReportDataConfig.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
-    localReportDataConfig.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
-    localReportDataConfig.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
-    localReportDataConfig.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
+    localReportDataConfig.a = paramJSONObject.optString("name");
+    localReportDataConfig.c = paramJSONObject.optString("action");
+    localReportDataConfig.b = paramJSONObject.optBoolean("isChecked", true);
+    localReportDataConfig.e = paramJSONObject.optBoolean("isAddByUser");
     return localReportDataConfig;
   }
   
@@ -25,10 +25,10 @@ public class ReportDataConfig
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
-      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("name", this.a);
+      localJSONObject.put("action", this.c);
+      localJSONObject.put("isChecked", this.b);
+      localJSONObject.put("isAddByUser", this.e);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
@@ -38,23 +38,23 @@ public class ReportDataConfig
     return localJSONObject;
   }
   
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
   public boolean b()
   {
-    ReportDataConfigGroup localReportDataConfigGroup = this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportDataConfigGroup;
+    return this.e;
+  }
+  
+  public boolean c()
+  {
+    ReportDataConfigGroup localReportDataConfigGroup = this.d;
     if (localReportDataConfigGroup == null) {
-      return this.jdField_a_of_type_Boolean;
+      return this.b;
     }
-    return localReportDataConfigGroup.jdField_a_of_type_Boolean;
+    return localReportDataConfigGroup.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.ReportDataConfig
  * JD-Core Version:    0.7.0.1
  */

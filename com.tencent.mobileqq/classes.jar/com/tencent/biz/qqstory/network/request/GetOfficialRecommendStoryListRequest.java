@@ -18,16 +18,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetOfficialRecommendStoryListRequest
   extends NetworkRequest
 {
-  public static final String a;
-  public BasicLocation a;
-  public String b = "";
+  public static final String e = QQStoryHandler.g;
+  public String f = "";
+  public BasicLocation g;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = QQStoryHandler.g;
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     if (!QQStoryHandler.a(paramArrayOfByte))
     {
@@ -50,20 +50,15 @@ public class GetOfficialRecommendStoryListRequest
     return null;
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqGetOfficialRecommends localReqGetOfficialRecommends = new qqstory_service.ReqGetOfficialRecommends();
     localReqGetOfficialRecommends.count.set(50);
-    localReqGetOfficialRecommends.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation != null)
+    localReqGetOfficialRecommends.start_cookie.set(ByteStringMicro.copyFromUtf8(this.f));
+    if (this.g != null)
     {
-      localReqGetOfficialRecommends.gps.lat.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.a);
-      localReqGetOfficialRecommends.gps.lng.set(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation.b);
+      localReqGetOfficialRecommends.gps.lat.set(this.g.a);
+      localReqGetOfficialRecommends.gps.lng.set(this.g.b);
       localReqGetOfficialRecommends.gps.setHasFlag(true);
     }
     return localReqGetOfficialRecommends.toByteArray();
@@ -73,16 +68,16 @@ public class GetOfficialRecommendStoryListRequest
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetOfficialRecommendStoryListRequest{count=50start_cookie=");
-    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.f);
     localStringBuilder.append("location");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation);
+    localStringBuilder.append(this.g);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetOfficialRecommendStoryListRequest
  * JD-Core Version:    0.7.0.1
  */

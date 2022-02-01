@@ -14,17 +14,17 @@ class GLTextureView$2
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("TextureView mCheckAlphaTask,alpha:");
-      localStringBuilder.append(GLTextureView.a(this.this$0));
+      localStringBuilder.append(GLTextureView.b(this.this$0));
       QLog.d("GLTextureView", 2, localStringBuilder.toString());
     }
-    if (GLTextureView.a(this.this$0) != 1.0F) {
+    if (GLTextureView.b(this.this$0) != 1.0F) {
       GLTextureView.a(this.this$0, 1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.GLTextureView.2
  * JD-Core Version:    0.7.0.1
  */

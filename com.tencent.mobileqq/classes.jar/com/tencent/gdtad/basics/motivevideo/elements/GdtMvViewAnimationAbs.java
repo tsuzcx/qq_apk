@@ -12,14 +12,14 @@ import com.tencent.gdtad.views.GdtUIUtils;
 public class GdtMvViewAnimationAbs
   implements GdtMvViewAnimation
 {
-  protected Context a;
-  protected Handler a;
   protected GdtMvAniDataAbs a;
+  protected Context b;
+  protected Handler c;
   
   protected GdtMvViewAnimationAbs(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.b = paramContext;
+    this.c = new Handler(Looper.getMainLooper());
   }
   
   public static void a(View paramView)
@@ -38,15 +38,15 @@ public class GdtMvViewAnimationAbs
   
   private void a(GdtMvAniDataAbs paramGdtMvAniDataAbs)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramGdtMvAniDataAbs.h.getLayoutParams();
-    localLayoutParams.height = paramGdtMvAniDataAbs.n;
-    localLayoutParams.width = paramGdtMvAniDataAbs.o;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramGdtMvAniDataAbs.y.getLayoutParams();
+    localLayoutParams.height = paramGdtMvAniDataAbs.w;
+    localLayoutParams.width = paramGdtMvAniDataAbs.x;
     localLayoutParams.addRule(3, 0);
     localLayoutParams.addRule(12, 0);
     localLayoutParams.addRule(14);
     localLayoutParams.addRule(15);
-    paramGdtMvAniDataAbs.h.setLayoutParams(localLayoutParams);
-    paramGdtMvAniDataAbs.h.postInvalidate();
+    paramGdtMvAniDataAbs.y.setLayoutParams(localLayoutParams);
+    paramGdtMvAniDataAbs.y.postInvalidate();
   }
   
   public static void b(View paramView)
@@ -62,14 +62,14 @@ public class GdtMvViewAnimationAbs
   
   public void a()
   {
-    GdtMvAniDataAbs localGdtMvAniDataAbs = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvAniDataAbs;
+    GdtMvAniDataAbs localGdtMvAniDataAbs = this.a;
     if (localGdtMvAniDataAbs != null)
     {
-      if (localGdtMvAniDataAbs.g == null) {
+      if (localGdtMvAniDataAbs.r == null) {
         return;
       }
-      a(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoElementsGdtMvAniDataAbs.g);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.1(this), 300L);
+      a(this.a.r);
+      this.c.postDelayed(new GdtMvViewAnimationAbs.1(this), 300L);
     }
   }
   
@@ -90,25 +90,25 @@ public class GdtMvViewAnimationAbs
     int j = localLayoutParams.leftMargin;
     int k = localLayoutParams.rightMargin;
     a(paramView);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GdtMvViewAnimationAbs.2(this, localLayoutParams, i, paramInt1, j, paramInt2, paramInt3, k, paramView), 200L);
+    this.c.postDelayed(new GdtMvViewAnimationAbs.2(this, localLayoutParams, i, paramInt1, j, paramInt2, paramInt3, k, paramView), 200L);
   }
   
   protected void a(GdtMvAniDataAbs paramGdtMvAniDataAbs, View paramView)
   {
-    paramGdtMvAniDataAbs.h = paramView;
-    paramGdtMvAniDataAbs.o = GdtUIUtils.a(470, 750, GdtUIUtils.e(this.jdField_a_of_type_AndroidContentContext));
-    paramGdtMvAniDataAbs.n = GdtUIUtils.a(470, 1334, GdtUIUtils.d(this.jdField_a_of_type_AndroidContentContext));
+    paramGdtMvAniDataAbs.y = paramView;
+    paramGdtMvAniDataAbs.x = GdtUIUtils.b(470, 750, GdtUIUtils.e(this.b));
+    paramGdtMvAniDataAbs.w = GdtUIUtils.b(470, 1334, GdtUIUtils.d(this.b));
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_AndroidContentContext = null;
+    this.c.removeCallbacksAndMessages(null);
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gdtad.basics.motivevideo.elements.GdtMvViewAnimationAbs
  * JD-Core Version:    0.7.0.1
  */

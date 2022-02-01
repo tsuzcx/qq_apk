@@ -15,7 +15,7 @@ class KCWraperV2$KingCardListener
     if (QLog.isColorLevel()) {
       QLog.e("KC.KCWraperV2", 1, "state changed");
     }
-    Object localObject = VasUtil.a();
+    Object localObject = VasUtil.c();
     if (localObject == null) {
       localObject = null;
     } else {
@@ -28,7 +28,7 @@ class KCWraperV2$KingCardListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2.KingCardListener
  * JD-Core Version:    0.7.0.1
  */

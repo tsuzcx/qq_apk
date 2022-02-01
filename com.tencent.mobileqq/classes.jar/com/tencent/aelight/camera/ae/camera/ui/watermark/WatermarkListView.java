@@ -13,9 +13,9 @@ import java.util.List;
 public class WatermarkListView
   extends ScrollView
 {
-  private RecyclerView.Adapter<RecyclerView.ViewHolder> jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private List<RecyclerView.ViewHolder> jdField_a_of_type_JavaUtilList;
+  private LinearLayout a;
+  private RecyclerView.Adapter<RecyclerView.ViewHolder> b;
+  private List<RecyclerView.ViewHolder> c;
   
   public WatermarkListView(Context paramContext)
   {
@@ -38,46 +38,51 @@ public class WatermarkListView
   private void a(Context paramContext)
   {
     setVerticalScrollBarEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.a = new LinearLayout(paramContext);
+    this.a.setOrientation(1);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramContext);
+    addView(this.a, paramContext);
   }
   
-  public int a()
+  public RecyclerView.ViewHolder a(int paramInt)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
+    return (RecyclerView.ViewHolder)this.c.get(paramInt);
+  }
+  
+  public RecyclerView.Adapter<RecyclerView.ViewHolder> getAdapter()
+  {
+    return this.b;
+  }
+  
+  public int getViewHolderCount()
+  {
+    List localList = this.c;
     if (localList != null) {
       return localList.size();
     }
     return 0;
   }
   
-  public RecyclerView.ViewHolder a(int paramInt)
-  {
-    return (RecyclerView.ViewHolder)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
   public void setAdapter(RecyclerView.Adapter<RecyclerView.ViewHolder> paramAdapter)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.b = paramAdapter;
+    this.c = new ArrayList();
+    this.a.removeAllViews();
     int i = 0;
     while (i < paramAdapter.getItemCount())
     {
-      RecyclerView.ViewHolder localViewHolder = paramAdapter.onCreateViewHolder(this.jdField_a_of_type_AndroidWidgetLinearLayout, 0);
+      RecyclerView.ViewHolder localViewHolder = paramAdapter.onCreateViewHolder(this.a, 0);
       paramAdapter.onBindViewHolder(localViewHolder, i);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localViewHolder.itemView, localLayoutParams);
-      this.jdField_a_of_type_JavaUtilList.add(localViewHolder);
+      this.a.addView(localViewHolder.itemView, localLayoutParams);
+      this.c.add(localViewHolder);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.watermark.WatermarkListView
  * JD-Core Version:    0.7.0.1
  */

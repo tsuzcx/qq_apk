@@ -9,27 +9,25 @@ import java.util.List;
 public class DateCollectionListPageLoader$GetCollectionListEvent
   extends BasePageLoaderEvent
 {
-  public int a;
-  public String a;
-  public List<VideoCollectionItem> a;
-  public String b;
-  public boolean e = true;
+  public List<VideoCollectionItem> e = new ArrayList();
+  public int f = -1;
+  public boolean h = true;
+  public String i;
+  public String j;
   
   public DateCollectionListPageLoader$GetCollectionListEvent(String paramString, ErrorMessage paramErrorMessage)
   {
     super(paramErrorMessage);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.i = paramString;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GetCollectionListEvent{isEnd=");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", isUpdated=");
-    localStringBuilder.append(this.e);
+    localStringBuilder.append(this.h);
     localStringBuilder.append(", isLocalData=");
     localStringBuilder.append(this.b);
     localStringBuilder.append(", isFirstPage=");
@@ -37,11 +35,11 @@ public class DateCollectionListPageLoader$GetCollectionListEvent
     localStringBuilder.append(", isRefreshFromLoadMore=");
     localStringBuilder.append(this.d);
     localStringBuilder.append(", collectionList=");
-    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(this.e);
     localStringBuilder.append(", totalVideoCount=");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.f);
     localStringBuilder.append(", context='");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.i);
     localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -49,7 +47,7 @@ public class DateCollectionListPageLoader$GetCollectionListEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent
  * JD-Core Version:    0.7.0.1
  */

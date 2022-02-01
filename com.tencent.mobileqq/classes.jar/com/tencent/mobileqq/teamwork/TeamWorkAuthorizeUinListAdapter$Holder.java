@@ -7,17 +7,17 @@ import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 
 public class TeamWorkAuthorizeUinListAdapter$Holder
 {
-  public ImageView a;
-  public TextView a;
   public URLImageView a;
-  public TimDocSSOMsg.UinRightInfo a;
   public TextView b;
+  public TextView c;
+  public ImageView d;
+  public TimDocSSOMsg.UinRightInfo e;
   
   public TeamWorkAuthorizeUinListAdapter$Holder(TeamWorkAuthorizeUinListAdapter paramTeamWorkAuthorizeUinListAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkAuthorizeUinListAdapter.Holder
  * JD-Core Version:    0.7.0.1
  */

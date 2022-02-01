@@ -18,12 +18,12 @@ final class WeatherWebViewFragment$webViewWrapper$2
   
   public final RefreshView invoke()
   {
-    return (RefreshView)this.this$0.contentView.findViewById(2131381085);
+    return (RefreshView)this.this$0.contentView.findViewById(2131450099);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.weather.webpage.WeatherWebViewFragment.webViewWrapper.2
  * JD-Core Version:    0.7.0.1
  */

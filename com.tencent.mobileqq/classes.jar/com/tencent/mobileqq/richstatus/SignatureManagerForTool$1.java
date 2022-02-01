@@ -45,7 +45,7 @@ class SignatureManagerForTool$1
         {
           SignatureTemplateConfig.a((String)localObject2, (SignatureTemplateInfo)localObject1);
           ((SignatureTemplateInfo)localObject1).a.set(false);
-          SignatureManagerForTool.a(this.this$0);
+          SignatureManagerForTool.b(this.this$0);
           this.this$0.notifyObservers(Integer.valueOf(3));
         }
       }
@@ -54,7 +54,7 @@ class SignatureManagerForTool$1
         this.this$0.notifyObservers(Integer.valueOf(9));
         localObject1 = new Bundle();
         ((Bundle)localObject1).putInt("id", this.a);
-        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.d, (Bundle)localObject1, SignatureManagerForTool.a(this.this$0));
+        QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.d, (Bundle)localObject1, SignatureManagerForTool.c(this.this$0));
       }
       return;
     }
@@ -72,7 +72,7 @@ class SignatureManagerForTool$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureManagerForTool.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,21 +22,6 @@ public class QCircleHostProtoUtil
     return localArrayList;
   }
   
-  public static QQCirclePrivateMsgShow.UserPMGiftInfo a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = new QQCirclePrivateMsgShow.UserPMGiftInfo();
-      localUserPMGiftInfo.mergeFrom(paramArrayOfByte);
-      return localUserPMGiftInfo;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
   public static QQCircleReport.SingleDcData a(byte[] paramArrayOfByte)
   {
     try
@@ -58,17 +43,32 @@ public class QCircleHostProtoUtil
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = a((byte[])paramList.next());
+      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = b((byte[])paramList.next());
       if (localUserPMGiftInfo != null) {
         localArrayList.add(localUserPMGiftInfo);
       }
     }
     return localArrayList;
   }
+  
+  public static QQCirclePrivateMsgShow.UserPMGiftInfo b(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      QQCirclePrivateMsgShow.UserPMGiftInfo localUserPMGiftInfo = new QQCirclePrivateMsgShow.UserPMGiftInfo();
+      localUserPMGiftInfo.mergeFrom(paramArrayOfByte);
+      return localUserPMGiftInfo;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.util.QCircleHostProtoUtil
  * JD-Core Version:    0.7.0.1
  */

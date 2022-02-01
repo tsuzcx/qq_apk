@@ -12,9 +12,9 @@ class QQStoryFriendSettingDelegate$1
   
   public void c(boolean paramBoolean)
   {
-    QQStoryManager localQQStoryManager = (QQStoryManager)this.a.a.app.getManager(QQManagerFactory.QQSTORY_MANAGER);
-    this.a.a(2, localQQStoryManager.a());
-    this.a.a(3, localQQStoryManager.b());
+    QQStoryManager localQQStoryManager = (QQStoryManager)this.a.c.app.getManager(QQManagerFactory.QQSTORY_MANAGER);
+    this.a.a(2, localQQStoryManager.c());
+    this.a.a(3, localQQStoryManager.d());
   }
 }
 

@@ -242,7 +242,7 @@ public class b
     }
     else
     {
-      localObject4 = com.tencent.mobileqq.msf.core.c.d.a(l1, 86400000L + l1);
+      localObject4 = com.tencent.mobileqq.msf.core.d.d.a(l1, 86400000L + l1);
       localObject1 = localObject4;
       if (QLog.isColorLevel())
       {
@@ -1245,8 +1245,8 @@ public class b
     //   14: invokevirtual 643	com/tencent/qphone/base/util/log/a/b$a:toString	()Ljava/lang/String;
     //   17: invokestatic 318	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   20: getstatic 646	com/tencent/mobileqq/msf/core/MsfCore:sCore	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   23: getfield 650	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   26: invokevirtual 654	com/tencent/mobileqq/msf/core/ac:m	()I
+    //   23: getfield 650	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ad;
+    //   26: invokevirtual 654	com/tencent/mobileqq/msf/core/ad:m	()I
     //   29: istore_1
     //   30: invokestatic 484	com/tencent/qphone/base/util/log/a/b:o	()Ljava/lang/String;
     //   33: astore 5
@@ -2430,7 +2430,7 @@ public class b
               break label1236;
             }
             bool1 = true;
-            ((com.tencent.mobileqq.msf.core.c.j)localObject1).a("msflogInfoEmpty", bool1, 0L, 0L, null, false, false);
+            ((com.tencent.mobileqq.msf.core.d.j)localObject1).a("msflogInfoEmpty", bool1, 0L, 0L, null, false, false);
             return;
           }
         }
@@ -2719,7 +2719,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -15,25 +15,25 @@ class EqqAccountDetailActivityImpl$16
 {
   EqqAccountDetailActivityImpl$16(EqqAccountDetailActivityImpl paramEqqAccountDetailActivityImpl, IPublicAccountConfigAttr.PaConfigInfo paramPaConfigInfo, ActionSheet paramActionSheet, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.messageSettingActionSheetHasClick) {
+    if (this.d.messageSettingActionSheetHasClick) {
       return;
     }
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl;
+    paramView = this.d;
     paramView.messageSettingActionSheetHasClick = true;
-    IPublicAccountConfigAttr.PaConfigInfo localPaConfigInfo = this.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountConfigAttr$PaConfigInfo;
+    IPublicAccountConfigAttr.PaConfigInfo localPaConfigInfo = this.a;
     int i = paramInt + 1;
     paramView.changeMsgState(localPaConfigInfo, i);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    if ((((EcShopAssistantManager)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).a(this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.uin)) && (this.jdField_a_of_type_Int != paramInt)) {
-      ((EcshopReportHandler)this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.app.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a(134243867, this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailApiImplEqqAccountDetailActivityImpl.uin, null, null, null, i, false);
+    this.b.dismiss();
+    if ((((EcShopAssistantManager)this.d.app.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER)).d(this.d.uin)) && (this.c != paramInt)) {
+      ((EcshopReportHandler)this.d.app.getBusinessHandler(BusinessHandlerFactory.EC_SHOP_REPORT_HANDLER)).a(134243867, this.d.uin, null, null, null, i, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.api.impl.EqqAccountDetailActivityImpl.16
  * JD-Core Version:    0.7.0.1
  */

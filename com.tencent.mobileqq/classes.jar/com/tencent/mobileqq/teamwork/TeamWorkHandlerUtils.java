@@ -25,11 +25,6 @@ public class TeamWorkHandlerUtils
   private static String a;
   private static String b;
   
-  private static File a(String paramString)
-  {
-    return new File(a(), MD5Utils.encodeHexStr(paramString));
-  }
-  
   public static String a()
   {
     String str = a;
@@ -51,163 +46,6 @@ public class TeamWorkHandlerUtils
   public static String a(String paramString)
   {
     return Uri.parse(paramString).getLastPathSegment();
-  }
-  
-  public static String a(String paramString, SharePolicyInfo paramSharePolicyInfo)
-  {
-    for (;;)
-    {
-      try
-      {
-        int k = paramSharePolicyInfo.a;
-        j = 1;
-        int i = k;
-        if (k == 0) {
-          i = 1;
-        }
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("url", URLEncoder.encode(paramSharePolicyInfo.e));
-        if (paramSharePolicyInfo.j != null) {
-          localJSONObject.put("title", URLEncoder.encode(paramSharePolicyInfo.j));
-        }
-        localJSONObject.put("type", 0);
-        Object localObject = paramSharePolicyInfo.k;
-        if (localObject == null) {
-          localObject = "0";
-        } else {
-          localObject = paramSharePolicyInfo.k;
-        }
-        localJSONObject.put("folderId", localObject);
-        localObject = new StringBuilder("https://docs.qq.com/cgi-bin/online_docs/wxqrcode");
-        ((StringBuilder)localObject).append('?');
-        ((StringBuilder)localObject).append("domainId=");
-        ((StringBuilder)localObject).append(paramSharePolicyInfo.i);
-        ((StringBuilder)localObject).append("&padId=");
-        ((StringBuilder)localObject).append(paramSharePolicyInfo.h);
-        ((StringBuilder)localObject).append("&dataType=");
-        if (paramSharePolicyInfo.b != 3) {
-          break label521;
-        }
-        ((StringBuilder)localObject).append(j);
-        ((StringBuilder)localObject).append("&page=");
-        ((StringBuilder)localObject).append("pages/shareFriend/shareFriend");
-        ((StringBuilder)localObject).append("&ac=");
-        ((StringBuilder)localObject).append("share");
-        ((StringBuilder)localObject).append("&t=");
-        ((StringBuilder)localObject).append("0");
-        ((StringBuilder)localObject).append("&policy=");
-        ((StringBuilder)localObject).append(String.valueOf(i));
-        ((StringBuilder)localObject).append("&right_flag=");
-        ((StringBuilder)localObject).append("1");
-        ((StringBuilder)localObject).append("&param=");
-        ((StringBuilder)localObject).append(localJSONObject.toString());
-        ((StringBuilder)localObject).append("&type=");
-        ((StringBuilder)localObject).append("1");
-        localObject = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).sendHttpsGet(paramString, ((StringBuilder)localObject).toString(), "docs.qq.com");
-        if (localObject != null)
-        {
-          paramSharePolicyInfo = new JSONObject((String)localObject);
-          paramString = paramSharePolicyInfo;
-          try
-          {
-            if (paramSharePolicyInfo.optInt("retcode", -1) == 0) {
-              break label444;
-            }
-            paramSharePolicyInfo.put("retcode", -1);
-            paramString = paramSharePolicyInfo;
-            if (!QLog.isColorLevel()) {
-              break label444;
-            }
-            paramString = new StringBuilder();
-            paramString.append("failed result");
-            paramString.append((String)localObject);
-            QLog.e("TeamWorkHandlerUtils", 2, paramString.toString());
-            paramString = paramSharePolicyInfo;
-          }
-          catch (JSONException localJSONException1)
-          {
-            continue;
-          }
-        }
-        else
-        {
-          paramString = null;
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        paramSharePolicyInfo = null;
-        paramString = paramSharePolicyInfo;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("TeamWorkHandlerUtils", 2, localJSONException2, new Object[0]);
-          paramString = paramSharePolicyInfo;
-        }
-      }
-      label444:
-      paramSharePolicyInfo = paramString;
-      if (paramString == null)
-      {
-        paramString = new JSONObject();
-        try
-        {
-          paramString.put("retcode", -1);
-          paramSharePolicyInfo = paramString;
-        }
-        catch (JSONException localJSONException3)
-        {
-          paramSharePolicyInfo = paramString;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("TeamWorkHandlerUtils", 2, localJSONException3, new Object[0]);
-            paramSharePolicyInfo = paramString;
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("TeamWorkHandlerUtils", 2, paramSharePolicyInfo.toString());
-      }
-      return (String)paramSharePolicyInfo.opt("key");
-      label521:
-      int j = 0;
-    }
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    if (paramString1 != null)
-    {
-      Object localObject = paramString1.split("\\$");
-      if (localObject.length == 2)
-      {
-        new JSONObject();
-        try
-        {
-          paramString1 = UUID.randomUUID().toString().replaceAll("-", "");
-          StringBuilder localStringBuilder1 = new StringBuilder();
-          localStringBuilder1.append("TOK=");
-          localStringBuilder1.append(paramString1);
-          StringBuilder localStringBuilder2 = new StringBuilder();
-          localStringBuilder2.append("domain_id=");
-          localStringBuilder2.append(localObject[0]);
-          localStringBuilder2.append("&pad_id=");
-          localStringBuilder2.append(localObject[1]);
-          localStringBuilder2.append("&list_type=");
-          localStringBuilder2.append(5);
-          localStringBuilder2.append("&xsrf=");
-          localStringBuilder2.append(paramString1);
-          localObject = new HashMap();
-          ((Map)localObject).put("HTTP_X_XSRF_PROTECTION", paramString1);
-          paramString1 = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).sendHttpsPost(localStringBuilder2.toString(), paramString2, "https://docs.qq.com/cgi-bin/online_docs/doc_delete", "docs.qq.com", localStringBuilder1.toString(), (Map)localObject, false);
-          return paramString1;
-        }
-        catch (Exception paramString1)
-        {
-          paramString1.printStackTrace();
-        }
-      }
-    }
-    return null;
   }
   
   private static JSONObject a(String paramString, int paramInt, boolean paramBoolean)
@@ -241,12 +79,12 @@ public class TeamWorkHandlerUtils
         try
         {
           if (paramString2.optInt("retcode", -1) == 0) {
-            break label155;
+            break label154;
           }
           paramString2.put("retcode", -1);
           paramString1 = paramString2;
           if (!QLog.isColorLevel()) {
-            break label155;
+            break label154;
           }
           paramString1 = new StringBuilder();
           paramString1.append("failed result");
@@ -256,7 +94,7 @@ public class TeamWorkHandlerUtils
         }
         catch (JSONException localJSONException1)
         {
-          break label134;
+          break label133;
         }
       }
       else
@@ -267,7 +105,7 @@ public class TeamWorkHandlerUtils
     catch (JSONException localJSONException2)
     {
       paramString2 = null;
-      label134:
+      label133:
       paramString1 = paramString2;
       if (QLog.isColorLevel())
       {
@@ -275,7 +113,7 @@ public class TeamWorkHandlerUtils
         paramString1 = paramString2;
       }
     }
-    label155:
+    label154:
     paramString2 = paramString1;
     if (paramString1 == null)
     {
@@ -319,12 +157,12 @@ public class TeamWorkHandlerUtils
         try
         {
           if (paramString2.optInt("retcode", -1) == 0) {
-            break label267;
+            break label258;
           }
           paramString2.put("retcode", -1);
           paramString1 = paramString2;
           if (!QLog.isColorLevel()) {
-            break label267;
+            break label258;
           }
           paramString1 = new StringBuilder();
           paramString1.append("failed result");
@@ -334,11 +172,11 @@ public class TeamWorkHandlerUtils
         }
         catch (UnsupportedEncodingException paramString3)
         {
-          break label217;
+          break label210;
         }
         catch (JSONException paramString3)
         {
-          break label245;
+          break label237;
         }
       }
       else
@@ -358,9 +196,9 @@ public class TeamWorkHandlerUtils
     }
     catch (JSONException paramString3)
     {
-      label217:
+      label210:
       paramString2 = null;
-      label245:
+      label237:
       paramString1 = paramString2;
       if (QLog.isColorLevel())
       {
@@ -368,7 +206,7 @@ public class TeamWorkHandlerUtils
         paramString1 = paramString2;
       }
     }
-    label267:
+    label258:
     paramString2 = paramString1;
     if (paramString1 == null)
     {
@@ -476,33 +314,6 @@ public class TeamWorkHandlerUtils
     return paramString1;
   }
   
-  public static void a()
-  {
-    Object localObject1 = new File(a());
-    if (((File)localObject1).exists())
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if (System.currentTimeMillis() - localObject2.lastModified() > 7200000L) {
-          localObject2.delete();
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString.exists()) {
-      paramString.delete();
-    }
-  }
-  
   public static void a(String paramString1, String paramString2, String paramString3)
   {
     StringBuilder localStringBuilder = new StringBuilder();
@@ -515,26 +326,15 @@ public class TeamWorkHandlerUtils
     }
   }
   
-  public static boolean a(String paramString)
-  {
-    paramString = a(paramString);
-    if (System.currentTimeMillis() - paramString.lastModified() > 7200000L)
-    {
-      paramString.delete();
-      return false;
-    }
-    return paramString.exists();
-  }
-  
   public static boolean a(String paramString, SharePolicyInfo paramSharePolicyInfo)
   {
     String str = UUID.randomUUID().toString().replaceAll("-", "");
     StringBuilder localStringBuilder = new StringBuilder("https://docs.qq.com/cgi-bin/api/wechatshare/shareTips");
     localStringBuilder.append('?');
     localStringBuilder.append("domainId=");
-    localStringBuilder.append(paramSharePolicyInfo.i);
+    localStringBuilder.append(paramSharePolicyInfo.n);
     localStringBuilder.append("&padId=");
-    localStringBuilder.append(paramSharePolicyInfo.h);
+    localStringBuilder.append(paramSharePolicyInfo.m);
     localStringBuilder.append("&xsrf=");
     localStringBuilder.append(str);
     paramSharePolicyInfo = new StringBuilder();
@@ -699,7 +499,164 @@ public class TeamWorkHandlerUtils
   
   public static String b(String paramString)
   {
-    return FileUtils.readFileContent(a(paramString));
+    return FileUtils.readFileContent(e(paramString));
+  }
+  
+  public static String b(String paramString, SharePolicyInfo paramSharePolicyInfo)
+  {
+    for (;;)
+    {
+      try
+      {
+        int k = paramSharePolicyInfo.c;
+        j = 1;
+        int i = k;
+        if (k == 0) {
+          i = 1;
+        }
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("url", URLEncoder.encode(paramSharePolicyInfo.i));
+        if (paramSharePolicyInfo.o != null) {
+          localJSONObject.put("title", URLEncoder.encode(paramSharePolicyInfo.o));
+        }
+        localJSONObject.put("type", 0);
+        Object localObject = paramSharePolicyInfo.p;
+        if (localObject == null) {
+          localObject = "0";
+        } else {
+          localObject = paramSharePolicyInfo.p;
+        }
+        localJSONObject.put("folderId", localObject);
+        localObject = new StringBuilder("https://docs.qq.com/cgi-bin/online_docs/wxqrcode");
+        ((StringBuilder)localObject).append('?');
+        ((StringBuilder)localObject).append("domainId=");
+        ((StringBuilder)localObject).append(paramSharePolicyInfo.n);
+        ((StringBuilder)localObject).append("&padId=");
+        ((StringBuilder)localObject).append(paramSharePolicyInfo.m);
+        ((StringBuilder)localObject).append("&dataType=");
+        if (paramSharePolicyInfo.f != 3) {
+          break label541;
+        }
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append("&page=");
+        ((StringBuilder)localObject).append("pages/shareFriend/shareFriend");
+        ((StringBuilder)localObject).append("&ac=");
+        ((StringBuilder)localObject).append("share");
+        ((StringBuilder)localObject).append("&t=");
+        ((StringBuilder)localObject).append("0");
+        ((StringBuilder)localObject).append("&policy=");
+        ((StringBuilder)localObject).append(String.valueOf(i));
+        ((StringBuilder)localObject).append("&right_flag=");
+        ((StringBuilder)localObject).append("1");
+        ((StringBuilder)localObject).append("&param=");
+        ((StringBuilder)localObject).append(localJSONObject.toString());
+        ((StringBuilder)localObject).append("&type=");
+        ((StringBuilder)localObject).append("1");
+        localObject = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).sendHttpsGet(paramString, ((StringBuilder)localObject).toString(), "docs.qq.com");
+        if (localObject != null)
+        {
+          paramSharePolicyInfo = new JSONObject((String)localObject);
+          paramString = paramSharePolicyInfo;
+          try
+          {
+            if (paramSharePolicyInfo.optInt("retcode", -1) == 0) {
+              break label463;
+            }
+            paramSharePolicyInfo.put("retcode", -1);
+            paramString = paramSharePolicyInfo;
+            if (!QLog.isColorLevel()) {
+              break label463;
+            }
+            paramString = new StringBuilder();
+            paramString.append("failed result");
+            paramString.append((String)localObject);
+            QLog.e("TeamWorkHandlerUtils", 2, paramString.toString());
+            paramString = paramSharePolicyInfo;
+          }
+          catch (JSONException localJSONException1)
+          {
+            continue;
+          }
+        }
+        else
+        {
+          paramString = null;
+        }
+      }
+      catch (JSONException localJSONException2)
+      {
+        paramSharePolicyInfo = null;
+        paramString = paramSharePolicyInfo;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("TeamWorkHandlerUtils", 2, localJSONException2, new Object[0]);
+          paramString = paramSharePolicyInfo;
+        }
+      }
+      label463:
+      paramSharePolicyInfo = paramString;
+      if (paramString == null)
+      {
+        paramString = new JSONObject();
+        try
+        {
+          paramString.put("retcode", -1);
+          paramSharePolicyInfo = paramString;
+        }
+        catch (JSONException localJSONException3)
+        {
+          paramSharePolicyInfo = paramString;
+          if (QLog.isColorLevel())
+          {
+            QLog.e("TeamWorkHandlerUtils", 2, localJSONException3, new Object[0]);
+            paramSharePolicyInfo = paramString;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TeamWorkHandlerUtils", 2, paramSharePolicyInfo.toString());
+      }
+      return (String)paramSharePolicyInfo.opt("key");
+      label541:
+      int j = 0;
+    }
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (paramString1 != null)
+    {
+      Object localObject = paramString1.split("\\$");
+      if (localObject.length == 2)
+      {
+        new JSONObject();
+        try
+        {
+          paramString1 = UUID.randomUUID().toString().replaceAll("-", "");
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("TOK=");
+          localStringBuilder1.append(paramString1);
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("domain_id=");
+          localStringBuilder2.append(localObject[0]);
+          localStringBuilder2.append("&pad_id=");
+          localStringBuilder2.append(localObject[1]);
+          localStringBuilder2.append("&list_type=");
+          localStringBuilder2.append(5);
+          localStringBuilder2.append("&xsrf=");
+          localStringBuilder2.append(paramString1);
+          localObject = new HashMap();
+          ((Map)localObject).put("HTTP_X_XSRF_PROTECTION", paramString1);
+          paramString1 = ((ITeamWorkHttpUtils)QRoute.api(ITeamWorkHttpUtils.class)).sendHttpsPost(localStringBuilder2.toString(), paramString2, "https://docs.qq.com/cgi-bin/online_docs/doc_delete", "docs.qq.com", localStringBuilder1.toString(), (Map)localObject, false);
+          return paramString1;
+        }
+        catch (Exception paramString1)
+        {
+          paramString1.printStackTrace();
+        }
+      }
+    }
+    return null;
   }
   
   public static JSONObject b(JSONObject paramJSONObject, String paramString)
@@ -746,10 +703,53 @@ public class TeamWorkHandlerUtils
     }
     return paramString;
   }
+  
+  public static void c()
+  {
+    Object localObject1 = new File(a());
+    if (((File)localObject1).exists())
+    {
+      localObject1 = ((File)localObject1).listFiles();
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject2 = localObject1[i];
+        if (System.currentTimeMillis() - localObject2.lastModified() > 7200000L) {
+          localObject2.delete();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static boolean c(String paramString)
+  {
+    paramString = e(paramString);
+    if (System.currentTimeMillis() - paramString.lastModified() > 7200000L)
+    {
+      paramString.delete();
+      return false;
+    }
+    return paramString.exists();
+  }
+  
+  public static void d(String paramString)
+  {
+    paramString = e(paramString);
+    if (paramString.exists()) {
+      paramString.delete();
+    }
+  }
+  
+  private static File e(String paramString)
+  {
+    return new File(a(), MD5Utils.encodeHexStr(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkHandlerUtils
  * JD-Core Version:    0.7.0.1
  */

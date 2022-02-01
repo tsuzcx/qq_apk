@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RestrictTo;
 import androidx.appcompat.R.styleable;
 import androidx.core.view.GravityCompat;
@@ -46,39 +48,40 @@ public class LinearLayoutCompat
   private boolean mUseLargestChild;
   private float mWeightSum;
   
-  public LinearLayoutCompat(Context paramContext)
+  public LinearLayoutCompat(@NonNull Context paramContext)
   {
     this(paramContext, null);
   }
   
-  public LinearLayoutCompat(Context paramContext, AttributeSet paramAttributeSet)
+  public LinearLayoutCompat(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
-  public LinearLayoutCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  public LinearLayoutCompat(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.LinearLayoutCompat, paramInt, 0);
-    paramInt = paramContext.getInt(R.styleable.LinearLayoutCompat_android_orientation, -1);
+    TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, R.styleable.LinearLayoutCompat, paramInt, 0);
+    ViewCompat.saveAttributeDataForStyleable(this, paramContext, R.styleable.LinearLayoutCompat, paramAttributeSet, localTintTypedArray.getWrappedTypeArray(), paramInt, 0);
+    paramInt = localTintTypedArray.getInt(R.styleable.LinearLayoutCompat_android_orientation, -1);
     if (paramInt >= 0) {
       setOrientation(paramInt);
     }
-    paramInt = paramContext.getInt(R.styleable.LinearLayoutCompat_android_gravity, -1);
+    paramInt = localTintTypedArray.getInt(R.styleable.LinearLayoutCompat_android_gravity, -1);
     if (paramInt >= 0) {
       setGravity(paramInt);
     }
-    boolean bool = paramContext.getBoolean(R.styleable.LinearLayoutCompat_android_baselineAligned, true);
+    boolean bool = localTintTypedArray.getBoolean(R.styleable.LinearLayoutCompat_android_baselineAligned, true);
     if (!bool) {
       setBaselineAligned(bool);
     }
-    this.mWeightSum = paramContext.getFloat(R.styleable.LinearLayoutCompat_android_weightSum, -1.0F);
-    this.mBaselineAlignedChildIndex = paramContext.getInt(R.styleable.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
-    this.mUseLargestChild = paramContext.getBoolean(R.styleable.LinearLayoutCompat_measureWithLargestChild, false);
-    setDividerDrawable(paramContext.getDrawable(R.styleable.LinearLayoutCompat_divider));
-    this.mShowDividers = paramContext.getInt(R.styleable.LinearLayoutCompat_showDividers, 0);
-    this.mDividerPadding = paramContext.getDimensionPixelSize(R.styleable.LinearLayoutCompat_dividerPadding, 0);
-    paramContext.recycle();
+    this.mWeightSum = localTintTypedArray.getFloat(R.styleable.LinearLayoutCompat_android_weightSum, -1.0F);
+    this.mBaselineAlignedChildIndex = localTintTypedArray.getInt(R.styleable.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
+    this.mUseLargestChild = localTintTypedArray.getBoolean(R.styleable.LinearLayoutCompat_measureWithLargestChild, false);
+    setDividerDrawable(localTintTypedArray.getDrawable(R.styleable.LinearLayoutCompat_divider));
+    this.mShowDividers = localTintTypedArray.getInt(R.styleable.LinearLayoutCompat_showDividers, 0);
+    this.mDividerPadding = localTintTypedArray.getDimensionPixelSize(R.styleable.LinearLayoutCompat_dividerPadding, 0);
+    localTintTypedArray.recycle();
   }
   
   private void forceUniformHeight(int paramInt1, int paramInt2)

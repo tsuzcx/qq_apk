@@ -20,7 +20,7 @@ class QfileLocalFileMediaTabView$1
     ArrayList localArrayList = new ArrayList();
     QfileLocalFileMediaTabView.a(this.this$0, localArrayList);
     QfileLocalFileMediaTabView.b(this.this$0, localArrayList);
-    this.this$0.a.addAll(localArrayList);
+    this.this$0.v.addAll(localArrayList);
     HashMap localHashMap1 = QfileLocalFileMediaTabView.a(this.this$0);
     HashMap localHashMap2 = QfileLocalFileMediaTabView.b(this.this$0);
     Object localObject = localHashMap1.keySet().iterator();
@@ -49,7 +49,7 @@ class QfileLocalFileMediaTabView$1
           {
             localObject = str;
             if ("QQ".equalsIgnoreCase(str)) {
-              localObject = HardCodeUtil.a(2131698191);
+              localObject = HardCodeUtil.a(2131896092);
             }
           }
           else
@@ -70,7 +70,7 @@ class QfileLocalFileMediaTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView.1
  * JD-Core Version:    0.7.0.1
  */

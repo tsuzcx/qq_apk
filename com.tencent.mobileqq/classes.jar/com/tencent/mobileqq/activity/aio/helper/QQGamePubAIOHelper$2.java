@@ -11,15 +11,15 @@ class QQGamePubAIOHelper$2
   
   public void run()
   {
-    if (!QQGamePubAIOHelper.a(this.a)) {
+    if (!QQGamePubAIOHelper.c(this.a)) {
       return;
     }
-    QQGamePubAIOHelper.a().add((MessageForArkApp)this.a);
+    QQGamePubAIOHelper.c().add((MessageForArkApp)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQGamePubAIOHelper.2
  * JD-Core Version:    0.7.0.1
  */

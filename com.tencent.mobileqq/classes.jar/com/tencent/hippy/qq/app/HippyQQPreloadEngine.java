@@ -1,5 +1,9 @@
 package com.tencent.hippy.qq.app;
 
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -9,24 +13,30 @@ import com.tencent.hippy.qq.api.IHippyComponentFactory;
 import com.tencent.hippy.qq.api.IHippyLibrary;
 import com.tencent.hippy.qq.api.IHippySetting;
 import com.tencent.hippy.qq.api.IHippyUpdate;
-import com.tencent.hippy.qq.api.IHippyUtils;
 import com.tencent.hippy.qq.api.IPatchBundleDataHandler;
 import com.tencent.hippy.qq.api.IUpdateListener;
 import com.tencent.hippy.qq.inject.ComponentInjectFactory;
 import com.tencent.hippy.qq.utils.HippyErrorManager;
 import com.tencent.hippy.qq.utils.HippyReporter;
+import com.tencent.hippy.qq.utils.HippyUtils;
+import com.tencent.mobileqq.apollo.aio.panel.api.IApolloPanelProvider;
 import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ecshop.view.hippy.api.IQQShopHippyApi;
 import com.tencent.mobileqq.minigame.publicaccount.api.IMiniGamePublicAccountApi;
+import com.tencent.mobileqq.newnearby.hippy.INearbyHippyApi;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameConfigUtil;
 import com.tencent.mobileqq.qqgamepub.api.IQQGameHippyApi;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.hippy.api.IVasHippyApi;
+import com.tencent.mobileqq.weather.api.IWeatherHippyApi;
 import com.tencent.mtt.hippy.HippyEngine;
 import com.tencent.mtt.hippy.HippyEngine.EngineInitStatus;
 import com.tencent.mtt.hippy.HippyEngine.ModuleLoadParams;
 import com.tencent.mtt.hippy.HippyRootView;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyFileBundleLoader;
+import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
@@ -39,57 +49,36 @@ import org.json.JSONObject;
 public class HippyQQPreloadEngine
   extends HippyQQEngine
 {
+  public static final String EVENT_JS_BUNDLE_UPDATED = "JsBundleUpdated";
   public static final int STATUS_JSBUNDLE_NOT_EXISTS = -20001;
+  public static final int STATUS_LOW_MEMORY = -20002;
   protected static final String TAG = "HippyQQPreloadEngine";
   private Object mCheckAndLoadLock = new Object();
   private boolean mIsCheckUpdateFinished = false;
+  private boolean mIsHippyLoaded = false;
   private boolean mIsInitEngineFinished = false;
-  private boolean mIsLoaded = false;
   private boolean mIsPredraw;
-  private boolean mIsPreloadCreated;
+  private boolean mIsPreload;
   private boolean mIsPreloadCreating;
-  private boolean mIsPreloaded = false;
+  private boolean mIsPreloadFinished = false;
   private long mPreloadEndTime;
+  private String mPreloadFrom;
   protected int mPreloadModuleVersion = 0;
   private int mPreloadSceneType;
   private long mPreloadStartTime;
+  protected int mUpdateJsBundleType = 0;
   private IUpdateListener mUpdateListener = new HippyQQPreloadEngine.3(this);
+  
+  public HippyQQPreloadEngine(QBaseFragment paramQBaseFragment, Activity paramActivity, String paramString1, String paramString2)
+  {
+    super(paramActivity, paramString1, paramString2);
+    initPreloadEngine(paramString1);
+  }
   
   public HippyQQPreloadEngine(QBaseFragment paramQBaseFragment, String paramString1, String paramString2)
   {
     super(paramQBaseFragment, paramString1, paramString2);
-    this.providers.add(((IHippyUtils)QRoute.api(IHippyUtils.class)).getGameCenterHippyAPIProvider());
-    this.providers.add(((IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class)).getQQGameHippyAPIProvider());
-    paramQBaseFragment = (IQQComicHippyUtil)QRoute.api(IQQComicHippyUtil.class);
-    if (paramQBaseFragment.isBoodoModule(paramString1))
-    {
-      setViewCreator(paramQBaseFragment.createHippyCustomViewCreator());
-      this.providers.add(paramQBaseFragment.createHippyAPIProvider());
-    }
-    this.mMainBundleLoadListener = ((IPatchBundleDataHandler)QRoute.api(IPatchBundleDataHandler.class)).checkCreateHippyListener(paramString1);
-    if (this.mMainBundleLoadListener != null) {
-      this.mMainBundleLoadListener.onStart();
-    }
-    if ("tkdPatrol".equals(paramString1))
-    {
-      paramQBaseFragment = ComponentInjectFactory.getHippyComponentFactory("tkd");
-      setViewCreator(paramQBaseFragment.getViewCreator());
-      this.providers.add(paramQBaseFragment.getApiProvider());
-    }
-    paramQBaseFragment = (IVasHippyApi)QRoute.api(IVasHippyApi.class);
-    if (paramQBaseFragment.isVasModule(paramString1))
-    {
-      setViewCreator(paramQBaseFragment.createHippyCustomViewCreator());
-      this.providers.add(paramQBaseFragment.createHippyAPIProvider());
-    }
-    paramQBaseFragment = (IMiniGamePublicAccountApi)QRoute.api(IMiniGamePublicAccountApi.class);
-    if (paramQBaseFragment.isMiniGamePAModule(paramString1)) {
-      this.providers.add(paramQBaseFragment.createHippyProvider());
-    }
-    paramQBaseFragment = (IQQShopHippyApi)QRoute.api(IQQShopHippyApi.class);
-    if (paramQBaseFragment.isQQShopModule(paramString1)) {
-      this.providers.add(paramQBaseFragment.createHippyProvider());
-    }
+    initPreloadEngine(paramString1);
   }
   
   private final void callBackError(int paramInt, String paramString)
@@ -102,7 +91,9 @@ public class HippyQQPreloadEngine
       this.mMainBundleLoadListener.onMainBundleLoadResult(paramInt, getModuleName(), null, 0);
     }
     reportPreloadResult(paramInt, paramString);
-    this.mMapLoadStepsTime.clear();
+    if (!this.mIsHippyLoaded) {
+      this.mMapLoadStepsTime.clear();
+    }
   }
   
   private final void callBackSuccess()
@@ -115,41 +106,121 @@ public class HippyQQPreloadEngine
       this.mMainBundleLoadListener.onMainBundleLoadResult(0, getModuleName(), getHippyEngine().getEngineContext(), this.mHippyRootView.getId());
     }
     reportPreloadResult(0, null);
-    this.mMapLoadStepsTime.clear();
+    if (!this.mIsHippyLoaded) {
+      this.mMapLoadStepsTime.clear();
+    }
   }
   
   private void checkAndLoad()
   {
+    if (!isReadyToLoadHippy()) {
+      return;
+    }
+    if (this.mIsPreloadCreating)
+    {
+      preloadHippy();
+      return;
+    }
+    loadHippy();
+  }
+  
+  private long getValueFromStepCosts(String paramString, HashMap<String, Long> paramHashMap)
+  {
+    if (paramHashMap.containsKey(paramString)) {
+      return ((Long)paramHashMap.get(paramString)).longValue();
+    }
+    return 0L;
+  }
+  
+  private void initPreloadEngine(String paramString)
+  {
+    HippyUtils.addGameCenterApiProvider(this.providers);
+    Object localObject = (IQQComicHippyUtil)QRoute.api(IQQComicHippyUtil.class);
+    if (((IQQComicHippyUtil)localObject).isBoodoModule(paramString))
+    {
+      setViewCreator(((IQQComicHippyUtil)localObject).createHippyCustomViewCreator());
+      this.providers.add(((IQQComicHippyUtil)localObject).createHippyAPIProvider());
+    }
+    this.mMainBundleLoadListener = ((IPatchBundleDataHandler)QRoute.api(IPatchBundleDataHandler.class)).checkCreateHippyListener(paramString);
+    if (this.mMainBundleLoadListener != null) {
+      this.mMainBundleLoadListener.onStart();
+    }
+    if ("tkdPatrol".equals(paramString))
+    {
+      localObject = ComponentInjectFactory.getHippyComponentFactory("tkd");
+      setViewCreator(((IHippyComponentFactory)localObject).getViewCreator());
+      this.providers.add(((IHippyComponentFactory)localObject).getApiProvider());
+    }
+    localObject = (IVasHippyApi)QRoute.api(IVasHippyApi.class);
+    if (((IVasHippyApi)localObject).isVasModuleNeedToBeAdd(paramString))
+    {
+      setViewCreator(((IVasHippyApi)localObject).createHippyCustomViewCreator());
+      this.providers.add(((IVasHippyApi)localObject).createHippyAPIProvider());
+    }
+    localObject = (IApolloPanelProvider)QRoute.api(IApolloPanelProvider.class);
+    if (((IApolloPanelProvider)localObject).isCMModule(paramString)) {
+      this.providers.add(((IApolloPanelProvider)localObject).createHippyProvider());
+    }
+    localObject = (IMiniGamePublicAccountApi)QRoute.api(IMiniGamePublicAccountApi.class);
+    if (((IMiniGamePublicAccountApi)localObject).isMiniGamePAModule(paramString)) {
+      this.providers.add(((IMiniGamePublicAccountApi)localObject).createHippyProvider());
+    }
+    localObject = (IQQShopHippyApi)QRoute.api(IQQShopHippyApi.class);
+    if (((IQQShopHippyApi)localObject).isQQShopModule(paramString)) {
+      this.providers.add(((IQQShopHippyApi)localObject).createHippyProvider());
+    }
+    localObject = (IQQGameHippyApi)QRoute.api(IQQGameHippyApi.class);
+    if (((IQQGameHippyApi)localObject).isQQGamePubHippyV2(paramString)) {
+      setViewCreator(((IQQGameHippyApi)localObject).getQQGameHippyViewCreator());
+    }
+    this.providers.add(((IQQGameHippyApi)localObject).getQQGameHippyAPIProvider());
+    localObject = (IWeatherHippyApi)QRoute.api(IWeatherHippyApi.class);
+    if (((IWeatherHippyApi)localObject).isWeatherModule(paramString)) {
+      this.providers.add(((IWeatherHippyApi)localObject).createHippyProvider());
+    }
+    localObject = (INearbyHippyApi)QRoute.api(INearbyHippyApi.class);
+    if (((INearbyHippyApi)localObject).isNearbyModule(paramString)) {
+      this.providers.add(((INearbyHippyApi)localObject).getNearbyHippyAPIProvider());
+    }
+  }
+  
+  private boolean isLowMemory()
+  {
+    ActivityManager localActivityManager = (ActivityManager)MobileQQ.getContext().getApplicationContext().getSystemService("activity");
+    ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+    localActivityManager.getMemoryInfo(localMemoryInfo);
+    return localMemoryInfo.lowMemory;
+  }
+  
+  private boolean isReadyToLoadHippy()
+  {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("checkAndLoad update:");
+    localStringBuilder.append("isReadyToLoadHippy update:");
     localStringBuilder.append(this.mIsCheckUpdateFinished);
     localStringBuilder.append(" initEngine:");
     localStringBuilder.append(this.mIsInitEngineFinished);
+    localStringBuilder.append(" updateJsType:");
+    localStringBuilder.append(this.mUpdateJsBundleType);
     QLog.i("HippyQQPreloadEngine", 1, localStringBuilder.toString());
-    if (this.mIsCheckUpdateFinished)
-    {
-      if (!this.mIsInitEngineFinished) {
-        return;
-      }
-      if (this.mIsPreloadCreating)
-      {
-        preloadHippy();
-        return;
-      }
-      loadHippy();
+    if (this.mUpdateJsBundleType != 1) {
+      return (this.mIsCheckUpdateFinished) && (this.mIsInitEngineFinished);
     }
+    if (this.mIsPreload) {
+      return (this.mIsCheckUpdateFinished) && (this.mIsInitEngineFinished);
+    }
+    return (this.mIsInitEngineFinished) && (((IHippySetting)QRoute.api(IHippySetting.class)).getModuleVersion(getModuleName()) >= 0);
   }
   
   private void loadHippy()
   {
     synchronized (this.mCheckAndLoadLock)
     {
-      if (this.mIsLoaded)
+      if (this.mIsHippyLoaded)
       {
         QLog.i("HippyQQPreloadEngine", 1, "loadHippy has loaded.");
         return;
       }
-      this.mIsLoaded = true;
+      this.mIsHippyLoaded = true;
       if (isPredraw())
       {
         if (this.mHippyRootView.getParent() == null) {
@@ -170,7 +241,7 @@ public class HippyQQPreloadEngine
     if ((QLog.isColorLevel()) || (paramInt != 0))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onJsBundleUpdateComplte onUpdateComplete retCode:");
+      localStringBuilder.append("onJsBundleUpdateComplte retCode:");
       localStringBuilder.append(paramInt);
       localStringBuilder.append(" retMsg:");
       localStringBuilder.append(paramString);
@@ -185,19 +256,39 @@ public class HippyQQPreloadEngine
     {
       this.mIsCheckUpdateFinished = true;
       checkAndLoad();
-      return;
     }
-    ThreadManager.getUIHandler().post(new HippyQQPreloadEngine.2(this));
+    else
+    {
+      ThreadManager.getUIHandler().post(new HippyQQPreloadEngine.2(this));
+    }
+    if ((!this.mIsPreload) && (this.mIsInitEngineFinished) && (this.mUpdateJsBundleType == 1) && ((paramInt == 0) || (paramInt == 101)))
+    {
+      paramString = new HippyMap();
+      paramString.pushString("bundleName", getModuleName());
+      paramString.pushInt("newVersion", ((IHippySetting)QRoute.api(IHippySetting.class)).getModuleVersion(getModuleName()));
+      sendEvent("JsBundleUpdated", paramString);
+    }
   }
   
   private void precreateHippy(HippyQQEngine.HippyQQEngineListener paramHippyQQEngineListener, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.mIsPreloadCreated = true;
+    this.mIsPreload = true;
     this.mIsPreloadCreating = true;
     this.mPreloadSceneType = paramInt;
     this.mIsPredraw = paramBoolean1;
     this.mPreloadStartTime = System.currentTimeMillis();
     this.mEngineListener = paramHippyQQEngineListener;
+    if (isLowMemory())
+    {
+      paramHippyQQEngineListener = new StringBuilder();
+      paramHippyQQEngineListener.append("Can't preload ");
+      paramHippyQQEngineListener.append(getModuleName());
+      paramHippyQQEngineListener.append(", because system is in low memory");
+      paramHippyQQEngineListener = paramHippyQQEngineListener.toString();
+      callBackError(-20002, paramHippyQQEngineListener);
+      QLog.e("HippyQQPreloadEngine", 1, paramHippyQQEngineListener);
+      return;
+    }
     if (((IHippyLibrary)QRoute.api(IHippyLibrary.class)).isLibrayExists()) {
       HippyErrorManager.getInstance().operationStart("loadHippySo");
     }
@@ -208,7 +299,7 @@ public class HippyQQPreloadEngine
   private void predrawModule(String paramString)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("Hippy: predrawModule start:");
+    ((StringBuilder)localObject).append("predrawModule start:");
     ((StringBuilder)localObject).append(getModuleName());
     ((StringBuilder)localObject).append(" this:");
     ((StringBuilder)localObject).append(this);
@@ -232,12 +323,12 @@ public class HippyQQPreloadEngine
   {
     synchronized (this.mCheckAndLoadLock)
     {
-      if (this.mIsPreloaded)
+      if (this.mIsPreloadFinished)
       {
         QLog.i("HippyQQPreloadEngine", 1, "preloadHippy has preloaded.");
         return;
       }
-      this.mIsPreloaded = true;
+      this.mIsPreloadFinished = true;
       int i = ((IHippySetting)QRoute.api(IHippySetting.class)).getModuleVersion(getModuleName());
       if (i != -1)
       {
@@ -264,7 +355,7 @@ public class HippyQQPreloadEngine
   private void preloadModule(String paramString)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Hippy: preloadModule start:");
+    localStringBuilder.append("preloadModule start:");
     localStringBuilder.append(getModuleName());
     localStringBuilder.append(" this:");
     localStringBuilder.append(this);
@@ -283,6 +374,7 @@ public class HippyQQPreloadEngine
     localHashMap2.put("errMsg", paramString);
     localHashMap2.put("isPreload", Boolean.valueOf(isPreloaded()));
     localHashMap2.put("isPredraw", Boolean.valueOf(isPredraw()));
+    localHashMap2.put("from", this.mPreloadFrom);
     HippyReporter.getInstance().reportHippyLoadResult(10, getModuleName(), getPreloadModuleVersion(), localHashMap2, localHashMap1);
   }
   
@@ -294,44 +386,29 @@ public class HippyQQPreloadEngine
   
   protected HashMap<String, Long> generatePreloadStepCosts()
   {
-    long l4 = this.mPreloadStartTime;
-    long l1;
-    if (this.mMapLoadStepsTime.containsKey("loadLibEnd")) {
-      l1 = ((Long)this.mMapLoadStepsTime.get("loadLibEnd")).longValue();
-    } else {
-      l1 = 0L;
-    }
-    long l2;
-    if (this.mMapLoadStepsTime.containsKey("initEngineEnd")) {
-      l2 = ((Long)this.mMapLoadStepsTime.get("initEngineEnd")).longValue();
-    } else {
-      l2 = 0L;
-    }
-    long l3;
-    if (this.mMapLoadStepsTime.containsKey("loadModuleStart")) {
-      l3 = ((Long)this.mMapLoadStepsTime.get("loadModuleStart")).longValue();
-    } else {
-      l3 = 0L;
-    }
-    long l5 = this.mPreloadEndTime;
+    long l2 = this.mPreloadStartTime;
+    long l3 = getValueFromStepCosts("loadLibEnd", this.mMapLoadStepsTime);
+    long l4 = getValueFromStepCosts("initEngineEnd", this.mMapLoadStepsTime);
+    long l5 = getValueFromStepCosts("loadModuleStart", this.mMapLoadStepsTime);
+    long l1 = this.mPreloadEndTime;
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    if ((l1 > 0L) && (l4 > 0L)) {
-      localLinkedHashMap.put("loadLibrary", Long.valueOf(l1 - l4));
-    }
-    if ((l2 > 0L) && (l1 > 0L)) {
-      localLinkedHashMap.put("initEngine", Long.valueOf(l2 - l1));
-    }
     if ((l3 > 0L) && (l2 > 0L)) {
-      localLinkedHashMap.put("checkJsBundle", Long.valueOf(l3 - l2));
+      localLinkedHashMap.put("loadLibrary", Long.valueOf(l3 - l2));
     }
-    if ((l5 > 0L) && (l3 > 0L)) {
-      localLinkedHashMap.put("loadJsBundle", Long.valueOf(l5 - l3));
+    if ((l4 > 0L) && (l3 > 0L)) {
+      localLinkedHashMap.put("initEngine", Long.valueOf(l4 - l3));
     }
-    if (l5 > 0L)
+    if ((l5 > 0L) && (l4 > 0L)) {
+      localLinkedHashMap.put("checkJsBundle", Long.valueOf(l5 - l4));
+    }
+    if ((l1 > 0L) && (l5 > 0L)) {
+      localLinkedHashMap.put("loadJsBundle", Long.valueOf(l1 - l5));
+    }
+    if (l1 > 0L)
     {
-      l1 = this.mPreloadStartTime;
-      if (l1 > 0L) {
-        localLinkedHashMap.put("total", Long.valueOf(l5 - l1));
+      l2 = this.mPreloadStartTime;
+      if (l2 > 0L) {
+        localLinkedHashMap.put("total", Long.valueOf(l1 - l2));
       }
     }
     return localLinkedHashMap;
@@ -360,11 +437,7 @@ public class HippyQQPreloadEngine
     if (!bool) {
       return;
     }
-    if ((!TextUtils.isEmpty(getJsBundleType())) && (getJsBundleType().equals("react"))) {
-      localObject = "react.android.js";
-    } else {
-      localObject = "vue.android.js";
-    }
+    localObject = getCoreJsFileName();
     if (TextUtils.isEmpty(((IHippyLibrary)QRoute.api(IHippyLibrary.class)).getCoreJsFilePath((String)localObject)))
     {
       QLog.e("HippyQQPreloadEngine", 1, "initHippyEngine corejs empty");
@@ -411,17 +484,17 @@ public class HippyQQPreloadEngine
   
   public boolean isPredraw()
   {
-    return (this.mIsPreloadCreated) && (this.mIsPredraw);
+    return (this.mIsPreload) && (this.mIsPredraw);
   }
   
   public boolean isPreloaded()
   {
-    return this.mIsPreloadCreated;
+    return this.mIsPreload;
   }
   
   protected void loadModule()
   {
-    if ((this.mIsPreloadCreated) && (!this.mIsPreloadCreating))
+    if ((this.mIsPreload) && (!this.mIsPreloadCreating))
     {
       if (this.mPreloadModuleVersion > 0)
       {
@@ -466,13 +539,13 @@ public class HippyQQPreloadEngine
   public void onLoadSuccess()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("onLoadSuccess mIsPreloadCreated:");
-    localStringBuilder.append(this.mIsPreloadCreated);
+    localStringBuilder.append("onLoadSuccess mIsPreload:");
+    localStringBuilder.append(this.mIsPreload);
     localStringBuilder.append(" mIsPreloadCreating:");
     localStringBuilder.append(this.mIsPreloadCreating);
     QLog.i("HippyQQPreloadEngine", 1, localStringBuilder.toString());
     HippyErrorManager.getInstance().operationEnd("loadHippySo");
-    if ((this.mIsPreloadCreated) && (!this.mIsPreloadCreating))
+    if ((this.mIsPreload) && (!this.mIsPreloadCreating))
     {
       checkAndLoad();
       return;
@@ -500,6 +573,16 @@ public class HippyQQPreloadEngine
     this.mFragment = paramQBaseFragment;
   }
   
+  public void setPreloadFrom(String paramString)
+  {
+    this.mPreloadFrom = paramString;
+  }
+  
+  public void setUpdateJsBundleType(int paramInt)
+  {
+    this.mUpdateJsBundleType = paramInt;
+  }
+  
   protected void updateJsBundle(boolean paramBoolean)
   {
     Object localObject;
@@ -518,13 +601,14 @@ public class HippyQQPreloadEngine
       localObject = new Bundle();
       ((Bundle)localObject).putBoolean("isCheckPreload", paramBoolean);
       ((Bundle)localObject).putInt("preloadSceneType", this.mPreloadSceneType);
-      ((IHippyUpdate)QRoute.api(IHippyUpdate.class)).updateJsBundle(getModuleName(), ((IHippyUtils)QRoute.api(IHippyUtils.class)).isUpdateHippyJsBundleByHttp(), 4, (Bundle)localObject, this.mUpdateListener);
+      ((Bundle)localObject).putString("reportFrom", this.mPreloadFrom);
+      ((IHippyUpdate)QRoute.api(IHippyUpdate.class)).updateJsBundle(getModuleName(), ((IQQGameConfigUtil)QRoute.api(IQQGameConfigUtil.class)).isUpdateHippyJsBundleByHttp(), 4, (Bundle)localObject, this.mUpdateListener);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.app.HippyQQPreloadEngine
  * JD-Core Version:    0.7.0.1
  */

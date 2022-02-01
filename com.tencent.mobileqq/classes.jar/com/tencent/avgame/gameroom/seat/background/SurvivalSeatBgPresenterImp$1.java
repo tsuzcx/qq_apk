@@ -13,28 +13,28 @@ class SurvivalSeatBgPresenterImp$1
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationCancel(paramAnimator);
     }
-    SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp).remove(paramAnimator);
+    SurvivalSeatBgPresenterImp.a(this.c).remove(paramAnimator);
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationEnd(paramAnimator);
     }
-    SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp).remove(paramAnimator);
-    if (SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp)) {
-      SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp, this.jdField_a_of_type_AndroidViewView);
+    SurvivalSeatBgPresenterImp.a(this.c).remove(paramAnimator);
+    if (SurvivalSeatBgPresenterImp.b(this.c)) {
+      SurvivalSeatBgPresenterImp.a(this.c, this.b);
     }
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationRepeat(paramAnimator);
     }
@@ -42,11 +42,11 @@ class SurvivalSeatBgPresenterImp$1
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    Animator.AnimatorListener localAnimatorListener = this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener;
+    Animator.AnimatorListener localAnimatorListener = this.a;
     if (localAnimatorListener != null) {
       localAnimatorListener.onAnimationStart(paramAnimator);
     }
-    SurvivalSeatBgPresenterImp.a(this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgPresenterImp).add(paramAnimator);
+    SurvivalSeatBgPresenterImp.a(this.c).add(paramAnimator);
   }
 }
 

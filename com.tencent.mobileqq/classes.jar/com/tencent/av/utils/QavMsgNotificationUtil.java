@@ -78,7 +78,7 @@ public class QavMsgNotificationUtil
       paramMessageRecord.putExtra("tab_index", FrameControllerUtil.a);
       paramMessageRecord.putExtra("conversation_index", 1);
       paramMessageRecord.setFlags(335544320);
-      paramMessageRecord.putExtra("uinname", paramQQAppInterface.getApp().getString(2131694524));
+      paramMessageRecord.putExtra("uinname", paramQQAppInterface.getApp().getString(2131892207));
       paramQQAppInterface = paramMessageRecord;
     }
     return paramQQAppInterface;
@@ -88,7 +88,7 @@ public class QavMsgNotificationUtil
   {
     if (String.valueOf(AppConstants.LBS_HELLO_UIN).equals(paramString))
     {
-      paramString = paramContext.getString(2131693135);
+      paramString = paramContext.getString(2131890674);
       paramContext = new Intent(paramContext, MsgBoxListActivity.class);
       paramQQAppInterface = AppConstants.LBS_HELLO_UIN;
       if (!MsgBoxUtil.b(paramMessageRecord)) {
@@ -100,14 +100,14 @@ public class QavMsgNotificationUtil
     }
     else if (String.valueOf(AppConstants.FRIEND_SYSTEM_MSG_UIN).equals(paramString))
     {
-      paramQQAppInterface = paramContext.getString(2131719404);
+      paramQQAppInterface = paramContext.getString(2131916963);
       paramContext = ((INewFriendApi)QRoute.api(INewFriendApi.class)).getNewFriendJumpIntent(paramContext);
       paramContext.putExtra("from", "from_notification");
       paramContext.putExtra("EntranceId", 1);
     }
     else if (String.valueOf(AppConstants.TROOP_SYSTEM_MSG_UIN).equals(paramString))
     {
-      paramQQAppInterface = paramContext.getString(2131719404);
+      paramQQAppInterface = paramContext.getString(2131916963);
       paramContext = new Intent(paramContext, QPublicFragmentActivity.class);
       paramContext.putExtra("public_fragment_class", ((ILaunchTroopSysMsgUIUtilApi)QRoute.api(ILaunchTroopSysMsgUIUtilApi.class)).getFragmentNameForLaunch());
       paramContext.putExtra("_key_mode", 1);
@@ -116,12 +116,12 @@ public class QavMsgNotificationUtil
     else if (String.valueOf(AppConstants.QQBROADCAST_MSG_UIN).equals(paramString))
     {
       paramString = new Intent(paramContext, QQBroadcastActivity.class);
-      paramQQAppInterface = paramContext.getString(2131719403);
+      paramQQAppInterface = paramContext.getString(2131916962);
       paramContext = paramString;
     }
     else if (String.valueOf(AppConstants.VOTE_MSG_UIN).equals(paramString))
     {
-      paramString = paramContext.getString(2131719404);
+      paramString = paramContext.getString(2131916963);
       paramContext = new Intent(paramContext, VisitorsActivity.class);
       paramContext.putExtra("votersOnly", true);
       paramContext.putExtra("toUin", Long.valueOf(paramQQAppInterface.getCurrentAccountUin()));
@@ -131,14 +131,14 @@ public class QavMsgNotificationUtil
     {
       paramString = new Intent(paramContext, LiteActivity.class);
       paramString.putExtra("targetUin", AppConstants.DATALINE_PC_UIN);
-      paramQQAppInterface = paramContext.getString(2131693779);
+      paramQQAppInterface = paramContext.getString(2131891354);
       paramContext = paramString;
     }
     else if (String.valueOf(AppConstants.DATALINE_IPAD_UIN).equals(paramString))
     {
       paramString = new Intent(paramContext, LiteActivity.class);
       paramString.putExtra("targetUin", AppConstants.DATALINE_IPAD_UIN);
-      paramQQAppInterface = paramContext.getString(2131693780);
+      paramQQAppInterface = paramContext.getString(2131891355);
       paramContext = paramString;
     }
     else
@@ -149,7 +149,7 @@ public class QavMsgNotificationUtil
       ((Intent)localObject).setFlags(335544320);
       if (paramInt == 7000)
       {
-        paramMessageRecord = paramContext.getString(2131719304);
+        paramMessageRecord = paramContext.getString(2131916856);
         ((Intent)localObject).setClass(paramContext, ((IAssociatedAccountApi)QRoute.api(IAssociatedAccountApi.class)).getAssociatedAccountActivity());
         ((Intent)localObject).putExtra("subAccount", paramString);
         paramQQAppInterface = (ISubAccountService)paramQQAppInterface.getRuntimeService(ISubAccountService.class, "");
@@ -168,7 +168,7 @@ public class QavMsgNotificationUtil
         if (paramInt != 1009) {
           break label544;
         }
-        paramQQAppInterface = paramContext.getString(2131718365);
+        paramQQAppInterface = paramContext.getString(2131915857);
         paramContext = (Context)localObject;
       }
       for (;;)
@@ -177,7 +177,7 @@ public class QavMsgNotificationUtil
         label544:
         if (String.valueOf(1787740092L).equals(paramString))
         {
-          paramQQAppInterface = paramContext.getString(2131690087);
+          paramQQAppInterface = paramContext.getString(2131886743);
           paramContext = (Context)localObject;
         }
         else if (paramInt == 1024)
@@ -191,7 +191,7 @@ public class QavMsgNotificationUtil
         {
           if (paramInt == 1032)
           {
-            paramQQAppInterface = paramContext.getString(2131698706);
+            paramQQAppInterface = paramContext.getString(2131896664);
             paramContext = new Intent(paramContext, MsgBoxListActivity.class);
             paramString = AppConstants.CONFESS_UIN;
             paramContext.putExtra("uin", paramString);
@@ -205,7 +205,7 @@ public class QavMsgNotificationUtil
         }
         else
         {
-          localObject = paramContext.getString(2131699038);
+          localObject = paramContext.getString(2131897047);
           paramContext = new Intent(paramContext, MsgBoxListActivity.class);
           paramQQAppInterface = AppConstants.LBS_HELLO_UIN;
           if (!MsgBoxUtil.b(paramMessageRecord)) {
@@ -223,36 +223,9 @@ public class QavMsgNotificationUtil
     return paramContext;
   }
   
-  private static Bitmap a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean, MessageRecord paramMessageRecord, String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt == 1) {
-      if (paramBoolean)
-      {
-        paramQQAppInterface = (DiscussionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
-        localObject1 = localObject2;
-        if (paramQQAppInterface != null) {
-          return paramQQAppInterface.a(paramMessageRecord.frienduin, true);
-        }
-      }
-      else
-      {
-        if (AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(paramMessageRecord.frienduin)) {
-          return paramQQAppInterface.getFaceBitmap(paramString, true);
-        }
-        if ((paramMessageRecord.istroop != 1001) && (paramMessageRecord.istroop != 10002) && (paramMessageRecord.istroop != 1010)) {
-          return paramQQAppInterface.getFaceBitmap(paramMessageRecord.frienduin, true);
-        }
-        localObject1 = paramQQAppInterface.getStrangerFaceBitmap(paramMessageRecord.frienduin, 200);
-      }
-    }
-    return localObject1;
-  }
-  
   private static String a(QQAppInterface paramQQAppInterface, QCallFacade paramQCallFacade, String paramString, int paramInt)
   {
-    int i = paramQCallFacade.a();
+    int i = paramQCallFacade.b();
     paramQCallFacade = paramString;
     if (i > 1)
     {
@@ -264,7 +237,7 @@ public class QavMsgNotificationUtil
           paramQCallFacade = new StringBuilder();
           paramQCallFacade.append(paramString);
           paramQCallFacade.append(" (");
-          paramQCallFacade.append(paramQQAppInterface.getApp().getString(2131694511));
+          paramQCallFacade.append(paramQQAppInterface.getApp().getString(2131892194));
           paramQCallFacade.append(")");
           return paramQCallFacade.toString();
         }
@@ -272,7 +245,7 @@ public class QavMsgNotificationUtil
         paramQCallFacade.append(paramString);
         paramQCallFacade.append(" (");
         paramQCallFacade.append(i);
-        paramQCallFacade.append(paramQQAppInterface.getApp().getString(2131694448));
+        paramQCallFacade.append(paramQQAppInterface.getApp().getString(2131892128));
         paramQCallFacade.append(")");
         paramQCallFacade = paramQCallFacade.toString();
       }
@@ -291,7 +264,7 @@ public class QavMsgNotificationUtil
     }
     else
     {
-      paramMessageRecord = paramQCallFacade.a(paramMessageRecord.frienduin, paramMessageRecord.istroop);
+      paramMessageRecord = paramQCallFacade.c(paramMessageRecord.frienduin, paramMessageRecord.istroop);
       str1 = str2;
       if (paramMessageRecord != null) {
         str1 = paramMessageRecord.senderUin;
@@ -356,8 +329,8 @@ public class QavMsgNotificationUtil
         }
         return;
       }
-      if (GuardManager.a != null) {
-        GuardManager.a.b(0, null);
+      if (GuardManager.sInstance != null) {
+        GuardManager.sInstance.onEvent(0, null);
       }
       boolean bool = ((KeyguardManager)paramQQAppInterface.getApp().getApplicationContext().getSystemService("keyguard")).inKeyguardRestrictedInputMode();
       if (b(paramMessageRecord)) {
@@ -414,13 +387,13 @@ public class QavMsgNotificationUtil
         return;
       }
       Object localObject3 = a(paramMessageRecord, localQCallFacade);
-      int i = localQCallFacade.b();
+      int i = localQCallFacade.c();
       if (i == 0) {
         return;
       }
       bool = a(paramMessageRecord);
       Intent localIntent = a(paramQQAppInterface, i, bool, paramMessageRecord, (String)localObject3);
-      Object localObject4 = a(paramQQAppInterface, i, bool, paramMessageRecord, (String)localObject3);
+      Object localObject4 = b(paramQQAppInterface, i, bool, paramMessageRecord, (String)localObject3);
       Object localObject5 = "";
       if ((i == 1) && (bool)) {
         localObject2 = ContactUtils.a(paramQQAppInterface, (String)localObject3, 0);
@@ -512,7 +485,7 @@ public class QavMsgNotificationUtil
             localObject2 = ((StringBuilder)localObject2).toString();
             break;
           }
-          localObject2 = ContactUtils.g(paramQQAppInterface, paramMessageRecord.frienduin);
+          localObject2 = ContactUtils.h(paramQQAppInterface, paramMessageRecord.frienduin);
           localObject3 = new StringBuilder();
           ((StringBuilder)localObject3).append((String)localObject2);
           ((StringBuilder)localObject3).append("(");
@@ -530,7 +503,7 @@ public class QavMsgNotificationUtil
           localObject4 = localObject3;
           localObject3 = localObject5;
           break label925;
-          localObject6 = SkinUtils.a(paramQQAppInterface.getApp().getResources().getDrawable(2130840424));
+          localObject6 = SkinUtils.a(paramQQAppInterface.getApp().getResources().getDrawable(2130841180));
           localObject4 = XMLMessageUtils.a(paramMessageRecord);
           localObject2 = localObject6;
           localObject3 = localObject5;
@@ -567,7 +540,7 @@ public class QavMsgNotificationUtil
       if (QQUtils.a(paramQQAppInterface.getApp()))
       {
         QQLSRecentManager localQQLSRecentManager = (QQLSRecentManager)paramQQAppInterface.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
-        paramBoolean1 = SettingCloneUtil.readValue(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getApp().getString(2131693837), "qqsetting_lock_screen_whenexit_key", true);
+        paramBoolean1 = SettingCloneUtil.readValue(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getApp().getString(2131891413), "qqsetting_lock_screen_whenexit_key", true);
         if (QLog.isColorLevel()) {
           QLog.d("QQLSActivity", 2, String.format("videochatting start lsActivity from appinterface  showInComingMsgForQAV, lockScreenMsgWhenExit[%s]", new Object[] { Boolean.valueOf(paramBoolean1) }));
         }
@@ -680,7 +653,10 @@ public class QavMsgNotificationUtil
     if ((String.valueOf(AppConstants.NEW_KANDIAN_UIN).equals(paramMessageRecord.frienduin)) && (1008 == paramMessageRecord.istroop)) {
       return true;
     }
-    return (String.valueOf(AppConstants.KANDIAN_MERGE_UIN).equals(paramMessageRecord.frienduin)) && (7220 == paramMessageRecord.istroop) && (!((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).needKanDianNotification(paramMessageRecord));
+    if ((String.valueOf(AppConstants.KANDIAN_MERGE_UIN).equals(paramMessageRecord.frienduin)) && (7220 == paramMessageRecord.istroop) && (!((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).needKanDianNotification(paramMessageRecord))) {
+      return true;
+    }
+    return 10013 == paramMessageRecord.istroop;
   }
   
   private static boolean a(MessageRecord paramMessageRecord)
@@ -710,6 +686,33 @@ public class QavMsgNotificationUtil
     return false;
   }
   
+  private static Bitmap b(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean, MessageRecord paramMessageRecord, String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramQQAppInterface = (DiscussionHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DISCUSSION_HANDLER);
+        localObject1 = localObject2;
+        if (paramQQAppInterface != null) {
+          return paramQQAppInterface.b(paramMessageRecord.frienduin, true);
+        }
+      }
+      else
+      {
+        if (AppConstants.FRIEND_SYSTEM_MSG_UIN.equals(paramMessageRecord.frienduin)) {
+          return paramQQAppInterface.getFaceBitmap(paramString, true);
+        }
+        if ((paramMessageRecord.istroop != 1001) && (paramMessageRecord.istroop != 10002) && (paramMessageRecord.istroop != 1010)) {
+          return paramQQAppInterface.getFaceBitmap(paramMessageRecord.frienduin, true);
+        }
+        localObject1 = paramQQAppInterface.getStrangerFaceBitmap(paramMessageRecord.frienduin, 200);
+      }
+    }
+    return localObject1;
+  }
+  
   private static void b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
     if ((!paramQQAppInterface.isFinished) && (NoDisturbUtil.a(paramQQAppInterface.getApp().getApplicationContext(), paramQQAppInterface)))
@@ -722,7 +725,7 @@ public class QavMsgNotificationUtil
         }
         return;
       }
-      int i = ((QCallFacade)localObject).b();
+      int i = ((QCallFacade)localObject).c();
       if (i == 0) {
         return;
       }
@@ -752,19 +755,19 @@ public class QavMsgNotificationUtil
       label281:
       localIntent.putExtra("key_notification_click_action", true);
       StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(paramQQAppInterface.getApp().getString(2131694529));
-      int j = ((QCallFacade)localObject).a();
+      localStringBuffer.append(paramQQAppInterface.getApp().getString(2131892212));
+      int j = ((QCallFacade)localObject).b();
       if (j == 0) {
         return;
       }
       if (j > 1000)
       {
-        localStringBuffer.append(paramQQAppInterface.getApp().getString(2131694509));
+        localStringBuffer.append(paramQQAppInterface.getApp().getString(2131892192));
       }
       else
       {
         localStringBuffer.append(j);
-        localStringBuffer.append(paramQQAppInterface.getApp().getString(2131694512));
+        localStringBuffer.append(paramQQAppInterface.getApp().getString(2131892195));
       }
       localObject = null;
       if (paramBoolean) {
@@ -803,7 +806,7 @@ public class QavMsgNotificationUtil
         }
         localIntent.putExtra("qav_notify_flag", true);
       }
-      MessageNotificationGenerator.a(paramQQAppInterface, paramMessageRecord, new NotificationElement(localIntent, (String)localObject, paramQQAppInterface.getApp().getResources().getString(2131694524), localStringBuffer.toString(), null), "CMD_SHOW_NOTIFIYCATION");
+      MessageNotificationGenerator.a(paramQQAppInterface, paramMessageRecord, new NotificationElement(localIntent, (String)localObject, paramQQAppInterface.getApp().getResources().getString(2131892207), localStringBuffer.toString(), null), "CMD_SHOW_NOTIFIYCATION");
       return;
     }
     if (QLog.isDevelopLevel()) {

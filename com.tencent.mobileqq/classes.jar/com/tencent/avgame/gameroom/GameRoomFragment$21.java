@@ -9,7 +9,7 @@ class GameRoomFragment$21
   
   public void onDismiss()
   {
-    this.a.a = null;
+    this.a.y = null;
   }
 }
 

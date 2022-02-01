@@ -28,6 +28,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -37,34 +38,34 @@ import mqq.util.WeakReference;
 public class SeparateForward
   implements Handler.Callback
 {
-  public int a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new SeparateForward.1(this);
-  public QQAppInterface a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new SeparateForward.2(this);
   public QQProgressDialog a;
-  private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private String jdField_a_of_type_JavaLangString;
-  public WeakReference<QBaseActivity> a;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public WeakReference<QBaseActivity> b;
+  public QQAppInterface c;
+  public int d;
+  TroopObserver e = new SeparateForward.2(this);
+  private final WeakReferenceHandler f = new WeakReferenceHandler(Looper.getMainLooper(), this);
+  private int g;
+  private String h;
+  private String i;
+  private FriendListObserver j = new SeparateForward.1(this);
   
   public SeparateForward(QBaseActivity paramQBaseActivity, int paramInt)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramQBaseActivity);
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = new WeakReference(paramQBaseActivity);
+    this.d = paramInt;
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)localAppRuntime);
+      this.c = ((QQAppInterface)localAppRuntime);
     }
     paramQBaseActivity = paramQBaseActivity.getIntent();
-    this.jdField_b_of_type_Int = paramQBaseActivity.getIntExtra("uintype", -1);
-    this.jdField_a_of_type_JavaLangString = paramQBaseActivity.getStringExtra("uin");
+    this.g = paramQBaseActivity.getIntExtra("uintype", -1);
+    this.h = paramQBaseActivity.getStringExtra("uin");
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.c.addObserver(this.j);
+    this.c.addObserver(this.e);
   }
   
   public void a(Intent paramIntent)
@@ -73,29 +74,29 @@ public class SeparateForward
       return;
     }
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramIntent.getIntExtra("uintype", 0);
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("uin");
-    localSessionInfo.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("troop_uin");
+    localSessionInfo.a = paramIntent.getIntExtra("uintype", 0);
+    localSessionInfo.b = paramIntent.getStringExtra("uin");
+    localSessionInfo.c = paramIntent.getStringExtra("troop_uin");
     paramIntent = MultiMsgManager.a();
-    paramIntent.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramIntent.a);
+    paramIntent.a(this.c, localSessionInfo, paramIntent.c);
   }
   
   public void a(List<ChatMessage> paramList)
   {
-    Object localObject = (QBaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    Object localObject = (QBaseActivity)this.b.get();
     if (localObject == null)
     {
       QLog.e("SeparateForward", 1, "sendMultiMsg, activity recyled");
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    paramList = MultiMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ArrayList)paramList);
+    paramList = MultiMsgUtil.a(this.c, (ArrayList)paramList);
     MultiMsgManager.a().b(paramList);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog((Context)localObject, ((QBaseActivity)localObject).getTitleBarHeight());
+    if (this.a == null) {
+      this.a = new QQProgressDialog((Context)localObject, ((QBaseActivity)localObject).getTitleBarHeight());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131698525);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.a.c(2131896471);
+    this.a.show();
     localObject = paramList.iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -104,35 +105,53 @@ public class SeparateForward
         localArrayList.add(localChatMessage.senderuin);
       }
     }
-    MultiMsgManager.a().a.clear();
-    MultiMsgManager.a().a.addAll(paramList);
-    int i = this.jdField_b_of_type_Int;
-    if (i == 1) {
-      ((ITroopMemberInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER)).a(this.jdField_a_of_type_JavaLangString, localArrayList, false, null);
-    } else if ((i == 0) || (i == 3000)) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendNickByBatch(localArrayList);
+    MultiMsgManager.a().c.clear();
+    MultiMsgManager.a().c.addAll(paramList);
+    int k = this.g;
+    if (k == 1) {
+      ((ITroopMemberInfoHandler)this.c.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER)).a(this.h, localArrayList, false, null);
+    } else if ((k != 0) && (k != 3000))
+    {
+      if (k == 10014)
+      {
+        a(new HashMap(), MultiMsgManager.a().c);
+        paramList = this.a;
+        if (paramList != null)
+        {
+          if (!paramList.isShowing()) {
+            return;
+          }
+          paramList = this.a;
+          if (paramList != null) {
+            paramList.dismiss();
+          }
+        }
+      }
     }
-    paramList = this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1);
+    else {
+      ((FriendListHandler)this.c.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendNickByBatch(localArrayList);
+    }
+    paramList = this.f.obtainMessage(1);
     paramList.arg1 = localArrayList.size();
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessageDelayed(paramList, 30000L);
+    this.f.sendMessageDelayed(paramList, 30000L);
   }
   
   public void a(Map<String, String> paramMap, ArrayList<ChatMessage> paramArrayList)
   {
-    QBaseActivity localQBaseActivity = (QBaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    QBaseActivity localQBaseActivity = (QBaseActivity)this.b.get();
     if (localQBaseActivity == null)
     {
       QLog.e("SeparateForward", 1, "sendMultiMsg, activity recyled");
       return;
     }
-    int i = this.jdField_b_of_type_Int;
+    int k = this.g;
     String str;
-    if (i == 0) {
-      str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-    } else if ((i != 1) && (i != 3000)) {
+    if (k == 0) {
+      str = ContactUtils.a(this.c, this.h);
+    } else if ((k != 1) && (k != 3000)) {
       str = " ";
     } else {
-      str = this.jdField_b_of_type_JavaLangString;
+      str = this.i;
     }
     paramMap = ChatActivityFacade.a(localQBaseActivity, str, paramArrayList, paramMap, true);
     if (paramMap == null) {
@@ -145,13 +164,13 @@ public class SeparateForward
     paramArrayList.putExtra("is_need_show_sources", false);
     paramArrayList.putExtra("forward_msg_from_together", 1);
     paramArrayList.putExtra("forwardDirect", true);
-    ForwardBaseOption.a(localQBaseActivity, paramArrayList, this.jdField_a_of_type_Int);
+    ForwardBaseOption.a(localQBaseActivity, paramArrayList, this.d);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.c.removeObserver(this.j);
+    this.c.removeObserver(this.e);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -159,19 +178,19 @@ public class SeparateForward
     if (paramMessage.what != 1) {
       return false;
     }
-    paramMessage = (QBaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    paramMessage = (QBaseActivity)this.b.get();
+    QQProgressDialog localQQProgressDialog = this.a;
     if ((localQQProgressDialog != null) && (paramMessage != null))
     {
       localQQProgressDialog.dismiss();
-      QQToast.a(paramMessage, 2131698527, 0).b(paramMessage.getResources().getDimensionPixelSize(2131299168));
+      QQToast.makeText(paramMessage, 2131896473, 0).show(paramMessage.getResources().getDimensionPixelSize(2131299920));
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SeparateForward
  * JD-Core Version:    0.7.0.1
  */

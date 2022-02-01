@@ -10,9 +10,9 @@ import android.widget.RelativeLayout;
 public class FullScreenKeyBoardLayout
   extends RelativeLayout
 {
-  private int jdField_a_of_type_Int = 0;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private int a = 0;
   private int b = 0;
+  private Rect c = new Rect();
   
   public FullScreenKeyBoardLayout(Context paramContext)
   {
@@ -31,14 +31,14 @@ public class FullScreenKeyBoardLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    if ((this.b == 0) && (this.jdField_a_of_type_Int == 0))
+    getWindowVisibleDisplayFrame(this.c);
+    if ((this.b == 0) && (this.a == 0))
     {
       this.b = getRootView().getWidth();
-      this.jdField_a_of_type_Int = getRootView().getHeight();
+      this.a = getRootView().getHeight();
     }
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_Int;
+    int i = this.c.bottom - this.c.top;
+    int j = this.a;
     if (j - i > j / 4)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));

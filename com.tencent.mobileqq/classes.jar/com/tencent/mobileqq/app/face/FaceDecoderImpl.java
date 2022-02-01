@@ -69,8 +69,8 @@ public class FaceDecoderImpl
       }
       return null;
     }
-    if ((paramInt1 == 1001) && (paramString != null) && (!AvatarUtil.a(paramString))) {
-      localObject = AvatarUtil.c(paramString);
+    if ((paramInt1 == 1001) && (paramString != null) && (!AvatarUtil.b(paramString))) {
+      localObject = AvatarUtil.d(paramString);
     } else {
       localObject = paramString;
     }
@@ -121,17 +121,17 @@ public class FaceDecoderImpl
       Object localObject = (FaceInfo)this.mInProgress.remove(paramFaceInfo.b());
       if (localObject != null)
       {
-        int j = FaceInfo.r;
+        int j = FaceInfo.D;
         int i;
         if (paramBitmap != null) {
-          i = FaceInfo.f;
+          i = FaceInfo.r;
         } else {
-          i = FaceInfo.g;
+          i = FaceInfo.s;
         }
         ((FaceInfo)localObject).a(j, i);
       }
       if ((this.mDecodeTaskCompletionListener != null) && (paramBitmap != null)) {
-        this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+        this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramFaceInfo.b, paramFaceInfo.c, paramBitmap);
       }
     }
   }
@@ -180,7 +180,7 @@ public class FaceDecoderImpl
       {
         localObject = (FaceInfo)this.mInProgress.remove(localObject);
         if (localObject != null) {
-          ((FaceInfo)localObject).a(FaceInfo.r, FaceInfo.f);
+          ((FaceInfo)localObject).a(FaceInfo.D, FaceInfo.r);
         }
         if (this.mDecodeTaskCompletionListener != null) {
           this.mDecodeTaskCompletionListener.onDecodeTaskCompleted(this.iRunningRequests + this.mReadyRequests.size(), paramInt1, paramString, localBitmap);
@@ -197,7 +197,7 @@ public class FaceDecoderImpl
         paramString = (FaceInfo)this.mRefreshMap.remove(localObject);
         if (paramString != null)
         {
-          paramString.a(FaceInfo.j);
+          paramString.a(FaceInfo.v);
           this.mInProgress.put(localObject, paramString);
           enqueueDecode(paramString);
         }
@@ -208,11 +208,11 @@ public class FaceDecoderImpl
       paramString = (FaceInfo)this.mInProgress.remove(localObject);
       if (paramString != null)
       {
-        paramInt2 = FaceInfo.r;
+        paramInt2 = FaceInfo.D;
         if (!paramBoolean) {
-          paramInt1 = FaceInfo.g;
+          paramInt1 = FaceInfo.s;
         } else {
-          paramInt1 = FaceInfo.h;
+          paramInt1 = FaceInfo.t;
         }
         paramString.a(paramInt2, paramInt1);
       }
@@ -398,7 +398,7 @@ public class FaceDecoderImpl
       paramInt3 = AvatarUtil.a(b1);
       localObject = FaceInfo.a(paramInt2, paramString, paramInt1, paramInt4);
       FaceInfo localFaceInfo = (FaceInfo)this.mInProgress.get(localObject);
-      if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.j, 300000L)))
+      if ((localFaceInfo != null) && (!localFaceInfo.a(FaceInfo.v, 300000L)))
       {
         if (QLog.isColorLevel())
         {
@@ -407,14 +407,14 @@ public class FaceDecoderImpl
           ((StringBuilder)localObject).append(paramString);
           QLog.d("Q.qqhead.FaceDecoderImpl", 2, ((StringBuilder)localObject).toString());
         }
-        if ((localFaceInfo.b) && (!paramBoolean2)) {
-          localFaceInfo.b = false;
+        if ((localFaceInfo.h) && (!paramBoolean2)) {
+          localFaceInfo.h = false;
         }
-        localFaceInfo.c = paramInt3;
+        localFaceInfo.e = paramInt3;
         return true;
       }
       paramString = new FaceInfo(paramInt2, paramString, paramBoolean2, paramByte, paramInt3, false, paramInt1, paramBoolean3, paramInt4);
-      paramString.a(FaceInfo.j);
+      paramString.a(FaceInfo.v);
       this.mInProgress.put(localObject, paramString);
       enqueueDecode(paramString);
       return true;
@@ -456,12 +456,12 @@ public class FaceDecoderImpl
           localStringBuilder1.append(localFaceInfo.toString());
           QLog.i("Q.qqhead.FaceDecoderImpl", 2, localStringBuilder1.toString());
         }
-        if (((localFaceInfo.jdField_a_of_type_Int == 101) || (localFaceInfo.jdField_a_of_type_Int == 1001)) && (this.mDiscussObserver == null))
+        if (((localFaceInfo.b == 101) || (localFaceInfo.b == 1001)) && (this.mDiscussObserver == null))
         {
           this.mDiscussObserver = new FaceDecoderImpl.MyDiscussionObserver(this, null);
           this.mAppIntf.addObserver(this.mDiscussObserver);
         }
-        if (((localFaceInfo.jdField_a_of_type_Int == 4) || (localFaceInfo.jdField_a_of_type_Int == 113)) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(localFaceInfo.jdField_a_of_type_JavaLangString)))
+        if (((localFaceInfo.b == 4) || (localFaceInfo.b == 113)) && (!((ITroopUtilApi)QRoute.api(ITroopUtilApi.class)).hasSetTroopHead(localFaceInfo.c)))
         {
           if (this.mTroopHeaderObserver == null) {
             this.mTroopHeaderObserver = new FaceDecoderImpl.MyTroopHeaderObserver(this, null);
@@ -503,7 +503,7 @@ public class FaceDecoderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderImpl
  * JD-Core Version:    0.7.0.1
  */

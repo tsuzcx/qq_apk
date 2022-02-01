@@ -22,13 +22,13 @@ import tencent.im.oidb.redInfo.RedInfo;
 public class DefaultRedPointPrePostHandler
   implements RedPointPrePostHandleObserver
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  WeakReference<LocalRedTouchManager> jdField_a_of_type_MqqUtilWeakReference;
+  WeakReference<LocalRedTouchManager> a;
+  QQAppInterface b;
   
   public DefaultRedPointPrePostHandler(QQAppInterface paramQQAppInterface, LocalRedTouchManager paramLocalRedTouchManager)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramLocalRedTouchManager);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = new WeakReference(paramLocalRedTouchManager);
+    this.b = paramQQAppInterface;
   }
   
   public static String a(int paramInt)
@@ -43,7 +43,7 @@ public class DefaultRedPointPrePostHandler
   
   public LocalRedTouchManager a()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    WeakReference localWeakReference = this.a;
     if (localWeakReference == null) {
       return null;
     }
@@ -56,7 +56,7 @@ public class DefaultRedPointPrePostHandler
     {
       if (paramInt == 100601)
       {
-        paramRedTouchItem.isClosed = (((IUtil)QRoute.api(IUtil.class)).checkLikeRankListRedPointConfig(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) ^ true);
+        paramRedTouchItem.isClosed = (((IUtil)QRoute.api(IUtil.class)).checkLikeRankListRedPointConfig(this.b) ^ true);
         return;
       }
       if (RedPointId.a(paramInt))
@@ -149,7 +149,7 @@ public class DefaultRedPointPrePostHandler
         } else {
           paramRedTouchItem.count = 0;
         }
-        QLog.d("DefaultRedPointPrePostHandler", 1, new Object[] { "isQQSettingMeBubbleMsg show=", Boolean.valueOf(bool2), " uin=", StringUtil.e((String)localObject2) });
+        QLog.d("DefaultRedPointPrePostHandler", 1, new Object[] { "isQQSettingMeBubbleMsg show=", Boolean.valueOf(bool2), " uin=", StringUtil.getSimpleUinForPrint((String)localObject2) });
       }
     }
     else
@@ -179,7 +179,7 @@ public class DefaultRedPointPrePostHandler
         localObject1 = localObject2;
         if (localObject2 != null)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
+          ReportController.b(this.b, "dc00898", "", "", (String)localObject2, (String)localObject2, 0, 0, "", "", "", "");
           localObject1 = localObject2;
         }
       }
@@ -191,8 +191,8 @@ public class DefaultRedPointPrePostHandler
         if (paramList.contains(localObject3))
         {
           localObject2 = "0X8007391";
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007391", "0X8007391", 0, 0, "", "", "", "");
-          ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MEDAL_WALL_MNG)).b();
+          ReportController.b(this.b, "dc00898", "", "", "0X8007391", "0X8007391", 0, 0, "", "", "", "");
+          ((MedalWallMng)this.b.getManager(QQManagerFactory.MEDAL_WALL_MNG)).c();
         }
       }
       localObject1 = localLocalRedTouchManager.a(10016);
@@ -225,20 +225,20 @@ public class DefaultRedPointPrePostHandler
         }
       }
       if (localObject1 != null) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
+        ReportController.b(this.b, "dc00898", "", "", (String)localObject1, (String)localObject1, 0, 0, "", "", "", "");
       }
       localObject1 = localLocalRedTouchManager.a(10018);
       if ((localObject1 != null) && (paramList.contains(localObject1)) && (((RedTouchItem)localObject1).extMsgs != null) && (((RedTouchItem)localObject1).extMsgs.size() > 0) && (((RedTouchItem)localObject1).unReadFlag))
       {
-        paramList = (ConfessManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER);
+        paramList = (ConfessManager)this.b.getManager(QQManagerFactory.CONFESS_MANAGER);
         localObject2 = paramList.a();
-        if ((localObject2 != null) && (((ConfessConfig)localObject2).c()))
+        if ((localObject2 != null) && (((ConfessConfig)localObject2).e()))
         {
           paramList.a((RedTouchItem)localObject1);
           return;
         }
         ((RedTouchItem)localObject1).unReadFlag = false;
-        localLocalRedTouchManager.c();
+        localLocalRedTouchManager.e();
         if (QLog.isColorLevel()) {
           QLog.i("DefaultRedPointPrePostHandler", 2, "onPostDealReachedRedPoints frdRecMsgSwitch is off");
         }
@@ -251,7 +251,7 @@ public class DefaultRedPointPrePostHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.redtouch.DefaultRedPointPrePostHandler
  * JD-Core Version:    0.7.0.1
  */

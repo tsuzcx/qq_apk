@@ -10,32 +10,32 @@ public final class RichSpan
   extends ForegroundColorSpan
 {
   @NotNull
-  private EditObject.EditObjectType jdField_a_of_type_ComTencentTkdWeiboBeanEditObject$EditObjectType;
+  private EditObject.EditObjectType a;
   @NotNull
-  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
   public RichSpan(int paramInt, @NotNull EditObject.EditObjectType paramEditObjectType, @NotNull String paramString)
   {
     super(paramInt);
-    this.jdField_a_of_type_ComTencentTkdWeiboBeanEditObject$EditObjectType = paramEditObjectType;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramEditObjectType;
+    this.b = paramString;
   }
   
   @NotNull
   public final EditObject.EditObjectType a()
   {
-    return this.jdField_a_of_type_ComTencentTkdWeiboBeanEditObject$EditObjectType;
+    return this.a;
   }
   
   @NotNull
-  public final String a()
+  public final String b()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.weibo.richEditText.span.RichSpan
  * JD-Core Version:    0.7.0.1
  */

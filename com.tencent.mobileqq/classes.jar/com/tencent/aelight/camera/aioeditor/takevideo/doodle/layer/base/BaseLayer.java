@@ -16,28 +16,27 @@ public abstract class BaseLayer
   implements Layer, LifeCycle
 {
   private static String a = "BaseLayer";
-  protected float a;
-  public Context a;
-  protected Matrix a;
-  public Rect a;
-  protected BaseLayer.OnLayerTouchListener a;
-  protected DoodleView a;
-  protected boolean b;
-  protected Paint h;
-  protected Paint i;
-  protected int p;
-  protected int q;
-  protected int r;
-  protected int s;
-  protected int t = 0;
+  protected Paint A;
+  public Rect B;
+  protected Paint C;
+  protected int D;
+  protected int E;
+  protected int F;
+  protected int G;
+  protected boolean H;
+  protected int I = 0;
+  protected float J;
+  protected BaseLayer.OnLayerTouchListener K;
+  protected Matrix L = new Matrix();
+  public Context y;
+  protected DoodleView z;
   
   public BaseLayer(DoodleView paramDoodleView)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
     if (paramDoodleView != null)
     {
-      this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView = paramDoodleView;
+      this.y = paramDoodleView.getContext();
+      this.z = paramDoodleView;
       d();
       return;
     }
@@ -46,30 +45,15 @@ public abstract class BaseLayer
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.h = new Paint();
-    this.h.setAntiAlias(true);
-    this.i = new Paint();
-    this.i.setAntiAlias(true);
-    this.i.setStyle(Paint.Style.STROKE);
-    this.i.setStrokeWidth(5.0F);
-    this.i.setColor(-16776961);
-    this.b = false;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.t;
-  }
-  
-  public Matrix a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    this.B = new Rect();
+    this.A = new Paint();
+    this.A.setAntiAlias(true);
+    this.C = new Paint();
+    this.C.setAntiAlias(true);
+    this.C.setStyle(Paint.Style.STROKE);
+    this.C.setStrokeWidth(5.0F);
+    this.C.setColor(-16776961);
+    this.H = false;
   }
   
   public abstract String a();
@@ -84,15 +68,15 @@ public abstract class BaseLayer
       ((StringBuilder)localObject).append(",height=");
       ((StringBuilder)localObject).append(paramInt2);
       SLog.b("BaseLayer", ((StringBuilder)localObject).toString());
-      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+      localObject = this.B;
       ((Rect)localObject).left = 0;
       ((Rect)localObject).right = paramInt1;
       ((Rect)localObject).top = 0;
       ((Rect)localObject).bottom = paramInt2;
-      this.r = ((Rect)localObject).left;
-      this.s = this.jdField_a_of_type_AndroidGraphicsRect.right;
-      this.p = this.jdField_a_of_type_AndroidGraphicsRect.top;
-      this.q = this.jdField_a_of_type_AndroidGraphicsRect.bottom;
+      this.F = ((Rect)localObject).left;
+      this.G = this.B.right;
+      this.D = this.B.top;
+      this.E = this.B.bottom;
       return;
     }
     Object localObject = new StringBuilder();
@@ -117,7 +101,7 @@ public abstract class BaseLayer
   
   public void a(Matrix paramMatrix)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix.set(paramMatrix);
+    this.L.set(paramMatrix);
   }
   
   public void a(Bundle paramBundle)
@@ -125,53 +109,35 @@ public abstract class BaseLayer
     if (paramBundle == null) {
       return;
     }
-    this.t = paramBundle.getInt("BaseLayer:TopLevelWeight");
+    this.I = paramBundle.getInt("BaseLayer:TopLevelWeight");
   }
   
   public void a(BaseLayer.OnLayerTouchListener paramOnLayerTouchListener)
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerBaseBaseLayer$OnLayerTouchListener = paramOnLayerTouchListener;
+    this.K = paramOnLayerTouchListener;
   }
   
   public abstract boolean a(long paramLong);
   
   protected abstract boolean a(MotionEvent paramMotionEvent);
   
-  public void b()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getClass().getName());
-    localStringBuilder.append(" onDestroy.");
-    SLog.b("BaseLayer", localStringBuilder.toString());
-  }
-  
-  public void b(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect.width();
-  }
-  
-  public void c()
+  public void aw_()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getClass().getName());
     localStringBuilder.append(" onPause.");
     SLog.b("BaseLayer", localStringBuilder.toString());
-    this.b = false;
+    this.H = false;
   }
   
-  public void c(int paramInt)
+  public void b(float paramFloat)
   {
-    this.t = (paramInt + 1);
+    this.J = paramFloat;
   }
   
-  public int d()
+  public void d(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidGraphicsRect.height();
+    this.I = (paramInt + 1);
   }
   
   public final void d(Canvas paramCanvas)
@@ -182,50 +148,83 @@ public abstract class BaseLayer
   public void d(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.setActiveLayer(this);
+      this.z.setActiveLayer(this);
     } else {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.a(this);
+      this.z.a(this);
     }
-    k();
+    u();
   }
   
   public final boolean d(MotionEvent paramMotionEvent)
   {
-    BaseLayer.OnLayerTouchListener localOnLayerTouchListener = this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleLayerBaseBaseLayer$OnLayerTouchListener;
+    BaseLayer.OnLayerTouchListener localOnLayerTouchListener = this.K;
     if (localOnLayerTouchListener != null) {
       localOnLayerTouchListener.a(this, paramMotionEvent);
     }
-    k();
+    u();
     return a(paramMotionEvent);
   }
   
-  public void k()
+  public int e()
+  {
+    return this.I;
+  }
+  
+  public void f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getName());
+    localStringBuilder.append(" onDestroy.");
+    SLog.b("BaseLayer", localStringBuilder.toString());
+  }
+  
+  public int s()
+  {
+    return this.B.width();
+  }
+  
+  public int t()
+  {
+    return this.B.height();
+  }
+  
+  public void u()
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.invalidate();
+      this.z.invalidate();
       return;
     }
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.postInvalidate();
+    this.z.postInvalidate();
   }
   
-  public void l()
+  public void v()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(getClass().getName());
     localStringBuilder.append(" onResume.");
     SLog.b("BaseLayer", localStringBuilder.toString());
-    this.b = true;
+    this.H = true;
   }
   
-  public void m()
+  public float w()
   {
-    this.jdField_a_of_type_ComTencentAelightCameraAioeditorTakevideoDoodleUiDoodleDoodleView.setTopLevelLayer(this);
+    return this.J;
+  }
+  
+  public void x()
+  {
+    this.z.setTopLevelLayer(this);
+  }
+  
+  public Matrix y()
+  {
+    return this.L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.layer.base.BaseLayer
  * JD-Core Version:    0.7.0.1
  */

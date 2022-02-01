@@ -2,37 +2,28 @@ package com.tencent.mobileqq.fts.v1;
 
 public class FTSQueryArgs
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
+  public String a = null;
+  public String[] b = new String[0];
+  public boolean c = false;
+  public boolean d = false;
+  public int e = 0;
+  public int f = -1;
+  public String g = null;
+  public String h = null;
+  public int i = 0;
   
   public FTSQueryArgs(String paramString, Class<? extends FTSEntity> paramClass, String[] paramArrayOfString, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_JavaLangString = paramClass.getName().replace('.', '/');
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
+    this.a = paramString;
+    this.h = paramClass.getName().replace('.', '/');
+    this.b = paramArrayOfString;
+    this.c = paramBoolean;
+    this.e = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v1.FTSQueryArgs
  * JD-Core Version:    0.7.0.1
  */

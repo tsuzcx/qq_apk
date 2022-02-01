@@ -9,12 +9,12 @@ class AEGIFSinglePreviewFragment$4$2
   
   public void run()
   {
-    QQToast.a(AEGIFSinglePreviewFragment.a(this.a.a), 1, this.a.a.getString(2131689600), 1).a();
+    QQToast.makeText(AEGIFSinglePreviewFragment.a(this.a.b), 1, this.a.b.getString(2131886210), 1).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.giftext.fragment.AEGIFSinglePreviewFragment.4.2
  * JD-Core Version:    0.7.0.1
  */

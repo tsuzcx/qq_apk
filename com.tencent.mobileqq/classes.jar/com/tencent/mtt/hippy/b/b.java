@@ -8,29 +8,28 @@ import java.util.List;
 
 public class b
 {
+  private static final List<Integer> m;
   private static final List<Integer> n;
-  private static final List<Integer> o;
-  private d a;
-  private boolean b = true;
-  private int c;
+  private final d a;
+  private int b;
+  private boolean c;
   private boolean d;
-  private boolean e;
+  private int e;
   private int f;
   private int g;
   private int h;
-  private int i;
+  private byte[] i = new byte[0];
   private byte[] j = new byte[0];
-  private byte[] k = new byte[0];
-  private boolean l = false;
-  private ByteArrayOutputStream m = new ByteArrayOutputStream();
+  private boolean k = false;
+  private final ByteArrayOutputStream l = new ByteArrayOutputStream();
   
   static
   {
     Integer localInteger1 = Integer.valueOf(0);
     Integer localInteger2 = Integer.valueOf(1);
     Integer localInteger3 = Integer.valueOf(2);
-    n = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3, Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10) });
-    o = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3 });
+    m = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3, Integer.valueOf(8), Integer.valueOf(9), Integer.valueOf(10) });
+    n = Arrays.asList(new Integer[] { localInteger1, localInteger2, localInteger3 });
   }
   
   public b(d paramd)
@@ -40,20 +39,20 @@ public class b
   
   private void a()
   {
-    Object localObject1 = this.k;
-    Object localObject2 = this.j;
+    Object localObject1 = this.j;
+    Object localObject2 = this.i;
     int i1 = 0;
     localObject1 = a((byte[])localObject1, (byte[])localObject2, 0);
-    int i2 = this.f;
+    int i2 = this.e;
     if (i2 == 0)
     {
-      if (this.i != 0)
+      if (this.h != 0)
       {
-        this.m.write((byte[])localObject1);
-        if (this.d)
+        this.l.write((byte[])localObject1);
+        if (this.c)
         {
-          localObject1 = this.m.toByteArray();
-          if (this.i == 1) {
+          localObject1 = this.l.toByteArray();
+          if (this.h == 1) {
             this.a.d().b(c((byte[])localObject1));
           } else {
             this.a.d().a((byte[])localObject1);
@@ -69,21 +68,21 @@ public class b
     else
     {
       if (i2 == 1) {
-        if (this.d)
+        if (this.c)
         {
           localObject1 = c((byte[])localObject1);
           this.a.d().b((String)localObject1);
           return;
         }
       }
-      for (this.i = 1;; this.i = 2)
+      for (this.h = 1;; this.h = 2)
       {
-        this.m.write((byte[])localObject1);
+        this.l.write((byte[])localObject1);
         return;
         if (i2 != 2) {
           break;
         }
-        if (this.d)
+        if (this.c)
         {
           this.a.d().a((byte[])localObject1);
           return;
@@ -159,16 +158,16 @@ public class b
       } else {
         bool = false;
       }
-      this.d = bool;
-      this.f = (paramByte & 0xF);
+      this.c = bool;
+      this.e = (paramByte & 0xF);
+      this.i = new byte[0];
       this.j = new byte[0];
-      this.k = new byte[0];
-      if (n.contains(Integer.valueOf(this.f)))
+      if (m.contains(Integer.valueOf(this.e)))
       {
-        if ((!o.contains(Integer.valueOf(this.f))) && (!this.d)) {
+        if ((!n.contains(Integer.valueOf(this.e))) && (!this.c)) {
           throw new b.b("Expected non-final packet");
         }
-        this.c = 1;
+        this.b = 1;
         return;
       }
       throw new b.b("Bad opcode");
@@ -178,7 +177,7 @@ public class b
   
   private byte[] a(Object paramObject, int paramInt1, int paramInt2)
   {
-    if (this.l) {
+    if (this.k) {
       return null;
     }
     Object localObject = new StringBuilder();
@@ -200,45 +199,34 @@ public class b
     } else {
       i2 = 0;
     }
-    int i4 = paramObject.length + i2;
+    int i3 = paramObject.length + i2;
     int i1;
-    if (i4 <= 125) {
+    if (i3 <= 125) {
       i1 = 2;
-    } else if (i4 <= 65535) {
+    } else if (i3 <= 65535) {
       i1 = 4;
     } else {
       i1 = 10;
     }
-    int i3;
-    if (this.b) {
-      i3 = 4;
-    } else {
-      i3 = 0;
-    }
-    int i5 = i3 + i1;
-    if (this.b) {
-      i3 = 128;
-    } else {
-      i3 = 0;
-    }
-    localObject = new byte[i4 + i5];
+    int i4 = i1 + 4;
+    localObject = new byte[i3 + i4];
     localObject[0] = ((byte)((byte)paramInt1 | 0xFFFFFF80));
-    if (i4 <= 125) {
-      localObject[1] = ((byte)(i4 | i3));
+    if (i3 <= 125) {
+      localObject[1] = ((byte)(i3 | 0x80));
     }
     for (;;)
     {
       break;
-      if (i4 <= 65535)
+      if (i3 <= 65535)
       {
-        localObject[1] = ((byte)(i3 | 0x7E));
-        localObject[2] = ((byte)(int)Math.floor(i4 / 256));
-        localObject[3] = ((byte)(i4 & 0xFF));
+        localObject[1] = ((byte)'þ');
+        localObject[2] = ((byte)(int)Math.floor(i3 / 256.0F));
+        localObject[3] = ((byte)(i3 & 0xFF));
       }
       else
       {
-        localObject[1] = ((byte)(i3 | 0x7F));
-        double d1 = i4;
+        localObject[1] = ((byte)'ÿ');
+        double d1 = i3;
         double d2 = Math.pow(2.0D, 56.0D);
         Double.isNaN(d1);
         localObject[2] = ((byte)((int)Math.floor(d1 / d2) & 0xFF));
@@ -260,25 +248,22 @@ public class b
         d2 = Math.pow(2.0D, 8.0D);
         Double.isNaN(d1);
         localObject[8] = ((byte)((int)Math.floor(d1 / d2) & 0xFF));
-        localObject[9] = ((byte)(i4 & 0xFF));
+        localObject[9] = ((byte)(i3 & 0xFF));
       }
     }
     if (paramInt2 > 0)
     {
-      localObject[i5] = ((byte)((int)Math.floor(paramInt2 / 256) & 0xFF));
-      localObject[(i5 + 1)] = ((byte)(paramInt2 & 0xFF));
+      localObject[i4] = ((byte)((int)Math.floor(paramInt2 / 256.0F) & 0xFF));
+      localObject[(i4 + 1)] = ((byte)(paramInt2 & 0xFF));
     }
-    System.arraycopy(paramObject, 0, localObject, i5 + i2, paramObject.length);
-    if (this.b)
-    {
-      paramObject = new byte[4];
-      paramObject[0] = ((byte)(int)Math.floor(Math.random() * 256.0D));
-      paramObject[1] = ((byte)(int)Math.floor(Math.random() * 256.0D));
-      paramObject[2] = ((byte)(int)Math.floor(Math.random() * 256.0D));
-      paramObject[3] = ((byte)(int)Math.floor(Math.random() * 256.0D));
-      System.arraycopy(paramObject, 0, localObject, i1, paramObject.length);
-      a((byte[])localObject, paramObject, i5);
-    }
+    System.arraycopy(paramObject, 0, localObject, i2 + i4, paramObject.length);
+    paramObject = new byte[4];
+    paramObject[0] = ((byte)(int)Math.floor(Math.random() * 256.0D));
+    paramObject[1] = ((byte)(int)Math.floor(Math.random() * 256.0D));
+    paramObject[2] = ((byte)(int)Math.floor(Math.random() * 256.0D));
+    paramObject[3] = ((byte)(int)Math.floor(Math.random() * 256.0D));
+    System.arraycopy(paramObject, 0, localObject, i1, paramObject.length);
+    a((byte[])localObject, paramObject, i4);
     return localObject;
   }
   
@@ -314,8 +299,8 @@ public class b
   
   private void b()
   {
-    this.i = 0;
-    this.m.reset();
+    this.h = 0;
+    this.l.reset();
   }
   
   private void b(byte paramByte)
@@ -326,38 +311,38 @@ public class b
     } else {
       bool = false;
     }
-    this.e = bool;
-    this.h = (paramByte & 0x7F);
-    paramByte = this.h;
+    this.d = bool;
+    this.g = (paramByte & 0x7F);
+    paramByte = this.g;
     if ((paramByte >= 0) && (paramByte <= 125))
     {
-      if (this.e) {
+      if (this.d) {
         paramByte = 3;
       } else {
         paramByte = 4;
       }
-      this.c = paramByte;
+      this.b = paramByte;
       return;
     }
-    if (this.h == 126) {
+    if (this.g == 126) {
       paramByte = 2;
     } else {
       paramByte = 8;
     }
-    this.g = paramByte;
-    this.c = 2;
+    this.f = paramByte;
+    this.b = 2;
   }
   
   private void b(byte[] paramArrayOfByte)
   {
-    this.h = d(paramArrayOfByte);
+    this.g = d(paramArrayOfByte);
     int i1;
-    if (this.e) {
+    if (this.d) {
       i1 = 3;
     } else {
       i1 = 4;
     }
-    this.c = i1;
+    this.b = i1;
   }
   
   private byte[] b(String paramString)
@@ -438,23 +423,18 @@ public class b
   
   public void a(int paramInt, String paramString)
   {
-    if (this.l) {
+    if (this.k) {
       return;
     }
     this.a.a(a(paramString, 8, paramInt));
-    this.l = true;
+    this.k = true;
   }
   
   public void a(b.a parama)
   {
-    for (;;)
+    while (parama.available() != -1)
     {
-      if (parama.available() == -1)
-      {
-        this.a.d().a(0, "EOF");
-        return;
-      }
-      int i1 = this.c;
+      int i1 = this.b;
       if (i1 != 0)
       {
         if (i1 != 1)
@@ -465,19 +445,19 @@ public class b
             {
               if (i1 == 4)
               {
-                this.k = parama.a(this.h);
+                this.j = parama.a(this.g);
                 a();
-                this.c = 0;
+                this.b = 0;
               }
             }
             else
             {
-              this.j = parama.a(4);
-              this.c = 4;
+              this.i = parama.a(4);
+              this.b = 4;
             }
           }
           else {
-            b(parama.a(this.g));
+            b(parama.a(this.f));
           }
         }
         else {
@@ -488,6 +468,7 @@ public class b
         a(parama.readByte());
       }
     }
+    this.a.d().a(0, "EOF");
   }
   
   public byte[] a(String paramString)
@@ -502,7 +483,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mtt.hippy.b.b
  * JD-Core Version:    0.7.0.1
  */

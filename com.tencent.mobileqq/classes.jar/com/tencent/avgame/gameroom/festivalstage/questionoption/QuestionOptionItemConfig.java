@@ -2,44 +2,39 @@ package com.tencent.avgame.gameroom.festivalstage.questionoption;
 
 public class QuestionOptionItemConfig
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  private float a;
   private int b;
-  private int c = -1;
+  private int c;
   private int d = -1;
   private int e = -1;
   private int f = -1;
+  private int g = -1;
   
   public QuestionOptionItemConfig()
   {
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_Int = 0;
+    this.a = -1.0F;
     this.b = 0;
-    this.c = -1;
+    this.c = 0;
     this.d = -1;
     this.e = -1;
     this.f = -1;
+    this.g = -1;
   }
   
   public QuestionOptionItemConfig(float paramFloat, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
+    this.a = paramFloat;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramInt4;
+    this.f = paramInt5;
+    this.g = paramInt6;
   }
   
   public float a()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
+    return this.a;
   }
   
   public int b()
@@ -65,6 +60,11 @@ public class QuestionOptionItemConfig
   public int f()
   {
     return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
   }
 }
 

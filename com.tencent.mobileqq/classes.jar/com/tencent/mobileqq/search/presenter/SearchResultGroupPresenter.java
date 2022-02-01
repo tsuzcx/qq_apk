@@ -17,30 +17,30 @@ import java.util.List;
 public class SearchResultGroupPresenter
   implements IPresenter<IModel, ISearchResultGroupView>
 {
-  private IFaceDecoder a;
   protected IFacePresenter a;
+  private IFaceDecoder b;
   
   public SearchResultGroupPresenter(IFaceDecoder paramIFaceDecoder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBasePresenterIFacePresenter = a(paramIFaceDecoder);
+    this.b = paramIFaceDecoder;
+    this.a = a(paramIFaceDecoder);
   }
   
   public SearchResultGroupPresenter(IFaceDecoder paramIFaceDecoder, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBasePresenterIFacePresenter = a(paramIFaceDecoder, paramInt);
+    this.b = paramIFaceDecoder;
+    this.a = a(paramIFaceDecoder, paramInt);
   }
   
   public SearchResultGroupPresenter(IFaceDecoder paramIFaceDecoder, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_ComTencentMobileqqSearchBasePresenterIFacePresenter = a(paramIFaceDecoder, paramBoolean);
+    this.b = paramIFaceDecoder;
+    this.a = a(paramIFaceDecoder, paramBoolean);
   }
   
   public IFacePresenter a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqSearchBasePresenterIFacePresenter;
+    return this.a;
   }
   
   protected IFacePresenter<ISearchResultModel, ISearchResultView> a(IFaceDecoder paramIFaceDecoder)
@@ -72,11 +72,11 @@ public class SearchResultGroupPresenter
   {
     Object localObject = (ISearchResultGroupModel)paramIModel;
     a(paramISearchResultGroupView, (ISearchResultGroupModel)localObject);
-    int n = ((ISearchResultGroupModel)localObject).a();
-    paramIModel = paramISearchResultGroupView.a();
+    int n = ((ISearchResultGroupModel)localObject).d();
+    paramIModel = paramISearchResultGroupView.c();
     if ((paramIModel != null) && (paramIModel != null))
     {
-      localObject = ((ISearchResultGroupModel)localObject).a();
+      localObject = ((ISearchResultGroupModel)localObject).b();
       int i = 0;
       if (localObject != null)
       {
@@ -102,25 +102,25 @@ public class SearchResultGroupPresenter
           if ((j & k & m) == 0) {
             break;
           }
-          ((ISearchResultView)paramIModel.get(i)).a().setVisibility(0);
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380884, ((List)localObject).get(i));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380889, paramIModel.get(i));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380885, Integer.valueOf(i));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380883, Integer.valueOf(paramIModel.size()));
-          ((ISearchResultView)paramIModel.get(i)).a().setTag(2131380886, this.jdField_a_of_type_ComTencentMobileqqSearchBasePresenterIFacePresenter);
-          this.jdField_a_of_type_ComTencentMobileqqSearchBasePresenterIFacePresenter.a((IModel)((List)localObject).get(i), (IView)paramIModel.get(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setVisibility(0);
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449867, ((List)localObject).get(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449873, paramIModel.get(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449868, Integer.valueOf(i));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449866, Integer.valueOf(paramIModel.size()));
+          ((ISearchResultView)paramIModel.get(i)).h().setTag(2131449869, this.a);
+          this.a.a((IModel)((List)localObject).get(i), (IView)paramIModel.get(i));
           i += 1;
         }
         i = Math.min(((List)localObject).size(), n);
         while (i < paramIModel.size())
         {
-          ((ISearchResultView)paramIModel.get(i)).a().setVisibility(8);
+          ((ISearchResultView)paramIModel.get(i)).h().setVisibility(8);
           i += 1;
         }
       }
       while (i < paramIModel.size())
       {
-        ((ISearchResultView)paramIModel.get(i)).a().setVisibility(8);
+        ((ISearchResultView)paramIModel.get(i)).h().setVisibility(8);
         i += 1;
       }
     }
@@ -131,7 +131,7 @@ public class SearchResultGroupPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

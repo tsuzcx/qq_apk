@@ -7,6 +7,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$ReportInfo$TraceInfo
   public String net_log_req_id;
   public long noco_id = 0L;
   public String product_id;
+  public int quality_product_id = 0;
   public String traceid;
   public String via;
   public String view_id;

@@ -7,21 +7,21 @@ import java.util.HashMap;
 
 public class ChooseFileAssistant
 {
-  private static ChooseFileAssistant jdField_a_of_type_ComTencentAvWtogetherUtilChooseFileAssistant;
-  private final HashMap<String, ChooseFileAssistant.ChatInfo> jdField_a_of_type_JavaUtilHashMap = new HashMap(2);
+  private static ChooseFileAssistant a;
+  private final HashMap<String, ChooseFileAssistant.ChatInfo> b = new HashMap(2);
   
   public static ChooseFileAssistant a()
   {
-    if (jdField_a_of_type_ComTencentAvWtogetherUtilChooseFileAssistant == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentAvWtogetherUtilChooseFileAssistant == null) {
-          jdField_a_of_type_ComTencentAvWtogetherUtilChooseFileAssistant = new ChooseFileAssistant();
+        if (a == null) {
+          a = new ChooseFileAssistant();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentAvWtogetherUtilChooseFileAssistant;
+    return a;
   }
   
   public ChooseFileInfo a(int paramInt, String paramString)
@@ -31,31 +31,11 @@ public class ChooseFileAssistant
     localStringBuilder.append("_");
     localStringBuilder.append(paramString);
     paramString = localStringBuilder.toString();
-    paramString = (ChooseFileAssistant.ChatInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (ChooseFileAssistant.ChatInfo)this.b.get(paramString);
     if (paramString != null) {
-      return paramString.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo;
+      return paramString.d;
     }
     return null;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramInt);
-    ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(paramString);
-    localObject = ((StringBuilder)localObject).toString();
-    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, null);
-    if (QLog.isDevelopLevel())
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("endOfStartWatchTogether, uinType[");
-      ((StringBuilder)localObject).append(paramInt);
-      ((StringBuilder)localObject).append("], uin[");
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("]");
-      QLog.i("WTogether.ChooseFileAssistant", 4, ((StringBuilder)localObject).toString());
-    }
   }
   
   public void a(int paramInt, String paramString, ChooseFileInfo paramChooseFileInfo)
@@ -70,22 +50,22 @@ public class ChooseFileAssistant
     ((StringBuilder)localObject).append("_");
     ((StringBuilder)localObject).append(paramString);
     localObject = ((StringBuilder)localObject).toString();
-    ChooseFileAssistant.ChatInfo localChatInfo = (ChooseFileAssistant.ChatInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    ChooseFileAssistant.ChatInfo localChatInfo = (ChooseFileAssistant.ChatInfo)this.b.get(localObject);
     if (localChatInfo != null)
     {
-      localChatInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = paramChooseFileInfo;
+      localChatInfo.d = paramChooseFileInfo;
     }
     else
     {
       localChatInfo = new ChooseFileAssistant.ChatInfo(null);
-      localChatInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = paramChooseFileInfo;
+      localChatInfo.d = paramChooseFileInfo;
       if (paramSessionInfo != null)
       {
-        localChatInfo.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-        localChatInfo.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-        localChatInfo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+        localChatInfo.a = paramSessionInfo.a;
+        localChatInfo.b = paramSessionInfo.b;
+        localChatInfo.c = paramSessionInfo;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(localObject, localChatInfo);
+      this.b.put(localObject, localChatInfo);
     }
     if (QLog.isDevelopLevel())
     {
@@ -104,21 +84,41 @@ public class ChooseFileAssistant
   public void a(SessionInfo paramSessionInfo)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(paramSessionInfo.a);
     ((StringBuilder)localObject).append("_");
-    ((StringBuilder)localObject).append(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(paramSessionInfo.b);
     localObject = ((StringBuilder)localObject).toString();
     ChooseFileAssistant.ChatInfo localChatInfo = new ChooseFileAssistant.ChatInfo(null);
-    localChatInfo.jdField_a_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
-    localChatInfo.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    localChatInfo.jdField_a_of_type_ComTencentAvWtogetherDataChooseFileInfo = null;
-    localChatInfo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_JavaUtilHashMap.put(localObject, localChatInfo);
+    localChatInfo.a = paramSessionInfo.a;
+    localChatInfo.b = paramSessionInfo.b;
+    localChatInfo.d = null;
+    localChatInfo.c = paramSessionInfo;
+    this.b.put(localObject, localChatInfo);
     if (QLog.isDevelopLevel())
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("onClickQavWatchTogether, chat[");
       ((StringBuilder)localObject).append(paramSessionInfo);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("WTogether.ChooseFileAssistant", 4, ((StringBuilder)localObject).toString());
+    }
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    this.b.put(localObject, null);
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("endOfStartWatchTogether, uinType[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], uin[");
+      ((StringBuilder)localObject).append(paramString);
       ((StringBuilder)localObject).append("]");
       QLog.i("WTogether.ChooseFileAssistant", 4, ((StringBuilder)localObject).toString());
     }

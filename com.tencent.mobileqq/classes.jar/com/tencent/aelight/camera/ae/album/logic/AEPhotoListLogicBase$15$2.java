@@ -9,14 +9,14 @@ class AEPhotoListLogicBase$15$2
   
   public void run()
   {
-    if (AEPhotoListLogicBase.a(this.a.this$0).isShowing()) {
-      AEPhotoListLogicBase.a(this.a.this$0).dismiss();
+    if (AEPhotoListLogicBase.h(this.a.this$0).isShowing()) {
+      AEPhotoListLogicBase.h(this.a.this$0).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.album.logic.AEPhotoListLogicBase.15.2
  * JD-Core Version:    0.7.0.1
  */

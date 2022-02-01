@@ -10,24 +10,21 @@ import java.util.concurrent.TimeUnit;
 public abstract class DeviceSwitchThread
   extends Thread
 {
-  private static final String b = "DeviceSwitchThread";
+  private static final String i = "DeviceSwitchThread";
   protected AudioManager a;
-  protected BluetoothHelper a;
-  protected DeviceConfigManager a;
-  protected DeviceSwitchThread.IDeviceConnectStatusListener a;
-  protected final String a;
-  protected CountDownLatch a;
-  protected boolean a;
-  protected volatile boolean b;
+  protected final String b;
+  protected DeviceConfigManager c = DeviceConfigManager.a();
+  protected DeviceSwitchThread.IDeviceConnectStatusListener d;
+  protected BluetoothHelper e;
+  protected boolean f;
+  protected volatile boolean g = true;
+  protected CountDownLatch h = new CountDownLatch(1);
   
   public DeviceSwitchThread(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager = DeviceConfigManager.a();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
-    this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)paramContext.getSystemService("audio"));
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = BaseApplicationImpl.processName.endsWith(":video");
+    this.a = ((AudioManager)paramContext.getSystemService("audio"));
+    this.b = paramString;
+    this.f = BaseApplicationImpl.processName.endsWith(":video");
   }
   
   public static DeviceSwitchThread a(Context paramContext, String paramString)
@@ -53,31 +50,31 @@ public abstract class DeviceSwitchThread
     Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject1 = jdField_b_of_type_JavaLangString;
+      localObject1 = i;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append("quit thread, mDeviceName[");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append(this.b);
       ((StringBuilder)localObject2).append("]");
       QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    this.jdField_b_of_type_Boolean = false;
+    this.g = false;
     interrupt();
-    if ("DEVICE_BLUETOOTH_HEADSET".equals(this.jdField_a_of_type_JavaLangString))
+    if ("DEVICE_BLUETOOTH_HEADSET".equals(this.b))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentSharpJniBluetoothHelper;
+      localObject1 = this.e;
       if (localObject1 != null) {
-        ((BluetoothHelper)localObject1).jdField_a_of_type_Boolean = true;
+        ((BluetoothHelper)localObject1).a = true;
       }
       c();
     }
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.await(1000L, TimeUnit.MILLISECONDS);
+      this.h.await(1000L, TimeUnit.MILLISECONDS);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      localObject2 = jdField_b_of_type_JavaLangString;
+      localObject2 = i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("wait thread quit exception[");
       localStringBuilder.append(localInterruptedException.getMessage());
@@ -92,15 +89,15 @@ public abstract class DeviceSwitchThread
     {
       if (QLog.isColorLevel())
       {
-        String str = jdField_b_of_type_JavaLangString;
+        String str = i;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("start thread, mDeviceName[");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append(this.b);
         localStringBuilder.append("]");
         QLog.i(str, 2, localStringBuilder.toString());
       }
-      this.jdField_a_of_type_ComTencentSharpJniDeviceSwitchThread$IDeviceConnectStatusListener = paramIDeviceConnectStatusListener;
-      this.jdField_a_of_type_ComTencentSharpJniBluetoothHelper = paramBluetoothHelper;
+      this.d = paramIDeviceConnectStatusListener;
+      this.e = paramBluetoothHelper;
       super.start();
       return;
     }
@@ -111,7 +108,7 @@ public abstract class DeviceSwitchThread
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_b_of_type_JavaLangString;
+      String str = i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setSpeakerPhone, speakerOn[");
       localStringBuilder.append(paramBoolean);
@@ -120,10 +117,10 @@ public abstract class DeviceSwitchThread
     }
     try
     {
-      if (this.jdField_a_of_type_AndroidMediaAudioManager.isSpeakerphoneOn() == paramBoolean) {
+      if (this.a.isSpeakerphoneOn() == paramBoolean) {
         break label76;
       }
-      this.jdField_a_of_type_AndroidMediaAudioManager.setSpeakerphoneOn(paramBoolean);
+      this.a.setSpeakerphoneOn(paramBoolean);
       return;
     }
     catch (NullPointerException localNullPointerException)
@@ -132,18 +129,18 @@ public abstract class DeviceSwitchThread
       label76:
       break label67;
     }
-    QLog.e(jdField_b_of_type_JavaLangString, 1, "setSpeakerphoneOn npe");
+    QLog.e(i, 1, "setSpeakerphoneOn npe");
   }
   
   protected void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "startBluetoothSco");
+      QLog.i(i, 2, "startBluetoothSco");
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(true);
-      this.jdField_a_of_type_AndroidMediaAudioManager.startBluetoothSco();
+      this.a.setBluetoothScoOn(true);
+      this.a.startBluetoothSco();
       return;
     }
     catch (NullPointerException localNullPointerException)
@@ -151,14 +148,14 @@ public abstract class DeviceSwitchThread
       label31:
       break label31;
     }
-    QLog.e(jdField_b_of_type_JavaLangString, 1, "startBluetoothSco npe");
+    QLog.e(i, 1, "startBluetoothSco npe");
   }
   
   protected void b(boolean paramBoolean)
   {
     if (QLog.isColorLevel())
     {
-      String str = jdField_b_of_type_JavaLangString;
+      String str = i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("setWiredHeadset, on[");
       localStringBuilder.append(paramBoolean);
@@ -167,7 +164,7 @@ public abstract class DeviceSwitchThread
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaAudioManager.setWiredHeadsetOn(paramBoolean);
+      this.a.setWiredHeadsetOn(paramBoolean);
       return;
     }
     catch (NullPointerException localNullPointerException)
@@ -175,18 +172,18 @@ public abstract class DeviceSwitchThread
       label56:
       break label56;
     }
-    QLog.e(jdField_b_of_type_JavaLangString, 1, "setWiredHeadset npe");
+    QLog.e(i, 1, "setWiredHeadset npe");
   }
   
   protected void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "stopBluetoothSco");
+      QLog.i(i, 2, "stopBluetoothSco");
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaAudioManager.stopBluetoothSco();
-      this.jdField_a_of_type_AndroidMediaAudioManager.setBluetoothScoOn(false);
+      this.a.stopBluetoothSco();
+      this.a.setBluetoothScoOn(false);
       return;
     }
     catch (NullPointerException localNullPointerException)
@@ -194,24 +191,24 @@ public abstract class DeviceSwitchThread
       label31:
       break label31;
     }
-    QLog.e(jdField_b_of_type_JavaLangString, 1, "stopBluetoothSco npe");
+    QLog.e(i, 1, "stopBluetoothSco npe");
   }
   
   protected void d()
   {
     if (QLog.isColorLevel())
     {
-      localObject = jdField_b_of_type_JavaLangString;
+      localObject = i;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onSwitchSuccess, mDeviceName[");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("]");
       QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
-    this.jdField_a_of_type_ComTencentSharpJniDeviceConfigManager.c(this.jdField_a_of_type_JavaLangString);
-    Object localObject = this.jdField_a_of_type_ComTencentSharpJniDeviceSwitchThread$IDeviceConnectStatusListener;
+    this.c.g(this.b);
+    Object localObject = this.d;
     if (localObject != null) {
-      ((DeviceSwitchThread.IDeviceConnectStatusListener)localObject).a(this.jdField_a_of_type_JavaLangString, 0);
+      ((DeviceSwitchThread.IDeviceConnectStatusListener)localObject).a(this.b, 0);
     }
   }
   
@@ -219,17 +216,17 @@ public abstract class DeviceSwitchThread
   
   public void run()
   {
-    DeviceSwitchThread.IDeviceConnectStatusListener localIDeviceConnectStatusListener = this.jdField_a_of_type_ComTencentSharpJniDeviceSwitchThread$IDeviceConnectStatusListener;
+    DeviceSwitchThread.IDeviceConnectStatusListener localIDeviceConnectStatusListener = this.d;
     if (localIDeviceConnectStatusListener != null) {
-      localIDeviceConnectStatusListener.a(this.jdField_a_of_type_JavaLangString);
+      localIDeviceConnectStatusListener.a(this.b);
     }
     e();
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.h.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.sharp.jni.DeviceSwitchThread
  * JD-Core Version:    0.7.0.1
  */

@@ -24,27 +24,27 @@ public class MoreVideoInfoWidget$GenShareThumbReceiver
   
   public void a(@NonNull MoreVideoInfoWidget paramMoreVideoInfoWidget, @NonNull SendVideoToFriendHelper.GenShareThumbEvent paramGenShareThumbEvent)
   {
-    if (!TextUtils.equals(paramGenShareThumbEvent.b, String.valueOf(paramMoreVideoInfoWidget.hashCode()))) {
+    if (!TextUtils.equals(paramGenShareThumbEvent.c, String.valueOf(paramMoreVideoInfoWidget.hashCode()))) {
       return;
     }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramMoreVideoInfoWidget.a()).a();
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramMoreVideoInfoWidget.d()).r();
     if (localVideoViewVideoHolder != null) {
       localVideoViewVideoHolder.c(false);
     }
-    paramMoreVideoInfoWidget.l();
-    if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    paramMoreVideoInfoWidget.E();
+    if (paramGenShareThumbEvent.g.isSuccess())
     {
-      SLog.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
-      if (paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      SLog.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramGenShareThumbEvent.b);
+      if (paramGenShareThumbEvent.a.mIsPicture == 1)
       {
-        SendVideoToFriendHelper.a().a(paramMoreVideoInfoWidget.b(), paramGenShareThumbEvent.jdField_a_of_type_JavaLangString);
+        SendVideoToFriendHelper.a().a(paramMoreVideoInfoWidget.y(), paramGenShareThumbEvent.b);
         return;
       }
-      SendVideoToFriendHelper.a().a(paramMoreVideoInfoWidget.b(), paramGenShareThumbEvent.jdField_a_of_type_JavaLangString, paramGenShareThumbEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramMoreVideoInfoWidget.hashCode());
+      SendVideoToFriendHelper.a().a(paramMoreVideoInfoWidget.y(), paramGenShareThumbEvent.b, paramGenShareThumbEvent.a, paramMoreVideoInfoWidget.hashCode());
       return;
     }
     SLog.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131706913), 0).a();
+    QQToast.makeText(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131904758), 0).show();
   }
   
   public Class acceptEventClass()

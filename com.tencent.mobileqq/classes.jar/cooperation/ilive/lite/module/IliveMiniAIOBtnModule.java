@@ -16,31 +16,15 @@ public class IliveMiniAIOBtnModule
 {
   private IliveMiniAIOEntryView a;
   
-  private int a()
-  {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
-      return this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
-    }
-    return 0;
-  }
-  
-  private long a()
-  {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
-      return this.roomBizContext.getEnterRoomInfo().roomId;
-    }
-    return 0L;
-  }
-  
   private void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)getRootView().findViewById(2131371045);
-    this.a = new IliveMiniAIOEntryView(this.context, a(), localRelativeLayout, getEvent());
+    RelativeLayout localRelativeLayout = (RelativeLayout)getRootView().findViewById(2131438386);
+    this.a = new IliveMiniAIOEntryView(this.context, d(), localRelativeLayout, getEvent());
   }
   
-  private boolean a()
+  private boolean b()
   {
-    int j = a();
+    int j = c();
     IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
     boolean bool = false;
     int i;
@@ -55,10 +39,26 @@ public class IliveMiniAIOBtnModule
     return bool;
   }
   
+  private int c()
+  {
+    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
+      return this.roomBizContext.getEnterRoomInfo().bootModulesIndex;
+    }
+    return 0;
+  }
+  
+  private long d()
+  {
+    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null)) {
+      return this.roomBizContext.getEnterRoomInfo().roomId;
+    }
+    return 0L;
+  }
+  
   public void onActivityResume(LifecycleOwner paramLifecycleOwner)
   {
     super.onActivityResume(paramLifecycleOwner);
-    if (a()) {
+    if (b()) {
       this.a.d();
     }
   }
@@ -79,7 +79,7 @@ public class IliveMiniAIOBtnModule
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    if (a())
+    if (b())
     {
       this.a.c();
       this.a.d();
@@ -89,14 +89,14 @@ public class IliveMiniAIOBtnModule
   public void onSwitchRoom(SwitchRoomInfo paramSwitchRoomInfo)
   {
     super.onSwitchRoom(paramSwitchRoomInfo);
-    if (a()) {
+    if (b()) {
       this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveMiniAIOBtnModule
  * JD-Core Version:    0.7.0.1
  */

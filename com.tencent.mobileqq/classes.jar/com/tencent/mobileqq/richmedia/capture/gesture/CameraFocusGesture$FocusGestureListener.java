@@ -8,7 +8,7 @@ public abstract interface CameraFocusGesture$FocusGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.gesture.CameraFocusGesture.FocusGestureListener
  * JD-Core Version:    0.7.0.1
  */

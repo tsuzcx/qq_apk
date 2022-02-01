@@ -25,14 +25,30 @@ import org.json.JSONObject;
 public class CommonSkinRes
   extends BaseSkinRes
 {
-  private static int jdField_a_of_type_Int = 0;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static String b;
-  private static String c;
+  private static String a = "";
+  private static JSONObject b;
+  private static int c;
+  private static String d;
+  private static String e;
+  private static List<String> f;
   
-  public static String a()
+  public static String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(c());
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public static String b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(e());
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public static String c()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(AppConstants.SDCARD_PATH);
@@ -40,28 +56,146 @@ public class CommonSkinRes
     return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
   }
   
-  public static String a(String paramString)
+  public static boolean c(String paramString)
+  {
+    return SceneBuilder.a(new File(a(paramString)));
+  }
+  
+  public static String d()
+  {
+    return a(a);
+  }
+  
+  public static String e()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(a());
-    localStringBuilder.append(paramString);
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append(".readInjoy/skin_guide/");
+    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
+  }
+  
+  public static String f()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(d());
+    localStringBuilder.append("/");
+    localStringBuilder.append("refresh");
+    localStringBuilder.append("/");
     return localStringBuilder.toString();
   }
   
-  public static List<String> a()
+  public static JSONObject g()
   {
-    Object localObject = jdField_a_of_type_JavaUtilList;
+    if (b == null) {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(d());
+        localStringBuilder.append("/colors.json");
+        b = new JSONObject(FileUtils.readFileToString(new File(localStringBuilder.toString())));
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
+    }
+    return b;
+  }
+  
+  public static void h()
+  {
+    String str2 = null;
+    String str1 = str2;
+    try
+    {
+      localObject = new StringBuilder();
+      str1 = str2;
+      ((StringBuilder)localObject).append(f());
+      str1 = str2;
+      ((StringBuilder)localObject).append("refreshConfig.json");
+      str1 = str2;
+      str2 = FileUtils.readFileToString(new File(((StringBuilder)localObject).toString()));
+      str1 = str2;
+      localObject = new JSONObject(str2);
+      str1 = str2;
+      c = ((JSONObject)localObject).optInt("refresh_type");
+      str1 = str2;
+      d = ((JSONObject)localObject).optString("voice_path");
+      str1 = str2;
+      e = ((JSONObject)localObject).optString("rain_animate_path");
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("parseRefreshParaJson error json = ");
+      ((StringBuilder)localObject).append(str1);
+      QLog.e("CommonSkinRes", 1, ((StringBuilder)localObject).toString());
+      localJSONException.printStackTrace();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public static int i()
+  {
+    if (c == 0) {
+      h();
+    }
+    return c;
+  }
+  
+  public static String j()
+  {
+    if ((TextUtils.isEmpty(d)) && (c == 0)) {
+      h();
+    }
+    if (!TextUtils.isEmpty(d))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(f());
+      localStringBuilder.append(d);
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  public static String k()
+  {
+    if ((TextUtils.isEmpty(e)) && (c == 0)) {
+      h();
+    }
+    if (!TextUtils.isEmpty(e))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(f());
+      localStringBuilder.append(e);
+      return localStringBuilder.toString();
+    }
+    return null;
+  }
+  
+  public static List<String> l()
+  {
+    Object localObject = f;
     if (localObject != null) {
       return localObject;
     }
-    if (jdField_a_of_type_Int == 0) {
-      a();
+    if (c == 0) {
+      h();
     }
-    int i = jdField_a_of_type_Int;
+    int i = c;
     if (i == 1)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(d());
+      ((StringBuilder)localObject).append(f());
       ((StringBuilder)localObject).append("refreshAnimatePictures");
       ((StringBuilder)localObject).append("/");
       localObject = new File(((StringBuilder)localObject).toString());
@@ -69,7 +203,7 @@ public class CommonSkinRes
     else if (i == 2)
     {
       localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(d());
+      ((StringBuilder)localObject).append(f());
       ((StringBuilder)localObject).append("refreshRandomPictures");
       ((StringBuilder)localObject).append("/");
       localObject = new File(((StringBuilder)localObject).toString());
@@ -93,160 +227,17 @@ public class CommonSkinRes
         }
         i += 1;
       }
-      jdField_a_of_type_JavaUtilList = localArrayList;
+      f = localArrayList;
       return localArrayList;
     }
     return null;
   }
   
-  public static JSONObject a()
-  {
-    if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      try
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(b());
-        localStringBuilder.append("/colors.json");
-        jdField_a_of_type_OrgJsonJSONObject = new JSONObject(FileUtils.readFileToString(new File(localStringBuilder.toString())));
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
-    }
-    return jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public static void a()
-  {
-    String str2 = null;
-    String str1 = str2;
-    try
-    {
-      localObject = new StringBuilder();
-      str1 = str2;
-      ((StringBuilder)localObject).append(d());
-      str1 = str2;
-      ((StringBuilder)localObject).append("refreshConfig.json");
-      str1 = str2;
-      str2 = FileUtils.readFileToString(new File(((StringBuilder)localObject).toString()));
-      str1 = str2;
-      localObject = new JSONObject(str2);
-      str1 = str2;
-      jdField_a_of_type_Int = ((JSONObject)localObject).optInt("refresh_type");
-      str1 = str2;
-      b = ((JSONObject)localObject).optString("voice_path");
-      str1 = str2;
-      c = ((JSONObject)localObject).optString("rain_animate_path");
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("parseRefreshParaJson error json = ");
-      ((StringBuilder)localObject).append(str1);
-      QLog.e("CommonSkinRes", 1, ((StringBuilder)localObject).toString());
-      localJSONException.printStackTrace();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return SceneBuilder.a(new File(a(paramString)));
-  }
-  
-  public static int b()
-  {
-    if (jdField_a_of_type_Int == 0) {
-      a();
-    }
-    return jdField_a_of_type_Int;
-  }
-  
-  public static String b()
-  {
-    return a(jdField_a_of_type_JavaLangString);
-  }
-  
-  public static String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(c());
-    localStringBuilder.append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public static String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(AppConstants.SDCARD_PATH);
-    localStringBuilder.append(".readInjoy/skin_guide/");
-    return VFSAssistantUtils.getSDKPrivatePath(localStringBuilder.toString());
-  }
-  
-  public static String d()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(b());
-    localStringBuilder.append("/");
-    localStringBuilder.append("refresh");
-    localStringBuilder.append("/");
-    return localStringBuilder.toString();
-  }
-  
-  public static String e()
-  {
-    if ((TextUtils.isEmpty(b)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(b))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d());
-      localStringBuilder.append(b);
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
-  public static String f()
-  {
-    if ((TextUtils.isEmpty(c)) && (jdField_a_of_type_Int == 0)) {
-      a();
-    }
-    if (!TextUtils.isEmpty(c))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(d());
-      localStringBuilder.append(c);
-      return localStringBuilder.toString();
-    }
-    return null;
-  }
-  
-  public int a(String paramString)
-  {
-    JSONObject localJSONObject = a();
-    if (localJSONObject == null) {
-      return 0;
-    }
-    return Color.parseColor(localJSONObject.optString(paramString));
-  }
-  
   public Drawable a(Resources paramResources, String paramString1, String paramString2)
   {
     paramResources = new CommonSkinRes.SkinStateListDrawable();
-    paramResources.a = a(paramString1);
-    paramResources.b = a(paramString2);
+    paramResources.a = d(paramString1);
+    paramResources.b = d(paramString2);
     paramString1 = paramResources.b;
     paramResources.addState(new int[] { 16842913 }, paramString1);
     paramString1 = paramResources.b;
@@ -256,10 +247,10 @@ public class CommonSkinRes
     return paramResources;
   }
   
-  public Drawable a(String paramString)
+  public Drawable d(String paramString)
   {
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(b());
+    ((StringBuilder)localObject1).append(d());
     ((StringBuilder)localObject1).append("/");
     ((StringBuilder)localObject1).append(paramString);
     Object localObject2 = ((StringBuilder)localObject1).toString();
@@ -287,7 +278,7 @@ public class CommonSkinRes
       }
     }
     localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = BaseImageUtil.b(paramString.getAbsolutePath());
+    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = BaseImageUtil.c(paramString.getAbsolutePath());
     localObject1 = new ColorDrawable(0);
     ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = ((Drawable)localObject1);
     ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
@@ -310,10 +301,19 @@ public class CommonSkinRes
     label247:
     return new ColorDrawable(0);
   }
+  
+  public int e(String paramString)
+  {
+    JSONObject localJSONObject = g();
+    if (localJSONObject == null) {
+      return 0;
+    }
+    return Color.parseColor(localJSONObject.optString(paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.CommonSkinRes
  * JD-Core Version:    0.7.0.1
  */

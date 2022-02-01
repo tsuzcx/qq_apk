@@ -59,11 +59,11 @@ public class DividerConfigUtils
       if (paramIReadInJoyModel == null) {
         return false;
       }
-      Object localObject = (ReadInJoyBaseAdapter)paramIReadInJoyModel.a();
+      Object localObject = (ReadInJoyBaseAdapter)paramIReadInJoyModel.u();
       if (localObject == null) {
         return false;
       }
-      int j = paramIReadInJoyModel.g();
+      int j = paramIReadInJoyModel.r();
       AbsBaseArticleInfo localAbsBaseArticleInfo = ((ReadInJoyBaseAdapter)localObject).a(j);
       paramIReadInJoyModel = ((ReadInJoyBaseAdapter)localObject).a(j + 1);
       if (localAbsBaseArticleInfo != null)
@@ -140,7 +140,7 @@ public class DividerConfigUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.common.DividerConfigUtils
  * JD-Core Version:    0.7.0.1
  */

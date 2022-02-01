@@ -273,9 +273,9 @@ public class VipFunCallJsPlugin
         }
         try
         {
-          paramString2 = paramJsBridgeListener.mRuntime.a();
+          paramString2 = paramJsBridgeListener.mRuntime.d();
           paramString3 = new Intent(paramString2, VipFunCallPreviewActivity.class);
-          paramString3.putExtra("key_to_uin", paramJsBridgeListener.mRuntime.a().getAccount());
+          paramString3.putExtra("key_to_uin", paramJsBridgeListener.mRuntime.b().getAccount());
           paramString3.putExtra("callId", j);
           paramString3.putExtra("ringId", i);
           paramString3.putExtra("bundle", (Bundle)localObject4);
@@ -326,7 +326,7 @@ public class VipFunCallJsPlugin
                 ((StringBuilder)localObject3).append(k);
                 QLog.d("VipFunCallJsPlugin", 2, ((StringBuilder)localObject3).toString());
               }
-              paramString3 = VipFunCallUtil.a(null, j, VipFunCallUtil.a(), paramString2);
+              paramString3 = VipFunCallUtil.a(null, j, VipFunCallUtil.c(), paramString2);
               i = testResStatus(j, paramString3, ((VipFunCallJsPlugin)localObject1).down_status, ((VipFunCallJsPlugin)localObject1).down_progress, "down_fcVideo");
               if (!QLog.isColorLevel()) {
                 break label3000;
@@ -344,7 +344,7 @@ public class VipFunCallJsPlugin
               if (TextUtils.isEmpty(paramString3))
               {
                 QLog.e("VipFunCallJsPlugin", 1, "startDownload queryDownloadInfo no mediaUrl , fcPath=null.");
-                ((JSONObject)localObject2).put("code", VipFunCallConstants.a);
+                ((JSONObject)localObject2).put("code", VipFunCallConstants.b);
                 ((JSONObject)localObject2).put("errorMessage", "no mediaUrl , fcPath=null");
                 ((VipFunCallJsPlugin)localObject1).callJs(str, new String[] { ((JSONObject)localObject2).toString() });
                 return true;
@@ -366,17 +366,17 @@ public class VipFunCallJsPlugin
                 paramString3.append(i);
                 QLog.d("VipFunCallJsPlugin", 2, paramString3.toString());
               }
-              if (!Utils.a())
+              if (!Utils.b())
               {
                 QLog.e("VipFunCallJsPlugin", 1, "startDownload SDCard not available.");
-                ((JSONObject)localObject2).put("code", VipFunCallConstants.c);
+                ((JSONObject)localObject2).put("code", VipFunCallConstants.d);
                 ((JSONObject)localObject2).put("errorMessage", "no sdcard");
                 paramJsBridgeListener = ((JSONObject)localObject2).toString();
                 callJs(str, new String[] { paramJsBridgeListener });
                 return true;
               }
               paramJsBridgeListener = this;
-              l = Utils.b();
+              l = Utils.c();
               if (l < 1048576)
               {
                 paramString2 = new StringBuilder();
@@ -385,7 +385,7 @@ public class VipFunCallJsPlugin
                 paramString2.append("|available:");
                 paramString2.append(l);
                 QLog.e("VipFunCallJsPlugin", 1, paramString2.toString());
-                ((JSONObject)localObject2).put("code", VipFunCallConstants.b);
+                ((JSONObject)localObject2).put("code", VipFunCallConstants.c);
                 ((JSONObject)localObject2).put("errorMessage", "SDCard is full");
                 paramJsBridgeListener.callJs(str, new String[] { ((JSONObject)localObject2).toString() });
                 return true;
@@ -418,7 +418,7 @@ public class VipFunCallJsPlugin
         if (((VipFunCallJsPlugin)localObject1).down_status.get(j) > 0) {
           break label3009;
         }
-        localObject4 = VipFunCallUtil.a(null, j, VipFunCallUtil.a(), paramString2);
+        localObject4 = VipFunCallUtil.a(null, j, VipFunCallUtil.c(), paramString2);
         localSparseIntArray = ((VipFunCallJsPlugin)localObject1).down_status;
         localObject1 = ((VipFunCallJsPlugin)localObject1).down_progress;
         k = testResStatus(j, (String)localObject4, localSparseIntArray, (SparseIntArray)localObject1, "query_fcVideo");
@@ -439,7 +439,7 @@ public class VipFunCallJsPlugin
           break label3006;
         }
         QLog.e("VipFunCallJsPlugin", 1, "queryDownloadInfo Error no mediaUrl , fcPath=null.");
-        ((JSONObject)localObject2).put("code", VipFunCallConstants.a);
+        ((JSONObject)localObject2).put("code", VipFunCallConstants.b);
         paramJsBridgeListener = new StringBuilder();
         paramJsBridgeListener.append(paramString3);
         paramJsBridgeListener.append(" no mediaUrl , fcPath=null");
@@ -826,7 +826,7 @@ public class VipFunCallJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VipFunCallJsPlugin
  * JD-Core Version:    0.7.0.1
  */

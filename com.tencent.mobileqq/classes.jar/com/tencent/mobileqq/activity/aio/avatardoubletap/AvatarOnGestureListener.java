@@ -72,7 +72,7 @@ public class AvatarOnGestureListener
     }
     if (!NetworkUtil.isNetSupport(((VasAvatar)localObject2).getContext()))
     {
-      QQToast.a(((VasAvatar)localObject2).getContext(), HardCodeUtil.a(2131714684), 0).a();
+      QQToast.makeText(((VasAvatar)localObject2).getContext(), HardCodeUtil.a(2131912193), 0).show();
       return super.onDoubleTap(paramMotionEvent);
     }
     if (((ChatMessage)localObject1).istroop == 0)
@@ -81,14 +81,14 @@ public class AvatarOnGestureListener
     }
     else if (((ChatMessage)localObject1).istroop == 1)
     {
-      if (((TroopGagMgr)localQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(((ChatMessage)localObject1).frienduin, true).a)
+      if (((TroopGagMgr)localQQAppInterface.getManager(QQManagerFactory.TROOP_GAG_MANAGER)).a(((ChatMessage)localObject1).frienduin, true).b)
       {
         if (QLog.isColorLevel()) {
           QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() DisableSendMsg");
         }
         return super.onDoubleTap(paramMotionEvent);
       }
-      if ((!AnonymousChatHelper.a((MessageRecord)localObject1)) && (!AnonymousChatHelper.a().a(((ChatMessage)localObject1).frienduin)))
+      if ((!AnonymousChatHelper.c((MessageRecord)localObject1)) && (!AnonymousChatHelper.a().a(((ChatMessage)localObject1).frienduin)))
       {
         if (localQQAppInterface.getTroopMask(((ChatMessage)localObject1).frienduin) == 3)
         {
@@ -98,12 +98,12 @@ public class AvatarOnGestureListener
           return super.onDoubleTap(paramMotionEvent);
         }
         TroopManager localTroopManager = (TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        TroopInfo localTroopInfo = localTroopManager.a(((ChatMessage)localObject1).frienduin, true);
+        TroopInfo localTroopInfo = localTroopManager.b(((ChatMessage)localObject1).frienduin, true);
         if (localTroopInfo != null)
         {
           if (localTroopInfo.isDisband())
           {
-            QQToast.a(BaseApplicationImpl.getContext(), 0, 2131694689, 0).a();
+            QQToast.makeText(BaseApplicationImpl.getContext(), 0, 2131892381, 0).show();
             if (QLog.isColorLevel()) {
               QLog.d("AvatarOnGestureListener", 2, "onDoubleTap() isDisband");
             }
@@ -137,7 +137,7 @@ public class AvatarOnGestureListener
       QLog.d("AvatarOnGestureListener", 2, localStringBuilder.toString());
     }
     paramMotionEvent = this.a.a();
-    if (paramMotionEvent.a()) {
+    if (paramMotionEvent.b()) {
       paramMotionEvent.performLongClick();
     }
   }
@@ -161,7 +161,7 @@ public class AvatarOnGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.AvatarOnGestureListener
  * JD-Core Version:    0.7.0.1
  */

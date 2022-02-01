@@ -11,19 +11,18 @@ import mqq.os.MqqHandler;
 
 public class DetailFeedAllInfoPuller
 {
-  private DetailFeedAllInfoPuller.OnFeedItemPullListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$OnFeedItemPullListener;
-  private DetailFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem = new DetailFeedItem();
-  private Stream<DetailFeedItem> jdField_a_of_type_ComTribeAsyncReactiveStream;
-  private String jdField_a_of_type_JavaLangString;
-  protected boolean a;
-  private boolean b = true;
+  protected boolean a = true;
+  private String b;
+  private DetailFeedAllInfoPuller.OnFeedItemPullListener c;
+  private Stream<DetailFeedItem> d;
+  private DetailFeedItem e = new DetailFeedItem();
+  private boolean f = true;
   
   public DetailFeedAllInfoPuller(@NonNull String paramString, @NonNull DetailFeedAllInfoPuller.OnFeedItemPullListener paramOnFeedItemPullListener, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPuller$OnFeedItemPullListener = paramOnFeedItemPullListener;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramString;
+    this.c = paramOnFeedItemPullListener;
+    this.a = paramBoolean;
   }
   
   private void a(DetailFeedItem paramDetailFeedItem, boolean paramBoolean, ErrorMessage paramErrorMessage)
@@ -38,20 +37,20 @@ public class DetailFeedAllInfoPuller
   
   public void b()
   {
-    Stream localStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream;
+    Stream localStream = this.d;
     if (localStream != null) {
       localStream.cancel();
     }
-    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new DetailFeedAllInfoPuller.FeedItemPullSegment(this, this.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new DetailFeedAllInfoPullSegment());
+    this.d = Stream.of(this.b).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new DetailFeedAllInfoPuller.FeedItemPullSegment(this, this.b));
+    if (this.a) {
+      this.d = this.d.map(new DetailFeedAllInfoPullSegment());
     }
-    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new DetailFeedAllInfoPuller.RequestFeedObserver(this));
+    this.d.subscribe(new DetailFeedAllInfoPuller.RequestFeedObserver(this));
   }
   
   public void c()
   {
-    Stream localStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream;
+    Stream localStream = this.d;
     if (localStream != null) {
       localStream.cancel();
     }

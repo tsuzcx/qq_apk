@@ -13,29 +13,29 @@ class JumpActionLegacy$9
   
   public void run()
   {
-    String str = FileUtils.saveFileUriToFile(this.this$0.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "opensdk_tmp");
-    QLog.d("JumpAction", 1, new Object[] { "-->executeOnSubThread shareFilePath=", str, ", cost=", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    this.this$0.jdField_a_of_type_JavaUtilHashMap.remove(this.b);
+    String str = FileUtils.saveFileUriToFile(this.this$0.b, this.a, "opensdk_tmp");
+    QLog.d("JumpAction", 1, new Object[] { "-->executeOnSubThread shareFilePath=", str, ", cost=", Long.valueOf(System.currentTimeMillis() - this.b) });
+    this.this$0.f.remove(this.c);
     if (!TextUtils.isEmpty(str)) {
       try
       {
         str = new String(Base64Util.encode(str.getBytes("UTF-8"), 0));
-        this.this$0.jdField_a_of_type_JavaUtilHashMap.put(this.c, str);
+        this.this$0.f.put(this.d, str);
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         QLog.i("JumpAction", 1, "executeOnSubThread put exception:", localUnsupportedEncodingException);
       }
     }
-    this.jdField_a_of_type_JavaLangRunnable.run();
-    if ((!this.this$0.f) && ((this.this$0.jdField_a_of_type_AndroidContentContext instanceof JumpActivity))) {
-      ((JumpActivity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
+    this.e.run();
+    if ((!this.this$0.v) && ((this.this$0.b instanceof JumpActivity))) {
+      ((JumpActivity)this.this$0.b).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.utils.JumpActionLegacy.9
  * JD-Core Version:    0.7.0.1
  */

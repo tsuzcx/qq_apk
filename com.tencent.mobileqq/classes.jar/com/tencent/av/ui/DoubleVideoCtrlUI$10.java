@@ -12,20 +12,20 @@ class DoubleVideoCtrlUI$10
   
   public void run()
   {
-    if (!this.this$0.h())
+    if (!this.this$0.V())
     {
-      Object localObject = this.this$0.jdField_a_of_type_ComTencentAvVideoController.a();
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a(((SessionInfo)localObject).c, 239);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(239);
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.b(((SessionInfo)localObject).c, 9);
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), ((SessionInfo)localObject).c, Boolean.valueOf(true) });
-      localObject = this.this$0.d;
+      Object localObject = this.this$0.am.k();
+      this.this$0.am.a(((SessionInfo)localObject).s, 239);
+      this.this$0.am.b(239);
+      this.this$0.am.b(((SessionInfo)localObject).s, 9);
+      this.this$0.al.a(new Object[] { Integer.valueOf(28), ((SessionInfo)localObject).s, Boolean.valueOf(true) });
+      localObject = this.this$0.X;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onCreate, exit when OnCreate, seq[");
       localStringBuilder.append(this.a);
       localStringBuilder.append("]");
       QLog.w((String)localObject, 1, localStringBuilder.toString());
-      this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a, 1008);
+      this.this$0.al.a(this.a, 1008);
     }
   }
 }

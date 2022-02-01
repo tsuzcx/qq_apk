@@ -1,7 +1,7 @@
 package com.tencent.vas.update.util;
 
 import android.text.TextUtils;
-import com.tencent.vas.update.callback.IVasLog;
+import com.tencent.vas.update.factory.api.IVasLog;
 import com.tencent.vas.update.wrapper.VasUpdateWrapper;
 
 public class CommonUtil
@@ -43,7 +43,7 @@ public class CommonUtil
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("sParseBidId error itemId = ");
       localStringBuilder.append(paramString);
-      localIVasLog.e("VasUpdate_", localStringBuilder.toString(), localThrowable);
+      localIVasLog.a("VasUpdate_", localStringBuilder.toString(), localThrowable);
     }
     return 0L;
   }
@@ -65,14 +65,14 @@ public class CommonUtil
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("sParseScid error itemId = ");
       localStringBuilder.append(paramString);
-      localIVasLog.e("VasUpdate_", localStringBuilder.toString(), localThrowable);
+      localIVasLog.a("VasUpdate_", localStringBuilder.toString(), localThrowable);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.vas.update.util.CommonUtil
  * JD-Core Version:    0.7.0.1
  */

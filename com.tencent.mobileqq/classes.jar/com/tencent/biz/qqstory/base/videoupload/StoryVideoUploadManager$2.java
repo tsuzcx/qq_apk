@@ -51,33 +51,33 @@ final class StoryVideoUploadManager$2
     SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add share group fail:%b", new Object[] { Boolean.valueOf(bool2) });
     paramAddGroupVideoRequest = new StoryVideoUploadManager.StoryVideoPublishStatusEvent(false);
     paramAddGroupVideoRequest.b = false;
-    paramAddGroupVideoRequest.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    paramAddGroupVideoRequest.f = new ArrayList(1);
     paramErrorMessage = new StoryVideoUploadManager.ShareGroupFakeItem();
-    paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem;
+    paramErrorMessage.a = this.a;
     Object localObject2;
     if (!bool2)
     {
       localObject1 = (AddGroupVideoResponse.AddGroupFeed)paramAddGroupVideoResponse.a().get(0);
-      localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem;
+      localObject2 = this.a;
       if (((localObject2 instanceof ShareGroupFeedItem)) && (((VideoListFeedItem)localObject2).feedId.equals(((AddGroupVideoResponse.AddGroupFeed)localObject1).b)))
       {
-        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+        paramErrorMessage.b = ((ShareGroupFeedItem)this.a);
       }
       else
       {
-        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = new ShareGroupFeedItem();
-        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.copy(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
-        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId = ((AddGroupVideoResponse.AddGroupFeed)localObject1).b;
-        if (paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount == 0) {
-          paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.videoCount = 1;
+        paramErrorMessage.b = new ShareGroupFeedItem();
+        paramErrorMessage.b.copy(paramErrorMessage.a);
+        paramErrorMessage.b.feedId = ((AddGroupVideoResponse.AddGroupFeed)localObject1).b;
+        if (paramErrorMessage.b.videoCount == 0) {
+          paramErrorMessage.b.videoCount = 1;
         }
         AssertUtils.checkNotEmpty(((AddGroupVideoResponse.AddGroupFeed)localObject1).b);
         localObject1 = (FeedManager)SuperManager.a(11);
-        paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)((FeedManager)localObject1).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem));
-        ((FeedManager)localObject1).a(paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.ownerId, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.date, paramErrorMessage.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId);
+        paramErrorMessage.b = ((ShareGroupFeedItem)((FeedManager)localObject1).a(paramErrorMessage.b));
+        ((FeedManager)localObject1).a(paramErrorMessage.b.ownerId, paramErrorMessage.b.date, paramErrorMessage.b.feedId);
       }
     }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    Object localObject1 = this.b.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (StoryVideoItem)((Iterator)localObject1).next();
@@ -89,14 +89,14 @@ final class StoryVideoUploadManager$2
       }
       ((StoryVideoItem)localObject2).mUploadStatus = i;
       StoryVideoUploadManager.OneVideoInfo localOneVideoInfo = new StoryVideoUploadManager.OneVideoInfo();
-      localOneVideoInfo.a = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a((StoryVideoItem)localObject2);
-      paramErrorMessage.jdField_a_of_type_JavaUtilArrayList.add(localOneVideoInfo);
+      localOneVideoInfo.a = this.c.a((StoryVideoItem)localObject2);
+      paramErrorMessage.c.add(localOneVideoInfo);
       if (!bool2)
       {
         StoryVideoItem localStoryVideoItem = new StoryVideoItem();
         localStoryVideoItem.copy(localObject2);
         List localList = paramAddGroupVideoResponse.a();
-        localStoryVideoItem.mVid = ((String)((AddGroupVideoResponse.AddGroupFeed)localList.get(0)).a.get(((StoryVideoItem)localObject2).sourceVid));
+        localStoryVideoItem.mVid = ((String)((AddGroupVideoResponse.AddGroupFeed)localList.get(0)).c.get(((StoryVideoItem)localObject2).sourceVid));
         localStoryVideoItem.mVideoIndex = 0L;
         if (TextUtils.isEmpty(localStoryVideoItem.mVid))
         {
@@ -104,17 +104,17 @@ final class StoryVideoUploadManager$2
           AssertUtils.checkNotEmpty(localStoryVideoItem.mVid);
           localStoryVideoItem.mVid = StoryVideoItem.makeFakeVid();
         }
-        localOneVideoInfo.b = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(localStoryVideoItem);
+        localOneVideoInfo.b = this.c.a(localStoryVideoItem);
       }
     }
-    paramAddGroupVideoRequest.jdField_a_of_type_JavaUtilArrayList.add(paramErrorMessage);
+    paramAddGroupVideoRequest.f.add(paramErrorMessage);
     StoryDispatcher.a().dispatch(paramAddGroupVideoRequest);
     SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add shareGroup video return: %s", new Object[] { paramAddGroupVideoRequest });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.2
  * JD-Core Version:    0.7.0.1
  */

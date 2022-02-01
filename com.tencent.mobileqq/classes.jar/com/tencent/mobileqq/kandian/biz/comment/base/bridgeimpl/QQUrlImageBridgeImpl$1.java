@@ -14,15 +14,15 @@ class QQUrlImageBridgeImpl$1
   
   public void a(ImageRequest paramImageRequest, ICloseableBitmap paramICloseableBitmap)
   {
-    paramImageRequest = this.jdField_a_of_type_ComTencentTkdCommentPublisherQqBridgeQQUrlImageBridge$Callback;
+    paramImageRequest = this.a;
     if (paramImageRequest != null) {
-      paramImageRequest.onSuccess(paramICloseableBitmap.a());
+      paramImageRequest.onSuccess(paramICloseableBitmap.b());
     }
   }
   
   public void a(ImageRequest paramImageRequest, Throwable paramThrowable)
   {
-    paramImageRequest = this.jdField_a_of_type_ComTencentTkdCommentPublisherQqBridgeQQUrlImageBridge$Callback;
+    paramImageRequest = this.a;
     if (paramImageRequest != null) {
       paramImageRequest.onFail();
     }
@@ -30,7 +30,7 @@ class QQUrlImageBridgeImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.comment.base.bridgeimpl.QQUrlImageBridgeImpl.1
  * JD-Core Version:    0.7.0.1
  */

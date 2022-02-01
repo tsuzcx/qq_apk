@@ -3,11 +3,14 @@ package com.tencent.mobileqq.mini.launch;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
+import com.tencent.mobileqq.mini.api.IMiniCallback;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
@@ -229,7 +232,6 @@ public class MiniSdkLauncher
       if (localMiniAppInfo != null)
       {
         localMiniAppInfo.baseLibInfo = convertBaselibInfo(paramMiniAppConfig.baseLibInfo);
-        localMiniAppInfo.forceReroad = paramMiniAppConfig.forceReroad;
         if (paramMiniAppConfig.launchParam != null)
         {
           localMiniAppInfo.launchParam.scene = paramMiniAppConfig.launchParam.scene;
@@ -252,6 +254,9 @@ public class MiniSdkLauncher
           localMiniAppInfo.launchParam.fromMiniAppInfo = convert(paramMiniAppConfig.launchParam.fromMiniAppInfo);
           localMiniAppInfo.launchParam.tempState = paramMiniAppConfig.launchParam.tempState;
           localMiniAppInfo.launchParam.privateExtraData = paramMiniAppConfig.launchParam.privateExtraData;
+          localMiniAppInfo.launchParam.fileMaterialInfoList = paramMiniAppConfig.launchParam.fileMaterialInfoList;
+          localMiniAppInfo.launchParam.forceReload = paramMiniAppConfig.launchParam.forceReload;
+          localMiniAppInfo.launchParam.skipHotReload = paramMiniAppConfig.launchParam.skipHotReload;
         }
         if (paramMiniAppConfig.isFromShowInfo)
         {
@@ -509,7 +514,7 @@ public class MiniSdkLauncher
       localObject = paramString.optString("ver");
       String str = paramString.optString("minjs");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString.putOpt("app_version", "8.7.0.5295");
+        paramString.putOpt("app_version", "8.8.17.5770");
       }
       MiniDynamicManager.g().updateDexConfig(paramString.toString());
       if (!TextUtils.isEmpty(str))
@@ -522,6 +527,14 @@ public class MiniSdkLauncher
     {
       QLog.e("MiniSdkLauncher", 1, "", paramString);
     }
+  }
+  
+  public static void preDownloadPkg(Context paramContext, MiniAppConfig paramMiniAppConfig, IMiniCallback paramIMiniCallback)
+  {
+    if (!sSdkInited) {
+      initSDK(paramContext);
+    }
+    MiniSDK.preDownloadPkg(paramContext, convert(paramMiniAppConfig), new MiniSdkLauncher.3(ThreadManager.getUIHandlerV2(), paramIMiniCallback));
   }
   
   public static void preLaunchMiniApp(Context paramContext, MiniAppConfig paramMiniAppConfig)
@@ -610,7 +623,7 @@ public class MiniSdkLauncher
             if (shouldForbidLowPerf()) {
               return;
             }
-            ThreadManagerV2.executeOnSubThread(new MiniSdkLauncher.1());
+            ThreadManagerV2.executeOnSubThread(new MiniSdkLauncher.2());
             return;
           }
           return;
@@ -632,15 +645,15 @@ public class MiniSdkLauncher
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 854	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:sSdkInited	Z
+    //   3: getstatic 862	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:sSdkInited	Z
     //   6: ifne +11 -> 17
     //   9: iconst_1
-    //   10: putstatic 854	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:sSdkInited	Z
+    //   10: putstatic 862	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:sSdkInited	Z
     //   13: aload_0
-    //   14: invokestatic 951	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:initSDK	(Landroid/content/Context;)V
+    //   14: invokestatic 950	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:initSDK	(Landroid/content/Context;)V
     //   17: iload_1
     //   18: ifeq +96 -> 114
-    //   21: invokestatic 981	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:enableFlutter	()Z
+    //   21: invokestatic 1005	com/tencent/mobileqq/mini/launch/MiniSdkLauncher:enableFlutter	()Z
     //   24: istore_1
     //   25: iconst_0
     //   26: istore_3
@@ -650,60 +663,60 @@ public class MiniSdkLauncher
     //   30: ifeq +27 -> 57
     //   33: iload_3
     //   34: istore_2
-    //   35: invokestatic 986	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:getNativeLibDir	()Ljava/lang/String;
-    //   38: invokestatic 892	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   35: invokestatic 1010	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:getNativeLibDir	()Ljava/lang/String;
+    //   38: invokestatic 900	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   41: ifne +16 -> 57
     //   44: iload_3
     //   45: istore_2
-    //   46: invokestatic 986	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:getNativeLibDir	()Ljava/lang/String;
-    //   49: invokestatic 990	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:verifyTissueEngine	(Ljava/lang/String;)Z
+    //   46: invokestatic 1010	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:getNativeLibDir	()Ljava/lang/String;
+    //   49: invokestatic 1014	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:verifyTissueEngine	(Ljava/lang/String;)Z
     //   52: ifeq +5 -> 57
     //   55: iconst_1
     //   56: istore_2
-    //   57: new 958	android/os/Bundle
+    //   57: new 982	android/os/Bundle
     //   60: dup
-    //   61: invokespecial 959	android/os/Bundle:<init>	()V
+    //   61: invokespecial 983	android/os/Bundle:<init>	()V
     //   64: astore 4
     //   66: aload 4
-    //   68: ldc_w 961
-    //   71: ldc_w 963
-    //   74: invokevirtual 967	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   68: ldc_w 985
+    //   71: ldc_w 987
+    //   74: invokevirtual 991	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   77: aload 4
-    //   79: ldc_w 975
+    //   79: ldc_w 999
     //   82: iconst_1
-    //   83: invokevirtual 979	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   83: invokevirtual 1003	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
     //   86: iload_1
     //   87: ifeq +18 -> 105
     //   90: iload_2
     //   91: ifeq +14 -> 105
     //   94: aload 4
-    //   96: ldc_w 992
-    //   99: invokestatic 986	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:getNativeLibDir	()Ljava/lang/String;
-    //   102: invokevirtual 967	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: ldc_w 1016
+    //   99: invokestatic 1010	com/tencent/mobileqq/mini/tissue/TissueEnvImpl:getNativeLibDir	()Ljava/lang/String;
+    //   102: invokevirtual 991	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   105: aload_0
     //   106: aload 4
-    //   108: invokestatic 996	com/tencent/qqmini/sdk/MiniSDK:preloadMiniApp	(Landroid/content/Context;Landroid/os/Bundle;)V
+    //   108: invokestatic 1020	com/tencent/qqmini/sdk/MiniSDK:preloadMiniApp	(Landroid/content/Context;Landroid/os/Bundle;)V
     //   111: goto +47 -> 158
-    //   114: new 958	android/os/Bundle
+    //   114: new 982	android/os/Bundle
     //   117: dup
-    //   118: invokespecial 959	android/os/Bundle:<init>	()V
+    //   118: invokespecial 983	android/os/Bundle:<init>	()V
     //   121: astore 4
     //   123: aload 4
-    //   125: ldc_w 961
-    //   128: ldc_w 1034
-    //   131: invokevirtual 967	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+    //   125: ldc_w 985
+    //   128: ldc_w 1058
+    //   131: invokevirtual 991	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   134: aload_0
     //   135: aload 4
-    //   137: invokestatic 996	com/tencent/qqmini/sdk/MiniSDK:preloadMiniApp	(Landroid/content/Context;Landroid/os/Bundle;)V
+    //   137: invokestatic 1020	com/tencent/qqmini/sdk/MiniSDK:preloadMiniApp	(Landroid/content/Context;Landroid/os/Bundle;)V
     //   140: goto +18 -> 158
     //   143: astore_0
     //   144: goto +18 -> 162
     //   147: astore_0
     //   148: ldc 8
     //   150: iconst_1
-    //   151: ldc_w 998
+    //   151: ldc_w 1022
     //   154: aload_0
-    //   155: invokestatic 938	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   155: invokestatic 946	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   158: ldc 2
     //   160: monitorexit
     //   161: return
@@ -741,7 +754,7 @@ public class MiniSdkLauncher
   
   private static boolean shouldForbidLowPerf()
   {
-    int i = DeviceInfoUtils.a();
+    int i = DeviceInfoUtils.getPerfLevel();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("shouldForbidLowPerf ");
     localStringBuilder.append(i);
@@ -761,13 +774,28 @@ public class MiniSdkLauncher
       if (paramMiniAppConfig.config == null) {
         return;
       }
+      Object localObject;
+      if (paramMiniAppConfig.launchParam != null) {
+        localObject = String.valueOf(paramMiniAppConfig.launchParam.scene);
+      } else {
+        localObject = "";
+      }
+      if (MiniAppStartUtils.shouldInterceptStartMiniApp(paramMiniAppConfig.config.appId, (String)localObject))
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("study mode, can't start in current scene = ");
+        paramActivity.append((String)localObject);
+        QLog.i("MiniSdkLauncher", 1, paramActivity.toString());
+        ThreadManagerV2.getUIHandlerV2().post(new MiniSdkLauncher.1());
+        return;
+      }
       if (paramActivity != null) {}
       try
       {
-        Object localObject = paramActivity.getApplicationContext();
-        break label30;
+        localObject = paramActivity.getApplicationContext();
+        break label120;
         localObject = BaseApplicationImpl.getApplication();
-        label30:
+        label120:
         if (!sSdkInited)
         {
           sSdkInited = true;
@@ -785,7 +813,7 @@ public class MiniSdkLauncher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.MiniSdkLauncher
  * JD-Core Version:    0.7.0.1
  */

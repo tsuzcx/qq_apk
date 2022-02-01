@@ -22,7 +22,7 @@ final class SimpleMessageDialog$$special$$inlined$with$lambda$1
   
   public final void invoke(int paramInt)
   {
-    SimpleMessageDialog.a(this.this$0).setText((CharSequence)String.valueOf(this.this$0.a() - paramInt));
+    SimpleMessageDialog.b(this.this$0).setText((CharSequence)String.valueOf(this.this$0.a() - paramInt));
     Editable localEditable = SimpleMessageDialog.a(this.this$0).getText();
     Intrinsics.checkExpressionValueIsNotNull(localEditable, "contentView.text");
     boolean bool;
@@ -36,7 +36,7 @@ final class SimpleMessageDialog$$special$$inlined$with$lambda$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes20.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.dialog.SimpleMessageDialog..special..inlined.with.lambda.1
  * JD-Core Version:    0.7.0.1
  */

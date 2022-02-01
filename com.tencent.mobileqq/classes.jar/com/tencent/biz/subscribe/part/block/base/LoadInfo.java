@@ -7,34 +7,21 @@ import com.tencent.mobileqq.util.SharePreferenceUtils;
 
 public class LoadInfo
 {
-  private volatile int jdField_a_of_type_Int = 4;
-  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  private String jdField_a_of_type_JavaLangString = null;
-  private volatile boolean jdField_a_of_type_Boolean = true;
-  private String b = null;
-  private String c;
-  
-  public COMM.StCommonExt a()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public String a()
-  {
-    if (this.c == null) {
-      this.c = SharePreferenceUtils.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
-    }
-    return this.c;
-  }
+  private volatile boolean a = true;
+  private volatile int b = 4;
+  private String c = null;
+  private String d = null;
+  private COMM.StCommonExt e;
+  private String f;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void a(COMM.StCommonExt paramStCommonExt)
   {
-    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+    this.e = paramStCommonExt;
   }
   
   public void a(String paramString)
@@ -42,30 +29,17 @@ public class LoadInfo
     if (paramString != null) {
       SharePreferenceUtils.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
     }
-    this.c = paramString;
+    this.f = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a = paramBoolean;
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public COMM.StCommonExt b()
-  {
-    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
-  }
-  
-  public String b()
-  {
-    if (this.b == null) {
-      this.b = SharePreferenceUtils.a(BaseApplicationImpl.getContext(), "subscribe_ad_livePageInfo_cache");
-    }
-    return this.b;
+    return this.a;
   }
   
   public void b(String paramString)
@@ -73,33 +47,59 @@ public class LoadInfo
     if (paramString != null) {
       SharePreferenceUtils.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
     }
-    this.b = paramString;
+    this.d = paramString;
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    this.a = false;
   }
   
   public boolean b()
   {
-    return this.jdField_a_of_type_Int != 4;
+    return this.b != 4;
   }
   
   public boolean c()
   {
-    return this.jdField_a_of_type_Int == 1;
+    return this.b == 1;
   }
   
   public boolean d()
   {
-    return this.jdField_a_of_type_Int == 2;
+    return this.b == 2;
   }
   
   public boolean e()
   {
-    return this.jdField_a_of_type_Int == 3;
+    return this.b == 3;
+  }
+  
+  public COMM.StCommonExt f()
+  {
+    return this.e;
+  }
+  
+  public COMM.StCommonExt g()
+  {
+    return this.e;
+  }
+  
+  public String h()
+  {
+    if (this.f == null) {
+      this.f = SharePreferenceUtils.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
+    }
+    return this.f;
+  }
+  
+  public String i()
+  {
+    if (this.d == null) {
+      this.d = SharePreferenceUtils.a(BaseApplicationImpl.getContext(), "subscribe_ad_livePageInfo_cache");
+    }
+    return this.d;
   }
 }
 

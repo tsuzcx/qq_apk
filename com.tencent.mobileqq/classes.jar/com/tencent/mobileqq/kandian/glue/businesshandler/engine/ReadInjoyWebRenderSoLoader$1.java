@@ -32,7 +32,7 @@ final class ReadInjoyWebRenderSoLoader$1
       }
       if (TextUtils.isEmpty(str))
       {
-        ReadInjoyWebRenderSoLoader.a();
+        ReadInjoyWebRenderSoLoader.c();
         break label290;
       }
       localObject = new JSONObject(str);
@@ -83,7 +83,7 @@ final class ReadInjoyWebRenderSoLoader$1
         ((StringBuilder)localObject).append(bool);
         QLog.e("viola.ReadInjoyWebRenderSoLoader", 2, ((StringBuilder)localObject).toString());
       }
-      ReadInjoyWebRenderSoLoader.a();
+      ReadInjoyWebRenderSoLoader.c();
       if (i != 0)
       {
         i = 0;
@@ -104,17 +104,17 @@ final class ReadInjoyWebRenderSoLoader$1
           QLog.e("viola.ReadInjoyWebRenderSoLoader", 2, ((StringBuilder)localObject).toString());
         }
       }
-      ReadInjoyWebRenderSoLoader.b();
+      ReadInjoyWebRenderSoLoader.d();
       ReadInJoyWebRenderEngine.a("viola.ReadInjoyWebRenderSoLoader", this.a);
       return;
-      ReadInjoyWebRenderSoLoader.a();
-      ReadInjoyWebRenderSoLoader.b();
+      ReadInjoyWebRenderSoLoader.c();
+      ReadInjoyWebRenderSoLoader.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.glue.businesshandler.engine.ReadInjoyWebRenderSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

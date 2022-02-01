@@ -21,31 +21,43 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AudioExportRunner
   implements Runnable
 {
-  static final int EDGE_DURATION_MS = 200;
+  private static final int EDGE_DURATION_MS = 200;
   private static final int MAX_INPUT_SIZE = 8192;
-  private static String MIME = "audio/mp4a-latm";
+  private static final String MIME = "audio/mp4a-latm";
   static final int PACKET_FPS = 44;
-  public static final String TAG = "AudioEncoder";
   private static final long WAIT_TRANSIENT_MS = 20L;
-  private boolean enOfAudioInputStream = false;
+  private final String TAG;
+  private boolean enOfAudioInputStream;
   IAudioSource<? extends IDecoderTrack> mAudioAsset;
-  IDecoderTrack mAudioDecoder;
+  private IDecoderTrack mAudioDecoder;
   private MediaCodec mAudioEncoder;
   private ExportCallback mCallback;
-  private boolean mCancel = false;
-  private int mChannelCount = 1;
+  private boolean mCancel;
+  private int mChannelCount;
   private FileOutputStream mFos;
-  private String mMime = MIME;
-  private int mRate = 128000;
-  private int mSampleRate = 44100;
+  private String mMime;
+  private int mRate;
+  private int mSampleRate;
   private String mSavePath;
   CMTimeRange mSelectedTimeRange;
-  private int mStatus = 0;
-  private AtomicBoolean mStop = new AtomicBoolean(false);
+  private int mStatus;
+  private AtomicBoolean mStop;
   private Thread mThread;
   
   AudioExportRunner(@NonNull IAudioSource<? extends IDecoderTrack> paramIAudioSource, @Nullable CMTimeRange paramCMTimeRange)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioExportRunner@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
+    this.mMime = "audio/mp4a-latm";
+    this.mRate = 128000;
+    this.mSampleRate = 44100;
+    this.mChannelCount = 1;
+    this.mStatus = 0;
+    this.mStop = new AtomicBoolean(false);
+    this.mCancel = false;
+    this.enOfAudioInputStream = false;
     this.mAudioAsset = paramIAudioSource;
     if (paramCMTimeRange == null)
     {
@@ -72,11 +84,12 @@ public class AudioExportRunner
       return i;
     }
     catch (Error localError) {}catch (Exception localException) {}
-    Logger.e("AudioEncoder", "dequeueInputBuffer e = ", localException);
+    Logger.e(this.TAG, "dequeueInputBuffer e = ", localException);
     if ((21 <= Build.VERSION.SDK_INT) && ((localException instanceof MediaCodec.CodecException)))
     {
       if (23 <= Build.VERSION.SDK_INT)
       {
+        String str = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("CodecException - isTransient = ");
         MediaCodec.CodecException localCodecException = (MediaCodec.CodecException)localException;
@@ -85,7 +98,7 @@ public class AudioExportRunner
         localStringBuilder.append(localCodecException.isRecoverable());
         localStringBuilder.append(" , errorCode = ");
         localStringBuilder.append(localCodecException.getErrorCode());
-        Logger.e("AudioEncoder", localStringBuilder.toString());
+        Logger.e(str, localStringBuilder.toString());
       }
       if (((MediaCodec.CodecException)localException).isTransient()) {
         return dequeueInputBuffer(paramMediaCodec);
@@ -128,13 +141,13 @@ public class AudioExportRunner
     }
     catch (Throwable localThrowable)
     {
-      Logger.e("AudioEncoder", "initAudioDecoder: ", localThrowable);
+      Logger.e(this.TAG, "initAudioDecoder: ", localThrowable);
     }
   }
   
   private void initAudioEncoder()
   {
-    MediaFormat localMediaFormat = MediaFormat.createAudioFormat(MIME, this.mSampleRate, this.mChannelCount);
+    MediaFormat localMediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", this.mSampleRate, this.mChannelCount);
     localMediaFormat.setInteger("aac-profile", 2);
     localMediaFormat.setInteger("bitrate", this.mRate);
     localMediaFormat.setInteger("max-input-size", 8192);
@@ -173,11 +186,12 @@ public class AudioExportRunner
       return;
     }
     catch (Error localError) {}catch (Exception localException) {}
-    Logger.e("AudioEncoder", "queueInputBuffer", localException);
+    Logger.e(this.TAG, "queueInputBuffer", localException);
     if ((Build.VERSION.SDK_INT >= 21) && ((localException instanceof MediaCodec.CodecException)))
     {
       if (Build.VERSION.SDK_INT >= 23)
       {
+        String str = this.TAG;
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("CodecException - isTransient = ");
         MediaCodec.CodecException localCodecException = (MediaCodec.CodecException)localException;
@@ -186,7 +200,7 @@ public class AudioExportRunner
         localStringBuilder.append(localCodecException.isRecoverable());
         localStringBuilder.append(" , errorCode = ");
         localStringBuilder.append(localCodecException.getErrorCode());
-        Logger.e("AudioEncoder", localStringBuilder.toString());
+        Logger.e(str, localStringBuilder.toString());
       }
       if (((MediaCodec.CodecException)localException).isTransient())
       {
@@ -201,11 +215,10 @@ public class AudioExportRunner
   {
     Object localObject = this.mAudioDecoder.readSample();
     CMTime localCMTime = ((CMSampleBuffer)localObject).getTime();
-    int i;
     if ((localCMTime.value > 0L) && (localCMTime.getTimeUs() <= this.mSelectedTimeRange.getEndUs()))
     {
       localObject = ((CMSampleBuffer)localObject).getSampleByteBuffer();
-      i = ((ByteBuffer)localObject).limit() - ((ByteBuffer)localObject).position();
+      int i = ((ByteBuffer)localObject).limit() - ((ByteBuffer)localObject).position();
       byte[] arrayOfByte = new byte[i];
       ((ByteBuffer)localObject).get(arrayOfByte);
       writeAudioSample(localCMTime, i, arrayOfByte);
@@ -218,18 +231,15 @@ public class AudioExportRunner
       this.enOfAudioInputStream = true;
     }
     if (l < -1L) {
-      i = 255;
-    } else {
-      i = this.mStatus;
+      this.mStatus = 255;
     }
-    this.mStatus = i;
   }
   
   private void signalEndOfAudioStream()
   {
     try
     {
-      Logger.d("AudioEncoder", "signalEndOfAudioStream: ");
+      Logger.d(this.TAG, "signalEndOfAudioStream: ");
       int i = dequeueInputBuffer(this.mAudioEncoder);
       if (i >= 0)
       {
@@ -239,7 +249,7 @@ public class AudioExportRunner
     }
     catch (Throwable localThrowable)
     {
-      Logger.e("AudioEncoder", "signalEndOfAudioStream failed", localThrowable);
+      Logger.e(this.TAG, "signalEndOfAudioStream failed", localThrowable);
     }
   }
   
@@ -260,7 +270,7 @@ public class AudioExportRunner
         }
         catch (Exception localException)
         {
-          Logger.e("AudioEncoder", "stop: ", localException);
+          Logger.e(this.TAG, "stop: ", localException);
         }
       }
       this.mCancel = false;
@@ -278,7 +288,7 @@ public class AudioExportRunner
     }
     catch (InterruptedException localInterruptedException)
     {
-      Logger.e("AudioEncoder", "waitTime: ", localInterruptedException);
+      Logger.e(this.TAG, "waitTime: ", localInterruptedException);
     }
   }
   
@@ -297,31 +307,33 @@ public class AudioExportRunner
     do
     {
       i = this.mAudioEncoder.dequeueOutputBuffer(localBufferInfo, 0L);
+      Object localObject2;
       Object localObject1;
       if ((i >= 0) && (isValidBuffer(localBufferInfo)) && (this.mStatus != 2))
       {
         if ((localBufferInfo.flags & 0x4) != 0)
         {
-          Logger.d("AudioEncoder", "writeAudioFrame: BUFFER_FLAG_END_OF_STREAM ");
+          Logger.d(this.TAG, "writeAudioFrame: BUFFER_FLAG_END_OF_STREAM ");
           this.mStatus = 2;
         }
-        Object localObject2 = getOutputBuffer(i);
+        localObject2 = getOutputBuffer(i);
         ((ByteBuffer)localObject2).position(localBufferInfo.offset);
         localObject1 = new byte[localBufferInfo.size + 7];
         ((ByteBuffer)localObject2).get((byte[])localObject1, 7, localBufferInfo.size);
         EncoderUtils.addADTStoPacket((byte[])localObject1, this.mChannelCount);
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("dequeue finish - ");
-        ((StringBuilder)localObject2).append(localBufferInfo.presentationTimeUs);
-        ((StringBuilder)localObject2).append("--");
-        ((StringBuilder)localObject2).append(localBufferInfo.flags);
-        ((StringBuilder)localObject2).append(" -- ");
-        ((StringBuilder)localObject2).append(localBufferInfo.size);
-        ((StringBuilder)localObject2).append("  -  ");
-        ((StringBuilder)localObject2).append(i);
-        ((StringBuilder)localObject2).append(" endUs = ");
-        ((StringBuilder)localObject2).append(this.mSelectedTimeRange.getEndUs());
-        Logger.v("AudioEncoder", ((StringBuilder)localObject2).toString());
+        localObject2 = this.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dequeue finish - ");
+        localStringBuilder.append(localBufferInfo.presentationTimeUs);
+        localStringBuilder.append("--");
+        localStringBuilder.append(localBufferInfo.flags);
+        localStringBuilder.append(" -- ");
+        localStringBuilder.append(localBufferInfo.size);
+        localStringBuilder.append("  -  ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" endUs = ");
+        localStringBuilder.append(this.mSelectedTimeRange.getEndUs());
+        Logger.v((String)localObject2, localStringBuilder.toString());
         write((byte[])localObject1);
         this.mAudioEncoder.releaseOutputBuffer(i, false);
         if (this.mStatus != 2) {
@@ -338,12 +350,13 @@ public class AudioExportRunner
       {
         if ((localBufferInfo.flags & 0x4) != 0)
         {
-          localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append("writeAudioFrame: BUFFER_FLAG_END_OF_STREAM ");
-          ((StringBuilder)localObject1).append(localBufferInfo.size);
-          ((StringBuilder)localObject1).append("/");
-          ((StringBuilder)localObject1).append(localBufferInfo.presentationTimeUs);
-          Logger.d("AudioEncoder", ((StringBuilder)localObject1).toString());
+          localObject1 = this.TAG;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("writeAudioFrame: BUFFER_FLAG_END_OF_STREAM ");
+          ((StringBuilder)localObject2).append(localBufferInfo.size);
+          ((StringBuilder)localObject2).append("/");
+          ((StringBuilder)localObject2).append(localBufferInfo.presentationTimeUs);
+          Logger.d((String)localObject1, ((StringBuilder)localObject2).toString());
           confirmFinishAndNotify();
           this.mAudioEncoder.releaseOutputBuffer(i, false);
         }
@@ -357,18 +370,28 @@ public class AudioExportRunner
   
   private void writeAudioSample(CMTime paramCMTime, int paramInt, byte[] paramArrayOfByte)
   {
+    int j = 5;
     int i = 0;
     while (paramInt - i > 0)
     {
-      int j = this.mAudioEncoder.dequeueInputBuffer(-1L);
-      if (j >= 0)
+      int k = this.mAudioEncoder.dequeueInputBuffer(1000L);
+      if (k >= 0)
       {
-        ByteBuffer localByteBuffer = getInputBuffer(j);
+        ByteBuffer localByteBuffer = getInputBuffer(k);
         localByteBuffer.clear();
-        int k = Math.min(localByteBuffer.capacity(), paramInt);
-        localByteBuffer.put(paramArrayOfByte, i, k);
-        i += k;
-        this.mAudioEncoder.queueInputBuffer(j, 0, k, paramCMTime.getTimeUs(), 1);
+        int m = Math.min(localByteBuffer.capacity(), paramInt);
+        localByteBuffer.put(paramArrayOfByte, i, m);
+        i += m;
+        this.mAudioEncoder.queueInputBuffer(k, 0, m, paramCMTime.getTimeUs(), 1);
+      }
+      else
+      {
+        j -= 1;
+        if (j >= 0) {
+          waitTime(20L);
+        } else {
+          throw new RuntimeException("dequeueInputBuffer fail");
+        }
       }
     }
   }
@@ -415,10 +438,11 @@ public class AudioExportRunner
   
   public void run()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    localStringBuilder1.append("encoder start - ");
-    localStringBuilder1.append(this);
-    Logger.d("AudioEncoder", localStringBuilder1.toString());
+    String str1 = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("encoder start - ");
+    localStringBuilder.append(this);
+    Logger.d(str1, localStringBuilder.toString());
     while ((this.mStatus <= 1) && (!this.mCancel)) {
       try
       {
@@ -427,7 +451,7 @@ public class AudioExportRunner
       }
       catch (Throwable localThrowable)
       {
-        Logger.e("AudioEncoder", "run: writeAudioSample", localThrowable);
+        Logger.e(this.TAG, "run: writeAudioSample", localThrowable);
         this.mStatus = 255;
         notifyProgressUpdate(this.mSelectedTimeRange.getEndUs());
       }
@@ -437,12 +461,13 @@ public class AudioExportRunner
       this.mStatus = 4;
       notifyProgressUpdate(this.mSelectedTimeRange.getEndUs());
     }
-    StringBuilder localStringBuilder2 = new StringBuilder();
-    localStringBuilder2.append("encoder finish - ");
-    localStringBuilder2.append(this);
-    localStringBuilder2.append("  mStatus = ");
-    localStringBuilder2.append(this.mStatus);
-    Logger.d("AudioEncoder", localStringBuilder2.toString());
+    String str2 = this.TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("encoder finish - ");
+    localStringBuilder.append(this);
+    localStringBuilder.append("  mStatus = ");
+    localStringBuilder.append(this.mStatus);
+    Logger.d(str2, localStringBuilder.toString());
     stop();
   }
   
@@ -488,7 +513,7 @@ public class AudioExportRunner
       if (this.mThread == null)
       {
         this.mAudioEncoder.start();
-        this.mThread = new Thread(this);
+        this.mThread = new Thread(this, this.TAG);
         this.mThread.start();
         this.mStop.set(false);
         this.mCancel = false;
@@ -506,7 +531,7 @@ public class AudioExportRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.tav.core.audio.AudioExportRunner
  * JD-Core Version:    0.7.0.1
  */

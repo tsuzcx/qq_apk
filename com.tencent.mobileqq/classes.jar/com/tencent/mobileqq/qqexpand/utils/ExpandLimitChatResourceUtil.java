@@ -15,19 +15,12 @@ import mqq.app.MobileQQ;
 
 public class ExpandLimitChatResourceUtil
 {
-  public static final Set<String> a;
-  public static final String[] a;
+  public static final String[] a = { "coverVertical.png", "coverVerticalSmall.png", "coverHorizontal.png", "expend_match_ellipisis.json", "expand_voice_animation2.json", "fire/fire_00.png", "bomb/bomb_00.png" };
+  public static final Set<String> b = new HashSet(1);
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "coverVertical.png", "coverVerticalSmall.png", "coverHorizontal.png", "expend_match_ellipisis.json", "expand_voice_animation2.json", "fire/fire_00.png", "bomb/bomb_00.png" };
-    jdField_a_of_type_JavaUtilSet = new HashSet(1);
-    jdField_a_of_type_JavaUtilSet.add("matchAndAIOPageForNewVersion");
-  }
-  
-  public static String a()
-  {
-    return "matchAndAIOPageForNewVersion";
+    b.add("matchAndAIOPageForNewVersion");
   }
   
   public static String a(int paramInt)
@@ -40,25 +33,12 @@ public class ExpandLimitChatResourceUtil
     } else {
       str = "coverHorizontal.png";
     }
-    return a(str);
+    return b(str);
   }
   
   public static String a(Context paramContext)
   {
     return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("limit_chat_bg_pic_md5_", null);
-  }
-  
-  public static String a(String paramString)
-  {
-    return String.format("%s/%s", new Object[] { c(), paramString });
-  }
-  
-  public static void a()
-  {
-    a(jdField_a_of_type_ArrayOfJavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendResourceDownloaderLimitChat", 2, "delBgPicFiles ");
-    }
   }
   
   public static void a(Context paramContext, String paramString)
@@ -85,38 +65,20 @@ public class ExpandLimitChatResourceUtil
     }
   }
   
-  private static void a(String[] paramArrayOfString)
-  {
-    paramArrayOfString = a(paramArrayOfString);
-    if (paramArrayOfString != null)
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        File localFile = new File(paramArrayOfString[i]);
-        if (localFile.exists()) {
-          localFile.delete();
-        }
-        i += 1;
-      }
-    }
-  }
-  
   public static boolean a()
   {
-    return a(jdField_a_of_type_ArrayOfJavaLangString);
+    return c(a);
   }
   
   public static boolean a(HashMap<String, LimitChatRes> paramHashMap)
   {
     if (paramHashMap != null)
     {
-      paramHashMap = (LimitChatRes)paramHashMap.get(a());
+      paramHashMap = (LimitChatRes)paramHashMap.get(b());
       if (paramHashMap != null)
       {
         String str1 = paramHashMap.c;
-        String str2 = b();
+        String str2 = d();
         boolean bool2 = TextUtils.isEmpty(str2);
         bool1 = bool2;
         paramHashMap = str1;
@@ -149,11 +111,6 @@ public class ExpandLimitChatResourceUtil
     return bool1;
   }
   
-  private static boolean a(String[] paramArrayOfString)
-  {
-    return ExpandResourceUtil.a(a(paramArrayOfString));
-  }
-  
   public static String[] a(String[] paramArrayOfString)
   {
     if (paramArrayOfString != null)
@@ -167,7 +124,7 @@ public class ExpandLimitChatResourceUtil
         if (i >= j) {
           break;
         }
-        arrayOfString2[i] = a(paramArrayOfString[i]);
+        arrayOfString2[i] = b(paramArrayOfString[i]);
         i += 1;
       }
     }
@@ -176,6 +133,47 @@ public class ExpandLimitChatResourceUtil
   }
   
   public static String b()
+  {
+    return "matchAndAIOPageForNewVersion";
+  }
+  
+  public static String b(String paramString)
+  {
+    return String.format("%s/%s", new Object[] { e(), paramString });
+  }
+  
+  private static void b(String[] paramArrayOfString)
+  {
+    paramArrayOfString = a(paramArrayOfString);
+    if (paramArrayOfString != null)
+    {
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        File localFile = new File(paramArrayOfString[i]);
+        if (localFile.exists()) {
+          localFile.delete();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void c()
+  {
+    b(a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendResourceDownloaderLimitChat", 2, "delBgPicFiles ");
+    }
+  }
+  
+  private static boolean c(String[] paramArrayOfString)
+  {
+    return ExpandResourceUtil.b(a(paramArrayOfString));
+  }
+  
+  public static String d()
   {
     String str = a(MobileQQ.sMobileQQ);
     if (QLog.isColorLevel())
@@ -193,14 +191,14 @@ public class ExpandLimitChatResourceUtil
     return str;
   }
   
-  public static String c()
+  public static String e()
   {
     return String.format("%s/matchChat", new Object[] { ExpandResourceUtil.a() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.utils.ExpandLimitChatResourceUtil
  * JD-Core Version:    0.7.0.1
  */

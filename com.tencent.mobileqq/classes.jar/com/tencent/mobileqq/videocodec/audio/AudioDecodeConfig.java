@@ -4,39 +4,30 @@ import com.tencent.mobileqq.shortvideo.util.AudioEncoder.AudioData;
 
 public class AudioDecodeConfig
 {
-  public int a;
-  public long a;
-  public AudioEncoder.AudioData a;
   public String a;
-  public boolean a;
-  public long b;
   public AudioEncoder.AudioData b;
-  public String b;
-  public boolean b;
-  public long c = 0L;
-  
-  public AudioDecodeConfig()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-  }
+  public boolean c = true;
+  public int d = 0;
+  public boolean e = false;
+  public long f = 0L;
+  public long g = 0L;
+  public long h = 0L;
+  public String i;
+  public AudioEncoder.AudioData j;
   
   public void a(AudioDecodeConfig paramAudioDecodeConfig)
   {
     if (paramAudioDecodeConfig != null)
     {
-      this.jdField_a_of_type_JavaLangString = paramAudioDecodeConfig.jdField_a_of_type_JavaLangString;
-      this.jdField_b_of_type_JavaLangString = paramAudioDecodeConfig.jdField_b_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData = paramAudioDecodeConfig.jdField_a_of_type_ComTencentMobileqqShortvideoUtilAudioEncoder$AudioData;
-      this.jdField_a_of_type_Boolean = paramAudioDecodeConfig.jdField_a_of_type_Boolean;
-      this.jdField_a_of_type_Int = paramAudioDecodeConfig.jdField_a_of_type_Int;
-      this.jdField_b_of_type_Boolean = paramAudioDecodeConfig.jdField_b_of_type_Boolean;
-      this.jdField_a_of_type_Long = paramAudioDecodeConfig.jdField_a_of_type_Long;
-      this.jdField_b_of_type_Long = paramAudioDecodeConfig.jdField_b_of_type_Long;
+      this.a = paramAudioDecodeConfig.a;
+      this.i = paramAudioDecodeConfig.i;
+      this.b = paramAudioDecodeConfig.b;
       this.c = paramAudioDecodeConfig.c;
+      this.d = paramAudioDecodeConfig.d;
+      this.e = paramAudioDecodeConfig.e;
+      this.f = paramAudioDecodeConfig.f;
+      this.g = paramAudioDecodeConfig.g;
+      this.h = paramAudioDecodeConfig.h;
       return;
     }
     throw new NullPointerException();
@@ -46,26 +37,26 @@ public class AudioDecodeConfig
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("AudioDecodeConfig=[audioFilePath:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(" repeat:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" speedType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" mMuteAudio:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" startTimeMs:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" endTimeMs:");
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(" videoDuration:");
     localStringBuilder.append(this.c);
+    localStringBuilder.append(" speedType:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" mMuteAudio:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" startTimeMs:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(" endTimeMs:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(" videoDuration:");
+    localStringBuilder.append(this.h);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.videocodec.audio.AudioDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import mqq.app.AppRuntime;
 
 public class InitViewParam
 {
-  public Context a;
-  public View a;
-  public FPSXListView a;
-  public LebaItemListener a;
-  public List<LebaViewItem> a;
   public AppRuntime a;
+  public List<LebaViewItem> b;
+  public Context c;
+  public FPSXListView d;
+  public View e;
+  public LebaItemListener f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.entity.InitViewParam
  * JD-Core Version:    0.7.0.1
  */

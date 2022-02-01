@@ -7,7 +7,7 @@ public class ShareGroupManager$GetFeedIdVidListEvent
   extends BaseEvent
 {
   public String a;
-  public ArrayList<String> a;
+  public ArrayList<String> b;
 }
 
 

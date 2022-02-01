@@ -31,32 +31,32 @@ public class TroopBarImagePreviewAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  public Bitmap a;
   protected Drawable a;
-  protected LayoutInflater a;
-  protected URLDrawable.URLDrawableOptions a;
-  protected ExtendGridView a;
-  protected CharSequence a;
-  private HashMap<String, Drawable.ConstantState> a;
-  protected List<String> a;
-  protected boolean a;
-  protected CharSequence b;
+  protected URLDrawable.URLDrawableOptions b;
+  protected CharSequence c;
+  protected CharSequence d;
+  protected boolean e;
+  protected LayoutInflater f;
+  protected List<String> g;
+  protected ExtendGridView h;
+  public Bitmap i;
+  private HashMap<String, Drawable.ConstantState> j;
   
   private void a()
   {
     long l = System.currentTimeMillis();
     Object localObject = new HashMap();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    Iterator localIterator = this.j.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      List localList = this.jdField_a_of_type_JavaUtilList;
+      List localList = this.g;
       if ((localList != null) && (localList.contains(str))) {
-        ((HashMap)localObject).put(str, this.jdField_a_of_type_JavaUtilHashMap.get(str));
+        ((HashMap)localObject).put(str, this.j.get(str));
       }
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.putAll((Map)localObject);
+    this.j.clear();
+    this.j.putAll((Map)localObject);
     ((HashMap)localObject).clear();
     if (QLog.isColorLevel())
     {
@@ -69,40 +69,40 @@ public class TroopBarImagePreviewAdapter
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_a_of_type_Boolean) && (paramInt == getCount() - 1);
+    return (this.e) && (paramInt == getCount() - 1);
   }
   
   public int getCount()
   {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    int i;
+    List localList = this.g;
+    int k;
     if (localList != null) {
-      i = localList.size();
+      k = localList.size();
     } else {
-      i = 0;
+      k = 0;
     }
-    int j = i;
-    if (this.jdField_a_of_type_Boolean) {
-      j = i + 1;
+    int m = k;
+    if (this.e) {
+      m = k + 1;
     }
-    return j;
+    return m;
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if (this.g != null)
     {
       if (a(paramInt)) {
         return null;
       }
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.g.get(paramInt);
     }
     return null;
   }
   
   public long getItemId(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
+    if (this.g != null) {
       return paramInt;
     }
     return 0L;
@@ -121,11 +121,11 @@ public class TroopBarImagePreviewAdapter
     TroopBarImagePreviewAdapter.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559914, null);
+      localView = this.f.inflate(2131625957, null);
       localViewHolder = new TroopBarImagePreviewAdapter.ViewHolder();
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131380276));
-      localViewHolder.b = ((ImageView)localView.findViewById(2131368657));
-      localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376842));
+      localViewHolder.a = ((URLImageView)localView.findViewById(2131449194));
+      localViewHolder.c = ((ImageView)localView.findViewById(2131435570));
+      localViewHolder.b = ((ImageView)localView.findViewById(2131445174));
       localView.setTag(localViewHolder);
     }
     else
@@ -133,49 +133,49 @@ public class TroopBarImagePreviewAdapter
       localViewHolder = (TroopBarImagePreviewAdapter.ViewHolder)paramView.getTag();
       localView = paramView;
     }
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopActivityExtendGridView.a();
+    int k = this.h.a();
     paramView = localView.getLayoutParams();
     if ((paramView != null) && ((paramView instanceof AbsListView.LayoutParams)))
     {
-      paramView.width = i;
-      paramView.height = i;
+      paramView.width = k;
+      paramView.height = k;
     }
     else
     {
-      paramView = new AbsListView.LayoutParams(i, i);
+      paramView = new AbsListView.LayoutParams(k, k);
     }
     localView.setLayoutParams((AbsListView.LayoutParams)paramView);
     String str;
-    int k;
+    int n;
     if (a(paramInt))
     {
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842598);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
-      localViewHolder.b.setVisibility(8);
+      localViewHolder.a.setScaleType(ImageView.ScaleType.FIT_XY);
+      localViewHolder.a.setImageResource(2130843551);
+      localViewHolder.a.setContentDescription(this.c);
+      localViewHolder.c.setVisibility(8);
     }
     else
     {
       str = (String)getItem(paramInt);
       if (!TextUtils.isEmpty(str))
       {
-        if (i < 0) {
-          j = 2147483647;
+        if (k < 0) {
+          m = 2147483647;
         } else {
-          j = i;
+          m = k;
         }
-        k = Math.min(100, j);
-        int j = i;
-        if (i < 0) {
-          j = 2147483647;
+        n = Math.min(100, m);
+        int m = k;
+        if (k < 0) {
+          m = 2147483647;
         }
-        i = Math.min(100, j);
-        localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setAdjustViewBounds(false);
+        k = Math.min(100, m);
+        localViewHolder.a.setAdjustViewBounds(false);
         paramView = new File(str);
-        if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 18) {
+        if (this.j.size() >= 18) {
           a();
         }
-        Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.jdField_a_of_type_JavaUtilHashMap.get(str);
+        Drawable.ConstantState localConstantState = (Drawable.ConstantState)this.j.get(str);
         if (((paramInt != 0) || (paramViewGroup.getChildCount() != 0)) && (localConstantState != null)) {
           paramView = localConstantState.newDrawable();
         }
@@ -183,13 +183,13 @@ public class TroopBarImagePreviewAdapter
     }
     try
     {
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestWidth = k;
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mRequestHeight = i;
-      this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mPlayGifImage = true;
+      this.b.mRequestWidth = n;
+      this.b.mRequestHeight = k;
+      this.b.mPlayGifImage = true;
       if (paramView.exists()) {
-        paramView = URLDrawable.getDrawable(paramView.toURL(), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
+        paramView = URLDrawable.getDrawable(paramView.toURL(), this.b);
       } else {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        paramView = this.a;
       }
     }
     catch (MalformedURLException paramView)
@@ -200,17 +200,17 @@ public class TroopBarImagePreviewAdapter
       }
     }
     if (paramView == null) {
-      paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramView = this.a;
     } else {
-      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramView.getConstantState());
+      this.j.put(str, paramView.getConstantState());
     }
-    paramView.setBounds(0, 0, k, i);
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramView);
-    localViewHolder.jdField_a_of_type_ComTencentImageURLImageView.setContentDescription(this.b);
-    localViewHolder.b.setVisibility(0);
-    localViewHolder.b.setTag(Integer.valueOf(paramInt));
-    localViewHolder.b.setOnClickListener(this);
-    localViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramView.setBounds(0, 0, n, k);
+    localViewHolder.a.setImageDrawable(paramView);
+    localViewHolder.a.setContentDescription(this.d);
+    localViewHolder.c.setVisibility(0);
+    localViewHolder.c.setTag(Integer.valueOf(paramInt));
+    localViewHolder.c.setOnClickListener(this);
+    localViewHolder.b.setImageBitmap(this.i);
     if (QLog.isColorLevel())
     {
       paramView = new StringBuilder();
@@ -224,7 +224,7 @@ public class TroopBarImagePreviewAdapter
   
   public int getViewTypeCount()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.e) {
       return 2;
     }
     return 1;
@@ -232,7 +232,7 @@ public class TroopBarImagePreviewAdapter
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131368657)
+    if (paramView.getId() == 2131435570)
     {
       Integer localInteger = (Integer)paramView.getTag();
       Intent localIntent = new Intent("key_photo_delete_action");
@@ -244,7 +244,7 @@ public class TroopBarImagePreviewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarImagePreviewAdapter
  * JD-Core Version:    0.7.0.1
  */

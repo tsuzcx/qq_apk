@@ -12,25 +12,25 @@ class VideoPlayerView$15
   
   public void a(boolean paramBoolean)
   {
-    VideoPlayerView.d(this.a, paramBoolean);
-    if (VideoPlayerView.d(this.a))
+    VideoPlayerView.e(this.a, paramBoolean);
+    if (VideoPlayerView.s(this.a))
     {
-      this.a.a().post(new VideoPlayerView.15.1(this));
+      this.a.getMainHandler().post(new VideoPlayerView.15.1(this));
       return;
     }
-    if (VideoPlayerView.b(this.a))
+    if (VideoPlayerView.o(this.a))
     {
-      this.a.a().post(new VideoPlayerView.15.2(this));
+      this.a.getMainHandler().post(new VideoPlayerView.15.2(this));
       return;
     }
-    if (VideoPlayerView.e(this.a))
+    if (VideoPlayerView.t(this.a))
     {
-      if (this.a.a() != null) {
-        this.a.a().setLoopback(true);
+      if (this.a.getSuperPlayer() != null) {
+        this.a.getSuperPlayer().setLoopback(true);
       }
-      this.a.i();
-      if (VideoPlayerView.a(this.a) != null) {
-        VideoPlayerView.a(this.a).onVideoStart((int)this.a.a().getDurationMs());
+      this.a.j();
+      if (VideoPlayerView.m(this.a) != null) {
+        VideoPlayerView.m(this.a).onVideoStart((int)this.a.getSuperPlayer().getDurationMs());
       }
     }
   }

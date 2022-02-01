@@ -8,43 +8,40 @@ import mqq.app.NewIntent;
 class TroopFileProtoReqMgrImpl$ProtoRequestRunnable
   implements Runnable
 {
-  long jdField_a_of_type_Long;
-  TroopFileProtoReqMgrImpl.ProtoResponse jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse;
-  NewIntent jdField_a_of_type_MqqAppNewIntent;
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long;
-  boolean jdField_b_of_type_Boolean = false;
-  long jdField_c_of_type_Long;
-  boolean jdField_c_of_type_Boolean;
+  TroopFileProtoReqMgrImpl.ProtoResponse a;
+  NewIntent b;
+  long c;
+  boolean d = false;
+  boolean e = false;
+  long f;
+  long g;
+  boolean h = false;
   
-  TroopFileProtoReqMgrImpl$ProtoRequestRunnable(TroopFileProtoReqMgrImpl paramTroopFileProtoReqMgrImpl)
-  {
-    this.c = false;
-  }
+  TroopFileProtoReqMgrImpl$ProtoRequestRunnable(TroopFileProtoReqMgrImpl paramTroopFileProtoReqMgrImpl) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_MqqAppNewIntent.getIntExtra("key_runnable_index", 0);
+    int i = this.b.getIntExtra("key_runnable_index", 0);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("cookie<");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoRequest.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append(this.a.b.o);
     ((StringBuilder)localObject).append("> sendToMsf. scheduleIndex:");
     ((StringBuilder)localObject).append(i);
     ((StringBuilder)localObject).append(" timeOut:");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(this.c);
     QLog.i("TroopFileProtoReqMgr", 1, ((StringBuilder)localObject).toString());
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_MqqAppNewIntent.putExtra("timeout", this.jdField_a_of_type_Long);
-    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse.jdField_a_of_type_ComTencentMobileqqAppStatictisInfo;
+    this.d = true;
+    this.f = System.currentTimeMillis();
+    this.b.putExtra("timeout", this.c);
+    localObject = this.a.f;
     ((StatictisInfo)localObject).c += 1;
-    TroopFileProtoReqMgrImpl.access$000(this.this$0).put(this.jdField_a_of_type_MqqAppNewIntent, this.jdField_a_of_type_ComTencentMobileqqFilemanagerApiImplTroopFileProtoReqMgrImpl$ProtoResponse);
-    this.this$0.sendToMsf(this.jdField_a_of_type_MqqAppNewIntent);
+    TroopFileProtoReqMgrImpl.access$000(this.this$0).put(this.b, this.a);
+    this.this$0.sendToMsf(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.TroopFileProtoReqMgrImpl.ProtoRequestRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -12,51 +12,30 @@ import com.tencent.common.app.BaseApplicationImpl;
 public class BubbleTextView
   extends TextView
 {
-  public float a;
-  public int a;
-  private BubbleDrawable a;
-  public boolean a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
+  public float a = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
+  public float b = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
+  public float c = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
   public float d = 50.0F;
+  public int e = getResources().getColor(2131167368);
+  public int f = 3;
+  public boolean g = true;
+  public int h = 0;
+  private BubbleDrawable i;
   
   public BubbleTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166511);
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
   }
   
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166511);
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
     a();
   }
   
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = UIUtils.a(BaseApplicationImpl.getContext(), 5.0F);
-    this.jdField_a_of_type_Int = getResources().getColor(2131166511);
-    this.jdField_b_of_type_Int = 3;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = 0;
     a();
   }
   
@@ -67,17 +46,17 @@ public class BubbleTextView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable = new BubbleDrawable();
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
-    BubbleDrawable localBubbleDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable;
-    localBubbleDrawable.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localBubbleDrawable.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-    localBubbleDrawable.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    localBubbleDrawable.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
-    localBubbleDrawable.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    localBubbleDrawable.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localBubbleDrawable.d = this.d;
-    localBubbleDrawable.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.i = new BubbleDrawable();
+    this.i.a = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
+    BubbleDrawable localBubbleDrawable = this.i;
+    localBubbleDrawable.k = this.f;
+    localBubbleDrawable.l = this.h;
+    localBubbleDrawable.f = this.b;
+    localBubbleDrawable.g = this.c;
+    localBubbleDrawable.e = this.a;
+    localBubbleDrawable.i = this.e;
+    localBubbleDrawable.h = this.d;
+    localBubbleDrawable.m = this.g;
   }
   
   private void c()
@@ -87,33 +66,33 @@ public class BubbleTextView
   
   private void d()
   {
-    int i = getPaddingLeft();
-    int j = getPaddingRight();
-    int k = getPaddingTop();
-    int m = getPaddingBottom();
-    int n = this.jdField_b_of_type_Int;
-    if (n != 0)
+    int j = getPaddingLeft();
+    int k = getPaddingRight();
+    int m = getPaddingTop();
+    int n = getPaddingBottom();
+    int i1 = this.f;
+    if (i1 != 0)
     {
-      if (n != 1)
+      if (i1 != 1)
       {
-        if (n != 2)
+        if (i1 != 2)
         {
-          if (n == 3) {
-            m = (int)(m + this.jdField_c_of_type_Float);
+          if (i1 == 3) {
+            n = (int)(n + this.c);
           }
         }
         else {
-          k = (int)(k + this.jdField_c_of_type_Float);
+          m = (int)(m + this.c);
         }
       }
       else {
-        j = (int)(j + this.jdField_a_of_type_Float);
+        k = (int)(k + this.a);
       }
     }
     else {
-      i = (int)(i + this.jdField_a_of_type_Float);
+      j = (int)(j + this.a);
     }
-    setPadding(i, k, j, m);
+    setPadding(j, m, k, n);
   }
   
   public void a()
@@ -132,7 +111,7 @@ public class BubbleTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    BubbleDrawable localBubbleDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleDrawable;
+    BubbleDrawable localBubbleDrawable = this.i;
     if (localBubbleDrawable != null) {
       localBubbleDrawable.draw(paramCanvas);
     }

@@ -10,14 +10,14 @@ class AEEditorLyricPanelDialog$4
   
   public void onShow(DialogInterface paramDialogInterface)
   {
-    if (AEEditorLyricPanelDialog.a(this.a) != null) {
-      AEEditorLyricPanelDialog.a(this.a).P();
+    if (AEEditorLyricPanelDialog.e(this.a) != null) {
+      AEEditorLyricPanelDialog.e(this.a).onLyricPanelShow();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.music.AEEditorLyricPanelDialog.4
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ import java.util.List;
 public class WSDramaHistoryAdapter
   extends BaseAdapter<WSDramaHistoryData, WSDramaHistoryHolder>
 {
-  private WSDramaPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment;
-  private boolean jdField_a_of_type_Boolean = true;
+  private WSDramaPageFragment a;
+  private boolean b = true;
   
   public WSDramaHistoryAdapter(Context paramContext, WSDramaPageFragment paramWSDramaPageFragment)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment = paramWSDramaPageFragment;
+    this.a = paramWSDramaPageFragment;
   }
   
   public WSDramaHistoryHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new WSDramaHistoryHolder(paramViewGroup, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment);
+    return new WSDramaHistoryHolder(paramViewGroup, this.a);
   }
   
   public void a(WSDramaHistoryHolder paramWSDramaHistoryHolder, int paramInt)
@@ -35,16 +35,16 @@ public class WSDramaHistoryAdapter
   public void a(BaseViewHolder<WSDramaHistoryData> paramBaseViewHolder)
   {
     super.onViewAttachedToWindow(paramBaseViewHolder);
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       return;
     }
-    AbsWSDramaHolder localAbsWSDramaHolder = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment.a();
-    WSDramaBeaconReport.b(WSDramaUtils.b(localAbsWSDramaHolder), WSDramaUtils.a(localAbsWSDramaHolder), WSDramaUtils.c(localAbsWSDramaHolder), WSDramaUtils.a(localAbsWSDramaHolder), (WSDramaHistoryData)getDataList().get(paramBaseViewHolder.getAdapterPosition()), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDramaWSDramaPageFragment.a(), paramBaseViewHolder.getAdapterPosition());
+    AbsWSDramaHolder localAbsWSDramaHolder = this.a.e();
+    WSDramaBeaconReport.b(WSDramaUtils.b(localAbsWSDramaHolder), WSDramaUtils.a(localAbsWSDramaHolder), WSDramaUtils.c(localAbsWSDramaHolder), WSDramaUtils.d(localAbsWSDramaHolder), (WSDramaHistoryData)getDataList().get(paramBaseViewHolder.getAdapterPosition()), this.a.b(), paramBaseViewHolder.getAdapterPosition());
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramBoolean;
   }
   
   public int getCustomItemViewType(int paramInt)
@@ -54,7 +54,7 @@ public class WSDramaHistoryAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.drama.history.WSDramaHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

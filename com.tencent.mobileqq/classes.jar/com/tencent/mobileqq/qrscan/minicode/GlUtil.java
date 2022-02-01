@@ -27,26 +27,10 @@ public class GlUtil
   
   public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ByteBuffer localByteBuffer = a(paramInt1, paramInt2, paramInt3);
+    ByteBuffer localByteBuffer = b(paramInt1, paramInt2, paramInt3);
     Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
     localBitmap.copyPixelsFromBuffer(localByteBuffer);
     return localBitmap;
-  }
-  
-  private static ByteBuffer a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    int[] arrayOfInt1 = new int[1];
-    int[] arrayOfInt2 = new int[1];
-    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
-    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
-    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
-    GLES20.glFinish();
-    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
-    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
-    return localByteBuffer;
   }
   
   public static void a(String paramString)
@@ -61,10 +45,26 @@ public class GlUtil
       Log.e("GlUtil", localStringBuilder.toString());
     }
   }
+  
+  private static ByteBuffer b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    int[] arrayOfInt1 = new int[1];
+    int[] arrayOfInt2 = new int[1];
+    GLES20.glGetIntegerv(36006, arrayOfInt2, 0);
+    GLES20.glGenFramebuffers(1, arrayOfInt1, 0);
+    GLES20.glBindFramebuffer(36160, arrayOfInt1[0]);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramInt2 * paramInt3 * 4);
+    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, localByteBuffer);
+    GLES20.glFinish();
+    GLES20.glBindFramebuffer(36160, arrayOfInt2[0]);
+    GLES20.glDeleteFramebuffers(1, arrayOfInt1, 0);
+    return localByteBuffer;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.minicode.GlUtil
  * JD-Core Version:    0.7.0.1
  */

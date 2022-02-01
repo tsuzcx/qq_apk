@@ -20,83 +20,73 @@ import java.util.List;
 public class BoldTextItem
   extends DynamicTextItem
 {
-  private float jdField_a_of_type_Float;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private float jdField_b_of_type_Float;
-  private TextPaint jdField_b_of_type_AndroidTextTextPaint = new TextPaint();
+  private TextPaint a = new TextPaint();
+  private TextPaint b = new TextPaint();
+  private float c;
+  private float d;
+  private RectF e = new RectF();
+  private StaticLayout f;
   
   public BoldTextItem(int paramInt, @NonNull List<String> paramList, Typeface paramTypeface)
   {
     super(paramInt, paramList);
     if (paramTypeface != null)
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
+      this.a.setTypeface(paramTypeface);
+      this.b.setTypeface(paramTypeface);
     }
     else
     {
-      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
-      this.jdField_b_of_type_AndroidTextTextPaint.setTypeface(Typeface.defaultFromStyle(1));
+      this.a.setTypeface(Typeface.defaultFromStyle(1));
+      this.b.setTypeface(Typeface.defaultFromStyle(1));
     }
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.b(22.0F, BaseApplicationImpl.getContext().getResources()));
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_b_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeJoin(Paint.Join.ROUND);
-    this.jdField_b_of_type_AndroidTextTextPaint.setTextSize(AIOUtils.b(22.0F, BaseApplicationImpl.getContext().getResources()));
-    this.jdField_b_of_type_AndroidTextTextPaint.setColor(-16777216);
-    this.jdField_b_of_type_AndroidTextTextPaint.setStrokeWidth(AIOUtils.b(6.0F, BaseApplicationImpl.getContext().getResources()));
+    this.a.setTextAlign(Paint.Align.LEFT);
+    this.a.setAntiAlias(true);
+    this.a.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.a.setTextSize(AIOUtils.b(22.0F, BaseApplicationImpl.getContext().getResources()));
+    this.a.setColor(-1);
+    this.b.setTextAlign(Paint.Align.LEFT);
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.STROKE);
+    this.b.setStrokeJoin(Paint.Join.ROUND);
+    this.b.setTextSize(AIOUtils.b(22.0F, BaseApplicationImpl.getContext().getResources()));
+    this.b.setColor(-16777216);
+    this.b.setStrokeWidth(AIOUtils.b(6.0F, BaseApplicationImpl.getContext().getResources()));
     if (!paramList.isEmpty()) {
       a(0, (String)paramList.get(0));
     }
   }
   
-  public float a()
-  {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    String str = super.b(paramInt);
+    String str = super.c(paramInt);
     paramString = str;
     if (TextUtils.isEmpty(str)) {
       paramString = "　　";
     }
-    paramInt = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(HardCodeUtil.a(2131701382));
-    this.jdField_b_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
-    this.jdField_a_of_type_AndroidTextStaticLayout = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_b_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
-    this.jdField_a_of_type_Float = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-    this.jdField_b_of_type_Float = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
+    paramInt = (int)this.a.measureText(HardCodeUtil.a(2131899410));
+    this.n = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.a, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
+    this.f = StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.b, paramInt, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 2);
+    this.c = super.a(this.n);
+    this.d = this.n.getHeight();
   }
   
   protected void a(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
+    if (this.n != null)
     {
       paramCanvas.save();
-      this.jdField_a_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
-      if (b(0))
+      this.f.draw(paramCanvas);
+      this.n.draw(paramCanvas);
+      if (f(0))
       {
-        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        RectF localRectF = this.e;
         localRectF.left = 0.0F;
         localRectF.top = 0.0F;
-        localRectF.right = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
-        this.jdField_a_of_type_AndroidGraphicsRectF.bottom = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
-        paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+        localRectF.right = super.a(this.n);
+        this.e.bottom = this.n.getHeight();
+        paramCanvas.drawRoundRect(this.e, 6.0F, 6.0F, s());
       }
       paramCanvas.restore();
     }
@@ -107,14 +97,24 @@ public class BoldTextItem
     return true;
   }
   
-  public float b()
+  public int b()
   {
-    return this.jdField_b_of_type_Float;
+    return 1;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public float d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.capture.text.BoldTextItem
  * JD-Core Version:    0.7.0.1
  */

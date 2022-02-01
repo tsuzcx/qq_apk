@@ -21,7 +21,7 @@ class RegisterActivity$13
     if (!paramBoolean)
     {
       this.a.c();
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713282), 1).a();
+      QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910835), 1).show();
       return;
     }
     try
@@ -54,21 +54,21 @@ class RegisterActivity$13
             this.a.c();
             Object localObject = paramArrayOfByte;
             if (TextUtils.isEmpty(paramArrayOfByte)) {
-              localObject = HardCodeUtil.a(2131713273);
+              localObject = HardCodeUtil.a(2131910826);
             }
-            QQToast.a(this.a.getApplicationContext(), (CharSequence)localObject, 1).a();
+            QQToast.makeText(this.a.getApplicationContext(), (CharSequence)localObject, 1).show();
             return;
           }
           this.a.c();
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+          this.a.p.sendEmptyMessage(8);
           return;
         }
         this.a.c();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+        this.a.p.sendEmptyMessage(8);
         return;
       }
       this.a.c();
-      this.a.b("该手机号码已绑定其他QQ号码", HardCodeUtil.a(2131713287));
+      this.a.b("该手机号码已绑定其他QQ号码", HardCodeUtil.a(2131910840));
       return;
     }
     this.a.a();
@@ -82,7 +82,7 @@ class RegisterActivity$13
     this.a.c();
     if (!paramBoolean)
     {
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713258), 1).a();
+      QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910811), 1).show();
       return;
     }
     if (paramInt != 0)
@@ -95,7 +95,7 @@ class RegisterActivity$13
           {
             if (paramInt != 4)
             {
-              QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713279), 1).a();
+              QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910832), 1).show();
               return;
             }
             try
@@ -103,7 +103,7 @@ class RegisterActivity$13
               paramArrayOfByte1 = new String(paramArrayOfByte1, "utf-8");
               if (!TextUtils.isEmpty(paramArrayOfByte1))
               {
-                this.a.jdField_a_of_type_AndroidOsHandler.post(new RegisterActivity.13.1(this, paramArrayOfByte1));
+                this.a.p.post(new RegisterActivity.13.1(this, paramArrayOfByte1));
                 return;
               }
               if (!QLog.isColorLevel()) {
@@ -131,7 +131,7 @@ class RegisterActivity$13
             }
             if (TextUtils.isEmpty(paramArrayOfByte1))
             {
-              QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713276), 1).a();
+              QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910829), 1).show();
               return;
             }
             this.a.b(paramArrayOfByte1);
@@ -162,15 +162,15 @@ class RegisterActivity$13
             this.a.c(paramArrayOfByte2, paramArrayOfByte1);
             return;
           }
-          QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713284), 1).a();
+          QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910837), 1).show();
         }
       }
       else {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+        this.a.p.sendEmptyMessage(1);
       }
     }
     else {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      this.a.p.sendEmptyMessage(1);
     }
   }
   
@@ -183,7 +183,7 @@ class RegisterActivity$13
     if (!paramBoolean)
     {
       this.a.c();
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713269), 1).a();
+      QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910822), 1).show();
       return;
     }
     paramArrayOfByte2 = new StringBuilder();
@@ -209,17 +209,17 @@ class RegisterActivity$13
     if (!paramBoolean)
     {
       this.a.c();
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713275), 1).a();
+      QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910828), 1).show();
       return;
     }
     if (paramInt == 0)
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      this.a.p.sendEmptyMessage(8);
     }
     else
     {
-      this.a.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713262);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+      this.a.c = HardCodeUtil.a(2131910815);
+      this.a.p.sendEmptyMessage(5);
     }
     paramString1 = new StringBuilder();
     paramString1.append("RegisterActivity onRegisterCommitSmsCodeResp code = ");
@@ -232,11 +232,11 @@ class RegisterActivity$13
     if (this.a.isFinishing()) {
       return;
     }
-    RegisterActivity.c(this.a);
+    RegisterActivity.d(this.a);
     if (!paramBoolean)
     {
-      RegisterActivity.d(this.a);
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713270), 1).a();
+      RegisterActivity.e(this.a);
+      QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910823), 1).show();
       return;
     }
     paramString1 = null;
@@ -261,8 +261,8 @@ class RegisterActivity$13
     }
     if (paramInt1 == 0)
     {
-      RegisterActivity.d(this.a);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      RegisterActivity.e(this.a);
+      this.a.p.sendEmptyMessage(8);
       return;
     }
     if (paramInt1 == 4)
@@ -278,7 +278,7 @@ class RegisterActivity$13
       }
       try
       {
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new RegisterActivity.13.2(this), paramInt3 * 1000);
+        this.a.p.postDelayed(new RegisterActivity.13.2(this), paramInt3 * 1000);
         return;
       }
       catch (Exception paramArrayOfByte)
@@ -295,7 +295,7 @@ class RegisterActivity$13
     }
     if (!paramBoolean)
     {
-      QQToast.a(this.a.getApplicationContext(), HardCodeUtil.a(2131713274), 1).a();
+      QQToast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131910827), 1).show();
       return;
     }
     try
@@ -321,7 +321,7 @@ class RegisterActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterActivity.13
  * JD-Core Version:    0.7.0.1
  */

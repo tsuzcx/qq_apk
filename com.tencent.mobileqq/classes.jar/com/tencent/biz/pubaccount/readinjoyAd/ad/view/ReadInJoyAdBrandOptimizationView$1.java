@@ -18,12 +18,12 @@ class ReadInJoyAdBrandOptimizationView$1
   public void onClick(View paramView)
   {
     ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).setAdInfoClickPos(ReadInJoyAdBrandOptimizationView.a(this.a), 1000, null);
-    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.a(this.a).a(), ReadInJoyAdBrandOptimizationView.a(this.a).c(), false, ReadInJoyAdSwitchUtil.b(ReadInJoyAdBrandOptimizationView.a(this.a)), new AdJumpParams());
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).doActionAndReport((Activity)ReadInJoyAdBrandOptimizationView.b(this.a), ReadInJoyAdBrandOptimizationView.a(this.a), ReadInJoyAdBrandOptimizationView.c(this.a).u(), ReadInJoyAdBrandOptimizationView.c(this.a).m(), false, ReadInJoyAdSwitchUtil.e(ReadInJoyAdBrandOptimizationView.a(this.a)), new AdJumpParams());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBrandOptimizationView.1
  * JD-Core Version:    0.7.0.1
  */

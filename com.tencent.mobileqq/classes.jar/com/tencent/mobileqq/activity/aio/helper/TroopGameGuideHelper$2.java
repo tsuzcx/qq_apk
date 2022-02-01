@@ -15,13 +15,13 @@ class TroopGameGuideHelper$2
   public void handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      TroopGameGuideHelper.a(this.a);
+      TroopGameGuideHelper.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopGameGuideHelper.2
  * JD-Core Version:    0.7.0.1
  */

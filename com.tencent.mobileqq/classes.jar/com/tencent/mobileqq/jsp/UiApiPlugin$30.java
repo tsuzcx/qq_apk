@@ -14,9 +14,9 @@ class UiApiPlugin$30
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
+    if ((UiApiPlugin.O != null) && (UiApiPlugin.O.size() > 0))
     {
-      Iterator localIterator = UiApiPlugin.a.iterator();
+      Iterator localIterator = UiApiPlugin.O.iterator();
       while (localIterator.hasNext())
       {
         UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
@@ -29,7 +29,7 @@ class UiApiPlugin$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.30
  * JD-Core Version:    0.7.0.1
  */

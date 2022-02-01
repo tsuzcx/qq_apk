@@ -15,79 +15,79 @@ import java.nio.ByteBuffer;
 @TargetApi(16)
 public class AudioFileDecoder
 {
-  private int jdField_a_of_type_Int;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private AudioFileDecoder.Callback jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
-  private BufferedOutputStream jdField_a_of_type_JavaIoBufferedOutputStream;
-  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  private int a;
+  private int b;
   private int c;
   private int d;
   private int e;
   private int f;
+  private String g;
+  private String h;
+  private FileOutputStream i;
+  private BufferedOutputStream j;
+  private MediaExtractor k;
+  private MediaCodec l;
+  private MediaFormat m;
+  private MediaCodec.BufferInfo n = new MediaCodec.BufferInfo();
+  private boolean o;
+  private AudioFileDecoder.Callback p;
   
   public AudioFileDecoder() {}
   
   public AudioFileDecoder(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.a = paramInt1;
+    this.b = paramInt2;
     this.c = paramInt3;
   }
   
   private void a()
   {
-    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-    int i;
+    ByteBuffer[] arrayOfByteBuffer = this.l.getInputBuffers();
+    int i1;
     Object localObject1;
     do
     {
       for (;;)
       {
-        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
-        if (i < 0) {
+        i1 = this.l.dequeueInputBuffer(10000L);
+        if (i1 < 0) {
           break;
         }
-        localObject1 = arrayOfByteBuffer[i];
+        localObject1 = arrayOfByteBuffer[i1];
         ((ByteBuffer)localObject1).clear();
-        int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject1, 0);
-        if (j < 0)
+        int i2 = this.k.readSampleData((ByteBuffer)localObject1, 0);
+        if (i2 < 0)
         {
-          this.jdField_a_of_type_Boolean = true;
-          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 0);
+          this.o = true;
+          this.l.queueInputBuffer(i1, 0, 0, 0L, 0);
           break label97;
         }
-        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, 0L, 0);
-        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+        this.l.queueInputBuffer(i1, 0, i2, 0L, 0);
+        this.k.advance();
       }
-    } while (i != -1);
+    } while (i1 != -1);
     label97:
-    arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    arrayOfByteBuffer = this.l.getOutputBuffers();
     for (;;)
     {
-      i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+      i1 = this.l.dequeueOutputBuffer(this.n, 10000L);
       Object localObject2;
-      if (i >= 0)
+      if (i1 >= 0)
       {
-        localObject1 = arrayOfByteBuffer[i];
-        localObject2 = new byte[this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size];
+        localObject1 = arrayOfByteBuffer[i1];
+        localObject2 = new byte[this.n.size];
         ((ByteBuffer)localObject1).get((byte[])localObject2);
         ((ByteBuffer)localObject1).clear();
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
+        this.l.releaseOutputBuffer(i1, false);
         a((byte[])localObject2);
       }
       else
       {
-        if (i != -2) {
+        if (i1 != -2) {
           break;
         }
-        localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+        localObject1 = this.l.getOutputFormat();
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -106,19 +106,19 @@ public class AudioFileDecoder
       if (paramArrayOfByte.length == 0) {
         return;
       }
-      int i = this.d;
-      if (i != 0)
+      int i1 = this.d;
+      if (i1 != 0)
       {
-        int j = this.e;
-        if (j != 0)
+        int i2 = this.e;
+        if (i2 != 0)
         {
-          int k = this.f;
-          if (k != 0)
+          int i3 = this.f;
+          if (i3 != 0)
           {
-            paramArrayOfByte = PCMConverter.a(paramArrayOfByte, i, j, k, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
+            paramArrayOfByte = PCMConverter.a(paramArrayOfByte, i1, i2, i3, this.a, this.b, this.c);
             try
             {
-              this.jdField_a_of_type_JavaIoBufferedOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+              this.j.write(paramArrayOfByte, 0, paramArrayOfByte.length);
               return;
             }
             catch (IOException paramArrayOfByte)
@@ -134,29 +134,29 @@ public class AudioFileDecoder
   
   private void b()
   {
-    Object localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
+    Object localObject = this.l;
     if (localObject != null)
     {
       ((MediaCodec)localObject).stop();
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+      this.l.release();
+      this.l = null;
     }
-    localObject = this.jdField_a_of_type_AndroidMediaMediaExtractor;
+    localObject = this.k;
     if (localObject != null)
     {
       ((MediaExtractor)localObject).release();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+      this.k = null;
     }
     try
     {
-      if (this.jdField_a_of_type_JavaIoBufferedOutputStream != null)
+      if (this.j != null)
       {
-        this.jdField_a_of_type_JavaIoBufferedOutputStream.flush();
-        this.jdField_a_of_type_JavaIoBufferedOutputStream.close();
+        this.j.flush();
+        this.j.close();
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("AudioFileDecoder", 2, String.format("decode successful, save to %s, size: %sK", new Object[] { this.jdField_b_of_type_JavaLangString, Long.valueOf(new File(this.jdField_b_of_type_JavaLangString).length() / 1024L) }));
+        QLog.d("AudioFileDecoder", 2, String.format("decode successful, save to %s, size: %sK", new Object[] { this.h, Long.valueOf(new File(this.h).length() / 1024L) }));
         return;
       }
     }
@@ -168,22 +168,22 @@ public class AudioFileDecoder
   
   public void a(AudioFileDecoder.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback = paramCallback;
+    this.p = paramCallback;
   }
   
   public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    paramString1 = new File(this.jdField_a_of_type_JavaLangString);
+    this.g = paramString1;
+    this.h = paramString2;
+    paramString1 = new File(this.g);
     boolean bool = paramString1.exists();
-    int j = 0;
+    int i2 = 0;
     if (!bool)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, String.format("audio file %s is not exist", new Object[] { this.jdField_a_of_type_JavaLangString }));
+        QLog.d("AudioFileDecoder", 2, String.format("audio file %s is not exist", new Object[] { this.g }));
       }
-      paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
+      paramString1 = this.p;
       if (paramString1 != null) {
         paramString1.a(-2);
       }
@@ -191,27 +191,27 @@ public class AudioFileDecoder
     }
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
-      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_JavaLangString);
-      int i = 0;
+      this.k = new MediaExtractor();
+      this.k.setDataSource(this.g);
+      int i1 = 0;
       Object localObject;
-      while (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
+      while (i1 < this.k.getTrackCount())
       {
-        paramString2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+        paramString2 = this.k.getTrackFormat(i1);
         localObject = paramString2.getString("mime");
         if (((String)localObject).startsWith("audio"))
         {
-          this.jdField_a_of_type_AndroidMediaMediaFormat = paramString2;
-          this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
-          this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType((String)localObject);
+          this.m = paramString2;
+          this.k.selectTrack(i1);
+          this.l = MediaCodec.createDecoderByType((String)localObject);
           try
           {
-            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(paramString2, null, null, 0);
+            this.l.configure(paramString2, null, null, 0);
           }
           catch (Throwable paramString2)
           {
-            if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback != null) {
-              this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback.a(-5);
+            if (this.p != null) {
+              this.p.a(-5);
             }
             localObject = new StringBuilder();
             ((StringBuilder)localObject).append("decode configure exception:");
@@ -219,27 +219,27 @@ public class AudioFileDecoder
             QLog.e("AudioFileDecoder", 1, ((StringBuilder)localObject).toString(), paramString2);
           }
         }
-        i += 1;
+        i1 += 1;
       }
-      if (this.jdField_a_of_type_AndroidMediaMediaCodec == null)
+      if (this.l == null)
       {
         QLog.e("AudioFileDecoder", 1, "init audioCodec fail");
-        paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
+        paramString1 = this.p;
         if (paramString1 != null) {
           paramString1.a(-1);
         }
         return;
       }
-      this.d = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate");
-      this.f = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count");
+      this.d = this.m.getInteger("sample-rate");
+      this.f = this.m.getInteger("channel-count");
       this.e = 16;
       if (QLog.isColorLevel()) {
         QLog.d("AudioFileDecoder", 2, String.format("decode audio sampleRate: %s, channelCount: %s, bitDeepth: %s", new Object[] { Integer.valueOf(this.d), Integer.valueOf(this.f), Integer.valueOf(this.e) }));
       }
       try
       {
-        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaIoBufferedOutputStream = new BufferedOutputStream(this.jdField_a_of_type_JavaIoFileOutputStream);
+        this.i = new FileOutputStream(this.h);
+        this.j = new BufferedOutputStream(this.i);
       }
       catch (IOException paramString2)
       {
@@ -249,19 +249,19 @@ public class AudioFileDecoder
         QLog.e("AudioFileDecoder", 1, ((StringBuilder)localObject).toString(), paramString2);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("AudioFileDecoder", 2, String.format("start decode file %s, size: %sK", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(paramString1.length() / 1024L) }));
+        QLog.d("AudioFileDecoder", 2, String.format("start decode file %s, size: %sK", new Object[] { this.g, Long.valueOf(paramString1.length() / 1024L) }));
       }
       try
       {
-        this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-        paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
+        this.l.start();
+        paramString1 = this.p;
         if (paramString1 != null) {
-          paramString1.a(this.jdField_a_of_type_JavaLangString);
+          paramString1.a(this.g);
         }
-        this.jdField_a_of_type_Boolean = false;
+        this.o = false;
         for (;;)
         {
-          if (this.jdField_a_of_type_Boolean) {
+          if (this.o) {
             break label584;
           }
           try
@@ -274,25 +274,25 @@ public class AudioFileDecoder
             paramString2.append("decode frame exception:");
             paramString2.append(paramString1);
             QLog.e("AudioFileDecoder", 1, paramString2.toString(), paramString1);
-            paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
-            i = j;
+            paramString1 = this.p;
+            i1 = i2;
             if (paramString1 == null) {
               break label586;
             }
           }
         }
         paramString1.a(-6);
-        i = j;
+        i1 = i2;
         break label586;
         label584:
-        i = 1;
+        i1 = 1;
         label586:
         b();
-        if (i != 0)
+        if (i1 != 0)
         {
-          paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
+          paramString1 = this.p;
           if (paramString1 != null) {
-            paramString1.b(this.jdField_b_of_type_JavaLangString);
+            paramString1.b(this.h);
           }
         }
         return;
@@ -303,7 +303,7 @@ public class AudioFileDecoder
         paramString2.append("decode start exception:");
         paramString2.append(paramString1);
         QLog.e("AudioFileDecoder", 1, paramString2.toString(), paramString1);
-        paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
+        paramString1 = this.p;
         if (paramString1 != null) {
           paramString1.a(-4);
         }
@@ -314,7 +314,7 @@ public class AudioFileDecoder
     catch (IOException paramString1)
     {
       paramString1.printStackTrace();
-      paramString1 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordAudioFileDecoder$Callback;
+      paramString1 = this.p;
       if (paramString1 != null) {
         paramString1.a(-3);
       }

@@ -20,7 +20,7 @@ public class SecurityVerifyPlugin
     if (!"userVerify".equals(paramString2)) {
       return false;
     }
-    paramJsBridgeListener = this.mRuntime.a();
+    paramJsBridgeListener = this.mRuntime.d();
     if (paramJsBridgeListener == null) {
       return false;
     }
@@ -50,7 +50,7 @@ public class SecurityVerifyPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.SecurityVerifyPlugin
  * JD-Core Version:    0.7.0.1
  */

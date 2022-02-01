@@ -45,20 +45,20 @@ class DevlockQuickLoginActivity$3
     }
     if (paramInt == 0)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131692038, 0).b(DevlockQuickLoginActivity.a(this.a));
-      DevlockQuickLoginActivity.a(this.a);
-      DevlockQuickLoginActivity.a(this.a, 0, 2130772015);
+      QQToast.makeText(this.a.getApplicationContext(), 2, 2131889005, 0).show(DevlockQuickLoginActivity.b(this.a));
+      DevlockQuickLoginActivity.c(this.a);
+      DevlockQuickLoginActivity.a(this.a, 0, 2130772018);
       return;
     }
     if (paramInt == 21)
     {
-      paramString = this.a.getString(2131692035);
-      paramArrayOfByte1 = this.a.getString(2131719318);
+      paramString = this.a.getString(2131889002);
+      paramArrayOfByte1 = this.a.getString(2131916870);
       this.a.a(null, paramString, paramArrayOfByte1, new DevlockQuickLoginActivity.3.1(this));
       return;
     }
-    paramString = DevlockQuickLoginActivity.a(this.a, 2131692036);
-    QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
+    paramString = DevlockQuickLoginActivity.a(this.a, 2131889003);
+    QQToast.makeText(this.a.getApplicationContext(), 1, paramString, 0).show(DevlockQuickLoginActivity.e(this.a));
   }
   
   public void onException(String paramString, int paramInt)
@@ -71,7 +71,7 @@ class DevlockQuickLoginActivity$3
       QLog.d("DevlockQuickLoginActivity", 2, localStringBuilder.toString());
     }
     this.a.c();
-    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131692037), 0).b(DevlockQuickLoginActivity.d(this.a));
+    QQToast.makeText(DevlockQuickLoginActivity.k(this.a), 1, this.a.getString(2131889004), 0).show(DevlockQuickLoginActivity.j(this.a));
   }
   
   public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
@@ -85,7 +85,7 @@ class DevlockQuickLoginActivity$3
       paramArrayOfByte1.append(paramInt);
       QLog.d("DevlockQuickLoginActivity", 2, paramArrayOfByte1.toString());
     }
-    if (DevlockQuickLoginActivity.b(this.a))
+    if (DevlockQuickLoginActivity.f(this.a))
     {
       this.a.c();
       return;
@@ -98,18 +98,18 @@ class DevlockQuickLoginActivity$3
     this.a.c();
     if (paramInt == 21)
     {
-      paramString = this.a.getString(2131692035);
-      paramArrayOfByte1 = this.a.getString(2131719318);
+      paramString = this.a.getString(2131889002);
+      paramArrayOfByte1 = this.a.getString(2131916870);
       this.a.a(null, paramString, paramArrayOfByte1, new DevlockQuickLoginActivity.3.2(this));
       return;
     }
-    paramString = this.a.getString(2131692036);
-    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
+    paramString = this.a.getString(2131889003);
+    QQToast.makeText(DevlockQuickLoginActivity.i(this.a), 1, paramString, 0).show(DevlockQuickLoginActivity.h(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockQuickLoginActivity.3
  * JD-Core Version:    0.7.0.1
  */

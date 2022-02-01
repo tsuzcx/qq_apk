@@ -74,15 +74,6 @@ public class FavEmoticonPreviewData
     return 0;
   }
   
-  public long a()
-  {
-    EmoticonInfo localEmoticonInfo = this.a;
-    if ((localEmoticonInfo instanceof ICustomEmotionInfo)) {
-      return ((ICustomEmotionInfo)localEmoticonInfo).getEmoId();
-    }
-    return 0L;
-  }
-  
   public Drawable a(Context paramContext)
   {
     EmoticonInfo localEmoticonInfo = this.a;
@@ -98,40 +89,10 @@ public class FavEmoticonPreviewData
     return null;
   }
   
-  public CustomEmotionData a()
-  {
-    Object localObject = this.a;
-    if (((localObject instanceof IFavoriteEmoticonInfo)) && (((IFavoriteEmoticonInfo)localObject).getResID() != null))
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
-      {
-        localObject = ((IFavroamingDBManagerService)((QQAppInterface)localObject).getRuntimeService(IFavroamingDBManagerService.class)).getEmoticonDataList();
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
-            if (((IFavoriteEmoticonInfo)this.a).getResID().equalsIgnoreCase(localCustomEmotionData.resid)) {
-              return localCustomEmotionData;
-            }
-          }
-        }
-      }
-    }
-    return null;
-  }
-  
-  public EmoticonInfo a()
-  {
-    return this.a;
-  }
-  
   public void a(Bundle paramBundle, int paramInt)
   {
     super.a(paramBundle, paramInt);
-    paramBundle.putInt("cur_emotion_id", (int)a());
+    paramBundle.putInt("cur_emotion_id", (int)b());
     if ((this.a instanceof CameraEmoticonInfo)) {
       paramInt = 1;
     } else {
@@ -207,6 +168,15 @@ public class FavEmoticonPreviewData
     return bool1;
   }
   
+  public long b()
+  {
+    EmoticonInfo localEmoticonInfo = this.a;
+    if ((localEmoticonInfo instanceof ICustomEmotionInfo)) {
+      return ((ICustomEmotionInfo)localEmoticonInfo).getEmoId();
+    }
+    return 0L;
+  }
+  
   public EmoticonPreviewData b(Bundle paramBundle)
   {
     if (paramBundle.containsKey("cur_emotion_id"))
@@ -241,24 +211,54 @@ public class FavEmoticonPreviewData
     return null;
   }
   
-  public boolean b()
+  public EmoticonInfo c()
+  {
+    return this.a;
+  }
+  
+  public CustomEmotionData d()
+  {
+    Object localObject = this.a;
+    if (((localObject instanceof IFavoriteEmoticonInfo)) && (((IFavoriteEmoticonInfo)localObject).getResID() != null))
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = ((IFavroamingDBManagerService)((QQAppInterface)localObject).getRuntimeService(IFavroamingDBManagerService.class)).getEmoticonDataList();
+        if (localObject != null)
+        {
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            CustomEmotionData localCustomEmotionData = (CustomEmotionData)((Iterator)localObject).next();
+            if (((IFavoriteEmoticonInfo)this.a).getResID().equalsIgnoreCase(localCustomEmotionData.resid)) {
+              return localCustomEmotionData;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }
+  
+  public boolean e()
   {
     return true;
   }
   
-  public boolean c()
+  public boolean f()
   {
     return false;
   }
   
-  public boolean d()
+  public boolean g()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.FavEmoticonPreviewData
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class VoiceAssistantMainImpl
 {
   public boolean allIsInit()
   {
-    return WakeManager.a().a();
+    return WakeManager.a().d();
   }
   
   public CommandInfo buildShowRecordViewCommand(String paramString1, String paramString2, String paramString3)
@@ -59,17 +59,17 @@ public class VoiceAssistantMainImpl
   
   public int getReportType()
   {
-    return CommandUtils.a();
+    return CommandUtils.d();
   }
   
   public boolean getWakeDialogWakeReport()
   {
-    return WakeDialog.a;
+    return WakeDialog.b;
   }
   
   public boolean getWakeManagerEnable()
   {
-    return WakeManager.a().b();
+    return WakeManager.a().h();
   }
   
   public String getWakeManagerTag()
@@ -79,7 +79,7 @@ public class VoiceAssistantMainImpl
   
   public void initAndStartRecord(String paramString)
   {
-    WakeManager.a().b().a(paramString);
+    WakeManager.a().c().a(paramString);
   }
   
   public List<String> lastFileModified(String paramString, int paramInt)
@@ -149,7 +149,7 @@ public class VoiceAssistantMainImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.api.impl.VoiceAssistantMainImpl
  * JD-Core Version:    0.7.0.1
  */

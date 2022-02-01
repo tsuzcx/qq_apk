@@ -21,7 +21,7 @@ public class VideoFeedsLikeAnimateManager$LikeAnimateObserver
       {
         paramObject = (Bundle)paramObject;
         VideoFeedsLikeAnimateManager.a(this.a, (LikeAnimationInfo)paramObject.getParcelable("key_like_animation_info"));
-        ReadInJoyHelper.b();
+        ReadInJoyHelper.f();
         ReadInJoyHelper.a(VideoFeedsLikeAnimateManager.a(this.a));
         paramObject = this.a;
         VideoFeedsLikeAnimateManager.a(paramObject, VideoFeedsLikeAnimateManager.a(paramObject), true);
@@ -31,7 +31,7 @@ public class VideoFeedsLikeAnimateManager$LikeAnimateObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.playfeeds.VideoFeedsLikeAnimateManager.LikeAnimateObserver
  * JD-Core Version:    0.7.0.1
  */

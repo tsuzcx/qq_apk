@@ -75,82 +75,6 @@ public class FTSMessageCodec
     return localFTSMessage;
   }
   
-  public static FTSMessageDelete a(FTSMessage paramFTSMessage)
-  {
-    if (paramFTSMessage == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.fts.utils", 2, "codecFTSMessage ftsMessage is null");
-      }
-      return null;
-    }
-    FTSMessageDelete localFTSMessageDelete = new FTSMessageDelete();
-    localFTSMessageDelete.mOpt = paramFTSMessage.mOpt;
-    localFTSMessageDelete.mType = paramFTSMessage.mType;
-    localFTSMessageDelete.mContent = paramFTSMessage.mContent;
-    localFTSMessageDelete.mOId = paramFTSMessage.mOId;
-    localFTSMessageDelete.uin = paramFTSMessage.uin;
-    localFTSMessageDelete.istroop = paramFTSMessage.istroop;
-    localFTSMessageDelete.senderuin = paramFTSMessage.senderuin;
-    localFTSMessageDelete.msgtype = paramFTSMessage.msgtype;
-    try
-    {
-      if (paramFTSMessage.msgExts != null)
-      {
-        localFTSMessageDelete.msgExts = ((MsgExts)paramFTSMessage.msgExts.clone());
-        return localFTSMessageDelete;
-      }
-      localFTSMessageDelete.msgExts = null;
-      return localFTSMessageDelete;
-    }
-    catch (Exception paramFTSMessage)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.fts.utils", 2, "codecFTSMessage, ", paramFTSMessage);
-      }
-      localFTSMessageDelete.msgExts = null;
-    }
-    return localFTSMessageDelete;
-  }
-  
-  public static FTSMessageForDel a(FTSMessageSync paramFTSMessageSync)
-  {
-    if (paramFTSMessageSync == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.fts.utils", 2, "decodecFTSMessage ftsMessageSync is null");
-      }
-      return null;
-    }
-    FTSMessageForDel localFTSMessageForDel = new FTSMessageForDel();
-    localFTSMessageForDel.mOpt = paramFTSMessageSync.mOpt;
-    localFTSMessageForDel.mType = paramFTSMessageSync.mType;
-    localFTSMessageForDel.mContent = paramFTSMessageSync.mContent;
-    localFTSMessageForDel.mOId = paramFTSMessageSync.mOId;
-    localFTSMessageForDel.uin = paramFTSMessageSync.uin;
-    localFTSMessageForDel.istroop = paramFTSMessageSync.istroop;
-    localFTSMessageForDel.senderuin = paramFTSMessageSync.senderuin;
-    localFTSMessageForDel.msgtype = paramFTSMessageSync.msgtype;
-    try
-    {
-      if (paramFTSMessageSync.msgExts != null)
-      {
-        localFTSMessageForDel.msgExts = ((MsgExts)paramFTSMessageSync.msgExts.clone());
-        return localFTSMessageForDel;
-      }
-      localFTSMessageForDel.msgExts = null;
-      return localFTSMessageForDel;
-    }
-    catch (Exception paramFTSMessageSync)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.fts.utils", 2, "decodecFTSMessage, ", paramFTSMessageSync);
-      }
-      localFTSMessageForDel.msgExts = null;
-    }
-    return localFTSMessageForDel;
-  }
-  
   public static FTSMessageSync a(FTSMessage paramFTSMessage)
   {
     if (paramFTSMessage == null)
@@ -201,10 +125,86 @@ public class FTSMessageCodec
     localFTSMessage.msgtype = paramMessageRecord.msgtype;
     return localFTSMessage;
   }
+  
+  public static FTSMessageDelete b(FTSMessage paramFTSMessage)
+  {
+    if (paramFTSMessage == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "codecFTSMessage ftsMessage is null");
+      }
+      return null;
+    }
+    FTSMessageDelete localFTSMessageDelete = new FTSMessageDelete();
+    localFTSMessageDelete.mOpt = paramFTSMessage.mOpt;
+    localFTSMessageDelete.mType = paramFTSMessage.mType;
+    localFTSMessageDelete.mContent = paramFTSMessage.mContent;
+    localFTSMessageDelete.mOId = paramFTSMessage.mOId;
+    localFTSMessageDelete.uin = paramFTSMessage.uin;
+    localFTSMessageDelete.istroop = paramFTSMessage.istroop;
+    localFTSMessageDelete.senderuin = paramFTSMessage.senderuin;
+    localFTSMessageDelete.msgtype = paramFTSMessage.msgtype;
+    try
+    {
+      if (paramFTSMessage.msgExts != null)
+      {
+        localFTSMessageDelete.msgExts = ((MsgExts)paramFTSMessage.msgExts.clone());
+        return localFTSMessageDelete;
+      }
+      localFTSMessageDelete.msgExts = null;
+      return localFTSMessageDelete;
+    }
+    catch (Exception paramFTSMessage)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.utils", 2, "codecFTSMessage, ", paramFTSMessage);
+      }
+      localFTSMessageDelete.msgExts = null;
+    }
+    return localFTSMessageDelete;
+  }
+  
+  public static FTSMessageForDel b(FTSMessageSync paramFTSMessageSync)
+  {
+    if (paramFTSMessageSync == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "decodecFTSMessage ftsMessageSync is null");
+      }
+      return null;
+    }
+    FTSMessageForDel localFTSMessageForDel = new FTSMessageForDel();
+    localFTSMessageForDel.mOpt = paramFTSMessageSync.mOpt;
+    localFTSMessageForDel.mType = paramFTSMessageSync.mType;
+    localFTSMessageForDel.mContent = paramFTSMessageSync.mContent;
+    localFTSMessageForDel.mOId = paramFTSMessageSync.mOId;
+    localFTSMessageForDel.uin = paramFTSMessageSync.uin;
+    localFTSMessageForDel.istroop = paramFTSMessageSync.istroop;
+    localFTSMessageForDel.senderuin = paramFTSMessageSync.senderuin;
+    localFTSMessageForDel.msgtype = paramFTSMessageSync.msgtype;
+    try
+    {
+      if (paramFTSMessageSync.msgExts != null)
+      {
+        localFTSMessageForDel.msgExts = ((MsgExts)paramFTSMessageSync.msgExts.clone());
+        return localFTSMessageForDel;
+      }
+      localFTSMessageForDel.msgExts = null;
+      return localFTSMessageForDel;
+    }
+    catch (Exception paramFTSMessageSync)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.utils", 2, "decodecFTSMessage, ", paramFTSMessageSync);
+      }
+      localFTSMessageForDel.msgExts = null;
+    }
+    return localFTSMessageForDel;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.fts.v1.utils.FTSMessageCodec
  * JD-Core Version:    0.7.0.1
  */

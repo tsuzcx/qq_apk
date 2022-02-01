@@ -8,28 +8,22 @@ import kotlin.Metadata;
 public final class BarrageDomObject
   extends DomObject
 {
-  public static final BarrageDomObject.Companion a;
-  private float a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageDomObject$Companion = new BarrageDomObject.Companion(null);
-  }
+  public static final BarrageDomObject.Companion a = new BarrageDomObject.Companion(null);
+  private float b = -1.0F;
   
   public BarrageDomObject()
   {
-    this.jdField_a_of_type_Float = -1.0F;
     setMeasureFunction((FlexNode.MeasureFunction)new BarrageDomObject.measureFunction.1(this));
   }
   
   public final void a(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
+    this.b = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageDomObject
  * JD-Core Version:    0.7.0.1
  */

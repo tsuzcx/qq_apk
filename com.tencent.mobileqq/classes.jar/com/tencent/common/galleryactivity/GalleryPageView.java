@@ -13,78 +13,73 @@ import com.tencent.widget.AdapterView;
 public class GalleryPageView
   extends AbstractGalleryPageView
 {
-  public int a;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  AbstractGalleryScene jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene;
-  Runnable jdField_a_of_type_JavaLangRunnable = new GalleryPageView.3(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  AlphaAnimation b = new AlphaAnimation(1.0F, 0.0F);
-  
-  public GalleryPageView()
-  {
-    this.jdField_a_of_type_Int = 3;
-  }
+  TextView a;
+  AbstractGalleryScene b;
+  public int c = 3;
+  Runnable d = new GalleryPageView.3(this);
+  AlphaAnimation e = new AlphaAnimation(0.0F, 1.0F);
+  AlphaAnimation f = new AlphaAnimation(1.0F, 0.0F);
+  private boolean g = true;
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    this.a.setVisibility(paramInt);
   }
   
   public void a(Activity paramActivity, AbstractGalleryScene paramAbstractGalleryScene, int paramInt)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramAbstractGalleryScene.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramActivity);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramAbstractGalleryScene.C();
+    this.a = new TextView(paramActivity);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(12, -1);
     localLayoutParams.addRule(14, -1);
-    localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.jdField_a_of_type_Int, paramActivity.getResources().getDisplayMetrics()) + paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#e6e9e9e9"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131367438);
-    localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(300L);
-    this.b.setDuration(300L);
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene = paramAbstractGalleryScene;
-    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setAnimationListener(new GalleryPageView.1(this));
-    this.b.setAnimationListener(new GalleryPageView.2(this));
+    localLayoutParams.bottomMargin = ((int)TypedValue.applyDimension(1, this.c, paramActivity.getResources().getDisplayMetrics()) + paramInt);
+    this.a.setTextColor(Color.parseColor("#e6e9e9e9"));
+    this.a.setTextSize(2, 15.0F);
+    this.a.setId(2131433941);
+    localRelativeLayout.addView(this.a, localLayoutParams);
+    this.a.setVisibility(4);
+    this.e.setDuration(300L);
+    this.f.setDuration(300L);
+    this.b = paramAbstractGalleryScene;
+    this.e.setAnimationListener(new GalleryPageView.1(this));
+    this.f.setAnimationListener(new GalleryPageView.2(this));
   }
   
   public void a(AdapterView paramAdapterView, int paramInt)
   {
     if (paramAdapterView.getCount() > 1)
     {
-      TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+      TextView localTextView = this.a;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(paramInt + 1);
       localStringBuilder.append("/");
       localStringBuilder.append(paramAdapterView.getCount());
       localTextView.setText(localStringBuilder.toString());
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 4)
+      if (this.a.getVisibility() == 4)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-        if (this.jdField_a_of_type_Boolean)
+        this.a.setVisibility(0);
+        this.a.startAnimation(this.e);
+        if (this.g)
         {
-          this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-          this.jdField_a_of_type_Boolean = false;
+          this.a.postDelayed(this.d, 3000L);
+          this.g = false;
           return;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+        this.a.postDelayed(this.d, 2000L);
         return;
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetTextView.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
+      this.a.removeCallbacks(this.d);
+      this.a.clearAnimation();
+      this.a.postDelayed(this.d, 2000L);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.common.galleryactivity.GalleryPageView
  * JD-Core Version:    0.7.0.1
  */

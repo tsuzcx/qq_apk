@@ -10,13 +10,13 @@ class DefaultPlayerVideoListSynchronizer$1
 {
   protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.a(this.jdField_a_of_type_Int);
+    this.b.a(this.a);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ class TroopInteractGiftAnimationController$1$1$2
   
   public void a(int paramInt)
   {
-    if (this.a.a.this$0.a != null) {
-      this.a.a.this$0.a.setProgress(paramInt / 30);
+    if (this.a.b.this$0.c != null) {
+      this.a.b.this$0.c.setProgress(paramInt / 30);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1.2
  * JD-Core Version:    0.7.0.1
  */

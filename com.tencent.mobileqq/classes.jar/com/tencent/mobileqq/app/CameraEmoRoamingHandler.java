@@ -47,19 +47,18 @@ public class CameraEmoRoamingHandler
   implements ICameraEmoRoamingHandler
 {
   public static final String a = "com.tencent.mobileqq.app.CameraEmoRoamingHandler";
-  private ConcurrentHashMap<Integer, CameraEmotionData> a;
+  private ConcurrentHashMap<Integer, CameraEmotionData> c = new ConcurrentHashMap();
   
   protected CameraEmoRoamingHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     j = paramToServiceMsg.extraData.getInt("camera_emo_upload_id");
     QLog.d("CameraEmoRoamingHandler", 1, new Object[] { "timtest handlePrepareUploadInfo start, ", Integer.valueOf(j) });
-    localCameraEmotionData = (CameraEmotionData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(j));
+    localCameraEmotionData = (CameraEmotionData)this.c.get(Integer.valueOf(j));
     if ((paramObject != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
       paramToServiceMsg = new CameraEmotionRoaming_sso.RspBody();
     }
@@ -85,12 +84,12 @@ public class CameraEmoRoamingHandler
           paramToServiceMsg.append(", templateId:");
           paramToServiceMsg.append(localCameraEmotionData.templateId);
           QLog.d("CameraEmoRoamingHandler", 1, paramToServiceMsg.toString());
-          ((ICameraEmoRoamingManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class, "")).realUploadCustomEmoticon(localCameraEmotionData);
+          ((ICameraEmoRoamingManagerService)this.b.getRuntimeService(ICameraEmoRoamingManagerService.class, "")).realUploadCustomEmoticon(localCameraEmotionData);
         }
         else if (i == 1)
         {
           a(1, false, Integer.valueOf(2), localCameraEmotionData);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(j));
+          this.c.remove(Integer.valueOf(j));
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("func handlePrepareUploadInfo fail, nCanupload:");
           paramToServiceMsg.append(i);
@@ -99,7 +98,7 @@ public class CameraEmoRoamingHandler
         else
         {
           a(1, false, Integer.valueOf(13), localCameraEmotionData);
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(j));
+          this.c.remove(Integer.valueOf(j));
           paramToServiceMsg = new StringBuilder();
           paramToServiceMsg.append("func handlePrepareUploadInfo fail, nCanupload:");
           paramToServiceMsg.append(i);
@@ -113,7 +112,7 @@ public class CameraEmoRoamingHandler
         paramToServiceMsg.append(paramFromServiceMsg);
         QLog.d("CameraEmoRoamingHandler", 1, paramToServiceMsg.toString());
         a(1, false, Integer.valueOf(13), localCameraEmotionData);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(j));
+        this.c.remove(Integer.valueOf(j));
       }
       paramObject = new HashMap();
       if (i == 0) {
@@ -145,7 +144,7 @@ public class CameraEmoRoamingHandler
       paramFromServiceMsg.append(paramToServiceMsg.getMessage());
       QLog.e("CameraEmoRoamingHandler", 1, paramFromServiceMsg.toString());
       a(1, false, Integer.valueOf(100), localCameraEmotionData);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(j));
+      this.c.remove(Integer.valueOf(j));
       return;
       paramObject = new StringBuilder();
       paramObject.append("fail to  handlePrepareUploadInfo error code is ");
@@ -158,7 +157,7 @@ public class CameraEmoRoamingHandler
       paramObject.append(paramToServiceMsg);
       QLog.e("CameraEmoRoamingHandler", 1, paramObject.toString());
       a(1, false, Integer.valueOf(12), localCameraEmotionData);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(j));
+      this.c.remove(Integer.valueOf(j));
       return;
     }
     catch (OutOfMemoryError paramToServiceMsg)
@@ -168,7 +167,7 @@ public class CameraEmoRoamingHandler
     }
     QLog.e("CameraEmoRoamingHandler", 1, "handlePrepareUploadInfo oom");
     a(1, false, Integer.valueOf(100), localCameraEmotionData);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(j));
+    this.c.remove(Integer.valueOf(j));
   }
   
   private void a(List<CameraEmotionRoaming_sso.ImgInfo> paramList, List<CameraEmoImg> paramList1, List<String> paramList2)
@@ -184,7 +183,7 @@ public class CameraEmoRoamingHandler
         String str2 = paramList.url.get().toStringUtf8();
         String str3 = paramList.bytes_md5.get().toStringUtf8();
         String str5 = paramList.bytes_widget_id.get().toStringUtf8();
-        if (!StringUtil.a(str4))
+        if (!StringUtil.isEmpty(str4))
         {
           CameraEmoImg localCameraEmoImg = new CameraEmoImg();
           localCameraEmoImg.a = str4;
@@ -227,7 +226,7 @@ public class CameraEmoRoamingHandler
   {
     QLog.d("CameraEmoRoamingHandler", 1, "timtest handleNotifyServerUploadStatus start");
     i = paramToServiceMsg.extraData.getInt("camera_emo_upload_id");
-    localCameraEmotionData = (CameraEmotionData)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+    localCameraEmotionData = (CameraEmotionData)this.c.get(Integer.valueOf(i));
     if ((paramObject != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
       paramToServiceMsg = new CameraEmotionRoaming_sso.RspBody();
     }
@@ -240,13 +239,13 @@ public class CameraEmoRoamingHandler
       {
         localCameraEmotionData.url = paramToServiceMsg.img_info.url.get().toStringUtf8();
         a(1, true, Integer.valueOf(0), localCameraEmotionData);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(i));
+        this.c.remove(Integer.valueOf(i));
         QLog.e("CameraEmoRoamingHandler", 1, "func handleNotifyServerUploadStatus suc");
       }
       else
       {
         a(1, false, Integer.valueOf(13), localCameraEmotionData);
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(i));
+        this.c.remove(Integer.valueOf(i));
         QLog.e("CameraEmoRoamingHandler", 1, new Object[] { "func handleNotifyServerUploadStatus fail, result:", Integer.valueOf(j) });
       }
       paramFromServiceMsg = new HashMap();
@@ -274,7 +273,7 @@ public class CameraEmoRoamingHandler
       paramFromServiceMsg.append(paramToServiceMsg.getMessage());
       QLog.e("CameraEmoRoamingHandler", 1, paramFromServiceMsg.toString());
       a(1, false, Integer.valueOf(100), localCameraEmotionData);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(i));
+      this.c.remove(Integer.valueOf(i));
       return;
       paramObject = new StringBuilder();
       paramObject.append("fail to  handlePrepareUploadInfo error code is ");
@@ -287,7 +286,7 @@ public class CameraEmoRoamingHandler
       paramObject.append(paramToServiceMsg);
       QLog.e("CameraEmoRoamingHandler", 1, paramObject.toString());
       a(1, false, Integer.valueOf(12), localCameraEmotionData);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(i));
+      this.c.remove(Integer.valueOf(i));
       return;
     }
     catch (OutOfMemoryError paramToServiceMsg)
@@ -297,22 +296,22 @@ public class CameraEmoRoamingHandler
     }
     QLog.e("CameraEmoRoamingHandler", 1, "handleNotifyServerUploadStatus oom");
     a(1, false, Integer.valueOf(100), localCameraEmotionData);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(i));
+    this.c.remove(Integer.valueOf(i));
   }
   
   public void a()
   {
     QLog.d("CameraEmoRoamingHandler", 1, "timtest queryUserEmoRoamingReq  start");
-    String str = ((ICameraEmoRoamingManagerService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(ICameraEmoRoamingManagerService.class, "")).getListVersion();
+    String str = ((ICameraEmoRoamingManagerService)this.b.getRuntimeService(ICameraEmoRoamingManagerService.class, "")).getListVersion();
     Object localObject = new CameraEmotionRoaming_sso.GetListReq();
     ((CameraEmotionRoaming_sso.GetListReq)localObject).client_timestamp_version.set(ByteStringMicro.copyFrom(str.getBytes()));
     CameraEmotionRoaming_sso.ReqBody localReqBody = new CameraEmotionRoaming_sso.ReqBody();
-    localReqBody.uint64_src_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    localReqBody.uint64_src_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     localReqBody.uint32_cmd_type.set(3);
     localReqBody.uint32_src_term.set(3);
-    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("8.7.0".getBytes()));
+    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("8.8.17".getBytes()));
     localReqBody.get_list_req.set((MessageMicro)localObject);
-    localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "SelfGif.Op");
+    localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "SelfGif.Op");
     ((ToServiceMsg)localObject).extraData.putInt("cmd_camera_emo_subcmd", 3);
     ((ToServiceMsg)localObject).extraData.putString("cmd_param_data_version", str);
     ((ToServiceMsg)localObject).putWupBuffer(localReqBody.toByteArray());
@@ -338,7 +337,7 @@ public class CameraEmoRoamingHandler
       return;
     }
     QLog.d("CameraEmoRoamingHandler", 1, new Object[] { "timtest prepareUploadEmoReq start, md5:", paramCameraEmotionData.md5, ", size:", Long.valueOf(paramLong), ", emoId:", Integer.valueOf(paramCameraEmotionData.emoId) });
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramCameraEmotionData.emoId), paramCameraEmotionData);
+    this.c.put(Integer.valueOf(paramCameraEmotionData.emoId), paramCameraEmotionData);
     Object localObject1 = new CameraEmotionRoaming_sso.UpLoadReq();
     Object localObject2 = new CameraEmotionRoaming_sso.UploadImgInfo();
     ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).bytes_img_md5.set(ByteStringMicro.copyFrom(paramCameraEmotionData.md5.getBytes()));
@@ -347,12 +346,12 @@ public class CameraEmoRoamingHandler
     ((CameraEmotionRoaming_sso.UploadImgInfo)localObject2).uint64_img_size.set(paramLong);
     ((CameraEmotionRoaming_sso.UpLoadReq)localObject1).img_info.set((MessageMicro)localObject2);
     localObject2 = new CameraEmotionRoaming_sso.ReqBody();
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint64_src_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint64_src_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint32_cmd_type.set(1);
     ((CameraEmotionRoaming_sso.ReqBody)localObject2).uint32_src_term.set(3);
-    ((CameraEmotionRoaming_sso.ReqBody)localObject2).bytes_version.set(ByteStringMicro.copyFrom("8.7.0".getBytes()));
+    ((CameraEmotionRoaming_sso.ReqBody)localObject2).bytes_version.set(ByteStringMicro.copyFrom("8.8.17".getBytes()));
     ((CameraEmotionRoaming_sso.ReqBody)localObject2).upLoad_req.set((MessageMicro)localObject1);
-    localObject1 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "SelfGif.Op");
+    localObject1 = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "SelfGif.Op");
     ((ToServiceMsg)localObject1).extraData.putInt("cmd_camera_emo_subcmd", 1);
     ((ToServiceMsg)localObject1).extraData.putInt("camera_emo_upload_id", paramCameraEmotionData.emoId);
     ((ToServiceMsg)localObject1).putWupBuffer(((CameraEmotionRoaming_sso.ReqBody)localObject2).toByteArray());
@@ -396,12 +395,12 @@ public class CameraEmoRoamingHandler
     ((PBBytesField)localObject3).set(ByteStringMicro.copyFrom(((String)localObject1).getBytes()));
     localUpLoadStateReq.upload_state.add(localUpLoadState);
     localObject1 = new CameraEmotionRoaming_sso.ReqBody();
-    ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint64_src_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint64_src_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
     ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint32_cmd_type.set(2);
     ((CameraEmotionRoaming_sso.ReqBody)localObject1).uint32_src_term.set(3);
-    ((CameraEmotionRoaming_sso.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom("8.7.0".getBytes()));
+    ((CameraEmotionRoaming_sso.ReqBody)localObject1).bytes_version.set(ByteStringMicro.copyFrom("8.8.17".getBytes()));
     ((CameraEmotionRoaming_sso.ReqBody)localObject1).upLoad_state_req.set(localUpLoadStateReq);
-    localObject2 = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "SelfGif.Op");
+    localObject2 = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "SelfGif.Op");
     ((ToServiceMsg)localObject2).extraData.putInt("cmd_camera_emo_subcmd", 2);
     ((ToServiceMsg)localObject2).extraData.putInt("camera_emo_upload_id", paramCameraEmotionData.emoId);
     ((ToServiceMsg)localObject2).putWupBuffer(((CameraEmotionRoaming_sso.ReqBody)localObject1).toByteArray());
@@ -535,12 +534,12 @@ public class CameraEmoRoamingHandler
         i += 1;
       }
       paramList = new CameraEmotionRoaming_sso.ReqBody();
-      paramList.uint64_src_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+      paramList.uint64_src_uin.set(Long.parseLong(this.b.getCurrentAccountUin()));
       paramList.uint32_cmd_type.set(4);
       paramList.uint32_src_term.set(3);
-      paramList.bytes_version.set(ByteStringMicro.copyFrom("8.7.0".getBytes()));
+      paramList.bytes_version.set(ByteStringMicro.copyFrom("8.8.17".getBytes()));
       paramList.del_req.set((MessageMicro)localObject);
-      localObject = new ToServiceMsg("mobileqq.service", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "SelfGif.Op");
+      localObject = new ToServiceMsg("mobileqq.service", this.b.getCurrentAccountUin(), "SelfGif.Op");
       ((ToServiceMsg)localObject).extraData.putInt("cmd_camera_emo_subcmd", 4);
       ((ToServiceMsg)localObject).extraData.putBoolean("cmd_param_need_sync", paramBoolean);
       ((ToServiceMsg)localObject).putWupBuffer(paramList.toByteArray());
@@ -620,7 +619,7 @@ public class CameraEmoRoamingHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.CameraEmoRoamingHandler
  * JD-Core Version:    0.7.0.1
  */

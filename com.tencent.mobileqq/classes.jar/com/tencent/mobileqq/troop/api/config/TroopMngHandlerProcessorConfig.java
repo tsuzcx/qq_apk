@@ -12,15 +12,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TroopMngHandlerProcessorConfig
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static ArrayList<AbsTroopMngHandlerProcessor> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private static AtomicBoolean a = new AtomicBoolean(false);
+  private static final Object b = new Object();
+  private static ArrayList<AbsTroopMngHandlerProcessor> c = new ArrayList();
   
   public static void a()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (b)
     {
-      if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      if (a.get()) {
         return;
       }
       if (TroopCustomizedProcessorRegister.d != null)
@@ -32,7 +32,7 @@ public class TroopMngHandlerProcessorConfig
           try
           {
             localObject3 = (AbsTroopMngHandlerProcessor)((Class)localObject3).newInstance();
-            jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+            c.add(localObject3);
           }
           catch (Throwable localThrowable)
           {
@@ -40,7 +40,7 @@ public class TroopMngHandlerProcessorConfig
           }
         }
       }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      a.set(true);
       return;
     }
     for (;;)
@@ -51,7 +51,7 @@ public class TroopMngHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMngHandlerProcessor)localIterator.next()).b(paramAppInterface, paramString);
     }
@@ -59,7 +59,7 @@ public class TroopMngHandlerProcessorConfig
   
   public static void a(@NonNull AppInterface paramAppInterface, String paramString1, String paramString2, TroopInfo paramTroopInfo)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMngHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString1, paramString2, paramTroopInfo);
     }
@@ -67,7 +67,7 @@ public class TroopMngHandlerProcessorConfig
   
   public static void a(String paramString, int paramInt, Parcelable paramParcelable)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMngHandlerProcessor)localIterator.next()).a(paramString, paramInt, paramParcelable);
     }
@@ -75,7 +75,7 @@ public class TroopMngHandlerProcessorConfig
   
   public static void b(@NonNull AppInterface paramAppInterface, String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMngHandlerProcessor)localIterator.next()).d(paramAppInterface, paramString);
     }
@@ -83,7 +83,7 @@ public class TroopMngHandlerProcessorConfig
   
   public static void c(@NonNull AppInterface paramAppInterface, String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMngHandlerProcessor)localIterator.next()).a(paramAppInterface, paramString);
     }
@@ -91,7 +91,7 @@ public class TroopMngHandlerProcessorConfig
   
   public static void d(@NonNull AppInterface paramAppInterface, String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = c.iterator();
     while (localIterator.hasNext()) {
       ((AbsTroopMngHandlerProcessor)localIterator.next()).c(paramAppInterface, paramString);
     }
@@ -99,7 +99,7 @@ public class TroopMngHandlerProcessorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopMngHandlerProcessorConfig
  * JD-Core Version:    0.7.0.1
  */

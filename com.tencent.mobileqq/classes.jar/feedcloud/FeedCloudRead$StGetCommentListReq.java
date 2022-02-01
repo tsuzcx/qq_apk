@@ -22,18 +22,19 @@ public final class FeedCloudRead$StGetCommentListReq
   public final PBInt32Field from = PBField.initInt32(0);
   public final PBStringField likeKey = PBField.initString("");
   public final PBUInt32Field listNum = PBField.initUInt32(0);
+  public final PBInt32Field source = PBField.initInt32(0);
   public final PBStringField userId = PBField.initString("");
   
   static
   {
     Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 66, 74 }, new String[] { "extInfo", "userId", "feedId", "listNum", "from", "feedAttchInfo", "busiReqData", "likeKey", "busiTranparent" }, new Object[] { null, "", "", localInteger, localInteger, "", localByteStringMicro, "", null }, StGetCommentListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 66, 74, 80 }, new String[] { "extInfo", "userId", "feedId", "listNum", "from", "feedAttchInfo", "busiReqData", "likeKey", "busiTranparent", "source" }, new Object[] { null, "", "", localInteger, localInteger, "", localByteStringMicro, "", null, localInteger }, StGetCommentListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetCommentListReq
  * JD-Core Version:    0.7.0.1
  */

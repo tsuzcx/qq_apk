@@ -13,15 +13,15 @@ class PhotoListCustomizationDefault$5
   {
     if (paramInt == 0)
     {
-      DropFrameMonitor.a().a("list_photo", false);
+      DropFrameMonitor.b().a("list_photo", false);
       return;
     }
-    DropFrameMonitor.a().a("list_photo");
+    DropFrameMonitor.b().a("list_photo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoListCustomizationDefault.5
  * JD-Core Version:    0.7.0.1
  */

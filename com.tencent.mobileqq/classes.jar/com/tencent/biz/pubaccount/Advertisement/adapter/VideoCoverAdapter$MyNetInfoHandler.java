@@ -14,7 +14,7 @@ class VideoCoverAdapter$MyNetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
     }
-    VideoCoverAdapter.a(this.a);
+    VideoCoverAdapter.d(this.a);
   }
   
   public void onNetMobile2Wifi(String paramString)
@@ -30,9 +30,9 @@ class VideoCoverAdapter$MyNetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
     }
-    if (!VideoCoverAdapter.a(this.a))
+    if (!VideoCoverAdapter.c(this.a))
     {
-      paramString = this.a.a();
+      paramString = this.a.e();
       if ((paramString != null) && (paramString.isPlaying()))
       {
         this.a.c();
@@ -55,9 +55,9 @@ class VideoCoverAdapter$MyNetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
     }
-    if (!VideoCoverAdapter.a(this.a))
+    if (!VideoCoverAdapter.c(this.a))
     {
-      paramString = this.a.a();
+      paramString = this.a.e();
       if ((paramString != null) && (paramString.isPlaying()))
       {
         this.a.c();
@@ -72,12 +72,12 @@ class VideoCoverAdapter$MyNetInfoHandler
     if (QLog.isColorLevel()) {
       QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
     }
-    VideoCoverAdapter.a(this.a);
+    VideoCoverAdapter.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter.MyNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

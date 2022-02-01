@@ -14,15 +14,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public class GetFeedCommentRequest
   extends NetworkRequest
 {
-  public static final String a;
-  public FeedCommentSync a;
+  public static final String e = StoryApi.a("StorySvc.feed_comment_list_775");
+  public FeedCommentSync f;
   
-  static
+  public String a()
   {
-    jdField_a_of_type_JavaLangString = StoryApi.a("StorySvc.feed_comment_list_775");
+    return e;
   }
   
-  public BaseResponse a(byte[] paramArrayOfByte)
+  public BaseResponse b(byte[] paramArrayOfByte)
   {
     qqstory_service.RspFeedCommentList localRspFeedCommentList = new qqstory_service.RspFeedCommentList();
     try
@@ -36,29 +36,24 @@ public class GetFeedCommentRequest
     return new GetFeedCommentRequest.GetFeedCommentResponse(localRspFeedCommentList);
   }
   
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  protected byte[] a()
+  protected byte[] c()
   {
     qqstory_service.ReqFeedCommentList localReqFeedCommentList = new qqstory_service.ReqFeedCommentList();
-    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_JavaLangString));
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString = "";
+    localReqFeedCommentList.feed_id.set(ByteStringMicro.copyFromUtf8(this.f.a));
+    if (this.f.b == null) {
+      this.f.b = "";
     }
-    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_JavaLangString));
-    localReqFeedCommentList.source.set(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_Int != -1) {
-      localReqFeedCommentList.type.set(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_b_of_type_Int);
+    localReqFeedCommentList.cookie.set(ByteStringMicro.copyFromUtf8(this.f.b));
+    localReqFeedCommentList.source.set(this.f.c);
+    if (this.f.d != -1) {
+      localReqFeedCommentList.type.set(this.f.d);
     }
     return localReqFeedCommentList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

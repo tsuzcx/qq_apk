@@ -9,12 +9,12 @@ class ReadInJoySkinManager$1
   
   public Drawable a()
   {
-    return a("readinjoy_diandian_icon_foreground");
+    return d("readinjoy_diandian_icon_foreground");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.skin.ReadInJoySkinManager.1
  * JD-Core Version:    0.7.0.1
  */

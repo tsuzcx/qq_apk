@@ -11,101 +11,101 @@ import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
 
 public class VoiceTextSlideViewHelper
 {
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private VoiceTextEditScrollerView jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView;
-  private VoiceTextPanel jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel;
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.getTop();
-  }
+  private VoiceTextPanel a;
+  private RelativeLayout b;
+  private FrameLayout c;
+  private VoiceTextEditScrollerView d;
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.a());
+    this.d.setListener(this.a.getVoiceTextScrollerListener());
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setMaxHeight(paramInt);
+    this.d.setMaxHeight(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    VoiceTextEditScrollerView localVoiceTextEditScrollerView = this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView;
-    localVoiceTextEditScrollerView.a(localVoiceTextEditScrollerView.getTop(), paramInt1, paramInt2, paramInt3, 0, 200, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    VoiceTextEditScrollerView localVoiceTextEditScrollerView = this.d;
+    localVoiceTextEditScrollerView.a(localVoiceTextEditScrollerView.getTop(), paramInt1, paramInt2, paramInt3, 0, 200, this.d);
+    this.b.setVisibility(8);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.a(paramInt4, paramInt2, paramInt3 - paramInt1, paramInt3, 1, 100, this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel);
+    this.d.a(paramInt4, paramInt2, paramInt3 - paramInt1, paramInt3, 1, 100, this.a);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setPanelActionDownPos(paramInt2, paramInt4);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt5, 1073741824));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.layout(paramInt1, 0, paramInt3, paramInt5);
+    this.d.setPanelActionDownPos(paramInt2, paramInt4);
+    this.c.setVisibility(0);
+    this.c.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt5, 1073741824));
+    this.c.layout(paramInt1, 0, paramInt3, paramInt5);
   }
   
   public void a(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.onTouchEvent(paramMotionEvent);
+    this.d.onTouchEvent(paramMotionEvent);
     if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setMaskClick(true);
+      this.d.setMaskClick(true);
     }
   }
   
   public void a(VoiceTextPanel paramVoiceTextPanel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel = paramVoiceTextPanel;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVoiceTextPanel.findViewById(2131368087));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVoiceTextPanel.findViewById(2131370699));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnTouchListener(new VoiceTextSlideViewHelper.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView = ((VoiceTextEditScrollerView)paramVoiceTextPanel.findViewById(2131365169));
+    this.a = paramVoiceTextPanel;
+    this.b = ((RelativeLayout)paramVoiceTextPanel.findViewById(2131434940));
+    this.c = ((FrameLayout)paramVoiceTextPanel.findViewById(2131437976));
+    this.c.setOnTouchListener(new VoiceTextSlideViewHelper.1(this));
+    this.d = ((VoiceTextEditScrollerView)paramVoiceTextPanel.findViewById(2131431322));
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setSlideEnable(paramBoolean);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility();
+    this.d.setSlideEnable(paramBoolean);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setSlideEnable(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130839475));
+    this.b.setVisibility(0);
+    this.d.setSlideEnable(true);
+    this.d.setBackgroundDrawable(this.a.getContext().getResources().getDrawable(2130839665));
   }
   
   public void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setSlideEnable(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130850359));
+    this.b.setVisibility(8);
+    this.d.setSlideEnable(false);
+    this.d.setBackgroundDrawable(this.a.getContext().getResources().getDrawable(2130852150));
   }
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextPanel.getContext().getResources().getDrawable(2130850359));
+    this.b.setVisibility(8);
+    this.d.setBackgroundDrawable(this.a.getContext().getResources().getDrawable(2130852150));
   }
   
   public void e()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioVoicetextpanelUiVoiceTextEditScrollerView.setListener(null);
+    this.d.setListener(null);
+  }
+  
+  public int f()
+  {
+    return this.d.getTop();
+  }
+  
+  public int g()
+  {
+    return this.b.getVisibility();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.ui.viewhelper.VoiceTextSlideViewHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class SurvivalMemberDataSource
 {
   private Map<Integer, SurvivalMemberInfo> a = new ConcurrentHashMap();
   
-  private int a()
+  private int b()
   {
     if (this.a.size() >= GameRoomViewLayoutParamsDef.N) {
       return -1;
@@ -49,7 +49,7 @@ public class SurvivalMemberDataSource
       SurvivalMemberInfo localSurvivalMemberInfo = (SurvivalMemberInfo)localEntry.getValue();
       if (paramLong == localSurvivalMemberInfo.a())
       {
-        int i = localSurvivalMemberInfo.b();
+        int i = localSurvivalMemberInfo.c();
         this.a.remove(localEntry.getKey());
         return i;
       }
@@ -62,7 +62,7 @@ public class SurvivalMemberDataSource
     if (MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount().equals(String.valueOf(paramSurvivalMemberInfo.a()))) {
       return -1;
     }
-    int i = a();
+    int i = b();
     if (i < 0) {
       return i;
     }

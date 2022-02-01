@@ -4,12 +4,13 @@ import PushNotifyPack.C2CMsgReadedNotify;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.helper.GameMsgSayHiHelper;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxABTestApi;
+import com.tencent.mobileqq.activity.recent.gamemsgbox.api.IGameMsgBoxManager;
 import com.tencent.mobileqq.data.ConversationInfo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.api.IGameMsgHelperApi;
 import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
-import com.tencent.mobileqq.gamecenter.api.IGameQQPlayerUtilApi;
+import com.tencent.mobileqq.gamecenter.util.RoleIdUtil;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -21,6 +22,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.DecodeProtoPkgContext;
 import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -76,6 +78,35 @@ public class TinyMsgCodec
     return paramLong;
   }
   
+  private static String a(AppInterface paramAppInterface, TinyInfo paramTinyInfo, MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      paramAppInterface = ((IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getRedDotConfig(paramTinyInfo.toRoleId);
+      paramTinyInfo = paramMessageRecord.getExtInfoFromExtStr(GameMsgSayHiHelper.a);
+      if (TextUtils.isEmpty(paramTinyInfo)) {
+        return paramAppInterface;
+      }
+      int i = Integer.valueOf(paramTinyInfo).intValue();
+      if (TextUtils.isEmpty(paramAppInterface)) {
+        paramAppInterface = new JSONObject();
+      } else {
+        paramAppInterface = new JSONObject(paramAppInterface);
+      }
+      paramAppInterface.put("g", i);
+      paramAppInterface = paramAppInterface.toString();
+      return paramAppInterface;
+    }
+    catch (Throwable paramAppInterface)
+    {
+      paramTinyInfo = new StringBuilder();
+      paramTinyInfo.append("generateExtData error:");
+      paramTinyInfo.append(paramAppInterface);
+      QLog.e("Q.tiny_msg.decoder.TinyMsgCodec", 1, paramTinyInfo.toString());
+    }
+    return "";
+  }
+  
   public static String a(msg_comm.UinPairMsg paramUinPairMsg, AppInterface paramAppInterface, int paramInt)
   {
     long l = paramUinPairMsg.peer_uin.get();
@@ -83,61 +114,6 @@ public class TinyMsgCodec
       return String.valueOf(a(l, paramUinPairMsg, paramAppInterface));
     }
     return String.valueOf(l);
-  }
-  
-  public static void a(AppInterface paramAppInterface, ChatMessage paramChatMessage, String paramString, int paramInt)
-  {
-    if (paramAppInterface != null) {
-      if (paramChatMessage == null) {
-        return;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        MessageRecord localMessageRecord = ((IGameMsgHelperApi)QRoute.api(IGameMsgHelperApi.class)).getLastGameMsg(paramAppInterface, paramString);
-        if (localMessageRecord != null)
-        {
-          paramAppInterface = localMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
-          boolean bool2 = localMessageRecord.isSend();
-          if (bool2) {
-            break label178;
-          }
-          bool1 = true;
-          paramAppInterface = new TinyInfo(paramAppInterface, bool1);
-          paramChatMessage.saveExtInfoToExtStr("ext_key_game_msg_info", paramAppInterface.toJsonStr());
-          if (QLog.isColorLevel())
-          {
-            paramChatMessage = new StringBuilder();
-            paramChatMessage.append("bindTinyInfo is called, issend: ");
-            paramChatMessage.append(bool2);
-            paramChatMessage.append("tinyInfo :");
-            paramChatMessage.append(paramAppInterface);
-            QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, paramChatMessage.toString());
-          }
-        }
-        else
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, "bindTinyInfo is called, there is no last msg.");
-          }
-          paramAppInterface = ((IGameQQPlayerUtilApi)QRoute.api(IGameQQPlayerUtilApi.class)).getMsgExtraString(paramAppInterface, paramString);
-          if (paramAppInterface != null)
-          {
-            paramChatMessage.saveExtInfoToExtStr("ext_key_game_msg_info", paramAppInterface);
-            return;
-          }
-        }
-      }
-      catch (Exception paramAppInterface)
-      {
-        paramAppInterface.printStackTrace();
-      }
-      return;
-      label178:
-      boolean bool1 = false;
-    }
   }
   
   private static void a(AppInterface paramAppInterface, String paramString)
@@ -179,7 +155,7 @@ public class TinyMsgCodec
       if (paramAppInterface == null) {
         return;
       }
-      paramConversationInfo = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().a(paramConversationInfo.uin);
+      paramConversationInfo = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().b(paramConversationInfo.uin);
       try
       {
         long l1 = Long.valueOf((String)paramConversationInfo.first).longValue();
@@ -226,7 +202,7 @@ public class TinyMsgCodec
       if (paramAppInterface == null) {
         return;
       }
-      Object localObject = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().a(paramString);
+      Object localObject = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().b(paramString);
       if (localObject == null) {
         return;
       }
@@ -253,7 +229,7 @@ public class TinyMsgCodec
           ((msg_svc.PbC2CReadedReportReq.UinPairReadInfo)localObject).uint64_to_tiny_id.set(l2);
           paramString = new msg_svc.PbC2CReadedReportReq();
           paramString.pair_info.add((MessageMicro)localObject);
-          paramAppInterface = ((MessageCache)paramAppInterface.getMsgCache()).a();
+          paramAppInterface = ((MessageCache)paramAppInterface.getMsgCache()).e();
           if (paramAppInterface != null) {
             paramString.sync_cookie.set(ByteStringMicro.copyFrom(paramAppInterface));
           }
@@ -288,7 +264,7 @@ public class TinyMsgCodec
     if (paramMsg.msg_head.has())
     {
       paramMsg = (msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.get();
-      if ((!paramDecodeProtoPkgContext.d) && (paramMsg.sig.has()))
+      if ((!paramDecodeProtoPkgContext.j) && (paramMsg.sig.has()))
       {
         paramMsg = paramMsg.sig.get().toByteArray();
         ((MessageCache)paramAppInterface.getMsgCache()).c(paramString1, paramString2, paramMsg);
@@ -307,9 +283,9 @@ public class TinyMsgCodec
   
   public static void a(msg_comm.Msg paramMsg, im_msg_body.Elem paramElem, List<MessageRecord> paramList, AppInterface paramAppInterface, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    Object localObject1 = paramAppInterface;
-    String str3;
-    if ((paramElem != null) && (paramList != null) && (localObject1 != null))
+    Object localObject3 = paramAppInterface;
+    String str4;
+    if ((paramElem != null) && (paramList != null) && (localObject3 != null))
     {
       if (paramList.size() <= 0) {
         return;
@@ -317,134 +293,164 @@ public class TinyMsgCodec
       if (QLog.isColorLevel()) {
         QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, "decodePBMsgElems_GameInterComm");
       }
-      str3 = paramAppInterface.getCurrentAccountUin();
+      str4 = paramAppInterface.getCurrentAccountUin();
     }
-    label897:
-    label903:
-    label910:
-    label917:
-    label924:
-    label930:
-    label936:
-    label942:
+    label1027:
+    label1034:
+    label1041:
+    label1047:
+    label1054:
+    label1060:
+    label1066:
+    label1072:
     for (;;)
     {
       try
       {
         if ((34 == paramElem.common_elem.uint32_service_type.get()) && (paramElem.common_elem.uint32_business_type.get() == 1) && (paramElem.common_elem.bytes_pb_elem.has()))
         {
-          localObject2 = new hummer_commelem.MsgElemInfo_servtype34();
-          ((hummer_commelem.MsgElemInfo_servtype34)localObject2).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
-          boolean bool = ((hummer_commelem.MsgElemInfo_servtype34)localObject2).from_nickname.has();
+          localObject1 = new hummer_commelem.MsgElemInfo_servtype34();
+          ((hummer_commelem.MsgElemInfo_servtype34)localObject1).mergeFrom(paramElem.common_elem.bytes_pb_elem.get().toByteArray());
+          boolean bool = ((hummer_commelem.MsgElemInfo_servtype34)localObject1).from_nickname.has();
           if (!bool) {
-            break label872;
+            break label1014;
           }
-          str1 = ((hummer_commelem.MsgElemInfo_servtype34)localObject2).from_nickname.get().toStringUtf8();
-          if (!((hummer_commelem.MsgElemInfo_servtype34)localObject2).push_window_flag.has()) {
-            break label879;
+          str1 = ((hummer_commelem.MsgElemInfo_servtype34)localObject1).from_nickname.get().toStringUtf8();
+          if (!((hummer_commelem.MsgElemInfo_servtype34)localObject1).push_window_flag.has()) {
+            break label1021;
           }
-          m = ((hummer_commelem.MsgElemInfo_servtype34)localObject2).push_window_flag.get();
-          paramElem = ((hummer_commelem.MsgElemInfo_servtype34)localObject2).bytes_ext.get().toStringUtf8();
-          int j;
+          k = ((hummer_commelem.MsgElemInfo_servtype34)localObject1).push_window_flag.get();
+          str2 = ((hummer_commelem.MsgElemInfo_servtype34)localObject1).bytes_ext.get().toStringUtf8();
+          Object localObject2 = null;
+          int i;
           try
           {
-            localObject1 = (IGameMsgManagerService)((AppInterface)localObject1).getRuntimeService(IGameMsgManagerService.class, "");
-            if (TextUtils.isEmpty(paramElem)) {
-              break label885;
+            paramElem = (IGameMsgManagerService)((AppInterface)localObject3).getRuntimeService(IGameMsgManagerService.class, "");
+            if (!TextUtils.isEmpty(str2))
+            {
+              JSONObject localJSONObject = new JSONObject(str2);
+              i = localJSONObject.optInt("r");
+              try
+              {
+                paramElem.onGameMsgRRecv(i);
+                if (localJSONObject.has("g")) {
+                  paramElem = Integer.valueOf(localJSONObject.optInt("g"));
+                } else {
+                  paramElem = null;
+                }
+              }
+              catch (Throwable localThrowable1)
+              {
+                paramElem = null;
+                continue;
+              }
             }
-            i = new JSONObject(paramElem).optInt("r");
+            else
+            {
+              paramElem = null;
+              i = 0;
+            }
+            im_msg_body.Elem localElem1 = paramElem;
             j = i;
             try
             {
-              ((IGameMsgManagerService)localObject1).onGameMsgRRecv(i);
-              j = i;
-              k = i;
               if (!QLog.isColorLevel()) {
                 continue;
               }
+              QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, new Object[] { "game pubAcc redPoint,ext = ", str2, ",windowFlag:", Integer.valueOf(k) });
+              localElem1 = paramElem;
               j = i;
-              QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, new Object[] { "game pubAcc redPoint,ext = ", paramElem, ",windowFlag:", Integer.valueOf(m) });
-              k = i;
             }
-            catch (Throwable paramElem) {}
-            QLog.e("Q.tiny_msg.decoder.TinyMsgCodec", 1, paramElem, new Object[0]);
+            catch (Throwable localThrowable2) {}
+            QLog.e("Q.tiny_msg.decoder.TinyMsgCodec", 1, localThrowable3, new Object[0]);
           }
-          catch (Throwable paramElem)
+          catch (Throwable localThrowable3)
           {
-            j = 0;
+            paramElem = null;
+            i = 0;
           }
-          int k = j;
-          if (!((hummer_commelem.MsgElemInfo_servtype34)localObject2).game_session.has()) {
-            break label891;
+          int j = i;
+          im_msg_body.Elem localElem2 = paramElem;
+          if (((hummer_commelem.MsgElemInfo_servtype34)localObject1).game_session.has()) {
+            localObject2 = (hummer_commelem.MsgElemInfo_servtype34.GameSession)((hummer_commelem.MsgElemInfo_servtype34)localObject1).game_session.get();
           }
-          localObject3 = (hummer_commelem.MsgElemInfo_servtype34.GameSession)((hummer_commelem.MsgElemInfo_servtype34)localObject2).game_session.get();
-          if (localObject3 != null)
+          if (localObject2 != null)
           {
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).from_role_id.has()) {
-              break label897;
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).from_role_id.has()) {
+              break label1027;
             }
-            paramElem = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).from_role_id.get().toStringUtf8();
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).from_open_id.has()) {
-              break label903;
+            localObject1 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).from_role_id.get().toStringUtf8();
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).from_open_id.has()) {
+              break label1034;
             }
-            localObject1 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).from_open_id.get().toStringUtf8();
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).to_role_id.has()) {
-              break label910;
+            str2 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).from_open_id.get().toStringUtf8();
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).to_role_id.has()) {
+              break label1041;
             }
-            localObject2 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).to_role_id.get().toStringUtf8();
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).to_open_id.has()) {
-              break label917;
+            paramElem = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).to_role_id.get().toStringUtf8();
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).to_open_id.has()) {
+              break label1047;
             }
-            str2 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).to_open_id.get().toStringUtf8();
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).game_appid.has()) {
-              break label924;
+            str3 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).to_open_id.get().toStringUtf8();
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).game_appid.has()) {
+              break label1054;
             }
-            l3 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).game_appid.get();
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).from_tiny_id.has()) {
-              break label930;
+            l3 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).game_appid.get();
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).from_tiny_id.has()) {
+              break label1060;
             }
-            l1 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).from_tiny_id.get();
-            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).to_tiny_id.has()) {
-              break label936;
+            l1 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).from_tiny_id.get();
+            if (!((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).to_tiny_id.has()) {
+              break label1066;
             }
-            l2 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject3).to_tiny_id.get();
-            localObject3 = paramList.iterator();
+            l2 = ((hummer_commelem.MsgElemInfo_servtype34.GameSession)localObject2).to_tiny_id.get();
+            if (((IGameMsgBoxManager)((AppInterface)localObject3).getRuntimeService(IGameMsgBoxManager.class, "")).isGameInGameBox(String.valueOf(l3))) {
+              ((IGameMsgManagerService)((AppInterface)localObject3).getRuntimeService(IGameMsgManagerService.class, "")).onGameMsgRRecv(1);
+            }
+            if (localElem2 != null) {
+              ((IGameMsgManagerService)((AppInterface)localObject3).getRuntimeService(IGameMsgManagerService.class, "")).notifyReceiveGameMsgSayHiMessage((String)localObject1, paramElem);
+            }
+            localObject2 = paramList.iterator();
             paramList = paramAppInterface;
-            if (((Iterator)localObject3).hasNext())
+            if (((Iterator)localObject2).hasNext())
             {
-              MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject3).next();
-              String str4 = TinyInfo.toJsonStr(paramElem, (String)localObject1, (String)localObject2, str2, l3, l1, l2, m, str1, k);
-              a(paramList, paramElem);
-              localMessageRecord.saveExtInfoToExtStr("ext_key_game_msg_info", str4);
-              if (!paramDecodeProtoPkgContext.i)
+              localObject3 = (MessageRecord)((Iterator)localObject2).next();
+              long l4 = l1;
+              String str5 = TinyInfo.toJsonStr((String)localObject1, str2, paramElem, str3, l3, l4, l2, k, str1, j);
+              a(paramList, (String)localObject1);
+              ((MessageRecord)localObject3).saveExtInfoToExtStr("ext_key_game_msg_info", str5);
+              if (localElem2 != null) {
+                ((MessageRecord)localObject3).saveExtInfoToExtStr(GameMsgSayHiHelper.a, String.valueOf(localElem2.intValue()));
+              }
+              if (!paramDecodeProtoPkgContext.o)
               {
-                localMessageRecord.frienduin = ((IMessageFacade)paramList.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().a(String.valueOf(l2), String.valueOf(l1));
-                a(paramMsg, paramList, paramDecodeProtoPkgContext, localMessageRecord.frienduin, str3);
-                paramDecodeProtoPkgContext.g = Long.parseLong(localMessageRecord.frienduin);
+                ((MessageRecord)localObject3).frienduin = ((IMessageFacade)paramList.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().a(String.valueOf(l2), String.valueOf(l4));
+                a(paramMsg, paramList, paramDecodeProtoPkgContext, ((MessageRecord)localObject3).frienduin, str4);
+                paramDecodeProtoPkgContext.x = Long.parseLong(((MessageRecord)localObject3).frienduin);
               }
               else
               {
-                paramDecodeProtoPkgContext.b = paramDecodeProtoPkgContext.g;
+                paramDecodeProtoPkgContext.b = paramDecodeProtoPkgContext.x;
               }
               if (!QLog.isColorLevel()) {
-                break label942;
+                break label1072;
               }
               paramList = new StringBuilder();
               paramList.append("toTinyId = ");
               paramList.append(l2);
               paramList.append(", fromTinyId = ");
-              paramList.append(l1);
+              paramList.append(l4);
               paramList.append(", ctx.senderUin = ");
               paramList.append(paramDecodeProtoPkgContext.b);
               paramList.append(", ctx.friendUin = ");
-              paramList.append(paramDecodeProtoPkgContext.g);
+              paramList.append(paramDecodeProtoPkgContext.x);
               paramList.append(", mr = ");
-              paramList.append(localMessageRecord.getBaseInfoString());
+              paramList.append(((MessageRecord)localObject3).getBaseInfoString());
               QLog.d("Q.tiny_msg.decoder.TinyMsgCodecdecodePBMsgGameInterCommElem", 2, paramList.toString());
-              break label942;
+              break label1072;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, String.format("decodePBMsgGameInterCommElem fromNickName:%s windowFlag:%d", new Object[] { str1, Integer.valueOf(m) }));
+              QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, String.format("decodePBMsgGameInterCommElem fromNickName:%s windowFlag:%d", new Object[] { str1, Integer.valueOf(k) }));
             }
           }
           else
@@ -466,25 +472,19 @@ public class TinyMsgCodec
       }
       catch (InvalidProtocolBufferMicroException paramMsg) {}
       return;
-      label872:
+      label1014:
       String str1 = "";
       continue;
-      label879:
-      int m = 0;
+      label1021:
+      int k = 0;
       continue;
-      label885:
-      int i = 0;
+      Object localObject1 = "";
       continue;
-      label891:
-      Object localObject3 = null;
+      String str2 = "";
       continue;
       paramElem = "";
       continue;
-      localObject1 = "";
-      continue;
-      Object localObject2 = "";
-      continue;
-      String str2 = "";
+      String str3 = "";
       continue;
       long l3 = 0L;
       continue;
@@ -496,54 +496,57 @@ public class TinyMsgCodec
   
   public static void a(im_msg_body.Elem paramElem, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
-    Object localObject = new TinyInfo();
-    if (!TextUtils.isEmpty(paramMessageRecord)) {
-      ((TinyInfo)localObject).parseFromJson(paramMessageRecord);
+    Object localObject = paramMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      RoleIdUtil.a(paramAppInterface, paramMessageRecord, paramMessageRecord.frienduin, paramMessageRecord.istroop);
+    }
+    TinyInfo localTinyInfo = new TinyInfo();
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      localTinyInfo.parseFromJson((String)localObject);
     }
     if (QLog.isColorLevel())
     {
-      paramMessageRecord = new StringBuilder();
-      paramMessageRecord.append("bindTinyInfoElem is called, info: ");
-      paramMessageRecord.append(localObject);
-      QLog.d("Q.tiny_msg.decoder.TinyMsgCodecbindTinyInfoElem", 2, paramMessageRecord.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bindTinyInfoElem is called, info: ");
+      ((StringBuilder)localObject).append(localTinyInfo);
+      QLog.d("Q.tiny_msg.decoder.TinyMsgCodecbindTinyInfoElem", 2, ((StringBuilder)localObject).toString());
     }
-    paramMessageRecord = new hummer_commelem.MsgElemInfo_servtype34();
+    localObject = new hummer_commelem.MsgElemInfo_servtype34();
     hummer_commelem.MsgElemInfo_servtype34.GameSession localGameSession = new hummer_commelem.MsgElemInfo_servtype34.GameSession();
-    if (!TextUtils.isEmpty(((TinyInfo)localObject).fromRoleId))
+    if (!TextUtils.isEmpty(localTinyInfo.fromRoleId))
     {
-      if (TextUtils.isEmpty(((TinyInfo)localObject).toRoleId)) {
+      if (TextUtils.isEmpty(localTinyInfo.toRoleId)) {
         return;
       }
-      localGameSession.from_open_id.set(ByteStringMicro.copyFromUtf8(((TinyInfo)localObject).fromOpenId));
-      localGameSession.from_role_id.set(ByteStringMicro.copyFromUtf8(((TinyInfo)localObject).fromRoleId));
-      localGameSession.to_role_id.set(ByteStringMicro.copyFromUtf8(((TinyInfo)localObject).toRoleId));
-      localGameSession.to_open_id.set(ByteStringMicro.copyFromUtf8(((TinyInfo)localObject).toOpenId));
-      localGameSession.game_appid.set(((TinyInfo)localObject).gameAppId);
-      localGameSession.from_tiny_id.set(((TinyInfo)localObject).fromTinyId);
-      localGameSession.to_tiny_id.set(((TinyInfo)localObject).toTinyId);
-      paramMessageRecord.game_session.set(localGameSession);
+      localGameSession.from_open_id.set(ByteStringMicro.copyFromUtf8(localTinyInfo.fromOpenId));
+      localGameSession.from_role_id.set(ByteStringMicro.copyFromUtf8(localTinyInfo.fromRoleId));
+      localGameSession.to_role_id.set(ByteStringMicro.copyFromUtf8(localTinyInfo.toRoleId));
+      localGameSession.to_open_id.set(ByteStringMicro.copyFromUtf8(localTinyInfo.toOpenId));
+      localGameSession.game_appid.set(localTinyInfo.gameAppId);
+      localGameSession.from_tiny_id.set(localTinyInfo.fromTinyId);
+      localGameSession.to_tiny_id.set(localTinyInfo.toTinyId);
+      ((hummer_commelem.MsgElemInfo_servtype34)localObject).game_session.set(localGameSession);
       try
       {
-        paramAppInterface = ((IGameMsgManagerService)paramAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getRedDotConfig(((TinyInfo)localObject).toRoleId);
+        paramMessageRecord = a(paramAppInterface, localTinyInfo, paramMessageRecord);
         if (QLog.isColorLevel())
         {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append("rStr:");
-          ((StringBuilder)localObject).append(paramAppInterface);
-          QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, ((StringBuilder)localObject).toString());
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("rStr:");
+          paramAppInterface.append(paramMessageRecord);
+          QLog.d("Q.tiny_msg.decoder.TinyMsgCodec", 2, paramAppInterface.toString());
         }
-        paramMessageRecord.bytes_ext.set(ByteStringMicro.copyFromUtf8(paramAppInterface));
+        ((hummer_commelem.MsgElemInfo_servtype34)localObject).bytes_ext.set(ByteStringMicro.copyFromUtf8(paramMessageRecord));
       }
-      catch (Throwable paramAppInterface)
+      catch (Throwable paramMessageRecord)
       {
-        QLog.e("Q.tiny_msg.decoder.TinyMsgCodec", 1, paramAppInterface, new Object[0]);
+        QLog.e("Q.tiny_msg.decoder.TinyMsgCodec", 1, paramMessageRecord, new Object[0]);
       }
-      paramAppInterface = new im_msg_body.CommonElem();
-      paramAppInterface.uint32_service_type.set(34);
-      paramAppInterface.uint32_business_type.set(1);
-      paramAppInterface.bytes_pb_elem.set(ByteStringMicro.copyFrom(paramMessageRecord.toByteArray()));
-      paramElem.common_elem.set(paramAppInterface);
+      paramMessageRecord = new im_msg_body.CommonElem();
+      paramMessageRecord.uint32_service_type.set(34);
+      paramMessageRecord.uint32_business_type.set(1);
+      paramMessageRecord.bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype34)localObject).toByteArray()));
+      paramElem.common_elem.set(paramMessageRecord);
     }
   }
   
@@ -554,6 +557,9 @@ public class TinyMsgCodec
     boolean bool1 = bool2;
     if (i == 10007)
     {
+      if ((((IGameMsgBoxABTestApi)QRoute.api(IGameMsgBoxABTestApi.class)).isGameMsgAddTab()) && (StudyModeManager.h())) {
+        return false;
+      }
       Object localObject = paramMessageRecord.getExtInfoFromExtStr("ext_key_game_msg_info");
       bool1 = bool2;
       if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -578,7 +584,7 @@ public class TinyMsgCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.TinyMsgCodec
  * JD-Core Version:    0.7.0.1
  */

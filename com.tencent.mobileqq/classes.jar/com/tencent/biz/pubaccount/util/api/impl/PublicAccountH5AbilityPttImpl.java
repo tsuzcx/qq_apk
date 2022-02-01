@@ -100,8 +100,8 @@ public class PublicAccountH5AbilityPttImpl
   
   private void showAbnormalRecordDlg()
   {
-    SpannableString localSpannableString = new SpannableString(this.activity.getString(2131698590));
-    DialogUtil.a(this.activity, HardCodeUtil.a(2131708791), localSpannableString, 0, 2131719788, null, null, new PublicAccountH5AbilityPttImpl.4(this)).show();
+    SpannableString localSpannableString = new SpannableString(this.activity.getString(2131896537));
+    DialogUtil.a(this.activity, HardCodeUtil.a(2131906567), localSpannableString, 0, 2131917392, null, null, new PublicAccountH5AbilityPttImpl.4(this)).show();
   }
   
   public void cancelPttRecorderAndPlayTask()
@@ -201,7 +201,7 @@ public class PublicAccountH5AbilityPttImpl
   public boolean isPlaying()
   {
     VoicePlayer localVoicePlayer = this.mPlayer;
-    return (localVoicePlayer != null) && (localVoicePlayer.a() == 2);
+    return (localVoicePlayer != null) && (localVoicePlayer.g() == 2);
   }
   
   public boolean isRecorderRecording()
@@ -266,7 +266,7 @@ public class PublicAccountH5AbilityPttImpl
       if (paramDouble == i)
       {
         paramString.put("retCode", 0);
-        paramString.put("msg", HardCodeUtil.a(2131708771));
+        paramString.put("msg", HardCodeUtil.a(2131906550));
         paramString.put("localId", getLocalIdForPTT());
         if (this.mRuntime.a() != null) {
           this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.voiceRecorderEndCallback, new String[] { paramString.toString() });
@@ -278,7 +278,7 @@ public class PublicAccountH5AbilityPttImpl
       {
         paramString.put("retCode", 0);
         paramRecorderParam = new StringBuilder();
-        paramRecorderParam.append(HardCodeUtil.a(2131708737));
+        paramRecorderParam.append(HardCodeUtil.a(2131906518));
         paramRecorderParam.append(getLocalIdForPTT());
         paramString.put("msg", paramRecorderParam.toString());
         paramString.put("localId", getLocalIdForPTT());
@@ -287,7 +287,7 @@ public class PublicAccountH5AbilityPttImpl
       else
       {
         paramString.put("retCode", -1);
-        paramString.put("msg", HardCodeUtil.a(2131708797));
+        paramString.put("msg", HardCodeUtil.a(2131906573));
         paramString.put("localId", getLocalIdForPTT());
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
       }
@@ -411,8 +411,8 @@ public class PublicAccountH5AbilityPttImpl
   public void pauseVoice()
   {
     VoicePlayer localVoicePlayer = this.mPlayer;
-    if ((localVoicePlayer != null) && (localVoicePlayer.a() == 2)) {
-      this.mPlayer.d();
+    if ((localVoicePlayer != null) && (localVoicePlayer.g() == 2)) {
+      this.mPlayer.e();
     }
   }
   
@@ -422,21 +422,21 @@ public class PublicAccountH5AbilityPttImpl
       return;
     }
     VoicePlayer localVoicePlayer = this.mPlayer;
-    if ((localVoicePlayer == null) || (this.mHandler == null) || ((localVoicePlayer != null) && (localVoicePlayer.a() != 3)))
+    if ((localVoicePlayer == null) || (this.mHandler == null) || ((localVoicePlayer != null) && (localVoicePlayer.g() != 3)))
     {
       this.mHandler = new Handler();
       this.mPlayer = new VoicePlayer(paramString, this.mHandler);
     }
     this.mPlayer.a(this.activity);
-    this.mPlayer.b();
+    this.mPlayer.h();
     this.mPlayer.a(this.mListener);
-    if (this.mPlayer.a() == 1)
+    if (this.mPlayer.g() == 1)
     {
-      this.mPlayer.b();
+      this.mPlayer.c();
       return;
     }
-    if (this.mPlayer.a() == 3) {
-      this.mPlayer.c();
+    if (this.mPlayer.g() == 3) {
+      this.mPlayer.d();
     }
   }
   
@@ -483,7 +483,7 @@ public class PublicAccountH5AbilityPttImpl
     Object localObject = this.mPlayer;
     if (localObject != null)
     {
-      ((VoicePlayer)localObject).e();
+      ((VoicePlayer)localObject).f();
       this.mPlayer = null;
       this.mHandler = null;
       localObject = new JSONObject();
@@ -491,9 +491,9 @@ public class PublicAccountH5AbilityPttImpl
       {
         ((JSONObject)localObject).put("retCode", 0);
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(HardCodeUtil.a(2131708740));
+        localStringBuilder.append(HardCodeUtil.a(2131906521));
         localStringBuilder.append(getLocalIdForPTT());
-        localStringBuilder.append(HardCodeUtil.a(2131708808));
+        localStringBuilder.append(HardCodeUtil.a(2131906583));
         ((JSONObject)localObject).put("msg", localStringBuilder.toString());
         ((JSONObject)localObject).put("localId", getLocalIdForPTT());
       }
@@ -509,7 +509,7 @@ public class PublicAccountH5AbilityPttImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPttImpl
  * JD-Core Version:    0.7.0.1
  */

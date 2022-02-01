@@ -48,38 +48,42 @@ import org.json.JSONObject;
 public abstract class BaseMomentItemBuilder
   implements View.OnClickListener, CommentsAdapter.CommentsItemClickListener
 {
-  protected int a;
   protected Context a;
-  protected QQAppInterface a;
-  protected NearbyPeopleCard a;
-  protected Map<String, MomentFeedInfo> a;
-  protected boolean a;
-  protected Map<String, MomentFeedInfo> b = new HashMap();
-  protected Map<String, MomentFeedInfo> c = new HashMap();
+  protected boolean b;
+  protected QQAppInterface c;
+  protected NearbyPeopleCard d;
+  protected Map<String, MomentFeedInfo> e = new HashMap();
+  protected Map<String, MomentFeedInfo> f = new HashMap();
+  protected Map<String, MomentFeedInfo> g = new HashMap();
+  protected int h;
   
   public BaseMomentItemBuilder(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a = paramContext;
+    this.c = paramQQAppInterface;
   }
   
-  private void g(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  private boolean a(String paramString)
   {
-    MomentFeedInfo localMomentFeedInfo = paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo;
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle(HardCodeUtil.a(2131701250)).setNegativeButton(2131690728, new BaseMomentItemBuilder.5(this)).setPositiveButton(2131691479, new BaseMomentItemBuilder.4(this, localMomentFeedInfo, paramMomentViewHolder)).show();
+    return (!TextUtils.isEmpty(paramString)) && (!"0".equals(paramString.trim()));
   }
   
-  private void h(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  private void k(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    MomentFeedInfo localMomentFeedInfo = paramMomentViewHolder.a;
+    DialogUtil.a(this.a, 230).setTitle(HardCodeUtil.a(2131899260)).setNegativeButton(2131887648, new BaseMomentItemBuilder.5(this)).setPositiveButton(2131888438, new BaseMomentItemBuilder.4(this, localMomentFeedInfo, paramMomentViewHolder)).show();
+  }
+  
+  private void l(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    if (!NetworkUtil.isNetworkAvailable(this.a))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, HardCodeUtil.a(2131701247), 0).a();
+      QQToast.makeText(this.a, 1, HardCodeUtil.a(2131899257), 0).show();
       return;
     }
-    boolean bool = paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_a_of_type_Boolean;
-    Object localObject2 = b(paramMomentViewHolder);
-    Object localObject1 = (NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER);
+    boolean bool = paramMomentViewHolder.a.u;
+    Object localObject2 = j(paramMomentViewHolder);
+    Object localObject1 = (NearbyMomentManager)this.c.getManager(QQManagerFactory.NEARBY_MOMENT_MANAGER);
     if (!bool) {
       ((NearbyMomentManager)localObject1).d((String)localObject2);
     } else {
@@ -93,15 +97,13 @@ public abstract class BaseMomentItemBuilder
     }
     localINowVideoReporter = localINowVideoReporter.opName((String)localObject1);
     localObject1 = "2";
-    localObject2 = localINowVideoReporter.source("2").timelong(a(paramMomentViewHolder)).feedid((String)localObject2).feed_type(String.valueOf(a(paramMomentViewHolder)));
+    localObject2 = localINowVideoReporter.source("2").timelong(h(paramMomentViewHolder)).feedid((String)localObject2).feed_type(String.valueOf(g(paramMomentViewHolder)));
     paramMomentViewHolder = (BaseMomentItemBuilder.MomentViewHolder)localObject1;
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.b) {
       paramMomentViewHolder = "1";
     }
-    ((INowVideoReporter)localObject2).d1(paramMomentViewHolder).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((INowVideoReporter)localObject2).d1(paramMomentViewHolder).report(this.c);
   }
-  
-  public abstract int a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder);
   
   public abstract View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder);
   
@@ -119,37 +121,37 @@ public abstract class BaseMomentItemBuilder
       if (localMomentViewHolder == null) {
         return null;
       }
-      localMomentViewHolder.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-      localMomentViewHolder.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      paramView = LayoutInflater.from(paramContext).inflate(2131561226, (ViewGroup)localObject, false);
+      localMomentViewHolder.b = ((Activity)paramContext);
+      localMomentViewHolder.c = ((View)localObject);
+      paramView = LayoutInflater.from(paramContext).inflate(2131627580, (ViewGroup)localObject, false);
       LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams1.topMargin = UIUtils.a(paramContext, 20.0F);
       localLayoutParams1.leftMargin = UIUtils.a(paramContext, 16.0F);
       localLayoutParams1.bottomMargin = UIUtils.a(paramContext, 0.0F);
       localLayoutParams1.rightMargin = UIUtils.a(paramContext, 6.0F);
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369372));
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
-      localMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369420));
-      View localView1 = LayoutInflater.from(paramContext).inflate(2131561222, (ViewGroup)localObject, false);
+      localMomentViewHolder.e = ((ImageView)paramView.findViewById(2131436403));
+      localMomentViewHolder.f = ((TextView)paramView.findViewById(2131448598));
+      localMomentViewHolder.g = ((ImageView)paramView.findViewById(2131436457));
+      View localView1 = LayoutInflater.from(paramContext).inflate(2131627576, (ViewGroup)localObject, false);
       LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams2.leftMargin = UIUtils.a(paramContext, 66.0F);
       localLayoutParams2.rightMargin = UIUtils.a(paramContext, 6.0F);
-      localMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131379763));
-      localMomentViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131379669));
-      localMomentViewHolder.jdField_c_of_type_AndroidViewView = localView1.findViewById(2131373009);
-      localMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131369444));
-      localMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      localMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131379817));
-      localMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131369325));
-      localMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      localMomentViewHolder.e = ((TextView)localView1.findViewById(2131379580));
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetListView = ((ListView)localView1.findViewById(2131364995));
-      localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter = new CommentsAdapter();
-      localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter.a(this);
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetListView.setAdapter(localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter);
-      localMomentViewHolder.f = ((TextView)localView1.findViewById(2131381021));
-      localMomentViewHolder.jdField_d_of_type_AndroidViewView = localView1.findViewById(2131364993);
-      localMomentViewHolder.f.setOnClickListener(this);
+      localMomentViewHolder.h = ((TextView)localView1.findViewById(2131448572));
+      localMomentViewHolder.i = ((TextView)localView1.findViewById(2131448449));
+      localMomentViewHolder.j = localView1.findViewById(2131440578);
+      localMomentViewHolder.k = ((ImageView)localView1.findViewById(2131436500));
+      localMomentViewHolder.k.setOnClickListener(this);
+      localMomentViewHolder.l = ((TextView)localView1.findViewById(2131448652));
+      localMomentViewHolder.m = ((ImageView)localView1.findViewById(2131436326));
+      localMomentViewHolder.m.setOnClickListener(this);
+      localMomentViewHolder.n = ((TextView)localView1.findViewById(2131448336));
+      localMomentViewHolder.o = ((ListView)localView1.findViewById(2131431127));
+      localMomentViewHolder.p = new CommentsAdapter();
+      localMomentViewHolder.p.a(this);
+      localMomentViewHolder.o.setAdapter(localMomentViewHolder.p);
+      localMomentViewHolder.q = ((TextView)localView1.findViewById(2131450030));
+      localMomentViewHolder.r = localView1.findViewById(2131431125);
+      localMomentViewHolder.q.setOnClickListener(this);
       ((LinearLayout)localObject).addView(paramView, localLayoutParams1);
       View localView2 = a((ViewGroup)localObject, localMomentViewHolder);
       if (localView2 != null)
@@ -163,58 +165,53 @@ public abstract class BaseMomentItemBuilder
         paramView.rightMargin = UIUtils.a(paramContext, 6.0F);
         paramView.topMargin = UIUtils.a(paramContext, -14.0F);
         ((LinearLayout)localObject).addView(localView2);
-        localView2.setId(2131374283);
-        localMomentViewHolder.jdField_b_of_type_AndroidViewView = localView2;
+        localView2.setId(2131442446);
+        localMomentViewHolder.d = localView2;
         localView2.setOnClickListener(this);
       }
       ((LinearLayout)localObject).addView(localView1, localLayoutParams2);
       ((LinearLayout)localObject).setTag(localMomentViewHolder);
-      localMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      paramView = new View(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 10.0F)));
+      localMomentViewHolder.g.setOnClickListener(this);
+      paramView = new View(this.a);
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(-1, UIUtils.a(this.a, 10.0F)));
       paramView.setBackgroundColor(-460807);
       ((LinearLayout)localObject).addView(paramView);
       paramView = (View)localObject;
     }
     localObject = (BaseMomentItemBuilder.MomentViewHolder)paramView.getTag();
-    ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo = paramMomentFeedInfo;
+    ((BaseMomentItemBuilder.MomentViewHolder)localObject).a = paramMomentFeedInfo;
     a((BaseMomentItemBuilder.MomentViewHolder)localObject);
-    if ((!TextUtils.isEmpty(paramMomentFeedInfo.k)) && (!paramMomentFeedInfo.k.endsWith(HardCodeUtil.a(2131701251))))
+    if ((!TextUtils.isEmpty(paramMomentFeedInfo.p)) && (!paramMomentFeedInfo.p.endsWith(HardCodeUtil.a(2131899261))))
     {
-      ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130845694, 0, 0, 0);
-      ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#576B95"));
-      ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new BaseMomentItemBuilder.1(this, paramContext, paramMomentFeedInfo, (BaseMomentItemBuilder.MomentViewHolder)localObject));
+      ((BaseMomentItemBuilder.MomentViewHolder)localObject).h.setCompoundDrawablesWithIntrinsicBounds(2130847163, 0, 0, 0);
+      ((BaseMomentItemBuilder.MomentViewHolder)localObject).h.setTextColor(Color.parseColor("#576B95"));
+      ((BaseMomentItemBuilder.MomentViewHolder)localObject).h.setOnClickListener(new BaseMomentItemBuilder.1(this, paramContext, paramMomentFeedInfo, (BaseMomentItemBuilder.MomentViewHolder)localObject));
     }
     else
     {
-      ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130845692, 0, 0, 0);
-      ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(null);
-      ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
+      ((BaseMomentItemBuilder.MomentViewHolder)localObject).h.setCompoundDrawablesWithIntrinsicBounds(2130847161, 0, 0, 0);
+      ((BaseMomentItemBuilder.MomentViewHolder)localObject).h.setOnClickListener(null);
+      ((BaseMomentItemBuilder.MomentViewHolder)localObject).h.setTextColor(Color.parseColor("#777777"));
     }
-    if (this.jdField_a_of_type_JavaUtilMap.get(((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c) == null)
+    if (this.e.get(((BaseMomentItemBuilder.MomentViewHolder)localObject).a.f) == null)
     {
-      paramContext = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_exp").timelong(a((BaseMomentItemBuilder.MomentViewHolder)localObject));
+      paramContext = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_exp").timelong(h((BaseMomentItemBuilder.MomentViewHolder)localObject));
       paramMomentFeedInfo = "2";
-      paramContext = paramContext.source("2").feedid(((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c).feed_type(String.valueOf(a((BaseMomentItemBuilder.MomentViewHolder)localObject)));
-      if (this.jdField_a_of_type_Boolean) {
+      paramContext = paramContext.source("2").feedid(((BaseMomentItemBuilder.MomentViewHolder)localObject).a.f).feed_type(String.valueOf(g((BaseMomentItemBuilder.MomentViewHolder)localObject)));
+      if (this.b) {
         paramMomentFeedInfo = "1";
       }
-      paramContext.d1(paramMomentFeedInfo).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_JavaUtilMap.put(((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c, ((BaseMomentItemBuilder.MomentViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo);
+      paramContext.d1(paramMomentFeedInfo).report(this.c);
+      this.e.put(((BaseMomentItemBuilder.MomentViewHolder)localObject).a.f, ((BaseMomentItemBuilder.MomentViewHolder)localObject).a);
     }
     return paramView;
   }
   
   public abstract BaseMomentItemBuilder.MomentViewHolder a();
   
-  public String a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    return "";
-  }
-  
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.h = paramInt;
   }
   
   public void a(View paramView)
@@ -228,22 +225,22 @@ public abstract class BaseMomentItemBuilder
   
   public void a(NearbyPeopleCard paramNearbyPeopleCard)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
-    this.jdField_a_of_type_Boolean = paramNearbyPeopleCard.isHostSelf;
+    this.d = paramNearbyPeopleCard;
+    this.b = paramNearbyPeopleCard.isHostSelf;
   }
   
   public void a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 40.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 40.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840323);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = UIUtils.a(this.a, 40.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = UIUtils.a(this.a, 40.0F);
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.a.getResources().getDrawable(2130841062);
     try
     {
-      localObject = URLDrawable.getDrawable(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.d, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 40.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 40.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
-      paramMomentViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramMomentViewHolder.a.h, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.a, 40.0F), UIUtils.a(this.a, 40.0F)));
+      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.b);
+      paramMomentViewHolder.e.setImageDrawable((Drawable)localObject);
     }
     catch (Exception localException)
     {
@@ -252,103 +249,103 @@ public abstract class BaseMomentItemBuilder
       INowVideoReporter localINowVideoReporter;
       break label106;
     }
-    paramMomentViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840323));
+    paramMomentViewHolder.e.setImageDrawable(this.a.getResources().getDrawable(2130841062));
     localObject = new StringBuilder();
     ((StringBuilder)localObject).append("updateUI, holder.momentFeedInfo.headUrl=");
-    ((StringBuilder)localObject).append(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.d);
+    ((StringBuilder)localObject).append(paramMomentViewHolder.a.h);
     QLog.i("BaseMomentItemBuilder", 1, ((StringBuilder)localObject).toString());
-    if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) {
-      paramMomentViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.nickname);
+    if (this.d != null) {
+      paramMomentViewHolder.f.setText(this.d.nickname);
     }
-    paramMomentViewHolder.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    paramMomentViewHolder.d.setOnClickListener(this);
     f(paramMomentViewHolder);
-    if (!TextUtils.isEmpty(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_g_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramMomentViewHolder.a.l))
     {
-      paramMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_g_of_type_JavaLangString);
+      paramMomentViewHolder.h.setVisibility(0);
+      paramMomentViewHolder.h.setText(paramMomentViewHolder.a.l);
     }
     else
     {
-      paramMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramMomentViewHolder.h.setVisibility(8);
     }
     localObject = new StringBuilder();
-    if (!TextUtils.isEmpty(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_f_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(paramMomentViewHolder.a.k))
     {
       if (((StringBuilder)localObject).length() > 0) {
         ((StringBuilder)localObject).append(" · ");
       }
-      ((StringBuilder)localObject).append(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_f_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramMomentViewHolder.a.k);
     }
     if (((StringBuilder)localObject).length() > 0)
     {
-      paramMomentViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
-      paramMomentViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramMomentViewHolder.i.setText(((StringBuilder)localObject).toString());
+      paramMomentViewHolder.i.setVisibility(0);
     }
     else
     {
-      paramMomentViewHolder.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramMomentViewHolder.i.setVisibility(8);
     }
-    if (a(paramMomentViewHolder))
+    if (i(paramMomentViewHolder))
     {
-      paramMomentViewHolder.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      if (paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_a_of_type_Boolean)
+      paramMomentViewHolder.j.setVisibility(0);
+      if (paramMomentViewHolder.a.u)
       {
-        paramMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845635);
-        paramMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-52924);
+        paramMomentViewHolder.k.setImageResource(2130847099);
+        paramMomentViewHolder.l.setTextColor(-52924);
       }
       else
       {
-        paramMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845653);
-        paramMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView.setTextColor(-4473925);
+        paramMomentViewHolder.k.setImageResource(2130847117);
+        paramMomentViewHolder.l.setTextColor(-4473925);
       }
-      paramMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView.setText(String.valueOf(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_f_of_type_Int));
-      paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramMomentViewHolder.e.setText(String.valueOf(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_g_of_type_Int));
+      paramMomentViewHolder.l.setText(String.valueOf(paramMomentViewHolder.a.v));
+      paramMomentViewHolder.m.setVisibility(0);
+      paramMomentViewHolder.n.setText(String.valueOf(paramMomentViewHolder.a.w));
     }
     else
     {
-      paramMomentViewHolder.jdField_c_of_type_AndroidViewView.setVisibility(8);
+      paramMomentViewHolder.j.setVisibility(8);
     }
-    localList = paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_a_of_type_JavaUtilList;
+    localList = paramMomentViewHolder.a.x;
     if ((localList != null) && (localList.size() > 0))
     {
-      paramMomentViewHolder.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter.a(localList);
-      paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter.notifyDataSetChanged();
-      if (this.b.get(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c) == null)
+      paramMomentViewHolder.o.setVisibility(0);
+      paramMomentViewHolder.p.a(localList);
+      paramMomentViewHolder.p.notifyDataSetChanged();
+      if (this.f.get(paramMomentViewHolder.a.f) == null)
       {
         localINowVideoReporter = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_com_exp");
         localObject = "2";
-        localINowVideoReporter = localINowVideoReporter.source("2").timelong(a(paramMomentViewHolder)).feedid(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c).feed_type(String.valueOf(a(paramMomentViewHolder)));
-        if (this.jdField_a_of_type_Boolean) {
+        localINowVideoReporter = localINowVideoReporter.source("2").timelong(h(paramMomentViewHolder)).feedid(paramMomentViewHolder.a.f).feed_type(String.valueOf(g(paramMomentViewHolder)));
+        if (this.b) {
           localObject = "1";
         }
-        localINowVideoReporter.d1((String)localObject).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        this.b.put(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c, paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo);
+        localINowVideoReporter.d1((String)localObject).report(this.c);
+        this.f.put(paramMomentViewHolder.a.f, paramMomentViewHolder.a);
       }
     }
     else
     {
-      paramMomentViewHolder.jdField_a_of_type_AndroidWidgetListView.setVisibility(8);
+      paramMomentViewHolder.o.setVisibility(8);
     }
-    if ((localList != null) && (localList.size() > 0) && (paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_g_of_type_Int > localList.size())) {
-      paramMomentViewHolder.f.setVisibility(0);
+    if ((localList != null) && (localList.size() > 0) && (paramMomentViewHolder.a.w > localList.size())) {
+      paramMomentViewHolder.q.setVisibility(0);
     } else {
-      paramMomentViewHolder.f.setVisibility(8);
+      paramMomentViewHolder.q.setVisibility(8);
     }
-    if ((paramMomentViewHolder.jdField_a_of_type_AndroidWidgetListView.getVisibility() != 0) && (paramMomentViewHolder.f.getVisibility() != 0)) {
-      paramMomentViewHolder.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    if ((paramMomentViewHolder.o.getVisibility() != 0) && (paramMomentViewHolder.q.getVisibility() != 0)) {
+      paramMomentViewHolder.r.setVisibility(8);
     } else {
-      paramMomentViewHolder.jdField_d_of_type_AndroidViewView.setVisibility(0);
+      paramMomentViewHolder.r.setVisibility(0);
     }
-    paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setClickable(true);
-    paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    paramMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView.setClickable(true);
-    paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setClickable(true);
-    paramMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    paramMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setAlpha(1.0F);
-    paramMomentViewHolder.e.setAlpha(1.0F);
+    paramMomentViewHolder.g.setClickable(true);
+    paramMomentViewHolder.g.setAlpha(1.0F);
+    paramMomentViewHolder.k.setClickable(true);
+    paramMomentViewHolder.m.setClickable(true);
+    paramMomentViewHolder.k.setAlpha(1.0F);
+    paramMomentViewHolder.l.setAlpha(1.0F);
+    paramMomentViewHolder.m.setAlpha(1.0F);
+    paramMomentViewHolder.n.setAlpha(1.0F);
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -363,7 +360,7 @@ public abstract class BaseMomentItemBuilder
       ((Intent)localObject).putExtra("_from", "3");
       ((Intent)localObject).addFlags(268435456);
       ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
-      PublicTransFragmentActivity.b(this.jdField_a_of_type_AndroidContentContext, (Intent)localObject, QQNearbyManager.m());
+      PublicTransFragmentActivity.b(this.a, (Intent)localObject, QQNearbyManager.n());
       return;
     }
     catch (Exception paramString)
@@ -379,92 +376,99 @@ public abstract class BaseMomentItemBuilder
     }
   }
   
-  public boolean a(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    return true;
-  }
-  
-  public String b(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
-  {
-    return paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c;
-  }
-  
   public void b(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    MomentFeedInfo localMomentFeedInfo = paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo;
+    MomentFeedInfo localMomentFeedInfo = paramMomentViewHolder.a;
     INowVideoReporter localINowVideoReporter = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_more_clk");
     Object localObject = "2";
-    localINowVideoReporter = localINowVideoReporter.source("2").timelong(a(paramMomentViewHolder)).feedid(localMomentFeedInfo.c).feed_type(String.valueOf(a(paramMomentViewHolder)));
-    if (this.jdField_a_of_type_Boolean) {
+    localINowVideoReporter = localINowVideoReporter.source("2").timelong(h(paramMomentViewHolder)).feedid(localMomentFeedInfo.f).feed_type(String.valueOf(g(paramMomentViewHolder)));
+    if (this.b) {
       localObject = "1";
     }
-    localINowVideoReporter.d1((String)localObject).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (TextUtils.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localMomentFeedInfo.e))
+    localINowVideoReporter.d1((String)localObject).report(this.c);
+    if (TextUtils.equals(this.c.getCurrentAccountUin(), localMomentFeedInfo.i))
     {
-      localObject = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
-      ((ActionSheet)localObject).addButton(2131691479, 1);
-      ((ActionSheet)localObject).addCancelButton(2131690728);
+      localObject = ActionSheet.create(this.a);
+      ((ActionSheet)localObject).addButton(2131888438, 1);
+      ((ActionSheet)localObject).addCancelButton(2131887648);
       ((ActionSheet)localObject).setOnButtonClickListener(new BaseMomentItemBuilder.2(this, paramMomentViewHolder, localMomentFeedInfo, (ActionSheet)localObject));
       ((ActionSheet)localObject).show();
       return;
     }
-    localObject = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
-    ((ActionSheet)localObject).addButton(2131717470, 1);
-    ((ActionSheet)localObject).addCancelButton(2131690728);
+    localObject = ActionSheet.create(this.a);
+    ((ActionSheet)localObject).addButton(2131914943, 1);
+    ((ActionSheet)localObject).addCancelButton(2131887648);
     ((ActionSheet)localObject).setOnButtonClickListener(new BaseMomentItemBuilder.3(this, paramMomentViewHolder, localMomentFeedInfo, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
   }
   
   public void c(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    if (!NetworkUtil.isNetworkAvailable(this.a))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, HardCodeUtil.a(2131701245), 0).a();
+      QQToast.makeText(this.a, 1, HardCodeUtil.a(2131899255), 0).show();
       return;
     }
-    a(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.m, true);
+    a(paramMomentViewHolder.a.r, true);
   }
   
   public void d(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    Object localObject = paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c;
+    Object localObject = paramMomentViewHolder.a.f;
     INowVideoReporter localINowVideoReporter = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_clk");
     String str = "2";
-    localObject = localINowVideoReporter.source("2").timelong(a(paramMomentViewHolder)).feedid((String)localObject).feed_type(String.valueOf(a(paramMomentViewHolder)));
-    if (this.jdField_a_of_type_Boolean) {
+    localObject = localINowVideoReporter.source("2").timelong(h(paramMomentViewHolder)).feedid((String)localObject).feed_type(String.valueOf(g(paramMomentViewHolder)));
+    if (this.b) {
       str = "1";
     }
-    ((INowVideoReporter)localObject).d1(str).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (!NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_AndroidContentContext))
+    ((INowVideoReporter)localObject).d1(str).report(this.c);
+    if (!NetworkUtil.isNetworkAvailable(this.a))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, HardCodeUtil.a(2131701248), 0).a();
+      QQToast.makeText(this.a, 1, HardCodeUtil.a(2131899258), 0).show();
       return;
     }
-    a(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.m, false);
+    a(paramMomentViewHolder.a.r, false);
   }
   
   public void e(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
-    PicMomentFeedInfo localPicMomentFeedInfo = (PicMomentFeedInfo)paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo;
-    Object localObject = localPicMomentFeedInfo.a;
+    PicMomentFeedInfo localPicMomentFeedInfo = (PicMomentFeedInfo)paramMomentViewHolder.a;
+    Object localObject = localPicMomentFeedInfo.c;
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localObject);
     localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("feedId", localPicMomentFeedInfo.c);
+      ((JSONObject)localObject).put("feedId", localPicMomentFeedInfo.f);
       ((JSONObject)localObject).put("tinyId", "");
-      ((JSONObject)localObject).put("uin", localPicMomentFeedInfo.e);
-      ((JSONObject)localObject).put("reason", HardCodeUtil.a(2131701249));
+      ((JSONObject)localObject).put("uin", localPicMomentFeedInfo.i);
+      ((JSONObject)localObject).put("reason", HardCodeUtil.a(2131899259));
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    TroopNoticeJsHandler.a(paramMomentViewHolder.jdField_a_of_type_AndroidAppActivity, 0, localArrayList, null, null, false, false, "5", 100, null, null, ((JSONObject)localObject).toString());
+    TroopNoticeJsHandler.a(paramMomentViewHolder.b, 0, localArrayList, null, null, false, false, "5", 100, null, null, ((JSONObject)localObject).toString());
   }
   
   public abstract void f(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder);
+  
+  public abstract int g(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder);
+  
+  public String h(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    return "";
+  }
+  
+  public boolean i(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    return true;
+  }
+  
+  public String j(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
+  {
+    return paramMomentViewHolder.a.f;
+  }
   
   public void onClick(View paramView)
   {
@@ -476,25 +480,25 @@ public abstract class BaseMomentItemBuilder
     {
     default: 
       return;
-    case 2131381021: 
+    case 2131450030: 
       INowVideoReporter localINowVideoReporter = ((INowVideoReporter)QRoute.api(INowVideoReporter.class)).opType("data_card").opName("feed_com_clk");
       paramView = "2";
-      localINowVideoReporter = localINowVideoReporter.source("2").timelong(a(localMomentViewHolder)).feedid(localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c).feed_type(String.valueOf(a(localMomentViewHolder)));
-      if (this.jdField_a_of_type_Boolean) {
+      localINowVideoReporter = localINowVideoReporter.source("2").timelong(h(localMomentViewHolder)).feedid(localMomentViewHolder.a.f).feed_type(String.valueOf(g(localMomentViewHolder)));
+      if (this.b) {
         paramView = "1";
       }
-      localINowVideoReporter.d1(paramView).report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localINowVideoReporter.d1(paramView).report(this.c);
       break;
-    case 2131374283: 
+    case 2131442446: 
       d(localMomentViewHolder);
       return;
-    case 2131369444: 
-      h(localMomentViewHolder);
+    case 2131436500: 
+      l(localMomentViewHolder);
       return;
-    case 2131369437: 
+    case 2131436489: 
       e(localMomentViewHolder);
       return;
-    case 2131369420: 
+    case 2131436457: 
       b(localMomentViewHolder);
       return;
     }
@@ -503,7 +507,7 @@ public abstract class BaseMomentItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder
  * JD-Core Version:    0.7.0.1
  */

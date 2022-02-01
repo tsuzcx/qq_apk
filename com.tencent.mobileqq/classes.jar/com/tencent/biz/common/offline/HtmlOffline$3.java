@@ -7,8 +7,8 @@ final class HtmlOffline$3
 {
   public void loaded(String paramString, int paramInt)
   {
-    if ((paramInt == 0) && (HtmlOffline.a.a())) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    if ((paramInt == 0) && (HtmlOffline.f.a())) {
+      HtmlOffline.f.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
     }
   }
   
@@ -16,7 +16,7 @@ final class HtmlOffline$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.3
  * JD-Core Version:    0.7.0.1
  */

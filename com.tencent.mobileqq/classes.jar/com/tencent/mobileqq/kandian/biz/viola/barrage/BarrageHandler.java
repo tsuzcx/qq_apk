@@ -54,14 +54,14 @@ public class BarrageHandler
             localObject1 = new BarrageInfo.Sender();
             paramBarrage = (oidb_0xc15.Sender)paramBarrage.rpt_sender.get();
             ((BarrageInfo.Sender)localObject1).b = a(paramBarrage.bytes_sender_name);
-            ((BarrageInfo.Sender)localObject1).jdField_a_of_type_JavaLangString = a(paramBarrage.bytes_avatar_url);
+            ((BarrageInfo.Sender)localObject1).a = a(paramBarrage.bytes_avatar_url);
             ((BarrageInfo.Sender)localObject1).c = a(paramBarrage.bytes_avatar_icon_url);
             int i = paramBarrage.uint32_is_author.get();
             boolean bool = true;
             if (i != 1) {
               bool = false;
             }
-            ((BarrageInfo.Sender)localObject1).jdField_a_of_type_Boolean = bool;
+            ((BarrageInfo.Sender)localObject1).d = bool;
           }
         }
       }
@@ -97,21 +97,21 @@ public class BarrageHandler
           if ((paramRspBody.has()) && (paramRspBody.get() != null))
           {
             BarrageInfo localBarrageInfo = new BarrageInfo();
-            localBarrageInfo.jdField_a_of_type_JavaLangString = a(paramRspBody.bytes_barrage_id);
+            localBarrageInfo.a = a(paramRspBody.bytes_barrage_id);
             if (paramRspBody.uint32_barrage_type.has()) {
-              localBarrageInfo.jdField_a_of_type_Int = paramRspBody.uint32_barrage_type.get();
+              localBarrageInfo.b = paramRspBody.uint32_barrage_type.get();
             }
-            localBarrageInfo.b = a(paramRspBody.bytes_comment);
+            localBarrageInfo.c = a(paramRspBody.bytes_comment);
             localBarrageInfo.a();
-            localBarrageInfo.c = a(paramRspBody.bytes_comment_corner_url);
-            localBarrageInfo.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender = a(paramRspBody);
+            localBarrageInfo.d = a(paramRspBody.bytes_comment_corner_url);
+            localBarrageInfo.e = a(paramRspBody);
             localBarrageInfo.b();
-            if (localBarrageInfo.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender != null) {
-              paramRspBody = localBarrageInfo.jdField_a_of_type_ComTencentMobileqqKandianBizViolaBarrageBarrageInfo$Sender.b;
+            if (localBarrageInfo.e != null) {
+              paramRspBody = localBarrageInfo.e.b;
             } else {
               paramRspBody = null;
             }
-            if (!a(paramRspBody, localBarrageInfo.b))
+            if (!a(paramRspBody, localBarrageInfo.c))
             {
               ((ArrayList)localObject).add(localBarrageInfo);
             }
@@ -150,13 +150,13 @@ public class BarrageHandler
     Bundle localBundle = new Bundle();
     paramToServiceMsg = (String)paramToServiceMsg.getAttribute("value_row_key");
     localBundle.putString("value_row_key", paramToServiceMsg);
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramToServiceMsg))
+    if (!TextUtils.equals(this.a, paramToServiceMsg))
     {
       if (QLog.isColorLevel())
       {
         paramFromServiceMsg = new StringBuilder();
         paramFromServiceMsg.append("handleGetBarrageList ignore result for rowkey is not equal, mRequestRowkey:");
-        paramFromServiceMsg.append(this.jdField_a_of_type_JavaLangString);
+        paramFromServiceMsg.append(this.a);
         paramFromServiceMsg.append(" rowKey:");
         paramFromServiceMsg.append(paramToServiceMsg);
         QLog.d("BarrageHandler", 2, paramFromServiceMsg.toString());
@@ -183,12 +183,12 @@ public class BarrageHandler
         if (((oidb_0xc15.RspBody)localObject).uint32_has_more_data.has())
         {
           if (((oidb_0xc15.RspBody)localObject).uint32_has_more_data.get() != 1) {
-            break label498;
+            break label499;
           }
           localBundle.putBoolean("value_has_more_data", bool2);
         }
         if (!QLog.isColorLevel()) {
-          break label488;
+          break label489;
         }
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(", barrage_time_interval: ");
@@ -198,13 +198,13 @@ public class BarrageHandler
         localStringBuilder.append(", barrageList:, ");
         localObject = "null";
         if (localArrayList == null) {
-          break label504;
+          break label505;
         }
         paramToServiceMsg = localArrayList.toString();
         localStringBuilder.append(paramToServiceMsg);
         localStringBuilder.append(", sessionParams: ");
         if (paramObject == null) {
-          break label511;
+          break label512;
         }
         paramToServiceMsg = paramObject;
         localStringBuilder.append(paramToServiceMsg);
@@ -218,27 +218,27 @@ public class BarrageHandler
       catch (Exception paramToServiceMsg)
       {
         if (!QLog.isColorLevel()) {
-          break label488;
+          break label489;
         }
       }
       paramFromServiceMsg = new StringBuilder();
       paramFromServiceMsg.append("解析后台返回的数据出错：");
       paramFromServiceMsg.append(paramToServiceMsg.getMessage());
       QLog.d("BarrageHandler", 2, paramFromServiceMsg.toString());
-      break label488;
+      break label489;
       if (QLog.isColorLevel()) {
         QLog.d("BarrageHandler", 2, "后台返回的列表为空或者请求结果出错！");
       }
-      label488:
+      label489:
       notifyUI(0, bool1, localBundle);
       return;
-      label498:
+      label499:
       bool2 = false;
       continue;
-      label504:
+      label505:
       paramToServiceMsg = "null";
       continue;
-      label511:
+      label512:
       paramToServiceMsg = "null";
     }
   }
@@ -290,7 +290,7 @@ public class BarrageHandler
         ((StringBuilder)localObject).append(paramString2);
         QLog.d("BarrageHandler", 2, ((StringBuilder)localObject).toString());
       }
-      this.jdField_a_of_type_JavaLangString = paramString1;
+      this.a = paramString1;
       Object localObject = new oidb_0xc15.ReqBody();
       ((oidb_0xc15.ReqBody)localObject).uint64_article_id.set(paramLong);
       if (!TextUtils.isEmpty(paramString1)) {
@@ -302,8 +302,8 @@ public class BarrageHandler
       ((oidb_0xc15.ReqBody)localObject).uint32_want_count.set(paramInt1);
       if (paramSessionParams != null)
       {
-        if (!TextUtils.isEmpty(paramSessionParams.jdField_a_of_type_JavaLangString)) {
-          ((oidb_0xc15.ReqBody)localObject).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramSessionParams.jdField_a_of_type_JavaLangString));
+        if (!TextUtils.isEmpty(paramSessionParams.a)) {
+          ((oidb_0xc15.ReqBody)localObject).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramSessionParams.a));
         }
         if (!TextUtils.isEmpty(paramSessionParams.b)) {
           ((oidb_0xc15.ReqBody)localObject).bytes_common_data.set(ByteStringMicro.copyFromUtf8(paramSessionParams.b));
@@ -359,7 +359,7 @@ public class BarrageHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.viola.barrage.BarrageHandler
  * JD-Core Version:    0.7.0.1
  */

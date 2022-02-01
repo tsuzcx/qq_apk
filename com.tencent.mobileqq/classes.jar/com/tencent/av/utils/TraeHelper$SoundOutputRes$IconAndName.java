@@ -2,15 +2,15 @@ package com.tencent.av.utils;
 
 public class TraeHelper$SoundOutputRes$IconAndName
 {
-  public int a;
   public String a;
-  public String b;
+  public int b;
+  public String c;
   
   public TraeHelper$SoundOutputRes$IconAndName(TraeHelper.SoundOutputRes paramSoundOutputRes, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramInt;
+    this.c = paramString1;
+    this.a = paramString2;
   }
 }
 

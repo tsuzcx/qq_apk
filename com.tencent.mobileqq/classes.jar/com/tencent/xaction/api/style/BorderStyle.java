@@ -51,7 +51,7 @@ public final class BorderStyle
     {
       Object localObject3 = localObject2[i];
       ((Paint)localObject1).setColor(-16776961);
-      ((Paint)localObject1).setStrokeWidth(ScreenUnit.a.a(localObject3.getW()));
+      ((Paint)localObject1).setStrokeWidth(ScreenUnit.a.d(localObject3.getW()));
       ((Paint)localObject1).setStyle(Paint.Style.STROKE);
       int k = paramCanvas.getWidth();
       int m = paramCanvas.getHeight();
@@ -95,7 +95,7 @@ public final class BorderStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.xaction.api.style.BorderStyle
  * JD-Core Version:    0.7.0.1
  */

@@ -20,16 +20,16 @@ import java.util.Locale;
 public class TCWDatePicker
   extends FrameLayout
 {
-  private TCWDatePicker.OnDateChangedListener jdField_a_of_type_ComTencentWidgetTCWDatePicker$OnDateChangedListener;
-  private final TCWNumberPicker jdField_a_of_type_ComTencentWidgetTCWNumberPicker;
-  private final java.text.DateFormat jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-  private Calendar jdField_a_of_type_JavaUtilCalendar;
-  private Locale jdField_a_of_type_JavaUtilLocale;
-  private final TCWNumberPicker jdField_b_of_type_ComTencentWidgetTCWNumberPicker;
-  private Calendar jdField_b_of_type_JavaUtilCalendar;
-  private final TCWNumberPicker jdField_c_of_type_ComTencentWidgetTCWNumberPicker;
-  private Calendar jdField_c_of_type_JavaUtilCalendar;
-  private Calendar d;
+  private final java.text.DateFormat a = new SimpleDateFormat("MM/dd/yyyy");
+  private final TCWNumberPicker b;
+  private final TCWNumberPicker c;
+  private final TCWNumberPicker d;
+  private TCWDatePicker.OnDateChangedListener e;
+  private Locale f;
+  private Calendar g;
+  private Calendar h;
+  private Calendar i;
+  private Calendar j;
   
   public TCWDatePicker(Context paramContext)
   {
@@ -44,68 +44,68 @@ public class TCWDatePicker
   public TCWDatePicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(Locale.getDefault());
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131559038, this, true);
+    setCurrentLocale(Locale.getDefault());
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131624672, this, true);
     Object localObject1 = new TCWDatePicker.1(this);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131365427));
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setFormatter(TCWNumberPicker.a);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setSpeed(100L);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((TCWNumberPicker.OnChangedListener)localObject1);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131371454));
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setFormatter(TCWNumberPicker.a);
+    this.b = ((TCWNumberPicker)findViewById(2131431631));
+    this.b.setFormatter(TCWNumberPicker.a);
+    this.b.setSpeed(100L);
+    this.b.setOnChangeListener((TCWNumberPicker.OnChangedListener)localObject1);
+    this.c = ((TCWNumberPicker)findViewById(2131438820));
+    this.c.setFormatter(TCWNumberPicker.a);
     Object localObject2 = new DateFormatSymbols();
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setRange(1, 12, ((DateFormatSymbols)localObject2).getShortMonths());
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setSpeed(200L);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((TCWNumberPicker.OnChangedListener)localObject1);
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker = ((TCWNumberPicker)findViewById(2131381304));
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setSpeed(100L);
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setOnChangeListener((TCWNumberPicker.OnChangedListener)localObject1);
-    if (AppSetting.d)
+    this.c.setRange(1, 12, ((DateFormatSymbols)localObject2).getShortMonths());
+    this.c.setSpeed(200L);
+    this.c.setOnChangeListener((TCWNumberPicker.OnChangedListener)localObject1);
+    this.d = ((TCWNumberPicker)findViewById(2131450356));
+    this.d.setSpeed(100L);
+    this.d.setOnChangeListener((TCWNumberPicker.OnChangedListener)localObject1);
+    if (AppSetting.e)
     {
-      localObject1 = (TCWNumberPickerButton)this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368754);
-      localObject2 = (TCWNumberPickerButton)this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365457);
-      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689598));
-      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694186));
-      localObject1 = (TCWNumberPickerButton)this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368754);
-      localObject2 = (TCWNumberPickerButton)this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365457);
-      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689623));
-      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694187));
-      localObject1 = (TCWNumberPickerButton)this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131368754);
-      localObject2 = (TCWNumberPickerButton)this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.findViewById(2131365457);
-      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131689658));
-      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131694188));
+      localObject1 = (TCWNumberPickerButton)this.b.findViewById(2131435671);
+      localObject2 = (TCWNumberPickerButton)this.b.findViewById(2131431670);
+      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131886208));
+      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131891823));
+      localObject1 = (TCWNumberPickerButton)this.c.findViewById(2131435671);
+      localObject2 = (TCWNumberPickerButton)this.c.findViewById(2131431670);
+      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131886234));
+      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131891824));
+      localObject1 = (TCWNumberPickerButton)this.d.findViewById(2131435671);
+      localObject2 = (TCWNumberPickerButton)this.d.findViewById(2131431670);
+      ((TCWNumberPickerButton)localObject1).setContentDescription(getContext().getString(2131886269));
+      ((TCWNumberPickerButton)localObject2).setContentDescription(getContext().getString(2131891825));
     }
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TCWDatePicker);
     paramInt = paramContext.getInt(3, 1900);
-    int i = paramContext.getInt(0, 2100);
+    int k = paramContext.getInt(0, 2100);
     paramAttributeSet = paramContext.getString(2);
     localObject1 = paramContext.getString(1);
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setRange(paramInt, i);
+    this.d.setRange(paramInt, k);
     paramContext.recycle();
-    this.jdField_b_of_type_JavaUtilCalendar.clear();
+    this.h.clear();
     if (!TextUtils.isEmpty(paramAttributeSet))
     {
-      if (!a(paramAttributeSet, this.jdField_b_of_type_JavaUtilCalendar)) {
-        this.jdField_b_of_type_JavaUtilCalendar.set(paramInt, 0, 1);
+      if (!a(paramAttributeSet, this.h)) {
+        this.h.set(paramInt, 0, 1);
       }
     }
     else {
-      this.jdField_b_of_type_JavaUtilCalendar.set(paramInt, 0, 1);
+      this.h.set(paramInt, 0, 1);
     }
-    setMinDate(this.jdField_b_of_type_JavaUtilCalendar.getTimeInMillis());
-    this.jdField_b_of_type_JavaUtilCalendar.clear();
+    setMinDate(this.h.getTimeInMillis());
+    this.h.clear();
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      if (!a((String)localObject1, this.jdField_b_of_type_JavaUtilCalendar)) {
-        this.jdField_b_of_type_JavaUtilCalendar.set(i, 11, 31);
+      if (!a((String)localObject1, this.h)) {
+        this.h.set(k, 11, 31);
       }
     }
     else {
-      this.jdField_b_of_type_JavaUtilCalendar.set(i, 11, 31);
+      this.h.set(k, 11, 31);
     }
-    setMaxDate(this.jdField_b_of_type_JavaUtilCalendar.getTimeInMillis());
-    this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
-    a(this.jdField_a_of_type_JavaUtilCalendar.get(1), this.jdField_a_of_type_JavaUtilCalendar.get(2), this.jdField_a_of_type_JavaUtilCalendar.get(5), null);
+    setMaxDate(this.h.getTimeInMillis());
+    this.g.setTimeInMillis(System.currentTimeMillis());
+    a(this.g.get(1), this.g.get(2), this.g.get(5), null);
     a();
     if (!isEnabled()) {
       setEnabled(false);
@@ -126,57 +126,45 @@ public class TCWDatePicker
   private void a()
   {
     char[] arrayOfChar = android.text.format.DateFormat.getDateFormatOrder(getContext());
-    int i = 0;
+    int k = 0;
     if ((arrayOfChar[0] == 'M') && (arrayOfChar[1] == 'd')) {
       return;
     }
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131372316);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131439828);
     localLinearLayout.removeAllViews();
-    int j = arrayOfChar.length;
-    while (i < j)
+    int m = arrayOfChar.length;
+    while (k < m)
     {
-      int k = arrayOfChar[i];
-      if (k == 100) {
-        localLinearLayout.addView(this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker);
-      } else if (k == 77) {
-        localLinearLayout.addView(this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker);
+      int n = arrayOfChar[k];
+      if (n == 100) {
+        localLinearLayout.addView(this.b);
+      } else if (n == 77) {
+        localLinearLayout.addView(this.c);
       } else {
-        localLinearLayout.addView(this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker);
+        localLinearLayout.addView(this.d);
       }
-      i += 1;
+      k += 1;
     }
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilCalendar.set(paramInt1, paramInt2, paramInt3);
-    if (this.jdField_a_of_type_JavaUtilCalendar.before(this.jdField_c_of_type_JavaUtilCalendar))
+    this.g.set(paramInt1, paramInt2, paramInt3);
+    if (this.g.before(this.i))
     {
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.jdField_c_of_type_JavaUtilCalendar.getTimeInMillis());
+      this.g.setTimeInMillis(this.i.getTimeInMillis());
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilCalendar.after(this.d)) {
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.d.getTimeInMillis());
+    if (this.g.after(this.j)) {
+      this.g.setTimeInMillis(this.j.getTimeInMillis());
     }
-  }
-  
-  private void a(Locale paramLocale)
-  {
-    if (paramLocale.equals(this.jdField_a_of_type_JavaUtilLocale)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilLocale = paramLocale;
-    this.jdField_b_of_type_JavaUtilCalendar = a(this.jdField_b_of_type_JavaUtilCalendar, paramLocale);
-    this.jdField_c_of_type_JavaUtilCalendar = a(this.jdField_c_of_type_JavaUtilCalendar, paramLocale);
-    this.d = a(this.d, paramLocale);
-    this.jdField_a_of_type_JavaUtilCalendar = a(this.jdField_a_of_type_JavaUtilCalendar, paramLocale);
   }
   
   private boolean a(String paramString, Calendar paramCalendar)
   {
     try
     {
-      paramCalendar.setTime(this.jdField_a_of_type_JavaTextDateFormat.parse(paramString));
+      paramCalendar.setTime(this.a.parse(paramString));
       return true;
     }
     catch (ParseException paramString)
@@ -190,51 +178,63 @@ public class TCWDatePicker
   private void b()
   {
     c();
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setCurrent(this.jdField_a_of_type_JavaUtilCalendar.get(1));
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setCurrent(this.jdField_a_of_type_JavaUtilCalendar.get(2) + 1);
+    this.d.setCurrent(this.g.get(1));
+    this.c.setCurrent(this.g.get(2) + 1);
   }
   
   private void c()
   {
-    int i = this.jdField_a_of_type_JavaUtilCalendar.getActualMaximum(5);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setRange(1, i);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setCurrent(this.jdField_a_of_type_JavaUtilCalendar.get(5));
+    int k = this.g.getActualMaximum(5);
+    this.b.setRange(1, k);
+    this.b.setCurrent(this.g.get(5));
   }
   
   private void d()
   {
-    TCWDatePicker.OnDateChangedListener localOnDateChangedListener = this.jdField_a_of_type_ComTencentWidgetTCWDatePicker$OnDateChangedListener;
+    TCWDatePicker.OnDateChangedListener localOnDateChangedListener = this.e;
     if (localOnDateChangedListener != null) {
-      localOnDateChangedListener.a(this, a(), b(), c());
+      localOnDateChangedListener.a(this, getYear(), getMonth(), getDayOfMonth());
     }
   }
   
-  public int a()
+  private void setCurrentLocale(Locale paramLocale)
   {
-    return this.jdField_a_of_type_JavaUtilCalendar.get(1);
+    if (paramLocale.equals(this.f)) {
+      return;
+    }
+    this.f = paramLocale;
+    this.h = a(this.h, paramLocale);
+    this.i = a(this.i, paramLocale);
+    this.j = a(this.j, paramLocale);
+    this.g = a(this.g, paramLocale);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, TCWDatePicker.OnDateChangedListener paramOnDateChangedListener)
   {
     a(paramInt1, paramInt2, paramInt3);
-    this.jdField_a_of_type_ComTencentWidgetTCWDatePicker$OnDateChangedListener = paramOnDateChangedListener;
+    this.e = paramOnDateChangedListener;
     b();
     d();
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_JavaUtilCalendar.get(2);
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_JavaUtilCalendar.get(5);
   }
   
   protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
+  }
+  
+  public int getDayOfMonth()
+  {
+    return this.g.get(5);
+  }
+  
+  public int getMonth()
+  {
+    return this.g.get(2);
+  }
+  
+  public int getYear()
+  {
+    return this.g.get(1);
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -248,27 +248,27 @@ public class TCWDatePicker
   
   protected Parcelable onSaveInstanceState()
   {
-    return new TCWDatePicker.SavedState(super.onSaveInstanceState(), a(), b(), c(), null);
+    return new TCWDatePicker.SavedState(super.onSaveInstanceState(), getYear(), getMonth(), getDayOfMonth(), null);
   }
   
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.jdField_a_of_type_ComTencentWidgetTCWNumberPicker.setEnabled(paramBoolean);
-    this.jdField_b_of_type_ComTencentWidgetTCWNumberPicker.setEnabled(paramBoolean);
-    this.jdField_c_of_type_ComTencentWidgetTCWNumberPicker.setEnabled(paramBoolean);
+    this.b.setEnabled(paramBoolean);
+    this.c.setEnabled(paramBoolean);
+    this.d.setEnabled(paramBoolean);
   }
   
   public void setMaxDate(long paramLong)
   {
-    this.jdField_b_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    if ((this.jdField_b_of_type_JavaUtilCalendar.get(1) == this.d.get(1)) && (this.jdField_b_of_type_JavaUtilCalendar.get(6) != this.d.get(6))) {
+    this.h.setTimeInMillis(paramLong);
+    if ((this.h.get(1) == this.j.get(1)) && (this.h.get(6) != this.j.get(6))) {
       return;
     }
-    this.d.setTimeInMillis(paramLong);
-    if (this.jdField_a_of_type_JavaUtilCalendar.after(this.d))
+    this.j.setTimeInMillis(paramLong);
+    if (this.g.after(this.j))
     {
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.d.getTimeInMillis());
+      this.g.setTimeInMillis(this.j.getTimeInMillis());
       d();
     }
     b();
@@ -276,14 +276,14 @@ public class TCWDatePicker
   
   public void setMinDate(long paramLong)
   {
-    this.jdField_b_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    if ((this.jdField_b_of_type_JavaUtilCalendar.get(1) == this.jdField_c_of_type_JavaUtilCalendar.get(1)) && (this.jdField_b_of_type_JavaUtilCalendar.get(6) != this.jdField_c_of_type_JavaUtilCalendar.get(6))) {
+    this.h.setTimeInMillis(paramLong);
+    if ((this.h.get(1) == this.i.get(1)) && (this.h.get(6) != this.i.get(6))) {
       return;
     }
-    this.jdField_c_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
-    if (this.jdField_a_of_type_JavaUtilCalendar.before(this.jdField_c_of_type_JavaUtilCalendar))
+    this.i.setTimeInMillis(paramLong);
+    if (this.g.before(this.i))
     {
-      this.jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(this.jdField_c_of_type_JavaUtilCalendar.getTimeInMillis());
+      this.g.setTimeInMillis(this.i.getTimeInMillis());
       d();
     }
     b();
@@ -291,7 +291,7 @@ public class TCWDatePicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.widget.TCWDatePicker
  * JD-Core Version:    0.7.0.1
  */

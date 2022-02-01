@@ -5,54 +5,47 @@ import java.util.List;
 public class CommandInfo
 {
   public int a;
-  public ConfirmSendInfo a;
-  public JumpInfo a;
-  public RecordInfo a;
-  public String a;
-  public List<FriendItemInfo> a;
-  public boolean a;
   public String b;
-  public boolean b;
+  public boolean c = false;
+  public List<FriendItemInfo> d;
+  public RecordInfo e;
+  public JumpInfo f;
+  public boolean g;
+  public String h;
+  public ConfirmSendInfo i;
   
-  public CommandInfo()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public CommandInfo() {}
   
   public CommandInfo(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramInt;
+    this.b = paramString;
   }
   
   public CommandInfo(int paramInt, String paramString, ConfirmSendInfo paramConfirmSendInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqQassistantDataConfirmSendInfo = paramConfirmSendInfo;
+    this.a = paramInt;
+    this.b = paramString;
+    this.i = paramConfirmSendInfo;
   }
   
   public CommandInfo(int paramInt, String paramString, JumpInfo paramJumpInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqQassistantDataJumpInfo = paramJumpInfo;
+    this.a = paramInt;
+    this.b = paramString;
+    this.f = paramJumpInfo;
   }
   
   public CommandInfo(int paramInt, String paramString, List<FriendItemInfo> paramList)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.a = paramInt;
+    this.b = paramString;
+    this.d = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.data.CommandInfo
  * JD-Core Version:    0.7.0.1
  */

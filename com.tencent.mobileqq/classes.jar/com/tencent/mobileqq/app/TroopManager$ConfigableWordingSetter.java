@@ -25,26 +25,26 @@ public class TroopManager$ConfigableWordingSetter
       if (paramInt == 0)
       {
         double d1 = Math.random();
-        double d2 = TroopManager.b.size();
+        double d2 = TroopManager.t.size();
         Double.isNaN(d2);
         this.a = ((int)(d1 * d2));
-        if (TroopManager.b.size() == 1)
+        if (TroopManager.t.size() == 1)
         {
-          str = (String)TroopManager.b.get(0);
+          str = (String)TroopManager.t.get(0);
           TroopManager.a(paramQQAppInterface);
           break label162;
         }
-        if (this.a < TroopManager.b.size())
+        if (this.a < TroopManager.t.size())
         {
-          str = (String)TroopManager.b.get(this.a);
-          TroopManager.b.remove(this.a);
+          str = (String)TroopManager.t.get(this.a);
+          TroopManager.t.remove(this.a);
           break label162;
         }
       }
-      else if (this.b < TroopManager.c.size())
+      else if (this.b < TroopManager.u.size())
       {
-        str = (String)TroopManager.c.get(this.b);
-        this.b = ((this.b + 1) % TroopManager.c.size());
+        str = (String)TroopManager.u.get(this.b);
+        this.b = ((this.b + 1) % TroopManager.u.size());
         break label162;
       }
       String str = "";
@@ -59,7 +59,7 @@ public class TroopManager$ConfigableWordingSetter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.ConfigableWordingSetter
  * JD-Core Version:    0.7.0.1
  */

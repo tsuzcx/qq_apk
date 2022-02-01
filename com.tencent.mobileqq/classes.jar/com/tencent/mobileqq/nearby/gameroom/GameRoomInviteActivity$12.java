@@ -34,7 +34,7 @@ class GameRoomInviteActivity$12
     else
     {
       boolean bool2 = false;
-      if ((paramInt == 1009) && (this.a.mInviteId != null) && (this.a.mInviteId.equals(GameRoomConstants.jdField_a_of_type_JavaLangString)))
+      if ((paramInt == 1009) && (this.a.mInviteId != null) && (this.a.mInviteId.equals(GameRoomConstants.a)))
       {
         paramRspBody = paramRspBody.poi_info;
         localObject = paramRspBody.bytes_uid.get().toStringUtf8();
@@ -65,11 +65,11 @@ class GameRoomInviteActivity$12
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(localPlayerState.uint64_uin.get());
         localStringBuilder.append("");
-        ((GameRoomInviteActivity.GameRoomUser)localObject).jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+        ((GameRoomInviteActivity.GameRoomUser)localObject).a = localStringBuilder.toString();
         if (localPlayerState.uint32_state.get() != 1) {
           bool1 = false;
         }
-        ((GameRoomInviteActivity.GameRoomUser)localObject).jdField_a_of_type_Boolean = bool1;
+        ((GameRoomInviteActivity.GameRoomUser)localObject).b = bool1;
         this.a.mUsers.add(localObject);
         paramInt += 1;
       }
@@ -100,7 +100,7 @@ class GameRoomInviteActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.12
  * JD-Core Version:    0.7.0.1
  */

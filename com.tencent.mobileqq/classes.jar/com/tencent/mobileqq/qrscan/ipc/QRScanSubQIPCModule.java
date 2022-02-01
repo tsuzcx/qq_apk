@@ -14,9 +14,9 @@ public class QRScanSubQIPCModule
   extends QIPCModule
   implements IQRScanIPCConst
 {
-  private static volatile QRScanSubQIPCModule jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanSubQIPCModule;
   public static volatile boolean a = false;
-  private WeakReference<IQRScanIPCConst.IMiniResDownloadCallback> jdField_a_of_type_JavaLangRefWeakReference;
+  private static volatile QRScanSubQIPCModule b;
+  private WeakReference<IQRScanIPCConst.IMiniResDownloadCallback> c;
   
   public QRScanSubQIPCModule(String paramString)
   {
@@ -25,37 +25,16 @@ public class QRScanSubQIPCModule
   
   public static QRScanSubQIPCModule a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanSubQIPCModule == null) {
+    if (b == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanSubQIPCModule == null) {
-          jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanSubQIPCModule = new QRScanSubQIPCModule("QRScanSubQIPCModule");
+        if (b == null) {
+          b = new QRScanSubQIPCModule("QRScanSubQIPCModule");
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqQrscanIpcQRScanSubQIPCModule;
-  }
-  
-  public void a()
-  {
-    try
-    {
-      boolean bool = jdField_a_of_type_Boolean;
-      if (!bool) {
-        try
-        {
-          QIPCClientHelper.getInstance().register(this);
-          jdField_a_of_type_Boolean = true;
-        }
-        catch (Exception localException)
-        {
-          QLog.d("MiniRecog.QRScanSubQIPCModule", 1, "register", localException);
-        }
-      }
-      return;
-    }
-    finally {}
+    return b;
   }
   
   public void a(int paramInt)
@@ -71,36 +50,57 @@ public class QRScanSubQIPCModule
   {
     if (paramIMiniResDownloadCallback == null)
     {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
+      this.c = null;
       return;
     }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIMiniResDownloadCallback);
+    this.c = new WeakReference(paramIMiniResDownloadCallback);
+  }
+  
+  public void b()
+  {
+    try
+    {
+      boolean bool = a;
+      if (!bool) {
+        try
+        {
+          QIPCClientHelper.getInstance().register(this);
+          a = true;
+        }
+        catch (Exception localException)
+        {
+          QLog.d("MiniRecog.QRScanSubQIPCModule", 1, "register", localException);
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   /* Error */
-  public void b()
+  public void c()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 35	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   5: invokevirtual 116	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
+    //   2: invokestatic 80	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   5: invokevirtual 117	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
     //   8: ifnull +34 -> 42
-    //   11: invokestatic 35	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   14: invokevirtual 116	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
+    //   11: invokestatic 80	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   14: invokevirtual 117	com/tencent/mobileqq/qipc/QIPCClientHelper:getClient	()Leipc/EIPCClient;
     //   17: aload_0
-    //   18: invokevirtual 122	eipc/EIPCClient:unRegisterModule	(Leipc/EIPCModule;)V
+    //   18: invokevirtual 123	eipc/EIPCClient:unRegisterModule	(Leipc/EIPCModule;)V
     //   21: iconst_0
-    //   22: putstatic 29	com/tencent/mobileqq/qrscan/ipc/QRScanSubQIPCModule:jdField_a_of_type_Boolean	Z
+    //   22: putstatic 105	com/tencent/mobileqq/qrscan/ipc/QRScanSubQIPCModule:a	Z
     //   25: goto +17 -> 42
     //   28: astore_1
     //   29: goto +16 -> 45
     //   32: astore_1
-    //   33: ldc 41
+    //   33: ldc 52
     //   35: iconst_1
-    //   36: ldc 124
+    //   36: ldc 125
     //   38: aload_1
-    //   39: invokestatic 48	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   39: invokestatic 113	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   42: aload_0
     //   43: monitorexit
     //   44: return
@@ -122,7 +122,7 @@ public class QRScanSubQIPCModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    Object localObject = this.c;
     if (localObject == null) {
       localObject = null;
     } else {
@@ -155,7 +155,7 @@ public class QRScanSubQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qrscan.ipc.QRScanSubQIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.kandian.biz.ugc;
 
 import com.tencent.mobileqq.kandian.base.view.widget.ReadInJoyNinePicDeliverDynamicGridView.OnDragListener;
-import com.tencent.mobileqq.kandian.biz.common.api.IPublicAccountReportUtils;
+import com.tencent.mobileqq.kandian.biz.common.api.impl.PublicAccountReportUtils;
 import com.tencent.mobileqq.kandian.glue.report.RIJTransMergeKanDianReport;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -21,11 +20,11 @@ class ReadInJoyDeliverUGCActivity$4
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
+    if (ReadInJoyDeliverUGCActivity.d(this.a) != 0)
     {
-      Object localObject = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localObject);
-      ((IPublicAccountReportUtils)QRoute.api(IPublicAccountReportUtils.class)).publicAccountReportClickEvent(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", RIJTransMergeKanDianReport.c(), false);
+      Object localObject = (Integer)ReadInJoyDeliverUGCActivity.e(this.a).remove(paramInt1);
+      ReadInJoyDeliverUGCActivity.e(this.a).add(paramInt2, localObject);
+      PublicAccountReportUtils.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", RIJTransMergeKanDianReport.e(), false);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
@@ -40,7 +39,7 @@ class ReadInJoyDeliverUGCActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.ugc.ReadInJoyDeliverUGCActivity.4
  * JD-Core Version:    0.7.0.1
  */

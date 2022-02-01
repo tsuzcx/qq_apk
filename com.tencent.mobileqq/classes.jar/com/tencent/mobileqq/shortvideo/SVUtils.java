@@ -12,16 +12,16 @@ import java.io.File;
 
 public class SVUtils
 {
-  public static String a;
   public static boolean a = false;
-  private static boolean b = true;
+  public static String b;
+  private static boolean c = true;
   
   public static String a()
   {
-    if (jdField_a_of_type_JavaLangString == null) {
-      jdField_a_of_type_JavaLangString = RmVFSUtils.getVFSPath(AppConstants.SDCARD_PATH);
+    if (b == null) {
+      b = RmVFSUtils.getVFSPath(AppConstants.SDCARD_PATH);
     }
-    return jdField_a_of_type_JavaLangString;
+    return b;
   }
   
   public static String a(int paramInt)
@@ -170,12 +170,12 @@ public class SVUtils
     //   6: newarray byte
     //   8: astore 11
     //   10: bipush 8
-    //   12: invokestatic 184	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   12: invokestatic 185	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   15: astore 12
-    //   17: new 186	java/io/FileInputStream
+    //   17: new 187	java/io/FileInputStream
     //   20: dup
     //   21: aload_0
-    //   22: invokespecial 189	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   22: invokespecial 190	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   25: astore 9
     //   27: lconst_0
     //   28: lstore 5
@@ -192,7 +192,7 @@ public class SVUtils
     //   46: astore_0
     //   47: aload 9
     //   49: aload 10
-    //   51: invokevirtual 195	java/io/InputStream:read	([B)I
+    //   51: invokevirtual 196	java/io/InputStream:read	([B)I
     //   54: istore_3
     //   55: iload_3
     //   56: ifgt +10 -> 66
@@ -204,30 +204,30 @@ public class SVUtils
     //   69: aload 12
     //   71: iconst_4
     //   72: newarray byte
-    //   74: invokevirtual 199	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
+    //   74: invokevirtual 200	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
     //   77: pop
     //   78: aload 9
     //   80: astore_0
     //   81: aload 12
     //   83: aload 10
-    //   85: invokevirtual 199	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
+    //   85: invokevirtual 200	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
     //   88: pop
     //   89: aload 9
     //   91: astore_0
     //   92: aload 12
-    //   94: invokevirtual 203	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
+    //   94: invokevirtual 204	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
     //   97: pop
     //   98: aload 9
     //   100: astore_0
     //   101: aload 12
-    //   103: invokevirtual 206	java/nio/ByteBuffer:getLong	()J
+    //   103: invokevirtual 207	java/nio/ByteBuffer:getLong	()J
     //   106: lstore 7
     //   108: aload 9
     //   110: astore_0
     //   111: iload_3
     //   112: aload 9
     //   114: aload 11
-    //   116: invokevirtual 195	java/io/InputStream:read	([B)I
+    //   116: invokevirtual 196	java/io/InputStream:read	([B)I
     //   119: iadd
     //   120: istore 4
     //   122: iload 4
@@ -248,29 +248,29 @@ public class SVUtils
     //   148: iload 4
     //   150: aload 9
     //   152: aload 13
-    //   154: invokevirtual 195	java/io/InputStream:read	([B)I
+    //   154: invokevirtual 196	java/io/InputStream:read	([B)I
     //   157: iadd
     //   158: istore_3
     //   159: aload 9
     //   161: astore_0
     //   162: aload 12
-    //   164: invokevirtual 209	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   164: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   167: pop
     //   168: aload 9
     //   170: astore_0
     //   171: aload 12
     //   173: aload 13
-    //   175: invokevirtual 199	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
+    //   175: invokevirtual 200	java/nio/ByteBuffer:put	([B)Ljava/nio/ByteBuffer;
     //   178: pop
     //   179: aload 9
     //   181: astore_0
     //   182: aload 12
-    //   184: invokevirtual 203	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
+    //   184: invokevirtual 204	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
     //   187: pop
     //   188: aload 9
     //   190: astore_0
     //   191: aload 12
-    //   193: invokevirtual 206	java/nio/ByteBuffer:getLong	()J
+    //   193: invokevirtual 207	java/nio/ByteBuffer:getLong	()J
     //   196: lstore 5
     //   198: goto +145 -> 343
     //   201: aload 9
@@ -280,7 +280,7 @@ public class SVUtils
     //   208: iload_3
     //   209: i2l
     //   210: lsub
-    //   211: invokevirtual 213	java/io/InputStream:skip	(J)J
+    //   211: invokevirtual 214	java/io/InputStream:skip	(J)J
     //   214: pop2
     //   215: iload_2
     //   216: i2l
@@ -291,7 +291,7 @@ public class SVUtils
     //   222: aload 9
     //   224: astore_0
     //   225: aload 12
-    //   227: invokevirtual 209	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   227: invokevirtual 210	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
     //   230: pop
     //   231: iload_1
     //   232: iconst_1
@@ -301,25 +301,25 @@ public class SVUtils
     //   238: astore 10
     //   240: goto +53 -> 293
     //   243: aload 9
-    //   245: invokevirtual 216	java/io/InputStream:close	()V
-    //   248: new 33	java/lang/StringBuilder
+    //   245: invokevirtual 217	java/io/InputStream:close	()V
+    //   248: new 34	java/lang/StringBuilder
     //   251: dup
-    //   252: invokespecial 34	java/lang/StringBuilder:<init>	()V
+    //   252: invokespecial 35	java/lang/StringBuilder:<init>	()V
     //   255: astore_0
     //   256: aload_0
     //   257: iload_2
-    //   258: invokevirtual 43	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   258: invokevirtual 44	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   261: pop
     //   262: aload_0
-    //   263: ldc 218
-    //   265: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: ldc 219
+    //   265: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: pop
     //   269: aload_0
     //   270: lload 7
-    //   272: invokevirtual 163	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   272: invokevirtual 164	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   275: pop
     //   276: aload_0
-    //   277: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   277: invokevirtual 49	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   280: areturn
     //   281: astore 9
     //   283: aconst_null
@@ -331,18 +331,18 @@ public class SVUtils
     //   293: aload 9
     //   295: astore_0
     //   296: aload 10
-    //   298: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   298: invokevirtual 222	java/lang/Exception:printStackTrace	()V
     //   301: aload 9
     //   303: ifnull +8 -> 311
     //   306: aload 9
-    //   308: invokevirtual 216	java/io/InputStream:close	()V
+    //   308: invokevirtual 217	java/io/InputStream:close	()V
     //   311: aconst_null
     //   312: areturn
     //   313: astore 9
     //   315: aload_0
     //   316: ifnull +7 -> 323
     //   319: aload_0
-    //   320: invokevirtual 216	java/io/InputStream:close	()V
+    //   320: invokevirtual 217	java/io/InputStream:close	()V
     //   323: goto +6 -> 329
     //   326: aload 9
     //   328: athrow
@@ -455,41 +455,6 @@ public class SVUtils
     localStringBuilder.append(".");
     localStringBuilder.append(paramString2);
     return localStringBuilder.toString();
-  }
-  
-  public static boolean a()
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      try
-      {
-        Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999|4|1");
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("needBlockBrokenVideo:");
-          localStringBuilder.append((String)localObject);
-          QLog.d("SVUtils", 2, localStringBuilder.toString());
-        }
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length > 5) {
-          b = localObject[5].equals("1");
-        }
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder;
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("needBlockBrokenVideo e:");
-          localStringBuilder.append(localException.toString());
-          QLog.d("SVUtils", 2, localStringBuilder.toString());
-        }
-      }
-      jdField_a_of_type_Boolean = true;
-    }
-    return b;
   }
   
   public static String b()
@@ -613,10 +578,45 @@ public class SVUtils
     }
     return " shortvideo_cmd_send ";
   }
+  
+  public static boolean d()
+  {
+    if (!a)
+    {
+      try
+      {
+        Object localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1|999|4|1");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("needBlockBrokenVideo:");
+          localStringBuilder.append((String)localObject);
+          QLog.d("SVUtils", 2, localStringBuilder.toString());
+        }
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length > 5) {
+          c = localObject[5].equals("1");
+        }
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("needBlockBrokenVideo e:");
+          localStringBuilder.append(localException.toString());
+          QLog.d("SVUtils", 2, localStringBuilder.toString());
+        }
+      }
+      a = true;
+    }
+    return c;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.SVUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class AVGameRoomCenterFragment$1
   
   public void onClick(View paramView)
   {
-    this.a.e();
+    this.a.g();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

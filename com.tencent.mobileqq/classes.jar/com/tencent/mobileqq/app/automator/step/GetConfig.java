@@ -27,29 +27,29 @@ public class GetConfig
   
   protected int doStep()
   {
-    ((ILebaHelperService)this.mAutomator.a.getRuntimeService(ILebaHelperService.class, "")).getAllPluginList(this.mAutomator.a);
+    ((ILebaHelperService)this.mAutomator.k.getRuntimeService(ILebaHelperService.class, "")).getAllPluginList(this.mAutomator.k);
     Object localObject = new PluginConfigProxy();
-    this.mAutomator.a.getAboutConfig().a((PluginConfigProxy)localObject);
-    ((PluginConfigProxy)localObject).a(this.mAutomator.a);
-    ((IPluginManager)this.mAutomator.a.getManager(QQManagerFactory.MGR_PLUGIN)).a();
-    ((IEarlyDownloadService)this.mAutomator.a.getRuntimeService(IEarlyDownloadService.class, "")).updateConfigs(true);
-    localObject = (ConfigHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
-    ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).d(), ((ConfigHandler)localObject).f(), ((ConfigHandler)localObject).b(), ((ConfigHandler)localObject).e(), ((ConfigHandler)localObject).c() });
+    this.mAutomator.k.getAboutConfig().a((PluginConfigProxy)localObject);
+    ((PluginConfigProxy)localObject).a(this.mAutomator.k);
+    ((IPluginManager)this.mAutomator.k.getManager(QQManagerFactory.MGR_PLUGIN)).a();
+    ((IEarlyDownloadService)this.mAutomator.k.getRuntimeService(IEarlyDownloadService.class, "")).updateConfigs(true);
+    localObject = (ConfigHandler)this.mAutomator.k.getBusinessHandler(BusinessHandlerFactory.CONFIG_HANDLER);
+    ((ConfigHandler)localObject).a(null, new GetResourceReqInfo[] { ((ConfigHandler)localObject).j(), ((ConfigHandler)localObject).l(), ((ConfigHandler)localObject).h(), ((ConfigHandler)localObject).k(), ((ConfigHandler)localObject).i() });
     if (!"5.0.2".equals(Build.VERSION.RELEASE))
     {
       int i = NetworkUtil.getNetworkType(BaseApplication.getContext());
       if ((i == 1) || (i == 4))
       {
         localObject = new GetConfig.1(this);
-        IPreDownloadController localIPreDownloadController = (IPreDownloadController)this.mAutomator.a.getRuntimeService(IPreDownloadController.class);
+        IPreDownloadController localIPreDownloadController = (IPreDownloadController)this.mAutomator.k.getRuntimeService(IPreDownloadController.class);
         if (localIPreDownloadController.isEnable()) {
-          localIPreDownloadController.requestPreDownload(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new RunnableTask(this.mAutomator.a, "tvk_sdkmgr", (Runnable)localObject, 4000L));
+          localIPreDownloadController.requestPreDownload(10057, null, "tvk_sdkmgr", 0, "http://tvk_sdkmgr/unkown", "unkown", 1, 0, false, new RunnableTask(this.mAutomator.k, "tvk_sdkmgr", (Runnable)localObject, 4000L));
         } else {
           ((Runnable)localObject).run();
         }
       }
     }
-    HotPicManager.a(this.mAutomator.a).b();
+    HotPicManager.a(this.mAutomator.k).d();
     return 2;
   }
   
@@ -58,8 +58,8 @@ public class GetConfig
     if (this.a == null)
     {
       this.a = new GetConfig.MyResourcePluginListener(this, null);
-      ((ILebaHelperService)this.mAutomator.a.getRuntimeService(ILebaHelperService.class, "")).addLebaListener(this.a);
-      this.mAutomator.a.addAboutListener(this.a);
+      ((ILebaHelperService)this.mAutomator.k.getRuntimeService(ILebaHelperService.class, "")).addLebaListener(this.a);
+      this.mAutomator.k.addAboutListener(this.a);
     }
   }
   
@@ -70,7 +70,7 @@ public class GetConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetConfig
  * JD-Core Version:    0.7.0.1
  */

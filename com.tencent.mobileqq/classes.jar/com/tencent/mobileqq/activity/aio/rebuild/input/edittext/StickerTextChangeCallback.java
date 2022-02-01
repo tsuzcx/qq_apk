@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild.input.edittext;
 
 import android.text.Editable;
-import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.coreui.input.IEditTextChangeCallback;
 import com.tencent.mobileqq.activity.aio.helper.AIOZhituHelper;
@@ -24,7 +23,7 @@ public class StickerTextChangeCallback
   
   public boolean a(AIOContext paramAIOContext)
   {
-    return ((FullScreenInputHelper)paramAIOContext.a(24)).c();
+    return ((FullScreenInputHelper)paramAIOContext.a(24)).e();
   }
   
   public boolean a(AIOContext paramAIOContext, Editable paramEditable)
@@ -60,12 +59,12 @@ public class StickerTextChangeCallback
       QLog.d("StickerTextChangeCallback", 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject2 = (ReplyHelper)paramAIOContext.a(119);
-    return (paramEditable.length() > 0) && (!((ReceiptHelper)paramAIOContext.a(118)).a) && (!((AIOZhituHelper)localObject1).a) && (!((ReplyHelper)localObject2).a()) && (!a(paramAIOContext)) && (((IStickerRecManager)paramAIOContext.a().getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen()) && (paramAIOContext.a().a != 10007);
+    return (paramEditable.length() > 0) && (!((ReceiptHelper)paramAIOContext.a(118)).a) && (!((AIOZhituHelper)localObject1).a) && (!((ReplyHelper)localObject2).b()) && (!a(paramAIOContext)) && (((IStickerRecManager)paramAIOContext.a().getRuntimeService(IStickerRecManager.class)).isEmotionRecSettingOpen());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.input.edittext.StickerTextChangeCallback
  * JD-Core Version:    0.7.0.1
  */

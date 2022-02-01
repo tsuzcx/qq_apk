@@ -20,7 +20,7 @@ class TroopMemberListActivity$28
 {
   TroopMemberListActivity$28(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
     int i;
     if ((!TroopMemberListActivity.access$1700(this.a)) && (paramInt >= 5)) {
@@ -55,7 +55,7 @@ class TroopMemberListActivity$28
         this.a.mTitleRightImgBtn.setVisibility(8);
         this.a.mTitleSortImgBtn.setVisibility(8);
         if (this.a.mAdapter != null) {
-          this.a.mAdapter.a();
+          this.a.mAdapter.c();
         }
         ReportController.b(this.a.app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.mTroopUin, this.a.mMyTroopRole, "", "");
       }
@@ -86,7 +86,7 @@ class TroopMemberListActivity$28
         paramView.putExtra("param_max", 30);
         paramView.putExtra("param_exit_animation", 3);
         ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startSelectMemberActivity(this.a.app.getApplicationContext(), paramView);
-        this.a.overridePendingTransition(2130772011, 0);
+        this.a.overridePendingTransition(2130772014, 0);
         ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.mTroopUin, "", "", "");
       }
     }
@@ -100,7 +100,7 @@ class TroopMemberListActivity$28
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.28
  * JD-Core Version:    0.7.0.1
  */

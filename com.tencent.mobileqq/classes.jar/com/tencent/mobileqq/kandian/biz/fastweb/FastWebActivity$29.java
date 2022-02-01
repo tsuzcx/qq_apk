@@ -16,24 +16,24 @@ class FastWebActivity$29
   
   public void drawFinished()
   {
-    if (FastWebActivity.g(this.a))
+    if (FastWebActivity.L(this.a))
     {
-      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).getWidth());
-      FastWebActivity.d(this.a, false);
-      FastWebActivity.j(this.a);
+      FastWebActivity.z(this.a).a(FastWebActivity.w(this.a).getWidth());
+      FastWebActivity.f(this.a, false);
+      FastWebActivity.M(this.a);
       Object localObject = this.a;
-      FastWebActivity.a((FastWebActivity)localObject, new FastWebAdapterShowHelper(FastWebActivity.a((FastWebActivity)localObject), FastWebActivity.a(this.a).getFirstVisiblePosition(), FastWebActivity.a(this.a).getLastVisiblePosition()));
+      FastWebActivity.a((FastWebActivity)localObject, new FastWebAdapterShowHelper(FastWebActivity.w((FastWebActivity)localObject), FastWebActivity.w(this.a).getFirstVisiblePosition(), FastWebActivity.w(this.a).getLastVisiblePosition()));
       long l = TimeUtil.a("FastWebActivity.show");
       TimeUtil.b("fast_web_show_light_house_draw_finish");
       localObject = new ArrayList();
-      ((List)localObject).addAll(FastWebActivity.a(this.a));
+      ((List)localObject).addAll(FastWebActivity.m(this.a));
       ThreadManager.post(new FastWebActivity.29.1(this, l, (List)localObject), 5, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.fastweb.FastWebActivity.29
  * JD-Core Version:    0.7.0.1
  */

@@ -20,39 +20,15 @@ public class AVGameSpringHBAction
     super(paramQQAppInterface, paramContext);
   }
   
-  private long a()
-  {
-    return System.currentTimeMillis() / 1000L;
-  }
-  
-  private long a(String paramString)
-  {
-    try
-    {
-      long l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.e("AVGameSpringHBAction", 1, "[parseTimeToLong] ", paramString);
-    }
-    return 0L;
-  }
-  
-  private void a()
-  {
-    QPublicFragmentActivity.start(this.jdField_a_of_type_AndroidContentContext, AVGameRoomCenterFragment.class);
-  }
-  
   private void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2)
   {
-    IAvGameManager localIAvGameManager = (IAvGameManager)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(IAvGameManager.class, "");
+    IAvGameManager localIAvGameManager = (IAvGameManager)this.a.getRuntimeService(IAvGameManager.class, "");
     if (localIAvGameManager == null)
     {
       QLog.d("AVGameSpringHBAction", 1, "[jumpGameRoom] error: manager is null.");
       return;
     }
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    if (!(this.b instanceof Activity))
     {
       QLog.d("AVGameSpringHBAction", 1, "[jumpGameRoom] error: context is not instanceof Activity.");
       return;
@@ -60,7 +36,7 @@ public class AVGameSpringHBAction
     try
     {
       int i = Integer.parseInt(paramString1);
-      localIAvGameManager.startSurvivalGame((Activity)this.jdField_a_of_type_AndroidContentContext, i, paramBoolean, paramInt, paramString2);
+      localIAvGameManager.startSurvivalGame((Activity)this.b, i, paramBoolean, paramInt, paramString2);
       return;
     }
     catch (NumberFormatException paramString1)
@@ -69,11 +45,11 @@ public class AVGameSpringHBAction
     }
   }
   
-  private boolean a(String paramString1, String paramString2)
+  private boolean b(String paramString1, String paramString2)
   {
-    long l1 = a();
-    long l2 = a(paramString1);
-    long l3 = a(paramString2);
+    long l1 = c();
+    long l2 = i(paramString1);
+    long l3 = i(paramString2);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (l2 != 0L)
@@ -93,6 +69,30 @@ public class AVGameSpringHBAction
     return bool1;
   }
   
+  private long c()
+  {
+    return System.currentTimeMillis() / 1000L;
+  }
+  
+  private void d()
+  {
+    QPublicFragmentActivity.start(this.b, AVGameRoomCenterFragment.class);
+  }
+  
+  private long i(String paramString)
+  {
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("AVGameSpringHBAction", 1, "[parseTimeToLong] ", paramString);
+    }
+    return 0L;
+  }
+  
   public boolean a()
   {
     return a(1);
@@ -100,12 +100,12 @@ public class AVGameSpringHBAction
   
   public boolean a(int paramInt)
   {
-    String str1 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("pkid");
-    String str2 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("starttime");
-    String str3 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("endtime");
-    String str4 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("iscj");
-    String str6 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("fromtype");
-    String str5 = (String)this.jdField_a_of_type_JavaUtilHashMap.get("uin");
+    String str1 = (String)this.f.get("pkid");
+    String str2 = (String)this.f.get("starttime");
+    String str3 = (String)this.f.get("endtime");
+    String str4 = (String)this.f.get("iscj");
+    String str6 = (String)this.f.get("fromtype");
+    String str5 = (String)this.f.get("uin");
     int i;
     try
     {
@@ -132,14 +132,14 @@ public class AVGameSpringHBAction
     if (QLog.isColorLevel()) {
       QLog.d("AVGameSpringHBAction", 2, new Object[] { "[doAction] pkID: ", str1, ", startTime: ", str2, ", endTime: ", str3, ",sourceValue: ", Integer.valueOf(i) });
     }
-    if (a(str2, str3))
+    if (b(str2, str3))
     {
       a(str1, bool, i, str5);
       return true;
     }
     if (paramInt == 0)
     {
-      a();
+      d();
       return true;
     }
     return false;
@@ -147,7 +147,7 @@ public class AVGameSpringHBAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.AVGameSpringHBAction
  * JD-Core Version:    0.7.0.1
  */

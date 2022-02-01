@@ -16,39 +16,34 @@ import org.jetbrains.annotations.Nullable;
 public final class VasNinePathBitmap
   implements INinePathBitmap
 {
-  public static final VasNinePathBitmap.Companion a;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private NinePatch jdField_a_of_type_AndroidGraphicsNinePatch;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap$Companion = new VasNinePathBitmap.Companion(null);
-  }
+  public static final VasNinePathBitmap.Companion a = new VasNinePathBitmap.Companion(null);
+  private Bitmap b;
+  private NinePatch c;
+  private Rect d = new Rect();
   
   @JvmStatic
   @NotNull
   public static final Triple<Boolean, Boolean, Float> a(int paramInt1, int paramInt2, @NotNull Rect paramRect)
   {
-    return jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap$Companion.a(paramInt1, paramInt2, paramRect);
+    return a.a(paramInt1, paramInt2, paramRect);
   }
   
   private final void a(Bitmap paramBitmap, Canvas paramCanvas, Rect paramRect1, Rect paramRect2, Paint paramPaint)
   {
     if (paramRect1 == null) {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      this.d.set(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
     } else {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect1);
+      this.d.set(paramRect1);
     }
-    paramCanvas.drawBitmap(paramBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect2, paramPaint);
+    paramCanvas.drawBitmap(paramBitmap, this.d, paramRect2, paramPaint);
   }
   
   private final void a(NinePatch paramNinePatch, Canvas paramCanvas, Rect paramRect, Paint paramPaint)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    this.d.set(paramRect);
     int i = paramNinePatch.getWidth();
     int j = paramNinePatch.getHeight();
-    Triple localTriple = jdField_a_of_type_ComTencentMobileqqVasUiVasNinePathBitmap$Companion.a(i, j, paramRect);
+    Triple localTriple = a.a(i, j, paramRect);
     boolean bool1 = ((Boolean)localTriple.component1()).booleanValue();
     boolean bool2 = ((Boolean)localTriple.component2()).booleanValue();
     float f1 = ((Number)localTriple.component3()).floatValue();
@@ -65,43 +60,25 @@ public final class VasNinePathBitmap
       {
         f2 = 1 / f1;
         paramCanvas.scale(f2, f2);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect.left, paramRect.top, (int)(paramRect.right + paramRect.width() * (f1 - 1.0F)), paramRect.top + j);
+        this.d.set(paramRect.left, paramRect.top, (int)(paramRect.right + paramRect.width() * (f1 - 1.0F)), paramRect.top + j);
       }
       else
       {
         f2 = 1 / f1;
         paramCanvas.scale(f2, f2);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect.left, paramRect.top, (int)(paramRect.right + paramRect.width() * (f1 - 1.0F)), paramRect.top + j);
+        this.d.set(paramRect.left, paramRect.top, (int)(paramRect.right + paramRect.width() * (f1 - 1.0F)), paramRect.top + j);
       }
     }
-    paramNinePatch.draw(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
+    paramNinePatch.draw(paramCanvas, this.d, paramPaint);
     if (i != 0) {
       paramCanvas.restore();
     }
   }
   
-  public final int a()
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap != null) {
-      return localBitmap.getWidth();
-    }
-    return 0;
-  }
-  
   @Nullable
   public Bitmap a()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a()
-  {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    if (localBitmap != null) {
-      localBitmap.recycle();
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)null);
+    return this.b;
   }
   
   public void a(@Nullable Bitmap paramBitmap)
@@ -109,7 +86,7 @@ public final class VasNinePathBitmap
     if (paramBitmap == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.b = paramBitmap;
     byte[] arrayOfByte = paramBitmap.getNinePatchChunk();
     Object localObject = null;
     paramBitmap = localObject;
@@ -117,10 +94,10 @@ public final class VasNinePathBitmap
     {
       paramBitmap = localObject;
       if (NinePatch.isNinePatchChunk(arrayOfByte)) {
-        paramBitmap = new NinePatch(this.jdField_a_of_type_AndroidGraphicsBitmap, arrayOfByte, null);
+        paramBitmap = new NinePatch(this.b, arrayOfByte, null);
       }
     }
-    this.jdField_a_of_type_AndroidGraphicsNinePatch = paramBitmap;
+    this.c = paramBitmap;
   }
   
   public void a(@NotNull Canvas paramCanvas, @Nullable Rect paramRect1, @NotNull Rect paramRect2, @NotNull Paint paramPaint)
@@ -130,10 +107,10 @@ public final class VasNinePathBitmap
     Intrinsics.checkParameterIsNotNull(paramPaint, "paint");
     if (paramRect2.height() == 0)
     {
-      a();
+      b();
       return;
     }
-    Object localObject = this.jdField_a_of_type_AndroidGraphicsNinePatch;
+    Object localObject = this.c;
     if (localObject != null)
     {
       if (localObject == null) {
@@ -142,7 +119,7 @@ public final class VasNinePathBitmap
       a((NinePatch)localObject, paramCanvas, paramRect2, paramPaint);
       return;
     }
-    localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    localObject = this.b;
     if (localObject != null)
     {
       if (localObject == null) {
@@ -152,24 +129,42 @@ public final class VasNinePathBitmap
     }
   }
   
-  public final boolean a()
+  public void b()
   {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap == null;
+    Bitmap localBitmap = this.b;
+    if (localBitmap != null) {
+      localBitmap.recycle();
+    }
+    this.b = ((Bitmap)null);
+  }
+  
+  public final boolean c()
+  {
+    return this.b == null;
   }
   
   @Nullable
-  public final byte[] a()
+  public final byte[] d()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.b;
     if (localBitmap != null) {
       return localBitmap.getNinePatchChunk();
     }
     return null;
   }
   
-  public final int b()
+  public final int e()
   {
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Bitmap localBitmap = this.b;
+    if (localBitmap != null) {
+      return localBitmap.getWidth();
+    }
+    return 0;
+  }
+  
+  public final int f()
+  {
+    Bitmap localBitmap = this.b;
     if (localBitmap != null) {
       return localBitmap.getHeight();
     }
@@ -178,7 +173,7 @@ public final class VasNinePathBitmap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ui.VasNinePathBitmap
  * JD-Core Version:    0.7.0.1
  */

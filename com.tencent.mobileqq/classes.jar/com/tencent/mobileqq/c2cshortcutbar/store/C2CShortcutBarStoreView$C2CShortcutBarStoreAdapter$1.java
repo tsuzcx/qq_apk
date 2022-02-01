@@ -13,15 +13,15 @@ class C2CShortcutBarStoreView$C2CShortcutBarStoreAdapter$1
   
   public void onClick(View paramView)
   {
-    if (C2CShortcutBarStoreView.a(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView$C2CShortcutBarStoreAdapter.a) != null) {
-      C2CShortcutBarStoreView.a(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView$C2CShortcutBarStoreAdapter.a).a(this.jdField_a_of_type_Int, (C2CShortcutAppInfo)C2CShortcutBarStoreView.a(this.jdField_a_of_type_ComTencentMobileqqC2cshortcutbarStoreC2CShortcutBarStoreView$C2CShortcutBarStoreAdapter.a).get(this.jdField_a_of_type_Int));
+    if (C2CShortcutBarStoreView.c(this.b.a) != null) {
+      C2CShortcutBarStoreView.c(this.b.a).a(this.a, (C2CShortcutAppInfo)C2CShortcutBarStoreView.f(this.b.a).get(this.a));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.c2cshortcutbar.store.C2CShortcutBarStoreView.C2CShortcutBarStoreAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -51,62 +51,100 @@ import org.json.JSONObject;
 
 public class ApolloPanelManager
 {
-  public volatile int a;
-  public long a;
-  public ApolloInfo a;
-  public String a;
-  private WeakReference<AppInterface> a;
-  public ConcurrentHashMap<Long, ApolloSlaveInfo> a;
-  public AtomicInteger a;
-  public volatile boolean a;
-  public int b;
-  private ApolloInfo jdField_b_of_type_ComTencentMobileqqApolloModelApolloInfo = null;
-  private WeakReference<BaseChatPie> jdField_b_of_type_JavaLangRefWeakReference;
-  private boolean jdField_b_of_type_Boolean = false;
-  private WeakReference<ApolloPanelManager.PanelClickCallback> c;
+  public volatile int a = 0;
+  public ConcurrentHashMap<Long, ApolloSlaveInfo> b = new ConcurrentHashMap();
+  public AtomicInteger c = new AtomicInteger(0);
+  public String d = null;
+  public int e = 0;
+  public long f = 0L;
+  public ApolloInfo g = null;
+  public volatile boolean h = false;
+  private WeakReference<AppInterface> i;
+  private WeakReference<BaseChatPie> j;
+  private WeakReference<ApolloPanelManager.PanelClickCallback> k;
+  private boolean l = false;
+  private ApolloInfo m = null;
   
   public ApolloPanelManager(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    this.i = new WeakReference(paramAppInterface);
+  }
+  
+  private boolean a(ApolloInfo paramApolloInfo, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  {
+    ArrayList localArrayList = new ArrayList();
+    AtTroopMemberSpan.a(paramBaseChatPie.Y.getEditableText(), localArrayList);
+    if (paramApolloInfo.mAction.personNum == 1)
+    {
+      if ((localArrayList.size() == 1) && (0L != ((AtTroopMemberInfo)localArrayList.get(0)).uin) && (((AtTroopMemberInfo)localArrayList.get(0)).startPos == 0))
+      {
+        String str = com.tencent.mobileqq.text.TextUtils.emoticonToText(paramBaseChatPie.Y.getText().toString());
+        try
+        {
+          paramApolloInfo.mAction.atNickName = str.substring(0, ((AtTroopMemberInfo)localArrayList.get(0)).textLen);
+          if (((AtTroopMemberInfo)localArrayList.get(0)).textLen >= paramBaseChatPie.Y.getText().length() - 1) {
+            paramApolloInfo.mAction.inputText = "";
+          } else {
+            paramApolloInfo.mAction.inputText = str.substring(((AtTroopMemberInfo)localArrayList.get(0)).textLen);
+          }
+        }
+        catch (Exception localException)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("inputText err:");
+          localStringBuilder.append(localException.getMessage());
+          QLog.d("[cmshow]ApolloPanelManager", 2, localStringBuilder.toString());
+          paramApolloInfo.mAction.inputText = "";
+        }
+        ApolloActionData localApolloActionData = paramApolloInfo.mAction;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(((AtTroopMemberInfo)localArrayList.get(0)).uin);
+        localStringBuilder.append("");
+        localApolloActionData.peerUin = localStringBuilder.toString();
+        paramBaseChatPie.Y.getText().clear();
+        d(paramApolloInfo, paramBaseChatPie, paramSessionInfo);
+        return false;
+      }
+      c(paramApolloInfo, paramBaseChatPie, paramSessionInfo);
+      return true;
+    }
+    if (paramApolloInfo.mAction.personNum == 0)
+    {
+      paramApolloInfo.mAction.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(paramBaseChatPie.Y.getText().toString());
+      paramBaseChatPie.Y.getText().clear();
+    }
+    return false;
   }
   
   private void b(ApolloInfo paramApolloInfo)
   {
-    if ((a() != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
+    if ((a() != null) && (this.j.get() != null))
     {
       if (paramApolloInfo == null) {
         return;
       }
-      Object localObject1 = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      Object localObject3 = ((BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a();
-      ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo = paramApolloInfo;
-      if (((SessionInfo)localObject3).jdField_a_of_type_Int == 3000) {
-        i = 11;
-      } else if (((SessionInfo)localObject3).jdField_a_of_type_Int == 1) {
-        i = 3;
+      Object localObject1 = (BaseChatPie)this.j.get();
+      Object localObject3 = ((BaseChatPie)this.j.get()).aE();
+      ((BaseChatPie)localObject1).aH = paramApolloInfo;
+      if (((SessionInfo)localObject3).a == 3000) {
+        n = 11;
+      } else if (((SessionInfo)localObject3).a == 1) {
+        n = 3;
       } else {
-        i = 0;
+        n = 0;
       }
       Object localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("troop_uin", ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString);
-      ((Intent)localObject2).putExtra("param_from", i);
-      if (((BaseChatPie)localObject1).c() == 21) {
+      ((Intent)localObject2).putExtra("troop_uin", ((SessionInfo)localObject3).b);
+      ((Intent)localObject2).putExtra("param_from", n);
+      if (((BaseChatPie)localObject1).aR() == 21) {
         ((Intent)localObject2).putExtra("param_troop_send_apollo_msg", true);
       }
       ((Intent)localObject2).putExtra("param_is_pop_up_style", true);
       ((Intent)localObject2).putExtra("param_troop_send_apollo_msg", true);
-      RouteUtils.a(((BaseChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (Intent)localObject2, "/troop/memberlist/TroopMemberList", 6001);
-      localObject1 = ((BaseChatPie)localObject1).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      localObject2 = ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString;
-      int i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(((SessionInfo)localObject3).jdField_a_of_type_Int);
+      RouteUtils.a(((BaseChatPie)localObject1).f, (Intent)localObject2, "/troop/memberlist/TroopMemberList", 6001);
+      localObject1 = ((BaseChatPie)localObject1).d;
+      localObject2 = ((SessionInfo)localObject3).b;
+      int n = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(((SessionInfo)localObject3).a);
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("");
       ((StringBuilder)localObject3).append(paramApolloInfo.mAction.actionId);
@@ -114,34 +152,134 @@ public class ApolloPanelManager
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("655_");
       localStringBuilder.append(paramApolloInfo.mPackageId);
-      VipUtils.a((AppInterface)localObject1, "cmshow", "Apollo", "g_action_double_clk", (String)localObject2, -1, i, new String[] { localObject3, localStringBuilder.toString(), "1", String.valueOf(System.currentTimeMillis() / 1000L) });
+      VipUtils.a((AppInterface)localObject1, "cmshow", "Apollo", "g_action_double_clk", (String)localObject2, -1, n, new String[] { localObject3, localStringBuilder.toString(), "1", String.valueOf(System.currentTimeMillis() / 1000L) });
     }
+  }
+  
+  private void b(ApolloInfo paramApolloInfo, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  {
+    paramApolloInfo.mAction.peerUin = paramSessionInfo.b;
+    paramApolloInfo.mAction.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(paramBaseChatPie.Y.getText().toString());
+  }
+  
+  private void c(ApolloInfo paramApolloInfo, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  {
+    if (paramApolloInfo.mAction.actionType == 5)
+    {
+      a(paramApolloInfo, paramBaseChatPie);
+      return;
+    }
+    paramBaseChatPie.aH = paramApolloInfo;
+    if (paramSessionInfo.a == 3000) {
+      n = 11;
+    } else if (paramSessionInfo.a == 1) {
+      n = 3;
+    } else {
+      n = 0;
+    }
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troop_uin", paramSessionInfo.b);
+    ((Intent)localObject).putExtra("param_from", n);
+    if (paramBaseChatPie.aR() == 21) {
+      ((Intent)localObject).putExtra("param_troop_send_apollo_msg", true);
+    }
+    ((Intent)localObject).putExtra("param_is_pop_up_style", true);
+    ((Intent)localObject).putExtra("param_troop_send_apollo_msg", true);
+    RouteUtils.a(paramBaseChatPie.f, (Intent)localObject, "/troop/memberlist/TroopMemberList", 6001);
+    paramBaseChatPie = paramBaseChatPie.d;
+    localObject = paramSessionInfo.b;
+    int n = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a);
+    paramSessionInfo = new StringBuilder();
+    paramSessionInfo.append("");
+    paramSessionInfo.append(paramApolloInfo.mAction.actionId);
+    paramSessionInfo = paramSessionInfo.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("655_");
+    localStringBuilder.append(paramApolloInfo.mPackageId);
+    VipUtils.a(paramBaseChatPie, "cmshow", "Apollo", "g_action_double_clk", (String)localObject, -1, n, new String[] { paramSessionInfo, localStringBuilder.toString(), "1", String.valueOf(System.currentTimeMillis() / 1000L) });
+  }
+  
+  private void d(ApolloInfo paramApolloInfo, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
+  {
+    int n;
+    if (android.text.TextUtils.isEmpty(paramApolloInfo.mAction.inputText))
+    {
+      if (!android.text.TextUtils.isEmpty(paramApolloInfo.mActionText))
+      {
+        if (paramApolloInfo.mTextType == 0)
+        {
+          n = 6;
+          break label104;
+        }
+        if (paramApolloInfo.mTextType == 1)
+        {
+          n = 7;
+          break label104;
+        }
+      }
+      n = 2;
+    }
+    else if (android.text.TextUtils.isEmpty(paramApolloInfo.mActionText))
+    {
+      n = 3;
+    }
+    else if (paramApolloInfo.mTextType == 0)
+    {
+      n = 4;
+    }
+    else if (paramApolloInfo.mTextType == 1)
+    {
+      n = 5;
+    }
+    else
+    {
+      n = 0;
+    }
+    label104:
+    QQAppInterface localQQAppInterface = paramBaseChatPie.d;
+    String str1 = paramSessionInfo.b;
+    int i1 = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramApolloInfo.mAction.actionId);
+    String str2 = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("655_");
+    ((StringBuilder)localObject).append(paramApolloInfo.mPackageId);
+    String str3 = ((StringBuilder)localObject).toString();
+    localObject = "0";
+    VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "g_action_double_clk", str1, -1, i1, new String[] { str2, str3, "0", String.valueOf(System.currentTimeMillis() / 1000L) });
+    localQQAppInterface = paramBaseChatPie.d;
+    str1 = paramSessionInfo.b;
+    i1 = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(paramSessionInfo.a);
+    paramBaseChatPie = new StringBuilder();
+    paramBaseChatPie.append("");
+    paramBaseChatPie.append(paramApolloInfo.mAction.actionId);
+    paramSessionInfo = paramBaseChatPie.toString();
+    paramBaseChatPie = new StringBuilder();
+    paramBaseChatPie.append("655_");
+    paramBaseChatPie.append(paramApolloInfo.mPackageId);
+    str2 = paramBaseChatPie.toString();
+    if (android.text.TextUtils.isEmpty(paramApolloInfo.mActionText)) {
+      paramBaseChatPie = (BaseChatPie)localObject;
+    } else {
+      paramBaseChatPie = paramApolloInfo.mActionText;
+    }
+    VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "g_action_double_sent", str1, n, i1, new String[] { paramSessionInfo, str2, paramBaseChatPie, paramApolloInfo.mAction.peerUin, String.valueOf(System.currentTimeMillis() / 1000L) });
   }
   
   public AppInterface a()
   {
-    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.i;
     if (localWeakReference == null) {
       return null;
     }
     return (AppInterface)localWeakReference.get();
   }
   
-  public void a()
-  {
-    Object localObject = this.c;
-    if (localObject != null)
-    {
-      localObject = (ApolloPanelManager.PanelClickCallback)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((ApolloPanelManager.PanelClickCallback)localObject).a();
-      }
-    }
-  }
-  
   public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.c;
+    Object localObject = this.k;
     if (localObject != null)
     {
       localObject = (ApolloPanelManager.PanelClickCallback)((WeakReference)localObject).get();
@@ -161,40 +299,40 @@ public class ApolloPanelManager
     }
     for (;;)
     {
-      int i;
+      int n;
       try
       {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        i = new JSONObject(paramString2).optInt("actionId");
+        this.f = System.currentTimeMillis();
+        n = new JSONObject(paramString2).optInt("actionId");
         if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "actionId:", Integer.valueOf(i), ",orgActionId:" });
+          QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "actionId:", Integer.valueOf(n), ",orgActionId:" });
         }
         paramString2 = a().getCurrentAccountUin();
         paramString1 = new JSONObject(paramString1);
-        this.jdField_a_of_type_JavaLangString = paramString1.toString();
+        this.d = paramString1.toString();
         paramString1 = paramString1.getJSONObject("data");
         JSONArray localJSONArray = paramString1.getJSONArray("slaveInfoList");
         if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
-          i = 0;
-          if (i < localJSONArray.length())
+          n = 0;
+          if (n < localJSONArray.length())
           {
-            ApolloSlaveInfo localApolloSlaveInfo = (ApolloSlaveInfo)JSONUtils.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
+            ApolloSlaveInfo localApolloSlaveInfo = (ApolloSlaveInfo)JSONUtils.a(localJSONArray.getJSONObject(n), ApolloSlaveInfo.class);
             if (localApolloSlaveInfo == null) {
-              break label342;
+              break label349;
             }
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(localApolloSlaveInfo.uin), localApolloSlaveInfo);
-            break label342;
+            this.b.put(Long.valueOf(localApolloSlaveInfo.uin), localApolloSlaveInfo);
+            break label349;
           }
         }
-        this.jdField_b_of_type_Int = paramString1.optInt("defaultActId");
-        paramString1 = (ApolloSlaveInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(Long.parseLong(paramString2)));
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramString1.slaveTotal);
+        this.e = paramString1.optInt("defaultActId");
+        paramString1 = (ApolloSlaveInfo)this.b.get(Long.valueOf(Long.parseLong(paramString2)));
+        this.c.set(paramString1.slaveTotal);
         if (paramString1.isCaptured != 1) {
-          break label351;
+          break label358;
         }
         bool = true;
-        this.jdField_b_of_type_Boolean = bool;
+        this.l = bool;
         if (QLog.isColorLevel()) {
           QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "my slave info", paramString1.toString() });
         }
@@ -206,212 +344,69 @@ public class ApolloPanelManager
         QLog.e("[cmshow]ApolloPanelManager", 1, "[onGetSlaveListFromSvr], errInfo->", paramString1);
         return;
       }
-      label342:
-      i += 1;
+      label349:
+      n += 1;
       continue;
-      label351:
+      label358:
       boolean bool = false;
     }
   }
   
   public void a(BaseAIOContext paramBaseAIOContext, ApolloInfo paramApolloInfo)
   {
-    if ((paramBaseAIOContext instanceof AIOContext))
+    if (!(paramBaseAIOContext instanceof AIOContext))
     {
-      Object localObject2 = ((AIOContext)paramBaseAIOContext).a();
-      if ((paramApolloInfo != null) && (localObject2 != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx != null) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText() != null))
-      {
-        a();
-        if (QLog.isColorLevel()) {
-          QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "[sendActionMsg] mainInfo=", paramApolloInfo });
-        }
-        Object localObject1 = ((BaseChatPie)localObject2).a();
-        paramApolloInfo.mAction.atNickName = "";
-        paramApolloInfo.mAction.inputText = "";
-        if (CmShowAioMatcherImpl.judgeSupported(((SessionInfo)localObject1).jdField_a_of_type_Int, 1))
-        {
-          paramApolloInfo.mAction.peerUin = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
-          paramApolloInfo.mAction.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-        }
-        else if ((CmShowAioMatcherImpl.judgeSupported(((SessionInfo)localObject1).jdField_a_of_type_Int, 2)) && (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null))
-        {
-          paramBaseAIOContext = new ArrayList();
-          AtTroopMemberSpan.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText(), paramBaseAIOContext);
-          if (paramApolloInfo.mAction.personNum == 1)
-          {
-            Object localObject3;
-            int i;
-            if ((paramBaseAIOContext.size() == 1) && (0L != ((AtTroopMemberInfo)paramBaseAIOContext.get(0)).uin) && (((AtTroopMemberInfo)paramBaseAIOContext.get(0)).startPos == 0))
-            {
-              String str = com.tencent.mobileqq.text.TextUtils.emoticonToText(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-              try
-              {
-                paramApolloInfo.mAction.atNickName = str.substring(0, ((AtTroopMemberInfo)paramBaseAIOContext.get(0)).textLen);
-                if (((AtTroopMemberInfo)paramBaseAIOContext.get(0)).textLen >= ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length() - 1) {
-                  paramApolloInfo.mAction.inputText = "";
-                } else {
-                  paramApolloInfo.mAction.inputText = str.substring(((AtTroopMemberInfo)paramBaseAIOContext.get(0)).textLen);
-                }
-              }
-              catch (Exception localException)
-              {
-                if (QLog.isColorLevel())
-                {
-                  localObject4 = new StringBuilder();
-                  ((StringBuilder)localObject4).append("inputText err:");
-                  ((StringBuilder)localObject4).append(localException.getMessage());
-                  QLog.d("[cmshow]ApolloPanelManager", 2, ((StringBuilder)localObject4).toString());
-                }
-                paramApolloInfo.mAction.inputText = "";
-              }
-              localObject3 = paramApolloInfo.mAction;
-              Object localObject4 = new StringBuilder();
-              ((StringBuilder)localObject4).append(((AtTroopMemberInfo)paramBaseAIOContext.get(0)).uin);
-              ((StringBuilder)localObject4).append("");
-              ((ApolloActionData)localObject3).peerUin = ((StringBuilder)localObject4).toString();
-              ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-              if (android.text.TextUtils.isEmpty(paramApolloInfo.mAction.inputText))
-              {
-                if (!android.text.TextUtils.isEmpty(paramApolloInfo.mActionText))
-                {
-                  if (paramApolloInfo.mTextType == 0)
-                  {
-                    i = 6;
-                    break label572;
-                  }
-                  if (paramApolloInfo.mTextType == 1)
-                  {
-                    i = 7;
-                    break label572;
-                  }
-                }
-                i = 2;
-              }
-              else if (android.text.TextUtils.isEmpty(paramApolloInfo.mActionText))
-              {
-                i = 3;
-              }
-              else if (paramApolloInfo.mTextType == 0)
-              {
-                i = 4;
-              }
-              else if (paramApolloInfo.mTextType == 1)
-              {
-                i = 5;
-              }
-              else
-              {
-                i = 0;
-              }
-              label572:
-              localObject3 = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              localObject4 = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
-              int j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(((SessionInfo)localObject1).jdField_a_of_type_Int);
-              paramBaseAIOContext = new StringBuilder();
-              paramBaseAIOContext.append("");
-              paramBaseAIOContext.append(paramApolloInfo.mAction.actionId);
-              Object localObject5 = paramBaseAIOContext.toString();
-              paramBaseAIOContext = new StringBuilder();
-              paramBaseAIOContext.append("655_");
-              paramBaseAIOContext.append(paramApolloInfo.mPackageId);
-              Object localObject6 = paramBaseAIOContext.toString();
-              paramBaseAIOContext = "0";
-              VipUtils.a((AppInterface)localObject3, "cmshow", "Apollo", "g_action_double_clk", (String)localObject4, -1, j, new String[] { localObject5, localObject6, "0", String.valueOf(System.currentTimeMillis() / 1000L) });
-              localObject3 = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              localObject4 = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
-              j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(((SessionInfo)localObject1).jdField_a_of_type_Int);
-              localObject5 = new StringBuilder();
-              ((StringBuilder)localObject5).append("");
-              ((StringBuilder)localObject5).append(paramApolloInfo.mAction.actionId);
-              localObject5 = ((StringBuilder)localObject5).toString();
-              localObject6 = new StringBuilder();
-              ((StringBuilder)localObject6).append("655_");
-              ((StringBuilder)localObject6).append(paramApolloInfo.mPackageId);
-              localObject6 = ((StringBuilder)localObject6).toString();
-              if (!android.text.TextUtils.isEmpty(paramApolloInfo.mActionText)) {
-                paramBaseAIOContext = paramApolloInfo.mActionText;
-              }
-              VipUtils.a((AppInterface)localObject3, "cmshow", "Apollo", "g_action_double_sent", (String)localObject4, i, j, new String[] { localObject5, localObject6, paramBaseAIOContext, paramApolloInfo.mAction.peerUin, String.valueOf(System.currentTimeMillis() / 1000L) });
-            }
-            else
-            {
-              if (paramApolloInfo.mAction.actionType == 5)
-              {
-                a(paramApolloInfo, (BaseChatPie)localObject2);
-                return;
-              }
-              ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo = paramApolloInfo;
-              if (((SessionInfo)localObject1).jdField_a_of_type_Int == 3000) {
-                i = 11;
-              } else if (((SessionInfo)localObject1).jdField_a_of_type_Int == 1) {
-                i = 3;
-              } else {
-                i = 0;
-              }
-              paramBaseAIOContext = new Intent();
-              paramBaseAIOContext.putExtra("troop_uin", ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString);
-              paramBaseAIOContext.putExtra("param_from", i);
-              if (((BaseChatPie)localObject2).c() == 21) {
-                paramBaseAIOContext.putExtra("param_troop_send_apollo_msg", true);
-              }
-              paramBaseAIOContext.putExtra("param_is_pop_up_style", true);
-              paramBaseAIOContext.putExtra("param_troop_send_apollo_msg", true);
-              RouteUtils.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramBaseAIOContext, "/troop/memberlist/TroopMemberList", 6001);
-              paramBaseAIOContext = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-              localObject2 = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
-              i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(((SessionInfo)localObject1).jdField_a_of_type_Int);
-              localObject1 = new StringBuilder();
-              ((StringBuilder)localObject1).append("");
-              ((StringBuilder)localObject1).append(paramApolloInfo.mAction.actionId);
-              localObject1 = ((StringBuilder)localObject1).toString();
-              localObject3 = new StringBuilder();
-              ((StringBuilder)localObject3).append("655_");
-              ((StringBuilder)localObject3).append(paramApolloInfo.mPackageId);
-              VipUtils.a(paramBaseAIOContext, "cmshow", "Apollo", "g_action_double_clk", (String)localObject2, -1, i, new String[] { localObject1, ((StringBuilder)localObject3).toString(), "1", String.valueOf(System.currentTimeMillis() / 1000L) });
-            }
-          }
-          else if (paramApolloInfo.mAction.personNum == 0)
-          {
-            paramApolloInfo.mAction.inputText = com.tencent.mobileqq.text.TextUtils.emoticonToText(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-            ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-          }
-        }
-        paramBaseAIOContext = ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
-        if ((paramBaseAIOContext != null) && (paramBaseAIOContext.length() > 99))
-        {
-          ChatActivityUtils.a(((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 2131718759, 1);
-          return;
-        }
-        if ((((SessionInfo)localObject1).jdField_a_of_type_Int != 1) && (((SessionInfo)localObject1).jdField_a_of_type_Int != 3000)) {
-          ((BaseChatPie)localObject2).jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().clear();
-        }
-        if (((BaseChatPie)localObject2).jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) {
-          ((BaseChatPie)localObject2).a(paramApolloInfo);
-        }
-        return;
-      }
+      QLog.e("[cmshow]ApolloPanelManager", 1, "[sendActionMsg] error! param baseAIOContext is not instanceof AIOContext");
       return;
     }
-    QLog.e("[cmshow]ApolloPanelManager", 1, "[sendActionMsg] error! param baseAIOContext is not instanceof AIOContext");
+    paramBaseAIOContext = ((AIOContext)paramBaseAIOContext).n();
+    if ((paramApolloInfo != null) && (paramBaseAIOContext != null) && (paramBaseAIOContext.d != null) && (paramBaseAIOContext.Y != null))
+    {
+      if (paramBaseAIOContext.Y.getText() == null) {
+        return;
+      }
+      b();
+      QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "[sendActionMsg] mainInfo=", paramApolloInfo });
+      SessionInfo localSessionInfo = paramBaseAIOContext.aE();
+      paramApolloInfo.mAction.atNickName = "";
+      paramApolloInfo.mAction.inputText = "";
+      if (CmShowAioMatcherImpl.judgeSupported(localSessionInfo.a, 1)) {
+        b(paramApolloInfo, paramBaseAIOContext, localSessionInfo);
+      } else if ((CmShowAioMatcherImpl.judgeSupported(localSessionInfo.a, 2)) && (paramBaseAIOContext.f != null) && (a(paramApolloInfo, paramBaseAIOContext, localSessionInfo))) {
+        return;
+      }
+      String str = paramBaseAIOContext.Y.getText().toString();
+      if ((str != null) && (str.length() > 99))
+      {
+        ChatActivityUtils.a(paramBaseAIOContext.d.getApplication(), 2131916265, 1);
+        return;
+      }
+      if ((localSessionInfo.a != 1) && (localSessionInfo.a != 3000)) {
+        paramBaseAIOContext.Y.getText().clear();
+      }
+      if (paramBaseAIOContext.f != null) {
+        paramBaseAIOContext.a(paramApolloInfo);
+      }
+    }
   }
   
   public void a(BaseChatPie paramBaseChatPie, ApolloInfo paramApolloInfo)
   {
     if (paramBaseChatPie != null)
     {
-      if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      if (paramBaseChatPie.d == null) {
         return;
       }
-      this.jdField_b_of_type_ComTencentMobileqqApolloModelApolloInfo = paramApolloInfo;
-      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-      this.jdField_a_of_type_Boolean = true;
-      ((ApolloExtensionHandler)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 262144, "get gold balance");
+      this.m = paramApolloInfo;
+      this.j = new WeakReference(paramBaseChatPie);
+      this.h = true;
+      ((ApolloExtensionHandler)paramBaseChatPie.d.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(paramBaseChatPie.d.getCurrentUin(), 262144, "get gold balance");
     }
   }
   
   public void a(ApolloPanelManager.PanelClickCallback paramPanelClickCallback)
   {
-    this.c = new WeakReference(paramPanelClickCallback);
+    this.k = new WeakReference(paramPanelClickCallback);
   }
   
   public void a(ApolloInfo paramApolloInfo)
@@ -419,8 +414,8 @@ public class ApolloPanelManager
     if (QLog.isColorLevel()) {
       QLog.d("[cmshow]ApolloPanelManager", 2, "[checkSlavesBeforeSend]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloModelApolloInfo = paramApolloInfo;
-    if ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 120000L) && (paramApolloInfo != null))
+    this.g = paramApolloInfo;
+    if ((System.currentTimeMillis() - this.f <= 120000L) && (paramApolloInfo != null))
     {
       ThreadManager.getUIHandler().post(new ApolloPanelManager.1(this, paramApolloInfo));
       return;
@@ -454,144 +449,156 @@ public class ApolloPanelManager
   
   public void a(ApolloInfo paramApolloInfo, BaseChatPie paramBaseChatPie)
   {
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+    this.j = new WeakReference(paramBaseChatPie);
     a(paramApolloInfo);
   }
   
   public void b()
   {
-    WeakReference localWeakReference = this.c;
-    if (localWeakReference != null)
+    Object localObject = this.k;
+    if (localObject != null)
     {
-      localWeakReference.clear();
-      this.c = null;
+      localObject = (ApolloPanelManager.PanelClickCallback)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((ApolloPanelManager.PanelClickCallback)localObject).a();
+      }
     }
   }
   
   public void b(BaseChatPie paramBaseChatPie, ApolloInfo paramApolloInfo)
   {
-    if ((paramBaseChatPie != null) && (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((paramBaseChatPie != null) && (paramBaseChatPie.d != null))
     {
-      if (paramBaseChatPie.a() == null) {
+      if (paramBaseChatPie.aE() == null) {
         return;
       }
       if (QLog.isColorLevel()) {
         QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "[previewNewAction] apolloInfo=", paramApolloInfo });
       }
-      SessionInfo localSessionInfo = paramBaseChatPie.a();
+      SessionInfo localSessionInfo = paramBaseChatPie.aE();
       ApolloActionData localApolloActionData = paramApolloInfo.mAction;
       SpriteTaskParam localSpriteTaskParam = new SpriteTaskParam();
       localSpriteTaskParam.f = localApolloActionData.actionId;
-      localSpriteTaskParam.jdField_c_of_type_Int = 0;
-      localSpriteTaskParam.h = localSessionInfo.jdField_a_of_type_Int;
+      localSpriteTaskParam.c = 0;
+      localSpriteTaskParam.i = localSessionInfo.a;
       localSpriteTaskParam.g = 3;
-      localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
-      localSpriteTaskParam.i = 0;
-      localSpriteTaskParam.jdField_a_of_type_Float = 0.0F;
+      localSpriteTaskParam.h = -10000L;
+      localSpriteTaskParam.m = 0;
+      localSpriteTaskParam.n = 0.0F;
       boolean bool;
       if (paramApolloInfo.mTextType == 1) {
         bool = true;
       } else {
         bool = false;
       }
-      localSpriteTaskParam.jdField_b_of_type_Boolean = bool;
-      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloInfo.mActionText;
+      localSpriteTaskParam.q = bool;
+      localSpriteTaskParam.o = paramApolloInfo.mActionText;
       localSpriteTaskParam.e = localApolloActionData.personNum;
-      paramApolloInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-      localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(paramApolloInfo);
-      if (CmShowAioMatcherImpl.judgeSupported(localSessionInfo.jdField_a_of_type_Int, 1))
+      paramApolloInfo = paramBaseChatPie.d.getCurrentUin();
+      localSpriteTaskParam.j = String.valueOf(paramApolloInfo);
+      if (CmShowAioMatcherImpl.judgeSupported(localSessionInfo.a, 1))
       {
-        localSpriteTaskParam.jdField_b_of_type_JavaLangString = localSessionInfo.jdField_a_of_type_JavaLangString;
+        localSpriteTaskParam.k = localSessionInfo.b;
       }
       else if (localSpriteTaskParam.e != 0)
       {
-        paramApolloInfo = ((FriendsManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).b(paramApolloInfo);
-        int i;
+        paramApolloInfo = ((FriendsManager)paramBaseChatPie.d.getManager(QQManagerFactory.FRIENDS_MANAGER)).c(paramApolloInfo);
+        int n;
         if ((paramApolloInfo != null) && (paramApolloInfo.gender != 1)) {
-          i = 0;
+          n = 0;
         } else {
-          i = 1;
+          n = 1;
         }
-        if (i != 0) {
+        if (n != 0) {
           paramApolloInfo = "-2";
         } else {
           paramApolloInfo = "-1";
         }
-        localSpriteTaskParam.jdField_b_of_type_JavaLangString = paramApolloInfo;
+        localSpriteTaskParam.k = paramApolloInfo;
       }
       if (localApolloActionData.actionType == 5)
       {
-        localSpriteTaskParam.jdField_c_of_type_Int = 5;
-        paramApolloInfo = (ApolloManagerServiceImpl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IApolloManagerService.class, "all");
+        localSpriteTaskParam.c = 5;
+        paramApolloInfo = (ApolloManagerServiceImpl)paramBaseChatPie.d.getRuntimeService(IApolloManagerService.class, "all");
         if ((paramApolloInfo != null) && (paramApolloInfo.getApolloPanelManager() != null))
         {
-          localSpriteTaskParam.d = paramApolloInfo.getApolloPanelManager().jdField_a_of_type_JavaLangString;
+          localSpriteTaskParam.t = paramApolloInfo.getApolloPanelManager().d;
           if (QLog.isColorLevel()) {
-            QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "[previewNewAction] mSlaveExtJson=", localSpriteTaskParam.d });
+            QLog.d("[cmshow]ApolloPanelManager", 2, new Object[] { "[previewNewAction] mSlaveExtJson=", localSpriteTaskParam.t });
           }
         }
       }
-      paramApolloInfo = (ISpriteScriptManager)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
+      paramApolloInfo = (ISpriteScriptManager)paramBaseChatPie.d.getRuntimeService(ISpriteScriptManager.class, "all");
       if (paramApolloInfo != null) {
         paramApolloInfo.getSpriteBridge().b(localSpriteTaskParam);
       }
-      VipUtils.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_preview_play", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(localSessionInfo.jdField_a_of_type_Int), 0, new String[] { String.valueOf(localApolloActionData.actionId) });
+      VipUtils.a(paramBaseChatPie.d, "cmshow", "Apollo", "action_preview_play", ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(localSessionInfo.a), 0, new String[] { String.valueOf(localApolloActionData.actionId) });
     }
   }
   
   public void c()
   {
-    Object localObject1 = this.jdField_b_of_type_JavaLangRefWeakReference;
+    WeakReference localWeakReference = this.k;
+    if (localWeakReference != null)
+    {
+      localWeakReference.clear();
+      this.k = null;
+    }
+  }
+  
+  public void d()
+  {
+    Object localObject1 = this.j;
     if ((localObject1 != null) && (((WeakReference)localObject1).get() != null))
     {
-      if (this.jdField_b_of_type_ComTencentMobileqqApolloModelApolloInfo == null) {
+      if (this.m == null) {
         return;
       }
-      this.jdField_a_of_type_Boolean = false;
-      BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      Object localObject2 = localBaseChatPie.a();
-      ApolloActionData localApolloActionData = this.jdField_b_of_type_ComTencentMobileqqApolloModelApolloInfo.mAction;
-      int i = this.jdField_a_of_type_Int;
+      this.h = false;
+      BaseChatPie localBaseChatPie = (BaseChatPie)this.j.get();
+      Object localObject2 = localBaseChatPie.aE();
+      ApolloActionData localApolloActionData = this.m.mAction;
+      int n = this.a;
       if (localApolloActionData.currencyType == 1)
       {
         HashMap localHashMap = new HashMap();
-        int j = this.jdField_a_of_type_Int;
+        int i1 = this.a;
         String str1;
         String str2;
         String str3;
-        if (localApolloActionData.currencyNum <= i)
+        if (localApolloActionData.currencyNum <= n)
         {
-          str1 = HardCodeUtil.a(2131700696);
-          str2 = String.format(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690045), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
-          str3 = HardCodeUtil.a(2131700701);
+          str1 = HardCodeUtil.a(2131898722);
+          str2 = String.format(localBaseChatPie.e.getResources().getString(2131886695), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(i1) });
+          str3 = HardCodeUtil.a(2131898727);
           if (localObject2 != null)
           {
-            localObject1 = localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(((SessionInfo)localObject2).jdField_a_of_type_Int);
+            localObject1 = localBaseChatPie.d;
+            n = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(((SessionInfo)localObject2).a);
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("");
             ((StringBuilder)localObject2).append(localApolloActionData.actionId);
-            VipUtils.a((AppInterface)localObject1, "cmshow", "Apollo", "icon_alert_show", i, 0, new String[] { ((StringBuilder)localObject2).toString() });
+            VipUtils.a((AppInterface)localObject1, "cmshow", "Apollo", "icon_alert_show", n, 0, new String[] { ((StringBuilder)localObject2).toString() });
           }
           localObject1 = "requestSSO";
         }
         else
         {
-          str1 = HardCodeUtil.a(2131700693);
-          str2 = String.format(localBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131690044), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(j) });
-          str3 = HardCodeUtil.a(2131700699);
+          str1 = HardCodeUtil.a(2131898719);
+          str2 = String.format(localBaseChatPie.e.getString(2131886694), new Object[] { Integer.valueOf(localApolloActionData.currencyNum), Integer.valueOf(i1) });
+          str3 = HardCodeUtil.a(2131898725);
           localObject1 = new StringBuilder();
-          ((StringBuilder)localObject1).append(ApolloConstant.r);
+          ((StringBuilder)localObject1).append(ApolloConstant.z);
           ((StringBuilder)localObject1).append("&adtag=authGold");
           localObject1 = ((StringBuilder)localObject1).toString();
           if (localObject2 != null)
           {
-            QQAppInterface localQQAppInterface = localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-            i = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(((SessionInfo)localObject2).jdField_a_of_type_Int);
+            QQAppInterface localQQAppInterface = localBaseChatPie.d;
+            n = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessionType(((SessionInfo)localObject2).a);
             localObject2 = new StringBuilder();
             ((StringBuilder)localObject2).append("");
             ((StringBuilder)localObject2).append(localApolloActionData.actionId);
-            VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "debt_alert_show", i, 0, new String[] { ((StringBuilder)localObject2).toString() });
+            VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "debt_alert_show", n, 0, new String[] { ((StringBuilder)localObject2).toString() });
           }
         }
         localHashMap.put("APOLLO_POP_TYPE", "dialog");
@@ -604,14 +611,14 @@ public class ApolloPanelManager
         localObject1 = new JSONObject();
         try
         {
-          ((JSONObject)localObject1).put("packageId", String.valueOf(this.jdField_b_of_type_ComTencentMobileqqApolloModelApolloInfo.mPackageId));
+          ((JSONObject)localObject1).put("packageId", String.valueOf(this.m.mPackageId));
         }
         catch (Exception localException)
         {
           QLog.e("[cmshow]ApolloPanelManager", 1, "[authGoldAction] Exception:", localException);
         }
         localHashMap.put("extendJson", ((JSONObject)localObject1).toString());
-        localObject1 = localBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+        localObject1 = localBaseChatPie.d.getHandler(ChatActivity.class);
         if (localObject1 != null)
         {
           localObject1 = ((MqqHandler)localObject1).obtainMessage(45);
@@ -622,15 +629,15 @@ public class ApolloPanelManager
     }
   }
   
-  public void d()
+  public void e()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    this.jdField_a_of_type_JavaLangString = null;
+    this.b.clear();
+    this.d = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.aio.panel.ApolloPanelManager
  * JD-Core Version:    0.7.0.1
  */

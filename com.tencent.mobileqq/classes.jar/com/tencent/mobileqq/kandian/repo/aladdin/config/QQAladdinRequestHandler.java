@@ -33,8 +33,8 @@ public class QQAladdinRequestHandler
     localHashMap.put("param_FailCount", String.valueOf(l2));
     l1 = paramBundle.getLong("key_response_timestamp", 0L) - paramBundle.getLong("key_request_timestamp", 0L);
     localHashMap.put("param_CostTime", String.valueOf(l1));
-    paramBundle = StatisticCollector.getInstance(RIJQQAppInterfaceUtil.a().getApplication());
-    String str = RIJQQAppInterfaceUtil.a();
+    paramBundle = StatisticCollector.getInstance(RIJQQAppInterfaceUtil.e().getApplication());
+    String str = RIJQQAppInterfaceUtil.d();
     boolean bool;
     if (i == 0) {
       bool = true;
@@ -56,7 +56,7 @@ public class QQAladdinRequestHandler
   
   protected void onSend(byte[] paramArrayOfByte, Bundle paramBundle, AladdinResponseHandler paramAladdinResponseHandler)
   {
-    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.a();
+    AppRuntime localAppRuntime = RIJQQAppInterfaceUtil.e();
     NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), QQAladdinRequestHandler.AladdinConfigServlet.class);
     localNewIntent.putExtra("key_body_bytes", paramArrayOfByte);
     localNewIntent.putExtra("key_extra_info", paramBundle);
@@ -67,7 +67,7 @@ public class QQAladdinRequestHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.repo.aladdin.config.QQAladdinRequestHandler
  * JD-Core Version:    0.7.0.1
  */

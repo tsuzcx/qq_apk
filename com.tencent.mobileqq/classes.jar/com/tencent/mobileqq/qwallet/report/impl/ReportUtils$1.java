@@ -22,7 +22,7 @@ final class ReportUtils$1
       ((StringBuilder)localObject).append("&carrierType=");
       ((StringBuilder)localObject).append(DeviceInfoUtil.a(QQDeviceInfo.getIMSI("5076bf")));
       localObject = ((StringBuilder)localObject).toString();
-      VACDReportUtil.a((String)localObject, "qqwallet", "walletNetworkStack", "walletNetworkStack", null, 0, null);
+      VACDReportUtil.b((String)localObject, "qqwallet", "walletNetworkStack", "walletNetworkStack", null, 0, null);
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -37,7 +37,7 @@ final class ReportUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.report.impl.ReportUtils.1
  * JD-Core Version:    0.7.0.1
  */

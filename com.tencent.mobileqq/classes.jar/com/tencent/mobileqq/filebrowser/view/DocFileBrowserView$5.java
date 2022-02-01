@@ -15,24 +15,24 @@ class DocFileBrowserView$5
   
   public void run()
   {
-    if (DocFileBrowserView.a(this.this$0) != null)
+    if (DocFileBrowserView.d(this.this$0) != null)
     {
-      DocFileBrowserView.a(this.this$0).setVisibility(0);
+      DocFileBrowserView.d(this.this$0).setVisibility(0);
       return;
     }
-    if (DocFileBrowserView.a(this.this$0) == null) {
+    if (DocFileBrowserView.e(this.this$0) == null) {
       return;
     }
     Object localObject = this.this$0;
-    DocFileBrowserView.a((DocFileBrowserView)localObject, DocFileBrowserView.a((DocFileBrowserView)localObject, DocFileBrowserView.a((DocFileBrowserView)localObject)));
+    DocFileBrowserView.a((DocFileBrowserView)localObject, DocFileBrowserView.a((DocFileBrowserView)localObject, DocFileBrowserView.e((DocFileBrowserView)localObject)));
     localObject = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
     ReportController.b(null, "dc00898", "", "", "0X8009064", "0X8009064", 0, 0, "", "", "", "");
-    ((ITencentDocConvertABTestUtil)QRoute.api(ITencentDocConvertABTestUtil.class)).configureABTest((AppInterface)localObject, this.this$0.a, DocFileBrowserView.a(this.this$0), this.a, new DocFileBrowserView.5.1(this, (AppInterface)localObject));
+    ((ITencentDocConvertABTestUtil)QRoute.api(ITencentDocConvertABTestUtil.class)).configureABTest((AppInterface)localObject, this.this$0.e, DocFileBrowserView.d(this.this$0), this.a, new DocFileBrowserView.5.1(this, (AppInterface)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filebrowser.view.DocFileBrowserView.5
  * JD-Core Version:    0.7.0.1
  */

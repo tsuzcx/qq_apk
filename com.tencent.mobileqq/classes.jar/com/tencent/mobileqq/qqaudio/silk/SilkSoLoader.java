@@ -31,7 +31,7 @@ public class SilkSoLoader
   
   public static boolean a(Context paramContext, String paramString)
   {
-    int i = QQAudioSystemInfo.d();
+    int i = QQAudioSystemInfo.h();
     String str = b();
     StringBuilder localStringBuilder1;
     if (i > 2)
@@ -124,7 +124,7 @@ public class SilkSoLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.silk.SilkSoLoader
  * JD-Core Version:    0.7.0.1
  */

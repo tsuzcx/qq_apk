@@ -1,14 +1,9 @@
 package com.tencent.mobileqq.qcircle.api.constant;
 
-public class QCircleConstants$Sex
-{
-  public static final int MAN = 1;
-  public static final int UNKNOWN = 0;
-  public static final int WOMAN = 2;
-}
+public class QCircleConstants$Sex {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.constant.QCircleConstants.Sex
  * JD-Core Version:    0.7.0.1
  */

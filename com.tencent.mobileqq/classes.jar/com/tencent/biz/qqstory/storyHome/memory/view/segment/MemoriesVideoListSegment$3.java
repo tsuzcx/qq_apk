@@ -11,7 +11,7 @@ class MemoriesVideoListSegment$3
   public void run()
   {
     SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal, findViewHolder, null, waiting done");
-    MemoriesVideoListSegment.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, this.jdField_a_of_type_JavaLangString, true);
+    MemoriesVideoListSegment.a(this.this$0, this.a, this.b, this.c, true);
   }
 }
 

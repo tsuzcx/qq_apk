@@ -11,29 +11,22 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextWatcher;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
 import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.kingkong.Common;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.LoginFailedHelper;
 import com.tencent.mobileqq.app.LoginForbiddenDialogReporter;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.config.splashlogo.KandianConfigServlet;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.login.ui.AddAccountBaseUI;
+import com.tencent.mobileqq.login.ui.AddAccountBaseUI.OnInteractionListener;
 import com.tencent.mobileqq.loginregister.LoginProgressClazz;
 import com.tencent.mobileqq.loginregister.LoginStaticField;
 import com.tencent.mobileqq.mini.api.IMiniAppService;
@@ -47,9 +40,6 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.ConfigClearableEditText.OnTextClearedListener;
-import com.tencent.mobileqq.widget.DropdownView;
-import com.tencent.mobileqq.widget.PastablePwdEditText;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.open.OpenProxy;
@@ -57,12 +47,6 @@ import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqperf.monitor.crash.QQCrashReportManager;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SoftInputResizeLayout;
-import com.tencent.widget.immersive.SystemBarCompact;
 import cooperation.qwallet.plugin.PatternLockUtils;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -75,49 +59,30 @@ import mqq.os.MqqHandler;
 
 @RoutePage(desc="添加帐户页面", path="/base/addAccount")
 public class AddAccountActivity
-  extends BaseActivity
-  implements Handler.Callback, View.OnClickListener, ConfigClearableEditText.OnTextClearedListener
+  extends QBaseActivity
+  implements Handler.Callback, AddAccountBaseUI.OnInteractionListener
 {
   public static final int CLEAR_PROGRESS_DIALOG = 2001;
   private static final int DIALOG_LOADING = 1;
   private static final int DIALOG_PROGRESS = 0;
-  static final String FAKE_PASSWORD = "!@#ewaGbhkc$!!=";
+  protected static final String FAKE_PASSWORD = "!@#ewaGbhkc$!!=";
   public static final int FINISH_ACTIVITY = 2004;
-  private static final int INPUT_FLAG_NUMBER_SOGOU = 1;
-  private static final String INPUT_TYPE_ON_START_SOGOU = "INPUT_TYPE_ON_START";
   public static final int SHOW_PROGRESS_DIALOG = 2002;
   private static final String TAG = "AddAccountActivity";
   private AccountObserver accountObserver = new AddAccountActivity.4(this);
-  private boolean actionSheetHasClick = false;
-  TextWatcher autoTextViewWatch = new AddAccountActivity.10(this);
-  private View.OnClickListener delListener = new AddAccountActivity.9(this);
-  DropdownView mAccountDropdownView;
-  private ActionSheet mActionSheet = null;
+  protected QQAppInterface app;
+  TextWatcher autoTextViewWatch = new AddAccountActivity.8(this);
   public BroadcastReceiver mAutoLoginReceiver = new AddAccountActivity.2(this);
-  AutoCompleteTextView mAutoTextAccount;
+  protected AddAccountBaseUI mBaseUI = new AddAccountBaseUI(this, this);
   private boolean mCanRegister = true;
   SimpleAccount mCurrentAccount;
-  ImageView mDelIcon;
-  private Button mFindPassBtn;
-  private View.OnFocusChangeListener mFocusChangeListener = new AddAccountActivity.1(this);
   MqqHandler mHandler = new MqqHandler(this);
-  private InputMethodManager mInputManager;
   private boolean mIsGotoLoginView = false;
-  Button mLoginBtn;
   private LoginFailedHelper mLoginFailedHelper = new LoginFailedHelper();
-  View mLoginHelpLayout;
-  View mLoginInputAreaView;
   private boolean mNeedShowProgress;
-  PastablePwdEditText mPwdEdit;
-  private Button mRegBtn;
-  RelativeLayout mRootLayout;
-  View mScrollAreaLayout;
   private boolean mShouldAutoLogin = false;
   List<SimpleAccount> mSimpleAccoutList;
-  private TextView mTitleTextViewLeft;
-  private View mTitleView = null;
   private String mTmpEditStr = null;
-  TextWatcher onTextChangeForAccount = new AddAccountActivity.8(this);
   TextWatcher onTextChangeForPwd = new AddAccountActivity.7(this);
   private long startDelayTime = 0L;
   
@@ -130,7 +95,7 @@ public class AddAccountActivity
       localStringBuilder.append(NetConnInfoCenter.getServerTimeMillis() - this.startDelayTime);
       QLog.d("AddAccountActivity", 2, localStringBuilder.toString());
     }
-    if (PhoneNumLoginImpl.a().a()) {
+    if (PhoneNumLoginImpl.a().b()) {
       return;
     }
     ThreadManager.postImmediately(new AddAccountActivity.6(this), null, false);
@@ -158,10 +123,10 @@ public class AddAccountActivity
         String str = paramIntent.getString("uin");
         if ((str != null) && (str.length() > 0))
         {
-          this.mAutoTextAccount.setText(str);
+          this.mBaseUI.a(str);
           paramIntent = paramIntent.getString("password");
           if ((paramIntent != null) && (paramIntent.length() > 0)) {
-            this.mPwdEdit.setText(paramIntent);
+            this.mBaseUI.b(paramIntent);
           }
           return true;
         }
@@ -170,84 +135,18 @@ public class AddAccountActivity
     return false;
   }
   
-  private void initViews()
+  private void initData()
   {
-    this.mTitleView = findViewById(2131376752);
-    this.mAccountDropdownView = ((DropdownView)findViewById(2131370650));
-    this.mAutoTextAccount = this.mAccountDropdownView.a();
-    this.mAutoTextAccount.setDropDownBackgroundDrawable(null);
-    this.mAutoTextAccount.setContentDescription(getString(2131699831));
-    Object localObject = this.mAutoTextAccount.getInputExtras(true);
-    if (localObject != null) {
-      ((Bundle)localObject).putInt("INPUT_TYPE_ON_START", 1);
-    }
-    this.mPwdEdit = ((PastablePwdEditText)findViewById(2131372343));
-    this.mPwdEdit.setContentDescription(getString(2131699833));
-    this.mLoginBtn = ((Button)findViewById(2131370448));
-    this.mLoginBtn.setContentDescription(getString(2131699832));
-    this.mLoginBtn.setOnClickListener(this);
-    isNeedSecurityScan(this.mLoginBtn);
-    this.mRegBtn = ((Button)findViewById(2131376354));
-    this.mRegBtn.setContentDescription(getString(2131719479));
-    this.mRegBtn.setOnClickListener(this);
-    this.mRootLayout = ((RelativeLayout)findViewById(2131362196));
-    this.mScrollAreaLayout = findViewById(2131376995);
-    this.mLoginHelpLayout = findViewById(2131369801);
-    this.mFindPassBtn = ((Button)findViewById(2131366847));
-    this.mFindPassBtn.setContentDescription(getString(2131692643));
-    this.mTitleTextViewLeft = ((TextView)findViewById(2131369202));
-    this.mInputManager = ((InputMethodManager)getSystemService("input_method"));
-    this.mDelIcon = this.mAccountDropdownView.a();
-    this.mDelIcon.setOnClickListener(this.delListener);
-    localObject = this.mSimpleAccoutList;
-    if (localObject == null) {
+    List localList = this.mSimpleAccoutList;
+    if (localList == null) {
       this.mSimpleAccoutList = new ArrayList();
     } else {
-      ((List)localObject).clear();
+      localList.clear();
     }
-    localObject = BaseApplicationImpl.sApplication.getAllAccounts();
-    if (localObject != null) {
-      this.mSimpleAccoutList.addAll((Collection)localObject);
+    localList = BaseApplicationImpl.sApplication.getAllAccounts();
+    if (localList != null) {
+      this.mSimpleAccoutList.addAll(localList);
     }
-    this.mAutoTextAccount.addTextChangedListener(this.onTextChangeForAccount);
-    this.mPwdEdit.addTextChangedListener(this.onTextChangeForPwd);
-    this.mAutoTextAccount.setOnFocusChangeListener(this.mFocusChangeListener);
-    this.mPwdEdit.setOnFocusChangeListener(this.mFocusChangeListener);
-    this.mPwdEdit.setLongClickable(true);
-    this.mFindPassBtn.setOnClickListener(this);
-    if ((this.mSystemBarComp != null) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      this.mSystemBarComp.init();
-    }
-    this.mLoginInputAreaView = findViewById(2131370450);
-    this.mAutoTextAccount.clearFocus();
-    this.mPwdEdit.clearFocus();
-    this.mPwdEdit.setClearButtonVisible(false);
-    this.mPwdEdit.setTextClearedListener(this);
-    this.mAutoTextAccount.addTextChangedListener(this.autoTextViewWatch);
-    setAccSoft();
-    localObject = (RelativeLayout.LayoutParams)this.mTitleView.getLayoutParams();
-    this.mTitleView.setVisibility(0);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(3, 2131376752);
-    this.mScrollAreaLayout.setLayoutParams(localLayoutParams);
-    ((LinearLayout)this.mScrollAreaLayout).setOrientation(1);
-    this.mLoginInputAreaView.setVisibility(0);
-    if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1))
-    {
-      ((RelativeLayout.LayoutParams)localObject).setMargins(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
-      this.mSystemBarComp.setgetStatusBarVisible(true, 0);
-    }
-    this.mTitleTextViewLeft.setVisibility(8);
-    localObject = (TextView)findViewById(2131369233);
-    ((TextView)localObject).setVisibility(0);
-    ((TextView)localObject).setText(HardCodeUtil.a(2131700042));
-    ((TextView)localObject).setOnClickListener(this);
-    findViewById(2131369249).setVisibility(0);
-    localObject = (TextView)findViewById(2131369249);
-    ((TextView)localObject).setText(2131689590);
-    ((TextView)localObject).setContentDescription(getString(2131689590));
-    setTitle(getString(2131689590));
-    this.mAccountDropdownView.b().setVisibility(8);
   }
   
   private void isNeedSecurityScan(Button paramButton)
@@ -258,31 +157,29 @@ public class AddAccountActivity
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)) && (((QQAppInterface)localAppRuntime).isNeedSecurityScan()))
     {
-      paramButton.setText(getString(2131718678));
+      paramButton.setText(getString(2131916179));
       return;
     }
-    paramButton.setText(getString(2131693842));
+    paramButton.setText(getString(2131891418));
   }
   
-  private void login(View paramView)
+  private void login()
   {
-    if (paramView != null) {
-      this.mInputManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-    paramView = this.mAutoTextAccount.getText().toString();
+    this.mBaseUI.t();
+    String str1 = this.mBaseUI.m();
     byte[] arrayOfByte = libsafeedit.byteSafeEditTextToMD5(Boolean.valueOf(true));
-    if ((paramView != null) && (paramView.length() != 0) && (paramView.trim().length() != 0))
+    if ((str1 != null) && (str1.length() != 0) && (str1.trim().length() != 0))
     {
-      String str = this.mPwdEdit.getText().toString();
-      if ((str != null) && (str.length() >= 1))
+      String str2 = this.mBaseUI.n();
+      if ((str2 != null) && (str2.length() >= 1))
       {
         if ((this.mCurrentAccount == null) && (libsafeedit.checkPassLegal("!@#ewaGbhkc$!!=")))
         {
-          str = this.mAutoTextAccount.getText().toString();
+          str2 = this.mBaseUI.m();
           int i = 0;
           while (i < this.mSimpleAccoutList.size())
           {
-            if ((this.mSimpleAccoutList.get(i) != null) && (((SimpleAccount)this.mSimpleAccoutList.get(i)).getUin() != null) && (((SimpleAccount)this.mSimpleAccoutList.get(i)).getUin().equals(str)))
+            if ((this.mSimpleAccoutList.get(i) != null) && (((SimpleAccount)this.mSimpleAccoutList.get(i)).getUin() != null) && (((SimpleAccount)this.mSimpleAccoutList.get(i)).getUin().equals(str2)))
             {
               this.mCurrentAccount = ((SimpleAccount)this.mSimpleAccoutList.get(i));
               break;
@@ -310,19 +207,17 @@ public class AddAccountActivity
           {
             localException.printStackTrace();
           }
-          getAppRuntime().login(paramView, arrayOfByte, null);
+          getAppRuntime().login(str1, arrayOfByte, null);
         }
         AlbumUtil.b();
         return;
       }
-      QQToast.a(this, 2131694703, 0).a();
-      this.mPwdEdit.requestFocus();
-      this.mInputManager.showSoftInput(this.mPwdEdit, 2);
+      QQToast.makeText(this, 2131892395, 0).show();
+      this.mBaseUI.s();
       return;
     }
-    QQToast.a(this, 2131694550, 0).a();
-    this.mAutoTextAccount.requestFocus();
-    this.mInputManager.showSoftInput(this.mAutoTextAccount, 2);
+    QQToast.makeText(this, 2131892234, 0).show();
+    this.mBaseUI.r();
   }
   
   private void loginSuccess(String paramString)
@@ -339,7 +234,6 @@ public class AddAccountActivity
     {
       StatisticCollector.getInstance(BaseApplicationImpl.sApplication).setContact(paramString);
       QQCrashReportManager.a(paramString);
-      Common.OnLogin(BaseApplicationImpl.sApplication, paramString);
     }
     catch (Throwable paramQQAppInterface)
     {
@@ -363,92 +257,51 @@ public class AddAccountActivity
     BaseApplicationImpl.sApplication.refreAccountList();
   }
   
-  private void setAccSoft()
+  private void onBeforeBackHandle()
   {
-    View localView = findViewById(2131376636);
-    if (localView != null) {
-      IphoneTitleBarActivity.setLayerType(localView);
-    }
-    localView = findViewById(2131376752);
-    if (localView != null) {
-      IphoneTitleBarActivity.setLayerType(localView);
+    ((IMiniAppService)QRoute.api(IMiniAppService.class)).doClearAfterLoginSuccess(false);
+  }
+  
+  private void onRegisterClick()
+  {
+    if (this.mCanRegister)
+    {
+      ReportController.a(this.app, "dc00898", "", "", "0X80072E9", "0X80072E9", 0, 0, "", "", "", "");
+      ReportController.b(this.app, "CliOper", "", "", "0X800664F", "0X800664F", 0, 0, "", "", "", "");
+      if (!NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication))
+      {
+        QQToast.makeText(this, 2131889169, 0).show();
+        return;
+      }
+      try
+      {
+        ((AccountManager)this.app.getManager(0)).checkQuickRegisterAccount(this.app.getAccount(), this.app.getAppid(), "8.8.17", null);
+        showDialog(1);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      this.mCanRegister = false;
+      new Handler().postDelayed(new AddAccountActivity.3(this), 1000L);
     }
   }
   
-  private void setupLoginedAccount(SimpleAccount paramSimpleAccount)
+  private void setupLoginedAccount()
   {
     try
     {
-      this.mPwdEdit.removeTextChangedListener(this.onTextChangeForPwd);
+      EditText localEditText = this.mBaseUI.l();
+      localEditText.removeTextChangedListener(this.onTextChangeForPwd);
       this.mCurrentAccount = null;
-      if (paramSimpleAccount == null)
-      {
-        this.mPwdEdit.setText("");
-      }
-      else
-      {
-        AppRuntime localAppRuntime = getAppRuntime();
-        if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-          this.app = ((QQAppInterface)localAppRuntime);
-        }
-        if (this.app != null) {
-          this.mAutoTextAccount.setText(this.app.getUinDisplayNameBeforeLogin(paramSimpleAccount.getUin()));
-        }
-        this.mAutoTextAccount.selectAll();
-        if ((paramSimpleAccount != null) && (paramSimpleAccount.isLogined()))
-        {
-          this.mCurrentAccount = paramSimpleAccount;
-          this.mPwdEdit.setText("!@#ewaGbhkc$!!=");
-        }
-        else
-        {
-          this.mPwdEdit.setText("");
-        }
-      }
-      this.mPwdEdit.addTextChangedListener(this.onTextChangeForPwd);
+      localEditText.setText("");
+      localEditText.addTextChangedListener(this.onTextChangeForPwd);
       return;
     }
-    finally {}
-  }
-  
-  public void afterTextCleared()
-  {
-    libsafeedit.clearPassBuffer();
-    getAppRuntime().stopPCActivePolling("clearPassInput");
-    Object localObject1 = this.mSimpleAccoutList;
-    if ((localObject1 != null) && (((List)localObject1).size() > 0))
+    finally
     {
-      localObject1 = this.mAutoTextAccount;
-      if ((localObject1 != null) && (((AutoCompleteTextView)localObject1).getText() != null))
-      {
-        if (this.mAutoTextAccount.getText().toString() == null) {
-          return;
-        }
-        int i = 0;
-        while (i < this.mSimpleAccoutList.size())
-        {
-          localObject1 = this.mAutoTextAccount.getText().toString();
-          Object localObject2 = (SimpleAccount)this.mSimpleAccoutList.get(i);
-          if ((localObject2 != null) && (((String)localObject1).equals(this.app.getUinDisplayNameBeforeLogin(((SimpleAccount)localObject2).getUin()))))
-          {
-            this.app.updateSubAccountLogin(((SimpleAccount)localObject2).getUin(), false);
-            OpenProxy.a().b((String)localObject1);
-            BaseApplicationImpl.sApplication.refreAccountList();
-            localObject1 = BaseApplicationImpl.sApplication.getAllAccounts();
-            if (localObject1 == null) {
-              break;
-            }
-            localObject2 = this.mSimpleAccoutList;
-            if (localObject2 == null) {
-              break;
-            }
-            ((List)localObject2).clear();
-            this.mSimpleAccoutList.addAll((Collection)localObject1);
-            return;
-          }
-          i += 1;
-        }
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
   
@@ -468,27 +321,39 @@ public class AddAccountActivity
     return bool;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public void doLogin()
+  {
+    login();
+    LoginStaticField.a(3);
+    ReportController.a(this.app, "dc00898", "", "", "0X8007366", "0X8007366", 0, 0, "", "", "", "");
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     try
     {
-      getWindow().setBackgroundDrawableResource(2130838739);
+      getWindow().setBackgroundDrawableResource(2130838958);
     }
     catch (Throwable paramBundle)
     {
       label19:
+      int i;
       break label19;
     }
-    getWindow().setBackgroundDrawableResource(2131165236);
-    setTitle(getString(2131694643));
-    super.setContentView(2131559283);
-    if ((this.mNeedStatusTrans) && (ImmersiveUtils.isSupporImmersive() == 1)) {
-      SoftInputResizeLayout.assistActivity(this);
-    }
-    if (this.app != null)
+    getWindow().setBackgroundDrawableResource(2131165426);
+    i = getIntent().getIntExtra("fromWhereExactly", 1);
+    paramBundle = new StringBuilder();
+    paramBundle.append("doOnCreate AddAccountActivity-login-succeed, from : ");
+    paramBundle.append(i);
+    QLog.d("AddAccountActivity", 2, paramBundle.toString());
+    ReportController.b(this.app, "dc00898", "", "", "0X800BDEB", "0X800BDEB", i, 0, "", "", "", "");
+    initViews();
+    initData();
+    paramBundle = this.app;
+    if (paramBundle != null)
     {
-      this.app.setHandler(LoginProgressClazz.class, this.mHandler);
+      paramBundle.setHandler(LoginProgressClazz.class, this.mHandler);
       this.app.registObserver(this.accountObserver);
     }
     else
@@ -501,7 +366,6 @@ public class AddAccountActivity
         this.app.registObserver(this.accountObserver);
       }
     }
-    initViews();
     if (this.mAutoLoginReceiver != null)
     {
       paramBundle = new IntentFilter();
@@ -518,12 +382,13 @@ public class AddAccountActivity
   protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.app != null)
+    Object localObject = this.app;
+    if (localObject != null)
     {
-      this.app.unRegistObserver(this.accountObserver);
+      ((QQAppInterface)localObject).unRegistObserver(this.accountObserver);
       this.app.removeHandler(LoginProgressClazz.class);
     }
-    Object localObject = this.mHandler;
+    localObject = this.mHandler;
     if (localObject != null) {
       ((MqqHandler)localObject).removeMessages(2005);
     }
@@ -554,33 +419,32 @@ public class AddAccountActivity
   protected void doOnPause()
   {
     super.doOnPause();
-    this.mInputManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+    this.mBaseUI.t();
   }
   
   protected void doOnResume()
   {
     setRequestedOrientation(1);
     super.doOnResume();
+    this.mBaseUI.k().clearFocus();
+    this.mBaseUI.l().clearFocus();
     if (this.mIsGotoLoginView) {
       this.app.registObserver(this.accountObserver);
     }
     this.mIsGotoLoginView = false;
-    this.mAutoTextAccount.clearFocus();
-    this.mDelIcon.setVisibility(8);
-    this.mPwdEdit.clearFocus();
-    this.mPwdEdit.setClearButtonVisible(false);
     if (QLog.isColorLevel()) {
       QLog.d("AddAccountActivity", 2, "onResume in AddAccountActivity");
     }
-    if (this.app != null) {
-      this.app.cancelSyncOnlineFriend(-1L);
+    QQAppInterface localQQAppInterface = this.app;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.cancelSyncOnlineFriend(-1L);
     }
     PhoneNumLoginImpl.a().a(false);
     if (this.mShouldAutoLogin)
     {
       QLog.d("AddAccountActivity", 1, "mShouldAutoLogin: true, then login");
       this.mShouldAutoLogin = false;
-      login(this.mLoginBtn);
+      login();
     }
     if (this.mNeedShowProgress) {
       try
@@ -594,6 +458,17 @@ public class AddAccountActivity
         QLog.e("AddAccountActivity", 1, new Object[] { "show progress dialog error : ", localException.getMessage() });
       }
     }
+  }
+  
+  public void doPhoneLogin()
+  {
+    ReportController.a(this.app, "dc00898", "", "", "0X800AFD8", "0X800AFD8", 0, 0, "", "", "", "");
+    ReportController.b(this.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
+    boolean bool = getIntent().getBooleanExtra("login_from_account_change", false);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("login_from_account_change", bool);
+    localIntent.putExtra("entrance", "fromAddAccount");
+    RouteUtils.a(this, localIntent, "/base/safe/loginPhoneNumActivity");
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -643,6 +518,16 @@ public class AddAccountActivity
     return true;
   }
   
+  protected void initViews()
+  {
+    this.mBaseUI.a(2131896982);
+    this.mBaseUI.a(getString(2131896989), new AddAccountActivity.1(this)).setContentDescription(getString(2131917042));
+    this.mBaseUI.k().addTextChangedListener(this.autoTextViewWatch);
+    this.mBaseUI.l().addTextChangedListener(this.onTextChangeForPwd);
+    this.mBaseUI.q();
+    isNeedSecurityScan(this.mBaseUI.p());
+  }
+  
   protected boolean isWrapContent()
   {
     return false;
@@ -665,7 +550,7 @@ public class AddAccountActivity
       doAfterLoginSuccess();
     }
     ((IMiniAppService)QRoute.api(IMiniAppService.class)).doClearAfterLoginSuccess(false);
-    LoginForbiddenDialogReporter.a(getAppRuntime(), this.mAutoTextAccount.getText().toString(), 3);
+    LoginForbiddenDialogReporter.a(getAppRuntime(), this.mBaseUI.m(), 3);
   }
   
   protected void onAccoutChangeFailed()
@@ -673,59 +558,16 @@ public class AddAccountActivity
     QLog.d("AddAccountActivity", 1, "onAccoutChangeFailed");
   }
   
-  protected boolean onBackEvent()
+  public void onBackClick()
   {
-    ((IMiniAppService)QRoute.api(IMiniAppService.class)).doClearAfterLoginSuccess(false);
-    finish();
-    overridePendingTransition(2130771991, 2130772015);
-    return true;
+    onBeforeBackHandle();
   }
   
-  public void onClick(View paramView)
+  protected boolean onBackEvent()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      break;
-    case 2131376354: 
-      if (this.mCanRegister)
-      {
-        ReportController.a(this.app, "dc00898", "", "", "0X80072E9", "0X80072E9", 0, 0, "", "", "", "");
-        ReportController.b(this.app, "CliOper", "", "", "0X800664F", "0X800664F", 0, 0, "", "", "", "");
-        if (!NetworkUtil.isNetSupport(BaseApplicationImpl.sApplication))
-        {
-          QQToast.a(this, 2131692183, 0).a();
-        }
-        else
-        {
-          try
-          {
-            ((AccountManager)this.app.getManager(0)).checkQuickRegisterAccount(this.app.getAccount(), this.app.getAppid(), "8.7.0", null);
-            showDialog(1);
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-          this.mCanRegister = false;
-          new Handler().postDelayed(new AddAccountActivity.3(this), 1000L);
-        }
-      }
-      break;
-    case 2131370448: 
-      login(paramView);
-      LoginStaticField.a(3);
-      ReportController.a(this.app, "dc00898", "", "", "0X8007366", "0X8007366", 0, 0, "", "", "", "");
-      break;
-    case 2131369233: 
-      onBackEvent();
-      break;
-    case 2131366847: 
-      ReportController.a(this.app, "dc00898", "", "", "0X80072EA", "0X80072EA", 0, 0, "", "", "", "");
-      ReportController.b(this.app, "CliOper", "", "", "0X800664E", "0X800664E", 0, 0, "", "", "", "");
-      showActionSheet();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    onBeforeBackHandle();
+    finish();
+    return true;
   }
   
   @Override
@@ -743,27 +585,55 @@ public class AddAccountActivity
         return null;
       }
       localQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      localQQProgressDialog.a(HardCodeUtil.a(2131700043));
+      localQQProgressDialog.a(HardCodeUtil.a(2131898089));
       localQQProgressDialog.setCancelable(false);
       return localQQProgressDialog;
     }
     QQProgressDialog localQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-    localQQProgressDialog.a(getString(2131699826));
+    localQQProgressDialog.a(getString(2131897871));
     return localQQProgressDialog;
+  }
+  
+  public void onFindPwdClick()
+  {
+    ReportController.a(this.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
+    ReportController.a(this.app, "dc00898", "", "", "0X800B28F", "0X800B28F", 0, 0, "", "", "", "");
   }
   
   protected void onLogout(Constants.LogoutReason paramLogoutReason) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public void onPwdClear()
   {
-    if (paramMotionEvent.getAction() == 1)
+    libsafeedit.clearPassBuffer();
+    getAppRuntime().stopPCActivePolling("clearPassInput");
+    Object localObject1 = this.mSimpleAccoutList;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      InputMethodManager localInputMethodManager = this.mInputManager;
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+      localObject1 = this.mBaseUI.m();
+      int i = 0;
+      while (i < this.mSimpleAccoutList.size())
+      {
+        Object localObject2 = (SimpleAccount)this.mSimpleAccoutList.get(i);
+        if ((localObject2 != null) && (((String)localObject1).equals(this.app.getUinDisplayNameBeforeLogin(((SimpleAccount)localObject2).getUin()))))
+        {
+          this.app.updateSubAccountLogin(((SimpleAccount)localObject2).getUin(), false);
+          OpenProxy.a().b((String)localObject1);
+          BaseApplicationImpl.sApplication.refreAccountList();
+          localObject1 = BaseApplicationImpl.sApplication.getAllAccounts();
+          if (localObject1 == null) {
+            break;
+          }
+          localObject2 = this.mSimpleAccoutList;
+          if (localObject2 == null) {
+            break;
+          }
+          ((List)localObject2).clear();
+          this.mSimpleAccoutList.addAll((Collection)localObject1);
+          return;
+        }
+        i += 1;
       }
     }
-    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void receiveScreenOff()
@@ -778,29 +648,10 @@ public class AddAccountActivity
   {
     requestWindowFeature(1);
   }
-  
-  protected void showActionSheet()
-  {
-    if (this.mActionSheet == null)
-    {
-      this.mActionSheet = ((ActionSheet)ActionSheetHelper.a(this, null));
-      this.mActionSheet.addButton(2131692483);
-      this.mActionSheet.addButton(2131719166);
-      this.mActionSheet.addCancelButton(2131690728);
-      this.mActionSheet.setOnDismissListener(new AddAccountActivity.11(this));
-      this.mActionSheet.setOnButtonClickListener(new AddAccountActivity.12(this));
-    }
-    if (!this.mActionSheet.isShowing())
-    {
-      InputMethodUtil.b(this.mAutoTextAccount);
-      this.actionSheetHasClick = false;
-      this.mActionSheet.show();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity
  * JD-Core Version:    0.7.0.1
  */

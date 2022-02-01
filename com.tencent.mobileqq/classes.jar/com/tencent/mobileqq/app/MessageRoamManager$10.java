@@ -21,7 +21,7 @@ class MessageRoamManager$10
   
   public void run()
   {
-    Object localObject1 = new File(this.this$0.a.getApp().getFilesDir(), "https://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json");
+    Object localObject1 = new File(this.this$0.b.getApp().getFilesDir(), "https://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json");
     Object localObject2;
     if (QLog.isColorLevel())
     {
@@ -33,13 +33,13 @@ class MessageRoamManager$10
     boolean bool;
     if (((File)localObject1).exists())
     {
-      Object localObject3 = this.this$0.a.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
-      localObject2 = this.this$0.a.getCurrentAccountUin();
+      Object localObject3 = this.this$0.b.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
+      localObject2 = this.this$0.b.getCurrentAccountUin();
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("message_roam_is_first_show");
       ((StringBuilder)localObject1).append((String)localObject2);
       int i = ((SharedPreferences)localObject3).getInt(((StringBuilder)localObject1).toString(), 0);
-      bool = this.this$0.h();
+      bool = this.this$0.C();
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("banner_last_show_timestamp");
       ((StringBuilder)localObject1).append((String)localObject2);
@@ -49,15 +49,15 @@ class MessageRoamManager$10
       long l4 = ((SharedPreferences)localObject3).getInt("blue_banner_show_time", 0);
       if (((!bool) && ((l3 - l1 > l2 * 3600000L) || (l3 < l1))) || ((i == 0) && (l4 * 1000L != 0L)))
       {
-        if (VasUtil.a(this.this$0.a).getVipStatus().isSVip()) {
+        if (VasUtil.b(this.this$0.b).getVipStatus().isSVip()) {
           localObject1 = ((SharedPreferences)localObject3).getString("blue_banner_svip_text", null);
-        } else if (VasUtil.a(this.this$0.a).getVipStatus().isVip()) {
+        } else if (VasUtil.b(this.this$0.b).getVipStatus().isVip()) {
           localObject1 = ((SharedPreferences)localObject3).getString("blue_banner_vip_text", null);
         } else {
           localObject1 = ((SharedPreferences)localObject3).getString("blue_banner_notvip_text", null);
         }
         if (i == 0) {
-          localObject1 = this.this$0.a.getApp().getResources().getString(2131693910);
+          localObject1 = this.this$0.b.getApp().getResources().getString(2131891535);
         }
         String str = ((SharedPreferences)localObject3).getString("blue_banner_go_url", null);
         if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)))
@@ -104,7 +104,7 @@ class MessageRoamManager$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.10
  * JD-Core Version:    0.7.0.1
  */

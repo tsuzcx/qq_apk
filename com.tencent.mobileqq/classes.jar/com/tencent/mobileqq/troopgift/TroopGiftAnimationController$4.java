@@ -10,12 +10,12 @@ class TroopGiftAnimationController$4
   
   public void a()
   {
-    this.a.a.post(new TroopGiftAnimationController.4.1(this));
+    this.a.f.post(new TroopGiftAnimationController.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4
  * JD-Core Version:    0.7.0.1
  */

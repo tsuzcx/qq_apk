@@ -12,31 +12,31 @@ class TroopFileTransferMgr$1
   protected void a(Set<Long> paramSet)
   {
     TroopFileTransferMgr localTroopFileTransferMgr = this.a;
-    localTroopFileTransferMgr.b = 1;
+    localTroopFileTransferMgr.c = 1;
     if ((paramSet != null) && (paramSet.contains(Long.valueOf(TroopFileTransferMgr.a(localTroopFileTransferMgr))))) {
-      this.a.b = 2;
+      this.a.c = 2;
     }
-    int i = TroopFileTransferUtil.Log.a;
+    int i = TroopFileTransferUtil.Log.b;
     paramSet = new StringBuilder();
     paramSet.append("onW2MPausedDownload mW2MPausedUploadState:");
-    paramSet.append(this.a.a);
-    paramSet.append(" mW2MPausedDownloadState:");
     paramSet.append(this.a.b);
+    paramSet.append(" mW2MPausedDownloadState:");
+    paramSet.append(this.a.c);
     TroopFileTransferUtil.Log.c("TroopFileTransferMgr", i, paramSet.toString());
-    if (this.a.a > 0)
+    if (this.a.b > 0)
     {
-      if ((this.a.b == 2) || (this.a.a == 2)) {
-        TroopFileError.a(TroopFileTransferMgr.a(this.a), TroopFileTransferMgr.b(this.a), 107);
+      if ((this.a.c == 2) || (this.a.b == 2)) {
+        TroopFileError.a(TroopFileTransferMgr.b(this.a), TroopFileTransferMgr.c(this.a), 107);
       }
       paramSet = this.a;
-      paramSet.a = 0;
       paramSet.b = 0;
+      paramSet.c = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr.1
  * JD-Core Version:    0.7.0.1
  */

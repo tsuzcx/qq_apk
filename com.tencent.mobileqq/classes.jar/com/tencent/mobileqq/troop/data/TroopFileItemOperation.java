@@ -30,15 +30,15 @@ import java.util.UUID;
 
 public class TroopFileItemOperation
 {
-  public long a;
   public Activity a;
-  public QQAppInterface a;
+  public long b;
+  public QQAppInterface c;
   
   public TroopFileItemOperation(long paramLong, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramLong;
+    this.c = paramQQAppInterface;
+    this.a = paramActivity;
   }
   
   private int a()
@@ -49,9 +49,9 @@ public class TroopFileItemOperation
   private int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Long);
+      return TroopFileUtils.a(this.c, this.a, this.b);
     }
-    return TroopFileUtils.a(this.jdField_a_of_type_AndroidAppActivity);
+    return TroopFileUtils.a(this.a);
   }
   
   private static String b(int paramInt)
@@ -66,29 +66,7 @@ public class TroopFileItemOperation
   
   private void b(FileManagerEntity paramFileManagerEntity)
   {
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long).a(paramFileManagerEntity);
-  }
-  
-  public int a(TroopFileInfo paramTroopFileInfo)
-  {
-    return "/".equals(paramTroopFileInfo.g) ^ true;
-  }
-  
-  public TroopFileStatusInfo a(TroopFileInfo paramTroopFileInfo)
-  {
-    TroopFileStatusInfo localTroopFileStatusInfo2 = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long).a(paramTroopFileInfo.b);
-    TroopFileStatusInfo localTroopFileStatusInfo1 = localTroopFileStatusInfo2;
-    if (localTroopFileStatusInfo2 == null)
-    {
-      localTroopFileStatusInfo1 = TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, paramTroopFileInfo.jdField_a_of_type_JavaUtilUUID.toString(), paramTroopFileInfo.b, paramTroopFileInfo.jdField_c_of_type_JavaLangString, paramTroopFileInfo.jdField_a_of_type_Long, paramTroopFileInfo.jdField_a_of_type_Int);
-      localTroopFileStatusInfo1.jdField_c_of_type_JavaLangString = paramTroopFileInfo.k;
-      localTroopFileStatusInfo1.d = paramTroopFileInfo.l;
-      localTroopFileStatusInfo1.b = paramTroopFileInfo.j;
-    }
-    if ((localTroopFileStatusInfo1 != null) && (localTroopFileStatusInfo1.jdField_c_of_type_Long == 0L)) {
-      localTroopFileStatusInfo1.jdField_c_of_type_Long = paramTroopFileInfo.jdField_a_of_type_Long;
-    }
-    return localTroopFileStatusInfo1;
+    TroopFileTransferManager.a(this.c, this.b).a(paramFileManagerEntity);
   }
   
   public void a(FileManagerEntity paramFileManagerEntity)
@@ -100,9 +78,9 @@ public class TroopFileItemOperation
     if ((i == 1) && (paramFileManagerEntity.fileSize > 3145728L))
     {
       Object localObject = new TroopFileItemOperation.4(this, paramFileManagerEntity);
-      paramFileManagerEntity = b(2131697397, new Object[] { TroopFileUtils.a(paramFileManagerEntity.fileName), TroopFileUtils.a(paramFileManagerEntity.fileSize) });
-      localObject = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697613), paramFileManagerEntity, 2131690728, 2131719069, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
-      paramFileManagerEntity = CUOpenCardGuideMng.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, paramFileManagerEntity);
+      paramFileManagerEntity = b(2131895170, new Object[] { TroopFileUtils.a(paramFileManagerEntity.fileName), TroopFileUtils.a(paramFileManagerEntity.fileSize) });
+      localObject = DialogUtil.a(this.a, 230, b(2131895386), paramFileManagerEntity, 2131887648, 2131916605, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+      paramFileManagerEntity = CUOpenCardGuideMng.a(this.a, this.c, 2, paramFileManagerEntity);
       if ((paramFileManagerEntity instanceof SpannableString)) {
         ((QQCustomDialog)localObject).setMessageWithoutAutoLink(paramFileManagerEntity);
       }
@@ -115,17 +93,17 @@ public class TroopFileItemOperation
   public void a(TroopFileInfo paramTroopFileInfo)
   {
     paramTroopFileInfo = new TroopFileItemOperation.7(this, paramTroopFileInfo);
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697287), b(2131697286), 2131690728, 2131694583, paramTroopFileInfo, paramTroopFileInfo).show();
+    DialogUtil.a(this.a, 230, b(2131895060), b(2131895059), 2131887648, 2131892267, paramTroopFileInfo, paramTroopFileInfo).show();
   }
   
   public void a(TroopFileInfo paramTroopFileInfo, String paramString1, String paramString2)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidAppActivity, 230);
+    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.a, 230);
     localQQCustomDialog.setTitle(paramString1).setMessage(paramString2);
     paramString1 = (LinearLayout.LayoutParams)localQQCustomDialog.getMessageTextView().getLayoutParams();
     paramString1.gravity = 17;
     localQQCustomDialog.getMessageTextView().setLayoutParams(paramString1);
-    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131694583), new TroopFileItemOperation.14(this, paramTroopFileInfo));
+    localQQCustomDialog.setPositiveButton(this.a.getResources().getString(2131892267), new TroopFileItemOperation.14(this, paramTroopFileInfo));
     localQQCustomDialog.show();
   }
   
@@ -134,17 +112,17 @@ public class TroopFileItemOperation
     if (a() == 0) {
       return;
     }
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.c, this.b);
     Object localObject = HWTroopUtils.a(paramString2);
-    localObject = ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig((String)localObject);
-    if ((FileManagerUtil.a()) && (paramLong > ((DownloadFileConfig)localObject).b))
+    localObject = ((IQFileConfigManager)this.c.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig((String)localObject);
+    if ((FileManagerUtil.b()) && (paramLong > ((DownloadFileConfig)localObject).b))
     {
-      if (FreeWifiHelper.a(this.jdField_a_of_type_AndroidAppActivity, 1, new TroopFileItemOperation.2(this, localTroopFileTransferManager, paramString1, paramString2, paramLong, paramInt)))
+      if (FreeWifiHelper.a(this.a, 1, new TroopFileItemOperation.2(this, localTroopFileTransferManager, paramString1, paramString2, paramLong, paramInt)))
       {
         paramString1 = new TroopFileItemOperation.3(this, localTroopFileTransferManager, paramString1, paramString2, paramLong, paramInt);
-        paramString2 = b(2131697398, new Object[] { TroopFileUtils.a(paramString2), TroopFileUtils.a(paramLong) });
-        paramString1 = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697613), paramString2, 2131690728, 2131697333, paramString1, paramString1);
-        paramString2 = CUOpenCardGuideMng.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, paramString2);
+        paramString2 = b(2131895171, new Object[] { TroopFileUtils.a(paramString2), TroopFileUtils.a(paramLong) });
+        paramString1 = DialogUtil.a(this.a, 230, b(2131895386), paramString2, 2131887648, 2131895106, paramString1, paramString1);
+        paramString2 = CUOpenCardGuideMng.a(this.a, this.c, 2, paramString2);
         if ((paramString2 instanceof SpannableString)) {
           paramString1.setMessageWithoutAutoLink(paramString2);
         }
@@ -161,26 +139,26 @@ public class TroopFileItemOperation
     if (a() == 0) {
       return;
     }
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
-    if (FileManagerUtil.a())
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.c, this.b);
+    if (FileManagerUtil.b())
     {
       TroopFileItemOperation.1 local1 = new TroopFileItemOperation.1(this, localTroopFileTransferManager, paramUUID);
-      paramUUID = localTroopFileTransferManager.a(paramUUID);
+      paramUUID = localTroopFileTransferManager.g(paramUUID);
       if (paramUUID != null) {
-        paramUUID = b(2131697402, new Object[] { TroopFileUtils.a(paramUUID.g), TroopFileUtils.a(paramUUID.jdField_c_of_type_Long) });
+        paramUUID = b(2131895175, new Object[] { TroopFileUtils.a(paramUUID.t), TroopFileUtils.a(paramUUID.i) });
       } else {
-        paramUUID = b(2131697401);
+        paramUUID = b(2131895174);
       }
-      DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697613), paramUUID, 2131690728, 2131697706, local1, local1).show();
+      DialogUtil.a(this.a, 230, b(2131895386), paramUUID, 2131887648, 2131895479, local1, local1).show();
       return;
     }
-    localTroopFileTransferManager.b(paramUUID);
+    localTroopFileTransferManager.c(paramUUID);
   }
   
   public void b(TroopFileInfo paramTroopFileInfo)
   {
     paramTroopFileInfo = new TroopFileItemOperation.8(this, paramTroopFileInfo);
-    DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697283), b(2131697282), 2131690728, 2131694583, paramTroopFileInfo, paramTroopFileInfo).show();
+    DialogUtil.a(this.a, 230, b(2131895056), b(2131895055), 2131887648, 2131892267, paramTroopFileInfo, paramTroopFileInfo).show();
   }
   
   public void b(UUID paramUUID)
@@ -189,43 +167,43 @@ public class TroopFileItemOperation
     if (i == 0) {
       return;
     }
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.c, this.b);
     if (i == 1)
     {
-      Object localObject2 = localTroopFileTransferManager.a(paramUUID);
+      Object localObject2 = localTroopFileTransferManager.g(paramUUID);
       long l = 0L;
       Object localObject1;
       if (localObject2 != null)
       {
-        l = ((TroopFileStatusInfo)localObject2).jdField_c_of_type_Long;
-        localObject1 = b(2131697400, new Object[] { TroopFileUtils.a(((TroopFileStatusInfo)localObject2).g), TroopFileUtils.a(((TroopFileStatusInfo)localObject2).jdField_c_of_type_Long) });
-        localObject2 = ((TroopFileStatusInfo)localObject2).g;
+        l = ((TroopFileStatusInfo)localObject2).i;
+        localObject1 = b(2131895173, new Object[] { TroopFileUtils.a(((TroopFileStatusInfo)localObject2).t), TroopFileUtils.a(((TroopFileStatusInfo)localObject2).i) });
+        localObject2 = ((TroopFileStatusInfo)localObject2).t;
       }
       else
       {
-        localObject1 = b(2131697399);
+        localObject1 = b(2131895172);
         localObject2 = "";
       }
-      if (l > ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a((String)localObject2)).b)
+      if (l > ((IQFileConfigManager)this.c.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a((String)localObject2)).b)
       {
         paramUUID = new TroopFileItemOperation.6(this, localTroopFileTransferManager, paramUUID);
-        paramUUID = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697613), (String)localObject1, 2131690728, 2131697702, paramUUID, paramUUID);
-        localObject1 = CUOpenCardGuideMng.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, (String)localObject1);
+        paramUUID = DialogUtil.a(this.a, 230, b(2131895386), (String)localObject1, 2131887648, 2131895475, paramUUID, paramUUID);
+        localObject1 = CUOpenCardGuideMng.a(this.a, this.c, 2, (String)localObject1);
         if ((localObject1 instanceof SpannableString)) {
           paramUUID.setMessageWithoutAutoLink((CharSequence)localObject1);
         }
         paramUUID.show();
         return;
       }
-      localTroopFileTransferManager.c(paramUUID);
+      localTroopFileTransferManager.d(paramUUID);
       return;
     }
-    localTroopFileTransferManager.c(paramUUID);
+    localTroopFileTransferManager.d(paramUUID);
   }
   
   public void c(TroopFileInfo paramTroopFileInfo)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.c, this.b);
     ThreadManager.post(new TroopFileItemOperation.9(this, localTroopFileTransferManager), 8, new TroopFileItemOperation.10(this, localTroopFileTransferManager, paramTroopFileInfo), false);
   }
   
@@ -234,14 +212,14 @@ public class TroopFileItemOperation
     int i = a(false);
     Object localObject = new TroopFileItemOperation.11(this, paramTroopFileInfo);
     if (i == 1) {
-      paramTroopFileInfo = b(2131697400, new Object[] { TroopFileUtils.a(paramTroopFileInfo.jdField_c_of_type_JavaLangString), paramTroopFileInfo.a() });
+      paramTroopFileInfo = b(2131895173, new Object[] { TroopFileUtils.a(paramTroopFileInfo.d), paramTroopFileInfo.a() });
     } else {
-      paramTroopFileInfo = b(2131697704, new Object[] { TroopFileUtils.a(paramTroopFileInfo.jdField_c_of_type_JavaLangString) });
+      paramTroopFileInfo = b(2131895477, new Object[] { TroopFileUtils.a(paramTroopFileInfo.d) });
     }
-    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, b(2131697703), paramTroopFileInfo, 2131690728, 2131697702, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
+    localObject = DialogUtil.a(this.a, 230, b(2131895476), paramTroopFileInfo, 2131887648, 2131895475, (DialogInterface.OnClickListener)localObject, (DialogInterface.OnClickListener)localObject);
     if (i == 1)
     {
-      paramTroopFileInfo = CUOpenCardGuideMng.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, paramTroopFileInfo);
+      paramTroopFileInfo = CUOpenCardGuideMng.a(this.a, this.c, 2, paramTroopFileInfo);
       if ((paramTroopFileInfo instanceof SpannableString)) {
         ((QQCustomDialog)localObject).setMessageWithoutAutoLink(paramTroopFileInfo);
       }
@@ -251,46 +229,68 @@ public class TroopFileItemOperation
   
   public void e(TroopFileInfo paramTroopFileInfo)
   {
-    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidAppActivity, null);
-    String[] arrayOfString = this.jdField_a_of_type_AndroidAppActivity.getResources().getStringArray(2130968672);
-    int i = paramTroopFileInfo.e;
+    ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.b(this.a, null);
+    String[] arrayOfString = this.a.getResources().getStringArray(2130968674);
+    int i = paramTroopFileInfo.p;
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (i == 11)
     {
       bool1 = bool2;
-      if (FileUtil.a(paramTroopFileInfo.i))
+      if (FileUtil.b(paramTroopFileInfo.t))
       {
         localActionSheet.addButton(arrayOfString[0], 1);
         bool1 = true;
       }
     }
-    if ((TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long)) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramTroopFileInfo.b()))) {
+    if ((TroopFileUtils.a(this.c, this.b)) || (this.c.getCurrentAccountUin().equals(paramTroopFileInfo.b()))) {
       localActionSheet.addButton(arrayOfString[1], 1);
     }
     localActionSheet.setOnButtonClickListener(new TroopFileItemOperation.12(this, bool1, paramTroopFileInfo, localActionSheet));
-    localActionSheet.addCancelButton(2131690728);
+    localActionSheet.addCancelButton(2131887648);
     localActionSheet.show();
   }
   
-  public void f(TroopFileInfo paramTroopFileInfo)
+  public TroopFileStatusInfo f(TroopFileInfo paramTroopFileInfo)
   {
-    String str1 = this.jdField_a_of_type_AndroidAppActivity.getString(2131697344);
-    String str2 = String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131697330), new Object[] { TroopFileUtils.a(paramTroopFileInfo.jdField_c_of_type_JavaLangString) });
-    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.jdField_a_of_type_AndroidAppActivity, 230);
+    TroopFileStatusInfo localTroopFileStatusInfo2 = TroopFileTransferManager.a(this.c, this.b).a(paramTroopFileInfo.c);
+    TroopFileStatusInfo localTroopFileStatusInfo1 = localTroopFileStatusInfo2;
+    if (localTroopFileStatusInfo2 == null)
+    {
+      localTroopFileStatusInfo1 = TroopFileUtils.a(this.c, this.b, paramTroopFileInfo.b.toString(), paramTroopFileInfo.c, paramTroopFileInfo.d, paramTroopFileInfo.e, paramTroopFileInfo.f);
+      localTroopFileStatusInfo1.m = paramTroopFileInfo.x;
+      localTroopFileStatusInfo1.n = paramTroopFileInfo.y;
+      localTroopFileStatusInfo1.l = paramTroopFileInfo.w;
+    }
+    if ((localTroopFileStatusInfo1 != null) && (localTroopFileStatusInfo1.i == 0L)) {
+      localTroopFileStatusInfo1.i = paramTroopFileInfo.e;
+    }
+    return localTroopFileStatusInfo1;
+  }
+  
+  public int g(TroopFileInfo paramTroopFileInfo)
+  {
+    return "/".equals(paramTroopFileInfo.o) ^ true;
+  }
+  
+  public void h(TroopFileInfo paramTroopFileInfo)
+  {
+    String str1 = this.a.getString(2131895117);
+    String str2 = String.format(this.a.getString(2131895103), new Object[] { TroopFileUtils.a(paramTroopFileInfo.d) });
+    QQCustomDialog localQQCustomDialog = DialogUtil.b(this.a, 230);
     localQQCustomDialog.setTitle(str1).setMessage(str2);
-    localQQCustomDialog.setPositiveButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131694583), new TroopFileItemOperation.13(this, paramTroopFileInfo));
+    localQQCustomDialog.setPositiveButton(this.a.getString(2131892267), new TroopFileItemOperation.13(this, paramTroopFileInfo));
     localQQCustomDialog.show();
   }
   
-  public void g(TroopFileInfo paramTroopFileInfo)
+  public void i(TroopFileInfo paramTroopFileInfo)
   {
     if (a() != 0)
     {
-      TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long).a(paramTroopFileInfo);
-      paramTroopFileInfo = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      TroopFileManager.a(this.c, this.b).c(paramTroopFileInfo);
+      paramTroopFileInfo = this.c;
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(this.b);
       localStringBuilder.append("");
       ReportController.b(paramTroopFileInfo, "CliOper", "", "", "Grp", "Clk_trans_save", 0, 0, "", localStringBuilder.toString(), "", "");
     }
@@ -298,7 +298,7 @@ public class TroopFileItemOperation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFileItemOperation
  * JD-Core Version:    0.7.0.1
  */

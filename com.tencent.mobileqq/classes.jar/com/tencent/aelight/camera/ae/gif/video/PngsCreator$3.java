@@ -9,14 +9,14 @@ class PngsCreator$3
   
   public void run()
   {
-    if (PngsCreator.a(this.this$0) != null) {
-      PngsCreator.a(this.this$0).a(this.a);
+    if (PngsCreator.c(this.this$0) != null) {
+      PngsCreator.c(this.this$0).a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.video.PngsCreator.3
  * JD-Core Version:    0.7.0.1
  */

@@ -49,7 +49,7 @@ public class ArkAppCallBackHandler
       IRichNode localIRichNode = (IRichNode)((WeakReference)this.a.get(i)).get();
       ArkNodeContainer localArkNodeContainer;
       if ((localIRichNode != null) && ((localIRichNode instanceof ArkRichNode))) {
-        localArkNodeContainer = ((ArkRichNode)localIRichNode).a();
+        localArkNodeContainer = ((ArkRichNode)localIRichNode).b();
       } else {
         localArkNodeContainer = null;
       }
@@ -136,7 +136,7 @@ public class ArkAppCallBackHandler
     ((IArkAPIService)QRoute.api(IArkAPIService.class)).registerModules(paramModuleRegister, paramApplication);
     paramApplication = new ArkAppModule(paramApplication, 0);
     paramApplication.a(this);
-    paramApplication.a((List)ArkAiAppCenter.a.get(paramApplication.GetTypeName()));
+    paramApplication.a((List)ArkAiAppCenter.d.get(paramApplication.GetTypeName()));
     paramModuleRegister.RegCallbackWrapper(paramApplication);
   }
   
@@ -196,7 +196,7 @@ public class ArkAppCallBackHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppCallBackHandler
  * JD-Core Version:    0.7.0.1
  */

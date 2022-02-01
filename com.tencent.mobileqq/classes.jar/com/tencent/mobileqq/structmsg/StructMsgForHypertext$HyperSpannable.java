@@ -28,22 +28,22 @@ import com.tencent.qphone.base.util.QLog;
 public class StructMsgForHypertext$HyperSpannable
   extends URLSpan
 {
-  long jdField_a_of_type_Long = -1L;
-  private StructMsgForHypertext.Hypertext jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext = null;
+  long a = -1L;
+  private StructMsgForHypertext.Hypertext c = null;
   
   public StructMsgForHypertext$HyperSpannable(StructMsgForHypertext paramStructMsgForHypertext, StructMsgForHypertext.Hypertext paramHypertext)
   {
     super(paramHypertext.b);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext = paramHypertext;
+    this.c = paramHypertext;
   }
   
   public void onClick(View paramView)
   {
-    if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < 1000L) {
+    if (SystemClock.uptimeMillis() - this.a < 1000L) {
       return;
     }
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext == null) {
+    this.a = SystemClock.uptimeMillis();
+    if (this.c == null) {
       return;
     }
     if ((paramView != null) && ((paramView instanceof StructMsgForHypertext.HyperTextView)) && (!((StructMsgForHypertext.HyperTextView)paramView).a())) {
@@ -51,8 +51,8 @@ public class StructMsgForHypertext$HyperSpannable
     }
     Object localObject5;
     PackageManager localPackageManager;
-    if ((!"web".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) && (!"auto".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) && (!"replyMsg".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) && (!"replyCmd".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) && (!"plugin".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b))) {
-      if ("app".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b))
+    if ((!"web".equals(this.c.b)) && (!"auto".equals(this.c.b)) && (!"replyMsg".equals(this.c.b)) && (!"replyCmd".equals(this.c.b)) && (!"plugin".equals(this.c.b))) {
+      if ("app".equals(this.c.b))
       {
         localObject5 = paramView.getContext();
         localPackageManager = ((Context)localObject5).getPackageManager();
@@ -65,10 +65,10 @@ public class StructMsgForHypertext$HyperSpannable
       Object localObject4;
       try
       {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d)) {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.c;
+        if (TextUtils.isEmpty(this.c.d)) {
+          localObject2 = this.c.c;
         } else {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d;
+          localObject2 = this.c.d;
         }
         i = ((String)localObject2).indexOf("://");
         if (i == -1)
@@ -112,7 +112,7 @@ public class StructMsgForHypertext$HyperSpannable
           ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_aio");
           ((Intent)localObject2).putExtra("url", (String)localObject1);
           ((Intent)localObject2).putExtra("key_isReadModeEnabled", true);
-          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message, (Intent)localObject2, (String)localObject1);
+          ((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).modifyIntentForSpecificBrowserIfNeeded(this.b.message, (Intent)localObject2, (String)localObject1);
           ((Context)localObject5).startActivity((Intent)localObject2);
           ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, (String)localObject1, "", "", "");
         }
@@ -133,23 +133,23 @@ public class StructMsgForHypertext$HyperSpannable
         ((Context)localObject5).startActivity((Intent)localObject3);
         ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, (String)localObject1, "", "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
+      this.b.mHyperClick = true;
       break label686;
-      new StructMsgClickHandler(null, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.a, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.c, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.msgseq, new Object[0]);
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
+      new StructMsgClickHandler(null, paramView, this.b.message).a(this.c.b, this.c.a, this.c.c, this.c.d, this.b.message.msgseq, new Object[0]);
+      this.b.mHyperClick = true;
       label686:
       int j = 0;
-      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message instanceof MessageForStructing))
+      if ((this.b.message instanceof MessageForStructing))
       {
-        if (((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).structingMsg.mMsgServiceID != 120) {
+        if (((MessageForStructing)this.b.message).structingMsg.mMsgServiceID != 120) {
           return;
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.f))
+        if (!TextUtils.isEmpty(this.c.f))
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message;
+          localObject1 = this.b.message;
           localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext));
-          ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.f);
+          ((StringBuilder)localObject3).append(StructMsgForHypertext.access$000(this.b));
+          ((StringBuilder)localObject3).append(this.c.f);
           localObject1 = ((MessageRecord)localObject1).getExtInfoFromExtStr(((StringBuilder)localObject3).toString());
           try
           {
@@ -160,9 +160,9 @@ public class StructMsgForHypertext$HyperSpannable
             }
             try
             {
-              if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.g))
+              if (!TextUtils.isEmpty(this.c.g))
               {
-                int k = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.g).intValue();
+                int k = Integer.valueOf(this.c.g).intValue();
                 j = k;
               }
               else
@@ -185,13 +185,13 @@ public class StructMsgForHypertext$HyperSpannable
         if ((i != 0) && (i >= j)) {
           return;
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b))
+        if (!TextUtils.isEmpty(this.c.b))
         {
           BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
           paramView = localBaseActivity.getChatFragment();
           if (paramView != null)
           {
-            paramView = paramView.a();
+            paramView = paramView.j();
           }
           else
           {
@@ -205,25 +205,25 @@ public class StructMsgForHypertext$HyperSpannable
           if (paramView == null) {
             return;
           }
-          ((QidianManager)paramView.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.c, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.a, 1, "");
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.f))
+          ((QidianManager)paramView.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(this.c.b, this.c.d, this.c.c, this.c.a, 1, "");
+          if (!TextUtils.isEmpty(this.c.f))
           {
             i += 1;
             if (i <= j)
             {
-              localObject3 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message;
+              localObject3 = this.b.message;
               localObject4 = new StringBuilder();
-              ((StringBuilder)localObject4).append(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext));
-              ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.f);
+              ((StringBuilder)localObject4).append(StructMsgForHypertext.access$000(this.b));
+              ((StringBuilder)localObject4).append(this.c.f);
               localObject4 = ((StringBuilder)localObject4).toString();
               localObject5 = new StringBuilder();
               ((StringBuilder)localObject5).append("");
               ((StringBuilder)localObject5).append(i);
               ((MessageRecord)localObject3).saveExtInfoToExtStr((String)localObject4, ((StringBuilder)localObject5).toString());
-              paramView.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.istroop, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.extStr);
+              paramView.getMessageFacade().a(this.b.message.frienduin, this.b.message.istroop, this.b.message.uniseq, "extStr", this.b.message.extStr);
             }
           }
-          localBaseActivity.getChatFragment().a().e(131077);
+          localBaseActivity.getChatFragment().k().j(131078);
         }
       }
       return;
@@ -238,7 +238,7 @@ public class StructMsgForHypertext$HyperSpannable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext.HyperSpannable
  * JD-Core Version:    0.7.0.1
  */

@@ -20,21 +20,21 @@ class MultiCardManager$1
     HashMap localHashMap = new HashMap(50);
     Object localObject1;
     Object localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    if (this.a != null)
     {
       localObject1 = (TroopManager)MultiCardManager.a(this.this$0).getManager(QQManagerFactory.TROOP_MANAGER);
-      localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      localObject2 = this.a.iterator();
       while (((Iterator)localObject2).hasNext())
       {
         Long localLong = (Long)((Iterator)localObject2).next();
         Object localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append(this.jdField_a_of_type_Long);
+        ((StringBuilder)localObject3).append(this.b);
         ((StringBuilder)localObject3).append("");
         localObject3 = ((StringBuilder)localObject3).toString();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(localLong);
         localStringBuilder.append("");
-        localObject3 = ((TroopManager)localObject1).a((String)localObject3, localStringBuilder.toString());
+        localObject3 = ((TroopManager)localObject1).e((String)localObject3, localStringBuilder.toString());
         if (localObject3 != null) {
           localHashMap.put(localLong, localObject3);
         }
@@ -44,7 +44,7 @@ class MultiCardManager$1
     {
       localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("callbackWithNativeMemberNick ");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(this.b);
       ((StringBuilder)localObject1).append(" ");
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(localHashMap.size());
@@ -57,7 +57,7 @@ class MultiCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.1
  * JD-Core Version:    0.7.0.1
  */

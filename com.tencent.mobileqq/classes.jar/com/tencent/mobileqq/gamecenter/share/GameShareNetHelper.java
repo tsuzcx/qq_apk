@@ -15,21 +15,21 @@ import mqq.observer.BusinessObserver;
 
 public class GameShareNetHelper
 {
-  private static volatile GameShareNetHelper jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareNetHelper;
-  private Map<MessageRecord, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private static volatile GameShareNetHelper a;
+  private Map<MessageRecord, Long> b = new HashMap();
   
   public static GameShareNetHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareNetHelper == null) {
+    if (a == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareNetHelper == null) {
-          jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareNetHelper = new GameShareNetHelper();
+        if (a == null) {
+          a = new GameShareNetHelper();
         }
       }
       finally {}
     }
-    return jdField_a_of_type_ComTencentMobileqqGamecenterShareGameShareNetHelper;
+    return a;
   }
   
   public void a(long paramLong, MessageRecord paramMessageRecord)
@@ -37,7 +37,7 @@ public class GameShareNetHelper
     if (paramMessageRecord == null) {
       return;
     }
-    Object localObject1 = (Long)this.jdField_a_of_type_JavaUtilMap.get(paramMessageRecord);
+    Object localObject1 = (Long)this.b.get(paramMessageRecord);
     long l1;
     if (localObject1 == null) {
       l1 = 0L;
@@ -48,7 +48,7 @@ public class GameShareNetHelper
     if (l2 - Long.valueOf(l1).longValue() <= 30000L) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramMessageRecord, Long.valueOf(l2));
+    this.b.put(paramMessageRecord, Long.valueOf(l2));
     Object localObject2 = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getQQAppInterface();
     if (localObject2 == null) {
       return;
@@ -59,8 +59,8 @@ public class GameShareNetHelper
     localStringBuilder.append("");
     ((GetArkTailReq)localObject1).appid = localStringBuilder.toString();
     ((GetArkTailReq)localObject1).tt = 1;
-    ((GetArkTailReq)localObject1).scene_id = 1;
-    ((GetArkTailReq)localObject1).qq_version = DeviceInfoUtil.c();
+    ((GetArkTailReq)localObject1).sceneId = 1;
+    ((GetArkTailReq)localObject1).qqVersion = DeviceInfoUtil.e();
     localObject2 = new WeakReference(localObject2);
     ((IQWalletApi)QRoute.api(IQWalletApi.class)).servletSendRequest((JceStruct)localObject1, new GameShareNetHelper.2(this, paramMessageRecord, (WeakReference)localObject2));
   }
@@ -73,8 +73,8 @@ public class GameShareNetHelper
     localStringBuilder.append("");
     localGetArkTailReq.appid = localStringBuilder.toString();
     localGetArkTailReq.tt = 1;
-    localGetArkTailReq.scene_id = 3;
-    localGetArkTailReq.qq_version = DeviceInfoUtil.c();
+    localGetArkTailReq.sceneId = 3;
+    localGetArkTailReq.qqVersion = DeviceInfoUtil.e();
     ((IQWalletApi)QRoute.api(IQWalletApi.class)).servletSendRequest(localGetArkTailReq, paramBusinessObserver);
   }
   
@@ -83,14 +83,14 @@ public class GameShareNetHelper
     ReportTypeReq localReportTypeReq = new ReportTypeReq();
     localReportTypeReq.appid = paramString;
     localReportTypeReq.type = paramInt1;
-    localReportTypeReq.sub_type = paramInt2;
+    localReportTypeReq.subType = paramInt2;
     localReportTypeReq.tt = 1;
     ((IQWalletApi)QRoute.api(IQWalletApi.class)).servletSendRequest(localReportTypeReq, new GameShareNetHelper.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.share.GameShareNetHelper
  * JD-Core Version:    0.7.0.1
  */

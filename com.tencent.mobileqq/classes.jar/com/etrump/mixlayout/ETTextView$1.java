@@ -15,8 +15,8 @@ class ETTextView$1
   public void run()
   {
     boolean bool;
-    if (this.this$0.getTag(2131368449) != null) {
-      bool = ((Boolean)this.this$0.getTag(2131368449)).booleanValue();
+    if (this.this$0.getTag(2131435345) != null) {
+      bool = ((Boolean)this.this$0.getTag(2131435345)).booleanValue();
     } else {
       bool = false;
     }
@@ -25,7 +25,7 @@ class ETTextView$1
       if (this.this$0.isUsingHYFont())
       {
         Object localObject = null;
-        CharacterStyle localCharacterStyle = this.this$0.mLayout.a(this.this$0.mEmojiX, this.this$0.mEmojiY);
+        CharacterStyle localCharacterStyle = this.this$0.mLayout.c(this.this$0.mEmojiX, this.this$0.mEmojiY);
         if ((localCharacterStyle instanceof EmoticonSpan)) {
           localObject = (EmoticonSpan)localCharacterStyle;
         }
@@ -45,7 +45,7 @@ class ETTextView$1
       }
       this.this$0.onSingleClick.a(this.this$0);
     }
-    this.this$0.setTag(2131368449, Boolean.valueOf(false));
+    this.this$0.setTag(2131435345, Boolean.valueOf(false));
   }
 }
 

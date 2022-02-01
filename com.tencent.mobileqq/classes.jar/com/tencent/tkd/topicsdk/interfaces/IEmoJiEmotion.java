@@ -10,14 +10,14 @@ public abstract interface IEmoJiEmotion
   public abstract Drawable a(int paramInt);
   
   @NotNull
-  public abstract int[] a();
+  public abstract String[] a();
   
   @NotNull
-  public abstract String[] a();
+  public abstract int[] b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.IEmoJiEmotion
  * JD-Core Version:    0.7.0.1
  */

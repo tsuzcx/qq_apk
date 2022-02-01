@@ -8,10 +8,10 @@ import android.view.ViewTreeObserver;
 public class InputMethodGuard
   extends View
 {
-  private int jdField_a_of_type_Int = 0;
-  private InputMethodGuard.InputMethodChangeListener jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard$InputMethodChangeListener = null;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean a = true;
   private boolean b = false;
+  private int c = 0;
+  private InputMethodGuard.InputMethodChangeListener d = null;
   
   public InputMethodGuard(Context paramContext)
   {
@@ -34,14 +34,19 @@ public class InputMethodGuard
     return this.b;
   }
   
+  public int getInputMethodHeight()
+  {
+    return this.c;
+  }
+  
   public void setOnInputMethodChangeListener(InputMethodGuard.InputMethodChangeListener paramInputMethodChangeListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard$InputMethodChangeListener = paramInputMethodChangeListener;
+    this.d = paramInputMethodChangeListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard
  * JD-Core Version:    0.7.0.1
  */

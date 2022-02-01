@@ -12,7 +12,7 @@ final class LinearIndeterminateDisjointAnimatorDelegate$2
   
   public Float a(LinearIndeterminateDisjointAnimatorDelegate paramLinearIndeterminateDisjointAnimatorDelegate)
   {
-    return Float.valueOf(LinearIndeterminateDisjointAnimatorDelegate.a(paramLinearIndeterminateDisjointAnimatorDelegate));
+    return Float.valueOf(LinearIndeterminateDisjointAnimatorDelegate.e(paramLinearIndeterminateDisjointAnimatorDelegate));
   }
   
   public void a(LinearIndeterminateDisjointAnimatorDelegate paramLinearIndeterminateDisjointAnimatorDelegate, Float paramFloat)
@@ -22,7 +22,7 @@ final class LinearIndeterminateDisjointAnimatorDelegate$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.google.android.material.progressindicator.LinearIndeterminateDisjointAnimatorDelegate.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,37 +12,37 @@ public class VideoLayerUI$ScaleGestureListener
   public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScale");
+      QLog.d(this.a.U, 2, "onScale");
     }
-    if (VideoLayerUI.c(this.a) < 0) {
+    if (VideoLayerUI.e(this.a) < 0) {
       VideoLayerUI.a(this.a, (int)paramScaleGestureDetector.getFocusX());
     }
-    if (VideoLayerUI.d(this.a) < 0) {
+    if (VideoLayerUI.f(this.a) < 0) {
       VideoLayerUI.b(this.a, (int)paramScaleGestureDetector.getFocusY());
     }
     float f = paramScaleGestureDetector.getScaleFactor();
-    this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(f, VideoLayerUI.c(this.a), VideoLayerUI.d(this.a));
+    this.a.ae[0].a(f, VideoLayerUI.e(this.a), VideoLayerUI.f(this.a));
     return true;
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onScaleEnd");
+      QLog.d(this.a.U, 2, "onScaleEnd");
     }
-    float f1 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].c();
-    float f2 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a();
-    float f3 = this.a.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].b();
+    float f1 = this.a.ae[0].G();
+    float f2 = this.a.ae[0].E();
+    float f3 = this.a.ae[0].F();
     if (f1 < f2)
     {
       paramScaleGestureDetector = this.a;
-      VideoLayerUI.a(paramScaleGestureDetector, paramScaleGestureDetector.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0], f2 / f1, 60L);
+      VideoLayerUI.a(paramScaleGestureDetector, paramScaleGestureDetector.ae[0], f2 / f1, 60L);
       return;
     }
     if (f1 > f3)
     {
       paramScaleGestureDetector = this.a;
-      VideoLayerUI.a(paramScaleGestureDetector, paramScaleGestureDetector.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0], f3 / f1, 60L);
+      VideoLayerUI.a(paramScaleGestureDetector, paramScaleGestureDetector.ae[0], f3 / f1, 60L);
     }
   }
 }

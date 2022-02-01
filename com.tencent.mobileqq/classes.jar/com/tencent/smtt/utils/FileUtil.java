@@ -311,37 +311,7 @@ public class FileUtil
   
   public static void a(File paramFile, boolean paramBoolean)
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("delete file,ignore=");
-    ((StringBuilder)localObject).append(paramBoolean);
-    ((StringBuilder)localObject).append(paramFile);
-    ((StringBuilder)localObject).append(Log.getStackTraceString(new Throwable()));
-    TbsLog.i("FileUtils", ((StringBuilder)localObject).toString());
-    if (paramFile != null)
-    {
-      if (!paramFile.exists()) {
-        return;
-      }
-      if (paramFile.isFile())
-      {
-        paramFile.delete();
-        return;
-      }
-      localObject = paramFile.listFiles();
-      if (localObject == null) {
-        return;
-      }
-      int j = localObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        a(localObject[i], paramBoolean);
-        i += 1;
-      }
-      if (!paramBoolean) {
-        paramFile.delete();
-      }
-    }
+    a(paramFile, paramBoolean, false);
   }
   
   public static void a(File paramFile, boolean paramBoolean, String paramString)
@@ -381,6 +351,41 @@ public class FileUtil
       if (!paramBoolean) {
         paramFile.delete();
       }
+    }
+  }
+  
+  public static void a(File paramFile, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("delete file,ignore=");
+    ((StringBuilder)localObject).append(paramBoolean1);
+    ((StringBuilder)localObject).append("isSoftLink=");
+    ((StringBuilder)localObject).append(paramBoolean2);
+    TbsLog.i("FileUtils", ((StringBuilder)localObject).toString());
+    if (paramFile == null) {
+      return;
+    }
+    if ((!paramBoolean2) && (!paramFile.exists())) {
+      return;
+    }
+    if (((paramBoolean2) && (!paramFile.isDirectory())) || (paramFile.isFile()))
+    {
+      paramFile.delete();
+      return;
+    }
+    localObject = paramFile.listFiles();
+    if (localObject == null) {
+      return;
+    }
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      a(localObject[i], paramBoolean1, paramBoolean2);
+      i += 1;
+    }
+    if (!paramBoolean1) {
+      paramFile.delete();
     }
   }
   
@@ -494,7 +499,7 @@ public class FileUtil
     //   5: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 280	java/io/File:length	()J
+    //   10: invokevirtual 285	java/io/File:length	()J
     //   13: lload_1
     //   14: lcmp
     //   15: ifeq +59 -> 74
@@ -503,21 +508,21 @@ public class FileUtil
     //   22: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   25: astore 8
     //   27: aload 8
-    //   29: ldc_w 282
+    //   29: ldc_w 287
     //   32: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload 8
     //   38: aload_0
-    //   39: invokevirtual 280	java/io/File:length	()J
-    //   42: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 285	java/io/File:length	()J
+    //   42: invokevirtual 290	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload 8
-    //   48: ldc_w 287
+    //   48: ldc_w 292
     //   51: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: pop
     //   55: aload 8
     //   57: lload_1
-    //   58: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 290	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: ldc 72
     //   64: aload 8
@@ -525,21 +530,21 @@ public class FileUtil
     //   69: invokestatic 78	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   72: iconst_1
     //   73: ireturn
-    //   74: new 289	java/io/FileInputStream
+    //   74: new 294	java/io/FileInputStream
     //   77: dup
     //   78: aload_0
-    //   79: invokespecial 291	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   79: invokespecial 296	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   82: astore 8
-    //   84: new 293	java/util/zip/CRC32
+    //   84: new 298	java/util/zip/CRC32
     //   87: dup
-    //   88: invokespecial 294	java/util/zip/CRC32:<init>	()V
+    //   88: invokespecial 299	java/util/zip/CRC32:<init>	()V
     //   91: astore 9
     //   93: sipush 8192
     //   96: newarray byte
     //   98: astore 10
     //   100: aload 8
     //   102: aload 10
-    //   104: invokevirtual 295	java/io/FileInputStream:read	([B)I
+    //   104: invokevirtual 300	java/io/FileInputStream:read	([B)I
     //   107: istore 7
     //   109: iload 7
     //   111: ifle +16 -> 127
@@ -547,10 +552,10 @@ public class FileUtil
     //   116: aload 10
     //   118: iconst_0
     //   119: iload 7
-    //   121: invokevirtual 298	java/util/zip/CRC32:update	([BII)V
+    //   121: invokevirtual 303	java/util/zip/CRC32:update	([BII)V
     //   124: goto -24 -> 100
     //   127: aload 9
-    //   129: invokevirtual 301	java/util/zip/CRC32:getValue	()J
+    //   129: invokevirtual 306	java/util/zip/CRC32:getValue	()J
     //   132: lstore_1
     //   133: new 83	java/lang/StringBuilder
     //   136: dup
@@ -562,24 +567,24 @@ public class FileUtil
     //   149: pop
     //   150: aload 9
     //   152: aload_0
-    //   153: invokevirtual 227	java/io/File:getName	()Ljava/lang/String;
+    //   153: invokevirtual 228	java/io/File:getName	()Ljava/lang/String;
     //   156: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: pop
     //   160: aload 9
-    //   162: ldc_w 303
+    //   162: ldc_w 308
     //   165: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   168: pop
     //   169: aload 9
     //   171: lload_1
-    //   172: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   172: invokevirtual 290	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   175: pop
     //   176: aload 9
-    //   178: ldc_w 305
+    //   178: ldc_w 310
     //   181: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   184: pop
     //   185: aload 9
     //   187: lload 5
-    //   189: invokevirtual 285	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   189: invokevirtual 290	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   192: pop
     //   193: ldc 72
     //   195: aload 9
@@ -590,11 +595,11 @@ public class FileUtil
     //   206: lcmp
     //   207: ifeq +10 -> 217
     //   210: aload 8
-    //   212: invokevirtual 306	java/io/FileInputStream:close	()V
+    //   212: invokevirtual 311	java/io/FileInputStream:close	()V
     //   215: iconst_1
     //   216: ireturn
     //   217: aload 8
-    //   219: invokevirtual 306	java/io/FileInputStream:close	()V
+    //   219: invokevirtual 311	java/io/FileInputStream:close	()V
     //   222: iconst_0
     //   223: ireturn
     //   224: astore_0
@@ -605,7 +610,7 @@ public class FileUtil
     //   232: aload 8
     //   234: ifnull +8 -> 242
     //   237: aload 8
-    //   239: invokevirtual 306	java/io/FileInputStream:close	()V
+    //   239: invokevirtual 311	java/io/FileInputStream:close	()V
     //   242: goto +5 -> 247
     //   245: aload_0
     //   246: athrow
@@ -646,73 +651,73 @@ public class FileUtil
   private static boolean a(String paramString1, String paramString2, String paramString3, String paramString4, FileUtil.b paramb)
   {
     // Byte code:
-    //   0: new 332	java/util/zip/ZipFile
+    //   0: new 337	java/util/zip/ZipFile
     //   3: dup
     //   4: aload_0
-    //   5: invokespecial 333	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 338	java/util/zip/ZipFile:<init>	(Ljava/lang/String;)V
     //   8: astore_0
     //   9: aload_0
-    //   10: invokevirtual 337	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   10: invokevirtual 342	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
     //   13: astore 10
     //   15: iconst_0
     //   16: istore 6
     //   18: iconst_0
     //   19: istore 5
     //   21: aload 10
-    //   23: invokeinterface 342 1 0
+    //   23: invokeinterface 347 1 0
     //   28: ifeq +347 -> 375
     //   31: aload 10
-    //   33: invokeinterface 346 1 0
-    //   38: checkcast 348	java/util/zip/ZipEntry
+    //   33: invokeinterface 351 1 0
+    //   38: checkcast 353	java/util/zip/ZipEntry
     //   41: astore 11
     //   43: aload 11
-    //   45: invokevirtual 349	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   45: invokevirtual 354	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
     //   48: astore 13
     //   50: aload 13
     //   52: ifnonnull +6 -> 58
     //   55: goto -34 -> 21
     //   58: aload 13
-    //   60: ldc_w 351
-    //   63: invokevirtual 355	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   60: ldc_w 356
+    //   63: invokevirtual 360	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   66: ifeq +6 -> 72
     //   69: goto -48 -> 21
     //   72: aload 13
-    //   74: ldc_w 357
-    //   77: invokevirtual 361	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   74: ldc_w 362
+    //   77: invokevirtual 366	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   80: ifne +17 -> 97
     //   83: aload 13
-    //   85: ldc_w 363
-    //   88: invokevirtual 361	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   85: ldc_w 368
+    //   88: invokevirtual 366	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   91: ifne +6 -> 97
     //   94: goto -73 -> 21
     //   97: aload 13
     //   99: aload 13
     //   101: bipush 47
-    //   103: invokevirtual 367	java/lang/String:lastIndexOf	(I)I
-    //   106: invokevirtual 371	java/lang/String:substring	(I)Ljava/lang/String;
+    //   103: invokevirtual 372	java/lang/String:lastIndexOf	(I)I
+    //   106: invokevirtual 376	java/lang/String:substring	(I)Ljava/lang/String;
     //   109: astore 12
     //   111: iload 6
     //   113: istore 7
     //   115: iload 5
     //   117: istore 8
     //   119: aload 12
-    //   121: ldc_w 373
-    //   124: invokevirtual 376	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   121: ldc_w 378
+    //   124: invokevirtual 381	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   127: ifeq +158 -> 285
     //   130: aload 13
-    //   132: getstatic 378	com/tencent/smtt/utils/FileUtil:c	I
+    //   132: getstatic 383	com/tencent/smtt/utils/FileUtil:c	I
     //   135: aload_1
     //   136: iconst_0
     //   137: aload_1
-    //   138: invokevirtual 381	java/lang/String:length	()I
-    //   141: invokevirtual 385	java/lang/String:regionMatches	(ILjava/lang/String;II)Z
+    //   138: invokevirtual 386	java/lang/String:length	()I
+    //   141: invokevirtual 390	java/lang/String:regionMatches	(ILjava/lang/String;II)Z
     //   144: ifeq +31 -> 175
     //   147: aload 13
-    //   149: getstatic 378	com/tencent/smtt/utils/FileUtil:c	I
+    //   149: getstatic 383	com/tencent/smtt/utils/FileUtil:c	I
     //   152: aload_1
-    //   153: invokevirtual 381	java/lang/String:length	()I
+    //   153: invokevirtual 386	java/lang/String:length	()I
     //   156: iadd
-    //   157: invokevirtual 389	java/lang/String:charAt	(I)C
+    //   157: invokevirtual 394	java/lang/String:charAt	(I)C
     //   160: bipush 47
     //   162: if_icmpne +13 -> 175
     //   165: iconst_1
@@ -723,19 +728,19 @@ public class FileUtil
     //   175: aload_2
     //   176: ifnull +49 -> 225
     //   179: aload 13
-    //   181: getstatic 378	com/tencent/smtt/utils/FileUtil:c	I
+    //   181: getstatic 383	com/tencent/smtt/utils/FileUtil:c	I
     //   184: aload_2
     //   185: iconst_0
     //   186: aload_2
-    //   187: invokevirtual 381	java/lang/String:length	()I
-    //   190: invokevirtual 385	java/lang/String:regionMatches	(ILjava/lang/String;II)Z
+    //   187: invokevirtual 386	java/lang/String:length	()I
+    //   190: invokevirtual 390	java/lang/String:regionMatches	(ILjava/lang/String;II)Z
     //   193: ifeq +32 -> 225
     //   196: aload 13
-    //   198: getstatic 378	com/tencent/smtt/utils/FileUtil:c	I
+    //   198: getstatic 383	com/tencent/smtt/utils/FileUtil:c	I
     //   201: aload_2
-    //   202: invokevirtual 381	java/lang/String:length	()I
+    //   202: invokevirtual 386	java/lang/String:length	()I
     //   205: iadd
-    //   206: invokevirtual 389	java/lang/String:charAt	(I)C
+    //   206: invokevirtual 394	java/lang/String:charAt	(I)C
     //   209: bipush 47
     //   211: if_icmpne +14 -> 225
     //   214: iload 6
@@ -746,19 +751,19 @@ public class FileUtil
     //   225: aload_3
     //   226: ifnull -205 -> 21
     //   229: aload 13
-    //   231: getstatic 378	com/tencent/smtt/utils/FileUtil:c	I
+    //   231: getstatic 383	com/tencent/smtt/utils/FileUtil:c	I
     //   234: aload_3
     //   235: iconst_0
     //   236: aload_3
-    //   237: invokevirtual 381	java/lang/String:length	()I
-    //   240: invokevirtual 385	java/lang/String:regionMatches	(ILjava/lang/String;II)Z
+    //   237: invokevirtual 386	java/lang/String:length	()I
+    //   240: invokevirtual 390	java/lang/String:regionMatches	(ILjava/lang/String;II)Z
     //   243: ifeq -222 -> 21
     //   246: aload 13
-    //   248: getstatic 378	com/tencent/smtt/utils/FileUtil:c	I
+    //   248: getstatic 383	com/tencent/smtt/utils/FileUtil:c	I
     //   251: aload_3
-    //   252: invokevirtual 381	java/lang/String:length	()I
+    //   252: invokevirtual 386	java/lang/String:length	()I
     //   255: iadd
-    //   256: invokevirtual 389	java/lang/String:charAt	(I)C
+    //   256: invokevirtual 394	java/lang/String:charAt	(I)C
     //   259: bipush 47
     //   261: if_icmpne -240 -> 21
     //   264: iload 6
@@ -772,24 +777,24 @@ public class FileUtil
     //   282: goto -261 -> 21
     //   285: aload_0
     //   286: aload 11
-    //   288: invokevirtual 393	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   288: invokevirtual 398	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   291: astore 13
     //   293: aload 4
     //   295: aload 13
     //   297: aload 11
     //   299: aload 12
     //   301: iconst_1
-    //   302: invokevirtual 371	java/lang/String:substring	(I)Ljava/lang/String;
-    //   305: invokeinterface 398 4 0
+    //   302: invokevirtual 376	java/lang/String:substring	(I)Ljava/lang/String;
+    //   305: invokeinterface 403 4 0
     //   310: istore 9
     //   312: iload 9
     //   314: ifne +19 -> 333
     //   317: aload 13
     //   319: ifnull +8 -> 327
     //   322: aload 13
-    //   324: invokevirtual 399	java/io/InputStream:close	()V
+    //   324: invokevirtual 404	java/io/InputStream:close	()V
     //   327: aload_0
-    //   328: invokevirtual 400	java/util/zip/ZipFile:close	()V
+    //   328: invokevirtual 405	java/util/zip/ZipFile:close	()V
     //   331: iconst_0
     //   332: ireturn
     //   333: iload 7
@@ -799,7 +804,7 @@ public class FileUtil
     //   341: aload 13
     //   343: ifnull -322 -> 21
     //   346: aload 13
-    //   348: invokevirtual 399	java/io/InputStream:close	()V
+    //   348: invokevirtual 404	java/io/InputStream:close	()V
     //   351: iload 7
     //   353: istore 6
     //   355: iload 8
@@ -809,11 +814,11 @@ public class FileUtil
     //   363: aload 13
     //   365: ifnull +8 -> 373
     //   368: aload 13
-    //   370: invokevirtual 399	java/io/InputStream:close	()V
+    //   370: invokevirtual 404	java/io/InputStream:close	()V
     //   373: aload_1
     //   374: athrow
     //   375: aload_0
-    //   376: invokevirtual 400	java/util/zip/ZipFile:close	()V
+    //   376: invokevirtual 405	java/util/zip/ZipFile:close	()V
     //   379: iconst_1
     //   380: ireturn
     //   381: astore_1
@@ -824,7 +829,7 @@ public class FileUtil
     //   388: aload_0
     //   389: ifnull +7 -> 396
     //   392: aload_0
-    //   393: invokevirtual 400	java/util/zip/ZipFile:close	()V
+    //   393: invokevirtual 405	java/util/zip/ZipFile:close	()V
     //   396: goto +5 -> 401
     //   399: aload_1
     //   400: athrow
@@ -940,7 +945,7 @@ public class FileUtil
   
   public static boolean b(Context paramContext)
   {
-    long l = p.a();
+    long l = q.a();
     boolean bool;
     if (l >= TbsDownloadConfig.getInstance(paramContext).getDownloadMinFreeSpace()) {
       bool = true;
@@ -1060,7 +1065,7 @@ public class FileUtil
     //   3: dup
     //   4: aload_2
     //   5: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokestatic 466	com/tencent/smtt/utils/FileUtil:a	(Ljava/io/File;)Z
+    //   8: invokestatic 471	com/tencent/smtt/utils/FileUtil:a	(Ljava/io/File;)Z
     //   11: pop
     //   12: new 83	java/lang/StringBuilder
     //   15: dup
@@ -1093,7 +1098,7 @@ public class FileUtil
     //   67: new 161	java/io/FileOutputStream
     //   70: dup
     //   71: aload 6
-    //   73: invokespecial 411	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   73: invokespecial 416	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   76: astore_3
     //   77: sipush 8192
     //   80: newarray byte
@@ -1108,25 +1113,25 @@ public class FileUtil
     //   96: aload_2
     //   97: iconst_0
     //   98: iload 4
-    //   100: invokevirtual 467	java/io/FileOutputStream:write	([BII)V
+    //   100: invokevirtual 472	java/io/FileOutputStream:write	([BII)V
     //   103: goto -20 -> 83
     //   106: aload_3
-    //   107: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   107: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   110: aload 7
     //   112: aload_1
-    //   113: invokevirtual 470	java/util/zip/ZipEntry:getSize	()J
+    //   113: invokevirtual 475	java/util/zip/ZipEntry:getSize	()J
     //   116: aload_1
-    //   117: invokevirtual 473	java/util/zip/ZipEntry:getTime	()J
+    //   117: invokevirtual 478	java/util/zip/ZipEntry:getTime	()J
     //   120: aload_1
-    //   121: invokevirtual 476	java/util/zip/ZipEntry:getCrc	()J
-    //   124: invokestatic 478	com/tencent/smtt/utils/FileUtil:a	(Ljava/lang/String;JJJ)Z
+    //   121: invokevirtual 481	java/util/zip/ZipEntry:getCrc	()J
+    //   124: invokestatic 483	com/tencent/smtt/utils/FileUtil:a	(Ljava/lang/String;JJJ)Z
     //   127: ifeq +37 -> 164
     //   130: new 83	java/lang/StringBuilder
     //   133: dup
     //   134: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   137: astore_0
     //   138: aload_0
-    //   139: ldc_w 480
+    //   139: ldc_w 485
     //   142: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   145: pop
     //   146: aload_0
@@ -1141,15 +1146,15 @@ public class FileUtil
     //   163: ireturn
     //   164: aload 6
     //   166: aload_1
-    //   167: invokevirtual 473	java/util/zip/ZipEntry:getTime	()J
-    //   170: invokevirtual 484	java/io/File:setLastModified	(J)Z
+    //   167: invokevirtual 478	java/util/zip/ZipEntry:getTime	()J
+    //   170: invokevirtual 489	java/io/File:setLastModified	(J)Z
     //   173: ifne +35 -> 208
     //   176: new 83	java/lang/StringBuilder
     //   179: dup
     //   180: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   183: astore_0
     //   184: aload_0
-    //   185: ldc_w 486
+    //   185: ldc_w 491
     //   188: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: pop
     //   192: aload_0
@@ -1178,7 +1183,7 @@ public class FileUtil
     //   230: aload_0
     //   231: astore_2
     //   232: aload 6
-    //   234: invokestatic 254	com/tencent/smtt/utils/FileUtil:b	(Ljava/io/File;)V
+    //   234: invokestatic 259	com/tencent/smtt/utils/FileUtil:b	(Ljava/io/File;)V
     //   237: aload_0
     //   238: astore_2
     //   239: new 83	java/lang/StringBuilder
@@ -1188,7 +1193,7 @@ public class FileUtil
     //   247: aload_0
     //   248: astore_2
     //   249: aload_3
-    //   250: ldc_w 488
+    //   250: ldc_w 493
     //   253: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   256: pop
     //   257: aload_0
@@ -1204,12 +1209,12 @@ public class FileUtil
     //   272: aload_3
     //   273: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   276: aload_1
-    //   277: invokespecial 491	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   277: invokespecial 496	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   280: athrow
     //   281: aload_2
     //   282: ifnull +7 -> 289
     //   285: aload_2
-    //   286: invokevirtual 231	java/io/FileOutputStream:close	()V
+    //   286: invokevirtual 239	java/io/FileOutputStream:close	()V
     //   289: goto +5 -> 294
     //   292: aload_0
     //   293: athrow
@@ -1318,85 +1323,43 @@ public class FileUtil
   public static FileLock e(Context paramContext)
   {
     TbsLog.i("FileHelper", "getTbsCoreLoadFileLock #1");
+    Object localObject1 = a(paramContext, "tbs_rename_lock");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getTbsCoreLoadFileLock #4 ");
+    ((StringBuilder)localObject2).append(localObject1);
+    TbsLog.i("FileHelper", ((StringBuilder)localObject2).toString());
+    StringBuilder localStringBuilder;
     try
     {
-      bool = TbsDownloadConfig.getInstance().getTbsCoreLoadRenameFileLockEnable();
+      d = new RandomAccessFile(((File)localObject1).getAbsolutePath(), "r");
+      localObject1 = d.getChannel().tryLock(0L, 9223372036854775807L, true);
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable localThrowable)
     {
-      boolean bool;
-      label18:
-      Object localObject1;
-      Object localObject2;
-      StringBuilder localStringBuilder;
-      Object localObject3;
-      break label18;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getTbsCoreLoadFileLock -- exception: ");
+      ((StringBuilder)localObject2).append(localThrowable);
+      TbsLog.e("FileHelper", ((StringBuilder)localObject2).toString());
+      localStringBuilder = null;
     }
-    bool = true;
-    localObject1 = null;
-    localObject2 = null;
-    if (!bool)
-    {
-      localObject1 = b(paramContext, true, "tbs_rename_lock");
-      if (localObject1 == null)
-      {
-        paramContext = "init -- failed to get rename fileLock#1!";
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        TbsLog.i("FileHelper", paramContext);
-        break;
-        localObject1 = a(paramContext, (FileOutputStream)localObject1);
-        if (localObject1 == null) {
-          paramContext = "init -- failed to get rename fileLock#2!";
-        } else {
-          paramContext = "init -- get rename fileLock success!";
-        }
-      }
-      paramContext = new StringBuilder();
-      paramContext.append("getTbsCoreLoadFileLock #2 renameFileLock is ");
-      paramContext.append(localObject1);
-      TbsLog.i("FileHelper", paramContext.toString());
-      return localObject1;
+    localObject2 = localStringBuilder;
+    if (localStringBuilder == null) {
+      localObject2 = g(paramContext);
     }
-    TbsLog.i("FileHelper", "getTbsCoreLoadFileLock #3");
-    localObject2 = a(paramContext, "tbs_rename_lock");
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("getTbsCoreLoadFileLock #4 ");
-    localStringBuilder.append(localObject2);
-    TbsLog.i("FileHelper", localStringBuilder.toString());
-    try
-    {
-      d = new RandomAccessFile(((File)localObject2).getAbsolutePath(), "r");
-      localObject2 = d.getChannel().tryLock(0L, 9223372036854775807L, true);
-      localObject1 = localObject2;
-    }
-    catch (Throwable localThrowable2)
+    if (localObject2 == null)
     {
       localStringBuilder = new StringBuilder();
-      localStringBuilder.append("getTbsCoreLoadFileLock -- exception: ");
-      localStringBuilder.append(localThrowable2);
-      TbsLog.e("FileHelper", localStringBuilder.toString());
-    }
-    localObject3 = localObject1;
-    if (localObject1 == null) {
-      localObject3 = g(paramContext);
-    }
-    if (localObject3 == null)
-    {
-      localObject1 = new StringBuilder();
       paramContext = "getTbsCoreLoadFileLock -- failed: ";
     }
     else
     {
-      localObject1 = new StringBuilder();
+      localStringBuilder = new StringBuilder();
       paramContext = "getTbsCoreLoadFileLock -- success: ";
     }
-    ((StringBuilder)localObject1).append(paramContext);
-    ((StringBuilder)localObject1).append("tbs_rename_lock");
-    TbsLog.i("FileHelper", ((StringBuilder)localObject1).toString());
-    return localObject3;
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("tbs_rename_lock");
+    TbsLog.i("FileHelper", localStringBuilder.toString());
+    return localObject2;
   }
   
   public static FileLock f(Context paramContext)
@@ -1519,7 +1482,7 @@ public class FileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.smtt.utils.FileUtil
  * JD-Core Version:    0.7.0.1
  */

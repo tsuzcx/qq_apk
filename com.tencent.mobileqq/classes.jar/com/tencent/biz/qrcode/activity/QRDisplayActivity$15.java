@@ -12,12 +12,12 @@ class QRDisplayActivity$15
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("temp_qrcode_share_");
-    ((StringBuilder)localObject).append(this.this$0.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(this.this$0.n);
     ((StringBuilder)localObject).append(".png");
     localObject = ((StringBuilder)localObject).toString();
     try
     {
-      localObject = QRUtils.a(this.this$0.getApplicationContext(), (String)localObject, this.this$0.b);
+      localObject = QRUtils.a(this.this$0.getApplicationContext(), (String)localObject, this.this$0.k);
       this.this$0.runOnUiThread(new QRDisplayActivity.15.2(this, (String)localObject));
       return;
     }
@@ -26,8 +26,8 @@ class QRDisplayActivity$15
       label75:
       break label75;
     }
-    if (this.this$0.jdField_c_of_type_Int == 2) {
-      TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.this$0.a), "1" });
+    if (this.this$0.t == 2) {
+      TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.this$0.n, String.valueOf(this.this$0.q), "1" });
     }
     this.this$0.runOnUiThread(new QRDisplayActivity.15.1(this));
   }

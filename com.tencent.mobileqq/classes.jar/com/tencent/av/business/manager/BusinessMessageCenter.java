@@ -19,23 +19,23 @@ import java.util.Observable;
 
 public class BusinessMessageCenter
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private BusinessMessageCenter.MyDataObserver jdField_a_of_type_ComTencentAvBusinessManagerBusinessMessageCenter$MyDataObserver;
+  private BusinessMessageCenter.MyDataObserver a;
+  private VideoAppInterface b;
   
   public BusinessMessageCenter(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvBusinessManagerBusinessMessageCenter$MyDataObserver = new BusinessMessageCenter.MyDataObserver(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvBusinessManagerBusinessMessageCenter$MyDataObserver);
+    this.b = paramVideoAppInterface;
+    this.a = new BusinessMessageCenter.MyDataObserver(this);
+    this.b.a(this.a);
   }
   
   private void a(String paramString, boolean paramBoolean)
   {
     int i = 0;
-    while (i < 18)
+    while (i < 19)
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i).a(paramString, paramBoolean);
+      if (this.b.d(i)) {
+        this.b.c(i).a(paramString, paramBoolean);
       }
       i += 1;
     }
@@ -67,8 +67,8 @@ public class BusinessMessageCenter
           paramObservable = (String)localObject[1];
           bool = ((Boolean)localObject[2]).booleanValue();
           l1 = SeqUtil.a((Object[])localObject, 3);
-          paramObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().c;
-          long l2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().f;
+          paramObject = this.b.b().k().s;
+          long l2 = this.b.b().k().aN;
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("onSessionStatusChanged[END], eventPeerUin[");
           ((StringBuilder)localObject).append(paramObservable);
@@ -107,8 +107,8 @@ public class BusinessMessageCenter
   
   public int a(int paramInt, String paramString)
   {
-    if (((paramInt == 3) || (paramInt == 1)) && (!((EffectSupportManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(3, paramInt, paramString))) {
-      ((EffectFaceManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(3)).a(paramInt, paramString);
+    if (((paramInt == 3) || (paramInt == 1)) && (!((EffectSupportManager)this.b.c(5)).a(3, paramInt, paramString))) {
+      ((EffectFaceManager)this.b.c(3)).a(paramInt, paramString);
     }
     return 0;
   }
@@ -142,17 +142,17 @@ public class BusinessMessageCenter
         str = null;
       }
       if (localObject3.length > 3) {
-        l1 = AudioHelper.a(localObject3[3]);
+        l1 = AudioHelper.c(localObject3[3]);
       }
-      long l2 = AudioHelper.a();
-      long l3 = AudioHelper.b();
+      long l2 = AudioHelper.b();
+      long l3 = AudioHelper.c();
       int i;
       if (localEffectZimuManager.startsWith("EMPTY_ITEM"))
       {
         if (ZimuToolbar.isSupport())
         {
-          localEffectZimuManager = (EffectZimuManager)((BusinessMessageCenter)localObject2).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-          localObject2 = (ZimuItem)localEffectZimuManager.a();
+          localEffectZimuManager = (EffectZimuManager)((BusinessMessageCenter)localObject2).b.c(0);
+          localObject2 = (ZimuItem)localEffectZimuManager.c();
           if ((localObject2 != null) && (!TextUtils.isEmpty(((ZimuItem)localObject2).getId())))
           {
             localObject3 = new StringBuilder();
@@ -169,15 +169,15 @@ public class BusinessMessageCenter
             ((StringBuilder)localObject3).append("], offset[");
             ((StringBuilder)localObject3).append(l2 - l1);
             ((StringBuilder)localObject3).append("], isTranslation[");
-            ((StringBuilder)localObject3).append(localEffectZimuManager.d());
+            ((StringBuilder)localObject3).append(localEffectZimuManager.l());
             ((StringBuilder)localObject3).append("], cur[");
             ((StringBuilder)localObject3).append(((ZimuItem)localObject2).getId());
             ((StringBuilder)localObject3).append("]");
             QLog.w("BusinessMessageCenter", 1, ((StringBuilder)localObject3).toString());
             paramString = this;
-            localObject1 = (EffectZimuManager)paramString.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
+            localObject1 = (EffectZimuManager)paramString.b.c(0);
             ((EffectZimuManager)localObject1).a("onReceivedChangingZimuOfPeer", l3);
-            new ControlUIObserver.ZimuRequest(l3, "onReceivedChangingZimuOfPeer", 3, "0").a(paramString.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+            new ControlUIObserver.ZimuRequest(l3, "onReceivedChangingZimuOfPeer", 3, "0").a(paramString.b);
             ((EffectZimuManager)localObject1).a(l3, null);
             paramString.a(Integer.valueOf(6010), Integer.valueOf(1));
             i = 1;
@@ -186,15 +186,15 @@ public class BusinessMessageCenter
           {
             i = 0;
           }
-          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(0);
+          this.b.e(0);
           return i;
         }
       }
       else if (ZimuToolbar.isSupport())
       {
-        localObject3 = (EffectZimuManager)((BusinessMessageCenter)localObject2).jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0);
-        ZimuItem localZimuItem = (ZimuItem)((EffectZimuManager)localObject3).a(localEffectZimuManager);
-        localObject2 = (ZimuItem)((EffectZimuManager)localObject3).a();
+        localObject3 = (EffectZimuManager)((BusinessMessageCenter)localObject2).b.c(0);
+        ZimuItem localZimuItem = (ZimuItem)((EffectZimuManager)localObject3).b(localEffectZimuManager);
+        localObject2 = (ZimuItem)((EffectZimuManager)localObject3).c();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("onReceivedChangingZimuOfPeer, 对方选择字幕, info[");
         localStringBuilder.append(paramString);
@@ -211,7 +211,7 @@ public class BusinessMessageCenter
         localStringBuilder.append("], offset[");
         localStringBuilder.append(l2 - l1);
         localStringBuilder.append("], isTranslation[");
-        localStringBuilder.append(((EffectZimuManager)localObject3).d());
+        localStringBuilder.append(((EffectZimuManager)localObject3).l());
         localStringBuilder.append("], ZimuItem[");
         localStringBuilder.append(localZimuItem);
         localStringBuilder.append("], CurItem[");
@@ -231,18 +231,18 @@ public class BusinessMessageCenter
             ((EffectZimuManager)localObject3).a("onReceivedChangingZimuOfPeer", false, l3, (String)localObject1);
             ((EffectZimuManager)localObject3).a(l3, localEffectZimuManager);
             if (!localZimuItem.isUsable()) {
-              ((EffectZimuManager)localObject3).a(l3, localZimuItem);
+              ((EffectZimuManager)localObject3).b(l3, localZimuItem);
             }
             i = 2;
             localObject1 = new ControlUIObserver.ZimuRequest(l3, "onReceivedChangingZimuOfPeer", 1, localEffectZimuManager);
             paramString = this;
-            ((ControlUIObserver.ZimuRequest)localObject1).a(paramString.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+            ((ControlUIObserver.ZimuRequest)localObject1).a(paramString.b);
             if (localObject2 == null) {
               i = 3;
             }
             paramString.a(Integer.valueOf(6010), Integer.valueOf(i));
             j = i;
-            if (ZimuToolbar.isShow(paramString.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
+            if (EffectZimuManager.a(paramString.b)) {
               break label808;
             }
             paramString.a(Integer.valueOf(6012), Integer.valueOf(i));
@@ -252,7 +252,7 @@ public class BusinessMessageCenter
         }
         int j = 0;
         label808:
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(0);
+        this.b.e(0);
         return j;
       }
     }
@@ -262,14 +262,14 @@ public class BusinessMessageCenter
   public void a(long paramLong, int paramInt, String paramString)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().f());
+    ((StringBuilder)localObject).append(this.b.b().as());
     ((StringBuilder)localObject).append("");
     localObject = ((StringBuilder)localObject).toString();
     int i = 0;
-    while (i < 18)
+    while (i < 19)
     {
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(i).a(paramLong, paramInt, (String)localObject, paramString);
+      if (this.b.d(i)) {
+        this.b.c(i).a(paramLong, paramInt, (String)localObject, paramString);
       }
       i += 1;
     }
@@ -283,7 +283,7 @@ public class BusinessMessageCenter
     localStringBuilder.append("|");
     localStringBuilder.append(paramObject);
     AVLog.printColorLog("BusinessMessageCenter", localStringBuilder.toString());
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { paramInteger, paramObject });
+    this.b.a(new Object[] { paramInteger, paramObject });
   }
   
   public int b(int paramInt, String paramString)
@@ -293,19 +293,19 @@ public class BusinessMessageCenter
       if (paramInt != 13) {
         return 0;
       }
-      if (!((EffectSupportManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(0, paramInt, paramString))
+      if (!((EffectSupportManager)this.b.c(5)).a(0, paramInt, paramString))
       {
         String str = paramString;
         if (paramString.equals("。")) {
           str = "。 ";
         }
-        paramString = new SentenceInfo(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().c, str, str, 2);
-        paramString.a = true;
+        paramString = new SentenceInfo(this.b.b().k().s, str, str, 2);
+        paramString.e = true;
         a(Integer.valueOf(6008), paramString);
         return 0;
       }
     }
-    else if (!((EffectSupportManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(0, paramInt, paramString))
+    else if (!((EffectSupportManager)this.b.c(5)).a(0, paramInt, paramString))
     {
       a(paramString);
     }

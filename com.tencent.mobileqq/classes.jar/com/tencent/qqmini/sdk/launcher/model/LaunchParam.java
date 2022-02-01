@@ -4,11 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LaunchParam
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParam> CREATOR = new LaunchParam.1();
+  public static final int FLAG_NEED_KILL = 2;
+  public static final int FLAG_NEED_NEW_PROCESS = 1;
+  public static final int FLAG_NONE = 0;
   public static final int LAUNCH_SCENE_1017 = 1017;
   public static final int LAUNCH_SCENE_1025 = 1025;
   public static final int LAUNCH_SCENE_1034 = 1034;
@@ -44,6 +49,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_BAR = 3006;
   public static final int LAUNCH_SCENE_DESKTOP_SHORTCUT = 1023;
   public static final int LAUNCH_SCENE_DESKTOP_TOP_BANNER = 3011;
+  public static final int LAUNCH_SCENE_FILE_MATERIAL = 1173;
   public static final int LAUNCH_SCENE_FILE_TENCENT_DOC = 2012;
   public static final int LAUNCH_SCENE_FILE_WEIYUN = 2011;
   public static final int LAUNCH_SCENE_FLOAT_DRAG_AD = 2115;
@@ -104,6 +110,8 @@ public class LaunchParam
   public String extendData;
   public String extraKey;
   public String fakeUrl;
+  public List<FileMaterialInfo> fileMaterialInfoList;
+  public int forceReload = 0;
   public int fromBackToMiniApp;
   public String fromEnvVersion;
   public String fromMiniAppId;
@@ -117,6 +125,7 @@ public class LaunchParam
   public String reportData;
   public int scene = 1001;
   public String shareTicket;
+  public boolean skipHotReload = false;
   public int tempState = 0;
   public long timestamp;
   
@@ -194,6 +203,9 @@ public class LaunchParam
     this.fromEnvVersion = paramLaunchParam.fromEnvVersion;
     this.fromMiniAppInfo = paramLaunchParam.fromMiniAppInfo;
     this.privateExtraData = paramLaunchParam.privateExtraData;
+    this.fileMaterialInfoList = paramLaunchParam.fileMaterialInfoList;
+    this.forceReload = paramLaunchParam.forceReload;
+    this.skipHotReload = paramLaunchParam.skipHotReload;
   }
   
   public void createFrom(Parcel paramParcel)
@@ -221,14 +233,23 @@ public class LaunchParam
       bool1 = false;
     }
     this.isFakeAppInfo = bool1;
-    boolean bool1 = bool2;
     if (paramParcel.readInt() == 1) {
       bool1 = true;
+    } else {
+      bool1 = false;
     }
     this.isFlutterMode = bool1;
     this.fromEnvVersion = paramParcel.readString();
     this.fromMiniAppInfo = ((MiniAppInfo)paramParcel.readParcelable(MiniAppInfo.class.getClassLoader()));
     this.privateExtraData = paramParcel.readString();
+    this.fileMaterialInfoList = new ArrayList();
+    paramParcel.readList(this.fileMaterialInfoList, MiniAppInfo.class.getClassLoader());
+    this.forceReload = paramParcel.readInt();
+    boolean bool1 = bool2;
+    if (paramParcel.readInt() != 0) {
+      bool1 = true;
+    }
+    this.skipHotReload = bool1;
   }
   
   public int describeContents()
@@ -360,7 +381,7 @@ public class LaunchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

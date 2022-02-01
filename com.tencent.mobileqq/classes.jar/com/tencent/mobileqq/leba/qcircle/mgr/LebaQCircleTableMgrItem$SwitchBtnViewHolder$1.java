@@ -14,8 +14,6 @@ import java.util.HashMap;
 class LebaQCircleTableMgrItem$SwitchBtnViewHolder$1
   implements CompoundButton.OnCheckedChangeListener
 {
-  LebaQCircleTableMgrItem$SwitchBtnViewHolder$1(LebaQCircleTableMgrItem.SwitchBtnViewHolder paramSwitchBtnViewHolder) {}
-  
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     String str = "1";
@@ -25,7 +23,7 @@ class LebaQCircleTableMgrItem$SwitchBtnViewHolder$1
       localObject = "0";
     }
     HashMap localHashMap = new HashMap();
-    if ((!StudyModeManager.a()) && (paramBoolean)) {
+    if ((!StudyModeManager.h()) && (paramBoolean)) {
       str = "";
     } else if (!paramBoolean) {
       str = "0";
@@ -46,7 +44,7 @@ class LebaQCircleTableMgrItem$SwitchBtnViewHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.leba.qcircle.mgr.LebaQCircleTableMgrItem.SwitchBtnViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

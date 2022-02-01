@@ -36,29 +36,6 @@ public class PhoneStatusTools
     f = localBoolean;
   }
   
-  public static int a(Context paramContext)
-  {
-    int i = NetworkUtil.getSystemNetwork(paramContext);
-    if (i == 1) {
-      return 0;
-    }
-    if (i == 4) {
-      return 1;
-    }
-    if (i == 3) {
-      return 2;
-    }
-    if (i == 2) {
-      return 3;
-    }
-    return -1;
-  }
-  
-  public static NetworkInfo a(Context paramContext)
-  {
-    return AppNetConnInfo.getRecentNetworkInfo();
-  }
-  
   public static String a(Context paramContext, String paramString)
   {
     try
@@ -84,23 +61,23 @@ public class PhoneStatusTools
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc 91
-    //   3: invokevirtual 95	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   6: checkcast 97	android/telephony/TelephonyManager
+    //   1: ldc 78
+    //   3: invokevirtual 82	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   6: checkcast 84	android/telephony/TelephonyManager
     //   9: astore_3
     //   10: aload_3
     //   11: ifnull +140 -> 151
     //   14: aload_3
-    //   15: ldc 99
+    //   15: ldc 86
     //   17: iconst_2
-    //   18: anewarray 71	java/lang/Class
+    //   18: anewarray 58	java/lang/Class
     //   21: dup
     //   22: iconst_0
-    //   23: ldc 101
+    //   23: ldc 88
     //   25: aastore
     //   26: dup
     //   27: iconst_1
-    //   28: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   28: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   31: aastore
     //   32: iconst_2
     //   33: anewarray 4	java/lang/Object
@@ -111,32 +88,32 @@ public class PhoneStatusTools
     //   40: dup
     //   41: iconst_1
     //   42: iload_2
-    //   43: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   43: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   46: aastore
-    //   47: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   47: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   50: pop
     //   51: aload_3
-    //   52: ldc 117
+    //   52: ldc 104
     //   54: iconst_3
-    //   55: anewarray 71	java/lang/Class
+    //   55: anewarray 58	java/lang/Class
     //   58: dup
     //   59: iconst_0
-    //   60: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   60: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   63: aastore
     //   64: dup
     //   65: iconst_1
-    //   66: ldc 101
+    //   66: ldc 88
     //   68: aastore
     //   69: dup
     //   70: iconst_2
-    //   71: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   71: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   74: aastore
     //   75: iconst_3
     //   76: anewarray 4	java/lang/Object
     //   79: dup
     //   80: iconst_0
     //   81: iconst_0
-    //   82: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   82: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   85: aastore
     //   86: dup
     //   87: iconst_1
@@ -145,32 +122,32 @@ public class PhoneStatusTools
     //   90: dup
     //   91: iconst_2
     //   92: iload_2
-    //   93: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   93: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   96: aastore
-    //   97: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   100: pop
     //   101: aload_3
-    //   102: ldc 117
+    //   102: ldc 104
     //   104: iconst_3
-    //   105: anewarray 71	java/lang/Class
+    //   105: anewarray 58	java/lang/Class
     //   108: dup
     //   109: iconst_0
-    //   110: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   110: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   113: aastore
     //   114: dup
     //   115: iconst_1
-    //   116: ldc 101
+    //   116: ldc 88
     //   118: aastore
     //   119: dup
     //   120: iconst_2
-    //   121: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   121: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   124: aastore
     //   125: iconst_3
     //   126: anewarray 4	java/lang/Object
     //   129: dup
     //   130: iconst_0
     //   131: iconst_1
-    //   132: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   132: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   135: aastore
     //   136: dup
     //   137: iconst_1
@@ -179,14 +156,14 @@ public class PhoneStatusTools
     //   140: dup
     //   141: iconst_2
     //   142: iload_2
-    //   143: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   143: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   146: aastore
-    //   147: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   147: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   150: pop
     //   151: aload_0
-    //   152: ldc 119
-    //   154: invokevirtual 95	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   157: checkcast 97	android/telephony/TelephonyManager
+    //   152: ldc 106
+    //   154: invokevirtual 82	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   157: checkcast 84	android/telephony/TelephonyManager
     //   160: astore_0
     //   161: goto +5 -> 166
     //   164: aconst_null
@@ -194,16 +171,16 @@ public class PhoneStatusTools
     //   166: aload_0
     //   167: ifnull +140 -> 307
     //   170: aload_0
-    //   171: ldc 99
+    //   171: ldc 86
     //   173: iconst_2
-    //   174: anewarray 71	java/lang/Class
+    //   174: anewarray 58	java/lang/Class
     //   177: dup
     //   178: iconst_0
-    //   179: ldc 101
+    //   179: ldc 88
     //   181: aastore
     //   182: dup
     //   183: iconst_1
-    //   184: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   184: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   187: aastore
     //   188: iconst_2
     //   189: anewarray 4	java/lang/Object
@@ -214,32 +191,32 @@ public class PhoneStatusTools
     //   196: dup
     //   197: iconst_1
     //   198: iload_2
-    //   199: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   199: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   202: aastore
-    //   203: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   203: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   206: pop
     //   207: aload_0
-    //   208: ldc 117
+    //   208: ldc 104
     //   210: iconst_3
-    //   211: anewarray 71	java/lang/Class
+    //   211: anewarray 58	java/lang/Class
     //   214: dup
     //   215: iconst_0
-    //   216: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   216: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   219: aastore
     //   220: dup
     //   221: iconst_1
-    //   222: ldc 101
+    //   222: ldc 88
     //   224: aastore
     //   225: dup
     //   226: iconst_2
-    //   227: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   227: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   230: aastore
     //   231: iconst_3
     //   232: anewarray 4	java/lang/Object
     //   235: dup
     //   236: iconst_0
     //   237: iconst_0
-    //   238: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   238: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   241: aastore
     //   242: dup
     //   243: iconst_1
@@ -248,32 +225,32 @@ public class PhoneStatusTools
     //   246: dup
     //   247: iconst_2
     //   248: iload_2
-    //   249: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   249: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   252: aastore
-    //   253: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   253: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   256: pop
     //   257: aload_0
-    //   258: ldc 117
+    //   258: ldc 104
     //   260: iconst_3
-    //   261: anewarray 71	java/lang/Class
+    //   261: anewarray 58	java/lang/Class
     //   264: dup
     //   265: iconst_0
-    //   266: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   266: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   269: aastore
     //   270: dup
     //   271: iconst_1
-    //   272: ldc 101
+    //   272: ldc 88
     //   274: aastore
     //   275: dup
     //   276: iconst_2
-    //   277: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   277: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   280: aastore
     //   281: iconst_3
     //   282: anewarray 4	java/lang/Object
     //   285: dup
     //   286: iconst_0
     //   287: iconst_1
-    //   288: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   288: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   291: aastore
     //   292: dup
     //   293: iconst_1
@@ -282,25 +259,25 @@ public class PhoneStatusTools
     //   296: dup
     //   297: iconst_2
     //   298: iload_2
-    //   299: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   299: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   302: aastore
-    //   303: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   303: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   306: pop
-    //   307: ldc 121
-    //   309: ldc 123
+    //   307: ldc 108
+    //   309: ldc 110
     //   311: aconst_null
     //   312: aconst_null
-    //   313: invokestatic 126	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;[Ljava/lang/Class;)Ljava/lang/Object;
-    //   316: ldc 99
+    //   313: invokestatic 113	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;[Ljava/lang/Class;)Ljava/lang/Object;
+    //   316: ldc 86
     //   318: iconst_2
-    //   319: anewarray 71	java/lang/Class
+    //   319: anewarray 58	java/lang/Class
     //   322: dup
     //   323: iconst_0
-    //   324: ldc 101
+    //   324: ldc 88
     //   326: aastore
     //   327: dup
     //   328: iconst_1
-    //   329: getstatic 107	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   329: getstatic 94	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   332: aastore
     //   333: iconst_2
     //   334: anewarray 4	java/lang/Object
@@ -311,9 +288,9 @@ public class PhoneStatusTools
     //   341: dup
     //   342: iconst_1
     //   343: iload_2
-    //   344: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   344: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   347: aastore
-    //   348: invokestatic 115	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   348: invokestatic 102	com/tencent/mobileqq/utils/kapalaiadapter/ReflecterHelper:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   351: pop
     //   352: return
     //   353: astore_0
@@ -474,10 +451,10 @@ public class PhoneStatusTools
       QLog.w("PhoneStatusTools", 1, "isCalling, context为null");
       return false;
     }
-    boolean bool2 = h(paramContext);
+    boolean bool2 = j(paramContext);
     boolean bool1 = bool2;
     if (!bool2) {
-      bool1 = i(paramContext);
+      bool1 = k(paramContext);
     }
     bool2 = bool1;
     if (!bool1) {
@@ -495,7 +472,7 @@ public class PhoneStatusTools
   
   public static boolean f(Context paramContext)
   {
-    paramContext = a(paramContext);
+    paramContext = h(paramContext);
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramContext != null)
@@ -508,7 +485,30 @@ public class PhoneStatusTools
     return bool1;
   }
   
-  public static boolean g(Context paramContext)
+  public static int g(Context paramContext)
+  {
+    int i = NetworkUtil.getSystemNetwork(paramContext);
+    if (i == 1) {
+      return 0;
+    }
+    if (i == 4) {
+      return 1;
+    }
+    if (i == 3) {
+      return 2;
+    }
+    if (i == 2) {
+      return 3;
+    }
+    return -1;
+  }
+  
+  public static NetworkInfo h(Context paramContext)
+  {
+    return AppNetConnInfo.getRecentNetworkInfo();
+  }
+  
+  public static boolean i(Context paramContext)
   {
     if (a()) {
       return false;
@@ -564,7 +564,7 @@ public class PhoneStatusTools
     return (d1 > 6.5D) && (!bool);
   }
   
-  private static boolean h(Context paramContext)
+  private static boolean j(Context paramContext)
   {
     localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
     paramContext = Boolean.valueOf(false);
@@ -642,7 +642,7 @@ public class PhoneStatusTools
     if (!a.booleanValue()) {}
   }
   
-  private static boolean i(Context paramContext)
+  private static boolean k(Context paramContext)
   {
     try
     {

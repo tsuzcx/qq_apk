@@ -26,22 +26,22 @@ import org.jetbrains.annotations.Nullable;
 public final class AEEditorMusicControlPanel
   extends FrameLayout
 {
-  private int jdField_a_of_type_Int = ViewUtils.a();
-  private AEEditorLyricPanelDialog jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
-  private AEEditorMusicPanel jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
-  private AEEditorMusicVolumePanelDialog jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
-  private int b;
+  private AEEditorMusicPanel a;
+  private AEEditorLyricPanelDialog b;
+  private AEEditorMusicVolumePanelDialog c;
+  private int d = ViewUtils.getScreenWidth();
+  private int e;
   
   public AEEditorMusicControlPanel(@NotNull Context paramContext)
   {
     super(paramContext);
     paramContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "context");
-    this.b = paramContext.getResources().getDimensionPixelSize(2063990875);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel = new AEEditorMusicPanel(getContext());
-    addView((View)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog = new AEEditorLyricPanelDialog(getContext());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog = new AEEditorMusicVolumePanelDialog(getContext());
+    this.e = paramContext.getResources().getDimensionPixelSize(2063859802);
+    this.a = new AEEditorMusicPanel(getContext());
+    addView((View)this.a, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    this.b = new AEEditorLyricPanelDialog(getContext());
+    this.c = new AEEditorMusicVolumePanelDialog(getContext());
   }
   
   public AEEditorMusicControlPanel(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -49,11 +49,11 @@ public final class AEEditorMusicControlPanel
     super(paramContext, paramAttributeSet);
     paramContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "context");
-    this.b = paramContext.getResources().getDimensionPixelSize(2063990875);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel = new AEEditorMusicPanel(getContext());
-    addView((View)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog = new AEEditorLyricPanelDialog(getContext());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog = new AEEditorMusicVolumePanelDialog(getContext());
+    this.e = paramContext.getResources().getDimensionPixelSize(2063859802);
+    this.a = new AEEditorMusicPanel(getContext());
+    addView((View)this.a, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    this.b = new AEEditorLyricPanelDialog(getContext());
+    this.c = new AEEditorMusicVolumePanelDialog(getContext());
   }
   
   public AEEditorMusicControlPanel(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
@@ -61,30 +61,16 @@ public final class AEEditorMusicControlPanel
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = getContext();
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "context");
-    this.b = paramContext.getResources().getDimensionPixelSize(2063990875);
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel = new AEEditorMusicPanel(getContext());
-    addView((View)this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog = new AEEditorLyricPanelDialog(getContext());
-    this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog = new AEEditorMusicVolumePanelDialog(getContext());
-  }
-  
-  @NotNull
-  public final List<AEEditorMusicAdapter.AEEditorMusicInfo> a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
-    if (localObject != null)
-    {
-      localObject = ((AEEditorMusicPanel)localObject).a();
-      if (localObject != null) {
-        return localObject;
-      }
-    }
-    return (List)new LinkedList();
+    this.e = paramContext.getResources().getDimensionPixelSize(2063859802);
+    this.a = new AEEditorMusicPanel(getContext());
+    addView((View)this.a, (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
+    this.b = new AEEditorLyricPanelDialog(getContext());
+    this.c = new AEEditorMusicVolumePanelDialog(getContext());
   }
   
   public final void a()
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.a();
     }
@@ -92,7 +78,7 @@ public final class AEEditorMusicControlPanel
   
   public final void a(float paramFloat)
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.a(paramFloat);
     }
@@ -100,7 +86,7 @@ public final class AEEditorMusicControlPanel
   
   public final void a(int paramInt)
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.a(paramInt);
     }
@@ -108,7 +94,7 @@ public final class AEEditorMusicControlPanel
   
   public final void a(int paramInt1, int paramInt2)
   {
-    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.b;
     if (localAEEditorLyricPanelDialog != null) {
       localAEEditorLyricPanelDialog.c(paramInt1, paramInt2);
     }
@@ -117,7 +103,7 @@ public final class AEEditorMusicControlPanel
   public final void a(@NotNull AEEditorMusicAdapter.AEEditorMusicInfo paramAEEditorMusicInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramAEEditorMusicInfo, "musicInfoFromWeb");
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.a(paramAEEditorMusicInfo);
     }
@@ -126,21 +112,21 @@ public final class AEEditorMusicControlPanel
   public final void a(@NotNull AEEditorMusicAdapter.AEEditorMusicInfo paramAEEditorMusicInfo, @Nullable Integer paramInteger, int paramInt, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramAEEditorMusicInfo, "editorMusicInfo");
-    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.b;
     if ((localAEEditorLyricPanelDialog != null) && (!localAEEditorLyricPanelDialog.isShowing()))
     {
       int i;
       if (paramInteger != null) {
         i = paramInteger.intValue();
       } else {
-        i = paramAEEditorMusicInfo.a();
+        i = paramAEEditorMusicInfo.e();
       }
-      paramInteger = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+      paramInteger = this.b;
       if (paramInteger != null) {
-        paramInteger.a(paramAEEditorMusicInfo, i, paramInt, this.jdField_a_of_type_Int, this.b, paramBoolean);
+        paramInteger.a(paramAEEditorMusicInfo, i, paramInt, this.d, this.e, paramBoolean);
       }
       a(i, paramInt + i);
-      paramAEEditorMusicInfo = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+      paramAEEditorMusicInfo = this.b;
       if (paramAEEditorMusicInfo != null) {
         paramAEEditorMusicInfo.show();
       }
@@ -150,7 +136,7 @@ public final class AEEditorMusicControlPanel
   public final void a(@NotNull List<? extends AEEditorMusicAdapter.AEEditorMusicInfo> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "musicInfoList");
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.a(paramList);
     }
@@ -158,7 +144,7 @@ public final class AEEditorMusicControlPanel
   
   public final void a(boolean paramBoolean)
   {
-    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.c;
     if (localAEEditorMusicVolumePanelDialog != null) {
       localAEEditorMusicVolumePanelDialog.b(paramBoolean);
     }
@@ -166,7 +152,7 @@ public final class AEEditorMusicControlPanel
   
   public final void b()
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.b();
     }
@@ -174,7 +160,7 @@ public final class AEEditorMusicControlPanel
   
   public final void b(float paramFloat)
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.b(paramFloat);
     }
@@ -182,10 +168,10 @@ public final class AEEditorMusicControlPanel
   
   public final void b(int paramInt)
   {
-    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.b;
     if ((localAEEditorLyricPanelDialog != null) && (localAEEditorLyricPanelDialog.isShowing() == true))
     {
-      localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+      localAEEditorLyricPanelDialog = this.b;
       if (localAEEditorLyricPanelDialog != null) {
         localAEEditorLyricPanelDialog.b(paramInt);
       }
@@ -194,10 +180,10 @@ public final class AEEditorMusicControlPanel
   
   public final void b(int paramInt1, int paramInt2)
   {
-    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.b;
     if ((localAEEditorLyricPanelDialog != null) && (localAEEditorLyricPanelDialog.isShowing() == true))
     {
-      localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+      localAEEditorLyricPanelDialog = this.b;
       if (localAEEditorLyricPanelDialog != null) {
         localAEEditorLyricPanelDialog.b(paramInt1, paramInt2);
       }
@@ -206,7 +192,7 @@ public final class AEEditorMusicControlPanel
   
   public final void c()
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.e();
     }
@@ -214,7 +200,7 @@ public final class AEEditorMusicControlPanel
   
   public final void d()
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.setEnableBgm(false);
     }
@@ -222,10 +208,10 @@ public final class AEEditorMusicControlPanel
   
   public final void e()
   {
-    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.c;
     if ((localAEEditorMusicVolumePanelDialog != null) && (!localAEEditorMusicVolumePanelDialog.isShowing()))
     {
-      localAEEditorMusicVolumePanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+      localAEEditorMusicVolumePanelDialog = this.c;
       if (localAEEditorMusicVolumePanelDialog != null) {
         localAEEditorMusicVolumePanelDialog.show();
       }
@@ -234,19 +220,33 @@ public final class AEEditorMusicControlPanel
   
   public final void f()
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.d();
     }
   }
   
+  @NotNull
+  public final List<AEEditorMusicAdapter.AEEditorMusicInfo> getBackgroundMusicData()
+  {
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      localObject = ((AEEditorMusicPanel)localObject).getBackgroundMusicData();
+      if (localObject != null) {
+        return localObject;
+      }
+    }
+    return (List)new LinkedList();
+  }
+  
   public final void setAutoTemplateMode(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    Object localObject = this.a;
     if (localObject != null) {
       ((AEEditorMusicPanel)localObject).setAutoTemplate(paramBoolean1, paramBoolean2);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+    localObject = this.c;
     if (localObject != null) {
       ((AEEditorMusicVolumePanelDialog)localObject).a(paramBoolean1);
     }
@@ -254,11 +254,11 @@ public final class AEEditorMusicControlPanel
   
   public final void setBgmPlayed(boolean paramBoolean, @Nullable AEEditorMusicAdapter.AEEditorMusicInfo paramAEEditorMusicInfo)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    Object localObject = this.a;
     if (localObject != null) {
       ((AEEditorMusicPanel)localObject).setBgmPlayed(paramBoolean, paramAEEditorMusicInfo);
     }
-    localObject = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+    localObject = this.c;
     if (localObject != null)
     {
       if (paramAEEditorMusicInfo != null) {
@@ -272,7 +272,7 @@ public final class AEEditorMusicControlPanel
   
   public final void setMusicListOperationCallback(@Nullable AEEditorMusicPanel.OperationCallback paramOperationCallback)
   {
-    AEEditorMusicPanel localAEEditorMusicPanel = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicPanel;
+    AEEditorMusicPanel localAEEditorMusicPanel = this.a;
     if (localAEEditorMusicPanel != null) {
       localAEEditorMusicPanel.setOperationCallback(paramOperationCallback);
     }
@@ -280,7 +280,7 @@ public final class AEEditorMusicControlPanel
   
   public final void setMusicLyricOperationCallback(@Nullable AEEditorLyricPanelDialog.OperationCallback paramOperationCallback)
   {
-    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorLyricPanelDialog;
+    AEEditorLyricPanelDialog localAEEditorLyricPanelDialog = this.b;
     if (localAEEditorLyricPanelDialog != null) {
       localAEEditorLyricPanelDialog.a(paramOperationCallback);
     }
@@ -288,7 +288,7 @@ public final class AEEditorMusicControlPanel
   
   public final void setMusicVolumeOperationCallback(@Nullable AEEditorMusicVolumePanelDialog.OperationCallback paramOperationCallback)
   {
-    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.c;
     if (localAEEditorMusicVolumePanelDialog != null) {
       localAEEditorMusicVolumePanelDialog.a(paramOperationCallback);
     }
@@ -296,7 +296,7 @@ public final class AEEditorMusicControlPanel
   
   public final void setOriginSoundOn(boolean paramBoolean)
   {
-    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMusicAEEditorMusicVolumePanelDialog;
+    AEEditorMusicVolumePanelDialog localAEEditorMusicVolumePanelDialog = this.c;
     if (localAEEditorMusicVolumePanelDialog != null) {
       localAEEditorMusicVolumePanelDialog.d(paramBoolean);
     }
@@ -304,7 +304,7 @@ public final class AEEditorMusicControlPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.controlpanel.AEEditorMusicControlPanel
  * JD-Core Version:    0.7.0.1
  */

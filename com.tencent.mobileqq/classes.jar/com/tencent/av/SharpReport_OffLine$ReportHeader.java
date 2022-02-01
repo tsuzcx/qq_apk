@@ -2,17 +2,17 @@ package com.tencent.av;
 
 public class SharpReport_OffLine$ReportHeader
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  String jdField_a_of_type_JavaLangString = null;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = null;
-  long jdField_c_of_type_Long = 0L;
-  String jdField_c_of_type_JavaLangString = null;
+  String a = null;
+  String b = null;
+  String c = null;
   String d = null;
   String e = null;
   String f = null;
+  long g = 0L;
+  long h = 0L;
+  long i = 0L;
+  int j = 0;
+  int k = 0;
   
   public SharpReport_OffLine$ReportHeader(SharpReport_OffLine paramSharpReport_OffLine) {}
 }

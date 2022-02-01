@@ -26,40 +26,15 @@ import org.json.JSONObject;
 public class ColorRingManager
   implements Manager
 {
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ColorRingManager.1(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
-  private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = null;
-  public IPCDownloadListener a;
+  public IPCDownloadListener a = null;
+  QQAppInterface b;
+  DownloadListener c = new ColorRingManager.1(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  private DownloaderFactory d = null;
   
   public ColorRingManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
-  }
-  
-  public static Bitmap a(long paramLong)
-  {
-    Object localObject;
-    if (paramLong != 0L)
-    {
-      localObject = a(paramLong, 1);
-      if (!new File((String)localObject).exists()) {}
-    }
-    try
-    {
-      localObject = BitmapFactory.decodeFile((String)localObject);
-      return localObject;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      label36:
-      break label36;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorRingManager", 2, "getCoverBitmap OOM.");
-    }
-    return null;
+    this.b = paramQQAppInterface;
+    this.d = ((DownloaderFactory)paramQQAppInterface.getManager(QQManagerFactory.DOWNLOADER_FACTORY));
   }
   
   public static String a(long paramLong, int paramInt)
@@ -163,8 +138,8 @@ public class ColorRingManager
   {
     if (paramInt2 == 3)
     {
-      Object localObject1 = (ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
-      int i = ((ISVIPHandler)localObject1).g();
+      Object localObject1 = (ISVIPHandler)this.b.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER);
+      int i = ((ISVIPHandler)localObject1).j();
       if (i == 2)
       {
         paramInt2 = 0;
@@ -178,7 +153,7 @@ public class ColorRingManager
       }
       if ("colorring".equals(paramBundle.getString("colorType")))
       {
-        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        QQAppInterface localQQAppInterface = this.b;
         Object localObject2 = new StringBuilder();
         ((StringBuilder)localObject2).append("");
         ((StringBuilder)localObject2).append(paramInt2);
@@ -192,7 +167,7 @@ public class ColorRingManager
       {
         paramBundle = new StringBuilder();
         paramBundle.append("");
-        paramBundle.append(((ISVIPHandler)localObject1).g());
+        paramBundle.append(((ISVIPHandler)localObject1).j());
         paramBundle = paramBundle.toString();
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append(paramInt1);
@@ -204,9 +179,33 @@ public class ColorRingManager
   
   public static void a(String paramString1, int paramInt, String paramString2) {}
   
+  public static Bitmap b(long paramLong)
+  {
+    Object localObject;
+    if (paramLong != 0L)
+    {
+      localObject = a(paramLong, 1);
+      if (!new File((String)localObject).exists()) {}
+    }
+    try
+    {
+      localObject = BitmapFactory.decodeFile((String)localObject);
+      return localObject;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label36:
+      break label36;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorRingManager", 2, "getCoverBitmap OOM.");
+    }
+    return null;
+  }
+  
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory.a(1).cancelTask(true, a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2));
+    this.d.a(1).cancelTask(true, a(this.b, paramInt1, paramInt2));
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
@@ -253,24 +252,24 @@ public class ColorRingManager
     ((Bundle)localObject1).putInt("srcType", paramInt3);
     ((Bundle)localObject1).putString("path", str);
     ((Bundle)localObject1).putString("colorType", paramString);
-    paramString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2);
+    paramString = a(this.b, paramInt1, paramInt2);
     if (bool)
     {
       ((Bundle)localObject1).putBoolean("isExists", true);
       paramString = new DownloadTask(paramString, (File)localObject2);
       paramString.a(3);
-      paramString.a = 0;
+      paramString.c = 0;
       paramString.a((Bundle)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener.onDone(paramString);
+      this.c.onDone(paramString);
       return;
     }
     localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(str);
     ((StringBuilder)localObject2).append(".tmp");
     paramString = new DownloadTask(paramString, new File(((StringBuilder)localObject2).toString()));
-    paramString.e = 3145728L;
-    paramString.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory.a(1).startDownload(paramString, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject1);
+    paramString.y = 3145728L;
+    paramString.m = true;
+    this.d.a(1).startDownload(paramString, this.c, (Bundle)localObject1);
     if (QLog.isColorLevel())
     {
       paramString = new StringBuilder();
@@ -282,12 +281,12 @@ public class ColorRingManager
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = null;
+    this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingManager
  * JD-Core Version:    0.7.0.1
  */

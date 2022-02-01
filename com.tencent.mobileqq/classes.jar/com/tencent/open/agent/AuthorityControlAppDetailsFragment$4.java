@@ -17,12 +17,12 @@ class AuthorityControlAppDetailsFragment$4
   
   public void a(int paramInt, String paramString)
   {
-    if (AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment) != null)
+    if (AuthorityControlAppDetailsFragment.c(this.b) != null)
     {
-      if (AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment).isFinishing()) {
+      if (AuthorityControlAppDetailsFragment.c(this.b).isFinishing()) {
         return;
       }
-      if (AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment))
+      if (AuthorityControlAppDetailsFragment.d(this.b))
       {
         QLog.e("AuthorityControlAppDetailsActivity", 1, "checkAccount: timeout");
         return;
@@ -33,43 +33,43 @@ class AuthorityControlAppDetailsFragment$4
       localStringBuilder.append(" ");
       localStringBuilder.append(paramString);
       QLog.e("AuthorityControlAppDetailsActivity", 1, localStringBuilder.toString());
-      QQToast.a(AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment), HardCodeUtil.a(2131694647), 0).a();
-      AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment).finish();
+      QQToast.makeText(AuthorityControlAppDetailsFragment.c(this.b), HardCodeUtil.a(2131892333), 0).show();
+      AuthorityControlAppDetailsFragment.c(this.b).finish();
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment) != null)
+    if (AuthorityControlAppDetailsFragment.c(this.b) != null)
     {
-      if (AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment).isFinishing()) {
+      if (AuthorityControlAppDetailsFragment.c(this.b).isFinishing()) {
         return;
       }
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("checkAccount: onSuccess same=");
       ((StringBuilder)localObject).append(paramBoolean);
       QLog.i("AuthorityControlAppDetailsActivity", 1, ((StringBuilder)localObject).toString());
-      if (AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment))
+      if (AuthorityControlAppDetailsFragment.d(this.b))
       {
         QLog.e("AuthorityControlAppDetailsActivity", 1, "checkAccount: timeout");
         return;
       }
       if (paramBoolean)
       {
-        AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment).runOnUiThread(new AuthorityControlAppDetailsFragment.4.1(this));
+        AuthorityControlAppDetailsFragment.e(this.b).runOnUiThread(new AuthorityControlAppDetailsFragment.4.1(this));
         return;
       }
-      localObject = AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment).getString(2131690220);
-      new BaseAccountChecker.DefaultAccountNotify(AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment), String.format((String)localObject, new Object[] { this.jdField_a_of_type_ComTencentOpenModelAppInfo.b() }), 1).a(new AuthorityControlAppDetailsFragment.4.2(this));
-      int i = this.jdField_a_of_type_ComTencentOpenModelAppInfo.a();
-      localObject = this.jdField_a_of_type_ComTencentOpenModelAppInfo.b();
-      AuthorityUtil.a(AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment), "0X800BAE1", 0, AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityControlAppDetailsFragment), new String[] { String.valueOf(i), "", localObject, "" });
+      localObject = AuthorityControlAppDetailsFragment.c(this.b).getString(2131887120);
+      new BaseAccountChecker.DefaultAccountNotify(AuthorityControlAppDetailsFragment.c(this.b), String.format((String)localObject, new Object[] { this.a.c() }), 1).a(new AuthorityControlAppDetailsFragment.4.2(this));
+      int i = this.a.a();
+      localObject = this.a.c();
+      AuthorityUtil.a(AuthorityControlAppDetailsFragment.e(this.b), "0X800BAE1", 0, AuthorityControlAppDetailsFragment.g(this.b), new String[] { String.valueOf(i), "", localObject, "" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityControlAppDetailsFragment.4
  * JD-Core Version:    0.7.0.1
  */

@@ -28,13 +28,13 @@ public class ThemeNavigationBarUtil
         if (bool1) {
           return;
         }
-        if ((!ImmersiveUtils.isVivoAndLOLLIPOP()) && (!SystemUtil.d()))
+        if ((!ImmersiveUtils.isVivoAndLOLLIPOP()) && (!SystemUtil.g()))
         {
           if ((a == 2147483647) && (Build.VERSION.SDK_INT >= 21)) {
             a = paramWindow.getNavigationBarColor();
           }
-          bool1 = QQTheme.c();
-          bool2 = QQTheme.a();
+          bool1 = QQTheme.isLastThemeIsNight();
+          bool2 = QQTheme.isNowThemeIsNight();
           QLog.d("ThemeNavigationBarUtil", 2, new Object[] { "[NavigationBar] setNavigationBarColor sLightThemeNavigationBarColor=", Integer.valueOf(a), " isCurNightMode=", Boolean.valueOf(bool2), " isLastNightMode=", Boolean.valueOf(bool1) });
           if (bool2) {
             break label173;
@@ -84,7 +84,7 @@ public class ThemeNavigationBarUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeNavigationBarUtil
  * JD-Core Version:    0.7.0.1
  */

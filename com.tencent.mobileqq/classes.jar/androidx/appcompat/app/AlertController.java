@@ -27,6 +27,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
+import androidx.appcompat.R.attr;
+import androidx.appcompat.R.id;
 import androidx.appcompat.R.styleable;
 import androidx.appcompat.widget.LinearLayoutCompat.LayoutParams;
 import androidx.core.view.ViewCompat;
@@ -86,7 +88,7 @@ class AlertController
     this.mDialog = paramAppCompatDialog;
     this.mWindow = paramWindow;
     this.mHandler = new AlertController.ButtonHandler(paramAppCompatDialog);
-    paramContext = paramContext.obtainStyledAttributes(null, R.styleable.AlertDialog, 2131034180, 0);
+    paramContext = paramContext.obtainStyledAttributes(null, R.styleable.AlertDialog, R.attr.alertDialogStyle, 0);
     this.mAlertDialogLayout = paramContext.getResourceId(R.styleable.AlertDialog_android_layout, 0);
     this.mButtonPanelSideLayout = paramContext.getResourceId(R.styleable.AlertDialog_buttonPanelSideLayout, 0);
     this.mListLayout = paramContext.getResourceId(R.styleable.AlertDialog_listLayout, 0);
@@ -191,8 +193,8 @@ class AlertController
   
   private void setScrollIndicators(ViewGroup paramViewGroup, View paramView, int paramInt1, int paramInt2)
   {
-    Object localObject2 = this.mWindow.findViewById(2131376997);
-    Object localObject1 = this.mWindow.findViewById(2131376996);
+    Object localObject2 = this.mWindow.findViewById(R.id.scrollIndicatorUp);
+    Object localObject1 = this.mWindow.findViewById(R.id.scrollIndicatorDown);
     if (Build.VERSION.SDK_INT >= 23)
     {
       ViewCompat.setScrollIndicators(paramView, paramInt1, paramInt2);
@@ -301,12 +303,12 @@ class AlertController
     else
     {
       this.mButtonNeutral.setText(this.mButtonNeutralText);
-      localDrawable = this.mButtonPositiveIcon;
+      localDrawable = this.mButtonNeutralIcon;
       if (localDrawable != null)
       {
         k = this.mButtonIconDimen;
         localDrawable.setBounds(0, 0, k, k);
-        this.mButtonPositive.setCompoundDrawables(this.mButtonPositiveIcon, null, null, null);
+        this.mButtonNeutral.setCompoundDrawables(this.mButtonNeutralIcon, null, null, null);
       }
       this.mButtonNeutral.setVisibility(0);
       i |= 0x4;
@@ -332,7 +334,7 @@ class AlertController
   
   private void setupContent(ViewGroup paramViewGroup)
   {
-    this.mScrollView = ((NestedScrollView)this.mWindow.findViewById(2131376998));
+    this.mScrollView = ((NestedScrollView)this.mWindow.findViewById(R.id.scrollView));
     this.mScrollView.setFocusable(false);
     this.mScrollView.setNestedScrollingEnabled(false);
     this.mMessageView = ((TextView)paramViewGroup.findViewById(16908299));
@@ -378,7 +380,7 @@ class AlertController
     }
     if (i != 0)
     {
-      FrameLayout localFrameLayout = (FrameLayout)this.mWindow.findViewById(2131365351);
+      FrameLayout localFrameLayout = (FrameLayout)this.mWindow.findViewById(R.id.custom);
       localFrameLayout.addView(localView, new ViewGroup.LayoutParams(-1, -1));
       if (this.mViewSpacingSpecified) {
         localFrameLayout.setPadding(this.mViewSpacingLeft, this.mViewSpacingTop, this.mViewSpacingRight, this.mViewSpacingBottom);
@@ -399,13 +401,13 @@ class AlertController
     {
       ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
       paramViewGroup.addView(this.mCustomTitleView, 0, localLayoutParams);
-      this.mWindow.findViewById(2131378875).setVisibility(8);
+      this.mWindow.findViewById(R.id.title_template).setVisibility(8);
       return;
     }
     this.mIconView = ((ImageView)this.mWindow.findViewById(16908294));
     if (((TextUtils.isEmpty(this.mTitle) ^ true)) && (this.mShowTitle))
     {
-      this.mTitleView = ((TextView)this.mWindow.findViewById(2131362650));
+      this.mTitleView = ((TextView)this.mWindow.findViewById(R.id.alertTitle));
       this.mTitleView.setText(this.mTitle);
       int i = this.mIconId;
       if (i != 0)
@@ -423,22 +425,22 @@ class AlertController
       this.mIconView.setVisibility(8);
       return;
     }
-    this.mWindow.findViewById(2131378875).setVisibility(8);
+    this.mWindow.findViewById(R.id.title_template).setVisibility(8);
     this.mIconView.setVisibility(8);
     paramViewGroup.setVisibility(8);
   }
   
   private void setupView()
   {
-    Object localObject4 = this.mWindow.findViewById(2131372317);
-    Object localObject3 = ((View)localObject4).findViewById(2131378991);
-    Object localObject2 = ((View)localObject4).findViewById(2131365176);
-    Object localObject1 = ((View)localObject4).findViewById(2131364160);
-    localObject4 = (ViewGroup)((View)localObject4).findViewById(2131365353);
+    Object localObject4 = this.mWindow.findViewById(R.id.parentPanel);
+    Object localObject3 = ((View)localObject4).findViewById(R.id.topPanel);
+    Object localObject2 = ((View)localObject4).findViewById(R.id.contentPanel);
+    Object localObject1 = ((View)localObject4).findViewById(R.id.buttonPanel);
+    localObject4 = (ViewGroup)((View)localObject4).findViewById(R.id.customPanel);
     setupCustomContent((ViewGroup)localObject4);
-    View localView3 = ((ViewGroup)localObject4).findViewById(2131378991);
-    View localView2 = ((ViewGroup)localObject4).findViewById(2131365176);
-    View localView1 = ((ViewGroup)localObject4).findViewById(2131364160);
+    View localView3 = ((ViewGroup)localObject4).findViewById(R.id.topPanel);
+    View localView2 = ((ViewGroup)localObject4).findViewById(R.id.contentPanel);
+    View localView1 = ((ViewGroup)localObject4).findViewById(R.id.buttonPanel);
     localObject3 = resolvePanel(localView3, (View)localObject3);
     localObject2 = resolvePanel(localView2, (View)localObject2);
     localObject1 = resolvePanel(localView1, (View)localObject1);
@@ -466,7 +468,7 @@ class AlertController
     }
     if ((!bool) && (localObject2 != null))
     {
-      localObject1 = ((ViewGroup)localObject2).findViewById(2131378472);
+      localObject1 = ((ViewGroup)localObject2).findViewById(R.id.textSpacerNoButtons);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -479,7 +481,7 @@ class AlertController
       }
       localObject1 = null;
       if ((this.mMessage != null) || (this.mListView != null)) {
-        localObject1 = ((ViewGroup)localObject3).findViewById(2131378787);
+        localObject1 = ((ViewGroup)localObject3).findViewById(R.id.titleDividerNoCustom);
       }
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
@@ -487,7 +489,7 @@ class AlertController
     }
     else if (localObject2 != null)
     {
-      localObject1 = ((ViewGroup)localObject2).findViewById(2131378473);
+      localObject1 = ((ViewGroup)localObject2).findViewById(R.id.textSpacerNoTitle);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -531,7 +533,7 @@ class AlertController
   private static boolean shouldCenterSingleButton(Context paramContext)
   {
     TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2131034179, localTypedValue, true);
+    paramContext.getTheme().resolveAttribute(R.attr.alertDialogCenterButtons, localTypedValue, true);
     return localTypedValue.data != 0;
   }
   

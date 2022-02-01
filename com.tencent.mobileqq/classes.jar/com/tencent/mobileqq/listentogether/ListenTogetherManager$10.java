@@ -18,15 +18,15 @@ class ListenTogetherManager$10
     if (paramMessage.what != 1001) {
       return true;
     }
-    paramMessage = this.a.a();
+    paramMessage = this.a.f();
     if (paramMessage != null)
     {
-      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
-      paramMessage.c = SystemClock.elapsedRealtime();
-      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
+      paramMessage.h = (SystemClock.elapsedRealtime() - paramMessage.j + paramMessage.h);
+      paramMessage.j = SystemClock.elapsedRealtime();
+      boolean bool = ListenTogetherManager.o(this.a).a(paramMessage);
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("MSG_TYPE_TIME_SYNC seek is: ");
-      localStringBuilder.append(paramMessage.a);
+      localStringBuilder.append(paramMessage.h);
       localStringBuilder.append(" currentTime: ");
       localStringBuilder.append(System.currentTimeMillis());
       localStringBuilder.append(" result: ");
@@ -37,14 +37,14 @@ class ListenTogetherManager$10
     {
       QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
     }
-    ListenTogetherManager.a(this.a).removeMessages(1001);
-    ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, ListenTogetherDPC.a().a);
+    ListenTogetherManager.f(this.a).removeMessages(1001);
+    ListenTogetherManager.f(this.a).sendEmptyMessageDelayed(1001, ListenTogetherDPC.a().d);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherManager.10
  * JD-Core Version:    0.7.0.1
  */

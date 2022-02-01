@@ -23,8 +23,8 @@ import org.json.JSONObject;
 public class QQStoryApiPlugin
   extends WebViewPlugin
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new QQStoryApiPlugin.1(this);
-  private volatile boolean jdField_a_of_type_Boolean = false;
+  BroadcastReceiver a = new QQStoryApiPlugin.1(this);
+  private volatile boolean b = false;
   
   public QQStoryApiPlugin()
   {
@@ -36,7 +36,7 @@ public class QQStoryApiPlugin
     if (!"story".equals(paramString2)) {
       return false;
     }
-    Activity localActivity = this.mRuntime.a();
+    Activity localActivity = this.mRuntime.d();
     if (paramString3.equals("openIndex"))
     {
       StoryTransitionActivity.a(localActivity);
@@ -203,12 +203,12 @@ public class QQStoryApiPlugin
     localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_do_like");
     localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_comment");
     localIntentFilter.addAction("com.tencent.mobileqq.action.dispatch_event_subscribe");
-    Object localObject = this.mRuntime.a();
-    if ((localObject != null) && (!this.jdField_a_of_type_Boolean)) {
+    Object localObject = this.mRuntime.d();
+    if ((localObject != null) && (!this.b)) {
       try
       {
-        ((Activity)localObject).registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
-        this.jdField_a_of_type_Boolean = true;
+        ((Activity)localObject).registerReceiver(this.a, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+        this.b = true;
         return;
       }
       catch (Exception localException)
@@ -227,17 +227,17 @@ public class QQStoryApiPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    Activity localActivity = this.mRuntime.a();
-    if ((localActivity != null) && (this.jdField_a_of_type_Boolean))
+    Activity localActivity = this.mRuntime.d();
+    if ((localActivity != null) && (this.b))
     {
-      localActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      localActivity.unregisterReceiver(this.a);
+      this.b = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQStoryApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class StoryManager$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
+    this.a.remove(this.b, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.c), String.valueOf(this.d) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,26 +9,26 @@ import com.tencent.widget.ActionSheet.OnButtonClickListener;
 final class VideoItemBuilder$3
   implements ActionSheet.OnButtonClickListener
 {
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
+    this.a.dismiss();
     if (paramInt != 0) {
       return;
     }
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.isVideo;
-    paramInt = this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.type;
-    VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, bool, paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.isVideo)
+    boolean bool = this.b.isVideo;
+    paramInt = this.b.type;
+    VideoItemBuilder.a(this.c, this.d, bool, paramInt);
+    if (this.b.isVideo)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
+      ReportController.b(this.c, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
+    ReportController.b(this.c, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.VideoItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -68,7 +68,7 @@ public class c
   {
     if ((h == null) && (BaseApplicationImpl.getApplication() != null))
     {
-      j = AppSetting.a();
+      j = AppSetting.b();
       e = BaseApplicationImpl.getApplication().getProcessName();
       BaseApplicationImpl.getApplication().getPackageName();
       h = new RecyclablePool(c.a.class, 512);
@@ -113,7 +113,7 @@ public class c
   {
     if (h != null)
     {
-      if (StringUtil.a(???)) {
+      if (StringUtil.isEmpty(???)) {
         return;
       }
       c.a locala = (c.a)h.obtain(c.a.class);
@@ -227,73 +227,73 @@ public class c
     //   29: astore_3
     //   30: aload_2
     //   31: ifnonnull +10 -> 41
-    //   34: invokestatic 291	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
+    //   34: invokestatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
     //   37: ldc 2
     //   39: monitorexit
     //   40: return
     //   41: aload_3
-    //   42: getfield 199	com/tencent/mobileqq/microapp/appbrand/b/c$a:a	J
+    //   42: getfield 200	com/tencent/mobileqq/microapp/appbrand/b/c$a:a	J
     //   45: lstore_0
     //   46: lload_0
-    //   47: getstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
-    //   50: ldc2_w 228
+    //   47: getstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   50: ldc2_w 229
     //   53: ladd
     //   54: lcmp
     //   55: ifge +11 -> 66
     //   58: lload_0
-    //   59: getstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   59: getstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
     //   62: lcmp
     //   63: ifge +76 -> 139
     //   66: getstatic 107	com/tencent/mobileqq/microapp/appbrand/b/c:o	Ljava/text/SimpleDateFormat;
     //   69: lload_0
-    //   70: invokestatic 297	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   73: invokevirtual 301	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   70: invokestatic 298	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   73: invokevirtual 302	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
     //   76: putstatic 46	com/tencent/mobileqq/microapp/appbrand/b/c:c	Ljava/lang/String;
     //   79: lload_0
-    //   80: getstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
-    //   83: ldc2_w 228
+    //   80: getstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   83: ldc2_w 229
     //   86: ladd
     //   87: lcmp
     //   88: iflt +28 -> 116
     //   91: lload_0
-    //   92: getstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
-    //   95: ldc2_w 302
+    //   92: getstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   95: ldc2_w 303
     //   98: ladd
     //   99: lcmp
     //   100: ifge +16 -> 116
-    //   103: getstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
-    //   106: ldc2_w 228
+    //   103: getstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   106: ldc2_w 229
     //   109: ladd
-    //   110: putstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   110: putstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
     //   113: goto +26 -> 139
-    //   116: invokestatic 309	java/util/Calendar:getInstance	()Ljava/util/Calendar;
+    //   116: invokestatic 310	java/util/Calendar:getInstance	()Ljava/util/Calendar;
     //   119: astore_2
     //   120: aload_2
     //   121: lload_0
-    //   122: invokevirtual 313	java/util/Calendar:setTimeInMillis	(J)V
+    //   122: invokevirtual 314	java/util/Calendar:setTimeInMillis	(J)V
     //   125: aload_2
     //   126: bipush 14
     //   128: iconst_0
-    //   129: invokevirtual 317	java/util/Calendar:set	(II)V
+    //   129: invokevirtual 318	java/util/Calendar:set	(II)V
     //   132: aload_2
-    //   133: invokevirtual 320	java/util/Calendar:getTimeInMillis	()J
-    //   136: putstatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
+    //   133: invokevirtual 321	java/util/Calendar:getTimeInMillis	()J
+    //   136: putstatic 293	com/tencent/mobileqq/microapp/appbrand/b/c:a	J
     //   139: new 36	java/lang/StringBuilder
     //   142: dup
     //   143: invokespecial 71	java/lang/StringBuilder:<init>	()V
     //   146: astore_2
     //   147: aload_2
     //   148: aload_3
-    //   149: getfield 214	com/tencent/mobileqq/microapp/appbrand/b/c$a:g	Ljava/lang/String;
-    //   152: invokestatic 322	com/tencent/mobileqq/microapp/appbrand/b/c:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   149: getfield 215	com/tencent/mobileqq/microapp/appbrand/b/c$a:g	Ljava/lang/String;
+    //   152: invokestatic 323	com/tencent/mobileqq/microapp/appbrand/b/c:c	(Ljava/lang/String;)Ljava/lang/String;
     //   155: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   158: pop
     //   159: aload_2
     //   160: getstatic 103	com/tencent/mobileqq/microapp/appbrand/b/c:n	Ljava/text/SimpleDateFormat;
-    //   163: invokestatic 197	java/lang/System:currentTimeMillis	()J
-    //   166: invokestatic 297	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   169: invokevirtual 301	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
-    //   172: invokestatic 324	com/tencent/mobileqq/microapp/appbrand/b/c:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   163: invokestatic 198	java/lang/System:currentTimeMillis	()J
+    //   166: invokestatic 298	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   169: invokevirtual 302	java/text/SimpleDateFormat:format	(Ljava/lang/Object;)Ljava/lang/String;
+    //   172: invokestatic 325	com/tencent/mobileqq/microapp/appbrand/b/c:d	(Ljava/lang/String;)Ljava/lang/String;
     //   175: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: pop
     //   179: aload_2
@@ -302,23 +302,23 @@ public class c
     //   185: new 79	java/io/File
     //   188: dup
     //   189: aload 6
-    //   191: invokespecial 325	java/io/File:<init>	(Ljava/lang/String;)V
+    //   191: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   194: astore 7
     //   196: aload 7
-    //   198: invokevirtual 328	java/io/File:exists	()Z
+    //   198: invokevirtual 329	java/io/File:exists	()Z
     //   201: ifne +105 -> 306
     //   204: aload 6
-    //   206: invokestatic 334	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   206: invokestatic 335	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   209: pop
-    //   210: new 336	java/io/BufferedWriter
+    //   210: new 337	java/io/BufferedWriter
     //   213: dup
-    //   214: new 338	com/tencent/mobileqq/microapp/appbrand/b/g
+    //   214: new 339	com/tencent/mobileqq/microapp/appbrand/b/g
     //   217: dup
     //   218: aload 7
     //   220: iconst_1
-    //   221: invokespecial 341	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
+    //   221: invokespecial 342	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
     //   224: sipush 8192
-    //   227: invokespecial 344	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   227: invokespecial 345	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
     //   230: astore_2
     //   231: new 36	java/lang/StringBuilder
     //   234: dup
@@ -329,7 +329,7 @@ public class c
     //   245: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   248: pop
     //   249: aload 4
-    //   251: ldc_w 346
+    //   251: ldc_w 347
     //   254: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   257: pop
     //   258: aload 4
@@ -337,7 +337,7 @@ public class c
     //   263: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   266: pop
     //   267: aload 4
-    //   269: ldc_w 348
+    //   269: ldc_w 349
     //   272: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: pop
     //   276: aload 4
@@ -345,38 +345,38 @@ public class c
     //   281: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   284: pop
     //   285: aload 4
-    //   287: ldc_w 350
+    //   287: ldc_w 351
     //   290: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   293: pop
     //   294: aload_2
     //   295: aload 4
     //   297: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   300: invokevirtual 353	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   300: invokevirtual 354	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   303: goto +47 -> 350
     //   306: getstatic 70	com/tencent/mobileqq/microapp/appbrand/b/c:l	Ljava/util/Map;
     //   309: aload 6
-    //   311: invokeinterface 356 2 0
-    //   316: checkcast 336	java/io/BufferedWriter
+    //   311: invokeinterface 357 2 0
+    //   316: checkcast 337	java/io/BufferedWriter
     //   319: astore 4
     //   321: aload 4
     //   323: astore_2
     //   324: aload 4
     //   326: ifnonnull +24 -> 350
-    //   329: new 336	java/io/BufferedWriter
+    //   329: new 337	java/io/BufferedWriter
     //   332: dup
-    //   333: new 338	com/tencent/mobileqq/microapp/appbrand/b/g
+    //   333: new 339	com/tencent/mobileqq/microapp/appbrand/b/g
     //   336: dup
     //   337: aload 7
     //   339: iconst_1
-    //   340: invokespecial 341	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
+    //   340: invokespecial 342	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
     //   343: sipush 8192
-    //   346: invokespecial 344	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   346: invokespecial 345	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
     //   349: astore_2
     //   350: getstatic 42	com/tencent/mobileqq/microapp/appbrand/b/c:b	Ljava/lang/StringBuilder;
     //   353: iconst_0
     //   354: getstatic 42	com/tencent/mobileqq/microapp/appbrand/b/c:b	Ljava/lang/StringBuilder;
-    //   357: invokevirtual 359	java/lang/StringBuilder:length	()I
-    //   360: invokevirtual 363	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   357: invokevirtual 360	java/lang/StringBuilder:length	()I
+    //   360: invokevirtual 364	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
     //   363: astore 4
     //   365: aload 4
     //   367: getstatic 46	com/tencent/mobileqq/microapp/appbrand/b/c:c	Ljava/lang/String;
@@ -384,99 +384,99 @@ public class c
     //   373: pop
     //   374: aload 4
     //   376: bipush 124
-    //   378: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   378: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   381: pop
     //   382: aload 4
     //   384: aload_3
-    //   385: getfield 199	com/tencent/mobileqq/microapp/appbrand/b/c$a:a	J
-    //   388: invokevirtual 369	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   385: getfield 200	com/tencent/mobileqq/microapp/appbrand/b/c$a:a	J
+    //   388: invokevirtual 370	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   391: pop
     //   392: aload 4
     //   394: aload_3
-    //   395: getfield 214	com/tencent/mobileqq/microapp/appbrand/b/c$a:g	Ljava/lang/String;
+    //   395: getfield 215	com/tencent/mobileqq/microapp/appbrand/b/c$a:g	Ljava/lang/String;
     //   398: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   401: pop
     //   402: aload 4
     //   404: bipush 91
-    //   406: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   406: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   409: pop
     //   410: aload 4
     //   412: getstatic 54	com/tencent/mobileqq/microapp/appbrand/b/c:d	I
-    //   415: invokevirtual 372	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   415: invokevirtual 373	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   418: pop
     //   419: aload 4
     //   421: bipush 93
-    //   423: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   423: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   426: pop
     //   427: aload 4
     //   429: aload_3
-    //   430: getfield 204	com/tencent/mobileqq/microapp/appbrand/b/c$a:b	I
-    //   433: invokevirtual 372	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   430: getfield 205	com/tencent/mobileqq/microapp/appbrand/b/c$a:b	I
+    //   433: invokevirtual 373	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   436: pop
     //   437: aload 4
     //   439: bipush 124
-    //   441: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   441: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   444: pop
     //   445: aload 4
     //   447: aload_3
-    //   448: getfield 206	com/tencent/mobileqq/microapp/appbrand/b/c$a:c	I
-    //   451: invokestatic 376	com/tencent/qphone/base/util/QLog:getReportLevel	(I)Ljava/lang/String;
+    //   448: getfield 207	com/tencent/mobileqq/microapp/appbrand/b/c$a:c	I
+    //   451: invokestatic 377	com/tencent/qphone/base/util/QLog:getReportLevel	(I)Ljava/lang/String;
     //   454: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   457: pop
     //   458: aload 4
     //   460: bipush 124
-    //   462: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   462: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   465: pop
     //   466: aload 4
     //   468: aload_3
-    //   469: getfield 208	com/tencent/mobileqq/microapp/appbrand/b/c$a:d	Ljava/lang/String;
+    //   469: getfield 209	com/tencent/mobileqq/microapp/appbrand/b/c$a:d	Ljava/lang/String;
     //   472: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   475: pop
     //   476: aload 4
     //   478: bipush 124
-    //   480: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   480: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   483: pop
     //   484: aload 4
     //   486: aload_3
-    //   487: getfield 209	com/tencent/mobileqq/microapp/appbrand/b/c$a:e	Ljava/lang/String;
+    //   487: getfield 210	com/tencent/mobileqq/microapp/appbrand/b/c$a:e	Ljava/lang/String;
     //   490: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   493: pop
     //   494: aload 4
     //   496: bipush 10
-    //   498: invokevirtual 366	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   498: invokevirtual 367	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   501: pop
     //   502: aload_2
     //   503: aload 4
     //   505: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   508: invokevirtual 353	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   508: invokevirtual 354	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   511: aload_3
-    //   512: getfield 212	com/tencent/mobileqq/microapp/appbrand/b/c$a:f	Ljava/lang/Throwable;
+    //   512: getfield 213	com/tencent/mobileqq/microapp/appbrand/b/c$a:f	Ljava/lang/Throwable;
     //   515: ifnull +20 -> 535
     //   518: aload_2
     //   519: aload_3
-    //   520: getfield 212	com/tencent/mobileqq/microapp/appbrand/b/c$a:f	Ljava/lang/Throwable;
-    //   523: invokestatic 382	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   526: invokevirtual 353	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   520: getfield 213	com/tencent/mobileqq/microapp/appbrand/b/c$a:f	Ljava/lang/Throwable;
+    //   523: invokestatic 383	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   526: invokevirtual 354	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   529: aload_2
     //   530: bipush 10
-    //   532: invokevirtual 384	java/io/BufferedWriter:write	(I)V
+    //   532: invokevirtual 385	java/io/BufferedWriter:write	(I)V
     //   535: getstatic 70	com/tencent/mobileqq/microapp/appbrand/b/c:l	Ljava/util/Map;
     //   538: aload 6
     //   540: aload_2
-    //   541: invokeinterface 385 3 0
+    //   541: invokeinterface 386 3 0
     //   546: pop
     //   547: aload_3
-    //   548: invokevirtual 389	com/tencent/mobileqq/microapp/appbrand/b/c$a:getNext	()Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
+    //   548: invokevirtual 390	com/tencent/mobileqq/microapp/appbrand/b/c$a:getNext	()Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;
     //   551: checkcast 156	com/tencent/mobileqq/microapp/appbrand/b/c$a
     //   554: astore_2
     //   555: getstatic 136	com/tencent/mobileqq/microapp/appbrand/b/c:h	Lcom/tencent/commonsdk/pool/RecyclablePool;
     //   558: aload_3
-    //   559: invokevirtual 393	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
+    //   559: invokevirtual 394	com/tencent/commonsdk/pool/RecyclablePool:recycle	(Lcom/tencent/commonsdk/pool/RecyclablePool$Recyclable;)V
     //   562: aload_3
     //   563: aload 5
     //   565: if_acmpne +12 -> 577
-    //   568: invokestatic 291	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
-    //   571: invokestatic 291	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
+    //   568: invokestatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
+    //   571: invokestatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
     //   574: goto +45 -> 619
     //   577: aload_2
     //   578: astore_3
@@ -490,20 +490,20 @@ public class c
     //   588: goto +35 -> 623
     //   591: astore_2
     //   592: aload_2
-    //   593: invokevirtual 396	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   593: invokevirtual 397	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   596: ifnull -25 -> 571
     //   599: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   602: ifeq -31 -> 571
-    //   605: ldc_w 398
+    //   605: ldc_w 399
     //   608: iconst_2
     //   609: aload_2
-    //   610: invokevirtual 396	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   613: invokestatic 401	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   610: invokevirtual 397	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   613: invokestatic 402	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   616: goto -45 -> 571
     //   619: ldc 2
     //   621: monitorexit
     //   622: return
-    //   623: invokestatic 291	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
+    //   623: invokestatic 292	com/tencent/mobileqq/microapp/appbrand/b/c:i	()V
     //   626: aload_2
     //   627: athrow
     //   628: astore_2
@@ -595,7 +595,7 @@ public class c
     //   23: ifnull -20 -> 3
     //   26: aload_2
     //   27: getfield 443	com/tencent/mobileqq/microapp/a/c:g	Ljava/lang/String;
-    //   30: invokestatic 187	com/tencent/mobileqq/utils/StringUtil:a	(Ljava/lang/String;)Z
+    //   30: invokestatic 188	com/tencent/mobileqq/utils/StringUtil:isEmpty	(Ljava/lang/String;)Z
     //   33: ifeq +6 -> 39
     //   36: goto -33 -> 3
     //   39: aload_2
@@ -604,52 +604,52 @@ public class c
     //   44: new 79	java/io/File
     //   47: dup
     //   48: aload_3
-    //   49: invokespecial 325	java/io/File:<init>	(Ljava/lang/String;)V
+    //   49: invokespecial 326	java/io/File:<init>	(Ljava/lang/String;)V
     //   52: astore 4
     //   54: aload 4
-    //   56: invokevirtual 328	java/io/File:exists	()Z
+    //   56: invokevirtual 329	java/io/File:exists	()Z
     //   59: ifne +32 -> 91
     //   62: aload_3
-    //   63: invokestatic 334	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   63: invokestatic 335	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
     //   66: pop
-    //   67: new 336	java/io/BufferedWriter
+    //   67: new 337	java/io/BufferedWriter
     //   70: dup
-    //   71: new 338	com/tencent/mobileqq/microapp/appbrand/b/g
+    //   71: new 339	com/tencent/mobileqq/microapp/appbrand/b/g
     //   74: dup
     //   75: aload 4
     //   77: iconst_1
-    //   78: invokespecial 341	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
+    //   78: invokespecial 342	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
     //   81: sipush 8192
-    //   84: invokespecial 344	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   84: invokespecial 345	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
     //   87: astore_0
     //   88: goto +43 -> 131
     //   91: getstatic 109	com/tencent/mobileqq/microapp/appbrand/b/c:p	Ljava/util/Map;
     //   94: aload_3
-    //   95: invokeinterface 356 2 0
-    //   100: checkcast 336	java/io/BufferedWriter
+    //   95: invokeinterface 357 2 0
+    //   100: checkcast 337	java/io/BufferedWriter
     //   103: astore_1
     //   104: aload_1
     //   105: astore_0
     //   106: aload_1
     //   107: ifnonnull +24 -> 131
-    //   110: new 336	java/io/BufferedWriter
+    //   110: new 337	java/io/BufferedWriter
     //   113: dup
-    //   114: new 338	com/tencent/mobileqq/microapp/appbrand/b/g
+    //   114: new 339	com/tencent/mobileqq/microapp/appbrand/b/g
     //   117: dup
     //   118: aload 4
     //   120: iconst_1
-    //   121: invokespecial 341	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
+    //   121: invokespecial 342	com/tencent/mobileqq/microapp/appbrand/b/g:<init>	(Ljava/io/File;Z)V
     //   124: sipush 8192
-    //   127: invokespecial 344	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
+    //   127: invokespecial 345	java/io/BufferedWriter:<init>	(Ljava/io/Writer;I)V
     //   130: astore_0
     //   131: aload_0
     //   132: aload_2
     //   133: getfield 445	com/tencent/mobileqq/microapp/a/c:h	Ljava/lang/String;
-    //   136: invokevirtual 353	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   136: invokevirtual 354	java/io/BufferedWriter:write	(Ljava/lang/String;)V
     //   139: getstatic 109	com/tencent/mobileqq/microapp/appbrand/b/c:p	Ljava/util/Map;
     //   142: aload_3
     //   143: aload_0
-    //   144: invokeinterface 385 3 0
+    //   144: invokeinterface 386 3 0
     //   149: pop
     //   150: goto -147 -> 3
     //   153: invokestatic 447	com/tencent/mobileqq/microapp/appbrand/b/c:k	()V
@@ -658,15 +658,15 @@ public class c
     //   160: goto +35 -> 195
     //   163: astore_0
     //   164: aload_0
-    //   165: invokevirtual 396	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   165: invokevirtual 397	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   168: ifnull -15 -> 153
     //   171: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   174: ifeq -21 -> 153
-    //   177: ldc_w 398
+    //   177: ldc_w 399
     //   180: iconst_2
     //   181: aload_0
-    //   182: invokevirtual 396	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   185: invokestatic 401	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   182: invokevirtual 397	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   185: invokestatic 402	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   188: goto -35 -> 153
     //   191: ldc 2
     //   193: monitorexit
@@ -733,7 +733,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.b.c
  * JD-Core Version:    0.7.0.1
  */

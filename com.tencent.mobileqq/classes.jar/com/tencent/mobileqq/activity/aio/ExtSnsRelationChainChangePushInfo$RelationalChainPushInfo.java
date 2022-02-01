@@ -10,24 +10,24 @@ import tencent.im.s2c.msgtype0x210.submsgtype0xc7.submsgtype0xc7.RelationalChain
 public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
 {
   public int a;
-  public ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.IntimatePushInfo a;
-  public ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo a;
-  public byte[] a;
+  public ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo b;
+  public ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.IntimatePushInfo c;
+  public byte[] d;
   
   public static RelationalChainPushInfo a(submsgtype0xc7.RelationalChainInfo paramRelationalChainInfo)
   {
     if (paramRelationalChainInfo != null)
     {
       RelationalChainPushInfo localRelationalChainPushInfo = new RelationalChainPushInfo();
-      localRelationalChainPushInfo.jdField_a_of_type_Int = paramRelationalChainInfo.uint64_type.get();
+      localRelationalChainPushInfo.a = paramRelationalChainInfo.uint64_type.get();
       if (paramRelationalChainInfo.bytes_attr.has()) {
-        localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo = ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo.a(localRelationalChainPushInfo.jdField_a_of_type_Int, paramRelationalChainInfo.bytes_attr.get().toByteArray());
+        localRelationalChainPushInfo.b = ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo.a(localRelationalChainPushInfo.a, paramRelationalChainInfo.bytes_attr.get().toByteArray());
       }
       if (paramRelationalChainInfo.bytes_intimate_info.has()) {
-        localRelationalChainPushInfo.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo = ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.IntimatePushInfo.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
+        localRelationalChainPushInfo.c = ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.IntimatePushInfo.a(paramRelationalChainInfo.bytes_intimate_info.get().toByteArray());
       }
       if (paramRelationalChainInfo.bytes_mutualmark_alienation.has()) {
-        localRelationalChainPushInfo.jdField_a_of_type_ArrayOfByte = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
+        localRelationalChainPushInfo.d = paramRelationalChainInfo.bytes_mutualmark_alienation.get().toByteArray();
       }
       return localRelationalChainPushInfo;
     }
@@ -36,21 +36,21 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
   
   public int a()
   {
-    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo localMutualMarkPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo;
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo localMutualMarkPushInfo = this.b;
     if (localMutualMarkPushInfo != null) {
       return (int)localMutualMarkPushInfo.b;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo != null) && (IntimateUtil.a(this.jdField_a_of_type_Int))) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo.jdField_a_of_type_Int;
+    if ((this.c != null) && (IntimateUtil.a(this.a))) {
+      return this.c.a;
     }
     return 0;
   }
   
   public int b()
   {
-    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo localMutualMarkPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo;
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo localMutualMarkPushInfo = this.b;
     if (localMutualMarkPushInfo != null) {
-      return (int)localMutualMarkPushInfo.h;
+      return (int)localMutualMarkPushInfo.k;
     }
     return 0;
   }
@@ -61,22 +61,22 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
     localStringBuilder.append("relation_type:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", ");
     localStringBuilder.append("mutualMarkInfo:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo);
+    localStringBuilder.append(this.b);
     localStringBuilder.append(", ");
     localStringBuilder.append("intimateInfo:");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo);
+    localStringBuilder.append(this.c);
     localStringBuilder.append(", ");
     localStringBuilder.append("relationIconFlag:");
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    byte[] arrayOfByte = this.d;
     if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
       int i = 0;
       for (;;)
       {
-        arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        arrayOfByte = this.d;
         if ((i >= arrayOfByte.length) || (i >= 10)) {
           break;
         }
@@ -92,7 +92,7 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo
  * JD-Core Version:    0.7.0.1
  */

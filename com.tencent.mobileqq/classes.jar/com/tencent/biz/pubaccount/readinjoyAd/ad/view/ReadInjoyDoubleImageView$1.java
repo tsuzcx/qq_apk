@@ -16,7 +16,7 @@ class ReadInjoyDoubleImageView$1
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadCanceled:");
-      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable.append(this.a);
       QLog.d("ReadInjoyDoubleImageView", 2, paramURLDrawable.toString());
     }
   }
@@ -27,7 +27,7 @@ class ReadInjoyDoubleImageView$1
     {
       paramURLDrawable = new StringBuilder();
       paramURLDrawable.append("onLoadFialed:");
-      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      paramURLDrawable.append(this.a);
       QLog.d("ReadInjoyDoubleImageView", 2, paramURLDrawable.toString());
     }
   }
@@ -45,20 +45,20 @@ class ReadInjoyDoubleImageView$1
     {
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("onLoadSuccessed:");
-      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(this.a);
       QLog.d("ReadInjoyDoubleImageView", 2, localStringBuilder.toString());
     }
     if (paramURLDrawable != null)
     {
-      ReadInjoyDoubleImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView, new ReadInjoyAdSuperBgDrawable(paramURLDrawable.getCurrDrawable(), ReadInjoyDoubleImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView), ReadInjoyDoubleImageView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView) - (ReadInjoyDoubleImageView.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView) + ReadInjoyDoubleImageView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView))));
-      ReadInjoyDoubleImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView).setImageDrawable(ReadInjoyDoubleImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView));
-      ReadInjoyDoubleImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInjoyDoubleImageView, this.jdField_a_of_type_JavaLangString);
+      ReadInjoyDoubleImageView.a(this.b, new ReadInjoyAdSuperBgDrawable(paramURLDrawable.getCurrDrawable(), ReadInjoyDoubleImageView.a(this.b), ReadInjoyDoubleImageView.b(this.b) - (ReadInjoyDoubleImageView.c(this.b) + ReadInjoyDoubleImageView.d(this.b))));
+      ReadInjoyDoubleImageView.f(this.b).setImageDrawable(ReadInjoyDoubleImageView.e(this.b));
+      ReadInjoyDoubleImageView.a(this.b, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyDoubleImageView.1
  * JD-Core Version:    0.7.0.1
  */

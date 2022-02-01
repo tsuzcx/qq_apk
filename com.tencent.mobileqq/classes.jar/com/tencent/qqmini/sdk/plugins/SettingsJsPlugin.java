@@ -58,7 +58,9 @@ public class SettingsJsPlugin
   
   private void callbackSettingEvent(AuthState paramAuthState, RequestEvent paramRequestEvent, boolean paramBoolean, Map<String, String> paramMap)
   {
-    if (paramAuthState == null) {
+    if (paramAuthState == null)
+    {
+      paramRequestEvent.fail();
       return;
     }
     Object localObject2 = paramAuthState.getAuthStateList(6);
@@ -229,7 +231,7 @@ public class SettingsJsPlugin
     }
   }
   
-  @JsEvent({"getSetting"})
+  @JsEvent(isSync=false, value={"getSetting"})
   public void getSetting(RequestEvent paramRequestEvent)
   {
     String str = this.mApkgInfo.appId;
@@ -280,7 +282,7 @@ public class SettingsJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SettingsJsPlugin
  * JD-Core Version:    0.7.0.1
  */

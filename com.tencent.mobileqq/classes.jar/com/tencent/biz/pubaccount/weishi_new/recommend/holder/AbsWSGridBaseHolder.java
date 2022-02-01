@@ -8,15 +8,15 @@ import com.tencent.widget.pull2refresh.BaseViewHolder;
 public abstract class AbsWSGridBaseHolder<T>
   extends BaseViewHolder<T>
 {
-  protected WSRecommendAdapter a;
   public IWSItemView<T> a;
-  public T a;
+  public T b;
+  protected WSRecommendAdapter c;
   
   public AbsWSGridBaseHolder(ViewGroup paramViewGroup, int paramInt1, int paramInt2, WSRecommendAdapter paramWSRecommendAdapter)
   {
     super(paramViewGroup, paramInt1);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter = paramWSRecommendAdapter;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView = a(paramInt2);
+    this.c = paramWSRecommendAdapter;
+    this.a = a(paramInt2);
   }
   
   public abstract IWSItemView<T> a(int paramInt);
@@ -24,13 +24,13 @@ public abstract class AbsWSGridBaseHolder<T>
   public void bindData(T paramT)
   {
     super.bindData(paramT);
-    this.jdField_a_of_type_JavaLangObject = paramT;
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiIWSItemView.a(paramT);
+    this.b = paramT;
+    this.a.a(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.AbsWSGridBaseHolder
  * JD-Core Version:    0.7.0.1
  */

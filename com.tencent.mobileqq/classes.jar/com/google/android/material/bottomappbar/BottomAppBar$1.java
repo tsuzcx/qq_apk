@@ -13,13 +13,13 @@ class BottomAppBar$1
     if (!BottomAppBar.a(this.a))
     {
       paramAnimator = this.a;
-      BottomAppBar.a(paramAnimator, BottomAppBar.a(paramAnimator), BottomAppBar.b(this.a));
+      BottomAppBar.a(paramAnimator, BottomAppBar.b(paramAnimator), BottomAppBar.c(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.material.bottomappbar.BottomAppBar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ class MiniAppUserAppInfoListManager$1
   
   protected void onGetAppletsPushUnreadInfo(Object paramObject)
   {
-    if ((MiniAppConfProcessor.d()) && ((paramObject instanceof MiniAppRedDotEntity)))
+    if ((MiniAppConfProcessor.g()) && ((paramObject instanceof MiniAppRedDotEntity)))
     {
       paramObject = (MiniAppRedDotEntity)paramObject;
       this.this$0.setMiniAppPushRedDotData(paramObject);
@@ -33,7 +33,7 @@ class MiniAppUserAppInfoListManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.1
  * JD-Core Version:    0.7.0.1
  */

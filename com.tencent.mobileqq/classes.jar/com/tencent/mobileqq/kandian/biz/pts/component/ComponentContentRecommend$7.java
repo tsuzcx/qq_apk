@@ -44,7 +44,7 @@ class ComponentContentRecommend$7
       ((StringBuilder)localObject2).append(paramBoolean);
       QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    Object localObject1 = ComponentContentRecommend.a(this.a).iterator();
+    Object localObject1 = ComponentContentRecommend.d(this.a).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (RecommendFollowInfo)((Iterator)localObject1).next();
@@ -52,38 +52,38 @@ class ComponentContentRecommend$7
         ((RecommendFollowInfo)localObject2).isFollowed = paramBoolean;
       }
     }
-    ComponentContentRecommend.a(this.a).notifyDataSetChanged();
+    ComponentContentRecommend.e(this.a).notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList)
   {
-    if ((ComponentContentRecommend.a(this.a) != null) && (ComponentContentRecommend.a(this.a).mRecommendFollowInfos != null))
+    if ((ComponentContentRecommend.b(this.a) != null) && (ComponentContentRecommend.b(this.a).mRecommendFollowInfos != null))
     {
-      if (ComponentContentRecommend.a(this.a).mArticleID != paramLong) {
+      if (ComponentContentRecommend.b(this.a).mArticleID != paramLong) {
         return;
       }
       if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
       {
         ComponentContentRecommend.a(this.a).clearAnimation();
-        ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.clear();
-        ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a.addAll(paramList);
-        ReadInJoyLogicEngine.a().e(ComponentContentRecommend.a(this.a));
-        ComponentContentRecommend.a(this.a).clear();
-        ComponentContentRecommend.a(this.a).addAll(paramList);
-        ComponentContentRecommend.a(this.a).notifyDataSetChanged();
+        ComponentContentRecommend.b(this.a).mRecommendFollowInfos.c.clear();
+        ComponentContentRecommend.b(this.a).mRecommendFollowInfos.c.addAll(paramList);
+        ReadInJoyLogicEngine.a().f(ComponentContentRecommend.b(this.a));
+        ComponentContentRecommend.d(this.a).clear();
+        ComponentContentRecommend.d(this.a).addAll(paramList);
+        ComponentContentRecommend.e(this.a).notifyDataSetChanged();
         return;
       }
-      QQToast.a(ComponentContentRecommend.a(this.a), 1, HardCodeUtil.a(2131702511), 1).a();
+      QQToast.makeText(ComponentContentRecommend.f(this.a), 1, HardCodeUtil.a(2131900507), 1).show();
       ComponentContentRecommend.a(this.a).clearAnimation();
       return;
     }
-    QQToast.a(ComponentContentRecommend.a(this.a), 1, HardCodeUtil.a(2131702508), 1).a();
+    QQToast.makeText(ComponentContentRecommend.f(this.a), 1, HardCodeUtil.a(2131900504), 1).show();
     ComponentContentRecommend.a(this.a).clearAnimation();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.component.ComponentContentRecommend.7
  * JD-Core Version:    0.7.0.1
  */

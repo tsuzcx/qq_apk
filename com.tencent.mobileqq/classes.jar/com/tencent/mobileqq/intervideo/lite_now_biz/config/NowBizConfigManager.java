@@ -12,31 +12,25 @@ import java.util.Map;
 
 public class NowBizConfigManager
 {
-  private static NowBizConfigManager jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager = new NowBizConfigManager();
-  private static List<String> jdField_a_of_type_JavaUtilList;
-  private static Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private static boolean jdField_a_of_type_Boolean;
-  private Bundle jdField_a_of_type_AndroidOsBundle = null;
-  private List<String> jdField_b_of_type_JavaUtilList = new ArrayList();
-  private Map<String, String> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private static Map<String, Boolean> a = new HashMap();
+  private static List<String> b = new ArrayList();
+  private static boolean h = false;
+  private static NowBizConfigManager j = new NowBizConfigManager();
   private List<String> c = new ArrayList();
   private List<String> d = new ArrayList();
-  private List<String> e = new ArrayList();
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilList = new ArrayList();
-    jdField_a_of_type_Boolean = false;
-  }
+  private Map<String, String> e = new HashMap();
+  private List<String> f = new ArrayList();
+  private List<String> g = new ArrayList();
+  private Bundle i = null;
   
   private NowBizConfigManager()
   {
-    a();
+    b();
   }
   
   public static NowBizConfigManager a()
   {
-    return jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizConfigNowBizConfigManager;
+    return j;
   }
   
   public static String a(Bundle paramBundle, String paramString)
@@ -75,32 +69,35 @@ public class NowBizConfigManager
     return localObject2;
   }
   
-  private void a()
-  {
-    this.jdField_b_of_type_JavaUtilList.addAll(Arrays.asList(NowBizConfigConst.a));
-    this.c.addAll(Arrays.asList(NowBizConfigConst.b));
-    jdField_a_of_type_JavaUtilList.addAll(Arrays.asList(NowBizConfigConst.c));
-  }
-  
-  private void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
   public static void a(String paramString, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(paramBoolean));
+    a.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
   public static void a(boolean paramBoolean)
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    h = paramBoolean;
   }
   
-  public static String b(Bundle paramBundle)
+  private void b()
+  {
+    this.c.addAll(Arrays.asList(NowBizConfigConst.a));
+    this.d.addAll(Arrays.asList(NowBizConfigConst.b));
+    b.addAll(Arrays.asList(NowBizConfigConst.c));
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (b.contains(paramString)) {
+      return ((Boolean)a.get("multi_voice")).booleanValue();
+    }
+    return h;
+  }
+  
+  public static String c(Bundle paramBundle)
   {
     String str = a(paramBundle, "fromid");
-    if (jdField_a_of_type_JavaUtilList.contains(str)) {
+    if (b.contains(str)) {
       return "multi_voice";
     }
     if ("10001".equals(a(paramBundle, "roomtype"))) {
@@ -109,33 +106,9 @@ public class NowBizConfigManager
     return "live";
   }
   
-  public static boolean b(String paramString)
+  private void d(Bundle paramBundle)
   {
-    if (jdField_a_of_type_JavaUtilList.contains(paramString)) {
-      return ((Boolean)jdField_a_of_type_JavaUtilMap.get("multi_voice")).booleanValue();
-    }
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public String a(Bundle paramBundle)
-  {
-    a(paramBundle);
-    String str = a(paramBundle, "fromid");
-    if (jdField_a_of_type_JavaUtilList.contains(str))
-    {
-      if ((jdField_a_of_type_JavaUtilMap.containsKey("multi_voice")) && (((Boolean)jdField_a_of_type_JavaUtilMap.get("multi_voice")).booleanValue())) {
-        return "multi_voice";
-      }
-      return "";
-    }
-    paramBundle = a(paramBundle, "roomtype");
-    if (!jdField_a_of_type_Boolean) {
-      return "";
-    }
-    if ("10001".equals(paramBundle)) {
-      return "od";
-    }
-    return "live";
+    this.i = paramBundle;
   }
   
   public boolean a(Bundle paramBundle)
@@ -145,12 +118,33 @@ public class NowBizConfigManager
   
   public boolean a(String paramString)
   {
-    return jdField_a_of_type_JavaUtilList.contains(paramString);
+    return b.contains(paramString);
+  }
+  
+  public String b(Bundle paramBundle)
+  {
+    d(paramBundle);
+    String str = a(paramBundle, "fromid");
+    if (b.contains(str))
+    {
+      if ((a.containsKey("multi_voice")) && (((Boolean)a.get("multi_voice")).booleanValue())) {
+        return "multi_voice";
+      }
+      return "";
+    }
+    paramBundle = a(paramBundle, "roomtype");
+    if (!h) {
+      return "";
+    }
+    if ("10001".equals(paramBundle)) {
+      return "od";
+    }
+    return "live";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.config.NowBizConfigManager
  * JD-Core Version:    0.7.0.1
  */

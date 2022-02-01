@@ -1,29 +1,27 @@
 package com.tencent.aelight.camera.ae.camera.ui.dashboard;
 
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
 class AEVideoStoryDashboardPart$4
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
   AEVideoStoryDashboardPart$4(AEVideoStoryDashboardPart paramAEVideoStoryDashboardPart) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    paramCompoundButton = AEVideoStoryDashboardPart.c(this.a);
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    } else {
-      i = 8;
+    paramView = AEVideoStoryDashboardPart.c(this.a).getText();
+    if (TextUtils.isEmpty(paramView)) {
+      return;
     }
-    paramCompoundButton.setVisibility(i);
+    AEVideoStoryDashboardPart.a(this.a, paramView.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.4
  * JD-Core Version:    0.7.0.1
  */

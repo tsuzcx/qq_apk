@@ -14,21 +14,21 @@ public class SlideProgressNotifier
   extends QQProgressNotifier
   implements DialogInterface.OnKeyListener, RefreshUICallBack
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  Handler jdField_a_of_type_AndroidOsHandler;
-  private SlideProgressNotifier.OnCancelListener jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$OnCancelListener;
-  SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
+  Activity a;
+  SlideProgressNotifier.RefreshProgressThread b;
+  Handler c;
+  private SlideProgressNotifier.OnCancelListener i;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
     super(paramActivity, paramInt);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.a = paramActivity;
+    this.c = new Handler(Looper.getMainLooper());
   }
   
   public void a()
   {
-    SlideProgressNotifier.RefreshProgressThread localRefreshProgressThread = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
+    SlideProgressNotifier.RefreshProgressThread localRefreshProgressThread = this.b;
     if (localRefreshProgressThread != null) {
       localRefreshProgressThread.a();
     }
@@ -36,7 +36,7 @@ public class SlideProgressNotifier
   
   public void a(int paramInt)
   {
-    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    Handler localHandler = this.c;
     if (localHandler != null) {
       localHandler.post(new SlideProgressNotifier.1(this, paramInt));
     }
@@ -44,15 +44,15 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-    if ((localObject != null) && (!((SlideProgressNotifier.RefreshProgressThread)localObject).a()))
+    Object localObject = this.b;
+    if ((localObject != null) && (!((SlideProgressNotifier.RefreshProgressThread)localObject).b()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread = null;
+      this.b.a();
+      this.b = null;
     }
     a(paramInt3);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread = new SlideProgressNotifier.RefreshProgressThread(paramInt1, paramInt2, paramInt3, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.start();
+    this.b = new SlideProgressNotifier.RefreshProgressThread(paramInt1, paramInt2, paramInt3, this);
+    this.b.start();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -69,20 +69,20 @@ public class SlideProgressNotifier
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidAppActivity.getString(2131699372));
+    ((StringBuilder)localObject).append(this.a.getString(2131897389));
     ((StringBuilder)localObject).append("0%");
     super.a(paramInt1, ((StringBuilder)localObject).toString(), 0);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnKeyListener(this);
+    if (this.d != null) {
+      this.d.setOnKeyListener(this);
     }
-    localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-    if ((localObject != null) && (!((SlideProgressNotifier.RefreshProgressThread)localObject).a()))
+    localObject = this.b;
+    if ((localObject != null) && (!((SlideProgressNotifier.RefreshProgressThread)localObject).b()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a();
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread = null;
+      this.b.a();
+      this.b = null;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread = new SlideProgressNotifier.RefreshProgressThread(paramInt2, paramInt3, paramInt4, this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.start();
+    this.b = new SlideProgressNotifier.RefreshProgressThread(paramInt2, paramInt3, paramInt4, this);
+    this.b.start();
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder();
@@ -100,8 +100,8 @@ public class SlideProgressNotifier
   {
     if (paramInt == 4)
     {
-      SlideShowPhotoListManager.a().d();
-      paramDialogInterface = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$OnCancelListener;
+      SlideShowPhotoListManager.a().k();
+      paramDialogInterface = this.i;
       if (paramDialogInterface != null) {
         paramDialogInterface.a();
       }

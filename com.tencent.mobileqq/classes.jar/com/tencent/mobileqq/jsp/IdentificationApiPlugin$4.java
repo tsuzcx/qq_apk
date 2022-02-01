@@ -9,13 +9,13 @@ class IdentificationApiPlugin$4
   
   public void run()
   {
-    IdentificationApiPlugin.a(this.this$0);
-    QQToast.a(IdentificationApiPlugin.a(this.this$0), this.a, 0).a();
+    IdentificationApiPlugin.b(this.this$0);
+    QQToast.makeText(IdentificationApiPlugin.a(this.this$0), this.a, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.IdentificationApiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

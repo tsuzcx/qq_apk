@@ -16,7 +16,7 @@ class QRDisplayActivity$2
   
   protected void a(boolean paramBoolean, String paramString)
   {
-    if ((TextUtils.equals(this.a.c, paramString)) && (paramBoolean))
+    if ((TextUtils.equals(this.a.n, paramString)) && (paramBoolean))
     {
       if (QLog.isColorLevel()) {
         QLog.d("QRDisplayActivity", 2, "onUpdateTroopSearchApproachPageTroopInfoUpdated ");
@@ -24,9 +24,9 @@ class QRDisplayActivity$2
       paramString = (TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER);
       if (paramString != null)
       {
-        paramString = paramString.b(this.a.c);
+        paramString = paramString.f(this.a.n);
         if ((paramString != null) && (!paramString.isNewTroop)) {
-          ((TextView)this.a.findViewById(2131367869)).setVisibility(8);
+          ((TextView)this.a.findViewById(2131434449)).setVisibility(8);
         }
       }
     }

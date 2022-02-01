@@ -11,8 +11,8 @@ class QavPanel$1
   
   public void onClick(View paramView)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.a(true);
+    if ((this.a.q != null) && (this.a.q.a != null)) {
+      this.a.q.a.a(true);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }

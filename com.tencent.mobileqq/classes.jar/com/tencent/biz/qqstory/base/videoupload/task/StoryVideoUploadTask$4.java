@@ -13,14 +13,14 @@ class StoryVideoUploadTask$4
   
   public void a(UploadObject paramUploadObject)
   {
-    ((StoryVideoTaskInfo)this.a.a).j = ((ImageFileObject)paramUploadObject).b;
-    SLog.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((StoryVideoTaskInfo)this.a.a).j);
+    ((StoryVideoTaskInfo)this.a.b).v = ((ImageFileObject)paramUploadObject).b;
+    SLog.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((StoryVideoTaskInfo)this.a.b).v);
     this.a.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask.4
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.weishi_new.player;
 import android.graphics.Bitmap;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
 public abstract class WSPlayerListenerAdapter
 {
@@ -31,19 +30,6 @@ public abstract class WSPlayerListenerAdapter
   
   public abstract void a(WSPlayerWrapper paramWSPlayerWrapper, Object paramObject);
   
-  public void a(WSPlayerWrapper paramWSPlayerWrapper, String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("OnDownloadCallback state:");
-      localStringBuilder.append(paramString);
-      localStringBuilder.append(", videoPlayer:");
-      localStringBuilder.append(paramWSPlayerWrapper);
-      WSLog.b("WSPlayerListenerAdapter", 2, localStringBuilder.toString());
-    }
-  }
-  
   public void a(WSPlayerWrapper paramWSPlayerWrapper, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
     if (QLog.isColorLevel())
@@ -60,17 +46,6 @@ public abstract class WSPlayerListenerAdapter
       localStringBuilder.append(", videoPlayer:");
       localStringBuilder.append(paramWSPlayerWrapper);
       WSLog.b("WSPlayerListenerAdapter", 2, localStringBuilder.toString());
-    }
-  }
-  
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, WSPlayerWrapper paramWSPlayerWrapper)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramWSPlayerWrapper = new StringBuilder();
-      paramWSPlayerWrapper.append("onAccessVideoBitRate onTencentVideoDefnInfo:");
-      paramWSPlayerWrapper.append(paramTVK_NetVideoInfo);
-      WSLog.b("WSPlayerListenerAdapter", 2, paramWSPlayerWrapper.toString());
     }
   }
   
@@ -120,32 +95,10 @@ public abstract class WSPlayerListenerAdapter
       WSLog.b("WSPlayerListenerAdapter", 2, localStringBuilder.toString());
     }
   }
-  
-  public void b(WSPlayerWrapper paramWSPlayerWrapper, String paramString)
-  {
-    if (QLog.isColorLevel())
-    {
-      paramWSPlayerWrapper = new StringBuilder();
-      paramWSPlayerWrapper.append("onConnectQualityCallback json:");
-      paramWSPlayerWrapper.append(paramString);
-      WSLog.d("WSPlayerListenerAdapter", 2, paramWSPlayerWrapper.toString());
-    }
-  }
-  
-  public void c(WSPlayerWrapper paramWSPlayerWrapper)
-  {
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("onDownloadFinish videoPlayer:");
-      localStringBuilder.append(paramWSPlayerWrapper);
-      WSLog.b("WSPlayerListenerAdapter", 2, localStringBuilder.toString());
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerListenerAdapter
  * JD-Core Version:    0.7.0.1
  */

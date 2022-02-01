@@ -15,20 +15,18 @@ import mqq.app.MobileQQ;
 
 public class ColorNoteHistoryManager
 {
-  private static final List<IOnHeaderClickHandler> a;
-  public static final int[] a;
+  public static final int[] a = { 17039360, 17104896, 16908292 };
+  private static final List<IOnHeaderClickHandler> b = new ArrayList();
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 17039360, 17104896, 16908292 };
-    jdField_a_of_type_JavaUtilList = new ArrayList();
     try
     {
       Iterator localIterator = ColorNoteHistoryInjectUtil.a.iterator();
       while (localIterator.hasNext())
       {
         Class localClass = (Class)localIterator.next();
-        jdField_a_of_type_JavaUtilList.add(localClass.newInstance());
+        b.add(localClass.newInstance());
       }
       return;
     }
@@ -40,7 +38,7 @@ public class ColorNoteHistoryManager
   
   public static List<IOnHeaderClickHandler> a()
   {
-    return jdField_a_of_type_JavaUtilList;
+    return b;
   }
   
   public static List<ColorNote> a(List<ColorNote> paramList)
@@ -106,16 +104,21 @@ public class ColorNoteHistoryManager
       if (TextUtils.isEmpty(paramColorNote.getMainTitle())) {
         return;
       }
-      paramColorNote = ColorNoteUtils.c(paramColorNote);
+      paramColorNote = ColorNoteUtils.g(paramColorNote);
       paramColorNote.setType(2);
       ColorNoteCurd localColorNoteCurd = new ColorNoteCurd();
       localColorNoteCurd.a(paramColorNote.getServiceType(), paramColorNote.getSubType(), 2);
       localColorNoteCurd.a(new ColorNoteHistoryManager.1(localColorNoteCurd, paramColorNote));
-      a(MobileQQ.getMobileQQ().waitAppRuntime(null), paramColorNote.getServiceType());
+      d(MobileQQ.getMobileQQ().waitAppRuntime(null), paramColorNote.getServiceType());
     }
   }
   
-  private static void a(List<ColorNote> paramList)
+  public static List<ColorNote> b(AppRuntime paramAppRuntime, int paramInt)
+  {
+    return a(c(paramAppRuntime, 2), paramInt);
+  }
+  
+  private static void b(List<ColorNote> paramList)
   {
     if ((paramList != null) && (paramList.size() >= 20))
     {
@@ -130,14 +133,19 @@ public class ColorNoteHistoryManager
     }
   }
   
-  public static boolean a(AppRuntime paramAppRuntime, int paramInt)
+  public static List<ColorNote> c(AppRuntime paramAppRuntime, int paramInt)
+  {
+    return ((IColorNoteDataService)paramAppRuntime.getRuntimeService(IColorNoteDataService.class, "all")).getColorNotes(false, paramInt);
+  }
+  
+  public static boolean d(AppRuntime paramAppRuntime, int paramInt)
   {
     if (MobileQQ.sProcessId == 1)
     {
       paramAppRuntime = b(paramAppRuntime, paramInt);
       if ((paramAppRuntime != null) && (paramAppRuntime.size() > 20))
       {
-        a(paramAppRuntime);
+        b(paramAppRuntime);
         return true;
       }
     }
@@ -147,20 +155,10 @@ public class ColorNoteHistoryManager
     }
     return true;
   }
-  
-  public static List<ColorNote> b(AppRuntime paramAppRuntime, int paramInt)
-  {
-    return a(c(paramAppRuntime, 2), paramInt);
-  }
-  
-  public static List<ColorNote> c(AppRuntime paramAppRuntime, int paramInt)
-  {
-    return ((IColorNoteDataService)paramAppRuntime.getRuntimeService(IColorNoteDataService.class, "all")).getColorNotes(false, paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.ColorNoteHistoryManager
  * JD-Core Version:    0.7.0.1
  */

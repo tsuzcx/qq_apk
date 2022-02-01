@@ -12,15 +12,15 @@ public class OpenSdkConfProcessor
 {
   public static OpenSdkConfBean a()
   {
-    return (OpenSdkConfBean)QConfigManager.a().a(426);
+    return (OpenSdkConfBean)QConfigManager.b().b(426);
   }
   
-  public static boolean a()
+  public static boolean b()
   {
     OpenSdkConfBean localOpenSdkConfBean = a();
     boolean bool;
     if (localOpenSdkConfBean != null) {
-      bool = localOpenSdkConfBean.b();
+      bool = localOpenSdkConfBean.c();
     } else {
       bool = false;
     }
@@ -90,7 +90,7 @@ public class OpenSdkConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class PreloadBackControlConfig
   {
     try
     {
-      localPreloadBackControlConfig = (PreloadBackControlConfig)QWalletTools.a(getConfigPath(paramAppRuntime));
+      localPreloadBackControlConfig = (PreloadBackControlConfig)QWalletTools.e(getConfigPath(paramAppRuntime));
     }
     catch (Exception localException)
     {
@@ -86,7 +86,7 @@ public class PreloadBackControlConfig
   {
     try
     {
-      int i = QConfigManager.a().a(68, this.a.getLongAccountUin());
+      int i = QConfigManager.b().a(68, this.a.getLongAccountUin());
       int j = this.mConfigVersion;
       return i == j;
     }
@@ -112,7 +112,7 @@ public class PreloadBackControlConfig
   {
     try
     {
-      this.mConfigVersion = QConfigManager.a().a(68, this.a.getLongAccountUin());
+      this.mConfigVersion = QConfigManager.b().a(68, this.a.getLongAccountUin());
       this.mLastBackResInfos = paramArrayList;
       QWalletTools.a(this, getConfigPath(this.a));
       return;
@@ -126,7 +126,7 @@ public class PreloadBackControlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadBackControlConfig
  * JD-Core Version:    0.7.0.1
  */

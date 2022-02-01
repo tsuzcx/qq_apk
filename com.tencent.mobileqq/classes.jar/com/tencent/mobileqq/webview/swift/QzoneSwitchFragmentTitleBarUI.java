@@ -45,40 +45,40 @@ public class QzoneSwitchFragmentTitleBarUI
   {
     if (paramSubTabParam != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView = new WebViewTopTabView(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonNum(paramSubTabParam.jdField_b_of_type_Int, paramSubTabParam.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonText(paramSubTabParam.jdField_a_of_type_ArrayOfJavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonBackgroundResource(2130851213, 2130851214, 2130851215);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setButtonTextColorStateList(2131167381);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setLeftAndRightPaddingByDp(10);
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.v);
+      this.N = new WebViewTopTabView(BaseApplicationImpl.getContext());
+      this.N.setButtonNum(paramSubTabParam.b, paramSubTabParam.a);
+      this.N.setButtonText(paramSubTabParam.e);
+      this.N.setButtonBackgroundResource(2130853469, 2130853470, 2130853471);
+      this.N.setButtonTextColorStateList(2131168436);
+      this.N.setLeftAndRightPaddingByDp(10);
+      a(this.b.E);
       int i = -1;
       try
       {
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView, new RelativeLayout.LayoutParams(-2, -1));
+        this.q.removeAllViews();
+        this.q.addView(this.N, new RelativeLayout.LayoutParams(-2, -1));
       }
       catch (Exception localException1)
       {
         localException1.printStackTrace();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.getIntent().getBooleanExtra("topTabSwitchFragment", false))
+      if (this.a.i.getIntent().getBooleanExtra("topTabSwitchFragment", false))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setOnCheckedChangeListener(new QzoneSwitchFragmentTitleBarUI.1(this));
-        if (((QQBrowserActivity)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a).oldTabSelectIndex != -1) {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setSelectedTab(((QQBrowserActivity)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a).oldTabSelectIndex);
+        this.N.setOnCheckedChangeListener(new QzoneSwitchFragmentTitleBarUI.1(this));
+        if (((QQBrowserActivity)this.a.i).oldTabSelectIndex != -1) {
+          this.N.setSelectedTab(((QQBrowserActivity)this.a.i).oldTabSelectIndex);
         } else {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabView.setSelectedTab(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.getIntent().getIntExtra("topTabSelectIndex", 0));
+          this.N.setSelectedTab(this.a.i.getIntent().getIntExtra("topTabSelectIndex", 0));
         }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a(paramSubTabParam.jdField_b_of_type_JavaLangString, true);
+      if (this.O != null) {
+        this.O.a(paramSubTabParam.d, true);
       }
-      TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
-      if ((localTouchWebView != null) && (!TextUtils.isEmpty(paramSubTabParam.jdField_a_of_type_JavaLangString)))
+      TouchWebView localTouchWebView = this.a.l();
+      if ((localTouchWebView != null) && (!TextUtils.isEmpty(paramSubTabParam.c)))
       {
         String str;
-        if (TextUtils.isEmpty(paramSubTabParam.jdField_b_of_type_JavaLangString))
+        if (TextUtils.isEmpty(paramSubTabParam.d))
         {
           str = "the subTabCallback isEmpty";
         }
@@ -97,14 +97,14 @@ public class QzoneSwitchFragmentTitleBarUI
         {
           localException2.printStackTrace();
         }
-        localTouchWebView.callJs(paramSubTabParam.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        localTouchWebView.callJs(paramSubTabParam.c, new String[] { localJSONObject.toString() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.QzoneSwitchFragmentTitleBarUI
  * JD-Core Version:    0.7.0.1
  */

@@ -15,16 +15,16 @@ class WriteTogetherEditorFragment$9
   public void onClick(View paramView)
   {
     WriteTogetherEditorFragment.a(this.a, true);
-    WriteTogetherEditorFragment.e(this.a);
-    if ((WriteTogetherUtils.a(WriteTogetherEditorFragment.a(this.a).f)) || (!WriteTogetherEditorFragment.a(this.a).a())) {
-      WriteTogetherEditorFragment.f(this.a);
+    WriteTogetherEditorFragment.k(this.a);
+    if ((WriteTogetherUtils.b(WriteTogetherEditorFragment.l(this.a).t)) || (!WriteTogetherEditorFragment.m(this.a).b())) {
+      WriteTogetherEditorFragment.n(this.a);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.9
  * JD-Core Version:    0.7.0.1
  */

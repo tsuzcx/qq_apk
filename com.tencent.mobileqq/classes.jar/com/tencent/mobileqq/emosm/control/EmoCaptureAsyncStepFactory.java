@@ -17,12 +17,12 @@ public class EmoCaptureAsyncStepFactory
       if (str.startsWith("{"))
       {
         paramString = new EmoCaptureAsyncStepFactory.CaptureEmoLinearGroup();
-        paramString.b = str;
+        paramString.l = str;
       }
       else if (str.startsWith("["))
       {
         paramString = new EmoCaptureAsyncStepFactory.CaptureEmoParallGroup();
-        paramString.b = str;
+        paramString.l = str;
       }
       else
       {
@@ -33,14 +33,14 @@ public class EmoCaptureAsyncStepFactory
           paramString = new CameraEmoAllSend();
         }
       }
-      paramString.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoAutomator = paramEmoAutomator;
-      paramString.b = i;
+      paramString.f = paramEmoAutomator;
+      paramString.g = i;
       if (i >= 0)
       {
-        paramString.jdField_a_of_type_JavaLangString = paramString.getClass().getSimpleName();
+        paramString.h = paramString.getClass().getSimpleName();
         return paramString;
       }
-      paramString.jdField_a_of_type_JavaLangString = str;
+      paramString.h = str;
       return paramString;
     }
     paramEmoAutomator = new StringBuilder();
@@ -51,7 +51,7 @@ public class EmoCaptureAsyncStepFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.control.EmoCaptureAsyncStepFactory
  * JD-Core Version:    0.7.0.1
  */

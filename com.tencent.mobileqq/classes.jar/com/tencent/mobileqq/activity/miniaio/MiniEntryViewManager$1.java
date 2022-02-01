@@ -13,7 +13,7 @@ class MiniEntryViewManager$1
   {
     if (MiniEntryViewManager.a(this.a) != null)
     {
-      MiniEntryViewManager.a(this.a).onClick(MiniEntryViewManager.a(this.a));
+      MiniEntryViewManager.a(this.a).onClick(MiniEntryViewManager.b(this.a));
       return true;
     }
     return false;
@@ -21,7 +21,7 @@ class MiniEntryViewManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniEntryViewManager.1
  * JD-Core Version:    0.7.0.1
  */

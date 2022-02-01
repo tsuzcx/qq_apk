@@ -5,11 +5,11 @@ import com.tribe.async.dispatch.Dispatcher.Event;
 public class BaseEvent
   implements Dispatcher.Event
 {
-  public ErrorMessage a = new ErrorMessage();
+  public ErrorMessage g = new ErrorMessage();
   
   public String a()
   {
-    return this.a.getErrorMessage();
+    return this.g.getErrorMessage();
   }
   
   public String toString()
@@ -17,7 +17,7 @@ public class BaseEvent
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
     Object localObject;
-    if (this.a == null)
+    if (this.g == null)
     {
       localObject = "null";
     }
@@ -25,7 +25,7 @@ public class BaseEvent
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("\"");
-      ((StringBuilder)localObject).append(this.a);
+      ((StringBuilder)localObject).append(this.g);
       ((StringBuilder)localObject).append("\"");
       localObject = ((StringBuilder)localObject).toString();
     }
@@ -36,7 +36,7 @@ public class BaseEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.BaseEvent
  * JD-Core Version:    0.7.0.1
  */

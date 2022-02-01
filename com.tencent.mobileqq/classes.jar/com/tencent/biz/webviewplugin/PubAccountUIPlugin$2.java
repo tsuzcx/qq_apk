@@ -13,8 +13,8 @@ class PubAccountUIPlugin$2
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.a.setImageDrawable(this.b);
+    this.a.startAnimation(this.c);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -23,7 +23,7 @@ class PubAccountUIPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountUIPlugin.2
  * JD-Core Version:    0.7.0.1
  */

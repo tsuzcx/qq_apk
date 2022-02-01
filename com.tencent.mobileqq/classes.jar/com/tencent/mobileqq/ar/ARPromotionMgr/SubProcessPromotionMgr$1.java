@@ -32,8 +32,8 @@ class SubProcessPromotionMgr$1
         }
         paramContext = paramIntent.getStringExtra("config_Content");
         this.a.b(paramContext);
-        if (this.a.a != null) {
-          this.a.a.b();
+        if (this.a.d != null) {
+          this.a.d.c();
         }
       }
       else
@@ -41,9 +41,9 @@ class SubProcessPromotionMgr$1
         paramContext = paramIntent.getStringExtra("bussinessSubName");
         i = paramIntent.getIntExtra("download_Index", 0);
         int j = paramIntent.getIntExtra("download_Progress", 0);
-        if (QQAudioHelper.c())
+        if (QQAudioHelper.f())
         {
-          paramIntent = this.a.c;
+          paramIntent = this.a.f;
           StringBuilder localStringBuilder = new StringBuilder();
           localStringBuilder.append("receive notify, index[");
           localStringBuilder.append(i);
@@ -52,8 +52,8 @@ class SubProcessPromotionMgr$1
           localStringBuilder.append("]");
           QLog.w(paramIntent, 1, localStringBuilder.toString());
         }
-        if (this.a.a != null) {
-          this.a.a.b(paramContext, i, j);
+        if (this.a.d != null) {
+          this.a.d.b(paramContext, i, j);
         }
       }
     }
@@ -61,7 +61,7 @@ class SubProcessPromotionMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.SubProcessPromotionMgr.1
  * JD-Core Version:    0.7.0.1
  */

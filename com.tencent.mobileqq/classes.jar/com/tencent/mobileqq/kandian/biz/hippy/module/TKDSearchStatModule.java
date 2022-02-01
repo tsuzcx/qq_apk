@@ -2,9 +2,8 @@ package com.tencent.mobileqq.kandian.biz.hippy.module;
 
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import com.tencent.mobileqq.kandian.biz.framework.api.IRIJUGJsonUtils;
 import com.tencent.mobileqq.kandian.biz.hippy.entity.AccountInfo;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.kandian.repo.common.RIJUGJsonUtils;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
@@ -115,7 +114,7 @@ public class TKDSearchStatModule
     if (paramHippyMap.size() <= 0) {
       return;
     }
-    paramHippyMap.put("qua", ((IRIJUGJsonUtils)QRoute.api(IRIJUGJsonUtils.class)).getQUA2ForKanDian());
+    paramHippyMap.put("qua", RIJUGJsonUtils.c());
     paramHippyMap.put("qq", TKDAccountModule.getCurAccountInfo().qqNum);
     boolean bool1 = false;
     try
@@ -138,7 +137,7 @@ public class TKDSearchStatModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.hippy.module.TKDSearchStatModule
  * JD-Core Version:    0.7.0.1
  */

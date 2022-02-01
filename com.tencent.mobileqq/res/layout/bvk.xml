@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout style="@style/g3"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/mvz" android:src="@drawable/qq_setting_xiangce" android:contentDescription="TODO" style="@style/g2" />
-    <com.tencent.mobileqq.redtouch.RedTouchTextView android:id="@id/mw3" android:text="@string/qq_setting_xiangce" style="@style/g6" />
-    <com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView android:id="@id/mw0" android:layout_width="0.0dip" android:layout_height="fill_parent" />
-    <com.tencent.widget.ThemeLabelTextView android:id="@id/mw2" style="@style/g4" />
-    <ImageView android:id="@id/mw1" android:visibility="visible" android:src="@drawable/skin_icon_arrow_right_normal_theme_version3" style="@style/g5" />
+    <com.tencent.image.URLImageView android:id="@id/n5z" android:src="@drawable/qq_setting_xiangce" android:contentDescription="TODO" style="@style/g2" />
+    <com.tencent.mobileqq.redtouch.RedTouchTextView android:id="@id/n63" android:text="@string/qq_setting_xiangce" style="@style/g6" />
+    <com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView android:id="@id/n60" android:layout_width="0.0dip" android:layout_height="fill_parent" />
+    <com.tencent.widget.ThemeLabelTextView android:id="@id/n62" style="@style/g4" />
+    <ImageView android:id="@id/n61" android:visibility="visible" android:src="@drawable/skin_icon_arrow_right_normal_theme_version3" style="@style/g5" />
 </LinearLayout>

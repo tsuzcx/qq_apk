@@ -19,24 +19,24 @@ import javax.microedition.khronos.opengles.GL10;
 class VideoPlayerRenderer
   implements SurfaceTexture.OnFrameAvailableListener, GLSurfaceView.Renderer
 {
-  private static final String jdField_a_of_type_JavaLangString = "VideoPlayerRenderer";
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private final GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private VideoFilterProcess jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess = new VideoFilterProcess();
-  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new SurfaceTextureFilter();
-  private SpaceFilter jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter = new SpaceFilter();
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private float jdField_b_of_type_Float;
-  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private static final String a = "VideoPlayerRenderer";
+  private int b;
+  private SurfaceTexture c;
+  private final float[] d = new float[16];
+  private AtomicBoolean e = new AtomicBoolean(false);
+  private final GLSurfaceView f;
+  private float g;
+  private float h;
+  private MediaPlayer i;
+  private VideoFilterProcess j = new VideoFilterProcess();
+  private BaseFilter k = new SurfaceTextureFilter();
+  private SpaceFilter l = new SpaceFilter();
+  private Frame m = new Frame();
+  private Frame n = new Frame();
   
   VideoPlayerRenderer(GLSurfaceView paramGLSurfaceView)
   {
-    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = paramGLSurfaceView;
+    this.f = paramGLSurfaceView;
   }
   
   private void a(Frame paramFrame)
@@ -46,7 +46,7 @@ class VideoPlayerRenderer
     GLES20.glClear(16384);
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(770, 771);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.RenderProcess(paramFrame.getTextureId(), (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, 0, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+    this.l.RenderProcess(paramFrame.getTextureId(), (int)this.g, (int)this.h, 0, 0.0D, this.n);
     GLES20.glDisable(3042);
   }
   
@@ -54,49 +54,49 @@ class VideoPlayerRenderer
   {
     Object localObject = new int[1];
     GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
-    this.jdField_a_of_type_Int = localObject[0];
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    localObject = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.setSurface((Surface)localObject);
-    this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
+    this.b = localObject[0];
+    this.c = new SurfaceTexture(this.b);
+    this.c.setOnFrameAvailableListener(this);
+    localObject = new Surface(this.c);
+    this.i.setSurface((Surface)localObject);
+    this.i.prepareAsync();
   }
   
   private void c()
   {
     int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[0] = this.b;
     GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
+    this.c.release();
   }
   
   private void d()
   {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.setRotationAndFlip(0, 0, 1);
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.apply();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.setRotationAndFlip(0, 0, 1);
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess.a();
+    this.k.apply();
+    this.k.setRotationAndFlip(0, 0, 1);
+    this.l.apply();
+    this.l.setRotationAndFlip(0, 0, 1);
+    this.j.a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentFilterBaseFilter.clearGLSL();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterSpaceFilter.clearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.k.clearGLSL();
+    this.l.clearGLSL();
+    this.m.clear();
+    this.n.clear();
     c();
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess.b();
+    this.j.b();
   }
   
   public void a(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = paramMediaPlayer;
+    this.i = paramMediaPlayer;
   }
   
   public void a(VideoFilterProcess.FrameRenderCallback paramFrameRenderCallback)
   {
-    VideoFilterProcess localVideoFilterProcess = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess;
+    VideoFilterProcess localVideoFilterProcess = this.j;
     if (localVideoFilterProcess != null) {
       localVideoFilterProcess.a(paramFrameRenderCallback);
     }
@@ -104,7 +104,7 @@ class VideoPlayerRenderer
   
   public void a(boolean paramBoolean)
   {
-    VideoFilterProcess localVideoFilterProcess = this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess;
+    VideoFilterProcess localVideoFilterProcess = this.j;
     if (localVideoFilterProcess != null) {
       localVideoFilterProcess.a(paramBoolean);
     }
@@ -112,16 +112,16 @@ class VideoPlayerRenderer
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
+    if (this.e.compareAndSet(true, false))
     {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.updateMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Int, (int)(this.jdField_a_of_type_Float * 2.0F), (int)this.jdField_b_of_type_Float, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      this.c.updateTexImage();
+      this.c.getTransformMatrix(this.d);
+      this.k.updateMatrix(this.d);
+      this.k.RenderProcess(this.b, (int)(this.g * 2.0F), (int)this.h, -1, 0.0D, this.m);
     }
-    if (GLES20.glIsTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId()))
+    if (GLES20.glIsTexture(this.m.getTextureId()))
     {
-      a(this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess.a(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float));
+      a(this.j.a(this.m, (int)this.g, (int)this.h));
       return;
     }
     GLES20.glBindFramebuffer(36160, 0);
@@ -133,8 +133,8 @@ class VideoPlayerRenderer
   {
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      this.jdField_a_of_type_AndroidOpenglGLSurfaceView.requestRender();
+      this.e.set(true);
+      this.f.requestRender();
       return;
     }
     finally
@@ -146,28 +146,28 @@ class VideoPlayerRenderer
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    paramGL10 = jdField_a_of_type_JavaLangString;
+    paramGL10 = a;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("onSurfaceChanged width = ");
     localStringBuilder.append(paramInt1);
     localStringBuilder.append("  height = ");
     localStringBuilder.append(paramInt2);
     Log.d(paramGL10, localStringBuilder.toString());
-    this.jdField_a_of_type_Float = paramInt1;
-    this.jdField_b_of_type_Float = paramInt2;
-    this.jdField_a_of_type_ComTencentAelightCameraAeGifPreviewVideoFilterProcess.a(paramInt1, paramInt2);
+    this.g = paramInt1;
+    this.h = paramInt2;
+    this.j.a(paramInt1, paramInt2);
   }
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    this.e.set(false);
     b();
     d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.ae.gif.preview.VideoPlayerRenderer
  * JD-Core Version:    0.7.0.1
  */

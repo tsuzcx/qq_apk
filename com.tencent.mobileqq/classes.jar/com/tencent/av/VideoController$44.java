@@ -1,19 +1,26 @@
 package com.tencent.av;
 
 import com.tencent.av.app.SessionInfo;
+import com.tencent.av.avatar.IAvatar2DAIDataListener;
 
 class VideoController$44
-  implements Runnable
+  implements IAvatar2DAIDataListener
 {
-  VideoController$44(VideoController paramVideoController, String paramString1, long paramLong, int paramInt1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, int paramInt2) {}
+  VideoController$44(VideoController paramVideoController) {}
   
-  public void run()
+  public void a(byte[] paramArrayOfByte)
   {
-    SessionInfo localSessionInfo = this.this$0.a.c(this.jdField_a_of_type_JavaLangString);
-    if ((!this.this$0.d) && (localSessionInfo != null) && (localSessionInfo.k != 21) && (localSessionInfo.k != 1011)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, localSessionInfo.e, false, false, true);
+    this.a.b(paramArrayOfByte);
+    if (VideoController.f(this.a))
+    {
+      if (this.a.k() != null) {
+        paramArrayOfByte = this.a.k().s;
+      } else {
+        paramArrayOfByte = "";
+      }
+      this.a.b(paramArrayOfByte);
+      VideoController.b(this.a, false);
     }
-    this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
   }
 }
 

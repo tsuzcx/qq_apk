@@ -36,6 +36,7 @@ import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.profilecard.template.IDiyMoreInfoManager;
 import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.vas.VasApngUtil;
@@ -521,24 +522,10 @@ public class ProfileDiamondWallComponent
     } else {
       localObject = paramProfileCardInfo.card;
     }
-    paramBoolean = true;
     boolean bool1 = true;
     boolean bool2 = true;
+    paramBoolean = true;
     if (localObject == null)
-    {
-      if (this.mViewContainer != null) {
-        paramBoolean = bool2;
-      } else {
-        paramBoolean = false;
-      }
-      this.mViewContainer = null;
-      return paramBoolean;
-    }
-    bool2 = Utils.b(paramProfileCardInfo.allInOne.uin) ^ true;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, String.format("makeAccountLineThree, , diamond: %s", new Object[] { Boolean.valueOf(bool2) }));
-    }
-    if (!bool2)
     {
       if (this.mViewContainer == null) {
         paramBoolean = false;
@@ -546,18 +533,36 @@ public class ProfileDiamondWallComponent
       this.mViewContainer = null;
       return paramBoolean;
     }
+    if ((!Utils.c(paramProfileCardInfo.allInOne.uin)) && (!ProfilePAUtils.isFromGuild(paramProfileCardInfo.allInOne.pa))) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.FrdProfileCard", 2, String.format("makeAccountLineThree, , diamond: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (!paramBoolean)
+    {
+      if (this.mViewContainer != null) {
+        paramBoolean = bool1;
+      } else {
+        paramBoolean = false;
+      }
+      this.mViewContainer = null;
+      return paramBoolean;
+    }
     if (this.mViewContainer == null)
     {
-      this.mViewContainer = LayoutInflater.from(this.mActivity).inflate(2131561345, null);
-      paramBoolean = bool1;
+      this.mViewContainer = LayoutInflater.from(this.mActivity).inflate(2131627701, null);
+      bool1 = bool2;
     }
     else
     {
-      paramBoolean = false;
+      bool1 = false;
     }
-    Object localObject = (ImageView)((View)this.mViewContainer).findViewById(2131362975);
-    View localView = ((View)this.mViewContainer).findViewById(2131365686);
-    if (bool2)
+    Object localObject = (ImageView)((View)this.mViewContainer).findViewById(2131428774);
+    View localView = ((View)this.mViewContainer).findViewById(2131431923);
+    if (paramBoolean)
     {
       updateDiamondView(paramProfileCardInfo, localView);
       paramProfileCardInfo = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
@@ -569,7 +574,7 @@ public class ProfileDiamondWallComponent
       localView.setVisibility(8);
       ((View)this.mViewContainer).setTag(null);
     }
-    if (bool2)
+    if (paramBoolean)
     {
       ((View)this.mViewContainer).setTag(new DataTag(26, null));
       ((View)this.mViewContainer).setOnClickListener(this.mOnClickListener);
@@ -578,10 +583,10 @@ public class ProfileDiamondWallComponent
     paramProfileCardInfo = ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter);
     if (paramProfileCardInfo.isDiy())
     {
-      ((View)this.mViewContainer).setBackgroundResource(2130839435);
+      ((View)this.mViewContainer).setBackgroundResource(2130839624);
       paramProfileCardInfo.updateMetalForDeepDiy((View)this.mViewContainer);
     }
-    return paramBoolean;
+    return bool1;
   }
   
   public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
@@ -591,10 +596,10 @@ public class ProfileDiamondWallComponent
     paramBundle = paramQBaseActivity.getDisplayMetrics();
     this.mDensity = paramBundle.density;
     float f1 = Math.min(paramBundle.widthPixels, paramBundle.heightPixels);
-    float f2 = paramQBaseActivity.getDimensionPixelSize(2131297246) + paramQBaseActivity.getDimensionPixelSize(2131297597) + paramQBaseActivity.getDimensionPixelSize(2131297598);
+    float f2 = paramQBaseActivity.getDimensionPixelSize(2131297677) + paramQBaseActivity.getDimensionPixelSize(2131298261) + paramQBaseActivity.getDimensionPixelSize(2131298262);
     float f3 = this.mDensity;
-    int i = paramQBaseActivity.getDimensionPixelSize(2131297594);
-    int j = paramQBaseActivity.getDimensionPixelSize(2131297595);
+    int i = paramQBaseActivity.getDimensionPixelSize(2131298258);
+    int j = paramQBaseActivity.getDimensionPixelSize(2131298259);
     this.mItemInfoWidth = (f1 - f2 - (f3 * 7.0F + i + j));
   }
   
@@ -614,11 +619,11 @@ public class ProfileDiamondWallComponent
       Object localObject3 = paramProfileCardInfo.card;
       Object localObject1 = ((Card)localObject3).getPrivilegeOpenInfo();
       Object localObject2 = ((Card)localObject3).getPrivilegeCloseInfo();
-      TextView localTextView = (TextView)paramView.findViewById(2131373166);
-      paramView = (LinearLayout)paramView.findViewById(2131365687);
+      TextView localTextView = (TextView)paramView.findViewById(2131440776);
+      paramView = (LinearLayout)paramView.findViewById(2131431924);
       paramView.removeAllViews();
       StringBuilder localStringBuilder = new StringBuilder(24);
-      localStringBuilder.append(this.mActivity.getString(2131693340));
+      localStringBuilder.append(this.mActivity.getString(2131890889));
       if ((paramProfileCardInfo.allInOne.pa != 0) && (!this.mApp.getCurrentAccountUin().equals(paramProfileCardInfo.allInOne.uin)))
       {
         if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
@@ -633,7 +638,7 @@ public class ProfileDiamondWallComponent
         {
           paramProfileCardInfo = ((Card)localObject3).privilegePromptStr;
           if (TextUtils.isEmpty(paramProfileCardInfo)) {
-            localTextView.setText(this.mActivity.getString(2131699153));
+            localTextView.setText(this.mActivity.getString(2131897169));
           } else {
             localTextView.setText(paramProfileCardInfo);
           }
@@ -669,7 +674,7 @@ public class ProfileDiamondWallComponent
         {
           paramView.setVisibility(8);
           localTextView.setVisibility(0);
-          localTextView.setText(this.mActivity.getString(2131699154));
+          localTextView.setText(this.mActivity.getString(2131897170));
           localStringBuilder.append("你未开通特权服务，快去开通vip服务吧！");
         }
         if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
@@ -697,7 +702,7 @@ public class ProfileDiamondWallComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.diamondwall.ProfileDiamondWallComponent
  * JD-Core Version:    0.7.0.1
  */

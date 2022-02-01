@@ -11,7 +11,7 @@ final class f
     // Byte code:
     //   0: aload_0
     //   1: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/f:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
-    //   4: invokestatic 24	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Z
+    //   4: invokestatic 25	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:b	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Z
     //   7: ifeq +4 -> 11
     //   10: return
     //   11: aload_0
@@ -27,38 +27,38 @@ final class f
     //   31: astore 5
     //   33: aload_0
     //   34: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/f:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
-    //   37: invokestatic 40	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Ljava/util/Map;
-    //   40: invokeinterface 46 1 0
-    //   45: invokeinterface 52 1 0
+    //   37: invokestatic 41	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:d	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Ljava/util/Map;
+    //   40: invokeinterface 47 1 0
+    //   45: invokeinterface 53 1 0
     //   50: astore 6
     //   52: aload 6
-    //   54: invokeinterface 58 1 0
+    //   54: invokeinterface 59 1 0
     //   59: ifeq +21 -> 80
     //   62: aload 6
-    //   64: invokeinterface 62 1 0
-    //   69: checkcast 64	com/tencent/featuretoggle/hltxkg/common/c/b/b/b
+    //   64: invokeinterface 63 1 0
+    //   69: checkcast 65	com/tencent/featuretoggle/hltxkg/common/c/b/b/b
     //   72: aload 5
-    //   74: invokevirtual 67	com/tencent/featuretoggle/hltxkg/common/c/b/b/b:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/a;)V
+    //   74: invokevirtual 68	com/tencent/featuretoggle/hltxkg/common/c/b/b/b:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/a;)V
     //   77: goto -25 -> 52
     //   80: aload 5
-    //   82: invokevirtual 70	com/tencent/featuretoggle/hltxkg/common/c/b/b/a:a	()[B
+    //   82: invokevirtual 71	com/tencent/featuretoggle/hltxkg/common/c/b/b/a:a	()[B
     //   85: astore 5
     //   87: aload 5
-    //   89: invokestatic 75	com/tencent/featuretoggle/hltxkg/common/e/c:a	([B)Z
+    //   89: invokestatic 76	com/tencent/featuretoggle/hltxkg/common/e/c:a	([B)Z
     //   92: ifne +355 -> 447
-    //   95: ldc 77
+    //   95: ldc 78
     //   97: iconst_0
     //   98: aconst_null
     //   99: aload 5
     //   101: sipush 15000
-    //   104: invokestatic 81	com/tencent/featuretoggle/hltxkg/common/e/c:c	()Ljava/lang/String;
+    //   104: invokestatic 82	com/tencent/featuretoggle/hltxkg/common/e/c:c	()Ljava/lang/String;
     //   107: iconst_0
     //   108: invokestatic 87	com/tencent/featuretoggle/hltxkg/common/c/f:d	()Lcom/tencent/featuretoggle/hltxkg/common/c/f;
     //   111: invokevirtual 91	com/tencent/featuretoggle/hltxkg/common/c/f:f	()Lcom/tencent/featuretoggle/hltxkg/common/a/c/d;
     //   114: invokestatic 96	com/tencent/featuretoggle/hltxkg/common/b/a/c:a	(Ljava/lang/String;ZLjava/util/Map;[BILjava/lang/String;ZLcom/tencent/featuretoggle/hltxkg/common/a/c/d;)Lcom/tencent/featuretoggle/hltxkg/common/b/a/c;
     //   117: astore 7
     //   119: aload 7
-    //   121: invokestatic 99	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	()I
+    //   121: invokestatic 99	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:f	()I
     //   124: invokevirtual 102	com/tencent/featuretoggle/hltxkg/common/b/a/c:a	(I)V
     //   127: aload 7
     //   129: ldc 104
@@ -67,12 +67,12 @@ final class f
     //   136: invokevirtual 110	com/tencent/featuretoggle/hltxkg/common/b/a/c:a	()Lcom/tencent/featuretoggle/hltxkg/common/b/a/f;
     //   139: astore 8
     //   141: aload 8
-    //   143: getfield 115	com/tencent/featuretoggle/hltxkg/common/b/a/f:jdField_a_of_type_Int	I
+    //   143: getfield 115	com/tencent/featuretoggle/hltxkg/common/b/a/f:a	I
     //   146: istore_2
     //   147: iload_2
     //   148: istore_1
     //   149: aload 8
-    //   151: getfield 115	com/tencent/featuretoggle/hltxkg/common/b/a/f:jdField_a_of_type_Int	I
+    //   151: getfield 115	com/tencent/featuretoggle/hltxkg/common/b/a/f:a	I
     //   154: ifne +191 -> 345
     //   157: iload_2
     //   158: istore_1
@@ -82,7 +82,7 @@ final class f
     //   167: if_icmpne +178 -> 345
     //   170: aload 8
     //   172: getfield 120	com/tencent/featuretoggle/hltxkg/common/b/a/f:d	[B
-    //   175: invokestatic 75	com/tencent/featuretoggle/hltxkg/common/e/c:a	([B)Z
+    //   175: invokestatic 76	com/tencent/featuretoggle/hltxkg/common/e/c:a	([B)Z
     //   178: ifne +262 -> 440
     //   181: new 122	java/lang/String
     //   184: dup
@@ -98,18 +98,18 @@ final class f
     //   206: invokestatic 133	com/tencent/featuretoggle/hltxkg/common/a/e:d	()V
     //   209: aload_0
     //   210: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/f:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
-    //   213: invokestatic 40	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:a	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Ljava/util/Map;
-    //   216: invokeinterface 46 1 0
-    //   221: invokeinterface 52 1 0
+    //   213: invokestatic 41	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:d	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)Ljava/util/Map;
+    //   216: invokeinterface 47 1 0
+    //   221: invokeinterface 53 1 0
     //   226: astore 9
     //   228: iload_2
     //   229: istore_1
     //   230: aload 9
-    //   232: invokeinterface 58 1 0
+    //   232: invokeinterface 59 1 0
     //   237: ifeq +108 -> 345
     //   240: aload 9
-    //   242: invokeinterface 62 1 0
-    //   247: checkcast 64	com/tencent/featuretoggle/hltxkg/common/c/b/b/b
+    //   242: invokeinterface 63 1 0
+    //   247: checkcast 65	com/tencent/featuretoggle/hltxkg/common/c/b/b/b
     //   250: aload 6
     //   252: invokevirtual 136	com/tencent/featuretoggle/hltxkg/common/c/b/b/b:a	(Lorg/json/JSONObject;)V
     //   255: goto -27 -> 228
@@ -168,13 +168,13 @@ final class f
     //   374: astore 5
     //   376: aload 5
     //   378: invokestatic 34	android/os/SystemClock:elapsedRealtime	()J
-    //   381: putfield 190	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:jdField_a_of_type_Long	J
+    //   381: putfield 190	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:a	J
     //   384: aload 5
     //   386: iload_1
-    //   387: putfield 191	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:jdField_a_of_type_Int	I
+    //   387: putfield 192	com/tencent/featuretoggle/hltxkg/common/c/b/b/c$a:b	I
     //   390: aload_0
     //   391: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/f:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
-    //   394: invokestatic 193	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:b	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)V
+    //   394: invokestatic 195	com/tencent/featuretoggle/hltxkg/common/c/b/b/c:e	(Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;)V
     //   397: aload_0
     //   398: getfield 12	com/tencent/featuretoggle/hltxkg/common/c/b/b/f:a	Lcom/tencent/featuretoggle/hltxkg/common/c/b/b/c;
     //   401: iconst_0
@@ -249,7 +249,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.featuretoggle.hltxkg.common.c.b.b.f
  * JD-Core Version:    0.7.0.1
  */

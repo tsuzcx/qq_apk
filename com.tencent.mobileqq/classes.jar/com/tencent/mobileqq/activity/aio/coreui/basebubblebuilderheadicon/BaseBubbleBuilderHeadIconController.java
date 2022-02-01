@@ -20,60 +20,46 @@ import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public abstract class BaseBubbleBuilderHeadIconController
 {
-  protected Context a;
-  protected View.OnClickListener a;
-  protected View.OnLongClickListener a;
-  private BaseChatItemLayout a;
-  protected SessionInfo a;
-  protected QQAppInterface a;
-  protected IFaceDecoder a;
   protected ChatMessage a;
-  protected VasAvatar a;
+  protected QQAppInterface b;
+  protected Context c;
+  protected SessionInfo d;
+  protected VasAvatar e;
+  protected IFaceDecoder f;
+  protected View.OnLongClickListener g;
+  protected View.OnClickListener h;
+  private BaseChatItemLayout i;
   
-  private final VasAvatar a()
+  private final VasAvatar k()
   {
-    HeadIconWrapper localHeadIconWrapper = a();
+    HeadIconWrapper localHeadIconWrapper = i();
     if (localHeadIconWrapper != null) {
-      return ((IHeadIconProcessor)localHeadIconWrapper.a()).a();
+      return ((IHeadIconProcessor)localHeadIconWrapper.a()).c();
     }
     return null;
   }
   
   protected final Drawable a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder == null) {
+    if (this.f == null) {
       return null;
     }
-    Object localObject = (BaseBubbleBuilder.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
+    Object localObject = (BaseBubbleBuilder.ViewHolder)this.i.getTag();
     if (localObject != null)
     {
-      ((BaseBubbleBuilder.ViewHolder)localObject).a = paramString;
-      ((BaseBubbleBuilder.ViewHolder)localObject).d = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setTag(localObject);
+      ((BaseBubbleBuilder.ViewHolder)localObject).o = paramString;
+      ((BaseBubbleBuilder.ViewHolder)localObject).n = paramInt;
+      this.i.setTag(localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCacheFrom(paramInt, paramString, 6);
+    localObject = this.f.getBitmapFromCacheFrom(paramInt, paramString, 6);
     if (localObject == null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, paramInt, true);
+      if (!this.f.isPausing()) {
+        this.f.requestDecodeFace(paramString, paramInt, true);
       }
-      return ImageUtil.e();
+      return ImageUtil.j();
     }
-    return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject);
-  }
-  
-  protected final BaseChatItemLayoutViewBasicAbility a()
-  {
-    HeadIconWrapper localHeadIconWrapper = a();
-    if (localHeadIconWrapper != null) {
-      return localHeadIconWrapper.a();
-    }
-    return null;
-  }
-  
-  protected final HeadIconWrapper a()
-  {
-    return (HeadIconWrapper)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a(HeadIconWrapper.class);
+    return new BitmapDrawable(this.c.getResources(), (Bitmap)localObject);
   }
   
   public void a()
@@ -88,7 +74,7 @@ public abstract class BaseBubbleBuilderHeadIconController
   
   protected final void a(View.OnClickListener paramOnClickListener)
   {
-    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = a();
+    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = j();
     if (localBaseChatItemLayoutViewBasicAbility != null) {
       localBaseChatItemLayoutViewBasicAbility.setOnClickListener(paramOnClickListener);
     }
@@ -96,7 +82,7 @@ public abstract class BaseBubbleBuilderHeadIconController
   
   protected final void a(View.OnLongClickListener paramOnLongClickListener)
   {
-    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = a();
+    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = j();
     if (localBaseChatItemLayoutViewBasicAbility != null) {
       localBaseChatItemLayoutViewBasicAbility.setOnLongClickListener(paramOnLongClickListener);
     }
@@ -104,21 +90,21 @@ public abstract class BaseBubbleBuilderHeadIconController
   
   public void a(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, BaseChatItemLayout paramBaseChatItemLayout, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, IFaceDecoder paramIFaceDecoder)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout = paramBaseChatItemLayout;
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar = a();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
+    this.a = paramChatMessage;
+    this.i = paramBaseChatItemLayout;
+    this.b = paramQQAppInterface;
+    this.c = paramContext;
+    this.d = paramSessionInfo;
+    this.i = paramBaseChatItemLayout;
+    this.e = k();
+    this.h = paramOnClickListener;
+    this.g = paramOnLongClickListener;
+    this.f = paramIFaceDecoder;
   }
   
   protected final void a(CharSequence paramCharSequence)
   {
-    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = a();
+    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = j();
     if (localBaseChatItemLayoutViewBasicAbility != null) {
       localBaseChatItemLayoutViewBasicAbility.setContentDescription(paramCharSequence);
     }
@@ -126,7 +112,7 @@ public abstract class BaseBubbleBuilderHeadIconController
   
   protected final void a(Object paramObject)
   {
-    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = a();
+    BaseChatItemLayoutViewBasicAbility localBaseChatItemLayoutViewBasicAbility = j();
     if (localBaseChatItemLayoutViewBasicAbility != null) {
       localBaseChatItemLayoutViewBasicAbility.setTag(paramObject);
     }
@@ -134,23 +120,21 @@ public abstract class BaseBubbleBuilderHeadIconController
   
   protected final void a(Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    HeadIconWrapper localHeadIconWrapper = a();
+    HeadIconWrapper localHeadIconWrapper = i();
     if (localHeadIconWrapper != null) {
       ((IHeadIconProcessor)localHeadIconWrapper.a()).a(paramObject, paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
     }
   }
   
-  public abstract boolean a();
-  
   protected abstract void b();
   
   protected final void b(Object paramObject)
   {
-    HeadIconWrapper localHeadIconWrapper = a();
+    HeadIconWrapper localHeadIconWrapper = i();
     if (localHeadIconWrapper != null) {
       ((IHeadIconProcessor)localHeadIconWrapper.a()).a(paramObject);
     }
-    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar = a();
+    this.e = k();
   }
   
   protected abstract void c();
@@ -162,10 +146,26 @@ public abstract class BaseBubbleBuilderHeadIconController
   protected void f() {}
   
   protected abstract void g();
+  
+  public abstract boolean h();
+  
+  protected final HeadIconWrapper i()
+  {
+    return (HeadIconWrapper)this.i.a(HeadIconWrapper.class);
+  }
+  
+  protected final BaseChatItemLayoutViewBasicAbility j()
+  {
+    HeadIconWrapper localHeadIconWrapper = i();
+    if (localHeadIconWrapper != null) {
+      return localHeadIconWrapper.c();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.basebubblebuilderheadicon.BaseBubbleBuilderHeadIconController
  * JD-Core Version:    0.7.0.1
  */

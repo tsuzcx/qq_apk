@@ -6,32 +6,32 @@ import java.util.Set;
 
 class TickerCharacterList
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final Map<Character, Integer> jdField_a_of_type_JavaUtilMap;
-  private final char[] jdField_a_of_type_ArrayOfChar;
+  private final int a;
+  private final char[] b;
+  private String c;
+  private final Map<Character, Integer> d;
   
   TickerCharacterList(String paramString)
   {
     int j = 0;
     if (!paramString.contains(Character.toString('\000')))
     {
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.c = paramString;
       paramString = paramString.toCharArray();
       int k = paramString.length;
-      this.jdField_a_of_type_Int = k;
-      this.jdField_a_of_type_JavaUtilMap = new HashMap(k);
+      this.a = k;
+      this.d = new HashMap(k);
       int i = 0;
       while (i < k)
       {
-        this.jdField_a_of_type_JavaUtilMap.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+        this.d.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
         i += 1;
       }
-      this.jdField_a_of_type_ArrayOfChar = new char[k * 2 + 1];
-      this.jdField_a_of_type_ArrayOfChar[0] = '\000';
+      this.b = new char[k * 2 + 1];
+      this.b[0] = '\000';
       for (i = j; i < k; i = j)
       {
-        char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+        char[] arrayOfChar = this.b;
         j = i + 1;
         arrayOfChar[j] = paramString[i];
         arrayOfChar[(k + 1 + i)] = paramString[i];
@@ -50,8 +50,8 @@ class TickerCharacterList
     if (paramChar == 0) {
       return 0;
     }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Character.valueOf(paramChar))) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Character.valueOf(paramChar))).intValue() + 1;
+    if (this.d.containsKey(Character.valueOf(paramChar))) {
+      return ((Integer)this.d.get(Character.valueOf(paramChar))).intValue() + 1;
     }
     return -1;
   }
@@ -74,7 +74,7 @@ class TickerCharacterList
           }
           else if (paramChar2 == 0)
           {
-            paramInt = this.jdField_a_of_type_ArrayOfChar.length;
+            paramInt = this.b.length;
             i = j;
           }
           else
@@ -83,7 +83,7 @@ class TickerCharacterList
             paramInt = k;
             if (k < j)
             {
-              paramInt = k + this.jdField_a_of_type_Int;
+              paramInt = k + this.a;
               i = j;
             }
           }
@@ -94,7 +94,7 @@ class TickerCharacterList
           paramInt = k;
           if (j < k)
           {
-            i = j + this.jdField_a_of_type_Int;
+            i = j + this.a;
             paramInt = k;
           }
         }
@@ -112,7 +112,7 @@ class TickerCharacterList
             int m;
             if (k < j)
             {
-              m = this.jdField_a_of_type_Int;
+              m = this.a;
               i = j;
               paramInt = k;
               if (m - j + k < j - k)
@@ -127,7 +127,7 @@ class TickerCharacterList
               paramInt = k;
               if (j < k)
               {
-                m = this.jdField_a_of_type_Int;
+                m = this.a;
                 i = j;
                 paramInt = k;
                 if (m - k + j < k - j)
@@ -145,24 +145,24 @@ class TickerCharacterList
     return null;
   }
   
-  String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   Set<Character> a()
   {
-    return this.jdField_a_of_type_JavaUtilMap.keySet();
+    return this.d.keySet();
   }
   
-  char[] a()
+  char[] b()
   {
-    return this.jdField_a_of_type_ArrayOfChar;
+    return this.b;
+  }
+  
+  String c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.base.view.widget.ticker.TickerCharacterList
  * JD-Core Version:    0.7.0.1
  */

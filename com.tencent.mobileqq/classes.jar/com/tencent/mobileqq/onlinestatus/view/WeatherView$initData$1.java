@@ -25,13 +25,13 @@ public final class WeatherView$initData$1
       QLog.d("WeatherView", 2, new Object[] { "receiveReqWeather: called. ", paramBundle, localStringBuilder.toString() });
     }
     if (paramBoolean) {
-      this.a.a();
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.WeatherView.initData.1
  * JD-Core Version:    0.7.0.1
  */

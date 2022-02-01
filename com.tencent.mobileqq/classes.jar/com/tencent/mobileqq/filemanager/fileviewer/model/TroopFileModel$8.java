@@ -15,15 +15,15 @@ class TroopFileModel$8
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+    MessageRecord localMessageRecord = this.a;
     if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForTroopFile))) {
-      QFileUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo, this.b.selfUin, this.b.lastTime, 3, 3, this.jdField_a_of_type_AndroidGraphicsRect, false, false);
+      QFileUtils.a(this.this$0.a, this.this$0.i, this.b, (MessageForTroopFile)this.a, this.c.TroopUin, this.d, this.e.selfUin, this.e.lastTime, 3, 3, this.f, false, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.8
  * JD-Core Version:    0.7.0.1
  */

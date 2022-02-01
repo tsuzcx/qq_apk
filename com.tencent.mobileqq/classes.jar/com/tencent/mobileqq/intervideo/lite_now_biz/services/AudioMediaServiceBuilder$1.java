@@ -17,37 +17,37 @@ class AudioMediaServiceBuilder$1
   
   public ChannelInterface a()
   {
-    return (ChannelInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(ChannelInterface.class);
-  }
-  
-  public AppGeneralInfoService a()
-  {
-    return (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
-  }
-  
-  public HttpInterface a()
-  {
-    return (HttpInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HttpInterface.class);
-  }
-  
-  public LogInterface a()
-  {
-    return (LogInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LogInterface.class);
-  }
-  
-  public LoginServiceInterface a()
-  {
-    return (LoginServiceInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(LoginServiceInterface.class);
+    return (ChannelInterface)this.a.getService(ChannelInterface.class);
   }
   
   public <T> void a(Class<T> paramClass, String paramString, ClassLoaderCallback paramClassLoaderCallback)
   {
-    ((IPluginLoaderService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(IPluginLoaderService.class)).a(paramClass, paramString, new AudioMediaServiceBuilder.1.1(this, paramClassLoaderCallback));
+    ((IPluginLoaderService)this.a.getService(IPluginLoaderService.class)).a(paramClass, paramString, new AudioMediaServiceBuilder.1.1(this, paramClassLoaderCallback));
+  }
+  
+  public LoginServiceInterface b()
+  {
+    return (LoginServiceInterface)this.a.getService(LoginServiceInterface.class);
+  }
+  
+  public LogInterface c()
+  {
+    return (LogInterface)this.a.getService(LogInterface.class);
+  }
+  
+  public AppGeneralInfoService d()
+  {
+    return (AppGeneralInfoService)this.a.getService(AppGeneralInfoService.class);
+  }
+  
+  public HttpInterface e()
+  {
+    return (HttpInterface)this.a.getService(HttpInterface.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.AudioMediaServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

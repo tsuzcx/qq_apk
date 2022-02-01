@@ -41,7 +41,7 @@ public class PubAccountQQText$PubAccountLinkSpan
       localObject = ((StringBuilder)localObject).toString();
     }
     localIntent.putExtra("url", (String)localObject);
-    localIntent.putExtra("assignBackText", localContext.getResources().getString(2131690706));
+    localIntent.putExtra("assignBackText", localContext.getResources().getString(2131887625));
     localIntent.putExtra("puin", this.a.b);
     localIntent.putExtra("key_isReadModeEnabled", true);
     localIntent.putExtra("fromAio", true);
@@ -64,7 +64,7 @@ public class PubAccountQQText$PubAccountLinkSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.widgets.PubAccountQQText.PubAccountLinkSpan
  * JD-Core Version:    0.7.0.1
  */

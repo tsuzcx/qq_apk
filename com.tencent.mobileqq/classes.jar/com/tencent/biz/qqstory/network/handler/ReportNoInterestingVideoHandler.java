@@ -11,7 +11,7 @@ public class ReportNoInterestingVideoHandler
 {
   public void a(@NonNull ReportNoInterestingVideoHandler.ReportIgnoreVideoRequest paramReportIgnoreVideoRequest, @Nullable ReportNoInterestingVideoHandler.ReportIgnoreVideoResponse paramReportIgnoreVideoResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    new ReportNoInterestingVideoHandler.ReportNoInterestingVideoEvent(paramErrorMessage, paramReportIgnoreVideoRequest.b);
+    new ReportNoInterestingVideoHandler.ReportNoInterestingVideoEvent(paramErrorMessage, paramReportIgnoreVideoRequest.f);
   }
   
   public void a(String paramString)
@@ -22,7 +22,7 @@ public class ReportNoInterestingVideoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.ReportNoInterestingVideoHandler
  * JD-Core Version:    0.7.0.1
  */

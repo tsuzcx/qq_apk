@@ -10,13 +10,13 @@ class AEEditorResourceManager$9
   
   public void run()
   {
-    List localList = this.this$0.e();
-    this.this$0.e().postValue(localList);
+    List localList = this.this$0.A();
+    this.this$0.h().postValue(localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.filter.AEEditorResourceManager.9
  * JD-Core Version:    0.7.0.1
  */

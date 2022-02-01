@@ -21,11 +21,11 @@ class AddFriendVerifyFragment$22
       paramHashMap = ((IAddFriendTempApi)QRoute.api(IAddFriendTempApi.class)).getQidianExternal(paramHashMap);
       if ((paramHashMap != null) && (AddFriendVerifyFragment.a(this.a).equals(paramHashMap.get("qidian_uin"))))
       {
-        if (AddFriendVerifyFragment.a(this.a) != null)
+        if (AddFriendVerifyFragment.b(this.a) != null)
         {
-          String str = AddFriendVerifyFragment.a(this.a).getText().toString();
+          String str = AddFriendVerifyFragment.b(this.a).getText().toString();
           if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyFragment.a(this.a)))) {
-            AddFriendVerifyFragment.a(this.a).setText((CharSequence)paramHashMap.get("qidian_nickname"));
+            AddFriendVerifyFragment.b(this.a).setText((CharSequence)paramHashMap.get("qidian_nickname"));
           }
         }
       }
@@ -41,7 +41,7 @@ class AddFriendVerifyFragment$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addfriend.ui.AddFriendVerifyFragment.22
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ class LiveLiteRoomSwitchService$1$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_CooperationIliveLiteRommswitchLiveLiteRoomSwitchService$1.a != null) {
-      this.jdField_a_of_type_CooperationIliveLiteRommswitchLiveLiteRoomSwitchService$1.a.onResult(0, this.jdField_a_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.b.a != null) {
+      this.b.a.onResult(0, this.a.size(), this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     cooperation.ilive.lite.rommswitch.LiveLiteRoomSwitchService.1.3
  * JD-Core Version:    0.7.0.1
  */

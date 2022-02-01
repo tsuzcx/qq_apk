@@ -8,12 +8,12 @@ final class ObjConvector$7
 {
   public TAVStickerLayerInfo.TAVStickerUserData a(JSONObject paramJSONObject)
   {
-    return ObjConvector.a(paramJSONObject);
+    return ObjConvector.i(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.ObjConvector.7
  * JD-Core Version:    0.7.0.1
  */

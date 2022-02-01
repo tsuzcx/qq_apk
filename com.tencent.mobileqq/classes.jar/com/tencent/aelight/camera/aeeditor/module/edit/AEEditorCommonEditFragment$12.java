@@ -13,15 +13,15 @@ class AEEditorCommonEditFragment$12
   
   public void a(List<MetaCategory> paramList)
   {
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleTextAEEditorStickerControlPanel.setStickerCategories(paramList);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMaterialViewModel.b(paramList);
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMaterialViewModel.a();
-    this.a.jdField_a_of_type_ComTencentAelightCameraAeeditorModuleMaterialViewModel.a(4);
+    this.a.h.setStickerCategories(paramList);
+    this.a.u.b(paramList);
+    this.a.u.c();
+    this.a.u.a(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.edit.AEEditorCommonEditFragment.12
  * JD-Core Version:    0.7.0.1
  */

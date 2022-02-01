@@ -21,12 +21,12 @@ public class ExtendFriendFooterView
   public ExtendFriendFooterView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    LayoutInflater.from(paramContext).inflate(2131561081, this, true);
+    LayoutInflater.from(paramContext).inflate(2131627429, this, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.qqexpand.widget.ExtendFriendFooterView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,28 +11,28 @@ import com.tencent.qphone.base.util.QLog;
 class HuayangDowanloadHelperImpl$GetLoginKeyDataListener
   implements ILoginKeyHelper.GetLoginKeyListener
 {
-  private final long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
-  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
-  private final String jdField_a_of_type_JavaLangString;
-  private final boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  private final IVPluginInfo b;
+  private final InstalledPlugin c;
+  private final boolean d;
+  private final String e;
+  private final long f;
+  private volatile boolean g;
+  private Handler h = new Handler(Looper.getMainLooper());
   
   public HuayangDowanloadHelperImpl$GetLoginKeyDataListener(HuayangDowanloadHelperImpl paramHuayangDowanloadHelperImpl, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
-    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramString;
+    this.b = paramIVPluginInfo;
+    this.c = paramInstalledPlugin;
+    this.d = paramBoolean;
+    this.f = paramLong;
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
     if ((paramBoolean1) && (!paramBoolean2))
     {
-      HuayangDowanloadHelperImpl.access$1000(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangImplHuayangDowanloadHelperImpl).a(5, new Object[] { "" });
+      HuayangDowanloadHelperImpl.access$1000(this.a).a(5, new Object[] { "" });
       return;
     }
     long l;
@@ -41,20 +41,20 @@ class HuayangDowanloadHelperImpl$GetLoginKeyDataListener
     } else {
       l = 2000L;
     }
-    if (this.b)
+    if (this.g)
     {
       if (QLog.isColorLevel()) {
         QLog.d("IHuayangPluginNewDownloader", 2, "需要stop");
       }
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelperImpl.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
+    this.h.postDelayed(new HuayangDowanloadHelperImpl.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
   }
   
   public void a()
   {
-    this.b = true;
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.g = true;
+    this.h.removeCallbacksAndMessages(null);
   }
   
   public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
@@ -64,7 +64,7 @@ class HuayangDowanloadHelperImpl$GetLoginKeyDataListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.impl.HuayangDowanloadHelperImpl.GetLoginKeyDataListener
  * JD-Core Version:    0.7.0.1
  */

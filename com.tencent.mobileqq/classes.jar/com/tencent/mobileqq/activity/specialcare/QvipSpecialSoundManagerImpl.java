@@ -33,207 +33,23 @@ import org.json.JSONObject;
 public class QvipSpecialSoundManagerImpl
   implements IQvipSpecialSoundManager
 {
-  private Context jdField_a_of_type_AndroidContentContext = VasUtil.a().getApplicationContext();
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private ByteArrayPool jdField_a_of_type_ComTencentQapmsdkCommonUtilByteArrayPool = new ByteArrayPool(4096);
-  private AppRuntime jdField_a_of_type_MqqAppAppRuntime = VasUtil.a();
+  private Context a = VasUtil.c().getApplicationContext();
+  private ByteArrayPool b = new ByteArrayPool(4096);
+  private AppRuntime c = VasUtil.c();
+  private Handler d = new Handler(Looper.getMainLooper());
   
   public QvipSpecialSoundManagerImpl()
   {
     try
     {
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getCanonicalPath());
+      ((StringBuilder)localObject).append(this.a.getFilesDir().getCanonicalPath());
       ((StringBuilder)localObject).append("/");
       localObject = ((StringBuilder)localObject).toString();
       ThreadManager.getFileThreadHandler().post(new MoveConfig((String)localObject));
       return;
     }
     catch (Exception localException) {}
-  }
-  
-  private String a()
-  {
-    Object localObject = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "pddata/vas/special_remind/new_config.json");
-    boolean bool = ((File)localObject).exists();
-    int j = 1;
-    int i = j;
-    if (!bool)
-    {
-      try
-      {
-        DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getString("specialcare_config", ""), (File)localObject);
-        localDownloadTask.a = 1;
-        localDownloadTask.n = true;
-        i = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).specialSoundDownload(localDownloadTask);
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-        i = -1;
-      }
-      if (i == 0)
-      {
-        a(((File)localObject).length());
-        i = j;
-      }
-      else
-      {
-        i = 0;
-      }
-    }
-    if (i == 0)
-    {
-      b("downLoad Special Sound Config failed.");
-      return "";
-    }
-    try
-    {
-      localObject = a((File)localObject);
-      return localObject;
-    }
-    catch (Exception localException1)
-    {
-      b("decodeTextFile is exception.");
-      localException1.printStackTrace();
-      return "";
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      b("decodeTextFile is OutOfMemoryError.");
-      localOutOfMemoryError.printStackTrace();
-      return "";
-    }
-    catch (IOException localIOException)
-    {
-      b("decodeTextFile is IOException.");
-      localIOException.printStackTrace();
-    }
-    return "";
-  }
-  
-  /* Error */
-  private String a(File paramFile)
-  {
-    // Byte code:
-    //   0: new 187	java/io/FileInputStream
-    //   3: dup
-    //   4: aload_1
-    //   5: invokespecial 190	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   8: astore_1
-    //   9: new 192	java/io/ByteArrayOutputStream
-    //   12: dup
-    //   13: invokespecial 193	java/io/ByteArrayOutputStream:<init>	()V
-    //   16: astore_3
-    //   17: aload_0
-    //   18: getfield 24	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:jdField_a_of_type_ComTencentQapmsdkCommonUtilByteArrayPool	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
-    //   21: sipush 4096
-    //   24: invokevirtual 197	com/tencent/qapmsdk/common/util/ByteArrayPool:getBuf	(I)[B
-    //   27: astore 4
-    //   29: aload_1
-    //   30: aload 4
-    //   32: iconst_0
-    //   33: sipush 4096
-    //   36: invokevirtual 203	java/io/InputStream:read	([BII)I
-    //   39: istore_2
-    //   40: iload_2
-    //   41: iconst_m1
-    //   42: if_icmpeq +14 -> 56
-    //   45: aload_3
-    //   46: aload 4
-    //   48: iconst_0
-    //   49: iload_2
-    //   50: invokevirtual 207	java/io/ByteArrayOutputStream:write	([BII)V
-    //   53: goto -24 -> 29
-    //   56: new 209	java/lang/String
-    //   59: dup
-    //   60: aload_3
-    //   61: invokevirtual 213	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   64: ldc 215
-    //   66: invokespecial 218	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   69: astore 5
-    //   71: aload_1
-    //   72: invokevirtual 221	java/io/InputStream:close	()V
-    //   75: aload_3
-    //   76: invokevirtual 222	java/io/ByteArrayOutputStream:close	()V
-    //   79: aload_0
-    //   80: getfield 24	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:jdField_a_of_type_ComTencentQapmsdkCommonUtilByteArrayPool	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
-    //   83: aload 4
-    //   85: invokevirtual 226	com/tencent/qapmsdk/common/util/ByteArrayPool:returnBuf	([B)V
-    //   88: aload 5
-    //   90: areturn
-    //   91: astore 5
-    //   93: goto +44 -> 137
-    //   96: astore 5
-    //   98: aload 5
-    //   100: invokevirtual 157	java/lang/Exception:printStackTrace	()V
-    //   103: aload_1
-    //   104: invokevirtual 221	java/io/InputStream:close	()V
-    //   107: goto +14 -> 121
-    //   110: astore 5
-    //   112: aload 5
-    //   114: invokevirtual 180	java/io/IOException:printStackTrace	()V
-    //   117: aload_1
-    //   118: invokevirtual 221	java/io/InputStream:close	()V
-    //   121: aload_3
-    //   122: invokevirtual 222	java/io/ByteArrayOutputStream:close	()V
-    //   125: aload_0
-    //   126: getfield 24	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:jdField_a_of_type_ComTencentQapmsdkCommonUtilByteArrayPool	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
-    //   129: aload 4
-    //   131: invokevirtual 226	com/tencent/qapmsdk/common/util/ByteArrayPool:returnBuf	([B)V
-    //   134: ldc 126
-    //   136: areturn
-    //   137: aload_1
-    //   138: invokevirtual 221	java/io/InputStream:close	()V
-    //   141: aload_3
-    //   142: invokevirtual 222	java/io/ByteArrayOutputStream:close	()V
-    //   145: aload_0
-    //   146: getfield 24	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:jdField_a_of_type_ComTencentQapmsdkCommonUtilByteArrayPool	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
-    //   149: aload 4
-    //   151: invokevirtual 226	com/tencent/qapmsdk/common/util/ByteArrayPool:returnBuf	([B)V
-    //   154: aload 5
-    //   156: athrow
-    //   157: astore_1
-    //   158: aload_1
-    //   159: invokevirtual 227	java/io/FileNotFoundException:printStackTrace	()V
-    //   162: ldc 126
-    //   164: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	165	0	this	QvipSpecialSoundManagerImpl
-    //   0	165	1	paramFile	File
-    //   39	11	2	i	int
-    //   16	126	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   27	123	4	arrayOfByte	byte[]
-    //   69	20	5	str	String
-    //   91	1	5	localObject	Object
-    //   96	3	5	localException	Exception
-    //   110	45	5	localIOException	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   29	40	91	finally
-    //   45	53	91	finally
-    //   56	71	91	finally
-    //   98	103	91	finally
-    //   112	117	91	finally
-    //   29	40	96	java/lang/Exception
-    //   45	53	96	java/lang/Exception
-    //   56	71	96	java/lang/Exception
-    //   29	40	110	java/io/IOException
-    //   45	53	110	java/io/IOException
-    //   56	71	110	java/io/IOException
-    //   0	9	157	java/io/FileNotFoundException
-  }
-  
-  private void a()
-  {
-    Object localObject = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    if (((SharedPreferences)localObject).contains("defaulut_special_sound_source1")) {
-      return;
-    }
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("defaulut_special_sound_source1", 2131230766);
-    ((SharedPreferences.Editor)localObject).commit();
   }
   
   private void a(long paramLong)
@@ -243,18 +59,18 @@ public class QvipSpecialSoundManagerImpl
       localStringBuilder = new StringBuilder();
       localStringBuilder.append("reportFlowData is Empty flowSize = ");
       localStringBuilder.append(paramLong);
-      b(localStringBuilder.toString());
+      d(localStringBuilder.toString());
       return;
     }
     if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {
-      b("reportFlowData int wifi state");
+      d("reportFlowData int wifi state");
     } else {
-      b("reportFlowData int 2G/3G state");
+      d("reportFlowData int 2G/3G state");
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("sendAppDataIncerment flowSize = ");
     localStringBuilder.append(paramLong);
-    b(localStringBuilder.toString());
+    d(localStringBuilder.toString());
   }
   
   private void a(CallBack paramCallBack, boolean paramBoolean)
@@ -262,7 +78,7 @@ public class QvipSpecialSoundManagerImpl
     if (paramCallBack == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new QvipSpecialSoundManagerImpl.3(this, paramCallBack, paramBoolean));
+    this.d.post(new QvipSpecialSoundManagerImpl.3(this, paramCallBack, paramBoolean));
   }
   
   private void a(String paramString)
@@ -288,112 +104,18 @@ public class QvipSpecialSoundManagerImpl
     }
   }
   
-  private void a(String paramString1, String paramString2)
+  private void b()
   {
-    if (paramString1 != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if ((!TextUtils.isEmpty(paramString1)) && (paramString2 != null))
-        {
-          if (TextUtils.isEmpty(paramString2)) {
-            return;
-          }
-          paramString2 = QvipSpecialSoundConfig.a(new JSONObject(paramString2));
-          Object localObject = QvipSpecialSoundConfig.a(new JSONObject(paramString1));
-          paramString1 = paramString2.a;
-          paramString2 = ((QvipSpecialSoundConfig)localObject).a;
-          if ((paramString1 != null) && (paramString2 != null) && (!paramString1.isEmpty()) && (!paramString2.isEmpty()) && (paramString1.size() >= paramString2.size()))
-          {
-            int j = paramString2.size();
-            i = 0;
-            if (i < j)
-            {
-              localObject = (QvipSpecialSoundConfig.SpecialSound)paramString1.get(i);
-              QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)paramString2.get(i);
-              if ((((QvipSpecialSoundConfig.SpecialSound)localObject).jdField_a_of_type_Int != localSpecialSound.jdField_a_of_type_Int) || (((QvipSpecialSoundConfig.SpecialSound)localObject).jdField_b_of_type_JavaLangString.equals(localSpecialSound.jdField_b_of_type_JavaLangString))) {
-                break label212;
-              }
-              ThreadManager.post(new QvipSpecialSoundManagerImpl.1(this, (QvipSpecialSoundConfig.SpecialSound)localObject), 5, null, true);
-              break label212;
-            }
-          }
-          else
-          {
-            b("updateSpecialSound return.");
-            return;
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        b("updateSpecialSound exception");
-        paramString1.printStackTrace();
-      }
-      return;
-      label212:
-      i += 1;
-    }
-  }
-  
-  private void a(List<QvipSpecialSoundConfig.SpecialSound> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      Object localObject1 = new ArrayList();
-      Object localObject2 = new ArrayList();
-      ArrayList localArrayList = new ArrayList();
-      int j = paramList.size();
-      SharedPreferences.Editor localEditor = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
-      int i = 0;
-      while (i < j)
-      {
-        QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)paramList.get(i);
-        if (!QvipSpecialConstants.b.containsKey(String.valueOf(localSpecialSound.jdField_a_of_type_Int))) {
-          QvipSpecialConstants.b.put(String.valueOf(localSpecialSound.jdField_a_of_type_Int), localSpecialSound);
-        }
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("special_sound_url");
-        localStringBuilder.append(localSpecialSound.jdField_a_of_type_Int);
-        localEditor.putString(localStringBuilder.toString(), localSpecialSound.jdField_c_of_type_JavaLangString);
-        if (!b(localSpecialSound.d)) {
-          b("is white list.");
-        } else if (localSpecialSound.jdField_c_of_type_Int == 1) {
-          if (localSpecialSound.jdField_b_of_type_Int == 1) {
-            ((List)localObject1).add(localSpecialSound);
-          } else if (localSpecialSound.jdField_b_of_type_Int == 2) {
-            ((List)localObject2).add(localSpecialSound);
-          } else {
-            localArrayList.add(localSpecialSound);
-          }
-        }
-        i += 1;
-      }
-      localEditor.commit();
-      paramList.clear();
-      paramList.addAll((Collection)localObject1);
-      paramList.addAll((Collection)localObject2);
-      paramList.addAll(localArrayList);
-      localObject1 = QvipSpecialConstants.a;
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("key_special_sound_list");
-      ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-      if (!((HashMap)localObject1).containsKey(((StringBuilder)localObject2).toString()))
-      {
-        localObject1 = QvipSpecialConstants.a;
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append("key_special_sound_list");
-        ((StringBuilder)localObject2).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
-        ((HashMap)localObject1).put(((StringBuilder)localObject2).toString(), paramList);
-      }
+    Object localObject = this.c.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    if (((SharedPreferences)localObject).contains("defaulut_special_sound_source1")) {
       return;
     }
-    b("SpecialSoundList is empty, donot need sort.");
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt("defaulut_special_sound_source1", 2131230836);
+    ((SharedPreferences.Editor)localObject).commit();
   }
   
-  private boolean a(String paramString)
+  private boolean b(String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -402,12 +124,12 @@ public class QvipSpecialSoundManagerImpl
       if (TextUtils.isEmpty(paramString)) {
         return false;
       }
-      File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), paramString);
+      File localFile = new File(this.a.getFilesDir(), paramString);
       int i = -1;
       try
       {
         paramString = new DownloadTask(MsfSdkUtils.insertMtype("lingyin", paramString), localFile);
-        paramString.a = 1;
+        paramString.O = 1;
         int j = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).specialSoundDownload(paramString);
         i = j;
       }
@@ -423,16 +145,9 @@ public class QvipSpecialSoundManagerImpl
     return bool1;
   }
   
-  private void b(String paramString)
+  private boolean c(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QvipSpecialSoundManager", 2, paramString);
-    }
-  }
-  
-  private boolean b(String paramString)
-  {
-    String str = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
+    String str = this.c.getCurrentAccountUin();
     if (paramString != null)
     {
       if (TextUtils.isEmpty(paramString)) {
@@ -463,13 +178,298 @@ public class QvipSpecialSoundManagerImpl
     return true;
   }
   
+  private void d(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QvipSpecialSoundManager", 2, paramString);
+    }
+  }
+  
+  public String a()
+  {
+    Object localObject = new File(this.a.getFilesDir(), "pddata/vas/special_remind/new_config.json");
+    boolean bool = ((File)localObject).exists();
+    int j = 1;
+    int i = j;
+    if (!bool)
+    {
+      try
+      {
+        DownloadTask localDownloadTask = new DownloadTask(this.c.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).getString("specialcare_config", ""), (File)localObject);
+        localDownloadTask.O = 1;
+        localDownloadTask.J = true;
+        i = ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).specialSoundDownload(localDownloadTask);
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+        i = -1;
+      }
+      if (i == 0)
+      {
+        a(((File)localObject).length());
+        i = j;
+      }
+      else
+      {
+        i = 0;
+      }
+    }
+    if (i == 0)
+    {
+      d("downLoad Special Sound Config failed.");
+      return "";
+    }
+    try
+    {
+      localObject = a((File)localObject);
+      return localObject;
+    }
+    catch (Exception localException1)
+    {
+      d("decodeTextFile is exception.");
+      localException1.printStackTrace();
+      return "";
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      d("decodeTextFile is OutOfMemoryError.");
+      localOutOfMemoryError.printStackTrace();
+      return "";
+    }
+    catch (IOException localIOException)
+    {
+      d("decodeTextFile is IOException.");
+      localIOException.printStackTrace();
+    }
+    return "";
+  }
+  
+  /* Error */
+  public String a(File paramFile)
+  {
+    // Byte code:
+    //   0: new 307	java/io/FileInputStream
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 310	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   8: astore_1
+    //   9: new 312	java/io/ByteArrayOutputStream
+    //   12: dup
+    //   13: invokespecial 313	java/io/ByteArrayOutputStream:<init>	()V
+    //   16: astore_3
+    //   17: aload_0
+    //   18: getfield 27	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:b	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
+    //   21: sipush 4096
+    //   24: invokevirtual 317	com/tencent/qapmsdk/common/util/ByteArrayPool:getBuf	(I)[B
+    //   27: astore 4
+    //   29: aload_1
+    //   30: aload 4
+    //   32: iconst_0
+    //   33: sipush 4096
+    //   36: invokevirtual 323	java/io/InputStream:read	([BII)I
+    //   39: istore_2
+    //   40: iload_2
+    //   41: iconst_m1
+    //   42: if_icmpeq +14 -> 56
+    //   45: aload_3
+    //   46: aload 4
+    //   48: iconst_0
+    //   49: iload_2
+    //   50: invokevirtual 327	java/io/ByteArrayOutputStream:write	([BII)V
+    //   53: goto -24 -> 29
+    //   56: new 240	java/lang/String
+    //   59: dup
+    //   60: aload_3
+    //   61: invokevirtual 331	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   64: ldc_w 333
+    //   67: invokespecial 336	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   70: astore 5
+    //   72: aload_1
+    //   73: invokevirtual 339	java/io/InputStream:close	()V
+    //   76: aload_3
+    //   77: invokevirtual 340	java/io/ByteArrayOutputStream:close	()V
+    //   80: aload_0
+    //   81: getfield 27	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:b	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
+    //   84: aload 4
+    //   86: invokevirtual 344	com/tencent/qapmsdk/common/util/ByteArrayPool:returnBuf	([B)V
+    //   89: aload 5
+    //   91: areturn
+    //   92: astore 5
+    //   94: goto +45 -> 139
+    //   97: astore 5
+    //   99: aload 5
+    //   101: invokevirtual 231	java/lang/Exception:printStackTrace	()V
+    //   104: aload_1
+    //   105: invokevirtual 339	java/io/InputStream:close	()V
+    //   108: goto +14 -> 122
+    //   111: astore 5
+    //   113: aload 5
+    //   115: invokevirtual 303	java/io/IOException:printStackTrace	()V
+    //   118: aload_1
+    //   119: invokevirtual 339	java/io/InputStream:close	()V
+    //   122: aload_3
+    //   123: invokevirtual 340	java/io/ByteArrayOutputStream:close	()V
+    //   126: aload_0
+    //   127: getfield 27	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:b	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
+    //   130: aload 4
+    //   132: invokevirtual 344	com/tencent/qapmsdk/common/util/ByteArrayPool:returnBuf	([B)V
+    //   135: ldc_w 279
+    //   138: areturn
+    //   139: aload_1
+    //   140: invokevirtual 339	java/io/InputStream:close	()V
+    //   143: aload_3
+    //   144: invokevirtual 340	java/io/ByteArrayOutputStream:close	()V
+    //   147: aload_0
+    //   148: getfield 27	com/tencent/mobileqq/activity/specialcare/QvipSpecialSoundManagerImpl:b	Lcom/tencent/qapmsdk/common/util/ByteArrayPool;
+    //   151: aload 4
+    //   153: invokevirtual 344	com/tencent/qapmsdk/common/util/ByteArrayPool:returnBuf	([B)V
+    //   156: aload 5
+    //   158: athrow
+    //   159: astore_1
+    //   160: aload_1
+    //   161: invokevirtual 345	java/io/FileNotFoundException:printStackTrace	()V
+    //   164: ldc_w 279
+    //   167: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	168	0	this	QvipSpecialSoundManagerImpl
+    //   0	168	1	paramFile	File
+    //   39	11	2	i	int
+    //   16	128	3	localByteArrayOutputStream	java.io.ByteArrayOutputStream
+    //   27	125	4	arrayOfByte	byte[]
+    //   70	20	5	str	String
+    //   92	1	5	localObject	Object
+    //   97	3	5	localException	Exception
+    //   111	46	5	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   29	40	92	finally
+    //   45	53	92	finally
+    //   56	72	92	finally
+    //   99	104	92	finally
+    //   113	118	92	finally
+    //   29	40	97	java/lang/Exception
+    //   45	53	97	java/lang/Exception
+    //   56	72	97	java/lang/Exception
+    //   29	40	111	java/io/IOException
+    //   45	53	111	java/io/IOException
+    //   56	72	111	java/io/IOException
+    //   0	9	159	java/io/FileNotFoundException
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (paramString1 != null) {}
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if ((!TextUtils.isEmpty(paramString1)) && (paramString2 != null))
+        {
+          if (TextUtils.isEmpty(paramString2)) {
+            return;
+          }
+          paramString2 = QvipSpecialSoundConfig.a(new JSONObject(paramString2));
+          Object localObject = QvipSpecialSoundConfig.a(new JSONObject(paramString1));
+          paramString1 = paramString2.a;
+          paramString2 = ((QvipSpecialSoundConfig)localObject).a;
+          if ((paramString1 != null) && (paramString2 != null) && (!paramString1.isEmpty()) && (!paramString2.isEmpty()) && (paramString1.size() >= paramString2.size()))
+          {
+            int j = paramString2.size();
+            i = 0;
+            if (i < j)
+            {
+              localObject = (QvipSpecialSoundConfig.SpecialSound)paramString1.get(i);
+              QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)paramString2.get(i);
+              if ((((QvipSpecialSoundConfig.SpecialSound)localObject).a != localSpecialSound.a) || (((QvipSpecialSoundConfig.SpecialSound)localObject).d.equals(localSpecialSound.d))) {
+                break label212;
+              }
+              ThreadManager.post(new QvipSpecialSoundManagerImpl.1(this, (QvipSpecialSoundConfig.SpecialSound)localObject), 5, null, true);
+              break label212;
+            }
+          }
+          else
+          {
+            d("updateSpecialSound return.");
+            return;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        d("updateSpecialSound exception");
+        paramString1.printStackTrace();
+      }
+      return;
+      label212:
+      i += 1;
+    }
+  }
+  
+  public void a(List<QvipSpecialSoundConfig.SpecialSound> paramList)
+  {
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      Object localObject1 = new ArrayList();
+      Object localObject2 = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
+      int j = paramList.size();
+      SharedPreferences.Editor localEditor = this.c.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4).edit();
+      int i = 0;
+      while (i < j)
+      {
+        QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)paramList.get(i);
+        if (!QvipSpecialConstants.b.containsKey(String.valueOf(localSpecialSound.a))) {
+          QvipSpecialConstants.b.put(String.valueOf(localSpecialSound.a), localSpecialSound);
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("special_sound_url");
+        localStringBuilder.append(localSpecialSound.a);
+        localEditor.putString(localStringBuilder.toString(), localSpecialSound.e);
+        if (!c(localSpecialSound.f)) {
+          d("is white list.");
+        } else if (localSpecialSound.g == 1) {
+          if (localSpecialSound.c == 1) {
+            ((List)localObject1).add(localSpecialSound);
+          } else if (localSpecialSound.c == 2) {
+            ((List)localObject2).add(localSpecialSound);
+          } else {
+            localArrayList.add(localSpecialSound);
+          }
+        }
+        i += 1;
+      }
+      localEditor.commit();
+      paramList.clear();
+      paramList.addAll((Collection)localObject1);
+      paramList.addAll((Collection)localObject2);
+      paramList.addAll(localArrayList);
+      localObject1 = QvipSpecialConstants.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("key_special_sound_list");
+      ((StringBuilder)localObject2).append(this.c.getCurrentAccountUin());
+      if (!((HashMap)localObject1).containsKey(((StringBuilder)localObject2).toString()))
+      {
+        localObject1 = QvipSpecialConstants.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("key_special_sound_list");
+        ((StringBuilder)localObject2).append(this.c.getCurrentAccountUin());
+        ((HashMap)localObject1).put(((StringBuilder)localObject2).toString(), paramList);
+      }
+      return;
+    }
+    d("SpecialSoundList is empty, donot need sort.");
+  }
+  
   public String getSoundName(int paramInt)
   {
     if ((QvipSpecialConstants.b != null) && (!QvipSpecialConstants.b.isEmpty()))
     {
       QvipSpecialSoundConfig.SpecialSound localSpecialSound = (QvipSpecialSoundConfig.SpecialSound)QvipSpecialConstants.b.get(String.valueOf(paramInt));
       if (localSpecialSound != null) {
-        return localSpecialSound.jdField_a_of_type_JavaLangString;
+        return localSpecialSound.b;
       }
     }
     return "";
@@ -479,7 +479,7 @@ public class QvipSpecialSoundManagerImpl
   {
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("key_special_sound_list");
-    ((StringBuilder)localObject).append(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin());
+    ((StringBuilder)localObject).append(this.c.getCurrentAccountUin());
     localObject = ((StringBuilder)localObject).toString();
     return QvipSpecialConstants.a.containsKey(localObject);
   }
@@ -509,50 +509,50 @@ public class QvipSpecialSoundManagerImpl
       {
         localObject1 = a(paramFile);
         if (!paramFile.exists()) {
-          break label155;
+          break label157;
         }
         l = paramFile.length();
         a(l);
       }
       catch (OutOfMemoryError paramFile)
       {
-        b("decodeTextFile is OutOfMemoryError.");
+        d("decodeTextFile is OutOfMemoryError.");
         paramFile.printStackTrace();
         localObject1 = localObject2;
       }
       catch (Exception paramFile)
       {
-        b("decodeTextFile is exception.");
+        d("decodeTextFile is exception.");
         paramFile.printStackTrace();
         localObject1 = localObject2;
       }
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        b("new Config is Empty");
+        d("new Config is Empty");
         return;
       }
       if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(localObject1)))
       {
-        b("Config is Same");
+        d("Config is Same");
         return;
       }
       a(paramString, (String)localObject1);
       return;
-      label155:
+      label157:
       long l = 0L;
     }
   }
   
   public void parseSpecialSoundConfigFile()
   {
-    a();
+    b();
     a(a());
   }
   
   public void updateSpecialSoundConfig()
   {
-    Object localObject4 = this.jdField_a_of_type_MqqAppAppRuntime.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
-    File localFile = new File(this.jdField_a_of_type_AndroidContentContext.getFilesDir(), "pddata/vas/special_remind/new_config.json");
+    Object localObject4 = this.c.getApp().getSharedPreferences("com.tencent.mobileqq_preferences", 4);
+    File localFile = new File(this.a.getFilesDir(), "pddata/vas/special_remind/new_config.json");
     Object localObject3 = null;
     Object localObject1 = localObject3;
     Object localObject5;
@@ -568,7 +568,7 @@ public class QvipSpecialSoundManagerImpl
       localObject5 = new StringBuilder();
       ((StringBuilder)localObject5).append("download error:");
       ((StringBuilder)localObject5).append(localException1.toString());
-      b(((StringBuilder)localObject5).toString());
+      d(((StringBuilder)localObject5).toString());
       localException1.printStackTrace();
       localObject2 = localObject3;
     }
@@ -576,14 +576,14 @@ public class QvipSpecialSoundManagerImpl
     {
       localObject3 = ((SharedPreferences)localObject4).getString("specialcare_config", "");
       localObject5 = new DownloadTask((String)localObject3, localFile);
-      ((DownloadTask)localObject5).a = 1;
-      ((DownloadTask)localObject5).n = true;
-      ((DownloadTask)localObject5).e = 20000;
+      ((DownloadTask)localObject5).O = 1;
+      ((DownloadTask)localObject5).J = true;
+      ((DownloadTask)localObject5).v = 20000;
       localObject4 = (IVasDepTemp)QRoute.api(IVasDepTemp.class);
       if (((IVasDepTemp)localObject4).isEnable())
       {
         localObject2 = new SyncDownloadRunnable((DownloadTask)localObject5, localFile, (String)localObject2, this);
-        ((IVasDepTemp)localObject4).requestPreDownload(localFile, (String)localObject3, 10021, "vas", 2, 0, new RunnableTask((BaseQQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, "vas_special_remind", (Runnable)localObject2, 4000L));
+        ((IVasDepTemp)localObject4).requestPreDownload(localFile, (String)localObject3, 10021, "vas", 2, 0, new RunnableTask((BaseQQAppInterface)this.c, "vas_special_remind", (Runnable)localObject2, 4000L));
         if (QLog.isColorLevel())
         {
           localObject2 = new StringBuilder();
@@ -605,14 +605,14 @@ public class QvipSpecialSoundManagerImpl
       localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("download error:");
       ((StringBuilder)localObject3).append(localException2.toString());
-      b(((StringBuilder)localObject3).toString());
+      d(((StringBuilder)localObject3).toString());
       localException2.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManagerImpl
  * JD-Core Version:    0.7.0.1
  */

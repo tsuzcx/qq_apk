@@ -22,7 +22,7 @@ class BaseChatPie$23
   
   protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
   {
-    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, paramHashSet);
+    AvatarLayout.a(this.a.d, this.a.U, paramHashSet);
   }
   
   protected void onGetStrangerInfo(boolean paramBoolean, Object paramObject)
@@ -54,7 +54,7 @@ class BaseChatPie$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.23
  * JD-Core Version:    0.7.0.1
  */

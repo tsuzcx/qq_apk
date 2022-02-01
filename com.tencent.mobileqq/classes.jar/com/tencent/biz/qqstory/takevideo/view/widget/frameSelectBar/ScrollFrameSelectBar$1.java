@@ -19,7 +19,7 @@ class ScrollFrameSelectBar$1
     case 4099: 
       if (ScrollFrameSelectBar.a(this.a).isPlaying())
       {
-        ScrollFrameSelectBar.a(this.a).b();
+        ScrollFrameSelectBar.a(this.a).c();
         return;
       }
       break;

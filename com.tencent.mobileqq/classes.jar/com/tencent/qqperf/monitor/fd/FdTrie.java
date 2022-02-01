@@ -10,14 +10,14 @@ import java.util.List;
 
 public class FdTrie
 {
-  static final List<String> jdField_a_of_type_JavaUtilList = new FdTrie.1(10);
-  private FdNode jdField_a_of_type_ComTencentQqperfMonitorFdFdNode = new FdNode();
-  private HashMap<FdNode, String> jdField_a_of_type_JavaUtilHashMap = new HashMap(100);
-  private HashMap<FdNode, String> b = new HashMap(jdField_a_of_type_JavaUtilList.size());
+  static final List<String> a = new FdTrie.1(10);
+  private HashMap<FdNode, String> b = new HashMap(100);
+  private FdNode c = new FdNode();
+  private HashMap<FdNode, String> d = new HashMap(a.size());
   
   static String a(String paramString)
   {
-    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = a.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
@@ -28,14 +28,6 @@ public class FdTrie
     return null;
   }
   
-  private static List<String> a(String paramString)
-  {
-    paramString = paramString.split("/");
-    ArrayList localArrayList = new ArrayList(paramString.length);
-    localArrayList.addAll(Arrays.asList(paramString));
-    return localArrayList;
-  }
-  
   private void a(FdNode paramFdNode, String paramString)
   {
     if (paramFdNode == null) {
@@ -43,10 +35,10 @@ public class FdTrie
     }
     Object localObject = a(paramString);
     if (localObject != null) {
-      this.b.put(paramFdNode, localObject);
+      this.d.put(paramFdNode, localObject);
     }
     int j = 1;
-    localObject = paramFdNode.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    localObject = paramFdNode.a.values().iterator();
     FdNode localFdNode;
     do
     {
@@ -57,12 +49,12 @@ public class FdTrie
       localFdNode = (FdNode)((Iterator)localObject).next();
     } while ((localFdNode == null) || (localFdNode.a()));
     int i = 0;
-    if ((i != 0) && (!paramFdNode.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    if ((i != 0) && (!paramFdNode.a.isEmpty()))
     {
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramFdNode, paramString);
+      this.b.put(paramFdNode, paramString);
       return;
     }
-    localObject = paramFdNode.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    localObject = paramFdNode.a.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       localFdNode = (FdNode)((Iterator)localObject).next();
@@ -73,12 +65,12 @@ public class FdTrie
           paramFdNode = new StringBuilder();
           paramFdNode.append(paramString);
           paramFdNode.append("/");
-          paramFdNode.append(localFdNode.jdField_a_of_type_JavaLangString);
+          paramFdNode.append(localFdNode.b);
           paramFdNode = paramFdNode.toString();
         }
         else
         {
-          paramFdNode = localFdNode.jdField_a_of_type_JavaLangString;
+          paramFdNode = localFdNode.b;
         }
         a(localFdNode, paramFdNode);
       }
@@ -87,49 +79,57 @@ public class FdTrie
   
   private void b(FdNode paramFdNode, String paramString)
   {
-    Iterator localIterator = a(paramString).iterator();
+    Iterator localIterator = c(paramString).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       paramString = paramFdNode.a(str);
       if (paramString != null)
       {
-        paramString.jdField_a_of_type_Int += 1;
+        paramString.c += 1;
         paramFdNode = paramString;
       }
       else
       {
         paramString = new FdNode(str);
-        paramString.jdField_a_of_type_Int = 1;
-        paramFdNode.jdField_a_of_type_JavaUtilHashMap.put(paramString.jdField_a_of_type_JavaLangString, paramString);
+        paramString.c = 1;
+        paramFdNode.a.put(paramString.b, paramString);
         paramFdNode = paramString;
       }
     }
   }
   
+  private static List<String> c(String paramString)
+  {
+    paramString = paramString.split("/");
+    ArrayList localArrayList = new ArrayList(paramString.length);
+    localArrayList.addAll(Arrays.asList(paramString));
+    return localArrayList;
+  }
+  
   public HashMap<FdNode, String> a()
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_ComTencentQqperfMonitorFdFdNode, null);
-  }
-  
-  public void a(@NonNull String paramString)
-  {
-    b(this.jdField_a_of_type_ComTencentQqperfMonitorFdFdNode, paramString);
-  }
-  
-  public HashMap<FdNode, String> b()
-  {
     return this.b;
+  }
+  
+  public void b()
+  {
+    a(this.c, null);
+  }
+  
+  public void b(@NonNull String paramString)
+  {
+    b(this.c, paramString);
+  }
+  
+  public HashMap<FdNode, String> c()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqperf.monitor.fd.FdTrie
  * JD-Core Version:    0.7.0.1
  */

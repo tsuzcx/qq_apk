@@ -12,17 +12,17 @@ class MPcFileModel$6
   public void a()
   {
     MPcFileModel localMPcFileModel = this.a;
-    localMPcFileModel.a(false, FileModel.a(localMPcFileModel.a.a()), this.a.c(), new MPcFileModel.6.1(this));
+    localMPcFileModel.a(false, FileModel.a(localMPcFileModel.c.r()), this.a.x(), new MPcFileModel.6.1(this));
   }
   
   public void b()
   {
-    this.a.v();
+    this.a.aA();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel.6
  * JD-Core Version:    0.7.0.1
  */

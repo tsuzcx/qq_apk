@@ -16,12 +16,12 @@ public class QQStoryShareGroupProfileActivity$StoryVideoPublishStatusReceiver
   
   public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent)
   {
-    paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.a;
+    paramStoryVideoPublishStatusEvent = paramStoryVideoPublishStatusEvent.c;
     if (paramStoryVideoPublishStatusEvent == null) {
       return;
     }
     if (StoryListUtils.a(paramStoryVideoPublishStatusEvent.mUploadStatus) == 3) {
-      paramQQStoryShareGroupProfileActivity.b = true;
+      paramQQStoryShareGroupProfileActivity.B = true;
     }
   }
   

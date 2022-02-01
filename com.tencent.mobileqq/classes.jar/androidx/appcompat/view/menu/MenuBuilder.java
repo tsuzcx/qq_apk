@@ -47,7 +47,6 @@ public class MenuBuilder
   private ContextMenu.ContextMenuInfo mCurrentMenuInfo;
   private int mDefaultShowAsAction = 0;
   private MenuItemImpl mExpandedItem;
-  private SparseArray<Parcelable> mFrozenViewStates;
   private boolean mGroupDividerEnabled = false;
   Drawable mHeaderIcon;
   CharSequence mHeaderTitle;
@@ -482,7 +481,7 @@ public class MenuBuilder
     return bool1;
   }
   
-  boolean dispatchMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+  boolean dispatchMenuItemSelected(@NonNull MenuBuilder paramMenuBuilder, @NonNull MenuItem paramMenuItem)
   {
     MenuBuilder.Callback localCallback = this.mCallback;
     return (localCallback != null) && (localCallback.onMenuItemSelected(paramMenuBuilder, paramMenuItem));

@@ -49,34 +49,6 @@ class ICallBack$Stub$Proxy
     }
   }
   
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.richmedia.ICallBack");
-      localParcel1.writeInt(paramInt);
-      if (paramBundle != null)
-      {
-        localParcel1.writeInt(1);
-        paramBundle.writeToParcel(localParcel1, 0);
-      }
-      else
-      {
-        localParcel1.writeInt(0);
-      }
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public void a(CompressInfo paramCompressInfo)
   {
     Parcel localParcel1 = Parcel.obtain();
@@ -111,10 +83,38 @@ class ICallBack$Stub$Proxy
   {
     return this.a;
   }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.richmedia.ICallBack");
+      localParcel1.writeInt(paramInt);
+      if (paramBundle != null)
+      {
+        localParcel1.writeInt(1);
+        paramBundle.writeToParcel(localParcel1, 0);
+      }
+      else
+      {
+        localParcel1.writeInt(0);
+      }
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.ICallBack.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

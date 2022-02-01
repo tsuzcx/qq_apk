@@ -9,17 +9,17 @@ class FilePreviewActivity$9$4
   
   public void run()
   {
-    if (this.a.a.a.getVisibility() == 0)
+    if (this.a.c.o.getVisibility() == 0)
     {
-      this.a.a.c();
+      this.a.c.d();
       return;
     }
-    this.a.a.d();
+    this.a.c.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.9.4
  * JD-Core Version:    0.7.0.1
  */

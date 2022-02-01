@@ -19,8 +19,8 @@ class TroopBarCommentWindow$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131696272);
+    this.a.c.setEnabled(true);
+    this.a.r.getString(2131894038);
     if (paramBoolean) {}
     try
     {
@@ -36,40 +36,40 @@ class TroopBarCommentWindow$1
           localObject = paramBundle.optString("msg");
           paramBundle = (Bundle)localObject;
           if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131696273, new Object[] { Integer.valueOf(paramInt) });
+            paramBundle = this.a.r.getString(2131894039, new Object[] { Integer.valueOf(paramInt) });
           }
         }
         else
         {
           paramBundle = paramBundle.getJSONObject("result");
-          TroopBarUtils.a("two_comment", "suc", this.a.d, this.a.h, "", "");
-          this.a.jdField_a_of_type_Boolean = true;
-          this.a.a(this.a.jdField_c_of_type_JavaLangString, paramBundle.toString(), true);
+          TroopBarUtils.a("two_comment", "suc", this.a.v, this.a.z, "", "");
+          this.a.l = true;
+          this.a.a(this.a.s, paramBundle.toString(), true);
           this.a.dismiss();
         }
       }
       else
       {
-        paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131696273, new Object[] { Integer.valueOf(9991) });
+        paramBundle = this.a.r.getString(2131894039, new Object[] { Integer.valueOf(9991) });
       }
     }
     catch (Exception paramBundle)
     {
       break label255;
     }
-    paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131696273, new Object[] { Integer.valueOf(9992) });
+    paramBundle = this.a.r.getString(2131894039, new Object[] { Integer.valueOf(9992) });
     break label281;
     label255:
-    paramBundle = this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getString(2131696273, new Object[] { Integer.valueOf(9992) });
+    paramBundle = this.a.r.getString(2131894039, new Object[] { Integer.valueOf(9992) });
     label281:
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 1, paramBundle, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getTitleBarHeight());
-    TroopBarUtils.a("two_comment", "fail", this.a.d, "4", "", "");
-    this.a.jdField_c_of_type_Boolean = false;
+    QQToast.makeText(this.a.r, 1, paramBundle, 0).show(this.a.r.getTitleBarHeight());
+    TroopBarUtils.a("two_comment", "fail", this.a.v, "4", "", "");
+    this.a.u = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarCommentWindow.1
  * JD-Core Version:    0.7.0.1
  */

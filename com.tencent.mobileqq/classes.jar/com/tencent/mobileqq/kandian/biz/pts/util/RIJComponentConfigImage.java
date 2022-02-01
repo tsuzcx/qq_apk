@@ -38,23 +38,23 @@ public class RIJComponentConfigImage
     if (paramVideoPlayParam != null)
     {
       i = j;
-      if (paramVideoPlayParam.o != 0) {
+      if (paramVideoPlayParam.R != 0) {
         break label81;
       }
       i = j;
-      if (paramVideoPlayParam.p != 0) {
+      if (paramVideoPlayParam.S != 0) {
         break label81;
       }
       i = j;
-      if (paramVideoPlayParam.q != 0) {
+      if (paramVideoPlayParam.T != 0) {
         break label81;
       }
-      if (paramVideoPlayParam.r != 0)
+      if (paramVideoPlayParam.U != 0)
       {
         i = j;
         break label81;
       }
-      if ((paramVideoPlayParam.a != null) && (paramVideoPlayParam.a.mChannelID == 56L) && (RIJKanDianFeedsCardStyleAladdinConfig.a()))
+      if ((paramVideoPlayParam.D != null) && (paramVideoPlayParam.D.mChannelID == 56L) && (RIJKanDianFeedsCardStyleAladdinConfig.a()))
       {
         i = j;
         break label81;
@@ -62,10 +62,10 @@ public class RIJComponentConfigImage
     }
     int i = 12;
     label81:
-    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.b) && (paramVideoPlayParam.l > 0)) {
-      return paramVideoPlayParam.l;
+    if ((paramVideoPlayParam != null) && (paramVideoPlayParam.M) && (paramVideoPlayParam.N > 0)) {
+      return paramVideoPlayParam.N;
     }
-    return DeviceInfoUtil.b(paramContext) - DisplayUtil.a(paramContext, i);
+    return DeviceInfoUtil.h(paramContext) - DisplayUtil.a(paramContext, i);
   }
   
   public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
@@ -75,14 +75,14 @@ public class RIJComponentConfigImage
     if (paramInt2 == 56) {
       i = AIOUtils.b(3.0F, localResources);
     }
-    ReadInJoyHelper.VideoPackSetting localVideoPackSetting = ReadInJoyHelper.a(BaseApplicationImpl.getApplication().getRuntime());
+    ReadInJoyHelper.VideoPackSetting localVideoPackSetting = ReadInJoyHelper.aa(BaseApplicationImpl.getApplication().getRuntime());
     float f1 = 0.7511F;
     float f2 = 0.7487F;
     if (localVideoPackSetting != null)
     {
-      f1 = localVideoPackSetting.a;
-      f2 = localVideoPackSetting.jdField_b_of_type_Float;
-      paramInt2 = AIOUtils.b(localVideoPackSetting.jdField_b_of_type_Int, localResources);
+      f1 = localVideoPackSetting.c;
+      f2 = localVideoPackSetting.d;
+      paramInt2 = AIOUtils.b(localVideoPackSetting.e, localResources);
     }
     else
     {
@@ -117,7 +117,7 @@ public class RIJComponentConfigImage
     if (paramAbsBaseArticleInfo == null) {
       return;
     }
-    FreeNetFlowInfoModule localFreeNetFlowInfoModule = ReadInJoyLogicEngine.a().a();
+    FreeNetFlowInfoModule localFreeNetFlowInfoModule = ReadInJoyLogicEngine.a().U();
     if ((localFreeNetFlowInfoModule != null) && (localFreeNetFlowInfoModule.b()))
     {
       a(false, paramViewBase, null);
@@ -198,7 +198,7 @@ public class RIJComponentConfigImage
         localViewBase1.setVisibility(0);
         localViewBase2.setVisibility(0);
         paramViewBase.setVisibility(0);
-        paramViewBase.setText(paramFreeNetFlowInfoModule.a());
+        paramViewBase.setText(paramFreeNetFlowInfoModule.d());
         PTSRijReport.a("0X8009660");
         return;
       }
@@ -210,7 +210,7 @@ public class RIJComponentConfigImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.pts.util.RIJComponentConfigImage
  * JD-Core Version:    0.7.0.1
  */

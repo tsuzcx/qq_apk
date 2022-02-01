@@ -18,13 +18,13 @@ import mqq.app.MobileQQ;
 
 public class GKillProcessMonitor
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new GKillProcessMonitor.ExitBroadcastReceiver(this);
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean = false;
+  private VideoAppInterface a;
+  private BroadcastReceiver b = new GKillProcessMonitor.ExitBroadcastReceiver(this);
+  private boolean c = false;
   
   public GKillProcessMonitor(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.a = paramVideoAppInterface;
   }
   
   private String a(Context paramContext)
@@ -104,7 +104,7 @@ public class GKillProcessMonitor
       if (paramArrayList.size() == 0) {
         return true;
       }
-      String str = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication());
+      String str = a(this.a.getApplication());
       if (TextUtils.isEmpty(str)) {
         return false;
       }
@@ -128,17 +128,17 @@ public class GKillProcessMonitor
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.process.exit");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.a.getApplication().registerReceiver(this.b, localIntentFilter) != null) {
+      this.c = true;
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (this.c)
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      this.a.getApplication().unregisterReceiver(this.b);
+      this.c = false;
     }
   }
 }

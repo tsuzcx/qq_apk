@@ -14,35 +14,35 @@ final class ChatActivityFacade$19
   public void run()
   {
     Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 0)
+    if (this.a.jobType == 0)
     {
-      localObject = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqEmosmApiIEmoticonManagerService.syncGetSubEmoticonsByPackageId(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true);
+      localObject = (ArrayList)this.b.syncGetSubEmoticonsByPackageId(this.a.epId, true);
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService.fetchEmoticonEncryptKeys(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, (ArrayList)localObject);
+        this.c.fetchEmoticonEncryptKeys(this.a.epId, (ArrayList)localObject);
         if (QLog.isColorLevel())
         {
           localObject = new StringBuilder();
           ((StringBuilder)localObject).append("func tryFetchEmosmKey, try fetch normal emotion keys. epId:");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+          ((StringBuilder)localObject).append(this.a.epId);
           ((StringBuilder)localObject).append(",cur emo id:");
-          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+          ((StringBuilder)localObject).append(this.a.eId);
           QLog.d("ChatActivityFacade", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
-    else if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 2) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4))
+    else if ((this.a.jobType == 2) || (this.a.jobType == 4))
     {
       localObject = new ArrayList();
-      ((ArrayList)localObject).add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonApiIEmojiManagerService.fetchEmoticonEncryptKeys(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, (ArrayList)localObject);
+      ((ArrayList)localObject).add(this.a);
+      this.c.fetchEmoticonEncryptKeys(this.a.epId, (ArrayList)localObject);
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("func tryFetchEmosmKey, try fetch magic emotion key. epId:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+        ((StringBuilder)localObject).append(this.a.epId);
         ((StringBuilder)localObject).append(",cur emo id:");
-        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+        ((StringBuilder)localObject).append(this.a.eId);
         QLog.d("ChatActivityFacade", 2, ((StringBuilder)localObject).toString());
       }
     }
@@ -50,7 +50,7 @@ final class ChatActivityFacade$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.19
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
+import com.tencent.hippy.qq.api.IHippyAccessHelper;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.module.QQBaseLifecycleModule;
-import com.tencent.mobileqq.vas.api.IVasDepTemp;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vas.hippy.VasFriendInfoHippyHelper;
+import com.tencent.mobileqq.vas.hippy.VasHippyFontUtils;
 import com.tencent.mobileqq.vas.hippy.VasHippyUtils;
 import com.tencent.mobileqq.vas.signature.SignatureEditManager;
-import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.mtt.hippy.HippyEngineContext;
 import com.tencent.mtt.hippy.annotation.HippyMethod;
 import com.tencent.mtt.hippy.annotation.HippyNativeModule;
+import com.tencent.mtt.hippy.common.HippyArray;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 @HippyNativeModule(name="VasModule")
@@ -29,6 +32,7 @@ public class VasModule
   extends QQBaseLifecycleModule
 {
   static final String TAG = "VasModule";
+  private final String METHOD_DOWNLOAD_FONT = "downloadFont";
   private final String METHOD_GET_AUTH = "getAuth";
   private final String METHOD_GET_FRIEND_INFO = "getFriendInfo";
   private final String METHOD_JUMP_SIGNATURE_PAGE = "jumpSignaturePage";
@@ -41,9 +45,15 @@ public class VasModule
     super(paramHippyEngineContext);
   }
   
-  private boolean isEnableGetAuth(String paramString1, String paramString2)
+  private boolean isEnableGetAuth(@NotNull String paramString)
   {
-    return VasUtil.a().isEnableGetAuth(paramString2, paramString1);
+    return ((IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class)).checkDomainPermission(paramString);
+  }
+  
+  @HippyMethod(name="downloadFont")
+  public void downloadFont(HippyArray paramHippyArray, Promise paramPromise)
+  {
+    VasHippyFontUtils.a(paramHippyArray, paramPromise);
   }
   
   @HippyMethod(name="getAuth")
@@ -57,8 +67,7 @@ public class VasModule
         paramPromise.reject("engine is null");
         return;
       }
-      localObject1 = ((HippyQQEngine)localObject1).getModuleName();
-      if (TextUtils.isEmpty((CharSequence)localObject1))
+      if (TextUtils.isEmpty(((HippyQQEngine)localObject1).getModuleName()))
       {
         paramPromise.reject("moduleName is empty");
         return;
@@ -69,7 +78,7 @@ public class VasModule
         paramPromise.reject("params domain is empty");
         return;
       }
-      if (!isEnableGetAuth(str, (String)localObject1))
+      if (!isEnableGetAuth(str))
       {
         paramPromise.reject("domain need to be add to whitelist");
         return;
@@ -191,7 +200,7 @@ public class VasModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.hippy.qq.module.vas.VasModule
  * JD-Core Version:    0.7.0.1
  */

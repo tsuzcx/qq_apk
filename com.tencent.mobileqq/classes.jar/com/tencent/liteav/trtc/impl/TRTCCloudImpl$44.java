@@ -1,27 +1,30 @@
 package com.tencent.liteav.trtc.impl;
 
-import com.tencent.liteav.d;
+import com.tencent.liteav.TXCRenderAndDec;
 
 class TRTCCloudImpl$44
   implements Runnable
 {
-  TRTCCloudImpl$44(TRTCCloudImpl paramTRTCCloudImpl, boolean paramBoolean) {}
+  TRTCCloudImpl$44(TRTCCloudImpl paramTRTCCloudImpl, String paramString, int paramInt) {}
   
   public void run()
   {
-    TRTCCloudImpl localTRTCCloudImpl = this.this$0;
+    Object localObject = this.this$0;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setVideoEncoderMirror ");
-    localStringBuilder.append(this.val$mirror);
-    localTRTCCloudImpl.apiLog(localStringBuilder.toString());
-    this.this$0.mConfig.S = this.val$mirror;
-    this.this$0.mCaptureAndEnc.f(this.val$mirror);
-    TRTCCloudImpl.access$2100(this.this$0);
+    localStringBuilder.append("vrotation setRemoteViewRotation ");
+    localStringBuilder.append(this.val$userId);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.val$rotation);
+    ((TRTCCloudImpl)localObject).apiLog(localStringBuilder.toString());
+    localObject = this.this$0.mRoomInfo.getUser(this.val$userId);
+    if ((localObject != null) && (((TRTCRoomInfo.UserInfo)localObject).mainRender.render != null)) {
+      ((TRTCRoomInfo.UserInfo)localObject).mainRender.render.setRenderRotation(this.val$rotation * 90);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.trtc.impl.TRTCCloudImpl.44
  * JD-Core Version:    0.7.0.1
  */

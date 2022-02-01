@@ -17,8 +17,8 @@ class BlessSelectMemberActivity$5
     }
     if (paramInt == 4)
     {
-      if (BlessSelectMemberActivity.a() != null) {
-        BlessSelectMemberActivity.a().sendEmptyMessage(1);
+      if (BlessSelectMemberActivity.g() != null) {
+        BlessSelectMemberActivity.g().sendEmptyMessage(1);
       }
       return true;
     }
@@ -27,7 +27,7 @@ class BlessSelectMemberActivity$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.selectmember.BlessSelectMemberActivity.5
  * JD-Core Version:    0.7.0.1
  */

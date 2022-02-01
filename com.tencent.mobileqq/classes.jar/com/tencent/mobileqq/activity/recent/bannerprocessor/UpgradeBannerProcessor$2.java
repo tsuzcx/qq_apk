@@ -16,10 +16,10 @@ class UpgradeBannerProcessor$2
   
   public void onClick(View paramView)
   {
-    if (UpgradeController.a().a() == 4) {
-      ReportController.b(UpgradeBannerProcessor.e(this.a).getAppRuntime(), "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
+    if (UpgradeController.a().b() == 4) {
+      ReportController.b(UpgradeBannerProcessor.e(this.a).getAppRuntime(), "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.l(), UpgradeController.k(), "0");
     } else {
-      ReportController.b(UpgradeBannerProcessor.f(this.a).getAppRuntime(), "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "0");
+      ReportController.b(UpgradeBannerProcessor.f(this.a).getAppRuntime(), "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.l(), UpgradeController.k(), "0");
     }
     BannerManager.a().a(UpgradeBannerProcessor.a, 0, null);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -27,7 +27,7 @@ class UpgradeBannerProcessor$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.UpgradeBannerProcessor.2
  * JD-Core Version:    0.7.0.1
  */

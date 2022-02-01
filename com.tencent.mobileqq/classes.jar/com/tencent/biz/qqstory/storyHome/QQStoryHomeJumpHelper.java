@@ -23,13 +23,13 @@ import org.json.JSONObject;
 
 public class QQStoryHomeJumpHelper
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private QQStoryHomeJumpHelper.JumpListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryHomeJumpHelper$JumpListener;
+  private Activity a;
+  private QQStoryHomeJumpHelper.JumpListener b;
   
   public QQStoryHomeJumpHelper(Activity paramActivity, QQStoryHomeJumpHelper.JumpListener paramJumpListener)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryHomeJumpHelper$JumpListener = paramJumpListener;
+    this.a = paramActivity;
+    this.b = paramJumpListener;
   }
   
   public static void a(Activity paramActivity, Intent paramIntent)
@@ -50,7 +50,7 @@ public class QQStoryHomeJumpHelper
     Object localObject = paramIntent.getStringExtra("union_id");
     int i = paramIntent.getIntExtra("source", 0);
     paramIntent = paramIntent.getStringExtra("extra_share_from_uid");
-    localObject = QQStoryShareGroupProfileActivity.a(paramActivity, 2, (String)localObject, null, i, 0);
+    localObject = QQStoryShareGroupProfileActivity.b(paramActivity, 2, (String)localObject, null, i, 0);
     ((Intent)localObject).putExtra("extra_share_from_user_uid", paramIntent);
     paramActivity.startActivity((Intent)localObject);
   }
@@ -71,7 +71,7 @@ public class QQStoryHomeJumpHelper
   {
     paramIntent = (StoryConfigManager)SuperManager.a(10);
     Object localObject = "";
-    String str = (String)paramIntent.b("mainHallConfig", "");
+    String str = (String)paramIntent.c("mainHallConfig", "");
     paramIntent = (Intent)localObject;
     if (!TextUtils.isEmpty(str)) {
       try
@@ -98,7 +98,7 @@ public class QQStoryHomeJumpHelper
   {
     paramIntent = (HashMap)paramIntent.getSerializableExtra("extra_jump_attrs");
     String str = (String)paramIntent.get("parter_api");
-    JumpActionLegacy.a(QQStoryContext.a(), this.jdField_a_of_type_AndroidAppActivity, paramIntent, str);
+    JumpActionLegacy.a(QQStoryContext.j(), this.a, paramIntent, str);
   }
   
   private void f(Intent paramIntent)
@@ -109,7 +109,7 @@ public class QQStoryHomeJumpHelper
     paramIntent = new StringBuilder();
     paramIntent.append(i);
     paramIntent.append("");
-    JumpActionLegacy.a(paramIntent.toString());
+    JumpActionLegacy.j(paramIntent.toString());
   }
   
   private void g(Intent paramIntent)
@@ -118,7 +118,7 @@ public class QQStoryHomeJumpHelper
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i);
     localStringBuilder.append("");
-    JumpActionLegacy.a(localStringBuilder.toString());
+    JumpActionLegacy.j(localStringBuilder.toString());
     "1".equals(paramIntent.getStringExtra("to_new_version"));
   }
   
@@ -128,7 +128,7 @@ public class QQStoryHomeJumpHelper
     String str = paramIntent.getStringExtra("EXTRA_USER_UNION_ID");
     paramIntent.getBooleanExtra("extra_is_show_info_card", false);
     paramIntent.getIntExtra("extra_share_from_type", 0);
-    StoryApi.a(this.jdField_a_of_type_AndroidAppActivity, 23, str);
+    StoryApi.a(this.a, 23, str);
   }
   
   private void i(Intent paramIntent) {}
@@ -141,7 +141,7 @@ public class QQStoryHomeJumpHelper
     paramIntent.getBooleanExtra("showinfocard", true);
     paramIntent.getIntExtra("storysharefrom", 0);
     if (i == 1) {
-      StoryApi.a(this.jdField_a_of_type_AndroidAppActivity, 23, str);
+      StoryApi.a(this.a, 23, str);
     }
   }
   
@@ -157,19 +157,19 @@ public class QQStoryHomeJumpHelper
     default: 
       return false;
     case 15: 
-      d(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      d(this.a, paramIntent);
       return true;
     case 14: 
-      c(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      c(this.a, paramIntent);
       return true;
     case 13: 
-      b(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      b(this.a, paramIntent);
       return true;
     case 12: 
       g(paramIntent);
       return true;
     case 11: 
-      a(this.jdField_a_of_type_AndroidAppActivity, paramIntent);
+      a(this.a, paramIntent);
       return true;
     case 10: 
       d(paramIntent);
@@ -196,19 +196,19 @@ public class QQStoryHomeJumpHelper
       a(paramIntent);
       return true;
     }
-    this.jdField_a_of_type_AndroidAppActivity.setIntent(paramIntent);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryHomeJumpHelper$JumpListener.a(false, true, 16, null);
+    this.a.setIntent(paramIntent);
+    this.b.a(false, true, 16, null);
     return true;
   }
   
   protected void b(Intent paramIntent)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, StoryMessageListActivity.class);
-    if (((MsgTabStoryNodeConfigManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) {
+    Intent localIntent = new Intent(this.a, StoryMessageListActivity.class);
+    if (((MsgTabStoryNodeConfigManager)QQStoryContext.j().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a) {
       paramIntent.putExtra("qqstory_message_list_source", 2);
     }
     localIntent.replaceExtras(paramIntent.getExtras());
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    this.a.startActivity(localIntent);
   }
   
   protected void c(Intent paramIntent)
@@ -219,14 +219,14 @@ public class QQStoryHomeJumpHelper
       SLog.e("Q.qqstory.home.QQStoryHomeJumpHelper", "handle open play list error , no play info !");
       return;
     }
-    StoryPlayerLauncher.a(this.jdField_a_of_type_AndroidAppActivity, paramIntent, 31, null);
+    StoryPlayerLauncher.a(this.a, paramIntent, 31, null);
   }
   
   protected void d(Intent paramIntent)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
     localIntent.replaceExtras(paramIntent.getExtras());
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    this.a.startActivity(localIntent);
   }
 }
 

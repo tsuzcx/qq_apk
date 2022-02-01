@@ -34,11 +34,11 @@ public class NewerGuideBannerView
   extends FrameLayout
   implements View.OnClickListener, SkinnableView
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private NewerGuideBannerViewModel jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private ImageView a;
   private ImageView b;
+  private NewerGuideBannerViewModel c;
+  private QQProgressDialog d;
+  private QQCustomDialog e;
   
   public NewerGuideBannerView(@NonNull Context paramContext)
   {
@@ -61,7 +61,7 @@ public class NewerGuideBannerView
   private void a()
   {
     LifeCycleAndViewModelStoreOwner localLifeCycleAndViewModelStoreOwner = QLifeCycleFragment.a((QBaseActivity)getContext());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel = ((NewerGuideBannerViewModel)ViewModelProviderHelper.a(localLifeCycleAndViewModelStoreOwner, NewerGuideBannerViewModel.a).get(NewerGuideBannerViewModel.class));
+    this.c = ((NewerGuideBannerViewModel)ViewModelProviderHelper.a(localLifeCycleAndViewModelStoreOwner, NewerGuideBannerViewModel.b).get(NewerGuideBannerViewModel.class));
     a(localLifeCycleAndViewModelStoreOwner);
   }
   
@@ -75,12 +75,12 @@ public class NewerGuideBannerView
   {
     if (paramDrawable != null)
     {
-      Utils.a(this.jdField_a_of_type_AndroidWidgetImageView, null);
-      Utils.a(this.jdField_a_of_type_AndroidWidgetImageView, paramDrawable);
+      Utils.a(this.a, null);
+      Utils.a(this.a, paramDrawable);
       if (paramBoolean)
       {
-        if (this.jdField_a_of_type_AndroidWidgetImageView.getParent() == null) {
-          addView(this.jdField_a_of_type_AndroidWidgetImageView);
+        if (this.a.getParent() == null) {
+          addView(this.a);
         }
         if (this.b.getParent() == null) {
           addView(this.b);
@@ -91,7 +91,7 @@ public class NewerGuideBannerView
   
   private void a(LifecycleOwner paramLifecycleOwner)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel.a().observe(paramLifecycleOwner, new NewerGuideBannerView.1(this));
+    this.c.a().observe(paramLifecycleOwner, new NewerGuideBannerView.1(this));
     paramLifecycleOwner.getLifecycle().addObserver(new NewerGuideBannerView.2(this));
   }
   
@@ -100,7 +100,7 @@ public class NewerGuideBannerView
     if (paramNewerGuideBannerData == null) {
       return;
     }
-    int i = paramNewerGuideBannerData.jdField_a_of_type_Int;
+    int i = paramNewerGuideBannerData.a;
     if (i != 0)
     {
       if (i != 1)
@@ -111,10 +111,10 @@ public class NewerGuideBannerView
         d();
         return;
       }
-      a(paramNewerGuideBannerData.b);
+      a(paramNewerGuideBannerData.d);
       return;
     }
-    a(paramNewerGuideBannerData.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramNewerGuideBannerData.jdField_a_of_type_Boolean);
+    a(paramNewerGuideBannerData.b, paramNewerGuideBannerData.c);
   }
   
   private void a(boolean paramBoolean)
@@ -131,15 +131,15 @@ public class NewerGuideBannerView
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+      if (this.d == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(getContext(), 0, 2131561251, 17);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setContentView(2131562765);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(getContext().getString(2131694452));
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
+        this.d = new QQProgressDialog(getContext(), 0, 2131627607, 17);
+        this.d.setContentView(2131629210);
+        this.d.a(getContext().getString(2131892132));
+        this.d.c(false);
+        this.d.setCancelable(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.d.show();
       return;
     }
     catch (Exception localException)
@@ -150,13 +150,13 @@ public class NewerGuideBannerView
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.a = new ImageView(paramContext);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, Utils.a(140.0F, getResources()));
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramContext.getString(2131694451));
+    this.a.setLayoutParams(localLayoutParams);
+    this.a.setContentDescription(paramContext.getString(2131892131));
     this.b = new ImageView(getContext());
     this.b.setBackgroundDrawable(null);
-    this.b.setImageResource(2130849853);
+    this.b.setImageResource(2130851560);
     this.b.setScaleType(ImageView.ScaleType.CENTER);
     int i = Utils.a(24.0F, getResources());
     int j = Utils.a(8.0F, getResources());
@@ -166,7 +166,7 @@ public class NewerGuideBannerView
     localLayoutParams.topMargin = j;
     this.b.setLayoutParams(localLayoutParams);
     this.b.setOnClickListener(this);
-    this.b.setContentDescription(paramContext.getString(2131719458));
+    this.b.setContentDescription(paramContext.getString(2131917019));
     setOnClickListener(this);
   }
   
@@ -174,10 +174,10 @@ public class NewerGuideBannerView
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+      if (this.d != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+        this.d.dismiss();
+        this.d = null;
         return;
       }
     }
@@ -192,12 +192,12 @@ public class NewerGuideBannerView
     try
     {
       QBaseActivity localQBaseActivity = (QBaseActivity)getContext();
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(localQBaseActivity, 230, HardCodeUtil.a(2131694454), HardCodeUtil.a(2131694453), HardCodeUtil.a(2131694455), HardCodeUtil.a(2131694456), new NewerGuideBannerView.3(this, localQBaseActivity), new NewerGuideBannerView.4(this, localQBaseActivity));
+      if (this.e == null) {
+        this.e = DialogUtil.a(localQBaseActivity, 230, HardCodeUtil.a(2131892134), HardCodeUtil.a(2131892133), HardCodeUtil.a(2131892135), HardCodeUtil.a(2131892136), new NewerGuideBannerView.3(this, localQBaseActivity), new NewerGuideBannerView.4(this, localQBaseActivity));
       }
       if (!localQBaseActivity.isFinishing())
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+        this.e.show();
         ReportController.b(localQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X800B4E8", "0X800B4E8", 0, 0, "", "", "", "");
         return;
       }
@@ -212,12 +212,12 @@ public class NewerGuideBannerView
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
+      if (this.e != null)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        if (this.e.isShowing()) {
+          this.e.dismiss();
         }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+        this.e = null;
         return;
       }
     }
@@ -230,28 +230,28 @@ public class NewerGuideBannerView
   public void a(oidb_0x59f.Guidelines_8410 paramGuidelines_8410)
   {
     QBaseActivity localQBaseActivity = (QBaseActivity)getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel.a(localQBaseActivity, paramGuidelines_8410);
+    this.c.a(localQBaseActivity, paramGuidelines_8410);
   }
   
   public void onClick(View paramView)
   {
     QBaseActivity localQBaseActivity = (QBaseActivity)getContext();
     if (paramView == this.b) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel.a(localQBaseActivity.getAppRuntime());
+      this.c.a(localQBaseActivity.getAppRuntime());
     } else {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel.b(localQBaseActivity);
+      this.c.b(localQBaseActivity);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onThemeChanged()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentGuidebannerNewerGuideBannerViewModel.a((QBaseActivity)getContext());
+    this.c.a((QBaseActivity)getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerView
  * JD-Core Version:    0.7.0.1
  */

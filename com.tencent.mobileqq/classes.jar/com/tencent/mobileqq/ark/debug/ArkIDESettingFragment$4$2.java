@@ -10,16 +10,16 @@ class ArkIDESettingFragment$4$2
 {
   ArkIDESettingFragment$4$2(ArkIDESettingFragment.4 param4, ActionSheet paramActionSheet) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkDebugArkIDESettingFragment$4.a.e();
-    this.jdField_a_of_type_ComTencentMobileqqArkDebugArkIDESettingFragment$4.a.b(HardCodeUtil.a(2131700916));
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.b.a.i();
+    this.b.a.b(HardCodeUtil.a(2131898940));
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.4.2
  * JD-Core Version:    0.7.0.1
  */

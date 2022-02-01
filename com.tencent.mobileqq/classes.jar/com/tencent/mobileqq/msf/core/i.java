@@ -7,27 +7,44 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONObject;
 
 public class i
 {
   private static final String a = "MSFConfigManager";
   private static final String b = "msf_config";
-  private static final String c = "manager_config";
-  private static final String d = "isIPCDivideToTransportEnable";
-  private static final String e = "isSleepThreadWhenIPCBlockEnable";
-  private static final String f = "isSendQuickHBByDeepSleepEnable";
-  private static final String g = "isSendQuickHBByScreenOnEnable";
-  private static final String h = "isMultiChannelReportEnable";
-  private static final String i = "isBinderConnectOptEnable";
-  private static final String j = "isChangeHuaweiDSCheck";
-  private AtomicBoolean k = new AtomicBoolean(a("isIPCDivideToTransportEnable", false));
-  private AtomicBoolean l = new AtomicBoolean(a("isSleepThreadWhenIPCBlockEnable", false));
-  private AtomicBoolean m = new AtomicBoolean(a("isSendQuickHBByDeepSleepEnable", true));
-  private AtomicBoolean n = new AtomicBoolean(a("isSendQuickHBByScreenOnEnable", true));
-  private AtomicBoolean o = new AtomicBoolean(a("isMultiChannelReportEnable", true));
-  private AtomicBoolean p = new AtomicBoolean(a("isBinderConnectOptEnable", false));
-  private AtomicBoolean q = new AtomicBoolean(a("isChangeHuaweiDSCheck", false));
+  private static final int c = 12;
+  private static final int d = 2;
+  private static final String e = "manager_config";
+  private static final String f = "isIPCDivideToTransportEnable";
+  private static final String g = "isSleepThreadWhenIPCBlockEnable";
+  private static final String h = "isSendQuickHBByDeepSleepEnable";
+  private static final String i = "isSendQuickHBByScreenOnEnable";
+  private static final String j = "isMultiChannelReportEnable";
+  private static final String k = "isBinderConnectOptEnable";
+  private static final String l = "isChangeHuaweiDSCheck";
+  private static final String m = "udpSendSwitchOn";
+  private static final String n = "udpMaxRetryCount";
+  private static final String o = "udpSendTimeout";
+  private static final String p = "deepSleepDetectInterval";
+  private static final int q = 120;
+  private final AtomicInteger A = new AtomicInteger(a("udpSendTimeout", 2));
+  private final AtomicInteger B = new AtomicInteger(a("deepSleepDetectInterval", 120));
+  private AtomicBoolean r = new AtomicBoolean(a("isIPCDivideToTransportEnable", false));
+  private AtomicBoolean s = new AtomicBoolean(a("isSleepThreadWhenIPCBlockEnable", false));
+  private AtomicBoolean t = new AtomicBoolean(a("isSendQuickHBByDeepSleepEnable", true));
+  private AtomicBoolean u = new AtomicBoolean(a("isSendQuickHBByScreenOnEnable", true));
+  private AtomicBoolean v = new AtomicBoolean(a("isMultiChannelReportEnable", true));
+  private AtomicBoolean w = new AtomicBoolean(a("isBinderConnectOptEnable", false));
+  private AtomicBoolean x = new AtomicBoolean(a("isChangeHuaweiDSCheck", false));
+  private final AtomicBoolean y = new AtomicBoolean(a("udpSendSwitchOn", false));
+  private final AtomicInteger z = new AtomicInteger(a("udpMaxRetryCount", 12));
+  
+  private int a(String paramString, int paramInt)
+  {
+    return BaseApplication.getContext().getSharedPreferences("msf_config", 4).getInt(paramString, paramInt);
+  }
   
   public static i a()
   {
@@ -44,9 +61,24 @@ public class i
     }
   }
   
+  private void a(String paramString1, JSONObject paramJSONObject, AtomicInteger paramAtomicInteger, String paramString2)
+  {
+    if (paramString1.contains(paramString2))
+    {
+      int i1 = paramJSONObject.optInt(paramString2, paramAtomicInteger.get());
+      paramAtomicInteger.set(i1);
+      b(paramString2, i1);
+    }
+  }
+  
   private boolean a(String paramString, boolean paramBoolean)
   {
     return BaseApplication.getContext().getSharedPreferences("msf_config", 4).getBoolean(paramString, paramBoolean);
+  }
+  
+  private void b(String paramString, int paramInt)
+  {
+    BaseApplication.getContext().getSharedPreferences("msf_config", 4).edit().putInt(paramString, paramInt).apply();
   }
   
   private void b(String paramString, boolean paramBoolean)
@@ -66,13 +98,17 @@ public class i
         localStringBuilder.append(paramToServiceMsg);
         QLog.d("MSFConfigManager", 1, localStringBuilder.toString());
         localObject = new JSONObject((String)localObject);
-        a(paramToServiceMsg, (JSONObject)localObject, this.k, "isIPCDivideToTransportEnable");
-        a(paramToServiceMsg, (JSONObject)localObject, this.l, "isSleepThreadWhenIPCBlockEnable");
-        a(paramToServiceMsg, (JSONObject)localObject, this.m, "isSendQuickHBByDeepSleepEnable");
-        a(paramToServiceMsg, (JSONObject)localObject, this.n, "isSendQuickHBByScreenOnEnable");
-        a(paramToServiceMsg, (JSONObject)localObject, this.o, "isMultiChannelReportEnable");
-        a(paramToServiceMsg, (JSONObject)localObject, this.p, "isBinderConnectOptEnable");
-        a(paramToServiceMsg, (JSONObject)localObject, this.q, "isChangeHuaweiDSCheck");
+        a(paramToServiceMsg, (JSONObject)localObject, this.r, "isIPCDivideToTransportEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.s, "isSleepThreadWhenIPCBlockEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.t, "isSendQuickHBByDeepSleepEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.u, "isSendQuickHBByScreenOnEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.v, "isMultiChannelReportEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.w, "isBinderConnectOptEnable");
+        a(paramToServiceMsg, (JSONObject)localObject, this.x, "isChangeHuaweiDSCheck");
+        a(paramToServiceMsg, (JSONObject)localObject, this.y, "udpSendSwitchOn");
+        a(paramToServiceMsg, (JSONObject)localObject, this.z, "udpMaxRetryCount");
+        a(paramToServiceMsg, (JSONObject)localObject, this.A, "udpSendTimeout");
+        a(paramToServiceMsg, (JSONObject)localObject, this.B, "deepSleepDetectInterval");
       }
       catch (Exception paramToServiceMsg)
       {
@@ -87,65 +123,89 @@ public class i
     QLog.d("MSFConfigManager", 1, paramToServiceMsg.toString());
   }
   
-  public boolean b()
+  public int b()
   {
-    return this.k.get();
+    return this.z.get();
   }
   
-  public boolean c()
+  public int c()
   {
-    return this.l.get();
+    return this.A.get();
   }
   
   public boolean d()
   {
-    return this.m.get();
+    return this.r.get();
   }
   
   public boolean e()
   {
-    return this.n.get();
+    return this.s.get();
   }
   
   public boolean f()
   {
-    return this.o.get();
+    return this.t.get();
   }
   
   public boolean g()
   {
-    return this.p.get();
+    return this.u.get();
   }
   
   public boolean h()
   {
-    return this.q.get();
+    return this.v.get();
+  }
+  
+  public boolean i()
+  {
+    return this.w.get();
+  }
+  
+  public boolean j()
+  {
+    return this.x.get();
+  }
+  
+  public boolean k()
+  {
+    return this.y.get();
+  }
+  
+  public int l()
+  {
+    return this.B.get();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MSFConfigManager{isIPCDivideToTransportEnable=");
-    localStringBuilder.append(this.k);
+    localStringBuilder.append(this.r);
     localStringBuilder.append(", isSleepThreadWhenIPCBlockEnable=");
-    localStringBuilder.append(this.l);
+    localStringBuilder.append(this.s);
     localStringBuilder.append(", isSendQuickHBByDeepSleepEnable=");
-    localStringBuilder.append(this.m);
+    localStringBuilder.append(this.t);
     localStringBuilder.append(", isSendQuickHBByScreenOnEnable=");
-    localStringBuilder.append(this.n);
+    localStringBuilder.append(this.u);
     localStringBuilder.append(", isMultiChannelReportEnable=");
-    localStringBuilder.append(this.o);
+    localStringBuilder.append(this.v);
     localStringBuilder.append(", isBinderConnectOptEnable=");
-    localStringBuilder.append(this.p);
+    localStringBuilder.append(this.w);
     localStringBuilder.append(", isChangeHuaweiDSCheck=");
-    localStringBuilder.append(this.q);
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", udpSendSwitchOn=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", deepSleepDetectInterval=");
+    localStringBuilder.append(this.B);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.i
  * JD-Core Version:    0.7.0.1
  */

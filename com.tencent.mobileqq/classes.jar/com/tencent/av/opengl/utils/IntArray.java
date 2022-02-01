@@ -2,43 +2,30 @@ package com.tencent.av.opengl.utils;
 
 public class IntArray
 {
-  private int jdField_a_of_type_Int = 0;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[8];
+  private int[] a = new int[8];
+  private int b = 0;
   
   public int a()
   {
-    this.jdField_a_of_type_Int -= 1;
-    return this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int];
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_ArrayOfInt.length != 8) {
-      this.jdField_a_of_type_ArrayOfInt = new int[8];
-    }
+    this.b -= 1;
+    return this.a[this.b];
   }
   
   public void a(int paramInt)
   {
-    int[] arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
+    int[] arrayOfInt1 = this.a;
     int i = arrayOfInt1.length;
-    int j = this.jdField_a_of_type_Int;
+    int j = this.b;
     if (i == j)
     {
       int[] arrayOfInt2 = new int[j + j];
       System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, j);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt2;
+      this.a = arrayOfInt2;
     }
-    arrayOfInt1 = this.jdField_a_of_type_ArrayOfInt;
-    i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
+    arrayOfInt1 = this.a;
+    i = this.b;
+    this.b = (i + 1);
     arrayOfInt1[i] = paramInt;
-  }
-  
-  public int[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfInt;
   }
   
   public int[] a(int[] paramArrayOfInt)
@@ -47,19 +34,32 @@ public class IntArray
     if (paramArrayOfInt != null)
     {
       arrayOfInt = paramArrayOfInt;
-      if (paramArrayOfInt.length >= this.jdField_a_of_type_Int) {}
+      if (paramArrayOfInt.length >= this.b) {}
     }
     else
     {
-      arrayOfInt = new int[this.jdField_a_of_type_Int];
+      arrayOfInt = new int[this.b];
     }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
+    System.arraycopy(this.a, 0, arrayOfInt, 0, this.b);
     return arrayOfInt;
   }
   
   public int b()
   {
-    return this.jdField_a_of_type_Int;
+    return this.b;
+  }
+  
+  public int[] c()
+  {
+    return this.a;
+  }
+  
+  public void d()
+  {
+    this.b = 0;
+    if (this.a.length != 8) {
+      this.a = new int[8];
+    }
   }
 }
 

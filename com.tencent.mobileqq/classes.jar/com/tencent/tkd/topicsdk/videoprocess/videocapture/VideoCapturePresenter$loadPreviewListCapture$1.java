@@ -13,16 +13,16 @@ public final class VideoCapturePresenter$loadPreviewListCapture$1
       ((VideoCaptureContract.IVideoCaptureView)localObject).b(paramLong);
     }
     localObject = this.a;
-    ((VideoCapturePresenter)localObject).b((int)(((VideoCapturePresenter)localObject).a() * (float)paramLong));
+    ((VideoCapturePresenter)localObject).b((int)(((VideoCapturePresenter)localObject).b() * (float)paramLong));
     localObject = VideoCapturePresenter.a(this.a);
     if (localObject != null) {
-      ((VideoCaptureContract.IVideoCaptureView)localObject).a(this.a.a(), false);
+      ((VideoCaptureContract.IVideoCaptureView)localObject).a(this.a.b(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCapturePresenter.loadPreviewListCapture.1
  * JD-Core Version:    0.7.0.1
  */

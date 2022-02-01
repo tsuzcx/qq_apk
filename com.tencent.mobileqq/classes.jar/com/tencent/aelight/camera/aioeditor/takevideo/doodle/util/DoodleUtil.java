@@ -29,7 +29,7 @@ public class DoodleUtil
   private static int a(@NonNull String paramString, int paramInt1, int paramInt2)
   {
     Object localObject;
-    if ((paramInt1 > 0) && (paramInt2 > 0) && (!StringUtil.a(paramString)))
+    if ((paramInt1 > 0) && (paramInt2 > 0) && (!StringUtil.isEmpty(paramString)))
     {
       localObject = new TextPaint();
       ((TextPaint)localObject).setTextSize(paramInt1);
@@ -62,22 +62,22 @@ public class DoodleUtil
     localStringBuilder.append(paramItem.toString());
     SLog.b("DoodleUtil", localStringBuilder.toString());
     int i;
-    if (paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (paramItem.e != null)
     {
-      i = paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().width();
-      paramInt2 = paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().height();
+      i = paramItem.e.getBounds().width();
+      paramInt2 = paramItem.e.getBounds().height();
     }
     else
     {
       paramInt2 = 0;
       i = 0;
     }
-    float f2 = paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.c;
-    float f1 = paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.d;
-    float f3 = paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.e;
+    float f2 = paramItem.g.e;
+    float f1 = paramItem.g.f;
+    float f3 = paramItem.g.g;
     f2 = f2 * (paramInt1 / f3) / i;
-    paramInt1 = (int)(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.b / f1 * paramInt2);
-    paramItem = new FaceLayer.LayerParams(paramFloat1, paramFloat2, f2, 0.0F, 0.0F, 0.0F, i, paramInt2 + a(paramItem.b, paramInt1, i) * 2 + 32, paramItem.b, Color.parseColor(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.a), paramInt1);
+    paramInt1 = (int)(paramItem.g.d / f1 * paramInt2);
+    paramItem = new FaceLayer.LayerParams(paramFloat1, paramFloat2, f2, 0.0F, 0.0F, 0.0F, i, paramInt2 + a(paramItem.b, paramInt1, i) * 2 + 32, paramItem.b, Color.parseColor(paramItem.g.c), paramInt1);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("LayerParams:");
     localStringBuilder.append(paramItem.toString());
@@ -95,21 +95,21 @@ public class DoodleUtil
     localStringBuilder.append(paramItem.toString());
     SLog.b("DoodleUtil", localStringBuilder.toString());
     int i;
-    if (paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    if (paramItem.e != null)
     {
-      i = paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().width();
-      paramInt2 = paramItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getBounds().height();
+      i = paramItem.e.getBounds().width();
+      paramInt2 = paramItem.e.getBounds().height();
     }
     else
     {
       paramInt2 = 0;
       i = 0;
     }
-    int j = paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.c;
-    float f = paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.d;
+    int j = paramItem.g.e;
+    float f = paramItem.g.f;
     paramFloat3 = paramInt1 * paramFloat3 / i;
-    paramInt1 = (int)(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.b / f * paramInt2);
-    paramItem = new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, i, paramInt2 + a(paramItem.b, paramInt1, i) * 2 + 32, paramItem.b, Color.parseColor(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.a), paramInt1);
+    paramInt1 = (int)(paramItem.g.d / f * paramInt2);
+    paramItem = new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, i, paramInt2 + a(paramItem.b, paramInt1, i) * 2 + 32, paramItem.b, Color.parseColor(paramItem.g.c), paramInt1);
     localStringBuilder = new StringBuilder();
     localStringBuilder.append("LayerParams:");
     localStringBuilder.append(paramItem.toString());
@@ -119,7 +119,7 @@ public class DoodleUtil
   
   public static FaceLayer.LayerParams a(SelectedItem paramSelectedItem, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    return new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, paramSelectedItem.c.getIntrinsicWidth(), paramSelectedItem.c.getIntrinsicHeight());
   }
   
   public static String a(ArrayList<DynamicStickerData> paramArrayList)
@@ -344,7 +344,7 @@ public class DoodleUtil
       SLog.e("DoodleUtil", "item is null.");
       return false;
     }
-    if (TextUtils.isEmpty(paramItem.e))
+    if (TextUtils.isEmpty(paramItem.f))
     {
       SLog.e("DoodleUtil", "item layoutJson is empty,can't parse.");
       return false;
@@ -354,31 +354,31 @@ public class DoodleUtil
     {
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("parseJson error:");
-      localStringBuilder1.append(paramItem.e);
+      localStringBuilder1.append(paramItem.f);
       SLog.e("DoodleUtil", localStringBuilder1.toString());
       return false;
     }
-    if (paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.b < 0)
+    if (paramItem.g.d < 0)
     {
       localStringBuilder1 = new StringBuilder();
       localStringBuilder1.append("item textSize < 0. textSize:");
-      localStringBuilder1.append(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.b);
+      localStringBuilder1.append(paramItem.g.d);
       SLog.e("DoodleUtil", localStringBuilder1.toString());
       return false;
     }
-    if ((paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.c > 0) && (paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.d > 0))
+    if ((paramItem.g.e > 0) && (paramItem.g.f > 0))
     {
-      if ((paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.e > 0) && (paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.f > 0)) {
+      if ((paramItem.g.g > 0) && (paramItem.g.h > 0)) {
         try
         {
-          Color.parseColor(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.a);
+          Color.parseColor(paramItem.g.c);
           return true;
         }
         catch (Exception localException)
         {
           StringBuilder localStringBuilder3 = new StringBuilder();
           localStringBuilder3.append("item color is illegal:");
-          localStringBuilder3.append(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.a);
+          localStringBuilder3.append(paramItem.g.c);
           SLog.e("DoodleUtil", localStringBuilder3.toString());
           localException.printStackTrace();
           return false;
@@ -386,24 +386,24 @@ public class DoodleUtil
       }
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("item standardWidth <= 0 or item standardHeight <= 0. standardWidth:");
-      localStringBuilder2.append(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.e);
+      localStringBuilder2.append(paramItem.g.g);
       localStringBuilder2.append(",standardHeight:");
-      localStringBuilder2.append(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.f);
+      localStringBuilder2.append(paramItem.g.h);
       SLog.e("DoodleUtil", localStringBuilder2.toString());
       return false;
     }
     StringBuilder localStringBuilder2 = new StringBuilder();
     localStringBuilder2.append("item pictureWidth <= 0 or item pictureHeight <= 0. pictureWidth:");
-    localStringBuilder2.append(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.c);
+    localStringBuilder2.append(paramItem.g.e);
     localStringBuilder2.append(",pictureHeight:");
-    localStringBuilder2.append(paramItem.jdField_a_of_type_ComTencentAelightCameraAioeditorDoodleUiFaceLocationFacePackage$Item$ItemParams.d);
+    localStringBuilder2.append(paramItem.g.f);
     SLog.e("DoodleUtil", localStringBuilder2.toString());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.aelight.camera.aioeditor.takevideo.doodle.util.DoodleUtil
  * JD-Core Version:    0.7.0.1
  */

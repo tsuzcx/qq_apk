@@ -7,7 +7,7 @@ import android.view.View;
 public class QQGamePubWebView
   extends BaseNestScrollWebView
 {
-  private QQGamePubWebView.HeadViewVisibleListener a;
+  private QQGamePubWebView.HeadViewVisibleListener b;
   
   public QQGamePubWebView(Context paramContext)
   {
@@ -19,9 +19,9 @@ public class QQGamePubWebView
     super(paramContext, paramAttributeSet);
   }
   
-  public void b()
+  public void h()
   {
-    this.a = null;
+    this.b = null;
   }
   
   public void onPageFinish(String paramString) {}
@@ -34,7 +34,7 @@ public class QQGamePubWebView
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-    paramView = this.a;
+    paramView = this.b;
     if (paramView != null) {
       paramView.a(paramInt2, paramInt4);
     }
@@ -47,12 +47,12 @@ public class QQGamePubWebView
   
   public void setViewVisibleListener(QQGamePubWebView.HeadViewVisibleListener paramHeadViewVisibleListener)
   {
-    this.a = paramHeadViewVisibleListener;
+    this.b = paramHeadViewVisibleListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.qqgamepub.web.view.QQGamePubWebView
  * JD-Core Version:    0.7.0.1
  */

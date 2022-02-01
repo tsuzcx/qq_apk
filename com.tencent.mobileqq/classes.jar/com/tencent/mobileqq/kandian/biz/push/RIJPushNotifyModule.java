@@ -21,15 +21,9 @@ import org.jetbrains.annotations.NotNull;
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/push/RIJPushNotifyModule;", "", "()V", "requestUpdatePushStatus", "", "isOpenPushNotify", "", "isDefaultOpen", "uin", "", "type", "", "callback", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "errorCode", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class RIJPushNotifyModule
 {
-  public static final RIJPushNotifyModule.Companion a;
+  public static final RIJPushNotifyModule.Companion a = new RIJPushNotifyModule.Companion(null);
   @NotNull
-  private static final Lazy a;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPushRIJPushNotifyModule$Companion = new RIJPushNotifyModule.Companion(null);
-    jdField_a_of_type_KotlinLazy = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJPushNotifyModule.Companion.instance.2.INSTANCE);
-  }
+  private static final Lazy b = LazyKt.lazy(LazyThreadSafetyMode.SYNCHRONIZED, (Function0)RIJPushNotifyModule.Companion.instance.2.INSTANCE);
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, @NotNull String paramString, int paramInt, @NotNull Function1<? super Integer, Unit> paramFunction1)
   {
@@ -58,12 +52,12 @@ public final class RIJPushNotifyModule
     localStringBuilder.append("\"]}");
     localPBStringField.set(localStringBuilder.toString());
     ((oidb_0xe9d.ReqBody)localObject).bool_special_follow.set(paramBoolean1);
-    ProtoUtils.a(ReadInJoyUtils.a(), (ProtoUtils.TroopProtocolObserver)new RIJPushNotifyModule.requestUpdatePushStatus.1(paramFunction1), ((oidb_0xe9d.ReqBody)localObject).toByteArray(), "OidbSvc.0xe9d", 3741, 1, new Bundle(), 5000L);
+    ProtoUtils.a(ReadInJoyUtils.b(), (ProtoUtils.TroopProtocolObserver)new RIJPushNotifyModule.requestUpdatePushStatus.1(paramFunction1), ((oidb_0xe9d.ReqBody)localObject).toByteArray(), "OidbSvc.0xe9d", 3741, 1, new Bundle(), 5000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes22.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.push.RIJPushNotifyModule
  * JD-Core Version:    0.7.0.1
  */

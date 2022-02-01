@@ -66,7 +66,7 @@ public class VasProfileHeaderTagComponent
     if (paramInt1 != 1004) {
       return;
     }
-    paramIntent = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(this.mApp.getCurrentAccountUin());
+    paramIntent = ((FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER)).f(this.mApp.getCurrentAccountUin());
     if (paramIntent != null)
     {
       ((ProfileCardInfo)this.mData).card = paramIntent;
@@ -85,7 +85,7 @@ public class VasProfileHeaderTagComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.component.header.VasProfileHeaderTagComponent
  * JD-Core Version:    0.7.0.1
  */

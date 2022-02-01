@@ -96,7 +96,7 @@ public class a
   public void e()
   {
     super.e();
-    q();
+    r();
   }
   
   public void e(int paramInt)
@@ -121,7 +121,7 @@ public class a
     }
   }
   
-  void q()
+  void r()
   {
     Object localObject = this.r;
     if (localObject != null)
@@ -139,7 +139,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.b.a
  * JD-Core Version:    0.7.0.1
  */

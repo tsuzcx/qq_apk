@@ -15,9 +15,9 @@ import org.json.JSONObject;
 public final class ControlReportObj
   extends IReportObj
 {
-  private Integer jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
-  private String jdField_a_of_type_JavaLangString;
+  private String a;
   private String b;
+  private Integer c = Integer.valueOf(1);
   
   @NotNull
   public String a()
@@ -25,20 +25,10 @@ public final class ControlReportObj
     return "control";
   }
   
-  @Nullable
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    ReportExKt.a(localJSONObject, "ticket", this.jdField_a_of_type_JavaLangString);
-    ReportExKt.a(localJSONObject, "debug", this.b);
-    ReportExKt.a(localJSONObject, "noForward", this.jdField_a_of_type_JavaLangInteger);
-    return localJSONObject;
-  }
-  
   public void a(@NotNull AdReportData paramAdReportData)
   {
     Intrinsics.checkParameterIsNotNull(paramAdReportData, "adReportData");
-    this.jdField_a_of_type_JavaLangString = AdReportUtil.b(paramAdReportData);
+    this.a = AdReportUtil.e(paramAdReportData);
     ReportAction localReportAction = AdReportUtil.a(paramAdReportData);
     Object localObject = ReportAction.VIDEO_SEE_TIME;
     Integer localInteger = Integer.valueOf(0);
@@ -47,26 +37,36 @@ public final class ControlReportObj
     } else {
       localObject = localInteger;
     }
-    this.jdField_a_of_type_JavaLangInteger = ((Integer)localObject);
-    if (paramAdReportData.b() == 28) {
-      this.jdField_a_of_type_JavaLangInteger = localInteger;
+    this.c = ((Integer)localObject);
+    if (paramAdReportData.d() == 28) {
+      this.c = localInteger;
     }
-    if (((localReportAction == ReportAction.CLICK) || (localReportAction == ReportAction.EXPOSE)) && ((paramAdReportData.b() == 31) || (paramAdReportData.b() == 32))) {
-      this.jdField_a_of_type_JavaLangInteger = localInteger;
+    if (((localReportAction == ReportAction.CLICK) || (localReportAction == ReportAction.EXPOSE)) && ((paramAdReportData.d() == 31) || (paramAdReportData.d() == 32))) {
+      this.c = localInteger;
     }
-    if ((localReportAction == ReportAction.CLICK) && ((paramAdReportData.b() == 27) || (paramAdReportData.b() == 29))) {
-      this.jdField_a_of_type_JavaLangInteger = localInteger;
+    if ((localReportAction == ReportAction.CLICK) && ((paramAdReportData.d() == 27) || (paramAdReportData.d() == 29))) {
+      this.c = localInteger;
     }
   }
   
-  public boolean a()
+  @Nullable
+  public JSONObject b()
   {
-    return this.jdField_a_of_type_JavaLangString != null;
+    JSONObject localJSONObject = new JSONObject();
+    ReportExKt.a(localJSONObject, "ticket", this.a);
+    ReportExKt.a(localJSONObject, "debug", this.b);
+    ReportExKt.a(localJSONObject, "noForward", this.c);
+    return localJSONObject;
+  }
+  
+  public boolean c()
+  {
+    return this.a != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes19.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.bean.ControlReportObj
  * JD-Core Version:    0.7.0.1
  */

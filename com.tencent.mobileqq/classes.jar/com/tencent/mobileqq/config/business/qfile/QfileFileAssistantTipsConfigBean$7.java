@@ -7,12 +7,12 @@ class QfileFileAssistantTipsConfigBean$7
   
   public void run()
   {
-    QfileFileAssistantTipsConfigBean.c(this.this$0);
+    QfileFileAssistantTipsConfigBean.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigBean.7
  * JD-Core Version:    0.7.0.1
  */

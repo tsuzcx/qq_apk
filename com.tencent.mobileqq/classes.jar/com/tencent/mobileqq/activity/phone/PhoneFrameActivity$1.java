@@ -12,9 +12,9 @@ class PhoneFrameActivity$1
   
   public void onClick(View paramView)
   {
-    ForwardBaseOption localForwardBaseOption = this.a.a.a();
+    ForwardBaseOption localForwardBaseOption = this.a.a.getForwardOption();
     if (localForwardBaseOption != null) {
-      localForwardBaseOption.a(false);
+      localForwardBaseOption.b(false);
     }
     com.tencent.mobileqq.phonecontact.constant.PhoneContactFlags.a = false;
     this.a.setResult(1);
@@ -24,7 +24,7 @@ class PhoneFrameActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneFrameActivity.1
  * JD-Core Version:    0.7.0.1
  */

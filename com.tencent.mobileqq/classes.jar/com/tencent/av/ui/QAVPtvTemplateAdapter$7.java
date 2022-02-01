@@ -7,7 +7,7 @@ class QAVPtvTemplateAdapter$7
   
   public void run()
   {
-    this.this$0.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.this$0.b(this.a, this.b);
   }
 }
 

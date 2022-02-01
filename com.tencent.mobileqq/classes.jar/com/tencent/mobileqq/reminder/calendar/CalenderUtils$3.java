@@ -13,18 +13,18 @@ class CalenderUtils$3
   
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    DialogUtil.b(this.jdField_a_of_type_MqqAppAppActivity, null, HardCodeUtil.a(2131690718));
+    DialogUtil.b(this.b, null, HardCodeUtil.a(2131887638));
     QLog.d("QQReminder.CalenderUtils", 1, "use deny permission");
   }
   
   public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqReminderCalendarCalenderUtils.a(this.jdField_a_of_type_JavaLangRunnable);
+    this.c.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.calendar.CalenderUtils.3
  * JD-Core Version:    0.7.0.1
  */

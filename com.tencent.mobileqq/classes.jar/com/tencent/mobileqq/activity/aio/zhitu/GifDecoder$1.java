@@ -5,17 +5,17 @@ class GifDecoder$1
 {
   public GifImage a()
   {
-    return GifDecoder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituGifDecoder, this.b, this.jdField_a_of_type_Long);
+    return GifDecoder.a(this.c, this.b, this.a);
   }
   
   public boolean hasNext()
   {
-    return GifDecoder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituGifDecoder, this.jdField_a_of_type_Long);
+    return GifDecoder.a(this.c, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifDecoder.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,25 +13,25 @@ import android.support.annotation.Nullable;
 public class SquareRoundImageUtils$SquareRoundColorDrawable
   extends Drawable
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private int b;
+  private Path a;
+  private Paint b;
   private int c;
+  private int d;
+  private int e;
   
   public SquareRoundImageUtils$SquareRoundColorDrawable(int paramInt1, int paramInt2, int paramInt3)
   {
     if ((paramInt2 > 0) && (paramInt3 > 0))
     {
-      this.b = paramInt2;
-      this.c = paramInt3;
-      this.jdField_a_of_type_AndroidGraphicsPath = SquareRoundImageUtils.a(this.b, this.c);
+      this.d = paramInt2;
+      this.e = paramInt3;
+      this.a = SquareRoundImageUtils.a(this.d, this.e);
     }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+    this.c = paramInt1;
+    this.b = new Paint();
+    this.b.setStyle(Paint.Style.FILL);
+    this.b.setAntiAlias(true);
+    this.b.setColor(this.c);
   }
   
   public void draw(@NonNull Canvas paramCanvas)
@@ -39,21 +39,21 @@ public class SquareRoundImageUtils$SquareRoundColorDrawable
     Rect localRect = getBounds();
     int i = localRect.right - localRect.left;
     int j = localRect.bottom - localRect.top;
-    if ((i != this.b) && (j != this.c))
+    if ((i != this.d) && (j != this.e))
     {
-      this.b = i;
-      this.c = j;
-      this.jdField_a_of_type_AndroidGraphicsPath = SquareRoundImageUtils.a(this.b, this.c);
+      this.d = i;
+      this.e = j;
+      this.a = SquareRoundImageUtils.a(this.d, this.e);
     }
     paramCanvas.save();
     paramCanvas.translate(localRect.left, localRect.top);
-    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawPath(this.a, this.b);
     paramCanvas.restore();
   }
   
   public int getOpacity()
   {
-    int i = this.jdField_a_of_type_Int >>> 24;
+    int i = this.c >>> 24;
     if (i != 0)
     {
       if (i != 255) {
@@ -70,7 +70,7 @@ public class SquareRoundImageUtils$SquareRoundColorDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.util.SquareRoundImageUtils.SquareRoundColorDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public abstract class BaseQQVoiceWebViewPlugin
   public Context getContext()
   {
     if (this.mRuntime != null) {
-      return this.mRuntime.a();
+      return this.mRuntime.d();
     }
     return null;
   }
@@ -69,7 +69,7 @@ public abstract class BaseQQVoiceWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.webview.BaseQQVoiceWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

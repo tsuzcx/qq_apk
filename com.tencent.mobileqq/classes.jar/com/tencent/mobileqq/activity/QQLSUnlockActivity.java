@@ -31,8 +31,8 @@ public class QQLSUnlockActivity
   extends Activity
   implements Handler.Callback
 {
-  static int jdField_a_of_type_Int = 30000;
-  Handler jdField_a_of_type_AndroidOsHandler;
+  static int a = 30000;
+  Handler b;
   
   private int a()
   {
@@ -59,7 +59,7 @@ public class QQLSUnlockActivity
       localStringBuilder1.append(i);
       QLog.d("QQLSActivity", 4, localStringBuilder1.toString());
     }
-    int j = jdField_a_of_type_Int;
+    int j = a;
     if (i > j) {
       return j;
     }
@@ -128,14 +128,14 @@ public class QQLSUnlockActivity
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       getWindow().addFlags(67108864);
     }
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    this.b = new Handler(this);
     if (QLog.isColorLevel()) {
       QLog.d("QQLSActivity", 2, "enter QQLSUnlockActivity");
     }
     if (Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
       ((PowerManager)getSystemService("power")).newWakeLock(268435462, "test").acquire(a());
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 1500L);
+    this.b.sendEmptyMessageDelayed(0, 1500L);
     if (getIntent().getBooleanExtra("key_wallet_unlock", false))
     {
       QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
@@ -173,7 +173,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

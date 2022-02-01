@@ -27,12 +27,12 @@ class TroopRobotServiceImpl$8
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopRobotApiITroopRobotService$Callback.a(paramInt, paramBundle);
+    this.a.a(paramInt, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.api.impl.TroopRobotServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

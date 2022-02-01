@@ -74,7 +74,7 @@ public class SPUtils
   
   public static <E> void put(@NonNull Context paramContext, String paramString1, @NonNull String paramString2, @NonNull E paramE)
   {
-    paramContext = init(paramContext, null).edit();
+    paramContext = init(paramContext, paramString1).edit();
     if (((paramE instanceof String)) || ((paramE instanceof Integer)) || ((paramE instanceof Boolean)) || ((paramE instanceof Float)) || ((paramE instanceof Long)) || ((paramE instanceof Double))) {
       paramContext.putString(paramString2, String.valueOf(paramE));
     }
@@ -83,7 +83,7 @@ public class SPUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.SPUtils
  * JD-Core Version:    0.7.0.1
  */

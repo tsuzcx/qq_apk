@@ -3,8 +3,8 @@ package com.tencent.mobileqq.msf.core.net.a;
 import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.ac;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ad;
+import com.tencent.mobileqq.msf.core.d.j;
 import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.QLog;
@@ -146,7 +146,7 @@ public class a
           localObject2 = new HashMap();
           ((HashMap)localObject2).put("report", localObject1);
           if (MsfService.core.getStatReporter() != null) {
-            MsfService.core.getStatReporter().a("dim.Msf.hwSending", true, 0L, 0L, (Map)localObject2, false, false);
+            MsfService.core.getStatReporter().a("dim_Msf_hwSending", true, 0L, 0L, (Map)localObject2, false, false);
           }
         }
         localObject2 = g.sender.I.b().a(516);
@@ -155,7 +155,7 @@ public class a
           localObject1 = new HashMap();
           ((HashMap)localObject1).put("reportExTimeout", localObject2);
           if (MsfService.core.getStatReporter() != null) {
-            MsfService.core.getStatReporter().a("dim.Msf.hwSendingExTimeout", true, 0L, 0L, (Map)localObject1, false, false);
+            MsfService.core.getStatReporter().a("dim_Msf_hwSendingExTimeout", true, 0L, 0L, (Map)localObject1, false, false);
           }
         }
         localObject1 = g.sender.I.b().a(514);
@@ -164,7 +164,7 @@ public class a
           localObject2 = new HashMap();
           ((HashMap)localObject2).put("except", localObject1);
           if (g.getStatReporter() != null) {
-            g.getStatReporter().a("dim.Msf.hwExcept", true, 0L, 0L, (Map)localObject2, false, false);
+            g.getStatReporter().a("dim_Msf_hwExcept", true, 0L, 0L, (Map)localObject2, false, false);
           }
         }
       }
@@ -176,7 +176,7 @@ public class a
           localObject2 = new HashMap();
           ((HashMap)localObject2).put("report", localObject1);
           if (MsfService.core.getStatReporter() != null) {
-            MsfService.core.getStatReporter().a("dim.Msf.NmSending", false, 0L, 0L, (Map)localObject2, false, false);
+            MsfService.core.getStatReporter().a("dim_Msf_NmSending", false, 0L, 0L, (Map)localObject2, false, false);
           }
         }
         localObject2 = g.sender.I.b().a(516);
@@ -186,7 +186,7 @@ public class a
           ((HashMap)localObject1).put("reportExTimeout", localObject2);
           if (MsfService.core.getStatReporter() != null)
           {
-            MsfService.core.getStatReporter().a("dim.Msf.NmSendingExTimeout", false, 0L, 0L, (Map)localObject1, false, false);
+            MsfService.core.getStatReporter().a("dim_Msf_NmSendingExTimeout", false, 0L, 0L, (Map)localObject1, false, false);
             return;
           }
         }
@@ -216,7 +216,7 @@ public class a
           localObject = new HashMap();
           ((HashMap)localObject).put("heartbeat", str);
           if (g.getStatReporter() != null) {
-            g.getStatReporter().a("dim.Msf.hwHeartbeat", true, 0L, 0L, (Map)localObject, false, false);
+            g.getStatReporter().a("dim_Msf_hwHeartbeat", true, 0L, 0L, (Map)localObject, false, false);
           }
         }
       }
@@ -229,7 +229,7 @@ public class a
           ((HashMap)localObject).put("heartbeat", str);
           if (g.getStatReporter() != null)
           {
-            g.getStatReporter().a("dim.Msf.NmHeartbeat", false, 0L, 0L, (Map)localObject, false, false);
+            g.getStatReporter().a("dim_Msf_NmHeartbeat", false, 0L, 0L, (Map)localObject, false, false);
             return;
           }
         }
@@ -529,7 +529,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.a
  * JD-Core Version:    0.7.0.1
  */

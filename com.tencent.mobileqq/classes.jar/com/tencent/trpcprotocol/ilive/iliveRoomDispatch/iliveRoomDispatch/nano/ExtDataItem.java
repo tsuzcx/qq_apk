@@ -9,34 +9,26 @@ import com.google.protobuf.nano.WireFormatNano;
 public final class ExtDataItem
   extends MessageNano
 {
-  private static volatile ExtDataItem[] a;
+  private static volatile ExtDataItem[] c;
   public String a;
   public String b;
   
   public ExtDataItem()
   {
-    a();
+    b();
   }
   
   public static ExtDataItem[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem == null) {
+    if (c == null) {
       synchronized (InternalNano.LAZY_INIT_LOCK)
       {
-        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem == null) {
-          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem = new ExtDataItem[0];
+        if (c == null) {
+          c = new ExtDataItem[0];
         }
       }
     }
-    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
-  }
-  
-  public ExtDataItem a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = "";
-    this.cachedSize = -1;
-    return this;
+    return c;
   }
   
   public ExtDataItem a(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -60,9 +52,17 @@ public final class ExtDataItem
         }
       }
       else {
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+        this.a = paramCodedInputByteBufferNano.readString();
       }
     }
+    return this;
+  }
+  
+  public ExtDataItem b()
+  {
+    this.a = "";
+    this.b = "";
+    this.cachedSize = -1;
     return this;
   }
   
@@ -70,8 +70,8 @@ public final class ExtDataItem
   {
     int j = super.computeSerializedSize();
     int i = j;
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(1, this.a);
     }
     j = i;
     if (!this.b.equals("")) {
@@ -82,8 +82,8 @@ public final class ExtDataItem
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
-      paramCodedOutputByteBufferNano.writeString(1, this.jdField_a_of_type_JavaLangString);
+    if (!this.a.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(1, this.a);
     }
     if (!this.b.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.b);
@@ -93,7 +93,7 @@ public final class ExtDataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.ExtDataItem
  * JD-Core Version:    0.7.0.1
  */

@@ -5,34 +5,34 @@ import com.tencent.gathererga.core.ILog;
 
 public class GLog
 {
-  private static ILog jdField_a_of_type_ComTencentGatherergaCoreILog;
-  private static String jdField_a_of_type_JavaLangString = "Gatherer";
+  private static String a = "Gatherer";
+  private static ILog b;
   
   public static void a(ILog paramILog)
   {
-    jdField_a_of_type_ComTencentGatherergaCoreILog = paramILog;
+    b = paramILog;
   }
   
   public static void a(String paramString)
   {
-    ILog localILog = jdField_a_of_type_ComTencentGatherergaCoreILog;
+    ILog localILog = b;
     if (localILog != null)
     {
-      localILog.i(jdField_a_of_type_JavaLangString, paramString);
+      localILog.b(a, paramString);
       return;
     }
-    Log.i(jdField_a_of_type_JavaLangString, paramString);
+    Log.i(a, paramString);
   }
   
   public static void a(String paramString, Throwable paramThrowable)
   {
-    ILog localILog = jdField_a_of_type_ComTencentGatherergaCoreILog;
+    ILog localILog = b;
     if (localILog != null)
     {
-      localILog.w(jdField_a_of_type_JavaLangString, paramString, paramThrowable);
+      localILog.a(a, paramString, paramThrowable);
       return;
     }
-    Log.w(jdField_a_of_type_JavaLangString, paramString, paramThrowable);
+    Log.w(a, paramString, paramThrowable);
   }
   
   public static void a(Throwable paramThrowable)
@@ -42,51 +42,51 @@ public class GLog
   
   public static void b(String paramString)
   {
-    ILog localILog = jdField_a_of_type_ComTencentGatherergaCoreILog;
+    ILog localILog = b;
     if (localILog != null)
     {
-      localILog.d(jdField_a_of_type_JavaLangString, paramString);
+      localILog.a(a, paramString);
       return;
     }
-    Log.d(jdField_a_of_type_JavaLangString, paramString);
+    Log.d(a, paramString);
   }
   
   public static void b(String paramString, Throwable paramThrowable)
   {
-    ILog localILog = jdField_a_of_type_ComTencentGatherergaCoreILog;
+    ILog localILog = b;
     if (localILog != null)
     {
-      localILog.e(jdField_a_of_type_JavaLangString, paramString, paramThrowable);
+      localILog.b(a, paramString, paramThrowable);
       return;
     }
-    Log.e(jdField_a_of_type_JavaLangString, paramString, paramThrowable);
+    Log.e(a, paramString, paramThrowable);
   }
   
   public static void c(String paramString)
   {
-    ILog localILog = jdField_a_of_type_ComTencentGatherergaCoreILog;
+    ILog localILog = b;
     if (localILog != null)
     {
-      localILog.w(jdField_a_of_type_JavaLangString, paramString);
+      localILog.c(a, paramString);
       return;
     }
-    Log.w(jdField_a_of_type_JavaLangString, paramString);
+    Log.w(a, paramString);
   }
   
   public static void d(String paramString)
   {
-    ILog localILog = jdField_a_of_type_ComTencentGatherergaCoreILog;
+    ILog localILog = b;
     if (localILog != null)
     {
-      localILog.e(jdField_a_of_type_JavaLangString, paramString);
+      localILog.d(a, paramString);
       return;
     }
-    Log.e(jdField_a_of_type_JavaLangString, paramString);
+    Log.e(a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.gathererga.core.internal.util.GLog
  * JD-Core Version:    0.7.0.1
  */

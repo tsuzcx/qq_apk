@@ -72,7 +72,7 @@ class LoginInfoActivity$11
         QLog.d("LoginInfoActivity.AccDevSec", 2, ((StringBuilder)localObject).toString());
       }
     }
-    QQToast.a(this.a.getActivity(), 1, this.a.getString(2131692017), 0).b(this.a.getTitleBarHeight());
+    QQToast.makeText(this.a.getActivity(), 1, this.a.getString(2131888984), 0).show(this.a.getTitleBarHeight());
   }
   
   protected void onKickOutDevFResult(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
@@ -102,13 +102,13 @@ class LoginInfoActivity$11
       }
     }
     else {
-      QQToast.a(this.a.getApplicationContext(), this.a.getString(2131694375), 0).b(this.a.getTitleBarHeight());
+      QQToast.makeText(this.a.getApplicationContext(), this.a.getString(2131892053), 0).show(this.a.getTitleBarHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.11
  * JD-Core Version:    0.7.0.1
  */

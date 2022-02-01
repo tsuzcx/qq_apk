@@ -78,7 +78,7 @@ class TroopRedTouchManager$3
     //   126: iload_1
     //   127: invokevirtual 98	com/tencent/mobileqq/pb/PBRepeatMessageField:get	(I)Lcom/tencent/mobileqq/pb/MessageMicro;
     //   130: checkcast 100	tencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo
-    //   133: invokestatic 103	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:a	(Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;)Ljava/lang/String;
+    //   133: invokestatic 104	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:b	(Ltencent/im/oidb/cmd0x791/oidb_0x791$RedDotInfo;)Ljava/lang/String;
     //   136: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   139: pop
     //   140: iload_1
@@ -86,7 +86,7 @@ class TroopRedTouchManager$3
     //   142: iadd
     //   143: istore_1
     //   144: goto -40 -> 104
-    //   147: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: invokestatic 110	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   150: ifeq +46 -> 196
     //   153: new 42	java/lang/StringBuilder
     //   156: dup
@@ -95,11 +95,11 @@ class TroopRedTouchManager$3
     //   162: aload 4
     //   164: aload_0
     //   165: getfield 14	com/tencent/biz/TroopRedpoint/TroopRedTouchManager$3:this$0	Lcom/tencent/biz/TroopRedpoint/TroopRedTouchManager;
-    //   168: getfield 113	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:c	Ljava/lang/String;
+    //   168: getfield 114	com/tencent/biz/TroopRedpoint/TroopRedTouchManager:d	Ljava/lang/String;
     //   171: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload 4
-    //   177: ldc 115
+    //   177: ldc 116
     //   179: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   182: pop
     //   183: aload 4

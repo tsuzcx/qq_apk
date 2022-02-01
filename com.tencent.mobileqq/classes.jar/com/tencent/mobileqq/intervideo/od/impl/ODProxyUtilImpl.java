@@ -28,7 +28,7 @@ public class ODProxyUtilImpl
         localObject1 = ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
         str2 = ((AppRuntime)localObject1).getAccount();
         localObject1 = (FriendsManager)((AppRuntime)localObject1).getManager(QQManagerFactory.FRIENDS_MANAGER);
-        localObject2 = ((FriendsManager)localObject1).e(str2);
+        localObject2 = ((FriendsManager)localObject1).m(str2);
         m = 0;
         if (localObject2 == null) {
           break label436;
@@ -36,7 +36,7 @@ public class ODProxyUtilImpl
         str1 = ((Friends)localObject2).name;
         j = ((Friends)localObject2).gender;
         i = ((Friends)localObject2).age;
-        localObject2 = ((FriendsManager)localObject1).a(str2);
+        localObject2 = ((FriendsManager)localObject1).f(str2);
         if (localObject2 == null) {
           break label448;
         }
@@ -51,7 +51,7 @@ public class ODProxyUtilImpl
         paramIVPluginInfo.printStackTrace();
       }
       localBundle.putString("nickname", str1);
-      localBundle.putLong("roomid", paramIVPluginInfo.a);
+      localBundle.putLong("roomid", paramIVPluginInfo.d);
       localBundle.putInt("authtype", 1);
       localBundle.putString("authid", paramILoginKeyHelper.getAccountInfo().b);
       localBundle.putInt("gender", j);
@@ -59,9 +59,9 @@ public class ODProxyUtilImpl
       localBundle.putLong("hostid", Long.parseLong(str2));
       localBundle.putString("authkey", paramILoginKeyHelper.getAccountInfo().a);
       localBundle.putString("appid", paramIVPluginInfo.b);
-      localBundle.putString("vasname", paramIVPluginInfo.g);
-      localBundle.putString("userdata", paramIVPluginInfo.d);
-      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.e));
+      localBundle.putString("vasname", paramIVPluginInfo.k);
+      localBundle.putString("userdata", paramIVPluginInfo.e);
+      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.f));
       localBundle.putInt("age", i);
       localBundle.putInt("birthyear", k);
       localBundle.putInt("birthmonth", m);
@@ -69,10 +69,10 @@ public class ODProxyUtilImpl
       localBundle.putInt("birthday", n);
       localBundle.putBoolean("loghost", true);
       localBundle.putBoolean("reporthost", true);
-      localBundle.putString("backType", paramIVPluginInfo.h);
-      localBundle.putInt("isGroupCode", paramIVPluginInfo.c);
-      localBundle.putString("openType", paramIVPluginInfo.i);
-      localBundle.putString("extra", paramIVPluginInfo.j);
+      localBundle.putString("backType", paramIVPluginInfo.l);
+      localBundle.putInt("isGroupCode", paramIVPluginInfo.m);
+      localBundle.putString("openType", paramIVPluginInfo.n);
+      localBundle.putString("extra", paramIVPluginInfo.o);
       localBundle.putString("payToken", paramILoginKeyHelper.getAccountInfo().c);
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         localBundle.putString("addrCountry", (String)localObject1);
@@ -114,7 +114,7 @@ public class ODProxyUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes21.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.impl.ODProxyUtilImpl
  * JD-Core Version:    0.7.0.1
  */

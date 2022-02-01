@@ -10,8 +10,8 @@ class GaInviteDialogActivity$1
   public void a(int paramInt1, int paramInt2)
   {
     GaInviteDialogActivity localGaInviteDialogActivity = this.a;
-    localGaInviteDialogActivity.g = paramInt1;
-    localGaInviteDialogActivity.h = paramInt2;
+    localGaInviteDialogActivity.M = paramInt1;
+    localGaInviteDialogActivity.N = paramInt2;
     GaInviteDialogActivity.a(localGaInviteDialogActivity);
   }
 }

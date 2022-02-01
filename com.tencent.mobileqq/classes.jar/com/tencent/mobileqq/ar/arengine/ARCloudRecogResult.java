@@ -11,89 +11,134 @@ import java.util.ArrayList;
 
 public class ARCloudRecogResult
 {
-  public int a;
-  public long a;
-  public ARCloudMarkerRecogResult a;
-  public ARCloudObjectClassifyResult a;
-  public ARCloudPreOcrResult a;
-  public ARCloudRecogRspFaceResult a;
-  public ARCloudSceneRecogResult a;
-  public ARMIGObjectClassifyResult a;
-  public SearchQuestionResult a;
-  public ARCloudOcrResult a;
-  public TranslateResult a;
-  public String a;
+  public String a = "";
   public long b = 0L;
+  public int c = -1;
+  public ARCloudMarkerRecogResult d = null;
+  public ARCloudObjectClassifyResult e;
+  public ARCloudRecogRspFaceResult f;
+  public ARCloudOcrResult g;
+  public ARCloudPreOcrResult h;
+  public SearchQuestionResult i;
+  public ARMIGObjectClassifyResult j;
+  public ARCloudSceneRecogResult k;
+  public TranslateResult l;
+  public long m = 0L;
   
-  public ARCloudRecogResult()
+  public static void a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult = null;
+    if (paramARCloudRecogResult == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLBSLocationCheckResult. retCode = ");
+    localStringBuilder.append(paramARCloudLBSLocationCheckResult.a);
+    QLog.i("AREngine_ARCloudRecogResult", 1, localStringBuilder.toString());
+    paramArrayList = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
+    if (paramArrayList.a == 1L)
+    {
+      paramARCloudRecogResult.d.l = paramARCloudLBSLocationCheckResult;
+      return;
+    }
+    if (paramArrayList.a == 2L)
+    {
+      paramARCloudRecogResult.e.l = paramARCloudLBSLocationCheckResult;
+      return;
+    }
+    if (paramArrayList.a == 128L)
+    {
+      paramARCloudRecogResult.j.l = paramARCloudLBSLocationCheckResult;
+      return;
+    }
+    if (paramArrayList.a == 2048L) {
+      paramARCloudRecogResult.k.l = paramARCloudLBSLocationCheckResult;
+    }
   }
   
-  public static ARCloudLBSLocationCheckResult a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
+  public static boolean a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
+  {
+    boolean bool = false;
+    if (paramARCloudRecogResult == null) {
+      return false;
+    }
+    paramArrayList = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
+    if (paramArrayList.a == 1L) {
+      bool = paramARCloudRecogResult.d.k;
+    } else if (paramArrayList.a == 2L) {
+      bool = paramARCloudRecogResult.e.k;
+    } else if (paramArrayList.a == 128L) {
+      bool = paramARCloudRecogResult.j.k;
+    } else if (paramArrayList.a == 2048L) {
+      bool = paramARCloudRecogResult.k.k;
+    }
+    paramArrayList = new StringBuilder();
+    paramArrayList.append("isNeedUploadLBSLocation. isNeed = ");
+    paramArrayList.append(bool);
+    QLog.i("AREngine_ARCloudRecogResult", 1, paramArrayList.toString());
+    return bool;
+  }
+  
+  public static ARCloudLBSLocationCheckResult b(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
   {
     ARCloudLBSLocationCheckResult localARCloudLBSLocationCheckResult = new ARCloudLBSLocationCheckResult();
     if (paramARCloudRecogResult == null) {
       return localARCloudLBSLocationCheckResult;
     }
     ARRecognition.RecognitionResult localRecognitionResult = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
-    if (localRecognitionResult.jdField_a_of_type_Long == 1L)
+    if (localRecognitionResult.a == 1L)
     {
       paramArrayList = localARCloudLBSLocationCheckResult;
-      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_Boolean) {
-        paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult;
+      if (paramARCloudRecogResult.d.k) {
+        paramArrayList = paramARCloudRecogResult.d.l;
       }
     }
-    else if (localRecognitionResult.jdField_a_of_type_Long == 2L)
+    else if (localRecognitionResult.a == 2L)
     {
       paramArrayList = localARCloudLBSLocationCheckResult;
-      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_Boolean) {
-        paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult;
+      if (paramARCloudRecogResult.e.k) {
+        paramArrayList = paramARCloudRecogResult.e.l;
       }
     }
-    else if (localRecognitionResult.jdField_a_of_type_Long == 128L)
+    else if (localRecognitionResult.a == 128L)
     {
       paramArrayList = localARCloudLBSLocationCheckResult;
-      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.jdField_a_of_type_Boolean) {
-        paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult;
+      if (paramARCloudRecogResult.j.k) {
+        paramArrayList = paramARCloudRecogResult.j.l;
       }
     }
     else
     {
       paramArrayList = localARCloudLBSLocationCheckResult;
-      if (localRecognitionResult.jdField_a_of_type_Long == 2048L)
+      if (localRecognitionResult.a == 2048L)
       {
         paramArrayList = localARCloudLBSLocationCheckResult;
-        if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_Boolean) {
-          paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult;
+        if (paramARCloudRecogResult.k.k) {
+          paramArrayList = paramARCloudRecogResult.k.l;
         }
       }
     }
     paramARCloudRecogResult = new StringBuilder();
     paramARCloudRecogResult.append("getLBSLocationCheckResult. retCode = ");
-    paramARCloudRecogResult.append(paramArrayList.jdField_a_of_type_Int);
+    paramARCloudRecogResult.append(paramArrayList.a);
     QLog.i("AREngine_ARCloudRecogResult", 1, paramARCloudRecogResult.toString());
     return paramArrayList;
   }
   
-  public static ArLBSActivity a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
+  public static ArLBSActivity c(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
   {
     Object localObject = null;
     if (paramARCloudRecogResult == null) {
       return null;
     }
     ARRecognition.RecognitionResult localRecognitionResult = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
-    if (localRecognitionResult.jdField_a_of_type_Long == 1L)
+    if (localRecognitionResult.a == 1L)
     {
       paramArrayList = localObject;
-      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_Boolean)
+      if (paramARCloudRecogResult.d.k)
       {
         try
         {
-          paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag[0].jdField_a_of_type_ArrayOfByte, "utf-8"));
+          paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.d.g[0].g, "utf-8"));
         }
         catch (Exception paramArrayList)
         {
@@ -105,18 +150,18 @@ public class ARCloudRecogResult
         }
         paramArrayList = localObject;
         if (paramARCloudRecogResult != null) {
-          paramArrayList = paramARCloudRecogResult.a;
+          paramArrayList = paramARCloudRecogResult.q;
         }
       }
     }
-    else if (localRecognitionResult.jdField_a_of_type_Long == 2L)
+    else if (localRecognitionResult.a == 2L)
     {
       paramArrayList = localObject;
-      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_Boolean)
+      if (paramARCloudRecogResult.e.k)
       {
         try
         {
-          paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].jdField_a_of_type_ArrayOfByte, "utf-8"));
+          paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.e.g[0].g, "utf-8"));
         }
         catch (Exception paramArrayList)
         {
@@ -128,18 +173,18 @@ public class ARCloudRecogResult
         }
         paramArrayList = localObject;
         if (paramARCloudRecogResult != null) {
-          paramArrayList = paramARCloudRecogResult.a;
+          paramArrayList = paramARCloudRecogResult.q;
         }
       }
     }
-    else if (localRecognitionResult.jdField_a_of_type_Long == 128L)
+    else if (localRecognitionResult.a == 128L)
     {
       paramArrayList = localObject;
-      if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.jdField_a_of_type_Boolean)
+      if (paramARCloudRecogResult.j.k)
       {
         try
         {
-          paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.a(), "utf-8"));
+          paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.j.c(), "utf-8"));
         }
         catch (Exception paramArrayList)
         {
@@ -151,21 +196,21 @@ public class ARCloudRecogResult
         }
         paramArrayList = localObject;
         if (paramARCloudRecogResult != null) {
-          paramArrayList = paramARCloudRecogResult.a;
+          paramArrayList = paramARCloudRecogResult.q;
         }
       }
     }
     else
     {
       paramArrayList = localObject;
-      if (localRecognitionResult.jdField_a_of_type_Long == 2048L)
+      if (localRecognitionResult.a == 2048L)
       {
         paramArrayList = localObject;
-        if (paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_Boolean)
+        if (paramARCloudRecogResult.k.k)
         {
           try
           {
-            paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag[0].jdField_a_of_type_ArrayOfByte, "utf-8"));
+            paramARCloudRecogResult = ARCloudMarkerJsonParser.a(new String(paramARCloudRecogResult.k.g[0].g, "utf-8"));
           }
           catch (Exception paramArrayList)
           {
@@ -177,7 +222,7 @@ public class ARCloudRecogResult
           }
           paramArrayList = localObject;
           if (paramARCloudRecogResult != null) {
-            paramArrayList = paramARCloudRecogResult.a;
+            paramArrayList = paramARCloudRecogResult.q;
           }
         }
       }
@@ -189,30 +234,30 @@ public class ARCloudRecogResult
     return paramArrayList;
   }
   
-  public static String a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
+  public static String d(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
   {
     String str = "";
     if (paramARCloudRecogResult == null) {
       return "";
     }
     ARRecognition.RecognitionResult localRecognitionResult = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
-    if (localRecognitionResult.jdField_a_of_type_Long == 1L)
+    if (localRecognitionResult.a == 1L)
     {
-      paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudMarkerRecogResult$ImageTag[0].jdField_a_of_type_JavaLangString;
+      paramArrayList = paramARCloudRecogResult.d.g[0].a;
     }
-    else if (localRecognitionResult.jdField_a_of_type_Long == 2L)
+    else if (localRecognitionResult.a == 2L)
     {
-      paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].jdField_a_of_type_JavaLangString;
+      paramArrayList = paramARCloudRecogResult.e.g[0].a;
     }
-    else if (localRecognitionResult.jdField_a_of_type_Long == 2048L)
+    else if (localRecognitionResult.a == 2048L)
     {
-      paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudSceneRecogResult$ImageTag[0].jdField_a_of_type_JavaLangString;
+      paramArrayList = paramARCloudRecogResult.k.g[0].a;
     }
     else
     {
       paramArrayList = str;
-      if (localRecognitionResult.jdField_a_of_type_Long == 128L) {
-        paramArrayList = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.e;
+      if (localRecognitionResult.a == 128L) {
+        paramArrayList = paramARCloudRecogResult.j.n;
       }
     }
     paramARCloudRecogResult = new StringBuilder();
@@ -222,93 +267,40 @@ public class ARCloudRecogResult
     return paramArrayList;
   }
   
-  public static void a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult)
-  {
-    if (paramARCloudRecogResult == null) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("setLBSLocationCheckResult. retCode = ");
-    localStringBuilder.append(paramARCloudLBSLocationCheckResult.jdField_a_of_type_Int);
-    QLog.i("AREngine_ARCloudRecogResult", 1, localStringBuilder.toString());
-    paramArrayList = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
-    if (paramArrayList.jdField_a_of_type_Long == 1L)
-    {
-      paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult = paramARCloudLBSLocationCheckResult;
-      return;
-    }
-    if (paramArrayList.jdField_a_of_type_Long == 2L)
-    {
-      paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult = paramARCloudLBSLocationCheckResult;
-      return;
-    }
-    if (paramArrayList.jdField_a_of_type_Long == 128L)
-    {
-      paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult = paramARCloudLBSLocationCheckResult;
-      return;
-    }
-    if (paramArrayList.jdField_a_of_type_Long == 2048L) {
-      paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult = paramARCloudLBSLocationCheckResult;
-    }
-  }
-  
-  public static boolean a(ArrayList<ARRecognition> paramArrayList, ARCloudRecogResult paramARCloudRecogResult)
-  {
-    boolean bool = false;
-    if (paramARCloudRecogResult == null) {
-      return false;
-    }
-    paramArrayList = ARRecognition.a(paramArrayList, paramARCloudRecogResult);
-    if (paramArrayList.jdField_a_of_type_Long == 1L) {
-      bool = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult.jdField_a_of_type_Boolean;
-    } else if (paramArrayList.jdField_a_of_type_Long == 2L) {
-      bool = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult.jdField_a_of_type_Boolean;
-    } else if (paramArrayList.jdField_a_of_type_Long == 128L) {
-      bool = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult.jdField_a_of_type_Boolean;
-    } else if (paramArrayList.jdField_a_of_type_Long == 2048L) {
-      bool = paramARCloudRecogResult.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult.jdField_a_of_type_Boolean;
-    }
-    paramArrayList = new StringBuilder();
-    paramArrayList.append("isNeedUploadLBSLocation. isNeed = ");
-    paramArrayList.append(bool);
-    QLog.i("AREngine_ARCloudRecogResult", 1, paramArrayList.toString());
-    return bool;
-  }
-  
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ARCloudRecogResult{, sessionId = ");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.a);
     localStringBuilder.append(", recogType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", businessType = ");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", markerResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudMarkerRecogResult);
-    localStringBuilder.append(", objectClassifyResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudObjectClassifyResult);
-    localStringBuilder.append(", faceResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogRspFaceResult);
-    localStringBuilder.append(", ocrResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOcrDataARCloudOcrResult);
-    localStringBuilder.append(", preOcrResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudPreOcrResult);
-    localStringBuilder.append(", questionResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineSearchQuestionResult);
-    localStringBuilder.append(", sceneRecogResult = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudSceneRecogResult);
-    localStringBuilder.append(", translateReslut = ");
-    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOcrDataTranslateResult);
-    localStringBuilder.append(", uin = ");
     localStringBuilder.append(this.b);
+    localStringBuilder.append(", businessType = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", markerResult = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", objectClassifyResult = ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", faceResult = ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", ocrResult = ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", preOcrResult = ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", questionResult = ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", sceneRecogResult = ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", translateReslut = ");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", uin = ");
+    localStringBuilder.append(this.m);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudRecogResult
  * JD-Core Version:    0.7.0.1
  */
